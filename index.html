@@ -1326,15 +1326,15 @@
                         plan[header] = values[index].trim().replace(/^"|"$/g, '');
                     });
 
-                    plan.firstMonthPrice = parseFloat(plan['首月价格']) || 0;
-                    plan.monthlyPrice = parseFloat(plan['连续包月']) || 0;
-                    plan.quarterlyPrice = parseFloat(plan['连续包季']) || 0;
-                    plan.yearlyPrice = parseFloat(plan['连续包年']) || 0;
-                    plan.hourlyRequests = parseInt(plan['5小时请求数']) || 0;
-                    plan.monthlyRequests = parseInt(plan['每月总请求数']) || 0;
+                    plan.firstMonthPrice = parseFloat(plan['firstMonthPrice']) || 0;
+                    plan.monthlyPrice = parseFloat(plan['monthlyPrice']) || 0;
+                    plan.quarterlyPrice = parseFloat(plan['quarterlyPrice']) || 0;
+                    plan.yearlyPrice = parseFloat(plan['yearlyPrice']) || 0;
+                    plan.hourlyRequests = parseInt(plan['hourlyRequests']) || 0;
+                    plan.monthlyRequests = parseInt(plan['monthlyRequests']) || 0;
 
-                    plan.models = plan['支持模型'].split(',').map(m => m.trim()).filter(m => m);
-                    plan.benefits = plan['其他权益'].split(',').map(b => b.trim()).filter(b => b);
+                    plan.models = plan['models'].split(',').map(m => m.trim()).filter(m => m);
+                    plan.benefits = plan['benefits'].split(',').map(b => b.trim()).filter(b => b);
 
                     data.push(plan);
                 }
@@ -1365,7 +1365,7 @@
 
         // 初始化筛选器
         function initFilters() {
-            const vendors = [...new Set(allPlans.map(p => p['厂商名称']))].sort();
+            const vendors = [...new Set(allPlans.map(p => p['vendor']))].sort();
             vendors.forEach(vendor => {
                 const div = document.createElement('div');
                 div.className = 'checkbox-item';
@@ -1552,7 +1552,7 @@
         function applyFilters() {
             filteredPlans = allPlans.filter(plan => {
                 // 厂商筛选
-                if (selectedVendors.size > 0 && !selectedVendors.has(plan['厂商名称'])) {
+                if (selectedVendors.size > 0 && !selectedVendors.has(plan['vendor'])) {
                     return false;
                 }
 
@@ -1871,16 +1871,16 @@
 
                 switch (column) {
                     case 'vendor':
-                        valueA = a['厂商名称'];
-                        valueB = b['厂商名称'];
+                        valueA = a['vendor'];
+                        valueB = b['vendor'];
                         break;
                     case 'plan':
-                        valueA = a['套餐名称'];
-                        valueB = b['套餐名称'];
+                        valueA = a['plan'];
+                        valueB = b['plan'];
                         break;
                     case 'action':
-                        valueA = a['套餐名称'];
-                        valueB = b['套餐名称'];
+                        valueA = a['plan'];
+                        valueB = b['plan'];
                         break;
                     case 'firstMonthPrice':
                         valueA = a.firstMonthPrice;
@@ -1975,10 +1975,10 @@
 
             tableBody.innerHTML = filteredPlans.map(plan => `
                 <tr>
-                    <td class="sticky-first"><span class="vendor-name">${escapeHtml(plan['厂商名称'])}</span></td>
-                    <td class="sticky-second"><span class="plan-name">${escapeHtml(plan['套餐名称'])}</span></td>
+                    <td class="sticky-first"><span class="vendor-name">${escapeHtml(plan['vendor'])}</span></td>
+                    <td class="sticky-second"><span class="plan-name">${escapeHtml(plan['plan'])}</span></td>
                     <td>
-                        <a href="${escapeHtml(plan['跳转链接'])}" target="_blank" class="action-btn">
+                        <a href="${escapeHtml(plan['action'])}" target="_blank" class="action-btn">
                             跳转开通
                         </a>
                     </td>

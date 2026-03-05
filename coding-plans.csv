@@ -1,4 +1,4 @@
-厂商名称,套餐名称,跳转链接,首月价格,连续包月,连续包季,连续包年,支持模型,5小时请求数,每月总请求数,其他权益
+vendor,plan,action,firstMonthPrice,monthlyPrice,quarterlyPrice,yearlyPrice,models,hourlyRequests,monthlyRequests,benefits
 豆包,基础版,https://www.doubao.com?ref=exclusive,9.9,29,79,299,"GPT-4,Claude-3.5",100,5000,"API 访问,优先响应"
 豆包,专业版,https://www.doubao.com?ref=exclusive,19.9,59,159,599,"GPT-4,Claude-3.5,Gemini Pro",200,10000,"API 访问,优先响应,技术支持"
 豆包,企业版,https://www.doubao.com?ref=exclusive,99,299,799,2999,"全部模型",500,50000,"API 访问,优先响应,技术支持,专属客服"
