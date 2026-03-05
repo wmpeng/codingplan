@@ -352,7 +352,7 @@
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             color: var(--text-secondary);
-            padding: 10px 20px;
+            padding: 10px 16px;
             border-radius: var(--radius-lg);
             font-size: 13px;
             cursor: pointer;
@@ -838,7 +838,7 @@
             </div>
 
             <!-- 重置按钮 -->
-            <button class="reset-btn" onclick="resetAllFilters()">重置全部</button>
+            <button class="reset-btn" onclick="resetAllFilters()">重置筛选</button>
 
             <!-- 统计信息 -->
             <div class="stats-bar">
@@ -1130,21 +1130,18 @@
             selectedVendors.clear();
             document.querySelectorAll('#vendorCheckboxes input').forEach(cb => cb.checked = false);
             updateVendorCount();
-            applyFilters();
         }
 
         function resetModelFilter() {
             selectedModels.clear();
             document.querySelectorAll('#modelCheckboxes input').forEach(cb => cb.checked = false);
             updateModelCount();
-            applyFilters();
         }
 
         function resetPriceFilter() {
             priceMin.value = '';
             priceMax.value = '';
             updatePriceCount();
-            applyFilters();
         }
 
         function resetAllFilters() {
