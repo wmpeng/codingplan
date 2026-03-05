@@ -1333,8 +1333,8 @@
                     plan.hourlyRequests = parseInt(plan['hourlyRequests']) || 0;
                     plan.monthlyRequests = parseInt(plan['monthlyRequests']) || 0;
 
-                    plan.models = (plan['models'] || '').split(',').map(m => m.trim()).filter(m => m);
-                    plan.benefits = (plan['benefits'] || '').split(',').map(b => b.trim()).filter(b => b);
+                    plan.models = plan['models'].split(',').map(m => m.trim()).filter(m => m);
+                    plan.benefits = plan['benefits'].split(',').map(b => b.trim()).filter(b => b);
 
                     data.push(plan);
                 }
