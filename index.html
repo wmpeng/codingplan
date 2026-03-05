@@ -282,7 +282,9 @@
 
         .table-scroll {
             overflow-x: auto;
-            overflow-y: visible;
+            overflow-y: auto;
+            max-height: calc(100vh - 300px);
+            min-height: 400px;
             -webkit-overflow-scrolling: touch;
         }
 
