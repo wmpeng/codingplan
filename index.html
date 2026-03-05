@@ -216,73 +216,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* 价格筛选项 */
-        .price-filter-item {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .price-filter-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .price-filter-header {
-            margin-bottom: 12px;
-        }
-
-        .price-type-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-primary);
-            transition: all 0.2s;
-        }
-
-        .price-type-checkbox:hover {
-            color: var(--accent-primary);
-        }
-
-        .price-type-checkbox span {
-            font-size: 14px;
-        }
-
-        .price-type-checkbox input[type="checkbox"] {
-            appearance: none;
-            -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
-            border: 2px solid var(--border-color);
-            border-radius: 5px;
-            background: white;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.2s;
-        }
-
-        .price-type-checkbox input[type="checkbox"]:checked {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            border-color: transparent;
-        }
-
-        .price-type-checkbox input[type="checkbox"]:checked::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 6px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 2px 2px 0;
-            transform: translate(-50%, -60%) rotate(45deg);
-        }
-
         .checkbox-group {
             display: flex;
             flex-direction: column;
@@ -295,133 +228,6 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
-        }
-
-        /* 价格类型按钮组 */
-        .checkbox-button-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-
-        .price-type-btn {
-            background: var(--bg-secondary);
-            border: 2px solid var(--border-color);
-            color: var(--text-secondary);
-            padding: 10px 16px;
-            border-radius: var(--radius-md);
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-weight: 500;
-            text-align: center;
-        }
-
-        .price-type-btn:hover {
-            background: var(--bg-tertiary);
-            border-color: var(--accent-primary);
-            color: var(--text-primary);
-        }
-
-        .price-type-btn.active {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
-            border-color: var(--accent-primary);
-            color: var(--accent-primary);
-            font-weight: 600;
-        }
-
-        /* 价格范围滑块 */
-        .price-range-container {
-            padding: 8px 0;
-        }
-
-        .price-range-values {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .price-value-min,
-        .price-value-max {
-            color: var(--text-primary);
-        }
-
-        .price-range-slider {
-            position: relative;
-            height: 24px;
-        }
-
-        .slider-track {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: var(--bg-tertiary);
-            border-radius: 3px;
-            transform: translateY(-50%);
-        }
-
-        .slider-progress {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            height: 6px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-            border-radius: 3px;
-            transform: translateY(-50%);
-        }
-
-        .slider-input {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            width: 100%;
-            height: 6px;
-            -webkit-appearance: none;
-            appearance: none;
-            background: none;
-            pointer-events: none;
-            transform: translateY(-50%);
-        }
-
-        .slider-input::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border: 3px solid var(--accent-primary);
-            border-radius: 50%;
-            cursor: pointer;
-            pointer-events: auto;
-            box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
-            transition: all 0.2s;
-        }
-
-        .slider-input::-webkit-slider-thumb:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
-        }
-
-        .slider-input::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background: white;
-            border: 3px solid var(--accent-primary);
-            border-radius: 50%;
-            cursor: pointer;
-            pointer-events: auto;
-            box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
-            transition: all 0.2s;
-        }
-
-        .slider-input::-moz-range-thumb:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
         }
 
         .radio-label {
@@ -1128,102 +934,38 @@
             <!-- 价格筛选下拉 -->
             <div class="filter-dropdown">
                 <button class="filter-btn" id="priceBtn">
-                    <span>价格</span>
+                    <span id="priceBtnText">首月价格</span>
                     <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
                     <span class="count" id="priceCount" style="display: none;">●</span>
                 </button>
                 <div class="dropdown-menu" id="priceDropdown">
                     <div class="dropdown-section">
-                        <!-- 首月价格 -->
-                        <div class="price-filter-item">
-                            <div class="price-filter-header">
-                                <label class="price-type-checkbox">
-                                    <input type="checkbox" id="priceType_firstMonth" checked data-type="firstMonth">
-                                    <span>首月价格</span>
-                                </label>
-                            </div>
-                            <div class="price-range-container">
-                                <div class="price-range-values">
-                                    <span class="price-value-min" id="priceValueMin_firstMonth">¥0</span>
-                                    <span class="price-value-max" id="priceValueMax_firstMonth">¥100</span>
-                                </div>
-                                <div class="price-range-slider">
-                                    <div class="slider-track">
-                                        <div class="slider-progress" id="sliderProgress_firstMonth"></div>
-                                    </div>
-                                    <input type="range" class="slider-input slider-input-min" id="sliderMin_firstMonth" min="0" max="100" value="0" step="1" data-type="firstMonth">
-                                    <input type="range" class="slider-input slider-input-max" id="sliderMax_firstMonth" min="0" max="100" value="100" step="1" data-type="firstMonth">
-                                </div>
-                            </div>
+                        <div class="dropdown-title">价格类型</div>
+                        <div class="radio-group" id="priceTypeGroup">
+                            <label class="radio-label">
+                                <input type="radio" name="priceType" value="firstMonth" checked>
+                                <span>首月价格</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="priceType" value="monthly">
+                                <span>连续包月</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="priceType" value="quarterly">
+                                <span>连续包季</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="priceType" value="yearly">
+                                <span>连续包年</span>
+                            </label>
                         </div>
-
-                        <!-- 连续包月 -->
-                        <div class="price-filter-item">
-                            <div class="price-filter-header">
-                                <label class="price-type-checkbox">
-                                    <input type="checkbox" id="priceType_monthly" data-type="monthly">
-                                    <span>连续包月</span>
-                                </label>
-                            </div>
-                            <div class="price-range-container">
-                                <div class="price-range-values">
-                                    <span class="price-value-min" id="priceValueMin_monthly">¥0</span>
-                                    <span class="price-value-max" id="priceValueMax_monthly">¥300</span>
-                                </div>
-                                <div class="price-range-slider">
-                                    <div class="slider-track">
-                                        <div class="slider-progress" id="sliderProgress_monthly"></div>
-                                    </div>
-                                    <input type="range" class="slider-input slider-input-min" id="sliderMin_monthly" min="0" max="300" value="0" step="1" data-type="monthly">
-                                    <input type="range" class="slider-input slider-input-max" id="sliderMax_monthly" min="0" max="300" value="300" step="1" data-type="monthly">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 连续包季 -->
-                        <div class="price-filter-item">
-                            <div class="price-filter-header">
-                                <label class="price-type-checkbox">
-                                    <input type="checkbox" id="priceType_quarterly" data-type="quarterly">
-                                    <span>连续包季</span>
-                                </label>
-                            </div>
-                            <div class="price-range-container">
-                                <div class="price-range-values">
-                                    <span class="price-value-min" id="priceValueMin_quarterly">¥0</span>
-                                    <span class="price-value-max" id="priceValueMax_quarterly">¥500</span>
-                                </div>
-                                <div class="price-range-slider">
-                                    <div class="slider-track">
-                                        <div class="slider-progress" id="sliderProgress_quarterly"></div>
-                                    </div>
-                                    <input type="range" class="slider-input slider-input-min" id="sliderMin_quarterly" min="0" max="500" value="0" step="1" data-type="quarterly">
-                                    <input type="range" class="slider-input slider-input-max" id="sliderMax_quarterly" min="0" max="500" value="500" step="1" data-type="quarterly">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 连续包年 -->
-                        <div class="price-filter-item">
-                            <div class="price-filter-header">
-                                <label class="price-type-checkbox">
-                                    <input type="checkbox" id="priceType_yearly" data-type="yearly">
-                                    <span>连续包年</span>
-                                </label>
-                            </div>
-                            <div class="price-range-container">
-                                <div class="price-range-values">
-                                    <span class="price-value-min" id="priceValueMin_yearly">¥0</span>
-                                    <span class="price-value-max" id="priceValueMax_yearly">¥1000</span>
-                                </div>
-                                <div class="price-range-slider">
-                                    <div class="slider-track">
-                                        <div class="slider-progress" id="sliderProgress_yearly"></div>
-                                    </div>
-                                    <input type="range" class="slider-input slider-input-min" id="sliderMin_yearly" min="0" max="1000" value="0" step="1" data-type="yearly">
-                                    <input type="range" class="slider-input slider-input-max" id="sliderMax_yearly" min="0" max="1000" value="1000" step="1" data-type="yearly">
-                                </div>
-                            </div>
+                    </div>
+                    <div class="dropdown-section">
+                        <div class="dropdown-title">价格区间 (元)</div>
+                        <div class="price-inputs">
+                            <input type="number" id="priceMin" class="price-input" placeholder="最低" min="0" step="0.1">
+                            <span class="price-separator">—</span>
+                            <input type="number" id="priceMax" class="price-input" placeholder="最高" min="0" step="0.1">
                         </div>
                     </div>
                     <div class="dropdown-actions">
@@ -1304,27 +1046,22 @@
         let currentSort = { column: null, direction: 'asc' };
         let selectedVendors = new Set();
         let selectedModels = new Set();
-        let selectedPriceTypes = new Set(['firstMonth']); // 默认筛选首月价格，支持多选
-
-        // 每个价格类型的独立价格范围
-        let priceRanges = {
-            firstMonth: { min: 0, max: 100, enabled: true },
-            monthly: { min: 0, max: 300, enabled: false },
-            quarterly: { min: 0, max: 500, enabled: false },
-            yearly: { min: 0, max: 1000, enabled: false }
-        };
-
+        let selectedPriceType = 'firstMonth'; // 默认筛选首月价格
         let activeDropdown = null;
 
         // DOM 元素
         const vendorBtn = document.getElementById('vendorBtn');
         const priceBtn = document.getElementById('priceBtn');
+        const priceBtnText = document.getElementById('priceBtnText');
         const modelBtn = document.getElementById('modelBtn');
         const vendorDropdown = document.getElementById('vendorDropdown');
         const priceDropdown = document.getElementById('priceDropdown');
         const modelDropdown = document.getElementById('modelDropdown');
         const vendorCheckboxes = document.getElementById('vendorCheckboxes');
         const modelCheckboxes = document.getElementById('modelCheckboxes');
+        const priceTypeGroup = document.getElementById('priceTypeGroup');
+        const priceMin = document.getElementById('priceMin');
+        const priceMax = document.getElementById('priceMax');
         const vendorCount = document.getElementById('vendorCount');
         const modelCount = document.getElementById('modelCount');
         const priceCount = document.getElementById('priceCount');
@@ -1458,56 +1195,23 @@
             });
         });
 
-        // 价格类型checkbox选择监听
-        document.querySelectorAll('.price-type-checkbox').forEach(checkbox => {
-            checkbox.addEventListener('change', (e) => {
-                const type = e.target.dataset.type;
-                priceRanges[type].enabled = e.target.checked;
-                updatePriceCount();
+        // 价格类型选择监听
+        document.querySelectorAll('#priceTypeGroup input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                selectedPriceType = e.target.value;
+                updatePriceBtnText();
             });
         });
 
-        // 双滑块逻辑 - 为每个价格类型独立更新
-        function updateSlider(type) {
-            const sliderMin = document.getElementById(`sliderMin_${type}`);
-            const sliderMax = document.getElementById(`sliderMax_${type}`);
-            const sliderProgress = document.getElementById(`sliderProgress_${type}`);
-            const priceValueMin = document.getElementById(`priceValueMin_${type}`);
-            const priceValueMax = document.getElementById(`priceValueMax_${type}`);
-            const sliderContainer = sliderMin.closest('.price-range-slider');
-            const max = parseInt(sliderContainer.dataset.max);
-
-            let minVal = parseInt(sliderMin.value);
-            let maxVal = parseInt(sliderMax.value);
-
-            if (minVal > maxVal) {
-                [minVal, maxVal] = [maxVal, minVal];
-            }
-
-            sliderMin.value = minVal;
-            sliderMax.value = maxVal;
-
-            // 更新priceRanges
-            priceRanges[type].min = minVal;
-            priceRanges[type].max = maxVal;
-
-            const percentMin = (minVal / max) * 100;
-            const percentMax = (maxVal / max) * 100;
-
-            sliderProgress.style.left = `${percentMin}%`;
-            sliderProgress.style.width = `${percentMax - percentMin}%`;
-
-            priceValueMin.textContent = `¥${minVal}`;
-            priceValueMax.textContent = `¥${maxVal}`;
+        function updatePriceBtnText() {
+            const textMap = {
+                'firstMonth': '首月价格',
+                'monthly': '连续包月',
+                'quarterly': '连续包季',
+                'yearly': '连续包年'
+            };
+            priceBtnText.textContent = textMap[selectedPriceType];
         }
-
-        // 为所有价格类型的滑块添加监听器
-        ['firstMonth', 'monthly', 'quarterly', 'yearly'].forEach(type => {
-            const sliderMin = document.getElementById(`sliderMin_${type}`);
-            const sliderMax = document.getElementById(`sliderMax_${type}`);
-            sliderMin.addEventListener('input', () => updateSlider(type));
-            sliderMax.addEventListener('input', () => updateSlider(type));
-        });
 
         // 更新选择
         function updateVendorSelection() {
@@ -1553,10 +1257,7 @@
         }
 
         function updatePriceCount() {
-            const enabledTypes = Object.keys(priceRanges).filter(type => priceRanges[type].enabled);
-
-            if (enabledTypes.length > 0) {
-                priceCount.textContent = enabledTypes.length;
+            if (priceMin.value || priceMax.value) {
                 priceCount.style.display = 'inline-block';
                 priceBtn.classList.add('active');
             } else {
@@ -1567,39 +1268,33 @@
 
         // 应用筛选
         function applyFilters() {
+            const minPrice = parseFloat(priceMin.value) || 0;
+            const maxPrice = parseFloat(priceMax.value) || Infinity;
+
             filteredPlans = allPlans.filter(plan => {
-                // 厂商筛选
                 if (selectedVendors.size > 0 && !selectedVendors.has(plan['厂商名称'])) {
                     return false;
                 }
 
-                // 价格筛选 - 所有启用的价格类型都必须满足
-                const enabledTypes = Object.keys(priceRanges).filter(type => priceRanges[type].enabled);
+                // 根据选中的价格类型进行筛选
+                let priceToFilter = 0;
+                switch (selectedPriceType) {
+                    case 'firstMonth':
+                        priceToFilter = plan.firstMonthPrice;
+                        break;
+                    case 'monthly':
+                        priceToFilter = plan.monthlyPrice;
+                        break;
+                    case 'quarterly':
+                        priceToFilter = plan.quarterlyPrice;
+                        break;
+                    case 'yearly':
+                        priceToFilter = plan.yearlyPrice;
+                        break;
+                }
 
-                if (enabledTypes.length > 0) {
-                    // 对于每个启用的价格类型，套餐价格必须在对应范围内
-                    for (const type of enabledTypes) {
-                        let priceToFilter = 0;
-                        switch (type) {
-                            case 'firstMonth':
-                                priceToFilter = plan.firstMonthPrice;
-                                break;
-                            case 'monthly':
-                                priceToFilter = plan.monthlyPrice;
-                                break;
-                            case 'quarterly':
-                                priceToFilter = plan.quarterlyPrice;
-                                break;
-                            case 'yearly':
-                                priceToFilter = plan.yearlyPrice;
-                                break;
-                        }
-
-                        const { min, max } = priceRanges[type];
-                        if (priceToFilter < min || priceToFilter > max) {
-                            return false;
-                        }
-                    }
+                if (priceToFilter < minPrice || priceToFilter > maxPrice) {
+                    return false;
                 }
 
                 if (selectedModels.size > 0) {
@@ -1640,28 +1335,11 @@
         }
 
         function resetPriceFilter() {
-            // 重置所有价格类型的滑块和checkbox
-            priceRanges = {
-                firstMonth: { min: 0, max: 100, enabled: true },
-                monthly: { min: 0, max: 300, enabled: false },
-                quarterly: { min: 0, max: 500, enabled: false },
-                yearly: { min: 0, max: 1000, enabled: false }
-            };
-
-            // 更新所有滑块的值
-            ['firstMonth', 'monthly', 'quarterly', 'yearly'].forEach(type => {
-                const sliderMin = document.getElementById(`sliderMin_${type}`);
-                const sliderMax = document.getElementById(`sliderMax_${type}`);
-                const checkbox = document.getElementById(`priceType_${type}`);
-
-                const range = priceRanges[type];
-                sliderMin.value = range.min;
-                sliderMax.value = range.max;
-                checkbox.checked = range.enabled;
-
-                updateSlider(type);
-            });
-
+            priceMin.value = '';
+            priceMax.value = '';
+            selectedPriceType = 'firstMonth';
+            document.querySelector('#priceTypeGroup input[value="firstMonth"]').checked = true;
+            updatePriceBtnText();
             updatePriceCount();
         }
 
@@ -1872,11 +1550,6 @@
 
                 initFilters();
                 applyFilters();
-
-                // 初始化滑块
-                ['firstMonth', 'monthly', 'quarterly', 'yearly'].forEach(type => {
-                    updateSlider(type);
-                });
 
                 console.log(`成功加载 ${allPlans.length} 条套餐数据`);
             } catch (error) {
