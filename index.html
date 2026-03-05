@@ -223,6 +223,41 @@
             overflow-y: auto;
         }
 
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .radio-label:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--accent-primary);
+        }
+
+        .radio-label input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: var(--accent-primary);
+        }
+
+        .radio-label span {
+            font-size: 13px;
+            color: var(--text-primary);
+        }
+
         .checkbox-item {
             display: flex;
             align-items: center;
@@ -551,22 +586,36 @@
 
         /* 跳转按钮 */
         .action-btn {
-            display: inline-block;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(96, 165, 250, 0.12);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            color: #3b82f6;
             text-decoration: none;
-            padding: 8px 20px;
+            padding: 8px 16px;
             border-radius: var(--radius-md);
-            font-weight: 400;
+            font-weight: 500;
             font-size: 12px;
             transition: all 0.2s;
             white-space: nowrap;
         }
 
         .action-btn:hover {
-            background: var(--border-color);
-            color: var(--text-primary);
+            background: rgba(96, 165, 250, 0.18);
+            border-color: rgba(96, 165, 250, 0.5);
+            color: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        .action-btn::after {
+            content: '→';
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        .action-btn:hover::after {
+            transform: translateX(3px);
         }
 
         /* 模型标签 */
@@ -717,6 +766,8 @@
             .filter-btn {
                 padding: 8px 12px;
                 font-size: 12px;
+                min-width: 90px;
+                flex: 1 1 auto;
             }
 
             .dropdown-menu {
@@ -751,6 +802,7 @@
             .filter-btn {
                 padding: 7px 10px;
                 font-size: 11px;
+                min-width: 80px;
             }
 
             th, td {
@@ -806,11 +858,32 @@
             <!-- 价格筛选下拉 -->
             <div class="filter-dropdown">
                 <button class="filter-btn" id="priceBtn">
-                    <span>首月价格</span>
+                    <span id="priceBtnText">首月价格</span>
                     <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
                     <span class="count" id="priceCount" style="display: none;">●</span>
                 </button>
                 <div class="dropdown-menu" id="priceDropdown">
+                    <div class="dropdown-section">
+                        <div class="dropdown-title">价格类型</div>
+                        <div class="radio-group" id="priceTypeGroup">
+                            <label class="radio-label">
+                                <input type="radio" name="priceType" value="firstMonth" checked>
+                                <span>首月价格</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="priceType" value="monthly">
+                                <span>连续包月</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="priceType" value="quarterly">
+                                <span>连续包季</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="priceType" value="yearly">
+                                <span>连续包年</span>
+                            </label>
+                        </div>
+                    </div>
                     <div class="dropdown-section">
                         <div class="dropdown-title">价格区间 (元)</div>
                         <div class="price-inputs">
@@ -897,17 +970,20 @@
         let currentSort = { column: null, direction: 'asc' };
         let selectedVendors = new Set();
         let selectedModels = new Set();
+        let selectedPriceType = 'firstMonth'; // 默认筛选首月价格
         let activeDropdown = null;
 
         // DOM 元素
         const vendorBtn = document.getElementById('vendorBtn');
         const priceBtn = document.getElementById('priceBtn');
+        const priceBtnText = document.getElementById('priceBtnText');
         const modelBtn = document.getElementById('modelBtn');
         const vendorDropdown = document.getElementById('vendorDropdown');
         const priceDropdown = document.getElementById('priceDropdown');
         const modelDropdown = document.getElementById('modelDropdown');
         const vendorCheckboxes = document.getElementById('vendorCheckboxes');
         const modelCheckboxes = document.getElementById('modelCheckboxes');
+        const priceTypeGroup = document.getElementById('priceTypeGroup');
         const priceMin = document.getElementById('priceMin');
         const priceMax = document.getElementById('priceMax');
         const vendorCount = document.getElementById('vendorCount');
@@ -1043,6 +1119,24 @@
             });
         });
 
+        // 价格类型选择监听
+        document.querySelectorAll('#priceTypeGroup input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                selectedPriceType = e.target.value;
+                updatePriceBtnText();
+            });
+        });
+
+        function updatePriceBtnText() {
+            const textMap = {
+                'firstMonth': '首月价格',
+                'monthly': '连续包月',
+                'quarterly': '连续包季',
+                'yearly': '连续包年'
+            };
+            priceBtnText.textContent = textMap[selectedPriceType];
+        }
+
         // 更新选择
         function updateVendorSelection() {
             selectedVendors.clear();
@@ -1106,7 +1200,24 @@
                     return false;
                 }
 
-                if (plan.firstMonthPrice < minPrice || plan.firstMonthPrice > maxPrice) {
+                // 根据选中的价格类型进行筛选
+                let priceToFilter = 0;
+                switch (selectedPriceType) {
+                    case 'firstMonth':
+                        priceToFilter = plan.firstMonthPrice;
+                        break;
+                    case 'monthly':
+                        priceToFilter = plan.monthlyPrice;
+                        break;
+                    case 'quarterly':
+                        priceToFilter = plan.quarterlyPrice;
+                        break;
+                    case 'yearly':
+                        priceToFilter = plan.yearlyPrice;
+                        break;
+                }
+
+                if (priceToFilter < minPrice || priceToFilter > maxPrice) {
                     return false;
                 }
 
@@ -1150,6 +1261,9 @@
         function resetPriceFilter() {
             priceMin.value = '';
             priceMax.value = '';
+            selectedPriceType = 'firstMonth';
+            document.querySelector('#priceTypeGroup input[value="firstMonth"]').checked = true;
+            updatePriceBtnText();
             updatePriceCount();
         }
 
@@ -1284,15 +1398,15 @@
                             专属折扣开通
                         </a>
                     </td>
-                    <td><span class="price">¥${plan.firstMonthPrice.toFixed(1)}</span></td>
-                    <td><span class="price-normal">¥${plan.monthlyPrice.toFixed(1)}</span></td>
-                    <td><span class="price-normal">¥${plan.quarterlyPrice.toFixed(1)}</span></td>
-                    <td><span class="price-normal">¥${plan.yearlyPrice.toFixed(1)}</span></td>
+                    <td><span class="price">¥${plan.firstMonthPrice.toFixed(1)}/首月</span></td>
+                    <td><span class="price-normal">¥${plan.monthlyPrice.toFixed(1)}/月</span></td>
+                    <td><span class="price-normal">¥${plan.quarterlyPrice.toFixed(1)}/季</span></td>
+                    <td><span class="price-normal">¥${plan.yearlyPrice.toFixed(1)}/年</span></td>
                     <td>
                         ${plan.models.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
                     </td>
-                    <td><span class="request-count">${plan.hourlyRequests.toLocaleString()}</span></td>
-                    <td><span class="request-count">${plan.monthlyRequests.toLocaleString()}</span></td>
+                    <td><span class="request-count">${plan.hourlyRequests.toLocaleString()}/5小时</span></td>
+                    <td><span class="request-count">${plan.monthlyRequests.toLocaleString()}/月</span></td>
                     <td>
                         ${plan.benefits.map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}
                     </td>
