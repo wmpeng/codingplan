@@ -543,43 +543,49 @@
             font-size: 15px;
         }
 
+        .price-normal {
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 15px;
+        }
+
         /* 跳转按钮 */
         .action-btn {
             display: inline-block;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: white;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
             text-decoration: none;
             padding: 8px 20px;
             border-radius: var(--radius-md);
-            font-weight: 600;
+            font-weight: 500;
             font-size: 12px;
             transition: all 0.2s;
             white-space: nowrap;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
         }
 
         .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
+            background: var(--border-color);
+            color: var(--text-primary);
         }
 
         /* 模型标签 */
         .model-tag {
             display: inline-block;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08));
-            color: var(--accent-primary);
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
             padding: 4px 10px;
             border-radius: var(--radius-sm);
             font-size: 11px;
             margin-right: 6px;
             margin-bottom: 6px;
-            font-weight: 600;
-            border: 1px solid rgba(99, 102, 241, 0.15);
+            font-weight: 500;
+            border: 1px solid var(--border-color);
         }
 
         /* 请求数 */
         .request-count {
-            color: var(--accent-success);
+            color: var(--text-primary);
             font-weight: 500;
             font-size: 14px;
         }
@@ -587,15 +593,15 @@
         /* 其他权益 */
         .benefit {
             display: inline-block;
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(251, 191, 36, 0.08));
-            color: var(--accent-warning);
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(251, 146, 60, 0.08));
+            color: #f97316;
             padding: 4px 10px;
             border-radius: var(--radius-sm);
             font-size: 11px;
             margin-right: 6px;
             margin-bottom: 6px;
-            font-weight: 600;
-            border: 1px solid rgba(245, 158, 11, 0.15);
+            font-weight: 500;
+            border: 1px solid rgba(249, 115, 22, 0.15);
         }
 
         /* 空状态 */
@@ -857,7 +863,7 @@
                         <tr>
                             <th class="sortable sticky-first" data-column="vendor">厂商</th>
                             <th class="sortable sticky-second" data-column="plan">套餐</th>
-                            <th class="sortable" data-column="action">操作</th>
+                            <th class="sortable" data-column="action">跳转链接</th>
                             <th class="sortable" data-column="firstMonthPrice">首月价格</th>
                             <th class="sortable" data-column="monthlyPrice">连续包月</th>
                             <th class="sortable" data-column="quarterlyPrice">连续包季</th>
@@ -1279,9 +1285,9 @@
                         </a>
                     </td>
                     <td><span class="price">¥${plan.firstMonthPrice.toFixed(1)}</span></td>
-                    <td><span class="price">¥${plan.monthlyPrice.toFixed(1)}</span></td>
-                    <td><span class="price">¥${plan.quarterlyPrice.toFixed(1)}</span></td>
-                    <td><span class="price">¥${plan.yearlyPrice.toFixed(1)}</span></td>
+                    <td><span class="price-normal">¥${plan.monthlyPrice.toFixed(1)}</span></td>
+                    <td><span class="price-normal">¥${plan.quarterlyPrice.toFixed(1)}</span></td>
+                    <td><span class="price-normal">¥${plan.yearlyPrice.toFixed(1)}</span></td>
                     <td>
                         ${plan.models.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
                     </td>
