@@ -1313,7 +1313,6 @@
             quarterly: { min: 0, max: 500, enabled: false },
             yearly: { min: 0, max: 1000, enabled: false }
         };
-        };
 
         let activeDropdown = null;
 
@@ -1875,7 +1874,9 @@
                 applyFilters();
 
                 // 初始化滑块
-                updateSlider();
+                ['firstMonth', 'monthly', 'quarterly', 'yearly'].forEach(type => {
+                    updateSlider(type);
+                });
 
                 console.log(`成功加载 ${allPlans.length} 条套餐数据`);
             } catch (error) {
