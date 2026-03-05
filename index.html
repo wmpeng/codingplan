@@ -1429,7 +1429,18 @@
                 let direction = 'asc';
 
                 if (currentSort.column === column) {
-                    direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+                    // 点击同一列，在升序、降序、取消之间循环
+                    if (currentSort.direction === 'asc') {
+                        direction = 'desc'; // 升序 -> 降序
+                    } else if (currentSort.direction === 'desc') {
+                        // 降序 -> 取消
+                        currentSort = { column: null, direction: 'asc' };
+                        document.querySelectorAll('th').forEach(th => {
+                            th.classList.remove('sort-asc', 'sort-desc');
+                        });
+                        renderTable();
+                        return; // 提前返回，不调用 sortData
+                    }
                 }
 
                 sortData(column, direction);
