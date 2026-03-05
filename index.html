@@ -1197,6 +1197,11 @@
             quarterly: { min: null, max: null },
             yearly: { min: null, max: null }
         };
+
+        // 检查价格筛选是否已应用
+        function isPriceFilterApplied(priceType) {
+            return priceFilters[priceType].min !== null && priceFilters[priceType].max !== null;
+        }
         let activeDropdown = null;
 
         // DOM 元素
@@ -1505,35 +1510,43 @@
                 }
 
                 // 首月价格筛选
-                if (priceFilters.firstMonth.min > 0 && plan.firstMonthPrice < priceFilters.firstMonth.min) {
-                    return false;
-                }
-                if (priceFilters.firstMonth.max < priceSliders.firstMonth.maxValue && plan.firstMonthPrice > priceFilters.firstMonth.max) {
-                    return false;
+                if (isPriceFilterApplied('firstMonth')) {
+                    if (priceFilters.firstMonth.min > 0 && plan.firstMonthPrice < priceFilters.firstMonth.min) {
+                        return false;
+                    }
+                    if (priceFilters.firstMonth.max < priceSliders.firstMonth.maxValue && plan.firstMonthPrice > priceFilters.firstMonth.max) {
+                        return false;
+                    }
                 }
 
                 // 包月价格筛选
-                if (priceFilters.monthly.min > 0 && plan.monthlyPrice < priceFilters.monthly.min) {
-                    return false;
-                }
-                if (priceFilters.monthly.max < priceSliders.monthly.maxValue && plan.monthlyPrice > priceFilters.monthly.max) {
-                    return false;
+                if (isPriceFilterApplied('monthly')) {
+                    if (priceFilters.monthly.min > 0 && plan.monthlyPrice < priceFilters.monthly.min) {
+                        return false;
+                    }
+                    if (priceFilters.monthly.max < priceSliders.monthly.maxValue && plan.monthlyPrice > priceFilters.monthly.max) {
+                        return false;
+                    }
                 }
 
                 // 包季价格筛选
-                if (priceFilters.quarterly.min > 0 && plan.quarterlyPrice < priceFilters.quarterly.min) {
-                    return false;
-                }
-                if (priceFilters.quarterly.max < priceSliders.quarterly.maxValue && plan.quarterlyPrice > priceFilters.quarterly.max) {
-                    return false;
+                if (isPriceFilterApplied('quarterly')) {
+                    if (priceFilters.quarterly.min > 0 && plan.quarterlyPrice < priceFilters.quarterly.min) {
+                        return false;
+                    }
+                    if (priceFilters.quarterly.max < priceSliders.quarterly.maxValue && plan.quarterlyPrice > priceFilters.quarterly.max) {
+                        return false;
+                    }
                 }
 
                 // 包年价格筛选
-                if (priceFilters.yearly.min > 0 && plan.yearlyPrice < priceFilters.yearly.min) {
-                    return false;
-                }
-                if (priceFilters.yearly.max < priceSliders.yearly.maxValue && plan.yearlyPrice > priceFilters.yearly.max) {
-                    return false;
+                if (isPriceFilterApplied('yearly')) {
+                    if (priceFilters.yearly.min > 0 && plan.yearlyPrice < priceFilters.yearly.min) {
+                        return false;
+                    }
+                    if (priceFilters.yearly.max < priceSliders.yearly.maxValue && plan.yearlyPrice > priceFilters.yearly.max) {
+                        return false;
+                    }
                 }
 
                 return true;
