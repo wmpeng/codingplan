@@ -788,6 +788,13 @@
             border: 1px solid rgba(249, 115, 22, 0.15);
         }
 
+        /* 备注 */
+        .note {
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 400;
+        }
+
         /* 空状态 */
         .empty-state {
             text-align: center;
@@ -1215,6 +1222,7 @@
                             <th class="sortable" data-column="hourlyRequests">5小时请求数</th>
                             <th class="sortable" data-column="monthlyRequests">每月总请求数</th>
                             <th class="sortable" data-column="benefits">其他权益</th>
+                            <th class="sortable" data-column="note">备注</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
@@ -1914,6 +1922,10 @@
                         valueA = a['其他权益'];
                         valueB = b['其他权益'];
                         break;
+                    case 'note':
+                        valueA = a['note'];
+                        valueB = b['note'];
+                        break;
                     default:
                         return 0;
                 }
@@ -1961,7 +1973,7 @@
             if (filteredPlans.length === 0) {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="11">
+                        <td colspan="12">
                             <div class="empty-state">
                                 <div class="empty-state-icon">📭</div>
                                 <div class="empty-state-text">没有找到符合条件的套餐</div>
@@ -1994,6 +2006,7 @@
                     <td>
                         ${plan.benefits.map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}
                     </td>
+                    <td><span class="note">${escapeHtml(plan['note'] || '')}</span></td>
                 </tr>
             `).join('');
 
@@ -2089,7 +2102,7 @@
             try {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="11">
+                        <td colspan="12">
                             <div class="loading">加载数据中</div>
                         </td>
                     </tr>
@@ -2112,7 +2125,7 @@
                 console.error('加载数据失败:', error);
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="11">
+                        <td colspan="12">
                             <div class="empty-state">
                                 <div class="empty-state-icon">❌</div>
                                 <div class="empty-state-text">数据加载失败</div>
