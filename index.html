@@ -40,7 +40,7 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
-            padding: 48px 64px;
+            padding: 48px 96px;
             font-size: 14px;
         }
 
@@ -762,21 +762,32 @@
         }
 
         /* 响应式 */
-        /* 中等屏幕（768px - 1200px） */
-        @media (max-width: 1200px) {
+        /* 大屏幕（1200px - 1600px） */
+        @media (max-width: 1600px) {
             body {
-                padding: 48px 48px;
+                padding: 48px 80px;
             }
 
             .container {
-                max-width: 1200px;
+                max-width: 1280px;
+            }
+        }
+
+        /* 中等屏幕（768px - 1200px） */
+        @media (max-width: 1200px) {
+            body {
+                padding: 40px 40px;
+            }
+
+            .container {
+                max-width: 1100px;
             }
         }
 
         /* 平板/小屏幕（480px - 768px） */
         @media (max-width: 768px) {
             body {
-                padding: 32px 32px;
+                padding: 32px 24px;
             }
 
             .container {
@@ -803,7 +814,7 @@
 
             .dropdown-menu {
                 min-width: 240px;
-                max-width: calc(100vw - 80px);
+                max-width: calc(100vw - 72px);
             }
 
             th, td {
@@ -824,7 +835,7 @@
         /* 手机屏幕（<480px） */
         @media (max-width: 480px) {
             body {
-                padding: 24px 20px;
+                padding: 24px 16px;
             }
 
             .header h1 {
