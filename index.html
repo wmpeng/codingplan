@@ -282,9 +282,7 @@
 
         .table-scroll {
             overflow-x: auto;
-            overflow-y: auto;
-            max-height: calc(100vh - 300px);
-            min-height: 400px;
+            overflow-y: visible;
             -webkit-overflow-scrolling: touch;
         }
 
@@ -310,9 +308,8 @@
             user-select: none;
             transition: all 0.2s;
             border-bottom: 2px solid #e0e0e0;
-            position: sticky;
-            top: 0;
-            z-index: 20;
+            position: relative;
+            z-index: 10;
         }
 
         th:hover {
@@ -343,7 +340,7 @@
         th.sticky-first,
         th.sticky-second {
             position: sticky;
-            z-index: 30;
+            z-index: 20;
             background: #fafafa;
         }
 
@@ -374,7 +371,7 @@
         td.sticky-first,
         td.sticky-second {
             position: sticky;
-            z-index: 10;
+            z-index: 5;
             background: white;
         }
 
