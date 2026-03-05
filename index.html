@@ -40,7 +40,7 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
-            padding: 32px 24px;
+            padding: 48px 32px;
             font-size: 14px;
         }
 
@@ -574,8 +574,14 @@
 
         /* 价格 */
         .price {
+            color: #00a855;
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .price-monthly {
             color: var(--accent-primary);
-            font-weight: 400;
+            font-weight: 500;
             font-size: 13px;
         }
 
@@ -749,7 +755,7 @@
         /* 响应式 */
         @media (max-width: 768px) {
             body {
-                padding: 20px 16px;
+                padding: 32px 24px;
             }
 
             .header h1 {
@@ -792,7 +798,7 @@
 
         @media (max-width: 480px) {
             body {
-                padding: 16px 12px;
+                padding: 24px 16px;
             }
 
             .header h1 {
@@ -1399,7 +1405,7 @@
                         </a>
                     </td>
                     <td><span class="price">¥${plan.firstMonthPrice.toFixed(1)}/首月</span></td>
-                    <td><span class="price-normal">¥${plan.monthlyPrice.toFixed(1)}/月</span></td>
+                    <td><span class="price-monthly">¥${plan.monthlyPrice.toFixed(1)}/月</span></td>
                     <td><span class="price-normal">¥${plan.quarterlyPrice.toFixed(1)}/季</span></td>
                     <td><span class="price-normal">¥${plan.yearlyPrice.toFixed(1)}/年</span></td>
                     <td>
