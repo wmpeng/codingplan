@@ -1561,7 +1561,8 @@
         function getMaxPrice(priceType) {
             if (allPlans.length === 0) return 1000;
             const priceKey = priceType + 'Price';
-            return Math.max(...allPlans.map(plan => plan[priceKey]));
+            const maxPrice = Math.max(...allPlans.map(plan => plan[priceKey]));
+            return Math.ceil(maxPrice); // 向上取整
         }
 
         // 初始化价格滑块
@@ -1588,8 +1589,8 @@
         // 更新滑块视觉效果
         function updateSliderVisuals(priceType, minPrice, maxPrice) {
             const slider = priceSliders[priceType];
-            const minValue = Math.max(0, minPrice);
-            const maxValue = Math.min(slider.maxValue, maxPrice);
+            const minValue = Math.max(0, Math.round(minPrice));
+            const maxValue = Math.min(slider.maxValue, Math.round(maxPrice));
 
             const minPercent = (minValue / slider.maxValue) * 100;
             const maxPercent = (maxValue / slider.maxValue) * 100;
@@ -1606,8 +1607,8 @@
                 range.style.left = `${minPercent}%`;
                 range.style.width = `${maxPercent - minPercent}%`;
             }
-            if (minValueEl) minValueEl.textContent = `¥${minValue.toFixed(1)}`;
-            if (maxValueEl) maxValueEl.textContent = `¥${maxValue.toFixed(1)}`;
+            if (minValueEl) minValueEl.textContent = `¥${minValue}`;
+            if (maxValueEl) maxValueEl.textContent = `¥${maxValue}`;
 
             slider.min = minValue;
             slider.max = maxValue;
