@@ -13,8 +13,8 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
+            background: #f5f7fa;
+            color: #333;
             line-height: 1.6;
             padding: 20px;
         }
@@ -30,7 +30,7 @@
 
         .header h1 {
             font-size: 1.5rem;
-            color: #ffffff;
+            color: #1a1a1a;
             margin-bottom: 8px;
             font-weight: 500;
         }
@@ -61,9 +61,9 @@
         }
 
         .filter-btn {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            color: #b0b0b0;
+            background: white;
+            border: 1px solid #e0e0e0;
+            color: #555;
             padding: 8px 14px;
             border-radius: 6px;
             font-size: 0.85rem;
@@ -76,13 +76,13 @@
         }
 
         .filter-btn:hover {
-            background: #252525;
-            border-color: #444;
-            color: #e0e0e0;
+            background: #fafafa;
+            border-color: #d0d0d0;
+            color: #333;
         }
 
         .filter-btn.active {
-            background: #252525;
+            background: #fafafa;
             border-color: #ff6b6b;
             color: #ff6b6b;
         }
@@ -111,13 +111,13 @@
             position: absolute;
             top: calc(100% + 6px);
             left: 0;
-            background: #1a1a1a;
-            border: 1px solid #333;
+            background: white;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
             padding: 12px;
             min-width: 240px;
             max-width: 320px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             display: none;
         }
@@ -160,7 +160,7 @@
         }
 
         .checkbox-item:hover {
-            background: #252525;
+            background: #f5f5f5;
         }
 
         .checkbox-item input {
@@ -172,7 +172,7 @@
 
         .checkbox-item label {
             font-size: 0.85rem;
-            color: #b0b0b0;
+            color: #555;
             cursor: pointer;
             flex: 1;
         }
@@ -185,9 +185,9 @@
 
         .price-input {
             width: 100%;
-            background: #252525;
-            border: 1px solid #333;
-            color: #e0e0e0;
+            background: white;
+            border: 1px solid #e0e0e0;
+            color: #333;
             padding: 8px 10px;
             border-radius: 4px;
             font-size: 0.85rem;
@@ -199,7 +199,7 @@
         }
 
         .price-separator {
-            color: #666;
+            color: #999;
             font-size: 0.85rem;
         }
 
@@ -208,7 +208,7 @@
             gap: 8px;
             margin-top: 12px;
             padding-top: 12px;
-            border-top: 1px solid #333;
+            border-top: 1px solid #e0e0e0;
         }
 
         .dropdown-btn {
@@ -231,19 +231,19 @@
         }
 
         .dropdown-btn.secondary {
-            background: #252525;
-            color: #b0b0b0;
-            border: 1px solid #333;
+            background: #f5f5f5;
+            color: #666;
+            border: 1px solid #e0e0e0;
         }
 
         .dropdown-btn.secondary:hover {
-            background: #303030;
+            background: #eeeeee;
         }
 
         /* 重置按钮 */
         .reset-btn {
-            background: #252525;
-            border: 1px solid #333;
+            background: white;
+            border: 1px solid #e0e0e0;
             color: #888;
             padding: 8px 16px;
             border-radius: 6px;
@@ -253,13 +253,13 @@
         }
 
         .reset-btn:hover {
-            background: #303030;
-            color: #e0e0e0;
+            background: #f5f5f5;
+            color: #333;
         }
 
         /* 统计信息 */
         .stats-bar {
-            color: #888;
+            color: #666;
             font-size: 0.85rem;
             margin-bottom: 16px;
             display: flex;
@@ -268,14 +268,14 @@
         }
 
         .stats-bar strong {
-            color: #e0e0e0;
+            color: #333;
             font-weight: 500;
         }
 
         /* 表格容器 */
         .table-wrapper {
-            background: #0d0d0d;
-            border: 1px solid #222;
+            background: white;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
             overflow: hidden;
         }
@@ -288,12 +288,13 @@
 
         table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
             min-width: 1200px;
         }
 
         thead {
-            background: #141414;
+            background: #fafafa;
         }
 
         th {
@@ -301,17 +302,19 @@
             text-align: left;
             font-weight: 500;
             font-size: 0.8rem;
-            color: #888;
+            color: #666;
             white-space: nowrap;
             cursor: pointer;
             user-select: none;
             transition: all 0.2s;
-            border-bottom: 1px solid #222;
+            border-bottom: 2px solid #e0e0e0;
+            position: relative;
+            z-index: 10;
         }
 
         th:hover {
-            background: #1a1a1a;
-            color: #e0e0e0;
+            background: #f0f0f0;
+            color: #333;
         }
 
         th.sortable::after {
@@ -333,22 +336,64 @@
             font-size: 0.75rem;
         }
 
+        /* 冻结列样式 */
+        th.sticky-first,
+        th.sticky-second {
+            position: sticky;
+            z-index: 20;
+            background: #fafafa;
+        }
+
+        th.sticky-first {
+            left: 0;
+            border-right: 2px solid #e0e0e0;
+        }
+
+        th.sticky-second {
+            left: 0;
+            border-right: 2px solid #e0e0e0;
+        }
+
         td {
             padding: 12px 14px;
-            border-bottom: 1px solid #181818;
+            border-bottom: 1px solid #f0f0f0;
             font-size: 0.85rem;
             white-space: nowrap;
-            color: #b0b0b0;
+            color: #555;
+            position: relative;
         }
 
         tbody tr:hover {
-            background: #141414;
+            background: #fafafa;
+        }
+
+        /* 冻结列的 td */
+        td.sticky-first,
+        td.sticky-second {
+            position: sticky;
+            z-index: 5;
+            background: white;
+        }
+
+        td.sticky-first {
+            left: 0;
+            border-right: 2px solid #e0e0e0;
+        }
+
+        td.sticky-second {
+            left: 0;
+            border-right: 2px solid #e0e0e0;
+        }
+
+        tbody tr:hover td.sticky-first,
+        tbody tr:hover td.sticky-second {
+            background: #fafafa;
         }
 
         /* 厂商名称 */
         .vendor-name {
             font-weight: 500;
-            color: #e0e0e0;
+            color: #333;
         }
 
         /* 套餐名称 */
@@ -418,7 +463,7 @@
         .empty-state {
             text-align: center;
             padding: 60px 20px;
-            color: #666;
+            color: #999;
             font-size: 0.95rem;
         }
 
@@ -433,9 +478,9 @@
             text-align: center;
             margin-top: 20px;
             padding: 16px;
-            color: #666;
+            color: #999;
             font-size: 0.8rem;
-            border-top: 1px solid #1a1a1a;
+            border-top: 1px solid #e0e0e0;
         }
 
         /* 滚动条美化 */
@@ -445,17 +490,17 @@
         }
 
         .table-scroll::-webkit-scrollbar-track {
-            background: #141414;
+            background: #f0f0f0;
             border-radius: 4px;
         }
 
         .table-scroll::-webkit-scrollbar-thumb {
-            background: #333;
+            background: #ccc;
             border-radius: 4px;
         }
 
         .table-scroll::-webkit-scrollbar-thumb:hover {
-            background: #444;
+            background: #bbb;
         }
 
         .checkbox-group::-webkit-scrollbar {
@@ -463,12 +508,12 @@
         }
 
         .checkbox-group::-webkit-scrollbar-track {
-            background: #1a1a1a;
+            background: #f0f0f0;
             border-radius: 3px;
         }
 
         .checkbox-group::-webkit-scrollbar-thumb {
-            background: #333;
+            background: #ccc;
             border-radius: 3px;
         }
 
@@ -477,7 +522,7 @@
             text-align: center;
             padding: 60px 20px;
             font-size: 0.95rem;
-            color: #888;
+            color: #999;
         }
 
         .loading::after {
@@ -638,13 +683,13 @@
 
         <!-- 表格 -->
         <div class="table-wrapper">
-            <div class="table-scroll">
+            <div class="table-scroll" id="tableScroll">
                 <table id="plansTable">
                     <thead>
                         <tr>
-                            <th class="sortable" data-column="vendor">厂商</th>
-                            <th class="sortable" data-column="plan">套餐</th>
-                            <th>操作</th>
+                            <th class="sortable sticky-first" data-column="vendor">厂商</th>
+                            <th class="sortable sticky-second" data-column="plan">套餐</th>
+                            <th class="sortable" data-column="action">操作</th>
                             <th class="sortable" data-column="firstMonthPrice">首月价格</th>
                             <th class="sortable" data-column="monthlyPrice">连续包月</th>
                             <th class="sortable" data-column="quarterlyPrice">连续包季</th>
@@ -697,7 +742,7 @@
         const tableBody = document.getElementById('tableBody');
         const showingCount = document.getElementById('showingCount');
         const totalCount = document.getElementById('totalCount');
-        const tableScroll = document.querySelector('.table-scroll');
+        const tableScroll = document.getElementById('tableScroll');
 
         // 解析 CSV 文件
         function parseCSV(csvText) {
@@ -964,6 +1009,10 @@
                         valueA = a['套餐名称'];
                         valueB = b['套餐名称'];
                         break;
+                    case 'action':
+                        valueA = a['套餐名称'];
+                        valueB = b['套餐名称'];
+                        break;
                     case 'firstMonthPrice':
                         valueA = a.firstMonthPrice;
                         valueB = b.firstMonthPrice;
@@ -1022,6 +1071,22 @@
             });
         }
 
+        // 动态设置冻结列的 left 值
+        function updateStickyColumns() {
+            const firstCells = document.querySelectorAll('td.sticky-first, th.sticky-first');
+            const secondCells = document.querySelectorAll('td.sticky-second, th.sticky-second');
+
+            let firstWidth = 0;
+            firstCells.forEach(cell => {
+                firstWidth = Math.max(firstWidth, cell.offsetWidth);
+                cell.style.left = '0px';
+            });
+
+            secondCells.forEach(cell => {
+                cell.style.left = firstWidth + 'px';
+            });
+        }
+
         // 渲染表格
         function renderTable() {
             if (filteredPlans.length === 0) {
@@ -1041,8 +1106,8 @@
 
             tableBody.innerHTML = filteredPlans.map(plan => `
                 <tr>
-                    <td><span class="vendor-name">${escapeHtml(plan['厂商名称'])}</span></td>
-                    <td><span class="plan-name">${escapeHtml(plan['套餐名称'])}</span></td>
+                    <td class="sticky-first"><span class="vendor-name">${escapeHtml(plan['厂商名称'])}</span></td>
+                    <td class="sticky-second"><span class="plan-name">${escapeHtml(plan['套餐名称'])}</span></td>
                     <td>
                         <a href="${escapeHtml(plan['跳转链接'])}" target="_blank" class="action-btn">
                             专属折扣开通
@@ -1062,6 +1127,9 @@
                     </td>
                 </tr>
             `).join('');
+
+            // 更新冻结列位置
+            setTimeout(updateStickyColumns, 0);
         }
 
         function escapeHtml(text) {
@@ -1084,12 +1152,12 @@
             });
         });
 
-        // 滚轮横向滚动
-        tableScroll.addEventListener('wheel', (e) => {
-            if (e.deltaY !== 0) {
-                e.preventDefault();
-                tableScroll.scrollLeft += e.deltaY;
-            }
+        // 窗口大小改变时更新冻结列
+        window.addEventListener('resize', updateStickyColumns);
+
+        // 表格滚动时更新冻结列（处理动态宽度）
+        tableScroll.addEventListener('scroll', () => {
+            requestAnimationFrame(updateStickyColumns);
         });
 
         // 加载 CSV 数据
