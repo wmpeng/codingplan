@@ -370,21 +370,16 @@
 
         /* 统计信息 */
         .stats-bar {
-            color: var(--text-secondary);
-            font-size: 13px;
-            margin-bottom: 20px;
+            color: var(--text-tertiary);
+            font-size: 12px;
             display: flex;
             align-items: center;
-            gap: 24px;
-            padding: 12px 20px;
-            background: var(--bg-secondary);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-color);
+            margin-left: auto;
         }
 
         .stats-bar strong {
-            color: var(--text-primary);
-            font-weight: 600;
+            color: var(--text-secondary);
+            font-weight: 500;
         }
 
         /* 表格容器 */
@@ -844,11 +839,11 @@
 
             <!-- 重置按钮 -->
             <button class="reset-btn" onclick="resetAllFilters()">重置全部</button>
-        </div>
 
-        <!-- 统计信息 -->
-        <div class="stats-bar">
-            <span>显示 <strong id="showingCount">0</strong> / <strong id="totalCount">0</strong> 个套餐</span>
+            <!-- 统计信息 -->
+            <div class="stats-bar">
+                <span>显示 <strong id="showingCount">0</strong> / <strong id="totalCount">0</strong> 个套餐</span>
+            </div>
         </div>
 
         <!-- 表格 -->
