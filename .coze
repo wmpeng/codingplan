@@ -1,0 +1,11 @@
+[project]
+entrypoint = "index.html"
+requires = ["python-3.12"]
+
+[dev]
+build = []
+run = ["python", "-m", "http.server", "5000", "--bind", "0.0.0.0"]
+
+[deploy]
+build = []
+run = ["python", "-m", "http.server", "5000", "--bind", "0.0.0.0"]

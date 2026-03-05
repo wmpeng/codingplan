@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Plan 对比工具 - 国内厂商套餐对比</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .notice-banner {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+
+        /* 筛选栏 */
+        .filter-bar {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .filter-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .filter-control {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .filter-control:hover {
+            border-color: #4a9eff;
+        }
+
+        .filter-control:focus {
+            outline: none;
+            border-color: #4a9eff;
+        }
+
+        .price-inputs {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .price-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            background: white;
+        }
+
+        .price-separator {
+            color: #999;
+            font-weight: 600;
+        }
+
+        .reset-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .reset-btn:hover {
+            background: #5a6268;
+        }
+
+        /* 表格容器 */
+        .table-wrapper {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .table-scroll {
+            overflow-x: auto;
+            overflow-y: visible;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1200px;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        th {
+            padding: 16px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+            position: relative;
+        }
+
+        th:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        th.sortable::after {
+            content: '↕';
+            margin-left: 5px;
+            opacity: 0.5;
+            font-size: 0.85rem;
+        }
+
+        th.sort-asc::after {
+            content: '↑';
+            opacity: 1;
+            font-size: 0.85rem;
+        }
+
+        th.sort-desc::after {
+            content: '↓';
+            opacity: 1;
+            font-size: 0.85rem;
+        }
+
+        td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #e8e8e8;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #fafbfc;
+        }
+
+        tbody tr:nth-child(even):hover {
+            background: #f8f9fa;
+        }
+
+        /* 厂商名称列 */
+        .vendor-name {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.95rem;
+        }
+
+        /* 套餐名称列 */
+        .plan-name {
+            font-weight: 600;
+            color: #3498db;
+            font-size: 0.95rem;
+        }
+
+        /* 价格列 */
+        .price {
+            color: #e74c3c;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* 跳转按钮 */
+        .action-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+            white-space: nowrap;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+        }
+
+        /* 模型标签 */
+        .model-tag {
+            display: inline-block;
+            background: #e8f4f8;
+            color: #2980b9;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-right: 4px;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        /* 请求数 */
+        .request-count {
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        /* 其他权益 */
+        .benefit {
+            display: inline-block;
+            background: #fff3cd;
+            color: #856404;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-right: 4px;
+            margin-bottom: 4px;
+        }
+
+        /* 空状态 */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+            font-size: 1.1rem;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        /* 底部免责声明 */
+        .disclaimer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #999;
+            font-size: 0.85rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 统计信息 */
+        .stats-bar {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-info {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .stats-info strong {
+            color: #333;
+            font-weight: 700;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .notice-banner {
+                font-size: 0.95rem;
+                padding: 12px 15px;
+            }
+
+            .filter-bar {
+                padding: 15px;
+            }
+
+            .filter-item {
+                min-width: 100%;
+            }
+
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.85rem;
+            }
+
+            .action-btn {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 1.3rem;
+            }
+
+            .notice-banner {
+                font-size: 0.9rem;
+                padding: 10px 12px;
+            }
+
+            th, td {
+                padding: 10px 6px;
+                font-size: 0.8rem;
+            }
+
+            .model-tag, .benefit {
+                font-size: 0.75rem;
+                padding: 2px 6px;
+            }
+
+            .price {
+                font-size: 1rem;
+            }
+        }
+
+        /* 滚动条美化 */
+        .table-scroll::-webkit-scrollbar {
+            height: 12px;
+            width: 12px;
+        }
+
+        .table-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 6px;
+        }
+
+        .table-scroll::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 6px;
+        }
+
+        .table-scroll::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        /* 加载动画 */
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .loading::after {
+            content: '...';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部标题 -->
+        <div class="header">
+            <h1>Coding Plan 对比工具</h1>
+        </div>
+
+        <!-- 醒目提示 -->
+        <div class="notice-banner">
+            🎉 通过本站专属链接开通，享额外折扣优惠
+        </div>
+
+        <!-- 筛选栏 -->
+        <div class="filter-bar">
+            <div class="filter-item">
+                <label class="filter-label">厂商筛选</label>
+                <select id="vendorFilter" class="filter-control" multiple>
+                    <!-- 动态填充 -->
+                </select>
+            </div>
+
+            <div class="filter-item">
+                <label class="filter-label">首月价格区间 (元)</label>
+                <div class="price-inputs">
+                    <input type="number" id="priceMin" class="price-input" placeholder="最低" min="0" step="0.1">
+                    <span class="price-separator">-</span>
+                    <input type="number" id="priceMax" class="price-input" placeholder="最高" min="0" step="0.1">
+                </div>
+            </div>
+
+            <div class="filter-item">
+                <label class="filter-label">模型筛选</label>
+                <select id="modelFilter" class="filter-control" multiple>
+                    <!-- 动态填充 -->
+                </select>
+            </div>
+
+            <button id="resetFilters" class="reset-btn">重置筛选</button>
+        </div>
+
+        <!-- 统计信息 -->
+        <div class="stats-bar">
+            <div class="stats-info">
+                显示 <strong id="showingCount">0</strong> / <strong id="totalCount">0</strong> 个套餐
+            </div>
+            <div class="stats-info">
+                当前筛选条件: <strong id="filterSummary">无</strong>
+            </div>
+        </div>
+
+        <!-- 表格 -->
+        <div class="table-wrapper">
+            <div class="table-scroll">
+                <table id="plansTable">
+                    <thead>
+                        <tr>
+                            <th class="sortable" data-column="vendor">厂商名称</th>
+                            <th class="sortable" data-column="plan">套餐名称</th>
+                            <th>操作</th>
+                            <th class="sortable" data-column="firstMonthPrice">首月价格</th>
+                            <th class="sortable" data-column="monthlyPrice">连续包月</th>
+                            <th class="sortable" data-column="quarterlyPrice">连续包季</th>
+                            <th class="sortable" data-column="yearlyPrice">连续包年</th>
+                            <th class="sortable" data-column="models">支持模型</th>
+                            <th class="sortable" data-column="hourlyRequests">5小时请求数</th>
+                            <th class="sortable" data-column="monthlyRequests">每月总请求数</th>
+                            <th class="sortable" data-column="benefits">其他权益</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- 动态填充 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 底部免责声明 -->
+        <div class="disclaimer">
+            ⚠️ 本页面数据仅供参考，价格及权益最终以厂商官方公布为准
+        </div>
+    </div>
+
+    <script>
+        // CSV 文件路径（可修改为你的 CSV 文件路径）
+        const CSV_FILE_PATH = './coding-plans.csv';
+
+        // 全局数据
+        let allPlans = [];
+        let filteredPlans = [];
+        let currentSort = { column: null, direction: 'asc' };
+
+        // DOM 元素
+        const vendorFilter = document.getElementById('vendorFilter');
+        const modelFilter = document.getElementById('modelFilter');
+        const priceMin = document.getElementById('priceMin');
+        const priceMax = document.getElementById('priceMax');
+        const resetBtn = document.getElementById('resetFilters');
+        const tableBody = document.getElementById('tableBody');
+        const showingCount = document.getElementById('showingCount');
+        const totalCount = document.getElementById('totalCount');
+        const filterSummary = document.getElementById('filterSummary');
+        const tableScroll = document.querySelector('.table-scroll');
+
+        // 解析 CSV 文件
+        function parseCSV(csvText) {
+            const lines = csvText.trim().split('\n');
+            const headers = lines[0].split(',').map(h => h.trim());
+            const data = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const values = parseCSVLine(lines[i]);
+                if (values.length === headers.length) {
+                    const plan = {};
+                    headers.forEach((header, index) => {
+                        plan[header] = values[index].trim();
+                    });
+
+                    // 解析数值字段
+                    plan.firstMonthPrice = parseFloat(plan['首月价格']) || 0;
+                    plan.monthlyPrice = parseFloat(plan['连续包月']) || 0;
+                    plan.quarterlyPrice = parseFloat(plan['连续包季']) || 0;
+                    plan.yearlyPrice = parseFloat(plan['连续包年']) || 0;
+                    plan.hourlyRequests = parseInt(plan['5小时请求数']) || 0;
+                    plan.monthlyRequests = parseInt(plan['每月总请求数']) || 0;
+
+                    // 解析模型列表
+                    plan.models = plan['支持模型'].split(',').map(m => m.trim()).filter(m => m);
+
+                    // 解析权益列表
+                    plan.benefits = plan['其他权益'].split(',').map(b => b.trim()).filter(b => b);
+
+                    data.push(plan);
+                }
+            }
+
+            return data;
+        }
+
+        // 解析 CSV 行（处理带引号的字段）
+        function parseCSVLine(line) {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    result.push(current);
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            result.push(current);
+
+            return result;
+        }
+
+        // 初始化筛选器选项
+        function initFilters() {
+            // 获取所有厂商
+            const vendors = [...new Set(allPlans.map(p => p['厂商名称']))].sort();
+            vendors.forEach(vendor => {
+                const option = document.createElement('option');
+                option.value = vendor;
+                option.textContent = vendor;
+                vendorFilter.appendChild(option);
+            });
+
+            // 获取所有模型
+            const models = [...new Set(allPlans.flatMap(p => p.models))].sort();
+            models.forEach(model => {
+                const option = document.createElement('option');
+                option.value = model;
+                option.textContent = model;
+                modelFilter.appendChild(option);
+            });
+        }
+
+        // 应用筛选
+        function applyFilters() {
+            const selectedVendors = Array.from(vendorFilter.selectedOptions).map(o => o.value);
+            const selectedModels = Array.from(modelFilter.selectedOptions).map(o => o.value);
+            const minPrice = parseFloat(priceMin.value) || 0;
+            const maxPrice = parseFloat(priceMax.value) || Infinity;
+
+            filteredPlans = allPlans.filter(plan => {
+                // 厂商筛选
+                if (selectedVendors.length > 0 && !selectedVendors.includes(plan['厂商名称'])) {
+                    return false;
+                }
+
+                // 价格筛选
+                if (plan.firstMonthPrice < minPrice || plan.firstMonthPrice > maxPrice) {
+                    return false;
+                }
+
+                // 模型筛选
+                if (selectedModels.length > 0) {
+                    const hasModel = selectedModels.some(model => plan.models.includes(model));
+                    if (!hasModel) return false;
+                }
+
+                return true;
+            });
+
+            // 更新统计信息
+            updateStats();
+
+            // 应用排序
+            if (currentSort.column) {
+                sortData(currentSort.column, currentSort.direction);
+            } else {
+                renderTable();
+            }
+        }
+
+        // 更新统计信息
+        function updateStats() {
+            showingCount.textContent = filteredPlans.length;
+            totalCount.textContent = allPlans.length;
+
+            const filters = [];
+            const selectedVendors = Array.from(vendorFilter.selectedOptions).map(o => o.value);
+            const selectedModels = Array.from(modelFilter.selectedOptions).map(o => o.value);
+
+            if (selectedVendors.length > 0) {
+                filters.push(`厂商: ${selectedVendors.join(', ')}`);
+            }
+            if (priceMin.value || priceMax.value) {
+                filters.push(`价格: ${priceMin.value || '0'}-${priceMax.value || '∞'}元`);
+            }
+            if (selectedModels.length > 0) {
+                filters.push(`模型: ${selectedModels.join(', ')}`);
+            }
+
+            filterSummary.textContent = filters.length > 0 ? filters.join('; ') : '无';
+        }
+
+        // 排序数据
+        function sortData(column, direction = 'asc') {
+            currentSort = { column, direction };
+
+            filteredPlans.sort((a, b) => {
+                let valueA, valueB;
+
+                switch (column) {
+                    case 'vendor':
+                        valueA = a['厂商名称'];
+                        valueB = b['厂商名称'];
+                        break;
+                    case 'plan':
+                        valueA = a['套餐名称'];
+                        valueB = b['套餐名称'];
+                        break;
+                    case 'firstMonthPrice':
+                        valueA = a.firstMonthPrice;
+                        valueB = b.firstMonthPrice;
+                        break;
+                    case 'monthlyPrice':
+                        valueA = a.monthlyPrice;
+                        valueB = b.monthlyPrice;
+                        break;
+                    case 'quarterlyPrice':
+                        valueA = a.quarterlyPrice;
+                        valueB = b.quarterlyPrice;
+                        break;
+                    case 'yearlyPrice':
+                        valueA = a.yearlyPrice;
+                        valueB = b.yearlyPrice;
+                        break;
+                    case 'models':
+                        valueA = a['支持模型'];
+                        valueB = b['支持模型'];
+                        break;
+                    case 'hourlyRequests':
+                        valueA = a.hourlyRequests;
+                        valueB = b.hourlyRequests;
+                        break;
+                    case 'monthlyRequests':
+                        valueA = a.monthlyRequests;
+                        valueB = b.monthlyRequests;
+                        break;
+                    case 'benefits':
+                        valueA = a['其他权益'];
+                        valueB = b['其他权益'];
+                        break;
+                    default:
+                        return 0;
+                }
+
+                if (typeof valueA === 'number') {
+                    return direction === 'asc' ? valueA - valueB : valueB - valueA;
+                } else {
+                    return direction === 'asc'
+                        ? valueA.localeCompare(valueB, 'zh-CN')
+                        : valueB.localeCompare(valueA, 'zh-CN');
+                }
+            });
+
+            renderTable();
+            updateSortHeaders();
+        }
+
+        // 更新排序表头样式
+        function updateSortHeaders() {
+            document.querySelectorAll('th').forEach(th => {
+                th.classList.remove('sort-asc', 'sort-desc');
+                if (th.dataset.column === currentSort.column) {
+                    th.classList.add(`sort-${currentSort.direction}`);
+                }
+            });
+        }
+
+        // 渲染表格
+        function renderTable() {
+            if (filteredPlans.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="11">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">📭</div>
+                                <div>没有找到符合条件的套餐</div>
+                                <div style="font-size: 0.9rem; margin-top: 10px;">请调整筛选条件或重置筛选</div>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tableBody.innerHTML = filteredPlans.map(plan => `
+                <tr>
+                    <td><span class="vendor-name">${escapeHtml(plan['厂商名称'])}</span></td>
+                    <td><span class="plan-name">${escapeHtml(plan['套餐名称'])}</span></td>
+                    <td>
+                        <a href="${escapeHtml(plan['跳转链接'])}" target="_blank" class="action-btn">
+                            专属折扣开通
+                        </a>
+                    </td>
+                    <td><span class="price">¥${plan.firstMonthPrice.toFixed(1)}</span></td>
+                    <td><span class="price">¥${plan.monthlyPrice.toFixed(1)}</span></td>
+                    <td><span class="price">¥${plan.quarterlyPrice.toFixed(1)}</span></td>
+                    <td><span class="price">¥${plan.yearlyPrice.toFixed(1)}</span></td>
+                    <td>
+                        ${plan.models.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
+                    </td>
+                    <td><span class="request-count">${plan.hourlyRequests.toLocaleString()}</span></td>
+                    <td><span class="request-count">${plan.monthlyRequests.toLocaleString()}</span></td>
+                    <td>
+                        ${plan.benefits.map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // HTML 转义
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // 重置筛选
+        function resetFilters() {
+            vendorFilter.selectedIndex = -1;
+            modelFilter.selectedIndex = -1;
+            priceMin.value = '';
+            priceMax.value = '';
+            currentSort = { column: null, direction: 'asc' };
+
+            document.querySelectorAll('th').forEach(th => {
+                th.classList.remove('sort-asc', 'sort-desc');
+            });
+
+            applyFilters();
+        }
+
+        // 加载 CSV 数据
+        async function loadData() {
+            try {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="11">
+                            <div class="loading">加载数据中</div>
+                        </td>
+                    </tr>
+                `;
+
+                const response = await fetch(CSV_FILE_PATH);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const csvText = await response.text();
+                allPlans = parseCSV(csvText);
+                filteredPlans = [...allPlans];
+
+                initFilters();
+                applyFilters();
+
+                console.log(`成功加载 ${allPlans.length} 条套餐数据`);
+            } catch (error) {
+                console.error('加载数据失败:', error);
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="11">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">❌</div>
+                                <div>数据加载失败</div>
+                                <div style="font-size: 0.9rem; margin-top: 10px;">请检查 CSV 文件路径: ${CSV_FILE_PATH}</div>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        // 事件监听
+        vendorFilter.addEventListener('change', applyFilters);
+        modelFilter.addEventListener('change', applyFilters);
+        priceMin.addEventListener('input', applyFilters);
+        priceMax.addEventListener('input', applyFilters);
+        resetBtn.addEventListener('click', resetFilters);
+
+        // 表头排序点击
+        document.querySelectorAll('th.sortable').forEach(th => {
+            th.addEventListener('click', () => {
+                const column = th.dataset.column;
+                let direction = 'asc';
+
+                if (currentSort.column === column) {
+                    direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+                }
+
+                sortData(column, direction);
+            });
+        });
+
+        // 滚轮横向滚动
+        tableScroll.addEventListener('wheel', (e) => {
+            if (e.deltaY !== 0) {
+                e.preventDefault();
+                tableScroll.scrollLeft += e.deltaY;
+            }
+        });
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+</html>
