@@ -132,13 +132,25 @@
         }
 
         .filter-btn .arrow {
-            font-size: 10px;
-            transition: transform 0.2s;
-            opacity: 0.6;
+            width: 14px;
+            height: 14px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.5;
+        }
+
+        .filter-btn:hover .arrow {
+            opacity: 0.7;
         }
 
         .filter-btn.active .arrow {
             transform: rotate(180deg);
+            opacity: 1;
+        }
+
+        .filter-btn .arrow svg {
+            width: 100%;
+            height: 100%;
+            display: block;
         }
 
         .filter-btn .count {
@@ -771,7 +783,7 @@
             <div class="filter-dropdown">
                 <button class="filter-btn" id="vendorBtn">
                     <span>厂商</span>
-                    <span class="arrow">▼</span>
+                    <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
                     <span class="count" id="vendorCount" style="display: none;">0</span>
                 </button>
                 <div class="dropdown-menu" id="vendorDropdown">
@@ -791,7 +803,7 @@
             <div class="filter-dropdown">
                 <button class="filter-btn" id="priceBtn">
                     <span>首月价格</span>
-                    <span class="arrow">▼</span>
+                    <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
                     <span class="count" id="priceCount" style="display: none;">●</span>
                 </button>
                 <div class="dropdown-menu" id="priceDropdown">
@@ -814,7 +826,7 @@
             <div class="filter-dropdown">
                 <button class="filter-btn" id="modelBtn">
                     <span>模型</span>
-                    <span class="arrow">▼</span>
+                    <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
                     <span class="count" id="modelCount" style="display: none;">0</span>
                 </button>
                 <div class="dropdown-menu" id="modelDropdown">
