@@ -230,6 +230,133 @@
             gap: 8px;
         }
 
+        /* 价格类型按钮组 */
+        .checkbox-button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .price-type-btn {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .price-type-btn:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+        }
+
+        .price-type-btn.active {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        /* 价格范围滑块 */
+        .price-range-container {
+            padding: 8px 0;
+        }
+
+        .price-range-values {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .price-value-min,
+        .price-value-max {
+            color: var(--text-primary);
+        }
+
+        .price-range-slider {
+            position: relative;
+            height: 24px;
+        }
+
+        .slider-track {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--bg-tertiary);
+            border-radius: 3px;
+            transform: translateY(-50%);
+        }
+
+        .slider-progress {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 3px;
+            transform: translateY(-50%);
+        }
+
+        .slider-input {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: none;
+            pointer-events: none;
+            transform: translateY(-50%);
+        }
+
+        .slider-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 3px solid var(--accent-primary);
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: auto;
+            box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
+            transition: all 0.2s;
+        }
+
+        .slider-input::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+
+        .slider-input::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 3px solid var(--accent-primary);
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: auto;
+            box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
+            transition: all 0.2s;
+        }
+
+        .slider-input::-moz-range-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+
         .radio-label {
             display: flex;
             align-items: center;
@@ -934,38 +1061,34 @@
             <!-- 价格筛选下拉 -->
             <div class="filter-dropdown">
                 <button class="filter-btn" id="priceBtn">
-                    <span id="priceBtnText">首月价格</span>
+                    <span>价格</span>
                     <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
                     <span class="count" id="priceCount" style="display: none;">●</span>
                 </button>
                 <div class="dropdown-menu" id="priceDropdown">
                     <div class="dropdown-section">
                         <div class="dropdown-title">价格类型</div>
-                        <div class="radio-group" id="priceTypeGroup">
-                            <label class="radio-label">
-                                <input type="radio" name="priceType" value="firstMonth" checked>
-                                <span>首月价格</span>
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="priceType" value="monthly">
-                                <span>连续包月</span>
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="priceType" value="quarterly">
-                                <span>连续包季</span>
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="priceType" value="yearly">
-                                <span>连续包年</span>
-                            </label>
+                        <div class="checkbox-button-group" id="priceTypeButtons">
+                            <button type="button" class="price-type-btn active" data-type="firstMonth">首月价格</button>
+                            <button type="button" class="price-type-btn" data-type="monthly">连续包月</button>
+                            <button type="button" class="price-type-btn" data-type="quarterly">连续包季</button>
+                            <button type="button" class="price-type-btn" data-type="yearly">连续包年</button>
                         </div>
                     </div>
                     <div class="dropdown-section">
                         <div class="dropdown-title">价格区间 (元)</div>
-                        <div class="price-inputs">
-                            <input type="number" id="priceMin" class="price-input" placeholder="最低" min="0" step="0.1">
-                            <span class="price-separator">—</span>
-                            <input type="number" id="priceMax" class="price-input" placeholder="最高" min="0" step="0.1">
+                        <div class="price-range-container">
+                            <div class="price-range-values">
+                                <span class="price-value-min" id="priceValueMin">¥0</span>
+                                <span class="price-value-max" id="priceValueMax">¥500</span>
+                            </div>
+                            <div class="price-range-slider">
+                                <div class="slider-track">
+                                    <div class="slider-progress" id="sliderProgress"></div>
+                                </div>
+                                <input type="range" class="slider-input slider-input-min" id="sliderMin" min="0" max="500" value="0" step="1">
+                                <input type="range" class="slider-input slider-input-max" id="sliderMax" min="0" max="500" value="500" step="1">
+                            </div>
                         </div>
                     </div>
                     <div class="dropdown-actions">
@@ -1046,22 +1169,24 @@
         let currentSort = { column: null, direction: 'asc' };
         let selectedVendors = new Set();
         let selectedModels = new Set();
-        let selectedPriceType = 'firstMonth'; // 默认筛选首月价格
+        let selectedPriceTypes = new Set(['firstMonth']); // 默认筛选首月价格，支持多选
         let activeDropdown = null;
 
         // DOM 元素
         const vendorBtn = document.getElementById('vendorBtn');
         const priceBtn = document.getElementById('priceBtn');
-        const priceBtnText = document.getElementById('priceBtnText');
         const modelBtn = document.getElementById('modelBtn');
         const vendorDropdown = document.getElementById('vendorDropdown');
         const priceDropdown = document.getElementById('priceDropdown');
         const modelDropdown = document.getElementById('modelDropdown');
         const vendorCheckboxes = document.getElementById('vendorCheckboxes');
         const modelCheckboxes = document.getElementById('modelCheckboxes');
-        const priceTypeGroup = document.getElementById('priceTypeGroup');
-        const priceMin = document.getElementById('priceMin');
-        const priceMax = document.getElementById('priceMax');
+        const priceTypeButtons = document.getElementById('priceTypeButtons');
+        const sliderMin = document.getElementById('sliderMin');
+        const sliderMax = document.getElementById('sliderMax');
+        const sliderProgress = document.getElementById('sliderProgress');
+        const priceValueMin = document.getElementById('priceValueMin');
+        const priceValueMax = document.getElementById('priceValueMax');
         const vendorCount = document.getElementById('vendorCount');
         const modelCount = document.getElementById('modelCount');
         const priceCount = document.getElementById('priceCount');
@@ -1195,13 +1320,47 @@
             });
         });
 
-        // 价格类型选择监听
-        document.querySelectorAll('#priceTypeGroup input[type="radio"]').forEach(radio => {
-            radio.addEventListener('change', (e) => {
-                selectedPriceType = e.target.value;
-                updatePriceBtnText();
+        // 价格类型选择监听（多选按钮）
+        document.querySelectorAll('.price-type-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = btn.dataset.type;
+
+                if (selectedPriceTypes.has(type)) {
+                    selectedPriceTypes.delete(type);
+                    btn.classList.remove('active');
+                } else {
+                    selectedPriceTypes.add(type);
+                    btn.classList.add('active');
+                }
+
+                updatePriceCount();
             });
         });
+
+        // 双滑块逻辑
+        function updateSlider() {
+            let minVal = parseInt(sliderMin.value);
+            let maxVal = parseInt(sliderMax.value);
+
+            if (minVal > maxVal) {
+                [minVal, maxVal] = [maxVal, minVal];
+            }
+
+            sliderMin.value = minVal;
+            sliderMax.value = maxVal;
+
+            const percentMin = (minVal / 500) * 100;
+            const percentMax = (maxVal / 500) * 100;
+
+            sliderProgress.style.left = `${percentMin}%`;
+            sliderProgress.style.width = `${percentMax - percentMin}%`;
+
+            priceValueMin.textContent = `¥${minVal}`;
+            priceValueMax.textContent = `¥${maxVal}`;
+        }
+
+        sliderMin.addEventListener('input', updateSlider);
+        sliderMax.addEventListener('input', updateSlider);
 
         function updatePriceBtnText() {
             const textMap = {
@@ -1257,7 +1416,13 @@
         }
 
         function updatePriceCount() {
-            if (priceMin.value || priceMax.value) {
+            const minVal = parseInt(sliderMin.value);
+            const maxVal = parseInt(sliderMax.value);
+            const hasRange = minVal > 0 || maxVal < 500;
+            const hasTypes = selectedPriceTypes.size > 0;
+
+            if (hasRange || hasTypes) {
+                priceCount.textContent = selectedPriceTypes.size > 0 ? selectedPriceTypes.size : '●';
                 priceCount.style.display = 'inline-block';
                 priceBtn.classList.add('active');
             } else {
@@ -1268,33 +1433,40 @@
 
         // 应用筛选
         function applyFilters() {
-            const minPrice = parseFloat(priceMin.value) || 0;
-            const maxPrice = parseFloat(priceMax.value) || Infinity;
+            const minPrice = parseInt(sliderMin.value);
+            const maxPrice = parseInt(sliderMax.value);
 
             filteredPlans = allPlans.filter(plan => {
                 if (selectedVendors.size > 0 && !selectedVendors.has(plan['厂商名称'])) {
                     return false;
                 }
 
-                // 根据选中的价格类型进行筛选
-                let priceToFilter = 0;
-                switch (selectedPriceType) {
-                    case 'firstMonth':
-                        priceToFilter = plan.firstMonthPrice;
-                        break;
-                    case 'monthly':
-                        priceToFilter = plan.monthlyPrice;
-                        break;
-                    case 'quarterly':
-                        priceToFilter = plan.quarterlyPrice;
-                        break;
-                    case 'yearly':
-                        priceToFilter = plan.yearlyPrice;
-                        break;
-                }
+                // 根据选中的价格类型进行筛选（支持多选）
+                if (selectedPriceTypes.size > 0) {
+                    let priceMatch = false;
+                    for (const type of selectedPriceTypes) {
+                        let priceToFilter = 0;
+                        switch (type) {
+                            case 'firstMonth':
+                                priceToFilter = plan.firstMonthPrice;
+                                break;
+                            case 'monthly':
+                                priceToFilter = plan.monthlyPrice;
+                                break;
+                            case 'quarterly':
+                                priceToFilter = plan.quarterlyPrice;
+                                break;
+                            case 'yearly':
+                                priceToFilter = plan.yearlyPrice;
+                                break;
+                        }
 
-                if (priceToFilter < minPrice || priceToFilter > maxPrice) {
-                    return false;
+                        if (priceToFilter >= minPrice && priceToFilter <= maxPrice) {
+                            priceMatch = true;
+                            break;
+                        }
+                    }
+                    if (!priceMatch) return false;
                 }
 
                 if (selectedModels.size > 0) {
@@ -1335,11 +1507,22 @@
         }
 
         function resetPriceFilter() {
-            priceMin.value = '';
-            priceMax.value = '';
-            selectedPriceType = 'firstMonth';
-            document.querySelector('#priceTypeGroup input[value="firstMonth"]').checked = true;
-            updatePriceBtnText();
+            // 重置滑块
+            sliderMin.value = 0;
+            sliderMax.value = 500;
+            updateSlider();
+
+            // 重置价格类型选择
+            selectedPriceTypes.clear();
+            selectedPriceTypes.add('firstMonth');
+            document.querySelectorAll('.price-type-btn').forEach(btn => {
+                if (btn.dataset.type === 'firstMonth') {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
             updatePriceCount();
         }
 
@@ -1550,6 +1733,9 @@
 
                 initFilters();
                 applyFilters();
+
+                // 初始化滑块
+                updateSlider();
 
                 console.log(`成功加载 ${allPlans.length} 条套餐数据`);
             } catch (error) {
