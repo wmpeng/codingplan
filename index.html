@@ -502,6 +502,8 @@
             position: sticky;
             z-index: 100;
             background: var(--bg-secondary);
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         td.sticky-first {
@@ -516,7 +518,8 @@
 
         tbody tr:hover td.sticky-first,
         tbody tr:hover td.sticky-second {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.02), rgba(139, 92, 246, 0.02));
+            background: var(--bg-secondary);
+            box-shadow: inset 0 0 0 100px rgba(99, 102, 241, 0.02);
         }
 
         /* 厂商名称 */
