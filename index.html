@@ -931,46 +931,94 @@
                 </div>
             </div>
 
-            <!-- 价格筛选下拉 -->
+            <!-- 首月价格筛选 -->
             <div class="filter-dropdown">
-                <button class="filter-btn" id="priceBtn">
-                    <span id="priceBtnText">首月价格</span>
+                <button class="filter-btn" id="firstMonthPriceBtn">
+                    <span>首月价格</span>
                     <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-                    <span class="count" id="priceCount" style="display: none;">●</span>
+                    <span class="count" id="firstMonthPriceCount" style="display: none;">●</span>
                 </button>
-                <div class="dropdown-menu" id="priceDropdown">
+                <div class="dropdown-menu" id="firstMonthPriceDropdown">
                     <div class="dropdown-section">
-                        <div class="dropdown-title">价格类型</div>
-                        <div class="radio-group" id="priceTypeGroup">
-                            <label class="radio-label">
-                                <input type="radio" name="priceType" value="firstMonth" checked>
-                                <span>首月价格</span>
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="priceType" value="monthly">
-                                <span>连续包月</span>
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="priceType" value="quarterly">
-                                <span>连续包季</span>
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="priceType" value="yearly">
-                                <span>连续包年</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="dropdown-section">
-                        <div class="dropdown-title">价格区间 (元)</div>
+                        <div class="dropdown-title">首月价格区间 (元)</div>
                         <div class="price-inputs">
-                            <input type="number" id="priceMin" class="price-input" placeholder="最低" min="0" step="0.1">
+                            <input type="number" id="firstMonthPriceMin" class="price-input" placeholder="最低" min="0" step="0.1">
                             <span class="price-separator">—</span>
-                            <input type="number" id="priceMax" class="price-input" placeholder="最高" min="0" step="0.1">
+                            <input type="number" id="firstMonthPriceMax" class="price-input" placeholder="最高" min="0" step="0.1">
                         </div>
                     </div>
                     <div class="dropdown-actions">
-                        <button class="dropdown-btn secondary" onclick="resetPriceFilter()">重置</button>
-                        <button class="dropdown-btn primary" onclick="applyPriceFilter()">确定</button>
+                        <button class="dropdown-btn secondary" onclick="resetFirstMonthPriceFilter()">重置</button>
+                        <button class="dropdown-btn primary" onclick="applyFirstMonthPriceFilter()">确定</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 包月价格筛选 -->
+            <div class="filter-dropdown">
+                <button class="filter-btn" id="monthlyPriceBtn">
+                    <span>包月价格</span>
+                    <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    <span class="count" id="monthlyPriceCount" style="display: none;">●</span>
+                </button>
+                <div class="dropdown-menu" id="monthlyPriceDropdown">
+                    <div class="dropdown-section">
+                        <div class="dropdown-title">包月价格区间 (元)</div>
+                        <div class="price-inputs">
+                            <input type="number" id="monthlyPriceMin" class="price-input" placeholder="最低" min="0" step="0.1">
+                            <span class="price-separator">—</span>
+                            <input type="number" id="monthlyPriceMax" class="price-input" placeholder="最高" min="0" step="0.1">
+                        </div>
+                    </div>
+                    <div class="dropdown-actions">
+                        <button class="dropdown-btn secondary" onclick="resetMonthlyPriceFilter()">重置</button>
+                        <button class="dropdown-btn primary" onclick="applyMonthlyPriceFilter()">确定</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 包季价格筛选 -->
+            <div class="filter-dropdown">
+                <button class="filter-btn" id="quarterlyPriceBtn">
+                    <span>包季价格</span>
+                    <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    <span class="count" id="quarterlyPriceCount" style="display: none;">●</span>
+                </button>
+                <div class="dropdown-menu" id="quarterlyPriceDropdown">
+                    <div class="dropdown-section">
+                        <div class="dropdown-title">包季价格区间 (元)</div>
+                        <div class="price-inputs">
+                            <input type="number" id="quarterlyPriceMin" class="price-input" placeholder="最低" min="0" step="0.1">
+                            <span class="price-separator">—</span>
+                            <input type="number" id="quarterlyPriceMax" class="price-input" placeholder="最高" min="0" step="0.1">
+                        </div>
+                    </div>
+                    <div class="dropdown-actions">
+                        <button class="dropdown-btn secondary" onclick="resetQuarterlyPriceFilter()">重置</button>
+                        <button class="dropdown-btn primary" onclick="applyQuarterlyPriceFilter()">确定</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 包年价格筛选 -->
+            <div class="filter-dropdown">
+                <button class="filter-btn" id="yearlyPriceBtn">
+                    <span>包年价格</span>
+                    <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    <span class="count" id="yearlyPriceCount" style="display: none;">●</span>
+                </button>
+                <div class="dropdown-menu" id="yearlyPriceDropdown">
+                    <div class="dropdown-section">
+                        <div class="dropdown-title">包年价格区间 (元)</div>
+                        <div class="price-inputs">
+                            <input type="number" id="yearlyPriceMin" class="price-input" placeholder="最低" min="0" step="0.1">
+                            <span class="price-separator">—</span>
+                            <input type="number" id="yearlyPriceMax" class="price-input" placeholder="最高" min="0" step="0.1">
+                        </div>
+                    </div>
+                    <div class="dropdown-actions">
+                        <button class="dropdown-btn secondary" onclick="resetYearlyPriceFilter()">重置</button>
+                        <button class="dropdown-btn primary" onclick="applyYearlyPriceFilter()">确定</button>
                     </div>
                 </div>
             </div>
@@ -1046,25 +1094,52 @@
         let currentSort = { column: null, direction: 'asc' };
         let selectedVendors = new Set();
         let selectedModels = new Set();
-        let selectedPriceType = 'firstMonth'; // 默认筛选首月价格
+        let priceFilters = {
+            firstMonth: { min: null, max: null },
+            monthly: { min: null, max: null },
+            quarterly: { min: null, max: null },
+            yearly: { min: null, max: null }
+        };
         let activeDropdown = null;
 
         // DOM 元素
         const vendorBtn = document.getElementById('vendorBtn');
-        const priceBtn = document.getElementById('priceBtn');
-        const priceBtnText = document.getElementById('priceBtnText');
         const modelBtn = document.getElementById('modelBtn');
         const vendorDropdown = document.getElementById('vendorDropdown');
-        const priceDropdown = document.getElementById('priceDropdown');
         const modelDropdown = document.getElementById('modelDropdown');
         const vendorCheckboxes = document.getElementById('vendorCheckboxes');
         const modelCheckboxes = document.getElementById('modelCheckboxes');
-        const priceTypeGroup = document.getElementById('priceTypeGroup');
-        const priceMin = document.getElementById('priceMin');
-        const priceMax = document.getElementById('priceMax');
         const vendorCount = document.getElementById('vendorCount');
         const modelCount = document.getElementById('modelCount');
-        const priceCount = document.getElementById('priceCount');
+        
+        // 首月价格
+        const firstMonthPriceBtn = document.getElementById('firstMonthPriceBtn');
+        const firstMonthPriceDropdown = document.getElementById('firstMonthPriceDropdown');
+        const firstMonthPriceMin = document.getElementById('firstMonthPriceMin');
+        const firstMonthPriceMax = document.getElementById('firstMonthPriceMax');
+        const firstMonthPriceCount = document.getElementById('firstMonthPriceCount');
+        
+        // 包月价格
+        const monthlyPriceBtn = document.getElementById('monthlyPriceBtn');
+        const monthlyPriceDropdown = document.getElementById('monthlyPriceDropdown');
+        const monthlyPriceMin = document.getElementById('monthlyPriceMin');
+        const monthlyPriceMax = document.getElementById('monthlyPriceMax');
+        const monthlyPriceCount = document.getElementById('monthlyPriceCount');
+        
+        // 包季价格
+        const quarterlyPriceBtn = document.getElementById('quarterlyPriceBtn');
+        const quarterlyPriceDropdown = document.getElementById('quarterlyPriceDropdown');
+        const quarterlyPriceMin = document.getElementById('quarterlyPriceMin');
+        const quarterlyPriceMax = document.getElementById('quarterlyPriceMax');
+        const quarterlyPriceCount = document.getElementById('quarterlyPriceCount');
+        
+        // 包年价格
+        const yearlyPriceBtn = document.getElementById('yearlyPriceBtn');
+        const yearlyPriceDropdown = document.getElementById('yearlyPriceDropdown');
+        const yearlyPriceMin = document.getElementById('yearlyPriceMin');
+        const yearlyPriceMax = document.getElementById('yearlyPriceMax');
+        const yearlyPriceCount = document.getElementById('yearlyPriceCount');
+        
         const tableBody = document.getElementById('tableBody');
         const showingCount = document.getElementById('showingCount');
         const totalCount = document.getElementById('totalCount');
@@ -1175,9 +1250,28 @@
             toggleDropdown(vendorBtn, vendorDropdown);
         });
 
-        priceBtn.addEventListener('click', (e) => {
+        // 首月价格
+        firstMonthPriceBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            toggleDropdown(priceBtn, priceDropdown);
+            toggleDropdown(firstMonthPriceBtn, firstMonthPriceDropdown);
+        });
+
+        // 包月价格
+        monthlyPriceBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleDropdown(monthlyPriceBtn, monthlyPriceDropdown);
+        });
+
+        // 包季价格
+        quarterlyPriceBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleDropdown(quarterlyPriceBtn, quarterlyPriceDropdown);
+        });
+
+        // 包年价格
+        yearlyPriceBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleDropdown(yearlyPriceBtn, yearlyPriceDropdown);
         });
 
         modelBtn.addEventListener('click', (e) => {
@@ -1194,24 +1288,6 @@
                 e.stopPropagation();
             });
         });
-
-        // 价格类型选择监听
-        document.querySelectorAll('#priceTypeGroup input[type="radio"]').forEach(radio => {
-            radio.addEventListener('change', (e) => {
-                selectedPriceType = e.target.value;
-                updatePriceBtnText();
-            });
-        });
-
-        function updatePriceBtnText() {
-            const textMap = {
-                'firstMonth': '首月价格',
-                'monthly': '连续包月',
-                'quarterly': '连续包季',
-                'yearly': '连续包年'
-            };
-            priceBtnText.textContent = textMap[selectedPriceType];
-        }
 
         // 更新选择
         function updateVendorSelection() {
@@ -1256,50 +1332,91 @@
             }
         }
 
-        function updatePriceCount() {
-            if (priceMin.value || priceMax.value) {
-                priceCount.style.display = 'inline-block';
-                priceBtn.classList.add('active');
+        // 价格筛选相关函数
+        function updateFirstMonthPriceCount() {
+            if (priceFilters.firstMonth.min !== null || priceFilters.firstMonth.max !== null) {
+                firstMonthPriceCount.style.display = 'inline-block';
+                firstMonthPriceBtn.classList.add('active');
             } else {
-                priceCount.style.display = 'none';
-                priceBtn.classList.remove('active');
+                firstMonthPriceCount.style.display = 'none';
+                firstMonthPriceBtn.classList.remove('active');
+            }
+        }
+
+        function updateMonthlyPriceCount() {
+            if (priceFilters.monthly.min !== null || priceFilters.monthly.max !== null) {
+                monthlyPriceCount.style.display = 'inline-block';
+                monthlyPriceBtn.classList.add('active');
+            } else {
+                monthlyPriceCount.style.display = 'none';
+                monthlyPriceBtn.classList.remove('active');
+            }
+        }
+
+        function updateQuarterlyPriceCount() {
+            if (priceFilters.quarterly.min !== null || priceFilters.quarterly.max !== null) {
+                quarterlyPriceCount.style.display = 'inline-block';
+                quarterlyPriceBtn.classList.add('active');
+            } else {
+                quarterlyPriceCount.style.display = 'none';
+                quarterlyPriceBtn.classList.remove('active');
+            }
+        }
+
+        function updateYearlyPriceCount() {
+            if (priceFilters.yearly.min !== null || priceFilters.yearly.max !== null) {
+                yearlyPriceCount.style.display = 'inline-block';
+                yearlyPriceBtn.classList.add('active');
+            } else {
+                yearlyPriceCount.style.display = 'none';
+                yearlyPriceBtn.classList.remove('active');
             }
         }
 
         // 应用筛选
         function applyFilters() {
-            const minPrice = parseFloat(priceMin.value) || 0;
-            const maxPrice = parseFloat(priceMax.value) || Infinity;
-
             filteredPlans = allPlans.filter(plan => {
+                // 厂商筛选
                 if (selectedVendors.size > 0 && !selectedVendors.has(plan['厂商名称'])) {
                     return false;
                 }
 
-                // 根据选中的价格类型进行筛选
-                let priceToFilter = 0;
-                switch (selectedPriceType) {
-                    case 'firstMonth':
-                        priceToFilter = plan.firstMonthPrice;
-                        break;
-                    case 'monthly':
-                        priceToFilter = plan.monthlyPrice;
-                        break;
-                    case 'quarterly':
-                        priceToFilter = plan.quarterlyPrice;
-                        break;
-                    case 'yearly':
-                        priceToFilter = plan.yearlyPrice;
-                        break;
-                }
-
-                if (priceToFilter < minPrice || priceToFilter > maxPrice) {
-                    return false;
-                }
-
+                // 模型筛选
                 if (selectedModels.size > 0) {
                     const hasModel = selectedModels.some(model => plan.models.includes(model));
                     if (!hasModel) return false;
+                }
+
+                // 首月价格筛选
+                if (priceFilters.firstMonth.min !== null && plan.firstMonthPrice < priceFilters.firstMonth.min) {
+                    return false;
+                }
+                if (priceFilters.firstMonth.max !== null && plan.firstMonthPrice > priceFilters.firstMonth.max) {
+                    return false;
+                }
+
+                // 包月价格筛选
+                if (priceFilters.monthly.min !== null && plan.monthlyPrice < priceFilters.monthly.min) {
+                    return false;
+                }
+                if (priceFilters.monthly.max !== null && plan.monthlyPrice > priceFilters.monthly.max) {
+                    return false;
+                }
+
+                // 包季价格筛选
+                if (priceFilters.quarterly.min !== null && plan.quarterlyPrice < priceFilters.quarterly.min) {
+                    return false;
+                }
+                if (priceFilters.quarterly.max !== null && plan.quarterlyPrice > priceFilters.quarterly.max) {
+                    return false;
+                }
+
+                // 包年价格筛选
+                if (priceFilters.yearly.min !== null && plan.yearlyPrice < priceFilters.yearly.min) {
+                    return false;
+                }
+                if (priceFilters.yearly.max !== null && plan.yearlyPrice > priceFilters.yearly.max) {
+                    return false;
                 }
 
                 return true;
@@ -1315,10 +1432,72 @@
             }
         }
 
-        function applyPriceFilter() {
-            updatePriceCount();
+        // 首月价格筛选
+        function applyFirstMonthPriceFilter() {
+            priceFilters.firstMonth.min = firstMonthPriceMin.value ? parseFloat(firstMonthPriceMin.value) : null;
+            priceFilters.firstMonth.max = firstMonthPriceMax.value ? parseFloat(firstMonthPriceMax.value) : null;
+            updateFirstMonthPriceCount();
             applyFilters();
             closeAllDropdowns();
+        }
+
+        function resetFirstMonthPriceFilter() {
+            firstMonthPriceMin.value = '';
+            firstMonthPriceMax.value = '';
+            priceFilters.firstMonth.min = null;
+            priceFilters.firstMonth.max = null;
+            updateFirstMonthPriceCount();
+        }
+
+        // 包月价格筛选
+        function applyMonthlyPriceFilter() {
+            priceFilters.monthly.min = monthlyPriceMin.value ? parseFloat(monthlyPriceMin.value) : null;
+            priceFilters.monthly.max = monthlyPriceMax.value ? parseFloat(monthlyPriceMax.value) : null;
+            updateMonthlyPriceCount();
+            applyFilters();
+            closeAllDropdowns();
+        }
+
+        function resetMonthlyPriceFilter() {
+            monthlyPriceMin.value = '';
+            monthlyPriceMax.value = '';
+            priceFilters.monthly.min = null;
+            priceFilters.monthly.max = null;
+            updateMonthlyPriceCount();
+        }
+
+        // 包季价格筛选
+        function applyQuarterlyPriceFilter() {
+            priceFilters.quarterly.min = quarterlyPriceMin.value ? parseFloat(quarterlyPriceMin.value) : null;
+            priceFilters.quarterly.max = quarterlyPriceMax.value ? parseFloat(quarterlyPriceMax.value) : null;
+            updateQuarterlyPriceCount();
+            applyFilters();
+            closeAllDropdowns();
+        }
+
+        function resetQuarterlyPriceFilter() {
+            quarterlyPriceMin.value = '';
+            quarterlyPriceMax.value = '';
+            priceFilters.quarterly.min = null;
+            priceFilters.quarterly.max = null;
+            updateQuarterlyPriceCount();
+        }
+
+        // 包年价格筛选
+        function applyYearlyPriceFilter() {
+            priceFilters.yearly.min = yearlyPriceMin.value ? parseFloat(yearlyPriceMin.value) : null;
+            priceFilters.yearly.max = yearlyPriceMax.value ? parseFloat(yearlyPriceMax.value) : null;
+            updateYearlyPriceCount();
+            applyFilters();
+            closeAllDropdowns();
+        }
+
+        function resetYearlyPriceFilter() {
+            yearlyPriceMin.value = '';
+            yearlyPriceMax.value = '';
+            priceFilters.yearly.min = null;
+            priceFilters.yearly.max = null;
+            updateYearlyPriceCount();
         }
 
         // 重置筛选
@@ -1334,19 +1513,13 @@
             updateModelCount();
         }
 
-        function resetPriceFilter() {
-            priceMin.value = '';
-            priceMax.value = '';
-            selectedPriceType = 'firstMonth';
-            document.querySelector('#priceTypeGroup input[value="firstMonth"]').checked = true;
-            updatePriceBtnText();
-            updatePriceCount();
-        }
-
         function resetAllFilters() {
             resetVendorFilter();
             resetModelFilter();
-            resetPriceFilter();
+            resetFirstMonthPriceFilter();
+            resetMonthlyPriceFilter();
+            resetQuarterlyPriceFilter();
+            resetYearlyPriceFilter();
             currentSort = { column: null, direction: 'asc' };
             document.querySelectorAll('th').forEach(th => {
                 th.classList.remove('sort-asc', 'sort-desc');
