@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coding Plan 对比工具 - 国内厂商套餐对比</title>
+    <title>Coding Plan 对比工具 - 国内主流AI平台套餐对比</title>
     <style>
         * {
             margin: 0;
@@ -558,7 +558,7 @@
             box-shadow: inset 0 0 0 100px rgba(99, 102, 241, 0.02);
         }
 
-        /* 厂商名称 */
+        /* 平台名称 */
         .vendor-name {
             font-weight: 500;
             color: var(--text-primary);
@@ -603,7 +603,7 @@
             padding: 8px 16px;
             border-radius: var(--radius-md);
             font-weight: 500;
-            font-size: 13px;
+            font-size: 14px;
             transition: all 0.2s;
             white-space: nowrap;
         }
@@ -644,6 +644,15 @@
             color: var(--text-primary);
             font-weight: 400;
             font-size: 13px;
+        }
+
+        /* 单位文本 */
+        .unit {
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 11px;
+            margin-left: 4px;
+            margin-right: 2px;
         }
 
         /* 其他权益 */
@@ -832,7 +841,7 @@
         <!-- 顶部标题 -->
         <div class="header">
             <h1>Coding Plan 对比工具</h1>
-            <div class="subtitle">国内主流 AI 厂商套餐对比</div>
+            <div class="subtitle">国内主流 AI 平台套餐对比</div>
             <div class="notice-banner">
                 <span class="icon">✨</span>
                 通过本站专属链接开通，享额外折扣优惠
@@ -841,10 +850,10 @@
 
         <!-- 顶部筛选栏 -->
         <div class="filter-bar">
-            <!-- 厂商筛选下拉 -->
+            <!-- 平台筛选下拉 -->
             <div class="filter-dropdown">
                 <button class="filter-btn" id="vendorBtn">
-                    <span>厂商</span>
+                    <span>平台</span>
                     <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
                     <span class="count" id="vendorCount" style="display: none;">0</span>
                 </button>
@@ -940,7 +949,7 @@
                 <table id="plansTable">
                     <thead>
                         <tr>
-                            <th class="sortable sticky-first" data-column="vendor">厂商</th>
+                            <th class="sortable sticky-first" data-column="vendor">平台</th>
                             <th class="sortable sticky-second" data-column="plan">套餐</th>
                             <th class="sortable" data-column="action">跳转链接</th>
                             <th class="sortable" data-column="firstMonthPrice">首月价格</th>
@@ -962,7 +971,7 @@
 
         <!-- 底部免责声明 -->
         <div class="disclaimer">
-            ⚠️ 本页面数据仅供参考，价格及权益最终以厂商官方公布为准
+            ⚠️ 本页面数据仅供参考，价格及权益最终以平台官方公布为准
         </div>
     </div>
 
@@ -1404,15 +1413,15 @@
                             专属折扣开通
                         </a>
                     </td>
-                    <td><span class="price">¥${plan.firstMonthPrice.toFixed(1)}/首月</span></td>
-                    <td><span class="price-monthly">¥${plan.monthlyPrice.toFixed(1)}/月</span></td>
-                    <td><span class="price-normal">¥${plan.quarterlyPrice.toFixed(1)}/季</span></td>
-                    <td><span class="price-normal">¥${plan.yearlyPrice.toFixed(1)}/年</span></td>
+                    <td><span class="price">¥${plan.firstMonthPrice.toFixed(1)} <span class="unit">/ 首月</span></span></td>
+                    <td><span class="price-monthly">¥${plan.monthlyPrice.toFixed(1)} <span class="unit">/ 月</span></span></td>
+                    <td><span class="price-normal">¥${plan.quarterlyPrice.toFixed(1)} <span class="unit">/ 季</span></span></td>
+                    <td><span class="price-normal">¥${plan.yearlyPrice.toFixed(1)} <span class="unit">/ 年</span></span></td>
                     <td>
                         ${plan.models.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
                     </td>
-                    <td><span class="request-count">${plan.hourlyRequests.toLocaleString()}/5小时</span></td>
-                    <td><span class="request-count">${plan.monthlyRequests.toLocaleString()}/月</span></td>
+                    <td><span class="request-count">${plan.hourlyRequests.toLocaleString()} <span class="unit">/ 5小时</span></span></td>
+                    <td><span class="request-count">${plan.monthlyRequests.toLocaleString()} <span class="unit">/ 月</span></span></td>
                     <td>
                         ${plan.benefits.map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}
                     </td>
