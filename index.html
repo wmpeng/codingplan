@@ -40,12 +40,12 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
-            padding: 48px 32px;
+            padding: 48px 64px;
             font-size: 14px;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1440px;
             margin: 0 auto;
         }
 
@@ -762,9 +762,25 @@
         }
 
         /* 响应式 */
+        /* 中等屏幕（768px - 1200px） */
+        @media (max-width: 1200px) {
+            body {
+                padding: 48px 48px;
+            }
+
+            .container {
+                max-width: 1200px;
+            }
+        }
+
+        /* 平板/小屏幕（480px - 768px） */
         @media (max-width: 768px) {
             body {
-                padding: 32px 24px;
+                padding: 32px 32px;
+            }
+
+            .container {
+                max-width: 100%;
             }
 
             .header h1 {
@@ -787,7 +803,7 @@
 
             .dropdown-menu {
                 min-width: 240px;
-                max-width: calc(100vw - 60px);
+                max-width: calc(100vw - 80px);
             }
 
             th, td {
@@ -805,9 +821,10 @@
             }
         }
 
+        /* 手机屏幕（<480px） */
         @media (max-width: 480px) {
             body {
-                padding: 24px 16px;
+                padding: 24px 20px;
             }
 
             .header h1 {
@@ -831,7 +848,23 @@
             }
 
             .price {
-                font-size: 13px;
+                font-size: 12px;
+            }
+
+            .price-monthly {
+                font-size: 12px;
+            }
+
+            .price-normal {
+                font-size: 12px;
+            }
+
+            .request-count {
+                font-size: 12px;
+            }
+
+            .unit {
+                font-size: 10px;
             }
         }
     </style>
