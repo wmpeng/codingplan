@@ -2,7 +2,7 @@
   "header": {
     "title": "AI Coding Plan 对比",
     "updateDate": "更新日期2026.3",
-    "subtitle": "火山引擎方舟、阿里云百炼、Kimi、智谱、MiniMax Coding Plan，全面对比",
+    "subtitle": "智谱、Kimi、MiniMax、字节火山方舟、阿里云百炼、百度千帆，全面对比",
     "models": "支持Doubao Seed 2.0，Qwen 3.5，MiniMax M2.5、GLM-5、Kimi-k2.5等模型",
     "github": {
       "url": "https://github.com/wmpeng/codingplan",
