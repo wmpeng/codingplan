@@ -1250,7 +1250,7 @@
 
     <script>
         // 文件路径
-        const CSV_FILE_PATH = './coding-plans.csv';
+        const PLANS_FILE_PATH = './plans.json';
         const CONFIG_FILE_PATH = './config.json';
 
         // 全局配置
@@ -1329,78 +1329,6 @@
         const showingCount = document.getElementById('showingCount');
         const totalCount = document.getElementById('totalCount');
         const tableScroll = document.getElementById('tableScroll');
-
-        // 解析 CSV 文件
-        function parseCSV(csvText) {
-            const lines = csvText.trim().split('\n');
-            const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
-            const data = [];
-
-            for (let i = 1; i < lines.length; i++) {
-                const values = parseCSVLine(lines[i]);
-                if (values.length === headers.length) {
-                    const plan = {};
-                    headers.forEach((header, index) => {
-                        plan[header] = values[index].trim().replace(/^"|"$/g, '');
-                    });
-
-                    // 解析价格，处理 "-" 的情况
-                    let firstMonthPrice = parseFloat(plan['firstMonthPrice']) || 0;
-                    let monthlyPrice = parseFloat(plan['monthlyPrice']) || 0;
-                    let quarterlyPrice = parseFloat(plan['quarterlyPrice']) || 0;
-                    let yearlyPrice = parseFloat(plan['yearlyPrice']) || 0;
-
-                    // 如果首月价格为 "-" 或 0，使用包月价格
-                    if (firstMonthPrice === 0 || plan['firstMonthPrice'] === '-') {
-                        firstMonthPrice = monthlyPrice;
-                    }
-
-                    // 如果包季价格为 "-" 或 0，使用包月价格 * 3
-                    if (quarterlyPrice === 0 || plan['quarterlyPrice'] === '-') {
-                        quarterlyPrice = monthlyPrice * 3;
-                    }
-
-                    // 如果包年价格为 "-" 或 0，使用包季价格 * 3 或包月价格 * 12
-                    if (yearlyPrice === 0 || plan['yearlyPrice'] === '-') {
-                        yearlyPrice = quarterlyPrice * 3;
-                    }
-
-                    plan.firstMonthPrice = firstMonthPrice;
-                    plan.monthlyPrice = monthlyPrice;
-                    plan.quarterlyPrice = quarterlyPrice;
-                    plan.yearlyPrice = yearlyPrice;
-                    plan.hourlyRequests = parseInt(plan['hourlyRequests']) || 0;
-                    plan.monthlyRequests = parseInt(plan['monthlyRequests']) || 0;
-
-                    plan.models = (plan['models'] || '').split(',').map(m => m.trim()).filter(m => m);
-                    plan.benefits = (plan['benefits'] || '').split(',').map(b => b.trim()).filter(b => b);
-
-                    data.push(plan);
-                }
-            }
-
-            return data;
-        }
-
-        function parseCSVLine(line) {
-            const result = [];
-            let current = '';
-            let inQuotes = false;
-
-            for (let i = 0; i < line.length; i++) {
-                const char = line[i];
-                if (char === '"') {
-                    inQuotes = !inQuotes;
-                } else if (char === ',' && !inQuotes) {
-                    result.push(current);
-                    current = '';
-                } else {
-                    current += char;
-                }
-            }
-            result.push(current);
-            return result;
-        }
 
         // 初始化筛选器
         function initFilters() {
@@ -2139,7 +2067,48 @@
             }
         }
 
-        // 加载 CSV 数据
+        // 处理价格数据：补全缺失值
+        function processPrices(item) {
+            // 转换价格为数字
+            let firstMonthPrice = parseFloat(item.firstMonthPrice);
+            let monthlyPrice = parseFloat(item.monthlyPrice);
+            let quarterlyPrice = parseFloat(item.quarterlyPrice);
+            let yearlyPrice = parseFloat(item.yearlyPrice);
+
+            // 如果首月价格为 "-" 或 NaN，使用包月价格
+            if (isNaN(firstMonthPrice) || item.firstMonthPrice === '-') {
+                firstMonthPrice = monthlyPrice;
+            }
+
+            // 如果包季价格为 "-" 或 NaN，使用包月价格 * 3
+            if (isNaN(quarterlyPrice) || item.quarterlyPrice === '-') {
+                quarterlyPrice = monthlyPrice * 3;
+            }
+
+            // 如果包年价格为 "-" 或 NaN，使用包季价格 * 3
+            if (isNaN(yearlyPrice) || item.yearlyPrice === '-') {
+                yearlyPrice = quarterlyPrice * 3;
+            }
+
+            // 转换请求数为数字
+            item.hourlyRequests = typeof item.hourlyRequests === 'string' && item.hourlyRequests === '未公开' 
+                ? '未公开' 
+                : parseInt(item.hourlyRequests) || 0;
+            
+            item.monthlyRequests = typeof item.monthlyRequests === 'string' && item.monthlyRequests === '未公开' 
+                ? '未公开' 
+                : parseInt(item.monthlyRequests) || 0;
+
+            return {
+                ...item,
+                firstMonthPrice,
+                monthlyPrice,
+                quarterlyPrice,
+                yearlyPrice
+            };
+        }
+
+        // 加载套餐数据
         async function loadData() {
             try {
                 tableBody.innerHTML = `
@@ -2150,14 +2119,14 @@
                     </tr>
                 `;
 
-                const response = await fetch(CSV_FILE_PATH, {
+                const response = await fetch(PLANS_FILE_PATH, {
                     cache: 'no-store'
                 });
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                const csvText = await response.text();
-                allPlans = parseCSV(csvText);
+                const plansData = await response.json();
+                allPlans = plansData.map(processPrices);
                 filteredPlans = [...allPlans];
 
                 initFilters();
@@ -2173,7 +2142,7 @@
                             <div class="empty-state">
                                 <div class="empty-state-icon">❌</div>
                                 <div class="empty-state-text">数据加载失败</div>
-                                <div class="empty-state-hint">请检查 CSV 文件路径: ${CSV_FILE_PATH}</div>
+                                <div class="empty-state-hint">请检查 JSON 文件路径: ${PLANS_FILE_PATH}</div>
                             </div>
                         </td>
                     </tr>
