@@ -1,13 +1,20 @@
 vendor,plan,action,firstMonthPrice,monthlyPrice,quarterlyPrice,yearlyPrice,models,hourlyRequests,monthlyRequests,benefits,note
-豆包,基础版,https://www.doubao.com?ref=exclusive,9.9,29,79,299,"GPT-4,Claude-3.5",100,5000,"API 访问,优先响应","适合个人开发者，性价比高"
-豆包,专业版,https://www.doubao.com?ref=exclusive,19.9,59,159,599,"GPT-4,Claude-3.5,Gemini Pro",200,10000,"API 访问,优先响应,技术支持","适合中小团队，技术支持完善"
-豆包,企业版,https://www.doubao.com?ref=exclusive,99,299,799,2999,"全部模型",500,50000,"API 访问,优先响应,技术支持,专属客服","适合大型企业，全模型访问"
-智谱,轻量版,https://www.zhipuai.cn?ref=exclusive,8.9,25,70,280,"GLM-4,GLM-3-Turbo",80,4000,"API 访问,基础支持","最便宜的入门方案"
-智谱,标准版,https://www.zhipuai.cn?ref=exclusive,17.9,49,139,499,"GLM-4,GLM-3-Turbo,CodeGeeX",150,7500,"API 访问,优先响应,技术支持","平衡性能与价格"
-智谱,高级版,https://www.zhipuai.cn?ref=exclusive,89,269,749,2699,"全部模型",450,45000,"API 访问,优先响应,技术支持,专属客服","最强性能，专业开发者首选"
-通义千问,入门版,https://www.aliyun.com?ref=exclusive,10.9,32,88,352,"Qwen-Turbo,Qwen-Plus",110,5500,"API 访问,基础支持","阿里云用户首选"
-通义千问,进阶版,https://www.qwen.com?ref=exclusive,21.9,64,178,638,"Qwen-Turbo,Qwen-Plus,Qwen-Max",220,11000,"API 访问,优先响应,技术支持","支持Qwen最新模型"
-通义千问,旗舰版,https://www.qwen.com?ref=exclusive,109,329,909,3269,"全部模型",550,55000,"API 访问,优先响应,技术支持,专属客服","阿里云生态深度集成"
-月之暗面,基础版,https://www.moonshot.cn?ref=exclusive,11.9,35,98,392,"Moonshot-V1",120,6000,"API 访问,基础支持","长文本处理能力强"
-月之暗面,标准版,https://www.moonshot.cn?ref=exclusive,23.9,69,193,688,"Moonshot-V1,Kimi-Plus",240,12000,"API 访问,优先响应,技术支持","支持Kimi最新模型"
-月之暗面,专业版,https://www.moonshot.cn?ref=exclusive,119,359,989,3549,"全部模型",600,60000,"API 访问,优先响应,技术支持,专属客服","全模型访问，长文本优势"
+智谱AI,Lite,https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z,49,49,132,411,GLM-4.7,0,0,,3倍Claude Pro用量
+智谱AI,Pro,https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z,149,149,402,1251,GLM-5, GLM-4.7,0,0,,5倍Lite用量
+智谱AI,Max,https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z,469,469,1266,3939,GLM-5, GLM-4.7,0,0,,20倍Lite用量
+Kimi,Andante,https://www.kimi.com/code,49,49,0,468,Kimi K2.5, Kimi K2, Kimi K2 Thing,0,0,,Agent 4 倍速
+Kimi,Moderato,https://www.kimi.com/code,99,99,0,948,Kimi K2.5, Kimi K2, Kimi K2 Thing,0,0,,4 倍额度, Agent 多任务并行
+Kimi,Allegretto,https://www.kimi.com/code,199,199,0,1908,Kimi K2.5, Kimi K2, Kimi K2 Thing,0,0,免费Kimi Claw,20 倍额度
+Kimi,Allegro,https://www.kimi.com/code,699,699,0,6708,Kimi K2.5, Kimi K2, Kimi K2 Thing,0,0,免费Kimi Claw,60 倍额度
+MiniMax,Starter,https://platform.minimaxi.com/subscribe/coding-plan,29,29,0,290,MiniMax M2.5,40,600,,约50TPS
+MiniMax,Plus,https://platform.minimaxi.com/subscribe/coding-plan,49,49,0,490,MiniMax M2.5,100,1500,,约50TPS
+MiniMax,Max,https://platform.minimaxi.com/subscribe/coding-plan,119,119,0,1190,MiniMax M2.5,300,4500,,约50TPS
+MiniMax,Plus-极速版,https://platform.minimaxi.com/subscribe/coding-plan,98,29,0,980,MiniMax M2.5,40,600,,约100 TPS
+MiniMax,Max-极速版,https://platform.minimaxi.com/subscribe/coding-plan,199,49,0,1990,MiniMax M2.5,100,1500,,约100 TPS
+MiniMax,Ultra-极速版,https://platform.minimaxi.com/subscribe/coding-plan,899,119,0,0,MiniMax M2.5,300,4500,,约100 TPS
+阿里云百炼,Lite,https://www.aliyun.com/benefit/scene/codingplan,7.9,40,0,0,Qwen 3.5, MiniMax M2.5, GLM-5, Kimi-k2.5,1200,18000,,
+阿里云百炼,Pro,https://www.aliyun.com/benefit/scene/codingplan,39.9,200,0,0,Qwen 3.5, MiniMax M2.5, GLM-5, Kimi-k2.5,6000,90000,,
+字节·火山方舟,Lite plan,https://volcengine.com/L/sQLpJ0JukyE/,8.91,40,0,0,Doubao-Seed-2.0-Code, Kimi-K2.5,GLM-4.7,Deepseek-V3.2,1200,18000,,ArkClaw 7天体验
+字节·火山方舟,Pro plan,https://volcengine.com/L/sQLpJ0JukyE/,44.91,200,0,0,Doubao-Seed-2.0-Code, Kimi-K2.5,GLM-4.7,Deepseek-V3.2,6000,90000,,免费ArkClaw
+百度千帆,Coding Plan Lite,https://cloud.baidu.com/product/codingplan.html,7.9,40,0,0,GLM-5,Kimi-K2.5,MiniMax-M2.1,DeepSeek-V3.2,1200,18000,,禁止 API 调用，仅限编程工具交互
+百度千帆,Coding Plan Pro,https://cloud.baidu.com/product/codingplan.html,39.9,200,0,0,GLM-5,Kimi-K2.5,MiniMax-M2.1,DeepSeek-V3.2,6000,90000,,禁止 API 调用，仅限编程工具交互
