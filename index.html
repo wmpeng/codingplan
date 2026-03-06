@@ -1334,10 +1334,31 @@
                         plan[header] = values[index].trim().replace(/^"|"$/g, '');
                     });
 
-                    plan.firstMonthPrice = parseFloat(plan['firstMonthPrice']) || 0;
-                    plan.monthlyPrice = parseFloat(plan['monthlyPrice']) || 0;
-                    plan.quarterlyPrice = parseFloat(plan['quarterlyPrice']) || 0;
-                    plan.yearlyPrice = parseFloat(plan['yearlyPrice']) || 0;
+                    // 解析价格，处理 "-" 的情况
+                    let firstMonthPrice = parseFloat(plan['firstMonthPrice']) || 0;
+                    let monthlyPrice = parseFloat(plan['monthlyPrice']) || 0;
+                    let quarterlyPrice = parseFloat(plan['quarterlyPrice']) || 0;
+                    let yearlyPrice = parseFloat(plan['yearlyPrice']) || 0;
+
+                    // 如果首月价格为 "-" 或 0，使用包月价格
+                    if (firstMonthPrice === 0 || plan['firstMonthPrice'] === '-') {
+                        firstMonthPrice = monthlyPrice;
+                    }
+
+                    // 如果包季价格为 "-" 或 0，使用包月价格 * 3
+                    if (quarterlyPrice === 0 || plan['quarterlyPrice'] === '-') {
+                        quarterlyPrice = monthlyPrice * 3;
+                    }
+
+                    // 如果包年价格为 "-" 或 0，使用包季价格 * 3 或包月价格 * 12
+                    if (yearlyPrice === 0 || plan['yearlyPrice'] === '-') {
+                        yearlyPrice = quarterlyPrice * 3;
+                    }
+
+                    plan.firstMonthPrice = firstMonthPrice;
+                    plan.monthlyPrice = monthlyPrice;
+                    plan.quarterlyPrice = quarterlyPrice;
+                    plan.yearlyPrice = yearlyPrice;
                     plan.hourlyRequests = parseInt(plan['hourlyRequests']) || 0;
                     plan.monthlyRequests = parseInt(plan['monthlyRequests']) || 0;
 
