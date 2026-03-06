@@ -1870,12 +1870,12 @@
                         valueB = b['支持模型'];
                         break;
                     case 'hourlyRequests':
-                        valueA = a.hourlyRequests;
-                        valueB = b.hourlyRequests;
+                        valueA = typeof a.hourlyRequests === 'string' ? 0 : a.hourlyRequests;
+                        valueB = typeof b.hourlyRequests === 'string' ? 0 : b.hourlyRequests;
                         break;
                     case 'monthlyRequests':
-                        valueA = a.monthlyRequests;
-                        valueB = b.monthlyRequests;
+                        valueA = typeof a.monthlyRequests === 'string' ? 0 : a.monthlyRequests;
+                        valueB = typeof b.monthlyRequests === 'string' ? 0 : b.monthlyRequests;
                         break;
                     case 'benefits':
                         valueA = a['其他权益'];
