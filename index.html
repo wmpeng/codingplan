@@ -2074,7 +2074,9 @@
         // 加载配置文件
         async function loadConfig() {
             try {
-                const response = await fetch(CONFIG_FILE_PATH);
+                const response = await fetch(CONFIG_FILE_PATH, {
+                    cache: 'no-store'
+                });
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -2129,7 +2131,9 @@
                     </tr>
                 `;
 
-                const response = await fetch(CSV_FILE_PATH);
+                const response = await fetch(CSV_FILE_PATH, {
+                    cache: 'no-store'
+                });
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
