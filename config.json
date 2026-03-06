@@ -5,7 +5,7 @@
     "subtitle": "火山引擎方舟、阿里云百炼、Kimi、智谱、MiniMax Coding Plan，全面对比",
     "models": "支持Doubao Seed 2.0，Qwen 3.5，MiniMax M2.5、GLM-5、Kimi-k2.5等模型",
     "github": {
-      "url": "https://github.com/yourusername/coding-plan-compare",
+      "url": "https://github.com/wmpeng/codingplan",
       "text": "GitHub"
     }
   },
