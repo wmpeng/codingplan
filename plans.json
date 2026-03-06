@@ -210,8 +210,8 @@
     "note": ""
   },
   {
-    "vendor": "字节·火山方舟",
-    "plan": "Lite plan",
+    "vendor": "字节·方舟",
+    "plan": "Lite",
     "action": "https://volcengine.com/L/sQLpJ0JukyE/",
     "firstMonthPrice": 8.91,
     "monthlyPrice": 40,
@@ -224,8 +224,8 @@
     "note": ""
   },
   {
-    "vendor": "字节·火山方舟",
-    "plan": "Pro plan",
+    "vendor": "字节·方舟",
+    "plan": "Pro",
     "action": "https://volcengine.com/L/sQLpJ0JukyE/",
     "firstMonthPrice": 44.91,
     "monthlyPrice": 200,
