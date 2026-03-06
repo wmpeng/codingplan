@@ -1998,11 +1998,13 @@
                     if (currentSort.direction === 'asc') {
                         direction = 'desc'; // 升序 -> 降序
                     } else if (currentSort.direction === 'desc') {
-                        // 降序 -> 取消
+                        // 降序 -> 取消，恢复原始顺序
                         currentSort = { column: null, direction: 'asc' };
                         document.querySelectorAll('th').forEach(th => {
                             th.classList.remove('sort-asc', 'sort-desc');
                         });
+                        // 按照原始索引恢复顺序
+                        filteredPlans.sort((a, b) => a.originalIndex - b.originalIndex);
                         renderTable();
                         return; // 提前返回，不调用 sortData
                     }
@@ -2068,7 +2070,7 @@
         }
 
         // 处理价格数据：补全缺失值
-        function processPrices(item) {
+        function processPrices(item, index) {
             // 转换价格为数字
             let firstMonthPrice = parseFloat(item.firstMonthPrice);
             let monthlyPrice = parseFloat(item.monthlyPrice);
@@ -2104,7 +2106,8 @@
                 firstMonthPrice,
                 monthlyPrice,
                 quarterlyPrice,
-                yearlyPrice
+                yearlyPrice,
+                originalIndex: index // 保存原始索引，用于恢复顺序
             };
         }
 
@@ -2126,7 +2129,7 @@
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const plansData = await response.json();
-                allPlans = plansData.map(processPrices);
+                allPlans = plansData.map((item, index) => processPrices(item, index));
                 filteredPlans = [...allPlans];
 
                 initFilters();
