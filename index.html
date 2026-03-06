@@ -710,6 +710,16 @@
             font-size: 13px;
         }
 
+        /* 原始价格（划线） */
+        .price-original {
+            text-decoration: line-through;
+            font-size: 12px;
+            color: var(--text-tertiary);
+            opacity: 0.7;
+            margin-left: 4px;
+            font-weight: 400;
+        }
+
         /* 跳转按钮 */
         .action-btn {
             display: inline-flex;
@@ -2017,8 +2027,8 @@
                     </td>
                     <td><span class="price">¥${formatPrice(plan.firstMonthPrice)} <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥${formatPrice(plan.monthlyPrice)} <span class="unit">/ 月</span></span></td>
-                    <td><span class="price-normal">¥${formatPrice(plan.quarterlyPrice)} <span class="unit">/ 季</span></span></td>
-                    <td><span class="price-normal">¥${formatPrice(plan.yearlyPrice)} <span class="unit">/ 年</span></span></td>
+                    <td><span class="price-normal">¥${formatPrice(plan.quarterlyPrice)} <span class="price-original">${formatPrice(plan.monthlyPrice * 3)}</span> <span class="unit">/ 季</span></span></td>
+                    <td><span class="price-normal">¥${formatPrice(plan.yearlyPrice)} <span class="price-original">${formatPrice(plan.monthlyPrice * 12)}</span> <span class="unit">/ 年</span></span></td>
                     <td>
                         ${plan.models.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
                     </td>
