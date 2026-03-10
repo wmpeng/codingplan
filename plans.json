@@ -264,5 +264,33 @@
     "monthlyRequests": 90000,
     "benefits": [],
     "note": ""
+  },
+  {
+    "vendor": "腾讯·混元",
+    "plan": "Lite",
+    "action": "https://buy.cloud.tencent.com/hunyuan",
+    "firstMonthPrice": 7.9,
+    "monthlyPrice": 20,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": ["Tencent HY 2.0 Instruct", "GLM-5", "Kimi-K2.5", "MiniMax-M2.5"],
+    "hourlyRequests": 1200,
+    "monthlyRequests": 18000,
+    "benefits": [],
+    "note": "新用户专享优惠"
+  },
+  {
+    "vendor": "腾讯·混元",
+    "plan": "Pro",
+    "action": "https://buy.cloud.tencent.com/hunyuan",
+    "firstMonthPrice": 39.9,
+    "monthlyPrice": 100,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": ["Tencent HY 2.0 Instruct", "GLM-5", "Kimi-K2.5", "MiniMax-M2.5"],
+    "hourlyRequests": 6000,
+    "monthlyRequests": 90000,
+    "benefits": [],
+    "note": "新用户专享优惠"
   }
 ]
