@@ -36,8 +36,8 @@
 | 字节·方舟 | Pro | [跳转](https://volcengine.com/L/sQLpJ0JukyE/) | ¥44.91 | ¥200 | - / 季 | - / 年 | Doubao-Seed-2.0-Code, Kimi-K2.5, GLM-4.7, Deepseek-V3.2 | 6,000 | 90,000 | 免费ArkClaw | - |
 | 百度·千帆 | Lite | [跳转](https://cloud.baidu.com/product/codingplan.html) | ¥7.90 | ¥40 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.1, DeepSeek-V3.2 | 1,200 | 18,000 | - | - |
 | 百度·千帆 | Pro | [跳转](https://cloud.baidu.com/product/codingplan.html) | ¥39.90 | ¥200 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.1, DeepSeek-V3.2 | 6,000 | 90,000 | - | - |
-| 腾讯·混元 | Lite | [跳转](https://buy.cloud.tencent.com/hunyuan) | ¥7.90 | ¥20 ~~40~~ / 月 | - / 季 | - / 年 | Tencent HY 2.0 Instruct, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 1,200 | 18,000 | - | 新用户专享优惠 |
-| 腾讯·混元 | Pro | [跳转](https://buy.cloud.tencent.com/hunyuan) | ¥39.90 | ¥100 ~~200~~ / 月 | - / 季 | - / 年 | Tencent HY 2.0 Instruct, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 6,000 | 90,000 | - | 新用户专享优惠 |
+| 腾讯·混元 | Lite | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥7.90 | ¥40 | - / 季 | - / 年 | Tencent HY 2.0 Instruct, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 1,200 | 18,000 | - | 新用户专享优惠 |
+| 腾讯·混元 | Pro | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥39.90 | ¥200 | - / 季 | - / 年 | Tencent HY 2.0 Instruct, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 6,000 | 90,000 | - | 新用户专享优惠 |
 
 > 💡 **说明**：包季/包年价格中的划线数字表示原始价格（包月×3 或 包月×12），未划线的为实际优惠价格。
 
