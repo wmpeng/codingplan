@@ -35,8 +35,8 @@
 | MiniMax | Ultra-极速版 | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥899 | - / 季 | ¥8990 ~~10788~~ / 年 | MiniMax M2.5 | 4,500 | 67,500 | - | 1.约100TPS 2.官方为prompt计数，这里按1 prompt≈15次调用换算 |
 | 阿里·百炼 | Lite | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | ¥7.90 | ¥40 | - / 季 | - / 年 | Qwen 3.5, MiniMax M2.5, GLM-5, Kimi-k2.5 | 1,200 | 18,000 | - | - |
 | 阿里·百炼 | Pro | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | ¥39.90 | ¥200 | - / 季 | - / 年 | Qwen 3.5, MiniMax M2.5, GLM-5, Kimi-k2.5 | 6,000 | 90,000 | - | - |
-| 字节·方舟 | Lite | [跳转](https://volcengine.com/L/sQLpJ0JukyE/) | ¥8.91 | ¥40 | - / 季 | - / 年 | Doubao-Seed-2.0-Code, MiniMax M2.5, Kimi-K2.5, GLM-4.7, Deepseek-V3.2 | 1,200 | 18,000 | ArkClaw 7天体验 | - |
-| 字节·方舟 | Pro | [跳转](https://volcengine.com/L/sQLpJ0JukyE/) | ¥44.91 | ¥200 | - / 季 | - / 年 | Doubao-Seed-2.0-Code, MiniMax M2.5, Kimi-K2.5, GLM-4.7, Deepseek-V3.2 | 6,000 | 90,000 | 免费ArkClaw | - |
+| 字节·方舟 | Lite | [跳转](https://volcengine.com/L/sQLpJ0JukyE/) | ¥8.91 | ¥40 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax M2.5, Kimi-K2.5, GLM-4.7, Deepseek-V3.2 | 1,200 | 18,000 | ArkClaw 7天体验 | - |
+| 字节·方舟 | Pro | [跳转](https://volcengine.com/L/sQLpJ0JukyE/) | ¥44.91 | ¥200 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax M2.5, Kimi-K2.5, GLM-4.7, Deepseek-V3.2 | 6,000 | 90,000 | 免费ArkClaw | - |
 | 百度·千帆 | Lite | [跳转](https://cloud.baidu.com/product/codingplan.html) | ¥7.90 | ¥40 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.1, DeepSeek-V3.2 | 1,200 | 18,000 | - | - |
 | 百度·千帆 | Pro | [跳转](https://cloud.baidu.com/product/codingplan.html) | ¥39.90 | ¥200 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.1, DeepSeek-V3.2 | 6,000 | 90,000 | - | - |
 | 腾讯·混元 | Lite | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥7.90 | ¥40 | - / 季 | - / 年 | Hunyuan 2.0, Hunyuan T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 1,200 | 18,000 | - | - |
