@@ -24,12 +24,12 @@
 | Kimi | Moderato | [跳转](https://www.kimi.com/code) | - | ¥99 | - / 季 | ¥948 ~~1188~~ / 年 | Kimi K2.5, Kimi K2, Kimi K2 Thinking | 未公开 | 未公开 | - | 4 倍额度, Agent 多任务并行 |
 | Kimi | Allegretto | [跳转](https://www.kimi.com/code) | - | ¥199 | - / 季 | ¥1908 ~~2388~~ / 年 | Kimi K2.5, Kimi K2, Kimi K2 Thinking | 未公开 | 未公开 | 免费Kimi Claw | 20 倍额度 |
 | Kimi | Allegro | [跳转](https://www.kimi.com/code) | - | ¥699 | - / 季 | ¥6708 ~~8388~~ / 年 | Kimi K2.5, Kimi K2, Kimi K2 Thinking | 未公开 | 未公开 | 免费Kimi Claw | 60 倍额度 |
-| MiniMax | Starter | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥29 | - / 季 | ¥290 ~~348~~ / 年 | MiniMax M2.5 | 40 | 600 | - | 约50TPS |
-| MiniMax | Plus | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥49 | - / 季 | ¥490 ~~588~~ / 年 | MiniMax M2.5 | 100 | 1500 | - | 约50TPS |
-| MiniMax | Max | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥119 | - / 季 | ¥1190 ~~1428~~ / 年 | MiniMax M2.5 | 300 | 4500 | - | 约50TPS |
-| MiniMax | Plus-极速版 | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥98 | - / 季 | ¥980 ~~1176~~ / 年 | MiniMax M2.5 | 40 | 600 | - | 约100 TPS |
-| MiniMax | Max-极速版 | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥199 | - / 季 | ¥1990 ~~2388~~ / 年 | MiniMax M2.5 | 100 | 1500 | - | 约100 TPS |
-| MiniMax | Ultra-极速版 | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥899 | - / 季 | ¥8990 ~~10788~~ / 年 | MiniMax M2.5 | 300 | 4500 | - | 约100 TPS |
+| MiniMax | Starter | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥29 | - / 季 | ¥290 ~~348~~ / 年 | MiniMax M2.5 | 600 | 9,000 | - | 官方为prompt计数，这里按1 prompt≈15次调用换算，约50TPS |
+| MiniMax | Plus | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥49 | - / 季 | ¥490 ~~588~~ / 年 | MiniMax M2.5 | 1,500 | 22,500 | - | 官方为prompt计数，这里按1 prompt≈15次调用换算，约50TPS |
+| MiniMax | Max | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥119 | - / 季 | ¥1190 ~~1428~~ / 年 | MiniMax M2.5 | 4,500 | 67,500 | - | 官方为prompt计数，这里按1 prompt≈15次调用换算，约50TPS |
+| MiniMax | Plus-极速版 | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥98 | - / 季 | ¥980 ~~1176~~ / 年 | MiniMax M2.5 | 600 | 9,000 | - | 官方为prompt计数，这里按1 prompt≈15次调用换算，约100 TPS |
+| MiniMax | Max-极速版 | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥199 | - / 季 | ¥1990 ~~2388~~ / 年 | MiniMax M2.5 | 1,500 | 22,500 | - | 官方为prompt计数，这里按1 prompt≈15次调用换算，约100 TPS |
+| MiniMax | Ultra-极速版 | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥899 | - / 季 | ¥8990 ~~10788~~ / 年 | MiniMax M2.5 | 4,500 | 67,500 | - | 官方为prompt计数，这里按1 prompt≈15次调用换算，约100 TPS |
 | 阿里·百炼 | Lite | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | ¥7.90 | ¥40 | - / 季 | - / 年 | Qwen 3.5, MiniMax M2.5, GLM-5, Kimi-k2.5 | 1,200 | 18,000 | - | - |
 | 阿里·百炼 | Pro | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | ¥39.90 | ¥200 | - / 季 | - / 年 | Qwen 3.5, MiniMax M2.5, GLM-5, Kimi-k2.5 | 6,000 | 90,000 | - | - |
 | 字节·方舟 | Lite | [跳转](https://volcengine.com/L/sQLpJ0JukyE/) | ¥8.91 | ¥40 | - / 季 | - / 年 | Doubao-Seed-2.0-Code, Kimi-K2.5, GLM-4.7, Deepseek-V3.2 | 1,200 | 18,000 | ArkClaw 7天体验 | - |

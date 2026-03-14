@@ -106,10 +106,10 @@
     "quarterlyPrice": "-",
     "yearlyPrice": 290,
     "models": ["MiniMax M2.5"],
-    "hourlyRequests": 40,
-    "monthlyRequests": 600,
+    "hourlyRequests": 600,
+    "monthlyRequests": 9000,
     "benefits": [],
-    "note": "约50TPS"
+    "note": "官方为prompt计数，这里按1 prompt≈15次调用换算，约50TPS"
   },
   {
     "vendor": "MiniMax",
@@ -120,10 +120,10 @@
     "quarterlyPrice": "-",
     "yearlyPrice": 490,
     "models": ["MiniMax M2.5"],
-    "hourlyRequests": 100,
-    "monthlyRequests": 1500,
+    "hourlyRequests": 1500,
+    "monthlyRequests": 22500,
     "benefits": [],
-    "note": "约50TPS"
+    "note": "官方为prompt计数，这里按1 prompt≈15次调用换算，约50TPS"
   },
   {
     "vendor": "MiniMax",
@@ -134,10 +134,10 @@
     "quarterlyPrice": "-",
     "yearlyPrice": 1190,
     "models": ["MiniMax M2.5"],
-    "hourlyRequests": 300,
-    "monthlyRequests": 4500,
+    "hourlyRequests": 4500,
+    "monthlyRequests": 67500,
     "benefits": [],
-    "note": "约50TPS"
+    "note": "官方为prompt计数，这里按1 prompt≈15次调用换算，约50TPS"
   },
   {
     "vendor": "MiniMax",
@@ -148,10 +148,10 @@
     "quarterlyPrice": "-",
     "yearlyPrice": 980,
     "models": ["MiniMax M2.5"],
-    "hourlyRequests": 40,
-    "monthlyRequests": 600,
+    "hourlyRequests": 600,
+    "monthlyRequests": 9000,
     "benefits": [],
-    "note": "约100 TPS"
+    "note": "官方为prompt计数，这里按1 prompt≈15次调用换算，约100 TPS"
   },
   {
     "vendor": "MiniMax",
@@ -162,10 +162,10 @@
     "quarterlyPrice": "-",
     "yearlyPrice": 1990,
     "models": ["MiniMax M2.5"],
-    "hourlyRequests": 100,
-    "monthlyRequests": 1500,
+    "hourlyRequests": 1500,
+    "monthlyRequests": 22500,
     "benefits": [],
-    "note": "约100 TPS"
+    "note": "官方为prompt计数，这里按1 prompt≈15次调用换算，约100 TPS"
   },
   {
     "vendor": "MiniMax",
@@ -176,10 +176,10 @@
     "quarterlyPrice": "-",
     "yearlyPrice": 8990,
     "models": ["MiniMax M2.5"],
-    "hourlyRequests": 300,
-    "monthlyRequests": 4500,
+    "hourlyRequests": 4500,
+    "monthlyRequests": 67500,
     "benefits": [],
-    "note": "约100 TPS"
+    "note": "官方为prompt计数，这里按1 prompt≈15次调用换算，约100 TPS"
   },
   {
     "vendor": "阿里·百炼",
