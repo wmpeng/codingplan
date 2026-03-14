@@ -923,11 +923,16 @@
         /* 平板/小屏幕（480px - 768px） */
         @media (max-width: 768px) {
             body {
-                padding: 32px 24px;
+                padding: 24px 16px;
             }
 
             .container {
                 max-width: 100%;
+            }
+
+            .header {
+                margin-bottom: 24px;
+                padding: 24px 0;
             }
 
             .header h1 {
@@ -983,7 +988,12 @@
         /* 手机屏幕（<480px） */
         @media (max-width: 480px) {
             body {
-                padding: 24px 16px;
+                padding: 16px 12px;
+            }
+
+            .header {
+                margin-bottom: 16px;
+                padding: 16px 0;
             }
 
             .header h1 {
