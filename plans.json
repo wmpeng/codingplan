@@ -109,7 +109,7 @@
     "hourlyRequests": 600,
     "monthlyRequests": 9000,
     "benefits": [],
-    "note": "官方为prompt计数，这里按1 prompt≈15次调用换算，约50TPS"
+    "note": "1.约50TPS 2.官方为prompt计数，这里按1 prompt≈15次调用换算"
   },
   {
     "vendor": "MiniMax",
@@ -123,7 +123,7 @@
     "hourlyRequests": 1500,
     "monthlyRequests": 22500,
     "benefits": [],
-    "note": "官方为prompt计数，这里按1 prompt≈15次调用换算，约50TPS"
+    "note": "1.约50TPS 2.官方为prompt计数，这里按1 prompt≈15次调用换算"
   },
   {
     "vendor": "MiniMax",
@@ -137,7 +137,7 @@
     "hourlyRequests": 4500,
     "monthlyRequests": 67500,
     "benefits": [],
-    "note": "官方为prompt计数，这里按1 prompt≈15次调用换算，约50TPS"
+    "note": "1.约50TPS 2.官方为prompt计数，这里按1 prompt≈15次调用换算"
   },
   {
     "vendor": "MiniMax",
@@ -151,7 +151,7 @@
     "hourlyRequests": 600,
     "monthlyRequests": 9000,
     "benefits": [],
-    "note": "官方为prompt计数，这里按1 prompt≈15次调用换算，约100 TPS"
+    "note": "1.约100TPS 2.官方为prompt计数，这里按1 prompt≈15次调用换算"
   },
   {
     "vendor": "MiniMax",
@@ -165,7 +165,7 @@
     "hourlyRequests": 1500,
     "monthlyRequests": 22500,
     "benefits": [],
-    "note": "官方为prompt计数，这里按1 prompt≈15次调用换算，约100 TPS"
+    "note": "1.约100TPS 2.官方为prompt计数，这里按1 prompt≈15次调用换算"
   },
   {
     "vendor": "MiniMax",
@@ -179,7 +179,7 @@
     "hourlyRequests": 4500,
     "monthlyRequests": 67500,
     "benefits": [],
-    "note": "官方为prompt计数，这里按1 prompt≈15次调用换算，约100 TPS"
+    "note": "1.约100TPS 2.官方为prompt计数，这里按1 prompt≈15次调用换算"
   },
   {
     "vendor": "阿里·百炼",
@@ -277,7 +277,7 @@
     "hourlyRequests": 1200,
     "monthlyRequests": 18000,
     "benefits": [],
-    "note": "新用户专享优惠"
+    "note": ""
   },
   {
     "vendor": "腾讯·混元",
@@ -291,6 +291,6 @@
     "hourlyRequests": 6000,
     "monthlyRequests": 90000,
     "benefits": [],
-    "note": "新用户专享优惠"
+    "note": ""
   }
 ]
