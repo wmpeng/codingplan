@@ -7,13 +7,28 @@
 
 对比国内主流 AI 平台的 Coding Plan 套餐，包括智谱 AI、Kimi、MiniMax、字节·方舟、阿里·百炼、百度·千帆、腾讯・混元等厂商的多档套餐信息。
 
-支持Qwen 3.5，Doubao Seed 2.0，MiniMax M2.5、GLM-5、Kimi-k2.5等模型
+支持Qwen-3.5，Doubao-Seed-2.0，MiniMax-M2.7，MiniMax-M2.5，GLM-5，Kimi-K2.5等模型
 
 通过直观的表格展示，帮助开发者快速了解不同套餐的价格、支持的模型、请求限额、权益等内容，做出最优选择。
 
 ### 在线访问
 
 直接访问：[https://z4crk6mg95.coze.site](https://z4crk6mg95.coze.site)
+
+
+## 平台推荐
+
+1. MiniMax ⭐️⭐️⭐️⭐️⭐️
+    - 常规价格最便宜，且无需抢购。其余平台有首月优惠的，都需要抢购，且名额很少。
+    - 最新MiniMax-M2.7模型，只能通过MiniMax Token Plan计划获得，其他都只支持到M2.5
+2. 字节·方舟 ⭐️⭐️⭐️⭐️⭐️
+    - 支持MiniMax、Kimi、GLM模型和自研Doubao-Seed-2.0系列模型。
+    - 赠送OpenClaw，ArkClaw为真OpenClaw。其余如阿里的CoPaw为自研架构而非OpenClaw。MiniMax、Kimi之类的Claw需要单独付费或者高级订阅才支持。
+3. 其余推荐 ⭐️⭐️⭐️⭐️
+    - Qwen3.5模型只有阿里·百炼提供
+    - Doubao模型只有字节·方舟提供
+    - MiniMax-M2.7只有提供
+    - 首月优惠，只有腾讯·混元还有，但仍需要抢购。
 
 
 ## 📋 套餐对比表
