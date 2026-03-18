@@ -8,10 +8,10 @@
     "quarterlyPrice": 132,
     "yearlyPrice": 411,
     "models": ["GLM-4.7"],
-    "hourlyRequests": "未公开",
-    "monthlyRequests": "未公开",
-    "benefits": [],
-    "note": "3倍Claude Pro用量"
+    "hourlyRequests": "1200",
+    "monthlyRequests": "24000",
+    "benefits": ["免费MCP次数"],
+    "note": "1. 3倍Claude Pro用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算"
   },
   {
     "vendor": "智谱AI",
@@ -22,10 +22,10 @@
     "quarterlyPrice": 402,
     "yearlyPrice": 1251,
     "models": ["GLM-5", "GLM-4.7"],
-    "hourlyRequests": "未公开",
-    "monthlyRequests": "未公开",
-    "benefits": [],
-    "note": "5倍Lite用量"
+    "hourlyRequests": "6000",
+    "monthlyRequests": "120000",
+    "benefits": ["免费MCP次数"],
+    "note": "1. 5倍Lite用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算"
   },
   {
     "vendor": "智谱AI",
@@ -36,10 +36,10 @@
     "quarterlyPrice": 1266,
     "yearlyPrice": 3939,
     "models": ["GLM-5", "GLM-4.7"],
-    "hourlyRequests": "未公开",
-    "monthlyRequests": "未公开",
-    "benefits": [],
-    "note": "20倍Lite用量"
+    "hourlyRequests": "24000",
+    "monthlyRequests": "600000",
+    "benefits": ["免费MCP次数"],
+    "note": "1. 20倍Lite用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算"
   },
   {
     "vendor": "Kimi",
