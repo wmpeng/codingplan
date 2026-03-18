@@ -20,9 +20,9 @@
 
 | 平台 | 套餐 | 链接 | 首月价格 | 连续包月 | 连续包季 | 连续包年 | 支持模型 | 5小时请求数 | 每月总请求数 | 其他权益 | 备注 |
 |------|------|---------|---------|---------|---------|---------|---------|-----------|-----------|---------|------|
-| 智谱AI | Lite | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥49 | ¥132 ~~147~~ / 季 | ¥411 ~~588~~ / 年 | GLM-4.7 | 未公开 | 未公开 | - | 3倍Claude Pro用量 |
-| 智谱AI | Pro | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥149 | ¥402 ~~447~~ / 季 | ¥1251 ~~1788~~ / 年 | GLM-5, GLM-4.7 | 未公开 | 未公开 | - | 5倍Lite用量 |
-| 智谱AI | Max | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥469 | ¥1266 ~~1407~~ / 季 | ¥3939 ~~5628~~ / 年 | GLM-5, GLM-4.7 | 未公开 | 未公开 | - | 20倍Lite用量 |
+| 智谱AI | Lite | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥49 | ¥132 ~~147~~ / 季 | ¥411 ~~588~~ / 年 | GLM-4.7 | 1,200 | 24,000 | 免费MCP次数 | 1. 3倍Claude Pro用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算 |
+| 智谱AI | Pro | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥149 | ¥402 ~~447~~ / 季 | ¥1251 ~~1788~~ / 年 | GLM-5, GLM-4.7 | 6,000 | 120,000 | 免费MCP次数 | 1. 5倍Lite用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算 |
+| 智谱AI | Max | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥469 | ¥1266 ~~1407~~ / 季 | ¥3939 ~~5628~~ / 年 | GLM-5, GLM-4.7 | 24,000 | 600,000 | 免费MCP次数 | 1. 20倍Lite用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算 |
 | Kimi | Andante | [跳转](https://www.kimi.com/code) | - | ¥49 | - / 季 | ¥468 ~~588~~ / 年 | Kimi K2.5, Kimi K2, Kimi K2 Thinking | 未公开 | 未公开 | - | Agent 4 倍速 |
 | Kimi | Moderato | [跳转](https://www.kimi.com/code) | - | ¥99 | - / 季 | ¥948 ~~1188~~ / 年 | Kimi K2.5, Kimi K2, Kimi K2 Thinking | 未公开 | 未公开 | - | 4 倍额度, Agent 多任务并行 |
 | Kimi | Allegretto | [跳转](https://www.kimi.com/code) | - | ¥199 | - / 季 | ¥1908 ~~2388~~ / 年 | Kimi K2.5, Kimi K2, Kimi K2 Thinking | 未公开 | 未公开 | 免费Kimi Claw | 20 倍额度 |
@@ -33,12 +33,12 @@
 | MiniMax | Plus-极速版 | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥98 | - / 季 | ¥980 ~~1176~~ / 年 | MiniMax M2.5 | 600 | 9,000 | - | 1.约100TPS 2.官方为prompt计数，这里按1 prompt≈15次调用换算 |
 | MiniMax | Max-极速版 | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥199 | - / 季 | ¥1990 ~~2388~~ / 年 | MiniMax M2.5 | 1,500 | 22,500 | - | 1.约100TPS 2.官方为prompt计数，这里按1 prompt≈15次调用换算 |
 | MiniMax | Ultra-极速版 | [跳转](https://platform.minimaxi.com/subscribe/coding-plan) | - | ¥899 | - / 季 | ¥8990 ~~10788~~ / 年 | MiniMax M2.5 | 4,500 | 67,500 | - | 1.约100TPS 2.官方为prompt计数，这里按1 prompt≈15次调用换算 |
-| 阿里·百炼 | Lite | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | ¥7.90 | ¥40 | - / 季 | - / 年 | Qwen 3.5, MiniMax M2.5, GLM-5, Kimi-k2.5 | 1,200 | 18,000 | - | - |
-| 阿里·百炼 | Pro | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | ¥39.90 | ¥200 | - / 季 | - / 年 | Qwen 3.5, MiniMax M2.5, GLM-5, Kimi-k2.5 | 6,000 | 90,000 | - | - |
+| 阿里·百炼 | Lite | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | - | ¥40 | - / 季 | - / 年 | Qwen 3.5, MiniMax M2.5, GLM-5, Kimi-k2.5 | 1,200 | 18,000 | - | - |
+| 阿里·百炼 | Pro | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | - | ¥200 | - / 季 | - / 年 | Qwen 3.5, MiniMax M2.5, GLM-5, Kimi-k2.5 | 6,000 | 90,000 | - | - |
 | 字节·方舟 | Lite | [跳转](https://volcengine.com/L/sQLpJ0JukyE/) | ¥8.91 | ¥40 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax M2.5, Kimi-K2.5, GLM-4.7, Deepseek-V3.2 | 1,200 | 18,000 | ArkClaw 7天体验 | - |
 | 字节·方舟 | Pro | [跳转](https://volcengine.com/L/sQLpJ0JukyE/) | ¥44.91 | ¥200 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax M2.5, Kimi-K2.5, GLM-4.7, Deepseek-V3.2 | 6,000 | 90,000 | 免费ArkClaw | - |
-| 百度·千帆 | Lite | [跳转](https://cloud.baidu.com/product/codingplan.html) | ¥7.90 | ¥40 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.1, DeepSeek-V3.2 | 1,200 | 18,000 | - | - |
-| 百度·千帆 | Pro | [跳转](https://cloud.baidu.com/product/codingplan.html) | ¥39.90 | ¥200 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.1, DeepSeek-V3.2 | 6,000 | 90,000 | - | - |
+| 百度·千帆 | Lite | [跳转](https://cloud.baidu.com/product/codingplan.html) | - | ¥40 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.1, DeepSeek-V3.2 | 1,200 | 18,000 | - | - |
+| 百度·千帆 | Pro | [跳转](https://cloud.baidu.com/product/codingplan.html) | - | ¥200 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.1, DeepSeek-V3.2 | 6,000 | 90,000 | - | - |
 | 腾讯·混元 | Lite | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥7.90 | ¥40 | - / 季 | - / 年 | Hunyuan 2.0, Hunyuan T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 1,200 | 18,000 | - | - |
 | 腾讯·混元 | Pro | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥39.90 | ¥200 | - / 季 | - / 年 | Hunyuan 2.0, Hunyuan T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 6,000 | 90,000 | - | - |
 
