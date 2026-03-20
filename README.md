@@ -13,7 +13,7 @@
 
 ### 在线访问
 
-直接访问：[https://z4crk6mg95.coze.site](https://z4crk6mg95.coze.site)
+直接访问：[https://1302014895-gj05cb0450.ap-beijing.tencentscf.com/s/gh](https://1302014895-gj05cb0450.ap-beijing.tencentscf.com/s/gh)
 
 
 ## 平台推荐
