@@ -1,9 +1,9 @@
 {
   "header": {
     "title": "AI Coding Plan 对比",
-    "updateDate": "更新日期2026.3.18",
-    "subtitle": "七大平台 智谱、Kimi、MiniMax、阿里・百炼、字节・方舟、百度・千帆、腾讯・混元，全面对比",
-    "models": "支持Qwen 3.5，Doubao Seed 2.0，MiniMax M2.5、GLM-5、Kimi-k2.5等模型",
+    "updateDate": "更新日期2026.3.21",
+    "subtitle": "七大平台 智谱AI、Kimi、MiniMax、字节·方舟、阿里·百炼、百度·千帆、腾讯·混元，全面对比",
+    "models": "支持Qwen-3.5，Doubao-Seed-2.0，MiniMax-M2.7，MiniMax-M2.5，GLM-5，Kimi-K2.5等模型",
     "github": {
       "url": "https://github.com/wmpeng/codingplan",
       "text": "GitHub"
