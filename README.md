@@ -13,7 +13,7 @@
 
 ### 在线访问
 
-直接访问：[https://1302014895-gj05cb0450.ap-beijing.tencentscf.com/s/gh](https://1302014895-gj05cb0450.ap-beijing.tencentscf.com/s/gh)
+直接访问：[https://1302014895-2s0u9w2w8u.ap-beijing.tencentscf.com/s/gh](https://1302014895-2s0u9w2w8u.ap-beijing.tencentscf.com/s/gh)
 
 
 ## 平台推荐
