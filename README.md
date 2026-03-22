@@ -36,8 +36,8 @@
 
 | 平台 | 套餐 | 链接 | 首月价格 | 连续包月 | 连续包季 | 连续包年 | 支持模型 | 5小时请求数 | 每月总请求数 | 其他权益 | 备注 |
 |------|------|---------|---------|---------|---------|---------|---------|-----------|-----------|---------|------|
-| 字节·方舟 | Lite | [跳转](https://volcengine.com/L/sQLpJ0JukyE/) | - | ¥40 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 1,200 | 18,000 | ArkClaw 7天体验 | - |
-| 字节·方舟 | Pro | [跳转](https://volcengine.com/L/sQLpJ0JukyE/) | - | ¥200 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 6,000 | 90,000 | 免费ArkClaw | - |
+| 字节·方舟 | Lite | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥40 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 1,200 | 18,000 | ArkClaw 7天体验 | - |
+| 字节·方舟 | Pro | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥200 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 6,000 | 90,000 | 免费ArkClaw | - |
 | MiniMax | Starter | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=89m4O8z305&source=link) | - | ¥29 | - / 季 | ¥290 ~~348~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 600 | 9,000 | - | 约50TPS |
 | MiniMax | Plus | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=89m4O8z305&source=link) | - | ¥49 | - / 季 | ¥490 ~~588~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 1,500 | 22,500 | - | 约50TPS |
 | MiniMax | Max | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=89m4O8z305&source=link) | - | ¥119 | - / 季 | ¥1190 ~~1428~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 4,500 | 67,500 | - | 约50TPS |
