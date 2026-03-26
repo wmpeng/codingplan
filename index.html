@@ -1624,7 +1624,7 @@
 
                 // 模型筛选
                 if (selectedModels.size > 0) {
-                    const hasModel = selectedModels.some(model => plan.models.includes(model));
+                    const hasModel = [...selectedModels].some(model => plan.models.includes(model));
                     if (!hasModel) return false;
                 }
 
