@@ -1471,7 +1471,7 @@
             }
 
             const isOpen = dropdown.classList.contains('show');
-            closeAllDropdowns();
+            closeDropdownWithoutFilter();
 
             if (!isOpen) {
                 dropdown.classList.add('show');
@@ -1481,6 +1481,15 @@
         }
 
         function closeAllDropdowns() {
+            document.querySelectorAll('.dropdown-menu').forEach(d => d.classList.remove('show'));
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            activeDropdown = null;
+            // 应用筛选（厂商和模型的确定按钮触发）
+            applyFilters();
+        }
+
+        // 价格筛选的确定按钮单独处理，避免重复调用 applyFilters
+        function closeDropdownWithoutFilter() {
             document.querySelectorAll('.dropdown-menu').forEach(d => d.classList.remove('show'));
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             activeDropdown = null;
@@ -1521,7 +1530,7 @@
         });
 
         document.addEventListener('click', () => {
-            closeAllDropdowns();
+            closeDropdownWithoutFilter();
         });
 
         document.querySelectorAll('.dropdown-menu').forEach(d => {
@@ -1538,7 +1547,7 @@
             });
 
             updateVendorCount();
-            applyFilters();
+            // 不在这里调用 applyFilters()，等点击确定按钮后再应用
         }
 
         function updateModelSelection() {
@@ -1548,7 +1557,7 @@
             });
 
             updateModelCount();
-            applyFilters();
+            // 不在这里调用 applyFilters()，等点击确定按钮后再应用
         }
 
         function updateVendorCount() {
@@ -1799,7 +1808,7 @@
             priceFilters.firstMonth.max = priceSliders.firstMonth.max;
             updateFirstMonthPriceCount();
             applyFilters();
-            closeAllDropdowns();
+            closeDropdownWithoutFilter();
         }
 
         function resetFirstMonthPriceFilter() {
@@ -1826,7 +1835,7 @@
             priceFilters.monthly.max = priceSliders.monthly.max;
             updateMonthlyPriceCount();
             applyFilters();
-            closeAllDropdowns();
+            closeDropdownWithoutFilter();
         }
 
         function resetMonthlyPriceFilter() {
@@ -1853,7 +1862,7 @@
             priceFilters.quarterly.max = priceSliders.quarterly.max;
             updateQuarterlyPriceCount();
             applyFilters();
-            closeAllDropdowns();
+            closeDropdownWithoutFilter();
         }
 
         function resetQuarterlyPriceFilter() {
@@ -1880,7 +1889,7 @@
             priceFilters.yearly.max = priceSliders.yearly.max;
             updateYearlyPriceCount();
             applyFilters();
-            closeAllDropdowns();
+            closeDropdownWithoutFilter();
         }
 
         function resetYearlyPriceFilter() {
