@@ -14,8 +14,8 @@
       "name": "MiniMax",
       "rating": 5,
       "reasons": [
-        "常规价格最便宜，且无需抢购。其余平台有首月优惠的，都需要抢购，且名额很少。",
-        "最新MiniMax-M2.7模型，只能通过MiniMax Token Plan计划获得，其他都只支持到M2.5"
+        "价格最便宜，且无需抢购。正有腾讯的首月优惠更便宜，但需要抢购。",
+        "独占最新MiniMax-M2.7模型，其他家都只支持到M2.5"
       ]
     },
     {
@@ -23,18 +23,43 @@
       "rating": 5,
       "reasons": [
         "支持MiniMax、Kimi、GLM模型和自研Doubao-Seed-2.0系列模型。",
-        "赠送OpenClaw，ArkClaw为真OpenClaw。其余如阿里的CoPaw为自研架构而非OpenClaw。MiniMax、Kimi之类的Claw需要单独付费或者高级订阅才支持。"
+        "赠送OpenClaw，ArkClaw为真OpenClaw。"
       ]
     },
     {
-      "name": "其余推荐",
+      "name": "阿里·百炼",
+      "rating": 3,
+      "reasons": [
+        "独占Qwen3.5系列最新模型，其他家无Qwen模型。",
+        "但目前只有200块钱的pro版本套餐了，轻量使用的话，性价比不高。"
+      ]
+    },
+    {
+      "name": "腾讯·混元",
+      "rating": 3,
+      "reasons": [
+        "中规中矩，支持常规GLM-5、Kimi-K2.5、MiniMax-M2.5。"
+      ]
+    },
+    {
+      "name": "百度·千帆",
+      "rating": 3,
+      "reasons": [
+        "中规中矩，支持常规GLM-5、Kimi-K2.5、MiniMax-M2.5。"
+      ]
+    },
+    {
+      "name": "智谱AI",
       "rating": 4,
       "reasons": [
-        "Qwen3.5模型只有**阿里·百炼**提供。阿里·百炼需要抢购，如无使用Qwen3.5的特殊需求，可使用字节·方舟替代。",
-        "Doubao模型只有**字节·方舟**提供。",
-        "MiniMax-M2.7只有**MiniMax**自己的订阅提供。",
-        "首月优惠，只有**腾讯·混元**还有，但仍需要抢购。",
-        "其余自行选购。"
+        "免费MCP次数"
+      ]
+    },
+    {
+      "name": "Kimi",
+      "rating": 3,
+      "reasons": [
+        "常规K2.5"
       ]
     }
   ],
