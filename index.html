@@ -897,6 +897,80 @@
             60%, 100% { content: '...'; }
         }
 
+        /* 平台推荐模块 */
+        .recommendations {
+            margin-bottom: 32px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .recommendation-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .recommendation-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .recommendation-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .recommendation-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .recommendation-rating {
+            color: #f59e0b;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        .recommendation-reasons {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .recommendation-reasons li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .recommendation-reasons li:last-child {
+            margin-bottom: 0;
+        }
+
+        .recommendation-reasons li::before {
+            content: '•';
+            position: absolute;
+            left: 6px;
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+
+        .recommendation-reasons li strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
         /* 响应式 */
         /* 大屏幕（1200px - 1600px） */
         @media (max-width: 1600px) {
@@ -1062,6 +1136,11 @@
             <div class="update-date" id="updateDate">更新日期2026.3</div>
             <div class="subtitle" id="subtitle">火山引擎方舟、阿里云百炼、Kimi、智谱、MiniMax Coding Plan，全面对比</div>
             <div class="models" id="models">支持Doubao Seed 2.0，Qwen 3.5，MiniMax M2.5、GLM-5、Kimi-k2.5等模型</div>
+        </div>
+
+        <!-- 平台推荐 -->
+        <div class="recommendations" id="recommendations">
+            <!-- 动态填充 -->
         </div>
 
         <!-- 顶部筛选栏 -->
@@ -2087,6 +2166,38 @@
                     document.getElementById('githubText').textContent = h.github.text;
                 }
             }
+
+            // 渲染平台推荐
+            if (appConfig.recommendations && appConfig.recommendations.length > 0) {
+                renderRecommendations(appConfig.recommendations);
+            }
+        }
+
+        // 渲染平台推荐
+        function renderRecommendations(recommendations) {
+            const container = document.getElementById('recommendations');
+            if (!container) return;
+
+            container.innerHTML = recommendations.map(rec => {
+                const stars = '⭐️'.repeat(rec.rating);
+                const reasonsHtml = rec.reasons.map(reason => {
+                    // 处理 **text** 格式的加粗
+                    const formattedReason = reason.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    return `<li>${formattedReason}</li>`;
+                }).join('');
+
+                return `
+                    <div class="recommendation-card">
+                        <div class="recommendation-header">
+                            <span class="recommendation-name">${escapeHtml(rec.name)}</span>
+                            <span class="recommendation-rating">${stars}</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            ${reasonsHtml}
+                        </ul>
+                    </div>
+                `;
+            }).join('');
         }
 
         // 处理价格数据：补全缺失值

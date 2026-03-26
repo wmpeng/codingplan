@@ -9,6 +9,35 @@
       "text": "GitHub"
     }
   },
+  "recommendations": [
+    {
+      "name": "MiniMax",
+      "rating": 5,
+      "reasons": [
+        "常规价格最便宜，且无需抢购。其余平台有首月优惠的，都需要抢购，且名额很少。",
+        "最新MiniMax-M2.7模型，只能通过MiniMax Token Plan计划获得，其他都只支持到M2.5"
+      ]
+    },
+    {
+      "name": "字节·方舟",
+      "rating": 5,
+      "reasons": [
+        "支持MiniMax、Kimi、GLM模型和自研Doubao-Seed-2.0系列模型。",
+        "赠送OpenClaw，ArkClaw为真OpenClaw。其余如阿里的CoPaw为自研架构而非OpenClaw。MiniMax、Kimi之类的Claw需要单独付费或者高级订阅才支持。"
+      ]
+    },
+    {
+      "name": "其余推荐",
+      "rating": 4,
+      "reasons": [
+        "Qwen3.5模型只有**阿里·百炼**提供。阿里·百炼需要抢购，如无使用Qwen3.5的特殊需求，可使用字节·方舟替代。",
+        "Doubao模型只有**字节·方舟**提供。",
+        "MiniMax-M2.7只有**MiniMax**自己的订阅提供。",
+        "首月优惠，只有**腾讯·混元**还有，但仍需要抢购。",
+        "其余自行选购。"
+      ]
+    }
+  ],
   "notice": {
     "text": "⚠️本页面数据仅供参考，价格及权益最终以平台官方公布为准"
   },
