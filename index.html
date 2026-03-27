@@ -1727,14 +1727,16 @@
             addSliderDragEvents(priceType, slider);
         }
 
-        // 更新滑块视觉效果
+        // 更新滑块视觉效果（对数刻度）
         function updateSliderVisuals(priceType, minPrice, maxPrice) {
             const slider = priceSliders[priceType];
-            const minValue = Math.max(0, Math.round(minPrice));
+            const minValue = Math.max(1, Math.round(minPrice));
             const maxValue = Math.min(slider.maxValue, Math.round(maxPrice));
+            const maxValueLog = Math.log10(slider.maxValue);
 
-            const minPercent = (minValue / slider.maxValue) * 100;
-            const maxPercent = (maxValue / slider.maxValue) * 100;
+            // 对数刻度计算位置
+            const minPercent = (Math.log10(minValue) / maxValueLog) * 100;
+            const maxPercent = (Math.log10(maxValue) / maxValueLog) * 100;
 
             const minThumb = document.getElementById(`${priceType}SliderMin`);
             const maxThumb = document.getElementById(`${priceType}SliderMax`);
@@ -1768,7 +1770,9 @@
                 let percent = (x / rect.width) * 100;
                 percent = Math.max(0, Math.min(100, percent));
 
-                const value = (percent / 100) * priceSliders[priceType].maxValue;
+                // 从对数刻度转换回实际值
+                const maxValueLog = Math.log10(priceSliders[priceType].maxValue);
+                const value = Math.pow(10, (percent / 100) * maxValueLog);
 
                 if (isDragging === 'min') {
                     const newMin = Math.min(value, priceSliders[priceType].max);
