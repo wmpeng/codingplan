@@ -29,6 +29,12 @@ function generateRecommendations(recommendations) {
     return md;
 }
 
+// 生成评分说明
+function generateRatingGuide(ratingGuide) {
+    if (!ratingGuide) return '';
+    return `\n**评分标准**: ${ratingGuide}\n`;
+}
+
 // 格式化价格
 function formatPrice(price) {
     if (price === '-') return '-';
@@ -132,7 +138,7 @@ ${config.header.models}
 
 ## 平台推荐
 
-${generateRecommendations(recommendations)}
+${generateRecommendations(recommendations)}${generateRatingGuide(config.ratingGuide)}
 
 ## 📋 套餐对比表
 
