@@ -68,6 +68,33 @@
     "使用表格跳转链接，部分平台可享优惠",
     "本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议"
   ],
+  "accountSale": {
+    "title": "出纯手工成品账号",
+    "description": "低价出 MiniMax 账号和字节火山账号，都是邀请得来的代金券。",
+    "accounts": [
+      {
+        "platform": "MiniMax",
+        "balance": "1100+",
+        "equivalent": "接近一年 Max 套餐",
+        "expiry": "6月份到期",
+        "note": "只要到期前充成 coding plan 即可",
+        "price": "半价"
+      },
+      {
+        "platform": "字节火山方舟",
+        "balance": "600+",
+        "equivalent": "接近4个月 Pro 套餐",
+        "expiry": "6月份到期",
+        "note": "只要到期前充成 coding plan 即可",
+        "price": "半价"
+      }
+    ],
+    "contact": {
+      "label": "微信",
+      "id": "wp3xpqakcggz22"
+    },
+    "qrcode": "assets/wechat-qr.jpg"
+  },
   "table": {
     "columns": {
       "vendor": "平台",

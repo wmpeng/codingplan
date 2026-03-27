@@ -815,8 +815,7 @@
         /* 底部说明 */
         .notes-section {
             margin-top: 32px;
-            padding: 20px;
-            border-top: 1px solid var(--border-color);
+            padding: 20px 0;
         }
 
         .notes-section h3 {
@@ -845,6 +844,107 @@
             position: absolute;
             left: 0;
             color: var(--text-tertiary);
+        }
+
+        /* 账号出售区域 */
+        .account-sale-section {
+            margin-top: 24px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .account-sale-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .account-sale-section .description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .account-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .account-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+        }
+
+        .account-card .platform {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .account-card .info-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            padding: 4px 0;
+        }
+
+        .account-card .info-label {
+            color: var(--text-tertiary);
+        }
+
+        .account-card .info-value {
+            color: var(--text-secondary);
+        }
+
+        .account-card .price-tag {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 12px;
+            background: var(--accent-primary);
+            color: white;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .contact-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            padding: 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info .label {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            margin-bottom: 4px;
+        }
+
+        .contact-info .wechat-id {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-family: monospace;
+        }
+
+        .contact-qrcode {
+            width: 120px;
+            height: 120px;
+            border-radius: var(--radius-md);
+            object-fit: cover;
         }
 
         /* 滚动条美化 */
@@ -1349,6 +1449,11 @@
 
         <!-- 底部说明 -->
         <div class="notes-section" id="notesSection">
+            <!-- 动态填充 -->
+        </div>
+
+        <!-- 账号出售区域 -->
+        <div class="account-sale-section" id="accountSaleSection">
             <!-- 动态填充 -->
         </div>
     </div>
@@ -2270,6 +2375,64 @@
                     </ul>
                 `;
             }
+
+            // 渲染账号出售区域
+            if (appConfig.accountSale) {
+                renderAccountSale(appConfig.accountSale);
+            }
+        }
+
+        // 渲染账号出售
+        function renderAccountSale(sale) {
+            const container = document.getElementById('accountSaleSection');
+            if (!container) return;
+
+            const accountsHtml = sale.accounts.map(acc => `
+                <div class="account-card">
+                    <div class="platform">${acc.platform}</div>
+                    <div class="info-row">
+                        <span class="info-label">余额代金券</span>
+                        <span class="info-value">${acc.balance}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">相当于</span>
+                        <span class="info-value">${acc.equivalent}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">到期时间</span>
+                        <span class="info-value">${acc.expiry}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">说明</span>
+                        <span class="info-value">${acc.note}</span>
+                    </div>
+                    <span class="price-tag">${acc.price}出</span>
+                </div>
+            `).join('');
+
+            const contactHtml = sale.qrcode ? `
+                <div class="contact-section">
+                    <div class="contact-info">
+                        <div class="label">感兴趣联系 ${sale.contact.label}</div>
+                        <div class="wechat-id">${sale.contact.id}</div>
+                    </div>
+                    <img src="${sale.qrcode}" alt="微信二维码" class="contact-qrcode">
+                </div>
+            ` : `
+                <div class="contact-section">
+                    <div class="contact-info">
+                        <div class="label">感兴趣联系 ${sale.contact.label}</div>
+                        <div class="wechat-id">${sale.contact.id}</div>
+                    </div>
+                </div>
+            `;
+
+            container.innerHTML = `
+                <h3>${sale.title}</h3>
+                <div class="description">${sale.description}</div>
+                <div class="account-cards">${accountsHtml}</div>
+                ${contactHtml}
+            `;
         }
 
         // 渲染平台推荐
