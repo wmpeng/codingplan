@@ -100,7 +100,7 @@ function generateAccountSale(accountSale) {
     md += `${accountSale.description}\n\n`;
     
     accountSale.accounts.forEach(acc => {
-        md += `* 低价出一个${acc.platform}账号，${acc.detail}，${acc.price}出。\n\n`;
+        md += `* 低价出一个${acc.platform}账号，${acc.detail}，${acc.price}。\n\n`;
     });
     
     md += `感兴趣联系 微信：${accountSale.contact.id}\n\n`;
