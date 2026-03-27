@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 对比",
-    "updateDate": "更新日期2026.3.26",
+    "updateDate": "更新日期2026.3.27",
     "subtitle": "七大平台 智谱AI、Kimi、MiniMax、字节·方舟、阿里·百炼、百度·千帆、腾讯·混元，全面对比",
     "models": "支持Qwen-3.5，Doubao-Seed-2.0，MiniMax-M2.7，MiniMax-M2.5，GLM-5，Kimi-K2.5等模型",
     "github": {
@@ -75,18 +75,8 @@
   ],
   "accountSale": {
     "title": "出纯手工账号",
-    "description": "低价出 MiniMax 账号和字节火山账号，都是邀请得来的代金券。",
+    "description": "低价出字节火山账号，都是邀请得来的代金券。",
     "accounts": [
-      {
-        "platform": "MiniMax",
-        "detail": "有1100+余额代金券，接近一年 Max 套餐，6月份到期，只要到期前充成 coding plan 即可",
-        "price": "半价"
-      },
-      {
-        "platform": "字节火山方舟",
-        "detail": "有600+余额代金券，接近4个月 Pro 套餐，6月份到期，只要到期前充成 coding plan 即可",
-        "price": "半价"
-      }
     ],
     "contact": {
       "label": "微信",
