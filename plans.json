@@ -83,34 +83,6 @@
     "benefits": [],
     "note": "约100TPS"
   },
-    {
-    "vendor": "字节·方舟",
-    "plan": "Lite",
-    "action": "https://volcengine.com/L/uCoen5sFGaY/",
-    "firstMonthPrice": "-",
-    "monthlyPrice": 40,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": ["Doubao-Seed-2.0", "MiniMax-M2.5", "Kimi-K2.5", "GLM-4.7", "DeepSeek-V3.2"],
-    "hourlyRequests": 1200,
-    "monthlyRequests": 18000,
-    "benefits": ["ArkClaw 7天体验"],
-    "note": ""
-  },
-  {
-    "vendor": "字节·方舟",
-    "plan": "Pro",
-    "action": "https://volcengine.com/L/uCoen5sFGaY/",
-    "firstMonthPrice": "-",
-    "monthlyPrice": 200,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": ["Doubao-Seed-2.0", "MiniMax-M2.5", "Kimi-K2.5", "GLM-4.7", "DeepSeek-V3.2"],
-    "hourlyRequests": 6000,
-    "monthlyRequests": 90000,
-    "benefits": ["免费ArkClaw"],
-    "note": ""
-  },
   {
     "vendor": "智谱AI",
     "plan": "Lite",
@@ -152,6 +124,34 @@
     "monthlyRequests": 600000,
     "benefits": ["免费MCP次数"],
     "note": "1. 20倍Lite用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算"
+  },
+  {
+    "vendor": "字节·方舟",
+    "plan": "Lite",
+    "action": "https://volcengine.com/L/uCoen5sFGaY/",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 40,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": ["Doubao-Seed-2.0", "MiniMax-M2.5", "Kimi-K2.5", "GLM-4.7", "DeepSeek-V3.2"],
+    "hourlyRequests": 1200,
+    "monthlyRequests": 18000,
+    "benefits": ["ArkClaw 7天体验"],
+    "note": ""
+  },
+  {
+    "vendor": "字节·方舟",
+    "plan": "Pro",
+    "action": "https://volcengine.com/L/uCoen5sFGaY/",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 200,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": ["Doubao-Seed-2.0", "MiniMax-M2.5", "Kimi-K2.5", "GLM-4.7", "DeepSeek-V3.2"],
+    "hourlyRequests": 6000,
+    "monthlyRequests": 90000,
+    "benefits": ["免费ArkClaw"],
+    "note": ""
   },
   {
     "vendor": "阿里·百炼",
