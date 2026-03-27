@@ -2376,7 +2376,7 @@
         // 渲染账号出售
         function renderAccountSale(sale) {
             const container = document.getElementById('accountSaleSection');
-            if (!container) return;
+            if (!container || !sale.accounts || sale.accounts.length === 0) return;
 
             const accountsHtml = sale.accounts.map(acc => `
                 <div class="account-card">
