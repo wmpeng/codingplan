@@ -16,22 +16,25 @@
 ## 平台推荐
 
 1. MiniMax ⭐️⭐️⭐️⭐️⭐️
-    - 价格最便宜，且无需抢购。正有腾讯的首月优惠更便宜，但需要抢购。
-    - 独占最新MiniMax-M2.7模型，其他家都只支持到M2.5
-2. 字节·方舟 ⭐️⭐️⭐️⭐️⭐️
-    - 支持MiniMax、Kimi、GLM模型和自研Doubao-Seed-2.0系列模型。
-    - 赠送OpenClaw，ArkClaw为真OpenClaw。
-3. 阿里·百炼 ⭐️⭐️⭐️
-    - 独占Qwen3.5系列最新模型，其他家无Qwen模型。
-    - 但目前只有200块钱的pro版本套餐了，轻量使用的话，性价比不高。
-4. 腾讯·混元 ⭐️⭐️⭐️
-    - 中规中矩，支持常规GLM-5、Kimi-K2.5、MiniMax-M2.5。
-5. 百度·千帆 ⭐️⭐️⭐️
-    - 中规中矩，支持常规GLM-5、Kimi-K2.5、MiniMax-M2.5。
-6. 智谱AI ⭐️⭐️⭐️⭐️
-    - 免费MCP次数
+    - 价格最便宜，且无需抢购。+1
+    - 独占最新MiniMax-M2.7模型，其他家都只支持到M2.5。+1
+2. 字节·方舟 ⭐️⭐️⭐️⭐️
+    - 独占Doubao-Seed-2.0系列模型。+1
+    - 支持常规Kimi-K2.5、MiniMax-M2.5，但不支持GLM-5，只支持GLM-4.7。-1
+    - 赠送OpenClaw，ArkClaw为真OpenClaw。+1
+3. 智谱AI ⭐️⭐️⭐️⭐️
+    - 支持GLM-5。
+    - 提供免费MCP次数。+1
+4. 阿里·百炼 ⭐️⭐️⭐️
+    - 独占Qwen3.5系列最新模型，其他家无Qwen模型。+1
+    - 但目前只有200块钱的pro版本套餐了，轻量使用的话，性价比不高。-1
+5. 腾讯·混元 ⭐️⭐️⭐️
+    - 支持常规GLM-5、Kimi-K2.5、MiniMax-M2.5。
+    - 自家混元模型无优势。
+6. 百度·千帆 ⭐️⭐️⭐️
+    - 支持常规GLM-5、Kimi-K2.5、MiniMax-M2.5。
 7. Kimi ⭐️⭐️⭐️
-    - 常规K2.5
+    - 支持Kimi-K2.5。
 
 
 ## 📋 套餐对比表
@@ -46,7 +49,6 @@
 | MiniMax | Plus-极速版 | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=7EEmX0yfbU&source=link) | - | ¥98 | - / 季 | ¥980 ~~1176~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 1,500 | 22,500 | - | 约100TPS |
 | MiniMax | Max-极速版 | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=7EEmX0yfbU&source=link) | - | ¥199 | - / 季 | ¥1990 ~~2388~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 4,500 | 67,500 | - | 约100TPS |
 | MiniMax | Ultra-极速版 | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=7EEmX0yfbU&source=link) | - | ¥899 | - / 季 | ¥8990 ~~10788~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 30,000 | 450,000 | - | 约100TPS |
-| 阿里·百炼 | Lite | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | - | ¥40 | - / 季 | - / 年 | Qwen-3.5, MiniMax-M2.5, GLM-5, Kimi-K2.5, GLM-4.7 | 1,200 | 18,000 | - | - |
 | 阿里·百炼 | Pro | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | - | ¥200 | - / 季 | - / 年 | Qwen-3.5, MiniMax-M2.5, GLM-5, Kimi-K2.5, GLM-4.7 | 6,000 | 90,000 | - | - |
 | 腾讯·混元 | Lite | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥7.9 | ¥40 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 1,200 | 18,000 | - | - |
 | 腾讯·混元 | Pro | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥39.9 | ¥200 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 6,000 | 90,000 | - | - |

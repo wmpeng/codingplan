@@ -14,52 +14,56 @@
       "name": "MiniMax",
       "rating": 5,
       "reasons": [
-        "价格最便宜，且无需抢购。正有腾讯的首月优惠更便宜，但需要抢购。",
-        "独占最新MiniMax-M2.7模型，其他家都只支持到M2.5"
+        "价格最便宜，且无需抢购。+1",
+        "独占最新MiniMax-M2.7模型，其他家都只支持到M2.5。+1"
       ]
     },
     {
       "name": "字节·方舟",
-      "rating": 5,
+      "rating": 4,
       "reasons": [
-        "支持MiniMax、Kimi、GLM模型和自研Doubao-Seed-2.0系列模型。",
-        "赠送OpenClaw，ArkClaw为真OpenClaw。"
-      ]
-    },
-    {
-      "name": "阿里·百炼",
-      "rating": 3,
-      "reasons": [
-        "独占Qwen3.5系列最新模型，其他家无Qwen模型。",
-        "但目前只有200块钱的pro版本套餐了，轻量使用的话，性价比不高。"
-      ]
-    },
-    {
-      "name": "腾讯·混元",
-      "rating": 3,
-      "reasons": [
-        "中规中矩，支持常规GLM-5、Kimi-K2.5、MiniMax-M2.5。"
-      ]
-    },
-    {
-      "name": "百度·千帆",
-      "rating": 3,
-      "reasons": [
-        "中规中矩，支持常规GLM-5、Kimi-K2.5、MiniMax-M2.5。"
+        "独占Doubao-Seed-2.0系列模型。+1",
+        "支持常规Kimi-K2.5、MiniMax-M2.5，但不支持GLM-5，只支持GLM-4.7。-1",
+        "赠送OpenClaw，ArkClaw为真OpenClaw。+1"
       ]
     },
     {
       "name": "智谱AI",
       "rating": 4,
       "reasons": [
-        "免费MCP次数"
+        "支持GLM-5。",
+        "提供免费MCP次数。+1"
+      ]
+    },
+    {
+      "name": "阿里·百炼",
+      "rating": 3,
+      "reasons": [
+        "独占Qwen3.5系列最新模型，其他家无Qwen模型。+1",
+        "但目前只有200块钱的pro版本套餐了，轻量使用的话，性价比不高。-1"
+      ]
+    },
+    {
+      "name": "腾讯·混元",
+      "rating": 3,
+      "reasons": [
+        "支持常规GLM-5、Kimi-K2.5、MiniMax-M2.5。",
+        "自家混元模型无优势。"
+      ]
+    },
+
+    {
+      "name": "百度·千帆",
+      "rating": 3,
+      "reasons": [
+        "支持常规GLM-5、Kimi-K2.5、MiniMax-M2.5。"
       ]
     },
     {
       "name": "Kimi",
       "rating": 3,
       "reasons": [
-        "常规K2.5"
+        "支持Kimi-K2.5。"
       ]
     }
   ],
