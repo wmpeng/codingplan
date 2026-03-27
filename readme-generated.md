@@ -1,4 +1,4 @@
-# AI Coding Plan 对比
+# AI Coding Plan 对比工具
 
 > 更新日期2026.3.26
 
@@ -48,17 +48,17 @@
 | MiniMax | Ultra-极速版 | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=7EEmX0yfbU&source=link) | - | ¥899 | - / 季 | ¥8990 ~~10788~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 30,000 | 450,000 | - | 约100TPS |
 | 阿里·百炼 | Lite | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | - | ¥40 | - / 季 | - / 年 | Qwen-3.5, MiniMax-M2.5, GLM-5, Kimi-K2.5, GLM-4.7 | 1,200 | 18,000 | - | - |
 | 阿里·百炼 | Pro | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | - | ¥200 | - / 季 | - / 年 | Qwen-3.5, MiniMax-M2.5, GLM-5, Kimi-K2.5, GLM-4.7 | 6,000 | 90,000 | - | - |
-| 腾讯·混元 | Lite | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥7.90 | ¥40 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 1,200 | 18,000 | - | - |
-| 腾讯·混元 | Pro | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥39.90 | ¥200 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 6,000 | 90,000 | - | - |
+| 腾讯·混元 | Lite | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥7.9 | ¥40 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 1,200 | 18,000 | - | - |
+| 腾讯·混元 | Pro | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥39.9 | ¥200 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 6,000 | 90,000 | - | - |
 | 百度·千帆 | Lite | [跳转](https://cloud.baidu.com/product/codingplan.html) | - | ¥40 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.5, DeepSeek-V3.2 | 1,200 | 18,000 | - | - |
 | 百度·千帆 | Pro | [跳转](https://cloud.baidu.com/product/codingplan.html) | - | ¥200 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.5, DeepSeek-V3.2 | 6,000 | 90,000 | - | - |
 | Kimi | Andante | [跳转](https://www.kimi.com/code) | - | ¥49 | - / 季 | ¥468 ~~588~~ / 年 | Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | - | Agent 4 倍速 |
 | Kimi | Moderato | [跳转](https://www.kimi.com/code) | - | ¥99 | - / 季 | ¥948 ~~1188~~ / 年 | Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | - | 4 倍额度, Agent 多任务并行 |
 | Kimi | Allegretto | [跳转](https://www.kimi.com/code) | - | ¥199 | - / 季 | ¥1908 ~~2388~~ / 年 | Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | 免费Kimi-Claw | 20 倍额度 |
 | Kimi | Allegro | [跳转](https://www.kimi.com/code) | - | ¥699 | - / 季 | ¥6708 ~~8388~~ / 年 | Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | 免费Kimi-Claw | 60 倍额度 |
-| 智谱AI | Lite | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥49 | ¥132 ~~147~~ | ¥411 ~~588~~ / 年 | GLM-4.7 | 1200 | 24000 | 免费MCP次数 | 1. 3倍Claude Pro用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算 |
-| 智谱AI | Pro | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥149 | ¥402 ~~447~~ | ¥1251 ~~1788~~ / 年 | GLM-5, GLM-4.7 | 6000 | 120000 | 免费MCP次数 | 1. 5倍Lite用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算 |
-| 智谱AI | Max | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥469 | ¥1266 ~~1407~~ | ¥3939 ~~5628~~ / 年 | GLM-5, GLM-4.7 | 24000 | 600000 | 免费MCP次数 | 1. 20倍Lite用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算 |
+| 智谱AI | Lite | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥49 | ¥132 ~~147~~ / 季 | ¥411 ~~588~~ / 年 | GLM-4.7 | 1,200 | 24,000 | 免费MCP次数 | 1. 3倍Claude Pro用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算 |
+| 智谱AI | Pro | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥149 | ¥402 ~~447~~ / 季 | ¥1251 ~~1788~~ / 年 | GLM-5, GLM-4.7 | 6,000 | 120,000 | 免费MCP次数 | 1. 5倍Lite用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算 |
+| 智谱AI | Max | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥469 | ¥1266 ~~1407~~ / 季 | ¥3939 ~~5628~~ / 年 | GLM-5, GLM-4.7 | 24,000 | 600,000 | 免费MCP次数 | 1. 20倍Lite用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算 |
 
 
 💡 **说明**

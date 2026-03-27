@@ -33,7 +33,8 @@ function generateRecommendations(recommendations) {
 function formatPrice(price) {
     if (price === '-') return '-';
     if (typeof price === 'number') {
-        return Number.isInteger(price) ? `¥${price}` : `¥${price.toFixed(2)}`;
+        // 整数显示为 ¥7.9，小数显示为 ¥7.90
+        return `¥${price}`;
     }
     return price;
 }
@@ -69,9 +70,11 @@ function generateTable(plans) {
         const link = `[跳转](${plan.action})`;
         const firstMonth = formatPrice(plan.firstMonthPrice);
         const monthly = formatPrice(plan.monthlyPrice);
+        // 包季：有值时加 " / 季"
         const quarterly = plan.quarterlyPrice !== '-' 
-            ? formatStrikethrough(plan.quarterlyPrice, getOriginalPrice(plan.monthlyPrice, 3))
+            ? formatStrikethrough(plan.quarterlyPrice, getOriginalPrice(plan.monthlyPrice, 3)) + ' / 季'
             : '- / 季';
+        // 包年：有值时加 " / 年"
         const yearly = plan.yearlyPrice !== '-'
             ? formatStrikethrough(plan.yearlyPrice, getOriginalPrice(plan.monthlyPrice, 12)) + ' / 年'
             : '- / 年';
@@ -110,17 +113,17 @@ function generateAccountSale(accountSale) {
 
 // 生成完整 README
 function generateReadme() {
-    const { header, recommendations, notes, accountSale } = config;
+    const { recommendations, notes, accountSale } = config;
     
-    let md = `# ${header.title}
+    let md = `# AI Coding Plan 对比工具
 
-> ${header.updateDate}
+> ${config.header.updateDate}
 
 ## 📖 简介
 
-${header.subtitle}
+${config.header.subtitle}
 
-${header.models}
+${config.header.models}
 
 ### 在线访问
 
