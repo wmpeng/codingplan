@@ -884,27 +884,18 @@
             font-size: 15px;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
-        .account-card .info-row {
-            display: flex;
-            justify-content: space-between;
+        .account-card .detail {
             font-size: 13px;
-            padding: 4px 0;
-        }
-
-        .account-card .info-label {
-            color: var(--text-tertiary);
-        }
-
-        .account-card .info-value {
             color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 12px;
         }
 
         .account-card .price-tag {
             display: inline-block;
-            margin-top: 12px;
             padding: 4px 12px;
             background: var(--accent-primary);
             color: white;
@@ -2390,22 +2381,7 @@
             const accountsHtml = sale.accounts.map(acc => `
                 <div class="account-card">
                     <div class="platform">${acc.platform}</div>
-                    <div class="info-row">
-                        <span class="info-label">余额代金券</span>
-                        <span class="info-value">${acc.balance}</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">相当于</span>
-                        <span class="info-value">${acc.equivalent}</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">到期时间</span>
-                        <span class="info-value">${acc.expiry}</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">说明</span>
-                        <span class="info-value">${acc.note}</span>
-                    </div>
+                    <div class="detail">${acc.detail}</div>
                     <span class="price-tag">${acc.price}出</span>
                 </div>
             `).join('');
