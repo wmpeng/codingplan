@@ -831,14 +831,39 @@
             color: var(--text-tertiary);
         }
 
-        /* 底部免责声明 */
-        .disclaimer {
-            text-align: center;
+        /* 底部说明 */
+        .notes-section {
             margin-top: 32px;
             padding: 20px;
-            color: var(--text-tertiary);
-            font-size: 12px;
             border-top: 1px solid var(--border-color);
+        }
+
+        .notes-section h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .notes-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .notes-section li {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            padding: 6px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .notes-section li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--text-tertiary);
         }
 
         /* 滚动条美化 */
@@ -1341,9 +1366,9 @@
             </div>
         </div>
 
-        <!-- 底部免责声明 -->
-        <div class="disclaimer">
-            ⚠️ 本页面数据仅供参考，价格及权益最终以平台官方公布为准
+        <!-- 底部说明 -->
+        <div class="notes-section" id="notesSection">
+            <!-- 动态填充 -->
         </div>
     </div>
 
@@ -2252,6 +2277,17 @@
             // 渲染平台推荐
             if (appConfig.recommendations && appConfig.recommendations.length > 0) {
                 renderRecommendations(appConfig.recommendations);
+            }
+
+            // 渲染底部说明
+            if (appConfig.notes && appConfig.notes.length > 0) {
+                const notesSection = document.getElementById('notesSection');
+                notesSection.innerHTML = `
+                    <h3>💡 说明</h3>
+                    <ul>
+                        ${appConfig.notes.map(note => `<li>${note}</li>`).join('')}
+                    </ul>
+                `;
             }
         }
 
