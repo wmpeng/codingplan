@@ -164,12 +164,11 @@ ${generateAccountSale(accountSale)}## 🤝 贡献
 function main() {
     const readme = generateReadme();
     
-    // 输出到 readme-generated.md 用于对比
-    const outputPath = path.join(__dirname, '../readme-generated.md');
+    // 直接输出到 README.md
+    const outputPath = path.join(__dirname, '../README.md');
     fs.writeFileSync(outputPath, readme, 'utf8');
     
-    console.log('README 已生成: readme-generated.md');
-    console.log('请对比内容后，确认是否覆盖 README.md');
+    console.log('README.md 已生成');
 }
 
 main();
