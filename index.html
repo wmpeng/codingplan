@@ -1692,10 +1692,10 @@
 
         // 价格滑块状态
         const priceSliders = {
-            firstMonth: { min: 0, max: 0, maxValue: 0 },
-            monthly: { min: 0, max: 0, maxValue: 0 },
-            quarterly: { min: 0, max: 0, maxValue: 0 },
-            yearly: { min: 0, max: 0, maxValue: 0 }
+            firstMonth: { min: 0, max: 0, minValue: 1, maxValue: 0 },
+            monthly: { min: 0, max: 0, minValue: 1, maxValue: 0 },
+            quarterly: { min: 0, max: 0, minValue: 1, maxValue: 0 },
+            yearly: { min: 0, max: 0, minValue: 1, maxValue: 0 }
         };
 
         // 计算价格类型的最大值
@@ -1704,6 +1704,15 @@
             const priceKey = priceType + 'Price';
             const maxPrice = Math.max(...allPlans.map(plan => plan[priceKey]));
             return Math.ceil(maxPrice); // 向上取整
+        }
+
+        // 计算价格类型的最小值
+        function getMinPrice(priceType) {
+            if (allPlans.length === 0) return 1;
+            const priceKey = priceType + 'Price';
+            const prices = allPlans.map(plan => plan[priceKey]).filter(p => p > 0);
+            if (prices.length === 0) return 1;
+            return Math.floor(Math.min(...prices)); // 向下取整
         }
 
         // 初始化价格滑块
@@ -1716,12 +1725,14 @@
                 maxValue: document.getElementById(`${priceType}MaxValue`)
             };
 
+            const minPrice = getMinPrice(priceType);
             const maxPrice = getMaxPrice(priceType);
+            priceSliders[priceType].minValue = minPrice;
             priceSliders[priceType].maxValue = maxPrice;
-            priceSliders[priceType].min = 0;
+            priceSliders[priceType].min = minPrice;
             priceSliders[priceType].max = maxPrice;
 
-            updateSliderVisuals(priceType, 0, maxPrice);
+            updateSliderVisuals(priceType, minPrice, maxPrice);
 
             // 添加拖动事件
             addSliderDragEvents(priceType, slider);
@@ -1730,13 +1741,14 @@
         // 更新滑块视觉效果（对数刻度）
         function updateSliderVisuals(priceType, minPrice, maxPrice) {
             const slider = priceSliders[priceType];
-            const minValue = Math.max(1, Math.round(minPrice));
+            const minValue = Math.max(slider.minValue, Math.round(minPrice));
             const maxValue = Math.min(slider.maxValue, Math.round(maxPrice));
-            const maxValueLog = Math.log10(slider.maxValue);
+            const minLog = Math.log10(slider.minValue);
+            const maxLog = Math.log10(slider.maxValue);
 
             // 对数刻度计算位置
-            const minPercent = (Math.log10(minValue) / maxValueLog) * 100;
-            const maxPercent = (Math.log10(maxValue) / maxValueLog) * 100;
+            const minPercent = ((Math.log10(minValue) - minLog) / (maxLog - minLog)) * 100;
+            const maxPercent = ((Math.log10(maxValue) - minLog) / (maxLog - minLog)) * 100;
 
             const minThumb = document.getElementById(`${priceType}SliderMin`);
             const maxThumb = document.getElementById(`${priceType}SliderMax`);
@@ -1771,8 +1783,9 @@
                 percent = Math.max(0, Math.min(100, percent));
 
                 // 从对数刻度转换回实际值
-                const maxValueLog = Math.log10(priceSliders[priceType].maxValue);
-                const value = Math.pow(10, (percent / 100) * maxValueLog);
+                const minLog = Math.log10(priceSliders[priceType].minValue);
+                const maxLog = Math.log10(priceSliders[priceType].maxValue);
+                const value = Math.pow(10, minLog + (percent / 100) * (maxLog - minLog));
 
                 if (isDragging === 'min') {
                     const newMin = Math.min(value, priceSliders[priceType].max);
@@ -1808,22 +1821,30 @@
 
         // 首月价格筛选
         function applyFirstMonthPriceFilter() {
-            priceFilters.firstMonth.min = priceSliders.firstMonth.min;
-            priceFilters.firstMonth.max = priceSliders.firstMonth.max;
+            // 检查滑块是否在初始位置
+            const isInitial = priceSliders.firstMonth.min === priceSliders.firstMonth.minValue &&
+                              priceSliders.firstMonth.max === priceSliders.firstMonth.maxValue;
+            if (isInitial) {
+                priceFilters.firstMonth.min = null;
+                priceFilters.firstMonth.max = null;
+            } else {
+                priceFilters.firstMonth.min = priceSliders.firstMonth.min;
+                priceFilters.firstMonth.max = priceSliders.firstMonth.max;
+            }
             updateFirstMonthPriceCount();
             applyFilters();
             closeDropdownWithoutFilter();
         }
 
         function resetFirstMonthPriceFilter() {
-            updateSliderVisuals('firstMonth', 0, priceSliders.firstMonth.maxValue);
-            priceFilters.firstMonth.min = 0;
-            priceFilters.firstMonth.max = priceSliders.firstMonth.maxValue;
+            updateSliderVisuals('firstMonth', priceSliders.firstMonth.minValue, priceSliders.firstMonth.maxValue);
+            priceFilters.firstMonth.min = null;
+            priceFilters.firstMonth.max = null;
             updateFirstMonthPriceCount();
         }
 
         function updateFirstMonthPriceCount() {
-            const isActive = priceFilters.firstMonth.min > 0 || priceFilters.firstMonth.max < priceSliders.firstMonth.maxValue;
+            const isActive = priceFilters.firstMonth.min !== null || priceFilters.firstMonth.max !== null;
             if (isActive) {
                 firstMonthPriceCount.style.display = 'inline-block';
                 firstMonthPriceBtn.classList.add('active');
@@ -1835,22 +1856,29 @@
 
         // 包月价格筛选
         function applyMonthlyPriceFilter() {
-            priceFilters.monthly.min = priceSliders.monthly.min;
-            priceFilters.monthly.max = priceSliders.monthly.max;
+            const isInitial = priceSliders.monthly.min === priceSliders.monthly.minValue &&
+                              priceSliders.monthly.max === priceSliders.monthly.maxValue;
+            if (isInitial) {
+                priceFilters.monthly.min = null;
+                priceFilters.monthly.max = null;
+            } else {
+                priceFilters.monthly.min = priceSliders.monthly.min;
+                priceFilters.monthly.max = priceSliders.monthly.max;
+            }
             updateMonthlyPriceCount();
             applyFilters();
             closeDropdownWithoutFilter();
         }
 
         function resetMonthlyPriceFilter() {
-            updateSliderVisuals('monthly', 0, priceSliders.monthly.maxValue);
-            priceFilters.monthly.min = 0;
-            priceFilters.monthly.max = priceSliders.monthly.maxValue;
+            updateSliderVisuals('monthly', priceSliders.monthly.minValue, priceSliders.monthly.maxValue);
+            priceFilters.monthly.min = null;
+            priceFilters.monthly.max = null;
             updateMonthlyPriceCount();
         }
 
         function updateMonthlyPriceCount() {
-            const isActive = priceFilters.monthly.min > 0 || priceFilters.monthly.max < priceSliders.monthly.maxValue;
+            const isActive = priceFilters.monthly.min !== null || priceFilters.monthly.max !== null;
             if (isActive) {
                 monthlyPriceCount.style.display = 'inline-block';
                 monthlyPriceBtn.classList.add('active');
@@ -1862,22 +1890,29 @@
 
         // 包季价格筛选
         function applyQuarterlyPriceFilter() {
-            priceFilters.quarterly.min = priceSliders.quarterly.min;
-            priceFilters.quarterly.max = priceSliders.quarterly.max;
+            const isInitial = priceSliders.quarterly.min === priceSliders.quarterly.minValue &&
+                              priceSliders.quarterly.max === priceSliders.quarterly.maxValue;
+            if (isInitial) {
+                priceFilters.quarterly.min = null;
+                priceFilters.quarterly.max = null;
+            } else {
+                priceFilters.quarterly.min = priceSliders.quarterly.min;
+                priceFilters.quarterly.max = priceSliders.quarterly.max;
+            }
             updateQuarterlyPriceCount();
             applyFilters();
             closeDropdownWithoutFilter();
         }
 
         function resetQuarterlyPriceFilter() {
-            updateSliderVisuals('quarterly', 0, priceSliders.quarterly.maxValue);
-            priceFilters.quarterly.min = 0;
-            priceFilters.quarterly.max = priceSliders.quarterly.maxValue;
+            updateSliderVisuals('quarterly', priceSliders.quarterly.minValue, priceSliders.quarterly.maxValue);
+            priceFilters.quarterly.min = null;
+            priceFilters.quarterly.max = null;
             updateQuarterlyPriceCount();
         }
 
         function updateQuarterlyPriceCount() {
-            const isActive = priceFilters.quarterly.min > 0 || priceFilters.quarterly.max < priceSliders.quarterly.maxValue;
+            const isActive = priceFilters.quarterly.min !== null || priceFilters.quarterly.max !== null;
             if (isActive) {
                 quarterlyPriceCount.style.display = 'inline-block';
                 quarterlyPriceBtn.classList.add('active');
@@ -1889,22 +1924,29 @@
 
         // 包年价格筛选
         function applyYearlyPriceFilter() {
-            priceFilters.yearly.min = priceSliders.yearly.min;
-            priceFilters.yearly.max = priceSliders.yearly.max;
+            const isInitial = priceSliders.yearly.min === priceSliders.yearly.minValue &&
+                              priceSliders.yearly.max === priceSliders.yearly.maxValue;
+            if (isInitial) {
+                priceFilters.yearly.min = null;
+                priceFilters.yearly.max = null;
+            } else {
+                priceFilters.yearly.min = priceSliders.yearly.min;
+                priceFilters.yearly.max = priceSliders.yearly.max;
+            }
             updateYearlyPriceCount();
             applyFilters();
             closeDropdownWithoutFilter();
         }
 
         function resetYearlyPriceFilter() {
-            updateSliderVisuals('yearly', 0, priceSliders.yearly.maxValue);
-            priceFilters.yearly.min = 0;
-            priceFilters.yearly.max = priceSliders.yearly.maxValue;
+            updateSliderVisuals('yearly', priceSliders.yearly.minValue, priceSliders.yearly.maxValue);
+            priceFilters.yearly.min = null;
+            priceFilters.yearly.max = null;
             updateYearlyPriceCount();
         }
 
         function updateYearlyPriceCount() {
-            const isActive = priceFilters.yearly.min > 0 || priceFilters.yearly.max < priceSliders.yearly.maxValue;
+            const isActive = priceFilters.yearly.min !== null || priceFilters.yearly.max !== null;
             if (isActive) {
                 yearlyPriceCount.style.display = 'inline-block';
                 yearlyPriceBtn.classList.add('active');
