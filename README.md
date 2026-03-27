@@ -1,12 +1,12 @@
 # AI Coding Plan 对比工具
 
-> 更新日期2026.3.27
+> 更新日期2026.3.28 | 更新GLM5.1 模型
 
 ## 📖 简介
 
 七大平台 智谱AI、Kimi、MiniMax、字节·方舟、阿里·百炼、百度·千帆、腾讯·混元，全面对比
 
-支持Qwen-3.5，Doubao-Seed-2.0，MiniMax-M2.7，MiniMax-M2.5，GLM-5，Kimi-K2.5等模型
+支持Qwen-3.5，Doubao-Seed-2.0，MiniMax-M2.7，MiniMax-M2.5，GLM-5.1，GLM-5，Kimi-K2.5等模型
 
 ### 在线访问
 
@@ -17,14 +17,14 @@
 
 1. MiniMax ⭐️⭐️⭐️⭐️⭐️
     - 价格最便宜，且无需抢购。+1
-    - 独占最新MiniMax-M2.7模型，其他家都只支持到M2.5。+1
-2. 字节·方舟 ⭐️⭐️⭐️⭐️
+    - 独占MiniMax-M2.7模型。+1
+2. 智谱AI ⭐️⭐️⭐️⭐️⭐️
+    - 独占GLM5.1模型。+1
+    - 提供免费MCP次数。+1
+3. 字节·方舟 ⭐️⭐️⭐️⭐️
     - 独占Doubao-Seed-2.0系列模型。+1
     - 不支持GLM-5，只支持GLM-4.7。-1
     - 赠送真OpenClaw。+1
-3. 智谱AI ⭐️⭐️⭐️⭐️
-    - 支持GLM-5。
-    - 提供免费MCP次数。+1
 4. 阿里·百炼 ⭐️⭐️⭐️
     - 独占Qwen3.5系列模型。+1
     - 只有pro套餐，轻量使用性价比不高。-1
@@ -36,7 +36,7 @@
 7. Kimi ⭐️⭐️⭐️
     - 支持Kimi-K2.5。
 
-**评分标准**: 价格优势劣势1分，模型优势1分，独占模型1分，其他优势1分
+**评分标准**: 基准3颗星，价格优势劣势1分，模型优势或独占模型1分，其他优势1分
 
 
 ## 📋 套餐对比表
@@ -49,11 +49,11 @@
 | MiniMax | Plus-极速版 | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=7EEmX0yfbU&source=link) | - | ¥98 | - / 季 | ¥980 ~~1176~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 1,500 | 22,500 | - | 约100TPS |
 | MiniMax | Max-极速版 | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=7EEmX0yfbU&source=link) | - | ¥199 | - / 季 | ¥1990 ~~2388~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 4,500 | 67,500 | - | 约100TPS |
 | MiniMax | Ultra-极速版 | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=7EEmX0yfbU&source=link) | - | ¥899 | - / 季 | ¥8990 ~~10788~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 30,000 | 450,000 | - | 约100TPS |
-| 字节·方舟 | Lite | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥40 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 1,200 | 18,000 | ArkClaw 7天体验 | - |
-| 字节·方舟 | Pro | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥200 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 6,000 | 90,000 | 免费ArkClaw | - |
 | 智谱AI | Lite | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥49 | ¥132 ~~147~~ / 季 | ¥411 ~~588~~ / 年 | GLM-4.7 | 1,200 | 24,000 | 免费MCP次数 | 1. 3倍Claude Pro用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算 |
 | 智谱AI | Pro | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥149 | ¥402 ~~447~~ / 季 | ¥1251 ~~1788~~ / 年 | GLM-5, GLM-4.7 | 6,000 | 120,000 | 免费MCP次数 | 1. 5倍Lite用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算 |
 | 智谱AI | Max | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥469 | ¥1266 ~~1407~~ / 季 | ¥3939 ~~5628~~ / 年 | GLM-5, GLM-4.7 | 24,000 | 600,000 | 免费MCP次数 | 1. 20倍Lite用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算 |
+| 字节·方舟 | Lite | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥40 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 1,200 | 18,000 | ArkClaw 7天体验 | - |
+| 字节·方舟 | Pro | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥200 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 6,000 | 90,000 | 免费ArkClaw | - |
 | 阿里·百炼 | Pro | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | - | ¥200 | - / 季 | - / 年 | Qwen-3.5, MiniMax-M2.5, GLM-5, Kimi-K2.5, GLM-4.7 | 6,000 | 90,000 | - | - |
 | 腾讯·混元 | Lite | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥7.9 | ¥40 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 1,200 | 18,000 | - | - |
 | 腾讯·混元 | Pro | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥39.9 | ¥200 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 6,000 | 90,000 | - | - |
