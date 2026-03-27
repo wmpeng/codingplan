@@ -1359,9 +1359,20 @@
         let allPlans = [];
         let filteredPlans = [];
         let currentSort = { column: null, direction: 'asc' };
+        // 已确认的选择
         let selectedVendors = new Set();
         let selectedModels = new Set();
         let priceFilters = {
+            firstMonth: { min: null, max: null },
+            monthly: { min: null, max: null },
+            quarterly: { min: null, max: null },
+            yearly: { min: null, max: null }
+        };
+
+        // 临时选择（下拉框中的操作，只有点确定才提交）
+        let tempSelectedVendors = new Set();
+        let tempSelectedModels = new Set();
+        let tempPriceFilters = {
             firstMonth: { min: null, max: null },
             monthly: { min: null, max: null },
             quarterly: { min: null, max: null },
@@ -1463,7 +1474,7 @@
         }
 
         // 下拉菜单控制
-        function toggleDropdown(btn, dropdown) {
+        function toggleDropdown(btn, dropdown, type = null) {
             if (activeDropdown && activeDropdown !== dropdown) {
                 activeDropdown.classList.remove('show');
                 const prevBtn = activeDropdown.previousElementSibling;
@@ -1477,19 +1488,66 @@
                 dropdown.classList.add('show');
                 btn.classList.add('active');
                 activeDropdown = dropdown;
+
+                // 打开下拉框时，初始化临时状态为当前已确认状态
+                if (type === 'vendor') {
+                    tempSelectedVendors = new Set(selectedVendors);
+                    syncVendorCheckboxes();
+                } else if (type === 'model') {
+                    tempSelectedModels = new Set(selectedModels);
+                    syncModelCheckboxes();
+                } else if (type && tempPriceFilters[type]) {
+                    tempPriceFilters[type].min = priceFilters[type].min;
+                    tempPriceFilters[type].max = priceFilters[type].max;
+                    if (priceFilters[type].min !== null && priceFilters[type].max !== null) {
+                        updateSliderVisuals(type, priceFilters[type].min, priceFilters[type].max);
+                    } else {
+                        updateSliderVisuals(type, priceSliders[type].minValue, priceSliders[type].maxValue);
+                    }
+                }
             }
         }
 
+        // 同步厂商复选框状态
+        function syncVendorCheckboxes() {
+            document.querySelectorAll('#vendorCheckboxes input').forEach(cb => {
+                cb.checked = tempSelectedVendors.has(cb.value);
+            });
+        }
+
+        // 同步模型复选框状态
+        function syncModelCheckboxes() {
+            document.querySelectorAll('#modelCheckboxes input').forEach(cb => {
+                cb.checked = tempSelectedModels.has(cb.value);
+            });
+        }
+
         function closeAllDropdowns() {
+            // 提交临时状态到正式状态
+            if (activeDropdown === vendorDropdown) {
+                selectedVendors = new Set(tempSelectedVendors);
+                updateVendorCount();
+            } else if (activeDropdown === modelDropdown) {
+                selectedModels = new Set(tempSelectedModels);
+                updateModelCount();
+            }
+
             document.querySelectorAll('.dropdown-menu').forEach(d => d.classList.remove('show'));
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             activeDropdown = null;
-            // 应用筛选（厂商和模型的确定按钮触发）
+            // 应用筛选
             applyFilters();
         }
 
         // 价格筛选的确定按钮单独处理，避免重复调用 applyFilters
         function closeDropdownWithoutFilter() {
+            // 恢复按钮显示到已确认状态
+            if (activeDropdown === vendorDropdown) {
+                updateVendorCount();
+            } else if (activeDropdown === modelDropdown) {
+                updateModelCount();
+            }
+
             document.querySelectorAll('.dropdown-menu').forEach(d => d.classList.remove('show'));
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             activeDropdown = null;
@@ -1497,36 +1555,36 @@
 
         vendorBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            toggleDropdown(vendorBtn, vendorDropdown);
+            toggleDropdown(vendorBtn, vendorDropdown, 'vendor');
         });
 
         // 首月价格
         firstMonthPriceBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            toggleDropdown(firstMonthPriceBtn, firstMonthPriceDropdown);
+            toggleDropdown(firstMonthPriceBtn, firstMonthPriceDropdown, 'firstMonth');
         });
 
         // 包月价格
         monthlyPriceBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            toggleDropdown(monthlyPriceBtn, monthlyPriceDropdown);
+            toggleDropdown(monthlyPriceBtn, monthlyPriceDropdown, 'monthly');
         });
 
         // 包季价格
         quarterlyPriceBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            toggleDropdown(quarterlyPriceBtn, quarterlyPriceDropdown);
+            toggleDropdown(quarterlyPriceBtn, quarterlyPriceDropdown, 'quarterly');
         });
 
         // 包年价格
         yearlyPriceBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            toggleDropdown(yearlyPriceBtn, yearlyPriceDropdown);
+            toggleDropdown(yearlyPriceBtn, yearlyPriceDropdown, 'yearly');
         });
 
         modelBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            toggleDropdown(modelBtn, modelDropdown);
+            toggleDropdown(modelBtn, modelDropdown, 'model');
         });
 
         document.addEventListener('click', () => {
@@ -1540,26 +1598,45 @@
         });
 
         // 更新选择
+        // 复选框操作只修改临时状态
         function updateVendorSelection() {
-            selectedVendors.clear();
+            tempSelectedVendors.clear();
             document.querySelectorAll('#vendorCheckboxes input:checked').forEach(cb => {
-                selectedVendors.add(cb.value);
+                tempSelectedVendors.add(cb.value);
             });
-
-            updateVendorCount();
-            // 不在这里调用 applyFilters()，等点击确定按钮后再应用
+            // 显示临时计数
+            updateTempVendorCount();
         }
 
         function updateModelSelection() {
-            selectedModels.clear();
+            tempSelectedModels.clear();
             document.querySelectorAll('#modelCheckboxes input:checked').forEach(cb => {
-                selectedModels.add(cb.value);
+                tempSelectedModels.add(cb.value);
             });
-
-            updateModelCount();
-            // 不在这里调用 applyFilters()，等点击确定按钮后再应用
+            // 显示临时计数
+            updateTempModelCount();
         }
 
+        // 显示临时计数
+        function updateTempVendorCount() {
+            if (tempSelectedVendors.size > 0) {
+                vendorCount.textContent = tempSelectedVendors.size;
+                vendorCount.style.display = 'inline-block';
+            } else {
+                vendorCount.style.display = 'none';
+            }
+        }
+
+        function updateTempModelCount() {
+            if (tempSelectedModels.size > 0) {
+                modelCount.textContent = tempSelectedModels.size;
+                modelCount.style.display = 'inline-block';
+            } else {
+                modelCount.style.display = 'none';
+            }
+        }
+
+        // 更新已确认状态的按钮显示
         function updateVendorCount() {
             if (selectedVendors.size > 0) {
                 vendorCount.textContent = selectedVendors.size;
@@ -1821,7 +1898,7 @@
 
         // 首月价格筛选
         function applyFirstMonthPriceFilter() {
-            // 检查滑块是否在初始位置
+            // 提交临时状态到正式状态
             const isInitial = priceSliders.firstMonth.min === priceSliders.firstMonth.minValue &&
                               priceSliders.firstMonth.max === priceSliders.firstMonth.maxValue;
             if (isInitial) {
@@ -1837,21 +1914,8 @@
         }
 
         function resetFirstMonthPriceFilter() {
+            // 重置只影响临时状态（滑块显示），不提交
             updateSliderVisuals('firstMonth', priceSliders.firstMonth.minValue, priceSliders.firstMonth.maxValue);
-            priceFilters.firstMonth.min = null;
-            priceFilters.firstMonth.max = null;
-            updateFirstMonthPriceCount();
-        }
-
-        function updateFirstMonthPriceCount() {
-            const isActive = priceFilters.firstMonth.min !== null || priceFilters.firstMonth.max !== null;
-            if (isActive) {
-                firstMonthPriceCount.style.display = 'inline-block';
-                firstMonthPriceBtn.classList.add('active');
-            } else {
-                firstMonthPriceCount.style.display = 'none';
-                firstMonthPriceBtn.classList.remove('active');
-            }
         }
 
         // 包月价格筛选
@@ -1871,21 +1935,8 @@
         }
 
         function resetMonthlyPriceFilter() {
+            // 重置只影响临时状态（滑块显示），不提交
             updateSliderVisuals('monthly', priceSliders.monthly.minValue, priceSliders.monthly.maxValue);
-            priceFilters.monthly.min = null;
-            priceFilters.monthly.max = null;
-            updateMonthlyPriceCount();
-        }
-
-        function updateMonthlyPriceCount() {
-            const isActive = priceFilters.monthly.min !== null || priceFilters.monthly.max !== null;
-            if (isActive) {
-                monthlyPriceCount.style.display = 'inline-block';
-                monthlyPriceBtn.classList.add('active');
-            } else {
-                monthlyPriceCount.style.display = 'none';
-                monthlyPriceBtn.classList.remove('active');
-            }
         }
 
         // 包季价格筛选
@@ -1905,21 +1956,8 @@
         }
 
         function resetQuarterlyPriceFilter() {
+            // 重置只影响临时状态（滑块显示），不提交
             updateSliderVisuals('quarterly', priceSliders.quarterly.minValue, priceSliders.quarterly.maxValue);
-            priceFilters.quarterly.min = null;
-            priceFilters.quarterly.max = null;
-            updateQuarterlyPriceCount();
-        }
-
-        function updateQuarterlyPriceCount() {
-            const isActive = priceFilters.quarterly.min !== null || priceFilters.quarterly.max !== null;
-            if (isActive) {
-                quarterlyPriceCount.style.display = 'inline-block';
-                quarterlyPriceBtn.classList.add('active');
-            } else {
-                quarterlyPriceCount.style.display = 'none';
-                quarterlyPriceBtn.classList.remove('active');
-            }
         }
 
         // 包年价格筛选
@@ -1939,34 +1977,23 @@
         }
 
         function resetYearlyPriceFilter() {
+            // 重置只影响临时状态（滑块显示），不提交
             updateSliderVisuals('yearly', priceSliders.yearly.minValue, priceSliders.yearly.maxValue);
-            priceFilters.yearly.min = null;
-            priceFilters.yearly.max = null;
-            updateYearlyPriceCount();
-        }
-
-        function updateYearlyPriceCount() {
-            const isActive = priceFilters.yearly.min !== null || priceFilters.yearly.max !== null;
-            if (isActive) {
-                yearlyPriceCount.style.display = 'inline-block';
-                yearlyPriceBtn.classList.add('active');
-            } else {
-                yearlyPriceCount.style.display = 'none';
-                yearlyPriceBtn.classList.remove('active');
-            }
         }
 
         // 重置筛选
         function resetVendorFilter() {
-            selectedVendors.clear();
+            // 重置只影响临时状态，不提交
+            tempSelectedVendors.clear();
             document.querySelectorAll('#vendorCheckboxes input').forEach(cb => cb.checked = false);
-            updateVendorCount();
+            updateTempVendorCount();
         }
 
         function resetModelFilter() {
-            selectedModels.clear();
+            // 重置只影响临时状态，不提交
+            tempSelectedModels.clear();
             document.querySelectorAll('#modelCheckboxes input').forEach(cb => cb.checked = false);
-            updateModelCount();
+            updateTempModelCount();
         }
 
         function resetAllFilters() {
