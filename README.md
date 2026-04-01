@@ -10,7 +10,7 @@
 
 ### 在线访问
 
-直接访问：[https://1302014895-2s0u9w2w8u.ap-beijing.tencentscf.com/s/cpgh](https://1302014895-2s0u9w2w8u.ap-beijing.tencentscf.com/s/cpgh)
+直接访问：[https://api.dreamfree.space/c/s/cpgh](https://api.dreamfree.space/c/s/cpgh)
 
 
 ## 平台推荐

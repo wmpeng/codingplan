@@ -9,7 +9,7 @@ const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const plans = JSON.parse(fs.readFileSync(plansPath, 'utf8'));
 
 // 硬编码内容
-const ONLINE_URL = 'https://1302014895-2s0u9w2w8u.ap-beijing.tencentscf.com/s/cpgh';
+const ONLINE_URL = 'https://api.dreamfree.space/c/s/cpgh';
 const FOOTER = '由扣子编程开发';
 
 // 生成星星
