@@ -280,6 +280,34 @@
     "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill"
   },
   {
+    "vendor": "京东·JoyBuilder",
+    "plan": "Lite",
+    "action": "https://www.jdcloud.com/cn/pages/codingplan",
+    "firstMonthPrice": 7.9,
+    "monthlyPrice": 40,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": ["Kimi-K2.5", "GLM-5", "MiniMax-M2.5", "DeepSeek-V3.2", "Qwen3-Coder"],
+    "hourlyRequests": 1200,
+    "monthlyRequests": 18000,
+    "benefits": [],
+    "note": "• 新用户首月专享7.9元优惠\n• 支持Claude Code、Cursor等主流编程工具"
+  },
+  {
+    "vendor": "京东·JoyBuilder",
+    "plan": "Pro",
+    "action": "https://www.jdcloud.com/cn/pages/codingplan",
+    "firstMonthPrice": 39.9,
+    "monthlyPrice": 200,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": ["Kimi-K2.5", "GLM-5", "MiniMax-M2.5", "DeepSeek-V3.2", "Qwen3-Coder"],
+    "hourlyRequests": 6000,
+    "monthlyRequests": 90000,
+    "benefits": [],
+    "note": "• 新用户首月专享39.9元优惠\n• 支持Claude Code、Cursor等主流编程工具"
+  },
+  {
     "vendor": "Kimi",
     "plan": "Andante",
     "action": "https://www.kimi.com/code",

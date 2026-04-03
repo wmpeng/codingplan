@@ -68,8 +68,12 @@
 • 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x |
 | 腾讯·混元 | Lite | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥7.9 | ¥40 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 1,200 | 18,000 | - | - |
 | 腾讯·混元 | Pro | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥39.9 | ¥200 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 6,000 | 90,000 | - | - |
-| 百度·千帆 | Lite | [跳转](https://cloud.baidu.com/product/codingplan.html) | - | ¥40 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.5, DeepSeek-V3.2 | 1,200 | 18,000 | - | - |
-| 百度·千帆 | Pro | [跳转](https://cloud.baidu.com/product/codingplan.html) | - | ¥200 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.5, DeepSeek-V3.2 | 6,000 | 90,000 | - | - |
+| 百度·千帆 | Lite | [跳转](https://cloud.baidu.com/product/codingplan.html) | - | ¥40 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.5, DeepSeek-V3.2 | 1,200 | 18,000 | - | 使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill |
+| 百度·千帆 | Pro | [跳转](https://cloud.baidu.com/product/codingplan.html) | - | ¥200 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.5, DeepSeek-V3.2 | 6,000 | 90,000 | - | 使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill |
+| 京东·JoyBuilder | Lite | [跳转](https://www.jdcloud.com/cn/pages/codingplan) | ¥7.9 | ¥40 | - / 季 | - / 年 | Kimi-K2.5, GLM-5, MiniMax-M2.5, DeepSeek-V3.2, Qwen3-Coder | 1,200 | 18,000 | - | • 新用户首月专享7.9元优惠
+• 支持Claude Code、Cursor等主流编程工具 |
+| 京东·JoyBuilder | Pro | [跳转](https://www.jdcloud.com/cn/pages/codingplan) | ¥39.9 | ¥200 | - / 季 | - / 年 | Kimi-K2.5, GLM-5, MiniMax-M2.5, DeepSeek-V3.2, Qwen3-Coder | 6,000 | 90,000 | - | • 新用户首月专享39.9元优惠
+• 支持Claude Code、Cursor等主流编程工具 |
 | Kimi | Andante | [跳转](https://www.kimi.com/code) | - | ¥49 | - / 季 | ¥468 ~~588~~ / 年 | Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | - | Agent 4 倍速 |
 | Kimi | Moderato | [跳转](https://www.kimi.com/code) | - | ¥99 | - / 季 | ¥948 ~~1188~~ / 年 | Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | - | 4 倍额度, Agent 多任务并行 |
 | Kimi | Allegretto | [跳转](https://www.kimi.com/code) | - | ¥199 | - / 季 | ¥1908 ~~2388~~ / 年 | Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | 免费Kimi-Claw | 20 倍额度 |
