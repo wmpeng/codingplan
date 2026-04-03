@@ -2,7 +2,7 @@
   {
     "vendor": "小米·MiMo",
     "plan": "Lite",
-    "action": "https:// Xiaomi mimo.com",
+    "action": "https://mimo.mi.com/",
     "firstMonthPrice": 34.32,
     "monthlyPrice": 39,
     "quarterlyPrice": "-",
@@ -11,12 +11,12 @@
     "hourlyRequests": "无限制",
     "monthlyRequests": "无限制",
     "benefits": ["TTS限时免费"],
-    "note": "• 60M Credits\n• 无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+    "note": "• 60M Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
   },
   {
     "vendor": "小米·MiMo",
     "plan": "Standard",
-    "action": "https:// Xiaomi mimo.com",
+    "action": "https://mimo.mi.com/",
     "firstMonthPrice": 87.12,
     "monthlyPrice": 99,
     "quarterlyPrice": "-",
@@ -25,12 +25,12 @@
     "hourlyRequests": "无限制",
     "monthlyRequests": "无限制",
     "benefits": ["TTS限时免费"],
-    "note": "1. 200M Credits\n• 无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+    "note": "• 200M Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
   },
   {
     "vendor": "小米·MiMo",
     "plan": "Pro",
-    "action": "https:// Xiaomi mimo.com",
+    "action": "https://mimo.mi.com/",
     "firstMonthPrice": 289.52,
     "monthlyPrice": 329,
     "quarterlyPrice": "-",
@@ -39,12 +39,12 @@
     "hourlyRequests": "无限制",
     "monthlyRequests": "无限制",
     "benefits": ["TTS限时免费"],
-    "note": "1. 700M Credits\n• 无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+    "note": "• 700M Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
   },
   {
     "vendor": "小米·MiMo",
     "plan": "Max",
-    "action": "https:// Xiaomi mimo.com",
+    "action": "https://mimo.mi.com/",
     "firstMonthPrice": 579.92,
     "monthlyPrice": 659,
     "quarterlyPrice": "-",
@@ -53,7 +53,7 @@
     "hourlyRequests": "无限制",
     "monthlyRequests": "无限制",
     "benefits": ["TTS限时免费"],
-    "note": "1. 1600M Credits 2. 无5小时限额，支持集中消耗 3. MiMo-V2-Omni:1x, Pro 256k:2x, Pro 256k~1M:4x"
+    "note": "• 1600M Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
   },
   {
     "vendor": "智谱AI",
@@ -67,7 +67,7 @@
     "hourlyRequests": 1200,
     "monthlyRequests": 24000,
     "benefits": ["免费MCP次数"],
-    "note": "1. 3倍Claude Pro用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算"
+    "note": "• 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
   {
     "vendor": "智谱AI",
@@ -81,7 +81,7 @@
     "hourlyRequests": 6000,
     "monthlyRequests": 120000,
     "benefits": ["免费MCP次数"],
-    "note": "1. 5倍Lite用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算"
+    "note": "• 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
   {
     "vendor": "智谱AI",
@@ -95,7 +95,7 @@
     "hourlyRequests": 24000,
     "monthlyRequests": 600000,
     "benefits": ["免费MCP次数"],
-    "note": "1. 20倍Lite用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算"
+    "note": "• 20倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
   {
     "vendor": "MiniMax",
