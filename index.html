@@ -791,6 +791,14 @@
             color: var(--text-secondary);
             font-size: 13px;
             font-weight: 400;
+            white-space: pre-line;
+            line-height: 1.6;
+        }
+
+        /* 备注列支持换行 */
+        th.note-header,
+        td:has(.note) {
+            white-space: normal !important;
         }
 
         /* 空状态 */
@@ -1449,7 +1457,7 @@
                             <th class="sortable" data-column="hourlyRequests">5小时请求数</th>
                             <th class="sortable" data-column="monthlyRequests">每月总请求数</th>
                             <th>其他权益</th>
-                            <th>备注</th>
+                            <th class="note-header">备注</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
@@ -2269,7 +2277,7 @@
                     <td>
                         ${plan.benefits.map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}
                     </td>
-                    <td><span class="note">${escapeHtml(plan['note'] || '')}</span></td>
+                    <td><span class="note">${(plan['note'] || '').replace(/\n/g, '<br>')}</span></td>
                 </tr>
             `).join('');
 
