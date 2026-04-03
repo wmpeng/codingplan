@@ -44,26 +44,11 @@
       ]
     },
     {
-      "name": "腾讯·混元",
+      "name": "小米·MiMo",
       "rating": 3,
       "reasons": [
-        "支持常规GLM-5、Kimi-K2.5、MiniMax-M2.5。",
-        "自家混元模型无优势。"
-      ]
-    },
-
-    {
-      "name": "百度·千帆",
-      "rating": 3,
-      "reasons": [
-        "支持常规GLM-5、Kimi-K2.5、MiniMax-M2.5。"
-      ]
-    },
-    {
-      "name": "Kimi",
-      "rating": 3,
-      "reasons": [
-        "支持Kimi-K2.5。"
+        "独占Mimo模型。+1",
+        "按Token计费，性价比略低。-1"
       ]
     }
   ],
