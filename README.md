@@ -4,7 +4,7 @@
 
 ## 📖 简介
 
-九大平台 智谱AI、Kimi、MiniMax、小米·MiMo、字节·方舟、阿里·百炼、百度·千帆、腾讯·混元，全面对比
+九大平台 智谱AI、Kimi、MiniMax、小米·MiMo、字节·方舟、阿里·百炼、百度·千帆、腾讯·混元、京东云，全面对比
 
 支持Qwen-3.5，Doubao-Seed-2.0，MiniMax-M2.7，MiniMax-M2.5，GLM-5.1，GLM-5，MiMo-V2-Pro，Kimi-K2.5等模型
 
