@@ -263,7 +263,7 @@
     "hourlyRequests": 1200,
     "monthlyRequests": 18000,
     "benefits": [],
-    "note": ""
+    "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill"
   },
   {
     "vendor": "百度·千帆",
@@ -277,7 +277,7 @@
     "hourlyRequests": 6000,
     "monthlyRequests": 90000,
     "benefits": [],
-    "note": ""
+    "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill"
   },
   {
     "vendor": "Kimi",
