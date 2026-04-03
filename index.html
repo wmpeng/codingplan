@@ -862,6 +862,63 @@
             color: var(--text-tertiary);
         }
 
+        /* 更新日志 */
+        .updates-section {
+            margin-top: 24px;
+            padding: 20px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .updates-section h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .updates-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .update-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .update-item:last-child {
+            border-bottom: none;
+        }
+
+        .update-date {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .update-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            padding-left: 16px;
+        }
+
+        .update-items li {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            padding: 3px 0;
+            position: relative;
+        }
+
+        .update-items li::before {
+            content: "-";
+            position: absolute;
+            left: -12px;
+            color: var(--text-tertiary);
+        }
+
         /* 账号出售区域 */
         .account-sale-section {
             margin-top: 24px;
@@ -1470,6 +1527,11 @@
 
         <!-- 底部说明 -->
         <div class="notes-section" id="notesSection">
+            <!-- 动态填充 -->
+        </div>
+
+        <!-- 更新日志 -->
+        <div class="updates-section" id="updatesSection">
             <!-- 动态填充 -->
         </div>
 
@@ -2398,6 +2460,24 @@
                     <h3>💡 说明</h3>
                     <ul>
                         ${appConfig.notes.map(note => `<li>${note}</li>`).join('')}
+                    </ul>
+                `;
+            }
+
+            // 渲染更新日志
+            if (appConfig.updates && appConfig.updates.length > 0) {
+                const updatesSection = document.getElementById('updatesSection');
+                updatesSection.innerHTML = `
+                    <h3>📝 更新日志</h3>
+                    <ul class="updates-list">
+                        ${appConfig.updates.map(update => `
+                            <li class="update-item">
+                                <div class="update-date">${update.date}</div>
+                                <ul class="update-items">
+                                    ${update.items.map(item => `<li>${item}</li>`).join('')}
+                                </ul>
+                            </li>
+                        `).join('')}
                     </ul>
                 `;
             }
