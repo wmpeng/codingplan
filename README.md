@@ -55,8 +55,8 @@
 | MiniMax | Plus-极速版 | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=Hlw9xfawJs&source=link) | - | ¥98 | - / 季 | ¥980 ~~1176~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 1,500 | 22,500 | - | 约100TPS |
 | MiniMax | Max-极速版 | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=Hlw9xfawJs&source=link) | - | ¥199 | - / 季 | ¥1990 ~~2388~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 4,500 | 67,500 | - | 约100TPS |
 | MiniMax | Ultra-极速版 | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=Hlw9xfawJs&source=link) | - | ¥899 | - / 季 | ¥8990 ~~10788~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 30,000 | 450,000 | - | 约100TPS |
-| 字节·方舟 | Lite | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥40 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 1,200 | 18,000 | ArkClaw 7天体验 | - |
-| 字节·方舟 | Pro | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥200 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 6,000 | 90,000 | 免费ArkClaw | - |
+| 字节·方舟 | Lite | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥40 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7 | 1,200 | 18,000 | ArkClaw 7天体验 | - |
+| 字节·方舟 | Pro | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥200 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7 | 6,000 | 90,000 | 免费ArkClaw | - |
 | 阿里·百炼 | Pro | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | - | ¥200 | - / 季 | - / 年 | Qwen-3.5, MiniMax-M2.5, GLM-5, Kimi-K2.5 | 6,000 | 90,000 | - | - |
 | 小米·MiMo | Lite | [跳转](https://mimo.mi.com/) | ¥34.32 | ¥39 | - / 季 | - / 年 | MiMo-V2-Omni, MiMo-V2-Pro, MiMo-V2-TTS | 无限制 | 无限制 | TTS限时免费 | • 60M Credits，无5小时限额，支持集中消耗
 • 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x |
@@ -70,8 +70,10 @@
 | 腾讯·混元 | Pro | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥39.9 | ¥200 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 6,000 | 90,000 | - | - |
 | 百度·千帆 | Lite | [跳转](https://cloud.baidu.com/product/codingplan.html) | - | ¥40 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.5, DeepSeek-V3.2 | 1,200 | 18,000 | - | 使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill |
 | 百度·千帆 | Pro | [跳转](https://cloud.baidu.com/product/codingplan.html) | - | ¥200 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.5, DeepSeek-V3.2 | 6,000 | 90,000 | - | 使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill |
-| 京东云 | Lite | [跳转](https://www.jdcloud.com/cn/pages/codingplan) | ¥7.9 | ¥40 | - / 季 | - / 年 | Kimi-K2.5, GLM-5, MiniMax-M2.5, DeepSeek-V3.2, Qwen3-Coder | 1,200 | 18,000 | - | - |
-| 京东云 | Pro | [跳转](https://www.jdcloud.com/cn/pages/codingplan) | ¥39.9 | ¥200 | - / 季 | - / 年 | Kimi-K2.5, GLM-5, MiniMax-M2.5, DeepSeek-V3.2, Qwen3-Coder | 6,000 | 90,000 | - | - |
+| 京东·JoyBuilder | Lite | [跳转](https://www.jdcloud.com/cn/pages/codingplan) | ¥7.9 | ¥40 | - / 季 | - / 年 | Kimi-K2.5, GLM-5, MiniMax-M2.5, DeepSeek-V3.2, Qwen3-Coder | 1,200 | 18,000 | - | • 新用户首月专享7.9元优惠
+• 支持Claude Code、Cursor等主流编程工具 |
+| 京东·JoyBuilder | Pro | [跳转](https://www.jdcloud.com/cn/pages/codingplan) | ¥39.9 | ¥200 | - / 季 | - / 年 | Kimi-K2.5, GLM-5, MiniMax-M2.5, DeepSeek-V3.2, Qwen3-Coder | 6,000 | 90,000 | - | • 新用户首月专享39.9元优惠
+• 支持Claude Code、Cursor等主流编程工具 |
 | Kimi | Andante | [跳转](https://www.kimi.com/code) | - | ¥49 | - / 季 | ¥468 ~~588~~ / 年 | Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | - | Agent 4 倍速 |
 | Kimi | Moderato | [跳转](https://www.kimi.com/code) | - | ¥99 | - / 季 | ¥948 ~~1188~~ / 年 | Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | - | 4 倍额度, Agent 多任务并行 |
 | Kimi | Allegretto | [跳转](https://www.kimi.com/code) | - | ¥199 | - / 季 | ¥1908 ~~2388~~ / 年 | Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | 免费Kimi-Claw | 20 倍额度 |
