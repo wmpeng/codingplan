@@ -133,7 +133,7 @@
     "monthlyPrice": 40,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
-    "models": ["Doubao-Seed-2.0", "MiniMax-M2.5", "Kimi-K2.5", "GLM-4.7"],
+    "models": ["Doubao-Seed-2.0", "MiniMax-M2.5", "Kimi-K2.5", "GLM-4.7", "DeepSeek-V3.2"],
     "hourlyRequests": 1200,
     "monthlyRequests": 18000,
     "benefits": ["ArkClaw 7天体验"],
@@ -147,7 +147,7 @@
     "monthlyPrice": 200,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
-    "models": ["Doubao-Seed-2.0", "MiniMax-M2.5", "Kimi-K2.5", "GLM-4.7"],
+    "models": ["Doubao-Seed-2.0", "MiniMax-M2.5", "Kimi-K2.5", "GLM-4.7", "DeepSeek-V3.2"],
     "hourlyRequests": 6000,
     "monthlyRequests": 90000,
     "benefits": ["免费ArkClaw"],
@@ -280,7 +280,7 @@
     "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill"
   },
   {
-    "vendor": "京东·JoyBuilder",
+    "vendor": "京东云",
     "plan": "Lite",
     "action": "https://www.jdcloud.com/cn/pages/codingplan",
     "firstMonthPrice": 7.9,
@@ -291,10 +291,10 @@
     "hourlyRequests": 1200,
     "monthlyRequests": 18000,
     "benefits": [],
-    "note": "• 新用户首月专享7.9元优惠\n• 支持Claude Code、Cursor等主流编程工具"
+    "note": ""
   },
   {
-    "vendor": "京东·JoyBuilder",
+    "vendor": "京东云",
     "plan": "Pro",
     "action": "https://www.jdcloud.com/cn/pages/codingplan",
     "firstMonthPrice": 39.9,
@@ -305,7 +305,7 @@
     "hourlyRequests": 6000,
     "monthlyRequests": 90000,
     "benefits": [],
-    "note": "• 新用户首月专享39.9元优惠\n• 支持Claude Code、Cursor等主流编程工具"
+    "note": ""
   },
   {
     "vendor": "Kimi",
