@@ -2452,7 +2452,10 @@
             if (!container) return;
 
             container.innerHTML = recommendations.map(rec => {
-                const stars = '⭐️'.repeat(rec.rating);
+                // 支持半颗星
+                const fullStars = Math.floor(rec.rating);
+                const hasHalfStar = rec.rating % 1 !== 0;
+                const stars = '⭐️'.repeat(fullStars) + (hasHalfStar ? '🌗' : '');
                 const reasonsHtml = rec.reasons.map(reason => {
                     // 处理 **text** 格式的加粗
                     const formattedReason = reason.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');

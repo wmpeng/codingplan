@@ -14,7 +14,9 @@ const FOOTER = '由扣子编程开发';
 
 // 生成星星
 function generateStars(rating) {
-    return '⭐️'.repeat(rating);
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+    return '⭐️'.repeat(fullStars) + (hasHalfStar ? '🌗' : '');
 }
 
 // 生成平台推荐
