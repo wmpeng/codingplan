@@ -10,8 +10,8 @@
     "models": ["MiMo-V2-Omni", "MiMo-V2-Pro", "MiMo-V2-TTS"],
     "hourlyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "benefits": ["新模型优先内测", "TTS限时免费"],
-    "note": "1. 60M Credits 2. 无5小时限额，支持集中消耗 3. MiMo-V2-Omni:1x, Pro 256k:2x, Pro 256k~1M:4x"
+    "benefits": ["TTS限时免费"],
+    "note": "1. 60M Credits\n 2. 无5小时限额，支持集中消耗 3. MiMo-V2-Omni:1x, Pro 256k:2x, Pro 256k~1M:4x"
   },
   {
     "vendor": "小米·MiMo",
@@ -24,7 +24,7 @@
     "models": ["MiMo-V2-Omni", "MiMo-V2-Pro", "MiMo-V2-TTS"],
     "hourlyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "benefits": ["新模型优先内测", "TTS限时免费"],
+    "benefits": ["TTS限时免费"],
     "note": "1. 200M Credits 2. 无5小时限额，支持集中消耗 3. MiMo-V2-Omni:1x, Pro 256k:2x, Pro 256k~1M:4x"
   },
   {
@@ -38,7 +38,7 @@
     "models": ["MiMo-V2-Omni", "MiMo-V2-Pro", "MiMo-V2-TTS"],
     "hourlyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "benefits": ["新模型优先内测", "TTS限时免费"],
+    "benefits": ["TTS限时免费"],
     "note": "1. 700M Credits 2. 无5小时限额，支持集中消耗 3. MiMo-V2-Omni:1x, Pro 256k:2x, Pro 256k~1M:4x"
   },
   {
@@ -52,7 +52,7 @@
     "models": ["MiMo-V2-Omni", "MiMo-V2-Pro", "MiMo-V2-TTS"],
     "hourlyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "benefits": ["新模型优先内测", "TTS限时免费"],
+    "benefits": ["TTS限时免费"],
     "note": "1. 1600M Credits 2. 无5小时限额，支持集中消耗 3. MiMo-V2-Omni:1x, Pro 256k:2x, Pro 256k~1M:4x"
   },
   {
