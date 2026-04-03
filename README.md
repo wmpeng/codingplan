@@ -43,6 +43,10 @@
 
 | 平台 | 套餐 | 链接 | 首月价格 | 连续包月 | 连续包季 | 连续包年 | 支持模型 | 5小时请求数 | 每月总请求数 | 其他权益 | 备注 |
 |------|------|---------|---------|---------|---------|---------|---------|-----------|-----------|---------|------|
+| 小米·MiMo | Lite | [跳转](https:// Xiaomi mimo.com) | ¥34.32 | ¥39 | - / 季 | - / 年 | MiMo-V2-Omni, MiMo-V2-Pro, MiMo-V2-TTS | 无限制 | 无限制 | 新模型优先内测, TTS限时免费 | 1. 60M Credits 2. 无5小时限额，支持集中消耗 3. MiMo-V2-Omni:1x, Pro 256k:2x, Pro 256k~1M:4x |
+| 小米·MiMo | Standard | [跳转](https:// Xiaomi mimo.com) | ¥87.12 | ¥99 | - / 季 | - / 年 | MiMo-V2-Omni, MiMo-V2-Pro, MiMo-V2-TTS | 无限制 | 无限制 | 新模型优先内测, TTS限时免费 | 1. 200M Credits 2. 无5小时限额，支持集中消耗 3. MiMo-V2-Omni:1x, Pro 256k:2x, Pro 256k~1M:4x |
+| 小米·MiMo | Pro | [跳转](https:// Xiaomi mimo.com) | ¥289.52 | ¥329 | - / 季 | - / 年 | MiMo-V2-Omni, MiMo-V2-Pro, MiMo-V2-TTS | 无限制 | 无限制 | 新模型优先内测, TTS限时免费 | 1. 700M Credits 2. 无5小时限额，支持集中消耗 3. MiMo-V2-Omni:1x, Pro 256k:2x, Pro 256k~1M:4x |
+| 小米·MiMo | Max | [跳转](https:// Xiaomi mimo.com) | ¥579.92 | ¥659 | - / 季 | - / 年 | MiMo-V2-Omni, MiMo-V2-Pro, MiMo-V2-TTS | 无限制 | 无限制 | 新模型优先内测, TTS限时免费 | 1. 1600M Credits 2. 无5小时限额，支持集中消耗 3. MiMo-V2-Omni:1x, Pro 256k:2x, Pro 256k~1M:4x |
 | 智谱AI | Lite | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥49 | ¥132 ~~147~~ / 季 | ¥470 ~~588~~ / 年 | GLM-5.1 | 1,200 | 24,000 | 免费MCP次数 | 1. 3倍Claude Pro用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算 |
 | 智谱AI | Pro | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥149 | ¥402 ~~447~~ / 季 | ¥1430 ~~1788~~ / 年 | GLM-5.1, GLM-5 | 6,000 | 120,000 | 免费MCP次数 | 1. 5倍Lite用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算 |
 | 智谱AI | Max | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥469 | ¥1266 ~~1407~~ / 季 | ¥4502 ~~5628~~ / 年 | GLM-5.1, GLM-5 | 24,000 | 600,000 | 免费MCP次数 | 1. 20倍Lite用量 2. 官方为prompt计数，这里按1 prompt≈15次调用换算 3. 官方只有周限量无月限量，这里按照1月=4周计算 |
