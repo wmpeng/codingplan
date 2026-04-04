@@ -179,7 +179,7 @@
     "hourlyRequests": "无限制",
     "monthlyRequests": "无限制",
     "benefits": ["TTS限时免费"],
-    "note": "• 60M Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+    "note": "• 60M(6000万) Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
   },
   {
     "vendor": "小米·MiMo",
@@ -193,7 +193,7 @@
     "hourlyRequests": "无限制",
     "monthlyRequests": "无限制",
     "benefits": ["TTS限时免费"],
-    "note": "• 200M Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+    "note": "• 200M(2亿) Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
   },
   {
     "vendor": "小米·MiMo",
@@ -207,7 +207,7 @@
     "hourlyRequests": "无限制",
     "monthlyRequests": "无限制",
     "benefits": ["TTS限时免费"],
-    "note": "• 700M Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+    "note": "• 700M(7亿) Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
   },
   {
     "vendor": "小米·MiMo",
@@ -221,10 +221,10 @@
     "hourlyRequests": "无限制",
     "monthlyRequests": "无限制",
     "benefits": ["TTS限时免费"],
-    "note": "• 1600M Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+    "note": "• 1600M(16亿) Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
   },
   {
-    "vendor": "腾讯·混元",
+    "vendor": "腾讯·CodingPlan",
     "plan": "Lite",
     "action": "https://cloud.tencent.com/act/pro/codingplan#buy",
     "firstMonthPrice": 7.9,
@@ -238,7 +238,7 @@
     "note": ""
   },
   {
-    "vendor": "腾讯·混元",
+    "vendor": "腾讯·CodingPlan",
     "plan": "Pro",
     "action": "https://cloud.tencent.com/act/pro/codingplan#buy",
     "firstMonthPrice": 39.9,
@@ -250,6 +250,62 @@
     "monthlyRequests": 90000,
     "benefits": [],
     "note": ""
+  },
+    {
+    "vendor": "腾讯·TokenPlan",
+    "plan": "Lite",
+    "action": "https://cloud.tencent.com/act/pro/tokenplan",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 39,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": ["HY-2.0", "HY-T1", "GLM-5", "Kimi-K2.5", "MiniMax-M2.5"],
+    "hourlyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "35M(3500万) Tokens 额度，约 70 轮问答"
+  },
+  {
+    "vendor": "腾讯·TokenPlan",
+    "plan": "Standard",
+    "action": "https://cloud.tencent.com/act/pro/tokenplan",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 99,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": ["HY-2.0", "HY-T1", "GLM-5", "Kimi-K2.5", "MiniMax-M2.5"],
+    "hourlyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "100M(1亿) Tokens 额度，可执行约 200 轮问答"
+  },
+  {
+    "vendor": "腾讯·TokenPlan",
+    "plan": "Pro",
+    "action": "https://cloud.tencent.com/act/pro/tokenplan",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 299,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": ["HY-2.0", "HY-T1", "GLM-5", "Kimi-K2.5", "MiniMax-M2.5"],
+    "hourlyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "320M(3.2亿) Tokens 额度"
+  },
+  {
+    "vendor": "腾讯·TokenPlan",
+    "plan": "Max",
+    "action": "https://cloud.tencent.com/act/pro/tokenplan",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 599,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": ["HY-2.0", "HY-T1", "GLM-5", "Kimi-K2.5", "MiniMax-M2.5"],
+    "hourlyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "650M(6.5亿) Tokens 额度"
   },
   {
     "vendor": "百度·千帆",

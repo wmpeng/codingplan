@@ -2208,6 +2208,14 @@
         function sortData(column, direction = 'asc') {
             currentSort = { column, direction };
 
+            // 辅助函数：将请求次数值转换为可排序的数值
+            const getRequestSortValue = (value) => {
+                if (typeof value === 'number') return value;
+                if (value === '无限制') return Infinity;  // 无限制排在最大
+                if (value === '未公开') return -1;        // 未公开排在最小
+                return -1;
+            };
+
             filteredPlans.sort((a, b) => {
                 let valueA, valueB;
 
@@ -2245,12 +2253,12 @@
                         valueB = b['支持模型'];
                         break;
                     case 'hourlyRequests':
-                        valueA = typeof a.hourlyRequests === 'string' ? 0 : a.hourlyRequests;
-                        valueB = typeof b.hourlyRequests === 'string' ? 0 : b.hourlyRequests;
+                        valueA = getRequestSortValue(a.hourlyRequests);
+                        valueB = getRequestSortValue(b.hourlyRequests);
                         break;
                     case 'monthlyRequests':
-                        valueA = typeof a.monthlyRequests === 'string' ? 0 : a.monthlyRequests;
-                        valueB = typeof b.monthlyRequests === 'string' ? 0 : b.monthlyRequests;
+                        valueA = getRequestSortValue(a.monthlyRequests);
+                        valueB = getRequestSortValue(b.monthlyRequests);
                         break;
                     case 'benefits':
                         valueA = a['其他权益'];
@@ -2335,8 +2343,8 @@
                     <td>
                         ${plan.models.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
                     </td>
-                    <td><span class="request-count">${plan.hourlyRequests.toLocaleString()} <span class="unit">/ 5小时</span></span></td>
-                    <td><span class="request-count">${plan.monthlyRequests.toLocaleString()} <span class="unit">/ 月</span></span></td>
+                    <td><span class="request-count">${formatRequestCount(plan.hourlyRequests)} <span class="unit">/ 5小时</span></span></td>
+                    <td><span class="request-count">${formatRequestCount(plan.monthlyRequests)} <span class="unit">/ 月</span></span></td>
                     <td>
                         ${plan.benefits.map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}
                     </td>
@@ -2360,6 +2368,14 @@
             } else {
                 return price.toFixed(2);
             }
+        }
+
+        // 请求次数格式化函数：数字则格式化，字符串直接返回
+        function formatRequestCount(value) {
+            if (typeof value === 'number') {
+                return value.toLocaleString();
+            }
+            return value;
         }
 
         // 表头排序点击
