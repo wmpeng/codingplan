@@ -16,7 +16,7 @@
       "免费MCP次数"
     ],
     "note": "• 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
-    "weeklyRequests": 0
+    "weeklyRequests": 6000
   },
   {
     "vendor": "智谱AI",
@@ -36,7 +36,7 @@
       "免费MCP次数"
     ],
     "note": "• 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
-    "weeklyRequests": 0
+    "weeklyRequests": 30000
   },
   {
     "vendor": "智谱AI",
@@ -51,12 +51,12 @@
       "GLM-5"
     ],
     "hourlyRequests": 24000,
-    "monthlyRequests": 600000,
+    "monthlyRequests": 480000,
     "benefits": [
       "免费MCP次数"
     ],
     "note": "• 20倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
-    "weeklyRequests": 0
+    "weeklyRequests": 120000
   },
   {
     "vendor": "MiniMax",
@@ -71,10 +71,10 @@
       "MiniMax-M2.5"
     ],
     "hourlyRequests": 600,
-    "monthlyRequests": 9000,
+    "monthlyRequests": 24000,
     "benefits": [],
-    "note": "约50TPS",
-    "weeklyRequests": 0
+    "note": "约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算",
+    "weeklyRequests": 6000
   },
   {
     "vendor": "MiniMax",
@@ -89,10 +89,10 @@
       "MiniMax-M2.5"
     ],
     "hourlyRequests": 1500,
-    "monthlyRequests": 22500,
+    "monthlyRequests": 60000,
     "benefits": [],
-    "note": "约50TPS",
-    "weeklyRequests": 0
+    "note": "约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算",
+    "weeklyRequests": 15000
   },
   {
     "vendor": "MiniMax",
@@ -107,10 +107,10 @@
       "MiniMax-M2.5"
     ],
     "hourlyRequests": 4500,
-    "monthlyRequests": 67500,
+    "monthlyRequests": 180000,
     "benefits": [],
-    "note": "约50TPS",
-    "weeklyRequests": 0
+    "note": "约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算",
+    "weeklyRequests": 45000
   },
   {
     "vendor": "MiniMax",
@@ -125,10 +125,10 @@
       "MiniMax-M2.5"
     ],
     "hourlyRequests": 1500,
-    "monthlyRequests": 22500,
+    "monthlyRequests": 60000,
     "benefits": [],
-    "note": "约100TPS",
-    "weeklyRequests": 0
+    "note": "约100TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算",
+    "weeklyRequests": 15000
   },
   {
     "vendor": "MiniMax",
@@ -143,10 +143,10 @@
       "MiniMax-M2.5"
     ],
     "hourlyRequests": 4500,
-    "monthlyRequests": 67500,
+    "monthlyRequests": 180000,
     "benefits": [],
-    "note": "约100TPS",
-    "weeklyRequests": 0
+    "note": "约100TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算",
+    "weeklyRequests": 45000
   },
   {
     "vendor": "MiniMax",
@@ -161,10 +161,10 @@
       "MiniMax-M2.5"
     ],
     "hourlyRequests": 30000,
-    "monthlyRequests": 450000,
+    "monthlyRequests": 1200000,
     "benefits": [],
-    "note": "约100TPS",
-    "weeklyRequests": 0
+    "note": "约100TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算",
+    "weeklyRequests": 300000
   },
   {
     "vendor": "字节·方舟",
@@ -187,7 +187,7 @@
       "ArkClaw 7天体验"
     ],
     "note": "",
-    "weeklyRequests": 0
+    "weeklyRequests": 9000
   },
   {
     "vendor": "字节·方舟",
@@ -210,7 +210,7 @@
       "免费ArkClaw"
     ],
     "note": "",
-    "weeklyRequests": 0
+    "weeklyRequests": 45000
   },
   {
     "vendor": "阿里·百炼",
@@ -230,7 +230,7 @@
     "monthlyRequests": 90000,
     "benefits": [],
     "note": "",
-    "weeklyRequests": 0
+    "weeklyRequests": 45000
   },
   {
     "vendor": "小米·MiMo",
@@ -251,7 +251,7 @@
       "TTS限时免费"
     ],
     "note": "• 60M(6000万) Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x",
-    "weeklyRequests": 0
+    "weeklyRequests": "无限制"
   },
   {
     "vendor": "小米·MiMo",
@@ -272,7 +272,7 @@
       "TTS限时免费"
     ],
     "note": "• 200M(2亿) Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x",
-    "weeklyRequests": 0
+    "weeklyRequests": "无限制"
   },
   {
     "vendor": "小米·MiMo",
@@ -293,7 +293,7 @@
       "TTS限时免费"
     ],
     "note": "• 700M(7亿) Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x",
-    "weeklyRequests": 0
+    "weeklyRequests": "无限制"
   },
   {
     "vendor": "小米·MiMo",
@@ -314,7 +314,7 @@
       "TTS限时免费"
     ],
     "note": "• 1600M(16亿) Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x",
-    "weeklyRequests": 0
+    "weeklyRequests": "无限制"
   },
   {
     "vendor": "腾讯·CodingPlan",
@@ -335,7 +335,7 @@
     "monthlyRequests": 18000,
     "benefits": [],
     "note": "",
-    "weeklyRequests": 0
+    "weeklyRequests": 9000
   },
   {
     "vendor": "腾讯·CodingPlan",
@@ -356,7 +356,7 @@
     "monthlyRequests": 90000,
     "benefits": [],
     "note": "",
-    "weeklyRequests": 0
+    "weeklyRequests": 45000
   },
   {
     "vendor": "腾讯·TokenPlan",
@@ -377,7 +377,7 @@
     "monthlyRequests": "无限制",
     "benefits": [],
     "note": "35M(3500万) Tokens 额度，约 70 轮问答",
-    "weeklyRequests": 0
+    "weeklyRequests": "无限制"
   },
   {
     "vendor": "腾讯·TokenPlan",
@@ -398,7 +398,7 @@
     "monthlyRequests": "无限制",
     "benefits": [],
     "note": "100M(1亿) Tokens 额度，可执行约 200 轮问答",
-    "weeklyRequests": 0
+    "weeklyRequests": "无限制"
   },
   {
     "vendor": "腾讯·TokenPlan",
@@ -419,7 +419,7 @@
     "monthlyRequests": "无限制",
     "benefits": [],
     "note": "320M(3.2亿) Tokens 额度",
-    "weeklyRequests": 0
+    "weeklyRequests": "无限制"
   },
   {
     "vendor": "腾讯·TokenPlan",
@@ -440,7 +440,7 @@
     "monthlyRequests": "无限制",
     "benefits": [],
     "note": "650M(6.5亿) Tokens 额度",
-    "weeklyRequests": 0
+    "weeklyRequests": "无限制"
   },
   {
     "vendor": "百度·千帆",
@@ -460,7 +460,7 @@
     "monthlyRequests": 18000,
     "benefits": [],
     "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill",
-    "weeklyRequests": 0
+    "weeklyRequests": 9000
   },
   {
     "vendor": "百度·千帆",
@@ -480,7 +480,7 @@
     "monthlyRequests": 90000,
     "benefits": [],
     "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill",
-    "weeklyRequests": 0
+    "weeklyRequests": 45000
   },
   {
     "vendor": "京东云",
@@ -501,7 +501,7 @@
     "monthlyRequests": 18000,
     "benefits": [],
     "note": "",
-    "weeklyRequests": 0
+    "weeklyRequests": 9000
   },
   {
     "vendor": "京东云",
@@ -522,7 +522,7 @@
     "monthlyRequests": 90000,
     "benefits": [],
     "note": "",
-    "weeklyRequests": 0
+    "weeklyRequests": 45000
   },
   {
     "vendor": "Kimi",
