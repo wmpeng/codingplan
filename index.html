@@ -1513,6 +1513,7 @@
                             <th class="sortable" data-column="yearlyPrice">连续包年</th>
                             <th>支持模型</th>
                             <th class="sortable" data-column="hourlyRequests">5小时请求数</th>
+                            <th class="sortable" data-column="weeklyRequests">每周请求数</th>
                             <th class="sortable" data-column="monthlyRequests">每月总请求数</th>
                             <th>其他权益</th>
                             <th class="note-header">备注</th>
@@ -2256,6 +2257,10 @@
                         valueA = getRequestSortValue(a.hourlyRequests);
                         valueB = getRequestSortValue(b.hourlyRequests);
                         break;
+                    case 'weeklyRequests':
+                        valueA = getRequestSortValue(a.weeklyRequests);
+                        valueB = getRequestSortValue(b.weeklyRequests);
+                        break;
                     case 'monthlyRequests':
                         valueA = getRequestSortValue(a.monthlyRequests);
                         valueB = getRequestSortValue(b.monthlyRequests);
@@ -2315,7 +2320,7 @@
             if (filteredPlans.length === 0) {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="12">
+                        <td colspan="13">
                             <div class="empty-state">
                                 <div class="empty-state-icon">📭</div>
                                 <div class="empty-state-text">没有找到符合条件的套餐</div>
@@ -2344,6 +2349,7 @@
                         ${plan.models.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
                     </td>
                     <td><span class="request-count">${formatRequestCount(plan.hourlyRequests)} <span class="unit">/ 5小时</span></span></td>
+                    <td><span class="request-count">${formatRequestCount(plan.weeklyRequests)} <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.monthlyRequests)} <span class="unit">/ 月</span></span></td>
                     <td>
                         ${plan.benefits.map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}
@@ -2602,6 +2608,7 @@
             };
 
             item.hourlyRequests = preserveString(item.hourlyRequests);
+            item.weeklyRequests = preserveString(item.weeklyRequests);
             item.monthlyRequests = preserveString(item.monthlyRequests);
 
             return {
@@ -2619,7 +2626,7 @@
             try {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="12">
+                        <td colspan="13">
                             <div class="loading">加载数据中</div>
                         </td>
                     </tr>
@@ -2644,7 +2651,7 @@
                 console.error('加载数据失败:', error);
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="12">
+                        <td colspan="13">
                             <div class="empty-state">
                                 <div class="empty-state-icon">❌</div>
                                 <div class="empty-state-text">数据加载失败</div>

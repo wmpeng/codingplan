@@ -80,6 +80,7 @@
       "yearlyPrice": "连续包年",
       "models": "支持模型",
       "hourlyRequests": "5小时请求数",
+      "weeklyRequests": "每周请求数",
       "monthlyRequests": "每月总请求数",
       "benefits": "其他权益",
       "note": "备注"
