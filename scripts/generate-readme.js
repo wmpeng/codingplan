@@ -59,6 +59,13 @@ function formatStrikethrough(price, originalPrice) {
     return formatPrice(price);
 }
 
+// 清理表格单元格内容（移除换行符，防止破坏表格格式）
+function escapeTableCell(text) {
+    if (!text) return '-';
+    // 将换行符替换为空格
+    return String(text).replace(/\n/g, ' ').trim() || '-';
+}
+
 // 计算原始价格（包月×3 或 包月×12）
 function getOriginalPrice(currentPrice, multiplier) {
     if (currentPrice === '-' || typeof currentPrice !== 'number') return null;
@@ -87,9 +94,9 @@ function generateTable(plans) {
         const models = plan.models.join(', ');
         const hourlyRequests = plan.hourlyRequests?.toLocaleString() || '未公开';
         const monthlyRequests = plan.monthlyRequests?.toLocaleString() || '未公开';
-        const benefits = plan.benefits?.join(', ') || '-';
-        const note = plan.note || '-';
-        
+        const benefits = escapeTableCell(plan.benefits?.join(', '));
+        const note = escapeTableCell(plan.note);
+
         md += `| ${vendor} | ${planName} | ${link} | ${firstMonth} | ${monthly} | ${quarterly} | ${yearly} | ${models} | ${hourlyRequests} | ${monthlyRequests} | ${benefits} | ${note} |\n`;
     });
     
