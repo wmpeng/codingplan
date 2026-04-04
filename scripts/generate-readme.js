@@ -92,13 +92,13 @@ function generateTable(plans) {
             ? formatStrikethrough(plan.yearlyPrice, getOriginalPrice(plan.monthlyPrice, 12)) + ' / 年'
             : '- / 年';
         const models = plan.models.join(', ');
-        const hourlyRequests = plan.hourlyRequests?.toLocaleString() || '未公开';
+        const fiveHoursRequests = plan.fiveHoursRequests?.toLocaleString() || '未公开';
         const weeklyRequests = plan.weeklyRequests?.toLocaleString() || '-';
         const monthlyRequests = plan.monthlyRequests?.toLocaleString() || '未公开';
         const benefits = escapeTableCell(plan.benefits?.join(', '));
         const note = escapeTableCell(plan.note);
 
-        md += `| ${vendor} | ${planName} | ${link} | ${firstMonth} | ${monthly} | ${quarterly} | ${yearly} | ${models} | ${hourlyRequests} | ${weeklyRequests} | ${monthlyRequests} | ${benefits} | ${note} |\n`;
+        md += `| ${vendor} | ${planName} | ${link} | ${firstMonth} | ${monthly} | ${quarterly} | ${yearly} | ${models} | ${fiveHoursRequests} | ${weeklyRequests} | ${monthlyRequests} | ${benefits} | ${note} |\n`;
     });
     
     return md;
