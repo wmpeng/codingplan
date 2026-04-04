@@ -2592,14 +2592,17 @@
                 yearlyPrice = quarterlyPrice * 3;
             }
 
-            // 转换请求数为数字
-            item.hourlyRequests = typeof item.hourlyRequests === 'string' && item.hourlyRequests === '未公开' 
-                ? '未公开' 
-                : parseInt(item.hourlyRequests) || 0;
-            
-            item.monthlyRequests = typeof item.monthlyRequests === 'string' && item.monthlyRequests === '未公开' 
-                ? '未公开' 
-                : parseInt(item.monthlyRequests) || 0;
+            // 转换请求数：保留"未公开"和"无限制"，其他转换为数字
+            const preserveString = (value) => {
+                if (value === '未公开' || value === '无限制') {
+                    return value;
+                }
+                const num = parseInt(value);
+                return isNaN(num) ? 0 : num;
+            };
+
+            item.hourlyRequests = preserveString(item.hourlyRequests);
+            item.monthlyRequests = preserveString(item.monthlyRequests);
 
             return {
                 ...item,
