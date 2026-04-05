@@ -1,0 +1,125 @@
+[
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "vendor": "Anysphere",
+    "type": "独立IDE",
+    "pricingUrl": "https://cursor.com/pricing",
+    "updatedAt": "2026.04",
+    "matrix": {
+      "type": "独立IDE",
+      "vendor": "Anysphere",
+      "freeTier": "有（Hobby档，2000次补全/月）",
+      "lowestPaidUsd": "$20 / 月",
+      "billingModel": "按 fast premium 请求数分级；慢速请求无限制",
+      "integration": ["内置（VS Code fork）"],
+      "cnPayment": "支持双币 Visa/Mastercard；不支持支付宝/微信/银联",
+      "networkReq": "需海外网络，无国内镜像",
+      "purchaseReq": "无特殊要求，直接订阅"
+    },
+    "detail": {
+      "description": "基于 VS Code 的 AI 原生 IDE，内置代码补全、多文件 Composer、Agent 模式。与 VS Code 插件生态兼容，支持导入 VS Code 设置和扩展。",
+      "billingRules": "以「fast 请求」为核心计量单位，分 fast（高优先级）和 slow（降速）两类。Hobby（免费档）提供每月 2000 次代码补全和 50 次 slow premium 请求，无 fast 请求额度。Pro 档每月 500 次 fast 请求，超出后自动降为 slow（无数量限制，但响应较慢），代码补全无限制。Business 档功能与 Pro 相同，增加团队管理能力。fast 请求额度每月自动重置，不累计结转。",
+      "networkAndPayment": "服务器托管于美国，国内访问需科学上网，无官方国内镜像或加速节点。订阅支持 Visa/Mastercard 双币信用卡（含国内发行的双币卡），不支持支付宝、微信支付或银联借记卡。",
+      "plans": [
+        { "name": "Hobby", "monthlyUsd": 0, "yearlyMonthlyUsd": "-", "summary": "2000 次补全/月，50 次 slow 请求/月，无 fast 请求" },
+        { "name": "Pro", "monthlyUsd": 20, "yearlyMonthlyUsd": 16, "summary": "无限补全，500 次 fast 请求/月，超出降为 slow" },
+        { "name": "Business", "monthlyUsd": 40, "yearlyMonthlyUsd": "-", "summary": "Pro 功能 + 团队管理、隐私模式、使用统计、SSO" }
+      ],
+      "notes": "年付 Pro 折算约 $16/月（$192/年）。fast 请求超出后降速而非中断，可继续使用。Business 按席位计费。"
+    }
+  },
+  {
+    "id": "copilot",
+    "name": "GitHub Copilot",
+    "vendor": "GitHub / Microsoft",
+    "type": "IDE 插件",
+    "pricingUrl": "https://github.com/features/copilot",
+    "updatedAt": "2026.04",
+    "matrix": {
+      "type": "IDE 插件",
+      "vendor": "GitHub / Microsoft",
+      "freeTier": "有（Free 档，2000 次补全/月，50 次对话/月）",
+      "lowestPaidUsd": "$10 / 月",
+      "billingModel": "按补全次数与 premium 模型对话次数分级",
+      "integration": ["VS Code", "JetBrains 全家桶", "Visual Studio", "Vim / Neovim", "Xcode"],
+      "cnPayment": "需 GitHub 账号；国内双币卡通常可用，但部分用户反映付款失败",
+      "networkReq": "GitHub 整体在国内可访问，但 Copilot API 偶发不稳定",
+      "purchaseReq": "需 GitHub 账号；学生/教育用户可申请免费 Pro"
+    },
+    "detail": {
+      "description": "GitHub 官方 AI 编程助手，深度集成于 GitHub 生态。支持代码补全、对话式编程、代码解释、PR 摘要生成等功能。集成环境覆盖范围在所有工具中最广，涵盖 VS Code、JetBrains 全家桶、Visual Studio、Vim/Neovim、Xcode 等。",
+      "billingRules": "Free 档提供每月 2000 次代码补全和 50 次对话（含 premium 模型次数限制）。Pro 档 $10/月，提供无限次基础补全以及每月一定数量的 premium 模型请求（如 Claude Sonnet、GPT-4o 等）。Business $19/席位/月，增加团队管理、审计日志、内容过滤策略等企业功能。Enterprise $39/席位/月，进一步增加自定义知识库、精细化权限控制。",
+      "networkAndPayment": "GitHub 主体服务在国内一般可访问，但 Copilot 的 AI 推理请求偶发超时或连接失败，稳定性略逊于使用代理的情况。付款通过 GitHub 账号绑定，支持 Visa/Mastercard，国内双币卡通常可成功绑定，但不保证 100% 成功率。学生和教育工作者可通过 GitHub Education 认证申请免费的 Copilot Pro。",
+      "plans": [
+        { "name": "Free", "monthlyUsd": 0, "yearlyMonthlyUsd": "-", "summary": "2000 次补全/月，50 次对话/月（含 premium 请求限额）" },
+        { "name": "Pro", "monthlyUsd": 10, "yearlyMonthlyUsd": 8.33, "summary": "无限次基础补全，每月一定数量 premium 模型请求" },
+        { "name": "Business", "monthlyUsd": 19, "yearlyMonthlyUsd": "-", "summary": "Pro 功能 + 团队管理、审计日志、内容过滤" },
+        { "name": "Enterprise", "monthlyUsd": 39, "yearlyMonthlyUsd": "-", "summary": "Business 功能 + 自定义知识库、精细权限控制" }
+      ],
+      "notes": "Pro 年付 $100/年（约 $8.33/月）。Business/Enterprise 按席位月付，无年付折扣。GitHub Education 认证用户可免费使用 Pro。"
+    }
+  },
+  {
+    "id": "claude-code",
+    "name": "Claude Code",
+    "vendor": "Anthropic",
+    "type": "CLI / 终端 Agent",
+    "pricingUrl": "https://www.anthropic.com/claude-code",
+    "updatedAt": "2026.04",
+    "matrix": {
+      "type": "CLI / 终端 Agent",
+      "vendor": "Anthropic",
+      "freeTier": "无（需 API Key 或 Claude 订阅）",
+      "lowestPaidUsd": "$20 / 月（Claude Pro，含有限额度）",
+      "billingModel": "按 API Token 计费；或通过 Claude Pro/Max 订阅内含额度",
+      "integration": ["终端（任意 Shell）", "VS Code 终端", "可嵌入任意 IDE 终端"],
+      "cnPayment": "Anthropic 官网不支持国内信用卡；API 充值限制较多",
+      "networkReq": "Anthropic 服务在国内被封锁，必须使用海外网络",
+      "purchaseReq": "需 Anthropic 账号（海外手机号验证）；部分地区账号注册受限"
+    },
+    "detail": {
+      "description": "Anthropic 官方发布的命令行 AI 编程 Agent，在终端中直接执行代码编写、调试、文件操作等任务。无需 GUI，适合服务器端开发、脚本自动化场景。底层使用 Claude 系列模型（Sonnet、Opus 等），工具本身开源免费，使用成本来自 API 或订阅。",
+      "billingRules": "两种使用方式：1）通过 Anthropic API 按 Token 消耗计费（Claude Sonnet 约 $3/$15 per 1M 输入/输出 Token）；2）通过 Claude 订阅使用，Claude Pro（$20/月）和 Max（$100 或 $200/月）含对应额度的 Claude Code 使用量，超出后按 API 费率扣费。高强度编程任务下订阅额度消耗较快，建议预先评估用量。",
+      "networkAndPayment": "Anthropic 所有服务在中国大陆均无法直接访问，必须使用稳定的海外网络。官网付款仅支持美国/欧洲等地区发行的信用卡，国内双币卡通常被拒绝。部分用户使用第三方虚拟卡（如 Depay 等）成功充值，但存在一定风险。账号注册同样需要海外手机号验证，中国大陆号码无法通过验证。",
+      "plans": [
+        { "name": "Claude Pro（含额度）", "monthlyUsd": 20, "yearlyMonthlyUsd": "-", "summary": "含有限 Claude Code 用量，超出按 API Token 计费" },
+        { "name": "Claude Max 5x", "monthlyUsd": 100, "yearlyMonthlyUsd": "-", "summary": "5 倍 Pro 额度的 Claude Code 用量" },
+        { "name": "Claude Max 20x", "monthlyUsd": 200, "yearlyMonthlyUsd": "-", "summary": "20 倍 Pro 额度的 Claude Code 用量" },
+        { "name": "纯 API 用量", "monthlyUsd": 0, "yearlyMonthlyUsd": "-", "summary": "按实际 Token 消耗付费，无月费，需提前充值 API 余额" }
+      ],
+      "notes": "Claude Code 工具本身通过 npm 安装，免费开源。高强度编程场景建议使用 Max 档或纯 API 按量付费，成本更可预测。"
+    }
+  },
+  {
+    "id": "codex",
+    "name": "OpenAI Codex",
+    "vendor": "OpenAI",
+    "type": "云端 Agent / CLI",
+    "pricingUrl": "https://openai.com/codex",
+    "updatedAt": "2026.04",
+    "matrix": {
+      "type": "云端 Agent / CLI",
+      "vendor": "OpenAI",
+      "freeTier": "有限（ChatGPT Free 含少量使用额度）",
+      "lowestPaidUsd": "$20 / 月（ChatGPT Plus）",
+      "billingModel": "ChatGPT 订阅含额度；或直接 API 按 Token 计费",
+      "integration": ["ChatGPT 网页 / App（云端）", "终端 CLI（需 API Key）"],
+      "cnPayment": "OpenAI 不接受国内任何支付方式（含双币卡）",
+      "networkReq": "OpenAI 服务在国内被封锁，且 IP 检测严格，需高质量海外网络",
+      "purchaseReq": "需 OpenAI 账号（海外手机号）；订阅需境外信用卡；国内门槛最高"
+    },
+    "detail": {
+      "description": "OpenAI 推出的 AI 编程 Agent，分为两种形态：1）云端 Agent（集成于 ChatGPT，在云端沙箱中执行代码任务，无需本地环境）；2）Codex CLI（开源命令行工具，调用 OpenAI API 在本地终端执行任务）。两者均使用 OpenAI 的 o 系列或 GPT 系列模型。",
+      "billingRules": "云端 Agent 通过 ChatGPT 订阅使用：ChatGPT Free 含极少量额度，ChatGPT Plus（$20/月）含较多 Codex Agent 使用额度，ChatGPT Pro（$200/月）含大量额度并优先使用 o3/o4 等强模型。Codex CLI 通过 OpenAI API 计费，按实际 Token 消耗付费（具体定价参见 OpenAI 官网 API Pricing 页面）。两种方式都受 rate limit 限制，高并发场景建议使用 Pro 档或直接 API。",
+      "networkAndPayment": "OpenAI 服务在中国大陆完全封锁，且 IP 检测较严格，部分低质量代理也会被识别并拒绝连接。付款仅支持境外发行的信用卡，不支持支付宝、微信支付、国内银行卡或双币卡。账号注册需要海外手机号（中国大陆号码无法注册），整体使用门槛是所列工具中最高的。",
+      "plans": [
+        { "name": "ChatGPT Free（含）", "monthlyUsd": 0, "yearlyMonthlyUsd": "-", "summary": "含极少量 Codex 云端使用额度" },
+        { "name": "ChatGPT Plus（含）", "monthlyUsd": 20, "yearlyMonthlyUsd": "-", "summary": "含较多 Codex 额度，可使用 o4-mini 等模型" },
+        { "name": "ChatGPT Pro（含）", "monthlyUsd": 200, "yearlyMonthlyUsd": "-", "summary": "含大量 Codex 额度，优先使用 o3/o4 强模型" },
+        { "name": "纯 API 用量", "monthlyUsd": 0, "yearlyMonthlyUsd": "-", "summary": "按 Token 计费，无月费，需充值 API 余额" }
+      ],
+      "notes": "云端 Agent 与 CLI 是两个独立产品，计费方式不同。国内使用需海外网络 + 境外信用卡 + 海外手机号三重条件，是所列工具中门槛最高的。"
+    }
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "header": {
+    "title": "AI 编程工具 / IDE / 代理",
+    "updateDate": "更新日期 2026.4.5",
+    "subtitle": "Cursor、GitHub Copilot、Claude Code、OpenAI Codex，计费规则、支付方式、网络限制全面对比",
+    "github": {
+      "url": "https://github.com/wmpeng/codingplan",
+      "text": "GitHub"
+    }
+  },
+  "matrixDimensions": [
+    { "key": "type", "label": "类型" },
+    { "key": "vendor", "label": "厂商" },
+    { "key": "freeTier", "label": "免费档" },
+    { "key": "lowestPaidUsd", "label": "最低月付" },
+    { "key": "billingModel", "label": "计费方式" },
+    { "key": "integration", "label": "集成环境" },
+    { "key": "cnPayment", "label": "国内支付" },
+    { "key": "networkReq", "label": "网络要求" },
+    { "key": "purchaseReq", "label": "购买要求" }
+  ],
+  "notes": [
+    "页面数据仅供参考，工具定价与功能可能随时调整，请以各产品官网为准",
+    "与「国内 Coding Plan」页面的计量口径（请求数/人民币）完全不同，不可直接对比",
+    "国内支付与网络访问情况因时因地而异，本页描述为一般经验，不构成任何保证"
+  ],
+  "updates": [
+    {
+      "date": "2026.4.5",
+      "items": [
+        "新增 AI 编程工具页面",
+        "首批收录 Cursor、GitHub Copilot、Claude Code、OpenAI Codex"
+      ]
+    }
+  ]
+}

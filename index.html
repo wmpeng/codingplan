@@ -119,6 +119,45 @@
             line-height: 1.7;
         }
 
+        /* 页面导航 Tab */
+        .page-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 32px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0;
+        }
+
+        .page-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text-secondary);
+            border: 1px solid transparent;
+            border-bottom: none;
+            transition: all 0.2s;
+            position: relative;
+            bottom: -1px;
+        }
+
+        .page-tab:hover {
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+        }
+
+        .page-tab.active {
+            color: var(--accent-primary);
+            background: var(--bg-secondary);
+            border-color: var(--border-color);
+            border-bottom-color: var(--bg-secondary);
+            font-weight: 600;
+        }
+
         /* 顶部筛选栏 */
         .filter-bar {
             display: flex;
@@ -1301,6 +1340,13 @@
 </head>
 <body>
     <div class="container">
+
+        <!-- 页面导航 Tab -->
+        <nav class="page-nav">
+            <a href="index.html" class="page-tab active">国内 Coding Plan</a>
+            <a href="tools.html" class="page-tab">AI 编程工具 / IDE / 代理</a>
+        </nav>
+
         <!-- 顶部标题 -->
         <div class="header">
             <a href="https://github.com" target="_blank" class="github-link" id="githubLink">
