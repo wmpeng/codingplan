@@ -13,14 +13,14 @@
       "lowestPaidUsd": "$20 / 月",
       "billingModel": "按 fast premium 请求数分级；慢速请求无限制",
       "integration": ["内置（VS Code fork）"],
-      "customUrlOrApiKey": "主流程用 Cursor 订阅通道；设置中可部分绑定自有厂商 API Key；不支持任意 OpenAI 兼容 Base URL",
+      "customUrlOrApiKey": "支持（设置 → API Keys，可填多厂商 Key 与 Base URL）",
       "cnPayment": "支持双币 Visa/Mastercard；不支持支付宝/微信/银联",
       "networkReq": "需海外网络，无国内镜像",
       "purchaseReq": "无特殊要求，直接订阅"
     },
     "detail": {
       "description": "基于 VS Code 的 AI 原生 IDE，内置代码补全、多文件 Composer、Agent 模式。与 VS Code 插件生态兼容，支持导入 VS Code 设置和扩展。",
-      "billingRules": "以「fast 请求」为核心计量单位，分 fast（高优先级）和 slow（降速）两类。Hobby（免费档）提供每月 2000 次代码补全和 50 次 slow premium 请求，无 fast 请求额度。Pro 档每月 500 次 fast 请求，超出后自动降为 slow（无数量限制，但响应较慢），代码补全无限制。Business 档功能与 Pro 相同，增加团队管理能力。fast 请求额度每月自动重置，不累计结转。",
+      "billingRules": "以「fast 请求」为核心计量单位，分 fast（高优先级）和 slow（降速）两类。Hobby（免费档）提供每月 2000 次代码补全和 50 次 slow premium 请求，无 fast 请求额度。Pro 档每月 500 次 fast 请求，超出后自动降为 slow（无数量限制，但响应较慢），代码补全无限制。Business 档功能与 Pro 相同，增加团队管理能力。fast 请求额度每月自动重置，不累计结转。在「设置 → API Keys」中可绑定自有 OpenAI、Anthropic、Google AI Studio 等密钥；OpenAI 支持开启「Override OpenAI Base URL」以指向代理或兼容端点；亦可配置 Azure OpenAI（Base URL、部署名、API Key）与 AWS Bedrock。走自有 Key 时通常按第三方按量计费，与订阅内含 fast 额度的关系以 Cursor 官方说明为准。",
       "networkAndPayment": "服务器托管于美国，国内访问需科学上网，无官方国内镜像或加速节点。订阅支持 Visa/Mastercard 双币信用卡（含国内发行的双币卡），不支持支付宝、微信支付或银联借记卡。",
       "plans": [
         { "name": "Hobby", "monthlyUsd": 0, "yearlyMonthlyUsd": "-", "summary": "2000 次补全/月，50 次 slow 请求/月，无 fast 请求" },
@@ -44,7 +44,7 @@
       "lowestPaidUsd": "$10 / 月",
       "billingModel": "按补全次数与 premium 模型对话次数分级",
       "integration": ["VS Code", "JetBrains 全家桶", "Visual Studio", "Vim / Neovim", "Xcode"],
-      "customUrlOrApiKey": "不支持；须使用 GitHub Copilot 官方服务与账号计费",
+      "customUrlOrApiKey": "不支持",
       "cnPayment": "需 GitHub 账号；国内双币卡通常可用，但部分用户反映付款失败",
       "networkReq": "GitHub 整体在国内可访问，但 Copilot API 偶发不稳定",
       "purchaseReq": "需 GitHub 账号；学生/教育用户可申请免费 Pro"
@@ -76,7 +76,7 @@
       "lowestPaidUsd": "$20 / 月（Claude Pro，含有限额度）",
       "billingModel": "按 API Token 计费；或通过 Claude Pro/Max 订阅内含额度",
       "integration": ["终端（任意 Shell）", "VS Code 终端", "可嵌入任意 IDE 终端"],
-      "customUrlOrApiKey": "支持自有 Anthropic API Key；可通过环境变量将请求指向代理或兼容网关（如 ANTHROPIC_BASE_URL）",
+      "customUrlOrApiKey": "支持（API Key；可配代理 URL）",
       "cnPayment": "Anthropic 官网不支持国内信用卡；API 充值限制较多",
       "networkReq": "Anthropic 服务在国内被封锁，必须使用海外网络",
       "purchaseReq": "需 Anthropic 账号（海外手机号验证）；部分地区账号注册受限"
@@ -108,7 +108,7 @@
       "lowestPaidUsd": "$20 / 月（ChatGPT Plus）",
       "billingModel": "ChatGPT 订阅含额度；或直接 API 按 Token 计费",
       "integration": ["ChatGPT 网页 / App（云端）", "终端 CLI（需 API Key）"],
-      "customUrlOrApiKey": "分场景：Codex CLI 可用自有 OpenAI API Key，并可配置代理 Base URL；ChatGPT 内云端 Codex Agent 不支持自带 Key",
+      "customUrlOrApiKey": "CLI 支持；ChatGPT 云端不支持",
       "cnPayment": "OpenAI 不接受国内任何支付方式（含双币卡）",
       "networkReq": "OpenAI 服务在国内被封锁，且 IP 检测严格，需高质量海外网络",
       "purchaseReq": "需 OpenAI 账号（海外手机号）；订阅需境外信用卡；国内门槛最高"
