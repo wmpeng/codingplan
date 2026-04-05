@@ -13,6 +13,7 @@
       "lowestPaidUsd": "$20 / 月",
       "billingModel": "按 fast premium 请求数分级；慢速请求无限制",
       "integration": ["内置（VS Code fork）"],
+      "customUrlOrApiKey": "主流程用 Cursor 订阅通道；设置中可部分绑定自有厂商 API Key；不支持任意 OpenAI 兼容 Base URL",
       "cnPayment": "支持双币 Visa/Mastercard；不支持支付宝/微信/银联",
       "networkReq": "需海外网络，无国内镜像",
       "purchaseReq": "无特殊要求，直接订阅"
@@ -43,6 +44,7 @@
       "lowestPaidUsd": "$10 / 月",
       "billingModel": "按补全次数与 premium 模型对话次数分级",
       "integration": ["VS Code", "JetBrains 全家桶", "Visual Studio", "Vim / Neovim", "Xcode"],
+      "customUrlOrApiKey": "不支持；须使用 GitHub Copilot 官方服务与账号计费",
       "cnPayment": "需 GitHub 账号；国内双币卡通常可用，但部分用户反映付款失败",
       "networkReq": "GitHub 整体在国内可访问，但 Copilot API 偶发不稳定",
       "purchaseReq": "需 GitHub 账号；学生/教育用户可申请免费 Pro"
@@ -74,6 +76,7 @@
       "lowestPaidUsd": "$20 / 月（Claude Pro，含有限额度）",
       "billingModel": "按 API Token 计费；或通过 Claude Pro/Max 订阅内含额度",
       "integration": ["终端（任意 Shell）", "VS Code 终端", "可嵌入任意 IDE 终端"],
+      "customUrlOrApiKey": "支持自有 Anthropic API Key；可通过环境变量将请求指向代理或兼容网关（如 ANTHROPIC_BASE_URL）",
       "cnPayment": "Anthropic 官网不支持国内信用卡；API 充值限制较多",
       "networkReq": "Anthropic 服务在国内被封锁，必须使用海外网络",
       "purchaseReq": "需 Anthropic 账号（海外手机号验证）；部分地区账号注册受限"
@@ -105,6 +108,7 @@
       "lowestPaidUsd": "$20 / 月（ChatGPT Plus）",
       "billingModel": "ChatGPT 订阅含额度；或直接 API 按 Token 计费",
       "integration": ["ChatGPT 网页 / App（云端）", "终端 CLI（需 API Key）"],
+      "customUrlOrApiKey": "分场景：Codex CLI 可用自有 OpenAI API Key，并可配置代理 Base URL；ChatGPT 内云端 Codex Agent 不支持自带 Key",
       "cnPayment": "OpenAI 不接受国内任何支付方式（含双币卡）",
       "networkReq": "OpenAI 服务在国内被封锁，且 IP 检测严格，需高质量海外网络",
       "purchaseReq": "需 OpenAI 账号（海外手机号）；订阅需境外信用卡；国内门槛最高"
