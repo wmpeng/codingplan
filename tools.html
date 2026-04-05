@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 编程工具 / IDE / 代理 对比</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-tertiary: #94a3b8;
+            --border-color: #e2e8f0;
+            --border-light: #f1f5f9;
+            --accent-primary: #6366f1;
+            --accent-secondary: #8b5cf6;
+            --accent-success: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-error: #ef4444;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.4;
+            padding: 48px 96px;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .section-divider {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-color), transparent);
+            margin: 24px 0;
+        }
+
+        /* ── 页面导航 Tab ── */
+        .page-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 32px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0;
+        }
+
+        .page-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text-secondary);
+            border: 1px solid transparent;
+            border-bottom: none;
+            transition: all 0.2s;
+            position: relative;
+            bottom: -1px;
+        }
+
+        .page-tab:hover {
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+        }
+
+        .page-tab.active {
+            color: var(--accent-primary);
+            background: var(--bg-secondary);
+            border-color: var(--border-color);
+            border-bottom-color: var(--bg-secondary);
+            font-weight: 600;
+        }
+
+        /* ── Header ── */
+        .header {
+            margin-bottom: 48px;
+            text-align: center;
+            position: relative;
+            padding: 48px 0;
+        }
+
+        .github-link {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+
+        .github-link:hover {
+            color: var(--text-primary);
+            border-color: var(--accent-primary);
+            transform: translateY(-1px);
+        }
+
+        .header h1 {
+            font-size: 42px;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .update-date {
+            font-size: 14px;
+            color: var(--text-tertiary);
+            margin-bottom: 20px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .header .subtitle {
+            color: var(--text-secondary);
+            font-size: 18px;
+            margin-bottom: 8px;
+            font-weight: 500;
+            line-height: 1.7;
+        }
+
+        /* ── 区块标题 ── */
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        /* ── 快速对比矩阵 ── */
+        .matrix-section {
+            margin-bottom: 48px;
+        }
+
+        .matrix-wrapper {
+            overflow-x: auto;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        .matrix-table thead th {
+            background: var(--bg-tertiary);
+            padding: 16px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-align: left;
+            border-bottom: 2px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        .matrix-table thead th:first-child {
+            background: var(--bg-tertiary);
+            color: var(--text-tertiary);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 130px;
+            min-width: 130px;
+            position: sticky;
+            left: 0;
+            z-index: 2;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .matrix-table thead th.tool-col-header {
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .tool-col-name {
+            display: block;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .tool-col-type {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.08);
+            padding: 2px 8px;
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .matrix-table tbody tr {
+            border-bottom: 1px solid var(--border-light);
+            transition: background 0.15s;
+        }
+
+        .matrix-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .matrix-table tbody tr:hover {
+            background: rgba(99, 102, 241, 0.03);
+        }
+
+        .matrix-table tbody tr:hover .dim-label {
+            background: #e8eaf6;
+        }
+
+        .dim-label {
+            padding: 14px 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            background: var(--bg-tertiary);
+            position: sticky;
+            left: 0;
+            z-index: 1;
+            border-right: 1px solid var(--border-color);
+            transition: background 0.15s;
+            white-space: nowrap;
+        }
+
+        .matrix-table tbody td {
+            padding: 14px 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .matrix-table tbody td.highlight-warn {
+            color: var(--accent-warning);
+        }
+
+        .matrix-table tbody td.highlight-error {
+            color: var(--accent-error);
+        }
+
+        .integration-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: var(--bg-tertiary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            margin: 2px 2px 2px 0;
+            white-space: nowrap;
+        }
+
+        /* ── 工具详情区 ── */
+        .tools-detail-section {
+            margin-bottom: 48px;
+        }
+
+        .tool-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .tool-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .tool-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tool-card-header {
+            padding: 24px 28px 20px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: linear-gradient(to right, rgba(99, 102, 241, 0.03), transparent);
+        }
+
+        .tool-card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tool-name-lg {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .type-badge-lg {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.25);
+        }
+
+        .vendor-text {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            font-weight: 400;
+        }
+
+        .tool-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .pricing-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent-primary);
+            text-decoration: none;
+            padding: 6px 14px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: var(--radius-md);
+            transition: all 0.2s;
+        }
+
+        .pricing-link:hover {
+            background: rgba(99, 102, 241, 0.08);
+            border-color: var(--accent-primary);
+        }
+
+        .updated-at {
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+
+        .tool-card-body {
+            padding: 0 28px 28px;
+        }
+
+        .tool-section {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .tool-section:last-child {
+            border-bottom: none;
+        }
+
+        .tool-section h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .tool-section p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        .tool-section-notes p {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            line-height: 1.7;
+        }
+
+        /* ── 档位子表 ── */
+        .plans-mini-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .plans-mini-table thead th {
+            background: var(--bg-tertiary);
+            padding: 10px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .plans-mini-table tbody tr {
+            border-bottom: 1px solid var(--border-light);
+            transition: background 0.15s;
+        }
+
+        .plans-mini-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .plans-mini-table tbody tr:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .plans-mini-table tbody td {
+            padding: 11px 16px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            vertical-align: middle;
+        }
+
+        .plans-mini-table tbody td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .price-usd {
+            font-weight: 700;
+            color: var(--accent-primary);
+            white-space: nowrap;
+        }
+
+        .price-free {
+            font-weight: 600;
+            color: var(--accent-success);
+        }
+
+        .price-dash {
+            color: var(--text-tertiary);
+        }
+
+        /* ── 底部说明 / 更新日志 ── */
+        .notes-section {
+            margin-top: 32px;
+            padding: 20px 0;
+        }
+
+        .notes-section h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .notes-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .notes-section li {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            padding: 6px 0;
+            padding-left: 16px;
+            position: relative;
+            line-height: 1.65;
+        }
+
+        .notes-section li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--text-tertiary);
+        }
+
+        .updates-section {
+            margin-top: 24px;
+            padding: 20px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .updates-section h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .updates-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .update-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .update-item:last-child {
+            border-bottom: none;
+        }
+
+        .log-date {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .update-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            padding-left: 16px;
+        }
+
+        .update-items li {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            padding: 3px 0;
+            position: relative;
+        }
+
+        .update-items li::before {
+            content: "-";
+            position: absolute;
+            left: -12px;
+            color: var(--text-tertiary);
+        }
+
+        /* ── 加载动画 ── */
+        .loading-state {
+            text-align: center;
+            padding: 80px 24px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* ── 滚动条 ── */
+        .matrix-wrapper::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .matrix-wrapper::-webkit-scrollbar-track {
+            background: var(--bg-tertiary);
+            border-radius: 3px;
+        }
+
+        .matrix-wrapper::-webkit-scrollbar-thumb {
+            background: var(--text-tertiary);
+            border-radius: 3px;
+        }
+
+        /* ── 响应式 ── */
+        @media (max-width: 1600px) {
+            body { padding: 48px 80px; }
+            .container { max-width: 1280px; }
+        }
+
+        @media (max-width: 1200px) {
+            body { padding: 40px 40px; }
+            .container { max-width: 1100px; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 24px 16px; }
+            .container { max-width: 100%; }
+            .header { margin-bottom: 24px; padding: 24px 0; }
+            .header h1 { font-size: 24px; }
+            .header .subtitle { font-size: 14px; }
+            .tool-card-header { flex-direction: column; }
+            .tool-card-body { padding: 0 16px 20px; }
+            .tool-card-header { padding: 16px 16px 14px; }
+            .plans-mini-table { display: block; overflow-x: auto; }
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 16px 12px; }
+            .header { padding: 16px 0; }
+            .header h1 { font-size: 20px; }
+            .github-link span { display: none; }
+            .page-tab { padding: 8px 12px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- 页面导航 Tab -->
+        <nav class="page-nav">
+            <a href="index.html" class="page-tab">国内 Coding Plan</a>
+            <a href="tools.html" class="page-tab active">AI 编程工具 / IDE / 代理</a>
+        </nav>
+
+        <!-- 顶部标题 -->
+        <div class="header">
+            <a href="https://github.com/wmpeng/codingplan" target="_blank" class="github-link" id="githubLink">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                <span id="githubText">GitHub</span>
+            </a>
+            <h1 id="pageTitle">AI 编程工具 / IDE / 代理</h1>
+            <div class="update-date" id="updateDate">更新日期 2026.4.5</div>
+            <div class="subtitle" id="subtitle">Cursor、GitHub Copilot、Claude Code、OpenAI Codex，计费规则、支付方式、网络限制全面对比</div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- 快速对比矩阵 -->
+        <div class="matrix-section">
+            <h2 class="section-title">快速对比</h2>
+            <div class="matrix-wrapper" id="matrixWrapper">
+                <div class="loading-state">加载中...</div>
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- 工具详情区 -->
+        <div class="tools-detail-section">
+            <h2 class="section-title">详细介绍</h2>
+            <div class="tool-cards" id="toolCards">
+                <div class="loading-state">加载中...</div>
+            </div>
+        </div>
+
+        <!-- 底部说明 -->
+        <div class="notes-section" id="notesSection"></div>
+        <div class="updates-section" id="updatesSection"></div>
+
+    </div>
+
+    <script>
+        const TOOLS_FILE_PATH = './tools.json';
+        const CONFIG_FILE_PATH = './tools-config.json';
+
+        let toolsData = [];
+        let pageConfig = {};
+
+        function escapeHtml(text) {
+            if (text === null || text === undefined) return '';
+            const div = document.createElement('div');
+            div.textContent = String(text);
+            return div.innerHTML;
+        }
+
+        // ── 渲染矩阵 ──
+        function renderMatrix(tools, dimensions) {
+            const wrapper = document.getElementById('matrixWrapper');
+            if (!tools.length || !dimensions.length) {
+                wrapper.innerHTML = '<div class="loading-state">暂无数据</div>';
+                return;
+            }
+
+            const theadCols = tools.map(t => `
+                <th class="tool-col-header">
+                    <span class="tool-col-name">${escapeHtml(t.name)}</span>
+                    <span class="tool-col-type">${escapeHtml(t.type)}</span>
+                </th>
+            `).join('');
+
+            const tbody = dimensions.map(dim => {
+                const cells = tools.map(t => {
+                    const val = t.matrix ? t.matrix[dim.key] : undefined;
+                    if (Array.isArray(val)) {
+                        const tags = val.map(v => `<span class="integration-tag">${escapeHtml(v)}</span>`).join('');
+                        return `<td>${tags}</td>`;
+                    }
+                    if (val === undefined || val === null || val === '') {
+                        return `<td><span class="price-dash">—</span></td>`;
+                    }
+                    // Highlight payment/network rows with warning color when containing negative signals
+                    const strVal = String(val);
+                    const isWarnField = dim.key === 'networkReq' || dim.key === 'purchaseReq';
+                    const isErrorField = dim.key === 'cnPayment';
+                    let cellClass = '';
+                    if (isErrorField && (strVal.includes('不支持') || strVal.includes('限制较多') || strVal.includes('不接受'))) {
+                        cellClass = 'highlight-error';
+                    } else if (isWarnField && (strVal.includes('封锁') || strVal.includes('必须') || strVal.includes('需海外'))) {
+                        cellClass = 'highlight-warn';
+                    }
+                    return `<td class="${cellClass}">${escapeHtml(strVal)}</td>`;
+                }).join('');
+                return `<tr>
+                    <td class="dim-label">${escapeHtml(dim.label)}</td>
+                    ${cells}
+                </tr>`;
+            }).join('');
+
+            wrapper.innerHTML = `
+                <table class="matrix-table">
+                    <thead>
+                        <tr>
+                            <th>对比维度</th>
+                            ${theadCols}
+                        </tr>
+                    </thead>
+                    <tbody>${tbody}</tbody>
+                </table>
+            `;
+        }
+
+        // ── 渲染工具详情卡片 ──
+        function renderToolCards(tools) {
+            const container = document.getElementById('toolCards');
+            if (!tools.length) {
+                container.innerHTML = '<div class="loading-state">暂无数据</div>';
+                return;
+            }
+
+            container.innerHTML = tools.map(tool => {
+                const detail = tool.detail || {};
+
+                const plansRows = (detail.plans || []).map(p => {
+                    const monthlyCell = p.monthlyUsd === 0
+                        ? `<td><span class="price-free">免费</span></td>`
+                        : `<td><span class="price-usd">$${p.monthlyUsd}</span></td>`;
+                    const yearlyCell = p.yearlyMonthlyUsd === '-' || p.yearlyMonthlyUsd === undefined
+                        ? `<td><span class="price-dash">—</span></td>`
+                        : `<td><span class="price-usd">$${p.yearlyMonthlyUsd}</span></td>`;
+                    return `
+                        <tr>
+                            <td>${escapeHtml(p.name)}</td>
+                            ${monthlyCell}
+                            ${yearlyCell}
+                            <td>${escapeHtml(p.summary)}</td>
+                        </tr>
+                    `;
+                }).join('');
+
+                const plansSection = plansRows ? `
+                    <div class="tool-section">
+                        <h4>套餐档位</h4>
+                        <table class="plans-mini-table">
+                            <thead>
+                                <tr>
+                                    <th>档位</th>
+                                    <th>月付</th>
+                                    <th>年付折月</th>
+                                    <th>功能摘要</th>
+                                </tr>
+                            </thead>
+                            <tbody>${plansRows}</tbody>
+                        </table>
+                    </div>
+                ` : '';
+
+                const notesSection = detail.notes ? `
+                    <div class="tool-section tool-section-notes">
+                        <h4>注意事项</h4>
+                        <p>${escapeHtml(detail.notes)}</p>
+                    </div>
+                ` : '';
+
+                return `
+                    <div class="tool-card" id="tool-${escapeHtml(tool.id)}">
+                        <div class="tool-card-header">
+                            <div class="tool-card-title">
+                                <span class="tool-name-lg">${escapeHtml(tool.name)}</span>
+                                <span class="type-badge-lg">${escapeHtml(tool.type)}</span>
+                                <span class="vendor-text">${escapeHtml(tool.vendor)}</span>
+                            </div>
+                            <div class="tool-card-meta">
+                                <a href="${escapeHtml(tool.pricingUrl)}" target="_blank" class="pricing-link">查看定价 →</a>
+                                <span class="updated-at">数据更新：${escapeHtml(tool.updatedAt)}</span>
+                            </div>
+                        </div>
+                        <div class="tool-card-body">
+                            ${detail.description ? `
+                                <div class="tool-section">
+                                    <h4>产品简介</h4>
+                                    <p>${escapeHtml(detail.description)}</p>
+                                </div>
+                            ` : ''}
+                            ${detail.billingRules ? `
+                                <div class="tool-section">
+                                    <h4>计费规则</h4>
+                                    <p>${escapeHtml(detail.billingRules)}</p>
+                                </div>
+                            ` : ''}
+                            ${detail.networkAndPayment ? `
+                                <div class="tool-section">
+                                    <h4>网络与支付</h4>
+                                    <p>${escapeHtml(detail.networkAndPayment)}</p>
+                                </div>
+                            ` : ''}
+                            ${plansSection}
+                            ${notesSection}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ── 渲染底部说明 ──
+        function renderNotes(notes) {
+            if (!notes || !notes.length) return;
+            document.getElementById('notesSection').innerHTML = `
+                <h3>说明</h3>
+                <ul>${notes.map(n => `<li>${escapeHtml(n)}</li>`).join('')}</ul>
+            `;
+        }
+
+        // ── 渲染更新日志 ──
+        function renderUpdates(updates) {
+            if (!updates || !updates.length) return;
+            const items = updates.map(u => `
+                <li class="update-item">
+                    <div class="log-date">${escapeHtml(u.date)}</div>
+                    <ul class="update-items">
+                        ${u.items.map(i => `<li>${escapeHtml(i)}</li>`).join('')}
+                    </ul>
+                </li>
+            `).join('');
+            document.getElementById('updatesSection').innerHTML = `
+                <h3>更新日志</h3>
+                <ul class="updates-list">${items}</ul>
+            `;
+        }
+
+        // ── 应用配置 ──
+        function applyConfig(config) {
+            if (config.header) {
+                const h = config.header;
+                document.title = `${h.title} - AI 编程工具对比`;
+                document.getElementById('pageTitle').textContent = h.title;
+                document.getElementById('updateDate').textContent = h.updateDate;
+                document.getElementById('subtitle').textContent = h.subtitle;
+                if (h.github) {
+                    document.getElementById('githubLink').href = h.github.url;
+                    document.getElementById('githubText').textContent = h.github.text;
+                }
+            }
+            renderNotes(config.notes);
+            renderUpdates(config.updates);
+        }
+
+        // ── 加载配置 ──
+        async function loadConfig() {
+            try {
+                const res = await fetch(CONFIG_FILE_PATH, { cache: 'no-store' });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                pageConfig = await res.json();
+                applyConfig(pageConfig);
+            } catch (e) {
+                console.error('加载配置失败:', e);
+            }
+        }
+
+        // ── 加载工具数据 ──
+        async function loadTools() {
+            try {
+                const res = await fetch(TOOLS_FILE_PATH, { cache: 'no-store' });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                toolsData = await res.json();
+
+                const dimensions = (pageConfig.matrixDimensions) || [];
+                renderMatrix(toolsData, dimensions);
+                renderToolCards(toolsData);
+
+                console.log(`成功加载 ${toolsData.length} 个工具数据`);
+            } catch (e) {
+                console.error('加载工具数据失败:', e);
+                document.getElementById('matrixWrapper').innerHTML =
+                    '<div class="loading-state">数据加载失败，请检查 tools.json 文件</div>';
+                document.getElementById('toolCards').innerHTML =
+                    '<div class="loading-state">数据加载失败，请检查 tools.json 文件</div>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadConfig();
+            await loadTools();
+        });
+    </script>
+</body>
+</html>
