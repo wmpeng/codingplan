@@ -2,23 +2,53 @@
   "header": {
     "title": "AI 编程工具对比",
     "updateDate": "更新日期 2026.4.5",
-    "subtitle": "Cursor、GitHub Copilot、Claude Code、OpenAI Codex，计费规则、支付方式、网络限制全面对比",
+    "subtitle": "Cursor、GitHub Copilot、Claude Code、OpenAI Codex、Antigravity，计费规则、支付方式、网络限制全面对比",
     "github": {
       "url": "https://github.com/wmpeng/codingplan",
       "text": "GitHub"
     }
   },
   "matrixDimensions": [
-    { "key": "type", "label": "类型" },
-    { "key": "vendor", "label": "厂商" },
-    { "key": "freeTier", "label": "免费档" },
-    { "key": "lowestPaidUsd", "label": "最低月付" },
-    { "key": "billingModel", "label": "计费方式" },
-    { "key": "integration", "label": "集成环境" },
-    { "key": "customUrlOrApiKey", "label": "自有 URL / API Key" },
-    { "key": "cnPayment", "label": "国内支付" },
-    { "key": "networkReq", "label": "网络要求" },
-    { "key": "purchaseReq", "label": "购买要求" }
+    {
+      "key": "type",
+      "label": "类型"
+    },
+    {
+      "key": "vendor",
+      "label": "厂商"
+    },
+    {
+      "key": "freeTier",
+      "label": "免费档"
+    },
+    {
+      "key": "lowestPaidUsd",
+      "label": "最低月付"
+    },
+    {
+      "key": "billingModel",
+      "label": "计费方式"
+    },
+    {
+      "key": "integration",
+      "label": "集成环境"
+    },
+    {
+      "key": "customUrlOrApiKey",
+      "label": "自有 URL / API Key"
+    },
+    {
+      "key": "cnPayment",
+      "label": "国内支付"
+    },
+    {
+      "key": "networkReq",
+      "label": "网络要求"
+    },
+    {
+      "key": "purchaseReq",
+      "label": "购买要求"
+    }
   ],
   "notes": [
     "页面数据仅供参考，工具定价与功能可能随时调整，请以各产品官网为准",
@@ -29,6 +59,8 @@
     {
       "date": "2026.4.5",
       "items": [
+        "根据 antigravity.google 官网补全 Antigravity 关键信息",
+        "补充 Antigravity 条目（待完善）",
         "对比矩阵新增「自有 URL / API Key」维度",
         "新增 AI 编程工具页面",
         "首批收录 Cursor、GitHub Copilot、Claude Code、OpenAI Codex"
