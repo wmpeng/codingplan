@@ -121,8 +121,8 @@
     "quarterlyPrice": "-",
     "yearlyPrice": 980,
     "models": [
-      "MiniMax-M2.7",
-      "MiniMax-M2.5"
+      "MiniMax-M2.7-highspeed",
+      "MiniMax-M2.5-highspeed"
     ],
     "fiveHoursRequests": 1500,
     "weeklyRequests": 15000,
@@ -139,8 +139,8 @@
     "quarterlyPrice": "-",
     "yearlyPrice": 1990,
     "models": [
-      "MiniMax-M2.7",
-      "MiniMax-M2.5"
+      "MiniMax-M2.7-highspeed",
+      "MiniMax-M2.5-highspeed"
     ],
     "fiveHoursRequests": 4500,
     "weeklyRequests": 45000,
