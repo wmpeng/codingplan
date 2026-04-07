@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 编程工具 对比</title>
+    <title>API 中转站 对比</title>
     <link rel="stylesheet" href="styles/shared.css">
     <style>
-        /* tools.html 覆盖 shared.css 的差异值 */
+        /* relays.html 覆盖 shared.css 的差异值 */
         .header .subtitle { margin-bottom: 8px; }
         .notes-section li { line-height: 1.65; }
 
@@ -73,12 +73,12 @@
             border-right: 1px solid var(--border-color);
         }
 
-        .matrix-table thead th.tool-col-header {
+        .matrix-table thead th.relay-col-header {
             text-align: center;
             min-width: 200px;
         }
 
-        .tool-col-name {
+        .relay-col-name {
             display: block;
             font-size: 15px;
             font-weight: 700;
@@ -86,7 +86,7 @@
             margin-bottom: 6px;
         }
 
-        .tool-col-type {
+        .relay-col-type {
             display: inline-block;
             font-size: 11px;
             font-weight: 500;
@@ -146,7 +146,11 @@
             color: var(--accent-error);
         }
 
-        .integration-tag {
+        .matrix-table tbody td.highlight-success {
+            color: var(--accent-success);
+        }
+
+        .protocol-tag {
             display: inline-block;
             font-size: 11px;
             font-weight: 500;
@@ -159,18 +163,18 @@
             white-space: nowrap;
         }
 
-        /* ── 工具详情区 ── */
-        .tools-detail-section {
+        /* ── 平台详情区 ── */
+        .relays-detail-section {
             margin-bottom: 48px;
         }
 
-        .tool-cards {
+        .relay-cards {
             display: flex;
             flex-direction: column;
             gap: 24px;
         }
 
-        .tool-card {
+        .relay-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-xl);
@@ -179,11 +183,11 @@
             transition: box-shadow 0.3s;
         }
 
-        .tool-card:hover {
+        .relay-card:hover {
             box-shadow: var(--shadow-lg);
         }
 
-        .tool-card-header {
+        .relay-card-header {
             padding: 24px 28px 20px;
             border-bottom: 1px solid var(--border-light);
             display: flex;
@@ -194,14 +198,14 @@
             background: linear-gradient(to right, rgba(99, 102, 241, 0.03), transparent);
         }
 
-        .tool-card-title {
+        .relay-card-title {
             display: flex;
             align-items: center;
             gap: 12px;
             flex-wrap: wrap;
         }
 
-        .tool-name-lg {
+        .relay-name-lg {
             font-size: 22px;
             font-weight: 700;
             color: var(--text-primary);
@@ -223,7 +227,7 @@
             font-weight: 400;
         }
 
-        .tool-card-meta {
+        .relay-card-meta {
             display: flex;
             align-items: center;
             gap: 16px;
@@ -249,25 +253,44 @@
             border-color: var(--accent-primary);
         }
 
+        .home-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            transition: all 0.2s;
+        }
+
+        .home-link:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--text-secondary);
+        }
+
         .updated-at {
             font-size: 12px;
             color: var(--text-tertiary);
         }
 
-        .tool-card-body {
+        .relay-card-body {
             padding: 0 28px 28px;
         }
 
-        .tool-section {
+        .relay-section {
             padding: 20px 0;
             border-bottom: 1px solid var(--border-light);
         }
 
-        .tool-section:last-child {
+        .relay-section:last-child {
             border-bottom: none;
         }
 
-        .tool-section h4 {
+        .relay-section h4 {
             font-size: 13px;
             font-weight: 700;
             color: var(--text-primary);
@@ -276,20 +299,20 @@
             margin-bottom: 10px;
         }
 
-        .tool-section p {
+        .relay-section p {
             font-size: 14px;
             color: var(--text-secondary);
             line-height: 1.75;
         }
 
-        .tool-section-notes p {
+        .relay-section-notes p {
             font-size: 13px;
             color: var(--text-tertiary);
             line-height: 1.7;
         }
 
-        /* ── 档位子表 ── */
-        .plans-mini-table {
+        /* ── 模型价格子表 ── */
+        .models-mini-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 4px;
@@ -298,7 +321,7 @@
             border: 1px solid var(--border-color);
         }
 
-        .plans-mini-table thead th {
+        .models-mini-table thead th {
             background: var(--bg-tertiary);
             padding: 10px 16px;
             font-size: 12px;
@@ -310,32 +333,32 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        .plans-mini-table tbody tr {
+        .models-mini-table tbody tr {
             border-bottom: 1px solid var(--border-light);
             transition: background 0.15s;
         }
 
-        .plans-mini-table tbody tr:last-child {
+        .models-mini-table tbody tr:last-child {
             border-bottom: none;
         }
 
-        .plans-mini-table tbody tr:hover {
+        .models-mini-table tbody tr:hover {
             background: var(--bg-tertiary);
         }
 
-        .plans-mini-table tbody td {
+        .models-mini-table tbody td {
             padding: 11px 16px;
             font-size: 13px;
             color: var(--text-secondary);
             vertical-align: middle;
         }
 
-        .plans-mini-table tbody td:first-child {
+        .models-mini-table tbody td:first-child {
             font-weight: 600;
             color: var(--text-primary);
         }
 
-        .price-usd {
+        .price-token {
             font-weight: 700;
             color: var(--accent-primary);
             white-space: nowrap;
@@ -390,10 +413,10 @@
             .header { margin-bottom: 24px; padding: 24px 0; }
             .header h1 { font-size: 24px; }
             .header .subtitle { font-size: 14px; }
-            .tool-card-header { flex-direction: column; }
-            .tool-card-body { padding: 0 16px 20px; }
-            .tool-card-header { padding: 16px 16px 14px; }
-            .plans-mini-table { display: block; overflow-x: auto; }
+            .relay-card-header { flex-direction: column; }
+            .relay-card-body { padding: 0 16px 20px; }
+            .relay-card-header { padding: 16px 16px 14px; }
+            .models-mini-table { display: block; overflow-x: auto; }
         }
 
         @media (max-width: 480px) {
@@ -412,8 +435,8 @@
         <!-- 页面导航 Tab -->
         <nav class="page-nav">
             <a href="index.html" class="page-tab">国内 Coding Plan</a>
-            <a href="tools.html" class="page-tab active">AI 编程工具</a>
-            <a href="relays.html" class="page-tab">API 中转站</a>
+            <a href="tools.html" class="page-tab">AI 编程工具</a>
+            <a href="relays.html" class="page-tab active">API 中转站</a>
             <div class="settings-wrapper">
                 <button class="settings-btn" id="settingsBtn" title="设置" aria-label="设置">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -442,9 +465,9 @@
                 </svg>
                 <span id="githubText">GitHub</span>
             </a>
-            <h1 id="pageTitle">AI 编程工具</h1>
-            <div class="update-date" id="updateDate">更新日期 2026.4.5</div>
-            <div class="subtitle" id="subtitle">Cursor、GitHub Copilot、Claude Code、OpenAI Codex，计费规则、支付方式、网络限制全面对比</div>
+            <h1 id="pageTitle">API 中转站</h1>
+            <div class="update-date" id="updateDate">更新日期 2026.4.7</div>
+            <div class="subtitle" id="subtitle">聚合型 API 中转平台对比，兼容协议、计费方式、模型覆盖、国内访问全面对比</div>
         </div>
 
         <hr class="section-divider">
@@ -459,10 +482,10 @@
 
         <hr class="section-divider">
 
-        <!-- 工具详情区 -->
-        <div class="tools-detail-section">
+        <!-- 平台详情区 -->
+        <div class="relays-detail-section">
             <h2 class="section-title">详细介绍</h2>
-            <div class="tool-cards" id="toolCards">
+            <div class="relay-cards" id="relayCards">
                 <div class="loading-state">加载中...</div>
             </div>
         </div>
@@ -474,46 +497,47 @@
     </div>
 
     <script>
-        const TOOLS_FILE_PATH = './tools.json';
-        const CONFIG_FILE_PATH = './tools-config.json';
+        const RELAYS_FILE_PATH = './relays.json';
+        const CONFIG_FILE_PATH = './relays-config.json';
 
-        let toolsData = [];
+        let relaysData = [];
         let pageConfig = {};
 
         // ── 渲染矩阵 ──
-        function renderMatrix(tools, dimensions) {
+        function renderMatrix(relays, dimensions) {
             const wrapper = document.getElementById('matrixWrapper');
-            if (!tools.length || !dimensions.length) {
+            if (!relays.length || !dimensions.length) {
                 wrapper.innerHTML = '<div class="loading-state">暂无数据</div>';
                 return;
             }
 
-            const theadCols = tools.map(t => `
-                <th class="tool-col-header">
-                    <span class="tool-col-name">${escapeHtml(t.name)}</span>
-                    <span class="tool-col-type">${escapeHtml(t.type)}</span>
+            const theadCols = relays.map(r => `
+                <th class="relay-col-header">
+                    <span class="relay-col-name">${escapeHtml(r.name)}</span>
+                    <span class="relay-col-type">${escapeHtml(r.type)}</span>
                 </th>
             `).join('');
 
             const tbody = dimensions.map(dim => {
-                const cells = tools.map(t => {
-                    const val = t.matrix ? t.matrix[dim.key] : undefined;
+                const cells = relays.map(r => {
+                    const val = r.matrix ? r.matrix[dim.key] : undefined;
                     if (Array.isArray(val)) {
-                        const tags = val.map(v => `<span class="integration-tag">${escapeHtml(v)}</span>`).join('');
+                        const tags = val.map(v => `<span class="protocol-tag">${escapeHtml(v)}</span>`).join('');
                         return `<td>${tags}</td>`;
                     }
                     if (val === undefined || val === null || val === '') {
                         return `<td><span class="price-dash">—</span></td>`;
                     }
-                    // Highlight payment/network rows with warning color when containing negative signals
                     const strVal = String(val);
-                    const isWarnField = dim.key === 'networkReq' || dim.key === 'purchaseReq';
-                    const isErrorField = dim.key === 'cnPayment';
+                    const isCnAccess = dim.key === 'cnAccess';
+                    const isCnPayment = dim.key === 'cnPayment';
                     let cellClass = '';
-                    if (isErrorField && (strVal.includes('不支持') || strVal.includes('限制较多') || strVal.includes('不接受'))) {
+                    if (isCnPayment && (strVal.includes('不支持') || strVal.includes('限制较多'))) {
                         cellClass = 'highlight-error';
-                    } else if (isWarnField && (strVal.includes('封锁') || strVal.includes('必须') || strVal.includes('需海外'))) {
+                    } else if (isCnAccess && (strVal.includes('封锁') || strVal.includes('需代理') || strVal.includes('需海外'))) {
                         cellClass = 'highlight-warn';
+                    } else if (isCnAccess && strVal.includes('可直连')) {
+                        cellClass = 'highlight-success';
                     }
                     return `<td class="${cellClass}">${escapeHtml(strVal)}</td>`;
                 }).join('');
@@ -536,91 +560,92 @@
             `;
         }
 
-        // ── 渲染工具详情卡片 ──
-        function renderToolCards(tools) {
-            const container = document.getElementById('toolCards');
-            if (!tools.length) {
+        // ── 渲染平台详情卡片 ──
+        function renderRelayCards(relays) {
+            const container = document.getElementById('relayCards');
+            if (!relays.length) {
                 container.innerHTML = '<div class="loading-state">暂无数据</div>';
                 return;
             }
 
-            container.innerHTML = tools.map(tool => {
-                const detail = tool.detail || {};
+            container.innerHTML = relays.map(relay => {
+                const detail = relay.detail || {};
 
-                const plansRows = (detail.plans || []).map(p => {
-                    const monthlyCell = p.monthlyUsd === 0
+                const modelsRows = (detail.keyModels || []).map(m => {
+                    const inputCell = m.inputPer1M === '$0.00'
                         ? `<td><span class="price-free">免费</span></td>`
-                        : `<td><span class="price-usd">$${p.monthlyUsd}</span></td>`;
-                    const yearlyCell = p.yearlyMonthlyUsd === '-' || p.yearlyMonthlyUsd === undefined
-                        ? `<td><span class="price-dash">—</span></td>`
-                        : `<td><span class="price-usd">$${p.yearlyMonthlyUsd}</span></td>`;
+                        : `<td><span class="price-token">${escapeHtml(m.inputPer1M)}</span></td>`;
+                    const outputCell = m.outputPer1M === '$0.00'
+                        ? `<td><span class="price-free">免费</span></td>`
+                        : `<td><span class="price-token">${escapeHtml(m.outputPer1M)}</span></td>`;
                     return `
                         <tr>
-                            <td>${escapeHtml(p.name)}</td>
-                            ${monthlyCell}
-                            ${yearlyCell}
-                            <td>${escapeHtml(p.summary)}</td>
+                            <td>${escapeHtml(m.name)}</td>
+                            ${inputCell}
+                            ${outputCell}
+                            <td>${escapeHtml(m.note || '')}</td>
                         </tr>
                     `;
                 }).join('');
 
-                const plansSection = plansRows ? `
-                    <div class="tool-section">
-                        <h4>套餐档位</h4>
-                        <table class="plans-mini-table">
+                const modelsSection = modelsRows ? `
+                    <div class="relay-section">
+                        <h4>代表模型定价（部分示例）</h4>
+                        <table class="models-mini-table">
                             <thead>
                                 <tr>
-                                    <th>档位</th>
-                                    <th>月付</th>
-                                    <th>年付折月</th>
-                                    <th>功能摘要</th>
+                                    <th>模型</th>
+                                    <th>输入 / 1M tokens</th>
+                                    <th>输出 / 1M tokens</th>
+                                    <th>备注</th>
                                 </tr>
                             </thead>
-                            <tbody>${plansRows}</tbody>
+                            <tbody>${modelsRows}</tbody>
                         </table>
                     </div>
                 ` : '';
 
                 const notesSection = detail.notes ? `
-                    <div class="tool-section tool-section-notes">
+                    <div class="relay-section relay-section-notes">
                         <h4>注意事项</h4>
                         <p>${escapeHtml(detail.notes)}</p>
                     </div>
                 ` : '';
 
                 return `
-                    <div class="tool-card" id="tool-${escapeHtml(tool.id)}">
-                        <div class="tool-card-header">
-                            <div class="tool-card-title">
-                                <span class="tool-name-lg">${escapeHtml(tool.name)}</span>
-                                <span class="type-badge-lg">${escapeHtml(tool.type)}</span>
-                                <span class="vendor-text">${escapeHtml(tool.vendor)}</span>
+                    <div class="relay-card" id="relay-${escapeHtml(relay.id)}">
+                        <div class="relay-card-header">
+                            <div class="relay-card-title">
+                                <span class="relay-name-lg">${escapeHtml(relay.name)}</span>
+                                <span class="type-badge-lg">${escapeHtml(relay.type)}</span>
+                                <span class="vendor-text">${escapeHtml(relay.vendor)}</span>
                             </div>
-                            <div class="tool-card-meta">
-                                <a href="${escapeHtml(tool.pricingUrl)}" target="_blank" class="pricing-link">查看定价 →</a>
-                                <span class="updated-at">数据更新：${escapeHtml(tool.updatedAt)}</span>
+                            <div class="relay-card-meta">
+                                ${relay.homeUrl ? `<a href="${escapeHtml(relay.homeUrl)}" target="_blank" class="home-link">官网 →</a>` : ''}
+                                <a href="${escapeHtml(relay.pricingUrl)}" target="_blank" class="pricing-link">查看定价 →</a>
+                                <span class="updated-at">数据更新：${escapeHtml(relay.updatedAt)}</span>
                             </div>
                         </div>
-                        <div class="tool-card-body">
+                        <div class="relay-card-body">
                             ${detail.description ? `
-                                <div class="tool-section">
+                                <div class="relay-section">
                                     <h4>产品简介</h4>
                                     <p>${escapeHtml(detail.description)}</p>
                                 </div>
                             ` : ''}
                             ${detail.billingRules ? `
-                                <div class="tool-section">
+                                <div class="relay-section">
                                     <h4>计费规则</h4>
                                     <p>${escapeHtml(detail.billingRules)}</p>
                                 </div>
                             ` : ''}
                             ${detail.networkAndPayment ? `
-                                <div class="tool-section">
+                                <div class="relay-section">
                                     <h4>网络与支付</h4>
                                     <p>${escapeHtml(detail.networkAndPayment)}</p>
                                 </div>
                             ` : ''}
-                            ${plansSection}
+                            ${modelsSection}
                             ${notesSection}
                         </div>
                     </div>
@@ -683,30 +708,30 @@
             }
         }
 
-        // ── 加载工具数据 ──
-        async function loadTools() {
+        // ── 加载数据 ──
+        async function loadRelays() {
             try {
-                const res = await fetch(TOOLS_FILE_PATH, { cache: 'no-store' });
+                const res = await fetch(RELAYS_FILE_PATH, { cache: 'no-store' });
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                toolsData = await res.json();
+                relaysData = await res.json();
 
                 const dimensions = (pageConfig.matrixDimensions) || [];
-                renderMatrix(toolsData, dimensions);
-                renderToolCards(toolsData);
+                renderMatrix(relaysData, dimensions);
+                renderRelayCards(relaysData);
 
-                console.log(`成功加载 ${toolsData.length} 个工具数据`);
+                console.log(`成功加载 ${relaysData.length} 个中转站数据`);
             } catch (e) {
-                console.error('加载工具数据失败:', e);
+                console.error('加载数据失败:', e);
                 document.getElementById('matrixWrapper').innerHTML =
-                    '<div class="loading-state">数据加载失败，请检查 tools.json 文件</div>';
-                document.getElementById('toolCards').innerHTML =
-                    '<div class="loading-state">数据加载失败，请检查 tools.json 文件</div>';
+                    '<div class="loading-state">数据加载失败，请检查 relays.json 文件</div>';
+                document.getElementById('relayCards').innerHTML =
+                    '<div class="loading-state">数据加载失败，请检查 relays.json 文件</div>';
             }
         }
 
         document.addEventListener('DOMContentLoaded', async () => {
             await loadConfig();
-            await loadTools();
+            await loadRelays();
         });
 
     </script>

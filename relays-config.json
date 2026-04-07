@@ -1,0 +1,67 @@
+{
+  "header": {
+    "title": "API 中转站对比",
+    "updateDate": "更新日期 2026.4.7",
+    "subtitle": "OpenRouter 等聚合型 API 中转平台，兼容协议、计费方式、模型覆盖、国内访问全面对比",
+    "github": {
+      "url": "https://github.com/wmpeng/codingplan",
+      "text": "GitHub"
+    }
+  },
+  "matrixDimensions": [
+    {
+      "key": "type",
+      "label": "类型"
+    },
+    {
+      "key": "vendor",
+      "label": "厂商"
+    },
+    {
+      "key": "compatProtocols",
+      "label": "兼容协议"
+    },
+    {
+      "key": "billingModel",
+      "label": "计费方式"
+    },
+    {
+      "key": "modelCoverage",
+      "label": "模型覆盖"
+    },
+    {
+      "key": "cnAccess",
+      "label": "国内访问"
+    },
+    {
+      "key": "cnPayment",
+      "label": "国内支付"
+    },
+    {
+      "key": "rateLimit",
+      "label": "额度与限速"
+    },
+    {
+      "key": "privacy",
+      "label": "隐私声明"
+    },
+    {
+      "key": "bestFor",
+      "label": "适合场景"
+    }
+  ],
+  "notes": [
+    "页面数据仅供参考，中转平台定价与功能可能随时调整，请以各平台官网为准",
+    "国内访问稳定性因运营商、IP 及时间而异，以上描述为一般经验，不构成任何保证",
+    "请遵守各模型原厂的服务条款及相关法律法规，合理合规使用 API 中转服务"
+  ],
+  "updates": [
+    {
+      "date": "2026.4.7",
+      "items": [
+        "新增 API 中转站对比页面",
+        "首批收录 OpenRouter（示例数据，后续补充更多平台）"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+[
+  {
+    "id": "openrouter",
+    "name": "OpenRouter",
+    "vendor": "OpenRouter, Inc.",
+    "type": "聚合型",
+    "homeUrl": "https://openrouter.ai",
+    "pricingUrl": "https://openrouter.ai/models",
+    "updatedAt": "2026.04",
+    "matrix": {
+      "type": "聚合型",
+      "vendor": "OpenRouter, Inc.",
+      "compatProtocols": ["OpenAI Chat Completions"],
+      "billingModel": "按 Token 消耗按量计费，各模型独立定价；部分模型有免费额度",
+      "modelCoverage": "200+ 模型（OpenAI、Anthropic、Google、Meta Llama、Mistral、Qwen 等）",
+      "cnAccess": "国内通常可直连，偶发不稳定；无官方国内镜像",
+      "cnPayment": "支持 Visa/Mastercard；支持 USDC 加密货币；不支持微信/支付宝",
+      "rateLimit": "视模型与账户信用等级；免费模型有每日请求限额",
+      "privacy": "默认不持久化日志；提供零数据保留选项（部分模型支持）",
+      "bestFor": "多模型比价、快速接入、无需多账号管理"
+    },
+    "detail": {
+      "description": "OpenRouter 是一个聚合型 API 中转平台，使用统一的 OpenAI 兼容接口接入 200+ 大模型，包括 OpenAI、Anthropic、Google、Meta、Mistral、Qwen 等主流厂商模型。用户只需一个账号、一个 Base URL、一个 API Key 即可切换调用任意模型，无需分别注册各家平台。",
+      "billingRules": "按 Token 消耗按量计费，各模型定价以官网 /models 页面为准（通常与原厂官方价持平，部分模型有 provider 折扣）。无月费，充值后余额不过期。部分开源模型（如 Llama 3 系列）提供免费额度，每日有限速。充值支持信用卡与 USDC，最低充值 $5。账户余额低于阈值时可配置自动充值。",
+      "networkAndPayment": "OpenRouter API 端点（openrouter.ai/api）国内通常可直接访问，无需代理，但稳定性因运营商和 IP 而异，偶发连接超时。控制台与文档全英文，无中文界面。支付支持国际 Visa/Mastercard（含国内发行双币卡，通常可用），以及 USDC 加密货币充值，不支持微信支付或支付宝。",
+      "keyModels": [
+        {
+          "name": "GPT-4o",
+          "inputPer1M": "$2.50",
+          "outputPer1M": "$10.00",
+          "note": "与 OpenAI 官方同价"
+        },
+        {
+          "name": "Claude Sonnet 4.5",
+          "inputPer1M": "$3.00",
+          "outputPer1M": "$15.00",
+          "note": "与 Anthropic 官方同价"
+        },
+        {
+          "name": "Gemini 2.5 Pro",
+          "inputPer1M": "$1.25",
+          "outputPer1M": "$10.00",
+          "note": "与 Google 官方同价"
+        },
+        {
+          "name": "Llama 3.3 70B",
+          "inputPer1M": "$0.00",
+          "outputPer1M": "$0.00",
+          "note": "免费模型（每日限速）"
+        }
+      ],
+      "notes": "以上模型价格仅为示例，实际以 openrouter.ai/models 实时数据为准。部分模型有多个 provider 可选，价格和延迟不同，可在 API 请求中指定 provider。"
+    }
+  }
+]
