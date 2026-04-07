@@ -636,6 +636,126 @@
             .github-link span { display: none; }
             .page-tab { padding: 8px 12px; font-size: 13px; }
         }
+
+        /* 超宽屏模式 */
+        .ultra-wide .container {
+            max-width: none !important;
+        }
+
+        /* 设置按钮 */
+        .settings-wrapper {
+            margin-left: auto;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            bottom: -1px;
+        }
+
+        .settings-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-md);
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--text-tertiary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .settings-btn:hover {
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+            border-color: var(--border-color);
+        }
+
+        .settings-btn.active {
+            color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.08);
+            border-color: var(--border-color);
+        }
+
+        .settings-panel {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            width: 200px;
+            box-shadow: var(--shadow-xl);
+            z-index: 2000;
+        }
+
+        .settings-panel-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .settings-toggle-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--text-primary);
+        }
+
+        .settings-toggle-row label:first-child {
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 36px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            position: absolute;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            inset: 0;
+            background: var(--border-color);
+            border-radius: 20px;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            left: 3px;
+            top: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.2s;
+        }
+
+        .toggle-switch input:checked + .toggle-slider {
+            background: var(--accent-primary);
+        }
+
+        .toggle-switch input:checked + .toggle-slider::before {
+            transform: translateX(16px);
+        }
     </style>
 </head>
 <body>
@@ -645,6 +765,24 @@
         <nav class="page-nav">
             <a href="index.html" class="page-tab">国内 Coding Plan</a>
             <!-- <a href="tools.html" class="page-tab active">AI 编程工具</a> -->
+            <div class="settings-wrapper">
+                <button class="settings-btn" id="settingsBtn" title="设置" aria-label="设置">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    </svg>
+                </button>
+                <div class="settings-panel" id="settingsPanel" hidden>
+                    <div class="settings-panel-title">显示设置</div>
+                    <div class="settings-toggle-row">
+                        <label for="ultraWideToggle">超宽屏模式</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="ultraWideToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
         </nav>
 
         <!-- 顶部标题 -->
@@ -928,6 +1066,40 @@
             await loadConfig();
             await loadTools();
         });
+
+        // 超宽屏设置
+        (function () {
+            const btn = document.getElementById('settingsBtn');
+            const panel = document.getElementById('settingsPanel');
+            const toggle = document.getElementById('ultraWideToggle');
+
+            function applyUltraWide(on) {
+                document.body.classList.toggle('ultra-wide', on);
+                toggle.checked = on;
+                localStorage.setItem('ultraWide', on ? '1' : '0');
+            }
+
+            if (localStorage.getItem('ultraWide') === '1') {
+                applyUltraWide(true);
+            }
+
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                panel.hidden = !panel.hidden;
+                btn.classList.toggle('active', !panel.hidden);
+            });
+
+            toggle.addEventListener('change', function () {
+                applyUltraWide(toggle.checked);
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!panel.hidden && !panel.contains(e.target) && e.target !== btn) {
+                    panel.hidden = true;
+                    btn.classList.remove('active');
+                }
+            });
+        })();
     </script>
 </body>
 </html>
