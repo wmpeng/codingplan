@@ -19,4 +19,4 @@ jobs:
         REGION: ${{ vars.TENCENT_COS_REGION }}
       run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
     - name: Upload
-      run: coscmd upload -rs --delete -f ./ / --ignore "./.git/*"
+      run: coscmd upload -rs --delete -f ./ / --ignore "./.*"
