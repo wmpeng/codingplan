@@ -1,0 +1,22 @@
+name: Upload to Tencent COS
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install coscmd
+      run: sudo pip install coscmd
+    - name: Configure coscmd
+      env:
+        SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
+        SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
+        BUCKET: ${{ vars.TENCENT_COS_BUCKET }}
+        REGION: ${{ vars.TENCENT_COS_REGION }}
+      run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
+    - name: Upload
+      run: coscmd upload -rs --delete -f ./ / --ignore "./.git/*"
