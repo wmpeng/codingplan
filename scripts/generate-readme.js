@@ -36,27 +36,26 @@ function generateRatingGuide(ratingGuide) {
 }
 
 // 格式化价格
-function formatPrice(price) {
+function formatPrice(price, currency = '¥') {
     if (price === '-') return '-';
     if (typeof price === 'number') {
-        // 整数显示为 ¥7.9，小数显示为 ¥7.90
-        return `¥${price}`;
+        return `${currency}${price}`;
     }
     return price;
 }
 
 // 格式化划线价格
-function formatStrikethrough(price, originalPrice) {
+function formatStrikethrough(price, originalPrice, currency = '¥') {
     if (price === '-') return '-';
     if (typeof price === 'number' && typeof originalPrice === 'number') {
         const priceStr = Number.isInteger(price) ? price : price.toFixed(0);
         const originalStr = Number.isInteger(originalPrice) ? originalPrice : originalPrice.toFixed(0);
         if (price < originalPrice) {
-            return `¥${priceStr} ~~${originalStr}~~`;
+            return `${currency}${priceStr} ~~${originalStr}~~`;
         }
-        return `¥${priceStr}`;
+        return `${currency}${priceStr}`;
     }
-    return formatPrice(price);
+    return formatPrice(price, currency);
 }
 
 // 清理表格单元格内容（移除换行符，防止破坏表格格式）
@@ -81,15 +80,16 @@ function generateTable(plans) {
         const vendor = plan.vendor;
         const planName = plan.plan;
         const link = `[跳转](${plan.action})`;
-        const firstMonth = formatPrice(plan.firstMonthPrice);
-        const monthly = formatPrice(plan.monthlyPrice);
+        const currency = plan.currency || '¥';
+        const firstMonth = formatPrice(plan.firstMonthPrice, currency);
+        const monthly = formatPrice(plan.monthlyPrice, currency);
         // 包季：有值时加 " / 季"
         const quarterly = plan.quarterlyPrice !== '-' 
-            ? formatStrikethrough(plan.quarterlyPrice, getOriginalPrice(plan.monthlyPrice, 3)) + ' / 季'
+            ? formatStrikethrough(plan.quarterlyPrice, getOriginalPrice(plan.monthlyPrice, 3), currency) + ' / 季'
             : '- / 季';
         // 包年：有值时加 " / 年"
         const yearly = plan.yearlyPrice !== '-'
-            ? formatStrikethrough(plan.yearlyPrice, getOriginalPrice(plan.monthlyPrice, 12)) + ' / 年'
+            ? formatStrikethrough(plan.yearlyPrice, getOriginalPrice(plan.monthlyPrice, 12), currency) + ' / 年'
             : '- / 年';
         const models = plan.models.join(', ');
         const fiveHoursRequests = plan.fiveHoursRequests?.toLocaleString() || '未公开';

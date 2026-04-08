@@ -8,7 +8,8 @@
     "quarterlyPrice": 132.3,
     "yearlyPrice": 470.4,
     "models": [
-      "GLM-5.1"
+      "GLM-5.1",
+      "GLM-5-Turbo"
     ],
     "fiveHoursRequests": 1200,
     "weeklyRequests": 6000,
@@ -28,6 +29,7 @@
     "yearlyPrice": 1430.4,
     "models": [
       "GLM-5.1",
+      "GLM-5-Turbo",
       "GLM-5"
     ],
     "fiveHoursRequests": 6000,
@@ -48,6 +50,7 @@
     "yearlyPrice": 4502.4,
     "models": [
       "GLM-5.1",
+      "GLM-5-Turbo",
       "GLM-5"
     ],
     "fiveHoursRequests": 24000,
@@ -57,6 +60,71 @@
       "免费MCP次数"
     ],
     "note": "• 20倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算"
+  },
+  {
+    "vendor": "Z.AI",
+    "plan": "Lite",
+    "action": "https://z.ai/subscribe?ic=YBEQOH949X",
+    "currency": "$",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 10,
+    "quarterlyPrice": 27,
+    "yearlyPrice": 84,
+    "models": [
+      "GLM-5.1",
+      "GLM-5-Turbo"
+    ],
+    "fiveHoursRequests": 1200,
+    "weeklyRequests": 6000,
+    "monthlyRequests": 24000,
+    "benefits": [
+      "免费MCP次数"
+    ],
+    "note": "• 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算"
+  },
+  {
+    "vendor": "Z.AI",
+    "plan": "Pro",
+    "action": "https://z.ai/subscribe?ic=YBEQOH949X",
+    "currency": "$",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 30,
+    "quarterlyPrice": 81,
+    "yearlyPrice": 252,
+    "models": [
+      "GLM-5.1",
+      "GLM-5-Turbo",
+      "GLM-5"
+    ],
+    "fiveHoursRequests": 6000,
+    "weeklyRequests": 30000,
+    "monthlyRequests": 120000,
+    "benefits": [
+      "免费MCP次数"
+    ],
+    "note": "• 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算"
+  },
+  {
+    "vendor": "Z.AI",
+    "plan": "Max",
+    "action": "https://z.ai/subscribe?ic=YBEQOH949X",
+    "currency": "$",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 80,
+    "quarterlyPrice": 216,
+    "yearlyPrice": 672,
+    "models": [
+      "GLM-5.1",
+      "GLM-5-Turbo",
+      "GLM-5"
+    ],
+    "fiveHoursRequests": 24000,
+    "weeklyRequests": 120000,
+    "monthlyRequests": 480000,
+    "benefits": [
+      "免费MCP次数"
+    ],
+    "note": "• 4倍Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
   {
     "vendor": "MiniMax",
