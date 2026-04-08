@@ -2048,6 +2048,13 @@
                 return -1;
             };
 
+            // 辅助函数：将价格统一换算为人民币（$1 = ¥7）
+            const getPriceSortValue = (plan, field) => {
+                const v = plan[field];
+                if (typeof v !== 'number') return -1;  // '-' 等非数字排最小
+                return plan.currency === '$' ? v * 7 : v;
+            };
+
             filteredPlans.sort((a, b) => {
                 let valueA, valueB;
 
@@ -2065,20 +2072,20 @@
                         valueB = b['plan'];
                         break;
                     case 'firstMonthPrice':
-                        valueA = a.firstMonthPrice;
-                        valueB = b.firstMonthPrice;
+                        valueA = getPriceSortValue(a, 'firstMonthPrice');
+                        valueB = getPriceSortValue(b, 'firstMonthPrice');
                         break;
                     case 'monthlyPrice':
-                        valueA = a.monthlyPrice;
-                        valueB = b.monthlyPrice;
+                        valueA = getPriceSortValue(a, 'monthlyPrice');
+                        valueB = getPriceSortValue(b, 'monthlyPrice');
                         break;
                     case 'quarterlyPrice':
-                        valueA = a.quarterlyPrice;
-                        valueB = b.quarterlyPrice;
+                        valueA = getPriceSortValue(a, 'quarterlyPrice');
+                        valueB = getPriceSortValue(b, 'quarterlyPrice');
                         break;
                     case 'yearlyPrice':
-                        valueA = a.yearlyPrice;
-                        valueB = b.yearlyPrice;
+                        valueA = getPriceSortValue(a, 'yearlyPrice');
+                        valueB = getPriceSortValue(b, 'yearlyPrice');
                         break;
                     case 'models':
                         valueA = a['支持模型'];
