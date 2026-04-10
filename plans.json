@@ -271,7 +271,8 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "Qwen-3.5",
+      "Qwen-3.5-Plus",
+      "Qwen-3.5系列",
       "MiniMax-M2.5",
       "GLM-5",
       "Kimi-K2.5"
