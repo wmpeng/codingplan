@@ -6,7 +6,7 @@
 
 九大平台 智谱AI、Kimi、MiniMax、小米·MiMo、字节·方舟、阿里·百炼、百度·千帆、腾讯云、京东云，全面对比
 
-支持Qwen-3.5，Doubao-Seed-2.0，MiniMax-M2.7，MiniMax-M2.5，GLM-5.1，GLM-5，MiMo-V2-Pro，Kimi-K2.5等模型
+支持Qwen-3.6，Qwen-3.5，Doubao-Seed-2.0，MiniMax-M2.7，MiniMax-M2.5，GLM-5.1，GLM-5，MiMo-V2-Pro，Kimi-K2.5等模型
 
 ### 在线访问
 
@@ -19,14 +19,14 @@
     - 独占GLM5.1模型。+1
     - 提供免费MCP次数。+1
 2. MiniMax ⭐️⭐️⭐️⭐️⭐️
-    - 价格最便宜，且无需抢购。+1
+    - 在无需抢购的之中，入门套餐价格最低。+1
     - 独占MiniMax-M2.7模型。+1
 3. 字节·方舟 ⭐️⭐️⭐️⭐️
     - 独占Doubao-Seed-2.0系列模型。+1
     - 不支持GLM-5，只支持GLM-4.7。-1
     - 赠送真OpenClaw。+1
 4. 阿里·百炼 ⭐️⭐️⭐️
-    - 独占Qwen3.5系列模型。+1
+    - 独占Qwen3.6、Qwen3.5系列模型。+1
     - 只有pro套餐，轻量使用性价比不高。-1
 5. 小米·MiMo ⭐️⭐️⭐️
     - 独占Mimo模型。+1
@@ -39,9 +39,12 @@
 
 | 平台 | 套餐 | 链接 | 首月价格 | 连续包月 | 连续包季 | 连续包年 | 支持模型 | 5小时请求数 | 每周请求数 | 每月总请求数 | 其他权益 | 备注 |
 |------|------|---------|---------|---------|---------|---------|---------|-----------|-----------|-----------|---------|------|
-| 智谱AI | Lite | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥49 | ¥132 ~~147~~ / 季 | ¥470 ~~588~~ / 年 | GLM-5.1 | 1,200 | 6,000 | 24,000 | 免费MCP次数 | • 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算 • 官方只有周限量无月限量，这里按照1月=4周计算 |
-| 智谱AI | Pro | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥149 | ¥402 ~~447~~ / 季 | ¥1430 ~~1788~~ / 年 | GLM-5.1, GLM-5 | 6,000 | 30,000 | 120,000 | 免费MCP次数 | • 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算 • 官方只有周限量无月限量，这里按照1月=4周计算 |
-| 智谱AI | Max | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥469 | ¥1266 ~~1407~~ / 季 | ¥4502 ~~5628~~ / 年 | GLM-5.1, GLM-5 | 24,000 | 120,000 | 480,000 | 免费MCP次数 | • 20倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算 • 官方只有周限量无月限量，这里按照1月=4周计算 |
+| 智谱AI | Lite | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥49 | ¥132 ~~147~~ / 季 | ¥470 ~~588~~ / 年 | GLM-5.1, GLM-5-Turbo | 1,200 | 6,000 | 24,000 | 免费MCP次数 | • 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算 • 官方只有周限量无月限量，这里按照1月=4周计算 |
+| 智谱AI | Pro | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥149 | ¥402 ~~447~~ / 季 | ¥1430 ~~1788~~ / 年 | GLM-5.1, GLM-5-Turbo, GLM-5 | 6,000 | 30,000 | 120,000 | 免费MCP次数 | • 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算 • 官方只有周限量无月限量，这里按照1月=4周计算 |
+| 智谱AI | Max | [跳转](https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z) | - | ¥469 | ¥1266 ~~1407~~ / 季 | ¥4502 ~~5628~~ / 年 | GLM-5.1, GLM-5-Turbo, GLM-5 | 24,000 | 120,000 | 480,000 | 免费MCP次数 | • 20倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算 • 官方只有周限量无月限量，这里按照1月=4周计算 |
+| Z.AI | Lite | [跳转](https://z.ai/subscribe?ic=YBEQOH949X) | - | $10 | $27 ~~30~~ / 季 | $84 ~~120~~ / 年 | GLM-5.1, GLM-5-Turbo | 1,200 | 6,000 | 24,000 | 免费MCP次数 | • 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算 • 官方只有周限量无月限量，这里按照1月=4周计算 |
+| Z.AI | Pro | [跳转](https://z.ai/subscribe?ic=YBEQOH949X) | - | $30 | $81 ~~90~~ / 季 | $252 ~~360~~ / 年 | GLM-5.1, GLM-5-Turbo, GLM-5 | 6,000 | 30,000 | 120,000 | 免费MCP次数 | • 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算 • 官方只有周限量无月限量，这里按照1月=4周计算 |
+| Z.AI | Max | [跳转](https://z.ai/subscribe?ic=YBEQOH949X) | - | $80 | $216 ~~240~~ / 季 | $672 ~~960~~ / 年 | GLM-5.1, GLM-5-Turbo, GLM-5 | 24,000 | 120,000 | 480,000 | 免费MCP次数 | • 4倍Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算 • 官方只有周限量无月限量，这里按照1月=4周计算 |
 | MiniMax | Starter | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=LXhBWH1gnf&source=link) | - | ¥29 | - / 季 | ¥290 ~~348~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 600 | 6,000 | 24,000 | - | 约50TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
 | MiniMax | Plus | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=LXhBWH1gnf&source=link) | - | ¥49 | - / 季 | ¥490 ~~588~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 1,500 | 15,000 | 60,000 | - | 约50TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
 | MiniMax | Max | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=LXhBWH1gnf&source=link) | - | ¥119 | - / 季 | ¥1190 ~~1428~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 4,500 | 45,000 | 180,000 | - | 约50TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
@@ -49,7 +52,7 @@
 | MiniMax | Max-极速 | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=LXhBWH1gnf&source=link) | - | ¥199 | - / 季 | ¥1990 ~~2388~~ / 年 | MiniMax-M2.7-highspeed, MiniMax-M2.5-highspeed | 4,500 | 45,000 | 180,000 | - | 约100TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
 | 字节·方舟 | Lite | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥40 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 1,200 | 9,000 | 18,000 | ArkClaw 7天体验 | - |
 | 字节·方舟 | Pro | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥200 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 6,000 | 45,000 | 90,000 | 免费ArkClaw | - |
-| 阿里·百炼 | Pro | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | - | ¥200 | - / 季 | - / 年 | Qwen-3.5, MiniMax-M2.5, GLM-5, Kimi-K2.5 | 6,000 | 45,000 | 90,000 | - | - |
+| 阿里·百炼 | Pro | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | - | ¥200 | - / 季 | - / 年 | Qwen-3.6-Plus, Qwen-3.5系列, MiniMax-M2.5, GLM-5, Kimi-K2.5 | 6,000 | 45,000 | 90,000 | - | - |
 | 小米·MiMo | Lite | [跳转](https://mimo.mi.com/) | ¥34.32 | ¥39 | - / 季 | - / 年 | MiMo-V2-Pro, MiMo-V2-Omni, MiMo-V2-TTS | 无限制 | 无限制 | 无限制 | TTS限时免费 | • 60M(6000万) Credits，无5小时限额，支持集中消耗 • 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x |
 | 小米·MiMo | Standard | [跳转](https://mimo.mi.com/) | ¥87.12 | ¥99 | - / 季 | - / 年 | MiMo-V2-Pro, MiMo-V2-Omni, MiMo-V2-TTS | 无限制 | 无限制 | 无限制 | TTS限时免费 | • 200M(2亿) Credits，无5小时限额，支持集中消耗 • 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x |
 | 小米·MiMo | Pro | [跳转](https://mimo.mi.com/) | ¥289.52 | ¥329 | - / 季 | - / 年 | MiMo-V2-Pro, MiMo-V2-Omni, MiMo-V2-TTS | 无限制 | 无限制 | 无限制 | TTS限时免费 | • 700M(7亿) Credits，无5小时限额，支持集中消耗 • 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x |
