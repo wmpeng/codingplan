@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "API 中转站对比",
-    "updateDate": "更新日期 2026.4.7",
+    "updateDate": "更新日期 2026.4.12",
     "subtitle": "OpenRouter 等聚合型 API 中转平台，兼容协议、计费方式、模型覆盖、国内访问全面对比",
     "github": {
       "url": "https://github.com/wmpeng/codingplan",
@@ -56,6 +56,13 @@
     "请遵守各模型原厂的服务条款及相关法律法规，合理合规使用 API 中转服务"
   ],
   "updates": [
+    {
+      "date": "2026.4.12",
+      "items": [
+        "新增 SiliconFlow（硅基流动）云推理平台条目：OpenAI 兼容接口、官网与模型广场链接、计费与支付说明等",
+        "补充 SiliconFlow 代表模型人民币标价（摘录自 siliconflow.cn/models 模型中心）"
+      ]
+    },
     {
       "date": "2026.4.7",
       "items": [

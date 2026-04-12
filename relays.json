@@ -51,5 +51,64 @@
       ],
       "notes": "以上模型价格仅为示例，实际以 openrouter.ai/models 实时数据为准。部分模型有多个 provider 可选，价格和延迟不同，可在 API 请求中指定 provider。"
     }
+  },
+  {
+    "id": "siliconflow",
+    "name": "SiliconFlow（硅基流动）",
+    "vendor": "北京硅基流动科技有限公司",
+    "type": "云推理（MaaS）",
+    "homeUrl": "https://siliconflow.cn/zh-cn/",
+    "pricingUrl": "https://siliconflow.cn/models",
+    "updatedAt": "2026.04.12",
+    "matrix": {
+      "type": "云推理（MaaS）",
+      "vendor": "北京硅基流动科技有限公司",
+      "compatProtocols": ["OpenAI 兼容 REST（如 Chat Completions），Base URL：https://api.siliconflow.cn/v1"],
+      "billingModel": "按调用量计费（标价多为人民币 / 百万 Token，￥/M Tokens）；充值余额不设有效期；另有模型微调训练与推理独立计费",
+      "modelCoverage": "官网模型中心宣称 100+ 主流模型；含 DeepSeek、Qwen、GLM、Kimi、MiniMax 等系列及对话 / 生图 / 嵌入 / 语音 / 视频等类型（以模型中心筛选为准）",
+      "cnAccess": "主体为国内服务，控制台与 API 通常国内访问较顺畅",
+      "cnPayment": "个人在线充值目前支持微信支付（需先完成实名认证）；对公等其它方式以官网说明为准",
+      "rateLimit": "与模型、账户等级相关，模型详情页展示可参考的最高限速等信息",
+      "privacy": "以官网隐私政策与用户协议为准；另提供企业私有化部署等方案（见官网产品页）",
+      "bestFor": "需要 OpenAI 兼容接口、人民币结算、集中调用多款开源/国产模型的国内开发与应用"
+    },
+    "detail": {
+      "description": "硅基流动（SiliconFlow）是国内面向生成式 AI 的云服务平台，提供大语言模型与多模态等能力的 API 调用、在线体验（Playground）、模型广场与 API 密钥管理。大语言模型场景支持使用官方 OpenAI SDK，将 base_url 设为 https://api.siliconflow.cn/v1、使用平台发放的 API Key 即可调用文档中支持的参数与模型。平台还提供模型微调与托管、推理加速及企业私有化部署等产品线。",
+      "billingRules": "费用按实际消耗结算。语言模型在模型中心通常标注「输入 / 输出：￥x / M Tokens」；多模态或按张计费的模型计费维度可能不同，以各模型卡片为准。充值余额用于抵扣 API 与相关服务消耗；赠送余额规则以活动说明为准。模型微调按训练与推理分别计价，创建任务前可在控制台查看对应价格。",
+      "networkAndPayment": "控制台域名以 cloud.siliconflow.cn 为主（文档亦可能提及 siliconflow.com 等国际站入口）。API 调用使用 api.siliconflow.cn。根据公开用户充值协议，个人在线充值目前接入微信支付，充值前需完成实名认证；退款等规则以协议约定为准。",
+      "keyModels": [
+        {
+          "name": "deepseek-ai/DeepSeek-R1",
+          "inputPer1M": "￥4",
+          "outputPer1M": "￥16",
+          "note": "模型中心标价（￥/M Tokens）；另有 Pro/ 等同名线路时以卡片为准"
+        },
+        {
+          "name": "deepseek-ai/DeepSeek-V3.2",
+          "inputPer1M": "￥2",
+          "outputPer1M": "￥3",
+          "note": "旗舰对话模型示例"
+        },
+        {
+          "name": "Qwen/Qwen3-VL-32B-Instruct",
+          "inputPer1M": "￥1",
+          "outputPer1M": "￥4",
+          "note": "多模态（视觉）对话示例"
+        },
+        {
+          "name": "Pro/zai-org/GLM-5.1",
+          "inputPer1M": "￥6",
+          "outputPer1M": "￥28",
+          "note": "高端线路定价示例（MoE 旗舰）"
+        },
+        {
+          "name": "Qwen/Qwen3.5-4B",
+          "inputPer1M": "$0.00",
+          "outputPer1M": "$0.00",
+          "note": "模型中心标价 ￥0 / M Tokens（界面展示为免费档；以官网为准）"
+        }
+      ],
+      "notes": "以下价格为硅基流动模型中心公开标价摘录（默认排序首页可见模型），会随活动与版本调整；请以 https://siliconflow.cn/models 实时页面为准。同系列常有「Pro/」与开源 ID 并行上架，调用前核对模型 ID。"
+    }
   }
 ]
