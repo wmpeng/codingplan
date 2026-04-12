@@ -15,6 +15,10 @@
       "rateLimit": "视模型与账户信用等级；免费模型有每日请求限额",
       "bestFor": "多模型比价、OpenAI 兼容一键切换、无需分别注册各原厂账号"
     },
+    "matrixHighlight": {
+      "cnAccess": "warn",
+      "cnPayment": "error"
+    },
     "detail": {
       "description": "OpenRouter 是面向全球开发者的统一大模型 API 平台，提供与 OpenAI Chat Completions 高度兼容的接口，可用官方 OpenAI SDK 将 base URL 指向 OpenRouter 即可调用。平台聚合大量商业与开源模型，并支持自动路由、多 Provider 回退与按模型细分的计价。",
       "billingRules": "按 Token 按量计费，各模型单价以 openrouter.ai/models 为准。无月费，余额策略以官网账户说明为准。部分开源模型提供免费额度（通常有每日限额）。充值常见为信用卡与加密货币。",
@@ -63,6 +67,10 @@
       "cnPayment": "个人在线充值目前支持微信支付（需先完成实名认证）；对公等其它方式以官网说明为准",
       "rateLimit": "与模型、账户等级相关，模型详情页展示可参考的最高限速等信息",
       "bestFor": "需要人民币标价、开源与国产模型一站式、并可能扩展到微调/托管/私域部署的团队"
+    },
+    "matrixHighlight": {
+      "cnAccess": "success",
+      "cnPayment": "success"
     },
     "detail": {
       "description": "硅基流动（SiliconFlow）是国内生成式 AI 云服务平台，提供大语言模型与多模态等 API、Playground、模型广场与密钥管理。大语言模型场景可使用 OpenAI SDK，base_url 为 https://api.siliconflow.cn/v1。官网「价格」页集中展示 API、微调、批量与算力预留等价目；具体模型单价也可在模型中心查看。",
@@ -119,6 +127,10 @@
       "rateLimit": "与所选分组、模型及令牌设置相关，创建密钥时需选择分组并可在模型广场查看价格",
       "bestFor": "要在国内用人民币调用 GPT/Claude 等多模型、并愿按分组选择渠道与性价比的开发者"
     },
+    "matrixHighlight": {
+      "cnAccess": "success",
+      "cnPayment": "success"
+    },
     "detail": {
       "description": "PoloAPI（控制台域名常见为 poloai.top，API 入口亦文档化 poloapi.top）是国内大模型 API 聚合中转服务：用户注册充值后创建令牌，选择分组，将原先指向 OpenAI 等厂商的 URL 替换为平台提供的中转地址（常见为 https://poloai.top 或 https://poloapi.top，部分场景需加 /v1）。Claude 等模型支持原生 messages 格式，具体端点以模型广场单模型说明与 Apifox 文档为准。",
       "billingRules": "消耗按模型标价从账户余额扣除；不同分组对应不同上游渠道与单价。poloapi.top/pricing 提供可检索的模型价目表（USD/M 等）。poloai.top 与 poloapi.top 为同一产品体系下的站点入口，以控制台当前说明为准。",
@@ -149,6 +161,10 @@
       "cnPayment": "China Zone 页面写明支持支付宝、微信支付；面向国内合规与协作集成（飞书/钉钉/企微等以文档为准）",
       "rateLimit": "普通按量计费以账户与模型为准；Vibe Coding 等套餐宣传「无限」调用，以对应产品页条款为准",
       "bestFor": "需要同时兼容 OpenAI / Anthropic / Gemini 多协议、并重视国内支付与直连/低延迟线路的团队"
+    },
+    "matrixHighlight": {
+      "cnAccess": "success",
+      "cnPayment": "success"
     },
     "detail": {
       "description": "OfoxAI（ofox.ai）定位为统一大模型 API 网关：在标准接口下聚合多厂商模型，文档说明兼容 OpenAI、Anthropic 与 Gemini 三类协议，支持流式输出、函数调用、多模态与结构化输出等能力。官网提供模型目录、定价页、快速开始与 OpenAPI 规范，并强调 99.9% SLA 与面向 Agent 开发场景。",
@@ -181,6 +197,10 @@
       "rateLimit": "与账户、模型及分组策略相关，以控制台为准",
       "bestFor": "希望按分组透明对比倍率、并在多厂商模型间统一账户计费的用户"
     },
+    "matrixHighlight": {
+      "cnAccess": "success",
+      "cnPayment": "success"
+    },
     "detail": {
       "description": "N1N（n1n.ai）为大模型 API 聚合管理网关：通过分组将不同上游渠道（如 Azure OpenAI、官方直连、逆向渠道等）隔离计价。用户需在控制台选择合适分组与密钥，再按 OpenAI 兼容等方式调用。定价逻辑强调「倍率」相对官方公开价。",
       "billingRules": "同一模型在不同分组下倍率不同；详细价目需在 api.n1n.ai/pricing（需登录或前端渲染）与 docs.n1n.ai 的「大模型 API 价格」系列文档交叉核对。",
@@ -211,6 +231,10 @@
       "cnPayment": "人民币计价站点充值消费；文档与站点宣传含税价（如 6%）、企业折扣与发票（以商务政策为准）",
       "rateLimit": "以账户类型与模型为准，见控制台或文档",
       "bestFor": "需要人民币含税价目、或要在多条美金汇率线路间选型的大型与个人开发者"
+    },
+    "matrixHighlight": {
+      "cnAccess": "success",
+      "cnPayment": "success"
     },
     "detail": {
       "description": "DMXAPI 是国内多模态大模型 API 聚合平台，提供模型列表与文档站 doc.dmxapi.com。计价规则在《货币和 Tokens 消耗价格计算》中说明：除基础 Token 单价外，对缓存、音频、推理等场景可能按倍数调整有效计费 tokens。",

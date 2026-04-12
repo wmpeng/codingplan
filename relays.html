@@ -542,25 +542,24 @@
                 return;
             }
 
-            function matrixCellTd(val, dimKey) {
+            function matrixToneClass(tone) {
+                if (tone === 'success') return 'highlight-success';
+                if (tone === 'warn') return 'highlight-warn';
+                if (tone === 'error') return 'highlight-error';
+                return '';
+            }
+
+            function matrixCellTd(val, dimKey, highlightMap) {
+                const tone = highlightMap && highlightMap[dimKey];
+                const cellClass = matrixToneClass(tone);
                 if (Array.isArray(val)) {
                     const tags = val.map(v => `<span class="protocol-tag">${escapeHtml(v)}</span>`).join('');
-                    return `<td>${tags}</td>`;
+                    return `<td class="${cellClass}">${tags}</td>`;
                 }
                 if (val === undefined || val === null || val === '') {
-                    return `<td><span class="price-dash">—</span></td>`;
+                    return `<td class="${cellClass}"><span class="price-dash">—</span></td>`;
                 }
                 const strVal = String(val);
-                const isCnAccess = dimKey === 'cnAccess';
-                const isCnPayment = dimKey === 'cnPayment';
-                let cellClass = '';
-                if (isCnPayment && (strVal.includes('不支持') || strVal.includes('限制较多'))) {
-                    cellClass = 'highlight-error';
-                } else if (isCnAccess && (strVal.includes('封锁') || strVal.includes('需代理') || strVal.includes('需海外'))) {
-                    cellClass = 'highlight-warn';
-                } else if (isCnAccess && strVal.includes('可直连')) {
-                    cellClass = 'highlight-success';
-                }
                 return `<td class="${cellClass}">${escapeHtml(strVal)}</td>`;
             }
 
@@ -569,9 +568,10 @@
             ).join('');
 
             const tbody = relays.map(r => {
+                const highlightMap = r.matrixHighlight || null;
                 const cells = dimensions.map(dim => {
                     const val = r.matrix ? r.matrix[dim.key] : undefined;
-                    return matrixCellTd(val, dim.key);
+                    return matrixCellTd(val, dim.key, highlightMap);
                 }).join('');
                 return `<tr>
                     <td class="platform-label">
