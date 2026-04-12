@@ -10,6 +10,10 @@
   },
   "matrixDimensions": [
     {
+      "key": "rating",
+      "label": "综合评价"
+    },
+    {
       "key": "type",
       "label": "类型"
     },
@@ -39,6 +43,7 @@
     }
   ],
   "notes": [
+    "「综合评价」为 1～5 星主观打分（见 relays.json 中 matrix.rating），不代表任何第三方评测结论",
     "页面数据仅供参考，中转平台定价与功能可能随时调整，请以各平台官网为准",
     "国内访问稳定性因运营商、IP 及时间而异，以上描述为一般经验，不构成任何保证",
     "请遵守各模型原厂的服务条款及相关法律法规，合理合规使用 API 中转服务"
@@ -47,6 +52,7 @@
     {
       "date": "2026.4.12",
       "items": [
+        "快速对比与详情卡片增加「综合评价」列（1–5 星，数据在 relays.json 的 matrix.rating）",
         "新增 Poe（poe.com）对比条目；API 说明参考 creator.poe.com/docs/api，模型标价页为 poe.com/api/models，订阅与密钥见 poe.com/api_key",
         "新增 LLM Hub（llmhub.com.cn）对比条目；计价与支付说明参考 doc.llmhub.app 文档",
         "新增 PoloAPI、OfoxAI、N1N、DMXAPI 对比条目（依据各站公开文档与定价页整理）",

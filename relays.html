@@ -183,6 +183,43 @@
             color: var(--accent-success);
         }
 
+        .matrix-table thead th.matrix-th-rating {
+            text-align: center;
+        }
+
+        .matrix-rating-cell {
+            white-space: nowrap;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .star-rating {
+            display: inline-flex;
+            align-items: center;
+            font-size: 16px;
+            line-height: 1;
+            letter-spacing: 1px;
+        }
+
+        .star-rating .stars-on {
+            color: #d9a227;
+        }
+
+        .star-rating .stars-off {
+            color: var(--text-tertiary);
+            opacity: 0.42;
+        }
+
+        .relay-star-inline {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+        }
+
+        .relay-star-inline .star-rating {
+            font-size: 15px;
+        }
+
         .protocol-tag {
             display: inline-block;
             font-size: 11px;
@@ -534,6 +571,15 @@
         let relaysData = [];
         let pageConfig = {};
 
+        /** 1–5 星 HTML；非法或缺省返回空字符串 */
+        function renderStarRatingHtml(raw) {
+            const n = Math.round(Number(raw));
+            if (!Number.isFinite(n) || n < 1 || n > 5) return '';
+            const on = '★'.repeat(n);
+            const off = '☆'.repeat(5 - n);
+            return `<span class="star-rating" role="img" aria-label="${n} 星，满分 5 星"><span class="stars-on" aria-hidden="true">${on}</span><span class="stars-off" aria-hidden="true">${off}</span></span>`;
+        }
+
         // ── 渲染矩阵 ──
         function renderMatrix(relays, dimensions) {
             const wrapper = document.getElementById('matrixWrapper');
@@ -552,6 +598,13 @@
             function matrixCellTd(val, dimKey, highlightMap) {
                 const tone = highlightMap && highlightMap[dimKey];
                 const cellClass = matrixToneClass(tone);
+                if (dimKey === 'rating') {
+                    const stars = renderStarRatingHtml(val);
+                    if (!stars) {
+                        return `<td class="${cellClass} matrix-rating-cell"><span class="price-dash">—</span></td>`;
+                    }
+                    return `<td class="${cellClass} matrix-rating-cell">${stars}</td>`;
+                }
                 if (Array.isArray(val)) {
                     const tags = val.map(v => `<span class="protocol-tag">${escapeHtml(v)}</span>`).join('');
                     return `<td class="${cellClass}">${tags}</td>`;
@@ -563,9 +616,10 @@
                 return `<td class="${cellClass}">${escapeHtml(strVal)}</td>`;
             }
 
-            const theadDimCols = dimensions.map(dim =>
-                `<th class="matrix-dim-th">${escapeHtml(dim.label)}</th>`
-            ).join('');
+            const theadDimCols = dimensions.map(dim => {
+                const thExtra = dim.key === 'rating' ? ' matrix-th-rating' : '';
+                return `<th class="matrix-dim-th${thExtra}">${escapeHtml(dim.label)}</th>`;
+            }).join('');
 
             const tbody = relays.map(r => {
                 const highlightMap = r.matrixHighlight || null;
@@ -605,6 +659,9 @@
 
             container.innerHTML = relays.map(relay => {
                 const detail = relay.detail || {};
+                const ratingStars = relay.matrix && relay.matrix.rating != null
+                    ? renderStarRatingHtml(relay.matrix.rating)
+                    : '';
 
                 const modelsRows = (detail.keyModels || []).map(m => {
                     const inputCell = m.inputPer1M === '$0.00'
@@ -652,6 +709,7 @@
                         <div class="relay-card-header">
                             <div class="relay-card-title">
                                 <span class="relay-name-lg">${escapeHtml(relay.name)}</span>
+                                ${ratingStars ? `<span class="relay-star-inline">${ratingStars}</span>` : ''}
                                 <span class="type-badge-lg">${escapeHtml(relay.type)}</span>
                             </div>
                             <div class="relay-card-meta">
