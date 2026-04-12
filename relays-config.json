@@ -2,7 +2,7 @@
   "header": {
     "title": "API 中转站对比",
     "updateDate": "更新日期 2026.4.12",
-    "subtitle": "OpenRouter 等 API 中转与云推理平台，价格、透明度、模型覆盖、可用性等维度对比",
+    "subtitle": "OpenRouter 等 API 中转与云推理平台，综合评价、类型、价格、透明度、模型覆盖、可用性、国内支付与适合场景等维度对比",
     "github": {
       "url": "https://github.com/wmpeng/codingplan",
       "text": "GitHub"
@@ -60,6 +60,7 @@
     {
       "date": "2026.4.12",
       "items": [
+        "页面副标题与 relays.html 默认副标题与当前对比维度（含综合评价、适合场景等）对齐",
         "移除「额度与限速」对比列及 relays.json 中 matrix.rateLimit 字段",
         "新增「透明度」列（计价是否清晰、有无隐藏倍率/掺水等主观评价，见 matrix.transparency）",
         "价格、透明度、模型覆盖、可用性、国内支付五列采用「首行星级 + 次行文字」，键名由 matrixStarTextKeys 配置",
