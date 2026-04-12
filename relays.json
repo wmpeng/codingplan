@@ -250,5 +250,52 @@
       ],
       "notes": "计价细则见 https://doc.dmxapi.com/jijia.html ；完整模型价目以 https://rmb.dmxapi.cn 登录后或导出为准。"
     }
+  },
+  {
+    "id": "llmhub",
+    "name": "LLM Hub",
+    "type": "聚合网关",
+    "homeUrl": "https://www.llmhub.com.cn/",
+    "pricingUrl": "https://doc.llmhub.app/guide.html",
+    "updatedAt": "2026.04.12",
+    "matrix": {
+      "type": "聚合网关",
+      "billingModel": "按 Token 按量计费；文档说明模型单价与 OpenAI / Claude 官方公开价对齐；充值可能收取一定比例手续费（文档曾示例约 5%，含支付通道成本，以当前充值页为准）；额度一般不设过期时间（以账户规则为准）",
+      "modelCoverage": "官网宣称 100+ AI 模型；首页亦列举 GPT、Claude、Gemini、Grok 等方向（具体可选模型以控制台为准）；文档侧重 OpenAI 与 Claude 系列接入说明",
+      "cnAccess": "llmhub.com.cn 为国内站点与控制台入口；宣传全球 CDN 加速、多节点部署以降低延迟",
+      "cnPayment": "公开文档说明支持微信支付、支付宝与信用卡等充值路径；亦可能提供兑换码等充值方式（以控制台与文档当期说明为准）",
+      "rateLimit": "与账户类型、模型及平台策略相关，以控制台为准",
+      "bestFor": "希望用 OpenAI 兼容接口统一接入多款海外大模型、并倾向使用国内控制台与常见本土支付方式的开发者"
+    },
+    "matrixHighlight": {
+      "cnAccess": "success",
+      "cnPayment": "success"
+    },
+    "detail": {
+      "description": "LLM Hub（https://www.llmhub.com.cn/）定位为「一站式人工智能集成平台」：聚合多厂商模型，强调 OpenAI 兼容格式、一行接入、无需大改现有代码。控制台入口见站点提供的在线服务与 API Endpoint 说明。部分帮助文档与价格说明托管于 doc.llmhub.app 等域名，与 .cn 主站可能同属一套产品体系，使用前请以当前登录域名与密钥为准。",
+      "billingRules": "计费逻辑与官方按百万 Token 标价一致：单次请求额度 ≈ 输入 tokens × 输入单价 + 输出 tokens × 输出单价。文档列出部分 GPT-4、GPT-3.5、Claude 3 等参考单价；完整价目亦可对照 OpenAI / Anthropic 官网定价页。新用户体验额度等活动以官网当期规则为准。",
+      "networkAndPayment": "文档提及基于开源 one-api 类方案搭建、转发侧重记录 token 消费；支付与兑换流程可能涉及 shop / topup 等子域（以文档链接与控制台实际跳转为准）。",
+      "keyModels": [
+        {
+          "name": "gpt-3.5-turbo-0125（文档示例）",
+          "inputPer1M": "$0.50",
+          "outputPer1M": "$1.50",
+          "note": "摘自 doc.llmhub.app 价目表，实际以控制台为准"
+        },
+        {
+          "name": "gpt-4-turbo（文档示例）",
+          "inputPer1M": "$10",
+          "outputPer1M": "$30",
+          "note": "同上"
+        },
+        {
+          "name": "claude-3-sonnet-20240229（文档示例）",
+          "inputPer1M": "$3",
+          "outputPer1M": "$15",
+          "note": "同上"
+        }
+      ],
+      "notes": "首页营销文案中的模型版本名会随市场更新；接入与扣费规则请以 https://www.llmhub.com.cn/ 控制台及 https://doc.llmhub.app/ 最新文档为准。"
+    }
   }
 ]
