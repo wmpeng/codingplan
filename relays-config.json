@@ -47,6 +47,7 @@
     {
       "date": "2026.4.12",
       "items": [
+        "新增 Poe（poe.com）对比条目；API 说明参考 creator.poe.com/docs/api，定价与订阅参考官方博客及 poe.com/api_key",
         "新增 LLM Hub（llmhub.com.cn）对比条目；计价与支付说明参考 doc.llmhub.app 文档",
         "新增 PoloAPI、OfoxAI、N1N、DMXAPI 对比条目（依据各站公开文档与定价页整理）",
         "OpenRouter 补充 300+ 模型量级表述；SiliconFlow 定价链接改为 siliconflow.cn/pricing，并与价格页栏目对齐描述",

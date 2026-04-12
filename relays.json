@@ -297,5 +297,52 @@
       ],
       "notes": "首页营销文案中的模型版本名会随市场更新；接入与扣费规则请以 https://www.llmhub.com.cn/ 控制台及 https://doc.llmhub.app/ 最新文档为准。"
     }
+  },
+  {
+    "id": "poe",
+    "name": "Poe",
+    "type": "聚合型",
+    "homeUrl": "https://poe.com/",
+    "pricingUrl": "https://poe.com/api_key",
+    "updatedAt": "2026.04.12",
+    "matrix": {
+      "type": "聚合型",
+      "billingModel": "按 Token 等透明美元计价；需 Poe 订阅（官方曾介绍起价约 $4.99/月）并可另购额度；具体单价以各模型页面展示的 input/output 为准（参见官方博客「transparent USD pricing」说明）",
+      "modelCoverage": "官网与 Creator 文档称可通过单一 OpenAI 兼容端点访问数百款模型与机器人，含主流闭源与开源及社区 Bot；支持 Chat Completions 与 Responses 等形态（以文档为准）",
+      "cnAccess": "服务主体面向海外用户；国内访问无官方专线说明，稳定性因网络环境而异，可能需要代理或不稳定",
+      "cnPayment": "以美元订阅与信用卡等国际化支付为主；一般不支持微信、支付宝等人民币本土支付（以结账页实际为准）",
+      "rateLimit": "与订阅档位、额度及模型相关；API 与 App 内可查用量与 receipts（以账户与文档为准）",
+      "bestFor": "已能接受美元结算、希望用 OpenAI SDK 将 base_url 指向 api.poe.com/v1 即可切换多模型、并复用 Poe 订阅/额度的开发者"
+    },
+    "matrixHighlight": {
+      "cnAccess": "warn",
+      "cnPayment": "error"
+    },
+    "detail": {
+      "description": "Poe 由 Quora 运营，既是面向大众的 AI 聊天聚合站（poe.com），也向开发者提供 Creator 侧的 OpenAI 兼容 API：base_url 为 https://api.poe.com/v1，使用 Poe API Key 即可在 Chat Completions（/v1/chat/completions）与 Responses（/v1/responses）等形式下调用文档所列模型名。可与现有 OpenAI 客户端库配合，用于在多款前沿模型与社区 Bot 间切换。",
+      "billingRules": "官方博客说明上线透明美元标价，可在各模型页查看每百万 Token 的输入/输出价格，并宣称部分 Anthropic、Google、OpenAI 模型在 Poe 上相对常见公开价有一定折扣区间（以页面实时标价为准）。订阅用户可购买额外 credits，细则以 poe.com 账户与条款为准。",
+      "networkAndPayment": "密钥与订阅管理入口见 https://poe.com/api_key（文档中亦出现 poe.com/api/keys 等路径，以站点重定向为准）。支付与发票规则遵循美国主体产品常见模式，国内个人开发者需自行评估跨境支付与合规。",
+      "keyModels": [
+        {
+          "name": "Claude-Opus-4.6（文档示例名）",
+          "inputPer1M": "—",
+          "outputPer1M": "—",
+          "note": "单价以 poe.com 该模型页美元标价为准"
+        },
+        {
+          "name": "GPT-5.4（文档示例名）",
+          "inputPer1M": "—",
+          "outputPer1M": "—",
+          "note": "同上"
+        },
+        {
+          "name": "Gemini-3.1-Pro（文档示例名）",
+          "inputPer1M": "—",
+          "outputPer1M": "—",
+          "note": "同上"
+        }
+      ],
+      "notes": "接入说明见 https://creator.poe.com/docs/api ；定价与订阅政策见 https://poe.com/blog/introducing-transparent-usd-pricing-and-api-tool-calling 及官网当期条款。模型名称大小写及可用性以控制台为准。"
+    }
   }
 ]
