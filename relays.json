@@ -31,10 +31,6 @@
         "text": "官网 /models 按模型列出美元单价，按 Token 扣费；厂商与路由可选时价差可见，整体偏透明、少见「模糊倍率」话术"
       }
     },
-    "matrixHighlight": {
-      "cnAccess": "warn",
-      "cnPayment": "error"
-    },
     "detail": {
       "description": "OpenRouter 是面向全球开发者的统一大模型 API 平台，提供与 OpenAI Chat Completions 高度兼容的接口，可用官方 OpenAI SDK 将 base URL 指向 OpenRouter 即可调用。平台聚合大量商业与开源模型，并支持自动路由、多 Provider 回退与按模型细分的计价。",
       "billingRules": "按 Token 按量计费，各模型单价以 openrouter.ai/models 为准。无月费，余额策略以官网账户说明为准。部分开源模型提供免费额度（通常有每日限额）。充值常见为信用卡与加密货币。",
@@ -99,10 +95,6 @@
         "stars": 5,
         "text": "模型中心与价格页以人民币/百万 Token 等列示，条目多、可查；微调/批量/算力另表说明，需注意不同产品线计价维度不同"
       }
-    },
-    "matrixHighlight": {
-      "cnAccess": "success",
-      "cnPayment": "success"
     },
     "detail": {
       "description": "硅基流动（SiliconFlow）是国内生成式 AI 云服务平台，提供大语言模型与多模态等 API、Playground、模型广场与密钥管理。大语言模型场景可使用 OpenAI SDK，base_url 为 https://api.siliconflow.cn/v1。官网「价格」页集中展示 API、微调、批量与算力预留等价目；具体模型单价也可在模型中心查看。",
@@ -175,10 +167,6 @@
         "text": "定价页以美元/百万 Token 为主并配合倍率/分组，实际成本需结合分组与汇率理解；对新手不够直观，存在「看懂门槛」"
       }
     },
-    "matrixHighlight": {
-      "cnAccess": "success",
-      "cnPayment": "success"
-    },
     "detail": {
       "description": "PoloAPI（控制台域名常见为 poloai.top，API 入口亦文档化 poloapi.top）是国内大模型 API 聚合中转服务：用户注册充值后创建令牌，选择分组，将原先指向 OpenAI 等厂商的 URL 替换为平台提供的中转地址（常见为 https://poloai.top 或 https://poloapi.top，部分场景需加 /v1）。Claude 等模型支持原生 messages 格式，具体端点以模型广场单模型说明与 Apifox 文档为准。",
       "billingRules": "消耗按模型标价从账户余额扣除；不同分组对应不同上游渠道与单价。poloapi.top/pricing 提供可检索的模型价目表（USD/M 等）。poloai.top 与 poloapi.top 为同一产品体系下的站点入口，以控制台当前说明为准。",
@@ -225,10 +213,6 @@
         "stars": 4,
         "text": "官网提供 pricing/models 入口；折扣与套餐规则需对照多页，整体尚可核对，但营销表述与实扣需自行对照账单"
       }
-    },
-    "matrixHighlight": {
-      "cnAccess": "success",
-      "cnPayment": "success"
     },
     "detail": {
       "description": "OfoxAI（ofox.ai）定位为统一大模型 API 网关：在标准接口下聚合多厂商模型，文档说明兼容 OpenAI、Anthropic 与 Gemini 三类协议，支持流式输出、函数调用、多模态与结构化输出等能力。官网提供模型目录、定价页、快速开始与 OpenAPI 规范，并强调 99.9% SLA 与面向 Agent 开发场景。",
@@ -277,10 +261,6 @@
         "text": "文档强调相对「官方价」的倍率，逻辑可核对；多分组、多渠道下同一模型价不同，透明但需花时间选对分组"
       }
     },
-    "matrixHighlight": {
-      "cnAccess": "success",
-      "cnPayment": "success"
-    },
     "detail": {
       "description": "N1N（n1n.ai）为大模型 API 聚合管理网关：通过分组将不同上游渠道（如 Azure OpenAI、官方直连、逆向渠道等）隔离计价。用户需在控制台选择合适分组与密钥，再按 OpenAI 兼容等方式调用。定价逻辑强调「倍率」相对官方公开价。",
       "billingRules": "同一模型在不同分组下倍率不同；详细价目需在 api.n1n.ai/pricing（需登录或前端渲染）与 docs.n1n.ai 的「大模型 API 价格」系列文档交叉核对。",
@@ -328,10 +308,6 @@
         "text": "文档给出扣费公式与折扣系数；多域名/多币种汇率并存，价目表需登录或导出，整体可推敲但结构偏复杂"
       }
     },
-    "matrixHighlight": {
-      "cnAccess": "success",
-      "cnPayment": "success"
-    },
     "detail": {
       "description": "DMXAPI 是国内多模态大模型 API 聚合平台，提供模型列表与文档站 doc.dmxapi.com。计价规则在《货币和 Tokens 消耗价格计算》中说明：除基础 Token 单价外，对缓存、音频、推理等场景可能按倍数调整有效计费 tokens。",
       "billingRules": "扣费精度保留小数；用户折扣在每次请求上作用于计算结果。不同域名对应不同币种与汇率，勿混用密钥与端点。",
@@ -378,10 +354,6 @@
         "stars": 4,
         "text": "文档写明与 OpenAI/Claude 官方单价对齐并单独说明充值手续费（如文档所述比例）；兑换码与多域名流程略增理解成本"
       }
-    },
-    "matrixHighlight": {
-      "cnAccess": "success",
-      "cnPayment": "success"
     },
     "detail": {
       "description": "LLM Hub（https://www.llmhub.com.cn/）定位为「一站式人工智能集成平台」：聚合多厂商模型，强调 OpenAI 兼容格式、一行接入、无需大改现有代码。控制台入口见站点提供的在线服务与 API Endpoint 说明。部分帮助文档与价格说明托管于 doc.llmhub.app 等域名，与 .cn 主站可能同属一套产品体系，使用前请以当前登录域名与密钥为准。",
@@ -441,10 +413,6 @@
         "stars": 5,
         "text": "官方推透明美元标价，模型页可查 input/output；订阅+加购额度+收据（receipts）便于对账，相对少「黑箱倍率」"
       }
-    },
-    "matrixHighlight": {
-      "cnAccess": "warn",
-      "cnPayment": "error"
     },
     "detail": {
       "description": "Poe 由 Quora 运营，既是面向大众的 AI 聊天聚合站（poe.com），也向开发者提供 Creator 侧的 OpenAI 兼容 API：base_url 为 https://api.poe.com/v1，使用 Poe API Key 即可在 Chat Completions（/v1/chat/completions）与 Responses（/v1/responses）等形式下调用文档所列模型名。可与现有 OpenAI 客户端库配合，用于在多款前沿模型与社区 Bot 间切换。",

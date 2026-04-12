@@ -171,15 +171,31 @@
             line-height: 1.6;
         }
 
-        .matrix-table tbody td.highlight-warn {
-            color: var(--accent-warning);
-        }
-
-        .matrix-table tbody td.highlight-error {
+        /* 矩阵星级着色：1 红 / 2–3 黄 / 4–5 绿（类名 tier-2 表示 2–3 档，tier-4 表示 4–5 档） */
+        .matrix-table td.matrix-star-tier-1 .star-rating .stars-on,
+        .relay-star-inline.matrix-star-tier-1 .star-rating .stars-on {
             color: var(--accent-error);
         }
 
-        .matrix-table tbody td.highlight-success {
+        .matrix-table td.matrix-star-tier-2 .star-rating .stars-on,
+        .relay-star-inline.matrix-star-tier-2 .star-rating .stars-on {
+            color: var(--accent-warning);
+        }
+
+        .matrix-table td.matrix-star-tier-4 .star-rating .stars-on,
+        .relay-star-inline.matrix-star-tier-4 .star-rating .stars-on {
+            color: var(--accent-success);
+        }
+
+        .matrix-table td.matrix-star-tier-1 .matrix-cell-desc-line {
+            color: var(--accent-error);
+        }
+
+        .matrix-table td.matrix-star-tier-2 .matrix-cell-desc-line {
+            color: var(--accent-warning);
+        }
+
+        .matrix-table td.matrix-star-tier-4 .matrix-cell-desc-line {
             color: var(--accent-success);
         }
 
@@ -237,18 +253,6 @@
             font-size: 13px;
             color: var(--text-secondary);
             line-height: 1.55;
-        }
-
-        .matrix-cell-desc-line.highlight-success {
-            color: var(--accent-success);
-        }
-
-        .matrix-cell-desc-line.highlight-warn {
-            color: var(--accent-warning);
-        }
-
-        .matrix-cell-desc-line.highlight-error {
-            color: var(--accent-error);
         }
 
         .protocol-tag {
@@ -611,6 +615,15 @@
             return `<span class="star-rating" role="img" aria-label="${n} 星，满分 5 星"><span class="stars-on" aria-hidden="true">${on}</span><span class="stars-off" aria-hidden="true">${off}</span></span>`;
         }
 
+        /** 根据星级返回 td/容器 class：1→红，2–3→黄，4–5→绿 */
+        function matrixStarTierClass(raw) {
+            const s = Math.round(Number(raw));
+            if (!Number.isFinite(s) || s < 1 || s > 5) return '';
+            if (s === 1) return 'matrix-star-tier-1';
+            if (s <= 3) return 'matrix-star-tier-2';
+            return 'matrix-star-tier-4';
+        }
+
         // ── 渲染矩阵 ──
         function renderMatrix(relays, dimensions) {
             const wrapper = document.getElementById('matrixWrapper');
@@ -620,49 +633,40 @@
             }
 
             const starTextKeys = new Set(pageConfig.matrixStarTextKeys || [
-                'billingModel', 'modelCoverage', 'cnAccess', 'cnPayment'
+                'billingModel', 'transparency', 'modelCoverage', 'cnAccess', 'cnPayment'
             ]);
 
-            function matrixToneClass(tone) {
-                if (tone === 'success') return 'highlight-success';
-                if (tone === 'warn') return 'highlight-warn';
-                if (tone === 'error') return 'highlight-error';
-                return '';
-            }
-
-            function matrixCellTd(val, dimKey, highlightMap) {
-                const tone = highlightMap && highlightMap[dimKey];
-                const cellClass = matrixToneClass(tone);
+            function matrixCellTd(val, dimKey) {
                 if (dimKey === 'rating') {
+                    const tier = matrixStarTierClass(val);
                     const stars = renderStarRatingHtml(val);
                     if (!stars) {
-                        return `<td class="${cellClass} matrix-rating-cell"><span class="price-dash">—</span></td>`;
+                        return `<td class="matrix-rating-cell"><span class="price-dash">—</span></td>`;
                     }
-                    return `<td class="${cellClass} matrix-rating-cell">${stars}</td>`;
+                    return `<td class="matrix-rating-cell ${tier}">${stars}</td>`;
                 }
                 if (starTextKeys.has(dimKey)) {
-                    const toneClass = matrixToneClass(tone);
-                    const descClass = 'matrix-cell-desc-line' + (toneClass ? ` ${toneClass}` : '');
                     if (val && typeof val === 'object' && !Array.isArray(val) && ('stars' in val || 'text' in val)) {
+                        const tier = matrixStarTierClass(val.stars);
                         const starsHtml = renderStarRatingHtml(val.stars) || '<span class="price-dash">—</span>';
                         const t = val.text != null ? String(val.text) : '';
                         const textHtml = t ? escapeHtml(t) : '<span class="price-dash">—</span>';
-                        return `<td class="matrix-cell-star-text"><div class="matrix-cell-stars-line">${starsHtml}</div><div class="${descClass}">${textHtml}</div></td>`;
+                        return `<td class="matrix-cell-star-text ${tier}"><div class="matrix-cell-stars-line">${starsHtml}</div><div class="matrix-cell-desc-line">${textHtml}</div></td>`;
                     }
                     if (typeof val === 'string' && val !== '') {
-                        return `<td class="matrix-cell-star-text"><div class="matrix-cell-stars-line"><span class="price-dash">—</span></div><div class="${descClass}">${escapeHtml(val)}</div></td>`;
+                        return `<td class="matrix-cell-star-text"><div class="matrix-cell-stars-line"><span class="price-dash">—</span></div><div class="matrix-cell-desc-line">${escapeHtml(val)}</div></td>`;
                     }
                     return `<td class="matrix-cell-star-text"><span class="price-dash">—</span></td>`;
                 }
                 if (Array.isArray(val)) {
                     const tags = val.map(v => `<span class="protocol-tag">${escapeHtml(v)}</span>`).join('');
-                    return `<td class="${cellClass}">${tags}</td>`;
+                    return `<td>${tags}</td>`;
                 }
                 if (val === undefined || val === null || val === '') {
-                    return `<td class="${cellClass}"><span class="price-dash">—</span></td>`;
+                    return `<td><span class="price-dash">—</span></td>`;
                 }
                 const strVal = String(val);
-                return `<td class="${cellClass}">${escapeHtml(strVal)}</td>`;
+                return `<td>${escapeHtml(strVal)}</td>`;
             }
 
             const theadDimCols = dimensions.map(dim => {
@@ -671,10 +675,9 @@
             }).join('');
 
             const tbody = relays.map(r => {
-                const highlightMap = r.matrixHighlight || null;
                 const cells = dimensions.map(dim => {
                     const val = r.matrix ? r.matrix[dim.key] : undefined;
-                    return matrixCellTd(val, dim.key, highlightMap);
+                    return matrixCellTd(val, dim.key);
                 }).join('');
                 return `<tr>
                     <td class="platform-label">
@@ -708,6 +711,9 @@
 
             container.innerHTML = relays.map(relay => {
                 const detail = relay.detail || {};
+                const ratingTier = relay.matrix && relay.matrix.rating != null
+                    ? matrixStarTierClass(relay.matrix.rating)
+                    : '';
                 const ratingStars = relay.matrix && relay.matrix.rating != null
                     ? renderStarRatingHtml(relay.matrix.rating)
                     : '';
@@ -758,7 +764,7 @@
                         <div class="relay-card-header">
                             <div class="relay-card-title">
                                 <span class="relay-name-lg">${escapeHtml(relay.name)}</span>
-                                ${ratingStars ? `<span class="relay-star-inline">${ratingStars}</span>` : ''}
+                                ${ratingStars ? `<span class="relay-star-inline ${ratingTier}">${ratingStars}</span>` : ''}
                                 <span class="type-badge-lg">${escapeHtml(relay.type)}</span>
                             </div>
                             <div class="relay-card-meta">
