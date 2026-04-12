@@ -24,9 +24,12 @@
         "stars": 2,
         "text": "支持 Visa/Mastercard；支持 USDC 加密货币；不支持微信/支付宝"
       },
-      "rateLimit": "视模型与账户信用等级；免费模型有每日请求限额",
       "bestFor": "多模型比价、OpenAI 兼容一键切换、无需分别注册各原厂账号",
-      "rating": 4
+      "rating": 4,
+      "transparency": {
+        "stars": 5,
+        "text": "官网 /models 按模型列出美元单价，按 Token 扣费；厂商与路由可选时价差可见，整体偏透明、少见「模糊倍率」话术"
+      }
     },
     "matrixHighlight": {
       "cnAccess": "warn",
@@ -90,9 +93,12 @@
         "stars": 5,
         "text": "个人在线充值目前支持微信支付（需先完成实名认证）；对公等其它方式以官网说明为准"
       },
-      "rateLimit": "与模型、账户等级相关，模型详情页展示可参考的最高限速等信息",
       "bestFor": "需要人民币标价、开源与国产模型一站式、并可能扩展到微调/托管/私域部署的团队",
-      "rating": 5
+      "rating": 5,
+      "transparency": {
+        "stars": 5,
+        "text": "模型中心与价格页以人民币/百万 Token 等列示，条目多、可查；微调/批量/算力另表说明，需注意不同产品线计价维度不同"
+      }
     },
     "matrixHighlight": {
       "cnAccess": "success",
@@ -162,9 +168,12 @@
         "stars": 5,
         "text": "控制台「钱包管理」人民币充值；常见支持微信、支付宝等本土方式（以支付页实际为准）"
       },
-      "rateLimit": "与所选分组、模型及令牌设置相关，创建密钥时需选择分组并可在模型广场查看价格",
       "bestFor": "要在国内用人民币调用 GPT/Claude 等多模型、并愿按分组选择渠道与性价比的开发者",
-      "rating": 4
+      "rating": 4,
+      "transparency": {
+        "stars": 3,
+        "text": "定价页以美元/百万 Token 为主并配合倍率/分组，实际成本需结合分组与汇率理解；对新手不够直观，存在「看懂门槛」"
+      }
     },
     "matrixHighlight": {
       "cnAccess": "success",
@@ -210,9 +219,12 @@
         "stars": 5,
         "text": "China Zone 页面写明支持支付宝、微信支付；面向国内合规与协作集成（飞书/钉钉/企微等以文档为准）"
       },
-      "rateLimit": "普通按量计费以账户与模型为准；Vibe Coding 等套餐宣传「无限」调用，以对应产品页条款为准",
       "bestFor": "需要同时兼容 OpenAI / Anthropic / Gemini 多协议、并重视国内支付与直连/低延迟线路的团队",
-      "rating": 4
+      "rating": 4,
+      "transparency": {
+        "stars": 4,
+        "text": "官网提供 pricing/models 入口；折扣与套餐规则需对照多页，整体尚可核对，但营销表述与实扣需自行对照账单"
+      }
     },
     "matrixHighlight": {
       "cnAccess": "success",
@@ -258,9 +270,12 @@
         "stars": 4,
         "text": "快速开始文档说明人民币充值兑换账户额度；新用户常有小额体验金（以活动页为准）"
       },
-      "rateLimit": "与账户、模型及分组策略相关，以控制台为准",
       "bestFor": "希望按分组透明对比倍率、并在多厂商模型间统一账户计费的用户",
-      "rating": 4
+      "rating": 4,
+      "transparency": {
+        "stars": 4,
+        "text": "文档强调相对「官方价」的倍率，逻辑可核对；多分组、多渠道下同一模型价不同，透明但需花时间选对分组"
+      }
     },
     "matrixHighlight": {
       "cnAccess": "success",
@@ -306,9 +321,12 @@
         "stars": 4,
         "text": "人民币计价站点充值消费；文档与站点宣传含税价（如 6%）、企业折扣与发票（以商务政策为准）"
       },
-      "rateLimit": "以账户类型与模型为准，见控制台或文档",
       "bestFor": "需要人民币含税价目、或要在多条美金汇率线路间选型的大型与个人开发者",
-      "rating": 4
+      "rating": 4,
+      "transparency": {
+        "stars": 4,
+        "text": "文档给出扣费公式与折扣系数；多域名/多币种汇率并存，价目表需登录或导出，整体可推敲但结构偏复杂"
+      }
     },
     "matrixHighlight": {
       "cnAccess": "success",
@@ -354,9 +372,12 @@
         "stars": 5,
         "text": "公开文档说明支持微信支付、支付宝与信用卡等充值路径；亦可能提供兑换码等充值方式（以控制台与文档当期说明为准）"
       },
-      "rateLimit": "与账户类型、模型及平台策略相关，以控制台为准",
       "bestFor": "希望用 OpenAI 兼容接口统一接入多款海外大模型、并倾向使用国内控制台与常见本土支付方式的开发者",
-      "rating": 4
+      "rating": 4,
+      "transparency": {
+        "stars": 4,
+        "text": "文档写明与 OpenAI/Claude 官方单价对齐并单独说明充值手续费（如文档所述比例）；兑换码与多域名流程略增理解成本"
+      }
     },
     "matrixHighlight": {
       "cnAccess": "success",
@@ -414,9 +435,12 @@
         "stars": 2,
         "text": "以美元订阅与信用卡等国际化支付为主；一般不支持微信、支付宝等人民币本土支付（以结账页实际为准）"
       },
-      "rateLimit": "与订阅档位、额度及模型相关；API 与 App 内可查用量与 receipts（以账户与文档为准）",
       "bestFor": "已能接受美元结算、希望用 OpenAI SDK 将 base_url 指向 api.poe.com/v1 即可切换多模型、并复用 Poe 订阅/额度的开发者",
-      "rating": 4
+      "rating": 4,
+      "transparency": {
+        "stars": 5,
+        "text": "官方推透明美元标价，模型页可查 input/output；订阅+加购额度+收据（receipts）便于对账，相对少「黑箱倍率」"
+      }
     },
     "matrixHighlight": {
       "cnAccess": "warn",
