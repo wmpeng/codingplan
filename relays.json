@@ -2,12 +2,10 @@
   {
     "id": "openrouter",
     "name": "OpenRouter",
-    "type": "聚合型",
     "homeUrl": "https://openrouter.ai",
     "pricingUrl": "https://openrouter.ai/models",
     "updatedAt": "2026.04.12",
     "matrix": {
-      "type": "聚合型",
       "billingModel": {
         "stars": 5,
         "text": "按 Token 消耗按量计费，各模型独立定价；部分模型有免费额度"
@@ -70,12 +68,10 @@
   {
     "id": "siliconflow",
     "name": "SiliconFlow（硅基流动）",
-    "type": "云推理（MaaS）",
     "homeUrl": "https://siliconflow.cn/zh-cn/",
     "pricingUrl": "https://siliconflow.cn/pricing",
     "updatedAt": "2026.04.12",
     "matrix": {
-      "type": "云推理（MaaS）",
       "billingModel": {
         "stars": 5,
         "text": "大模型 API 按量（元/M tokens 等）；另有模型微调训练/推理、批量处理、预留实例与私有化方案（价格页分栏说明）"
@@ -144,12 +140,10 @@
   {
     "id": "poloapi",
     "name": "PoloAPI",
-    "type": "聚合中转（国内）",
     "homeUrl": "https://poloai.top",
     "pricingUrl": "https://poloapi.top/pricing",
     "updatedAt": "2026.04.12",
     "matrix": {
-      "type": "聚合中转（国内）",
       "billingModel": {
         "stars": 4,
         "text": "按量计费，账户充值后以余额抵扣；模型广场/定价页以美元每百万 Token 等标价并结合倍率展示，人民币充值后按规则换算消耗"
@@ -194,12 +188,10 @@
   {
     "id": "ofox",
     "name": "OfoxAI",
-    "type": "聚合网关",
     "homeUrl": "https://ofox.ai/zh",
     "pricingUrl": "https://ofox.ai/pricing",
     "updatedAt": "2026.04.12",
     "matrix": {
-      "type": "聚合网关",
       "billingModel": {
         "stars": 4,
         "text": "按量付费、无月费；官网宣传旗舰模型约八折、开源模型最高更高折扣（以 pricing / models 实时为准）"
@@ -244,12 +236,10 @@
   {
     "id": "n1n",
     "name": "N1N",
-    "type": "聚合中转（多分组）",
     "homeUrl": "https://n1n.ai",
     "pricingUrl": "https://api.n1n.ai/pricing",
     "updatedAt": "2026.04.12",
     "matrix": {
-      "type": "聚合中转（多分组）",
       "billingModel": {
         "stars": 4,
         "text": "按量计费；文档说明以「官方费率」为基准乘以各模型/分组「倍率」（如 1 表示与原价等价，大于 1 为加价）；不同分组对应不同上游渠道与价格"
@@ -294,12 +284,10 @@
   {
     "id": "dmxapi",
     "name": "DMXAPI",
-    "type": "聚合中转",
     "homeUrl": "https://dmxapi.cn",
     "pricingUrl": "https://rmb.dmxapi.cn",
     "updatedAt": "2026.04.12",
     "matrix": {
-      "type": "聚合中转",
       "billingModel": {
         "stars": 3,
         "text": "支持按 Token 与按次计费；费用 = 模型价 × 用户折扣；人民币主站与美元子域采用不同汇率与账户体系（文档示例：DMXAPI.cn 人民币；DMXAPI.com 等美金线路有不同￥:$ 兑换比例）"
@@ -344,12 +332,10 @@
   {
     "id": "llmhub",
     "name": "LLM Hub",
-    "type": "聚合网关",
     "homeUrl": "https://www.llmhub.com.cn/",
     "pricingUrl": "https://doc.llmhub.app/guide.html",
     "updatedAt": "2026.04.12",
     "matrix": {
-      "type": "聚合网关",
       "billingModel": {
         "stars": 4,
         "text": "按 Token 按量计费；文档说明模型单价与 OpenAI / Claude 官方公开价对齐；充值可能收取一定比例手续费（文档曾示例约 5%，含支付通道成本，以当前充值页为准）；额度一般不设过期时间（以账户规则为准）"
@@ -406,12 +392,10 @@
   {
     "id": "poe",
     "name": "Poe",
-    "type": "聚合型",
     "homeUrl": "https://poe.com/",
     "pricingUrl": "https://poe.com/api/models",
     "updatedAt": "2026.04.12",
     "matrix": {
-      "type": "聚合型",
       "billingModel": {
         "stars": 4,
         "text": "按 Token 等透明美元计价；需 Poe 订阅（官方曾介绍起价约 $4.99/月）并可另购额度；各模型 input/output 美元单价以 https://poe.com/api/models 列表为准（页面为动态加载，需登录或浏览器环境）"

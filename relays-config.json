@@ -2,7 +2,7 @@
   "header": {
     "title": "API 中转站对比",
     "updateDate": "更新日期 2026.4.12",
-    "subtitle": "OpenRouter 等 API 中转与云推理平台，综合评价、类型、价格、透明度、模型覆盖、可用性、国内支付与适合场景等维度对比",
+    "subtitle": "OpenRouter 等 API 中转与云推理平台，综合评价、价格、透明度、模型覆盖、可用性、国内支付与适合场景等维度对比",
     "github": {
       "url": "https://github.com/wmpeng/codingplan",
       "text": "GitHub"
@@ -12,10 +12,6 @@
     {
       "key": "rating",
       "label": "综合评价"
-    },
-    {
-      "key": "type",
-      "label": "类型"
     },
     {
       "key": "billingModel",
@@ -62,10 +58,11 @@
       "date": "2026.4.12",
       "items": [
         "页面副标题与 relays.html 默认副标题与当前对比维度（含综合评价、适合场景等）对齐",
+        "移除「类型」对比列及 relays.json 中 type / matrix.type 字段；表格平台列与详情卡片不再展示类型标签",
         "移除「额度与限速」对比列及 relays.json 中 matrix.rateLimit 字段",
         "新增「透明度」列（计价是否清晰、有无隐藏倍率/掺水等主观评价，见 matrix.transparency）",
         "综合评价与价格、透明度、模型覆盖、可用性、国内支付共六列采用「首行星级 + 次行文字」，键名由 matrixStarTextKeys 配置；次行说明文字按星级分档着色（1 红 / 2～3 黄 / 4～5 绿），星星不变色；不再使用 matrixHighlight",
-        "「综合评价」与其它星文列一致，为 matrix.rating 的 { stars, text }；表格与详情卡片均为上行星、下行说明",
+        "「综合评价」与其它星文列一致，为 matrix.rating 的 { stars, text }；快速对比表为上行星、下行说明；详情卡片标题不再展示综合评价",
         "新增 Poe（poe.com）对比条目；API 说明参考 creator.poe.com/docs/api，模型标价页为 poe.com/api/models，订阅与密钥见 poe.com/api_key",
         "新增 LLM Hub（llmhub.com.cn）对比条目；计价与支付说明参考 doc.llmhub.app 文档",
         "新增 PoloAPI、OfoxAI、N1N、DMXAPI 对比条目（依据各站公开文档与定价页整理）",
