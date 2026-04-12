@@ -1300,6 +1300,96 @@
                 </div>
             </div>
 
+            <!-- 5小时请求数筛选 -->
+            <div class="filter-dropdown">
+                <button class="filter-btn" id="fiveHoursRequestBtn">
+                    <span>5小时请求数</span>
+                    <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    <span class="count" id="fiveHoursRequestCount" style="display: none;">●</span>
+                </button>
+                <div class="dropdown-menu" id="fiveHoursRequestDropdown">
+                    <div class="dropdown-section">
+                        <div class="dropdown-title">5小时请求数区间</div>
+                        <div class="price-slider-container">
+                            <div class="price-slider">
+                                <div class="slider-track"></div>
+                                <div class="slider-range" id="fiveHoursRequestSliderRange"></div>
+                                <div class="slider-thumb" id="fiveHoursRequestSliderMin"></div>
+                                <div class="slider-thumb" id="fiveHoursRequestSliderMax"></div>
+                            </div>
+                            <div class="slider-values">
+                                <span class="slider-value" id="fiveHoursRequestMinValue">0</span>
+                                <span class="slider-value" id="fiveHoursRequestMaxValue">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown-actions">
+                        <button class="dropdown-btn secondary" onclick="resetFiveHoursRequestFilter()">重置</button>
+                        <button class="dropdown-btn primary" onclick="applyFiveHoursRequestFilter()">确定</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 每周请求数筛选 -->
+            <div class="filter-dropdown">
+                <button class="filter-btn" id="weeklyRequestBtn">
+                    <span>每周请求数</span>
+                    <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    <span class="count" id="weeklyRequestCount" style="display: none;">●</span>
+                </button>
+                <div class="dropdown-menu" id="weeklyRequestDropdown">
+                    <div class="dropdown-section">
+                        <div class="dropdown-title">每周请求数区间</div>
+                        <div class="price-slider-container">
+                            <div class="price-slider">
+                                <div class="slider-track"></div>
+                                <div class="slider-range" id="weeklyRequestSliderRange"></div>
+                                <div class="slider-thumb" id="weeklyRequestSliderMin"></div>
+                                <div class="slider-thumb" id="weeklyRequestSliderMax"></div>
+                            </div>
+                            <div class="slider-values">
+                                <span class="slider-value" id="weeklyRequestMinValue">0</span>
+                                <span class="slider-value" id="weeklyRequestMaxValue">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown-actions">
+                        <button class="dropdown-btn secondary" onclick="resetWeeklyRequestFilter()">重置</button>
+                        <button class="dropdown-btn primary" onclick="applyWeeklyRequestFilter()">确定</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 每月请求数筛选 -->
+            <div class="filter-dropdown">
+                <button class="filter-btn" id="monthlyRequestBtn">
+                    <span>每月请求数</span>
+                    <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    <span class="count" id="monthlyRequestCount" style="display: none;">●</span>
+                </button>
+                <div class="dropdown-menu" id="monthlyRequestDropdown">
+                    <div class="dropdown-section">
+                        <div class="dropdown-title">每月请求数区间</div>
+                        <div class="price-slider-container">
+                            <div class="price-slider">
+                                <div class="slider-track"></div>
+                                <div class="slider-range" id="monthlyRequestSliderRange"></div>
+                                <div class="slider-thumb" id="monthlyRequestSliderMin"></div>
+                                <div class="slider-thumb" id="monthlyRequestSliderMax"></div>
+                            </div>
+                            <div class="slider-values">
+                                <span class="slider-value" id="monthlyRequestMinValue">0</span>
+                                <span class="slider-value" id="monthlyRequestMaxValue">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown-actions">
+                        <button class="dropdown-btn secondary" onclick="resetMonthlyRequestFilter()">重置</button>
+                        <button class="dropdown-btn primary" onclick="applyMonthlyRequestFilter()">确定</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- 模型筛选下拉 -->
             <div class="filter-dropdown">
                 <button class="filter-btn" id="modelBtn">
@@ -1405,9 +1495,19 @@
             yearly: { min: null, max: null }
         };
 
+        let requestFilters = {
+            fiveHours: { min: null, max: null },
+            weekly: { min: null, max: null },
+            monthly: { min: null, max: null }
+        };
+
         // 检查价格筛选是否已应用
         function isPriceFilterApplied(priceType) {
             return priceFilters[priceType].min !== null && priceFilters[priceType].max !== null;
+        }
+
+        function isRequestFilterApplied(requestType) {
+            return requestFilters[requestType].min !== null && requestFilters[requestType].max !== null;
         }
         let activeDropdown = null;
 
@@ -1460,6 +1560,17 @@
         const yearlySliderRange = document.getElementById('yearlySliderRange');
         const yearlyMinValue = document.getElementById('yearlyMinValue');
         const yearlyMaxValue = document.getElementById('yearlyMaxValue');
+
+        // 请求数筛选
+        const fiveHoursRequestBtn = document.getElementById('fiveHoursRequestBtn');
+        const fiveHoursRequestDropdown = document.getElementById('fiveHoursRequestDropdown');
+        const fiveHoursRequestCount = document.getElementById('fiveHoursRequestCount');
+        const weeklyRequestBtn = document.getElementById('weeklyRequestBtn');
+        const weeklyRequestDropdown = document.getElementById('weeklyRequestDropdown');
+        const weeklyRequestCount = document.getElementById('weeklyRequestCount');
+        const monthlyRequestBtn = document.getElementById('monthlyRequestBtn');
+        const monthlyRequestDropdown = document.getElementById('monthlyRequestDropdown');
+        const monthlyRequestCount = document.getElementById('monthlyRequestCount');
         
         const tableBody = document.getElementById('tableBody');
         const showingCount = document.getElementById('showingCount');
@@ -1499,6 +1610,24 @@
             initPriceSlider('yearly');
         }
 
+        // 非窄屏下：仅当菜单超出视口右缘时，改为相对触发器右对齐（换行后仍按实际位置计算）
+        function alignFilterDropdownInViewport(dropdown) {
+            dropdown.style.left = '';
+            dropdown.style.right = '';
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                return;
+            }
+            requestAnimationFrame(() => {
+                if (!dropdown.classList.contains('show')) return;
+                const margin = 12;
+                const rect = dropdown.getBoundingClientRect();
+                if (rect.right > window.innerWidth - margin) {
+                    dropdown.style.left = 'auto';
+                    dropdown.style.right = '0';
+                }
+            });
+        }
+
         // 下拉菜单控制
         function toggleDropdown(btn, dropdown, type = null) {
             if (activeDropdown && activeDropdown !== dropdown) {
@@ -1530,7 +1659,15 @@
                     } else {
                         updateSliderVisuals(type, priceSliders[type].minValue, priceSliders[type].maxValue);
                     }
+                } else if (type === 'fiveHours' || type === 'weekly' || type === 'monthly') {
+                    if (requestFilters[type].min !== null && requestFilters[type].max !== null) {
+                        updateRequestSliderVisuals(type, requestFilters[type].min, requestFilters[type].max);
+                    } else {
+                        updateRequestSliderVisuals(type, requestSliders[type].minValue, requestSliders[type].maxValue);
+                    }
                 }
+
+                alignFilterDropdownInViewport(dropdown);
             }
         }
 
@@ -1606,6 +1743,22 @@
         yearlyPriceBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleDropdown(yearlyPriceBtn, yearlyPriceDropdown, 'yearly');
+        });
+
+        // 请求数筛选
+        fiveHoursRequestBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleDropdown(fiveHoursRequestBtn, fiveHoursRequestDropdown, 'fiveHours');
+        });
+
+        weeklyRequestBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleDropdown(weeklyRequestBtn, weeklyRequestDropdown, 'weekly');
+        });
+
+        monthlyRequestBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleDropdown(monthlyRequestBtn, monthlyRequestDropdown, 'monthly');
         });
 
         modelBtn.addEventListener('click', (e) => {
@@ -1726,6 +1879,36 @@
             }
         }
 
+        function updateFiveHoursRequestCount() {
+            if (requestFilters.fiveHours.min !== null || requestFilters.fiveHours.max !== null) {
+                fiveHoursRequestCount.style.display = 'inline-block';
+                fiveHoursRequestBtn.classList.add('active');
+            } else {
+                fiveHoursRequestCount.style.display = 'none';
+                fiveHoursRequestBtn.classList.remove('active');
+            }
+        }
+
+        function updateWeeklyRequestCount() {
+            if (requestFilters.weekly.min !== null || requestFilters.weekly.max !== null) {
+                weeklyRequestCount.style.display = 'inline-block';
+                weeklyRequestBtn.classList.add('active');
+            } else {
+                weeklyRequestCount.style.display = 'none';
+                weeklyRequestBtn.classList.remove('active');
+            }
+        }
+
+        function updateMonthlyRequestCount() {
+            if (requestFilters.monthly.min !== null || requestFilters.monthly.max !== null) {
+                monthlyRequestCount.style.display = 'inline-block';
+                monthlyRequestBtn.classList.add('active');
+            } else {
+                monthlyRequestCount.style.display = 'none';
+                monthlyRequestBtn.classList.remove('active');
+            }
+        }
+
         // 应用筛选
         function applyFilters() {
             filteredPlans = allPlans.filter(plan => {
@@ -1780,6 +1963,27 @@
                     }
                 }
 
+                // 5小时请求数筛选
+                if (isRequestFilterApplied('fiveHours')) {
+                    if (typeof plan.fiveHoursRequests !== 'number') return false;
+                    if (plan.fiveHoursRequests < requestFilters.fiveHours.min) return false;
+                    if (plan.fiveHoursRequests > requestFilters.fiveHours.max) return false;
+                }
+
+                // 每周请求数筛选
+                if (isRequestFilterApplied('weekly')) {
+                    if (typeof plan.weeklyRequests !== 'number') return false;
+                    if (plan.weeklyRequests < requestFilters.weekly.min) return false;
+                    if (plan.weeklyRequests > requestFilters.weekly.max) return false;
+                }
+
+                // 每月请求数筛选
+                if (isRequestFilterApplied('monthly')) {
+                    if (typeof plan.monthlyRequests !== 'number') return false;
+                    if (plan.monthlyRequests < requestFilters.monthly.min) return false;
+                    if (plan.monthlyRequests > requestFilters.monthly.max) return false;
+                }
+
                 return true;
             });
 
@@ -1799,6 +2003,24 @@
             monthly: { min: 0, max: 0, minValue: 1, maxValue: 0 },
             quarterly: { min: 0, max: 0, minValue: 1, maxValue: 0 },
             yearly: { min: 0, max: 0, minValue: 1, maxValue: 0 }
+        };
+
+        const requestSliders = {
+            fiveHours: { min: 0, max: 0, minValue: 0, maxValue: 0 },
+            weekly: { min: 0, max: 0, minValue: 0, maxValue: 0 },
+            monthly: { min: 0, max: 0, minValue: 0, maxValue: 0 }
+        };
+
+        const requestPlanField = {
+            fiveHours: 'fiveHoursRequests',
+            weekly: 'weeklyRequests',
+            monthly: 'monthlyRequests'
+        };
+
+        const requestSliderIdPrefix = {
+            fiveHours: 'fiveHoursRequest',
+            weekly: 'weeklyRequest',
+            monthly: 'monthlyRequest'
         };
 
         // 计算价格类型的最大值
@@ -1922,6 +2144,128 @@
             maxThumb.addEventListener('touchstart', startDrag('max'));
         }
 
+        function getNumericRequestValues(requestType) {
+            const key = requestPlanField[requestType];
+            return allPlans.map(plan => plan[key]).filter(v => typeof v === 'number');
+        }
+
+        function getMinRequest(requestType) {
+            const nums = getNumericRequestValues(requestType);
+            if (nums.length === 0) return 0;
+            return Math.floor(Math.min(...nums));
+        }
+
+        function getMaxRequest(requestType) {
+            const nums = getNumericRequestValues(requestType);
+            if (nums.length === 0) return 1;
+            return Math.ceil(Math.max(...nums));
+        }
+
+        function initRequestSliders() {
+            initRequestSlider('fiveHours');
+            initRequestSlider('weekly');
+            initRequestSlider('monthly');
+        }
+
+        function initRequestSlider(requestType) {
+            const prefix = requestSliderIdPrefix[requestType];
+            const slider = {
+                minThumb: document.getElementById(`${prefix}SliderMin`),
+                maxThumb: document.getElementById(`${prefix}SliderMax`)
+            };
+            let minBound = getMinRequest(requestType);
+            let maxBound = getMaxRequest(requestType);
+            if (maxBound <= minBound) {
+                maxBound = minBound + 1;
+            }
+            requestSliders[requestType].minValue = minBound;
+            requestSliders[requestType].maxValue = maxBound;
+            requestSliders[requestType].min = minBound;
+            requestSliders[requestType].max = maxBound;
+            updateRequestSliderVisuals(requestType, minBound, maxBound);
+            addRequestSliderDragEvents(requestType, slider);
+        }
+
+        function updateRequestSliderVisuals(requestType, minVal, maxVal) {
+            const slider = requestSliders[requestType];
+            const prefix = requestSliderIdPrefix[requestType];
+            let a = Math.max(slider.minValue, Math.round(minVal));
+            let b = Math.min(slider.maxValue, Math.round(maxVal));
+            const minValue = Math.min(a, b);
+            const maxValue = Math.max(a, b);
+            const span = slider.maxValue - slider.minValue || 1;
+            const minPercent = ((minValue - slider.minValue) / span) * 100;
+            const maxPercent = ((maxValue - slider.minValue) / span) * 100;
+
+            const minThumb = document.getElementById(`${prefix}SliderMin`);
+            const maxThumb = document.getElementById(`${prefix}SliderMax`);
+            const range = document.getElementById(`${prefix}SliderRange`);
+            const minValueEl = document.getElementById(`${prefix}MinValue`);
+            const maxValueEl = document.getElementById(`${prefix}MaxValue`);
+
+            if (minThumb) minThumb.style.left = `${minPercent}%`;
+            if (maxThumb) maxThumb.style.left = `${maxPercent}%`;
+            if (range) {
+                range.style.left = `${minPercent}%`;
+                range.style.width = `${maxPercent - minPercent}%`;
+            }
+            const fmt = (n) => (typeof n === 'number' ? n.toLocaleString() : String(n));
+            if (minValueEl) minValueEl.textContent = fmt(minValue);
+            if (maxValueEl) maxValueEl.textContent = fmt(maxValue);
+
+            slider.min = minValue;
+            slider.max = maxValue;
+        }
+
+        function addRequestSliderDragEvents(requestType, slider) {
+            const { minThumb, maxThumb } = slider;
+            let isDragging = null;
+
+            const handleDrag = (e) => {
+                if (isDragging === null) return;
+
+                const rect = minThumb.parentElement.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                let percent = (x / rect.width) * 100;
+                percent = Math.max(0, Math.min(100, percent));
+
+                const rs = requestSliders[requestType];
+                const span = rs.maxValue - rs.minValue || 1;
+                const value = rs.minValue + (percent / 100) * span;
+                const rounded = Math.round(value);
+
+                if (isDragging === 'min') {
+                    const newMin = Math.min(rounded, rs.max);
+                    updateRequestSliderVisuals(requestType, newMin, rs.max);
+                } else if (isDragging === 'max') {
+                    const newMax = Math.max(rounded, rs.min);
+                    updateRequestSliderVisuals(requestType, rs.min, newMax);
+                }
+            };
+
+            const startDrag = (type) => (e) => {
+                e.preventDefault();
+                isDragging = type;
+                document.addEventListener('mousemove', handleDrag);
+                document.addEventListener('mouseup', stopDrag);
+                document.addEventListener('touchmove', handleDrag);
+                document.addEventListener('touchend', stopDrag);
+            };
+
+            const stopDrag = () => {
+                isDragging = null;
+                document.removeEventListener('mousemove', handleDrag);
+                document.removeEventListener('mouseup', stopDrag);
+                document.removeEventListener('touchmove', handleDrag);
+                document.removeEventListener('touchend', stopDrag);
+            };
+
+            minThumb.addEventListener('mousedown', startDrag('min'));
+            minThumb.addEventListener('touchstart', startDrag('min'));
+            maxThumb.addEventListener('mousedown', startDrag('max'));
+            maxThumb.addEventListener('touchstart', startDrag('max'));
+        }
+
         // 首月价格筛选
         function applyFirstMonthPriceFilter() {
             // 提交临时状态到正式状态
@@ -2007,6 +2351,63 @@
             updateSliderVisuals('yearly', priceSliders.yearly.minValue, priceSliders.yearly.maxValue);
         }
 
+        function applyFiveHoursRequestFilter() {
+            const isInitial = requestSliders.fiveHours.min === requestSliders.fiveHours.minValue &&
+                              requestSliders.fiveHours.max === requestSliders.fiveHours.maxValue;
+            if (isInitial) {
+                requestFilters.fiveHours.min = null;
+                requestFilters.fiveHours.max = null;
+            } else {
+                requestFilters.fiveHours.min = requestSliders.fiveHours.min;
+                requestFilters.fiveHours.max = requestSliders.fiveHours.max;
+            }
+            updateFiveHoursRequestCount();
+            applyFilters();
+            closeDropdownWithoutFilter();
+        }
+
+        function resetFiveHoursRequestFilter() {
+            updateRequestSliderVisuals('fiveHours', requestSliders.fiveHours.minValue, requestSliders.fiveHours.maxValue);
+        }
+
+        function applyWeeklyRequestFilter() {
+            const isInitial = requestSliders.weekly.min === requestSliders.weekly.minValue &&
+                              requestSliders.weekly.max === requestSliders.weekly.maxValue;
+            if (isInitial) {
+                requestFilters.weekly.min = null;
+                requestFilters.weekly.max = null;
+            } else {
+                requestFilters.weekly.min = requestSliders.weekly.min;
+                requestFilters.weekly.max = requestSliders.weekly.max;
+            }
+            updateWeeklyRequestCount();
+            applyFilters();
+            closeDropdownWithoutFilter();
+        }
+
+        function resetWeeklyRequestFilter() {
+            updateRequestSliderVisuals('weekly', requestSliders.weekly.minValue, requestSliders.weekly.maxValue);
+        }
+
+        function applyMonthlyRequestFilter() {
+            const isInitial = requestSliders.monthly.min === requestSliders.monthly.minValue &&
+                              requestSliders.monthly.max === requestSliders.monthly.maxValue;
+            if (isInitial) {
+                requestFilters.monthly.min = null;
+                requestFilters.monthly.max = null;
+            } else {
+                requestFilters.monthly.min = requestSliders.monthly.min;
+                requestFilters.monthly.max = requestSliders.monthly.max;
+            }
+            updateMonthlyRequestCount();
+            applyFilters();
+            closeDropdownWithoutFilter();
+        }
+
+        function resetMonthlyRequestFilter() {
+            updateRequestSliderVisuals('monthly', requestSliders.monthly.minValue, requestSliders.monthly.maxValue);
+        }
+
         // 重置筛选
         function resetVendorFilter() {
             // 重置只影响临时状态，不提交
@@ -2029,6 +2430,18 @@
             resetMonthlyPriceFilter();
             resetQuarterlyPriceFilter();
             resetYearlyPriceFilter();
+            requestFilters.fiveHours.min = null;
+            requestFilters.fiveHours.max = null;
+            requestFilters.weekly.min = null;
+            requestFilters.weekly.max = null;
+            requestFilters.monthly.min = null;
+            requestFilters.monthly.max = null;
+            resetFiveHoursRequestFilter();
+            resetWeeklyRequestFilter();
+            resetMonthlyRequestFilter();
+            updateFiveHoursRequestCount();
+            updateWeeklyRequestCount();
+            updateMonthlyRequestCount();
             currentSort = { column: null, direction: 'asc' };
             document.querySelectorAll('th').forEach(th => {
                 th.classList.remove('sort-asc', 'sort-desc');
@@ -2476,6 +2889,7 @@
 
                 initFilters();
                 initPriceSliders();
+                initRequestSliders();
                 applyFilters();
 
                 console.log(`成功加载 ${allPlans.length} 条套餐数据`);
