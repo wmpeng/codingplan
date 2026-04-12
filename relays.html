@@ -43,7 +43,7 @@
         }
 
         .matrix-table {
-            --matrix-platform-w: 168px;
+            --matrix-platform-w: 140px;
             /* 与下方 th/td 的 min-width 一致；用于在 fixed 布局下真正保证「每列至少这么宽」（表宽不足时出现横向滚动） */
             --matrix-dim-min: 140px;
             width: 100%;
@@ -177,28 +177,55 @@
             text-align: center;
         }
 
-        /* 综合评价列（matrix-col-rating）：左右边线 + 表头强调 + 星星略大 */
+        /* 综合评价列：整列底 + 右侧投影 + 表头强调（不 sticky） */
         .matrix-table thead th.matrix-col-rating {
-            font-weight: 700;
+            font-weight: 800;
             color: var(--accent-primary);
-            border-left: 2px solid var(--accent-primary);
-            border-right: 2px solid var(--accent-primary);
-            background: linear-gradient(180deg, rgba(99, 102, 241, 0.16) 0%, rgba(99, 102, 241, 0.06) 100%);
-            box-shadow: inset 0 -2px 0 rgba(99, 102, 241, 0.12);
+            border-left: 3px solid var(--accent-primary);
+            border-right: 3px solid var(--accent-primary);
+            background: linear-gradient(165deg, rgba(99, 102, 241, 0.28) 0%, rgba(99, 102, 241, 0.1) 45%, var(--bg-tertiary) 100%);
+            box-shadow:
+                inset 0 -3px 0 rgba(99, 102, 241, 0.18),
+                8px 0 24px -8px rgba(15, 23, 42, 0.18);
         }
 
         .matrix-table tbody td.matrix-col-rating {
-            border-left: 2px solid rgba(99, 102, 241, 0.38);
-            border-right: 2px solid rgba(99, 102, 241, 0.38);
+            border-left: 3px solid rgba(99, 102, 241, 0.55);
+            border-right: 3px solid rgba(99, 102, 241, 0.45);
+            background-color: rgba(99, 102, 241, 0.09);
+            box-shadow: 8px 0 24px -10px rgba(15, 23, 42, 0.16);
+        }
+
+        .matrix-table tbody td.matrix-col-rating.matrix-star-tier-low {
+            background-color: rgba(239, 68, 68, 0.11);
+        }
+
+        .matrix-table tbody td.matrix-col-rating.matrix-star-tier-top {
+            background-color: rgba(34, 197, 94, 0.11);
         }
 
         .matrix-table tbody tr:hover td.matrix-col-rating {
-            border-left-color: rgba(99, 102, 241, 0.5);
-            border-right-color: rgba(99, 102, 241, 0.5);
+            border-left-color: rgba(99, 102, 241, 0.75);
+            border-right-color: rgba(99, 102, 241, 0.6);
+            box-shadow: 8px 0 28px -8px rgba(99, 102, 241, 0.22);
+        }
+
+        .matrix-table tbody tr:hover td.matrix-col-rating.matrix-star-tier-low {
+            background-color: rgba(239, 68, 68, 0.14);
+        }
+
+        .matrix-table tbody tr:hover td.matrix-col-rating.matrix-star-tier-top {
+            background-color: rgba(34, 197, 94, 0.14);
         }
 
         .matrix-col-rating.matrix-cell-star-text .matrix-cell-stars-line .star-rating {
-            font-size: 16px;
+            font-size: 18px;
+        }
+
+        .matrix-col-rating .matrix-cell-desc-line {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
         }
 
         .matrix-cell-star-text.matrix-star-tier-low {
