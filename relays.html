@@ -397,32 +397,6 @@
             color: var(--text-primary);
         }
 
-        a.model-pricing-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            color: inherit;
-            text-decoration: none;
-            border-bottom: 1px dashed var(--border-color);
-            transition: color 0.15s, border-color 0.15s;
-        }
-
-        a.model-pricing-link:hover {
-            color: var(--accent-primary);
-            border-bottom-color: var(--accent-primary);
-        }
-
-        a.model-pricing-link .link-icon {
-            flex-shrink: 0;
-            color: var(--accent-primary);
-            opacity: 0.75;
-            transition: opacity 0.15s;
-        }
-
-        a.model-pricing-link:hover .link-icon {
-            opacity: 1;
-        }
-
         .price-token {
             font-weight: 700;
             color: var(--accent-primary);
@@ -565,7 +539,7 @@
         const RELAYS_FILE_PATH = './relays.json';
         const CONFIG_FILE_PATH = './relays-config.json';
 
-        /** 可点击提示：右上外链箭头（快速对比跳转详情、模型名打开定价页共用） */
+        /** 快速对比：平台名跳转详情旁的右上箭头图标 */
         const ICON_EXTERNAL = '<svg class="link-icon link-icon--external" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M15 3h6v6"/><path stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M10 14 21 3"/></svg>';
 
         let relaysData = [];
@@ -643,7 +617,6 @@
             container.innerHTML = relays.map(relay => {
                 const detail = relay.detail || {};
 
-                const pricingHref = relay.pricingUrl ? escapeHtml(relay.pricingUrl) : '';
                 const modelsRows = (detail.keyModels || []).map(m => {
                     const inputCell = m.inputPer1M === '$0.00'
                         ? `<td><span class="price-free">免费</span></td>`
@@ -651,12 +624,9 @@
                     const outputCell = m.outputPer1M === '$0.00'
                         ? `<td><span class="price-free">免费</span></td>`
                         : `<td><span class="price-token">${escapeHtml(m.outputPer1M)}</span></td>`;
-                    const nameCell = pricingHref
-                        ? `<td><a href="${pricingHref}" target="_blank" rel="noopener noreferrer" class="model-pricing-link" title="在新标签页打开定价页">${escapeHtml(m.name)}${ICON_EXTERNAL}</a></td>`
-                        : `<td>${escapeHtml(m.name)}</td>`;
                     return `
                         <tr>
-                            ${nameCell}
+                            <td>${escapeHtml(m.name)}</td>
                             ${inputCell}
                             ${outputCell}
                             <td>${escapeHtml(m.note || '')}</td>
@@ -664,17 +634,13 @@
                     `;
                 }).join('');
 
-                const modelThHint = pricingHref
-                    ? '<span class="matrix-th-hint">名称 ↗ 打开定价页</span>'
-                    : '';
-
                 const modelsSection = modelsRows ? `
                     <div class="relay-section">
                         <h4>代表模型定价（部分示例）</h4>
                         <table class="models-mini-table">
                             <thead>
                                 <tr>
-                                    <th>模型${modelThHint}</th>
+                                    <th>模型</th>
                                     <th>输入 / 1M tokens</th>
                                     <th>输出 / 1M tokens</th>
                                     <th>备注</th>
