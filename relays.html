@@ -214,6 +214,46 @@
             line-height: 1.55;
         }
 
+        .matrix-cell-tags {
+            vertical-align: top;
+        }
+
+        .matrix-tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 8px;
+            max-width: 320px;
+        }
+
+        .matrix-tag {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.35;
+            padding: 4px 10px;
+            border-radius: 999px;
+            white-space: nowrap;
+            border: 1px solid var(--border-color);
+        }
+
+        .matrix-tag--1 {
+            color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.08);
+            border-color: rgba(99, 102, 241, 0.22);
+        }
+
+        .matrix-tag--2 {
+            color: #0d9488;
+            background: rgba(13, 148, 136, 0.08);
+            border-color: rgba(13, 148, 136, 0.22);
+        }
+
+        .matrix-tag--3 {
+            color: #b45309;
+            background: rgba(180, 83, 9, 0.08);
+            border-color: rgba(180, 83, 9, 0.2);
+        }
+
         .protocol-tag {
             display: inline-block;
             font-size: 11px;
@@ -516,7 +556,7 @@
             </a>
             <h1 id="pageTitle">API 中转站</h1>
             <div class="update-date" id="updateDate">更新日期 2026.4.7</div>
-            <div class="subtitle" id="subtitle">OpenRouter 等 API 中转与云推理平台，综合评价、价格、透明度、模型覆盖、可用性、国内支付与适合场景等维度对比</div>
+            <div class="subtitle" id="subtitle">OpenRouter 等 API 中转与云推理平台，综合评价、价格、透明度、模型覆盖、可用性、国内支付与标签等维度对比</div>
         </div>
 
         <hr class="section-divider">
@@ -573,6 +613,28 @@
             return 'matrix-star-tier-4';
         }
 
+        /** 标签列：字符串数组，或兼容旧数据用顿号/逗号分隔的一段文字 */
+        function matrixTagPhrasesFromVal(val) {
+            if (Array.isArray(val)) {
+                return val.map(x => String(x).trim()).filter(Boolean);
+            }
+            if (typeof val === 'string' && val.trim()) {
+                return val.split(/[、，,]/).map(s => s.trim()).filter(Boolean);
+            }
+            return [];
+        }
+
+        function matrixTagCellHtml(phrases) {
+            if (!phrases.length) {
+                return `<td class="matrix-cell-tags"><span class="price-dash">—</span></td>`;
+            }
+            const inner = phrases.map((t, i) => {
+                const variant = (i % 3) + 1;
+                return `<span class="matrix-tag matrix-tag--${variant}">${escapeHtml(t)}</span>`;
+            }).join('');
+            return `<td class="matrix-cell-tags"><div class="matrix-tag-list">${inner}</div></td>`;
+        }
+
         // ── 渲染矩阵 ──
         function renderMatrix(relays, dimensions) {
             const wrapper = document.getElementById('matrixWrapper');
@@ -584,8 +646,12 @@
             const starTextKeys = new Set(pageConfig.matrixStarTextKeys || [
                 'rating', 'billingModel', 'transparency', 'modelCoverage', 'cnAccess', 'cnPayment'
             ]);
+            const tagKeys = new Set(pageConfig.matrixTagKeys || ['tags']);
 
             function matrixCellTd(val, dimKey) {
+                if (tagKeys.has(dimKey)) {
+                    return matrixTagCellHtml(matrixTagPhrasesFromVal(val));
+                }
                 if (starTextKeys.has(dimKey)) {
                     let v = val;
                     if (typeof v === 'number' && Number.isFinite(v)) {
