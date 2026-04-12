@@ -220,6 +220,37 @@
             font-size: 15px;
         }
 
+        .matrix-cell-star-text {
+            vertical-align: top;
+        }
+
+        .matrix-cell-star-text .matrix-cell-stars-line {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .matrix-cell-star-text .matrix-cell-stars-line .star-rating {
+            font-size: 14px;
+        }
+
+        .matrix-cell-desc-line {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        .matrix-cell-desc-line.highlight-success {
+            color: var(--accent-success);
+        }
+
+        .matrix-cell-desc-line.highlight-warn {
+            color: var(--accent-warning);
+        }
+
+        .matrix-cell-desc-line.highlight-error {
+            color: var(--accent-error);
+        }
+
         .protocol-tag {
             display: inline-block;
             font-size: 11px;
@@ -588,6 +619,10 @@
                 return;
             }
 
+            const starTextKeys = new Set(pageConfig.matrixStarTextKeys || [
+                'billingModel', 'modelCoverage', 'cnAccess', 'cnPayment'
+            ]);
+
             function matrixToneClass(tone) {
                 if (tone === 'success') return 'highlight-success';
                 if (tone === 'warn') return 'highlight-warn';
@@ -604,6 +639,20 @@
                         return `<td class="${cellClass} matrix-rating-cell"><span class="price-dash">—</span></td>`;
                     }
                     return `<td class="${cellClass} matrix-rating-cell">${stars}</td>`;
+                }
+                if (starTextKeys.has(dimKey)) {
+                    const toneClass = matrixToneClass(tone);
+                    const descClass = 'matrix-cell-desc-line' + (toneClass ? ` ${toneClass}` : '');
+                    if (val && typeof val === 'object' && !Array.isArray(val) && ('stars' in val || 'text' in val)) {
+                        const starsHtml = renderStarRatingHtml(val.stars) || '<span class="price-dash">—</span>';
+                        const t = val.text != null ? String(val.text) : '';
+                        const textHtml = t ? escapeHtml(t) : '<span class="price-dash">—</span>';
+                        return `<td class="matrix-cell-star-text"><div class="matrix-cell-stars-line">${starsHtml}</div><div class="${descClass}">${textHtml}</div></td>`;
+                    }
+                    if (typeof val === 'string' && val !== '') {
+                        return `<td class="matrix-cell-star-text"><div class="matrix-cell-stars-line"><span class="price-dash">—</span></div><div class="${descClass}">${escapeHtml(val)}</div></td>`;
+                    }
+                    return `<td class="matrix-cell-star-text"><span class="price-dash">—</span></td>`;
                 }
                 if (Array.isArray(val)) {
                     const tags = val.map(v => `<span class="protocol-tag">${escapeHtml(v)}</span>`).join('');

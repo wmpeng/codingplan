@@ -2,7 +2,7 @@
   "header": {
     "title": "API 中转站对比",
     "updateDate": "更新日期 2026.4.12",
-    "subtitle": "OpenRouter 等 API 中转与云推理平台，计费方式、模型覆盖、国内访问等维度对比",
+    "subtitle": "OpenRouter 等 API 中转与云推理平台，价格、模型覆盖、国内访问等维度对比",
     "github": {
       "url": "https://github.com/wmpeng/codingplan",
       "text": "GitHub"
@@ -19,7 +19,7 @@
     },
     {
       "key": "billingModel",
-      "label": "计费方式"
+      "label": "价格"
     },
     {
       "key": "modelCoverage",
@@ -42,7 +42,14 @@
       "label": "适合场景"
     }
   ],
+  "matrixStarTextKeys": [
+    "billingModel",
+    "modelCoverage",
+    "cnAccess",
+    "cnPayment"
+  ],
   "notes": [
+    "价格、模型覆盖、国内访问、国内支付四列在表格中为「首行星级 + 次行说明」，数据为 relays.json 中 matrix 对应字段的 { stars, text } 对象",
     "「综合评价」为 1～5 星主观打分（见 relays.json 中 matrix.rating），不代表任何第三方评测结论",
     "页面数据仅供参考，中转平台定价与功能可能随时调整，请以各平台官网为准",
     "国内访问稳定性因运营商、IP 及时间而异，以上描述为一般经验，不构成任何保证",
@@ -52,6 +59,7 @@
     {
       "date": "2026.4.12",
       "items": [
+        "价格、模型覆盖、国内访问、国内支付四列改为「首行星级 + 次行文字」，数据为 matrix 字段 { stars, text }；键名由 relays-config.json 的 matrixStarTextKeys 配置",
         "快速对比与详情卡片增加「综合评价」列（1–5 星，数据在 relays.json 的 matrix.rating）",
         "新增 Poe（poe.com）对比条目；API 说明参考 creator.poe.com/docs/api，模型标价页为 poe.com/api/models，订阅与密钥见 poe.com/api_key",
         "新增 LLM Hub（llmhub.com.cn）对比条目；计价与支付说明参考 doc.llmhub.app 文档",

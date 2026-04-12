@@ -8,10 +8,22 @@
     "updatedAt": "2026.04.12",
     "matrix": {
       "type": "聚合型",
-      "billingModel": "按 Token 消耗按量计费，各模型独立定价；部分模型有免费额度",
-      "modelCoverage": "官网宣称 300+ 模型、60+ 供应商；覆盖 OpenAI、Anthropic、Google、开源 Llama/Mistral/Qwen 等（以 /models 为准）",
-      "cnAccess": "国内通常可直连，偶发不稳定；无官方国内镜像",
-      "cnPayment": "支持 Visa/Mastercard；支持 USDC 加密货币；不支持微信/支付宝",
+      "billingModel": {
+        "stars": 5,
+        "text": "按 Token 消耗按量计费，各模型独立定价；部分模型有免费额度"
+      },
+      "modelCoverage": {
+        "stars": 5,
+        "text": "官网宣称 300+ 模型、60+ 供应商；覆盖 OpenAI、Anthropic、Google、开源 Llama/Mistral/Qwen 等（以 /models 为准）"
+      },
+      "cnAccess": {
+        "stars": 3,
+        "text": "国内通常可直连，偶发不稳定；无官方国内镜像"
+      },
+      "cnPayment": {
+        "stars": 2,
+        "text": "支持 Visa/Mastercard；支持 USDC 加密货币；不支持微信/支付宝"
+      },
       "rateLimit": "视模型与账户信用等级；免费模型有每日请求限额",
       "bestFor": "多模型比价、OpenAI 兼容一键切换、无需分别注册各原厂账号",
       "rating": 4
@@ -62,10 +74,22 @@
     "updatedAt": "2026.04.12",
     "matrix": {
       "type": "云推理（MaaS）",
-      "billingModel": "大模型 API 按量（元/M tokens 等）；另有模型微调训练/推理、批量处理、预留实例与私有化方案（价格页分栏说明）",
-      "modelCoverage": "价格页与模型中心覆盖大量语言/多模态/语音/嵌入等模型；并列出微调与批量价目（以官网为准）",
-      "cnAccess": "主体为国内服务，控制台与 API 通常国内访问较顺畅",
-      "cnPayment": "个人在线充值目前支持微信支付（需先完成实名认证）；对公等其它方式以官网说明为准",
+      "billingModel": {
+        "stars": 5,
+        "text": "大模型 API 按量（元/M tokens 等）；另有模型微调训练/推理、批量处理、预留实例与私有化方案（价格页分栏说明）"
+      },
+      "modelCoverage": {
+        "stars": 5,
+        "text": "价格页与模型中心覆盖大量语言/多模态/语音/嵌入等模型；并列出微调与批量价目（以官网为准）"
+      },
+      "cnAccess": {
+        "stars": 5,
+        "text": "主体为国内服务，控制台与 API 通常国内访问较顺畅"
+      },
+      "cnPayment": {
+        "stars": 5,
+        "text": "个人在线充值目前支持微信支付（需先完成实名认证）；对公等其它方式以官网说明为准"
+      },
       "rateLimit": "与模型、账户等级相关，模型详情页展示可参考的最高限速等信息",
       "bestFor": "需要人民币标价、开源与国产模型一站式、并可能扩展到微调/托管/私域部署的团队",
       "rating": 5
@@ -122,10 +146,22 @@
     "updatedAt": "2026.04.12",
     "matrix": {
       "type": "聚合中转（国内）",
-      "billingModel": "按量计费，账户充值后以余额抵扣；模型广场/定价页以美元每百万 Token 等标价并结合倍率展示，人民币充值后按规则换算消耗",
-      "modelCoverage": "定价页可见极大规模模型列表（页面展示「全部供应商」量级达 500+；以站内模型广场为准）",
-      "cnAccess": "面向国内用户，文档提示可在控制台选择不同站点线路以适配网络",
-      "cnPayment": "控制台「钱包管理」人民币充值；常见支持微信、支付宝等本土方式（以支付页实际为准）",
+      "billingModel": {
+        "stars": 4,
+        "text": "按量计费，账户充值后以余额抵扣；模型广场/定价页以美元每百万 Token 等标价并结合倍率展示，人民币充值后按规则换算消耗"
+      },
+      "modelCoverage": {
+        "stars": 5,
+        "text": "定价页可见极大规模模型列表（页面展示「全部供应商」量级达 500+；以站内模型广场为准）"
+      },
+      "cnAccess": {
+        "stars": 4,
+        "text": "面向国内用户，文档提示可在控制台选择不同站点线路以适配网络"
+      },
+      "cnPayment": {
+        "stars": 5,
+        "text": "控制台「钱包管理」人民币充值；常见支持微信、支付宝等本土方式（以支付页实际为准）"
+      },
       "rateLimit": "与所选分组、模型及令牌设置相关，创建密钥时需选择分组并可在模型广场查看价格",
       "bestFor": "要在国内用人民币调用 GPT/Claude 等多模型、并愿按分组选择渠道与性价比的开发者",
       "rating": 4
@@ -158,10 +194,22 @@
     "updatedAt": "2026.04.12",
     "matrix": {
       "type": "聚合网关",
-      "billingModel": "按量付费、无月费；官网宣传旗舰模型约八折、开源模型最高更高折扣（以 pricing / models 实时为准）",
-      "modelCoverage": "宣传聚合 100+ 模型，并含 10+ 免费模型；支持 GPT、Claude、Gemini、DeepSeek 等（以模型目录为准）",
-      "cnAccess": "宣传中国直连、香港快线；提供 China Zone（中国专区）说明",
-      "cnPayment": "China Zone 页面写明支持支付宝、微信支付；面向国内合规与协作集成（飞书/钉钉/企微等以文档为准）",
+      "billingModel": {
+        "stars": 4,
+        "text": "按量付费、无月费；官网宣传旗舰模型约八折、开源模型最高更高折扣（以 pricing / models 实时为准）"
+      },
+      "modelCoverage": {
+        "stars": 4,
+        "text": "宣传聚合 100+ 模型，并含 10+ 免费模型；支持 GPT、Claude、Gemini、DeepSeek 等（以模型目录为准）"
+      },
+      "cnAccess": {
+        "stars": 5,
+        "text": "宣传中国直连、香港快线；提供 China Zone（中国专区）说明"
+      },
+      "cnPayment": {
+        "stars": 5,
+        "text": "China Zone 页面写明支持支付宝、微信支付；面向国内合规与协作集成（飞书/钉钉/企微等以文档为准）"
+      },
       "rateLimit": "普通按量计费以账户与模型为准；Vibe Coding 等套餐宣传「无限」调用，以对应产品页条款为准",
       "bestFor": "需要同时兼容 OpenAI / Anthropic / Gemini 多协议、并重视国内支付与直连/低延迟线路的团队",
       "rating": 4
@@ -194,10 +242,22 @@
     "updatedAt": "2026.04.12",
     "matrix": {
       "type": "聚合中转（多分组）",
-      "billingModel": "按量计费；文档说明以「官方费率」为基准乘以各模型/分组「倍率」（如 1 表示与原价等价，大于 1 为加价）；不同分组对应不同上游渠道与价格",
-      "modelCoverage": "按分组提供 ChatGPT（含 AZ 等渠道）、Claude、Gemini、Grok、国产模型等组合；默认分组、纯 AZ、官转、逆向等含义见文档",
-      "cnAccess": "产品定位为国内可用的 LLM API 聚合网关（具体线路以官方文档与控制台为准）",
-      "cnPayment": "快速开始文档说明人民币充值兑换账户额度；新用户常有小额体验金（以活动页为准）",
+      "billingModel": {
+        "stars": 4,
+        "text": "按量计费；文档说明以「官方费率」为基准乘以各模型/分组「倍率」（如 1 表示与原价等价，大于 1 为加价）；不同分组对应不同上游渠道与价格"
+      },
+      "modelCoverage": {
+        "stars": 4,
+        "text": "按分组提供 ChatGPT（含 AZ 等渠道）、Claude、Gemini、Grok、国产模型等组合；默认分组、纯 AZ、官转、逆向等含义见文档"
+      },
+      "cnAccess": {
+        "stars": 4,
+        "text": "产品定位为国内可用的 LLM API 聚合网关（具体线路以官方文档与控制台为准）"
+      },
+      "cnPayment": {
+        "stars": 4,
+        "text": "快速开始文档说明人民币充值兑换账户额度；新用户常有小额体验金（以活动页为准）"
+      },
       "rateLimit": "与账户、模型及分组策略相关，以控制台为准",
       "bestFor": "希望按分组透明对比倍率、并在多厂商模型间统一账户计费的用户",
       "rating": 4
@@ -230,10 +290,22 @@
     "updatedAt": "2026.04.12",
     "matrix": {
       "type": "聚合中转",
-      "billingModel": "支持按 Token 与按次计费；费用 = 模型价 × 用户折扣；人民币主站与美元子域采用不同汇率与账户体系（文档示例：DMXAPI.cn 人民币；DMXAPI.com 等美金线路有不同￥:$ 兑换比例）",
-      "modelCoverage": "聚合多厂商模型；人民币价目表含厂商原价与平台含税价等列（以 rmb.dmxapi.cn 与 models 页为准）",
-      "cnAccess": "主站 dmxapi.cn 面向国内；定价列表站点 rmb.dmxapi.cn（页面为动态加载，抓取可能不完整）",
-      "cnPayment": "人民币计价站点充值消费；文档与站点宣传含税价（如 6%）、企业折扣与发票（以商务政策为准）",
+      "billingModel": {
+        "stars": 3,
+        "text": "支持按 Token 与按次计费；费用 = 模型价 × 用户折扣；人民币主站与美元子域采用不同汇率与账户体系（文档示例：DMXAPI.cn 人民币；DMXAPI.com 等美金线路有不同￥:$ 兑换比例）"
+      },
+      "modelCoverage": {
+        "stars": 4,
+        "text": "聚合多厂商模型；人民币价目表含厂商原价与平台含税价等列（以 rmb.dmxapi.cn 与 models 页为准）"
+      },
+      "cnAccess": {
+        "stars": 4,
+        "text": "主站 dmxapi.cn 面向国内；定价列表站点 rmb.dmxapi.cn（页面为动态加载，抓取可能不完整）"
+      },
+      "cnPayment": {
+        "stars": 4,
+        "text": "人民币计价站点充值消费；文档与站点宣传含税价（如 6%）、企业折扣与发票（以商务政策为准）"
+      },
       "rateLimit": "以账户类型与模型为准，见控制台或文档",
       "bestFor": "需要人民币含税价目、或要在多条美金汇率线路间选型的大型与个人开发者",
       "rating": 4
@@ -266,10 +338,22 @@
     "updatedAt": "2026.04.12",
     "matrix": {
       "type": "聚合网关",
-      "billingModel": "按 Token 按量计费；文档说明模型单价与 OpenAI / Claude 官方公开价对齐；充值可能收取一定比例手续费（文档曾示例约 5%，含支付通道成本，以当前充值页为准）；额度一般不设过期时间（以账户规则为准）",
-      "modelCoverage": "官网宣称 100+ AI 模型；首页亦列举 GPT、Claude、Gemini、Grok 等方向（具体可选模型以控制台为准）；文档侧重 OpenAI 与 Claude 系列接入说明",
-      "cnAccess": "llmhub.com.cn 为国内站点与控制台入口；宣传全球 CDN 加速、多节点部署以降低延迟",
-      "cnPayment": "公开文档说明支持微信支付、支付宝与信用卡等充值路径；亦可能提供兑换码等充值方式（以控制台与文档当期说明为准）",
+      "billingModel": {
+        "stars": 4,
+        "text": "按 Token 按量计费；文档说明模型单价与 OpenAI / Claude 官方公开价对齐；充值可能收取一定比例手续费（文档曾示例约 5%，含支付通道成本，以当前充值页为准）；额度一般不设过期时间（以账户规则为准）"
+      },
+      "modelCoverage": {
+        "stars": 4,
+        "text": "官网宣称 100+ AI 模型；首页亦列举 GPT、Claude、Gemini、Grok 等方向（具体可选模型以控制台为准）；文档侧重 OpenAI 与 Claude 系列接入说明"
+      },
+      "cnAccess": {
+        "stars": 5,
+        "text": "llmhub.com.cn 为国内站点与控制台入口；宣传全球 CDN 加速、多节点部署以降低延迟"
+      },
+      "cnPayment": {
+        "stars": 5,
+        "text": "公开文档说明支持微信支付、支付宝与信用卡等充值路径；亦可能提供兑换码等充值方式（以控制台与文档当期说明为准）"
+      },
       "rateLimit": "与账户类型、模型及平台策略相关，以控制台为准",
       "bestFor": "希望用 OpenAI 兼容接口统一接入多款海外大模型、并倾向使用国内控制台与常见本土支付方式的开发者",
       "rating": 4
@@ -314,10 +398,22 @@
     "updatedAt": "2026.04.12",
     "matrix": {
       "type": "聚合型",
-      "billingModel": "按 Token 等透明美元计价；需 Poe 订阅（官方曾介绍起价约 $4.99/月）并可另购额度；各模型 input/output 美元单价以 https://poe.com/api/models 列表为准（页面为动态加载，需登录或浏览器环境）",
-      "modelCoverage": "官网与 Creator 文档称可通过单一 OpenAI 兼容端点访问数百款模型与机器人，含主流闭源与开源及社区 Bot；支持 Chat Completions 与 Responses 等形态（以文档为准）",
-      "cnAccess": "服务主体面向海外用户；国内访问无官方专线说明，稳定性因网络环境而异，可能需要代理或不稳定",
-      "cnPayment": "以美元订阅与信用卡等国际化支付为主；一般不支持微信、支付宝等人民币本土支付（以结账页实际为准）",
+      "billingModel": {
+        "stars": 4,
+        "text": "按 Token 等透明美元计价；需 Poe 订阅（官方曾介绍起价约 $4.99/月）并可另购额度；各模型 input/output 美元单价以 https://poe.com/api/models 列表为准（页面为动态加载，需登录或浏览器环境）"
+      },
+      "modelCoverage": {
+        "stars": 5,
+        "text": "官网与 Creator 文档称可通过单一 OpenAI 兼容端点访问数百款模型与机器人，含主流闭源与开源及社区 Bot；支持 Chat Completions 与 Responses 等形态（以文档为准）"
+      },
+      "cnAccess": {
+        "stars": 3,
+        "text": "服务主体面向海外用户；国内访问无官方专线说明，稳定性因网络环境而异，可能需要代理或不稳定"
+      },
+      "cnPayment": {
+        "stars": 2,
+        "text": "以美元订阅与信用卡等国际化支付为主；一般不支持微信、支付宝等人民币本土支付（以结账页实际为准）"
+      },
       "rateLimit": "与订阅档位、额度及模型相关；API 与 App 内可查用量与 receipts（以账户与文档为准）",
       "bestFor": "已能接受美元结算、希望用 OpenAI SDK 将 base_url 指向 api.poe.com/v1 即可切换多模型、并复用 Poe 订阅/额度的开发者",
       "rating": 4
