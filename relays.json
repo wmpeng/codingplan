@@ -2,21 +2,17 @@
   {
     "id": "openrouter",
     "name": "OpenRouter",
-    "vendor": "OpenRouter, Inc.",
     "type": "聚合型",
     "homeUrl": "https://openrouter.ai",
     "pricingUrl": "https://openrouter.ai/models",
     "updatedAt": "2026.04",
     "matrix": {
       "type": "聚合型",
-      "vendor": "OpenRouter, Inc.",
-      "compatProtocols": ["OpenAI Chat Completions"],
       "billingModel": "按 Token 消耗按量计费，各模型独立定价；部分模型有免费额度",
       "modelCoverage": "200+ 模型（OpenAI、Anthropic、Google、Meta Llama、Mistral、Qwen 等）",
       "cnAccess": "国内通常可直连，偶发不稳定；无官方国内镜像",
       "cnPayment": "支持 Visa/Mastercard；支持 USDC 加密货币；不支持微信/支付宝",
       "rateLimit": "视模型与账户信用等级；免费模型有每日请求限额",
-      "privacy": "默认不持久化日志；提供零数据保留选项（部分模型支持）",
       "bestFor": "多模型比价、快速接入、无需多账号管理"
     },
     "detail": {
@@ -55,21 +51,17 @@
   {
     "id": "siliconflow",
     "name": "SiliconFlow（硅基流动）",
-    "vendor": "北京硅基流动科技有限公司",
     "type": "云推理（MaaS）",
     "homeUrl": "https://siliconflow.cn/zh-cn/",
     "pricingUrl": "https://siliconflow.cn/models",
     "updatedAt": "2026.04.12",
     "matrix": {
       "type": "云推理（MaaS）",
-      "vendor": "北京硅基流动科技有限公司",
-      "compatProtocols": ["OpenAI 兼容 REST（如 Chat Completions），Base URL：https://api.siliconflow.cn/v1"],
       "billingModel": "按调用量计费（标价多为人民币 / 百万 Token，￥/M Tokens）；充值余额不设有效期；另有模型微调训练与推理独立计费",
       "modelCoverage": "官网模型中心宣称 100+ 主流模型；含 DeepSeek、Qwen、GLM、Kimi、MiniMax 等系列及对话 / 生图 / 嵌入 / 语音 / 视频等类型（以模型中心筛选为准）",
       "cnAccess": "主体为国内服务，控制台与 API 通常国内访问较顺畅",
       "cnPayment": "个人在线充值目前支持微信支付（需先完成实名认证）；对公等其它方式以官网说明为准",
       "rateLimit": "与模型、账户等级相关，模型详情页展示可参考的最高限速等信息",
-      "privacy": "以官网隐私政策与用户协议为准；另提供企业私有化部署等方案（见官网产品页）",
       "bestFor": "需要 OpenAI 兼容接口、人民币结算、集中调用多款开源/国产模型的国内开发与应用"
     },
     "detail": {

@@ -226,12 +226,6 @@
             border: 1px solid rgba(99, 102, 241, 0.25);
         }
 
-        .vendor-text {
-            font-size: 13px;
-            color: var(--text-tertiary);
-            font-weight: 400;
-        }
-
         .relay-card-meta {
             display: flex;
             align-items: center;
@@ -472,7 +466,7 @@
             </a>
             <h1 id="pageTitle">API 中转站</h1>
             <div class="update-date" id="updateDate">更新日期 2026.4.7</div>
-            <div class="subtitle" id="subtitle">聚合型 API 中转平台对比，兼容协议、计费方式、模型覆盖、国内访问全面对比</div>
+            <div class="subtitle" id="subtitle">OpenRouter 等 API 中转与云推理平台对比</div>
         </div>
 
         <hr class="section-divider">
@@ -627,7 +621,6 @@
                             <div class="relay-card-title">
                                 <span class="relay-name-lg">${escapeHtml(relay.name)}</span>
                                 <span class="type-badge-lg">${escapeHtml(relay.type)}</span>
-                                <span class="vendor-text">${escapeHtml(relay.vendor)}</span>
                             </div>
                             <div class="relay-card-meta">
                                 ${relay.homeUrl ? `<a href="${escapeHtml(relay.homeUrl)}" target="_blank" class="home-link">官网 →</a>` : ''}

@@ -2,7 +2,7 @@
   "header": {
     "title": "API 中转站对比",
     "updateDate": "更新日期 2026.4.12",
-    "subtitle": "OpenRouter 等聚合型 API 中转平台，兼容协议、计费方式、模型覆盖、国内访问全面对比",
+    "subtitle": "OpenRouter 等 API 中转与云推理平台，计费方式、模型覆盖、国内访问等维度对比",
     "github": {
       "url": "https://github.com/wmpeng/codingplan",
       "text": "GitHub"
@@ -12,14 +12,6 @@
     {
       "key": "type",
       "label": "类型"
-    },
-    {
-      "key": "vendor",
-      "label": "厂商"
-    },
-    {
-      "key": "compatProtocols",
-      "label": "兼容协议"
     },
     {
       "key": "billingModel",
@@ -40,10 +32,6 @@
     {
       "key": "rateLimit",
       "label": "额度与限速"
-    },
-    {
-      "key": "privacy",
-      "label": "隐私声明"
     },
     {
       "key": "bestFor",
