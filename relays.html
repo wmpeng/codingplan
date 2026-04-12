@@ -160,22 +160,24 @@
             line-height: 1.6;
         }
 
-        /* 星文列说明文字按星级分档着色：1 红 / 2–3 黄 / 4–5 绿（星星保持默认金色，不变色） */
+        /* 星文列按星级：整格淡底纹 + 左侧色条；说明文字保持默认色（星星仍为金色） */
         .matrix-table thead th.matrix-th-star-text {
             text-align: center;
         }
 
-        /* 表格星文格：说明行按档着色 */
-        .matrix-star-tier-1 .matrix-cell-desc-line {
-            color: var(--accent-error);
+        .matrix-cell-star-text.matrix-star-tier-1 {
+            background-color: rgba(239, 68, 68, 0.07);
+            box-shadow: inset 3px 0 0 rgba(220, 38, 38, 0.45);
         }
 
-        .matrix-star-tier-2 .matrix-cell-desc-line {
-            color: var(--accent-warning);
+        .matrix-cell-star-text.matrix-star-tier-2 {
+            background-color: rgba(234, 179, 8, 0.09);
+            box-shadow: inset 3px 0 0 rgba(202, 138, 4, 0.5);
         }
 
-        .matrix-star-tier-4 .matrix-cell-desc-line {
-            color: var(--accent-success);
+        .matrix-cell-star-text.matrix-star-tier-4 {
+            background-color: rgba(34, 197, 94, 0.08);
+            box-shadow: inset 3px 0 0 rgba(22, 163, 74, 0.45);
         }
 
         .star-rating {
