@@ -47,8 +47,9 @@
     {
       "date": "2026.4.12",
       "items": [
-        "新增 SiliconFlow（硅基流动）云推理平台条目：OpenAI 兼容接口、官网与模型广场链接、计费与支付说明等",
-        "补充 SiliconFlow 代表模型人民币标价（摘录自 siliconflow.cn/models 模型中心）"
+        "新增 PoloAPI、OfoxAI、N1N、DMXAPI 对比条目（依据各站公开文档与定价页整理）",
+        "OpenRouter 补充 300+ 模型量级表述；SiliconFlow 定价链接改为 siliconflow.cn/pricing，并与价格页栏目对齐描述",
+        "此前已收录 SiliconFlow 云推理条目及模型中心标价摘录"
       ]
     },
     {

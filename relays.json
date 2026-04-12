@@ -5,47 +5,47 @@
     "type": "聚合型",
     "homeUrl": "https://openrouter.ai",
     "pricingUrl": "https://openrouter.ai/models",
-    "updatedAt": "2026.04",
+    "updatedAt": "2026.04.12",
     "matrix": {
       "type": "聚合型",
       "billingModel": "按 Token 消耗按量计费，各模型独立定价；部分模型有免费额度",
-      "modelCoverage": "200+ 模型（OpenAI、Anthropic、Google、Meta Llama、Mistral、Qwen 等）",
+      "modelCoverage": "官网宣称 300+ 模型、60+ 供应商；覆盖 OpenAI、Anthropic、Google、开源 Llama/Mistral/Qwen 等（以 /models 为准）",
       "cnAccess": "国内通常可直连，偶发不稳定；无官方国内镜像",
       "cnPayment": "支持 Visa/Mastercard；支持 USDC 加密货币；不支持微信/支付宝",
       "rateLimit": "视模型与账户信用等级；免费模型有每日请求限额",
-      "bestFor": "多模型比价、快速接入、无需多账号管理"
+      "bestFor": "多模型比价、OpenAI 兼容一键切换、无需分别注册各原厂账号"
     },
     "detail": {
-      "description": "OpenRouter 是一个聚合型 API 中转平台，使用统一的 OpenAI 兼容接口接入 200+ 大模型，包括 OpenAI、Anthropic、Google、Meta、Mistral、Qwen 等主流厂商模型。用户只需一个账号、一个 Base URL、一个 API Key 即可切换调用任意模型，无需分别注册各家平台。",
-      "billingRules": "按 Token 消耗按量计费，各模型定价以官网 /models 页面为准（通常与原厂官方价持平，部分模型有 provider 折扣）。无月费，充值后余额不过期。部分开源模型（如 Llama 3 系列）提供免费额度，每日有限速。充值支持信用卡与 USDC，最低充值 $5。账户余额低于阈值时可配置自动充值。",
-      "networkAndPayment": "OpenRouter API 端点（openrouter.ai/api）国内通常可直接访问，无需代理，但稳定性因运营商和 IP 而异，偶发连接超时。控制台与文档全英文，无中文界面。支付支持国际 Visa/Mastercard（含国内发行双币卡，通常可用），以及 USDC 加密货币充值，不支持微信支付或支付宝。",
+      "description": "OpenRouter 是面向全球开发者的统一大模型 API 平台，提供与 OpenAI Chat Completions 高度兼容的接口，可用官方 OpenAI SDK 将 base URL 指向 OpenRouter 即可调用。平台聚合大量商业与开源模型，并支持自动路由、多 Provider 回退与按模型细分的计价。",
+      "billingRules": "按 Token 按量计费，各模型单价以 openrouter.ai/models 为准。无月费，余额策略以官网账户说明为准。部分开源模型提供免费额度（通常有每日限额）。充值常见为信用卡与加密货币。",
+      "networkAndPayment": "API 主机 openrouter.ai 在国内多数网络环境下可直接访问，稳定性因运营商与时段而异。控制台与文档主要为英文；支付以国际卡与 USDC 为主，不适合需要微信/支付宝人民币直充的场景。",
       "keyModels": [
         {
           "name": "GPT-4o",
           "inputPer1M": "$2.50",
           "outputPer1M": "$10.00",
-          "note": "与 OpenAI 官方同价"
+          "note": "示例价，以 /models 实时为准"
         },
         {
           "name": "Claude Sonnet 4.5",
           "inputPer1M": "$3.00",
           "outputPer1M": "$15.00",
-          "note": "与 Anthropic 官方同价"
+          "note": "示例价，以 /models 实时为准"
         },
         {
           "name": "Gemini 2.5 Pro",
           "inputPer1M": "$1.25",
           "outputPer1M": "$10.00",
-          "note": "与 Google 官方同价"
+          "note": "示例价，以 /models 实时为准"
         },
         {
-          "name": "Llama 3.3 70B",
+          "name": "Llama 3.3 70B（免费档）",
           "inputPer1M": "$0.00",
           "outputPer1M": "$0.00",
-          "note": "免费模型（每日限速）"
+          "note": "免费模型通常有每日限额"
         }
       ],
-      "notes": "以上模型价格仅为示例，实际以 openrouter.ai/models 实时数据为准。部分模型有多个 provider 可选，价格和延迟不同，可在 API 请求中指定 provider。"
+      "notes": "模型与价格变动频繁，请以 https://openrouter.ai/models 与官方文档为准。"
     }
   },
   {
@@ -53,54 +53,178 @@
     "name": "SiliconFlow（硅基流动）",
     "type": "云推理（MaaS）",
     "homeUrl": "https://siliconflow.cn/zh-cn/",
-    "pricingUrl": "https://siliconflow.cn/models",
+    "pricingUrl": "https://siliconflow.cn/pricing",
     "updatedAt": "2026.04.12",
     "matrix": {
       "type": "云推理（MaaS）",
-      "billingModel": "按调用量计费（标价多为人民币 / 百万 Token，￥/M Tokens）；充值余额不设有效期；另有模型微调训练与推理独立计费",
-      "modelCoverage": "官网模型中心宣称 100+ 主流模型；含 DeepSeek、Qwen、GLM、Kimi、MiniMax 等系列及对话 / 生图 / 嵌入 / 语音 / 视频等类型（以模型中心筛选为准）",
+      "billingModel": "大模型 API 按量（元/M tokens 等）；另有模型微调训练/推理、批量处理、预留实例与私有化方案（价格页分栏说明）",
+      "modelCoverage": "价格页与模型中心覆盖大量语言/多模态/语音/嵌入等模型；并列出微调与批量价目（以官网为准）",
       "cnAccess": "主体为国内服务，控制台与 API 通常国内访问较顺畅",
       "cnPayment": "个人在线充值目前支持微信支付（需先完成实名认证）；对公等其它方式以官网说明为准",
       "rateLimit": "与模型、账户等级相关，模型详情页展示可参考的最高限速等信息",
-      "bestFor": "需要 OpenAI 兼容接口、人民币结算、集中调用多款开源/国产模型的国内开发与应用"
+      "bestFor": "需要人民币标价、开源与国产模型一站式、并可能扩展到微调/托管/私域部署的团队"
     },
     "detail": {
-      "description": "硅基流动（SiliconFlow）是国内面向生成式 AI 的云服务平台，提供大语言模型与多模态等能力的 API 调用、在线体验（Playground）、模型广场与 API 密钥管理。大语言模型场景支持使用官方 OpenAI SDK，将 base_url 设为 https://api.siliconflow.cn/v1、使用平台发放的 API Key 即可调用文档中支持的参数与模型。平台还提供模型微调与托管、推理加速及企业私有化部署等产品线。",
-      "billingRules": "费用按实际消耗结算。语言模型在模型中心通常标注「输入 / 输出：￥x / M Tokens」；多模态或按张计费的模型计费维度可能不同，以各模型卡片为准。充值余额用于抵扣 API 与相关服务消耗；赠送余额规则以活动说明为准。模型微调按训练与推理分别计价，创建任务前可在控制台查看对应价格。",
-      "networkAndPayment": "控制台域名以 cloud.siliconflow.cn 为主（文档亦可能提及 siliconflow.com 等国际站入口）。API 调用使用 api.siliconflow.cn。根据公开用户充值协议，个人在线充值目前接入微信支付，充值前需完成实名认证；退款等规则以协议约定为准。",
+      "description": "硅基流动（SiliconFlow）是国内生成式 AI 云服务平台，提供大语言模型与多模态等 API、Playground、模型广场与密钥管理。大语言模型场景可使用 OpenAI SDK，base_url 为 https://api.siliconflow.cn/v1。官网「价格」页集中展示 API、微调、批量与算力预留等价目；具体模型单价也可在模型中心查看。",
+      "billingRules": "费用按实际消耗结算。语言模型常见计费单位为元/百万 tokens；图片、语音等可能按张/按次计费。批量处理、微调训练与推理单价与标准 API 不同，以 siliconflow.cn/pricing 各表格为准。",
+      "networkAndPayment": "控制台以 cloud.siliconflow.cn 为主；API 为 api.siliconflow.cn。充值与发票规则见用户协议及帮助文档。",
       "keyModels": [
         {
           "name": "deepseek-ai/DeepSeek-R1",
           "inputPer1M": "￥4",
           "outputPer1M": "￥16",
-          "note": "模型中心标价（￥/M Tokens）；另有 Pro/ 等同名线路时以卡片为准"
+          "note": "与模型中心标价一致（￥/M tokens）"
         },
         {
           "name": "deepseek-ai/DeepSeek-V3.2",
           "inputPer1M": "￥2",
           "outputPer1M": "￥3",
-          "note": "旗舰对话模型示例"
+          "note": "同上"
         },
         {
           "name": "Qwen/Qwen3-VL-32B-Instruct",
           "inputPer1M": "￥1",
           "outputPer1M": "￥4",
-          "note": "多模态（视觉）对话示例"
+          "note": "同上"
         },
         {
           "name": "Pro/zai-org/GLM-5.1",
           "inputPer1M": "￥6",
           "outputPer1M": "￥28",
-          "note": "高端线路定价示例（MoE 旗舰）"
+          "note": "同上"
         },
         {
           "name": "Qwen/Qwen3.5-4B",
           "inputPer1M": "$0.00",
           "outputPer1M": "$0.00",
-          "note": "模型中心标价 ￥0 / M Tokens（界面展示为免费档；以官网为准）"
+          "note": "价格页列为免费档（以官网为准）"
         }
       ],
-      "notes": "以下价格为硅基流动模型中心公开标价摘录（默认排序首页可见模型），会随活动与版本调整；请以 https://siliconflow.cn/models 实时页面为准。同系列常有「Pro/」与开源 ID 并行上架，调用前核对模型 ID。"
+      "notes": "完整模型清单与实时单价以 https://siliconflow.cn/models 为准；套餐与算力以 https://siliconflow.cn/pricing 为准。"
+    }
+  },
+  {
+    "id": "poloapi",
+    "name": "PoloAPI",
+    "type": "聚合中转（国内）",
+    "homeUrl": "https://poloai.top",
+    "pricingUrl": "https://poloapi.top/pricing",
+    "updatedAt": "2026.04.12",
+    "matrix": {
+      "type": "聚合中转（国内）",
+      "billingModel": "按量计费，账户充值后以余额抵扣；模型广场/定价页以美元每百万 Token 等标价并结合倍率展示，人民币充值后按规则换算消耗",
+      "modelCoverage": "定价页可见极大规模模型列表（页面展示「全部供应商」量级达 500+；以站内模型广场为准）",
+      "cnAccess": "面向国内用户，文档提示可在控制台选择不同站点线路以适配网络",
+      "cnPayment": "控制台「钱包管理」人民币充值；常见支持微信、支付宝等本土方式（以支付页实际为准）",
+      "rateLimit": "与所选分组、模型及令牌设置相关，创建密钥时需选择分组并可在模型广场查看价格",
+      "bestFor": "要在国内用人民币调用 GPT/Claude 等多模型、并愿按分组选择渠道与性价比的开发者"
+    },
+    "detail": {
+      "description": "PoloAPI（控制台域名常见为 poloai.top，API 入口亦文档化 poloapi.top）是国内大模型 API 聚合中转服务：用户注册充值后创建令牌，选择分组，将原先指向 OpenAI 等厂商的 URL 替换为平台提供的中转地址（常见为 https://poloai.top 或 https://poloapi.top，部分场景需加 /v1）。Claude 等模型支持原生 messages 格式，具体端点以模型广场单模型说明与 Apifox 文档为准。",
+      "billingRules": "消耗按模型标价从账户余额扣除；不同分组对应不同上游渠道与单价。poloapi.top/pricing 提供可检索的模型价目表（USD/M 等）。poloai.top 与 poloapi.top 为同一产品体系下的站点入口，以控制台当前说明为准。",
+      "networkAndPayment": "官方文档（apidoc.poloapi.com）说明商务联系 contact@poloapi.com、企业开票与对公付款可走客服。个人用户通过控制台钱包充值使用。",
+      "keyModels": [
+        {
+          "name": "（见模型广场）",
+          "inputPer1M": "—",
+          "outputPer1M": "—",
+          "note": "各模型美元标价与倍率请在定价页按名称检索"
+        }
+      ],
+      "notes": "模型名称必须与模型广场完全一致；分组决定可用模型与价格，切换分组需新建或调整令牌。请以 https://poloapi.top/pricing 与 https://apidoc.poloapi.com/ 最新说明为准。"
+    }
+  },
+  {
+    "id": "ofox",
+    "name": "OfoxAI",
+    "type": "聚合网关",
+    "homeUrl": "https://ofox.ai/zh",
+    "pricingUrl": "https://ofox.ai/pricing",
+    "updatedAt": "2026.04.12",
+    "matrix": {
+      "type": "聚合网关",
+      "billingModel": "按量付费、无月费；官网宣传旗舰模型约八折、开源模型最高更高折扣（以 pricing / models 实时为准）",
+      "modelCoverage": "宣传聚合 100+ 模型，并含 10+ 免费模型；支持 GPT、Claude、Gemini、DeepSeek 等（以模型目录为准）",
+      "cnAccess": "宣传中国直连、香港快线；提供 China Zone（中国专区）说明",
+      "cnPayment": "China Zone 页面写明支持支付宝、微信支付；面向国内合规与协作集成（飞书/钉钉/企微等以文档为准）",
+      "rateLimit": "普通按量计费以账户与模型为准；Vibe Coding 等套餐宣传「无限」调用，以对应产品页条款为准",
+      "bestFor": "需要同时兼容 OpenAI / Anthropic / Gemini 多协议、并重视国内支付与直连/低延迟线路的团队"
+    },
+    "detail": {
+      "description": "OfoxAI（ofox.ai）定位为统一大模型 API 网关：在标准接口下聚合多厂商模型，文档说明兼容 OpenAI、Anthropic 与 Gemini 三类协议，支持流式输出、函数调用、多模态与结构化输出等能力。官网提供模型目录、定价页、快速开始与 OpenAPI 规范，并强调 99.9% SLA 与面向 Agent 开发场景。",
+      "billingRules": "按实际调用付费，无固定月费；具体折扣与免费模型列表以官网 pricing、models 页面为准。",
+      "networkAndPayment": "国际站与国内专区并行：若主要受众在国内，可关注 ofox.ai/zh/china 所述直连与本土支付方式。",
+      "keyModels": [
+        {
+          "name": "（模型目录）",
+          "inputPer1M": "—",
+          "outputPer1M": "—",
+          "note": "实时单价见 https://ofox.ai/models"
+        }
+      ],
+      "notes": "协议切换、Base URL 与各厂商 SDK 替换方式见 https://ofox.ai/docs 与中文 API 参考。"
+    }
+  },
+  {
+    "id": "n1n",
+    "name": "N1N",
+    "type": "聚合中转（多分组）",
+    "homeUrl": "https://n1n.ai",
+    "pricingUrl": "https://api.n1n.ai/pricing",
+    "updatedAt": "2026.04.12",
+    "matrix": {
+      "type": "聚合中转（多分组）",
+      "billingModel": "按量计费；文档说明以「官方费率」为基准乘以各模型/分组「倍率」（如 1 表示与原价等价，大于 1 为加价）；不同分组对应不同上游渠道与价格",
+      "modelCoverage": "按分组提供 ChatGPT（含 AZ 等渠道）、Claude、Gemini、Grok、国产模型等组合；默认分组、纯 AZ、官转、逆向等含义见文档",
+      "cnAccess": "产品定位为国内可用的 LLM API 聚合网关（具体线路以官方文档与控制台为准）",
+      "cnPayment": "快速开始文档说明人民币充值兑换账户额度；新用户常有小额体验金（以活动页为准）",
+      "rateLimit": "与账户、模型及分组策略相关，以控制台为准",
+      "bestFor": "希望按分组透明对比倍率、并在多厂商模型间统一账户计费的用户"
+    },
+    "detail": {
+      "description": "N1N（n1n.ai）为大模型 API 聚合管理网关：通过分组将不同上游渠道（如 Azure OpenAI、官方直连、逆向渠道等）隔离计价。用户需在控制台选择合适分组与密钥，再按 OpenAI 兼容等方式调用。定价逻辑强调「倍率」相对官方公开价。",
+      "billingRules": "同一模型在不同分组下倍率不同；详细价目需在 api.n1n.ai/pricing（需登录或前端渲染）与 docs.n1n.ai 的「大模型 API 价格」系列文档交叉核对。",
+      "networkAndPayment": "文档提及邀请奖励、充值返利等运营规则，以官网当期说明为准。",
+      "keyModels": [
+        {
+          "name": "（按分组询价）",
+          "inputPer1M": "—",
+          "outputPer1M": "—",
+          "note": "倍率随分组变化，请在定价页选择分组后查看"
+        }
+      ],
+      "notes": "api.n1n.ai/pricing 可能依赖浏览器脚本展示完整表格；静态抓取困难时请以登录后页面与文档站 https://docs.n1n.ai/llm-api-price 为准。"
+    }
+  },
+  {
+    "id": "dmxapi",
+    "name": "DMXAPI",
+    "type": "聚合中转",
+    "homeUrl": "https://dmxapi.cn",
+    "pricingUrl": "https://rmb.dmxapi.cn",
+    "updatedAt": "2026.04.12",
+    "matrix": {
+      "type": "聚合中转",
+      "billingModel": "支持按 Token 与按次计费；费用 = 模型价 × 用户折扣；人民币主站与美元子域采用不同汇率与账户体系（文档示例：DMXAPI.cn 人民币；DMXAPI.com 等美金线路有不同￥:$ 兑换比例）",
+      "modelCoverage": "聚合多厂商模型；人民币价目表含厂商原价与平台含税价等列（以 rmb.dmxapi.cn 与 models 页为准）",
+      "cnAccess": "主站 dmxapi.cn 面向国内；定价列表站点 rmb.dmxapi.cn（页面为动态加载，抓取可能不完整）",
+      "cnPayment": "人民币计价站点充值消费；文档与站点宣传含税价（如 6%）、企业折扣与发票（以商务政策为准）",
+      "rateLimit": "以账户类型与模型为准，见控制台或文档",
+      "bestFor": "需要人民币含税价目、或要在多条美金汇率线路间选型的大型与个人开发者"
+    },
+    "detail": {
+      "description": "DMXAPI 是国内多模态大模型 API 聚合平台，提供模型列表与文档站 doc.dmxapi.com。计价规则在《货币和 Tokens 消耗价格计算》中说明：除基础 Token 单价外，对缓存、音频、推理等场景可能按倍数调整有效计费 tokens。",
+      "billingRules": "扣费精度保留小数；用户折扣在每次请求上作用于计算结果。不同域名对应不同币种与汇率，勿混用密钥与端点。",
+      "networkAndPayment": "若 dmxapi.cn 首页偶发不可用，可优先使用文档站与 rmb.dmxapi.cn 获取价目；模型示例见 dmxapi.cn/models.html（若可访问）。",
+      "keyModels": [
+        {
+          "name": "gpt-4o（文档示例）",
+          "inputPer1M": "$2.5",
+          "outputPer1M": "$10",
+          "note": "文档计价示例；实际以折扣后扣费与价目表为准"
+        }
+      ],
+      "notes": "计价细则见 https://doc.dmxapi.com/jijia.html ；完整模型价目以 https://rmb.dmxapi.cn 登录后或导出为准。"
     }
   }
 ]
