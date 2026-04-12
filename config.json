@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 对比",
-    "updateDate": "更新日期2026.4.4 | 新增小米·MiMo & 腾讯云TokenPlan（非CodingPlan）",
+    "updateDate": "更新日期2026.4.12 | 更新智谱AI国际版价格",
     "subtitle": "九大平台 智谱AI、Kimi、MiniMax、小米·MiMo、字节·方舟、阿里·百炼、百度·千帆、腾讯云、京东云，全面对比",
     "models": "支持Qwen-3.6，Qwen-3.5，Doubao-Seed-2.0，MiniMax-M2.7，MiniMax-M2.5，GLM-5.1，GLM-5，MiMo-V2-Pro，Kimi-K2.5等模型",
     "github": {
@@ -39,7 +39,7 @@
       "name": "阿里·百炼",
       "rating": 3,
       "reasons": [
-        "独占Qwen3.6、Qwen3.5系列模型。+1",
+        "独占Qwen-3.6-Plus、Qwen-3.5系列模型。+1",
         "只有pro套餐，轻量使用性价比不高。-1"
       ]
     },
@@ -102,6 +102,18 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.4.12",
+      "items": [
+        "更新智谱AI国际版价格，智谱国际版大幅度涨价"
+      ]
+    },
+    {
+      "date": "2026.4.10",
+      "items": [
+        "添加Qwen-3.6-Plus"
+      ]
+    },
     {
       "date": "2026.4.4",
       "items": [

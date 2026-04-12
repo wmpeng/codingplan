@@ -67,9 +67,9 @@
     "action": "https://z.ai/subscribe?ic=YBEQOH949X",
     "currency": "$",
     "firstMonthPrice": "-",
-    "monthlyPrice": 10,
-    "quarterlyPrice": 27,
-    "yearlyPrice": 84,
+    "monthlyPrice": 18,
+    "quarterlyPrice": 48.6,
+    "yearlyPrice": 172.8,
     "models": [
       "GLM-5.1",
       "GLM-5-Turbo"
@@ -88,9 +88,9 @@
     "action": "https://z.ai/subscribe?ic=YBEQOH949X",
     "currency": "$",
     "firstMonthPrice": "-",
-    "monthlyPrice": 30,
-    "quarterlyPrice": 81,
-    "yearlyPrice": 252,
+    "monthlyPrice": 72,
+    "quarterlyPrice": 194.4,
+    "yearlyPrice": 691.2,
     "models": [
       "GLM-5.1",
       "GLM-5-Turbo",
@@ -110,9 +110,9 @@
     "action": "https://z.ai/subscribe?ic=YBEQOH949X",
     "currency": "$",
     "firstMonthPrice": "-",
-    "monthlyPrice": 80,
-    "quarterlyPrice": 216,
-    "yearlyPrice": 672,
+    "monthlyPrice": 160,
+    "quarterlyPrice": 432,
+    "yearlyPrice": 1536,
     "models": [
       "GLM-5.1",
       "GLM-5-Turbo",
