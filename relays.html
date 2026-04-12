@@ -44,7 +44,7 @@
         .matrix-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 700px;
+            min-width: 640px;
         }
 
         .matrix-table thead th {
@@ -65,28 +65,35 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            width: 130px;
-            min-width: 130px;
+            width: 168px;
+            min-width: 168px;
+            max-width: 220px;
             position: sticky;
             left: 0;
             z-index: 2;
             border-right: 1px solid var(--border-color);
+            vertical-align: bottom;
         }
 
-        .matrix-table thead th.relay-col-header {
-            text-align: center;
-            min-width: 200px;
+        .matrix-table thead th.matrix-dim-th {
+            text-align: left;
+            min-width: 140px;
+            max-width: 280px;
+            white-space: normal;
+            vertical-align: bottom;
+            line-height: 1.35;
         }
 
-        .relay-col-name {
+        .platform-name {
             display: block;
             font-size: 15px;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 6px;
+            line-height: 1.3;
         }
 
-        .relay-col-type {
+        .platform-type {
             display: inline-block;
             font-size: 11px;
             font-weight: 500;
@@ -110,24 +117,22 @@
             background: rgba(99, 102, 241, 0.03);
         }
 
-        .matrix-table tbody tr:hover .dim-label {
+        .matrix-table tbody tr:hover .platform-label {
             background: #e8eaf6;
         }
 
-        .dim-label {
+        .platform-label {
             padding: 14px 20px;
             font-size: 12px;
             font-weight: 600;
             color: var(--text-tertiary);
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
             background: var(--bg-tertiary);
             position: sticky;
             left: 0;
             z-index: 1;
             border-right: 1px solid var(--border-color);
             transition: background 0.15s;
-            white-space: nowrap;
+            vertical-align: top;
         }
 
         .matrix-table tbody td {
@@ -511,38 +516,42 @@
                 return;
             }
 
-            const theadCols = relays.map(r => `
-                <th class="relay-col-header">
-                    <span class="relay-col-name">${escapeHtml(r.name)}</span>
-                    <span class="relay-col-type">${escapeHtml(r.type)}</span>
-                </th>
-            `).join('');
+            function matrixCellTd(val, dimKey) {
+                if (Array.isArray(val)) {
+                    const tags = val.map(v => `<span class="protocol-tag">${escapeHtml(v)}</span>`).join('');
+                    return `<td>${tags}</td>`;
+                }
+                if (val === undefined || val === null || val === '') {
+                    return `<td><span class="price-dash">—</span></td>`;
+                }
+                const strVal = String(val);
+                const isCnAccess = dimKey === 'cnAccess';
+                const isCnPayment = dimKey === 'cnPayment';
+                let cellClass = '';
+                if (isCnPayment && (strVal.includes('不支持') || strVal.includes('限制较多'))) {
+                    cellClass = 'highlight-error';
+                } else if (isCnAccess && (strVal.includes('封锁') || strVal.includes('需代理') || strVal.includes('需海外'))) {
+                    cellClass = 'highlight-warn';
+                } else if (isCnAccess && strVal.includes('可直连')) {
+                    cellClass = 'highlight-success';
+                }
+                return `<td class="${cellClass}">${escapeHtml(strVal)}</td>`;
+            }
 
-            const tbody = dimensions.map(dim => {
-                const cells = relays.map(r => {
+            const theadDimCols = dimensions.map(dim =>
+                `<th class="matrix-dim-th">${escapeHtml(dim.label)}</th>`
+            ).join('');
+
+            const tbody = relays.map(r => {
+                const cells = dimensions.map(dim => {
                     const val = r.matrix ? r.matrix[dim.key] : undefined;
-                    if (Array.isArray(val)) {
-                        const tags = val.map(v => `<span class="protocol-tag">${escapeHtml(v)}</span>`).join('');
-                        return `<td>${tags}</td>`;
-                    }
-                    if (val === undefined || val === null || val === '') {
-                        return `<td><span class="price-dash">—</span></td>`;
-                    }
-                    const strVal = String(val);
-                    const isCnAccess = dim.key === 'cnAccess';
-                    const isCnPayment = dim.key === 'cnPayment';
-                    let cellClass = '';
-                    if (isCnPayment && (strVal.includes('不支持') || strVal.includes('限制较多'))) {
-                        cellClass = 'highlight-error';
-                    } else if (isCnAccess && (strVal.includes('封锁') || strVal.includes('需代理') || strVal.includes('需海外'))) {
-                        cellClass = 'highlight-warn';
-                    } else if (isCnAccess && strVal.includes('可直连')) {
-                        cellClass = 'highlight-success';
-                    }
-                    return `<td class="${cellClass}">${escapeHtml(strVal)}</td>`;
+                    return matrixCellTd(val, dim.key);
                 }).join('');
                 return `<tr>
-                    <td class="dim-label">${escapeHtml(dim.label)}</td>
+                    <td class="platform-label">
+                        <span class="platform-name">${escapeHtml(r.name)}</span>
+                        <span class="platform-type">${escapeHtml(r.type)}</span>
+                    </td>
                     ${cells}
                 </tr>`;
             }).join('');
@@ -551,8 +560,8 @@
                 <table class="matrix-table">
                     <thead>
                         <tr>
-                            <th>对比维度</th>
-                            ${theadCols}
+                            <th>平台</th>
+                            ${theadDimCols}
                         </tr>
                     </thead>
                     <tbody>${tbody}</tbody>
