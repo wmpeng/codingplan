@@ -122,6 +122,18 @@
             }
         }
 
+        /* 小屏 fixed 居中：keyframes 必须带 translate(-50%,-50%)，否则会覆盖居中并在动画结束后才归位 */
+        @keyframes dropdownFadeCenter {
+            from {
+                opacity: 0;
+                transform: translate(-50%, calc(-50% - 8px));
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
         .dropdown-menu.show {
             display: block;
         }
@@ -1018,6 +1030,7 @@
                 left: 50% !important;
                 top: 50% !important;
                 transform: translate(-50%, -50%);
+                animation: dropdownFadeCenter 0.2s ease-out;
                 min-width: 280px;
                 max-width: calc(100vw - 48px);
                 max-height: 80vh;
