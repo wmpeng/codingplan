@@ -97,6 +97,7 @@
         "新增「透明度」列（计价是否清晰、有无隐藏倍率/掺水等主观评价，见 matrix.transparency）",
         "综合评价与价格、透明度、模型覆盖、可用性、国内支付共六列采用「首行星级 + 次行文字」，键名由 matrixStarTextKeys 配置；星级分档以单元格淡底纹表示（1～2 红 / 3～4 无 / 5 绿），说明文字不再改色；星星不变色；不再使用 matrixHighlight",
         "「综合评价」与其它星文列一致，为 matrix.rating 的 { stars, text }；快速对比表为上行星、下行说明；详情卡片标题不再展示综合评价",
+        "快速对比表中综合评价列（维度 key 为 rating）使用 matrix-col-rating：表头紫系渐变与加粗、数据格左右强调线、星星略大于其它星文列",
         "新增 Poe（poe.com）对比条目；API 说明参考 creator.poe.com/docs/api，模型标价页为 poe.com/api/models，订阅与密钥见 poe.com/api_key",
         "新增 LLM Hub（llmhub.com.cn）对比条目；计价与支付说明参考 doc.llmhub.app 文档",
         "新增 PoloAPI、OfoxAI、N1N、DMXAPI 对比条目（依据各站公开文档与定价页整理）",

@@ -177,6 +177,30 @@
             text-align: center;
         }
 
+        /* 综合评价列（matrix-col-rating）：左右边线 + 表头强调 + 星星略大 */
+        .matrix-table thead th.matrix-col-rating {
+            font-weight: 700;
+            color: var(--accent-primary);
+            border-left: 2px solid var(--accent-primary);
+            border-right: 2px solid var(--accent-primary);
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.16) 0%, rgba(99, 102, 241, 0.06) 100%);
+            box-shadow: inset 0 -2px 0 rgba(99, 102, 241, 0.12);
+        }
+
+        .matrix-table tbody td.matrix-col-rating {
+            border-left: 2px solid rgba(99, 102, 241, 0.38);
+            border-right: 2px solid rgba(99, 102, 241, 0.38);
+        }
+
+        .matrix-table tbody tr:hover td.matrix-col-rating {
+            border-left-color: rgba(99, 102, 241, 0.5);
+            border-right-color: rgba(99, 102, 241, 0.5);
+        }
+
+        .matrix-col-rating.matrix-cell-star-text .matrix-cell-stars-line .star-rating {
+            font-size: 16px;
+        }
+
         .matrix-cell-star-text.matrix-star-tier-low {
             background-color: rgba(239, 68, 68, 0.07);
         }
@@ -211,7 +235,7 @@
             margin-bottom: 8px;
         }
 
-        .matrix-cell-star-text .matrix-cell-stars-line .star-rating {
+        .matrix-cell-star-text:not(.matrix-col-rating) .matrix-cell-stars-line .star-rating {
             font-size: 14px;
         }
 
@@ -656,6 +680,8 @@
             const tagKeys = new Set(pageConfig.matrixTagKeys || ['tags']);
 
             function matrixCellTd(val, dimKey) {
+                const ratingCol = dimKey === 'rating' ? ' matrix-col-rating' : '';
+
                 if (tagKeys.has(dimKey)) {
                     return matrixTagCellHtml(matrixTagPhrasesFromVal(val));
                 }
@@ -669,27 +695,29 @@
                         const starsHtml = renderStarRatingHtml(v.stars) || '<span class="price-dash">—</span>';
                         const t = v.text != null ? String(v.text) : '';
                         const textHtml = t ? escapeHtml(t) : '<span class="price-dash">—</span>';
-                        return `<td class="matrix-cell-star-text ${tier}"><div class="matrix-cell-stars-line">${starsHtml}</div><div class="matrix-cell-desc-line">${textHtml}</div></td>`;
+                        const cls = ['matrix-cell-star-text', tier || null, ratingCol.trim()].filter(Boolean).join(' ');
+                        return `<td class="${cls}"><div class="matrix-cell-stars-line">${starsHtml}</div><div class="matrix-cell-desc-line">${textHtml}</div></td>`;
                     }
                     if (typeof v === 'string' && v !== '') {
-                        return `<td class="matrix-cell-star-text"><div class="matrix-cell-stars-line"><span class="price-dash">—</span></div><div class="matrix-cell-desc-line">${escapeHtml(v)}</div></td>`;
+                        return `<td class="matrix-cell-star-text${ratingCol}"><div class="matrix-cell-stars-line"><span class="price-dash">—</span></div><div class="matrix-cell-desc-line">${escapeHtml(v)}</div></td>`;
                     }
-                    return `<td class="matrix-cell-star-text"><span class="price-dash">—</span></td>`;
+                    return `<td class="matrix-cell-star-text${ratingCol}"><span class="price-dash">—</span></td>`;
                 }
                 if (Array.isArray(val)) {
                     const tags = val.map(v => `<span class="protocol-tag">${escapeHtml(v)}</span>`).join('');
-                    return `<td>${tags}</td>`;
+                    return `<td${ratingCol ? ` class="${ratingCol.trim()}"` : ''}>${tags}</td>`;
                 }
                 if (val === undefined || val === null || val === '') {
-                    return `<td><span class="price-dash">—</span></td>`;
+                    return `<td${ratingCol ? ` class="${ratingCol.trim()}"` : ''}><span class="price-dash">—</span></td>`;
                 }
                 const strVal = String(val);
-                return `<td>${escapeHtml(strVal)}</td>`;
+                return `<td${ratingCol ? ` class="${ratingCol.trim()}"` : ''}>${escapeHtml(strVal)}</td>`;
             }
 
             const theadDimCols = dimensions.map(dim => {
                 const thExtra = starTextKeys.has(dim.key) ? ' matrix-th-star-text' : '';
-                return `<th class="matrix-dim-th${thExtra}">${escapeHtml(dim.label)}</th>`;
+                const ratingTh = dim.key === 'rating' ? ' matrix-col-rating' : '';
+                return `<th class="matrix-dim-th${thExtra}${ratingTh}">${escapeHtml(dim.label)}</th>`;
             }).join('');
 
             const tbody = relays.map(r => {
