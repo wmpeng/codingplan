@@ -172,26 +172,39 @@
         }
 
         /* 星文列说明文字按星级分档着色：1 红 / 2–3 黄 / 4–5 绿（星星保持默认金色，不变色） */
-        .matrix-table td.matrix-star-tier-1 .matrix-cell-desc-line {
+        .matrix-table thead th.matrix-th-star-text {
+            text-align: center;
+        }
+
+        .relay-rating-block {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            vertical-align: middle;
+            max-width: min(420px, 100%);
+        }
+
+        .relay-rating-block .matrix-cell-desc-line {
+            font-size: 12px;
+            line-height: 1.45;
+            text-align: center;
+        }
+
+        /* 表格星文格与卡片综合评价：说明行按档着色 */
+        .matrix-star-tier-1 .matrix-cell-desc-line,
+        .relay-rating-block.matrix-star-tier-1 .matrix-cell-desc-line {
             color: var(--accent-error);
         }
 
-        .matrix-table td.matrix-star-tier-2 .matrix-cell-desc-line {
+        .matrix-star-tier-2 .matrix-cell-desc-line,
+        .relay-rating-block.matrix-star-tier-2 .matrix-cell-desc-line {
             color: var(--accent-warning);
         }
 
-        .matrix-table td.matrix-star-tier-4 .matrix-cell-desc-line {
+        .matrix-star-tier-4 .matrix-cell-desc-line,
+        .relay-rating-block.matrix-star-tier-4 .matrix-cell-desc-line {
             color: var(--accent-success);
-        }
-
-        .matrix-table thead th.matrix-th-rating {
-            text-align: center;
-        }
-
-        .matrix-rating-cell {
-            white-space: nowrap;
-            vertical-align: middle;
-            text-align: center;
         }
 
         .star-rating {
@@ -618,27 +631,24 @@
             }
 
             const starTextKeys = new Set(pageConfig.matrixStarTextKeys || [
-                'billingModel', 'transparency', 'modelCoverage', 'cnAccess', 'cnPayment'
+                'rating', 'billingModel', 'transparency', 'modelCoverage', 'cnAccess', 'cnPayment'
             ]);
 
             function matrixCellTd(val, dimKey) {
-                if (dimKey === 'rating') {
-                    const stars = renderStarRatingHtml(val);
-                    if (!stars) {
-                        return `<td class="matrix-rating-cell"><span class="price-dash">—</span></td>`;
-                    }
-                    return `<td class="matrix-rating-cell">${stars}</td>`;
-                }
                 if (starTextKeys.has(dimKey)) {
-                    if (val && typeof val === 'object' && !Array.isArray(val) && ('stars' in val || 'text' in val)) {
-                        const tier = matrixStarTierClass(val.stars);
-                        const starsHtml = renderStarRatingHtml(val.stars) || '<span class="price-dash">—</span>';
-                        const t = val.text != null ? String(val.text) : '';
+                    let v = val;
+                    if (typeof v === 'number' && Number.isFinite(v)) {
+                        v = { stars: Math.round(v), text: '' };
+                    }
+                    if (v && typeof v === 'object' && !Array.isArray(v) && ('stars' in v || 'text' in v)) {
+                        const tier = matrixStarTierClass(v.stars);
+                        const starsHtml = renderStarRatingHtml(v.stars) || '<span class="price-dash">—</span>';
+                        const t = v.text != null ? String(v.text) : '';
                         const textHtml = t ? escapeHtml(t) : '<span class="price-dash">—</span>';
                         return `<td class="matrix-cell-star-text ${tier}"><div class="matrix-cell-stars-line">${starsHtml}</div><div class="matrix-cell-desc-line">${textHtml}</div></td>`;
                     }
-                    if (typeof val === 'string' && val !== '') {
-                        return `<td class="matrix-cell-star-text"><div class="matrix-cell-stars-line"><span class="price-dash">—</span></div><div class="matrix-cell-desc-line">${escapeHtml(val)}</div></td>`;
+                    if (typeof v === 'string' && v !== '') {
+                        return `<td class="matrix-cell-star-text"><div class="matrix-cell-stars-line"><span class="price-dash">—</span></div><div class="matrix-cell-desc-line">${escapeHtml(v)}</div></td>`;
                     }
                     return `<td class="matrix-cell-star-text"><span class="price-dash">—</span></td>`;
                 }
@@ -654,7 +664,7 @@
             }
 
             const theadDimCols = dimensions.map(dim => {
-                const thExtra = dim.key === 'rating' ? ' matrix-th-rating' : '';
+                const thExtra = starTextKeys.has(dim.key) ? ' matrix-th-star-text' : '';
                 return `<th class="matrix-dim-th${thExtra}">${escapeHtml(dim.label)}</th>`;
             }).join('');
 
@@ -685,6 +695,26 @@
             `;
         }
 
+        /** 详情卡片标题区：综合评价 = 上行星 + 下行说明（与矩阵星文列一致） */
+        function renderRelayRatingBlock(matrix) {
+            const raw = matrix && matrix.rating;
+            if (raw === undefined || raw === null) return '';
+            let starsVal;
+            let textVal = '';
+            if (typeof raw === 'number' && Number.isFinite(raw)) {
+                starsVal = raw;
+            } else if (raw && typeof raw === 'object' && !Array.isArray(raw)) {
+                starsVal = raw.stars;
+                textVal = raw.text != null ? String(raw.text) : '';
+            } else {
+                return '';
+            }
+            const starsHtml = renderStarRatingHtml(starsVal) || '<span class="price-dash">—</span>';
+            const tier = matrixStarTierClass(starsVal);
+            const textHtml = textVal ? escapeHtml(textVal) : '<span class="price-dash">—</span>';
+            return `<div class="relay-rating-block ${tier}"><span class="relay-star-inline">${starsHtml}</span><div class="matrix-cell-desc-line">${textHtml}</div></div>`;
+        }
+
         // ── 渲染平台详情卡片 ──
         function renderRelayCards(relays) {
             const container = document.getElementById('relayCards');
@@ -695,9 +725,7 @@
 
             container.innerHTML = relays.map(relay => {
                 const detail = relay.detail || {};
-                const ratingStars = relay.matrix && relay.matrix.rating != null
-                    ? renderStarRatingHtml(relay.matrix.rating)
-                    : '';
+                const ratingBlock = renderRelayRatingBlock(relay.matrix);
 
                 const modelsRows = (detail.keyModels || []).map(m => {
                     const inputCell = m.inputPer1M === '$0.00'
@@ -745,7 +773,7 @@
                         <div class="relay-card-header">
                             <div class="relay-card-title">
                                 <span class="relay-name-lg">${escapeHtml(relay.name)}</span>
-                                ${ratingStars ? `<span class="relay-star-inline">${ratingStars}</span>` : ''}
+                                ${ratingBlock}
                                 <span class="type-badge-lg">${escapeHtml(relay.type)}</span>
                             </div>
                             <div class="relay-card-meta">
