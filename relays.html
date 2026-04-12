@@ -43,9 +43,14 @@
         }
 
         .matrix-table {
+            --matrix-platform-w: 168px;
+            /* 与下方 th/td 的 min-width 一致；用于在 fixed 布局下真正保证「每列至少这么宽」（表宽不足时出现横向滚动） */
+            --matrix-dim-min: 140px;
             width: 100%;
             border-collapse: collapse;
-            min-width: 640px;
+            /* 平台列 + 每维一列至少 --matrix-dim-min；避免 100% 被窄容器压扁后列宽小于最小值 */
+            min-width: max(640px, calc(var(--matrix-platform-w) + var(--matrix-dim-min) * var(--matrix-dim-count, 1)));
+            table-layout: fixed;
         }
 
         .matrix-table thead th {
@@ -66,8 +71,8 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            width: 168px;
-            min-width: 168px;
+            width: var(--matrix-platform-w);
+            min-width: var(--matrix-platform-w);
             max-width: 220px;
             position: sticky;
             left: 0;
@@ -78,11 +83,18 @@
 
         .matrix-table thead th.matrix-dim-th {
             text-align: left;
-            min-width: 140px;
-            max-width: 280px;
+            width: calc((100% - var(--matrix-platform-w)) / var(--matrix-dim-count, 1));
+            min-width: var(--matrix-dim-min);
             white-space: normal;
             vertical-align: bottom;
             line-height: 1.35;
+        }
+
+        .matrix-table tbody td:not(:first-child) {
+            width: calc((100% - var(--matrix-platform-w)) / var(--matrix-dim-count, 1));
+            min-width: var(--matrix-dim-min);
+            overflow-wrap: break-word;
+            word-break: normal;
         }
 
         .platform-name {
@@ -160,24 +172,17 @@
             line-height: 1.6;
         }
 
-        /* 星文列按星级：整格淡底纹 + 左侧色条；说明文字保持默认色（星星仍为金色） */
+        /* 星文列按星级：1～2 整格淡红底、3～4 无底色、5 整格淡绿底；说明文字默认色；星星金色 */
         .matrix-table thead th.matrix-th-star-text {
             text-align: center;
         }
 
-        .matrix-cell-star-text.matrix-star-tier-1 {
+        .matrix-cell-star-text.matrix-star-tier-low {
             background-color: rgba(239, 68, 68, 0.07);
-            box-shadow: inset 3px 0 0 rgba(220, 38, 38, 0.45);
         }
 
-        .matrix-cell-star-text.matrix-star-tier-2 {
-            background-color: rgba(234, 179, 8, 0.09);
-            box-shadow: inset 3px 0 0 rgba(202, 138, 4, 0.5);
-        }
-
-        .matrix-cell-star-text.matrix-star-tier-4 {
+        .matrix-cell-star-text.matrix-star-tier-top {
             background-color: rgba(34, 197, 94, 0.08);
-            box-shadow: inset 3px 0 0 rgba(22, 163, 74, 0.45);
         }
 
         .star-rating {
@@ -224,7 +229,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 6px 8px;
-            max-width: 320px;
+            max-width: 100%;
         }
 
         .matrix-tag {
@@ -606,13 +611,13 @@
             return `<span class="star-rating" role="img" aria-label="${n} 星，满分 5 星"><span class="stars-on" aria-hidden="true">${on}</span><span class="stars-off" aria-hidden="true">${off}</span></span>`;
         }
 
-        /** 根据星级返回 td/容器 class：1→红，2–3→黄，4–5→绿 */
+        /** 星文格底纹：1–2 星偏红，3–4 星无底色，5 星偏绿 */
         function matrixStarTierClass(raw) {
             const s = Math.round(Number(raw));
             if (!Number.isFinite(s) || s < 1 || s > 5) return '';
-            if (s === 1) return 'matrix-star-tier-1';
-            if (s <= 3) return 'matrix-star-tier-2';
-            return 'matrix-star-tier-4';
+            if (s <= 2) return 'matrix-star-tier-low';
+            if (s === 5) return 'matrix-star-tier-top';
+            return '';
         }
 
         /** 标签列：字符串数组，或兼容旧数据用顿号/逗号分隔的一段文字 */
@@ -701,7 +706,7 @@
             }).join('');
 
             wrapper.innerHTML = `
-                <table class="matrix-table">
+                <table class="matrix-table" style="--matrix-dim-count: ${dimensions.length}">
                     <thead>
                         <tr>
                             <th>平台</th>
