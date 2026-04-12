@@ -171,22 +171,7 @@
             line-height: 1.6;
         }
 
-        /* 矩阵星级着色：1 红 / 2–3 黄 / 4–5 绿（类名 tier-2 表示 2–3 档，tier-4 表示 4–5 档） */
-        .matrix-table td.matrix-star-tier-1 .star-rating .stars-on,
-        .relay-star-inline.matrix-star-tier-1 .star-rating .stars-on {
-            color: var(--accent-error);
-        }
-
-        .matrix-table td.matrix-star-tier-2 .star-rating .stars-on,
-        .relay-star-inline.matrix-star-tier-2 .star-rating .stars-on {
-            color: var(--accent-warning);
-        }
-
-        .matrix-table td.matrix-star-tier-4 .star-rating .stars-on,
-        .relay-star-inline.matrix-star-tier-4 .star-rating .stars-on {
-            color: var(--accent-success);
-        }
-
+        /* 星文列说明文字按星级分档着色：1 红 / 2–3 黄 / 4–5 绿（星星保持默认金色，不变色） */
         .matrix-table td.matrix-star-tier-1 .matrix-cell-desc-line {
             color: var(--accent-error);
         }
@@ -638,12 +623,11 @@
 
             function matrixCellTd(val, dimKey) {
                 if (dimKey === 'rating') {
-                    const tier = matrixStarTierClass(val);
                     const stars = renderStarRatingHtml(val);
                     if (!stars) {
                         return `<td class="matrix-rating-cell"><span class="price-dash">—</span></td>`;
                     }
-                    return `<td class="matrix-rating-cell ${tier}">${stars}</td>`;
+                    return `<td class="matrix-rating-cell">${stars}</td>`;
                 }
                 if (starTextKeys.has(dimKey)) {
                     if (val && typeof val === 'object' && !Array.isArray(val) && ('stars' in val || 'text' in val)) {
@@ -711,9 +695,6 @@
 
             container.innerHTML = relays.map(relay => {
                 const detail = relay.detail || {};
-                const ratingTier = relay.matrix && relay.matrix.rating != null
-                    ? matrixStarTierClass(relay.matrix.rating)
-                    : '';
                 const ratingStars = relay.matrix && relay.matrix.rating != null
                     ? renderStarRatingHtml(relay.matrix.rating)
                     : '';
@@ -764,7 +745,7 @@
                         <div class="relay-card-header">
                             <div class="relay-card-title">
                                 <span class="relay-name-lg">${escapeHtml(relay.name)}</span>
-                                ${ratingStars ? `<span class="relay-star-inline ${ratingTier}">${ratingStars}</span>` : ''}
+                                ${ratingStars ? `<span class="relay-star-inline">${ratingStars}</span>` : ''}
                                 <span class="type-badge-lg">${escapeHtml(relay.type)}</span>
                             </div>
                             <div class="relay-card-meta">
