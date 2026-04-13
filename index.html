@@ -918,6 +918,29 @@
             color: var(--text-primary);
         }
 
+        .recommendation-name-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .recommendation-name-link:hover {
+            color: var(--accent-primary);
+        }
+
+        .recommendation-name-link .link-icon {
+            width: 14px;
+            height: 14px;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+
+        .recommendation-name-link:hover .link-icon {
+            opacity: 1;
+        }
+
         .recommendation-rating {
             color: #f59e0b;
             font-size: 16px;
@@ -2819,10 +2842,16 @@
                     return `<li>${formattedReason}</li>`;
                 }).join('');
 
+                // 根据 rec.name 在 allPlans 中查找第一个匹配的 vendor，获取链接
+                const matchedPlan = allPlans.find(p => p.vendor === rec.name);
+                const nameHtml = matchedPlan
+                    ? `<a class="recommendation-name-link" href="${escapeHtml(matchedPlan.action)}" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">${escapeHtml(rec.name)}</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>`
+                    : `<span class="recommendation-name">${escapeHtml(rec.name)}</span>`;
+
                 return `
                     <div class="recommendation-card">
                         <div class="recommendation-header">
-                            <span class="recommendation-name">${escapeHtml(rec.name)}</span>
+                            ${nameHtml}
                             <span class="recommendation-rating">${stars}</span>
                         </div>
                         <ul class="recommendation-reasons">
@@ -2904,6 +2933,11 @@
                 initPriceSliders();
                 initRequestSliders();
                 applyFilters();
+
+                // 数据加载后重新渲染推荐卡片（此时 allPlans 已有数据，可匹配链接）
+                if (appConfig.recommendations && appConfig.recommendations.length > 0) {
+                    renderRecommendations(appConfig.recommendations);
+                }
 
                 console.log(`成功加载 ${allPlans.length} 条套餐数据`);
             } catch (error) {
