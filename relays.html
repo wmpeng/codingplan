@@ -56,7 +56,7 @@
         .matrix-table thead th {
             background: var(--bg-tertiary);
             padding: 16px 20px;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 600;
             color: var(--text-secondary);
             text-align: left;
@@ -66,11 +66,6 @@
 
         .matrix-table thead th:first-child {
             background: var(--bg-tertiary);
-            color: var(--text-tertiary);
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             width: var(--matrix-platform-w);
             min-width: var(--matrix-platform-w);
             max-width: 220px;
@@ -353,18 +348,13 @@
         .relay-card-header {
             padding: 24px 28px 20px;
             border-bottom: 1px solid var(--border-light);
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap;
             background: linear-gradient(to right, rgba(99, 102, 241, 0.03), transparent);
         }
 
         .relay-card-title {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             flex-wrap: wrap;
         }
 
@@ -375,32 +365,13 @@
         }
 
         .relay-card-meta {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 16px;
             flex-wrap: wrap;
         }
 
         .pricing-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--accent-primary);
-            text-decoration: none;
-            padding: 6px 14px;
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: var(--radius-md);
-            transition: all 0.2s;
-        }
-
-        .pricing-link:hover {
-            background: rgba(99, 102, 241, 0.08);
-            border-color: var(--accent-primary);
-        }
-
-        .home-link {
             display: inline-flex;
             align-items: center;
             gap: 4px;
@@ -414,9 +385,28 @@
             transition: all 0.2s;
         }
 
-        .home-link:hover {
+        .pricing-link:hover {
             background: var(--bg-tertiary);
             border-color: var(--text-secondary);
+        }
+
+        .home-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent-primary);
+            text-decoration: none;
+            padding: 6px 14px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: var(--radius-md);
+            transition: all 0.2s;
+        }
+
+        .home-link:hover {
+            background: rgba(99, 102, 241, 0.08);
+            border-color: var(--accent-primary);
         }
 
         .updated-at {
@@ -560,7 +550,6 @@
             .header { margin-bottom: 24px; padding: 24px 0; }
             .header h1 { font-size: 24px; }
             .header .subtitle { font-size: 14px; }
-            .relay-card-header { flex-direction: column; }
             .relay-card-body { padding: 0 16px 20px; }
             .relay-card-header { padding: 16px 16px 14px; }
             .models-mini-table { display: block; overflow-x: auto; }
@@ -830,11 +819,11 @@
                         <div class="relay-card-header">
                             <div class="relay-card-title">
                                 <span class="relay-name-lg">${escapeHtml(relay.name)}</span>
-                            </div>
-                            <div class="relay-card-meta">
-                                ${relay.homeUrl ? `<a href="${escapeHtml(relay.homeUrl)}" target="_blank" class="home-link">官网 →</a>` : ''}
-                                <a href="${escapeHtml(relay.pricingUrl)}" target="_blank" class="pricing-link">查看定价 →</a>
-                                <span class="updated-at">数据更新：${escapeHtml(relay.updatedAt)}</span>
+                                <span class="relay-card-meta">
+                                    ${relay.homeUrl ? `<a href="${escapeHtml(relay.homeUrl)}" target="_blank" class="home-link">官网 →</a>` : ''}
+                                    <a href="${escapeHtml(relay.pricingUrl)}" target="_blank" class="pricing-link">查看定价 →</a>
+                                    <span class="updated-at">数据更新：${escapeHtml(relay.updatedAt)}</span>
+                                </span>
                             </div>
                         </div>
                         <div class="relay-card-body">
