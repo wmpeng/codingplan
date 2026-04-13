@@ -111,6 +111,65 @@
             border-color: var(--accent-primary);
         }
 
+        .matrix-multi {
+            position: relative;
+        }
+
+        .matrix-multi-btn {
+            width: 100%;
+            height: 34px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-size: 12px;
+            padding: 0 10px;
+            text-align: left;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .matrix-multi.open .matrix-multi-btn {
+            border-color: var(--accent-primary);
+            outline: 2px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .matrix-multi-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            width: 100%;
+            max-height: 220px;
+            overflow: auto;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-secondary);
+            box-shadow: var(--shadow-md);
+            z-index: 15;
+            padding: 6px 0;
+        }
+
+        .matrix-multi.open .matrix-multi-menu {
+            display: block;
+        }
+
+        .matrix-multi-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .matrix-multi-option:hover {
+            background: var(--bg-tertiary);
+        }
+
         .matrix-filter-result {
             font-size: 12px;
             color: var(--text-tertiary);
@@ -767,8 +826,9 @@
 
         let relaysData = [];
         let pageConfig = {};
-        let matrixFilterState = { platform: '', byKey: {} };
+        let matrixFilterState = { platform: [], byKey: {} };
         let currentMatrixDimensions = [];
+        let matrixFilterGlobalEventsBound = false;
 
         function getMatrixStarTextKeys() {
             return new Set(pageConfig.matrixStarTextKeys || [
@@ -795,6 +855,29 @@
             return String(val);
         }
 
+        function getMultiSelectButtonText(selectedValues, allValues) {
+            const selected = Array.isArray(selectedValues) ? selectedValues : [];
+            if (!selected.length) return '全部';
+            if (selected.length === 1) return selected[0];
+            if (selected.length === allValues.length) return '全部';
+            return `已选 ${selected.length} 项`;
+        }
+
+        function renderMultiSelectControl(id, options, selectedValues, filterType, filterKey = '') {
+            const selected = Array.isArray(selectedValues) ? selectedValues : [];
+            const labelText = getMultiSelectButtonText(selected, options);
+            const optionsHtml = options.map(opt => {
+                const checked = selected.includes(opt) ? ' checked' : '';
+                return `<label class="matrix-multi-option"><input type="checkbox" data-matrix-filter-type="${filterType}"${filterKey ? ` data-matrix-filter-key="${escapeHtml(filterKey)}"` : ''} value="${escapeHtml(opt)}"${checked}>${escapeHtml(opt)}</label>`;
+            }).join('');
+            return `
+                <div class="matrix-multi" data-matrix-multi-id="${escapeHtml(id)}">
+                    <button type="button" class="matrix-multi-btn" data-matrix-multi-btn>${escapeHtml(labelText)}</button>
+                    <div class="matrix-multi-menu">${optionsHtml || '<div class="matrix-multi-option">暂无选项</div>'}</div>
+                </div>
+            `;
+        }
+
         function renderMatrixFilterBar(dimensions) {
             const bar = document.getElementById('matrixFilterBar');
             if (!bar) return;
@@ -804,15 +887,19 @@
             }
 
             const starTextKeys = getMatrixStarTextKeys();
+            const tagKeys = new Set(pageConfig.matrixTagKeys || ['tags']);
             const currentKeys = new Set(dimensions.map(d => d.key));
             const prevKeys = new Set(Object.keys(matrixFilterState.byKey || {}));
             const sameKeys = currentKeys.size === prevKeys.size && [...currentKeys].every(k => prevKeys.has(k));
             if (!sameKeys) {
                 matrixFilterState = {
-                    platform: '',
-                    byKey: Object.fromEntries(dimensions.map(d => [d.key, '']))
+                    platform: [],
+                    byKey: Object.fromEntries(dimensions.map(d => [d.key, tagKeys.has(d.key) ? [] : '']))
                 };
             }
+
+            const platformOptions = relaysData.map(r => String(r.name || '').trim()).filter(Boolean);
+            const uniquePlatformOptions = Array.from(new Set(platformOptions));
 
             const dimControls = dimensions.map(dim => {
                 const key = escapeHtml(dim.key);
@@ -822,14 +909,23 @@
                     const selected = (n) => String(val) === String(n) ? ' selected' : '';
                     return `<div class="matrix-filter-item"><label for="matrixFilter_${key}">${label}</label><select id="matrixFilter_${key}" data-matrix-filter-type="star" data-matrix-filter-key="${key}"><option value="">全部</option><option value="5"${selected(5)}>≥5 星</option><option value="4"${selected(4)}>≥4 星</option><option value="3"${selected(3)}>≥3 星</option><option value="2"${selected(2)}>≥2 星</option><option value="1"${selected(1)}>≥1 星</option></select></div>`;
                 }
+                if (tagKeys.has(dim.key)) {
+                    const tagSet = new Set();
+                    relaysData.forEach(relay => {
+                        const tags = matrixTagPhrasesFromVal(relay.matrix ? relay.matrix[dim.key] : undefined);
+                        tags.forEach(t => tagSet.add(t));
+                    });
+                    const tagOptions = Array.from(tagSet);
+                    return `<div class="matrix-filter-item"><label>${label}</label>${renderMultiSelectControl(`tag_${dim.key}`, tagOptions, val, 'tag-multi', dim.key)}</div>`;
+                }
                 return `<div class="matrix-filter-item"><label for="matrixFilter_${key}">${label}</label><input id="matrixFilter_${key}" data-matrix-filter-type="text" data-matrix-filter-key="${key}" type="text" value="${escapeHtml(val)}" placeholder="关键词"></div>`;
             }).join('');
 
             bar.innerHTML = `
                 <div class="matrix-filter-grid">
                     <div class="matrix-filter-item">
-                        <label for="matrixFilter_platform">平台</label>
-                        <input id="matrixFilter_platform" data-matrix-filter-type="platform" type="text" value="${escapeHtml(matrixFilterState.platform || '')}" placeholder="平台名关键词">
+                        <label>平台</label>
+                        ${renderMultiSelectControl('platform', uniquePlatformOptions, matrixFilterState.platform, 'platform-multi')}
                     </div>
                     ${dimControls}
                 </div>
@@ -839,16 +935,56 @@
                 </div>
             `;
 
-            const platformInput = bar.querySelector('#matrixFilter_platform');
-            if (platformInput) {
-                platformInput.addEventListener('input', () => {
-                    matrixFilterState.platform = platformInput.value || '';
+            bar.onclick = (ev) => {
+                const btn = ev.target.closest('[data-matrix-multi-btn]');
+                if (!btn) return;
+                const box = btn.closest('.matrix-multi');
+                if (!box) return;
+                const willOpen = !box.classList.contains('open');
+                bar.querySelectorAll('.matrix-multi.open').forEach(el => el.classList.remove('open'));
+                if (willOpen) box.classList.add('open');
+            };
+
+            if (!matrixFilterGlobalEventsBound) {
+                document.addEventListener('click', (ev) => {
+                    const currentBar = document.getElementById('matrixFilterBar');
+                    if (!currentBar || currentBar.contains(ev.target)) return;
+                    currentBar.querySelectorAll('.matrix-multi.open').forEach(el => el.classList.remove('open'));
+                });
+                matrixFilterGlobalEventsBound = true;
+            }
+
+            bar.querySelectorAll('input[data-matrix-filter-type="platform-multi"]').forEach(el => {
+                el.addEventListener('change', () => {
+                    const selected = [...bar.querySelectorAll('input[data-matrix-filter-type="platform-multi"]:checked')].map(x => x.value);
+                    matrixFilterState.platform = selected;
+                    const box = el.closest('.matrix-multi');
+                    if (box) {
+                        const btn = box.querySelector('[data-matrix-multi-btn]');
+                        if (btn) btn.textContent = getMultiSelectButtonText(selected, uniquePlatformOptions);
+                    }
                     applyMatrixFilters();
                 });
-            }
+            });
+
+            bar.querySelectorAll('input[data-matrix-filter-type="tag-multi"]').forEach(el => {
+                el.addEventListener('change', () => {
+                    const key = el.getAttribute('data-matrix-filter-key');
+                    const selected = [...bar.querySelectorAll(`input[data-matrix-filter-type="tag-multi"][data-matrix-filter-key="${key}"]:checked`)].map(x => x.value);
+                    matrixFilterState.byKey[key] = selected;
+                    const box = el.closest('.matrix-multi');
+                    if (box) {
+                        const allOptions = [...box.querySelectorAll('input[data-matrix-filter-type="tag-multi"]')].map(x => x.value);
+                        const btn = box.querySelector('[data-matrix-multi-btn]');
+                        if (btn) btn.textContent = getMultiSelectButtonText(selected, allOptions);
+                    }
+                    applyMatrixFilters();
+                });
+            });
 
             bar.querySelectorAll('[data-matrix-filter-key]').forEach(el => {
                 const type = el.getAttribute('data-matrix-filter-type');
+                if (type === 'tag-multi') return;
                 const eventName = type === 'star' ? 'change' : 'input';
                 el.addEventListener(eventName, () => {
                     const key = el.getAttribute('data-matrix-filter-key');
@@ -860,9 +996,10 @@
             const resetBtn = bar.querySelector('#matrixFilterResetBtn');
             if (resetBtn) {
                 resetBtn.addEventListener('click', () => {
+                    const tagKeysLocal = new Set(pageConfig.matrixTagKeys || ['tags']);
                     matrixFilterState = {
-                        platform: '',
-                        byKey: Object.fromEntries(dimensions.map(d => [d.key, '']))
+                        platform: [],
+                        byKey: Object.fromEntries(dimensions.map(d => [d.key, tagKeysLocal.has(d.key) ? [] : '']))
                     };
                     renderMatrixFilterBar(dimensions);
                     applyMatrixFilters();
@@ -873,28 +1010,35 @@
         function applyMatrixFilters() {
             const dimensions = currentMatrixDimensions || [];
             const starTextKeys = getMatrixStarTextKeys();
+            const tagKeys = new Set(pageConfig.matrixTagKeys || ['tags']);
 
-            const platformKeyword = (matrixFilterState.platform || '').trim().toLowerCase();
+            const selectedPlatforms = Array.isArray(matrixFilterState.platform) ? matrixFilterState.platform : [];
             const filtered = relaysData.filter(relay => {
-                if (platformKeyword && !String(relay.name || '').toLowerCase().includes(platformKeyword)) {
+                if (selectedPlatforms.length && !selectedPlatforms.includes(String(relay.name || ''))) {
                     return false;
                 }
 
                 for (const dim of dimensions) {
                     const rawFilter = matrixFilterState.byKey[dim.key];
-                    const filterVal = String(rawFilter || '').trim();
-                    if (!filterVal) continue;
+                    const filterVal = Array.isArray(rawFilter) ? rawFilter : String(rawFilter || '').trim();
+                    if (!filterVal || (Array.isArray(filterVal) && !filterVal.length)) continue;
 
                     const cellVal = relay.matrix ? relay.matrix[dim.key] : undefined;
                     if (starTextKeys.has(dim.key)) {
                         const stars = getValueStars(cellVal);
-                        const minStars = Number(filterVal);
+                        const minStars = Number(String(filterVal));
                         if (!Number.isFinite(minStars) || stars == null || stars < minStars) return false;
                         continue;
                     }
 
+                    if (tagKeys.has(dim.key)) {
+                        const cellTags = matrixTagPhrasesFromVal(cellVal);
+                        if (!Array.isArray(filterVal) || !filterVal.some(tag => cellTags.includes(tag))) return false;
+                        continue;
+                    }
+
                     const text = getValueTextForFilter(cellVal).toLowerCase();
-                    if (!text.includes(filterVal.toLowerCase())) return false;
+                    if (!text.includes(String(filterVal).toLowerCase())) return false;
                 }
                 return true;
             });
