@@ -855,6 +855,11 @@
             return String(val);
         }
 
+        function escapeHtmlPreserveBreaks(raw) {
+            const normalized = String(raw).replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+            return escapeHtml(normalized).replace(/\n/g, '<br>');
+        }
+
         function getMultiSelectButtonText(selectedValues, allValues) {
             const selected = Array.isArray(selectedValues) ? selectedValues : [];
             if (!selected.length) return '全部';
@@ -1119,12 +1124,12 @@
                         const tier = matrixStarTierClass(v.stars);
                         const starsHtml = renderStarRatingHtml(v.stars) || '<span class="price-dash">—</span>';
                         const t = v.text != null ? String(v.text) : '';
-                        const textHtml = t ? escapeHtml(t) : '<span class="price-dash">—</span>';
+                        const textHtml = t ? escapeHtmlPreserveBreaks(t) : '<span class="price-dash">—</span>';
                         const cls = ['matrix-cell-star-text', tier || null, ratingCol.trim()].filter(Boolean).join(' ');
                         return `<td class="${cls}"><div class="matrix-cell-stars-line">${starsHtml}</div><div class="matrix-cell-desc-line">${textHtml}</div></td>`;
                     }
                     if (typeof v === 'string' && v !== '') {
-                        return `<td class="matrix-cell-star-text${ratingCol}"><div class="matrix-cell-stars-line"><span class="price-dash">—</span></div><div class="matrix-cell-desc-line">${escapeHtml(v)}</div></td>`;
+                        return `<td class="matrix-cell-star-text${ratingCol}"><div class="matrix-cell-stars-line"><span class="price-dash">—</span></div><div class="matrix-cell-desc-line">${escapeHtmlPreserveBreaks(v)}</div></td>`;
                     }
                     return `<td class="matrix-cell-star-text${ratingCol}"><span class="price-dash">—</span></td>`;
                 }
@@ -1136,7 +1141,7 @@
                     return `<td${ratingCol ? ` class="${ratingCol.trim()}"` : ''}><span class="price-dash">—</span></td>`;
                 }
                 const strVal = String(val);
-                return `<td${ratingCol ? ` class="${ratingCol.trim()}"` : ''}>${escapeHtml(strVal)}</td>`;
+                return `<td${ratingCol ? ` class="${ratingCol.trim()}"` : ''}>${escapeHtmlPreserveBreaks(strVal)}</td>`;
             }
 
             const PLATFORM_W = 140;
