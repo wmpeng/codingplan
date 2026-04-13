@@ -43,13 +43,8 @@
         }
 
         .matrix-table {
-            --matrix-platform-w: 140px;
-            /* 与下方 th/td 的 min-width 一致；用于在 fixed 布局下真正保证「每列至少这么宽」（表宽不足时出现横向滚动） */
-            --matrix-dim-min: 140px;
             width: 100%;
             border-collapse: collapse;
-            /* 平台列 + 每维一列至少 --matrix-dim-min；避免 100% 被窄容器压扁后列宽小于最小值 */
-            min-width: max(640px, calc(var(--matrix-platform-w) + var(--matrix-dim-min) * var(--matrix-dim-count, 1)));
             table-layout: fixed;
         }
 
@@ -66,9 +61,6 @@
 
         .matrix-table thead th:first-child {
             background: var(--bg-tertiary);
-            width: var(--matrix-platform-w);
-            min-width: var(--matrix-platform-w);
-            max-width: 220px;
             position: sticky;
             left: 0;
             z-index: 2;
@@ -78,16 +70,12 @@
 
         .matrix-table thead th.matrix-dim-th {
             text-align: left;
-            width: calc((100% - var(--matrix-platform-w)) / var(--matrix-dim-count, 1));
-            min-width: var(--matrix-dim-min);
             white-space: normal;
             vertical-align: bottom;
             line-height: 1.35;
         }
 
         .matrix-table tbody td:not(:first-child) {
-            width: calc((100% - var(--matrix-platform-w)) / var(--matrix-dim-count, 1));
-            min-width: var(--matrix-dim-min);
             overflow-wrap: break-word;
             word-break: normal;
         }
@@ -699,7 +687,9 @@
                 const ratingCol = dimKey === 'rating' ? ' matrix-col-rating' : '';
 
                 if (tagKeys.has(dimKey)) {
-                    return matrixTagCellHtml(matrixTagPhrasesFromVal(val));
+                    const tagCell = matrixTagCellHtml(matrixTagPhrasesFromVal(val));
+                    if (ratingCol) return tagCell.replace('class="matrix-cell-tags"', 'class="matrix-cell-tags matrix-col-rating"');
+                    return tagCell;
                 }
                 if (starTextKeys.has(dimKey)) {
                     let v = val;
@@ -730,10 +720,19 @@
                 return `<td${ratingCol ? ` class="${ratingCol.trim()}"` : ''}>${escapeHtml(strVal)}</td>`;
             }
 
+            const PLATFORM_W = 140;
+            const DIM_MIN = 140;
+            const RATING_WEIGHT = 1.5;
+            const totalWeight = dimensions.reduce((s, d) => s + (d.key === 'rating' ? RATING_WEIGHT : 1), 0);
+            const minTableW = Math.max(640, PLATFORM_W + DIM_MIN * totalWeight);
+            const platformPct = (PLATFORM_W / minTableW * 100).toFixed(4);
+
             const theadDimCols = dimensions.map(dim => {
                 const thExtra = starTextKeys.has(dim.key) ? ' matrix-th-star-text' : '';
                 const ratingTh = dim.key === 'rating' ? ' matrix-col-rating' : '';
-                return `<th class="matrix-dim-th${thExtra}${ratingTh}">${escapeHtml(dim.label)}</th>`;
+                const w = dim.key === 'rating' ? RATING_WEIGHT : 1;
+                const dimPct = ((minTableW - PLATFORM_W) * w / totalWeight / minTableW * 100).toFixed(4);
+                return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${dimPct}%">${escapeHtml(dim.label)}</th>`;
             }).join('');
 
             const tbody = relays.map(r => {
@@ -750,10 +749,10 @@
             }).join('');
 
             wrapper.innerHTML = `
-                <table class="matrix-table" style="--matrix-dim-count: ${dimensions.length}">
+                <table class="matrix-table" style="min-width:${minTableW}px">
                     <thead>
                         <tr>
-                            <th>平台</th>
+                            <th style="width:${platformPct}%">平台</th>
                             ${theadDimCols}
                         </tr>
                     </thead>
