@@ -62,8 +62,8 @@
     "note": "• 20倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
   {
-    "vendor": "智谱AI",
-    "plan": "国际版Lite",
+    "vendor": "智谱国际版",
+    "plan": "Lite",
     "action": "https://z.ai/subscribe?ic=YBEQOH949X",
     "currency": "$",
     "firstMonthPrice": "-",
@@ -83,8 +83,8 @@
     "note": "• 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
   {
-    "vendor": "智谱AI",
-    "plan": "国际版Pro",
+    "vendor": "智谱国际版",
+    "plan": "Pro",
     "action": "https://z.ai/subscribe?ic=YBEQOH949X",
     "currency": "$",
     "firstMonthPrice": "-",
@@ -105,8 +105,8 @@
     "note": "• 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
   {
-    "vendor": "智谱AI",
-    "plan": "国际版Max",
+    "vendor": "智谱国际版",
+    "plan": "Max",
     "action": "https://z.ai/subscribe?ic=YBEQOH949X",
     "currency": "$",
     "firstMonthPrice": "-",
