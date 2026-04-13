@@ -8,27 +8,27 @@
     "matrix": {
       "rating": {
         "stars": 4,
-        "text": "国际聚合、模型与定价\n页透明；国内支付偏弱、访问偶有不稳，仍适合希望一站式对接多厂商的技术团队"
+        "text": "• 是最早、最大的大模型聚合平台之一\n• 稳定性好模型全，唯一的缺点是价格贵\n• 5000万用户，每月70T(70万亿)token"
       },
       "billingModel": {
-        "stars": 5,
-        "text": "按 Token 消耗按量计费，各模型独立定价；部分模型有免费额度"
+        "stars": 2,
+        "text": "• 部分模型前期免费，如小米Mimo和Qwen3.6plus\n• 部分模型永久免费，如Step 3.5 Flash\n• 但是普遍定价并不便宜，和官网定价基本相同"
       },
       "transparency": {
         "stars": 5,
-        "text": "官网 /models 按模型列出美元单价，按 Token 扣费；厂商与路由可选时价差可见，整体偏透明、少见「模糊倍率」话术"
+        "text": "• 平台正规，大多模型有官网厂商\n• 模型按美元/Token扣费，厂商与路由可指定，整体透明、无掺水、无模糊倍率"
       },
       "modelCoverage": {
         "stars": 5,
-        "text": "官网宣称 300+ 模型、60+ 供应商；覆盖 OpenAI、Anthropic、Google、开源 Llama/Mistral/Qwen 等（以 /models 为准）"
+        "text": "• 300+ 模型、60+ 厂商\n• 覆盖模型极广，几乎所有模型都能找到"
       },
       "cnAccess": {
-        "stars": 3,
-        "text": "国内通常可直连，偶发不稳定；无官方国内镜像"
+        "stars": 4,
+        "text": "• 服务本身稳定性强，主流模型有多个提供商切换\n• 网络方面，国内通常可直连，偶发不稳定"
       },
       "cnPayment": {
         "stars": 2,
-        "text": "支持 Visa/Mastercard；支持 USDC 加密货币；不支持微信/支付宝"
+        "text": "• 支持海外 Visa/Mastercard\n• 支持 USDC 加密货币\n• 不支持微信/支付宝"
       },
       "tags": [
         "多模型比价",
