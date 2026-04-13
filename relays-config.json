@@ -19,7 +19,8 @@
     },
     {
       "key": "transparency",
-      "label": "透明度"
+      "label": "透明度",
+      "helpText": "透明度：主要看价格规则是否公开、是否存在隐藏倍率/掺水、账单是否可追溯；星级越高说明越清晰。"
     },
     {
       "key": "modelCoverage",

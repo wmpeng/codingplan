@@ -160,6 +160,69 @@
             text-align: center;
         }
 
+        .matrix-th-help {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .matrix-help-trigger {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            line-height: inherit;
+            padding: 0;
+            margin: 0;
+            cursor: help;
+            border-bottom: 1px dashed currentColor;
+            border-bottom-color: currentColor;
+        }
+
+        .matrix-help-trigger:focus-visible {
+            outline: 2px solid rgba(99, 102, 241, 0.45);
+            outline-offset: 3px;
+            border-bottom-color: currentColor;
+            border-radius: 2px;
+        }
+
+        .matrix-help-trigger:hover,
+        .matrix-help-trigger:focus-visible {
+            color: inherit;
+            border-bottom-color: currentColor;
+        }
+
+        .matrix-help-bubble {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(300px, 70vw);
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            box-shadow: var(--shadow-md);
+            font-size: 12px;
+            line-height: 1.55;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-align: left;
+            white-space: normal;
+            z-index: 20;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.16s ease;
+        }
+
+        .matrix-th-help:hover .matrix-help-bubble,
+        .matrix-th-help:focus-within .matrix-help-bubble {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
         /* 综合评价列：整列底 + 右侧投影 + 表头强调（不 sticky） */
         .matrix-table thead th.matrix-col-rating {
             font-weight: 800;
@@ -732,6 +795,10 @@
                 const ratingTh = dim.key === 'rating' ? ' matrix-col-rating' : '';
                 const w = dim.key === 'rating' ? RATING_WEIGHT : 1;
                 const dimPct = ((minTableW - PLATFORM_W) * w / totalWeight / minTableW * 100).toFixed(4);
+                const helpText = typeof dim.helpText === 'string' ? dim.helpText.trim() : '';
+                if (helpText) {
+                    return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${dimPct}%"><span class="matrix-th-help"><button type="button" class="matrix-help-trigger" aria-label="${escapeHtml(dim.label)}说明">${escapeHtml(dim.label)}</button><span class="matrix-help-bubble" role="tooltip">${escapeHtml(helpText)}</span></span></th>`;
+                }
                 return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${dimPct}%">${escapeHtml(dim.label)}</th>`;
             }).join('');
 
