@@ -820,7 +820,7 @@
                 const val = matrixFilterState.byKey[dim.key] || '';
                 if (starTextKeys.has(dim.key)) {
                     const selected = (n) => String(val) === String(n) ? ' selected' : '';
-                    return `<div class="matrix-filter-item"><label for="matrixFilter_${key}">${label}</label><select id="matrixFilter_${key}" data-matrix-filter-type="star" data-matrix-filter-key="${key}"><option value="">全部</option><option value="5"${selected(5)}>5 星</option><option value="4"${selected(4)}>4 星</option><option value="3"${selected(3)}>3 星</option><option value="2"${selected(2)}>2 星</option><option value="1"${selected(1)}>1 星</option></select></div>`;
+                    return `<div class="matrix-filter-item"><label for="matrixFilter_${key}">${label}</label><select id="matrixFilter_${key}" data-matrix-filter-type="star" data-matrix-filter-key="${key}"><option value="">全部</option><option value="5"${selected(5)}>≥5 星</option><option value="4"${selected(4)}>≥4 星</option><option value="3"${selected(3)}>≥3 星</option><option value="2"${selected(2)}>≥2 星</option><option value="1"${selected(1)}>≥1 星</option></select></div>`;
                 }
                 return `<div class="matrix-filter-item"><label for="matrixFilter_${key}">${label}</label><input id="matrixFilter_${key}" data-matrix-filter-type="text" data-matrix-filter-key="${key}" type="text" value="${escapeHtml(val)}" placeholder="关键词"></div>`;
             }).join('');
@@ -888,7 +888,8 @@
                     const cellVal = relay.matrix ? relay.matrix[dim.key] : undefined;
                     if (starTextKeys.has(dim.key)) {
                         const stars = getValueStars(cellVal);
-                        if (stars == null || String(stars) !== filterVal) return false;
+                        const minStars = Number(filterVal);
+                        if (!Number.isFinite(minStars) || stars == null || stars < minStars) return false;
                         continue;
                     }
 
@@ -902,7 +903,7 @@
 
             const resultEl = document.getElementById('matrixFilterResult');
             if (resultEl) {
-                resultEl.textContent = `共 ${relaysData.length} 条，当前显示 ${filtered.length} 条`;
+                resultEl.textContent = `${filtered.length}条/共${relaysData.length}条`;
             }
         }
 
