@@ -6,9 +6,17 @@
     "pricingUrl": "https://openrouter.ai/models",
     "updatedAt": "2026.04.12",
     "matrix": {
+      "rating": {
+        "stars": 4,
+        "text": "国际聚合、模型与定价页透明；国内支付偏弱、访问偶有不稳，仍适合希望一站式对接多厂商的技术团队"
+      },
       "billingModel": {
         "stars": 5,
         "text": "按 Token 消耗按量计费，各模型独立定价；部分模型有免费额度"
+      },
+      "transparency": {
+        "stars": 5,
+        "text": "官网 /models 按模型列出美元单价，按 Token 扣费；厂商与路由可选时价差可见，整体偏透明、少见「模糊倍率」话术"
       },
       "modelCoverage": {
         "stars": 5,
@@ -21,14 +29,6 @@
       "cnPayment": {
         "stars": 2,
         "text": "支持 Visa/Mastercard；支持 USDC 加密货币；不支持微信/支付宝"
-      },
-      "rating": {
-        "stars": 4,
-        "text": "国际聚合、模型与定价页透明；国内支付偏弱、访问偶有不稳，仍适合希望一站式对接多厂商的技术团队"
-      },
-      "transparency": {
-        "stars": 5,
-        "text": "官网 /models 按模型列出美元单价，按 Token 扣费；厂商与路由可选时价差可见，整体偏透明、少见「模糊倍率」话术"
       },
       "tags": [
         "多模型比价",
@@ -76,9 +76,17 @@
     "pricingUrl": "https://siliconflow.cn/pricing",
     "updatedAt": "2026.04.12",
     "matrix": {
+      "rating": {
+        "stars": 5,
+        "text": "国内主体、人民币与常见本土支付顺畅，模型与价格可查，产品线全，综合省心度高"
+      },
       "billingModel": {
         "stars": 5,
         "text": "大模型 API 按量（元/M tokens 等）；另有模型微调训练/推理、批量处理、预留实例与私有化方案（价格页分栏说明）"
+      },
+      "transparency": {
+        "stars": 5,
+        "text": "模型中心与价格页以人民币/百万 Token 等列示，条目多、可查；微调/批量/算力另表说明，需注意不同产品线计价维度不同"
       },
       "modelCoverage": {
         "stars": 5,
@@ -91,14 +99,6 @@
       "cnPayment": {
         "stars": 5,
         "text": "个人在线充值目前支持微信支付（需先完成实名认证）；对公等其它方式以官网说明为准"
-      },
-      "rating": {
-        "stars": 5,
-        "text": "国内主体、人民币与常见本土支付顺畅，模型与价格可查，产品线全，综合省心度高"
-      },
-      "transparency": {
-        "stars": 5,
-        "text": "模型中心与价格页以人民币/百万 Token 等列示，条目多、可查；微调/批量/算力另表说明，需注意不同产品线计价维度不同"
       },
       "tags": [
         "人民币计价",
@@ -153,9 +153,17 @@
     "pricingUrl": "https://poloapi.top/pricing",
     "updatedAt": "2026.04.12",
     "matrix": {
+      "rating": {
+        "stars": 4,
+        "text": "国内充值与超大规模模型表突出；分组与倍率带来理解成本，适合肯花时间对表的开发者"
+      },
       "billingModel": {
         "stars": 4,
         "text": "按量计费，账户充值后以余额抵扣；模型广场/定价页以美元每百万 Token 等标价并结合倍率展示，人民币充值后按规则换算消耗"
+      },
+      "transparency": {
+        "stars": 3,
+        "text": "定价页以美元/百万 Token 为主并配合倍率/分组，实际成本需结合分组与汇率理解；对新手不够直观，存在「看懂门槛」"
       },
       "modelCoverage": {
         "stars": 5,
@@ -168,14 +176,6 @@
       "cnPayment": {
         "stars": 5,
         "text": "控制台「钱包管理」人民币充值；常见支持微信、支付宝等本土方式（以支付页实际为准）"
-      },
-      "rating": {
-        "stars": 4,
-        "text": "国内充值与超大规模模型表突出；分组与倍率带来理解成本，适合肯花时间对表的开发者"
-      },
-      "transparency": {
-        "stars": 3,
-        "text": "定价页以美元/百万 Token 为主并配合倍率/分组，实际成本需结合分组与汇率理解；对新手不够直观，存在「看懂门槛」"
       },
       "tags": [
         "国内人民币",
@@ -206,9 +206,17 @@
     "pricingUrl": "https://ofox.ai/pricing",
     "updatedAt": "2026.04.12",
     "matrix": {
+      "rating": {
+        "stars": 4,
+        "text": "多协议与国内支付、China Zone 画像清晰；折扣类表述建议对照实际账单验证"
+      },
       "billingModel": {
         "stars": 4,
         "text": "按量付费、无月费；官网宣传旗舰模型约八折、开源模型最高更高折扣（以 pricing / models 实时为准）"
+      },
+      "transparency": {
+        "stars": 4,
+        "text": "官网提供 pricing/models 入口；折扣与套餐规则需对照多页，整体尚可核对，但营销表述与实扣需自行对照账单"
       },
       "modelCoverage": {
         "stars": 4,
@@ -221,14 +229,6 @@
       "cnPayment": {
         "stars": 5,
         "text": "China Zone 页面写明支持支付宝、微信支付；面向国内合规与协作集成（飞书/钉钉/企微等以文档为准）"
-      },
-      "rating": {
-        "stars": 4,
-        "text": "多协议与国内支付、China Zone 画像清晰；折扣类表述建议对照实际账单验证"
-      },
-      "transparency": {
-        "stars": 4,
-        "text": "官网提供 pricing/models 入口；折扣与套餐规则需对照多页，整体尚可核对，但营销表述与实扣需自行对照账单"
       },
       "tags": [
         "多协议",
@@ -259,9 +259,17 @@
     "pricingUrl": "https://api.n1n.ai/pricing",
     "updatedAt": "2026.04.12",
     "matrix": {
+      "rating": {
+        "stars": 4,
+        "text": "倍率相对官方价可追溯；分组多、同模型价因渠道而异，适合愿意研究分组与渠道的进阶用户"
+      },
       "billingModel": {
         "stars": 4,
         "text": "按量计费；文档说明以「官方费率」为基准乘以各模型/分组「倍率」（如 1 表示与原价等价，大于 1 为加价）；不同分组对应不同上游渠道与价格"
+      },
+      "transparency": {
+        "stars": 4,
+        "text": "文档强调相对「官方价」的倍率，逻辑可核对；多分组、多渠道下同一模型价不同，透明但需花时间选对分组"
       },
       "modelCoverage": {
         "stars": 4,
@@ -274,14 +282,6 @@
       "cnPayment": {
         "stars": 4,
         "text": "快速开始文档说明人民币充值兑换账户额度；新用户常有小额体验金（以活动页为准）"
-      },
-      "rating": {
-        "stars": 4,
-        "text": "倍率相对官方价可追溯；分组多、同模型价因渠道而异，适合愿意研究分组与渠道的进阶用户"
-      },
-      "transparency": {
-        "stars": 4,
-        "text": "文档强调相对「官方价」的倍率，逻辑可核对；多分组、多渠道下同一模型价不同，透明但需花时间选对分组"
       },
       "tags": [
         "倍率计价",
@@ -311,9 +311,17 @@
     "pricingUrl": "https://rmb.dmxapi.cn",
     "updatedAt": "2026.04.12",
     "matrix": {
+      "rating": {
+        "stars": 4,
+        "text": "人民币含税与多币种线路覆盖广；多站点与折算规则并存，信息可推敲但上手门槛略高"
+      },
       "billingModel": {
         "stars": 3,
         "text": "支持按 Token 与按次计费；费用 = 模型价 × 用户折扣；人民币主站与美元子域采用不同汇率与账户体系（文档示例：DMXAPI.cn 人民币；DMXAPI.com 等美金线路有不同￥:$ 兑换比例）"
+      },
+      "transparency": {
+        "stars": 4,
+        "text": "文档给出扣费公式与折扣系数；多域名/多币种汇率并存，价目表需登录或导出，整体可推敲但结构偏复杂"
       },
       "modelCoverage": {
         "stars": 4,
@@ -326,14 +334,6 @@
       "cnPayment": {
         "stars": 4,
         "text": "人民币计价站点充值消费；文档与站点宣传含税价（如 6%）、企业折扣与发票（以商务政策为准）"
-      },
-      "rating": {
-        "stars": 4,
-        "text": "人民币含税与多币种线路覆盖广；多站点与折算规则并存，信息可推敲但上手门槛略高"
-      },
-      "transparency": {
-        "stars": 4,
-        "text": "文档给出扣费公式与折扣系数；多域名/多币种汇率并存，价目表需登录或导出，整体可推敲但结构偏复杂"
       },
       "tags": [
         "人民币含税",
@@ -363,9 +363,17 @@
     "pricingUrl": "https://doc.llmhub.app/guide.html",
     "updatedAt": "2026.04.12",
     "matrix": {
+      "rating": {
+        "stars": 4,
+        "text": "OpenAI 兼容与国内支付便利；多域名与充值流程略复杂，适合接受一站式聚合的开发者"
+      },
       "billingModel": {
         "stars": 4,
         "text": "按 Token 按量计费；文档说明模型单价与 OpenAI / Claude 官方公开价对齐；充值可能收取一定比例手续费（文档曾示例约 5%，含支付通道成本，以当前充值页为准）；额度一般不设过期时间（以账户规则为准）"
+      },
+      "transparency": {
+        "stars": 4,
+        "text": "文档写明与 OpenAI/Claude 官方单价对齐并单独说明充值手续费（如文档所述比例）；兑换码与多域名流程略增理解成本"
       },
       "modelCoverage": {
         "stars": 4,
@@ -378,14 +386,6 @@
       "cnPayment": {
         "stars": 5,
         "text": "公开文档说明支持微信支付、支付宝与信用卡等充值路径；亦可能提供兑换码等充值方式（以控制台与文档当期说明为准）"
-      },
-      "rating": {
-        "stars": 4,
-        "text": "OpenAI 兼容与国内支付便利；多域名与充值流程略复杂，适合接受一站式聚合的开发者"
-      },
-      "transparency": {
-        "stars": 4,
-        "text": "文档写明与 OpenAI/Claude 官方单价对齐并单独说明充值手续费（如文档所述比例）；兑换码与多域名流程略增理解成本"
       },
       "tags": [
         "OpenAI 兼容",
@@ -428,9 +428,17 @@
     "pricingUrl": "https://poe.com/api/models",
     "updatedAt": "2026.04.12",
     "matrix": {
+      "rating": {
+        "stars": 4,
+        "text": "美元标价与模型面宽、对账相对清晰；国内网络与本土支付不占优，更适合已有美元结算习惯的开发者"
+      },
       "billingModel": {
         "stars": 4,
         "text": "按 Token 等透明美元计价；需 Poe 订阅（官方曾介绍起价约 $4.99/月）并可另购额度；各模型 input/output 美元单价以 https://poe.com/api/models 列表为准（页面为动态加载，需登录或浏览器环境）"
+      },
+      "transparency": {
+        "stars": 5,
+        "text": "官方推透明美元标价，模型页可查 input/output；订阅+加购额度+收据（receipts）便于对账，相对少「黑箱倍率」"
       },
       "modelCoverage": {
         "stars": 5,
@@ -443,14 +451,6 @@
       "cnPayment": {
         "stars": 2,
         "text": "以美元订阅与信用卡等国际化支付为主；一般不支持微信、支付宝等人民币本土支付（以结账页实际为准）"
-      },
-      "rating": {
-        "stars": 4,
-        "text": "美元标价与模型面宽、对账相对清晰；国内网络与本土支付不占优，更适合已有美元结算习惯的开发者"
-      },
-      "transparency": {
-        "stars": 5,
-        "text": "官方推透明美元标价，模型页可查 input/output；订阅+加购额度+收据（receipts）便于对账，相对少「黑箱倍率」"
       },
       "tags": [
         "美元结算",
