@@ -957,12 +957,17 @@
 
             bar.onclick = (ev) => {
                 const btn = ev.target.closest('[data-matrix-multi-btn]');
-                if (!btn) return;
-                const box = btn.closest('.matrix-multi');
-                if (!box) return;
-                const willOpen = !box.classList.contains('open');
-                bar.querySelectorAll('.matrix-multi.open').forEach(el => el.classList.remove('open'));
-                if (willOpen) box.classList.add('open');
+                if (btn) {
+                    const box = btn.closest('.matrix-multi');
+                    if (!box) return;
+                    const willOpen = !box.classList.contains('open');
+                    bar.querySelectorAll('.matrix-multi.open').forEach(el => el.classList.remove('open'));
+                    if (willOpen) box.classList.add('open');
+                    return;
+                }
+                if (!ev.target.closest('.matrix-multi')) {
+                    bar.querySelectorAll('.matrix-multi.open').forEach(el => el.classList.remove('open'));
+                }
             };
 
             if (!matrixFilterGlobalEventsBound) {
