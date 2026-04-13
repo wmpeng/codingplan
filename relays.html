@@ -42,6 +42,80 @@
             background: var(--bg-secondary);
         }
 
+        .matrix-filter-bar {
+            margin-bottom: 14px;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            background: var(--bg-secondary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .matrix-filter-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 8px;
+            gap: 12px;
+        }
+
+        .matrix-filter-reset {
+            appearance: none;
+            border: 1px solid var(--border-color);
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border-radius: var(--radius-md);
+            padding: 6px 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .matrix-filter-reset:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.06);
+        }
+
+        .matrix-filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+            gap: 8px 10px;
+        }
+
+        .matrix-filter-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .matrix-filter-item label {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            font-weight: 600;
+        }
+
+        .matrix-filter-item input,
+        .matrix-filter-item select {
+            height: 34px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-size: 12px;
+            padding: 0 10px;
+        }
+
+        .matrix-filter-item input:focus,
+        .matrix-filter-item select:focus {
+            outline: 2px solid rgba(99, 102, 241, 0.2);
+            border-color: var(--accent-primary);
+        }
+
+        .matrix-filter-result {
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+
         .matrix-table {
             width: 100%;
             border-collapse: collapse;
@@ -662,6 +736,7 @@
         <!-- 快速对比矩阵 -->
         <div class="matrix-section">
             <h2 class="section-title">快速对比</h2>
+            <div class="matrix-filter-bar" id="matrixFilterBar"></div>
             <div class="matrix-wrapper" id="matrixWrapper">
                 <div class="loading-state">加载中...</div>
             </div>
@@ -692,6 +767,144 @@
 
         let relaysData = [];
         let pageConfig = {};
+        let matrixFilterState = { platform: '', byKey: {} };
+        let currentMatrixDimensions = [];
+
+        function getMatrixStarTextKeys() {
+            return new Set(pageConfig.matrixStarTextKeys || [
+                'rating', 'billingModel', 'transparency', 'modelCoverage', 'cnAccess', 'cnPayment'
+            ]);
+        }
+
+        function getValueStars(val) {
+            if (typeof val === 'number' && Number.isFinite(val)) return Math.round(val);
+            if (val && typeof val === 'object' && !Array.isArray(val) && Number.isFinite(Number(val.stars))) {
+                return Math.round(Number(val.stars));
+            }
+            return null;
+        }
+
+        function getValueTextForFilter(val) {
+            if (val === undefined || val === null) return '';
+            if (Array.isArray(val)) return val.map(v => String(v)).join(' ');
+            if (typeof val === 'object') {
+                const stars = getValueStars(val);
+                const textPart = typeof val.text === 'string' ? val.text : '';
+                return `${stars != null ? String(stars) : ''} ${textPart}`.trim();
+            }
+            return String(val);
+        }
+
+        function renderMatrixFilterBar(dimensions) {
+            const bar = document.getElementById('matrixFilterBar');
+            if (!bar) return;
+            if (!dimensions.length) {
+                bar.innerHTML = '';
+                return;
+            }
+
+            const starTextKeys = getMatrixStarTextKeys();
+            const currentKeys = new Set(dimensions.map(d => d.key));
+            const prevKeys = new Set(Object.keys(matrixFilterState.byKey || {}));
+            const sameKeys = currentKeys.size === prevKeys.size && [...currentKeys].every(k => prevKeys.has(k));
+            if (!sameKeys) {
+                matrixFilterState = {
+                    platform: '',
+                    byKey: Object.fromEntries(dimensions.map(d => [d.key, '']))
+                };
+            }
+
+            const dimControls = dimensions.map(dim => {
+                const key = escapeHtml(dim.key);
+                const label = escapeHtml(dim.label);
+                const val = matrixFilterState.byKey[dim.key] || '';
+                if (starTextKeys.has(dim.key)) {
+                    const selected = (n) => String(val) === String(n) ? ' selected' : '';
+                    return `<div class="matrix-filter-item"><label for="matrixFilter_${key}">${label}</label><select id="matrixFilter_${key}" data-matrix-filter-type="star" data-matrix-filter-key="${key}"><option value="">全部</option><option value="5"${selected(5)}>5 星</option><option value="4"${selected(4)}>4 星</option><option value="3"${selected(3)}>3 星</option><option value="2"${selected(2)}>2 星</option><option value="1"${selected(1)}>1 星</option></select></div>`;
+                }
+                return `<div class="matrix-filter-item"><label for="matrixFilter_${key}">${label}</label><input id="matrixFilter_${key}" data-matrix-filter-type="text" data-matrix-filter-key="${key}" type="text" value="${escapeHtml(val)}" placeholder="关键词"></div>`;
+            }).join('');
+
+            bar.innerHTML = `
+                <div class="matrix-filter-grid">
+                    <div class="matrix-filter-item">
+                        <label for="matrixFilter_platform">平台</label>
+                        <input id="matrixFilter_platform" data-matrix-filter-type="platform" type="text" value="${escapeHtml(matrixFilterState.platform || '')}" placeholder="平台名关键词">
+                    </div>
+                    ${dimControls}
+                </div>
+                <div class="matrix-filter-head">
+                    <button type="button" class="matrix-filter-reset" id="matrixFilterResetBtn">重置筛选</button>
+                    <div class="matrix-filter-result" id="matrixFilterResult"></div>
+                </div>
+            `;
+
+            const platformInput = bar.querySelector('#matrixFilter_platform');
+            if (platformInput) {
+                platformInput.addEventListener('input', () => {
+                    matrixFilterState.platform = platformInput.value || '';
+                    applyMatrixFilters();
+                });
+            }
+
+            bar.querySelectorAll('[data-matrix-filter-key]').forEach(el => {
+                const type = el.getAttribute('data-matrix-filter-type');
+                const eventName = type === 'star' ? 'change' : 'input';
+                el.addEventListener(eventName, () => {
+                    const key = el.getAttribute('data-matrix-filter-key');
+                    matrixFilterState.byKey[key] = el.value || '';
+                    applyMatrixFilters();
+                });
+            });
+
+            const resetBtn = bar.querySelector('#matrixFilterResetBtn');
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    matrixFilterState = {
+                        platform: '',
+                        byKey: Object.fromEntries(dimensions.map(d => [d.key, '']))
+                    };
+                    renderMatrixFilterBar(dimensions);
+                    applyMatrixFilters();
+                });
+            }
+        }
+
+        function applyMatrixFilters() {
+            const dimensions = currentMatrixDimensions || [];
+            const starTextKeys = getMatrixStarTextKeys();
+
+            const platformKeyword = (matrixFilterState.platform || '').trim().toLowerCase();
+            const filtered = relaysData.filter(relay => {
+                if (platformKeyword && !String(relay.name || '').toLowerCase().includes(platformKeyword)) {
+                    return false;
+                }
+
+                for (const dim of dimensions) {
+                    const rawFilter = matrixFilterState.byKey[dim.key];
+                    const filterVal = String(rawFilter || '').trim();
+                    if (!filterVal) continue;
+
+                    const cellVal = relay.matrix ? relay.matrix[dim.key] : undefined;
+                    if (starTextKeys.has(dim.key)) {
+                        const stars = getValueStars(cellVal);
+                        if (stars == null || String(stars) !== filterVal) return false;
+                        continue;
+                    }
+
+                    const text = getValueTextForFilter(cellVal).toLowerCase();
+                    if (!text.includes(filterVal.toLowerCase())) return false;
+                }
+                return true;
+            });
+
+            renderMatrix(filtered, dimensions);
+
+            const resultEl = document.getElementById('matrixFilterResult');
+            if (resultEl) {
+                resultEl.textContent = `共 ${relaysData.length} 条，当前显示 ${filtered.length} 条`;
+            }
+        }
 
         /** 1–5 星 HTML；非法或缺省返回空字符串 */
         function renderStarRatingHtml(raw) {
@@ -741,9 +954,7 @@
                 return;
             }
 
-            const starTextKeys = new Set(pageConfig.matrixStarTextKeys || [
-                'rating', 'billingModel', 'transparency', 'modelCoverage', 'cnAccess', 'cnPayment'
-            ]);
+            const starTextKeys = getMatrixStarTextKeys();
             const tagKeys = new Set(pageConfig.matrixTagKeys || ['tags']);
 
             function matrixCellTd(val, dimKey) {
@@ -982,7 +1193,9 @@
                 relaysData = await res.json();
 
                 const dimensions = (pageConfig.matrixDimensions) || [];
-                renderMatrix(relaysData, dimensions);
+                currentMatrixDimensions = dimensions;
+                renderMatrixFilterBar(dimensions);
+                applyMatrixFilters();
                 renderRelayCards(relaysData);
 
                 console.log(`成功加载 ${relaysData.length} 个中转站数据`);
