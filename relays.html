@@ -1164,9 +1164,9 @@
                 return `<td${ratingCol ? ` class="${ratingCol.trim()}"` : ''}>${escapeHtmlPreserveBreaks(strVal)}</td>`;
             }
 
-            const PLATFORM_W = 150;
-            const DIM_MIN = 150;
-            const RATING_WEIGHT = 2;
+            const PLATFORM_W = 200;
+            const DIM_MIN = 200;
+            const RATING_WEIGHT = 1.5;
             const totalWeight = dimensions.reduce((s, d) => s + (d.key === 'rating' ? RATING_WEIGHT : 1), 0);
             const minTableW = Math.max(640, PLATFORM_W + DIM_MIN * totalWeight);
             const platformPct = (PLATFORM_W / minTableW * 100).toFixed(4);
