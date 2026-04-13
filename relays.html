@@ -1164,23 +1164,27 @@
                 return `<td${ratingCol ? ` class="${ratingCol.trim()}"` : ''}>${escapeHtmlPreserveBreaks(strVal)}</td>`;
             }
 
-            const PLATFORM_W = 200;
+            const PLATFORM_W = 140;
+            const TAG_W = 140;
             const DIM_MIN = 200;
             const RATING_WEIGHT = 1.5;
-            const totalWeight = dimensions.reduce((s, d) => s + (d.key === 'rating' ? RATING_WEIGHT : 1), 0);
-            const minTableW = Math.max(640, PLATFORM_W + DIM_MIN * totalWeight);
-            const platformPct = (PLATFORM_W / minTableW * 100).toFixed(4);
+            const flexibleDimensions = dimensions.filter(d => d.key !== 'tags');
+            const totalWeight = flexibleDimensions.reduce((s, d) => s + (d.key === 'rating' ? RATING_WEIGHT : 1), 0);
+            const minTableW = Math.max(640, PLATFORM_W + TAG_W + DIM_MIN * totalWeight);
 
             const theadDimCols = dimensions.map(dim => {
                 const thExtra = starTextKeys.has(dim.key) ? ' matrix-th-star-text' : '';
                 const ratingTh = dim.key === 'rating' ? ' matrix-col-rating' : '';
+                if (dim.key === 'tags') {
+                    return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${TAG_W}px;min-width:${TAG_W}px;max-width:${TAG_W}px">${escapeHtml(dim.label)}</th>`;
+                }
                 const w = dim.key === 'rating' ? RATING_WEIGHT : 1;
-                const dimPct = ((minTableW - PLATFORM_W) * w / totalWeight / minTableW * 100).toFixed(4);
+                const dimPx = Math.round(DIM_MIN * w);
                 const helpText = typeof dim.helpText === 'string' ? dim.helpText.trim() : '';
                 if (helpText) {
-                    return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${dimPct}%"><span class="matrix-th-help"><button type="button" class="matrix-help-trigger" aria-label="${escapeHtml(dim.label)}说明">${escapeHtml(dim.label)}</button><span class="matrix-help-bubble" role="tooltip">${escapeHtml(helpText)}</span></span></th>`;
+                    return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${dimPx}px;min-width:${dimPx}px;max-width:${dimPx}px"><span class="matrix-th-help"><button type="button" class="matrix-help-trigger" aria-label="${escapeHtml(dim.label)}说明">${escapeHtml(dim.label)}</button><span class="matrix-help-bubble" role="tooltip">${escapeHtml(helpText)}</span></span></th>`;
                 }
-                return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${dimPct}%">${escapeHtml(dim.label)}</th>`;
+                return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${dimPx}px;min-width:${dimPx}px;max-width:${dimPx}px">${escapeHtml(dim.label)}</th>`;
             }).join('');
 
             const tbody = relays.map(r => {
@@ -1201,10 +1205,10 @@
             }).join('');
 
             wrapper.innerHTML = `
-                <table class="matrix-table" style="min-width:${minTableW}px">
+                <table class="matrix-table" style="width:${minTableW}px;min-width:${minTableW}px">
                     <thead>
                         <tr>
-                            <th style="width:${platformPct}%">平台</th>
+                            <th style="width:${PLATFORM_W}px;min-width:${PLATFORM_W}px;max-width:${PLATFORM_W}px">平台</th>
                             ${theadDimCols}
                         </tr>
                     </thead>
