@@ -73,6 +73,7 @@
     "columns": {
       "vendor": "平台",
       "plan": "套餐",
+      "type": "类型",
       "action": "跳转链接",
       "firstMonthPrice": "首月价格",
       "monthlyPrice": "连续包月",
@@ -88,6 +89,7 @@
   },
   "filters": {
     "vendor": "平台",
+    "type": "类型",
     "model": "模型",
     "firstMonthPrice": "首月价格",
     "monthlyPrice": "包月价格",

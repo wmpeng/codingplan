@@ -2,6 +2,7 @@
   {
     "vendor": "智谱AI",
     "plan": "Lite",
+    "type": "Coding Plan",
     "action": "https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z",
     "firstMonthPrice": "-",
     "monthlyPrice": 49,
@@ -22,6 +23,7 @@
   {
     "vendor": "智谱AI",
     "plan": "Pro",
+    "type": "Coding Plan",
     "action": "https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z",
     "firstMonthPrice": "-",
     "monthlyPrice": 149,
@@ -43,6 +45,7 @@
   {
     "vendor": "智谱AI",
     "plan": "Max",
+    "type": "Coding Plan",
     "action": "https://www.bigmodel.cn/glm-coding?ic=QHIO7TWK3Z",
     "firstMonthPrice": "-",
     "monthlyPrice": 469,
@@ -64,6 +67,7 @@
   {
     "vendor": "智谱国际版",
     "plan": "Lite",
+    "type": "Coding Plan",
     "action": "https://z.ai/subscribe?ic=YBEQOH949X",
     "currency": "$",
     "firstMonthPrice": "-",
@@ -85,6 +89,7 @@
   {
     "vendor": "智谱国际版",
     "plan": "Pro",
+    "type": "Coding Plan",
     "action": "https://z.ai/subscribe?ic=YBEQOH949X",
     "currency": "$",
     "firstMonthPrice": "-",
@@ -107,6 +112,7 @@
   {
     "vendor": "智谱国际版",
     "plan": "Max",
+    "type": "Coding Plan",
     "action": "https://z.ai/subscribe?ic=YBEQOH949X",
     "currency": "$",
     "firstMonthPrice": "-",
@@ -129,6 +135,7 @@
   {
     "vendor": "MiniMax",
     "plan": "Starter",
+    "type": "Coding Plan",
     "action": "https://platform.minimaxi.com/subscribe/token-plan?code=LXhBWH1gnf&source=link",
     "firstMonthPrice": "-",
     "monthlyPrice": 29,
@@ -147,6 +154,7 @@
   {
     "vendor": "MiniMax",
     "plan": "Plus",
+    "type": "Coding Plan",
     "action": "https://platform.minimaxi.com/subscribe/token-plan?code=LXhBWH1gnf&source=link",
     "firstMonthPrice": "-",
     "monthlyPrice": 49,
@@ -165,6 +173,7 @@
   {
     "vendor": "MiniMax",
     "plan": "Max",
+    "type": "Coding Plan",
     "action": "https://platform.minimaxi.com/subscribe/token-plan?code=LXhBWH1gnf&source=link",
     "firstMonthPrice": "-",
     "monthlyPrice": 119,
@@ -183,6 +192,7 @@
   {
     "vendor": "MiniMax",
     "plan": "Plus-极速",
+    "type": "Coding Plan",
     "action": "https://platform.minimaxi.com/subscribe/token-plan?code=LXhBWH1gnf&source=link",
     "firstMonthPrice": "-",
     "monthlyPrice": 98,
@@ -201,6 +211,7 @@
   {
     "vendor": "MiniMax",
     "plan": "Max-极速",
+    "type": "Coding Plan",
     "action": "https://platform.minimaxi.com/subscribe/token-plan?code=LXhBWH1gnf&source=link",
     "firstMonthPrice": "-",
     "monthlyPrice": 199,
@@ -219,6 +230,7 @@
   {
     "vendor": "字节·方舟",
     "plan": "Lite",
+    "type": "Coding Plan",
     "action": "https://volcengine.com/L/uCoen5sFGaY/",
     "firstMonthPrice": "-",
     "monthlyPrice": 40,
@@ -242,6 +254,7 @@
   {
     "vendor": "字节·方舟",
     "plan": "Pro",
+    "type": "Coding Plan",
     "action": "https://volcengine.com/L/uCoen5sFGaY/",
     "firstMonthPrice": "-",
     "monthlyPrice": 200,
@@ -265,6 +278,7 @@
   {
     "vendor": "阿里·百炼",
     "plan": "Pro",
+    "type": "Coding Plan",
     "action": "https://www.aliyun.com/benefit/scene/codingplan",
     "firstMonthPrice": "-",
     "monthlyPrice": 200,
@@ -286,6 +300,7 @@
   {
     "vendor": "小米·MiMo",
     "plan": "Lite",
+    "type": "Token Plan",
     "action": "https://mimo.mi.com/",
     "firstMonthPrice": 34.32,
     "monthlyPrice": 39,
@@ -307,6 +322,7 @@
   {
     "vendor": "小米·MiMo",
     "plan": "Standard",
+    "type": "Token Plan",
     "action": "https://mimo.mi.com/",
     "firstMonthPrice": 87.12,
     "monthlyPrice": 99,
@@ -328,6 +344,7 @@
   {
     "vendor": "小米·MiMo",
     "plan": "Pro",
+    "type": "Token Plan",
     "action": "https://mimo.mi.com/",
     "firstMonthPrice": 289.52,
     "monthlyPrice": 329,
@@ -349,6 +366,7 @@
   {
     "vendor": "小米·MiMo",
     "plan": "Max",
+    "type": "Token Plan",
     "action": "https://mimo.mi.com/",
     "firstMonthPrice": 579.92,
     "monthlyPrice": 659,
@@ -370,6 +388,7 @@
   {
     "vendor": "腾讯云",
     "plan": "Lite",
+    "type": "Coding Plan",
     "action": "https://cloud.tencent.com/act/pro/codingplan#buy",
     "firstMonthPrice": 7.9,
     "monthlyPrice": 40,
@@ -391,6 +410,7 @@
   {
     "vendor": "腾讯云",
     "plan": "Pro",
+    "type": "Coding Plan",
     "action": "https://cloud.tencent.com/act/pro/codingplan#buy",
     "firstMonthPrice": 39.9,
     "monthlyPrice": 200,
@@ -412,6 +432,7 @@
   {
     "vendor": "腾讯·Token",
     "plan": "Lite",
+    "type": "Token Plan",
     "action": "https://cloud.tencent.com/act/pro/tokenplan",
     "firstMonthPrice": "-",
     "monthlyPrice": 39,
@@ -433,6 +454,7 @@
   {
     "vendor": "腾讯·Token",
     "plan": "Standard",
+    "type": "Token Plan",
     "action": "https://cloud.tencent.com/act/pro/tokenplan",
     "firstMonthPrice": "-",
     "monthlyPrice": 99,
@@ -454,6 +476,7 @@
   {
     "vendor": "腾讯·Token",
     "plan": "Pro",
+    "type": "Token Plan",
     "action": "https://cloud.tencent.com/act/pro/tokenplan",
     "firstMonthPrice": "-",
     "monthlyPrice": 299,
@@ -475,6 +498,7 @@
   {
     "vendor": "腾讯·Token",
     "plan": "Max",
+    "type": "Token Plan",
     "action": "https://cloud.tencent.com/act/pro/tokenplan",
     "firstMonthPrice": "-",
     "monthlyPrice": 599,
@@ -496,6 +520,7 @@
   {
     "vendor": "百度·千帆",
     "plan": "Lite",
+    "type": "Coding Plan",
     "action": "https://cloud.baidu.com/product/codingplan.html",
     "firstMonthPrice": "-",
     "monthlyPrice": 40,
@@ -516,6 +541,7 @@
   {
     "vendor": "百度·千帆",
     "plan": "Pro",
+    "type": "Coding Plan",
     "action": "https://cloud.baidu.com/product/codingplan.html",
     "firstMonthPrice": "-",
     "monthlyPrice": 200,
@@ -536,6 +562,7 @@
   {
     "vendor": "京东云",
     "plan": "Lite",
+    "type": "Coding Plan",
     "action": "https://www.jdcloud.com/cn/pages/codingplan",
     "firstMonthPrice": 7.9,
     "monthlyPrice": 40,
@@ -557,6 +584,7 @@
   {
     "vendor": "京东云",
     "plan": "Pro",
+    "type": "Coding Plan",
     "action": "https://www.jdcloud.com/cn/pages/codingplan",
     "firstMonthPrice": 39.9,
     "monthlyPrice": 200,
@@ -578,6 +606,7 @@
   {
     "vendor": "Kimi",
     "plan": "Andante",
+    "type": "Coding Plan",
     "action": "https://www.kimi.com/code",
     "firstMonthPrice": "-",
     "monthlyPrice": 49,
@@ -596,6 +625,7 @@
   {
     "vendor": "Kimi",
     "plan": "Moderato",
+    "type": "Coding Plan",
     "action": "https://www.kimi.com/code",
     "firstMonthPrice": "-",
     "monthlyPrice": 99,
@@ -614,6 +644,7 @@
   {
     "vendor": "Kimi",
     "plan": "Allegretto",
+    "type": "Coding Plan",
     "action": "https://www.kimi.com/code",
     "firstMonthPrice": "-",
     "monthlyPrice": 199,
@@ -634,6 +665,7 @@
   {
     "vendor": "Kimi",
     "plan": "Allegro",
+    "type": "Coding Plan",
     "action": "https://www.kimi.com/code",
     "firstMonthPrice": "-",
     "monthlyPrice": 699,

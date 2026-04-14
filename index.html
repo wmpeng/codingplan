@@ -1216,6 +1216,26 @@
                 </div>
             </div>
 
+            <!-- 类型筛选下拉 -->
+            <div class="filter-dropdown">
+                <button class="filter-btn" id="typeBtn">
+                    <span>类型</span>
+                    <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    <span class="count" id="typeCount" style="display: none;">0</span>
+                </button>
+                <div class="dropdown-menu" id="typeDropdown">
+                    <div class="dropdown-section">
+                        <div class="checkbox-group" id="typeCheckboxes">
+                            <!-- 动态填充 -->
+                        </div>
+                    </div>
+                    <div class="dropdown-actions">
+                        <button class="dropdown-btn secondary" onclick="resetTypeFilter()">重置</button>
+                        <button class="dropdown-btn primary" onclick="closeAllDropdowns()">确定</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- 首月价格筛选 -->
             <div class="filter-dropdown">
                 <button class="filter-btn" id="firstMonthPriceBtn">
@@ -1463,6 +1483,7 @@
                         <tr>
                             <th class="sortable sticky-first" data-column="vendor">平台</th>
                             <th class="sticky-second">套餐</th>
+                            <th>类型</th>
                             <th>跳转链接</th>
                             <th class="sortable" data-column="firstMonthPrice">首月价格</th>
                             <th class="sortable" data-column="monthlyPrice">连续包月</th>
@@ -1514,6 +1535,7 @@
         // 已确认的选择
         let selectedVendors = new Set();
         let selectedModels = new Set();
+        let selectedTypes = new Set();
         let priceFilters = {
             firstMonth: { min: null, max: null },
             monthly: { min: null, max: null },
@@ -1524,6 +1546,7 @@
         // 临时选择（下拉框中的操作，只有点确定才提交）
         let tempSelectedVendors = new Set();
         let tempSelectedModels = new Set();
+        let tempSelectedTypes = new Set();
         let tempPriceFilters = {
             firstMonth: { min: null, max: null },
             monthly: { min: null, max: null },
@@ -1548,6 +1571,10 @@
         let activeDropdown = null;
 
         // DOM 元素
+        const typeBtn = document.getElementById('typeBtn');
+        const typeDropdown = document.getElementById('typeDropdown');
+        const typeCheckboxes = document.getElementById('typeCheckboxes');
+        const typeCount = document.getElementById('typeCount');
         const vendorBtn = document.getElementById('vendorBtn');
         const modelBtn = document.getElementById('modelBtn');
         const vendorDropdown = document.getElementById('vendorDropdown');
@@ -1615,6 +1642,18 @@
 
         // 初始化筛选器
         function initFilters() {
+            // 类型筛选
+            const types = [...new Set(allPlans.map(p => p.type || 'Coding Plan'))].sort();
+            types.forEach(type => {
+                const div = document.createElement('div');
+                div.className = 'checkbox-item';
+                div.innerHTML = `
+                    <input type="checkbox" id="type_${type}" value="${type}" onchange="updateTypeSelection()">
+                    <label for="type_${type}">${type}</label>
+                `;
+                typeCheckboxes.appendChild(div);
+            });
+
             const vendors = [...new Set(allPlans.map(p => p['vendor']))].sort();
             vendors.forEach(vendor => {
                 const div = document.createElement('div');
@@ -1681,7 +1720,10 @@
                 activeDropdown = dropdown;
 
                 // 打开下拉框时，初始化临时状态为当前已确认状态
-                if (type === 'vendor') {
+                if (type === 'type') {
+                    tempSelectedTypes = new Set(selectedTypes);
+                    syncTypeCheckboxes();
+                } else if (type === 'vendor') {
                     tempSelectedVendors = new Set(selectedVendors);
                     syncVendorCheckboxes();
                 } else if (type === 'model') {
@@ -1708,6 +1750,12 @@
         }
 
         // 同步厂商复选框状态
+        function syncTypeCheckboxes() {
+            document.querySelectorAll('#typeCheckboxes input').forEach(cb => {
+                cb.checked = tempSelectedTypes.has(cb.value);
+            });
+        }
+
         function syncVendorCheckboxes() {
             document.querySelectorAll('#vendorCheckboxes input').forEach(cb => {
                 cb.checked = tempSelectedVendors.has(cb.value);
@@ -1723,7 +1771,10 @@
 
         function closeAllDropdowns() {
             // 提交临时状态到正式状态
-            if (activeDropdown === vendorDropdown) {
+            if (activeDropdown === typeDropdown) {
+                selectedTypes = new Set(tempSelectedTypes);
+                updateTypeCount();
+            } else if (activeDropdown === vendorDropdown) {
                 selectedVendors = new Set(tempSelectedVendors);
                 updateVendorCount();
             } else if (activeDropdown === modelDropdown) {
@@ -1741,7 +1792,9 @@
         // 价格筛选的确定按钮单独处理，避免重复调用 applyFilters
         function closeDropdownWithoutFilter() {
             // 恢复按钮显示到已确认状态
-            if (activeDropdown === vendorDropdown) {
+            if (activeDropdown === typeDropdown) {
+                updateTypeCount();
+            } else if (activeDropdown === vendorDropdown) {
                 updateVendorCount();
             } else if (activeDropdown === modelDropdown) {
                 updateModelCount();
@@ -1751,6 +1804,11 @@
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             activeDropdown = null;
         }
+
+        typeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleDropdown(typeBtn, typeDropdown, 'type');
+        });
 
         vendorBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -1814,6 +1872,14 @@
 
         // 更新选择
         // 复选框操作只修改临时状态
+        function updateTypeSelection() {
+            tempSelectedTypes.clear();
+            document.querySelectorAll('#typeCheckboxes input:checked').forEach(cb => {
+                tempSelectedTypes.add(cb.value);
+            });
+            updateTempTypeCount();
+        }
+
         function updateVendorSelection() {
             tempSelectedVendors.clear();
             document.querySelectorAll('#vendorCheckboxes input:checked').forEach(cb => {
@@ -1833,6 +1899,15 @@
         }
 
         // 显示临时计数
+        function updateTempTypeCount() {
+            if (tempSelectedTypes.size > 0) {
+                typeCount.textContent = tempSelectedTypes.size;
+                typeCount.style.display = 'inline-block';
+            } else {
+                typeCount.style.display = 'none';
+            }
+        }
+
         function updateTempVendorCount() {
             if (tempSelectedVendors.size > 0) {
                 vendorCount.textContent = tempSelectedVendors.size;
@@ -1852,6 +1927,17 @@
         }
 
         // 更新已确认状态的按钮显示
+        function updateTypeCount() {
+            if (selectedTypes.size > 0) {
+                typeCount.textContent = selectedTypes.size;
+                typeCount.style.display = 'inline-block';
+                typeBtn.classList.add('active');
+            } else {
+                typeCount.style.display = 'none';
+                typeBtn.classList.remove('active');
+            }
+        }
+
         function updateVendorCount() {
             if (selectedVendors.size > 0) {
                 vendorCount.textContent = selectedVendors.size;
@@ -1948,6 +2034,11 @@
         // 应用筛选
         function applyFilters() {
             filteredPlans = allPlans.filter(plan => {
+                // 类型筛选
+                if (selectedTypes.size > 0 && !selectedTypes.has(plan.type || 'Coding Plan')) {
+                    return false;
+                }
+
                 // 厂商筛选
                 if (selectedVendors.size > 0 && !selectedVendors.has(plan['vendor'])) {
                     return false;
@@ -2459,7 +2550,14 @@
             updateTempModelCount();
         }
 
+        function resetTypeFilter() {
+            tempSelectedTypes.clear();
+            document.querySelectorAll('#typeCheckboxes input').forEach(cb => cb.checked = false);
+            updateTempTypeCount();
+        }
+
         function resetAllFilters() {
+            resetTypeFilter();
             resetVendorFilter();
             resetModelFilter();
             resetFirstMonthPriceFilter();
@@ -2478,6 +2576,12 @@
             updateFiveHoursRequestCount();
             updateWeeklyRequestCount();
             updateMonthlyRequestCount();
+            selectedTypes.clear();
+            updateTypeCount();
+            selectedVendors.clear();
+            updateVendorCount();
+            selectedModels.clear();
+            updateModelCount();
             currentSort = { column: null, direction: 'asc' };
             document.querySelectorAll('th').forEach(th => {
                 th.classList.remove('sort-asc', 'sort-desc');
@@ -2607,7 +2711,7 @@
             if (filteredPlans.length === 0) {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="13">
+                        <td colspan="14">
                             <div class="empty-state">
                                 <div class="empty-state-icon">📭</div>
                                 <div class="empty-state-text">没有找到符合条件的套餐</div>
@@ -2623,6 +2727,7 @@
                 <tr>
                     <td class="sticky-first"><span class="vendor-name">${escapeHtml(plan['vendor'])}</span></td>
                     <td class="sticky-second"><span class="plan-name">${escapeHtml(plan['plan'])}</span></td>
+                    <td><span class="model-tag">${escapeHtml(plan.type || 'Coding Plan')}</span></td>
                     <td>
                         <a href="${escapeHtml(plan['action'])}" target="_blank" class="action-btn">
                             跳转开通
@@ -2913,7 +3018,7 @@
             try {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="13">
+                        <td colspan="14">
                             <div class="loading">加载数据中</div>
                         </td>
                     </tr>
@@ -2944,7 +3049,7 @@
                 console.error('加载数据失败:', error);
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="13">
+                        <td colspan="14">
                             <div class="empty-state">
                                 <div class="empty-state-icon">❌</div>
                                 <div class="empty-state-text">数据加载失败</div>
