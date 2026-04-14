@@ -648,6 +648,29 @@
             transform: translateX(3px);
         }
 
+        /* 类型标签 */
+        .type-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+
+        .type-tag.coding-plan {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(139, 92, 246, 0.12));
+            color: #6366f1;
+            border: 1px solid rgba(99, 102, 241, 0.25);
+        }
+
+        .type-tag.token-plan {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(249, 115, 22, 0.12));
+            color: #d97706;
+            border: 1px solid rgba(245, 158, 11, 0.25);
+        }
+
         /* 模型标签 */
         .model-tag {
             display: inline-block;
@@ -2727,7 +2750,7 @@
                 <tr>
                     <td class="sticky-first"><span class="vendor-name">${escapeHtml(plan['vendor'])}</span></td>
                     <td class="sticky-second"><span class="plan-name">${escapeHtml(plan['plan'])}</span></td>
-                    <td><span class="model-tag">${escapeHtml(plan.type || 'Coding Plan')}</span></td>
+                    <td><span class="type-tag ${(plan.type || 'Coding Plan') === 'Token Plan' ? 'token-plan' : 'coding-plan'}">${escapeHtml(plan.type || 'Coding Plan')}</span></td>
                     <td>
                         <a href="${escapeHtml(plan['action'])}" target="_blank" class="action-btn">
                             跳转开通
