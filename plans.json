@@ -15,6 +15,7 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 6000,
     "monthlyRequests": 24000,
+    "tokenLimit": "无限制",
     "benefits": [
       "免费MCP次数"
     ],
@@ -37,6 +38,7 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 30000,
     "monthlyRequests": 120000,
+    "tokenLimit": "无限制",
     "benefits": [
       "免费MCP次数"
     ],
@@ -59,6 +61,7 @@
     "fiveHoursRequests": 24000,
     "weeklyRequests": 120000,
     "monthlyRequests": 480000,
+    "tokenLimit": "无限制",
     "benefits": [
       "免费MCP次数"
     ],
@@ -69,7 +72,6 @@
     "plan": "Lite",
     "type": "Coding Plan",
     "action": "https://z.ai/subscribe?ic=YBEQOH949X",
-    "currency": "$",
     "firstMonthPrice": "-",
     "monthlyPrice": 18,
     "quarterlyPrice": 48.6,
@@ -81,6 +83,8 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 6000,
     "monthlyRequests": 24000,
+    "tokenLimit": "无限制",
+    "currency": "$",
     "benefits": [
       "免费MCP次数"
     ],
@@ -91,7 +95,6 @@
     "plan": "Pro",
     "type": "Coding Plan",
     "action": "https://z.ai/subscribe?ic=YBEQOH949X",
-    "currency": "$",
     "firstMonthPrice": "-",
     "monthlyPrice": 72,
     "quarterlyPrice": 194.4,
@@ -104,6 +107,8 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 30000,
     "monthlyRequests": 120000,
+    "tokenLimit": "无限制",
+    "currency": "$",
     "benefits": [
       "免费MCP次数"
     ],
@@ -114,7 +119,6 @@
     "plan": "Max",
     "type": "Coding Plan",
     "action": "https://z.ai/subscribe?ic=YBEQOH949X",
-    "currency": "$",
     "firstMonthPrice": "-",
     "monthlyPrice": 160,
     "quarterlyPrice": 432,
@@ -127,6 +131,8 @@
     "fiveHoursRequests": 24000,
     "weeklyRequests": 120000,
     "monthlyRequests": 480000,
+    "tokenLimit": "无限制",
+    "currency": "$",
     "benefits": [
       "免费MCP次数"
     ],
@@ -148,6 +154,7 @@
     "fiveHoursRequests": 600,
     "weeklyRequests": 6000,
     "monthlyRequests": 24000,
+    "tokenLimit": "无限制",
     "benefits": [],
     "note": "约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
@@ -167,6 +174,7 @@
     "fiveHoursRequests": 1500,
     "weeklyRequests": 15000,
     "monthlyRequests": 60000,
+    "tokenLimit": "无限制",
     "benefits": [],
     "note": "约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
@@ -186,6 +194,7 @@
     "fiveHoursRequests": 4500,
     "weeklyRequests": 45000,
     "monthlyRequests": 180000,
+    "tokenLimit": "无限制",
     "benefits": [],
     "note": "约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
@@ -205,6 +214,7 @@
     "fiveHoursRequests": 1500,
     "weeklyRequests": 15000,
     "monthlyRequests": 60000,
+    "tokenLimit": "无限制",
     "benefits": [],
     "note": "约100TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
@@ -224,6 +234,7 @@
     "fiveHoursRequests": 4500,
     "weeklyRequests": 45000,
     "monthlyRequests": 180000,
+    "tokenLimit": "无限制",
     "benefits": [],
     "note": "约100TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
@@ -246,6 +257,7 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
+    "tokenLimit": "无限制",
     "benefits": [
       "ArkClaw 7天体验"
     ],
@@ -270,6 +282,7 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
+    "tokenLimit": "无限制",
     "benefits": [
       "免费ArkClaw"
     ],
@@ -294,6 +307,7 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
+    "tokenLimit": "无限制",
     "benefits": [],
     "note": ""
   },
@@ -314,6 +328,7 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
+    "tokenLimit": 30,
     "benefits": [
       "TTS限时免费"
     ],
@@ -336,6 +351,7 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
+    "tokenLimit": 100,
     "benefits": [
       "TTS限时免费"
     ],
@@ -358,6 +374,7 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
+    "tokenLimit": 350,
     "benefits": [
       "TTS限时免费"
     ],
@@ -380,6 +397,7 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
+    "tokenLimit": 800,
     "benefits": [
       "TTS限时免费"
     ],
@@ -404,6 +422,7 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
+    "tokenLimit": "无限制",
     "benefits": [],
     "note": ""
   },
@@ -426,6 +445,7 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
+    "tokenLimit": "无限制",
     "benefits": [],
     "note": ""
   },
@@ -448,6 +468,7 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
+    "tokenLimit": 35,
     "benefits": [],
     "note": "注意此为TokenPlan，而非CodingPlan。35M(3500万) Tokens 额度，约 70 轮问答"
   },
@@ -470,6 +491,7 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
+    "tokenLimit": 100,
     "benefits": [],
     "note": "注意此为TokenPlan，而非CodingPlan。100M(1亿) Tokens 额度，可执行约 200 轮问答"
   },
@@ -492,6 +514,7 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
+    "tokenLimit": 320,
     "benefits": [],
     "note": "注意此为TokenPlan，而非CodingPlan。320M(3.2亿) Tokens 额度"
   },
@@ -514,6 +537,7 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
+    "tokenLimit": 650,
     "benefits": [],
     "note": "注意此为TokenPlan，而非CodingPlan。650M(6.5亿) Tokens 额度"
   },
@@ -535,6 +559,7 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
+    "tokenLimit": "无限制",
     "benefits": [],
     "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill"
   },
@@ -556,6 +581,7 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
+    "tokenLimit": "无限制",
     "benefits": [],
     "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill"
   },
@@ -578,6 +604,7 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
+    "tokenLimit": "无限制",
     "benefits": [],
     "note": ""
   },
@@ -600,6 +627,7 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
+    "tokenLimit": "无限制",
     "benefits": [],
     "note": ""
   },
@@ -619,6 +647,7 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
+    "tokenLimit": "无限制",
     "benefits": [],
     "note": "Agent 4 倍速"
   },
@@ -638,6 +667,7 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
+    "tokenLimit": "无限制",
     "benefits": [],
     "note": "4 倍额度, Agent 多任务并行"
   },
@@ -657,6 +687,7 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
+    "tokenLimit": "无限制",
     "benefits": [
       "免费Kimi-Claw"
     ],
@@ -678,6 +709,7 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
+    "tokenLimit": "无限制",
     "benefits": [
       "免费Kimi-Claw"
     ],

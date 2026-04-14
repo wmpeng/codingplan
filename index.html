@@ -1469,6 +1469,26 @@
                 </div>
             </div>
 
+            <!-- Token上限筛选下拉 -->
+            <div class="filter-dropdown">
+                <button class="filter-btn" id="tokenLimitBtn">
+                    <span>Token上限</span>
+                    <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    <span class="count" id="tokenLimitCount" style="display: none;">0</span>
+                </button>
+                <div class="dropdown-menu" id="tokenLimitDropdown">
+                    <div class="dropdown-section">
+                        <div class="checkbox-group" id="tokenLimitCheckboxes">
+                            <!-- 动态填充 -->
+                        </div>
+                    </div>
+                    <div class="dropdown-actions">
+                        <button class="dropdown-btn secondary" onclick="resetTokenLimitFilter()">重置</button>
+                        <button class="dropdown-btn primary" onclick="closeAllDropdowns()">确定</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- 模型筛选下拉 -->
             <div class="filter-dropdown">
                 <button class="filter-btn" id="modelBtn">
@@ -1516,6 +1536,7 @@
                             <th class="sortable" data-column="fiveHoursRequests">5小时请求数</th>
                             <th class="sortable" data-column="weeklyRequests">每周请求数</th>
                             <th class="sortable" data-column="monthlyRequests">每月总请求数</th>
+                            <th>Token上限</th>
                             <th>其他权益</th>
                             <th class="note-header">备注</th>
                         </tr>
@@ -1559,6 +1580,7 @@
         let selectedVendors = new Set();
         let selectedModels = new Set();
         let selectedTypes = new Set();
+        let selectedTokenLimits = new Set();
         let priceFilters = {
             firstMonth: { min: null, max: null },
             monthly: { min: null, max: null },
@@ -1570,6 +1592,7 @@
         let tempSelectedVendors = new Set();
         let tempSelectedModels = new Set();
         let tempSelectedTypes = new Set();
+        let tempSelectedTokenLimits = new Set();
         let tempPriceFilters = {
             firstMonth: { min: null, max: null },
             monthly: { min: null, max: null },
@@ -1598,6 +1621,10 @@
         const typeDropdown = document.getElementById('typeDropdown');
         const typeCheckboxes = document.getElementById('typeCheckboxes');
         const typeCount = document.getElementById('typeCount');
+        const tokenLimitBtn = document.getElementById('tokenLimitBtn');
+        const tokenLimitDropdown = document.getElementById('tokenLimitDropdown');
+        const tokenLimitCheckboxes = document.getElementById('tokenLimitCheckboxes');
+        const tokenLimitCount = document.getElementById('tokenLimitCount');
         const vendorBtn = document.getElementById('vendorBtn');
         const modelBtn = document.getElementById('modelBtn');
         const vendorDropdown = document.getElementById('vendorDropdown');
@@ -1688,6 +1715,18 @@
                 vendorCheckboxes.appendChild(div);
             });
 
+            // Token上限筛选
+            const tokenLimits = [...new Set(allPlans.map(p => p.tokenLimit || '无限制'))].sort();
+            tokenLimits.forEach(tl => {
+                const div = document.createElement('div');
+                div.className = 'checkbox-item';
+                div.innerHTML = `
+                    <input type="checkbox" id="tokenLimit_${tl}" value="${tl}" onchange="updateTokenLimitSelection()">
+                    <label for="tokenLimit_${tl}">${tl}</label>
+                `;
+                tokenLimitCheckboxes.appendChild(div);
+            });
+
             const models = [...new Set(allPlans.flatMap(p => p.models))].sort();
             models.forEach(model => {
                 const div = document.createElement('div');
@@ -1746,6 +1785,9 @@
                 if (type === 'type') {
                     tempSelectedTypes = new Set(selectedTypes);
                     syncTypeCheckboxes();
+                } else if (type === 'tokenLimit') {
+                    tempSelectedTokenLimits = new Set(selectedTokenLimits);
+                    syncTokenLimitCheckboxes();
                 } else if (type === 'vendor') {
                     tempSelectedVendors = new Set(selectedVendors);
                     syncVendorCheckboxes();
@@ -1779,6 +1821,12 @@
             });
         }
 
+        function syncTokenLimitCheckboxes() {
+            document.querySelectorAll('#tokenLimitCheckboxes input').forEach(cb => {
+                cb.checked = tempSelectedTokenLimits.has(cb.value);
+            });
+        }
+
         function syncVendorCheckboxes() {
             document.querySelectorAll('#vendorCheckboxes input').forEach(cb => {
                 cb.checked = tempSelectedVendors.has(cb.value);
@@ -1797,6 +1845,9 @@
             if (activeDropdown === typeDropdown) {
                 selectedTypes = new Set(tempSelectedTypes);
                 updateTypeCount();
+            } else if (activeDropdown === tokenLimitDropdown) {
+                selectedTokenLimits = new Set(tempSelectedTokenLimits);
+                updateTokenLimitCount();
             } else if (activeDropdown === vendorDropdown) {
                 selectedVendors = new Set(tempSelectedVendors);
                 updateVendorCount();
@@ -1817,6 +1868,8 @@
             // 恢复按钮显示到已确认状态
             if (activeDropdown === typeDropdown) {
                 updateTypeCount();
+            } else if (activeDropdown === tokenLimitDropdown) {
+                updateTokenLimitCount();
             } else if (activeDropdown === vendorDropdown) {
                 updateVendorCount();
             } else if (activeDropdown === modelDropdown) {
@@ -1831,6 +1884,11 @@
         typeBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleDropdown(typeBtn, typeDropdown, 'type');
+        });
+
+        tokenLimitBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleDropdown(tokenLimitBtn, tokenLimitDropdown, 'tokenLimit');
         });
 
         vendorBtn.addEventListener('click', (e) => {
@@ -1903,6 +1961,14 @@
             updateTempTypeCount();
         }
 
+        function updateTokenLimitSelection() {
+            tempSelectedTokenLimits.clear();
+            document.querySelectorAll('#tokenLimitCheckboxes input:checked').forEach(cb => {
+                tempSelectedTokenLimits.add(cb.value);
+            });
+            updateTempTokenLimitCount();
+        }
+
         function updateVendorSelection() {
             tempSelectedVendors.clear();
             document.querySelectorAll('#vendorCheckboxes input:checked').forEach(cb => {
@@ -1928,6 +1994,15 @@
                 typeCount.style.display = 'inline-block';
             } else {
                 typeCount.style.display = 'none';
+            }
+        }
+
+        function updateTempTokenLimitCount() {
+            if (tempSelectedTokenLimits.size > 0) {
+                tokenLimitCount.textContent = tempSelectedTokenLimits.size;
+                tokenLimitCount.style.display = 'inline-block';
+            } else {
+                tokenLimitCount.style.display = 'none';
             }
         }
 
@@ -1958,6 +2033,17 @@
             } else {
                 typeCount.style.display = 'none';
                 typeBtn.classList.remove('active');
+            }
+        }
+
+        function updateTokenLimitCount() {
+            if (selectedTokenLimits.size > 0) {
+                tokenLimitCount.textContent = selectedTokenLimits.size;
+                tokenLimitCount.style.display = 'inline-block';
+                tokenLimitBtn.classList.add('active');
+            } else {
+                tokenLimitCount.style.display = 'none';
+                tokenLimitBtn.classList.remove('active');
             }
         }
 
@@ -2132,6 +2218,11 @@
                     if (typeof plan.monthlyRequests !== 'number') return false;
                     if (plan.monthlyRequests < requestFilters.monthly.min) return false;
                     if (plan.monthlyRequests > requestFilters.monthly.max) return false;
+                }
+
+                // Token上限筛选
+                if (selectedTokenLimits.size > 0 && !selectedTokenLimits.has(plan.tokenLimit || '无限制')) {
+                    return false;
                 }
 
                 return true;
@@ -2579,8 +2670,15 @@
             updateTempTypeCount();
         }
 
+        function resetTokenLimitFilter() {
+            tempSelectedTokenLimits.clear();
+            document.querySelectorAll('#tokenLimitCheckboxes input').forEach(cb => cb.checked = false);
+            updateTempTokenLimitCount();
+        }
+
         function resetAllFilters() {
             resetTypeFilter();
+            resetTokenLimitFilter();
             resetVendorFilter();
             resetModelFilter();
             resetFirstMonthPriceFilter();
@@ -2601,6 +2699,8 @@
             updateMonthlyRequestCount();
             selectedTypes.clear();
             updateTypeCount();
+            selectedTokenLimits.clear();
+            updateTokenLimitCount();
             selectedVendors.clear();
             updateVendorCount();
             selectedModels.clear();
@@ -2734,7 +2834,7 @@
             if (filteredPlans.length === 0) {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="14">
+                        <td colspan="15">
                             <div class="empty-state">
                                 <div class="empty-state-icon">📭</div>
                                 <div class="empty-state-text">没有找到符合条件的套餐</div>
@@ -2766,6 +2866,7 @@
                     <td><span class="request-count">${formatRequestCount(plan.fiveHoursRequests)} <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.weeklyRequests)} <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.monthlyRequests)} <span class="unit">/ 月</span></span></td>
+                    <td><span class="request-count">${typeof plan.tokenLimit === 'number' ? plan.tokenLimit + 'M <span class="unit">Tokens</span>' : escapeHtml(plan.tokenLimit || '无限制')}</span></td>
                     <td>
                         ${plan.benefits.map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}
                     </td>
@@ -3041,7 +3142,7 @@
             try {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="14">
+                        <td colspan="15">
                             <div class="loading">加载数据中</div>
                         </td>
                     </tr>
@@ -3072,7 +3173,7 @@
                 console.error('加载数据失败:', error);
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="14">
+                        <td colspan="15">
                             <div class="empty-state">
                                 <div class="empty-state-icon">❌</div>
                                 <div class="empty-state-text">数据加载失败</div>
