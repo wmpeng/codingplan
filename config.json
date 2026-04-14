@@ -96,7 +96,7 @@
     "monthlyPrice": "包月价格",
     "quarterlyPrice": "包季价格",
     "yearlyPrice": "包年价格",
-    "tokenLimit": "Token上限",
+    "tokenLimit": "Token上限(/M）",
     "reset": "重置筛选",
     "stats": "显示 {showing} / {total} 个套餐"
   },

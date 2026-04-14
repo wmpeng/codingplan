@@ -1474,17 +1474,27 @@
                 <button class="filter-btn" id="tokenLimitBtn">
                     <span>Token上限</span>
                     <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-                    <span class="count" id="tokenLimitCount" style="display: none;">0</span>
+                    <span class="count" id="tokenLimitCount" style="display: none;">●</span>
                 </button>
                 <div class="dropdown-menu" id="tokenLimitDropdown">
                     <div class="dropdown-section">
-                        <div class="checkbox-group" id="tokenLimitCheckboxes">
-                            <!-- 动态填充 -->
+                        <div class="dropdown-title">Token上限区间 (百万)</div>
+                        <div class="price-slider-container">
+                            <div class="price-slider">
+                                <div class="slider-track"></div>
+                                <div class="slider-range" id="tokenLimitSliderRange"></div>
+                                <div class="slider-thumb" id="tokenLimitSliderMin"></div>
+                                <div class="slider-thumb" id="tokenLimitSliderMax"></div>
+                            </div>
+                            <div class="slider-values">
+                                <span class="slider-value" id="tokenLimitMinValue">0</span>
+                                <span class="slider-value" id="tokenLimitMaxValue">0</span>
+                            </div>
                         </div>
                     </div>
                     <div class="dropdown-actions">
                         <button class="dropdown-btn secondary" onclick="resetTokenLimitFilter()">重置</button>
-                        <button class="dropdown-btn primary" onclick="closeAllDropdowns()">确定</button>
+                        <button class="dropdown-btn primary" onclick="applyTokenLimitFilter()">确定</button>
                     </div>
                 </div>
             </div>
@@ -1536,7 +1546,7 @@
                             <th class="sortable" data-column="fiveHoursRequests">5小时请求数</th>
                             <th class="sortable" data-column="weeklyRequests">每周请求数</th>
                             <th class="sortable" data-column="monthlyRequests">每月总请求数</th>
-                            <th>Token上限</th>
+                            <th class="sortable" data-column="tokenLimit">Token上限</th>
                             <th>其他权益</th>
                             <th class="note-header">备注</th>
                         </tr>
@@ -1580,7 +1590,6 @@
         let selectedVendors = new Set();
         let selectedModels = new Set();
         let selectedTypes = new Set();
-        let selectedTokenLimits = new Set();
         let priceFilters = {
             firstMonth: { min: null, max: null },
             monthly: { min: null, max: null },
@@ -1592,7 +1601,6 @@
         let tempSelectedVendors = new Set();
         let tempSelectedModels = new Set();
         let tempSelectedTypes = new Set();
-        let tempSelectedTokenLimits = new Set();
         let tempPriceFilters = {
             firstMonth: { min: null, max: null },
             monthly: { min: null, max: null },
@@ -1603,7 +1611,8 @@
         let requestFilters = {
             fiveHours: { min: null, max: null },
             weekly: { min: null, max: null },
-            monthly: { min: null, max: null }
+            monthly: { min: null, max: null },
+            tokenLimit: { min: null, max: null }
         };
 
         // 检查价格筛选是否已应用
@@ -1623,7 +1632,6 @@
         const typeCount = document.getElementById('typeCount');
         const tokenLimitBtn = document.getElementById('tokenLimitBtn');
         const tokenLimitDropdown = document.getElementById('tokenLimitDropdown');
-        const tokenLimitCheckboxes = document.getElementById('tokenLimitCheckboxes');
         const tokenLimitCount = document.getElementById('tokenLimitCount');
         const vendorBtn = document.getElementById('vendorBtn');
         const modelBtn = document.getElementById('modelBtn');
@@ -1715,18 +1723,6 @@
                 vendorCheckboxes.appendChild(div);
             });
 
-            // Token上限筛选
-            const tokenLimits = [...new Set(allPlans.map(p => p.tokenLimit || '无限制'))].sort();
-            tokenLimits.forEach(tl => {
-                const div = document.createElement('div');
-                div.className = 'checkbox-item';
-                div.innerHTML = `
-                    <input type="checkbox" id="tokenLimit_${tl}" value="${tl}" onchange="updateTokenLimitSelection()">
-                    <label for="tokenLimit_${tl}">${tl}</label>
-                `;
-                tokenLimitCheckboxes.appendChild(div);
-            });
-
             const models = [...new Set(allPlans.flatMap(p => p.models))].sort();
             models.forEach(model => {
                 const div = document.createElement('div');
@@ -1786,8 +1782,11 @@
                     tempSelectedTypes = new Set(selectedTypes);
                     syncTypeCheckboxes();
                 } else if (type === 'tokenLimit') {
-                    tempSelectedTokenLimits = new Set(selectedTokenLimits);
-                    syncTokenLimitCheckboxes();
+                    if (requestFilters.tokenLimit.min !== null && requestFilters.tokenLimit.max !== null) {
+                        updateRequestSliderVisuals('tokenLimit', requestFilters.tokenLimit.min, requestFilters.tokenLimit.max);
+                    } else {
+                        updateRequestSliderVisuals('tokenLimit', requestSliders.tokenLimit.minValue, requestSliders.tokenLimit.maxValue);
+                    }
                 } else if (type === 'vendor') {
                     tempSelectedVendors = new Set(selectedVendors);
                     syncVendorCheckboxes();
@@ -1821,11 +1820,7 @@
             });
         }
 
-        function syncTokenLimitCheckboxes() {
-            document.querySelectorAll('#tokenLimitCheckboxes input').forEach(cb => {
-                cb.checked = tempSelectedTokenLimits.has(cb.value);
-            });
-        }
+
 
         function syncVendorCheckboxes() {
             document.querySelectorAll('#vendorCheckboxes input').forEach(cb => {
@@ -1845,9 +1840,6 @@
             if (activeDropdown === typeDropdown) {
                 selectedTypes = new Set(tempSelectedTypes);
                 updateTypeCount();
-            } else if (activeDropdown === tokenLimitDropdown) {
-                selectedTokenLimits = new Set(tempSelectedTokenLimits);
-                updateTokenLimitCount();
             } else if (activeDropdown === vendorDropdown) {
                 selectedVendors = new Set(tempSelectedVendors);
                 updateVendorCount();
@@ -1868,8 +1860,6 @@
             // 恢复按钮显示到已确认状态
             if (activeDropdown === typeDropdown) {
                 updateTypeCount();
-            } else if (activeDropdown === tokenLimitDropdown) {
-                updateTokenLimitCount();
             } else if (activeDropdown === vendorDropdown) {
                 updateVendorCount();
             } else if (activeDropdown === modelDropdown) {
@@ -1961,13 +1951,7 @@
             updateTempTypeCount();
         }
 
-        function updateTokenLimitSelection() {
-            tempSelectedTokenLimits.clear();
-            document.querySelectorAll('#tokenLimitCheckboxes input:checked').forEach(cb => {
-                tempSelectedTokenLimits.add(cb.value);
-            });
-            updateTempTokenLimitCount();
-        }
+
 
         function updateVendorSelection() {
             tempSelectedVendors.clear();
@@ -1997,14 +1981,7 @@
             }
         }
 
-        function updateTempTokenLimitCount() {
-            if (tempSelectedTokenLimits.size > 0) {
-                tokenLimitCount.textContent = tempSelectedTokenLimits.size;
-                tokenLimitCount.style.display = 'inline-block';
-            } else {
-                tokenLimitCount.style.display = 'none';
-            }
-        }
+
 
         function updateTempVendorCount() {
             if (tempSelectedVendors.size > 0) {
@@ -2037,8 +2014,7 @@
         }
 
         function updateTokenLimitCount() {
-            if (selectedTokenLimits.size > 0) {
-                tokenLimitCount.textContent = selectedTokenLimits.size;
+            if (requestFilters.tokenLimit.min !== null || requestFilters.tokenLimit.max !== null) {
                 tokenLimitCount.style.display = 'inline-block';
                 tokenLimitBtn.classList.add('active');
             } else {
@@ -2221,8 +2197,10 @@
                 }
 
                 // Token上限筛选
-                if (selectedTokenLimits.size > 0 && !selectedTokenLimits.has(plan.tokenLimit || '无限制')) {
-                    return false;
+                if (isRequestFilterApplied('tokenLimit')) {
+                    if (typeof plan.tokenLimit !== 'number') return false;
+                    if (plan.tokenLimit < requestFilters.tokenLimit.min) return false;
+                    if (plan.tokenLimit > requestFilters.tokenLimit.max) return false;
                 }
 
                 return true;
@@ -2249,19 +2227,22 @@
         const requestSliders = {
             fiveHours: { min: 0, max: 0, minValue: 0, maxValue: 0 },
             weekly: { min: 0, max: 0, minValue: 0, maxValue: 0 },
-            monthly: { min: 0, max: 0, minValue: 0, maxValue: 0 }
+            monthly: { min: 0, max: 0, minValue: 0, maxValue: 0 },
+            tokenLimit: { min: 0, max: 0, minValue: 0, maxValue: 0 }
         };
 
         const requestPlanField = {
             fiveHours: 'fiveHoursRequests',
             weekly: 'weeklyRequests',
-            monthly: 'monthlyRequests'
+            monthly: 'monthlyRequests',
+            tokenLimit: 'tokenLimit'
         };
 
         const requestSliderIdPrefix = {
             fiveHours: 'fiveHoursRequest',
             weekly: 'weeklyRequest',
-            monthly: 'monthlyRequest'
+            monthly: 'monthlyRequest',
+            tokenLimit: 'tokenLimit'
         };
 
         // 计算价格类型的最大值
@@ -2406,6 +2387,7 @@
             initRequestSlider('fiveHours');
             initRequestSlider('weekly');
             initRequestSlider('monthly');
+            initRequestSlider('tokenLimit');
         }
 
         function initRequestSlider(requestType) {
@@ -2450,7 +2432,10 @@
                 range.style.left = `${minPercent}%`;
                 range.style.width = `${maxPercent - minPercent}%`;
             }
-            const fmt = (n) => (typeof n === 'number' ? n.toLocaleString() : String(n));
+            const fmt = (n) => {
+                if (typeof n !== 'number') return String(n);
+                return requestType === 'tokenLimit' ? n.toLocaleString() + 'M' : n.toLocaleString();
+            };
             if (minValueEl) minValueEl.textContent = fmt(minValue);
             if (maxValueEl) maxValueEl.textContent = fmt(maxValue);
 
@@ -2649,6 +2634,21 @@
             updateRequestSliderVisuals('monthly', requestSliders.monthly.minValue, requestSliders.monthly.maxValue);
         }
 
+        function applyTokenLimitFilter() {
+            const isInitial = requestSliders.tokenLimit.min === requestSliders.tokenLimit.minValue &&
+                              requestSliders.tokenLimit.max === requestSliders.tokenLimit.maxValue;
+            if (isInitial) {
+                requestFilters.tokenLimit.min = null;
+                requestFilters.tokenLimit.max = null;
+            } else {
+                requestFilters.tokenLimit.min = requestSliders.tokenLimit.min;
+                requestFilters.tokenLimit.max = requestSliders.tokenLimit.max;
+            }
+            updateTokenLimitCount();
+            applyFilters();
+            closeDropdownWithoutFilter();
+        }
+
         // 重置筛选
         function resetVendorFilter() {
             // 重置只影响临时状态，不提交
@@ -2671,14 +2671,11 @@
         }
 
         function resetTokenLimitFilter() {
-            tempSelectedTokenLimits.clear();
-            document.querySelectorAll('#tokenLimitCheckboxes input').forEach(cb => cb.checked = false);
-            updateTempTokenLimitCount();
+            updateRequestSliderVisuals('tokenLimit', requestSliders.tokenLimit.minValue, requestSliders.tokenLimit.maxValue);
         }
 
         function resetAllFilters() {
             resetTypeFilter();
-            resetTokenLimitFilter();
             resetVendorFilter();
             resetModelFilter();
             resetFirstMonthPriceFilter();
@@ -2694,13 +2691,15 @@
             resetFiveHoursRequestFilter();
             resetWeeklyRequestFilter();
             resetMonthlyRequestFilter();
+            resetTokenLimitFilter();
+            requestFilters.tokenLimit.min = null;
+            requestFilters.tokenLimit.max = null;
             updateFiveHoursRequestCount();
             updateWeeklyRequestCount();
             updateMonthlyRequestCount();
+            updateTokenLimitCount();
             selectedTypes.clear();
             updateTypeCount();
-            selectedTokenLimits.clear();
-            updateTokenLimitCount();
             selectedVendors.clear();
             updateVendorCount();
             selectedModels.clear();
@@ -2778,6 +2777,10 @@
                     case 'monthlyRequests':
                         valueA = getRequestSortValue(a.monthlyRequests);
                         valueB = getRequestSortValue(b.monthlyRequests);
+                        break;
+                    case 'tokenLimit':
+                        valueA = getRequestSortValue(a.tokenLimit);
+                        valueB = getRequestSortValue(b.tokenLimit);
                         break;
                     case 'benefits':
                         valueA = a['其他权益'];
