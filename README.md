@@ -1,6 +1,6 @@
 # AI Coding Plan 对比工具
 
-> 更新日期2026.4.12 | 更新智谱AI国际版价格
+> 更新日期2026.4.14 | 增加类型列，区分CodingPlan和TokenPlan
 
 ## 📖 简介
 
@@ -45,11 +45,11 @@
 | 智谱国际版 | Lite | [跳转](https://z.ai/subscribe?ic=YBEQOH949X) | - | $18 | $49 ~~54~~ / 季 | $173 ~~216~~ / 年 | GLM-5.1, GLM-5-Turbo | 1,200 | 6,000 | 24,000 | 免费MCP次数 | • 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算 • 官方只有周限量无月限量，这里按照1月=4周计算 |
 | 智谱国际版 | Pro | [跳转](https://z.ai/subscribe?ic=YBEQOH949X) | - | $72 | $194 ~~216~~ / 季 | $691 ~~864~~ / 年 | GLM-5.1, GLM-5-Turbo, GLM-5 | 6,000 | 30,000 | 120,000 | 免费MCP次数 | • 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算 • 官方只有周限量无月限量，这里按照1月=4周计算 |
 | 智谱国际版 | Max | [跳转](https://z.ai/subscribe?ic=YBEQOH949X) | - | $160 | $432 ~~480~~ / 季 | $1536 ~~1920~~ / 年 | GLM-5.1, GLM-5-Turbo, GLM-5 | 24,000 | 120,000 | 480,000 | 免费MCP次数 | • 4倍Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算 • 官方只有周限量无月限量，这里按照1月=4周计算 |
-| MiniMax | Starter | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=LXhBWH1gnf&source=link) | - | ¥29 | - / 季 | ¥290 ~~348~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 600 | 6,000 | 24,000 | - | 约50TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
-| MiniMax | Plus | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=LXhBWH1gnf&source=link) | - | ¥49 | - / 季 | ¥490 ~~588~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 1,500 | 15,000 | 60,000 | - | 约50TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
-| MiniMax | Max | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=LXhBWH1gnf&source=link) | - | ¥119 | - / 季 | ¥1190 ~~1428~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 4,500 | 45,000 | 180,000 | - | 约50TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
-| MiniMax | Plus-极速 | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=LXhBWH1gnf&source=link) | - | ¥98 | - / 季 | ¥980 ~~1176~~ / 年 | MiniMax-M2.7-highspeed, MiniMax-M2.5-highspeed | 1,500 | 15,000 | 60,000 | - | 约100TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
-| MiniMax | Max-极速 | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=LXhBWH1gnf&source=link) | - | ¥199 | - / 季 | ¥1990 ~~2388~~ / 年 | MiniMax-M2.7-highspeed, MiniMax-M2.5-highspeed | 4,500 | 45,000 | 180,000 | - | 约100TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
+| MiniMax | Starter | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=9Y0LERC65q&source=link) | - | ¥29 | - / 季 | ¥290 ~~348~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 600 | 6,000 | 24,000 | - | 约50TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
+| MiniMax | Plus | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=9Y0LERC65q&source=link) | - | ¥49 | - / 季 | ¥490 ~~588~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 1,500 | 15,000 | 60,000 | - | 约50TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
+| MiniMax | Max | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=9Y0LERC65q&source=link) | - | ¥119 | - / 季 | ¥1190 ~~1428~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 4,500 | 45,000 | 180,000 | - | 约50TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
+| MiniMax | Plus-极速 | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=9Y0LERC65q&source=link) | - | ¥98 | - / 季 | ¥980 ~~1176~~ / 年 | MiniMax-M2.7-highspeed, MiniMax-M2.5-highspeed | 1,500 | 15,000 | 60,000 | - | 约100TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
+| MiniMax | Max-极速 | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=9Y0LERC65q&source=link) | - | ¥199 | - / 季 | ¥1990 ~~2388~~ / 年 | MiniMax-M2.7-highspeed, MiniMax-M2.5-highspeed | 4,500 | 45,000 | 180,000 | - | 约100TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
 | 字节·方舟 | Lite | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥40 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 1,200 | 9,000 | 18,000 | ArkClaw 7天体验 | - |
 | 字节·方舟 | Pro | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥200 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 6,000 | 45,000 | 90,000 | 免费ArkClaw | - |
 | 阿里·百炼 | Pro | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | - | ¥200 | - / 季 | - / 年 | Qwen-3.6-Plus, Qwen-3.5系列, MiniMax-M2.5, GLM-5, Kimi-K2.5 | 6,000 | 45,000 | 90,000 | - | - |
@@ -59,10 +59,10 @@
 | 小米·MiMo | Max | [跳转](https://mimo.mi.com/) | ¥579.92 | ¥659 | - / 季 | - / 年 | MiMo-V2-Pro, MiMo-V2-Omni, MiMo-V2-TTS | 无限制 | 无限制 | 无限制 | TTS限时免费 | • 1600M(16亿) Credits，无5小时限额，支持集中消耗 • 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x |
 | 腾讯云 | Lite | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥7.9 | ¥40 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 1,200 | 9,000 | 18,000 | - | - |
 | 腾讯云 | Pro | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥39.9 | ¥200 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 6,000 | 45,000 | 90,000 | - | - |
-| 腾讯·Token | Lite | [跳转](https://cloud.tencent.com/act/pro/tokenplan) | - | ¥39 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 无限制 | 无限制 | 无限制 | - | 注意此为TokenPlan，而非CodingPlan。35M(3500万) Tokens 额度，约 70 轮问答 |
-| 腾讯·Token | Standard | [跳转](https://cloud.tencent.com/act/pro/tokenplan) | - | ¥99 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 无限制 | 无限制 | 无限制 | - | 注意此为TokenPlan，而非CodingPlan。100M(1亿) Tokens 额度，可执行约 200 轮问答 |
-| 腾讯·Token | Pro | [跳转](https://cloud.tencent.com/act/pro/tokenplan) | - | ¥299 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 无限制 | 无限制 | 无限制 | - | 注意此为TokenPlan，而非CodingPlan。320M(3.2亿) Tokens 额度 |
-| 腾讯·Token | Max | [跳转](https://cloud.tencent.com/act/pro/tokenplan) | - | ¥599 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 无限制 | 无限制 | 无限制 | - | 注意此为TokenPlan，而非CodingPlan。650M(6.5亿) Tokens 额度 |
+| 腾讯云 | Lite | [跳转](https://cloud.tencent.com/act/pro/tokenplan) | - | ¥39 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 无限制 | 无限制 | 无限制 | - | 注意此为TokenPlan，而非CodingPlan。35M(3500万) Tokens 额度，约 70 轮问答 |
+| 腾讯云 | Standard | [跳转](https://cloud.tencent.com/act/pro/tokenplan) | - | ¥99 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 无限制 | 无限制 | 无限制 | - | 注意此为TokenPlan，而非CodingPlan。100M(1亿) Tokens 额度，可执行约 200 轮问答 |
+| 腾讯云 | Pro | [跳转](https://cloud.tencent.com/act/pro/tokenplan) | - | ¥299 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 无限制 | 无限制 | 无限制 | - | 注意此为TokenPlan，而非CodingPlan。320M(3.2亿) Tokens 额度 |
+| 腾讯云 | Max | [跳转](https://cloud.tencent.com/act/pro/tokenplan) | - | ¥599 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 无限制 | 无限制 | 无限制 | - | 注意此为TokenPlan，而非CodingPlan。650M(6.5亿) Tokens 额度 |
 | 百度·千帆 | Lite | [跳转](https://cloud.baidu.com/product/codingplan.html) | - | ¥40 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.5, DeepSeek-V3.2 | 1,200 | 9,000 | 18,000 | - | 使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill |
 | 百度·千帆 | Pro | [跳转](https://cloud.baidu.com/product/codingplan.html) | - | ¥200 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.5, DeepSeek-V3.2 | 6,000 | 45,000 | 90,000 | - | 使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill |
 | 京东云 | Lite | [跳转](https://www.jdcloud.com/cn/pages/codingplan) | ¥7.9 | ¥40 | - / 季 | - / 年 | Kimi-K2.5, GLM-5, MiniMax-M2.5, DeepSeek-V3.2, Qwen-3-Coder | 1,200 | 9,000 | 18,000 | - | - |
