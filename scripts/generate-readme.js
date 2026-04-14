@@ -73,12 +73,13 @@ function getOriginalPrice(currentPrice, multiplier) {
 
 // 生成套餐对比表
 function generateTable(plans) {
-    let md = '| 平台 | 套餐 | 链接 | 首月价格 | 连续包月 | 连续包季 | 连续包年 | 支持模型 | 5小时请求数 | 每周请求数 | 每月总请求数 | 其他权益 | 备注 |\n';
-    md += '|------|------|---------|---------|---------|---------|---------|---------|-----------|-----------|-----------|---------|------|\n';
+    let md = '| 平台 | 套餐 | 类型 | 链接 | 首月价格 | 连续包月 | 连续包季 | 连续包年 | 支持模型 | 5小时请求数 | 每周请求数 | 每月总请求数 | 其他权益 | 备注 |\n';
+    md += '|------|------|------|---------|---------|---------|---------|---------|---------|-----------|-----------|-----------|---------|------|\n';
     
     plans.forEach(plan => {
         const vendor = plan.vendor;
         const planName = plan.plan;
+        const type = plan.type || 'Coding Plan';
         const link = `[跳转](${plan.action})`;
         const currency = plan.currency || '¥';
         const firstMonth = formatPrice(plan.firstMonthPrice, currency);
@@ -98,7 +99,7 @@ function generateTable(plans) {
         const benefits = escapeTableCell(plan.benefits?.join(', '));
         const note = escapeTableCell(plan.note);
 
-        md += `| ${vendor} | ${planName} | ${link} | ${firstMonth} | ${monthly} | ${quarterly} | ${yearly} | ${models} | ${fiveHoursRequests} | ${weeklyRequests} | ${monthlyRequests} | ${benefits} | ${note} |\n`;
+        md += `| ${vendor} | ${planName} | ${type} | ${link} | ${firstMonth} | ${monthly} | ${quarterly} | ${yearly} | ${models} | ${fiveHoursRequests} | ${weeklyRequests} | ${monthlyRequests} | ${benefits} | ${note} |\n`;
     });
     
     return md;
