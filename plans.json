@@ -430,7 +430,7 @@
     "note": ""
   },
   {
-    "vendor": "腾讯·Token",
+    "vendor": "腾讯云",
     "plan": "Lite",
     "type": "Token Plan",
     "action": "https://cloud.tencent.com/act/pro/tokenplan",
@@ -452,7 +452,7 @@
     "note": "注意此为TokenPlan，而非CodingPlan。35M(3500万) Tokens 额度，约 70 轮问答"
   },
   {
-    "vendor": "腾讯·Token",
+    "vendor": "腾讯云",
     "plan": "Standard",
     "type": "Token Plan",
     "action": "https://cloud.tencent.com/act/pro/tokenplan",
@@ -474,7 +474,7 @@
     "note": "注意此为TokenPlan，而非CodingPlan。100M(1亿) Tokens 额度，可执行约 200 轮问答"
   },
   {
-    "vendor": "腾讯·Token",
+    "vendor": "腾讯云",
     "plan": "Pro",
     "type": "Token Plan",
     "action": "https://cloud.tencent.com/act/pro/tokenplan",
@@ -496,7 +496,7 @@
     "note": "注意此为TokenPlan，而非CodingPlan。320M(3.2亿) Tokens 额度"
   },
   {
-    "vendor": "腾讯·Token",
+    "vendor": "腾讯云",
     "plan": "Max",
     "type": "Token Plan",
     "action": "https://cloud.tencent.com/act/pro/tokenplan",
