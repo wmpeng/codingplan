@@ -1,8 +1,8 @@
 {
   "header": {
     "title": "AI Coding Plan 对比",
-    "updateDate": "更新日期2026.4.14 | 增加类型列，区分CodingPlan和TokenPlan",
-    "subtitle": "九大平台 智谱AI、Kimi、MiniMax、小米·MiMo、字节·方舟、阿里·百炼、百度·千帆、腾讯云、京东云，全面对比",
+    "updateDate": "更新日期2026.4.15 | 添加讯飞·星火套餐数据",
+    "subtitle": "十大平台 智谱AI、Kimi、MiniMax、小米·MiMo、字节·方舟、阿里·百炼、百度·千帆、腾讯云、京东云、讯飞·星火，全面对比",
     "models": "支持Qwen-3.6，Qwen-3.5，Doubao-Seed-2.0，MiniMax-M2.7，MiniMax-M2.5，GLM-5.1，GLM-5，MiMo-V2-Pro，Kimi-K2.5等模型",
     "github": {
       "url": "https://github.com/wmpeng/codingplan",
@@ -23,8 +23,16 @@
       "name": "MiniMax",
       "rating": 5,
       "reasons": [
-        "在无需抢购的之中，入门套餐价格最低。+1",
+        "支持SOTA模型的入门套餐中，常规价格最低。+1",
         "独占MiniMax-M2.7模型。+1"
+      ]
+    },
+    {
+      "name": "讯飞·星火",
+      "rating": 4,
+      "reasons": [
+        "高效版支持GLM5.1(128k上下文)。+0.5",
+        "无忧版即支持无次Qwen3.5-35B-A3B（20M/日）。+0.5"
       ]
     },
     {
@@ -107,6 +115,12 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.4.15",
+      "items": [
+        "添加讯飞·星火套餐数据"
+      ]
+    },
     {
       "date": "2026.4.14",
       "items": [
