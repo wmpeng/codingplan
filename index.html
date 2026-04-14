@@ -1002,6 +1002,18 @@
             font-weight: 600;
         }
 
+        .recommendation-reasons a {
+            color: var(--accent-primary);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            transition: color 0.2s ease;
+        }
+
+        .recommendation-reasons a:hover {
+            color: var(--text-primary);
+        }
+
         /* 评分标准 */
         .rating-guide {
             margin-bottom: 24px;
@@ -3061,6 +3073,45 @@
             `;
         }
 
+        function sanitizeExternalUrl(url) {
+            if (typeof url !== 'string') return null;
+
+            try {
+                const parsedUrl = new URL(url, window.location.origin);
+                if (parsedUrl.protocol === 'http:' || parsedUrl.protocol === 'https:') {
+                    return parsedUrl.href;
+                }
+            } catch (error) {
+                return null;
+            }
+
+            return null;
+        }
+
+        function formatRecommendationText(text) {
+            if (text === null || text === undefined) return '';
+
+            const linkPlaceholders = [];
+            const withLinkPlaceholders = String(text).replace(/\[([^\]]+)\]\(([^\s)]+)\)/g, (match, label, url) => {
+                const safeUrl = sanitizeExternalUrl(url);
+                if (!safeUrl) return match;
+
+                const placeholder = `__RECOMMENDATION_LINK_${linkPlaceholders.length}__`;
+                linkPlaceholders.push(
+                    `<a href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`
+                );
+                return placeholder;
+            });
+
+            let formatted = escapeHtml(withLinkPlaceholders);
+            formatted = formatted.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            formatted = formatted.replace(/__RECOMMENDATION_LINK_(\d+)__/g, (_, index) => {
+                return linkPlaceholders[Number(index)] || '';
+            });
+
+            return formatted;
+        }
+
         // 渲染平台推荐
         function renderRecommendations(recommendations) {
             const container = document.getElementById('recommendations');
@@ -3069,9 +3120,7 @@
             container.innerHTML = recommendations.map(rec => {
                 const stars = '⭐️'.repeat(rec.rating);
                 const reasonsHtml = rec.reasons.map(reason => {
-                    // 处理 **text** 格式的加粗
-                    const formattedReason = reason.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                    return `<li>${formattedReason}</li>`;
+                    return `<li>${formatRecommendationText(reason)}</li>`;
                 }).join('');
 
                 // 根据 rec.name 在 allPlans 中查找第一个匹配的 vendor，获取链接
