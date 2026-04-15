@@ -9,6 +9,19 @@
         /* relays.html 覆盖 shared.css 的差异值 */
         html { scroll-behavior: smooth; }
         .header .subtitle { margin-bottom: 8px; }
+        .header-info {
+            width: min(760px, 100%);
+            margin: 0 auto;
+            padding: 12px 14px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.62);
+            color: var(--text-tertiary);
+            font-size: 13px;
+            line-height: 1.75;
+            text-align: left;
+            box-shadow: var(--shadow-sm);
+        }
         .notes-section li { line-height: 1.65; }
 
         /* ── 区块标题 ── */
@@ -748,6 +761,7 @@
             .header { margin-bottom: 24px; padding: 24px 0; }
             .header h1 { font-size: 24px; }
             .header .subtitle { font-size: 14px; }
+            .header-info { font-size: 12px; padding: 10px 12px; }
             .relay-card-body { padding: 0 16px 20px; }
             .relay-card-header { padding: 16px 16px 14px; }
             .models-mini-table { display: block; overflow-x: auto; }
@@ -802,6 +816,8 @@
             <h1 id="pageTitle">API 中转站</h1>
             <div class="update-date" id="updateDate">更新日期 2026.4.7</div>
             <div class="subtitle" id="subtitle">OpenRouter 等 API 中转与云推理平台，综合评价、价格、透明度、模型覆盖、可用性、国内支付与标签等维度对比</div>
+            <div class="header-info" id="headerInfo">本页主要整理常见 API 中转平台的公开信息，方便先做横向筛选。
+涉及价格、模型可用性、支付与网络等内容时，请在接入前再到平台官网或控制台核对最新规则。</div>
         </div>
 
         <hr class="section-divider">
@@ -1422,6 +1438,13 @@
                 document.getElementById('pageTitle').textContent = h.title;
                 document.getElementById('updateDate').textContent = h.updateDate;
                 document.getElementById('subtitle').textContent = h.subtitle;
+                const headerInfoEl = document.getElementById('headerInfo');
+                if (typeof h.info === 'string' && h.info.trim()) {
+                    headerInfoEl.innerHTML = escapeHtmlPreserveBreaks(h.info);
+                    headerInfoEl.hidden = false;
+                } else {
+                    headerInfoEl.hidden = true;
+                }
                 if (h.github) {
                     document.getElementById('githubLink').href = h.github.url;
                     document.getElementById('githubText').textContent = h.github.text;

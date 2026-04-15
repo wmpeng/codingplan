@@ -3,6 +3,7 @@
     "title": "API 中转站对比",
     "updateDate": "更新日期 2026.4.12",
     "subtitle": "对比 OpenRouter 等 API 中转平台，价格、真实性、模型覆盖、可用性、支付便捷性等，帮助用户快速选择",
+    "info": "本页主要整理常见 API 中转平台的公开信息，方便先做横向筛选。\n涉及价格、模型可用性、支付与网络等内容时，请在接入前再到平台官网或控制台核对最新规则。",
     "github": {
       "url": "https://github.com/wmpeng/codingplan",
       "text": "GitHub"
