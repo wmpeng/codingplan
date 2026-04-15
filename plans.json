@@ -156,7 +156,7 @@
     "monthlyRequests": 24000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算"
+    "note": "• 约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
   {
     "vendor": "MiniMax",
@@ -176,7 +176,7 @@
     "monthlyRequests": 60000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算"
+    "note": "• 约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
   {
     "vendor": "MiniMax",
@@ -196,7 +196,7 @@
     "monthlyRequests": 180000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算"
+    "note": "• 约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
   {
     "vendor": "MiniMax",
@@ -216,7 +216,7 @@
     "monthlyRequests": 60000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "约100TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算"
+    "note": "• 约100TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
   {
     "vendor": "MiniMax",
@@ -236,7 +236,7 @@
     "monthlyRequests": 180000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "约100TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算"
+    "note": "• 约100TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算"
   },
   {
     "vendor": "讯飞·星火",
@@ -307,7 +307,7 @@
     "monthlyRequests": 90000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": ""
+    "note": "• GLM5.1是**128K**上下文的，官方说正在解决这个问题 "
   },
   {
     "vendor": "字节·方舟",
