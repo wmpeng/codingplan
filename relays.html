@@ -1357,7 +1357,7 @@
                 const notesSection = detail.notes ? `
                     <div class="relay-section relay-section-notes">
                         <h4>注意事项</h4>
-                        <p>${escapeHtml(detail.notes)}</p>
+                        <p>${escapeHtmlPreserveBreaks(detail.notes)}</p>
                     </div>
                 ` : '';
 
@@ -1377,19 +1377,7 @@
                             ${detail.description ? `
                                 <div class="relay-section">
                                     <h4>产品简介</h4>
-                                    <p>${escapeHtml(detail.description)}</p>
-                                </div>
-                            ` : ''}
-                            ${detail.billingRules ? `
-                                <div class="relay-section">
-                                    <h4>计费规则</h4>
-                                    <p>${escapeHtml(detail.billingRules)}</p>
-                                </div>
-                            ` : ''}
-                            ${detail.networkAndPayment ? `
-                                <div class="relay-section">
-                                    <h4>网络与支付</h4>
-                                    <p>${escapeHtml(detail.networkAndPayment)}</p>
+                                    <p>${escapeHtmlPreserveBreaks(detail.description)}</p>
                                 </div>
                             ` : ''}
                             ${modelsSection}
