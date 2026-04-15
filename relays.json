@@ -390,7 +390,6 @@
     "name": "N1N",
     "homeUrl": "https://n1n.ai",
     "pricingUrl": "https://api.n1n.ai/pricing",
-    "pricingUrlForAgent": "https://api.n1n.ai/api/pricing_new",
     "updatedAt": "2026.04.15",
     "matrix": {
       "rating": {
@@ -592,7 +591,7 @@
     "id": "llmhub",
     "name": "LLM Hub",
     "homeUrl": "https://www.llmhub.com.cn/",
-    "pricingUrl": "https://doc.llmhub.app/guide.html",
+    "pricingUrl": "https://www.llmhub.com.cn/pricing",
     "updatedAt": "2026.04.15",
     "matrix": {
       "rating": {
@@ -601,11 +600,11 @@
       },
       "price": {
         "stars": 4,
-        "text": "按 Token 按量计费；文档说明模型单价与 OpenAI / Claude 官方公开价对齐；充值可能收取一定比例手续费（文档曾示例约 5%，含支付通道成本，以当前充值页为准）；额度一般不设过期时间（以账户规则为准）"
+        "text": "按 Token 按量计费；可通过公开接口 https://www.llmhub.com.cn/api/pricing 拉取模型倍率，再结合 /api/status 换算每百万 Token 价格；充值与手续费以控制台为准"
       },
       "authenticity": {
         "stars": 4,
-        "text": "文档写明与 OpenAI/Claude 官方单价对齐并单独说明充值手续费（如文档所述比例）；兑换码与多域名流程略增理解成本"
+        "text": "存在公开价格接口（无需登录）可做程序化核对；但最终实扣仍需结合账户分组、活动与结算规则复核"
       },
       "modelCoverage": {
         "stars": 4,
@@ -630,49 +629,85 @@
       "description": "LLM Hub（https://www.llmhub.com.cn/）定位为「一站式人工智能集成平台」：聚合多厂商模型，强调 OpenAI 兼容格式、一行接入、无需大改现有代码。\n控制台入口见站点提供的在线服务与 API Endpoint 说明。\n部分帮助文档与价格说明托管于 doc.llmhub.app 等域名，与 .cn 主站可能同属一套产品体系，使用前请以当前登录域名与密钥为准。",
       "keyModels": [
         {
-          "name": "Claude-Opus-4.6（按官方同价原则）",
-          "inputPer1M": "$5.00",
-          "outputPer1M": "$25.00",
-          "note": "文档声明与官方同价；以控制台实际支持型号为准"
+          "name": "claude-opus-4.6",
+          "inputPer1M": "$5.75",
+          "outputPer1M": "$28.77",
+          "note": "按 https://www.llmhub.com.cn/api/pricing + /api/status 换算（四舍五入）"
         },
         {
-          "name": "Claude-Sonnet-4.6（按官方同价原则）",
-          "inputPer1M": "$3.00",
-          "outputPer1M": "$15.00",
+          "name": "claude-sonnet-4.6",
+          "inputPer1M": "$3.45",
+          "outputPer1M": "$17.26",
           "note": "同上"
         },
         {
-          "name": "GPT-5.4（按官方同价原则）",
+          "name": "gpt-5.4",
           "inputPer1M": "$2.50",
           "outputPer1M": "$15.00",
           "note": "同上"
         },
         {
-          "name": "GPT-5.3-Codex（按官方同价原则）",
-          "inputPer1M": "$1.75",
-          "outputPer1M": "$14.00",
+          "name": "gpt-5.3-codex",
+          "inputPer1M": "$2.01",
+          "outputPer1M": "$16.10",
           "note": "同上"
         },
         {
-          "name": "Gemini-3.1-Pro-Preview / Gemini-3-Flash-Preview",
-          "inputPer1M": "—",
-          "outputPer1M": "—",
-          "note": "当前公开文档未列出 Gemini 3.x 明确单价"
+          "name": "gemini-3.1-pro-preview",
+          "inputPer1M": "$2.30",
+          "outputPer1M": "$13.81",
+          "note": "同上"
         },
         {
-          "name": "GLM-5.1 / GLM-5 / MiniMax-M2.7 / MiniMax-M2.5",
-          "inputPer1M": "—",
-          "outputPer1M": "—",
-          "note": "当前公开文档未列出对应国内模型单价"
+          "name": "gemini-3-flash-preview",
+          "inputPer1M": "$0.58",
+          "outputPer1M": "$3.45",
+          "note": "同上"
         },
         {
-          "name": "Kimi-K2.5 / DeepSeek-V3.2 / Qwen-3.6-Plus",
+          "name": "glm-5",
+          "inputPer1M": "$0.55",
+          "outputPer1M": "$2.47",
+          "note": "同上"
+        },
+        {
+          "name": "minimax-m2.5",
+          "inputPer1M": "$0.29",
+          "outputPer1M": "$1.15",
+          "note": "同上"
+        },
+        {
+          "name": "kimi-k2.5",
+          "inputPer1M": "$0.55",
+          "outputPer1M": "$2.88",
+          "note": "同上"
+        },
+        {
+          "name": "deepseek-v3.2",
+          "inputPer1M": "$0.27",
+          "outputPer1M": "$0.41",
+          "note": "同上"
+        },
+        {
+          "name": "qwen3.6-plus",
+          "inputPer1M": "$0.27",
+          "outputPer1M": "$1.64",
+          "note": "同上"
+        },
+        {
+          "name": "GLM-5.1 / MiniMax-M2.7",
           "inputPer1M": "—",
           "outputPer1M": "—",
+          "note": "当前 /api/pricing 未检索到对应型号"
+        },
+        {
+          "name": "换算说明",
+          "inputPer1M": "input = model_ratio × 2",
+          "outputPer1M": "output = model_ratio × completion_ratio × 2",
           "note": "同上"
         }
       ],
-      "notes": "首页营销文案中的模型版本名会随市场更新。\n接入与扣费规则请以 https://www.llmhub.com.cn/ 控制台及 https://doc.llmhub.app/ 最新文档为准。"
+      "notes": "模型价格可由公开接口 https://www.llmhub.com.cn/api/pricing 获取倍率后换算（结合 /api/status 中 quota_per_unit、price、usd_exchange_rate）。\n首页营销文案中的模型版本名会随市场更新。\n最终接入与扣费规则请以 https://www.llmhub.com.cn/ 控制台为准。"
     }
   },
   {

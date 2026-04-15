@@ -26,8 +26,8 @@
 - Sonnet-4.6
 - GPT-5.4
 - GPT-5.3-Codex
-- Gemini-3.1-Pro-Preview
-- Gemini-3 Flash-Preview
+- Gemini-3.1-Pro
+- Gemini-3-Flash
 - GLM-5.1
 - GLM-5
 - MiniMax-M2.7
@@ -35,6 +35,7 @@
 - Kimi-K2.5
 - DeepSeek-V3.2
 - Qwen-3.6-Plus
+- Qwen-3.5
 
 > 注意：不同平台的模型 ID 命名不一致，可按“近似可用型号”映射，但要在 `note` 说明。
 
@@ -133,10 +134,22 @@
 
 ### H. LLM Hub（`id: llmhub`）
 
-- 文档：`https://doc.llmhub.app/guide.html`
-- 该平台通常声明“与 OpenAI/Claude 官方同价”。
-- 对已声明同价且能明确映射的模型（如 GPT / Claude）可按官方价写入，并在 `note` 写“按官方同价原则”。
-- 对文档未给出明确单价或未明确支持的新型号（Gemini 3.x、GLM5.x 等），写 `—` 并在 `note` 标注“公开文档未列出明确单价”。
+- 公开接口（无需登录）：`https://www.llmhub.com.cn/api/pricing`
+- 换算元数据接口：`https://www.llmhub.com.cn/api/status`
+- `api/pricing` 里主要取：
+  - `data[].model_name`
+  - `data[].model_ratio`
+  - `data[].completion_ratio`
+- `api/status` 里主要取：
+  - `data.quota_per_unit`
+  - `data.price`
+  - `data.usd_exchange_rate`
+- 推荐换算（按每百万 token）：
+  - `input_cny_per_1m = 1_000_000 * model_ratio / quota_per_unit * price`
+  - `output_cny_per_1m = input_cny_per_1m * completion_ratio`
+  - `input_usd_per_1m = input_cny_per_1m / usd_exchange_rate`
+  - `output_usd_per_1m = output_cny_per_1m / usd_exchange_rate`
+- 若目标模型在 `api/pricing` 中不存在，写 `—` 并在 `note` 标注“当前 /api/pricing 未检索到对应型号”。
 
 ---
 
@@ -166,6 +179,7 @@
 1. 先更新：`OpenRouter`、`Poe`、`Ofox`、`DMXAPI`（接口稳定、可机读）
 2. 再更新：`SiliconFlow`（页面提取）
 3. 再更新：`N1N`（倍率制）
-4. 最后处理：`PoloAPI`、`LLM Hub`（登录受限/文档同价）
+4. 最后处理：`PoloAPI`（登录受限）
+5. `LLM Hub` 可在任意阶段处理（公开接口可机读）
 
 执行时，优先保证“可追溯性”和“不要编造价格”。
