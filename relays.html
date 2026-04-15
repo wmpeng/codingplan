@@ -844,6 +844,9 @@
         let matrixFilterState = { platform: [], byKey: {} };
         let currentMatrixDimensions = [];
         let matrixFilterGlobalEventsBound = false;
+        let matrixResizeObserver = null;
+        let matrixRelayoutFrame = 0;
+        let lastMatrixWrapperWidth = 0;
 
         function getMatrixDimensionValueType(dim) {
             const rawType = dim && typeof dim.valueType === 'string' ? dim.valueType.trim() : '';
@@ -1116,6 +1119,35 @@
             }
         }
 
+        function scheduleMatrixRelayout() {
+            if (matrixRelayoutFrame) return;
+            matrixRelayoutFrame = window.requestAnimationFrame(() => {
+                matrixRelayoutFrame = 0;
+                if (!relaysData.length || !currentMatrixDimensions.length) return;
+                applyMatrixFilters();
+            });
+        }
+
+        function bindMatrixResizeObserver() {
+            const wrapper = document.getElementById('matrixWrapper');
+            if (!wrapper) return;
+
+            lastMatrixWrapperWidth = Math.round(wrapper.getBoundingClientRect().width);
+
+            if (typeof ResizeObserver === 'function' && !matrixResizeObserver) {
+                matrixResizeObserver = new ResizeObserver(entries => {
+                    const entry = entries[0];
+                    const nextWidth = Math.round(entry.contentRect.width);
+                    if (!nextWidth || nextWidth === lastMatrixWrapperWidth) return;
+                    lastMatrixWrapperWidth = nextWidth;
+                    scheduleMatrixRelayout();
+                });
+                matrixResizeObserver.observe(wrapper);
+            }
+
+            window.addEventListener('resize', scheduleMatrixRelayout, { passive: true });
+        }
+
         /** 1–5 星 HTML；非法或缺省返回空字符串 */
         function renderStarRatingHtml(raw) {
             const n = Math.round(Number(raw));
@@ -1206,23 +1238,45 @@
             const TAG_W = 140;  // ── 标签列宽度
             const DIM_MIN = 250;  // ── 其他维度最小宽度（乘以权重后可能更宽）
             const RATING_WEIGHT = 1.2;  // ── 综合评价维度权重，其他维度默认为 1，权重越高列越宽
+            const wrapperWidth = Math.round(wrapper.clientWidth || 0);
+            const tagDimensionCount = dimensions.filter(d => isMatrixTagDimension(d)).length;
             const flexibleDimensions = dimensions.filter(d => !isMatrixTagDimension(d));
             const totalWeight = flexibleDimensions.reduce((s, d) => s + (d.key === 'rating' ? RATING_WEIGHT : 1), 0);
-            const minTableW = Math.max(640, PLATFORM_W + TAG_W + DIM_MIN * totalWeight);
+            const baseFlexibleWidth = DIM_MIN * totalWeight;
+            const minTableW = Math.max(640, PLATFORM_W + (TAG_W * tagDimensionCount) + baseFlexibleWidth);
+            const targetTableW = Math.max(minTableW, wrapperWidth);
+            const availableFlexibleWidth = Math.max(baseFlexibleWidth, targetTableW - PLATFORM_W - (TAG_W * tagDimensionCount));
+            const dimensionWidths = new Map();
+            let remainingFlexibleWidth = availableFlexibleWidth;
+            let remainingWeight = totalWeight;
+
+            dimensions.forEach(dim => {
+                if (isMatrixTagDimension(dim)) {
+                    dimensionWidths.set(dim.key, TAG_W);
+                    return;
+                }
+
+                const weight = dim.key === 'rating' ? RATING_WEIGHT : 1;
+                const dimPx = remainingWeight > 0
+                    ? Math.round((remainingFlexibleWidth * weight) / remainingWeight)
+                    : Math.round(DIM_MIN * weight);
+
+                dimensionWidths.set(dim.key, dimPx);
+                remainingFlexibleWidth -= dimPx;
+                remainingWeight -= weight;
+            });
+
+            const tableWidth = PLATFORM_W + dimensions.reduce((sum, dim) => sum + (dimensionWidths.get(dim.key) || 0), 0);
 
             const theadDimCols = dimensions.map(dim => {
                 const thExtra = isMatrixStarTextDimension(dim) ? ' matrix-th-star-text' : '';
                 const ratingTh = dim.key === 'rating' ? ' matrix-col-rating' : '';
-                if (isMatrixTagDimension(dim)) {
-                    return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${TAG_W}px;min-width:${TAG_W}px;max-width:${TAG_W}px">${escapeHtml(dim.label)}</th>`;
-                }
-                const w = dim.key === 'rating' ? RATING_WEIGHT : 1;
-                const dimPx = Math.round(DIM_MIN * w);
+                const dimPx = dimensionWidths.get(dim.key) || TAG_W;
                 const helpText = typeof dim.helpText === 'string' ? dim.helpText.trim() : '';
                 if (helpText) {
-                    return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${dimPx}px;min-width:${dimPx}px;max-width:${dimPx}px"><span class="matrix-th-help"><button type="button" class="matrix-help-trigger" aria-label="${escapeHtml(dim.label)}说明">${escapeHtml(dim.label)}</button><span class="matrix-help-bubble" role="tooltip">${escapeHtml(helpText)}</span></span></th>`;
+                    return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${dimPx}px;min-width:${dimPx}px"><span class="matrix-th-help"><button type="button" class="matrix-help-trigger" aria-label="${escapeHtml(dim.label)}说明">${escapeHtml(dim.label)}</button><span class="matrix-help-bubble" role="tooltip">${escapeHtml(helpText)}</span></span></th>`;
                 }
-                return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${dimPx}px;min-width:${dimPx}px;max-width:${dimPx}px">${escapeHtml(dim.label)}</th>`;
+                return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${dimPx}px;min-width:${dimPx}px">${escapeHtml(dim.label)}</th>`;
             }).join('');
 
             const tbody = relays.map(r => {
@@ -1243,10 +1297,10 @@
             }).join('');
 
             wrapper.innerHTML = `
-                <table class="matrix-table" style="width:${minTableW}px;min-width:${minTableW}px">
+                <table class="matrix-table" style="width:${tableWidth}px;min-width:${minTableW}px">
                     <thead>
                         <tr>
-                            <th style="width:${PLATFORM_W}px;min-width:${PLATFORM_W}px;max-width:${PLATFORM_W}px">平台</th>
+                            <th style="width:${PLATFORM_W}px;min-width:${PLATFORM_W}px">平台</th>
                             ${theadDimCols}
                         </tr>
                     </thead>
@@ -1426,6 +1480,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', async () => {
+            bindMatrixResizeObserver();
             await loadConfig();
             await loadRelays();
         });
