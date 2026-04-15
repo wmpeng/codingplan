@@ -4,36 +4,35 @@
     "name": "OpenRouter",
     "homeUrl": "https://openrouter.ai",
     "pricingUrl": "https://openrouter.ai/models",
-    "updatedAt": "2026.04.12",
+    "updatedAt": "2026.04.15",
     "matrix": {
       "rating": {
         "stars": 4,
         "text": "• 是最早、最大的大模型聚合平台之一\n• 稳定性好模型全，唯一的缺点是价格贵\n• 5000万用户，每月70T(70万亿)token"
       },
       "billingModel": {
-        "stars": 2,
-        "text": "• 部分模型前期免费，如小米Mimo和Qwen3.6plus\n• 部分模型永久免费，如Step 3.5 Flash\n• 但是普遍定价并不便宜，和官网定价基本相同"
+        "stars": 3,
+        "text": "• 常规定价并不便宜，和官网定价基本相同\n• 部分模型前期免费，如小米MiMo和Qwen3.6plus\n• 部分模型永久免费，如Step 3.5 Flash"
       },
       "transparency": {
         "stars": 5,
-        "text": "• 平台正规，大多模型有官网厂商\n• 模型按美元/Token扣费，厂商与路由可指定，整体透明、无掺水、无模糊倍率"
+        "text": "• 模型按美元/Token计费\n• 厂商与路由可指定\n• 无掺水、无模糊倍率"
       },
       "modelCoverage": {
         "stars": 5,
-        "text": "• 300+ 模型、60+ 厂商\n• 覆盖模型极广，几乎所有模型都能找到"
+        "text": "• 300+ 模型、60+ 厂商\n• 覆盖模型极广，常见模型都能找到"
       },
       "cnAccess": {
-        "stars": 4,
-        "text": "• 服务本身稳定性强，主流模型有多个提供商切换\n• 网络方面，国内通常可直连，偶发不稳定"
+        "stars": 3,
+        "text": "• 服务本身稳定性强，可多个提供商切换\n• 网络方面，国内通常可直连，偶发不稳定\n• 部分模型屏蔽国内访问"
       },
       "cnPayment": {
         "stars": 2,
-        "text": "• 支持海外 Visa/Mastercard\n• 支持 USDC 加密货币\n• 不支持微信/支付宝"
+        "text": "• 支持海外 Visa/Mastercard\n• 支持 USDC 加密货币\n• 不支持微信/支付宝和国内信用卡"
       },
       "tags": [
-        "多模型比价",
-        "OpenAI 兼容",
-        "免多账号"
+        "国内模型",
+        "海外模型"
       ]
     },
     "detail": {
@@ -74,37 +73,35 @@
     "name": "SiliconFlow硅基流动",
     "homeUrl": "https://siliconflow.cn/zh-cn/",
     "pricingUrl": "https://siliconflow.cn/pricing",
-    "updatedAt": "2026.04.12",
+    "updatedAt": "2026.04.15",
     "matrix": {
       "rating": {
-        "stars": 5,
-        "text": "国内主体、人民币与常见本土支付顺畅，模型与价格可查，产品线全，综合省心度高"
+        "stars": 3,
+        "text": "• 国内正规主体平台\n• 人民币与常见本土支付顺畅\n• 提供国内开源模型"
       },
       "billingModel": {
-        "stars": 5,
-        "text": "大模型 API 按量（元/M tokens 等）；另有模型微调训练/推理、批量处理、预留实例与私有化方案（价格页分栏说明）"
+        "stars": 2,
+        "text": "• 模型常规定价并不便宜，和官网定价基本相同"
       },
       "transparency": {
         "stars": 5,
-        "text": "模型中心与价格页以人民币/百万 Token 等列示，条目多、可查；微调/批量/算力另表说明，需注意不同产品线计价维度不同"
+        "text": "• 模型按人民币/Token计费\n• 无掺水、无模糊倍率"
       },
       "modelCoverage": {
-        "stars": 5,
-        "text": "价格页与模型中心覆盖大量语言/多模态/语音/嵌入等模型；并列出微调与批量价目（以官网为准）"
+        "stars": 3,
+        "text": "• 覆盖主流国内开源模型，当前支持GLM-5.1、Qwen-3.5、Minimax-M2.5、Kimi-K2.5、Deepseek-V3.2"
       },
       "cnAccess": {
         "stars": 5,
-        "text": "主体为国内服务，控制台与 API 通常国内访问较顺畅"
+        "text": "• 服务本身稳定性强，可多个提供商切换\n• 国内网络访问也比较通畅"
       },
       "cnPayment": {
-        "stars": 5,
-        "text": "个人在线充值目前支持微信支付（需先完成实名认证）；对公等其它方式以官网说明为准"
+        "stars": 4,
+        "text": "• 目前支持微信支付"
       },
       "tags": [
-        "人民币计价",
-        "开源与国产模型",
-        "微调/托管",
-        "私域部署"
+        "国内模型",
+        "开源模型",
       ]
     },
     "detail": {
