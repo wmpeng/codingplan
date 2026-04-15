@@ -3,7 +3,7 @@
     "id": "openrouter",
     "name": "OpenRouter",
     "homeUrl": "https://openrouter.ai",
-    "pricingUrl": "https://openrouter.ai/models",
+    "pricingUrl": "https://openrouter.ai/models?order=top-weekly",
     "updatedAt": "2026.04.15",
     "matrix": {
       "rating": {
@@ -12,7 +12,7 @@
       },
       "price": {
         "stars": 3,
-        "text": "• 常规定价并不便宜，和官网定价基本相同\n• 部分模型前期免费，如小米MiMo和Qwen3.6plus\n• 部分模型永久免费，如Step 3.5 Flash"
+        "text": "• 常规定价并不便宜，和官方定价基本一致\n• 部分模型限免，如MiMo-V2-Pro、Qwen-3.6-Plus、Step-3.5-Flash等\n• 部分模型永久免费"
       },
       "authenticity": {
         "stars": 5,
@@ -20,15 +20,15 @@
       },
       "modelCoverage": {
         "stars": 5,
-        "text": "• 300+ 模型、60+ 厂商\n• 覆盖模型极广，常见模型都能找到"
+        "text": "• 300+ 模型、60+ 厂商\n• 覆盖模型极广，常见模型都能找到\n• 一些新模型会优先上OpenRouter测试"
       },
       "availability": {
         "stars": 3,
-        "text": "• 服务本身稳定性强，可多个提供商切换\n• 网络方面，国内通常可直连，偶发不稳定\n• 部分模型屏蔽国内访问"
+        "text": "• 服务本身稳定性强，可切换多个提供商\n• 网络方面，国内通常可直连，偶发不稳定\n• 部分模型屏蔽国内访问"
       },
       "convenience": {
         "stars": 2,
-        "text": "• 支持海外 Visa/Mastercard\n• 支持 USDC 加密货币\n• 不支持微信/支付宝和国内信用卡"
+        "text": "• 支持海外信用卡\n• 支持 USDC 加密货币\n• 不支持微信/支付宝和国内信用卡"
       },
       "tags": [
         "国内模型",
