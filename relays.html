@@ -845,10 +845,55 @@
         let currentMatrixDimensions = [];
         let matrixFilterGlobalEventsBound = false;
 
-        function getMatrixStarTextKeys() {
-            return new Set(pageConfig.matrixStarTextKeys || [
-                'rating', 'billingModel', 'transparency', 'modelCoverage', 'cnAccess', 'cnPayment'
-            ]);
+        function getMatrixDimensionValueType(dim) {
+            const rawType = dim && typeof dim.valueType === 'string' ? dim.valueType.trim() : '';
+            return rawType || 'text';
+        }
+
+        function isMatrixStarTextDimension(dim) {
+            return getMatrixDimensionValueType(dim) === 'starText';
+        }
+
+        function isMatrixTagDimension(dim) {
+            return getMatrixDimensionValueType(dim) === 'tags';
+        }
+
+        function getMatrixFilterDefaultValue(dim) {
+            return isMatrixTagDimension(dim) ? [] : '';
+        }
+
+        function normalizeMatrixDimensions(rawDimensions) {
+            if (!Array.isArray(rawDimensions)) return [];
+
+            const seenKeys = new Set();
+            const normalized = [];
+
+            rawDimensions.forEach((dim, index) => {
+                if (!dim || typeof dim !== 'object') {
+                    console.warn(`matrixDimensions[${index}] 无效，已忽略`);
+                    return;
+                }
+
+                const key = String(dim.key || '').trim();
+                if (!key) {
+                    console.warn(`matrixDimensions[${index}] 缺少 key，已忽略`);
+                    return;
+                }
+                if (seenKeys.has(key)) {
+                    console.warn(`matrixDimensions 中存在重复 key: ${key}，后续项已忽略`);
+                    return;
+                }
+
+                seenKeys.add(key);
+                normalized.push({
+                    ...dim,
+                    key,
+                    label: typeof dim.label === 'string' && dim.label.trim() ? dim.label.trim() : key,
+                    valueType: getMatrixDimensionValueType(dim)
+                });
+            });
+
+            return normalized;
         }
 
         function getValueStars(val) {
@@ -906,15 +951,13 @@
                 return;
             }
 
-            const starTextKeys = getMatrixStarTextKeys();
-            const tagKeys = new Set(pageConfig.matrixTagKeys || ['tags']);
             const currentKeys = new Set(dimensions.map(d => d.key));
             const prevKeys = new Set(Object.keys(matrixFilterState.byKey || {}));
             const sameKeys = currentKeys.size === prevKeys.size && [...currentKeys].every(k => prevKeys.has(k));
             if (!sameKeys) {
                 matrixFilterState = {
                     platform: [],
-                    byKey: Object.fromEntries(dimensions.map(d => [d.key, tagKeys.has(d.key) ? [] : '']))
+                    byKey: Object.fromEntries(dimensions.map(d => [d.key, getMatrixFilterDefaultValue(d)]))
                 };
             }
 
@@ -925,11 +968,11 @@
                 const key = escapeHtml(dim.key);
                 const label = escapeHtml(dim.label);
                 const val = matrixFilterState.byKey[dim.key] || '';
-                if (starTextKeys.has(dim.key)) {
+                if (isMatrixStarTextDimension(dim)) {
                     const selected = (n) => String(val) === String(n) ? ' selected' : '';
                     return `<div class="matrix-filter-item"><label for="matrixFilter_${key}">${label}</label><select id="matrixFilter_${key}" data-matrix-filter-type="star" data-matrix-filter-key="${key}"><option value="">全部</option><option value="5"${selected(5)}>≥5 星</option><option value="4"${selected(4)}>≥4 星</option><option value="3"${selected(3)}>≥3 星</option><option value="2"${selected(2)}>≥2 星</option><option value="1"${selected(1)}>≥1 星</option></select></div>`;
                 }
-                if (tagKeys.has(dim.key)) {
+                if (isMatrixTagDimension(dim)) {
                     const tagSet = new Set();
                     relaysData.forEach(relay => {
                         const tags = matrixTagPhrasesFromVal(relay.matrix ? relay.matrix[dim.key] : undefined);
@@ -1021,10 +1064,9 @@
             const resetBtn = bar.querySelector('#matrixFilterResetBtn');
             if (resetBtn) {
                 resetBtn.addEventListener('click', () => {
-                    const tagKeysLocal = new Set(pageConfig.matrixTagKeys || ['tags']);
                     matrixFilterState = {
                         platform: [],
-                        byKey: Object.fromEntries(dimensions.map(d => [d.key, tagKeysLocal.has(d.key) ? [] : '']))
+                        byKey: Object.fromEntries(dimensions.map(d => [d.key, getMatrixFilterDefaultValue(d)]))
                     };
                     renderMatrixFilterBar(dimensions);
                     applyMatrixFilters();
@@ -1034,8 +1076,6 @@
 
         function applyMatrixFilters() {
             const dimensions = currentMatrixDimensions || [];
-            const starTextKeys = getMatrixStarTextKeys();
-            const tagKeys = new Set(pageConfig.matrixTagKeys || ['tags']);
 
             const selectedPlatforms = Array.isArray(matrixFilterState.platform) ? matrixFilterState.platform : [];
             const filtered = relaysData.filter(relay => {
@@ -1049,14 +1089,14 @@
                     if (!filterVal || (Array.isArray(filterVal) && !filterVal.length)) continue;
 
                     const cellVal = relay.matrix ? relay.matrix[dim.key] : undefined;
-                    if (starTextKeys.has(dim.key)) {
+                    if (isMatrixStarTextDimension(dim)) {
                         const stars = getValueStars(cellVal);
                         const minStars = Number(String(filterVal));
                         if (!Number.isFinite(minStars) || stars == null || stars < minStars) return false;
                         continue;
                     }
 
-                    if (tagKeys.has(dim.key)) {
+                    if (isMatrixTagDimension(dim)) {
                         const cellTags = matrixTagPhrasesFromVal(cellVal);
                         if (!Array.isArray(filterVal) || !filterVal.some(tag => cellTags.includes(tag))) return false;
                         continue;
@@ -1124,18 +1164,16 @@
                 return;
             }
 
-            const starTextKeys = getMatrixStarTextKeys();
-            const tagKeys = new Set(pageConfig.matrixTagKeys || ['tags']);
-
-            function matrixCellTd(val, dimKey) {
+            function matrixCellTd(val, dim) {
+                const dimKey = dim.key;
                 const ratingCol = dimKey === 'rating' ? ' matrix-col-rating' : '';
 
-                if (tagKeys.has(dimKey)) {
+                if (isMatrixTagDimension(dim)) {
                     const tagCell = matrixTagCellHtml(matrixTagPhrasesFromVal(val));
                     if (ratingCol) return tagCell.replace('class="matrix-cell-tags"', 'class="matrix-cell-tags matrix-col-rating"');
                     return tagCell;
                 }
-                if (starTextKeys.has(dimKey)) {
+                if (isMatrixStarTextDimension(dim)) {
                     let v = val;
                     if (typeof v === 'number' && Number.isFinite(v)) {
                         v = { stars: Math.round(v), text: '' };
@@ -1168,14 +1206,14 @@
             const TAG_W = 140;
             const DIM_MIN = 200;
             const RATING_WEIGHT = 1.5;
-            const flexibleDimensions = dimensions.filter(d => d.key !== 'tags');
+            const flexibleDimensions = dimensions.filter(d => !isMatrixTagDimension(d));
             const totalWeight = flexibleDimensions.reduce((s, d) => s + (d.key === 'rating' ? RATING_WEIGHT : 1), 0);
             const minTableW = Math.max(640, PLATFORM_W + TAG_W + DIM_MIN * totalWeight);
 
             const theadDimCols = dimensions.map(dim => {
-                const thExtra = starTextKeys.has(dim.key) ? ' matrix-th-star-text' : '';
+                const thExtra = isMatrixStarTextDimension(dim) ? ' matrix-th-star-text' : '';
                 const ratingTh = dim.key === 'rating' ? ' matrix-col-rating' : '';
-                if (dim.key === 'tags') {
+                if (isMatrixTagDimension(dim)) {
                     return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${TAG_W}px;min-width:${TAG_W}px;max-width:${TAG_W}px">${escapeHtml(dim.label)}</th>`;
                 }
                 const w = dim.key === 'rating' ? RATING_WEIGHT : 1;
@@ -1190,7 +1228,7 @@
             const tbody = relays.map(r => {
                 const cells = dimensions.map(dim => {
                     const val = r.matrix ? r.matrix[dim.key] : undefined;
-                    return matrixCellTd(val, dim.key);
+                    return matrixCellTd(val, dim);
                 }).join('');
                 return `<tr>
                     <td class="platform-label">
@@ -1357,6 +1395,7 @@
                 const res = await fetch(CONFIG_FILE_PATH, { cache: 'no-store' });
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 pageConfig = await res.json();
+                pageConfig.matrixDimensions = normalizeMatrixDimensions(pageConfig.matrixDimensions);
                 applyConfig(pageConfig);
             } catch (e) {
                 console.error('加载配置失败:', e);

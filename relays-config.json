@@ -11,46 +11,42 @@
   "matrixDimensions": [
     {
       "key": "rating",
-      "label": "综合评价"
+      "label": "综合评价",
+      "valueType": "starText"
     },
     {
       "key": "price",
-      "label": "价格"
+      "label": "价格",
+      "valueType": "starText"
     },
     {
       "key": "authenticity",
       "label": "真实性",
+      "valueType": "starText",
       "helpText": "是否存在隐藏倍率及掺水"
     },
     {
       "key": "modelCoverage",
-      "label": "模型覆盖"
+      "label": "模型覆盖",
+      "valueType": "starText"
     },
     {
       "key": "availability",
       "label": "可用性",
+      "valueType": "starText",
       "helpText": "主要看在服务本身的可用性，以及国内网络环境下的连通性、时延波动与失败率；星级越高说明日常调用越稳定。"
     },
     {
       "key": "convenience",
       "label": "便捷性",
+      "valueType": "starText",
       "helpText": "主要看充值与结算流程是否顺畅、支付方式是否本地友好（如微信/支付宝/银行卡）；星级越高说明使用门槛越低。"
     },
     {
       "key": "tags",
-      "label": "标签"
+      "label": "标签",
+      "valueType": "tags"
     }
-  ],
-  "matrixTagKeys": [
-    "tags"
-  ],
-  "matrixStarTextKeys": [
-    "rating",
-    "price",
-    "authenticity",
-    "modelCoverage",
-    "availability",
-    "convenience"
   ],
   "notes": [
     "综合评价与价格、真实性、模型覆盖、可用性、国内支付共六列在表格中为「首行星级 + 次行说明」，数据为 relays.json 中 matrix 对应字段的 { stars, text } 对象（综合评价为 matrix.rating）；按该行星级为单元格施加淡色底纹（1～2 星偏红、3～4 星无底色、5 星偏绿），说明文字保持默认正文色；实心星保持页面统一金色样式",
@@ -65,11 +61,11 @@
       "date": "2026.4.12",
       "items": [
         "页面副标题与 relays.html 默认副标题与当前对比维度（含综合评价、标签等）对齐",
-        "原「适合场景」改为「标签」列：matrix.tags 为短语字符串数组；matrixTagKeys 供页面渲染与编辑参考",
+        "原「适合场景」改为「标签」列：matrix.tags 为短语字符串数组；由 matrixDimensions 中的 valueType=tags 控制渲染与筛选方式",
         "移除「类型」对比列及 relays.json 中 type / matrix.type 字段；表格平台列与详情卡片不再展示类型标签",
         "移除「额度与限速」对比列及 relays.json 中 matrix.rateLimit 字段",
         "新增「透明度」列（计价是否清晰、有无隐藏倍率/掺水等主观评价，见 matrix.authenticity）",
-        "综合评价与价格、透明度、模型覆盖、可用性、国内支付共六列采用「首行星级 + 次行文字」，键名由 matrixStarTextKeys 配置；星级分档以单元格淡底纹表示（1～2 红 / 3～4 无 / 5 绿），说明文字不再改色；星星不变色；不再使用 matrixHighlight",
+        "综合评价与价格、透明度、模型覆盖、可用性、国内支付共六列采用「首行星级 + 次行文字」，由 matrixDimensions 中的 valueType=starText 控制；星级分档以单元格淡底纹表示（1～2 红 / 3～4 无 / 5 绿），说明文字不再改色；星星不变色；不再使用 matrixHighlight",
         "「综合评价」与其它星文列一致，为 matrix.rating 的 { stars, text }；快速对比表为上行星、下行说明；详情卡片标题不再展示综合评价",
         "快速对比表中综合评价列（维度 key 为 rating）使用 matrix-col-rating：整列淡紫底与右侧投影、表头紫渐变与加粗边线；数据格加粗边线、星标 18px、说明字略大；红/绿档时整列底纹仍区分；不与平台列一同 sticky",
         "新增 Poe（poe.com）对比条目；API 说明参考 creator.poe.com/docs/api，模型标价页为 poe.com/api/models，订阅与密钥见 poe.com/api_key",
