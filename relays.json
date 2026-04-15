@@ -196,8 +196,9 @@
   {
     "id": "poloapi",
     "name": "PoloAPI",
-    "homeUrl": "https://poloai.top",
-    "pricingUrl": "https://poloapi.top/pricing",
+    "homeUrl": "https://xy.poloapi.com/",
+    "pricingUrl": "https://xy.poloapi.com/pricing",
+    "pricingUrlForAgent": "https://xy.poloapi.com/api/pricing",
     "updatedAt": "2026.04.15",
     "matrix": {
       "rating": {
@@ -206,11 +207,11 @@
       },
       "price": {
         "stars": 4,
-        "text": "按量计费，账户充值后以余额抵扣；模型广场/定价页以美元每百万 Token 等标价并结合倍率展示，人民币充值后按规则换算消耗"
+        "text": "按量计费；可通过公开接口 https://xy.poloapi.com/api/pricing 拉取模型倍率，并结合 /api/status 参数换算每百万 Token 价格"
       },
       "authenticity": {
         "stars": 3,
-        "text": "定价页以美元/百万 Token 为主并配合倍率/分组，实际成本需结合分组与汇率理解；对新手不够直观，存在「看懂门槛」"
+        "text": "存在公开价格接口（无需登录）可程序化核对；但最终实扣仍需结合分组、活动与账户规则复核"
       },
       "modelCoverage": {
         "stars": 5,
@@ -232,34 +233,76 @@
       ]
     },
     "detail": {
-      "description": "PoloAPI（控制台域名常见为 poloai.top，API 入口亦文档化 poloapi.top）是国内大模型 API 聚合中转服务：用户注册充值后创建令牌，选择分组，将原先指向 OpenAI 等厂商的 URL 替换为平台提供的中转地址（常见为 https://poloai.top 或 https://poloapi.top，部分场景需加 /v1）。\nClaude 等模型支持原生 messages 格式，具体端点以模型广场单模型说明与 Apifox 文档为准。",
+      "description": "PoloAPI（当前主站为 https://xy.poloapi.com/）是国内大模型 API 聚合中转服务：用户注册充值后创建令牌，选择分组，将原先指向 OpenAI 等厂商的 URL 替换为平台提供的中转地址（常见需加 /v1）。\nClaude 等模型支持原生 messages 格式，具体端点以模型广场单模型说明与 Apifox 文档为准。",
       "keyModels": [
         {
-          "name": "Opus-4.6 / Sonnet-4.6 / GPT-5.4 / GPT-5.3-Codex",
-          "inputPer1M": "—",
-          "outputPer1M": "—",
-          "note": "公开接口（/api/models）未登录不可读；需在控制台定价页检索"
+          "name": "claude-sonnet-4.6",
+          "inputPer1M": "$75.00",
+          "outputPer1M": "$375.00",
+          "note": "按 https://xy.poloapi.com/api/pricing + /api/status 换算（四舍五入）"
         },
         {
-          "name": "Gemini-3.1-Pro-Preview / Gemini-3-Flash-Preview",
-          "inputPer1M": "—",
-          "outputPer1M": "—",
+          "name": "gpt-5.4",
+          "inputPer1M": "$2.50",
+          "outputPer1M": "$20.00",
           "note": "同上"
         },
         {
-          "name": "GLM-5.1 / GLM-5 / MiniMax-M2.7 / MiniMax-M2.5",
-          "inputPer1M": "—",
-          "outputPer1M": "—",
+          "name": "gpt-5.3-codex",
+          "inputPer1M": "$1.75",
+          "outputPer1M": "$14.00",
           "note": "同上"
         },
         {
-          "name": "Kimi-K2.5 / DeepSeek-V3.2 / Qwen-3.6-Plus",
+          "name": "gemini-3.1-pro-preview",
+          "inputPer1M": "$2.00",
+          "outputPer1M": "$12.00",
+          "note": "同上"
+        },
+        {
+          "name": "gemini-3-flash-preview",
+          "inputPer1M": "$0.50",
+          "outputPer1M": "$3.00",
+          "note": "同上"
+        },
+        {
+          "name": "glm-5",
+          "inputPer1M": "$6.00",
+          "outputPer1M": "$22.20",
+          "note": "同上"
+        },
+        {
+          "name": "kimi-k2.5",
+          "inputPer1M": "$4.00",
+          "outputPer1M": "$21.00",
+          "note": "同上"
+        },
+        {
+          "name": "deepseek-v3.2",
+          "inputPer1M": "$2.00",
+          "outputPer1M": "$3.00",
+          "note": "同上"
+        },
+        {
+          "name": "qwen3.6-plus",
+          "inputPer1M": "$8.00",
+          "outputPer1M": "$48.00",
+          "note": "同上"
+        },
+        {
+          "name": "opus-4.6 / glm-5.1 / minimax-m2.7 / minimax-m2.5",
           "inputPer1M": "—",
           "outputPer1M": "—",
-          "note": "同上；另公告提示部分国内模型迁移到 cn.580ai.net"
+          "note": "当前 /api/pricing 未检索到对应型号"
+        },
+        {
+          "name": "换算说明",
+          "inputPer1M": "input = model_ratio × 2",
+          "outputPer1M": "output = model_ratio × completion_ratio × 2",
+          "note": "同上"
         }
       ],
-      "notes": "模型名称必须与模型广场完全一致。\n分组决定可用模型与价格，切换分组需新建或调整令牌。\n请以 https://poloapi.top/pricing 与 https://apidoc.poloapi.com/ 最新说明为准。"
+      "notes": "模型名称必须与模型广场完全一致。\n分组决定可用模型与价格，切换分组需新建或调整令牌。\n价格可由公开接口 https://xy.poloapi.com/api/pricing 获取倍率后换算（结合 /api/status 中 quota_per_unit、price、usd_exchange_rate）。\n请以 https://xy.poloapi.com/pricing 与 https://apidoc.poloapi.com/ 最新说明为准。"
     }
   },
   {

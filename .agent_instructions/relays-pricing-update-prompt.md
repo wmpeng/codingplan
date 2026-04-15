@@ -120,15 +120,22 @@
 
 ### G. PoloAPI（`id: poloapi`）
 
-- 页面：`https://poloapi.top/pricing`
-- 常见公开接口（多数需登录 token）：
-  - `/api/models`
-  - `/api/user/models`
-  - `/api/vendors`
-- 未登录通常返回“无权进行此操作”。因此：
-  - 可以写成“需控制台检索”的占位条目（按目标模型分组列出）。
-  - `note` 明确写“公开接口未登录不可读；需在控制台定价页检索”。
-- 如果后续拿到登录态 token，再补成真实单价。
+- 官网：`https://xy.poloapi.com/`
+- 价格页：`https://xy.poloapi.com/pricing`
+- 公开价格接口（无需登录）：`https://xy.poloapi.com/api/pricing`
+- 换算元数据接口：`https://xy.poloapi.com/api/status`
+- `api/pricing` 里主要取：
+  - `data[].model_name`
+  - `data[].model_ratio`
+  - `data[].completion_ratio`
+- `api/status` 里主要取：
+  - `data.quota_per_unit`
+  - `data.price`
+  - `data.usd_exchange_rate`
+- 推荐换算（按每百万 token）：
+  - `input_usd_per_1m = 1_000_000 * model_ratio / quota_per_unit * price`
+  - `output_usd_per_1m = input_usd_per_1m * completion_ratio`
+- 若目标模型在 `api/pricing` 中不存在，写 `—` 并在 `note` 标注“当前 /api/pricing 未检索到对应型号”。
 
 ---
 
