@@ -240,28 +240,6 @@
   },
   {
     "vendor": "讯飞·星火",
-    "plan": "Lite",
-    "type": "Coding Plan",
-    "action": "  https://maas.xfyun.cn/packageSubscription?inviteCode=MAAS-A4227EAE",
-    "firstMonthPrice": 3.9,
-    "monthlyPrice": 19.9,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "Spark X2",
-      "Qwen3.5-35B-A3B",
-      "Qwen3-Coder-Next-FP8",
-      "GLM-4.7-Flash"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "tokenLimit": "无限制",
-    "benefits": [],
-    "note": "首购优惠，后续恢复原价"
-  },
-  {
-    "vendor": "讯飞·星火",
     "plan": "Pro",
     "type": "Coding Plan",
     "action": "  https://maas.xfyun.cn/packageSubscription?inviteCode=MAAS-A4227EAE",
