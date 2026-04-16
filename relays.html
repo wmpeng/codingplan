@@ -221,6 +221,38 @@
             line-height: 1.35;
         }
 
+        .matrix-table thead th.matrix-sortable {
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .matrix-table thead th.matrix-sortable::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 8px;
+            vertical-align: middle;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid var(--text-tertiary);
+            opacity: 0.4;
+            transition: all 0.2s;
+        }
+
+        .matrix-table thead th.matrix-sort-asc::after {
+            border-top: none;
+            border-bottom: 4px solid var(--accent-primary);
+            opacity: 1;
+        }
+
+        .matrix-table thead th.matrix-sort-desc::after {
+            border-top: 4px solid var(--accent-primary);
+            border-bottom: none;
+            opacity: 1;
+        }
+
         .matrix-table tbody td:not(:first-child) {
             overflow-wrap: break-word;
             word-break: normal;
@@ -863,6 +895,7 @@
         let matrixResizeObserver = null;
         let matrixRelayoutFrame = 0;
         let lastMatrixWrapperWidth = 0;
+        let matrixSortState = { key: null, direction: 'asc' };
 
         function getMatrixDimensionValueType(dim) {
             const rawType = dim && typeof dim.valueType === 'string' ? dim.valueType.trim() : '';
@@ -1127,12 +1160,66 @@
                 return true;
             });
 
-            renderMatrix(filtered, dimensions);
+            const sorted = sortMatrixRelays(filtered);
+            renderMatrix(sorted, dimensions);
 
             const resultEl = document.getElementById('matrixFilterResult');
             if (resultEl) {
                 resultEl.textContent = `${filtered.length}条/共${relaysData.length}条`;
             }
+        }
+
+        function sortMatrixRelays(relays) {
+            if (!matrixSortState.key) return relays;
+            const { key, direction } = matrixSortState;
+            const sorted = [...relays];
+            sorted.sort((a, b) => {
+                const starsA = getValueStars(a.matrix ? a.matrix[key] : undefined);
+                const starsB = getValueStars(b.matrix ? b.matrix[key] : undefined);
+                const hasA = Number.isFinite(starsA);
+                const hasB = Number.isFinite(starsB);
+
+                if (!hasA && !hasB) return (a.__matrixOriginalIndex || 0) - (b.__matrixOriginalIndex || 0);
+                if (!hasA) return 1;
+                if (!hasB) return -1;
+
+                if (starsA === starsB) {
+                    return (a.__matrixOriginalIndex || 0) - (b.__matrixOriginalIndex || 0);
+                }
+                return direction === 'asc' ? starsA - starsB : starsB - starsA;
+            });
+            return sorted;
+        }
+
+        function updateMatrixSortHeaders(wrapper) {
+            if (!wrapper) return;
+            wrapper.querySelectorAll('th.matrix-sortable').forEach(th => {
+                th.classList.remove('matrix-sort-asc', 'matrix-sort-desc');
+                if (th.dataset.matrixSortKey === matrixSortState.key) {
+                    th.classList.add(matrixSortState.direction === 'desc' ? 'matrix-sort-desc' : 'matrix-sort-asc');
+                }
+            });
+        }
+
+        function bindMatrixSortHandlers(wrapper) {
+            if (!wrapper) return;
+            wrapper.querySelectorAll('th.matrix-sortable').forEach(th => {
+                th.addEventListener('click', () => {
+                    const key = th.dataset.matrixSortKey;
+                    if (!key) return;
+
+                    if (matrixSortState.key === key) {
+                        if (matrixSortState.direction === 'asc') {
+                            matrixSortState = { key, direction: 'desc' };
+                        } else {
+                            matrixSortState = { key: null, direction: 'asc' };
+                        }
+                    } else {
+                        matrixSortState = { key, direction: 'asc' };
+                    }
+                    applyMatrixFilters();
+                });
+            });
         }
 
         function scheduleMatrixRelayout() {
@@ -1287,12 +1374,14 @@
             const theadDimCols = dimensions.map(dim => {
                 const thExtra = isMatrixStarTextDimension(dim) ? ' matrix-th-star-text' : '';
                 const ratingTh = dim.key === 'rating' ? ' matrix-col-rating' : '';
+                const sortableTh = isMatrixStarTextDimension(dim) ? ' matrix-sortable' : '';
+                const sortAttr = isMatrixStarTextDimension(dim) ? ` data-matrix-sort-key="${escapeHtml(dim.key)}"` : '';
                 const dimPx = dimensionWidths.get(dim.key) || TAG_W;
                 const helpText = typeof dim.helpText === 'string' ? dim.helpText.trim() : '';
                 if (helpText) {
-                    return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${dimPx}px;min-width:${dimPx}px"><span class="matrix-th-help"><button type="button" class="matrix-help-trigger" aria-label="${escapeHtml(dim.label)}说明">${escapeHtml(dim.label)}</button><span class="matrix-help-bubble" role="tooltip">${escapeHtml(helpText)}</span></span></th>`;
+                    return `<th class="matrix-dim-th${thExtra}${ratingTh}${sortableTh}"${sortAttr} style="width:${dimPx}px;min-width:${dimPx}px"><span class="matrix-th-help"><button type="button" class="matrix-help-trigger" aria-label="${escapeHtml(dim.label)}说明">${escapeHtml(dim.label)}</button><span class="matrix-help-bubble" role="tooltip">${escapeHtml(helpText)}</span></span></th>`;
                 }
-                return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${dimPx}px;min-width:${dimPx}px">${escapeHtml(dim.label)}</th>`;
+                return `<th class="matrix-dim-th${thExtra}${ratingTh}${sortableTh}"${sortAttr} style="width:${dimPx}px;min-width:${dimPx}px">${escapeHtml(dim.label)}</th>`;
             }).join('');
 
             const tbody = relays.map(r => {
@@ -1323,6 +1412,8 @@
                     <tbody>${tbody}</tbody>
                 </table>
             `;
+            updateMatrixSortHeaders(wrapper);
+            bindMatrixSortHandlers(wrapper);
         }
 
         // ── 渲染平台详情卡片 ──
@@ -1472,7 +1563,10 @@
             try {
                 const res = await fetch(RELAYS_FILE_PATH, { cache: 'no-store' });
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                relaysData = await res.json();
+                const rawRelays = await res.json();
+                relaysData = Array.isArray(rawRelays)
+                    ? rawRelays.map((relay, index) => ({ ...relay, __matrixOriginalIndex: index }))
+                    : [];
 
                 const dimensions = (pageConfig.matrixDimensions) || [];
                 currentMatrixDimensions = dimensions;
