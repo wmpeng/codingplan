@@ -221,6 +221,37 @@
             line-height: 1.35;
         }
 
+        .matrix-table thead th.matrix-dim-th.sortable {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .matrix-table thead th.matrix-dim-th.sortable::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 6px;
+            vertical-align: middle;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid var(--text-tertiary);
+            opacity: 0.4;
+            transition: all 0.2s;
+        }
+
+        .matrix-table thead th.matrix-dim-th.sort-asc::after {
+            border-top: none;
+            border-bottom: 4px solid var(--accent-primary);
+            opacity: 1;
+        }
+
+        .matrix-table thead th.matrix-dim-th.sort-desc::after {
+            border-top: 4px solid var(--accent-primary);
+            border-bottom: none;
+            opacity: 1;
+        }
+
         .matrix-table tbody td:not(:first-child) {
             overflow-wrap: break-word;
             word-break: normal;
@@ -1205,11 +1236,29 @@
         }
 
         // ── 渲染矩阵 ──
+        // 打星列排序状态
+        let matrixSort = { column: null, direction: 'asc' };
+
         function renderMatrix(relays, dimensions) {
             const wrapper = document.getElementById('matrixWrapper');
             if (!relays.length || !dimensions.length) {
                 wrapper.innerHTML = '<div class="loading-state">暂无数据</div>';
                 return;
+            }
+
+            // 排序后的副本（不影响原始 filtered relays 顺序）
+            const sortedRelays = relays.slice();
+            if (matrixSort.column) {
+                sortedRelays.sort((a, b) => {
+                    const valA = getValueStars(a.matrix ? a.matrix[matrixSort.column] : undefined);
+                    const valB = getValueStars(b.matrix ? b.matrix[matrixSort.column] : undefined);
+                    const nullA = valA == null;
+                    const nullB = valB == null;
+                    if (nullA && nullB) return 0;
+                    if (nullA) return 1;
+                    if (nullB) return -1;
+                    return matrixSort.direction === 'asc' ? valA - valB : valB - valA;
+                });
             }
 
             function matrixCellTd(val, dim) {
@@ -1286,16 +1335,19 @@
 
             const theadDimCols = dimensions.map(dim => {
                 const thExtra = isMatrixStarTextDimension(dim) ? ' matrix-th-star-text' : '';
+                const sortableClass = isMatrixStarTextDimension(dim) ? ' sortable' : '';
+                const sortClass = matrixSort.column === dim.key ? ` sort-${matrixSort.direction}` : '';
                 const ratingTh = dim.key === 'rating' ? ' matrix-col-rating' : '';
                 const dimPx = dimensionWidths.get(dim.key) || TAG_W;
                 const helpText = typeof dim.helpText === 'string' ? dim.helpText.trim() : '';
+                const dataColAttr = isMatrixStarTextDimension(dim) ? ` data-column="${escapeHtml(dim.key)}"` : '';
                 if (helpText) {
-                    return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${dimPx}px;min-width:${dimPx}px"><span class="matrix-th-help"><button type="button" class="matrix-help-trigger" aria-label="${escapeHtml(dim.label)}说明">${escapeHtml(dim.label)}</button><span class="matrix-help-bubble" role="tooltip">${escapeHtml(helpText)}</span></span></th>`;
+                    return `<th class="matrix-dim-th${thExtra}${ratingTh}${sortableClass}${sortClass}"${dataColAttr} style="width:${dimPx}px;min-width:${dimPx}px"><span class="matrix-th-help"><button type="button" class="matrix-help-trigger" aria-label="${escapeHtml(dim.label)}说明">${escapeHtml(dim.label)}</button><span class="matrix-help-bubble" role="tooltip">${escapeHtml(helpText)}</span></span></th>`;
                 }
-                return `<th class="matrix-dim-th${thExtra}${ratingTh}" style="width:${dimPx}px;min-width:${dimPx}px">${escapeHtml(dim.label)}</th>`;
+                return `<th class="matrix-dim-th${thExtra}${ratingTh}${sortableClass}${sortClass}"${dataColAttr} style="width:${dimPx}px;min-width:${dimPx}px">${escapeHtml(dim.label)}</th>`;
             }).join('');
 
-            const tbody = relays.map(r => {
+            const tbody = sortedRelays.map(r => {
                 const cells = dimensions.map(dim => {
                     const val = r.matrix ? r.matrix[dim.key] : undefined;
                     return matrixCellTd(val, dim);
@@ -1323,6 +1375,31 @@
                     <tbody>${tbody}</tbody>
                 </table>
             `;
+
+            // 打星列排序：点击表头切换正序 / 倒序 / 不排序
+            wrapper.querySelectorAll('th.sortable').forEach(th => {
+                th.addEventListener('click', () => {
+                    const column = th.dataset.column;
+                    let direction = 'asc';
+
+                    if (matrixSort.column === column) {
+                        if (matrixSort.direction === 'asc') {
+                            direction = 'desc';
+                        } else {
+                            // 第三次点击：取消排序
+                            matrixSort = { column: null, direction: 'asc' };
+                            wrapper.querySelectorAll('th').forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
+                            renderMatrix(filteredRelays, dimensions);
+                            return;
+                        }
+                    }
+
+                    matrixSort = { column, direction };
+                    wrapper.querySelectorAll('th').forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
+                    th.classList.add(`sort-${direction}`);
+                    renderMatrix(filteredRelays, dimensions);
+                });
+            });
         }
 
         // ── 渲染平台详情卡片 ──
