@@ -84,6 +84,7 @@
       "plan": "套餐",
       "type": "类型",
       "action": "跳转链接",
+      "rating": "综合评价",
       "firstMonthPrice": "首月价格",
       "monthlyPrice": "连续包月",
       "quarterlyPrice": "连续包季",

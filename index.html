@@ -970,6 +970,13 @@
             letter-spacing: 2px;
         }
 
+        .table-rating {
+            color: #f59e0b;
+            font-size: 14px;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
         .recommendation-reasons {
             list-style: none;
             padding: 0;
@@ -1550,6 +1557,7 @@
                             <th class="sticky-second">套餐</th>
                             <th>类型</th>
                             <th>跳转链接</th>
+                            <th class="sortable" data-column="rating">综合评价</th>
                             <th class="sortable" data-column="firstMonthPrice">首月价格</th>
                             <th class="sortable" data-column="monthlyPrice">连续包月</th>
                             <th class="sortable" data-column="quarterlyPrice">连续包季</th>
@@ -2758,6 +2766,10 @@
                         valueA = a['plan'];
                         valueB = b['plan'];
                         break;
+                    case 'rating':
+                        valueA = a.rating ?? 3;
+                        valueB = b.rating ?? 3;
+                        break;
                     case 'firstMonthPrice':
                         valueA = getPriceSortValue(a, 'firstMonthPrice');
                         valueB = getPriceSortValue(b, 'firstMonthPrice');
@@ -2849,7 +2861,7 @@
             if (filteredPlans.length === 0) {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="15">
+                        <td colspan="16">
                             <div class="empty-state">
                                 <div class="empty-state-icon">📭</div>
                                 <div class="empty-state-text">没有找到符合条件的套餐</div>
@@ -2871,6 +2883,7 @@
                             跳转开通
                         </a>
                     </td>
+                    <td><span class="table-rating" title="${plan.rating || 3} / 5">${renderStars(plan.rating)}</span></td>
                     <td><span class="price">${plan.currency||'¥'}${formatPrice(plan.firstMonthPrice)} <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">${plan.currency||'¥'}${formatPrice(plan.monthlyPrice)} <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">${plan.currency||'¥'}${formatPrice(plan.quarterlyPrice)} <span class="price-original">${plan.currency||'¥'}${formatPrice(plan.monthlyPrice * 3)}</span> <span class="unit">/ 季</span></span></td>
@@ -2907,6 +2920,11 @@
                 return value.toLocaleString();
             }
             return value;
+        }
+
+        function renderStars(rating) {
+            const normalizedRating = Math.max(1, Math.min(5, Number(rating) || 3));
+            return '★'.repeat(normalizedRating) + '☆'.repeat(5 - normalizedRating);
         }
 
         // 表头排序点击
@@ -3181,6 +3199,7 @@
 
             return {
                 ...item,
+                rating: Math.max(1, Math.min(5, Number(item.rating) || 3)),
                 firstMonthPrice,
                 monthlyPrice,
                 quarterlyPrice,
@@ -3194,7 +3213,7 @@
             try {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="15">
+                        <td colspan="16">
                             <div class="loading">加载数据中</div>
                         </td>
                     </tr>
@@ -3225,7 +3244,7 @@
                 console.error('加载数据失败:', error);
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="15">
+                        <td colspan="16">
                             <div class="empty-state">
                                 <div class="empty-state-icon">❌</div>
                                 <div class="empty-state-text">数据加载失败</div>
