@@ -99,11 +99,15 @@
 - 页面：`https://api.n1n.ai/pricing`
 - 机器可读接口：`https://api.n1n.ai/api/pricing_new`
 - N1N 是“倍率计价”：
-  - 输入倍率：`model_ratio`
-  - 输出倍率：`completion_ratio`
-  - 通常写法：`官方价 × {倍率}`
-- 建议 `keyModels` 直接写倍率格式，不强行转绝对美元（除非你能同时稳定抓到 N1N 的官方基准价映射）。
-- 若目标模型不在 `pricing_new.data[].model_name` 中，写 `—` 并说明未检索到。
+  - 输入基准价：`model_ratio × 2`，得到基准输入价（单位数值等同于美元价）
+  - 输出基准价：`输入基准价 × completion_ratio`
+  - 每个模型可用分组在 `enable_groups`
+  - 各分组倍率在顶层 `group_ratio`
+  - 最终价格：在 `enable_groups` 中找到可用且倍率最小的分组，用 `基准输入/输出价 × 最低 group_ratio`
+- 充值汇率按文档 `https://docs.n1n.ai/llm-api-quickstart` 的 1:1 规则处理：`1 人民币充值到账 1 美元额度`，因此上一步得到的数值可直接按 `￥/1M` 写入。
+- 建议 `keyModels` 直接写最终人民币价格，不再写“官方价 × 倍率”格式。
+- `note` 中给用户看的链接统一写 `https://api.n1n.ai/pricing`；不要把 `pricing_new` 接口地址直接写进面向用户的说明。
+- 若目标模型不在 `pricing_new.data[].model_name` 中，写 `—` 并说明“当前 https://api.n1n.ai/pricing 对应的数据源未检索到该型号”。
 
 ---
 
