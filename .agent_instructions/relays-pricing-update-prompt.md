@@ -151,13 +151,12 @@
 - `api/status` 里主要取：
   - `data.quota_per_unit`
   - `data.price`
-  - `data.usd_exchange_rate`
-- 推荐换算（按每百万 token）：
+- 推荐换算（按每百万 token，直接写人民币）：
   - `input_cny_per_1m = 1_000_000 * model_ratio / quota_per_unit * price`
   - `output_cny_per_1m = input_cny_per_1m * completion_ratio`
-  - `input_usd_per_1m = input_cny_per_1m / usd_exchange_rate`
-  - `output_usd_per_1m = output_cny_per_1m / usd_exchange_rate`
-- 若目标模型在 `api/pricing` 中不存在，写 `—` 并在 `note` 标注“当前 /api/pricing 未检索到对应型号”。
+- 不要再把人民币结果除以 `usd_exchange_rate` 折算成美元；`keyModels` 直接展示 `￥/1M`。
+- `note` 中给用户看的链接优先写 `https://www.llmhub.com.cn/pricing`；若需要说明换算依据，可补充公开接口 `api/pricing` 与 `api/status`，但不要把最终展示价再写成美元。
+- 若目标模型在 `api/pricing` 中不存在，写 `—` 并在 `note` 标注“当前 https://www.llmhub.com.cn/pricing 对应的数据源未检索到该型号”。
 
 ---
 

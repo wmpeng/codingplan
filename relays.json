@@ -677,7 +677,7 @@
     "name": "LLM Hub",
     "homeUrl": "https://www.llmhub.com.cn/",
     "pricingUrl": "https://www.llmhub.com.cn/pricing",
-    "updatedAt": "2026.04.15",
+    "updatedAt": "2026.04.16",
     "matrix": {
       "rating": {
         "stars": 4,
@@ -685,7 +685,7 @@
       },
       "price": {
         "stars": 4,
-        "text": "按 Token 按量计费；可通过公开接口 https://www.llmhub.com.cn/api/pricing 拉取模型倍率，再结合 /api/status 换算每百万 Token 价格；充值与手续费以控制台为准"
+        "text": "按 Token 按量计费；可通过公开接口 https://www.llmhub.com.cn/api/pricing 拉取模型倍率，再结合 /api/status 直接换算每百万 Token 的人民币价格；充值与手续费以控制台为准"
       },
       "authenticity": {
         "stars": 4,
@@ -715,84 +715,90 @@
       "keyModels": [
         {
           "name": "claude-opus-4.6",
-          "inputPer1M": "$5.75",
-          "outputPer1M": "$28.77",
-          "note": "按 https://www.llmhub.com.cn/api/pricing + /api/status 换算（四舍五入）"
+          "inputPer1M": "￥42.00",
+          "outputPer1M": "￥210.00",
+          "note": "按 https://www.llmhub.com.cn/pricing 展示规则与公开接口返回的 model_ratio/completion_ratio、/api/status 中 quota_per_unit=500000 与 price=7.3 换算成人民币（四舍五入）"
         },
         {
           "name": "claude-sonnet-4.6",
-          "inputPer1M": "$3.45",
-          "outputPer1M": "$17.26",
+          "inputPer1M": "￥25.20",
+          "outputPer1M": "￥126.00",
           "note": "同上"
         },
         {
           "name": "gpt-5.4",
-          "inputPer1M": "$2.50",
-          "outputPer1M": "$15.00",
+          "inputPer1M": "￥18.25",
+          "outputPer1M": "￥109.50",
           "note": "同上"
         },
         {
           "name": "gpt-5.3-codex",
-          "inputPer1M": "$2.01",
-          "outputPer1M": "$16.10",
+          "inputPer1M": "￥14.69",
+          "outputPer1M": "￥117.53",
           "note": "同上"
         },
         {
           "name": "gemini-3.1-pro-preview",
-          "inputPer1M": "$2.30",
-          "outputPer1M": "$13.81",
+          "inputPer1M": "￥16.80",
+          "outputPer1M": "￥100.80",
           "note": "同上"
         },
         {
           "name": "gemini-3-flash-preview",
-          "inputPer1M": "$0.58",
-          "outputPer1M": "$3.45",
+          "inputPer1M": "￥4.20",
+          "outputPer1M": "￥25.20",
           "note": "同上"
         },
         {
+          "name": "glm-5.1",
+          "inputPer1M": "—",
+          "outputPer1M": "—",
+          "note": "当前 https://www.llmhub.com.cn/pricing 对应的数据源未检索到该型号"
+        },
+        {
           "name": "glm-5",
-          "inputPer1M": "$0.55",
-          "outputPer1M": "$2.47",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥18.00",
+          "note": "同上"
+        },
+        {
+          "name": "minimax-m2.7",
+          "inputPer1M": "￥2.10",
+          "outputPer1M": "￥8.40",
           "note": "同上"
         },
         {
           "name": "minimax-m2.5",
-          "inputPer1M": "$0.29",
-          "outputPer1M": "$1.15",
+          "inputPer1M": "￥2.10",
+          "outputPer1M": "￥8.40",
           "note": "同上"
         },
         {
           "name": "kimi-k2.5",
-          "inputPer1M": "$0.55",
-          "outputPer1M": "$2.88",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥21.00",
           "note": "同上"
         },
         {
           "name": "deepseek-v3.2",
-          "inputPer1M": "$0.27",
-          "outputPer1M": "$0.41",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥3.00",
           "note": "同上"
         },
         {
           "name": "qwen3.6-plus",
-          "inputPer1M": "$0.27",
-          "outputPer1M": "$1.64",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥12.00",
           "note": "同上"
         },
         {
-          "name": "GLM-5.1 / MiniMax-M2.7",
-          "inputPer1M": "—",
-          "outputPer1M": "—",
-          "note": "当前 /api/pricing 未检索到对应型号"
-        },
-        {
-          "name": "换算说明",
-          "inputPer1M": "input = model_ratio × 2",
-          "outputPer1M": "output = model_ratio × completion_ratio × 2",
-          "note": "同上"
+          "name": "qwen3.5-plus",
+          "inputPer1M": "￥0.56",
+          "outputPer1M": "￥3.36",
+          "note": "同上；对应 Qwen-3.5 近似型号"
         }
       ],
-      "notes": "模型价格可由公开接口 https://www.llmhub.com.cn/api/pricing 获取倍率后换算（结合 /api/status 中 quota_per_unit、price、usd_exchange_rate）。\n首页营销文案中的模型版本名会随市场更新。\n最终接入与扣费规则请以 https://www.llmhub.com.cn/ 控制台为准。"
+      "notes": "模型价格可由公开接口 https://www.llmhub.com.cn/api/pricing 获取倍率后换算（结合 /api/status 中 quota_per_unit 与 price，直接换算人民币价格）。\n首页营销文案中的模型版本名会随市场更新。\n最终接入与扣费规则请以 https://www.llmhub.com.cn/ 控制台为准。"
     }
   },
   {
