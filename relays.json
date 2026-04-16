@@ -4,7 +4,7 @@
     "name": "OpenRouter",
     "homeUrl": "https://openrouter.ai",
     "pricingUrl": "https://openrouter.ai/models?order=top-weekly",
-    "updatedAt": "2026.04.15",
+    "updatedAt": "2026.04.16",
     "matrix": {
       "rating": {
         "stars": 4,
@@ -39,79 +39,79 @@
       "description": "OpenRouter 是面向全球开发者的统一大模型 API 平台，提供与 OpenAI Chat Completions 高度兼容的接口，可用官方 OpenAI SDK 将 base URL 指向 OpenRouter 即可调用。\n平台聚合大量商业与开源模型，并支持自动路由、多 Provider 回退与按模型细分的计价。",
       "keyModels": [
         {
-          "name": "anthropic/claude-opus-4.6",
+          "name": "Opus-4.6",
           "inputPer1M": "$5.00",
           "outputPer1M": "$25.00",
           "note": ""
         },
         {
-          "name": "anthropic/claude-sonnet-4.6",
+          "name": "Sonnet-4.6",
           "inputPer1M": "$3.00",
           "outputPer1M": "$15.00",
           "note": ""
         },
         {
-          "name": "openai/gpt-5.4",
+          "name": "GPT-5.4",
           "inputPer1M": "$2.50",
           "outputPer1M": "$15.00",
           "note": ""
         },
         {
-          "name": "openai/gpt-5.3-codex",
+          "name": "GPT-5.3-Codex",
           "inputPer1M": "$1.75",
           "outputPer1M": "$14.00",
           "note": ""
         },
         {
-          "name": "google/gemini-3.1-pro-preview",
+          "name": "Gemini-3.1-Pro",
           "inputPer1M": "$2.00",
           "outputPer1M": "$12.00",
           "note": ""
         },
         {
-          "name": "google/gemini-3-flash-preview",
+          "name": "Gemini-3-Flash",
           "inputPer1M": "$0.50",
           "outputPer1M": "$3.00",
           "note": ""
         },
         {
-          "name": "z-ai/glm-5.1",
+          "name": "GLM-5.1",
           "inputPer1M": "$0.95",
           "outputPer1M": "$3.15",
           "note": ""
         },
         {
-          "name": "z-ai/glm-5",
+          "name": "GLM-5",
           "inputPer1M": "$0.72",
           "outputPer1M": "$2.30",
           "note": ""
         },
         {
-          "name": "minimax/minimax-m2.7",
+          "name": "MiniMax-M2.7",
           "inputPer1M": "$0.30",
           "outputPer1M": "$1.20",
           "note": ""
         },
         {
-          "name": "minimax/minimax-m2.5",
+          "name": "MiniMax-M2.5",
           "inputPer1M": "$0.12",
           "outputPer1M": "$0.99",
           "note": "四舍五入，原始输入价 $0.118/M"
         },
         {
-          "name": "moonshotai/kimi-k2.5",
+          "name": "Kimi-K2.5",
           "inputPer1M": "$0.38",
           "outputPer1M": "$1.72",
           "note": "四舍五入，原始输入价 $0.3827/M"
         },
         {
-          "name": "deepseek/deepseek-v3.2",
+          "name": "DeepSeek-V3.2",
           "inputPer1M": "$0.26",
           "outputPer1M": "$0.38",
           "note": ""
         },
         {
-          "name": "qwen/qwen3.6-plus",
+          "name": "Qwen-3.6-Plus",
           "inputPer1M": "$0.33",
           "outputPer1M": "$1.95",
           "note": "四舍五入，原始输入价 $0.325/M"
@@ -125,7 +125,7 @@
     "name": "SiliconFlow硅基流动",
     "homeUrl": "https://siliconflow.cn/zh-cn/",
     "pricingUrl": "https://siliconflow.cn/pricing",
-    "updatedAt": "2026.04.15",
+    "updatedAt": "2026.04.16",
     "matrix": {
       "rating": {
         "stars": 3,
@@ -160,34 +160,40 @@
       "description": "硅基流动（SiliconFlow）是国内生成式 AI 云服务平台，提供大语言模型与多模态等 API、Playground、模型广场与密钥管理。\n大语言模型场景可使用 OpenAI SDK，base_url 为 https://api.siliconflow.cn/v1。\n官网「价格」页集中展示 API、微调、批量与算力预留等价目；具体模型单价也可在模型中心查看。",
       "keyModels": [
         {
-          "name": "Pro/zai-org/GLM-5.1",
-          "inputPer1M": "￥6",
-          "outputPer1M": "￥28",
-          "note": "按 https://siliconflow.cn/models 实时展示"
+          "name": "GLM-5.1",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥28.00",
+          "note": "按 https://siliconflow.cn/models 页面源码直接提取"
         },
         {
-          "name": "Pro/zai-org/GLM-5",
-          "inputPer1M": "￥4",
-          "outputPer1M": "￥22",
-          "note": "同上"
+          "name": "GLM-5",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥22.00",
+          "note": "按 https://siliconflow.cn/models 页面源码直接提取"
         },
         {
-          "name": "Qwen/Qwen3-VL-32B-Instruct",
-          "inputPer1M": "￥1",
-          "outputPer1M": "￥4",
-          "note": "同上"
+          "name": "MiniMax-M2.5",
+          "inputPer1M": "￥2.10",
+          "outputPer1M": "￥8.40",
+          "note": "按 https://siliconflow.cn/models 页面源码直接提取"
         },
         {
-          "name": "Pro/zai-org/GLM-5.1",
-          "inputPer1M": "￥6",
-          "outputPer1M": "￥28",
-          "note": "同上"
+          "name": "Kimi-K2.5",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥21.00",
+          "note": "按 https://siliconflow.cn/models 页面源码直接提取"
         },
         {
-          "name": "Qwen/Qwen3.5-4B",
-          "inputPer1M": "$0.00",
-          "outputPer1M": "$0.00",
-          "note": "价格页列为免费档（以官网为准）"
+          "name": "DeepSeek-V3.2",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥3.00",
+          "note": "按 https://siliconflow.cn/models 页面源码直接提取"
+        },
+        {
+          "name": "Qwen-3.5",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥1.20",
+          "note": "对应 Qwen/Qwen3.5-397B-A17B；按 https://siliconflow.cn/models 页面源码直接提取"
         }
       ],
       "notes": "完整模型清单与实时单价以 https://siliconflow.cn/models 为准。\n套餐与算力以 https://siliconflow.cn/pricing 为准。"
@@ -236,91 +242,79 @@
       "description": "PoloAPI（当前主站为 https://xy.poloapi.com/）是国内大模型 API 聚合中转服务：用户注册充值后创建令牌，选择分组，将原先指向 OpenAI 等厂商的 URL 替换为平台提供的中转地址（常见需加 /v1）。\nClaude 等模型支持原生 messages 格式，具体端点以模型广场单模型说明与 Apifox 文档为准。",
       "keyModels": [
         {
-          "name": "claude-opus-4-6",
+          "name": "Opus-4.6",
           "inputPer1M": "￥5.00",
           "outputPer1M": "￥25.00",
-          "note": "按 https://xy.poloapi.com/pricing 展示的模型定价规则与接口返回的 model_ratio/completion_ratio、最低可用分组「Claude-code稳定」倍率 1 换算；平台充值 1 人民=1 美金，见 https://help.poloapi.com/node/019c412b-e079-7e87-bedf-5c4ddb2402d4"
+          "note": "对应 claude-opus-4-6；按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「Claude-code稳定」，倍率 1"
         },
         {
-          "name": "claude-sonnet-4-6",
+          "name": "Sonnet-4.6",
           "inputPer1M": "￥3.00",
           "outputPer1M": "￥15.00",
-          "note": "同上；对应 Sonnet-4.6，最低可用分组为「Claude-code稳定」，倍率 1"
+          "note": "对应 claude-sonnet-4-6；按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「Claude-code稳定」，倍率 1"
         },
         {
-          "name": "gpt-5.4",
+          "name": "GPT-5.4",
           "inputPer1M": "￥2.00",
           "outputPer1M": "￥12.00",
-          "note": "同上；最低可用分组为「Codex-gpt」，倍率 0.8"
+          "note": "按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「Codex-gpt」，倍率 0.8"
         },
         {
-          "name": "gpt-5.3-codex",
+          "name": "GPT-5.3-Codex",
           "inputPer1M": "￥1.40",
           "outputPer1M": "￥11.20",
-          "note": "同上；最低可用分组为「Codex-gpt」，倍率 0.8"
+          "note": "按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「Codex-gpt」，倍率 0.8"
         },
         {
-          "name": "gemini-3.1-pro-preview",
+          "name": "Gemini-3.1-Pro",
           "inputPer1M": "￥1.60",
           "outputPer1M": "￥9.60",
-          "note": "同上；最低可用分组为「低价福利 | 波动临时资源」，倍率 0.8"
+          "note": "对应 gemini-3.1-pro-preview；按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「低价福利 | 波动临时资源」，倍率 0.8"
         },
         {
-          "name": "gemini-3-flash-preview",
+          "name": "Gemini-3-Flash",
           "inputPer1M": "￥0.40",
           "outputPer1M": "￥2.40",
-          "note": "同上；最低可用分组为「低价福利 | 波动临时资源」，倍率 0.8"
+          "note": "对应 gemini-3-flash-preview；按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「低价福利 | 波动临时资源」，倍率 0.8"
         },
         {
-          "name": "glm-5.1",
+          "name": "GLM-5.1",
           "inputPer1M": "￥6.40",
           "outputPer1M": "￥44.80",
-          "note": "同上；最低可用分组为「glm」，倍率 0.8"
+          "note": "按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「glm」，倍率 0.8"
         },
         {
-          "name": "glm-5",
+          "name": "GLM-5",
           "inputPer1M": "￥4.80",
           "outputPer1M": "￥17.76",
-          "note": "同上；最低可用分组为「glm」，倍率 0.8"
-        },
-        {
-          "name": "MiniMax-M2.7",
-          "inputPer1M": "—",
-          "outputPer1M": "—",
-          "note": "当前 https://xy.poloapi.com/pricing 对应的数据源未检索到该型号"
-        },
-        {
-          "name": "MiniMax-M2.5",
-          "inputPer1M": "—",
-          "outputPer1M": "—",
-          "note": "当前 https://xy.poloapi.com/pricing 对应的数据源未检索到该型号"
+          "note": "按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「glm」，倍率 0.8"
         },
         {
           "name": "Kimi-K2.5",
           "inputPer1M": "￥2.40",
           "outputPer1M": "￥12.60",
-          "note": "同上；对应 Kimi-K2.5，最低可用分组为「kimi」，倍率 0.6"
+          "note": "按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「kimi」，倍率 0.6"
         },
         {
-          "name": "deepseek-v3.2",
+          "name": "DeepSeek-V3.2",
           "inputPer1M": "￥1.60",
           "outputPer1M": "￥2.40",
-          "note": "同上；最低可用分组为「Deepseek」，倍率 0.8"
+          "note": "按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「Deepseek」，倍率 0.8"
         },
         {
-          "name": "qwen3.6-plus",
+          "name": "Qwen-3.6-Plus",
           "inputPer1M": "￥6.40",
           "outputPer1M": "￥38.40",
-          "note": "同上；对应 Qwen-3.6-Plus，最低可用分组为「qwen千问」，倍率 0.8"
+          "note": "对应 qwen3.6-plus；按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「qwen千问」，倍率 0.8"
         },
         {
-          "name": "qwen3.5-plus",
+          "name": "Qwen-3.5",
           "inputPer1M": "￥1.60",
           "outputPer1M": "￥9.60",
-          "note": "同上；对应 Qwen-3.5 近似型号，最低可用分组为「qwen千问」，倍率 0.8"
+          "note": "对应 qwen3.5-plus；按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「qwen千问」，倍率 0.8"
         }
       ],
-      "notes": "模型名称必须与模型广场完全一致。\n分组决定可用模型与价格，切换分组需新建或调整令牌。\n价格可由公开接口 https://xy.poloapi.com/api/pricing 获取 model_ratio、completion_ratio、enable_groups，并结合顶层 group_ratio 取最低可用分组倍率后换算；充值规则见 https://help.poloapi.com/node/019c412b-e079-7e87-bedf-5c4ddb2402d4 。\n请以 https://xy.poloapi.com/pricing 与 https://apidoc.poloapi.com/ 最新说明为准。"
+      "notes": "模型名称必须与模型广场完全一致。\n分组决定可用模型与价格，切换分组需新建或调整令牌。\n充值汇率 1:1：平台充值 1 人民 = 1 美金额度。\n价格可由公开接口 https://xy.poloapi.com/api/pricing 获取 model_ratio、completion_ratio、enable_groups，并结合顶层 group_ratio 取最低可用分组倍率后换算；充值规则见 https://help.poloapi.com/node/019c412b-e079-7e87-bedf-5c4ddb2402d4 。\n请以 https://xy.poloapi.com/pricing 与 https://apidoc.poloapi.com/ 最新说明为准。"
     }
   },
   {
@@ -328,7 +322,7 @@
     "name": "OfoxAI",
     "homeUrl": "https://ofox.ai/zh",
     "pricingUrl": "https://ofox.ai/zh/models",
-    "updatedAt": "2026.04.15",
+    "updatedAt": "2026.04.16",
     "matrix": {
       "rating": {
         "stars": 4,
@@ -365,82 +359,76 @@
       "description": "OfoxAI（ofox.ai）定位为统一大模型 API 网关：在标准接口下聚合多厂商模型，文档说明兼容 OpenAI、Anthropic 与 Gemini 三类协议，支持流式输出、函数调用、多模态与结构化输出等能力。\n官网提供模型目录、定价页、快速开始与 OpenAPI 规范，并强调 99.9% SLA 与面向 Agent 开发场景。",
       "keyModels": [
         {
-          "name": "anthropic/claude-opus-4.6",
+          "name": "Opus-4.6",
           "inputPer1M": "$5.00",
           "outputPer1M": "$25.00",
-          "note": "按 https://api.ofox.ai/v1/models 实时价"
+          "note": ""
         },
         {
-          "name": "anthropic/claude-sonnet-4.6",
+          "name": "Sonnet-4.6",
           "inputPer1M": "$3.00",
           "outputPer1M": "$15.00",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "openai/gpt-5.4",
+          "name": "GPT-5.4",
           "inputPer1M": "$2.50",
           "outputPer1M": "$15.00",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "openai/gpt-5.3-codex",
+          "name": "GPT-5.3-Codex",
           "inputPer1M": "$1.75",
           "outputPer1M": "$14.00",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "google/gemini-3.1-pro-preview",
+          "name": "Gemini-3.1-Pro",
           "inputPer1M": "$2.00",
           "outputPer1M": "$12.00",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "google/gemini-3-flash-preview",
+          "name": "Gemini-3-Flash",
           "inputPer1M": "$0.50",
           "outputPer1M": "$3.00",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "z-ai/glm-5.1",
+          "name": "GLM-5.1",
           "inputPer1M": "$1.40",
           "outputPer1M": "$4.40",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "z-ai/glm-5",
+          "name": "GLM-5",
           "inputPer1M": "$1.00",
           "outputPer1M": "$3.20",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "minimax/minimax-m2.7",
+          "name": "MiniMax-M2.7",
           "inputPer1M": "$0.30",
           "outputPer1M": "$1.20",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "minimax/minimax-m2.5",
+          "name": "MiniMax-M2.5",
           "inputPer1M": "$0.30",
           "outputPer1M": "$1.20",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "moonshotai/kimi-k2.5",
+          "name": "Kimi-K2.5",
           "inputPer1M": "$0.60",
           "outputPer1M": "$3.00",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "deepseek/deepseek-v3.2",
+          "name": "DeepSeek-V3.2",
           "inputPer1M": "$0.29",
           "outputPer1M": "$0.43",
-          "note": "同上"
-        },
-        {
-          "name": "qwen/qwen3.6-plus",
-          "inputPer1M": "—",
-          "outputPer1M": "—",
-          "note": "当前 /v1/models 未检索到该型号"
+          "note": ""
         }
       ],
       "notes": "协议切换、Base URL 与各厂商 SDK 替换方式见 https://ofox.ai/docs 。\n中文 API 参考以官网最新文档为准。"
@@ -487,85 +475,85 @@
       "description": "N1N（n1n.ai）为大模型 API 聚合管理网关：通过分组将不同上游渠道（如 Azure OpenAI、官方直连、逆向渠道等）隔离计价。\n用户需在控制台选择合适分组与密钥，再按 OpenAI 兼容等方式调用。\n定价逻辑强调「倍率」相对官方公开价。",
       "keyModels": [
         {
-          "name": "gpt-5.4",
+          "name": "Opus-4.6",
+          "inputPer1M": "￥5.00",
+          "outputPer1M": "￥25.00",
+          "note": "对应 claude-opus-4-6；按 https://api.n1n.ai/pricing 展示规则换算；最低可用分组为「default」，倍率 1"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "inputPer1M": "￥3.00",
+          "outputPer1M": "￥15.00",
+          "note": "对应 claude-sonnet-4-6；按 https://api.n1n.ai/pricing 展示规则换算；最低可用分组为「default」，倍率 1"
+        },
+        {
+          "name": "GPT-5.4",
           "inputPer1M": "￥1.50",
           "outputPer1M": "￥9.00",
-          "note": "按 https://api.n1n.ai/pricing 展示的模型定价规则与接口返回的 model_ratio/completion_ratio、最低可用分组「限时特价」倍率 0.6 换算；充值汇率 1:1（1 人民币充值到账 1 美元），见 https://docs.n1n.ai/llm-api-quickstart"
+          "note": "按 https://api.n1n.ai/pricing 展示规则换算；最低可用分组为「限时特价」，倍率 0.6"
         },
         {
-          "name": "gpt-5.3-codex",
+          "name": "GPT-5.3-Codex",
           "inputPer1M": "￥1.40",
           "outputPer1M": "￥11.20",
-          "note": "同上；最低可用分组为「Codex专属」，倍率 0.8"
+          "note": "按 https://api.n1n.ai/pricing 展示规则换算；最低可用分组为「Codex专属」，倍率 0.8"
         },
         {
-          "name": "gemini-3.1-pro-preview",
+          "name": "Gemini-3.1-Pro",
           "inputPer1M": "￥1.60",
           "outputPer1M": "￥9.60",
-          "note": "同上；最低可用分组为「gemini-cli」，倍率 0.8"
+          "note": "对应 gemini-3.1-pro-preview；按 https://api.n1n.ai/pricing 展示规则换算；最低可用分组为「gemini-cli」，倍率 0.8"
         },
         {
-          "name": "gemini-3-flash-preview",
+          "name": "Gemini-3-Flash",
           "inputPer1M": "￥0.40",
           "outputPer1M": "￥2.40",
-          "note": "同上；最低可用分组为「gemini-cli」，倍率 0.8"
+          "note": "对应 gemini-3-flash-preview；按 https://api.n1n.ai/pricing 展示规则换算；最低可用分组为「gemini-cli」，倍率 0.8"
         },
         {
-          "name": "glm-5",
+          "name": "GLM-5",
           "inputPer1M": "￥4.00",
           "outputPer1M": "￥18.00",
-          "note": "同上；最低可用分组为「default」，倍率 1。该模型另有 step_ratios 长上下文阶梯加价，以上为基础档价格"
+          "note": "按 https://api.n1n.ai/pricing 展示规则换算；最低可用分组为「default」，倍率 1"
         },
         {
           "name": "MiniMax-M2.7",
           "inputPer1M": "￥2.10",
           "outputPer1M": "￥8.40",
-          "note": "同上；最低可用分组为「default」，倍率 1"
+          "note": "按 https://api.n1n.ai/pricing 展示规则换算；最低可用分组为「default」，倍率 1"
         },
         {
           "name": "MiniMax-M2.5",
           "inputPer1M": "￥2.10",
           "outputPer1M": "￥8.40",
-          "note": "同上；最低可用分组为「default」，倍率 1"
+          "note": "按 https://api.n1n.ai/pricing 展示规则换算；最低可用分组为「default」，倍率 1"
         },
         {
-          "name": "kimi-k2.5",
+          "name": "Kimi-K2.5",
           "inputPer1M": "￥4.00",
           "outputPer1M": "￥21.00",
-          "note": "同上；最低可用分组为「default」，倍率 1"
+          "note": "对应 kimi-k2.5；按 https://api.n1n.ai/pricing 展示规则换算；最低可用分组为「default」，倍率 1"
         },
         {
-          "name": "deepseek-v3.2",
+          "name": "DeepSeek-V3.2",
           "inputPer1M": "￥1.20",
           "outputPer1M": "￥1.80",
-          "note": "同上；最低可用分组为「限时特价」，倍率 0.6"
+          "note": "按 https://api.n1n.ai/pricing 展示规则换算；最低可用分组为「限时特价」，倍率 0.6"
         },
         {
-          "name": "claude-opus-4-6",
-          "inputPer1M": "￥5.00",
-          "outputPer1M": "￥25.00",
-          "note": "同上；对应 Opus-4.6，最低可用分组为「default」，倍率 1"
-        },
-        {
-          "name": "claude-sonnet-4-6",
-          "inputPer1M": "￥3.00",
-          "outputPer1M": "￥15.00",
-          "note": "同上；对应 Sonnet-4.6，最低可用分组为「default」，倍率 1"
-        },
-        {
-          "name": "qwen3.6-plus",
+          "name": "Qwen-3.6-Plus",
           "inputPer1M": "￥3.00",
           "outputPer1M": "￥18.00",
-          "note": "同上；对应 Qwen-3.6-Plus，最低可用分组为「纯AZ」，倍率 1.5。该模型另有 step_ratios 长上下文阶梯加价，以上为基础档价格"
+          "note": "对应 qwen3.6-plus；按 https://api.n1n.ai/pricing 展示规则换算；最低可用分组为「纯AZ」，倍率 1.5"
         },
         {
-          "name": "glm-5.1",
-          "inputPer1M": "—",
-          "outputPer1M": "—",
-          "note": "当前 https://api.n1n.ai/pricing 对应的数据源未检索到该型号"
+          "name": "Qwen-3.5",
+          "inputPer1M": "￥0.80",
+          "outputPer1M": "￥4.80",
+          "note": "对应 qwen3.5-plus；按 https://api.n1n.ai/pricing 展示规则换算；最低可用分组为「default」，倍率 1"
         }
       ],
-      "notes": "api.n1n.ai/pricing 可能依赖浏览器脚本展示完整表格。\n静态抓取困难时，请以登录后页面与文档站 https://docs.n1n.ai/llm-api-price 为准。"
+      "notes": "api.n1n.ai/pricing 可能依赖浏览器脚本展示完整表格。\n充值汇率 1:1：1 人民币充值到账 1 美元额度。\n静态抓取困难时，请以登录后页面与文档站 https://docs.n1n.ai/llm-api-price 为准。"
     }
   },
   {
@@ -573,7 +561,7 @@
     "name": "DMXAPI",
     "homeUrl": "https://dmxapi.cn",
     "pricingUrl": "https://rmb.dmxapi.cn",
-    "updatedAt": "2026.04.15",
+    "updatedAt": "2026.04.16",
     "matrix": {
       "rating": {
         "stars": 4,
@@ -609,64 +597,76 @@
       "description": "DMXAPI 是国内多模态大模型 API 聚合平台，提供模型列表与文档站 doc.dmxapi.com。\n计价规则在《货币和 Tokens 消耗价格计算》中说明：除基础 Token 单价外，对缓存、音频、推理等场景可能按倍数调整有效计费 tokens。",
       "keyModels": [
         {
-          "name": "gpt-5.4",
+          "name": "GPT-5.4",
           "inputPer1M": "￥18.25",
           "outputPer1M": "￥109.50",
           "note": "按 https://rmb.dmxapi.cn/?api=model_prices"
         },
         {
-          "name": "gpt-5.3-codex",
-          "inputPer1M": "￥12.775",
-          "outputPer1M": "￥102.2",
-          "note": "同上"
+          "name": "GPT-5.3-Codex",
+          "inputPer1M": "￥12.78",
+          "outputPer1M": "￥102.20",
+          "note": "按 https://rmb.dmxapi.cn/?api=model_prices"
         },
         {
-          "name": "gemini-3.1-pro-preview",
-          "inputPer1M": "￥14.6",
-          "outputPer1M": "￥87.6",
-          "note": "同上"
+          "name": "Gemini-3.1-Pro",
+          "inputPer1M": "￥14.60",
+          "outputPer1M": "￥87.60",
+          "note": "按 https://rmb.dmxapi.cn/?api=model_prices"
         },
         {
-          "name": "gemini-3-flash-preview",
+          "name": "Gemini-3-Flash",
           "inputPer1M": "￥3.65",
-          "outputPer1M": "￥21.9",
-          "note": "同上"
+          "outputPer1M": "￥21.90",
+          "note": "按 https://rmb.dmxapi.cn/?api=model_prices"
         },
         {
-          "name": "glm-5.1",
-          "inputPer1M": "￥8",
-          "outputPer1M": "￥28",
-          "note": "同上"
+          "name": "GLM-5.1",
+          "inputPer1M": "￥8.00",
+          "outputPer1M": "￥28.00",
+          "note": "按 https://rmb.dmxapi.cn/?api=model_prices"
         },
         {
-          "name": "glm-5",
-          "inputPer1M": "￥4",
-          "outputPer1M": "￥18",
-          "note": "同上"
+          "name": "GLM-5",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥18.00",
+          "note": "按 https://rmb.dmxapi.cn/?api=model_prices"
         },
         {
-          "name": "MiniMax-M2.7 / MiniMax-M2.5",
-          "inputPer1M": "￥2.1",
-          "outputPer1M": "￥8.4",
-          "note": "同上"
+          "name": "MiniMax-M2.7",
+          "inputPer1M": "￥2.10",
+          "outputPer1M": "￥8.40",
+          "note": "按 https://rmb.dmxapi.cn/?api=model_prices"
         },
         {
-          "name": "kimi-k2.5",
-          "inputPer1M": "￥4",
-          "outputPer1M": "￥21",
-          "note": "同上"
+          "name": "MiniMax-M2.5",
+          "inputPer1M": "￥2.10",
+          "outputPer1M": "￥8.40",
+          "note": "按 https://rmb.dmxapi.cn/?api=model_prices"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥21.00",
+          "note": "按 https://rmb.dmxapi.cn/?api=model_prices"
         },
         {
           "name": "DeepSeek-V3.2",
-          "inputPer1M": "￥2",
-          "outputPer1M": "￥3",
-          "note": "同上"
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥3.00",
+          "note": "按 https://rmb.dmxapi.cn/?api=model_prices"
         },
         {
-          "name": "Opus-4.6 / Sonnet-4.6 / Qwen-3.6-Plus",
-          "inputPer1M": "—",
-          "outputPer1M": "—",
-          "note": "当前公开价目接口未检索到"
+          "name": "Qwen-3.6-Plus",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥12.00",
+          "note": "按 https://rmb.dmxapi.cn/?api=model_prices"
+        },
+        {
+          "name": "Qwen-3.5",
+          "inputPer1M": "￥0.80",
+          "outputPer1M": "￥4.80",
+          "note": "对应 qwen3.5-plus；按 https://rmb.dmxapi.cn/?api=model_prices"
         }
       ],
       "notes": "计价细则见 https://doc.dmxapi.com/jijia.html 。\n完整模型价目以 https://rmb.dmxapi.cn 登录后或导出为准。"
@@ -714,88 +714,88 @@
       "description": "LLM Hub（https://www.llmhub.com.cn/）定位为「一站式人工智能集成平台」：聚合多厂商模型，强调 OpenAI 兼容格式、一行接入、无需大改现有代码。\n控制台入口见站点提供的在线服务与 API Endpoint 说明。\n部分帮助文档与价格说明托管于 doc.llmhub.app 等域名，与 .cn 主站可能同属一套产品体系，使用前请以当前登录域名与密钥为准。",
       "keyModels": [
         {
-          "name": "claude-opus-4.6",
+          "name": "Opus-4.6",
           "inputPer1M": "￥42.00",
           "outputPer1M": "￥210.00",
-          "note": "按 https://www.llmhub.com.cn/pricing 展示规则与公开接口返回的 model_ratio/completion_ratio、/api/status 中 quota_per_unit=500000 与 price=7.3 换算成人民币（四舍五入）"
+          "note": "按 https://www.llmhub.com.cn/pricing 与公开接口换算成人民币"
         },
         {
-          "name": "claude-sonnet-4.6",
+          "name": "Sonnet-4.6",
           "inputPer1M": "￥25.20",
           "outputPer1M": "￥126.00",
-          "note": "同上"
+          "note": "按 https://www.llmhub.com.cn/pricing 与公开接口换算成人民币"
         },
         {
-          "name": "gpt-5.4",
+          "name": "GPT-5.4",
           "inputPer1M": "￥18.25",
           "outputPer1M": "￥109.50",
-          "note": "同上"
+          "note": "按 https://www.llmhub.com.cn/pricing 与公开接口换算成人民币"
         },
         {
-          "name": "gpt-5.3-codex",
+          "name": "GPT-5.3-Codex",
           "inputPer1M": "￥14.69",
           "outputPer1M": "￥117.53",
-          "note": "同上"
+          "note": "按 https://www.llmhub.com.cn/pricing 与公开接口换算成人民币"
         },
         {
-          "name": "gemini-3.1-pro-preview",
+          "name": "Gemini-3.1-Pro",
           "inputPer1M": "￥16.80",
           "outputPer1M": "￥100.80",
-          "note": "同上"
+          "note": "按 https://www.llmhub.com.cn/pricing 与公开接口换算成人民币"
         },
         {
-          "name": "gemini-3-flash-preview",
+          "name": "Gemini-3-Flash",
           "inputPer1M": "￥4.20",
           "outputPer1M": "￥25.20",
-          "note": "同上"
+          "note": "按 https://www.llmhub.com.cn/pricing 与公开接口换算成人民币"
         },
         {
-          "name": "glm-5.1",
-          "inputPer1M": "—",
-          "outputPer1M": "—",
-          "note": "当前 https://www.llmhub.com.cn/pricing 对应的数据源未检索到该型号"
-        },
-        {
-          "name": "glm-5",
+          "name": "GLM-5",
           "inputPer1M": "￥4.00",
           "outputPer1M": "￥18.00",
-          "note": "同上"
+          "note": "按 https://www.llmhub.com.cn/pricing 与公开接口换算成人民币"
         },
         {
-          "name": "minimax-m2.7",
+          "name": "MiniMax-M2.7",
           "inputPer1M": "￥2.10",
           "outputPer1M": "￥8.40",
-          "note": "同上"
+          "note": "按 https://www.llmhub.com.cn/pricing 与公开接口换算成人民币"
         },
         {
-          "name": "minimax-m2.5",
+          "name": "MiniMax-M2.5",
           "inputPer1M": "￥2.10",
           "outputPer1M": "￥8.40",
-          "note": "同上"
+          "note": "按 https://www.llmhub.com.cn/pricing 与公开接口换算成人民币"
         },
         {
-          "name": "kimi-k2.5",
+          "name": "Kimi-K2.5",
           "inputPer1M": "￥4.00",
           "outputPer1M": "￥21.00",
-          "note": "同上"
+          "note": "按 https://www.llmhub.com.cn/pricing 与公开接口换算成人民币"
         },
         {
-          "name": "deepseek-v3.2",
+          "name": "DeepSeek-V3.2",
           "inputPer1M": "￥2.00",
           "outputPer1M": "￥3.00",
-          "note": "同上"
+          "note": "按 https://www.llmhub.com.cn/pricing 与公开接口换算成人民币"
         },
         {
-          "name": "qwen3.6-plus",
+          "name": "Qwen-3.6-Plus",
           "inputPer1M": "￥2.00",
           "outputPer1M": "￥12.00",
-          "note": "同上"
+          "note": "按 https://www.llmhub.com.cn/pricing 与公开接口换算成人民币"
         },
         {
-          "name": "qwen3.5-plus",
+          "name": "Qwen-3.5",
           "inputPer1M": "￥0.56",
           "outputPer1M": "￥3.36",
-          "note": "同上；对应 Qwen-3.5 近似型号"
+          "note": "对应 qwen3.5-plus；按 https://www.llmhub.com.cn/pricing 与公开接口换算成人民币"
+        },
+        {
+          "name": "Doubao-Seed-2.0-Code",
+          "inputPer1M": "￥3.20",
+          "outputPer1M": "￥16.00",
+          "note": "对应 doubao-seed-2.0-code-preview；按 https://www.llmhub.com.cn/pricing 与公开接口换算成人民币"
         }
       ],
       "notes": "模型价格可由公开接口 https://www.llmhub.com.cn/api/pricing 获取倍率后换算（结合 /api/status 中 quota_per_unit 与 price，直接换算人民币价格）。\n首页营销文案中的模型版本名会随市场更新。\n最终接入与扣费规则请以 https://www.llmhub.com.cn/ 控制台为准。"
@@ -806,7 +806,7 @@
     "name": "Poe",
     "homeUrl": "https://poe.com/",
     "pricingUrl": "https://poe.com/api/models",
-    "updatedAt": "2026.04.15",
+    "updatedAt": "2026.04.16",
     "matrix": {
       "rating": {
         "stars": 4,
@@ -843,70 +843,70 @@
       "description": "Poe 由 Quora 运营，既是面向大众的 AI 聊天聚合站（poe.com），也向开发者提供 Creator 侧的 OpenAI 兼容 API：base_url 为 https://api.poe.com/v1，使用 Poe API Key 即可在 Chat Completions（/v1/chat/completions）与 Responses（/v1/responses）等形式下调用文档所列模型名。\n可与现有 OpenAI 客户端库配合，用于在多款前沿模型与社区 Bot 间切换。",
       "keyModels": [
         {
-          "name": "claude-opus-4.6",
+          "name": "Opus-4.6",
           "inputPer1M": "$4.30",
           "outputPer1M": "$21.00",
-          "note": "按 https://api.poe.com/v1/models 实时价"
+          "note": ""
         },
         {
-          "name": "claude-sonnet-4.6",
+          "name": "Sonnet-4.6",
           "inputPer1M": "$2.60",
           "outputPer1M": "$13.00",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "gpt-5.4",
-          "inputPer1M": "$2.20",
+          "name": "GPT-5.4",
+          "inputPer1M": "$2.30",
           "outputPer1M": "$14.00",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "gpt-5.3-codex",
+          "name": "GPT-5.3-Codex",
           "inputPer1M": "$1.60",
           "outputPer1M": "$13.00",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "gemini-3.1-pro（对应 Pro-Preview 近似型号）",
+          "name": "Gemini-3.1-Pro",
           "inputPer1M": "$2.00",
           "outputPer1M": "$12.00",
-          "note": "Poe 列表未单列 preview 后缀，按当前可用型号记录"
+          "note": "对应 gemini-3.1-pro"
         },
         {
-          "name": "gemini-3-flash（对应 Flash-Preview 近似型号）",
+          "name": "Gemini-3-Flash",
           "inputPer1M": "$0.40",
           "outputPer1M": "$2.40",
-          "note": "Poe 列表未单列 preview 后缀，按当前可用型号记录"
+          "note": "对应 gemini-3-flash"
         },
         {
-          "name": "glm-5",
+          "name": "GLM-5",
           "inputPer1M": "$1.00",
           "outputPer1M": "$3.20",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "minimax-m2.7",
+          "name": "MiniMax-M2.7",
           "inputPer1M": "$0.30",
           "outputPer1M": "$1.20",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "minimax-m2.5",
+          "name": "MiniMax-M2.5",
           "inputPer1M": "$0.30",
           "outputPer1M": "$1.20",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "kimi-k2.5",
-          "inputPer1M": "$0.60",
+          "name": "Kimi-K2.5",
+          "inputPer1M": "$0.61",
           "outputPer1M": "$3.00",
-          "note": "同上"
+          "note": ""
         },
         {
-          "name": "deepseek-v3.2",
+          "name": "DeepSeek-V3.2",
           "inputPer1M": "$0.27",
           "outputPer1M": "$0.40",
-          "note": "同上"
+          "note": ""
         }
       ],
       "notes": "模型与价格以 https://poe.com/api/models 为准。\n接入见 https://creator.poe.com/docs/api 。\n订阅与额度见 https://poe.com/api_key 。\n定价政策背景见 https://poe.com/blog/introducing-transparent-usd-pricing-and-api-tool-calling 。\n模型名称大小写及可用性以站点为准。"

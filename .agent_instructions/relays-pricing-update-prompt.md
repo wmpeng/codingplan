@@ -14,9 +14,15 @@
    - `inputPer1M`
    - `outputPer1M`
    - `note`
-4. 处理后同步更新对应平台的 `updatedAt` 为当天日期（格式：`YYYY.MM.DD`）。
-5. 不要新增临时下载文件到仓库；若生成了临时文件，结束前删除。
-6. 修改后必须校验 `relays.json` 是合法 JSON。
+4. `detail.keyModels[].name` 一律使用第 2 节中的标准名，不要写平台自己的原始模型 ID。
+5. 某平台如果不存在某模型，就直接省略该条；不要写 `—` 占位，也不要写“未检索到”占位行。
+6. 如果某平台存在“充值人民币到账美元额度 1:1”这类规则，把它补到对应平台的 `detail.notes` 中。
+7. 如果仓库内存在本地脚本，优先运行这些脚本获取结构化结果，再回写 `relays.json`：
+  - 单平台：`local/scripts/fetch_<platform>_prices.py`
+  - 批量入口：`local/scripts/fetch_relay_prices.py`
+8. 本地脚本如果支持 `--write`，优先直接用写入模式更新 `relays.json`，避免手工复制粘贴。
+9. 不要新增临时下载文件到仓库；若生成了临时文件，结束前删除。
+10. 修改后必须校验 `relays.json` 是合法 JSON。
 
 ---
 
@@ -36,12 +42,47 @@
 - DeepSeek-V3.2
 - Qwen-3.6-Plus
 - Qwen-3.5
+- Doubao-Seed-2.0-Code
 
 > 注意：不同平台的模型 ID 命名不一致，可按“近似可用型号”映射，但要在 `note` 说明。
 
+> 写回 `relays.json` 时，`name` 仍然使用上面的标准名；映射后的平台原始型号只写进 `note`，不要直接写进 `name`。
+
 ---
 
-## 3) 各平台固定抓取方法
+## 3) 固定执行流程
+
+优先按下面的固定流程执行，不要每次临时拼接新的抓取命令。
+
+### A. 单平台更新
+
+- 先运行对应平台脚本，检查输出是否合理：
+  - `python local/scripts/fetch_openrouter_prices.py`
+  - `python local/scripts/fetch_siliconflow_prices.py`
+  - `python local/scripts/fetch_poloapi_prices.py`
+  - `python local/scripts/fetch_ofox_prices.py`
+  - `python local/scripts/fetch_n1n_prices.py`
+  - `python local/scripts/fetch_dmxapi_prices.py`
+  - `python local/scripts/fetch_llmhub_prices.py`
+  - `python local/scripts/fetch_poe_prices.py`
+- 确认输出无误后，优先使用写入模式直接回写：
+  - `python local/scripts/fetch_<platform>_prices.py --write`
+- 若需要写入其它文件路径：
+  - `python local/scripts/fetch_<platform>_prices.py --write /path/to/relays.json`
+
+### B. 批量更新
+
+- 全量抓取预览：`python local/scripts/fetch_relay_prices.py`
+- 全量直接回写：`python local/scripts/fetch_relay_prices.py --write`
+- 只更新部分平台：`python local/scripts/fetch_relay_prices.py --platform openrouter --platform poe --write`
+
+### C. 写入后的固定自检
+
+- `python -m json.tool relays.json > /dev/null`
+- 抽查刚更新的平台是否仍符合第 4 节写回规范。
+- 若脚本输出与 `relays.json` 不一致，以脚本输出和平台官方来源为准，修正脚本，不要手工硬改出另一套口径。
+
+## 4) 各平台固定抓取方法
 
 ### A. OpenRouter（`id: openrouter`）
 
@@ -68,10 +109,11 @@
 ### B. SiliconFlow（`id: siliconflow`）
 
 - 页面源：`https://siliconflow.cn/models`
-- 该页面可直接提取“输入/输出：￥x / M Tokens”信息。
+- 优先直接抓取页面 HTML 源码中的模型卡片信息，不依赖第三方网页理解服务。
+- 该页面部分模型卡片可直接提取“输入/输出：￥x / M Tokens”信息。
 - 单位已是 `￥/M tokens`，无需换算。
 - 优先更新能直接在页面中检索到的模型（如 GLM-5.1、GLM-5、MiniMax-M2.5、Kimi-K2.5、DeepSeek-V3.2）。
-- 未公开或未检索到的模型不要乱填，保留 `—` 并注明“未检索到”。
+- 页面源码里未直接检索到价格的模型就省略，不要补 `—` 占位。
 
 ---
 
@@ -90,7 +132,7 @@
 
 - 数据源：`https://api.ofox.ai/v1/models`
 - 结构与 OpenRouter 类似，取 `pricing.prompt`、`pricing.completion`（$/token），再 `× 1,000,000`。
-- 若某目标模型不存在（例如当期未上架 `qwen/qwen3.6-plus`），写 `—` 并在 `note` 标注“当前 /v1/models 未检索到”。
+- 若某目标模型不存在（例如当期未上架 `qwen/qwen3.6-plus`），直接省略该条。
 
 ---
 
@@ -107,7 +149,7 @@
 - 充值汇率按文档 `https://docs.n1n.ai/llm-api-quickstart` 的 1:1 规则处理：`1 人民币充值到账 1 美元额度`，因此上一步得到的数值可直接按 `￥/1M` 写入。
 - 建议 `keyModels` 直接写最终人民币价格，不再写“官方价 × 倍率”格式。
 - `note` 中给用户看的链接统一写 `https://api.n1n.ai/pricing`；不要把 `pricing_new` 接口地址直接写进面向用户的说明。
-- 若目标模型不在 `pricing_new.data[].model_name` 中，写 `—` 并说明“当前 https://api.n1n.ai/pricing 对应的数据源未检索到该型号”。
+- 若目标模型不在 `pricing_new.data[].model_name` 中，直接省略该条。
 
 ---
 
@@ -118,7 +160,7 @@
   - `https://rmb.dmxapi.cn/?api=models`（模型清单）
   - `https://rmb.dmxapi.cn/?api=model_prices`（价格）
 - `model_prices` 里的 `input_price`、`output_price` 即可写入 `￥/M`（按当前站点口径）。
-- 若目标模型无对应 key（例如某些时期的 Opus/Sonnet/Qwen3.6+），写 `—` 并注明“公开价目接口未检索到”。
+- 若目标模型无对应 key（例如某些时期的 Opus/Sonnet/Qwen3.6+），直接省略该条。
 
 ---
 
@@ -136,7 +178,7 @@
 - 充值汇率按帮助文档 `https://help.poloapi.com/node/019c412b-e079-7e87-bedf-5c4ddb2402d4` 的规则处理：`平台充值:充值1人民=1美金`，因此上一步得到的数值可直接按 `￥/1M` 写入。
 - 建议 `keyModels` 直接写最终人民币价格，不再写旧的美元换算说明，也不再依赖 `api/status`。
 - `note` 中给用户看的链接统一写 `https://xy.poloapi.com/pricing`；不要把 `https://xy.poloapi.com/api/pricing` 这种接口地址直接写进面向用户的说明。
-- 若目标模型不在 `api/pricing.data[].model_name` 中，写 `—` 并说明“当前 https://xy.poloapi.com/pricing 对应的数据源未检索到该型号”。
+- 若目标模型不在 `api/pricing.data[].model_name` 中，直接省略该条。
 
 ---
 
@@ -156,11 +198,11 @@
   - `output_cny_per_1m = input_cny_per_1m * completion_ratio`
 - 不要再把人民币结果除以 `usd_exchange_rate` 折算成美元；`keyModels` 直接展示 `￥/1M`。
 - `note` 中给用户看的链接优先写 `https://www.llmhub.com.cn/pricing`；若需要说明换算依据，可补充公开接口 `api/pricing` 与 `api/status`，但不要把最终展示价再写成美元。
-- 若目标模型在 `api/pricing` 中不存在，写 `—` 并在 `note` 标注“当前 https://www.llmhub.com.cn/pricing 对应的数据源未检索到该型号”。
+- 若目标模型在 `api/pricing` 中不存在，直接省略该条。
 
 ---
 
-## 4) 写回规范（非常重要）
+## 5) 写回规范（非常重要）
 
 1. 不要破坏现有 JSON 结构和字段顺序。
 2. 同一平台 `keyModels` 可以按“有明确价格优先、无价格在后”排序。
@@ -169,19 +211,19 @@
    - 人民币：按源数据精度或常见展示精度
 4. 若有四舍五入，`note` 必须说明“原始值 xxx，已四舍五入”。
 5. `notes` 字段保留原有说明，仅在必要时补充数据来源链接。
+6. 不要添加“换算说明”“未检索到型号”等占位行；`keyModels` 只保留当前平台实际存在且已取到价格的模型。
 
 ---
 
-## 5) 更新后的自检清单
+## 6) 更新后的自检清单
 
 1. `python -c "import json, pathlib; json.loads(pathlib.Path('relays.json').read_text(encoding='utf-8')); print('ok')"`
-2. 抽查每个平台至少 1~2 个模型是否来源可追溯（接口字段或文档声明）。
-3. 检查是否误改了非价格区域（matrix 星级、介绍文案等）。
-4. 确认无临时抓取文件残留在仓库根目录。
+2. 如果用了本地脚本写入模式，再额外运行一次：`python -m json.tool relays.json > /dev/null`
+3. 抽查每个平台至少 1~2 个模型是否来源可追溯（接口字段或文档声明）。
+4. 检查是否误改了非价格区域（matrix 星级、介绍文案等）。
+5. 确认无临时抓取文件残留在仓库根目录。
 
----
-
-## 6) 建议执行顺序（稳定版）
+## 7) 建议执行顺序（稳定版）
 
 1. 先更新：`OpenRouter`、`Poe`、`Ofox`、`DMXAPI`（接口稳定、可机读）
 2. 再更新：`SiliconFlow`（页面提取）
