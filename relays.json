@@ -433,7 +433,7 @@
     "name": "N1N",
     "homeUrl": "https://n1n.ai",
     "pricingUrl": "https://api.n1n.ai/pricing",
-    "updatedAt": "2026.04.15",
+    "updatedAt": "2026.04.16",
     "matrix": {
       "rating": {
         "stars": 4,
@@ -470,57 +470,81 @@
       "keyModels": [
         {
           "name": "gpt-5.4",
-          "inputPer1M": "官方价 × 1.25",
-          "outputPer1M": "官方价 × 6",
-          "note": "按 https://api.n1n.ai/api/pricing_new（倍率制）"
+          "inputPer1M": "￥1.50",
+          "outputPer1M": "￥9.00",
+          "note": "按 https://api.n1n.ai/pricing 展示的模型定价规则与接口返回的 model_ratio/completion_ratio、最低可用分组「限时特价」倍率 0.6 换算；充值汇率 1:1（1 人民币充值到账 1 美元），见 https://docs.n1n.ai/llm-api-quickstart"
         },
         {
           "name": "gpt-5.3-codex",
-          "inputPer1M": "官方价 × 0.875",
-          "outputPer1M": "官方价 × 8",
-          "note": "同上"
+          "inputPer1M": "￥1.40",
+          "outputPer1M": "￥11.20",
+          "note": "同上；最低可用分组为「Codex专属」，倍率 0.8"
         },
         {
           "name": "gemini-3.1-pro-preview",
-          "inputPer1M": "官方价 × 1",
-          "outputPer1M": "官方价 × 6",
-          "note": "同上"
+          "inputPer1M": "￥1.60",
+          "outputPer1M": "￥9.60",
+          "note": "同上；最低可用分组为「gemini-cli」，倍率 0.8"
         },
         {
           "name": "gemini-3-flash-preview",
-          "inputPer1M": "官方价 × 0.25",
-          "outputPer1M": "官方价 × 6",
-          "note": "同上"
+          "inputPer1M": "￥0.40",
+          "outputPer1M": "￥2.40",
+          "note": "同上；最低可用分组为「gemini-cli」，倍率 0.8"
         },
         {
           "name": "glm-5",
-          "inputPer1M": "官方价 × 2",
-          "outputPer1M": "官方价 × 4.5",
-          "note": "同上"
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥18.00",
+          "note": "同上；最低可用分组为「default」，倍率 1。该模型另有 step_ratios 长上下文阶梯加价，以上为基础档价格"
         },
         {
-          "name": "MiniMax-M2.7 / MiniMax-M2.5",
-          "inputPer1M": "官方价 × 1.05",
-          "outputPer1M": "官方价 × 4",
-          "note": "同上"
+          "name": "MiniMax-M2.7",
+          "inputPer1M": "￥2.10",
+          "outputPer1M": "￥8.40",
+          "note": "同上；最低可用分组为「default」，倍率 1"
+        },
+        {
+          "name": "MiniMax-M2.5",
+          "inputPer1M": "￥2.10",
+          "outputPer1M": "￥8.40",
+          "note": "同上；最低可用分组为「default」，倍率 1"
         },
         {
           "name": "kimi-k2.5",
-          "inputPer1M": "官方价 × 2",
-          "outputPer1M": "官方价 × 5.25",
-          "note": "同上"
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥21.00",
+          "note": "同上；最低可用分组为「default」，倍率 1"
         },
         {
           "name": "deepseek-v3.2",
-          "inputPer1M": "官方价 × 1",
-          "outputPer1M": "官方价 × 1.5",
-          "note": "同上"
+          "inputPer1M": "￥1.20",
+          "outputPer1M": "￥1.80",
+          "note": "同上；最低可用分组为「限时特价」，倍率 0.6"
         },
         {
-          "name": "Opus-4.6 / Sonnet-4.6 / GLM-5.1 / Qwen-3.6-Plus",
+          "name": "claude-opus-4-6",
+          "inputPer1M": "￥5.00",
+          "outputPer1M": "￥25.00",
+          "note": "同上；对应 Opus-4.6，最低可用分组为「default」，倍率 1"
+        },
+        {
+          "name": "claude-sonnet-4-6",
+          "inputPer1M": "￥3.00",
+          "outputPer1M": "￥15.00",
+          "note": "同上；对应 Sonnet-4.6，最低可用分组为「default」，倍率 1"
+        },
+        {
+          "name": "qwen3.6-plus",
+          "inputPer1M": "￥3.00",
+          "outputPer1M": "￥18.00",
+          "note": "同上；对应 Qwen-3.6-Plus，最低可用分组为「纯AZ」，倍率 1.5。该模型另有 step_ratios 长上下文阶梯加价，以上为基础档价格"
+        },
+        {
+          "name": "glm-5.1",
           "inputPer1M": "—",
           "outputPer1M": "—",
-          "note": "当前 pricing_new 未检索到对应型号"
+          "note": "当前 https://api.n1n.ai/pricing 对应的数据源未检索到该型号"
         }
       ],
       "notes": "api.n1n.ai/pricing 可能依赖浏览器脚本展示完整表格。\n静态抓取困难时，请以登录后页面与文档站 https://docs.n1n.ai/llm-api-price 为准。"
