@@ -18,8 +18,8 @@
 5. 某平台如果不存在某模型，就直接省略该条；不要写 `—` 占位，也不要写“未检索到”占位行。
 6. 如果某平台存在“充值人民币到账美元额度 1:1”这类规则，把它补到对应平台的 `detail.notes` 中。
 7. 如果仓库内存在本地脚本，优先运行这些脚本获取结构化结果，再回写 `relays.json`：
-  - 单平台：`local/scripts/fetch_<platform>_prices.py`
-  - 批量入口：`local/scripts/fetch_relay_prices.py`
+  - 单平台：`.dev/scripts/fetch_<platform>_prices.py`
+  - 批量入口：`.dev/scripts/fetch_relay_prices.py`
 8. 本地脚本如果支持 `--write`，优先直接用写入模式更新 `relays.json`，避免手工复制粘贴。
 9. 不要新增临时下载文件到仓库；若生成了临时文件，结束前删除。
 10. 修改后必须校验 `relays.json` 是合法 JSON。
@@ -57,24 +57,24 @@
 ### A. 单平台更新
 
 - 先运行对应平台脚本，检查输出是否合理：
-  - `python local/scripts/fetch_openrouter_prices.py`
-  - `python local/scripts/fetch_siliconflow_prices.py`
-  - `python local/scripts/fetch_poloapi_prices.py`
-  - `python local/scripts/fetch_ofox_prices.py`
-  - `python local/scripts/fetch_n1n_prices.py`
-  - `python local/scripts/fetch_dmxapi_prices.py`
-  - `python local/scripts/fetch_llmhub_prices.py`
-  - `python local/scripts/fetch_poe_prices.py`
+  - `python .dev/scripts/fetch_openrouter_prices.py`
+  - `python .dev/scripts/fetch_siliconflow_prices.py`
+  - `python .dev/scripts/fetch_poloapi_prices.py`
+  - `python .dev/scripts/fetch_ofox_prices.py`
+  - `python .dev/scripts/fetch_n1n_prices.py`
+  - `python .dev/scripts/fetch_dmxapi_prices.py`
+  - `python .dev/scripts/fetch_llmhub_prices.py`
+  - `python .dev/scripts/fetch_poe_prices.py`
 - 确认输出无误后，优先使用写入模式直接回写：
-  - `python local/scripts/fetch_<platform>_prices.py --write`
+  - `python .dev/scripts/fetch_<platform>_prices.py --write`
 - 若需要写入其它文件路径：
-  - `python local/scripts/fetch_<platform>_prices.py --write /path/to/relays.json`
+  - `python .dev/scripts/fetch_<platform>_prices.py --write /path/to/relays.json`
 
 ### B. 批量更新
 
-- 全量抓取预览：`python local/scripts/fetch_relay_prices.py`
-- 全量直接回写：`python local/scripts/fetch_relay_prices.py --write`
-- 只更新部分平台：`python local/scripts/fetch_relay_prices.py --platform openrouter --platform poe --write`
+- 全量抓取预览：`python .dev/scripts/fetch_relay_prices.py`
+- 全量直接回写：`python .dev/scripts/fetch_relay_prices.py --write`
+- 只更新部分平台：`python .dev/scripts/fetch_relay_prices.py --platform openrouter --platform poe --write`
 
 ### C. 写入后的固定自检
 
