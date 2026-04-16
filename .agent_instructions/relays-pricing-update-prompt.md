@@ -127,19 +127,16 @@
 - 官网：`https://xy.poloapi.com/`
 - 价格页：`https://xy.poloapi.com/pricing`
 - 公开价格接口（无需登录）：`https://xy.poloapi.com/api/pricing`
-- 换算元数据接口：`https://xy.poloapi.com/api/status`
-- `api/pricing` 里主要取：
-  - `data[].model_name`
-  - `data[].model_ratio`
-  - `data[].completion_ratio`
-- `api/status` 里主要取：
-  - `data.quota_per_unit`
-  - `data.price`
-  - `data.usd_exchange_rate`
-- 推荐换算（按每百万 token）：
-  - `input_usd_per_1m = 1_000_000 * model_ratio / quota_per_unit * price`
-  - `output_usd_per_1m = input_usd_per_1m * completion_ratio`
-- 若目标模型在 `api/pricing` 中不存在，写 `—` 并在 `note` 标注“当前 /api/pricing 未检索到对应型号”。
+- PoloAPI 的接口结构与 N1N 类似，核心也是“倍率计价”：
+  - 输入基准价：`model_ratio × 2`，得到基准输入价（单位数值等同于美元价）
+  - 输出基准价：`输入基准价 × completion_ratio`
+  - 每个模型可用分组在 `enable_groups`
+  - 各分组倍率在顶层 `group_ratio`
+  - 最终价格：在 `enable_groups` 中找到可用且倍率最小的分组，用 `基准输入/输出价 × 最低 group_ratio`
+- 充值汇率按帮助文档 `https://help.poloapi.com/node/019c412b-e079-7e87-bedf-5c4ddb2402d4` 的规则处理：`平台充值:充值1人民=1美金`，因此上一步得到的数值可直接按 `￥/1M` 写入。
+- 建议 `keyModels` 直接写最终人民币价格，不再写旧的美元换算说明，也不再依赖 `api/status`。
+- `note` 中给用户看的链接统一写 `https://xy.poloapi.com/pricing`；不要把 `https://xy.poloapi.com/api/pricing` 这种接口地址直接写进面向用户的说明。
+- 若目标模型不在 `api/pricing.data[].model_name` 中，写 `—` 并说明“当前 https://xy.poloapi.com/pricing 对应的数据源未检索到该型号”。
 
 ---
 
