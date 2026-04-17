@@ -2241,7 +2241,7 @@
                 const dimPx = dimensionWidths.get(dim.key) || TAG_W;
                 const helpText = typeof dim.helpText === 'string' ? dim.helpText.trim() : '';
                 if (helpText) {
-                    return `<th class="matrix-dim-th${thExtra}${ratingTh}${sortableTh}"${sortAttr} style="width:${dimPx}px;min-width:${dimPx}px"><span class="matrix-th-help"><button type="button" class="matrix-help-trigger" aria-label="${escapeHtml(dim.label)}说明">${escapeHtml(dim.label)}</button><span class="matrix-help-bubble" role="tooltip">${escapeHtml(helpText)}</span></span></th>`;
+                    return `<th class="matrix-dim-th${thExtra}${ratingTh}${sortableTh}"${sortAttr} style="width:${dimPx}px;min-width:${dimPx}px"><span class="matrix-th-help"><button type="button" class="matrix-help-trigger" aria-label="${escapeHtml(dim.label)}说明">${escapeHtml(dim.label)}</button><span class="matrix-help-bubble" role="tooltip">${escapeHtmlPreserveBreaks(helpText)}</span></span></th>`;
                 }
                 return `<th class="matrix-dim-th${thExtra}${ratingTh}${sortableTh}"${sortAttr} style="width:${dimPx}px;min-width:${dimPx}px">${escapeHtml(dim.label)}</th>`;
             }).join('');
