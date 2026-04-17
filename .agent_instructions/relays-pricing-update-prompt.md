@@ -11,18 +11,20 @@
 2. 价格优先使用平台官方可机读接口；若无公开接口，则使用官方文档声明（如“与官方同价”）并在 `note` 标注依据。
 3. 所有价格统一写入 `detail.keyModels`，字段保持：
    - `name`
+  - `group`
    - `inputPer1M`
    - `outputPer1M`
    - `note`
 4. `detail.keyModels[].name` 一律使用第 2 节中的标准名，不要写平台自己的原始模型 ID。
-5. 某平台如果不存在某模型，就直接省略该条；不要写 `—` 占位，也不要写“未检索到”占位行。
-6. 如果某平台存在“充值人民币到账美元额度 1:1”这类规则，把它补到对应平台的 `detail.notes` 中。
-7. 如果仓库内存在本地脚本，优先运行这些脚本获取结构化结果，再回写 `relays.json`：
+5. 无分组平台的 `detail.keyModels[].group` 固定写 `-`；多分组平台按“模型 × 分组”展开为多条记录，每条写对应分组名。
+6. 某平台如果不存在某模型，就直接省略该条；不要写 `—` 占位，也不要写“未检索到”占位行。
+7. 如果某平台存在“充值人民币到账美元额度 1:1”这类规则，把它补到对应平台的 `detail.notes` 中。
+8. 如果仓库内存在本地脚本，优先运行这些脚本获取结构化结果，再回写 `relays.json`：
   - 单平台：`.dev/scripts/fetch_<platform>_prices.py`
   - 批量入口：`.dev/scripts/fetch_relay_prices.py`
-8. 本地脚本如果支持 `--write`，优先直接用写入模式更新 `relays.json`，避免手工复制粘贴。
-9. 不要新增临时下载文件到仓库；若生成了临时文件，结束前删除。
-10. 修改后必须校验 `relays.json` 是合法 JSON。
+9. 本地脚本如果支持 `--write`，优先直接用写入模式更新 `relays.json`，避免手工复制粘贴。
+10. 不要新增临时下载文件到仓库；若生成了临时文件，结束前删除。
+11. 修改后必须校验 `relays.json` 是合法 JSON。
 
 ---
 
@@ -145,9 +147,10 @@
   - 输出基准价：`输入基准价 × completion_ratio`
   - 每个模型可用分组在 `enable_groups`
   - 各分组倍率在顶层 `group_ratio`
-  - 最终价格：在 `enable_groups` 中找到可用且倍率最小的分组，用 `基准输入/输出价 × 最低 group_ratio`
+  - 最终价格：对 `enable_groups` 中每个可用分组，都用 `基准输入/输出价 × 对应 group_ratio` 计算，并按“模型 × 分组”分别写入 `keyModels`
 - 充值汇率按文档 `https://docs.n1n.ai/llm-api-quickstart` 的 1:1 规则处理：`1 人民币充值到账 1 美元额度`，因此上一步得到的数值可直接按 `￥/1M` 写入。
 - 建议 `keyModels` 直接写最终人民币价格，不再写“官方价 × 倍率”格式。
+- `group` 字段写实际分组名；`note` 只保留必要映射和“分组倍率 x”，不要再写“最低可用分组”。
 - `note` 中给用户看的链接统一写 `https://api.n1n.ai/pricing`；不要把 `pricing_new` 接口地址直接写进面向用户的说明。
 - 若目标模型不在 `pricing_new.data[].model_name` 中，直接省略该条。
 
@@ -174,9 +177,10 @@
   - 输出基准价：`输入基准价 × completion_ratio`
   - 每个模型可用分组在 `enable_groups`
   - 各分组倍率在顶层 `group_ratio`
-  - 最终价格：在 `enable_groups` 中找到可用且倍率最小的分组，用 `基准输入/输出价 × 最低 group_ratio`
+  - 最终价格：对 `enable_groups` 中每个可用分组，都用 `基准输入/输出价 × 对应 group_ratio` 计算，并按“模型 × 分组”分别写入 `keyModels`
 - 充值汇率按帮助文档 `https://help.poloapi.com/node/019c412b-e079-7e87-bedf-5c4ddb2402d4` 的规则处理：`平台充值:充值1人民=1美金`，因此上一步得到的数值可直接按 `￥/1M` 写入。
 - 建议 `keyModels` 直接写最终人民币价格，不再写旧的美元换算说明，也不再依赖 `api/status`。
+- `group` 字段写实际分组名；`note` 只保留必要映射和“分组倍率 x”，不要再写“最低可用分组”。
 - `note` 中给用户看的链接统一写 `https://xy.poloapi.com/pricing`；不要把 `https://xy.poloapi.com/api/pricing` 这种接口地址直接写进面向用户的说明。
 - 若目标模型不在 `api/pricing.data[].model_name` 中，直接省略该条。
 
@@ -205,7 +209,7 @@
 ## 5) 写回规范（非常重要）
 
 1. 不要破坏现有 JSON 结构和字段顺序。
-2. 同一平台 `keyModels` 可以按“有明确价格优先、无价格在后”排序。
+2. 同一平台 `keyModels` 按标准模型名顺序输出；若同一模型有多个分组，则该模型下再按分组展开。
 3. 数值展示建议：
    - 美元：保留 2 位或按现有风格（必要时可 3 位）
    - 人民币：按源数据精度或常见展示精度
