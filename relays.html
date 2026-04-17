@@ -201,6 +201,8 @@
             position: relative;
             height: 24px;
             margin: 10px 0;
+            padding: 0 16px;
+            box-sizing: border-box;
         }
 
         .slider-track {
@@ -1102,8 +1104,8 @@
             output: 'modelOutputPrice'
         };
         const modelPriceSliders = {
-            input: { min: 0, max: 1, minValue: 0, maxValue: 1 },
-            output: { min: 0, max: 1, minValue: 0, maxValue: 1 }
+            input: { min: null, max: null, minValue: 0, maxValue: 1 },
+            output: { min: null, max: null, minValue: 0, maxValue: 1 }
         };
 
         function getMatrixDimensionValueType(dim) {
@@ -1293,8 +1295,16 @@
             slider.minValue = bounds.min;
             slider.maxValue = bounds.max;
 
-            const currentMin = Number.isFinite(slider.min) ? Math.max(bounds.min, Math.min(slider.min, bounds.max)) : bounds.min;
-            const currentMax = Number.isFinite(slider.max) ? Math.max(bounds.min, Math.min(slider.max, bounds.max)) : bounds.max;
+            const filterMin = kind === 'input' ? modelMatrixFilterState.inputMin : modelMatrixFilterState.outputMin;
+            const filterMax = kind === 'input' ? modelMatrixFilterState.inputMax : modelMatrixFilterState.outputMax;
+            const hasActiveFilter = filterMin !== '' && filterMax !== '';
+
+            const currentMin = hasActiveFilter && Number.isFinite(Number(filterMin))
+                ? Math.max(bounds.min, Math.min(Number(filterMin), bounds.max))
+                : bounds.min;
+            const currentMax = hasActiveFilter && Number.isFinite(Number(filterMax))
+                ? Math.max(bounds.min, Math.min(Number(filterMax), bounds.max))
+                : bounds.max;
 
             updateModelPriceSliderVisuals(kind, currentMin, currentMax);
             addModelPriceSliderDragEvents(kind);
@@ -1342,14 +1352,15 @@
             const minThumb = document.getElementById(`${prefix}SliderMin`);
             const maxThumb = document.getElementById(`${prefix}SliderMax`);
             const trackHost = minThumb ? minThumb.parentElement : null;
-            if (!minThumb || !maxThumb || !trackHost) return;
+            const track = trackHost ? trackHost.querySelector('.slider-track') : null;
+            if (!minThumb || !maxThumb || !trackHost || !track) return;
 
             let isDragging = null;
 
             const handleDrag = (e) => {
                 if (isDragging === null) return;
                 const pointX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
-                const rect = trackHost.getBoundingClientRect();
+                const rect = track.getBoundingClientRect();
                 const percent = Math.max(0, Math.min(100, ((pointX - rect.left) / rect.width) * 100));
                 const slider = modelPriceSliders[kind];
                 const span = slider.maxValue - slider.minValue || 1;
@@ -1782,20 +1793,18 @@
             const resetBtn = bar.querySelector('#modelMatrixFilterResetBtn');
             if (resetBtn) {
                 resetBtn.addEventListener('click', () => {
-                    const inputBounds = getModelPriceBounds('input');
-                    const outputBounds = getModelPriceBounds('output');
                     modelMatrixFilterState = {
                         relay: [],
                         model: [],
-                        inputMin: inputBounds.min,
-                        inputMax: inputBounds.max,
-                        outputMin: outputBounds.min,
-                        outputMax: outputBounds.max
+                        inputMin: '',
+                        inputMax: '',
+                        outputMin: '',
+                        outputMax: ''
                     };
-                    modelPriceSliders.input.min = inputBounds.min;
-                    modelPriceSliders.input.max = inputBounds.max;
-                    modelPriceSliders.output.min = outputBounds.min;
-                    modelPriceSliders.output.max = outputBounds.max;
+                    modelPriceSliders.input.min = null;
+                    modelPriceSliders.input.max = null;
+                    modelPriceSliders.output.min = null;
+                    modelPriceSliders.output.max = null;
                     renderModelMatrixFilterBar();
                     applyModelMatrixFilters();
                 });
