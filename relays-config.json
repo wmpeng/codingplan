@@ -9,6 +9,47 @@
       "text": "GitHub"
     }
   },
+  "sections": {
+    "matrixTitle": "快速对比",
+    "modelMatrixTitle": "模型价格对比",
+    "modelMatrixInfo": "按 detail.keyModels 展开为“每个模型按平台 × 分组各一行”的价格明细表。多分组平台会展开全部分组，无分组平台的分组列显示为 -。默认只显示每个平台每个模型最便宜的分组，可在筛选区取消勾选查看全部分组。支持平台多选、模型多选、输入/输出价格滑块筛选；排序仅保留输入价格和输出价格两列，且会按 relays-config.json 中配置的汇率折合成人民币后计算，显示仍保留原币种。",
+    "detailTitle": "详细介绍",
+    "detailDescriptionTitle": "产品简介",
+    "detailPricingTitle": "代表模型定价（部分示例）",
+    "detailNotesTitle": "注意事项",
+    "notesTitle": "说明",
+    "updatesTitle": "更新日志"
+  },
+  "actions": {
+    "home": "官网",
+    "pricing": "查看定价",
+    "detail": "查看详情",
+    "openHomeTitle": "打开官网",
+    "jumpToDetailTitle": "跳转至下方详细介绍",
+    "updatedAtPrefix": "数据更新："
+  },
+  "filters": {
+    "platform": "平台",
+    "model": "模型",
+    "inputPriceInCny": "输入价格（折￥）",
+    "outputPriceInCny": "输出价格（折￥）",
+    "cheapestOnly": "每个平台每个模型仅显示最便宜分组",
+    "reset": "重置筛选"
+  },
+  "tableLabels": {
+    "platform": "平台",
+    "model": "模型",
+    "group": "分组",
+    "inputPer1M": "输入 / 1M tokens",
+    "outputPer1M": "输出 / 1M tokens",
+    "note": "备注"
+  },
+  "messages": {
+    "loading": "加载中...",
+    "empty": "暂无数据",
+    "emptyModelMatrix": "暂无符合条件的价格记录",
+    "loadError": "数据加载失败，请检查 relays.json 文件"
+  },
   "modelPriceExchange": {
     "baseCurrency": "CNY",
     "rates": {

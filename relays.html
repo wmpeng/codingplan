@@ -1044,23 +1044,22 @@
                 <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                 </svg>
-                <span id="githubText">GitHub</span>
+                <span id="githubText">header.github.text</span>
             </a>
-            <h1 id="pageTitle">API 中转站</h1>
-            <div class="update-date" id="updateDate">更新日期 2026.4.7</div>
-            <div class="subtitle" id="subtitle">OpenRouter 等 API 中转与云推理平台，综合评价、价格、透明度、模型覆盖、可用性、国内支付与标签等维度对比</div>
-            <div class="header-info" id="headerInfo">本页主要整理常见 API 中转平台的公开信息，方便先做横向筛选。
-涉及价格、模型可用性、支付与网络等内容时，请在接入前再到平台官网或控制台核对最新规则。</div>
+            <h1 id="pageTitle">header.title</h1>
+            <div class="update-date" id="updateDate">header.updateDate</div>
+            <div class="subtitle" id="subtitle">header.subtitle</div>
+            <div class="header-info" id="headerInfo">header.info</div>
         </div>
 
         <hr class="section-divider">
 
         <!-- 快速对比矩阵 -->
         <div class="matrix-section">
-            <h2 class="section-title">快速对比</h2>
+            <h2 class="section-title" id="matrixSectionTitle">sections.matrixTitle</h2>
             <div class="matrix-filter-bar" id="matrixFilterBar"></div>
             <div class="matrix-wrapper" id="matrixWrapper">
-                <div class="loading-state">加载中...</div>
+                <div class="loading-state" id="matrixLoadingState">messages.loading</div>
             </div>
         </div>
 
@@ -1068,11 +1067,11 @@
 
         <!-- 模型价格对比矩阵 -->
         <div class="model-matrix-section">
-            <h2 class="section-title">模型价格对比</h2>
-            <div class="section-info">按 detail.keyModels 展开为“每个模型按平台 × 分组各一行”的价格明细表。多分组平台会展开全部分组，无分组平台的分组列显示为 -。默认只显示每个平台每个模型最便宜的分组，可在筛选区取消勾选查看全部分组。支持平台多选、模型多选、输入/输出价格滑块筛选；排序仅保留输入价格和输出价格两列，且会按 relays-config.json 中配置的汇率折合成人民币后计算，显示仍保留原币种。</div>
+            <h2 class="section-title" id="modelMatrixSectionTitle">sections.modelMatrixTitle</h2>
+            <div class="section-info" id="modelMatrixSectionInfo">sections.modelMatrixInfo</div>
             <div class="matrix-filter-bar" id="modelMatrixFilterBar"></div>
             <div class="matrix-wrapper" id="modelMatrixWrapper">
-                <div class="loading-state">加载中...</div>
+                <div class="loading-state" id="modelMatrixLoadingState">messages.loading</div>
             </div>
         </div>
 
@@ -1080,9 +1079,9 @@
 
         <!-- 平台详情区 -->
         <div class="relays-detail-section">
-            <h2 class="section-title">详细介绍</h2>
+            <h2 class="section-title" id="detailSectionTitle">sections.detailTitle</h2>
             <div class="relay-cards" id="relayCards">
-                <div class="loading-state">加载中...</div>
+                <div class="loading-state" id="relayCardsLoadingState">messages.loading</div>
             </div>
         </div>
 
@@ -1252,6 +1251,34 @@
             const rate = exchangeConfig.rates[String(currency || '').trim()];
             if (!Number.isFinite(rate)) return null;
             return amount * rate;
+        }
+
+        const missingRelayPageTextKeys = new Set();
+
+        function getRelayPageText(path) {
+            const parts = String(path || '').split('.').filter(Boolean);
+            let current = pageConfig;
+
+            for (const part of parts) {
+                if (!current || typeof current !== 'object' || !(part in current)) {
+                    if (!missingRelayPageTextKeys.has(path)) {
+                        missingRelayPageTextKeys.add(path);
+                        console.error(`relays-config.json 缺少文案字段: ${path}`);
+                    }
+                    return String(path || '');
+                }
+                current = current[part];
+            }
+
+            if (typeof current === 'string' && current.trim()) {
+                return current;
+            }
+
+            if (!missingRelayPageTextKeys.has(path)) {
+                missingRelayPageTextKeys.add(path);
+                console.error(`relays-config.json 文案字段为空: ${path}`);
+            }
+            return String(path || '');
         }
 
         function getModelGroupLabel(model) {
@@ -1495,13 +1522,13 @@
             bar.innerHTML = `
                 <div class="matrix-filter-grid">
                     <div class="matrix-filter-item">
-                        <label>平台</label>
+                        <label>${escapeHtml(getRelayPageText('filters.platform'))}</label>
                         ${renderMultiSelectControl('platform', uniquePlatformOptions, matrixFilterState.platform, 'platform-multi')}
                     </div>
                     ${dimControls}
                 </div>
                 <div class="matrix-filter-head">
-                    <button type="button" class="matrix-filter-reset" id="matrixFilterResetBtn">重置筛选</button>
+                    <button type="button" class="matrix-filter-reset" id="matrixFilterResetBtn">${escapeHtml(getRelayPageText('filters.reset'))}</button>
                     <div class="matrix-filter-result" id="matrixFilterResult"></div>
                 </div>
             `;
@@ -1726,15 +1753,15 @@
             bar.innerHTML = `
                 <div class="matrix-filter-grid">
                     <div class="matrix-filter-item">
-                        <label>平台</label>
+                        <label>${escapeHtml(getRelayPageText('filters.platform'))}</label>
                         ${renderMultiSelectControl('model_relays', relayNames, selectedRelayNames, 'model-relay-multi')}
                     </div>
                     <div class="matrix-filter-item">
-                        <label>模型</label>
+                        <label>${escapeHtml(getRelayPageText('filters.model'))}</label>
                         ${renderMultiSelectControl('model_names', modelOptions, selectedModelNames, 'model-name-multi')}
                     </div>
                     <div class="matrix-filter-item matrix-filter-item--slider">
-                        <label>输入价格（折￥）</label>
+                        <label>${escapeHtml(getRelayPageText('filters.inputPriceInCny'))}</label>
                         <div class="price-slider-container">
                             <div class="price-slider">
                                 <div class="slider-track"></div>
@@ -1749,7 +1776,7 @@
                         </div>
                     </div>
                     <div class="matrix-filter-item matrix-filter-item--slider">
-                        <label>输出价格（折￥）</label>
+                        <label>${escapeHtml(getRelayPageText('filters.outputPriceInCny'))}</label>
                         <div class="price-slider-container">
                             <div class="price-slider">
                                 <div class="slider-track"></div>
@@ -1768,9 +1795,9 @@
                     <div class="matrix-filter-head-actions">
                         <label class="matrix-filter-check" for="modelCheapestOnlyToggle">
                             <input type="checkbox" id="modelCheapestOnlyToggle" ${modelMatrixFilterState.cheapestOnly ? 'checked' : ''}>
-                            <span>每个平台每个模型仅显示最便宜分组</span>
+                            <span>${escapeHtml(getRelayPageText('filters.cheapestOnly'))}</span>
                         </label>
-                        <button type="button" class="matrix-filter-reset" id="modelMatrixFilterResetBtn">重置筛选</button>
+                        <button type="button" class="matrix-filter-reset" id="modelMatrixFilterResetBtn">${escapeHtml(getRelayPageText('filters.reset'))}</button>
                     </div>
                     <div class="matrix-filter-result" id="modelMatrixFilterResult"></div>
                 </div>
@@ -1973,7 +2000,7 @@
             const wrapper = document.getElementById('modelMatrixWrapper');
             if (!wrapper) return;
             if (!rows.length) {
-                wrapper.innerHTML = '<div class="loading-state">暂无符合条件的价格记录</div>';
+                wrapper.innerHTML = `<div class="loading-state">${escapeHtml(getRelayPageText('messages.emptyModelMatrix'))}</div>`;
                 return;
             }
 
@@ -2001,11 +2028,11 @@
                 <table class="matrix-table" style="width:${tableWidth}px;min-width:${minTableW}px">
                     <thead>
                         <tr>
-                            <th style="width:${MODEL_W}px;min-width:${MODEL_W}px">模型</th>
-                            <th class="matrix-dim-th" style="width:${RELAY_W}px;min-width:${RELAY_W}px">平台</th>
-                            <th class="matrix-dim-th" style="width:${GROUP_W}px;min-width:${GROUP_W}px">分组</th>
-                            <th class="matrix-dim-th matrix-sortable model-matrix-sortable" data-model-matrix-sort-key="input" style="width:${PRICE_W}px;min-width:${PRICE_W}px">输入价格</th>
-                            <th class="matrix-dim-th matrix-sortable model-matrix-sortable" data-model-matrix-sort-key="output" style="width:${PRICE_W}px;min-width:${PRICE_W}px">输出价格</th>
+                            <th style="width:${MODEL_W}px;min-width:${MODEL_W}px">${escapeHtml(getRelayPageText('tableLabels.model'))}</th>
+                            <th class="matrix-dim-th" style="width:${RELAY_W}px;min-width:${RELAY_W}px">${escapeHtml(getRelayPageText('tableLabels.platform'))}</th>
+                            <th class="matrix-dim-th" style="width:${GROUP_W}px;min-width:${GROUP_W}px">${escapeHtml(getRelayPageText('tableLabels.group'))}</th>
+                            <th class="matrix-dim-th matrix-sortable model-matrix-sortable" data-model-matrix-sort-key="input" style="width:${PRICE_W}px;min-width:${PRICE_W}px">${escapeHtml(getRelayPageText('filters.inputPriceInCny'))}</th>
+                            <th class="matrix-dim-th matrix-sortable model-matrix-sortable" data-model-matrix-sort-key="output" style="width:${PRICE_W}px;min-width:${PRICE_W}px">${escapeHtml(getRelayPageText('filters.outputPriceInCny'))}</th>
                         </tr>
                     </thead>
                     <tbody>${tbody}</tbody>
@@ -2130,7 +2157,7 @@
         function renderMatrix(relays, dimensions) {
             const wrapper = document.getElementById('matrixWrapper');
             if (!relays.length || !dimensions.length) {
-                wrapper.innerHTML = '<div class="loading-state">暂无数据</div>';
+                wrapper.innerHTML = `<div class="loading-state">${escapeHtml(getRelayPageText('messages.empty'))}</div>`;
                 return;
             }
 
@@ -2228,8 +2255,8 @@
                     <td class="platform-label">
                         <span class="platform-name">${escapeHtml(r.name)}</span>
                         <div class="platform-actions">
-                            ${r.homeUrl ? `<a class="platform-action-btn" href="${escapeHtml(r.homeUrl)}" target="_blank" rel="noopener noreferrer" title="打开官网">官网${ICON_EXTERNAL}</a>` : ''}
-                            <a class="platform-action-btn" href="#relay-${escapeHtml(r.id)}" title="跳转至下方详细介绍">查看详情${ICON_DOWN}</a>
+                            ${r.homeUrl ? `<a class="platform-action-btn" href="${escapeHtml(r.homeUrl)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(getRelayPageText('actions.openHomeTitle'))}">${escapeHtml(getRelayPageText('actions.home'))}${ICON_EXTERNAL}</a>` : ''}
+                            <a class="platform-action-btn" href="#relay-${escapeHtml(r.id)}" title="${escapeHtml(getRelayPageText('actions.jumpToDetailTitle'))}">${escapeHtml(getRelayPageText('actions.detail'))}${ICON_DOWN}</a>
                         </div>
                     </td>
                     ${cells}
@@ -2240,7 +2267,7 @@
                 <table class="matrix-table" style="width:${tableWidth}px;min-width:${minTableW}px">
                     <thead>
                         <tr>
-                            <th style="width:${PLATFORM_W}px;min-width:${PLATFORM_W}px">平台</th>
+                            <th style="width:${PLATFORM_W}px;min-width:${PLATFORM_W}px">${escapeHtml(getRelayPageText('tableLabels.platform'))}</th>
                             ${theadDimCols}
                         </tr>
                     </thead>
@@ -2255,7 +2282,7 @@
         function renderRelayCards(relays) {
             const container = document.getElementById('relayCards');
             if (!relays.length) {
-                container.innerHTML = '<div class="loading-state">暂无数据</div>';
+                container.innerHTML = `<div class="loading-state">${escapeHtml(getRelayPageText('messages.empty'))}</div>`;
                 return;
             }
 
@@ -2279,15 +2306,15 @@
 
                 const modelsSection = modelsRows ? `
                     <div class="relay-section">
-                        <h4>代表模型定价（部分示例）</h4>
+                        <h4>${escapeHtml(getRelayPageText('sections.detailPricingTitle'))}</h4>
                         <table class="models-mini-table">
                             <thead>
                                 <tr>
-                                    <th>模型</th>
-                                    <th>分组</th>
-                                    <th>输入 / 1M tokens</th>
-                                    <th>输出 / 1M tokens</th>
-                                    <th>备注</th>
+                                    <th>${escapeHtml(getRelayPageText('tableLabels.model'))}</th>
+                                    <th>${escapeHtml(getRelayPageText('tableLabels.group'))}</th>
+                                    <th>${escapeHtml(getRelayPageText('tableLabels.inputPer1M'))}</th>
+                                    <th>${escapeHtml(getRelayPageText('tableLabels.outputPer1M'))}</th>
+                                    <th>${escapeHtml(getRelayPageText('tableLabels.note'))}</th>
                                 </tr>
                             </thead>
                             <tbody>${modelsRows}</tbody>
@@ -2297,7 +2324,7 @@
 
                 const notesSection = detail.notes ? `
                     <div class="relay-section relay-section-notes">
-                        <h4>注意事项</h4>
+                        <h4>${escapeHtml(getRelayPageText('sections.detailNotesTitle'))}</h4>
                         <p>${escapeHtmlPreserveBreaks(detail.notes)}</p>
                     </div>
                 ` : '';
@@ -2308,16 +2335,16 @@
                             <div class="relay-card-title">
                                 <span class="relay-name-lg">${escapeHtml(relay.name)}</span>
                                 <span class="relay-card-meta">
-                                    ${relay.homeUrl ? `<a href="${escapeHtml(relay.homeUrl)}" target="_blank" class="home-link">官网 →</a>` : ''}
-                                    <a href="${escapeHtml(relay.pricingUrl)}" target="_blank" class="pricing-link">查看定价 →</a>
-                                    <span class="updated-at">数据更新：${escapeHtml(relay.updatedAt)}</span>
+                                    ${relay.homeUrl ? `<a href="${escapeHtml(relay.homeUrl)}" target="_blank" class="home-link">${escapeHtml(getRelayPageText('actions.home'))} →</a>` : ''}
+                                    <a href="${escapeHtml(relay.pricingUrl)}" target="_blank" class="pricing-link">${escapeHtml(getRelayPageText('actions.pricing'))} →</a>
+                                    <span class="updated-at">${escapeHtml(getRelayPageText('actions.updatedAtPrefix'))}${escapeHtml(relay.updatedAt)}</span>
                                 </span>
                             </div>
                         </div>
                         <div class="relay-card-body">
                             ${detail.description ? `
                                 <div class="relay-section">
-                                    <h4>产品简介</h4>
+                                    <h4>${escapeHtml(getRelayPageText('sections.detailDescriptionTitle'))}</h4>
                                     <p>${escapeHtmlPreserveBreaks(detail.description)}</p>
                                 </div>
                             ` : ''}
@@ -2333,7 +2360,7 @@
         function renderNotes(notes) {
             if (!notes || !notes.length) return;
             document.getElementById('notesSection').innerHTML = `
-                <h3>说明</h3>
+                <h3>${escapeHtml(getRelayPageText('sections.notesTitle'))}</h3>
                 <ul>${notes.map(n => `<li>${escapeHtml(n)}</li>`).join('')}</ul>
             `;
         }
@@ -2350,7 +2377,7 @@
                 </li>
             `).join('');
             document.getElementById('updatesSection').innerHTML = `
-                <h3>更新日志</h3>
+                <h3>${escapeHtml(getRelayPageText('sections.updatesTitle'))}</h3>
                 <ul class="updates-list">${items}</ul>
             `;
         }
@@ -2375,6 +2402,19 @@
                     document.getElementById('githubText').textContent = h.github.text;
                 }
             }
+            document.getElementById('matrixSectionTitle').textContent = getRelayPageText('sections.matrixTitle');
+            document.getElementById('modelMatrixSectionTitle').textContent = getRelayPageText('sections.modelMatrixTitle');
+            document.getElementById('modelMatrixSectionInfo').innerHTML = escapeHtmlPreserveBreaks(getRelayPageText('sections.modelMatrixInfo'));
+            document.getElementById('detailSectionTitle').textContent = getRelayPageText('sections.detailTitle');
+
+            const loadingText = getRelayPageText('messages.loading');
+            const matrixLoadingState = document.getElementById('matrixLoadingState');
+            const modelMatrixLoadingState = document.getElementById('modelMatrixLoadingState');
+            const relayCardsLoadingState = document.getElementById('relayCardsLoadingState');
+            if (matrixLoadingState) matrixLoadingState.textContent = loadingText;
+            if (modelMatrixLoadingState) modelMatrixLoadingState.textContent = loadingText;
+            if (relayCardsLoadingState) relayCardsLoadingState.textContent = loadingText;
+
             renderNotes(config.notes);
             renderUpdates(config.updates);
         }
@@ -2414,12 +2454,13 @@
                 console.log(`成功加载 ${relaysData.length} 个中转站数据`);
             } catch (e) {
                 console.error('加载数据失败:', e);
+                const loadErrorText = escapeHtml(getRelayPageText('messages.loadError'));
                 document.getElementById('matrixWrapper').innerHTML =
-                    '<div class="loading-state">数据加载失败，请检查 relays.json 文件</div>';
+                    `<div class="loading-state">${loadErrorText}</div>`;
                 document.getElementById('modelMatrixWrapper').innerHTML =
-                    '<div class="loading-state">数据加载失败，请检查 relays.json 文件</div>';
+                    `<div class="loading-state">${loadErrorText}</div>`;
                 document.getElementById('relayCards').innerHTML =
-                    '<div class="loading-state">数据加载失败，请检查 relays.json 文件</div>';
+                    `<div class="loading-state">${loadErrorText}</div>`;
             }
         }
 
