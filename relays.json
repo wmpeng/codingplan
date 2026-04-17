@@ -3,7 +3,7 @@
     "id": "openrouter",
     "name": "OpenRouter",
     "homeUrl": "https://openrouter.ai",
-    "pricingUrl": "https://openrouter.ai/models?order=top-weekly",
+    "pricingUrl": "https://openrouter.ai/models?order=most-popular",
     "updatedAt": "2026.04.16",
     "matrix": {
       "rating": {
@@ -117,7 +117,7 @@
           "note": "四舍五入，原始输入价 $0.325/M"
         }
       ],
-      "notes": "模型与价格变动频繁。\n请以 https://openrouter.ai/models 与官方文档为准。"
+      "notes": "模型与价格请以 https://openrouter.ai/models?order=most-popular 为准。"
     }
   },
   {
@@ -163,40 +163,40 @@
           "name": "GLM-5.1",
           "inputPer1M": "￥6.00",
           "outputPer1M": "￥28.00",
-          "note": "按 https://siliconflow.cn/models 页面源码直接提取"
+          "note": ""
         },
         {
           "name": "GLM-5",
           "inputPer1M": "￥4.00",
           "outputPer1M": "￥22.00",
-          "note": "按 https://siliconflow.cn/models 页面源码直接提取"
+          "note": ""
         },
         {
           "name": "MiniMax-M2.5",
           "inputPer1M": "￥2.10",
           "outputPer1M": "￥8.40",
-          "note": "按 https://siliconflow.cn/models 页面源码直接提取"
+          "note": ""
         },
         {
           "name": "Kimi-K2.5",
           "inputPer1M": "￥4.00",
           "outputPer1M": "￥21.00",
-          "note": "按 https://siliconflow.cn/models 页面源码直接提取"
+          "note": ""
         },
         {
           "name": "DeepSeek-V3.2",
           "inputPer1M": "￥2.00",
           "outputPer1M": "￥3.00",
-          "note": "按 https://siliconflow.cn/models 页面源码直接提取"
+          "note": ""
         },
         {
           "name": "Qwen-3.5",
           "inputPer1M": "￥2.00",
           "outputPer1M": "￥1.20",
-          "note": "对应 Qwen/Qwen3.5-397B-A17B；按 https://siliconflow.cn/models 页面源码直接提取"
+          "note": "对应 Qwen/Qwen3.5-397B-A17B"
         }
       ],
-      "notes": "完整模型清单与实时单价以 https://siliconflow.cn/models 为准。\n套餐与算力以 https://siliconflow.cn/pricing 为准。"
+      "notes": "模型与价格请以 https://siliconflow.cn/pricing 为准。"
     }
   },
   {
@@ -232,8 +232,9 @@
         "text": "• 支持人民币充值\n• 常见支持微信、支付宝等本土支付方式\n• 切换分组时通常需要新建或调整令牌"
       },
       "tags": [
+        "国内模型",
+        "海外模型",
         "国内人民币",
-        "GPT/Claude",
         "分组渠道",
         "性价比"
       ]
@@ -245,76 +246,76 @@
           "name": "Opus-4.6",
           "inputPer1M": "￥5.00",
           "outputPer1M": "￥25.00",
-          "note": "对应 claude-opus-4-6；按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「Claude-code稳定」，倍率 1"
+          "note": "对应 claude-opus-4-6；最低可用分组为「Claude-code稳定」，倍率 1"
         },
         {
           "name": "Sonnet-4.6",
           "inputPer1M": "￥3.00",
           "outputPer1M": "￥15.00",
-          "note": "对应 claude-sonnet-4-6；按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「Claude-code稳定」，倍率 1"
+          "note": "对应 claude-sonnet-4-6；最低可用分组为「Claude-code稳定」，倍率 1"
         },
         {
           "name": "GPT-5.4",
           "inputPer1M": "￥2.00",
           "outputPer1M": "￥12.00",
-          "note": "按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「Codex-gpt」，倍率 0.8"
+          "note": "最低可用分组为「Codex-gpt」，倍率 0.8"
         },
         {
           "name": "GPT-5.3-Codex",
           "inputPer1M": "￥1.40",
           "outputPer1M": "￥11.20",
-          "note": "按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「Codex-gpt」，倍率 0.8"
+          "note": "最低可用分组为「Codex-gpt」，倍率 0.8"
         },
         {
           "name": "Gemini-3.1-Pro",
           "inputPer1M": "￥1.60",
           "outputPer1M": "￥9.60",
-          "note": "对应 gemini-3.1-pro-preview；按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「低价福利 | 波动临时资源」，倍率 0.8"
+          "note": "对应 gemini-3.1-pro-preview；最低可用分组为「低价福利 | 波动临时资源」，倍率 0.8"
         },
         {
           "name": "Gemini-3-Flash",
           "inputPer1M": "￥0.40",
           "outputPer1M": "￥2.40",
-          "note": "对应 gemini-3-flash-preview；按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「低价福利 | 波动临时资源」，倍率 0.8"
+          "note": "对应 gemini-3-flash-preview；最低可用分组为「低价福利 | 波动临时资源」，倍率 0.8"
         },
         {
           "name": "GLM-5.1",
           "inputPer1M": "￥6.40",
           "outputPer1M": "￥44.80",
-          "note": "按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「glm」，倍率 0.8"
+          "note": "最低可用分组为「glm」，倍率 0.8"
         },
         {
           "name": "GLM-5",
           "inputPer1M": "￥4.80",
           "outputPer1M": "￥17.76",
-          "note": "按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「glm」，倍率 0.8"
+          "note": "最低可用分组为「glm」，倍率 0.8"
         },
         {
           "name": "Kimi-K2.5",
           "inputPer1M": "￥2.40",
           "outputPer1M": "￥12.60",
-          "note": "按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「kimi」，倍率 0.6"
+          "note": "最低可用分组为「kimi」，倍率 0.6"
         },
         {
           "name": "DeepSeek-V3.2",
           "inputPer1M": "￥1.60",
           "outputPer1M": "￥2.40",
-          "note": "按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「Deepseek」，倍率 0.8"
+          "note": "最低可用分组为「Deepseek」，倍率 0.8"
         },
         {
           "name": "Qwen-3.6-Plus",
           "inputPer1M": "￥6.40",
           "outputPer1M": "￥38.40",
-          "note": "对应 qwen3.6-plus；按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「qwen千问」，倍率 0.8"
+          "note": "对应 qwen3.6-plus；最低可用分组为「qwen千问」，倍率 0.8"
         },
         {
           "name": "Qwen-3.5",
           "inputPer1M": "￥1.60",
           "outputPer1M": "￥9.60",
-          "note": "对应 qwen3.5-plus；按 https://xy.poloapi.com/pricing 展示规则换算；最低可用分组为「qwen千问」，倍率 0.8"
+          "note": "对应 qwen3.5-plus；最低可用分组为「qwen千问」，倍率 0.8"
         }
       ],
-      "notes": "模型名称必须与模型广场保持一致。\n分组会影响可用模型与价格，充值汇率 1:1；请以 https://xy.poloapi.com/pricing 与 https://apidoc.poloapi.com/ 为准。"
+      "notes": "人民币充值汇率 1:1，即 1 人民币充值到账 1 美元额度。\n分组会影响可用模型与价格。\n模型价格请以 https://xy.poloapi.com/pricing为准。"
     }
   },
   {
