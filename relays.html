@@ -72,6 +72,30 @@
             gap: 12px;
         }
 
+        .matrix-filter-head-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .matrix-filter-check {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .matrix-filter-check input {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--accent-primary);
+            cursor: pointer;
+        }
+
         .matrix-filter-reset {
             appearance: none;
             border: 1px solid var(--border-color);
@@ -1045,7 +1069,7 @@
         <!-- 模型价格对比矩阵 -->
         <div class="model-matrix-section">
             <h2 class="section-title">模型价格对比</h2>
-            <div class="section-info">按 detail.keyModels 展开为“每个模型按平台 × 分组各一行”的价格明细表。多分组平台会展开全部分组，无分组平台的分组列显示为 -。支持平台多选、模型多选、输入/输出价格滑块筛选；排序仅保留输入价格和输出价格两列，且会按 relays-config.json 中配置的汇率折合成人民币后计算，显示仍保留原币种。</div>
+            <div class="section-info">按 detail.keyModels 展开为“每个模型按平台 × 分组各一行”的价格明细表。多分组平台会展开全部分组，无分组平台的分组列显示为 -。默认只显示每个平台每个模型最便宜的分组，可在筛选区取消勾选查看全部分组。支持平台多选、模型多选、输入/输出价格滑块筛选；排序仅保留输入价格和输出价格两列，且会按 relays-config.json 中配置的汇率折合成人民币后计算，显示仍保留原币种。</div>
             <div class="matrix-filter-bar" id="modelMatrixFilterBar"></div>
             <div class="matrix-wrapper" id="modelMatrixWrapper">
                 <div class="loading-state">加载中...</div>
@@ -1092,7 +1116,8 @@
             inputMin: '',
             inputMax: '',
             outputMin: '',
-            outputMax: ''
+            outputMax: '',
+            cheapestOnly: true
         };
         let modelMatrixSortState = { key: null, direction: 'asc' };
         let modelMatrixResizeObserver = null;
@@ -1740,7 +1765,13 @@
                     </div>
                 </div>
                 <div class="matrix-filter-head">
-                    <button type="button" class="matrix-filter-reset" id="modelMatrixFilterResetBtn">重置筛选</button>
+                    <div class="matrix-filter-head-actions">
+                        <label class="matrix-filter-check" for="modelCheapestOnlyToggle">
+                            <input type="checkbox" id="modelCheapestOnlyToggle" ${modelMatrixFilterState.cheapestOnly ? 'checked' : ''}>
+                            <span>每个平台每个模型仅显示最便宜分组</span>
+                        </label>
+                        <button type="button" class="matrix-filter-reset" id="modelMatrixFilterResetBtn">重置筛选</button>
+                    </div>
                     <div class="matrix-filter-result" id="modelMatrixFilterResult"></div>
                 </div>
             `;
@@ -1795,6 +1826,14 @@
             initModelPriceSlider('input');
             initModelPriceSlider('output');
 
+            const cheapestToggle = bar.querySelector('#modelCheapestOnlyToggle');
+            if (cheapestToggle) {
+                cheapestToggle.addEventListener('change', () => {
+                    modelMatrixFilterState.cheapestOnly = cheapestToggle.checked;
+                    applyModelMatrixFilters();
+                });
+            }
+
             const resetBtn = bar.querySelector('#modelMatrixFilterResetBtn');
             if (resetBtn) {
                 resetBtn.addEventListener('click', () => {
@@ -1804,7 +1843,8 @@
                         inputMin: '',
                         inputMax: '',
                         outputMin: '',
-                        outputMax: ''
+                        outputMax: '',
+                        cheapestOnly: true
                     };
                     modelPriceSliders.input.min = null;
                     modelPriceSliders.input.max = null;
@@ -1893,6 +1933,42 @@
             return `<span class="price-token">${escapeHtml(raw)}</span>`;
         }
 
+        function compareModelMatrixRowsByPrice(a, b) {
+            const hasInputA = Number.isFinite(a.inputNormalizedValue);
+            const hasInputB = Number.isFinite(b.inputNormalizedValue);
+            const hasOutputA = Number.isFinite(a.outputNormalizedValue);
+            const hasOutputB = Number.isFinite(b.outputNormalizedValue);
+            const totalA = (hasInputA ? a.inputNormalizedValue : 0) + (hasOutputA ? a.outputNormalizedValue : 0);
+            const totalB = (hasInputB ? b.inputNormalizedValue : 0) + (hasOutputB ? b.outputNormalizedValue : 0);
+
+            if ((hasInputA || hasOutputA) && !(hasInputB || hasOutputB)) return -1;
+            if (!(hasInputA || hasOutputA) && (hasInputB || hasOutputB)) return 1;
+            if (totalA !== totalB) return totalA - totalB;
+
+            if (hasInputA && hasInputB && a.inputNormalizedValue !== b.inputNormalizedValue) {
+                return a.inputNormalizedValue - b.inputNormalizedValue;
+            }
+            if (hasOutputA && hasOutputB && a.outputNormalizedValue !== b.outputNormalizedValue) {
+                return a.outputNormalizedValue - b.outputNormalizedValue;
+            }
+
+            return a.__modelMatrixOriginalIndex - b.__modelMatrixOriginalIndex;
+        }
+
+        function pickCheapestModelGroupRows(rows) {
+            const bestByKey = new Map();
+
+            rows.forEach(row => {
+                const key = `${row.relayId}__${row.name}`;
+                const currentBest = bestByKey.get(key);
+                if (!currentBest || compareModelMatrixRowsByPrice(row, currentBest) < 0) {
+                    bestByKey.set(key, row);
+                }
+            });
+
+            return rows.filter(row => bestByKey.get(`${row.relayId}__${row.name}`) === row);
+        }
+
         function renderModelMatrix(rows) {
             const wrapper = document.getElementById('modelMatrixWrapper');
             if (!wrapper) return;
@@ -1968,12 +2044,16 @@
                 return true;
             });
 
-            const sorted = sortModelMatrixRows(filtered);
+            const displayRows = modelMatrixFilterState.cheapestOnly
+                ? pickCheapestModelGroupRows(filtered)
+                : filtered;
+
+            const sorted = sortModelMatrixRows(displayRows);
             renderModelMatrix(sorted);
 
             const resultEl = document.getElementById('modelMatrixFilterResult');
             if (resultEl) {
-                resultEl.textContent = `${filtered.length}条/共${modelMatrixData.length}条`;
+                resultEl.textContent = `${displayRows.length}条/共${modelMatrixData.length}条`;
             }
         }
 
