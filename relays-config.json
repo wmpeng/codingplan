@@ -9,6 +9,13 @@
       "text": "GitHub"
     }
   },
+  "modelPriceExchange": {
+    "baseCurrency": "CNY",
+    "rates": {
+      "￥": 1,
+      "$": 7
+    }
+  },
   "matrixDimensions": [
     {
       "key": "rating",

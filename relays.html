@@ -971,7 +971,7 @@
         <!-- 模型价格对比矩阵 -->
         <div class="model-matrix-section">
             <h2 class="section-title">模型价格对比</h2>
-            <div class="section-info">按模型聚合各中转站在 detail.keyModels 中给出的公开价格。区间筛选与排序按当前可见中转站中的最低输入价/最低输出价计算；不同币种不做汇率换算。</div>
+            <div class="section-info">按 detail.keyModels 展开为“每个模型在每个平台各一行”的价格明细表。支持中转站多选、模型名多选、输入/输出价格区间筛选，以及按模型、平台、输入价格、输出价格排序；排序和区间筛选会按 relays-config.json 中配置的汇率折合成人民币后计算，显示仍保留原币种。</div>
             <div class="matrix-filter-bar" id="modelMatrixFilterBar"></div>
             <div class="matrix-wrapper" id="modelMatrixWrapper">
                 <div class="loading-state">加载中...</div>
@@ -1124,8 +1124,31 @@
             };
         }
 
+        function getModelPriceExchangeConfig() {
+            const config = pageConfig && typeof pageConfig.modelPriceExchange === 'object'
+                ? pageConfig.modelPriceExchange
+                : {};
+            const rates = config && typeof config.rates === 'object' ? config.rates : {};
+
+            return {
+                baseCurrency: String(config.baseCurrency || 'CNY').trim() || 'CNY',
+                rates: {
+                    '￥': Number.isFinite(Number(rates['￥'])) ? Number(rates['￥']) : 1,
+                    '$': Number.isFinite(Number(rates['$'])) ? Number(rates['$']) : 7
+                }
+            };
+        }
+
+        function normalizeModelPrice(amount, currency) {
+            if (!Number.isFinite(amount)) return null;
+            const exchangeConfig = getModelPriceExchangeConfig();
+            const rate = exchangeConfig.rates[String(currency || '').trim()];
+            if (!Number.isFinite(rate)) return null;
+            return amount * rate;
+        }
+
         function buildModelMatrixData(relays) {
-            const modelMap = new Map();
+            const rows = [];
 
             relays.forEach(relay => {
                 const relayModels = Array.isArray(relay.detail && relay.detail.keyModels) ? relay.detail.keyModels : [];
@@ -1133,62 +1156,27 @@
                     const modelName = String(model && model.name || '').trim();
                     if (!modelName) return;
 
-                    if (!modelMap.has(modelName)) {
-                        modelMap.set(modelName, {
-                            name: modelName,
-                            pricesByRelay: {},
-                            __modelOriginalIndex: modelMap.size
-                        });
-                    }
-
-                    const row = modelMap.get(modelName);
                     const input = parsePriceValue(model.inputPer1M);
                     const output = parsePriceValue(model.outputPer1M);
-                    row.pricesByRelay[relay.id] = {
+                    rows.push({
+                        name: modelName,
                         relayId: relay.id,
                         relayName: relay.name,
                         inputRaw: input.raw,
                         inputValue: input.amount,
                         inputCurrency: input.currency,
+                        inputNormalizedValue: normalizeModelPrice(input.amount, input.currency),
                         outputRaw: output.raw,
                         outputValue: output.amount,
                         outputCurrency: output.currency,
-                        note: String(model.note || '').trim()
-                    };
+                        outputNormalizedValue: normalizeModelPrice(output.amount, output.currency),
+                        note: String(model.note || '').trim(),
+                        __modelMatrixOriginalIndex: rows.length
+                    });
                 });
             });
 
-            return Array.from(modelMap.values());
-        }
-
-        function getVisibleModelRelays() {
-            const selectedRelayIds = Array.isArray(modelMatrixFilterState.relay) ? modelMatrixFilterState.relay : [];
-            if (selectedRelayIds.length) {
-                return relaysData.filter(relay => selectedRelayIds.includes(relay.id));
-            }
-            return relaysData;
-        }
-
-        function getModelRowEntries(row, relayIds) {
-            return relayIds
-                .map(relayId => row && row.pricesByRelay ? row.pricesByRelay[relayId] : undefined)
-                .filter(Boolean);
-        }
-
-        function getBestModelPriceEntry(row, kind, relayIds) {
-            const valueKey = kind === 'output' ? 'outputValue' : 'inputValue';
-            const entries = getModelRowEntries(row, relayIds).filter(entry => Number.isFinite(entry[valueKey]));
-            if (!entries.length) return null;
-
-            return entries.reduce((best, current) => {
-                if (!best) return current;
-                if (current[valueKey] < best[valueKey]) return current;
-                if (current[valueKey] > best[valueKey]) return best;
-
-                const bestRelay = relaysData.findIndex(relay => relay.id === best.relayId);
-                const currentRelay = relaysData.findIndex(relay => relay.id === current.relayId);
-                return currentRelay < bestRelay ? current : best;
-            }, null);
+            return rows;
         }
 
         function getMultiSelectButtonText(selectedValues, allValues) {
@@ -1476,9 +1464,9 @@
             const relayOptions = relaysData
                 .map(relay => ({ id: relay.id, name: String(relay.name || '').trim() }))
                 .filter(relay => relay.id && relay.name);
-            const modelOptions = modelMatrixData
+            const modelOptions = Array.from(new Set(modelMatrixData
                 .map(row => String(row && row.name || '').trim())
-                .filter(Boolean);
+                .filter(Boolean)));
 
             const relayNames = relayOptions.map(relay => relay.name);
             const selectedRelayNames = relayOptions
@@ -1497,19 +1485,19 @@
                         ${renderMultiSelectControl('model_names', modelOptions, selectedModelNames, 'model-name-multi')}
                     </div>
                     <div class="matrix-filter-item">
-                        <label for="modelInputMin">输入价最低</label>
+                        <label for="modelInputMin">输入价最低（折￥）</label>
                         <input id="modelInputMin" data-model-filter-key="inputMin" type="number" inputmode="decimal" min="0" step="0.01" value="${escapeHtml(modelMatrixFilterState.inputMin)}" placeholder="不限">
                     </div>
                     <div class="matrix-filter-item">
-                        <label for="modelInputMax">输入价最高</label>
+                        <label for="modelInputMax">输入价最高（折￥）</label>
                         <input id="modelInputMax" data-model-filter-key="inputMax" type="number" inputmode="decimal" min="0" step="0.01" value="${escapeHtml(modelMatrixFilterState.inputMax)}" placeholder="不限">
                     </div>
                     <div class="matrix-filter-item">
-                        <label for="modelOutputMin">输出价最低</label>
+                        <label for="modelOutputMin">输出价最低（折￥）</label>
                         <input id="modelOutputMin" data-model-filter-key="outputMin" type="number" inputmode="decimal" min="0" step="0.01" value="${escapeHtml(modelMatrixFilterState.outputMin)}" placeholder="不限">
                     </div>
                     <div class="matrix-filter-item">
-                        <label for="modelOutputMax">输出价最高</label>
+                        <label for="modelOutputMax">输出价最高（折￥）</label>
                         <input id="modelOutputMax" data-model-filter-key="outputMax" type="number" inputmode="decimal" min="0" step="0.01" value="${escapeHtml(modelMatrixFilterState.outputMax)}" placeholder="不限">
                     </div>
                 </div>
@@ -1591,7 +1579,7 @@
             }
         }
 
-        function sortModelMatrixRows(rows, relayIds) {
+        function sortModelMatrixRows(rows) {
             if (!modelMatrixSortState.key) return rows;
 
             const { key, direction } = modelMatrixSortState;
@@ -1599,27 +1587,30 @@
             sorted.sort((a, b) => {
                 if (key === 'name') {
                     const result = a.name.localeCompare(b.name, 'zh-CN');
-                    if (result === 0) return a.__modelOriginalIndex - b.__modelOriginalIndex;
+                    if (result === 0) return a.__modelMatrixOriginalIndex - b.__modelMatrixOriginalIndex;
                     return direction === 'asc' ? result : -result;
                 }
 
-                const kind = key === 'outputMin' ? 'output' : 'input';
-                const bestA = getBestModelPriceEntry(a, kind, relayIds);
-                const bestB = getBestModelPriceEntry(b, kind, relayIds);
-                const valueKey = kind === 'output' ? 'outputValue' : 'inputValue';
-                const hasA = !!bestA && Number.isFinite(bestA[valueKey]);
-                const hasB = !!bestB && Number.isFinite(bestB[valueKey]);
+                if (key === 'relay') {
+                    const result = a.relayName.localeCompare(b.relayName, 'zh-CN');
+                    if (result === 0) return a.__modelMatrixOriginalIndex - b.__modelMatrixOriginalIndex;
+                    return direction === 'asc' ? result : -result;
+                }
 
-                if (!hasA && !hasB) return a.__modelOriginalIndex - b.__modelOriginalIndex;
+                const valueKey = key === 'output' ? 'outputNormalizedValue' : 'inputNormalizedValue';
+                const hasA = Number.isFinite(a[valueKey]);
+                const hasB = Number.isFinite(b[valueKey]);
+
+                if (!hasA && !hasB) return a.__modelMatrixOriginalIndex - b.__modelMatrixOriginalIndex;
                 if (!hasA) return 1;
                 if (!hasB) return -1;
 
-                if (bestA[valueKey] === bestB[valueKey]) {
-                    return a.__modelOriginalIndex - b.__modelOriginalIndex;
+                if (a[valueKey] === b[valueKey]) {
+                    return a.__modelMatrixOriginalIndex - b.__modelMatrixOriginalIndex;
                 }
                 return direction === 'asc'
-                    ? bestA[valueKey] - bestB[valueKey]
-                    : bestB[valueKey] - bestA[valueKey];
+                    ? a[valueKey] - b[valueKey]
+                    : b[valueKey] - a[valueKey];
             });
 
             return sorted;
@@ -1657,70 +1648,37 @@
             });
         }
 
-        function renderModelMatrixPriceCell(entry) {
-            if (!entry) {
-                return '<td class="model-price-cell"><span class="price-dash">—</span></td>';
+        function renderModelPriceValue(raw) {
+            if (!raw) return '<span class="price-dash">—</span>';
+            if (raw === '免费' || raw === '$0.00' || raw === '￥0.00') {
+                return '<span class="price-free">免费</span>';
             }
-
-            const inputHtml = entry.inputRaw
-                ? `<span class="price-token">${escapeHtml(entry.inputRaw)}</span>`
-                : '<span class="price-dash">—</span>';
-            const outputHtml = entry.outputRaw
-                ? `<span class="price-token">${escapeHtml(entry.outputRaw)}</span>`
-                : '<span class="price-dash">—</span>';
-            const noteHtml = entry.note
-                ? `<div class="model-price-note">${escapeHtmlPreserveBreaks(entry.note)}</div>`
-                : '';
-
-            return `<td class="model-price-cell"><div class="model-price-stack"><div class="model-price-row"><span class="model-price-label">输</span>${inputHtml}</div><div class="model-price-row"><span class="model-price-label">出</span>${outputHtml}</div>${noteHtml}</div></td>`;
+            return `<span class="price-token">${escapeHtml(raw)}</span>`;
         }
 
-        function renderModelSummaryCell(entry, kind) {
-            if (!entry) {
-                return '<td class="model-summary-cell"><span class="price-dash">—</span></td>';
-            }
-
-            const raw = kind === 'output' ? entry.outputRaw : entry.inputRaw;
-            return `<td class="model-summary-cell"><div class="model-summary-main">${escapeHtml(raw || '—')}</div><div class="model-summary-meta">${escapeHtml(entry.relayName)}</div></td>`;
-        }
-
-        function renderModelMatrix(rows, visibleRelays) {
+        function renderModelMatrix(rows) {
             const wrapper = document.getElementById('modelMatrixWrapper');
             if (!wrapper) return;
             if (!rows.length) {
-                wrapper.innerHTML = '<div class="loading-state">暂无符合条件的模型</div>';
+                wrapper.innerHTML = '<div class="loading-state">暂无符合条件的价格记录</div>';
                 return;
             }
 
-            const MODEL_W = 180;
-            const SUMMARY_W = 140;
-            const RELAY_MIN_W = 220;
+            const MODEL_W = 220;
+            const RELAY_W = 180;
+            const PRICE_W = 160;
             const wrapperWidth = Math.round(wrapper.clientWidth || 0);
-            const relayCount = Math.max(visibleRelays.length, 1);
-            const minTableW = Math.max(760, MODEL_W + (SUMMARY_W * 2) + (RELAY_MIN_W * relayCount));
-            const targetTableW = Math.max(minTableW, wrapperWidth);
-            const relayColWidth = Math.max(RELAY_MIN_W, Math.floor((targetTableW - MODEL_W - (SUMMARY_W * 2)) / relayCount));
-            const tableWidth = MODEL_W + (SUMMARY_W * 2) + (relayColWidth * relayCount);
-            const relayIds = visibleRelays.map(relay => relay.id);
-
-            const relayHeadHtml = visibleRelays.map(relay => `
-                <th class="matrix-dim-th" style="width:${relayColWidth}px;min-width:${relayColWidth}px">${escapeHtml(relay.name)}</th>
-            `).join('');
+            const minTableW = Math.max(720, MODEL_W + RELAY_W + (PRICE_W * 2));
+            const tableWidth = Math.max(minTableW, wrapperWidth);
 
             const tbody = rows.map(row => {
-                const bestInput = getBestModelPriceEntry(row, 'input', relayIds);
-                const bestOutput = getBestModelPriceEntry(row, 'output', relayIds);
-                const priceCells = visibleRelays.map(relay => renderModelMatrixPriceCell(row.pricesByRelay[relay.id])).join('');
-                const relayCountText = `${getModelRowEntries(row, relayIds).length}/${visibleRelays.length}`;
-
                 return `<tr>
                     <td class="model-label">
                         <span class="model-name">${escapeHtml(row.name)}</span>
-                        <span class="model-meta">已展示中转站：${escapeHtml(relayCountText)}</span>
                     </td>
-                    ${renderModelSummaryCell(bestInput, 'input')}
-                    ${renderModelSummaryCell(bestOutput, 'output')}
-                    ${priceCells}
+                    <td><span class="platform-name">${escapeHtml(row.relayName)}</span></td>
+                    <td class="model-summary-cell">${renderModelPriceValue(row.inputRaw)}</td>
+                    <td class="model-summary-cell">${renderModelPriceValue(row.outputRaw)}</td>
                 </tr>`;
             }).join('');
 
@@ -1729,9 +1687,9 @@
                     <thead>
                         <tr>
                             <th class="matrix-sortable model-matrix-sortable" data-model-matrix-sort-key="name" style="width:${MODEL_W}px;min-width:${MODEL_W}px">模型</th>
-                            <th class="matrix-dim-th matrix-sortable model-matrix-sortable" data-model-matrix-sort-key="inputMin" style="width:${SUMMARY_W}px;min-width:${SUMMARY_W}px">最低输入价</th>
-                            <th class="matrix-dim-th matrix-sortable model-matrix-sortable" data-model-matrix-sort-key="outputMin" style="width:${SUMMARY_W}px;min-width:${SUMMARY_W}px">最低输出价</th>
-                            ${relayHeadHtml}
+                            <th class="matrix-dim-th matrix-sortable model-matrix-sortable" data-model-matrix-sort-key="relay" style="width:${RELAY_W}px;min-width:${RELAY_W}px">平台</th>
+                            <th class="matrix-dim-th matrix-sortable model-matrix-sortable" data-model-matrix-sort-key="input" style="width:${PRICE_W}px;min-width:${PRICE_W}px">输入价格</th>
+                            <th class="matrix-dim-th matrix-sortable model-matrix-sortable" data-model-matrix-sort-key="output" style="width:${PRICE_W}px;min-width:${PRICE_W}px">输出价格</th>
                         </tr>
                     </thead>
                     <tbody>${tbody}</tbody>
@@ -1743,8 +1701,7 @@
         }
 
         function applyModelMatrixFilters() {
-            const visibleRelays = getVisibleModelRelays();
-            const relayIds = visibleRelays.map(relay => relay.id);
+            const selectedRelays = Array.isArray(modelMatrixFilterState.relay) ? modelMatrixFilterState.relay : [];
             const selectedModels = Array.isArray(modelMatrixFilterState.model) ? modelMatrixFilterState.model : [];
             const inputMin = Number(modelMatrixFilterState.inputMin);
             const inputMax = Number(modelMatrixFilterState.inputMax);
@@ -1752,32 +1709,27 @@
             const outputMax = Number(modelMatrixFilterState.outputMax);
 
             const filtered = modelMatrixData.filter(row => {
+                if (selectedRelays.length && !selectedRelays.includes(row.relayId)) return false;
                 if (selectedModels.length && !selectedModels.includes(row.name)) return false;
 
-                const entries = getModelRowEntries(row, relayIds);
-                if (!entries.length) return false;
-
-                const bestInput = getBestModelPriceEntry(row, 'input', relayIds);
-                const bestOutput = getBestModelPriceEntry(row, 'output', relayIds);
-
                 if (modelMatrixFilterState.inputMin !== '') {
-                    if (!bestInput || !Number.isFinite(bestInput.inputValue) || bestInput.inputValue < inputMin) return false;
+                    if (!Number.isFinite(row.inputNormalizedValue) || row.inputNormalizedValue < inputMin) return false;
                 }
                 if (modelMatrixFilterState.inputMax !== '') {
-                    if (!bestInput || !Number.isFinite(bestInput.inputValue) || bestInput.inputValue > inputMax) return false;
+                    if (!Number.isFinite(row.inputNormalizedValue) || row.inputNormalizedValue > inputMax) return false;
                 }
                 if (modelMatrixFilterState.outputMin !== '') {
-                    if (!bestOutput || !Number.isFinite(bestOutput.outputValue) || bestOutput.outputValue < outputMin) return false;
+                    if (!Number.isFinite(row.outputNormalizedValue) || row.outputNormalizedValue < outputMin) return false;
                 }
                 if (modelMatrixFilterState.outputMax !== '') {
-                    if (!bestOutput || !Number.isFinite(bestOutput.outputValue) || bestOutput.outputValue > outputMax) return false;
+                    if (!Number.isFinite(row.outputNormalizedValue) || row.outputNormalizedValue > outputMax) return false;
                 }
 
                 return true;
             });
 
-            const sorted = sortModelMatrixRows(filtered, relayIds);
-            renderModelMatrix(sorted, visibleRelays);
+            const sorted = sortModelMatrixRows(filtered);
+            renderModelMatrix(sorted);
 
             const resultEl = document.getElementById('modelMatrixFilterResult');
             if (resultEl) {
