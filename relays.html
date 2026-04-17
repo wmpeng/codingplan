@@ -188,6 +188,13 @@
             color: var(--text-tertiary);
         }
 
+        .section-info {
+            margin: -6px 0 14px;
+            font-size: 13px;
+            color: var(--text-tertiary);
+            line-height: 1.7;
+        }
+
         .matrix-table {
             width: 100%;
             border-collapse: collapse;
@@ -753,6 +760,102 @@
             color: var(--text-tertiary);
         }
 
+        /* ── 模型价格矩阵 ── */
+        .model-matrix-section {
+            margin-bottom: 48px;
+        }
+
+        .model-matrix-table tbody tr:hover .model-label {
+            background: #e8eaf6;
+        }
+
+        .model-label {
+            padding: 14px 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            background: var(--bg-tertiary);
+            position: sticky;
+            left: 0;
+            z-index: 1;
+            border-right: 1px solid var(--border-color);
+            transition: background 0.15s;
+            vertical-align: top;
+        }
+
+        .model-name {
+            display: block;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        .model-meta {
+            display: block;
+            font-size: 12px;
+            color: var(--text-tertiary);
+            line-height: 1.5;
+        }
+
+        .model-summary-cell {
+            vertical-align: top;
+        }
+
+        .model-summary-main {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            line-height: 1.45;
+        }
+
+        .model-summary-meta {
+            margin-top: 6px;
+            font-size: 12px;
+            color: var(--text-tertiary);
+            line-height: 1.5;
+        }
+
+        .model-price-cell {
+            vertical-align: top;
+        }
+
+        .model-price-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .model-price-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        .model-price-label {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 22px;
+            padding: 2px 6px;
+            border-radius: 999px;
+            background: var(--bg-tertiary);
+            color: var(--text-tertiary);
+            font-weight: 700;
+        }
+
+        .model-price-note {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            line-height: 1.55;
+            padding-top: 2px;
+            border-top: 1px dashed var(--border-light);
+        }
+
         /* ── 加载动画 ── */
         .loading-state {
             text-align: center;
@@ -865,6 +968,18 @@
 
         <hr class="section-divider">
 
+        <!-- 模型价格对比矩阵 -->
+        <div class="model-matrix-section">
+            <h2 class="section-title">模型价格对比</h2>
+            <div class="section-info">按模型聚合各中转站在 detail.keyModels 中给出的公开价格。区间筛选与排序按当前可见中转站中的最低输入价/最低输出价计算；不同币种不做汇率换算。</div>
+            <div class="matrix-filter-bar" id="modelMatrixFilterBar"></div>
+            <div class="matrix-wrapper" id="modelMatrixWrapper">
+                <div class="loading-state">加载中...</div>
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
         <!-- 平台详情区 -->
         <div class="relays-detail-section">
             <h2 class="section-title">详细介绍</h2>
@@ -888,6 +1003,7 @@
         const ICON_DOWN = '<span class="link-icon link-icon--down" aria-hidden="true">↓</span>';
 
         let relaysData = [];
+        let modelMatrixData = [];
         let pageConfig = {};
         let matrixFilterState = { platform: [], byKey: {} };
         let currentMatrixDimensions = [];
@@ -896,6 +1012,18 @@
         let matrixRelayoutFrame = 0;
         let lastMatrixWrapperWidth = 0;
         let matrixSortState = { key: null, direction: 'asc' };
+        let modelMatrixFilterState = {
+            relay: [],
+            model: [],
+            inputMin: '',
+            inputMax: '',
+            outputMin: '',
+            outputMax: ''
+        };
+        let modelMatrixSortState = { key: null, direction: 'asc' };
+        let modelMatrixResizeObserver = null;
+        let modelMatrixRelayoutFrame = 0;
+        let lastModelMatrixWrapperWidth = 0;
 
         function getMatrixDimensionValueType(dim) {
             const rawType = dim && typeof dim.valueType === 'string' ? dim.valueType.trim() : '';
@@ -970,6 +1098,97 @@
         function escapeHtmlPreserveBreaks(raw) {
             const normalized = String(raw).replace(/\r\n/g, '\n').replace(/\r/g, '\n');
             return escapeHtml(normalized).replace(/\n/g, '<br>');
+        }
+
+        function parsePriceValue(raw) {
+            const text = String(raw || '').trim();
+            if (!text) {
+                return { raw: '', amount: null, currency: '' };
+            }
+
+            if (text === '免费' || text === '$0.00' || text === '￥0.00') {
+                const currency = text.startsWith('￥') ? '￥' : (text.startsWith('$') ? '$' : '');
+                return { raw: text, amount: 0, currency };
+            }
+
+            const match = text.match(/^([￥$])\s*([0-9]+(?:\.[0-9]+)?)/);
+            if (!match) {
+                return { raw: text, amount: null, currency: '' };
+            }
+
+            const amount = Number(match[2]);
+            return {
+                raw: text,
+                amount: Number.isFinite(amount) ? amount : null,
+                currency: match[1] || ''
+            };
+        }
+
+        function buildModelMatrixData(relays) {
+            const modelMap = new Map();
+
+            relays.forEach(relay => {
+                const relayModels = Array.isArray(relay.detail && relay.detail.keyModels) ? relay.detail.keyModels : [];
+                relayModels.forEach(model => {
+                    const modelName = String(model && model.name || '').trim();
+                    if (!modelName) return;
+
+                    if (!modelMap.has(modelName)) {
+                        modelMap.set(modelName, {
+                            name: modelName,
+                            pricesByRelay: {},
+                            __modelOriginalIndex: modelMap.size
+                        });
+                    }
+
+                    const row = modelMap.get(modelName);
+                    const input = parsePriceValue(model.inputPer1M);
+                    const output = parsePriceValue(model.outputPer1M);
+                    row.pricesByRelay[relay.id] = {
+                        relayId: relay.id,
+                        relayName: relay.name,
+                        inputRaw: input.raw,
+                        inputValue: input.amount,
+                        inputCurrency: input.currency,
+                        outputRaw: output.raw,
+                        outputValue: output.amount,
+                        outputCurrency: output.currency,
+                        note: String(model.note || '').trim()
+                    };
+                });
+            });
+
+            return Array.from(modelMap.values());
+        }
+
+        function getVisibleModelRelays() {
+            const selectedRelayIds = Array.isArray(modelMatrixFilterState.relay) ? modelMatrixFilterState.relay : [];
+            if (selectedRelayIds.length) {
+                return relaysData.filter(relay => selectedRelayIds.includes(relay.id));
+            }
+            return relaysData;
+        }
+
+        function getModelRowEntries(row, relayIds) {
+            return relayIds
+                .map(relayId => row && row.pricesByRelay ? row.pricesByRelay[relayId] : undefined)
+                .filter(Boolean);
+        }
+
+        function getBestModelPriceEntry(row, kind, relayIds) {
+            const valueKey = kind === 'output' ? 'outputValue' : 'inputValue';
+            const entries = getModelRowEntries(row, relayIds).filter(entry => Number.isFinite(entry[valueKey]));
+            if (!entries.length) return null;
+
+            return entries.reduce((best, current) => {
+                if (!best) return current;
+                if (current[valueKey] < best[valueKey]) return current;
+                if (current[valueKey] > best[valueKey]) return best;
+
+                const bestRelay = relaysData.findIndex(relay => relay.id === best.relayId);
+                const currentRelay = relaysData.findIndex(relay => relay.id === current.relayId);
+                return currentRelay < bestRelay ? current : best;
+            }, null);
         }
 
         function getMultiSelectButtonText(selectedValues, allValues) {
@@ -1067,9 +1286,8 @@
 
             if (!matrixFilterGlobalEventsBound) {
                 document.addEventListener('click', (ev) => {
-                    const currentBar = document.getElementById('matrixFilterBar');
-                    if (!currentBar || currentBar.contains(ev.target)) return;
-                    currentBar.querySelectorAll('.matrix-multi.open').forEach(el => el.classList.remove('open'));
+                    if (ev.target.closest('.matrix-multi')) return;
+                    document.querySelectorAll('.matrix-multi.open').forEach(el => el.classList.remove('open'));
                 });
                 matrixFilterGlobalEventsBound = true;
             }
@@ -1249,6 +1467,351 @@
             }
 
             window.addEventListener('resize', scheduleMatrixRelayout, { passive: true });
+        }
+
+        function renderModelMatrixFilterBar() {
+            const bar = document.getElementById('modelMatrixFilterBar');
+            if (!bar) return;
+
+            const relayOptions = relaysData
+                .map(relay => ({ id: relay.id, name: String(relay.name || '').trim() }))
+                .filter(relay => relay.id && relay.name);
+            const modelOptions = modelMatrixData
+                .map(row => String(row && row.name || '').trim())
+                .filter(Boolean);
+
+            const relayNames = relayOptions.map(relay => relay.name);
+            const selectedRelayNames = relayOptions
+                .filter(relay => modelMatrixFilterState.relay.includes(relay.id))
+                .map(relay => relay.name);
+            const selectedModelNames = modelOptions.filter(name => modelMatrixFilterState.model.includes(name));
+
+            bar.innerHTML = `
+                <div class="matrix-filter-grid">
+                    <div class="matrix-filter-item">
+                        <label>中转站</label>
+                        ${renderMultiSelectControl('model_relays', relayNames, selectedRelayNames, 'model-relay-multi')}
+                    </div>
+                    <div class="matrix-filter-item">
+                        <label>模型名</label>
+                        ${renderMultiSelectControl('model_names', modelOptions, selectedModelNames, 'model-name-multi')}
+                    </div>
+                    <div class="matrix-filter-item">
+                        <label for="modelInputMin">输入价最低</label>
+                        <input id="modelInputMin" data-model-filter-key="inputMin" type="number" inputmode="decimal" min="0" step="0.01" value="${escapeHtml(modelMatrixFilterState.inputMin)}" placeholder="不限">
+                    </div>
+                    <div class="matrix-filter-item">
+                        <label for="modelInputMax">输入价最高</label>
+                        <input id="modelInputMax" data-model-filter-key="inputMax" type="number" inputmode="decimal" min="0" step="0.01" value="${escapeHtml(modelMatrixFilterState.inputMax)}" placeholder="不限">
+                    </div>
+                    <div class="matrix-filter-item">
+                        <label for="modelOutputMin">输出价最低</label>
+                        <input id="modelOutputMin" data-model-filter-key="outputMin" type="number" inputmode="decimal" min="0" step="0.01" value="${escapeHtml(modelMatrixFilterState.outputMin)}" placeholder="不限">
+                    </div>
+                    <div class="matrix-filter-item">
+                        <label for="modelOutputMax">输出价最高</label>
+                        <input id="modelOutputMax" data-model-filter-key="outputMax" type="number" inputmode="decimal" min="0" step="0.01" value="${escapeHtml(modelMatrixFilterState.outputMax)}" placeholder="不限">
+                    </div>
+                </div>
+                <div class="matrix-filter-head">
+                    <button type="button" class="matrix-filter-reset" id="modelMatrixFilterResetBtn">重置筛选</button>
+                    <div class="matrix-filter-result" id="modelMatrixFilterResult"></div>
+                </div>
+            `;
+
+            bar.onclick = (ev) => {
+                const btn = ev.target.closest('[data-matrix-multi-btn]');
+                if (btn) {
+                    const box = btn.closest('.matrix-multi');
+                    if (!box) return;
+                    const willOpen = !box.classList.contains('open');
+                    bar.querySelectorAll('.matrix-multi.open').forEach(el => el.classList.remove('open'));
+                    if (willOpen) box.classList.add('open');
+                    return;
+                }
+                if (!ev.target.closest('.matrix-multi')) {
+                    bar.querySelectorAll('.matrix-multi.open').forEach(el => el.classList.remove('open'));
+                }
+            };
+
+            bar.querySelectorAll('input[data-matrix-filter-type="model-relay-multi"]').forEach(el => {
+                el.addEventListener('change', () => {
+                    const selectedNames = [...bar.querySelectorAll('input[data-matrix-filter-type="model-relay-multi"]:checked')].map(x => x.value);
+                    modelMatrixFilterState.relay = relayOptions
+                        .filter(relay => selectedNames.includes(relay.name))
+                        .map(relay => relay.id);
+
+                    const box = el.closest('.matrix-multi');
+                    if (box) {
+                        const btn = box.querySelector('[data-matrix-multi-btn]');
+                        if (btn) btn.textContent = getMultiSelectButtonText(selectedNames, relayNames);
+                    }
+
+                    applyModelMatrixFilters();
+                });
+            });
+
+            bar.querySelectorAll('input[data-matrix-filter-type="model-name-multi"]').forEach(el => {
+                el.addEventListener('change', () => {
+                    const selectedNames = [...bar.querySelectorAll('input[data-matrix-filter-type="model-name-multi"]:checked')].map(x => x.value);
+                    modelMatrixFilterState.model = selectedNames;
+
+                    const box = el.closest('.matrix-multi');
+                    if (box) {
+                        const btn = box.querySelector('[data-matrix-multi-btn]');
+                        if (btn) btn.textContent = getMultiSelectButtonText(selectedNames, modelOptions);
+                    }
+
+                    applyModelMatrixFilters();
+                });
+            });
+
+            bar.querySelectorAll('[data-model-filter-key]').forEach(el => {
+                el.addEventListener('input', () => {
+                    const key = el.getAttribute('data-model-filter-key');
+                    modelMatrixFilterState[key] = el.value || '';
+                    applyModelMatrixFilters();
+                });
+            });
+
+            const resetBtn = bar.querySelector('#modelMatrixFilterResetBtn');
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    modelMatrixFilterState = {
+                        relay: [],
+                        model: [],
+                        inputMin: '',
+                        inputMax: '',
+                        outputMin: '',
+                        outputMax: ''
+                    };
+                    renderModelMatrixFilterBar();
+                    applyModelMatrixFilters();
+                });
+            }
+        }
+
+        function sortModelMatrixRows(rows, relayIds) {
+            if (!modelMatrixSortState.key) return rows;
+
+            const { key, direction } = modelMatrixSortState;
+            const sorted = [...rows];
+            sorted.sort((a, b) => {
+                if (key === 'name') {
+                    const result = a.name.localeCompare(b.name, 'zh-CN');
+                    if (result === 0) return a.__modelOriginalIndex - b.__modelOriginalIndex;
+                    return direction === 'asc' ? result : -result;
+                }
+
+                const kind = key === 'outputMin' ? 'output' : 'input';
+                const bestA = getBestModelPriceEntry(a, kind, relayIds);
+                const bestB = getBestModelPriceEntry(b, kind, relayIds);
+                const valueKey = kind === 'output' ? 'outputValue' : 'inputValue';
+                const hasA = !!bestA && Number.isFinite(bestA[valueKey]);
+                const hasB = !!bestB && Number.isFinite(bestB[valueKey]);
+
+                if (!hasA && !hasB) return a.__modelOriginalIndex - b.__modelOriginalIndex;
+                if (!hasA) return 1;
+                if (!hasB) return -1;
+
+                if (bestA[valueKey] === bestB[valueKey]) {
+                    return a.__modelOriginalIndex - b.__modelOriginalIndex;
+                }
+                return direction === 'asc'
+                    ? bestA[valueKey] - bestB[valueKey]
+                    : bestB[valueKey] - bestA[valueKey];
+            });
+
+            return sorted;
+        }
+
+        function updateModelMatrixSortHeaders(wrapper) {
+            if (!wrapper) return;
+            wrapper.querySelectorAll('th.model-matrix-sortable').forEach(th => {
+                th.classList.remove('matrix-sort-asc', 'matrix-sort-desc');
+                if (th.dataset.modelMatrixSortKey === modelMatrixSortState.key) {
+                    th.classList.add(modelMatrixSortState.direction === 'desc' ? 'matrix-sort-desc' : 'matrix-sort-asc');
+                }
+            });
+        }
+
+        function bindModelMatrixSortHandlers(wrapper) {
+            if (!wrapper) return;
+            wrapper.querySelectorAll('th.model-matrix-sortable').forEach(th => {
+                th.addEventListener('click', () => {
+                    const key = th.dataset.modelMatrixSortKey;
+                    if (!key) return;
+
+                    if (modelMatrixSortState.key === key) {
+                        if (modelMatrixSortState.direction === 'asc') {
+                            modelMatrixSortState = { key, direction: 'desc' };
+                        } else {
+                            modelMatrixSortState = { key: null, direction: 'asc' };
+                        }
+                    } else {
+                        modelMatrixSortState = { key, direction: 'asc' };
+                    }
+
+                    applyModelMatrixFilters();
+                });
+            });
+        }
+
+        function renderModelMatrixPriceCell(entry) {
+            if (!entry) {
+                return '<td class="model-price-cell"><span class="price-dash">—</span></td>';
+            }
+
+            const inputHtml = entry.inputRaw
+                ? `<span class="price-token">${escapeHtml(entry.inputRaw)}</span>`
+                : '<span class="price-dash">—</span>';
+            const outputHtml = entry.outputRaw
+                ? `<span class="price-token">${escapeHtml(entry.outputRaw)}</span>`
+                : '<span class="price-dash">—</span>';
+            const noteHtml = entry.note
+                ? `<div class="model-price-note">${escapeHtmlPreserveBreaks(entry.note)}</div>`
+                : '';
+
+            return `<td class="model-price-cell"><div class="model-price-stack"><div class="model-price-row"><span class="model-price-label">输</span>${inputHtml}</div><div class="model-price-row"><span class="model-price-label">出</span>${outputHtml}</div>${noteHtml}</div></td>`;
+        }
+
+        function renderModelSummaryCell(entry, kind) {
+            if (!entry) {
+                return '<td class="model-summary-cell"><span class="price-dash">—</span></td>';
+            }
+
+            const raw = kind === 'output' ? entry.outputRaw : entry.inputRaw;
+            return `<td class="model-summary-cell"><div class="model-summary-main">${escapeHtml(raw || '—')}</div><div class="model-summary-meta">${escapeHtml(entry.relayName)}</div></td>`;
+        }
+
+        function renderModelMatrix(rows, visibleRelays) {
+            const wrapper = document.getElementById('modelMatrixWrapper');
+            if (!wrapper) return;
+            if (!rows.length) {
+                wrapper.innerHTML = '<div class="loading-state">暂无符合条件的模型</div>';
+                return;
+            }
+
+            const MODEL_W = 180;
+            const SUMMARY_W = 140;
+            const RELAY_MIN_W = 220;
+            const wrapperWidth = Math.round(wrapper.clientWidth || 0);
+            const relayCount = Math.max(visibleRelays.length, 1);
+            const minTableW = Math.max(760, MODEL_W + (SUMMARY_W * 2) + (RELAY_MIN_W * relayCount));
+            const targetTableW = Math.max(minTableW, wrapperWidth);
+            const relayColWidth = Math.max(RELAY_MIN_W, Math.floor((targetTableW - MODEL_W - (SUMMARY_W * 2)) / relayCount));
+            const tableWidth = MODEL_W + (SUMMARY_W * 2) + (relayColWidth * relayCount);
+            const relayIds = visibleRelays.map(relay => relay.id);
+
+            const relayHeadHtml = visibleRelays.map(relay => `
+                <th class="matrix-dim-th" style="width:${relayColWidth}px;min-width:${relayColWidth}px">${escapeHtml(relay.name)}</th>
+            `).join('');
+
+            const tbody = rows.map(row => {
+                const bestInput = getBestModelPriceEntry(row, 'input', relayIds);
+                const bestOutput = getBestModelPriceEntry(row, 'output', relayIds);
+                const priceCells = visibleRelays.map(relay => renderModelMatrixPriceCell(row.pricesByRelay[relay.id])).join('');
+                const relayCountText = `${getModelRowEntries(row, relayIds).length}/${visibleRelays.length}`;
+
+                return `<tr>
+                    <td class="model-label">
+                        <span class="model-name">${escapeHtml(row.name)}</span>
+                        <span class="model-meta">已展示中转站：${escapeHtml(relayCountText)}</span>
+                    </td>
+                    ${renderModelSummaryCell(bestInput, 'input')}
+                    ${renderModelSummaryCell(bestOutput, 'output')}
+                    ${priceCells}
+                </tr>`;
+            }).join('');
+
+            wrapper.innerHTML = `
+                <table class="matrix-table" style="width:${tableWidth}px;min-width:${minTableW}px">
+                    <thead>
+                        <tr>
+                            <th class="matrix-sortable model-matrix-sortable" data-model-matrix-sort-key="name" style="width:${MODEL_W}px;min-width:${MODEL_W}px">模型</th>
+                            <th class="matrix-dim-th matrix-sortable model-matrix-sortable" data-model-matrix-sort-key="inputMin" style="width:${SUMMARY_W}px;min-width:${SUMMARY_W}px">最低输入价</th>
+                            <th class="matrix-dim-th matrix-sortable model-matrix-sortable" data-model-matrix-sort-key="outputMin" style="width:${SUMMARY_W}px;min-width:${SUMMARY_W}px">最低输出价</th>
+                            ${relayHeadHtml}
+                        </tr>
+                    </thead>
+                    <tbody>${tbody}</tbody>
+                </table>
+            `;
+
+            updateModelMatrixSortHeaders(wrapper);
+            bindModelMatrixSortHandlers(wrapper);
+        }
+
+        function applyModelMatrixFilters() {
+            const visibleRelays = getVisibleModelRelays();
+            const relayIds = visibleRelays.map(relay => relay.id);
+            const selectedModels = Array.isArray(modelMatrixFilterState.model) ? modelMatrixFilterState.model : [];
+            const inputMin = Number(modelMatrixFilterState.inputMin);
+            const inputMax = Number(modelMatrixFilterState.inputMax);
+            const outputMin = Number(modelMatrixFilterState.outputMin);
+            const outputMax = Number(modelMatrixFilterState.outputMax);
+
+            const filtered = modelMatrixData.filter(row => {
+                if (selectedModels.length && !selectedModels.includes(row.name)) return false;
+
+                const entries = getModelRowEntries(row, relayIds);
+                if (!entries.length) return false;
+
+                const bestInput = getBestModelPriceEntry(row, 'input', relayIds);
+                const bestOutput = getBestModelPriceEntry(row, 'output', relayIds);
+
+                if (modelMatrixFilterState.inputMin !== '') {
+                    if (!bestInput || !Number.isFinite(bestInput.inputValue) || bestInput.inputValue < inputMin) return false;
+                }
+                if (modelMatrixFilterState.inputMax !== '') {
+                    if (!bestInput || !Number.isFinite(bestInput.inputValue) || bestInput.inputValue > inputMax) return false;
+                }
+                if (modelMatrixFilterState.outputMin !== '') {
+                    if (!bestOutput || !Number.isFinite(bestOutput.outputValue) || bestOutput.outputValue < outputMin) return false;
+                }
+                if (modelMatrixFilterState.outputMax !== '') {
+                    if (!bestOutput || !Number.isFinite(bestOutput.outputValue) || bestOutput.outputValue > outputMax) return false;
+                }
+
+                return true;
+            });
+
+            const sorted = sortModelMatrixRows(filtered, relayIds);
+            renderModelMatrix(sorted, visibleRelays);
+
+            const resultEl = document.getElementById('modelMatrixFilterResult');
+            if (resultEl) {
+                resultEl.textContent = `${filtered.length}条/共${modelMatrixData.length}条`;
+            }
+        }
+
+        function scheduleModelMatrixRelayout() {
+            if (modelMatrixRelayoutFrame) return;
+            modelMatrixRelayoutFrame = window.requestAnimationFrame(() => {
+                modelMatrixRelayoutFrame = 0;
+                if (!modelMatrixData.length) return;
+                applyModelMatrixFilters();
+            });
+        }
+
+        function bindModelMatrixResizeObserver() {
+            const wrapper = document.getElementById('modelMatrixWrapper');
+            if (!wrapper) return;
+
+            lastModelMatrixWrapperWidth = Math.round(wrapper.getBoundingClientRect().width);
+
+            if (typeof ResizeObserver === 'function' && !modelMatrixResizeObserver) {
+                modelMatrixResizeObserver = new ResizeObserver(entries => {
+                    const entry = entries[0];
+                    const nextWidth = Math.round(entry.contentRect.width);
+                    if (!nextWidth || nextWidth === lastModelMatrixWrapperWidth) return;
+                    lastModelMatrixWrapperWidth = nextWidth;
+                    scheduleModelMatrixRelayout();
+                });
+                modelMatrixResizeObserver.observe(wrapper);
+            }
+
+            window.addEventListener('resize', scheduleModelMatrixRelayout, { passive: true });
         }
 
         /** 1–5 星 HTML；非法或缺省返回空字符串 */
@@ -1570,14 +2133,19 @@
 
                 const dimensions = (pageConfig.matrixDimensions) || [];
                 currentMatrixDimensions = dimensions;
+                modelMatrixData = buildModelMatrixData(relaysData);
                 renderMatrixFilterBar(dimensions);
                 applyMatrixFilters();
+                renderModelMatrixFilterBar();
+                applyModelMatrixFilters();
                 renderRelayCards(relaysData);
 
                 console.log(`成功加载 ${relaysData.length} 个中转站数据`);
             } catch (e) {
                 console.error('加载数据失败:', e);
                 document.getElementById('matrixWrapper').innerHTML =
+                    '<div class="loading-state">数据加载失败，请检查 relays.json 文件</div>';
+                document.getElementById('modelMatrixWrapper').innerHTML =
                     '<div class="loading-state">数据加载失败，请检查 relays.json 文件</div>';
                 document.getElementById('relayCards').innerHTML =
                     '<div class="loading-state">数据加载失败，请检查 relays.json 文件</div>';
@@ -1586,6 +2154,7 @@
 
         document.addEventListener('DOMContentLoaded', async () => {
             bindMatrixResizeObserver();
+            bindModelMatrixResizeObserver();
             await loadConfig();
             await loadRelays();
         });
