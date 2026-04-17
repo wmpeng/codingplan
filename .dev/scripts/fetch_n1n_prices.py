@@ -31,7 +31,7 @@ def build_platform():
     return build_group_ratio_platform(
         "https://api.n1n.ai/api/pricing_new",
         "https://api.n1n.ai/pricing",
-        "充值汇率 1:1：1 人民币充值到账 1 美元额度。",
+        "人民币充值汇率 1:1，即 1 人民币充值到账 1 美元额度。",
         mapping,
         skip_source_note_for={"GPT-5.4", "GPT-5.3-Codex", "GLM-5", "GLM-5.1", "DeepSeek-V3.2"},
         always_source_note_for={"Qwen-3.5"},

@@ -3,7 +3,7 @@
 from collections import OrderedDict
 from decimal import Decimal
 
-from relay_prices_common import fetch_json, fmt_money, join_notes, ordered_platform, q, run_platform_cli
+from relay_prices_common import fetch_json, fmt_money, ordered_platform, q, run_platform_cli
 
 
 PLATFORM_ID = "llmhub"
@@ -42,9 +42,9 @@ def build_platform():
                 continue
             raw_input = Decimal("1000000") * q(item["model_ratio"]) / quota_per_unit * price
             raw_output = raw_input * q(item["completion_ratio"])
-            note = "按 https://www.llmhub.com.cn/pricing 与公开接口换算成人民币"
+            note = ""
             if standard_name in {"Qwen-3.5", "Doubao-Seed-2.0-Code"}:
-                note = join_notes(f"对应 {source_id}", note)
+                note = f"对应 {source_id}"
             out.append(
                 {
                     "name": standard_name,

@@ -31,7 +31,7 @@ def build_platform():
     return build_group_ratio_platform(
         "https://xy.poloapi.com/api/pricing",
         "https://xy.poloapi.com/pricing",
-        "充值汇率 1:1：平台充值 1 人民 = 1 美金额度。",
+        "人民币充值汇率 1:1，即 1 人民币充值到账 1 美元额度。",
         mapping,
         skip_source_note_for={"GPT-5.4", "GPT-5.3-Codex", "GLM-5", "GLM-5.1", "DeepSeek-V3.2", "Kimi-K2.5"},
         always_source_note_for={"Qwen-3.5"},

@@ -2,7 +2,7 @@
 
 from collections import OrderedDict
 
-from relay_prices_common import fetch_json, fmt_money, join_notes, ordered_platform, run_platform_cli
+from relay_prices_common import fetch_json, fmt_money, ordered_platform, run_platform_cli
 
 
 PLATFORM_ID = "dmxapi"
@@ -41,9 +41,9 @@ def build_platform():
                 continue
             if item.get("input_price") is None or item.get("output_price") is None:
                 continue
-            note = "按 https://rmb.dmxapi.cn/?api=model_prices"
+            note = ""
             if standard_name in {"Qwen-3.5", "Doubao-Seed-2.0-Code"}:
-                note = join_notes(f"对应 {source_id}", note)
+                note = f"对应 {source_id}"
             out.append(
                 {
                     "name": standard_name,

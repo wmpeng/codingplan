@@ -128,7 +128,7 @@ def build_token_pricing_platform(url, mapping, currency, note_builder=None):
 
 def build_group_ratio_platform(
     url,
-    pricing_page,
+    _pricing_page,
     notes_line,
     mapping,
     skip_source_note_for=None,
@@ -151,7 +151,7 @@ def build_group_ratio_platform(
             min_ratio, min_group = min(valid_groups)
             raw_input = q(item["model_ratio"]) * 2 * min_ratio
             raw_output = raw_input * q(item["completion_ratio"])
-            note = f"按 {pricing_page} 展示规则换算；最低可用分组为「{min_group}」，倍率 {min_ratio.normalize()}"
+            note = f"最低可用分组为「{min_group}」，倍率 {min_ratio.normalize()}"
             should_note_source = standard_name in always_source_note_for or (
                 source_id != standard_name and standard_name not in skip_source_note_for
             )

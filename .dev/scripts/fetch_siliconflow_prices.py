@@ -3,7 +3,7 @@
 import re
 from collections import OrderedDict
 
-from relay_prices_common import fetch_text, fmt_money, join_notes, ordered_platform, run_platform_cli
+from relay_prices_common import fetch_text, fmt_money, ordered_platform, run_platform_cli
 
 
 PLATFORM_ID = "siliconflow"
@@ -39,7 +39,7 @@ def build_platform():
                 "name": standard_name,
                 "inputPer1M": fmt_money(match.group(1), "￥"),
                 "outputPer1M": fmt_money(match.group(2), "￥"),
-                "note": join_notes(extra_note, "按 https://siliconflow.cn/models 页面源码直接提取"),
+                "note": extra_note,
             }
         )
     return ordered_platform(out)
