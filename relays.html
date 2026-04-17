@@ -655,6 +655,24 @@
             border-color: rgba(180, 83, 9, 0.2);
         }
 
+        .matrix-tag--type-official {
+            color: #1d4ed8;
+            background: rgba(37, 99, 235, 0.1);
+            border-color: rgba(37, 99, 235, 0.24);
+        }
+
+        .matrix-tag--type-platform {
+            color: #0f766e;
+            background: rgba(15, 118, 110, 0.1);
+            border-color: rgba(15, 118, 110, 0.24);
+        }
+
+        .matrix-tag--type-mixed {
+            color: #b45309;
+            background: rgba(217, 119, 6, 0.1);
+            border-color: rgba(217, 119, 6, 0.24);
+        }
+
         .protocol-tag {
             display: inline-block;
             font-size: 11px;
@@ -2142,13 +2160,23 @@
             return [];
         }
 
-        function matrixTagCellHtml(phrases) {
+        function getMatrixTypeTagClass(text) {
+            const normalized = String(text || '').trim();
+            if (normalized === '官方纯聚合') return 'matrix-tag--type-official';
+            if (normalized === '平台封装聚合') return 'matrix-tag--type-platform';
+            if (normalized === '混合多分组') return 'matrix-tag--type-mixed';
+            return '';
+        }
+
+        function matrixTagCellHtml(phrases, dimKey = '') {
             if (!phrases.length) {
                 return `<td class="matrix-cell-tags"><span class="price-dash">—</span></td>`;
             }
             const inner = phrases.map((t, i) => {
                 const variant = (i % 3) + 1;
-                return `<span class="matrix-tag matrix-tag--${variant}">${escapeHtml(t)}</span>`;
+                const typeClass = dimKey === 'type' ? getMatrixTypeTagClass(t) : '';
+                const className = ['matrix-tag', typeClass || `matrix-tag--${variant}`].filter(Boolean).join(' ');
+                return `<span class="${className}">${escapeHtml(t)}</span>`;
             }).join('');
             return `<td class="matrix-cell-tags"><div class="matrix-tag-list">${inner}</div></td>`;
         }
@@ -2166,7 +2194,7 @@
                 const ratingCol = dimKey === 'rating' ? ' matrix-col-rating' : '';
 
                 if (isMatrixTagDimension(dim)) {
-                    const tagCell = matrixTagCellHtml(matrixTagPhrasesFromVal(val));
+                    const tagCell = matrixTagCellHtml(matrixTagPhrasesFromVal(val), dimKey);
                     if (ratingCol) return tagCell.replace('class="matrix-cell-tags"', 'class="matrix-cell-tags matrix-col-rating"');
                     return tagCell;
                 }
