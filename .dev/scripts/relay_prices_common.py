@@ -86,10 +86,19 @@ def normalize_candidates(candidates):
 
 def ordered_platform(models, notes_extra=None):
     ordered = []
-    by_name = {item["name"]: item for item in models}
     for name in TARGET_ORDER:
-        if name in by_name:
-            ordered.append(by_name[name])
+        for item in models:
+            if item.get("name") != name:
+                continue
+            ordered.append(
+                {
+                    "name": item["name"],
+                    "group": str(item.get("group") or "-").strip() or "-",
+                    "inputPer1M": item["inputPer1M"],
+                    "outputPer1M": item["outputPer1M"],
+                    "note": item.get("note", ""),
+                }
+            )
     return {
         "updatedAt": TODAY,
         "keyModels": ordered,
@@ -117,6 +126,7 @@ def build_token_pricing_platform(url, mapping, currency, note_builder=None):
             out.append(
                 {
                     "name": standard_name,
+                    "group": "-",
                     "inputPer1M": fmt_money(raw_input, currency),
                     "outputPer1M": fmt_money(raw_output, currency),
                     "note": note,
@@ -148,23 +158,24 @@ def build_group_ratio_platform(
             valid_groups = [(group_ratio[group], group) for group in item.get("enable_groups", []) if group in group_ratio]
             if not valid_groups:
                 continue
-            min_ratio, min_group = min(valid_groups)
-            raw_input = q(item["model_ratio"]) * 2 * min_ratio
-            raw_output = raw_input * q(item["completion_ratio"])
-            note = f"最低可用分组为「{min_group}」，倍率 {min_ratio.normalize()}"
-            should_note_source = standard_name in always_source_note_for or (
-                source_id != standard_name and standard_name not in skip_source_note_for
-            )
-            if should_note_source:
-                note = join_notes(f"对应 {source_id}", note)
-            out.append(
-                {
-                    "name": standard_name,
-                    "inputPer1M": fmt_money(raw_input, "￥"),
-                    "outputPer1M": fmt_money(raw_output, "￥"),
-                    "note": note,
-                }
-            )
+            for ratio, group_name in sorted(valid_groups, key=lambda pair: (pair[0], pair[1])):
+                raw_input = q(item["model_ratio"]) * 2 * ratio
+                raw_output = raw_input * q(item["completion_ratio"])
+                note = f"分组倍率 {ratio.normalize()}"
+                should_note_source = standard_name in always_source_note_for or (
+                    source_id != standard_name and standard_name not in skip_source_note_for
+                )
+                if should_note_source:
+                    note = join_notes(f"对应 {source_id}", note)
+                out.append(
+                    {
+                        "name": standard_name,
+                        "group": group_name,
+                        "inputPer1M": fmt_money(raw_input, "￥"),
+                        "outputPer1M": fmt_money(raw_output, "￥"),
+                        "note": note,
+                    }
+                )
             break
     return ordered_platform(out, notes_extra=[notes_line])
 

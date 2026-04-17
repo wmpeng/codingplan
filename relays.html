@@ -1045,7 +1045,7 @@
         <!-- 模型价格对比矩阵 -->
         <div class="model-matrix-section">
             <h2 class="section-title">模型价格对比</h2>
-            <div class="section-info">按 detail.keyModels 展开为“每个模型在每个平台各一行”的价格明细表。支持平台多选、模型多选、输入/输出价格滑块筛选；排序仅保留输入价格和输出价格两列，且会按 relays-config.json 中配置的汇率折合成人民币后计算，显示仍保留原币种。</div>
+            <div class="section-info">按 detail.keyModels 展开为“每个模型按平台 × 分组各一行”的价格明细表。多分组平台会展开全部分组，无分组平台的分组列显示为 -。支持平台多选、模型多选、输入/输出价格滑块筛选；排序仅保留输入价格和输出价格两列，且会按 relays-config.json 中配置的汇率折合成人民币后计算，显示仍保留原币种。</div>
             <div class="matrix-filter-bar" id="modelMatrixFilterBar"></div>
             <div class="matrix-wrapper" id="modelMatrixWrapper">
                 <div class="loading-state">加载中...</div>
@@ -1229,6 +1229,11 @@
             return amount * rate;
         }
 
+        function getModelGroupLabel(model) {
+            const raw = String(model && model.group || '').trim();
+            return raw || '-';
+        }
+
         function buildModelMatrixData(relays) {
             const rows = [];
 
@@ -1242,6 +1247,7 @@
                     const output = parsePriceValue(model.outputPer1M);
                     rows.push({
                         name: modelName,
+                        group: getModelGroupLabel(model),
                         relayId: relay.id,
                         relayName: relay.name,
                         inputRaw: input.raw,
@@ -1897,9 +1903,10 @@
 
             const MODEL_W = 220;
             const RELAY_W = 180;
+            const GROUP_W = 150;
             const PRICE_W = 160;
             const wrapperWidth = Math.round(wrapper.clientWidth || 0);
-            const minTableW = Math.max(720, MODEL_W + RELAY_W + (PRICE_W * 2));
+            const minTableW = Math.max(860, MODEL_W + RELAY_W + GROUP_W + (PRICE_W * 2));
             const tableWidth = Math.max(minTableW, wrapperWidth);
 
             const tbody = rows.map(row => {
@@ -1908,6 +1915,7 @@
                         <span class="model-name">${escapeHtml(row.name)}</span>
                     </td>
                     <td><span class="platform-name">${escapeHtml(row.relayName)}</span></td>
+                    <td>${escapeHtml(row.group)}</td>
                     <td class="model-summary-cell">${renderModelPriceValue(row.inputRaw)}</td>
                     <td class="model-summary-cell">${renderModelPriceValue(row.outputRaw)}</td>
                 </tr>`;
@@ -1919,6 +1927,7 @@
                         <tr>
                             <th style="width:${MODEL_W}px;min-width:${MODEL_W}px">模型</th>
                             <th class="matrix-dim-th" style="width:${RELAY_W}px;min-width:${RELAY_W}px">平台</th>
+                            <th class="matrix-dim-th" style="width:${GROUP_W}px;min-width:${GROUP_W}px">分组</th>
                             <th class="matrix-dim-th matrix-sortable model-matrix-sortable" data-model-matrix-sort-key="input" style="width:${PRICE_W}px;min-width:${PRICE_W}px">输入价格</th>
                             <th class="matrix-dim-th matrix-sortable model-matrix-sortable" data-model-matrix-sort-key="output" style="width:${PRICE_W}px;min-width:${PRICE_W}px">输出价格</th>
                         </tr>
@@ -2174,18 +2183,16 @@
                 const detail = relay.detail || {};
 
                 const modelsRows = (detail.keyModels || []).map(m => {
-                    const inputCell = m.inputPer1M === '$0.00'
-                        ? `<td><span class="price-free">免费</span></td>`
-                        : `<td><span class="price-token">${escapeHtml(m.inputPer1M)}</span></td>`;
-                    const outputCell = m.outputPer1M === '$0.00'
-                        ? `<td><span class="price-free">免费</span></td>`
-                        : `<td><span class="price-token">${escapeHtml(m.outputPer1M)}</span></td>`;
+                    const noteCell = m.note
+                        ? escapeHtml(m.note)
+                        : '<span class="price-dash">—</span>';
                     return `
                         <tr>
                             <td>${escapeHtml(m.name)}</td>
-                            ${inputCell}
-                            ${outputCell}
-                            <td>${escapeHtml(m.note || '')}</td>
+                            <td>${escapeHtml(getModelGroupLabel(m))}</td>
+                            <td>${renderModelPriceValue(m.inputPer1M)}</td>
+                            <td>${renderModelPriceValue(m.outputPer1M)}</td>
+                            <td>${noteCell}</td>
                         </tr>
                     `;
                 }).join('');
@@ -2197,6 +2204,7 @@
                             <thead>
                                 <tr>
                                     <th>模型</th>
+                                    <th>分组</th>
                                     <th>输入 / 1M tokens</th>
                                     <th>输出 / 1M tokens</th>
                                     <th>备注</th>

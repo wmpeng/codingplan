@@ -4,7 +4,7 @@
     "name": "OpenRouter",
     "homeUrl": "https://openrouter.ai",
     "pricingUrl": "https://openrouter.ai/models?order=most-popular",
-    "updatedAt": "2026.04.16",
+    "updatedAt": "2026.04.17",
     "matrix": {
       "rating": {
         "stars": 4,
@@ -40,78 +40,91 @@
       "keyModels": [
         {
           "name": "Opus-4.6",
+          "group": "-",
           "inputPer1M": "$5.00",
           "outputPer1M": "$25.00",
           "note": ""
         },
         {
           "name": "Sonnet-4.6",
+          "group": "-",
           "inputPer1M": "$3.00",
           "outputPer1M": "$15.00",
           "note": ""
         },
         {
           "name": "GPT-5.4",
+          "group": "-",
           "inputPer1M": "$2.50",
           "outputPer1M": "$15.00",
           "note": ""
         },
         {
           "name": "GPT-5.3-Codex",
+          "group": "-",
           "inputPer1M": "$1.75",
           "outputPer1M": "$14.00",
           "note": ""
         },
         {
           "name": "Gemini-3.1-Pro",
+          "group": "-",
           "inputPer1M": "$2.00",
           "outputPer1M": "$12.00",
           "note": ""
         },
         {
           "name": "Gemini-3-Flash",
+          "group": "-",
           "inputPer1M": "$0.50",
           "outputPer1M": "$3.00",
           "note": ""
         },
         {
           "name": "GLM-5.1",
+          "group": "-",
           "inputPer1M": "$0.95",
           "outputPer1M": "$3.15",
           "note": ""
         },
         {
           "name": "GLM-5",
+          "group": "-",
           "inputPer1M": "$0.72",
           "outputPer1M": "$2.30",
           "note": ""
         },
         {
           "name": "MiniMax-M2.7",
+          "group": "-",
           "inputPer1M": "$0.30",
           "outputPer1M": "$1.20",
           "note": ""
         },
         {
           "name": "MiniMax-M2.5",
+          "group": "-",
           "inputPer1M": "$0.12",
           "outputPer1M": "$0.99",
           "note": "四舍五入，原始输入价 $0.118/M"
         },
         {
           "name": "Kimi-K2.5",
+          "group": "-",
           "inputPer1M": "$0.38",
           "outputPer1M": "$1.72",
           "note": "四舍五入，原始输入价 $0.3827/M"
         },
         {
           "name": "DeepSeek-V3.2",
+          "group": "-",
           "inputPer1M": "$0.26",
           "outputPer1M": "$0.38",
           "note": ""
         },
         {
           "name": "Qwen-3.6-Plus",
+          "group": "-",
           "inputPer1M": "$0.33",
           "outputPer1M": "$1.95",
           "note": "四舍五入，原始输入价 $0.325/M"
@@ -125,7 +138,7 @@
     "name": "SiliconFlow硅基流动",
     "homeUrl": "https://siliconflow.cn/zh-cn/",
     "pricingUrl": "https://siliconflow.cn/pricing",
-    "updatedAt": "2026.04.16",
+    "updatedAt": "2026.04.17",
     "matrix": {
       "rating": {
         "stars": 3,
@@ -161,36 +174,42 @@
       "keyModels": [
         {
           "name": "GLM-5.1",
+          "group": "-",
           "inputPer1M": "￥6.00",
           "outputPer1M": "￥28.00",
           "note": ""
         },
         {
           "name": "GLM-5",
+          "group": "-",
           "inputPer1M": "￥4.00",
           "outputPer1M": "￥22.00",
           "note": ""
         },
         {
           "name": "MiniMax-M2.5",
+          "group": "-",
           "inputPer1M": "￥2.10",
           "outputPer1M": "￥8.40",
           "note": ""
         },
         {
           "name": "Kimi-K2.5",
+          "group": "-",
           "inputPer1M": "￥4.00",
           "outputPer1M": "￥21.00",
           "note": ""
         },
         {
           "name": "DeepSeek-V3.2",
+          "group": "-",
           "inputPer1M": "￥2.00",
           "outputPer1M": "￥3.00",
           "note": ""
         },
         {
           "name": "Qwen-3.5",
+          "group": "-",
           "inputPer1M": "￥2.00",
           "outputPer1M": "￥1.20",
           "note": "对应 Qwen/Qwen3.5-397B-A17B"
@@ -205,7 +224,7 @@
     "homeUrl": "https://xy.poloapi.com/",
     "pricingUrl": "https://xy.poloapi.com/pricing",
     "pricingUrlForAgent": "https://xy.poloapi.com/api/pricing",
-    "updatedAt": "2026.04.16",
+    "updatedAt": "2026.04.17",
     "matrix": {
       "rating": {
         "stars": 4,
@@ -244,75 +263,528 @@
       "keyModels": [
         {
           "name": "Opus-4.6",
+          "group": "Claude-code稳定",
           "inputPer1M": "￥5.00",
           "outputPer1M": "￥25.00",
-          "note": "对应 claude-opus-4-6；最低可用分组为「Claude-code稳定」，倍率 1"
+          "note": "对应 claude-opus-4-6；分组倍率 1"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "Claude-code优质",
+          "inputPer1M": "￥9.00",
+          "outputPer1M": "￥45.00",
+          "note": "对应 claude-opus-4-6；分组倍率 1.8"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "中转低价｜一key调用全模型",
+          "inputPer1M": "￥10.00",
+          "outputPer1M": "￥50.00",
+          "note": "对应 claude-opus-4-6；分组倍率 2"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "Openrouter",
+          "inputPer1M": "￥17.50",
+          "outputPer1M": "￥87.50",
+          "note": "对应 claude-opus-4-6；分组倍率 3.5"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "claude aws 官",
+          "inputPer1M": "￥17.50",
+          "outputPer1M": "￥87.50",
+          "note": "对应 claude-opus-4-6；分组倍率 3.5"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "claudeguankey4.5",
+          "inputPer1M": "￥22.50",
+          "outputPer1M": "￥112.50",
+          "note": "对应 claude-opus-4-6；分组倍率 4.5"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "Claude-官",
+          "inputPer1M": "￥25.00",
+          "outputPer1M": "￥125.00",
+          "note": "对应 claude-opus-4-6；分组倍率 5"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "企业极速｜一key调用全模型",
+          "inputPer1M": "￥27.50",
+          "outputPer1M": "￥137.50",
+          "note": "对应 claude-opus-4-6；分组倍率 5.5"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "A-Claude/GPT-svip 极速通道",
+          "inputPer1M": "￥34.00",
+          "outputPer1M": "￥170.00",
+          "note": "对应 claude-opus-4-6；分组倍率 6.8"
         },
         {
           "name": "Sonnet-4.6",
+          "group": "Claude-code稳定",
           "inputPer1M": "￥3.00",
           "outputPer1M": "￥15.00",
-          "note": "对应 claude-sonnet-4-6；最低可用分组为「Claude-code稳定」，倍率 1"
+          "note": "对应 claude-sonnet-4-6；分组倍率 1"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "Claude-code优质",
+          "inputPer1M": "￥5.40",
+          "outputPer1M": "￥27.00",
+          "note": "对应 claude-sonnet-4-6；分组倍率 1.8"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "中转低价｜一key调用全模型",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥30.00",
+          "note": "对应 claude-sonnet-4-6；分组倍率 2"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "Openrouter",
+          "inputPer1M": "￥10.50",
+          "outputPer1M": "￥52.50",
+          "note": "对应 claude-sonnet-4-6；分组倍率 3.5"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "claude aws 官",
+          "inputPer1M": "￥10.50",
+          "outputPer1M": "￥52.50",
+          "note": "对应 claude-sonnet-4-6；分组倍率 3.5"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "claudeguankey4.5",
+          "inputPer1M": "￥13.50",
+          "outputPer1M": "￥67.50",
+          "note": "对应 claude-sonnet-4-6；分组倍率 4.5"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "Claude-官",
+          "inputPer1M": "￥15.00",
+          "outputPer1M": "￥75.00",
+          "note": "对应 claude-sonnet-4-6；分组倍率 5"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "企业极速｜一key调用全模型",
+          "inputPer1M": "￥16.50",
+          "outputPer1M": "￥82.50",
+          "note": "对应 claude-sonnet-4-6；分组倍率 5.5"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "A-Claude/GPT-svip 极速通道",
+          "inputPer1M": "￥20.40",
+          "outputPer1M": "￥102.00",
+          "note": "对应 claude-sonnet-4-6；分组倍率 6.8"
         },
         {
           "name": "GPT-5.4",
+          "group": "Codex-gpt",
           "inputPer1M": "￥2.00",
           "outputPer1M": "￥12.00",
-          "note": "最低可用分组为「Codex-gpt」，倍率 0.8"
+          "note": "分组倍率 0.8"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "Claude-code稳定",
+          "inputPer1M": "￥2.50",
+          "outputPer1M": "￥15.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "az",
+          "inputPer1M": "￥3.75",
+          "outputPer1M": "￥22.50",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "中转低价｜一key调用全模型",
+          "inputPer1M": "￥5.00",
+          "outputPer1M": "￥30.00",
+          "note": "分组倍率 2"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "fast-az",
+          "inputPer1M": "￥5.75",
+          "outputPer1M": "￥34.50",
+          "note": "分组倍率 2.3"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "gpt-vip",
+          "inputPer1M": "￥8.75",
+          "outputPer1M": "￥52.50",
+          "note": "分组倍率 3.5"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "gpt-openai",
+          "inputPer1M": "￥12.50",
+          "outputPer1M": "￥75.00",
+          "note": "分组倍率 5"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "企业极速｜一key调用全模型",
+          "inputPer1M": "￥13.75",
+          "outputPer1M": "￥82.50",
+          "note": "分组倍率 5.5"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "A-Claude/GPT-svip 极速通道",
+          "inputPer1M": "￥17.00",
+          "outputPer1M": "￥102.00",
+          "note": "分组倍率 6.8"
         },
         {
           "name": "GPT-5.3-Codex",
+          "group": "Codex-gpt",
           "inputPer1M": "￥1.40",
           "outputPer1M": "￥11.20",
-          "note": "最低可用分组为「Codex-gpt」，倍率 0.8"
+          "note": "分组倍率 0.8"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "Claude-code稳定",
+          "inputPer1M": "￥1.75",
+          "outputPer1M": "￥14.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "az",
+          "inputPer1M": "￥2.63",
+          "outputPer1M": "￥21.00",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "中转低价｜一key调用全模型",
+          "inputPer1M": "￥3.50",
+          "outputPer1M": "￥28.00",
+          "note": "分组倍率 2"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "gpt-vip",
+          "inputPer1M": "￥6.13",
+          "outputPer1M": "￥49.00",
+          "note": "分组倍率 3.5"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "gpt-openai",
+          "inputPer1M": "￥8.75",
+          "outputPer1M": "￥70.00",
+          "note": "分组倍率 5"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "A-Claude/GPT-svip 极速通道",
+          "inputPer1M": "￥11.90",
+          "outputPer1M": "￥95.20",
+          "note": "分组倍率 6.8"
         },
         {
           "name": "Gemini-3.1-Pro",
+          "group": "低价福利 | 波动临时资源",
           "inputPer1M": "￥1.60",
           "outputPer1M": "￥9.60",
-          "note": "对应 gemini-3.1-pro-preview；最低可用分组为「低价福利 | 波动临时资源」，倍率 0.8"
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 0.8"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "Gemini",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥12.00",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 1"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "Claude-code优质",
+          "inputPer1M": "￥3.60",
+          "outputPer1M": "￥21.60",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 1.8"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "Gemini-折扣临时",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥24.00",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 2"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "中转低价｜一key调用全模型",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥24.00",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 2"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "Gemini-优质临时分组",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥36.00",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 3"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "gemini-号池",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥36.00",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 3"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "Openrouter",
+          "inputPer1M": "￥7.00",
+          "outputPer1M": "￥42.00",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 3.5"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "企业极速｜一key调用全模型",
+          "inputPer1M": "￥11.00",
+          "outputPer1M": "￥66.00",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 5.5"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "A-Claude/GPT-svip 极速通道",
+          "inputPer1M": "￥13.60",
+          "outputPer1M": "￥81.60",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 6.8"
         },
         {
           "name": "Gemini-3-Flash",
+          "group": "低价福利 | 波动临时资源",
           "inputPer1M": "￥0.40",
           "outputPer1M": "￥2.40",
-          "note": "对应 gemini-3-flash-preview；最低可用分组为「低价福利 | 波动临时资源」，倍率 0.8"
+          "note": "对应 gemini-3-flash-preview；分组倍率 0.8"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "Gemini",
+          "inputPer1M": "￥0.50",
+          "outputPer1M": "￥3.00",
+          "note": "对应 gemini-3-flash-preview；分组倍率 1"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "Claude-code优质",
+          "inputPer1M": "￥0.90",
+          "outputPer1M": "￥5.40",
+          "note": "对应 gemini-3-flash-preview；分组倍率 1.8"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "Gemini-折扣临时",
+          "inputPer1M": "￥1.00",
+          "outputPer1M": "￥6.00",
+          "note": "对应 gemini-3-flash-preview；分组倍率 2"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "中转低价｜一key调用全模型",
+          "inputPer1M": "￥1.00",
+          "outputPer1M": "￥6.00",
+          "note": "对应 gemini-3-flash-preview；分组倍率 2"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "Gemini-优质临时分组",
+          "inputPer1M": "￥1.50",
+          "outputPer1M": "￥9.00",
+          "note": "对应 gemini-3-flash-preview；分组倍率 3"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "gemini-号池",
+          "inputPer1M": "￥1.50",
+          "outputPer1M": "￥9.00",
+          "note": "对应 gemini-3-flash-preview；分组倍率 3"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "Openrouter",
+          "inputPer1M": "￥1.75",
+          "outputPer1M": "￥10.50",
+          "note": "对应 gemini-3-flash-preview；分组倍率 3.5"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "企业极速｜一key调用全模型",
+          "inputPer1M": "￥2.75",
+          "outputPer1M": "￥16.50",
+          "note": "对应 gemini-3-flash-preview；分组倍率 5.5"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "A-Claude/GPT-svip 极速通道",
+          "inputPer1M": "￥3.40",
+          "outputPer1M": "￥20.40",
+          "note": "对应 gemini-3-flash-preview；分组倍率 6.8"
         },
         {
           "name": "GLM-5.1",
+          "group": "glm",
           "inputPer1M": "￥6.40",
           "outputPer1M": "￥44.80",
-          "note": "最低可用分组为「glm」，倍率 0.8"
+          "note": "分组倍率 0.8"
+        },
+        {
+          "name": "GLM-5.1",
+          "group": "中转低价｜一key调用全模型",
+          "inputPer1M": "￥16.00",
+          "outputPer1M": "￥112.00",
+          "note": "分组倍率 2"
+        },
+        {
+          "name": "GLM-5.1",
+          "group": "企业极速｜一key调用全模型",
+          "inputPer1M": "￥44.00",
+          "outputPer1M": "￥308.00",
+          "note": "分组倍率 5.5"
         },
         {
           "name": "GLM-5",
+          "group": "glm",
           "inputPer1M": "￥4.80",
           "outputPer1M": "￥17.76",
-          "note": "最低可用分组为「glm」，倍率 0.8"
+          "note": "分组倍率 0.8"
+        },
+        {
+          "name": "GLM-5",
+          "group": "qwen千问",
+          "inputPer1M": "￥4.80",
+          "outputPer1M": "￥17.76",
+          "note": "分组倍率 0.8"
+        },
+        {
+          "name": "GLM-5",
+          "group": "中转低价｜一key调用全模型",
+          "inputPer1M": "￥12.00",
+          "outputPer1M": "￥44.40",
+          "note": "分组倍率 2"
+        },
+        {
+          "name": "GLM-5",
+          "group": "企业极速｜一key调用全模型",
+          "inputPer1M": "￥33.00",
+          "outputPer1M": "￥122.10",
+          "note": "分组倍率 5.5"
         },
         {
           "name": "Kimi-K2.5",
+          "group": "kimi",
           "inputPer1M": "￥2.40",
           "outputPer1M": "￥12.60",
-          "note": "最低可用分组为「kimi」，倍率 0.6"
+          "note": "分组倍率 0.6"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "qwen千问",
+          "inputPer1M": "￥3.20",
+          "outputPer1M": "￥16.80",
+          "note": "分组倍率 0.8"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "中转低价｜一key调用全模型",
+          "inputPer1M": "￥8.00",
+          "outputPer1M": "￥42.00",
+          "note": "分组倍率 2"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "企业极速｜一key调用全模型",
+          "inputPer1M": "￥22.00",
+          "outputPer1M": "￥115.50",
+          "note": "分组倍率 5.5"
         },
         {
           "name": "DeepSeek-V3.2",
+          "group": "Deepseek",
           "inputPer1M": "￥1.60",
           "outputPer1M": "￥2.40",
-          "note": "最低可用分组为「Deepseek」，倍率 0.8"
+          "note": "分组倍率 0.8"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "qwen千问",
+          "inputPer1M": "￥1.60",
+          "outputPer1M": "￥2.40",
+          "note": "分组倍率 0.8"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "中转低价｜一key调用全模型",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥6.00",
+          "note": "分组倍率 2"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "企业极速｜一key调用全模型",
+          "inputPer1M": "￥11.00",
+          "outputPer1M": "￥16.50",
+          "note": "分组倍率 5.5"
         },
         {
           "name": "Qwen-3.6-Plus",
+          "group": "qwen千问",
           "inputPer1M": "￥6.40",
           "outputPer1M": "￥38.40",
-          "note": "对应 qwen3.6-plus；最低可用分组为「qwen千问」，倍率 0.8"
+          "note": "对应 qwen3.6-plus；分组倍率 0.8"
+        },
+        {
+          "name": "Qwen-3.6-Plus",
+          "group": "中转低价｜一key调用全模型",
+          "inputPer1M": "￥16.00",
+          "outputPer1M": "￥96.00",
+          "note": "对应 qwen3.6-plus；分组倍率 2"
+        },
+        {
+          "name": "Qwen-3.6-Plus",
+          "group": "企业极速｜一key调用全模型",
+          "inputPer1M": "￥44.00",
+          "outputPer1M": "￥264.00",
+          "note": "对应 qwen3.6-plus；分组倍率 5.5"
         },
         {
           "name": "Qwen-3.5",
+          "group": "qwen千问",
           "inputPer1M": "￥1.60",
           "outputPer1M": "￥9.60",
-          "note": "对应 qwen3.5-plus；最低可用分组为「qwen千问」，倍率 0.8"
+          "note": "对应 qwen3.5-plus；分组倍率 0.8"
+        },
+        {
+          "name": "Qwen-3.5",
+          "group": "中转低价｜一key调用全模型",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥24.00",
+          "note": "对应 qwen3.5-plus；分组倍率 2"
+        },
+        {
+          "name": "Qwen-3.5",
+          "group": "企业极速｜一key调用全模型",
+          "inputPer1M": "￥11.00",
+          "outputPer1M": "￥66.00",
+          "note": "对应 qwen3.5-plus；分组倍率 5.5"
         }
       ],
       "notes": "人民币充值汇率 1:1，即 1 人民币充值到账 1 美元额度。\n分组会影响可用模型与价格。\n模型价格请以 https://xy.poloapi.com/pricing为准。"
@@ -323,7 +795,7 @@
     "name": "OfoxAI",
     "homeUrl": "https://ofox.ai/zh",
     "pricingUrl": "https://ofox.ai/zh/models",
-    "updatedAt": "2026.04.16",
+    "updatedAt": "2026.04.17",
     "matrix": {
       "rating": {
         "stars": 4,
@@ -361,72 +833,84 @@
       "keyModels": [
         {
           "name": "Opus-4.6",
+          "group": "-",
           "inputPer1M": "$5.00",
           "outputPer1M": "$25.00",
           "note": ""
         },
         {
           "name": "Sonnet-4.6",
+          "group": "-",
           "inputPer1M": "$3.00",
           "outputPer1M": "$15.00",
           "note": ""
         },
         {
           "name": "GPT-5.4",
+          "group": "-",
           "inputPer1M": "$2.50",
           "outputPer1M": "$15.00",
           "note": ""
         },
         {
           "name": "GPT-5.3-Codex",
+          "group": "-",
           "inputPer1M": "$1.75",
           "outputPer1M": "$14.00",
           "note": ""
         },
         {
           "name": "Gemini-3.1-Pro",
+          "group": "-",
           "inputPer1M": "$2.00",
           "outputPer1M": "$12.00",
           "note": ""
         },
         {
           "name": "Gemini-3-Flash",
+          "group": "-",
           "inputPer1M": "$0.50",
           "outputPer1M": "$3.00",
           "note": ""
         },
         {
           "name": "GLM-5.1",
+          "group": "-",
           "inputPer1M": "$1.40",
           "outputPer1M": "$4.40",
           "note": ""
         },
         {
           "name": "GLM-5",
+          "group": "-",
           "inputPer1M": "$1.00",
           "outputPer1M": "$3.20",
           "note": ""
         },
         {
           "name": "MiniMax-M2.7",
+          "group": "-",
           "inputPer1M": "$0.30",
           "outputPer1M": "$1.20",
           "note": ""
         },
         {
           "name": "MiniMax-M2.5",
+          "group": "-",
           "inputPer1M": "$0.30",
           "outputPer1M": "$1.20",
           "note": ""
         },
         {
           "name": "Kimi-K2.5",
+          "group": "-",
           "inputPer1M": "$0.60",
           "outputPer1M": "$3.00",
           "note": ""
         },
         {
           "name": "DeepSeek-V3.2",
+          "group": "-",
           "inputPer1M": "$0.29",
           "outputPer1M": "$0.43",
           "note": ""
@@ -440,7 +924,7 @@
     "name": "N1N",
     "homeUrl": "https://n1n.ai",
     "pricingUrl": "https://api.n1n.ai/pricing",
-    "updatedAt": "2026.04.16",
+    "updatedAt": "2026.04.17",
     "matrix": {
       "rating": {
         "stars": 4,
@@ -477,81 +961,472 @@
       "keyModels": [
         {
           "name": "Opus-4.6",
+          "group": "default",
           "inputPer1M": "￥5.00",
           "outputPer1M": "￥25.00",
-          "note": "对应 claude-opus-4-6；最低可用分组为「default」，倍率 1"
+          "note": "对应 claude-opus-4-6；分组倍率 1"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "特价 Claude Code",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥30.00",
+          "note": "对应 claude-opus-4-6；分组倍率 1.2"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "逆向",
+          "inputPer1M": "￥7.00",
+          "outputPer1M": "￥35.00",
+          "note": "对应 claude-opus-4-6；分组倍率 1.4"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "官转克劳德1",
+          "inputPer1M": "￥20.00",
+          "outputPer1M": "￥100.00",
+          "note": "对应 claude-opus-4-6；分组倍率 4"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "Claude Code专属",
+          "inputPer1M": "￥25.00",
+          "outputPer1M": "￥125.00",
+          "note": "对应 claude-opus-4-6；分组倍率 5"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "官转克劳德2",
+          "inputPer1M": "￥30.00",
+          "outputPer1M": "￥150.00",
+          "note": "对应 claude-opus-4-6；分组倍率 6"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "official_Claude",
+          "inputPer1M": "￥40.00",
+          "outputPer1M": "￥200.00",
+          "note": "对应 claude-opus-4-6；分组倍率 8"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "官转克劳德3",
+          "inputPer1M": "￥60.00",
+          "outputPer1M": "￥300.00",
+          "note": "对应 claude-opus-4-6；分组倍率 12"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "直连克劳德",
+          "inputPer1M": "￥80.00",
+          "outputPer1M": "￥400.00",
+          "note": "对应 claude-opus-4-6；分组倍率 16"
         },
         {
           "name": "Sonnet-4.6",
+          "group": "default",
           "inputPer1M": "￥3.00",
           "outputPer1M": "￥15.00",
-          "note": "对应 claude-sonnet-4-6；最低可用分组为「default」，倍率 1"
+          "note": "对应 claude-sonnet-4-6；分组倍率 1"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "特价 Claude Code",
+          "inputPer1M": "￥3.60",
+          "outputPer1M": "￥18.00",
+          "note": "对应 claude-sonnet-4-6；分组倍率 1.2"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "逆向",
+          "inputPer1M": "￥4.20",
+          "outputPer1M": "￥21.00",
+          "note": "对应 claude-sonnet-4-6；分组倍率 1.4"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "官转克劳德1",
+          "inputPer1M": "￥12.00",
+          "outputPer1M": "￥60.00",
+          "note": "对应 claude-sonnet-4-6；分组倍率 4"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "Claude Code专属",
+          "inputPer1M": "￥15.00",
+          "outputPer1M": "￥75.00",
+          "note": "对应 claude-sonnet-4-6；分组倍率 5"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "官转克劳德2",
+          "inputPer1M": "￥18.00",
+          "outputPer1M": "￥90.00",
+          "note": "对应 claude-sonnet-4-6；分组倍率 6"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "official_Claude",
+          "inputPer1M": "￥24.00",
+          "outputPer1M": "￥120.00",
+          "note": "对应 claude-sonnet-4-6；分组倍率 8"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "官转克劳德3",
+          "inputPer1M": "￥36.00",
+          "outputPer1M": "￥180.00",
+          "note": "对应 claude-sonnet-4-6；分组倍率 12"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "直连克劳德",
+          "inputPer1M": "￥48.00",
+          "outputPer1M": "￥240.00",
+          "note": "对应 claude-sonnet-4-6；分组倍率 16"
         },
         {
           "name": "GPT-5.4",
+          "group": "限时特价",
           "inputPer1M": "￥1.50",
           "outputPer1M": "￥9.00",
-          "note": "最低可用分组为「限时特价」，倍率 0.6"
+          "note": "分组倍率 0.6"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "Codex专属",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥12.00",
+          "note": "分组倍率 0.8"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "default",
+          "inputPer1M": "￥2.50",
+          "outputPer1M": "￥15.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "逆向",
+          "inputPer1M": "￥3.50",
+          "outputPer1M": "￥21.00",
+          "note": "分组倍率 1.4"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "纯AZ",
+          "inputPer1M": "￥3.75",
+          "outputPer1M": "￥22.50",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "官转",
+          "inputPer1M": "￥7.50",
+          "outputPer1M": "￥45.00",
+          "note": "分组倍率 3"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "官转OpenAI",
+          "inputPer1M": "￥15.00",
+          "outputPer1M": "￥90.00",
+          "note": "分组倍率 6"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "优质官转OpenAI",
+          "inputPer1M": "￥20.00",
+          "outputPer1M": "￥120.00",
+          "note": "分组倍率 8"
         },
         {
           "name": "GPT-5.3-Codex",
+          "group": "Codex专属",
           "inputPer1M": "￥1.40",
           "outputPer1M": "￥11.20",
-          "note": "最低可用分组为「Codex专属」，倍率 0.8"
+          "note": "分组倍率 0.8"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "官转",
+          "inputPer1M": "￥5.25",
+          "outputPer1M": "￥42.00",
+          "note": "分组倍率 3"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "官转OpenAI",
+          "inputPer1M": "￥10.50",
+          "outputPer1M": "￥84.00",
+          "note": "分组倍率 6"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "优质官转OpenAI",
+          "inputPer1M": "￥14.00",
+          "outputPer1M": "￥112.00",
+          "note": "分组倍率 8"
         },
         {
           "name": "Gemini-3.1-Pro",
+          "group": "gemini-cli",
           "inputPer1M": "￥1.60",
           "outputPer1M": "￥9.60",
-          "note": "对应 gemini-3.1-pro-preview；最低可用分组为「gemini-cli」，倍率 0.8"
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 0.8"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "优质gemini",
+          "inputPer1M": "￥3.00",
+          "outputPer1M": "￥18.00",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 1.5"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "官转gemini",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥36.00",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 3"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "优质官转gemini",
+          "inputPer1M": "￥12.00",
+          "outputPer1M": "￥72.00",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 6"
         },
         {
           "name": "Gemini-3-Flash",
+          "group": "gemini-cli",
           "inputPer1M": "￥0.40",
           "outputPer1M": "￥2.40",
-          "note": "对应 gemini-3-flash-preview；最低可用分组为「gemini-cli」，倍率 0.8"
+          "note": "对应 gemini-3-flash-preview；分组倍率 0.8"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "优质gemini",
+          "inputPer1M": "￥0.75",
+          "outputPer1M": "￥4.50",
+          "note": "对应 gemini-3-flash-preview；分组倍率 1.5"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "官转gemini",
+          "inputPer1M": "￥1.50",
+          "outputPer1M": "￥9.00",
+          "note": "对应 gemini-3-flash-preview；分组倍率 3"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "优质官转gemini",
+          "inputPer1M": "￥3.00",
+          "outputPer1M": "￥18.00",
+          "note": "对应 gemini-3-flash-preview；分组倍率 6"
+        },
+        {
+          "name": "GLM-5.1",
+          "group": "纯AZ",
+          "inputPer1M": "￥9.00",
+          "outputPer1M": "￥36.00",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "GLM-5.1",
+          "group": "官转",
+          "inputPer1M": "￥18.00",
+          "outputPer1M": "￥72.00",
+          "note": "分组倍率 3"
         },
         {
           "name": "GLM-5",
+          "group": "default",
           "inputPer1M": "￥4.00",
           "outputPer1M": "￥18.00",
-          "note": "最低可用分组为「default」，倍率 1"
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "GLM-5",
+          "group": "企业级高可用大模型",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥18.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "GLM-5",
+          "group": "纯AZ",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥27.00",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "GLM-5",
+          "group": "官转",
+          "inputPer1M": "￥12.00",
+          "outputPer1M": "￥54.00",
+          "note": "分组倍率 3"
         },
         {
           "name": "MiniMax-M2.7",
+          "group": "default",
           "inputPer1M": "￥2.10",
           "outputPer1M": "￥8.40",
-          "note": "最低可用分组为「default」，倍率 1"
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "MiniMax-M2.7",
+          "group": "企业级高可用大模型",
+          "inputPer1M": "￥2.10",
+          "outputPer1M": "￥8.40",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "MiniMax-M2.7",
+          "group": "纯AZ",
+          "inputPer1M": "￥3.15",
+          "outputPer1M": "￥12.60",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "MiniMax-M2.7",
+          "group": "官转",
+          "inputPer1M": "￥6.30",
+          "outputPer1M": "￥25.20",
+          "note": "分组倍率 3"
         },
         {
           "name": "MiniMax-M2.5",
+          "group": "default",
           "inputPer1M": "￥2.10",
           "outputPer1M": "￥8.40",
-          "note": "最低可用分组为「default」，倍率 1"
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "MiniMax-M2.5",
+          "group": "企业级高可用大模型",
+          "inputPer1M": "￥2.10",
+          "outputPer1M": "￥8.40",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "MiniMax-M2.5",
+          "group": "纯AZ",
+          "inputPer1M": "￥3.15",
+          "outputPer1M": "￥12.60",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "MiniMax-M2.5",
+          "group": "官转",
+          "inputPer1M": "￥6.30",
+          "outputPer1M": "￥25.20",
+          "note": "分组倍率 3"
         },
         {
           "name": "Kimi-K2.5",
+          "group": "default",
           "inputPer1M": "￥4.00",
           "outputPer1M": "￥21.00",
-          "note": "对应 kimi-k2.5；最低可用分组为「default」，倍率 1"
+          "note": "对应 kimi-k2.5；分组倍率 1"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "企业级高可用大模型",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥21.00",
+          "note": "对应 kimi-k2.5；分组倍率 1"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "纯AZ",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥31.50",
+          "note": "对应 kimi-k2.5；分组倍率 1.5"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "官转",
+          "inputPer1M": "￥12.00",
+          "outputPer1M": "￥63.00",
+          "note": "对应 kimi-k2.5；分组倍率 3"
         },
         {
           "name": "DeepSeek-V3.2",
+          "group": "限时特价",
           "inputPer1M": "￥1.20",
           "outputPer1M": "￥1.80",
-          "note": "最低可用分组为「限时特价」，倍率 0.6"
+          "note": "分组倍率 0.6"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "default",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥3.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "企业级高可用大模型",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥3.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "纯AZ",
+          "inputPer1M": "￥3.00",
+          "outputPer1M": "￥4.50",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "官转",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥9.00",
+          "note": "分组倍率 3"
         },
         {
           "name": "Qwen-3.6-Plus",
+          "group": "纯AZ",
           "inputPer1M": "￥3.00",
           "outputPer1M": "￥18.00",
-          "note": "对应 qwen3.6-plus；最低可用分组为「纯AZ」，倍率 1.5"
+          "note": "对应 qwen3.6-plus；分组倍率 1.5"
+        },
+        {
+          "name": "Qwen-3.6-Plus",
+          "group": "官转",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥36.00",
+          "note": "对应 qwen3.6-plus；分组倍率 3"
         },
         {
           "name": "Qwen-3.5",
+          "group": "default",
           "inputPer1M": "￥0.80",
           "outputPer1M": "￥4.80",
-          "note": "对应 qwen3.5-plus；最低可用分组为「default」，倍率 1"
+          "note": "对应 qwen3.5-plus；分组倍率 1"
+        },
+        {
+          "name": "Qwen-3.5",
+          "group": "企业级高可用大模型",
+          "inputPer1M": "￥0.80",
+          "outputPer1M": "￥4.80",
+          "note": "对应 qwen3.5-plus；分组倍率 1"
+        },
+        {
+          "name": "Qwen-3.5",
+          "group": "纯AZ",
+          "inputPer1M": "￥1.20",
+          "outputPer1M": "￥7.20",
+          "note": "对应 qwen3.5-plus；分组倍率 1.5"
+        },
+        {
+          "name": "Qwen-3.5",
+          "group": "官转",
+          "inputPer1M": "￥2.40",
+          "outputPer1M": "￥14.40",
+          "note": "对应 qwen3.5-plus；分组倍率 3"
         }
       ],
       "notes": "人民币充值汇率 1:1，即 1 人民币充值到账 1 美元额度。\n分组会影响可用模型与价格。\n模型价格请以 https://api.n1n.ai/pricing为准。"
@@ -562,7 +1437,7 @@
     "name": "DMXAPI",
     "homeUrl": "https://dmxapi.cn",
     "pricingUrl": "https://rmb.dmxapi.cn",
-    "updatedAt": "2026.04.16",
+    "updatedAt": "2026.04.17",
     "matrix": {
       "rating": {
         "stars": 3,
@@ -599,72 +1474,84 @@
       "keyModels": [
         {
           "name": "GPT-5.4",
+          "group": "-",
           "inputPer1M": "￥18.25",
           "outputPer1M": "￥109.50",
           "note": ""
         },
         {
           "name": "GPT-5.3-Codex",
+          "group": "-",
           "inputPer1M": "￥12.78",
           "outputPer1M": "￥102.20",
           "note": ""
         },
         {
           "name": "Gemini-3.1-Pro",
+          "group": "-",
           "inputPer1M": "￥14.60",
           "outputPer1M": "￥87.60",
           "note": ""
         },
         {
           "name": "Gemini-3-Flash",
+          "group": "-",
           "inputPer1M": "￥3.65",
           "outputPer1M": "￥21.90",
           "note": ""
         },
         {
           "name": "GLM-5.1",
+          "group": "-",
           "inputPer1M": "￥8.00",
           "outputPer1M": "￥28.00",
           "note": ""
         },
         {
           "name": "GLM-5",
+          "group": "-",
           "inputPer1M": "￥4.00",
           "outputPer1M": "￥18.00",
           "note": ""
         },
         {
           "name": "MiniMax-M2.7",
+          "group": "-",
           "inputPer1M": "￥2.10",
           "outputPer1M": "￥8.40",
           "note": ""
         },
         {
           "name": "MiniMax-M2.5",
+          "group": "-",
           "inputPer1M": "￥2.10",
           "outputPer1M": "￥8.40",
           "note": ""
         },
         {
           "name": "Kimi-K2.5",
+          "group": "-",
           "inputPer1M": "￥4.00",
           "outputPer1M": "￥21.00",
           "note": ""
         },
         {
           "name": "DeepSeek-V3.2",
+          "group": "-",
           "inputPer1M": "￥2.00",
           "outputPer1M": "￥3.00",
           "note": ""
         },
         {
           "name": "Qwen-3.6-Plus",
+          "group": "-",
           "inputPer1M": "￥2.00",
           "outputPer1M": "￥12.00",
           "note": ""
         },
         {
           "name": "Qwen-3.5",
+          "group": "-",
           "inputPer1M": "￥0.80",
           "outputPer1M": "￥4.80",
           "note": "对应 qwen3.5-plus"
@@ -678,7 +1565,7 @@
     "name": "LLM Hub",
     "homeUrl": "https://www.llmhub.com.cn/",
     "pricingUrl": "https://www.llmhub.com.cn/pricing",
-    "updatedAt": "2026.04.16",
+    "updatedAt": "2026.04.17",
     "matrix": {
       "rating": {
         "stars": 4,
@@ -716,84 +1603,98 @@
       "keyModels": [
         {
           "name": "Opus-4.6",
+          "group": "-",
           "inputPer1M": "￥42.00",
           "outputPer1M": "￥210.00",
           "note": ""
         },
         {
           "name": "Sonnet-4.6",
+          "group": "-",
           "inputPer1M": "￥25.20",
           "outputPer1M": "￥126.00",
           "note": ""
         },
         {
           "name": "GPT-5.4",
+          "group": "-",
           "inputPer1M": "￥18.25",
           "outputPer1M": "￥109.50",
           "note": ""
         },
         {
           "name": "GPT-5.3-Codex",
+          "group": "-",
           "inputPer1M": "￥14.69",
           "outputPer1M": "￥117.53",
           "note": ""
         },
         {
           "name": "Gemini-3.1-Pro",
+          "group": "-",
           "inputPer1M": "￥16.80",
           "outputPer1M": "￥100.80",
           "note": ""
         },
         {
           "name": "Gemini-3-Flash",
+          "group": "-",
           "inputPer1M": "￥4.20",
           "outputPer1M": "￥25.20",
           "note": ""
         },
         {
           "name": "GLM-5",
+          "group": "-",
           "inputPer1M": "￥4.00",
           "outputPer1M": "￥18.00",
           "note": ""
         },
         {
           "name": "MiniMax-M2.7",
+          "group": "-",
           "inputPer1M": "￥2.10",
           "outputPer1M": "￥8.40",
           "note": ""
         },
         {
           "name": "MiniMax-M2.5",
+          "group": "-",
           "inputPer1M": "￥2.10",
           "outputPer1M": "￥8.40",
           "note": ""
         },
         {
           "name": "Kimi-K2.5",
+          "group": "-",
           "inputPer1M": "￥4.00",
           "outputPer1M": "￥21.00",
           "note": ""
         },
         {
           "name": "DeepSeek-V3.2",
+          "group": "-",
           "inputPer1M": "￥2.00",
           "outputPer1M": "￥3.00",
           "note": ""
         },
         {
           "name": "Qwen-3.6-Plus",
+          "group": "-",
           "inputPer1M": "￥2.00",
           "outputPer1M": "￥12.00",
           "note": ""
         },
         {
           "name": "Qwen-3.5",
+          "group": "-",
           "inputPer1M": "￥0.56",
           "outputPer1M": "￥3.36",
           "note": "对应 qwen3.5-plus"
         },
         {
           "name": "Doubao-Seed-2.0-Code",
+          "group": "-",
           "inputPer1M": "￥3.20",
           "outputPer1M": "￥16.00",
           "note": "对应 doubao-seed-2.0-code-preview"
@@ -807,7 +1708,7 @@
     "name": "Poe",
     "homeUrl": "https://poe.com/",
     "pricingUrl": "https://poe.com/api/models",
-    "updatedAt": "2026.04.16",
+    "updatedAt": "2026.04.17",
     "matrix": {
       "rating": {
         "stars": 4,
@@ -845,66 +1746,77 @@
       "keyModels": [
         {
           "name": "Opus-4.6",
+          "group": "-",
           "inputPer1M": "$4.30",
           "outputPer1M": "$21.00",
           "note": ""
         },
         {
           "name": "Sonnet-4.6",
+          "group": "-",
           "inputPer1M": "$2.60",
           "outputPer1M": "$13.00",
           "note": ""
         },
         {
           "name": "GPT-5.4",
+          "group": "-",
           "inputPer1M": "$2.30",
           "outputPer1M": "$14.00",
           "note": ""
         },
         {
           "name": "GPT-5.3-Codex",
+          "group": "-",
           "inputPer1M": "$1.60",
           "outputPer1M": "$13.00",
           "note": ""
         },
         {
           "name": "Gemini-3.1-Pro",
+          "group": "-",
           "inputPer1M": "$2.00",
           "outputPer1M": "$12.00",
           "note": "对应 gemini-3.1-pro"
         },
         {
           "name": "Gemini-3-Flash",
+          "group": "-",
           "inputPer1M": "$0.40",
           "outputPer1M": "$2.40",
           "note": "对应 gemini-3-flash"
         },
         {
           "name": "GLM-5",
+          "group": "-",
           "inputPer1M": "$1.00",
           "outputPer1M": "$3.20",
           "note": ""
         },
         {
           "name": "MiniMax-M2.7",
+          "group": "-",
           "inputPer1M": "$0.30",
           "outputPer1M": "$1.20",
           "note": ""
         },
         {
           "name": "MiniMax-M2.5",
+          "group": "-",
           "inputPer1M": "$0.30",
           "outputPer1M": "$1.20",
           "note": ""
         },
         {
           "name": "Kimi-K2.5",
+          "group": "-",
           "inputPer1M": "$0.61",
           "outputPer1M": "$3.00",
           "note": ""
         },
         {
           "name": "DeepSeek-V3.2",
+          "group": "-",
           "inputPer1M": "$0.27",
           "outputPer1M": "$0.40",
           "note": ""
