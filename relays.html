@@ -188,6 +188,79 @@
             color: var(--text-tertiary);
         }
 
+        .matrix-filter-item--slider {
+            min-width: 240px;
+            grid-column: span 2;
+        }
+
+        .price-slider-container {
+            padding: 8px 0 0;
+        }
+
+        .price-slider {
+            position: relative;
+            height: 24px;
+            margin: 10px 0;
+        }
+
+        .slider-track {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            transform: translateY(-50%);
+        }
+
+        .slider-range {
+            position: absolute;
+            top: 50%;
+            height: 6px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 4px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .slider-thumb {
+            position: absolute;
+            top: 50%;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border: 2px solid #6366f1;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: grab;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        .slider-thumb:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider-thumb:active {
+            cursor: grabbing;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .slider-values {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4px;
+        }
+
+        .slider-value {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
         .section-info {
             margin: -6px 0 14px;
             font-size: 13px;
@@ -971,7 +1044,7 @@
         <!-- 模型价格对比矩阵 -->
         <div class="model-matrix-section">
             <h2 class="section-title">模型价格对比</h2>
-            <div class="section-info">按 detail.keyModels 展开为“每个模型在每个平台各一行”的价格明细表。支持中转站多选、模型名多选、输入/输出价格区间筛选，以及按模型、平台、输入价格、输出价格排序；排序和区间筛选会按 relays-config.json 中配置的汇率折合成人民币后计算，显示仍保留原币种。</div>
+            <div class="section-info">按 detail.keyModels 展开为“每个模型在每个平台各一行”的价格明细表。支持平台多选、模型多选、输入/输出价格滑块筛选；排序仅保留输入价格和输出价格两列，且会按 relays-config.json 中配置的汇率折合成人民币后计算，显示仍保留原币种。</div>
             <div class="matrix-filter-bar" id="modelMatrixFilterBar"></div>
             <div class="matrix-wrapper" id="modelMatrixWrapper">
                 <div class="loading-state">加载中...</div>
@@ -1024,6 +1097,14 @@
         let modelMatrixResizeObserver = null;
         let modelMatrixRelayoutFrame = 0;
         let lastModelMatrixWrapperWidth = 0;
+        const modelPriceSliderIdPrefix = {
+            input: 'modelInputPrice',
+            output: 'modelOutputPrice'
+        };
+        const modelPriceSliders = {
+            input: { min: 0, max: 1, minValue: 0, maxValue: 1 },
+            output: { min: 0, max: 1, minValue: 0, maxValue: 1 }
+        };
 
         function getMatrixDimensionValueType(dim) {
             const rawType = dim && typeof dim.valueType === 'string' ? dim.valueType.trim() : '';
@@ -1177,6 +1258,133 @@
             });
 
             return rows;
+        }
+
+        function getModelPriceValues(kind) {
+            const valueKey = kind === 'output' ? 'outputNormalizedValue' : 'inputNormalizedValue';
+            return modelMatrixData.map(row => row[valueKey]).filter(v => Number.isFinite(v));
+        }
+
+        function getModelPriceBounds(kind) {
+            const values = getModelPriceValues(kind);
+            if (!values.length) return { min: 0, max: 1 };
+
+            const min = Math.floor(Math.min(...values) * 100) / 100;
+            let max = Math.ceil(Math.max(...values) * 100) / 100;
+            if (max <= min) {
+                max = min + 1;
+            }
+            return { min, max };
+        }
+
+        function formatModelSliderPrice(value) {
+            if (!Number.isFinite(value)) return '￥0';
+            const rounded = Math.round(value * 100) / 100;
+            const text = Number.isInteger(rounded) ? String(rounded) : rounded.toFixed(2).replace(/0+$/, '').replace(/\.$/, '');
+            return `￥${text}`;
+        }
+
+        function initModelPriceSlider(kind) {
+            const prefix = modelPriceSliderIdPrefix[kind];
+            if (!prefix) return;
+
+            const bounds = getModelPriceBounds(kind);
+            const slider = modelPriceSliders[kind];
+            slider.minValue = bounds.min;
+            slider.maxValue = bounds.max;
+
+            const currentMin = Number.isFinite(slider.min) ? Math.max(bounds.min, Math.min(slider.min, bounds.max)) : bounds.min;
+            const currentMax = Number.isFinite(slider.max) ? Math.max(bounds.min, Math.min(slider.max, bounds.max)) : bounds.max;
+
+            updateModelPriceSliderVisuals(kind, currentMin, currentMax);
+            addModelPriceSliderDragEvents(kind);
+        }
+
+        function updateModelPriceSliderVisuals(kind, minVal, maxVal) {
+            const slider = modelPriceSliders[kind];
+            const prefix = modelPriceSliderIdPrefix[kind];
+            const span = slider.maxValue - slider.minValue || 1;
+            const clampedMin = Math.max(slider.minValue, Math.min(Number(minVal), slider.maxValue));
+            const clampedMax = Math.max(slider.minValue, Math.min(Number(maxVal), slider.maxValue));
+            const nextMin = Math.min(clampedMin, clampedMax);
+            const nextMax = Math.max(clampedMin, clampedMax);
+            const minPercent = ((nextMin - slider.minValue) / span) * 100;
+            const maxPercent = ((nextMax - slider.minValue) / span) * 100;
+
+            const minThumb = document.getElementById(`${prefix}SliderMin`);
+            const maxThumb = document.getElementById(`${prefix}SliderMax`);
+            const range = document.getElementById(`${prefix}SliderRange`);
+            const minValueEl = document.getElementById(`${prefix}MinValue`);
+            const maxValueEl = document.getElementById(`${prefix}MaxValue`);
+
+            if (minThumb) minThumb.style.left = `${minPercent}%`;
+            if (maxThumb) maxThumb.style.left = `${maxPercent}%`;
+            if (range) {
+                range.style.left = `${minPercent}%`;
+                range.style.width = `${maxPercent - minPercent}%`;
+            }
+            if (minValueEl) minValueEl.textContent = formatModelSliderPrice(nextMin);
+            if (maxValueEl) maxValueEl.textContent = formatModelSliderPrice(nextMax);
+
+            slider.min = nextMin;
+            slider.max = nextMax;
+            if (kind === 'input') {
+                modelMatrixFilterState.inputMin = nextMin;
+                modelMatrixFilterState.inputMax = nextMax;
+            } else {
+                modelMatrixFilterState.outputMin = nextMin;
+                modelMatrixFilterState.outputMax = nextMax;
+            }
+        }
+
+        function addModelPriceSliderDragEvents(kind) {
+            const prefix = modelPriceSliderIdPrefix[kind];
+            const minThumb = document.getElementById(`${prefix}SliderMin`);
+            const maxThumb = document.getElementById(`${prefix}SliderMax`);
+            const trackHost = minThumb ? minThumb.parentElement : null;
+            if (!minThumb || !maxThumb || !trackHost) return;
+
+            let isDragging = null;
+
+            const handleDrag = (e) => {
+                if (isDragging === null) return;
+                const pointX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+                const rect = trackHost.getBoundingClientRect();
+                const percent = Math.max(0, Math.min(100, ((pointX - rect.left) / rect.width) * 100));
+                const slider = modelPriceSliders[kind];
+                const span = slider.maxValue - slider.minValue || 1;
+                const value = slider.minValue + (percent / 100) * span;
+                const roundedValue = Math.round(value * 100) / 100;
+
+                if (isDragging === 'min') {
+                    updateModelPriceSliderVisuals(kind, Math.min(roundedValue, slider.max), slider.max);
+                } else {
+                    updateModelPriceSliderVisuals(kind, slider.min, Math.max(roundedValue, slider.min));
+                }
+                applyModelMatrixFilters();
+            };
+
+            const stopDrag = () => {
+                isDragging = null;
+                document.removeEventListener('mousemove', handleDrag);
+                document.removeEventListener('mouseup', stopDrag);
+                document.removeEventListener('touchmove', handleDrag);
+                document.removeEventListener('touchend', stopDrag);
+            };
+
+            const startDrag = (type) => (e) => {
+                e.preventDefault();
+                isDragging = type;
+                document.addEventListener('mousemove', handleDrag);
+                document.addEventListener('mouseup', stopDrag);
+                document.addEventListener('touchmove', handleDrag);
+                document.addEventListener('touchend', stopDrag);
+            };
+
+            minThumb.addEventListener('mousedown', startDrag('min'));
+            minThumb.addEventListener('touchstart', startDrag('min'), { passive: false });
+            maxThumb.addEventListener('mousedown', startDrag('max'));
+            maxThumb.addEventListener('touchstart', startDrag('max'), { passive: false });
         }
 
         function getMultiSelectButtonText(selectedValues, allValues) {
@@ -1477,28 +1685,42 @@
             bar.innerHTML = `
                 <div class="matrix-filter-grid">
                     <div class="matrix-filter-item">
-                        <label>中转站</label>
+                        <label>平台</label>
                         ${renderMultiSelectControl('model_relays', relayNames, selectedRelayNames, 'model-relay-multi')}
                     </div>
                     <div class="matrix-filter-item">
-                        <label>模型名</label>
+                        <label>模型</label>
                         ${renderMultiSelectControl('model_names', modelOptions, selectedModelNames, 'model-name-multi')}
                     </div>
-                    <div class="matrix-filter-item">
-                        <label for="modelInputMin">输入价最低（折￥）</label>
-                        <input id="modelInputMin" data-model-filter-key="inputMin" type="number" inputmode="decimal" min="0" step="0.01" value="${escapeHtml(modelMatrixFilterState.inputMin)}" placeholder="不限">
+                    <div class="matrix-filter-item matrix-filter-item--slider">
+                        <label>输入价格（折￥）</label>
+                        <div class="price-slider-container">
+                            <div class="price-slider">
+                                <div class="slider-track"></div>
+                                <div class="slider-range" id="modelInputPriceSliderRange"></div>
+                                <div class="slider-thumb" id="modelInputPriceSliderMin"></div>
+                                <div class="slider-thumb" id="modelInputPriceSliderMax"></div>
+                            </div>
+                            <div class="slider-values">
+                                <span class="slider-value" id="modelInputPriceMinValue">￥0</span>
+                                <span class="slider-value" id="modelInputPriceMaxValue">￥0</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="matrix-filter-item">
-                        <label for="modelInputMax">输入价最高（折￥）</label>
-                        <input id="modelInputMax" data-model-filter-key="inputMax" type="number" inputmode="decimal" min="0" step="0.01" value="${escapeHtml(modelMatrixFilterState.inputMax)}" placeholder="不限">
-                    </div>
-                    <div class="matrix-filter-item">
-                        <label for="modelOutputMin">输出价最低（折￥）</label>
-                        <input id="modelOutputMin" data-model-filter-key="outputMin" type="number" inputmode="decimal" min="0" step="0.01" value="${escapeHtml(modelMatrixFilterState.outputMin)}" placeholder="不限">
-                    </div>
-                    <div class="matrix-filter-item">
-                        <label for="modelOutputMax">输出价最高（折￥）</label>
-                        <input id="modelOutputMax" data-model-filter-key="outputMax" type="number" inputmode="decimal" min="0" step="0.01" value="${escapeHtml(modelMatrixFilterState.outputMax)}" placeholder="不限">
+                    <div class="matrix-filter-item matrix-filter-item--slider">
+                        <label>输出价格（折￥）</label>
+                        <div class="price-slider-container">
+                            <div class="price-slider">
+                                <div class="slider-track"></div>
+                                <div class="slider-range" id="modelOutputPriceSliderRange"></div>
+                                <div class="slider-thumb" id="modelOutputPriceSliderMin"></div>
+                                <div class="slider-thumb" id="modelOutputPriceSliderMax"></div>
+                            </div>
+                            <div class="slider-values">
+                                <span class="slider-value" id="modelOutputPriceMinValue">￥0</span>
+                                <span class="slider-value" id="modelOutputPriceMaxValue">￥0</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="matrix-filter-head">
@@ -1554,25 +1776,26 @@
                 });
             });
 
-            bar.querySelectorAll('[data-model-filter-key]').forEach(el => {
-                el.addEventListener('input', () => {
-                    const key = el.getAttribute('data-model-filter-key');
-                    modelMatrixFilterState[key] = el.value || '';
-                    applyModelMatrixFilters();
-                });
-            });
+            initModelPriceSlider('input');
+            initModelPriceSlider('output');
 
             const resetBtn = bar.querySelector('#modelMatrixFilterResetBtn');
             if (resetBtn) {
                 resetBtn.addEventListener('click', () => {
+                    const inputBounds = getModelPriceBounds('input');
+                    const outputBounds = getModelPriceBounds('output');
                     modelMatrixFilterState = {
                         relay: [],
                         model: [],
-                        inputMin: '',
-                        inputMax: '',
-                        outputMin: '',
-                        outputMax: ''
+                        inputMin: inputBounds.min,
+                        inputMax: inputBounds.max,
+                        outputMin: outputBounds.min,
+                        outputMax: outputBounds.max
                     };
+                    modelPriceSliders.input.min = inputBounds.min;
+                    modelPriceSliders.input.max = inputBounds.max;
+                    modelPriceSliders.output.min = outputBounds.min;
+                    modelPriceSliders.output.max = outputBounds.max;
                     renderModelMatrixFilterBar();
                     applyModelMatrixFilters();
                 });
