@@ -1711,6 +1711,130 @@
     }
   },
   {
+    "id": "pincc",
+    "name": "Pincc",
+    "homeUrl": "https://shop.pincc.ai/",
+    "pricingUrl": "https://shop.pincc.ai/pricing",
+    "updatedAt": "2026.04.18",
+    "matrix": {
+      "rating": {
+        "stars": 4,
+        "text": "• 明显偏向 Claude Code、Codex 等编程场景\n• 渠道倍率与充值规则公开，选对分组时性价比不错\n• 覆盖面不算综合型最全，但对写代码用户比较对口"
+      },
+      "type": "混合多分组",
+      "price": {
+        "stars": 4,
+        "text": "• 充值 1:1 到美元额度，按渠道倍率扣费\n• Kiro、Codex Team、Gemini 等分组价格有优势\n• Claude Max、AWS Bedrock 等高质量渠道价格会高不少"
+      },
+      "authenticity": {
+        "stars": 4,
+        "text": "• 官网公开列出渠道、倍率、支持模型和部分特性\n• 购买页也写明 1:1 充值与倍率解释\n• 最终单价基本能从官方价和倍率直接推导"
+      },
+      "modelCoverage": {
+        "stars": 3,
+        "text": "• 主要覆盖 Claude、Codex、Gemini 三条线\n• Claude 渠道最丰富，Codex 和 Gemini 也有独立分组\n• 国产模型和泛用聚合覆盖少于综合型平台"
+      },
+      "availability": {
+        "stars": 3,
+        "text": "• 宣传多节点与智能路由，基础连通性面向国内用户优化\n• 不同渠道稳定性差异明显，需要按分组切换\n• 购买页提示近期 Claude 风控较严，实际波动要留意"
+      },
+      "convenience": {
+        "stars": 4,
+        "text": "• 支持微信支付，人民币充值到账户额度\n• 余额所有渠道通用，切组不用重新充值\n• 购买激活码后还要去控制台兑换，多一步操作"
+      },
+      "tags": [
+        "Claude Code",
+        "Codex",
+        "Gemini",
+        "人民币充值",
+        "分组渠道"
+      ]
+    },
+    "detail": {
+      "description": "Pincc 是面向开发者的 AI 编程中转平台，购买激活码后在控制台兑换，即可按兼容接口接入 Claude、GPT Codex 与 Gemini 等模型。\n平台核心是按渠道区分的倍率体系，公开展示各分组名称、倍率、支持模型和部分特性；同一账户余额可在不同渠道间切换，但不同渠道的价格、可用性与能力差异较大。",
+      "keyModels": [
+        {
+          "name": "Opus-4.6",
+          "group": "Kiro企业版",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥20.00",
+          "note": "分组倍率 0.8"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "CC-反重力逆向",
+          "inputPer1M": "￥5.00",
+          "outputPer1M": "￥25.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "Claude Max",
+          "inputPer1M": "￥10.50",
+          "outputPer1M": "￥52.50",
+          "note": "分组倍率 2.1"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "AWS Bedrock",
+          "inputPer1M": "￥25.00",
+          "outputPer1M": "￥125.00",
+          "note": "分组倍率 5"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "Kiro标准版",
+          "inputPer1M": "￥1.50",
+          "outputPer1M": "￥7.50",
+          "note": "分组倍率 0.5"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "Kiro企业版",
+          "inputPer1M": "￥2.40",
+          "outputPer1M": "￥12.00",
+          "note": "分组倍率 0.8"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "CC-反重力逆向",
+          "inputPer1M": "￥3.00",
+          "outputPer1M": "￥15.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "Codex(Team)",
+          "inputPer1M": "￥0.75",
+          "outputPer1M": "￥4.50",
+          "note": "分组倍率 0.3"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "Codex(GPT PRO)",
+          "inputPer1M": "￥1.05",
+          "outputPer1M": "￥8.40",
+          "note": "分组倍率 0.6"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "Gemini官方",
+          "inputPer1M": "￥1.20",
+          "outputPer1M": "￥7.20",
+          "note": "对应 gemini-3-pro-preview；分组倍率 0.6"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "Gemini官方",
+          "inputPer1M": "￥0.30",
+          "outputPer1M": "￥1.80",
+          "note": "对应 gemini-3-flash-preview；分组倍率 0.6"
+        }
+      ],
+      "notes": "模型渠道、倍率与功能请以 https://shop.pincc.ai/pricing 为准。\n充值比例为 1:1，余额所有渠道通用；获取激活码后需前往 https://v2.pincc.ai 兑换。\n近期 Claude 渠道风控与退款规则请以购买页 notice 和平台公告为准。"
+    }
+  },
+  {
     "id": "poe",
     "name": "Poe",
     "homeUrl": "https://poe.com/",
