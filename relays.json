@@ -1835,6 +1835,137 @@
     }
   },
   {
+    "id": "packyapi",
+    "name": "PackyAPI",
+    "homeUrl": "https://www.packyapi.com/",
+    "pricingUrl": "https://www.packyapi.com/pricing",
+    "updatedAt": "2026.04.18",
+    "matrix": {
+      "rating": {
+        "stars": 4,
+        "text": "• 明显偏向 Claude Code、Codex、Gemini CLI 等开发场景\n• 官网、文档与控制台路径清楚，适合有一定经验的开发者\n• 分组选择门槛略高，但选对后价格与体验都有空间"
+      },
+      "type": "混合多分组",
+      "price": {
+        "stars": 4,
+        "text": "• 价格页同时展示现价、原价和分组，折扣口径相对直观\n• codex、bailian 等分组价格有优势，officially 与 slb 组更贵\n• 最终实扣强依赖令牌分组，不能只看模型名"
+      },
+      "authenticity": {
+        "stars": 4,
+        "text": "• 官网价格页直接给出当前价格、原价与 token group\n• 文档明确写了倍率含义和 1:1 充值规则\n• 仍是多分组平台，实际体验要结合分组限制一起看"
+      },
+      "modelCoverage": {
+        "stars": 4,
+        "text": "• 当前公开页可见 40+ 模型，覆盖 OpenAI、Anthropic、Google、智谱、阿里等\n• 主流编程向模型和国内常用模型都比较全\n• 某些分组只开放部分模型，需要到模型广场确认"
+      },
+      "availability": {
+        "stars": 4,
+        "text": "• 官网强调统一网关、智能调度与多区域节点\n• Claude、Gemini、Codex 各有对应分组，便于按场景切换\n• 低价组与特殊渠道稳定性会弱于官方或企业号池"
+      },
+      "convenience": {
+        "stars": 4,
+        "text": "• 支持人民币在线充值，当前文档写明 1:1 到美元额度\n• 单域名、单密钥、OpenAI 兼容，CLI 文档较完整\n• 创建令牌时必须选对分组，否则容易出现模型不可用"
+      },
+      "tags": [
+        "Claude Code",
+        "Codex",
+        "Gemini",
+        "人民币充值",
+        "分组渠道"
+      ]
+    },
+    "detail": {
+      "description": "PackyAPI 是面向开发者的统一大模型接口网关，提供兼容 OpenAI 的单域名 / 单密钥接入，也专门给出了 Claude Code、Codex、Gemini CLI 的配置文档。\n平台核心是令牌分组 + 模型倍率体系：同一站点覆盖 Claude、GPT、Gemini、GLM、Qwen、Kimi、MiniMax 等模型，但不同分组在价格、稳定性和第三方接入限制上差异明显，创建令牌时需要按用途选对分组。",
+      "keyModels": [
+        {
+          "name": "Opus-4.6",
+          "group": "cc",
+          "inputPer1M": "￥12.50",
+          "outputPer1M": "￥62.50",
+          "note": "分组倍率 2.5"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "cc",
+          "inputPer1M": "￥7.50",
+          "outputPer1M": "￥37.50",
+          "note": "分组倍率 2.5"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "codex",
+          "inputPer1M": "￥1.25",
+          "outputPer1M": "￥7.50",
+          "note": "分组倍率 0.5"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "codex",
+          "inputPer1M": "￥0.875",
+          "outputPer1M": "￥7.00",
+          "note": "分组倍率 0.5"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "gemini-slb",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥36.00",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 3"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "gemini-slb",
+          "inputPer1M": "￥1.50",
+          "outputPer1M": "￥9.00",
+          "note": "对应 gemini-3-flash-preview；分组倍率 3"
+        },
+        {
+          "name": "GLM-5",
+          "group": "bailian",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥9.00",
+          "note": "分组倍率 0.5"
+        },
+        {
+          "name": "MiniMax-M2.7",
+          "group": "bailian",
+          "inputPer1M": "￥1.05",
+          "outputPer1M": "￥4.20",
+          "note": "分组倍率 0.5"
+        },
+        {
+          "name": "MiniMax-M2.5",
+          "group": "bailian",
+          "inputPer1M": "￥1.05",
+          "outputPer1M": "￥4.20",
+          "note": "分组倍率 0.5"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "bailian",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥10.50",
+          "note": "分组倍率 0.5"
+        },
+        {
+          "name": "Qwen-3.6-Plus",
+          "group": "bailian",
+          "inputPer1M": "￥1.00",
+          "outputPer1M": "￥6.00",
+          "note": "分组倍率 0.5"
+        },
+        {
+          "name": "Qwen-3.5",
+          "group": "bailian",
+          "inputPer1M": "￥0.40",
+          "outputPer1M": "￥2.40",
+          "note": "对应 qwen3.5-plus；分组倍率 0.5"
+        }
+      ],
+      "notes": "模型、分组与现价请以 https://www.packyapi.com/pricing 为准。\n充值比例目前为 1:1，即 1 元人民币同等于 1 美元额度；分组倍率规则见 https://docs.packyapi.com/docs/token/ 。\nCC、Codex、Gemini 等分组的第三方接入限制不同，建令牌前建议先看官方分组说明。"
+    }
+  },
+  {
     "id": "poe",
     "name": "Poe",
     "homeUrl": "https://poe.com/",
