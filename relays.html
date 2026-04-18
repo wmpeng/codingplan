@@ -1976,6 +1976,13 @@
             if (raw === '免费' || raw === '$0.00' || raw === '￥0.00') {
                 return '<span class="price-free">免费</span>';
             }
+            const parsed = parsePriceValue(raw);
+            if (parsed.currency && parsed.currency !== '￥' && Number.isFinite(parsed.amount)) {
+                const normalized = normalizeModelPrice(parsed.amount, parsed.currency);
+                if (Number.isFinite(normalized)) {
+                    return `<span class="price-token">￥${normalized.toFixed(2)}(${escapeHtml(parsed.raw)})</span>`;
+                }
+            }
             return `<span class="price-token">${escapeHtml(raw)}</span>`;
         }
 
