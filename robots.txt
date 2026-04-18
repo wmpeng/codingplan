@@ -3,8 +3,7 @@ Allow: /
 
 # Block non-public project folders/files
 Disallow: /.git/
-Disallow: /.dev/
-Disallow: /.agent_instructions/
+Disallow: /dev/
 Disallow: /node_modules/
 
 Sitemap: https://vibecoding.dreamfree.space/sitemap.xml
