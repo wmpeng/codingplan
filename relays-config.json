@@ -2,8 +2,8 @@
   "header": {
     "title": "API 中转站对比",
     "updateDate": "更新日期 2026.4.17",
-    "subtitle": "对比 OpenRouter 等 API 中转平台，价格、真实性、模型覆盖、可用性、支付便捷性等，帮助用户快速选择",
-    "info": "",
+    "subtitle": "对比各 API 中转平台，价格、真实性、模型覆盖、可用性、支付便捷性等，帮助用户快速选择",
+    "info": "“平台快速对比”可以快速查看平台综合情况。“模型价格对比”可以快速根据想要使用的模型，挑选平台。“平台详细介绍”查看每个平台的具体情况。",
     "github": {
       "url": "https://github.com/wmpeng/codingplan",
       "text": "GitHub"
@@ -12,7 +12,7 @@
   "sections": {
     "matrixTitle": "平台快速对比",
     "modelMatrixTitle": "模型价格对比",
-    "modelMatrixInfo": "按 detail.keyModels 展开为“每个模型按平台 × 分组各一行”的价格明细表。多分组平台会展开全部分组，无分组平台的分组列显示为 -。默认只显示每个平台每个模型最便宜的分组，可在筛选区取消勾选查看全部分组。支持平台多选、模型多选、输入/输出价格滑块筛选；排序仅保留输入价格和输出价格两列，且会按 relays-config.json 中配置的汇率折合成人民币后计算，显示仍保留原币种。",
+    "modelMatrixInfo": "筛选想要使用的模型后，可查看每个平台的价格。",
     "detailTitle": "平台详细介绍",
     "detailDescriptionTitle": "产品简介",
     "detailPricingTitle": "代表模型定价（部分示例）",
