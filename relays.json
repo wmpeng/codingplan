@@ -1711,6 +1711,53 @@
     }
   },
   {
+    "id": "aigocode",
+    "name": "Ai Go Code",
+    "homeUrl": "https://www.aigocode.com/",
+    "pricingUrl": "https://www.aigocode.com/pricing",
+    "updatedAt": "2026.04.18",
+    "matrix": {
+      "rating": {
+        "stars": 4,
+        "text": "• 明显偏向 Claude Code、Gemini CLI、Codex 等 AI 编程场景\n• 文档和接入路径清楚，上手成本低\n• 公开价格透明度一般，模型级单价要到控制台内再确认"
+      },
+      "type": "平台封装聚合",
+      "price": {
+        "stars": 3,
+        "text": "• 公开页主打订阅套餐、周额度和灵活额度，不直接展开模型单价\n• 灵活额度当前按 ¥1 充值到账 $1 API credits\n• 套餐用户还能拿到全站 API 计费约 9 折到 84 折不等优惠"
+      },
+      "authenticity": {
+        "stars": 3,
+        "text": "• 订阅、灵活额度、退款和 credits 规则在公开页能确认\n• 但模型级计费表未对未登录用户完整公开\n• 适合先看套餐逻辑，再到控制台核实实扣"
+      },
+      "modelCoverage": {
+        "stars": 3,
+        "text": "• 公开文档明确支持 Claude Code、Gemini CLI、Codex 和多种第三方工具\n• 至少覆盖 Claude、GPT、Gemini 三条主线\n• 国产模型和完整模型清单在公开页上不够透明"
+      },
+      "availability": {
+        "stars": 4,
+        "text": "• 官网强调 99.9% 服务稳定性和编程工作台体验\n• 支持统一管理任务、额度与团队协作\n• 实际可用性仍建议结合自己常用模型做试用"
+      },
+      "convenience": {
+        "stars": 5,
+        "text": "• 文档直接给出 Claude、Gemini、Codex 的环境变量和配置文件示例\n• API Key、Base URL 和控制台路径清楚\n• 同时支持订阅额度和按量 credits，适合个人和小团队"
+      },
+      "tags": [
+        "AI 编程",
+        "订阅套餐",
+        "灵活额度",
+        "Claude Code",
+        "Codex",
+        "Gemini CLI"
+      ]
+    },
+    "detail": {
+      "description": "Ai Go Code 是面向开发者的 AI 编程工作台，同时提供统一 API 网关，可把 Claude Code、Gemini CLI、Codex 等工具接到同一个平台。\n公开文档显示其统一入口为 https://api.aigocode.com，并提供控制台 API Key、订阅周额度和按量 API credits；但未登录页面暂未完整公开模型级价表，因此更适合按“工作台 + 平台封装计费”理解。",
+      "keyModels": [],
+      "notes": "公开页当前主要展示订阅套餐、周额度、灵活额度与接入文档；模型级价格请以登录后控制台/账单说明为准。\n灵活额度当前按 ¥1 充值到账 $1 API credits；订阅套餐会在全站 API 计费上额外给出约 9 折、86 折、84 折等优惠。\nClaude Code / Gemini CLI / Codex 等接入方式请以 https://www.aigocode.com/docs 为准。"
+    }
+  },
+  {
     "id": "pincc",
     "name": "Pincc",
     "homeUrl": "https://shop.pincc.ai/",
