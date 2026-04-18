@@ -1979,11 +1979,11 @@
       "type": "平台封装聚合",
       "price": {
         "stars": 4,
-        "text": "• Level 0 按公开基准价计费，累计充值后会自动解锁更低折扣\n• OpenAI 与 Gemini 系列高等级最低约 5 折，Claude 系列最低约 6 折\n• 不需要手动选分组，但最终实付仍和用户等级强相关"
+        "text": "• 当前对比表按 Level 1 并按 provider 展开非零线路，累计充值 $1 就会自动升级\n• 同一模型在不同 provider 下价差可能明显，低价线路和默认线路要分开看\n• 产品形态仍是统一封装平台，但价格理解上已经接近多上游对表"
       },
       "authenticity": {
         "stars": 4,
-        "text": "• 官网公开模型价表、版本号和等级权益表\n• 价格口径基本能由基准价和等级折扣直接推导\n• 具体上游厂商很多，内部调度细节不会完全展开"
+        "text": "• 官网公开模型价表、版本号、等级权益和 provider 维度价格\n• 价格口径基本能由 provider 基准价和等级折扣直接推导\n• default、官方上游与 cli2api 等线路可以直接横向核对"
       },
       "modelCoverage": {
         "stars": 4,
@@ -1995,7 +1995,7 @@
       },
       "convenience": {
         "stars": 4,
-        "text": "• 控制台、API Key、文档和价格页分工清楚，上手路径短\n• 同时兼容 OpenAI、Anthropic、Gemini 三类协议\n• 免费模型、等级体系和供应商入口都在同一平台里管理"
+        "text": "• 控制台、API Key、文档和价格页分工清楚，上手路径短\n• 同时兼容 OpenAI、Anthropic、Gemini 三类协议\n• 官网价表会展开不同 provider，适合愿意自己对表的人"
       },
       "tags": [
         "免费模型",
@@ -2006,80 +2006,241 @@
       ]
     },
     "detail": {
-      "description": "Poixe AI 是统一大模型 API 聚合平台，普通用户登录控制台创建 API Key 后，即可通过兼容接口调用 GPT、Claude、Gemini、DeepSeek、Qwen、Kimi 等模型，也可以申请成为供应商回收闲置资源。\n平台采用“公开基准价 + 用户等级折扣”的封装计费方式，同时兼容 OpenAI、Anthropic 与 Gemini 协议，并提供免费模型用于接入验证，不需要像多分组站那样手动切换渠道。",
+      "description": "Poixe AI 是统一大模型 API 聚合平台，普通用户登录控制台创建 API Key 后，即可通过兼容接口调用 GPT、Claude、Gemini、DeepSeek、Qwen、Kimi 等模型，也可以申请成为供应商回收闲置资源。\n平台采用“公开基准价 + 用户等级折扣 + provider 线路展开”的封装计费方式，同时兼容 OpenAI、Anthropic 与 Gemini 协议，并提供免费模型用于接入验证；官网价表会把 default、openai、cli2api、aliyun 等 provider 分开列出，但产品形态仍比显式售卖分组的平台更统一。",
       "keyModels": [
         {
           "name": "Opus-4.6",
-          "group": "-",
-          "inputPer1M": "$5.00",
-          "outputPer1M": "$25.00",
+          "group": "cli2api",
+          "inputPer1M": "$2.50",
+          "outputPer1M": "$12.50",
+          "note": ""
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "anthropic",
+          "inputPer1M": "$4.00",
+          "outputPer1M": "$20.00",
+          "note": ""
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "aws",
+          "inputPer1M": "$4.00",
+          "outputPer1M": "$20.00",
+          "note": ""
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "default",
+          "inputPer1M": "$4.00",
+          "outputPer1M": "$20.00",
           "note": ""
         },
         {
           "name": "Sonnet-4.6",
-          "group": "-",
-          "inputPer1M": "$3.00",
-          "outputPer1M": "$15.00",
+          "group": "cli2api",
+          "inputPer1M": "$1.50",
+          "outputPer1M": "$7.50",
+          "note": "免费分组 claude_code"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "anthropic",
+          "inputPer1M": "$2.40",
+          "outputPer1M": "$12.00",
+          "note": ""
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "aws",
+          "inputPer1M": "$2.40",
+          "outputPer1M": "$12.00",
+          "note": ""
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "default",
+          "inputPer1M": "$2.40",
+          "outputPer1M": "$12.00",
           "note": ""
         },
         {
           "name": "GPT-5.4",
-          "group": "-",
-          "inputPer1M": "$2.50",
-          "outputPer1M": "$15.00",
+          "group": "cli2api",
+          "inputPer1M": "$1.25",
+          "outputPer1M": "$7.50",
+          "note": ""
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "default",
+          "inputPer1M": "$2.00",
+          "outputPer1M": "$12.00",
+          "note": ""
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "openai",
+          "inputPer1M": "$2.00",
+          "outputPer1M": "$12.00",
           "note": ""
         },
         {
           "name": "GPT-5.3-Codex",
-          "group": "-",
-          "inputPer1M": "$1.75",
-          "outputPer1M": "$14.00",
+          "group": "cli2api",
+          "inputPer1M": "$0.875",
+          "outputPer1M": "$7.00",
+          "note": "免费分组 codex"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "default",
+          "inputPer1M": "$1.40",
+          "outputPer1M": "$11.20",
+          "note": ""
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "openai",
+          "inputPer1M": "$1.40",
+          "outputPer1M": "$11.20",
           "note": ""
         },
         {
           "name": "Gemini-3.1-Pro",
-          "group": "-",
-          "inputPer1M": "$2.00",
-          "outputPer1M": "$12.00",
+          "group": "default",
+          "inputPer1M": "$1.60",
+          "outputPer1M": "$9.60",
+          "note": "对应 gemini-3.1-pro-preview"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "google",
+          "inputPer1M": "$1.60",
+          "outputPer1M": "$9.60",
           "note": "对应 gemini-3.1-pro-preview"
         },
         {
           "name": "Gemini-3-Flash",
-          "group": "-",
-          "inputPer1M": "$0.50",
-          "outputPer1M": "$3.00",
+          "group": "default",
+          "inputPer1M": "$0.40",
+          "outputPer1M": "$2.40",
+          "note": "对应 gemini-3-flash-preview；免费分组 small_cup"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "google",
+          "inputPer1M": "$0.40",
+          "outputPer1M": "$2.40",
           "note": "对应 gemini-3-flash-preview"
         },
         {
           "name": "Kimi-K2.5",
-          "group": "-",
-          "inputPer1M": "$0.55",
-          "outputPer1M": "$2.19",
+          "group": "aliyun",
+          "inputPer1M": "$0.44",
+          "outputPer1M": "$1.752",
+          "note": "对应 kimi-k2"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "chutes",
+          "inputPer1M": "$0.44",
+          "outputPer1M": "$1.752",
+          "note": "对应 kimi-k2"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "default",
+          "inputPer1M": "$0.44",
+          "outputPer1M": "$1.752",
+          "note": "对应 kimi-k2；免费分组 small_cup"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "moonshot",
+          "inputPer1M": "$0.44",
+          "outputPer1M": "$1.752",
+          "note": "对应 kimi-k2"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "siliconflow",
+          "inputPer1M": "$0.44",
+          "outputPer1M": "$1.752",
           "note": "对应 kimi-k2"
         },
         {
           "name": "DeepSeek-V3.2",
-          "group": "-",
-          "inputPer1M": "$0.029",
-          "outputPer1M": "$0.435",
+          "group": "deepseek",
+          "inputPer1M": "$0.023",
+          "outputPer1M": "$0.348",
+          "note": "对应 deepseek-chat"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "default",
+          "inputPer1M": "$0.023",
+          "outputPer1M": "$0.348",
+          "note": "对应 deepseek-chat；免费分组 small_cup"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "aliyun",
+          "inputPer1M": "$0.216",
+          "outputPer1M": "$0.88",
+          "note": "对应 deepseek-chat"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "chutes",
+          "inputPer1M": "$0.216",
+          "outputPer1M": "$0.88",
+          "note": "对应 deepseek-chat"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "siliconflow",
+          "inputPer1M": "$0.216",
+          "outputPer1M": "$0.88",
+          "note": "对应 deepseek-chat"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "volcengine",
+          "inputPer1M": "$0.216",
+          "outputPer1M": "$0.88",
           "note": "对应 deepseek-chat"
         },
         {
           "name": "Qwen-3.6-Plus",
-          "group": "-",
-          "inputPer1M": "$0.33",
-          "outputPer1M": "$1.32",
+          "group": "aliyun",
+          "inputPer1M": "$0.264",
+          "outputPer1M": "$1.056",
           "note": "对应 qwen-max"
         },
         {
+          "name": "Qwen-3.6-Plus",
+          "group": "default",
+          "inputPer1M": "$0.264",
+          "outputPer1M": "$1.056",
+          "note": "对应 qwen-max；免费分组 large_cup"
+        },
+        {
           "name": "Qwen-3.5",
-          "group": "-",
-          "inputPer1M": "$0.11",
-          "outputPer1M": "$0.27",
+          "group": "aliyun",
+          "inputPer1M": "$0.088",
+          "outputPer1M": "$0.216",
           "note": "对应 qwen-plus"
+        },
+        {
+          "name": "Qwen-3.5",
+          "group": "default",
+          "inputPer1M": "$0.088",
+          "outputPer1M": "$0.216",
+          "note": "对应 qwen-plus；免费分组 small_cup"
         }
       ],
-      "notes": "模型与价格请以 https://poixe.com/pricing 为准。\n下表按 Level 0 基准价展示；Level 1 / 2 / 3 的累计充值门槛分别为 $1 / $100 / $10,000。\nOpenAI / Gemini 系列高等级最低约 5 折，Claude 系列最低约 6 折；免费模型需在模型名后追加 :free。"
+      "notes": "模型与价格请以 https://poixe.com/pricing 为准。\n下表按 Level 1 价格、并按 provider 展开所有非零线路展示；累计充值满 $1 即自动升级到 Level 1。\n同一模型在不同 provider 下价格可能不同；这里保留各条公开线路，便于按多分组风格横向对比。\nLevel 2 / 3 的累计充值门槛分别为 $100 / $10,000；不同模型的等级折扣仍以官方价表为准。\n免费模型需在模型名后追加 :free。"
     }
   },
   {
