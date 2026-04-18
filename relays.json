@@ -1966,6 +1966,123 @@
     }
   },
   {
+    "id": "poixe",
+    "name": "Poixe AI",
+    "homeUrl": "https://poixe.com/",
+    "pricingUrl": "https://poixe.com/pricing",
+    "updatedAt": "2026.04.18",
+    "matrix": {
+      "rating": {
+        "stars": 4,
+        "text": "• 是统一接口型的大模型 API 聚合平台\n• 官网定价、等级折扣、文档和状态页都比较齐全\n• 同站兼顾消费端与供应商入驻，体系比普通中转更完整"
+      },
+      "type": "平台封装聚合",
+      "price": {
+        "stars": 4,
+        "text": "• Level 0 按公开基准价计费，累计充值后会自动解锁更低折扣\n• OpenAI 与 Gemini 系列高等级最低约 5 折，Claude 系列最低约 6 折\n• 不需要手动选分组，但最终实付仍和用户等级强相关"
+      },
+      "authenticity": {
+        "stars": 4,
+        "text": "• 官网公开模型价表、版本号和等级权益表\n• 价格口径基本能由基准价和等级折扣直接推导\n• 具体上游厂商很多，内部调度细节不会完全展开"
+      },
+      "modelCoverage": {
+        "stars": 4,
+        "text": "• 覆盖 GPT、Claude、Gemini、DeepSeek、Grok、Qwen、Kimi、Doubao\n• 公开价表模型数量很多，还提供一批免费模型做接入验证\n• GLM、MiniMax 等系列暂未见核心公开位，覆盖面不算最全"
+      },
+      "availability": {
+        "stars": 4,
+        "text": "• 官网强调全球多节点、CDN 加速和高可用架构\n• 另有独立状态页与公开运行数据，整体运维信号不错\n• 实际稳定性仍会随平台内部路由和上游供应商变化"
+      },
+      "convenience": {
+        "stars": 4,
+        "text": "• 控制台、API Key、文档和价格页分工清楚，上手路径短\n• 同时兼容 OpenAI、Anthropic、Gemini 三类协议\n• 免费模型、等级体系和供应商入口都在同一平台里管理"
+      },
+      "tags": [
+        "免费模型",
+        "等级折扣",
+        "多协议",
+        "供应商入驻",
+        "OpenAI 兼容"
+      ]
+    },
+    "detail": {
+      "description": "Poixe AI 是统一大模型 API 聚合平台，普通用户登录控制台创建 API Key 后，即可通过兼容接口调用 GPT、Claude、Gemini、DeepSeek、Qwen、Kimi 等模型，也可以申请成为供应商回收闲置资源。\n平台采用“公开基准价 + 用户等级折扣”的封装计费方式，同时兼容 OpenAI、Anthropic 与 Gemini 协议，并提供免费模型用于接入验证，不需要像多分组站那样手动切换渠道。",
+      "keyModels": [
+        {
+          "name": "Opus-4.6",
+          "group": "-",
+          "inputPer1M": "$5.00",
+          "outputPer1M": "$25.00",
+          "note": ""
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "-",
+          "inputPer1M": "$3.00",
+          "outputPer1M": "$15.00",
+          "note": ""
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "-",
+          "inputPer1M": "$2.50",
+          "outputPer1M": "$15.00",
+          "note": ""
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "-",
+          "inputPer1M": "$1.75",
+          "outputPer1M": "$14.00",
+          "note": ""
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "-",
+          "inputPer1M": "$2.00",
+          "outputPer1M": "$12.00",
+          "note": "对应 gemini-3.1-pro-preview"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "-",
+          "inputPer1M": "$0.50",
+          "outputPer1M": "$3.00",
+          "note": "对应 gemini-3-flash-preview"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "-",
+          "inputPer1M": "$0.55",
+          "outputPer1M": "$2.19",
+          "note": "对应 kimi-k2"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "-",
+          "inputPer1M": "$0.029",
+          "outputPer1M": "$0.435",
+          "note": "对应 deepseek-chat"
+        },
+        {
+          "name": "Qwen-3.6-Plus",
+          "group": "-",
+          "inputPer1M": "$0.33",
+          "outputPer1M": "$1.32",
+          "note": "对应 qwen-max"
+        },
+        {
+          "name": "Qwen-3.5",
+          "group": "-",
+          "inputPer1M": "$0.11",
+          "outputPer1M": "$0.27",
+          "note": "对应 qwen-plus"
+        }
+      ],
+      "notes": "模型与价格请以 https://poixe.com/pricing 为准。\n下表按 Level 0 基准价展示；Level 1 / 2 / 3 的累计充值门槛分别为 $1 / $100 / $10,000。\nOpenAI / Gemini 系列高等级最低约 5 折，Claude 系列最低约 6 折；免费模型需在模型名后追加 :free。"
+    }
+  },
+  {
     "id": "poe",
     "name": "Poe",
     "homeUrl": "https://poe.com/",
