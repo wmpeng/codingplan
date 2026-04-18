@@ -1712,27 +1712,27 @@
   },
   {
     "id": "aigocode",
-    "name": "Ai Go Code",
+    "name": "AIGoCode",
     "homeUrl": "https://www.aigocode.com/",
     "pricingUrl": "https://www.aigocode.com/pricing",
     "updatedAt": "2026.04.18",
     "matrix": {
       "rating": {
         "stars": 4,
-        "text": "• 明显偏向 Claude Code、Gemini CLI、Codex 等 AI 编程场景\n• 文档和接入路径清楚，上手成本低\n• 公开价格透明度一般，模型级单价要到控制台内再确认"
+        "text": "• 明显偏向 Claude Code、Gemini CLI、Codex 等 AI 编程场景\n• 登录后能按分组看到 Claude、Codex、Gemini 的结算汇率\n• 对编程用户很实用，但价格维护依赖人工截图核对"
       },
-      "type": "平台封装聚合",
+      "type": "混合多分组",
       "price": {
-        "stars": 3,
-        "text": "• 公开页主打订阅套餐、周额度和灵活额度，不直接展开模型单价\n• 灵活额度当前按 ¥1 充值到账 $1 API credits\n• 套餐用户还能拿到全站 API 计费约 9 折到 84 折不等优惠"
+        "stars": 4,
+        "text": "• 模型本身仍按官方价计费，不同分组只是把 $1 成本折算成不同人民币汇率\n• 当前截图可见 Claude 6 组、Codex 1 组、Gemini 1 组\n• Claude 普通型、通用型很便宜，但稳定性和质量风险也更高"
       },
       "authenticity": {
         "stars": 3,
-        "text": "• 订阅、灵活额度、退款和 credits 规则在公开页能确认\n• 但模型级计费表未对未登录用户完整公开\n• 适合先看套餐逻辑，再到控制台核实实扣"
+        "text": "• 公开页能确认订阅、灵活额度和 credits 规则\n• 分组汇率目前主要依赖登录后价格页人工核对\n• 价目逻辑不算黑箱，但公开透明度仍弱于可机读平台"
       },
       "modelCoverage": {
         "stars": 3,
-        "text": "• 公开文档明确支持 Claude Code、Gemini CLI、Codex 和多种第三方工具\n• 至少覆盖 Claude、GPT、Gemini 三条主线\n• 国产模型和完整模型清单在公开页上不够透明"
+        "text": "• 当前可确认覆盖 Claude、GPT Codex、Gemini 三条主线\n• Claude 组明显最丰富，Codex 和 Gemini 目前各看到 1 个主分组\n• 更多模型和完整列表仍要以登录后页面为准"
       },
       "availability": {
         "stars": 4,
@@ -1740,7 +1740,7 @@
       },
       "convenience": {
         "stars": 5,
-        "text": "• 文档直接给出 Claude、Gemini、Codex 的环境变量和配置文件示例\n• API Key、Base URL 和控制台路径清楚\n• 同时支持订阅额度和按量 credits，适合个人和小团队"
+        "text": "• 文档直接给出 Claude、Gemini、Codex 的环境变量和配置文件示例\n• API Key、Base URL 和控制台路径清楚\n• 分组逻辑直观，知道自己要哪条线路后切换成本不高"
       },
       "tags": [
         "AI 编程",
@@ -1752,9 +1752,122 @@
       ]
     },
     "detail": {
-      "description": "Ai Go Code 是面向开发者的 AI 编程工作台，同时提供统一 API 网关，可把 Claude Code、Gemini CLI、Codex 等工具接到同一个平台。\n公开文档显示其统一入口为 https://api.aigocode.com，并提供控制台 API Key、订阅周额度和按量 API credits；但未登录页面暂未完整公开模型级价表，因此更适合按“工作台 + 平台封装计费”理解。",
-      "keyModels": [],
-      "notes": "公开页当前主要展示订阅套餐、周额度、灵活额度与接入文档；模型级价格请以登录后控制台/账单说明为准。\n灵活额度当前按 ¥1 充值到账 $1 API credits；订阅套餐会在全站 API 计费上额外给出约 9 折、86 折、84 折等优惠。\nClaude Code / Gemini CLI / Codex 等接入方式请以 https://www.aigocode.com/docs 为准。"
+      "description": "AIGoCode 是面向开发者的 AI 编程工作台，同时提供统一 API 网关，可把 Claude Code、Gemini CLI、Codex 等工具接到同一个平台。\n其模型价格逻辑更接近多分组平台：模型本身按官方价计费，不同分组通过“每 1 美元成本折合多少人民币”来决定最终实扣；当前公开文档能确认统一入口为 https://api.aigocode.com，分组汇率则需要登录后查看。",
+      "keyModels": [
+        {
+          "name": "Opus-4.6",
+          "group": "Claude API（备用）",
+          "inputPer1M": "￥30.00",
+          "outputPer1M": "￥150.00",
+          "note": "汇率 6 元 / 1 美元；官方 API；支持第三方调用"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "Claude API",
+          "inputPer1M": "￥19.50",
+          "outputPer1M": "￥97.50",
+          "note": "汇率 3.9 元 / 1 美元；官方 API；支持第三方调用"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "Claude Code 专用（备用）",
+          "inputPer1M": "￥14.50",
+          "outputPer1M": "￥72.50",
+          "note": "汇率 2.9 元 / 1 美元；官方原版"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "Claude Code 专用",
+          "inputPer1M": "￥11.00",
+          "outputPer1M": "￥55.00",
+          "note": "汇率 2.2 元 / 1 美元；官方原版"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "Claude 通用型（不稳定）",
+          "inputPer1M": "￥9.00",
+          "outputPer1M": "￥45.00",
+          "note": "汇率 1.8 元 / 1 美元；逆向；偶有不稳定"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "Claude 普通型（不稳定）",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥10.00",
+          "note": "汇率 0.4 元 / 1 美元；逆向；有降智风险"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "Claude API（备用）",
+          "inputPer1M": "￥18.00",
+          "outputPer1M": "￥90.00",
+          "note": "汇率 6 元 / 1 美元；官方 API；支持第三方调用"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "Claude API",
+          "inputPer1M": "￥11.70",
+          "outputPer1M": "￥58.50",
+          "note": "汇率 3.9 元 / 1 美元；官方 API；支持第三方调用"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "Claude Code 专用（备用）",
+          "inputPer1M": "￥8.70",
+          "outputPer1M": "￥43.50",
+          "note": "汇率 2.9 元 / 1 美元；官方原版"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "Claude Code 专用",
+          "inputPer1M": "￥6.60",
+          "outputPer1M": "￥33.00",
+          "note": "汇率 2.2 元 / 1 美元；官方原版"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "Claude 通用型（不稳定）",
+          "inputPer1M": "￥5.40",
+          "outputPer1M": "￥27.00",
+          "note": "汇率 1.8 元 / 1 美元；逆向；偶有不稳定"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "Claude 普通型（不稳定）",
+          "inputPer1M": "￥1.20",
+          "outputPer1M": "￥6.00",
+          "note": "汇率 0.4 元 / 1 美元；逆向；有降智风险"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "Codex",
+          "inputPer1M": "￥1.50",
+          "outputPer1M": "￥9.00",
+          "note": "汇率 0.6 元 / 1 美元；当前分组包含 ChatGPT Plus / Codex 5.3 / GPT 5.4"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "Codex",
+          "inputPer1M": "￥1.05",
+          "outputPer1M": "￥8.40",
+          "note": "汇率 0.6 元 / 1 美元；当前分组包含 ChatGPT Plus / Codex 5.3 / GPT 5.4"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "Gemini",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥12.00",
+          "note": "汇率 1 元 / 1 美元；逆向；偶有不稳定"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "Gemini",
+          "inputPer1M": "￥0.50",
+          "outputPer1M": "￥3.00",
+          "note": "汇率 1 元 / 1 美元；逆向；偶有不稳定"
+        }
+      ],
+      "notes": "当前 `detail.keyModels` 按登录后价格页截图中的分组汇率乘官方模型价折算，不是平台自定义模型单价。\n灵活额度目前仍按 ¥1 充值到账 $1 API credits；订阅套餐会在全站 API 计费上额外给出约 9 折、86 折、84 折等优惠。\nAIGoCode 的分组汇率需要登录后查看；后续更新前应先索取最新截图，再回写 Claude / Codex / Gemini 等分组。"
     }
   },
   {
