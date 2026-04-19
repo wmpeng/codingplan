@@ -2237,8 +2237,8 @@
                 return `<td${ratingCol ? ` class="${ratingCol.trim()}"` : ''}>${escapeHtmlPreserveBreaks(strVal)}</td>`;
             }
 
-            const PLATFORM_W = 140; // ── 平台列宽度
-            const TAG_W = 140;  // ── 标签列宽度
+            const PLATFORM_W = 180; // ── 平台列宽度
+            const TAG_W = 220;  // ── 标签列宽度
             const DIM_MIN = 250;  // ── 其他维度最小宽度（乘以权重后可能更宽）
             const RATING_WEIGHT = 1.2;  // ── 综合评价维度权重，其他维度默认为 1，权重越高列越宽
             const wrapperWidth = Math.round(wrapper.clientWidth || 0);
@@ -2293,8 +2293,9 @@
                     <td class="platform-label">
                         <span class="platform-name">${escapeHtml(r.name)}</span>
                         <div class="platform-actions">
-                            ${r.homeUrl ? `<a class="platform-action-btn" href="${escapeHtml(r.homeUrl)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(getRelayPageText('actions.openHomeTitle'))}">${escapeHtml(getRelayPageText('actions.home'))}${ICON_EXTERNAL}</a>` : ''}
-                            <a class="platform-action-btn" href="#relay-${escapeHtml(r.id)}" title="${escapeHtml(getRelayPageText('actions.jumpToDetailTitle'))}">${escapeHtml(getRelayPageText('actions.detail'))}${ICON_DOWN}</a>
+                            ${r.homeUrl ? `<a class="platform-action-btn" href="${escapeHtml(r.homeUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(getRelayPageText('actions.matrix.home'))}${ICON_EXTERNAL}</a>` : ''}
+                            ${r.pricingUrl ? `<a class="platform-action-btn" href="${escapeHtml(r.pricingUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(getRelayPageText('actions.matrix.pricing'))}${ICON_EXTERNAL}</a>` : ''}
+                            <a class="platform-action-btn" href="#relay-${escapeHtml(r.id)}">${escapeHtml(getRelayPageText('actions.matrix.detail'))}${ICON_DOWN}</a>
                         </div>
                     </td>
                     ${cells}
@@ -2373,8 +2374,8 @@
                             <div class="relay-card-title">
                                 <span class="relay-name-lg">${escapeHtml(relay.name)}</span>
                                 <span class="relay-card-meta">
-                                    ${relay.homeUrl ? `<a href="${escapeHtml(relay.homeUrl)}" target="_blank" class="home-link">${escapeHtml(getRelayPageText('actions.home'))} →</a>` : ''}
-                                    <a href="${escapeHtml(relay.pricingUrl)}" target="_blank" class="pricing-link">${escapeHtml(getRelayPageText('actions.pricing'))} →</a>
+                                    ${relay.homeUrl ? `<a href="${escapeHtml(relay.homeUrl)}" target="_blank" class="home-link">${escapeHtml(getRelayPageText('actions.detailCard.home'))} →</a>` : ''}
+                                    <a href="${escapeHtml(relay.pricingUrl)}" target="_blank" class="pricing-link">${escapeHtml(getRelayPageText('actions.detailCard.pricing'))} →</a>
                                     <span class="updated-at">${escapeHtml(getRelayPageText('actions.updatedAtPrefix'))}${escapeHtml(relay.updatedAt)}</span>
                                 </span>
                             </div>
