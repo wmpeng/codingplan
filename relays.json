@@ -226,32 +226,32 @@
     "homeUrl": "https://xy.poloapi.com/",
     "pricingUrl": "https://xy.poloapi.com/pricing",
     "pricingUrlForAgent": "https://xy.poloapi.com/api/pricing",
-    "updatedAt": "2026.04.17",
+    "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
-        "stars": 4,
-        "text": "• 是国内常见的大模型聚合中转平台之一\n• 人民币充值和主流海外模型支持都比较完整\n• 分组和倍率较多，上手需要花时间看清规则"
+        "stars": 3,
+        "text": "• 模型很全，低价分组也有\n• 分组、倍率多，新手容易选错路"
       },
       "type": "混合多分组",
       "price": {
         "stars": 4,
-        "text": "• 按量计费，价格受分组倍率影响明显\n• 一些分组性价比较高，能做到低于常见中转价\n• 最终价格需要按模型倍率和分组一起看"
+        "text": "• 选对分组时，常见模型能压到较低价位\n• 同模型不同组价差大，要自己会算"
       },
       "authenticity": {
         "stars": 4,
-        "text": "• 价格可通过公开接口和定价页交叉核对\n• 分组、活动与账户规则会影响最终实扣\n• 不是完全黑箱，但需要自己做一次对表"
+        "text": "• 定价页与公开接口可对上\n• 活动、分组变更多，账单要自己盯"
       },
       "modelCoverage": {
         "stars": 5,
-        "text": "• 模型数量很多，主流闭源和国产模型基本都有\n• GPT、Claude、Gemini、DeepSeek、Qwen 等都能找到\n• 具体可用模型还要看当前分组是否开放"
+        "text": "• GPT、Claude、Gemini、国产线基本都找得到\n• 是否开放取决于当前分组"
       },
       "availability": {
-        "stars": 4,
-        "text": "• 平台面向国内用户，访问和充值都比较顺畅\n• 可按站点和线路切换，适配不同网络环境\n• 个别模型仍可能受分组或上游状态影响"
+        "stars": 3,
+        "text": "• 国内访问整体还行\n• 便宜组更容易随上游波动"
       },
       "convenience": {
-        "stars": 5,
-        "text": "• 支持人民币充值\n• 常见支持微信、支付宝等本土支付方式\n• 切换分组时通常需要新建或调整令牌"
+        "stars": 4,
+        "text": "• 微信、支付宝等人民币充值方便\n• 换分组往往要新建或改令牌"
       },
       "tags": [
         "国内模型",
@@ -262,7 +262,7 @@
       ]
     },
     "detail": {
-      "description": "PoloAPI 是国内大模型 API 聚合中转平台，注册充值后创建令牌并选择分组，即可将原先指向 OpenAI 等厂商的请求改为平台中转地址调用。\n平台按分组管理模型与价格，Claude 等模型支持原生 messages 格式，具体端点与接入方式以模型广场和官方文档为准。",
+      "description": "面向国内开发者的多模型中转：充值后选分组、建令牌即可调用常见海外与国产模型。\n同一模型在不同分组价差大，适合愿意自己比价、换路的人。",
       "keyModels": [
         {
           "name": "Opus-4.6",
@@ -790,7 +790,7 @@
           "note": "对应 qwen3.5-plus；分组倍率 5.5"
         }
       ],
-      "notes": "人民币充值汇率 1:1，即 1 人民币充值到账 1 美元额度。\n分组会影响可用模型与价格。\n模型价格请以 https://xy.poloapi.com/pricing为准。"
+      "notes": "充值与额度换算以站内说明为准；分组决定可用模型与单价。\n模型与价格请以 https://xy.poloapi.com/pricing 为准。"
     }
   },
   {
@@ -798,32 +798,32 @@
     "name": "OfoxAI",
     "homeUrl": "https://ofox.ai/zh",
     "pricingUrl": "https://ofox.ai/zh/models",
-    "updatedAt": "2026.04.17",
+    "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
         "stars": 4,
-        "text": "• 是统一接口型的大模型 API 网关\n• 多协议接入和国内支付能力比较完整\n• China Zone 定位清晰，但折扣仍要看实际账单"
+        "text": "• 国内支付、多协议一站式，省心\n• 闭源模型整体仍偏「官网附近」价位"
       },
       "type": "平台封装聚合",
       "price": {
         "stars": 3,
-        "text": "• 按量付费，无月费\n• 闭源模型价格大致跟随官方，部分会做折扣\n• 开源模型折扣空间更大，实时价格以官网为准"
+        "text": "• 按量、无月费，标价相对清楚\n• 热门闭源模型别指望特别便宜"
       },
       "authenticity": {
-        "stars": 3,
-        "text": "• 官网提供 models、pricing 和 docs 多个入口\n• 模型目录和能力说明基本能交叉核对\n• 营销折扣和最终实扣仍建议对照账单确认"
+        "stars": 4,
+        "text": "• 模型页与定价可对照\n• 活动价与实扣仍以账单为准"
       },
       "modelCoverage": {
         "stars": 4,
-        "text": "• 覆盖 100+ 模型，包含部分免费模型\n• GPT、Claude、Gemini、DeepSeek 等主流系列都有\n• 具体上架情况请以模型目录实时列表为准"
+        "text": "• 主流 GPT / Claude / Gemini / DeepSeek 等都有\n• 具体以模型目录实时列表为准"
       },
       "availability": {
         "stars": 5,
-        "text": "• 提供 China Zone（中国专区）相关说明\n• 宣传中国直连和香港快线\n• 对国内用户的网络可用性相对友好"
+        "text": "• 面向国内有 China Zone、直连/快线说明\n• 整体比纯海外站好连"
       },
       "convenience": {
         "stars": 5,
-        "text": "• 支持支付宝、微信支付\n• 文档覆盖 OpenAI、Anthropic、Gemini 三类协议\n• 面向国内团队接入和协作会更省事"
+        "text": "• 微信、支付宝常见\n• 文档按 OpenAI / Anthropic / Gemini 协议拆开，迁移方便"
       },
       "tags": [
         "多协议",
@@ -833,7 +833,7 @@
       ]
     },
     "detail": {
-      "description": "OfoxAI 是统一大模型 API 网关，在标准接口下聚合多家模型服务，兼容 OpenAI、Anthropic 与 Gemini 三类协议。\n平台提供模型目录、定价页、快速开始与 OpenAPI 规范，支持流式输出、函数调用、多模态与结构化输出等能力。",
+      "description": "国内团队常用的多模型网关：一套账号里换模型、走本土支付。\n兼容常见三家协议，适合不想自己维护多条上游的人。",
       "keyModels": [
         {
           "name": "Opus-4.6",
@@ -928,32 +928,32 @@
     "name": "N1N",
     "homeUrl": "https://n1n.ai",
     "pricingUrl": "https://api.n1n.ai/pricing",
-    "updatedAt": "2026.04.17",
+    "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
-        "stars": 4,
-        "text": "• 是按分组管理渠道的大模型聚合网关\n• 倍率相对官方价的逻辑比较清楚\n• 分组很多，更适合愿意研究渠道的用户"
+        "stars": 3,
+        "text": "• 倍率计价透明，会算账能省钱\n• 分组极多，踩坑成本不低"
       },
       "type": "混合多分组",
       "price": {
         "stars": 4,
-        "text": "• 按量计费，核心是官方价乘以分组倍率\n• 同一模型在不同分组下价格可能差很多\n• 选对分组时，部分模型价格会比较有优势"
+        "text": "• 特价/Codex 等组常有惊喜价\n• 官转、直连组明显贵一档"
       },
       "authenticity": {
         "stars": 4,
-        "text": "• 定价逻辑围绕官方价和倍率展开\n• 文档说明相对清楚，基本能推导出最终价格\n• 多分组并存，透明但需要自己先看明白"
+        "text": "• 官方价×倍率，推导路径清楚\n• 渠道一多，账单要对准分组名"
       },
       "modelCoverage": {
         "stars": 4,
-        "text": "• 覆盖 GPT、Claude、Gemini、Grok 与国产模型\n• 不同分组会开放不同模型和渠道\n• 纯 AZ、官转等含义需要结合文档理解"
+        "text": "• GPT、Claude、Gemini、Grok、国产线都有\n• 每组开放的模型不同"
       },
       "availability": {
-        "stars": 4,
-        "text": "• 产品定位就是国内可用的大模型聚合网关\n• 实际稳定性会随分组和上游渠道变化\n• 具体线路与可用性以控制台说明为准"
+        "stars": 3,
+        "text": "• 面向国内，但便宜组更吃上游脸色\n• 风控期要会换组"
       },
       "convenience": {
         "stars": 4,
-        "text": "• 支持人民币充值到账户额度\n• 充值汇率 1:1，理解成本比较低\n• 新用户通常会有小额体验金活动"
+        "text": "• 人民币充值、1:1 额度好理解\n• 常有小额体验金"
       },
       "tags": [
         "倍率计价",
@@ -962,7 +962,7 @@
       ]
     },
     "detail": {
-      "description": "N1N 是按分组管理上游渠道的大模型 API 聚合网关，可将 Azure、官方直连等不同来源隔离配置和计价。\n用户在控制台选择分组与密钥后，可按 OpenAI 兼容方式调用，价格逻辑以相对官方价的倍率为主。",
+      "description": "按「分组 × 官方价倍率」计费的中转：会选组的人能压价，不会选的人容易买贵。\n适合已经能分清官转、逆向、AZ 等含义的开发者。",
       "keyModels": [
         {
           "name": "Opus-4.6",
@@ -1442,32 +1442,32 @@
     "name": "DMXAPI",
     "homeUrl": "https://dmxapi.cn",
     "pricingUrl": "https://rmb.dmxapi.cn",
-    "updatedAt": "2026.04.17",
+    "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
-        "stars": 3,
-        "text": "• 是国内常见的多模型聚合平台之一\n• 人民币含税和多币种线路是它的主要特点\n• 多站点和多套规则并存，上手门槛略高"
+        "stars": 2,
+        "text": "• 含税价、企业向，账单相对正规\n• 规则多、价目表难一眼看懂，个人玩家不友好"
       },
       "type": "平台封装聚合",
       "price": {
-        "stars": 3,
-        "text": "• 支持按 Token 与按次两类计费\n• 最终费用通常是模型价格乘用户折扣\n• 人民币站和美元线路是两套账户与规则"
+        "stars": 2,
+        "text": "• 热门模型人民币价常高于「卷低价」中转\n• 按次、缓存等规则叠加后要自己算总账"
       },
       "authenticity": {
-        "stars": 4,
-        "text": "• 文档给出了扣费公式和折扣系数\n• 含税价、折扣与多币种规则都能找到出处\n• 结构比较复杂，第一次看会有些绕"
+        "stars": 3,
+        "text": "• 文档有公式与折扣说明\n• 条目多，对账仍费神"
       },
       "modelCoverage": {
         "stars": 4,
-        "text": "• 覆盖 GPT、Claude、Gemini 与多款国产模型\n• 人民币价目表会列出厂商原价和平台含税价\n• 具体上架模型请以 rmb 价目表和 models 页面为准"
+        "text": "• GPT、Claude、Gemini、国产主流都有\n• 以价目表与模型页为准"
       },
       "availability": {
         "stars": 4,
-        "text": "• dmxapi.cn 主站面向国内用户\n• 人民币价格主要看 rmb.dmxapi.cn\n• 定价页是动态加载，外部抓取时可能不完整"
+        "text": "• 主站面向国内\n• 价目在人民币子站查看"
       },
       "convenience": {
-        "stars": 4,
-        "text": "• 支持人民币计价和充值消费\n• 企业折扣、含税价和发票信息相对明确\n• 更偏向有对账和商务需求的团队使用"
+        "stars": 3,
+        "text": "• 人民币、发票等对公友好\n• 更适合有财务流程的团队"
       },
       "tags": [
         "人民币含税",
@@ -1476,7 +1476,7 @@
       ]
     },
     "detail": {
-      "description": "DMXAPI 是国内多模型 API 聚合平台，提供人民币价目站、模型列表和文档站，常见模型可通过统一接口接入。\n平台支持按 Token 与按次等多种计费方式，缓存、音频和推理等场景还有额外的计费规则。",
+      "description": "偏企业合规向的国内聚合：人民币含税价、支持发票，模型线较全。\n计费方式多（按量、按次等），个人用户读价目成本偏高。",
       "keyModels": [
         {
           "name": "GPT-5.4",
@@ -1571,32 +1571,32 @@
     "name": "LLM Hub",
     "homeUrl": "https://www.llmhub.com.cn/",
     "pricingUrl": "https://www.llmhub.com.cn/pricing",
-    "updatedAt": "2026.04.17",
+    "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
-        "stars": 4,
-        "text": "• 是主打一站式接入的大模型聚合平台\n• OpenAI 兼容和国内支付都比较方便\n• 域名和文档入口较多，第一次接入要看仔细"
+        "stars": 3,
+        "text": "• 一站式、本土支付顺滑\n• Claude 等标价偏贵，性价比一般"
       },
       "type": "平台封装聚合",
       "price": {
-        "stars": 3,
-        "text": "• 按 Token 按量计费\n• 价格可通过公开接口和状态接口换算核对\n• 最终充值与手续费规则仍以控制台为准"
+        "stars": 2,
+        "text": "• 公开价里部分头部模型不便宜\n• 更适合要稳定开票而非极致低价的人"
       },
       "authenticity": {
         "stars": 4,
-        "text": "• 存在公开价格接口，可做程序化核对\n• 定价逻辑整体不算黑箱\n• 最终实扣仍要结合活动和账户规则复核"
+        "text": "• 有价目与接口可对\n• 活动规则仍以控制台为准"
       },
       "modelCoverage": {
         "stars": 4,
-        "text": "• 覆盖 100+ 模型，主流闭源和国产模型都有\n• GPT、Claude、Gemini、Grok 等方向都能看到\n• 实际可用模型以控制台和价格页为准"
+        "text": "• 主流闭源 + 不少国产模型\n• 以控制台与定价页为准"
       },
       "availability": {
         "stars": 5,
-        "text": "• llmhub.com.cn 是国内站点和控制台入口\n• 宣传有全球 CDN 与多节点部署\n• 对国内用户的访问体验相对友好"
+        "text": "• 国内站点 + CDN 宣传\n• 日常连通性较好"
       },
       "convenience": {
         "stars": 5,
-        "text": "• 支持微信支付、支付宝与信用卡等方式\n• 对已有 OpenAI 接入代码迁移比较省事\n• 充值和兑换码规则以当前控制台说明为准"
+        "text": "• 微信、支付宝、信用卡常见\n• OpenAI 兼容迁移成本低"
       },
       "tags": [
         "OpenAI 兼容",
@@ -1606,7 +1606,7 @@
       ]
     },
     "detail": {
-      "description": "LLM Hub 是一站式大模型聚合平台，主打 OpenAI 兼容接入，现有代码通常只需替换 Base URL 和密钥即可调用。\n平台提供国内控制台、价格页与帮助文档，部分说明分布在 .cn 主站与文档子域，接入前需要先确认当前使用的域名和密钥体系。",
+      "description": "国内一站式聚合：换 Base URL 与密钥即可沿用 OpenAI 式调用。\n价目上部分高端模型偏贵，更适合要省事、不太抠单价的团队。",
       "keyModels": [
         {
           "name": "Opus-4.6",
@@ -1707,7 +1707,7 @@
           "note": "对应 doubao-seed-2.0-code-preview"
         }
       ],
-      "notes": "模型与价格请以 https://www.llmhub.com.cn/pricing 为准。\n最终接入与扣费规则请以当前登录控制台为准。"
+      "notes": "模型与价格请以 https://www.llmhub.com.cn/pricing 为准。\n充值、活动与实扣以登录后控制台为准。"
     }
   },
   {
@@ -1715,32 +1715,32 @@
     "name": "AIGoCode",
     "homeUrl": "https://www.aigocode.com/",
     "pricingUrl": "https://www.aigocode.com/pricing",
-    "updatedAt": "2026.04.18",
+    "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
-        "stars": 4,
-        "text": "• 明显偏向 Claude Code、Gemini CLI、Codex 等 AI 编程场景\n• 登录后能按分组看到 Claude、Codex、Gemini 的结算汇率\n• 对编程用户很实用，但价格维护依赖人工截图核对"
+        "stars": 3,
+        "text": "• 编程向（Claude Code / Codex / Gemini CLI）文档全\n• 月卡与套餐偏贵，口碑里偶有稳定性波动"
       },
       "type": "混合多分组",
       "price": {
-        "stars": 4,
-        "text": "• 模型本身仍按官方价计费，不同分组只是把 $1 成本折算成不同人民币汇率\n• 当前截图可见 Claude 6 组、Codex 1 组、Gemini 1 组\n• Claude 普通型、通用型很便宜，但稳定性和质量风险也更高"
+        "stars": 3,
+        "text": "• 便宜分组能压到很低，但质量/风控风险也高\n• 订阅与「推荐线路」整体不便宜"
       },
       "authenticity": {
         "stars": 3,
-        "text": "• 公开页能确认订阅、灵活额度和 credits 规则\n• 分组汇率目前主要依赖登录后价格页人工核对\n• 价目逻辑不算黑箱，但公开透明度仍弱于可机读平台"
+        "text": "• 分组汇率多在登录后页里才能看清\n• 公开页主要讲套餐与额度规则"
       },
       "modelCoverage": {
         "stars": 3,
-        "text": "• 当前可确认覆盖 Claude、GPT Codex、Gemini 三条主线\n• Claude 组明显最丰富，Codex 和 Gemini 目前各看到 1 个主分组\n• 更多模型和完整列表仍要以登录后页面为准"
+        "text": "• 主线是 Claude、Codex、Gemini\n• 不像综合站那样铺全站模型表"
       },
       "availability": {
-        "stars": 4,
-        "text": "• 官网强调 99.9% 服务稳定性和编程工作台体验\n• 支持统一管理任务、额度与团队协作\n• 实际可用性仍建议结合自己常用模型做试用"
+        "stars": 3,
+        "text": "• 自用与社区反馈里偶有不稳\n• 建议先小额试主用模型"
       },
       "convenience": {
-        "stars": 5,
-        "text": "• 文档直接给出 Claude、Gemini、Codex 的环境变量和配置文件示例\n• API Key、Base URL 和控制台路径清楚\n• 分组逻辑直观，知道自己要哪条线路后切换成本不高"
+        "stars": 4,
+        "text": "• 环境变量与配置示例写得直白\n• 分组多，仍要花时间选对路"
       },
       "tags": [
         "AI 编程",
@@ -1752,7 +1752,7 @@
       ]
     },
     "detail": {
-      "description": "AIGoCode 是面向开发者的 AI 编程工作台，同时提供统一 API 网关，可把 Claude Code、Gemini CLI、Codex 等工具接到同一个平台。\n其模型价格逻辑更接近多分组平台：模型本身按官方价计费，不同分组通过“每 1 美元成本折合多少人民币”来决定最终实扣；当前公开文档能确认统一入口为 https://api.aigocode.com，分组汇率则需要登录后查看。",
+      "description": "面向写代码场景的国内平台：把 Claude Code、Codex、Gemini CLI 等接到同一套账号里。\n不同分组对应不同「美元成本→人民币」汇率，便宜组省钱但更要自己承担波动风险。",
       "keyModels": [
         {
           "name": "Opus-4.6",
@@ -1867,7 +1867,7 @@
           "note": "汇率 1 元 / 1 美元；逆向；偶有不稳定"
         }
       ],
-      "notes": "当前 `detail.keyModels` 按登录后价格页截图中的分组汇率乘官方模型价折算，不是平台自定义模型单价。\n灵活额度目前仍按 ¥1 充值到账 $1 API credits；订阅套餐会在全站 API 计费上额外给出约 9 折、86 折、84 折等优惠。\nAIGoCode 的分组汇率需要登录后查看；后续更新前应先索取最新截图，再回写 Claude / Codex / Gemini 等分组。"
+      "notes": "下表单价为「登录后分组汇率 × 官方模型价」折算结果，以你账号内实时汇率为准。\n套餐、灵活额度与折扣以 https://www.aigocode.com/pricing 及控制台为准。"
     }
   },
   {
@@ -1878,29 +1878,29 @@
     "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
-        "stars": 4,
-        "text": "• 公开结构化接口、模型广场和公告同时开放，可追溯性比多数综合站更强\n• OpenAI、Claude、Gemini 到国产线都覆盖，分组选择非常多\n• 但线路体系复杂、公告更新快，更适合愿意自己选路的人"
+        "stars": 5,
+        "text": "• 模型与多模态覆盖极广，社区评测里口碑靠前\n• 分组多，要自己会看公告换路"
       },
       "type": "混合多分组",
       "price": {
-        "stars": 4,
-        "text": "• OpenAI、Claude、Gemini 和国产模型都能公开看到多分组人民币 token 价，低价组和高质量组区分明显\n• Claude 有 cc、cc优质、aws-claude、claude官 等梯度，国产模型常见 default / 国产特价 双口径\n• 缺点是默认分组不总是最稳，Gemini、aws-claude 等组会频繁调价或受风控影响"
+        "stars": 3,
+        "text": "• 好线路不便宜，便宜组要盯波动\n• 整体偏「全而透明」而非极致低价"
       },
       "authenticity": {
         "stars": 5,
-        "text": "• 公开 /api/models/price 可直接读到 completion_ratio、group_price 和 group_ratio\n• /models 页面还能交叉核对当前展示分组、卡片单价和首页公告\n• 对多分组综合站来说，价格透明度和可核对性属于第一梯队"
+        "text": "• 公开接口与模型页能交叉对价\n• 多分组站里对账体验算第一梯队"
       },
       "modelCoverage": {
         "stars": 5,
-        "text": "• 公开模型页当前展示 899 个模型，覆盖 OpenAI、Claude、Google、豆包、千问、Minimax 等\n• 不只聊天模型，视频、绘图、音乐、PPT 也都聚合在同一站点\n• 对需要一站式接入很多上游的用户来说，覆盖面非常强"
+        "text": "• 聊天、绘图、音视频、办公类模型都很全\n• 适合一站式接很多能力"
       },
       "availability": {
         "stars": 3,
-        "text": "• 分组多，遇到问题时可以在 default、origin、cc、cc优质、gemini-t3、国产特价 等线路之间切换\n• 但首页公告也经常提示 default、gemini优质、aws-claude 等分组阶段性波动\n• 适合愿意盯公告和换分组的用户，不属于完全省心型"
+        "text": "• 部分分组会随风控、资源公告临时调整\n• 愿意换组的用户更吃香"
       },
       "convenience": {
         "stars": 4,
-        "text": "• 首页、模型广场、登录页和 Apifox 文档都公开可访问\n• 兼容 OpenAI 接口，已有 SDK 多数只要改 Base URL 和 API Key 就能迁移\n• 分组名和公告都很多，首次接入前最好先确认自己要的模型走哪条线"
+        "text": "• OpenAI 兼容，迁移成本低\n• 分组名多，第一次要花时间认准线路"
       },
       "tags": [
         "国内模型",
@@ -1911,7 +1911,7 @@
       ]
     },
     "detail": {
-      "description": "柏拉图AI是一个公开信息很完整的综合中转平台：模型广场、分组公告、结构化价格接口和 Apifox 文档都对外开放，接入方式也维持 OpenAI 兼容，登录后创建令牌即可迁移现有 SDK。\n它的核心卖点不是单一最低价，而是把 OpenAI、Claude、Gemini 与国产模型拆成多组路线公开给用户：既有 default、origin、官方优质组，也有 cc、aws-claude、国产特价 这类特定线路，适合希望自己在价格、稳定性和来源之间做取舍的人。",
+      "description": "国内老牌综合中转：模型与多模态能力铺得很开，价格也相对敢公开给用户对。\n适合「要覆盖面 + 能自己看公告换分组」的人，不适合只想一个低价组用到黑。",
       "keyModels": [
         {
           "name": "Opus-4.6",
@@ -2264,7 +2264,7 @@
           "note": "对应 doubao-seed-2.0-code-preview；分组倍率 1"
         }
       ],
-      "notes": "模型、分组与现价请以 https://api.bltcy.ai/models 为准；首页公告会同步提示 Gemini、aws-claude、cc 等分组的临时调价和可用性变化。\ndetail.keyModels 以公开结构化接口 https://api.bltcy.ai/api/models/price 为主，按公开 token 分组展开。\n公开接口返回的 token 价格按人民币写入；inputPer1M 按 price × group_ratio × 2 计算，outputPer1M 再乘 completion_ratio。\n公开接口当前未见 qwen3.6-plus，因此本次未为 Qwen-3.6-Plus 占位。"
+      "notes": "模型、分组与现价请以 https://api.bltcy.ai/models 为准。\n首页公告常同步 Gemini、aws-claude、cc 等分组的调价与可用性；下单前先看一眼。"
     }
   },
   {
@@ -2272,32 +2272,32 @@
     "name": "Pincc",
     "homeUrl": "https://shop.pincc.ai/",
     "pricingUrl": "https://shop.pincc.ai/pricing",
-    "updatedAt": "2026.04.18",
+    "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
-        "stars": 4,
-        "text": "• 明显偏向 Claude Code、Codex 等编程场景\n• 渠道倍率与充值规则公开，选对分组时性价比不错\n• 覆盖面不算综合型最全，但对写代码用户比较对口"
+        "stars": 3,
+        "text": "• 编程向（Claude / Codex / Gemini）渠道表清楚\n• Claude 风控期波动多，要会换渠道"
       },
       "type": "混合多分组",
       "price": {
         "stars": 4,
-        "text": "• 充值 1:1 到美元额度，按渠道倍率扣费\n• Kiro、Codex Team、Gemini 等分组价格有优势\n• Claude Max、AWS Bedrock 等高质量渠道价格会高不少"
+        "text": "• Kiro、Codex Team 等常有低价倍率\n• Max、Bedrock 等高质量线明显贵"
       },
       "authenticity": {
         "stars": 4,
-        "text": "• 官网公开列出渠道、倍率、支持模型和部分特性\n• 购买页也写明 1:1 充值与倍率解释\n• 最终单价基本能从官方价和倍率直接推导"
+        "text": "• 渠道名、倍率、支持模型页上能核对\n• 仍要结合账单看实扣"
       },
       "modelCoverage": {
         "stars": 3,
-        "text": "• 主要覆盖 Claude、Codex、Gemini 三条线\n• Claude 渠道最丰富，Codex 和 Gemini 也有独立分组\n• 国产模型和泛用聚合覆盖少于综合型平台"
+        "text": "• 主线是 Claude、Codex、Gemini\n• 不是铺几百模型的综合超市"
       },
       "availability": {
         "stars": 3,
-        "text": "• 宣传多节点与智能路由，基础连通性面向国内用户优化\n• 不同渠道稳定性差异明显，需要按分组切换\n• 购买页提示近期 Claude 风控较严，实际波动要留意"
+        "text": "• 国内访问尚可\n• 上游封控时低价渠道先挂"
       },
       "convenience": {
-        "stars": 4,
-        "text": "• 支持微信支付，人民币充值到账户额度\n• 余额所有渠道通用，切组不用重新充值\n• 购买激活码后还要去控制台兑换，多一步操作"
+        "stars": 3,
+        "text": "• 微信充值方便\n• 激活码多一步兑换"
       },
       "tags": [
         "Claude Code",
@@ -2308,7 +2308,7 @@
       ]
     },
     "detail": {
-      "description": "Pincc 是面向开发者的 AI 编程中转平台，购买激活码后在控制台兑换，即可按兼容接口接入 Claude、GPT Codex 与 Gemini 等模型。\n平台核心是按渠道区分的倍率体系，公开展示各分组名称、倍率、支持模型和部分特性；同一账户余额可在不同渠道间切换，但不同渠道的价格、可用性与能力差异较大。",
+      "description": "面向写代码的国内中转：买码充值后，在控制台里按「渠道倍率」选 Claude / Codex / Gemini。\n便宜渠道与贵价官转并存，适合会看渠道说明、能接受偶发风控的人。",
       "keyModels": [
         {
           "name": "Opus-4.6",
@@ -2388,7 +2388,7 @@
           "note": "对应 gemini-3-flash-preview；分组倍率 0.6"
         }
       ],
-      "notes": "模型渠道、倍率与功能请以 https://shop.pincc.ai/pricing 为准。\n充值比例为 1:1，余额所有渠道通用；获取激活码后需前往 https://v2.pincc.ai 兑换。\n近期 Claude 渠道风控与退款规则请以购买页 notice 和平台公告为准。"
+      "notes": "渠道、倍率与功能请以 https://shop.pincc.ai/pricing 为准。\n激活码需到 https://v2.pincc.ai 兑换；充值与风控说明以购买页及公告为准。"
     }
   },
   {
@@ -2396,32 +2396,32 @@
     "name": "PackyAPI",
     "homeUrl": "https://www.packyapi.com/",
     "pricingUrl": "https://www.packyapi.com/pricing",
-    "updatedAt": "2026.04.18",
+    "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
-        "stars": 4,
-        "text": "• 明显偏向 Claude Code、Codex、Gemini CLI 等开发场景\n• 官网、文档与控制台路径清楚，适合有一定经验的开发者\n• 分组选择门槛略高，但选对后价格与体验都有空间"
+        "stars": 5,
+        "text": "• 社区评测里常列为「编程向」第一梯队\n• 分组多，要会看文档选对令牌"
       },
       "type": "混合多分组",
       "price": {
         "stars": 4,
-        "text": "• 价格页同时展示现价、原价和分组，折扣口径相对直观\n• codex、bailian 等分组价格有优势，officially 与 slb 组更贵\n• 最终实扣强依赖令牌分组，不能只看模型名"
+        "text": "• Codex、百炼等常有友好价\n• 官转、SLB 等高质量线贵不少"
       },
       "authenticity": {
         "stars": 4,
-        "text": "• 官网价格页直接给出当前价格、原价与 token group\n• 文档明确写了倍率含义和 1:1 充值规则\n• 仍是多分组平台，实际体验要结合分组限制一起看"
+        "text": "• 价格页、文档对倍率与充值写得很直白\n• 便宜组仍要接受波动"
       },
       "modelCoverage": {
         "stars": 4,
-        "text": "• 当前公开页可见 40+ 模型，覆盖 OpenAI、Anthropic、Google、智谱、阿里等\n• 主流编程向模型和国内常用模型都比较全\n• 某些分组只开放部分模型，需要到模型广场确认"
+        "text": "• 编程常用海外模型 + 智谱、阿里等国内线\n• 每组开放的模型不同，以模型广场为准"
       },
       "availability": {
         "stars": 4,
-        "text": "• 官网强调统一网关、智能调度与多区域节点\n• Claude、Gemini、Codex 各有对应分组，便于按场景切换\n• 低价组与特殊渠道稳定性会弱于官方或企业号池"
+        "text": "• 多节点、调度宣传到位\n• 低价组不如官池省心"
       },
       "convenience": {
         "stars": 4,
-        "text": "• 支持人民币在线充值，当前文档写明 1:1 到美元额度\n• 单域名、单密钥、OpenAI 兼容，CLI 文档较完整\n• 创建令牌时必须选对分组，否则容易出现模型不可用"
+        "text": "• 人民币充值、OpenAI 兼容、CLI 文档齐\n• 建令牌时务必选对分组"
       },
       "tags": [
         "Claude Code",
@@ -2432,7 +2432,7 @@
       ]
     },
     "detail": {
-      "description": "PackyAPI 是面向开发者的统一大模型接口网关，提供兼容 OpenAI 的单域名 / 单密钥接入，也专门给出了 Claude Code、Codex、Gemini CLI 的配置文档。\n平台核心是令牌分组 + 模型倍率体系：同一站点覆盖 Claude、GPT、Gemini、GLM、Qwen、Kimi、MiniMax 等模型，但不同分组在价格、稳定性和第三方接入限制上差异明显，创建令牌时需要按用途选对分组。",
+      "description": "国内很活跃的编程向中转：单域名 OpenAI 兼容，Claude Code / Codex / Gemini CLI 文档齐全。\n同一模型在不同分组价差大，会选组的人性价比高，乱选则容易贵或不可用。",
       "keyModels": [
         {
           "name": "Opus-4.6",
@@ -2519,7 +2519,7 @@
           "note": "对应 qwen3.5-plus；分组倍率 0.5"
         }
       ],
-      "notes": "模型、分组与现价请以 https://www.packyapi.com/pricing 为准。\n充值比例目前为 1:1，即 1 元人民币同等于 1 美元额度；分组倍率规则见 https://docs.packyapi.com/docs/token/ 。\nCC、Codex、Gemini 等分组的第三方接入限制不同，建令牌前建议先看官方分组说明。"
+      "notes": "模型与分组价格请以 https://www.packyapi.com/pricing 为准。\n充值与倍率规则见 https://docs.packyapi.com/docs/token/ ；各分组是否允许第三方工具以文档为准。"
     }
   },
   {
@@ -2527,32 +2527,32 @@
     "name": "Poixe AI",
     "homeUrl": "https://poixe.com/",
     "pricingUrl": "https://poixe.com/pricing",
-    "updatedAt": "2026.04.18",
+    "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
         "stars": 4,
-        "text": "• 是统一接口型的大模型 API 聚合平台\n• 官网定价、等级折扣、文档和状态页都比较齐全\n• 同站兼顾消费端与供应商入驻，体系比普通中转更完整"
+        "text": "• 评测里普遍认可「贵但接口质量稳」\n• 有免费额度与多线路价表，适合认真对表的人"
       },
       "type": "平台封装聚合",
       "price": {
-        "stars": 4,
-        "text": "• 当前对比表按 Level 1 并按 provider 展开非零线路，累计充值 $1 就会自动升级\n• 同一模型在不同 provider 下价差可能明显，低价线路和默认线路要分开看\n• 产品形态仍是统一封装平台，但价格理解上已经接近多上游对表"
+        "stars": 2,
+        "text": "• 主力线路定价偏高端\n• 低价/反代线路要单独看 provider，别默认最便宜"
       },
       "authenticity": {
         "stars": 4,
-        "text": "• 官网公开模型价表、版本号、等级权益和 provider 维度价格\n• 价格口径基本能由 provider 基准价和等级折扣直接推导\n• default、官方上游与 cli2api 等线路可以直接横向核对"
+        "text": "• 价表按 provider 拆开，能横向比\n• 等级折扣叠加后要自己算实付"
       },
       "modelCoverage": {
         "stars": 4,
-        "text": "• 覆盖 GPT、Claude、Gemini、DeepSeek、Grok、Qwen、Kimi、Doubao\n• 公开价表模型数量很多，还提供一批免费模型做接入验证\n• GLM、MiniMax 等系列暂未见核心公开位，覆盖面不算最全"
+        "text": "• GPT、Claude、Gemini、DeepSeek、Grok、Qwen、Kimi、豆包等齐全\n• GLM、MiniMax 等不如综合大站显眼"
       },
       "availability": {
         "stars": 4,
-        "text": "• 官网强调全球多节点、CDN 加速和高可用架构\n• 另有独立状态页与公开运行数据，整体运维信号不错\n• 实际稳定性仍会随平台内部路由和上游供应商变化"
+        "text": "• 有状态页与多节点宣传\n• 路由变更时仍可能体感波动"
       },
       "convenience": {
-        "stars": 4,
-        "text": "• 控制台、API Key、文档和价格页分工清楚，上手路径短\n• 同时兼容 OpenAI、Anthropic、Gemini 三类协议\n• 官网价表会展开不同 provider，适合愿意自己对表的人"
+        "stars": 3,
+        "text": "• 三协议兼容、控制台清晰\n• 价表维度多，第一次略费脑"
       },
       "tags": [
         "免费模型",
@@ -2563,7 +2563,7 @@
       ]
     },
     "detail": {
-      "description": "Poixe AI 是统一大模型 API 聚合平台，普通用户登录控制台创建 API Key 后，即可通过兼容接口调用 GPT、Claude、Gemini、DeepSeek、Qwen、Kimi 等模型，也可以申请成为供应商回收闲置资源。\n平台采用“公开基准价 + 用户等级折扣 + provider 线路展开”的封装计费方式，同时兼容 OpenAI、Anthropic 与 Gemini 协议，并提供免费模型用于接入验证；官网价表会把 default、openai、cli2api、aliyun 等 provider 分开列出，但产品形态仍比显式售卖分组的平台更统一。",
+      "description": "面向开发者的一站式 API：价表按不同上游（provider）拆开，常有免费档做试用。\n整体口碑偏「质量稳、价格不便宜」，适合企业或对输出一致性敏感的人。",
       "keyModels": [
         {
           "name": "Opus-4.6",
@@ -2797,7 +2797,7 @@
           "note": "对应 qwen-plus；免费分组 small_cup"
         }
       ],
-      "notes": "模型与价格请以 https://poixe.com/pricing 为准。\n下表按 Level 1 价格、并按 provider 展开所有非零线路展示；累计充值满 $1 即自动升级到 Level 1。\n同一模型在不同 provider 下价格可能不同；这里保留各条公开线路，便于按多分组风格横向对比。\nLevel 2 / 3 的累计充值门槛分别为 $100 / $10,000；不同模型的等级折扣仍以官方价表为准。\n免费模型需在模型名后追加 :free。"
+      "notes": "模型与价格请以 https://poixe.com/pricing 为准。\n同一模型在不同 provider 下价格不同；免费模型用法以站内说明为准（常见为模型名后缀 :free）。\n等级折扣与充值门槛以价表页当前规则为准。"
     }
   },
   {
@@ -2805,32 +2805,32 @@
     "name": "Poe",
     "homeUrl": "https://poe.com/",
     "pricingUrl": "https://poe.com/api/models",
-    "updatedAt": "2026.04.17",
+    "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
-        "stars": 4,
-        "text": "• 是 Quora 旗下的官方多模型平台\n• 美元标价清楚，对账相对直接\n• 国内网络和本土支付不占优势"
+        "stars": 3,
+        "text": "• 模型与 Bot 很多，标价正规\n• 国内支付与网络是短板，综合推荐度打折"
       },
       "type": "官方纯聚合",
       "price": {
-        "stars": 4,
-        "text": "• 按 Token 透明美元计价\n• 需要先订阅 Poe，再按需加购额度\n• 各模型 input/output 价格可直接在模型页查看"
+        "stars": 3,
+        "text": "• 美元按量，价目透明\n• 需订阅 + 买额度，总成本要自己会加"
       },
       "authenticity": {
         "stars": 5,
-        "text": "• 官方直接给出美元单价\n• 订阅、加购额度和收据都便于对账\n• 相比很多中转平台，黑箱倍率更少"
+        "text": "• 官方美元价、订阅与加购规则清楚\n• 基本没有「神秘倍率」"
       },
       "modelCoverage": {
         "stars": 5,
-        "text": "• 可通过单一端点访问大量模型与机器人\n• 主流闭源、开源和社区 Bot 都比较丰富\n• 支持 Chat Completions 与 Responses 等接口形态"
+        "text": "• 闭源、开源与社区 Bot 都多\n• 单一 API 能扫很多模型"
       },
       "availability": {
         "stars": 2,
-        "text": "• 服务主体面向海外用户\n• 国内没有官方直连或专线说明\n• 实际可用性比较依赖本地网络环境"
+        "text": "• 面向海外，国内直连体验看运气\n• 常要自备网络方案"
       },
       "convenience": {
         "stars": 2,
-        "text": "• 以美元订阅和国际信用卡支付为主\n• 一般不支持微信、支付宝等本土支付\n• 更适合已有美元结算习惯的用户"
+        "text": "• 信用卡、美元账单为主\n• 微信、支付宝基本别指望"
       },
       "tags": [
         "美元结算",
@@ -2840,7 +2840,7 @@
       ]
     },
     "detail": {
-      "description": "Poe 由 Quora 运营，既提供面向普通用户的多模型聊天产品，也向开发者提供 Creator 侧的 OpenAI 兼容 API。\n开发者可使用 Poe API Key 调用 Chat Completions 与 Responses 接口，在多款前沿模型与社区 Bot 之间切换。",
+      "description": "Quora 旗下的多模型产品：聊天与 Creator API 共用一套生态，模型覆盖面很广。\n适合已有美元支付、网络能稳定连海外的人；国内纯本土用户不算省心选项。",
       "keyModels": [
         {
           "name": "Opus-4.6",
