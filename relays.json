@@ -1202,6 +1202,530 @@
     }
   },
   {
+    "id": "yunwu",
+    "name": "云雾AI",
+    "homeUrl": "https://yunwu.ai/",
+    "pricingUrl": "https://yunwu.ai/pricing",
+    "updatedAt": "2026.04.19",
+    "matrix": {
+      "rating": {
+        "stars": 4,
+        "text": "• 国内访问、OpenAI 兼容和本土充值都比较顺手\n• 500+ 模型覆盖很广，适合一站式接文本 + 多模态\n• 分组和公告不少，想压价仍得会挑线路"
+      },
+      "type": "混合多分组",
+      "price": {
+        "stars": 4,
+        "text": "• 低价组、官转组和专用组并存，价差拉得开\n• 愿意按分组切换的人，更容易压到合适价格"
+      },
+      "authenticity": {
+        "stars": 4,
+        "text": "• 公开结构化接口、价页和 Token Group 倍率能互相对账\n• 最终实扣仍要看你建令牌时选的分组"
+      },
+      "modelCoverage": {
+        "stars": 5,
+        "text": "• 海外闭源、国产模型、绘图和音视频都铺得很全\n• 更像综合大站，不是只做编程三件套"
+      },
+      "availability": {
+        "stars": 4,
+        "text": "• 主打企业高速通道、全球节点和负载均衡\n• 便宜组与特殊线路仍会随上游资源和公告波动"
+      },
+      "convenience": {
+        "stars": 4,
+        "text": "• OpenAI 兼容、国内主体、充值路径清楚\n• 创建 Token 前先认准分组，不然价格和可用性会跑偏"
+      },
+      "tags": [
+        "国内模型",
+        "海外模型",
+        "多模态",
+        "OpenAI兼容",
+        "多分组",
+        "人民币充值"
+      ]
+    },
+    "detail": {
+      "description": "国内综合型 API 中转：公开结构化接口已经给出模型、分组倍率和可用分组，价页主要负责把这些口径展示给用户看；OpenAI 兼容接入，对国内开发者比较友好。\n它同时提供 default、Codex、gemini-cli、官转、Claude Code 等多种分组；实际价格和可用模型会随建令牌时所选分组而变，适合愿意看公告和比价的人。",
+      "keyModels": [
+        {
+          "name": "Opus-4.6",
+          "group": "default",
+          "inputPer1M": "￥5.00",
+          "outputPer1M": "￥25.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "特价 Claude Code",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥30.00",
+          "note": "分组倍率 1.2"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "逆向",
+          "inputPer1M": "￥7.00",
+          "outputPer1M": "￥35.00",
+          "note": "分组倍率 1.4"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "官转克劳德1",
+          "inputPer1M": "￥20.00",
+          "outputPer1M": "￥100.00",
+          "note": "分组倍率 4"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "Claude Code专属",
+          "inputPer1M": "￥25.00",
+          "outputPer1M": "￥125.00",
+          "note": "分组倍率 5"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "官转克劳德2",
+          "inputPer1M": "￥30.00",
+          "outputPer1M": "￥150.00",
+          "note": "分组倍率 6"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "official_Claude",
+          "inputPer1M": "￥40.00",
+          "outputPer1M": "￥200.00",
+          "note": "分组倍率 8"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "官转克劳德3",
+          "inputPer1M": "￥60.00",
+          "outputPer1M": "￥300.00",
+          "note": "分组倍率 12"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "直连克劳德",
+          "inputPer1M": "￥80.00",
+          "outputPer1M": "￥400.00",
+          "note": "分组倍率 16"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "default",
+          "inputPer1M": "￥3.00",
+          "outputPer1M": "￥15.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "特价 Claude Code",
+          "inputPer1M": "￥3.60",
+          "outputPer1M": "￥18.00",
+          "note": "分组倍率 1.2"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "逆向",
+          "inputPer1M": "￥4.20",
+          "outputPer1M": "￥21.00",
+          "note": "分组倍率 1.4"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "官转克劳德1",
+          "inputPer1M": "￥12.00",
+          "outputPer1M": "￥60.00",
+          "note": "分组倍率 4"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "Claude Code专属",
+          "inputPer1M": "￥15.00",
+          "outputPer1M": "￥75.00",
+          "note": "分组倍率 5"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "官转克劳德2",
+          "inputPer1M": "￥18.00",
+          "outputPer1M": "￥90.00",
+          "note": "分组倍率 6"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "official_Claude",
+          "inputPer1M": "￥24.00",
+          "outputPer1M": "￥120.00",
+          "note": "分组倍率 8"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "官转克劳德3",
+          "inputPer1M": "￥36.00",
+          "outputPer1M": "￥180.00",
+          "note": "分组倍率 12"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "直连克劳德",
+          "inputPer1M": "￥48.00",
+          "outputPer1M": "￥240.00",
+          "note": "分组倍率 16"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "限时特价",
+          "inputPer1M": "￥1.50",
+          "outputPer1M": "￥9.00",
+          "note": "分组倍率 0.6"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "Codex专属",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥12.00",
+          "note": "分组倍率 0.8"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "default",
+          "inputPer1M": "￥2.50",
+          "outputPer1M": "￥15.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "逆向",
+          "inputPer1M": "￥3.50",
+          "outputPer1M": "￥21.00",
+          "note": "分组倍率 1.4"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "纯AZ",
+          "inputPer1M": "￥3.75",
+          "outputPer1M": "￥22.50",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "官转",
+          "inputPer1M": "￥7.50",
+          "outputPer1M": "￥45.00",
+          "note": "分组倍率 3"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "官转OpenAI",
+          "inputPer1M": "￥15.00",
+          "outputPer1M": "￥90.00",
+          "note": "分组倍率 6"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "优质官转OpenAI",
+          "inputPer1M": "￥20.00",
+          "outputPer1M": "￥120.00",
+          "note": "分组倍率 8"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "Codex专属",
+          "inputPer1M": "￥1.40",
+          "outputPer1M": "￥11.20",
+          "note": "分组倍率 0.8"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "官转",
+          "inputPer1M": "￥5.25",
+          "outputPer1M": "￥42.00",
+          "note": "分组倍率 3"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "官转OpenAI",
+          "inputPer1M": "￥10.50",
+          "outputPer1M": "￥84.00",
+          "note": "分组倍率 6"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "优质官转OpenAI",
+          "inputPer1M": "￥14.00",
+          "outputPer1M": "￥112.00",
+          "note": "分组倍率 8"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "gemini-cli",
+          "inputPer1M": "￥3.00",
+          "outputPer1M": "￥18.00",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 1.5"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "优质gemini",
+          "inputPer1M": "￥3.00",
+          "outputPer1M": "￥18.00",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 1.5"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "官转gemini",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥36.00",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 3"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "优质官转gemini",
+          "inputPer1M": "￥12.00",
+          "outputPer1M": "￥72.00",
+          "note": "对应 gemini-3.1-pro-preview；分组倍率 6"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "gemini-cli",
+          "inputPer1M": "￥0.75",
+          "outputPer1M": "￥4.50",
+          "note": "对应 gemini-3-flash-preview；分组倍率 1.5"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "优质gemini",
+          "inputPer1M": "￥0.75",
+          "outputPer1M": "￥4.50",
+          "note": "对应 gemini-3-flash-preview；分组倍率 1.5"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "官转gemini",
+          "inputPer1M": "￥1.50",
+          "outputPer1M": "￥9.00",
+          "note": "对应 gemini-3-flash-preview；分组倍率 3"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "优质官转gemini",
+          "inputPer1M": "￥3.00",
+          "outputPer1M": "￥18.00",
+          "note": "对应 gemini-3-flash-preview；分组倍率 6"
+        },
+        {
+          "name": "GLM-5.1",
+          "group": "纯AZ",
+          "inputPer1M": "￥9.00",
+          "outputPer1M": "￥36.00",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "GLM-5.1",
+          "group": "官转",
+          "inputPer1M": "￥18.00",
+          "outputPer1M": "￥72.00",
+          "note": "分组倍率 3"
+        },
+        {
+          "name": "GLM-5",
+          "group": "default",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥18.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "GLM-5",
+          "group": "企业级高可用大模型",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥18.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "GLM-5",
+          "group": "纯AZ",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥27.00",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "GLM-5",
+          "group": "官转",
+          "inputPer1M": "￥12.00",
+          "outputPer1M": "￥54.00",
+          "note": "分组倍率 3"
+        },
+        {
+          "name": "MiniMax-M2.7",
+          "group": "default",
+          "inputPer1M": "￥2.10",
+          "outputPer1M": "￥8.40",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "MiniMax-M2.7",
+          "group": "企业级高可用大模型",
+          "inputPer1M": "￥2.10",
+          "outputPer1M": "￥8.40",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "MiniMax-M2.7",
+          "group": "纯AZ",
+          "inputPer1M": "￥3.15",
+          "outputPer1M": "￥12.60",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "MiniMax-M2.7",
+          "group": "官转",
+          "inputPer1M": "￥6.30",
+          "outputPer1M": "￥25.20",
+          "note": "分组倍率 3"
+        },
+        {
+          "name": "MiniMax-M2.5",
+          "group": "default",
+          "inputPer1M": "￥2.10",
+          "outputPer1M": "￥8.40",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "MiniMax-M2.5",
+          "group": "企业级高可用大模型",
+          "inputPer1M": "￥2.10",
+          "outputPer1M": "￥8.40",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "MiniMax-M2.5",
+          "group": "纯AZ",
+          "inputPer1M": "￥3.15",
+          "outputPer1M": "￥12.60",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "MiniMax-M2.5",
+          "group": "官转",
+          "inputPer1M": "￥6.30",
+          "outputPer1M": "￥25.20",
+          "note": "分组倍率 3"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "default",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥21.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "企业级高可用大模型",
+          "inputPer1M": "￥4.00",
+          "outputPer1M": "￥21.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "纯AZ",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥31.50",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "Kimi-K2.5",
+          "group": "官转",
+          "inputPer1M": "￥12.00",
+          "outputPer1M": "￥63.00",
+          "note": "分组倍率 3"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "限时特价",
+          "inputPer1M": "￥1.20",
+          "outputPer1M": "￥1.80",
+          "note": "分组倍率 0.6"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "default",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥3.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "企业级高可用大模型",
+          "inputPer1M": "￥2.00",
+          "outputPer1M": "￥3.00",
+          "note": "分组倍率 1"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "纯AZ",
+          "inputPer1M": "￥3.00",
+          "outputPer1M": "￥4.50",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "DeepSeek-V3.2",
+          "group": "官转",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥9.00",
+          "note": "分组倍率 3"
+        },
+        {
+          "name": "Qwen-3.6-Plus",
+          "group": "纯AZ",
+          "inputPer1M": "￥3.00",
+          "outputPer1M": "￥18.00",
+          "note": "分组倍率 1.5"
+        },
+        {
+          "name": "Qwen-3.6-Plus",
+          "group": "官转",
+          "inputPer1M": "￥6.00",
+          "outputPer1M": "￥36.00",
+          "note": "分组倍率 3"
+        },
+        {
+          "name": "Qwen-3.5",
+          "group": "default",
+          "inputPer1M": "￥0.80",
+          "outputPer1M": "￥4.80",
+          "note": "对应 qwen3.5-plus；分组倍率 1"
+        },
+        {
+          "name": "Qwen-3.5",
+          "group": "企业级高可用大模型",
+          "inputPer1M": "￥0.80",
+          "outputPer1M": "￥4.80",
+          "note": "对应 qwen3.5-plus；分组倍率 1"
+        },
+        {
+          "name": "Qwen-3.5",
+          "group": "纯AZ",
+          "inputPer1M": "￥1.20",
+          "outputPer1M": "￥7.20",
+          "note": "对应 qwen3.5-plus；分组倍率 1.5"
+        },
+        {
+          "name": "Qwen-3.5",
+          "group": "官转",
+          "inputPer1M": "￥2.40",
+          "outputPer1M": "￥14.40",
+          "note": "对应 qwen3.5-plus；分组倍率 3"
+        },
+        {
+          "name": "Doubao-Seed-2.0-Code",
+          "group": "纯AZ",
+          "inputPer1M": "￥4.80",
+          "outputPer1M": "￥24.00",
+          "note": "对应 doubao-seed-2.0-code-preview-260215；分组倍率 1.5"
+        }
+      ],
+      "notes": "模型与当前公开展示价请以 https://yunwu.ai/pricing 为准。\n建令牌时所选 Token Group 会影响最终单价与可用模型；下单前先对照价页里的 groups 与首页公告。\n模型、分组与现价请以 https://yunwu.ai/pricing 为准；该页主要是对公开结构化接口的展示。\ndetail.keyModels 以公开结构化接口 https://yunwu.ai/api/pricing_new 为主，按公开分组展开。\n公开接口当前按 model_ratio × 2 × group_ratio 计算输入价，outputPer1M 再乘 completion_ratio；价格按人民币写入。"
+    }
+  },
+  {
     "id": "siliconflow",
     "name": "SiliconFlow硅基流动",
     "homeUrl": "https://siliconflow.cn/zh-cn/",
