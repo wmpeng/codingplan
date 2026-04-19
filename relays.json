@@ -1071,6 +1071,137 @@
     }
   },
   {
+    "id": "aicodemirror",
+    "name": "AICodeMirror",
+    "homeUrl": "https://www.aicodemirror.com/",
+    "pricingUrl": "https://www.aicodemirror.com/pricing",
+    "updatedAt": "2026.04.19",
+    "matrix": {
+      "rating": {
+        "stars": 4,
+        "text": "• 面向 Claude Code、Codex、Gemini CLI 的编程平台定位很明确\n• 公开页把套餐、教程和接入路径写得较完整\n• 但模型单价要登录后才能看到，公开透明度不算顶格"
+      },
+      "type": "混合多分组",
+      "price": {
+        "stars": 4,
+        "text": "• Claude 有官方稳定、普通官转、CC 外场景和逆向四档\n• Codex 与 Gemini 登录后截图口径相对便宜\n• 订阅余额 30 天有效，是否划算和你实际用量强相关"
+      },
+      "authenticity": {
+        "stars": 3,
+        "text": "• 公开页能确认按量充值、订阅额度和支持的编程工具\n• 登录后截图还能看到官方价格表、折扣公式和渠道卡片\n• 但模型级现价仍不是完全公开可核对"
+      },
+      "modelCoverage": {
+        "stars": 3,
+        "text": "• 主线就是 Claude Code、Codex、Gemini CLI 三套编程工具\n• 更像编程专项平台，不是几百模型的大杂烩\n• 对纯编码场景够用，泛模型覆盖则一般"
+      },
+      "availability": {
+        "stars": 3,
+        "text": "• 官网主打多节点、容灾和国内工程师可用性\n• 但共享订阅和逆向线路仍会受上游风控影响\n• 更适合愿意按渠道切换的人"
+      },
+      "convenience": {
+        "stars": 5,
+        "text": "• 支持支付宝、微信等本土支付，购买路径清楚\n• 套餐、按量付费、文档和安装教程都公开可看\n• 对国内用户来说上手门槛明显低于直接折腾海外账号"
+      },
+      "tags": [
+        "Claude Code",
+        "Codex",
+        "Gemini CLI",
+        "订阅套餐",
+        "人民币充值"
+      ]
+    },
+    "detail": {
+      "description": "AICodeMirror 是一个面向中国工程师的 AI 编程共享平台，把 Claude Code、Codex 和 Gemini CLI 放进同一套账号体系里；公开页先展示按量充值、PRO / MAX / ULTRA 订阅与安装教程，登录后再看模型分组和实扣单价。\n它不是综合模型超市，而是围绕编程工具做多通道分层：Claude 有官方稳定、普通官转、CC 外场景和逆向线，Codex 与 Gemini 也有各自折扣口径，适合主要拿来写代码、愿意按登录后价表选渠道的用户。",
+      "keyModels": [
+        {
+          "name": "Opus-4.6",
+          "group": "官方订阅稳定渠道",
+          "inputPer1M": "￥21.50",
+          "outputPer1M": "￥107.50",
+          "note": "汇率 4.3 元 / 1 美元；官方共享订阅"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "官方订阅渠道",
+          "inputPer1M": "￥16.00",
+          "outputPer1M": "￥80.00",
+          "note": "汇率 3.2 元 / 1 美元；官方共享订阅"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "CC外场景专用渠道",
+          "inputPer1M": "￥16.00",
+          "outputPer1M": "￥80.00",
+          "note": "汇率 3.2 元 / 1 美元；官方共享订阅"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "第三方逆向渠道",
+          "inputPer1M": "￥7.00",
+          "outputPer1M": "￥35.00",
+          "note": "汇率 1.4 元 / 1 美元；逆向"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "官方订阅稳定渠道",
+          "inputPer1M": "￥12.90",
+          "outputPer1M": "￥64.50",
+          "note": "汇率 4.3 元 / 1 美元；官方共享订阅"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "官方订阅渠道",
+          "inputPer1M": "￥9.60",
+          "outputPer1M": "￥48.00",
+          "note": "汇率 3.2 元 / 1 美元；官方共享订阅"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "CC外场景专用渠道",
+          "inputPer1M": "￥9.60",
+          "outputPer1M": "￥48.00",
+          "note": "汇率 3.2 元 / 1 美元；官方共享订阅"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "第三方逆向渠道",
+          "inputPer1M": "￥4.20",
+          "outputPer1M": "￥21.00",
+          "note": "汇率 1.4 元 / 1 美元；逆向"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "官方订阅渠道",
+          "inputPer1M": "￥2.50",
+          "outputPer1M": "￥11.25",
+          "note": "汇率 0.5 元 / 1 美元；官方共享订阅"
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "官方订阅渠道",
+          "inputPer1M": "￥0.875",
+          "outputPer1M": "￥7.00",
+          "note": "汇率 0.5 元 / 1 美元；官方共享订阅"
+        },
+        {
+          "name": "Gemini-3.1-Pro",
+          "group": "官方订阅渠道",
+          "inputPer1M": "￥2.80",
+          "outputPer1M": "￥12.60",
+          "note": "对应 gemini-3.1-pro-preview；汇率 0.7 元 / 1 美元；官方共享订阅"
+        },
+        {
+          "name": "Gemini-3-Flash",
+          "group": "官方订阅渠道",
+          "inputPer1M": "￥0.35",
+          "outputPer1M": "￥2.10",
+          "note": "对应 gemini-3-flash-preview；汇率 0.7 元 / 1 美元；官方共享订阅"
+        }
+      ],
+      "notes": "下表单价按你提供的登录后截图折算：Claude 4 组、Codex 1 组、Gemini 1 组，统一按“官方模型价 × 分组汇率”计算。\n公开页可确认 PAYGO 为充值人民币获得等价额度；PRO / MAX / ULTRA 分别约 8.5 折 / 8 折 / 7.5 折，额度有效期 30 天。\n后续价格更新仍需最新登录后截图，不新增依赖登录态的抓价脚本。"
+    }
+  },
+  {
     "id": "siliconflow",
     "name": "SiliconFlow硅基流动",
     "homeUrl": "https://siliconflow.cn/zh-cn/",
@@ -2545,137 +2676,6 @@
         }
       ],
       "notes": "下表单价为「登录后分组汇率 × 官方模型价」折算结果，以你账号内实时汇率为准。\n套餐、灵活额度与折扣以 https://www.aigocode.com/pricing 及控制台为准。"
-    }
-  },
-  {
-    "id": "aicodemirror",
-    "name": "AICodeMirror",
-    "homeUrl": "https://www.aicodemirror.com/",
-    "pricingUrl": "https://www.aicodemirror.com/pricing",
-    "updatedAt": "2026.04.19",
-    "matrix": {
-      "rating": {
-        "stars": 4,
-        "text": "• 面向 Claude Code、Codex、Gemini CLI 的编程平台定位很明确\n• 公开页把套餐、教程和接入路径写得较完整\n• 但模型单价要登录后才能看到，公开透明度不算顶格"
-      },
-      "type": "混合多分组",
-      "price": {
-        "stars": 4,
-        "text": "• Claude 有官方稳定、普通官转、CC 外场景和逆向四档\n• Codex 与 Gemini 登录后截图口径相对便宜\n• 订阅余额 30 天有效，是否划算和你实际用量强相关"
-      },
-      "authenticity": {
-        "stars": 3,
-        "text": "• 公开页能确认按量充值、订阅额度和支持的编程工具\n• 登录后截图还能看到官方价格表、折扣公式和渠道卡片\n• 但模型级现价仍不是完全公开可核对"
-      },
-      "modelCoverage": {
-        "stars": 3,
-        "text": "• 主线就是 Claude Code、Codex、Gemini CLI 三套编程工具\n• 更像编程专项平台，不是几百模型的大杂烩\n• 对纯编码场景够用，泛模型覆盖则一般"
-      },
-      "availability": {
-        "stars": 3,
-        "text": "• 官网主打多节点、容灾和国内工程师可用性\n• 但共享订阅和逆向线路仍会受上游风控影响\n• 更适合愿意按渠道切换的人"
-      },
-      "convenience": {
-        "stars": 5,
-        "text": "• 支持支付宝、微信等本土支付，购买路径清楚\n• 套餐、按量付费、文档和安装教程都公开可看\n• 对国内用户来说上手门槛明显低于直接折腾海外账号"
-      },
-      "tags": [
-        "Claude Code",
-        "Codex",
-        "Gemini CLI",
-        "订阅套餐",
-        "人民币充值"
-      ]
-    },
-    "detail": {
-      "description": "AICodeMirror 是一个面向中国工程师的 AI 编程共享平台，把 Claude Code、Codex 和 Gemini CLI 放进同一套账号体系里；公开页先展示按量充值、PRO / MAX / ULTRA 订阅与安装教程，登录后再看模型分组和实扣单价。\n它不是综合模型超市，而是围绕编程工具做多通道分层：Claude 有官方稳定、普通官转、CC 外场景和逆向线，Codex 与 Gemini 也有各自折扣口径，适合主要拿来写代码、愿意按登录后价表选渠道的用户。",
-      "keyModels": [
-        {
-          "name": "Opus-4.6",
-          "group": "官方订阅稳定渠道",
-          "inputPer1M": "￥21.50",
-          "outputPer1M": "￥107.50",
-          "note": "汇率 4.3 元 / 1 美元；官方共享订阅"
-        },
-        {
-          "name": "Opus-4.6",
-          "group": "官方订阅渠道",
-          "inputPer1M": "￥16.00",
-          "outputPer1M": "￥80.00",
-          "note": "汇率 3.2 元 / 1 美元；官方共享订阅"
-        },
-        {
-          "name": "Opus-4.6",
-          "group": "CC外场景专用渠道",
-          "inputPer1M": "￥16.00",
-          "outputPer1M": "￥80.00",
-          "note": "汇率 3.2 元 / 1 美元；官方共享订阅"
-        },
-        {
-          "name": "Opus-4.6",
-          "group": "第三方逆向渠道",
-          "inputPer1M": "￥7.00",
-          "outputPer1M": "￥35.00",
-          "note": "汇率 1.4 元 / 1 美元；逆向"
-        },
-        {
-          "name": "Sonnet-4.6",
-          "group": "官方订阅稳定渠道",
-          "inputPer1M": "￥12.90",
-          "outputPer1M": "￥64.50",
-          "note": "汇率 4.3 元 / 1 美元；官方共享订阅"
-        },
-        {
-          "name": "Sonnet-4.6",
-          "group": "官方订阅渠道",
-          "inputPer1M": "￥9.60",
-          "outputPer1M": "￥48.00",
-          "note": "汇率 3.2 元 / 1 美元；官方共享订阅"
-        },
-        {
-          "name": "Sonnet-4.6",
-          "group": "CC外场景专用渠道",
-          "inputPer1M": "￥9.60",
-          "outputPer1M": "￥48.00",
-          "note": "汇率 3.2 元 / 1 美元；官方共享订阅"
-        },
-        {
-          "name": "Sonnet-4.6",
-          "group": "第三方逆向渠道",
-          "inputPer1M": "￥4.20",
-          "outputPer1M": "￥21.00",
-          "note": "汇率 1.4 元 / 1 美元；逆向"
-        },
-        {
-          "name": "GPT-5.4",
-          "group": "官方订阅渠道",
-          "inputPer1M": "￥2.50",
-          "outputPer1M": "￥11.25",
-          "note": "汇率 0.5 元 / 1 美元；官方共享订阅"
-        },
-        {
-          "name": "GPT-5.3-Codex",
-          "group": "官方订阅渠道",
-          "inputPer1M": "￥0.875",
-          "outputPer1M": "￥7.00",
-          "note": "汇率 0.5 元 / 1 美元；官方共享订阅"
-        },
-        {
-          "name": "Gemini-3.1-Pro",
-          "group": "官方订阅渠道",
-          "inputPer1M": "￥2.80",
-          "outputPer1M": "￥12.60",
-          "note": "对应 gemini-3.1-pro-preview；汇率 0.7 元 / 1 美元；官方共享订阅"
-        },
-        {
-          "name": "Gemini-3-Flash",
-          "group": "官方订阅渠道",
-          "inputPer1M": "￥0.35",
-          "outputPer1M": "￥2.10",
-          "note": "对应 gemini-3-flash-preview；汇率 0.7 元 / 1 美元；官方共享订阅"
-        }
-      ],
-      "notes": "下表单价按你提供的登录后截图折算：Claude 4 组、Codex 1 组、Gemini 1 组，统一按“官方模型价 × 分组汇率”计算。\n公开页可确认 PAYGO 为充值人民币获得等价额度；PRO / MAX / ULTRA 分别约 8.5 折 / 8 折 / 7.5 折，额度有效期 30 天。\n后续价格更新仍需最新登录后截图，不新增依赖登录态的抓价脚本。"
     }
   },
   {
