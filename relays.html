@@ -2268,24 +2268,30 @@
             }
 
             const PLATFORM_W = 180; // ── 平台列宽度
-            const TAG_W = 220;  // ── 标签列宽度
+            const MATRIX_TYPE_W = 140; // ── 「平台类型」列（matrix.type，valueType=tags）
+            const MATRIX_TAGS_W = 220; // ── 「标签」列（matrix.tags，valueType=tags）
             const DIM_MIN = 250;  // ── 其他维度最小宽度（乘以权重后可能更宽）
             const RATING_WEIGHT = 1.2;  // ── 综合评价维度权重，其他维度默认为 1，权重越高列越宽
             const wrapperWidth = Math.round(wrapper.clientWidth || 0);
-            const tagDimensionCount = dimensions.filter(d => isMatrixTagDimension(d)).length;
+            function widthForMatrixTagDimension(dim) {
+                return dim.key === 'type' ? MATRIX_TYPE_W : MATRIX_TAGS_W;
+            }
+            const tagColumnsWidthSum = dimensions
+                .filter(d => isMatrixTagDimension(d))
+                .reduce((sum, d) => sum + widthForMatrixTagDimension(d), 0);
             const flexibleDimensions = dimensions.filter(d => !isMatrixTagDimension(d));
             const totalWeight = flexibleDimensions.reduce((s, d) => s + (d.key === 'rating' ? RATING_WEIGHT : 1), 0);
             const baseFlexibleWidth = DIM_MIN * totalWeight;
-            const minTableW = Math.max(640, PLATFORM_W + (TAG_W * tagDimensionCount) + baseFlexibleWidth);
+            const minTableW = Math.max(640, PLATFORM_W + tagColumnsWidthSum + baseFlexibleWidth);
             const targetTableW = Math.max(minTableW, wrapperWidth);
-            const availableFlexibleWidth = Math.max(baseFlexibleWidth, targetTableW - PLATFORM_W - (TAG_W * tagDimensionCount));
+            const availableFlexibleWidth = Math.max(baseFlexibleWidth, targetTableW - PLATFORM_W - tagColumnsWidthSum);
             const dimensionWidths = new Map();
             let remainingFlexibleWidth = availableFlexibleWidth;
             let remainingWeight = totalWeight;
 
             dimensions.forEach(dim => {
                 if (isMatrixTagDimension(dim)) {
-                    dimensionWidths.set(dim.key, TAG_W);
+                    dimensionWidths.set(dim.key, widthForMatrixTagDimension(dim));
                     return;
                 }
 
@@ -2306,7 +2312,7 @@
                 const ratingTh = dim.key === 'rating' ? ' matrix-col-rating' : '';
                 const sortableTh = isMatrixStarTextDimension(dim) ? ' matrix-sortable' : '';
                 const sortAttr = isMatrixStarTextDimension(dim) ? ` data-matrix-sort-key="${escapeHtml(dim.key)}"` : '';
-                const dimPx = dimensionWidths.get(dim.key) || TAG_W;
+                const dimPx = dimensionWidths.get(dim.key) ?? (isMatrixTagDimension(dim) ? widthForMatrixTagDimension(dim) : DIM_MIN);
                 const helpText = typeof dim.helpText === 'string' ? dim.helpText.trim() : '';
                 if (helpText) {
                     return `<th class="matrix-dim-th${thExtra}${ratingTh}${sortableTh}"${sortAttr} style="width:${dimPx}px;min-width:${dimPx}px"><span class="matrix-th-help"><button type="button" class="matrix-help-trigger" aria-label="${escapeHtml(dim.label)}说明">${escapeHtml(dim.label)}</button><span class="matrix-help-bubble" role="tooltip">${escapeHtmlPreserveBreaks(helpText)}</span></span></th>`;
