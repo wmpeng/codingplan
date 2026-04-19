@@ -22,12 +22,11 @@
   },
   "actions": {
     "matrix": {
-      "home": "官网",
-      "pricing": "查看定价",
-      "detail": "查看详情"
+      "pricing": "定价",
+      "detail": "详情"
     },
     "detailCard": {
-      "home": "官网",
+      "home": "跳转官网",
       "pricing": "模型定价"
     },
     "updatedAtPrefix": "数据更新："
