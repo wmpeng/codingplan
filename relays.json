@@ -1753,7 +1753,7 @@
       },
       "availability": {
         "stars": 4,
-        "text": "• 主打多节点容量池和 Prompt Cache\n• 真正省心程度仍和你选的分组以及上游资源有关"
+        "text": "• 主打多节点容量池和 Prompt Cache\n• 稳定性仍取决于分组与上游资源"
       },
       "convenience": {
         "stars": 4,
