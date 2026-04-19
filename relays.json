@@ -1079,16 +1079,16 @@
     "matrix": {
       "rating": {
         "stars": 4,
-        "text": "• 面向 Claude Code、Codex、Gemini CLI 的编程平台定位很明确\n• 公开页把套餐、教程和接入路径写得较完整\n• 但模型单价要登录后才能看到，公开透明度不算顶格"
+        "text": "• 面向 Claude Code、Codex、Gemini CLI 的编程平台定位很明确\n• 套餐、教程和购买路径都比较完整\n• 更适合重度编码用户，不是泛模型平台"
       },
       "type": "混合多分组",
       "price": {
         "stars": 4,
-        "text": "• Claude 有官方稳定、普通官转、CC 外场景和逆向四档\n• Codex 与 Gemini 登录后截图口径相对便宜\n• 订阅余额 30 天有效，是否划算和你实际用量强相关"
+        "text": "• Claude 有官方稳定、普通官转、CC 外场景和逆向四档\n• Codex 与 Gemini 当前代表线价格相对友好\n• 订阅余额 30 天有效，是否划算和你实际用量强相关"
       },
       "authenticity": {
         "stars": 3,
-        "text": "• 公开页能确认按量充值、订阅额度和支持的编程工具\n• 登录后截图还能看到官方价格表、折扣公式和渠道卡片\n• 但模型级现价仍不是完全公开可核对"
+        "text": "• 价格体系整体围绕官方模型价和渠道折扣展开\n• 官方共享订阅与逆向线路分层清楚\n• 实际体验仍建议结合账单与常用渠道观察"
       },
       "modelCoverage": {
         "stars": 3,
@@ -1111,7 +1111,7 @@
       ]
     },
     "detail": {
-      "description": "AICodeMirror 是一个面向中国工程师的 AI 编程共享平台，把 Claude Code、Codex 和 Gemini CLI 放进同一套账号体系里；公开页先展示按量充值、PRO / MAX / ULTRA 订阅与安装教程，登录后再看模型分组和实扣单价。\n它不是综合模型超市，而是围绕编程工具做多通道分层：Claude 有官方稳定、普通官转、CC 外场景和逆向线，Codex 与 Gemini 也有各自折扣口径，适合主要拿来写代码、愿意按登录后价表选渠道的用户。",
+      "description": "AICodeMirror 是一个面向中国工程师的 AI 编程共享平台，把 Claude Code、Codex 和 Gemini CLI 放进同一套账号体系里；公开页会展示按量充值、PRO / MAX / ULTRA 订阅、安装教程和购买路径，具体模型分组与实扣单价则需要登录后查看。\n它不是综合模型超市，而是围绕编程工具做多通道分层：Claude 有官方稳定、普通官转、CC 外场景和逆向线，Codex 与 Gemini 也有各自折扣口径，适合主要拿来写代码、愿意按登录后价表选渠道的用户。",
       "keyModels": [
         {
           "name": "Opus-4.6",
@@ -2536,7 +2536,7 @@
       },
       "authenticity": {
         "stars": 3,
-        "text": "• 分组汇率多在登录后页里才能看清\n• 公开页主要讲套餐与额度规则"
+        "text": "• 核心仍是官方模型价叠加不同分组汇率\n• 官转、专用线和逆向线的层次比较清楚"
       },
       "modelCoverage": {
         "stars": 3,
@@ -2560,7 +2560,7 @@
       ]
     },
     "detail": {
-      "description": "面向写代码场景的国内平台：把 Claude Code、Codex、Gemini CLI 等接到同一套账号里。\n不同分组对应不同「美元成本→人民币」汇率，便宜组省钱但更要自己承担波动风险。",
+      "description": "面向写代码场景的国内平台：把 Claude Code、Codex、Gemini CLI 等接到同一套账号里；公开页主要展示套餐与额度规则，具体模型分组和汇率需要登录后查看。\n不同分组对应不同「美元成本→人民币」汇率，便宜组省钱但更要自己承担波动风险。",
       "keyModels": [
         {
           "name": "Opus-4.6",
