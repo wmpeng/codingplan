@@ -1164,7 +1164,9 @@
         }
 
         function getMatrixFilterDefaultValue(dim) {
-            return isMatrixTagDimension(dim) ? [] : '';
+            if (isMatrixTagDimension(dim)) return [];
+            if (isMatrixStarTextDimension(dim) && dim.key === 'rating') return '4';
+            return '';
         }
 
         function normalizeMatrixDimensions(rawDimensions) {
