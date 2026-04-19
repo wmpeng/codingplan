@@ -1726,6 +1726,199 @@
     }
   },
   {
+    "id": "buzz",
+    "name": "BUZZ",
+    "homeUrl": "https://buzzai.cc/",
+    "pricingUrl": "https://buzzai.cc/models",
+    "pricingUrlForAgent": "https://buzzai.cc/api/pricing",
+    "updatedAt": "2026.04.19",
+    "matrix": {
+      "rating": {
+        "stars": 4,
+        "text": "• Claude / Claude Code 专项定位很明确\n• 请求透传、Prompt Cache 和无月费对重度编码用户很友好\n• 但它不是全模型平台"
+      },
+      "type": "混合多分组",
+      "price": {
+        "stars": 5,
+        "text": "• 反重、AWS、MAX 三档里低价组很激进\n• 同模型不同组价差很大，想更稳就得接受更高组价"
+      },
+      "authenticity": {
+        "stars": 4,
+        "text": "• 公开 pricing 接口、模型页和端点类型能互相对账\n• 低价组仍建议结合自己账单观察实扣"
+      },
+      "modelCoverage": {
+        "stars": 2,
+        "text": "• 当前公开主线基本就是 Claude 家族\n• 适合 Anthropic / Claude Code，不适合一站式全模型需求"
+      },
+      "availability": {
+        "stars": 4,
+        "text": "• 主打多节点容量池和 Prompt Cache\n• 真正省心程度仍和你选的分组以及上游资源有关"
+      },
+      "convenience": {
+        "stars": 4,
+        "text": "• Base URL 改到站内即可接 OpenAI / Anthropic 兼容端点\n• 选组前先认准用途，不然价格和模型可用性会偏很多"
+      },
+      "tags": [
+        "Claude",
+        "Claude Code",
+        "Prompt Cache",
+        "多分组",
+        "OpenAI兼容"
+      ]
+    },
+    "detail": {
+      "description": "面向 Claude / Claude Code 的国内专项中转：公开接口已经给出模型倍率、分组倍率和 OpenAI / Anthropic 兼容端点，接入时把 Base URL 指到 https://buzzai.cc/v1 即可。\n当前公开主线是 MAX、AWS、反重三组，模型集中在 Claude 4.x 一带；更像 Anthropic 专项站，不是覆盖几百模型的综合超市。",
+      "keyModels": [
+        {
+          "name": "Opus-4.6",
+          "group": "反重分组",
+          "inputPer1M": "￥1.50",
+          "outputPer1M": "￥7.50",
+          "note": "分组倍率 0.3"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "AWS分组",
+          "inputPer1M": "￥3.00",
+          "outputPer1M": "￥15.00",
+          "note": "分组倍率 0.6"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "MAX分组",
+          "inputPer1M": "￥9.00",
+          "outputPer1M": "￥45.00",
+          "note": "分组倍率 1.8"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "反重分组",
+          "inputPer1M": "￥0.90",
+          "outputPer1M": "￥4.50",
+          "note": "分组倍率 0.3"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "AWS分组",
+          "inputPer1M": "￥1.80",
+          "outputPer1M": "￥9.00",
+          "note": "分组倍率 0.6"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "MAX分组",
+          "inputPer1M": "￥5.40",
+          "outputPer1M": "￥27.00",
+          "note": "分组倍率 1.8"
+        }
+      ],
+      "notes": "模型与分组价格请以 https://buzzai.cc/models 为准。\n支持 OpenAI / Anthropic 兼容端点；不同分组会影响可用模型与实际单价。"
+    }
+  },
+  {
+    "id": "ddshub",
+    "name": "DDS Hub",
+    "homeUrl": "https://www.ddshub.cc/",
+    "pricingUrl": "https://www.ddshub.cc/pricing",
+    "updatedAt": "2026.04.19",
+    "matrix": {
+      "rating": {
+        "stars": 4,
+        "text": "• Claude Code / GPT 编程场景定位清楚\n• 文档和安装教程完整，适合国内开发者\n• 综合覆盖仍不算大而全"
+      },
+      "type": "混合多分组",
+      "price": {
+        "stars": 4,
+        "text": "• Claude 公布 3 折 / 5 折 / 7 折分层，GPT 公开价也有竞争力\n• 越稳的线越贵，定制组门槛也明显更高"
+      },
+      "authenticity": {
+        "stars": 4,
+        "text": "• 模型广场、价格页和 1:1 充值规则能交叉核对\n• 最终实扣仍取决于你选的分组与当前公开价"
+      },
+      "modelCoverage": {
+        "stars": 3,
+        "text": "• 当前公开主线是 Claude + GPT，Gemini 仍在即将支持\n• 更像编程向双主线平台，不是综合模型超市"
+      },
+      "availability": {
+        "stars": 4,
+        "text": "• 官网和文档都主打国内开发者可用性\n• 便宜组与企业组在稳定性上会有层次差异"
+      },
+      "convenience": {
+        "stars": 4,
+        "text": "• 1:1 充值、Windows / macOS 教程和 Claude Code 配置都很完整\n• 定制组需要更高充值门槛"
+      },
+      "tags": [
+        "Claude Code",
+        "Codex",
+        "人民币充值",
+        "1:1额度",
+        "多分组"
+      ]
+    },
+    "detail": {
+      "description": "面向国内开发者的编程向中转：公开模型广场、价格页和 Claude Code 教程都比较完整，Claude Code 直接把 ANTHROPIC_BASE_URL 指到 https://www.ddshub.cc 即可。\n当前公开主线分成 Claude 的 Max / 稳定 / 企业分组，以及 GPT 的 CodeX 基础分组；Gemini 系列还在即将支持阶段，更适合 Claude + GPT 编程场景。",
+      "keyModels": [
+        {
+          "name": "Opus-4.6",
+          "group": "订阅Max分组",
+          "inputPer1M": "￥1.50",
+          "outputPer1M": "￥7.50",
+          "note": "价格页折扣 3折"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "Claude稳定分组",
+          "inputPer1M": "￥2.50",
+          "outputPer1M": "￥12.50",
+          "note": "价格页折扣 5折"
+        },
+        {
+          "name": "Opus-4.6",
+          "group": "企业版专属分组",
+          "inputPer1M": "￥3.50",
+          "outputPer1M": "￥17.50",
+          "note": "价格页折扣 7折"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "订阅Max分组",
+          "inputPer1M": "￥0.90",
+          "outputPer1M": "￥4.50",
+          "note": "价格页折扣 3折"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "Claude稳定分组",
+          "inputPer1M": "￥1.50",
+          "outputPer1M": "￥7.50",
+          "note": "价格页折扣 5折"
+        },
+        {
+          "name": "Sonnet-4.6",
+          "group": "企业版专属分组",
+          "inputPer1M": "￥2.10",
+          "outputPer1M": "￥10.50",
+          "note": "价格页折扣 7折"
+        },
+        {
+          "name": "GPT-5.4",
+          "group": "CodeX基础分组",
+          "inputPer1M": "￥0.50",
+          "outputPer1M": "￥3.00",
+          "note": ""
+        },
+        {
+          "name": "GPT-5.3-Codex",
+          "group": "CodeX基础分组",
+          "inputPer1M": "￥0.35",
+          "outputPer1M": "￥2.80",
+          "note": ""
+        }
+      ],
+      "notes": "Claude 分组实扣请以 https://www.ddshub.cc/pricing 为准；可用模型以 https://www.ddshub.cc/models 为准。\n充值汇率当前按 1 人民币充值到账 1 美元额度理解。"
+    }
+  },
+  {
     "id": "siliconflow",
     "name": "SiliconFlow硅基流动",
     "homeUrl": "https://siliconflow.cn/zh-cn/",
