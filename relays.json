@@ -8,28 +8,28 @@
     "matrix": {
       "rating": {
         "stars": 5,
-        "text": "• 模型与多模态覆盖极广，社区评测里口碑靠前\n• 分组多，要自己会看公告换路"
+        "text": "• 老牌中转站，社区评测里口碑靠前\n• 模型与多模态覆盖极广"
       },
       "type": "混合多分组",
       "price": {
-        "stars": 3,
-        "text": "• 好线路不便宜，便宜组要盯波动\n• 整体偏「全而透明」而非极致低价"
+        "stars": 4,
+        "text": "• 覆盖逆向到官方多分组，既有便宜线路，也有稳定线路"
       },
       "authenticity": {
         "stars": 5,
-        "text": "• 公开接口与模型页能交叉对价\n• 多分组站里对账体验算第一梯队"
+        "text": "• 未发现掺水和作弊"
       },
       "modelCoverage": {
         "stars": 5,
-        "text": "• 聊天、绘图、音视频、办公类模型都很全\n• 适合一站式接很多能力"
+        "text": "• 覆盖Claude，GPT，Gmini，GLM，MiniMax，Kimi千问，豆包\n• 绘图、音视频模型也比较全"
       },
       "availability": {
-        "stars": 3,
-        "text": "• 部分分组会随风控、资源公告临时调整\n• 愿意换组的用户更吃香"
+        "stars": 5,
+        "text": "• 有大陆、美国、香港等多接入点\n• 服务稳定"
       },
       "convenience": {
-        "stars": 4,
-        "text": "• OpenAI 兼容，迁移成本低\n• 分组名多，第一次要花时间认准线路"
+        "stars": 5,
+        "text": "• 支持支付宝、微信"
       },
       "tags": [
         "国内模型",
@@ -40,7 +40,7 @@
       ]
     },
     "detail": {
-      "description": "国内老牌综合中转：模型与多模态能力铺得很开，价格也相对敢公开给用户对。\n适合「要覆盖面 + 能自己看公告换分组」的人，不适合只想一个低价组用到黑。",
+      "description": "国内老牌综合中转：模型与多模态能力铺得很开，价格也相对敢公开给用户对。\n适合「要覆盖面 + 能自己看公告换分组」的人，不适合只想一个低价组用到黑。\n注册送0.2算力",
       "keyModels": [
         {
           "name": "Opus-4.6",
@@ -93,7 +93,7 @@
         },
         {
           "name": "Sonnet-4.6",
-          "group": "cc",
+          ·"group": "cc",
           "inputPer1M": "￥2.40",
           "outputPer1M": "￥12.00",
           "note": "分组倍率 0.8"
@@ -410,23 +410,23 @@
       "type": "混合多分组",
       "price": {
         "stars": 4,
-        "text": "• Codex、百炼等常有友好价\n• 官转、SLB 等高质量线贵不少"
+        "text": "• 以高质量分组为主，也有一些低价分组"
       },
       "authenticity": {
-        "stars": 4,
-        "text": "• 价格页、文档对倍率与充值写得很直白\n• 便宜组仍要接受波动"
+        "stars": 5,
+        "text": "• 未发现掺水和作弊"
       },
       "modelCoverage": {
         "stars": 4,
-        "text": "• 编程常用海外模型齐\n• 智谱阿里等国内线也有\n• 每组开放模型不同"
+        "text": "• 有编程常用海外模型和智谱，阿里\n• 缺乏GLM5.1、豆包等"
       },
       "availability": {
         "stars": 4,
-        "text": "• 多节点、调度宣传到位\n• 低价组不如官池省心"
+        "text": "• 服务稳定\n• 但似乎无国内专线，延迟略高"
       },
       "convenience": {
         "stars": 4,
-        "text": "• 人民币充值、OpenAI 兼容、CLI 文档齐\n• 建令牌时务必选对分组"
+        "text": "• 支持支付宝、微信、信用卡\n• 最低充值50元"
       },
       "tags": [
         "Claude模型",
@@ -436,7 +436,7 @@
       ]
     },
     "detail": {
-      "description": "国内很活跃的编程向中转：单域名 OpenAI 兼容，Claude Code / Codex / Gemini CLI 文档齐全。\n同一模型在不同分组价差大，会选组的人性价比高，乱选则容易贵或不可用。",
+      "description": "国内很活跃的编程向中转：单域名 OpenAI 兼容，Claude Code / Codex / Gemini CLI 文档齐全。\n同一模型在不同分组价差大，会选组的人性价比高，乱选则容易贵或不可用。\n注册送1元算力。",
       "keyModels": [
         {
           "name": "Opus-4.6",
@@ -535,12 +535,12 @@
     "matrix": {
       "rating": {
         "stars": 4,
-        "text": "• 是最早、最大的大模型聚合平台之一\n• 稳定性好模型全，唯一的缺点是价格贵\n• 5000万用户，每月70T(70万亿)token"
+        "text": "• 是最早、最大的大模型聚合平台之一\n• 稳定性好模型全，唯一的缺点是价格贵\n• 5000万用户，每月70T(70万亿)token消耗"
       },
       "type": "官方纯聚合",
       "price": {
         "stars": 3,
-        "text": "• 常规定价接近官方\n• Qwen等模型常有限免\n• 部分模型永久免费"
+        "text": "• 常规定价与官方持平\n• 部分模型限时/永久免费"
       },
       "authenticity": {
         "stars": 5,
@@ -548,7 +548,7 @@
       },
       "modelCoverage": {
         "stars": 5,
-        "text": "• 300+ 模型、60+ 厂商\n• 覆盖模型极广，常见模型都能找到\n• 一些新模型会优先上OpenRouter测试"
+        "text": "• 300+ 模型、60+ 厂商\n• 覆盖模型极广，常见模型都能找到\n• 部分新模型先上OpenRouter测试"
       },
       "availability": {
         "stars": 3,
@@ -672,29 +672,29 @@
     "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
-        "stars": 4,
-        "text": "• 国内支付、多协议一站式，省心\n• 闭源模型整体仍偏「官网附近」价位"
+        "stars": 3,
+        "text": "• 官方直连，服务稳定• 主要问题就是价格高"
       },
       "type": "平台封装聚合",
       "price": {
-        "stars": 3,
-        "text": "• 按量、无月费，标价相对清楚\n• 热门闭源模型别指望特别便宜"
+        "stars": 2,
+        "text": "• 价格高和官方持平"
       },
       "authenticity": {
-        "stars": 4,
-        "text": "• 模型页与定价可对照\n• 活动价与实扣仍以账单为准"
+        "stars": 5,
+        "text": "• 无掺水、无模糊倍率、作弊"
       },
       "modelCoverage": {
-        "stars": 4,
-        "text": "• 主流 GPT / Claude / Gemini / DeepSeek 等都有\n• 具体以模型目录实时列表为准"
+        "stars": 5,
+        "text": "• Claude/GPT/Gemini/GLM5.1/ Qwen3.6/Kimi/豆包/Gork都有"
       },
       "availability": {
         "stars": 5,
-        "text": "• 面向国内有 China Zone、直连/快线说明\n• 整体比纯海外站好连"
+        "text": "• 有China Zone直连/快线\n• 官方之直连，服务稳定"
       },
       "convenience": {
         "stars": 5,
-        "text": "• 微信、支付宝常见\n• 文档按 OpenAI / Anthropic / Gemini 协议拆开，迁移方便"
+        "text": "• 支持微信、支付宝"
       },
       "tags": [
         "国内模型",
@@ -803,36 +803,35 @@
     "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
-        "stars": 4,
-        "text": "• 评测里普遍认可「贵但接口质量稳」\n• 有免费额度与多线路价表，适合认真对表的人"
+        "stars": 3,
+        "text": "• 贵但接口质量稳\n• 有免费额度与多线路价表，适合认真对表的人"
       },
       "type": "平台封装聚合",
       "price": {
-        "stars": 2,
-        "text": "• 主力线路定价偏高端\n• 低价/反代线路要单独看 provider，别默认最便宜"
+        "stars": 3,
+        "text": "• 正规线路是官方价格5～8折 \n• 有低价线路，但略贵"
       },
       "authenticity": {
         "stars": 4,
-        "text": "• 价表按 provider 拆开，能横向比\n• 等级折扣叠加后要自己算实付"
+        "text": "• 无掺水、无模糊倍率、作弊"
       },
       "modelCoverage": {
-        "stars": 4,
-        "text": "• GPT、Claude、Gemini、DeepSeek、Grok、Qwen、Kimi、豆包等齐全\n• GLM、MiniMax 等不如综合大站显眼"
+        "stars": 3,
+        "text": "• GPT、Claude、Gemini有最新模型\n• 无其他模型或落后明显"
       },
       "availability": {
         "stars": 4,
-        "text": "• 有状态页与多节点宣传\n• 路由变更时仍可能体感波动"
+        "text": "• 服务整体较稳定"
       },
       "convenience": {
-        "stars": 2,
-        "text": "• 主要走外币充值\n• 本土支付不友好\n• 首次看价表费脑"
+        "stars": 5,
+        "text": "• 支持支付宝、微信"
       },
       "tags": [
-        "开源模型",
         "Claude模型",
         "GPT模型",
         "Gemini模型",
-        "外币充值"
+        "人民币充值"
       ]
     },
     "detail": {
