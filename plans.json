@@ -455,52 +455,6 @@
   {
     "vendor": "腾讯云",
     "plan": "Lite",
-    "type": "Coding Plan",
-    "action": "https://cloud.tencent.com/act/pro/codingplan#buy",
-    "firstMonthPrice": 7.9,
-    "monthlyPrice": 40,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "HY-2.0",
-      "HY-T1",
-      "GLM-5",
-      "Kimi-K2.5",
-      "MiniMax-M2.5"
-    ],
-    "fiveHoursRequests": 1200,
-    "weeklyRequests": 9000,
-    "monthlyRequests": 18000,
-    "tokenLimit": "无限制",
-    "benefits": [],
-    "note": ""
-  },
-  {
-    "vendor": "腾讯云",
-    "plan": "Pro",
-    "type": "Coding Plan",
-    "action": "https://cloud.tencent.com/act/pro/codingplan#buy",
-    "firstMonthPrice": 39.9,
-    "monthlyPrice": 200,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "HY-2.0",
-      "HY-T1",
-      "GLM-5",
-      "Kimi-K2.5",
-      "MiniMax-M2.5"
-    ],
-    "fiveHoursRequests": 6000,
-    "weeklyRequests": 45000,
-    "monthlyRequests": 90000,
-    "tokenLimit": "无限制",
-    "benefits": [],
-    "note": ""
-  },
-  {
-    "vendor": "腾讯云",
-    "plan": "Lite",
     "type": "Token Plan",
     "action": "https://cloud.tencent.com/act/pro/tokenplan",
     "firstMonthPrice": "-",
