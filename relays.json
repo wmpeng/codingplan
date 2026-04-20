@@ -93,7 +93,7 @@
         },
         {
           "name": "Sonnet-4.6",
-          ·"group": "cc",
+          "group": "cc",
           "inputPer1M": "￥2.40",
           "outputPer1M": "￥12.00",
           "note": "分组倍率 0.8"
@@ -535,7 +535,7 @@
     "matrix": {
       "rating": {
         "stars": 4,
-        "text": "• 是最早、最大的大模型聚合平台之一\n• 稳定性好模型全，唯一的缺点是价格贵\n• 5000万用户，每月70T(70万亿)token消耗"
+        "text": "• 是最早、最大的大模型聚合平台之一\n• 稳定性好模型全，唯一的缺点是价格贵\n• 5000万用户，每月70万亿token消耗"
       },
       "type": "官方纯聚合",
       "price": {
@@ -544,11 +544,11 @@
       },
       "authenticity": {
         "stars": 5,
-        "text": "• 模型按美元/Token计费\n• 厂商与路由可指定\n• 无掺水、无模糊倍率"
+        "text": "• 请求可指定厂商与路由可指定\n• 无掺水、无模糊倍率"
       },
       "modelCoverage": {
         "stars": 5,
-        "text": "• 300+ 模型、60+ 厂商\n• 覆盖模型极广，常见模型都能找到\n• 部分新模型先上OpenRouter测试"
+        "text": "• 300+模型, 60+厂商, 模型覆盖极广\n• 部分新模型会先上OpenRouter测试"
       },
       "availability": {
         "stars": 3,
@@ -1081,28 +1081,28 @@
     "matrix": {
       "rating": {
         "stars": 4,
-        "text": "• 面向 Claude Code、Codex、Gemini CLI 的编程平台定位很明确\n• 套餐、教程和购买路径都比较完整\n• 更适合重度编码用户，不是泛模型平台"
+        "text": "• 面向编程平台定位很明确\n• 模型通道分组简单清晰"
       },
       "type": "混合多分组",
       "price": {
-        "stars": 4,
-        "text": "• Claude分官方稳/官转/逆向\n• Codex与Gemini代表线友好\n• 订阅余额30天有效"
+        "stars": 3,
+        "text": "• 分官方渠道/逆向渠道\n• Claude官方渠道低至4.5折，Codex与Gemini官方渠道<1折"
       },
       "authenticity": {
-        "stars": 3,
-        "text": "• 官方共享与逆向线分层清楚\n• 共享线路仍建议实测"
+        "stars": 4,
+        "text": "• 官方与逆向线分层清楚，官方渠道未发现掺水"
       },
       "modelCoverage": {
-        "stars": 3,
-        "text": "• 主线是Claude Code、Codex、Gemini CLI\n• 泛模型覆盖一般"
+        "stars": 4,
+        "text": "• 包括Claude、GPT、Gemini模型，支持最新Opus-4.7"
       },
       "availability": {
-        "stars": 3,
-        "text": "• 官网主打多节点容灾\n• 共享与逆向线仍受风控"
+        "stars": 4,
+        "text": "• Claude、Gemini稳定性尚可，GPT稍差"
       },
       "convenience": {
         "stars": 5,
-        "text": "• 支持支付宝微信付款\n• 套餐按量和教程都公开\n• 国内上手门槛较低"
+        "text": "• 支持支付宝付款"
       },
       "tags": [
         "Claude模型",
