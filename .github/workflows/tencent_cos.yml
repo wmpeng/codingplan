@@ -22,5 +22,8 @@ jobs:
         BUCKET: ${{ vars.TENCENT_COS_BUCKET }}
         REGION: ${{ vars.TENCENT_COS_REGION }}
       run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
+    - name: remove non-dist folders and files
+      run: rm -rf ./.*
+      run: rm -rf dev
     - name: Upload
       run: coscmd upload -rs --delete -f ./ / --ignore "./.*"
