@@ -2982,8 +2982,8 @@
                 document.title = `${h.title} - Coding Plan 对比工具`;
                 document.getElementById('pageTitle').textContent = h.title;
                 document.getElementById('updateDate').textContent = h.updateDate;
-                document.getElementById('subtitle').textContent = h.subtitle;
-                document.getElementById('models').textContent = h.models;
+                document.getElementById('subtitle').innerHTML = (h.subtitle || '').replace(/\n/g, '<br>');
+                document.getElementById('models').innerHTML = (h.models || '').replace(/\n/g, '<br>');
                 
                 if (h.github) {
                     const githubLink = document.getElementById('githubLink');
