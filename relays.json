@@ -7,7 +7,7 @@
     "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
-        "stars": 5,
+        "stars": 4,
         "text": "• 老牌中转站，社区评测里口碑靠前\n• 模型与多模态覆盖极广"
       },
       "type": "混合多分组",
@@ -16,8 +16,8 @@
         "text": "• 覆盖逆向到官方多分组，既有便宜线路，也有稳定线路"
       },
       "authenticity": {
-        "stars": 5,
-        "text": "• 未发现掺水和作弊"
+        "stars": 4,
+        "text": "• 官方分组未发现掺水和作弊\n• 低价分组可能存在少量掺水"
       },
       "modelCoverage": {
         "stars": 5,
@@ -548,7 +548,7 @@
       },
       "modelCoverage": {
         "stars": 5,
-        "text": "• 300+模型, 60+厂商, 模型覆盖极广\n• 部分新模型会先上OpenRouter测试"
+        "text": "• 300+模型，60+厂商，模型覆盖极广\n• 部分新模型会先上OpenRouter测试"
       },
       "availability": {
         "stars": 3,
@@ -1210,13 +1210,13 @@
     "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
-        "stars": 4,
+        "stars": 5,
         "text": "• 国内访问、OpenAI 兼容和本土充值都比较顺手\n• 500+ 模型覆盖很广，适合一站式接文本 + 多模态\n• 分组和公告不少，想压价仍得会挑线路"
       },
       "type": "混合多分组",
       "price": {
         "stars": 4,
-        "text": "• 低价组官转组并存\n• 稳定组会贵一些\n• 组间价差很大"
+        "text": "• 低价组官转组并存，组间差很大\n• 稳定组会贵一些"
       },
       "authenticity": {
         "stars": 4,
@@ -1224,15 +1224,15 @@
       },
       "modelCoverage": {
         "stars": 5,
-        "text": "• 海外闭源、国产模型、绘图和音视频都铺得很全\n• 更像综合大站，不是只做编程三件套"
+        "text": "• 海外闭源、国产模型、绘图和音视频都很全"
       },
       "availability": {
         "stars": 4,
-        "text": "• 企业通道和镜像较多\n• 特殊线路仍会波动\n• 高峰要会切组"
+        "text": "• 稳定性尚可，偶发小波动"
       },
       "convenience": {
-        "stars": 4,
-        "text": "• 国内主体充值顺手\n• 按量额度不过期\n• 建Token前先认分组"
+        "stars": 5,
+        "text": "• 支持支付宝"
       },
       "tags": [
         "国内模型",
@@ -1730,32 +1730,32 @@
     "name": "BUZZ",
     "homeUrl": "https://buzzai.cc/",
     "pricingUrl": "https://buzzai.cc/models",
-    "updatedAt": "2026.04.19",
+    "updatedAt": "2026.04.21",
     "matrix": {
       "rating": {
         "stars": 4,
-        "text": "• Claude / Claude Code 专项定位很明确\n• 请求透传、Prompt Cache 和无月费对重度编码用户很友好\n• 但它不是全模型平台"
+        "text": "• 只有claude模型，低价分组中比较推荐"
       },
       "type": "混合多分组",
       "price": {
-        "stars": 5,
-        "text": "• 反重/AWS/MAX价差大\n• 低价组很激进\n• 求稳就得多花钱"
+        "stars": 4,
+        "text": "• 只有低价分组，价格便宜"
       },
       "authenticity": {
         "stars": 4,
-        "text": "• 公开 pricing 接口、模型页和端点类型能互相对账\n• 低价组仍建议结合自己账单观察实扣"
+        "text": "• 未发现掺水"
       },
       "modelCoverage": {
         "stars": 2,
-        "text": "• 当前公开主线基本就是 Claude 家族\n• 适合 Anthropic / Claude Code，不适合一站式全模型需求"
+        "text": "• 就是 Claude 模型"
       },
       "availability": {
         "stars": 4,
-        "text": "• 主打多节点容量池和 Prompt Cache\n• 稳定性仍取决于分组与上游资源"
+        "text": "• 反代线路中，稳定性不错"
       },
       "convenience": {
         "stars": 4,
-        "text": "• 按量付费无月费\n• Base URL 接入省事\n• 先小额试更稳妥"
+        "text": "• 支持支付宝支付\n• 无试用额度，最低充值10元"
       },
       "tags": [
         "Claude模型",
@@ -1763,15 +1763,8 @@
       ]
     },
     "detail": {
-      "description": "面向 Claude / Claude Code 的国内专项中转：公开接口已经给出模型倍率、分组倍率和 OpenAI / Anthropic 兼容端点，接入时把 Base URL 指到 https://buzzai.cc/v1 即可。\n当前公开主线是 MAX、AWS、反重三组，模型集中在 Claude 4.x 一带；更像 Anthropic 专项站，不是覆盖几百模型的综合超市。",
+      "description": "反重力分组已下线。\n面向 Claude / Claude Code 的国内专项中转：公开接口已经给出模型倍率、分组倍率和 OpenAI / Anthropic 兼容端点，接入时把 Base URL 指到 https://buzzai.cc/v1 即可。\n当前公开主线是 MAX、AWS，模型集中在 Claude 4.x 一带；更像 Anthropic 专项站，不是覆盖几百模型的综合超市。",
       "keyModels": [
-        {
-          "name": "Opus-4.6",
-          "group": "反重分组",
-          "inputPer1M": "￥1.50",
-          "outputPer1M": "￥7.50",
-          "note": "分组倍率 0.3"
-        },
         {
           "name": "Opus-4.6",
           "group": "AWS分组",
@@ -1785,13 +1778,6 @@
           "inputPer1M": "￥9.00",
           "outputPer1M": "￥45.00",
           "note": "分组倍率 1.8"
-        },
-        {
-          "name": "Sonnet-4.6",
-          "group": "反重分组",
-          "inputPer1M": "￥0.90",
-          "outputPer1M": "￥4.50",
-          "note": "分组倍率 0.3"
         },
         {
           "name": "Sonnet-4.6",
