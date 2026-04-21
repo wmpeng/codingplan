@@ -2774,36 +2774,51 @@
             // 重置显示已下线套餐复选框
             document.getElementById('showDiscontinued').checked = false;
 
-            resetTypeFilter();
-            resetVendorFilter();
-            resetModelFilter();
-            resetFirstMonthPriceFilter();
-            resetMonthlyPriceFilter();
-            resetQuarterlyPriceFilter();
-            resetYearlyPriceFilter();
+            // 重置价格筛选状态
+            priceFilters.firstMonth.min = null;
+            priceFilters.firstMonth.max = null;
+            priceFilters.monthly.min = null;
+            priceFilters.monthly.max = null;
+            priceFilters.quarterly.min = null;
+            priceFilters.quarterly.max = null;
+            priceFilters.yearly.min = null;
+            priceFilters.yearly.max = null;
+
+            // 重置请求数筛选状态
             requestFilters.fiveHours.min = null;
             requestFilters.fiveHours.max = null;
             requestFilters.weekly.min = null;
             requestFilters.weekly.max = null;
             requestFilters.monthly.min = null;
             requestFilters.monthly.max = null;
-            resetFiveHoursRequestFilter();
-            resetWeeklyRequestFilter();
-            resetMonthlyRequestFilter();
+
+            // 重置所有滑块到初始范围
+            Object.keys(priceSliders).forEach(type => {
+                updateSliderVisuals(type, priceSliders[type].minValue, priceSliders[type].maxValue);
+            });
+            Object.keys(requestSliders).forEach(type => {
+                updateRequestSliderVisuals(type, requestSliders[type].minValue, requestSliders[type].maxValue);
+            });
+
+            resetTypeFilter();
+            resetVendorFilter();
+            resetModelFilter();
             resetTokenLimitFilter();
-            requestFilters.tokenLimit.min = null;
-            requestFilters.tokenLimit.max = null;
-            updateFiveHoursRequestCount();
-            updateWeeklyRequestCount();
-            updateMonthlyRequestCount();
-            updateTokenLimitCount();
+
             selectedTypes.clear();
             updateTypeCount();
             selectedVendors.clear();
             updateVendorCount();
-            selectedModels.clear();
-            updateModelCount();
-            currentSort = { column: null, direction: 'asc' };
+            updateFirstMonthPriceCount();
+            updateMonthlyPriceCount();
+            updateQuarterlyPriceCount();
+            updateYearlyPriceCount();
+            updateFiveHoursRequestCount();
+            updateWeeklyRequestCount();
+            updateMonthlyRequestCount();
+            updateTokenLimitCount();
+            applyFilters();
+        }
             document.querySelectorAll('th').forEach(th => {
                 th.classList.remove('sort-asc', 'sort-desc');
             });
