@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 对比",
-    "updateDate": "更新日期2026.4.20 | 腾讯下线CodingPlan，保留TokenPlan",
+    "updateDate": "更新日期2026.4.21 | 阿里上线TokenPlan",
     "subtitle": "十大平台 智谱AI、Kimi、MiniMax、小米·MiMo、字节·方舟、阿里·百炼、百度·千帆、腾讯云、京东云、讯飞·星火，全面对比",
     "models": "支持GLM-5.1，Qwen-3.6，MiniMax-M2.7，Doubao-Seed-2.0，MiMo-V2-Pro，Kimi-K2.5等模型",
     "github": {
@@ -116,6 +116,12 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.4.21",
+      "items": [
+        "阿里上线TokenPlan"
+      ]
+    },
     {
       "date": "2026.4.20",
       "items": [

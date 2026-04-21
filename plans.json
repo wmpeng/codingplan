@@ -339,6 +339,96 @@
   },
   {
     "vendor": "阿里·百炼",
+    "plan": "标准",
+    "type": "Token Plan",
+    "action": "https://common-buy.aliyun.com/token-plan/",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 198,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Qwen-3.6-Plus",
+      "Qwen-3.5-Plus",
+      "MiniMax-M2.5",
+      "DeepSeek-V3.2"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "tokenLimit": 150,
+    "benefits": [],
+    "note": "Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83KToken/Credit。\n按缓存命中率85%，输入输出9:1算，约5.6K Token/Credit。表格按6K/Credit算"
+  },
+  {
+    "vendor": "阿里·百炼",
+    "plan": "标准",
+    "type": "Token Plan",
+    "action": "https://common-buy.aliyun.com/token-plan/",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 698,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Qwen-3.6-Plus",
+      "Qwen-3.5-Plus",
+      "MiniMax-M2.5",
+      "DeepSeek-V3.2"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "tokenLimit": 600,
+    "benefits": [],
+    "note": "按输入输出9:1，缓存命中率90%算，大约6K Token"
+  },
+  {
+    "vendor": "阿里·百炼",
+    "plan": "标准",
+    "type": "Token Plan",
+    "action": "https://common-buy.aliyun.com/token-plan/",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 1398,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Qwen-3.6-Plus",
+      "Qwen-3.5-Plus",
+      "MiniMax-M2.5",
+      "DeepSeek-V3.2"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "tokenLimit": 1500,
+    "benefits": [],
+    "note": "按输入输出9:1，缓存命中率90%算，大约6K Token"
+  },
+  {
+    "vendor": "阿里·百炼",
+    "plan": "Lite",
+    "type": "Coding Plan",
+    "action": "https://www.aliyun.com/benefit/scene/codingplan",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 40,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Qwen-3.6-Plus",
+      "Qwen-3.5-Plus",
+      "MiniMax-M2.5",
+      "GLM-5",
+      "Kimi-K2.5"
+    ],
+    "fiveHoursRequests": 1200,
+    "weeklyRequests": 9000,
+    "monthlyRequests": 18000,
+    "tokenLimit": "无限制",
+    "benefits": [],
+    "note": "",
+    "discontinued": true
+  },
+  {
+    "vendor": "阿里·百炼",
     "plan": "Pro",
     "type": "Coding Plan",
     "action": "https://www.aliyun.com/benefit/scene/codingplan",
@@ -348,7 +438,7 @@
     "yearlyPrice": "-",
     "models": [
       "Qwen-3.6-Plus",
-      "Qwen-3.5系列",
+      "Qwen-3.5-Plus",
       "MiniMax-M2.5",
       "GLM-5",
       "Kimi-K2.5"
@@ -358,8 +448,7 @@
     "monthlyRequests": 90000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "",
-    "discontinued": true
+    "note": ""
   },
   {
     "vendor": "小米·MiMo",
@@ -382,7 +471,7 @@
     "benefits": [
       "TTS限时免费"
     ],
-    "note": "• 60M(6000万) Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+    "note": "• 60M(6000万) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
   },
   {
     "vendor": "小米·MiMo",
@@ -405,7 +494,7 @@
     "benefits": [
       "TTS限时免费"
     ],
-    "note": "• 200M(2亿) Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+    "note": "• 200M(2亿) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
   },
   {
     "vendor": "小米·MiMo",
@@ -428,7 +517,7 @@
     "benefits": [
       "TTS限时免费"
     ],
-    "note": "• 700M(7亿) Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+    "note": "• 700M(7亿) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
   },
   {
     "vendor": "小米·MiMo",
@@ -451,7 +540,55 @@
     "benefits": [
       "TTS限时免费"
     ],
-    "note": "• 1600M(16亿) Credits，无5小时限额，支持集中消耗\n• 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+    "note": "• 1600M(16亿) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+  },
+  {
+    "vendor": "腾讯云",
+    "plan": "Lite",
+    "type": "Coding Plan",
+    "action": "https://cloud.tencent.com/act/pro/codingplan#buy",
+    "firstMonthPrice": 7.9,
+    "monthlyPrice": 40,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "HY-2.0",
+      "HY-T1",
+      "GLM-5",
+      "Kimi-K2.5",
+      "MiniMax-M2.5"
+    ],
+    "fiveHoursRequests": 1200,
+    "weeklyRequests": 9000,
+    "monthlyRequests": 18000,
+    "tokenLimit": "无限制",
+    "benefits": [],
+    "note": "",
+    "discontinued": true
+  },
+  {
+    "vendor": "腾讯云",
+    "plan": "Pro",
+    "type": "Coding Plan",
+    "action": "https://cloud.tencent.com/act/pro/codingplan#buy",
+    "firstMonthPrice": 39.9,
+    "monthlyPrice": 200,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "HY-2.0",
+      "HY-T1",
+      "GLM-5",
+      "Kimi-K2.5",
+      "MiniMax-M2.5"
+    ],
+    "fiveHoursRequests": 6000,
+    "weeklyRequests": 45000,
+    "monthlyRequests": 90000,
+    "tokenLimit": "无限制",
+    "benefits": [],
+    "note": "",
+    "discontinued": true
   },
   {
     "vendor": "腾讯云",
