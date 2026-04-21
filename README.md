@@ -1,12 +1,13 @@
 # AI Coding Plan 对比工具
 
-> 更新日期2026.4.15 | 添加讯飞·星火套餐数据
+> 更新日期2026.4.21 | 阿里上线TokenPlan
 
 ## 📖 简介
 
 十大平台 智谱AI、Kimi、MiniMax、小米·MiMo、字节·方舟、阿里·百炼、百度·千帆、腾讯云、京东云、讯飞·星火，全面对比
+支持GLM-5.1，Qwen-3.6，MiniMax-M2.7，Kimi-K2.6，Doubao-Seed-2.0，MiMo-V2-Pro等模型
 
-支持Qwen-3.6，Qwen-3.5，Doubao-Seed-2.0，MiniMax-M2.7，MiniMax-M2.5，GLM-5.1，GLM-5，MiMo-V2-Pro，Kimi-K2.5等模型
+整体趋势已经开始用TokenPlan替换CodingPlan了，且买且珍惜
 
 ### 在线访问
 
@@ -54,15 +55,19 @@
 | MiniMax | Max | Coding Plan | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=9Y0LERC65q&source=link) | - | ¥119 | - / 季 | ¥1190 ~~1428~~ / 年 | MiniMax-M2.7, MiniMax-M2.5 | 4,500 | 45,000 | 180,000 | - | • 约50TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
 | MiniMax | Plus-极速 | Coding Plan | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=9Y0LERC65q&source=link) | - | ¥98 | - / 季 | ¥980 ~~1176~~ / 年 | MiniMax-M2.7-highspeed, MiniMax-M2.5-highspeed | 1,500 | 15,000 | 60,000 | - | • 约100TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
 | MiniMax | Max-极速 | Coding Plan | [跳转](https://platform.minimaxi.com/subscribe/token-plan?code=9Y0LERC65q&source=link) | - | ¥199 | - / 季 | ¥1990 ~~2388~~ / 年 | MiniMax-M2.7-highspeed, MiniMax-M2.5-highspeed | 4,500 | 45,000 | 180,000 | - | • 约100TPS • 官方只有周限量无月限量，这里按照1月=4周计算 |
-| 讯飞·星火 | Pro | Coding Plan | [跳转](  https://maas.xfyun.cn/packageSubscription?inviteCode=MAAS-A4227EAE) | - | ¥39 | - / 季 | - / 年 | GLM-5, Qwen3.5-397B-A17B, MiniMax-M2.5, Kimi-K2.5, Spark X2, DeepSeek-V3.2 | 1,200 | 9,000 | 18,000 | - | - |
-| 讯飞·星火 | Max | Coding Plan | [跳转](  https://maas.xfyun.cn/packageSubscription?inviteCode=MAAS-A4227EAE) | - | ¥199 | - / 季 | - / 年 | GLM-5.1, Qwen3.5-397B-A17B, GLM-5, MiniMax-M2.5, Kimi-K2.5, Spark X2, DeepSeek-V3.2 | 6,000 | 45,000 | 90,000 | - | • GLM5.1是**128K**上下文的，官方说正在解决这个问题 |
+| 讯飞·星火 | Pro | Coding Plan | [跳转](  https://maas.xfyun.cn/packageSubscription?inviteCode=MAAS-A4227EAE) | - | ¥39 | - / 季 | - / 年 | GLM-5, Qwen-3.5-Plus, MiniMax-M2.5, Kimi-K2.5, Spark-X2, DeepSeek-V3.2 | 1,200 | 9,000 | 18,000 | - | - |
+| 讯飞·星火 | Max | Coding Plan | [跳转](  https://maas.xfyun.cn/packageSubscription?inviteCode=MAAS-A4227EAE) | - | ¥199 | - / 季 | - / 年 | GLM-5.1, Qwen-3.5-Plus, GLM-5, MiniMax-M2.5, Kimi-K2.5, Spark-X2, DeepSeek-V3.2 | 6,000 | 45,000 | 90,000 | - | • GLM5.1是**128K**上下文的，官方说正在解决这个问题 |
 | 字节·方舟 | Lite | Coding Plan | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥40 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 1,200 | 9,000 | 18,000 | ArkClaw 7天体验 | - |
 | 字节·方舟 | Pro | Coding Plan | [跳转](https://volcengine.com/L/uCoen5sFGaY/) | - | ¥200 | - / 季 | - / 年 | Doubao-Seed-2.0, MiniMax-M2.5, Kimi-K2.5, GLM-4.7, DeepSeek-V3.2 | 6,000 | 45,000 | 90,000 | 免费ArkClaw | - |
-| 阿里·百炼 | Pro | Coding Plan | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | - | ¥200 | - / 季 | - / 年 | Qwen-3.6-Plus, Qwen-3.5系列, MiniMax-M2.5, GLM-5, Kimi-K2.5 | 6,000 | 45,000 | 90,000 | - | - |
-| 小米·MiMo | Lite | Token Plan | [跳转](https://mimo.mi.com/) | ¥34.32 | ¥39 | - / 季 | - / 年 | MiMo-V2-Pro, MiMo-V2-Omni, MiMo-V2-TTS | 无限制 | 无限制 | 无限制 | TTS限时免费 | • 60M(6000万) Credits，无5小时限额，支持集中消耗 • 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x |
-| 小米·MiMo | Standard | Token Plan | [跳转](https://mimo.mi.com/) | ¥87.12 | ¥99 | - / 季 | - / 年 | MiMo-V2-Pro, MiMo-V2-Omni, MiMo-V2-TTS | 无限制 | 无限制 | 无限制 | TTS限时免费 | • 200M(2亿) Credits，无5小时限额，支持集中消耗 • 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x |
-| 小米·MiMo | Pro | Token Plan | [跳转](https://mimo.mi.com/) | ¥289.52 | ¥329 | - / 季 | - / 年 | MiMo-V2-Pro, MiMo-V2-Omni, MiMo-V2-TTS | 无限制 | 无限制 | 无限制 | TTS限时免费 | • 700M(7亿) Credits，无5小时限额，支持集中消耗 • 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x |
-| 小米·MiMo | Max | Token Plan | [跳转](https://mimo.mi.com/) | ¥579.92 | ¥659 | - / 季 | - / 年 | MiMo-V2-Pro, MiMo-V2-Omni, MiMo-V2-TTS | 无限制 | 无限制 | 无限制 | TTS限时免费 | • 1600M(16亿) Credits，无5小时限额，支持集中消耗 • 倍率 MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x |
+| 阿里·百炼 | 标准 | Token Plan | [跳转](https://common-buy.aliyun.com/token-plan/) | - | ¥198 | - / 季 | - / 年 | Qwen-3.6-Plus, Qwen-3.5-Plus, MiniMax-M2.5, DeepSeek-V3.2 | 无限制 | 无限制 | 无限制 | - | • Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit • 合输入¥1.58/MToken，缓存¥0.32/MToken，输出¥9.54/MToken • 按缓存命中率85%，输入输出9:1算，约5.6K Token/Credit。表格按6K Token/Credit算 |
+| 阿里·百炼 | 高级 | Token Plan | [跳转](https://common-buy.aliyun.com/token-plan/) | - | ¥698 | - / 季 | - / 年 | Qwen-3.6-Plus, Qwen-3.5-Plus, MiniMax-M2.5, DeepSeek-V3.2 | 无限制 | 无限制 | 无限制 | - | • Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit • 合输入¥1.40/MToken，缓存¥0.28/MToken，输出¥8.41/MToken • 按缓存命中率85%，输入输出9:1算，约5.6K Token/Credit。表格按6K Token/Credit算 |
+| 阿里·百炼 | 尊享 | Token Plan | [跳转](https://common-buy.aliyun.com/token-plan/) | - | ¥1398 | - / 季 | - / 年 | Qwen-3.6-Plus, Qwen-3.5-Plus, MiniMax-M2.5, DeepSeek-V3.2 | 无限制 | 无限制 | 无限制 | - | • Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit • 合输入¥1.12/MToken，缓存¥0.22/MToken，输出¥6.74/MToken • 按缓存命中率85%，输入输出9:1算，约5.6K Token/Credit。表格按6K Token/Credit算 |
+| 阿里·百炼 | Lite | Coding Plan | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | - | ¥40 | - / 季 | - / 年 | Qwen-3.6-Plus, Qwen-3.5-Plus, MiniMax-M2.5, GLM-5, Kimi-K2.5 | 1,200 | 9,000 | 18,000 | - | - |
+| 阿里·百炼 | Pro | Coding Plan | [跳转](https://www.aliyun.com/benefit/scene/codingplan) | - | ¥200 | - / 季 | - / 年 | Qwen-3.6-Plus, Qwen-3.5-Plus, MiniMax-M2.5, GLM-5, Kimi-K2.5 | 6,000 | 45,000 | 90,000 | - | - |
+| 小米·MiMo | Lite | Token Plan | [跳转](https://mimo.mi.com/) | ¥34.32 | ¥39 | - / 季 | - / 年 | MiMo-V2-Pro, MiMo-V2-Omni, MiMo-V2-TTS | 无限制 | 无限制 | 无限制 | TTS限时免费 | • 60M(6000万) Credits，无5小时限额，支持集中消耗 • 按照2x计算Token，实际倍率：MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x |
+| 小米·MiMo | Standard | Token Plan | [跳转](https://mimo.mi.com/) | ¥87.12 | ¥99 | - / 季 | - / 年 | MiMo-V2-Pro, MiMo-V2-Omni, MiMo-V2-TTS | 无限制 | 无限制 | 无限制 | TTS限时免费 | • 200M(2亿) Credits，无5小时限额，支持集中消耗 • 按照2x计算Token，实际倍率：MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x |
+| 小米·MiMo | Pro | Token Plan | [跳转](https://mimo.mi.com/) | ¥289.52 | ¥329 | - / 季 | - / 年 | MiMo-V2-Pro, MiMo-V2-Omni, MiMo-V2-TTS | 无限制 | 无限制 | 无限制 | TTS限时免费 | • 700M(7亿) Credits，无5小时限额，支持集中消耗 • 按照2x计算Token，实际倍率：MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x |
+| 小米·MiMo | Max | Token Plan | [跳转](https://mimo.mi.com/) | ¥579.92 | ¥659 | - / 季 | - / 年 | MiMo-V2-Pro, MiMo-V2-Omni, MiMo-V2-TTS | 无限制 | 无限制 | 无限制 | TTS限时免费 | • 1600M(16亿) Credits，无5小时限额，支持集中消耗 • 按照2x计算Token，实际倍率：MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x |
 | 腾讯云 | Lite | Coding Plan | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥7.9 | ¥40 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 1,200 | 9,000 | 18,000 | - | - |
 | 腾讯云 | Pro | Coding Plan | [跳转](https://cloud.tencent.com/act/pro/codingplan#buy) | ¥39.9 | ¥200 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 6,000 | 45,000 | 90,000 | - | - |
 | 腾讯云 | Lite | Token Plan | [跳转](https://cloud.tencent.com/act/pro/tokenplan) | - | ¥39 | - / 季 | - / 年 | HY-2.0, HY-T1, GLM-5, Kimi-K2.5, MiniMax-M2.5 | 无限制 | 无限制 | 无限制 | - | 注意此为TokenPlan，而非CodingPlan。35M(3500万) Tokens 额度，约 70 轮问答 |
@@ -72,11 +77,11 @@
 | 百度·千帆 | Lite | Coding Plan | [跳转](https://cloud.baidu.com/product/codingplan.html) | - | ¥40 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.5, DeepSeek-V3.2 | 1,200 | 9,000 | 18,000 | - | 使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill |
 | 百度·千帆 | Pro | Coding Plan | [跳转](https://cloud.baidu.com/product/codingplan.html) | - | ¥200 | - / 季 | - / 年 | GLM-5, Kimi-K2.5, MiniMax-M2.5, DeepSeek-V3.2 | 6,000 | 45,000 | 90,000 | - | 使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill |
 | 京东云 | Lite | Coding Plan | [跳转](https://www.jdcloud.com/cn/pages/codingplan) | ¥19.9 | ¥40 | - / 季 | - / 年 | Kimi-K2.5, GLM-5, MiniMax-M2.5, DeepSeek-V3.2, Qwen-3-Coder | 1,200 | 9,000 | 18,000 | - | - |
-| 京东云 | Pro | Coding Plan | [跳转](https://www.jdcloud.com/cn/pages/codingplan) | ¥99.9 | ¥200 | - / 季 | - / 年 | Kimi-K2.5, GLM-5, MiniMax-M2.5, DeepSeek-V3.2, Qwen3-Coder | 6,000 | 45,000 | 90,000 | - | - |
-| Kimi | Andante | Coding Plan | [跳转](https://www.kimi.com/code) | - | ¥49 | - / 季 | ¥468 ~~588~~ / 年 | Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | 未公开 | - | Agent 4 倍速 |
-| Kimi | Moderato | Coding Plan | [跳转](https://www.kimi.com/code) | - | ¥99 | - / 季 | ¥948 ~~1188~~ / 年 | Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | 未公开 | - | 4 倍额度, Agent 多任务并行 |
-| Kimi | Allegretto | Coding Plan | [跳转](https://www.kimi.com/code) | - | ¥199 | - / 季 | ¥1908 ~~2388~~ / 年 | Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | 未公开 | 免费Kimi-Claw | 20 倍额度 |
-| Kimi | Allegro | Coding Plan | [跳转](https://www.kimi.com/code) | - | ¥699 | - / 季 | ¥6708 ~~8388~~ / 年 | Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | 未公开 | 免费Kimi-Claw | 60 倍额度 |
+| 京东云 | Pro | Coding Plan | [跳转](https://www.jdcloud.com/cn/pages/codingplan) | ¥99.9 | ¥200 | - / 季 | - / 年 | Kimi-K2.5, GLM-5, MiniMax-M2.5, DeepSeek-V3.2, Qwen-3-Coder | 6,000 | 45,000 | 90,000 | - | - |
+| Kimi | Andante | Coding Plan | [跳转](https://www.kimi.com/code) | - | ¥49 | - / 季 | ¥468 ~~588~~ / 年 | Kimi-K2.6, Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | 未公开 | - | Agent 4 倍速 |
+| Kimi | Moderato | Coding Plan | [跳转](https://www.kimi.com/code) | - | ¥99 | - / 季 | ¥948 ~~1188~~ / 年 | Kimi-K2.6, Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | 未公开 | - | 4 倍额度, Agent 多任务并行 |
+| Kimi | Allegretto | Coding Plan | [跳转](https://www.kimi.com/code) | - | ¥199 | - / 季 | ¥1908 ~~2388~~ / 年 | Kimi-K2.6, Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | 未公开 | 免费Kimi-Claw | 20 倍额度 |
+| Kimi | Allegro | Coding Plan | [跳转](https://www.kimi.com/code) | - | ¥699 | - / 季 | ¥6708 ~~8388~~ / 年 | Kimi-K2.6, Kimi-K2.5, Kimi-K2 | 未公开 | 未公开 | 未公开 | 免费Kimi-Claw | 60 倍额度 |
 
 
 💡 **说明**
