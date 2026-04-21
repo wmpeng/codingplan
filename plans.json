@@ -358,7 +358,8 @@
     "monthlyRequests": 90000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": ""
+    "note": "",
+    "discontinued": true
   },
   {
     "vendor": "小米·MiMo",
