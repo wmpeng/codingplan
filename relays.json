@@ -1210,8 +1210,8 @@
     "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
-        "stars": 5,
-        "text": "• 国内访问、OpenAI 兼容和本土充值都比较顺手\n• 500+ 模型覆盖很广，适合一站式接文本 + 多模态\n• 分组和公告不少，想压价仍得会挑线路"
+        "stars": 4,
+        "text": "• • 500+ 模型覆盖很广\n• 国内访问网络情况好"
       },
       "type": "混合多分组",
       "price": {
@@ -1219,16 +1219,16 @@
         "text": "• 低价组官转组并存，组间差很大\n• 稳定组会贵一些"
       },
       "authenticity": {
-        "stars": 4,
-        "text": "• 价页、分组倍率和实扣逻辑较好核对\n• 最终实扣仍要看你选的分组"
+        "stars": 3,
+        "text": "• 怀疑Claude模型可能会有轻度掺水"
       },
       "modelCoverage": {
         "stars": 5,
-        "text": "• 海外闭源、国产模型、绘图和音视频都很全"
+        "text": "• 海外各家模型、国产各家模型覆盖很全\n• 绘图和音视频也都有"
       },
       "availability": {
         "stars": 4,
-        "text": "• 稳定性尚可，偶发小波动"
+        "text": "• 稳定性尚可，有些分组偶发小波动\n• 全球多网络节点网络情况好"
       },
       "convenience": {
         "stars": 5,
@@ -1743,7 +1743,7 @@
       },
       "authenticity": {
         "stars": 4,
-        "text": "• 未发现掺水"
+        "text": "• 未发现掺水、倍率造假等"
       },
       "modelCoverage": {
         "stars": 2,
@@ -1805,29 +1805,29 @@
     "updatedAt": "2026.04.19",
     "matrix": {
       "rating": {
-        "stars": 4,
+        "stars": 3,
         "text": "• Claude Code / GPT 编程场景定位清楚\n• 文档和安装教程完整，适合国内开发者\n• 综合覆盖仍不算大而全"
       },
       "type": "混合多分组",
       "price": {
-        "stars": 4,
-        "text": "• Claude公开3/5/7折分层\n• GPT公开价也有竞争力\n• 定制组门槛更高"
+        "stars":3,
+        "text": "• Claude公开3/5/7折分层\n• GPT价格比较便宜"
       },
       "authenticity": {
         "stars": 4,
-        "text": "• 主力组少见掺水争议\n• 不同分组仍建议自测\n• 定制组单独核验"
+        "text": "• 主力组少见掺水争议"
       },
       "modelCoverage": {
         "stars": 3,
-        "text": "• 主线是Claude+GPT\n• Gemini仍在补齐\n• 更偏编程双主线"
+        "text": "• 主线是Claude+GPT\n• Gemini即将上线"
       },
       "availability": {
-        "stars": 4,
-        "text": "• 官网和文档都主打国内开发者可用性\n• 便宜组与企业组在稳定性上会有层次差异"
+        "stars": 3,
+        "text": "• GPT稳定性不错\n• Claude稳定性有待提高"
       },
       "convenience": {
         "stars": 4,
-        "text": "• 1:1 充值、Windows / macOS 教程和 Claude Code 配置都很完整\n• 定制组需要更高充值门槛"
+        "text": "• 国内充值方便，10元起充\n• 无试用额度"
       },
       "tags": [
         "Claude模型",
@@ -1841,57 +1841,57 @@
         {
           "name": "Opus-4.6",
           "group": "订阅Max分组",
-          "inputPer1M": "￥1.50",
-          "outputPer1M": "￥7.50",
+          "inputPer1M": "$1.50",
+          "outputPer1M": "$7.50",
           "note": "价格页折扣 3折"
         },
         {
           "name": "Opus-4.6",
           "group": "Claude稳定分组",
-          "inputPer1M": "￥2.50",
-          "outputPer1M": "￥12.50",
+          "inputPer1M": "$2.50",
+          "outputPer1M": "$12.50",
           "note": "价格页折扣 5折"
         },
         {
           "name": "Opus-4.6",
           "group": "企业版专属分组",
-          "inputPer1M": "￥3.50",
-          "outputPer1M": "￥17.50",
+          "inputPer1M": "$3.50",
+          "outputPer1M": "$17.50",
           "note": "价格页折扣 7折"
         },
         {
           "name": "Sonnet-4.6",
           "group": "订阅Max分组",
-          "inputPer1M": "￥0.90",
-          "outputPer1M": "￥4.50",
+          "inputPer1M": "$0.90",
+          "outputPer1M": "$4.50",
           "note": "价格页折扣 3折"
         },
         {
           "name": "Sonnet-4.6",
           "group": "Claude稳定分组",
-          "inputPer1M": "￥1.50",
-          "outputPer1M": "￥7.50",
+          "inputPer1M": "$1.50",
+          "outputPer1M": "$7.50",
           "note": "价格页折扣 5折"
         },
         {
           "name": "Sonnet-4.6",
           "group": "企业版专属分组",
-          "inputPer1M": "￥2.10",
-          "outputPer1M": "￥10.50",
+          "inputPer1M": "$2.10",
+          "outputPer1M": "$10.50",
           "note": "价格页折扣 7折"
         },
         {
           "name": "GPT-5.4",
           "group": "CodeX基础分组",
-          "inputPer1M": "￥0.50",
-          "outputPer1M": "￥3.00",
+          "inputPer1M": "$0.50",
+          "outputPer1M": "$3.00",
           "note": ""
         },
         {
           "name": "GPT-5.3-Codex",
           "group": "CodeX基础分组",
-          "inputPer1M": "￥0.35",
-          "outputPer1M": "￥2.80",
+          "inputPer1M": "$0.35",
+          "outputPer1M": "$2.80",
           "note": ""
         }
       ],
