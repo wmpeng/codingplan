@@ -2771,6 +2771,9 @@
         }
 
         function resetAllFilters() {
+            // 重置显示已下线套餐复选框
+            document.getElementById('showDiscontinued').checked = false;
+
             resetTypeFilter();
             resetVendorFilter();
             resetModelFilter();
