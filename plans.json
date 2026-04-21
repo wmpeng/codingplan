@@ -249,10 +249,10 @@
     "yearlyPrice": "-",
     "models": [
       "GLM-5",
-      "Qwen3.5-397B-A17B",
+      "Qwen-3.5-Plus",
       "MiniMax-M2.5",
       "Kimi-K2.5",
-      "Spark X2",
+      "Spark-X2",
       "DeepSeek-V3.2"
     ],
     "fiveHoursRequests": 1200,
@@ -273,11 +273,11 @@
     "yearlyPrice": "-",
     "models": [
       "GLM-5.1",
-      "Qwen3.5-397B-A17B",
+      "Qwen-3.5-Plus",
       "GLM-5",
       "MiniMax-M2.5",
       "Kimi-K2.5",
-      "Spark X2",
+      "Spark-X2",
       "DeepSeek-V3.2"
     ],
     "fiveHoursRequests": 6000,
@@ -763,7 +763,7 @@
       "GLM-5",
       "MiniMax-M2.5",
       "DeepSeek-V3.2",
-      "Qwen3-Coder"
+      "Qwen-3-Coder"
     ],
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
