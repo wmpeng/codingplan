@@ -419,6 +419,50 @@
             transform: translateY(-1px);
         }
 
+        /* 显示已下线套餐复选框 */
+        .filter-checkbox {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            transition: all 0.2s;
+        }
+
+        .checkbox-label:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--accent-primary);
+            cursor: pointer;
+        }
+
+        .checkbox-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            user-select: none;
+        }
+
+        .checkbox-label:has(input:checked) {
+            border-color: var(--accent-primary);
+            background: var(--accent-primary-bg);
+        }
+
+        .checkbox-label:has(input:checked) .checkbox-text {
+            color: var(--text-primary);
+        }
+
         /* 统计信息 */
         .stats-bar {
             color: var(--text-tertiary);
@@ -913,6 +957,29 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
+        }
+
+        /* 表格行 - 已下线样式 */
+        .plan-row.discontinued {
+            background-color: var(--bg-tertiary) !important;
+            opacity: 0.7;
+        }
+
+        .plan-row.discontinued .vendor-name,
+        .plan-row.discontinued .plan-name,
+        .plan-row.discontinued .model-tag,
+        .plan-row.discontinued .benefit {
+            color: var(--text-tertiary);
+        }
+
+        .status-offline {
+            display: inline-block;
+            padding: 2px 8px;
+            background-color: var(--text-tertiary);
+            color: var(--bg-primary);
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: 600;
         }
 
         .recommendation-card {
@@ -1533,6 +1600,14 @@
                 </div>
             </div>
 
+            <!-- 显示已下线套餐 -->
+            <div class="filter-checkbox">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="showDiscontinued" onchange="applyFilters()">
+                    <span class="checkbox-text">显示已下线套餐</span>
+                </label>
+            </div>
+
             <!-- 重置按钮 -->
             <button class="reset-btn" onclick="resetAllFilters()">重置筛选</button>
 
@@ -1562,6 +1637,7 @@
                             <th class="sortable" data-column="monthlyRequests">每月总请求数</th>
                             <th class="sortable" data-column="tokenLimit">Token上限</th>
                             <th>其他权益</th>
+                            <th>状态</th>
                             <th class="note-header">备注</th>
                         </tr>
                     </thead>
@@ -2133,6 +2209,12 @@
         // 应用筛选
         function applyFilters() {
             filteredPlans = allPlans.filter(plan => {
+                // 已下线筛选：默认隐藏已下线套餐
+                const showDiscontinued = document.getElementById('showDiscontinued').checked;
+                if (plan.discontinued && !showDiscontinued) {
+                    return false;
+                }
+
                 // 类型筛选
                 if (selectedTypes.size > 0 && !selectedTypes.has(plan.type || 'Coding Plan')) {
                     return false;
@@ -2851,7 +2933,7 @@
             if (filteredPlans.length === 0) {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="15">
+                        <td colspan="16">
                             <div class="empty-state">
                                 <div class="empty-state-icon">📭</div>
                                 <div class="empty-state-text">没有找到符合条件的套餐</div>
@@ -2864,7 +2946,7 @@
             }
 
             tableBody.innerHTML = filteredPlans.map(plan => `
-                <tr>
+                <tr class="plan-row${plan.discontinued ? ' discontinued' : ''}">
                     <td class="sticky-first"><span class="vendor-name">${escapeHtml(plan['vendor'])}</span></td>
                     <td class="sticky-second"><span class="plan-name">${escapeHtml(plan['plan'])}</span></td>
                     <td><span class="type-tag ${(plan.type || 'Coding Plan') === 'Token Plan' ? 'token-plan' : 'coding-plan'}">${escapeHtml(plan.type || 'Coding Plan')}</span></td>
@@ -2887,6 +2969,7 @@
                     <td>
                         ${plan.benefits.map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}
                     </td>
+                    <td>${plan.discontinued ? '<span class="status-offline">已下线</span>' : ''}</td>
                     <td><span class="note">${(plan['note'] || '').replace(/\n/g, '<br>')}</span></td>
                 </tr>
             `).join('');
@@ -3196,7 +3279,7 @@
             try {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="15">
+                        <td colspan="16">
                             <div class="loading">加载数据中</div>
                         </td>
                     </tr>
@@ -3227,7 +3310,7 @@
                 console.error('加载数据失败:', error);
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="15">
+                        <td colspan="16">
                             <div class="empty-state">
                                 <div class="empty-state-icon">❌</div>
                                 <div class="empty-state-text">数据加载失败</div>

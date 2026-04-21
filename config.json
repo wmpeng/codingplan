@@ -94,6 +94,7 @@
       "monthlyRequests": "每月请求数",
       "tokenLimit": "Token上限",
       "benefits": "其他权益",
+      "discontinued": "状态",
       "note": "备注"
     }
   },
