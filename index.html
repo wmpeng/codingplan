@@ -2819,11 +2819,6 @@
             updateTokenLimitCount();
             applyFilters();
         }
-            document.querySelectorAll('th').forEach(th => {
-                th.classList.remove('sort-asc', 'sort-desc');
-            });
-            applyFilters();
-        }
 
         // 排序数据
         function sortData(column, direction = 'asc') {
