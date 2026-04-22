@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 对比",
-    "updateDate": "更新日期2026.4.21 | 阿里上线TokenPlan",
+    "updateDate": "更新日期2026.4.22 | 阿里上线TokenPlan",
     "subtitle": "十大平台 智谱AI、Kimi、MiniMax、小米·MiMo、字节·方舟、阿里·百炼、百度·千帆、腾讯云、京东云、讯飞·星火，全面对比\n支持GLM-5.1，Qwen-3.6，MiniMax-M2.7，Kimi-K2.6，Doubao-Seed-2.0，MiMo-V2-Pro等模型",
     "models": "整体趋势已经开始用TokenPlan替换CodingPlan了，且买且珍惜",
     "github": {
@@ -14,7 +14,7 @@
       "name": "智谱AI",
       "rating": 5,
       "reasons": [
-        "独占GLM5.1模型。+1",
+        "支持GLM5.1模型。+1",
         "提供免费MCP次数。+1",
         "**发现个抢购的[油猴脚本](https://greasyfork.org/zh-CN/scripts/571507-%E6%99%BA%E8%B0%B1-glm-coding-%E7%89%B9%E6%83%A0%E8%AE%A2%E8%B4%AD%E6%8A%A2%E8%B4%AD%E5%8A%A9%E6%89%8B) 打不开可以用[github讨论](https://github.com/wmpeng/codingplan/discussions/22)**"
       ]
@@ -23,41 +23,42 @@
       "name": "MiniMax",
       "rating": 5,
       "reasons": [
-        "支持SOTA模型的入门套餐中，常规价格最低。+1",
+        "提供的套餐中，常规价格最低。+1",
         "独占MiniMax-M2.7模型。+1"
       ]
     },
     {
       "name": "讯飞·星火",
-      "rating": 4,
+      "rating": 5,
       "reasons": [
-        "高效版支持GLM5.1(**128k**上下文)。+0.5",
-        "无忧版即支持无次Qwen3.5-35B-A3B（20M/日）。+0.5"
+        "高效版支持GLM5.1。+1",
+        "无忧版即支持无次Qwen3.5-35B-A3B（20M/日）。+1"
       ]
     },
     {
       "name": "字节·方舟",
       "rating": 4,
       "reasons": [
-        "独占Doubao-Seed-2.0系列模型。+1",
-        "不支持GLM-5，只支持GLM-4.7。-1",
-        "赠送真OpenClaw。+1"
+        "独占Doubao-Seed-2.0系列模型，支持GLM-5.1，K-2.6，M2.7。+1",
+        "赠送真OpenClaw。+1",
+        "普遍反馈用量减得很快，倍率不清晰。-1"
+      ]
+    },
+    {
+      "name": "Kimi",
+      "rating": 3.5,
+      "reasons": [
+        "支持K2.6。+1",
+        "提供实验性专业数据库功能。+0.5",
+        "用量不明确，推测是比其他家用量要少。-1"
       ]
     },
     {
       "name": "阿里·百炼",
       "rating": 3,
       "reasons": [
-        "独占Qwen-3.6-Plus、Qwen-3.5系列模型。+1",
-        "只有pro套餐，轻量使用性价比不高。-1"
-      ]
-    },
-    {
-      "name": "小米·MiMo",
-      "rating": 3,
-      "reasons": [
-        "独占Mimo模型。+1",
-        "按Token计费，性价比略低。-1"
+        "独占Qwen-3.6-Plus模型。+1",
+        "只有Pro套餐了，且需要抢购。-1"
       ]
     }
   ],
@@ -116,6 +117,12 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.4.22",
+      "items": [
+        "更新字节方舟&Kimi CodingPlan支持的模型"
+      ]
+    },
     {
       "date": "2026.4.21",
       "items": [
