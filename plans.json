@@ -460,9 +460,11 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
       "MiMo-V2-Pro",
-      "MiMo-V2-Omni",
-      "MiMo-V2-TTS"
+      "MiMo-V2-Omni"
     ],
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
@@ -471,7 +473,7 @@
     "benefits": [
       "TTS限时免费"
     ],
-    "note": "• 60M(6000万) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+    "note": "• 60M(6000万) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2.5:1x, Pro:2x"
   },
   {
     "vendor": "小米·MiMo",
@@ -483,9 +485,11 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
       "MiMo-V2-Pro",
-      "MiMo-V2-Omni",
-      "MiMo-V2-TTS"
+      "MiMo-V2-Omni"
     ],
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
@@ -494,7 +498,7 @@
     "benefits": [
       "TTS限时免费"
     ],
-    "note": "• 200M(2亿) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+    "note": "• 200M(2亿) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2.5:1x, Pro:2x"
   },
   {
     "vendor": "小米·MiMo",
@@ -506,9 +510,11 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
       "MiMo-V2-Pro",
-      "MiMo-V2-Omni",
-      "MiMo-V2-TTS"
+      "MiMo-V2-Omni"
     ],
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
@@ -517,7 +523,7 @@
     "benefits": [
       "TTS限时免费"
     ],
-    "note": "• 700M(7亿) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+    "note": "• 700M(7亿) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2.5:1x, Pro:2x"
   },
   {
     "vendor": "小米·MiMo",
@@ -529,9 +535,11 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
       "MiMo-V2-Pro",
-      "MiMo-V2-Omni",
-      "MiMo-V2-TTS"
+      "MiMo-V2-Omni"
     ],
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
@@ -540,7 +548,7 @@
     "benefits": [
       "TTS限时免费"
     ],
-    "note": "• 1600M(16亿) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2-Omni:1x, Pro 256k:2x, Pro 1M:4x"
+    "note": "• 1600M(16亿) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2.5:1x, Pro:2x"
   },
   {
     "vendor": "腾讯云",
