@@ -338,6 +338,194 @@
     "note": ""
   },
   {
+    "vendor": "Kimi",
+    "plan": "Andante",
+    "type": "Coding Plan",
+    "action": "https://www.kimi.com/code",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 49,
+    "quarterlyPrice": "-",
+    "yearlyPrice": 468,
+    "models": [
+      "Kimi-K2.6",
+      "Kimi-K2.5",
+      "Kimi-K2"
+    ],
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "tokenLimit": "无限制",
+    "benefits": [],
+    "note": "Agent 4 倍速"
+  },
+  {
+    "vendor": "Kimi",
+    "plan": "Moderato",
+    "type": "Coding Plan",
+    "action": "https://www.kimi.com/code",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 99,
+    "quarterlyPrice": "-",
+    "yearlyPrice": 948,
+    "models": [
+      "Kimi-K2.6",
+      "Kimi-K2.5",
+      "Kimi-K2"
+    ],
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "tokenLimit": "无限制",
+    "benefits": [],
+    "note": "4 倍额度, Agent 多任务并行"
+  },
+  {
+    "vendor": "Kimi",
+    "plan": "Allegretto",
+    "type": "Coding Plan",
+    "action": "https://www.kimi.com/code",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 199,
+    "quarterlyPrice": "-",
+    "yearlyPrice": 1908,
+    "models": [
+      "Kimi-K2.6",
+      "Kimi-K2.5",
+      "Kimi-K2"
+    ],
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "tokenLimit": "无限制",
+    "benefits": [
+      "免费Kimi-Claw"
+    ],
+    "note": "20 倍额度"
+  },
+  {
+    "vendor": "Kimi",
+    "plan": "Allegro",
+    "type": "Coding Plan",
+    "action": "https://www.kimi.com/code",
+    "firstMonthPrice": "-",
+    "monthlyPrice": 699,
+    "quarterlyPrice": "-",
+    "yearlyPrice": 6708,
+    "models": [
+      "Kimi-K2.6",
+      "Kimi-K2.5",
+      "Kimi-K2"
+    ],
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "tokenLimit": "无限制",
+    "benefits": [
+      "免费Kimi-Claw"
+    ],
+    "note": "60 倍额度"
+  },
+  {
+    "vendor": "小米·MiMo",
+    "plan": "Lite",
+    "type": "Token Plan",
+    "action": "https://mimo.mi.com/",
+    "firstMonthPrice": 34.32,
+    "monthlyPrice": 39,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
+      "MiMo-V2-Pro",
+      "MiMo-V2-Omni"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "tokenLimit": 30,
+    "benefits": [
+      "TTS限时免费"
+    ],
+    "note": "• 60M(6000万) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2.5:1x, Pro:2x"
+  },
+  {
+    "vendor": "小米·MiMo",
+    "plan": "Standard",
+    "type": "Token Plan",
+    "action": "https://mimo.mi.com/",
+    "firstMonthPrice": 87.12,
+    "monthlyPrice": 99,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
+      "MiMo-V2-Pro",
+      "MiMo-V2-Omni"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "tokenLimit": 100,
+    "benefits": [
+      "TTS限时免费"
+    ],
+    "note": "• 200M(2亿) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2.5:1x, Pro:2x"
+  },
+  {
+    "vendor": "小米·MiMo",
+    "plan": "Pro",
+    "type": "Token Plan",
+    "action": "https://mimo.mi.com/",
+    "firstMonthPrice": 289.52,
+    "monthlyPrice": 329,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
+      "MiMo-V2-Pro",
+      "MiMo-V2-Omni"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "tokenLimit": 350,
+    "benefits": [
+      "TTS限时免费"
+    ],
+    "note": "• 700M(7亿) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2.5:1x, Pro:2x"
+  },
+  {
+    "vendor": "小米·MiMo",
+    "plan": "Max",
+    "type": "Token Plan",
+    "action": "https://mimo.mi.com/",
+    "firstMonthPrice": 579.92,
+    "monthlyPrice": 659,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
+      "MiMo-V2-Pro",
+      "MiMo-V2-Omni"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "tokenLimit": 800,
+    "benefits": [
+      "TTS限时免费"
+    ],
+    "note": "• 1600M(16亿) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2.5:1x, Pro:2x"
+  },
+    {
     "vendor": "阿里·百炼",
     "plan": "标准",
     "type": "Token Plan",
@@ -449,106 +637,6 @@
     "tokenLimit": "无限制",
     "benefits": [],
     "note": ""
-  },
-  {
-    "vendor": "小米·MiMo",
-    "plan": "Lite",
-    "type": "Token Plan",
-    "action": "https://mimo.mi.com/",
-    "firstMonthPrice": 34.32,
-    "monthlyPrice": 39,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "MiMo-V2.5-Pro",
-      "MiMo-V2.5",
-      "MiMo-V2.5-TTS",
-      "MiMo-V2-Pro",
-      "MiMo-V2-Omni"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "tokenLimit": 30,
-    "benefits": [
-      "TTS限时免费"
-    ],
-    "note": "• 60M(6000万) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2.5:1x, Pro:2x"
-  },
-  {
-    "vendor": "小米·MiMo",
-    "plan": "Standard",
-    "type": "Token Plan",
-    "action": "https://mimo.mi.com/",
-    "firstMonthPrice": 87.12,
-    "monthlyPrice": 99,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "MiMo-V2.5-Pro",
-      "MiMo-V2.5",
-      "MiMo-V2.5-TTS",
-      "MiMo-V2-Pro",
-      "MiMo-V2-Omni"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "tokenLimit": 100,
-    "benefits": [
-      "TTS限时免费"
-    ],
-    "note": "• 200M(2亿) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2.5:1x, Pro:2x"
-  },
-  {
-    "vendor": "小米·MiMo",
-    "plan": "Pro",
-    "type": "Token Plan",
-    "action": "https://mimo.mi.com/",
-    "firstMonthPrice": 289.52,
-    "monthlyPrice": 329,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "MiMo-V2.5-Pro",
-      "MiMo-V2.5",
-      "MiMo-V2.5-TTS",
-      "MiMo-V2-Pro",
-      "MiMo-V2-Omni"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "tokenLimit": 350,
-    "benefits": [
-      "TTS限时免费"
-    ],
-    "note": "• 700M(7亿) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2.5:1x, Pro:2x"
-  },
-  {
-    "vendor": "小米·MiMo",
-    "plan": "Max",
-    "type": "Token Plan",
-    "action": "https://mimo.mi.com/",
-    "firstMonthPrice": 579.92,
-    "monthlyPrice": 659,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "MiMo-V2.5-Pro",
-      "MiMo-V2.5",
-      "MiMo-V2.5-TTS",
-      "MiMo-V2-Pro",
-      "MiMo-V2-Omni"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "tokenLimit": 800,
-    "benefits": [
-      "TTS限时免费"
-    ],
-    "note": "• 1600M(16亿) Credits，无5小时限额，支持集中消耗\n• 按照2x计算Token，实际倍率：MiMo-V2.5:1x, Pro:2x"
   },
   {
     "vendor": "腾讯云",
@@ -779,93 +867,5 @@
     "tokenLimit": "无限制",
     "benefits": [],
     "note": ""
-  },
-  {
-    "vendor": "Kimi",
-    "plan": "Andante",
-    "type": "Coding Plan",
-    "action": "https://www.kimi.com/code",
-    "firstMonthPrice": "-",
-    "monthlyPrice": 49,
-    "quarterlyPrice": "-",
-    "yearlyPrice": 468,
-    "models": [
-      "Kimi-K2.6",
-      "Kimi-K2.5",
-      "Kimi-K2"
-    ],
-    "fiveHoursRequests": "未公开",
-    "weeklyRequests": "未公开",
-    "monthlyRequests": "未公开",
-    "tokenLimit": "无限制",
-    "benefits": [],
-    "note": "Agent 4 倍速"
-  },
-  {
-    "vendor": "Kimi",
-    "plan": "Moderato",
-    "type": "Coding Plan",
-    "action": "https://www.kimi.com/code",
-    "firstMonthPrice": "-",
-    "monthlyPrice": 99,
-    "quarterlyPrice": "-",
-    "yearlyPrice": 948,
-    "models": [
-      "Kimi-K2.6",
-      "Kimi-K2.5",
-      "Kimi-K2"
-    ],
-    "fiveHoursRequests": "未公开",
-    "weeklyRequests": "未公开",
-    "monthlyRequests": "未公开",
-    "tokenLimit": "无限制",
-    "benefits": [],
-    "note": "4 倍额度, Agent 多任务并行"
-  },
-  {
-    "vendor": "Kimi",
-    "plan": "Allegretto",
-    "type": "Coding Plan",
-    "action": "https://www.kimi.com/code",
-    "firstMonthPrice": "-",
-    "monthlyPrice": 199,
-    "quarterlyPrice": "-",
-    "yearlyPrice": 1908,
-    "models": [
-      "Kimi-K2.6",
-      "Kimi-K2.5",
-      "Kimi-K2"
-    ],
-    "fiveHoursRequests": "未公开",
-    "weeklyRequests": "未公开",
-    "monthlyRequests": "未公开",
-    "tokenLimit": "无限制",
-    "benefits": [
-      "免费Kimi-Claw"
-    ],
-    "note": "20 倍额度"
-  },
-  {
-    "vendor": "Kimi",
-    "plan": "Allegro",
-    "type": "Coding Plan",
-    "action": "https://www.kimi.com/code",
-    "firstMonthPrice": "-",
-    "monthlyPrice": 699,
-    "quarterlyPrice": "-",
-    "yearlyPrice": 6708,
-    "models": [
-      "Kimi-K2.6",
-      "Kimi-K2.5",
-      "Kimi-K2"
-    ],
-    "fiveHoursRequests": "未公开",
-    "weeklyRequests": "未公开",
-    "monthlyRequests": "未公开",
-    "tokenLimit": "无限制",
-    "benefits": [
-      "免费Kimi-Claw"
-    ],
-    "note": "60 倍额度"
   }
 ]
