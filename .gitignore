@@ -92,3 +92,6 @@ logs/
 
 # 个人的
 tory -a
+
+# 本地开发配置
+scripts/relay-detect-config.local.js

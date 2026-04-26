@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中转站检测</title>
+    <link rel="icon" href="/favicon.ico?v=260418" type="image/x-icon">
+    <link rel="stylesheet" href="styles/shared.css">
+    <script src="scripts/relay-detect-config.local.js"></script>
+    <script src="scripts/relay-detect-config.js"></script>
+    <script src="scripts/shared.js"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+
+        .header .subtitle { margin-bottom: 8px; }
+
+        /* ── 区块标题 ── */
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        /* ── 表单卡片 ── */
+        .detect-form-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 48px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group:last-of-type {
+            margin-bottom: 24px;
+        }
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        .form-label .form-hint {
+            font-weight: 400;
+            color: var(--text-tertiary);
+            margin-left: 6px;
+            font-size: 13px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+            font-family: inherit;
+        }
+        .form-input:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        .form-input::placeholder {
+            color: var(--text-tertiary);
+        }
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 28px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: var(--shadow-sm);
+        }
+        .submit-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .submit-btn .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ── 检测结果 ── */
+        .detect-result {
+            margin-bottom: 48px;
+        }
+        .result-loading {
+            text-align: center;
+            padding: 48px 0;
+            color: var(--text-secondary);
+        }
+        .result-loading .spinner-lg {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 16px;
+        }
+        .result-loading p {
+            font-size: 14px;
+        }
+
+        .verdict-card {
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .verdict-card.healthy {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(16, 185, 129, 0.02));
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        .verdict-card.review {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.06), rgba(245, 158, 11, 0.02));
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+        .verdict-card.suspicious {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.06), rgba(239, 68, 68, 0.02));
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+        .verdict-icon {
+            font-size: 36px;
+            flex-shrink: 0;
+        }
+        .verdict-card.healthy .verdict-icon { color: var(--accent-success); }
+        .verdict-card.review .verdict-icon { color: var(--accent-warning); }
+        .verdict-card.suspicious .verdict-icon { color: var(--accent-error); }
+        .verdict-info h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .verdict-card.healthy .verdict-info h3 { color: var(--accent-success); }
+        .verdict-card.review .verdict-info h3 { color: var(--accent-warning); }
+        .verdict-card.suspicious .verdict-info h3 { color: var(--accent-error); }
+        .verdict-info p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .verdict-stats {
+            margin-left: auto;
+            display: flex;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+        .verdict-stat {
+            text-align: center;
+        }
+        .verdict-stat .num {
+            font-size: 22px;
+            font-weight: 700;
+            display: block;
+        }
+        .verdict-stat .label {
+            font-size: 11px;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .verdict-stat.pass .num { color: var(--accent-success); }
+        .verdict-stat.warning .num { color: var(--accent-warning); }
+        .verdict-stat.fail .num { color: var(--accent-error); }
+
+        /* ── 评估指标列表 ── */
+        .eval-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .eval-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+        }
+        .eval-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+            min-width: 48px;
+            text-align: center;
+        }
+        .eval-badge.pass { background: rgba(16,185,129,0.1); color: #059669; }
+        .eval-badge.warning { background: rgba(245,158,11,0.1); color: #d97706; }
+        .eval-badge.fail { background: rgba(239,68,68,0.1); color: #dc2626; }
+        .eval-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        .eval-msg {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            margin-left: auto;
+        }
+
+        /* ── 上下文信息 ── */
+        .context-bar {
+            display: flex;
+            gap: 24px;
+            padding: 12px 16px;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+        .context-bar span {
+            white-space: nowrap;
+        }
+        .context-bar strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* ── 错误提示 ── */
+        .result-error {
+            padding: 20px 24px;
+            background: rgba(239,68,68,0.04);
+            border: 1px solid rgba(239,68,68,0.2);
+            border-radius: var(--radius-lg);
+            color: var(--accent-error);
+        }
+        .result-error h4 {
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+        .result-error p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* ── 历史列表 ── */
+        .history-section {
+            margin-bottom: 48px;
+        }
+        .history-empty {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-tertiary);
+            font-size: 14px;
+        }
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+        .history-table thead th {
+            padding: 12px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-align: left;
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border-color);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .history-table tbody td {
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: middle;
+        }
+        .history-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .history-table tbody tr {
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .history-table tbody tr:hover {
+            background: var(--bg-tertiary);
+        }
+        .risk-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .risk-badge.low { background: rgba(16,185,129,0.1); color: #059669; }
+        .risk-badge.medium { background: rgba(245,158,11,0.1); color: #d97706; }
+        .risk-badge.high { background: rgba(239,68,68,0.1); color: #dc2626; }
+        .history-clear-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 12px;
+            font-size: 12px;
+            color: var(--text-tertiary);
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-left: 12px;
+        }
+        .history-clear-btn:hover {
+            color: var(--accent-error);
+            border-color: var(--accent-error);
+        }
+
+        /* ── 历史详情弹出 ── */
+        .history-detail-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .history-detail-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            max-width: 640px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 28px;
+        }
+        .history-detail-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .history-detail-close {
+            float: right;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--text-tertiary);
+            padding: 4px;
+            line-height: 1;
+        }
+        .history-detail-close:hover {
+            color: var(--text-primary);
+        }
+
+        /* ── 响应式 ── */
+        @media (max-width: 768px) {
+            body { padding: 24px 16px; }
+            .detect-form-card { padding: 20px; }
+            .verdict-card { flex-direction: column; align-items: flex-start; }
+            .verdict-stats { margin-left: 0; }
+            .eval-list { grid-template-columns: 1fr; }
+            .context-bar { flex-direction: column; gap: 8px; }
+            .history-table { font-size: 12px; }
+            .history-table thead th,
+            .history-table tbody td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- 页面导航 Tab -->
+        <nav class="page-nav">
+            <a href="index.html" class="page-tab">国内 Coding Plan</a>
+            <a href="relays.html" class="page-tab">API 中转站</a>
+            <a href="relay-detect.html" class="page-tab active">中转站检测</a>
+            <div class="settings-wrapper">
+                <button class="settings-btn" id="settingsBtn" title="设置" aria-label="设置">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    </svg>
+                </button>
+                <div class="settings-panel" id="settingsPanel" hidden>
+                    <div class="settings-panel-title">显示设置</div>
+                    <div class="settings-toggle-row">
+                        <label for="ultraWideToggle">超宽屏模式</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="ultraWideToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <div class="header">
+            <h1>中转站检测</h1>
+            <p class="subtitle">填写你购买的中转站信息，检测其服务真实性与风险等级</p>
+        </div>
+
+        <!-- 检测表单 -->
+        <div class="detect-form-card">
+            <form id="detectForm" autocomplete="off">
+                <div class="form-group">
+                    <label class="form-label">Base URL <span class="form-hint">中转站的 API 地址</span></label>
+                    <input type="text" class="form-input" id="baseUrl" placeholder="https://api.example.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">API Key <span class="form-hint">你的密钥，仅用于本次检测，不会保存</span></label>
+                    <input type="password" class="form-input" id="apiKey" placeholder="sk-..." required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">模型名称 <span class="form-hint">要检测的模型</span></label>
+                    <input type="text" class="form-input" id="modelName" placeholder="claude-sonnet-4-20250514" required>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">开始检测</button>
+            </form>
+        </div>
+
+        <!-- 检测结果 -->
+        <div class="detect-result" id="detectResult" style="display:none"></div>
+
+        <!-- 检测历史 -->
+        <div class="history-section">
+            <div class="section-title">
+                检测历史
+                <button class="history-clear-btn" id="clearHistoryBtn" style="display:none" title="清空历史">清空</button>
+            </div>
+            <div id="historyContainer"></div>
+        </div>
+
+    </div>
+
+    <script>
+    (function() {
+        'use strict';
+
+        var API_BASE = (window.RELAY_DETECT_CONFIG && window.RELAY_DETECT_CONFIG.apiBase) || '';
+        var HISTORY_KEY = 'relay_detect_history';
+        var POLL_INTERVAL = 3000;
+        var MAX_POLL_COUNT = 60;
+
+        var form = document.getElementById('detectForm');
+        var submitBtn = document.getElementById('submitBtn');
+        var resultDiv = document.getElementById('detectResult');
+        var historyContainer = document.getElementById('historyContainer');
+        var clearHistoryBtn = document.getElementById('clearHistoryBtn');
+
+        // ── 工具函数 ──
+        function escapeHtml(text) {
+            if (text === null || text === undefined) return '';
+            var div = document.createElement('div');
+            div.textContent = String(text);
+            return div.innerHTML;
+        }
+
+        function formatTime(isoStr) {
+            var d = new Date(isoStr);
+            var pad = function(n) { return n < 10 ? '0' + n : n; };
+            return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate()) + ' ' +
+                   pad(d.getHours()) + ':' + pad(d.getMinutes());
+        }
+
+        function verdictLabel(status) {
+            if (status === 'healthy') return '健康';
+            if (status === 'review') return '需审查';
+            if (status === 'suspicious') return '可疑';
+            return status;
+        }
+
+        function normalizeVerdictStatus(status) {
+            if (status === 'pass') return 'healthy';
+            if (status === 'warning') return 'review';
+            if (status === 'fail') return 'suspicious';
+            return status || '';
+        }
+
+        function verdictIcon(status) {
+            if (status === 'healthy') return '&#10003;';
+            if (status === 'review') return '&#9888;';
+            if (status === 'suspicious') return '&#10007;';
+            return '?';
+        }
+
+        function riskLabel(level) {
+            if (level === 'low') return '低风险';
+            if (level === 'medium') return '中风险';
+            if (level === 'high') return '高风险';
+            return level;
+        }
+
+        function badgeClass(status) {
+            if (status === 'pass') return 'pass';
+            if (status === 'warning') return 'warning';
+            return 'fail';
+        }
+
+        function badgeText(status) {
+            if (status === 'pass') return '通过';
+            if (status === 'warning') return '警告';
+            if (status === 'fail') return '失败';
+            return status;
+        }
+
+        function pickItemStatus(statusCount) {
+            if (!statusCount) return 'fail';
+            var passCount = Number(statusCount.pass || 0);
+            var warningCount = Number(statusCount.warning || 0);
+            var failCount = Number(statusCount.fail || 0);
+            if (failCount >= warningCount && failCount >= passCount) return 'fail';
+            if (warningCount >= passCount) return 'warning';
+            return 'pass';
+        }
+
+        // ── 提交检测 ──
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var baseUrl = document.getElementById('baseUrl').value.trim();
+            var apiKey = document.getElementById('apiKey').value.trim();
+            var modelName = document.getElementById('modelName').value.trim();
+
+            if (!baseUrl || !apiKey || !modelName) return;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner"></span>检测中...';
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = '<div class="result-loading"><div class="spinner-lg"></div><p>正在提交检测任务...</p></div>';
+
+            fetch(API_BASE + '/relay_detect/tasks', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ base_url: baseUrl, model_name: modelName, api_key: apiKey })
+            })
+            .then(function(resp) { return resp.json(); })
+            .then(function(data) {
+                if (data.err_code) {
+                    throw new Error(data.err_msg || data.err_code);
+                }
+                var taskId = data.data.task_id;
+                resultDiv.innerHTML = '<div class="result-loading"><div class="spinner-lg"></div><p>检测进行中，请稍候...</p></div>';
+                pollResult(taskId, baseUrl, modelName, 0);
+            })
+            .catch(function(err) {
+                showError('提交失败', err.message);
+                resetSubmitBtn();
+            });
+        });
+
+        function pollResult(taskId, baseUrl, modelName, count) {
+            if (count >= MAX_POLL_COUNT) {
+                showError('检测超时', '等待时间过长，请稍后重试');
+                resetSubmitBtn();
+                return;
+            }
+            setTimeout(function() {
+                fetch(API_BASE + '/relay_detect/tasks/' + encodeURIComponent(taskId))
+                    .then(function(resp) { return resp.json(); })
+                    .then(function(data) {
+                        if (data.err_code) {
+                            throw new Error(data.err_msg || data.err_code);
+                        }
+                        var task = data.data;
+                        if (task.status === 'succeeded') {
+                            renderResult(task);
+                            saveHistory(baseUrl, modelName, task);
+                            renderHistory();
+                            resetSubmitBtn();
+                        } else if (task.status === 'failed') {
+                            var errMsg = (task.error && task.error.message) || '检测失败';
+                            showError('检测失败', errMsg);
+                            saveHistory(baseUrl, modelName, task);
+                            renderHistory();
+                            resetSubmitBtn();
+                        } else {
+                            pollResult(taskId, baseUrl, modelName, count + 1);
+                        }
+                    })
+                    .catch(function(err) {
+                        showError('查询失败', err.message);
+                        resetSubmitBtn();
+                    });
+            }, POLL_INTERVAL);
+        }
+
+        // ── 渲染结果 ──
+        function renderResult(task) {
+            var result = task.result || {};
+            var decision = result.final_decision || {};
+            var items = result.evaluation_items || result.aggregated_item_evaluations || [];
+            var ctx = result.context || {};
+            var normalizedStatus = normalizeVerdictStatus(decision.status);
+            var decisionConfidence = typeof decision.confidence === 'number' ? Math.round(decision.confidence * 100) + '%' : '-';
+            var passCount = 0;
+            var warningCount = 0;
+            var failCount = 0;
+
+            if (!decision.stats && result.aggregated_item_evaluations && result.aggregated_item_evaluations.length) {
+                result.aggregated_item_evaluations.forEach(function(entry) {
+                    var statusCount = entry.status_count || {};
+                    passCount += Number(statusCount.pass || 0);
+                    warningCount += Number(statusCount.warning || 0);
+                    failCount += Number(statusCount.fail || 0);
+                });
+            }
+
+            var html = '';
+
+            // 结论卡片
+            html += '<div class="verdict-card ' + escapeHtml(normalizedStatus) + '">';
+            html += '<div class="verdict-icon">' + verdictIcon(normalizedStatus) + '</div>';
+            html += '<div class="verdict-info"><h3>' + escapeHtml(verdictLabel(normalizedStatus)) + '</h3>';
+            html += '<p>置信度: ' + escapeHtml(decisionConfidence) + '</p></div>';
+            html += '<div class="verdict-stats">';
+            html += '<div class="verdict-stat pass"><span class="num">' + (decision.stats ? (decision.stats.pass_count || 0) : passCount) + '</span><span class="label">通过</span></div>';
+            html += '<div class="verdict-stat warning"><span class="num">' + (decision.stats ? (decision.stats.warning_count || 0) : warningCount) + '</span><span class="label">警告</span></div>';
+            html += '<div class="verdict-stat fail"><span class="num">' + (decision.stats ? (decision.stats.fail_count || 0) : failCount) + '</span><span class="label">失败</span></div>';
+            html += '</div>';
+            html += '</div>';
+
+            // 评估指标
+            if (items.length > 0) {
+                html += '<div class="eval-list">';
+                items.forEach(function(item) {
+                    var itemStatus = item.status || pickItemStatus(item.status_count);
+                    var itemName = item.item_name || (item.item && item.item.item_name) || (item.item && item.item.item_id) || '-';
+                    var itemMsg = item.message || ('置信度: ' + (typeof item.confidence === 'number' ? Math.round(item.confidence * 100) + '%' : '-'));
+                    html += '<div class="eval-item">';
+                    html += '<span class="eval-badge ' + badgeClass(itemStatus) + '">' + escapeHtml(badgeText(itemStatus)) + '</span>';
+                    html += '<span class="eval-name">' + escapeHtml(itemName) + '</span>';
+                    html += '<span class="eval-msg">' + escapeHtml(itemMsg) + '</span>';
+                    html += '</div>';
+                });
+                html += '</div>';
+            }
+
+            // 上下文
+            html += '<div class="context-bar">';
+            html += '<span>协议: <strong>' + escapeHtml(task.provider_mode || ctx.provider_mode || '-') + '</strong></span>';
+            html += '<span>端点: <strong>' + escapeHtml(task.endpoint || ctx.endpoint || '-') + '</strong></span>';
+            html += '<span>模型: <strong>' + escapeHtml(task.model_name || ctx.model_name || '-') + '</strong></span>';
+            html += '</div>';
+
+            resultDiv.innerHTML = html;
+        }
+
+        function showError(title, message) {
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = '<div class="result-error"><h4>' + escapeHtml(title) + '</h4><p>' + escapeHtml(message) + '</p></div>';
+        }
+
+        function resetSubmitBtn() {
+            submitBtn.disabled = false;
+            submitBtn.textContent = '开始检测';
+        }
+
+        // ── 历史记录 ──
+        function loadHistory() {
+            try {
+                return JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+            } catch(e) {
+                return [];
+            }
+        }
+
+        function saveHistory(baseUrl, modelName, task) {
+            var history = loadHistory();
+            var decision = (task.result && task.result.final_decision) || {};
+            var stats = decision.stats || {};
+            var entry = {
+                task_id: task.task_id,
+                base_url: baseUrl,
+                model_name: modelName,
+                detected_at: new Date().toISOString(),
+                status: task.status,
+                risk_level: decision.risk_level || '',
+                final_status: decision.status || '',
+                evaluation_summary: {
+                    pass_count: stats.pass_count || 0,
+                    warning_count: stats.warning_count || 0,
+                    fail_count: stats.fail_count || 0
+                },
+                full_result: task.result || null,
+                error: task.error || null
+            };
+            history.unshift(entry);
+            // 最多保留 50 条
+            if (history.length > 50) history = history.slice(0, 50);
+            localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+        }
+
+        function renderHistory() {
+            var history = loadHistory();
+            if (history.length === 0) {
+                historyContainer.innerHTML = '<div class="history-empty">暂无检测历史</div>';
+                clearHistoryBtn.style.display = 'none';
+                return;
+            }
+            clearHistoryBtn.style.display = '';
+
+            var html = '<table class="history-table"><thead><tr>';
+            html += '<th>时间</th><th>Base URL</th><th>模型</th><th>风险等级</th><th>状态</th>';
+            html += '</tr></thead><tbody>';
+
+            history.forEach(function(entry, idx) {
+                var riskCls = entry.risk_level || 'low';
+                html += '<tr data-idx="' + idx + '">';
+                html += '<td>' + escapeHtml(formatTime(entry.detected_at)) + '</td>';
+                html += '<td>' + escapeHtml(entry.base_url) + '</td>';
+                html += '<td>' + escapeHtml(entry.model_name) + '</td>';
+                html += '<td><span class="risk-badge ' + escapeHtml(riskCls) + '">' + escapeHtml(riskLabel(entry.risk_level || '-')) + '</span></td>';
+                html += '<td>' + (entry.status === 'succeeded' ? '完成' : '失败') + '</td>';
+                html += '</tr>';
+            });
+
+            html += '</tbody></table>';
+            historyContainer.innerHTML = html;
+
+            // 行点击事件
+            historyContainer.querySelectorAll('tbody tr').forEach(function(tr) {
+                tr.addEventListener('click', function() {
+                    var idx = parseInt(tr.getAttribute('data-idx'), 10);
+                    showHistoryDetail(history[idx]);
+                });
+            });
+        }
+
+        function showHistoryDetail(entry) {
+            var overlay = document.createElement('div');
+            overlay.className = 'history-detail-overlay';
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) overlay.remove();
+            });
+
+            var html = '<div class="history-detail-card">';
+            html += '<button class="history-detail-close" title="关闭">&times;</button>';
+            html += '<h3>检测详情</h3>';
+
+            if (entry.status === 'succeeded' && entry.full_result) {
+                var decision = entry.full_result.final_decision || {};
+                var items = entry.full_result.evaluation_items || entry.full_result.aggregated_item_evaluations || [];
+                var ctx = entry.full_result.context || {};
+                var normalizedStatus = normalizeVerdictStatus(decision.status);
+                var decisionConfidence = typeof decision.confidence === 'number' ? Math.round(decision.confidence * 100) + '%' : '-';
+                var passCount = 0;
+                var warningCount = 0;
+                var failCount = 0;
+
+                if (!decision.stats && entry.full_result.aggregated_item_evaluations && entry.full_result.aggregated_item_evaluations.length) {
+                    entry.full_result.aggregated_item_evaluations.forEach(function(row) {
+                        var statusCount = row.status_count || {};
+                        passCount += Number(statusCount.pass || 0);
+                        warningCount += Number(statusCount.warning || 0);
+                        failCount += Number(statusCount.fail || 0);
+                    });
+                }
+
+                html += '<div class="verdict-card ' + escapeHtml(normalizedStatus) + '" style="margin-bottom:20px">';
+                html += '<div class="verdict-icon">' + verdictIcon(normalizedStatus) + '</div>';
+                html += '<div class="verdict-info"><h3>' + escapeHtml(verdictLabel(normalizedStatus)) + '</h3>';
+                html += '<p>置信度: ' + escapeHtml(decisionConfidence) + '</p></div>';
+                html += '<div class="verdict-stats">';
+                html += '<div class="verdict-stat pass"><span class="num">' + (decision.stats ? (decision.stats.pass_count || 0) : passCount) + '</span><span class="label">通过</span></div>';
+                html += '<div class="verdict-stat warning"><span class="num">' + (decision.stats ? (decision.stats.warning_count || 0) : warningCount) + '</span><span class="label">警告</span></div>';
+                html += '<div class="verdict-stat fail"><span class="num">' + (decision.stats ? (decision.stats.fail_count || 0) : failCount) + '</span><span class="label">失败</span></div>';
+                html += '</div>';
+                html += '</div>';
+
+                if (items.length > 0) {
+                    html += '<div class="eval-list" style="margin-bottom:16px">';
+                    items.forEach(function(item) {
+                        var itemStatus = item.status || pickItemStatus(item.status_count);
+                        var itemName = item.item_name || (item.item && item.item.item_name) || (item.item && item.item.item_id) || '-';
+                        var itemMsg = item.message || ('置信度: ' + (typeof item.confidence === 'number' ? Math.round(item.confidence * 100) + '%' : '-'));
+                        html += '<div class="eval-item">';
+                        html += '<span class="eval-badge ' + badgeClass(itemStatus) + '">' + escapeHtml(badgeText(itemStatus)) + '</span>';
+                        html += '<span class="eval-name">' + escapeHtml(itemName) + '</span>';
+                        html += '<span class="eval-msg">' + escapeHtml(itemMsg) + '</span>';
+                        html += '</div>';
+                    });
+                    html += '</div>';
+                }
+
+                html += '<div class="context-bar">';
+                html += '<span>协议: <strong>' + escapeHtml(ctx.provider_mode || '-') + '</strong></span>';
+                html += '<span>端点: <strong>' + escapeHtml(ctx.endpoint || '-') + '</strong></span>';
+                html += '<span>模型: <strong>' + escapeHtml(ctx.model_name || '-') + '</strong></span>';
+                html += '</div>';
+            } else if (entry.error) {
+                html += '<div class="result-error"><h4>检测失败</h4><p>' + escapeHtml(entry.error.message || entry.error.code || '未知错误') + '</p></div>';
+            }
+
+            html += '</div>';
+            overlay.innerHTML = html;
+
+            overlay.querySelector('.history-detail-close').addEventListener('click', function() {
+                overlay.remove();
+            });
+
+            document.body.appendChild(overlay);
+        }
+
+        clearHistoryBtn.addEventListener('click', function() {
+            if (confirm('确定要清空所有检测历史吗？')) {
+                localStorage.removeItem(HISTORY_KEY);
+                renderHistory();
+            }
+        });
+
+        // ── 初始化 ──
+        renderHistory();
+    })();
+    </script>
+</body>
+</html>
