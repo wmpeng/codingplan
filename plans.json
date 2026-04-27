@@ -545,7 +545,7 @@
     "monthlyRequests": "无限制",
     "tokenLimit": 150,
     "benefits": [],
-    "note": "• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit\n• 合输入¥1.58/MToken，缓存¥0.32/MToken，输出¥9.54/MToken\n• 按缓存命中率85%，输入输出9:1算，约5.6K Token/Credit。表格按6K Token/Credit算"
+    "note": "• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit\n• 合输入¥1.58/MToken，缓存¥0.32/MToken，输出¥9.54/MToken\n• 按缓存命中率90%，输入输出9:1算，约5.85K Token/Credit。表格按6K Token/Credit算"
   },
   {
     "vendor": "阿里·百炼",
@@ -567,7 +567,7 @@
     "monthlyRequests": "无限制",
     "tokenLimit": 600,
     "benefits": [],
-    "note": "• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit\n• 合输入¥1.40/MToken，缓存¥0.28/MToken，输出¥8.41/MToken\n• 按缓存命中率85%，输入输出9:1算，约5.6K Token/Credit。表格按6K Token/Credit算"
+    "note": "• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit\n• 合输入¥1.40/MToken，缓存¥0.28/MToken，输出¥8.41/MToken\n• 按缓存命中率90%，输入输出9:1算，约5.85K Token/Credit。表格按6K Token/Credit算"
   },
   {
     "vendor": "阿里·百炼",
@@ -589,7 +589,7 @@
     "monthlyRequests": "无限制",
     "tokenLimit": 1500,
     "benefits": [],
-    "note": "• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit\n• 合输入¥1.12/MToken，缓存¥0.22/MToken，输出¥6.74/MToken\n• 按缓存命中率85%，输入输出9:1算，约5.6K Token/Credit。表格按6K Token/Credit算"
+    "note": "• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit\n• 合输入¥1.12/MToken，缓存¥0.22/MToken，输出¥6.74/MToken\n• 按缓存命中率90%，输入输出9:1算，约5.85K Token/Credit。表格按6K Token/Credit算"
   },
   {
     "vendor": "阿里·百炼",
