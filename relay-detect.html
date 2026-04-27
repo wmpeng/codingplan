@@ -725,6 +725,29 @@
             return 'pass';
         }
 
+        function getItemStatusCount(item) {
+            var statusCount = item && item.status_count;
+            if (statusCount) {
+                return {
+                    pass: Number(statusCount.pass || 0),
+                    warning: Number(statusCount.warning || 0),
+                    fail: Number(statusCount.fail || 0)
+                };
+            }
+
+            var status = item && item.status;
+            return {
+                pass: status === 'pass' ? 1 : 0,
+                warning: status === 'warning' ? 1 : 0,
+                fail: status === 'fail' ? 1 : 0
+            };
+        }
+
+        function formatItemStatusCount(item) {
+            var count = getItemStatusCount(item);
+            return '通过 ' + count.pass + ' / 警告 ' + count.warning + ' / 失败 ' + count.fail;
+        }
+
         // ── 可编辑下拉框 ──
         function createComboInput(displayInputId, valueInputId, toggleId, dropdownId, options) {
             var displayInput = document.getElementById(displayInputId);
@@ -981,7 +1004,7 @@
                 items.forEach(function(item) {
                     var itemStatus = item.status || pickItemStatus(item.status_count);
                     var itemName = item.item_name || (item.item && item.item.item_name) || (item.item && item.item.item_id) || '-';
-                    var itemMsg = item.message || ('置信度: ' + (typeof item.confidence === 'number' ? Math.round(item.confidence * 100) + '%' : '-'));
+                    var itemMsg = formatItemStatusCount(item);
                     html += '<div class="eval-item">';
                     html += '<span class="eval-badge ' + badgeClass(itemStatus) + '">' + escapeHtml(badgeText(itemStatus)) + '</span>';
                     html += '<span class="eval-name">' + escapeHtml(itemName) + '</span>';
@@ -1134,7 +1157,7 @@
                     items.forEach(function(item) {
                         var itemStatus = item.status || pickItemStatus(item.status_count);
                         var itemName = item.item_name || (item.item && item.item.item_name) || (item.item && item.item.item_id) || '-';
-                        var itemMsg = item.message || ('置信度: ' + (typeof item.confidence === 'number' ? Math.round(item.confidence * 100) + '%' : '-'));
+                        var itemMsg = formatItemStatusCount(item);
                         html += '<div class="eval-item">';
                         html += '<span class="eval-badge ' + badgeClass(itemStatus) + '">' + escapeHtml(badgeText(itemStatus)) + '</span>';
                         html += '<span class="eval-name">' + escapeHtml(itemName) + '</span>';
