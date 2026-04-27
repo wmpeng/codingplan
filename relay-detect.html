@@ -578,7 +578,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">API Key <span class="form-hint">你的密钥，仅用于本次检测，不会保存</span></label>
-                    <input type="password" class="form-input" id="apiKey" placeholder="sk-..." required>
+                    <input type="text" class="form-input" id="apiKey" placeholder="sk-..." required>
                 </div>
                 <button type="submit" class="submit-btn" id="submitBtn">开始检测</button>
             </form>
@@ -625,6 +625,39 @@
         var resultDiv = document.getElementById('detectResult');
         var historyContainer = document.getElementById('historyContainer');
         var clearHistoryBtn = document.getElementById('clearHistoryBtn');
+        var apiKeyInput = document.getElementById('apiKey');
+        var realApiKey = '';
+
+        // 部分隐藏 API Key，显示前4后4，中间用 * 代替
+        function maskApiKey(key) {
+            if (!key || key.length <= 8) return key;
+            return key.slice(0, 4) + '*'.repeat(key.length - 8) + key.slice(-4);
+        }
+
+        // API Key 输入框事件处理
+        apiKeyInput.addEventListener('focus', function() {
+            if (realApiKey) {
+                apiKeyInput.value = realApiKey;
+            }
+        });
+
+        apiKeyInput.addEventListener('blur', function() {
+            var currentValue = apiKeyInput.value.trim();
+            if (currentValue) {
+                realApiKey = currentValue;
+                apiKeyInput.value = maskApiKey(currentValue);
+            } else {
+                realApiKey = '';
+            }
+        });
+
+        apiKeyInput.addEventListener('input', function() {
+            // 当用户正在输入时，如果显示的是掩码后的值，先恢复真实值
+            if (realApiKey && apiKeyInput.value === maskApiKey(realApiKey)) {
+                return;
+            }
+            realApiKey = apiKeyInput.value.trim();
+        });
 
         // ── 工具函数 ──
         function escapeHtml(text) {
@@ -841,7 +874,7 @@
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             var baseUrl = document.getElementById('baseUrl').value.trim();
-            var apiKey = document.getElementById('apiKey').value.trim();
+            var apiKey = realApiKey || document.getElementById('apiKey').value.trim();
             var modelName = document.getElementById('modelName').value.trim();
 
             if (!baseUrl || !apiKey || !modelName) return;
@@ -891,7 +924,7 @@
                             renderHistory();
                             resetSubmitBtn();
                         } else if (task.status === 'failed') {
-                            var errMsg = (task.error && task.error.message) || '检测失败';
+                            var errMsg = task.error_message || '检测失败';
                             showError('检测失败', errMsg);
                             saveHistory(baseUrl, modelName, task);
                             renderHistory();
@@ -960,8 +993,7 @@
 
             // 上下文
             html += '<div class="context-bar">';
-            html += '<span>协议: <strong>' + escapeHtml(task.provider_mode || ctx.provider_mode || '-') + '</strong></span>';
-            html += '<span>端点: <strong>' + escapeHtml(task.endpoint || ctx.endpoint || '-') + '</strong></span>';
+            html += '<span>协议: <strong>' + escapeHtml(task.provider || ctx.provider_mode || '-') + '</strong></span>';
             html += '<span>模型: <strong>' + escapeHtml(task.model_name || ctx.model_name || '-') + '</strong></span>';
             html += '</div>';
 
@@ -995,6 +1027,7 @@
                 task_id: task.task_id,
                 base_url: baseUrl,
                 model_name: modelName,
+                provider: task.provider || '',
                 detected_at: new Date().toISOString(),
                 status: task.status,
                 risk_level: decision.risk_level || '',
@@ -1005,7 +1038,8 @@
                     fail_count: stats.fail_count || 0
                 },
                 full_result: task.result || null,
-                error: task.error || null
+                error_code: task.error_code || null,
+                error_message: task.error_message || null
             };
             history.unshift(entry);
             // 最多保留 50 条
@@ -1106,12 +1140,11 @@
                 }
 
                 html += '<div class="context-bar">';
-                html += '<span>协议: <strong>' + escapeHtml(ctx.provider_mode || '-') + '</strong></span>';
-                html += '<span>端点: <strong>' + escapeHtml(ctx.endpoint || '-') + '</strong></span>';
+                html += '<span>协议: <strong>' + escapeHtml(ctx.provider_mode || entry.provider || '-') + '</strong></span>';
                 html += '<span>模型: <strong>' + escapeHtml(ctx.model_name || '-') + '</strong></span>';
                 html += '</div>';
-            } else if (entry.error) {
-                html += '<div class="result-error"><h4>检测失败</h4><p>' + escapeHtml(entry.error.message || entry.error.code || '未知错误') + '</p></div>';
+            } else if (entry.error_message) {
+                html += '<div class="result-error"><h4>检测失败</h4><p>' + escapeHtml(entry.error_message || entry.error_code || '未知错误') + '</p></div>';
             }
 
             html += '</div>';
