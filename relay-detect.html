@@ -1023,6 +1023,11 @@
             var history = loadHistory();
             var decision = (task.result && task.result.final_decision) || {};
             var stats = decision.stats || {};
+            var rawStatus = decision.status || '';
+            var riskLevel = '';
+            if (rawStatus === 'pass' || rawStatus === 'healthy') riskLevel = 'low';
+            else if (rawStatus === 'warning' || rawStatus === 'review') riskLevel = 'medium';
+            else if (rawStatus === 'fail' || rawStatus === 'suspicious') riskLevel = 'high';
             var entry = {
                 task_id: task.task_id,
                 base_url: baseUrl,
@@ -1030,8 +1035,8 @@
                 provider: task.provider || '',
                 detected_at: new Date().toISOString(),
                 status: task.status,
-                risk_level: decision.risk_level || '',
-                final_status: decision.status || '',
+                risk_level: riskLevel,
+                final_status: rawStatus,
                 evaluation_summary: {
                     pass_count: stats.pass_count || 0,
                     warning_count: stats.warning_count || 0,
@@ -1141,7 +1146,7 @@
 
                 html += '<div class="context-bar">';
                 html += '<span>协议: <strong>' + escapeHtml(ctx.provider_mode || entry.provider || '-') + '</strong></span>';
-                html += '<span>模型: <strong>' + escapeHtml(ctx.model_name || '-') + '</strong></span>';
+                html += '<span>模型: <strong>' + escapeHtml(entry.model_name || ctx.model_name || '-') + '</strong></span>';
                 html += '</div>';
             } else if (entry.error_message) {
                 html += '<div class="result-error"><h4>检测失败</h4><p>' + escapeHtml(entry.error_message || entry.error_code || '未知错误') + '</p></div>';
