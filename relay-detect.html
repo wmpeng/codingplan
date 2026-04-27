@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="styles/shared.css">
     <script src="scripts/relay-detect-config.local.js"></script>
     <script src="scripts/relay-detect-config.js"></script>
-    <script src="scripts/relay-detect-options.js"></script>
     <script src="scripts/shared.js"></script>
     <style>
         html { scroll-behavior: smooth; }
@@ -608,8 +607,18 @@
         var POLL_INTERVAL = 3000;
         var MAX_POLL_COUNT = 60;
 
-        // ── 下拉列表配置：来自 scripts/relay-detect-options.js ──
-        var COMBO_CONFIG = window.RELAY_DETECT_OPTIONS || { baseUrls: [], models: [] };
+        // ── 下拉列表配置：来自 relay-detect-config.json ──
+        var COMBO_CONFIG = { baseUrls: [], models: [] };
+        fetch('relay-detect-config.json')
+            .then(function(resp) { return resp.json(); })
+            .then(function(data) {
+                COMBO_CONFIG = data;
+                initCombos();
+            })
+            .catch(function(err) {
+                console.warn('加载下拉配置失败:', err);
+                initCombos();
+            });
 
         var form = document.getElementById('detectForm');
         var submitBtn = document.getElementById('submitBtn');
@@ -1123,7 +1132,6 @@
         });
 
         // ── 初始化 ──
-        initCombos();
         renderHistory();
     })();
     </script>

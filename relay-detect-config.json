@@ -1,0 +1,570 @@
+{
+  "baseUrls": [
+    {
+      "label": "4Sapi",
+      "value": "https://4sapi.com"
+    },
+    {
+      "label": "Agent Router",
+      "value": "https://agentrouter.org"
+    },
+    {
+      "label": "AI Hub",
+      "value": "https://aihub-global.com"
+    },
+    {
+      "label": "AIApify",
+      "value": "https://aiapify.com"
+    },
+    {
+      "label": "Aiberm",
+      "value": "https://aiberm.com"
+    },
+    {
+      "label": "AICodeMirror",
+      "value": "https://api.aicodemirror.com"
+    },
+    {
+      "label": "AiXor",
+      "value": "https://aixor.org"
+    },
+    {
+      "label": "Ai乐",
+      "value": "https://api.leleweb.cn"
+    },
+    {
+      "label": "AI派",
+      "value": "https://api.aipaibox.com"
+    },
+    {
+      "label": "AlGoCode",
+      "value": "https://api.aigocode.com"
+    },
+    {
+      "label": "anpin",
+      "value": "https://anpin.ai"
+    },
+    {
+      "label": "ANYONE.AI",
+      "value": "https://anyone.ai"
+    },
+    {
+      "label": "AnyRouter",
+      "value": "https://anyrouter.top"
+    },
+    {
+      "label": "BeeCode",
+      "value": "https://beecode.cc"
+    },
+    {
+      "label": "BMCCA",
+      "value": "https://cca.maya.today"
+    },
+    {
+      "label": "Bob API",
+      "value": "https://bobdong.cn"
+    },
+    {
+      "label": "BUZZ",
+      "value": "https://buzzai.cc"
+    },
+    {
+      "label": "ByteCat",
+      "value": "https://www.bytecatcode.org"
+    },
+    {
+      "label": "ByteClaude",
+      "value": "https://claude.bestswifter.com"
+    },
+    {
+      "label": "CCFly",
+      "value": "https://ccfly.codes"
+    },
+    {
+      "label": "CCTQ",
+      "value": "https://code.b886.top"
+    },
+    {
+      "label": "CCVibe",
+      "value": "https://cc-vibe.com"
+    },
+    {
+      "label": "Chintao AI",
+      "value": "https://chintao.cn"
+    },
+    {
+      "label": "Ciallo API",
+      "value": "https://cialloapi.cn"
+    },
+    {
+      "label": "ClaudeAgent",
+      "value": "https://claudeagent.com.cn"
+    },
+    {
+      "label": "ClaudeCN",
+      "value": "https://claudecn.top"
+    },
+    {
+      "label": "Claude密钥",
+      "value": "https://www.cckeys.top"
+    },
+    {
+      "label": "CodeRelay",
+      "value": "https://coderelay.cn"
+    },
+    {
+      "label": "CodeSome",
+      "value": "https://codesome.ai"
+    },
+    {
+      "label": "CodesOnline",
+      "value": "https://free.codesonline.dev"
+    },
+    {
+      "label": "CodeSuc",
+      "value": "https://main-new.codesuc.top"
+    },
+    {
+      "label": "Cubence",
+      "value": "https://api.cubence.com"
+    },
+    {
+      "label": "DataEyes AI",
+      "value": "https://cloud.dataeyes.ai"
+    },
+    {
+      "label": "DawCode",
+      "value": "https://dawclaudecode.com"
+    },
+    {
+      "label": "DDShub",
+      "value": "https://www.ddshub.cc"
+    },
+    {
+      "label": "deepkey",
+      "value": "https://deepkey.top"
+    },
+    {
+      "label": "DoroAI",
+      "value": "https://doro.lol"
+    },
+    {
+      "label": "DuckCoding",
+      "value": "https://duckcoding.com"
+    },
+    {
+      "label": "DuckCoding",
+      "value": "https://www.duckcoding.ai"
+    },
+    {
+      "label": "Duomi",
+      "value": "https://duomi.uk"
+    },
+    {
+      "label": "Ekan8",
+      "value": "https://api.ekan8.com"
+    },
+    {
+      "label": "FastCode",
+      "value": "https://api.timebackward.com"
+    },
+    {
+      "label": "FoxCode",
+      "value": "https://code.newcli.com"
+    },
+    {
+      "label": "Fucheers",
+      "value": "https://www.fucheers.top"
+    },
+    {
+      "label": "Hack3rX-API",
+      "value": "http://api.hack3rx.cn"
+    },
+    {
+      "label": "IKunCode",
+      "value": "https://api.ikuncode.cc"
+    },
+    {
+      "label": "junjuncc",
+      "value": "https://newapi.junjun.site"
+    },
+    {
+      "label": "learn-ai",
+      "value": "https://free.learn-ai.top"
+    },
+    {
+      "label": "Lightning AI",
+      "value": "https://ai.cdn.ad"
+    },
+    {
+      "label": "LingxiCode",
+      "value": "https://new.050602.xyz"
+    },
+    {
+      "label": "LinkAPI",
+      "value": "https://linkapi.ai"
+    },
+    {
+      "label": "LLMAPI",
+      "value": "https://llmapi.pro"
+    },
+    {
+      "label": "Ls.API",
+      "value": "https://callxyq.xyz"
+    },
+    {
+      "label": "Lumin AI",
+      "value": "https://www.luminai.cc"
+    },
+    {
+      "label": "Matr Code",
+      "value": "https://matrcode.com"
+    },
+    {
+      "label": "MiKu",
+      "value": "https://mikuapi.org"
+    },
+    {
+      "label": "MNAPI",
+      "value": "https://www.mnapi.com"
+    },
+    {
+      "label": "Neco Api",
+      "value": "https://api.sbbbbbbbbb.xyz"
+    },
+    {
+      "label": "NekoCode",
+      "value": "https://nekocode.ai"
+    },
+    {
+      "label": "Nova AI",
+      "value": "http://apinova.cc"
+    },
+    {
+      "label": "OGOG.AI",
+      "value": "https://ogog.ai"
+    },
+    {
+      "label": "OhMyGPT",
+      "value": "https://x.dogenet.win"
+    },
+    {
+      "label": "OPE AI",
+      "value": "https://apicn-platform.ope.ai"
+    },
+    {
+      "label": "openaeonAPI",
+      "value": "https://api.openaeon.ai"
+    },
+    {
+      "label": "Openclawroot",
+      "value": "https://openclawroot.com"
+    },
+    {
+      "label": "OpenRouter.ai",
+      "value": "https://openrouter.ai"
+    },
+    {
+      "label": "Owl AI",
+      "value": "https://api.owlai.tech"
+    },
+    {
+      "label": "PackyCode",
+      "value": "https://www.packyapi.com"
+    },
+    {
+      "label": "PatewayAI",
+      "value": "https://api.pateway.ai/v1"
+    },
+    {
+      "label": "PenguinAI",
+      "value": "https://api.penguinsaichat.dpdns.org"
+    },
+    {
+      "label": "Poixe AI",
+      "value": "https://api.poixe.com"
+    },
+    {
+      "label": "PRY",
+      "value": "https://api.vip.crond.dev"
+    },
+    {
+      "label": "QiCun",
+      "value": "https://ai.qicunshang.com"
+    },
+    {
+      "label": "RightCode",
+      "value": "https://www.right.codes/claude"
+    },
+    {
+      "label": "RootFlow",
+      "value": "https://api.rootflowai.com"
+    },
+    {
+      "label": "RunAPI",
+      "value": "https://runapi.co"
+    },
+    {
+      "label": "SparkCode",
+      "value": "https://sparkcode.top"
+    },
+    {
+      "label": "Square API",
+      "value": "https://apixg.squarefaceicon.org"
+    },
+    {
+      "label": "SSSAICode",
+      "value": "https://node-hk.sssaicode.com/api"
+    },
+    {
+      "label": "SubRouter",
+      "value": "https://subrouter.ai"
+    },
+    {
+      "label": "SunnyPumpkinAPI",
+      "value": "https://gua.guagua.uk"
+    },
+    {
+      "label": "SwitchBase",
+      "value": "https://switchbase.vip"
+    },
+    {
+      "label": "Terminal.Pub",
+      "value": "https://terminal.pub"
+    },
+    {
+      "label": "test",
+      "value": "https://hvoy.ai"
+    },
+    {
+      "label": "TimiCC",
+      "value": "https://timicc.com"
+    },
+    {
+      "label": "ToCodex",
+      "value": "https://user.tocodex.com"
+    },
+    {
+      "label": "Traxnode",
+      "value": "https://www.traxnode.com"
+    },
+    {
+      "label": "TryAllAI",
+      "value": "https://api.tryallai.com"
+    },
+    {
+      "label": "UU API",
+      "value": "https://uuapi.net"
+    },
+    {
+      "label": "V-API",
+      "value": "https://api.gpt.ge"
+    },
+    {
+      "label": "VectorEngine",
+      "value": "https://api.vectorengine.ai"
+    },
+    {
+      "label": "XcodeBest",
+      "value": "https://xcode.best"
+    },
+    {
+      "label": "XueDingToken",
+      "value": "https://xuedingtoken.com"
+    },
+    {
+      "label": "YesCode",
+      "value": "https://co.yes.vg"
+    },
+    {
+      "label": "ZeroCode",
+      "value": "https://zerocode.sbs"
+    },
+    {
+      "label": "一元模型",
+      "value": "https://timesniper.club"
+    },
+    {
+      "label": "丝绸API",
+      "value": "https://code.silkapi.com"
+    },
+    {
+      "label": "云算API",
+      "value": "https://minitoken.top"
+    },
+    {
+      "label": "云雾AI",
+      "value": "https://api3.wlai.vip"
+    },
+    {
+      "label": "云雾AI",
+      "value": "https://yunwu.ai"
+    },
+    {
+      "label": "刺猬",
+      "value": "https://cc.cwapi.vip"
+    },
+    {
+      "label": "北妈AI",
+      "value": "https://bmai.kun8.vip"
+    },
+    {
+      "label": "南玻万",
+      "value": "https://hone.vvvv.ee"
+    },
+    {
+      "label": "发现AI",
+      "value": "https://api.miaocg.cn"
+    },
+    {
+      "label": "发现AI",
+      "value": "https://www.findcg.com"
+    },
+    {
+      "label": "呆呆鸟",
+      "value": "https://www.daidaibird.top"
+    },
+    {
+      "label": "哈基米",
+      "value": "https://api.gemai.cc"
+    },
+    {
+      "label": "垂耳兔",
+      "value": "https://loptu.net"
+    },
+    {
+      "label": "大肘子",
+      "value": "https://api.dzzi.ai"
+    },
+    {
+      "label": "奇异果 API",
+      "value": "https://api.qiyiguo.uk"
+    },
+    {
+      "label": "宅恋",
+      "value": "https://az.zlapi.pro"
+    },
+    {
+      "label": "安讯AI",
+      "value": "https://ai.anxidc.com"
+    },
+    {
+      "label": "小少爷API",
+      "value": "https://gzxsy.vip"
+    },
+    {
+      "label": "小流云",
+      "value": "https://ai.xlyun.pro"
+    },
+    {
+      "label": "小鸡农场",
+      "value": "https://api.68886868.xyz"
+    },
+    {
+      "label": "换API",
+      "value": "https://www.huanapi.com"
+    },
+    {
+      "label": "接口AI",
+      "value": "https://jiekou.ai"
+    },
+    {
+      "label": "方舟",
+      "value": "https://www.yxaiapp.com"
+    },
+    {
+      "label": "无限API",
+      "value": "https://infai.cc"
+    },
+    {
+      "label": "旺旺中转站",
+      "value": "https://api.bbww.top"
+    },
+    {
+      "label": "星辰",
+      "value": "https://ai.centos.hk"
+    },
+    {
+      "label": "曼波API",
+      "value": "https://www.manbouapi.com"
+    },
+    {
+      "label": "柏拉图AI",
+      "value": "https://api.bltcy.ai"
+    },
+    {
+      "label": "炒饭兽",
+      "value": "https://chaofanshou.com/v1"
+    },
+    {
+      "label": "熊猫",
+      "value": "https://api520.pro"
+    },
+    {
+      "label": "球球Token",
+      "value": "https://qiuqiutoken.com"
+    },
+    {
+      "label": "白鸟",
+      "value": "https://bnwu.top"
+    },
+    {
+      "label": "皮卡丘",
+      "value": "https://pikachu.claudecode.love"
+    },
+    {
+      "label": "神马AI",
+      "value": "https://api.whatai.cc"
+    },
+    {
+      "label": "米醋AI",
+      "value": "https://www.openclaudecode.cn"
+    },
+    {
+      "label": "肖恩",
+      "value": "https://free.supxh.xin"
+    },
+    {
+      "label": "芙卡卡",
+      "value": "https://api.fuka.winhttps//api.fuka.win"
+    },
+    {
+      "label": "菠萝",
+      "value": "https://www.boluoapi.cn"
+    },
+    {
+      "label": "蓝天",
+      "value": "https://www.wasdxx.xyz"
+    },
+    {
+      "label": "西瓜",
+      "value": "https://www.xiguaai6.com"
+    },
+    {
+      "label": "词元流动",
+      "value": "https://tokenflux.dev"
+    },
+    {
+      "label": "钱多多 API",
+      "value": "https://api2.aigcbest.top"
+    },
+    {
+      "label": "闪电API",
+      "value": "https://ai.flashapi.top"
+    },
+    {
+      "label": "鸡哥API",
+      "value": "https://api.yousebaby.com"
+    }
+  ],
+  "models": [
+    {
+      "label": "Opus 4.6",
+      "value": "claude-opus-4-6"
+    },
+    {
+      "label": "GPT 5.4",
+      "value": "gpt-5.4"
+    }
+  ]
+}
