@@ -6,7 +6,9 @@ const configPath = path.join(__dirname, '../../config.json');
 const plansPath = path.join(__dirname, '../../plans.json');
 
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-const plans = JSON.parse(fs.readFileSync(plansPath, 'utf8'));
+const allPlans = JSON.parse(fs.readFileSync(plansPath, 'utf8'));
+// 过滤掉已下线的套餐
+const plans = allPlans.filter(plan => !plan.discontinued);
 
 // 硬编码内容
 const ONLINE_URL = 'https://api.dreamfree.space/c/s/cpgh';
