@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/shared.css">
     <script src="scripts/relay-detect-config.local.js"></script>
     <script src="scripts/relay-detect-config.js"></script>
+    <script src="scripts/relay-detect-options.js"></script>
     <script src="scripts/shared.js"></script>
     <style>
         html { scroll-behavior: smooth; }
@@ -77,6 +78,94 @@
         }
         .form-input::placeholder {
             color: var(--text-tertiary);
+        }
+
+        /* 可编辑下拉框 */
+        .combo-input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        .combo-input {
+            width: 100%;
+            padding: 10px 40px 10px 14px;
+            font-size: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+            font-family: inherit;
+        }
+        .combo-input:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        .combo-input::placeholder {
+            color: var(--text-tertiary);
+        }
+        .combo-toggle-btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            padding: 0 10px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--text-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .combo-toggle-btn:hover {
+            color: var(--text-primary);
+        }
+        .combo-toggle-btn svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s;
+        }
+        .combo-toggle-btn.open svg {
+            transform: rotate(180deg);
+        }
+        .combo-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: 4px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            max-height: 240px;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+        }
+        .combo-dropdown.show {
+            display: block;
+        }
+        .combo-option {
+            padding: 10px 14px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-primary);
+            transition: background 0.15s;
+        }
+        .combo-option:hover,
+        .combo-option.highlighted {
+            background: var(--bg-tertiary);
+        }
+        .combo-divider {
+            height: 1px;
+            background: var(--border-light);
+            margin: 4px 0;
+        }
+        .combo-custom-option {
+            color: var(--accent-primary);
+            font-weight: 500;
         }
         .submit-btn {
             display: inline-flex;
@@ -399,6 +488,15 @@
             color: var(--text-primary);
         }
 
+        /* ── 表单行布局 ── */
+        .form-row {
+            display: flex;
+            gap: 16px;
+        }
+        .form-group-half {
+            flex: 1;
+        }
+
         /* ── 响应式 ── */
         @media (max-width: 768px) {
             body { padding: 24px 16px; }
@@ -410,6 +508,7 @@
             .history-table { font-size: 12px; }
             .history-table thead th,
             .history-table tbody td { padding: 8px 10px; }
+            .form-row { flex-direction: column; gap: 0; }
         }
     </style>
 </head>
@@ -450,17 +549,37 @@
         <!-- 检测表单 -->
         <div class="detect-form-card">
             <form id="detectForm" autocomplete="off">
-                <div class="form-group">
-                    <label class="form-label">Base URL <span class="form-hint">中转站的 API 地址</span></label>
-                    <input type="text" class="form-input" id="baseUrl" placeholder="https://api.example.com" required>
+                <div class="form-row">
+                    <div class="form-group form-group-half">
+                        <label class="form-label">Base URL <span class="form-hint">中转站的 API 地址</span></label>
+                        <div class="combo-input-wrapper">
+                            <input type="text" class="combo-input" id="baseUrlDisplay" placeholder="https://api.example.com">
+                            <input type="hidden" id="baseUrl" required>
+                            <button type="button" class="combo-toggle-btn" id="baseUrlToggle" aria-label="展开选项">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+                            <div class="combo-dropdown" id="baseUrlDropdown"></div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-half">
+                        <label class="form-label">模型名称 <span class="form-hint">要检测的模型</span></label>
+                        <div class="combo-input-wrapper">
+                            <input type="text" class="combo-input" id="modelNameDisplay" placeholder="claude-sonnet-4-20250514">
+                            <input type="hidden" id="modelName" required>
+                            <button type="button" class="combo-toggle-btn" id="modelNameToggle" aria-label="展开选项">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+                            <div class="combo-dropdown" id="modelNameDropdown"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">API Key <span class="form-hint">你的密钥，仅用于本次检测，不会保存</span></label>
                     <input type="password" class="form-input" id="apiKey" placeholder="sk-..." required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">模型名称 <span class="form-hint">要检测的模型</span></label>
-                    <input type="text" class="form-input" id="modelName" placeholder="claude-sonnet-4-20250514" required>
                 </div>
                 <button type="submit" class="submit-btn" id="submitBtn">开始检测</button>
             </form>
@@ -488,6 +607,9 @@
         var HISTORY_KEY = 'relay_detect_history';
         var POLL_INTERVAL = 3000;
         var MAX_POLL_COUNT = 60;
+
+        // ── 下拉列表配置：来自 scripts/relay-detect-options.js ──
+        var COMBO_CONFIG = window.RELAY_DETECT_OPTIONS || { baseUrls: [], models: [] };
 
         var form = document.getElementById('detectForm');
         var submitBtn = document.getElementById('submitBtn');
@@ -559,6 +681,151 @@
             if (failCount >= warningCount && failCount >= passCount) return 'fail';
             if (warningCount >= passCount) return 'warning';
             return 'pass';
+        }
+
+        // ── 可编辑下拉框 ──
+        function createComboInput(displayInputId, valueInputId, toggleId, dropdownId, options) {
+            var displayInput = document.getElementById(displayInputId);
+            var valueInput = document.getElementById(valueInputId);
+            var toggleBtn = document.getElementById(toggleId);
+            var dropdown = document.getElementById(dropdownId);
+            var isOpen = false;
+            var highlightedIndex = -1;
+
+            function findOptionByValue(value) {
+                for (var i = 0; i < options.length; i++) {
+                    if (options[i].value === value) {
+                        return options[i];
+                    }
+                }
+                return null;
+            }
+
+            function getDisplayText(opt) {
+                return opt.label + ' - ' + opt.value;
+            }
+
+            function renderOptions(filter) {
+                var filterText = (filter || '').toLowerCase();
+                var filteredOptions = options.filter(function(opt) {
+                    return !filterText ||
+                        opt.label.toLowerCase().indexOf(filterText) !== -1 ||
+                        opt.value.toLowerCase().indexOf(filterText) !== -1;
+                });
+
+                var html = '';
+                filteredOptions.forEach(function(opt, idx) {
+                    var highlightClass = idx === highlightedIndex ? 'highlighted' : '';
+                    html += '<div class="combo-option ' + highlightClass + '" data-value="' + escapeHtml(opt.value) + '" data-label="' + escapeHtml(opt.label) + '">';
+                    html += escapeHtml(getDisplayText(opt));
+                    html += '</div>';
+                });
+
+                if (filteredOptions.length > 0 && filterText) {
+                    html += '<div class="combo-divider"></div>';
+                }
+
+                if (filterText) {
+                    html += '<div class="combo-option combo-custom-option" data-value="' + escapeHtml(filter) + '" data-label="' + escapeHtml(filter) + '">';
+                    html += '使用自定义: ' + escapeHtml(filter);
+                    html += '</div>';
+                }
+
+                dropdown.innerHTML = html;
+            }
+
+            function open() {
+                isOpen = true;
+                toggleBtn.classList.add('open');
+                dropdown.classList.add('show');
+                renderOptions(displayInput.value);
+                highlightedIndex = -1;
+            }
+
+            function close() {
+                isOpen = false;
+                toggleBtn.classList.remove('open');
+                dropdown.classList.remove('show');
+            }
+
+            function selectOption(opt) {
+                displayInput.value = opt.value;
+                valueInput.value = opt.value;
+                displayInput.focus();
+                close();
+            }
+
+            toggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (isOpen) {
+                    close();
+                } else {
+                    open();
+                }
+            });
+
+            displayInput.addEventListener('focus', function() {
+                open();
+            });
+
+            displayInput.addEventListener('input', function() {
+                highlightedIndex = -1;
+                valueInput.value = displayInput.value;
+                renderOptions(displayInput.value);
+                if (!isOpen) open();
+            });
+
+            displayInput.addEventListener('keydown', function(e) {
+                var optionElements = dropdown.querySelectorAll('.combo-option');
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    if (!isOpen) {
+                        open();
+                    } else {
+                        highlightedIndex = Math.min(highlightedIndex + 1, optionElements.length - 1);
+                        renderOptions(displayInput.value);
+                    }
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    if (isOpen) {
+                        highlightedIndex = Math.max(highlightedIndex - 1, 0);
+                        renderOptions(displayInput.value);
+                    }
+                } else if (e.key === 'Enter') {
+                    if (isOpen && highlightedIndex >= 0 && optionElements[highlightedIndex]) {
+                        e.preventDefault();
+                        var optEl = optionElements[highlightedIndex];
+                        selectOption({ label: optEl.dataset.label, value: optEl.dataset.value });
+                    } else {
+                        close();
+                    }
+                } else if (e.key === 'Escape') {
+                    close();
+                }
+            });
+
+            dropdown.addEventListener('click', function(e) {
+                var optionEl = e.target.closest('.combo-option');
+                if (optionEl) {
+                    selectOption({ label: optionEl.dataset.label, value: optionEl.dataset.value });
+                }
+            });
+
+            document.addEventListener('click', function(e) {
+                if (e.target !== displayInput && e.target !== toggleBtn && !dropdown.contains(e.target)) {
+                    close();
+                }
+            });
+        }
+
+        // ── 初始化下拉框 ──
+        function initCombos() {
+            if (COMBO_CONFIG.baseUrls && COMBO_CONFIG.baseUrls.length > 0) {
+                createComboInput('baseUrlDisplay', 'baseUrl', 'baseUrlToggle', 'baseUrlDropdown', COMBO_CONFIG.baseUrls);
+            }
+            if (COMBO_CONFIG.models && COMBO_CONFIG.models.length > 0) {
+                createComboInput('modelNameDisplay', 'modelName', 'modelNameToggle', 'modelNameDropdown', COMBO_CONFIG.models);
+            }
         }
 
         // ── 提交检测 ──
@@ -856,6 +1123,7 @@
         });
 
         // ── 初始化 ──
+        initCombos();
         renderHistory();
     })();
     </script>
