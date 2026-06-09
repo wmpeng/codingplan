@@ -463,6 +463,77 @@
     "note": "• GLM-5.1已恢复200K上下文\n• 讯飞实际用量比较高"
   },
   {
+    "vendor": "字节·方舟",
+    "plan": "Lite",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqfangzhou",
+    "rating": 4,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": 9.4,
+    "monthlyPrice": 40,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Doubao-Seed-2.0系列",
+      "Doubao-Seed-Code",
+      "MiniMax-M2.7",
+      "MiniMax-M3",
+      "Kimi-K2.6",
+      "GLM-5.1",
+      "DeepSeek-V3.2",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V4-Pro"
+    ],
+    "fiveHoursRequests": 1200,
+    "weeklyRequests": 9000,
+    "monthlyRequests": 18000,
+    "tokenLimit": "无限制",
+    "benefits": [
+    ],
+    "note": "• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）\n• 部分模型倍率较高，用量较低",
+    "discontinued": false,
+    "measuredFiveHoursTokenLimit": 6,
+    "measuredWeeklyTokenLimit": 42,
+    "measuredMonthlyTokenLimit": 83
+  },
+  {
+    "vendor": "字节·方舟",
+    "plan": "Pro",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqfangzhou",
+    "rating": 4,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": 47.4,
+    "monthlyPrice": 200,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Doubao-Seed-2.0系列",
+      "Doubao-Seed-Code",
+      "MiniMax-M2.7",
+      "MiniMax-M3",
+      "Kimi-K2.6",
+      "GLM-5.1",
+      "DeepSeek-V3.2",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V4-Pro"
+    ],
+    "fiveHoursRequests": 6000,
+    "weeklyRequests": 45000,
+    "monthlyRequests": 90000,
+    "tokenLimit": "无限制",
+    "benefits": [],
+    "note": "• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）\n• 部分模型倍率较高，用量较低",
+    "discontinued": false,
+    "measuredFiveHoursTokenLimit": 28,
+    "measuredWeeklyTokenLimit": 208,
+    "measuredMonthlyTokenLimit": 416
+  },
+  {
     "vendor": "Kimi",
     "plan": "Andante",
     "type": "Coding Plan",
@@ -571,77 +642,6 @@
       "免费Kimi-Claw"
     ],
     "note": "60 倍额度"
-  },
-  {
-    "vendor": "字节·方舟",
-    "plan": "Lite",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqfangzhou",
-    "rating": 4,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": 9.9,
-    "monthlyPrice": 40,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "Doubao-Seed-2.0系列",
-      "Doubao-Seed-Code",
-      "MiniMax-M2.7",
-      "MiniMax-M3",
-      "Kimi-K2.6",
-      "GLM-5.1",
-      "DeepSeek-V3.2",
-      "DeepSeek-V4-Flash",
-      "DeepSeek-V4-Pro"
-    ],
-    "fiveHoursRequests": 1200,
-    "weeklyRequests": 9000,
-    "monthlyRequests": 18000,
-    "tokenLimit": "无限制",
-    "benefits": [
-    ],
-    "note": "• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）\n• 部分模型倍率较高，用量较低",
-    "discontinued": false,
-    "measuredFiveHoursTokenLimit": 6,
-    "measuredWeeklyTokenLimit": 42,
-    "measuredMonthlyTokenLimit": 83
-  },
-  {
-    "vendor": "字节·方舟",
-    "plan": "Pro",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqfangzhou",
-    "rating": 4,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": 49.9,
-    "monthlyPrice": 200,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "Doubao-Seed-2.0系列",
-      "Doubao-Seed-Code",
-      "MiniMax-M2.7",
-      "MiniMax-M3",
-      "Kimi-K2.6",
-      "GLM-5.1",
-      "DeepSeek-V3.2",
-      "DeepSeek-V4-Flash",
-      "DeepSeek-V4-Pro"
-    ],
-    "fiveHoursRequests": 6000,
-    "weeklyRequests": 45000,
-    "monthlyRequests": 90000,
-    "tokenLimit": "无限制",
-    "benefits": [],
-    "note": "• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）\n• 部分模型倍率较高，用量较低",
-    "discontinued": false,
-    "measuredFiveHoursTokenLimit": 28,
-    "measuredWeeklyTokenLimit": 208,
-    "measuredMonthlyTokenLimit": 416
   },
   {
     "vendor": "字节·方舟",
