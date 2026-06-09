@@ -4,8 +4,8 @@ requires = ["python-3.12"]
 
 [dev]
 build = []
-run = [ "sh", "-c", "python -m http.server ${DEPLOY_RUN_PORT} --bind 0.0.0.0" ]
+run = [ "python3", "-m", "http.server", "5000", "--bind", "0.0.0.0" ]
 
 [deploy]
 build = []
-run = [ "sh", "-c", "python -m http.server ${DEPLOY_RUN_PORT} --bind 0.0.0.0" ]
+run = [ "python3", "-m", "http.server", "5000", "--bind", "0.0.0.0" ]
