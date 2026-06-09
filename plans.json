@@ -2418,7 +2418,7 @@
   {
     "vendor": "GitHub",
     "plan": "学生",
-    "type": "Coding Plan",
+    "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqghstudent",
     "rating": 5,
     "tags": [
@@ -2440,7 +2440,7 @@
     ],
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
-    "monthlyRequests": 300,
+    "monthlyRequests": "未公开",
     "tokenLimit": "未公开",
     "currency": "$",
     "benefits": [
@@ -2451,9 +2451,9 @@
   {
     "vendor": "GitHub",
     "plan": "Pro",
-    "type": "Coding Plan",
+    "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqghcopilot",
-    "rating": 4,
+    "rating": 3,
     "tags": [
       "模型强"
     ],
@@ -2470,20 +2470,20 @@
     ],
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
-    "monthlyRequests": 300,
+    "monthlyRequests": "未公开",
     "tokenLimit": "未公开",
     "currency": "$",
     "benefits": [
       "1000 积分"
     ],
-    "note": "• 次数为对话次数，而非接口请求次数\n• 存在周限额和 session 限额；不同模型有不同高级模型扣减倍率\n• 目前暂时关闭新用户订阅权益激活，已有用户升级暂不受影响"
+    "note": "• 存在周限额和 session 限额；不同模型有不同高级模型扣减倍率\n• 已改为用 token 计费模式"
   },
   {
     "vendor": "GitHub",
     "plan": "Pro+",
-    "type": "Coding Plan",
+    "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqghcopilotp",
-    "rating": 4,
+    "rating": 3,
     "tags": [
       "模型强"
     ],
@@ -2501,12 +2501,12 @@
     ],
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
-    "monthlyRequests": 1500,
+    "monthlyRequests": "未公开",
     "tokenLimit": "未公开",
     "currency": "$",
     "benefits": [
       "3900 积分"
     ],
-    "note": "• 次数为对话次数，而非接口请求次数\n• 存在周限额和 session 限额；不同模型有不同高级模型扣减倍率\n• 官方说明自 6 月 1 日起统一改用 token 计费模式"
+    "note": "• 存在周限额和 session 限额；不同模型有不同高级模型扣减倍率\n• 已改为用 token 计费模式"
   }
 ]
