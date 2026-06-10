@@ -1,6 +1,6 @@
 # AI Coding Plan 对比
 
-> 更新日期2026.6.6 | 字节CodingPlan上新Deepseek V4及MiniMax M3
+> 更新日期2026.6.10 | 字节CodingPlan用量提升2.5倍，首两月价格打2.5折
 
 ## 📖 简介
 
@@ -38,12 +38,12 @@
     - 支持MiniMax-M3模型。+1
     - 额度依然最高。适合养龙虾或者作为日常编程任务或者助手。+0.5
     - 支持多模态。+0.5
-4. 字节·方舟 ⭐️⭐️⭐️⭐️
+4. 字节·方舟 ⭐️⭐️⭐️⭐️⭐️
+    - 原本部分模型倍率较高，用量较少。但考虑前两月2.5折，且目前有为期一个月的GLM-5.1，DeepSeek-V4-Pro，Kimi-K2.6用量2.5倍活动。相当于原本10倍的性价比，从拉到夯。+1
     - 支持GLM-5.1，DeepSeek-V4-Pro/Flash，MiniMax-M3，Kimi-K2.6。+1
     - 唯一一家同时支持GLM，DeepSeek-V4-Pro/Flash，MiniMax，Kimi四家最新模型的平台
-    - 部分模型倍率较高，用量较少。但考虑首月2.5折，在这个价格下用量不少了。
-5. Kimi ⭐️⭐️⭐️⭐️
-    - 支持K-2.6。+1
+5. Kimi ⭐️⭐️⭐️
+    - 支持Kimi-2.6，现在的模型竞争率偏弱了。+0.5
     - 提供实验性专业数据库功能。+0.5
     - 用量官方没有说明，但是实测比其他家用量要少一些。-1
     - 模型能力均衡，可用作代码编写和日常需求，支持多模态（图像输入）。+0.5
@@ -72,8 +72,8 @@
 | Kimi | Moderato | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqkimi) | ⭐️⭐️⭐️⭐️ | 模型强 | - | ¥99 | - / 季 | ¥948 ~~1188~~ / 年 | 未公开 | 未公开 | 未公开 | - | - | - | - | - | 无限制 | Kimi-K2.6, Kimi-K2.5, Kimi-K2 | - | 在售 | 4 倍额度, Agent 多任务并行 |
 | Kimi | Allegretto | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqkimi) | ⭐️⭐️⭐️⭐️ | 模型强 | - | ¥199 | - / 季 | ¥1908 ~~2388~~ / 年 | 未公开 | 未公开 | 未公开 | 65M Tokens | 357M Tokens | 1,428M Tokens | 717.6万 | ¥0.14 | 无限制 | Kimi-K2.6, Kimi-K2.5, Kimi-K2 | 免费Kimi-Claw | 在售 | 20 倍额度 |
 | Kimi | Allegro | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqkimi) | ⭐️⭐️⭐️⭐️ | 模型强 | - | ¥699 | - / 季 | ¥6708 ~~8388~~ / 年 | 未公开 | 未公开 | 未公开 | - | - | - | - | - | 无限制 | Kimi-K2.6, Kimi-K2.5, Kimi-K2 | 免费Kimi-Claw | 在售 | 60 倍额度 |
-| 字节·方舟 | Small | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqfangzhout) | ⭐️⭐️⭐️ | 模型强 | - | ¥40 | - / 季 | - / 年 | 200 | 700 | 2,000 | - | - | 22M Tokens | 55万 | ¥1.82 | 22M Tokens | Doubao-Seed-2.0系列, DeepSeek-V4-Pro, DeepSeek-V4-Flash, DeepSeek-V3.2, MiniMax-M2.7, MiniMax-M3, GLM-5.1, Kimi-K2.6, Doubao-Seedream-5.0-lite | 联网搜索 50次/月 | 在售 | • 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。 <br> • 按照最优模型9倍系数计算，1AFP=1111Token。 <br> • 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。 |
-| 字节·方舟 | Medium | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqfangzhout) | ⭐️⭐️⭐️ | 模型强 | - | ¥200 | - / 季 | - / 年 | 1,000 | 3,500 | 10,000 | - | - | 111M Tokens | 55.5万 | ¥1.80 | 111M Tokens | Doubao-Seed-2.0系列, DeepSeek-V4-Pro, DeepSeek-V4-Flash, DeepSeek-V3.2, MiniMax-M2.7, MiniMax-M3, GLM-5.1, Kimi-K2.6, Doubao-Seedream-5.0-lite, Doubao-Seedance-2.0 | 联网搜索 150次/月 | 在售 | • 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。 <br> • 按照最优模型9倍系数计算，1AFP=1111Token。 <br> • 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。 |
+| 字节·方舟 | Small | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqfangzhout) | ⭐️⭐️⭐️ | 模型强 | ¥9.9 | ¥40 | - / 季 | - / 年 | 200 | 700 | 2,000 | - | - | 22M Tokens | 55万 | ¥1.82 | 22M Tokens | Doubao-Seed-2.0系列, DeepSeek-V4-Pro, DeepSeek-V4-Flash, DeepSeek-V3.2, MiniMax-M2.7, MiniMax-M3, GLM-5.1, Kimi-K2.6, Doubao-Seedream-5.0-lite | 联网搜索 50次/月 | 在售 | • 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。 <br> • 按照最优模型9倍系数计算，1AFP=1111Token。 <br> • 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。 |
+| 字节·方舟 | Medium | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqfangzhout) | ⭐️⭐️⭐️ | 模型强 | ¥49.9 | ¥200 | - / 季 | - / 年 | 1,000 | 3,500 | 10,000 | - | - | 111M Tokens | 55.5万 | ¥1.80 | 111M Tokens | Doubao-Seed-2.0系列, DeepSeek-V4-Pro, DeepSeek-V4-Flash, DeepSeek-V3.2, MiniMax-M2.7, MiniMax-M3, GLM-5.1, Kimi-K2.6, Doubao-Seedream-5.0-lite, Doubao-Seedance-2.0 | 联网搜索 150次/月 | 在售 | • 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。 <br> • 按照最优模型9倍系数计算，1AFP=1111Token。 <br> • 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。 |
 | 字节·方舟 | Large | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqfangzhout) | ⭐️⭐️⭐️ | 模型强 | - | ¥500 | - / 季 | - / 年 | 2,500 | 8,750 | 25,000 | - | - | 278M Tokens | 55.6万 | ¥1.80 | 278M Tokens | Doubao-Seed-2.0系列, DeepSeek-V4-Pro, DeepSeek-V4-Flash, DeepSeek-V3.2, MiniMax-M2.7, MiniMax-M3, GLM-5.1, Kimi-K2.6, Doubao-Seedream-5.0-lite, Doubao-Seedance-2.0 | 联网搜索 400次/月 | 在售 | • 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。 <br> • 按照最优模型9倍系数计算，1AFP=1111Token。 <br> • 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。 |
 | 字节·方舟 | Max | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqfangzhout) | ⭐️⭐️⭐️ | 模型强 | - | ¥1000 | - / 季 | - / 年 | 5,000 | 17,500 | 50,000 | - | - | 556M Tokens | 55.6万 | ¥1.80 | 556M Tokens | Doubao-Seed-2.0系列, DeepSeek-V4-Pro, DeepSeek-V4-Flash, DeepSeek-V3.2, MiniMax-M2.7, MiniMax-M3, GLM-5.1, Kimi-K2.6, Doubao-Seedream-5.0-lite, Doubao-Seedance-2.0 | 联网搜索 800次/月 | 在售 | • 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。 <br> • 按照最优模型9倍系数计算，1AFP=1111Token。 <br> • 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。 |
 | 阿里·百炼 | 标准 | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqbailiant) | ⭐️⭐️⭐️ | - | - | ¥198 | - / 季 | - / 年 | 无限制 | 无限制 | 无限制 | - | - | 375M Tokens | 189.4万 | ¥0.53 | 375M Tokens | Qwen-3.7-Max, Qwen-3.6-Plus, Qwen-3.6-Flash, Qwen-3.5-Plus, MiniMax-M2.5, DeepSeek-V3.2, GLM-5.1, Kimi-K2.6 | - | 在售 | • Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit。合输入¥1.58/MToken，缓存¥0.32/MToken，输出¥9.54/MToken <br> • 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%/5000 + 99×90%/25000 + 1/830 = 0.00675 Credit，即 1 Credit≈14.82K Token。表格按15K Token/Credit算 |
@@ -138,6 +138,10 @@
 - 本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议
 
 ## 📝 更新日志
+
+### 2026.6.8
+
+- 字节·方舟 Coding Plan折扣，用量更新
 
 ### 2026.6.8
 
