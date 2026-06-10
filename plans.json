@@ -428,7 +428,7 @@
     "monthlyRequests": 18000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• GLM-5.1已恢复200K上下文\n• 讯飞实际用量比较高"
+    "note": "• GLM-5.1已恢复200K上下文\n• 讯飞实际可用量比较多"
   },
   {
     "vendor": "讯飞·星火",
@@ -460,7 +460,7 @@
     "monthlyRequests": 90000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• GLM-5.1已恢复200K上下文\n• 讯飞实际用量比较高"
+    "note": "• GLM-5.1已恢复200K上下文\n• 讯飞实际可用量比较多"
   },
   {
     "vendor": "字节·方舟",
