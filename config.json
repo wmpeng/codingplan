@@ -104,7 +104,18 @@
   "accountSale": {
     "title": "出纯手工账号",
     "description": "低价出字节火山账号，都是邀请得来的代金券。",
-    "accounts": [],
+    "accounts": [
+      {
+        "platform": "火山方舟 Lite 季卡",
+        "detail": "含 200 元代金券，纯手工邀请注册，30 天内有效",
+        "price": "¥60"
+      },
+      {
+        "platform": "火山方舟 Pro 月卡",
+        "detail": "含 80 元代金券，可叠加首月 2.5 折活动，30 天有效",
+        "price": "¥40"
+      }
+    ],
     "contact": {
       "label": "微信",
       "id": "wp3xpqakcggz22"
@@ -150,7 +161,7 @@
   },
   "updates": [
     {
-      "date": "2026.6.8",
+      "date": "2026.6.10",
       "items": [
         "字节·方舟 Coding Plan折扣，用量更新"
       ]
@@ -158,7 +169,7 @@
     {
       "date": "2026.6.8",
       "items": [
-        "字节·方舟 Coding Plan模型、权益更新"
+        "字节·方舟 Coding Plan模型、权益更新，解除限购"
       ]
     },
     {
