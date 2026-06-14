@@ -105,22 +105,17 @@
     "title": "出纯手工账号",
     "description": "低价出字节火山账号，都是邀请得来的代金券。",
     "accounts": [
-      {
-        "platform": "智谱账号",
-        "detail": "余额¥5023.88，八五折出。账号当前无订阅，新订阅还能享受九五折。",
-        "price": "¥4270"
-      },
-      {
-        "platform": "火山方舟 Pro 月卡",
-        "detail": "含 80 元代金券，可叠加首月 2.5 折活动，30 天有效",
-        "price": "¥40"
-      }
     ],
+    "accounts_template": {
+        "platform": "xxxxx",
+        "detail": "xxxxxxx",
+        "price": "¥123"
+      }
     "contact": {
-      "label": "微信",
-      "id": "wp3xpqakcggz22"
+      "label": "飞书群",
+      "id": "https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=b0cp76fa-650f-4de0-b2bc-c283250f5a9c"
     },
-    "qrcode": "assets/wechat-qr.jpg"
+    "qrcode": "assets/feishu_group.png"
   },
   "table": {
     "columns": {
