@@ -2719,19 +2719,8 @@
             </ul>
         </div>
 
-        <!-- 账号出售区域（与 config.json 同步；无账号条目时脚本不会覆盖此块） -->
-        <div class="account-sale-section surface-panel" id="accountSaleSection">
-            <h3>出纯手工账号</h3>
-            <div class="description">低价出字节火山账号，都是邀请得来的代金券。</div>
-            <div class="account-cards"></div>
-            <div class="contact-section">
-                <div class="contact-info">
-                    <div class="label">感兴趣联系 微信</div>
-                    <div class="wechat-id">wp3xpqakcggz22</div>
-                </div>
-                <img src="assets/wechat-qr.jpg" alt="微信二维码" class="contact-qrcode">
-            </div>
-        </div>
+        <!-- 账号出售区域：内容完全由 JS 根据 config.json 渲染；accounts 为空时整块隐藏 -->
+        <div class="account-sale-section surface-panel" id="accountSaleSection" style="display: none;"></div>
     </div>
 
     <div class="feedback-float" id="feedbackFloat">
@@ -4412,7 +4401,13 @@
         // 渲染账号出售
         function renderAccountSale(sale) {
             const container = document.getElementById('accountSaleSection');
-            if (!container || !sale.accounts || sale.accounts.length === 0) return;
+            if (!container) return;
+            // accounts 为空时整块区域隐藏，避免出现空白 panel
+            if (!sale.accounts || sale.accounts.length === 0) {
+                container.style.display = 'none';
+                return;
+            }
+            container.style.display = '';
 
             const accountsHtml = sale.accounts.map(acc => `
                 <div class="account-card">
