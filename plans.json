@@ -15,6 +15,7 @@
     "yearlyPrice": 470.4,
     "models": [
       "GLM-5.1",
+      "GLM-5.2",
       "GLM-5-Turbo"
     ],
     "fiveHoursRequests": 1200,
@@ -45,6 +46,7 @@
     "yearlyPrice": 1430.4,
     "models": [
       "GLM-5.1",
+      "GLM-5.2",
       "GLM-5-Turbo",
       "GLM-5"
     ],
@@ -76,6 +78,7 @@
     "yearlyPrice": 4502.4,
     "models": [
       "GLM-5.1",
+      "GLM-5.2",
       "GLM-5-Turbo",
       "GLM-5"
     ],
@@ -106,6 +109,7 @@
     "yearlyPrice": 172.8,
     "models": [
       "GLM-5.1",
+      "GLM-5.2",
       "GLM-5-Turbo"
     ],
     "fiveHoursRequests": 1200,
@@ -133,6 +137,7 @@
     "yearlyPrice": 691.2,
     "models": [
       "GLM-5.1",
+      "GLM-5.2",
       "GLM-5-Turbo",
       "GLM-5"
     ],
@@ -161,6 +166,7 @@
     "yearlyPrice": 1536,
     "models": [
       "GLM-5.1",
+      "GLM-5.2",
       "GLM-5-Turbo",
       "GLM-5"
     ],

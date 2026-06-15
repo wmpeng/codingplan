@@ -2,7 +2,7 @@
   "header": {
     "title": "AI Coding Plan 对比",
     "updateDate": "更新日期2026.6.10 | 字节CodingPlan用量提升2.5倍，首两月价格打2.5折",
-    "subtitle": "25大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、讯飞·星火、百度·千帆、腾讯云、京东云，Coding Plan / Agent Plan 全面对比\n支持DeepSeek V4，GLM-5.1，Qwen-3.7-Max，Kimi-K2.6，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2-Pro等模型",
+    "subtitle": "25大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、讯飞·星火、百度·千帆、腾讯云、京东云，Coding Plan / Agent Plan 全面对比\n支持DeepSeek V4，GLM-5.2，Qwen-3.7-Max，Kimi-K2.6，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2-Pro等模型",
     "models": "目前整体趋势是已经开始用Token Plan替换Coding Plan了，几个大厂阿里、字节、腾讯都改成Token Plan了，各位且买且珍惜吧",
     "watermarkUrl": "www.codingplan.fyi",
     "entry": {
@@ -110,7 +110,7 @@
         "platform": "xxxxx",
         "detail": "xxxxxxx",
         "price": "¥123"
-      }
+      },
     "contact": {
       "label": "飞书群",
       "id": "https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=b0cp76fa-650f-4de0-b2bc-c283250f5a9c"
@@ -155,6 +155,12 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.6.13",
+      "items": [
+        "智谱AI（国内版 / 国际版）Coding Plan 追加支持 GLM-5.2 模型（保留 GLM-5.1 兼容老用户）"
+      ]
+    },
     {
       "date": "2026.6.10",
       "items": [
