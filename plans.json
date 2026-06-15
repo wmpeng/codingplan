@@ -801,6 +801,7 @@
     "yearlyPrice": "-",
     "models": [
       "Qwen-3.7-Max",
+      "Qwen-3.7-Plus",
       "Qwen-3.6-Plus",
       "Qwen-3.6-Flash",
       "Qwen-3.5-Plus",
@@ -830,6 +831,7 @@
     "yearlyPrice": "-",
     "models": [
       "Qwen-3.7-Max",
+      "Qwen-3.7-Plus",
       "Qwen-3.6-Plus",
       "Qwen-3.6-Flash",
       "Qwen-3.5-Plus",
@@ -859,6 +861,7 @@
     "yearlyPrice": "-",
     "models": [
       "Qwen-3.7-Max",
+      "Qwen-3.7-Plus",
       "Qwen-3.6-Plus",
       "Qwen-3.6-Flash",
       "Qwen-3.5-Plus",
@@ -889,6 +892,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "Qwen-3.7-Plus",
       "Qwen-3.6-Plus",
       "Qwen-3.5-Plus",
       "MiniMax-M2.5",
@@ -920,6 +924,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "Qwen-3.7-Plus",
       "Qwen-3.6-Plus",
       "Qwen-3.5-Plus",
       "MiniMax-M2.5",

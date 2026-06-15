@@ -156,7 +156,8 @@
       "date": "2026.6.13",
       "items": [
         "智谱AI（国内版 / 国际版）Coding Plan 追加支持 GLM-5.2 模型",
-        "阶跃星辰 Coding Plan 追加支持 step-3.7-flash 模型"
+        "阶跃星辰 Coding Plan 追加支持 step-3.7-flash 模型",
+        "阿里·百炼 Coding Plan（Lite / Pro）追加 Qwen-3.7-Plus；Token Plan（标准 / 高级 / 尊享）追加 Qwen-3.7-Plus"
       ]
     },
     {
