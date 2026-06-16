@@ -5,7 +5,7 @@
 ## 📖 简介
 
 25大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、讯飞·星火、百度·千帆、腾讯云、京东云，Coding Plan / Agent Plan 全面对比  
-支持DeepSeek V4，GLM-5.2，Qwen-3.7-Max，Kimi-K2.6，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2-Pro等模型
+支持DeepSeek V4，GLM-5.2，Qwen-3.7-Max，Kimi-K2.7，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro等模型
 
 目前整体趋势是已经开始用Token Plan替换Coding Plan了，Minimax、阿里、腾讯都改成Token Plan了，各位且买且珍惜吧
 
