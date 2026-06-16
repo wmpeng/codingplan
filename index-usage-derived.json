@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-02T15:25:30.722658Z",
+  "generatedAt": "2026-06-16T14:28:15.167254Z",
   "source": {
     "plans": "codingplan/plans.json",
     "seeds": "scripts/codingplan/plan-usage-seeds.json"
@@ -253,13 +253,13 @@
     },
     {
       "vendor": "MiniMax",
-      "plan": "Plus",
+      "plan": "新Plus",
       "type": "Token Plan",
       "currency": "¥",
       "monthlyPrice": 49.0,
       "comparisonMonthlyPriceCny": 49.0,
       "discontinued": false,
-      "seedPlan": "Plus",
+      "seedPlan": "新Plus",
       "seedSource": null,
       "seedSourceNote": "见下方表格",
       "vendorOrder": 6,
@@ -273,13 +273,13 @@
     },
     {
       "vendor": "MiniMax",
-      "plan": "Max",
+      "plan": "新Max",
       "type": "Token Plan",
       "currency": "¥",
       "monthlyPrice": 119.0,
       "comparisonMonthlyPriceCny": 119.0,
       "discontinued": false,
-      "seedPlan": "Max",
+      "seedPlan": "新Max",
       "seedSource": null,
       "seedSourceNote": "见下方表格",
       "vendorOrder": 6,
@@ -293,13 +293,13 @@
     },
     {
       "vendor": "MiniMax",
-      "plan": "Ultra",
+      "plan": "新Ultra",
       "type": "Token Plan",
       "currency": "¥",
       "monthlyPrice": 469.0,
       "comparisonMonthlyPriceCny": 469.0,
       "discontinued": false,
-      "seedPlan": "Ultra",
+      "seedPlan": "新Ultra",
       "seedSource": null,
       "seedSourceNote": "见下方表格",
       "vendorOrder": 6,
@@ -308,62 +308,6 @@
         "monthly": {
           "tokenLimit": 7100000000,
           "tokenPerCny": 15138592.75
-        }
-      }
-    },
-    {
-      "vendor": "Kimi",
-      "plan": "Andante",
-      "type": "Coding Plan",
-      "currency": "¥",
-      "monthlyPrice": 49.0,
-      "comparisonMonthlyPriceCny": 49.0,
-      "discontinued": false,
-      "seedPlan": "Andante",
-      "seedSource": "https://github.com/mahonzhan/awesome-coding-plan?tab=readme-ov-file",
-      "seedSourceNote": "kimi-k2.5： 5h 1500万，周 2100万，月 8400万 token",
-      "vendorOrder": 16,
-      "planOrder": 16,
-      "windows": {
-        "fiveHours": {
-          "tokenLimit": 15000000,
-          "tokenPerCny": 306122.45
-        },
-        "weekly": {
-          "tokenLimit": 21000000,
-          "tokenPerCny": 428571.43
-        },
-        "monthly": {
-          "tokenLimit": 84000000,
-          "tokenPerCny": 1714285.71
-        }
-      }
-    },
-    {
-      "vendor": "Kimi",
-      "plan": "Allegretto",
-      "type": "Coding Plan",
-      "currency": "¥",
-      "monthlyPrice": 199.0,
-      "comparisonMonthlyPriceCny": 199.0,
-      "discontinued": false,
-      "seedPlan": "Allegretto",
-      "seedSource": "https://github.com/mahonzhan/awesome-coding-plan?tab=readme-ov-file",
-      "seedSourceNote": "kimi-k2.5： 5h 6500万，周 3.57亿，月 14.28亿 token",
-      "vendorOrder": 16,
-      "planOrder": 18,
-      "windows": {
-        "fiveHours": {
-          "tokenLimit": 65000000,
-          "tokenPerCny": 326633.17
-        },
-        "weekly": {
-          "tokenLimit": 357000000,
-          "tokenPerCny": 1793969.85
-        },
-        "monthly": {
-          "tokenLimit": 1428000000,
-          "tokenPerCny": 7175879.4
         }
       }
     },
@@ -378,7 +322,7 @@
       "seedPlan": "Lite",
       "seedSource": "https://github.com/mahonzhan/awesome-coding-plan?tab=readme-ov-file",
       "seedSourceNote": "glm-5.1按比例折合 5h 约 555 万 token",
-      "vendorOrder": 20,
+      "vendorOrder": 16,
       "planOrder": 0,
       "windows": {
         "fiveHours": {
@@ -406,7 +350,7 @@
       "seedPlan": "Lite",
       "seedSource": "https://github.com/mahonzhan/awesome-coding-plan?tab=readme-ov-file",
       "seedSourceNote": "glm-5.1按比例折合 5h 约 555 万 token",
-      "vendorOrder": 20,
+      "vendorOrder": 16,
       "planOrder": 1,
       "windows": {
         "fiveHours": {
@@ -434,7 +378,7 @@
       "seedPlan": "Small",
       "seedSource": null,
       "seedSourceNote": "见下方表格",
-      "vendorOrder": 20,
+      "vendorOrder": 16,
       "planOrder": 22,
       "windows": {
         "monthly": {
@@ -454,7 +398,7 @@
       "seedPlan": "Medium",
       "seedSource": null,
       "seedSourceNote": "见下方表格",
-      "vendorOrder": 20,
+      "vendorOrder": 16,
       "planOrder": 23,
       "windows": {
         "monthly": {
@@ -474,7 +418,7 @@
       "seedPlan": "Large",
       "seedSource": null,
       "seedSourceNote": "见下方表格",
-      "vendorOrder": 20,
+      "vendorOrder": 16,
       "planOrder": 24,
       "windows": {
         "monthly": {
@@ -494,12 +438,68 @@
       "seedPlan": "Max",
       "seedSource": null,
       "seedSourceNote": "见下方表格",
-      "vendorOrder": 20,
+      "vendorOrder": 16,
       "planOrder": 25,
       "windows": {
         "monthly": {
           "tokenLimit": 556000000,
           "tokenPerCny": 556000.0
+        }
+      }
+    },
+    {
+      "vendor": "Kimi",
+      "plan": "Andante",
+      "type": "Coding Plan",
+      "currency": "¥",
+      "monthlyPrice": 49.0,
+      "comparisonMonthlyPriceCny": 49.0,
+      "discontinued": false,
+      "seedPlan": "Andante",
+      "seedSource": "https://github.com/mahonzhan/awesome-coding-plan?tab=readme-ov-file",
+      "seedSourceNote": "kimi-k2.5： 5h 1500万，周 2100万，月 8400万 token",
+      "vendorOrder": 18,
+      "planOrder": 18,
+      "windows": {
+        "fiveHours": {
+          "tokenLimit": 15000000,
+          "tokenPerCny": 306122.45
+        },
+        "weekly": {
+          "tokenLimit": 21000000,
+          "tokenPerCny": 428571.43
+        },
+        "monthly": {
+          "tokenLimit": 84000000,
+          "tokenPerCny": 1714285.71
+        }
+      }
+    },
+    {
+      "vendor": "Kimi",
+      "plan": "Allegretto",
+      "type": "Coding Plan",
+      "currency": "¥",
+      "monthlyPrice": 199.0,
+      "comparisonMonthlyPriceCny": 199.0,
+      "discontinued": false,
+      "seedPlan": "Allegretto",
+      "seedSource": "https://github.com/mahonzhan/awesome-coding-plan?tab=readme-ov-file",
+      "seedSourceNote": "kimi-k2.5： 5h 6500万，周 3.57亿，月 14.28亿 token",
+      "vendorOrder": 18,
+      "planOrder": 20,
+      "windows": {
+        "fiveHours": {
+          "tokenLimit": 65000000,
+          "tokenPerCny": 326633.17
+        },
+        "weekly": {
+          "tokenLimit": 357000000,
+          "tokenPerCny": 1793969.85
+        },
+        "monthly": {
+          "tokenLimit": 1428000000,
+          "tokenPerCny": 7175879.4
         }
       }
     },

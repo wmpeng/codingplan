@@ -236,7 +236,9 @@
     "benefits": [],
     "note": "• 当前公开订阅档位\n• 支持 M3 与多模态，和 M2.7 共享额度池\n• 套餐额度受 5 小时窗口与周窗口控制",
     "discontinued": true,
-    "measuredMonthlyTokenLimit": 600
+    "measuredMonthlyTokenLimit": 2400,
+    "measuredFiveHoursTokenLimit": 60,
+    "measuredWeeklyTokenLimit": 600
   },
   {
     "vendor": "MiniMax",
@@ -264,7 +266,9 @@
     "benefits": [],
     "note": "• 约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算",
     "discontinued": true,
-    "measuredMonthlyTokenLimit": 1800
+    "measuredMonthlyTokenLimit": 7200,
+    "measuredFiveHoursTokenLimit": 180,
+    "measuredWeeklyTokenLimit": 1800
   },
   {
     "vendor": "MiniMax",
@@ -328,7 +332,7 @@
   },
   {
     "vendor": "MiniMax",
-    "plan": "Plus",
+    "plan": "新Plus",
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqminimax",
     "rating": 5,
@@ -355,7 +359,7 @@
   },
   {
     "vendor": "MiniMax",
-    "plan": "Max",
+    "plan": "新Max",
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqminimax",
     "rating": 5,
@@ -382,7 +386,7 @@
   },
   {
     "vendor": "MiniMax",
-    "plan": "Ultra",
+    "plan": "新Ultra",
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqminimax",
     "rating": 5,
@@ -496,8 +500,7 @@
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
     "tokenLimit": "无限制",
-    "benefits": [
-    ],
+    "benefits": [],
     "note": "• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）\n• DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍",
     "discontinued": false,
     "measuredFiveHoursTokenLimit": 6,
