@@ -1165,6 +1165,7 @@
         if (!usagePayload) {
             return;
         }
+        setValueMetricState(currentValueMetric);
         var activeItems = getActiveItemsForWindow(usagePayload.items || []);
         if (!activeItems.length) {
             setState('当前统计周期暂无可展示的套餐使用量数据。', false);
