@@ -13,6 +13,11 @@
     var valueChart = null;
     var costChart = null;
     var usagePayload = null;
+    var DEFAULT_USAGE_CHARTS_CONFIG = {
+        valueYLog: true,
+        costXLog: true,
+        costYLog: true
+    };
 
     function escapeHtmlSafe(text) {
         if (typeof window.escapeHtml === 'function') {
@@ -41,6 +46,76 @@
     function formatPrice(value) {
         var number = Number(value || 0);
         return Number.isInteger(number) ? String(number) : number.toFixed(2);
+    }
+
+    function getUsageChartsConfig() {
+        var runtimeConfig = window.appConfig && window.appConfig.usageCharts;
+        return {
+            valueYLog: typeof (runtimeConfig && runtimeConfig.valueYLog) === 'boolean' ? runtimeConfig.valueYLog : DEFAULT_USAGE_CHARTS_CONFIG.valueYLog,
+            costXLog: typeof (runtimeConfig && runtimeConfig.costXLog) === 'boolean' ? runtimeConfig.costXLog : DEFAULT_USAGE_CHARTS_CONFIG.costXLog,
+            costYLog: typeof (runtimeConfig && runtimeConfig.costYLog) === 'boolean' ? runtimeConfig.costYLog : DEFAULT_USAGE_CHARTS_CONFIG.costYLog
+        };
+    }
+
+    function isLogAxis(axisKey) {
+        return Boolean(getUsageChartsConfig()[axisKey]);
+    }
+
+    function getAxisDisplayValue(value, useLog, floor, logBase) {
+        var numeric = Number(value || 0);
+        if (!Number.isFinite(numeric)) {
+            return useLog ? floor : 0;
+        }
+        if (!useLog) {
+            return numeric;
+        }
+        return Math.log(Math.max(floor, numeric)) / Math.log(logBase);
+    }
+
+    function buildAxisBounds(values, options) {
+        if (!values.length) {
+            return {
+                min: options.useLog ? options.floor : 0,
+                max: options.useLog ? options.floor * 10 : Math.max(options.linearMaxPadding || 1, 1)
+            };
+        }
+
+        var minValue = Math.min.apply(null, values);
+        var maxValue = Math.max.apply(null, values);
+        if (options.useLog) {
+            return {
+                min: minValue > 0 ? Math.max(options.floor, minValue * (options.minFactor || 0.65)) : options.floor,
+                max: maxValue > 0 ? maxValue * (options.maxFactor || 1.18) : options.floor * 10
+            };
+        }
+
+        var range = Math.max(maxValue - minValue, 0);
+        var minPadding = Math.max(range * 0.12, Math.abs(maxValue) * 0.06, options.linearMinPadding || 1);
+        var maxPadding = Math.max(range * 0.14, Math.abs(maxValue) * 0.08, options.linearMaxPadding || 1);
+        var boundedMin = minValue - minPadding;
+        if (options.clampZero) {
+            boundedMin = Math.max(0, boundedMin);
+        }
+        return {
+            min: boundedMin,
+            max: maxValue + maxPadding
+        };
+    }
+
+    function buildPlacementThreshold(values, options) {
+        if (!values.length) {
+            return options.useLog ? 0.08 : 1;
+        }
+        var mappedValues = values.map(function (value) {
+            return getAxisDisplayValue(value, options.useLog, options.floor, options.logBase);
+        }).sort(function (left, right) {
+            return left - right;
+        });
+        var minValue = mappedValues[0];
+        var maxValue = mappedValues[mappedValues.length - 1];
+        var range = Math.max(maxValue - minValue, 0);
+        var fallback = options.useLog ? 0.08 : Math.max(Math.abs(mappedValues[Math.floor(mappedValues.length / 2)]) * 0.015, 1);
+        return Math.max(range * 0.035, fallback);
     }
 
     function getComparisonMonthlyPrice(item) {
@@ -98,7 +173,7 @@
     }
 
     function getValueMetricSubtitle() {
-        var logNote = '纵轴为对数刻度，图上间距会被压缩，实际数值差距通常比视觉上更大。';
+        var logNote = isLogAxis('valueYLog') ? '纵轴为对数刻度，图上间距会被压缩，实际数值差距通常比视觉上更大。' : '';
         if (currentValueMetric === 'cnyPerMillionTokens') {
             return '按平台看 1M Token 成本，纵轴越低，代表买到同等 token 所需预算越少。' + logNote;
         }
@@ -114,9 +189,17 @@
 
     function getValueMetricYAxisName() {
         if (currentValueMetric === 'cnyPerMillionTokens') {
-            return '1M Token 价格（元，对数）';
+            return isLogAxis('valueYLog') ? '1M Token 价格（元，对数）' : '1M Token 价格（元）';
         }
-        return getWindowLabel(currentWindow) + ' 每元 Token（对数）';
+        return isLogAxis('valueYLog') ? getWindowLabel(currentWindow) + ' 每元 Token（对数）' : getWindowLabel(currentWindow) + ' 每元 Token';
+    }
+
+    function getCostPriceAxisName() {
+        return isLogAxis('costXLog') ? '包月价格（人民币折算，对数）' : '包月价格（人民币折算）';
+    }
+
+    function getCostTokenAxisName() {
+        return isLogAxis('costYLog') ? getWindowLabel(currentWindow) + ' Token 上限（对数）' : getWindowLabel(currentWindow) + ' Token 上限';
     }
 
     function formatCompactTokens(value) {
@@ -542,6 +625,8 @@
     }
 
     function buildValueSeries(items, colorMap, mixedTypeVendors) {
+        var useLogY = isLogAxis('valueYLog');
+        var valueFloor = currentValueMetric === 'cnyPerMillionTokens' ? 0.001 : 1;
         var vendors = Array.from(new Set(items.map(function (item) {
             return getPlatformGroupLabel(item, mixedTypeVendors);
         })));
@@ -578,35 +663,42 @@
         }).filter(function (value) {
             return value > 0;
         });
-        var minTokenValue = tokenValues.length ? Math.min.apply(null, tokenValues) : 0;
-        var maxTokenValue = tokenValues.length ? Math.max.apply(null, tokenValues) : 0;
-        var valueLogFloor = currentValueMetric === 'cnyPerMillionTokens' ? 0.001 : 1;
-        var yMin = minTokenValue > 0 ? Math.max(valueLogFloor, minTokenValue * 0.65) : valueLogFloor;
-        var yMax = maxTokenValue > 0 ? maxTokenValue * 1.18 : valueLogFloor * 10;
-        var logTokenValues = tokenValues.map(function (value) {
-            return Math.log(Math.max(valueLogFloor, value)) / Math.log(10);
+        var yBounds = buildAxisBounds(tokenValues, {
+            useLog: useLogY,
+            floor: valueFloor,
+            logBase: 10,
+            minFactor: 0.65,
+            maxFactor: 1.18,
+            linearMinPadding: currentValueMetric === 'cnyPerMillionTokens' ? 0.2 : 1,
+            linearMaxPadding: currentValueMetric === 'cnyPerMillionTokens' ? 0.4 : 1,
+            clampZero: true
         });
-        var minLogToken = logTokenValues.length ? Math.min.apply(null, logTokenValues) : 0;
-        var maxLogToken = logTokenValues.length ? Math.max.apply(null, logTokenValues) : 0;
-        var tokenThreshold = Math.max((maxLogToken - minLogToken) * 0.035, 0.08);
+        var tokenThreshold = buildPlacementThreshold(tokenValues, {
+            useLog: useLogY,
+            floor: valueFloor,
+            logBase: 10
+        });
 
         vendors.forEach(function (vendor) {
             applyVerticalLabelStack(points.filter(function (point) {
                 return point.groupLabel === vendor;
             }), function (point) {
-                return Math.log(Math.max(valueLogFloor, Number(point.value[1] || valueLogFloor))) / Math.log(10);
+                return getAxisDisplayValue(Number(point.value[1] || valueFloor), useLogY, valueFloor, 10);
             }, tokenThreshold);
         });
 
         return {
             vendors: vendors,
             points: points,
-            yMin: yMin,
-            yMax: yMax
+            yMin: yBounds.min,
+            yMax: yBounds.max,
+            useLogY: useLogY
         };
     }
 
     function buildCostSeries(items, colorMap, mixedTypeVendors) {
+        var useLogX = isLogAxis('costXLog');
+        var useLogY = isLogAxis('costYLog');
         var grouped = new Map();
         items.forEach(function (item) {
             var groupLabel = getPlatformGroupLabel(item, mixedTypeVendors);
@@ -697,33 +789,45 @@
             };
         });
 
-        var xMin = priceValues.length ? Math.max(1, Math.floor(Math.min.apply(null, priceValues) * 0.75)) : 1;
-        var xMax = priceValues.length ? Math.ceil(Math.max.apply(null, priceValues) * 1.12) : 1;
-        var yMinValue = tokenValues.length ? Math.min.apply(null, tokenValues) : 0;
-        var yMaxValue = tokenValues.length ? Math.max.apply(null, tokenValues) : 0;
-        var yMin = yMinValue > 0 ? Math.max(1, Math.floor(yMinValue * 0.65)) : 1;
-        var yMax = yMaxValue > 0 ? Math.ceil(yMaxValue * 1.18) : 10;
+        var xBounds = buildAxisBounds(priceValues, {
+            useLog: useLogX,
+            floor: 1,
+            logBase: 2,
+            minFactor: 0.75,
+            maxFactor: 1.12,
+            linearMinPadding: 4,
+            linearMaxPadding: 6,
+            clampZero: true
+        });
+        var yBounds = buildAxisBounds(tokenValues, {
+            useLog: useLogY,
+            floor: 1,
+            logBase: 10,
+            minFactor: 0.65,
+            maxFactor: 1.18,
+            linearMinPadding: 1,
+            linearMaxPadding: 1,
+            clampZero: true
+        });
         var medianPrice = computeThresholdPivot(priceValues, 'higher');
         var medianTokens = computeThresholdPivot(tokenValues, 'lower');
-        var logPriceValues = priceValues.map(function (value) {
-            return Math.log(Math.max(1, value)) / Math.log(2);
+        var xThreshold = buildPlacementThreshold(priceValues, {
+            useLog: useLogX,
+            floor: 1,
+            logBase: 2
         });
-        var logTokenValues = tokenValues.map(function (value) {
-            return Math.log(Math.max(1, value)) / Math.log(10);
+        var yThreshold = buildPlacementThreshold(tokenValues, {
+            useLog: useLogY,
+            floor: 1,
+            logBase: 10
         });
-        var minLogPrice = logPriceValues.length ? Math.min.apply(null, logPriceValues) : 0;
-        var maxLogPrice = logPriceValues.length ? Math.max.apply(null, logPriceValues) : 0;
-        var minLogToken = logTokenValues.length ? Math.min.apply(null, logTokenValues) : 0;
-        var maxLogToken = logTokenValues.length ? Math.max.apply(null, logTokenValues) : 0;
-        var xThreshold = Math.max((maxLogPrice - minLogPrice) * 0.035, 0.08);
-        var yThreshold = Math.max((maxLogToken - minLogToken) * 0.035, 0.08);
 
         applyScatterLabelPlacements(series.reduce(function (result, seriesItem) {
             return result.concat(seriesItem.data || []);
         }, []), function (point) {
-            return Math.log(Math.max(1, Number(point.value[0] || 1))) / Math.log(2);
+            return getAxisDisplayValue(Number(point.value[0] || 1), useLogX, 1, 2);
         }, function (point) {
-            return Math.log(Math.max(1, Number(point.value[1] || 1))) / Math.log(10);
+            return getAxisDisplayValue(Number(point.value[1] || 1), useLogY, 1, 10);
         }, xThreshold, yThreshold, getCostScatterLabelPlacement);
 
         var helperSeries = {
@@ -744,10 +848,10 @@
                     show: false
                 },
                 data: [
-                    [{ itemStyle: { color: 'rgba(16, 185, 129, 0.12)' }, xAxis: xMin, yAxis: medianTokens }, { xAxis: medianPrice, yAxis: yMax }],
-                    [{ itemStyle: { color: 'rgba(59, 130, 246, 0.05)' }, xAxis: medianPrice, yAxis: medianTokens }, { xAxis: xMax, yAxis: yMax }],
-                    [{ itemStyle: { color: 'rgba(59, 130, 246, 0.05)' }, xAxis: xMin, yAxis: yMin }, { xAxis: medianPrice, yAxis: medianTokens }],
-                    [{ itemStyle: { color: 'rgba(239, 68, 68, 0.07)' }, xAxis: medianPrice, yAxis: yMin }, { xAxis: xMax, yAxis: medianTokens }]
+                    [{ itemStyle: { color: 'rgba(16, 185, 129, 0.12)' }, xAxis: xBounds.min, yAxis: medianTokens }, { xAxis: medianPrice, yAxis: yBounds.max }],
+                    [{ itemStyle: { color: 'rgba(59, 130, 246, 0.05)' }, xAxis: medianPrice, yAxis: medianTokens }, { xAxis: xBounds.max, yAxis: yBounds.max }],
+                    [{ itemStyle: { color: 'rgba(59, 130, 246, 0.05)' }, xAxis: xBounds.min, yAxis: yBounds.min }, { xAxis: medianPrice, yAxis: medianTokens }],
+                    [{ itemStyle: { color: 'rgba(239, 68, 68, 0.07)' }, xAxis: medianPrice, yAxis: yBounds.min }, { xAxis: xBounds.max, yAxis: medianTokens }]
                 ]
             },
             markLine: {
@@ -771,12 +875,14 @@
             vendors: vendors,
             series: series,
             helperSeries: helperSeries,
-            xMin: xMin,
-            xMax: xMax,
-            yMin: yMin,
-            yMax: yMax,
+            xMin: xBounds.min,
+            xMax: xBounds.max,
+            yMin: yBounds.min,
+            yMax: yBounds.max,
             medianPrice: medianPrice,
-            medianTokens: medianTokens
+            medianTokens: medianTokens,
+            useLogX: useLogX,
+            useLogY: useLogY
         };
     }
 
@@ -862,8 +968,8 @@
                 }
             },
             yAxis: {
-                type: 'log',
-                logBase: 10,
+                type: built.useLogY ? 'log' : 'value',
+                logBase: built.useLogY ? 10 : undefined,
                 min: built.yMin,
                 max: built.yMax,
                 splitNumber: 6,
@@ -975,11 +1081,11 @@
                 }
             },
             xAxis: {
-                type: 'log',
-                logBase: 2,
+                type: built.useLogX ? 'log' : 'value',
+                logBase: built.useLogX ? 2 : undefined,
                 min: built.xMin,
                 max: built.xMax,
-                name: '包月价格（人民币折算，对数）',
+                name: getCostPriceAxisName(),
                 nameLocation: 'middle',
                 nameGap: 42,
                 nameTextStyle: {
@@ -1013,12 +1119,12 @@
                 }
             },
             yAxis: {
-                type: 'log',
-                logBase: 10,
+                type: built.useLogY ? 'log' : 'value',
+                logBase: built.useLogY ? 10 : undefined,
                 min: built.yMin,
                 max: built.yMax,
                 splitNumber: 6,
-                name: getWindowLabel(currentWindow) + ' Token 上限（对数）',
+                name: getCostTokenAxisName(),
                 nameTextStyle: {
                     color: '#5f6879',
                     fontSize: 12,
@@ -1169,4 +1275,10 @@
     } else {
         loadUsageData();
     }
+    window.addEventListener('codingplan:config-applied', function () {
+        if (!usagePayload) {
+            return;
+        }
+        renderCharts();
+    });
 })();

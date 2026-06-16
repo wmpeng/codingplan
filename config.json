@@ -134,6 +134,11 @@
       "note": "备注"
     }
   },
+  "usageCharts": {
+    "valueYLog": false,
+    "costXLog": true,
+    "costYLog": true
+  },
   "filters": {
     "vendor": "平台",
     "type": "类型",

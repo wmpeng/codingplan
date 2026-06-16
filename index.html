@@ -2755,6 +2755,7 @@
 
         // 全局配置
         let appConfig = {};
+        window.appConfig = appConfig;
         let watermarkUrl = '';
 
         // 全局数据
@@ -4267,6 +4268,7 @@
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 appConfig = await response.json();
+                window.appConfig = appConfig;
                 applyConfig();
                 console.log('成功加载配置文件');
             } catch (error) {
@@ -4317,14 +4319,21 @@
                         qrcode: "assets/feishu_group.png",
                         qrAlt: "飞书群二维码",
                         qrHint: "扫码即可进群"
+                    },
+                    usageCharts: {
+                        valueYLog: true,
+                        costXLog: true,
+                        costYLog: true
                     }
                 };
+                window.appConfig = appConfig;
                 applyConfig();
             }
         }
 
         // 应用配置
         function applyConfig() {
+            window.appConfig = appConfig;
             if (appConfig.header) {
                 const h = appConfig.header;
                 document.title = `${h.title} - Coding Plan 对比工具`;
@@ -4396,6 +4405,8 @@
             if (appConfig.accountSale) {
                 renderAccountSale(appConfig.accountSale);
             }
+
+            window.dispatchEvent(new CustomEvent('codingplan:config-applied'));
         }
 
         // 渲染账号出售
@@ -4740,6 +4751,6 @@
     </script>
     <script src="scripts/shared.js?v=260610"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-    <script src="scripts/plan-usage-chart.js?v=260610"></script>
+    <script src="scripts/plan-usage-chart.js?v=260617"></script>
 </body>
 </html>
