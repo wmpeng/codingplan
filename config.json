@@ -153,6 +153,12 @@
   },
   "updates": [
     {
+      "date": "2026.6.16",
+      "items": [
+        "新增 DeepSeek 虚拟套餐，方便对比"
+      ]
+    },
+    {
       "date": "2026.6.13",
       "items": [
         "智谱AI（国内版 / 国际版）Coding Plan 追加支持 GLM-5.2 模型",
