@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-16T16:01:15.006837Z",
+  "generatedAt": "2026-06-16T16:48:56.144785Z",
   "source": {
     "plans": "codingplan/plans.json",
     "seeds": "scripts/codingplan/plan-usage-seeds.json"
@@ -321,21 +321,21 @@
       "discontinued": false,
       "seedPlan": "Lite",
       "seedSource": "https://github.com/mahonzhan/awesome-coding-plan?tab=readme-ov-file",
-      "seedSourceNote": "glm-5.1按比例折合 5h 约 555 万 token",
+      "seedSourceNote": "glm-5.1按比例折合 5h 约 555*3= 1665 万 token，限时三倍用量",
       "vendorOrder": 16,
       "planOrder": 0,
       "windows": {
         "fiveHours": {
-          "tokenLimit": 5550000,
-          "tokenPerCny": 138750.0
+          "tokenLimit": 16650000,
+          "tokenPerCny": 416250.0
         },
         "weekly": {
-          "tokenLimit": 41625000,
-          "tokenPerCny": 1040625.0
+          "tokenLimit": 124875000,
+          "tokenPerCny": 3121875.0
         },
         "monthly": {
-          "tokenLimit": 83250000,
-          "tokenPerCny": 2081250.0
+          "tokenLimit": 249750000,
+          "tokenPerCny": 6243750.0
         }
       }
     },
@@ -349,21 +349,21 @@
       "discontinued": false,
       "seedPlan": "Lite",
       "seedSource": "https://github.com/mahonzhan/awesome-coding-plan?tab=readme-ov-file",
-      "seedSourceNote": "glm-5.1按比例折合 5h 约 555 万 token",
+      "seedSourceNote": "glm-5.1按比例折合 5h 约 555*3= 1665 万 token，限时三倍用量",
       "vendorOrder": 16,
       "planOrder": 1,
       "windows": {
         "fiveHours": {
-          "tokenLimit": 27750000,
-          "tokenPerCny": 138750.0
+          "tokenLimit": 83250000,
+          "tokenPerCny": 416250.0
         },
         "weekly": {
-          "tokenLimit": 208125000,
-          "tokenPerCny": 1040625.0
+          "tokenLimit": 624375000,
+          "tokenPerCny": 3121875.0
         },
         "monthly": {
-          "tokenLimit": 416250000,
-          "tokenPerCny": 2081250.0
+          "tokenLimit": 1248750000,
+          "tokenPerCny": 6243750.0
         }
       }
     },

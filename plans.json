@@ -503,9 +503,9 @@
     "benefits": [],
     "note": "• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）\n• DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍",
     "discontinued": false,
-    "measuredFiveHoursTokenLimit": 6,
-    "measuredWeeklyTokenLimit": 42,
-    "measuredMonthlyTokenLimit": 83
+    "measuredFiveHoursTokenLimit": 17,
+    "measuredWeeklyTokenLimit": 125,
+    "measuredMonthlyTokenLimit": 250
   },
   {
     "vendor": "字节·方舟",
@@ -538,9 +538,9 @@
     "benefits": [],
     "note": "• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）\n• DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍",
     "discontinued": false,
-    "measuredFiveHoursTokenLimit": 28,
-    "measuredWeeklyTokenLimit": 208,
-    "measuredMonthlyTokenLimit": 416
+    "measuredFiveHoursTokenLimit": 83,
+    "measuredWeeklyTokenLimit": 624,
+    "measuredMonthlyTokenLimit": 1249
   },
   {
     "vendor": "Kimi",
