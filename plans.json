@@ -1061,8 +1061,8 @@
     "measuredMonthlyTokenLimit": 2162
   },
   {
-    "vendor": "DeepSeek",
-    "plan": "Flash 40",
+    "vendor": "DeepSeek Flash",
+    "plan": "虚拟套餐 40",
     "type": "Token Plan",
     "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
     "rating": 4,
@@ -1085,8 +1085,8 @@
     "measuredMonthlyTokenLimit": 453
   },
   {
-    "vendor": "DeepSeek",
-    "plan": "Flash 200",
+    "vendor": "DeepSeek Flash",
+    "plan": "虚拟套餐 200",
     "type": "Token Plan",
     "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
     "rating": 4,
@@ -1109,8 +1109,8 @@
     "measuredMonthlyTokenLimit": 2265
   },
   {
-    "vendor": "DeepSeek",
-    "plan": "Pro 40",
+    "vendor": "DeepSeek Pro",
+    "plan": "虚拟套餐 40",
     "type": "Token Plan",
     "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
     "rating": 4,
@@ -1133,8 +1133,8 @@
     "measuredMonthlyTokenLimit": 172
   },
   {
-    "vendor": "DeepSeek",
-    "plan": "Pro 200",
+    "vendor": "DeepSeek Pro",
+    "plan": "虚拟套餐 200",
     "type": "Token Plan",
     "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
     "rating": 4,

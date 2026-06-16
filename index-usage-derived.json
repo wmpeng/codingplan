@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-16T14:28:15.167254Z",
+  "generatedAt": "2026-06-16T16:01:15.006837Z",
   "source": {
     "plans": "codingplan/plans.json",
     "seeds": "scripts/codingplan/plan-usage-seeds.json"
   },
   "summary": {
-    "includedVendorCount": 8,
-    "includedPlanCount": 34,
+    "includedVendorCount": 10,
+    "includedPlanCount": 38,
     "seedCount": 7,
     "warningCount": 13,
     "usdToCnyRate": 7.0
@@ -700,6 +700,86 @@
       }
     },
     {
+      "vendor": "DeepSeek Flash",
+      "plan": "虚拟套餐 40",
+      "type": "Token Plan",
+      "currency": "¥",
+      "monthlyPrice": 40.0,
+      "comparisonMonthlyPriceCny": 40.0,
+      "discontinued": false,
+      "seedPlan": "虚拟套餐 40",
+      "seedSource": null,
+      "seedSourceNote": "见下方表格",
+      "vendorOrder": 35,
+      "planOrder": 35,
+      "windows": {
+        "monthly": {
+          "tokenLimit": 453000000,
+          "tokenPerCny": 11325000.0
+        }
+      }
+    },
+    {
+      "vendor": "DeepSeek Flash",
+      "plan": "虚拟套餐 200",
+      "type": "Token Plan",
+      "currency": "¥",
+      "monthlyPrice": 200.0,
+      "comparisonMonthlyPriceCny": 200.0,
+      "discontinued": false,
+      "seedPlan": "虚拟套餐 200",
+      "seedSource": null,
+      "seedSourceNote": "见下方表格",
+      "vendorOrder": 35,
+      "planOrder": 36,
+      "windows": {
+        "monthly": {
+          "tokenLimit": 2265000000,
+          "tokenPerCny": 11325000.0
+        }
+      }
+    },
+    {
+      "vendor": "DeepSeek Pro",
+      "plan": "虚拟套餐 40",
+      "type": "Token Plan",
+      "currency": "¥",
+      "monthlyPrice": 40.0,
+      "comparisonMonthlyPriceCny": 40.0,
+      "discontinued": false,
+      "seedPlan": "虚拟套餐 40",
+      "seedSource": null,
+      "seedSourceNote": "见下方表格",
+      "vendorOrder": 37,
+      "planOrder": 37,
+      "windows": {
+        "monthly": {
+          "tokenLimit": 172000000,
+          "tokenPerCny": 4300000.0
+        }
+      }
+    },
+    {
+      "vendor": "DeepSeek Pro",
+      "plan": "虚拟套餐 200",
+      "type": "Token Plan",
+      "currency": "¥",
+      "monthlyPrice": 200.0,
+      "comparisonMonthlyPriceCny": 200.0,
+      "discontinued": false,
+      "seedPlan": "虚拟套餐 200",
+      "seedSource": null,
+      "seedSourceNote": "见下方表格",
+      "vendorOrder": 37,
+      "planOrder": 38,
+      "windows": {
+        "monthly": {
+          "tokenLimit": 862000000,
+          "tokenPerCny": 4310000.0
+        }
+      }
+    },
+    {
       "vendor": "Codex",
       "plan": "Plus",
       "type": "Token Plan",
@@ -710,8 +790,8 @@
       "seedPlan": "Plus",
       "seedSource": "https://github.com/mahonzhan/awesome-coding-plan/tree/9ecfa7fc7a4b882a78d0b2dc605c18f98f8f8641",
       "seedSourceNote": "gpt-5.4： 5h 2000万，周 1.2亿，月 4.8亿 token",
-      "vendorOrder": 80,
-      "planOrder": 80,
+      "vendorOrder": 84,
+      "planOrder": 84,
       "windows": {
         "fiveHours": {
           "tokenLimit": 20000000,
@@ -738,8 +818,8 @@
       "seedPlan": "Pro *5",
       "seedSource": "https://github.com/mahonzhan/awesome-coding-plan/tree/9ecfa7fc7a4b882a78d0b2dc605c18f98f8f8641",
       "seedSourceNote": "Plus 的 5 倍额度",
-      "vendorOrder": 80,
-      "planOrder": 81,
+      "vendorOrder": 84,
+      "planOrder": 85,
       "windows": {
         "fiveHours": {
           "tokenLimit": 100000000,
@@ -766,8 +846,8 @@
       "seedPlan": "Pro *20",
       "seedSource": "https://github.com/mahonzhan/awesome-coding-plan/tree/9ecfa7fc7a4b882a78d0b2dc605c18f98f8f8641",
       "seedSourceNote": "Plus 的 20 倍额度",
-      "vendorOrder": 80,
-      "planOrder": 82,
+      "vendorOrder": 84,
+      "planOrder": 86,
       "windows": {
         "fiveHours": {
           "tokenLimit": 400000000,
@@ -794,8 +874,8 @@
       "seedPlan": "Pro",
       "seedSource": "https://github.com/mahonzhan/awesome-coding-plan/tree/9ecfa7fc7a4b882a78d0b2dc605c18f98f8f8641",
       "seedSourceNote": "claude-opus-4.7： 5h 2298万，周 1.04亿，月 4.16亿 token",
-      "vendorOrder": 83,
-      "planOrder": 83,
+      "vendorOrder": 87,
+      "planOrder": 87,
       "windows": {
         "fiveHours": {
           "tokenLimit": 22980000,
@@ -822,8 +902,8 @@
       "seedPlan": "Max *5",
       "seedSource": "https://github.com/mahonzhan/awesome-coding-plan/tree/9ecfa7fc7a4b882a78d0b2dc605c18f98f8f8641",
       "seedSourceNote": "Pro 的 5 倍额度",
-      "vendorOrder": 83,
-      "planOrder": 84,
+      "vendorOrder": 87,
+      "planOrder": 88,
       "windows": {
         "fiveHours": {
           "tokenLimit": 114900000,
@@ -850,8 +930,8 @@
       "seedPlan": "Max *20",
       "seedSource": "https://github.com/mahonzhan/awesome-coding-plan/tree/9ecfa7fc7a4b882a78d0b2dc605c18f98f8f8641",
       "seedSourceNote": "Pro 的 20 倍额度",
-      "vendorOrder": 83,
-      "planOrder": 85,
+      "vendorOrder": 87,
+      "planOrder": 89,
       "windows": {
         "fiveHours": {
           "tokenLimit": 459600000,
