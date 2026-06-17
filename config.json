@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 对比",
-    "updateDate": "更新日期2026.6.13 | 智谱AI（国内版+国际版）支持GLM-5.2模型",
+    "updateDate": "更新日期2026.6.17 | 字节·方舟支持 Kimi-K2.7-Code，并同步 GLM-5.2",
     "subtitle": "25大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、讯飞·星火、百度·千帆、腾讯云、京东云，Coding Plan / Agent Plan 全面对比\n支持DeepSeek V4，GLM-5.2，Qwen-3.7-Max，Kimi-K2.7，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro等模型",
     "models": "目前整体趋势是已经开始用Token Plan替换Coding Plan了，Minimax、阿里、腾讯都改成Token Plan了，各位且买且珍惜吧",
     "watermarkUrl": "www.codingplan.fyi",
@@ -77,7 +77,7 @@
       "rating": 5,
       "reasons": [
         "原本部分模型倍率较高，用量较少。目前2.5折，且目前有为期一个月的用量2.5倍活动。相当于原本10倍的性价比，从拉到夯。+1",
-        "支持GLM-5.1，DeepSeek-V4-Pro/Flash，MiniMax-M3，Kimi-K2.6。唯一一家同时支持GLM，DeepSeek-V4-Pro/Flash，MiniMax，Kimi四家最新模型的平台。+1"
+        "支持GLM-5.2，DeepSeek-V4-Pro/Flash，MiniMax-M3，Kimi-K2.6，Kimi-K2.7-Code。唯一一家同时支持GLM，DeepSeek-V4-Pro/Flash，MiniMax，Kimi四家最新模型的平台。+1"
       ]
     },
     {
@@ -157,6 +157,12 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.6.17",
+      "items": [
+        "字节·方舟 Coding Plan / Token Plan 支持 Kimi-K2.7-Code，GLM-5.2"
+      ]
+    },
     {
       "date": "2026.6.16",
       "items": [
