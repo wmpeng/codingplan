@@ -101,6 +101,10 @@
 | 腾讯云 | Standard | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqtengxunt) | ⭐️⭐️ | 模型强 | - | ¥99 | - / 季 | - / 年 | 无限制 | 无限制 | 无限制 | - | - | - | - | - | 100M Tokens | HY-2.0, GLM-5.1, MiniMax-M2.7, Kimi-K2.5 | - | 在售 | 注意此为TokenPlan，而非CodingPlan。100M(1亿) Tokens 额度，可执行约 200 轮问答 |
 | 腾讯云 | Pro | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqtengxunt) | ⭐️⭐️ | 模型强 | - | ¥299 | - / 季 | - / 年 | 无限制 | 无限制 | 无限制 | - | - | - | - | - | 320M Tokens | HY-2.0, GLM-5.1, MiniMax-M2.7, Kimi-K2.5 | - | 在售 | 注意此为TokenPlan，而非CodingPlan。320M(3.2亿) Tokens 额度 |
 | 腾讯云 | Max | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqtengxunt) | ⭐️⭐️ | 模型强 | - | ¥599 | - / 季 | - / 年 | 无限制 | 无限制 | 无限制 | - | - | - | - | - | 650M Tokens | HY-2.0, GLM-5.1, MiniMax-M2.7, Kimi-K2.5 | - | 在售 | 注意此为TokenPlan，而非CodingPlan。650M(6.5亿) Tokens 额度 |
+| 华为云 | Lite | Token Plan | [跳转](https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement) | ⭐️⭐️⭐️ | - | - | ¥59 | - / 季 | - / 年 | 无限制 | 无限制 | 无限制 | - | - | - | - | - | 50M Tokens | GLM-5.1, GLM-5, Kimi-K2.6, DeepSeek-V4-Flash | - | 在售 | • 限个人用户购买，每个用户限购 1 套 <br> • 订阅后不支持退订 <br> • 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务 <br> • 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止 |
+| 华为云 | Standard | Token Plan | [跳转](https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement) | ⭐️⭐️⭐️ | - | - | ¥149 | - / 季 | - / 年 | 无限制 | 无限制 | 无限制 | - | - | - | - | - | 130M Tokens | GLM-5.1, GLM-5, Kimi-K2.6, DeepSeek-V4-Flash | - | 在售 | • 限个人用户购买，每个用户限购 1 套 <br> • 订阅后不支持退订 <br> • 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务 <br> • 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止 <br> • 页面标"最受欢迎"档 |
+| 华为云 | Pro | Token Plan | [跳转](https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement) | ⭐️⭐️⭐️ | - | - | ¥399 | - / 季 | - / 年 | 无限制 | 无限制 | 无限制 | - | - | - | - | - | 380M Tokens | GLM-5.1, GLM-5, Kimi-K2.6, DeepSeek-V4-Flash | - | 在售 | • 限个人用户购买，每个用户限购 1 套 <br> • 订阅后不支持退订 <br> • 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务 <br> • 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止 |
+| 华为云 | Max | Token Plan | [跳转](https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement) | ⭐️⭐️⭐️ | - | - | ¥799 | - / 季 | - / 年 | 无限制 | 无限制 | 无限制 | - | - | - | - | - | 880M Tokens | GLM-5.1, GLM-5, Kimi-K2.6, DeepSeek-V4-Flash | - | 在售 | • 限个人用户购买，每个用户限购 1 套 <br> • 订阅后不支持退订 <br> • 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务 <br> • 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止 |
 | 优云智算 | Mini | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqyyzs) | ⭐️⭐️⭐️ | 模型强 | - | ¥49 | - / 季 | - / 年 | 300 | 750 | 1,900 | - | - | - | - | - | 无限制 | GLM-5.1, Kimi-K2.6, MiniMax-M2.7, DeepSeek-V4-Flash, DeepSeek-V3.2 | - | 在售 | • 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.1 x6 <br> • 限流比较高：3 并发 <br> • 价格较贵，性价比较低，但费率明确，无隐藏倍率 |
 | 优云智算 | Lite | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqyyzs) | ⭐️⭐️⭐️ | 模型强 | - | ¥99 | - / 季 | - / 年 | 600 | 1,500 | 3,800 | - | - | - | - | - | 无限制 | GLM-5.1, Kimi-K2.6, MiniMax-M2.7, DeepSeek-V4-Flash, DeepSeek-V3.2 | - | 在售 | • 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.1 x6 <br> • 限流比较高：5 并发 <br> • 价格较贵，性价比较低，但费率明确，无隐藏倍率 |
 | 优云智算 | Basic | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqyyzs) | ⭐️⭐️⭐️ | 模型强 | - | ¥199 | - / 季 | - / 年 | 1,200 | 3,000 | 7,600 | - | - | - | - | - | 无限制 | GLM-5.1, Kimi-K2.6, MiniMax-M2.7, DeepSeek-V4-Flash, DeepSeek-V3.2 | - | 在售 | • 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.1 x6 <br> • 限流比较高：10 并发 <br> • 价格较贵，性价比较低，但费率明确，无隐藏倍率 |
@@ -139,6 +143,10 @@
 - 本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议
 
 ## 📝 更新日志
+
+### 2026.6.18
+
+- 新增 华为云 Token Plan（Lite / Standard / Pro / Max），覆盖 GLM / Kimi / DeepSeek 系列，限个人用户购买且每个用户限购 1 套
 
 ### 2026.6.17
 

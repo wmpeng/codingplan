@@ -2638,5 +2638,105 @@
       "3900 积分"
     ],
     "note": "• 存在周限额和 session 限额；不同模型有不同高级模型扣减倍率\n• 已改为用 token 计费模式"
+  },
+  {
+    "vendor": "华为云",
+    "plan": "Lite",
+    "type": "Token Plan",
+    "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
+    "rating": 3,
+    "tags": [],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 59,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.1",
+      "GLM-5",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "tokenLimit": 50,
+    "benefits": [],
+    "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止",
+    "measuredMonthlyTokenLimit": 50
+  },
+  {
+    "vendor": "华为云",
+    "plan": "Standard",
+    "type": "Token Plan",
+    "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
+    "rating": 3,
+    "tags": [],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 149,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.1",
+      "GLM-5",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "tokenLimit": 130,
+    "benefits": [],
+    "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n• 页面标\"最受欢迎\"档",
+    "measuredMonthlyTokenLimit": 130
+  },
+  {
+    "vendor": "华为云",
+    "plan": "Pro",
+    "type": "Token Plan",
+    "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
+    "rating": 3,
+    "tags": [],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 399,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.1",
+      "GLM-5",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "tokenLimit": 380,
+    "benefits": [],
+    "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止",
+    "measuredMonthlyTokenLimit": 380
+  },
+  {
+    "vendor": "华为云",
+    "plan": "Max",
+    "type": "Token Plan",
+    "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
+    "rating": 3,
+    "tags": [],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 799,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.1",
+      "GLM-5",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "tokenLimit": 880,
+    "benefits": [],
+    "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止",
+    "measuredMonthlyTokenLimit": 880
   }
 ]
