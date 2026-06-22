@@ -18,7 +18,7 @@
     },
     "feedbackEntry": {
       "text": "点此加入飞书讨论群",
-      "url": "chttps://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=b1age326-4276-484f-a790-fcb754be1ca0c"
+      "url": "https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=b1age326-4276-484f-a790-fcb754be1ca0c"
     },
     "group": {
       "title": "飞书讨论群",
@@ -51,7 +51,7 @@
       "reasons": [
         "支持GLM-5.2模型。+2",
         "模型能力T0级别，尤其适合代码场景，Opus平替综合能力略逊于Opus4.8优于Opus4.6，可见👆上方能力评测。",
-        "需要抢购，**[加飞书群](chttps://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=b1age326-4276-484f-a790-fcb754be1ca0c)提供免费代抢**。"
+        "需要抢购，**[加飞书群](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=b1age326-4276-484f-a790-fcb754be1ca0c)提供免费代抢**。"
       ]
     },
     {
@@ -110,7 +110,7 @@
       },
     "contact": {
       "label": "飞书群",
-      "id": "chttps://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=b1age326-4276-484f-a790-fcb754be1ca0c"
+      "id": "https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=b1age326-4276-484f-a790-fcb754be1ca0c"
     },
     "qrcode": "assets/feishu_group.png"
   },
