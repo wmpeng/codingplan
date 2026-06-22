@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-16T16:48:56.144785Z",
+  "generatedAt": "2026-06-22T05:03:02.598650Z",
   "source": {
     "plans": "codingplan/plans.json",
     "seeds": "scripts/codingplan/plan-usage-seeds.json"
@@ -7,7 +7,7 @@
   "summary": {
     "includedVendorCount": 10,
     "includedPlanCount": 38,
-    "seedCount": 7,
+    "seedCount": 8,
     "warningCount": 13,
     "usdToCnyRate": 7.0
   },
@@ -714,8 +714,8 @@
       "planOrder": 35,
       "windows": {
         "monthly": {
-          "tokenLimit": 453000000,
-          "tokenPerCny": 11325000.0
+          "tokenLimit": 292000000,
+          "tokenPerCny": 7300000.0
         }
       }
     },
@@ -734,8 +734,8 @@
       "planOrder": 36,
       "windows": {
         "monthly": {
-          "tokenLimit": 2265000000,
-          "tokenPerCny": 11325000.0
+          "tokenLimit": 1462000000,
+          "tokenPerCny": 7310000.0
         }
       }
     },
@@ -754,8 +754,8 @@
       "planOrder": 37,
       "windows": {
         "monthly": {
-          "tokenLimit": 172000000,
-          "tokenPerCny": 4300000.0
+          "tokenLimit": 105000000,
+          "tokenPerCny": 2625000.0
         }
       }
     },
@@ -774,8 +774,8 @@
       "planOrder": 38,
       "windows": {
         "monthly": {
-          "tokenLimit": 862000000,
-          "tokenPerCny": 4310000.0
+          "tokenLimit": 527000000,
+          "tokenPerCny": 2635000.0
         }
       }
     },
