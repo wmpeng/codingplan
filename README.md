@@ -27,7 +27,7 @@
 1. 智谱AI ⭐️⭐️⭐️⭐️⭐️
     - 支持GLM-5.2模型。+2
     - 模型能力T0级别，尤其适合代码场景，Opus平替综合能力略逊于Opus4.8优于Opus4.6，可见👆上方能力评测。
-    - 需要抢购，**[加飞书群](https://api.dreamfree.space/c/s/cpfeishulinkc)提供免费代抢**。
+    - 需要抢购，**[加飞书群](https://api.dreamfree.space/c/s/cpfeishulink)提供免费代抢**。
 2. 讯飞·星火 ⭐️⭐️⭐️⭐️⭐️
     - 支持GLM-5.1、DeepSeek-V4-Pro/Flash。+1
     - 无忧版即支持无次Qwen3.5-35B-A3B（20M/日）。+0.5
