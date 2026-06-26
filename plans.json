@@ -1643,6 +1643,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "GLM-5.2",
       "GLM-5.1",
       "Kimi-K2.6",
       "MiniMax-M2.7",
@@ -1654,7 +1655,7 @@
     "monthlyRequests": 1900,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.1 x6\n• 限流比较高：3 并发\n• 价格较贵，性价比较低，但费率明确，无隐藏倍率",
+    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x6，GLM-5.1 x6\n• 限流比较高：3 并发\n• 价格较贵，性价比较低，但费率明确，无隐藏倍率",
     "discontinued": false
   },
   {
@@ -1671,6 +1672,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "GLM-5.2",
       "GLM-5.1",
       "Kimi-K2.6",
       "MiniMax-M2.7",
@@ -1682,7 +1684,7 @@
     "monthlyRequests": 3800,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.1 x6\n• 限流比较高：5 并发\n• 价格较贵，性价比较低，但费率明确，无隐藏倍率",
+    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x6，GLM-5.1 x6\n• 限流比较高：5 并发\n• 价格较贵，性价比较低，但费率明确，无隐藏倍率",
     "discontinued": false
   },
   {
@@ -1699,6 +1701,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "GLM-5.2",
       "GLM-5.1",
       "Kimi-K2.6",
       "MiniMax-M2.7",
@@ -1710,7 +1713,7 @@
     "monthlyRequests": 7600,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.1 x6\n• 限流比较高：10 并发\n• 价格较贵，性价比较低，但费率明确，无隐藏倍率",
+    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x6，GLM-5.1 x6\n• 限流比较高：10 并发\n• 价格较贵，性价比较低，但费率明确，无隐藏倍率",
     "discontinued": false
   },
   {
@@ -1727,6 +1730,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "GLM-5.2",
       "GLM-5.1",
       "Kimi-K2.6",
       "MiniMax-M2.7",
@@ -1738,7 +1742,7 @@
     "monthlyRequests": 19000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.1 x6\n• 限流比较高：10 并发\n• 价格较贵，性价比较低，但费率明确，无隐藏倍率",
+    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x6，GLM-5.1 x6\n• 限流比较高：10 并发\n• 价格较贵，性价比较低，但费率明确，无隐藏倍率",
     "discontinued": false
   },
   {
@@ -1755,6 +1759,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "GLM-5.2",
       "GLM-5.1",
       "Kimi-K2.6",
       "MiniMax-M2.7",
@@ -1766,7 +1771,7 @@
     "monthlyRequests": 31000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.1 x6\n• 限流比较高：10 并发\n• 价格较贵，性价比较低，但费率明确，无隐藏倍率",
+    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x6，GLM-5.1 x6\n• 限流比较高：10 并发\n• 价格较贵，性价比较低，但费率明确，无隐藏倍率",
     "discontinued": false
   },
   {
@@ -1783,6 +1788,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "GLM-5.2",
       "GLM-5.1",
       "Kimi-K2.6",
       "MiniMax-M2.7",
@@ -1794,7 +1800,7 @@
     "monthlyRequests": 39000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.1 x6\n• 限流比较高：10 并发\n• 价格较贵但费率明确，无隐藏倍率",
+    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x6，GLM-5.1 x6\n• 限流比较高：10 并发\n• 价格较贵但费率明确，无隐藏倍率",
     "discontinued": false
   },
   {

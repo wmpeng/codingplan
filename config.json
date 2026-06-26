@@ -160,7 +160,8 @@
     {
       "date": "2026.6.18",
       "items": [
-        "新增 华为云 Token Plan（Lite / Standard / Pro / Max），覆盖 GLM / Kimi / DeepSeek 系列，限个人用户购买且每个用户限购 1 套"
+        "新增 华为云 Token Plan（Lite / Standard / Pro / Max），覆盖 GLM / Kimi / DeepSeek 系列，限个人用户购买且每个用户限购 1 套",
+        "优云智算 Coding Plan（Mini / Lite / Basic / Pro / Max / Ultra）追加支持 GLM-5.2 模型"
       ]
     },
     {
