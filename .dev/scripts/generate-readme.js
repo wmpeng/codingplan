@@ -23,11 +23,21 @@ function generateStars(rating) {
     return '⭐️'.repeat(rating);
 }
 
+function getVendorActionUrl(vendorName) {
+    const matchedPlan = allPlans.find(plan => plan.vendor === vendorName);
+    return matchedPlan && matchedPlan.action ? matchedPlan.action : null;
+}
+
+function formatRecommendationName(name) {
+    const url = getVendorActionUrl(name);
+    return url ? `[${name}](${url})` : name;
+}
+
 // 生成单组推荐条目
 function generateRecommendationItems(items) {
     let md = '';
     (items || []).forEach((rec, index) => {
-        md += `${index + 1}. ${rec.name} ${generateStars(rec.rating)}\n`;
+        md += `${index + 1}. ${formatRecommendationName(rec.name)} ${generateStars(rec.rating)}\n`;
         (rec.reasons || []).forEach(reason => {
             md += `    - ${reason}\n`;
         });

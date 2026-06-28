@@ -28,19 +28,19 @@
 
 各维度综合评估，最值得入手的几家
 
-1. 智谱AI ⭐️⭐️⭐️⭐️⭐️
+1. [智谱AI](https://api.dreamfree.space/c/s/cpyqzhipu) ⭐️⭐️⭐️⭐️⭐️
     - 支持GLM-5.2模型。+2
     - 模型能力T0级别，尤其适合代码场景，Opus平替优于Opus4.6。
     - 需要抢购，**[加飞书群](https://api.dreamfree.space/c/s/cpfeishulink)提供免费代抢**。目前官方不放名额，暂停中。
-2. 讯飞·星火 ⭐️⭐️⭐️⭐️⭐️
+2. [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) ⭐️⭐️⭐️⭐️⭐️
     - 支持GLM-5.1、DeepSeek-V4-Pro/Flash。+1
     - 抢不到智谱的平替，无需抢购，39元即提供GLM5.1模型。
     - 用量比较多。+0.5
-3. MiniMax ⭐️⭐️⭐️⭐️⭐️
+3. [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) ⭐️⭐️⭐️⭐️⭐️
     - 支持MiniMax-M3模型。+0.5
     - 额度依然最高。适合养龙虾或者作为日常编程任务或者助手。+1
     - 支持多模态。+0.5
-4. 字节·方舟 ⭐️⭐️⭐️⭐️⭐️
+4. [字节·方舟](https://api.dreamfree.space/c/s/cpyqfangzhou) ⭐️⭐️⭐️⭐️⭐️
     - 目前2.5折，且目前有为期一个月的用量2.5倍活动。相当于原本10倍的性价比，从拉到夯。+1
     - 支持GLM-5.2，DeepSeek-V4，MiniMax-M3，Kimi-K2.6，Kimi-K2.7-Code。唯一一家同时支持四家最新模型的平台。+1
 
@@ -48,19 +48,19 @@
 
 包含智谱最新 GLM-5.2 模型的平台
 
-1. 智谱AI ⭐️⭐️⭐️⭐️⭐️
+1. [智谱AI](https://api.dreamfree.space/c/s/cpyqzhipu) ⭐️⭐️⭐️⭐️⭐️
     - 支持GLM-5.2模型。+2
     - 模型能力T0级别，尤其适合代码场景，Opus平替优于Opus4.6。
     - 需要抢购，**[加飞书群](https://api.dreamfree.space/c/s/cpfeishulink)提供免费代抢**。目前官方不放名额，暂停中。
-2. 智谱国际版 ⭐️⭐️⭐️⭐️
+2. [智谱国际版](https://api.dreamfree.space/c/s/cpyqzai) ⭐️⭐️⭐️⭐️
     - 国际版同样支持GLM-5.2，价格以美元计费但折算后比国内版更便宜。
     - 适合海外IP或需要稳定支付通道的用户。
     - 用量与国内版完全一致。
-3. 字节·方舟 ⭐️⭐️⭐️⭐️⭐️
+3. [字节·方舟](https://api.dreamfree.space/c/s/cpyqfangzhou) ⭐️⭐️⭐️⭐️⭐️
     - 唯一同时支持GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3、Kimi-K2.7-Code 的全家桶平台。
     - 目前2.5折 + 用量2.5倍活动，性价比拉满。
     - 无需抢购，稳定可购买。
-4. 优云智算 ⭐️⭐️⭐️⭐️
+4. [优云智算](https://api.dreamfree.space/c/s/cpyqyyzs) ⭐️⭐️⭐️⭐️
     - Coding Plan 全档位支持 GLM-5.2。
     - **限时倍率 x2**，GLM-5.2 算力翻倍，适合短期重度使用。
     - 档位丰富，从入门到高阶都有覆盖。
@@ -69,18 +69,18 @@
 
 额度池子最深，适合养龙虾/重度使用
 
-1. MiniMax ⭐️⭐️⭐️⭐️⭐️
+1. [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) ⭐️⭐️⭐️⭐️⭐️
     - **额度依然最高**，低难度而任务和养龙虾、酒馆首选。
     - 支持 M3 + 多模态，模型能力也不拉。
-2. 字节·方舟 ⭐️⭐️⭐️⭐️⭐️
+2. [字节·方舟](https://api.dreamfree.space/c/s/cpyqfangzhou) ⭐️⭐️⭐️⭐️⭐️
     - 2.5折期间叠加2.5倍用量活动，相当于原价1/10的有效成本。
     - 支持四家最新模型共享额度池，调度灵活。
     - 高并发场景下稳定性表现良好。
-3. 讯飞·星火 ⭐️⭐️⭐️⭐️⭐️
+3. [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) ⭐️⭐️⭐️⭐️⭐️
     - 无忧版即支持 Qwen3.5-35B-A3B（**20M/日**），白嫖额度大方。
     - 39元档位即提供 GLM-5.1，性价比远超同价位。
     - 用量比较多，常规使用基本不限速。
-4. DeepSeek Flash ⭐️⭐️⭐️⭐️⭐️
+4. [DeepSeek Flash](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) ⭐️⭐️⭐️⭐️⭐️
     - 按量付费唯一推荐
     - DeepSeek V4 Flash 模型，适合按量付费，只要控制好缓存命中率。Pro不推荐按量付费。
     - 想使用DeepSeek V4 Flash还可以考虑OpenCode，提供巨量额度。
@@ -89,19 +89,19 @@
 
 随时可下单，不用蹲点拼手速
 
-1. 讯飞·星火 ⭐️⭐️⭐️⭐️⭐️
+1. [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) ⭐️⭐️⭐️⭐️⭐️
     - **完全无需抢购**，任意时间都能下单。
     - 智谱抢不到的最佳平替，提供 GLM-5.1。
     - 39元起，价格门槛低。
-2. MiniMax ⭐️⭐️⭐️⭐️⭐️
+2. [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) ⭐️⭐️⭐️⭐️⭐️
     - 公开订阅档（Plus 等）**随时可购**，无需排队。
     - 老用户可续订 Starter 档，新用户从 Plus 起步。
     - 支持多模态，模型能力均衡。
-3. 优云智算 ⭐️⭐️⭐️⭐️
+3. [优云智算](https://api.dreamfree.space/c/s/cpyqyyzs) ⭐️⭐️⭐️⭐️
     - 档位多、库存充足，**不限购不抢购**。
     - 限时支持 GLM-5.2 倍率 x2，活动期间下单更划算。
     - 适合需要快速开通、灵活换档的用户。
-4. Kimi ⭐️⭐️⭐️⭐️
+4. [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) ⭐️⭐️⭐️⭐️
     - 全档位（Andante/Moderato/Allegretto/Allegro）**常态开放**。
     - 支持 Kimi-K2.7-Code，模型与官方同步更新。
     - 提供实验性专业数据库功能，适合特定场景。
