@@ -1074,8 +1074,47 @@
         }
 
         /* 平台推荐模块 */
-        .recommendations {
+        .recommendation-groups {
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
             margin-bottom: 32px;
+        }
+
+        .recommendation-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .recommendation-group--flat {
+            gap: 0;
+        }
+
+        .recommendation-group-header {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-left: 4px;
+        }
+
+        .recommendation-group-title {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 0.2px;
+        }
+
+        .recommendation-group-subtitle {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-tertiary);
+            line-height: 1.5;
+        }
+
+        .recommendations {
+            margin-bottom: 0;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
@@ -2090,6 +2129,18 @@
                 border-radius: 22px;
             }
 
+            .recommendation-groups {
+                gap: 28px;
+            }
+
+            .recommendation-group-title {
+                font-size: 18px;
+            }
+
+            .recommendation-group-subtitle {
+                font-size: 12px;
+            }
+
             .feedback-float {
                 right: 12px;
                 bottom: 14px;
@@ -2170,58 +2221,99 @@
             </article> -->
         </div>
 
-        <!-- 平台推荐（与 config.json 同步，供无 JS / 配置加载失败时的默认展示） -->
-        <div class="recommendations" id="recommendations">
-            <div class="recommendation-card">
-                <div class="card-watermark">www.codingplan.fyi</div>
-                <div class="recommendation-header">
-                    <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqzhipu" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">智谱AI</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                    <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+        <!-- 平台推荐分组（与 config.json 的 recommendationGroups 同步，供无 JS / 配置加载失败时的默认展示） -->
+        <div class="recommendation-groups" id="recommendationGroups">
+            <section class="recommendation-group">
+                <header class="recommendation-group-header">
+                    <h3 class="recommendation-group-title">⭐ 综合推荐</h3>
+                    <p class="recommendation-group-subtitle">各维度综合评估，最值得入手的几家</p>
+                </header>
+                <div class="recommendations">
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqzhipu" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">智谱AI</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>支持GLM-5.2模型。+2</li>
+                            <li>模型能力T0级别，尤其适合代码场景，Opus平替。</li>
+                            <li><strong>需要抢购，加飞书群提供免费代抢。</strong></li>
+                        </ul>
+                    </div>
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqxunfei" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">讯飞·星火</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>支持GLM-5.1、DeepSeek-V4-Pro/Flash。+1</li>
+                            <li>无忧版即支持无次Qwen3.5-35B-A3B（20M/日）。+0.5</li>
+                            <li>抢不到智谱的平替，无需抢购，39元即提供GLM5.1模型。</li>
+                        </ul>
+                    </div>
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqminimax" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">MiniMax</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>支持MiniMax-M3模型。+0.5</li>
+                            <li>额度依然最高，适合养龙虾或者作为日常编程任务或者助手。+1</li>
+                            <li>支持多模态。+0.5</li>
+                        </ul>
+                    </div>
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <span class="recommendation-name">字节·方舟</span>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>目前2.5折 + 用量2.5倍活动。+1</li>
+                            <li>唯一同时支持GLM、DeepSeek、MiniMax、Kimi 四家最新模型的平台。+1</li>
+                        </ul>
+                    </div>
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqkimi" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">Kimi</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>支持Kimi-2.7-Code。+0.1</li>
+                            <li>提供实验性专业数据库功能。+0.5</li>
+                            <li>模型能力均衡，支持多模态（图像输入）。+0.5</li>
+                        </ul>
+                    </div>
                 </div>
-                <ul class="recommendation-reasons">
-                    <li>支持GLM5.1模型。+1</li>
-                    <li>提供免费MCP次数。+1</li>
-                    <li><strong>发现个抢购的<a href="https://greasyfork.org/zh-CN/scripts/571507-%E6%99%BA%E8%B0%B1-glm-coding-%E7%89%B9%E6%83%A0%E8%AE%A2%E8%B4%AD%E6%8A%A2%E8%B4%AD%E5%8A%A9%E6%89%8B" target="_blank" rel="noopener noreferrer">油猴脚本</a> 打不开可以用<a href="https://github.com/wmpeng/codingplan/discussions/22" target="_blank" rel="noopener noreferrer">github讨论</a></strong></li>
-                    <li><strong>模型能力T0级别，尤其适合作为代码专用模型，Opus平替。需要抢购，能抢到就赚到。</strong></li>
-                </ul>
-            </div>
-            <div class="recommendation-card">
-                <div class="card-watermark">www.codingplan.fyi</div>
-                <div class="recommendation-header">
-                    <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqminimax" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">MiniMax</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                    <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                </div>
-                <ul class="recommendation-reasons">
-                    <li>提供的套餐中，常规价格最低。+1</li>
-                    <li>独占MiniMax-M2.7模型。+1</li>
-                    <li>最实惠、额度限制最小。适合养龙虾或者作为日常编程任务或者助手。【极速版】稳定性比较好，TPS也相对高，比较少遇到限频。</li>
-                </ul>
-            </div>
-            <div class="recommendation-card">
-                <div class="card-watermark">www.codingplan.fyi</div>
-                <div class="recommendation-header">
-                    <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqxunfei" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">讯飞·星火</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                    <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                </div>
-                <ul class="recommendation-reasons">
-                    <li>支持GLM5.1。+1</li>
-                    <li>无忧版即支持无次Qwen3.5-35B-A3B（20M/日）。+0.5</li>
-                    <li>智谱平替，无需抢购，提供GLM5.1模型。</li>
-                </ul>
-            </div>
-            <div class="recommendation-card">
-                <div class="card-watermark">www.codingplan.fyi</div>
-                <div class="recommendation-header">
-                    <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqkimi" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">Kimi</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                    <span class="recommendation-rating">⭐️⭐️⭐️⭐️</span>
-                </div>
-                <ul class="recommendation-reasons">
-                    <li>支持K2.6。+1</li>
-                    <li>提供实验性专业数据库功能。+0.5</li>
-                    <li>用量官方没有说明，但是实测比其他家用量要少一些。-1</li>
-                    <li>模型能力均衡，可用作代码编写和日常需求，支持多模态（图像输入），</li>
-                </ul>
-            </div>
+            </section>
+
+            <section class="recommendation-group">
+                <header class="recommendation-group-header">
+                    <h3 class="recommendation-group-title">🧠 有 GLM-5.2</h3>
+                    <p class="recommendation-group-subtitle">支持智谱最新 GLM-5.2 模型的平台</p>
+                </header>
+                <div class="recommendations"></div>
+            </section>
+
+            <section class="recommendation-group">
+                <header class="recommendation-group-header">
+                    <h3 class="recommendation-group-title">📦 量大管饱</h3>
+                    <p class="recommendation-group-subtitle">额度池子最深，适合养龙虾/重度使用</p>
+                </header>
+                <div class="recommendations"></div>
+            </section>
+
+            <section class="recommendation-group">
+                <header class="recommendation-group-header">
+                    <h3 class="recommendation-group-title">🟢 不用抢</h3>
+                    <p class="recommendation-group-subtitle">随时可下单，不用蹲点拼手速</p>
+                </header>
+                <div class="recommendations"></div>
+            </section>
         </div>
 
         <!-- 评分标准 -->
@@ -4366,8 +4458,10 @@
                 renderFeedbackFloat({});
             }
 
-            // 渲染平台推荐
-            if (appConfig.recommendations && appConfig.recommendations.length > 0) {
+            // 渲染平台推荐（优先 recommendationGroups，兜底 recommendations）
+            if (Array.isArray(appConfig.recommendationGroups) && appConfig.recommendationGroups.length > 0) {
+                renderRecommendationGroups(appConfig.recommendationGroups);
+            } else if (appConfig.recommendations && appConfig.recommendations.length > 0) {
                 renderRecommendations(appConfig.recommendations);
             }
 
@@ -4599,37 +4693,77 @@
             return formatted;
         }
 
-        // 渲染平台推荐
-        function renderRecommendations(recommendations) {
-            const container = document.getElementById('recommendations');
+        // 构建单张推荐卡片 HTML
+        function buildRecommendationCardHtml(rec) {
+            const stars = '⭐️'.repeat(rec.rating);
+            const reasonsHtml = (rec.reasons || []).map(reason => {
+                return `<li>${formatRecommendationText(reason)}</li>`;
+            }).join('');
+
+            // 根据 rec.name 在 allPlans 中查找第一个匹配的 vendor，获取链接
+            const matchedPlan = Array.isArray(allPlans) ? allPlans.find(p => p.vendor === rec.name) : null;
+            const matchedPlanUrl = matchedPlan ? sanitizeHttpUrl(matchedPlan.action) : null;
+            const nameHtml = matchedPlanUrl
+                ? `<a class="recommendation-name-link" href="${escapeHtml(matchedPlanUrl)}" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">${escapeHtml(rec.name)}</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>`
+                : `<span class="recommendation-name">${escapeHtml(rec.name)}</span>`;
+
+            return `
+                <div class="recommendation-card">
+                    <div class="card-watermark">${watermarkUrl}</div>
+                    <div class="recommendation-header">
+                        ${nameHtml}
+                        <span class="recommendation-rating">${stars}</span>
+                    </div>
+                    <ul class="recommendation-reasons">
+                        ${reasonsHtml}
+                    </ul>
+                </div>
+            `;
+        }
+
+        // 渲染分组推荐
+        function renderRecommendationGroups(groups) {
+            const container = document.getElementById('recommendationGroups');
             if (!container) return;
+            if (!Array.isArray(groups) || groups.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
 
-            container.innerHTML = recommendations.map(rec => {
-                const stars = '⭐️'.repeat(rec.rating);
-                const reasonsHtml = rec.reasons.map(reason => {
-                    return `<li>${formatRecommendationText(reason)}</li>`;
-                }).join('');
-
-                // 根据 rec.name 在 allPlans 中查找第一个匹配的 vendor，获取链接
-                const matchedPlan = allPlans.find(p => p.vendor === rec.name);
-                const matchedPlanUrl = matchedPlan ? sanitizeHttpUrl(matchedPlan.action) : null;
-                const nameHtml = matchedPlanUrl
-                    ? `<a class="recommendation-name-link" href="${escapeHtml(matchedPlanUrl)}" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">${escapeHtml(rec.name)}</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>`
-                    : `<span class="recommendation-name">${escapeHtml(rec.name)}</span>`;
+            container.innerHTML = groups.map(group => {
+                const title = escapeHtml(group.title || '');
+                const subtitle = group.subtitle ? `<p class="recommendation-group-subtitle">${escapeHtml(group.subtitle)}</p>` : '';
+                const items = Array.isArray(group.items) ? group.items : [];
+                const cardsHtml = items.map(buildRecommendationCardHtml).join('');
 
                 return `
-                    <div class="recommendation-card">
-                        <div class="card-watermark">${watermarkUrl}</div>
-                        <div class="recommendation-header">
-                            ${nameHtml}
-                            <span class="recommendation-rating">${stars}</span>
+                    <section class="recommendation-group">
+                        <header class="recommendation-group-header">
+                            <h3 class="recommendation-group-title">${title}</h3>
+                            ${subtitle}
+                        </header>
+                        <div class="recommendations">
+                            ${cardsHtml}
                         </div>
-                        <ul class="recommendation-reasons">
-                            ${reasonsHtml}
-                        </ul>
-                    </div>
+                    </section>
                 `;
             }).join('');
+        }
+
+        // 渲染平台推荐（向后兼容：当 config 仅提供 recommendations 平铺数据时使用）
+        function renderRecommendations(recommendations) {
+            const container = document.getElementById('recommendationGroups');
+            if (!container) return;
+            if (!Array.isArray(recommendations) || recommendations.length === 0) return;
+
+            const cardsHtml = recommendations.map(buildRecommendationCardHtml).join('');
+            container.innerHTML = `
+                <section class="recommendation-group recommendation-group--flat">
+                    <div class="recommendations">
+                        ${cardsHtml}
+                    </div>
+                </section>
+            `;
         }
 
         // 处理价格数据：补全缺失值
@@ -4707,7 +4841,9 @@
                 applyFilters();
 
                 // 数据加载后重新渲染推荐卡片（此时 allPlans 已有数据，可匹配链接）
-                if (appConfig.recommendations && appConfig.recommendations.length > 0) {
+                if (Array.isArray(appConfig.recommendationGroups) && appConfig.recommendationGroups.length > 0) {
+                    renderRecommendationGroups(appConfig.recommendationGroups);
+                } else if (appConfig.recommendations && appConfig.recommendations.length > 0) {
                     renderRecommendations(appConfig.recommendations);
                 }
 
