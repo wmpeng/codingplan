@@ -90,21 +90,18 @@
 随时可下单，不用蹲点拼手速
 
 1. [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) ⭐️⭐️⭐️⭐️⭐️
-    - **完全无需抢购**，任意时间都能下单。
     - 智谱抢不到的最佳平替，提供 GLM-5.1。
     - 39元起，价格门槛低。
 2. [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) ⭐️⭐️⭐️⭐️⭐️
-    - 公开订阅档（Plus 等）**随时可购**，无需排队。
-    - 老用户可续订 Starter 档，新用户从 Plus 起步。
-    - 支持多模态，模型能力均衡。
+    - 额度高，无需排队。
+    - 支持多模态，常规场景，模型能力够用。
 3. [优云智算](https://api.dreamfree.space/c/s/cpyqyyzs) ⭐️⭐️⭐️⭐️
     - 档位多、库存充足，**不限购不抢购**。
+    - 支持模型齐全。
     - 限时支持 GLM-5.2 倍率 x2，活动期间下单更划算。
-    - 适合需要快速开通、灵活换档的用户。
 4. [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) ⭐️⭐️⭐️⭐️
-    - 全档位（Andante/Moderato/Allegretto/Allegro）**常态开放**。
-    - 支持 Kimi-K2.7-Code，模型与官方同步更新。
-    - 提供实验性专业数据库功能，适合特定场景。
+    - 支持 Kimi-K2.7-Code。
+    - 支持多模态。
 
 **评分标准**: 基准3颗星，价格优势劣势1分，模型优势或独占模型1分，其他优势1分。TokenPlan因性价比较低，暂不推荐，能买CodingPlan尽量买CodingPlan
 
