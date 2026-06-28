@@ -159,10 +159,12 @@
           ]
         },
         {
-          "name": "DeekSeek",
+          "name": "DeepSeek Flash",
           "rating": 5,
           "reasons": [
-            "DeepSeek V4 Flash 模型，适合按量付费，只要控制好缓存命中率"
+            "按量付费唯一推荐",
+            "DeepSeek V4 Flash 模型，适合按量付费，只要控制好缓存命中率。Pro不推荐按量付费。",
+            "想使用DeepSeek V4 Flash还可以考虑OpenCode，提供巨量额度。"
           ]
         }
       ]
