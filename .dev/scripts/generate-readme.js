@@ -23,16 +23,46 @@ function generateStars(rating) {
     return '⭐️'.repeat(rating);
 }
 
-// 生成平台推荐
-function generateRecommendations(recommendations) {
+// 生成单组推荐条目
+function generateRecommendationItems(items) {
     let md = '';
-    recommendations.forEach((rec, index) => {
+    (items || []).forEach((rec, index) => {
         md += `${index + 1}. ${rec.name} ${generateStars(rec.rating)}\n`;
-        rec.reasons.forEach(reason => {
+        (rec.reasons || []).forEach(reason => {
             md += `    - ${reason}\n`;
         });
     });
     return md;
+}
+
+// 生成平台推荐（平铺，向后兼容）
+function generateRecommendations(recommendations) {
+    return generateRecommendationItems(recommendations);
+}
+
+// 生成分组平台推荐（与 index.html 的 recommendationGroups 同步）
+function generateRecommendationGroups(groups) {
+    let md = '';
+    (groups || []).forEach(group => {
+        const title = group.title || '';
+        md += `### ${title}\n\n`;
+        if (group.subtitle) {
+            md += `${group.subtitle}\n\n`;
+        }
+        md += generateRecommendationItems(group.items);
+        md += '\n';
+    });
+    return md.trimEnd() + '\n';
+}
+
+function generateRecommendationsSection(config) {
+    if (Array.isArray(config.recommendationGroups) && config.recommendationGroups.length > 0) {
+        return generateRecommendationGroups(config.recommendationGroups);
+    }
+    if (Array.isArray(config.recommendations) && config.recommendations.length > 0) {
+        return generateRecommendations(config.recommendations);
+    }
+    return '';
 }
 
 // 生成评分说明
@@ -274,7 +304,7 @@ function generateUpdates(updates) {
 
 // 生成完整 README
 function generateReadme() {
-    const { recommendations, notes, accountSale, updates, header } = config;
+    const { notes, accountSale, updates, header } = config;
     const featuredArticle = parseFeaturedArticle(indexHtml);
     
     let md = `# ${header.title}
@@ -296,7 +326,7 @@ ${generateFeaturedArticle(featuredArticle)}
 
 ## 平台推荐
 
-${generateRecommendations(recommendations)}${generateRatingGuide(config.ratingGuide)}
+${generateRecommendationsSection(config)}${generateRatingGuide(config.ratingGuide)}
 
 ## 📋 套餐对比表
 
