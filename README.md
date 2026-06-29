@@ -1,6 +1,6 @@
 # AI Coding Plan 对比
 
-> 更新日期2026.6.26 | 优云智算 Coding Plan 追加支持 GLM-5.2 模型（限时倍率 x2）
+> 更新日期2026.6.29 | 讯飞·星火 高效版 追加支持 GLM-5.2 模型
 
 ## 📖 简介
 
@@ -33,8 +33,8 @@
     - 模型能力T0级别，尤其适合代码场景，Opus平替优于Opus4.6。
     - 需要抢购，**[加飞书群](https://api.dreamfree.space/c/s/cpfeishulink)提供免费代抢**。目前官方不放名额，暂停中。
 2. [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) ⭐️⭐️⭐️⭐️⭐️
-    - 支持GLM-5.1、DeepSeek-V4-Pro/Flash。+1
-    - 抢不到智谱的平替，无需抢购，39元即提供GLM5.1模型。
+    - 高效版已支持 GLM-5.2，专业版支持 GLM-5.1、DeepSeek-V4-Pro/Flash。+1
+    - 抢不到智谱的平替，无需抢购，高效版（199元）即提供 GLM-5.2 模型。
     - 用量比较多。+0.5
 3. [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) ⭐️⭐️⭐️⭐️⭐️
     - 支持MiniMax-M3模型。+0.5
@@ -60,12 +60,20 @@
     - 唯一同时支持GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3、Kimi-K2.7-Code 的全家桶平台。
     - 目前2.5折 + 用量2.5倍活动，性价比拉满。
     - 无需抢购，稳定可购买。
-4. [优云智算](https://api.dreamfree.space/c/s/cpyqyyzs) ⭐️⭐️⭐️⭐️
+4. [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) ⭐️⭐️⭐️⭐️
+    - 高效版（199元）已支持 GLM-5.2。
+    - 无需抢购，随时可下单，智谱抢不到的最佳平替。
+    - GLM-5.1、DeepSeek-V4-Pro/Flash 也同时支持，模型覆盖面广。
+5. [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) ⭐️⭐️⭐️⭐️
+    - Go 套餐已支持 GLM-5.2，首月半价仅 $5。
+    - 多模型聚合平台，支持 DeepSeek-V4-Pro/Flash、MiMo、Kimi 等。
+    - 不限购，国际用户友好，美元计费。
+6. [优云智算](https://api.dreamfree.space/c/s/cpyqyyzs) ⭐️⭐️⭐️⭐️
     - Coding Plan 全档位支持 GLM-5.2。
     - **限时倍率 x2**，GLM-5.2 算力翻倍，适合短期重度使用。
     - 档位丰富，从入门到高阶都有覆盖。
 
-### 量大管饱
+### 高性价比
 
 额度池子最深，适合养龙虾/重度使用
 
@@ -78,20 +86,24 @@
     - 高并发场景下稳定性表现良好。
 3. [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) ⭐️⭐️⭐️⭐️⭐️
     - 无忧版即支持 Qwen3.5-35B-A3B（**20M/日**），白嫖额度大方。
-    - 39元档位即提供 GLM-5.1，性价比远超同价位。
+    - 高效版（199元）已支持 GLM-5.2，39元专业版即提供 GLM-5.1，丰俭由人。
     - 用量比较多，常规使用基本不限速。
-4. [DeepSeek Flash](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) ⭐️⭐️⭐️⭐️⭐️
+4. [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) ⭐️⭐️⭐️⭐️⭐️
+    - Go 套餐 $10/月（首月 $5），DeepSeek V4 Flash 每月可达 **15.8 万次请求**，量大价低。
+    - 多模型聚合平台，支持 GLM-5.2、Kimi-K2.7-Code、MiniMax-M3、Qwen-3.7-Max 等。
+    - 不限购，美元计费，国际用户友好。
+5. [DeepSeek Flash](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) ⭐️⭐️⭐️⭐️⭐️
     - 按量付费唯一推荐
     - DeepSeek V4 Flash 模型，适合按量付费，只要控制好缓存命中率。Pro不推荐按量付费。
-    - 想使用DeepSeek V4 Flash还可以考虑OpenCode，提供巨量额度。
+    - 性价比极高，缓存命中率高时成本更低。
 
 ### 不抢购
 
 随时可下单，不用蹲点拼手速
 
 1. [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) ⭐️⭐️⭐️⭐️⭐️
-    - 智谱抢不到的最佳平替，提供 GLM-5.1。
-    - 39元起，价格门槛低。
+    - 智谱抢不到的最佳平替，高效版提供 GLM-5.2，专业版提供 GLM-5.1。
+    - 39元起，价格门槛低，档位丰富。
 2. [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) ⭐️⭐️⭐️⭐️⭐️
     - 额度高，无需排队。
     - 支持多模态，常规场景，模型能力够用。
@@ -120,7 +132,7 @@
 | MiniMax | 新Max | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqminimax) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高用量足 | ¥107.1 | ¥119 | - / 季 | ¥1190 ~~1428~~ / 年 | 4,500 | 45,000 | 180,000 | - | - | 1,800M Tokens | 1512.6万 | ¥0.07 | 1,800M Tokens | MiniMax-M3, MiniMax-M2.7, MiniMax-M2.5 | - | 在售 | • 当前公开订阅档位 <br> • 支持 M3 与多模态，和 M2.7 共享额度池 <br> • 套餐额度受 5 小时窗口与周窗口控制 |
 | MiniMax | 新Ultra | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqminimax) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高用量足 | ¥422.1 | ¥469 | - / 季 | ¥4690 ~~5628~~ / 年 | 15,000 | 150,000 | 600,000 | - | - | 7,100M Tokens | 1513.9万 | ¥0.07 | 7,100M Tokens | MiniMax-M3, MiniMax-M2.7, MiniMax-M2.5 | - | 在售 | • 当前公开订阅档位 <br> • 官方月 Token 上限约 7100M（≈71 亿，M3 与 M2.7 共享池） <br> • 套餐额度受 5 小时窗口与周窗口控制 |
 | 讯飞·星火 | 专业版 | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqxunfei) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高用量足 | - | ¥39 | - / 季 | - / 年 | 1,200 | 9,000 | 18,000 | - | - | - | - | - | 无限制 | GLM-5.1, Kimi-K2.6, Qwen3.6-35B-A3B, MiniMax-M2.5, Kimi-K2.5, DeepSeek-V3.2 | - | 在售 | • GLM-5.1已恢复200K上下文 <br> • 讯飞实际可用量比较多 |
-| 讯飞·星火 | 高效版 | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqxunfei) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高用量足 | - | ¥199 | - / 季 | - / 年 | 6,000 | 45,000 | 90,000 | - | - | - | - | - | 无限制 | DeepSeek-V4-Pro, DeepSeek-V4-Flash, GLM-5.1, Kimi-K2.6, Qwen3.6-35B-A3B, GLM-5, MiniMax-M2.5, Kimi-K2.5, DeepSeek-V3.2 | - | 在售 | • GLM-5.1已恢复200K上下文 <br> • 讯飞实际可用量比较多 |
+| 讯飞·星火 | 高效版 | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqxunfei) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高用量足 | - | ¥199 | - / 季 | - / 年 | 6,000 | 45,000 | 90,000 | - | - | - | - | - | 无限制 | DeepSeek-V4-Pro, DeepSeek-V4-Flash, GLM-5.1, GLM-5.2, Kimi-K2.6, Qwen3.6-35B-A3B, GLM-5, MiniMax-M2.5, Kimi-K2.5, DeepSeek-V3.2 | - | 在售 | • 高效版已支持 GLM-5.2 <br> • GLM-5.1已恢复200K上下文 <br> • 讯飞实际可用量比较多 |
 | 字节·方舟 | Lite | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqfangzhou) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 | ¥9.4 | ¥40 | - / 季 | - / 年 | 1,200 | 9,000 | 18,000 | 17M Tokens | 125M Tokens | 250M Tokens | 624.4万 | ¥0.16 | 无限制 | Doubao-Seed-2.0系列, Doubao-Seed-Code, GLM-5.1, GLM-5.2, MiniMax-M2.7, MiniMax-M3, Kimi-K2.6, Kimi-K2.7-Code, DeepSeek-V3.2, DeepSeek-V4-Flash, DeepSeek-V4-Pro | - | 在售 | • 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19） <br> • DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍 |
 | 字节·方舟 | Pro | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqfangzhou) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 | ¥47.4 | ¥200 | - / 季 | - / 年 | 6,000 | 45,000 | 90,000 | 83M Tokens | 624M Tokens | 1,249M Tokens | 624.4万 | ¥0.16 | 无限制 | Doubao-Seed-2.0系列, Doubao-Seed-Code, GLM-5.1, GLM-5.2, MiniMax-M2.7, MiniMax-M3, Kimi-K2.6, Kimi-K2.7-Code, DeepSeek-V3.2, DeepSeek-V4-Flash, DeepSeek-V4-Pro | - | 在售 | • 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19） <br> • DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍 |
 | Kimi | Andante | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqkimi) | ⭐️⭐️⭐️⭐️ | 模型强 | - | ¥49 | - / 季 | ¥468 ~~588~~ / 年 | 未公开 | 未公开 | 未公开 | 15M Tokens | 21M Tokens | 84M Tokens | 171.4万 | ¥0.58 | 无限制 | Kimi-K2.7-Code, Kimi-K2.6, Kimi-K2.5, Kimi-K2 | - | 在售 | Agent 4 倍速 |
@@ -175,7 +187,7 @@
 | 超算 | Pro | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqscnetcp) | ⭐️⭐️ | 性价比高用量足 | - | ¥100 | - / 季 | - / 年 | 6,000 | 45,000 | 90,000 | - | - | - | - | - | 无限制 | MiniMax-M2.5, Qwen-3-235B-A22B | - | 在售 | • 模型较弱 |
 | 摩尔线程 | Free Trial | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqmoorefree) | ⭐️⭐️⭐️ | 性价比高用量足 | ¥0 | ¥0 | - / 季 | - / 年 | 未公开 | 未公开 | 未公开 | - | - | - | - | - | 无限制 | GLM-4.7 | - | 在售 | • 模型较弱 <br> • Free Trial 每天上午 10:00 发放，限量 100 名，30 天有效 <br> • 京东购买兑换码后需到卡券兑换页面兑换 |
 | 商汤·日日新 | Free·公测 | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqsensenova) | ⭐️⭐️⭐️ | 性价比高用量足 | ¥0 | ¥0 | - / 季 | - / 年 | 1,500 | 未公开 | 未公开 | - | - | - | - | - | 未公开 | SenseNova 6.7 Flash-Lite, SenseNova U1 Fast, DeepSeek-V4-Flash | 256K 上下文 | 在售 | • 模型较弱 <br> • 免费公测，Lite / Pro 未上线 <br> • 日额度：SenseNova 6.7 Flash-Lite 1500 次、SenseNova U1 Fast 1500 次、DeepSeek-V4-Flash 150 次 |
-| OpenCode | Go | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqopencode) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高用量足 | $5 | $10 | - / 季 | - / 年 | 未公开 | 未公开 | 未公开 | - | - | - | - | - | 未公开 | GLM-5.1, GLM-5, Kimi-K2.6, MiMo-V2.5-Pro, MiMo-V2.5, Qwen-3.5-Plus, Qwen-3.6-Plus, MiniMax-M2.7, MiniMax-M2.5, DeepSeek-V4-Pro, DeepSeek-V4-Flash | 首月半价 | 在售 | • 套餐额度按美元 Credits 计：基础 12 美元、周额度 30 美元、月额度 60 美元 <br> • 实际计费按 token 消耗 |
+| OpenCode | Go | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqopencode) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高用量足 | $5 | $10 | - / 季 | - / 年 | 未公开 | 未公开 | 未公开 | - | - | - | - | - | 未公开 | GLM-5.2, GLM-5.1, GLM-5, Kimi-K2.7-Code, Kimi-K2.6, MiMo-V2.5-Pro, MiMo-V2.5, Qwen-3.7-Max, Qwen-3.7-Plus, Qwen-3.6-Plus, MiniMax-M3, MiniMax-M2.7, MiniMax-M2.5, DeepSeek-V4-Pro, DeepSeek-V4-Flash | 首月半价 | 在售 | • 套餐额度按美元 Credits 计：基础 12 美元、周额度 30 美元、月额度 60 美元 <br> • 实际计费按 token 消耗 |
 | Ollama | Pro | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqollama) | ⭐️⭐️⭐️ | 模型强 | - | $20 | - / 季 | $200 ~~240~~ / 年 | 未公开 | 未公开 | 未公开 | - | - | - | - | - | 未公开 | Kimi-K2.6, GLM-5.1, DeepSeek-V4-Pro, DeepSeek-V4-Flash, MiniMax-M2.7, Qwen-3-Coder, Qwen-3-Coder-next, Gemini-3-Flash-Preview, Mistral-Large-3 | 3 个并发任务 | 在售 | • 支持 GLM-5.1、Kimi-K2.6、MiniMax-M2.7、DeepSeek-V4-Pro，模型池很大 <br> • Pro 为 Free 的 50 倍额度；可选年付 200 美元 |
 | Ollama | Max | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqollama) | ⭐️⭐️⭐️ | 模型强 | - | $100 | - / 季 | - / 年 | 未公开 | 未公开 | 未公开 | - | - | - | - | - | 未公开 | Kimi-K2.6, GLM-5.1, DeepSeek-V4-Pro, DeepSeek-V4-Flash, MiniMax-M2.7, Qwen-3-Coder, Qwen-3-Coder-next, Gemini-3-Flash-Preview, Mistral-Large-3 | 10 个并发任务 | 在售 | • 支持 GLM-5.1、Kimi-K2.6、MiniMax-M2.7、DeepSeek-V4-Pro，模型池很大 <br> • Max 为 Pro 的 5 倍额度 |
 | Codex | Plus | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqchatgpt) | ⭐️⭐️⭐️⭐️ | 模型强 | - | $20 | - / 季 | - / 年 | Plus 基准 | Plus 基准 | 未公开 | 20M Tokens | 120M Tokens | 480M Tokens | 342.9万 | ¥0.29 | 未公开 | GPT-5.5, GPT-5.4, GPT-5.3-Codex, GPT-5.2, GPT-5.4-mini, GPT-Image-2.0 | 可购买额外积分 | 在售 | • 官方按 5 小时与每周额度管理；免费版和 Go 套餐每周也有少量体验额度 |
@@ -201,6 +213,10 @@
 - 本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议
 
 ## 📝 更新日志
+
+### 2026.6.29
+
+- 讯飞·星火 高效版 追加支持 GLM-5.2 模型
 
 ### 2026.6.26
 
