@@ -53,13 +53,12 @@
     - 模型能力T0级别，尤其适合代码场景，Opus平替优于Opus4.6。
     - 需要抢购，**[加飞书群](https://api.dreamfree.space/c/s/cpfeishulink)提供免费代抢**。目前官方不放名额，暂停中。
 2. [智谱国际版](https://api.dreamfree.space/c/s/cpyqzai) ⭐️⭐️⭐️⭐️
-    - 国际版同样支持GLM-5.2，价格以美元计费但折算后比国内版更便宜。
+    - 国际版同样支持GLM-5.2，但价格以美元计费且大幅涨价，折算后比国内版更贵。
     - 适合海外IP或需要稳定支付通道的用户。
     - 用量与国内版完全一致。
 3. [字节·方舟](https://api.dreamfree.space/c/s/cpyqfangzhou) ⭐️⭐️⭐️⭐️⭐️
     - 唯一同时支持GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3、Kimi-K2.7-Code 的全家桶平台。
     - 目前2.5折 + 用量2.5倍活动，性价比拉满。
-    - 无需抢购，稳定可购买。
 4. [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) ⭐️⭐️⭐️⭐️
     - 高效版（199元）已支持 GLM-5.2。
     - 无需抢购，随时可下单，智谱抢不到的最佳平替。
