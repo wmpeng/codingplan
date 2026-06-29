@@ -458,6 +458,7 @@
       "DeepSeek-V4-Pro",
       "DeepSeek-V4-Flash",
       "GLM-5.1",
+      "GLM-5.2",
       "Kimi-K2.6",
       "Qwen3.6-35B-A3B",
       "GLM-5",
@@ -470,7 +471,7 @@
     "monthlyRequests": 90000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• GLM-5.1已恢复200K上下文\n• 讯飞实际可用量比较多"
+    "note": "• 高效版已支持 GLM-5.2\n• GLM-5.1已恢复200K上下文\n• 讯飞实际可用量比较多"
   },
   {
     "vendor": "字节·方舟",
