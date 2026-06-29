@@ -177,12 +177,21 @@
           ]
         },
         {
+          "name": "OpenCode",
+          "rating": 5,
+          "reasons": [
+            "Go 套餐 $10/月（首月 $5），DeepSeek V4 Flash 每月可达 **15.8 万次请求**，量大价低。",
+            "多模型聚合平台，支持 GLM-5.2、Kimi-K2.7-Code、MiniMax-M3、Qwen-3.7-Max 等。",
+            "不限购，美元计费，国际用户友好。"
+          ]
+        },
+        {
           "name": "DeepSeek Flash",
           "rating": 5,
           "reasons": [
             "按量付费唯一推荐",
             "DeepSeek V4 Flash 模型，适合按量付费，只要控制好缓存命中率。Pro不推荐按量付费。",
-            "想使用DeepSeek V4 Flash还可以考虑OpenCode，提供巨量额度。"
+            "性价比极高，缓存命中率高时成本更低。"
           ]
         }
       ]
