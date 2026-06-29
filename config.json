@@ -127,6 +127,15 @@
           ]
         },
         {
+          "name": "OpenCode",
+          "rating": 4,
+          "reasons": [
+            "Go 套餐已支持 GLM-5.2，首月半价仅 $5。",
+            "多模型聚合平台，支持 DeepSeek-V4-Pro/Flash、MiMo、Kimi 等。",
+            "不限购，国际用户友好，美元计费。"
+          ]
+        },
+        {
           "name": "优云智算",
           "rating": 4,
           "reasons": [
