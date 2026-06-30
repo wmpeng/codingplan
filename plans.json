@@ -1369,7 +1369,8 @@
     "monthlyRequests": 18000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 不同云区域可用模型不同\n• 参考文档 https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7015"
+    "note": "• 不同云区域可用模型不同\n• 参考文档 https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7015",
+    "discontinued": true
   },
   {
     "vendor": "联通云",
@@ -1397,7 +1398,8 @@
     "monthlyRequests": 90000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 不同云区域可用模型不同\n• 参考文档 https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7015"
+    "note": "• 不同云区域可用模型不同\n• 参考文档 https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7015",
+    "discontinued": true
   },
   {
     "vendor": "联通云",
