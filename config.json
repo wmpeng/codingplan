@@ -2,16 +2,16 @@
   "header": {
     "title": "AI Coding Plan 对比",
     "updateDate": "更新日期2026.7.1 | 新增 TaoToken 平台，GLM-5.2 Coding Plan 三档套餐",
-    "subtitle": "25大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、讯飞·星火、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Agent Plan 全面对比\n支持DeepSeek V4，GLM-5.2，Qwen-3.7-Max，Kimi-K2.7，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro等模型",
-    "models": "目前整体趋势是已经开始用Token Plan替换Coding Plan了，Minimax、阿里、腾讯都改成Token Plan了，各位且买且珍惜吧",
+    "subtitle": "29大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、讯飞·星火、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比\n支持DeepSeek V4，GLM-5.2，Qwen-3.7-Max，Kimi-K2.7，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro等模型",
+    "models": "目前整体趋势是开始Token Plan替换Coding Plan了，Minimax、阿里、腾讯都改成Token Plan了，现有的Coding Plan大多也开始限购，各位且买且珍惜吧",
     "watermarkUrl": "www.codingplan.fyi",
     "entry": {
       "url": "https://github.com/wmpeng/codingplan/issues",
-      "text": "GitHub 讨论"
+      "text": "Github 反馈"
     }
   },
   "feedback": {
-    "triggerText": "反馈与用户群",
+    "triggerText": "加入用户群获取最新消息",
     "dataIssue": {
       "text": "Github 讨论区",
       "url": "https://github.com/wmpeng/codingplan/discussions"
