@@ -836,6 +836,159 @@
     "discontinued": false
   },
   {
+    "vendor": "OpenCode",
+    "plan": "Go",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqopencode",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": 5,
+    "monthlyPrice": 10,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.2",
+      "GLM-5.1",
+      "GLM-5",
+      "Kimi-K2.7-Code",
+      "Kimi-K2.6",
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "Qwen-3.7-Max",
+      "Qwen-3.7-Plus",
+      "Qwen-3.6-Plus",
+      "MiniMax-M3",
+      "MiniMax-M2.7",
+      "MiniMax-M2.5",
+      "DeepSeek-V4-Pro",
+      "DeepSeek-V4-Flash"
+    ],
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "tokenLimit": "未公开",
+    "currency": "$",
+    "benefits": [
+      "首月半价"
+    ],
+    "note": "• 套餐额度按美元 Credits 计：基础 12 美元、周额度 30 美元、月额度 60 美元\n• 实际计费按 token 消耗"
+  },
+  {
+    "vendor": "小米·MiMo",
+    "plan": "Lite",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
+    "rating": 3,
+    "tags": ["模型强"],
+    "firstMonthPrice": 34.32,
+    "monthlyPrice": 39,
+    "quarterlyPrice": "-",
+    "yearlyPrice": 411.84,
+    "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
+      "MiMo-V2-Pro",
+      "MiMo-V2-Omni"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "tokenLimit": 108,
+    "benefits": [
+      "TTS限时免费"
+    ],
+    "note": "• 4.1B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
+    "measuredMonthlyTokenLimit": 108
+  },
+  {
+    "vendor": "小米·MiMo",
+    "plan": "Standard",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
+    "rating": 3,
+    "tags": ["模型强"],
+    "firstMonthPrice": 87.12,
+    "monthlyPrice": 99,
+    "quarterlyPrice": "-",
+    "yearlyPrice": 1045.44,
+    "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
+      "MiMo-V2-Pro",
+      "MiMo-V2-Omni"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "tokenLimit": 290,
+    "benefits": [
+      "TTS限时免费"
+    ],
+    "note": "• 11B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
+    "measuredMonthlyTokenLimit": 290
+  },
+  {
+    "vendor": "小米·MiMo",
+    "plan": "Pro",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
+    "rating": 3,
+    "tags": ["模型强"],
+    "firstMonthPrice": 289.52,
+    "monthlyPrice": 329,
+    "quarterlyPrice": "-",
+    "yearlyPrice": 3474.24,
+    "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
+      "MiMo-V2-Pro",
+      "MiMo-V2-Omni"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "tokenLimit": 1002,
+    "benefits": [
+      "TTS限时免费"
+    ],
+    "note": "• 38B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
+    "measuredMonthlyTokenLimit": 1002
+  },
+  {
+    "vendor": "小米·MiMo",
+    "plan": "Max",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
+    "rating": 3,
+    "tags": ["模型强"],
+    "firstMonthPrice": 579.92,
+    "monthlyPrice": 659,
+    "quarterlyPrice": "-",
+    "yearlyPrice": 6959.04,
+    "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
+      "MiMo-V2-Pro",
+      "MiMo-V2-Omni"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "tokenLimit": 2162,
+    "benefits": [
+      "TTS限时免费"
+    ],
+    "note": "• 82B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
+    "measuredMonthlyTokenLimit": 2162
+  },
+  {
     "vendor": "字节·方舟",
     "plan": "Small",
     "type": "Token Plan",
@@ -984,6 +1137,71 @@
   },
   {
     "vendor": "阿里·百炼",
+    "plan": "Lite",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqbailianc",
+    "rating": 4,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 40,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Qwen-3.7-Plus",
+      "Qwen-3.6-Plus",
+      "Qwen-3.5-Plus",
+      "MiniMax-M2.5",
+      "GLM-5",
+      "Kimi-K2.5"
+    ],
+    "fiveHoursRequests": 1200,
+    "weeklyRequests": 9000,
+    "monthlyRequests": 18000,
+    "tokenLimit": "无限制",
+    "benefits": [],
+    "note": "",
+    "discontinued": true,
+    "measuredFiveHoursTokenLimit": 40,
+    "measuredWeeklyTokenLimit": 300,
+    "measuredMonthlyTokenLimit": 600
+  },
+  {
+    "vendor": "阿里·百炼",
+    "plan": "Pro",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqbailianc",
+    "rating": 4,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 200,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Qwen-3.7-Plus",
+      "Qwen-3.6-Plus",
+      "Qwen-3.5-Plus",
+      "MiniMax-M2.5",
+      "GLM-5",
+      "Kimi-K2.5"
+    ],
+    "fiveHoursRequests": 6000,
+    "weeklyRequests": 45000,
+    "monthlyRequests": 90000,
+    "tokenLimit": "无限制",
+    "benefits": [],
+    "note": "开始限量购买了，不确定每天放不放，放多少",
+    "measuredFiveHoursTokenLimit": 200,
+    "measuredWeeklyTokenLimit": 1500,
+    "measuredMonthlyTokenLimit": 3000
+  },
+  {
+    "vendor": "阿里·百炼",
     "plan": "标准",
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
@@ -1073,181 +1291,169 @@
     "measuredMonthlyTokenLimit": 3750
   },
   {
-    "vendor": "阿里·百炼",
-    "plan": "Lite",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqbailianc",
-    "rating": 4,
+    "vendor": "Codex",
+    "plan": "Plus",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
+    "rating": 5,
     "tags": [
-      "模型强",
-      "性价比高"
+      "模型强", "性价比高"
     ],
     "firstMonthPrice": "-",
-    "monthlyPrice": 40,
+    "monthlyPrice": 20,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "Qwen-3.7-Plus",
-      "Qwen-3.6-Plus",
-      "Qwen-3.5-Plus",
-      "MiniMax-M2.5",
-      "GLM-5",
-      "Kimi-K2.5"
+      "GPT-5.5",
+      "GPT-5.4",
+      "GPT-5.3-Codex",
+      "GPT-5.2",
+      "GPT-5.4-mini",
+      "GPT-Image-2.0"
     ],
-    "fiveHoursRequests": 1200,
-    "weeklyRequests": 9000,
-    "monthlyRequests": 18000,
-    "tokenLimit": "无限制",
-    "benefits": [],
-    "note": "",
-    "discontinued": true,
-    "measuredFiveHoursTokenLimit": 40,
-    "measuredWeeklyTokenLimit": 300,
-    "measuredMonthlyTokenLimit": 600
+    "fiveHoursRequests": "Plus 基准",
+    "weeklyRequests": "Plus 基准",
+    "monthlyRequests": "未公开",
+    "tokenLimit": "未公开",
+    "currency": "$",
+    "benefits": [
+      "可购买额外积分"
+    ],
+    "note": "• 官方按 5 小时与每周额度管理；免费版和 Go 套餐每周也有少量体验额度",
+    "measuredFiveHoursTokenLimit": 20,
+    "measuredWeeklyTokenLimit": 120,
+    "measuredMonthlyTokenLimit": 480
   },
   {
-    "vendor": "阿里·百炼",
-    "plan": "Pro",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqbailianc",
-    "rating": 4,
+    "vendor": "Codex",
+    "plan": "Pro *5",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
+    "rating": 5,
     "tags": [
-      "模型强",
-      "性价比高"
+      "模型强", "性价比高"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 100,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GPT-5.5",
+      "GPT-5.4",
+      "GPT-5.3-Codex",
+      "GPT-5.2",
+      "GPT-5.4-mini",
+      "GPT-Image-2.0"
+    ],
+    "fiveHoursRequests": "Plus 的 5 倍",
+    "weeklyRequests": "Plus 的 5 倍",
+    "monthlyRequests": "未公开",
+    "tokenLimit": "未公开",
+    "currency": "$",
+    "benefits": [
+      "可购买额外积分"
+    ],
+    "note": "• 官方当前按 5 小时与每周额度管理\n• 已转为 Token 计费口径；当前按 Plus 的 5 倍额度理解更稳妥",
+    "measuredFiveHoursTokenLimit": 100,
+    "measuredWeeklyTokenLimit": 600,
+    "measuredMonthlyTokenLimit": 2400
+  },
+  {
+    "vendor": "Codex",
+    "plan": "Pro *20",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
+    "rating": 5,
+    "tags": [
+      "模型强", "性价比高"
     ],
     "firstMonthPrice": "-",
     "monthlyPrice": 200,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "Qwen-3.7-Plus",
-      "Qwen-3.6-Plus",
-      "Qwen-3.5-Plus",
-      "MiniMax-M2.5",
-      "GLM-5",
-      "Kimi-K2.5"
+      "GPT-5.5",
+      "GPT-5.4",
+      "GPT-5.3-Codex",
+      "GPT-5.2",
+      "GPT-5.4-mini",
+      "GPT-Image-2.0"
     ],
-    "fiveHoursRequests": 6000,
-    "weeklyRequests": 45000,
-    "monthlyRequests": 90000,
-    "tokenLimit": "无限制",
-    "benefits": [],
-    "note": "开始限量购买了，不确定每天放不放，放多少",
-    "measuredFiveHoursTokenLimit": 200,
-    "measuredWeeklyTokenLimit": 1500,
-    "measuredMonthlyTokenLimit": 3000
+    "fiveHoursRequests": "Plus 的 20 倍",
+    "weeklyRequests": "Plus 的 20 倍",
+    "monthlyRequests": "未公开",
+    "tokenLimit": "未公开",
+    "currency": "$",
+    "benefits": [
+      "可购买额外积分"
+    ],
+    "note": "• 官方按 5 小时与每周额度管理",
+    "measuredFiveHoursTokenLimit": 400,
+    "measuredWeeklyTokenLimit": 2400,
+    "measuredMonthlyTokenLimit": 9600
   },
   {
-    "vendor": "小米·MiMo",
+    "vendor": "TaoToken",
     "plan": "Lite",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
     "rating": 3,
-    "tags": ["模型强"],
-    "firstMonthPrice": 34.32,
+    
+    "firstMonthPrice": "-",
     "monthlyPrice": 39,
     "quarterlyPrice": "-",
-    "yearlyPrice": 411.84,
+    "yearlyPrice": "-",
     "models": [
-      "MiMo-V2.5-Pro",
-      "MiMo-V2.5",
-      "MiMo-V2.5-TTS",
-      "MiMo-V2-Pro",
-      "MiMo-V2-Omni"
+      "GLM-5.2"
     ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "tokenLimit": 108,
-    "benefits": [
-      "TTS限时免费"
-    ],
-    "note": "• 4.1B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
-    "measuredMonthlyTokenLimit": 108
+    "fiveHoursRequests": 600,
+    "weeklyRequests": 4200,
+    "monthlyRequests": "-",
+    "tokenLimit": "-",
+    "benefits": [],
+    "note": ""
   },
   {
-    "vendor": "小米·MiMo",
-    "plan": "Standard",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
-    "rating": 3,
-    "tags": ["模型强"],
-    "firstMonthPrice": 87.12,
-    "monthlyPrice": 99,
-    "quarterlyPrice": "-",
-    "yearlyPrice": 1045.44,
-    "models": [
-      "MiMo-V2.5-Pro",
-      "MiMo-V2.5",
-      "MiMo-V2.5-TTS",
-      "MiMo-V2-Pro",
-      "MiMo-V2-Omni"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "tokenLimit": 290,
-    "benefits": [
-      "TTS限时免费"
-    ],
-    "note": "• 11B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
-    "measuredMonthlyTokenLimit": 290
-  },
-  {
-    "vendor": "小米·MiMo",
+    "vendor": "TaoToken",
     "plan": "Pro",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
     "rating": 3,
-    "tags": ["模型强"],
-    "firstMonthPrice": 289.52,
-    "monthlyPrice": 329,
+    
+    "firstMonthPrice": "-",
+    "monthlyPrice": 149,
     "quarterlyPrice": "-",
-    "yearlyPrice": 3474.24,
+    "yearlyPrice": "-",
     "models": [
-      "MiMo-V2.5-Pro",
-      "MiMo-V2.5",
-      "MiMo-V2.5-TTS",
-      "MiMo-V2-Pro",
-      "MiMo-V2-Omni"
+      "GLM-5.2"
     ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "tokenLimit": 1002,
-    "benefits": [
-      "TTS限时免费"
-    ],
-    "note": "• 38B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
-    "measuredMonthlyTokenLimit": 1002
+    "fiveHoursRequests": 2000,
+    "weeklyRequests": 15000,
+    "monthlyRequests": "-",
+    "tokenLimit": "-",
+    "benefits": [],
+    "note": ""
   },
   {
-    "vendor": "小米·MiMo",
+    "vendor": "TaoToken",
     "plan": "Max",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
     "rating": 3,
-    "tags": ["模型强"],
-    "firstMonthPrice": 579.92,
-    "monthlyPrice": 659,
+    
+    "firstMonthPrice": "-",
+    "monthlyPrice": 388,
     "quarterlyPrice": "-",
-    "yearlyPrice": 6959.04,
+    "yearlyPrice": "-",
     "models": [
-      "MiMo-V2.5-Pro",
-      "MiMo-V2.5",
-      "MiMo-V2.5-TTS",
-      "MiMo-V2-Pro",
-      "MiMo-V2-Omni"
+      "GLM-5.2"
     ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "tokenLimit": 2162,
-    "benefits": [
-      "TTS限时免费"
-    ],
-    "note": "• 82B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
-    "measuredMonthlyTokenLimit": 2162
+    "fiveHoursRequests": 6000,
+    "weeklyRequests": 35000,
+    "monthlyRequests": "-",
+    "tokenLimit": "-",
+    "benefits": [],
+    "note": ""
   },
   {
     "vendor": "DeepSeek Flash",
@@ -1344,69 +1550,6 @@
     "benefits": [],
     "note": "• 官方定价：缓存命中输入 ¥0.025/M Token，缓存未命中输入 ¥3/M Token，输出 ¥6/M Token\n• 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.025/1000000 + 99×10%×3/1000000 + 1×6/1000000 = 0.0000379275 元\n• 约等于 1 元≈2.64M Token，再乘月费 200 元，得到月 Token 上限约 527M",
     "measuredMonthlyTokenLimit": 527
-  },
-  {
-    "vendor": "TaoToken",
-    "plan": "Lite",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
-    "rating": 3,
-    
-    "firstMonthPrice": "-",
-    "monthlyPrice": 39,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5.2"
-    ],
-    "fiveHoursRequests": 600,
-    "weeklyRequests": 4200,
-    "monthlyRequests": "-",
-    "tokenLimit": "-",
-    "benefits": [],
-    "note": ""
-  },
-  {
-    "vendor": "TaoToken",
-    "plan": "Pro",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
-    "rating": 3,
-    
-    "firstMonthPrice": "-",
-    "monthlyPrice": 149,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5.2"
-    ],
-    "fiveHoursRequests": 2000,
-    "weeklyRequests": 15000,
-    "monthlyRequests": "-",
-    "tokenLimit": "-",
-    "benefits": [],
-    "note": ""
-  },
-  {
-    "vendor": "TaoToken",
-    "plan": "Max",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
-    "rating": 3,
-    
-    "firstMonthPrice": "-",
-    "monthlyPrice": 388,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5.2"
-    ],
-    "fiveHoursRequests": 6000,
-    "weeklyRequests": 35000,
-    "monthlyRequests": "-",
-    "tokenLimit": "-",
-    "benefits": [],
-    "note": ""
   },
   {
     "vendor": "联通云",
@@ -2311,47 +2454,6 @@
     "note": "• 模型较弱\n• 免费公测，Lite / Pro 未上线\n• 日额度：SenseNova 6.7 Flash-Lite 1500 次、SenseNova U1 Fast 1500 次、DeepSeek-V4-Flash 150 次"
   },
   {
-    "vendor": "OpenCode",
-    "plan": "Go",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqopencode",
-    "rating": 5,
-    "tags": [
-      "模型强",
-      "性价比高"
-    ],
-    "firstMonthPrice": 5,
-    "monthlyPrice": 10,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5.2",
-      "GLM-5.1",
-      "GLM-5",
-      "Kimi-K2.7-Code",
-      "Kimi-K2.6",
-      "MiMo-V2.5-Pro",
-      "MiMo-V2.5",
-      "Qwen-3.7-Max",
-      "Qwen-3.7-Plus",
-      "Qwen-3.6-Plus",
-      "MiniMax-M3",
-      "MiniMax-M2.7",
-      "MiniMax-M2.5",
-      "DeepSeek-V4-Pro",
-      "DeepSeek-V4-Flash"
-    ],
-    "fiveHoursRequests": "未公开",
-    "weeklyRequests": "未公开",
-    "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
-    "currency": "$",
-    "benefits": [
-      "首月半价"
-    ],
-    "note": "• 套餐额度按美元 Credits 计：基础 12 美元、周额度 30 美元、月额度 60 美元\n• 实际计费按 token 消耗"
-  },
-  {
     "vendor": "Ollama",
     "plan": "Pro",
     "type": "Coding Plan",
@@ -2418,108 +2520,6 @@
       "10 个并发任务"
     ],
     "note": "• 支持 GLM-5.1、Kimi-K2.6、MiniMax-M2.7、DeepSeek-V4-Pro，模型池很大\n• Max 为 Pro 的 5 倍额度"
-  },
-  {
-    "vendor": "Codex",
-    "plan": "Plus",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
-    "rating": 5,
-    "tags": [
-      "模型强", "性价比高"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 20,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GPT-5.5",
-      "GPT-5.4",
-      "GPT-5.3-Codex",
-      "GPT-5.2",
-      "GPT-5.4-mini",
-      "GPT-Image-2.0"
-    ],
-    "fiveHoursRequests": "Plus 基准",
-    "weeklyRequests": "Plus 基准",
-    "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
-    "currency": "$",
-    "benefits": [
-      "可购买额外积分"
-    ],
-    "note": "• 官方按 5 小时与每周额度管理；免费版和 Go 套餐每周也有少量体验额度",
-    "measuredFiveHoursTokenLimit": 20,
-    "measuredWeeklyTokenLimit": 120,
-    "measuredMonthlyTokenLimit": 480
-  },
-  {
-    "vendor": "Codex",
-    "plan": "Pro *5",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
-    "rating": 5,
-    "tags": [
-      "模型强", "性价比高"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 100,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GPT-5.5",
-      "GPT-5.4",
-      "GPT-5.3-Codex",
-      "GPT-5.2",
-      "GPT-5.4-mini",
-      "GPT-Image-2.0"
-    ],
-    "fiveHoursRequests": "Plus 的 5 倍",
-    "weeklyRequests": "Plus 的 5 倍",
-    "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
-    "currency": "$",
-    "benefits": [
-      "可购买额外积分"
-    ],
-    "note": "• 官方当前按 5 小时与每周额度管理\n• 已转为 Token 计费口径；当前按 Plus 的 5 倍额度理解更稳妥",
-    "measuredFiveHoursTokenLimit": 100,
-    "measuredWeeklyTokenLimit": 600,
-    "measuredMonthlyTokenLimit": 2400
-  },
-  {
-    "vendor": "Codex",
-    "plan": "Pro *20",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
-    "rating": 5,
-    "tags": [
-      "模型强", "性价比高"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 200,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GPT-5.5",
-      "GPT-5.4",
-      "GPT-5.3-Codex",
-      "GPT-5.2",
-      "GPT-5.4-mini",
-      "GPT-Image-2.0"
-    ],
-    "fiveHoursRequests": "Plus 的 20 倍",
-    "weeklyRequests": "Plus 的 20 倍",
-    "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
-    "currency": "$",
-    "benefits": [
-      "可购买额外积分"
-    ],
-    "note": "• 官方按 5 小时与每周额度管理",
-    "measuredFiveHoursTokenLimit": 400,
-    "measuredWeeklyTokenLimit": 2400,
-    "measuredMonthlyTokenLimit": 9600
   },
   {
     "vendor": "Claude",
