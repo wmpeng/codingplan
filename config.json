@@ -135,15 +135,6 @@
           ]
         },
         {
-          "name": "TaoToken",
-          "rating": 4,
-          "reasons": [
-            "支持 GLM-5.2 Coding Plan，三档套餐（Lite ¥39/Pro ¥149/Max ¥388）。",
-            "API 中转聚合平台，150+ 模型，兼容 OpenAI 协议。",
-            "当前三档均已售罄，等待下一波补货。"
-          ]
-        },
-        {
           "name": "优云智算",
           "rating": 4,
           "reasons": [
