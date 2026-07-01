@@ -354,7 +354,7 @@
     "monthlyRequests": 60000,
     "tokenLimit": 600,
     "benefits": [],
-    "note": "• 当前公开订阅档位\n• 支持 M3 与多模态，和 M2.7 共享额度池\n• 套餐额度受 5 小时窗口与周窗口控制",
+    "note": "",
     "measuredMonthlyTokenLimit": 600
   },
   {
@@ -381,7 +381,7 @@
     "monthlyRequests": 180000,
     "tokenLimit": 1800,
     "benefits": [],
-    "note": "• 当前公开订阅档位\n• 支持 M3 与多模态，和 M2.7 共享额度池\n• 套餐额度受 5 小时窗口与周窗口控制",
+    "note": "",
     "measuredMonthlyTokenLimit": 1800
   },
   {
@@ -408,7 +408,7 @@
     "monthlyRequests": 600000,
     "tokenLimit": 7100,
     "benefits": [],
-    "note": "• 当前公开订阅档位\n• 官方月 Token 上限约 7100M（≈71 亿，M3 与 M2.7 共享池）\n• 套餐额度受 5 小时窗口与周窗口控制",
+    "note": "",
     "measuredMonthlyTokenLimit": 7100
   },
   {
@@ -438,7 +438,7 @@
     "monthlyRequests": 18000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• GLM-5.1已恢复200K上下文\n• 讯飞实际可用量比较多"
+    "note": "• 讯飞实际可用量比较多，按调用量计数，明示调用量"
   },
   {
     "vendor": "讯飞·星火",
@@ -471,7 +471,7 @@
     "monthlyRequests": 90000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 高效版已支持 GLM-5.2\n• GLM-5.1已恢复200K上下文\n• 讯飞实际可用量比较多"
+    "note": "• 高效版已支持 GLM-5.2\n• 讯飞实际可用量比较多，按调用量计数，明示调用量"
   },
   {
     "vendor": "字节·方舟",
@@ -504,7 +504,7 @@
     "monthlyRequests": 18000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）\n• DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍",
+    "note": "• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）\n• DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍，GLM-5.2限时4倍用量",
     "discontinued": false,
     "measuredFiveHoursTokenLimit": 17,
     "measuredWeeklyTokenLimit": 125,
@@ -541,7 +541,7 @@
     "monthlyRequests": 90000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）\n• DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍",
+    "note": "• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）\n• DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍，GLM-5.2限时4倍用量",
     "discontinued": false,
     "measuredFiveHoursTokenLimit": 83,
     "measuredWeeklyTokenLimit": 624,
@@ -687,7 +687,7 @@
     "monthlyRequests": 1900,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流比较高：3 并发\n• 价格较贵，性价比较低，但费率明确，无隐藏倍率",
+    "note": "• 倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：3 并发\n• 价格较贵，但费率明确，无隐藏倍率",
     "discontinued": false
   },
   {
@@ -716,7 +716,7 @@
     "monthlyRequests": 3800,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流比较高：5 并发\n• 价格较贵，性价比较低，但费率明确，无隐藏倍率",
+    "note": "• 倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：5 并发\n• 价格较贵，但费率明确，无隐藏倍率",
     "discontinued": false
   },
   {
@@ -745,7 +745,7 @@
     "monthlyRequests": 7600,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流比较高：10 并发\n• 价格较贵，性价比较低，但费率明确，无隐藏倍率",
+    "note": "• 倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：10 并发\n• 价格较贵，但费率明确，无隐藏倍率",
     "discontinued": false
   },
   {
@@ -774,7 +774,7 @@
     "monthlyRequests": 19000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流比较高：10 并发\n• 价格较贵，性价比较低，但费率明确，无隐藏倍率",
+    "note": "• 倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：10 并发\n• 价格较贵，但费率明确，无隐藏倍率",
     "discontinued": false
   },
   {
@@ -803,7 +803,7 @@
     "monthlyRequests": 31000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流比较高：10 并发\n• 价格较贵，性价比较低，但费率明确，无隐藏倍率",
+    "note": "• 倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：10 并发\n• 价格较贵，但费率明确，无隐藏倍率",
     "discontinued": false
   },
   {
@@ -832,7 +832,7 @@
     "monthlyRequests": 39000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 倍率不隐藏：DeepSeek-V3.2 x1，DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流比较高：10 并发\n• 价格较贵但费率明确，无隐藏倍率",
+    "note": "• 倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：10 并发\n• 价格较贵但费率明确，无隐藏倍率",
     "discontinued": false
   },
   {
@@ -1364,7 +1364,7 @@
     "monthlyRequests": "-",
     "tokenLimit": "-",
     "benefits": [],
-    "note": "官方官网 https://taotoken.net"
+    "note": ""
   },
   {
     "vendor": "TaoToken",
@@ -1385,7 +1385,7 @@
     "monthlyRequests": "-",
     "tokenLimit": "-",
     "benefits": [],
-    "note": "官方官网 https://taotoken.net"
+    "note": ""
   },
   {
     "vendor": "TaoToken",
@@ -1406,7 +1406,7 @@
     "monthlyRequests": "-",
     "tokenLimit": "-",
     "benefits": [],
-    "note": "官方官网 https://taotoken.net"
+    "note": ""
   },
   {
     "vendor": "联通云",
