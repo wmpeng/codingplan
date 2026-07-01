@@ -1344,6 +1344,69 @@
     "measuredMonthlyTokenLimit": 527
   },
   {
+    "vendor": "TaoToken",
+    "plan": "Lite",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
+    "rating": 4,
+    "tags": ["中转聚合"],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 39,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.2"
+    ],
+    "fiveHoursRequests": 600,
+    "weeklyRequests": 4200,
+    "monthlyRequests": "-",
+    "tokenLimit": "-",
+    "benefits": [],
+    "note": "• 已售罄（原价¥59/月）\n• 支持Claude Code、Cursor、Cline等20+工具\n• 官方官网 https://taotoken.net"
+  },
+  {
+    "vendor": "TaoToken",
+    "plan": "Pro",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
+    "rating": 4,
+    "tags": ["中转聚合"],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 149,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.2"
+    ],
+    "fiveHoursRequests": 2000,
+    "weeklyRequests": 15000,
+    "monthlyRequests": "-",
+    "tokenLimit": "-",
+    "benefits": [],
+    "note": "• 已售罄（原价¥298/月）\n• 支持Lite版所有工具"
+  },
+  {
+    "vendor": "TaoToken",
+    "plan": "Max",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
+    "rating": 4,
+    "tags": ["中转聚合"],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 388,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.2"
+    ],
+    "fiveHoursRequests": 6000,
+    "weeklyRequests": 35000,
+    "monthlyRequests": "-",
+    "tokenLimit": "-",
+    "benefits": [],
+    "note": "• 已售罄（原价¥799/月）\n• 支持Lite版所有工具"
+  },
+  {
     "vendor": "联通云",
     "plan": "Lite",
     "type": "Coding Plan",
