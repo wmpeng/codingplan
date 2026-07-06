@@ -1,4 +1,4 @@
-/* ── 公共基础样式，index.html 和 tools.html 共用 ── */
+﻿/* 鈹€鈹€ 鍏叡鍩虹鏍峰紡锛宨ndex.html 鍜?tools.html 鍏辩敤 鈹€鈹€ */
 
 * {
     margin: 0;
@@ -20,15 +20,28 @@
     --accent-success: #10b981;
     --accent-warning: #f59e0b;
     --accent-error: #ef4444;
-    --shadow-sm: 0 6px 18px rgba(23, 32, 51, 0.06);
-    --shadow-md: 0 14px 36px rgba(23, 32, 51, 0.08);
-    --shadow-lg: 0 20px 48px rgba(23, 32, 51, 0.12);
-    --shadow-xl: 0 28px 64px rgba(23, 32, 51, 0.16);
-    --radius-sm: 6px;
+    --shadow-sm: 0 2px 6px rgba(23, 32, 51, 0.05);
+    --shadow-md: 0 6px 20px rgba(23, 32, 51, 0.07);
+    --shadow-lg: 0 12px 32px rgba(23, 32, 51, 0.10);
+    --shadow-xl: 0 20px 48px rgba(23, 32, 51, 0.12);
+    --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
     --radius-xl: 16px;
-    --color-scheme: light;
+
+
+    /* === focus / gradient / motion tokens (new) === */
+    --focus-ring-color: rgba(99, 102, 241, 0.32);
+    --focus-ring-color-strong: rgba(99, 102, 241, 0.55);
+    --focus-ring-soft: rgba(99, 102, 241, 0.22);
+    --focus-ring: 0 0 0 3px var(--focus-ring-color);
+    --focus-ring-strong: 0 0 0 3px var(--focus-ring-color-strong);
+    --grad-primary: var(--grad-primary);
+    --grad-primary-soft: linear-gradient(135deg, rgba(28, 53, 82, 0.08), rgba(15, 118, 110, 0.08));
+    --selection-bg: rgba(15, 118, 110, 0.4);
+    --row-hover-bg: rgba(15, 118, 110, 0.05);
+    color-scheme: light;
+
 }
 
 body.dark-mode {
@@ -42,32 +55,64 @@ body.dark-mode {
     --border-light: rgba(255, 255, 255, 0.06);
     --accent-primary: #2dd4bf;
     --accent-secondary: #f59e0b;
-    --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.25);
-    --shadow-md: 0 14px 36px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.35);
-    --shadow-xl: 0 28px 64px rgba(0, 0, 0, 0.4);
-    --color-scheme: dark;
+    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.20);
+    --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.30);
+    --shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.35);
+
+
+    /* === dark mode focus / gradient / accent overrides (new) === */
+    --accent-success: #34d399;
+    --accent-warning: #fbbf24;
+    --accent-error: #f87171;
+    --text-tertiary: #9aa0ad;
+    --focus-ring-color: rgba(45, 212, 191, 0.32);
+    --focus-ring-color-strong: rgba(45, 212, 191, 0.55);
+    --focus-ring-soft: rgba(45, 212, 191, 0.22);
+    --grad-primary: linear-gradient(135deg, #0a1628 0%, #0d5c56 100%);
+    --grad-primary-soft: linear-gradient(135deg, rgba(10, 22, 40, 0.4), rgba(13, 92, 86, 0.4));
+    --selection-bg: rgba(45, 212, 191, 0.5);
+    --row-hover-bg: rgba(45, 212, 191, 0.06);
+    color-scheme: dark;
+
 }
 
 body {
+    transition: background-color 0.3s ease, color 0.3s ease;
     min-height: 100vh;
-    font-family: "Avenir Next", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    background:
-        radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 26%),
-        radial-gradient(circle at top right, rgba(198, 107, 26, 0.14), transparent 24%),
-        linear-gradient(180deg, #f8f3eb 0%, #f4efe6 42%, #f7f2ea 100%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.4;
-    padding: 28px 34px 64px;
-    font-size: 14px;
-    overflow-x: hidden;
+    padding: 20px 24px 40px;
+    font-size: 15px;
+    overflow-x: clip;
 }
 
 body.dark-mode {
-    background:
-        radial-gradient(circle at top left, rgba(45, 212, 191, 0.06), transparent 26%),
-        radial-gradient(circle at top right, rgba(245, 158, 11, 0.06), transparent 24%),
-        linear-gradient(180deg, #111318 0%, #161a22 42%, #111318 100%);
+    background: var(--bg-primary);
+}
+
+
+::selection {
+    background: var(--selection-bg);
+    color: var(--text-primary);
+    text-shadow: none;
+}
+
+:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 .container {
@@ -83,20 +128,21 @@ body.dark-mode {
     margin: 34px 0;
 }
 
-/* ── 页面导航 Tab（外层不裁切，设置面板挂在 cluster 上） ── */
+/* 鈹€鈹€ 椤甸潰瀵艰埅 Tab锛堝灞備笉瑁佸垏锛岃缃潰鏉挎寕鍦?cluster 涓婏級 鈹€鈹€ */
 .page-nav-cluster {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 24px;
-    padding: 12px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    border-radius: 999px;
-    background: rgba(255, 249, 241, 0.76);
-    backdrop-filter: blur(18px);
-    box-shadow: 0 10px 28px rgba(23, 32, 51, 0.08);
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    backdrop-filter: blur(8px);
+    box-shadow: var(--shadow-sm);
     position: sticky;
-    top: 14px;
+    top: 10px;
     z-index: 40;
     overflow: visible;
 }
@@ -127,7 +173,7 @@ body.dark-mode .page-nav-cluster {
     gap: 6px;
     padding: 11px 18px;
     border-radius: 999px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     text-decoration: none;
     color: var(--text-secondary);
@@ -144,7 +190,7 @@ body.dark-mode .page-nav-cluster {
 
 .page-tab.active {
     color: #f8fffd;
-    background: linear-gradient(135deg, #1c3552 0%, #0f766e 100%);
+    background: var(--grad-primary);
     border-color: transparent;
     box-shadow: 0 12px 24px rgba(28, 53, 82, 0.18);
 }
@@ -154,16 +200,16 @@ body.dark-mode .page-tab.active {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
-/* ── Header ── */
+/* 鈹€鈹€ Header 鈹€鈹€ */
 .header {
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     text-align: left;
     position: relative;
-    padding: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 32px;
-    background: linear-gradient(135deg, rgba(255, 252, 246, 0.96) 0%, rgba(255, 248, 238, 0.84) 56%, rgba(239, 246, 244, 0.92) 100%);
-    box-shadow: var(--shadow-lg);
+    padding: 28px 32px;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background: var(--bg-secondary);
+    box-shadow: var(--shadow-sm);
     overflow: hidden;
 }
 
@@ -218,7 +264,7 @@ body.dark-mode .header::after {
     gap: 6px;
     color: var(--text-primary);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     transition: all 0.2s;
     padding: 11px 18px;
@@ -302,12 +348,12 @@ body.dark-mode .header-info {
     border-color: rgba(255, 255, 255, 0.06);
 }
 
-/* ── 超宽屏模式 ── */
+/* 鈹€鈹€ 瓒呭灞忔ā寮?鈹€鈹€ */
 .ultra-wide .container {
     max-width: none !important;
 }
 
-/* ── 设置按钮与面板 ── */
+/* 鈹€鈹€ 璁剧疆鎸夐挳涓庨潰鏉?鈹€鈹€ */
 .settings-wrapper {
     margin-left: auto;
     position: relative;
@@ -425,7 +471,7 @@ body.dark-mode .settings-panel {
     transform: translateX(16px);
 }
 
-/* ── 底部说明 ── */
+/* 鈹€鈹€ 搴曢儴璇存槑 鈹€鈹€ */
 .notes-section {
     margin-top: 30px;
     padding: 24px 28px;
@@ -433,7 +479,6 @@ body.dark-mode .settings-panel {
     border: 1px solid rgba(255, 255, 255, 0.7);
     background: rgba(255, 251, 245, 0.84);
     box-shadow: var(--shadow-md);
-    backdrop-filter: blur(8px);
 }
 
 body.dark-mode .notes-section {
@@ -455,7 +500,7 @@ body.dark-mode .notes-section {
 }
 
 .notes-section li {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--text-secondary);
     padding: 8px 0;
     padding-left: 18px;
@@ -464,13 +509,13 @@ body.dark-mode .notes-section {
 }
 
 .notes-section li::before {
-    content: "•";
+    content: "鈥?;
     position: absolute;
     left: 0;
     color: var(--accent-primary);
 }
 
-/* ── 更新日志 ── */
+/* 鈹€鈹€ 鏇存柊鏃ュ織 鈹€鈹€ */
 .updates-section {
     margin-top: 28px;
     padding: 24px 28px;
@@ -478,7 +523,6 @@ body.dark-mode .notes-section {
     border: 1px solid rgba(255, 255, 255, 0.7);
     background: rgba(255, 251, 245, 0.84);
     box-shadow: var(--shadow-md);
-    backdrop-filter: blur(8px);
 }
 
 body.dark-mode .updates-section {
@@ -525,7 +569,7 @@ body.dark-mode .updates-section {
 }
 
 .update-items li {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--text-secondary);
     padding: 4px 0;
     position: relative;
@@ -547,12 +591,11 @@ body.dark-mode .updates-section {
 }
 
 .hero-summary-card {
-    padding: 22px;
-    border-radius: 24px;
-    border: 1px solid rgba(23, 32, 51, 0.08);
-    background: rgba(255, 251, 245, 0.84);
-    box-shadow: var(--shadow-md);
-    backdrop-filter: blur(8px);
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    box-shadow: var(--shadow-sm);
 }
 
 body.dark-mode .hero-summary-card {
@@ -578,10 +621,8 @@ body.dark-mode .hero-summary-card--warm {
 
 .hero-summary-card--community {
     grid-column: span 2;
-    position: relative;
-    overflow: hidden;
-    border-color: rgba(15, 118, 110, 0.18);
-    background: linear-gradient(135deg, rgba(15, 118, 110, 0.12) 0%, rgba(255, 251, 245, 0.96) 48%, rgba(198, 107, 26, 0.1) 100%);
+    border-color: var(--border-color);
+    background: var(--bg-secondary);
 }
 
 body.dark-mode .hero-summary-card--community {
@@ -617,7 +658,7 @@ body.dark-mode .hero-summary-card--community {
 
 .community-hub-status {
     color: #18344f;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     line-height: 1.7;
 }
@@ -664,7 +705,7 @@ body.dark-mode .hero-summary-card--community {
     min-height: 42px;
     padding: 0 18px;
     border-radius: 999px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     text-decoration: none;
     transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
@@ -672,7 +713,7 @@ body.dark-mode .hero-summary-card--community {
 
 .community-hub-btn {
     color: #f8fffd;
-    background: linear-gradient(135deg, #1c3552 0%, #0f766e 100%);
+    background: var(--grad-primary);
     box-shadow: 0 12px 24px rgba(28, 53, 82, 0.16);
 }
 
@@ -758,7 +799,7 @@ body.dark-mode .community-hub-qr {
     color: var(--text-secondary);
     text-align: center;
     line-height: 1.7;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
 }
 
@@ -801,7 +842,7 @@ body.dark-mode .community-hub-qr {
     align-items: center;
     gap: 10px;
     margin-bottom: 16px;
-    font-size: 27px;
+    font-size: 22px;
     font-weight: 800;
     letter-spacing: -0.03em;
     color: var(--text-primary);
@@ -817,9 +858,8 @@ body.dark-mode .community-hub-qr {
 .surface-panel {
     border-radius: 28px;
     border: 1px solid rgba(255, 255, 255, 0.7);
-    background: rgba(255, 251, 245, 0.84);
-    box-shadow: var(--shadow-md);
-    backdrop-filter: blur(8px);
+    background: var(--bg-secondary);
+    box-shadow: var(--shadow-sm);
 }
 
 body.dark-mode .surface-panel {
@@ -973,4 +1013,58 @@ body.dark-mode .surface-popover {
     .settings-wrapper {
         padding-top: 0;
     }
+}
+
+
+/* === light-mode table row hover (new) === */
+.comparison-table tbody tr:hover td,
+.records-table tbody:hover tbody tr:hover td,
+.records-table tbody tr:hover td {
+    background: var(--row-hover-bg);
+    transition: background 0.15s ease;
+}
+
+/* === link legibility (new) === */
+a:not(.btn):not(.page-tab):not(.action-btn):not(.community-hub-btn):not(.recommendation-name-link):not(.header-link):not(.pagination-btn) {
+    text-decoration: underline;
+    text-decoration-color: rgba(15, 118, 110, 0.65);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+}
+
+/* === print styles (new) === */
+@media print {
+    body {
+        background: #fff !important;
+        padding: 0 !important;
+        color: #000 !important;
+    }
+    .page-nav-cluster, .filter-bar, .pagination-row,
+    .field-help-popover, .result-card, .toast,
+    .settings-wrapper, .hero-summary, .updates-section, .notes-section,
+    .community-hub, .header > .github-link {
+        display: none !important;
+    }
+    .surface-panel, .plan-usage-panel, .table-wrapper,
+    .filter-dropdown, .dropdown-menu, .recommendation-card,
+    .surface-control, .surface-popover {
+        background: #fff !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        backdrop-filter: none !important;
+    }
+    .comparison-table, .records-table, .models-mini-table {
+        box-shadow: none !important;
+        border: 1px solid #999 !important;
+    }
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+    h1, h2, h3 { page-break-after: avoid; }
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 11px;
+        color: #555;
+    }
+    a[href^="javascript:"]::after,
+    a[href^="#"]::after { content: ""; }
 }

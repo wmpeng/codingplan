@@ -1,4 +1,4 @@
-/* ── codingplan 公共工具函数 ── */
+﻿/* ── codingplan 公共工具函数 ── */
 
 function escapeHtml(text) {
     if (text === null || text === undefined) return '';
@@ -184,7 +184,10 @@ function renderPageNav(target, options = {}) {
         const saved = localStorage.getItem('darkMode');
 
         function applyDarkMode(on) {
+            // 同时设 body.classList 与 :root[data-theme]，
+            // 兼容老 CSS (body.dark-mode) 与新 CSS (:root[data-theme=dark])
             document.body.classList.toggle('dark-mode', on);
+            document.documentElement.dataset.theme = on ? 'dark' : 'light';
             toggle.checked = on;
         }
 

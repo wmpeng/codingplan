@@ -1,4 +1,4 @@
-.plan-usage-panel {
+﻿.plan-usage-panel {
     margin-bottom: 24px;
     padding: 24px 24px 22px;
     border: 1px solid rgba(255, 255, 255, 0.7);
@@ -155,7 +155,7 @@ body.dark-mode .plan-usage-panel .segmented-control {
 }
 
 .plan-usage-panel .segment-btn.active {
-    background: linear-gradient(135deg, #173753, #0f766e);
+    background: var(--grad-primary);
     color: #f7fffd;
 }
 

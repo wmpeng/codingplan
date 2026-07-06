@@ -446,10 +446,13 @@ body.dark-mode .field-help-lightbox-close:hover {
 }
 
 body.dark-mode .multi-select-option:hover,
-body.dark-mode .single-select-option.selected,
-body.dark-mode .segment-btn.active {
+body.dark-mode .single-select-option.selected {
     background: rgba(45, 212, 191, 0.1);
     color: var(--accent-primary);
+}
+
+body.dark-mode .segment-btn.active {
+    box-shadow: 0 4px 14px rgba(45, 212, 191, 0.35);
 }
 
 body.dark-mode .single-select-option.selected {

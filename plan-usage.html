@@ -585,22 +585,24 @@
 
         .segmented-control {
             display: inline-flex;
+            padding: 3px;
+            gap: 2px;
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            overflow: hidden;
+            border-radius: 999px;
             background: var(--bg-primary);
         }
 
         .segment-btn {
-            padding: 10px 16px;
+            padding: 8px 18px;
             border: none;
+            border-radius: 999px;
             background: transparent;
             font-size: 14px;
             font-weight: 600;
             font-family: inherit;
             cursor: pointer;
             color: var(--text-secondary);
-            transition: background 0.15s, color 0.15s;
+            transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .segment-btn:hover:not(:disabled) {
@@ -609,12 +611,13 @@
         }
 
         .segment-btn + .segment-btn {
-            border-left: 1px solid var(--border-color);
+            border-left: none;
         }
 
         .segment-btn.active {
-            background: rgba(99, 102, 241, 0.12);
-            color: var(--accent-primary);
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            box-shadow: 0 4px 14px rgba(15, 118, 110, 0.28);
         }
 
         .segment-btn:disabled {
@@ -1102,7 +1105,6 @@
         .form-input,
         .form-textarea,
         .form-select-trigger,
-        .segmented-control,
         .secondary-btn,
         .pagination-btn {
             background: rgba(255, 255, 255, 0.72);
@@ -1126,8 +1128,7 @@
         }
 
         .multi-select-option:hover,
-        .single-select-option.selected,
-        .segment-btn.active {
+        .single-select-option.selected {
             background: rgba(15, 118, 110, 0.1);
             color: #154d77;
         }
