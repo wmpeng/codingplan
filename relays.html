@@ -6,6 +6,7 @@
     <title>中转站对比</title>
     <link rel="icon" href="/favicon.ico?v=260418" type="image/x-icon">
     <link rel="stylesheet" href="styles/shared.css?v=260515">
+    <link rel="stylesheet" href="styles/dark-mode.css?v=260701">
     <style>
         /* relays.html 覆盖 shared.css 的差异值 */
         html { scroll-behavior: smooth; }
@@ -1206,73 +1207,6 @@
             }
         }
 
-        body.dark-mode .relay-card-header {
-            background: linear-gradient(135deg, rgba(45, 212, 191, 0.06), rgba(245, 158, 11, 0.04));
-            border-bottom-color: rgba(255, 255, 255, 0.06);
-        }
-
-        body.dark-mode .matrix-filter-reset {
-            background: var(--bg-secondary);
-        }
-
-        body.dark-mode .matrix-filter-item input,
-        body.dark-mode .matrix-filter-item select,
-        body.dark-mode .matrix-multi-btn {
-            background: rgba(30, 33, 41, 0.72);
-            border-color: rgba(255, 255, 255, 0.08);
-            color: var(--text-primary);
-        }
-
-        body.dark-mode .matrix-filter-item input::placeholder {
-            color: var(--text-tertiary);
-        }
-
-        body.dark-mode .matrix-filter-item input:focus,
-        body.dark-mode .matrix-filter-item select:focus,
-        body.dark-mode .matrix-multi.open .matrix-multi-btn {
-            border-color: var(--accent-primary);
-            outline-color: rgba(45, 212, 191, 0.2);
-        }
-
-        body.dark-mode .models-mini-table thead th {
-            color: var(--text-secondary);
-        }
-
-        body.dark-mode .matrix-tag--type-ir,
-        body.dark-mode .matrix-tag--type-mixed,
-        body.dark-mode .protocol-tag,
-        body.dark-mode .model-price-label {
-            background: rgba(30, 33, 41, 0.6);
-        }
-
-        body.dark-mode .relay-header-bg .relay-header-avatar img {
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        body.dark-mode .relay-url {
-            color: var(--text-secondary);
-        }
-
-        body.dark-mode .form-input,
-        body.dark-mode .form-textarea,
-        body.dark-mode .form-select-trigger,
-        body.dark-mode .segmented-control {
-            background: rgba(30, 33, 41, 0.72);
-            border-color: rgba(255, 255, 255, 0.08);
-        }
-
-        body.dark-mode .form-input:focus,
-        body.dark-mode .form-textarea:focus,
-        body.dark-mode .form-select-trigger:focus {
-            border-color: rgba(45, 212, 191, 0.28);
-            box-shadow: 0 0 0 4px rgba(45, 212, 191, 0.08);
-        }
-
-        body.dark-mode .form-input,
-        body.dark-mode .form-textarea,
-        body.dark-mode .form-select-trigger {
-            color: var(--text-primary);
-        }
     </style>
 </head>
 <body>

@@ -1,0 +1,600 @@
+/* ── 统一暗色模式：覆盖所有页面的硬编码颜色 ── */
+
+/* === 通用表格样式（覆盖所有页面含类名前缀的 tr/td/th） === */
+body.dark-mode th,
+body.dark-mode .records-table th,
+body.dark-mode .comparison-table thead th,
+body.dark-mode .comparison-table th,
+body.dark-mode .models-mini-table thead th {
+    background: rgba(12, 16, 24, 0.96);
+    color: rgba(248, 252, 255, 0.86);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode td,
+body.dark-mode .records-table td {
+    background: rgba(30, 33, 41, 0.88);
+    color: var(--text-primary);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode tbody tr:nth-child(even) td,
+body.dark-mode .records-table tbody tr:nth-child(even) td,
+body.dark-mode .comparison-table tbody tr:nth-child(even) {
+    background: rgba(24, 27, 35, 0.85);
+}
+
+body.dark-mode tbody tr:nth-child(odd) td,
+body.dark-mode .records-table tbody tr:nth-child(odd) td,
+body.dark-mode .comparison-table tbody tr:nth-child(odd) {
+    background: rgba(30, 33, 41, 0.88);
+}
+
+body.dark-mode tbody tr:hover td,
+body.dark-mode .records-table tbody tr:hover td,
+body.dark-mode .comparison-table tbody tr:hover {
+    background: rgba(45, 212, 191, 0.06);
+}
+
+body.dark-mode .records-table thead {
+    background: linear-gradient(180deg, rgba(20, 25, 35, 0.95), rgba(16, 22, 32, 0.95));
+}
+
+body.dark-mode .pinned-row td {
+    background: rgba(45, 212, 191, 0.04);
+}
+
+/* === index.html 页面 === */
+body.dark-mode .table-wrapper {
+    background: rgba(24, 27, 35, 0.8);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode td.sticky-first,
+body.dark-mode td.sticky-second {
+    background: linear-gradient(90deg, rgba(30, 33, 41, 0.96) 0%, rgba(30, 33, 41, 0.96) 86%, rgba(30, 33, 41, 0) 100%);
+}
+
+body.dark-mode tbody tr:nth-child(even) td.sticky-first,
+body.dark-mode tbody tr:nth-child(even) td.sticky-second {
+    background: linear-gradient(90deg, rgba(24, 27, 35, 0.96) 0%, rgba(24, 27, 35, 0.96) 86%, rgba(24, 27, 35, 0) 100%);
+}
+
+body.dark-mode tbody tr:hover td.sticky-first,
+body.dark-mode tbody tr:hover td.sticky-second {
+    background: linear-gradient(90deg, rgba(28, 38, 38, 0.96) 0%, rgba(28, 38, 38, 0.96) 86%, rgba(28, 38, 38, 0) 100%);
+    box-shadow: none;
+}
+
+body.dark-mode .recommendation-card {
+    background: rgba(24, 27, 35, 0.8);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .recommendation-card:hover {
+    border-color: rgba(45, 212, 191, 0.2);
+}
+
+body.dark-mode .recommendation-name-link:hover {
+    color: var(--accent-primary);
+}
+
+body.dark-mode .rating-guide {
+    background: rgba(24, 27, 35, 0.7);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .filter-btn,
+body.dark-mode .reset-btn,
+body.dark-mode .checkbox-label,
+body.dark-mode .stats-bar {
+    background: rgba(30, 33, 41, 0.72);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .filter-btn:hover,
+body.dark-mode .checkbox-label:hover {
+    background: rgba(45, 212, 191, 0.08);
+    border-color: rgba(45, 212, 191, 0.2);
+}
+
+body.dark-mode .filter-btn.active {
+    background: linear-gradient(135deg, rgba(45, 212, 191, 0.12), rgba(245, 158, 11, 0.12));
+    border-color: rgba(45, 212, 191, 0.2);
+    color: var(--accent-primary);
+}
+
+body.dark-mode .radio-label,
+body.dark-mode .account-card,
+body.dark-mode .contact-section {
+    background: rgba(30, 33, 41, 0.7);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .radio-label:hover,
+body.dark-mode .dropdown-btn.secondary:hover {
+    background: rgba(45, 212, 191, 0.08);
+    border-color: rgba(45, 212, 191, 0.18);
+}
+
+body.dark-mode .dropdown-menu {
+    background: rgba(24, 27, 35, 0.96);
+}
+
+body.dark-mode .checkbox-label:has(input:checked) {
+    background: rgba(45, 212, 191, 0.12);
+    border-color: rgba(45, 212, 191, 0.2);
+}
+
+body.dark-mode .reset-btn:hover {
+    background: rgba(245, 158, 11, 0.08);
+    border-color: rgba(245, 158, 11, 0.2);
+    color: var(--accent-secondary);
+}
+
+body.dark-mode .hero-summary-card--reading {
+    background: linear-gradient(165deg, rgba(45, 212, 191, 0.06), rgba(24, 27, 35, 0.85));
+}
+
+body.dark-mode .hero-summary-card--reading .hero-summary-kicker {
+    color: #2dd4bf;
+    background: rgba(45, 212, 191, 0.12);
+}
+
+body.dark-mode .hero-summary-card--guide {
+    background: linear-gradient(165deg, rgba(245, 158, 11, 0.06), rgba(24, 27, 35, 0.85));
+    border-color: rgba(245, 158, 11, 0.12);
+}
+
+body.dark-mode .hero-summary-card--guide .hero-summary-kicker {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.12);
+}
+
+body.dark-mode .preset-tag-chip {
+    background: linear-gradient(135deg, rgba(30, 33, 41, 0.92), rgba(30, 33, 41, 0.92));
+    border-color: rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+}
+
+body.dark-mode .preset-tag-chip:hover {
+    border-color: rgba(45, 212, 191, 0.28);
+    color: var(--text-primary);
+}
+
+body.dark-mode .preset-tag-chip.active {
+    background: linear-gradient(135deg, #173753, #0f766e);
+    color: white;
+}
+
+body.dark-mode .feedback-float-trigger {
+    background: rgba(24, 27, 35, 0.94);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .feedback-float-trigger:hover {
+    background: rgba(30, 33, 41, 0.96);
+    border-color: rgba(45, 212, 191, 0.28);
+}
+
+body.dark-mode .feedback-float-trigger-icon {
+    background: rgba(45, 212, 191, 0.12);
+    color: #2dd4bf;
+}
+
+body.dark-mode .feedback-float-panel {
+    background: rgba(24, 27, 35, 0.96);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .feedback-float-action-link {
+    background: rgba(30, 33, 41, 0.78);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .feedback-float-action-link:hover {
+    border-color: rgba(45, 212, 191, 0.24);
+    background: rgba(45, 212, 191, 0.08);
+}
+
+body.dark-mode .feedback-float-feishu {
+    border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .section-title::after {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0));
+}
+
+body.dark-mode .hero-summary-lede-media a {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .page-tab:hover {
+    background: rgba(45, 212, 191, 0.08);
+}
+
+body.dark-mode .settings-btn:hover,
+body.dark-mode .settings-btn.active {
+    background: rgba(30, 33, 41, 0.78);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .toggle-slider {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .toggle-switch input:checked + .toggle-slider {
+    background: var(--accent-primary);
+}
+
+body.dark-mode .toggle-slider::before {
+    background: #e0e0e0;
+}
+
+
+/* === coding-agents.html 页面 === */
+body.dark-mode #agentsTable td:first-child,
+body.dark-mode #plansTable td:first-child {
+    background: linear-gradient(90deg, rgba(30, 33, 41, 0.96) 0%, rgba(30, 33, 41, 0.96) 86%, rgba(30, 33, 41, 0) 100%);
+}
+
+body.dark-mode #agentsTable tbody tr:nth-child(even) td:first-child,
+body.dark-mode #plansTable tbody tr:nth-child(even) td:first-child {
+    background: linear-gradient(90deg, rgba(24, 27, 35, 0.96) 0%, rgba(24, 27, 35, 0.96) 86%, rgba(24, 27, 35, 0) 100%);
+}
+
+body.dark-mode #agentsTable tbody tr:hover td:first-child,
+body.dark-mode #plansTable tbody tr:hover td:first-child {
+    background: linear-gradient(90deg, rgba(28, 38, 38, 0.96) 0%, rgba(28, 38, 38, 0.96) 86%, rgba(28, 38, 38, 0) 100%);
+}
+
+body.dark-mode .hero-shell {
+    background: linear-gradient(135deg, rgba(24, 27, 35, 0.96) 0%, rgba(20, 24, 32, 0.92) 56%, rgba(18, 28, 28, 0.92) 100%);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .hero-shell::before {
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.12), rgba(45, 212, 191, 0));
+}
+
+body.dark-mode .hero-shell::after {
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0));
+}
+
+body.dark-mode .hero-tag {
+    background: linear-gradient(135deg, #0a1628 0%, #0d5c56 100%);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .hero-trust {
+    background: rgba(45, 212, 191, 0.1);
+    border-color: rgba(45, 212, 191, 0.12);
+}
+
+body.dark-mode .hero-coverage {
+    background: rgba(30, 33, 41, 0.66);
+}
+
+body.dark-mode .hero-anchor {
+    background: linear-gradient(135deg, #173753, #0f766e);
+}
+
+body.dark-mode .hero-anchor--secondary,
+body.dark-mode .github-link {
+    background: rgba(30, 33, 41, 0.78);
+}
+
+body.dark-mode .hero-point {
+    background: rgba(30, 33, 41, 0.7);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .metric-card,
+body.dark-mode .decision-card {
+    background: rgba(24, 27, 35, 0.76);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .metric-card--good {
+    background: linear-gradient(180deg, rgba(45, 212, 191, 0.08), rgba(24, 27, 35, 0.6));
+}
+
+body.dark-mode .metric-card--accent {
+    background: linear-gradient(180deg, rgba(45, 212, 191, 0.08), rgba(24, 27, 35, 0.6));
+}
+
+body.dark-mode .metric-card--warm {
+    background: linear-gradient(180deg, rgba(245, 158, 11, 0.08), rgba(24, 27, 35, 0.6));
+}
+
+body.dark-mode .metric-eyebrow {
+    background: rgba(45, 212, 191, 0.1);
+}
+
+body.dark-mode .metric-value {
+    color: var(--text-primary);
+}
+
+body.dark-mode .decision-step {
+    color: var(--accent-primary);
+    background: rgba(45, 212, 191, 0.08);
+}
+
+body.dark-mode .table-hint {
+    background: rgba(30, 33, 41, 0.7);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .pill {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .status-pill--yes,
+body.dark-mode .status-pill--mainlandYes,
+body.dark-mode .source-pill--official {
+    color: #2dd4bf;
+    background: rgba(45, 212, 191, 0.12);
+    border-color: rgba(45, 212, 191, 0.2);
+}
+
+body.dark-mode .status-pill--no,
+body.dark-mode .status-pill--mainlandNo {
+    color: #fca5a5;
+    background: rgba(225, 86, 109, 0.12);
+    border-color: rgba(225, 86, 109, 0.2);
+}
+
+body.dark-mode .status-pill--partial,
+body.dark-mode .status-pill--mainlandPartial,
+body.dark-mode .source-pill--secondary {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.2);
+}
+
+body.dark-mode .status-pill--unknown,
+body.dark-mode .status-pill--na,
+body.dark-mode .status-pill--mainlandUnknown,
+body.dark-mode .source-pill--unknown {
+    background: rgba(138, 147, 163, 0.12);
+    border-color: rgba(138, 147, 163, 0.15);
+    color: var(--text-tertiary);
+}
+
+body.dark-mode .source-link {
+    color: var(--accent-primary);
+}
+
+body.dark-mode .source-disclosure {
+    border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .site-link {
+    background: rgba(30, 33, 41, 0.72);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .hero-steps li::before {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+
+/* === plan-usage.html 页面 === */
+body.dark-mode .form-input,
+body.dark-mode .form-textarea,
+body.dark-mode .form-select-trigger {
+    background: rgba(30, 33, 41, 0.72);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+}
+
+body.dark-mode .form-input:focus,
+body.dark-mode .form-textarea:focus,
+body.dark-mode .form-select-trigger:focus,
+body.dark-mode .multi-select.open .form-select-trigger {
+    border-color: rgba(45, 212, 191, 0.28);
+    box-shadow: 0 0 0 4px rgba(45, 212, 191, 0.08);
+}
+
+body.dark-mode .form-input::placeholder,
+body.dark-mode .form-textarea::placeholder {
+    color: var(--text-tertiary);
+}
+
+body.dark-mode .field-help-trigger {
+    border-color: rgba(45, 212, 191, 0.25);
+    background: rgba(45, 212, 191, 0.08);
+}
+
+body.dark-mode .field-help-trigger:hover,
+body.dark-mode .field-help-trigger-wrap.is-open .field-help-trigger,
+body.dark-mode .field-help-trigger:focus-visible {
+    background: rgba(45, 212, 191, 0.14);
+    border-color: rgba(45, 212, 191, 0.42);
+    color: var(--accent-primary);
+}
+
+body.dark-mode .field-help-trigger:focus-visible {
+    outline-color: rgba(45, 212, 191, 0.25);
+}
+
+body.dark-mode .field-help-popover,
+body.dark-mode .multi-select-panel {
+    background: rgba(24, 27, 35, 0.96);
+}
+
+body.dark-mode .field-help-image-wrap {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .field-help-image-wrap.has-image:focus-visible {
+    outline-color: rgba(45, 212, 191, 0.55);
+}
+
+body.dark-mode .field-help-lightbox-backdrop {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+body.dark-mode .field-help-lightbox-close {
+    background: rgba(30, 33, 41, 0.92);
+}
+
+body.dark-mode .field-help-lightbox-close:hover {
+    background: rgba(40, 44, 52, 0.96);
+}
+
+body.dark-mode .multi-select-option:hover,
+body.dark-mode .single-select-option.selected,
+body.dark-mode .segment-btn.active {
+    background: rgba(45, 212, 191, 0.1);
+    color: var(--accent-primary);
+}
+
+body.dark-mode .single-select-option.selected {
+    background: rgba(45, 212, 191, 0.1);
+}
+
+body.dark-mode .submit-btn {
+    background: linear-gradient(135deg, #173753, #0f766e);
+    box-shadow: 0 12px 24px rgba(23, 55, 83, 0.18);
+}
+
+body.dark-mode .submit-btn:hover {
+    background: linear-gradient(135deg, #0a1628, #0d5c56);
+}
+
+body.dark-mode .secondary-btn,
+body.dark-mode .pagination-btn {
+    background: rgba(30, 33, 41, 0.72);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .secondary-btn:hover,
+body.dark-mode .pagination-btn:hover:not(:disabled) {
+    color: var(--accent-primary);
+    border-color: rgba(45, 212, 191, 0.2);
+    background: rgba(45, 212, 191, 0.08);
+}
+
+body.dark-mode .estimate-pin-btn.is-pinned {
+    border-color: rgba(45, 212, 191, 0.28);
+    background: rgba(45, 212, 191, 0.1);
+}
+
+body.dark-mode .estimate-pin-btn:focus-visible {
+    outline-color: rgba(45, 212, 191, 0.22);
+}
+
+body.dark-mode .result-card.success {
+    border-color: rgba(16, 185, 129, 0.2);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(16, 185, 129, 0.02));
+}
+
+body.dark-mode .result-card.error {
+    border-color: rgba(239, 68, 68, 0.2);
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.06), rgba(239, 68, 68, 0.02));
+}
+
+body.dark-mode .result-card.flash-success {
+    border-color: rgba(16, 185, 129, 0.5);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12), var(--shadow-lg);
+}
+
+body.dark-mode .toast {
+    background: rgba(30, 33, 41, 0.96);
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+body.dark-mode .toast.success {
+    background: linear-gradient(135deg, rgba(16, 40, 35, 0.98), rgba(30, 33, 41, 0.98));
+}
+
+body.dark-mode .meta-pill {
+    background: rgba(30, 33, 41, 0.72);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+
+/* === relays.html 页面 === */
+body.dark-mode .relay-card-header {
+    background: linear-gradient(135deg, rgba(45, 212, 191, 0.06), rgba(245, 158, 11, 0.04));
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .matrix-filter-reset {
+    background: var(--bg-secondary);
+}
+
+body.dark-mode .matrix-filter-item input,
+body.dark-mode .matrix-filter-item select,
+body.dark-mode .matrix-multi-btn {
+    background: rgba(30, 33, 41, 0.72);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+}
+
+body.dark-mode .matrix-filter-item input::placeholder {
+    color: var(--text-tertiary);
+}
+
+body.dark-mode .matrix-filter-item input:focus,
+body.dark-mode .matrix-filter-item select:focus,
+body.dark-mode .matrix-multi.open .matrix-multi-btn {
+    border-color: var(--accent-primary);
+    outline-color: rgba(45, 212, 191, 0.2);
+}
+
+body.dark-mode .models-mini-table thead th {
+    color: var(--text-secondary);
+}
+
+body.dark-mode .matrix-tag--type-ir,
+body.dark-mode .matrix-tag--type-mixed,
+body.dark-mode .protocol-tag,
+body.dark-mode .model-price-label {
+    background: rgba(30, 33, 41, 0.6);
+}
+
+
+/* === relay-detect.html 页面 === */
+body.dark-mode .history-clear-btn {
+    background: rgba(30, 33, 41, 0.72);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+}
+
+body.dark-mode .history-clear-btn:hover {
+    background: rgba(239, 68, 68, 0.08);
+    border-color: rgba(239, 68, 68, 0.24);
+}
+
+body.dark-mode .result-card.success {
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+body.dark-mode .result-card.warning {
+    border-color: rgba(245, 158, 11, 0.2);
+}
+
+body.dark-mode .result-card.error {
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+body.dark-mode .spinner {
+    border-color: rgba(255, 255, 255, 0.2);
+    border-top-color: var(--accent-primary);
+}
+
+
+/* === article 页面（通用列表/块引用） === */
+body.dark-mode .article-content blockquote {
+    background: rgba(45, 212, 191, 0.06);
+    border-left-color: rgba(45, 212, 191, 0.2);
+}
+
+body.dark-mode code {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+}
