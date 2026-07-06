@@ -1202,6 +1202,175 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        body.dark-mode .table-wrapper {
+            background: rgba(24, 27, 35, 0.7);
+            border-color: rgba(255, 255, 255, 0.06);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        }
+
+        body.dark-mode .records-table thead {
+            background: linear-gradient(180deg, rgba(20, 25, 35, 0.95), rgba(16, 22, 32, 0.95));
+        }
+
+        body.dark-mode .records-table th {
+            background: rgba(12, 16, 24, 0.96);
+        }
+
+        body.dark-mode .records-table td {
+            background: rgba(30, 33, 41, 0.85);
+        }
+
+        body.dark-mode .records-table tbody tr:nth-child(even) td {
+            background: rgba(24, 27, 35, 0.8);
+        }
+
+        body.dark-mode .records-table tbody tr:hover td {
+            background: rgba(45, 212, 191, 0.05);
+        }
+
+        body.dark-mode .pinned-row td {
+            background: rgba(45, 212, 191, 0.04);
+        }
+
+        body.dark-mode .form-input,
+        body.dark-mode .form-textarea,
+        body.dark-mode .form-select-trigger,
+        body.dark-mode .segmented-control,
+        body.dark-mode .secondary-btn,
+        body.dark-mode .pagination-btn {
+            background: rgba(30, 33, 41, 0.72);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        body.dark-mode .form-input:focus,
+        body.dark-mode .form-textarea:focus,
+        body.dark-mode .form-select-trigger:focus,
+        body.dark-mode .multi-select.open .form-select-trigger {
+            border-color: rgba(45, 212, 191, 0.28);
+            box-shadow: 0 0 0 4px rgba(45, 212, 191, 0.08);
+        }
+
+        body.dark-mode .field-help-trigger {
+            border-color: rgba(45, 212, 191, 0.25);
+            background: rgba(45, 212, 191, 0.08);
+        }
+
+        body.dark-mode .field-help-trigger:hover,
+        body.dark-mode .field-help-trigger-wrap.is-open .field-help-trigger,
+        body.dark-mode .field-help-trigger:focus-visible {
+            background: rgba(45, 212, 191, 0.14);
+            border-color: rgba(45, 212, 191, 0.42);
+            color: var(--accent-primary);
+        }
+
+        body.dark-mode .field-help-trigger:focus-visible {
+            outline-color: rgba(45, 212, 191, 0.25);
+        }
+
+        body.dark-mode .field-help-popover,
+        body.dark-mode .multi-select-panel {
+            background: rgba(24, 27, 35, 0.96);
+        }
+
+        body.dark-mode .field-help-image-wrap {
+            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        body.dark-mode .field-help-image-wrap.has-image:focus-visible {
+            outline-color: rgba(45, 212, 191, 0.55);
+        }
+
+        body.dark-mode .field-help-lightbox-backdrop {
+            background: rgba(0, 0, 0, 0.85);
+        }
+
+        body.dark-mode .field-help-lightbox-close {
+            background: rgba(30, 33, 41, 0.92);
+        }
+
+        body.dark-mode .field-help-lightbox-close:hover {
+            background: rgba(40, 44, 52, 0.96);
+        }
+
+        body.dark-mode .multi-select-option:hover,
+        body.dark-mode .single-select-option.selected,
+        body.dark-mode .segment-btn.active {
+            background: rgba(45, 212, 191, 0.1);
+            color: var(--accent-primary);
+        }
+
+        body.dark-mode .single-select-option.selected {
+            background: rgba(45, 212, 191, 0.1);
+        }
+
+        body.dark-mode .submit-btn {
+            background: linear-gradient(135deg, #173753, #0f766e);
+            box-shadow: 0 12px 24px rgba(23, 55, 83, 0.18);
+        }
+
+        body.dark-mode .submit-btn:hover {
+            background: linear-gradient(135deg, #0a1628, #0d5c56);
+        }
+
+        body.dark-mode .secondary-btn:hover,
+        body.dark-mode .pagination-btn:hover:not(:disabled) {
+            color: var(--accent-primary);
+            border-color: rgba(45, 212, 191, 0.2);
+            background: rgba(45, 212, 191, 0.08);
+        }
+
+        body.dark-mode .estimate-pin-btn.is-pinned {
+            border-color: rgba(45, 212, 191, 0.28);
+            background: rgba(45, 212, 191, 0.1);
+        }
+
+        body.dark-mode .estimate-pin-btn:focus-visible {
+            outline-color: rgba(45, 212, 191, 0.22);
+        }
+
+        body.dark-mode .result-card.success {
+            border-color: rgba(16, 185, 129, 0.2);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(16, 185, 129, 0.02));
+        }
+
+        body.dark-mode .result-card.error {
+            border-color: rgba(239, 68, 68, 0.2);
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.06), rgba(239, 68, 68, 0.02));
+        }
+
+        body.dark-mode .result-card.flash-success {
+            border-color: rgba(16, 185, 129, 0.5);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12), var(--shadow-lg);
+        }
+
+        body.dark-mode .toast {
+            background: rgba(30, 33, 41, 0.96);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+
+        body.dark-mode .toast.success {
+            background: linear-gradient(135deg, rgba(16, 40, 35, 0.98), rgba(30, 33, 41, 0.98));
+        }
+
+        body.dark-mode .meta-pill {
+            background: rgba(30, 33, 41, 0.72);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        body.dark-mode .segment-btn.active {
+            background: rgba(45, 212, 191, 0.1);
+        }
+
+        body.dark-mode .form-select-trigger {
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .form-input,
+        body.dark-mode .form-textarea {
+            color: var(--text-primary);
+        }
     </style>
 </head>
 <body>
