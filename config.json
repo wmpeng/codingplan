@@ -87,17 +87,17 @@
       ]
     },
     {
-      "title": "DeepSeek 涨价应对（低成本替代）",
-      "subtitle": "直接调用成本上行时，优先看支持 DeepSeek-V4 且更易购买的平台",
+      "title": "按量计费推荐",
+      "subtitle": "好的CodingPlan需要抢购，如果不想购买固定套餐，可以考虑这些平台",
       "items": [
         {
-          "name": "DeepSeek",
+          "name": "DeepSeek官方",
           "rating": 5,
           "action": "https://platform.deepseek.com/",
           "reasons": [
-            "官方直连渠道，适合需要原生能力和第一手模型更新的场景。",
-            "即将进入峰谷计费，建议结合业务峰谷时段评估调用成本。",
-            "可作为成本对照基线，再和下方替代平台做横向比较。"
+            "原生DeepSeek，支持DeepSeek-V4-Pro。",
+            "目前价格[输入3元/M，缓存0.025元/M，输出6元/M](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)。",
+            "7月中旬引入峰谷计费，[高峰时段价格翻倍](https://www.ithome.com/0/970/123.htm)。"
           ]
         },
         {
@@ -105,9 +105,18 @@
           "rating": 4,
           "action": "https://api.dreamfree.space/c/s/cpyqgongji",
           "reasons": [
-            "该平台当前不在 plans.json 内，已通过 recommendation 的 action 字段单独接入跳转。",
-            "适合做 DeepSeek 涨价后的补位渠道，降低单一路径成本波动风险。",
-            "若你确认了最终入口地址，直接替换当前 action 即可生效。"
+            "支持DeepSeek-V4-Pro模型，目前平台人数不多，稳定性较好。",
+            "API价格为官方**8折**，即DeepSeek-V4-Pro输入2.4元/M，缓存0.02元/M，输出4.8元/M。官方7月涨价后，此平台价格优势更加明显。",
+            "一定要通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入，才可锁定**8折调用资格**和额外**20元调用额度**。加[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)了解更多。",
+            "还支持GLM-5.2，Kimi-K2.6，Qwen-3.7-Max等常见模型。"
+          ]
+        },
+        {
+          "name": "小米·MiMo",
+          "rating": 4,
+          "action": "https://api.dreamfree.space/c/s/cpyqmimo",
+          "reasons": [
+            "Mimo-V2.5-Pro方面能力均衡，可作为DeepSeek的平替，价格和DeepSeek一致。"
           ]
         }
       ]
@@ -122,7 +131,7 @@
           "reasons": [
             "支持GLM-5.2模型。+2",
             "模型能力T0级别，尤其适合代码场景，Opus平替优于Opus4.6。",
-            "需要抢购，**[加飞书群](https://api.dreamfree.space/c/s/cpfeishulink)提供免费代抢**。目前官方不放名额，暂停中。"
+            "需要抢购，**[加飞书群](https://api.dreamfree.space/c/s/cpfeishulink)提供免费代抢**。*目前官方不放名额，暂停中。"
           ]
         },
         {
@@ -130,7 +139,7 @@
           "rating": 4,
           "reasons": [
             "国际版支持GLM-5.2",
-            "用量与国内版完全一致。价格折算后大约为国内版两倍。"
+            "用量与国内版完全一致。价格折算后大约为国内版两倍+。"
           ]
         },
         {
