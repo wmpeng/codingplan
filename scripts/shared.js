@@ -122,7 +122,8 @@ function renderPageNav(target, options = {}) {
             { key: 'plan-usage', href: 'plan-usage.html', text: 'Coding Plan用量提交' },
             { key: 'coding-agents', href: 'coding-agents.html', text: '编程 Agent' },
             { key: 'relays', href: 'relays.html', text: '中转站' },
-            { key: 'relay-detect', href: 'relay-detect.html', text: '中转站检测' }
+            { key: 'relay-detect', href: 'relay-detect.html', text: '中转站检测' },
+            { key: 'monitor', href: 'monitor.html', text: '可用性监控' }
         ];
     const activeKey = options.activeKey || '';
     const settings = options.settings || {};

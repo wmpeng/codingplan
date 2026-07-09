@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平台可用性监控 - Coding Plan</title>
+    <link rel="icon" href="/favicon.ico?v=260418" type="image/x-icon">
+    <link rel="stylesheet" href="styles/shared.css?v=260515">
+    <script src="scripts/monitor-config.local.js"></script>
+    <script src="scripts/monitor-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        .monitor-summary {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .monitor-stat {
+            background: var(--surface-color);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            min-width: 120px;
+        }
+        .monitor-stat-value { font-size: 1.8rem; font-weight: 700; }
+        .monitor-stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
+        .monitor-stat.online { border-left: 3px solid #22c55e; }
+        .monitor-stat.degraded { border-left: 3px solid #eab308; }
+        .monitor-stat.offline { border-left: 3px solid #ef4444; }
+
+        .monitor-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        .monitor-table th, .monitor-table td { padding: 0.75rem 1rem; text-align: left; }
+        .monitor-table th { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; border-bottom: 1px solid var(--border-color); }
+        .monitor-table td { border-bottom: 1px solid var(--border-color); }
+        .monitor-table tr { cursor: pointer; }
+        .monitor-table tr:hover { background: var(--hover-bg); }
+
+        .status-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+        .status-dot.online { background: #22c55e; }
+        .status-dot.degraded { background: #eab308; }
+        .status-dot.offline { background: #ef4444; }
+
+        .detail-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 99; }
+        .detail-overlay.open { display: block; }
+        .detail-panel { display: none; position: fixed; top: 0; right: 0; width: 520px; max-width: 92vw; height: 100vh; background: var(--bg-color); border-left: 1px solid var(--border-color); padding: 1.5rem; overflow-y: auto; z-index: 100; box-shadow: -4px 0 20px rgba(0,0,0,0.1); }
+        .detail-panel.open { display: block; }
+
+        .detail-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .detail-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); }
+
+        .detail-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+        .detail-tab { padding: 0.25rem 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; cursor: pointer; font-size: 0.85rem; background: none; color: var(--text-primary); }
+        .detail-tab.active { background: var(--accent-color); color: #fff; border-color: var(--accent-color); }
+
+        .chart-container { width: 100%; height: 240px; margin-bottom: 1rem; }
+        .loading-text { text-align: center; padding: 2rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="pageNavMount"></div>
+
+        <div class="header">
+            <div class="header-top">
+                <h1 id="pageTitle"></h1>
+                <a id="githubLink" href="" target="_blank" rel="noopener noreferrer" class="github-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                    GitHub
+                </a>
+            </div>
+            <div id="headerSubtitle" class="subtitle"></div>
+        </div>
+
+        <div class="surface-panel surface-panel--padded" id="summarySection" hidden>
+            <div class="monitor-summary">
+                <div class="monitor-stat online">
+                    <div class="monitor-stat-value" id="onlineCount">-</div>
+                    <div class="monitor-stat-label" id="onlineLabel"></div>
+                </div>
+                <div class="monitor-stat degraded">
+                    <div class="monitor-stat-value" id="degradedCount">-</div>
+                    <div class="monitor-stat-label" id="degradedLabel"></div>
+                </div>
+                <div class="monitor-stat offline">
+                    <div class="monitor-stat-value" id="offlineCount">-</div>
+                    <div class="monitor-stat-label" id="offlineLabel"></div>
+                </div>
+                <div class="monitor-stat">
+                    <div class="monitor-stat-value" id="overallAvail">-</div>
+                    <div class="monitor-stat-label" id="overallLabel"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="surface-panel surface-panel--padded">
+            <div id="statusLoading" class="loading-text">加载中...</div>
+            <table class="monitor-table" id="monitorTable" hidden>
+                <thead>
+                    <tr>
+                        <th id="thStatus"></th>
+                        <th id="thPlatform"></th>
+                        <th id="thModel"></th>
+                        <th id="thAvail"></th>
+                        <th id="thLatency"></th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+
+        <div id="notesSection" class="surface-panel surface-panel--padded"></div>
+    </div>
+
+    <div class="detail-overlay" id="detailOverlay"></div>
+    <div class="detail-panel" id="detailPanel">
+        <div class="detail-header">
+            <h3 id="detailTitle"></h3>
+            <button class="detail-close" id="detailClose">&times;</button>
+        </div>
+        <div class="detail-tabs" id="detailTabs"></div>
+        <div class="chart-container"><canvas id="availChart"></canvas></div>
+        <div class="chart-container"><canvas id="latencyChart"></canvas></div>
+        <div id="detailStats"></div>
+    </div>
+
+    <script>
+    (function() {
+        'use strict';
+
+        renderPageNav('pageNavMount', {
+            activeKey: 'monitor',
+            tabs: [
+                { key: 'index', href: 'index.html', id: 'navIndexTab' },
+                { key: 'plan-usage', href: 'plan-usage.html', id: 'navPlanUsageTab' },
+                { key: 'coding-agents', href: 'coding-agents.html', id: 'navCodingAgentsTab' },
+                { key: 'relays', href: 'relays.html', id: 'navRelaysTab' },
+                { key: 'relay-detect', href: 'relay-detect.html', id: 'navDetectTab' },
+                { key: 'monitor', href: 'monitor.html', text: '可用性监控' }
+            ],
+            settings: {
+                panelTitle: '显示设置',
+                ultraWideLabel: '超宽屏模式'
+            }
+        });
+
+        var API_BASE = (window.MONITOR_CONFIG && window.MONITOR_CONFIG.apiBase) || '';
+        var CONFIG = {};
+        var currentDetail = null;
+        var availChart = null;
+        var latencyChart = null;
+
+        function t(key) {
+            var parts = key.split('.');
+            var val = CONFIG;
+            for (var i = 0; i < parts.length; i++) {
+                val = val && val[parts[i]];
+                if (val === undefined) return '';
+            }
+            return typeof val === 'string' ? val : '';
+        }
+
+        function loadConfig() {
+            return fetch('monitor-config.json')
+                .then(function(r) { return r.json(); })
+                .then(function(cfg) { CONFIG = cfg; })
+                .catch(function(e) { console.error('Config load failed:', e); });
+        }
+
+        function applyPageTexts() {
+            document.getElementById('pageTitle').textContent = t('pageTitle');
+            document.getElementById('githubLink').href = t('githubUrl');
+            document.getElementById('headerSubtitle').textContent = (CONFIG.header && CONFIG.header.subtitle) || '';
+            document.getElementById('onlineLabel').textContent = CONFIG.summary.onlineLabel;
+            document.getElementById('degradedLabel').textContent = CONFIG.summary.degradedLabel;
+            document.getElementById('offlineLabel').textContent = CONFIG.summary.offlineLabel;
+            document.getElementById('overallLabel').textContent = CONFIG.summary.overallLabel;
+            document.getElementById('statusLoading').textContent = CONFIG.summary.checkingLabel;
+            document.getElementById('thStatus').textContent = CONFIG.table.labels.status;
+            document.getElementById('thPlatform').textContent = CONFIG.table.labels.platform;
+            document.getElementById('thModel').textContent = CONFIG.table.labels.model;
+            document.getElementById('thAvail').textContent = CONFIG.table.labels.availability24h;
+            document.getElementById('thLatency').textContent = CONFIG.table.labels.avgLatency;
+            document.getElementById('detailTitle').textContent = CONFIG.detail.title;
+            document.getElementById('detailClose').title = CONFIG.detail.closeLabel;
+        }
+
+        function renderOverview(data) {
+            document.getElementById('summarySection').hidden = false;
+            document.getElementById('onlineCount').textContent = data.online_count;
+            document.getElementById('degradedCount').textContent = data.degraded_count;
+            document.getElementById('offlineCount').textContent = data.offline_count;
+            document.getElementById('overallAvail').textContent = (data.overall_availability_24h * 100).toFixed(1) + '%';
+        }
+
+        function renderStatus(items) {
+            document.getElementById('statusLoading').hidden = true;
+            document.getElementById('monitorTable').hidden = false;
+            var tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            items.sort(function(a, b) {
+                if (a.platform_name !== b.platform_name) return a.platform_name.localeCompare(b.platform_name);
+                return a.standard_model_name.localeCompare(b.standard_model_name);
+            });
+
+            items.forEach(function(item) {
+                var statusLabel = CONFIG.statusLabels[item.status] || item.status;
+                var avPct = (item.availability_24h * 100).toFixed(1);
+                var latStr = item.avg_latency_ms !== null ? item.avg_latency_ms + 'ms' : 'N/A';
+
+                var tr = document.createElement('tr');
+                tr.innerHTML =
+                    '<td><span class="status-dot ' + item.status + '"></span>' + escapeHtml(statusLabel) + '</td>' +
+                    '<td>' + escapeHtml(item.platform_name) + '</td>' +
+                    '<td>' + escapeHtml(item.standard_model_name) + '</td>' +
+                    '<td>' + avPct + '%</td>' +
+                    '<td>' + latStr + '</td>';
+                tr.addEventListener('click', function() {
+                    openDetail(item.platform_name, item.standard_model_name);
+                });
+                tbody.appendChild(tr);
+            });
+        }
+
+        function openDetail(platformName, modelName) {
+            currentDetail = { platform: platformName, model: modelName };
+            document.getElementById('detailOverlay').classList.add('open');
+            document.getElementById('detailPanel').classList.add('open');
+            document.getElementById('detailTitle').textContent = platformName + ' / ' + modelName;
+
+            var daysArr = CONFIG.detail.chartDays || [1, 7, 30];
+            var tabsHtml = '';
+            daysArr.forEach(function(d) {
+                tabsHtml += '<button class="detail-tab' + (d === 7 ? ' active' : '') + '" data-days="' + d + '">' + d + CONFIG.detail.dayLabel + '</button>';
+            });
+            document.getElementById('detailTabs').innerHTML = tabsHtml;
+
+            document.querySelectorAll('.detail-tab').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.detail-tab').forEach(function(b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    loadHistory(platformName, modelName, parseInt(btn.dataset.days));
+                });
+            });
+
+            loadHistory(platformName, modelName, 7);
+        }
+
+        function loadHistory(platformName, modelName, days) {
+            var url = API_BASE + '/monitor/history?platform_name=' + encodeURIComponent(platformName) +
+                '&standard_model_name=' + encodeURIComponent(modelName) + '&days=' + days;
+
+            fetch(url)
+                .then(function(r) { return r.json(); })
+                .then(function(resp) {
+                    renderCharts(resp.data || resp);
+                })
+                .catch(function(e) {
+                    console.error('History load failed:', e);
+                });
+        }
+
+        function renderCharts(data) {
+            var points = data.points || [];
+            var labels = points.map(function(p) {
+                var d = new Date(p.check_time_ms);
+                return d.toLocaleDateString('zh-CN', { month: 'numeric', day: 'numeric' }) + ' ' +
+                       d.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+            });
+
+            var availData = points.map(function(p) { return (p.success_count / 3) * 100; });
+            var latencyData = points.map(function(p) { return p.avg_latency_ms; });
+
+            if (availChart) availChart.destroy();
+            if (latencyChart) latencyChart.destroy();
+
+            var availCtx = document.getElementById('availChart').getContext('2d');
+            availChart = new Chart(availCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: CONFIG.detail.labels.availability + ' (%)',
+                        data: availData,
+                        borderColor: '#22c55e',
+                        backgroundColor: 'rgba(34,197,94,0.1)',
+                        fill: true,
+                        tension: 0.1,
+                        pointRadius: 1,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { min: 0, max: 100, ticks: { callback: function(v) { return v + '%'; } } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            var latCtx = document.getElementById('latencyChart').getContext('2d');
+            latencyChart = new Chart(latCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: CONFIG.detail.labels.avgLatency + ' (ms)',
+                        data: latencyData,
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59,130,246,0.1)',
+                        fill: true,
+                        tension: 0.1,
+                        pointRadius: 1,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            var total = points.length;
+            var fullyAvail = points.filter(function(p) { return p.success_count === 3; }).length;
+            var degraded = points.filter(function(p) { return p.success_count >= 1 && p.success_count < 3; }).length;
+            var unavailable = points.filter(function(p) { return p.success_count === 0; }).length;
+
+            document.getElementById('detailStats').innerHTML =
+                '<p>' + CONFIG.detail.labels.fullyAvailable + ': <strong>' + fullyAvail + '</strong> / ' + total + '</p>' +
+                '<p>' + CONFIG.detail.labels.degraded + ': <strong>' + degraded + '</strong> / ' + total + '</p>' +
+                '<p>' + CONFIG.detail.labels.unavailable + ': <strong>' + unavailable + '</strong> / ' + total + '</p>';
+        }
+
+        function escapeHtml(text) {
+            if (text === null || text === undefined) return '';
+            var div = document.createElement('div');
+            div.textContent = String(text);
+            return div.innerHTML;
+        }
+
+        function fetchData() {
+            fetch(API_BASE + '/monitor/overview')
+                .then(function(r) { return r.json(); })
+                .then(function(resp) { renderOverview(resp.data || resp); })
+                .catch(function(e) { console.error('Overview fetch failed:', e); });
+
+            fetch(API_BASE + '/monitor/status')
+                .then(function(r) { return r.json(); })
+                .then(function(resp) { renderStatus(resp.data.items); })
+                .catch(function(e) {
+                    document.getElementById('statusLoading').textContent = '数据加载失败，请稍后重试';
+                });
+        }
+
+        function renderNotes() {
+            var notes = CONFIG.notes;
+            if (!notes || !notes.length) return;
+            var section = document.getElementById('notesSection');
+            section.className = 'surface-panel surface-panel--padded';
+            var html = '<h3>说明</h3><ul>';
+            notes.forEach(function(n) { html += '<li>' + escapeHtml(n) + '</li>'; });
+            html += '</ul>';
+            section.innerHTML = html;
+        }
+
+        document.getElementById('detailClose').addEventListener('click', function() {
+            document.getElementById('detailOverlay').classList.remove('open');
+            document.getElementById('detailPanel').classList.remove('open');
+        });
+        document.getElementById('detailOverlay').addEventListener('click', function() {
+            document.getElementById('detailOverlay').classList.remove('open');
+            document.getElementById('detailPanel').classList.remove('open');
+        });
+
+        loadConfig().then(function() {
+            applyPageTexts();
+            renderNotes();
+            fetchData();
+        });
+    })();
+    </script>
+    <script src="scripts/shared.js?v=260512"></script>
+</body>
+</html>
