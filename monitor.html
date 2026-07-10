@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/shared.css?v=260515">
     <script src="scripts/monitor-config.local.js"></script>
     <script src="scripts/monitor-config.js"></script>
+    <script src="scripts/shared.js?v=260512"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         .monitor-summary {
@@ -253,7 +254,7 @@
             fetch(url)
                 .then(function(r) { return r.json(); })
                 .then(function(resp) {
-                    renderCharts(resp.data || resp);
+                    renderCharts((resp && resp.data) || resp);
                 })
                 .catch(function(e) {
                     console.error('History load failed:', e);
@@ -344,12 +345,20 @@
         function fetchData() {
             fetch(API_BASE + '/monitor/overview')
                 .then(function(r) { return r.json(); })
-                .then(function(resp) { renderOverview(resp.data || resp); })
+                .then(function(resp) { renderOverview((resp && resp.data) || resp); })
                 .catch(function(e) { console.error('Overview fetch failed:', e); });
 
             fetch(API_BASE + '/monitor/status')
                 .then(function(r) { return r.json(); })
-                .then(function(resp) { renderStatus(resp.data.items); })
+                .then(function(resp) {
+                    var data = (resp && resp.data) || resp;
+                    var items = (data && data.items) || [];
+                    if (!items.length) {
+                        document.getElementById('statusLoading').textContent = CONFIG.detail.labels.noData || '暂无数据';
+                        return;
+                    }
+                    renderStatus(items);
+                })
                 .catch(function(e) {
                     document.getElementById('statusLoading').textContent = '数据加载失败，请稍后重试';
                 });
@@ -382,6 +391,5 @@
         });
     })();
     </script>
-    <script src="scripts/shared.js?v=260512"></script>
 </body>
 </html>
