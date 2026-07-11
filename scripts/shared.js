@@ -123,7 +123,7 @@ function renderPageNav(target, options = {}) {
             { key: 'coding-agents', href: 'coding-agents.html', text: '编程 Agent' },
             { key: 'relays', href: 'relays.html', text: '中转站' },
             { key: 'relay-detect', href: 'relay-detect.html', text: '中转站检测' },
-            { key: 'monitor', href: 'monitor.html', text: '可用性监控' }
+            { key: 'monitor', href: 'monitor/index.html', text: '可用性监控' }
         ];
     const activeKey = options.activeKey || '';
     const settings = options.settings || {};

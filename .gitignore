@@ -95,6 +95,7 @@ tory -a
 
 # 本地开发配置
 scripts/*.local.js
+monitor/*.local.js
 .cozeproj/reduction
 assets/image*.png
 

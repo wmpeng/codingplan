@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平台可用性监控 - Coding Plan</title>
+    <link rel="icon" href="/favicon.ico?v=260418" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/shared.css?v=260515">
+    <script src="monitor-config.local.js"></script>
+    <script src="monitor-config.js"></script>
+    <script src="../scripts/shared.js?v=260512"></script>
+    <style>
+        .monitor-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .monitor-toolbar label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+        .monitor-toolbar select {
+            margin-left: 0.35rem;
+            padding: 0.25rem 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--surface-color);
+            color: var(--text-primary);
+        }
+        .monitor-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .monitor-block {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+        .monitor-block:last-child {
+            border-bottom: none;
+        }
+        .monitor-head {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 0.75rem 1rem;
+            align-items: center;
+            cursor: pointer;
+        }
+        .monitor-head-main {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.35rem 0.75rem;
+            min-width: 0;
+        }
+        .monitor-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .monitor-name-sub {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .monitor-meta {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .monitor-rate {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+        .monitor-chevron {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .monitor-bar-wrap {
+            grid-column: 1 / -1;
+            overflow-x: auto;
+            padding-top: 0.5rem;
+        }
+        .monitor-bar {
+            display: flex;
+            gap: 1px;
+            min-width: fit-content;
+        }
+        .timeline-cell {
+            width: 3px;
+            height: 32px;
+            border-radius: 1px;
+            flex: 0 0 auto;
+        }
+        .timeline-cell--green { background: #22c55e; }
+        .timeline-cell--yellow { background: #eab308; }
+        .timeline-cell--red { background: #ef4444; }
+        .timeline-cell--gray { background: #e5e7eb; }
+        .monitor-models {
+            margin-top: 0.75rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border-color);
+        }
+        .monitor-model-block {
+            padding: 0.75rem 0;
+        }
+        .monitor-model-block + .monitor-model-block {
+            border-top: 1px solid var(--border-color);
+        }
+        .monitor-loading,
+        .monitor-empty {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+        }
+        .monitor-tooltip {
+            position: fixed;
+            z-index: 200;
+            pointer-events: none;
+            background: rgba(17, 24, 39, 0.92);
+            color: #fff;
+            font-size: 12px;
+            padding: 6px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+            display: none;
+        }
+        @media (max-width: 640px) {
+            .monitor-head {
+                grid-template-columns: 1fr;
+            }
+            .monitor-rate {
+                justify-self: start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="pageNavMount"></div>
+
+        <div class="header">
+            <div class="header-top">
+                <h1 id="pageTitle"></h1>
+            </div>
+            <div id="headerSubtitle" class="subtitle"></div>
+            <div id="lastCheckLine" class="subtitle"></div>
+        </div>
+
+        <div class="surface-panel surface-panel--padded">
+            <div class="monitor-toolbar">
+                <label>
+                    <span id="modelLabel"></span>
+                    <select id="modelFilter"></select>
+                </label>
+                <label>
+                    <input type="checkbox" id="sortByAvailability">
+                    <span id="sortLabel"></span>
+                </label>
+            </div>
+            <div id="boardRoot" class="monitor-loading">加载中...</div>
+        </div>
+    </div>
+
+    <div id="monitorTooltip" class="monitor-tooltip"></div>
+
+    <script>
+    (function() {
+        'use strict';
+
+        var API_BASE = (window.MONITOR_CONFIG && window.MONITOR_CONFIG.apiBase) || '';
+        var CONFIG = {};
+        var boardData = null;
+        var expandedPlatforms = {};
+        var tooltipEl = document.getElementById('monitorTooltip');
+
+        function pickVisibleCount() {
+            var targets = CONFIG.responsiveCells || [120, 72, 24];
+            var width = window.innerWidth || 1200;
+            if (width >= 1100) return targets[0];
+            if (width >= 720) return targets[1];
+            return targets[2];
+        }
+
+        function visibleHours(hours) {
+            var count = pickVisibleCount();
+            if (!hours || hours.length <= count) return hours || [];
+            return hours.slice(hours.length - count);
+        }
+
+        function displayModelName(name) {
+            if (!boardData || !boardData.model_display_names) return name;
+            return boardData.model_display_names[name] || name;
+        }
+
+        function formatRate(rate) {
+            return ((rate || 0) * 100).toFixed(1) + '%';
+        }
+
+        function formatTps(value) {
+            if (value === null || value === undefined) return '—';
+            return String(value);
+        }
+
+        function formatHourTooltip(hourMs, cell) {
+            var d = new Date(hourMs);
+            var datePart = (d.getMonth() + 1) + '/' + d.getDate();
+            var timePart = String(d.getHours()).padStart(2, '0') + ':00';
+            var parts = [datePart + ' ' + timePart];
+            if (cell.success_rate !== null && cell.success_rate !== undefined) {
+                parts.push('成功率 ' + (cell.success_rate * 100).toFixed(1) + '%');
+            }
+            if (cell.avg_tps !== null && cell.avg_tps !== undefined) {
+                parts.push(cell.avg_tps + ' ' + (CONFIG.toolbar.tpsUnit || 'tok/s'));
+            }
+            return parts.join(' · ');
+        }
+
+        function showTooltip(text, event) {
+            tooltipEl.textContent = text;
+            tooltipEl.style.display = 'block';
+            tooltipEl.style.left = (event.clientX + 12) + 'px';
+            tooltipEl.style.top = (event.clientY + 12) + 'px';
+        }
+
+        function hideTooltip() {
+            tooltipEl.style.display = 'none';
+        }
+
+        function renderTimelineBar(hours) {
+            var wrap = document.createElement('div');
+            wrap.className = 'monitor-bar-wrap';
+            var bar = document.createElement('div');
+            bar.className = 'monitor-bar';
+            visibleHours(hours).forEach(function(cell) {
+                var el = document.createElement('div');
+                el.className = 'timeline-cell timeline-cell--' + (cell.color || 'gray');
+                el.addEventListener('mouseenter', function(e) {
+                    showTooltip(formatHourTooltip(cell.hour_ms, cell), e);
+                });
+                el.addEventListener('mousemove', function(e) {
+                    showTooltip(formatHourTooltip(cell.hour_ms, cell), e);
+                });
+                el.addEventListener('mouseleave', hideTooltip);
+                bar.appendChild(el);
+            });
+            wrap.appendChild(bar);
+            return wrap;
+        }
+
+        function renderModelBlock(model, opts) {
+            opts = opts || {};
+            var block = document.createElement('div');
+            block.className = 'monitor-model-block';
+
+            var head = document.createElement('div');
+            head.className = 'monitor-head';
+            head.style.cursor = 'default';
+
+            var main = document.createElement('div');
+            main.className = 'monitor-head-main';
+            if (opts.compactPlatformName) {
+                var name = document.createElement('span');
+                name.className = 'monitor-name';
+                name.textContent = opts.compactPlatformName;
+                var dot = document.createElement('span');
+                dot.className = 'monitor-name-sub';
+                dot.textContent = ' · ' + displayModelName(model.standard_model_name);
+                main.appendChild(name);
+                main.appendChild(dot);
+            } else {
+                var modelName = document.createElement('span');
+                modelName.className = 'monitor-name';
+                modelName.textContent = displayModelName(model.standard_model_name);
+                main.appendChild(modelName);
+            }
+
+            var tps = document.createElement('span');
+            tps.className = 'monitor-meta';
+            tps.textContent = formatTps(model.avg_tps) + ' ' + (CONFIG.toolbar.tpsUnit || 'tok/s');
+            main.appendChild(tps);
+
+            var rate = document.createElement('span');
+            rate.className = 'monitor-rate';
+            rate.textContent = formatRate(model.availability_rate) + ' ' + (CONFIG.toolbar.availableLabel || '可用');
+
+            head.appendChild(main);
+            head.appendChild(rate);
+            block.appendChild(head);
+            block.appendChild(renderTimelineBar(model.hours));
+            return block;
+        }
+
+        function renderPlatformBlock(platform) {
+            var block = document.createElement('div');
+            block.className = 'monitor-block';
+
+            var head = document.createElement('div');
+            head.className = 'monitor-head';
+            head.addEventListener('click', function() {
+                expandedPlatforms[platform.platform_name] = !expandedPlatforms[platform.platform_name];
+                renderBoard();
+            });
+
+            var main = document.createElement('div');
+            main.className = 'monitor-head-main';
+            var name = document.createElement('span');
+            name.className = 'monitor-name';
+            name.textContent = platform.platform_display_name || platform.platform_name;
+            var meta = document.createElement('span');
+            meta.className = 'monitor-meta';
+            meta.textContent = (platform.models ? platform.models.length : 0) + ' ' + (CONFIG.toolbar.modelsLabel || '个模型');
+            var chevron = document.createElement('span');
+            chevron.className = 'monitor-chevron';
+            chevron.textContent = expandedPlatforms[platform.platform_name] ? '⌃' : '⌄';
+            main.appendChild(name);
+            main.appendChild(meta);
+            main.appendChild(chevron);
+
+            var rate = document.createElement('span');
+            rate.className = 'monitor-rate';
+            rate.textContent = formatRate(platform.availability_rate) + ' ' + (CONFIG.toolbar.availableLabel || '可用');
+
+            head.appendChild(main);
+            head.appendChild(rate);
+            block.appendChild(head);
+            block.appendChild(renderTimelineBar(platform.hours));
+
+            if (expandedPlatforms[platform.platform_name] && platform.models && platform.models.length) {
+                var modelsWrap = document.createElement('div');
+                modelsWrap.className = 'monitor-models';
+                platform.models.forEach(function(model) {
+                    modelsWrap.appendChild(renderModelBlock(model));
+                });
+                block.appendChild(modelsWrap);
+            }
+
+            return block;
+        }
+
+        function collectModelOptions(platforms) {
+            var set = {};
+            (platforms || []).forEach(function(platform) {
+                (platform.models || []).forEach(function(model) {
+                    set[model.standard_model_name] = true;
+                });
+            });
+            return Object.keys(set).sort();
+        }
+
+        function sortedPlatforms(platforms, sortByAvailability) {
+            var copy = (platforms || []).slice();
+            if (!sortByAvailability) return copy;
+            copy.sort(function(a, b) {
+                return (b.availability_rate || 0) - (a.availability_rate || 0);
+            });
+            return copy;
+        }
+
+        function renderBoard() {
+            var root = document.getElementById('boardRoot');
+            root.innerHTML = '';
+            root.className = 'monitor-list';
+
+            if (!boardData || !boardData.platforms || !boardData.platforms.length) {
+                root.className = 'monitor-empty';
+                root.textContent = CONFIG.emptyLabel || '暂无数据';
+                return;
+            }
+
+            var selectedModel = document.getElementById('modelFilter').value;
+            var sortByAvailability = document.getElementById('sortByAvailability').checked;
+
+            if (selectedModel) {
+                var rows = [];
+                sortedPlatforms(boardData.platforms, sortByAvailability).forEach(function(platform) {
+                    (platform.models || []).forEach(function(model) {
+                        if (model.standard_model_name !== selectedModel) return;
+                        rows.push({
+                            platform: platform,
+                            model: model
+                        });
+                    });
+                });
+                if (!rows.length) {
+                    root.className = 'monitor-empty';
+                    root.textContent = CONFIG.emptyLabel || '暂无数据';
+                    return;
+                }
+                if (sortByAvailability) {
+                    rows.sort(function(a, b) {
+                        return (b.model.availability_rate || 0) - (a.model.availability_rate || 0);
+                    });
+                }
+                rows.forEach(function(row) {
+                    var block = document.createElement('div');
+                    block.className = 'monitor-block';
+                    block.appendChild(renderModelBlock(row.model, {
+                        compactPlatformName: row.platform.platform_display_name || row.platform.platform_name
+                    }));
+                    root.appendChild(block);
+                });
+                return;
+            }
+
+            sortedPlatforms(boardData.platforms, sortByAvailability).forEach(function(platform) {
+                root.appendChild(renderPlatformBlock(platform));
+            });
+        }
+
+        function populateModelFilter(platforms) {
+            var select = document.getElementById('modelFilter');
+            var current = select.value || '';
+            select.innerHTML = '';
+            var allOpt = document.createElement('option');
+            allOpt.value = '';
+            allOpt.textContent = CONFIG.toolbar.allModels || '全部';
+            select.appendChild(allOpt);
+
+            collectModelOptions(platforms).forEach(function(name) {
+                var opt = document.createElement('option');
+                opt.value = name;
+                opt.textContent = displayModelName(name);
+                select.appendChild(opt);
+            });
+
+            if (current && collectModelOptions(platforms).indexOf(current) >= 0) {
+                select.value = current;
+            }
+        }
+
+        function updateLastCheckLine() {
+            var line = document.getElementById('lastCheckLine');
+            if (!boardData || !boardData.last_check_time_ms) {
+                line.textContent = '';
+                return;
+            }
+            var d = new Date(boardData.last_check_time_ms);
+            line.textContent = (CONFIG.toolbar.lastCheckPrefix || '最后检测') + '：' +
+                d.toLocaleString('zh-CN', { hour12: false });
+        }
+
+        function fetchBoard() {
+            var root = document.getElementById('boardRoot');
+            root.className = 'monitor-loading';
+            root.textContent = CONFIG.loadingLabel || '加载中...';
+
+            fetch(API_BASE + '/monitor/board?days=5')
+                .then(function(r) { return r.json(); })
+                .then(function(resp) {
+                    boardData = (resp && resp.data) || resp;
+                    populateModelFilter(boardData.platforms || []);
+                    updateLastCheckLine();
+                    renderBoard();
+                })
+                .catch(function() {
+                    root.className = 'monitor-empty';
+                    root.textContent = CONFIG.errorLabel || '数据加载失败，请稍后重试';
+                });
+        }
+
+        function loadPageConfig() {
+            return fetch('monitor-config.json')
+                .then(function(r) { return r.json(); })
+                .then(function(cfg) { CONFIG = cfg; })
+                .catch(function() { CONFIG = {}; });
+        }
+
+        function applyStaticTexts() {
+            document.getElementById('pageTitle').textContent = CONFIG.pageTitle || '平台可用性监控';
+            document.getElementById('headerSubtitle').textContent = (CONFIG.header && CONFIG.header.subtitle) || '';
+            document.getElementById('modelLabel').textContent = (CONFIG.toolbar && CONFIG.toolbar.modelLabel) || '模型';
+            document.getElementById('sortLabel').textContent = (CONFIG.toolbar && CONFIG.toolbar.sortByAvailability) || '按可用率排序';
+        }
+
+        document.getElementById('modelFilter').addEventListener('change', renderBoard);
+        document.getElementById('sortByAvailability').addEventListener('change', renderBoard);
+        window.addEventListener('resize', renderBoard);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderPageNav('pageNavMount', {
+                activeKey: 'monitor',
+                tabs: [
+                    { key: 'index', href: '../index.html', id: 'navIndexTab' },
+                    { key: 'plan-usage', href: '../plan-usage.html', id: 'navPlanUsageTab' },
+                    { key: 'coding-agents', href: '../coding-agents.html', id: 'navCodingAgentsTab' },
+                    { key: 'relays', href: '../relays.html', id: 'navRelaysTab' },
+                    { key: 'relay-detect', href: '../relay-detect.html', id: 'navDetectTab' },
+                    { key: 'monitor', href: 'index.html', text: '可用性监控' }
+                ],
+                settings: {
+                    panelTitle: '显示设置',
+                    ultraWideLabel: '超宽屏模式'
+                }
+            });
+
+            loadPageConfig().then(function() {
+                applyStaticTexts();
+                fetchBoard();
+            });
+        });
+    })();
+    </script>
+</body>
+</html>
