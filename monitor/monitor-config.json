@@ -9,8 +9,7 @@
     "sortByAvailability": "按可用率排序",
     "modelsLabel": "个模型",
     "availableLabel": "可用",
-    "tpsUnit": "tok/s",
-    "lastCheckPrefix": "最后检测"
+    "tpsUnit": "tok/s"
   },
   "responsiveCells": [120, 72, 24],
   "loadingLabel": "加载中...",

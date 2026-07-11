@@ -147,7 +147,6 @@
                 <h1 id="pageTitle"></h1>
             </div>
             <div id="headerSubtitle" class="subtitle"></div>
-            <div id="lastCheckLine" class="subtitle"></div>
         </div>
 
         <div class="surface-panel surface-panel--padded">
@@ -432,17 +431,6 @@
             }
         }
 
-        function updateLastCheckLine() {
-            var line = document.getElementById('lastCheckLine');
-            if (!boardData || !boardData.last_check_time_ms) {
-                line.textContent = '';
-                return;
-            }
-            var d = new Date(boardData.last_check_time_ms);
-            line.textContent = (CONFIG.toolbar.lastCheckPrefix || '最后检测') + '：' +
-                d.toLocaleString('zh-CN', { hour12: false });
-        }
-
         function fetchBoard() {
             var root = document.getElementById('boardRoot');
             root.className = 'monitor-loading';
@@ -453,7 +441,6 @@
                 .then(function(resp) {
                     boardData = (resp && resp.data) || resp;
                     populateModelFilter(boardData.platforms || []);
-                    updateLastCheckLine();
                     renderBoard();
                 })
                 .catch(function() {
