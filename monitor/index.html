@@ -13,132 +13,198 @@
         .monitor-toolbar {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem 1.5rem;
+            gap: 0.75rem 1.25rem;
             align-items: center;
-            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            margin-bottom: 0.25rem;
+            border-bottom: 1px solid var(--border-light);
         }
         .monitor-toolbar label {
             display: inline-flex;
             align-items: center;
-            gap: 0.35rem;
-            font-size: 0.9rem;
-            color: var(--text-primary);
+            gap: 0.4rem;
+            font-size: 0.84rem;
+            color: var(--text-secondary);
         }
         .monitor-toolbar select {
-            margin-left: 0.35rem;
-            padding: 0.25rem 0.5rem;
+            padding: 0.35rem 0.65rem;
             border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background: var(--surface-color);
+            border-radius: 8px;
+            background: #fff;
             color: var(--text-primary);
+            font-size: 0.84rem;
+        }
+        .monitor-toolbar input[type="checkbox"] {
+            accent-color: var(--accent-primary);
         }
         .monitor-list {
             display: flex;
             flex-direction: column;
-            gap: 0;
         }
-        .monitor-block {
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 0;
-        }
-        .monitor-block:last-child {
-            border-bottom: none;
-        }
-        .monitor-head {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
-            gap: 0.75rem 1rem;
-            align-items: center;
-            cursor: pointer;
-        }
-        .monitor-head-main {
+        .monitor-section-head {
             display: flex;
-            flex-wrap: wrap;
-            align-items: baseline;
-            gap: 0.35rem 0.75rem;
-            min-width: 0;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.35rem 0 0.85rem;
         }
-        .monitor-name {
+        .monitor-section-title {
+            font-size: 0.92rem;
             font-weight: 600;
             color: var(--text-primary);
         }
+        .monitor-section-count {
+            font-size: 0.82rem;
+            color: var(--text-tertiary);
+        }
+        .monitor-row {
+            padding: 0.95rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .monitor-row:last-child {
+            border-bottom: none;
+        }
+        .monitor-row--nested {
+            padding: 0.75rem 0;
+        }
+        .monitor-platform {
+            border-bottom: 1px solid var(--border-light);
+        }
+        .monitor-platform > .monitor-row {
+            border-bottom: none;
+        }
+        .monitor-models .monitor-row--nested {
+            border-bottom: none;
+            border-top: 1px solid var(--border-light);
+        }
+        .monitor-models .monitor-row--nested:first-child {
+            border-top: none;
+        }
+        .monitor-row-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.6rem;
+        }
+        .monitor-row-top--clickable {
+            cursor: pointer;
+        }
+        .monitor-row-title {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            min-width: 0;
+            flex: 1;
+            flex-wrap: wrap;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .status-dot--green { background: #2f9e76; }
+        .status-dot--yellow { background: #d4a017; }
+        .status-dot--red { background: #dc6b5a; }
+        .status-dot--gray { background: #c8cdd6; }
+        .monitor-name {
+            font-weight: 500;
+            font-size: 0.92rem;
+            color: var(--text-primary);
+        }
         .monitor-name-sub {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            font-weight: 400;
         }
         .monitor-meta {
-            color: var(--text-muted);
-            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            font-size: 0.8rem;
         }
         .monitor-rate {
-            font-size: 0.9rem;
-            color: var(--text-primary);
+            font-size: 0.82rem;
+            color: var(--text-tertiary);
             white-space: nowrap;
         }
         .monitor-chevron {
-            color: var(--text-muted);
-            font-size: 0.85rem;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 5px solid var(--text-tertiary);
+            margin-left: 0.15rem;
+            transition: transform 0.15s ease;
         }
-        .monitor-bar-wrap {
-            grid-column: 1 / -1;
-            overflow-x: auto;
-            padding-top: 0.5rem;
+        .monitor-chevron--open {
+            transform: rotate(180deg);
         }
         .monitor-bar {
             display: flex;
-            gap: 1px;
-            min-width: fit-content;
+            gap: 2px;
+            width: 100%;
+            height: 34px;
         }
         .timeline-cell {
-            width: 3px;
-            height: 32px;
-            border-radius: 1px;
-            flex: 0 0 auto;
+            flex: 1 1 0;
+            min-width: 2px;
+            height: 100%;
+            border-radius: 2px;
         }
-        .timeline-cell--green { background: #22c55e; }
-        .timeline-cell--yellow { background: #eab308; }
-        .timeline-cell--red { background: #ef4444; }
-        .timeline-cell--gray { background: #e5e7eb; }
+        .timeline-cell--green { background: #2f9e76; }
+        .timeline-cell--yellow { background: #d4a017; }
+        .timeline-cell--red { background: #dc6b5a; }
+        .timeline-cell--gray { background: #e8ecf1; }
         .monitor-models {
-            margin-top: 0.75rem;
-            padding-left: 1rem;
-            border-left: 2px solid var(--border-color);
-        }
-        .monitor-model-block {
-            padding: 0.75rem 0;
-        }
-        .monitor-model-block + .monitor-model-block {
-            border-top: 1px solid var(--border-color);
+            margin-top: 0.15rem;
+            padding-left: 1.1rem;
         }
         .monitor-loading,
         .monitor-empty {
             text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
+            padding: 2.5rem 1rem;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
         }
         .monitor-tooltip {
             position: fixed;
             z-index: 200;
             pointer-events: none;
-            background: rgba(17, 24, 39, 0.92);
+            background: rgba(23, 32, 51, 0.94);
             color: #fff;
             font-size: 12px;
-            padding: 6px 8px;
-            border-radius: 6px;
+            line-height: 1.4;
+            padding: 7px 10px;
+            border-radius: 8px;
             white-space: nowrap;
             display: none;
+            box-shadow: var(--shadow-md);
         }
         @media (max-width: 640px) {
-            .monitor-head {
-                grid-template-columns: 1fr;
+            .monitor-row-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.35rem;
             }
             .monitor-rate {
-                justify-self: start;
+                padding-left: 1.25rem;
             }
+        }
+        .monitor-page .header {
+            padding: 1.15rem 1.35rem;
+            margin-bottom: 1rem;
+        }
+        .monitor-page .header h1 {
+            font-size: 1.55rem;
+        }
+        .monitor-page .header .subtitle {
+            font-size: 0.86rem;
+        }
+        .monitor-page .surface-panel--padded {
+            padding: 1.15rem 1.35rem 1.35rem;
         }
     </style>
 </head>
-<body>
+<body class="monitor-page">
     <div class="container">
         <div id="pageNavMount"></div>
 
@@ -218,6 +284,16 @@
             return parts.join(' · ');
         }
 
+        function formatRateDisplay(rate) {
+            return formatRate(rate) + ' ' + (CONFIG.toolbar.availableLabel || '可用');
+        }
+
+        function statusDotColor(hours) {
+            var cells = visibleHours(hours);
+            if (!cells.length) return 'gray';
+            return cells[cells.length - 1].color || 'gray';
+        }
+
         function showTooltip(text, event) {
             tooltipEl.textContent = text;
             tooltipEl.style.display = 'block';
@@ -230,8 +306,6 @@
         }
 
         function renderTimelineBar(hours) {
-            var wrap = document.createElement('div');
-            wrap.className = 'monitor-bar-wrap';
             var bar = document.createElement('div');
             bar.className = 'monitor-bar';
             visibleHours(hours).forEach(function(cell) {
@@ -246,87 +320,95 @@
                 el.addEventListener('mouseleave', hideTooltip);
                 bar.appendChild(el);
             });
-            wrap.appendChild(bar);
-            return wrap;
+            return bar;
+        }
+
+        function renderStatusRow(options) {
+            options = options || {};
+            var row = document.createElement('div');
+            row.className = 'monitor-row' + (options.nested ? ' monitor-row--nested' : '');
+
+            var top = document.createElement('div');
+            top.className = 'monitor-row-top' + (options.clickable ? ' monitor-row-top--clickable' : '');
+            if (options.onClick) {
+                top.addEventListener('click', options.onClick);
+            }
+
+            var title = document.createElement('div');
+            title.className = 'monitor-row-title';
+
+            var dot = document.createElement('span');
+            dot.className = 'status-dot status-dot--' + statusDotColor(options.hours);
+            title.appendChild(dot);
+
+            if (options.compactPlatformName) {
+                var platformName = document.createElement('span');
+                platformName.className = 'monitor-name';
+                platformName.textContent = options.compactPlatformName;
+                var modelPart = document.createElement('span');
+                modelPart.className = 'monitor-name-sub';
+                modelPart.textContent = ' · ' + options.title;
+                title.appendChild(platformName);
+                title.appendChild(modelPart);
+            } else {
+                var nameEl = document.createElement('span');
+                nameEl.className = 'monitor-name';
+                nameEl.textContent = options.title;
+                title.appendChild(nameEl);
+            }
+
+            if (options.meta) {
+                var meta = document.createElement('span');
+                meta.className = 'monitor-meta';
+                meta.textContent = options.meta;
+                title.appendChild(meta);
+            }
+
+            if (options.expanded !== undefined) {
+                var chevron = document.createElement('span');
+                chevron.className = 'monitor-chevron' + (options.expanded ? ' monitor-chevron--open' : '');
+                title.appendChild(chevron);
+            }
+
+            var rate = document.createElement('span');
+            rate.className = 'monitor-rate';
+            rate.textContent = formatRateDisplay(options.rate);
+
+            top.appendChild(title);
+            top.appendChild(rate);
+            row.appendChild(top);
+            row.appendChild(renderTimelineBar(options.hours));
+            return row;
         }
 
         function renderModelBlock(model, opts) {
             opts = opts || {};
-            var block = document.createElement('div');
-            block.className = 'monitor-model-block';
-
-            var head = document.createElement('div');
-            head.className = 'monitor-head';
-            head.style.cursor = 'default';
-
-            var main = document.createElement('div');
-            main.className = 'monitor-head-main';
-            if (opts.compactPlatformName) {
-                var name = document.createElement('span');
-                name.className = 'monitor-name';
-                name.textContent = opts.compactPlatformName;
-                var dot = document.createElement('span');
-                dot.className = 'monitor-name-sub';
-                dot.textContent = ' · ' + displayModelName(model.standard_model_name);
-                main.appendChild(name);
-                main.appendChild(dot);
-            } else {
-                var modelName = document.createElement('span');
-                modelName.className = 'monitor-name';
-                modelName.textContent = displayModelName(model.standard_model_name);
-                main.appendChild(modelName);
-            }
-
-            var tps = document.createElement('span');
-            tps.className = 'monitor-meta';
-            tps.textContent = formatTps(model.avg_tps) + ' ' + (CONFIG.toolbar.tpsUnit || 'tok/s');
-            main.appendChild(tps);
-
-            var rate = document.createElement('span');
-            rate.className = 'monitor-rate';
-            rate.textContent = formatRate(model.availability_rate) + ' ' + (CONFIG.toolbar.availableLabel || '可用');
-
-            head.appendChild(main);
-            head.appendChild(rate);
-            block.appendChild(head);
-            block.appendChild(renderTimelineBar(model.hours));
-            return block;
+            return renderStatusRow({
+                nested: true,
+                compactPlatformName: opts.compactPlatformName || null,
+                title: displayModelName(model.standard_model_name),
+                meta: formatTps(model.avg_tps) + ' ' + (CONFIG.toolbar.tpsUnit || 'tok/s'),
+                rate: model.availability_rate,
+                hours: model.hours
+            });
         }
 
         function renderPlatformBlock(platform) {
             var block = document.createElement('div');
-            block.className = 'monitor-block';
+            block.className = 'monitor-platform';
 
-            var head = document.createElement('div');
-            head.className = 'monitor-head';
-            head.addEventListener('click', function() {
-                expandedPlatforms[platform.platform_name] = !expandedPlatforms[platform.platform_name];
-                renderBoard();
-            });
-
-            var main = document.createElement('div');
-            main.className = 'monitor-head-main';
-            var name = document.createElement('span');
-            name.className = 'monitor-name';
-            name.textContent = platform.platform_display_name || platform.platform_name;
-            var meta = document.createElement('span');
-            meta.className = 'monitor-meta';
-            meta.textContent = (platform.models ? platform.models.length : 0) + ' ' + (CONFIG.toolbar.modelsLabel || '个模型');
-            var chevron = document.createElement('span');
-            chevron.className = 'monitor-chevron';
-            chevron.textContent = expandedPlatforms[platform.platform_name] ? '⌃' : '⌄';
-            main.appendChild(name);
-            main.appendChild(meta);
-            main.appendChild(chevron);
-
-            var rate = document.createElement('span');
-            rate.className = 'monitor-rate';
-            rate.textContent = formatRate(platform.availability_rate) + ' ' + (CONFIG.toolbar.availableLabel || '可用');
-
-            head.appendChild(main);
-            head.appendChild(rate);
-            block.appendChild(head);
-            block.appendChild(renderTimelineBar(platform.hours));
+            block.appendChild(renderStatusRow({
+                title: platform.platform_display_name || platform.platform_name,
+                meta: (platform.models ? platform.models.length : 0) + ' ' + (CONFIG.toolbar.modelsLabel || '个模型'),
+                rate: platform.availability_rate,
+                hours: platform.hours,
+                clickable: true,
+                expanded: !!expandedPlatforms[platform.platform_name],
+                onClick: function() {
+                    expandedPlatforms[platform.platform_name] = !expandedPlatforms[platform.platform_name];
+                    renderBoard();
+                }
+            }));
 
             if (expandedPlatforms[platform.platform_name] && platform.models && platform.models.length) {
                 var modelsWrap = document.createElement('div');
@@ -338,6 +420,20 @@
             }
 
             return block;
+        }
+
+        function renderSectionHead(label, count) {
+            var head = document.createElement('div');
+            head.className = 'monitor-section-head';
+            var title = document.createElement('span');
+            title.className = 'monitor-section-title';
+            title.textContent = label;
+            var meta = document.createElement('span');
+            meta.className = 'monitor-section-count';
+            meta.textContent = count;
+            head.appendChild(title);
+            head.appendChild(meta);
+            return head;
         }
 
         function collectModelOptions(platforms) {
@@ -394,18 +490,21 @@
                         return (b.model.availability_rate || 0) - (a.model.availability_rate || 0);
                     });
                 }
+                root.appendChild(renderSectionHead(
+                    displayModelName(selectedModel),
+                    rows.length + ' 个平台'
+                ));
                 rows.forEach(function(row) {
-                    var block = document.createElement('div');
-                    block.className = 'monitor-block';
-                    block.appendChild(renderModelBlock(row.model, {
+                    root.appendChild(renderModelBlock(row.model, {
                         compactPlatformName: row.platform.platform_display_name || row.platform.platform_name
                     }));
-                    root.appendChild(block);
                 });
                 return;
             }
 
-            sortedPlatforms(boardData.platforms, sortByAvailability).forEach(function(platform) {
+            var platforms = sortedPlatforms(boardData.platforms, sortByAvailability);
+            root.appendChild(renderSectionHead('平台', platforms.length + ' 个'));
+            platforms.forEach(function(platform) {
                 root.appendChild(renderPlatformBlock(platform));
             });
         }
