@@ -13,29 +13,135 @@
         .monitor-toolbar {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem 1.25rem;
+            gap: 0.5rem;
             align-items: center;
-            padding-bottom: 1rem;
-            margin-bottom: 0.25rem;
-            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 0.85rem;
+            margin-bottom: 0.15rem;
         }
-        .monitor-toolbar label {
+        .monitor-control {
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            font-size: 0.84rem;
+            gap: 0.35rem;
+            padding: 0.38rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(23, 32, 51, 0.04);
+            font-size: 0.82rem;
+            color: var(--text-tertiary);
+        }
+        .monitor-control-label {
+            white-space: nowrap;
+        }
+        .monitor-dropdown {
+            position: relative;
+        }
+        .monitor-dropdown-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            border: none;
+            background: transparent;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.82rem;
+            padding: 0;
+            cursor: pointer;
+            font-family: inherit;
+            line-height: 1.2;
+        }
+        .monitor-dropdown-trigger:hover {
+            color: var(--accent-primary);
+        }
+        .monitor-dropdown-value {
+            max-width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .monitor-dropdown-chevron {
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 5px solid var(--text-tertiary);
+            transition: transform 0.15s ease;
+            flex-shrink: 0;
+        }
+        .monitor-dropdown.is-open .monitor-dropdown-chevron {
+            transform: rotate(180deg);
+        }
+        .monitor-control:has(.monitor-dropdown.is-open) {
+            background: #fff;
+            box-shadow: 0 4px 18px rgba(23, 32, 51, 0.08);
+        }
+        .monitor-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: -0.35rem;
+            z-index: 60;
+            min-width: 200px;
+            max-width: 300px;
+            max-height: 280px;
+            overflow-y: auto;
+            padding: 0.35rem;
+            background: #fff;
+            border: 1px solid rgba(23, 32, 51, 0.08);
+            border-radius: 12px;
+            box-shadow: 0 12px 32px rgba(23, 32, 51, 0.12), 0 2px 8px rgba(23, 32, 51, 0.06);
+            display: none;
+        }
+        .monitor-dropdown.is-open .monitor-dropdown-menu {
+            display: block;
+        }
+        .monitor-dropdown-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            border: none;
+            background: transparent;
+            padding: 0.52rem 0.7rem;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-family: inherit;
+            line-height: 1.35;
+            transition: background 0.12s ease, color 0.12s ease;
+        }
+        .monitor-dropdown-option:hover {
+            background: rgba(23, 32, 51, 0.04);
+        }
+        .monitor-dropdown-option.is-selected {
+            background: rgba(47, 158, 118, 0.1);
+            color: #1f7a5c;
+            font-weight: 500;
+        }
+        .monitor-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            padding: 0.38rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(23, 32, 51, 0.04);
+            border: 1px solid transparent;
+            cursor: pointer;
+            user-select: none;
+            font-size: 0.82rem;
+            color: var(--text-tertiary);
+            transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+        }
+        .monitor-toggle:hover {
+            background: rgba(23, 32, 51, 0.06);
             color: var(--text-secondary);
         }
-        .monitor-toolbar select {
-            padding: 0.35rem 0.65rem;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            background: #fff;
-            color: var(--text-primary);
-            font-size: 0.84rem;
+        .monitor-toggle.is-active {
+            background: rgba(47, 158, 118, 0.1);
+            color: #1f7a5c;
+            border-color: rgba(47, 158, 118, 0.18);
         }
-        .monitor-toolbar input[type="checkbox"] {
-            accent-color: var(--accent-primary);
+        .monitor-toggle input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
         }
         .monitor-list {
             display: flex;
@@ -149,6 +255,12 @@
             min-width: 2px;
             height: 100%;
             border-radius: 2px;
+            transition: transform 0.12s ease, filter 0.12s ease;
+        }
+        .timeline-cell:hover {
+            transform: scaleY(1.06);
+            filter: brightness(0.96);
+            z-index: 1;
         }
         .timeline-cell--green { background: #2f9e76; }
         .timeline-cell--yellow { background: #d4a017; }
@@ -169,15 +281,52 @@
             position: fixed;
             z-index: 200;
             pointer-events: none;
-            background: rgba(23, 32, 51, 0.94);
-            color: #fff;
-            font-size: 12px;
-            line-height: 1.4;
-            padding: 7px 10px;
-            border-radius: 8px;
-            white-space: nowrap;
+            background: #fff;
+            color: var(--text-primary);
+            min-width: 168px;
+            max-width: 240px;
+            padding: 11px 13px;
+            border-radius: 10px;
+            border: 1px solid rgba(23, 32, 51, 0.07);
+            box-shadow: 0 10px 28px rgba(23, 32, 51, 0.12), 0 2px 8px rgba(23, 32, 51, 0.05);
             display: none;
-            box-shadow: var(--shadow-md);
+        }
+        .monitor-tooltip-date {
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            margin-bottom: 0.4rem;
+            line-height: 1.35;
+        }
+        .monitor-tooltip-status {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.86rem;
+            color: var(--text-secondary);
+            line-height: 1.35;
+        }
+        .monitor-tooltip-icon {
+            width: 17px;
+            height: 17px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        .monitor-tooltip-icon--green { background: #2f9e76; }
+        .monitor-tooltip-icon--yellow { background: #d4a017; }
+        .monitor-tooltip-icon--red { background: #dc6b5a; }
+        .monitor-tooltip-icon--gray { background: #b8bec8; }
+        .monitor-tooltip-detail {
+            margin-top: 0.35rem;
+            font-size: 0.76rem;
+            color: var(--text-tertiary);
+            line-height: 1.35;
         }
         @media (max-width: 640px) {
             .monitor-row-top {
@@ -212,16 +361,21 @@
             <div class="header-top">
                 <h1 id="pageTitle"></h1>
             </div>
-            <div id="headerSubtitle" class="subtitle"></div>
         </div>
 
         <div class="surface-panel surface-panel--padded">
             <div class="monitor-toolbar">
-                <label>
-                    <span id="modelLabel"></span>
-                    <select id="modelFilter"></select>
-                </label>
-                <label>
+                <div class="monitor-control">
+                    <span class="monitor-control-label" id="modelLabel"></span>
+                    <div class="monitor-dropdown" id="modelDropdown">
+                        <button type="button" class="monitor-dropdown-trigger" id="modelFilterTrigger" aria-haspopup="listbox" aria-expanded="false">
+                            <span class="monitor-dropdown-value" id="modelFilterLabel"></span>
+                            <span class="monitor-dropdown-chevron"></span>
+                        </button>
+                        <div class="monitor-dropdown-menu" id="modelFilterMenu" role="listbox"></div>
+                    </div>
+                </div>
+                <label class="monitor-toggle" id="sortToggle">
                     <input type="checkbox" id="sortByAvailability">
                     <span id="sortLabel"></span>
                 </label>
@@ -240,6 +394,7 @@
         var CONFIG = {};
         var boardData = null;
         var expandedPlatforms = {};
+        var selectedModelValue = '';
         var tooltipEl = document.getElementById('monitorTooltip');
 
         function pickVisibleCount() {
@@ -270,11 +425,33 @@
             return String(value);
         }
 
-        function formatHourTooltip(hourMs, cell) {
+        function formatTooltipDate(hourMs) {
             var d = new Date(hourMs);
-            var datePart = (d.getMonth() + 1) + '/' + d.getDate();
-            var timePart = String(d.getHours()).padStart(2, '0') + ':00';
-            var parts = [datePart + ' ' + timePart];
+            var datePart = d.toLocaleDateString('zh-CN', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                weekday: 'short'
+            });
+            return datePart + ' ' + String(d.getHours()).padStart(2, '0') + ':00';
+        }
+
+        function cellStatusInfo(cell) {
+            var color = cell.color || 'gray';
+            if (color === 'gray') {
+                return { color: 'gray', text: '无数据', icon: '—' };
+            }
+            if (color === 'green') {
+                return { color: 'green', text: '运行正常', icon: '✓' };
+            }
+            if (color === 'yellow') {
+                return { color: 'yellow', text: '部分可用', icon: '!' };
+            }
+            return { color: 'red', text: '出现故障', icon: '✕' };
+        }
+
+        function buildTooltipDetail(cell) {
+            var parts = [];
             if (cell.success_rate !== null && cell.success_rate !== undefined) {
                 parts.push('成功率 ' + (cell.success_rate * 100).toFixed(1) + '%');
             }
@@ -282,6 +459,61 @@
                 parts.push(cell.avg_tps + ' ' + (CONFIG.toolbar.tpsUnit || 'tok/s'));
             }
             return parts.join(' · ');
+        }
+
+        function showTooltip(hourMs, cell, targetEl) {
+            var status = cellStatusInfo(cell);
+            var detail = buildTooltipDetail(cell);
+
+            tooltipEl.innerHTML =
+                '<div class="monitor-tooltip-date">' + formatTooltipDate(hourMs) + '</div>' +
+                '<div class="monitor-tooltip-status">' +
+                    '<span class="monitor-tooltip-icon monitor-tooltip-icon--' + status.color + '">' + status.icon + '</span>' +
+                    '<span>' + status.text + '</span>' +
+                '</div>' +
+                (detail ? '<div class="monitor-tooltip-detail">' + detail + '</div>' : '');
+
+            tooltipEl.style.display = 'block';
+
+            var rect = targetEl.getBoundingClientRect();
+            var tipWidth = tooltipEl.offsetWidth;
+            var tipHeight = tooltipEl.offsetHeight;
+            var left = rect.left + rect.width / 2 - tipWidth / 2;
+            var top = rect.top - tipHeight - 10;
+
+            left = Math.max(8, Math.min(left, window.innerWidth - tipWidth - 8));
+            top = Math.max(8, top);
+
+            tooltipEl.style.left = left + 'px';
+            tooltipEl.style.top = top + 'px';
+        }
+
+        function hideTooltip() {
+            tooltipEl.style.display = 'none';
+            tooltipEl.innerHTML = '';
+        }
+
+        function syncSortToggle() {
+            var toggle = document.getElementById('sortToggle');
+            var checked = document.getElementById('sortByAvailability').checked;
+            if (toggle) {
+                toggle.classList.toggle('is-active', checked);
+            }
+        }
+
+        function renderTimelineBar(hours) {
+            var bar = document.createElement('div');
+            bar.className = 'monitor-bar';
+            visibleHours(hours).forEach(function(cell) {
+                var el = document.createElement('div');
+                el.className = 'timeline-cell timeline-cell--' + (cell.color || 'gray');
+                el.addEventListener('mouseenter', function() {
+                    showTooltip(cell.hour_ms, cell, el);
+                });
+                el.addEventListener('mouseleave', hideTooltip);
+                bar.appendChild(el);
+            });
+            return bar;
         }
 
         function formatRateDisplay(rate) {
@@ -292,35 +524,6 @@
             var cells = visibleHours(hours);
             if (!cells.length) return 'gray';
             return cells[cells.length - 1].color || 'gray';
-        }
-
-        function showTooltip(text, event) {
-            tooltipEl.textContent = text;
-            tooltipEl.style.display = 'block';
-            tooltipEl.style.left = (event.clientX + 12) + 'px';
-            tooltipEl.style.top = (event.clientY + 12) + 'px';
-        }
-
-        function hideTooltip() {
-            tooltipEl.style.display = 'none';
-        }
-
-        function renderTimelineBar(hours) {
-            var bar = document.createElement('div');
-            bar.className = 'monitor-bar';
-            visibleHours(hours).forEach(function(cell) {
-                var el = document.createElement('div');
-                el.className = 'timeline-cell timeline-cell--' + (cell.color || 'gray');
-                el.addEventListener('mouseenter', function(e) {
-                    showTooltip(formatHourTooltip(cell.hour_ms, cell), e);
-                });
-                el.addEventListener('mousemove', function(e) {
-                    showTooltip(formatHourTooltip(cell.hour_ms, cell), e);
-                });
-                el.addEventListener('mouseleave', hideTooltip);
-                bar.appendChild(el);
-            });
-            return bar;
         }
 
         function renderStatusRow(options) {
@@ -466,7 +669,7 @@
                 return;
             }
 
-            var selectedModel = document.getElementById('modelFilter').value;
+            var selectedModel = selectedModelValue;
             var sortByAvailability = document.getElementById('sortByAvailability').checked;
 
             if (selectedModel) {
@@ -509,25 +712,99 @@
             });
         }
 
-        function populateModelFilter(platforms) {
-            var select = document.getElementById('modelFilter');
-            var current = select.value || '';
-            select.innerHTML = '';
-            var allOpt = document.createElement('option');
-            allOpt.value = '';
-            allOpt.textContent = CONFIG.toolbar.allModels || '全部';
-            select.appendChild(allOpt);
+        function closeModelDropdown() {
+            var dropdown = document.getElementById('modelDropdown');
+            var trigger = document.getElementById('modelFilterTrigger');
+            dropdown.classList.remove('is-open');
+            trigger.setAttribute('aria-expanded', 'false');
+        }
 
-            collectModelOptions(platforms).forEach(function(name) {
-                var opt = document.createElement('option');
-                opt.value = name;
-                opt.textContent = displayModelName(name);
-                select.appendChild(opt);
+        function openModelDropdown() {
+            var dropdown = document.getElementById('modelDropdown');
+            var trigger = document.getElementById('modelFilterTrigger');
+            dropdown.classList.add('is-open');
+            trigger.setAttribute('aria-expanded', 'true');
+        }
+
+        function toggleModelDropdown() {
+            var dropdown = document.getElementById('modelDropdown');
+            if (dropdown.classList.contains('is-open')) {
+                closeModelDropdown();
+            } else {
+                openModelDropdown();
+            }
+        }
+
+        function updateModelFilterLabel() {
+            var labelEl = document.getElementById('modelFilterLabel');
+            if (!selectedModelValue) {
+                labelEl.textContent = (CONFIG.toolbar && CONFIG.toolbar.allModels) || '全部';
+                return;
+            }
+            labelEl.textContent = displayModelName(selectedModelValue);
+        }
+
+        function setModelFilter(value) {
+            selectedModelValue = value || '';
+            updateModelFilterLabel();
+
+            var menu = document.getElementById('modelFilterMenu');
+            Array.prototype.forEach.call(menu.querySelectorAll('.monitor-dropdown-option'), function(btn) {
+                btn.classList.toggle('is-selected', btn.getAttribute('data-value') === selectedModelValue);
             });
 
-            if (current && collectModelOptions(platforms).indexOf(current) >= 0) {
-                select.value = current;
+            closeModelDropdown();
+            renderBoard();
+        }
+
+        function populateModelFilter(platforms) {
+            var menu = document.getElementById('modelFilterMenu');
+            var current = selectedModelValue || '';
+            menu.innerHTML = '';
+
+            function addOption(value, label) {
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'monitor-dropdown-option' + (value === current ? ' is-selected' : '');
+                btn.setAttribute('data-value', value);
+                btn.setAttribute('role', 'option');
+                btn.textContent = label;
+                btn.addEventListener('click', function() {
+                    setModelFilter(value);
+                });
+                menu.appendChild(btn);
             }
+
+            addOption('', (CONFIG.toolbar && CONFIG.toolbar.allModels) || '全部');
+            collectModelOptions(platforms).forEach(function(name) {
+                addOption(name, displayModelName(name));
+            });
+
+            if (current && collectModelOptions(platforms).indexOf(current) < 0) {
+                selectedModelValue = '';
+            }
+            updateModelFilterLabel();
+        }
+
+        function initModelDropdown() {
+            document.getElementById('modelFilterTrigger').addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleModelDropdown();
+            });
+
+            document.addEventListener('click', function() {
+                closeModelDropdown();
+            });
+
+            document.getElementById('modelDropdown').addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModelDropdown();
+                }
+            });
         }
 
         function fetchBoard() {
@@ -557,14 +834,17 @@
 
         function applyStaticTexts() {
             document.getElementById('pageTitle').textContent = CONFIG.pageTitle || '平台可用性监控';
-            document.getElementById('headerSubtitle').textContent = (CONFIG.header && CONFIG.header.subtitle) || '';
             document.getElementById('modelLabel').textContent = (CONFIG.toolbar && CONFIG.toolbar.modelLabel) || '模型';
             document.getElementById('sortLabel').textContent = (CONFIG.toolbar && CONFIG.toolbar.sortByAvailability) || '按可用率排序';
+            syncSortToggle();
         }
 
-        document.getElementById('modelFilter').addEventListener('change', renderBoard);
-        document.getElementById('sortByAvailability').addEventListener('change', renderBoard);
+        document.getElementById('sortByAvailability').addEventListener('change', function() {
+            syncSortToggle();
+            renderBoard();
+        });
         window.addEventListener('resize', renderBoard);
+        initModelDropdown();
 
         document.addEventListener('DOMContentLoaded', function() {
             renderPageNav('pageNavMount', {

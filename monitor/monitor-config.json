@@ -1,8 +1,5 @@
 {
   "pageTitle": "平台可用性监控",
-  "header": {
-    "subtitle": "每小时检测，横条每格代表 1 小时，仅供参考"
-  },
   "toolbar": {
     "modelLabel": "模型",
     "allModels": "全部",
