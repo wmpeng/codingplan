@@ -398,13 +398,13 @@
         var tooltipEl = document.getElementById('monitorTooltip');
 
         function pickVisibleCount() {
-            var targets = CONFIG.responsiveCells || [120, 96, 72, 48, 24];
-            var width = window.innerWidth || 1200;
-            if (width >= 1200) return targets[0];
-            if (width >= 960) return targets[1];
-            if (width >= 768) return targets[2];
-            if (width >= 540) return targets[3];
-            return targets[4] || targets[targets.length - 1];
+            var targets = CONFIG.responsiveCells || [168, 144, 120, 96, 72, 48, 24];
+            var breakpoints = [1400, 1280, 1200, 960, 768, 540];
+            var width = window.innerWidth || 1400;
+            for (var i = 0; i < breakpoints.length && i < targets.length - 1; i++) {
+                if (width >= breakpoints[i]) return targets[i];
+            }
+            return targets[targets.length - 1];
         }
 
         function visibleHours(hours) {
@@ -814,7 +814,7 @@
             root.className = 'monitor-loading';
             root.textContent = CONFIG.loadingLabel || '加载中...';
 
-            fetch(API_BASE + '/monitor/board?days=5')
+            fetch(API_BASE + '/monitor/board?days=7')
                 .then(function(r) { return r.json(); })
                 .then(function(resp) {
                     boardData = (resp && resp.data) || resp;
