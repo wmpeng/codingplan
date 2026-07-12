@@ -591,7 +591,7 @@
             return renderStatusRow({
                 nested: true,
                 compactPlatformName: opts.compactPlatformName || null,
-                title: displayModelName(model.standard_model_name),
+                title: displayModelName(model.model_slug),
                 meta: formatTps(model.avg_tps) + ' ' + (CONFIG.toolbar.tpsUnit || 'tok/s'),
                 rate: model.availability_rate,
                 hours: model.hours
@@ -603,19 +603,19 @@
             block.className = 'monitor-platform';
 
             block.appendChild(renderStatusRow({
-                title: platform.platform_display_name || platform.platform_name,
+                title: platform.platform_display_name || platform.platform_slug,
                 meta: (platform.models ? platform.models.length : 0) + ' ' + (CONFIG.toolbar.modelsLabel || '个模型'),
                 rate: platform.availability_rate,
                 hours: platform.hours,
                 clickable: true,
-                expanded: !!expandedPlatforms[platform.platform_name],
+                expanded: !!expandedPlatforms[platform.platform_slug],
                 onClick: function() {
-                    expandedPlatforms[platform.platform_name] = !expandedPlatforms[platform.platform_name];
+                    expandedPlatforms[platform.platform_slug] = !expandedPlatforms[platform.platform_slug];
                     renderBoard();
                 }
             }));
 
-            if (expandedPlatforms[platform.platform_name] && platform.models && platform.models.length) {
+            if (expandedPlatforms[platform.platform_slug] && platform.models && platform.models.length) {
                 var modelsWrap = document.createElement('div');
                 modelsWrap.className = 'monitor-models';
                 platform.models.forEach(function(model) {
@@ -645,7 +645,7 @@
             var set = {};
             (platforms || []).forEach(function(platform) {
                 (platform.models || []).forEach(function(model) {
-                    set[model.standard_model_name] = true;
+                    set[model.model_slug] = true;
                 });
             });
             return Object.keys(set).sort();
@@ -678,7 +678,7 @@
                 var rows = [];
                 sortedPlatforms(boardData.platforms, sortByAvailability).forEach(function(platform) {
                     (platform.models || []).forEach(function(model) {
-                        if (model.standard_model_name !== selectedModel) return;
+                        if (model.model_slug !== selectedModel) return;
                         rows.push({
                             platform: platform,
                             model: model
@@ -701,7 +701,7 @@
                 ));
                 rows.forEach(function(row) {
                     root.appendChild(renderModelBlock(row.model, {
-                        compactPlatformName: row.platform.platform_display_name || row.platform.platform_name
+                        compactPlatformName: row.platform.platform_display_name || row.platform.platform_slug
                     }));
                 });
                 return;
