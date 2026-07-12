@@ -6,9 +6,9 @@
     "sortByAvailability": "按可用率排序",
     "modelsLabel": "个模型",
     "availableLabel": "可用",
-    "tpsUnit": "tok/s"
+    "tpsUnit": "token/s"
   },
-  "responsiveCells": [120, 72, 24],
+  "responsiveCells": [120, 96, 72, 48, 24],
   "loadingLabel": "加载中...",
   "errorLabel": "数据加载失败，请稍后重试",
   "emptyLabel": "暂无数据"

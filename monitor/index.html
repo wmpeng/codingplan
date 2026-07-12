@@ -398,11 +398,13 @@
         var tooltipEl = document.getElementById('monitorTooltip');
 
         function pickVisibleCount() {
-            var targets = CONFIG.responsiveCells || [120, 72, 24];
+            var targets = CONFIG.responsiveCells || [120, 96, 72, 48, 24];
             var width = window.innerWidth || 1200;
-            if (width >= 1100) return targets[0];
-            if (width >= 720) return targets[1];
-            return targets[2];
+            if (width >= 1200) return targets[0];
+            if (width >= 960) return targets[1];
+            if (width >= 768) return targets[2];
+            if (width >= 540) return targets[3];
+            return targets[4] || targets[targets.length - 1];
         }
 
         function visibleHours(hours) {
@@ -445,7 +447,7 @@
                 return { color: 'green', text: '运行正常', icon: '✓' };
             }
             if (color === 'yellow') {
-                return { color: 'yellow', text: '部分可用', icon: '!' };
+                return { color: 'yellow', text: '部分不可用', icon: '!' };
             }
             return { color: 'red', text: '出现故障', icon: '✕' };
         }
