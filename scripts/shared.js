@@ -1,4 +1,4 @@
-/* ── codingplan 公共工具函数 ── */
+﻿/* ── codingplan 公共工具函数 ── */
 
 function escapeHtml(text) {
     if (text === null || text === undefined) return '';
@@ -160,12 +160,62 @@ function renderPageNav(target, options = {}) {
                             <span class="toggle-slider"></span>
                         </label>
                     </div>
+                    <div class="settings-toggle-row" style="margin-top:10px">
+                        <label for="darkModeToggle">深色模式</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="darkModeToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
     `;
     return true;
 }
+
+// 深色模式设置
+(function () {
+    function initDarkMode() {
+        const toggle = document.getElementById('darkModeToggle');
+        if (!toggle) return;
+
+        const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const saved = localStorage.getItem('darkMode');
+
+        function applyDarkMode(on) {
+            // 同时设 body.classList 与 :root[data-theme]，
+            // 兼容老 CSS (body.dark-mode) 与新 CSS (:root[data-theme=dark])
+            document.body.classList.toggle('dark-mode', on);
+            document.documentElement.dataset.theme = on ? 'dark' : 'light';
+            toggle.checked = on;
+        }
+
+        if (saved !== null) {
+            applyDarkMode(saved === '1');
+        } else {
+            applyDarkMode(darkQuery.matches);
+        }
+
+        toggle.addEventListener('change', function () {
+            applyDarkMode(toggle.checked);
+            localStorage.setItem('darkMode', toggle.checked ? '1' : '0');
+        });
+
+        darkQuery.addEventListener('change', function (e) {
+            if (localStorage.getItem('darkMode') === null) {
+                applyDarkMode(e.matches);
+            }
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initDarkMode, { once: true });
+        return;
+    }
+
+    initDarkMode();
+})();
 
 // 超宽屏设置
 (function () {

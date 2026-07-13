@@ -1,4 +1,4 @@
-.plan-usage-panel {
+﻿.plan-usage-panel {
     margin-bottom: 24px;
     padding: 24px 24px 22px;
     border: 1px solid rgba(255, 255, 255, 0.7);
@@ -6,6 +6,11 @@
     background: rgba(255, 251, 245, 0.84);
     box-shadow: var(--shadow-md);
     backdrop-filter: blur(8px);
+}
+
+body.dark-mode .plan-usage-panel {
+    background: rgba(24, 27, 35, 0.8);
+    border-color: rgba(255, 255, 255, 0.06);
 }
 
 .plan-usage-panel[hidden] {
@@ -39,6 +44,11 @@
     text-transform: uppercase;
 }
 
+body.dark-mode .plan-usage-kicker {
+    color: #8dd0e6;
+    background: rgba(45, 212, 191, 0.1);
+}
+
 .plan-usage-title {
     margin: 12px 0 8px;
     font-size: clamp(24px, 3vw, 32px);
@@ -52,6 +62,10 @@
     font-size: 14px;
     line-height: 1.75;
     max-width: 860px;
+}
+
+body.dark-mode .plan-usage-description {
+    color: var(--text-secondary);
 }
 
 .plan-usage-meta {
@@ -74,6 +88,11 @@
     font-size: 12px;
     font-weight: 700;
     box-shadow: 0 10px 20px rgba(23, 32, 51, 0.05);
+}
+
+body.dark-mode .plan-usage-chip {
+    background: rgba(30, 33, 41, 0.72);
+    border-color: rgba(255, 255, 255, 0.06);
 }
 
 .plan-usage-chip strong {
@@ -107,6 +126,11 @@
     box-shadow: 0 10px 20px rgba(23, 32, 51, 0.05);
 }
 
+body.dark-mode .plan-usage-panel .segmented-control {
+    background: rgba(30, 33, 41, 0.72);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
 .plan-usage-panel .segment-btn {
     min-width: 82px;
     min-height: 42px;
@@ -131,8 +155,12 @@
 }
 
 .plan-usage-panel .segment-btn.active {
-    background: linear-gradient(135deg, #173753, #0f766e);
+    background: var(--grad-primary);
     color: #f7fffd;
+}
+
+body.dark-mode .plan-usage-panel .segment-btn.active {
+    background: linear-gradient(135deg, #0a1628, #0d5c56);
 }
 
 .plan-usage-panel .segment-btn:disabled {
@@ -156,10 +184,21 @@
     padding: 14px 18px;
 }
 
+body.dark-mode .plan-usage-state {
+    background: rgba(30, 33, 41, 0.52);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
 .plan-usage-state.is-error {
     color: #9f1239;
     border-color: rgba(239, 68, 68, 0.2);
     background: rgba(255, 236, 236, 0.72);
+}
+
+body.dark-mode .plan-usage-state.is-error {
+    color: #fca5a5;
+    border-color: rgba(239, 68, 68, 0.25);
+    background: rgba(50, 20, 20, 0.72);
 }
 
 .plan-usage-chart {
@@ -169,6 +208,11 @@
     border-radius: 22px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(248, 242, 231, 0.7));
     border: 1px solid rgba(23, 32, 51, 0.08);
+}
+
+body.dark-mode .plan-usage-chart {
+    background: linear-gradient(180deg, rgba(24, 27, 35, 0.5), rgba(30, 33, 41, 0.7));
+    border-color: rgba(255, 255, 255, 0.06);
 }
 
 .plan-usage-chart[hidden] {
@@ -193,6 +237,11 @@
     border: 1px solid rgba(23, 32, 51, 0.08);
     background: rgba(255, 255, 255, 0.28);
     min-width: 0;
+}
+
+body.dark-mode .plan-usage-chart-block {
+    background: rgba(30, 33, 41, 0.28);
+    border-color: rgba(255, 255, 255, 0.06);
 }
 
 .plan-usage-chart-header {

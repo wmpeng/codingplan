@@ -101,3 +101,4 @@ assets/image*.png
 # Preview files
 .preview
 .codegraph
+serve.ts
