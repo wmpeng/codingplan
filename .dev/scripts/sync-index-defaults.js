@@ -224,13 +224,50 @@ function replaceSection(html, pattern, newContent) {
 function replaceElementText(html, id, text) {
     const pattern = new RegExp(`(<[^>]+id="${id}"[^>]*>)([\\s\\S]*?)(</[^>]+>)`);
     if (!pattern.test(html)) throw new Error(`Element #${id} not found`);
-    return html.replace(pattern, `$1${text}$3`);
+    // Must use a replacer function: string form would mangle `$10` etc. in text
+    return html.replace(pattern, (_, open, _mid, close) => `${open}${text}${close}`);
 }
 
+/**
+ * Replace innerHTML of an element by id, correctly handling nested same-tag children.
+ * Non-greedy `([\s\S]*?)(</[^>]+>)` stops at the first closing tag and corrupts nested markup.
+ */
 function replaceElementInnerHtml(html, id, innerHtml) {
-    const pattern = new RegExp(`(<[^>]+id="${id}"[^>]*>)([\\s\\S]*?)(</[^>]+>)`);
-    if (!pattern.test(html)) throw new Error(`Element #${id} not found`);
-    return html.replace(pattern, `$1${innerHtml}$3`);
+    const openRe = new RegExp(`<([a-zA-Z][\\w:-]*)([^>]*\\bid="${id}"[^>]*)>`, 'i');
+    const openMatch = openRe.exec(html);
+    if (!openMatch) throw new Error(`Element #${id} not found`);
+
+    const tagName = openMatch[1];
+    const openEnd = openMatch.index + openMatch[0].length;
+    const openTagRe = new RegExp(`<${tagName}\\b[^>]*>`, 'gi');
+    const closeTagRe = new RegExp(`</${tagName}\\s*>`, 'gi');
+
+    let depth = 1;
+    let pos = openEnd;
+    while (depth > 0 && pos < html.length) {
+        openTagRe.lastIndex = pos;
+        closeTagRe.lastIndex = pos;
+        const nextOpen = openTagRe.exec(html);
+        const nextClose = closeTagRe.exec(html);
+        if (!nextClose) {
+            throw new Error(`Element #${id}: matching </${tagName}> not found`);
+        }
+        if (nextOpen && nextOpen.index < nextClose.index) {
+            depth += 1;
+            pos = nextOpen.index + nextOpen[0].length;
+        } else {
+            depth -= 1;
+            if (depth === 0) {
+                const before = html.slice(0, openMatch.index);
+                const openTag = openMatch[0];
+                const closeTag = nextClose[0];
+                const after = html.slice(nextClose.index + nextClose[0].length);
+                return `${before}${openTag}${innerHtml}${closeTag}${after}`;
+            }
+            pos = nextClose.index + nextClose[0].length;
+        }
+    }
+    throw new Error(`Element #${id}: failed to balance tags`);
 }
 
 const header = config.header || {};
@@ -239,6 +276,7 @@ const activePlans = allPlans
     .filter(plan => !plan.discontinued);
 
 indexHtml = replaceElementText(indexHtml, 'updateDate', escapeHtml(header.updateDate || ''));
+indexHtml = replaceElementText(indexHtml, 'pageTitle', escapeHtml(header.title || ''));
 indexHtml = replaceElementInnerHtml(
     indexHtml,
     'subtitle',

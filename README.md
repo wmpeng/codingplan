@@ -1,13 +1,13 @@
-# AI Coding Plan 对比
+# AI Coding 平台推荐
 
-> 更新日期2026.7.15 | Codex 追加 GPT-5.6
+> 更新日期2026.7.15 | 首页改版：平台目录与标签筛选
 
 ## 📖 简介
 
-29大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、讯飞·星火、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比  
-支持DeepSeek V4，GLM-5.2，Qwen-3.7-Max，Kimi-K2.7，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro等模型
+29 家 Coding Plan / Token Plan 平台一站式选型  
+智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek 等，按性价比、稳定性、模型覆盖、使用便捷性对比
 
-DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 Coding Plan 仍存在限购。首页新增“DeepSeek 涨价应对”推荐分组，优先帮你找支持 DeepSeek-V4 且更容易买到的替代平台。
+首页以「选平台」为主：目录标签默认筛选「无需抢购」，也可按「性价比高」「模型覆盖广」等维度快速缩小范围；下方套餐表仍保留全量对比。
 
 ### 在线访问
 
@@ -51,7 +51,7 @@ DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 C
 
 ### 按量计费推荐
 
-好的CodingPlan需要抢购，如果不想购买固定套餐，可以考虑这些平台
+不想抢固定套餐或 DeepSeek 涨价后想灵活按量，可考虑这些平台
 
 1. DeepSeek官方 ⭐️⭐️⭐️⭐️⭐️
     - 原生DeepSeek，支持DeepSeek-V4-Pro。
@@ -64,72 +64,6 @@ DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 C
     - 还支持GLM-5.2，Kimi-K2.6，Qwen-3.7-Max等常见模型。
 3. [小米·MiMo](https://api.dreamfree.space/c/s/cpyqmimo) ⭐️⭐️⭐️⭐️
     - Mimo-V2.5-Pro方面能力均衡，可作为DeepSeek的平替，价格和DeepSeek一致。
-
-### 包含 GLM-5.2
-
-前几个不用抢，后几个得抢
-
-1. [智谱国际版](https://api.dreamfree.space/c/s/cpyqzai) ⭐️⭐️⭐️⭐️
-    - 国际版支持GLM-5.2
-    - 用量与国内版完全一致。价格折算后大约为国内版两倍+。
-2. [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) ⭐️⭐️⭐️⭐️
-    - Go 套餐已支持 GLM-5.2，首月半价 $5。
-    - 多模型聚合平台，支持 DeepSeek-V4-Pro/Flash、MiMo、Kimi 等。
-    - 可支付宝付款。
-3. [优云智算](https://api.dreamfree.space/c/s/cpyqyyzs) ⭐️⭐️⭐️⭐️
-    - Coding Plan 全档位支持 GLM-5.2。
-    - 限时优惠倍率。
-    - 档位丰富，从入门￥49开始就支持GLM-5.2，适合体验。
-4. [智谱AI](https://api.dreamfree.space/c/s/cpyqzhipu) ⭐️⭐️⭐️⭐️⭐️
-    - 支持GLM-5.2模型。+2
-    - 模型能力T0级别，尤其适合代码场景，Opus平替优于Opus4.6。
-    - 需要抢购，**[加飞书群](https://api.dreamfree.space/c/s/cpfeishulink)提供免费代抢**。*目前官方不放名额，暂停中。
-5. [字节·方舟](https://api.dreamfree.space/c/s/cpyqfangzhou) ⭐️⭐️⭐️⭐️⭐️
-    - 唯一同时支持GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3、Kimi-K2.7-Code 的全家桶平台。
-    - 目前2.5折 + 用量2.5倍活动，性价比拉满。
-    - 当前需抢购
-6. [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) ⭐️⭐️⭐️⭐️
-    - 高效版（199元）已支持 GLM-5.2。但GLM-5.2比较拥挤，其他模型还好。
-    - 无需抢购，随时可下单，智谱抢不到的最佳平替。
-    - Kimi-2.6、DeepSeek-V4-Pro/Flash 也同时支持，模型覆盖面广。
-
-### 高性价比
-
-高性价比
-
-1. [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) ⭐️⭐️⭐️⭐️⭐️
-    - **额度依然最高**，低难度而任务和养龙虾、酒馆首选。
-    - 支持 M3 + 多模态，模型能力也不拉。
-2. [字节·方舟](https://api.dreamfree.space/c/s/cpyqfangzhou) ⭐️⭐️⭐️⭐️⭐️
-    - 2.5折期间叠加2.5倍用量活动，相当于平时10倍性价比。
-    - 同时支持GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3、Kimi-K2.7-Code 的全家桶平台。
-    - 当前需抢购
-3. [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) ⭐️⭐️⭐️⭐️⭐️
-    - 用量很多，**真**按照调用次数。
-    - GLM-5.2比较拥挤，其他模型还好。
-    - 高效版（199元）已支持 GLM-5.2，39元专业版即提供 GLM-5.1，丰俭由人。
-4. [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) ⭐️⭐️⭐️⭐️⭐️
-    - Go 套餐 $10/月（首月 $5），DeepSeek V4 Flash 每月可达 **15.8 万次请求**，量大价低。
-    - 多模型聚合平台，支持 GLM-5.2、Kimi-K2.7-Code、MiniMax-M3、Qwen-3.7-Max 等。
-    - 可支付宝付款。
-
-### 不抢购
-
-随时可下单，不用蹲点拼手速
-
-1. [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) ⭐️⭐️⭐️⭐️⭐️
-    - 额度高，无需抢购。
-    - 支持多模态，常规场景，模型能力够用。
-2. [优云智算](https://api.dreamfree.space/c/s/cpyqyyzs) ⭐️⭐️⭐️⭐️
-    - 档位多，49元即支持GLM-5.2，适合体验。
-    - 支持模型齐全。
-    - GLM-5.2限时低倍率。
-3. [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) ⭐️⭐️⭐️⭐️
-    - 智谱抢不到的最佳平替，高效版提供 GLM-5.2，专业版提供 GLM-5.1。
-    - 39元起，价格门槛低，档位丰富。
-4. [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) ⭐️⭐️⭐️⭐️
-    - 支持 Kimi-K2.7-Code。
-    - 支持多模态。
 
 **评分标准**: 基准3颗星，价格优势劣势1分，模型优势或独占模型1分，其他优势1分。TokenPlan因性价比较低，暂不推荐，能买CodingPlan尽量买CodingPlan
 
@@ -233,6 +167,8 @@ DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 C
 
 ### 2026.7.15
 
+- 首页改版：新增平台目录与标签筛选（默认「无需抢购」），页头叙事调整为「选平台」
+- 推荐分组精简为「综合推荐」「按量计费推荐」，「高性价比」「不抢购」等场景改由目录标签承担
 - Codex（Plus / Pro *5 / Pro *20）追加支持 GPT-5.6 模型
 
 ### 2026.7.6

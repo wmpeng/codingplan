@@ -3,8 +3,8 @@ const DIMENSION_KEYS = ['value', 'stability', 'models', 'convenience'];
 const PLATFORM_DIMENSION_META = [
   { key: 'value', label: '性价比' },
   { key: 'stability', label: '稳定性' },
-  { key: 'models', label: '模型' },
-  { key: 'convenience', label: '便捷度' }
+  { key: 'models', label: '模型覆盖' },
+  { key: 'convenience', label: '使用便捷性' }
 ];
 
 function escapeHtml(text) {
