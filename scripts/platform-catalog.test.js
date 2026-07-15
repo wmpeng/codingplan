@@ -1,0 +1,133 @@
+const { describe, it } = require('node:test');
+const assert = require('node:assert/strict');
+const {
+  filterPlatforms,
+  collectModelsForVendor,
+  resolvePlatformAction,
+  validatePlatformRecords
+} = require('./platform-catalog.js');
+
+const derivedTags = [
+  { id: 'no-rush', label: '无需抢购', rule: { purchaseRush: false } },
+  { id: 'high-value', label: '性价比高', rule: { dimension: 'value', minScore: 4 } }
+];
+
+function samplePlatform(overrides = {}) {
+  return {
+    id: 'x',
+    name: 'X',
+    rating: 4,
+    status: 'active',
+    purchaseRush: false,
+    dimensions: {
+      value: { score: 5, reason: 'a' },
+      stability: { score: 3, reason: 'b' },
+      models: { score: 4, reason: 'c' },
+      convenience: { score: 4, reason: 'd' }
+    },
+    tags: ['适合养龙虾'],
+    ...overrides
+  };
+}
+
+describe('filterPlatforms', () => {
+  it('AND matches derived + operational tags', () => {
+    const platforms = [
+      samplePlatform({ id: 'a', name: 'A', tags: ['适合养龙虾'] }),
+      samplePlatform({ id: 'b', name: 'B', purchaseRush: true, tags: ['适合养龙虾'], dimensions: {
+        value: { score: 5, reason: 'a' },
+        stability: { score: 3, reason: 'b' },
+        models: { score: 4, reason: 'c' },
+        convenience: { score: 4, reason: 'd' }
+      }}),
+      samplePlatform({ id: 'c', name: 'C', tags: [] })
+    ];
+    const result = filterPlatforms(platforms, {
+      selectedLabels: ['无需抢购', '适合养龙虾'],
+      showDiscontinued: false,
+      derivedTags,
+      operationalTags: ['适合养龙虾'],
+      showDiscontinuedLabel: '显示停售'
+    });
+    assert.deepEqual(result.map(p => p.id), ['a']);
+  });
+
+  it('hides discontinued unless showDiscontinued', () => {
+    const platforms = [
+      samplePlatform({ id: 'alive', status: 'active' }),
+      samplePlatform({ id: 'dead', status: 'discontinued', purchaseRush: true })
+    ];
+    const hidden = filterPlatforms(platforms, {
+      selectedLabels: [],
+      showDiscontinued: false,
+      derivedTags,
+      operationalTags: [],
+      showDiscontinuedLabel: '显示停售'
+    });
+    assert.deepEqual(hidden.map(p => p.id), ['alive']);
+
+    const shown = filterPlatforms(platforms, {
+      selectedLabels: [],
+      showDiscontinued: true,
+      derivedTags,
+      operationalTags: [],
+      showDiscontinuedLabel: '显示停售'
+    });
+    assert.deepEqual(shown.map(p => p.id), ['alive', 'dead']);
+  });
+
+  it('empty selectedLabels means all active (plus discontinued if toggled)', () => {
+    const platforms = [
+      samplePlatform({ id: '1' }),
+      samplePlatform({ id: '2', purchaseRush: true })
+    ];
+    const result = filterPlatforms(platforms, {
+      selectedLabels: [],
+      showDiscontinued: false,
+      derivedTags,
+      operationalTags: [],
+      showDiscontinuedLabel: '显示停售'
+    });
+    assert.equal(result.length, 2);
+  });
+});
+
+describe('collectModelsForVendor', () => {
+  it('unions active plan models only', () => {
+    const plans = [
+      { vendor: 'MiniMax', models: ['M3', 'M2.7'], discontinued: false },
+      { vendor: 'MiniMax', models: ['M2.5'], discontinued: true },
+      { vendor: 'Kimi', models: ['K2.6'], discontinued: false }
+    ];
+    assert.deepEqual(collectModelsForVendor(plans, 'MiniMax'), ['M3', 'M2.7']);
+  });
+});
+
+describe('resolvePlatformAction', () => {
+  it('prefers platform.action then first plan action', () => {
+    const plans = [{ vendor: 'A', action: 'https://plan' }];
+    assert.equal(resolvePlatformAction({ name: 'A', action: 'https://own' }, plans), 'https://own');
+    assert.equal(resolvePlatformAction({ name: 'A', action: null }, plans), 'https://plan');
+  });
+});
+
+describe('validatePlatformRecords', () => {
+  it('errors when plan vendor missing platform', () => {
+    const r = validatePlatformRecords([], [{ vendor: 'Z' }]);
+    assert.equal(r.ok, false);
+    assert.match(r.errors.join('\n'), /Z/);
+  });
+
+  it('errors on bad score or missing reason', () => {
+    const bad = samplePlatform({
+      dimensions: {
+        value: { score: 6, reason: 'x' },
+        stability: { score: 3, reason: '' },
+        models: { score: 4, reason: 'c' },
+        convenience: { score: 4, reason: 'd' }
+      }
+    });
+    const r = validatePlatformRecords([bad], [{ vendor: 'X' }]);
+    assert.equal(r.ok, false);
+  });
+});
