@@ -11,7 +11,7 @@
       "models": { "score": 5, "reason": "GLM-5.2 代码能力 T0 级别，尤其适合编程场景，是 Opus 平替优选。" },
       "convenience": { "score": 2, "reason": "需要抢购，目前官方暂停放名额，新用户下单门槛高。" }
     },
-    "tags": []
+    "tags": ["热门模型"]
   },
   {
     "id": "zhipu-intl",
@@ -39,7 +39,7 @@
       "models": { "score": 5, "reason": "支持 MiniMax-M3 及多模态，模型能力均衡不拉胯。" },
       "convenience": { "score": 5, "reason": "随时可下单，档位丰富，不用蹲点拼手速。" }
     },
-    "tags": ["适合养龙虾"]
+    "tags": ["适合养龙虾", "热门模型"]
   },
   {
     "id": "bytedance-ark",
@@ -53,7 +53,7 @@
       "models": { "score": 5, "reason": "唯一同时支持 GLM-5.2、DeepSeek-V4、MiniMax-M3、Kimi-K2.7-Code 的全家桶平台。" },
       "convenience": { "score": 2, "reason": "当前需抢购，名额不定期放出，不适合急用场景。" }
     },
-    "tags": []
+    "tags": ["热门模型"]
   },
   {
     "id": "iflytek",
@@ -81,7 +81,7 @@
       "models": { "score": 5, "reason": "聚合 GLM-5.2、Kimi-K2.7-Code、MiniMax-M3、Qwen-3.7-Max、DeepSeek-V4 等主流模型。" },
       "convenience": { "score": 4, "reason": "支持支付宝付款，Go 套餐首月半价，对国内用户较友好。" }
     },
-    "tags": []
+    "tags": ["可支付宝"]
   },
   {
     "id": "xiaomi-mimo",
