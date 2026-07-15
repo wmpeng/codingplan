@@ -1,14 +1,23 @@
 const fs = require('fs');
 const path = require('path');
+const PlatformCatalog = require('../../scripts/platform-catalog.js');
 
 const rootDir = path.join(__dirname, '../..');
 const configPath = path.join(rootDir, 'config.json');
 const plansPath = path.join(rootDir, 'plans.json');
+const platformsPath = path.join(rootDir, 'platforms.json');
 const indexPath = path.join(rootDir, 'index.html');
 
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const allPlans = JSON.parse(fs.readFileSync(plansPath, 'utf8'));
+const allPlatforms = JSON.parse(fs.readFileSync(platformsPath, 'utf8'));
 let indexHtml = fs.readFileSync(indexPath, 'utf8');
+
+const catalogConfig = config.platformCatalog || {};
+const validation = PlatformCatalog.validatePlatformRecords(allPlatforms, allPlans);
+if (!validation.ok) {
+    throw new Error(validation.errors.join('\n'));
+}
 
 const WATERMARK = config.header?.watermarkUrl || 'www.codingplan.fyi';
 const LINK_ICON = '<svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>';
@@ -255,7 +264,7 @@ if (header.entry) {
 
 indexHtml = replaceSection(
     indexHtml,
-    /(<div class="recommendation-groups" id="recommendationGroups">)[\s\S]*?(<\/div>\r\n\r\n        <!-- 评分标准 -->)/,
+    /(<div class="recommendation-groups" id="recommendationGroups">)[\s\S]*?(<\/div>\r\n\r\n        <!-- 平台目录)/,
     generateRecommendationGroupsHtml(config.recommendationGroups)
 );
 
@@ -279,6 +288,33 @@ indexHtml = replaceSection(
 
 indexHtml = replaceElementText(indexHtml, 'showingCount', String(activePlans.length));
 indexHtml = replaceElementText(indexHtml, 'totalCount', String(activePlans.length));
+
+const defaultSelectedTags = catalogConfig.defaultSelectedTags || [];
+const platformFilterOpts = {
+    selectedLabels: defaultSelectedTags,
+    showDiscontinued: false,
+    derivedTags: catalogConfig.derivedTags || [],
+    operationalTags: catalogConfig.operationalTags || [],
+    showDiscontinuedLabel: catalogConfig.showDiscontinuedTag || '显示停售'
+};
+const filteredPlatforms = PlatformCatalog.filterPlatforms(allPlatforms, platformFilterOpts);
+const totalVisiblePlatforms = PlatformCatalog.filterPlatforms(allPlatforms, {
+    ...platformFilterOpts,
+    selectedLabels: []
+}).length;
+
+indexHtml = replaceElementInnerHtml(
+    indexHtml,
+    'platformTagBar',
+    PlatformCatalog.buildPlatformTagBarHtml(catalogConfig, defaultSelectedTags, false)
+);
+indexHtml = replaceElementInnerHtml(
+    indexHtml,
+    'platformCardGrid',
+    filteredPlatforms.map(platform => PlatformCatalog.buildPlatformCardHtml(platform, allPlans)).join('')
+);
+indexHtml = replaceElementText(indexHtml, 'platformShowingCount', String(filteredPlatforms.length));
+indexHtml = replaceElementText(indexHtml, 'platformTotalCount', String(totalVisiblePlatforms));
 
 if (config.ratingGuide) {
     indexHtml = replaceElementText(indexHtml, 'ratingGuide', escapeHtml(config.ratingGuide));
@@ -310,4 +346,4 @@ indexHtml = indexHtml.replace(
 );
 
 fs.writeFileSync(indexPath, indexHtml, 'utf8');
-console.log(`index.html 默认内容已同步：${activePlans.length} 条在售套餐，${(config.updates || []).length} 条更新记录`);
+console.log(`index.html 默认内容已同步：${activePlans.length} 条在售套餐，${filteredPlatforms.length} 个默认筛选平台，${(config.updates || []).length} 条更新记录`);

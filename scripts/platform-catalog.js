@@ -1,5 +1,21 @@
 const DIMENSION_KEYS = ['value', 'stability', 'models', 'convenience'];
 
+const PLATFORM_DIMENSION_META = [
+  { key: 'value', label: '性价比' },
+  { key: 'stability', label: '稳定性' },
+  { key: 'models', label: '模型' },
+  { key: 'convenience', label: '便捷度' }
+];
+
+function escapeHtml(text) {
+  if (text === null || text === undefined) return '';
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 function matchesDerivedTag(platform, rule) {
   if (rule.purchaseRush !== undefined) {
     if (platform.purchaseRush !== rule.purchaseRush) {
@@ -133,14 +149,98 @@ function validatePlatformRecords(platforms, plans) {
   return { ok: errors.length === 0, errors };
 }
 
+function buildPlatformTagBarHtml(catalogConfig, selectedLabels, showDiscontinued) {
+  const cat = catalogConfig || {};
+  const selected = selectedLabels || [];
+  const chips = [];
+
+  for (const tag of cat.derivedTags || []) {
+    const label = tag.label;
+    const active = selected.includes(label);
+    chips.push(
+      `<button type="button" class="platform-tag-chip${active ? ' is-active' : ''}" data-platform-tag="${escapeHtml(label)}" aria-pressed="${active ? 'true' : 'false'}">${escapeHtml(label)}</button>`
+    );
+  }
+
+  for (const label of cat.operationalTags || []) {
+    const active = selected.includes(label);
+    chips.push(
+      `<button type="button" class="platform-tag-chip${active ? ' is-active' : ''}" data-platform-tag="${escapeHtml(label)}" aria-pressed="${active ? 'true' : 'false'}">${escapeHtml(label)}</button>`
+    );
+  }
+
+  const discLabel = cat.showDiscontinuedTag || '显示停售';
+  const discActive = !!showDiscontinued;
+  chips.push(
+    `<button type="button" class="platform-tag-chip platform-tag-chip--discontinued${discActive ? ' is-active' : ''}" data-platform-discontinued="1" aria-pressed="${discActive ? 'true' : 'false'}">${escapeHtml(discLabel)}</button>`
+  );
+
+  return chips.join('');
+}
+
+function buildPlatformCardHtml(platform, plans, options = {}) {
+  const sanitizeUrl = options.sanitizeUrl || (url => url);
+  const rawAction = resolvePlatformAction(platform, plans);
+  const action = sanitizeUrl(rawAction);
+  const name = escapeHtml(platform.name || '');
+  const nameHtml = action
+    ? `<a class="platform-name-link" href="${escapeHtml(action)}" target="_blank" rel="noopener noreferrer">${name}</a>`
+    : `<span class="platform-name">${name}</span>`;
+
+  const rating = Math.max(0, Math.min(5, Number(platform.rating) || 0));
+  const stars = '⭐️'.repeat(rating);
+  const summary = platform.summary
+    ? `<p class="platform-summary">${escapeHtml(platform.summary)}</p>`
+    : '';
+
+  const rush = !!platform.purchaseRush;
+  const rushHtml = `<div class="platform-rush" data-rush="${rush ? 'true' : 'false'}">${rush ? '需要抢购' : '无需抢购'}</div>`;
+
+  const dimsHtml = PLATFORM_DIMENSION_META.map(({ key, label }) => {
+    const dim = (platform.dimensions && platform.dimensions[key]) || {};
+    const score = dim.score == null ? '—' : String(dim.score);
+    return `<li data-dim="${escapeHtml(key)}"><span class="dim-score">${escapeHtml(score)}</span><span class="dim-label">${escapeHtml(label)}</span><span class="dim-reason">${escapeHtml(dim.reason || '')}</span></li>`;
+  }).join('');
+
+  const tags = Array.isArray(platform.tags) ? platform.tags : [];
+  const tagsHtml = tags.length
+    ? `<div class="platform-tags">${tags.map((tag) => `<span class="platform-tag">${escapeHtml(tag)}</span>`).join('')}</div>`
+    : '';
+
+  const models = collectModelsForVendor(plans, platform.name);
+  const modelsHtml = models.length
+    ? `<div class="platform-models">${models.map((model) => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}</div>`
+    : '';
+
+  const discontinuedClass = platform.status === 'discontinued' ? ' is-discontinued' : '';
+
+  return `
+                <article class="platform-card${discontinuedClass}" data-platform-id="${escapeHtml(platform.id || '')}">
+                    <header>
+                        ${nameHtml}
+                        <span class="platform-rating" aria-label="${rating} 星">${stars}</span>
+                    </header>
+                    ${summary}
+                    ${rushHtml}
+                    <ul class="platform-dimensions">${dimsHtml}</ul>
+                    ${tagsHtml}
+                    ${modelsHtml}
+                </article>
+            `;
+}
+
 const PlatformCatalog = {
   DIMENSION_KEYS,
+  PLATFORM_DIMENSION_META,
+  escapeHtml,
   matchesDerivedTag,
   matchesOperationalTag,
   filterPlatforms,
   collectModelsForVendor,
   resolvePlatformAction,
-  validatePlatformRecords
+  validatePlatformRecords,
+  buildPlatformTagBarHtml,
+  buildPlatformCardHtml
 };
 
 if (typeof module !== 'undefined' && module.exports) {

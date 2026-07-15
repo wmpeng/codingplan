@@ -4,7 +4,10 @@ const {
   filterPlatforms,
   collectModelsForVendor,
   resolvePlatformAction,
-  validatePlatformRecords
+  validatePlatformRecords,
+  escapeHtml,
+  buildPlatformCardHtml,
+  buildPlatformTagBarHtml
 } = require('./platform-catalog.js');
 
 const derivedTags = [
@@ -129,5 +132,50 @@ describe('validatePlatformRecords', () => {
     });
     const r = validatePlatformRecords([bad], [{ vendor: 'X' }]);
     assert.equal(r.ok, false);
+  });
+});
+
+describe('escapeHtml', () => {
+  it('escapes HTML in malicious reason text', () => {
+    const malicious = '<script>alert("xss")</script>';
+    assert.equal(escapeHtml(malicious), '&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;');
+    const html = buildPlatformCardHtml(samplePlatform({
+      dimensions: {
+        value: { score: 3, reason: malicious },
+        stability: { score: 3, reason: 'ok' },
+        models: { score: 3, reason: 'ok' },
+        convenience: { score: 3, reason: 'ok' }
+      }
+    }), [{ vendor: 'X', models: [], discontinued: false }]);
+    assert.doesNotMatch(html, /<script>/);
+    assert.match(html, /&lt;script&gt;/);
+  });
+});
+
+describe('buildPlatformCardHtml', () => {
+  it('includes key classes and discontinued marker', () => {
+    const active = buildPlatformCardHtml(samplePlatform(), [{ vendor: 'X', models: ['M1'], discontinued: false }]);
+    assert.match(active, /class="platform-card"/);
+    assert.match(active, /class="platform-dimensions"/);
+    assert.doesNotMatch(active, /is-discontinued/);
+
+    const dead = buildPlatformCardHtml(
+      samplePlatform({ status: 'discontinued' }),
+      [{ vendor: 'X', models: [], discontinued: false }]
+    );
+    assert.match(dead, /platform-card is-discontinued/);
+  });
+});
+
+describe('buildPlatformTagBarHtml', () => {
+  it('marks default selected tags active', () => {
+    const cat = {
+      derivedTags: [{ id: 'no-rush', label: '无需抢购', rule: { purchaseRush: false } }],
+      operationalTags: ['热门模型'],
+      showDiscontinuedTag: '显示停售'
+    };
+    const html = buildPlatformTagBarHtml(cat, ['无需抢购'], false);
+    assert.match(html, /class="platform-tag-chip is-active" data-platform-tag="无需抢购"/);
+    assert.match(html, /platform-tag-chip--discontinued/);
   });
 });
