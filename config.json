@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 对比",
-    "updateDate": "更新日期2026.7.6 | 新增 DeepSeek 涨价应对推荐分组（小改版）",
+    "updateDate": "更新日期2026.7.15 | Codex 追加 GPT-5.6",
     "subtitle": "29大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、讯飞·星火、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比\n支持DeepSeek V4，GLM-5.2，Qwen-3.7-Max，Kimi-K2.7，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro等模型",
     "models": "DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 Coding Plan 仍存在限购。首页新增“DeepSeek 涨价应对”推荐分组，优先帮你找支持 DeepSeek-V4 且更容易买到的替代平台。",
     "watermarkUrl": "www.codingplan.fyi",
@@ -384,6 +384,12 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.7.15",
+      "items": [
+        "Codex（Plus / Pro *5 / Pro *20）追加支持 GPT-5.6 模型"
+      ]
+    },
     {
       "date": "2026.7.6",
       "items": [
