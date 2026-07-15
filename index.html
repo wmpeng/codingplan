@@ -1349,12 +1349,27 @@
             box-shadow: 0 14px 24px rgba(23, 32, 51, 0.08);
         }
 
+        .platform-tag-chip:focus-visible {
+            outline: 2px solid #0f766e;
+            outline-offset: 2px;
+        }
+
         .platform-tag-chip.is-active,
         .platform-tag-chip.active {
             background: linear-gradient(135deg, #173753, #0f766e);
             border-color: transparent;
             color: white;
             box-shadow: 0 14px 24px rgba(23, 55, 83, 0.18);
+        }
+
+        .platform-tag-chip.is-active:hover,
+        .platform-tag-chip.active:hover {
+            color: white;
+            border-color: transparent;
+        }
+
+        .platform-tag-chip--discontinued.is-active {
+            background: linear-gradient(135deg, #5b6472, #3f4654);
         }
 
         .platform-catalog-toolbar {
@@ -6050,10 +6065,12 @@
         </div>
     </div>
 
+    <script src="scripts/platform-catalog.js?v=260715"></script>
     <script>
         // 文件路径
         const PLANS_FILE_PATH = './plans.json';
         const CONFIG_FILE_PATH = './config.json';
+        const PLATFORMS_FILE_PATH = './platforms.json';
 
         // 全局配置
         let appConfig = {};
@@ -6063,6 +6080,9 @@
         // 全局数据
         let allPlans = [];
         let filteredPlans = [];
+        let allPlatforms = [];
+        let platformSelectedLabels = [];
+        let platformShowDiscontinued = false;
         let currentSort = { column: null, direction: 'asc' };
         // 已确认的选择
         let selectedVendors = new Set();
@@ -8025,6 +8045,242 @@
             };
         }
 
+        const PLATFORM_DIMENSION_META = [
+            { key: 'value', label: '性价比' },
+            { key: 'stability', label: '稳定性' },
+            { key: 'models', label: '模型' },
+            { key: 'convenience', label: '便捷度' }
+        ];
+
+        function getPlatformCatalogConfig() {
+            return appConfig.platformCatalog || {
+                defaultSelectedTags: [],
+                operationalTags: [],
+                showDiscontinuedTag: '显示停售',
+                derivedTags: []
+            };
+        }
+
+        async function loadPlatforms() {
+            const response = await fetch(PLATFORMS_FILE_PATH, { cache: 'no-store' });
+            if (!response.ok) {
+                throw new Error(`platforms.json load failed: HTTP ${response.status}`);
+            }
+            allPlatforms = await response.json();
+            if (!Array.isArray(allPlatforms)) {
+                throw new Error('platforms.json must be an array');
+            }
+            console.log(`成功加载 ${allPlatforms.length} 个平台`);
+        }
+
+        function togglePlatformTag(label) {
+            const idx = platformSelectedLabels.indexOf(label);
+            if (idx >= 0) {
+                platformSelectedLabels = platformSelectedLabels.filter((item) => item !== label);
+            } else {
+                platformSelectedLabels = [...platformSelectedLabels, label];
+            }
+            renderPlatformTagBar();
+            applyPlatformFilters();
+        }
+
+        function renderPlatformTagBar() {
+            const bar = document.getElementById('platformTagBar');
+            if (!bar) return;
+
+            const cat = getPlatformCatalogConfig();
+            const chips = [];
+
+            for (const tag of cat.derivedTags || []) {
+                const label = tag.label;
+                const active = platformSelectedLabels.includes(label);
+                chips.push(
+                    `<button type="button" class="platform-tag-chip${active ? ' is-active' : ''}" data-platform-tag="${escapeHtml(label)}" aria-pressed="${active ? 'true' : 'false'}">${escapeHtml(label)}</button>`
+                );
+            }
+
+            for (const label of cat.operationalTags || []) {
+                const active = platformSelectedLabels.includes(label);
+                chips.push(
+                    `<button type="button" class="platform-tag-chip${active ? ' is-active' : ''}" data-platform-tag="${escapeHtml(label)}" aria-pressed="${active ? 'true' : 'false'}">${escapeHtml(label)}</button>`
+                );
+            }
+
+            const discLabel = cat.showDiscontinuedTag || '显示停售';
+            const discActive = platformShowDiscontinued;
+            chips.push(
+                `<button type="button" class="platform-tag-chip platform-tag-chip--discontinued${discActive ? ' is-active' : ''}" data-platform-discontinued="1" aria-pressed="${discActive ? 'true' : 'false'}">${escapeHtml(discLabel)}</button>`
+            );
+
+            bar.innerHTML = chips.join('');
+
+            bar.querySelectorAll('[data-platform-tag]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    togglePlatformTag(btn.getAttribute('data-platform-tag'));
+                });
+            });
+
+            bar.querySelectorAll('[data-platform-discontinued]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    platformShowDiscontinued = !platformShowDiscontinued;
+                    renderPlatformTagBar();
+                    applyPlatformFilters();
+                });
+            });
+        }
+
+        function buildPlatformCardHtml(platform) {
+            const rawAction = PlatformCatalog.resolvePlatformAction(platform, allPlans);
+            const action = typeof sanitizeHttpUrl === 'function'
+                ? sanitizeHttpUrl(rawAction)
+                : rawAction;
+            const name = escapeHtml(platform.name || '');
+            const nameHtml = action
+                ? `<a class="platform-name-link" href="${escapeHtml(action)}" target="_blank" rel="noopener noreferrer">${name}</a>`
+                : `<span class="platform-name">${name}</span>`;
+
+            const rating = Math.max(0, Math.min(5, Number(platform.rating) || 0));
+            const stars = '⭐️'.repeat(rating);
+            const summary = platform.summary
+                ? `<p class="platform-summary">${escapeHtml(platform.summary)}</p>`
+                : '';
+
+            const rush = !!platform.purchaseRush;
+            const rushHtml = `<div class="platform-rush" data-rush="${rush ? 'true' : 'false'}">${rush ? '需要抢购' : '无需抢购'}</div>`;
+
+            const dimsHtml = PLATFORM_DIMENSION_META.map(({ key, label }) => {
+                const dim = (platform.dimensions && platform.dimensions[key]) || {};
+                const score = dim.score == null ? '—' : String(dim.score);
+                return `<li data-dim="${escapeHtml(key)}"><span class="dim-score">${escapeHtml(score)}</span><span class="dim-label">${escapeHtml(label)}</span><span class="dim-reason">${escapeHtml(dim.reason || '')}</span></li>`;
+            }).join('');
+
+            const tags = Array.isArray(platform.tags) ? platform.tags : [];
+            const tagsHtml = tags.length
+                ? `<div class="platform-tags">${tags.map((tag) => `<span class="platform-tag">${escapeHtml(tag)}</span>`).join('')}</div>`
+                : '';
+
+            const models = PlatformCatalog.collectModelsForVendor(allPlans, platform.name);
+            const modelsHtml = models.length
+                ? `<div class="platform-models">${models.map((model) => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}</div>`
+                : '';
+
+            const discontinuedClass = platform.status === 'discontinued' ? ' is-discontinued' : '';
+
+            return `
+                <article class="platform-card${discontinuedClass}" data-platform-id="${escapeHtml(platform.id || '')}">
+                    <header>
+                        ${nameHtml}
+                        <span class="platform-rating" aria-label="${rating} 星">${stars}</span>
+                    </header>
+                    ${summary}
+                    ${rushHtml}
+                    <ul class="platform-dimensions">${dimsHtml}</ul>
+                    ${tagsHtml}
+                    ${modelsHtml}
+                </article>
+            `;
+        }
+
+        function applyPlatformFilters() {
+            const cat = getPlatformCatalogConfig();
+            if (typeof PlatformCatalog === 'undefined') {
+                console.error('PlatformCatalog is not loaded');
+                return;
+            }
+
+            const filterOpts = {
+                selectedLabels: platformSelectedLabels,
+                showDiscontinued: platformShowDiscontinued,
+                derivedTags: cat.derivedTags || [],
+                operationalTags: cat.operationalTags || [],
+                showDiscontinuedLabel: cat.showDiscontinuedTag
+            };
+
+            const filtered = PlatformCatalog.filterPlatforms(allPlatforms, filterOpts);
+            const totalVisible = PlatformCatalog.filterPlatforms(allPlatforms, {
+                ...filterOpts,
+                selectedLabels: []
+            }).length;
+
+            const grid = document.getElementById('platformCardGrid');
+            const empty = document.getElementById('platformCatalogEmpty');
+            const showingEl = document.getElementById('platformShowingCount');
+            const totalEl = document.getElementById('platformTotalCount');
+
+            if (grid) {
+                grid.innerHTML = filtered.map(buildPlatformCardHtml).join('');
+            }
+            if (empty) {
+                empty.hidden = filtered.length > 0;
+            }
+            if (showingEl) {
+                showingEl.textContent = String(filtered.length);
+            }
+            if (totalEl) {
+                totalEl.textContent = String(totalVisible);
+            }
+
+            sessionStorage.setItem('platformCatalogSelection', JSON.stringify({
+                labels: platformSelectedLabels,
+                showDiscontinued: platformShowDiscontinued
+            }));
+        }
+
+        function clearPlatformFilters() {
+            platformSelectedLabels = [];
+            platformShowDiscontinued = false;
+            // 写入空选择，刷新后保持清空；仅首次无 storage key 时才用 defaultSelectedTags
+            sessionStorage.setItem('platformCatalogSelection', JSON.stringify({
+                labels: [],
+                showDiscontinued: false
+            }));
+            applyPlatformFilters();
+            renderPlatformTagBar();
+        }
+
+        function togglePlansTableSection() {
+            const section = document.getElementById('plansTableSection');
+            const panel = document.getElementById('plansTableCollapsible');
+            const btn = document.getElementById('plansTableToggle');
+            if (!section || !panel || !btn) return;
+
+            const collapsed = section.getAttribute('data-collapsed') === 'true';
+            section.setAttribute('data-collapsed', collapsed ? 'false' : 'true');
+            panel.hidden = !collapsed;
+            btn.setAttribute('aria-expanded', collapsed ? 'true' : 'false');
+            btn.textContent = collapsed ? '收起套餐大表' : '展开套餐大表';
+        }
+
+        function initPlatformCatalog() {
+            const cat = getPlatformCatalogConfig();
+            const stored = sessionStorage.getItem('platformCatalogSelection');
+            if (stored) {
+                try {
+                    const parsed = JSON.parse(stored);
+                    platformSelectedLabels = Array.isArray(parsed.labels) ? parsed.labels : [];
+                    platformShowDiscontinued = !!parsed.showDiscontinued;
+                } catch (_) {
+                    platformSelectedLabels = [...(cat.defaultSelectedTags || [])];
+                    platformShowDiscontinued = false;
+                }
+            } else {
+                platformSelectedLabels = [...(cat.defaultSelectedTags || [])];
+                platformShowDiscontinued = false;
+            }
+
+            renderPlatformTagBar();
+            applyPlatformFilters();
+
+            const clearBtn = document.getElementById('platformClearFilters');
+            if (clearBtn) {
+                clearBtn.onclick = clearPlatformFilters;
+            }
+            const tableToggle = document.getElementById('plansTableToggle');
+            if (tableToggle) {
+                tableToggle.onclick = togglePlansTableSection;
+            }
+        }
+
         // 加载套餐数据
         async function loadData() {
             try {
@@ -8096,7 +8352,13 @@
             document.querySelectorAll('.table-watermark-line').forEach(el => {
                 el.textContent = watermarkUrl;
             });
-            await loadData();
+
+            try {
+                await Promise.all([loadData(), loadPlatforms()]);
+                initPlatformCatalog();
+            } catch (error) {
+                console.error('平台目录或套餐数据加载失败:', error);
+            }
         });
 
     </script>
