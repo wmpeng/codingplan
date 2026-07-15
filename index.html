@@ -1283,6 +1283,329 @@
             color: var(--text-tertiary);
         }
 
+        /* 平台目录（主交互区） */
+        .platform-catalog {
+            margin: 8px 0 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .platform-catalog-header {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-left: 4px;
+        }
+
+        .platform-catalog-title {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: 0.2px;
+        }
+
+        .platform-catalog-subtitle {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text-tertiary);
+            line-height: 1.55;
+        }
+
+        .platform-tag-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            min-height: 52px;
+            padding: 14px 16px;
+            border-radius: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            background: rgba(255, 251, 245, 0.84);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .platform-tag-chip {
+            appearance: none;
+            border: 1px solid rgba(23, 32, 51, 0.12);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(244, 236, 223, 0.92));
+            color: var(--text-secondary);
+            border-radius: 999px;
+            min-height: 40px;
+            padding: 0 16px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+            box-shadow: 0 10px 20px rgba(23, 32, 51, 0.06);
+            white-space: nowrap;
+        }
+
+        .platform-tag-chip:hover {
+            transform: translateY(-1px);
+            border-color: rgba(198, 107, 26, 0.28);
+            color: var(--text-primary);
+            box-shadow: 0 14px 24px rgba(23, 32, 51, 0.08);
+        }
+
+        .platform-tag-chip.is-active,
+        .platform-tag-chip.active {
+            background: linear-gradient(135deg, #173753, #0f766e);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 14px 24px rgba(23, 55, 83, 0.18);
+        }
+
+        .platform-catalog-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 0 4px;
+        }
+
+        .platform-clear-filters {
+            appearance: none;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            border-radius: var(--radius-lg);
+            min-height: 36px;
+            padding: 0 14px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+        }
+
+        .platform-clear-filters:hover {
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+        }
+
+        .platform-catalog-stats {
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        .platform-catalog-stats strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .platform-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            min-height: 8px;
+        }
+
+        .platform-catalog-empty {
+            margin: 0;
+            padding: 28px 20px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-tertiary);
+            border-radius: var(--radius-xl);
+            border: 1px dashed rgba(23, 32, 51, 0.16);
+            background: rgba(255, 251, 245, 0.55);
+        }
+
+        .platform-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 22px 22px 20px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(15, 118, 110, 0.22);
+        }
+
+        .platform-card.is-discontinued {
+            background: var(--bg-tertiary);
+            opacity: 0.72;
+            box-shadow: none;
+        }
+
+        .platform-card.is-discontinued:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: var(--border-color);
+        }
+
+        .platform-card.is-discontinued .platform-name,
+        .platform-card.is-discontinued .platform-summary,
+        .platform-card.is-discontinued .dim-reason,
+        .platform-card.is-discontinued .dim-label {
+            color: var(--text-tertiary);
+        }
+
+        .platform-card > header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .platform-name,
+        .platform-name-link {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .platform-name-link:hover {
+            color: #154d77;
+        }
+
+        .platform-rating {
+            color: #f59e0b;
+            letter-spacing: 1px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .platform-summary {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.55;
+            color: var(--text-secondary);
+        }
+
+        .platform-rush {
+            display: inline-flex;
+            align-self: flex-start;
+            align-items: center;
+            min-height: 26px;
+            padding: 0 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            background: rgba(15, 118, 110, 0.1);
+            color: #0f766e;
+        }
+
+        .platform-rush[data-rush="true"] {
+            background: rgba(198, 107, 26, 0.12);
+            color: #c66b1a;
+        }
+
+        .platform-dimensions {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .platform-dimensions li {
+            display: grid;
+            grid-template-columns: 28px 64px minmax(0, 1fr);
+            gap: 8px 10px;
+            align-items: start;
+            padding: 8px 10px;
+            border-radius: 12px;
+            background: rgba(244, 236, 223, 0.45);
+        }
+
+        .platform-dimensions .dim-score {
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--accent-primary);
+            text-align: center;
+        }
+
+        .platform-dimensions .dim-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            padding-top: 3px;
+        }
+
+        .platform-dimensions .dim-reason {
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--text-tertiary);
+            overflow-wrap: anywhere;
+        }
+
+        .platform-tags,
+        .platform-models {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .platform-tags .platform-tag,
+        .platform-models .model-tag {
+            display: inline-flex;
+            align-items: center;
+            min-height: 24px;
+            padding: 0 9px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            background: rgba(23, 55, 83, 0.08);
+            color: var(--text-secondary);
+        }
+
+        /* 套餐大表折叠区（次要） */
+        .plans-table-section {
+            margin: 8px 0 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .plans-table-toggle {
+            appearance: none;
+            align-self: stretch;
+            width: 100%;
+            min-height: 48px;
+            padding: 12px 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(23, 32, 51, 0.12);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(244, 236, 223, 0.88));
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            transition: border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+        }
+
+        .plans-table-toggle:hover {
+            transform: translateY(-1px);
+            border-color: rgba(15, 118, 110, 0.28);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .plans-table-section[data-collapsed="true"] #plansTableCollapsible {
+            display: none;
+        }
+
+        .plans-table-collapsible {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
         /* 响应式 */
         /* 大屏幕（1200px - 1600px） */
         @media (max-width: 1600px) {
@@ -1326,6 +1649,51 @@
             }
 
             .header .subtitle {
+                font-size: 13px;
+            }
+
+            .platform-catalog {
+                gap: 16px;
+                margin-bottom: 28px;
+            }
+
+            .platform-catalog-title {
+                font-size: 20px;
+            }
+
+            .platform-catalog-subtitle {
+                font-size: 13px;
+            }
+
+            .platform-tag-bar {
+                min-height: 48px;
+                padding: 12px;
+                gap: 8px;
+            }
+
+            .platform-tag-chip {
+                min-height: 36px;
+                padding: 0 12px;
+                font-size: 12px;
+            }
+
+            .platform-card-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .platform-dimensions li {
+                grid-template-columns: 24px 56px minmax(0, 1fr);
+                gap: 6px 8px;
+                padding: 7px 8px;
+            }
+
+            .platform-dimensions .dim-score {
+                font-size: 16px;
+            }
+
+            .plans-table-toggle {
+                min-height: 44px;
                 font-size: 13px;
             }
 
@@ -2144,6 +2512,16 @@
                 font-size: 12px;
             }
 
+            .platform-catalog-title {
+                font-size: 18px;
+            }
+
+            .platform-tag-bar,
+            .platform-card,
+            .plans-table-toggle {
+                border-radius: 22px;
+            }
+
             .feedback-float {
                 right: 12px;
                 bottom: 14px;
@@ -2508,6 +2886,21 @@
                 </div>
             </section></div>
 
+        <!-- 平台目录（主交互；标签与卡片由 Task 5 填充） -->
+        <section class="platform-catalog" id="platformCatalog" aria-label="平台目录">
+            <header class="platform-catalog-header">
+                <h2 class="platform-catalog-title">平台目录</h2>
+                <p class="platform-catalog-subtitle">按标签筛选平台；清空后显示全部在售平台</p>
+            </header>
+            <div class="platform-tag-bar" id="platformTagBar" role="group" aria-label="平台标签"></div>
+            <div class="platform-catalog-toolbar">
+                <button type="button" class="platform-clear-filters" id="platformClearFilters">清空筛选</button>
+                <span class="platform-catalog-stats">显示 <strong id="platformShowingCount">0</strong> / <strong id="platformTotalCount">0</strong> 个平台</span>
+            </div>
+            <div class="platform-card-grid" id="platformCardGrid"></div>
+            <p class="platform-catalog-empty" id="platformCatalogEmpty" hidden>无匹配平台，试试清空筛选。</p>
+        </section>
+
         <!-- 评分标准 -->
         <div class="rating-guide" id="ratingGuide">基准3颗星，价格优势劣势1分，模型优势或独占模型1分，其他优势1分。TokenPlan因性价比较低，暂不推荐，能买CodingPlan尽量买CodingPlan</div>
 
@@ -2563,6 +2956,12 @@
 
         <hr class="section-divider">
 
+        <!-- 套餐大表（默认折叠；展开逻辑由 Task 5 接线） -->
+        <section class="plans-table-section" id="plansTableSection" data-collapsed="true">
+            <button type="button" class="plans-table-toggle" id="plansTableToggle" aria-expanded="false" aria-controls="plansTableCollapsible">
+                展开套餐大表
+            </button>
+            <div class="plans-table-collapsible" id="plansTableCollapsible" hidden>
         <!-- 顶部筛选栏 -->
         <div class="filter-bar surface-panel">
             <!-- 平台筛选下拉 -->
@@ -5471,6 +5870,8 @@
                 </table>
             </div>
         </div>
+            </div>
+        </section>
 
         <!-- 底部说明（与 config.json 同步） -->
         <div class="notes-section" id="notesSection">
