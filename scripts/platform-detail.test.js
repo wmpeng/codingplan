@@ -42,4 +42,21 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('仅短理由'));
     assert.ok(html.includes('性价比'));
   });
+
+  it('renders plans section when vendor has plans', () => {
+    const plans = [
+      { vendor: 'X', plan: 'Pro', type: 'Coding Plan', monthlyPrice: 100, discontinued: false },
+      { vendor: 'X', plan: 'Old', type: 'Coding Plan', monthlyPrice: 50, discontinued: true }
+    ];
+    const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans, monitorRow: null });
+    assert.ok(html.includes('data-section="plans"'));
+    assert.ok(html.includes('Pro'));
+    assert.ok(html.includes('is-discontinued') || html.includes('停售'));
+    assert.ok(html.includes('在套餐大表中查看'));
+  });
+
+  it('omits plans section when empty', () => {
+    const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans: [], monitorRow: null });
+    assert.ok(!html.includes('data-section="plans"'));
+  });
 });

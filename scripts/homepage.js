@@ -2121,6 +2121,23 @@
             btn.textContent = collapsed ? '收起套餐大表' : '展开套餐大表';
         }
 
+        function focusVendorInPlansTable(vendorName) {
+            const section = document.getElementById('plansTableSection');
+            if (section && section.getAttribute('data-collapsed') === 'true') {
+                togglePlansTableSection();
+            }
+            selectedVendors = new Set([vendorName]);
+            tempSelectedVendors = new Set([vendorName]);
+            document.querySelectorAll('#vendorCheckboxes input').forEach(cb => {
+                cb.checked = cb.value === vendorName;
+            });
+            updateVendorCount();
+            applyFilters();
+            if (section && typeof section.scrollIntoView === 'function') {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
         function initPlatformCatalog() {
             const cat = getPlatformCatalogConfig();
             const stored = sessionStorage.getItem('platformCatalogSelection');
@@ -2154,6 +2171,15 @@
 
             window.clearPlatformFilters = clearPlatformFilters;
             window.togglePlansTableSection = togglePlansTableSection;
+            window.focusVendorInPlansTable = focusVendorInPlansTable;
+
+            if (typeof PlatformDetail !== 'undefined' && PlatformDetail && typeof PlatformDetail.init === 'function') {
+                PlatformDetail.init({
+                    getPlans: () => allPlans,
+                    onJumpPlansTable: focusVendorInPlansTable,
+                    escapeHtml: typeof escapeHtml === 'function' ? escapeHtml : null
+                });
+            }
         }
 
         // 加载套餐数据

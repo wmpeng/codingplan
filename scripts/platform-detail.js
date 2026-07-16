@@ -20,6 +20,7 @@
   };
 
   let openPlatformId = null;
+  let openPlatformName = null;
   let triggerEl = null;
   let escBound = false;
   let closeBound = false;
@@ -48,10 +49,56 @@
     return typeof dim.reason === 'string' ? dim.reason : '';
   }
 
+  function formatMonthlyPrice(plan) {
+    const price = plan && plan.monthlyPrice;
+    if (price == null || price === '' || Number.isNaN(Number(price))) return '-';
+    const currency = (plan && plan.currency) || '¥';
+    const num = Number(price);
+    const text = Number.isInteger(num) ? String(num) : String(num);
+    return `${currency}${text}`;
+  }
+
+  function buildPlansSectionHtml(plans) {
+    if (!Array.isArray(plans) || plans.length === 0) return '';
+
+    const rows = plans
+      .map(plan => {
+        const dead = !!(plan && plan.discontinued);
+        const planName = esc(plan && plan.plan);
+        const type = esc((plan && plan.type) || 'Coding Plan');
+        const price = esc(formatMonthlyPrice(plan));
+        return (
+          `<tr class="platform-detail-plan-row${dead ? ' is-discontinued' : ''}">` +
+          `<td class="platform-detail-plan-name">${planName}</td>` +
+          `<td class="platform-detail-plan-type">${type}</td>` +
+          `<td class="platform-detail-plan-price">${price}</td>` +
+          `<td class="platform-detail-plan-status">${dead ? '<span class="platform-detail-plan-badge">停售</span>' : ''}</td>` +
+          `</tr>`
+        );
+      })
+      .join('');
+
+    return (
+      `<section class="platform-detail-section" data-section="plans" aria-labelledby="platformDetailPlansHeading">` +
+      `<h3 id="platformDetailPlansHeading" class="platform-detail-section-title">套餐</h3>` +
+      `<div class="platform-detail-plans-wrap">` +
+      `<table class="platform-detail-plans-table">` +
+      `<thead><tr>` +
+      `<th scope="col">套餐</th>` +
+      `<th scope="col">类型</th>` +
+      `<th scope="col">月价</th>` +
+      `<th scope="col">状态</th>` +
+      `</tr></thead>` +
+      `<tbody>${rows}</tbody>` +
+      `</table>` +
+      `</div>` +
+      `<button type="button" class="platform-detail-jump-plans" data-jump-plans="1">在套餐大表中查看</button>` +
+      `</section>`
+    );
+  }
+
   function buildDetailBodyHtml(platform, ctx) {
     const context = ctx || {};
-    // plans / monitorRow reserved for later tasks
-    void context.plans;
     void context.monitorRow;
 
     const name = esc(platform && platform.name);
@@ -60,6 +107,12 @@
     const rush = !!(platform && platform.purchaseRush);
     const rushLabel = rush ? '需要抢购' : '无需抢购';
     const discontinued = platform && platform.status === 'discontinued';
+
+    const rawPlans = Array.isArray(context.plans) ? context.plans : [];
+    const vendorPlans =
+      typeof PlatformCatalog.collectPlansForVendor === 'function'
+        ? PlatformCatalog.collectPlansForVendor(rawPlans, platform && platform.name)
+        : rawPlans.filter(p => p && p.vendor === (platform && platform.name));
 
     const dims = dimensionMeta()
       .map(({ key, label }) => {
@@ -90,7 +143,8 @@
       `<section class="platform-detail-section" data-section="dimensions" aria-labelledby="platformDetailDimsHeading">` +
       `<h3 id="platformDetailDimsHeading" class="platform-detail-section-title">评价详解</h3>` +
       `<ul class="platform-detail-dimensions">${dims}</ul>` +
-      `</section>`
+      `</section>` +
+      buildPlansSectionHtml(vendorPlans)
     );
   }
 
@@ -121,8 +175,17 @@
 
   function onOverlayClick(event) {
     const target = event.target;
-    if (target && target.getAttribute && target.getAttribute('data-platform-detail-close') === '1') {
+    if (!target || !target.getAttribute) return;
+    if (target.getAttribute('data-platform-detail-close') === '1') {
       close();
+      return;
+    }
+    if (target.closest && target.closest('[data-jump-plans="1"]')) {
+      const vendorName = openPlatformName;
+      close();
+      if (typeof options.onJumpPlansTable === 'function' && vendorName) {
+        options.onJumpPlansTable(vendorName);
+      }
     }
   }
 
@@ -170,6 +233,7 @@
       document.body.style.overflow = '';
     }
     openPlatformId = null;
+    openPlatformName = null;
     const returnTo = triggerEl;
     triggerEl = null;
     if (returnTo && typeof returnTo.focus === 'function') {
@@ -207,6 +271,7 @@
     }
 
     openPlatformId = platform.id || null;
+    openPlatformName = platform.name || null;
     triggerEl = opts.triggerEl || null;
 
     const closeBtn = closeBtnEl();
