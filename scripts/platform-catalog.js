@@ -94,6 +94,30 @@ function collectModelsForVendor(plans, vendorName) {
   return models;
 }
 
+function dimensionCopy(dim) {
+  if (!dim || typeof dim !== 'object') return '';
+  const detail = typeof dim.detail === 'string' ? dim.detail.trim() : '';
+  if (detail) return detail;
+  return typeof dim.reason === 'string' ? dim.reason : '';
+}
+
+function collectPlansForVendor(plans, vendorName) {
+  if (!Array.isArray(plans) || !vendorName) return [];
+  return plans.filter(p => p && p.vendor === vendorName);
+}
+
+function matchMonitorPlatform(platform, boardPlatforms) {
+  if (!platform || !Array.isArray(boardPlatforms)) return null;
+  const slug = typeof platform.monitorSlug === 'string' ? platform.monitorSlug.trim() : '';
+  if (slug) {
+    const bySlug = boardPlatforms.find(b => b && b.platform_slug === slug);
+    if (bySlug) return bySlug;
+  }
+  const name = String(platform.name || '').trim();
+  if (!name) return null;
+  return boardPlatforms.find(b => b && String(b.platform_display_name || '').trim() === name) || null;
+}
+
 function resolvePlatformAction(platform, plans) {
   if (platform.action) {
     return platform.action;
@@ -142,6 +166,11 @@ function validatePlatformRecords(platforms, plans) {
       }
       if (typeof reason !== 'string' || reason.trim() === '') {
         errors.push(`${prefix}: dimension "${key}" reason must be a non-empty string`);
+      }
+      if (Object.prototype.hasOwnProperty.call(dim, 'detail')) {
+        if (typeof dim.detail !== 'string' || dim.detail.trim() === '') {
+          errors.push(`${prefix}: dimension "${key}" detail must be a non-empty string when present`);
+        }
       }
     }
   }
@@ -237,6 +266,9 @@ const PlatformCatalog = {
   matchesOperationalTag,
   filterPlatforms,
   collectModelsForVendor,
+  dimensionCopy,
+  collectPlansForVendor,
+  matchMonitorPlatform,
   resolvePlatformAction,
   validatePlatformRecords,
   buildPlatformTagBarHtml,

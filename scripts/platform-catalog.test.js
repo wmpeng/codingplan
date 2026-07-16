@@ -7,7 +7,10 @@ const {
   validatePlatformRecords,
   escapeHtml,
   buildPlatformCardHtml,
-  buildPlatformTagBarHtml
+  buildPlatformTagBarHtml,
+  dimensionCopy,
+  collectPlansForVendor,
+  matchMonitorPlatform
 } = require('./platform-catalog.js');
 
 const derivedTags = [
@@ -177,5 +180,68 @@ describe('buildPlatformTagBarHtml', () => {
     const html = buildPlatformTagBarHtml(cat, ['无需抢购'], false);
     assert.match(html, /class="platform-tag-chip is-active" data-platform-tag="无需抢购"/);
     assert.match(html, /platform-tag-chip--discontinued/);
+  });
+});
+
+describe('dimensionCopy', () => {
+  it('prefers non-empty detail over reason', () => {
+    assert.equal(dimensionCopy({ reason: '短', detail: '长文案' }), '长文案');
+  });
+  it('falls back to reason when detail missing or blank', () => {
+    assert.equal(dimensionCopy({ reason: '短' }), '短');
+    assert.equal(dimensionCopy({ reason: '短', detail: '  ' }), '短');
+    assert.equal(dimensionCopy({ reason: '短', detail: '' }), '短');
+  });
+});
+
+describe('collectPlansForVendor', () => {
+  it('returns all plans for vendor including discontinued, in order', () => {
+    const plans = [
+      { vendor: 'A', plan: '1', discontinued: false },
+      { vendor: 'B', plan: 'x' },
+      { vendor: 'A', plan: '2', discontinued: true }
+    ];
+    const rows = collectPlansForVendor(plans, 'A');
+    assert.equal(rows.length, 2);
+    assert.equal(rows[0].plan, '1');
+    assert.equal(rows[1].plan, '2');
+  });
+});
+
+describe('matchMonitorPlatform', () => {
+  const board = [
+    { platform_slug: 'minimax', platform_display_name: 'MiniMax', availability_rate: 0.99 },
+    { platform_slug: 'foo', platform_display_name: 'Foo云', availability_rate: 0.8 }
+  ];
+  it('matches by monitorSlug first', () => {
+    const hit = matchMonitorPlatform({ name: '别名', monitorSlug: 'minimax' }, board);
+    assert.equal(hit.platform_slug, 'minimax');
+  });
+  it('matches by trimmed display name', () => {
+    const hit = matchMonitorPlatform({ name: ' MiniMax ' }, board);
+    assert.equal(hit.platform_slug, 'minimax');
+  });
+  it('returns null when no match', () => {
+    assert.equal(matchMonitorPlatform({ name: '不存在' }, board), null);
+  });
+});
+
+describe('validatePlatformRecords detail', () => {
+  it('allows missing detail', () => {
+    const { ok } = validatePlatformRecords([samplePlatform()], []);
+    assert.equal(ok, true);
+  });
+  it('rejects empty detail string', () => {
+    const p = samplePlatform({
+      dimensions: {
+        value: { score: 5, reason: 'a', detail: '' },
+        stability: { score: 3, reason: 'b' },
+        models: { score: 4, reason: 'c' },
+        convenience: { score: 4, reason: 'd' }
+      }
+    });
+    const { ok, errors } = validatePlatformRecords([p], []);
+    assert.equal(ok, false);
+    assert.ok(errors.some(e => e.includes('detail')));
   });
 });
