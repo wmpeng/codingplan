@@ -104,23 +104,13 @@
     return ((rate || 0) * 100).toFixed(1) + '%';
   }
 
-  function hourCellBg(color) {
-    if (color === 'green') return '#22c55e';
-    if (color === 'yellow') return '#eab308';
-    if (color === 'red') return '#ef4444';
-    return '#d1d5db';
-  }
-
   function buildHoursSparklineHtml(hours) {
     if (!Array.isArray(hours) || hours.length === 0) return '';
     const recent = hours.length > 48 ? hours.slice(hours.length - 48) : hours;
     const cells = recent
       .map(cell => {
         const color = (cell && cell.color) || 'gray';
-        return (
-          `<span class="platform-detail-hour-cell" data-color="${esc(color)}" ` +
-          `style="display:inline-block;width:4px;height:14px;margin-right:1px;background:${hourCellBg(color)}"></span>`
-        );
+        return `<span class="platform-detail-hour-cell" data-color="${esc(color)}"></span>`;
       })
       .join('');
     return `<div class="platform-detail-hours" aria-hidden="true">${cells}</div>`;

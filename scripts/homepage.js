@@ -2094,6 +2094,12 @@
                 labels: platformSelectedLabels,
                 showDiscontinued: platformShowDiscontinued
             }));
+
+            if (typeof PlatformDetail !== 'undefined' && PlatformDetail.isOpen()) {
+                const openId = PlatformDetail.getOpenPlatformId();
+                const stillVisible = filtered.some(p => p.id === openId);
+                if (!stillVisible) PlatformDetail.close();
+            }
         }
 
         function clearPlatformFilters() {
@@ -2176,10 +2182,32 @@
             if (typeof PlatformDetail !== 'undefined' && PlatformDetail && typeof PlatformDetail.init === 'function') {
                 PlatformDetail.init({
                     getPlans: () => allPlans,
-                    monitorApiBase: 'https://api.dreamfree.space/vc',
+                    monitorApiBase: (window.MONITOR_CONFIG && window.MONITOR_CONFIG.apiBase) || 'https://api.dreamfree.space/vc',
                     onJumpPlansTable: focusVendorInPlansTable,
                     escapeHtml: typeof escapeHtml === 'function' ? escapeHtml : null
                 });
+
+                const grid = document.getElementById('platformCardGrid');
+                if (grid && !grid.dataset.detailBound) {
+                    grid.dataset.detailBound = '1';
+                    grid.addEventListener('click', (e) => {
+                        if (e.target.closest('a')) return;
+                        const card = e.target.closest('.platform-card');
+                        if (!card) return;
+                        const id = card.getAttribute('data-platform-id');
+                        const platform = allPlatforms.find(p => p.id === id);
+                        if (platform) PlatformDetail.open(platform, { triggerEl: card });
+                    });
+                    grid.addEventListener('keydown', (e) => {
+                        if (e.key !== 'Enter' && e.key !== ' ') return;
+                        const card = e.target.closest('.platform-card');
+                        if (!card || e.target.closest('a')) return;
+                        e.preventDefault();
+                        const id = card.getAttribute('data-platform-id');
+                        const platform = allPlatforms.find(p => p.id === id);
+                        if (platform) PlatformDetail.open(platform, { triggerEl: card });
+                    });
+                }
             }
         }
 
