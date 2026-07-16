@@ -1581,6 +1581,217 @@
             margin-top: 8px;
         }
 
+        /* 平台详情浮层 */
+        .platform-detail-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 16px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .platform-detail-overlay[hidden] {
+            display: none !important;
+        }
+
+        .platform-detail-overlay.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .platform-detail-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(23, 32, 51, 0.48);
+            backdrop-filter: blur(2px);
+        }
+
+        .platform-detail-dialog {
+            position: relative;
+            z-index: 1;
+            width: min(100%, 600px);
+            max-height: 85vh;
+            overflow: auto;
+            background: var(--bg-secondary, #fffbf5);
+            border: 1px solid rgba(23, 32, 51, 0.12);
+            border-radius: var(--radius-xl, 20px);
+            box-shadow: 0 28px 64px rgba(23, 32, 51, 0.22);
+            padding: 28px 28px 24px;
+            outline: none;
+            transform: translateY(8px) scale(0.985);
+            transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .platform-detail-overlay.is-open .platform-detail-dialog {
+            transform: translateY(0) scale(1);
+        }
+
+        .platform-detail-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(23, 32, 51, 0.06);
+            color: var(--text-secondary);
+            font-size: 22px;
+            line-height: 1;
+            cursor: pointer;
+            transition: background 0.15s ease, color 0.15s ease;
+        }
+
+        .platform-detail-close:hover {
+            background: rgba(23, 32, 51, 0.1);
+            color: var(--text-primary);
+        }
+
+        .platform-detail-close:focus-visible {
+            outline: 2px solid var(--accent-primary, #0f766e);
+            outline-offset: 2px;
+        }
+
+        .platform-detail-header {
+            padding-right: 40px;
+            margin-bottom: 22px;
+        }
+
+        .platform-detail-title {
+            margin: 0 0 10px;
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.25;
+            color: var(--text-primary);
+        }
+
+        .platform-detail-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px 12px;
+        }
+
+        .platform-detail-rating {
+            color: #f59e0b;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+
+        .platform-detail-rush {
+            display: inline-flex;
+            align-items: center;
+            min-height: 26px;
+            padding: 0 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            background: rgba(15, 118, 110, 0.1);
+            color: #0f766e;
+        }
+
+        .platform-detail-rush[data-rush="true"] {
+            background: rgba(198, 107, 26, 0.12);
+            color: #c66b1a;
+        }
+
+        .platform-detail-status {
+            display: inline-flex;
+            align-items: center;
+            min-height: 26px;
+            padding: 0 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            background: rgba(23, 32, 51, 0.08);
+            color: var(--text-tertiary);
+        }
+
+        .platform-detail-header.is-discontinued .platform-detail-title {
+            color: var(--text-tertiary);
+        }
+
+        .platform-detail-section-title {
+            margin: 0 0 12px;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            color: var(--text-secondary);
+        }
+
+        .platform-detail-dimensions {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .platform-detail-dim {
+            display: grid;
+            grid-template-columns: 40px minmax(0, 1fr);
+            gap: 12px 14px;
+            align-items: start;
+            padding: 14px 14px 13px;
+            border-radius: 14px;
+            background: rgba(244, 236, 223, 0.55);
+            border: 1px solid rgba(23, 32, 51, 0.05);
+        }
+
+        .platform-detail-dim-score {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--accent-primary, #0f766e);
+            text-align: center;
+            padding-top: 1px;
+        }
+
+        .platform-detail-dim-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .platform-detail-dim-copy {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 640px) {
+            .platform-detail-overlay {
+                padding: 12px;
+                align-items: flex-end;
+            }
+
+            .platform-detail-dialog {
+                width: 100%;
+                max-height: 90vh;
+                padding: 22px 18px 18px;
+                border-radius: 18px 18px 14px 14px;
+            }
+
+            .platform-detail-title {
+                font-size: 20px;
+            }
+
+            .platform-detail-dim {
+                grid-template-columns: 34px minmax(0, 1fr);
+                padding: 12px;
+            }
+        }
+
         .platform-tags,
         .platform-models {
             display: flex;
@@ -6234,9 +6445,18 @@
         </div>
     </div>
 
-    <script src="scripts/platform-catalog.js?v=260715"></script>
+    <div id="platformDetailOverlay" class="platform-detail-overlay" hidden>
+        <div class="platform-detail-backdrop" data-platform-detail-close="1"></div>
+        <div class="platform-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="platformDetailTitle" tabindex="-1">
+            <button type="button" class="platform-detail-close" id="platformDetailClose" aria-label="关闭">×</button>
+            <div id="platformDetailBody"></div>
+        </div>
+    </div>
+
+    <script src="scripts/platform-catalog.js?v=260716"></script>
+    <script src="scripts/platform-detail.js?v=260716"></script>
     <script src="scripts/shared.js?v=260610"></script>
-        <script src="scripts/homepage.js?v=260715"></script>
+        <script src="scripts/homepage.js?v=260716"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
     <script src="scripts/plan-usage-chart.js?v=260617"></script>
