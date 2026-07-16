@@ -59,4 +59,24 @@ describe('buildDetailBodyHtml', () => {
     const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans: [], monitorRow: null });
     assert.ok(!html.includes('data-section="plans"'));
   });
+
+  it('renders availability when monitorRow present', () => {
+    const html = buildDetailBodyHtml(samplePlatform({ name: 'MiniMax' }), {
+      plans: [],
+      monitorRow: {
+        platform_slug: 'minimax',
+        platform_display_name: 'MiniMax',
+        availability_rate: 0.987,
+        hours: []
+      }
+    });
+    assert.ok(html.includes('data-section="availability"'));
+    assert.ok(html.includes('98') || html.includes('98.7') || html.includes('99'));
+    assert.ok(html.includes('查看完整可用性'));
+  });
+
+  it('omits availability when monitorRow null', () => {
+    const html = buildDetailBodyHtml(samplePlatform(), { plans: [], monitorRow: null });
+    assert.ok(!html.includes('data-section="availability"'));
+  });
 });

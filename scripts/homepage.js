@@ -2176,6 +2176,7 @@
             if (typeof PlatformDetail !== 'undefined' && PlatformDetail && typeof PlatformDetail.init === 'function') {
                 PlatformDetail.init({
                     getPlans: () => allPlans,
+                    monitorApiBase: 'https://api.dreamfree.space/vc',
                     onJumpPlansTable: focusVendorInPlansTable,
                     escapeHtml: typeof escapeHtml === 'function' ? escapeHtml : null
                 });

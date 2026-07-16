@@ -24,6 +24,9 @@
   let triggerEl = null;
   let escBound = false;
   let closeBound = false;
+  let openSeq = 0;
+  let boardCache = null; // { platforms: [] } | false (failed)
+  let boardPromise = null;
 
   function esc(text) {
     const fn = options.escapeHtml || PlatformCatalog.escapeHtml;
@@ -97,9 +100,82 @@
     );
   }
 
+  function formatAvailabilityRate(rate) {
+    return ((rate || 0) * 100).toFixed(1) + '%';
+  }
+
+  function hourCellBg(color) {
+    if (color === 'green') return '#22c55e';
+    if (color === 'yellow') return '#eab308';
+    if (color === 'red') return '#ef4444';
+    return '#d1d5db';
+  }
+
+  function buildHoursSparklineHtml(hours) {
+    if (!Array.isArray(hours) || hours.length === 0) return '';
+    const recent = hours.length > 48 ? hours.slice(hours.length - 48) : hours;
+    const cells = recent
+      .map(cell => {
+        const color = (cell && cell.color) || 'gray';
+        return (
+          `<span class="platform-detail-hour-cell" data-color="${esc(color)}" ` +
+          `style="display:inline-block;width:4px;height:14px;margin-right:1px;background:${hourCellBg(color)}"></span>`
+        );
+      })
+      .join('');
+    return `<div class="platform-detail-hours" aria-hidden="true">${cells}</div>`;
+  }
+
+  function buildAvailabilitySectionHtml(platform, monitorRow) {
+    if (!monitorRow) return '';
+
+    const rateText = formatAvailabilityRate(monitorRow.availability_rate);
+    const slug =
+      (monitorRow.platform_slug && String(monitorRow.platform_slug).trim()) ||
+      (platform && platform.monitorSlug && String(platform.monitorSlug).trim()) ||
+      (platform && platform.name) ||
+      '';
+    const href = `monitor/?platform=${encodeURIComponent(slug)}`;
+
+    return (
+      `<section class="platform-detail-section" data-section="availability" aria-labelledby="platformDetailAvailHeading">` +
+      `<h3 id="platformDetailAvailHeading" class="platform-detail-section-title">可用性</h3>` +
+      `<div class="platform-detail-avail">` +
+      `<span class="platform-detail-avail-rate">${esc(rateText)}</span>` +
+      buildHoursSparklineHtml(monitorRow.hours) +
+      `</div>` +
+      `<a class="platform-detail-avail-link" href="${esc(href)}">查看完整可用性</a>` +
+      `</section>`
+    );
+  }
+
+  async function ensureBoard(apiBase) {
+    if (boardCache) return boardCache;
+    if (boardCache === false) return null;
+    if (boardPromise) return boardPromise;
+    const base = (apiBase || DEFAULT_MONITOR_API_BASE).replace(/\/$/, '');
+    boardPromise = fetch(`${base}/monitor/board?days=7`, { cache: 'no-store' })
+      .then(r => {
+        if (!r.ok) throw new Error(String(r.status));
+        return r.json();
+      })
+      .then(data => {
+        boardCache = data;
+        return data;
+      })
+      .catch(() => {
+        boardCache = false;
+        return null;
+      })
+      .finally(() => {
+        boardPromise = null;
+      });
+    return boardPromise;
+  }
+
   function buildDetailBodyHtml(platform, ctx) {
     const context = ctx || {};
-    void context.monitorRow;
+    const monitorRow = context.monitorRow || null;
 
     const name = esc(platform && platform.name);
     const rating = Math.max(0, Math.min(5, Number(platform && platform.rating) || 0));
@@ -144,7 +220,8 @@
       `<h3 id="platformDetailDimsHeading" class="platform-detail-section-title">评价详解</h3>` +
       `<ul class="platform-detail-dimensions">${dims}</ul>` +
       `</section>` +
-      buildPlansSectionHtml(vendorPlans)
+      buildPlansSectionHtml(vendorPlans) +
+      buildAvailabilitySectionHtml(platform, monitorRow)
     );
   }
 
@@ -245,13 +322,14 @@
     }
   }
 
-  function open(platform, openOpts) {
+  async function open(platform, openOpts) {
     if (!platform) return;
     const opts = openOpts || {};
     if (isOpen()) close();
 
     bindChromeOnce();
 
+    const seq = ++openSeq;
     const plans =
       typeof options.getPlans === 'function' ? options.getPlans() || [] : [];
     const html = buildDetailBodyHtml(platform, {
@@ -281,6 +359,18 @@
       const dialog = overlay.querySelector('.platform-detail-dialog');
       if (dialog && typeof dialog.focus === 'function') dialog.focus();
     }
+
+    const board = await ensureBoard(options.monitorApiBase);
+    if (seq !== openSeq || !isOpen()) return;
+    if (!board || !Array.isArray(board.platforms)) return;
+
+    const monitorRow =
+      typeof PlatformCatalog.matchMonitorPlatform === 'function'
+        ? PlatformCatalog.matchMonitorPlatform(platform, board.platforms)
+        : null;
+    if (!monitorRow) return;
+
+    body.innerHTML = buildDetailBodyHtml(platform, { plans, monitorRow });
   }
 
   return {
