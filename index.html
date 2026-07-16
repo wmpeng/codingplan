@@ -1439,6 +1439,12 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            cursor: pointer;
+        }
+
+        .platform-card:focus-visible {
+            outline: 2px solid var(--accent, #2563eb);
+            outline-offset: 2px;
         }
 
         .platform-card:hover {
@@ -1480,6 +1486,12 @@
             font-weight: 800;
             color: var(--text-primary);
             text-decoration: none;
+        }
+
+        .platform-card .platform-name-link {
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
         }
 
         .platform-name-link:hover {
@@ -1557,6 +1569,16 @@
             line-height: 1.5;
             color: var(--text-tertiary);
             overflow-wrap: anywhere;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .platform-card-hint {
+            font-size: 12px;
+            opacity: 0.65;
+            margin-top: 8px;
         }
 
         .platform-tags,
@@ -2735,7 +2757,7 @@
                 <span class="platform-catalog-stats">显示 <strong id="platformShowingCount">25</strong> / <strong id="platformTotalCount">27</strong> 个平台</span>
             </div>
             <div class="platform-card-grid" id="platformCardGrid">
-                <article class="platform-card" data-platform-id="zhipu-intl">
+                <article class="platform-card" data-platform-id="zhipu-intl" tabindex="0" role="button" aria-label="智谱国际版 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqzai" target="_blank" rel="noopener noreferrer">智谱国际版</a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -2745,9 +2767,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">3</span><span class="dim-label">性价比</span><span class="dim-reason">用量与国内版完全一致，但价格折算后约为国内版两倍以上。</span></li><li data-dim="stability"><span class="dim-score">4</span><span class="dim-label">稳定性</span><span class="dim-reason">国际版通道稳定，无需抢名额，开通流程顺畅。</span></li><li data-dim="models"><span class="dim-score">5</span><span class="dim-label">模型覆盖</span><span class="dim-reason">支持 GLM-5.2 等与国内版一致的旗舰模型，能力不打折。</span></li><li data-dim="convenience"><span class="dim-score">5</span><span class="dim-label">使用便捷性</span><span class="dim-reason">无需抢购，随时可下单，是国内版抢不到时的稳妥替代。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5-Turbo</span><span class="model-tag">GLM-5</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="minimax">
+                <article class="platform-card" data-platform-id="minimax" tabindex="0" role="button" aria-label="MiniMax 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqminimax" target="_blank" rel="noopener noreferrer">MiniMax</a>
                         <span class="platform-rating" aria-label="5 星">⭐️⭐️⭐️⭐️⭐️</span>
@@ -2757,9 +2780,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">5</span><span class="dim-label">性价比</span><span class="dim-reason">额度依然最高，低难度任务和日常编程助手场景性价比突出。</span></li><li data-dim="stability"><span class="dim-score">4</span><span class="dim-label">稳定性</span><span class="dim-reason">常规编程与助手场景稳定，无需抢购，续费体验顺畅。</span></li><li data-dim="models"><span class="dim-score">5</span><span class="dim-label">模型覆盖</span><span class="dim-reason">支持 MiniMax-M3 及多模态，模型能力均衡不拉胯。</span></li><li data-dim="convenience"><span class="dim-score">5</span><span class="dim-label">使用便捷性</span><span class="dim-reason">随时可下单，档位丰富，不用蹲点拼手速。</span></li></ul>
                     <div class="platform-tags"><span class="platform-tag">适合养龙虾</span><span class="platform-tag">热门模型</span></div>
                     <div class="platform-models"><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="iflytek">
+                <article class="platform-card" data-platform-id="iflytek" tabindex="0" role="button" aria-label="讯飞·星火 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqxunfei" target="_blank" rel="noopener noreferrer">讯飞·星火</a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -2769,9 +2793,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">5</span><span class="dim-label">性价比</span><span class="dim-reason">用量多且按真实调用次数计费，39 元起档位丰俭由人，高效版 199 元即享 GLM-5.2。</span></li><li data-dim="stability"><span class="dim-score">3</span><span class="dim-label">稳定性</span><span class="dim-reason">GLM-5.2 高峰期比较拥挤，其他模型时段表现尚可。</span></li><li data-dim="models"><span class="dim-score">4</span><span class="dim-label">模型覆盖</span><span class="dim-reason">高效版支持 GLM-5.2，专业版支持 GLM-5.1 与 DeepSeek-V4，覆盖面广。</span></li><li data-dim="convenience"><span class="dim-score">5</span><span class="dim-label">使用便捷性</span><span class="dim-reason">无需抢购，随时可下单，是智谱抢不到时的最佳平替。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Qwen3.6-35B-A3B</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Pro</span><span class="model-tag">DeepSeek-V4-Flash</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="opencode">
+                <article class="platform-card" data-platform-id="opencode" tabindex="0" role="button" aria-label="OpenCode 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqopencode" target="_blank" rel="noopener noreferrer">OpenCode</a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -2781,9 +2806,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">5</span><span class="dim-label">性价比</span><span class="dim-reason">Go 套餐 $10/月（首月 $5），DeepSeek V4 Flash 每月可达约 15.8 万次请求，量大价低。</span></li><li data-dim="stability"><span class="dim-score">4</span><span class="dim-label">稳定性</span><span class="dim-reason">多模型聚合平台运行稳定，偶发国际线路波动但整体可用。</span></li><li data-dim="models"><span class="dim-score">5</span><span class="dim-label">模型覆盖</span><span class="dim-reason">聚合 GLM-5.2、Kimi-K2.7-Code、MiniMax-M3、Qwen-3.7-Max、DeepSeek-V4 等主流模型。</span></li><li data-dim="convenience"><span class="dim-score">4</span><span class="dim-label">使用便捷性</span><span class="dim-reason">支持支付宝付款，Go 套餐首月半价，对国内用户较友好。</span></li></ul>
                     <div class="platform-tags"><span class="platform-tag">可支付宝</span></div>
                     <div class="platform-models"><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V4-Pro</span><span class="model-tag">DeepSeek-V4-Flash</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="xiaomi-mimo">
+                <article class="platform-card" data-platform-id="xiaomi-mimo" tabindex="0" role="button" aria-label="小米·MiMo 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqmimo" target="_blank" rel="noopener noreferrer">小米·MiMo</a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -2793,9 +2819,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">4</span><span class="dim-label">性价比</span><span class="dim-reason">MiMo-V2.5-Pro 能力与 DeepSeek 持平，按量价格与官方一致，适合不想抢 Coding Plan 的用户。</span></li><li data-dim="stability"><span class="dim-score">4</span><span class="dim-label">稳定性</span><span class="dim-reason">小米官方按量通道，日常调用稳定，适合作为 DeepSeek 平替。</span></li><li data-dim="models"><span class="dim-score">3</span><span class="dim-label">模型覆盖</span><span class="dim-reason">以 MiMo 系列为主，模型覆盖面窄于多模型聚合平台。</span></li><li data-dim="convenience"><span class="dim-score">5</span><span class="dim-label">使用便捷性</span><span class="dim-reason">按量计费随时开通，无需抢购，充值即用。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-TTS</span><span class="model-tag">MiMo-V2-Pro</span><span class="model-tag">MiMo-V2-Omni</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="kimi">
+                <article class="platform-card" data-platform-id="kimi" tabindex="0" role="button" aria-label="Kimi 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqkimi" target="_blank" rel="noopener noreferrer">Kimi</a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -2805,9 +2832,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">3</span><span class="dim-label">性价比</span><span class="dim-reason">支持 Kimi-K2.7-Code，但实测用量较其他家略少，性价比中规中矩。</span></li><li data-dim="stability"><span class="dim-score">4</span><span class="dim-label">稳定性</span><span class="dim-reason">月之暗面官方服务稳定，多模态与实验性功能持续迭代。</span></li><li data-dim="models"><span class="dim-score">4</span><span class="dim-label">模型覆盖</span><span class="dim-reason">K2.7-Code 代码能力均衡，支持多模态图像输入与专业数据库实验功能。</span></li><li data-dim="convenience"><span class="dim-score">5</span><span class="dim-label">使用便捷性</span><span class="dim-reason">无需抢购，Coding Plan 随时可购，开通门槛低。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Kimi-K2</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="youyun">
+                <article class="platform-card" data-platform-id="youyun" tabindex="0" role="button" aria-label="优云智算 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqyyzs" target="_blank" rel="noopener noreferrer">优云智算</a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -2817,9 +2845,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">4</span><span class="dim-label">性价比</span><span class="dim-reason">49 元起即支持 GLM-5.2，限时优惠倍率让入门档性价比不错。</span></li><li data-dim="stability"><span class="dim-score">4</span><span class="dim-label">稳定性</span><span class="dim-reason">中小云厂商但 Coding Plan 运行稳定，适合体验与轻度使用。</span></li><li data-dim="models"><span class="dim-score">4</span><span class="dim-label">模型覆盖</span><span class="dim-reason">全档位支持 GLM-5.2，同时覆盖 Kimi、MiniMax、DeepSeek 等常见模型。</span></li><li data-dim="convenience"><span class="dim-score">5</span><span class="dim-label">使用便捷性</span><span class="dim-reason">档位从入门到 Ultra 齐全，无需抢购，适合按需选型。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash</span><span class="model-tag">DeepSeek-V3.2</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="aliyun-bailian">
+                <article class="platform-card" data-platform-id="aliyun-bailian" tabindex="0" role="button" aria-label="阿里·百炼 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqbailianc" target="_blank" rel="noopener noreferrer">阿里·百炼</a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
@@ -2829,9 +2858,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">2</span><span class="dim-label">性价比</span><span class="dim-reason">Coding Plan 起价 198 元，Token Plan 按量性价比偏低，更适合已有阿里云生态的用户。</span></li><li data-dim="stability"><span class="dim-score">5</span><span class="dim-label">稳定性</span><span class="dim-reason">阿里云大厂基础设施，服务可用性与 SLA 有保障。</span></li><li data-dim="models"><span class="dim-score">4</span><span class="dim-label">模型覆盖</span><span class="dim-reason">Qwen-3.7-Plus/Max 系列齐全，同时接入 GLM、Kimi、MiniMax 等第三方模型。</span></li><li data-dim="convenience"><span class="dim-score">4</span><span class="dim-label">使用便捷性</span><span class="dim-reason">随时可购，与阿里云账号体系打通，企业用户接入方便。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.5-Plus</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">GLM-5</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="baidu-qianfan">
+                <article class="platform-card" data-platform-id="baidu-qianfan" tabindex="0" role="button" aria-label="百度·千帆 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqqianfan" target="_blank" rel="noopener noreferrer">百度·千帆</a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
@@ -2841,9 +2871,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">3</span><span class="dim-label">性价比</span><span class="dim-reason">40 元起的中档定价，模型覆盖面不错但用量优势不突出。</span></li><li data-dim="stability"><span class="dim-score">4</span><span class="dim-label">稳定性</span><span class="dim-reason">百度智能云官方通道，稳定性符合大厂预期。</span></li><li data-dim="models"><span class="dim-score">4</span><span class="dim-label">模型覆盖</span><span class="dim-reason">接入 GLM-5.1、DeepSeek-V4、Kimi-K2.5 等主流开源模型。</span></li><li data-dim="convenience"><span class="dim-score">4</span><span class="dim-label">使用便捷性</span><span class="dim-reason">无需抢购，套餐选择直接，适合百度生态用户。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">GLM-5</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash</span><span class="model-tag">DeepSeek-V4-Pro</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="huawei-cloud">
+                <article class="platform-card" data-platform-id="huawei-cloud" tabindex="0" role="button" aria-label="华为云 详情">
                     <header>
                         <a class="platform-name-link" href="https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement" target="_blank" rel="noopener noreferrer">华为云</a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
@@ -2853,9 +2884,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">2</span><span class="dim-label">性价比</span><span class="dim-reason">Token Plan 按量性价比一般，且限个人用户每账号限购 1 套。</span></li><li data-dim="stability"><span class="dim-score">5</span><span class="dim-label">稳定性</span><span class="dim-reason">华为云基础设施成熟，企业级稳定性有保障。</span></li><li data-dim="models"><span class="dim-score">3</span><span class="dim-label">模型覆盖</span><span class="dim-reason">覆盖 GLM、Kimi、DeepSeek 系列，但模型更新节奏略慢于头部 Coding Plan。</span></li><li data-dim="convenience"><span class="dim-score">3</span><span class="dim-label">使用便捷性</span><span class="dim-reason">限购政策增加选型摩擦，更适合已有华为云账号的用户。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="tencent-cloud">
+                <article class="platform-card" data-platform-id="tencent-cloud" tabindex="0" role="button" aria-label="腾讯云 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqtengxunc" target="_blank" rel="noopener noreferrer">腾讯云</a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
@@ -2865,9 +2897,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">3</span><span class="dim-label">性价比</span><span class="dim-reason">Token Plan 39 元起，Coding Plan 已下线后按量为主，性价比中等。</span></li><li data-dim="stability"><span class="dim-score">5</span><span class="dim-label">稳定性</span><span class="dim-reason">腾讯云大厂服务稳定，混元系列与第三方模型接入可靠。</span></li><li data-dim="models"><span class="dim-score">3</span><span class="dim-label">模型覆盖</span><span class="dim-reason">HY 系列加 GLM、Kimi、MiniMax 接入，模型广度尚可但旗舰更新偏慢。</span></li><li data-dim="convenience"><span class="dim-score">4</span><span class="dim-label">使用便捷性</span><span class="dim-reason">无需抢购，腾讯云控制台一站式开通，企业用户友好。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">HY-2.0</span><span class="model-tag">GLM-5.1</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="jd-cloud">
+                <article class="platform-card" data-platform-id="jd-cloud" tabindex="0" role="button" aria-label="京东云 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqjingdong" target="_blank" rel="noopener noreferrer">京东云</a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
@@ -2877,9 +2910,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">3</span><span class="dim-label">性价比</span><span class="dim-reason">40 元起的中档套餐，模型组合实用但额度优势不明显。</span></li><li data-dim="stability"><span class="dim-score">4</span><span class="dim-label">稳定性</span><span class="dim-reason">京东云官方运营，日常编程调用稳定。</span></li><li data-dim="models"><span class="dim-score">3</span><span class="dim-label">模型覆盖</span><span class="dim-reason">覆盖 Kimi、GLM、MiniMax、DeepSeek、Qwen 等，但旗舰型号更新略滞后。</span></li><li data-dim="convenience"><span class="dim-score">4</span><span class="dim-label">使用便捷性</span><span class="dim-reason">无需抢购，JoyBuilder 入口清晰，适合京东生态开发者。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">Qwen-3-Coder</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="unicom-cloud">
+                <article class="platform-card" data-platform-id="unicom-cloud" tabindex="0" role="button" aria-label="联通云 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqunicomcp" target="_blank" rel="noopener noreferrer">联通云</a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
@@ -2889,9 +2923,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">4</span><span class="dim-label">性价比</span><span class="dim-reason">15 元起入门档价格亲民，Coding Plan 与 Token Plan 档位选择多。</span></li><li data-dim="stability"><span class="dim-score">3</span><span class="dim-label">稳定性</span><span class="dim-reason">运营商云品牌，稳定性尚可但社区反馈与文档不如一线云厂商丰富。</span></li><li data-dim="models"><span class="dim-score">3</span><span class="dim-label">模型覆盖</span><span class="dim-reason">接入 DeepSeek-V4、GLM、Kimi、Qwen 等，覆盖面中等。</span></li><li data-dim="convenience"><span class="dim-score">4</span><span class="dim-label">使用便捷性</span><span class="dim-reason">无需抢购，低价入门门槛低，适合预算敏感用户试水。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">DeepSeek-V4-Flash</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V4-Pro</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="cmcc-cloud">
+                <article class="platform-card" data-platform-id="cmcc-cloud" tabindex="0" role="button" aria-label="移动云 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqmobilecp" target="_blank" rel="noopener noreferrer">移动云</a>
                         <span class="platform-rating" aria-label="2 星">⭐️⭐️</span>
@@ -2901,9 +2936,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">3</span><span class="dim-label">性价比</span><span class="dim-reason">40 元档定价合理，但可选模型与套餐档位较少。</span></li><li data-dim="stability"><span class="dim-score">3</span><span class="dim-label">稳定性</span><span class="dim-reason">运营商云平台，基础稳定但 AI 编程场景生态较新。</span></li><li data-dim="models"><span class="dim-score">2</span><span class="dim-label">模型覆盖</span><span class="dim-reason">目前以 MiniMax-M2.5 为主，旗舰模型覆盖明显不足。</span></li><li data-dim="convenience"><span class="dim-score">4</span><span class="dim-label">使用便捷性</span><span class="dim-reason">无需抢购，移动云账号即可开通，流程简单。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">MiniMax-M2.5</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="stepfun">
+                <article class="platform-card" data-platform-id="stepfun" tabindex="0" role="button" aria-label="阶跃星辰 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqstepfun" target="_blank" rel="noopener noreferrer">阶跃星辰</a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
@@ -2913,9 +2949,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">3</span><span class="dim-label">性价比</span><span class="dim-reason">49 元起，主打自研 step 系列，适合愿意尝鲜的用户。</span></li><li data-dim="stability"><span class="dim-score">3</span><span class="dim-label">稳定性</span><span class="dim-reason">平台体量较小，稳定性尚可但高峰表现因套餐而异。</span></li><li data-dim="models"><span class="dim-score">3</span><span class="dim-label">模型覆盖</span><span class="dim-reason">step-3.7-flash 等自研模型有特色，但第三方 SOTA 覆盖有限。</span></li><li data-dim="convenience"><span class="dim-score">4</span><span class="dim-label">使用便捷性</span><span class="dim-reason">无需抢购，Coding Plan 随时可购。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash-2603</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">step-router-v1</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="sensetime">
+                <article class="platform-card" data-platform-id="sensetime" tabindex="0" role="button" aria-label="商汤·日日新 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqsensenova" target="_blank" rel="noopener noreferrer">商汤·日日新</a>
                         <span class="platform-rating" aria-label="2 星">⭐️⭐️</span>
@@ -2925,9 +2962,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">3</span><span class="dim-label">性价比</span><span class="dim-reason">套餐定价中等，适合已有商汤生态或特定场景用户。</span></li><li data-dim="stability"><span class="dim-score">3</span><span class="dim-label">稳定性</span><span class="dim-reason">商汤官方运营，基础服务稳定但编程社区声量较小。</span></li><li data-dim="models"><span class="dim-score">2</span><span class="dim-label">模型覆盖</span><span class="dim-reason">以 SenseNova 自研系列加 DeepSeek-V4-Flash 为主，编程向模型选择少。</span></li><li data-dim="convenience"><span class="dim-score">4</span><span class="dim-label">使用便捷性</span><span class="dim-reason">无需抢购，单一套餐结构简单明了。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">SenseNova 6.7 Flash-Lite</span><span class="model-tag">SenseNova U1 Fast</span><span class="model-tag">DeepSeek-V4-Flash</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="chaosuan">
+                <article class="platform-card" data-platform-id="chaosuan" tabindex="0" role="button" aria-label="超算 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqscnetcp" target="_blank" rel="noopener noreferrer">超算</a>
                         <span class="platform-rating" aria-label="2 星">⭐️⭐️</span>
@@ -2937,9 +2975,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">4</span><span class="dim-label">性价比</span><span class="dim-reason">20 元起价格较低，适合轻度体验与预算有限用户。</span></li><li data-dim="stability"><span class="dim-score">3</span><span class="dim-label">稳定性</span><span class="dim-reason">小众平台，稳定性尚可但缺乏大规模用户验证。</span></li><li data-dim="models"><span class="dim-score">2</span><span class="dim-label">模型覆盖</span><span class="dim-reason">仅 MiniMax-M2.5 与 Qwen-3-235B 等少量模型，选择面窄。</span></li><li data-dim="convenience"><span class="dim-score">4</span><span class="dim-label">使用便捷性</span><span class="dim-reason">无需抢购，低价入门门槛低。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">Qwen-3-235B-A22B</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="ollama">
+                <article class="platform-card" data-platform-id="ollama" tabindex="0" role="button" aria-label="Ollama 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqollama" target="_blank" rel="noopener noreferrer">Ollama</a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
@@ -2949,9 +2988,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">4</span><span class="dim-label">性价比</span><span class="dim-reason">20 元起，云端托管多开源模型，适合本地生态延伸用户。</span></li><li data-dim="stability"><span class="dim-score">3</span><span class="dim-label">稳定性</span><span class="dim-reason">依赖云端实例调度，稳定性因模型与时段波动。</span></li><li data-dim="models"><span class="dim-score">4</span><span class="dim-label">模型覆盖</span><span class="dim-reason">聚合 Kimi、GLM、DeepSeek、Qwen、Gemini 等大量开源与预览模型。</span></li><li data-dim="convenience"><span class="dim-score">3</span><span class="dim-label">使用便捷性</span><span class="dim-reason">需理解 Ollama 使用方式，对纯 API 用户有一定学习成本。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">Kimi-K2.6</span><span class="model-tag">GLM-5.1</span><span class="model-tag">DeepSeek-V4-Pro</span><span class="model-tag">DeepSeek-V4-Flash</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Qwen-3-Coder</span><span class="model-tag">Qwen-3-Coder-next</span><span class="model-tag">Gemini-3-Flash-Preview</span><span class="model-tag">Mistral-Large-3</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="taotoken">
+                <article class="platform-card" data-platform-id="taotoken" tabindex="0" role="button" aria-label="TaoToken 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqtaotoken" target="_blank" rel="noopener noreferrer">TaoToken</a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
@@ -2961,9 +3001,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">3</span><span class="dim-label">性价比</span><span class="dim-reason">39 元起专注 GLM-5.2，定价合理但当前套餐已售罄。</span></li><li data-dim="stability"><span class="dim-score">3</span><span class="dim-label">稳定性</span><span class="dim-reason">新平台体量小，售罄状态下难以评估长期稳定性。</span></li><li data-dim="models"><span class="dim-score">3</span><span class="dim-label">模型覆盖</span><span class="dim-reason">专注 GLM-5.2 单一模型，深度够用但广度不足。</span></li><li data-dim="convenience"><span class="dim-score">2</span><span class="dim-label">使用便捷性</span><span class="dim-reason">当前已售罄，新用户暂时无法下单。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">GLM-5.2</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="moorethreads">
+                <article class="platform-card" data-platform-id="moorethreads" tabindex="0" role="button" aria-label="摩尔线程 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqmoorefree" target="_blank" rel="noopener noreferrer">摩尔线程</a>
                         <span class="platform-rating" aria-label="2 星">⭐️⭐️</span>
@@ -2973,9 +3014,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">2</span><span class="dim-label">性价比</span><span class="dim-reason">套餐定价与可用模型信息有限，性价比难以横向对比。</span></li><li data-dim="stability"><span class="dim-score">3</span><span class="dim-label">稳定性</span><span class="dim-reason">国产 GPU 云新秀，基础服务可用但编程场景案例较少。</span></li><li data-dim="models"><span class="dim-score">2</span><span class="dim-label">模型覆盖</span><span class="dim-reason">目前以 GLM-4.7 为主，距当前 SOTA 有明显代差。</span></li><li data-dim="convenience"><span class="dim-score">3</span><span class="dim-label">使用便捷性</span><span class="dim-reason">无需抢购，但档位与文档对新手不够友好。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">GLM-4.7</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="claude">
+                <article class="platform-card" data-platform-id="claude" tabindex="0" role="button" aria-label="Claude 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqclaudeup" target="_blank" rel="noopener noreferrer">Claude</a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -2985,9 +3027,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">2</span><span class="dim-label">性价比</span><span class="dim-reason">Token Plan 按量费用高，仅适合对 Claude 系列有强需求的用户。</span></li><li data-dim="stability"><span class="dim-score">5</span><span class="dim-label">稳定性</span><span class="dim-reason">Anthropic 官方 API，全球顶级稳定性与可用性。</span></li><li data-dim="models"><span class="dim-score">5</span><span class="dim-label">模型覆盖</span><span class="dim-reason">Sonnet 4.6、Opus 4.7 等 Claude 全系旗舰，代码与推理能力顶尖。</span></li><li data-dim="convenience"><span class="dim-score">3</span><span class="dim-label">使用便捷性</span><span class="dim-reason">需国际支付与网络环境，国内用户接入门槛较高。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Claude Sonnet 4.5</span><span class="model-tag">Claude Opus 4.7</span><span class="model-tag">Claude Opus 4.6</span><span class="model-tag">Claude Opus 4.5</span><span class="model-tag">Claude Haiku 4.5</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="codex">
+                <article class="platform-card" data-platform-id="codex" tabindex="0" role="button" aria-label="Codex 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqchatgpt" target="_blank" rel="noopener noreferrer">Codex</a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -2997,9 +3040,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">2</span><span class="dim-label">性价比</span><span class="dim-reason">OpenAI Token Plan 按量计费，GPT-5 系列单价偏高，适合重度用户。</span></li><li data-dim="stability"><span class="dim-score">5</span><span class="dim-label">稳定性</span><span class="dim-reason">OpenAI 官方基础设施，稳定性行业标杆。</span></li><li data-dim="models"><span class="dim-score">5</span><span class="dim-label">模型覆盖</span><span class="dim-reason">GPT-5.6、GPT-5.3-Codex 等最新 Codex 系列，编程专项能力强。</span></li><li data-dim="convenience"><span class="dim-score">3</span><span class="dim-label">使用便捷性</span><span class="dim-reason">需 OpenAI 账号与国际支付，国内直连不便。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">GPT-5.6</span><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">GPT-5.2</span><span class="model-tag">GPT-5.4-mini</span><span class="model-tag">GPT-Image-2.0</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="github">
+                <article class="platform-card" data-platform-id="github" tabindex="0" role="button" aria-label="GitHub 详情">
                     <header>
                         <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqghstudent" target="_blank" rel="noopener noreferrer">GitHub</a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -3009,9 +3053,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">3</span><span class="dim-label">性价比</span><span class="dim-reason">Copilot 类 Token Plan 10 元起，多模型打包但按量上限需留意。</span></li><li data-dim="stability"><span class="dim-score">5</span><span class="dim-label">稳定性</span><span class="dim-reason">GitHub 官方服务，与 IDE 深度集成，稳定性出色。</span></li><li data-dim="models"><span class="dim-score">4</span><span class="dim-label">模型覆盖</span><span class="dim-reason">聚合 GPT、Gemini、Claude、Grok 等多厂商模型，一账号多模型。</span></li><li data-dim="convenience"><span class="dim-score">4</span><span class="dim-label">使用便捷性</span><span class="dim-reason">GitHub 账号即可开通，与 VS Code 等工具无缝衔接。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">GPT-4o</span><span class="model-tag">GPT-4.1</span><span class="model-tag">GPT-5-mini</span><span class="model-tag">GPT-5.2-Codex</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Claude Haiku 4.5</span><span class="model-tag">Grok Code Fast 1</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">GPT-5.4</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">GPT-5.5</span><span class="model-tag">Claude Opus 4.7</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="deepseek-flash">
+                <article class="platform-card" data-platform-id="deepseek-flash" tabindex="0" role="button" aria-label="DeepSeek Flash 详情">
                     <header>
                         <a class="platform-name-link" href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing" target="_blank" rel="noopener noreferrer">DeepSeek Flash</a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -3021,9 +3066,10 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">4</span><span class="dim-label">性价比</span><span class="dim-reason">站内虚拟套餐用于横向对比，Flash 档按量价格亲民，适合高频轻量调用。</span></li><li data-dim="stability"><span class="dim-score">4</span><span class="dim-label">稳定性</span><span class="dim-reason">DeepSeek 官方通道稳定，但 7 月中旬起高峰时段价格翻倍。</span></li><li data-dim="models"><span class="dim-score">4</span><span class="dim-label">模型覆盖</span><span class="dim-reason">DeepSeek-V4-Flash 速度快、成本低，适合日常编程辅助。</span></li><li data-dim="convenience"><span class="dim-score">4</span><span class="dim-label">使用便捷性</span><span class="dim-reason">按量随时充值，无需抢购，但峰谷计费增加成本预估难度。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">DeepSeek-V4-Flash</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             
-                <article class="platform-card" data-platform-id="deepseek-pro">
+                <article class="platform-card" data-platform-id="deepseek-pro" tabindex="0" role="button" aria-label="DeepSeek Pro 详情">
                     <header>
                         <a class="platform-name-link" href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing" target="_blank" rel="noopener noreferrer">DeepSeek Pro</a>
                         <span class="platform-rating" aria-label="5 星">⭐️⭐️⭐️⭐️⭐️</span>
@@ -3033,6 +3079,7 @@
                     <ul class="platform-dimensions"><li data-dim="value"><span class="dim-score">4</span><span class="dim-label">性价比</span><span class="dim-reason">原生 DeepSeek-V4-Pro，输入 3 元/M、输出 6 元/M，按量透明；高峰涨价后优势收窄。</span></li><li data-dim="stability"><span class="dim-score">4</span><span class="dim-label">稳定性</span><span class="dim-reason">官方直连稳定可靠，峰谷计费后高峰时段需关注成本波动。</span></li><li data-dim="models"><span class="dim-score">5</span><span class="dim-label">模型覆盖</span><span class="dim-reason">DeepSeek-V4-Pro 推理与代码能力处于第一梯队，是主流平替基准。</span></li><li data-dim="convenience"><span class="dim-score">5</span><span class="dim-label">使用便捷性</span><span class="dim-reason">按量计费随时开通，无需抢购，适合不想买固定套餐的用户。</span></li></ul>
                     
                     <div class="platform-models"><span class="model-tag">DeepSeek-V4-Pro</span></div>
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             </div>
             <p class="platform-catalog-empty" id="platformCatalogEmpty" hidden>无匹配平台，试试清空筛选。</p>

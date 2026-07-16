@@ -2046,55 +2046,9 @@
         }
 
         function buildPlatformCardHtml(platform) {
-            const rawAction = PlatformCatalog.resolvePlatformAction(platform, allPlans);
-            const action = typeof sanitizeHttpUrl === 'function'
-                ? sanitizeHttpUrl(rawAction)
-                : rawAction;
-            const name = escapeHtml(platform.name || '');
-            const nameHtml = action
-                ? `<a class="platform-name-link" href="${escapeHtml(action)}" target="_blank" rel="noopener noreferrer">${name}</a>`
-                : `<span class="platform-name">${name}</span>`;
-
-            const rating = Math.max(0, Math.min(5, Number(platform.rating) || 0));
-            const stars = '⭐️'.repeat(rating);
-            const summary = platform.summary
-                ? `<p class="platform-summary">${escapeHtml(platform.summary)}</p>`
-                : '';
-
-            const rush = !!platform.purchaseRush;
-            const rushHtml = `<div class="platform-rush" data-rush="${rush ? 'true' : 'false'}">${rush ? '需要抢购' : '无需抢购'}</div>`;
-
-            const dimsHtml = PLATFORM_DIMENSION_META.map(({ key, label }) => {
-                const dim = (platform.dimensions && platform.dimensions[key]) || {};
-                const score = dim.score == null ? '—' : String(dim.score);
-                return `<li data-dim="${escapeHtml(key)}"><span class="dim-score">${escapeHtml(score)}</span><span class="dim-label">${escapeHtml(label)}</span><span class="dim-reason">${escapeHtml(dim.reason || '')}</span></li>`;
-            }).join('');
-
-            const tags = Array.isArray(platform.tags) ? platform.tags : [];
-            const tagsHtml = tags.length
-                ? `<div class="platform-tags">${tags.map((tag) => `<span class="platform-tag">${escapeHtml(tag)}</span>`).join('')}</div>`
-                : '';
-
-            const models = PlatformCatalog.collectModelsForVendor(allPlans, platform.name);
-            const modelsHtml = models.length
-                ? `<div class="platform-models">${models.map((model) => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}</div>`
-                : '';
-
-            const discontinuedClass = platform.status === 'discontinued' ? ' is-discontinued' : '';
-
-            return `
-                <article class="platform-card${discontinuedClass}" data-platform-id="${escapeHtml(platform.id || '')}">
-                    <header>
-                        ${nameHtml}
-                        <span class="platform-rating" aria-label="${rating} 星">${stars}</span>
-                    </header>
-                    ${summary}
-                    ${rushHtml}
-                    <ul class="platform-dimensions">${dimsHtml}</ul>
-                    ${tagsHtml}
-                    ${modelsHtml}
-                </article>
-            `;
+            return PlatformCatalog.buildPlatformCardHtml(platform, allPlans, {
+                sanitizeUrl: typeof sanitizeHttpUrl === 'function' ? sanitizeHttpUrl : (u) => u
+            });
         }
 
         function applyPlatformFilters() {

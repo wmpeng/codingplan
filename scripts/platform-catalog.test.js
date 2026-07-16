@@ -168,6 +168,21 @@ describe('buildPlatformCardHtml', () => {
     );
     assert.match(dead, /platform-card is-discontinued/);
   });
+
+  it('card html uses short reason not detail', () => {
+    const html = buildPlatformCardHtml(samplePlatform({
+      dimensions: {
+        value: { score: 5, reason: '短理由', detail: '长详解不应出现在卡面' },
+        stability: { score: 3, reason: 'b' },
+        models: { score: 4, reason: 'c' },
+        convenience: { score: 4, reason: 'd' }
+      }
+    }), []);
+    assert.ok(html.includes('短理由'));
+    assert.ok(!html.includes('长详解不应出现在卡面'));
+    assert.ok(html.includes('data-platform-id'));
+    assert.ok(html.includes('platform-card-hint') || html.includes('查看详情'));
+  });
 });
 
 describe('buildPlatformTagBarHtml', () => {

@@ -244,7 +244,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
   const discontinuedClass = platform.status === 'discontinued' ? ' is-discontinued' : '';
 
   return `
-                <article class="platform-card${discontinuedClass}" data-platform-id="${escapeHtml(platform.id || '')}">
+                <article class="platform-card${discontinuedClass}" data-platform-id="${escapeHtml(platform.id || '')}" tabindex="0" role="button" aria-label="${name} 详情">
                     <header>
                         ${nameHtml}
                         <span class="platform-rating" aria-label="${rating} 星">${stars}</span>
@@ -254,6 +254,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
                     <ul class="platform-dimensions">${dimsHtml}</ul>
                     ${tagsHtml}
                     ${modelsHtml}
+                    <span class="platform-card-hint">查看详情</span>
                 </article>
             `;
 }
