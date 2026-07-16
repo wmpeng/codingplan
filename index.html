@@ -1775,7 +1775,7 @@
         }
 
         .platform-detail-plans-wrap {
-            overflow-x: auto;
+            overflow-x: visible;
             border: 1px solid rgba(23, 32, 51, 0.08);
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.55);
@@ -1783,6 +1783,7 @@
 
         .platform-detail-plans-table {
             width: 100%;
+            table-layout: fixed;
             border-collapse: separate;
             border-spacing: 0;
             font-size: 13px;
@@ -1790,15 +1791,38 @@
 
         .platform-detail-plans-table th,
         .platform-detail-plans-table td {
-            padding: 10px 14px;
+            padding: 10px 12px;
             text-align: left;
             border-bottom: 1px solid rgba(23, 32, 51, 0.06);
+            vertical-align: top;
+        }
+
+        .platform-detail-plans-table th:nth-child(1),
+        .platform-detail-plans-table td:nth-child(1) {
+            width: 28%;
+        }
+
+        .platform-detail-plans-table th:nth-child(2),
+        .platform-detail-plans-table td:nth-child(2) {
+            width: 30%;
+            word-break: break-word;
+        }
+
+        .platform-detail-plans-table th:nth-child(3),
+        .platform-detail-plans-table td:nth-child(3) {
+            width: 22%;
+            white-space: nowrap;
+        }
+
+        .platform-detail-plans-table th:nth-child(4),
+        .platform-detail-plans-table td:nth-child(4) {
+            width: 20%;
             white-space: nowrap;
         }
 
         .platform-detail-plans-table th:not(:last-child),
         .platform-detail-plans-table td:not(:last-child) {
-            padding-right: 18px;
+            padding-right: 10px;
         }
 
         .platform-detail-plans-table th {
