@@ -226,7 +226,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     : '';
 
   const rush = !!platform.purchaseRush;
-  const rushHtml = `<div class="platform-rush" data-rush="${rush ? 'true' : 'false'}">${rush ? '需要抢购' : '无需抢购'}</div>`;
+  const rushHtml = `<span class="platform-rush" data-rush="${rush ? 'true' : 'false'}">${rush ? '需要抢购' : '无需抢购'}</span>`;
 
   const dimsHtml = PLATFORM_DIMENSION_META.map(({ key, label }) => {
     const dim = (platform.dimensions && platform.dimensions[key]) || {};
@@ -252,11 +252,13 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
   return `
                 <article class="platform-card${discontinuedClass}" data-platform-id="${escapeHtml(platform.id || '')}" tabindex="0" role="button" aria-label="${name} 详情">
                     <header>
-                        ${nameHtml}
+                        <div class="platform-card-heading">
+                            ${nameHtml}
+                            ${rushHtml}
+                        </div>
                         <span class="platform-rating" aria-label="${rating} 星">${stars}</span>
                     </header>
                     ${summary}
-                    ${rushHtml}
                     <ul class="platform-dimensions">${dimsHtml}</ul>
                     ${tagsHtml}
                     ${modelsHtml}

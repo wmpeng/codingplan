@@ -183,6 +183,18 @@ describe('buildPlatformCardHtml', () => {
     assert.match(noLink, /class="platform-name"/);
   });
 
+  it('puts rush badge beside the title instead of its own row', () => {
+    const html = buildPlatformCardHtml(
+      samplePlatform({ action: 'https://example.com', purchaseRush: false }),
+      [{ vendor: 'X', models: ['M1'], discontinued: false }]
+    );
+    assert.match(html, /platform-card-heading/);
+    assert.match(html, /platform-rush/);
+    assert.ok(html.indexOf('platform-card-heading') < html.indexOf('platform-rush'));
+    assert.ok(html.indexOf('platform-rush') < html.indexOf('platform-dimensions'));
+    assert.doesNotMatch(html, /<\/header>\s*<div class="platform-rush"/);
+  });
+
   it('card html uses short reason not detail', () => {
     const html = buildPlatformCardHtml(samplePlatform({
       dimensions: {
