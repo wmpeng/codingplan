@@ -94,47 +94,26 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(!html.includes('data-section="plans"'));
   });
 
-  it('hides plans whose quota is unpublished', () => {
+  it('still shows plans but omits unpublished quota label', () => {
     const plans = [
       {
         vendor: 'OpenCode',
         plan: 'Go',
         type: 'Token Plan',
         monthlyPrice: 10,
+        firstMonthPrice: 5,
+        currency: '$',
         tokenLimit: '未公开',
-        discontinued: false
-      },
-      {
-        vendor: 'OpenCode',
-        plan: 'Pro',
-        type: 'Token Plan',
-        monthlyPrice: 20,
-        tokenLimit: 100,
         discontinued: false
       }
     ];
     const html = buildDetailBodyHtml(samplePlatform({ name: 'OpenCode' }), { plans, monitorRow: null });
     assert.ok(html.includes('data-section="plans"'));
-    assert.ok(html.includes('Pro'));
-    assert.ok(html.includes('100M'));
-    assert.ok(!html.includes('>Go<'));
+    assert.ok(html.includes('Go'));
+    assert.ok(html.includes('Token Plan'));
+    assert.ok(html.includes('$10') || html.includes('10'));
     assert.ok(!html.includes('未公开'));
-  });
-
-  it('hides plans section when only unpublished-quota plans exist', () => {
-    const plans = [
-      {
-        vendor: 'OpenCode',
-        plan: 'Go',
-        type: 'Token Plan',
-        monthlyPrice: 10,
-        tokenLimit: '未公开',
-        discontinued: false
-      }
-    ];
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'OpenCode' }), { plans, monitorRow: null });
-    assert.ok(!html.includes('data-section="plans"'));
-    assert.ok(!html.includes('Go'));
+    assert.ok(!html.includes('platform-detail-plan-quota'));
   });
 
   it('omits plans section when empty', () => {

@@ -85,36 +85,35 @@
   }
 
   function formatPlanQuota(plan) {
-    if (!plan) return '-';
+    if (!plan) return '';
     const token = plan.tokenLimit;
     if (typeof token === 'number' && Number.isFinite(token)) {
       return `${token}M`;
     }
     if (typeof plan.monthlyRequests === 'number' && Number.isFinite(plan.monthlyRequests)) {
       const short = formatCountShort(plan.monthlyRequests);
-      return short ? `${short}次/月` : '-';
+      return short ? `${short}次/月` : '';
     }
     if (typeof plan.weeklyRequests === 'number' && Number.isFinite(plan.weeklyRequests)) {
       const short = formatCountShort(plan.weeklyRequests);
-      return short ? `${short}次/周` : '-';
+      return short ? `${short}次/周` : '';
     }
     if (typeof plan.fiveHoursRequests === 'number' && Number.isFinite(plan.fiveHoursRequests)) {
       const short = formatCountShort(plan.fiveHoursRequests);
-      return short ? `${short}次/5h` : '-';
+      return short ? `${short}次/5h` : '';
     }
     if (typeof token === 'string' && token.trim()) {
-      return token.trim();
+      const text = token.trim();
+      // 未公开：不展示文案，由调用方省略额度 pill
+      if (text === '未公开') return '';
+      return text;
     }
-    return '-';
+    return '';
   }
 
   function activePlansOnly(plans) {
     if (!Array.isArray(plans)) return [];
-    return plans.filter(plan => {
-      if (!plan || plan.discontinued) return false;
-      // 额度未公开的套餐没有实质信息，弹层不展示
-      return formatPlanQuota(plan) !== '未公开';
-    });
+    return plans.filter(plan => plan && !plan.discontinued);
   }
 
   function buildPlansSectionHtml(plans) {
@@ -125,7 +124,10 @@
       .map(plan => {
         const planName = esc(plan && plan.plan);
         const type = esc((plan && plan.type) || 'Coding Plan');
-        const quota = esc(formatPlanQuota(plan));
+        const quota = formatPlanQuota(plan);
+        const quotaHtml = quota
+          ? `<span class="platform-detail-plan-quota">${esc(quota)}</span>`
+          : '';
         const priceHtml = formatPlanPriceHtml(plan);
         return (
           `<div class="platform-detail-plan-item">` +
@@ -135,7 +137,7 @@
           `</div>` +
           `<div class="platform-detail-plan-bottom">` +
           `<span class="platform-detail-plan-type-badge">${type}</span>` +
-          `<span class="platform-detail-plan-quota">${quota}</span>` +
+          quotaHtml +
           `</div>` +
           `</div>`
         );
