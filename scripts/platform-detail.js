@@ -60,14 +60,17 @@
     return `${cur}${text}`;
   }
 
-  function formatPlanPrice(plan) {
+  function formatPlanPriceHtml(plan) {
     const monthly = formatMoney(plan && plan.monthlyPrice, plan && plan.currency);
     if (!monthly) return '-';
     const first = formatMoney(plan && plan.firstMonthPrice, plan && plan.currency);
     if (first && Number(plan.firstMonthPrice) !== Number(plan.monthlyPrice)) {
-      return `${monthly}（首月 ${first}）`;
+      return (
+        `<span class="platform-detail-price-main">${esc(monthly)}</span>` +
+        `<span class="platform-detail-price-first">首月 ${esc(first)}</span>`
+      );
     }
-    return monthly;
+    return `<span class="platform-detail-price-main">${esc(monthly)}</span>`;
   }
 
   function formatCountShort(n) {
@@ -119,16 +122,18 @@
         const planName = esc(plan && plan.plan);
         const type = esc((plan && plan.type) || 'Coding Plan');
         const quota = esc(formatPlanQuota(plan));
-        const price = esc(formatPlanPrice(plan));
+        const priceHtml = formatPlanPriceHtml(plan);
         return (
-          `<tr class="platform-detail-plan-row">` +
-          `<td class="platform-detail-plan-name-cell">` +
+          `<div class="platform-detail-plan-item">` +
+          `<div class="platform-detail-plan-top">` +
           `<div class="platform-detail-plan-name">${planName}</div>` +
+          `<div class="platform-detail-plan-price">${priceHtml}</div>` +
+          `</div>` +
+          `<div class="platform-detail-plan-bottom">` +
           `<span class="platform-detail-plan-type-badge">${type}</span>` +
-          `</td>` +
-          `<td class="platform-detail-plan-quota">${quota}</td>` +
-          `<td class="platform-detail-plan-price">${price}</td>` +
-          `</tr>`
+          `<span class="platform-detail-plan-quota">${quota}</span>` +
+          `</div>` +
+          `</div>`
         );
       })
       .join('');
@@ -136,15 +141,8 @@
     return (
       `<section class="platform-detail-section" data-section="plans" aria-labelledby="platformDetailPlansHeading">` +
       `<h3 id="platformDetailPlansHeading" class="platform-detail-section-title">套餐</h3>` +
-      `<div class="platform-detail-plans-wrap">` +
-      `<table class="platform-detail-plans-table">` +
-      `<thead><tr>` +
-      `<th scope="col">套餐</th>` +
-      `<th scope="col">额度</th>` +
-      `<th scope="col">价格</th>` +
-      `</tr></thead>` +
-      `<tbody>${rows}</tbody>` +
-      `</table>` +
+      `<div class="platform-detail-plans-list" aria-label="在售套餐">` +
+      rows +
       `</div>` +
       `<button type="button" class="platform-detail-jump-plans" data-jump-plans="1">在套餐大表中查看 →</button>` +
       `</section>`

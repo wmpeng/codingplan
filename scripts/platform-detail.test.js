@@ -58,13 +58,14 @@ describe('buildDetailBodyHtml', () => {
     ];
     const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans, monitorRow: null });
     assert.ok(html.includes('data-section="plans"'));
+    assert.ok(html.includes('platform-detail-plans-list'));
     assert.ok(html.includes('Pro'));
     assert.ok(!html.includes('Old'));
     assert.ok(html.includes('600M'));
     assert.ok(html.includes('¥100'));
     assert.ok(html.includes('首月'));
     assert.ok(html.includes('Token Plan'));
-    assert.ok(html.includes('额度'));
+    assert.ok(html.includes('600M'));
     assert.ok(html.includes('在套餐大表中查看'));
   });
 

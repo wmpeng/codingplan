@@ -1809,81 +1809,77 @@
             margin-top: 22px;
         }
 
-        .platform-detail-plans-wrap {
+        .platform-detail-plans-list {
+            width: 100%;
             max-width: 100%;
-            overflow: hidden;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .platform-detail-plan-item {
+            box-sizing: border-box;
+            padding: 12px 14px;
             border: 1px solid rgba(23, 32, 51, 0.08);
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.55);
         }
 
-        .platform-detail-plans-table {
-            width: 100%;
-            max-width: 100%;
-            table-layout: fixed;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
-
-        .platform-detail-plans-table th,
-        .platform-detail-plans-table td {
-            padding: 10px 12px;
-            text-align: left;
-            border-bottom: 1px solid rgba(23, 32, 51, 0.06);
-            vertical-align: middle;
-            overflow-wrap: anywhere;
-            word-break: break-word;
-        }
-
-        .platform-detail-plans-table th:nth-child(1),
-        .platform-detail-plans-table td:nth-child(1) {
-            width: 42%;
-        }
-
-        .platform-detail-plans-table th:nth-child(2),
-        .platform-detail-plans-table td:nth-child(2) {
-            width: 26%;
-        }
-
-        .platform-detail-plans-table th:nth-child(3),
-        .platform-detail-plans-table td:nth-child(3) {
-            width: 32%;
-            white-space: normal;
-            text-align: right;
-        }
-
-        .platform-detail-plans-table th {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            color: var(--text-tertiary);
-            background: rgba(244, 236, 223, 0.45);
-        }
-
-        .platform-detail-plans-table th:nth-child(3) {
-            text-align: right;
-        }
-
-        .platform-detail-plans-table tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        .platform-detail-plan-name-cell {
-            min-width: 0;
+        .platform-detail-plan-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
         }
 
         .platform-detail-plan-name {
-            font-weight: 700;
+            font-size: 15px;
+            font-weight: 800;
             color: var(--text-primary);
             line-height: 1.3;
+            min-width: 0;
+        }
+
+        .platform-detail-plan-price {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+            flex: 0 0 auto;
+        }
+
+        .platform-detail-price-main {
+            color: var(--text-primary);
+            font-size: 15px;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+            line-height: 1.3;
+            white-space: nowrap;
+        }
+
+        .platform-detail-price-first {
+            color: var(--text-tertiary);
+            font-size: 12px;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+            line-height: 1.3;
+            white-space: nowrap;
+        }
+
+        .platform-detail-plan-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
         }
 
         .platform-detail-plan-type-badge {
             display: inline-flex;
             align-items: center;
-            margin-top: 5px;
-            min-height: 20px;
-            padding: 0 7px;
+            min-height: 22px;
+            padding: 0 8px;
             border-radius: 999px;
             font-size: 11px;
             font-weight: 700;
@@ -1892,16 +1888,23 @@
         }
 
         .platform-detail-plan-quota {
-            color: var(--text-secondary);
+            display: inline-flex;
+            align-items: center;
+            min-height: 22px;
+            padding: 0 8px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
             font-variant-numeric: tabular-nums;
+            background: rgba(15, 118, 110, 0.1);
+            color: #0f766e;
             white-space: nowrap;
         }
 
-        .platform-detail-plan-price {
-            color: var(--text-primary);
-            font-weight: 700;
-            font-variant-numeric: tabular-nums;
-            line-height: 1.35;
+        .platform-detail-plans-wrap,
+        .platform-detail-plans-head,
+        .platform-detail-plan-metrics {
+            display: none;
         }
 
         .platform-detail-jump-plans {
@@ -6711,7 +6714,7 @@
 
     <script src="monitor/monitor-config.local.js"></script>
     <script src="scripts/platform-catalog.js?v=260717b"></script>
-    <script src="scripts/platform-detail.js?v=260717c"></script>
+    <script src="scripts/platform-detail.js?v=260717f"></script>
     <script src="scripts/shared.js?v=260610"></script>
         <script src="scripts/homepage.js?v=260717"></script>
 
