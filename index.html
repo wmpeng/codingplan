@@ -1488,14 +1488,37 @@
             text-decoration: none;
         }
 
+        .platform-name-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            max-width: 100%;
+        }
+
+        .platform-name-text {
+            min-width: 0;
+        }
+
         .platform-card .platform-name-link {
             cursor: pointer;
             position: relative;
             z-index: 1;
         }
 
+        .platform-name-link .link-icon {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+            opacity: 0.45;
+            transition: opacity 0.2s ease;
+        }
+
         .platform-name-link:hover {
             color: #154d77;
+        }
+
+        .platform-name-link:hover .link-icon {
+            opacity: 0.85;
         }
 
         .platform-rating {
@@ -3232,7 +3255,7 @@
             <div class="platform-card-grid" id="platformCardGrid">
                 <article class="platform-card" data-platform-id="zhipu-intl" tabindex="0" role="button" aria-label="智谱国际版 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqzai" target="_blank" rel="noopener noreferrer">智谱国际版</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqzai" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">智谱国际版</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3245,7 +3268,7 @@
             
                 <article class="platform-card" data-platform-id="minimax" tabindex="0" role="button" aria-label="MiniMax 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqminimax" target="_blank" rel="noopener noreferrer">MiniMax</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqminimax" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">MiniMax</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="5 星">⭐️⭐️⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3258,7 +3281,7 @@
             
                 <article class="platform-card" data-platform-id="iflytek" tabindex="0" role="button" aria-label="讯飞·星火 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqxunfei" target="_blank" rel="noopener noreferrer">讯飞·星火</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqxunfei" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">讯飞·星火</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3271,7 +3294,7 @@
             
                 <article class="platform-card" data-platform-id="opencode" tabindex="0" role="button" aria-label="OpenCode 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqopencode" target="_blank" rel="noopener noreferrer">OpenCode</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqopencode" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">OpenCode</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3284,7 +3307,7 @@
             
                 <article class="platform-card" data-platform-id="xiaomi-mimo" tabindex="0" role="button" aria-label="小米·MiMo 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqmimo" target="_blank" rel="noopener noreferrer">小米·MiMo</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqmimo" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">小米·MiMo</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3297,7 +3320,7 @@
             
                 <article class="platform-card" data-platform-id="kimi" tabindex="0" role="button" aria-label="Kimi 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqkimi" target="_blank" rel="noopener noreferrer">Kimi</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqkimi" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Kimi</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3310,7 +3333,7 @@
             
                 <article class="platform-card" data-platform-id="youyun" tabindex="0" role="button" aria-label="优云智算 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqyyzs" target="_blank" rel="noopener noreferrer">优云智算</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqyyzs" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">优云智算</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3323,7 +3346,7 @@
             
                 <article class="platform-card" data-platform-id="aliyun-bailian" tabindex="0" role="button" aria-label="阿里·百炼 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqbailianc" target="_blank" rel="noopener noreferrer">阿里·百炼</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqbailianc" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">阿里·百炼</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3336,7 +3359,7 @@
             
                 <article class="platform-card" data-platform-id="baidu-qianfan" tabindex="0" role="button" aria-label="百度·千帆 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqqianfan" target="_blank" rel="noopener noreferrer">百度·千帆</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqqianfan" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">百度·千帆</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3349,7 +3372,7 @@
             
                 <article class="platform-card" data-platform-id="huawei-cloud" tabindex="0" role="button" aria-label="华为云 详情">
                     <header>
-                        <a class="platform-name-link" href="https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement" target="_blank" rel="noopener noreferrer">华为云</a>
+                        <a class="platform-name-link" href="https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">华为云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3362,7 +3385,7 @@
             
                 <article class="platform-card" data-platform-id="tencent-cloud" tabindex="0" role="button" aria-label="腾讯云 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqtengxunc" target="_blank" rel="noopener noreferrer">腾讯云</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqtengxunc" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">腾讯云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3375,7 +3398,7 @@
             
                 <article class="platform-card" data-platform-id="jd-cloud" tabindex="0" role="button" aria-label="京东云 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqjingdong" target="_blank" rel="noopener noreferrer">京东云</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqjingdong" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">京东云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3388,7 +3411,7 @@
             
                 <article class="platform-card" data-platform-id="unicom-cloud" tabindex="0" role="button" aria-label="联通云 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqunicomcp" target="_blank" rel="noopener noreferrer">联通云</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqunicomcp" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">联通云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3401,7 +3424,7 @@
             
                 <article class="platform-card" data-platform-id="cmcc-cloud" tabindex="0" role="button" aria-label="移动云 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqmobilecp" target="_blank" rel="noopener noreferrer">移动云</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqmobilecp" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">移动云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="2 星">⭐️⭐️</span>
                     </header>
                     
@@ -3414,7 +3437,7 @@
             
                 <article class="platform-card" data-platform-id="stepfun" tabindex="0" role="button" aria-label="阶跃星辰 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqstepfun" target="_blank" rel="noopener noreferrer">阶跃星辰</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqstepfun" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">阶跃星辰</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3427,7 +3450,7 @@
             
                 <article class="platform-card" data-platform-id="sensetime" tabindex="0" role="button" aria-label="商汤·日日新 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqsensenova" target="_blank" rel="noopener noreferrer">商汤·日日新</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqsensenova" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">商汤·日日新</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="2 星">⭐️⭐️</span>
                     </header>
                     
@@ -3440,7 +3463,7 @@
             
                 <article class="platform-card" data-platform-id="chaosuan" tabindex="0" role="button" aria-label="超算 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqscnetcp" target="_blank" rel="noopener noreferrer">超算</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqscnetcp" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">超算</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="2 星">⭐️⭐️</span>
                     </header>
                     
@@ -3453,7 +3476,7 @@
             
                 <article class="platform-card" data-platform-id="ollama" tabindex="0" role="button" aria-label="Ollama 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqollama" target="_blank" rel="noopener noreferrer">Ollama</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqollama" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Ollama</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3466,7 +3489,7 @@
             
                 <article class="platform-card" data-platform-id="taotoken" tabindex="0" role="button" aria-label="TaoToken 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqtaotoken" target="_blank" rel="noopener noreferrer">TaoToken</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqtaotoken" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">TaoToken</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3479,7 +3502,7 @@
             
                 <article class="platform-card" data-platform-id="moorethreads" tabindex="0" role="button" aria-label="摩尔线程 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqmoorefree" target="_blank" rel="noopener noreferrer">摩尔线程</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqmoorefree" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">摩尔线程</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="2 星">⭐️⭐️</span>
                     </header>
                     
@@ -3492,7 +3515,7 @@
             
                 <article class="platform-card" data-platform-id="claude" tabindex="0" role="button" aria-label="Claude 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqclaudeup" target="_blank" rel="noopener noreferrer">Claude</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqclaudeup" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Claude</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3505,7 +3528,7 @@
             
                 <article class="platform-card" data-platform-id="codex" tabindex="0" role="button" aria-label="Codex 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqchatgpt" target="_blank" rel="noopener noreferrer">Codex</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqchatgpt" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Codex</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3518,7 +3541,7 @@
             
                 <article class="platform-card" data-platform-id="github" tabindex="0" role="button" aria-label="GitHub 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqghstudent" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqghstudent" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">GitHub</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3531,7 +3554,7 @@
             
                 <article class="platform-card" data-platform-id="deepseek-flash" tabindex="0" role="button" aria-label="DeepSeek Flash 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing" target="_blank" rel="noopener noreferrer">DeepSeek Flash</a>
+                        <a class="platform-name-link" href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">DeepSeek Flash</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
                     </header>
                     
@@ -3544,7 +3567,7 @@
             
                 <article class="platform-card" data-platform-id="deepseek-pro" tabindex="0" role="button" aria-label="DeepSeek Pro 详情">
                     <header>
-                        <a class="platform-name-link" href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing" target="_blank" rel="noopener noreferrer">DeepSeek Pro</a>
+                        <a class="platform-name-link" href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">DeepSeek Pro</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                         <span class="platform-rating" aria-label="5 星">⭐️⭐️⭐️⭐️⭐️</span>
                     </header>
                     

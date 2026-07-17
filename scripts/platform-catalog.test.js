@@ -169,6 +169,20 @@ describe('buildPlatformCardHtml', () => {
     assert.match(dead, /platform-card is-discontinued/);
   });
 
+  it('adds external link icon on titled action links', () => {
+    const withLink = buildPlatformCardHtml(
+      samplePlatform({ action: 'https://example.com' }),
+      [{ vendor: 'X', models: ['M1'], discontinued: false }]
+    );
+    assert.match(withLink, /platform-name-link/);
+    assert.match(withLink, /class="link-icon"/);
+    assert.match(withLink, /platform-name-text/);
+
+    const noLink = buildPlatformCardHtml(samplePlatform({ action: null }), []);
+    assert.doesNotMatch(noLink, /class="link-icon"/);
+    assert.match(noLink, /class="platform-name"/);
+  });
+
   it('card html uses short reason not detail', () => {
     const html = buildPlatformCardHtml(samplePlatform({
       dimensions: {
