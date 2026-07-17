@@ -45,17 +45,44 @@ describe('buildDetailBodyHtml', () => {
 
   it('renders plans section when vendor has plans', () => {
     const plans = [
-      { vendor: 'X', plan: 'Pro', type: 'Coding Plan', monthlyPrice: 100, discontinued: false },
+      {
+        vendor: 'X',
+        plan: 'Pro',
+        type: 'Token Plan',
+        monthlyPrice: 100,
+        firstMonthPrice: 90,
+        tokenLimit: 600,
+        discontinued: false
+      },
       { vendor: 'X', plan: 'Old', type: 'Coding Plan', monthlyPrice: 50, discontinued: true }
     ];
     const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans, monitorRow: null });
     assert.ok(html.includes('data-section="plans"'));
     assert.ok(html.includes('Pro'));
     assert.ok(!html.includes('Old'));
-    assert.ok(!html.includes('停售'));
-    assert.ok(!html.includes('状态'));
-    assert.ok(html.includes('月价'));
+    assert.ok(html.includes('600M'));
+    assert.ok(html.includes('¥100'));
+    assert.ok(html.includes('首月'));
+    assert.ok(html.includes('Token Plan'));
+    assert.ok(html.includes('额度'));
     assert.ok(html.includes('在套餐大表中查看'));
+  });
+
+  it('summarizes coding plan quota with monthly requests when token unlimited', () => {
+    const plans = [
+      {
+        vendor: 'X',
+        plan: 'Lite',
+        type: 'Coding Plan',
+        monthlyPrice: 49,
+        tokenLimit: '无限制',
+        monthlyRequests: 24000,
+        discontinued: false
+      }
+    ];
+    const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans, monitorRow: null });
+    assert.ok(html.includes('2.4万次/月') || html.includes('24000'));
+    assert.ok(html.includes('Coding Plan'));
   });
 
   it('hides plans section when only discontinued plans exist', () => {

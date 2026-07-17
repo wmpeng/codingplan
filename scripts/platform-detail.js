@@ -52,13 +52,57 @@
     return typeof dim.reason === 'string' ? dim.reason : '';
   }
 
-  function formatMonthlyPrice(plan) {
-    const price = plan && plan.monthlyPrice;
-    if (price == null || price === '' || Number.isNaN(Number(price))) return '-';
-    const currency = (plan && plan.currency) || '¥';
-    const num = Number(price);
+  function formatMoney(amount, currency) {
+    if (amount == null || amount === '' || Number.isNaN(Number(amount))) return null;
+    const cur = currency || '¥';
+    const num = Number(amount);
     const text = Number.isInteger(num) ? String(num) : String(num);
-    return `${currency}${text}`;
+    return `${cur}${text}`;
+  }
+
+  function formatPlanPrice(plan) {
+    const monthly = formatMoney(plan && plan.monthlyPrice, plan && plan.currency);
+    if (!monthly) return '-';
+    const first = formatMoney(plan && plan.firstMonthPrice, plan && plan.currency);
+    if (first && Number(plan.firstMonthPrice) !== Number(plan.monthlyPrice)) {
+      return `${monthly}（首月 ${first}）`;
+    }
+    return monthly;
+  }
+
+  function formatCountShort(n) {
+    const num = Number(n);
+    if (!Number.isFinite(num)) return null;
+    if (num >= 10000) {
+      const wan = num / 10000;
+      const text = Number.isInteger(wan) ? String(wan) : wan.toFixed(1).replace(/\.0$/, '');
+      return `${text}万`;
+    }
+    return num.toLocaleString('zh-CN');
+  }
+
+  function formatPlanQuota(plan) {
+    if (!plan) return '-';
+    const token = plan.tokenLimit;
+    if (typeof token === 'number' && Number.isFinite(token)) {
+      return `${token}M`;
+    }
+    if (typeof plan.monthlyRequests === 'number' && Number.isFinite(plan.monthlyRequests)) {
+      const short = formatCountShort(plan.monthlyRequests);
+      return short ? `${short}次/月` : '-';
+    }
+    if (typeof plan.weeklyRequests === 'number' && Number.isFinite(plan.weeklyRequests)) {
+      const short = formatCountShort(plan.weeklyRequests);
+      return short ? `${short}次/周` : '-';
+    }
+    if (typeof plan.fiveHoursRequests === 'number' && Number.isFinite(plan.fiveHoursRequests)) {
+      const short = formatCountShort(plan.fiveHoursRequests);
+      return short ? `${short}次/5h` : '-';
+    }
+    if (typeof token === 'string' && token.trim()) {
+      return token.trim();
+    }
+    return '-';
   }
 
   function activePlansOnly(plans) {
@@ -74,11 +118,15 @@
       .map(plan => {
         const planName = esc(plan && plan.plan);
         const type = esc((plan && plan.type) || 'Coding Plan');
-        const price = esc(formatMonthlyPrice(plan));
+        const quota = esc(formatPlanQuota(plan));
+        const price = esc(formatPlanPrice(plan));
         return (
           `<tr class="platform-detail-plan-row">` +
-          `<td class="platform-detail-plan-name">${planName}</td>` +
-          `<td class="platform-detail-plan-type">${type}</td>` +
+          `<td class="platform-detail-plan-name-cell">` +
+          `<div class="platform-detail-plan-name">${planName}</div>` +
+          `<span class="platform-detail-plan-type-badge">${type}</span>` +
+          `</td>` +
+          `<td class="platform-detail-plan-quota">${quota}</td>` +
           `<td class="platform-detail-plan-price">${price}</td>` +
           `</tr>`
         );
@@ -92,8 +140,8 @@
       `<table class="platform-detail-plans-table">` +
       `<thead><tr>` +
       `<th scope="col">套餐</th>` +
-      `<th scope="col">类型</th>` +
-      `<th scope="col">月价</th>` +
+      `<th scope="col">额度</th>` +
+      `<th scope="col">价格</th>` +
       `</tr></thead>` +
       `<tbody>${rows}</tbody>` +
       `</table>` +
