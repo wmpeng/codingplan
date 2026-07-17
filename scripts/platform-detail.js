@@ -61,36 +61,25 @@
     return `${currency}${text}`;
   }
 
-  function sortPlansForDetail(plans) {
-    // 在售在前，停售置底（相对顺序保持）
-    const active = [];
-    const dead = [];
-    for (const plan of plans) {
-      if (plan && plan.discontinued) dead.push(plan);
-      else active.push(plan);
-    }
-    return active.concat(dead);
+  function activePlansOnly(plans) {
+    if (!Array.isArray(plans)) return [];
+    return plans.filter(plan => plan && !plan.discontinued);
   }
 
   function buildPlansSectionHtml(plans) {
-    if (!Array.isArray(plans) || plans.length === 0) return '';
+    const active = activePlansOnly(plans);
+    if (active.length === 0) return '';
 
-    const ordered = sortPlansForDetail(plans);
-    const rows = ordered
+    const rows = active
       .map(plan => {
-        const dead = !!(plan && plan.discontinued);
         const planName = esc(plan && plan.plan);
         const type = esc((plan && plan.type) || 'Coding Plan');
         const price = esc(formatMonthlyPrice(plan));
-        const status = dead
-          ? '<span class="platform-detail-plan-badge is-dead">停售</span>'
-          : '<span class="platform-detail-plan-badge is-live">在售</span>';
         return (
-          `<tr class="platform-detail-plan-row${dead ? ' is-discontinued' : ''}">` +
+          `<tr class="platform-detail-plan-row">` +
           `<td class="platform-detail-plan-name">${planName}</td>` +
           `<td class="platform-detail-plan-type">${type}</td>` +
           `<td class="platform-detail-plan-price">${price}</td>` +
-          `<td class="platform-detail-plan-status">${status}</td>` +
           `</tr>`
         );
       })
@@ -105,7 +94,6 @@
       `<th scope="col">套餐</th>` +
       `<th scope="col">类型</th>` +
       `<th scope="col">月价</th>` +
-      `<th scope="col">状态</th>` +
       `</tr></thead>` +
       `<tbody>${rows}</tbody>` +
       `</table>` +

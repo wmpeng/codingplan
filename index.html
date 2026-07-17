@@ -1626,8 +1626,11 @@
             position: relative;
             z-index: 1;
             width: min(100%, 720px);
+            max-width: calc(100vw - 32px);
             max-height: 85vh;
-            overflow: auto;
+            overflow-x: hidden;
+            overflow-y: auto;
+            box-sizing: border-box;
             background: var(--bg-secondary, #fffbf5);
             border: 1px solid rgba(23, 32, 51, 0.12);
             border-radius: var(--radius-xl, 20px);
@@ -1807,7 +1810,8 @@
         }
 
         .platform-detail-plans-wrap {
-            overflow-x: visible;
+            max-width: 100%;
+            overflow: hidden;
             border: 1px solid rgba(23, 32, 51, 0.08);
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.55);
@@ -1815,9 +1819,9 @@
 
         .platform-detail-plans-table {
             width: 100%;
+            max-width: 100%;
             table-layout: fixed;
-            border-collapse: separate;
-            border-spacing: 0;
+            border-collapse: collapse;
             font-size: 13px;
         }
 
@@ -1826,35 +1830,26 @@
             padding: 10px 12px;
             text-align: left;
             border-bottom: 1px solid rgba(23, 32, 51, 0.06);
-            vertical-align: top;
+            vertical-align: middle;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
 
         .platform-detail-plans-table th:nth-child(1),
         .platform-detail-plans-table td:nth-child(1) {
-            width: 28%;
+            width: 36%;
         }
 
         .platform-detail-plans-table th:nth-child(2),
         .platform-detail-plans-table td:nth-child(2) {
-            width: 30%;
-            word-break: break-word;
+            width: 40%;
         }
 
         .platform-detail-plans-table th:nth-child(3),
         .platform-detail-plans-table td:nth-child(3) {
-            width: 22%;
+            width: 24%;
             white-space: nowrap;
-        }
-
-        .platform-detail-plans-table th:nth-child(4),
-        .platform-detail-plans-table td:nth-child(4) {
-            width: 20%;
-            white-space: nowrap;
-        }
-
-        .platform-detail-plans-table th:not(:last-child),
-        .platform-detail-plans-table td:not(:last-child) {
-            padding-right: 10px;
+            text-align: right;
         }
 
         .platform-detail-plans-table th {
@@ -1863,6 +1858,10 @@
             letter-spacing: 0.04em;
             color: var(--text-tertiary);
             background: rgba(244, 236, 223, 0.45);
+        }
+
+        .platform-detail-plans-table th:nth-child(3) {
+            text-align: right;
         }
 
         .platform-detail-plans-table tbody tr:last-child td {
@@ -1874,41 +1873,14 @@
             color: var(--text-primary);
         }
 
-        .platform-detail-plan-type,
-        .platform-detail-plan-price {
+        .platform-detail-plan-type {
             color: var(--text-secondary);
         }
 
-        .platform-detail-plan-row.is-discontinued td {
-            color: var(--text-tertiary);
-            background: rgba(23, 32, 51, 0.03);
-        }
-
-        .platform-detail-plan-row.is-discontinued .platform-detail-plan-name {
-            color: var(--text-tertiary);
-            font-weight: 600;
-        }
-
-        .platform-detail-plan-badge {
-            display: inline-flex;
-            align-items: center;
-            min-height: 20px;
-            padding: 0 7px;
-            border-radius: 999px;
-            font-size: 11px;
+        .platform-detail-plan-price {
+            color: var(--text-primary);
             font-weight: 700;
-            background: rgba(23, 32, 51, 0.1);
-            color: var(--text-tertiary);
-        }
-
-        .platform-detail-plan-badge.is-live {
-            background: rgba(15, 118, 110, 0.12);
-            color: #0f766e;
-        }
-
-        .platform-detail-plan-badge.is-dead {
-            background: rgba(23, 32, 51, 0.08);
-            color: var(--text-tertiary);
+            font-variant-numeric: tabular-nums;
         }
 
         .platform-detail-jump-plans {
@@ -6717,8 +6689,8 @@
     </div>
 
     <script src="monitor/monitor-config.local.js"></script>
-    <script src="scripts/platform-catalog.js?v=260717"></script>
-    <script src="scripts/platform-detail.js?v=260717"></script>
+    <script src="scripts/platform-catalog.js?v=260717b"></script>
+    <script src="scripts/platform-detail.js?v=260717b"></script>
     <script src="scripts/shared.js?v=260610"></script>
         <script src="scripts/homepage.js?v=260717"></script>
 
