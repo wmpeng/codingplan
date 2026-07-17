@@ -52,7 +52,20 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('data-section="plans"'));
     assert.ok(html.includes('Pro'));
     assert.ok(html.includes('is-discontinued') || html.includes('停售'));
+    assert.ok(html.includes('在售'));
     assert.ok(html.includes('在套餐大表中查看'));
+  });
+
+  it('lists active plans before discontinued', () => {
+    const plans = [
+      { vendor: 'X', plan: 'Old', type: 'Coding Plan', monthlyPrice: 50, discontinued: true },
+      { vendor: 'X', plan: 'New', type: 'Coding Plan', monthlyPrice: 80, discontinued: false }
+    ];
+    const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans, monitorRow: null });
+    const iNew = html.indexOf('>New<');
+    const iOld = html.indexOf('>Old<');
+    assert.ok(iNew > -1 && iOld > -1);
+    assert.ok(iNew < iOld);
   });
 
   it('omits plans section when empty', () => {

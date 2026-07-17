@@ -183,6 +183,18 @@ describe('buildPlatformCardHtml', () => {
     assert.ok(html.includes('data-platform-id'));
     assert.ok(html.includes('platform-card-hint') || html.includes('查看详情'));
   });
+
+  it('limits model tags on card face with +N overflow', () => {
+    const models = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7'];
+    const html = buildPlatformCardHtml(samplePlatform({ name: 'X' }), [
+      { vendor: 'X', models, discontinued: false }
+    ]);
+    assert.ok(html.includes('M1'));
+    assert.ok(html.includes('M5'));
+    assert.ok(!html.includes('>M6<'));
+    assert.ok(html.includes('model-tag-more'));
+    assert.ok(html.includes('+2'));
+  });
 });
 
 describe('buildPlatformTagBarHtml', () => {

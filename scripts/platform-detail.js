@@ -61,21 +61,36 @@
     return `${currency}${text}`;
   }
 
+  function sortPlansForDetail(plans) {
+    // 在售在前，停售置底（相对顺序保持）
+    const active = [];
+    const dead = [];
+    for (const plan of plans) {
+      if (plan && plan.discontinued) dead.push(plan);
+      else active.push(plan);
+    }
+    return active.concat(dead);
+  }
+
   function buildPlansSectionHtml(plans) {
     if (!Array.isArray(plans) || plans.length === 0) return '';
 
-    const rows = plans
+    const ordered = sortPlansForDetail(plans);
+    const rows = ordered
       .map(plan => {
         const dead = !!(plan && plan.discontinued);
         const planName = esc(plan && plan.plan);
         const type = esc((plan && plan.type) || 'Coding Plan');
         const price = esc(formatMonthlyPrice(plan));
+        const status = dead
+          ? '<span class="platform-detail-plan-badge is-dead">停售</span>'
+          : '<span class="platform-detail-plan-badge is-live">在售</span>';
         return (
           `<tr class="platform-detail-plan-row${dead ? ' is-discontinued' : ''}">` +
           `<td class="platform-detail-plan-name">${planName}</td>` +
           `<td class="platform-detail-plan-type">${type}</td>` +
           `<td class="platform-detail-plan-price">${price}</td>` +
-          `<td class="platform-detail-plan-status">${dead ? '<span class="platform-detail-plan-badge">停售</span>' : ''}</td>` +
+          `<td class="platform-detail-plan-status">${status}</td>` +
           `</tr>`
         );
       })
@@ -95,7 +110,7 @@
       `<tbody>${rows}</tbody>` +
       `</table>` +
       `</div>` +
-      `<button type="button" class="platform-detail-jump-plans" data-jump-plans="1">在套餐大表中查看</button>` +
+      `<button type="button" class="platform-detail-jump-plans" data-jump-plans="1">在套餐大表中查看 →</button>` +
       `</section>`
     );
   }
@@ -134,9 +149,17 @@
       `<span class="platform-detail-avail-rate">${esc(rateText)}</span>` +
       buildHoursSparklineHtml(monitorRow.hours) +
       `</div>` +
-      `<a class="platform-detail-avail-link" href="${esc(href)}">查看完整可用性</a>` +
+      `<a class="platform-detail-avail-link" href="${esc(href)}">查看完整可用性 →</a>` +
       `</section>`
     );
+  }
+
+  function normalizeBoardPayload(resp) {
+    // 与 monitor/index.html 一致：优先取 resp.data
+    const payload = (resp && resp.data) || resp;
+    if (!payload || typeof payload !== 'object') return null;
+    if (!Array.isArray(payload.platforms)) return null;
+    return payload;
   }
 
   async function ensureBoard(apiBase) {
@@ -150,8 +173,13 @@
         return r.json();
       })
       .then(data => {
-        boardCache = data;
-        return data;
+        const normalized = normalizeBoardPayload(data);
+        if (!normalized) {
+          boardCache = false;
+          return null;
+        }
+        boardCache = normalized;
+        return normalized;
       })
       .catch(() => {
         boardCache = false;
@@ -173,6 +201,13 @@
     const rush = !!(platform && platform.purchaseRush);
     const rushLabel = rush ? '需要抢购' : '无需抢购';
     const discontinued = platform && platform.status === 'discontinued';
+    const actionUrl =
+      typeof PlatformCatalog.resolvePlatformAction === 'function'
+        ? PlatformCatalog.resolvePlatformAction(platform, Array.isArray(context.plans) ? context.plans : [])
+        : null;
+    const actionLink = actionUrl
+      ? `<a class="platform-detail-action" href="${esc(actionUrl)}" target="_blank" rel="noopener noreferrer">去官网 →</a>`
+      : '';
 
     const rawPlans = Array.isArray(context.plans) ? context.plans : [];
     const vendorPlans =
@@ -199,7 +234,10 @@
 
     return (
       `<header class="platform-detail-header${discontinued ? ' is-discontinued' : ''}">` +
+      `<div class="platform-detail-title-row">` +
       `<h2 id="platformDetailTitle" class="platform-detail-title">${name}</h2>` +
+      actionLink +
+      `</div>` +
       `<div class="platform-detail-meta">` +
       `<span class="platform-detail-rating" aria-label="${rating} 星">${stars}</span>` +
       `<span class="platform-detail-rush" data-rush="${rush ? 'true' : 'false'}">${rushLabel}</span>` +

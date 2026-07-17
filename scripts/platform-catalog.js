@@ -237,8 +237,11 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     : '';
 
   const models = collectModelsForVendor(plans, platform.name);
+  const modelLimit = 5;
+  const shownModels = models.slice(0, modelLimit);
+  const extraModels = models.length - shownModels.length;
   const modelsHtml = models.length
-    ? `<div class="platform-models">${models.map((model) => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}</div>`
+    ? `<div class="platform-models">${shownModels.map((model) => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}${extraModels > 0 ? `<span class="model-tag model-tag-more">+${extraModels}</span>` : ''}</div>`
     : '';
 
   const discontinuedClass = platform.status === 'discontinued' ? ' is-discontinued' : '';
@@ -254,7 +257,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
                     <ul class="platform-dimensions">${dimsHtml}</ul>
                     ${tagsHtml}
                     ${modelsHtml}
-                    <span class="platform-card-hint">查看详情</span>
+                    <span class="platform-card-hint">查看详情 <span aria-hidden="true">→</span></span>
                 </article>
             `;
 }
