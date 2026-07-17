@@ -231,7 +231,11 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
   const dimsHtml = PLATFORM_DIMENSION_META.map(({ key, label }) => {
     const dim = (platform.dimensions && platform.dimensions[key]) || {};
     const score = dim.score == null ? '—' : String(dim.score);
-    return `<li data-dim="${escapeHtml(key)}"><span class="dim-score">${escapeHtml(score)}</span><span class="dim-label">${escapeHtml(label)}</span><span class="dim-reason">${escapeHtml(dim.reason || '')}</span></li>`;
+    const scoreHtml =
+      score === '—'
+        ? `<span class="dim-score">${escapeHtml(score)}</span>`
+        : `<span class="dim-score">${escapeHtml(score)}<span class="dim-score-unit">分</span></span>`;
+    return `<li data-dim="${escapeHtml(key)}"><div class="dim-meta">${scoreHtml}<span class="dim-label">${escapeHtml(label)}</span></div><span class="dim-reason">${escapeHtml(dim.reason || '')}</span></li>`;
   }).join('');
 
   const tags = Array.isArray(platform.tags) ? platform.tags : [];

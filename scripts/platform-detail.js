@@ -263,10 +263,14 @@
       .map(({ key, label }) => {
         const dim = (platform && platform.dimensions && platform.dimensions[key]) || {};
         const score = dim.score == null ? '—' : String(dim.score);
+        const scoreHtml =
+          score === '—'
+            ? `<span class="platform-detail-dim-score">${esc(score)}</span>`
+            : `<span class="platform-detail-dim-score">${esc(score)}<span class="platform-detail-dim-score-unit">分</span></span>`;
         const copy = copyForDim(dim);
         return (
           `<li class="platform-detail-dim" data-dim="${esc(key)}">` +
-          `<span class="platform-detail-dim-score">${esc(score)}</span>` +
+          scoreHtml +
           `<div class="platform-detail-dim-main">` +
           `<span class="platform-detail-dim-label">${esc(label)}</span>` +
           `<p class="platform-detail-dim-copy">${esc(copy)}</p>` +

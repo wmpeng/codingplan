@@ -25,6 +25,8 @@ describe('buildDetailBodyHtml', () => {
     const html = buildDetailBodyHtml(platform, { plans: [], monitorRow: null });
     assert.ok(html.includes('评价详解'));
     assert.ok(html.includes('长详解'));
+    assert.ok(html.includes('platform-detail-dim-score-unit'));
+    assert.ok(html.includes('>5<span class="platform-detail-dim-score-unit">分</span>'));
     assert.ok(!html.includes('data-section="plans"'));
     assert.ok(!html.includes('data-section="availability"'));
   });

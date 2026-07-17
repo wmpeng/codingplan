@@ -195,6 +195,13 @@ describe('buildPlatformCardHtml', () => {
     assert.doesNotMatch(html, /<\/header>\s*<div class="platform-rush"/);
   });
 
+  it('renders score with 分 unit and groups meta for vertical centering', () => {
+    const html = buildPlatformCardHtml(samplePlatform(), []);
+    assert.match(html, /dim-meta/);
+    assert.match(html, /dim-score-unit/);
+    assert.ok(html.includes('>5<span class="dim-score-unit">分</span>'));
+  });
+
   it('card html uses short reason not detail', () => {
     const html = buildPlatformCardHtml(samplePlatform({
       dimensions: {
