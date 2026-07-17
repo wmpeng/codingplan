@@ -240,7 +240,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
 
   const tags = Array.isArray(platform.tags) ? platform.tags : [];
   const tagsHtml = tags.length
-    ? `<div class="platform-tags">${tags.map((tag) => `<span class="platform-tag">${escapeHtml(tag)}</span>`).join('')}</div>`
+    ? `<div class="platform-tags" aria-label="标签">${tags.map((tag) => `<span class="platform-tag">${escapeHtml(tag)}</span>`).join('')}</div>`
     : '';
 
   const models = collectModelsForVendor(plans, platform.name);
@@ -248,7 +248,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
   const shownModels = models.slice(0, modelLimit);
   const extraModels = models.length - shownModels.length;
   const modelsHtml = models.length
-    ? `<div class="platform-models">${shownModels.map((model) => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}${extraModels > 0 ? `<span class="model-tag model-tag-more">+${extraModels}</span>` : ''}</div>`
+    ? `<div class="platform-models" aria-label="模型">${shownModels.map((model) => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}${extraModels > 0 ? `<span class="model-tag model-tag-more">+${extraModels}</span>` : ''}</div>`
     : '';
 
   const discontinuedClass = platform.status === 'discontinued' ? ' is-discontinued' : '';
