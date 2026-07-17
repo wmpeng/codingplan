@@ -149,11 +149,19 @@ describe('buildDetailBodyHtml', () => {
         platform_slug: 'minimax',
         platform_display_name: 'MiniMax',
         availability_rate: 0.987,
-        hours: []
+        hours: [
+          { color: 'green' },
+          { color: 'yellow' },
+          { color: 'red' },
+          { color: 'gray' }
+        ]
       }
     });
     assert.ok(html.includes('data-section="availability"'));
-    assert.ok(html.includes('98') || html.includes('98.7') || html.includes('99'));
+    assert.ok(html.includes('98.7% 可用'));
+    assert.ok(html.includes('近 48 小时'));
+    assert.ok(html.includes('platform-detail-hour-cell--green'));
+    assert.ok(html.includes('platform-detail-hour-cell--yellow'));
     assert.ok(html.includes('查看完整可用性'));
   });
 

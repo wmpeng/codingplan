@@ -1962,60 +1962,63 @@
             outline-offset: 3px;
         }
 
+        /* 可用性摘要：对齐 monitor 页 monitor-row / monitor-bar / timeline-cell */
         .platform-detail-avail {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 0.6rem;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .platform-detail-avail-top {
+            display: flex;
             align-items: center;
-            gap: 12px 16px;
-            padding: 14px 16px;
-            border-radius: 14px;
-            background: rgba(244, 236, 223, 0.55);
-            border: 1px solid rgba(23, 32, 51, 0.05);
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .platform-detail-avail-caption {
+            font-size: 0.8rem;
+            color: var(--text-tertiary, #8b93a7);
         }
 
         .platform-detail-avail-rate {
-            font-size: 22px;
-            font-weight: 800;
-            line-height: 1.2;
-            color: var(--accent-primary, #0f766e);
-            letter-spacing: -0.02em;
-            min-width: 4.5ch;
+            font-size: 0.82rem;
+            color: var(--text-tertiary, #8b93a7);
+            white-space: nowrap;
         }
 
         .platform-detail-hours {
             display: flex;
-            align-items: flex-end;
-            flex-wrap: nowrap;
-            gap: 1px;
-            min-height: 16px;
-            overflow: hidden;
-            flex: 1 1 140px;
-            max-width: 100%;
+            gap: 2px;
+            width: 100%;
+            height: 34px;
+            min-width: 0;
         }
 
         .platform-detail-hour-cell {
-            display: inline-block;
-            width: 4px;
-            height: 14px;
-            flex: 0 0 4px;
-            border-radius: 1px;
-            background: #d1d5db;
+            flex: 1 1 0;
+            min-width: 2px;
+            height: 100%;
+            border-radius: 2px;
+            background: #e8ecf1;
         }
 
-        .platform-detail-hour-cell[data-color="green"] {
-            background: #22c55e;
+        .platform-detail-hour-cell--green {
+            background: #2f9e76;
         }
 
-        .platform-detail-hour-cell[data-color="yellow"] {
-            background: #eab308;
+        .platform-detail-hour-cell--yellow {
+            background: #d4a017;
         }
 
-        .platform-detail-hour-cell[data-color="red"] {
-            background: #ef4444;
+        .platform-detail-hour-cell--red {
+            background: #dc6b5a;
         }
 
-        .platform-detail-hour-cell[data-color="gray"] {
-            background: #d1d5db;
+        .platform-detail-hour-cell--gray {
+            background: #e8ecf1;
         }
 
         @media (max-width: 640px) {
@@ -6714,7 +6717,7 @@
 
     <script src="monitor/monitor-config.local.js"></script>
     <script src="scripts/platform-catalog.js?v=260717b"></script>
-    <script src="scripts/platform-detail.js?v=260717g"></script>
+    <script src="scripts/platform-detail.js?v=260717h"></script>
     <script src="scripts/shared.js?v=260610"></script>
         <script src="scripts/homepage.js?v=260717"></script>
 

@@ -159,11 +159,12 @@
 
   function buildHoursSparklineHtml(hours) {
     if (!Array.isArray(hours) || hours.length === 0) return '';
+    // 与监控页一致：条带用 flex 铺满宽度；弹层宽度有限，取最近 48 小时
     const recent = hours.length > 48 ? hours.slice(hours.length - 48) : hours;
     const cells = recent
       .map(cell => {
         const color = (cell && cell.color) || 'gray';
-        return `<span class="platform-detail-hour-cell" data-color="${esc(color)}"></span>`;
+        return `<span class="platform-detail-hour-cell platform-detail-hour-cell--${esc(color)}"></span>`;
       })
       .join('');
     return `<div class="platform-detail-hours" aria-hidden="true">${cells}</div>`;
@@ -172,7 +173,7 @@
   function buildAvailabilitySectionHtml(platform, monitorRow) {
     if (!monitorRow) return '';
 
-    const rateText = formatAvailabilityRate(monitorRow.availability_rate);
+    const rateText = `${formatAvailabilityRate(monitorRow.availability_rate)} 可用`;
     const slug =
       (monitorRow.platform_slug && String(monitorRow.platform_slug).trim()) ||
       (platform && platform.monitorSlug && String(platform.monitorSlug).trim()) ||
@@ -184,7 +185,10 @@
       `<section class="platform-detail-section" data-section="availability" aria-labelledby="platformDetailAvailHeading">` +
       `<h3 id="platformDetailAvailHeading" class="platform-detail-section-title">可用性</h3>` +
       `<div class="platform-detail-avail">` +
+      `<div class="platform-detail-avail-top">` +
+      `<span class="platform-detail-avail-caption">近 48 小时</span>` +
       `<span class="platform-detail-avail-rate">${esc(rateText)}</span>` +
+      `</div>` +
       buildHoursSparklineHtml(monitorRow.hours) +
       `</div>` +
       `<a class="platform-detail-avail-link" href="${esc(href)}">查看完整可用性 →</a>` +
