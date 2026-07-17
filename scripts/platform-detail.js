@@ -110,7 +110,11 @@
 
   function activePlansOnly(plans) {
     if (!Array.isArray(plans)) return [];
-    return plans.filter(plan => plan && !plan.discontinued);
+    return plans.filter(plan => {
+      if (!plan || plan.discontinued) return false;
+      // 额度未公开的套餐没有实质信息，弹层不展示
+      return formatPlanQuota(plan) !== '未公开';
+    });
   }
 
   function buildPlansSectionHtml(plans) {

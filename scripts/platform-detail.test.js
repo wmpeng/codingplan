@@ -94,6 +94,49 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(!html.includes('data-section="plans"'));
   });
 
+  it('hides plans whose quota is unpublished', () => {
+    const plans = [
+      {
+        vendor: 'OpenCode',
+        plan: 'Go',
+        type: 'Token Plan',
+        monthlyPrice: 10,
+        tokenLimit: '未公开',
+        discontinued: false
+      },
+      {
+        vendor: 'OpenCode',
+        plan: 'Pro',
+        type: 'Token Plan',
+        monthlyPrice: 20,
+        tokenLimit: 100,
+        discontinued: false
+      }
+    ];
+    const html = buildDetailBodyHtml(samplePlatform({ name: 'OpenCode' }), { plans, monitorRow: null });
+    assert.ok(html.includes('data-section="plans"'));
+    assert.ok(html.includes('Pro'));
+    assert.ok(html.includes('100M'));
+    assert.ok(!html.includes('>Go<'));
+    assert.ok(!html.includes('未公开'));
+  });
+
+  it('hides plans section when only unpublished-quota plans exist', () => {
+    const plans = [
+      {
+        vendor: 'OpenCode',
+        plan: 'Go',
+        type: 'Token Plan',
+        monthlyPrice: 10,
+        tokenLimit: '未公开',
+        discontinued: false
+      }
+    ];
+    const html = buildDetailBodyHtml(samplePlatform({ name: 'OpenCode' }), { plans, monitorRow: null });
+    assert.ok(!html.includes('data-section="plans"'));
+    assert.ok(!html.includes('Go'));
+  });
+
   it('omits plans section when empty', () => {
     const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans: [], monitorRow: null });
     assert.ok(!html.includes('data-section="plans"'));
