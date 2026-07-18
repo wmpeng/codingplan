@@ -2,7 +2,7 @@
   "header": {
     "title": "AI Coding Plan 对比",
     "updateDate": "更新日期2026.7.10 | 字节·方舟 / Kimi 追加支持 Kimi-K3 模型；Codex 追加支持 GPT-5.6 模型",
-    "subtitle": "29大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、讯飞·星火、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比\n支持DeepSeek V4，GLM-5.2，Qwen-3.7-Max，Kimi-K3，Kimi-K2.7，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
+    "subtitle": "29大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、讯飞·星火、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比\n支持DeepSeek V4，GLM-5.2，Qwen-3.7-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
     "models": "DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 Coding Plan 仍存在限购。首页新增“DeepSeek 涨价应对”推荐分组，优先帮你找支持 DeepSeek-V4 且更容易买到的替代平台。",
     "watermarkUrl": "www.codingplan.fyi",
     "entry": {
@@ -174,7 +174,7 @@
           "name": "字节·方舟",
           "rating": 5,
           "reasons": [
-            "唯一同时支持GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3、Kimi-K3、Kimi-K2.7-Code 的全家桶平台。",
+            "唯一同时支持GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3、Kimi-K3 的全家桶平台。",
             "目前2.5折 + 用量2.5倍活动，性价比拉满。",
             "当前需抢购"
           ]
@@ -207,7 +207,7 @@
           "rating": 5,
           "reasons": [
             "2.5折期间叠加2.5倍用量活动，相当于平时10倍性价比。",
-            "同时支持GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3、Kimi-K3、Kimi-K2.7-Code 的全家桶平台。",
+            "同时支持GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3、Kimi-K3 的全家桶平台。",
             "当前需抢购"
           ]
         },
@@ -264,7 +264,7 @@
           "name": "Kimi",
           "rating": 4,
           "reasons": [
-            "支持 Kimi-K3、Kimi-K2.7-Code。",
+            "支持 Kimi-K3。",
             "支持多模态。"
           ]
         }
@@ -311,7 +311,7 @@
       "name": "Kimi",
       "rating": 4,
       "reasons": [
-        "支持Kimi-K3、Kimi-2.7-Code。+0.1",
+        "支持Kimi-K3。+0.1",
         "提供实验性专业数据库功能。+0.5",
         "用量官方没有说明，但是实测比其他家用量要少一些。-1",
         "模型能力均衡，可用作代码编写和日常需求，支持多模态（图像输入）。+0.5"
