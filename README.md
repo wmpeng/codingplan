@@ -1,6 +1,6 @@
 # AI Coding Plan 对比
 
-> 更新日期2026.7.10 | 字节·方舟 / Kimi 追加支持 Kimi-K3 模型；Codex 追加支持 GPT-5.6 模型
+> 更新日期2026.7.19 | 字节·方舟 / Kimi 追加支持 Kimi-K3 模型；Codex 追加支持 GPT-5.6 模型
 
 ## 📖 简介
 
@@ -44,10 +44,6 @@ DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 C
     - 目前2.5折，且目前有为期一个月的用量2.5倍活动。相当于原本10倍的性价比，从拉到夯。+1
     - 支持GLM-5.2，DeepSeek-V4，MiniMax-M3，Kimi-K2.6，Kimi-K2.7-Code。唯一一家同时支持四家最新模型的平台。+1
     - 当前需抢购
-5. [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) ⭐️⭐️⭐️⭐️
-    - 高效版已支持 GLM-5.2(500K)，专业版支持 GLM-5.1(200K)、DeepSeek-V4-Pro/Flash。+1
-    - 抢不到智谱的平替，无需抢购，高效版（199元）即提供 GLM-5.2 模型。
-    - 用量比较多，但高峰期比较拥挤。
 
 ### 按量计费推荐
 
@@ -59,7 +55,7 @@ DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 C
     - 7月中旬引入峰谷计费，[高峰时段价格翻倍](https://www.ithome.com/0/970/123.htm)。
 2. 共继算力 ⭐️⭐️⭐️⭐️
     - 支持DeepSeek-V4-Pro模型，目前平台人数不多，稳定性较好。
-    - API价格为官方**8折**，即DeepSeek-V4-Pro输入2.4元/M，缓存0.02元/M，输出4.8元/M。官方7月涨价后，此平台价格优势更加明显。
+    - API价格为官方**8折**(有点延迟)，即DeepSeek-V4-Pro输入2.4元/M，缓存0.02元/M，输出4.8元/M。官方7月涨价后，此平台价格优势更加明显。
     - 一定要通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入，才可锁定**8折调用资格**和额外**20元调用额度**。加[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)了解更多。
     - 还支持GLM-5.2，Kimi-K2.6，Qwen-3.7-Max等常见模型。
 3. [小米·MiMo](https://api.dreamfree.space/c/s/cpyqmimo) ⭐️⭐️⭐️⭐️
@@ -89,7 +85,7 @@ DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 C
     - 目前2.5折 + 用量2.5倍活动，性价比拉满。
     - 当前需抢购
 6. [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) ⭐️⭐️⭐️⭐️
-    - 高效版（199元）已支持 GLM-5.2。但GLM-5.2比较拥挤，其他模型还好。
+    - 高效版（199元）已支持 GLM-5.2(500K)。但GLM-5.2比较拥挤，其他模型还好。
     - 无需抢购，随时可下单，智谱抢不到的最佳平替。
     - Kimi-2.6、DeepSeek-V4-Pro/Flash 也同时支持，模型覆盖面广。
 
@@ -104,10 +100,11 @@ DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 C
     - 2.5折期间叠加2.5倍用量活动，相当于平时10倍性价比。
     - 同时支持GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3、Kimi-K3 的全家桶平台。
     - 当前需抢购
-3. [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) ⭐️⭐️⭐️⭐️⭐️
-    - 用量很多，**真**按照调用次数。
-    - GLM-5.2比较拥挤，其他模型还好。
-    - 高效版（199元）已支持 GLM-5.2，39元专业版即提供 GLM-5.1，丰俭由人。
+3. 共继算力 ⭐️⭐️⭐️⭐️
+    - 按量调用。支持DeepSeek-V4-Pro模型，目前平台人数不多，稳定性较好。
+    - API价格为官方**8折**(有点延迟)，即DeepSeek-V4-Pro输入2.4元/M，缓存0.02元/M，输出4.8元/M。官方7月涨价后，此平台价格优势更加明显。
+    - 一定要通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入，才可锁定**8折调用资格**和额外**20元调用额度**。加[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)了解更多。
+    - 还支持GLM-5.2，Kimi-K2.6，Qwen-3.7-Max等常见模型。
 4. [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) ⭐️⭐️⭐️⭐️⭐️
     - Go 套餐 $10/月（首月 $5），DeepSeek V4 Flash 每月可达 **15.8 万次请求**，量大价低。
     - 多模型聚合平台，支持 GLM-5.2、Kimi-K2.7-Code、MiniMax-M3、Qwen-3.7-Max 等。
@@ -231,7 +228,7 @@ DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 C
 
 ## 📝 更新日志
 
-### 2026.7.10
+### 2026.7.19
 
 - 字节·方舟 Coding Plan / Token Plan 全部档位追加支持 Kimi-K3 模型
 - Kimi Coding Plan（Andante / Moderato / Allegretto / Allegro）追加支持 Kimi-K3 模型
