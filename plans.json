@@ -495,6 +495,7 @@
       "MiniMax-M3",
       "Kimi-K2.6",
       "Kimi-K2.7-Code",
+      "Kimi-K3",
       "DeepSeek-V3.2",
       "DeepSeek-V4-Flash",
       "DeepSeek-V4-Pro"
@@ -532,6 +533,7 @@
       "MiniMax-M3",
       "Kimi-K2.6",
       "Kimi-K2.7-Code",
+      "Kimi-K3",
       "DeepSeek-V3.2",
       "DeepSeek-V4-Flash",
       "DeepSeek-V4-Pro"
@@ -561,6 +563,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": 468,
     "models": [
+      "Kimi-K3",
       "Kimi-K2.7-Code",
       "Kimi-K2.6",
       "Kimi-K2.5",
@@ -590,6 +593,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": 948,
     "models": [
+      "Kimi-K3",
       "Kimi-K2.7-Code",
       "Kimi-K2.6",
       "Kimi-K2.5",
@@ -609,13 +613,15 @@
     "action": "https://api.dreamfree.space/c/s/cpyqkimi",
     "rating": 4,
     "tags": [
-      "模型强", "性价比高"
+      "模型强",
+      "性价比高"
     ],
     "firstMonthPrice": "-",
     "monthlyPrice": 199,
     "quarterlyPrice": "-",
     "yearlyPrice": 1908,
     "models": [
+      "Kimi-K3",
       "Kimi-K2.7-Code",
       "Kimi-K2.6",
       "Kimi-K2.5",
@@ -640,13 +646,15 @@
     "action": "https://api.dreamfree.space/c/s/cpyqkimi",
     "rating": 4,
     "tags": [
-      "模型强", "性价比高"
+      "模型强",
+      "性价比高"
     ],
     "firstMonthPrice": "-",
     "monthlyPrice": 699,
     "quarterlyPrice": "-",
     "yearlyPrice": 6708,
     "models": [
+      "Kimi-K3",
       "Kimi-K2.7-Code",
       "Kimi-K2.6",
       "Kimi-K2.5",
@@ -882,7 +890,9 @@
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqmimo",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "firstMonthPrice": 34.32,
     "monthlyPrice": 39,
     "quarterlyPrice": "-",
@@ -910,7 +920,9 @@
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqmimo",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "firstMonthPrice": 87.12,
     "monthlyPrice": 99,
     "quarterlyPrice": "-",
@@ -938,7 +950,9 @@
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqmimo",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "firstMonthPrice": 289.52,
     "monthlyPrice": 329,
     "quarterlyPrice": "-",
@@ -966,7 +980,9 @@
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqmimo",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "firstMonthPrice": 579.92,
     "monthlyPrice": 659,
     "quarterlyPrice": "-",
@@ -1012,6 +1028,7 @@
       "MiniMax-M3",
       "Kimi-K2.6",
       "Kimi-K2.7-Code",
+      "Kimi-K3",
       "Doubao-Seedream-5.0-lite"
     ],
     "fiveHoursRequests": 200,
@@ -1048,6 +1065,7 @@
       "MiniMax-M3",
       "Kimi-K2.6",
       "Kimi-K2.7-Code",
+      "Kimi-K3",
       "Doubao-Seedream-5.0-lite",
       "Doubao-Seedance-2.0"
     ],
@@ -1085,6 +1103,7 @@
       "MiniMax-M3",
       "Kimi-K2.6",
       "Kimi-K2.7-Code",
+      "Kimi-K3",
       "Doubao-Seedream-5.0-lite",
       "Doubao-Seedance-2.0"
     ],
@@ -1122,6 +1141,7 @@
       "MiniMax-M3",
       "Kimi-K2.6",
       "Kimi-K2.7-Code",
+      "Kimi-K3",
       "Doubao-Seedream-5.0-lite",
       "Doubao-Seedance-2.0"
     ],
@@ -1206,7 +1226,9 @@
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "firstMonthPrice": "-",
     "monthlyPrice": 198,
     "quarterlyPrice": "-",
@@ -1236,7 +1258,9 @@
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "firstMonthPrice": "-",
     "monthlyPrice": 698,
     "quarterlyPrice": "-",
@@ -1266,7 +1290,9 @@
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "firstMonthPrice": "-",
     "monthlyPrice": 1398,
     "quarterlyPrice": "-",
@@ -1297,7 +1323,8 @@
     "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
     "rating": 5,
     "tags": [
-      "模型强", "性价比高"
+      "模型强",
+      "性价比高"
     ],
     "firstMonthPrice": "-",
     "monthlyPrice": 20,
@@ -1331,7 +1358,8 @@
     "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
     "rating": 5,
     "tags": [
-      "模型强", "性价比高"
+      "模型强",
+      "性价比高"
     ],
     "firstMonthPrice": "-",
     "monthlyPrice": 100,
@@ -1365,7 +1393,8 @@
     "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
     "rating": 5,
     "tags": [
-      "模型强", "性价比高"
+      "模型强",
+      "性价比高"
     ],
     "firstMonthPrice": "-",
     "monthlyPrice": 200,
@@ -1398,7 +1427,6 @@
     "type": "Coding Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
     "rating": 3,
-    
     "firstMonthPrice": "-",
     "monthlyPrice": 39,
     "quarterlyPrice": "-",
@@ -1419,7 +1447,6 @@
     "type": "Coding Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
     "rating": 3,
-    
     "firstMonthPrice": "-",
     "monthlyPrice": 149,
     "quarterlyPrice": "-",
@@ -1440,7 +1467,6 @@
     "type": "Coding Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
     "rating": 3,
-    
     "firstMonthPrice": "-",
     "monthlyPrice": 388,
     "quarterlyPrice": "-",
