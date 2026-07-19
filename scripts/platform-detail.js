@@ -96,7 +96,7 @@
 
     if (typeof token === 'number' && Number.isFinite(token)) {
       if (token <= 0) return '';
-      return `${token}M`;
+      return `${token}M Token`;
     }
     if (typeof plan.monthlyRequests === 'number' && Number.isFinite(plan.monthlyRequests)) {
       const short = formatCountShort(plan.monthlyRequests);
@@ -120,7 +120,7 @@
         return '';
       }
       if (token == null || token === '') {
-        return `${plan.measuredMonthlyTokenLimit}M`;
+        return `${plan.measuredMonthlyTokenLimit}M Token`;
       }
     }
     if (typeof token === 'string' && token.trim()) {

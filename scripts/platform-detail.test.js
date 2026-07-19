@@ -66,7 +66,7 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('platform-detail-plan-title-row'));
     assert.ok(html.includes('Pro'));
     assert.ok(!html.includes('Old'));
-    assert.ok(html.includes('600M'));
+    assert.ok(html.includes('600M Token'));
     assert.ok(html.includes('¥100'));
     assert.ok(html.includes('首月'));
     assert.ok(html.includes('platform-detail-price-sep'));
