@@ -272,7 +272,7 @@ describe('buildPlatformTagBarHtml', () => {
     assert.match(html, /platform-tag-chip--derived is-active" data-platform-tag="性价比高"/);
     assert.match(html, /platform-tag-group--operational/);
     assert.match(html, /platform-status-slider/);
-    assert.match(html, /platform-status-prefix">仅显示/);
+    assert.match(html, /platform-status-prefix">显示</);
     assert.match(html, /platform-status-suffix">平台/);
     assert.match(html, />开放购买</);
     assert.match(html, />所有</);
@@ -286,13 +286,24 @@ describe('buildPlatformStatusSliderHtml', () => {
     assert.match(html, /platform-status-slider/);
     assert.match(html, /data-platform-status-max="limited"/);
     assert.match(html, /platform-status-seg/);
-    assert.match(html, /platform-status-prefix">仅显示/);
+    assert.match(html, /platform-status-prefix">显示</);
     assert.match(html, /platform-status-suffix">平台/);
     assert.match(html, />开放购买</);
     assert.match(html, />定时放量</);
     assert.match(html, />暂时停售</);
     assert.match(html, />所有</);
     assert.match(html, /platform-status-seg is-active" data-platform-status="limited"/);
+  });
+
+  it('uses 仅显示 prefix only when open is selected', () => {
+    const openHtml = buildPlatformStatusSliderHtml('open');
+    assert.match(openHtml, /platform-status-prefix">仅显示</);
+    assert.match(openHtml, /title="仅显示开放购买平台"/);
+    assert.match(openHtml, /title="显示定时放量平台"/);
+
+    const allHtml = buildPlatformStatusSliderHtml('delisted');
+    assert.match(allHtml, /platform-status-prefix">显示</);
+    assert.match(allHtml, /title="显示所有平台"/);
   });
 });
 

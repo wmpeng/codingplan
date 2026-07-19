@@ -14,14 +14,13 @@ const PLATFORM_STATUS_LABELS = {
   paused: '暂时停售',
   delisted: '已下架'
 };
-/** 筛选滑块中间档位文案（前后另有「仅显示」/「平台」） */
+/** 筛选滑块中间档位文案（前后另有前缀 /「平台」） */
 const PLATFORM_STATUS_SEGMENT_LABELS = {
   open: '开放购买',
   limited: '定时放量',
   paused: '暂时停售',
   delisted: '所有'
 };
-const PLATFORM_STATUS_FILTER_PREFIX = '仅显示';
 const PLATFORM_STATUS_FILTER_SUFFIX = '平台';
 const DEFAULT_PLATFORM_STATUS_MAX = 'limited';
 
@@ -53,8 +52,14 @@ function platformStatusSegmentLabel(value) {
   return PLATFORM_STATUS_SEGMENT_LABELS[status] || PLATFORM_STATUS_SEGMENT_LABELS.open;
 }
 
+/** 仅「开放购买」用「仅显示」，其余档位用「显示」 */
+function platformStatusFilterPrefix(value) {
+  return normalizePlatformStatus(value) === 'open' ? '仅显示' : '显示';
+}
+
 function platformStatusFilterLabel(value) {
-  return `${PLATFORM_STATUS_FILTER_PREFIX}${platformStatusSegmentLabel(value)}${PLATFORM_STATUS_FILTER_SUFFIX}`;
+  const status = normalizePlatformStatus(value);
+  return `${platformStatusFilterPrefix(status)}${platformStatusSegmentLabel(status)}${PLATFORM_STATUS_FILTER_SUFFIX}`;
 }
 
 function matchesDerivedTag(platform, rule) {
@@ -259,7 +264,7 @@ function buildPlatformStatusSliderHtml(platformStatusMax) {
 
   return (
     `<div class="platform-status-slider" data-platform-status-max="${max}" role="group" aria-label="平台状态筛选">` +
-    `<span class="platform-status-prefix">${escapeHtml(PLATFORM_STATUS_FILTER_PREFIX)}</span>` +
+    `<span class="platform-status-prefix">${escapeHtml(platformStatusFilterPrefix(max))}</span>` +
     `<div class="platform-status-segments" tabindex="0">${segments}</div>` +
     `<span class="platform-status-suffix">${escapeHtml(PLATFORM_STATUS_FILTER_SUFFIX)}</span>` +
     `</div>`
@@ -339,7 +344,6 @@ const PlatformCatalog = {
   PLATFORM_STATUSES,
   PLATFORM_STATUS_LABELS,
   PLATFORM_STATUS_SEGMENT_LABELS,
-  PLATFORM_STATUS_FILTER_PREFIX,
   PLATFORM_STATUS_FILTER_SUFFIX,
   DEFAULT_PLATFORM_STATUS_MAX,
   escapeHtml,
@@ -347,6 +351,7 @@ const PlatformCatalog = {
   platformStatusRank,
   platformStatusLabel,
   platformStatusSegmentLabel,
+  platformStatusFilterPrefix,
   platformStatusFilterLabel,
   matchesDerivedTag,
   matchesOperationalTag,
