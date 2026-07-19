@@ -2011,6 +2011,98 @@
             applyPlatformFilters();
         }
 
+        function setPlatformStatusMax(nextStatus) {
+            const normalized = PlatformCatalog.normalizePlatformStatus(nextStatus);
+            if (normalized === platformStatusMax) return;
+            platformStatusMax = normalized;
+            renderPlatformTagBar();
+            applyPlatformFilters();
+        }
+
+        function bindPlatformStatusSliderGestures(bar) {
+            const segments = bar.querySelector('.platform-status-segments');
+            if (!segments || segments.dataset.bound === '1') return;
+            segments.dataset.bound = '1';
+
+            let pointerId = null;
+            let startX = 0;
+            let startRank = 0;
+            let dragged = false;
+            let suppressClick = false;
+
+            const statuses =
+                (PlatformCatalog.PLATFORM_STATUSES && PlatformCatalog.PLATFORM_STATUSES.slice()) ||
+                ['open', 'limited', 'paused', 'delisted'];
+
+            function rankFromClientX(clientX) {
+                const rect = segments.getBoundingClientRect();
+                if (rect.width <= 0) return startRank;
+                const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+                return Math.round(ratio * (statuses.length - 1));
+            }
+
+            segments.addEventListener('pointerdown', (event) => {
+                if (event.button != null && event.button !== 0) return;
+                pointerId = event.pointerId;
+                startX = event.clientX;
+                startRank = PlatformCatalog.platformStatusRank(platformStatusMax);
+                dragged = false;
+                try {
+                    segments.setPointerCapture(pointerId);
+                } catch (_) {}
+            });
+
+            segments.addEventListener('pointermove', (event) => {
+                if (pointerId == null || event.pointerId !== pointerId) return;
+                if (Math.abs(event.clientX - startX) > 8) {
+                    dragged = true;
+                }
+            });
+
+            function endPointer(event) {
+                if (pointerId == null || event.pointerId !== pointerId) return;
+                const endX = event.clientX;
+                const dx = endX - startX;
+                pointerId = null;
+                if (!dragged && Math.abs(dx) < 8) return;
+
+                suppressClick = true;
+                let nextRank = startRank;
+                if (Math.abs(dx) >= 36) {
+                    const steps = Math.max(1, Math.round(Math.abs(dx) / 56));
+                    nextRank = startRank + (dx > 0 ? steps : -steps);
+                } else {
+                    nextRank = rankFromClientX(endX);
+                }
+                nextRank = Math.max(0, Math.min(statuses.length - 1, nextRank));
+                setPlatformStatusMax(statuses[nextRank]);
+            }
+
+            segments.addEventListener('pointerup', endPointer);
+            segments.addEventListener('pointercancel', () => {
+                pointerId = null;
+                dragged = false;
+            });
+
+            segments.addEventListener('click', (event) => {
+                if (!suppressClick) return;
+                event.preventDefault();
+                event.stopPropagation();
+                suppressClick = false;
+            }, true);
+
+            segments.addEventListener('keydown', (event) => {
+                const rank = PlatformCatalog.platformStatusRank(platformStatusMax);
+                if (event.key === 'ArrowRight' || event.key === 'ArrowUp') {
+                    event.preventDefault();
+                    setPlatformStatusMax(statuses[Math.min(statuses.length - 1, rank + 1)]);
+                } else if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') {
+                    event.preventDefault();
+                    setPlatformStatusMax(statuses[Math.max(0, rank - 1)]);
+                }
+            });
+        }
+
         function renderPlatformTagBar() {
             const bar = document.getElementById('platformTagBar');
             if (!bar) return;
@@ -2034,13 +2126,11 @@
 
             bar.querySelectorAll('[data-platform-status]').forEach((btn) => {
                 btn.addEventListener('click', () => {
-                    platformStatusMax = PlatformCatalog.normalizePlatformStatus(
-                        btn.getAttribute('data-platform-status')
-                    );
-                    renderPlatformTagBar();
-                    applyPlatformFilters();
+                    setPlatformStatusMax(btn.getAttribute('data-platform-status'));
                 });
             });
+
+            bindPlatformStatusSliderGestures(bar);
         }
 
         function buildPlatformCardHtml(platform) {

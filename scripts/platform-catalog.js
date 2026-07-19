@@ -14,6 +14,12 @@ const PLATFORM_STATUS_LABELS = {
   paused: '暂时停售',
   delisted: '已下架'
 };
+const PLATFORM_STATUS_FILTER_LABELS = {
+  open: '仅显示开放购买平台',
+  limited: '显示定时放量平台',
+  paused: '显示暂时停售平台',
+  delisted: '显示所有平台'
+};
 const DEFAULT_PLATFORM_STATUS_MAX = 'limited';
 
 function escapeHtml(text) {
@@ -37,6 +43,10 @@ function platformStatusRank(value) {
 
 function platformStatusLabel(value) {
   return PLATFORM_STATUS_LABELS[normalizePlatformStatus(value)] || PLATFORM_STATUS_LABELS.open;
+}
+
+function platformStatusFilterLabel(value) {
+  return PLATFORM_STATUS_FILTER_LABELS[normalizePlatformStatus(value)] || PLATFORM_STATUS_FILTER_LABELS.open;
 }
 
 function matchesDerivedTag(platform, rule) {
@@ -193,7 +203,7 @@ function validatePlatformRecords(platforms, plans) {
 function buildPlatformTagBarHtml(catalogConfig, selectedLabels, platformStatusMax) {
   const cat = catalogConfig || {};
   const selected = selectedLabels || [];
-  const parts = [];
+  const mainParts = [];
 
   const derivedChips = [];
   for (const tag of cat.derivedTags || []) {
@@ -204,7 +214,7 @@ function buildPlatformTagBarHtml(catalogConfig, selectedLabels, platformStatusMa
     );
   }
   if (derivedChips.length) {
-    parts.push(`<div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选">${derivedChips.join('')}</div>`);
+    mainParts.push(`<div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选">${derivedChips.join('')}</div>`);
   }
 
   const operationalChips = [];
@@ -215,15 +225,14 @@ function buildPlatformTagBarHtml(catalogConfig, selectedLabels, platformStatusMa
     );
   }
   if (operationalChips.length) {
-    parts.push(`<div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签">${operationalChips.join('')}</div>`);
+    mainParts.push(`<div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签">${operationalChips.join('')}</div>`);
   }
 
-  if (derivedChips.length || operationalChips.length) {
-    parts.push('<span class="platform-tag-sep" aria-hidden="true"></span>');
-  }
-  parts.push(buildPlatformStatusSliderHtml(platformStatusMax));
+  const mainHtml = mainParts.length
+    ? `<div class="platform-tag-bar-main">${mainParts.join('')}</div>`
+    : '';
 
-  return parts.join('');
+  return `${mainHtml}${buildPlatformStatusSliderHtml(platformStatusMax)}`;
 }
 
 function buildPlatformStatusSliderHtml(platformStatusMax) {
@@ -231,18 +240,17 @@ function buildPlatformStatusSliderHtml(platformStatusMax) {
   const maxRank = platformStatusRank(max);
   const segments = PLATFORM_STATUSES.map((status, rank) => {
     const active = rank === maxRank;
-    const included = rank <= maxRank;
+    const label = PLATFORM_STATUS_FILTER_LABELS[status];
     return (
-      `<button type="button" class="platform-status-seg${active ? ' is-active' : ''}${included ? ' is-included' : ''}" data-platform-status="${status}" aria-pressed="${active ? 'true' : 'false'}" title="显示至${PLATFORM_STATUS_LABELS[status]}">` +
-      `${escapeHtml(PLATFORM_STATUS_LABELS[status])}` +
+      `<button type="button" class="platform-status-seg${active ? ' is-active' : ''}" data-platform-status="${status}" aria-pressed="${active ? 'true' : 'false'}" title="${escapeHtml(label)}">` +
+      `${escapeHtml(label)}` +
       `</button>`
     );
   }).join('');
 
   return (
-    `<div class="platform-status-slider" data-platform-status-max="${max}" role="group" aria-label="显示至平台状态">` +
-    `<span class="platform-status-slider-prefix">显示至</span>` +
-    `<div class="platform-status-segments">${segments}</div>` +
+    `<div class="platform-status-slider" data-platform-status-max="${max}" role="group" aria-label="平台状态筛选">` +
+    `<div class="platform-status-segments" tabindex="0">${segments}</div>` +
     `</div>`
   );
 }
@@ -319,11 +327,13 @@ const PlatformCatalog = {
   PLATFORM_DIMENSION_META,
   PLATFORM_STATUSES,
   PLATFORM_STATUS_LABELS,
+  PLATFORM_STATUS_FILTER_LABELS,
   DEFAULT_PLATFORM_STATUS_MAX,
   escapeHtml,
   normalizePlatformStatus,
   platformStatusRank,
   platformStatusLabel,
+  platformStatusFilterLabel,
   matchesDerivedTag,
   matchesOperationalTag,
   filterPlatforms,
