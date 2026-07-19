@@ -28,9 +28,8 @@ function samplePlatform(overrides = {}) {
     dimensions: {
       value: { score: 5, reason: 'a' },
       stability: { score: 3, reason: 'b' },
-      models: { score: 4, reason: 'c' },
-      convenience: { score: 4, reason: 'd' }
-    },
+      models: { score: 4, reason: 'c' }
+},
     tags: ['适合养龙虾'],
     ...overrides
   };
@@ -48,9 +47,8 @@ describe('filterPlatforms', () => {
         dimensions: {
           value: { score: 5, reason: 'a' },
           stability: { score: 3, reason: 'b' },
-          models: { score: 4, reason: 'c' },
-          convenience: { score: 4, reason: 'd' }
-        }
+          models: { score: 4, reason: 'c' }
+}
       }),
       samplePlatform({ id: 'c', name: 'C', tags: [] })
     ];
@@ -149,9 +147,8 @@ describe('validatePlatformRecords', () => {
       dimensions: {
         value: { score: 6, reason: 'x' },
         stability: { score: 3, reason: '' },
-        models: { score: 4, reason: 'c' },
-        convenience: { score: 4, reason: 'd' }
-      }
+        models: { score: 4, reason: 'c' }
+}
     });
     const r = validatePlatformRecords([bad], [{ vendor: 'X' }]);
     assert.equal(r.ok, false);
@@ -173,9 +170,8 @@ describe('escapeHtml', () => {
       dimensions: {
         value: { score: 3, reason: malicious },
         stability: { score: 3, reason: 'ok' },
-        models: { score: 3, reason: 'ok' },
-        convenience: { score: 3, reason: 'ok' }
-      }
+        models: { score: 3, reason: 'ok' }
+}
     }), [{ vendor: 'X', models: [], discontinued: false }]);
     assert.doesNotMatch(html, /<script>/);
     assert.match(html, /&lt;script&gt;/);
@@ -237,9 +233,8 @@ describe('buildPlatformCardHtml', () => {
       dimensions: {
         value: { score: 5, reason: '短理由', detail: '长详解不应出现在卡面' },
         stability: { score: 3, reason: 'b' },
-        models: { score: 4, reason: 'c' },
-        convenience: { score: 4, reason: 'd' }
-      }
+        models: { score: 4, reason: 'c' }
+}
     }), []);
     assert.ok(html.includes('短理由'));
     assert.ok(!html.includes('长详解不应出现在卡面'));
@@ -382,9 +377,8 @@ describe('validatePlatformRecords detail', () => {
       dimensions: {
         value: { score: 5, reason: 'a', detail: '' },
         stability: { score: 3, reason: 'b' },
-        models: { score: 4, reason: 'c' },
-        convenience: { score: 4, reason: 'd' }
-      }
+        models: { score: 4, reason: 'c' }
+}
     });
     const { ok, errors } = validatePlatformRecords([p], []);
     assert.equal(ok, false);

@@ -1,10 +1,9 @@
-const DIMENSION_KEYS = ['value', 'stability', 'models', 'convenience'];
+const DIMENSION_KEYS = ['value', 'stability', 'models'];
 
 const PLATFORM_DIMENSION_META = [
   { key: 'value', label: '性价比' },
   { key: 'stability', label: '稳定性' },
-  { key: 'models', label: '模型覆盖' },
-  { key: 'convenience', label: '使用便捷性' }
+  { key: 'models', label: '模型覆盖' }
 ];
 
 const PLATFORM_STATUSES = ['open', 'limited', 'paused', 'delisted'];

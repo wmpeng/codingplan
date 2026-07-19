@@ -12,9 +12,8 @@ function samplePlatform(overrides = {}) {
     dimensions: {
       value: { score: 5, reason: '短理由', detail: '长详解' },
       stability: { score: 3, reason: '稳定短' },
-      models: { score: 4, reason: '模型短' },
-      convenience: { score: 4, reason: '便捷短' }
-    },
+      models: { score: 4, reason: '模型短' }
+},
     ...overrides
   };
 }
@@ -36,9 +35,8 @@ describe('buildDetailBodyHtml', () => {
       dimensions: {
         value: { score: 5, reason: '仅短理由' },
         stability: { score: 3, reason: '稳定短' },
-        models: { score: 4, reason: '模型短' },
-        convenience: { score: 4, reason: '便捷短' }
-      }
+        models: { score: 4, reason: '模型短' }
+}
     });
     const html = buildDetailBodyHtml(platform, { plans: [], monitorRow: null });
     assert.ok(html.includes('仅短理由'));

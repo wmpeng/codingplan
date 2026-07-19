@@ -15,10 +15,6 @@
       "models": {
         "score": 5,
         "reason": "GLM-5.2 代码能力 T0 级别，尤其适合编程场景，是 Opus 平替优选。"
-      },
-      "convenience": {
-        "score": 2,
-        "reason": "需要抢购，目前官方暂停放名额，新用户下单门槛高。"
       }
     },
     "tags": [
@@ -43,10 +39,6 @@
       "models": {
         "score": 5,
         "reason": "支持 GLM-5.2 等与国内版一致的旗舰模型，能力不打折。"
-      },
-      "convenience": {
-        "score": 5,
-        "reason": "无需抢购，随时可下单，是国内版抢不到时的稳妥替代。"
       }
     },
     "tags": [],
@@ -69,10 +61,6 @@
       "models": {
         "score": 5,
         "reason": "支持 MiniMax-M3 及多模态，模型能力均衡不拉胯。"
-      },
-      "convenience": {
-        "score": 5,
-        "reason": "随时可下单，档位丰富，不用蹲点拼手速。"
       }
     },
     "tags": [
@@ -97,10 +85,6 @@
       "models": {
         "score": 5,
         "reason": "唯一同时支持 GLM-5.2、DeepSeek-V4、MiniMax-M3、Kimi-K2.7-Code 的全家桶平台。"
-      },
-      "convenience": {
-        "score": 2,
-        "reason": "当前需抢购，名额不定期放出，不适合急用场景。"
       }
     },
     "tags": [
@@ -124,10 +108,6 @@
       "models": {
         "score": 4,
         "reason": "高效版支持 GLM-5.2，专业版支持 GLM-5.1 与 DeepSeek-V4，覆盖面广。"
-      },
-      "convenience": {
-        "score": 5,
-        "reason": "无需抢购，随时可下单，是智谱抢不到时的最佳平替。"
       }
     },
     "tags": [],
@@ -149,10 +129,6 @@
       "models": {
         "score": 5,
         "reason": "聚合 GLM-5.2、Kimi-K2.7-Code、MiniMax-M3、Qwen-3.7-Max、DeepSeek-V4 等主流模型。"
-      },
-      "convenience": {
-        "score": 4,
-        "reason": "支持支付宝付款，Go 套餐首月半价，对国内用户较友好。"
       }
     },
     "tags": [
@@ -176,10 +152,6 @@
       "models": {
         "score": 3,
         "reason": "以 MiMo 系列为主，模型覆盖面窄于多模型聚合平台。"
-      },
-      "convenience": {
-        "score": 5,
-        "reason": "按量计费随时开通，无需抢购，充值即用。"
       }
     },
     "tags": [],
@@ -201,10 +173,6 @@
       "models": {
         "score": 4,
         "reason": "K2.7-Code 代码能力均衡，支持多模态图像输入与专业数据库实验功能。"
-      },
-      "convenience": {
-        "score": 5,
-        "reason": "无需抢购，Coding Plan 随时可购，开通门槛低。"
       }
     },
     "tags": [],
@@ -226,10 +194,6 @@
       "models": {
         "score": 4,
         "reason": "全档位支持 GLM-5.2，同时覆盖 Kimi、MiniMax、DeepSeek 等常见模型。"
-      },
-      "convenience": {
-        "score": 5,
-        "reason": "档位从入门到 Ultra 齐全，无需抢购，适合按需选型。"
       }
     },
     "tags": [],
@@ -251,10 +215,6 @@
       "models": {
         "score": 4,
         "reason": "Qwen-3.7-Plus/Max 系列齐全，同时接入 GLM、Kimi、MiniMax 等第三方模型。"
-      },
-      "convenience": {
-        "score": 4,
-        "reason": "随时可购，与阿里云账号体系打通，企业用户接入方便。"
       }
     },
     "tags": [],
@@ -276,10 +236,6 @@
       "models": {
         "score": 4,
         "reason": "接入 GLM-5.1、DeepSeek-V4、Kimi-K2.5 等主流开源模型。"
-      },
-      "convenience": {
-        "score": 4,
-        "reason": "无需抢购，套餐选择直接，适合百度生态用户。"
       }
     },
     "tags": [],
@@ -301,10 +257,6 @@
       "models": {
         "score": 3,
         "reason": "覆盖 GLM、Kimi、DeepSeek 系列，但模型更新节奏略慢于头部 Coding Plan。"
-      },
-      "convenience": {
-        "score": 3,
-        "reason": "限购政策增加选型摩擦，更适合已有华为云账号的用户。"
       }
     },
     "tags": [],
@@ -326,10 +278,6 @@
       "models": {
         "score": 3,
         "reason": "HY 系列加 GLM、Kimi、MiniMax 接入，模型广度尚可但旗舰更新偏慢。"
-      },
-      "convenience": {
-        "score": 4,
-        "reason": "无需抢购，腾讯云控制台一站式开通，企业用户友好。"
       }
     },
     "tags": [],
@@ -351,10 +299,6 @@
       "models": {
         "score": 3,
         "reason": "覆盖 Kimi、GLM、MiniMax、DeepSeek、Qwen 等，但旗舰型号更新略滞后。"
-      },
-      "convenience": {
-        "score": 4,
-        "reason": "无需抢购，JoyBuilder 入口清晰，适合京东生态开发者。"
       }
     },
     "tags": [],
@@ -376,10 +320,6 @@
       "models": {
         "score": 3,
         "reason": "接入 DeepSeek-V4、GLM、Kimi、Qwen 等，覆盖面中等。"
-      },
-      "convenience": {
-        "score": 4,
-        "reason": "无需抢购，低价入门门槛低，适合预算敏感用户试水。"
       }
     },
     "tags": [],
@@ -401,10 +341,6 @@
       "models": {
         "score": 2,
         "reason": "目前以 MiniMax-M2.5 为主，旗舰模型覆盖明显不足。"
-      },
-      "convenience": {
-        "score": 4,
-        "reason": "无需抢购，移动云账号即可开通，流程简单。"
       }
     },
     "tags": [],
@@ -426,10 +362,6 @@
       "models": {
         "score": 3,
         "reason": "step-3.7-flash 等自研模型有特色，但第三方 SOTA 覆盖有限。"
-      },
-      "convenience": {
-        "score": 4,
-        "reason": "无需抢购，Coding Plan 随时可购。"
       }
     },
     "tags": [],
@@ -451,10 +383,6 @@
       "models": {
         "score": 2,
         "reason": "以 SenseNova 自研系列加 DeepSeek-V4-Flash 为主，编程向模型选择少。"
-      },
-      "convenience": {
-        "score": 4,
-        "reason": "无需抢购，单一套餐结构简单明了。"
       }
     },
     "tags": [],
@@ -476,10 +404,6 @@
       "models": {
         "score": 2,
         "reason": "仅 MiniMax-M2.5 与 Qwen-3-235B 等少量模型，选择面窄。"
-      },
-      "convenience": {
-        "score": 4,
-        "reason": "无需抢购，低价入门门槛低。"
       }
     },
     "tags": [],
@@ -501,10 +425,6 @@
       "models": {
         "score": 4,
         "reason": "聚合 Kimi、GLM、DeepSeek、Qwen、Gemini 等大量开源与预览模型。"
-      },
-      "convenience": {
-        "score": 3,
-        "reason": "需理解 Ollama 使用方式，对纯 API 用户有一定学习成本。"
       }
     },
     "tags": [],
@@ -526,10 +446,6 @@
       "models": {
         "score": 3,
         "reason": "专注 GLM-5.2 单一模型，深度够用但广度不足。"
-      },
-      "convenience": {
-        "score": 2,
-        "reason": "当前已售罄，新用户暂时无法下单。"
       }
     },
     "tags": [],
@@ -551,10 +467,6 @@
       "models": {
         "score": 2,
         "reason": "目前以 GLM-4.7 为主，距当前 SOTA 有明显代差。"
-      },
-      "convenience": {
-        "score": 3,
-        "reason": "无需抢购，但档位与文档对新手不够友好。"
       }
     },
     "tags": [],
@@ -576,10 +488,6 @@
       "models": {
         "score": 5,
         "reason": "Sonnet 4.6、Opus 4.7 等 Claude 全系旗舰，代码与推理能力顶尖。"
-      },
-      "convenience": {
-        "score": 3,
-        "reason": "需国际支付与网络环境，国内用户接入门槛较高。"
       }
     },
     "tags": [],
@@ -601,10 +509,6 @@
       "models": {
         "score": 5,
         "reason": "GPT-5.6、GPT-5.3-Codex 等最新 Codex 系列，编程专项能力强。"
-      },
-      "convenience": {
-        "score": 3,
-        "reason": "需 OpenAI 账号与国际支付，国内直连不便。"
       }
     },
     "tags": [],
@@ -626,10 +530,6 @@
       "models": {
         "score": 4,
         "reason": "聚合 GPT、Gemini、Claude、Grok 等多厂商模型，一账号多模型。"
-      },
-      "convenience": {
-        "score": 4,
-        "reason": "GitHub 账号即可开通，与 VS Code 等工具无缝衔接。"
       }
     },
     "tags": [],
@@ -651,10 +551,6 @@
       "models": {
         "score": 4,
         "reason": "DeepSeek-V4-Flash 速度快、成本低，适合日常编程辅助。"
-      },
-      "convenience": {
-        "score": 4,
-        "reason": "按量随时充值，无需抢购，但峰谷计费增加成本预估难度。"
       }
     },
     "tags": [],
@@ -676,10 +572,6 @@
       "models": {
         "score": 5,
         "reason": "DeepSeek-V4-Pro 推理与代码能力处于第一梯队，是主流平替基准。"
-      },
-      "convenience": {
-        "score": 5,
-        "reason": "按量计费随时开通，无需抢购，适合不想买固定套餐的用户。"
       }
     },
     "tags": [],
@@ -701,10 +593,6 @@
       "models": {
         "score": 2,
         "reason": "曾支持 GLM-5 系列，但停售后模型接入无更新。"
-      },
-      "convenience": {
-        "score": 1,
-        "reason": "已停售，新用户完全无法接入。"
       }
     },
     "tags": [],
@@ -726,10 +614,6 @@
       "models": {
         "score": 2,
         "reason": "曾聚合 DeepSeek、Kimi、MiniMax、GLM 等，但已无活跃套餐。"
-      },
-      "convenience": {
-        "score": 1,
-        "reason": "已全面停售，无法新购或续费。"
       }
     },
     "tags": [],

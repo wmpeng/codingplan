@@ -1500,7 +1500,7 @@
                     header: {
                         title: "AI Coding 平台推荐",
                         updateDate: "更新日期2026.7.15 | 首页改版：平台目录与标签筛选",
-                        subtitle: "29 家 Coding Plan / Token Plan 平台一站式选型\n智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek 等，按性价比、稳定性、模型覆盖、使用便捷性对比",
+                        subtitle: "29 家 Coding Plan / Token Plan 平台一站式选型\n智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek 等，按性价比、稳定性、模型覆盖对比",
                         models: "首页以「选平台」为主：默认仅显示「定时放量」及更开放的平台，也可按「性价比高」「模型覆盖广」等维度快速缩小范围；下方套餐表仍保留全量对比。",
                         watermarkUrl: "www.codingplan.fyi",
                         entry: {
@@ -1515,8 +1515,7 @@
                         derivedTags: [
                             { id: "high-value", label: "性价比高", rule: { dimension: "value", minScore: 4 } },
                             { id: "stable", label: "稳定性好", rule: { dimension: "stability", minScore: 4 } },
-                            { id: "broad-models", label: "模型覆盖广", rule: { dimension: "models", minScore: 4 } },
-                            { id: "convenient", label: "使用便捷", rule: { dimension: "convenience", minScore: 4 } }
+                            { id: "broad-models", label: "模型覆盖广", rule: { dimension: "models", minScore: 4 } }
                         ]
                     },
                     feedback: {
@@ -1963,8 +1962,7 @@
         const PLATFORM_DIMENSION_META = [
             { key: 'value', label: '性价比' },
             { key: 'stability', label: '稳定性' },
-            { key: 'models', label: '模型覆盖' },
-            { key: 'convenience', label: '使用便捷性' }
+            { key: 'models', label: '模型覆盖' }
         ];
 
         function getPlatformCatalogConfig() {
@@ -2314,7 +2312,7 @@
                 try {
                     const parsed = JSON.parse(stored);
                     const rawLabels = Array.isArray(parsed.labels) ? parsed.labels : [];
-                    platformSelectedLabels = rawLabels.filter((label) => label !== '无需抢购');
+                    platformSelectedLabels = rawLabels.filter((label) => label !== '无需抢购' && label !== '使用便捷');
                     if (parsed.platformStatusMax) {
                         platformStatusMax = PlatformCatalog.normalizePlatformStatus(parsed.platformStatusMax);
                     } else if (parsed.showRushPurchase || parsed.showDiscontinued) {
