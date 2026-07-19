@@ -84,6 +84,10 @@
     return num.toLocaleString('zh-CN');
   }
 
+  function isUnpublishedValue(value) {
+    return typeof value === 'string' && value.trim() === '未公开';
+  }
+
   function formatPlanQuota(plan) {
     if (!plan) return '';
     const token = plan.tokenLimit;
@@ -102,10 +106,26 @@
       const short = formatCountShort(plan.fiveHoursRequests);
       return short ? `${short}次/5h` : '';
     }
+    // 官方次数未公开时，优先用实测月 Token
+    if (
+      typeof plan.measuredMonthlyTokenLimit === 'number' &&
+      Number.isFinite(plan.measuredMonthlyTokenLimit)
+    ) {
+      return `${plan.measuredMonthlyTokenLimit}M`;
+    }
     if (typeof token === 'string' && token.trim()) {
       const text = token.trim();
-      // 未公开：不展示文案，由调用方省略额度 pill
+      // 未公开：不展示文案
       if (text === '未公开') return '';
+      // 次数未公开时，「无限制」只是空壳，也不展示
+      if (
+        text === '无限制' &&
+        (isUnpublishedValue(plan.monthlyRequests) ||
+          isUnpublishedValue(plan.weeklyRequests) ||
+          isUnpublishedValue(plan.fiveHoursRequests))
+      ) {
+        return '';
+      }
       return text;
     }
     return '';
