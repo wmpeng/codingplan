@@ -2017,7 +2017,11 @@
 
             const cat = getPlatformCatalogConfig();
             if (typeof PlatformCatalog !== 'undefined' && PlatformCatalog.buildPlatformTagBarHtml) {
-                bar.innerHTML = PlatformCatalog.buildPlatformTagBarHtml(cat, platformSelectedLabels);
+                bar.innerHTML = PlatformCatalog.buildPlatformTagBarHtml(
+                    cat,
+                    platformSelectedLabels,
+                    platformStatusMax
+                );
             } else {
                 bar.innerHTML = '';
             }
@@ -2027,22 +2031,13 @@
                     togglePlatformTag(btn.getAttribute('data-platform-tag'));
                 });
             });
-        }
 
-        function renderPlatformStatusSlider() {
-            const host = document.getElementById('platformStatusSliderHost');
-            if (!host) return;
-            if (typeof PlatformCatalog === 'undefined' || !PlatformCatalog.buildPlatformStatusSliderHtml) {
-                host.innerHTML = '';
-                return;
-            }
-            host.innerHTML = PlatformCatalog.buildPlatformStatusSliderHtml(platformStatusMax);
-            host.querySelectorAll('[data-platform-status]').forEach((btn) => {
+            bar.querySelectorAll('[data-platform-status]').forEach((btn) => {
                 btn.addEventListener('click', () => {
                     platformStatusMax = PlatformCatalog.normalizePlatformStatus(
                         btn.getAttribute('data-platform-status')
                     );
-                    renderPlatformStatusSlider();
+                    renderPlatformTagBar();
                     applyPlatformFilters();
                 });
             });
@@ -2113,7 +2108,6 @@
             }));
             applyPlatformFilters();
             renderPlatformTagBar();
-            renderPlatformStatusSlider();
         }
 
         function togglePlansTableSection() {
@@ -2175,7 +2169,6 @@
             }
 
             renderPlatformTagBar();
-            renderPlatformStatusSlider();
             applyPlatformFilters();
 
             const clearBtn = document.getElementById('platformClearFilters');

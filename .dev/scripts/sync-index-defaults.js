@@ -345,12 +345,7 @@ const totalVisiblePlatforms = PlatformCatalog.filterPlatforms(allPlatforms, {
 indexHtml = replaceElementInnerHtml(
     indexHtml,
     'platformTagBar',
-    PlatformCatalog.buildPlatformTagBarHtml(catalogConfig, defaultSelectedTags)
-);
-indexHtml = replaceElementInnerHtml(
-    indexHtml,
-    'platformStatusSliderHost',
-    PlatformCatalog.buildPlatformStatusSliderHtml(defaultPlatformStatusMax)
+    PlatformCatalog.buildPlatformTagBarHtml(catalogConfig, defaultSelectedTags, defaultPlatformStatusMax)
 );
 indexHtml = replaceElementInnerHtml(
     indexHtml,

@@ -190,7 +190,7 @@ function validatePlatformRecords(platforms, plans) {
   return { ok: errors.length === 0, errors };
 }
 
-function buildPlatformTagBarHtml(catalogConfig, selectedLabels) {
+function buildPlatformTagBarHtml(catalogConfig, selectedLabels, platformStatusMax) {
   const cat = catalogConfig || {};
   const selected = selectedLabels || [];
   const parts = [];
@@ -218,38 +218,31 @@ function buildPlatformTagBarHtml(catalogConfig, selectedLabels) {
     parts.push(`<div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签">${operationalChips.join('')}</div>`);
   }
 
+  if (derivedChips.length || operationalChips.length) {
+    parts.push('<span class="platform-tag-sep" aria-hidden="true"></span>');
+  }
+  parts.push(buildPlatformStatusSliderHtml(platformStatusMax));
+
   return parts.join('');
 }
 
 function buildPlatformStatusSliderHtml(platformStatusMax) {
   const max = normalizePlatformStatus(platformStatusMax ?? DEFAULT_PLATFORM_STATUS_MAX);
   const maxRank = platformStatusRank(max);
-  const marks = PLATFORM_STATUSES.map((status, rank) => {
+  const segments = PLATFORM_STATUSES.map((status, rank) => {
     const active = rank === maxRank;
     const included = rank <= maxRank;
     return (
-      `<button type="button" class="platform-status-mark${active ? ' is-active' : ''}${included ? ' is-included' : ''}" data-platform-status="${status}" aria-pressed="${active ? 'true' : 'false'}">` +
-      `<span class="platform-status-dot" aria-hidden="true"></span>` +
-      `<span class="platform-status-mark-label">${escapeHtml(PLATFORM_STATUS_LABELS[status])}</span>` +
+      `<button type="button" class="platform-status-seg${active ? ' is-active' : ''}${included ? ' is-included' : ''}" data-platform-status="${status}" aria-pressed="${active ? 'true' : 'false'}" title="显示至${PLATFORM_STATUS_LABELS[status]}">` +
+      `${escapeHtml(PLATFORM_STATUS_LABELS[status])}` +
       `</button>`
     );
   }).join('');
 
-  const fillPct = PLATFORM_STATUSES.length <= 1 ? 0 : (maxRank / (PLATFORM_STATUSES.length - 1)) * 100;
-
   return (
-    `<div class="platform-status-slider" data-platform-status-max="${max}" role="group" aria-label="平台状态">` +
-    `<div class="platform-status-slider-head">` +
-    `<span class="platform-status-slider-title">显示至</span>` +
-    `<span class="platform-status-slider-value">${escapeHtml(platformStatusLabel(max))}</span>` +
-    `</div>` +
-    `<div class="platform-status-slider-body">` +
-    `<div class="platform-status-rail" aria-hidden="true">` +
-    `<div class="platform-status-rail-fill" style="width:${fillPct}%"></div>` +
-    `<div class="platform-status-thumb" style="left:${fillPct}%"></div>` +
-    `</div>` +
-    `<div class="platform-status-marks">${marks}</div>` +
-    `</div>` +
+    `<div class="platform-status-slider" data-platform-status-max="${max}" role="group" aria-label="显示至平台状态">` +
+    `<span class="platform-status-slider-prefix">显示至</span>` +
+    `<div class="platform-status-segments">${segments}</div>` +
     `</div>`
   );
 }

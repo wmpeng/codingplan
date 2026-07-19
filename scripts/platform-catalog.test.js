@@ -261,29 +261,33 @@ describe('buildPlatformCardHtml', () => {
 });
 
 describe('buildPlatformTagBarHtml', () => {
-  it('groups derived and operational chips without status toggles', () => {
+  it('groups derived/operational chips and embeds compact status slider', () => {
     const cat = {
       derivedTags: [{ id: 'high-value', label: '性价比高', rule: { dimension: 'value', minScore: 4 } }],
       operationalTags: ['热门模型']
     };
-    const html = buildPlatformTagBarHtml(cat, ['性价比高']);
+    const html = buildPlatformTagBarHtml(cat, ['性价比高'], 'limited');
     assert.match(html, /platform-tag-group--derived/);
     assert.match(html, /platform-tag-chip--derived is-active" data-platform-tag="性价比高"/);
     assert.match(html, /platform-tag-group--operational/);
+    assert.match(html, /platform-tag-sep/);
+    assert.match(html, /platform-status-slider/);
+    assert.match(html, /platform-status-segments/);
     assert.doesNotMatch(html, /显示停售|显示需抢购|platform-tag-chip--toggle/);
   });
 });
 
 describe('buildPlatformStatusSliderHtml', () => {
-  it('renders four marks and highlights selected max', () => {
+  it('renders compact segments and highlights selected max', () => {
     const html = buildPlatformStatusSliderHtml('limited');
     assert.match(html, /platform-status-slider/);
     assert.match(html, /data-platform-status-max="limited"/);
+    assert.match(html, /platform-status-seg/);
     assert.match(html, /开放购买/);
     assert.match(html, /定时放量/);
     assert.match(html, /暂时停售/);
     assert.match(html, /已下架/);
-    assert.match(html, /data-platform-status="limited"[^>]*aria-pressed="true"/);
+    assert.match(html, /platform-status-seg is-active is-included" data-platform-status="limited"/);
   });
 });
 

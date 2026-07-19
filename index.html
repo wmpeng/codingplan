@@ -1487,137 +1487,69 @@
                 center / 10px 10px no-repeat;
         }
 
-        .platform-status-slider-host {
-            margin-top: 4px;
-        }
-
         .platform-status-slider {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 14px 16px 12px;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            background: rgba(255, 251, 245, 0.72);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .platform-status-slider-head {
-            display: flex;
-            align-items: baseline;
+            display: inline-flex;
+            align-items: center;
             gap: 8px;
+            flex-shrink: 0;
+            max-width: 100%;
         }
 
-        .platform-status-slider-title {
+        .platform-status-slider-prefix {
             font-size: 12px;
             font-weight: 600;
             color: var(--text-tertiary);
-            letter-spacing: 0.02em;
+            white-space: nowrap;
         }
 
-        .platform-status-slider-value {
-            font-size: 14px;
-            font-weight: 700;
-            color: #0f766e;
-        }
-
-        .platform-status-slider-body {
-            position: relative;
-            padding: 6px 4px 0;
-        }
-
-        .platform-status-rail {
-            position: absolute;
-            left: 18px;
-            right: 18px;
-            top: 14px;
-            height: 4px;
+        .platform-status-segments {
+            display: inline-flex;
+            align-items: stretch;
+            min-height: 40px;
+            padding: 3px;
             border-radius: 999px;
-            background: rgba(23, 32, 51, 0.1);
-            pointer-events: none;
+            border: 1px solid rgba(23, 32, 51, 0.12);
+            background: rgba(255, 255, 255, 0.78);
+            box-shadow: 0 10px 20px rgba(23, 32, 51, 0.05);
         }
 
-        .platform-status-rail-fill {
-            height: 100%;
-            border-radius: inherit;
-            background: linear-gradient(90deg, #173753, #0f766e);
-            transition: width 0.2s ease;
-        }
-
-        .platform-status-thumb {
-            position: absolute;
-            top: 50%;
-            width: 16px;
-            height: 16px;
-            margin-left: -8px;
-            margin-top: -8px;
-            border-radius: 50%;
-            background: #fff;
-            border: 3px solid #0f766e;
-            box-shadow: 0 4px 10px rgba(15, 118, 110, 0.25);
-            transition: left 0.2s ease;
-        }
-
-        .platform-status-marks {
-            position: relative;
-            z-index: 1;
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 4px;
-        }
-
-        .platform-status-mark {
+        .platform-status-seg {
             appearance: none;
             border: 0;
             background: transparent;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            padding: 0;
-            cursor: pointer;
-            color: var(--text-tertiary);
+            color: #5f6879;
+            min-height: 34px;
+            padding: 0 10px;
+            border-radius: 999px;
             font-size: 12px;
-            font-weight: 600;
-            line-height: 1.2;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
         }
 
-        .platform-status-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            border: 2px solid rgba(23, 32, 51, 0.18);
-            background: #fff;
-            transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+        .platform-status-seg:hover {
+            color: var(--text-primary);
+            background: rgba(15, 118, 110, 0.06);
         }
 
-        .platform-status-mark.is-included .platform-status-dot {
-            border-color: rgba(15, 118, 110, 0.45);
-            background: rgba(15, 118, 110, 0.12);
-        }
-
-        .platform-status-mark.is-active {
+        .platform-status-seg.is-included {
             color: #0f766e;
         }
 
-        .platform-status-mark.is-active .platform-status-dot {
-            border-color: #0f766e;
-            background: #0f766e;
-            transform: scale(1.15);
-            box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.12);
+        .platform-status-seg.is-active {
+            background: linear-gradient(135deg, #173753, #0f766e);
+            color: #fff;
+            box-shadow: 0 8px 16px rgba(23, 55, 83, 0.16);
         }
 
-        .platform-status-mark:hover .platform-status-mark-label {
-            color: var(--text-primary);
+        .platform-status-seg.is-active:hover {
+            color: #fff;
         }
 
-        .platform-status-mark:focus-visible {
-            outline: none;
-        }
-
-        .platform-status-mark:focus-visible .platform-status-dot {
+        .platform-status-seg:focus-visible {
             outline: 2px solid #0f766e;
-            outline-offset: 3px;
+            outline-offset: 2px;
         }
 
         .platform-catalog-toolbar {
@@ -3659,8 +3591,7 @@
                 <h2 class="platform-catalog-title">平台目录</h2>
                 <p class="platform-catalog-subtitle">按标签与平台状态筛选；清空后回到默认「定时放量」</p>
             </header>
-            <div class="platform-tag-bar" id="platformTagBar" role="group" aria-label="平台标签"><div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选"><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="性价比高" aria-pressed="false">性价比高</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="稳定性好" aria-pressed="false">稳定性好</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="模型覆盖广" aria-pressed="false">模型覆盖广</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="使用便捷" aria-pressed="false">使用便捷</button></div><div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签"><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="热门模型" aria-pressed="false">热门模型</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="适合养龙虾" aria-pressed="false">适合养龙虾</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="可支付宝" aria-pressed="false">可支付宝</button></div></div>
-            <div class="platform-status-slider-host" id="platformStatusSliderHost"><div class="platform-status-slider" data-platform-status-max="limited" role="group" aria-label="平台状态"><div class="platform-status-slider-head"><span class="platform-status-slider-title">显示至</span><span class="platform-status-slider-value">定时放量</span></div><div class="platform-status-slider-body"><div class="platform-status-rail" aria-hidden="true"><div class="platform-status-rail-fill" style="width:33.33333333333333%"></div><div class="platform-status-thumb" style="left:33.33333333333333%"></div></div><div class="platform-status-marks"><button type="button" class="platform-status-mark is-included" data-platform-status="open" aria-pressed="false"><span class="platform-status-dot" aria-hidden="true"></span><span class="platform-status-mark-label">开放购买</span></button><button type="button" class="platform-status-mark is-active is-included" data-platform-status="limited" aria-pressed="true"><span class="platform-status-dot" aria-hidden="true"></span><span class="platform-status-mark-label">定时放量</span></button><button type="button" class="platform-status-mark" data-platform-status="paused" aria-pressed="false"><span class="platform-status-dot" aria-hidden="true"></span><span class="platform-status-mark-label">暂时停售</span></button><button type="button" class="platform-status-mark" data-platform-status="delisted" aria-pressed="false"><span class="platform-status-dot" aria-hidden="true"></span><span class="platform-status-mark-label">已下架</span></button></div></div></div></div>
+            <div class="platform-tag-bar" id="platformTagBar" role="group" aria-label="平台标签"><div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选"><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="性价比高" aria-pressed="false">性价比高</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="稳定性好" aria-pressed="false">稳定性好</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="模型覆盖广" aria-pressed="false">模型覆盖广</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="使用便捷" aria-pressed="false">使用便捷</button></div><div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签"><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="热门模型" aria-pressed="false">热门模型</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="适合养龙虾" aria-pressed="false">适合养龙虾</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="可支付宝" aria-pressed="false">可支付宝</button></div><span class="platform-tag-sep" aria-hidden="true"></span><div class="platform-status-slider" data-platform-status-max="limited" role="group" aria-label="显示至平台状态"><span class="platform-status-slider-prefix">显示至</span><div class="platform-status-segments"><button type="button" class="platform-status-seg is-included" data-platform-status="open" aria-pressed="false" title="显示至开放购买">开放购买</button><button type="button" class="platform-status-seg is-active is-included" data-platform-status="limited" aria-pressed="true" title="显示至定时放量">定时放量</button><button type="button" class="platform-status-seg" data-platform-status="paused" aria-pressed="false" title="显示至暂时停售">暂时停售</button><button type="button" class="platform-status-seg" data-platform-status="delisted" aria-pressed="false" title="显示至已下架">已下架</button></div></div></div>
             <div class="platform-catalog-toolbar">
                 <button type="button" class="platform-clear-filters" id="platformClearFilters">清空筛选</button>
                 <span class="platform-catalog-stats">显示 <strong id="platformShowingCount">27</strong> / <strong id="platformTotalCount">27</strong> 个平台</span>
@@ -7232,10 +7163,10 @@
     </div>
 
     <script src="monitor/monitor-config.local.js"></script>
-    <script src="scripts/platform-catalog.js?v=260719c"></script>
-    <script src="scripts/platform-detail.js?v=260719c"></script>
+    <script src="scripts/platform-catalog.js?v=260719d"></script>
+    <script src="scripts/platform-detail.js?v=260719d"></script>
     <script src="scripts/shared.js?v=260610"></script>
-        <script src="scripts/homepage.js?v=260719c"></script>
+        <script src="scripts/homepage.js?v=260719d"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
     <script src="scripts/plan-usage-chart.js?v=260617"></script>
