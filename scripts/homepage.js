@@ -2007,36 +2007,16 @@
             if (!bar) return;
 
             const cat = getPlatformCatalogConfig();
-            const chips = [];
-
-            for (const tag of cat.derivedTags || []) {
-                const label = tag.label;
-                const active = platformSelectedLabels.includes(label);
-                chips.push(
-                    `<button type="button" class="platform-tag-chip${active ? ' is-active' : ''}" data-platform-tag="${escapeHtml(label)}" aria-pressed="${active ? 'true' : 'false'}">${escapeHtml(label)}</button>`
+            if (typeof PlatformCatalog !== 'undefined' && PlatformCatalog.buildPlatformTagBarHtml) {
+                bar.innerHTML = PlatformCatalog.buildPlatformTagBarHtml(
+                    cat,
+                    platformSelectedLabels,
+                    platformShowDiscontinued,
+                    platformShowRushPurchase
                 );
+            } else {
+                bar.innerHTML = '';
             }
-
-            for (const label of cat.operationalTags || []) {
-                const active = platformSelectedLabels.includes(label);
-                chips.push(
-                    `<button type="button" class="platform-tag-chip${active ? ' is-active' : ''}" data-platform-tag="${escapeHtml(label)}" aria-pressed="${active ? 'true' : 'false'}">${escapeHtml(label)}</button>`
-                );
-            }
-
-            const discLabel = cat.showDiscontinuedTag || '显示停售';
-            const discActive = platformShowDiscontinued;
-            chips.push(
-                `<button type="button" class="platform-tag-chip platform-tag-chip--discontinued${discActive ? ' is-active' : ''}" data-platform-discontinued="1" aria-pressed="${discActive ? 'true' : 'false'}">${escapeHtml(discLabel)}</button>`
-            );
-
-            const rushLabel = cat.showRushPurchaseTag || '显示需抢购';
-            const rushActive = platformShowRushPurchase;
-            chips.push(
-                `<button type="button" class="platform-tag-chip platform-tag-chip--rush${rushActive ? ' is-active' : ''}" data-platform-show-rush="1" aria-pressed="${rushActive ? 'true' : 'false'}">${escapeHtml(rushLabel)}</button>`
-            );
-
-            bar.innerHTML = chips.join('');
 
             bar.querySelectorAll('[data-platform-tag]').forEach((btn) => {
                 btn.addEventListener('click', () => {

@@ -1316,7 +1316,7 @@
         .platform-tag-bar {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 10px 12px;
             align-items: center;
             min-height: 52px;
             padding: 14px 16px;
@@ -1324,6 +1324,22 @@
             border: 1px solid rgba(255, 255, 255, 0.7);
             background: rgba(255, 251, 245, 0.84);
             box-shadow: var(--shadow-sm);
+        }
+
+        .platform-tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .platform-tag-sep {
+            display: inline-block;
+            width: 1px;
+            height: 22px;
+            margin: 0 2px;
+            background: rgba(23, 32, 51, 0.14);
+            flex-shrink: 0;
         }
 
         .platform-tag-chip {
@@ -1368,12 +1384,107 @@
             border-color: transparent;
         }
 
-        .platform-tag-chip--discontinued.is-active {
-            background: linear-gradient(135deg, #5b6472, #3f4654);
+        .platform-tag-chip--operational {
+            min-height: 34px;
+            padding: 0 12px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 10px;
+            box-shadow: none;
+            background: rgba(255, 255, 255, 0.72);
+            border-color: rgba(23, 32, 51, 0.1);
+            color: #5f6879;
         }
 
-        .platform-tag-chip--rush.is-active {
-            background: linear-gradient(135deg, #d97706, #c66b1a);
+        .platform-tag-chip--operational:hover {
+            box-shadow: none;
+            border-color: rgba(15, 118, 110, 0.28);
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .platform-tag-chip--operational.is-active {
+            background: rgba(15, 118, 110, 0.12);
+            border-color: rgba(15, 118, 110, 0.35);
+            color: #0f766e;
+            box-shadow: none;
+        }
+
+        .platform-tag-chip--operational.is-active:hover {
+            color: #0f766e;
+            border-color: rgba(15, 118, 110, 0.45);
+        }
+
+        .platform-tag-chip--toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            min-height: 32px;
+            padding: 0 11px 0 9px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 8px;
+            box-shadow: none;
+            background: transparent;
+            border: 1px dashed rgba(23, 32, 51, 0.18);
+            color: var(--text-tertiary);
+            transform: none;
+        }
+
+        .platform-tag-chip--toggle:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: rgba(23, 32, 51, 0.28);
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.55);
+        }
+
+        .platform-tag-check {
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
+            border: 1.5px solid rgba(23, 32, 51, 0.22);
+            background: rgba(255, 255, 255, 0.95);
+            flex-shrink: 0;
+            box-sizing: border-box;
+        }
+
+        .platform-tag-chip--toggle.is-active {
+            background: rgba(100, 116, 139, 0.1);
+            border-style: solid;
+            border-color: rgba(100, 116, 139, 0.35);
+            color: #475569;
+            box-shadow: none;
+        }
+
+        .platform-tag-chip--toggle.is-active:hover {
+            color: #334155;
+            border-color: rgba(100, 116, 139, 0.45);
+        }
+
+        .platform-tag-chip--toggle.is-active .platform-tag-check {
+            border-color: #64748b;
+            background: #64748b
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M2.5 6.2l2.4 2.4 4.6-5'%3E%3C/path%3E%3C/svg%3E")
+                center / 10px 10px no-repeat;
+        }
+
+        .platform-tag-chip--toggle.platform-tag-chip--rush.is-active {
+            background: rgba(198, 107, 26, 0.1);
+            border-color: rgba(198, 107, 26, 0.4);
+            color: #c66b1a;
+        }
+
+        .platform-tag-chip--toggle.platform-tag-chip--rush.is-active:hover {
+            color: #a85a16;
+            border-color: rgba(198, 107, 26, 0.5);
+        }
+
+        .platform-tag-chip--toggle.platform-tag-chip--rush.is-active .platform-tag-check {
+            border-color: #c66b1a;
+            background: #c66b1a
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M2.5 6.2l2.4 2.4 4.6-5'%3E%3C/path%3E%3C/svg%3E")
+                center / 10px 10px no-repeat;
         }
 
         .platform-catalog-toolbar {
@@ -3405,7 +3516,7 @@
                 <h2 class="platform-catalog-title">平台目录</h2>
                 <p class="platform-catalog-subtitle">按标签筛选平台；清空后显示全部在售平台</p>
             </header>
-            <div class="platform-tag-bar" id="platformTagBar" role="group" aria-label="平台标签"><button type="button" class="platform-tag-chip" data-platform-tag="性价比高" aria-pressed="false">性价比高</button><button type="button" class="platform-tag-chip" data-platform-tag="稳定性好" aria-pressed="false">稳定性好</button><button type="button" class="platform-tag-chip" data-platform-tag="模型覆盖广" aria-pressed="false">模型覆盖广</button><button type="button" class="platform-tag-chip" data-platform-tag="使用便捷" aria-pressed="false">使用便捷</button><button type="button" class="platform-tag-chip" data-platform-tag="热门模型" aria-pressed="false">热门模型</button><button type="button" class="platform-tag-chip" data-platform-tag="适合养龙虾" aria-pressed="false">适合养龙虾</button><button type="button" class="platform-tag-chip" data-platform-tag="可支付宝" aria-pressed="false">可支付宝</button><button type="button" class="platform-tag-chip platform-tag-chip--discontinued" data-platform-discontinued="1" aria-pressed="false">显示停售</button><button type="button" class="platform-tag-chip platform-tag-chip--rush" data-platform-show-rush="1" aria-pressed="false">显示需抢购</button></div>
+            <div class="platform-tag-bar" id="platformTagBar" role="group" aria-label="平台标签"><div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选"><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="性价比高" aria-pressed="false">性价比高</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="稳定性好" aria-pressed="false">稳定性好</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="模型覆盖广" aria-pressed="false">模型覆盖广</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="使用便捷" aria-pressed="false">使用便捷</button></div><div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签"><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="热门模型" aria-pressed="false">热门模型</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="适合养龙虾" aria-pressed="false">适合养龙虾</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="可支付宝" aria-pressed="false">可支付宝</button></div><span class="platform-tag-sep" aria-hidden="true"></span><div class="platform-tag-group platform-tag-group--toggles" role="group" aria-label="显示开关"><button type="button" class="platform-tag-chip platform-tag-chip--toggle platform-tag-chip--discontinued" data-platform-discontinued="1" aria-pressed="false"><span class="platform-tag-check" aria-hidden="true"></span>显示停售</button><button type="button" class="platform-tag-chip platform-tag-chip--toggle platform-tag-chip--rush" data-platform-show-rush="1" aria-pressed="false"><span class="platform-tag-check" aria-hidden="true"></span>显示需抢购</button></div></div>
             <div class="platform-catalog-toolbar">
                 <button type="button" class="platform-clear-filters" id="platformClearFilters">清空筛选</button>
                 <span class="platform-catalog-stats">显示 <strong id="platformShowingCount">25</strong> / <strong id="platformTotalCount">25</strong> 个平台</span>
@@ -6947,10 +7058,10 @@
     </div>
 
     <script src="monitor/monitor-config.local.js"></script>
-    <script src="scripts/platform-catalog.js?v=260717b"></script>
-    <script src="scripts/platform-detail.js?v=260719e"></script>
+    <script src="scripts/platform-catalog.js?v=260719b"></script>
+    <script src="scripts/platform-detail.js?v=260719b"></script>
     <script src="scripts/shared.js?v=260610"></script>
-        <script src="scripts/homepage.js?v=260717"></script>
+        <script src="scripts/homepage.js?v=260719b"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
     <script src="scripts/plan-usage-chart.js?v=260617"></script>

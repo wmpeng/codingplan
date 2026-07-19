@@ -203,36 +203,52 @@ function validatePlatformRecords(platforms, plans) {
 function buildPlatformTagBarHtml(catalogConfig, selectedLabels, showDiscontinued, showRushPurchase) {
   const cat = catalogConfig || {};
   const selected = selectedLabels || [];
-  const chips = [];
+  const parts = [];
 
+  const derivedChips = [];
   for (const tag of cat.derivedTags || []) {
     const label = tag.label;
     const active = selected.includes(label);
-    chips.push(
-      `<button type="button" class="platform-tag-chip${active ? ' is-active' : ''}" data-platform-tag="${escapeHtml(label)}" aria-pressed="${active ? 'true' : 'false'}">${escapeHtml(label)}</button>`
+    derivedChips.push(
+      `<button type="button" class="platform-tag-chip platform-tag-chip--derived${active ? ' is-active' : ''}" data-platform-tag="${escapeHtml(label)}" aria-pressed="${active ? 'true' : 'false'}">${escapeHtml(label)}</button>`
     );
   }
+  if (derivedChips.length) {
+    parts.push(`<div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选">${derivedChips.join('')}</div>`);
+  }
 
+  const operationalChips = [];
   for (const label of cat.operationalTags || []) {
     const active = selected.includes(label);
-    chips.push(
-      `<button type="button" class="platform-tag-chip${active ? ' is-active' : ''}" data-platform-tag="${escapeHtml(label)}" aria-pressed="${active ? 'true' : 'false'}">${escapeHtml(label)}</button>`
+    operationalChips.push(
+      `<button type="button" class="platform-tag-chip platform-tag-chip--operational${active ? ' is-active' : ''}" data-platform-tag="${escapeHtml(label)}" aria-pressed="${active ? 'true' : 'false'}">${escapeHtml(label)}</button>`
     );
   }
+  if (operationalChips.length) {
+    parts.push(`<div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签">${operationalChips.join('')}</div>`);
+  }
 
+  const toggleChips = [];
   const discLabel = cat.showDiscontinuedTag || '显示停售';
   const discActive = !!showDiscontinued;
-  chips.push(
-    `<button type="button" class="platform-tag-chip platform-tag-chip--discontinued${discActive ? ' is-active' : ''}" data-platform-discontinued="1" aria-pressed="${discActive ? 'true' : 'false'}">${escapeHtml(discLabel)}</button>`
+  toggleChips.push(
+    `<button type="button" class="platform-tag-chip platform-tag-chip--toggle platform-tag-chip--discontinued${discActive ? ' is-active' : ''}" data-platform-discontinued="1" aria-pressed="${discActive ? 'true' : 'false'}"><span class="platform-tag-check" aria-hidden="true"></span>${escapeHtml(discLabel)}</button>`
   );
 
   const rushLabel = cat.showRushPurchaseTag || '显示需抢购';
   const rushActive = !!showRushPurchase;
-  chips.push(
-    `<button type="button" class="platform-tag-chip platform-tag-chip--rush${rushActive ? ' is-active' : ''}" data-platform-show-rush="1" aria-pressed="${rushActive ? 'true' : 'false'}">${escapeHtml(rushLabel)}</button>`
+  toggleChips.push(
+    `<button type="button" class="platform-tag-chip platform-tag-chip--toggle platform-tag-chip--rush${rushActive ? ' is-active' : ''}" data-platform-show-rush="1" aria-pressed="${rushActive ? 'true' : 'false'}"><span class="platform-tag-check" aria-hidden="true"></span>${escapeHtml(rushLabel)}</button>`
   );
 
-  return chips.join('');
+  if (toggleChips.length) {
+    if (derivedChips.length || operationalChips.length) {
+      parts.push('<span class="platform-tag-sep" aria-hidden="true"></span>');
+    }
+    parts.push(`<div class="platform-tag-group platform-tag-group--toggles" role="group" aria-label="显示开关">${toggleChips.join('')}</div>`);
+  }
+
+  return parts.join('');
 }
 
 const EXTERNAL_LINK_ICON =

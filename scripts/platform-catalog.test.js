@@ -291,7 +291,7 @@ describe('buildPlatformCardHtml', () => {
 });
 
 describe('buildPlatformTagBarHtml', () => {
-  it('marks default selected tags active and includes show-rush toggle', () => {
+  it('groups derived, operational, and toggle chips with distinct classes', () => {
     const cat = {
       derivedTags: [{ id: 'high-value', label: '性价比高', rule: { dimension: 'value', minScore: 4 } }],
       operationalTags: ['热门模型'],
@@ -299,11 +299,17 @@ describe('buildPlatformTagBarHtml', () => {
       showRushPurchaseTag: '显示需抢购'
     };
     const html = buildPlatformTagBarHtml(cat, ['性价比高'], false, true);
-    assert.match(html, /class="platform-tag-chip is-active" data-platform-tag="性价比高"/);
-    assert.match(html, /platform-tag-chip--discontinued/);
-    assert.match(html, /platform-tag-chip--rush is-active/);
+    assert.match(html, /platform-tag-group--derived/);
+    assert.match(html, /platform-tag-chip--derived is-active" data-platform-tag="性价比高"/);
+    assert.match(html, /platform-tag-group--operational/);
+    assert.match(html, /platform-tag-chip--operational" data-platform-tag="热门模型"/);
+    assert.match(html, /platform-tag-sep/);
+    assert.match(html, /platform-tag-group--toggles/);
+    assert.match(html, /platform-tag-chip--toggle platform-tag-chip--discontinued/);
+    assert.match(html, /platform-tag-chip--toggle platform-tag-chip--rush is-active/);
     assert.match(html, /data-platform-show-rush="1"/);
     assert.match(html, /显示需抢购/);
+    assert.match(html, /platform-tag-check/);
   });
 });
 
