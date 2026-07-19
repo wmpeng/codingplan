@@ -253,6 +253,21 @@ describe('buildPlatformCardHtml', () => {
     assert.ok(html.includes('model-tag-more'));
     assert.ok(html.includes('+2'));
   });
+
+  it('renders platform summary on card when present', () => {
+    const withSummary = buildPlatformCardHtml(
+      samplePlatform({ summary: '一句话总述' }),
+      []
+    );
+    assert.match(withSummary, /platform-summary/);
+    assert.ok(withSummary.includes('一句话总述'));
+
+    const blank = buildPlatformCardHtml(samplePlatform({ summary: '   ' }), []);
+    assert.doesNotMatch(blank, /platform-summary/);
+
+    const missing = buildPlatformCardHtml(samplePlatform(), []);
+    assert.doesNotMatch(missing, /platform-summary/);
+  });
 });
 
 describe('buildPlatformTagBarHtml', () => {
@@ -383,5 +398,25 @@ describe('validatePlatformRecords detail', () => {
     const { ok, errors } = validatePlatformRecords([p], []);
     assert.equal(ok, false);
     assert.ok(errors.some(e => e.includes('detail')));
+  });
+
+  it('rejects empty platform summary/detail when present', () => {
+    const badSummary = samplePlatform({ summary: '  ' });
+    const r1 = validatePlatformRecords([badSummary], []);
+    assert.equal(r1.ok, false);
+    assert.ok(r1.errors.some((e) => e.includes('summary')));
+
+    const badDetail = samplePlatform({ detail: '' });
+    const r2 = validatePlatformRecords([badDetail], []);
+    assert.equal(r2.ok, false);
+    assert.ok(r2.errors.some((e) => e.includes('detail')));
+  });
+
+  it('allows non-empty platform summary and detail', () => {
+    const { ok } = validatePlatformRecords(
+      [samplePlatform({ summary: '短', detail: '长文案' })],
+      []
+    );
+    assert.equal(ok, true);
   });
 });

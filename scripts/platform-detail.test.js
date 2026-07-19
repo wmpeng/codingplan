@@ -43,6 +43,27 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('性价比'));
   });
 
+  it('renders platform overview from detail, falls back to summary, omits when empty', () => {
+    const withDetail = buildDetailBodyHtml(
+      samplePlatform({ summary: '卡面短', detail: '浮层长文案' }),
+      { plans: [], monitorRow: null }
+    );
+    assert.ok(withDetail.includes('data-section="overview"'));
+    assert.ok(withDetail.includes('platform-detail-overview'));
+    assert.ok(withDetail.includes('浮层长文案'));
+    assert.ok(!withDetail.includes('卡面短'));
+
+    const summaryOnly = buildDetailBodyHtml(
+      samplePlatform({ summary: '只有简要' }),
+      { plans: [], monitorRow: null }
+    );
+    assert.ok(summaryOnly.includes('data-section="overview"'));
+    assert.ok(summaryOnly.includes('只有简要'));
+
+    const none = buildDetailBodyHtml(samplePlatform(), { plans: [], monitorRow: null });
+    assert.ok(!none.includes('data-section="overview"'));
+  });
+
   it('renders plans section when vendor has plans', () => {
     const plans = [
       {

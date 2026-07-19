@@ -323,6 +323,24 @@
       })
       .join('');
 
+    const overviewDetail =
+      typeof platform.detail === 'string' && platform.detail.trim()
+        ? platform.detail.trim()
+        : '';
+    const overviewSummary =
+      typeof platform.summary === 'string' && platform.summary.trim()
+        ? platform.summary.trim()
+        : '';
+    const overviewCopy = overviewDetail || overviewSummary;
+    const overviewHtml = overviewCopy
+      ? (
+          `<section class="platform-detail-section" data-section="overview" aria-labelledby="platformDetailOverviewHeading">` +
+          `<h3 id="platformDetailOverviewHeading" class="platform-detail-section-title">总述</h3>` +
+          `<p class="platform-detail-overview">${esc(overviewCopy)}</p>` +
+          `</section>`
+        )
+      : '';
+
     return (
       `<header class="platform-detail-header${discontinued ? ' is-discontinued' : ''}">` +
       `<div class="platform-detail-title-row">` +
@@ -335,6 +353,7 @@
       (discontinued ? `<span class="platform-detail-status">已停售</span>` : '') +
       `</div>` +
       `</header>` +
+      overviewHtml +
       `<section class="platform-detail-section" data-section="dimensions" aria-labelledby="platformDetailDimsHeading">` +
       `<h3 id="platformDetailDimsHeading" class="platform-detail-section-title">评价详解</h3>` +
       `<ul class="platform-detail-dimensions">${dims}</ul>` +

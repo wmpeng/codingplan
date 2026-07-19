@@ -206,6 +206,17 @@ function validatePlatformRecords(platforms, plans) {
       errors.push(`${prefix}: tags must be an array`);
     }
 
+    if (Object.prototype.hasOwnProperty.call(platform, 'summary')) {
+      if (typeof platform.summary !== 'string' || platform.summary.trim() === '') {
+        errors.push(`${prefix}: summary must be a non-empty string when present`);
+      }
+    }
+    if (Object.prototype.hasOwnProperty.call(platform, 'detail')) {
+      if (typeof platform.detail !== 'string' || platform.detail.trim() === '') {
+        errors.push(`${prefix}: detail must be a non-empty string when present`);
+      }
+    }
+
     for (const key of DIMENSION_KEYS) {
       const dim = platform.dimensions?.[key];
       if (!dim) {
@@ -311,8 +322,12 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
 
   const rating = Math.max(0, Math.min(5, Number(platform.rating) || 0));
   const stars = '⭐️'.repeat(rating);
-  const summary = platform.summary
-    ? `<p class="platform-summary">${escapeHtml(platform.summary)}</p>`
+  const summaryText =
+    typeof platform.summary === 'string' && platform.summary.trim()
+      ? platform.summary.trim()
+      : '';
+  const summary = summaryText
+    ? `<p class="platform-summary">${escapeHtml(summaryText)}</p>`
     : '';
 
   const status = normalizePlatformStatus(platform.platformStatus);

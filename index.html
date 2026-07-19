@@ -2069,6 +2069,18 @@
             color: var(--text-secondary);
         }
 
+        .platform-detail-section[data-section="overview"] {
+            margin-top: 18px;
+        }
+
+        .platform-detail-overview {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            overflow-wrap: anywhere;
+        }
+
         .platform-detail-dimensions {
             list-style: none;
             margin: 0;
@@ -2125,6 +2137,10 @@
 
         .platform-detail-section[data-section="plans"],
         .platform-detail-section[data-section="availability"] {
+            margin-top: 22px;
+        }
+
+        .platform-detail-section[data-section="dimensions"] {
             margin-top: 22px;
         }
 
@@ -3648,7 +3664,7 @@
                         </div>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
                     </header>
-                    
+                    <p class="platform-summary">国内版抢不到时的稳妥替代：模型与额度对齐，价格更高但随时可开。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">用量与国内版完全一致，但价格折算后约为国内版两倍以上。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">稳定性</span></div><span class="dim-reason">国际版通道稳定，无需抢名额，开通流程顺畅。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">支持 GLM-5.2 等与国内版一致的旗舰模型，能力不打折。</span></li></ul>
                     
                     <div class="platform-models" aria-label="模型"><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5-Turbo</span><span class="model-tag">GLM-5</span></div>
@@ -3663,7 +3679,7 @@
                         </div>
                         <span class="platform-rating" aria-label="5 星">⭐️⭐️⭐️⭐️⭐️</span>
                     </header>
-                    
+                    <p class="platform-summary">额度高、随时可买，日常编程助手与轻量任务性价比突出。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">额度依然最高，低难度任务和日常编程助手场景性价比突出。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">稳定性</span></div><span class="dim-reason">常规编程与助手场景稳定，无需抢购，续费体验顺畅。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">支持 MiniMax-M3 及多模态，模型能力均衡不拉胯。</span></li></ul>
                     <div class="platform-tags" aria-label="标签"><span class="platform-tag">适合养龙虾</span><span class="platform-tag">热门模型</span></div>
                     <div class="platform-models" aria-label="模型"><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span></div>
@@ -7191,10 +7207,10 @@
     </div>
 
     <script src="monitor/monitor-config.local.js"></script>
-    <script src="scripts/platform-catalog.js?v=260720g"></script>
-    <script src="scripts/platform-detail.js?v=260720g"></script>
+    <script src="scripts/platform-catalog.js?v=260720h"></script>
+    <script src="scripts/platform-detail.js?v=260720h"></script>
     <script src="scripts/shared.js?v=260610"></script>
-        <script src="scripts/homepage.js?v=260720g"></script>
+        <script src="scripts/homepage.js?v=260720h"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
     <script src="scripts/plan-usage-chart.js?v=260617"></script>
