@@ -2030,6 +2030,7 @@
             let startRank = 0;
             let startBtn = null;
             let dragged = false;
+            let previewRank = 0;
 
             const statuses =
                 (PlatformCatalog.PLATFORM_STATUSES && PlatformCatalog.PLATFORM_STATUSES.slice()) ||
@@ -2037,10 +2038,20 @@
             const SWIPE_THRESHOLD = 28;
 
             function rankFromClientX(clientX) {
-                const rect = segments.getBoundingClientRect();
-                if (rect.width <= 0) return startRank;
-                const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
-                return Math.round(ratio * (statuses.length - 1));
+                const buttons = Array.from(segments.querySelectorAll('[data-platform-status]'));
+                if (!buttons.length) return startRank;
+                let best = 0;
+                let bestDist = Infinity;
+                buttons.forEach((btn, index) => {
+                    const rect = btn.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const dist = Math.abs(clientX - centerX);
+                    if (dist < bestDist) {
+                        bestDist = dist;
+                        best = index;
+                    }
+                });
+                return best;
             }
 
             function buttonFromPoint(clientX, clientY) {
@@ -2049,12 +2060,68 @@
                 return btn && segments.contains(btn) ? btn : null;
             }
 
+            /** 仅更新高亮/前缀/「和」，不改筛选结果 */
+            function previewStatusRank(rank) {
+                const nextRank = Math.max(0, Math.min(statuses.length - 1, rank));
+                previewRank = nextRank;
+                const status = statuses[nextRank];
+                const slider = segments.closest('.platform-status-slider');
+                const prefix = slider && slider.querySelector('.platform-status-prefix');
+                const isActiveFn =
+                    typeof PlatformCatalog.isPlatformStatusSegmentActive === 'function'
+                        ? PlatformCatalog.isPlatformStatusSegmentActive
+                        : (btnStatus, maxStatus) => btnStatus === maxStatus;
+
+                segments.querySelectorAll('.platform-status-and').forEach((el) => el.remove());
+
+                const buttons = Array.from(segments.querySelectorAll('[data-platform-status]'));
+                buttons.forEach((btn) => {
+                    const btnStatus = btn.getAttribute('data-platform-status');
+                    const active = isActiveFn(btnStatus, status);
+                    btn.classList.toggle('is-active', active);
+                    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+                });
+
+                for (let i = 0; i < buttons.length - 1; i++) {
+                    const current = buttons[i];
+                    const next = buttons[i + 1];
+                    if (
+                        current.classList.contains('is-active') &&
+                        next.classList.contains('is-active')
+                    ) {
+                        const and = document.createElement('span');
+                        and.className = 'platform-status-and';
+                        and.setAttribute('aria-hidden', 'true');
+                        and.textContent = '和';
+                        current.after(and);
+                    }
+                }
+
+                if (prefix && typeof PlatformCatalog.platformStatusFilterPrefix === 'function') {
+                    prefix.textContent = PlatformCatalog.platformStatusFilterPrefix(status);
+                }
+                if (slider) {
+                    slider.setAttribute('data-platform-status-max', status);
+                    if (typeof PlatformCatalog.platformStatusFilterPhrase === 'function') {
+                        slider.setAttribute(
+                            'aria-label',
+                            PlatformCatalog.platformStatusFilterPhrase(status)
+                        );
+                    }
+                }
+            }
+
+            function restoreCommittedPreview() {
+                previewStatusRank(PlatformCatalog.platformStatusRank(platformStatusMax));
+            }
+
             segments.addEventListener('pointerdown', (event) => {
                 if (event.button != null && event.button !== 0) return;
                 pointerId = event.pointerId;
                 startX = event.clientX;
                 startY = event.clientY;
                 startRank = PlatformCatalog.platformStatusRank(platformStatusMax);
+                previewRank = startRank;
                 startBtn = event.target.closest('[data-platform-status]');
                 dragged = false;
                 try {
@@ -2064,8 +2131,12 @@
 
             segments.addEventListener('pointermove', (event) => {
                 if (pointerId == null || event.pointerId !== pointerId) return;
-                if (Math.abs(event.clientX - startX) > SWIPE_THRESHOLD) {
+                const dx = Math.abs(event.clientX - startX);
+                if (dx > SWIPE_THRESHOLD) {
                     dragged = true;
+                }
+                if (dragged) {
+                    previewStatusRank(rankFromClientX(event.clientX));
                 }
             });
 
@@ -2080,14 +2151,8 @@
                 startBtn = null;
 
                 if (wasSwipe) {
-                    let nextRank = startRank;
-                    if (Math.abs(dx) >= 36) {
-                        const steps = Math.max(1, Math.round(Math.abs(dx) / 56));
-                        nextRank = startRank + (dx > 0 ? steps : -steps);
-                    } else {
-                        nextRank = rankFromClientX(endX);
-                    }
-                    nextRank = Math.max(0, Math.min(statuses.length - 1, nextRank));
+                    const nextRank = Math.max(0, Math.min(statuses.length - 1, rankFromClientX(endX)));
+                    previewStatusRank(nextRank);
                     setPlatformStatusMax(statuses[nextRank]);
                     return;
                 }
@@ -2095,6 +2160,8 @@
                 // setPointerCapture 会让 click 落在容器上，点选在 pointerup 里直接处理
                 if (tapBtn) {
                     setPlatformStatusMax(tapBtn.getAttribute('data-platform-status'));
+                } else {
+                    restoreCommittedPreview();
                 }
             }
 
@@ -2103,6 +2170,7 @@
                 pointerId = null;
                 dragged = false;
                 startBtn = null;
+                restoreCommittedPreview();
             });
 
             segments.addEventListener('keydown', (event) => {
