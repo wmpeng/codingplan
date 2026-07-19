@@ -150,14 +150,14 @@
         const priceHtml = formatPlanPriceHtml(plan);
         return (
           `<div class="platform-detail-plan-item">` +
-          `<div class="platform-detail-plan-top">` +
+          `<div class="platform-detail-plan-main">` +
           `<div class="platform-detail-plan-name">${planName}</div>` +
-          `<div class="platform-detail-plan-price">${priceHtml}</div>` +
-          `</div>` +
           `<div class="platform-detail-plan-bottom">` +
           `<span class="platform-detail-plan-type-badge">${type}</span>` +
           quotaHtml +
           `</div>` +
+          `</div>` +
+          `<div class="platform-detail-plan-price">${priceHtml}</div>` +
           `</div>`
         );
       })

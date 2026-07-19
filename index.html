@@ -1911,17 +1911,23 @@
 
         .platform-detail-plan-item {
             box-sizing: border-box;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
             padding: 12px 14px;
             border: 1px solid rgba(23, 32, 51, 0.08);
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.55);
         }
 
-        .platform-detail-plan-top {
+        .platform-detail-plan-main {
             display: flex;
+            flex-direction: column;
             align-items: flex-start;
-            justify-content: space-between;
-            gap: 12px;
+            gap: 8px;
+            min-width: 0;
+            flex: 1 1 auto;
         }
 
         .platform-detail-plan-name {
@@ -1938,6 +1944,7 @@
             align-items: flex-end;
             gap: 2px;
             flex: 0 0 auto;
+            padding-top: 1px;
         }
 
         .platform-detail-price-main {
@@ -1963,7 +1970,6 @@
             flex-wrap: wrap;
             align-items: center;
             gap: 8px;
-            margin-top: 8px;
         }
 
         .platform-detail-plan-type-badge {
@@ -6893,7 +6899,7 @@
 
     <script src="monitor/monitor-config.local.js"></script>
     <script src="scripts/platform-catalog.js?v=260717b"></script>
-    <script src="scripts/platform-detail.js?v=260719b"></script>
+    <script src="scripts/platform-detail.js?v=260719c"></script>
     <script src="scripts/shared.js?v=260610"></script>
         <script src="scripts/homepage.js?v=260717"></script>
 

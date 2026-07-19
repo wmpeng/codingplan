@@ -114,6 +114,7 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('Go'));
     assert.ok(html.includes('Token Plan'));
     assert.ok(html.includes('$10') || html.includes('10'));
+    assert.ok(html.includes('platform-detail-plan-main'));
     assert.ok(!html.includes('未公开'));
     assert.ok(!html.includes('platform-detail-plan-quota'));
   });
