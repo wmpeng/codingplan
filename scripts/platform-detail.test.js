@@ -53,7 +53,9 @@ describe('buildDetailBodyHtml', () => {
         type: 'Token Plan',
         monthlyPrice: 100,
         firstMonthPrice: 90,
+        rating: 4,
         tokenLimit: 600,
+        summary: '额度充足，适合主力日常',
         discontinued: false
       },
       { vendor: 'X', plan: 'Old', type: 'Coding Plan', monthlyPrice: 50, discontinued: true }
@@ -61,14 +63,40 @@ describe('buildDetailBodyHtml', () => {
     const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans, monitorRow: null });
     assert.ok(html.includes('data-section="plans"'));
     assert.ok(html.includes('platform-detail-plans-list'));
+    assert.ok(html.includes('platform-detail-plan-title-row'));
     assert.ok(html.includes('Pro'));
     assert.ok(!html.includes('Old'));
     assert.ok(html.includes('600M'));
     assert.ok(html.includes('¥100'));
     assert.ok(html.includes('首月'));
+    assert.ok(html.includes('platform-detail-price-sep'));
     assert.ok(html.includes('Token Plan'));
-    assert.ok(html.includes('600M'));
+    assert.ok(html.includes('platform-detail-plan-rating'));
+    assert.ok(html.includes('额度充足，适合主力日常'));
     assert.ok(html.includes('在套餐大表中查看'));
+  });
+
+  it('omits empty summary and keeps price on one line without first-month when absent', () => {
+    const plans = [
+      {
+        vendor: 'X',
+        plan: 'Lite',
+        type: 'Coding Plan',
+        monthlyPrice: 49,
+        firstMonthPrice: '-',
+        rating: 3,
+        monthlyRequests: 1900,
+        tokenLimit: '无限制',
+        summary: '   ',
+        discontinued: false
+      }
+    ];
+    const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans, monitorRow: null });
+    assert.ok(html.includes('Lite'));
+    assert.ok(html.includes('1,900次/月') || html.includes('1900'));
+    assert.ok(!html.includes('platform-detail-plan-summary'));
+    assert.ok(!html.includes('platform-detail-price-sep'));
+    assert.ok(!html.includes('首月'));
   });
 
   it('summarizes coding plan quota with monthly requests when token unlimited', () => {

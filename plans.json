@@ -571,6 +571,7 @@
     "monthlyRequests": "未公开",
     "tokenLimit": "无限制",
     "benefits": [],
+    "summary": "入门档，Agent 约 4 倍速",
     "note": "Agent 4 倍速",
     "measuredFiveHoursTokenLimit": 15,
     "measuredWeeklyTokenLimit": 21,
@@ -600,6 +601,7 @@
     "monthlyRequests": "未公开",
     "tokenLimit": "无限制",
     "benefits": [],
+    "summary": "约 4 倍额度，支持 Agent 多任务并行",
     "note": "4 倍额度, Agent 多任务并行"
   },
   {
@@ -628,6 +630,7 @@
     "benefits": [
       "免费Kimi-Claw"
     ],
+    "summary": "约 20 倍额度，含免费 Kimi-Claw",
     "note": "20 倍额度",
     "measuredFiveHoursTokenLimit": 65,
     "measuredWeeklyTokenLimit": 357,
@@ -659,6 +662,7 @@
     "benefits": [
       "免费Kimi-Claw"
     ],
+    "summary": "约 60 倍额度，含免费 Kimi-Claw",
     "note": "60 倍额度"
   },
   {

@@ -67,6 +67,7 @@
     if (first && Number(plan.firstMonthPrice) !== Number(plan.monthlyPrice)) {
       return (
         `<span class="platform-detail-price-main">${esc(monthly)}</span>` +
+        `<span class="platform-detail-price-sep" aria-hidden="true"> · </span>` +
         `<span class="platform-detail-price-first">首月 ${esc(first)}</span>`
       );
     }
@@ -143,21 +144,35 @@
       .map(plan => {
         const planName = esc(plan && plan.plan);
         const type = esc((plan && plan.type) || 'Coding Plan');
+        const rating = Math.max(0, Math.min(5, Number(plan && plan.rating) || 0));
+        const stars = rating > 0 ? '⭐️'.repeat(rating) : '';
+        const ratingHtml = stars
+          ? `<span class="platform-detail-plan-rating" aria-label="${rating} 星">${stars}</span>`
+          : '';
+        const summary =
+          typeof plan.summary === 'string' && plan.summary.trim() ? plan.summary.trim() : '';
+        const summaryHtml = summary
+          ? `<p class="platform-detail-plan-summary">${esc(summary)}</p>`
+          : '';
         const quota = formatPlanQuota(plan);
         const quotaHtml = quota
-          ? `<span class="platform-detail-plan-quota">${esc(quota)}</span>`
+          ? `<div class="platform-detail-plan-quota">${esc(quota)}</div>`
           : '';
         const priceHtml = formatPlanPriceHtml(plan);
         return (
           `<div class="platform-detail-plan-item">` +
           `<div class="platform-detail-plan-main">` +
-          `<div class="platform-detail-plan-name">${planName}</div>` +
-          `<div class="platform-detail-plan-bottom">` +
+          `<div class="platform-detail-plan-title-row">` +
+          `<span class="platform-detail-plan-name">${planName}</span>` +
+          ratingHtml +
           `<span class="platform-detail-plan-type-badge">${type}</span>` +
+          `</div>` +
+          summaryHtml +
+          `</div>` +
+          `<div class="platform-detail-plan-side">` +
+          `<div class="platform-detail-plan-price">${priceHtml}</div>` +
           quotaHtml +
           `</div>` +
-          `</div>` +
-          `<div class="platform-detail-plan-price">${priceHtml}</div>` +
           `</div>`
         );
       })

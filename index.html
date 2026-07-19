@@ -1925,9 +1925,18 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 8px;
+            gap: 6px;
             min-width: 0;
             flex: 1 1 auto;
+        }
+
+        .platform-detail-plan-title-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 8px;
+            min-width: 0;
+            max-width: 100%;
         }
 
         .platform-detail-plan-name {
@@ -1938,13 +1947,55 @@
             min-width: 0;
         }
 
-        .platform-detail-plan-price {
+        .platform-detail-plan-rating {
+            color: #f59e0b;
+            letter-spacing: 0.5px;
+            font-size: 12px;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .platform-detail-plan-type-badge {
+            display: inline-flex;
+            align-items: center;
+            min-height: 20px;
+            padding: 0 7px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            background: rgba(23, 55, 83, 0.08);
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .platform-detail-plan-summary {
+            margin: 0;
+            max-width: 100%;
+            font-size: 12px;
+            line-height: 1.45;
+            color: var(--text-tertiary);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .platform-detail-plan-side {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 2px;
+            gap: 4px;
             flex: 0 0 auto;
             padding-top: 1px;
+            text-align: right;
+        }
+
+        .platform-detail-plan-price {
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: flex-end;
+            gap: 0;
+            max-width: 100%;
         }
 
         .platform-detail-price-main {
@@ -1952,6 +2003,14 @@
             font-size: 15px;
             font-weight: 800;
             font-variant-numeric: tabular-nums;
+            line-height: 1.3;
+            white-space: nowrap;
+        }
+
+        .platform-detail-price-sep {
+            color: var(--text-tertiary);
+            font-size: 12px;
+            font-weight: 600;
             line-height: 1.3;
             white-space: nowrap;
         }
@@ -1965,35 +2024,11 @@
             white-space: nowrap;
         }
 
-        .platform-detail-plan-bottom {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .platform-detail-plan-type-badge {
-            display: inline-flex;
-            align-items: center;
-            min-height: 22px;
-            padding: 0 8px;
-            border-radius: 999px;
-            font-size: 11px;
-            font-weight: 700;
-            background: rgba(23, 55, 83, 0.08);
-            color: var(--text-secondary);
-        }
-
         .platform-detail-plan-quota {
-            display: inline-flex;
-            align-items: center;
-            min-height: 22px;
-            padding: 0 8px;
-            border-radius: 999px;
             font-size: 12px;
             font-weight: 700;
             font-variant-numeric: tabular-nums;
-            background: rgba(15, 118, 110, 0.1);
+            line-height: 1.3;
             color: #0f766e;
             white-space: nowrap;
         }
@@ -6899,7 +6934,7 @@
 
     <script src="monitor/monitor-config.local.js"></script>
     <script src="scripts/platform-catalog.js?v=260717b"></script>
-    <script src="scripts/platform-detail.js?v=260719c"></script>
+    <script src="scripts/platform-detail.js?v=260719d"></script>
     <script src="scripts/shared.js?v=260610"></script>
         <script src="scripts/homepage.js?v=260717"></script>
 
