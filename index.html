@@ -1506,6 +1506,15 @@
             max-width: 100%;
         }
 
+        .platform-status-prefix,
+        .platform-status-suffix {
+            flex: 0 0 auto;
+            font-size: 12px;
+            font-weight: 700;
+            color: #6b7280;
+            white-space: nowrap;
+        }
+
         .platform-status-segments {
             display: inline-flex;
             align-items: stretch;
@@ -3441,7 +3450,7 @@
             <h1 id="pageTitle">AI Coding 平台推荐</h1>
             <div class="update-date" id="updateDate">更新日期2026.7.15 | 首页改版：平台目录与标签筛选</div>
             <div class="subtitle" id="subtitle">29 家 Coding Plan / Token Plan 平台一站式选型<br>智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek 等，按性价比、稳定性、模型覆盖、使用便捷性对比</div>
-            <div class="models" id="models">首页以「选平台」为主：默认显示至「定时放量」，也可按「性价比高」「模型覆盖广」等维度快速缩小范围；下方套餐表仍保留全量对比。</div>
+            <div class="models" id="models">首页以「选平台」为主：默认仅显示「定时放量」及更开放的平台，也可按「性价比高」「模型覆盖广」等维度快速缩小范围；下方套餐表仍保留全量对比。</div>
         </div>
 
         <div class="hero-summary hero-summary--lede">
@@ -3598,7 +3607,7 @@
                 <h2 class="platform-catalog-title">平台目录</h2>
                 <p class="platform-catalog-subtitle">按标签与平台状态筛选；清空后回到默认「定时放量」</p>
             </header>
-            <div class="platform-tag-bar" id="platformTagBar" role="group" aria-label="平台标签"><div class="platform-tag-bar-main"><div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选"><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="性价比高" aria-pressed="false">性价比高</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="稳定性好" aria-pressed="false">稳定性好</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="模型覆盖广" aria-pressed="false">模型覆盖广</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="使用便捷" aria-pressed="false">使用便捷</button></div><div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签"><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="热门模型" aria-pressed="false">热门模型</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="适合养龙虾" aria-pressed="false">适合养龙虾</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="可支付宝" aria-pressed="false">可支付宝</button></div></div><div class="platform-status-slider" data-platform-status-max="limited" role="group" aria-label="平台状态筛选"><div class="platform-status-segments" tabindex="0"><button type="button" class="platform-status-seg" data-platform-status="open" aria-pressed="false" title="仅显示开放购买平台">仅显示开放购买平台</button><button type="button" class="platform-status-seg is-active" data-platform-status="limited" aria-pressed="true" title="显示定时放量平台">显示定时放量平台</button><button type="button" class="platform-status-seg" data-platform-status="paused" aria-pressed="false" title="显示暂时停售平台">显示暂时停售平台</button><button type="button" class="platform-status-seg" data-platform-status="delisted" aria-pressed="false" title="显示所有平台">显示所有平台</button></div></div></div>
+            <div class="platform-tag-bar" id="platformTagBar" role="group" aria-label="平台标签"><div class="platform-tag-bar-main"><div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选"><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="性价比高" aria-pressed="false">性价比高</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="稳定性好" aria-pressed="false">稳定性好</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="模型覆盖广" aria-pressed="false">模型覆盖广</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="使用便捷" aria-pressed="false">使用便捷</button></div><div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签"><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="热门模型" aria-pressed="false">热门模型</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="适合养龙虾" aria-pressed="false">适合养龙虾</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="可支付宝" aria-pressed="false">可支付宝</button></div></div><div class="platform-status-slider" data-platform-status-max="limited" role="group" aria-label="平台状态筛选"><span class="platform-status-prefix">仅显示</span><div class="platform-status-segments" tabindex="0"><button type="button" class="platform-status-seg" data-platform-status="open" aria-pressed="false" title="仅显示开放购买平台">开放购买</button><button type="button" class="platform-status-seg is-active" data-platform-status="limited" aria-pressed="true" title="仅显示定时放量平台">定时放量</button><button type="button" class="platform-status-seg" data-platform-status="paused" aria-pressed="false" title="仅显示暂时停售平台">暂时停售</button><button type="button" class="platform-status-seg" data-platform-status="delisted" aria-pressed="false" title="仅显示所有平台">所有</button></div><span class="platform-status-suffix">平台</span></div></div>
             <div class="platform-catalog-toolbar">
                 <button type="button" class="platform-clear-filters" id="platformClearFilters">清空筛选</button>
                 <span class="platform-catalog-stats">显示 <strong id="platformShowingCount">27</strong> / <strong id="platformTotalCount">27</strong> 个平台</span>
@@ -7170,10 +7179,10 @@
     </div>
 
     <script src="monitor/monitor-config.local.js"></script>
-    <script src="scripts/platform-catalog.js?v=260719e"></script>
+    <script src="scripts/platform-catalog.js?v=260720a"></script>
     <script src="scripts/platform-detail.js?v=260719e"></script>
     <script src="scripts/shared.js?v=260610"></script>
-        <script src="scripts/homepage.js?v=260719e"></script>
+        <script src="scripts/homepage.js?v=260720a"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
     <script src="scripts/plan-usage-chart.js?v=260617"></script>

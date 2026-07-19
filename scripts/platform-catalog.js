@@ -14,12 +14,15 @@ const PLATFORM_STATUS_LABELS = {
   paused: '暂时停售',
   delisted: '已下架'
 };
-const PLATFORM_STATUS_FILTER_LABELS = {
-  open: '仅显示开放购买平台',
-  limited: '显示定时放量平台',
-  paused: '显示暂时停售平台',
-  delisted: '显示所有平台'
+/** 筛选滑块中间档位文案（前后另有「仅显示」/「平台」） */
+const PLATFORM_STATUS_SEGMENT_LABELS = {
+  open: '开放购买',
+  limited: '定时放量',
+  paused: '暂时停售',
+  delisted: '所有'
 };
+const PLATFORM_STATUS_FILTER_PREFIX = '仅显示';
+const PLATFORM_STATUS_FILTER_SUFFIX = '平台';
 const DEFAULT_PLATFORM_STATUS_MAX = 'limited';
 
 function escapeHtml(text) {
@@ -45,8 +48,13 @@ function platformStatusLabel(value) {
   return PLATFORM_STATUS_LABELS[normalizePlatformStatus(value)] || PLATFORM_STATUS_LABELS.open;
 }
 
+function platformStatusSegmentLabel(value) {
+  const status = normalizePlatformStatus(value);
+  return PLATFORM_STATUS_SEGMENT_LABELS[status] || PLATFORM_STATUS_SEGMENT_LABELS.open;
+}
+
 function platformStatusFilterLabel(value) {
-  return PLATFORM_STATUS_FILTER_LABELS[normalizePlatformStatus(value)] || PLATFORM_STATUS_FILTER_LABELS.open;
+  return `${PLATFORM_STATUS_FILTER_PREFIX}${platformStatusSegmentLabel(value)}${PLATFORM_STATUS_FILTER_SUFFIX}`;
 }
 
 function matchesDerivedTag(platform, rule) {
@@ -240,17 +248,20 @@ function buildPlatformStatusSliderHtml(platformStatusMax) {
   const maxRank = platformStatusRank(max);
   const segments = PLATFORM_STATUSES.map((status, rank) => {
     const active = rank === maxRank;
-    const label = PLATFORM_STATUS_FILTER_LABELS[status];
+    const segmentLabel = platformStatusSegmentLabel(status);
+    const fullLabel = platformStatusFilterLabel(status);
     return (
-      `<button type="button" class="platform-status-seg${active ? ' is-active' : ''}" data-platform-status="${status}" aria-pressed="${active ? 'true' : 'false'}" title="${escapeHtml(label)}">` +
-      `${escapeHtml(label)}` +
+      `<button type="button" class="platform-status-seg${active ? ' is-active' : ''}" data-platform-status="${status}" aria-pressed="${active ? 'true' : 'false'}" title="${escapeHtml(fullLabel)}">` +
+      `${escapeHtml(segmentLabel)}` +
       `</button>`
     );
   }).join('');
 
   return (
     `<div class="platform-status-slider" data-platform-status-max="${max}" role="group" aria-label="平台状态筛选">` +
+    `<span class="platform-status-prefix">${escapeHtml(PLATFORM_STATUS_FILTER_PREFIX)}</span>` +
     `<div class="platform-status-segments" tabindex="0">${segments}</div>` +
+    `<span class="platform-status-suffix">${escapeHtml(PLATFORM_STATUS_FILTER_SUFFIX)}</span>` +
     `</div>`
   );
 }
@@ -327,12 +338,15 @@ const PlatformCatalog = {
   PLATFORM_DIMENSION_META,
   PLATFORM_STATUSES,
   PLATFORM_STATUS_LABELS,
-  PLATFORM_STATUS_FILTER_LABELS,
+  PLATFORM_STATUS_SEGMENT_LABELS,
+  PLATFORM_STATUS_FILTER_PREFIX,
+  PLATFORM_STATUS_FILTER_SUFFIX,
   DEFAULT_PLATFORM_STATUS_MAX,
   escapeHtml,
   normalizePlatformStatus,
   platformStatusRank,
   platformStatusLabel,
+  platformStatusSegmentLabel,
   platformStatusFilterLabel,
   matchesDerivedTag,
   matchesOperationalTag,

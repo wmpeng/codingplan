@@ -1501,7 +1501,7 @@
                         title: "AI Coding 平台推荐",
                         updateDate: "更新日期2026.7.15 | 首页改版：平台目录与标签筛选",
                         subtitle: "29 家 Coding Plan / Token Plan 平台一站式选型\n智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek 等，按性价比、稳定性、模型覆盖、使用便捷性对比",
-                        models: "首页以「选平台」为主：默认显示至「定时放量」，也可按「性价比高」「模型覆盖广」等维度快速缩小范围；下方套餐表仍保留全量对比。",
+                        models: "首页以「选平台」为主：默认仅显示「定时放量」及更开放的平台，也可按「性价比高」「模型覆盖广」等维度快速缩小范围；下方套餐表仍保留全量对比。",
                         watermarkUrl: "www.codingplan.fyi",
                         entry: {
                             url: "https://github.com/wmpeng/codingplan/discussions",
@@ -2026,13 +2026,15 @@
 
             let pointerId = null;
             let startX = 0;
+            let startY = 0;
             let startRank = 0;
+            let startBtn = null;
             let dragged = false;
-            let suppressClick = false;
 
             const statuses =
                 (PlatformCatalog.PLATFORM_STATUSES && PlatformCatalog.PLATFORM_STATUSES.slice()) ||
                 ['open', 'limited', 'paused', 'delisted'];
+            const SWIPE_THRESHOLD = 28;
 
             function rankFromClientX(clientX) {
                 const rect = segments.getBoundingClientRect();
@@ -2041,11 +2043,19 @@
                 return Math.round(ratio * (statuses.length - 1));
             }
 
+            function buttonFromPoint(clientX, clientY) {
+                const el = document.elementFromPoint(clientX, clientY);
+                const btn = el && el.closest ? el.closest('[data-platform-status]') : null;
+                return btn && segments.contains(btn) ? btn : null;
+            }
+
             segments.addEventListener('pointerdown', (event) => {
                 if (event.button != null && event.button !== 0) return;
                 pointerId = event.pointerId;
                 startX = event.clientX;
+                startY = event.clientY;
                 startRank = PlatformCatalog.platformStatusRank(platformStatusMax);
+                startBtn = event.target.closest('[data-platform-status]');
                 dragged = false;
                 try {
                     segments.setPointerCapture(pointerId);
@@ -2054,7 +2064,7 @@
 
             segments.addEventListener('pointermove', (event) => {
                 if (pointerId == null || event.pointerId !== pointerId) return;
-                if (Math.abs(event.clientX - startX) > 8) {
+                if (Math.abs(event.clientX - startX) > SWIPE_THRESHOLD) {
                     dragged = true;
                 }
             });
@@ -2063,33 +2073,37 @@
                 if (pointerId == null || event.pointerId !== pointerId) return;
                 const endX = event.clientX;
                 const dx = endX - startX;
+                const wasSwipe = dragged || Math.abs(dx) >= SWIPE_THRESHOLD;
+                const tapBtn = startBtn || buttonFromPoint(endX, event.clientY || startY);
                 pointerId = null;
-                if (!dragged && Math.abs(dx) < 8) return;
+                dragged = false;
+                startBtn = null;
 
-                suppressClick = true;
-                let nextRank = startRank;
-                if (Math.abs(dx) >= 36) {
-                    const steps = Math.max(1, Math.round(Math.abs(dx) / 56));
-                    nextRank = startRank + (dx > 0 ? steps : -steps);
-                } else {
-                    nextRank = rankFromClientX(endX);
+                if (wasSwipe) {
+                    let nextRank = startRank;
+                    if (Math.abs(dx) >= 36) {
+                        const steps = Math.max(1, Math.round(Math.abs(dx) / 56));
+                        nextRank = startRank + (dx > 0 ? steps : -steps);
+                    } else {
+                        nextRank = rankFromClientX(endX);
+                    }
+                    nextRank = Math.max(0, Math.min(statuses.length - 1, nextRank));
+                    setPlatformStatusMax(statuses[nextRank]);
+                    return;
                 }
-                nextRank = Math.max(0, Math.min(statuses.length - 1, nextRank));
-                setPlatformStatusMax(statuses[nextRank]);
+
+                // setPointerCapture 会让 click 落在容器上，点选在 pointerup 里直接处理
+                if (tapBtn) {
+                    setPlatformStatusMax(tapBtn.getAttribute('data-platform-status'));
+                }
             }
 
             segments.addEventListener('pointerup', endPointer);
             segments.addEventListener('pointercancel', () => {
                 pointerId = null;
                 dragged = false;
+                startBtn = null;
             });
-
-            segments.addEventListener('click', (event) => {
-                if (!suppressClick) return;
-                event.preventDefault();
-                event.stopPropagation();
-                suppressClick = false;
-            }, true);
 
             segments.addEventListener('keydown', (event) => {
                 const rank = PlatformCatalog.platformStatusRank(platformStatusMax);
@@ -2121,12 +2135,6 @@
             bar.querySelectorAll('[data-platform-tag]').forEach((btn) => {
                 btn.addEventListener('click', () => {
                     togglePlatformTag(btn.getAttribute('data-platform-tag'));
-                });
-            });
-
-            bar.querySelectorAll('[data-platform-status]').forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    setPlatformStatusMax(btn.getAttribute('data-platform-status'));
                 });
             });
 
