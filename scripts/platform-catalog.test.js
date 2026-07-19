@@ -8,9 +8,11 @@ const {
   escapeHtml,
   buildPlatformCardHtml,
   buildPlatformTagBarHtml,
+  buildPlatformStatusSliderHtml,
   dimensionCopy,
   collectPlansForVendor,
-  matchMonitorPlatform
+  matchMonitorPlatform,
+  DEFAULT_PLATFORM_STATUS_MAX
 } = require('./platform-catalog.js');
 
 const derivedTags = [
@@ -22,8 +24,7 @@ function samplePlatform(overrides = {}) {
     id: 'x',
     name: 'X',
     rating: 4,
-    status: 'active',
-    purchaseMode: 'anytime',
+    platformStatus: 'open',
     dimensions: {
       value: { score: 5, reason: 'a' },
       stability: { score: 3, reason: 'b' },
@@ -42,7 +43,7 @@ describe('filterPlatforms', () => {
       samplePlatform({
         id: 'b',
         name: 'B',
-        purchaseMode: 'rush',
+        platformStatus: 'limited',
         tags: ['适合养龙虾'],
         dimensions: {
           value: { score: 5, reason: 'a' },
@@ -55,88 +56,65 @@ describe('filterPlatforms', () => {
     ];
     const result = filterPlatforms(platforms, {
       selectedLabels: ['性价比高', '适合养龙虾'],
-      showDiscontinued: false,
-      showRushPurchase: true,
+      platformStatusMax: 'limited',
       derivedTags,
-      operationalTags: ['适合养龙虾'],
-      showDiscontinuedLabel: '显示停售',
-      showRushPurchaseLabel: '显示需抢购'
+      operationalTags: ['适合养龙虾']
     });
     assert.deepEqual(result.map(p => p.id), ['a', 'b']);
   });
 
-  it('hides discontinued unless showDiscontinued', () => {
+  it('filters by platformStatusMax inclusive rank', () => {
     const platforms = [
-      samplePlatform({ id: 'alive', status: 'active' }),
-      samplePlatform({ id: 'dead', status: 'discontinued', purchaseMode: 'anytime' })
+      samplePlatform({ id: 'open', platformStatus: 'open' }),
+      samplePlatform({ id: 'limited', platformStatus: 'limited' }),
+      samplePlatform({ id: 'paused', platformStatus: 'paused' }),
+      samplePlatform({ id: 'delisted', platformStatus: 'delisted' })
     ];
-    const hidden = filterPlatforms(platforms, {
-      selectedLabels: [],
-      showDiscontinued: false,
-      showRushPurchase: false,
-      derivedTags,
-      operationalTags: [],
-      showDiscontinuedLabel: '显示停售',
-      showRushPurchaseLabel: '显示需抢购'
-    });
-    assert.deepEqual(hidden.map(p => p.id), ['alive']);
 
-    const shown = filterPlatforms(platforms, {
-      selectedLabels: [],
-      showDiscontinued: true,
-      showRushPurchase: false,
-      derivedTags,
-      operationalTags: [],
-      showDiscontinuedLabel: '显示停售',
-      showRushPurchaseLabel: '显示需抢购'
-    });
-    assert.deepEqual(shown.map(p => p.id), ['alive', 'dead']);
+    assert.deepEqual(
+      filterPlatforms(platforms, {
+        selectedLabels: [],
+        platformStatusMax: 'open',
+        derivedTags,
+        operationalTags: []
+      }).map(p => p.id),
+      ['open']
+    );
+
+    assert.deepEqual(
+      filterPlatforms(platforms, {
+        selectedLabels: [],
+        platformStatusMax: 'limited',
+        derivedTags,
+        operationalTags: []
+      }).map(p => p.id),
+      ['open', 'limited']
+    );
+
+    assert.deepEqual(
+      filterPlatforms(platforms, {
+        selectedLabels: [],
+        platformStatusMax: 'delisted',
+        derivedTags,
+        operationalTags: []
+      }).map(p => p.id),
+      ['open', 'limited', 'paused', 'delisted']
+    );
   });
 
-  it('hides rush unless showRushPurchase', () => {
+  it('defaults platformStatusMax to limited', () => {
+    assert.equal(DEFAULT_PLATFORM_STATUS_MAX, 'limited');
     const platforms = [
       samplePlatform({ id: '1' }),
-      samplePlatform({ id: '2', purchaseMode: 'rush' }),
-      samplePlatform({ id: '3', purchaseMode: 'scheduled' })
-    ];
-    const hidden = filterPlatforms(platforms, {
-      selectedLabels: [],
-      showDiscontinued: false,
-      showRushPurchase: false,
-      derivedTags,
-      operationalTags: [],
-      showDiscontinuedLabel: '显示停售',
-      showRushPurchaseLabel: '显示需抢购'
-    });
-    assert.deepEqual(hidden.map(p => p.id), ['1', '3']);
-
-    const shown = filterPlatforms(platforms, {
-      selectedLabels: [],
-      showDiscontinued: false,
-      showRushPurchase: true,
-      derivedTags,
-      operationalTags: [],
-      showDiscontinuedLabel: '显示停售',
-      showRushPurchaseLabel: '显示需抢购'
-    });
-    assert.deepEqual(shown.map(p => p.id), ['1', '2', '3']);
-  });
-
-  it('empty selectedLabels means all active (plus discontinued if toggled)', () => {
-    const platforms = [
-      samplePlatform({ id: '1' }),
-      samplePlatform({ id: '2', purchaseMode: 'scheduled' })
+      samplePlatform({ id: '2', platformStatus: 'limited' }),
+      samplePlatform({ id: '3', platformStatus: 'delisted' })
     ];
     const result = filterPlatforms(platforms, {
       selectedLabels: [],
-      showDiscontinued: false,
-      showRushPurchase: false,
       derivedTags,
-      operationalTags: [],
-      showDiscontinuedLabel: '显示停售',
-      showRushPurchaseLabel: '显示需抢购'
+      operationalTags: []
     });
-    assert.equal(result.length, 2);
+    assert.deepEqual(result.map(p => p.id), ['1', '2']);
   });
 });
 
@@ -179,11 +157,11 @@ describe('validatePlatformRecords', () => {
     assert.equal(r.ok, false);
   });
 
-  it('errors on invalid purchaseMode', () => {
-    const bad = samplePlatform({ purchaseMode: 'nope' });
+  it('errors on invalid platformStatus', () => {
+    const bad = samplePlatform({ platformStatus: 'nope' });
     const r = validatePlatformRecords([bad], [{ vendor: 'X' }]);
     assert.equal(r.ok, false);
-    assert.match(r.errors.join('\n'), /purchaseMode/);
+    assert.match(r.errors.join('\n'), /platformStatus/);
   });
 });
 
@@ -212,7 +190,7 @@ describe('buildPlatformCardHtml', () => {
     assert.doesNotMatch(active, /is-discontinued/);
 
     const dead = buildPlatformCardHtml(
-      samplePlatform({ status: 'discontinued' }),
+      samplePlatform({ platformStatus: 'delisted' }),
       [{ vendor: 'X', models: [], discontinued: false }]
     );
     assert.match(dead, /platform-card is-discontinued/);
@@ -232,27 +210,19 @@ describe('buildPlatformCardHtml', () => {
     assert.match(noLink, /class="platform-name"/);
   });
 
-  it('omits purchase badge for anytime; shows scheduled/rush beside title', () => {
-    const anytime = buildPlatformCardHtml(
-      samplePlatform({ action: 'https://example.com', purchaseMode: 'anytime' }),
+  it('omits badge for open; shows limited/paused/delisted beside title', () => {
+    const open = buildPlatformCardHtml(
+      samplePlatform({ action: 'https://example.com', platformStatus: 'open' }),
       [{ vendor: 'X', models: ['M1'], discontinued: false }]
     );
-    assert.doesNotMatch(anytime, /platform-rush/);
+    assert.doesNotMatch(open, /platform-rush/);
 
-    const rush = buildPlatformCardHtml(
-      samplePlatform({ purchaseMode: 'rush' }),
-      [{ vendor: 'X', models: ['M1'], discontinued: false }]
-    );
-    assert.match(rush, /platform-card-heading/);
-    assert.match(rush, /platform-rush/);
-    assert.match(rush, /data-purchase-mode="rush"/);
-    assert.match(rush, /需要抢购/);
-    assert.ok(rush.indexOf('platform-card-heading') < rush.indexOf('platform-rush'));
-    assert.ok(rush.indexOf('platform-rush') < rush.indexOf('platform-dimensions'));
+    const limited = buildPlatformCardHtml(samplePlatform({ platformStatus: 'limited' }), []);
+    assert.match(limited, /data-platform-status="limited"/);
+    assert.match(limited, /定时放量/);
 
-    const scheduled = buildPlatformCardHtml(samplePlatform({ purchaseMode: 'scheduled' }), []);
-    assert.match(scheduled, /data-purchase-mode="scheduled"/);
-    assert.match(scheduled, /定时购买/);
+    const paused = buildPlatformCardHtml(samplePlatform({ platformStatus: 'paused' }), []);
+    assert.match(paused, /暂时停售/);
   });
 
   it('renders score with 分 unit and groups meta for vertical centering', () => {
@@ -291,25 +261,29 @@ describe('buildPlatformCardHtml', () => {
 });
 
 describe('buildPlatformTagBarHtml', () => {
-  it('groups derived, operational, and toggle chips with distinct classes', () => {
+  it('groups derived and operational chips without status toggles', () => {
     const cat = {
       derivedTags: [{ id: 'high-value', label: '性价比高', rule: { dimension: 'value', minScore: 4 } }],
-      operationalTags: ['热门模型'],
-      showDiscontinuedTag: '显示停售',
-      showRushPurchaseTag: '显示需抢购'
+      operationalTags: ['热门模型']
     };
-    const html = buildPlatformTagBarHtml(cat, ['性价比高'], false, true);
+    const html = buildPlatformTagBarHtml(cat, ['性价比高']);
     assert.match(html, /platform-tag-group--derived/);
     assert.match(html, /platform-tag-chip--derived is-active" data-platform-tag="性价比高"/);
     assert.match(html, /platform-tag-group--operational/);
-    assert.match(html, /platform-tag-chip--operational" data-platform-tag="热门模型"/);
-    assert.match(html, /platform-tag-sep/);
-    assert.match(html, /platform-tag-group--toggles/);
-    assert.match(html, /platform-tag-chip--toggle platform-tag-chip--discontinued/);
-    assert.match(html, /platform-tag-chip--toggle platform-tag-chip--rush is-active/);
-    assert.match(html, /data-platform-show-rush="1"/);
-    assert.match(html, /显示需抢购/);
-    assert.match(html, /platform-tag-check/);
+    assert.doesNotMatch(html, /显示停售|显示需抢购|platform-tag-chip--toggle/);
+  });
+});
+
+describe('buildPlatformStatusSliderHtml', () => {
+  it('renders four marks and highlights selected max', () => {
+    const html = buildPlatformStatusSliderHtml('limited');
+    assert.match(html, /platform-status-slider/);
+    assert.match(html, /data-platform-status-max="limited"/);
+    assert.match(html, /开放购买/);
+    assert.match(html, /定时放量/);
+    assert.match(html, /暂时停售/);
+    assert.match(html, /已下架/);
+    assert.match(html, /data-platform-status="limited"[^>]*aria-pressed="true"/);
   });
 });
 

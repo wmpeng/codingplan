@@ -276,19 +276,19 @@
     const name = esc(platform && platform.name);
     const rating = Math.max(0, Math.min(5, Number(platform && platform.rating) || 0));
     const stars = '⭐️'.repeat(rating);
-    const purchaseMode =
-      typeof PlatformCatalog.normalizePurchaseMode === 'function'
-        ? PlatformCatalog.normalizePurchaseMode(platform && platform.purchaseMode)
-        : (platform && platform.purchaseMode) || 'anytime';
-    const rushLabel =
-      typeof PlatformCatalog.purchaseModeLabel === 'function'
-        ? PlatformCatalog.purchaseModeLabel(purchaseMode)
-        : purchaseMode;
-    const rushHtml =
-      purchaseMode === 'anytime'
+    const status =
+      typeof PlatformCatalog.normalizePlatformStatus === 'function'
+        ? PlatformCatalog.normalizePlatformStatus(platform && platform.platformStatus)
+        : (platform && platform.platformStatus) || 'open';
+    const statusLabel =
+      typeof PlatformCatalog.platformStatusLabel === 'function'
+        ? PlatformCatalog.platformStatusLabel(status)
+        : status;
+    const statusHtml =
+      status === 'open'
         ? ''
-        : `<span class="platform-detail-rush" data-purchase-mode="${esc(purchaseMode)}">${esc(rushLabel)}</span>`;
-    const discontinued = platform && platform.status === 'discontinued';
+        : `<span class="platform-detail-rush" data-platform-status="${esc(status)}">${esc(statusLabel)}</span>`;
+    const discontinued = status === 'delisted';
     const actionUrl =
       typeof PlatformCatalog.resolvePlatformAction === 'function'
         ? PlatformCatalog.resolvePlatformAction(platform, Array.isArray(context.plans) ? context.plans : [])
@@ -332,7 +332,7 @@
       `</div>` +
       `<div class="platform-detail-meta">` +
       `<span class="platform-detail-rating" aria-label="${rating} 星">${stars}</span>` +
-      rushHtml +
+      statusHtml +
       (discontinued ? `<span class="platform-detail-status">已停售</span>` : '') +
       `</div>` +
       `</header>` +

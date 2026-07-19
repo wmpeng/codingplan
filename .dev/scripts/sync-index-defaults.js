@@ -328,14 +328,13 @@ indexHtml = replaceElementText(indexHtml, 'showingCount', String(activePlans.len
 indexHtml = replaceElementText(indexHtml, 'totalCount', String(activePlans.length));
 
 const defaultSelectedTags = catalogConfig.defaultSelectedTags || [];
+const defaultPlatformStatusMax =
+    catalogConfig.defaultPlatformStatusMax || PlatformCatalog.DEFAULT_PLATFORM_STATUS_MAX || 'limited';
 const platformFilterOpts = {
     selectedLabels: defaultSelectedTags,
-    showDiscontinued: false,
-    showRushPurchase: false,
+    platformStatusMax: defaultPlatformStatusMax,
     derivedTags: catalogConfig.derivedTags || [],
-    operationalTags: catalogConfig.operationalTags || [],
-    showDiscontinuedLabel: catalogConfig.showDiscontinuedTag || '显示停售',
-    showRushPurchaseLabel: catalogConfig.showRushPurchaseTag || '显示需抢购'
+    operationalTags: catalogConfig.operationalTags || []
 };
 const filteredPlatforms = PlatformCatalog.filterPlatforms(allPlatforms, platformFilterOpts);
 const totalVisiblePlatforms = PlatformCatalog.filterPlatforms(allPlatforms, {
@@ -346,7 +345,12 @@ const totalVisiblePlatforms = PlatformCatalog.filterPlatforms(allPlatforms, {
 indexHtml = replaceElementInnerHtml(
     indexHtml,
     'platformTagBar',
-    PlatformCatalog.buildPlatformTagBarHtml(catalogConfig, defaultSelectedTags, false, false)
+    PlatformCatalog.buildPlatformTagBarHtml(catalogConfig, defaultSelectedTags)
+);
+indexHtml = replaceElementInnerHtml(
+    indexHtml,
+    'platformStatusSliderHost',
+    PlatformCatalog.buildPlatformStatusSliderHtml(defaultPlatformStatusMax)
 );
 indexHtml = replaceElementInnerHtml(
     indexHtml,

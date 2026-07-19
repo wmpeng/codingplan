@@ -1487,6 +1487,139 @@
                 center / 10px 10px no-repeat;
         }
 
+        .platform-status-slider-host {
+            margin-top: 4px;
+        }
+
+        .platform-status-slider {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 14px 16px 12px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            background: rgba(255, 251, 245, 0.72);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .platform-status-slider-head {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .platform-status-slider-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            letter-spacing: 0.02em;
+        }
+
+        .platform-status-slider-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f766e;
+        }
+
+        .platform-status-slider-body {
+            position: relative;
+            padding: 6px 4px 0;
+        }
+
+        .platform-status-rail {
+            position: absolute;
+            left: 18px;
+            right: 18px;
+            top: 14px;
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(23, 32, 51, 0.1);
+            pointer-events: none;
+        }
+
+        .platform-status-rail-fill {
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #173753, #0f766e);
+            transition: width 0.2s ease;
+        }
+
+        .platform-status-thumb {
+            position: absolute;
+            top: 50%;
+            width: 16px;
+            height: 16px;
+            margin-left: -8px;
+            margin-top: -8px;
+            border-radius: 50%;
+            background: #fff;
+            border: 3px solid #0f766e;
+            box-shadow: 0 4px 10px rgba(15, 118, 110, 0.25);
+            transition: left 0.2s ease;
+        }
+
+        .platform-status-marks {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 4px;
+        }
+
+        .platform-status-mark {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 0;
+            cursor: pointer;
+            color: var(--text-tertiary);
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .platform-status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid rgba(23, 32, 51, 0.18);
+            background: #fff;
+            transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+        }
+
+        .platform-status-mark.is-included .platform-status-dot {
+            border-color: rgba(15, 118, 110, 0.45);
+            background: rgba(15, 118, 110, 0.12);
+        }
+
+        .platform-status-mark.is-active {
+            color: #0f766e;
+        }
+
+        .platform-status-mark.is-active .platform-status-dot {
+            border-color: #0f766e;
+            background: #0f766e;
+            transform: scale(1.15);
+            box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.12);
+        }
+
+        .platform-status-mark:hover .platform-status-mark-label {
+            color: var(--text-primary);
+        }
+
+        .platform-status-mark:focus-visible {
+            outline: none;
+        }
+
+        .platform-status-mark:focus-visible .platform-status-dot {
+            outline: 2px solid #0f766e;
+            outline-offset: 3px;
+        }
+
         .platform-catalog-toolbar {
             display: flex;
             flex-wrap: wrap;
@@ -1675,14 +1808,19 @@
             white-space: nowrap;
         }
 
-        .platform-rush[data-purchase-mode="rush"] {
-            background: rgba(198, 107, 26, 0.12);
-            color: #c66b1a;
-        }
-
-        .platform-rush[data-purchase-mode="scheduled"] {
+        .platform-rush[data-platform-status="limited"] {
             background: rgba(37, 99, 235, 0.1);
             color: #2563eb;
+        }
+
+        .platform-rush[data-platform-status="paused"] {
+            background: rgba(100, 116, 139, 0.14);
+            color: #475569;
+        }
+
+        .platform-rush[data-platform-status="delisted"] {
+            background: rgba(100, 116, 139, 0.14);
+            color: #64748b;
         }
 
         .platform-dimensions {
@@ -1932,14 +2070,19 @@
             color: #0f766e;
         }
 
-        .platform-detail-rush[data-purchase-mode="rush"] {
-            background: rgba(198, 107, 26, 0.12);
-            color: #c66b1a;
-        }
-
-        .platform-detail-rush[data-purchase-mode="scheduled"] {
+        .platform-detail-rush[data-platform-status="limited"] {
             background: rgba(37, 99, 235, 0.1);
             color: #2563eb;
+        }
+
+        .platform-detail-rush[data-platform-status="paused"] {
+            background: rgba(100, 116, 139, 0.14);
+            color: #475569;
+        }
+
+        .platform-detail-rush[data-platform-status="delisted"] {
+            background: rgba(100, 116, 139, 0.14);
+            color: #64748b;
         }
 
         .platform-detail-status {
@@ -3359,7 +3502,7 @@
             <h1 id="pageTitle">AI Coding 平台推荐</h1>
             <div class="update-date" id="updateDate">更新日期2026.7.15 | 首页改版：平台目录与标签筛选</div>
             <div class="subtitle" id="subtitle">29 家 Coding Plan / Token Plan 平台一站式选型<br>智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek 等，按性价比、稳定性、模型覆盖、使用便捷性对比</div>
-            <div class="models" id="models">首页以「选平台」为主：默认不展示需抢购平台，也可按「性价比高」「模型覆盖广」等维度快速缩小范围；下方套餐表仍保留全量对比。</div>
+            <div class="models" id="models">首页以「选平台」为主：默认显示至「定时放量」，也可按「性价比高」「模型覆盖广」等维度快速缩小范围；下方套餐表仍保留全量对比。</div>
         </div>
 
         <div class="hero-summary hero-summary--lede">
@@ -3514,14 +3657,30 @@
         <section class="platform-catalog" id="platformCatalog" aria-label="平台目录">
             <header class="platform-catalog-header">
                 <h2 class="platform-catalog-title">平台目录</h2>
-                <p class="platform-catalog-subtitle">按标签筛选平台；清空后显示全部在售平台</p>
+                <p class="platform-catalog-subtitle">按标签与平台状态筛选；清空后回到默认「定时放量」</p>
             </header>
-            <div class="platform-tag-bar" id="platformTagBar" role="group" aria-label="平台标签"><div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选"><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="性价比高" aria-pressed="false">性价比高</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="稳定性好" aria-pressed="false">稳定性好</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="模型覆盖广" aria-pressed="false">模型覆盖广</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="使用便捷" aria-pressed="false">使用便捷</button></div><div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签"><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="热门模型" aria-pressed="false">热门模型</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="适合养龙虾" aria-pressed="false">适合养龙虾</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="可支付宝" aria-pressed="false">可支付宝</button></div><span class="platform-tag-sep" aria-hidden="true"></span><div class="platform-tag-group platform-tag-group--toggles" role="group" aria-label="显示开关"><button type="button" class="platform-tag-chip platform-tag-chip--toggle platform-tag-chip--discontinued" data-platform-discontinued="1" aria-pressed="false"><span class="platform-tag-check" aria-hidden="true"></span>显示停售</button><button type="button" class="platform-tag-chip platform-tag-chip--toggle platform-tag-chip--rush" data-platform-show-rush="1" aria-pressed="false"><span class="platform-tag-check" aria-hidden="true"></span>显示需抢购</button></div></div>
+            <div class="platform-tag-bar" id="platformTagBar" role="group" aria-label="平台标签"><div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选"><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="性价比高" aria-pressed="false">性价比高</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="稳定性好" aria-pressed="false">稳定性好</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="模型覆盖广" aria-pressed="false">模型覆盖广</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="使用便捷" aria-pressed="false">使用便捷</button></div><div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签"><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="热门模型" aria-pressed="false">热门模型</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="适合养龙虾" aria-pressed="false">适合养龙虾</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="可支付宝" aria-pressed="false">可支付宝</button></div></div>
+            <div class="platform-status-slider-host" id="platformStatusSliderHost"><div class="platform-status-slider" data-platform-status-max="limited" role="group" aria-label="平台状态"><div class="platform-status-slider-head"><span class="platform-status-slider-title">显示至</span><span class="platform-status-slider-value">定时放量</span></div><div class="platform-status-slider-body"><div class="platform-status-rail" aria-hidden="true"><div class="platform-status-rail-fill" style="width:33.33333333333333%"></div><div class="platform-status-thumb" style="left:33.33333333333333%"></div></div><div class="platform-status-marks"><button type="button" class="platform-status-mark is-included" data-platform-status="open" aria-pressed="false"><span class="platform-status-dot" aria-hidden="true"></span><span class="platform-status-mark-label">开放购买</span></button><button type="button" class="platform-status-mark is-active is-included" data-platform-status="limited" aria-pressed="true"><span class="platform-status-dot" aria-hidden="true"></span><span class="platform-status-mark-label">定时放量</span></button><button type="button" class="platform-status-mark" data-platform-status="paused" aria-pressed="false"><span class="platform-status-dot" aria-hidden="true"></span><span class="platform-status-mark-label">暂时停售</span></button><button type="button" class="platform-status-mark" data-platform-status="delisted" aria-pressed="false"><span class="platform-status-dot" aria-hidden="true"></span><span class="platform-status-mark-label">已下架</span></button></div></div></div></div>
             <div class="platform-catalog-toolbar">
                 <button type="button" class="platform-clear-filters" id="platformClearFilters">清空筛选</button>
-                <span class="platform-catalog-stats">显示 <strong id="platformShowingCount">25</strong> / <strong id="platformTotalCount">25</strong> 个平台</span>
+                <span class="platform-catalog-stats">显示 <strong id="platformShowingCount">27</strong> / <strong id="platformTotalCount">27</strong> 个平台</span>
             </div>
             <div class="platform-card-grid" id="platformCardGrid">
+                <article class="platform-card" data-platform-id="zhipu" tabindex="0" role="button" aria-label="智谱AI 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqzhipu" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">智谱AI</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="platform-rush" data-platform-status="limited">定时放量</span>
+                        </div>
+                        <span class="platform-rating" aria-label="5 星">⭐️⭐️⭐️⭐️⭐️</span>
+                    </header>
+                    
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">GLM Coding Plan 定价适中，模型能力对得起月费，但名额紧俏时性价比感知会打折。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">稳定性</span></div><span class="dim-reason">官方直连服务稳定，高峰期限额紧但很少出现大面积不可用。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型覆盖</span></div><span class="dim-reason">GLM-5.2 代码能力 T0 级别，尤其适合编程场景，是 Opus 平替优选。</span></li><li data-dim="convenience"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">使用便捷性</span></div><span class="dim-reason">需要抢购，目前官方暂停放名额，新用户下单门槛高。</span></li></ul>
+                    <div class="platform-tags" aria-label="标签"><span class="platform-tag">热门模型</span></div>
+                    <div class="platform-models" aria-label="模型"><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5-Turbo</span><span class="model-tag">GLM-5</span></div>
+                    <span class="platform-card-hint">查看详情 <span aria-hidden="true">→</span></span>
+                </article>
+            
                 <article class="platform-card" data-platform-id="zhipu-intl" tabindex="0" role="button" aria-label="智谱国际版 详情">
                     <header>
                         <div class="platform-card-heading">
@@ -3549,6 +3708,21 @@
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">额度依然最高，低难度任务和日常编程助手场景性价比突出。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">稳定性</span></div><span class="dim-reason">常规编程与助手场景稳定，无需抢购，续费体验顺畅。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型覆盖</span></div><span class="dim-reason">支持 MiniMax-M3 及多模态，模型能力均衡不拉胯。</span></li><li data-dim="convenience"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">使用便捷性</span></div><span class="dim-reason">随时可下单，档位丰富，不用蹲点拼手速。</span></li></ul>
                     <div class="platform-tags" aria-label="标签"><span class="platform-tag">适合养龙虾</span><span class="platform-tag">热门模型</span></div>
                     <div class="platform-models" aria-label="模型"><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span></div>
+                    <span class="platform-card-hint">查看详情 <span aria-hidden="true">→</span></span>
+                </article>
+            
+                <article class="platform-card" data-platform-id="bytedance-ark" tabindex="0" role="button" aria-label="字节·方舟 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">字节·方舟</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="platform-rush" data-platform-status="limited">定时放量</span>
+                        </div>
+                        <span class="platform-rating" aria-label="5 星">⭐️⭐️⭐️⭐️⭐️</span>
+                    </header>
+                    
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">2.5 折叠加为期一个月的用量 2.5 倍活动，相当于平时约 10 倍性价比。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">稳定性</span></div><span class="dim-reason">火山引擎大厂背书，服务可靠，但抢购期下单节奏受名额影响。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型覆盖</span></div><span class="dim-reason">唯一同时支持 GLM-5.2、DeepSeek-V4、MiniMax-M3、Kimi-K2.7-Code 的全家桶平台。</span></li><li data-dim="convenience"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">使用便捷性</span></div><span class="dim-reason">当前需抢购，名额不定期放出，不适合急用场景。</span></li></ul>
+                    <div class="platform-tags" aria-label="标签"><span class="platform-tag">热门模型</span></div>
+                    <div class="platform-models" aria-label="模型"><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag model-tag-more">+8</span></div>
                     <span class="platform-card-hint">查看详情 <span aria-hidden="true">→</span></span>
                 </article>
             
@@ -7058,10 +7232,10 @@
     </div>
 
     <script src="monitor/monitor-config.local.js"></script>
-    <script src="scripts/platform-catalog.js?v=260719b"></script>
-    <script src="scripts/platform-detail.js?v=260719b"></script>
+    <script src="scripts/platform-catalog.js?v=260719c"></script>
+    <script src="scripts/platform-detail.js?v=260719c"></script>
     <script src="scripts/shared.js?v=260610"></script>
-        <script src="scripts/homepage.js?v=260719b"></script>
+        <script src="scripts/homepage.js?v=260719c"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
     <script src="scripts/plan-usage-chart.js?v=260617"></script>

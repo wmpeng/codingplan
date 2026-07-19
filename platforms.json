@@ -3,7 +3,6 @@
     "id": "zhipu",
     "name": "智谱AI",
     "rating": 5,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 4,
@@ -25,13 +24,12 @@
     "tags": [
       "热门模型"
     ],
-    "purchaseMode": "rush"
+    "platformStatus": "limited"
   },
   {
     "id": "zhipu-intl",
     "name": "智谱国际版",
     "rating": 4,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 3,
@@ -52,13 +50,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "minimax",
     "name": "MiniMax",
     "rating": 5,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 5,
@@ -82,13 +79,12 @@
       "适合养龙虾",
       "热门模型"
     ],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "bytedance-ark",
     "name": "字节·方舟",
     "rating": 5,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 5,
@@ -110,13 +106,12 @@
     "tags": [
       "热门模型"
     ],
-    "purchaseMode": "rush"
+    "platformStatus": "limited"
   },
   {
     "id": "iflytek",
     "name": "讯飞·星火",
     "rating": 4,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 5,
@@ -136,13 +131,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "opencode",
     "name": "OpenCode",
     "rating": 4,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 5,
@@ -164,13 +158,12 @@
     "tags": [
       "可支付宝"
     ],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "xiaomi-mimo",
     "name": "小米·MiMo",
     "rating": 4,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 4,
@@ -190,13 +183,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "kimi",
     "name": "Kimi",
     "rating": 4,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 3,
@@ -216,13 +208,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "youyun",
     "name": "优云智算",
     "rating": 4,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 4,
@@ -242,13 +233,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "aliyun-bailian",
     "name": "阿里·百炼",
     "rating": 3,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 2,
@@ -268,13 +258,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "baidu-qianfan",
     "name": "百度·千帆",
     "rating": 3,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 3,
@@ -294,13 +283,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "huawei-cloud",
     "name": "华为云",
     "rating": 3,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 2,
@@ -320,13 +308,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "tencent-cloud",
     "name": "腾讯云",
     "rating": 3,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 3,
@@ -346,13 +333,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "jd-cloud",
     "name": "京东云",
     "rating": 3,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 3,
@@ -372,13 +358,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "unicom-cloud",
     "name": "联通云",
     "rating": 3,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 4,
@@ -398,13 +383,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "cmcc-cloud",
     "name": "移动云",
     "rating": 2,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 3,
@@ -424,13 +408,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "stepfun",
     "name": "阶跃星辰",
     "rating": 3,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 3,
@@ -450,13 +433,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "sensetime",
     "name": "商汤·日日新",
     "rating": 2,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 3,
@@ -476,13 +458,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "chaosuan",
     "name": "超算",
     "rating": 2,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 4,
@@ -502,13 +483,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "ollama",
     "name": "Ollama",
     "rating": 3,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 4,
@@ -528,13 +508,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "taotoken",
     "name": "TaoToken",
     "rating": 3,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 3,
@@ -554,13 +533,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "moorethreads",
     "name": "摩尔线程",
     "rating": 2,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 2,
@@ -580,13 +558,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "claude",
     "name": "Claude",
     "rating": 4,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 2,
@@ -606,13 +583,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "codex",
     "name": "Codex",
     "rating": 4,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 2,
@@ -632,13 +608,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "github",
     "name": "GitHub",
     "rating": 4,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 3,
@@ -658,13 +633,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "deepseek-flash",
     "name": "DeepSeek Flash",
     "rating": 4,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 4,
@@ -684,13 +658,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "deepseek-pro",
     "name": "DeepSeek Pro",
     "rating": 5,
-    "status": "active",
     "dimensions": {
       "value": {
         "score": 4,
@@ -710,13 +683,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "open"
   },
   {
     "id": "ctyun",
     "name": "天翼云",
     "rating": 1,
-    "status": "discontinued",
     "dimensions": {
       "value": {
         "score": 2,
@@ -736,13 +708,12 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "delisted"
   },
   {
     "id": "infrafun",
     "name": "无问芯穹",
     "rating": 1,
-    "status": "discontinued",
     "dimensions": {
       "value": {
         "score": 2,
@@ -762,6 +733,6 @@
       }
     },
     "tags": [],
-    "purchaseMode": "anytime"
+    "platformStatus": "delisted"
   }
 ]

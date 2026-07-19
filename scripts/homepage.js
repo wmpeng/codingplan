@@ -14,8 +14,7 @@
         let filteredPlans = [];
         let allPlatforms = [];
         let platformSelectedLabels = [];
-        let platformShowDiscontinued = false;
-        let platformShowRushPurchase = false;
+        let platformStatusMax = 'limited';
         let currentSort = { column: null, direction: 'asc' };
         // 已确认的选择
         let selectedVendors = new Set();
@@ -1502,7 +1501,7 @@
                         title: "AI Coding 平台推荐",
                         updateDate: "更新日期2026.7.15 | 首页改版：平台目录与标签筛选",
                         subtitle: "29 家 Coding Plan / Token Plan 平台一站式选型\n智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek 等，按性价比、稳定性、模型覆盖、使用便捷性对比",
-                        models: "首页以「选平台」为主：默认不展示需抢购平台，也可按「性价比高」「模型覆盖广」等维度快速缩小范围；下方套餐表仍保留全量对比。",
+                        models: "首页以「选平台」为主：默认显示至「定时放量」，也可按「性价比高」「模型覆盖广」等维度快速缩小范围；下方套餐表仍保留全量对比。",
                         watermarkUrl: "www.codingplan.fyi",
                         entry: {
                             url: "https://github.com/wmpeng/codingplan/discussions",
@@ -1512,8 +1511,7 @@
                     platformCatalog: {
                         defaultSelectedTags: [],
                         operationalTags: ["热门模型", "适合养龙虾", "可支付宝"],
-                        showDiscontinuedTag: "显示停售",
-                        showRushPurchaseTag: "显示需抢购",
+                        defaultPlatformStatusMax: "limited",
                         derivedTags: [
                             { id: "high-value", label: "性价比高", rule: { dimension: "value", minScore: 4 } },
                             { id: "stable", label: "稳定性好", rule: { dimension: "stability", minScore: 4 } },
@@ -1973,10 +1971,21 @@
             return appConfig.platformCatalog || {
                 defaultSelectedTags: [],
                 operationalTags: [],
-                showDiscontinuedTag: '显示停售',
-                showRushPurchaseTag: '显示需抢购',
+                defaultPlatformStatusMax: 'limited',
                 derivedTags: []
             };
+        }
+
+        function getDefaultPlatformStatusMax() {
+            const cat = getPlatformCatalogConfig();
+            const fallback =
+                typeof PlatformCatalog !== 'undefined' && PlatformCatalog.DEFAULT_PLATFORM_STATUS_MAX
+                    ? PlatformCatalog.DEFAULT_PLATFORM_STATUS_MAX
+                    : 'limited';
+            const value = cat.defaultPlatformStatusMax || fallback;
+            return typeof PlatformCatalog !== 'undefined' && PlatformCatalog.normalizePlatformStatus
+                ? PlatformCatalog.normalizePlatformStatus(value)
+                : value;
         }
 
         async function loadPlatforms() {
@@ -2008,12 +2017,7 @@
 
             const cat = getPlatformCatalogConfig();
             if (typeof PlatformCatalog !== 'undefined' && PlatformCatalog.buildPlatformTagBarHtml) {
-                bar.innerHTML = PlatformCatalog.buildPlatformTagBarHtml(
-                    cat,
-                    platformSelectedLabels,
-                    platformShowDiscontinued,
-                    platformShowRushPurchase
-                );
+                bar.innerHTML = PlatformCatalog.buildPlatformTagBarHtml(cat, platformSelectedLabels);
             } else {
                 bar.innerHTML = '';
             }
@@ -2023,19 +2027,22 @@
                     togglePlatformTag(btn.getAttribute('data-platform-tag'));
                 });
             });
+        }
 
-            bar.querySelectorAll('[data-platform-discontinued]').forEach((btn) => {
+        function renderPlatformStatusSlider() {
+            const host = document.getElementById('platformStatusSliderHost');
+            if (!host) return;
+            if (typeof PlatformCatalog === 'undefined' || !PlatformCatalog.buildPlatformStatusSliderHtml) {
+                host.innerHTML = '';
+                return;
+            }
+            host.innerHTML = PlatformCatalog.buildPlatformStatusSliderHtml(platformStatusMax);
+            host.querySelectorAll('[data-platform-status]').forEach((btn) => {
                 btn.addEventListener('click', () => {
-                    platformShowDiscontinued = !platformShowDiscontinued;
-                    renderPlatformTagBar();
-                    applyPlatformFilters();
-                });
-            });
-
-            bar.querySelectorAll('[data-platform-show-rush]').forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    platformShowRushPurchase = !platformShowRushPurchase;
-                    renderPlatformTagBar();
+                    platformStatusMax = PlatformCatalog.normalizePlatformStatus(
+                        btn.getAttribute('data-platform-status')
+                    );
+                    renderPlatformStatusSlider();
                     applyPlatformFilters();
                 });
             });
@@ -2056,12 +2063,9 @@
 
             const filterOpts = {
                 selectedLabels: platformSelectedLabels,
-                showDiscontinued: platformShowDiscontinued,
-                showRushPurchase: platformShowRushPurchase,
+                platformStatusMax,
                 derivedTags: cat.derivedTags || [],
-                operationalTags: cat.operationalTags || [],
-                showDiscontinuedLabel: cat.showDiscontinuedTag,
-                showRushPurchaseLabel: cat.showRushPurchaseTag
+                operationalTags: cat.operationalTags || []
             };
 
             const filtered = PlatformCatalog.filterPlatforms(allPlatforms, filterOpts);
@@ -2090,8 +2094,7 @@
 
             sessionStorage.setItem('platformCatalogSelection', JSON.stringify({
                 labels: platformSelectedLabels,
-                showDiscontinued: platformShowDiscontinued,
-                showRushPurchase: platformShowRushPurchase
+                platformStatusMax
             }));
 
             if (typeof PlatformDetail !== 'undefined' && PlatformDetail.isOpen()) {
@@ -2103,16 +2106,14 @@
 
         function clearPlatformFilters() {
             platformSelectedLabels = [];
-            platformShowDiscontinued = false;
-            platformShowRushPurchase = false;
-            // 写入空选择，刷新后保持清空；仅首次无 storage key 时才用 defaultSelectedTags
+            platformStatusMax = getDefaultPlatformStatusMax();
             sessionStorage.setItem('platformCatalogSelection', JSON.stringify({
                 labels: [],
-                showDiscontinued: false,
-                showRushPurchase: false
+                platformStatusMax
             }));
             applyPlatformFilters();
             renderPlatformTagBar();
+            renderPlatformStatusSlider();
         }
 
         function togglePlansTableSection() {
@@ -2147,26 +2148,34 @@
 
         function initPlatformCatalog() {
             const cat = getPlatformCatalogConfig();
+            const defaultMax = getDefaultPlatformStatusMax();
             const stored = sessionStorage.getItem('platformCatalogSelection');
             if (stored) {
                 try {
                     const parsed = JSON.parse(stored);
                     const rawLabels = Array.isArray(parsed.labels) ? parsed.labels : [];
                     platformSelectedLabels = rawLabels.filter((label) => label !== '无需抢购');
-                    platformShowDiscontinued = !!parsed.showDiscontinued;
-                    platformShowRushPurchase = !!parsed.showRushPurchase;
+                    if (parsed.platformStatusMax) {
+                        platformStatusMax = PlatformCatalog.normalizePlatformStatus(parsed.platformStatusMax);
+                    } else if (parsed.showRushPurchase || parsed.showDiscontinued) {
+                        // 旧 session：两个开关 → 映射到新滑块档位
+                        platformStatusMax = parsed.showDiscontinued
+                            ? 'delisted'
+                            : (parsed.showRushPurchase ? 'limited' : 'open');
+                    } else {
+                        platformStatusMax = defaultMax;
+                    }
                 } catch (_) {
                     platformSelectedLabels = [...(cat.defaultSelectedTags || [])];
-                    platformShowDiscontinued = false;
-                    platformShowRushPurchase = false;
+                    platformStatusMax = defaultMax;
                 }
             } else {
                 platformSelectedLabels = [...(cat.defaultSelectedTags || [])];
-                platformShowDiscontinued = false;
-                platformShowRushPurchase = false;
+                platformStatusMax = defaultMax;
             }
 
             renderPlatformTagBar();
+            renderPlatformStatusSlider();
             applyPlatformFilters();
 
             const clearBtn = document.getElementById('platformClearFilters');

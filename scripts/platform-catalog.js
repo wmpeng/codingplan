@@ -7,12 +7,14 @@ const PLATFORM_DIMENSION_META = [
   { key: 'convenience', label: '使用便捷性' }
 ];
 
-const PURCHASE_MODES = ['anytime', 'scheduled', 'rush'];
-const PURCHASE_MODE_LABELS = {
-  anytime: '随时购买',
-  scheduled: '定时购买',
-  rush: '需要抢购'
+const PLATFORM_STATUSES = ['open', 'limited', 'paused', 'delisted'];
+const PLATFORM_STATUS_LABELS = {
+  open: '开放购买',
+  limited: '定时放量',
+  paused: '暂时停售',
+  delisted: '已下架'
 };
+const DEFAULT_PLATFORM_STATUS_MAX = 'limited';
 
 function escapeHtml(text) {
   if (text === null || text === undefined) return '';
@@ -23,18 +25,23 @@ function escapeHtml(text) {
     .replace(/"/g, '&quot;');
 }
 
-function normalizePurchaseMode(value) {
-  if (PURCHASE_MODES.includes(value)) return value;
-  return 'anytime';
+function normalizePlatformStatus(value) {
+  if (PLATFORM_STATUSES.includes(value)) return value;
+  return 'open';
 }
 
-function purchaseModeLabel(mode) {
-  return PURCHASE_MODE_LABELS[normalizePurchaseMode(mode)] || PURCHASE_MODE_LABELS.anytime;
+function platformStatusRank(value) {
+  const idx = PLATFORM_STATUSES.indexOf(normalizePlatformStatus(value));
+  return idx < 0 ? 0 : idx;
+}
+
+function platformStatusLabel(value) {
+  return PLATFORM_STATUS_LABELS[normalizePlatformStatus(value)] || PLATFORM_STATUS_LABELS.open;
 }
 
 function matchesDerivedTag(platform, rule) {
-  if (rule.purchaseMode !== undefined) {
-    if (normalizePurchaseMode(platform.purchaseMode) !== rule.purchaseMode) {
+  if (rule.platformStatus !== undefined) {
+    if (normalizePlatformStatus(platform.platformStatus) !== rule.platformStatus) {
       return false;
     }
   }
@@ -53,22 +60,13 @@ function matchesOperationalTag(platform, label) {
 
 function filterPlatforms(platforms, {
   selectedLabels,
-  showDiscontinued,
-  showRushPurchase,
+  platformStatusMax,
   derivedTags,
-  operationalTags,
-  showDiscontinuedLabel,
-  showRushPurchaseLabel
+  operationalTags
 }) {
   let result = platforms;
-
-  if (!showDiscontinued) {
-    result = result.filter(p => p.status !== 'discontinued');
-  }
-
-  if (!showRushPurchase) {
-    result = result.filter(p => normalizePurchaseMode(p.purchaseMode) !== 'rush');
-  }
+  const maxRank = platformStatusRank(platformStatusMax ?? DEFAULT_PLATFORM_STATUS_MAX);
+  result = result.filter(p => platformStatusRank(p.platformStatus) <= maxRank);
 
   if (!selectedLabels || selectedLabels.length === 0) {
     return result;
@@ -78,10 +76,6 @@ function filterPlatforms(platforms, {
 
   return result.filter(platform => {
     for (const label of selectedLabels) {
-      if (label === showDiscontinuedLabel || label === showRushPurchaseLabel) {
-        continue;
-      }
-
       const derived = derivedByLabel.get(label);
       if (derived) {
         if (!matchesDerivedTag(platform, derived.rule)) {
@@ -163,12 +157,8 @@ function validatePlatformRecords(platforms, plans) {
   for (const platform of platforms) {
     const prefix = `Platform "${platform.name}"`;
 
-    if (platform.status !== 'active' && platform.status !== 'discontinued') {
-      errors.push(`${prefix}: invalid status "${platform.status}"`);
-    }
-
-    if (!PURCHASE_MODES.includes(platform.purchaseMode)) {
-      errors.push(`${prefix}: purchaseMode must be one of ${PURCHASE_MODES.join(', ')}`);
+    if (!PLATFORM_STATUSES.includes(platform.platformStatus)) {
+      errors.push(`${prefix}: platformStatus must be one of ${PLATFORM_STATUSES.join(', ')}`);
     }
 
     if (platform.tags !== undefined && !Array.isArray(platform.tags)) {
@@ -200,7 +190,7 @@ function validatePlatformRecords(platforms, plans) {
   return { ok: errors.length === 0, errors };
 }
 
-function buildPlatformTagBarHtml(catalogConfig, selectedLabels, showDiscontinued, showRushPurchase) {
+function buildPlatformTagBarHtml(catalogConfig, selectedLabels) {
   const cat = catalogConfig || {};
   const selected = selectedLabels || [];
   const parts = [];
@@ -228,27 +218,40 @@ function buildPlatformTagBarHtml(catalogConfig, selectedLabels, showDiscontinued
     parts.push(`<div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签">${operationalChips.join('')}</div>`);
   }
 
-  const toggleChips = [];
-  const discLabel = cat.showDiscontinuedTag || '显示停售';
-  const discActive = !!showDiscontinued;
-  toggleChips.push(
-    `<button type="button" class="platform-tag-chip platform-tag-chip--toggle platform-tag-chip--discontinued${discActive ? ' is-active' : ''}" data-platform-discontinued="1" aria-pressed="${discActive ? 'true' : 'false'}"><span class="platform-tag-check" aria-hidden="true"></span>${escapeHtml(discLabel)}</button>`
-  );
-
-  const rushLabel = cat.showRushPurchaseTag || '显示需抢购';
-  const rushActive = !!showRushPurchase;
-  toggleChips.push(
-    `<button type="button" class="platform-tag-chip platform-tag-chip--toggle platform-tag-chip--rush${rushActive ? ' is-active' : ''}" data-platform-show-rush="1" aria-pressed="${rushActive ? 'true' : 'false'}"><span class="platform-tag-check" aria-hidden="true"></span>${escapeHtml(rushLabel)}</button>`
-  );
-
-  if (toggleChips.length) {
-    if (derivedChips.length || operationalChips.length) {
-      parts.push('<span class="platform-tag-sep" aria-hidden="true"></span>');
-    }
-    parts.push(`<div class="platform-tag-group platform-tag-group--toggles" role="group" aria-label="显示开关">${toggleChips.join('')}</div>`);
-  }
-
   return parts.join('');
+}
+
+function buildPlatformStatusSliderHtml(platformStatusMax) {
+  const max = normalizePlatformStatus(platformStatusMax ?? DEFAULT_PLATFORM_STATUS_MAX);
+  const maxRank = platformStatusRank(max);
+  const marks = PLATFORM_STATUSES.map((status, rank) => {
+    const active = rank === maxRank;
+    const included = rank <= maxRank;
+    return (
+      `<button type="button" class="platform-status-mark${active ? ' is-active' : ''}${included ? ' is-included' : ''}" data-platform-status="${status}" aria-pressed="${active ? 'true' : 'false'}">` +
+      `<span class="platform-status-dot" aria-hidden="true"></span>` +
+      `<span class="platform-status-mark-label">${escapeHtml(PLATFORM_STATUS_LABELS[status])}</span>` +
+      `</button>`
+    );
+  }).join('');
+
+  const fillPct = PLATFORM_STATUSES.length <= 1 ? 0 : (maxRank / (PLATFORM_STATUSES.length - 1)) * 100;
+
+  return (
+    `<div class="platform-status-slider" data-platform-status-max="${max}" role="group" aria-label="平台状态">` +
+    `<div class="platform-status-slider-head">` +
+    `<span class="platform-status-slider-title">显示至</span>` +
+    `<span class="platform-status-slider-value">${escapeHtml(platformStatusLabel(max))}</span>` +
+    `</div>` +
+    `<div class="platform-status-slider-body">` +
+    `<div class="platform-status-rail" aria-hidden="true">` +
+    `<div class="platform-status-rail-fill" style="width:${fillPct}%"></div>` +
+    `<div class="platform-status-thumb" style="left:${fillPct}%"></div>` +
+    `</div>` +
+    `<div class="platform-status-marks">${marks}</div>` +
+    `</div>` +
+    `</div>`
+  );
 }
 
 const EXTERNAL_LINK_ICON =
@@ -269,11 +272,11 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     ? `<p class="platform-summary">${escapeHtml(platform.summary)}</p>`
     : '';
 
-  const purchaseMode = normalizePurchaseMode(platform.purchaseMode);
-  const rushHtml =
-    purchaseMode === 'anytime'
+  const status = normalizePlatformStatus(platform.platformStatus);
+  const statusHtml =
+    status === 'open'
       ? ''
-      : `<span class="platform-rush" data-purchase-mode="${purchaseMode}">${escapeHtml(purchaseModeLabel(purchaseMode))}</span>`;
+      : `<span class="platform-rush" data-platform-status="${status}">${escapeHtml(platformStatusLabel(status))}</span>`;
 
   const dimsHtml = PLATFORM_DIMENSION_META.map(({ key, label }) => {
     const dim = (platform.dimensions && platform.dimensions[key]) || {};
@@ -298,14 +301,14 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     ? `<div class="platform-models" aria-label="模型">${shownModels.map((model) => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}${extraModels > 0 ? `<span class="model-tag model-tag-more">+${extraModels}</span>` : ''}</div>`
     : '';
 
-  const discontinuedClass = platform.status === 'discontinued' ? ' is-discontinued' : '';
+  const discontinuedClass = status === 'delisted' ? ' is-discontinued' : '';
 
   return `
                 <article class="platform-card${discontinuedClass}" data-platform-id="${escapeHtml(platform.id || '')}" tabindex="0" role="button" aria-label="${name} 详情">
                     <header>
                         <div class="platform-card-heading">
                             ${nameHtml}
-                            ${rushHtml}
+                            ${statusHtml}
                         </div>
                         <span class="platform-rating" aria-label="${rating} 星">${stars}</span>
                     </header>
@@ -321,11 +324,13 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
 const PlatformCatalog = {
   DIMENSION_KEYS,
   PLATFORM_DIMENSION_META,
-  PURCHASE_MODES,
-  PURCHASE_MODE_LABELS,
+  PLATFORM_STATUSES,
+  PLATFORM_STATUS_LABELS,
+  DEFAULT_PLATFORM_STATUS_MAX,
   escapeHtml,
-  normalizePurchaseMode,
-  purchaseModeLabel,
+  normalizePlatformStatus,
+  platformStatusRank,
+  platformStatusLabel,
   matchesDerivedTag,
   matchesOperationalTag,
   filterPlatforms,
@@ -336,6 +341,7 @@ const PlatformCatalog = {
   resolvePlatformAction,
   validatePlatformRecords,
   buildPlatformTagBarHtml,
+  buildPlatformStatusSliderHtml,
   buildPlatformCardHtml
 };
 
