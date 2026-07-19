@@ -123,6 +123,30 @@
       ]
     },
     {
+      "title": "包含 Kimi-3",
+      "subtitle": "国内首家支持 Kimi-K3 满血版",
+      "items": [
+        {
+          "name": "字节·方舟",
+          "rating": 5,
+          "reasons": [
+            "Coding Plan / Token Plan 全档位支持 Kimi-K3。",
+            "同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。",
+            "Coding Plan 当前需抢购；Token Plan 现货。"
+          ]
+        },
+        {
+          "name": "Kimi",
+          "rating": 4,
+          "reasons": [
+            "Coding Plan 全档位（Andante/Moderato/Allegretto/Allegro）支持 Kimi-K3。",
+            "官方原生平台，模型体验最稳。",
+            "月之暗面直营，无需第三方中转。"
+          ]
+        }
+      ]
+    },
+    {
       "title": "包含 GLM-5.2",
       "subtitle": "前几个不用抢，后几个得抢",
       "items": [

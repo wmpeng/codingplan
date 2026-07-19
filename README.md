@@ -61,6 +61,19 @@ DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 C
 3. [小米·MiMo](https://api.dreamfree.space/c/s/cpyqmimo) ⭐️⭐️⭐️⭐️
     - Mimo-V2.5-Pro方面能力均衡，可作为DeepSeek的平替，价格和DeepSeek一致。
 
+### 包含 Kimi-3
+
+国内首家支持 Kimi-K3 满血版
+
+1. [字节·方舟](https://api.dreamfree.space/c/s/cpyqfangzhou) ⭐️⭐️⭐️⭐️⭐️
+    - Coding Plan / Token Plan 全档位支持 Kimi-K3。
+    - 同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。
+    - Coding Plan 当前需抢购；Token Plan 现货。
+2. [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) ⭐️⭐️⭐️⭐️
+    - Coding Plan 全档位（Andante/Moderato/Allegretto/Allegro）支持 Kimi-K3。
+    - 官方原生平台，模型体验最稳。
+    - 月之暗面直营，无需第三方中转。
+
 ### 包含 GLM-5.2
 
 前几个不用抢，后几个得抢
