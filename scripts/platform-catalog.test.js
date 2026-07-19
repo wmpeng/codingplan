@@ -292,7 +292,11 @@ describe('buildPlatformStatusSliderHtml', () => {
     assert.match(html, />定时放量</);
     assert.match(html, />暂时停售</);
     assert.match(html, />所有</);
+    assert.match(html, /platform-status-seg is-active" data-platform-status="open"/);
     assert.match(html, /platform-status-seg is-active" data-platform-status="limited"/);
+    assert.match(html, /platform-status-and" aria-hidden="true">和</);
+    assert.doesNotMatch(html, /platform-status-seg is-active" data-platform-status="paused"/);
+    assert.doesNotMatch(html, /platform-status-seg is-active" data-platform-status="delisted"/);
   });
 
   it('uses 仅显示 prefix only when open is selected', () => {
@@ -300,10 +304,28 @@ describe('buildPlatformStatusSliderHtml', () => {
     assert.match(openHtml, /platform-status-prefix">仅显示</);
     assert.match(openHtml, /title="仅显示开放购买平台"/);
     assert.match(openHtml, /title="显示定时放量平台"/);
+    assert.match(openHtml, /platform-status-seg is-active" data-platform-status="open"/);
+    assert.doesNotMatch(openHtml, /platform-status-and/);
+    assert.doesNotMatch(openHtml, /platform-status-seg is-active" data-platform-status="limited"/);
 
     const allHtml = buildPlatformStatusSliderHtml('delisted');
     assert.match(allHtml, /platform-status-prefix">显示</);
     assert.match(allHtml, /title="显示所有平台"/);
+    assert.match(allHtml, /platform-status-seg is-active" data-platform-status="delisted"/);
+    assert.doesNotMatch(allHtml, /platform-status-seg is-active" data-platform-status="open"/);
+    assert.doesNotMatch(allHtml, /platform-status-and/);
+  });
+
+  it('highlights cumulative statuses with 和 until paused; 所有 is exclusive', () => {
+    const pausedHtml = buildPlatformStatusSliderHtml('paused');
+    assert.match(pausedHtml, /platform-status-seg is-active" data-platform-status="open"/);
+    assert.match(pausedHtml, /platform-status-seg is-active" data-platform-status="limited"/);
+    assert.match(pausedHtml, /platform-status-seg is-active" data-platform-status="paused"/);
+    assert.equal((pausedHtml.match(/platform-status-and/g) || []).length, 2);
+    assert.match(pausedHtml, /aria-label="显示开放购买和定时放量和暂时停售平台"/);
+
+    const limitedHtml = buildPlatformStatusSliderHtml('limited');
+    assert.match(limitedHtml, /aria-label="显示开放购买和定时放量平台"/);
   });
 });
 

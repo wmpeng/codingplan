@@ -52,7 +52,6 @@ function platformStatusSegmentLabel(value) {
   return PLATFORM_STATUS_SEGMENT_LABELS[status] || PLATFORM_STATUS_SEGMENT_LABELS.open;
 }
 
-/** 仅「开放购买」用「仅显示」，其余档位用「显示」 */
 function platformStatusFilterPrefix(value) {
   return normalizePlatformStatus(value) === 'open' ? '仅显示' : '显示';
 }
@@ -60,6 +59,26 @@ function platformStatusFilterPrefix(value) {
 function platformStatusFilterLabel(value) {
   const status = normalizePlatformStatus(value);
   return `${platformStatusFilterPrefix(status)}${platformStatusSegmentLabel(status)}${PLATFORM_STATUS_FILTER_SUFFIX}`;
+}
+
+/** 当前档位的累计高亮：除「所有」外，高亮 max 及更开放的档；「所有」只高亮自身 */
+function isPlatformStatusSegmentActive(status, maxStatus) {
+  const max = normalizePlatformStatus(maxStatus);
+  const current = normalizePlatformStatus(status);
+  if (max === 'delisted') return current === 'delisted';
+  return platformStatusRank(current) <= platformStatusRank(max);
+}
+
+/** 读出当前筛选：如「显示开放购买和定时放量平台」 */
+function platformStatusFilterPhrase(maxStatus) {
+  const max = normalizePlatformStatus(maxStatus);
+  if (max === 'delisted') {
+    return `${platformStatusFilterPrefix(max)}${platformStatusSegmentLabel(max)}${PLATFORM_STATUS_FILTER_SUFFIX}`;
+  }
+  const labels = PLATFORM_STATUSES
+    .filter((status) => isPlatformStatusSegmentActive(status, max))
+    .map((status) => platformStatusSegmentLabel(status));
+  return `${platformStatusFilterPrefix(max)}${labels.join('和')}${PLATFORM_STATUS_FILTER_SUFFIX}`;
 }
 
 function matchesDerivedTag(platform, rule) {
@@ -250,22 +269,30 @@ function buildPlatformTagBarHtml(catalogConfig, selectedLabels, platformStatusMa
 
 function buildPlatformStatusSliderHtml(platformStatusMax) {
   const max = normalizePlatformStatus(platformStatusMax ?? DEFAULT_PLATFORM_STATUS_MAX);
-  const maxRank = platformStatusRank(max);
-  const segments = PLATFORM_STATUSES.map((status, rank) => {
-    const active = rank === maxRank;
+  const parts = [];
+  PLATFORM_STATUSES.forEach((status, rank) => {
+    const active = isPlatformStatusSegmentActive(status, max);
     const segmentLabel = platformStatusSegmentLabel(status);
     const fullLabel = platformStatusFilterLabel(status);
-    return (
+    parts.push(
       `<button type="button" class="platform-status-seg${active ? ' is-active' : ''}" data-platform-status="${status}" aria-pressed="${active ? 'true' : 'false'}" title="${escapeHtml(fullLabel)}">` +
       `${escapeHtml(segmentLabel)}` +
       `</button>`
     );
-  }).join('');
+    const next = PLATFORM_STATUSES[rank + 1];
+    if (
+      next &&
+      isPlatformStatusSegmentActive(status, max) &&
+      isPlatformStatusSegmentActive(next, max)
+    ) {
+      parts.push('<span class="platform-status-and" aria-hidden="true">和</span>');
+    }
+  });
 
   return (
-    `<div class="platform-status-slider" data-platform-status-max="${max}" role="group" aria-label="平台状态筛选">` +
+    `<div class="platform-status-slider" data-platform-status-max="${max}" role="group" aria-label="${escapeHtml(platformStatusFilterPhrase(max))}">` +
     `<span class="platform-status-prefix">${escapeHtml(platformStatusFilterPrefix(max))}</span>` +
-    `<div class="platform-status-segments" tabindex="0">${segments}</div>` +
+    `<div class="platform-status-segments" tabindex="0">${parts.join('')}</div>` +
     `<span class="platform-status-suffix">${escapeHtml(PLATFORM_STATUS_FILTER_SUFFIX)}</span>` +
     `</div>`
   );
@@ -353,6 +380,8 @@ const PlatformCatalog = {
   platformStatusSegmentLabel,
   platformStatusFilterPrefix,
   platformStatusFilterLabel,
+  isPlatformStatusSegmentActive,
+  platformStatusFilterPhrase,
   matchesDerivedTag,
   matchesOperationalTag,
   filterPlatforms,
