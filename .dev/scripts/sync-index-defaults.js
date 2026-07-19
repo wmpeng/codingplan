@@ -302,26 +302,26 @@ if (header.entry) {
 
 indexHtml = replaceSection(
     indexHtml,
-    /(<div class="recommendation-groups" id="recommendationGroups">)[\s\S]*?(<\/div>\r\n\r\n        <!-- 平台目录)/,
+    /(<div class="recommendation-groups" id="recommendationGroups">)[\s\S]*?(<\/div>\r?\n\r?\n        <!-- 平台目录)/,
     generateRecommendationGroupsHtml(config.recommendationGroups)
 );
 
 indexHtml = replaceSection(
     indexHtml,
-    /(<div class="notes-section" id="notesSection">)[\s\S]*?(<\/div>\r\n\r\n        <!-- 更新日志（与 config\.json 同步） -->)/,
+    /(<div class="notes-section" id="notesSection">)[\s\S]*?(<\/div>\r?\n\r?\n        <!-- 更新日志（与 config\.json 同步） -->)/,
     generateNotesHtml(config.notes)
 );
 
 indexHtml = replaceSection(
     indexHtml,
-    /(<div class="updates-section" id="updatesSection">)[\s\S]*?(<\/div>\r\n\r\n        <!-- 账号出售区域)/,
+    /(<div class="updates-section" id="updatesSection">)[\s\S]*?(<\/div>\r?\n\r?\n        <!-- 账号出售区域)/,
     generateUpdatesHtml(config.updates)
 );
 
 indexHtml = replaceSection(
     indexHtml,
     /(<tbody id="tableBody">)[\s\S]*?(<\/tbody>)/,
-    `\r\n${generateTableRowsHtml(activePlans)}\r\n                    `
+    `\n${generateTableRowsHtml(activePlans)}\n                    `
 );
 
 indexHtml = replaceElementText(indexHtml, 'showingCount', String(activePlans.length));
@@ -331,9 +331,11 @@ const defaultSelectedTags = catalogConfig.defaultSelectedTags || [];
 const platformFilterOpts = {
     selectedLabels: defaultSelectedTags,
     showDiscontinued: false,
+    showRushPurchase: false,
     derivedTags: catalogConfig.derivedTags || [],
     operationalTags: catalogConfig.operationalTags || [],
-    showDiscontinuedLabel: catalogConfig.showDiscontinuedTag || '显示停售'
+    showDiscontinuedLabel: catalogConfig.showDiscontinuedTag || '显示停售',
+    showRushPurchaseLabel: catalogConfig.showRushPurchaseTag || '显示需抢购'
 };
 const filteredPlatforms = PlatformCatalog.filterPlatforms(allPlatforms, platformFilterOpts);
 const totalVisiblePlatforms = PlatformCatalog.filterPlatforms(allPlatforms, {
@@ -344,7 +346,7 @@ const totalVisiblePlatforms = PlatformCatalog.filterPlatforms(allPlatforms, {
 indexHtml = replaceElementInnerHtml(
     indexHtml,
     'platformTagBar',
-    PlatformCatalog.buildPlatformTagBarHtml(catalogConfig, defaultSelectedTags, false)
+    PlatformCatalog.buildPlatformTagBarHtml(catalogConfig, defaultSelectedTags, false, false)
 );
 indexHtml = replaceElementInnerHtml(
     indexHtml,

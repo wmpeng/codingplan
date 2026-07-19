@@ -15,6 +15,7 @@
         let allPlatforms = [];
         let platformSelectedLabels = [];
         let platformShowDiscontinued = false;
+        let platformShowRushPurchase = false;
         let currentSort = { column: null, direction: 'asc' };
         // 已确认的选择
         let selectedVendors = new Set();
@@ -1501,7 +1502,7 @@
                         title: "AI Coding 平台推荐",
                         updateDate: "更新日期2026.7.15 | 首页改版：平台目录与标签筛选",
                         subtitle: "29 家 Coding Plan / Token Plan 平台一站式选型\n智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek 等，按性价比、稳定性、模型覆盖、使用便捷性对比",
-                        models: "首页以「选平台」为主：目录标签默认筛选「无需抢购」，也可按「性价比高」「模型覆盖广」等维度快速缩小范围；下方套餐表仍保留全量对比。",
+                        models: "首页以「选平台」为主：默认不展示需抢购平台，也可按「性价比高」「模型覆盖广」等维度快速缩小范围；下方套餐表仍保留全量对比。",
                         watermarkUrl: "www.codingplan.fyi",
                         entry: {
                             url: "https://github.com/wmpeng/codingplan/discussions",
@@ -1509,11 +1510,11 @@
                         }
                     },
                     platformCatalog: {
-                        defaultSelectedTags: ["无需抢购"],
+                        defaultSelectedTags: [],
                         operationalTags: ["热门模型", "适合养龙虾", "可支付宝"],
                         showDiscontinuedTag: "显示停售",
+                        showRushPurchaseTag: "显示需抢购",
                         derivedTags: [
-                            { id: "no-rush", label: "无需抢购", rule: { purchaseRush: false } },
                             { id: "high-value", label: "性价比高", rule: { dimension: "value", minScore: 4 } },
                             { id: "stable", label: "稳定性好", rule: { dimension: "stability", minScore: 4 } },
                             { id: "broad-models", label: "模型覆盖广", rule: { dimension: "models", minScore: 4 } },
@@ -1973,6 +1974,7 @@
                 defaultSelectedTags: [],
                 operationalTags: [],
                 showDiscontinuedTag: '显示停售',
+                showRushPurchaseTag: '显示需抢购',
                 derivedTags: []
             };
         }
@@ -2028,6 +2030,12 @@
                 `<button type="button" class="platform-tag-chip platform-tag-chip--discontinued${discActive ? ' is-active' : ''}" data-platform-discontinued="1" aria-pressed="${discActive ? 'true' : 'false'}">${escapeHtml(discLabel)}</button>`
             );
 
+            const rushLabel = cat.showRushPurchaseTag || '显示需抢购';
+            const rushActive = platformShowRushPurchase;
+            chips.push(
+                `<button type="button" class="platform-tag-chip platform-tag-chip--rush${rushActive ? ' is-active' : ''}" data-platform-show-rush="1" aria-pressed="${rushActive ? 'true' : 'false'}">${escapeHtml(rushLabel)}</button>`
+            );
+
             bar.innerHTML = chips.join('');
 
             bar.querySelectorAll('[data-platform-tag]').forEach((btn) => {
@@ -2039,6 +2047,14 @@
             bar.querySelectorAll('[data-platform-discontinued]').forEach((btn) => {
                 btn.addEventListener('click', () => {
                     platformShowDiscontinued = !platformShowDiscontinued;
+                    renderPlatformTagBar();
+                    applyPlatformFilters();
+                });
+            });
+
+            bar.querySelectorAll('[data-platform-show-rush]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    platformShowRushPurchase = !platformShowRushPurchase;
                     renderPlatformTagBar();
                     applyPlatformFilters();
                 });
@@ -2061,9 +2077,11 @@
             const filterOpts = {
                 selectedLabels: platformSelectedLabels,
                 showDiscontinued: platformShowDiscontinued,
+                showRushPurchase: platformShowRushPurchase,
                 derivedTags: cat.derivedTags || [],
                 operationalTags: cat.operationalTags || [],
-                showDiscontinuedLabel: cat.showDiscontinuedTag
+                showDiscontinuedLabel: cat.showDiscontinuedTag,
+                showRushPurchaseLabel: cat.showRushPurchaseTag
             };
 
             const filtered = PlatformCatalog.filterPlatforms(allPlatforms, filterOpts);
@@ -2092,7 +2110,8 @@
 
             sessionStorage.setItem('platformCatalogSelection', JSON.stringify({
                 labels: platformSelectedLabels,
-                showDiscontinued: platformShowDiscontinued
+                showDiscontinued: platformShowDiscontinued,
+                showRushPurchase: platformShowRushPurchase
             }));
 
             if (typeof PlatformDetail !== 'undefined' && PlatformDetail.isOpen()) {
@@ -2105,10 +2124,12 @@
         function clearPlatformFilters() {
             platformSelectedLabels = [];
             platformShowDiscontinued = false;
+            platformShowRushPurchase = false;
             // 写入空选择，刷新后保持清空；仅首次无 storage key 时才用 defaultSelectedTags
             sessionStorage.setItem('platformCatalogSelection', JSON.stringify({
                 labels: [],
-                showDiscontinued: false
+                showDiscontinued: false,
+                showRushPurchase: false
             }));
             applyPlatformFilters();
             renderPlatformTagBar();
@@ -2150,15 +2171,19 @@
             if (stored) {
                 try {
                     const parsed = JSON.parse(stored);
-                    platformSelectedLabels = Array.isArray(parsed.labels) ? parsed.labels : [];
+                    const rawLabels = Array.isArray(parsed.labels) ? parsed.labels : [];
+                    platformSelectedLabels = rawLabels.filter((label) => label !== '无需抢购');
                     platformShowDiscontinued = !!parsed.showDiscontinued;
+                    platformShowRushPurchase = !!parsed.showRushPurchase;
                 } catch (_) {
                     platformSelectedLabels = [...(cat.defaultSelectedTags || [])];
                     platformShowDiscontinued = false;
+                    platformShowRushPurchase = false;
                 }
             } else {
                 platformSelectedLabels = [...(cat.defaultSelectedTags || [])];
                 platformShowDiscontinued = false;
+                platformShowRushPurchase = false;
             }
 
             renderPlatformTagBar();

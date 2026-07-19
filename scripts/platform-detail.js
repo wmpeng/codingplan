@@ -276,8 +276,18 @@
     const name = esc(platform && platform.name);
     const rating = Math.max(0, Math.min(5, Number(platform && platform.rating) || 0));
     const stars = '⭐️'.repeat(rating);
-    const rush = !!(platform && platform.purchaseRush);
-    const rushLabel = rush ? '需要抢购' : '无需抢购';
+    const purchaseMode =
+      typeof PlatformCatalog.normalizePurchaseMode === 'function'
+        ? PlatformCatalog.normalizePurchaseMode(platform && platform.purchaseMode)
+        : (platform && platform.purchaseMode) || 'anytime';
+    const rushLabel =
+      typeof PlatformCatalog.purchaseModeLabel === 'function'
+        ? PlatformCatalog.purchaseModeLabel(purchaseMode)
+        : purchaseMode;
+    const rushHtml =
+      purchaseMode === 'anytime'
+        ? ''
+        : `<span class="platform-detail-rush" data-purchase-mode="${esc(purchaseMode)}">${esc(rushLabel)}</span>`;
     const discontinued = platform && platform.status === 'discontinued';
     const actionUrl =
       typeof PlatformCatalog.resolvePlatformAction === 'function'
@@ -322,7 +332,7 @@
       `</div>` +
       `<div class="platform-detail-meta">` +
       `<span class="platform-detail-rating" aria-label="${rating} 星">${stars}</span>` +
-      `<span class="platform-detail-rush" data-rush="${rush ? 'true' : 'false'}">${rushLabel}</span>` +
+      rushHtml +
       (discontinued ? `<span class="platform-detail-status">已停售</span>` : '') +
       `</div>` +
       `</header>` +

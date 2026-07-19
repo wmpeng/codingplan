@@ -7,6 +7,13 @@ const PLATFORM_DIMENSION_META = [
   { key: 'convenience', label: '使用便捷性' }
 ];
 
+const PURCHASE_MODES = ['anytime', 'scheduled', 'rush'];
+const PURCHASE_MODE_LABELS = {
+  anytime: '随时购买',
+  scheduled: '定时购买',
+  rush: '需要抢购'
+};
+
 function escapeHtml(text) {
   if (text === null || text === undefined) return '';
   return String(text)
@@ -16,9 +23,18 @@ function escapeHtml(text) {
     .replace(/"/g, '&quot;');
 }
 
+function normalizePurchaseMode(value) {
+  if (PURCHASE_MODES.includes(value)) return value;
+  return 'anytime';
+}
+
+function purchaseModeLabel(mode) {
+  return PURCHASE_MODE_LABELS[normalizePurchaseMode(mode)] || PURCHASE_MODE_LABELS.anytime;
+}
+
 function matchesDerivedTag(platform, rule) {
-  if (rule.purchaseRush !== undefined) {
-    if (platform.purchaseRush !== rule.purchaseRush) {
+  if (rule.purchaseMode !== undefined) {
+    if (normalizePurchaseMode(platform.purchaseMode) !== rule.purchaseMode) {
       return false;
     }
   }
@@ -38,9 +54,11 @@ function matchesOperationalTag(platform, label) {
 function filterPlatforms(platforms, {
   selectedLabels,
   showDiscontinued,
+  showRushPurchase,
   derivedTags,
   operationalTags,
-  showDiscontinuedLabel
+  showDiscontinuedLabel,
+  showRushPurchaseLabel
 }) {
   let result = platforms;
 
@@ -48,15 +66,19 @@ function filterPlatforms(platforms, {
     result = result.filter(p => p.status !== 'discontinued');
   }
 
+  if (!showRushPurchase) {
+    result = result.filter(p => normalizePurchaseMode(p.purchaseMode) !== 'rush');
+  }
+
   if (!selectedLabels || selectedLabels.length === 0) {
     return result;
   }
 
-  const derivedByLabel = new Map(derivedTags.map(t => [t.label, t]));
+  const derivedByLabel = new Map((derivedTags || []).map(t => [t.label, t]));
 
   return result.filter(platform => {
     for (const label of selectedLabels) {
-      if (label === showDiscontinuedLabel) {
+      if (label === showDiscontinuedLabel || label === showRushPurchaseLabel) {
         continue;
       }
 
@@ -145,8 +167,8 @@ function validatePlatformRecords(platforms, plans) {
       errors.push(`${prefix}: invalid status "${platform.status}"`);
     }
 
-    if (typeof platform.purchaseRush !== 'boolean') {
-      errors.push(`${prefix}: purchaseRush must be a boolean`);
+    if (!PURCHASE_MODES.includes(platform.purchaseMode)) {
+      errors.push(`${prefix}: purchaseMode must be one of ${PURCHASE_MODES.join(', ')}`);
     }
 
     if (platform.tags !== undefined && !Array.isArray(platform.tags)) {
@@ -178,7 +200,7 @@ function validatePlatformRecords(platforms, plans) {
   return { ok: errors.length === 0, errors };
 }
 
-function buildPlatformTagBarHtml(catalogConfig, selectedLabels, showDiscontinued) {
+function buildPlatformTagBarHtml(catalogConfig, selectedLabels, showDiscontinued, showRushPurchase) {
   const cat = catalogConfig || {};
   const selected = selectedLabels || [];
   const chips = [];
@@ -204,6 +226,12 @@ function buildPlatformTagBarHtml(catalogConfig, selectedLabels, showDiscontinued
     `<button type="button" class="platform-tag-chip platform-tag-chip--discontinued${discActive ? ' is-active' : ''}" data-platform-discontinued="1" aria-pressed="${discActive ? 'true' : 'false'}">${escapeHtml(discLabel)}</button>`
   );
 
+  const rushLabel = cat.showRushPurchaseTag || '显示需抢购';
+  const rushActive = !!showRushPurchase;
+  chips.push(
+    `<button type="button" class="platform-tag-chip platform-tag-chip--rush${rushActive ? ' is-active' : ''}" data-platform-show-rush="1" aria-pressed="${rushActive ? 'true' : 'false'}">${escapeHtml(rushLabel)}</button>`
+  );
+
   return chips.join('');
 }
 
@@ -225,8 +253,11 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     ? `<p class="platform-summary">${escapeHtml(platform.summary)}</p>`
     : '';
 
-  const rush = !!platform.purchaseRush;
-  const rushHtml = `<span class="platform-rush" data-rush="${rush ? 'true' : 'false'}">${rush ? '需要抢购' : '无需抢购'}</span>`;
+  const purchaseMode = normalizePurchaseMode(platform.purchaseMode);
+  const rushHtml =
+    purchaseMode === 'anytime'
+      ? ''
+      : `<span class="platform-rush" data-purchase-mode="${purchaseMode}">${escapeHtml(purchaseModeLabel(purchaseMode))}</span>`;
 
   const dimsHtml = PLATFORM_DIMENSION_META.map(({ key, label }) => {
     const dim = (platform.dimensions && platform.dimensions[key]) || {};
@@ -274,7 +305,11 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
 const PlatformCatalog = {
   DIMENSION_KEYS,
   PLATFORM_DIMENSION_META,
+  PURCHASE_MODES,
+  PURCHASE_MODE_LABELS,
   escapeHtml,
+  normalizePurchaseMode,
+  purchaseModeLabel,
   matchesDerivedTag,
   matchesOperationalTag,
   filterPlatforms,

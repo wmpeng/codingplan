@@ -3,7 +3,7 @@
     "title": "AI Coding 平台推荐",
     "updateDate": "更新日期2026.7.15 | 首页改版：平台目录与标签筛选",
     "subtitle": "29 家 Coding Plan / Token Plan 平台一站式选型\n智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek 等，按性价比、稳定性、模型覆盖、使用便捷性对比",
-    "models": "首页以「选平台」为主：目录标签默认筛选「无需抢购」，也可按「性价比高」「模型覆盖广」等维度快速缩小范围；下方套餐表仍保留全量对比。",
+    "models": "首页以「选平台」为主：默认不展示需抢购平台，也可按「性价比高」「模型覆盖广」等维度快速缩小范围；下方套餐表仍保留全量对比。",
     "watermarkUrl": "www.codingplan.fyi",
     "entry": {
       "url": "https://github.com/wmpeng/codingplan/issues",
@@ -11,11 +11,11 @@
     }
   },
   "platformCatalog": {
-    "defaultSelectedTags": ["无需抢购"],
+    "defaultSelectedTags": [],
     "operationalTags": ["热门模型", "适合养龙虾", "可支付宝"],
     "showDiscontinuedTag": "显示停售",
+    "showRushPurchaseTag": "显示需抢购",
     "derivedTags": [
-      { "id": "no-rush", "label": "无需抢购", "rule": { "purchaseRush": false } },
       { "id": "high-value", "label": "性价比高", "rule": { "dimension": "value", "minScore": 4 } },
       { "id": "stable", "label": "稳定性好", "rule": { "dimension": "stability", "minScore": 4 } },
       { "id": "broad-models", "label": "模型覆盖广", "rule": { "dimension": "models", "minScore": 4 } },

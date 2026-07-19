@@ -8,7 +8,7 @@ function samplePlatform(overrides = {}) {
     name: 'Demo Platform',
     rating: 4,
     status: 'active',
-    purchaseRush: false,
+    purchaseMode: 'anytime',
     dimensions: {
       value: { score: 5, reason: '短理由', detail: '长详解' },
       stability: { score: 3, reason: '稳定短' },
