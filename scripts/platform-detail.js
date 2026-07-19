@@ -75,7 +75,7 @@
 
   function formatCountShort(n) {
     const num = Number(n);
-    if (!Number.isFinite(num)) return null;
+    if (!Number.isFinite(num) || num <= 0) return null;
     if (num >= 10000) {
       const wan = num / 10000;
       const text = Number.isInteger(wan) ? String(wan) : wan.toFixed(1).replace(/\.0$/, '');
@@ -84,14 +84,17 @@
     return num.toLocaleString('zh-CN');
   }
 
-  function isUnpublishedValue(value) {
-    return typeof value === 'string' && value.trim() === '未公开';
+  function isHiddenQuotaLabel(text) {
+    const t = String(text == null ? '' : text).trim();
+    return t === '' || t === '未公开' || t === '无限制' || t === '0' || t === '0M' || t === '-';
   }
 
   function formatPlanQuota(plan) {
     if (!plan) return '';
     const token = plan.tokenLimit;
+
     if (typeof token === 'number' && Number.isFinite(token)) {
+      if (token <= 0) return '';
       return `${token}M`;
     }
     if (typeof plan.monthlyRequests === 'number' && Number.isFinite(plan.monthlyRequests)) {
@@ -106,26 +109,22 @@
       const short = formatCountShort(plan.fiveHoursRequests);
       return short ? `${short}次/5h` : '';
     }
-    // 官方次数未公开时，优先用实测月 Token
     if (
       typeof plan.measuredMonthlyTokenLimit === 'number' &&
-      Number.isFinite(plan.measuredMonthlyTokenLimit)
+      Number.isFinite(plan.measuredMonthlyTokenLimit) &&
+      plan.measuredMonthlyTokenLimit > 0
     ) {
-      return `${plan.measuredMonthlyTokenLimit}M`;
+      // 仅当官方额度本身不是「无限制 / 未公开」占位时，才用实测补全
+      if (typeof token === 'string' && isHiddenQuotaLabel(token)) {
+        return '';
+      }
+      if (token == null || token === '') {
+        return `${plan.measuredMonthlyTokenLimit}M`;
+      }
     }
     if (typeof token === 'string' && token.trim()) {
       const text = token.trim();
-      // 未公开：不展示文案
-      if (text === '未公开') return '';
-      // 次数未公开时，「无限制」只是空壳，也不展示
-      if (
-        text === '无限制' &&
-        (isUnpublishedValue(plan.monthlyRequests) ||
-          isUnpublishedValue(plan.weeklyRequests) ||
-          isUnpublishedValue(plan.fiveHoursRequests))
-      ) {
-        return '';
-      }
+      if (isHiddenQuotaLabel(text)) return '';
       return text;
     }
     return '';

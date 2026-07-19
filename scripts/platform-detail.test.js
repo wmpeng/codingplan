@@ -118,29 +118,7 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(!html.includes('platform-detail-plan-quota'));
   });
 
-  it('omits unlimited shell when request quotas are unpublished', () => {
-    const plans = [
-      {
-        vendor: 'Kimi',
-        plan: 'Moderato',
-        type: 'Coding Plan',
-        monthlyPrice: 99,
-        tokenLimit: '无限制',
-        fiveHoursRequests: '未公开',
-        weeklyRequests: '未公开',
-        monthlyRequests: '未公开',
-        discontinued: false
-      }
-    ];
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'Kimi' }), { plans, monitorRow: null });
-    assert.ok(html.includes('Moderato'));
-    assert.ok(html.includes('Coding Plan'));
-    assert.ok(!html.includes('未公开'));
-    assert.ok(!html.includes('无限制'));
-    assert.ok(!html.includes('platform-detail-plan-quota'));
-  });
-
-  it('prefers measured monthly token when request quotas are unpublished', () => {
+  it('omits quota pill for 无限制 / 未公开 / 0', () => {
     const plans = [
       {
         vendor: 'Kimi',
@@ -153,13 +131,24 @@ describe('buildDetailBodyHtml', () => {
         monthlyRequests: '未公开',
         measuredMonthlyTokenLimit: 84,
         discontinued: false
+      },
+      {
+        vendor: 'Kimi',
+        plan: 'Zero',
+        type: 'Token Plan',
+        monthlyPrice: 1,
+        tokenLimit: 0,
+        discontinued: false
       }
     ];
     const html = buildDetailBodyHtml(samplePlatform({ name: 'Kimi' }), { plans, monitorRow: null });
     assert.ok(html.includes('Andante'));
-    assert.ok(html.includes('84M'));
+    assert.ok(html.includes('Zero'));
     assert.ok(!html.includes('未公开'));
     assert.ok(!html.includes('无限制'));
+    assert.ok(!html.includes('84M'));
+    assert.ok(!html.includes('0M'));
+    assert.ok(!html.includes('platform-detail-plan-quota'));
   });
 
   it('omits plans section when empty', () => {
