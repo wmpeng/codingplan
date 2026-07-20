@@ -334,8 +334,7 @@
     const overviewCopy = overviewDetail || overviewSummary;
     const overviewHtml = overviewCopy
       ? (
-          `<section class="platform-detail-section" data-section="overview" aria-labelledby="platformDetailOverviewHeading">` +
-          `<h3 id="platformDetailOverviewHeading" class="platform-detail-section-title">总述</h3>` +
+          `<section class="platform-detail-section" data-section="overview">` +
           `<p class="platform-detail-overview">${esc(overviewCopy)}</p>` +
           `</section>`
         )

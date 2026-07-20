@@ -52,6 +52,7 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(withDetail.includes('platform-detail-overview'));
     assert.ok(withDetail.includes('浮层长文案'));
     assert.ok(!withDetail.includes('卡面短'));
+    assert.ok(!withDetail.includes('总述'));
 
     const summaryOnly = buildDetailBodyHtml(
       samplePlatform({ summary: '只有简要' }),
