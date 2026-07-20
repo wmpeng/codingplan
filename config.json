@@ -135,6 +135,15 @@
           ]
         },
         {
+          "name": "OpenCode",
+          "rating": 4,
+          "reasons": [
+            "OpenCode Go 套餐支持 Kimi-K3。",
+            "同时支持 GLM-5.2、DeepSeek-V4-Flash、Qwen-3.7-Max 等 150+ 模型。",
+            "海外专线，延迟低，无需抢购。"
+          ]
+        },
+        {
           "name": "字节·方舟",
           "rating": 5,
           "reasons": [

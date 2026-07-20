@@ -65,14 +65,17 @@ DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 C
 
 国内首家支持 Kimi-K3 满血版
 
-1. [字节·方舟](https://api.dreamfree.space/c/s/cpyqfangzhou) ⭐️⭐️⭐️⭐️⭐️
+1. [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) ⭐️⭐️⭐️⭐️⭐️
+    - 支持 Kimi-K3。
+    - 官方原生平台，模型体验最稳定。
+2. [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) ⭐️⭐️⭐️⭐️
+    - OpenCode Go 套餐支持 Kimi-K3。
+    - 同时支持 GLM-5.2、DeepSeek-V4-Flash、Qwen-3.7-Max 等 150+ 模型。
+    - 海外专线，延迟低，无需抢购。
+3. [字节·方舟](https://api.dreamfree.space/c/s/cpyqfangzhou) ⭐️⭐️⭐️⭐️⭐️
     - Coding Plan / Token Plan 全档位支持 Kimi-K3。
     - 同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。
     - Coding Plan 当前需抢购；Token Plan 现货。
-2. [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) ⭐️⭐️⭐️⭐️
-    - Coding Plan 全档位（Andante/Moderato/Allegretto/Allegro）支持 Kimi-K3。
-    - 官方原生平台，模型体验最稳。
-    - 月之暗面直营，无需第三方中转。
 
 ### 包含 GLM-5.2
 
@@ -171,7 +174,7 @@ DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 C
 | 优云智算 | Pro | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqyyzs) | ⭐️⭐️⭐️⭐️ | 模型强 | - | ¥499 | - / 季 | - / 年 | 3,000 | 7,500 | 19,000 | - | - | - | - | - | 无限制 | GLM-5.2, GLM-5.1, Kimi-K2.6, MiniMax-M2.7, DeepSeek-V4-Flash, DeepSeek-V3.2 | - | 在售 | • 倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6 <br> • 限流：10 并发 <br> • 价格较贵，但费率明确，无隐藏倍率 |
 | 优云智算 | Max | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqyyzs) | ⭐️⭐️⭐️⭐️ | 模型强 | - | ¥799 | - / 季 | - / 年 | 4,800 | 12,000 | 31,000 | - | - | - | - | - | 无限制 | GLM-5.2, GLM-5.1, Kimi-K2.6, MiniMax-M2.7, DeepSeek-V4-Flash, DeepSeek-V3.2 | - | 在售 | • 倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6 <br> • 限流：10 并发 <br> • 价格较贵，但费率明确，无隐藏倍率 |
 | 优云智算 | Ultra | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqyyzs) | ⭐️⭐️⭐️⭐️ | 模型强 | - | ¥999 | - / 季 | - / 年 | 6,000 | 15,000 | 39,000 | - | - | - | - | - | 无限制 | GLM-5.2, GLM-5.1, Kimi-K2.6, MiniMax-M2.7, DeepSeek-V4-Flash, DeepSeek-V3.2 | - | 在售 | • 倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6 <br> • 限流：10 并发 <br> • 价格较贵但费率明确，无隐藏倍率 |
-| OpenCode | Go | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqopencode) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高 | $5 | $10 | - / 季 | - / 年 | 未公开 | 未公开 | 未公开 | - | - | - | - | - | 未公开 | GLM-5.2, GLM-5.1, GLM-5, Kimi-K2.7-Code, Kimi-K2.6, MiMo-V2.5-Pro, MiMo-V2.5, Qwen-3.7-Max, Qwen-3.7-Plus, Qwen-3.6-Plus, MiniMax-M3, MiniMax-M2.7, MiniMax-M2.5, DeepSeek-V4-Pro, DeepSeek-V4-Flash | 首月半价 | 在售 | • 套餐额度按美元 Credits 计：基础 12 美元、周额度 30 美元、月额度 60 美元 <br> • 实际计费按 token 消耗 |
+| OpenCode | Go | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqopencode) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高 | $5 | $10 | - / 季 | - / 年 | 未公开 | 未公开 | 未公开 | - | - | - | - | - | 未公开 | GLM-5.2, GLM-5.1, GLM-5, Kimi-K2.7-Code, Kimi-K3, Kimi-K2.6, MiMo-V2.5-Pro, MiMo-V2.5, Qwen-3.7-Max, Qwen-3.7-Plus, Qwen-3.6-Plus, MiniMax-M3, MiniMax-M2.7, MiniMax-M2.5, DeepSeek-V4-Pro, DeepSeek-V4-Flash | 首月半价 | 在售 | • 套餐额度按美元 Credits 计：基础 12 美元、周额度 30 美元、月额度 60 美元 <br> • 实际计费按 token 消耗 |
 | 小米·MiMo | Lite | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqmimo) | ⭐️⭐️⭐️ | 模型强 | ¥34.32 | ¥39 | - / 季 | ¥412 ~~468~~ / 年 | 无限制 | 无限制 | 无限制 | - | - | 108M Tokens | 276.9万 | ¥0.36 | 108M Tokens | MiMo-V2.5-Pro, MiMo-V2.5, MiMo-V2.5-TTS, MiMo-V2-Pro, MiMo-V2-Omni | TTS限时免费 | 在售 | • 4.1B Credits，无5小时限额，支持集中消耗 <br> • MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token <br> • 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高 |
 | 小米·MiMo | Standard | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqmimo) | ⭐️⭐️⭐️ | 模型强 | ¥87.12 | ¥99 | - / 季 | ¥1045 ~~1188~~ / 年 | 无限制 | 无限制 | 无限制 | - | - | 290M Tokens | 292.9万 | ¥0.34 | 290M Tokens | MiMo-V2.5-Pro, MiMo-V2.5, MiMo-V2.5-TTS, MiMo-V2-Pro, MiMo-V2-Omni | TTS限时免费 | 在售 | • 11B Credits，无5小时限额，支持集中消耗 <br> • MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token <br> • 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高 |
 | 小米·MiMo | Pro | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqmimo) | ⭐️⭐️⭐️ | 模型强 | ¥289.52 | ¥329 | - / 季 | ¥3474 ~~3948~~ / 年 | 无限制 | 无限制 | 无限制 | - | - | 1,002M Tokens | 304.6万 | ¥0.33 | 1,002M Tokens | MiMo-V2.5-Pro, MiMo-V2.5, MiMo-V2.5-TTS, MiMo-V2-Pro, MiMo-V2-Omni | TTS限时免费 | 在售 | • 38B Credits，无5小时限额，支持集中消耗 <br> • MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token <br> • 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高 |
