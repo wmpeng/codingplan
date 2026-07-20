@@ -209,6 +209,136 @@ function formatPaygPrice(value, currency) {
   return `${cur}${text}`;
 }
 
+function isFinitePaygPrice(value) {
+  if (value == null || value === '') return false;
+  return Number.isFinite(Number(value));
+}
+
+function paygRowHasAnyPrice(row) {
+  if (!row) return false;
+  return (
+    isFinitePaygPrice(row.input) ||
+    isFinitePaygPrice(row.cache) ||
+    isFinitePaygPrice(row.output)
+  );
+}
+
+function normalizePaygPriceField(value) {
+  if (value == null || value === '') return null;
+  const num = Number(value);
+  return Number.isFinite(num) ? num : null;
+}
+
+function flattenPaygRows(paygPricing, platforms, plans) {
+  const planList = Array.isArray(plans) ? plans : [];
+  const byId = new Map(
+    (Array.isArray(platforms) ? platforms : [])
+      .filter((p) => p && typeof p.id === 'string' && p.id)
+      .map((p) => [p.id, p])
+  );
+  if (!paygPricing || typeof paygPricing !== 'object' || Array.isArray(paygPricing)) {
+    return [];
+  }
+  const rows = [];
+  for (const [platformId, entry] of Object.entries(paygPricing)) {
+    const platform = byId.get(platformId);
+    if (!platform || !entry || typeof entry !== 'object' || !Array.isArray(entry.models)) {
+      continue;
+    }
+    const currency = entry.currency || '¥';
+    const unit = entry.unit || 'per_m_tokens';
+    const platformNotes = Array.isArray(entry.notes)
+      ? entry.notes.filter((n) => typeof n === 'string' && n.trim()).map((n) => n.trim())
+      : [];
+    const action = resolvePlatformAction(platform, planList);
+    for (const model of entry.models) {
+      if (!model || typeof model.name !== 'string' || !model.name.trim()) continue;
+      const notes = platformNotes.slice();
+      if (typeof model.note === 'string' && model.note.trim()) {
+        notes.push(model.note.trim());
+      }
+      rows.push({
+        platformId,
+        platformName: String(platform.name || platformId),
+        rating: Number(platform.rating) || 0,
+        action: action || null,
+        modelName: model.name.trim(),
+        input: normalizePaygPriceField(model.input),
+        cache: normalizePaygPriceField(model.cache),
+        output: normalizePaygPriceField(model.output),
+        currency,
+        unit,
+        notes
+      });
+    }
+  }
+  return rows;
+}
+
+function filterPaygRows(rows, options = {}) {
+  const list = Array.isArray(rows) ? rows : [];
+  const platformIds = Array.isArray(options.platformIds) ? options.platformIds : null;
+  const modelNames = Array.isArray(options.modelNames) ? options.modelNames : null;
+  const pricedOnly = !!options.pricedOnly;
+  const platformSet = platformIds && platformIds.length ? new Set(platformIds) : null;
+  const modelSet = modelNames && modelNames.length ? new Set(modelNames) : null;
+  return list.filter((row) => {
+    if (!row) return false;
+    if (platformSet && !platformSet.has(row.platformId)) return false;
+    if (modelSet && !modelSet.has(row.modelName)) return false;
+    if (pricedOnly && !paygRowHasAnyPrice(row)) return false;
+    return true;
+  });
+}
+
+function sortPaygRows(rows, options = {}) {
+  const key = options.key || 'input';
+  const dir = options.dir === 'desc' ? -1 : 1;
+  const list = (Array.isArray(rows) ? rows : []).slice();
+  const isNumeric =
+    key === 'input' || key === 'cache' || key === 'output' || key === 'rating';
+  list.sort((a, b) => {
+    if (isNumeric) {
+      const rawA = a ? a[key] : null;
+      const rawB = b ? b[key] : null;
+      const av =
+        rawA == null || rawA === '' ? NaN : Number(rawA);
+      const bv =
+        rawB == null || rawB === '' ? NaN : Number(rawB);
+      const aOk = Number.isFinite(av);
+      const bOk = Number.isFinite(bv);
+      if (!aOk && !bOk) return 0;
+      if (!aOk) return 1;
+      if (!bOk) return -1;
+      if (av === bv) return 0;
+      return av < bv ? -dir : dir;
+    }
+    const as = String((a && a[key]) || '');
+    const bs = String((b && b[key]) || '');
+    return as.localeCompare(bs, 'zh') * dir;
+  });
+  return list;
+}
+
+function collectPaygFilterOptions(rows) {
+  const platforms = [];
+  const seenP = new Set();
+  const models = [];
+  const seenM = new Set();
+  for (const row of Array.isArray(rows) ? rows : []) {
+    if (!row) continue;
+    if (row.platformId && !seenP.has(row.platformId)) {
+      seenP.add(row.platformId);
+      platforms.push({ id: row.platformId, name: row.platformName || row.platformId });
+    }
+    if (row.modelName && !seenM.has(row.modelName)) {
+      seenM.add(row.modelName);
+      models.push(row.modelName);
+    }
+  }
+  return { platforms, models };
+}
+
 function buildPaygPricingSectionHtml(entry) {
   if (!entry || !Array.isArray(entry.models) || !entry.models.length) return '';
   const currency = entry.currency || '¥';
@@ -550,6 +680,11 @@ const PlatformCatalog = {
   getPaygEntry,
   collectModelsFromPayg,
   formatPaygPrice,
+  paygRowHasAnyPrice,
+  flattenPaygRows,
+  filterPaygRows,
+  sortPaygRows,
+  collectPaygFilterOptions,
   buildPaygPricingSectionHtml,
   validatePaygPricing,
   validatePlatformRecords,
