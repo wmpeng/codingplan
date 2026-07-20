@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按量计价</title>
+    <meta name="description" content="AI 平台按量调用单价对比：平台 × 模型，输入 / 缓存 / 输出价格筛选排序。">
+    <link rel="icon" href="/favicon.ico?v=260418" type="image/x-icon">
+    <link rel="stylesheet" href="styles/shared.css?v=260515">
+    <style>
+        .payg-intro {
+            margin: 0 0 20px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .payg-filter-bar {
+            margin-bottom: 16px;
+            padding: 14px 16px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.72);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .payg-filter-group {
+            margin-bottom: 12px;
+        }
+
+        .payg-filter-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .payg-filter-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .payg-filter-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 10px;
+        }
+
+        .payg-filter-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            font-size: 13px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .payg-filter-chip:has(input:checked) {
+            border-color: var(--accent-primary);
+            background: rgba(15, 118, 110, 0.08);
+            color: var(--text-primary);
+        }
+
+        .payg-filter-chip input {
+            width: 14px;
+            height: 14px;
+            accent-color: var(--accent-primary);
+            cursor: pointer;
+        }
+
+        .payg-filter-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .payg-filter-check {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .payg-filter-check input {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--accent-primary);
+            cursor: pointer;
+        }
+
+        .payg-filter-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .payg-clear-btn {
+            appearance: none;
+            border: 1px solid var(--border-color);
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border-radius: var(--radius-md);
+            padding: 6px 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .payg-clear-btn:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: rgba(15, 118, 110, 0.06);
+        }
+
+        .payg-result-count {
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        .payg-table-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.82);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .payg-table {
+            width: 100%;
+            min-width: 860px;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 14px;
+        }
+
+        .payg-table th,
+        .payg-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-light);
+            text-align: left;
+            vertical-align: top;
+            background: transparent;
+            color: var(--text-primary);
+        }
+
+        .payg-table thead th {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            background: #f7faf9;
+            font-weight: 650;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .payg-table tbody tr:hover td {
+            background: rgba(15, 118, 110, 0.04);
+        }
+
+        .payg-col-platform {
+            position: sticky;
+            left: 0;
+            z-index: 1;
+            background: #fff;
+            min-width: 132px;
+        }
+
+        .payg-table thead .payg-col-platform {
+            z-index: 3;
+            background: #f7faf9;
+        }
+
+        .payg-table tbody tr:hover .payg-col-platform {
+            background: #f3f8f7;
+        }
+
+        .payg-sort-btn {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            font-weight: 650;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .payg-sort-btn[data-active="true"] {
+            color: var(--accent-primary);
+        }
+
+        .payg-sort-btn::after {
+            content: '';
+            margin-left: 4px;
+            opacity: 0.35;
+        }
+
+        .payg-sort-btn[data-active="true"][data-dir="asc"]::after {
+            content: '↑';
+            opacity: 1;
+        }
+
+        .payg-sort-btn[data-active="true"][data-dir="desc"]::after {
+            content: '↓';
+            opacity: 1;
+        }
+
+        .payg-platform-link {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .payg-platform-link:hover {
+            text-decoration: underline;
+        }
+
+        .payg-col-notes {
+            max-width: 280px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .payg-empty {
+            text-align: center;
+            color: var(--text-tertiary);
+            padding: 28px 12px !important;
+        }
+
+        @media (max-width: 720px) {
+            .payg-filter-toolbar {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="pageNavMount"></div>
+
+        <div class="header">
+            <h1>按量计价</h1>
+            <p class="subtitle">一行 = 平台 × 模型；价格单位为元 / 百万 token；无标价显示 —</p>
+        </div>
+
+        <p class="payg-intro">默认按输入价升序；可用平台 / 模型筛选，或只看已标价行。峰谷与折扣说明见备注。</p>
+
+        <section class="payg-filter-bar" aria-label="按量筛选">
+            <div class="payg-filter-group">
+                <span class="payg-filter-label">平台</span>
+                <div class="payg-filter-chips" id="paygPlatformFilters"></div>
+            </div>
+            <div class="payg-filter-group">
+                <span class="payg-filter-label">模型</span>
+                <div class="payg-filter-chips" id="paygModelFilters"></div>
+            </div>
+            <div class="payg-filter-toolbar">
+                <label class="payg-filter-check">
+                    <input type="checkbox" id="paygPricedOnly">
+                    仅显示有标价
+                </label>
+                <div class="payg-filter-actions">
+                    <span class="payg-result-count">共 <strong id="paygResultCount">0</strong> 行</span>
+                    <button type="button" class="payg-clear-btn" id="paygClearFilters">清空筛选</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="payg-table-wrap">
+            <table class="payg-table" id="paygTable">
+                <thead>
+                    <tr>
+                        <th scope="col" class="payg-col-platform">平台</th>
+                        <th scope="col">模型</th>
+                        <th scope="col">
+                            <button type="button" class="payg-sort-btn" data-sort-key="input">输入</button>
+                        </th>
+                        <th scope="col">
+                            <button type="button" class="payg-sort-btn" data-sort-key="cache">缓存</button>
+                        </th>
+                        <th scope="col">
+                            <button type="button" class="payg-sort-btn" data-sort-key="output">输出</button>
+                        </th>
+                        <th scope="col">备注</th>
+                        <th scope="col">评分</th>
+                    </tr>
+                </thead>
+                <tbody id="paygTableBody">
+                    <tr><td colspan="7" class="payg-empty">加载中…</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="scripts/shared.js?v=260721"></script>
+    <script src="scripts/platform-catalog.js?v=260721"></script>
+    <script src="scripts/payg.js?v=260721"></script>
+</body>
+</html>
