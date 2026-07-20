@@ -119,6 +119,7 @@ function renderPageNav(target, options = {}) {
         ? options.tabs
         : [
             { key: 'index', href: 'index.html', text: 'Coding Plan' },
+            { key: 'payg', href: 'payg.html', text: '按量计价' },
             { key: 'plan-usage', href: 'plan-usage.html', text: 'Coding Plan用量提交' },
             { key: 'coding-agents', href: 'coding-agents.html', text: '编程 Agent' },
             { key: 'relays', href: 'relays.html', text: '中转站' },
