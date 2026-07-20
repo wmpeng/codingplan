@@ -78,6 +78,9 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('按量定价'));
     assert.ok(html.includes('¥2.4'));
     assert.ok(!html.includes('data-section="plans"'));
+    const dimsAt = html.indexOf('data-section="dimensions"');
+    const paygAt = html.indexOf('data-section="payg"');
+    assert.ok(dimsAt >= 0 && paygAt > dimsAt);
   });
 
   it('renders plans section when vendor has plans', () => {

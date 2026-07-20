@@ -354,13 +354,13 @@
       `</div>` +
       `</header>` +
       overviewHtml +
-      (typeof PlatformCatalog.buildPaygPricingSectionHtml === 'function'
-        ? PlatformCatalog.buildPaygPricingSectionHtml(context.paygEntry)
-        : '') +
       `<section class="platform-detail-section" data-section="dimensions" aria-labelledby="platformDetailDimsHeading">` +
       `<h3 id="platformDetailDimsHeading" class="platform-detail-section-title">评价详解</h3>` +
       `<ul class="platform-detail-dimensions">${dims}</ul>` +
       `</section>` +
+      (typeof PlatformCatalog.buildPaygPricingSectionHtml === 'function'
+        ? PlatformCatalog.buildPaygPricingSectionHtml(context.paygEntry)
+        : '') +
       buildPlansSectionHtml(vendorPlans) +
       buildAvailabilitySectionHtml(platform, monitorRow)
     );
