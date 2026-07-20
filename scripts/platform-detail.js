@@ -354,6 +354,9 @@
       `</div>` +
       `</header>` +
       overviewHtml +
+      (typeof PlatformCatalog.buildPaygPricingSectionHtml === 'function'
+        ? PlatformCatalog.buildPaygPricingSectionHtml(context.paygEntry)
+        : '') +
       `<section class="platform-detail-section" data-section="dimensions" aria-labelledby="platformDetailDimsHeading">` +
       `<h3 id="platformDetailDimsHeading" class="platform-detail-section-title">评价详解</h3>` +
       `<ul class="platform-detail-dimensions">${dims}</ul>` +
@@ -422,6 +425,7 @@
   function init(userOptions) {
     options = {
       getPlans: () => [],
+      getPaygPricing: () => null,
       monitorApiBase: DEFAULT_MONITOR_API_BASE,
       onJumpPlansTable: () => {},
       escapeHtml: null,
@@ -470,9 +474,16 @@
     const seq = ++openSeq;
     const plans =
       typeof options.getPlans === 'function' ? options.getPlans() || [] : [];
+    const paygPricing =
+      typeof options.getPaygPricing === 'function' ? options.getPaygPricing() : null;
+    const paygEntry =
+      typeof PlatformCatalog.getPaygEntry === 'function'
+        ? PlatformCatalog.getPaygEntry(paygPricing, platform && platform.id)
+        : null;
     const html = buildDetailBodyHtml(platform, {
       plans,
-      monitorRow: null
+      monitorRow: null,
+      paygEntry
     });
 
     const body = bodyEl();
@@ -508,7 +519,7 @@
         : null;
     if (!monitorRow) return;
 
-    body.innerHTML = buildDetailBodyHtml(platform, { plans, monitorRow });
+    body.innerHTML = buildDetailBodyHtml(platform, { plans, monitorRow, paygEntry });
   }
 
   return {

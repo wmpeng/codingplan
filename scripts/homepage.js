@@ -3,6 +3,7 @@
         const PLANS_FILE_PATH = './plans.json';
         const CONFIG_FILE_PATH = './config.json';
         const PLATFORMS_FILE_PATH = './platforms.json';
+        const PAYG_PRICING_FILE_PATH = './payg-pricing.json';
 
         // 全局配置
         let appConfig = {};
@@ -13,6 +14,7 @@
         let allPlans = [];
         let filteredPlans = [];
         let allPlatforms = [];
+        let paygPricing = {};
         let platformSelectedLabels = [];
         let platformStatusMax = 'limited';
         let currentSort = { column: null, direction: 'asc' };
@@ -1500,8 +1502,8 @@
                     header: {
                         title: "AI Coding 平台推荐",
                         updateDate: "更新日期2026.7.15 | 首页改版：平台目录与标签筛选",
-                        subtitle: "29 家 Coding Plan / Token Plan 平台一站式选型\n智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek 等，按性价比、稳定性、模型对比",
-                        models: "首页以「选平台」为主：默认仅显示「定时放量」及更开放的平台，也可按「性价比高」「模型强」等维度快速缩小范围；下方套餐表仍保留全量对比。",
+                        subtitle: "31 家 Coding Plan / Token Plan / 按量调用平台一站式选型\n智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek、共继算力 等，按性价比、稳定性、模型对比",
+                        models: "首页以「选平台」为主：默认仅显示「定时放量」及更开放的平台，也可按「性价比高」「模型强」「按量调用」等维度快速缩小范围；下方套餐表仍保留全量对比。",
                         watermarkUrl: "www.codingplan.fyi",
                         entry: {
                             url: "https://github.com/wmpeng/codingplan/discussions",
@@ -1510,7 +1512,7 @@
                     },
                     platformCatalog: {
                         defaultSelectedTags: [],
-                        operationalTags: ["热门模型", "适合养龙虾", "可支付宝"],
+                        operationalTags: ["热门模型", "适合养龙虾", "可支付宝", "按量调用"],
                         defaultPlatformStatusMax: "limited",
                         derivedTags: [
                             { id: "high-value", label: "性价比高", rule: { dimension: "value", minScore: 4 } },
@@ -1998,6 +2000,25 @@
             console.log(`成功加载 ${allPlatforms.length} 个平台`);
         }
 
+        async function loadPaygPricing() {
+            const response = await fetch(PAYG_PRICING_FILE_PATH, { cache: 'no-store' });
+            if (!response.ok) {
+                throw new Error(`payg-pricing.json load failed: HTTP ${response.status}`);
+            }
+            const data = await response.json();
+            if (!data || typeof data !== 'object' || Array.isArray(data)) {
+                throw new Error('payg-pricing.json must be an object');
+            }
+            paygPricing = data;
+            if (typeof PlatformCatalog !== 'undefined' && PlatformCatalog.validatePaygPricing) {
+                const result = PlatformCatalog.validatePaygPricing(paygPricing, allPlatforms);
+                if (!result.ok) {
+                    console.warn('payg-pricing validation:', result.errors.join('; '));
+                }
+            }
+            console.log(`成功加载按量定价 ${Object.keys(paygPricing).length} 个平台`);
+        }
+
         function togglePlatformTag(label) {
             const idx = platformSelectedLabels.indexOf(label);
             if (idx >= 0) {
@@ -2209,7 +2230,8 @@
 
         function buildPlatformCardHtml(platform) {
             return PlatformCatalog.buildPlatformCardHtml(platform, allPlans, {
-                sanitizeUrl: typeof sanitizeHttpUrl === 'function' ? sanitizeHttpUrl : (u) => u
+                sanitizeUrl: typeof sanitizeHttpUrl === 'function' ? sanitizeHttpUrl : (u) => u,
+                paygPricing
             });
         }
 
@@ -2355,6 +2377,7 @@
             if (typeof PlatformDetail !== 'undefined' && PlatformDetail && typeof PlatformDetail.init === 'function') {
                 PlatformDetail.init({
                     getPlans: () => allPlans,
+                    getPaygPricing: () => paygPricing,
                     monitorApiBase: (window.MONITOR_CONFIG && window.MONITOR_CONFIG.apiBase) || 'https://api.dreamfree.space/vc',
                     onJumpPlansTable: focusVendorInPlansTable,
                     escapeHtml: typeof escapeHtml === 'function' ? escapeHtml : null
@@ -2463,6 +2486,7 @@
                 });
 
                 await Promise.all([loadData(), loadPlatforms()]);
+                await loadPaygPricing();
                 bindPlansTableInteractions();
                 initPlatformCatalog();
                 window.__codingplanCatalogReady = true;
@@ -2472,6 +2496,14 @@
                 try {
                     if (!allPlatforms.length) {
                         await loadPlatforms();
+                    }
+                    if (!Object.keys(paygPricing).length) {
+                        try {
+                            await loadPaygPricing();
+                        } catch (paygError) {
+                            console.warn('按量定价加载失败，目录仍可启动:', paygError);
+                            paygPricing = {};
+                        }
                     }
                     initPlatformCatalog();
                     window.__codingplanCatalogReady = true;

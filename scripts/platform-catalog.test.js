@@ -5,10 +5,14 @@ const {
   collectModelsForVendor,
   resolvePlatformAction,
   validatePlatformRecords,
+  validatePaygPricing,
   escapeHtml,
   buildPlatformCardHtml,
   buildPlatformTagBarHtml,
   buildPlatformStatusSliderHtml,
+  buildPaygPricingSectionHtml,
+  getPaygEntry,
+  collectModelsFromPayg,
   dimensionCopy,
   collectPlansForVendor,
   matchMonitorPlatform,
@@ -418,5 +422,69 @@ describe('validatePlatformRecords detail', () => {
       []
     );
     assert.equal(ok, true);
+  });
+});
+
+describe('payg pricing', () => {
+  const platforms = [
+    samplePlatform({ id: 'deepseek-official', name: 'DeepSeek 官方' }),
+    samplePlatform({ id: 'gongji', name: '共继算力' })
+  ];
+
+  it('validates keyed entries and rejects unknown platform ids', () => {
+    const okDoc = {
+      'deepseek-official': {
+        currency: '¥',
+        models: [{ name: 'DeepSeek-V4-Pro', input: 3, cache: 0.025, output: 6 }]
+      }
+    };
+    assert.equal(validatePaygPricing(okDoc, platforms).ok, true);
+
+    const bad = validatePaygPricing({ nope: { models: [{ name: 'X', input: 1 }] } }, platforms);
+    assert.equal(bad.ok, false);
+    assert.ok(bad.errors.some((e) => e.includes('no matching platform')));
+  });
+
+  it('card uses payg models and badge when no plans', () => {
+    const paygPricing = {
+      'deepseek-official': {
+        models: [
+          { name: 'DeepSeek-V4-Pro', input: 3, cache: 0.025, output: 6 },
+          { name: 'DeepSeek-V4-Flash', input: null, cache: null, output: null, note: '官网' }
+        ]
+      }
+    };
+    const html = buildPlatformCardHtml(
+      samplePlatform({
+        id: 'deepseek-official',
+        name: 'DeepSeek 官方',
+        action: 'https://platform.deepseek.com/'
+      }),
+      [],
+      { paygPricing }
+    );
+    assert.match(html, /platform-rush--payg/);
+    assert.ok(html.includes('按量'));
+    assert.ok(html.includes('DeepSeek-V4-Pro'));
+    assert.ok(html.includes('DeepSeek-V4-Flash'));
+  });
+
+  it('builds payg pricing section html', () => {
+    const entry = getPaygEntry(
+      {
+        gongji: {
+          currency: '¥',
+          notes: ['须邀请链接'],
+          models: [{ name: 'DeepSeek-V4-Pro', input: 2.4, cache: 0.02, output: 4.8, note: '8折' }]
+        }
+      },
+      'gongji'
+    );
+    assert.deepEqual(collectModelsFromPayg(entry), ['DeepSeek-V4-Pro']);
+    const html = buildPaygPricingSectionHtml(entry);
+    assert.match(html, /data-section="payg"/);
+    assert.ok(html.includes('¥2.4'));
+    assert.ok(html.includes('须邀请链接'));
+    assert.ok(html.includes('8折'));
   });
 });

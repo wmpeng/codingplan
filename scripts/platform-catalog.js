@@ -184,6 +184,141 @@ function resolvePlatformAction(platform, plans) {
   return plan?.action ?? null;
 }
 
+function getPaygEntry(paygPricing, platformId) {
+  if (!paygPricing || typeof paygPricing !== 'object' || !platformId) return null;
+  const entry = paygPricing[platformId];
+  return entry && typeof entry === 'object' ? entry : null;
+}
+
+function collectModelsFromPayg(entry) {
+  if (!entry || !Array.isArray(entry.models)) return [];
+  const names = [];
+  for (const model of entry.models) {
+    const name = model && typeof model.name === 'string' ? model.name.trim() : '';
+    if (name && !names.includes(name)) names.push(name);
+  }
+  return names;
+}
+
+function formatPaygPrice(value, currency) {
+  if (value == null || value === '') return '—';
+  const num = Number(value);
+  if (!Number.isFinite(num)) return '—';
+  const cur = currency || '¥';
+  const text = Number.isInteger(num) ? String(num) : String(num);
+  return `${cur}${text}`;
+}
+
+function buildPaygPricingSectionHtml(entry) {
+  if (!entry || !Array.isArray(entry.models) || !entry.models.length) return '';
+  const currency = entry.currency || '¥';
+  const notes = Array.isArray(entry.notes)
+    ? entry.notes.filter((n) => typeof n === 'string' && n.trim())
+    : [];
+  const notesHtml = notes.length
+    ? `<ul class="platform-detail-payg-notes">${notes
+        .map((n) => `<li>${escapeHtml(n.trim())}</li>`)
+        .join('')}</ul>`
+    : '';
+
+  const rows = entry.models
+    .map((model) => {
+      if (!model || typeof model.name !== 'string' || !model.name.trim()) return '';
+      const note =
+        typeof model.note === 'string' && model.note.trim()
+          ? `<div class="platform-detail-payg-model-note">${escapeHtml(model.note.trim())}</div>`
+          : '';
+      return (
+        `<tr>` +
+        `<th scope="row"><span class="platform-detail-payg-model-name">${escapeHtml(model.name.trim())}</span>${note}</th>` +
+        `<td>${escapeHtml(formatPaygPrice(model.input, currency))}</td>` +
+        `<td>${escapeHtml(formatPaygPrice(model.cache, currency))}</td>` +
+        `<td>${escapeHtml(formatPaygPrice(model.output, currency))}</td>` +
+        `</tr>`
+      );
+    })
+    .filter(Boolean)
+    .join('');
+
+  if (!rows) return '';
+
+  return (
+    `<section class="platform-detail-section" data-section="payg" aria-labelledby="platformDetailPaygHeading">` +
+    `<h3 id="platformDetailPaygHeading" class="platform-detail-section-title">按量定价</h3>` +
+    `<p class="platform-detail-payg-unit">单位：元 / 百万 token</p>` +
+    `<div class="platform-detail-payg-table-wrap">` +
+    `<table class="platform-detail-payg-table">` +
+    `<thead><tr><th scope="col">模型</th><th scope="col">输入</th><th scope="col">缓存</th><th scope="col">输出</th></tr></thead>` +
+    `<tbody>${rows}</tbody>` +
+    `</table>` +
+    `</div>` +
+    notesHtml +
+    `</section>`
+  );
+}
+
+function validatePaygPricing(paygPricing, platforms) {
+  const errors = [];
+  if (paygPricing == null) {
+    return { ok: true, errors };
+  }
+  if (typeof paygPricing !== 'object' || Array.isArray(paygPricing)) {
+    return { ok: false, errors: ['payg-pricing.json must be an object keyed by platform id'] };
+  }
+
+  const platformIds = new Set(
+    (Array.isArray(platforms) ? platforms : [])
+      .map((p) => (p && typeof p.id === 'string' ? p.id : ''))
+      .filter(Boolean)
+  );
+
+  for (const [platformId, entry] of Object.entries(paygPricing)) {
+    const prefix = `Payg "${platformId}"`;
+    if (!platformIds.has(platformId)) {
+      errors.push(`${prefix}: no matching platform id in platforms.json`);
+      continue;
+    }
+    if (!entry || typeof entry !== 'object' || Array.isArray(entry)) {
+      errors.push(`${prefix}: entry must be an object`);
+      continue;
+    }
+    if (!Array.isArray(entry.models) || entry.models.length === 0) {
+      errors.push(`${prefix}: models must be a non-empty array`);
+      continue;
+    }
+    if (entry.notes !== undefined) {
+      if (!Array.isArray(entry.notes) || entry.notes.some((n) => typeof n !== 'string' || !n.trim())) {
+        errors.push(`${prefix}: notes must be an array of non-empty strings when present`);
+      }
+    }
+    entry.models.forEach((model, index) => {
+      const mPrefix = `${prefix} models[${index}]`;
+      if (!model || typeof model !== 'object') {
+        errors.push(`${mPrefix}: must be an object`);
+        return;
+      }
+      if (typeof model.name !== 'string' || !model.name.trim()) {
+        errors.push(`${mPrefix}: name must be a non-empty string`);
+      }
+      for (const key of ['input', 'cache', 'output']) {
+        if (!Object.prototype.hasOwnProperty.call(model, key)) continue;
+        if (model[key] === null) continue;
+        const num = Number(model[key]);
+        if (!Number.isFinite(num) || num < 0) {
+          errors.push(`${mPrefix}: ${key} must be null or a non-negative number`);
+        }
+      }
+      if (Object.prototype.hasOwnProperty.call(model, 'note')) {
+        if (typeof model.note !== 'string' || !model.note.trim()) {
+          errors.push(`${mPrefix}: note must be a non-empty string when present`);
+        }
+      }
+    });
+  }
+
+  return { ok: errors.length === 0, errors };
+}
+
 function validatePlatformRecords(platforms, plans) {
   const errors = [];
   const platformNames = new Set(platforms.map(p => p.name));
@@ -313,6 +448,7 @@ const EXTERNAL_LINK_ICON =
 
 function buildPlatformCardHtml(platform, plans, options = {}) {
   const sanitizeUrl = options.sanitizeUrl || (url => url);
+  const paygEntry = getPaygEntry(options.paygPricing, platform && platform.id);
   const rawAction = resolvePlatformAction(platform, plans);
   const action = sanitizeUrl(rawAction);
   const name = escapeHtml(platform.name || '');
@@ -335,6 +471,9 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     status === 'open'
       ? ''
       : `<span class="platform-rush" data-platform-status="${status}">${escapeHtml(platformStatusLabel(status))}</span>`;
+  const paygBadge = paygEntry
+    ? `<span class="platform-rush platform-rush--payg">按量</span>`
+    : '';
 
   const dimsHtml = PLATFORM_DIMENSION_META.map(({ key, label }) => {
     const dim = (platform.dimensions && platform.dimensions[key]) || {};
@@ -351,7 +490,10 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     ? `<div class="platform-tags" aria-label="标签">${tags.map((tag) => `<span class="platform-tag">${escapeHtml(tag)}</span>`).join('')}</div>`
     : '';
 
-  const models = collectModelsForVendor(plans, platform.name);
+  let models = collectModelsForVendor(plans, platform.name);
+  if (!models.length && paygEntry) {
+    models = collectModelsFromPayg(paygEntry);
+  }
   const modelLimit = 5;
   const shownModels = models.slice(0, modelLimit);
   const extraModels = models.length - shownModels.length;
@@ -367,6 +509,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
                         <div class="platform-card-heading">
                             ${nameHtml}
                             ${statusHtml}
+                            ${paygBadge}
                         </div>
                         <span class="platform-rating" aria-label="${rating} 星">${stars}</span>
                     </header>
@@ -404,6 +547,11 @@ const PlatformCatalog = {
   collectPlansForVendor,
   matchMonitorPlatform,
   resolvePlatformAction,
+  getPaygEntry,
+  collectModelsFromPayg,
+  formatPaygPrice,
+  buildPaygPricingSectionHtml,
+  validatePaygPricing,
   validatePlatformRecords,
   buildPlatformTagBarHtml,
   buildPlatformStatusSliderHtml,

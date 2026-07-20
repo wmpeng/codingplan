@@ -622,5 +622,58 @@
     },
     "tags": [],
     "platformStatus": "delisted"
+  },
+  {
+    "id": "deepseek-official",
+    "name": "DeepSeek 官方",
+    "rating": 5,
+    "summary": "原生 DeepSeek 按量通道，单价透明，适合不想抢固定套餐的用户。",
+    "detail": "DeepSeek 官方 API 直接提供 V4-Pro / Flash 等模型按量计费，无需抢 Coding Plan。标价清晰（Pro 档常见为输入 3 元/M、缓存 0.025 元/M、输出 6 元/M），但 7 月中旬起高峰时段可能翻倍，预算敏感场景需留意峰谷。适合把官方通道当主力或与折扣聚合平台搭配使用。站内另有 DeepSeek Flash / Pro 虚拟套餐条目，仅供与订阅档粗算对比，与本卡并不互相替代。",
+    "dimensions": {
+      "value": {
+        "score": 4,
+        "reason": "按量标价透明；高峰翻倍后重负载成本优势会收窄。"
+      },
+      "stability": {
+        "score": 5,
+        "reason": "官方直连通道成熟，可用性与账号体系最省心。"
+      },
+      "models": {
+        "score": 5,
+        "reason": "原生 DeepSeek-V4 系列，推理与代码能力处于第一梯队。"
+      }
+    },
+    "tags": [
+      "按量调用",
+      "热门模型"
+    ],
+    "platformStatus": "open",
+    "action": "https://platform.deepseek.com/"
+  },
+  {
+    "id": "gongji",
+    "name": "共继算力",
+    "rating": 4,
+    "summary": "DeepSeek 等模型官方约 8 折按量，人少时更稳，适合灵活充值调用。",
+    "detail": "共继算力以 API 按量为主，DeepSeek-V4-Pro 常见为官方约 8 折（如输入 2.4 / 缓存 0.02 / 输出 4.8 元/M），在官方高峰涨价后价差更明显。同时覆盖 GLM、Kimi、Qwen 等常见模型。务必通过邀请链接进入以锁定折扣与额外额度；平台体量相对较小，人数不多时稳定性体感较好，但仍建议关注公告与限流。不提供传统 Coding Plan / Token Plan 档位，按充值用量消费。",
+    "dimensions": {
+      "value": {
+        "score": 5,
+        "reason": "DeepSeek 官方约 8 折，高峰涨价后相对优势更明显。"
+      },
+      "stability": {
+        "score": 4,
+        "reason": "当前用户规模不大，日常调用体感较稳，但仍属第三方通道。"
+      },
+      "models": {
+        "score": 4,
+        "reason": "覆盖 DeepSeek-V4-Pro，并支持 GLM、Kimi、Qwen 等常见模型。"
+      }
+    },
+    "tags": [
+      "按量调用"
+    ],
+    "platformStatus": "open",
+    "action": "https://api.dreamfree.space/c/s/cpyqgongji"
   }
 ]

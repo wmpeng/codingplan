@@ -64,6 +64,22 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(!none.includes('data-section="overview"'));
   });
 
+  it('renders payg pricing section when paygEntry provided', () => {
+    const html = buildDetailBodyHtml(samplePlatform({ id: 'gongji', name: '共继算力' }), {
+      plans: [],
+      monitorRow: null,
+      paygEntry: {
+        currency: '¥',
+        notes: ['须邀请'],
+        models: [{ name: 'DeepSeek-V4-Pro', input: 2.4, cache: 0.02, output: 4.8 }]
+      }
+    });
+    assert.ok(html.includes('data-section="payg"'));
+    assert.ok(html.includes('按量定价'));
+    assert.ok(html.includes('¥2.4'));
+    assert.ok(!html.includes('data-section="plans"'));
+  });
+
   it('renders plans section when vendor has plans', () => {
     const plans = [
       {

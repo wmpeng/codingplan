@@ -6,17 +6,23 @@ const rootDir = path.join(__dirname, '../..');
 const configPath = path.join(rootDir, 'config.json');
 const plansPath = path.join(rootDir, 'plans.json');
 const platformsPath = path.join(rootDir, 'platforms.json');
+const paygPricingPath = path.join(rootDir, 'payg-pricing.json');
 const indexPath = path.join(rootDir, 'index.html');
 
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const allPlans = JSON.parse(fs.readFileSync(plansPath, 'utf8'));
 const allPlatforms = JSON.parse(fs.readFileSync(platformsPath, 'utf8'));
+const paygPricing = JSON.parse(fs.readFileSync(paygPricingPath, 'utf8'));
 let indexHtml = fs.readFileSync(indexPath, 'utf8');
 
 const catalogConfig = config.platformCatalog || {};
 const validation = PlatformCatalog.validatePlatformRecords(allPlatforms, allPlans);
 if (!validation.ok) {
     throw new Error(validation.errors.join('\n'));
+}
+const paygValidation = PlatformCatalog.validatePaygPricing(paygPricing, allPlatforms);
+if (!paygValidation.ok) {
+    throw new Error(paygValidation.errors.join('\n'));
 }
 
 const WATERMARK = config.header?.watermarkUrl || 'www.codingplan.fyi';
@@ -350,7 +356,7 @@ indexHtml = replaceElementInnerHtml(
 indexHtml = replaceElementInnerHtml(
     indexHtml,
     'platformCardGrid',
-    filteredPlatforms.map(platform => PlatformCatalog.buildPlatformCardHtml(platform, allPlans)).join('')
+    filteredPlatforms.map(platform => PlatformCatalog.buildPlatformCardHtml(platform, allPlans, { paygPricing })).join('')
 );
 indexHtml = replaceElementText(indexHtml, 'platformShowingCount', String(filteredPlatforms.length));
 indexHtml = replaceElementText(indexHtml, 'platformTotalCount', String(totalVisiblePlatforms));

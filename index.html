@@ -1783,6 +1783,11 @@
             color: #64748b;
         }
 
+        .platform-rush--payg {
+            background: rgba(180, 83, 9, 0.12);
+            color: #b45309;
+        }
+
         .platform-dimensions {
             list-style: none;
             margin: 0;
@@ -2079,6 +2084,70 @@
             line-height: 1.7;
             color: var(--text-secondary);
             overflow-wrap: anywhere;
+        }
+
+        .platform-detail-section[data-section="payg"] {
+            margin-top: 22px;
+        }
+
+        .platform-detail-payg-unit {
+            margin: 0 0 10px;
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+
+        .platform-detail-payg-table-wrap {
+            overflow-x: auto;
+            border-radius: 14px;
+            border: 1px solid rgba(23, 32, 51, 0.08);
+            background: rgba(255, 255, 255, 0.72);
+        }
+
+        .platform-detail-payg-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .platform-detail-payg-table th,
+        .platform-detail-payg-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(23, 32, 51, 0.06);
+            vertical-align: top;
+        }
+
+        .platform-detail-payg-table thead th {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--text-secondary);
+            background: rgba(244, 236, 223, 0.55);
+        }
+
+        .platform-detail-payg-table tbody tr:last-child th,
+        .platform-detail-payg-table tbody tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .platform-detail-payg-model-name {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .platform-detail-payg-model-note {
+            margin-top: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            line-height: 1.45;
+        }
+
+        .platform-detail-payg-notes {
+            margin: 12px 0 0;
+            padding-left: 1.15em;
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-secondary);
         }
 
         .platform-detail-dimensions {
@@ -3476,9 +3545,9 @@
                 <span id="headerEntryText">Github 反馈</span>
             </a>
             <h1 id="pageTitle">AI Coding 平台推荐</h1>
-            <div class="update-date" id="updateDate">更新日期2026.7.15 | 首页改版：平台目录与标签筛选</div>
-            <div class="subtitle" id="subtitle">29 家 Coding Plan / Token Plan 平台一站式选型<br>智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek 等，按性价比、稳定性、模型对比</div>
-            <div class="models" id="models">首页以「选平台」为主：默认仅显示「定时放量」及更开放的平台，也可按「性价比高」「模型强」等维度快速缩小范围；下方套餐表仍保留全量对比。</div>
+            <div class="update-date" id="updateDate">更新日期2026.7.20 | 平台目录纳入按量调用（DeepSeek 官方、共继算力）</div>
+            <div class="subtitle" id="subtitle">31 家 Coding Plan / Token Plan / 按量调用平台一站式选型<br>智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek、共继算力 等，按性价比、稳定性、模型对比</div>
+            <div class="models" id="models">首页以「选平台」为主：默认仅显示「定时放量」及更开放的平台，也可按「性价比高」「模型强」「按量调用」等维度快速缩小范围；下方套餐表仍保留全量对比。</div>
         </div>
 
         <div class="hero-summary hero-summary--lede">
@@ -3635,10 +3704,10 @@
                 <h2 class="platform-catalog-title">平台目录</h2>
                 <p class="platform-catalog-subtitle">按标签与平台状态筛选；清空后回到默认「定时放量」</p>
             </header>
-            <div class="platform-tag-bar" id="platformTagBar" role="group" aria-label="平台标签"><div class="platform-tag-bar-main"><div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选"><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="性价比高" aria-pressed="false">性价比高</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="稳定性好" aria-pressed="false">稳定性好</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="模型强" aria-pressed="false">模型强</button></div><div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签"><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="热门模型" aria-pressed="false">热门模型</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="适合养龙虾" aria-pressed="false">适合养龙虾</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="可支付宝" aria-pressed="false">可支付宝</button></div></div><div class="platform-status-slider" data-platform-status-max="limited" role="group" aria-label="显示开放购买和定时放量平台"><span class="platform-status-prefix">显示</span><div class="platform-status-segments" tabindex="0"><button type="button" class="platform-status-seg is-active" data-platform-status="open" aria-pressed="true" title="仅显示开放购买平台">开放购买</button><span class="platform-status-and" aria-hidden="true">和</span><button type="button" class="platform-status-seg is-active" data-platform-status="limited" aria-pressed="true" title="显示定时放量平台">定时放量</button><button type="button" class="platform-status-seg" data-platform-status="paused" aria-pressed="false" title="显示暂时停售平台">暂时停售</button><button type="button" class="platform-status-seg" data-platform-status="delisted" aria-pressed="false" title="显示所有平台">所有</button></div><span class="platform-status-suffix">平台</span></div></div>
+            <div class="platform-tag-bar" id="platformTagBar" role="group" aria-label="平台标签"><div class="platform-tag-bar-main"><div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选"><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="性价比高" aria-pressed="false">性价比高</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="稳定性好" aria-pressed="false">稳定性好</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="模型强" aria-pressed="false">模型强</button></div><div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签"><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="热门模型" aria-pressed="false">热门模型</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="适合养龙虾" aria-pressed="false">适合养龙虾</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="可支付宝" aria-pressed="false">可支付宝</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="按量调用" aria-pressed="false">按量调用</button></div></div><div class="platform-status-slider" data-platform-status-max="limited" role="group" aria-label="显示开放购买和定时放量平台"><span class="platform-status-prefix">显示</span><div class="platform-status-segments" tabindex="0"><button type="button" class="platform-status-seg is-active" data-platform-status="open" aria-pressed="true" title="仅显示开放购买平台">开放购买</button><span class="platform-status-and" aria-hidden="true">和</span><button type="button" class="platform-status-seg is-active" data-platform-status="limited" aria-pressed="true" title="显示定时放量平台">定时放量</button><button type="button" class="platform-status-seg" data-platform-status="paused" aria-pressed="false" title="显示暂时停售平台">暂时停售</button><button type="button" class="platform-status-seg" data-platform-status="delisted" aria-pressed="false" title="显示所有平台">所有</button></div><span class="platform-status-suffix">平台</span></div></div>
             <div class="platform-catalog-toolbar">
                 <button type="button" class="platform-clear-filters" id="platformClearFilters">清空筛选</button>
-                <span class="platform-catalog-stats">显示 <strong id="platformShowingCount">27</strong> / <strong id="platformTotalCount">27</strong> 个平台</span>
+                <span class="platform-catalog-stats">显示 <strong id="platformShowingCount">29</strong> / <strong id="platformTotalCount">29</strong> 个平台</span>
             </div>
             <div class="platform-card-grid" id="platformCardGrid">
                 <article class="platform-card" data-platform-id="zhipu" tabindex="0" role="button" aria-label="智谱AI 详情">
@@ -3646,6 +3715,7 @@
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqzhipu" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">智谱AI</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             <span class="platform-rush" data-platform-status="limited">定时放量</span>
+                            
                         </div>
                         <span class="platform-rating" aria-label="5 星">⭐️⭐️⭐️⭐️⭐️</span>
                     </header>
@@ -3660,6 +3730,7 @@
                     <header>
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqzai" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">智谱国际版</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            
                             
                         </div>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -3676,6 +3747,7 @@
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqminimax" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">MiniMax</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             
+                            
                         </div>
                         <span class="platform-rating" aria-label="5 星">⭐️⭐️⭐️⭐️⭐️</span>
                     </header>
@@ -3691,6 +3763,7 @@
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">字节·方舟</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             <span class="platform-rush" data-platform-status="limited">定时放量</span>
+                            
                         </div>
                         <span class="platform-rating" aria-label="5 星">⭐️⭐️⭐️⭐️⭐️</span>
                     </header>
@@ -3705,6 +3778,7 @@
                     <header>
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqxunfei" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">讯飞·星火</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            
                             
                         </div>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -3721,6 +3795,7 @@
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqopencode" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">OpenCode</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             
+                            
                         </div>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
                     </header>
@@ -3735,6 +3810,7 @@
                     <header>
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqmimo" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">小米·MiMo</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            
                             
                         </div>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -3751,6 +3827,7 @@
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqkimi" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Kimi</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             
+                            
                         </div>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
                     </header>
@@ -3765,6 +3842,7 @@
                     <header>
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqyyzs" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">优云智算</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            
                             
                         </div>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -3781,6 +3859,7 @@
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqbailianc" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">阿里·百炼</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             
+                            
                         </div>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
                     </header>
@@ -3795,6 +3874,7 @@
                     <header>
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqqianfan" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">百度·千帆</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            
                             
                         </div>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
@@ -3811,6 +3891,7 @@
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">华为云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             
+                            
                         </div>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
                     </header>
@@ -3825,6 +3906,7 @@
                     <header>
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqtengxunc" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">腾讯云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            
                             
                         </div>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
@@ -3841,6 +3923,7 @@
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqjingdong" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">京东云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             
+                            
                         </div>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
                     </header>
@@ -3855,6 +3938,7 @@
                     <header>
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqunicomcp" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">联通云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            
                             
                         </div>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
@@ -3871,6 +3955,7 @@
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqmobilecp" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">移动云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             
+                            
                         </div>
                         <span class="platform-rating" aria-label="2 星">⭐️⭐️</span>
                     </header>
@@ -3885,6 +3970,7 @@
                     <header>
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqstepfun" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">阶跃星辰</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            
                             
                         </div>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
@@ -3901,6 +3987,7 @@
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqsensenova" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">商汤·日日新</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             
+                            
                         </div>
                         <span class="platform-rating" aria-label="2 星">⭐️⭐️</span>
                     </header>
@@ -3915,6 +4002,7 @@
                     <header>
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqscnetcp" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">超算</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            
                             
                         </div>
                         <span class="platform-rating" aria-label="2 星">⭐️⭐️</span>
@@ -3931,6 +4019,7 @@
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqollama" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Ollama</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             
+                            
                         </div>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
                     </header>
@@ -3945,6 +4034,7 @@
                     <header>
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqtaotoken" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">TaoToken</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            
                             
                         </div>
                         <span class="platform-rating" aria-label="3 星">⭐️⭐️⭐️</span>
@@ -3961,6 +4051,7 @@
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqmoorefree" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">摩尔线程</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             
+                            
                         </div>
                         <span class="platform-rating" aria-label="2 星">⭐️⭐️</span>
                     </header>
@@ -3975,6 +4066,7 @@
                     <header>
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqclaudeup" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Claude</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            
                             
                         </div>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -3991,6 +4083,7 @@
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqchatgpt" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Codex</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             
+                            
                         </div>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
                     </header>
@@ -4005,6 +4098,7 @@
                     <header>
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqghstudent" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">GitHub</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            
                             
                         </div>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
@@ -4021,6 +4115,7 @@
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">DeepSeek Flash</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             
+                            
                         </div>
                         <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
                     </header>
@@ -4036,6 +4131,7 @@
                         <div class="platform-card-heading">
                             <a class="platform-name-link" href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">DeepSeek Pro</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             
+                            
                         </div>
                         <span class="platform-rating" aria-label="5 星">⭐️⭐️⭐️⭐️⭐️</span>
                     </header>
@@ -4043,6 +4139,38 @@
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">原生 DeepSeek-V4-Pro，输入 3 元/M、输出 6 元/M，按量透明；高峰涨价后优势收窄。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">稳定性</span></div><span class="dim-reason">官方直连稳定可靠，峰谷计费后高峰时段需关注成本波动。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">DeepSeek-V4-Pro 推理与代码能力处于第一梯队，是主流平替基准。</span></li></ul>
                     
                     <div class="platform-models" aria-label="模型"><span class="model-tag">DeepSeek-V4-Pro</span></div>
+                    <span class="platform-card-hint">查看详情 <span aria-hidden="true">→</span></span>
+                </article>
+            
+                <article class="platform-card" data-platform-id="deepseek-official" tabindex="0" role="button" aria-label="DeepSeek 官方 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://platform.deepseek.com/" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">DeepSeek 官方</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            
+                            <span class="platform-rush platform-rush--payg">按量</span>
+                        </div>
+                        <span class="platform-rating" aria-label="5 星">⭐️⭐️⭐️⭐️⭐️</span>
+                    </header>
+                    <p class="platform-summary">原生 DeepSeek 按量通道，单价透明，适合不想抢固定套餐的用户。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">按量标价透明；高峰翻倍后重负载成本优势会收窄。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">稳定性</span></div><span class="dim-reason">官方直连通道成熟，可用性与账号体系最省心。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">原生 DeepSeek-V4 系列，推理与代码能力处于第一梯队。</span></li></ul>
+                    <div class="platform-tags" aria-label="标签"><span class="platform-tag">按量调用</span><span class="platform-tag">热门模型</span></div>
+                    <div class="platform-models" aria-label="模型"><span class="model-tag">DeepSeek-V4-Pro</span><span class="model-tag">DeepSeek-V4-Flash</span></div>
+                    <span class="platform-card-hint">查看详情 <span aria-hidden="true">→</span></span>
+                </article>
+            
+                <article class="platform-card" data-platform-id="gongji" tabindex="0" role="button" aria-label="共继算力 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqgongji" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">共继算力</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            
+                            <span class="platform-rush platform-rush--payg">按量</span>
+                        </div>
+                        <span class="platform-rating" aria-label="4 星">⭐️⭐️⭐️⭐️</span>
+                    </header>
+                    <p class="platform-summary">DeepSeek 等模型官方约 8 折按量，人少时更稳，适合灵活充值调用。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">DeepSeek 官方约 8 折，高峰涨价后相对优势更明显。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">稳定性</span></div><span class="dim-reason">当前用户规模不大，日常调用体感较稳，但仍属第三方通道。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">覆盖 DeepSeek-V4-Pro，并支持 GLM、Kimi、Qwen 等常见模型。</span></li></ul>
+                    <div class="platform-tags" aria-label="标签"><span class="platform-tag">按量调用</span></div>
+                    <div class="platform-models" aria-label="模型"><span class="model-tag">DeepSeek-V4-Pro</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Qwen-3.7-Max</span></div>
                     <span class="platform-card-hint">查看详情 <span aria-hidden="true">→</span></span>
                 </article>
             </div>
@@ -7036,6 +7164,10 @@
             <h3>📝 更新日志</h3>
             <ul class="updates-list">
                 <li class="update-item">
+                    <div class="log-date">2026.7.20</div>
+                    <ul class="update-items"><li>平台目录新增按量调用平台：DeepSeek 官方、共继算力（定价见 payg-pricing.json，不进套餐大表）</li><li>筛选标签新增「按量调用」；DeepSeek Flash / Pro 虚拟套餐条目保持不动</li></ul>
+                </li>
+                <li class="update-item">
                     <div class="log-date">2026.7.15</div>
                     <ul class="update-items"><li>首页改版：新增平台目录与标签筛选（默认「无需抢购」），页头叙事调整为「选平台」</li><li>推荐分组精简为「综合推荐」「按量计费推荐」，「高性价比」「不抢购」等场景改由目录标签承担</li><li>Codex（Plus / Pro *5 / Pro *20）追加支持 GPT-5.6 模型</li></ul>
                 </li>
@@ -7207,10 +7339,10 @@
     </div>
 
     <script src="monitor/monitor-config.local.js"></script>
-    <script src="scripts/platform-catalog.js?v=260720h"></script>
-    <script src="scripts/platform-detail.js?v=260720h"></script>
+    <script src="scripts/platform-catalog.js?v=260720i"></script>
+    <script src="scripts/platform-detail.js?v=260720i"></script>
     <script src="scripts/shared.js?v=260610"></script>
-        <script src="scripts/homepage.js?v=260720h"></script>
+        <script src="scripts/homepage.js?v=260720i"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
     <script src="scripts/plan-usage-chart.js?v=260617"></script>
