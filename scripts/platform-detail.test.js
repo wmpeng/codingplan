@@ -78,6 +78,8 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('data-section="payg"'));
     assert.ok(html.includes('按量定价'));
     assert.ok(html.includes('¥2.4'));
+    assert.ok(html.includes('在按量计价大表中查看'));
+    assert.ok(html.includes('href="payg.html"'));
     assert.ok(!html.includes('data-section="plans"'));
     const dimsAt = html.indexOf('data-section="dimensions"');
     const paygAt = html.indexOf('data-section="payg"');
