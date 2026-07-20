@@ -230,7 +230,7 @@ function buildPaygPricingSectionHtml(entry) {
           : '';
       return (
         `<tr>` +
-        `<th scope="row"><span class="platform-detail-payg-model-name">${escapeHtml(model.name.trim())}</span>${note}</th>` +
+        `<td><span class="platform-detail-payg-model-name">${escapeHtml(model.name.trim())}</span>${note}</td>` +
         `<td>${escapeHtml(formatPaygPrice(model.input, currency))}</td>` +
         `<td>${escapeHtml(formatPaygPrice(model.cache, currency))}</td>` +
         `<td>${escapeHtml(formatPaygPrice(model.output, currency))}</td>` +
