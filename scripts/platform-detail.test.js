@@ -243,7 +243,8 @@ describe('buildDetailBodyHtml', () => {
     });
     assert.ok(html.includes('data-section="availability"'));
     assert.ok(html.includes('98.7% 可用'));
-    assert.ok(html.includes('近 48 小时'));
+    assert.ok(html.includes('近 7 天'));
+    assert.ok(html.includes('时间条展示最近 4 小时'));
     assert.ok(html.includes('platform-detail-hour-cell--green'));
     assert.ok(html.includes('platform-detail-hour-cell--yellow'));
     assert.ok(html.includes('查看完整可用性'));

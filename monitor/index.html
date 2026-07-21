@@ -15,8 +15,14 @@
             flex-wrap: wrap;
             gap: 0.5rem;
             align-items: center;
-            padding-bottom: 0.85rem;
-            margin-bottom: 0.15rem;
+            padding-bottom: 0.55rem;
+            margin-bottom: 0;
+        }
+        .monitor-window-hint {
+            margin: 0 0 0.85rem;
+            font-size: 0.78rem;
+            color: var(--text-tertiary);
+            line-height: 1.4;
         }
         .monitor-control {
             display: inline-flex;
@@ -380,6 +386,7 @@
                     <span id="sortLabel"></span>
                 </label>
             </div>
+            <p id="windowHint" class="monitor-window-hint" hidden></p>
             <div id="boardRoot" class="monitor-loading">加载中...</div>
         </div>
     </div>
@@ -411,6 +418,32 @@
             var count = pickVisibleCount();
             if (!hours || hours.length <= count) return hours || [];
             return hours.slice(hours.length - count);
+        }
+
+        function boardDays() {
+            var days = boardData && boardData.days;
+            if (typeof days === 'number' && days > 0) return days;
+            return 7;
+        }
+
+        function updateWindowHint() {
+            var hint = document.getElementById('windowHint');
+            if (!hint) return;
+            if (!boardData || !boardData.platforms || !boardData.platforms.length) {
+                hint.hidden = true;
+                hint.textContent = '';
+                return;
+            }
+            var days = boardDays();
+            var visible = pickVisibleCount();
+            var totalHours = days * 24;
+            var showHours = Math.min(visible, totalHours);
+            hint.hidden = false;
+            if (showHours < totalHours) {
+                hint.textContent = '可用率按近 ' + days + ' 天统计 · 时间条展示最近 ' + showHours + ' 小时';
+            } else {
+                hint.textContent = '可用率按近 ' + days + ' 天统计 · 时间条展示全部 ' + totalHours + ' 小时';
+            }
         }
 
         function displayModelName(name) {
@@ -519,7 +552,7 @@
         }
 
         function formatRateDisplay(rate) {
-            return formatRate(rate) + ' ' + (CONFIG.toolbar.availableLabel || '可用');
+            return '近 ' + boardDays() + ' 天 ' + formatRate(rate) + ' ' + (CONFIG.toolbar.availableLabel || '可用');
         }
 
         function statusDotColor(hours) {
@@ -664,6 +697,7 @@
             var root = document.getElementById('boardRoot');
             root.innerHTML = '';
             root.className = 'monitor-list';
+            updateWindowHint();
 
             if (!boardData || !boardData.platforms || !boardData.platforms.length) {
                 root.className = 'monitor-empty';
@@ -813,6 +847,7 @@
             var root = document.getElementById('boardRoot');
             root.className = 'monitor-loading';
             root.textContent = CONFIG.loadingLabel || '加载中...';
+            updateWindowHint();
 
             fetch(API_BASE + '/monitor/board?days=7')
                 .then(function(r) { return r.json(); })
@@ -822,6 +857,8 @@
                     renderBoard();
                 })
                 .catch(function() {
+                    boardData = null;
+                    updateWindowHint();
                     root.className = 'monitor-empty';
                     root.textContent = CONFIG.errorLabel || '数据加载失败，请稍后重试';
                 });

@@ -192,10 +192,15 @@
     return ((rate || 0) * 100).toFixed(1) + '%';
   }
 
-  function buildHoursSparklineHtml(hours) {
-    if (!Array.isArray(hours) || hours.length === 0) return '';
+  function sparklineVisibleHours(hours) {
+    if (!Array.isArray(hours) || hours.length === 0) return [];
     // 与监控页一致：条带用 flex 铺满宽度；弹层宽度有限，取最近 48 小时
-    const recent = hours.length > 48 ? hours.slice(hours.length - 48) : hours;
+    return hours.length > 48 ? hours.slice(hours.length - 48) : hours;
+  }
+
+  function buildHoursSparklineHtml(hours) {
+    const recent = sparklineVisibleHours(hours);
+    if (!recent.length) return '';
     const cells = recent
       .map(cell => {
         const color = (cell && cell.color) || 'gray';
@@ -209,22 +214,32 @@
     if (!monitorRow) return '';
 
     const rateText = `${formatAvailabilityRate(monitorRow.availability_rate)} 可用`;
+    const days =
+      typeof monitorRow.days === 'number' && monitorRow.days > 0
+        ? monitorRow.days
+        : 7;
+    const shownHours = sparklineVisibleHours(monitorRow.hours).length;
     const slug =
       (monitorRow.platform_slug && String(monitorRow.platform_slug).trim()) ||
       (platform && platform.monitorSlug && String(platform.monitorSlug).trim()) ||
       (platform && platform.name) ||
       '';
     const href = `monitor/?platform=${encodeURIComponent(slug)}`;
+    const barCaption =
+      shownHours > 0
+        ? `<span class="platform-detail-avail-bar-caption">时间条展示最近 ${shownHours} 小时</span>`
+        : '';
 
     return (
       `<section class="platform-detail-section" data-section="availability" aria-labelledby="platformDetailAvailHeading">` +
       `<h3 id="platformDetailAvailHeading" class="platform-detail-section-title">可用性</h3>` +
       `<div class="platform-detail-avail">` +
       `<div class="platform-detail-avail-top">` +
-      `<span class="platform-detail-avail-caption">近 48 小时</span>` +
+      `<span class="platform-detail-avail-caption">近 ${days} 天</span>` +
       `<span class="platform-detail-avail-rate">${esc(rateText)}</span>` +
       `</div>` +
       buildHoursSparklineHtml(monitorRow.hours) +
+      barCaption +
       `</div>` +
       `<a class="platform-detail-avail-link" href="${esc(href)}">查看完整可用性 →</a>` +
       `</section>`
