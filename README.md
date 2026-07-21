@@ -73,9 +73,9 @@ DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 C
     - 同时支持 GLM-5.2、DeepSeek-V4-Flash、Qwen-3.7-Max 等 150+ 模型。
     - 海外专线，延迟低，无需抢购。
 3. [字节·方舟](https://api.dreamfree.space/c/s/cpyqfangzhou) ⭐️⭐️⭐️⭐️⭐️
-    - Coding Plan / Token Plan 全档位支持 Kimi-K3。
+    - Token Plan 全档位（Small/Medium/Large/Max）支持 Kimi-K3。
     - 同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。
-    - Coding Plan 当前需抢购；Token Plan 现货。
+    - Coding Plan 当前仅支持 Kimi-K2.7-Code，需抢购；Token Plan 现货。
 
 ### 包含 GLM-5.2
 
@@ -162,8 +162,8 @@ DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 C
 | MiniMax | 新Ultra | Token Plan | [跳转](https://api.dreamfree.space/c/s/cpyqminimax) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高 | ¥422.1 | ¥469 | - / 季 | ¥4690 ~~5628~~ / 年 | 15,000 | 150,000 | 600,000 | - | - | 7,100M Tokens | 1513.9万 | ¥0.07 | 7,100M Tokens | MiniMax-M3, MiniMax-M2.7, MiniMax-M2.5 | - | 在售 | - |
 | 讯飞·星火 | 专业版 | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqxunfei) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高 | - | ¥39 | - / 季 | - / 年 | 1,200 | 9,000 | 18,000 | - | - | - | - | - | 无限制 | GLM-5.1, Kimi-K2.6, Qwen3.6-35B-A3B, MiniMax-M2.5, Kimi-K2.5, DeepSeek-V3.2 | - | 在售 | • 讯飞实际可用量比较多，按调用量计数，明示调用量 |
 | 讯飞·星火 | 高效版 | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqxunfei) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高 | - | ¥199 | - / 季 | - / 年 | 6,000 | 45,000 | 90,000 | - | - | - | - | - | 无限制 | DeepSeek-V4-Pro, DeepSeek-V4-Flash, GLM-5.1, GLM-5.2, Kimi-K2.6, Qwen3.6-35B-A3B, GLM-5, MiniMax-M2.5, Kimi-K2.5, DeepSeek-V3.2 | - | 在售 | • 高效版已支持 GLM-5.2 <br> • 讯飞实际可用量比较多，按调用量计数，明示调用量 |
-| 字节·方舟 | Lite | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqfangzhou) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 | ¥9.4 | ¥40 | - / 季 | - / 年 | 1,200 | 9,000 | 18,000 | 17M Tokens | 125M Tokens | 250M Tokens | 624.4万 | ¥0.16 | 无限制 | Doubao-Seed-2.0系列, Doubao-Seed-Code, GLM-5.1, GLM-5.2, MiniMax-M2.7, MiniMax-M3, Kimi-K2.6, Kimi-K2.7-Code, Kimi-K3, DeepSeek-V3.2, DeepSeek-V4-Flash, DeepSeek-V4-Pro | - | 在售 | • 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19） <br> • DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍，GLM-5.2限时4倍用量 |
-| 字节·方舟 | Pro | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqfangzhou) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 | ¥47.4 | ¥200 | - / 季 | - / 年 | 6,000 | 45,000 | 90,000 | 83M Tokens | 624M Tokens | 1,249M Tokens | 624.4万 | ¥0.16 | 无限制 | Doubao-Seed-2.0系列, Doubao-Seed-Code, GLM-5.1, GLM-5.2, MiniMax-M2.7, MiniMax-M3, Kimi-K2.6, Kimi-K2.7-Code, Kimi-K3, DeepSeek-V3.2, DeepSeek-V4-Flash, DeepSeek-V4-Pro | - | 在售 | • 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19） <br> • DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍，GLM-5.2限时4倍用量 |
+| 字节·方舟 | Lite | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqfangzhou) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 | ¥9.4 | ¥40 | - / 季 | - / 年 | 1,200 | 9,000 | 18,000 | 17M Tokens | 125M Tokens | 250M Tokens | 624.4万 | ¥0.16 | 无限制 | Doubao-Seed-2.0系列, Doubao-Seed-Code, GLM-5.1, GLM-5.2, MiniMax-M2.7, MiniMax-M3, Kimi-K2.6, Kimi-K2.7-Code, DeepSeek-V3.2, DeepSeek-V4-Flash, DeepSeek-V4-Pro | - | 在售 | • 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19） <br> • DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍，GLM-5.2限时4倍用量 |
+| 字节·方舟 | Pro | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqfangzhou) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 | ¥47.4 | ¥200 | - / 季 | - / 年 | 6,000 | 45,000 | 90,000 | 83M Tokens | 624M Tokens | 1,249M Tokens | 624.4万 | ¥0.16 | 无限制 | Doubao-Seed-2.0系列, Doubao-Seed-Code, GLM-5.1, GLM-5.2, MiniMax-M2.7, MiniMax-M3, Kimi-K2.6, Kimi-K2.7-Code, DeepSeek-V3.2, DeepSeek-V4-Flash, DeepSeek-V4-Pro | - | 在售 | • 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19） <br> • DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍，GLM-5.2限时4倍用量 |
 | Kimi | Andante | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqkimi) | ⭐️⭐️⭐️⭐️ | 模型强 | - | ¥49 | - / 季 | ¥468 ~~588~~ / 年 | 未公开 | 未公开 | 未公开 | 15M Tokens | 21M Tokens | 84M Tokens | 171.4万 | ¥0.58 | 无限制 | Kimi-K3, Kimi-K2.7-Code, Kimi-K2.6, Kimi-K2.5, Kimi-K2 | - | 在售 | Agent 4 倍速 |
 | Kimi | Moderato | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqkimi) | ⭐️⭐️⭐️⭐️ | 模型强 | - | ¥99 | - / 季 | ¥948 ~~1188~~ / 年 | 未公开 | 未公开 | 未公开 | - | - | - | - | - | 无限制 | Kimi-K3, Kimi-K2.7-Code, Kimi-K2.6, Kimi-K2.5, Kimi-K2 | - | 在售 | 4 倍额度, Agent 多任务并行 |
 | Kimi | Allegretto | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqkimi) | ⭐️⭐️⭐️⭐️ | 模型强 / 性价比高 | - | ¥199 | - / 季 | ¥1908 ~~2388~~ / 年 | 未公开 | 未公开 | 未公开 | 65M Tokens | 357M Tokens | 1,428M Tokens | 717.6万 | ¥0.14 | 无限制 | Kimi-K3, Kimi-K2.7-Code, Kimi-K2.6, Kimi-K2.5, Kimi-K2 | 免费Kimi-Claw | 在售 | 20 倍额度 |
