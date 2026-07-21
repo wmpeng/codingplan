@@ -232,6 +232,7 @@ describe('buildDetailBodyHtml', () => {
       monitorRow: {
         platform_slug: 'minimax',
         platform_display_name: 'MiniMax',
+        // 后端 7 天率仅作参考；展示应按可见条带重算：绿+黄 / 非灰 = 2/3
         availability_rate: 0.987,
         hours: [
           { color: 'green' },
@@ -242,12 +243,27 @@ describe('buildDetailBodyHtml', () => {
       }
     });
     assert.ok(html.includes('data-section="availability"'));
-    assert.ok(html.includes('98.7% 可用'));
-    assert.ok(html.includes('近 7 天'));
-    assert.ok(html.includes('时间条展示最近 4 小时'));
+    assert.ok(html.includes('66.7% 可用'));
+    assert.ok(!html.includes('98.7% 可用'));
+    assert.ok(html.includes('近 48 小时'));
     assert.ok(html.includes('platform-detail-hour-cell--green'));
     assert.ok(html.includes('platform-detail-hour-cell--yellow'));
     assert.ok(html.includes('查看完整可用性'));
+  });
+
+  it('availability rate uses last 48 hours only', () => {
+    const olderRed = Array.from({ length: 48 }, () => ({ color: 'red' }));
+    const recentGreen = Array.from({ length: 48 }, () => ({ color: 'green' }));
+    const html = buildDetailBodyHtml(samplePlatform({ name: 'MiniMax' }), {
+      plans: [],
+      monitorRow: {
+        platform_slug: 'minimax',
+        availability_rate: 0.5,
+        hours: olderRed.concat(recentGreen)
+      }
+    });
+    assert.ok(html.includes('100.0% 可用'));
+    assert.ok(!html.includes('50.0% 可用'));
   });
 
   it('omits availability when monitorRow null', () => {

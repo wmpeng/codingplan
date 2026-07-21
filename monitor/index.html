@@ -15,14 +15,8 @@
             flex-wrap: wrap;
             gap: 0.5rem;
             align-items: center;
-            padding-bottom: 0.55rem;
-            margin-bottom: 0;
-        }
-        .monitor-window-hint {
-            margin: 0 0 0.85rem;
-            font-size: 0.78rem;
-            color: var(--text-tertiary);
-            line-height: 1.4;
+            padding-bottom: 0.85rem;
+            margin-bottom: 0.15rem;
         }
         .monitor-control {
             display: inline-flex;
@@ -386,7 +380,6 @@
                     <span id="sortLabel"></span>
                 </label>
             </div>
-            <p id="windowHint" class="monitor-window-hint" hidden></p>
             <div id="boardRoot" class="monitor-loading">加载中...</div>
         </div>
     </div>
@@ -420,30 +413,23 @@
             return hours.slice(hours.length - count);
         }
 
-        function boardDays() {
-            var days = boardData && boardData.days;
-            if (typeof days === 'number' && days > 0) return days;
-            return 7;
+        // 与后端 availability_rate_from_colors 同口径：排除灰格后 (绿+黄)/有数据
+        function availabilityRateFromHours(hours) {
+            var cells = hours || [];
+            var withData = 0;
+            var ok = 0;
+            for (var i = 0; i < cells.length; i++) {
+                var color = (cells[i] && cells[i].color) || 'gray';
+                if (color === 'gray') continue;
+                withData += 1;
+                if (color === 'green' || color === 'yellow') ok += 1;
+            }
+            if (!withData) return 0;
+            return Math.round((ok / withData) * 10000) / 10000;
         }
 
-        function updateWindowHint() {
-            var hint = document.getElementById('windowHint');
-            if (!hint) return;
-            if (!boardData || !boardData.platforms || !boardData.platforms.length) {
-                hint.hidden = true;
-                hint.textContent = '';
-                return;
-            }
-            var days = boardDays();
-            var visible = pickVisibleCount();
-            var totalHours = days * 24;
-            var showHours = Math.min(visible, totalHours);
-            hint.hidden = false;
-            if (showHours < totalHours) {
-                hint.textContent = '可用率按近 ' + days + ' 天统计 · 时间条展示最近 ' + showHours + ' 小时';
-            } else {
-                hint.textContent = '可用率按近 ' + days + ' 天统计 · 时间条展示全部 ' + totalHours + ' 小时';
-            }
+        function visibleAvailabilityRate(hours) {
+            return availabilityRateFromHours(visibleHours(hours));
         }
 
         function displayModelName(name) {
@@ -552,7 +538,7 @@
         }
 
         function formatRateDisplay(rate) {
-            return '近 ' + boardDays() + ' 天 ' + formatRate(rate) + ' ' + (CONFIG.toolbar.availableLabel || '可用');
+            return formatRate(rate) + ' ' + (CONFIG.toolbar.availableLabel || '可用');
         }
 
         function statusDotColor(hours) {
@@ -626,7 +612,7 @@
                 compactPlatformName: opts.compactPlatformName || null,
                 title: displayModelName(model.model_slug),
                 meta: formatTps(model.avg_tps) + ' ' + (CONFIG.toolbar.tpsUnit || 'tok/s'),
-                rate: model.availability_rate,
+                rate: visibleAvailabilityRate(model.hours),
                 hours: model.hours
             });
         }
@@ -638,7 +624,7 @@
             block.appendChild(renderStatusRow({
                 title: platform.platform_display_name || platform.platform_slug,
                 meta: (platform.models ? platform.models.length : 0) + ' ' + (CONFIG.toolbar.modelsLabel || '个模型'),
-                rate: platform.availability_rate,
+                rate: visibleAvailabilityRate(platform.hours),
                 hours: platform.hours,
                 clickable: true,
                 expanded: !!expandedPlatforms[platform.platform_slug],
@@ -688,7 +674,7 @@
             var copy = (platforms || []).slice();
             if (!sortByAvailability) return copy;
             copy.sort(function(a, b) {
-                return (b.availability_rate || 0) - (a.availability_rate || 0);
+                return visibleAvailabilityRate(b.hours) - visibleAvailabilityRate(a.hours);
             });
             return copy;
         }
@@ -697,7 +683,6 @@
             var root = document.getElementById('boardRoot');
             root.innerHTML = '';
             root.className = 'monitor-list';
-            updateWindowHint();
 
             if (!boardData || !boardData.platforms || !boardData.platforms.length) {
                 root.className = 'monitor-empty';
@@ -726,7 +711,7 @@
                 }
                 if (sortByAvailability) {
                     rows.sort(function(a, b) {
-                        return (b.model.availability_rate || 0) - (a.model.availability_rate || 0);
+                        return visibleAvailabilityRate(b.model.hours) - visibleAvailabilityRate(a.model.hours);
                     });
                 }
                 root.appendChild(renderSectionHead(
@@ -847,7 +832,6 @@
             var root = document.getElementById('boardRoot');
             root.className = 'monitor-loading';
             root.textContent = CONFIG.loadingLabel || '加载中...';
-            updateWindowHint();
 
             fetch(API_BASE + '/monitor/board?days=7')
                 .then(function(r) { return r.json(); })
@@ -857,8 +841,6 @@
                     renderBoard();
                 })
                 .catch(function() {
-                    boardData = null;
-                    updateWindowHint();
                     root.className = 'monitor-empty';
                     root.textContent = CONFIG.errorLabel || '数据加载失败，请稍后重试';
                 });

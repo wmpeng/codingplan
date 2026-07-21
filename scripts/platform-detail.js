@@ -188,20 +188,36 @@
     );
   }
 
+  const DETAIL_AVAIL_HOURS = 48;
+
   function formatAvailabilityRate(rate) {
     return ((rate || 0) * 100).toFixed(1) + '%';
   }
 
-  function sparklineVisibleHours(hours) {
+  // 与监控页 / 后端同口径：排除灰格后 (绿+黄)/有数据
+  function availabilityRateFromHours(hours) {
+    const cells = Array.isArray(hours) ? hours : [];
+    let withData = 0;
+    let ok = 0;
+    for (let i = 0; i < cells.length; i++) {
+      const color = (cells[i] && cells[i].color) || 'gray';
+      if (color === 'gray') continue;
+      withData += 1;
+      if (color === 'green' || color === 'yellow') ok += 1;
+    }
+    if (!withData) return 0;
+    return Math.round((ok / withData) * 10000) / 10000;
+  }
+
+  function recentHours(hours, count) {
     if (!Array.isArray(hours) || hours.length === 0) return [];
-    // 与监控页一致：条带用 flex 铺满宽度；弹层宽度有限，取最近 48 小时
-    return hours.length > 48 ? hours.slice(hours.length - 48) : hours;
+    if (hours.length <= count) return hours;
+    return hours.slice(hours.length - count);
   }
 
   function buildHoursSparklineHtml(hours) {
-    const recent = sparklineVisibleHours(hours);
-    if (!recent.length) return '';
-    const cells = recent
+    if (!hours.length) return '';
+    const cells = hours
       .map(cell => {
         const color = (cell && cell.color) || 'gray';
         return `<span class="platform-detail-hour-cell platform-detail-hour-cell--${esc(color)}"></span>`;
@@ -213,33 +229,25 @@
   function buildAvailabilitySectionHtml(platform, monitorRow) {
     if (!monitorRow) return '';
 
-    const rateText = `${formatAvailabilityRate(monitorRow.availability_rate)} 可用`;
-    const days =
-      typeof monitorRow.days === 'number' && monitorRow.days > 0
-        ? monitorRow.days
-        : 7;
-    const shownHours = sparklineVisibleHours(monitorRow.hours).length;
+    // 弹层宽度有限：条带与百分比都按最近 48 小时
+    const visible = recentHours(monitorRow.hours, DETAIL_AVAIL_HOURS);
+    const rateText = `${formatAvailabilityRate(availabilityRateFromHours(visible))} 可用`;
     const slug =
       (monitorRow.platform_slug && String(monitorRow.platform_slug).trim()) ||
       (platform && platform.monitorSlug && String(platform.monitorSlug).trim()) ||
       (platform && platform.name) ||
       '';
     const href = `monitor/?platform=${encodeURIComponent(slug)}`;
-    const barCaption =
-      shownHours > 0
-        ? `<span class="platform-detail-avail-bar-caption">时间条展示最近 ${shownHours} 小时</span>`
-        : '';
 
     return (
       `<section class="platform-detail-section" data-section="availability" aria-labelledby="platformDetailAvailHeading">` +
       `<h3 id="platformDetailAvailHeading" class="platform-detail-section-title">可用性</h3>` +
       `<div class="platform-detail-avail">` +
       `<div class="platform-detail-avail-top">` +
-      `<span class="platform-detail-avail-caption">近 ${days} 天</span>` +
+      `<span class="platform-detail-avail-caption">近 48 小时</span>` +
       `<span class="platform-detail-avail-rate">${esc(rateText)}</span>` +
       `</div>` +
-      buildHoursSparklineHtml(monitorRow.hours) +
-      barCaption +
+      buildHoursSparklineHtml(visible) +
       `</div>` +
       `<a class="platform-detail-avail-link" href="${esc(href)}">查看完整可用性 →</a>` +
       `</section>`
