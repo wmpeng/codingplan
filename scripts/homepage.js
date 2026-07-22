@@ -2092,8 +2092,6 @@
                         ? PlatformCatalog.isPlatformStatusSegmentActive
                         : (btnStatus, maxStatus) => btnStatus === maxStatus;
 
-                segments.querySelectorAll('.platform-status-and').forEach((el) => el.remove());
-
                 const buttons = Array.from(segments.querySelectorAll('[data-platform-status]'));
                 buttons.forEach((btn) => {
                     const btnStatus = btn.getAttribute('data-platform-status');
@@ -2102,20 +2100,16 @@
                     btn.setAttribute('aria-pressed', active ? 'true' : 'false');
                 });
 
-                for (let i = 0; i < buttons.length - 1; i++) {
-                    const current = buttons[i];
-                    const next = buttons[i + 1];
-                    if (
-                        current.classList.contains('is-active') &&
-                        next.classList.contains('is-active')
-                    ) {
-                        const and = document.createElement('span');
-                        and.className = 'platform-status-and';
-                        and.setAttribute('aria-hidden', 'true');
-                        and.textContent = '和';
-                        current.after(and);
-                    }
-                }
+                // 「和」常驻，只切换 is-on
+                Array.from(segments.children).forEach((el, i, kids) => {
+                    if (!el.classList.contains('platform-status-and')) return;
+                    const prev = kids[i - 1];
+                    const next = kids[i + 1];
+                    const on =
+                        !!(prev && prev.classList.contains('is-active')) &&
+                        !!(next && next.classList.contains('is-active'));
+                    el.classList.toggle('is-on', on);
+                });
 
                 if (prefix && typeof PlatformCatalog.platformStatusFilterPrefix === 'function') {
                     prefix.textContent = PlatformCatalog.platformStatusFilterPrefix(status);

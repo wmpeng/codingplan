@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pin 按钮样式参考</title>
+  <style>
+    :root {
+      --bg: #f4efe6;
+      --card: rgba(255, 251, 245, 0.92);
+      --text: #172033;
+      --muted: #8a93a3;
+      --teal: #0f766e;
+      --amber: #b45309;
+      --amber-soft: rgba(245, 158, 11, 0.16);
+      --border: rgba(23, 32, 51, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      padding: 40px 28px 64px;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(15, 118, 110, 0.1), transparent 28%),
+        radial-gradient(circle at top right, rgba(198, 107, 26, 0.12), transparent 26%),
+        linear-gradient(180deg, #f8f3eb, #f4efe6 45%, #f7f2ea);
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .lead {
+      color: #5f6879;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .option {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: 22px;
+      padding: 18px 18px 16px;
+      box-shadow: 0 14px 32px rgba(23, 32, 51, 0.07);
+    }
+
+    .option h2 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .option p {
+      font-size: 13px;
+      color: #5f6879;
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    .demo-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 14px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.55);
+      margin-bottom: 10px;
+    }
+
+    .demo-card strong {
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .aside {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stars { color: #f59e0b; letter-spacing: 1px; font-size: 13px; }
+
+    .state {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* —— A: 线框图钉 + 淡圆 —— */
+    .pin-a {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .pin-a:hover { background: rgba(15, 118, 110, 0.08); color: var(--teal); }
+    .pin-a.on {
+      background: rgba(15, 118, 110, 0.12);
+      color: var(--teal);
+      border-color: rgba(15, 118, 110, 0.22);
+    }
+
+    /* —— B: 琥珀实心图钉 —— */
+    .pin-b {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .pin-b:hover { color: var(--amber); border-color: rgba(180, 83, 9, 0.28); }
+    .pin-b.on {
+      background: var(--amber-soft);
+      color: var(--amber);
+      border-color: rgba(180, 83, 9, 0.35);
+      box-shadow: 0 6px 14px rgba(180, 83, 9, 0.12);
+    }
+
+    /* —— C: 轻量书签，几乎无底 —— */
+    .pin-c {
+      width: 28px;
+      height: 28px;
+      border: 0;
+      background: transparent;
+      color: #a0a8b5;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .pin-c:hover { color: var(--teal); background: rgba(15, 118, 110, 0.06); }
+    .pin-c.on { color: var(--teal); }
+
+    /* —— D: 文字胶囊 —— */
+    .pin-d {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.85);
+      color: #5f6879;
+      min-height: 30px;
+      padding: 0 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .pin-d:hover { border-color: rgba(15, 118, 110, 0.25); color: var(--teal); }
+    .pin-d.on {
+      background: var(--amber-soft);
+      border-color: rgba(180, 83, 9, 0.3);
+      color: var(--amber);
+    }
+
+    svg { display: block; }
+    .hint {
+      margin-top: 22px;
+      font-size: 13px;
+      color: #5f6879;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Pin 按钮样式参考</h1>
+    <p class="lead">每张卡左侧是「未置顶」，右侧是「已置顶」。点按钮也可本地切换，方便对比手感。选好告诉我用哪款即可。</p>
+
+    <div class="grid">
+      <!-- A -->
+      <section class="option">
+        <h2>A · 线框图钉 + 淡圆</h2>
+        <p>最克制：灰线框 → 青绿淡底。不抢平台名。</p>
+        <div class="demo-card">
+          <div>
+            <strong>智谱AI</strong>
+            <div class="state">未置顶</div>
+          </div>
+          <div class="aside">
+            <button type="button" class="pin-a" data-style="a" aria-pressed="false" title="置顶">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg>
+            </button>
+            <span class="stars">★★★★★</span>
+          </div>
+        </div>
+        <div class="demo-card">
+          <div>
+            <strong>智谱AI</strong>
+            <div class="state">已置顶</div>
+          </div>
+          <div class="aside">
+            <button type="button" class="pin-a on" data-style="a" aria-pressed="true" title="取消置顶">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg>
+            </button>
+            <span class="stars">★★★★★</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- B -->
+      <section class="option">
+        <h2>B · 琥珀实心图钉</h2>
+        <p>更醒目：未钉线框圆钮，已钉暖琥珀填充。</p>
+        <div class="demo-card">
+          <div>
+            <strong>MiniMax</strong>
+            <div class="state">未置顶</div>
+          </div>
+          <div class="aside">
+            <button type="button" class="pin-b" data-style="b" aria-pressed="false" title="置顶">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg>
+            </button>
+            <span class="stars">★★★★★</span>
+          </div>
+        </div>
+        <div class="demo-card">
+          <div>
+            <strong>MiniMax</strong>
+            <div class="state">已置顶</div>
+          </div>
+          <div class="aside">
+            <button type="button" class="pin-b on" data-style="b" aria-pressed="true" title="取消置顶">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 4a2 2 0 1 0-4 0H8a2 2 0 1 0 0 4 1 1 0 0 1 1 1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h5v5a1 1 0 1 0 2 0v-5h5a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 9.76V6a1 1 0 0 1 1-1 2 2 0 0 0 0-4z"/></svg>
+            </button>
+            <span class="stars">★★★★★</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- C -->
+      <section class="option">
+        <h2>C · 轻量书签</h2>
+        <p>几乎无底色，只靠书签图标；最不抢标题。</p>
+        <div class="demo-card">
+          <div>
+            <strong>OpenCode</strong>
+            <div class="state">未置顶</div>
+          </div>
+          <div class="aside">
+            <button type="button" class="pin-c" data-style="c" aria-pressed="false" title="置顶">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <span class="stars">★★★★</span>
+          </div>
+        </div>
+        <div class="demo-card">
+          <div>
+            <strong>OpenCode</strong>
+            <div class="state">已置顶</div>
+          </div>
+          <div class="aside">
+            <button type="button" class="pin-c on" data-style="c" aria-pressed="true" title="取消置顶">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <span class="stars">★★★★</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- D -->
+      <section class="option">
+        <h2>D · 文字胶囊</h2>
+        <p>带「置顶 / 已置顶」文案，最直白，略占宽度。</p>
+        <div class="demo-card">
+          <div>
+            <strong>Kimi</strong>
+            <div class="state">未置顶</div>
+          </div>
+          <div class="aside">
+            <button type="button" class="pin-d" data-style="d" aria-pressed="false">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg>
+              置顶
+            </button>
+            <span class="stars">★★★★</span>
+          </div>
+        </div>
+        <div class="demo-card">
+          <div>
+            <strong>Kimi</strong>
+            <div class="state">已置顶</div>
+          </div>
+          <div class="aside">
+            <button type="button" class="pin-d on" data-style="d" aria-pressed="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 4a2 2 0 1 0-4 0H8a2 2 0 1 0 0 4 1 1 0 0 1 1 1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h5v5a1 1 0 1 0 2 0v-5h5a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 9.76V6a1 1 0 0 1 1-1 2 2 0 0 0 0-4z"/></svg>
+              已置顶
+            </button>
+            <span class="stars">★★★★</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <p class="hint">文件路径：<code>codingplan/.dev/pin-style-preview.html</code>。本地用浏览器直接打开，或静态服务访问该路径。看好了回我「用 A/B/C/D」。</p>
+  </div>
+
+  <script>
+    document.querySelectorAll('button[data-style]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const on = btn.classList.toggle('on');
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        if (btn.dataset.style === 'd') {
+          btn.lastChild.textContent = on ? ' 已置顶' : ' 置顶';
+          // keep structure: rewrite label text node carefully
+          const texts = [...btn.childNodes].filter((n) => n.nodeType === 3);
+          texts.forEach((n) => n.remove());
+          btn.appendChild(document.createTextNode(on ? '已置顶' : '置顶'));
+        }
+        const card = btn.closest('.demo-card');
+        const state = card && card.querySelector('.state');
+        if (state) state.textContent = on ? '已置顶' : '未置顶';
+      });
+    });
+  </script>
+</body>
+</html>

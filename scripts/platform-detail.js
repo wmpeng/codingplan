@@ -451,6 +451,19 @@
     btn.setAttribute('aria-label', label);
     btn.setAttribute('title', label);
     btn.classList.toggle('is-pinned', pinned);
+    if (typeof PlatformCatalog.buildPlatformPinButtonHtml === 'function') {
+      const fresh = PlatformCatalog.buildPlatformPinButtonHtml({
+        platformId: openPlatformId,
+        pinned,
+        variant: 'detail'
+      });
+      if (fresh) {
+        const tmp = document.createElement('div');
+        tmp.innerHTML = fresh;
+        const next = tmp.firstElementChild;
+        if (next) btn.replaceWith(next);
+      }
+    }
   }
 
   function onOverlayClick(event) {

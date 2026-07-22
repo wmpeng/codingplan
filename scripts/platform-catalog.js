@@ -231,10 +231,9 @@ function buildPlatformPinButtonHtml({ platformId, pinned, variant } = {}) {
   ]
     .filter(Boolean)
     .join(' ');
-  const icon =
-    '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">' +
-    '<path fill="currentColor" d="M14.5 3.5a1 1 0 0 0-1.7-.7l-1.1 1.1-4.2 1.4a1 1 0 0 0-.55.45L4.5 10.5a1 1 0 0 0 1.4 1.4l2.4-1.2.9.9-5.7 5.7a1 1 0 1 0 1.4 1.4l5.7-5.7.9.9-1.2 2.4a1 1 0 0 0 1.4 1.4l4.75-2.45a1 1 0 0 0 .45-.55l1.4-4.2 1.1-1.1a1 1 0 0 0-.7-1.7L16 5.5l-1.5-2z"/>' +
-    '</svg>';
+  const icon = isPinned
+    ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>'
+    : '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>';
   return (
     `<button type="button" class="${classes}" data-platform-pin="1" data-platform-id="${escapeHtml(id)}" ` +
     `aria-pressed="${isPinned ? 'true' : 'false'}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">` +
@@ -763,12 +762,14 @@ function buildPlatformStatusSliderHtml(platformStatusMax) {
       `</button>`
     );
     const next = PLATFORM_STATUSES[rank + 1];
-    if (
-      next &&
-      isPlatformStatusSegmentActive(status, max) &&
-      isPlatformStatusSegmentActive(next, max)
-    ) {
-      parts.push('<span class="platform-status-and" aria-hidden="true">和</span>');
+    // 「和」常驻，「所有」前不插；用 is-on 控制显隐
+    if (next && next !== 'delisted') {
+      const andOn =
+        isPlatformStatusSegmentActive(status, max) &&
+        isPlatformStatusSegmentActive(next, max);
+      parts.push(
+        `<span class="platform-status-and${andOn ? ' is-on' : ''}" aria-hidden="true">和</span>`
+      );
     }
   });
 
