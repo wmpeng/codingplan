@@ -1614,7 +1614,10 @@
 
             // 渲染评分标准
             if (appConfig.ratingGuide) {
-                document.getElementById('ratingGuide').textContent = appConfig.ratingGuide;
+                const ratingGuideEl = document.getElementById('ratingGuide');
+                if (ratingGuideEl) {
+                    ratingGuideEl.textContent = appConfig.ratingGuide;
+                }
             }
 
             // 渲染底部说明（无有效数据时不覆盖 HTML 中的静态默认文案）

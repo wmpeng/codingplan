@@ -1314,6 +1314,18 @@
             line-height: 1.55;
         }
 
+        .platform-catalog-note {
+            margin: 0;
+            padding: 12px 18px;
+            border: 1px solid rgba(23, 32, 51, 0.08);
+            border-radius: 20px;
+            background: rgba(255, 251, 245, 0.9);
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.65;
+            box-shadow: 0 8px 20px rgba(23, 32, 51, 0.04);
+        }
+
         .platform-tag-bar {
             display: flex;
             flex-wrap: wrap;
@@ -2751,6 +2763,12 @@
                 font-size: 13px;
             }
 
+            .platform-catalog-note {
+                font-size: 12px;
+                padding: 10px 14px;
+                border-radius: 16px;
+            }
+
             .platform-tag-bar {
                 min-height: 48px;
                 padding: 12px;
@@ -3800,6 +3818,7 @@
 
         <!-- 平台目录（主交互；标签与卡片由 Task 5 填充） -->
         <section class="platform-catalog" id="platformCatalog" aria-label="平台目录">
+            <p class="platform-catalog-note" id="ratingGuide">基准3颗星，价格优势劣势1分，模型优势或独占模型1分，其他优势1分。TokenPlan因性价比较低，暂不推荐，能买CodingPlan尽量买CodingPlan</p>
             <header class="platform-catalog-header">
                 <h2 class="platform-catalog-title">平台目录</h2>
                 <p class="platform-catalog-subtitle">按标签与平台状态筛选；清空后回到默认「定时放量」</p>
@@ -4276,9 +4295,6 @@
             </div>
             <p class="platform-catalog-empty" id="platformCatalogEmpty" hidden>无匹配平台，试试清空筛选。</p>
         </section>
-
-        <!-- 评分标准 -->
-        <div class="rating-guide" id="ratingGuide">基准3颗星，价格优势劣势1分，模型优势或独占模型1分，其他优势1分。TokenPlan因性价比较低，暂不推荐，能买CodingPlan尽量买CodingPlan</div>
 
         <hr class="section-divider">
 
