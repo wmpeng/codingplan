@@ -2336,23 +2336,9 @@
             renderPlatformTagBar();
         }
 
-        function togglePlansTableSection() {
-            const section = document.getElementById('plansTableSection');
-            const panel = document.getElementById('plansTableCollapsible');
-            const btn = document.getElementById('plansTableToggle');
-            if (!section || !panel || !btn) return;
-
-            const collapsed = section.getAttribute('data-collapsed') === 'true';
-            section.setAttribute('data-collapsed', collapsed ? 'false' : 'true');
-            panel.hidden = !collapsed;
-            btn.setAttribute('aria-expanded', collapsed ? 'true' : 'false');
-            btn.textContent = collapsed ? '收起套餐大表' : '展开套餐大表';
-        }
-
         function focusVendorInPlansTable(vendorName) {
-            const section = document.getElementById('plansTableSection');
-            if (section && section.getAttribute('data-collapsed') === 'true') {
-                togglePlansTableSection();
+            if (window.__mainViewsController && typeof window.__mainViewsController.setView === 'function') {
+                window.__mainViewsController.setView('plans', { reason: 'jump-plans', scroll: true });
             }
             selectedVendors = new Set([vendorName]);
             tempSelectedVendors = new Set([vendorName]);
@@ -2361,9 +2347,143 @@
             });
             updateVendorCount();
             applyFilters();
+            const section = document.getElementById('plansTableSection');
             if (section && typeof section.scrollIntoView === 'function') {
                 section.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
+        }
+
+        function loadScriptOnce(src) {
+            return new Promise((resolve, reject) => {
+                const existing = document.querySelector(`script[data-main-view-src="${src}"]`);
+                if (existing) {
+                    if (existing.dataset.loaded === '1') {
+                        resolve();
+                        return;
+                    }
+                    existing.addEventListener('load', () => resolve(), { once: true });
+                    existing.addEventListener('error', () => reject(new Error(`Failed to load ${src}`)), { once: true });
+                    return;
+                }
+                const script = document.createElement('script');
+                script.src = src;
+                script.dataset.mainViewSrc = src;
+                script.onload = () => {
+                    script.dataset.loaded = '1';
+                    resolve();
+                };
+                script.onerror = () => reject(new Error(`Failed to load ${src}`));
+                document.head.appendChild(script);
+            });
+        }
+
+        async function ensurePaygViewMounted() {
+            const root = document.getElementById('view-payg');
+            if (!root) return;
+            if (typeof window.mountPaygView !== 'function') {
+                await loadScriptOnce('scripts/payg.js');
+            }
+            if (typeof window.mountPaygView === 'function') {
+                await window.mountPaygView(root);
+            }
+        }
+
+        async function ensureMonitorViewMounted() {
+            const root = document.getElementById('view-monitor');
+            if (!root) return;
+            if (!document.querySelector('link[data-monitor-css="1"]')) {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = 'styles/monitor.css';
+                link.dataset.monitorCss = '1';
+                document.head.appendChild(link);
+            }
+            if (typeof window.mountMonitorBoard !== 'function') {
+                await loadScriptOnce('scripts/monitor-board.js');
+            }
+            if (typeof window.mountMonitorBoard === 'function') {
+                const platform = new URLSearchParams(location.search).get('platform') || '';
+                await window.mountMonitorBoard(root, {
+                    configUrl: 'monitor/monitor-config.json',
+                    initialPlatform: platform
+                });
+            }
+        }
+
+        async function onMainViewChange(view) {
+            if (typeof PlatformDetail !== 'undefined' && PlatformDetail.isOpen && PlatformDetail.isOpen()) {
+                PlatformDetail.close();
+            }
+            if (view === 'payg') {
+                try {
+                    await ensurePaygViewMounted();
+                } catch (err) {
+                    console.error('按量计价视图加载失败:', err);
+                }
+            }
+            if (view === 'monitor') {
+                try {
+                    await ensureMonitorViewMounted();
+                } catch (err) {
+                    console.error('可用性监控视图加载失败:', err);
+                }
+            }
+        }
+
+        function initMainViewsShell() {
+            if (typeof MainViews === 'undefined' || typeof MainViews.mountHomepageViews !== 'function') {
+                return;
+            }
+            window.__mainViewsController = MainViews.mountHomepageViews({
+                tabsRoot: document.getElementById('mainViewTabs'),
+                getPanels: () => ({
+                    platforms: document.getElementById('view-platforms'),
+                    plans: document.getElementById('view-plans'),
+                    payg: document.getElementById('view-payg'),
+                    monitor: document.getElementById('view-monitor')
+                }),
+                onChange: (view, meta) => {
+                    void onMainViewChange(view, meta);
+                }
+            });
+            const initial = window.__mainViewsController.getView();
+            void onMainViewChange(initial, { reason: 'init' });
+
+            document.addEventListener('click', (e) => {
+                const link = e.target.closest('a[href]');
+                if (!link || !window.__mainViewsController) return;
+                const href = link.getAttribute('href') || '';
+                if (!href || href.startsWith('#') || href.startsWith('mailto:')) return;
+                let url;
+                try {
+                    url = new URL(href, location.href);
+                } catch (_) {
+                    return;
+                }
+                const samePage =
+                    url.origin === location.origin &&
+                    (url.pathname.endsWith('/index.html') ||
+                        url.pathname.endsWith('/') ||
+                        /\/codingplan\/?$/.test(url.pathname) ||
+                        url.pathname === location.pathname);
+                if (!samePage) return;
+                if (!url.searchParams.has('view') && !url.searchParams.has('platform')) return;
+                const view = url.searchParams.has('view')
+                    ? MainViews.normalizeMainView(url.searchParams.get('view'))
+                    : 'monitor';
+                e.preventDefault();
+                const next = new URL(location.href);
+                if (view === 'platforms') next.searchParams.delete('view');
+                else next.searchParams.set('view', view);
+                if (url.searchParams.get('platform')) {
+                    next.searchParams.set('platform', url.searchParams.get('platform'));
+                } else if (view !== 'monitor') {
+                    next.searchParams.delete('platform');
+                }
+                history.pushState({ mainView: view }, '', next.pathname + (next.search || ''));
+                window.__mainViewsController.apply(view, { reason: 'in-app-link' });
+                void onMainViewChange(view);
+            });
         }
 
         function initPlatformCatalog() {
@@ -2406,14 +2526,7 @@
                 clearBtn.dataset.bound = '1';
                 clearBtn.addEventListener('click', clearPlatformFilters);
             }
-            const tableToggle = document.getElementById('plansTableToggle');
-            if (tableToggle && !tableToggle.dataset.bound) {
-                tableToggle.dataset.bound = '1';
-                tableToggle.addEventListener('click', togglePlansTableSection);
-            }
-
             window.clearPlatformFilters = clearPlatformFilters;
-            window.togglePlansTableSection = togglePlansTableSection;
             window.focusVendorInPlansTable = focusVendorInPlansTable;
 
             if (typeof PlatformDetail !== 'undefined' && PlatformDetail && typeof PlatformDetail.init === 'function') {
@@ -2516,9 +2629,8 @@
         async function bootHomepage() {
             window.__codingplanBootStarted = true;
             try {
-                if (typeof renderPageNav === 'function') {
-                    renderPageNav('pageNavMount', {
-                        activeKey: 'index',
+                if (typeof renderSettingsOnly === 'function') {
+                    renderSettingsOnly('settingsMount', {
                         settings: {
                             panelTitle: '显示设置',
                             ultraWideLabel: '超宽屏模式'
@@ -2541,6 +2653,7 @@
                 await loadPaygPricing();
                 bindPlansTableInteractions();
                 initPlatformCatalog();
+                initMainViewsShell();
                 window.__codingplanCatalogReady = true;
             } catch (error) {
                 window.__codingplanBootError = String(error && error.message ? error.message : error);

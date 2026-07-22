@@ -1085,6 +1085,78 @@
             margin-bottom: 32px;
         }
 
+        /* 主内容视图切换 */
+        .main-view-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 0 0 24px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 2px;
+        }
+
+        .main-view-tabs [role="tab"] {
+            appearance: none;
+            border: 1px solid rgba(23, 32, 51, 0.12);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(244, 236, 223, 0.92));
+            color: var(--text-secondary);
+            border-radius: 999px;
+            min-height: 40px;
+            padding: 0 16px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+            box-shadow: 0 10px 20px rgba(23, 32, 51, 0.06);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .main-view-tabs [role="tab"]:hover {
+            transform: translateY(-1px);
+            border-color: rgba(198, 107, 26, 0.28);
+            color: var(--text-primary);
+            box-shadow: 0 14px 24px rgba(23, 32, 51, 0.08);
+        }
+
+        .main-view-tabs [role="tab"]:focus-visible {
+            outline: 2px solid var(--accent-primary, #0f766e);
+            outline-offset: 2px;
+        }
+
+        .main-view-tabs [role="tab"].is-active {
+            background: linear-gradient(135deg, #173753, var(--accent-primary, #0f766e));
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 14px 24px rgba(23, 55, 83, 0.18);
+        }
+
+        .main-view-tabs [role="tab"].is-active:hover {
+            color: white;
+            border-color: transparent;
+        }
+
+        #settingsMount .page-nav-cluster--settings-only {
+            justify-content: flex-end;
+            margin-bottom: 12px;
+            padding: 8px 12px;
+            width: fit-content;
+            margin-left: auto;
+        }
+
+        .payg-intro {
+            margin: 0 0 16px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .main-view-panels {
+            display: flex;
+            flex-direction: column;
+        }
+
         .recommendation-group {
             display: flex;
             flex-direction: column;
@@ -3652,7 +3724,7 @@
 </head>
 <body>
     <div class="container">
-        <div id="pageNavMount"></div>
+        <div id="settingsMount"></div>
 
         <!-- 顶部标题 -->
         <div class="header">
@@ -3815,6 +3887,15 @@
                     </div>
                 </div>
             </section></div>
+
+        <nav class="main-view-tabs" id="mainViewTabs" aria-label="主内容切换">
+            <button type="button" role="tab" data-main-view="platforms" aria-selected="true" class="is-active">平台对比</button>
+            <button type="button" role="tab" data-main-view="plans" aria-selected="false">套餐大表</button>
+            <button type="button" role="tab" data-main-view="payg" aria-selected="false">按量计价</button>
+            <button type="button" role="tab" data-main-view="monitor" aria-selected="false">可用性监控</button>
+        </nav>
+        <div class="main-view-panels">
+            <div id="view-platforms" role="tabpanel" data-main-view-panel="platforms">
 
         <!-- 平台目录（主交互；标签与卡片由 Task 5 填充） -->
         <section class="platform-catalog" id="platformCatalog" aria-label="平台目录">
@@ -4346,14 +4427,11 @@
             </div>
         </section>
 
-        <hr class="section-divider">
+            </div>
+            <div id="view-plans" role="tabpanel" data-main-view-panel="plans" hidden>
 
-        <!-- 套餐大表（默认折叠；展开逻辑由 Task 5 接线） -->
-        <section class="plans-table-section" id="plansTableSection" data-collapsed="true">
-            <button type="button" class="plans-table-toggle" id="plansTableToggle" aria-expanded="false" aria-controls="plansTableCollapsible">
-                展开套餐大表
-            </button>
-            <div class="plans-table-collapsible" id="plansTableCollapsible" hidden>
+        <!-- 套餐大表 -->
+        <section class="plans-table-section" id="plansTableSection">
         <!-- 顶部筛选栏 -->
         <div class="filter-bar surface-panel">
             <!-- 平台筛选下拉 -->
@@ -7262,8 +7340,12 @@
                 </table>
             </div>
         </div>
-            </div>
         </section>
+
+            </div>
+            <div id="view-payg" role="tabpanel" data-main-view-panel="payg" hidden></div>
+            <div id="view-monitor" role="tabpanel" data-main-view-panel="monitor" hidden></div>
+        </div>
 
         <!-- 底部说明（与 config.json 同步） -->
         <div class="notes-section" id="notesSection">
@@ -7454,11 +7536,13 @@
         </div>
     </div>
 
+    <script src="monitor/monitor-config.js"></script>
     <script src="monitor/monitor-config.local.js"></script>
     <script src="scripts/platform-catalog.js?v=260722q"></script>
     <script src="scripts/platform-detail.js?v=260722p"></script>
     <script src="scripts/shared.js?v=260610"></script>
-        <script src="scripts/homepage.js?v=260722q"></script>
+    <script src="scripts/main-views.js"></script>
+    <script src="scripts/homepage.js?v=260722q"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
     <script src="scripts/plan-usage-chart.js?v=260617"></script>

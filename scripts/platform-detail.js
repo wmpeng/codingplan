@@ -240,7 +240,7 @@
       (platform && platform.monitorSlug && String(platform.monitorSlug).trim()) ||
       (platform && platform.name) ||
       '';
-    const href = `monitor/?platform=${encodeURIComponent(slug)}`;
+    const href = `index.html?view=monitor&platform=${encodeURIComponent(slug)}`;
 
     return (
       `<section class="platform-detail-section" data-section="availability" aria-labelledby="platformDetailAvailHeading">` +
