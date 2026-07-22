@@ -132,6 +132,117 @@ function filterPlatforms(platforms, {
   });
 }
 
+const PLATFORM_PIN_STORAGE_KEY = 'platformCatalogPinnedIds';
+const PLATFORM_PIN_MAX = 50;
+
+function normalizePinnedIds(raw) {
+  if (!Array.isArray(raw)) return [];
+  const out = [];
+  const seen = new Set();
+  for (const item of raw) {
+    if (typeof item !== 'string' && typeof item !== 'number') continue;
+    const id = String(item).trim();
+    if (!id || seen.has(id)) continue;
+    seen.add(id);
+    out.push(id);
+  }
+  return out;
+}
+
+function sanitizePinnedIds(pinnedIds, platforms) {
+  const valid = new Set(
+    (Array.isArray(platforms) ? platforms : [])
+      .map((p) => (p && typeof p.id === 'string' ? p.id.trim() : ''))
+      .filter(Boolean)
+  );
+  return normalizePinnedIds(pinnedIds).filter((id) => valid.has(id));
+}
+
+function isPlatformPinned(platformId, pinnedIds) {
+  const id = typeof platformId === 'string' ? platformId.trim() : '';
+  if (!id) return false;
+  return normalizePinnedIds(pinnedIds).includes(id);
+}
+
+function togglePinnedId(pinnedIds, platformId, options = {}) {
+  const id = typeof platformId === 'string' ? platformId.trim() : String(platformId || '').trim();
+  const list = normalizePinnedIds(pinnedIds);
+  if (!id) return list;
+  const max =
+    Number.isFinite(Number(options.max)) && Number(options.max) > 0
+      ? Math.floor(Number(options.max))
+      : PLATFORM_PIN_MAX;
+  const idx = list.indexOf(id);
+  if (idx >= 0) {
+    return list.filter((_, i) => i !== idx);
+  }
+  return [id, ...list].slice(0, max);
+}
+
+function sortPlatformsByPinned(platforms, pinnedIds) {
+  const list = Array.isArray(platforms) ? platforms.slice() : [];
+  const pinned = normalizePinnedIds(pinnedIds);
+  if (!pinned.length || !list.length) return list;
+
+  const rank = new Map(pinned.map((id, index) => [id, index]));
+  const head = [];
+  const tail = [];
+  for (const platform of list) {
+    const id = platform && typeof platform.id === 'string' ? platform.id.trim() : '';
+    if (id && rank.has(id)) head.push(platform);
+    else tail.push(platform);
+  }
+  head.sort((a, b) => rank.get(a.id.trim()) - rank.get(b.id.trim()));
+  return head.concat(tail);
+}
+
+function readPinnedIdsFromStorage(storage, key) {
+  const storageKey = key || PLATFORM_PIN_STORAGE_KEY;
+  if (!storage || typeof storage.getItem !== 'function') return [];
+  try {
+    const raw = storage.getItem(storageKey);
+    if (raw == null || raw === '') return [];
+    return normalizePinnedIds(JSON.parse(raw));
+  } catch (_) {
+    return [];
+  }
+}
+
+function writePinnedIdsToStorage(storage, pinnedIds, key) {
+  const storageKey = key || PLATFORM_PIN_STORAGE_KEY;
+  if (!storage || typeof storage.setItem !== 'function') return false;
+  try {
+    storage.setItem(storageKey, JSON.stringify(normalizePinnedIds(pinnedIds)));
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
+function buildPlatformPinButtonHtml({ platformId, pinned, variant } = {}) {
+  const id = typeof platformId === 'string' ? platformId.trim() : '';
+  if (!id) return '';
+  const isPinned = !!pinned;
+  const kind = variant === 'detail' ? 'detail' : 'card';
+  const label = isPinned ? '取消置顶' : '置顶';
+  const classes = [
+    kind === 'detail' ? 'platform-detail-pin-btn' : 'platform-pin-btn',
+    isPinned ? 'is-pinned' : ''
+  ]
+    .filter(Boolean)
+    .join(' ');
+  const icon =
+    '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">' +
+    '<path fill="currentColor" d="M14.5 3.5a1 1 0 0 0-1.7-.7l-1.1 1.1-4.2 1.4a1 1 0 0 0-.55.45L4.5 10.5a1 1 0 0 0 1.4 1.4l2.4-1.2.9.9-5.7 5.7a1 1 0 1 0 1.4 1.4l5.7-5.7.9.9-1.2 2.4a1 1 0 0 0 1.4 1.4l4.75-2.45a1 1 0 0 0 .45-.55l1.4-4.2 1.1-1.1a1 1 0 0 0-.7-1.7L16 5.5l-1.5-2z"/>' +
+    '</svg>';
+  return (
+    `<button type="button" class="${classes}" data-platform-pin="1" data-platform-id="${escapeHtml(id)}" ` +
+    `aria-pressed="${isPinned ? 'true' : 'false'}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">` +
+    icon +
+    `</button>`
+  );
+}
+
 function collectModelsForVendor(plans, vendorName) {
   const seen = new Set();
   const models = [];
@@ -729,16 +840,27 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     : '';
 
   const discontinuedClass = status === 'delisted' ? ' is-discontinued' : '';
+  const platformId = platform && typeof platform.id === 'string' ? platform.id.trim() : '';
+  const pinned = isPlatformPinned(platformId, options.pinnedIds);
+  const pinnedClass = pinned ? ' is-pinned' : '';
+  const pinHtml = buildPlatformPinButtonHtml({
+    platformId,
+    pinned,
+    variant: 'card'
+  });
 
   return `
-                <article class="platform-card${discontinuedClass}" data-platform-id="${escapeHtml(platform.id || '')}" tabindex="0" role="button" aria-label="${name} 详情">
+                <article class="platform-card${discontinuedClass}${pinnedClass}" data-platform-id="${escapeHtml(platformId)}" tabindex="0" role="button" aria-label="${name} 详情">
                     <header>
                         <div class="platform-card-heading">
                             ${nameHtml}
                             ${statusHtml}
                             ${paygBadge}
                         </div>
-                        <span class="platform-rating" aria-label="${rating} 星">${stars}</span>
+                        <div class="platform-card-aside">
+                            ${pinHtml}
+                            <span class="platform-rating" aria-label="${rating} 星">${stars}</span>
+                        </div>
                     </header>
                     ${summary}
                     <ul class="platform-dimensions">${dimsHtml}</ul>
@@ -769,6 +891,16 @@ const PlatformCatalog = {
   matchesDerivedTag,
   matchesOperationalTag,
   filterPlatforms,
+  PLATFORM_PIN_STORAGE_KEY,
+  PLATFORM_PIN_MAX,
+  normalizePinnedIds,
+  sanitizePinnedIds,
+  isPlatformPinned,
+  togglePinnedId,
+  sortPlatformsByPinned,
+  readPinnedIdsFromStorage,
+  writePinnedIdsToStorage,
+  buildPlatformPinButtonHtml,
   collectModelsForVendor,
   dimensionCopy,
   collectPlansForVendor,

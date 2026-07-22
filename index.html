@@ -1739,6 +1739,62 @@
             opacity: 0.85;
         }
 
+        .platform-card-aside {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .platform-pin-btn,
+        .platform-detail-pin-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            border: 1px solid rgba(23, 32, 51, 0.12);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.72);
+            color: var(--text-tertiary);
+            cursor: pointer;
+            transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .platform-pin-btn:hover,
+        .platform-detail-pin-btn:hover {
+            color: var(--accent-primary, #0f766e);
+            border-color: rgba(15, 118, 110, 0.28);
+            background: rgba(15, 118, 110, 0.08);
+        }
+
+        .platform-pin-btn.is-pinned,
+        .platform-detail-pin-btn.is-pinned {
+            color: #b45309;
+            border-color: rgba(180, 83, 9, 0.35);
+            background: rgba(245, 158, 11, 0.14);
+        }
+
+        .platform-pin-btn:focus-visible,
+        .platform-detail-pin-btn:focus-visible {
+            outline: 2px solid var(--accent-primary, #0f766e);
+            outline-offset: 2px;
+        }
+
+        .platform-card.is-pinned {
+            border-color: rgba(180, 83, 9, 0.28);
+            box-shadow: 0 12px 28px rgba(180, 83, 9, 0.08);
+        }
+
+        .platform-detail-pin-btn {
+            width: 32px;
+            height: 32px;
+            align-self: center;
+        }
+
         .platform-rating {
             color: #f59e0b;
             letter-spacing: 1px;
@@ -7368,10 +7424,10 @@
     </div>
 
     <script src="monitor/monitor-config.local.js"></script>
-    <script src="scripts/platform-catalog.js?v=260720j"></script>
-    <script src="scripts/platform-detail.js?v=260721a"></script>
+    <script src="scripts/platform-catalog.js?v=260722p"></script>
+    <script src="scripts/platform-detail.js?v=260722p"></script>
     <script src="scripts/shared.js?v=260610"></script>
-        <script src="scripts/homepage.js?v=260720j"></script>
+        <script src="scripts/homepage.js?v=260722p"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
     <script src="scripts/plan-usage-chart.js?v=260617"></script>

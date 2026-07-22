@@ -86,6 +86,17 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(dimsAt >= 0 && paygAt > dimsAt);
   });
 
+  it('renders pin button in detail header', () => {
+    const html = buildDetailBodyHtml(samplePlatform({ id: 'opencode', name: 'OpenCode' }), {
+      plans: [],
+      monitorRow: null,
+      isPinned: true
+    });
+    assert.match(html, /data-platform-pin="1"/);
+    assert.match(html, /platform-detail-pin-btn/);
+    assert.match(html, /aria-pressed="true"/);
+  });
+
   it('renders plans section when vendor has plans', () => {
     const plans = [
       {

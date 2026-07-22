@@ -17,6 +17,7 @@
         let paygPricing = {};
         let platformSelectedLabels = [];
         let platformStatusMax = 'limited';
+        let platformPinnedIds = [];
         let currentSort = { column: null, direction: 'asc' };
         // 已确认的选择
         let selectedVendors = new Set();
@@ -2231,8 +2232,47 @@
         function buildPlatformCardHtml(platform) {
             return PlatformCatalog.buildPlatformCardHtml(platform, allPlans, {
                 sanitizeUrl: typeof sanitizeHttpUrl === 'function' ? sanitizeHttpUrl : (u) => u,
-                paygPricing
+                paygPricing,
+                pinnedIds: platformPinnedIds
             });
+        }
+
+        function loadPlatformPinnedIds() {
+            if (typeof PlatformCatalog === 'undefined') {
+                platformPinnedIds = [];
+                return;
+            }
+            const raw = PlatformCatalog.readPinnedIdsFromStorage(window.localStorage);
+            const cleaned = PlatformCatalog.sanitizePinnedIds(raw, allPlatforms);
+            platformPinnedIds = cleaned;
+            if (cleaned.length !== raw.length) {
+                PlatformCatalog.writePinnedIdsToStorage(window.localStorage, cleaned);
+            }
+        }
+
+        function persistPlatformPinnedIds() {
+            if (typeof PlatformCatalog === 'undefined') return;
+            PlatformCatalog.writePinnedIdsToStorage(window.localStorage, platformPinnedIds);
+        }
+
+        function togglePlatformPin(platformId) {
+            if (typeof PlatformCatalog === 'undefined') return;
+            const id = typeof platformId === 'string' ? platformId.trim() : '';
+            if (!id) return;
+            // 只允许 pin 当前仍存在的平台，避免脏 id 写回
+            const exists = allPlatforms.some((p) => p && p.id === id);
+            if (!exists && !PlatformCatalog.isPlatformPinned(id, platformPinnedIds)) {
+                return;
+            }
+            platformPinnedIds = PlatformCatalog.sanitizePinnedIds(
+                PlatformCatalog.togglePinnedId(platformPinnedIds, id),
+                allPlatforms
+            );
+            persistPlatformPinnedIds();
+            applyPlatformFilters();
+            if (typeof PlatformDetail !== 'undefined' && PlatformDetail.syncPinUi) {
+                PlatformDetail.syncPinUi();
+            }
         }
 
         function applyPlatformFilters() {
@@ -2249,7 +2289,10 @@
                 operationalTags: cat.operationalTags || []
             };
 
-            const filtered = PlatformCatalog.filterPlatforms(allPlatforms, filterOpts);
+            const filtered = PlatformCatalog.sortPlatformsByPinned(
+                PlatformCatalog.filterPlatforms(allPlatforms, filterOpts),
+                platformPinnedIds
+            );
             const totalVisible = PlatformCatalog.filterPlatforms(allPlatforms, {
                 ...filterOpts,
                 selectedLabels: []
@@ -2357,6 +2400,7 @@
             }
 
             renderPlatformTagBar();
+            loadPlatformPinnedIds();
             applyPlatformFilters();
 
             const clearBtn = document.getElementById('platformClearFilters');
@@ -2380,6 +2424,8 @@
                     getPaygPricing: () => paygPricing,
                     monitorApiBase: (window.MONITOR_CONFIG && window.MONITOR_CONFIG.apiBase) || 'https://api.dreamfree.space/vc',
                     onJumpPlansTable: focusVendorInPlansTable,
+                    isPlatformPinned: (id) => PlatformCatalog.isPlatformPinned(id, platformPinnedIds),
+                    onTogglePlatformPin: togglePlatformPin,
                     escapeHtml: typeof escapeHtml === 'function' ? escapeHtml : null
                 });
 
@@ -2387,6 +2433,13 @@
                 if (grid && !grid.dataset.detailBound) {
                     grid.dataset.detailBound = '1';
                     grid.addEventListener('click', (e) => {
+                        const pinBtn = e.target.closest('[data-platform-pin="1"]');
+                        if (pinBtn) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            togglePlatformPin(pinBtn.getAttribute('data-platform-id'));
+                            return;
+                        }
                         if (e.target.closest('a')) return;
                         const card = e.target.closest('.platform-card');
                         if (!card) return;
@@ -2396,6 +2449,7 @@
                     });
                     grid.addEventListener('keydown', (e) => {
                         if (e.key !== 'Enter' && e.key !== ' ') return;
+                        if (e.target.closest('[data-platform-pin="1"]')) return;
                         const card = e.target.closest('.platform-card');
                         if (!card || e.target.closest('a')) return;
                         e.preventDefault();

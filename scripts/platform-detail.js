@@ -14,8 +14,11 @@
 
   let options = {
     getPlans: () => [],
+    getPaygPricing: () => null,
     monitorApiBase: DEFAULT_MONITOR_API_BASE,
     onJumpPlansTable: () => {},
+    isPlatformPinned: () => false,
+    onTogglePlatformPin: () => {},
     escapeHtml: null
   };
 
@@ -318,6 +321,22 @@
     const actionLink = actionUrl
       ? `<a class="platform-detail-action" href="${esc(actionUrl)}" target="_blank" rel="noopener noreferrer">去官网 →</a>`
       : '';
+    const platformId =
+      platform && typeof platform.id === 'string' ? platform.id.trim() : '';
+    const pinned =
+      typeof context.isPinned === 'boolean'
+        ? context.isPinned
+        : typeof options.isPlatformPinned === 'function'
+          ? !!options.isPlatformPinned(platformId)
+          : false;
+    const pinHtml =
+      typeof PlatformCatalog.buildPlatformPinButtonHtml === 'function'
+        ? PlatformCatalog.buildPlatformPinButtonHtml({
+            platformId,
+            pinned,
+            variant: 'detail'
+          })
+        : '';
 
     const rawPlans = Array.isArray(context.plans) ? context.plans : [];
     const vendorPlans =
@@ -367,6 +386,7 @@
       `<header class="platform-detail-header${discontinued ? ' is-discontinued' : ''}">` +
       `<div class="platform-detail-title-row">` +
       `<h2 id="platformDetailTitle" class="platform-detail-title">${name}</h2>` +
+      pinHtml +
       actionLink +
       `</div>` +
       `<div class="platform-detail-meta">` +
@@ -416,11 +436,40 @@
     }
   }
 
+  function syncPinUi() {
+    if (!openPlatformId) return;
+    const body = bodyEl();
+    if (!body) return;
+    const btn = body.querySelector('[data-platform-pin="1"]');
+    if (!btn) return;
+    const pinned =
+      typeof options.isPlatformPinned === 'function'
+        ? !!options.isPlatformPinned(openPlatformId)
+        : false;
+    const label = pinned ? '取消置顶' : '置顶';
+    btn.setAttribute('aria-pressed', pinned ? 'true' : 'false');
+    btn.setAttribute('aria-label', label);
+    btn.setAttribute('title', label);
+    btn.classList.toggle('is-pinned', pinned);
+  }
+
   function onOverlayClick(event) {
     const target = event.target;
     if (!target || !target.getAttribute) return;
     if (target.getAttribute('data-platform-detail-close') === '1') {
       close();
+      return;
+    }
+    const pinBtn = target.closest && target.closest('[data-platform-pin="1"]');
+    if (pinBtn) {
+      event.preventDefault();
+      event.stopPropagation();
+      const id =
+        (pinBtn.getAttribute('data-platform-id') || openPlatformId || '').trim();
+      if (id && typeof options.onTogglePlatformPin === 'function') {
+        options.onTogglePlatformPin(id);
+      }
+      syncPinUi();
       return;
     }
     if (target.closest && target.closest('[data-jump-plans="1"]')) {
@@ -453,6 +502,8 @@
       getPaygPricing: () => null,
       monitorApiBase: DEFAULT_MONITOR_API_BASE,
       onJumpPlansTable: () => {},
+      isPlatformPinned: () => false,
+      onTogglePlatformPin: () => {},
       escapeHtml: null,
       ...(userOptions || {})
     };
@@ -513,7 +564,11 @@
       plans,
       monitorRow: null,
       paygEntry,
-      paygModelOrder
+      paygModelOrder,
+      isPinned:
+        typeof options.isPlatformPinned === 'function'
+          ? !!options.isPlatformPinned(platform && platform.id)
+          : false
     });
 
     const body = bodyEl();
@@ -553,7 +608,11 @@
       plans,
       monitorRow,
       paygEntry,
-      paygModelOrder
+      paygModelOrder,
+      isPinned:
+        typeof options.isPlatformPinned === 'function'
+          ? !!options.isPlatformPinned(platform && platform.id)
+          : false
     });
   }
 
@@ -563,6 +622,7 @@
     close,
     isOpen,
     getOpenPlatformId,
+    syncPinUi,
     buildDetailBodyHtml
   };
 });

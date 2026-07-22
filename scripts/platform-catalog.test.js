@@ -18,6 +18,15 @@ const {
   sortPaygRows,
   collectPaygFilterOptions,
   paygRowHasAnyPrice,
+  normalizePinnedIds,
+  sanitizePinnedIds,
+  isPlatformPinned,
+  togglePinnedId,
+  sortPlatformsByPinned,
+  readPinnedIdsFromStorage,
+  writePinnedIdsToStorage,
+  buildPlatformPinButtonHtml,
+  PLATFORM_PIN_MAX,
   dimensionCopy,
   collectPlansForVendor,
   matchMonitorPlatform,
@@ -589,5 +598,74 @@ describe('collectPaygFilterOptions', () => {
     const opts = collectPaygFilterOptions(rows);
     assert.deepEqual(opts.platforms.map((p) => p.id), ['a', 'b']);
     assert.deepEqual(opts.models, ['M1', 'M2']);
+  });
+});
+
+describe('platform pins', () => {
+  it('normalizes and sanitizes pinned ids against platforms', () => {
+    assert.deepEqual(normalizePinnedIds(['a', '', 'a', 2, null, '  b  ']), ['a', '2', 'b']);
+    const cleaned = sanitizePinnedIds(['a', 'gone', 'b', 'gone'], [
+      samplePlatform({ id: 'a' }),
+      samplePlatform({ id: 'b' })
+    ]);
+    assert.deepEqual(cleaned, ['a', 'b']);
+  });
+
+  it('toggles pin and keeps newest first with max cap', () => {
+    let ids = togglePinnedId([], 'x');
+    assert.deepEqual(ids, ['x']);
+    ids = togglePinnedId(ids, 'y');
+    assert.deepEqual(ids, ['y', 'x']);
+    ids = togglePinnedId(ids, 'x');
+    assert.deepEqual(ids, ['y']);
+    const many = [];
+    for (let i = 0; i < PLATFORM_PIN_MAX + 5; i++) {
+      many.push(`p${i}`);
+    }
+    let capped = [];
+    for (const id of many) {
+      capped = togglePinnedId(capped, id, { max: PLATFORM_PIN_MAX });
+    }
+    assert.equal(capped.length, PLATFORM_PIN_MAX);
+    assert.equal(capped[0], `p${PLATFORM_PIN_MAX + 4}`);
+  });
+
+  it('sorts pinned platforms to the front by pin order', () => {
+    const platforms = [
+      samplePlatform({ id: 'a', name: 'A' }),
+      samplePlatform({ id: 'b', name: 'B' }),
+      samplePlatform({ id: 'c', name: 'C' })
+    ];
+    const sorted = sortPlatformsByPinned(platforms, ['c', 'missing', 'a']);
+    assert.deepEqual(sorted.map((p) => p.id), ['c', 'a', 'b']);
+  });
+
+  it('storage helpers tolerate bad JSON and missing storage', () => {
+    assert.deepEqual(readPinnedIdsFromStorage(null), []);
+    const mem = {
+      data: '{not-json',
+      getItem() {
+        return this.data;
+      },
+      setItem(_k, v) {
+        this.data = v;
+      }
+    };
+    assert.deepEqual(readPinnedIdsFromStorage(mem), []);
+    assert.equal(writePinnedIdsToStorage(mem, ['zhipu', 'zhipu', '']), true);
+    assert.deepEqual(JSON.parse(mem.data), ['zhipu']);
+  });
+
+  it('card html includes pin button state', () => {
+    const html = buildPlatformCardHtml(
+      samplePlatform({ id: 'zhipu', name: '智谱AI', action: 'https://example.com' }),
+      [],
+      { pinnedIds: ['zhipu'] }
+    );
+    assert.match(html, /data-platform-pin="1"/);
+    assert.match(html, /is-pinned/);
+    assert.match(html, /aria-pressed="true"/);
+    assert.ok(isPlatformPinned('zhipu', ['zhipu']));
+    assert.ok(buildPlatformPinButtonHtml({ platformId: '', pinned: true }) === '');
   });
 });
