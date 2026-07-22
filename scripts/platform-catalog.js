@@ -229,6 +229,14 @@ function normalizePaygPriceField(value) {
   return Number.isFinite(num) ? num : null;
 }
 
+function normalizePaygOrderField(value, fallbackIndex) {
+  if (value == null || value === '') {
+    return Number.isFinite(fallbackIndex) ? 1000 + fallbackIndex : 9999;
+  }
+  const num = Number(value);
+  return Number.isFinite(num) ? num : 9999;
+}
+
 function flattenPaygRows(paygPricing, platforms, plans) {
   const planList = Array.isArray(plans) ? plans : [];
   const byId = new Map(
@@ -251,8 +259,8 @@ function flattenPaygRows(paygPricing, platforms, plans) {
       ? entry.notes.filter((n) => typeof n === 'string' && n.trim()).map((n) => n.trim())
       : [];
     const action = resolvePlatformAction(platform, planList);
-    for (const model of entry.models) {
-      if (!model || typeof model.name !== 'string' || !model.name.trim()) continue;
+    entry.models.forEach((model, index) => {
+      if (!model || typeof model.name !== 'string' || !model.name.trim()) return;
       const notes = platformNotes.slice();
       if (typeof model.note === 'string' && model.note.trim()) {
         notes.push(model.note.trim());
@@ -263,6 +271,7 @@ function flattenPaygRows(paygPricing, platforms, plans) {
         rating: Number(platform.rating) || 0,
         action: action || null,
         modelName: model.name.trim(),
+        order: normalizePaygOrderField(model.order, index),
         input: normalizePaygPriceField(model.input),
         cache: normalizePaygPriceField(model.cache),
         output: normalizePaygPriceField(model.output),
@@ -270,7 +279,7 @@ function flattenPaygRows(paygPricing, platforms, plans) {
         unit,
         notes
       });
-    }
+    });
   }
   return rows;
 }
@@ -292,26 +301,48 @@ function filterPaygRows(rows, options = {}) {
 }
 
 function sortPaygRows(rows, options = {}) {
-  const key = options.key || 'input';
+  const key = options.key || 'order';
   const dir = options.dir === 'desc' ? -1 : 1;
   const list = (Array.isArray(rows) ? rows : []).slice();
   const isNumeric =
-    key === 'input' || key === 'cache' || key === 'output' || key === 'rating';
+    key === 'input' ||
+    key === 'cache' ||
+    key === 'output' ||
+    key === 'rating' ||
+    key === 'order';
+
+  function numericValue(row, field) {
+    if (!row) return NaN;
+    const raw = row[field];
+    if (raw == null || raw === '') return NaN;
+    const num = Number(raw);
+    return Number.isFinite(num) ? num : NaN;
+  }
+
+  function compareNumeric(av, bv, direction) {
+    const aOk = Number.isFinite(av);
+    const bOk = Number.isFinite(bv);
+    if (!aOk && !bOk) return 0;
+    if (!aOk) return 1;
+    if (!bOk) return -1;
+    if (av === bv) return 0;
+    return av < bv ? -direction : direction;
+  }
+
   list.sort((a, b) => {
     if (isNumeric) {
-      const rawA = a ? a[key] : null;
-      const rawB = b ? b[key] : null;
-      const av =
-        rawA == null || rawA === '' ? NaN : Number(rawA);
-      const bv =
-        rawB == null || rawB === '' ? NaN : Number(rawB);
-      const aOk = Number.isFinite(av);
-      const bOk = Number.isFinite(bv);
-      if (!aOk && !bOk) return 0;
-      if (!aOk) return 1;
-      if (!bOk) return -1;
-      if (av === bv) return 0;
-      return av < bv ? -dir : dir;
+      const primary = compareNumeric(numericValue(a, key), numericValue(b, key), dir);
+      if (primary !== 0) return primary;
+      // 同 order / 同价时：按模型名，再按输入价，便于同模型比价挨在一起
+      if (key === 'order') {
+        const byName = String((a && a.modelName) || '').localeCompare(
+          String((b && b.modelName) || ''),
+          'zh'
+        );
+        if (byName !== 0) return byName;
+        return compareNumeric(numericValue(a, 'input'), numericValue(b, 'input'), 1);
+      }
+      return 0;
     }
     const as = String((a && a[key]) || '');
     const bs = String((b && b[key]) || '');
@@ -323,19 +354,27 @@ function sortPaygRows(rows, options = {}) {
 function collectPaygFilterOptions(rows) {
   const platforms = [];
   const seenP = new Set();
-  const models = [];
-  const seenM = new Set();
+  const modelMeta = new Map();
   for (const row of Array.isArray(rows) ? rows : []) {
     if (!row) continue;
     if (row.platformId && !seenP.has(row.platformId)) {
       seenP.add(row.platformId);
       platforms.push({ id: row.platformId, name: row.platformName || row.platformId });
     }
-    if (row.modelName && !seenM.has(row.modelName)) {
-      seenM.add(row.modelName);
-      models.push(row.modelName);
+    if (row.modelName && !modelMeta.has(row.modelName)) {
+      modelMeta.set(row.modelName, {
+        name: row.modelName,
+        order: Number.isFinite(Number(row.order)) ? Number(row.order) : 9999
+      });
+    } else if (row.modelName && modelMeta.has(row.modelName)) {
+      const prev = modelMeta.get(row.modelName);
+      const nextOrder = Number.isFinite(Number(row.order)) ? Number(row.order) : 9999;
+      if (nextOrder < prev.order) prev.order = nextOrder;
     }
   }
+  const models = [...modelMeta.values()]
+    .sort((a, b) => (a.order === b.order ? a.name.localeCompare(b.name, 'zh') : a.order - b.order))
+    .map((m) => m.name);
   return { platforms, models };
 }
 
@@ -352,6 +391,13 @@ function buildPaygPricingSectionHtml(entry) {
     : '';
 
   const rows = entry.models
+    .slice()
+    .sort((a, b) => {
+      const ao = normalizePaygOrderField(a && a.order, 0);
+      const bo = normalizePaygOrderField(b && b.order, 0);
+      if (ao !== bo) return ao - bo;
+      return String((a && a.name) || '').localeCompare(String((b && b.name) || ''), 'zh');
+    })
     .map((model) => {
       if (!model || typeof model.name !== 'string' || !model.name.trim()) return '';
       const note =
@@ -442,6 +488,12 @@ function validatePaygPricing(paygPricing, platforms) {
       if (Object.prototype.hasOwnProperty.call(model, 'note')) {
         if (typeof model.note !== 'string' || !model.note.trim()) {
           errors.push(`${mPrefix}: note must be a non-empty string when present`);
+        }
+      }
+      if (Object.prototype.hasOwnProperty.call(model, 'order')) {
+        const orderNum = Number(model.order);
+        if (!Number.isFinite(orderNum)) {
+          errors.push(`${mPrefix}: order must be a finite number when present`);
         }
       }
     });

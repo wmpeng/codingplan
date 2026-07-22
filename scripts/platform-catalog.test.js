@@ -507,8 +507,8 @@ describe('flattenPaygRows', () => {
       unit: 'per_m_tokens',
       notes: ['峰谷翻倍'],
       models: [
-        { name: 'DeepSeek-V4-Pro', input: 3, cache: 0.025, output: 6 },
-        { name: 'DeepSeek-V4-Flash', input: null, cache: null, output: null, note: '以官网为准' }
+        { name: 'DeepSeek-V4-Pro', order: 10, input: 3, cache: 0.025, output: 6 },
+        { name: 'DeepSeek-V4-Flash', order: 20, input: null, cache: null, output: null, note: '以官网为准' }
       ]
     },
     'orphan-id': {
@@ -524,9 +524,11 @@ describe('flattenPaygRows', () => {
     assert.equal(rows[0].platformId, 'deepseek-official');
     assert.equal(rows[0].modelName, 'DeepSeek-V4-Pro');
     assert.equal(rows[0].input, 3);
+    assert.equal(rows[0].order, 10);
     assert.deepEqual(rows[0].notes, ['峰谷翻倍']);
     assert.equal(rows[1].modelName, 'DeepSeek-V4-Flash');
     assert.equal(rows[1].input, null);
+    assert.equal(rows[1].order, 20);
     assert.deepEqual(rows[1].notes, ['峰谷翻倍', '以官网为准']);
   });
 });
@@ -562,14 +564,27 @@ describe('sortPaygRows', () => {
     const sorted = sortPaygRows(rows, { key: 'input', dir: 'asc' });
     assert.deepEqual(sorted.map((r) => r.modelName), ['a', 'b', 'c']);
   });
+
+  it('sorts by model order then input price', () => {
+    const rows = [
+      { modelName: 'Flash', order: 20, input: 1 },
+      { modelName: 'Pro', order: 10, input: 3 },
+      { modelName: 'Pro', order: 10, input: 2.4 }
+    ];
+    const sorted = sortPaygRows(rows, { key: 'order', dir: 'asc' });
+    assert.deepEqual(
+      sorted.map((r) => `${r.modelName}:${r.input}`),
+      ['Pro:2.4', 'Pro:3', 'Flash:1']
+    );
+  });
 });
 
 describe('collectPaygFilterOptions', () => {
-  it('dedupes platforms and models in first-seen order', () => {
+  it('dedupes platforms and sorts models by order', () => {
     const rows = [
-      { platformId: 'a', platformName: 'A', modelName: 'M1' },
-      { platformId: 'b', platformName: 'B', modelName: 'M1' },
-      { platformId: 'a', platformName: 'A', modelName: 'M2' }
+      { platformId: 'a', platformName: 'A', modelName: 'M2', order: 20 },
+      { platformId: 'b', platformName: 'B', modelName: 'M1', order: 10 },
+      { platformId: 'a', platformName: 'A', modelName: 'M1', order: 10 }
     ];
     const opts = collectPaygFilterOptions(rows);
     assert.deepEqual(opts.platforms.map((p) => p.id), ['a', 'b']);

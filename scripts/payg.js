@@ -2,7 +2,7 @@
   'use strict';
 
   let allRows = [];
-  let sortKey = 'input';
+  let sortKey = 'order';
   let sortDir = 'asc';
   const selectedPlatformIds = new Set();
   const selectedModelNames = new Set();
@@ -188,7 +188,7 @@
     selectedPlatformIds.clear();
     selectedModelNames.clear();
     pricedOnly = false;
-    sortKey = 'input';
+    sortKey = 'order';
     sortDir = 'asc';
     document.querySelectorAll('#paygVendorCheckboxes input, #paygModelCheckboxes input').forEach((input) => {
       input.checked = false;
