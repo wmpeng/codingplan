@@ -438,6 +438,7 @@ describe('payg pricing', () => {
 
   it('validates keyed entries and rejects unknown platform ids', () => {
     const okDoc = {
+      modelOrder: ['DeepSeek-V4-Pro'],
       'deepseek-official': {
         currency: '¥',
         models: [{ name: 'DeepSeek-V4-Pro', input: 3, cache: 0.025, output: 6 }]
@@ -502,13 +503,14 @@ describe('flattenPaygRows', () => {
     samplePlatform({ id: 'gongji', name: '共继算力', rating: 3 })
   ];
   const payg = {
+    modelOrder: ['DeepSeek-V4-Pro', 'DeepSeek-V4-Flash'],
     'deepseek-official': {
       currency: '¥',
       unit: 'per_m_tokens',
       notes: ['峰谷翻倍'],
       models: [
-        { name: 'DeepSeek-V4-Pro', order: 10, input: 3, cache: 0.025, output: 6 },
-        { name: 'DeepSeek-V4-Flash', order: 20, input: null, cache: null, output: null, note: '以官网为准' }
+        { name: 'DeepSeek-V4-Flash', input: null, cache: null, output: null, note: '以官网为准' },
+        { name: 'DeepSeek-V4-Pro', input: 3, cache: 0.025, output: 6 }
       ]
     },
     'orphan-id': {
@@ -518,18 +520,16 @@ describe('flattenPaygRows', () => {
     }
   };
 
-  it('expands platform×model and skips unknown platform ids', () => {
+  it('expands platform×model using top-level modelOrder', () => {
     const rows = flattenPaygRows(payg, platforms, []);
     assert.equal(rows.length, 2);
     assert.equal(rows[0].platformId, 'deepseek-official');
-    assert.equal(rows[0].modelName, 'DeepSeek-V4-Pro');
-    assert.equal(rows[0].input, 3);
-    assert.equal(rows[0].order, 10);
-    assert.deepEqual(rows[0].notes, ['峰谷翻倍']);
-    assert.equal(rows[1].modelName, 'DeepSeek-V4-Flash');
-    assert.equal(rows[1].input, null);
-    assert.equal(rows[1].order, 20);
-    assert.deepEqual(rows[1].notes, ['峰谷翻倍', '以官网为准']);
+    assert.equal(rows[0].modelName, 'DeepSeek-V4-Flash');
+    assert.equal(rows[0].order, 1);
+    assert.equal(rows[1].modelName, 'DeepSeek-V4-Pro');
+    assert.equal(rows[1].order, 0);
+    assert.equal(rows[1].input, 3);
+    assert.deepEqual(rows[1].notes, ['峰谷翻倍']);
   });
 });
 

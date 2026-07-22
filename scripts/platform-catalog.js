@@ -229,12 +229,33 @@ function normalizePaygPriceField(value) {
   return Number.isFinite(num) ? num : null;
 }
 
-function normalizePaygOrderField(value, fallbackIndex) {
-  if (value == null || value === '') {
-    return Number.isFinite(fallbackIndex) ? 1000 + fallbackIndex : 9999;
+const PAYG_DOC_META_KEYS = new Set(['modelOrder']);
+
+function getPaygModelOrderList(paygPricing) {
+  if (!paygPricing || typeof paygPricing !== 'object' || Array.isArray(paygPricing)) {
+    return [];
   }
-  const num = Number(value);
-  return Number.isFinite(num) ? num : 9999;
+  if (!Array.isArray(paygPricing.modelOrder)) return [];
+  const names = [];
+  const seen = new Set();
+  for (const item of paygPricing.modelOrder) {
+    if (typeof item !== 'string' || !item.trim()) continue;
+    const name = item.trim();
+    if (seen.has(name)) continue;
+    seen.add(name);
+    names.push(name);
+  }
+  return names;
+}
+
+function resolvePaygModelOrder(modelOrderList, modelName, fallbackIndex) {
+  const list = Array.isArray(modelOrderList) ? modelOrderList : [];
+  const name = typeof modelName === 'string' ? modelName.trim() : '';
+  if (name) {
+    const idx = list.indexOf(name);
+    if (idx >= 0) return idx;
+  }
+  return 1000 + (Number.isFinite(fallbackIndex) ? fallbackIndex : 0);
 }
 
 function flattenPaygRows(paygPricing, platforms, plans) {
@@ -247,8 +268,10 @@ function flattenPaygRows(paygPricing, platforms, plans) {
   if (!paygPricing || typeof paygPricing !== 'object' || Array.isArray(paygPricing)) {
     return [];
   }
+  const modelOrderList = getPaygModelOrderList(paygPricing);
   const rows = [];
   for (const [platformId, entry] of Object.entries(paygPricing)) {
+    if (PAYG_DOC_META_KEYS.has(platformId)) continue;
     const platform = byId.get(platformId);
     if (!platform || !entry || typeof entry !== 'object' || !Array.isArray(entry.models)) {
       continue;
@@ -261,6 +284,7 @@ function flattenPaygRows(paygPricing, platforms, plans) {
     const action = resolvePlatformAction(platform, planList);
     entry.models.forEach((model, index) => {
       if (!model || typeof model.name !== 'string' || !model.name.trim()) return;
+      const modelName = model.name.trim();
       const notes = platformNotes.slice();
       if (typeof model.note === 'string' && model.note.trim()) {
         notes.push(model.note.trim());
@@ -270,8 +294,8 @@ function flattenPaygRows(paygPricing, platforms, plans) {
         platformName: String(platform.name || platformId),
         rating: Number(platform.rating) || 0,
         action: action || null,
-        modelName: model.name.trim(),
-        order: normalizePaygOrderField(model.order, index),
+        modelName,
+        order: resolvePaygModelOrder(modelOrderList, modelName, index),
         input: normalizePaygPriceField(model.input),
         cache: normalizePaygPriceField(model.cache),
         output: normalizePaygPriceField(model.output),
@@ -378,7 +402,7 @@ function collectPaygFilterOptions(rows) {
   return { platforms, models };
 }
 
-function buildPaygPricingSectionHtml(entry) {
+function buildPaygPricingSectionHtml(entry, modelOrder) {
   if (!entry || !Array.isArray(entry.models) || !entry.models.length) return '';
   const currency = entry.currency || '¥';
   const notes = Array.isArray(entry.notes)
@@ -390,13 +414,19 @@ function buildPaygPricingSectionHtml(entry) {
         .join('')}</ul>`
     : '';
 
+  const orderList = Array.isArray(modelOrder)
+    ? modelOrder.filter((n) => typeof n === 'string' && n.trim()).map((n) => n.trim())
+    : [];
+
   const rows = entry.models
     .slice()
     .sort((a, b) => {
-      const ao = normalizePaygOrderField(a && a.order, 0);
-      const bo = normalizePaygOrderField(b && b.order, 0);
+      const an = a && typeof a.name === 'string' ? a.name.trim() : '';
+      const bn = b && typeof b.name === 'string' ? b.name.trim() : '';
+      const ao = resolvePaygModelOrder(orderList, an, 0);
+      const bo = resolvePaygModelOrder(orderList, bn, 0);
       if (ao !== bo) return ao - bo;
-      return String((a && a.name) || '').localeCompare(String((b && b.name) || ''), 'zh');
+      return an.localeCompare(bn, 'zh');
     })
     .map((model) => {
       if (!model || typeof model.name !== 'string' || !model.name.trim()) return '';
@@ -449,7 +479,27 @@ function validatePaygPricing(paygPricing, platforms) {
       .filter(Boolean)
   );
 
+  if (Object.prototype.hasOwnProperty.call(paygPricing, 'modelOrder')) {
+    if (!Array.isArray(paygPricing.modelOrder)) {
+      errors.push('modelOrder must be an array of model name strings when present');
+    } else {
+      const seen = new Set();
+      paygPricing.modelOrder.forEach((item, index) => {
+        if (typeof item !== 'string' || !item.trim()) {
+          errors.push(`modelOrder[${index}] must be a non-empty string`);
+          return;
+        }
+        const name = item.trim();
+        if (seen.has(name)) {
+          errors.push(`modelOrder contains duplicate "${name}"`);
+        }
+        seen.add(name);
+      });
+    }
+  }
+
   for (const [platformId, entry] of Object.entries(paygPricing)) {
+    if (PAYG_DOC_META_KEYS.has(platformId)) continue;
     const prefix = `Payg "${platformId}"`;
     if (!platformIds.has(platformId)) {
       errors.push(`${prefix}: no matching platform id in platforms.json`);
@@ -488,12 +538,6 @@ function validatePaygPricing(paygPricing, platforms) {
       if (Object.prototype.hasOwnProperty.call(model, 'note')) {
         if (typeof model.note !== 'string' || !model.note.trim()) {
           errors.push(`${mPrefix}: note must be a non-empty string when present`);
-        }
-      }
-      if (Object.prototype.hasOwnProperty.call(model, 'order')) {
-        const orderNum = Number(model.order);
-        if (!Number.isFinite(orderNum)) {
-          errors.push(`${mPrefix}: order must be a finite number when present`);
         }
       }
     });
@@ -734,6 +778,7 @@ const PlatformCatalog = {
   collectModelsFromPayg,
   formatPaygPrice,
   paygRowHasAnyPrice,
+  getPaygModelOrderList,
   flattenPaygRows,
   filterPaygRows,
   sortPaygRows,

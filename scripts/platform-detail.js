@@ -381,7 +381,10 @@
       `<ul class="platform-detail-dimensions">${dims}</ul>` +
       `</section>` +
       (typeof PlatformCatalog.buildPaygPricingSectionHtml === 'function'
-        ? PlatformCatalog.buildPaygPricingSectionHtml(context.paygEntry)
+        ? PlatformCatalog.buildPaygPricingSectionHtml(
+            context.paygEntry,
+            context.paygModelOrder
+          )
         : '') +
       buildPlansSectionHtml(vendorPlans) +
       buildAvailabilitySectionHtml(platform, monitorRow)
@@ -502,10 +505,15 @@
       typeof PlatformCatalog.getPaygEntry === 'function'
         ? PlatformCatalog.getPaygEntry(paygPricing, platform && platform.id)
         : null;
+    const paygModelOrder =
+      typeof PlatformCatalog.getPaygModelOrderList === 'function'
+        ? PlatformCatalog.getPaygModelOrderList(paygPricing)
+        : [];
     const html = buildDetailBodyHtml(platform, {
       plans,
       monitorRow: null,
-      paygEntry
+      paygEntry,
+      paygModelOrder
     });
 
     const body = bodyEl();
@@ -541,7 +549,12 @@
         : null;
     if (!monitorRow) return;
 
-    body.innerHTML = buildDetailBodyHtml(platform, { plans, monitorRow, paygEntry });
+    body.innerHTML = buildDetailBodyHtml(platform, {
+      plans,
+      monitorRow,
+      paygEntry,
+      paygModelOrder
+    });
   }
 
   return {
