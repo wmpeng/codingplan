@@ -39,8 +39,8 @@
   function dimensionMeta() {
     return PlatformCatalog.PLATFORM_DIMENSION_META || [
       { key: 'value', label: '性价比' },
-      { key: 'stability', label: '稳定性' },
-      { key: 'models', label: '模型' }
+      { key: 'models', label: '模型' },
+      { key: 'stability', label: '可用性' }
     ];
   }
 
