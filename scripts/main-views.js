@@ -80,7 +80,8 @@
         tabsRoot
       });
       onChange(current, meta || {});
-      if (tabsRoot && typeof tabsRoot.scrollIntoView === 'function' && meta && meta.scroll !== false) {
+      // 默认保持页面滚动位置；仅显式 scroll:true 时滚到 Tab
+      if (tabsRoot && typeof tabsRoot.scrollIntoView === 'function' && meta && meta.scroll === true) {
         try {
           tabsRoot.scrollIntoView({ block: 'start', behavior: 'instant' });
         } catch (_) {
@@ -105,15 +106,22 @@
           historyApi.replaceState(state, '', url);
         }
       }
-      if (locationApi && typeof locationApi === 'object') {
-        // keep fake location in sync for tests
+      // 仅同步测试注入的假 location；不要写 window.location.search（会触发整页跳转并滚到顶）
+      if (
+        locationApi &&
+        typeof locationApi === 'object' &&
+        (typeof window === 'undefined' || locationApi !== window.location)
+      ) {
         try {
           const u = new URL(url, 'http://local.test');
           locationApi.search = u.search;
           locationApi.pathname = u.pathname;
         } catch (_) { /* ignore */ }
       }
-      return apply(next, { reason: (setOpts && setOpts.reason) || 'set', scroll: !(setOpts && setOpts.scroll === false) });
+      return apply(next, {
+        reason: (setOpts && setOpts.reason) || 'set',
+        scroll: !!(setOpts && setOpts.scroll)
+      });
     }
 
     apply(current, { reason: 'init', scroll: false });
@@ -123,14 +131,14 @@
         const btn = e.target.closest('[data-main-view]');
         if (!btn || !tabsRoot.contains(btn)) return;
         e.preventDefault();
-        setView(btn.getAttribute('data-main-view'), { reason: 'tab' });
+        setView(btn.getAttribute('data-main-view'), { reason: 'tab', scroll: false });
       });
     }
 
     if (typeof window !== 'undefined') {
       window.addEventListener('popstate', () => {
         const view = readMainViewFromSearch(location.search);
-        apply(view, { reason: 'popstate' });
+        apply(view, { reason: 'popstate', scroll: false });
       });
     }
 
