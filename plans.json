@@ -438,7 +438,8 @@
     "monthlyRequests": 18000,
     "tokenLimit": "无限制",
     "benefits": [],
-    "note": "• 讯飞实际可用量比较多，按调用量计数，明示调用量"
+    "note": "• 已下架\n• 历史方案，可作为参考",
+    "discontinued": true
   },
   {
     "vendor": "讯飞·星火",
@@ -472,6 +473,32 @@
     "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 高效版已支持 GLM-5.2\n• 讯飞实际可用量比较多，按调用量计数，明示调用量"
+  },
+  {
+    "vendor": "讯飞·星火",
+    "plan": "速通版",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "极速"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 699,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.2",
+      "DeepSeek-V4-Pro",
+      "Kimi-K2.7-Code"
+    ],
+    "fiveHoursRequests": "-",
+    "weeklyRequests": "-",
+    "monthlyRequests": "-",
+    "tokenLimit": "无限制",
+    "benefits": [],
+    "note": "• 速通版仅含 3 个顶级模型，专注高强度编程\n• 实际可用量比较多，按调用量计数"
   },
   {
     "vendor": "字节·方舟",
