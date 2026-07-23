@@ -412,95 +412,6 @@
     "measuredMonthlyTokenLimit": 7100
   },
   {
-    "vendor": "讯飞·星火",
-    "plan": "专业版",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
-    "rating": 5,
-    "tags": [
-      "模型强",
-      "性价比高"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 39,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5.1",
-      "Kimi-K2.6",
-      "Qwen3.6-35B-A3B",
-      "MiniMax-M2.5",
-      "Kimi-K2.5",
-      "DeepSeek-V3.2"
-    ],
-    "fiveHoursRequests": 1200,
-    "weeklyRequests": 9000,
-    "monthlyRequests": 18000,
-    "tokenLimit": "无限制",
-    "benefits": [],
-    "note": "• 已下架\n• 历史方案，可作为参考",
-    "discontinued": true
-  },
-  {
-    "vendor": "讯飞·星火",
-    "plan": "高效版",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
-    "rating": 5,
-    "tags": [
-      "模型强",
-      "性价比高"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 199,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "DeepSeek-V4-Pro",
-      "DeepSeek-V4-Flash",
-      "GLM-5.1",
-      "GLM-5.2",
-      "Kimi-K2.6",
-      "Qwen3.6-35B-A3B",
-      "GLM-5",
-      "MiniMax-M2.5",
-      "Kimi-K2.5",
-      "DeepSeek-V3.2"
-    ],
-    "fiveHoursRequests": 6000,
-    "weeklyRequests": 45000,
-    "monthlyRequests": 90000,
-    "tokenLimit": "无限制",
-    "benefits": [],
-    "note": "• 高效版已支持 GLM-5.2\n• 讯飞实际可用量比较多，按调用量计数，明示调用量"
-  },
-  {
-    "vendor": "讯飞·星火",
-    "plan": "速通版",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
-    "rating": 5,
-    "tags": [
-      "模型强",
-      "极速"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 699,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5.2",
-      "DeepSeek-V4-Pro",
-      "Kimi-K2.7-Code"
-    ],
-    "fiveHoursRequests": "-",
-    "weeklyRequests": "-",
-    "monthlyRequests": "-",
-    "tokenLimit": "无限制",
-    "benefits": [],
-    "note": "• 速通版仅含 3 个顶级模型，专注高强度编程\n• 实际可用量比较多，按调用量计数"
-  },
-  {
     "vendor": "字节·方舟",
     "plan": "Lite",
     "type": "Coding Plan",
@@ -1029,6 +940,93 @@
     ],
     "note": "• 82B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
     "measuredMonthlyTokenLimit": 2162
+  },
+  {
+    "vendor": "讯飞·星火",
+    "plan": "专业版",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 39,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "Qwen3.6-35B-A3B",
+      "MiniMax-M2.5",
+      "Kimi-K2.5",
+      "DeepSeek-V3.2"
+    ],
+    "fiveHoursRequests": 1200,
+    "weeklyRequests": 9000,
+    "monthlyRequests": 18000,
+    "tokenLimit": "无限制",
+    "benefits": [],
+    "note": "• 已下架\n• 历史方案，可作为参考",
+    "discontinued": true
+  },
+  {
+    "vendor": "讯飞·星火",
+    "plan": "高效版",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
+    "rating": 3,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 199,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "DeepSeek-V4-Pro",
+      "DeepSeek-V4-Flash",
+      "GLM-5.1",
+      "GLM-5.2",
+      "Kimi-K2.6",
+      "Qwen3.6-35B-A3B",
+      "GLM-5",
+      "MiniMax-M2.5",
+      "Kimi-K2.5",
+      "DeepSeek-V3.2"
+    ],
+    "fiveHoursRequests": 6000,
+    "weeklyRequests": 45000,
+    "monthlyRequests": 90000,
+    "tokenLimit": "无限制",
+    "benefits": [],
+    "note": "• 高效版已支持 GLM-5.2\n• 讯飞实际可用量比较多，按调用量计数，明示调用量"
+  },
+  {
+    "vendor": "讯飞·星火",
+    "plan": "速通版",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
+    "rating": 3,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 699,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.2",
+      "DeepSeek-V4-Pro",
+      "Kimi-K2.7-Code"
+    ],
+    "fiveHoursRequests": "-",
+    "weeklyRequests": "-",
+    "monthlyRequests": "-",
+    "tokenLimit": "无限制",
+    "benefits": [],
+    "note": "• 价格比较贵，据宣传无需等待"
   },
   {
     "vendor": "字节·方舟",

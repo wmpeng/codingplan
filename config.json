@@ -106,10 +106,8 @@
           "rating": 4,
           "action": "https://api.dreamfree.space/c/s/cpyqgongji",
           "reasons": [
-            "支持DeepSeek-V4-Pro模型，目前平台人数不多，稳定性较好。",
-            "API价格为官方**8折**(有点延迟)，即DeepSeek-V4-Pro输入2.4元/M，缓存0.02元/M，输出4.8元/M。官方7月涨价后，此平台价格优势更加明显。",
-            "一定要通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入，才可锁定**8折调用资格**和额外**20元调用额度**。加[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)了解更多。",
-            "还支持GLM-5.2，Kimi-K2.6，Qwen-3.7-Max等常见模型。"
+            "按量调用。支持DeepSeek-V4-Pro，GLM-5.2，Kimi-K2.6，Qwen-3.7-Max等，目前平台人数不多，稳定性较好，API价格为官方**8折**(有点延迟)。",
+            "通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入，才可锁定**8折调用资格**和额外**20元调用额度**。加[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)了解更多。"
           ]
         },
         {
@@ -204,11 +202,11 @@
         },
         {
           "name": "讯飞·星火",
-          "rating": 4,
+          "rating": 3,
           "reasons": [
-            "高效版（199元）已支持 GLM-5.2(500K)。但GLM-5.2比较拥挤，其他模型还好。",
+            "高效版（199元）限购中，高效版（699元）开放购买，已支持 GLM-5.2(500K)。但GLM-5.2比较拥挤，其他模型还好。",
             "无需抢购，随时可下单，智谱抢不到的最佳平替。",
-            "Kimi-2.6、DeepSeek-V4-Pro/Flash 也同时支持，模型覆盖面广。"
+            "Kimi-2.7-Code、DeepSeek-V4-Pro 也同时支持，模型覆盖面广。"
           ]
         }
       ]
@@ -236,13 +234,11 @@
         },
         {
           "name": "共继算力",
-          "rating": 4,
+          "rating": 5,
           "action": "https://api.dreamfree.space/c/s/cpyqgongji",
           "reasons": [
-            "按量调用。支持DeepSeek-V4-Pro模型，目前平台人数不多，稳定性较好。",
-            "API价格为官方**8折**(有点延迟)，即DeepSeek-V4-Pro输入2.4元/M，缓存0.02元/M，输出4.8元/M。官方7月涨价后，此平台价格优势更加明显。",
-            "一定要通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入，才可锁定**8折调用资格**和额外**20元调用额度**。加[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)了解更多。",
-            "还支持GLM-5.2，Kimi-K2.6，Qwen-3.7-Max等常见模型。"
+            "按量调用。支持DeepSeek-V4-Pro，GLM-5.2，Kimi-K2.6，Qwen-3.7-Max等，目前平台人数不多，稳定性较好，API价格为官方**8折**(有点延迟)。",
+            "通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入，才可锁定**8折调用资格**和额外**20元调用额度**。加[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)了解更多。"
           ]
         },
         {
@@ -278,19 +274,31 @@
           ]
         },
         {
-          "name": "讯飞·星火",
-          "rating": 4,
+          "name": "OpenCode",
+          "rating": 5,
           "reasons": [
-            "智谱抢不到的最佳平替，高效版提供 GLM-5.2，速通版专注 GLM-5.2/DeepSeek-V4-Pro/Kimi-K2.7-Code 三大顶级模型。",
-            "199元起，速通版 699元可选，档位清晰。"
+            "Go 套餐 $10/月（首月 $5），DeepSeek V4 Flash 每月可达 **15.8 万次请求**，量大价低。",
+            "多模型聚合平台，支持 GLM-5.2、Kimi-K2.7-Code、MiniMax-M3、Qwen-3.7-Max 等。",
+            "可支付宝付款。"
           ]
         },
         {
-          "name": "Kimi",
+          "name": "共继算力",
           "rating": 4,
+          "action": "https://api.dreamfree.space/c/s/cpyqgongji",
           "reasons": [
-            "支持 Kimi-K3。",
-            "支持多模态。"
+            "按量调用。支持DeepSeek-V4-Pro，GLM-5.2，Kimi-K2.6，Qwen-3.7-Max等，目前平台人数不多，稳定性较好，API价格为官方**8折**(有点延迟)。",
+            "通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入，才可锁定**8折调用资格**和额外**20元调用额度**。加[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)了解更多。"
+          ]
+        },
+        {
+          "name": "DeepSeek官方",
+          "rating": 5,
+          "action": "https://platform.deepseek.com/",
+          "reasons": [
+            "原生DeepSeek，支持DeepSeek-V4-Pro。",
+            "目前价格[输入3元/M，缓存0.025元/M，输出6元/M](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)。",
+            "7月中旬引入峰谷计费，[高峰时段价格翻倍](https://www.ithome.com/0/970/123.htm)。"
           ]
         }
       ]
