@@ -12,7 +12,8 @@
   const mountedStates = typeof WeakMap !== 'undefined' ? new WeakMap() : null;
 
   function getApiBase() {
-    return (root.MONITOR_CONFIG && root.MONITOR_CONFIG.apiBase) || '';
+    const g = typeof globalThis !== 'undefined' ? globalThis : {};
+    return (g.MONITOR_CONFIG && g.MONITOR_CONFIG.apiBase) || '';
   }
 
   function findPlatformSlug(platforms, initialPlatform) {
