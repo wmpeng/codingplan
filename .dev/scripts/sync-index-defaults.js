@@ -108,18 +108,27 @@ ${items}
 }
 
 function generateUpdatesHtml(updates) {
-    const items = (updates || []).map(update => {
+    const visibleCount = 3;
+    const list = updates || [];
+    const hiddenCount = Math.max(0, list.length - visibleCount);
+    const items = list.map((update, index) => {
         const updateItems = (update.items || []).map(item => `<li>${escapeHtml(item)}</li>`).join('');
-        return `                <li class="update-item">
+        const collapsed = index >= visibleCount;
+        const collapsedClass = collapsed ? ' is-collapsed' : '';
+        const hiddenAttr = collapsed ? ' hidden' : '';
+        return `                <li class="update-item${collapsedClass}"${hiddenAttr}>
                     <div class="log-date">${escapeHtml(update.date)}</div>
                     <ul class="update-items">${updateItems}</ul>
                 </li>`;
     }).join('\n');
+    const toggle = hiddenCount > 0
+        ? `\n            <button type="button" class="updates-toggle" aria-expanded="false">展开更多（${hiddenCount}）</button>`
+        : '';
     return `
             <h3>📝 更新日志</h3>
             <ul class="updates-list">
 ${items}
-            </ul>`;
+            </ul>${toggle}`;
 }
 
 function processPrices(item, index) {

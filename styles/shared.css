@@ -455,6 +455,34 @@ body {
     color: var(--accent-secondary);
 }
 
+.updates-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    padding: 8px 14px;
+    border: 1px solid rgba(23, 32, 51, 0.1);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.updates-toggle:hover {
+    color: var(--accent-primary);
+    border-color: rgba(15, 118, 110, 0.28);
+    background: #fff;
+}
+
+.updates-toggle:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
 .hero-summary {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
