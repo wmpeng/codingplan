@@ -323,7 +323,7 @@ indexHtml = replaceSection(
 
 indexHtml = replaceSection(
     indexHtml,
-    /(<div class="notes-section" id="notesSection">)[\s\S]*?(<\/div>\r?\n\r?\n        <!-- 更新日志（与 config\.json 同步） -->)/,
+    /(<div class="notes-section" id="notesSection">)[\s\S]*?(<\/div>\r?\n\r?\n            <\/div>\r?\n            <div id="view-payg")/,
     generateNotesHtml(config.notes)
 );
 
