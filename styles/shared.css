@@ -127,7 +127,7 @@ body {
     border-radius: 32px;
     background: linear-gradient(135deg, rgba(255, 252, 246, 0.96) 0%, rgba(255, 248, 238, 0.84) 56%, rgba(239, 246, 244, 0.92) 100%);
     box-shadow: var(--shadow-lg);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .header::before,
@@ -193,7 +193,7 @@ body {
     position: absolute;
     top: 24px;
     right: 24px;
-    z-index: 2;
+    z-index: 30;
     display: inline-flex;
     align-items: center;
     gap: 10px;

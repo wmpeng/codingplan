@@ -2637,6 +2637,9 @@
                             buttonLabel: '设置'
                         }
                     });
+                    if (typeof initUltraWideSettings === 'function') {
+                        initUltraWideSettings();
+                    }
                 }
 
                 if (typeof initFeedbackFloat === 'function') {

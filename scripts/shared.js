@@ -227,8 +227,12 @@ function renderPageNav(target, options = {}) {
         const toggle = document.getElementById('ultraWideToggle');
 
         if (!btn || !panel || !toggle) {
-            return;
+            return false;
         }
+        if (btn.dataset.ultraWideBound === '1') {
+            return true;
+        }
+        btn.dataset.ultraWideBound = '1';
 
         function applyUltraWide(on) {
             document.body.classList.toggle('ultra-wide', on);
@@ -251,11 +255,16 @@ function renderPageNav(target, options = {}) {
         });
 
         document.addEventListener('click', function (e) {
-            if (!panel.hidden && !panel.contains(e.target) && e.target !== btn) {
+            if (!panel.hidden && !panel.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
                 panel.hidden = true;
                 btn.classList.remove('active');
             }
         });
+        return true;
+    }
+
+    if (typeof window !== 'undefined') {
+        window.initUltraWideSettings = initUltraWideSettings;
     }
 
     if (document.readyState === 'loading') {
