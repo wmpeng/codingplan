@@ -1,0 +1,136 @@
+/* ABOUTME: Main stylesheet for native-static template */
+/* ABOUTME: Provides layout, typography, and theme styles without external dependencies */
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Light theme colors */
+  --background: #ffffff;
+  --foreground: #171717;
+  --muted-foreground: #71717a;
+
+  /* Spacing */
+  --spacing-2: 0.5rem;
+  --spacing-4: 1rem;
+  --spacing-16: 4rem;
+  --spacing-32: 8rem;
+
+  /* Typography */
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --line-height-tight: 1.25;
+  --line-height-relaxed: 2;
+  --letter-spacing-tight: -0.025em;
+
+  /* Transitions */
+  --transition-duration: 300ms;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --muted-foreground: #a1a1aa;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+/* App container */
+#app {
+  display: flex;
+  height: 100%;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Main content wrapper */
+.main-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 48rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: var(--spacing-16);
+  padding-right: var(--spacing-16);
+  padding-top: var(--spacing-32);
+  padding-bottom: var(--spacing-32);
+}
+
+/* Content container */
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+}
+
+/* Logo image */
+.logo-image {
+  width: 156px;
+  height: 130px;
+  object-fit: contain;
+}
+
+/* Text container */
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+  text-align: center;
+}
+
+/* Heading */
+.heading {
+  max-width: 36rem;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--foreground);
+}
+
+/* Description text */
+.description {
+  max-width: 42rem;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--muted-foreground);
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .main-wrapper {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .logo-image {
+    width: 120px;
+    height: 100px;
+  }
+}

@@ -127,7 +127,7 @@ body {
     border-radius: 32px;
     background: linear-gradient(135deg, rgba(255, 252, 246, 0.96) 0%, rgba(255, 248, 238, 0.84) 56%, rgba(239, 246, 244, 0.92) 100%);
     box-shadow: var(--shadow-lg);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .header::before,
@@ -160,9 +160,6 @@ body {
 }
 
 .github-link {
-    position: absolute;
-    top: 24px;
-    right: 24px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -184,8 +181,58 @@ body {
     transform: translateY(-1px);
 }
 
+/* 其它页：反馈链直接挂在 header 下时保持右上角 */
+.header > .github-link {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 2;
+}
+
+.header-actions {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 30;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-actions .settings-wrapper {
+    margin-left: 0;
+}
+
+.header-actions .settings-btn {
+    width: auto;
+    height: auto;
+    gap: 6px;
+    padding: 11px 18px;
+    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    box-shadow: 0 10px 22px rgba(23, 32, 51, 0.06);
+}
+
+.header-actions .settings-btn:hover,
+.header-actions .settings-btn.active {
+    color: var(--text-primary);
+    border-color: rgba(23, 32, 51, 0.18);
+    background: rgba(255, 255, 255, 0.92);
+    transform: translateY(-1px);
+}
+
+.header-actions .settings-btn svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
 .header h1 {
-    max-width: calc(100% - 140px);
+    max-width: calc(100% - 280px);
     font-size: clamp(40px, 6vw, 68px);
     color: var(--text-primary);
     margin-bottom: 16px;
@@ -488,6 +535,34 @@ body {
     position: absolute;
     left: -12px;
     color: var(--accent-secondary);
+}
+
+.updates-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    padding: 8px 14px;
+    border: 1px solid rgba(23, 32, 51, 0.1);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.updates-toggle:hover {
+    color: var(--accent-primary);
+    border-color: rgba(15, 118, 110, 0.28);
+    background: #fff;
+}
+
+.updates-toggle:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
 }
 
 .hero-summary {
@@ -840,16 +915,25 @@ body {
         width: min(230px, calc(100vw - 28px));
     }
 
-    .header > .github-link {
-        position: absolute;
+    .header-actions {
         top: 18px;
         right: 18px;
-        margin-bottom: 0;
+        gap: 8px;
+    }
+
+    .header > .github-link {
+        top: 18px;
+        right: 18px;
+        padding: 10px 14px;
+    }
+
+    .header-actions .github-link,
+    .header-actions .settings-btn {
         padding: 10px 14px;
     }
 
     .header > h1 {
-        max-width: calc(100% - 132px);
+        max-width: calc(100% - 220px);
         font-size: clamp(34px, 12vw, 52px);
     }
 

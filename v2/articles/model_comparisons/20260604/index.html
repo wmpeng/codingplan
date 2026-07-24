@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026年6月主流大模型Coding能力深度对比｜GPT-5.5、Claude Opus 4.8、国产多款跻身前十</title>
+  <meta name="description" content="基于 Artificial Analysis 2026年6月基准测试，围绕 Coding 指数与 Agentic 智能指数对 GPT-5.5、Claude Opus 4.8、Qwen3.7 Max、DeepSeek V4 Pro、Kimi K2.6 等 19 款主流大模型横向评测，附选型建议。" />
+  <link rel="icon" href="../../../favicon.ico?v=260515" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=260515" />
+  <style>
+    body.article-page {
+      font-size: 17px;
+      line-height: 1.78;
+      padding: clamp(18px, 4vw, 36px) clamp(14px, 3.5vw, 28px) 56px;
+    }
+
+    .doc-wrap {
+      max-width: calc(64rem + 14.5rem + 2.5rem);
+      margin: 0 auto;
+    }
+
+    .doc-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .doc-toc-aside.doc-toc-aside--desktop {
+      display: none;
+    }
+
+    .doc-toc.doc-toc--inline {
+      display: block;
+    }
+
+    article.doc .doc-toc ol,
+    article.doc .doc-toc ul {
+      margin-bottom: 0;
+      padding-left: 0;
+      color: inherit;
+    }
+
+    article.doc .doc-toc li {
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    article.doc .doc-toc li::marker {
+      color: rgba(15, 118, 110, 0.45);
+    }
+
+    article.doc .doc-toc a,
+    article.doc .doc-toc a:hover {
+      border-bottom: none;
+      text-decoration: none;
+    }
+
+    article.doc {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    @media (max-width: 1023px) {
+      .doc-wrap {
+        max-width: 64rem;
+      }
+    }
+
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      padding: 0.6rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #3a2000;
+      background: var(--accent-primary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+    }
+
+    .back-home-btn:hover {
+      opacity: 0.85;
+      transform: translateX(-2px);
+    }
+
+    article.doc {
+      position: relative;
+      padding: clamp(1.5rem, 4.2vw, 2.85rem);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      background: linear-gradient(
+        155deg,
+        rgba(255, 253, 248, 0.97) 0%,
+        rgba(255, 249, 240, 0.9) 45%,
+        rgba(239, 246, 244, 0.55) 100%
+      );
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    article.doc::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-primary), rgba(198, 107, 26, 0.85));
+      opacity: 0.92;
+    }
+
+    .doc-kicker {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc h1 {
+      font-size: clamp(1.45rem, 4.2vw, 1.95rem);
+      font-weight: 700;
+      line-height: 1.32;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin: 0 0 0.45rem;
+      max-width: 28em;
+    }
+
+    article.doc .doc-updates {
+      margin: 0 0 1.05rem;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-updates time {
+      font-variant-numeric: tabular-nums;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    article.doc .lead {
+      font-size: 0.98em;
+      color: var(--text-secondary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc p {
+      margin: 0 0 1rem;
+      color: var(--text-primary);
+    }
+
+    article.doc h2 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 2.35rem 0 0.85rem;
+      padding: 0 0 0 0.85rem;
+      border-left: 4px solid var(--accent-primary);
+      line-height: 1.35;
+    }
+
+    article.doc h2:first-of-type {
+      margin-top: 1.85rem;
+    }
+
+    article.doc h2[id],
+    article.doc h3[id] {
+      scroll-margin-top: 1.25rem;
+    }
+
+    .doc-toc {
+      margin: 0;
+      padding: 0.85rem 0.95rem 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: rgba(255, 253, 248, 0.92);
+      box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.06));
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .doc-toc-title {
+      margin: 0 0 0.55rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .doc-toc ol {
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .doc-toc > ol {
+      list-style: none;
+    }
+
+    .doc-toc > ol > li {
+      margin-bottom: 0.45rem;
+    }
+
+    .doc-toc > ol > li > a {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc ol ol {
+      margin: 0.3rem 0 0.1rem;
+      padding-left: 0.85rem;
+      list-style: none;
+      border-left: 2px solid rgba(15, 118, 110, 0.15);
+    }
+
+    .doc-toc ol ol li {
+      margin-bottom: 0.22rem;
+    }
+
+    .doc-toc ol ol a {
+      font-weight: 400;
+      color: var(--text-secondary);
+      font-size: 0.96em;
+    }
+
+    .doc-toc a {
+      display: block;
+      border-bottom: none;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .doc-toc a:hover {
+      color: var(--accent-primary);
+    }
+
+    .doc-toc.doc-toc--inline {
+      margin: 0 0 1.75rem;
+      padding: 1rem 1.15rem 1.05rem;
+      font-size: 0.92em;
+      line-height: 1.55;
+      background: rgba(15, 118, 110, 0.05);
+      box-shadow: none;
+    }
+
+    .doc-toc.doc-toc--inline .doc-toc-title {
+      font-size: 0.88rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li {
+      margin-bottom: 0.5rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li > a {
+      display: inline;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc.doc-toc--inline ol ol {
+      margin: 0.35rem 0 0.15rem;
+      padding-left: 1.15rem;
+      list-style: decimal;
+      border-left: none;
+    }
+
+    .doc-toc.doc-toc--inline ol ol a {
+      display: inline;
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: 1em;
+    }
+
+    @media (min-width: 1024px) {
+      .doc-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: clamp(1.25rem, 2.5vw, 2rem);
+      }
+
+      .doc-toc.doc-toc--inline {
+        display: none;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop {
+        display: block;
+        flex: 0 0 13.25rem;
+        width: 13.25rem;
+        position: sticky;
+        top: 1.25rem;
+        max-height: calc(100vh - 2.5rem);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(15, 118, 110, 0.35) transparent;
+      }
+
+      article.doc {
+        flex: 1 1 auto;
+        max-width: 64rem;
+      }
+    }
+
+    article.doc h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #243047;
+      margin: 1.45rem 0 0.55rem;
+    }
+
+    article.doc ul,
+    article.doc ol {
+      margin: 0 0 1.1rem;
+      padding-left: 1.35rem;
+      color: var(--text-primary);
+    }
+
+    article.doc li {
+      margin-bottom: 0.45rem;
+      padding-left: 0.15rem;
+    }
+
+    article.doc li::marker {
+      color: rgba(15, 118, 110, 0.55);
+    }
+
+    article.doc ol li::marker {
+      color: rgba(15, 118, 110, 0.55);
+      font-weight: 600;
+    }
+
+    article.doc strong {
+      font-weight: 600;
+      color: #1a2436;
+    }
+
+    article.doc a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    article.doc a:hover {
+      color: #0d9488;
+      border-bottom-color: rgba(13, 148, 136, 0.55);
+    }
+
+    article.doc table {
+      width: fit-content;
+      max-width: 100%;
+      display: block;
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+      border-collapse: collapse;
+      font-size: 0.9em;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    article.doc thead {
+      background: rgba(15, 118, 110, 0.08);
+    }
+
+    article.doc th {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.88em;
+      color: var(--text-secondary);
+      border-bottom: 2px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    article.doc td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-primary);
+      vertical-align: top;
+    }
+
+    article.doc tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    article.doc tbody tr:hover {
+      background: rgba(15, 118, 110, 0.04);
+    }
+
+    .doc-blockquote {
+      margin: 1.5rem 0;
+      padding: 0.85rem 1.15rem;
+      border-left: 4px solid var(--accent-primary);
+      background: rgba(15, 118, 110, 0.06);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 0.95em;
+      color: var(--text-secondary);
+    }
+
+    .doc-figure {
+      margin: 1.35rem 0 1.6rem;
+    }
+
+    .doc-figure img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
+      background: #fff;
+    }
+
+    .doc-figure figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-source {
+      margin-top: 2.25rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--text-tertiary);
+    }
+
+    ::selection {
+      background: rgba(15, 118, 110, 0.18);
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body class="article-page">
+  <div class="doc-wrap">
+    <a href="../../../" class="back-home-btn">← 返回主页</a>
+    <div class="doc-layout">
+      <aside class="doc-toc-aside doc-toc-aside--desktop">
+        <nav class="doc-toc" aria-label="文章目录">
+          <p class="doc-toc-title">目录</p>
+          <ol>
+            <li><a href="#sec-overview">一、快速对比总览</a></li>
+            <li><a href="#sec-landscape">二、整体格局</a>
+              <ol>
+                <li><a href="#sec-coding-index">Coding 指数</a></li>
+                <li><a href="#sec-agentic-index">Agentic 智能指数</a></li>
+              </ol>
+            </li>
+            <li><a href="#sec-dimensions">三、单独测试维度详解</a>
+              <ol>
+                <li><a href="#sec-itbench">ITBench-AA</a></li>
+                <li><a href="#sec-omniscience">AA-Omniscience</a></li>
+                <li><a href="#sec-gdpval">GDPval-AA</a></li>
+              </ol>
+            </li>
+            <li><a href="#sec-domestic">四、国产核心厂商解析</a>
+              <ol>
+                <li><a href="#sec-qwen">Qwen3.7 Max</a></li>
+                <li><a href="#sec-deepseek">DeepSeek V4 Pro</a></li>
+                <li><a href="#sec-glm">GLM-5.1</a></li>
+                <li><a href="#sec-kimi">Kimi K2.6</a></li>
+                <li><a href="#sec-minimax">MiniMax-M3</a></li>
+                <li><a href="#sec-mimo">MiMo-V2.5-Pro</a></li>
+              </ol>
+            </li>
+            <li><a href="#sec-selection">五、个人使用选型参考指南</a></li>
+            <li><a href="#sec-summary">六、榜单重大变化总结</a></li>
+          </ol>
+        </nav>
+      </aside>
+
+      <article class="doc">
+        <p class="doc-kicker">模型评测 · Coding Plan</p>
+        <h1>2026年6月主流大模型Coding能力深度对比：GPT-5.5 领跑 Coding 指数，Claude Opus 4.8 加冕 Agentic 王座，国产多款跻身全球前十</h1>
+        <p class="doc-updates">更新日期：<time datetime="2026-06-04">2026.6.4</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
+        <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;">本次核心结论：<strong>GPT-5.5</strong> 稳居 Coding 指数榜首，<strong>Claude Opus 4.8</strong> 加冕 Agentic 智能指数新王；<strong>Qwen3.7 Max</strong>、<strong>DeepSeek V4 Pro</strong>、<strong>Kimi K2.6</strong>、<strong>MiMo-V2.5-Pro</strong> 等国产旗舰共同跻身两大榜单全球前十。</div>
+        <p class="lead">基于独立评测机构 Artificial Analysis 发布的最新 AI 模型基准测试结果（数据来源：2026年6月），本文围绕 <strong>Coding 指数</strong>（Terminal-Bench Hard + SciCode）和 <strong>Agentic 智能指数</strong>（GDPval-AA + 𝜏²-Bench Telecom）两大核心指标，对当下主流大模型进行横向评测，并补充 <strong>ITBench-AA</strong>（Kubernetes 事故根因分析）、<strong>AA-Omniscience</strong>（知识可靠性与幻觉率）、<strong>GDPval-AA</strong>（真实世界任务 Elo 评分）三个单独测试维度的详细数据。</p>
+        <p>这两项核心指标与日常代码开发需求和 OpenClaw、Harness 等通用 Agent 场景高度契合：</p>
+        <ul>
+          <li>Coding 能力直接决定模型代码生成、调试优化、代码库理解的水平</li>
+          <li>Agentic 能力则是评估模型自主规划复杂任务、调度外部工具、驱动自动化流程的核心依据</li>
+        </ul>
+        <p>从测试数据来看，国产头部大模型已全面跻身全球第一梯队，与 OpenAI、Anthropic 等海外厂商的顶尖产品差距进一步缩小，且在性价比、国内生态适配性方面具备独特优势。同时 6 月榜单迎来重大变化：<strong>GPT-5.5 稳居 Coding 指数榜首</strong>，<strong>Claude Opus 4.8 加冕 Agentic 智能指数新王</strong>，Qwen3.7 Max、DeepSeek V4 Pro、Kimi K2.6、MiMo-V2.5-Pro 等国产旗舰共同跻身两大榜单全球前十。</p>
+
+        <nav class="doc-toc doc-toc--inline" aria-label="文章目录">
+          <p class="doc-toc-title">目录</p>
+          <ol>
+            <li><a href="#sec-overview">一、快速对比总览</a></li>
+            <li><a href="#sec-landscape">二、整体格局：GPT-5.5 稳居 Coding 王座，国产头部跻身全球前十</a>
+              <ol>
+                <li><a href="#sec-coding-index">Artificial Analysis Coding 指数</a></li>
+                <li><a href="#sec-agentic-index">Agentic 智能指数</a></li>
+              </ol>
+            </li>
+            <li><a href="#sec-dimensions">三、单独测试维度详解</a>
+              <ol>
+                <li><a href="#sec-itbench">ITBench-AA</a></li>
+                <li><a href="#sec-omniscience">AA-Omniscience</a></li>
+                <li><a href="#sec-gdpval">GDPval-AA</a></li>
+              </ol>
+            </li>
+            <li><a href="#sec-domestic">四、国产核心厂商模型深度解析</a></li>
+            <li><a href="#sec-selection">五、个人使用选型参考指南</a></li>
+            <li><a href="#sec-summary">六、2026年6月榜单重大变化总结</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="sec-overview">一、快速对比总览</h2>
+        <p>下表汇总了 6 月榜单中 19 款主流模型的四大关键指标，便于快速横向比较（上下文长度数据来源：<a href="https://llm-stats.com/models?category=llm" rel="noopener noreferrer">llm-stats.com</a>）：</p>
+        <table>
+          <thead>
+            <tr><th>模型</th><th>上下文长度</th><th>多模态</th><th>Coding 指数</th><th>Agentic 智能指数</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>GPT-5.5</td><td>✅ 1M</td><td>✅ 文本+图像</td><td>59.1</td><td>74.1</td></tr>
+            <tr><td>GPT-5.4</td><td>✅ 1M</td><td>✅ 文本+图像</td><td>57.2</td><td>68.0</td></tr>
+            <tr><td>Claude Opus 4.8</td><td>✅ 1M</td><td>✅ 文本+图像</td><td>56.7</td><td>77.8</td></tr>
+            <tr><td>Gemini 3.1 Pro Preview</td><td>✅ 1M</td><td>✅ 文本+图像+音频+视频</td><td>55.5</td><td>59.1</td></tr>
+            <tr><td>Claude Opus 4.7</td><td>✅ 1M</td><td>✅ 文本+图像</td><td>52.5</td><td>71.3</td></tr>
+            <tr><td>Claude Sonnet 4.6</td><td>❌ 200k</td><td>✅ 文本+图像</td><td>50.9</td><td>63.0</td></tr>
+            <tr><td>Qwen3.7 Max</td><td>✅ 1M</td><td>❌ 纯文本</td><td>50.1</td><td>66.6</td></tr>
+            <tr><td>DeepSeek V4 Pro</td><td>✅ 1M</td><td>❌ 纯文本</td><td>47.5</td><td>67.2</td></tr>
+            <tr><td>Kimi K2.6</td><td>❌ 262k</td><td>✅ 文本+图像+视频</td><td>47.1</td><td>66.0</td></tr>
+            <tr><td>Qwen3.7 Plus</td><td>✅ 1M</td><td>✅ 文本+图像+视频</td><td>46.5</td><td>65.1</td></tr>
+            <tr><td>MiMo-V2.5-Pro</td><td>✅ 1M</td><td>❌ 纯文本</td><td>45.5</td><td>67.4</td></tr>
+            <tr><td>Gemini 3.5 Flash</td><td>✅ 1M</td><td>✅ 文本+图像</td><td>45.0</td><td>70.3</td></tr>
+            <tr><td>MiniMax-M3</td><td>✅ 1M</td><td>✅ 文本+图像+视频</td><td>43.4</td><td>68.6</td></tr>
+            <tr><td>GLM-5.1</td><td>❌ 200k</td><td>❌ 纯文本</td><td>43.4</td><td>67.1</td></tr>
+            <tr><td>DeepSeek V4 Flash</td><td>✅ 1M</td><td>❌ 纯文本</td><td>38.7</td><td>61.3</td></tr>
+            <tr><td>DeepSeek V3.2</td><td>❌ 131k</td><td>❌ 纯文本</td><td>36.7</td><td>52.9</td></tr>
+            <tr><td>Qwen3.6 27B</td><td>❌ 262k</td><td>✅ 文本+图像</td><td>36.5</td><td>62.9</td></tr>
+            <tr><td>Qwen3.6 35B A3B</td><td>❌ 262k</td><td>✅ 文本+图像</td><td>35.2</td><td>58.3</td></tr>
+            <tr><td>Claude Haiku 4.5</td><td>❌ 200k</td><td>✅ 文本+图像</td><td>32.6</td><td>40.2</td></tr>
+          </tbody>
+        </table>
+        <div class="doc-blockquote"><strong>特别提示</strong>：Qwen3.7 Max 是 <strong>纯文本模型</strong>，多模态能力请使用 Qwen3.7 Plus。</div>
+
+        <h2 id="sec-landscape">二、整体格局：GPT-5.5 稳居 Coding 王座，国产头部跻身全球前十</h2>
+
+        <h3 id="sec-coding-index">1. Artificial Analysis Coding 指数（代码核心指标）</h3>
+        <figure class="doc-figure">
+          <img src="./coding_index_202606.png" alt="Artificial Analysis Coding Index：Terminal-Bench Hard + SciCode 综合 pass@1（分数越高越好）" />
+          <figcaption>Artificial Analysis Coding Index：Terminal-Bench Hard + SciCode 综合 pass@1（分数越高越好）。数据来源：<a href="https://artificialanalysis.ai/?intelligence=coding-index&amp;models=gpt-5-5%2Cgemini-3-1-pro-preview%2Cgemini-3-5-flash%2Cclaude-sonnet-4-6-adaptive%2Cclaude-opus-4-7%2Cclaude-4-5-haiku-reasoning%2Cclaude-opus-4-8%2Cdeepseek-v4-pro%2Cdeepseek-v4-flash%2Cminimax-m3%2Ckimi-k2-6%2Cmimo-v2-5-pro%2Cglm-5-1%2Cqwen3-6-35b-a3b%2Cqwen3-7-max%2Cqwen3-6-27b%2Cqwen3-7-plus%2Cgpt-5-4%2Cdeepseek-v3-2-reasoning#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis - Coding Index</a></figcaption>
+        </figure>
+        <p>该指数整合 Terminal-Bench Hard（终端工具使用）与 SciCode（科研代码生成）两大测试维度，全面评估模型端到端完成软件工程任务的能力，是衡量 AI 编程工具实力的核心标准。</p>
+        <p><strong>Coding 指数 TOP 榜（2026年6月，530 个模型中主要的前 19 位）：</strong></p>
+        <ul>
+          <li>全球头部阵营：<strong>GPT-5.5 59.1</strong> 分稳居榜首，<strong>GPT-5.4 57.2</strong> 紧随其后，<strong>Claude Opus 4.8 56.7</strong> 排名第三</li>
+          <li>旗舰阵营：<strong>Gemini 3.1 Pro Preview 55.5</strong>、<strong>Claude Opus 4.7 52.5</strong>、<strong>Claude Sonnet 4.6 50.9</strong></li>
+          <li>国产第一梯队：<strong>Qwen3.7 Max 50.1</strong> 分排名全球第七，为国产模型首位；<strong>DeepSeek V4 Pro 47.5</strong>、<strong>Kimi K2.6 47.1</strong>、<strong>Qwen3.7 Plus 46.5</strong>、<strong>MiMo-V2.5-Pro 45.5</strong>、<strong>MiniMax-M3 43.4</strong>、<strong>GLM-5.1 43.4</strong> 紧随其后</li>
+          <li>中小模型阵营：<strong>Gemini 3.5 Flash 45.0</strong>、<strong>DeepSeek V4 Flash 38.7</strong>、<strong>DeepSeek V3.2 36.7</strong>、<strong>Qwen3.6 27B 36.5</strong>、<strong>Qwen3.6 35B A3B 35.2</strong>、<strong>Claude Haiku 4.5 32.6</strong></li>
+        </ul>
+
+        <h3 id="sec-agentic-index">2. Agentic 智能指数（通用 Agent 核心指标）</h3>
+        <figure class="doc-figure">
+          <img src="./agentic_index_202606.png" alt="Artificial Analysis Agentic Index：GDPval-AA + 𝜏²-Bench Telecom 综合分数（分数越高越好）" />
+          <figcaption>Artificial Analysis Agentic Index：GDPval-AA + 𝜏²-Bench Telecom 综合分数（分数越高越好）。数据来源：<a href="https://artificialanalysis.ai/?intelligence=agentic-index&amp;models=gpt-5-5%2Cgemini-3-1-pro-preview%2Cgemini-3-5-flash%2Cclaude-sonnet-4-6-adaptive%2Cclaude-opus-4-7%2Cclaude-4-5-haiku-reasoning%2Cclaude-opus-4-8%2Cdeepseek-v4-pro%2Cdeepseek-v4-flash%2Cminimax-m3%2Ckimi-k2-6%2Cmimo-v2-5-pro%2Cglm-5-1%2Cqwen3-6-35b-a3b%2Cqwen3-7-max%2Cqwen3-6-27b%2Cqwen3-7-plus%2Cgpt-5-4%2Cdeepseek-v3-2-reasoning#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis - Agentic Index</a></figcaption>
+        </figure>
+        <p>该指数综合 GDPval-AA 真实世界任务执行能力与 𝜏²-Bench Telecom 工具调用能力两大基准，量化评估模型自主完成多步骤复杂任务的表现，是衡量 OpenClaw 自动化运营潜力的核心标准。</p>
+        <p><strong>Agentic 指数 TOP 榜（2026年6月，530 个模型中主要的前 19 位）：</strong></p>
+        <ul>
+          <li>全球头部阵营：<strong>Claude Opus 4.8 77.8</strong> 登顶，<strong>GPT-5.5 74.1</strong>、<strong>Claude Opus 4.7 71.3</strong> 占据全球前三</li>
+          <li>旗舰阵营：<strong>Gemini 3.5 Flash 70.3</strong>、<strong>MiniMax-M3 68.6</strong>、<strong>GPT-5.4 68.0</strong>、<strong>MiMo-V2.5-Pro 67.4</strong>、<strong>DeepSeek V4 Pro 67.2</strong>、<strong>GLM-5.1 67.1</strong> 紧随其后</li>
+          <li>国产第一梯队（65 分以上）：<strong>Qwen3.7 Max 66.6</strong>、<strong>Kimi K2.6 66.0</strong>、<strong>Qwen3.7 Plus 65.1</strong> 全部跻身全球前 12</li>
+          <li>性价比与开源阵营：<strong>Claude Sonnet 4.6 63.0</strong>、<strong>Qwen3.6 27B 62.9</strong>、<strong>DeepSeek V4 Flash 61.3</strong>、<strong>Gemini 3.1 Pro Preview 59.1</strong>、<strong>Qwen3.6 35B A3B 58.3</strong>、<strong>DeepSeek V3.2 52.9</strong>、<strong>Claude Haiku 4.5 40.2</strong></li>
+        </ul>
+
+        <h2 id="sec-dimensions">三、单独测试维度详解</h2>
+
+        <h3 id="sec-itbench">1. ITBench-AA（Kubernetes 事故根因分析，企业级 SRE 场景）</h3>
+        <p><strong>ITBench-AA TOP 榜（24 个模型中前 12 位）：</strong></p>
+        <ul>
+          <li><strong>Claude Opus 4.7 46.7%</strong> 居首，<strong>GPT-5.5 45.8%</strong> 第二，<strong>Qwen3.7 Max 42.5%</strong> 排名第三，是国产模型中 SRE 场景表现最强的</li>
+          <li><strong>Gemini 3.5 Flash 40.3%</strong>、<strong>GLM-5.1 40.3%</strong>、<strong>Claude Sonnet 4.6 39.8%</strong> 紧随其后</li>
+          <li><strong>DeepSeek V4 Pro 38.3%</strong>、<strong>MiMo-V2.5-Pro 38.2%</strong>、<strong>GPT-5.4 34.5%</strong>、<strong>DeepSeek V4 Flash 31.5%</strong>、<strong>Kimi K2.6 31.2%</strong> 同样表现优异</li>
+        </ul>
+
+        <h3 id="sec-omniscience">2. AA-Omniscience（知识可靠性与幻觉率）</h3>
+        <p><strong>AA-Omniscience TOP 10：</strong></p>
+        <ul>
+          <li>知识最可靠：<strong>Gemini 3.1 Pro Preview (33)</strong>、<strong>Claude Opus 4.8 (27)</strong>、<strong>Claude Opus 4.7 (26)</strong> 占据前三</li>
+          <li><strong>Gemini 3.5 Flash (23)</strong>、<strong>GPT-5.5 (20)</strong>、<strong>Qwen3.7 Max (14)</strong> 知识可靠性突出</li>
+          <li><strong>Claude Sonnet 4.6 (12)</strong> 表现稳定</li>
+          <li>国产模型中 <strong>Kimi K2.6 (6)</strong>、<strong>MiMo-V2.5-Pro (3)</strong>、<strong>Qwen3.7 Plus (2)</strong> 得分居中；<strong>GLM-5.1 (1)</strong>、<strong>MiniMax-M3 (1)</strong> 得分偏低；海外阵营中 <strong>GPT-5.4 (4)</strong> 同样居中</li>
+        </ul>
+
+        <h3 id="sec-gdpval">3. GDPval-AA（真实世界任务 Elo 评分）</h3>
+        <p>GDPval-AA 是 Agentic 智能指数的核心子项，基于真实世界任务（涉及金融、咨询、销售、运营等职业任务）的成对对比 Elo 评分（分数越高越好），是衡量模型在 OpenClaw 等真实业务场景下表现的最直接指标。</p>
+        <p><strong>GDPval-AA Elo TOP 榜（2026年6月，23 个模型中前 19 位）：</strong></p>
+        <ul>
+          <li>全球头部阵营：<strong>Claude Opus 4.8 1890</strong> 登顶，<strong>GPT-5.5 1769</strong>、<strong>Claude Opus 4.7 1753</strong> 占据全球前三</li>
+          <li>旗舰阵营：<strong>Claude Sonnet 4.6 1676</strong>、<strong>GPT-5.4 1674</strong>、<strong>MiniMax-M3 1670</strong>、<strong>Gemini 3.5 Flash 1656</strong> 紧随其后</li>
+          <li>国产第一梯队：<strong>MiMo-V2.5-Pro 1571</strong>、<strong>DeepSeek V4 Pro 1554</strong>、<strong>Qwen3.7 Max 1546</strong>、<strong>GLM-5.1 1535</strong>、<strong>Qwen3.7 Plus 1522</strong>、<strong>Kimi K2.6 1481</strong> 全部跻身全球前 15</li>
+          <li>性价比与开源阵营：<strong>Qwen3.6 27B 1404</strong>、<strong>DeepSeek V4 Flash 1388</strong>、<strong>Gemini 3.1 Pro Preview 1314</strong>、<strong>Qwen3.6 35B A3B 1298</strong>、<strong>DeepSeek V3.2 1197</strong>、<strong>Claude Haiku 4.5 1171</strong></li>
+        </ul>
+
+        <h2 id="sec-domestic">四、国产核心厂商模型深度解析</h2>
+
+        <h3 id="sec-qwen">1. Qwen3.7 Max（阿里）：Coding 国产第一，全面领跑</h3>
+        <p>Qwen3.7 Max 在 6 月榜单中表现亮眼，Coding 指数排名全球第七、国产第一；Agentic 智能指数跻身全球前十；ITBench-AA 位居全球第三，SRE 场景表现突出；知识可靠性在国产阵营中同样优秀。是国产 AI 编程领域的标杆。</p>
+        <p>阿里 Qwen 系列已建立完整的产品矩阵：Qwen3.7 Max（旗舰）、Qwen3.7 Plus（高性价比）、Qwen3.6 27B、Qwen3.6 35B A3B 等多档可选。但目前 Qwen 渠道主要通过阿里云百炼 API 销售，个人使用推荐购买 Token Plan 套餐，Qwen3.7 系列模型都可使用。</p>
+
+        <h3 id="sec-deepseek">2. DeepSeek V4 Pro（深度求索）：开源标杆，均衡旗舰</h3>
+        <p>DeepSeek V4 Pro 在 6 月榜单中依然保持强势：Coding 与 Agentic 指数均跻身全球前十；ITBench-AA 排名全球第七；知识可靠性相对较弱。是开源开放度最高的旗舰模型之一。</p>
+        <p>DeepSeek 独特优势：</p>
+        <ul>
+          <li>完整的开源权重（V4 Pro / V4 Flash 均可商用）</li>
+          <li>独创的缓存机制使得缓存命中率高、缓存价格极低</li>
+          <li><strong>DeepSeek V4 Flash</strong> 输出速度极快、单价低（缓存命中 ¥0.02/百万 token，未命中输入 ¥1/百万 token，输出 ¥2/百万 token）</li>
+          <li>产品矩阵覆盖：V4 Pro、V4 Flash、V3.2 等多个档位</li>
+        </ul>
+
+        <h3 id="sec-glm">3. GLM-5.1（智谱AI）：综合能力均衡，企业级 SRE 优选</h3>
+        <p>GLM-5.1 在 6 月榜单中维持国产顶级水准：Coding 指数稳居国产第一梯队；Agentic 智能指数跻身全球前十；ITBench-AA 排名全球第五；知识可靠性得分偏低。GLM-5.1 完全开源。</p>
+        <p>GLM-5.1 在 Claude Code 框架下表现稳定，是技术开发场景的可靠选择。其 Agentic 智能指数同样达到国产顶尖水平，能够支撑 OpenClaw 复杂流程的自主调度。</p>
+        <p>缺点：算力瓶颈较严重，Coding Plan 经常需要抢购，很难买到。</p>
+
+        <h3 id="sec-kimi">4. Kimi K2.6（月之暗面）：长上下文能力突出，编码功底扎实</h3>
+        <p>Kimi K2.6 在 6 月榜单中表现稳健：Coding 指数排名全球第九；Agentic 智能指数跻身全球前十；知识可靠性尚可。Kimi K2.6 同样开源。</p>
+        <p>Kimi 核心优势：</p>
+        <ul>
+          <li>支持文本+图像+视频多模态输入</li>
+          <li>模型代码能力优秀</li>
+          <li>较高强度日常开发够用</li>
+          <li>购买 Coding Plan 送专属龙虾</li>
+          <li><strong>Allegretto 套餐 ￥199/月</strong> 性价比突出</li>
+        </ul>
+
+        <h3 id="sec-minimax">5. MiniMax-M3（稀宇科技）：高性价比、响应快</h3>
+        <p>MiniMax-M3 在 6 月榜单中表现亮眼：Agentic 智能指数跻身全球前五（国产最高），知识可靠性得分偏低。</p>
+        <p>MiniMax 核心优势：</p>
+        <ul>
+          <li>模型参数量较小使得 <strong>Coding Plan 套餐最实惠、额度限制最小</strong></li>
+          <li>极速版套餐输出 Token 速率高、很少出现 429</li>
+          <li>用量限制高、可用性优于其他平台</li>
+          <li>日常交互体验出色，适合作为 OpenClaw 辅助工具</li>
+        </ul>
+
+        <h3 id="sec-mimo">6. MiMo-V2.5-Pro（小米）：Agentic 能力国产第一梯队</h3>
+        <p>MiMo-V2.5-Pro 在 6 月榜单中表现优异：Coding 与 Agentic 指数均跻身全球前十；ITBench-AA 表现优异；知识可靠性得分居中。MiMo-V2.5-Pro 完全开源。</p>
+        <p>MiMo 核心优势：</p>
+        <ul>
+          <li>Agentic 智能指数（67.4）位居国产第一梯队，领先 DeepSeek V4 Pro（67.2）和 GLM-5.1（67.1），仅次于 MiniMax-M3（68.6）</li>
+          <li>多工具协同调度、复杂自主流程执行方面表现接近 Claude Opus 系列</li>
+          <li>是驱动 OpenClaw 全流程自动化的最优选择之一</li>
+          <li>性价比高，企业集成成本低</li>
+        </ul>
+
+        <h2 id="sec-selection">五、个人使用选型参考指南</h2>
+        <p>先想清楚自己更看重 <strong>写代码</strong>、<strong>跑 Agent（OpenClaw、Harness 等）</strong>，还是 <strong>省钱 / 套餐额度</strong>；下列顺序即同场景下的推荐优先级，不必把上文榜单再抄一遍。</p>
+
+        <h3 id="sec-selection-coding">以写代码为主</h3>
+        <ul>
+          <li><strong>国产</strong>：<strong>Qwen3.7 Max</strong>（Coding 国产第一）；想降一档可看 <strong>Qwen3.7 Plus</strong>；<strong>GLM-5.1</strong> 编码与 Agent 能力均衡，技术开发场景同样可靠（Coding Plan 常需抢购）</li>
+          <li><strong>海外</strong>：<strong>GPT-5.5</strong>、<strong>Claude Opus 4.8</strong> 同属 Coding 第一梯队；通常需具备 ChatGPT / Claude 等相应付费订阅或 API 购买条件</li>
+        </ul>
+
+        <h3 id="sec-selection-agent">以 OpenClaw、Harness 等 Agent 自动化为主</h3>
+        <ul>
+          <li><strong>复杂、多步骤任务</strong>：<strong>Claude Opus 4.8</strong>（Agentic 榜首）、<strong>GPT-5.5</strong>；国产侧 <strong>MiniMax-M3</strong>、<strong>MiMo-V2.5-Pro</strong> 同样值得优先考虑</li>
+          <li><strong>日常、高频、标准化流程</strong>：<strong>MiniMax-M3</strong>（响应快、套餐额度宽松）、<strong>DeepSeek V4 Flash</strong>（按量便宜）；轻量场景不必硬上 Opus / GPT</li>
+          <li><strong>需求简单、可自部署</strong>：<strong>Qwen3.6 27B</strong>、<strong>Qwen3.6 35B A3B</strong> 等小模型也能胜任</li>
+        </ul>
+
+        <h3 id="sec-selection-budget">预算与套餐怎么选</h3>
+        <ul>
+          <li><strong>月费固定、天天写代码</strong>：<strong>MiniMax-M3</strong> 相关 Coding Plan 订阅性价比仍突出；能力要均衡可看 <strong>Qwen3.7 Plus</strong></li>
+          <li><strong>用量波动大、倾向按量付费</strong>：<strong>DeepSeek V4 Flash</strong>（缓存命中 ¥0.02/百万 token 起）；大流量可再对比 <strong>MiMo-V2.5-Pro</strong> Token 定价</li>
+          <li><strong>自托管或纯开源</strong>：<strong>Qwen3.6 27B</strong>、<strong>Qwen3.6 35B A3B</strong>、<strong>DeepSeek V4 Pro</strong> 等，按部署与运维成本自行取舍</li>
+        </ul>
+
+        <div class="doc-blockquote">上文测试聚焦编程与 Agent 能力。纯聊天用豆包、千问等普通版一般就够，通常不必为此单独买 Coding 套餐。</div>
+
+        <h2 id="sec-summary">六、2026年6月榜单重大变化总结</h2>
+        <ol>
+          <li><strong>GPT-5.5</strong> 继续稳居 Coding 指数榜首，与 GPT-5.4、Claude Opus 4.8 共同构成第一梯队</li>
+          <li><strong>Claude Opus 4.8</strong> 在 Agentic 智能指数登顶，成为 Agentic 新王</li>
+          <li><strong>Qwen3.7 Max</strong> 跻身全球 Coding 指数前十（第七），是国产 AI 编程能力之巅</li>
+          <li><strong>Gemini 3.5 Flash</strong> Agentic 智能指数跻身全球第四</li>
+          <li><strong>DeepSeek V4 Flash</strong> 以缓存命中 ¥0.02/百万 token 创下极低单价</li>
+          <li><strong>MiniMax-M3</strong> Agentic 智能指数跻身全球第五，国产阵营进一步壮大</li>
+          <li><strong>Qwen3.7 Plus</strong> 紧随 Qwen3.7 Max 发布，提供高性价比 Coding 选择</li>
+        </ol>
+
+        <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">
+          数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>
+          原文链接 <a href="https://vibecoding.dreamfree.space/articles/model_comparisons/20260604/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/model_comparisons/20260604/</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>

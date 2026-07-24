@@ -1,0 +1,122 @@
+{
+  "header": {
+    "title": "中转站对比",
+    "updateDate": "更新日期 2026.4.22",
+    "subtitle": "对比各 API 中转平台，价格、真实性、模型覆盖、可用性、支付便捷性等，帮助用户快速选择",
+    "info": "中转站对比页功能新上线，希望大家多多浏览提建议意见。可点击Github进入Discussions或者Issues讨论或者反馈问题！",
+    "github": {
+      "url": "https://github.com/wmpeng/codingplan",
+      "text": "GitHub"
+    }
+  },
+  "sections": {
+    "matrixTitle": "平台快速对比",
+    "modelMatrixTitle": "模型价格对比",
+    "modelMatrixInfo": "筛选想要使用的模型后，可查看每个平台的价格。",
+    "detailTitle": "平台详细介绍",
+    "detailDescriptionTitle": "产品简介",
+    "detailPricingTitle": "代表模型定价（部分示例）",
+    "detailNotesTitle": "注意事项",
+    "notesTitle": "说明",
+    "updatesTitle": "更新日志"
+  },
+  "actions": {
+    "matrix": {
+      "pricing": "定价",
+      "detail": "详情"
+    },
+    "detailCard": {
+      "home": "跳转官网",
+      "pricing": "模型定价"
+    },
+    "updatedAtPrefix": "数据更新："
+  },
+  "filters": {
+    "platform": "平台",
+    "model": "模型",
+    "inputPriceInCny": "输入价格（折￥）",
+    "outputPriceInCny": "输出价格（折￥）",
+    "cheapestOnly": "每个平台每个模型仅显示最便宜分组",
+    "reset": "重置筛选"
+  },
+  "tableLabels": {
+    "platform": "平台",
+    "model": "模型",
+    "group": "分组",
+    "inputPer1M": "输入 / 1M tokens",
+    "outputPer1M": "输出 / 1M tokens",
+    "note": "备注"
+  },
+  "messages": {
+    "loading": "加载中...",
+    "empty": "暂无数据",
+    "emptyModelMatrix": "暂无符合条件的价格记录",
+    "loadError": "数据加载失败，请稍后重试"
+  },
+  "modelPriceExchange": {
+    "baseCurrency": "CNY",
+    "rates": {
+      "￥": 1,
+      "$": 7
+    }
+  },
+  "matrixDimensions": [
+    {
+      "key": "rating",
+      "label": "综合评价",
+      "valueType": "starText"
+    },
+    {
+      "key": "type",
+      "label": "平台类型",
+      "valueType": "tags",
+      "helpText": "官方纯聚合：稳定和性能通常更高。一般直接接官方或正规平台，只中转 API 格式和 API Key，价格和官方基本一致，通常没有掺水、模糊倍率、无 cache 等情况，质量相对更可靠。\n平台封装聚合：也是聚合平台，但通常有自己封装后的单一价格体系、折扣规则、含税口径或内部路由。用户一般不需要手动挑分组，透明度和口径一致性通常低于官方纯聚合，但也没有混合多分组那么强的渠道暴露。\n混合多分组：价格通常更便宜，但质量可能不稳定。来源可能混合 Sub2API、逆向、黑卡等多种渠道，并可能存在掺水、模糊倍率、无 cache 等情况；通常会提供多个分组，不同分组的价格和质量差异较大。"
+    },
+    {
+      "key": "price",
+      "label": "价格",
+      "valueType": "starText"
+    },
+    {
+      "key": "authenticity",
+      "label": "真实性",
+      "valueType": "starText",
+      "helpText": "是否存在隐藏倍率及掺水"
+    },
+    {
+      "key": "modelCoverage",
+      "label": "模型覆盖",
+      "valueType": "starText"
+    },
+    {
+      "key": "availability",
+      "label": "可用性",
+      "valueType": "starText",
+      "helpText": "主要看在服务本身的可用性，以及国内网络环境下的连通性、时延波动与失败率；星级越高说明日常调用越稳定。"
+    },
+    {
+      "key": "convenience",
+      "label": "便捷性",
+      "valueType": "starText",
+      "helpText": "主要看充值与结算流程是否顺畅、支付方式是否本地友好（如微信/支付宝/银行卡）；星级越高说明使用门槛越低。"
+    },
+    {
+      "key": "tags",
+      "label": "标签",
+      "valueType": "tags"
+    }
+  ],
+  "notes": [
+    "可用性（含网络可达性等）因运营商、IP 及时间而异，以上描述为一般经验，不构成任何保证",
+    "页面数据仅供参考，中转平台定价与功能可能随时调整，请以各平台官网为准",
+    "请遵守各模型原厂的服务条款及相关法律法规，合理合规使用 API 中转服务"
+  ],
+  "updates": [
+    {
+      "date": "2026.4.22",
+      "items": [
+        "中转站初版上线"
+      ]
+    }
+  ]
+}

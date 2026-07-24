@@ -1,29 +1,14 @@
 const fs = require('fs');
 const path = require('path');
-const PlatformCatalog = require('../../scripts/platform-catalog.js');
 
 const rootDir = path.join(__dirname, '../..');
 const configPath = path.join(rootDir, 'config.json');
 const plansPath = path.join(rootDir, 'plans.json');
-const platformsPath = path.join(rootDir, 'platforms.json');
-const paygPricingPath = path.join(rootDir, 'payg-pricing.json');
 const indexPath = path.join(rootDir, 'index.html');
 
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const allPlans = JSON.parse(fs.readFileSync(plansPath, 'utf8'));
-const allPlatforms = JSON.parse(fs.readFileSync(platformsPath, 'utf8'));
-const paygPricing = JSON.parse(fs.readFileSync(paygPricingPath, 'utf8'));
 let indexHtml = fs.readFileSync(indexPath, 'utf8');
-
-const catalogConfig = config.platformCatalog || {};
-const validation = PlatformCatalog.validatePlatformRecords(allPlatforms, allPlans);
-if (!validation.ok) {
-    throw new Error(validation.errors.join('\n'));
-}
-const paygValidation = PlatformCatalog.validatePaygPricing(paygPricing, allPlatforms);
-if (!paygValidation.ok) {
-    throw new Error(paygValidation.errors.join('\n'));
-}
 
 const WATERMARK = config.header?.watermarkUrl || 'www.codingplan.fyi';
 const LINK_ICON = '<svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>';
@@ -108,27 +93,18 @@ ${items}
 }
 
 function generateUpdatesHtml(updates) {
-    const visibleCount = 3;
-    const list = updates || [];
-    const hiddenCount = Math.max(0, list.length - visibleCount);
-    const items = list.map((update, index) => {
+    const items = (updates || []).map(update => {
         const updateItems = (update.items || []).map(item => `<li>${escapeHtml(item)}</li>`).join('');
-        const collapsed = index >= visibleCount;
-        const collapsedClass = collapsed ? ' is-collapsed' : '';
-        const hiddenAttr = collapsed ? ' hidden' : '';
-        return `                <li class="update-item${collapsedClass}"${hiddenAttr}>
+        return `                <li class="update-item">
                     <div class="log-date">${escapeHtml(update.date)}</div>
                     <ul class="update-items">${updateItems}</ul>
                 </li>`;
     }).join('\n');
-    const toggle = hiddenCount > 0
-        ? `\n            <button type="button" class="updates-toggle" aria-expanded="false">展开更多（${hiddenCount}）</button>`
-        : '';
     return `
             <h3>📝 更新日志</h3>
             <ul class="updates-list">
 ${items}
-            </ul>${toggle}`;
+            </ul>`;
 }
 
 function processPrices(item, index) {
@@ -239,50 +215,13 @@ function replaceSection(html, pattern, newContent) {
 function replaceElementText(html, id, text) {
     const pattern = new RegExp(`(<[^>]+id="${id}"[^>]*>)([\\s\\S]*?)(</[^>]+>)`);
     if (!pattern.test(html)) throw new Error(`Element #${id} not found`);
-    // Must use a replacer function: string form would mangle `$10` etc. in text
-    return html.replace(pattern, (_, open, _mid, close) => `${open}${text}${close}`);
+    return html.replace(pattern, `$1${text}$3`);
 }
 
-/**
- * Replace innerHTML of an element by id, correctly handling nested same-tag children.
- * Non-greedy `([\s\S]*?)(</[^>]+>)` stops at the first closing tag and corrupts nested markup.
- */
 function replaceElementInnerHtml(html, id, innerHtml) {
-    const openRe = new RegExp(`<([a-zA-Z][\\w:-]*)([^>]*\\bid="${id}"[^>]*)>`, 'i');
-    const openMatch = openRe.exec(html);
-    if (!openMatch) throw new Error(`Element #${id} not found`);
-
-    const tagName = openMatch[1];
-    const openEnd = openMatch.index + openMatch[0].length;
-    const openTagRe = new RegExp(`<${tagName}\\b[^>]*>`, 'gi');
-    const closeTagRe = new RegExp(`</${tagName}\\s*>`, 'gi');
-
-    let depth = 1;
-    let pos = openEnd;
-    while (depth > 0 && pos < html.length) {
-        openTagRe.lastIndex = pos;
-        closeTagRe.lastIndex = pos;
-        const nextOpen = openTagRe.exec(html);
-        const nextClose = closeTagRe.exec(html);
-        if (!nextClose) {
-            throw new Error(`Element #${id}: matching </${tagName}> not found`);
-        }
-        if (nextOpen && nextOpen.index < nextClose.index) {
-            depth += 1;
-            pos = nextOpen.index + nextOpen[0].length;
-        } else {
-            depth -= 1;
-            if (depth === 0) {
-                const before = html.slice(0, openMatch.index);
-                const openTag = openMatch[0];
-                const closeTag = nextClose[0];
-                const after = html.slice(nextClose.index + nextClose[0].length);
-                return `${before}${openTag}${innerHtml}${closeTag}${after}`;
-            }
-            pos = nextClose.index + nextClose[0].length;
-        }
-    }
-    throw new Error(`Element #${id}: failed to balance tags`);
+    const pattern = new RegExp(`(<[^>]+id="${id}"[^>]*>)([\\s\\S]*?)(</[^>]+>)`);
+    if (!pattern.test(html)) throw new Error(`Element #${id} not found`);
+    return html.replace(pattern, `$1${innerHtml}$3`);
 }
 
 const header = config.header || {};
@@ -291,7 +230,6 @@ const activePlans = allPlans
     .filter(plan => !plan.discontinued);
 
 indexHtml = replaceElementText(indexHtml, 'updateDate', escapeHtml(header.updateDate || ''));
-indexHtml = replaceElementText(indexHtml, 'pageTitle', escapeHtml(header.title || ''));
 indexHtml = replaceElementInnerHtml(
     indexHtml,
     'subtitle',
@@ -317,58 +255,30 @@ if (header.entry) {
 
 indexHtml = replaceSection(
     indexHtml,
-    /(<div class="recommendation-groups" id="recommendationGroups">)[\s\S]*?(<\/div>\r?\n\r?\n        <!-- 平台目录)/,
+    /(<div class="recommendation-groups" id="recommendationGroups">)[\s\S]*?(<\/div>\r\n\r\n        <!-- 评分标准 -->)/,
     generateRecommendationGroupsHtml(config.recommendationGroups)
 );
 
 indexHtml = replaceSection(
     indexHtml,
-    /(<div class="notes-section" id="notesSection">)[\s\S]*?(<\/div>\r?\n\r?\n            <\/div>\r?\n            <div id="view-payg")/,
+    /(<div class="notes-section" id="notesSection">)[\s\S]*?(<\/div>\r\n\r\n        <!-- 更新日志（与 config\.json 同步） -->)/,
     generateNotesHtml(config.notes)
 );
 
 indexHtml = replaceSection(
     indexHtml,
-    /(<div class="updates-section" id="updatesSection">)[\s\S]*?(<\/div>\r?\n\r?\n        <!-- 账号出售区域)/,
+    /(<div class="updates-section" id="updatesSection">)[\s\S]*?(<\/div>\r\n\r\n        <!-- 账号出售区域)/,
     generateUpdatesHtml(config.updates)
 );
 
 indexHtml = replaceSection(
     indexHtml,
     /(<tbody id="tableBody">)[\s\S]*?(<\/tbody>)/,
-    `\n${generateTableRowsHtml(activePlans)}\n                    `
+    `\r\n${generateTableRowsHtml(activePlans)}\r\n                    `
 );
 
 indexHtml = replaceElementText(indexHtml, 'showingCount', String(activePlans.length));
 indexHtml = replaceElementText(indexHtml, 'totalCount', String(activePlans.length));
-
-const defaultSelectedTags = catalogConfig.defaultSelectedTags || [];
-const defaultPlatformStatusMax =
-    catalogConfig.defaultPlatformStatusMax || PlatformCatalog.DEFAULT_PLATFORM_STATUS_MAX || 'limited';
-const platformFilterOpts = {
-    selectedLabels: defaultSelectedTags,
-    platformStatusMax: defaultPlatformStatusMax,
-    derivedTags: catalogConfig.derivedTags || [],
-    operationalTags: catalogConfig.operationalTags || []
-};
-const filteredPlatforms = PlatformCatalog.filterPlatforms(allPlatforms, platformFilterOpts);
-const totalVisiblePlatforms = PlatformCatalog.filterPlatforms(allPlatforms, {
-    ...platformFilterOpts,
-    selectedLabels: []
-}).length;
-
-indexHtml = replaceElementInnerHtml(
-    indexHtml,
-    'platformTagBar',
-    PlatformCatalog.buildPlatformTagBarHtml(catalogConfig, defaultSelectedTags, defaultPlatformStatusMax)
-);
-indexHtml = replaceElementInnerHtml(
-    indexHtml,
-    'platformCardGrid',
-    filteredPlatforms.map(platform => PlatformCatalog.buildPlatformCardHtml(platform, allPlans, { paygPricing })).join('')
-);
-indexHtml = replaceElementText(indexHtml, 'platformShowingCount', String(filteredPlatforms.length));
-indexHtml = replaceElementText(indexHtml, 'platformTotalCount', String(totalVisiblePlatforms));
 
 if (config.ratingGuide) {
     indexHtml = replaceElementText(indexHtml, 'ratingGuide', escapeHtml(config.ratingGuide));
@@ -400,4 +310,4 @@ indexHtml = indexHtml.replace(
 );
 
 fs.writeFileSync(indexPath, indexHtml, 'utf8');
-console.log(`index.html 默认内容已同步：${activePlans.length} 条在售套餐，${filteredPlatforms.length} 个默认筛选平台，${(config.updates || []).length} 条更新记录`);
+console.log(`index.html 默认内容已同步：${activePlans.length} 条在售套餐，${(config.updates || []).length} 条更新记录`);

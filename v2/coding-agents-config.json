@@ -1,0 +1,107 @@
+{
+  "pageTitle": "编程 Agent 选购指南",
+  "nav": {
+    "home": "Coding Plan",
+    "planUsage": "Coding Plan用量提交",
+    "codingAgents": "编程 Agent",
+    "relays": "中转站",
+    "relayDetect": "中转站检测"
+  },
+  "header": {
+    "githubText": "查看仓库",
+    "title": "编程 Agent 选购指南",
+    "updateDate": "更新日期 2026.5.13",
+    "subtitle": "给个人用户的一页式对比：先看中国大陆可用性和支付，再看计费口径、套餐额度，以及是否支持自带 API 或自定义接入。",
+    "info": [
+      "默认仅比较个人常见档位，不含团队版、企业版。"
+    ]
+  },
+  "hero": {
+    "tag": "个人订阅选型参考",
+    "trust": "官网与帮助中心优先",
+    "footnote": "如果你只想做第一轮筛选，先排地区、支付和接入方式，通常比先看模型名字更有效。",
+    "highlights": [
+      "仅比较个人常见档位",
+      "大陆可用性与支付优先",
+      "额度口径按官方文档整理"
+    ],
+    "steps": [
+      "先看地区与支付方式，确认能否直接注册、订阅和续费。",
+      "再看套餐与额度口径，区分 requests、credits、美元额度和消息条数。",
+      "最后再看是否支持自带 API / 自定义接入，判断它是否适合长期工作流。"
+    ]
+  },
+  "summary": {
+    "title": "先看结论",
+    "description": "这一屏先帮你缩小范围，再到两张表里做细看，避免一上来就淹没在长表格里。"
+  },
+  "settings": {
+    "buttonTitle": "设置",
+    "panelTitle": "显示设置",
+    "ultraWideLabel": "超宽屏模式"
+  },
+  "sections": {
+    "scopeTitle": "口径说明",
+    "scopeDescription": "默认优先相信官网、帮助中心和支持国家列表；如果营销页对支付或地区说得不完整，就以结账页、账户设置和官方支持文档为准。",
+    "agentsTableTitle": "工具对比",
+    "agentsTableDescription": "适合先看产品形态、购买方式、中国大陆可用性和是否支持自带 API，先完成第一轮筛选。",
+    "plansTableTitle": "套餐与额度",
+    "plansTableDescription": "适合在候选产品里继续比较月费、额度口径和额外功能。官方消息限制往往会随着模型、上下文长度和云端任务而变化。",
+    "notesTitle": "补充说明"
+  },
+  "tableHints": {
+    "agents": [
+      "先排地区与支付限制，再看模型与功能。",
+      "来源默认优先官网；需要时可展开查看全部链接。",
+      "“自带 API / 自定义接入”更适合已有模型预算或统一网关的人。"
+    ],
+    "plans": [
+      "价格低不等于长期成本低，先看额度口径再看月费。",
+      "官方消息限制常会随模型、上下文长度和云端任务变化。",
+      "备注列往往藏着最影响决策的边界条件。"
+    ]
+  },
+  "tableLabels": {
+    "agents": {
+      "name": "名称",
+      "website": "官网 / 入口",
+      "formFactor": "使用形态",
+      "modelSupport": "模型支持",
+      "billingMode": "计费方式",
+      "planSummary": "主要档位",
+      "extraFeatures": "亮点能力",
+      "purchaseMethods": "购买方式",
+      "regionRestriction": "地区 / 大陆可用性",
+      "supportsCustomApi": "自带 API / 自定义接入",
+      "remarks": "补充说明"
+    },
+    "plans": {
+      "agentName": "名称",
+      "planName": "套餐名称",
+      "price": "价格",
+      "usageIncluded": "额度 / 用量限制",
+      "conversationEstimate": "官方消息口径",
+      "extraFeatures": "亮点能力",
+      "remarks": "补充说明"
+    }
+  },
+  "badges": {
+    "official": "官方",
+    "secondary": "社区参考",
+    "unknown": "待核实",
+    "yes": "支持",
+    "no": "不支持",
+    "partial": "部分支持",
+    "na": "不适用",
+    "mainlandYes": "中国大陆可用",
+    "mainlandNo": "中国大陆不可直接使用",
+    "mainlandPartial": "中国大陆条件型",
+    "mainlandUnknown": "中国大陆待对照官网"
+  },
+  "messages": {
+    "loading": "加载中...",
+    "loadError": "数据加载失败，请稍后重试。",
+    "emptyAgents": "暂无工具数据。",
+    "emptyPlans": "暂无套餐数据。"
+  }
+}

@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle"></title>
+    <link rel="icon" href="/favicon.ico?v=260418" type="image/x-icon">
+    <link rel="stylesheet" href="styles/shared.css?v=260515">
+    <script src="scripts/shared.js?v=260512"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --bg-primary: #f4efe6;
+            --bg-secondary: rgba(255, 251, 245, 0.9);
+            --bg-tertiary: #efe4d2;
+            --text-primary: #172033;
+            --text-secondary: #5f6879;
+            --text-tertiary: #8a93a3;
+            --border-color: rgba(23, 32, 51, 0.12);
+            --border-light: rgba(23, 32, 51, 0.08);
+            --accent-primary: #0f766e;
+            --accent-secondary: #c66b1a;
+            --shadow-md: 0 14px 36px rgba(23, 32, 51, 0.08);
+            --shadow-lg: 0 20px 48px rgba(23, 32, 51, 0.12);
+            --shadow-xl: 0 28px 64px rgba(23, 32, 51, 0.16);
+        }
+
+        body {
+            min-height: 100vh;
+            padding: 28px 34px 64px;
+            background:
+                radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 26%),
+                radial-gradient(circle at top right, rgba(198, 107, 26, 0.14), transparent 24%),
+                linear-gradient(180deg, #f8f3eb 0%, #f4efe6 42%, #f7f2ea 100%);
+            color: var(--text-primary);
+            font-family: "Avenir Next", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        }
+
+        strong {
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        code {
+            padding: 0.14em 0.4em;
+            border-radius: 8px;
+            background: rgba(23, 32, 51, 0.06);
+            color: #1b3552;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.94em;
+        }
+
+        .container {
+            position: relative;
+            max-width: 1520px;
+        }
+
+        .page-nav-cluster {
+            position: sticky;
+            top: 14px;
+            z-index: 30;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            padding: 12px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 999px;
+            background: rgba(255, 249, 241, 0.76);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 10px 28px rgba(23, 32, 51, 0.08);
+        }
+
+        .page-tab {
+            padding: 11px 18px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            bottom: auto;
+        }
+
+        .page-tab:hover {
+            background: rgba(15, 118, 110, 0.08);
+            color: var(--text-primary);
+        }
+
+        .page-tab.active {
+            color: #f8fffd;
+            background: linear-gradient(135deg, #1c3552 0%, #0f766e 100%);
+            border-color: transparent;
+            box-shadow: 0 12px 24px rgba(28, 53, 82, 0.18);
+        }
+
+        .settings-wrapper {
+            margin-left: auto;
+            bottom: auto;
+        }
+
+        .settings-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            color: var(--text-secondary);
+        }
+
+        .settings-btn:hover,
+        .settings-btn.active {
+            border-color: var(--border-color);
+            background: rgba(255, 255, 255, 0.78);
+            color: var(--text-primary);
+        }
+
+        .settings-panel {
+            width: 230px;
+            border-radius: 22px;
+            background: rgba(255, 251, 245, 0.92);
+        }
+
+        .header {
+            margin-bottom: 28px;
+            padding: 0;
+            text-align: left;
+        }
+
+        .hero-shell {
+            display: grid;
+            grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.9fr);
+            gap: 22px;
+            align-items: stretch;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 32px;
+            background:
+                linear-gradient(135deg, rgba(255, 252, 246, 0.96) 0%, rgba(255, 248, 238, 0.84) 56%, rgba(239, 246, 244, 0.92) 100%);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-shell::before,
+        .hero-shell::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-shell::before {
+            width: 420px;
+            height: 420px;
+            top: -220px;
+            right: -180px;
+            background: radial-gradient(circle, rgba(15, 118, 110, 0.18), rgba(15, 118, 110, 0));
+        }
+
+        .hero-shell::after {
+            width: 320px;
+            height: 320px;
+            left: -160px;
+            bottom: -180px;
+            background: radial-gradient(circle, rgba(198, 107, 26, 0.16), rgba(198, 107, 26, 0));
+        }
+
+        .hero-content,
+        .hero-side {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-topline {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .hero-tag,
+        .hero-trust {
+            display: inline-flex;
+            align-items: center;
+            min-height: 34px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-tag {
+            color: #f7fffd;
+            background: linear-gradient(135deg, #193856 0%, #0f766e 100%);
+            box-shadow: 0 12px 24px rgba(25, 56, 86, 0.2);
+        }
+
+        .hero-trust {
+            color: var(--accent-primary);
+            background: rgba(15, 118, 110, 0.1);
+            border: 1px solid rgba(15, 118, 110, 0.15);
+        }
+
+        .header h1 {
+            max-width: 11ch;
+            margin-bottom: 16px;
+            font-size: clamp(40px, 6vw, 68px);
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            color: #122033;
+            text-wrap: balance;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .update-date,
+        .hero-coverage {
+            display: inline-flex;
+            align-items: center;
+            min-height: 32px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+        }
+
+        .update-date {
+            margin-bottom: 0;
+            color: #18344f;
+            background: rgba(24, 52, 79, 0.08);
+        }
+
+        .hero-coverage {
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.66);
+            border: 1px solid var(--border-color);
+        }
+
+        .header .subtitle {
+            width: auto;
+            max-width: 960px;
+            margin: 0 0 22px;
+            font-size: clamp(17px, 2vw, 21px);
+            font-weight: 500;
+            line-height: 1.72;
+            color: #39465a;
+            text-wrap: pretty;
+        }
+
+        .hero-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .hero-point {
+            display: inline-flex;
+            align-items: center;
+            min-height: 38px;
+            padding: 8px 14px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(23, 32, 51, 0.08);
+            color: var(--text-secondary);
+            line-height: 1.5;
+            box-shadow: 0 10px 20px rgba(23, 32, 51, 0.05);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hero-anchor,
+        .github-link {
+            position: static;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 46px;
+            padding: 11px 18px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .hero-anchor {
+            color: #f8fffd;
+            background: linear-gradient(135deg, #173753 0%, #0f766e 100%);
+            box-shadow: 0 12px 24px rgba(23, 55, 83, 0.18);
+        }
+
+        .hero-anchor:hover,
+        .github-link:hover {
+            transform: translateY(-1px);
+        }
+
+        .hero-anchor--secondary,
+        .github-link {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.78);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 22px rgba(23, 32, 51, 0.06);
+        }
+
+        .hero-side {
+            padding: 24px;
+            border-radius: 26px;
+            background: linear-gradient(180deg, rgba(18, 32, 51, 0.96) 0%, rgba(19, 59, 85, 0.94) 100%);
+            color: #edf7f6;
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-side-label {
+            margin-bottom: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(237, 247, 246, 0.68);
+        }
+
+        .hero-side-title {
+            margin-bottom: 16px;
+            font-size: 26px;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-steps {
+            list-style: none;
+            display: grid;
+            gap: 14px;
+            counter-reset: hero-step;
+        }
+
+        .hero-steps li {
+            counter-increment: hero-step;
+            display: grid;
+            grid-template-columns: 36px minmax(0, 1fr);
+            gap: 12px;
+            align-items: start;
+            color: rgba(237, 247, 246, 0.86);
+            line-height: 1.68;
+        }
+
+        .hero-steps li::before {
+            content: counter(hero-step);
+            display: grid;
+            place-items: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .hero-side-footnote {
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(237, 247, 246, 0.64);
+            line-height: 1.7;
+        }
+
+        .highlights-section {
+            margin-bottom: 28px;
+            padding: 26px;
+        }
+
+        .section-header {
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            margin-bottom: 14px;
+            gap: 14px;
+        }
+
+        .section-description {
+            max-width: 900px;
+            margin: 0;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            text-wrap: pretty;
+        }
+
+        .summary-grid,
+        .decision-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .summary-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin-bottom: 18px;
+        }
+
+        .decision-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .metric-card,
+        .decision-card {
+            padding: 22px;
+            border-radius: 24px;
+            border: 1px solid rgba(23, 32, 51, 0.08);
+            background: rgba(255, 255, 255, 0.76);
+        }
+
+        .metric-card--good {
+            background: linear-gradient(180deg, rgba(15, 118, 110, 0.09), rgba(255, 255, 255, 0.88));
+        }
+
+        .metric-card--accent {
+            background: linear-gradient(180deg, rgba(25, 56, 86, 0.1), rgba(255, 255, 255, 0.88));
+        }
+
+        .metric-card--warm {
+            background: linear-gradient(180deg, rgba(198, 107, 26, 0.09), rgba(255, 255, 255, 0.88));
+        }
+
+        .metric-eyebrow,
+        .decision-step {
+            display: inline-flex;
+            align-items: center;
+            min-height: 28px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .metric-eyebrow {
+            margin-bottom: 14px;
+            color: var(--accent-primary);
+            background: rgba(15, 118, 110, 0.1);
+        }
+
+        .metric-value-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .metric-value {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            color: #122033;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .metric-description,
+        .decision-description {
+            color: var(--text-secondary);
+            line-height: 1.76;
+        }
+
+        .decision-step {
+            margin-bottom: 12px;
+            color: #1c3552;
+            background: rgba(28, 53, 82, 0.08);
+        }
+
+        .decision-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            line-height: 1.3;
+        }
+
+        .scope-card,
+        .notes-card {
+            padding: 24px 28px;
+            margin-bottom: 30px;
+        }
+
+        .scope-card ul,
+        .notes-card ul {
+            display: grid;
+            gap: 10px;
+            padding-left: 20px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .table-section {
+            margin-bottom: 34px;
+        }
+
+        .table-card {
+            overflow: hidden;
+        }
+
+        .table-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 18px 22px 0;
+        }
+
+        .table-hint {
+            display: inline-flex;
+            align-items: center;
+            min-height: 34px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(23, 32, 51, 0.08);
+            background: rgba(255, 255, 255, 0.72);
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scrollbar-gutter: stable both-edges;
+            padding: 18px 0 2px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            min-width: 1520px;
+        }
+
+        .comparison-table--plans {
+            min-width: 1120px;
+        }
+
+        #agentsTable th:nth-child(1),
+        #agentsTable td:nth-child(1) {
+            min-width: 240px;
+        }
+
+        #agentsTable th:nth-child(2),
+        #agentsTable td:nth-child(2) {
+            min-width: 210px;
+        }
+
+        #agentsTable th:nth-child(4),
+        #agentsTable td:nth-child(4),
+        #agentsTable th:nth-child(8),
+        #agentsTable td:nth-child(8) {
+            min-width: 220px;
+        }
+
+        #agentsTable th:nth-child(5),
+        #agentsTable td:nth-child(5),
+        #agentsTable th:nth-child(6),
+        #agentsTable td:nth-child(6),
+        #agentsTable th:nth-child(9),
+        #agentsTable td:nth-child(9),
+        #agentsTable th:nth-child(10),
+        #agentsTable td:nth-child(10),
+        #agentsTable th:nth-child(11),
+        #agentsTable td:nth-child(11) {
+            min-width: 250px;
+        }
+
+        #plansTable th:nth-child(1),
+        #plansTable td:nth-child(1) {
+            min-width: 150px;
+        }
+
+        #plansTable th:nth-child(2),
+        #plansTable td:nth-child(2) {
+            min-width: 230px;
+        }
+
+        #plansTable th:nth-child(3),
+        #plansTable td:nth-child(3) {
+            min-width: 150px;
+        }
+
+        #plansTable th:nth-child(4),
+        #plansTable td:nth-child(4),
+        #plansTable th:nth-child(5),
+        #plansTable td:nth-child(5),
+        #plansTable th:nth-child(6),
+        #plansTable td:nth-child(6),
+        #plansTable th:nth-child(7),
+        #plansTable td:nth-child(7) {
+            min-width: 250px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 18px 16px;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: top;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            position: sticky;
+            top: 0;
+            z-index: 4;
+            background: rgba(20, 35, 55, 0.96);
+            color: rgba(248, 252, 255, 0.86);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            backdrop-filter: blur(12px);
+        }
+
+        .comparison-table tbody tr {
+            background: rgba(255, 251, 245, 0.92);
+            transition: background 0.18s ease;
+        }
+
+        .comparison-table tbody tr:nth-child(even) {
+            background: rgba(248, 242, 231, 0.9);
+        }
+
+        .comparison-table tbody tr:hover {
+            background: rgba(222, 241, 238, 0.72);
+        }
+
+        .comparison-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        #agentsTable th:first-child,
+        #plansTable th:first-child {
+            left: 0;
+            z-index: 6;
+        }
+
+        #agentsTable td:first-child,
+        #plansTable td:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 2;
+            background: linear-gradient(90deg, rgba(255, 251, 245, 1) 0%, rgba(255, 251, 245, 1) 86%, rgba(255, 251, 245, 0) 100%);
+        }
+
+        #agentsTable tbody tr:nth-child(even) td:first-child,
+        #plansTable tbody tr:nth-child(even) td:first-child {
+            background: linear-gradient(90deg, rgba(248, 242, 231, 1) 0%, rgba(248, 242, 231, 1) 86%, rgba(248, 242, 231, 0) 100%);
+        }
+
+        #agentsTable tbody tr:hover td:first-child,
+        #plansTable tbody tr:hover td:first-child {
+            background: linear-gradient(90deg, rgba(232, 246, 243, 1) 0%, rgba(232, 246, 243, 1) 86%, rgba(232, 246, 243, 0) 100%);
+        }
+
+        .entity-name {
+            margin-bottom: 10px;
+            font-size: 17px;
+            font-weight: 800;
+            line-height: 1.35;
+            color: var(--text-primary);
+        }
+
+        .text-stack,
+        .meta-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .text-block {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .pill-list,
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .source-link-list {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .pill,
+        .status-pill,
+        .source-pill {
+            display: inline-flex;
+            align-items: center;
+            min-height: 28px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.4;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .pill {
+            color: var(--text-secondary);
+            background: rgba(23, 32, 51, 0.05);
+            border-color: rgba(23, 32, 51, 0.08);
+        }
+
+        .status-pill--yes,
+        .status-pill--mainlandYes,
+        .source-pill--official {
+            color: #0f5a54;
+            background: rgba(15, 118, 110, 0.12);
+            border-color: rgba(15, 118, 110, 0.2);
+        }
+
+        .status-pill--no,
+        .status-pill--mainlandNo {
+            color: #8a2134;
+            background: rgba(225, 86, 109, 0.12);
+            border-color: rgba(225, 86, 109, 0.22);
+        }
+
+        .status-pill--partial,
+        .status-pill--mainlandPartial,
+        .source-pill--secondary {
+            color: #945512;
+            background: rgba(198, 107, 26, 0.12);
+            border-color: rgba(198, 107, 26, 0.22);
+        }
+
+        .status-pill--unknown,
+        .status-pill--na,
+        .status-pill--mainlandUnknown,
+        .source-pill--unknown {
+            color: var(--text-secondary);
+            background: rgba(138, 147, 163, 0.12);
+            border-color: rgba(138, 147, 163, 0.2);
+        }
+
+        .source-link {
+            color: #154d77;
+            text-decoration: none;
+            font-size: 12px;
+            line-height: 1.55;
+            overflow-wrap: anywhere;
+        }
+
+        .source-link:hover,
+        .site-link:hover {
+            text-decoration: underline;
+        }
+
+        .source-disclosure {
+            border-top: 1px dashed rgba(23, 32, 51, 0.1);
+            padding-top: 8px;
+        }
+
+        .source-disclosure summary {
+            cursor: pointer;
+            color: var(--accent-primary);
+            font-size: 12px;
+            font-weight: 700;
+            list-style: none;
+        }
+
+        .source-disclosure summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .source-disclosure[open] summary {
+            margin-bottom: 8px;
+        }
+
+        .site-link {
+            display: block;
+            padding: 12px 14px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(23, 32, 51, 0.08);
+            color: var(--accent-primary);
+            text-decoration: none;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
+        .site-link-host {
+            display: block;
+            font-weight: 700;
+        }
+
+        .site-link-path {
+            display: block;
+            margin-top: 2px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .compact-list {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--text-secondary);
+            line-height: 1.72;
+        }
+
+        .compact-list li + li {
+            margin-top: 4px;
+        }
+
+        .empty-state {
+            padding: 26px;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 1200px) {
+            body {
+                padding: 24px 22px 56px;
+            }
+
+            .hero-shell,
+            .summary-grid,
+            .decision-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .page-nav-cluster {
+                padding-bottom: 12px;
+                border-radius: 22px;
+            }
+
+            .hero-shell,
+            .highlights-section,
+            .scope-card,
+            .notes-card {
+                padding: 20px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 14px 12px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 18px 14px 40px;
+            }
+
+            .page-tab,
+            .hero-anchor,
+            .github-link {
+                white-space: nowrap;
+            }
+
+            .hero-side {
+                padding: 20px;
+            }
+
+            .hero-point {
+                width: 100%;
+            }
+
+            .metric-value {
+                font-size: 34px;
+            }
+
+            .section-title {
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .section-title::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="pageNavMount"></div>
+
+        <header class="header">
+            <div class="hero-shell">
+                <div class="hero-content">
+                    <div class="hero-topline">
+                        <span class="hero-tag" id="heroTag"></span>
+                        <span class="hero-trust" id="heroTrust"></span>
+                    </div>
+                    <h1 id="headerTitle"></h1>
+                    <div class="hero-meta">
+                        <div class="update-date" id="updateDate"></div>
+                        <div class="hero-coverage" id="heroCoverageText"></div>
+                    </div>
+                    <p class="subtitle" id="headerSubtitle"></p>
+                    <div class="hero-points" id="heroPoints"></div>
+                    <div class="hero-actions">
+                        <a href="#insightsSection" class="hero-anchor" id="heroInsightsAction">先看结论</a>
+                        <a href="#agentsSection" class="hero-anchor hero-anchor--secondary" id="heroAgentsAction">看工具对比</a>
+                        <a class="github-link" id="githubLink" href="https://github.com/wmpeng/codingplan" target="_blank" rel="noreferrer"></a>
+                    </div>
+                </div>
+                <aside class="hero-side">
+                    <div class="hero-side-label">How To Read</div>
+                    <h2 class="hero-side-title">三步把范围缩到真正能买、能用、能长期投入的产品</h2>
+                    <ol class="hero-steps" id="heroSteps"></ol>
+                    <div class="hero-side-footnote" id="heroFootnote"></div>
+                </aside>
+            </div>
+        </header>
+
+        <section class="highlights-section surface-panel" id="insightsSection">
+            <div class="section-header">
+                <div class="section-title" id="summaryTitle"></div>
+                <p class="section-description" id="summaryDescription"></p>
+            </div>
+            <div class="summary-grid" id="summaryGrid"></div>
+            <div class="decision-grid" id="decisionGrid"></div>
+        </section>
+
+        <section class="scope-card surface-panel">
+            <div class="section-title" id="scopeTitle"></div>
+            <p class="section-description" id="scopeDescription"></p>
+            <ul id="scopeList"></ul>
+        </section>
+
+        <section class="table-section" id="agentsSection">
+            <div class="section-title" id="agentsTableTitle"></div>
+            <p class="section-description" id="agentsTableDescription"></p>
+            <div class="table-card surface-panel">
+                <div class="table-toolbar" id="agentsHints"></div>
+                <div class="table-wrapper">
+                    <table class="comparison-table" id="agentsTable">
+                        <thead>
+                            <tr id="agentsTableHead"></tr>
+                        </thead>
+                        <tbody id="agentsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="table-section" id="plansSection">
+            <div class="section-title" id="plansTableTitle"></div>
+            <p class="section-description" id="plansTableDescription"></p>
+            <div class="table-card surface-panel">
+                <div class="table-toolbar" id="plansHints"></div>
+                <div class="table-wrapper">
+                    <table class="comparison-table comparison-table--plans" id="plansTable">
+                        <thead>
+                            <tr id="plansTableHead"></tr>
+                        </thead>
+                        <tbody id="plansTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="notes-card surface-panel" id="notesSection"></section>
+    </div>
+
+    <script>
+        const CONFIG_FILE_PATH = './coding-agents-config.json';
+        const DATA_FILE_PATH = './coding-agents-data.json';
+
+        const AGENT_COLUMNS = [
+            'name',
+            'website',
+            'formFactor',
+            'modelSupport',
+            'billingMode',
+            'planSummary',
+            'extraFeatures',
+            'purchaseMethods',
+            'regionRestriction',
+            'supportsCustomApi',
+            'remarks'
+        ];
+
+        const PLAN_COLUMNS = [
+            'agentName',
+            'planName',
+            'price',
+            'usageIncluded',
+            'conversationEstimate',
+            'extraFeatures',
+            'remarks'
+        ];
+
+        const UI_DEFAULTS = {
+            hero: {
+                tag: '个人订阅选型参考',
+                trust: '官网与帮助中心优先',
+                footnote: '这页默认优先帮助你先排除不合适的产品，而不是单纯堆信息。',
+                highlights: [
+                    '仅比较个人常见档位',
+                    '大陆可用性与支付优先',
+                    '额度口径按官方文档整理'
+                ],
+                steps: [
+                    '先看地区与支付方式，确认能否直接注册、订阅和续费。',
+                    '再看套餐与额度口径，别把 requests、credits、美元额度和消息条数混为一谈。',
+                    '最后看是否支持自带 API 或自定义接入，判断它是否适合你的长期工作流。'
+                ]
+            },
+            summary: {
+                title: '先看结论',
+                description: '如果你只想快速缩小范围，先看下面四张摘要卡，再进入两张大表做细比。'
+            },
+            tableHints: {
+                agents: [
+                    '先排地区与支付限制，再看模型和功能。',
+                    '来源默认优先官网；点击可展开全部参考链接。',
+                    '“自带 API / 自定义接入”更适合已有模型预算或需要统一网关的人。'
+                ],
+                plans: [
+                    '价格低不等于长期成本低，先看额度口径再看月费。',
+                    '官方消息限制常会随模型、上下文长度和云端任务变化。',
+                    '备注列通常藏着真实决策所需的边界条件。'
+                ]
+            }
+        };
+
+        let pageConfig = {};
+        let pageData = {
+            introNotes: [],
+            agents: [],
+            plans: [],
+            notes: []
+        };
+
+        function formatWebsiteDisplay(url) {
+            try {
+                const parsed = new URL(url, window.location.href);
+                const path = parsed.pathname && parsed.pathname !== '/'
+                    ? parsed.pathname.replace(/\/$/, '')
+                    : '';
+                return {
+                    host: parsed.host,
+                    path
+                };
+            } catch (error) {
+                return {
+                    host: url || '未标明',
+                    path: ''
+                };
+            }
+        }
+
+        function getConfigValue(path, fallback = '') {
+            const parts = path.split('.');
+            let current = pageConfig;
+            for (const part of parts) {
+                if (!current || !(part in current)) {
+                    return fallback;
+                }
+                current = current[part];
+            }
+            return current ?? fallback;
+        }
+
+        function setText(id, value) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.textContent = value;
+            }
+        }
+
+        function formatInlineContent(text) {
+            return escapeHtml(text ?? '')
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                .replace(/`([^`]+)`/g, '<code>$1</code>');
+        }
+
+        function formatCompactNames(items, limit = 3) {
+            if (!Array.isArray(items) || items.length === 0) {
+                return '暂无';
+            }
+            const visible = items.slice(0, limit);
+            if (items.length <= limit) {
+                return visible.join('、');
+            }
+            return `${visible.join('、')} 等 ${items.length} 个`;
+        }
+
+        function renderSimpleList(items) {
+            if (!Array.isArray(items) || items.length === 0) {
+                return '<span class="text-block">未标明</span>';
+            }
+            return `<ul class="compact-list">${items.map((item) => `<li>${formatInlineContent(item)}</li>`).join('')}</ul>`;
+        }
+
+        function renderPills(items) {
+            if (!Array.isArray(items) || items.length === 0) {
+                return '<span class="text-block">未标明</span>';
+            }
+            return `<div class="pill-list">${items.map((item) => `<span class="pill">${escapeHtml(item)}</span>`).join('')}</div>`;
+        }
+
+        function renderSourceSummary(sources) {
+            if (!Array.isArray(sources) || sources.length === 0) {
+                return `<div class="meta-stack"><div class="badge-list"><span class="source-pill source-pill--unknown">${escapeHtml(getConfigValue('badges.unknown', '待核实'))}</span></div></div>`;
+            }
+
+            const seenTypes = new Set();
+            const badges = [];
+            sources.forEach((source) => {
+                const type = source.type || 'unknown';
+                if (!seenTypes.has(type)) {
+                    seenTypes.add(type);
+                    badges.push(`<span class="source-pill source-pill--${escapeHtml(type)}">${escapeHtml(getConfigValue(`badges.${type}`, type))}</span>`);
+                }
+            });
+
+            const primaryLinks = sources.slice(0, 2).map((source) => {
+                const label = source.label || source.url || '来源';
+                return `<a class="source-link" href="${escapeHtml(sanitizeHttpUrl(source.url || '#', '#'))}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>`;
+            }).join('');
+
+            const allLinks = sources.map((source) => {
+                const label = source.label || source.url || '来源';
+                return `<a class="source-link" href="${escapeHtml(sanitizeHttpUrl(source.url || '#', '#'))}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>`;
+            }).join('');
+
+            const disclosure = sources.length > 2
+                ? `<details class="source-disclosure"><summary>查看全部来源（${sources.length}）</summary><div class="source-link-list">${allLinks}</div></details>`
+                : '';
+
+            return `<div class="meta-stack"><div class="badge-list">${badges.join('')}</div><div class="source-link-list">${primaryLinks}</div>${disclosure}</div>`;
+        }
+
+        function renderStatusBlock(value, mainland = false) {
+            if (!value || typeof value !== 'object') {
+                return '<span class="text-block">未标明</span>';
+            }
+
+            const status = value.status || 'unknown';
+            const badgeKeyMap = mainland
+                ? {
+                    yes: 'mainlandYes',
+                    no: 'mainlandNo',
+                    partial: 'mainlandPartial',
+                    unknown: 'mainlandUnknown'
+                }
+                : {
+                    yes: 'yes',
+                    no: 'no',
+                    partial: 'partial',
+                    unknown: 'unknown',
+                    na: 'na'
+                };
+            const badgeKey = badgeKeyMap[status] || 'unknown';
+            return `
+                <div class="text-stack">
+                    <div class="badge-list">
+                        <span class="status-pill status-pill--${escapeHtml(badgeKey)}">${escapeHtml(getConfigValue(`badges.${badgeKey}`, badgeKey))}</span>
+                    </div>
+                    <div class="text-block">${escapeHtml(value.text || '未标明')}</div>
+                </div>
+            `;
+        }
+
+        function renderNameCell(row) {
+            return `
+                <div class="text-stack">
+                    <div class="entity-name">${escapeHtml(row.name)}</div>
+                    ${renderSourceSummary(row.sources)}
+                </div>
+            `;
+        }
+
+        function renderPlanNameCell(row) {
+            return `
+                <div class="text-stack">
+                    <div class="entity-name">${escapeHtml(row.planName)}</div>
+                    ${renderSourceSummary(row.sources)}
+                </div>
+            `;
+        }
+
+        function renderWebsiteCell(url) {
+            if (!url) {
+                return '<span class="text-block">未标明</span>';
+            }
+            const display = formatWebsiteDisplay(url);
+            return `
+                <a class="site-link" href="${escapeHtml(sanitizeHttpUrl(url, '#'))}" target="_blank" rel="noreferrer" title="${escapeHtml(url)}">
+                    <span class="site-link-host">${escapeHtml(display.host)}</span>
+                    ${display.path ? `<span class="site-link-path">${escapeHtml(display.path)}</span>` : ''}
+                </a>
+            `;
+        }
+
+        function renderRegionCell(row) {
+            return `
+                <div class="text-stack">
+                    ${renderStatusBlock(row.mainlandAvailability, true)}
+                    <div class="text-block">${escapeHtml(row.regionRestriction || '未标明')}</div>
+                </div>
+            `;
+        }
+
+        function renderAgentsRow(row) {
+            return `
+                <tr>
+                    <td>${renderNameCell(row)}</td>
+                    <td>${renderWebsiteCell(row.website)}</td>
+                    <td><div class="text-block">${escapeHtml(row.formFactor || '未标明')}</div></td>
+                    <td>${renderPills(row.modelSupport)}</td>
+                    <td><div class="text-block">${escapeHtml(row.billingMode || '未标明')}</div></td>
+                    <td><div class="text-block">${escapeHtml(row.planSummary || '未标明')}</div></td>
+                    <td>${renderSimpleList(row.extraFeatures)}</td>
+                    <td>${renderPills(row.purchaseMethods)}</td>
+                    <td>${renderRegionCell(row)}</td>
+                    <td>${renderStatusBlock(row.supportsCustomApi)}</td>
+                    <td>${renderSimpleList(row.remarks)}</td>
+                </tr>
+            `;
+        }
+
+        function renderPlansRow(row) {
+            return `
+                <tr>
+                    <td><div class="text-block">${escapeHtml(row.agentName || '未标明')}</div></td>
+                    <td>${renderPlanNameCell(row)}</td>
+                    <td><div class="text-block">${escapeHtml(row.price || '未标明')}</div></td>
+                    <td><div class="text-block">${escapeHtml(row.usageIncluded || '未标明')}</div></td>
+                    <td><div class="text-block">${escapeHtml(row.conversationEstimate || '未标明')}</div></td>
+                    <td>${renderSimpleList(row.extraFeatures)}</td>
+                    <td>${renderSimpleList(row.remarks)}</td>
+                </tr>
+            `;
+        }
+
+        function renderTableHead(containerId, labels, columns) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = columns.map((key) => `<th>${escapeHtml(labels[key] || key)}</th>`).join('');
+        }
+
+        function calculateMetrics() {
+            const agents = Array.isArray(pageData.agents) ? pageData.agents : [];
+            const plans = Array.isArray(pageData.plans) ? pageData.plans : [];
+            const mainlandYesNames = agents
+                .filter((agent) => agent.mainlandAvailability?.status === 'yes')
+                .map((agent) => agent.name);
+            const mainlandPartialNames = agents
+                .filter((agent) => agent.mainlandAvailability?.status === 'partial')
+                .map((agent) => agent.name);
+            const customApiYesNames = agents
+                .filter((agent) => agent.supportsCustomApi?.status === 'yes')
+                .map((agent) => agent.name);
+            const customApiPartialNames = agents
+                .filter((agent) => agent.supportsCustomApi?.status === 'partial')
+                .map((agent) => agent.name);
+            const officialSourceCount = agents.filter((agent) => (agent.sources || []).some((source) => source.type === 'official')).length;
+
+            return {
+                agentCount: agents.length,
+                planCount: plans.length,
+                mainlandYesCount: mainlandYesNames.length,
+                mainlandPartialCount: mainlandPartialNames.length,
+                mainlandYesNames,
+                customApiCandidateCount: customApiYesNames.length + customApiPartialNames.length,
+                customApiNames: [...customApiYesNames, ...customApiPartialNames],
+                officialSourceCount
+            };
+        }
+
+        function renderHeroHighlights() {
+            const heroPoints = document.getElementById('heroPoints');
+            const items = getConfigValue('hero.highlights', UI_DEFAULTS.hero.highlights);
+            heroPoints.innerHTML = items.map((item) => `<span class="hero-point">${formatInlineContent(item)}</span>`).join('');
+        }
+
+        function renderSummarySection() {
+            const metrics = calculateMetrics();
+            const summaryGrid = document.getElementById('summaryGrid');
+            const decisionGrid = document.getElementById('decisionGrid');
+            const heroCoverage = document.getElementById('heroCoverageText');
+
+            heroCoverage.textContent = `${metrics.agentCount} 款工具 · ${metrics.planCount} 个套餐档位`;
+
+            const cards = [
+                {
+                    tone: 'neutral',
+                    eyebrow: '收录范围',
+                    value: String(metrics.agentCount),
+                    label: '款个人向 Agent',
+                    description: `同步整理 ${metrics.planCount} 个套餐档位，方便先做产品筛选，再细看长期成本。`
+                },
+                {
+                    tone: 'good',
+                    eyebrow: '大陆可用性',
+                    value: String(metrics.mainlandYesCount),
+                    label: '款可直接关注',
+                    description: metrics.mainlandYesCount > 0
+                        ? `直接友好的代表有 ${formatCompactNames(metrics.mainlandYesNames, 4)}；另有 ${metrics.mainlandPartialCount} 款属于条件型。`
+                        : `当前没有明确标为“直接友好”的产品，条件型产品共有 ${metrics.mainlandPartialCount} 款。`
+                },
+                {
+                    tone: 'accent',
+                    eyebrow: '自定义接入',
+                    value: String(metrics.customApiCandidateCount),
+                    label: '款支持或部分支持',
+                    description: metrics.customApiCandidateCount > 0
+                        ? `如果你已有模型预算或统一网关，优先留意 ${formatCompactNames(metrics.customApiNames, 4)}。`
+                        : '当前收录产品大多仍以平台内建能力为主。'
+                },
+                {
+                    tone: 'warm',
+                    eyebrow: '信息可信度',
+                    value: String(metrics.officialSourceCount),
+                    label: '款含官方来源',
+                    description: '默认优先采用官网、帮助中心和支持国家列表；营销页信息不足时，以账户和结账页为准。'
+                }
+            ];
+
+            summaryGrid.innerHTML = cards.map((card) => `
+                <article class="metric-card metric-card--${escapeHtml(card.tone)}">
+                    <div class="metric-eyebrow">${escapeHtml(card.eyebrow)}</div>
+                    <div class="metric-value-row">
+                        <div class="metric-value">${escapeHtml(card.value)}</div>
+                        <div class="metric-label">${escapeHtml(card.label)}</div>
+                    </div>
+                    <div class="metric-description">${escapeHtml(card.description)}</div>
+                </article>
+            `).join('');
+
+            const decisionCards = [
+                {
+                    step: 'Step 1',
+                    title: '先排地区与支付',
+                    description: '不能直接注册、登录、支付或续费的产品，再强的模型和再便宜的月费都很难转化成稳定体验。'
+                },
+                {
+                    step: 'Step 2',
+                    title: '再看计费口径',
+                    description: 'requests、credits、美元额度、消息条数不是一回事。真正影响体感的是额度口径和你常用模型的消耗速度。'
+                },
+                {
+                    step: 'Step 3',
+                    title: '最后看工作流适配',
+                    description: '如果你需要统一模型网关、团队内共用账号策略，优先关注“自带 API / 自定义接入”和备注里的边界条件。'
+                }
+            ];
+
+            decisionGrid.innerHTML = decisionCards.map((card) => `
+                <article class="decision-card">
+                    <div class="decision-step">${escapeHtml(card.step)}</div>
+                    <h3 class="decision-title">${escapeHtml(card.title)}</h3>
+                    <div class="decision-description">${escapeHtml(card.description)}</div>
+                </article>
+            `).join('');
+        }
+
+        function renderScopeCard() {
+            const scopeItems = [
+                ...(Array.isArray(getConfigValue('header.info', [])) ? getConfigValue('header.info', []) : []),
+                ...(Array.isArray(pageData.introNotes) ? pageData.introNotes : [])
+            ];
+            const scopeList = document.getElementById('scopeList');
+            scopeList.innerHTML = scopeItems.map((item) => `<li>${formatInlineContent(item)}</li>`).join('');
+        }
+
+        function renderTableHints() {
+            const agentsHints = document.getElementById('agentsHints');
+            const plansHints = document.getElementById('plansHints');
+            const agentItems = getConfigValue('tableHints.agents', UI_DEFAULTS.tableHints.agents);
+            const planItems = getConfigValue('tableHints.plans', UI_DEFAULTS.tableHints.plans);
+
+            agentsHints.innerHTML = agentItems.map((item) => `<span class="table-hint">${escapeHtml(item)}</span>`).join('');
+            plansHints.innerHTML = planItems.map((item) => `<span class="table-hint">${escapeHtml(item)}</span>`).join('');
+        }
+
+        function renderAgentsTable() {
+            const tbody = document.getElementById('agentsTableBody');
+            const agents = Array.isArray(pageData.agents)
+                ? [...pageData.agents].sort((left, right) => (left.sortOrder || 0) - (right.sortOrder || 0))
+                : [];
+
+            if (agents.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="${AGENT_COLUMNS.length}" class="empty-state">${escapeHtml(getConfigValue('messages.emptyAgents', '暂无工具数据。'))}</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = agents.map(renderAgentsRow).join('');
+        }
+
+        function renderPlansTable() {
+            const tbody = document.getElementById('plansTableBody');
+            const plans = Array.isArray(pageData.plans)
+                ? [...pageData.plans].sort((left, right) => {
+                    if ((left.agentSortOrder || 0) !== (right.agentSortOrder || 0)) {
+                        return (left.agentSortOrder || 0) - (right.agentSortOrder || 0);
+                    }
+                    return (left.planSortOrder || 0) - (right.planSortOrder || 0);
+                })
+                : [];
+
+            if (plans.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="${PLAN_COLUMNS.length}" class="empty-state">${escapeHtml(getConfigValue('messages.emptyPlans', '暂无套餐数据。'))}</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = plans.map(renderPlansRow).join('');
+        }
+
+        function renderNotes() {
+            const title = getConfigValue('sections.notesTitle', '补充说明');
+            const notes = Array.isArray(pageData.notes) ? pageData.notes : [];
+
+            renderNotesSection('notesSection', {
+                title: title,
+                titleTag: 'div',
+                titleClass: 'section-title',
+                items: notes,
+                emptyBehavior: 'hide',
+                renderItem: function(item) {
+                    return formatInlineContent(item);
+                }
+            });
+        }
+
+        function applyConfig() {
+            document.title = getConfigValue('pageTitle', '编程 Agent 对比');
+            setText('pageTitle', getConfigValue('pageTitle', '编程 Agent 对比'));
+            setText('headerTitle', getConfigValue('header.title', '编程 Agent 对比'));
+            setText('updateDate', getConfigValue('header.updateDate', ''));
+            setText('headerSubtitle', getConfigValue('header.subtitle', ''));
+            setText('heroTag', getConfigValue('hero.tag', UI_DEFAULTS.hero.tag));
+            setText('heroTrust', getConfigValue('hero.trust', UI_DEFAULTS.hero.trust));
+            setText('heroFootnote', getConfigValue('hero.footnote', UI_DEFAULTS.hero.footnote));
+            setText('settingsPanelTitle', getConfigValue('settings.panelTitle', '显示设置'));
+            setText('ultraWideLabel', getConfigValue('settings.ultraWideLabel', '超宽屏模式'));
+            setText('summaryTitle', getConfigValue('summary.title', UI_DEFAULTS.summary.title));
+            setText('summaryDescription', getConfigValue('summary.description', UI_DEFAULTS.summary.description));
+            setText('scopeTitle', getConfigValue('sections.scopeTitle', '口径说明'));
+            setText('scopeDescription', getConfigValue('sections.scopeDescription', ''));
+            setText('agentsTableTitle', getConfigValue('sections.agentsTableTitle', '工具总表'));
+            setText('agentsTableDescription', getConfigValue('sections.agentsTableDescription', ''));
+            setText('plansTableTitle', getConfigValue('sections.plansTableTitle', '套餐订阅表'));
+            setText('plansTableDescription', getConfigValue('sections.plansTableDescription', ''));
+
+            const githubLink = document.getElementById('githubLink');
+            githubLink.textContent = getConfigValue('header.githubText', '查看仓库');
+
+            const heroSteps = document.getElementById('heroSteps');
+            const steps = getConfigValue('hero.steps', UI_DEFAULTS.hero.steps);
+            heroSteps.innerHTML = steps.map((item) => `<li>${escapeHtml(item)}</li>`).join('');
+        }
+
+        async function loadConfig() {
+            const response = await fetch(CONFIG_FILE_PATH, { cache: 'no-store' });
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            pageConfig = await response.json();
+        }
+
+        async function loadData() {
+            const response = await fetch(DATA_FILE_PATH, { cache: 'no-store' });
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            pageData = await response.json();
+        }
+
+        function renderLoadError() {
+            const message = escapeHtml(getConfigValue('messages.loadError', '数据加载失败，请稍后重试。'));
+            document.getElementById('summaryGrid').innerHTML = `<div class="metric-card"><div class="metric-description">${message}</div></div>`;
+            document.getElementById('decisionGrid').innerHTML = '';
+            document.getElementById('agentsTableBody').innerHTML = `<tr><td colspan="${AGENT_COLUMNS.length}" class="empty-state">${message}</td></tr>`;
+            document.getElementById('plansTableBody').innerHTML = `<tr><td colspan="${PLAN_COLUMNS.length}" class="empty-state">${message}</td></tr>`;
+        }
+
+        async function init() {
+            renderPageNav('pageNavMount', {
+                activeKey: 'coding-agents',
+                settings: {
+                    panelTitleId: 'settingsPanelTitle',
+                    ultraWideLabelId: 'ultraWideLabel'
+                }
+            });
+
+            renderTableHead('agentsTableHead', getConfigValue('tableLabels.agents', {}), AGENT_COLUMNS);
+            renderTableHead('plansTableHead', getConfigValue('tableLabels.plans', {}), PLAN_COLUMNS);
+
+            document.getElementById('agentsTableBody').innerHTML = `<tr><td colspan="${AGENT_COLUMNS.length}" class="empty-state">${escapeHtml(getConfigValue('messages.loading', '加载中...'))}</td></tr>`;
+            document.getElementById('plansTableBody').innerHTML = `<tr><td colspan="${PLAN_COLUMNS.length}" class="empty-state">${escapeHtml(getConfigValue('messages.loading', '加载中...'))}</td></tr>`;
+
+            try {
+                await loadConfig();
+                applyConfig();
+                renderTableHead('agentsTableHead', getConfigValue('tableLabels.agents', {}), AGENT_COLUMNS);
+                renderTableHead('plansTableHead', getConfigValue('tableLabels.plans', {}), PLAN_COLUMNS);
+                await loadData();
+                renderHeroHighlights();
+                renderSummarySection();
+                renderScopeCard();
+                renderTableHints();
+                renderAgentsTable();
+                renderPlansTable();
+                renderNotes();
+            } catch (error) {
+                renderLoadError();
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>

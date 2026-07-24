@@ -85,6 +85,7 @@ function renderUpdatesSection(target, options = {}) {
     const titleTag = options.titleTag || 'h3';
     const titleClass = options.titleClass ? ` class="${escapeHtml(options.titleClass)}"` : '';
     const listClass = options.listClass ? ` class="${escapeHtml(options.listClass)}"` : ' class="updates-list"';
+    const visibleCount = Number.isFinite(options.visibleCount) ? Math.max(0, options.visibleCount) : 3;
     const renderDate = typeof options.renderDate === 'function'
         ? options.renderDate
         : (value) => escapeHtml(value);
@@ -92,19 +93,92 @@ function renderUpdatesSection(target, options = {}) {
         ? options.renderItem
         : (value) => escapeHtml(value);
 
+    const hiddenCount = Math.max(0, updates.length - visibleCount);
+    const hasMore = hiddenCount > 0;
+
     container.hidden = false;
     container.innerHTML = `
         <${titleTag}${titleClass}>${title}</${titleTag}>
         <ul${listClass}>
-            ${updates.map((update, updateIndex) => `
-                <li class="update-item">
+            ${updates.map((update, updateIndex) => {
+                const collapsed = updateIndex >= visibleCount;
+                const collapsedClass = collapsed ? ' is-collapsed' : '';
+                const hiddenAttr = collapsed ? ' hidden' : '';
+                return `
+                <li class="update-item${collapsedClass}"${hiddenAttr}>
                     <div class="log-date">${renderDate(update && update.date, update, updateIndex)}</div>
                     <ul class="update-items">
                         ${((update && Array.isArray(update.items)) ? update.items : []).map((item, itemIndex) => `<li>${renderItem(item, itemIndex, update, updateIndex)}</li>`).join('')}
                     </ul>
-                </li>
-            `).join('')}
+                </li>`;
+            }).join('')}
         </ul>
+        ${hasMore
+            ? `<button type="button" class="updates-toggle" aria-expanded="false">展开更多（${hiddenCount}）</button>`
+            : ''}
+    `;
+
+    if (hasMore) {
+        const toggle = container.querySelector('.updates-toggle');
+        if (toggle) {
+            toggle.addEventListener('click', function () {
+                const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                const nextExpanded = !expanded;
+                container.querySelectorAll('.update-item.is-collapsed').forEach(function (el) {
+                    el.hidden = !nextExpanded;
+                });
+                toggle.setAttribute('aria-expanded', nextExpanded ? 'true' : 'false');
+                toggle.textContent = nextExpanded ? '收起' : `展开更多（${hiddenCount}）`;
+            });
+        }
+    }
+    return true;
+}
+
+function renderSettingsControls(settings = {}) {
+    const buttonLabel = settings.buttonLabel || settings.label || '';
+    const labelHtml = buttonLabel
+        ? `<span class="settings-btn-label">${escapeHtml(buttonLabel)}</span>`
+        : '';
+    return `
+            <div class="settings-wrapper">
+                <button class="settings-btn" id="settingsBtn" title="${escapeHtml(settings.buttonTitle || buttonLabel || '设置')}" aria-label="${escapeHtml(settings.buttonAriaLabel || settings.buttonTitle || buttonLabel || '设置')}">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                    ${labelHtml}
+                </button>
+                <div class="settings-panel" id="settingsPanel" hidden>
+                    <div class="settings-panel-title"${settings.panelTitleId ? ` id="${escapeHtml(settings.panelTitleId)}"` : ''}>${escapeHtml(settings.panelTitle || '')}</div>
+                    <div class="settings-toggle-row settings-edition-row">
+                        <span class="settings-edition-label">站点版本</span>
+                        <div class="settings-edition-actions" role="group" aria-label="站点版本">
+                            <button type="button" class="settings-edition-btn" id="siteEditionV2Btn" data-edition="v2">新版</button>
+                            <button type="button" class="settings-edition-btn" id="siteEditionClassicBtn" data-edition="classic">旧版</button>
+                        </div>
+                    </div>
+                    <div class="settings-toggle-row">
+                        <label for="ultraWideToggle"${settings.ultraWideLabelId ? ` id="${escapeHtml(settings.ultraWideLabelId)}"` : ''}>${escapeHtml(settings.ultraWideLabel || '')}</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="ultraWideToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>`;
+}
+
+function renderSettingsOnly(target, options = {}) {
+    const container = typeof target === 'string' ? document.getElementById(target) : target;
+    if (!container) {
+        return false;
+    }
+    const settings = options.settings || {};
+    container.innerHTML = `
+        <div class="page-nav-cluster page-nav-cluster--settings-only">
+            ${renderSettingsControls(settings)}
+        </div>
     `;
     return true;
 }
@@ -119,10 +193,12 @@ function renderPageNav(target, options = {}) {
         ? options.tabs
         : [
             { key: 'index', href: 'index.html', text: 'Coding Plan' },
+            { key: 'payg', href: 'payg.html', text: '按量计价' },
             { key: 'plan-usage', href: 'plan-usage.html', text: 'Coding Plan用量提交' },
             { key: 'coding-agents', href: 'coding-agents.html', text: '编程 Agent' },
             { key: 'relays', href: 'relays.html', text: '中转站' },
-            { key: 'relay-detect', href: 'relay-detect.html', text: '中转站检测' }
+            { key: 'relay-detect', href: 'relay-detect.html', text: '中转站检测' },
+            { key: 'monitor', href: 'monitor/index.html', text: '可用性监控' }
         ];
     const activeKey = options.activeKey || '';
     const settings = options.settings || {};
@@ -144,31 +220,7 @@ function renderPageNav(target, options = {}) {
             <nav class="page-nav" aria-label="站点导航">
             ${tabs.map(renderTab).join('')}
             </nav>
-            <div class="settings-wrapper">
-                <button class="settings-btn" id="settingsBtn" title="${escapeHtml(settings.buttonTitle || '设置')}" aria-label="${escapeHtml(settings.buttonAriaLabel || settings.buttonTitle || '设置')}">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="3"></circle>
-                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                    </svg>
-                </button>
-                <div class="settings-panel" id="settingsPanel" hidden>
-                    <div class="settings-panel-title"${settings.panelTitleId ? ` id="${escapeHtml(settings.panelTitleId)}"` : ''}>${escapeHtml(settings.panelTitle || '')}</div>
-                    <div class="settings-toggle-row settings-edition-row">
-                        <span class="settings-edition-label">站点版本</span>
-                        <div class="settings-edition-actions" role="group" aria-label="站点版本">
-                            <button type="button" class="settings-edition-btn" id="siteEditionV2Btn" data-edition="v2">新版</button>
-                            <button type="button" class="settings-edition-btn" id="siteEditionClassicBtn" data-edition="classic">旧版</button>
-                        </div>
-                    </div>
-                    <div class="settings-toggle-row">
-                        <label for="ultraWideToggle"${settings.ultraWideLabelId ? ` id="${escapeHtml(settings.ultraWideLabelId)}"` : ''}>${escapeHtml(settings.ultraWideLabel || '')}</label>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="ultraWideToggle">
-                            <span class="toggle-slider"></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
+            ${renderSettingsControls(settings)}
         </div>
     `;
     return true;
@@ -205,10 +257,10 @@ function renderPageNav(target, options = {}) {
         const v2Btn = document.getElementById('siteEditionV2Btn');
         const classicBtn = document.getElementById('siteEditionClassicBtn');
         if (!v2Btn || !classicBtn) {
-            return;
+            return false;
         }
         if (v2Btn.dataset.editionBound === '1') {
-            return;
+            return true;
         }
         v2Btn.dataset.editionBound = '1';
 
@@ -228,9 +280,10 @@ function renderPageNav(target, options = {}) {
                 classicBtn.classList.toggle('is-active', next === 'classic');
                 v2Btn.setAttribute('aria-pressed', next === 'v2' ? 'true' : 'false');
                 classicBtn.setAttribute('aria-pressed', next === 'classic' ? 'true' : 'false');
-                return;
+                return true;
             }
             location.assign(resolveEditionHome(next));
+            return true;
         }
 
         v2Btn.addEventListener('click', function (e) {
@@ -241,6 +294,7 @@ function renderPageNav(target, options = {}) {
             e.stopPropagation();
             switchEdition('classic');
         });
+        return true;
     }
 
     function initUltraWideSettings() {
@@ -251,8 +305,12 @@ function renderPageNav(target, options = {}) {
         initSiteEditionSettings();
 
         if (!btn || !panel || !toggle) {
-            return;
+            return false;
         }
+        if (btn.dataset.ultraWideBound === '1') {
+            return true;
+        }
+        btn.dataset.ultraWideBound = '1';
 
         function applyUltraWide(on) {
             document.body.classList.toggle('ultra-wide', on);
@@ -275,11 +333,16 @@ function renderPageNav(target, options = {}) {
         });
 
         document.addEventListener('click', function (e) {
-            if (!panel.hidden && !panel.contains(e.target) && e.target !== btn) {
+            if (!panel.hidden && !panel.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
                 panel.hidden = true;
                 btn.classList.remove('active');
             }
         });
+        return true;
+    }
+
+    if (typeof window !== 'undefined') {
+        window.initUltraWideSettings = initUltraWideSettings;
     }
 
     if (document.readyState === 'loading') {

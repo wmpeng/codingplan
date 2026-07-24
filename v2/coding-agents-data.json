@@ -1,0 +1,1438 @@
+{
+  "introNotes": [
+    "从价格、用量计费方式、地区与是否自带 API Key 等维度，方便个人选购时对照。",
+    "「对话/消息」列尽量写入各官网给出的**按日、按 5 小时或按模型的消息/提示条数区间**；未写死「一轮」的产品会说明官方实际采用的计量方式。",
+    "Gemini 美国区标价见 gemini.google/subscriptions；其他地区以页面切换为准。Google AI Plus/Pro 能否购买以 Google One 帮助中心列出的支持国家为准（英文列表含港澳台，不含中国大陆）。"
+  ],
+  "agents": [
+    {
+      "sortOrder": 1,
+      "name": "Claude Code",
+      "website": "https://claude.com/product/claude-code",
+      "formFactor": "CLI / Desktop / IDE 集成",
+      "modelSupport": [
+        "Claude Sonnet",
+        "Claude Opus",
+        "Claude Haiku"
+      ],
+      "billingMode": "包含在 Claude 个人订阅中，按计划 usage limit 限制，可额外购买 extra usage。",
+      "planSummary": "Pro、Max 5x、Max 20x",
+      "extraFeatures": [
+        "代码库 onboarding",
+        "Issue 到 PR 工作流",
+        "多文件编辑",
+        "桌面端 visual diff / preview server / PR status",
+        "Slack 集成"
+      ],
+      "purchaseMethods": [
+        "信用卡或借记卡（Anthropic《Paid Plan Billing FAQs》：Pro / Max 仅接受 credit or debit cards）。"
+      ],
+      "mainlandAvailability": {
+        "status": "no",
+        "text": "Anthropic 官方支持地区列表未包含中国大陆。"
+      },
+      "regionRestriction": "Claude.ai 与 Anthropic API 仅在官方支持国家/地区提供，中国大陆不在列表中。",
+      "supportsCustomApi": {
+        "status": "partial",
+        "text": "订阅版不主打 BYOK；Claude Platform 可单独使用 API Key。"
+      },
+      "remarks": [
+        "Claude Code 的 usage 与 claude.ai / Claude Desktop 共用。",
+        "用量以官方 usage limit 与 Pro / Max 倍率描述，不提供「每聊天固定轮数」。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Claude Code 产品页",
+          "url": "https://claude.com/product/claude-code"
+        },
+        {
+          "type": "official",
+          "label": "Claude Pricing",
+          "url": "https://claude.com/pricing"
+        },
+        {
+          "type": "official",
+          "label": "Usage limit best practices",
+          "url": "https://support.claude.com/en/articles/9797557-usage-limit-best-practices"
+        },
+        {
+          "type": "official",
+          "label": "How do usage and length limits work",
+          "url": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work"
+        },
+        {
+          "type": "official",
+          "label": "Anthropic supported countries",
+          "url": "https://www.anthropic.com/supported-countries"
+        },
+        {
+          "type": "official",
+          "label": "Paid Plan Billing FAQs（支付方式）",
+          "url": "https://support.anthropic.com/en/articles/8325618-paid-plan-billing-faqs"
+        },
+        {
+          "type": "secondary",
+          "label": "Awesome Coding Plan",
+          "url": "https://github.com/mahonzhan/awesome-coding-plan"
+        },
+        {
+          "type": "secondary",
+          "label": "氛围编程 · 国内方案综合对比",
+          "url": "https://yc-w-cn.github.io/vibe-coding/"
+        }
+      ]
+    },
+    {
+      "sortOrder": 2,
+      "name": "Cursor",
+      "website": "https://cursor.com/pricing",
+      "formFactor": "独立 IDE / CLI / Cloud Agents",
+      "modelSupport": [
+        "OpenAI",
+        "Anthropic",
+        "Google",
+        "Composer 2",
+        "Grok"
+      ],
+      "billingMode": "订阅制，含 Auto + Composer 用量池和 API 用量池；超额可按 API 费率继续结算。",
+      "planSummary": "Hobby、Pro、Pro+、Ultra",
+      "extraFeatures": [
+        "无限 Tab 补全",
+        "Bugbot 代码审查",
+        "Cloud Agents",
+        "MCP / Skills / Hooks"
+      ],
+      "purchaseMethods": [
+        "信用卡或借记卡；通过 Stripe 客户门户管理扣款（见 Cursor Docs：Billing and payments、Payment issues）。"
+      ],
+      "mainlandAvailability": {
+        "status": "partial",
+        "text": "公开文档未列国家/地区禁运表；订阅由 Stripe 处理，能否成功取决于账单地址、发卡行跨境策略与本地网络环境。"
+      },
+      "regionRestriction": "定价与模型文档未给出单独的国家/地区矩阵；以账户与 Stripe 门户实际限制为准。",
+      "supportsCustomApi": {
+        "status": "partial",
+        "text": "官方文档支持在设置中为 OpenAI、Anthropic、Google、Azure OpenAI、AWS Bedrock 等添加自有 API Key，聊天模型按各厂商计费；Tab 补全仍使用 Cursor 内置模型，且请求会经 Cursor 后端转发（非全路径本地化 BYOK）。"
+      },
+      "remarks": [
+        "个人版至少包含 20 美元 API 用量，高档位包含更多。",
+        "不同模型按 API 费率消耗额度，不是统一按次计数。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Cursor Pricing",
+          "url": "https://cursor.com/pricing"
+        },
+        {
+          "type": "official",
+          "label": "Cursor 模型与价格",
+          "url": "https://cursor.com/cn/docs/models-and-pricing"
+        },
+        {
+          "type": "official",
+          "label": "Bring your own API key（Cursor Docs）",
+          "url": "https://cursor.com/docs/settings/api-keys"
+        },
+        {
+          "type": "official",
+          "label": "Billing and payments（Cursor Docs）",
+          "url": "https://cursor.com/docs/account/billing"
+        },
+        {
+          "type": "official",
+          "label": "Payment issues（Cursor Docs）",
+          "url": "https://cursor.com/help/account-and-billing/payment-issues"
+        },
+        {
+          "type": "secondary",
+          "label": "Awesome Coding Plan",
+          "url": "https://github.com/mahonzhan/awesome-coding-plan"
+        },
+        {
+          "type": "secondary",
+          "label": "氛围编程 · 国内方案综合对比",
+          "url": "https://yc-w-cn.github.io/vibe-coding/"
+        }
+      ]
+    },
+    {
+      "sortOrder": 3,
+      "name": "GitHub Copilot",
+      "website": "https://github.com/features/copilot/plans",
+      "formFactor": "IDE 插件 / GitHub 内置 / CLI",
+      "modelSupport": [
+        "Claude",
+        "Codex",
+        "GPT-5 mini",
+        "Haiku 4.5",
+        "Google 模型等"
+      ],
+      "billingMode": "订阅制；核心按 premium requests 计量，免费版另有 chat / agent 与 completion 次数限制。",
+      "planSummary": "Free、Pro、Pro+",
+      "extraFeatures": [
+        "Copilot cloud agent",
+        "Copilot code review",
+        "无限内联补全（付费）",
+        "Copilot CLI",
+        "多平台集成"
+      ],
+      "purchaseMethods": [
+        "个人账号：银行卡或 PayPal（GitHub Docs：Managing your payment and billing information）。"
+      ],
+      "mainlandAvailability": {
+        "status": "partial",
+        "text": "Copilot 随 GitHub 账户计费；GitHub 服务在中国大陆网络环境可能受限，且需可跨境结算的支付方式。"
+      },
+      "regionRestriction": "计划营销页未列完整地区矩阵；出口管制、账户地区与 GitHub Billing 政策见 GitHub 文档与条款。",
+      "supportsCustomApi": {
+        "status": "no",
+        "text": "个人版不提供自定义推理 URL 或 BYOK 模式。"
+      },
+      "remarks": [
+        "GitHub 文档记载：自 2026-04-20 起个人 Copilot Pro / Pro+ / 学生计划新订阅曾暂停；自 2026-06-01 起个人计费向用量制过渡；以 GitHub Docs 最新说明为准。",
+        "Pro 含 300 premium requests（在现行 request 制下，见计划页）。",
+        "Pro+ 含 Pro 的 5 倍 premium requests，并开放更多模型。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Copilot Plans",
+          "url": "https://github.com/features/copilot/plans"
+        },
+        {
+          "type": "official",
+          "label": "Supported AI models in Copilot",
+          "url": "https://docs.github.com/copilot/using-github-copilot/ai-models/supported-ai-models-in-copilot"
+        },
+        {
+          "type": "official",
+          "label": "About billing for individual Copilot plans",
+          "url": "https://docs.github.com/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/billing-and-payments/about-billing-for-individual-copilot-plans"
+        },
+        {
+          "type": "official",
+          "label": "Managing payment and billing information",
+          "url": "https://docs.github.com/billing/managing-your-billing/managing-your-payment-and-billing-information"
+        },
+        {
+          "type": "secondary",
+          "label": "Awesome Coding Plan",
+          "url": "https://github.com/mahonzhan/awesome-coding-plan"
+        },
+        {
+          "type": "secondary",
+          "label": "氛围编程 · 国内方案综合对比",
+          "url": "https://yc-w-cn.github.io/vibe-coding/"
+        }
+      ]
+    },
+    {
+      "sortOrder": 4,
+      "name": "Codex",
+      "website": "https://chatgpt.com/zh-Hans-CN/codex/pricing/",
+      "formFactor": "CLI / IDE 扩展 / Web / 桌面应用",
+      "modelSupport": [
+        "GPT-5.5",
+        "GPT-5.4",
+        "GPT-5.4-mini",
+        "GPT-5.3-Codex",
+        "GPT-5.3-Codex-Spark"
+      ],
+      "billingMode": "订阅制 + credits；也支持 API Key 按量计费。",
+      "planSummary": "Free、Go、Plus、Pro、API Key",
+      "extraFeatures": [
+        "GitHub 代码审查",
+        "Slack 集成",
+        "CLI / IDE 本地任务",
+        "可购买额外 credits",
+        "本地与云端任务"
+      ],
+      "purchaseMethods": [
+        "信用卡 / 借记卡（官方明确）",
+        "部分地区本地支付：UPI / GoPay / Pix（官方明确）",
+        "API credits 仅支持 USD 结算"
+      ],
+      "mainlandAvailability": {
+        "status": "no",
+        "text": "OpenAI ChatGPT 支持地区列表未包含中国大陆。"
+      },
+      "regionRestriction": "ChatGPT 官方支持国家/地区列表不含中国大陆，超出支持地区访问可能导致账号被限制。",
+      "supportsCustomApi": {
+        "status": "partial",
+        "text": "支持 API Key；订阅版不提供任意自定义 URL 作为主流程。"
+      },
+      "remarks": [
+        "Codex 已包含在 ChatGPT Free / Go / Plus / Pro 中。",
+        "不同模型的 5 小时消息、云任务、Code Review 限额差异很大。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Codex Pricing（ChatGPT）",
+          "url": "https://chatgpt.com/zh-Hans-CN/codex/pricing/"
+        },
+        {
+          "type": "official",
+          "label": "Codex Pricing（Developers）",
+          "url": "https://developers.openai.com/codex/pricing"
+        },
+        {
+          "type": "official",
+          "label": "ChatGPT Supported Countries",
+          "url": "https://help.openai.com/en/articles/7947663-chatgpt-supported-countries"
+        },
+        {
+          "type": "official",
+          "label": "Multi-currency billing",
+          "url": "https://help.openai.com/en/articles/10421635-multicurrency-billing"
+        },
+        {
+          "type": "secondary",
+          "label": "Awesome Coding Plan",
+          "url": "https://github.com/mahonzhan/awesome-coding-plan"
+        },
+        {
+          "type": "secondary",
+          "label": "氛围编程 · 国内方案综合对比",
+          "url": "https://yc-w-cn.github.io/vibe-coding/"
+        }
+      ]
+    },
+    {
+      "sortOrder": 5,
+      "name": "Gemini",
+      "website": "https://gemini.google/",
+      "formFactor": "Web / App（通用 AI 助手）",
+      "modelSupport": [
+        "Gemini 3.1 Pro",
+        "Gemini 3.1 Pro Deep Think",
+        "Gemini 3 Flash 系列"
+      ],
+      "billingMode": "免费 + Google AI 订阅制；主要按每日提示和功能配额限制。",
+      "planSummary": "Free、Google AI Plus、Google AI Pro、Google AI Ultra",
+      "extraFeatures": [
+        "Deep Research",
+        "Agent",
+        "Veo 视频生成",
+        "Notebook / Canvas / Gems",
+        "大上下文窗口"
+      ],
+      "purchaseMethods": [
+        "随 Google 账户在 Google One / Google Play 等标准渠道扣款；常见为银行卡（Visa、Mastercard 等），部分地区支持 PayPal 等（Google Play 帮助：Accepted payment methods，因国家/地区而异）。"
+      ],
+      "mainlandAvailability": {
+        "status": "partial",
+        "text": "Google One 帮助中心公布的「Google AI Plus」「Google AI Pro」支持国家与地区列表均不含「中国大陆」（含香港、澳门、台湾及多数其他国家/地区）。Gemini Web 国家列表另将「中国大陆」标为「仅限 Workspace」，与消费者个人订阅不是同一路径。"
+      },
+      "regionRestriction": "各档位支持国家以 Google One / Gemini 帮助中心列表为准；Ultra 另见 Gemini 应用帮助中的 Ultra 支持国家说明。",
+      "supportsCustomApi": {
+        "status": "no",
+        "text": "这里对比的是 Gemini 应用订阅，不是 Gemini API / AI Studio。"
+      },
+      "remarks": [
+        "美国区订阅页（United States）公开标价：Google AI Plus $7.99/月、Google AI Pro $19.99/月、Google AI Ultra $249.99/月（gemini.google/subscriptions）。",
+        "此处为 Gemini 应用个人订阅；含 Google One 存储等捆绑权益，以官网为准。Antigravity、Gemini Code Assist/CLI 等另有额度说明，可在来源中的社区参考链接里对照。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Gemini 应用用量限额与升级",
+          "url": "https://support.google.com/gemini/answer/16275805?hl=zh-Hans"
+        },
+        {
+          "type": "official",
+          "label": "Gemini subscriptions（标价）",
+          "url": "https://gemini.google/subscriptions"
+        },
+        {
+          "type": "official",
+          "label": "Gemini Web 支持的国家和地区",
+          "url": "https://support.google.com/gemini/answer/13575153?hl=zh-Hans"
+        },
+        {
+          "type": "official",
+          "label": "Google AI Plus 支持国家",
+          "url": "https://support.google.com/googleone/answer/16548195?hl=en"
+        },
+        {
+          "type": "official",
+          "label": "Google AI Pro 支持国家",
+          "url": "https://support.google.com/googleone/answer/16476811?hl=en"
+        },
+        {
+          "type": "official",
+          "label": "Google Play accepted payment methods",
+          "url": "https://support.google.com/googleplay/answer/2651410"
+        },
+        {
+          "type": "secondary",
+          "label": "Awesome Coding Plan",
+          "url": "https://github.com/mahonzhan/awesome-coding-plan"
+        },
+        {
+          "type": "secondary",
+          "label": "氛围编程 · 国内方案综合对比",
+          "url": "https://yc-w-cn.github.io/vibe-coding/"
+        }
+      ]
+    },
+    {
+      "sortOrder": 6,
+      "name": "OpenCode",
+      "website": "https://opencode.ai/zh/go",
+      "formFactor": "CLI / TUI / IDE / Web",
+      "modelSupport": [
+        "GLM-5.1",
+        "GLM-5",
+        "Kimi K2.5 / K2.6",
+        "MiMo-V2.5 / Pro",
+        "MiniMax M2.5 / M2.7",
+        "Qwen3.5 / 3.6 Plus",
+        "DeepSeek V4 Pro / Flash"
+      ],
+      "billingMode": "订阅制，按美元使用额度限额；超额可切到 Zen balance 或免费模型。",
+      "planSummary": "Go",
+      "extraFeatures": [
+        "可配合任何 agent 使用",
+        "提供 API Key",
+        "OpenAI-compatible 端点",
+        "超额回退 Zen balance",
+        "免费模型兜底"
+      ],
+      "purchaseMethods": [
+        "在 OpenCode Zen 控制台订阅 Go；官方文档未逐条列出卡组织，订阅按美元计价，以结账页实际支持的支付方式为准。"
+      ],
+      "mainlandAvailability": {
+        "status": "partial",
+        "text": "官方文档写明主要面向国际用户、模型托管在美/欧/新；无单独「中国大陆可购」声明，能否完成美元订阅取决于支付通道与风控。"
+      },
+      "regionRestriction": "模型托管在美国、欧盟、新加坡；公开资料未提供按国家/地区的细粒度白名单。",
+      "supportsCustomApi": {
+        "status": "yes",
+        "text": "提供 API Key 与 API endpoint，可在其他 agent 中使用。"
+      },
+      "remarks": [
+        "Go 首月 5 美元，之后 10 美元 / 月。",
+        "5 小时 / 周 / 月限制按美元额度定义，不是固定请求数。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "OpenCode Go landing",
+          "url": "https://opencode.ai/zh/go"
+        },
+        {
+          "type": "official",
+          "label": "OpenCode Go docs",
+          "url": "https://opencode.ai/docs/zh-cn/go/"
+        },
+        {
+          "type": "secondary",
+          "label": "Awesome Coding Plan",
+          "url": "https://github.com/mahonzhan/awesome-coding-plan"
+        },
+        {
+          "type": "secondary",
+          "label": "氛围编程 · 国内方案综合对比",
+          "url": "https://yc-w-cn.github.io/vibe-coding/"
+        }
+      ]
+    },
+    {
+      "sortOrder": 7,
+      "name": "Qoder",
+      "website": "https://qoder.com/pricing",
+      "formFactor": "独立 IDE / JetBrains 插件 / CLI",
+      "modelSupport": [
+        "分级模型 Lite / Efficient / Auto / Performance / Ultimate",
+        "Qwen3.6-Plus",
+        "DeepSeek-V4-Pro",
+        "DeepSeek-V4-Flash",
+        "GLM-5.1",
+        "Kimi-K2.6",
+        "MiniMax-M2.7",
+        "自定义模型"
+      ],
+      "billingMode": "订阅制，按 Credits 计量；用尽后回退到基础模型，也可加购资源包。",
+      "planSummary": "社区版、Pro、Pro+、Ultra",
+      "extraFeatures": [
+        "代码补全与 NES 预测",
+        "Quest Mode",
+        "Repo Wiki",
+        "14 天 Pro 试用",
+        "自定义模型"
+      ],
+      "purchaseMethods": [
+        "Visa",
+        "MasterCard",
+        "支付宝",
+        "Google Pay",
+        "Apple Pay"
+      ],
+      "mainlandAvailability": {
+        "status": "yes",
+        "text": "官方支持支付宝，面向中文用户较友好。"
+      },
+      "regionRestriction": "公开价格页未列出国家或地区禁用表。",
+      "supportsCustomApi": {
+        "status": "yes",
+        "text": "支持自有 API Key / Custom Models；部分固定功能仍消耗 Qoder Credits。"
+      },
+      "remarks": [
+        "付费方案额度会在周期结束清零。",
+        "Pro / Pro+ / Ultra 可增购个人资源包，单价 0.02 USD / Credit。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Qoder Pricing",
+          "url": "https://qoder.com/pricing"
+        },
+        {
+          "type": "official",
+          "label": "Qoder Docs Pricing",
+          "url": "https://docs.qoder.com/zh/account/pricing"
+        },
+        {
+          "type": "official",
+          "label": "Qoder 模型选择器",
+          "url": "https://docs.qoder.com/zh/user-guide/model-selector"
+        },
+        {
+          "type": "official",
+          "label": "Qoder Custom Models",
+          "url": "https://docs.qoder.com/zh/configuration/custom-models"
+        },
+        {
+          "type": "secondary",
+          "label": "Awesome Coding Plan",
+          "url": "https://github.com/mahonzhan/awesome-coding-plan"
+        },
+        {
+          "type": "secondary",
+          "label": "氛围编程 · 国内方案综合对比",
+          "url": "https://yc-w-cn.github.io/vibe-coding/"
+        }
+      ]
+    },
+    {
+      "sortOrder": 8,
+      "name": "Trae国内版",
+      "website": "https://www.trae.cn/pricing",
+      "formFactor": "独立 IDE",
+      "modelSupport": [
+        "Doubao-Seed-Code"
+      ],
+      "billingMode": "个人版免费；公开价格页主要展示企业版。",
+      "planSummary": "个人版免费",
+      "extraFeatures": [
+        "Chat / Builder / Agent / MCP / Rules",
+        "IDE 形态",
+        "国内社区与文档"
+      ],
+      "purchaseMethods": [
+        "个人免费版不适用",
+        "企业采购可联系官方"
+      ],
+      "mainlandAvailability": {
+        "status": "yes",
+        "text": "面向中国大陆市场。"
+      },
+      "regionRestriction": "国内版站点与文档面向中国大陆；公开个人付费套餐未见单独价格页。",
+      "supportsCustomApi": {
+        "status": "partial",
+        "text": "TRAE CN 文档含「模型管理」等说明，IDE 内一般可配置自有或第三方模型凭据；个人免费档权益页未单独展开 BYOK 文案，以当前版本设置项为准。"
+      },
+      "remarks": [
+        "此处为个人免费档；企业版见 trae.cn 同页方案。",
+        "权益对比可见个人版具备基础 Agent 能力。",
+        "国内选型常把 Trae 独立 IDE 与 Copilot、Cursor、Qoder 等并列考虑（社区归纳，见来源）。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Trae 国内版 Pricing",
+          "url": "https://www.trae.cn/pricing"
+        },
+        {
+          "type": "secondary",
+          "label": "TRAE CN 文档：模型管理",
+          "url": "https://docs.trae.cn/ide/model-settings-for-trae-enterprise"
+        },
+        {
+          "type": "secondary",
+          "label": "Awesome Coding Plan",
+          "url": "https://github.com/mahonzhan/awesome-coding-plan"
+        },
+        {
+          "type": "secondary",
+          "label": "氛围编程 · 国内方案综合对比",
+          "url": "https://yc-w-cn.github.io/vibe-coding/"
+        }
+      ]
+    },
+    {
+      "sortOrder": 9,
+      "name": "Trae国际版",
+      "website": "https://www.trae.ai/pricing",
+      "formFactor": "独立 IDE / SOLO Web/Desktop",
+      "modelSupport": [
+        "Gemini-3.1-Pro-Preview",
+        "Gemini-3-Flash-Preview",
+        "Gemini-2.5-Flash",
+        "MiniMax-M2.7",
+        "Kimi-K2-0905",
+        "GPT-5.4",
+        "GPT-5.3-Codex",
+        "GPT-5.2",
+        "DeepSeek-V3.1",
+        "自定义模型"
+      ],
+      "billingMode": "订阅制，按 Dollar Usage 扣减；不同模型按 token 成本折算。",
+      "planSummary": "Free、Lite、Pro、Pro+、Ultra",
+      "extraFeatures": [
+        "Unlimited Autocomplete（付费）",
+        "TRAE SOLO 并发云任务",
+        "Model Early Access",
+        "自定义模型",
+        "自定义请求地址"
+      ],
+      "purchaseMethods": [
+        "定价页 FAQ 写明升级支持 most payment methods；细则以 trae.ai 结账页与 https://docs.trae.ai/ide/billing 为准。"
+      ],
+      "mainlandAvailability": {
+        "status": "partial",
+        "text": "国际站未单独列出中国大陆政策；访问 GitHub 系服务与跨境支付是否可行取决于网络环境与发卡行。"
+      },
+      "regionRestriction": "部分模型有地区差异，例如文档注明部分模型在美国不可用。",
+      "supportsCustomApi": {
+        "status": "yes",
+        "text": "支持通过 API Key 添加自定义模型，并可填写自定义请求地址。"
+      },
+      "remarks": [
+        "国际版比国内版更像多模型 agent 工作台。",
+        "模型价格公开到每 1M tokens 级别。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Trae International Pricing",
+          "url": "https://www.trae.ai/pricing"
+        },
+        {
+          "type": "official",
+          "label": "Trae Models docs",
+          "url": "https://docs.trae.ai/ide/models"
+        },
+        {
+          "type": "official",
+          "label": "Trae Pricing docs",
+          "url": "https://docs.trae.ai/pricing"
+        },
+        {
+          "type": "official",
+          "label": "Trae IDE billing",
+          "url": "https://docs.trae.ai/ide/billing"
+        },
+        {
+          "type": "secondary",
+          "label": "Awesome Coding Plan",
+          "url": "https://github.com/mahonzhan/awesome-coding-plan"
+        },
+        {
+          "type": "secondary",
+          "label": "氛围编程 · 国内方案综合对比",
+          "url": "https://yc-w-cn.github.io/vibe-coding/"
+        }
+      ]
+    }
+  ],
+  "plans": [
+    {
+      "agentName": "Claude Code",
+      "agentSortOrder": 1,
+      "planSortOrder": 1,
+      "planName": "Pro",
+      "price": "$20/月 或 $17/月（年付折算）",
+      "usageIncluded": "包含 Claude Code、Claude Cowork 与更多 Claude 使用额度；支持 Sonnet 4.6 和 Opus 4.7。",
+      "conversationEstimate": "Anthropic 将用量描述为跨对话的「消息预算」：**不公布每套餐固定条数**；每条消息消耗随模型（Opus 通常远高于 Sonnet）、长度与工具调用变化。见 Claude 用量说明与 Claude Code「Models, usage, and limits」。",
+      "extraFeatures": [
+        "Research",
+        "Projects",
+        "更多模型访问"
+      ],
+      "remarks": [
+        "与 Claude 主站其他产品面共享 usage limit。",
+        "可额外购买 extra usage。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Claude Pricing",
+          "url": "https://claude.com/pricing"
+        },
+        {
+          "type": "official",
+          "label": "Claude Code 产品页",
+          "url": "https://claude.com/product/claude-code"
+        }
+      ]
+    },
+    {
+      "agentName": "Claude Code",
+      "agentSortOrder": 1,
+      "planSortOrder": 2,
+      "planName": "Max 5x",
+      "price": "$100/月",
+      "usageIncluded": "大约为 Pro 的 5 倍使用额度。",
+      "conversationEstimate": "同上：**约为 Pro 的 5 倍消息预算**，仍无「固定轮数」；单轮消耗取决于模型与任务复杂度。",
+      "extraFeatures": [
+        "更高输出上限",
+        "高峰时段优先访问"
+      ],
+      "remarks": [
+        "适合更大代码库和更频繁的代理式编码。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Claude Pricing",
+          "url": "https://claude.com/pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Claude Code",
+      "agentSortOrder": 1,
+      "planSortOrder": 3,
+      "planName": "Max 20x",
+      "price": "$200/月",
+      "usageIncluded": "大约为 Pro 的 20 倍使用额度。",
+      "conversationEstimate": "同上：**约为 Pro 的 20 倍消息预算**；无固定「每聊天轮数」口径。",
+      "extraFeatures": [
+        "更高输出上限",
+        "高峰时段优先访问",
+        "更强 power user 档位"
+      ],
+      "remarks": [
+        "官方说明中仍受 usage limits 约束。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Claude Pricing",
+          "url": "https://claude.com/pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Cursor",
+      "agentSortOrder": 2,
+      "planSortOrder": 1,
+      "planName": "Hobby",
+      "price": "$0/月",
+      "usageIncluded": "有限的智能体请求次数，有限的 Tab 补全次数。",
+      "conversationEstimate": "官方按 **Agent 请求 / Tab 补全** 等计量，**不按「轮」**；免费档仅标为有限次数，无与付费档同页的逐模型「条/5 小时」表。",
+      "extraFeatures": [
+        "无需信用卡",
+        "基础体验"
+      ],
+      "remarks": [
+        "免费版也可下载使用。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Cursor Pricing",
+          "url": "https://cursor.com/pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Cursor",
+      "agentSortOrder": 2,
+      "planSortOrder": 2,
+      "planName": "Pro",
+      "price": "$20/月",
+      "usageIncluded": "$20 API 用量，外加充足的 Auto / Composer 用量、无限 Tab 补全与扩展 Agent 限额。",
+      "conversationEstimate": "计费以 **美元 API 额度 + 各模型 $/token（或等价）** 为主；官网「模型与价格」用典型月用量场景说明「能覆盖多少工作」，**不是固定对话轮数**。",
+      "extraFeatures": [
+        "MCP / Skills / Hooks",
+        "Cloud Agents",
+        "Bugbot"
+      ],
+      "remarks": [
+        "官方示例称少量 Agent 用户通常可控制在自带 20 美元配额内。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Cursor Pricing",
+          "url": "https://cursor.com/pricing"
+        },
+        {
+          "type": "official",
+          "label": "Cursor 模型与价格",
+          "url": "https://cursor.com/cn/docs/models-and-pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Cursor",
+      "agentSortOrder": 2,
+      "planSortOrder": 3,
+      "planName": "Pro+",
+      "price": "$60/月",
+      "usageIncluded": "$70 API 用量，约为 Pro 的 3 倍高端模型使用量。",
+      "conversationEstimate": "同上：**$70 API 额度**，用量仍随所选模型与单次 token 数变化；无「每轮」固定换算。",
+      "extraFeatures": [
+        "优先体验更多模型用量"
+      ],
+      "remarks": [
+        "官网文案强调所有 OpenAI、Claude、Gemini 模型 3 倍用量。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Cursor Pricing",
+          "url": "https://cursor.com/pricing"
+        },
+        {
+          "type": "official",
+          "label": "Cursor 模型与价格",
+          "url": "https://cursor.com/cn/docs/models-and-pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Cursor",
+      "agentSortOrder": 2,
+      "planSortOrder": 4,
+      "planName": "Ultra",
+      "price": "$200/月",
+      "usageIncluded": "$400 API 用量，约为 Pro 的 20 倍高端模型使用量。",
+      "conversationEstimate": "同上：**$400 API 额度**；对话「能发多少条」取决于模型单价与上下文长度。",
+      "extraFeatures": [
+        "优先使用新功能"
+      ],
+      "remarks": [
+        "适合多个 Agent 或自动化重度用户。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Cursor Pricing",
+          "url": "https://cursor.com/pricing"
+        },
+        {
+          "type": "official",
+          "label": "Cursor 模型与价格",
+          "url": "https://cursor.com/cn/docs/models-and-pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "GitHub Copilot",
+      "agentSortOrder": 3,
+      "planSortOrder": 1,
+      "planName": "Free",
+      "price": "$0/月",
+      "usageIncluded": "50 次 agent mode 或 chat 请求 / 月，2,000 次 completions / 月。",
+      "conversationEstimate": "计划页：**50 次/月** agent mode 或 chat；**2,000 次/月** inline completions。",
+      "extraFeatures": [
+        "Copilot CLI",
+        "Haiku 4.5 / GPT-5 mini 等模型访问"
+      ],
+      "remarks": [
+        "无需信用卡。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Copilot Plans",
+          "url": "https://github.com/features/copilot/plans"
+        }
+      ]
+    },
+    {
+      "agentName": "GitHub Copilot",
+      "agentSortOrder": 3,
+      "planSortOrder": 2,
+      "planName": "Pro",
+      "price": "$10/月",
+      "usageIncluded": "300 premium requests，GPT-5 mini 的 agent mode / chats 无上限，inline suggestions 无上限。",
+      "conversationEstimate": "计划页：**300 premium requests/月**；标称 GPT-5 mini 的 agent/chats **无上限**（以官网当前条款为准）。",
+      "extraFeatures": [
+        "Copilot cloud agent",
+        "Copilot code review",
+        "Claude 与 Codex"
+      ],
+      "remarks": [
+        "可购买额外 premium requests，但部分渠道暂不支持。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Copilot Plans",
+          "url": "https://github.com/features/copilot/plans"
+        }
+      ]
+    },
+    {
+      "agentName": "GitHub Copilot",
+      "agentSortOrder": 3,
+      "planSortOrder": 3,
+      "planName": "Pro+",
+      "price": "$39/月",
+      "usageIncluded": "Pro 的 5 倍 premium requests，含 Opus 4.7 等全部模型访问。",
+      "conversationEstimate": "计划页：约为 Pro 的 **5 倍 premium requests**（即约 **1,500/月** 量级，以账户显示为准）。",
+      "extraFeatures": [
+        "全模型访问",
+        "GitHub Spark"
+      ],
+      "remarks": [
+        "适合高频使用最新模型和 agent 的个人用户。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Copilot Plans",
+          "url": "https://github.com/features/copilot/plans"
+        }
+      ]
+    },
+    {
+      "agentName": "Codex",
+      "agentSortOrder": 4,
+      "planSortOrder": 1,
+      "planName": "Free",
+      "price": "$0/月",
+      "usageIncluded": "限量体验 Codex，旗舰模型与消息、上传、图片生成、深入研究均有限。",
+      "conversationEstimate": "开发者定价页未给出与 Plus 同结构的「每 5 小时 Local Messages」数字；**免费档为限量体验**，条数随模型与任务大小变化。",
+      "extraFeatures": [
+        "限量使用 GPT-5.3"
+      ],
+      "remarks": [
+        "更像试用入口。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Codex Pricing（ChatGPT）",
+          "url": "https://chatgpt.com/zh-Hans-CN/codex/pricing/"
+        }
+      ]
+    },
+    {
+      "agentName": "Codex",
+      "agentSortOrder": 4,
+      "planSortOrder": 2,
+      "planName": "Go",
+      "price": "$8/月",
+      "usageIncluded": "比免费版更高的 Codex 使用量、更高消息量、更高上传量与图片生成配额。",
+      "conversationEstimate": "介于 Free 与 Plus 的付费入口；**具体条数/窗口以 ChatGPT 侧 Codex 定价与账户用量页为准**，官方强调随模型与任务复杂度变化。",
+      "extraFeatures": [
+        "访问最新模型"
+      ],
+      "remarks": [
+        "更像轻量体验档。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Codex Pricing（Developers）",
+          "url": "https://developers.openai.com/codex/pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Codex",
+      "agentSortOrder": 4,
+      "planSortOrder": 3,
+      "planName": "Plus",
+      "price": "$20/月",
+      "usageIncluded": "适合每周几次深度编程会话；不同模型有不同的 5 小时上限，例如 GPT-5.5 为 15-80，本地 GPT-5.3-Codex 为 30-150。",
+      "conversationEstimate": "OpenAI：**每 5 小时滑动窗口**内 **Local Messages（本地消息）** 按模型给区间——例如 GPT-5.5 **15–80**、GPT-5.4 **20–100**、GPT-5.4-mini **60–350**、GPT-5.3-Codex **30–150**；后者另有 **Cloud Tasks 10–60**、**Code Review 20–50**/5h。本地消息与云任务**共用**该 5 小时窗口。",
+      "extraFeatures": [
+        "Web / CLI / IDE / iOS",
+        "GitHub 代码审查",
+        "Slack 集成"
+      ],
+      "remarks": [
+        "可购买额外 credits 继续使用。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Codex Pricing（Developers）",
+          "url": "https://developers.openai.com/codex/pricing"
+        },
+        {
+          "type": "official",
+          "label": "Codex Pricing（ChatGPT）",
+          "url": "https://chatgpt.com/zh-Hans-CN/codex/pricing/"
+        }
+      ]
+    },
+    {
+      "agentName": "Codex",
+      "agentSortOrder": 4,
+      "planSortOrder": 4,
+      "planName": "Pro ($100 tier)",
+      "price": "$100/月",
+      "usageIncluded": "标准为 Plus 的 5 倍用量；当前官方促销到 2026-05-31 为 10 倍。",
+      "conversationEstimate": "基线为 **Pro 5× Plus** 表：每 5h Local Messages 如 GPT-5.5 **80–400**、GPT-5.4 **100–500**、mini **300–1750**、GPT-5.3-Codex **150–750**；Cloud **50–300**、Code Review **100–250**。官网写明 **2026-05-31 前 $100 档为表上 Pro 5× 的 2 倍**（约 10× Plus）。",
+      "extraFeatures": [
+        "GPT-5.3-Codex-Spark（研究预览）"
+      ],
+      "remarks": [
+        "同属 Pro，但对应较低档位。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Codex Pricing（Developers）",
+          "url": "https://developers.openai.com/codex/pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Codex",
+      "agentSortOrder": 4,
+      "planSortOrder": 5,
+      "planName": "Pro ($200 tier)",
+      "price": "$200/月",
+      "usageIncluded": "标准为 Plus 的 20 倍用量；当前仍保留更高的 5 小时限额促销。",
+      "conversationEstimate": "基线为 **Pro 20× Plus** 表：每 5h Local Messages 如 GPT-5.5 **300–1600**、GPT-5.4 **400–2000**、mini **1200–7000**、GPT-5.3-Codex **600–3000**；Cloud **200–1200**、Code Review **400–1000**。促销期是否高于该表以 OpenAI 当前说明为准。",
+      "extraFeatures": [
+        "最高档个人使用额度"
+      ],
+      "remarks": [
+        "适合连续长时段编码和高频云任务。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Codex Pricing（Developers）",
+          "url": "https://developers.openai.com/codex/pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Codex",
+      "agentSortOrder": 4,
+      "planSortOrder": 6,
+      "planName": "API Key",
+      "price": "按量计费",
+      "usageIncluded": "仅按 Codex 使用的 tokens 付费，适合 CI 和自动化；不含 GitHub Code Review、Slack 等云端特性。",
+      "conversationEstimate": "不适用。",
+      "extraFeatures": [
+        "CLI / SDK / IDE 扩展",
+        "共享环境自动化"
+      ],
+      "remarks": [
+        "API credits 当前仅支持 USD 购买。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Codex Pricing（Developers）",
+          "url": "https://developers.openai.com/codex/pricing"
+        },
+        {
+          "type": "official",
+          "label": "Multi-currency billing",
+          "url": "https://help.openai.com/en/articles/10421635-multicurrency-billing"
+        }
+      ]
+    },
+    {
+      "agentName": "Gemini",
+      "agentSortOrder": 5,
+      "planSortOrder": 1,
+      "planName": "Free",
+      "price": "$0/月",
+      "usageIncluded": "Gemini 应用基础访问，免费层也有提示与功能上限。",
+      "conversationEstimate": "Google 帮助页「Gemini 应用升级」：**每天最多约 30 条提示**；**Agent** 约 **200 次请求/天**、最多 **3** 个并发 Agent 任务（限额会调整，以页面为准）。",
+      "extraFeatures": [
+        "Gemini 基础体验"
+      ],
+      "remarks": [
+        "免费层也支持部分 Deep Research、图片和音乐能力，但配额更低。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Gemini 应用用量限额与升级",
+          "url": "https://support.google.com/gemini/answer/16275805?hl=zh-Hans"
+        }
+      ]
+    },
+    {
+      "agentName": "Gemini",
+      "agentSortOrder": 5,
+      "planSortOrder": 2,
+      "planName": "Google AI Plus",
+      "price": "$7.99/月（美国区 United States，gemini.google/subscriptions 公开标价；其他地区以同页为准）",
+      "usageIncluded": "比免费层更高的 Gemini 3.1 Pro 访问与功能配额；Google 公开文案说明覆盖 160+ 国家。",
+      "conversationEstimate": "同页 **Plus** 列：**「思考」每天最多约 90 条提示**；另有 **每天最多约 10 条提示、约 19.2 万 token 上下文**等档；Agent、音视频等分项见表。**Pro 3.1 的 100/500 条/日**在同表 **Pro / Ultra** 列，不自动等同 Plus。",
+      "extraFeatures": [
+        "更高访问量",
+        "更多新功能"
+      ],
+      "remarks": [
+        "可购国家与地区见 Google One 帮助「Get a Google AI Plus membership」列表；该列表不含中国大陆。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Gemini subscriptions",
+          "url": "https://gemini.google/subscriptions"
+        },
+        {
+          "type": "official",
+          "label": "Gemini 应用用量限额与升级",
+          "url": "https://support.google.com/gemini/answer/16275805?hl=zh-Hans"
+        },
+        {
+          "type": "official",
+          "label": "Google AI Plus 支持国家",
+          "url": "https://support.google.com/googleone/answer/16548195?hl=en"
+        }
+      ]
+    },
+    {
+      "agentName": "Gemini",
+      "agentSortOrder": 5,
+      "planSortOrder": 3,
+      "planName": "Google AI Pro",
+      "price": "$19.99/月（美国区 United States，gemini.google/subscriptions 公开标价；其他地区以同页为准）",
+      "usageIncluded": "更高的每日提示上限、更大的上下文窗口，以及更高的 Deep Research、视频、图片等能力配额。",
+      "conversationEstimate": "帮助页 **Pro** 列示例：**Pro 3.1 每天最多约 100 条提示**；**「思考」每天最多约 300 条提示**；另有 Deep Research、Agent、图片/视频等按日或按月上限（见同表）。",
+      "extraFeatures": [
+        "Gemini 3.1 Pro",
+        "更高 Deep Research 配额"
+      ],
+      "remarks": [
+        "可购国家与地区见 Google One 帮助「Get a Google AI Pro membership」列表；该列表不含中国大陆。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Gemini 应用用量限额与升级",
+          "url": "https://support.google.com/gemini/answer/16275805?hl=zh-Hans"
+        },
+        {
+          "type": "official",
+          "label": "Gemini subscriptions",
+          "url": "https://gemini.google/subscriptions"
+        },
+        {
+          "type": "official",
+          "label": "Google AI Pro 支持国家",
+          "url": "https://support.google.com/googleone/answer/16476811?hl=en"
+        }
+      ]
+    },
+    {
+      "agentName": "Gemini",
+      "agentSortOrder": 5,
+      "planSortOrder": 4,
+      "planName": "Google AI Ultra",
+      "price": "$249.99/月（美国区 United States，gemini.google/subscriptions 公开标价；其他地区以同页为准）",
+      "usageIncluded": "最高档访问量与配额，官方帮助页列出最高的 Agent、Deep Think、视频和图片上限。",
+      "conversationEstimate": "帮助页 **Ultra** 列示例：**Pro 3.1 每天最多约 500 条提示**；**「思考」每天最多约 1,500 条提示**；其余 Agent、Deep Research、图片/视频等为表中更高档。",
+      "extraFeatures": [
+        "Deep Think",
+        "最高 Agent 配额",
+        "最高视频 / 图片配额"
+      ],
+      "remarks": [
+        "订阅页注明部分能力（如 Deep Think、Gemini Agent）为 US only、English only；Ultra 支持国家另见 Gemini 帮助。",
+        "适合把 Gemini 当主力通用 AI 工作台的重度用户。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Gemini 应用用量限额与升级",
+          "url": "https://support.google.com/gemini/answer/16275805?hl=zh-Hans"
+        },
+        {
+          "type": "official",
+          "label": "Gemini subscriptions",
+          "url": "https://gemini.google/subscriptions"
+        }
+      ]
+    },
+    {
+      "agentName": "OpenCode",
+      "agentSortOrder": 6,
+      "planSortOrder": 1,
+      "planName": "Go",
+      "price": "$5 首月，之后 $10/月",
+      "usageIncluded": "5 小时 12 美元额度、每周 30 美元额度、每月 60 美元额度；按模型不同约等于每 5 小时 880 到 31,650 次请求。",
+      "conversationEstimate": "OpenCode 文档按典型 token 用量估算：**每 5 小时**约 **880～31,650 次请求**（随所选模型与单价变化，与左列美元额度一致）。",
+      "extraFeatures": [
+        "API Key",
+        "任意 agent 接入",
+        "超额回退 Zen balance",
+        "免费模型兜底"
+      ],
+      "remarks": [
+        "不同模型的请求数差异非常大，取决于模型单价。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "OpenCode Go docs",
+          "url": "https://opencode.ai/docs/zh-cn/go/"
+        },
+        {
+          "type": "official",
+          "label": "OpenCode Go landing",
+          "url": "https://opencode.ai/zh/go"
+        }
+      ]
+    },
+    {
+      "agentName": "Qoder",
+      "agentSortOrder": 7,
+      "planSortOrder": 1,
+      "planName": "社区版",
+      "price": "$0/月",
+      "usageIncluded": "14 天 Pro 试用 + 300 Credits，基础模型可免费使用，但消息和补全有限。",
+      "conversationEstimate": "官方以 **Credits** 计量（如赠送 **300 Credits**），**未公布「一轮对话 = 固定条数或固定 Credits」**；不同模型与功能扣减不同。",
+      "extraFeatures": [
+        "支持自有 API Key",
+        "限量补全与 NES 预测"
+      ],
+      "remarks": [
+        "首次登录可获 14 天 Pro 试用。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Qoder Pricing",
+          "url": "https://qoder.com/pricing"
+        },
+        {
+          "type": "official",
+          "label": "Qoder Docs Pricing",
+          "url": "https://docs.qoder.com/zh/account/pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Qoder",
+      "agentSortOrder": 7,
+      "planSortOrder": 2,
+      "planName": "Pro",
+      "price": "$20/月",
+      "usageIncluded": "每月 2,000 Credits；提供更多代码补全、智能问答和智能体请求。",
+      "conversationEstimate": "官方：**2,000 Credits/月**；用量按功能与模型折算为 Credits，**非固定「对话轮数」**。",
+      "extraFeatures": [
+        "Quest Mode",
+        "Repo Wiki"
+      ],
+      "remarks": [
+        "Credits 用尽后会自动切回基础模型。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Qoder Docs Pricing",
+          "url": "https://docs.qoder.com/zh/account/pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Qoder",
+      "agentSortOrder": 7,
+      "planSortOrder": 3,
+      "planName": "Pro+",
+      "price": "$60/月",
+      "usageIncluded": "每月 6,000 Credits。",
+      "conversationEstimate": "官方：**6,000 Credits/月**；同上按 Credits 扣减。",
+      "extraFeatures": [
+        "更多高级模型额度",
+        "优先体验新功能"
+      ],
+      "remarks": [
+        "适合更重度的 agent 自主编码。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Qoder Docs Pricing",
+          "url": "https://docs.qoder.com/zh/account/pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Qoder",
+      "agentSortOrder": 7,
+      "planSortOrder": 4,
+      "planName": "Ultra",
+      "price": "$200/月",
+      "usageIncluded": "每月 20,000 Credits。",
+      "conversationEstimate": "官方：**20,000 Credits/月**；同上按 Credits 扣减。",
+      "extraFeatures": [
+        "最高个人额度",
+        "优先体验新功能"
+      ],
+      "remarks": [
+        "适合频繁使用 Quest 等长周期任务的用户。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Qoder Docs Pricing",
+          "url": "https://docs.qoder.com/zh/account/pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Trae国内版",
+      "agentSortOrder": 8,
+      "planSortOrder": 1,
+      "planName": "个人版",
+      "price": "¥0/月",
+      "usageIncluded": "公开权益对比显示个人版支持免费使用，约 30M 会话 Tokens + 10M 补全 Tokens。",
+      "conversationEstimate": "定价页权益：**约 30M 会话 tokens + 约 10M 补全 tokens**（按 token 计，**非固定对话轮数**）。",
+      "extraFeatures": [
+        "Chat / Builder / Agent / MCP / Rules",
+        "TRAE IDE"
+      ],
+      "remarks": [
+        "个人免费档；企业版定价见 trae.cn 同页企业方案。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Trae 国内版 Pricing",
+          "url": "https://www.trae.cn/pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Trae国际版",
+      "agentSortOrder": 9,
+      "planSortOrder": 1,
+      "planName": "Free",
+      "price": "$0/月",
+      "usageIncluded": "Monthly Basic Usage limited，Autocomplete 5,000 / 月，2 个并发 cloud tasks。",
+      "conversationEstimate": "定价页：**Autocomplete 5,000 次/月**；Basic/SOLO 用量为 **limited**；**2** 路并发 cloud tasks。",
+      "extraFeatures": [
+        "Limited SOLO",
+        "基础体验"
+      ],
+      "remarks": [
+        "适合先体验 TRAE 工作流。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Trae International Pricing",
+          "url": "https://www.trae.ai/pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Trae国际版",
+      "agentSortOrder": 9,
+      "planSortOrder": 2,
+      "planName": "Lite",
+      "price": "$3/月",
+      "usageIncluded": "$5 Basic usage + Bonus usage，无限 Autocomplete，最多 2 个并发 cloud tasks。",
+      "conversationEstimate": "含 **$5 Basic + Bonus** 美元用量；**Autocomplete 无上限**；**2** 路并发 cloud tasks（对话条数随模型与任务消耗该额度）。",
+      "extraFeatures": [
+        "付费入口最低档"
+      ],
+      "remarks": [
+        "官方有新用户 7 天免费试用。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Trae International Pricing",
+          "url": "https://www.trae.ai/pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Trae国际版",
+      "agentSortOrder": 9,
+      "planSortOrder": 3,
+      "planName": "Pro",
+      "price": "$10/月",
+      "usageIncluded": "$20 Basic usage + Bonus usage，无限 Autocomplete，TRAE IDE - SOLO mode，最多 10 个并发 cloud tasks。",
+      "conversationEstimate": "含 **$20 Basic + Bonus**；**Autocomplete 无上限**；**10** 路并发 cloud tasks；无「每轮」固定官方数字。",
+      "extraFeatures": [
+        "TRAE SOLO",
+        "Fast queue"
+      ],
+      "remarks": [
+        "官网当前展示前 7 天免费试用。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Trae International Pricing",
+          "url": "https://www.trae.ai/pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Trae国际版",
+      "agentSortOrder": 9,
+      "planSortOrder": 4,
+      "planName": "Pro+",
+      "price": "$30/月",
+      "usageIncluded": "$90 Basic usage + Bonus usage，约为 Pro 的 3.5 倍使用量，最多 15 个并发 cloud tasks。",
+      "conversationEstimate": "含 **$90 Basic + Bonus**；**15** 路并发 cloud tasks；用量随 SOLO/云端任务消耗美元额度。",
+      "extraFeatures": [
+        "更高并发任务数"
+      ],
+      "remarks": [
+        "适合更频繁的云端代理任务。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Trae International Pricing",
+          "url": "https://www.trae.ai/pricing"
+        }
+      ]
+    },
+    {
+      "agentName": "Trae国际版",
+      "agentSortOrder": 9,
+      "planSortOrder": 5,
+      "planName": "Ultra",
+      "price": "$100/月",
+      "usageIncluded": "$400 Basic usage + Bonus usage，约为 Pro 的 20 倍使用量，最多 20 个并发 cloud tasks。",
+      "conversationEstimate": "含 **$400 Basic + Bonus**；**20** 路并发 cloud tasks；同上按额度与任务计。",
+      "extraFeatures": [
+        "Model Early Access",
+        "最高并发任务数"
+      ],
+      "remarks": [
+        "官网写明 most payment methods supported for upgrade。"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "label": "Trae International Pricing",
+          "url": "https://www.trae.ai/pricing"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "价格、功能与地区政策会变，请以各产品官网和您账户内显示为准。",
+    "名称旁带「社区参考」的链接为读者整理的横向对比或国内路线说明；与官网不一致时以官网为准。",
+    "更多横向性价比与国内 IDE/CLI 组合：Awesome Coding Plan（https://github.com/mahonzhan/awesome-coding-plan）、氛围编程（https://yc-w-cn.github.io/vibe-coding/）。"
+  ]
+}
