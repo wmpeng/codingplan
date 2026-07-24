@@ -117,6 +117,18 @@ body {
     box-shadow: 0 12px 24px rgba(28, 53, 82, 0.18);
 }
 
+.page-tab-new-edition {
+    color: #0f766e;
+    border-color: rgba(15, 118, 110, 0.35);
+    background: rgba(15, 118, 110, 0.08);
+}
+
+.page-tab-new-edition:hover {
+    color: #0b5f59;
+    background: rgba(15, 118, 110, 0.14);
+    border-color: rgba(15, 118, 110, 0.5);
+}
+
 /* ── Header ── */
 .header {
     margin-bottom: 28px;

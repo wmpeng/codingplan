@@ -143,6 +143,7 @@ function renderPageNav(target, options = {}) {
         <div class="page-nav-cluster">
             <nav class="page-nav" aria-label="站点导航">
             ${tabs.map(renderTab).join('')}
+            <a href="v2/index.html" class="page-tab page-tab-new-edition" id="gotoNewEditionLink">体验新版</a>
             </nav>
             <div class="settings-wrapper">
                 <button class="settings-btn" id="settingsBtn" title="${escapeHtml(settings.buttonTitle || '设置')}" aria-label="${escapeHtml(settings.buttonAriaLabel || settings.buttonTitle || '设置')}">
@@ -171,6 +172,9 @@ function renderPageNav(target, options = {}) {
             </div>
         </div>
     `;
+    if (typeof window.initUltraWideSettings === 'function') {
+        window.initUltraWideSettings();
+    }
     return true;
 }
 
@@ -201,7 +205,51 @@ function renderPageNav(target, options = {}) {
         return inV2 ? 'index.html' : 'v2/index.html';
     }
 
+    function switchEdition(edition) {
+        const next = edition === 'classic' ? 'classic' : 'v2';
+        setSiteEdition(next);
+        const path = (location.pathname || '').replace(/\\/g, '/');
+        const inV2 = /\/v2(?:\/|$)/.test(path);
+        if ((next === 'v2' && inV2) || (next === 'classic' && !inV2)) {
+            const v2Btn = document.getElementById('siteEditionV2Btn');
+            const classicBtn = document.getElementById('siteEditionClassicBtn');
+            if (v2Btn && classicBtn) {
+                v2Btn.classList.toggle('is-active', next === 'v2');
+                classicBtn.classList.toggle('is-active', next === 'classic');
+                v2Btn.setAttribute('aria-pressed', next === 'v2' ? 'true' : 'false');
+                classicBtn.setAttribute('aria-pressed', next === 'classic' ? 'true' : 'false');
+            }
+            return;
+        }
+        location.assign(resolveEditionHome(next));
+    }
+
+    function syncEditionButtons() {
+        const v2Btn = document.getElementById('siteEditionV2Btn');
+        const classicBtn = document.getElementById('siteEditionClassicBtn');
+        if (!v2Btn || !classicBtn) {
+            return;
+        }
+        const current = getSiteEdition();
+        v2Btn.classList.toggle('is-active', current === 'v2');
+        classicBtn.classList.toggle('is-active', current === 'classic');
+        v2Btn.setAttribute('aria-pressed', current === 'v2' ? 'true' : 'false');
+        classicBtn.setAttribute('aria-pressed', current === 'classic' ? 'true' : 'false');
+    }
+
     function initSiteEditionSettings() {
+        syncEditionButtons();
+
+        const gotoLink = document.getElementById('gotoNewEditionLink');
+        if (gotoLink && gotoLink.dataset.editionBound !== '1') {
+            gotoLink.dataset.editionBound = '1';
+            gotoLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                switchEdition('v2');
+            });
+        }
+
         const v2Btn = document.getElementById('siteEditionV2Btn');
         const classicBtn = document.getElementById('siteEditionClassicBtn');
         if (!v2Btn || !classicBtn) {
@@ -211,27 +259,6 @@ function renderPageNav(target, options = {}) {
             return;
         }
         v2Btn.dataset.editionBound = '1';
-
-        const current = getSiteEdition();
-        v2Btn.classList.toggle('is-active', current === 'v2');
-        classicBtn.classList.toggle('is-active', current === 'classic');
-        v2Btn.setAttribute('aria-pressed', current === 'v2' ? 'true' : 'false');
-        classicBtn.setAttribute('aria-pressed', current === 'classic' ? 'true' : 'false');
-
-        function switchEdition(edition) {
-            const next = edition === 'classic' ? 'classic' : 'v2';
-            setSiteEdition(next);
-            const path = (location.pathname || '').replace(/\\/g, '/');
-            const inV2 = /\/v2(?:\/|$)/.test(path);
-            if ((next === 'v2' && inV2) || (next === 'classic' && !inV2)) {
-                v2Btn.classList.toggle('is-active', next === 'v2');
-                classicBtn.classList.toggle('is-active', next === 'classic');
-                v2Btn.setAttribute('aria-pressed', next === 'v2' ? 'true' : 'false');
-                classicBtn.setAttribute('aria-pressed', next === 'classic' ? 'true' : 'false');
-                return;
-            }
-            location.assign(resolveEditionHome(next));
-        }
 
         v2Btn.addEventListener('click', function (e) {
             e.stopPropagation();
@@ -253,6 +280,10 @@ function renderPageNav(target, options = {}) {
         if (!btn || !panel || !toggle) {
             return;
         }
+        if (btn.dataset.ultraWideBound === '1') {
+            return;
+        }
+        btn.dataset.ultraWideBound = '1';
 
         function applyUltraWide(on) {
             document.body.classList.toggle('ultra-wide', on);
@@ -280,6 +311,10 @@ function renderPageNav(target, options = {}) {
                 btn.classList.remove('active');
             }
         });
+    }
+
+    if (typeof window !== 'undefined') {
+        window.initUltraWideSettings = initUltraWideSettings;
     }
 
     if (document.readyState === 'loading') {
