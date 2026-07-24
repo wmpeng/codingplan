@@ -2633,7 +2633,8 @@
                     renderSettingsOnly('settingsMount', {
                         settings: {
                             panelTitle: '显示设置',
-                            ultraWideLabel: '超宽屏模式'
+                            ultraWideLabel: '超宽屏模式',
+                            buttonLabel: '设置'
                         }
                     });
                 }

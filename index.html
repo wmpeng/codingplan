@@ -7,7 +7,7 @@
     <meta name="description" content="国内29大主流AI平台Coding Plan套餐对比工具，涵盖智谱AI、字节方舟、阿里百炼、MiniMax、Kimi、小米Mimo、讯飞星火、百度千帆、腾讯云、京东云、阶跃星辰、无问芯穹、联通云、天翼云、移动云等平台，价格、模型、请求数等详细信息，支持筛选排序，帮您选到最划算的套餐。">
     <title>AI Coding 平台推荐 - Coding Plan 对比工具</title>
     <link rel="icon" href="/favicon.ico?v=260610" type="image/x-icon">
-    <link rel="stylesheet" href="styles/shared.css?v=260610">
+    <link rel="stylesheet" href="styles/shared.css?v=260724">
     <link rel="stylesheet" href="styles/plan-usage.css?v=260610">
     <link rel="stylesheet" href="styles/comparison-table.css?v=260722">
     <style>
@@ -1138,11 +1138,14 @@
         }
 
         #settingsMount .page-nav-cluster--settings-only {
-            justify-content: flex-end;
-            margin-bottom: 12px;
-            padding: 8px 12px;
-            width: fit-content;
-            margin-left: auto;
+            margin: 0;
+            padding: 0;
+            border: none;
+            background: transparent;
+            box-shadow: none;
+            backdrop-filter: none;
+            position: static;
+            width: auto;
         }
 
         .payg-intro {
@@ -3724,16 +3727,16 @@
 </head>
 <body>
     <div class="container">
-        <div id="settingsMount"></div>
-
-        <!-- 顶部标题 -->
         <div class="header">
-            <a href="https://github.com/wmpeng/codingplan/issues" class="github-link" id="headerEntryLink" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
-                    <path d="M12 2C6.5 2 2 6.58 2 12.2c0 4.5 2.9 8.32 6.9 9.67.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.8.62-3.39-1.38-3.39-1.38-.45-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.93.86.09-.67.35-1.12.64-1.38-2.23-.26-4.58-1.14-4.58-5.05 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05A9.36 9.36 0 0 1 12 6.84c.85 0 1.7.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.92-2.35 4.79-4.6 5.04.36.32.68.95.68 1.92 0 1.39-.01 2.5-.01 2.84 0 .27.18.59.69.49A10.24 10.24 0 0 0 22 12.2C22 6.58 17.5 2 12 2z"></path>
-                </svg>
-                <span id="headerEntryText">Github 反馈</span>
-            </a>
+            <div class="header-actions">
+                <a href="https://github.com/wmpeng/codingplan/issues" class="github-link" id="headerEntryLink" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+                        <path d="M12 2C6.5 2 2 6.58 2 12.2c0 4.5 2.9 8.32 6.9 9.67.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.8.62-3.39-1.38-3.39-1.38-.45-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.93.86.09-.67.35-1.12.64-1.38-2.23-.26-4.58-1.14-4.58-5.05 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05A9.36 9.36 0 0 1 12 6.84c.85 0 1.7.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.92-2.35 4.79-4.6 5.04.36.32.68.95.68 1.92 0 1.39-.01 2.5-.01 2.84 0 .27.18.59.69.49A10.24 10.24 0 0 0 22 12.2C22 6.58 17.5 2 12 2z"></path>
+                    </svg>
+                    <span id="headerEntryText">Github 反馈</span>
+                </a>
+                <div id="settingsMount"></div>
+            </div>
             <h1 id="pageTitle">AI Coding 平台推荐</h1>
             <div class="update-date" id="updateDate">更新日期2026.7.20 | 平台目录纳入按量调用（DeepSeek 官方、共继算力）</div>
             <div class="subtitle" id="subtitle">31 家 Coding Plan / Token Plan / 按量调用平台一站式选型<br>智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek、共继算力 等，按性价比、模型、可用性对比</div>
@@ -7543,7 +7546,7 @@
     <script src="monitor/monitor-config.local.js"></script>
     <script src="scripts/platform-catalog.js?v=260722q"></script>
     <script src="scripts/platform-detail.js?v=260722p"></script>
-    <script src="scripts/shared.js?v=260610"></script>
+    <script src="scripts/shared.js?v=260724"></script>
     <script src="scripts/main-views.js"></script>
     <script src="scripts/homepage.js?v=260722q"></script>
 
