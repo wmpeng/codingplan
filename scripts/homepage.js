@@ -2421,6 +2421,11 @@
                     console.error('按量计价视图加载失败:', err);
                 }
             }
+            if (view === 'plans') {
+                requestAnimationFrame(() => {
+                    window.dispatchEvent(new Event('resize'));
+                });
+            }
             if (view === 'monitor') {
                 try {
                     await ensureMonitorViewMounted();
