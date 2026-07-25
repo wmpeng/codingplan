@@ -319,6 +319,51 @@ function formatPaygPrice(value, currency) {
   return `${cur}${text}`;
 }
 
+/** 按量综合价：输入:输出 = 99:1，缓存命中率 95% */
+const PAYG_COMPOSITE_INPUT_RATIO = 0.99;
+const PAYG_COMPOSITE_OUTPUT_RATIO = 0.01;
+const PAYG_COMPOSITE_CACHE_HIT_RATE = 0.95;
+const DEFAULT_USD_TO_CNY_RATE = 6.8;
+
+function resolveUsdToCnyRate(rate) {
+  return typeof rate === 'number' && Number.isFinite(rate) && rate > 0
+    ? rate
+    : DEFAULT_USD_TO_CNY_RATE;
+}
+
+function toCnyPaygUnitPrice(value, currency, usdToCnyRate) {
+  const num = Number(value);
+  if (!Number.isFinite(num)) return null;
+  if (currency === '$') return num * resolveUsdToCnyRate(usdToCnyRate);
+  return num;
+}
+
+/**
+ * 每 M Token 综合价格（人民币）。
+ * 缺输入/输出 → null；仅缺缓存时按输入价回退。
+ */
+function getPaygCompositePriceCny(row, usdToCnyRate) {
+  if (!row) return null;
+  if (!isFinitePaygPrice(row.input) || !isFinitePaygPrice(row.output)) return null;
+  const input = toCnyPaygUnitPrice(row.input, row.currency, usdToCnyRate);
+  const output = toCnyPaygUnitPrice(row.output, row.currency, usdToCnyRate);
+  const cacheSource = isFinitePaygPrice(row.cache) ? row.cache : row.input;
+  const cache = toCnyPaygUnitPrice(cacheSource, row.currency, usdToCnyRate);
+  if (input == null || output == null || cache == null) return null;
+  const missRate = 1 - PAYG_COMPOSITE_CACHE_HIT_RATE;
+  return (
+    PAYG_COMPOSITE_INPUT_RATIO * PAYG_COMPOSITE_CACHE_HIT_RATE * cache +
+    PAYG_COMPOSITE_INPUT_RATIO * missRate * input +
+    PAYG_COMPOSITE_OUTPUT_RATIO * output
+  );
+}
+
+function formatPaygCompositePrice(row, usdToCnyRate) {
+  const value = getPaygCompositePriceCny(row, usdToCnyRate);
+  if (value == null) return '-';
+  return `¥${value.toFixed(2)} / M`;
+}
+
 function isFinitePaygPrice(value) {
   if (value == null || value === '') return false;
   return Number.isFinite(Number(value));
@@ -438,7 +483,9 @@ function sortPaygRows(rows, options = {}) {
   const key = options.key || 'order';
   const dir = options.dir === 'desc' ? -1 : 1;
   const list = (Array.isArray(rows) ? rows : []).slice();
+  const isComposite = key === 'composite' || key === 'pricePerMillionToken';
   const isNumeric =
+    isComposite ||
     key === 'input' ||
     key === 'cache' ||
     key === 'output' ||
@@ -447,6 +494,10 @@ function sortPaygRows(rows, options = {}) {
 
   function numericValue(row, field) {
     if (!row) return NaN;
+    if (field === 'composite' || field === 'pricePerMillionToken') {
+      const value = getPaygCompositePriceCny(row, options.usdToCnyRate);
+      return value == null ? NaN : value;
+    }
     const raw = row[field];
     if (raw == null || raw === '') return NaN;
     const num = Number(raw);
@@ -913,6 +964,8 @@ const PlatformCatalog = {
   getPaygEntry,
   collectModelsFromPayg,
   formatPaygPrice,
+  getPaygCompositePriceCny,
+  formatPaygCompositePrice,
   paygRowHasAnyPrice,
   getPaygModelOrderList,
   flattenPaygRows,

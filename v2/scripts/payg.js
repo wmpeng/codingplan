@@ -4,6 +4,7 @@
   let allRows = [];
   let sortKey = 'order';
   let sortDir = 'asc';
+  let usdToCnyRate = 6.8;
   const selectedPlatformIds = new Set();
   const selectedModelNames = new Set();
   let pricedOnly = false;
@@ -96,7 +97,7 @@
     if (!tbody) return;
     if (!rows.length) {
       tbody.innerHTML =
-        `<tr><td colspan="7"><div class="empty-state">` +
+        `<tr><td colspan="8"><div class="empty-state">` +
         `<div class="empty-state-icon">📭</div>` +
         `<div class="empty-state-text">没有找到符合条件的行</div>` +
         `<div class="empty-state-hint">请调整筛选条件或清空筛选</div>` +
@@ -114,6 +115,7 @@
           .map((n) => PlatformCatalog.escapeHtml(n))
           .join('<br>');
         const currency = row.currency || '¥';
+        const composite = PlatformCatalog.formatPaygCompositePrice(row, usdToCnyRate);
         return (
           `<tr>` +
           `<td class="sticky-first">${nameHtml}</td>` +
@@ -121,6 +123,7 @@
           `<td><span class="price">${PlatformCatalog.escapeHtml(PlatformCatalog.formatPaygPrice(row.input, currency))}</span></td>` +
           `<td><span class="price-monthly">${PlatformCatalog.escapeHtml(PlatformCatalog.formatPaygPrice(row.cache, currency))}</span></td>` +
           `<td><span class="price-normal">${PlatformCatalog.escapeHtml(PlatformCatalog.formatPaygPrice(row.output, currency))}</span></td>` +
+          `<td><span class="price-monthly">${PlatformCatalog.escapeHtml(composite)}</span></td>` +
           `<td><span class="note">${notes || '—'}</span></td>` +
           `<td class="rating-stars">${formatRatingStars(row.rating)}</td>` +
           `</tr>`
@@ -138,7 +141,11 @@
       modelNames: selectedModelNames.size ? [...selectedModelNames] : [],
       pricedOnly
     });
-    const sorted = PlatformCatalog.sortPaygRows(filtered, { key: sortKey, dir: sortDir });
+    const sorted = PlatformCatalog.sortPaygRows(filtered, {
+      key: sortKey,
+      dir: sortDir,
+      usdToCnyRate
+    });
     renderBody(sorted);
     const countEl = document.getElementById('paygResultCount');
     const totalEl = document.getElementById('paygTotalCount');
@@ -284,7 +291,7 @@
     `<div class="filter-trailing"><button type="button" class="reset-btn" id="paygClearFilters">清空筛选</button>` +
     `<div class="stats-bar">显示 <strong id="paygResultCount">0</strong> / <strong id="paygTotalCount">0</strong> 行</div></div></div>` +
     `<div class="table-wrapper surface-panel"><div class="table-watermark" id="paygTableWatermark" aria-hidden="true"><div class="table-watermark-line"></div><div class="table-watermark-line"></div><div class="table-watermark-line"></div></div>` +
-    `<div class="table-scroll" id="paygTableScroll"><table id="paygTable"><thead><tr><th class="sticky-first">平台</th><th class="sticky-second">模型</th><th class="sortable" data-sort-key="input">输入</th><th class="sortable" data-sort-key="cache">缓存</th><th class="sortable" data-sort-key="output">输出</th><th>备注</th><th class="sortable" data-sort-key="rating">评分</th></tr></thead><tbody id="paygTableBody"><tr><td colspan="7"><div class="empty-state"><div class="empty-state-text">加载中…</div></div></td></tr></tbody></table></div></div>`;
+    `<div class="table-scroll" id="paygTableScroll"><table id="paygTable"><thead><tr><th class="sticky-first">平台</th><th class="sticky-second">模型</th><th class="sortable" data-sort-key="input">输入</th><th class="sortable" data-sort-key="cache">缓存</th><th class="sortable" data-sort-key="output">输出</th><th class="sortable" data-sort-key="composite">每 M Token 综合价格</th><th>备注</th><th class="sortable" data-sort-key="rating">评分</th></tr></thead><tbody id="paygTableBody"><tr><td colspan="8"><div class="empty-state"><div class="empty-state-text">加载中…</div></div></td></tr></tbody></table></div></div>`;
 
   async function mountPaygView(root) {
     if (!root) return;
@@ -303,11 +310,15 @@
       }
       const tbody = document.getElementById('paygTableBody');
       try {
-        const [platforms, paygPricing, plans] = await Promise.all([
+        const [platforms, paygPricing, plans, config] = await Promise.all([
           loadJson('./platforms.json'),
           loadJson('./payg-pricing.json'),
-          loadJson('./plans.json').catch(() => [])
+          loadJson('./plans.json').catch(() => []),
+          loadJson('./config.json').catch(() => (typeof window !== 'undefined' ? window.appConfig : null))
         ]);
+        const rate = config && config.usdToCnyRate;
+        usdToCnyRate =
+          typeof rate === 'number' && Number.isFinite(rate) && rate > 0 ? rate : 6.8;
         allRows = PlatformCatalog.flattenPaygRows(paygPricing, platforms, plans);
         renderFilterOptions();
         applyAndRender();
@@ -315,7 +326,7 @@
         const message = PlatformCatalog.escapeHtml(String(error && error.message ? error.message : error));
         if (tbody) {
           tbody.innerHTML =
-            `<tr><td colspan="7"><div class="empty-state">` +
+            `<tr><td colspan="8"><div class="empty-state">` +
             `<div class="empty-state-text">加载失败</div>` +
             `<div class="empty-state-hint">${message}</div>` +
             `</div></td></tr>`;

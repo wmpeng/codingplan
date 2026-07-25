@@ -18,6 +18,8 @@ const {
   sortPaygRows,
   collectPaygFilterOptions,
   paygRowHasAnyPrice,
+  getPaygCompositePriceCny,
+  formatPaygCompositePrice,
   normalizePinnedIds,
   sanitizePinnedIds,
   isPlatformPinned,
@@ -569,6 +571,42 @@ describe('filterPaygRows', () => {
   });
 });
 
+describe('getPaygCompositePriceCny', () => {
+  it('uses 99:1 input/output and 95% cache hit', () => {
+    const value = getPaygCompositePriceCny(
+      { input: 1, cache: 0.1, output: 2, currency: '¥' },
+      6.8
+    );
+    // 0.99*0.95*0.1 + 0.99*0.05*1 + 0.01*2 = 0.16355
+    assert.ok(Math.abs(value - 0.16355) < 1e-9);
+    assert.equal(
+      formatPaygCompositePrice({ input: 1, cache: 0.1, output: 2, currency: '¥' }, 6.8),
+      '¥0.16 / M'
+    );
+  });
+
+  it('falls back cache to input; skips when input/output missing', () => {
+    const noCache = getPaygCompositePriceCny(
+      { input: 1, cache: null, output: 2, currency: '¥' },
+      6.8
+    );
+    // 0.99*1 + 0.01*2 = 1.01
+    assert.ok(Math.abs(noCache - 1.01) < 1e-9);
+    assert.equal(getPaygCompositePriceCny({ input: null, cache: 0.1, output: 2 }, 6.8), null);
+    assert.equal(getPaygCompositePriceCny({ input: 1, cache: 0.1, output: null }, 6.8), null);
+    assert.equal(formatPaygCompositePrice({ input: null, cache: 0.1, output: 2 }, 6.8), '-');
+  });
+
+  it('converts USD rows to CNY with usdToCnyRate', () => {
+    const value = getPaygCompositePriceCny(
+      { input: 1, cache: 0.1, output: 2, currency: '$' },
+      6.8
+    );
+    // CNY units: 6.8 / 0.68 / 13.6 → 1.11214
+    assert.ok(Math.abs(value - 1.11214) < 1e-9);
+  });
+});
+
 describe('sortPaygRows', () => {
   it('sorts input asc with missing prices last', () => {
     const rows = [
@@ -578,6 +616,16 @@ describe('sortPaygRows', () => {
     ];
     const sorted = sortPaygRows(rows, { key: 'input', dir: 'asc' });
     assert.deepEqual(sorted.map((r) => r.modelName), ['a', 'b', 'c']);
+  });
+
+  it('sorts composite asc with missing last', () => {
+    const rows = [
+      { modelName: 'miss', input: null, cache: null, output: null, currency: '¥' },
+      { modelName: 'high', input: 10, cache: 1, output: 20, currency: '¥' },
+      { modelName: 'low', input: 1, cache: 0.1, output: 2, currency: '¥' }
+    ];
+    const sorted = sortPaygRows(rows, { key: 'composite', dir: 'asc', usdToCnyRate: 6.8 });
+    assert.deepEqual(sorted.map((r) => r.modelName), ['low', 'high', 'miss']);
   });
 
   it('sorts by model order then input price', () => {
