@@ -2462,6 +2462,10 @@
             if (view === 'plans') {
                 requestAnimationFrame(() => {
                     window.dispatchEvent(new Event('resize'));
+                    if (typeof PlanCompositePriceChart !== 'undefined' &&
+                        typeof PlanCompositePriceChart.resizePlanCompositePriceChart === 'function') {
+                        PlanCompositePriceChart.resizePlanCompositePriceChart();
+                    }
                 });
             }
             if (view === 'monitor') {
@@ -2638,6 +2642,12 @@
                 allPlans = plansData.map((item, index) => processPrices(item, index));
                 filteredPlans = [...allPlans];
                 loadPlanPinnedIds();
+                if (typeof PlanCompositePriceChart !== 'undefined' &&
+                    typeof PlanCompositePriceChart.renderPlanCompositePriceChart === 'function') {
+                    PlanCompositePriceChart.renderPlanCompositePriceChart(allPlans, {
+                        usdToCnyRate: getUsdToCnyRate()
+                    });
+                }
 
                 initFilters();
                 initPriceSliders();
@@ -2701,6 +2711,13 @@
                 bindPlansTableInteractions();
                 initPlatformCatalog();
                 initMainViewsShell();
+                if (typeof PlanCompositePriceChart !== 'undefined' &&
+                    typeof PlanCompositePriceChart.renderPlanCompositePriceChart === 'function' &&
+                    allPlans.length) {
+                    PlanCompositePriceChart.renderPlanCompositePriceChart(allPlans, {
+                        usdToCnyRate: getUsdToCnyRate()
+                    });
+                }
                 window.__codingplanCatalogReady = true;
             } catch (error) {
                 window.__codingplanBootError = String(error && error.message ? error.message : error);

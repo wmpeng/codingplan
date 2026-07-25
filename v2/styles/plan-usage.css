@@ -156,6 +156,10 @@
     padding: 14px 18px;
 }
 
+.plan-usage-state[hidden] {
+    display: none !important;
+}
+
 .plan-usage-state.is-error {
     color: #9f1239;
     border-color: rgba(239, 68, 68, 0.2);
@@ -175,10 +179,26 @@
     display: none;
 }
 
+.plan-composite-price-panel {
+    margin-top: 0;
+}
+
+.plan-composite-price-chart {
+    height: 460px;
+}
+
+.plan-composite-price-panel .plan-usage-chart-block {
+    margin-top: 18px;
+}
+
 .plan-usage-chart-scroll {
     width: 100%;
     max-width: 100%;
     min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
 }
 
 .plan-usage-chart-stack {
