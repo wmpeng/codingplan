@@ -2232,10 +2232,7 @@
                 PlatformCatalog.filterPlatforms(allPlatforms, filterOpts),
                 platformPinnedIds
             );
-            const totalVisible = PlatformCatalog.filterPlatforms(allPlatforms, {
-                ...filterOpts,
-                selectedLabels: []
-            }).length;
+            const totalCount = Array.isArray(allPlatforms) ? allPlatforms.length : 0;
 
             const grid = document.getElementById('platformCardGrid');
             const empty = document.getElementById('platformCatalogEmpty');
@@ -2252,7 +2249,7 @@
                 showingEl.textContent = String(filtered.length);
             }
             if (totalEl) {
-                totalEl.textContent = String(totalVisible);
+                totalEl.textContent = String(totalCount);
             }
 
             sessionStorage.setItem('platformCatalogSelection', JSON.stringify({
