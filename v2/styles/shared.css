@@ -137,30 +137,6 @@ body {
     overflow: visible;
 }
 
-.header::before,
-.header::after {
-    content: '';
-    position: absolute;
-    border-radius: 0;
-    pointer-events: none;
-}
-
-.header::before {
-    width: 560px;
-    height: 1px;
-    top: 84px;
-    right: -80px;
-    background: linear-gradient(90deg, transparent, rgba(11, 104, 209, 0.32), transparent);
-}
-
-.header::after {
-    width: 1px;
-    height: 260px;
-    left: 34px;
-    bottom: -70px;
-    background: linear-gradient(180deg, rgba(0, 133, 122, 0.26), transparent);
-}
-
 .header > * {
     position: relative;
     z-index: 1;
