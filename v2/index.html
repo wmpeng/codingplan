@@ -8,7 +8,7 @@
     <title>AI Coding Plan 平台评测与对比 - Coding Plan 对比工具</title>
     <link rel="icon" href="/favicon.ico?v=260610" type="image/x-icon">
     <link rel="stylesheet" href="styles/shared.css?v=260725b">
-    <link rel="stylesheet" href="styles/plan-usage.css?v=260725i">
+    <link rel="stylesheet" href="styles/plan-usage.css?v=260725j">
     <link rel="stylesheet" href="styles/comparison-table.css?v=260725f">
     <style>
         html,
@@ -4434,23 +4434,6 @@
             <div id="view-plans" role="tabpanel" data-main-view-panel="plans" hidden>
                 <p class="main-view-intro">横向对比套餐价格、额度与模型支持，辅助选型与预算评估。</p>
 
-        <section class="plan-usage-panel plan-composite-price-panel surface-panel" id="planCompositePricePanel" aria-labelledby="planCompositePriceTitle">
-            <div class="plan-usage-header">
-                <div class="plan-usage-copy">
-                    <h2 class="plan-usage-title" id="planCompositePriceTitle">综合单价</h2>
-                    <p class="plan-usage-description">按缓存命中率95%，输入输出99:1计算。显示为每百万(M)Token的价格</p>
-                </div>
-            </div>
-            <div class="plan-usage-chart-block">
-                <div class="plan-usage-state" id="planCompositePriceEmpty" hidden>暂无足够的月费与实测 Token 数据，无法绘制综合价格图。</div>
-                <div class="plan-usage-chart-scroll">
-                    <div class="plan-usage-chart plan-composite-price-chart" id="planCompositePriceChart" hidden></div>
-                </div>
-            </div>
-        </section>
-
-        <hr class="section-divider">
-
         <section class="plans-table-section" id="plansTableSection">
         <!-- 顶部筛选栏 -->
         <div class="filter-bar surface-panel">
@@ -4743,6 +4726,21 @@
                 <div class="stats-bar">显示 <strong id="showingCount">82</strong> / <strong id="totalCount">82</strong> 个套餐</div>
             </div>
         </div>
+
+        <section class="plan-usage-panel plan-composite-price-panel surface-panel" id="planCompositePricePanel" aria-labelledby="planCompositePriceTitle">
+            <div class="plan-usage-header">
+                <div class="plan-usage-copy">
+                    <h2 class="plan-usage-title" id="planCompositePriceTitle">综合单价</h2>
+                    <p class="plan-usage-description">按缓存命中率95%，输入输出99:1计算。显示为每百万(M)Token的价格</p>
+                </div>
+            </div>
+            <div class="plan-usage-chart-block">
+                <div class="plan-usage-state" id="planCompositePriceEmpty" hidden>暂无足够的月费与实测 Token 数据，无法绘制综合价格图。</div>
+                <div class="plan-usage-chart-scroll">
+                    <div class="plan-usage-chart plan-composite-price-chart" id="planCompositePriceChart" hidden></div>
+                </div>
+            </div>
+        </section>
 
         <!-- 表格 -->
         <div class="table-wrapper surface-panel">
@@ -6818,7 +6816,7 @@
     <script src="scripts/platform-detail.js?v=260725g"></script>
     <script src="scripts/shared.js?v=260724b"></script>
     <script src="scripts/main-views.js"></script>
-    <script src="scripts/plan-composite-price-chart.js?v=260725j"></script>
-    <script src="scripts/homepage.js?v=260725k"></script>
+    <script src="scripts/plan-composite-price-chart.js?v=260725l"></script>
+    <script src="scripts/homepage.js?v=260725l"></script>
 </body>
 </html>

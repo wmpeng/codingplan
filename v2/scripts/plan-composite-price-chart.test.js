@@ -51,7 +51,7 @@ describe('buildCompositePriceChartItems', () => {
     assert.equal(formatCompositePriceLabel(items[0].price), '¥0.40');
   });
 
-  it('excludes discontinued plans', () => {
+  it('includes discontinued when present in input list', () => {
     const items = buildCompositePriceChartItems(
       [
         { vendor: 'A', plan: '在售', monthlyPrice: 40, measuredMonthlyTokenLimit: 100 },
@@ -59,7 +59,28 @@ describe('buildCompositePriceChartItems', () => {
       ],
       { usdToCnyRate: 6.8 }
     );
-    assert.deepEqual(items.map((x) => x.plan), ['在售']);
+    assert.deepEqual(items.map((x) => x.plan), ['下线', '在售']);
+    assert.equal(items[0].discontinued, true);
+  });
+
+  it('marks pinned without changing price sort order', () => {
+    const items = buildCompositePriceChartItems(
+      [
+        { vendor: 'B', plan: '贵', monthlyPrice: 200, measuredMonthlyTokenLimit: 100 },
+        { vendor: 'A', plan: '便宜', monthlyPrice: 40, measuredMonthlyTokenLimit: 100 },
+        { vendor: 'C', plan: '中', monthlyPrice: 80, measuredMonthlyTokenLimit: 100 }
+      ],
+      {
+        usdToCnyRate: 6.8,
+        isPinned(plan) {
+          return plan.plan === '贵';
+        }
+      }
+    );
+    assert.deepEqual(
+      items.map((x) => `${x.plan}:${x.pinned ? 1 : 0}`),
+      ['便宜:0', '中:0', '贵:1']
+    );
   });
 
   it('assigns stable vendor colors by zh sort of vendors', () => {

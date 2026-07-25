@@ -87,24 +87,35 @@
     return `${vendor} ${name}`;
   }
 
+  const PIN_BOOKMARK_ICON =
+    'data:image/svg+xml,' +
+    encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 14">' +
+        '<path fill="#b45309" d="M2.2 1.2h7.6c.55 0 1 .45 1 1V12.4c0 .4-.44.64-.78.43L6 10.05 2.98 12.83c-.34.21-.78-.03-.78-.43V2.2c0-.55.45-1 1-1z"/>' +
+        '</svg>'
+    );
+
   /**
-   * 全部可计算综合价的套餐，按价格升序。
-   * 不受表格筛选影响。
+   * 可计算综合价的套餐，按价格升序。
+   * 是否包含某条由调用方传入的 plans 决定（可与筛选/pin 结果对齐）。
+   * options.isPinned(plan) 为真时标记 pinned，仅影响展示，不改变排序。
    */
   function buildCompositePriceChartItems(plans, options = {}) {
     const rate = resolveUsdToCnyRate(options.usdToCnyRate);
+    const isPinned =
+      typeof options.isPinned === 'function' ? options.isPinned : () => false;
     const list = Array.isArray(plans) ? plans : [];
     const prepared = [];
     for (let i = 0; i < list.length; i++) {
       const plan = list[i];
-      if (plan && plan.discontinued) continue;
       const price = getPlanCompositePriceCny(plan, rate);
       if (price == null) continue;
       prepared.push({
         vendor: String((plan && plan.vendor) || '').trim() || '未知平台',
         plan: String((plan && plan.plan) || '').trim() || '未知套餐',
         type: String((plan && plan.type) || 'Coding Plan').trim() || 'Coding Plan',
-        discontinued: false,
+        discontinued: !!(plan && plan.discontinued),
+        pinned: !!isPinned(plan),
         price,
         originalIndex: Number.isFinite(plan && plan.originalIndex)
           ? plan.originalIndex
@@ -248,6 +259,7 @@
       plan: item.plan,
       type: item.type,
       discontinued: item.discontinued,
+      pinned: item.pinned,
       itemStyle: {
         color: item.color,
         borderRadius: [4, 4, 0, 0]
@@ -256,7 +268,7 @@
     return {
       animationDuration: 420,
       grid: {
-        left: 58,
+        left: 72,
         right: 18,
         top: 36,
         bottom: 108
@@ -272,11 +284,15 @@
           const offline = data.discontinued
             ? '<div style="margin-top:4px;color:#9f1239;">已下线</div>'
             : '';
+          const pinned = data.pinned
+            ? '<div style="margin-top:4px;color:#b45309;">已固定</div>'
+            : '';
           return (
             `<div style="min-width:180px">` +
             `<div style="font-size:14px;font-weight:800;margin-bottom:6px;">${escapeHtml(data.vendor)} · ${escapeHtml(data.plan)}</div>` +
             `<div style="color:#425065;margin-bottom:4px;">${escapeHtml(data.type || '')}</div>` +
             `<div>每 M Token 综合价格：<strong>${escapeHtml(formatCompositePriceLabel(data.value))}</strong></div>` +
+            pinned +
             offline +
             `</div>`
           );
@@ -293,12 +309,35 @@
           hideOverlap: false,
           color: '#425065',
           fontSize: 10,
-          lineHeight: 13
+          lineHeight: 13,
+          formatter(value, index) {
+            const item = items[index];
+            if (item && item.pinned) {
+              return '{pin|}{lbl|' + value + '}';
+            }
+            return value;
+          },
+          rich: {
+            pin: {
+              width: 10,
+              height: 12,
+              backgroundColor: {
+                image: PIN_BOOKMARK_ICON
+              },
+              align: 'center',
+              padding: [0, 2, 0, 0]
+            },
+            lbl: {
+              color: '#425065',
+              fontSize: 10,
+              lineHeight: 13
+            }
+          }
         }
       },
       yAxis: {
         type: 'value',
-        name: '/ M Token',
+        name: '￥/ M Token',
         nameTextStyle: { color: '#64748b', fontSize: 12, padding: [0, 0, 0, 8] },
         axisLabel: {
           color: '#64748b',

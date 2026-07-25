@@ -750,6 +750,24 @@
                 );
                 renderTable();
             }
+            refreshCompositePriceChart();
+        }
+
+        function refreshCompositePriceChart() {
+            if (typeof PlanCompositePriceChart === 'undefined' ||
+                typeof PlanCompositePriceChart.renderPlanCompositePriceChart !== 'function') {
+                return;
+            }
+            PlanCompositePriceChart.renderPlanCompositePriceChart(filteredPlans, {
+                usdToCnyRate: getUsdToCnyRate(),
+                isPinned(plan) {
+                    if (typeof PlatformCatalog === 'undefined') return false;
+                    return PlatformCatalog.isPlatformPinned(
+                        PlatformCatalog.getPlanRowPinId(plan),
+                        planPinnedIds
+                    );
+                }
+            });
         }
 
         // 价格滑块状态
@@ -2637,12 +2655,6 @@
                 allPlans = plansData.map((item, index) => processPrices(item, index));
                 filteredPlans = [...allPlans];
                 loadPlanPinnedIds();
-                if (typeof PlanCompositePriceChart !== 'undefined' &&
-                    typeof PlanCompositePriceChart.renderPlanCompositePriceChart === 'function') {
-                    PlanCompositePriceChart.renderPlanCompositePriceChart(allPlans, {
-                        usdToCnyRate: getUsdToCnyRate()
-                    });
-                }
 
                 initFilters();
                 initPriceSliders();
@@ -2706,13 +2718,7 @@
                 bindPlansTableInteractions();
                 initPlatformCatalog();
                 initMainViewsShell();
-                if (typeof PlanCompositePriceChart !== 'undefined' &&
-                    typeof PlanCompositePriceChart.renderPlanCompositePriceChart === 'function' &&
-                    allPlans.length) {
-                    PlanCompositePriceChart.renderPlanCompositePriceChart(allPlans, {
-                        usdToCnyRate: getUsdToCnyRate()
-                    });
-                }
+                refreshCompositePriceChart();
                 window.__codingplanCatalogReady = true;
             } catch (error) {
                 window.__codingplanBootError = String(error && error.message ? error.message : error);

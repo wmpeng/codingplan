@@ -90,7 +90,8 @@
 }
 
 .plan-composite-price-panel {
-    margin-top: 0;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 .plan-composite-price-chart {
