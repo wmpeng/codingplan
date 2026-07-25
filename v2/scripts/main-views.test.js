@@ -46,7 +46,7 @@ test('applyMainViewDom toggles hidden and tab active', () => {
       return tabs;
     }
   };
-  ['platforms', 'plans', 'payg', 'monitor'].forEach((key) => {
+  ['platforms', 'plans', 'monitor', 'payg'].forEach((key) => {
     tabs.push({
       key,
       classList: {

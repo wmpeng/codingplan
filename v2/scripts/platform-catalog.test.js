@@ -507,7 +507,7 @@ describe('payg pricing', () => {
     assert.ok(html.includes('须邀请链接'));
     assert.ok(html.includes('8折'));
     assert.ok(html.includes('view=payg'));
-    assert.ok(html.includes('在按量计价大表中查看'));
+    assert.ok(html.includes('在按量计费大表中查看'));
   });
 });
 

@@ -7,12 +7,12 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
 
-  const MAIN_VIEW_KEYS = ['platforms', 'plans', 'payg', 'monitor'];
+  const MAIN_VIEW_KEYS = ['platforms', 'plans', 'monitor', 'payg'];
   const MAIN_VIEW_LABELS = {
     platforms: '平台对比',
     plans: '套餐大表',
-    payg: '按量计价',
-    monitor: '可用性监控'
+    monitor: '可用性监控',
+    payg: '按量计费'
   };
 
   function normalizeMainView(raw) {

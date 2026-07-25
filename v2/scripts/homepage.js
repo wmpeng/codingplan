@@ -1445,7 +1445,7 @@
                         title: "AI Coding 平台评测与选型数据库",
                         updateDate: "更新日期 2026.7.20 | 平台目录纳入按量调用（DeepSeek 官方、共继算力）",
                         subtitle: "覆盖 Coding Plan、Token Plan 与按量调用平台的结构化对比，集中查看价格口径、模型能力、额度、可用性与购买状态。",
-                        models: "面向开发者与团队采购的第一轮筛选：先用平台目录建立候选池，再进入套餐大表、按量计价和可用性监控核对细节。",
+                        models: "面向开发者与团队采购的第一轮筛选：先用平台目录建立候选池，再进入套餐大表、可用性监控和按量计费核对细节。",
                         watermarkUrl: "www.codingplan.fyi",
                         entry: {
                             url: "https://github.com/wmpeng/codingplan/discussions",
@@ -2359,7 +2359,7 @@
                 try {
                     await ensurePaygViewMounted();
                 } catch (err) {
-                    console.error('按量计价视图加载失败:', err);
+                    console.error('按量计费视图加载失败:', err);
                 }
             }
             if (view === 'plans') {

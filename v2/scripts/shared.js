@@ -194,8 +194,8 @@ function renderPageNav(target, options = {}) {
         : [
             { key: 'platforms', href: 'index.html?view=platforms', text: '平台对比' },
             { key: 'plans', href: 'index.html?view=plans', text: '套餐大表' },
-            { key: 'payg', href: 'index.html?view=payg', text: '按量计价' },
-            { key: 'monitor', href: 'index.html?view=monitor', text: '可用性监控' }
+            { key: 'monitor', href: 'index.html?view=monitor', text: '可用性监控' },
+            { key: 'payg', href: 'index.html?view=payg', text: '按量计费' }
         ];
     const activeKey = options.activeKey || '';
     const settings = options.settings || {};
