@@ -5,9 +5,9 @@
     <meta name="baidu-site-verification" content="codeva-LiaxYnxu2a" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="国内29大主流AI平台Coding Plan套餐对比工具，涵盖智谱AI、字节方舟、阿里百炼、MiniMax、Kimi、小米Mimo、讯飞星火、百度千帆、腾讯云、京东云、阶跃星辰、无问芯穹、联通云、天翼云、移动云等平台，价格、模型、请求数等详细信息，支持筛选排序，帮您选到最划算的套餐。">
-    <title>AI Coding 平台推荐 - Coding Plan 对比工具</title>
+    <title>AI Coding 平台评测与选型数据库 - Coding Plan 对比工具</title>
     <link rel="icon" href="/favicon.ico?v=260610" type="image/x-icon">
-    <link rel="stylesheet" href="styles/shared.css?v=260724b">
+    <link rel="stylesheet" href="styles/shared.css?v=260725">
     <link rel="stylesheet" href="styles/plan-usage.css?v=260610">
     <link rel="stylesheet" href="styles/comparison-table.css?v=260722">
     <style>
@@ -16,6 +16,40 @@
             font-size: 15px;
             font-weight: 400;
             line-height: 1.7;
+        }
+
+        .hero-intel-strip {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1px;
+            margin-top: 22px;
+            border: 1px solid rgba(16, 23, 37, 0.1);
+            border-radius: 14px;
+            overflow: hidden;
+            background: rgba(16, 23, 37, 0.1);
+        }
+
+        .hero-intel-item {
+            min-width: 0;
+            padding: 16px 18px;
+            background: rgba(255, 255, 255, 0.78);
+        }
+
+        .hero-intel-label {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--text-tertiary);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .hero-intel-value {
+            color: var(--text-primary);
+            font-size: 15px;
+            font-weight: 800;
+            line-height: 1.35;
         }
 
         /* 顶部筛选栏 */
@@ -2809,6 +2843,10 @@
                 font-size: 22px;
             }
 
+            .hero-intel-strip {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .header .subtitle {
                 font-size: 13px;
             }
@@ -2918,6 +2956,10 @@
 
             .header h1 {
                 font-size: 18px;
+            }
+
+            .hero-intel-strip {
+                grid-template-columns: 1fr;
             }
 
             .github-link span {
@@ -3705,6 +3747,407 @@
                 display: none;
             }
         }
+
+        /* v2 professional information-product skin */
+        .header {
+            border-radius: 18px;
+        }
+
+        .hero-summary {
+            gap: 14px;
+        }
+
+        .hero-summary-card,
+        .recommendation-card,
+        .platform-card,
+        .filter-bar,
+        .table-wrapper,
+        .notes-section,
+        .updates-section,
+        .platform-detail-dialog,
+        .plan-usage-panel {
+            border-radius: 14px;
+            border-color: rgba(16, 23, 37, 0.12);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 12px 28px rgba(16, 23, 37, 0.07);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-summary-card {
+            padding: 20px;
+        }
+
+        .hero-summary-card--reading,
+        .hero-summary-card--guide,
+        .hero-summary-card--community {
+            background: rgba(255, 255, 255, 0.92);
+            border-color: rgba(16, 23, 37, 0.12);
+        }
+
+        .hero-summary-kicker,
+        .hero-summary-card--reading .hero-summary-kicker,
+        .hero-summary-card--guide .hero-summary-kicker,
+        .hero-summary-card--community .hero-summary-kicker,
+        .plan-usage-kicker {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            min-height: 24px;
+            padding: 0 8px;
+            border-radius: 6px;
+            background: rgba(11, 104, 209, 0.08);
+            color: #0b68d1;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .hero-summary-title {
+            margin-top: 12px;
+            color: var(--text-primary);
+            font-size: clamp(18px, 2.2vw, 24px);
+            line-height: 1.32;
+            letter-spacing: 0;
+        }
+
+        .hero-summary-body,
+        .hero-summary-guide-note,
+        .payg-intro,
+        .platform-catalog-subtitle,
+        .recommendation-group-subtitle {
+            color: var(--text-secondary);
+            line-height: 1.68;
+        }
+
+        .hero-summary-lede-media a,
+        .hero-summary-lede-media img {
+            border-radius: 10px;
+        }
+
+        .hero-summary-readmore,
+        .platform-card-hint,
+        .platform-detail-action,
+        .platform-detail-jump-plans,
+        .platform-detail-avail-link {
+            color: #0b68d1;
+        }
+
+        .main-view-tabs {
+            gap: 6px;
+            padding: 6px;
+            border: 1px solid rgba(16, 23, 37, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.86);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .main-view-tabs [role="tab"],
+        .preset-tag-chip,
+        .platform-tag-chip,
+        .plans-table-toggle,
+        .filter-btn,
+        .reset-btn,
+        .checkbox-label,
+        .platform-clear-filters,
+        .dropdown-btn,
+        .community-hub-btn,
+        .community-hub-badge {
+            border-radius: 9px;
+            background: rgba(255, 255, 255, 0.88);
+            border-color: rgba(16, 23, 37, 0.12);
+            box-shadow: none;
+            color: var(--text-secondary);
+        }
+
+        .main-view-tabs [role="tab"]:hover,
+        .preset-tag-chip:hover,
+        .platform-tag-chip:hover,
+        .filter-btn:hover,
+        .reset-btn:hover,
+        .checkbox-label:hover,
+        .platform-clear-filters:hover {
+            transform: none;
+            background: rgba(11, 104, 209, 0.07);
+            border-color: rgba(11, 104, 209, 0.22);
+            color: var(--text-primary);
+            box-shadow: none;
+        }
+
+        .main-view-tabs [role="tab"].is-active,
+        .preset-tag-chip.active,
+        .platform-tag-chip.is-active,
+        .platform-tag-chip.active,
+        .platform-status-seg.is-active,
+        .dropdown-btn.primary {
+            background: #101725;
+            border-color: #101725;
+            color: #fff;
+            box-shadow: none;
+        }
+
+        .platform-tag-chip--operational.is-active,
+        .platform-tag-chip--toggle.is-active {
+            background: rgba(0, 133, 122, 0.1);
+            border-color: rgba(0, 133, 122, 0.34);
+            color: #00756e;
+        }
+
+        .platform-tag-bar {
+            border-radius: 14px;
+            border-color: rgba(16, 23, 37, 0.12);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .platform-status-segments {
+            border-radius: 10px;
+            background: #eef2f7;
+            box-shadow: inset 0 0 0 1px rgba(16, 23, 37, 0.04);
+        }
+
+        .platform-status-seg {
+            border-radius: 7px;
+        }
+
+        .platform-card,
+        .recommendation-card {
+            transform: none;
+        }
+
+        .platform-card:hover,
+        .recommendation-card:hover {
+            transform: translateY(-1px);
+            border-color: rgba(11, 104, 209, 0.24);
+            box-shadow: 0 16px 34px rgba(16, 23, 37, 0.1);
+        }
+
+        .platform-dimensions li,
+        .platform-detail-dim,
+        .platform-detail-plan-item,
+        .platform-detail-payg-table-wrap {
+            border-radius: 10px;
+            background: #f5f7fb;
+            border: 1px solid rgba(16, 23, 37, 0.07);
+        }
+
+        .platform-dimensions .dim-score,
+        .platform-detail-dim-score,
+        .platform-detail-plan-quota {
+            color: #0b68d1;
+        }
+
+        .platform-tags .platform-tag,
+        .plan-tag--value-rich,
+        .platform-rush,
+        .platform-detail-rush {
+            border-radius: 6px;
+            background: rgba(0, 133, 122, 0.1);
+            color: #00756e;
+        }
+
+        .platform-models .model-tag,
+        .model-tag {
+            border-radius: 6px;
+            background: #f7f9fc;
+            border-color: rgba(16, 23, 37, 0.12);
+            color: #39465a;
+        }
+
+        .type-tag,
+        .plan-tag,
+        .platform-detail-plan-type-badge,
+        .status-offline,
+        .benefit {
+            border-radius: 6px;
+        }
+
+        .type-tag.coding-plan {
+            background: rgba(11, 104, 209, 0.08);
+            color: #0b68d1;
+            border-color: rgba(11, 104, 209, 0.2);
+        }
+
+        .type-tag.token-plan,
+        .benefit {
+            background: rgba(0, 133, 122, 0.08);
+            color: #00756e;
+            border-color: rgba(0, 133, 122, 0.18);
+        }
+
+        .filter-bar {
+            padding: 14px;
+        }
+
+        .dropdown-menu,
+        .settings-panel,
+        .feedback-float-panel {
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.97);
+            border-color: rgba(16, 23, 37, 0.12);
+        }
+
+        .checkbox-item input[type="checkbox"]:checked,
+        .slider-range {
+            background: #0b68d1;
+        }
+
+        .slider-thumb {
+            border-color: #0b68d1;
+        }
+
+        .table-wrapper {
+            overflow: hidden;
+        }
+
+        .table-watermark {
+            display: none;
+        }
+
+        th,
+        th.sticky-first,
+        th.sticky-second {
+            background: #101725;
+            color: rgba(255, 255, 255, 0.86);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 800;
+            letter-spacing: 0.06em;
+        }
+
+        th:hover {
+            background: #172033;
+            color: #fff;
+        }
+
+        td {
+            background: rgba(255, 255, 255, 0.94);
+            border-bottom-color: rgba(16, 23, 37, 0.07);
+        }
+
+        tbody tr:nth-child(even) td {
+            background: #f7f9fc;
+        }
+
+        tbody tr:hover td {
+            background: #eef6ff;
+        }
+
+        td.sticky-first,
+        td.sticky-second {
+            background: linear-gradient(90deg, #fff 0%, #fff 86%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        tbody tr:nth-child(even) td.sticky-first,
+        tbody tr:nth-child(even) td.sticky-second {
+            background: linear-gradient(90deg, #f7f9fc 0%, #f7f9fc 86%, rgba(247, 249, 252, 0) 100%);
+        }
+
+        tbody tr:hover td.sticky-first,
+        tbody tr:hover td.sticky-second {
+            background: linear-gradient(90deg, #eef6ff 0%, #eef6ff 86%, rgba(238, 246, 255, 0) 100%);
+        }
+
+        .action-btn,
+        .community-hub-btn {
+            border-radius: 8px;
+            background: #0b68d1;
+            border-color: #0b68d1;
+            box-shadow: none;
+        }
+
+        .action-btn:hover,
+        .community-hub-btn:hover {
+            background: #0958b6;
+            border-color: #0958b6;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .price,
+        .price-monthly {
+            color: #00756e;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .rating-guide {
+            border-radius: 12px;
+            background: #fff;
+            border-color: rgba(16, 23, 37, 0.12);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feedback-float-trigger {
+            border-radius: 10px;
+            background: #101725;
+            color: #fff;
+            border-color: #101725;
+        }
+
+        .feedback-float-trigger-icon {
+            background: rgba(255, 255, 255, 0.14);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                max-width: 100%;
+                font-size: clamp(30px, 9vw, 38px);
+                line-height: 1.08;
+            }
+
+            .hero-intel-strip {
+                margin-top: 16px;
+            }
+
+            .main-view-tabs {
+                flex-wrap: nowrap;
+                max-width: 100%;
+                overflow-x: auto;
+                overscroll-behavior-x: contain;
+            }
+
+            .platform-status-slider {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .platform-status-segments {
+                flex: 1 1 auto;
+                min-width: 0;
+                overflow-x: auto;
+                scrollbar-width: none;
+            }
+
+            .platform-status-segments::-webkit-scrollbar {
+                display: none;
+            }
+
+            .platform-status-seg,
+            .platform-status-and {
+                flex: 0 0 auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: clamp(28px, 9vw, 34px);
+                line-height: 1.1;
+            }
+
+            .recommendations {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .hero-summary-card,
+            .recommendation-card,
+            .platform-card,
+            .filter-bar,
+            .table-wrapper,
+            .platform-tag-bar,
+            .plans-table-toggle {
+                border-radius: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -3719,10 +4162,28 @@
                 </a>
                 <div id="settingsMount"></div>
             </div>
-            <h1 id="pageTitle">AI Coding 平台推荐</h1>
-            <div class="update-date" id="updateDate">更新日期2026.7.20 | 平台目录纳入按量调用（DeepSeek 官方、共继算力）</div>
-            <div class="subtitle" id="subtitle">31 家 Coding Plan / Token Plan / 按量调用平台一站式选型<br>智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek、共继算力 等，按性价比、模型、可用性对比</div>
-            <div class="models" id="models">首页以「选平台」为主：默认仅显示「定时放量」及更开放的平台，也可按「性价比高」「模型强」「按量调用」等维度快速缩小范围；下方套餐表仍保留全量对比。</div>
+            <h1 id="pageTitle">AI Coding 平台评测与选型数据库</h1>
+            <div class="update-date" id="updateDate">更新日期 2026.7.20 | 平台目录纳入按量调用（DeepSeek 官方、共继算力）</div>
+            <div class="subtitle" id="subtitle">覆盖 Coding Plan、Token Plan 与按量调用平台的结构化对比，集中查看价格口径、模型能力、额度、可用性与购买状态。</div>
+            <div class="models" id="models">面向开发者与团队采购的第一轮筛选：先用平台目录建立候选池，再进入套餐大表、按量计价和可用性监控核对细节。</div>
+            <div class="hero-intel-strip" aria-label="站点核心能力">
+                <div class="hero-intel-item">
+                    <span class="hero-intel-label">Coverage</span>
+                    <div class="hero-intel-value">平台、套餐、按量价格统一入口</div>
+                </div>
+                <div class="hero-intel-item">
+                    <span class="hero-intel-label">Method</span>
+                    <div class="hero-intel-value">价格、额度、模型与可用性分维度核验</div>
+                </div>
+                <div class="hero-intel-item">
+                    <span class="hero-intel-label">Workflow</span>
+                    <div class="hero-intel-value">标签筛选、排序、详情浮层与图表联动</div>
+                </div>
+                <div class="hero-intel-item">
+                    <span class="hero-intel-label">Audience</span>
+                    <div class="hero-intel-value">个人开发者、团队选型与预算评估</div>
+                </div>
+            </div>
         </div>
 
         <div class="hero-summary hero-summary--lede">
@@ -3734,19 +4195,19 @@
                         </a>
                     </div>
                     <div class="hero-summary-lede-copy">
-                        <div class="hero-summary-kicker">延伸阅读</div>
+                        <div class="hero-summary-kicker">Benchmark</div>
                         <h2 class="hero-summary-title">2026年6月主流大模型对比：Claude Fable 5 三项领跑，GLM-5.2 Agentic 反超 GPT-5.5，Kimi K2.7 Code 上线</h2>
                         <p class="hero-summary-body">基于 Artificial Analysis 2026年6月17日基准测试，按 Intelligence、Coding、Agentic 三层对 19 款主流大模型横向评测，附选型建议。</p>
-                        <a class="hero-summary-readmore" href="articles/model_comparisons/20260617/index.html">阅读全文 →</a>
+                        <a class="hero-summary-readmore" href="articles/model_comparisons/20260617/index.html">查看模型基准 →</a>
                     </div>
                 </div>
             </article>
             <article class="hero-summary-card hero-summary-card--reading hero-summary-card--guide">
                 <div>
-                    <div class="hero-summary-kicker">选型指南</div>
+                    <div class="hero-summary-kicker">Market Scan</div>
                     <h2 class="hero-summary-title">2026年6月28日 Coding Plan平台全面对比</h2>
                     <p class="hero-summary-body">覆盖智谱 GLM-5.2、MiniMax、Kimi-K2.7-Code、DeepSeek、字节方舟促销、阿里百炼等平台的能力、价格、限购状态与选型建议。</p>
-                    <p class="hero-summary-guide-note">帮助先快速建立全局判断，在几个候选平台之间做第一轮取舍。</p>
+                    <p class="hero-summary-guide-note">先建立全局判断，再用下方平台目录与套餐大表把候选压缩到可执行清单。</p>
                 </div>
                 <a class="hero-summary-readmore" href="articles/plan_comparisons/20260628/index.html">查看对比详情 →</a>
             </article>
@@ -3785,7 +4246,7 @@
                 <h2 class="platform-catalog-title">平台目录</h2>
                 <p class="platform-catalog-subtitle">按标签与平台状态筛选；清空后回到默认「定时放量」</p>
             </header>
-            <div class="platform-tag-bar" id="platformTagBar" role="group" aria-label="平台标签"><div class="platform-tag-bar-main"><div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选"><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="性价比高" aria-pressed="false">性价比高</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="模型强" aria-pressed="false">模型强</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="可用性好" aria-pressed="false">可用性好</button></div><div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签"><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="热门模型" aria-pressed="false">热门模型</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="适合养龙虾" aria-pressed="false">适合养龙虾</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="可支付宝" aria-pressed="false">可支付宝</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="按量调用" aria-pressed="false">按量调用</button></div></div><div class="platform-status-slider" data-platform-status-max="limited" role="group" aria-label="显示开放购买和定时放量平台"><span class="platform-status-prefix">显示</span><div class="platform-status-segments" tabindex="0"><button type="button" class="platform-status-seg is-active" data-platform-status="open" aria-pressed="true" title="仅显示开放购买平台">开放购买</button><span class="platform-status-and is-on" aria-hidden="true">和</span><button type="button" class="platform-status-seg is-active" data-platform-status="limited" aria-pressed="true" title="显示定时放量平台">定时放量</button><span class="platform-status-and" aria-hidden="true">和</span><button type="button" class="platform-status-seg" data-platform-status="paused" aria-pressed="false" title="显示暂时停售平台">暂时停售</button><button type="button" class="platform-status-seg" data-platform-status="delisted" aria-pressed="false" title="显示所有平台">所有</button></div><span class="platform-status-suffix">平台</span></div></div>
+            <div class="platform-tag-bar" id="platformTagBar" role="group" aria-label="平台标签"><div class="platform-tag-bar-main"><div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选"><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="性价比高" aria-pressed="false">性价比高</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="模型强" aria-pressed="false">模型强</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="可用性好" aria-pressed="false">可用性好</button></div><div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签"><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="热门模型" aria-pressed="false">热门模型</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="高用量工作流" aria-pressed="false">高用量工作流</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="可支付宝" aria-pressed="false">可支付宝</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="按量调用" aria-pressed="false">按量调用</button></div></div><div class="platform-status-slider" data-platform-status-max="limited" role="group" aria-label="显示开放购买和定时放量平台"><span class="platform-status-prefix">显示</span><div class="platform-status-segments" tabindex="0"><button type="button" class="platform-status-seg is-active" data-platform-status="open" aria-pressed="true" title="仅显示开放购买平台">开放购买</button><span class="platform-status-and is-on" aria-hidden="true">和</span><button type="button" class="platform-status-seg is-active" data-platform-status="limited" aria-pressed="true" title="显示定时放量平台">定时放量</button><span class="platform-status-and" aria-hidden="true">和</span><button type="button" class="platform-status-seg" data-platform-status="paused" aria-pressed="false" title="显示暂时停售平台">暂时停售</button><button type="button" class="platform-status-seg" data-platform-status="delisted" aria-pressed="false" title="显示所有平台">所有</button></div><span class="platform-status-suffix">平台</span></div></div>
             <div class="platform-catalog-toolbar">
                 <button type="button" class="platform-clear-filters" id="platformClearFilters">清空筛选</button>
                 <span class="platform-catalog-stats">显示 <strong id="platformShowingCount">0</strong> / <strong id="platformTotalCount">0</strong> 个平台</span>

@@ -6,24 +6,28 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 :root {
-    --bg-primary: #f4efe6;
-    --bg-secondary: rgba(255, 251, 245, 0.92);
-    --bg-tertiary: #efe4d2;
-    --text-primary: #172033;
-    --text-secondary: #5f6879;
-    --text-tertiary: #8a93a3;
-    --border-color: rgba(23, 32, 51, 0.12);
-    --border-light: rgba(23, 32, 51, 0.08);
-    --accent-primary: #0f766e;
-    --accent-secondary: #c66b1a;
+    --bg-primary: #eef2f7;
+    --bg-secondary: rgba(255, 255, 255, 0.94);
+    --bg-tertiary: #e5ebf3;
+    --text-primary: #101725;
+    --text-secondary: #455266;
+    --text-tertiary: #778297;
+    --border-color: rgba(16, 23, 37, 0.12);
+    --border-light: rgba(16, 23, 37, 0.07);
+    --accent-primary: #0b68d1;
+    --accent-secondary: #00857a;
     --accent-success: #10b981;
     --accent-warning: #f59e0b;
     --accent-error: #ef4444;
-    --shadow-sm: 0 6px 18px rgba(23, 32, 51, 0.06);
-    --shadow-md: 0 14px 36px rgba(23, 32, 51, 0.08);
-    --shadow-lg: 0 20px 48px rgba(23, 32, 51, 0.12);
-    --shadow-xl: 0 28px 64px rgba(23, 32, 51, 0.16);
+    --shadow-sm: 0 4px 14px rgba(16, 23, 37, 0.05);
+    --shadow-md: 0 12px 30px rgba(16, 23, 37, 0.08);
+    --shadow-lg: 0 18px 44px rgba(16, 23, 37, 0.12);
+    --shadow-xl: 0 28px 64px rgba(16, 23, 37, 0.18);
     --radius-sm: 6px;
     --radius-md: 8px;
     --radius-lg: 12px;
@@ -34,9 +38,11 @@ body {
     min-height: 100vh;
     font-family: "Avenir Next", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
     background:
-        radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 26%),
-        radial-gradient(circle at top right, rgba(198, 107, 26, 0.14), transparent 24%),
-        linear-gradient(180deg, #f8f3eb 0%, #f4efe6 42%, #f7f2ea 100%);
+        linear-gradient(90deg, rgba(16, 23, 37, 0.045) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(16, 23, 37, 0.045) 1px, transparent 1px),
+        radial-gradient(circle at 82% 0%, rgba(11, 104, 209, 0.13), transparent 30%),
+        linear-gradient(180deg, #f7f9fc 0%, #eef2f7 48%, #f8fafc 100%);
+    background-size: 44px 44px, 44px 44px, auto, auto;
     color: var(--text-primary);
     line-height: 1.4;
     padding: 28px 34px 64px;
@@ -63,12 +69,12 @@ body {
     align-items: center;
     gap: 10px;
     margin-bottom: 24px;
-    padding: 12px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    border-radius: 999px;
-    background: rgba(255, 249, 241, 0.76);
-    backdrop-filter: blur(18px);
-    box-shadow: 0 10px 28px rgba(23, 32, 51, 0.08);
+    padding: 10px 12px;
+    border: 1px solid rgba(16, 23, 37, 0.1);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 12px 28px rgba(16, 23, 37, 0.08);
     position: sticky;
     top: 14px;
     z-index: 40;
@@ -94,7 +100,7 @@ body {
     align-items: center;
     gap: 6px;
     padding: 11px 18px;
-    border-radius: 999px;
+    border-radius: 10px;
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
@@ -107,14 +113,14 @@ body {
 
 .page-tab:hover {
     color: var(--text-primary);
-    background: rgba(15, 118, 110, 0.08);
+    background: rgba(11, 104, 209, 0.08);
 }
 
 .page-tab.active {
-    color: #f8fffd;
-    background: linear-gradient(135deg, #1c3552 0%, #0f766e 100%);
+    color: #fff;
+    background: #101725;
     border-color: transparent;
-    box-shadow: 0 12px 24px rgba(28, 53, 82, 0.18);
+    box-shadow: 0 12px 24px rgba(16, 23, 37, 0.18);
 }
 
 /* ── Header ── */
@@ -122,10 +128,11 @@ body {
     margin-bottom: 28px;
     text-align: left;
     position: relative;
-    padding: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 32px;
-    background: linear-gradient(135deg, rgba(255, 252, 246, 0.96) 0%, rgba(255, 248, 238, 0.84) 56%, rgba(239, 246, 244, 0.92) 100%);
+    padding: 34px;
+    border: 1px solid rgba(16, 23, 37, 0.12);
+    border-radius: 18px;
+    background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.98) 0%, rgba(247, 250, 253, 0.94) 56%, rgba(232, 239, 248, 0.9) 100%);
     box-shadow: var(--shadow-lg);
     overflow: visible;
 }
@@ -134,24 +141,24 @@ body {
 .header::after {
     content: '';
     position: absolute;
-    border-radius: 50%;
+    border-radius: 0;
     pointer-events: none;
 }
 
 .header::before {
-    width: 420px;
-    height: 420px;
-    top: -220px;
-    right: -180px;
-    background: radial-gradient(circle, rgba(15, 118, 110, 0.18), rgba(15, 118, 110, 0));
+    width: 560px;
+    height: 1px;
+    top: 84px;
+    right: -80px;
+    background: linear-gradient(90deg, transparent, rgba(11, 104, 209, 0.32), transparent);
 }
 
 .header::after {
-    width: 320px;
-    height: 320px;
-    left: -160px;
-    bottom: -180px;
-    background: radial-gradient(circle, rgba(198, 107, 26, 0.16), rgba(198, 107, 26, 0));
+    width: 1px;
+    height: 260px;
+    left: 34px;
+    bottom: -70px;
+    background: linear-gradient(180deg, rgba(0, 133, 122, 0.26), transparent);
 }
 
 .header > * {
@@ -168,11 +175,11 @@ body {
     font-size: 14px;
     font-weight: 700;
     transition: all 0.2s;
-    padding: 11px 18px;
-    border-radius: 999px;
+    padding: 10px 15px;
+    border-radius: 10px;
     border: 1px solid var(--border-color);
-    background: rgba(255, 255, 255, 0.78);
-    box-shadow: 0 10px 22px rgba(23, 32, 51, 0.06);
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: none;
 }
 
 .github-link:hover {
@@ -209,12 +216,12 @@ body {
     gap: 6px;
     padding: 11px 18px;
     border: 1px solid var(--border-color);
-    background: rgba(255, 255, 255, 0.78);
+    background: rgba(255, 255, 255, 0.86);
     color: var(--text-primary);
     font-size: 14px;
     font-weight: 700;
     font-family: inherit;
-    box-shadow: 0 10px 22px rgba(23, 32, 51, 0.06);
+    box-shadow: none;
 }
 
 .header-actions .settings-btn:hover,
@@ -232,13 +239,13 @@ body {
 }
 
 .header h1 {
-    max-width: calc(100% - 280px);
-    font-size: clamp(40px, 6vw, 68px);
+    max-width: calc(100% - 250px);
+    font-size: clamp(36px, 4.8vw, 58px);
     color: var(--text-primary);
     margin-bottom: 16px;
     font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1.02;
+    letter-spacing: 0;
+    line-height: 1.05;
 }
 
 .update-date {
@@ -246,13 +253,13 @@ body {
     align-items: center;
     min-height: 32px;
     padding: 5px 12px;
-    border-radius: 999px;
+    border-radius: 8px;
     font-size: 13px;
-    color: #18344f;
+    color: #18436d;
     margin-bottom: 16px;
     font-weight: 600;
     letter-spacing: 0.01em;
-    background: rgba(24, 52, 79, 0.08);
+    background: rgba(11, 104, 209, 0.08);
 }
 
 .header .subtitle {
@@ -271,12 +278,12 @@ body {
     max-width: 100%;
     margin-top: 22px;
     padding: 14px 16px;
-    border: 1px solid rgba(23, 32, 51, 0.08);
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.66);
+    border: 1px solid rgba(16, 23, 37, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.74);
     color: var(--text-secondary);
     line-height: 1.75;
-    box-shadow: 0 10px 20px rgba(23, 32, 51, 0.05);
+    box-shadow: none;
 }
 
 /* ── 超宽屏模式 ── */
@@ -916,14 +923,15 @@ body {
     }
 
     .header-actions {
-        top: 18px;
-        right: 18px;
+        position: static;
+        justify-content: flex-end;
         gap: 8px;
+        margin-bottom: 18px;
     }
 
     .header > .github-link {
-        top: 18px;
-        right: 18px;
+        position: static;
+        margin-bottom: 18px;
         padding: 10px 14px;
     }
 
@@ -933,8 +941,9 @@ body {
     }
 
     .header > h1 {
-        max-width: calc(100% - 220px);
-        font-size: clamp(34px, 12vw, 52px);
+        max-width: 100%;
+        font-size: clamp(30px, 9vw, 38px);
+        line-height: 1.08;
     }
 
     .community-hub-actions {

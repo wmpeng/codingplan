@@ -1501,10 +1501,10 @@
                 // 使用默认配置（与 codingplan/config.json 及本页静态文案对齐）
                 appConfig = {
                     header: {
-                        title: "AI Coding 平台推荐",
-                        updateDate: "更新日期2026.7.15 | 首页改版：平台目录与标签筛选",
-                        subtitle: "31 家 Coding Plan / Token Plan / 按量调用平台一站式选型\n智谱AI、MiniMax、字节·方舟、讯飞·星火、Kimi、OpenCode、阿里·百炼、DeepSeek、共继算力 等，按性价比、模型、可用性对比",
-                        models: "首页以「选平台」为主：默认仅显示「定时放量」及更开放的平台，也可按「性价比高」「模型强」「按量调用」等维度快速缩小范围；下方套餐表仍保留全量对比。",
+                        title: "AI Coding 平台评测与选型数据库",
+                        updateDate: "更新日期 2026.7.20 | 平台目录纳入按量调用（DeepSeek 官方、共继算力）",
+                        subtitle: "覆盖 Coding Plan、Token Plan 与按量调用平台的结构化对比，集中查看价格口径、模型能力、额度、可用性与购买状态。",
+                        models: "面向开发者与团队采购的第一轮筛选：先用平台目录建立候选池，再进入套餐大表、按量计价和可用性监控核对细节。",
                         watermarkUrl: "www.codingplan.fyi",
                         entry: {
                             url: "https://github.com/wmpeng/codingplan/discussions",
@@ -1513,7 +1513,7 @@
                     },
                     platformCatalog: {
                         defaultSelectedTags: [],
-                        operationalTags: ["热门模型", "适合养龙虾", "可支付宝", "按量调用"],
+                        operationalTags: ["热门模型", "高用量工作流", "可支付宝", "按量调用"],
                         defaultPlatformStatusMax: "limited",
                         derivedTags: [
                             { id: "high-value", label: "性价比高", rule: { dimension: "value", minScore: 4 } },
