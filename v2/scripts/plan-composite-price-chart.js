@@ -140,8 +140,7 @@
     return {
       panel: document.getElementById('planCompositePricePanel'),
       chartEl: document.getElementById('planCompositePriceChart'),
-      emptyEl: document.getElementById('planCompositePriceEmpty'),
-      countEl: document.getElementById('planCompositePriceCount')
+      emptyEl: document.getElementById('planCompositePriceEmpty')
     };
   }
 
@@ -331,10 +330,6 @@
     };
   }
 
-  function updateMeta(countEl, count) {
-    if (countEl) countEl.textContent = String(count);
-  }
-
   function sizeChartCanvas(chartEl, itemCount) {
     if (!chartEl) return;
     const host = chartEl.parentElement;
@@ -348,8 +343,6 @@
     const items = buildCompositePriceChartItems(plans, options);
     lastItems = items;
     const generation = ++renderGeneration;
-
-    updateMeta(refs.countEl, items.length);
 
     if (!refs.chartEl || items.length === 0) {
       if (chartInstance) {

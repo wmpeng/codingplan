@@ -32,12 +32,22 @@
     letter-spacing: -0.03em;
 }
 
+.plan-composite-price-panel .plan-usage-title {
+    font-size: clamp(18px, 2.2vw, 22px);
+    letter-spacing: -0.02em;
+}
+
 .plan-usage-description {
     margin: 0;
     color: #425065;
     font-size: 14px;
     line-height: 1.75;
     max-width: 860px;
+}
+
+.plan-composite-price-panel .plan-usage-description {
+    font-size: 13px;
+    max-width: none;
 }
 
 .plan-usage-state {
@@ -149,6 +159,10 @@
 @media (max-width: 640px) {
     .plan-usage-title {
         font-size: 24px;
+    }
+
+    .plan-composite-price-panel .plan-usage-title {
+        font-size: 18px;
     }
 
     .plan-usage-chart {
