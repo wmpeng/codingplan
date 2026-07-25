@@ -289,32 +289,42 @@
   async function mountPaygView(root) {
     if (!root) return;
     if (root.dataset.paygMounted === '1') return;
-    if (!root.querySelector('#paygTable')) {
-      root.innerHTML = PAYG_SHELL_HTML;
-    }
-    fillWatermark();
-    bindEvents(root);
-    const tbody = document.getElementById('paygTableBody');
-    try {
-      const [platforms, paygPricing, plans] = await Promise.all([
-        loadJson('./platforms.json'),
-        loadJson('./payg-pricing.json'),
-        loadJson('./plans.json').catch(() => [])
-      ]);
-      allRows = PlatformCatalog.flattenPaygRows(paygPricing, platforms, plans);
-      renderFilterOptions();
-      applyAndRender();
-    } catch (error) {
-      const message = PlatformCatalog.escapeHtml(String(error && error.message ? error.message : error));
-      if (tbody) {
-        tbody.innerHTML =
-          `<tr><td colspan="7"><div class="empty-state">` +
-          `<div class="empty-state-text">加载失败</div>` +
-          `<div class="empty-state-hint">${message}</div>` +
-          `</div></td></tr>`;
+    if (root._paygMountPromise) return root._paygMountPromise;
+
+    root._paygMountPromise = (async () => {
+      if (root.dataset.paygMounted === '1') return;
+      if (!root.querySelector('#paygTable')) {
+        root.innerHTML = PAYG_SHELL_HTML;
       }
-    }
-    root.dataset.paygMounted = '1';
+      fillWatermark();
+      if (root.dataset.paygBound !== '1') {
+        bindEvents(root);
+        root.dataset.paygBound = '1';
+      }
+      const tbody = document.getElementById('paygTableBody');
+      try {
+        const [platforms, paygPricing, plans] = await Promise.all([
+          loadJson('./platforms.json'),
+          loadJson('./payg-pricing.json'),
+          loadJson('./plans.json').catch(() => [])
+        ]);
+        allRows = PlatformCatalog.flattenPaygRows(paygPricing, platforms, plans);
+        renderFilterOptions();
+        applyAndRender();
+      } catch (error) {
+        const message = PlatformCatalog.escapeHtml(String(error && error.message ? error.message : error));
+        if (tbody) {
+          tbody.innerHTML =
+            `<tr><td colspan="7"><div class="empty-state">` +
+            `<div class="empty-state-text">加载失败</div>` +
+            `<div class="empty-state-hint">${message}</div>` +
+            `</div></td></tr>`;
+        }
+      }
+      root.dataset.paygMounted = '1';
+    })();
+
+    return root._paygMountPromise;
   }
 
   if (typeof document !== 'undefined') {

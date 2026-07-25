@@ -2322,7 +2322,7 @@
             const root = document.getElementById('view-payg');
             if (!root) return;
             if (typeof window.mountPaygView !== 'function') {
-                await loadScriptOnce('scripts/payg.js');
+                await loadScriptOnce('scripts/payg.js?v=260725g');
             }
             if (typeof window.mountPaygView === 'function') {
                 await window.mountPaygView(root);
@@ -2340,7 +2340,7 @@
                 document.head.appendChild(link);
             }
             if (typeof window.mountMonitorBoard !== 'function') {
-                await loadScriptOnce('scripts/monitor-board.js?v=260725e');
+                await loadScriptOnce('scripts/monitor-board.js?v=260725g');
             }
             if (typeof window.mountMonitorBoard === 'function') {
                 const platform = new URLSearchParams(location.search).get('platform') || '';
@@ -2354,6 +2354,17 @@
         async function onMainViewChange(view) {
             if (typeof PlatformDetail !== 'undefined' && PlatformDetail.isOpen && PlatformDetail.isOpen()) {
                 PlatformDetail.close();
+            }
+            // 监控 tooltip 挂在 body 上，离开 tab 必须收起，否则会叠在其它视图上
+            if (view !== 'monitor') {
+                if (typeof window.hideMonitorTooltips === 'function') {
+                    window.hideMonitorTooltips();
+                } else {
+                    document.querySelectorAll('.monitor-tooltip').forEach((el) => {
+                        el.style.display = 'none';
+                        el.innerHTML = '';
+                    });
+                }
             }
             if (view === 'payg') {
                 try {
@@ -2392,8 +2403,7 @@
                     void onMainViewChange(view, meta);
                 }
             });
-            const initial = window.__mainViewsController.getView();
-            void onMainViewChange(initial, { reason: 'init' });
+            // mountHomepageViews 初始化时已触发 onChange，勿再重复调用（会造成并发挂载）
 
             document.addEventListener('click', (e) => {
                 const link = e.target.closest('a[href]');

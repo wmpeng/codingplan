@@ -5,6 +5,7 @@
   }
   if (root) {
     root.mountMonitorBoard = api.mountMonitorBoard;
+    root.hideMonitorTooltips = api.hideMonitorTooltips;
   }
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
@@ -666,28 +667,54 @@
       return existing ? existing.config : undefined;
     }
 
-    const state = createBoardState(rootEl, options);
-    state.buildDom();
+    // 并发进入时共用同一挂载 Promise，避免重复 buildDom / 多个 tooltip 挂到 body
+    if (rootEl._monitorMountPromise) {
+      await rootEl._monitorMountPromise;
+      const existing = mountedStates && mountedStates.get(rootEl);
+      if (existing && options.initialPlatform) {
+        existing.options = Object.assign({}, existing.options, options);
+        applyInitialPlatform(existing);
+      }
+      return existing ? existing.config : undefined;
+    }
+
+    rootEl._monitorMountPromise = (async function () {
+      const state = createBoardState(rootEl, options);
+      state.buildDom();
+
+      try {
+        const response = await fetch(configUrl);
+        state.config = response.ok ? await response.json() : {};
+      } catch (err) {
+        state.config = {};
+      }
+
+      state.applyStaticTexts();
+      await state.fetchBoard();
+
+      rootEl.dataset.monitorMounted = '1';
+      if (mountedStates) {
+        mountedStates.set(rootEl, state);
+      }
+      return state.config;
+    })();
 
     try {
-      const response = await fetch(configUrl);
-      state.config = response.ok ? await response.json() : {};
-    } catch (err) {
-      state.config = {};
+      return await rootEl._monitorMountPromise;
+    } finally {
+      // 保留 promise 供后续 await；已 mounted 走上面的短路径
     }
+  }
 
-    state.applyStaticTexts();
-    await state.fetchBoard();
-
-    rootEl.dataset.monitorMounted = '1';
-    if (mountedStates) {
-      mountedStates.set(rootEl, state);
-    }
-
-    return state.config;
+  function hideMonitorTooltips() {
+    document.querySelectorAll('.monitor-tooltip').forEach(function (el) {
+      el.style.display = 'none';
+      el.innerHTML = '';
+    });
   }
 
   return {
-    mountMonitorBoard: mountMonitorBoard
+    mountMonitorBoard: mountMonitorBoard,
+    hideMonitorTooltips: hideMonitorTooltips
   };
 });
