@@ -3990,13 +3990,15 @@
         .main-view-tabs [role="tab"]:hover,
         .preset-tag-chip:hover,
         .platform-tag-chip:hover,
+        .platform-tag-chip--operational:hover,
+        .platform-status-seg:hover,
         .filter-btn:hover,
         .reset-btn:hover,
         .checkbox-label:hover {
             transform: none;
-            background: rgba(11, 104, 209, 0.07);
-            border-color: rgba(11, 104, 209, 0.22);
-            color: var(--text-primary);
+            background: #eceff3;
+            border-color: rgba(16, 23, 37, 0.1);
+            color: #4b5565;
             box-shadow: none;
         }
 
@@ -4004,7 +4006,28 @@
         .preset-tag-chip.active,
         .platform-tag-chip.is-active,
         .platform-tag-chip.active,
-        .platform-status-seg.is-active,
+        .platform-tag-chip--operational.is-active,
+        .platform-tag-chip--toggle.is-active,
+        .platform-status-seg.is-active {
+            background: #292524;
+            border-color: #292524;
+            color: #fff;
+            box-shadow: none;
+            font-weight: 700;
+        }
+
+        .main-view-tabs [role="tab"].is-active:hover,
+        .preset-tag-chip.active:hover,
+        .platform-tag-chip.is-active:hover,
+        .platform-tag-chip.active:hover,
+        .platform-tag-chip--operational.is-active:hover,
+        .platform-tag-chip--toggle.is-active:hover,
+        .platform-status-seg.is-active:hover {
+            background: #1f1c1b;
+            border-color: #1f1c1b;
+            color: #fff;
+        }
+
         .dropdown-btn.primary {
             background: #101725;
             border-color: #101725;
@@ -4012,15 +4035,13 @@
             box-shadow: none;
         }
 
-        .platform-tag-chip--operational.is-active,
-        .platform-tag-chip--toggle.is-active {
-            background: rgba(0, 133, 122, 0.1);
-            border-color: rgba(0, 133, 122, 0.34);
-            color: #00756e;
-        }
-
         .platform-status-seg {
             border-radius: 7px;
+            color: #8b93a3;
+        }
+
+        .platform-status-seg.is-active {
+            color: #fff;
         }
 
         .platform-card,
