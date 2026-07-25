@@ -109,6 +109,19 @@
       return availabilityRateFromHours(visibleHours(hours));
     }
 
+    // 平台可用率 = 下属模型可用率的算术平均；无模型时回退到平台自身 hours
+    function platformAvailabilityRate(platform) {
+      const models = platform && platform.models;
+      if (models && models.length) {
+        let sum = 0;
+        for (let i = 0; i < models.length; i++) {
+          sum += visibleAvailabilityRate(models[i].hours);
+        }
+        return Math.round((sum / models.length) * 10000) / 10000;
+      }
+      return visibleAvailabilityRate(platform && platform.hours);
+    }
+
     function displayModelName(name) {
       if (!state.boardData || !state.boardData.model_display_names) return name;
       return state.boardData.model_display_names[name] || name;
@@ -294,7 +307,7 @@
       block.appendChild(renderStatusRow({
         title: platform.platform_display_name || platform.platform_slug,
         meta: (platform.models ? platform.models.length : 0) + ' ' + (state.config.toolbar && state.config.toolbar.modelsLabel || '个模型'),
-        rate: visibleAvailabilityRate(platform.hours),
+        rate: platformAvailabilityRate(platform),
         hours: platform.hours,
         clickable: true,
         expanded: !!state.expandedPlatforms[platform.platform_slug],
@@ -344,7 +357,7 @@
       const copy = (platforms || []).slice();
       if (!sortByAvailability) return copy;
       copy.sort(function (a, b) {
-        return visibleAvailabilityRate(b.hours) - visibleAvailabilityRate(a.hours);
+        return platformAvailabilityRate(b) - platformAvailabilityRate(a);
       });
       return copy;
     }
