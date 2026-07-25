@@ -2224,7 +2224,8 @@
                 selectedLabels: platformSelectedLabels,
                 platformStatusMax,
                 derivedTags: cat.derivedTags || [],
-                operationalTags: cat.operationalTags || []
+                operationalTags: cat.operationalTags || [],
+                pinnedIds: platformPinnedIds
             };
 
             const filtered = PlatformCatalog.sortPlatformsByPinned(

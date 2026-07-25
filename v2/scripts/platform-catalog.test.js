@@ -134,6 +134,38 @@ describe('filterPlatforms', () => {
     });
     assert.deepEqual(result.map(p => p.id), ['1', '2']);
   });
+
+  it('keeps pinned platforms even when filters would hide them', () => {
+    const platforms = [
+      samplePlatform({ id: 'match', tags: ['适合养龙虾'] }),
+      samplePlatform({
+        id: 'pinned-tag-miss',
+        tags: [],
+        dimensions: {
+          value: { score: 1, reason: 'a' },
+          stability: { score: 1, reason: 'b' },
+          models: { score: 1, reason: 'c' }
+        }
+      }),
+      samplePlatform({
+        id: 'pinned-delisted',
+        platformStatus: 'delisted',
+        tags: ['适合养龙虾']
+      })
+    ];
+    const result = filterPlatforms(platforms, {
+      selectedLabels: ['适合养龙虾', '性价比高'],
+      platformStatusMax: 'limited',
+      derivedTags,
+      operationalTags: ['适合养龙虾'],
+      pinnedIds: ['pinned-tag-miss', 'pinned-delisted']
+    });
+    assert.deepEqual(result.map((p) => p.id), [
+      'match',
+      'pinned-tag-miss',
+      'pinned-delisted'
+    ]);
+  });
 });
 
 describe('collectModelsForVendor', () => {

@@ -103,11 +103,20 @@ function filterPlatforms(platforms, {
   selectedLabels,
   platformStatusMax,
   derivedTags,
-  operationalTags
+  operationalTags,
+  pinnedIds
 }) {
+  const pinnedSet = new Set(normalizePinnedIds(pinnedIds));
+  function isPinnedPlatform(platform) {
+    const id = platform && typeof platform.id === 'string' ? platform.id.trim() : '';
+    return !!(id && pinnedSet.has(id));
+  }
+
   let result = platforms;
   const maxRank = platformStatusRank(platformStatusMax ?? DEFAULT_PLATFORM_STATUS_MAX);
-  result = result.filter(p => platformStatusRank(p.platformStatus) <= maxRank);
+  result = result.filter(
+    (p) => isPinnedPlatform(p) || platformStatusRank(p.platformStatus) <= maxRank
+  );
 
   if (!selectedLabels || selectedLabels.length === 0) {
     return result;
@@ -116,6 +125,7 @@ function filterPlatforms(platforms, {
   const derivedByLabel = new Map((derivedTags || []).map(t => [t.label, t]));
 
   return result.filter(platform => {
+    if (isPinnedPlatform(platform)) return true;
     for (const label of selectedLabels) {
       const derived = derivedByLabel.get(label);
       if (derived) {
