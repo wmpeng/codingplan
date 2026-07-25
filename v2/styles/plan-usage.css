@@ -98,7 +98,23 @@
 }
 
 .plan-composite-price-panel .plan-usage-chart-block {
-    margin-top: 18px;
+    margin-top: 12px;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+}
+
+.plan-composite-price-panel .plan-usage-chart {
+    margin-top: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+}
+
+.plan-composite-price-panel .plan-usage-state {
+    margin-top: 0;
+    border-radius: 10px;
 }
 
 .plan-usage-chart-scroll {
