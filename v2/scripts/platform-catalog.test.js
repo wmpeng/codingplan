@@ -25,10 +25,19 @@ const {
   isPlatformPinned,
   togglePinnedId,
   sortPlatformsByPinned,
+  sortItemsByPinned,
+  getPlanRowPinId,
+  getPaygRowPinId,
+  sanitizePinnedIdList,
+  mergePinnedIntoFiltered,
+  partitionPinnedItems,
+  buildRowPinButtonHtml,
   readPinnedIdsFromStorage,
   writePinnedIdsToStorage,
   buildPlatformPinButtonHtml,
   PLATFORM_PIN_MAX,
+  PLANS_TABLE_PIN_STORAGE_KEY,
+  PAYG_TABLE_PIN_STORAGE_KEY,
   dimensionCopy,
   collectPlansForVendor,
   matchMonitorPlatform,
@@ -753,5 +762,43 @@ describe('platform pins', () => {
     assert.match(html, /aria-pressed="true"/);
     assert.ok(isPlatformPinned('zhipu', ['zhipu']));
     assert.ok(buildPlatformPinButtonHtml({ platformId: '', pinned: true }) === '');
+  });
+});
+
+describe('table row pins', () => {
+  it('builds stable plan and payg pin ids', () => {
+    assert.equal(
+      getPlanRowPinId({ vendor: '腾讯云', plan: 'Lite', type: 'Token Plan' }),
+      '腾讯云|Lite|Token Plan'
+    );
+    assert.equal(
+      getPlanRowPinId({ vendor: '智谱AI', plan: 'Lite' }),
+      '智谱AI|Lite|Coding Plan'
+    );
+    assert.equal(getPaygRowPinId({ platformId: 'deepseek-official', modelName: 'DeepSeek-V4-Pro' }), 'deepseek-official|DeepSeek-V4-Pro');
+    assert.equal(PLANS_TABLE_PIN_STORAGE_KEY, 'plansTablePinnedIds');
+    assert.equal(PAYG_TABLE_PIN_STORAGE_KEY, 'paygTablePinnedIds');
+  });
+
+  it('merges pinned rows back and partitions for sort-safe head', () => {
+    const all = [
+      { platformId: 'a', modelName: 'M1', input: 1 },
+      { platformId: 'b', modelName: 'M2', input: 9 },
+      { platformId: 'c', modelName: 'M3', input: 3 }
+    ];
+    const filtered = [all[2]];
+    const pinned = ['b|M2', 'a|M1'];
+    const merged = mergePinnedIntoFiltered(all, filtered, pinned, getPaygRowPinId);
+    assert.deepEqual(
+      merged.map(getPaygRowPinId),
+      ['c|M3', 'b|M2', 'a|M1']
+    );
+    const { head, tail } = partitionPinnedItems(merged, pinned, getPaygRowPinId);
+    assert.deepEqual(head.map(getPaygRowPinId), ['b|M2', 'a|M1']);
+    assert.deepEqual(tail.map(getPaygRowPinId), ['c|M3']);
+    const ordered = sortItemsByPinned(merged, pinned, getPaygRowPinId);
+    assert.deepEqual(ordered.map(getPaygRowPinId), ['b|M2', 'a|M1', 'c|M3']);
+    assert.deepEqual(sanitizePinnedIdList(['b|M2', 'gone'], ['b|M2', 'c|M3']), ['b|M2']);
+    assert.match(buildRowPinButtonHtml({ pinId: 'b|M2', pinned: true }), /data-table-pin="1"/);
   });
 });

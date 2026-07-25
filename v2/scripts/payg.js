@@ -5,6 +5,7 @@
   let sortKey = 'order';
   let sortDir = 'asc';
   let usdToCnyRate = 6.8;
+  let paygPinnedIds = [];
   const selectedPlatformIds = new Set();
   const selectedModelNames = new Set();
   let pricedOnly = false;
@@ -87,6 +88,50 @@
     });
   }
 
+  function loadPaygPinnedIds() {
+    if (typeof window === 'undefined' || !window.localStorage) {
+      paygPinnedIds = [];
+      return;
+    }
+    const raw = PlatformCatalog.readPinnedIdsFromStorage(
+      window.localStorage,
+      PlatformCatalog.PAYG_TABLE_PIN_STORAGE_KEY
+    );
+    const validIds = allRows.map(PlatformCatalog.getPaygRowPinId).filter(Boolean);
+    const cleaned = PlatformCatalog.sanitizePinnedIdList(raw, validIds);
+    paygPinnedIds = cleaned;
+    if (cleaned.length !== raw.length) {
+      PlatformCatalog.writePinnedIdsToStorage(
+        window.localStorage,
+        cleaned,
+        PlatformCatalog.PAYG_TABLE_PIN_STORAGE_KEY
+      );
+    }
+  }
+
+  function persistPaygPinnedIds() {
+    PlatformCatalog.writePinnedIdsToStorage(
+      window.localStorage,
+      paygPinnedIds,
+      PlatformCatalog.PAYG_TABLE_PIN_STORAGE_KEY
+    );
+  }
+
+  function togglePaygPin(pinId) {
+    const id = typeof pinId === 'string' ? pinId.trim() : '';
+    if (!id) return;
+    const validIds = allRows.map(PlatformCatalog.getPaygRowPinId).filter(Boolean);
+    if (!validIds.includes(id) && !PlatformCatalog.isPlatformPinned(id, paygPinnedIds)) {
+      return;
+    }
+    paygPinnedIds = PlatformCatalog.sanitizePinnedIdList(
+      PlatformCatalog.togglePinnedId(paygPinnedIds, id),
+      validIds
+    );
+    persistPaygPinnedIds();
+    applyAndRender();
+  }
+
   function formatRatingStars(rating) {
     const n = Math.max(0, Math.min(5, Number(rating) || 0));
     return '★'.repeat(n) + '☆'.repeat(5 - n);
@@ -116,9 +161,12 @@
           .join('<br>');
         const currency = row.currency || '¥';
         const composite = PlatformCatalog.formatPaygCompositePrice(row, usdToCnyRate);
+        const pinId = PlatformCatalog.getPaygRowPinId(row);
+        const pinned = PlatformCatalog.isPlatformPinned(pinId, paygPinnedIds);
+        const pinHtml = PlatformCatalog.buildRowPinButtonHtml({ pinId, pinned });
         return (
-          `<tr>` +
-          `<td class="sticky-first">${nameHtml}</td>` +
+          `<tr class="${pinned ? 'is-pinned' : ''}">` +
+          `<td class="sticky-first"><span class="table-pin-cell">${pinHtml}${nameHtml}</span></td>` +
           `<td class="sticky-second"><span class="plan-name">${PlatformCatalog.escapeHtml(row.modelName)}</span></td>` +
           `<td><span class="price">${PlatformCatalog.escapeHtml(PlatformCatalog.formatPaygPrice(row.input, currency))}</span></td>` +
           `<td><span class="price-monthly">${PlatformCatalog.escapeHtml(PlatformCatalog.formatPaygPrice(row.cache, currency))}</span></td>` +
@@ -136,16 +184,28 @@
 
   function applyAndRender() {
     syncSelectionFromDom();
-    const filtered = PlatformCatalog.filterPaygRows(allRows, {
+    let filtered = PlatformCatalog.filterPaygRows(allRows, {
       platformIds: selectedPlatformIds.size ? [...selectedPlatformIds] : [],
       modelNames: selectedModelNames.size ? [...selectedModelNames] : [],
       pricedOnly
     });
-    const sorted = PlatformCatalog.sortPaygRows(filtered, {
+    filtered = PlatformCatalog.mergePinnedIntoFiltered(
+      allRows,
+      filtered,
+      paygPinnedIds,
+      PlatformCatalog.getPaygRowPinId
+    );
+    const { head, tail } = PlatformCatalog.partitionPinnedItems(
+      filtered,
+      paygPinnedIds,
+      PlatformCatalog.getPaygRowPinId
+    );
+    const sortedTail = PlatformCatalog.sortPaygRows(tail, {
       key: sortKey,
       dir: sortDir,
       usdToCnyRate
     });
+    const sorted = head.concat(sortedTail);
     renderBody(sorted);
     const countEl = document.getElementById('paygResultCount');
     const totalEl = document.getElementById('paygTotalCount');
@@ -271,6 +331,18 @@
       });
     });
 
+    const tbody = document.getElementById('paygTableBody');
+    if (tbody && !tbody.dataset.paygPinBound) {
+      tbody.dataset.paygPinBound = '1';
+      tbody.addEventListener('click', (e) => {
+        const pinBtn = e.target.closest('[data-table-pin="1"]');
+        if (!pinBtn) return;
+        e.preventDefault();
+        e.stopPropagation();
+        togglePaygPin(pinBtn.getAttribute('data-pin-id'));
+      });
+    }
+
     if (!window.__paygDocClickBound) {
       window.__paygDocClickBound = true;
       document.addEventListener('click', (e) => {
@@ -320,6 +392,7 @@
         usdToCnyRate =
           typeof rate === 'number' && Number.isFinite(rate) && rate > 0 ? rate : 6.8;
         allRows = PlatformCatalog.flattenPaygRows(paygPricing, platforms, plans);
+        loadPaygPinnedIds();
         renderFilterOptions();
         applyAndRender();
       } catch (error) {

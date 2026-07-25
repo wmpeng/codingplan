@@ -18,6 +18,7 @@
         let platformSelectedLabels = [];
         let platformStatusMax = 'limited';
         let platformPinnedIds = [];
+        let planPinnedIds = [];
         let currentSort = { column: null, direction: 'asc' };
         // 已确认的选择
         let selectedVendors = new Set();
@@ -435,6 +436,11 @@
                                 header.classList.remove('sort-asc', 'sort-desc');
                             });
                             filteredPlans.sort((a, b) => a.originalIndex - b.originalIndex);
+                            filteredPlans = PlatformCatalog.sortItemsByPinned(
+                                filteredPlans,
+                                planPinnedIds,
+                                PlatformCatalog.getPlanRowPinId
+                            );
                             renderTable();
                             return;
                         }
@@ -443,6 +449,17 @@
                     sortData(column, direction);
                 });
             });
+
+            if (tableBody && !tableBody.dataset.planPinBound) {
+                tableBody.dataset.planPinBound = '1';
+                tableBody.addEventListener('click', (e) => {
+                    const pinBtn = e.target.closest('[data-table-pin="1"]');
+                    if (!pinBtn) return;
+                    e.preventDefault();
+                    e.stopPropagation();
+                    togglePlanPin(pinBtn.getAttribute('data-pin-id'));
+                });
+            }
 
             window.addEventListener('resize', updateStickyColumns);
 
@@ -713,12 +730,24 @@
                 return true;
             });
 
+            filteredPlans = PlatformCatalog.mergePinnedIntoFiltered(
+                allPlans,
+                filteredPlans,
+                planPinnedIds,
+                PlatformCatalog.getPlanRowPinId
+            );
+
             showingCount.textContent = filteredPlans.length;
             totalCount.textContent = allPlans.length;
 
             if (currentSort.column) {
                 sortData(currentSort.column, currentSort.direction);
             } else {
+                filteredPlans = PlatformCatalog.sortItemsByPinned(
+                    filteredPlans,
+                    planPinnedIds,
+                    PlatformCatalog.getPlanRowPinId
+                );
                 renderTable();
             }
         }
@@ -1273,7 +1302,13 @@
 
             const isMissing = (value) => value === null || value === undefined || value === '';
 
-            filteredPlans.sort((a, b) => {
+            const { head, tail } = PlatformCatalog.partitionPinnedItems(
+                filteredPlans,
+                planPinnedIds,
+                PlatformCatalog.getPlanRowPinId
+            );
+
+            tail.sort((a, b) => {
                 const valueA = getSortValue(a);
                 const valueB = getSortValue(b);
                 const missingA = isMissing(valueA);
@@ -1292,6 +1327,8 @@
                 if (cmp === 0) return a.originalIndex - b.originalIndex;
                 return direction === 'asc' ? cmp : -cmp;
             });
+
+            filteredPlans = head.concat(tail);
 
             renderTable();
             updateSortHeaders();
@@ -1339,9 +1376,13 @@
                 return;
             }
 
-            tableBody.innerHTML = filteredPlans.map(plan => `
-                <tr class="plan-row${plan.discontinued ? ' discontinued' : ''}">
-                    <td class="sticky-first"><span class="vendor-name">${escapeHtml(plan['vendor'])}</span></td>
+            tableBody.innerHTML = filteredPlans.map(plan => {
+                const pinId = PlatformCatalog.getPlanRowPinId(plan);
+                const pinned = PlatformCatalog.isPlatformPinned(pinId, planPinnedIds);
+                const pinHtml = PlatformCatalog.buildRowPinButtonHtml({ pinId, pinned });
+                return `
+                <tr class="plan-row${plan.discontinued ? ' discontinued' : ''}${pinned ? ' is-pinned' : ''}">
+                    <td class="sticky-first"><span class="table-pin-cell">${pinHtml}<span class="vendor-name">${escapeHtml(plan['vendor'])}</span></span></td>
                     <td class="sticky-second"><span class="plan-name">${escapeHtml(plan['plan'])}</span></td>
                     <td><span class="type-tag ${(plan.type || 'Coding Plan') === 'Token Plan' ? 'token-plan' : 'coding-plan'}">${escapeHtml(plan.type || 'Coding Plan')}</span></td>
                     <td>
@@ -1371,7 +1412,8 @@
                     <td>${plan.discontinued ? '<span class="status-offline">已下线</span>' : ''}</td>
                     <td><span class="note">${(plan['note'] || '').replace(/\n/g, '<br>')}</span></td>
                 </tr>
-            `).join('');
+            `;
+            }).join('');
 
             setTimeout(updateStickyColumns, 0);
         }
@@ -2193,6 +2235,52 @@
             PlatformCatalog.writePinnedIdsToStorage(window.localStorage, platformPinnedIds);
         }
 
+        function loadPlanPinnedIds() {
+            if (typeof PlatformCatalog === 'undefined' || typeof window === 'undefined' || !window.localStorage) {
+                planPinnedIds = [];
+                return;
+            }
+            const raw = PlatformCatalog.readPinnedIdsFromStorage(
+                window.localStorage,
+                PlatformCatalog.PLANS_TABLE_PIN_STORAGE_KEY
+            );
+            const validIds = allPlans.map(PlatformCatalog.getPlanRowPinId).filter(Boolean);
+            const cleaned = PlatformCatalog.sanitizePinnedIdList(raw, validIds);
+            planPinnedIds = cleaned;
+            if (cleaned.length !== raw.length) {
+                PlatformCatalog.writePinnedIdsToStorage(
+                    window.localStorage,
+                    cleaned,
+                    PlatformCatalog.PLANS_TABLE_PIN_STORAGE_KEY
+                );
+            }
+        }
+
+        function persistPlanPinnedIds() {
+            if (typeof PlatformCatalog === 'undefined') return;
+            PlatformCatalog.writePinnedIdsToStorage(
+                window.localStorage,
+                planPinnedIds,
+                PlatformCatalog.PLANS_TABLE_PIN_STORAGE_KEY
+            );
+        }
+
+        function togglePlanPin(pinId) {
+            if (typeof PlatformCatalog === 'undefined') return;
+            const id = typeof pinId === 'string' ? pinId.trim() : '';
+            if (!id) return;
+            const validIds = allPlans.map(PlatformCatalog.getPlanRowPinId).filter(Boolean);
+            if (!validIds.includes(id) && !PlatformCatalog.isPlatformPinned(id, planPinnedIds)) {
+                return;
+            }
+            planPinnedIds = PlatformCatalog.sanitizePinnedIdList(
+                PlatformCatalog.togglePinnedId(planPinnedIds, id),
+                validIds
+            );
+            persistPlanPinnedIds();
+            applyFilters();
+        }
+
         function togglePlatformPin(platformId) {
             if (typeof PlatformCatalog === 'undefined') return;
             const id = typeof platformId === 'string' ? platformId.trim() : '';
@@ -2320,7 +2408,7 @@
             const root = document.getElementById('view-payg');
             if (!root) return;
             if (typeof window.mountPaygView !== 'function') {
-                await loadScriptOnce('scripts/payg.js?v=260725i');
+                await loadScriptOnce('scripts/payg.js?v=260725j');
             }
             if (typeof window.mountPaygView === 'function') {
                 await window.mountPaygView(root);
@@ -2549,6 +2637,7 @@
                 const plansData = await response.json();
                 allPlans = plansData.map((item, index) => processPrices(item, index));
                 filteredPlans = [...allPlans];
+                loadPlanPinnedIds();
 
                 initFilters();
                 initPriceSliders();

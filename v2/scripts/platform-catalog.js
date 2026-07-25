@@ -190,20 +190,123 @@ function togglePinnedId(pinnedIds, platformId, options = {}) {
 }
 
 function sortPlatformsByPinned(platforms, pinnedIds) {
-  const list = Array.isArray(platforms) ? platforms.slice() : [];
+  return sortItemsByPinned(platforms, pinnedIds, (platform) =>
+    platform && typeof platform.id === 'string' ? platform.id.trim() : ''
+  );
+}
+
+function sortItemsByPinned(items, pinnedIds, getId) {
+  const list = Array.isArray(items) ? items.slice() : [];
   const pinned = normalizePinnedIds(pinnedIds);
+  const resolveId =
+    typeof getId === 'function' ? getId : (item) => (item && typeof item.id === 'string' ? item.id.trim() : '');
   if (!pinned.length || !list.length) return list;
 
   const rank = new Map(pinned.map((id, index) => [id, index]));
   const head = [];
   const tail = [];
-  for (const platform of list) {
-    const id = platform && typeof platform.id === 'string' ? platform.id.trim() : '';
-    if (id && rank.has(id)) head.push(platform);
-    else tail.push(platform);
+  for (const item of list) {
+    const id = resolveId(item);
+    if (id && rank.has(id)) head.push(item);
+    else tail.push(item);
   }
-  head.sort((a, b) => rank.get(a.id.trim()) - rank.get(b.id.trim()));
+  head.sort((a, b) => rank.get(resolveId(a)) - rank.get(resolveId(b)));
   return head.concat(tail);
+}
+
+const PLANS_TABLE_PIN_STORAGE_KEY = 'plansTablePinnedIds';
+const PAYG_TABLE_PIN_STORAGE_KEY = 'paygTablePinnedIds';
+
+function getPlanRowPinId(plan) {
+  if (!plan || typeof plan !== 'object') return '';
+  const vendor = String(plan.vendor || '').trim();
+  const name = String(plan.plan || '').trim();
+  const type = String(plan.type || 'Coding Plan').trim() || 'Coding Plan';
+  if (!vendor || !name) return '';
+  return `${vendor}|${name}|${type}`;
+}
+
+function getPaygRowPinId(row) {
+  if (!row || typeof row !== 'object') return '';
+  const platformId = String(row.platformId || '').trim();
+  const modelName = String(row.modelName || '').trim();
+  if (!platformId || !modelName) return '';
+  return `${platformId}|${modelName}`;
+}
+
+function sanitizePinnedIdList(pinnedIds, validIds) {
+  const valid = new Set(
+    (Array.isArray(validIds) ? validIds : [])
+      .map((id) => String(id == null ? '' : id).trim())
+      .filter(Boolean)
+  );
+  return normalizePinnedIds(pinnedIds).filter((id) => valid.has(id));
+}
+
+/** 把已 pin 但被筛选掉的项从全集补回 */
+function mergePinnedIntoFiltered(allItems, filteredItems, pinnedIds, getId) {
+  const resolveId = typeof getId === 'function' ? getId : () => '';
+  const result = Array.isArray(filteredItems) ? filteredItems.slice() : [];
+  const pinned = normalizePinnedIds(pinnedIds);
+  if (!pinned.length) return result;
+
+  const seen = new Set();
+  for (const item of result) {
+    const id = resolveId(item);
+    if (id) seen.add(id);
+  }
+  const byId = new Map();
+  for (const item of Array.isArray(allItems) ? allItems : []) {
+    const id = resolveId(item);
+    if (id && !byId.has(id)) byId.set(id, item);
+  }
+  for (const id of pinned) {
+    if (seen.has(id)) continue;
+    const item = byId.get(id);
+    if (item) {
+      result.push(item);
+      seen.add(id);
+    }
+  }
+  return result;
+}
+
+/** 拆成：按 pin 顺序的头部 + 其余（供只排序未 pin 段） */
+function partitionPinnedItems(items, pinnedIds, getId) {
+  const resolveId = typeof getId === 'function' ? getId : () => '';
+  const pinned = normalizePinnedIds(pinnedIds);
+  const pinnedSet = new Set(pinned);
+  const headMap = new Map();
+  const tail = [];
+  for (const item of Array.isArray(items) ? items : []) {
+    const id = resolveId(item);
+    if (id && pinnedSet.has(id)) headMap.set(id, item);
+    else tail.push(item);
+  }
+  const head = [];
+  for (const id of pinned) {
+    if (headMap.has(id)) head.push(headMap.get(id));
+  }
+  return { head, tail };
+}
+
+function buildRowPinButtonHtml({ pinId, pinned } = {}) {
+  const id = typeof pinId === 'string' ? pinId.trim() : '';
+  if (!id) return '';
+  const isPinned = !!pinned;
+  const label = isPinned ? '取消置顶' : '置顶';
+  const classes = ['platform-pin-btn', 'table-row-pin-btn', isPinned ? 'is-pinned' : '']
+    .filter(Boolean)
+    .join(' ');
+  const icon = isPinned
+    ? '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>'
+    : '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>';
+  return (
+    `<button type="button" class="${classes}" data-table-pin="1" data-pin-id="${escapeHtml(id)}" ` +
+    `aria-pressed="${isPinned ? 'true' : 'false'}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">` +
+    icon +
+    `</button>`
+  );
 }
 
 function readPinnedIdsFromStorage(storage, key) {
@@ -958,14 +1061,23 @@ const PlatformCatalog = {
   filterPlatforms,
   PLATFORM_PIN_STORAGE_KEY,
   PLATFORM_PIN_MAX,
+  PLANS_TABLE_PIN_STORAGE_KEY,
+  PAYG_TABLE_PIN_STORAGE_KEY,
   normalizePinnedIds,
   sanitizePinnedIds,
+  sanitizePinnedIdList,
   isPlatformPinned,
   togglePinnedId,
   sortPlatformsByPinned,
+  sortItemsByPinned,
+  getPlanRowPinId,
+  getPaygRowPinId,
+  mergePinnedIntoFiltered,
+  partitionPinnedItems,
   readPinnedIdsFromStorage,
   writePinnedIdsToStorage,
   buildPlatformPinButtonHtml,
+  buildRowPinButtonHtml,
   collectModelsForVendor,
   dimensionCopy,
   collectPlansForVendor,

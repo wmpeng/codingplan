@@ -557,6 +557,49 @@
     font-size: 14px;
 }
 
+.table-pin-cell {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 100%;
+}
+
+.table-pin-cell .vendor-name,
+.table-pin-cell .vendor-name-link {
+    min-width: 0;
+}
+
+.table-row-pin-btn.platform-pin-btn {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    border-radius: 6px;
+}
+
+#plansTable tbody tr.is-pinned td,
+#paygTable tbody tr.is-pinned td {
+    background: rgba(15, 118, 110, 0.04);
+}
+
+#plansTable tbody tr.is-pinned td.sticky-first,
+#plansTable tbody tr.is-pinned td.sticky-second,
+#paygTable tbody tr.is-pinned td.sticky-first,
+#paygTable tbody tr.is-pinned td.sticky-second {
+    background: #f7fbfa;
+}
+
+#plansTable tbody tr.is-pinned:hover td,
+#paygTable tbody tr.is-pinned:hover td {
+    background: rgba(15, 118, 110, 0.07);
+}
+
+#plansTable tbody tr.is-pinned:hover td.sticky-first,
+#plansTable tbody tr.is-pinned:hover td.sticky-second,
+#paygTable tbody tr.is-pinned:hover td.sticky-first,
+#paygTable tbody tr.is-pinned:hover td.sticky-second {
+    background: #eef7f5;
+}
+
 .vendor-name-link {
     color: inherit;
     text-decoration: none;
