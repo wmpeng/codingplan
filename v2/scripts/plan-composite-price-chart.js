@@ -298,7 +298,7 @@
       },
       yAxis: {
         type: 'value',
-        name: '¥ / M',
+        name: '/ M Token',
         nameTextStyle: { color: '#64748b', fontSize: 12, padding: [0, 0, 0, 8] },
         axisLabel: {
           color: '#64748b',
