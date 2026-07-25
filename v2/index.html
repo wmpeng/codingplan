@@ -3970,7 +3970,7 @@
         }
 
         .platform-catalog {
-            gap: 10px;
+            gap: 18px;
             margin: 4px 0 28px;
         }
 
@@ -3978,9 +3978,22 @@
             margin-bottom: 0;
         }
 
+        /* 与筛选栏 margin-bottom:18px 对齐，避免 flex gap 再叠一层 */
         .plans-table-section {
-            gap: 12px;
+            gap: 0;
             margin: 4px 0 22px;
+        }
+
+        #view-payg {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        #view-monitor {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
         }
 
         .main-view-tabs {
