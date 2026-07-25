@@ -1,4 +1,6 @@
 .monitor-toolbar {
+    position: relative;
+    z-index: 40;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;

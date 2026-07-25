@@ -2394,7 +2394,7 @@
             if (!document.querySelector('link[data-monitor-css="1"]')) {
                 const link = document.createElement('link');
                 link.rel = 'stylesheet';
-                link.href = 'styles/monitor.css';
+                link.href = 'styles/monitor.css?v=260725c';
                 link.dataset.monitorCss = '1';
                 document.head.appendChild(link);
             }
