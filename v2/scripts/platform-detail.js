@@ -258,7 +258,7 @@
   }
 
   function normalizeBoardPayload(resp) {
-    // 与 monitor/index.html 一致：优先取 resp.data
+    // 与可用性监控接口一致：优先取 resp.data
     const payload = (resp && resp.data) || resp;
     if (!payload || typeof payload !== 'object') return null;
     if (!Array.isArray(payload.platforms)) return null;

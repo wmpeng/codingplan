@@ -192,13 +192,10 @@ function renderPageNav(target, options = {}) {
     const tabs = Array.isArray(options.tabs) && options.tabs.length
         ? options.tabs
         : [
-            { key: 'index', href: 'index.html', text: 'Coding Plan' },
-            { key: 'payg', href: 'payg.html', text: '按量计价' },
-            { key: 'plan-usage', href: 'plan-usage.html', text: 'Coding Plan用量提交' },
-            { key: 'coding-agents', href: 'coding-agents.html', text: '编程 Agent' },
-            { key: 'relays', href: 'relays.html', text: '中转站' },
-            { key: 'relay-detect', href: 'relay-detect.html', text: '中转站检测' },
-            { key: 'monitor', href: 'monitor/index.html', text: '可用性监控' }
+            { key: 'platforms', href: 'index.html?view=platforms', text: '平台对比' },
+            { key: 'plans', href: 'index.html?view=plans', text: '套餐大表' },
+            { key: 'payg', href: 'index.html?view=payg', text: '按量计价' },
+            { key: 'monitor', href: 'index.html?view=monitor', text: '可用性监控' }
         ];
     const activeKey = options.activeKey || '';
     const settings = options.settings || {};
