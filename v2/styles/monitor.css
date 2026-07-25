@@ -177,11 +177,7 @@
     border-bottom: none;
 }
 .monitor-models .monitor-row--nested {
-    border-bottom: none;
-    border-top: 1px solid rgba(16, 23, 37, 0.06);
-}
-.monitor-models .monitor-row--nested:first-child {
-    border-top: none;
+    border: none;
 }
 .monitor-row-top {
     display: flex;
@@ -265,6 +261,11 @@
 .timeline-cell--yellow { background: #d4a017; }
 .timeline-cell--red { background: #dc6b5a; }
 .timeline-cell--gray { background: #e8ecf1; }
+
+.monitor-row--nested .timeline-cell--green { background: #55b590; }
+.monitor-row--nested .timeline-cell--yellow { background: #dbb848; }
+.monitor-row--nested .timeline-cell--red { background: #e28c7f; }
+.monitor-row--nested .timeline-cell--gray { background: #eef0f4; }
 .monitor-models {
     margin: 0;
     padding: 0;
