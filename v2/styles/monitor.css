@@ -113,34 +113,6 @@
     color: #1f7a5c;
     font-weight: 500;
 }
-.monitor-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 0;
-    padding: 0.38rem 0.75rem;
-    border-radius: 999px;
-    background: rgba(23, 32, 51, 0.04);
-    border: 1px solid transparent;
-    cursor: pointer;
-    user-select: none;
-    font-size: 0.82rem;
-    color: var(--text-tertiary);
-    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}
-.monitor-toggle:hover {
-    background: rgba(23, 32, 51, 0.06);
-    color: var(--text-secondary);
-}
-.monitor-toggle.is-active {
-    background: rgba(47, 158, 118, 0.1);
-    color: #1f7a5c;
-    border-color: rgba(47, 158, 118, 0.18);
-}
-.monitor-toggle input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
 .monitor-list {
     display: flex;
     flex-direction: column;

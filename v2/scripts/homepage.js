@@ -2394,12 +2394,12 @@
             if (!document.querySelector('link[data-monitor-css="1"]')) {
                 const link = document.createElement('link');
                 link.rel = 'stylesheet';
-                link.href = 'styles/monitor.css?v=260725c';
+                link.href = 'styles/monitor.css?v=260725d';
                 link.dataset.monitorCss = '1';
                 document.head.appendChild(link);
             }
             if (typeof window.mountMonitorBoard !== 'function') {
-                await loadScriptOnce('scripts/monitor-board.js');
+                await loadScriptOnce('scripts/monitor-board.js?v=260725d');
             }
             if (typeof window.mountMonitorBoard === 'function') {
                 const platform = new URLSearchParams(location.search).get('platform') || '';

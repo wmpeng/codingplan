@@ -190,11 +190,6 @@
       state.tooltipEl.innerHTML = '';
     }
 
-    function syncSortToggle() {
-      if (!state.sortToggle || !state.sortCheckbox) return;
-      state.sortToggle.classList.toggle('is-active', state.sortCheckbox.checked);
-    }
-
     function renderTimelineBar(hours) {
       const bar = document.createElement('div');
       bar.className = 'monitor-bar';
@@ -491,7 +486,6 @@
       if (sortLabel) {
         sortLabel.textContent = (state.config.toolbar && state.config.toolbar.sortByAvailability) || '按可用率排序';
       }
-      syncSortToggle();
     };
 
     state.fetchBoard = function fetchBoard() {
@@ -556,7 +550,7 @@
       modelControl.appendChild(state.modelDropdown);
 
       state.sortToggle = document.createElement('label');
-      state.sortToggle.className = 'monitor-toggle';
+      state.sortToggle.className = 'checkbox-label';
       state.sortToggle.id = 'sortToggle';
 
       state.sortCheckbox = document.createElement('input');
@@ -564,6 +558,7 @@
       state.sortCheckbox.id = 'sortByAvailability';
 
       const sortLabel = document.createElement('span');
+      sortLabel.className = 'checkbox-text';
       sortLabel.setAttribute('data-monitor-sort-label', '1');
 
       state.sortToggle.appendChild(state.sortCheckbox);
@@ -603,13 +598,11 @@
       document.body.appendChild(state.tooltipEl);
 
       state.sortCheckbox.addEventListener('change', function () {
-        syncSortToggle();
         state.renderBoard();
       });
 
       state.clearBtn.addEventListener('click', function () {
         state.sortCheckbox.checked = false;
-        syncSortToggle();
         setModelFilter('');
       });
 
