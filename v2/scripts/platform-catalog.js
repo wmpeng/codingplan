@@ -739,6 +739,9 @@ function buildPlatformTagBarHtml(catalogConfig, selectedLabels, platformStatusMa
     );
   }
   if (operationalChips.length) {
+    if (derivedChips.length) {
+      mainParts.push('<span class="platform-tag-sep" aria-hidden="true"></span>');
+    }
     mainParts.push(`<div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签">${operationalChips.join('')}</div>`);
   }
 

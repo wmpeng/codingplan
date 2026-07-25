@@ -298,6 +298,7 @@ describe('buildPlatformTagBarHtml', () => {
     assert.match(html, /platform-tag-bar-main/);
     assert.match(html, /platform-tag-group--derived/);
     assert.match(html, /platform-tag-chip--derived is-active" data-platform-tag="性价比高"/);
+    assert.match(html, /platform-tag-sep/);
     assert.match(html, /platform-tag-group--operational/);
     assert.match(html, /platform-status-slider/);
     assert.match(html, /platform-status-prefix">显示</);
