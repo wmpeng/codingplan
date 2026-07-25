@@ -32,6 +32,13 @@
 
   let chartInstance = null;
   let lastItems = [];
+  let renderGeneration = 0;
+  let echartsLoadPromise = null;
+
+  const ECHARTS_SRC = 'vendor/echarts.min.js?v=5.6.0';
+  const EMPTY_NO_DATA = '暂无足够的月费与实测 Token 数据，无法绘制综合价格图。';
+  const EMPTY_LOADING = '图表库加载中…';
+  const EMPTY_FAILED = '图表库加载失败，其它内容不受影响。可刷新重试。';
 
   function resolveUsdToCnyRate(rate) {
     return typeof rate === 'number' && Number.isFinite(rate) && rate > 0
@@ -146,6 +153,94 @@
     return chartInstance;
   }
 
+  function loadEchartsLibrary() {
+    if (typeof window === 'undefined') {
+      return Promise.reject(new Error('no window'));
+    }
+    if (window.echarts) {
+      return Promise.resolve(window.echarts);
+    }
+    if (echartsLoadPromise) {
+      return echartsLoadPromise;
+    }
+    echartsLoadPromise = new Promise((resolve, reject) => {
+      const existing = document.querySelector('script[data-echarts-vendor="1"]');
+      const settle = () => {
+        if (window.echarts) {
+          resolve(window.echarts);
+          return;
+        }
+        echartsLoadPromise = null;
+        reject(new Error('echarts global missing after script load'));
+      };
+      if (existing) {
+        if (existing.dataset.loaded === '1') {
+          settle();
+          return;
+        }
+        existing.addEventListener(
+          'load',
+          () => {
+            existing.dataset.loaded = '1';
+            settle();
+          },
+          { once: true }
+        );
+        existing.addEventListener(
+          'error',
+          () => {
+            echartsLoadPromise = null;
+            reject(new Error('Failed to load echarts'));
+          },
+          { once: true }
+        );
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = ECHARTS_SRC;
+      script.async = true;
+      script.dataset.echartsVendor = '1';
+      script.onload = () => {
+        script.dataset.loaded = '1';
+        settle();
+      };
+      script.onerror = () => {
+        echartsLoadPromise = null;
+        reject(new Error('Failed to load echarts'));
+      };
+      document.head.appendChild(script);
+    });
+    return echartsLoadPromise;
+  }
+
+  function setEmptyState(refs, visible, message) {
+    if (!refs.emptyEl) return;
+    refs.emptyEl.hidden = !visible;
+    if (visible && message) {
+      refs.emptyEl.textContent = message;
+    }
+  }
+
+  function paintChart(items) {
+    const refs = typeof document !== 'undefined' ? getDomRefs() : {};
+    if (!refs.chartEl || !items.length) return false;
+    if (refs.panel) refs.panel.hidden = false;
+    sizeChartCanvas(refs.chartEl, items.length);
+    const chart = ensureChart(refs.chartEl);
+    if (!chart) return false;
+    setEmptyState(refs, false, EMPTY_NO_DATA);
+    refs.chartEl.hidden = false;
+    chart.setOption(buildChartOption(items), true);
+    requestAnimationFrame(() => {
+      try {
+        chart.resize();
+      } catch (_) {
+        /* ignore */
+      }
+    });
+    return true;
+  }
+
   function buildChartOption(items) {
     const categories = items.map((item) => item.axisLabel);
     const values = items.map((item) => ({
@@ -236,10 +331,8 @@
     };
   }
 
-  function updateMeta(countEl, emptyEl, chartEl, count) {
+  function updateMeta(countEl, count) {
     if (countEl) countEl.textContent = String(count);
-    if (emptyEl) emptyEl.hidden = count > 0;
-    if (chartEl) chartEl.hidden = count === 0;
   }
 
   function sizeChartCanvas(chartEl, itemCount) {
@@ -254,29 +347,46 @@
     const refs = typeof document !== 'undefined' ? getDomRefs() : {};
     const items = buildCompositePriceChartItems(plans, options);
     lastItems = items;
+    const generation = ++renderGeneration;
 
-    if (refs.countEl || refs.emptyEl || refs.chartEl) {
-      updateMeta(refs.countEl, refs.emptyEl, refs.chartEl, items.length);
-    }
+    updateMeta(refs.countEl, items.length);
+
     if (!refs.chartEl || items.length === 0) {
       if (chartInstance) {
         chartInstance.clear();
       }
+      if (refs.chartEl) refs.chartEl.hidden = true;
+      setEmptyState(refs, true, EMPTY_NO_DATA);
       return items;
     }
+
     if (refs.panel) refs.panel.hidden = false;
 
-    sizeChartCanvas(refs.chartEl, items.length);
-    const chart = ensureChart(refs.chartEl);
-    if (!chart) return items;
-    chart.setOption(buildChartOption(items), true);
-    requestAnimationFrame(() => {
-      try {
-        chart.resize();
-      } catch (_) {
-        /* ignore */
-      }
-    });
+    if (typeof window !== 'undefined' && window.echarts) {
+      paintChart(items);
+      return items;
+    }
+
+    setEmptyState(refs, true, EMPTY_LOADING);
+    refs.chartEl.hidden = true;
+
+    loadEchartsLibrary()
+      .then(() => {
+        if (generation !== renderGeneration) return;
+        if (!lastItems.length) {
+          setEmptyState(refs, true, EMPTY_NO_DATA);
+          return;
+        }
+        paintChart(lastItems);
+      })
+      .catch((error) => {
+        if (generation !== renderGeneration) return;
+        console.warn('ECharts load failed:', error);
+        setEmptyState(getDomRefs(), true, EMPTY_FAILED);
+        const chartEl = document.getElementById('planCompositePriceChart');
+        if (chartEl) chartEl.hidden = true;
+      });
+
     return items;
   }
 
@@ -300,11 +410,13 @@
   return {
     DEFAULT_USD_TO_CNY_RATE,
     VENDOR_COLOR_PALETTE,
+    ECHARTS_SRC,
     resolveUsdToCnyRate,
     getPlanCompositePriceCny,
     buildVendorColorMap,
     buildCompositePriceChartItems,
     formatCompositePriceLabel,
+    loadEchartsLibrary,
     renderPlanCompositePriceChart,
     resizePlanCompositePriceChart,
     /** @deprecated alias */
