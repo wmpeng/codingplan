@@ -389,8 +389,8 @@ describe('collectPlansForVendor', () => {
 
 describe('matchMonitorPlatform', () => {
   const board = [
-    { platform_slug: 'minimax', platform_display_name: 'MiniMax', availability_rate: 0.99 },
-    { platform_slug: 'foo', platform_display_name: 'Foo云', availability_rate: 0.8 }
+    { platform_slug: 'minimax', platform_display_name: 'MiniMax' },
+    { platform_slug: 'foo', platform_display_name: 'Foo云' }
   ];
   it('matches by monitorSlug first', () => {
     const hit = matchMonitorPlatform({ name: '别名', monitorSlug: 'minimax' }, board);

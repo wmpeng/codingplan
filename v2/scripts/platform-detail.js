@@ -197,19 +197,20 @@
     return ((rate || 0) * 100).toFixed(1) + '%';
   }
 
-  // 与监控页 / 后端同口径：排除灰格后 (绿+黄)/有数据
+  // 与监控页同口径：排除灰格后 绿=1、黄=0.5、红=0，再取平均
   function availabilityRateFromHours(hours) {
     const cells = Array.isArray(hours) ? hours : [];
     let withData = 0;
-    let ok = 0;
+    let score = 0;
     for (let i = 0; i < cells.length; i++) {
       const color = (cells[i] && cells[i].color) || 'gray';
       if (color === 'gray') continue;
       withData += 1;
-      if (color === 'green' || color === 'yellow') ok += 1;
+      if (color === 'green') score += 1;
+      else if (color === 'yellow') score += 0.5;
     }
     if (!withData) return 0;
-    return Math.round((ok / withData) * 10000) / 10000;
+    return Math.round((score / withData) * 10000) / 10000;
   }
 
   function recentHours(hours, count) {

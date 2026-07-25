@@ -243,8 +243,7 @@ describe('buildDetailBodyHtml', () => {
       monitorRow: {
         platform_slug: 'minimax',
         platform_display_name: 'MiniMax',
-        // 后端 7 天率仅作参考；展示应按可见条带重算：绿+黄 / 非灰 = 2/3
-        availability_rate: 0.987,
+        // 绿=1、黄=0.5、红=0 / 非灰 = 1.5/3 = 50%
         hours: [
           { color: 'green' },
           { color: 'yellow' },
@@ -254,8 +253,7 @@ describe('buildDetailBodyHtml', () => {
       }
     });
     assert.ok(html.includes('data-section="availability"'));
-    assert.ok(html.includes('66.7% 可用'));
-    assert.ok(!html.includes('98.7% 可用'));
+    assert.ok(html.includes('50.0% 可用'));
     assert.ok(html.includes('近 48 小时'));
     assert.ok(html.includes('platform-detail-hour-cell--green'));
     assert.ok(html.includes('platform-detail-hour-cell--yellow'));
@@ -269,7 +267,6 @@ describe('buildDetailBodyHtml', () => {
       plans: [],
       monitorRow: {
         platform_slug: 'minimax',
-        availability_rate: 0.5,
         hours: olderRed.concat(recentGreen)
       }
     });

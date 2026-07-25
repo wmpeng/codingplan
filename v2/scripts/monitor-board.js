@@ -88,18 +88,20 @@
       return hours.slice(hours.length - count);
     }
 
+    // 排除灰格后：绿=1、黄=0.5、红=0，再取平均
     function availabilityRateFromHours(hours) {
       const cells = hours || [];
       let withData = 0;
-      let ok = 0;
+      let score = 0;
       for (let i = 0; i < cells.length; i++) {
         const color = (cells[i] && cells[i].color) || 'gray';
         if (color === 'gray') continue;
         withData += 1;
-        if (color === 'green' || color === 'yellow') ok += 1;
+        if (color === 'green') score += 1;
+        else if (color === 'yellow') score += 0.5;
       }
       if (!withData) return 0;
-      return Math.round((ok / withData) * 10000) / 10000;
+      return Math.round((score / withData) * 10000) / 10000;
     }
 
     function visibleAvailabilityRate(hours) {
