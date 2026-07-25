@@ -2322,7 +2322,7 @@
             const root = document.getElementById('view-payg');
             if (!root) return;
             if (typeof window.mountPaygView !== 'function') {
-                await loadScriptOnce('scripts/payg.js?v=260725g');
+                await loadScriptOnce('scripts/payg.js?v=260725i');
             }
             if (typeof window.mountPaygView === 'function') {
                 await window.mountPaygView(root);
@@ -2340,7 +2340,7 @@
                 document.head.appendChild(link);
             }
             if (typeof window.mountMonitorBoard !== 'function') {
-                await loadScriptOnce('scripts/monitor-board.js?v=260725g');
+                await loadScriptOnce('scripts/monitor-board.js?v=260725i');
             }
             if (typeof window.mountMonitorBoard === 'function') {
                 const platform = new URLSearchParams(location.search).get('platform') || '';

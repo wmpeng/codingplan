@@ -276,7 +276,7 @@
   }
 
   const PAYG_SHELL_HTML =
-    `<p class="main-view-intro">默认按模型顺序排列；可用平台 / 模型筛选，或只看已标价行。点表头可按输入 / 缓存 / 输出 / 评分排序。</p>` +
+    `<p class="main-view-intro">对比按量调用的输入 / 缓存 / 输出标价，适合灵活用量场景。</p>` +
     `<div class="filter-bar surface-panel">` +
     `<div class="filter-dropdown"><button type="button" class="filter-btn" id="paygVendorBtn"><span>平台</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" id="paygVendorCount" style="display: none;">0</span></button><div class="dropdown-menu" id="paygVendorDropdown"><div class="dropdown-section"><div class="checkbox-group" id="paygVendorCheckboxes"></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" id="paygVendorReset">重置</button><button type="button" class="dropdown-btn primary" id="paygVendorDone">确定</button></div></div></div>` +
     `<div class="filter-dropdown"><button type="button" class="filter-btn" id="paygModelBtn"><span>模型</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" id="paygModelCount" style="display: none;">0</span></button><div class="dropdown-menu" id="paygModelDropdown"><div class="dropdown-section"><div class="checkbox-group" id="paygModelCheckboxes"></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" id="paygModelReset">重置</button><button type="button" class="dropdown-btn primary" id="paygModelDone">确定</button></div></div></div>` +

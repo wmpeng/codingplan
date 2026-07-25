@@ -520,7 +520,7 @@
       intro.className = 'main-view-intro';
       intro.setAttribute('data-monitor-intro', '1');
       intro.textContent =
-        '按模型筛选平台小时级可用性；可勾选按可用率排序。绿 / 黄 / 红表示可用性由高到低。';
+        '查看各平台近几日可用性与稳定性，降低选型踩坑风险。';
 
       const toolbar = document.createElement('div');
       toolbar.className = 'monitor-toolbar';
