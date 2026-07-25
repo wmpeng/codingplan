@@ -1444,7 +1444,7 @@
                         title: "AI Coding 平台评测与选型数据库",
                         updateDate: "更新日期 2026.7.25 | 套餐大表新增「每 M Token 综合价格」",
                         subtitle: "覆盖 Coding Plan、Token Plan 与按量调用平台的结构化对比，集中查看价格口径、模型能力、额度、可用性与购买状态。",
-                        models: "面向开发者与团队采购的第一轮筛选：先用平台目录建立候选池，再进入套餐大表、可用性监控和按量计费核对细节。",
+                        models: "面向开发者与团队采购的第一轮筛选：先用平台目录建立候选池，再进入套餐对比、可用性监控和按量计费价格核对细节。",
                         watermarkUrl: "www.codingplan.fyi",
                         entry: {
                             url: "https://github.com/wmpeng/codingplan/discussions",

@@ -165,7 +165,7 @@
       `<div class="platform-detail-plans-list" aria-label="在售套餐">` +
       rows +
       `</div>` +
-      `<button type="button" class="platform-detail-jump-plans" data-jump-plans="1">在套餐大表中查看 →</button>` +
+      `<button type="button" class="platform-detail-jump-plans" data-jump-plans="1">在套餐对比中查看 →</button>` +
       `</section>`
     );
   }

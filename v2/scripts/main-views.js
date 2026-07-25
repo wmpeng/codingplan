@@ -10,9 +10,9 @@
   const MAIN_VIEW_KEYS = ['platforms', 'plans', 'monitor', 'payg'];
   const MAIN_VIEW_LABELS = {
     platforms: '平台对比',
-    plans: '套餐大表',
+    plans: '套餐对比',
     monitor: '可用性监控',
-    payg: '按量计费'
+    payg: '按量计费价格'
   };
 
   function normalizeMainView(raw) {

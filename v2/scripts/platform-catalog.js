@@ -569,7 +569,7 @@ function buildPaygPricingSectionHtml(entry, modelOrder) {
     `</table>` +
     `</div>` +
     notesHtml +
-    `<a class="platform-detail-avail-link" href="index.html?view=payg">在按量计费大表中查看 →</a>` +
+    `<a class="platform-detail-avail-link" href="index.html?view=payg">在按量计费价格中查看 →</a>` +
     `</section>`
   );
 }

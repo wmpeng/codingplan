@@ -78,7 +78,7 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('data-section="payg"'));
     assert.ok(html.includes('按量定价'));
     assert.ok(html.includes('¥2.4'));
-    assert.ok(html.includes('在按量计费大表中查看'));
+    assert.ok(html.includes('在按量计费价格中查看'));
     assert.ok(html.includes('view=payg'));
     assert.ok(!html.includes('data-section="plans"'));
     const dimsAt = html.indexOf('data-section="dimensions"');
@@ -125,7 +125,7 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('Token Plan'));
     assert.ok(html.includes('platform-detail-plan-rating'));
     assert.ok(html.includes('额度充足，适合主力日常'));
-    assert.ok(html.includes('在套餐大表中查看'));
+    assert.ok(html.includes('在套餐对比中查看'));
   });
 
   it('omits empty summary and keeps price on one line without first-month when absent', () => {
