@@ -1,20 +1,28 @@
 .monitor-toolbar {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 10px;
     align-items: center;
-    padding-bottom: 0.85rem;
-    margin-bottom: 0.15rem;
+    margin: 0 0 18px;
+    padding: 10px 12px;
+    border: 1px solid rgba(16, 23, 37, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 20px rgba(16, 23, 37, 0.05);
+    backdrop-filter: blur(10px);
 }
 .monitor-control {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    padding: 0.38rem 0.75rem;
-    border-radius: 999px;
-    background: rgba(23, 32, 51, 0.04);
-    font-size: 0.82rem;
-    color: var(--text-tertiary);
+    min-height: 36px;
+    padding: 0 12px;
+    border: 1px solid rgba(16, 23, 37, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.88);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-secondary);
 }
 .monitor-control-label {
     white-space: nowrap;

@@ -3860,6 +3860,130 @@
             color: var(--text-secondary);
         }
 
+        .platform-tag-bar,
+        .filter-bar,
+        .monitor-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            min-height: 0;
+            margin: 0 0 18px;
+            padding: 10px 12px;
+            border: 1px solid rgba(16, 23, 37, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 20px rgba(16, 23, 37, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .platform-tag-bar-main,
+        .platform-tag-group {
+            gap: 8px;
+        }
+
+        .filter-btn,
+        .reset-btn,
+        .checkbox-label,
+        .platform-clear-filters,
+        .platform-tag-chip,
+        .preset-tag-chip,
+        .monitor-control,
+        .monitor-toggle,
+        .plan-usage-panel .segment-btn {
+            min-height: 36px;
+            padding: 0 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: none;
+        }
+
+        .platform-tag-chip--operational,
+        .platform-tag-chip--toggle {
+            min-height: 32px;
+            padding: 0 10px;
+            font-size: 12px;
+        }
+
+        .platform-status-slider {
+            gap: 7px;
+        }
+
+        .platform-status-segments,
+        .plan-usage-panel .segmented-control {
+            min-height: 36px;
+            padding: 3px;
+            border-radius: 10px;
+            border: 1px solid rgba(16, 23, 37, 0.1);
+            background: #eef2f7;
+            box-shadow: none;
+        }
+
+        .platform-status-seg {
+            min-height: 28px;
+            padding: 0 9px;
+            border-radius: 7px;
+        }
+
+        .monitor-control,
+        .monitor-toggle {
+            border: 1px solid rgba(16, 23, 37, 0.1);
+            background: rgba(255, 255, 255, 0.88);
+            color: var(--text-secondary);
+        }
+
+        .monitor-dropdown-trigger {
+            color: var(--text-primary);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .monitor-toggle.is-active,
+        .monitor-dropdown-option.is-selected {
+            background: rgba(11, 104, 209, 0.08);
+            border-color: rgba(11, 104, 209, 0.22);
+            color: #0b68d1;
+        }
+
+        .stats-bar,
+        .platform-catalog-stats {
+            min-height: 36px;
+            margin-left: auto;
+            padding: 0 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(16, 23, 37, 0.08);
+            box-shadow: none;
+        }
+
+        .platform-catalog-toolbar {
+            gap: 10px;
+            padding: 0;
+        }
+
+        .platform-catalog {
+            gap: 10px;
+            margin: 4px 0 28px;
+        }
+
+        .platform-catalog .platform-tag-bar {
+            margin-bottom: 0;
+        }
+
+        .plans-table-section {
+            gap: 12px;
+            margin: 4px 0 22px;
+        }
+
+        .payg-intro {
+            margin-bottom: 10px;
+        }
+
+        .main-view-tabs {
+            margin-bottom: 18px;
+        }
+
         .main-view-tabs [role="tab"]:hover,
         .preset-tag-chip:hover,
         .platform-tag-chip:hover,
@@ -3891,19 +4015,6 @@
             background: rgba(0, 133, 122, 0.1);
             border-color: rgba(0, 133, 122, 0.34);
             color: #00756e;
-        }
-
-        .platform-tag-bar {
-            border-radius: 14px;
-            border-color: rgba(16, 23, 37, 0.12);
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .platform-status-segments {
-            border-radius: 10px;
-            background: #eef2f7;
-            box-shadow: inset 0 0 0 1px rgba(16, 23, 37, 0.04);
         }
 
         .platform-status-seg {
@@ -3976,7 +4087,7 @@
         }
 
         .filter-bar {
-            padding: 14px;
+            padding: 10px 12px;
         }
 
         .dropdown-menu,
