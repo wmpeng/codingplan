@@ -570,13 +570,24 @@
       toolbar.appendChild(modelControl);
       toolbar.appendChild(state.sortToggle);
 
+      const trailing = document.createElement('div');
+      trailing.className = 'filter-trailing';
+
+      state.clearBtn = document.createElement('button');
+      state.clearBtn.type = 'button';
+      state.clearBtn.className = 'reset-btn';
+      state.clearBtn.id = 'monitorClearFilters';
+      state.clearBtn.textContent = '清空筛选';
+      trailing.appendChild(state.clearBtn);
+
       state.statsBar = document.createElement('div');
       state.statsBar.className = 'stats-bar';
       state.statsBar.innerHTML =
         '显示 <strong data-monitor-showing="1">0</strong> / <strong data-monitor-total="1">0</strong> 个平台';
       state.showingCountEl = state.statsBar.querySelector('[data-monitor-showing]');
       state.totalCountEl = state.statsBar.querySelector('[data-monitor-total]');
-      toolbar.appendChild(state.statsBar);
+      trailing.appendChild(state.statsBar);
+      toolbar.appendChild(trailing);
 
       state.boardRoot = document.createElement('div');
       state.boardRoot.className = 'monitor-loading';
@@ -592,6 +603,12 @@
       state.sortCheckbox.addEventListener('change', function () {
         syncSortToggle();
         state.renderBoard();
+      });
+
+      state.clearBtn.addEventListener('click', function () {
+        state.sortCheckbox.checked = false;
+        syncSortToggle();
+        setModelFilter('');
       });
 
       state.modelFilterTrigger.addEventListener('click', function (e) {

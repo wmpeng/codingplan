@@ -245,7 +245,7 @@
     "quarterlyPrice": "包季价格",
     "yearlyPrice": "包年价格",
     "tokenLimit": "月Token上限(/M）",
-    "reset": "重置筛选",
+    "reset": "清空筛选",
     "stats": "显示 {showing} / {total} 个套餐"
   },
   "priceFilter": {

@@ -1411,7 +1411,7 @@
                             <div class="empty-state">
                                 <div class="empty-state-icon">📭</div>
                                 <div class="empty-state-text">没有找到符合条件的套餐</div>
-                                <div class="empty-state-hint">请调整筛选条件或重置筛选</div>
+                                <div class="empty-state-hint">请调整筛选条件或清空筛选</div>
                             </div>
                         </td>
                     </tr>

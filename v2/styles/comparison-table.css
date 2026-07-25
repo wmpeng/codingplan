@@ -304,7 +304,7 @@
     font-size: 12px;
     display: inline-flex;
     align-items: center;
-    margin-left: auto;
+    margin-left: 0;
     min-height: 36px;
     padding: 0 12px;
     border-radius: 999px;
@@ -318,6 +318,19 @@
 .stats-bar strong {
     color: var(--text-primary);
     font-weight: 700;
+}
+
+.filter-trailing {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+}
+
+.filter-trailing .reset-btn {
+    margin-left: 0;
 }
 
 .table-wrapper {
@@ -613,9 +626,14 @@
         padding: 14px;
     }
 
-    .stats-bar {
+    .filter-trailing {
         margin-left: 0;
         width: 100%;
-        justify-content: center;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+    }
+
+    .stats-bar {
+        margin-left: 0;
     }
 }
