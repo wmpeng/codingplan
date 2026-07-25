@@ -25,22 +25,8 @@
     min-width: 0;
 }
 
-.plan-usage-kicker {
-    display: inline-flex;
-    align-items: center;
-    min-height: 28px;
-    padding: 4px 12px;
-    border-radius: 999px;
-    background: rgba(24, 52, 79, 0.08);
-    color: #18344f;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
 .plan-usage-title {
-    margin: 12px 0 8px;
+    margin: 0 0 8px;
     font-size: clamp(24px, 3vw, 32px);
     line-height: 1.15;
     letter-spacing: -0.03em;
