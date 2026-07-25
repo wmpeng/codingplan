@@ -480,11 +480,15 @@
     state.applyStaticTexts = function applyStaticTexts() {
       const modelLabel = state.rootEl.querySelector('[data-monitor-model-label]');
       const sortLabel = state.rootEl.querySelector('[data-monitor-sort-label]');
+      const introEl = state.rootEl.querySelector('[data-monitor-intro]');
       if (modelLabel) {
         modelLabel.textContent = (state.config.toolbar && state.config.toolbar.modelLabel) || '模型';
       }
       if (sortLabel) {
         sortLabel.textContent = (state.config.toolbar && state.config.toolbar.sortByAvailability) || '按可用率排序';
+      }
+      if (introEl && state.config.intro) {
+        introEl.textContent = state.config.intro;
       }
     };
 
@@ -510,6 +514,12 @@
 
     state.buildDom = function buildDom() {
       rootEl.innerHTML = '';
+
+      const intro = document.createElement('p');
+      intro.className = 'main-view-intro';
+      intro.setAttribute('data-monitor-intro', '1');
+      intro.textContent =
+        '按模型筛选平台小时级可用性；可勾选按可用率排序。绿 / 黄 / 红表示可用性由高到低。';
 
       const toolbar = document.createElement('div');
       toolbar.className = 'monitor-toolbar';
@@ -590,6 +600,7 @@
       state.boardRoot.className = 'monitor-board-panel monitor-loading';
       state.boardRoot.textContent = '加载中...';
 
+      rootEl.appendChild(intro);
       rootEl.appendChild(toolbar);
       rootEl.appendChild(state.boardRoot);
 

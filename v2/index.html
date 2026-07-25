@@ -1197,11 +1197,12 @@
             width: auto;
         }
 
-        .payg-intro {
-            margin: 0 0 16px;
+        .main-view-intro {
+            margin: 0 0 12px;
+            padding: 0 4px;
             color: var(--text-secondary);
             font-size: 14px;
-            line-height: 1.7;
+            line-height: 1.68;
         }
 
         .main-view-panels {
@@ -1429,13 +1430,6 @@
             font-weight: 800;
             color: var(--text-primary);
             letter-spacing: 0.2px;
-        }
-
-        .platform-catalog-subtitle {
-            margin: 0;
-            font-size: 14px;
-            color: var(--text-tertiary);
-            line-height: 1.55;
         }
 
         .platform-tag-bar {
@@ -2836,7 +2830,7 @@
                 font-size: 20px;
             }
 
-            .platform-catalog-subtitle {
+            .main-view-intro {
                 font-size: 13px;
             }
 
@@ -3794,8 +3788,7 @@
 
         .hero-summary-body,
         .hero-summary-guide-note,
-        .payg-intro,
-        .platform-catalog-subtitle,
+        .main-view-intro,
         .recommendation-group-subtitle {
             color: var(--text-secondary);
             line-height: 1.68;
@@ -3988,10 +3981,6 @@
         .plans-table-section {
             gap: 12px;
             margin: 4px 0 22px;
-        }
-
-        .payg-intro {
-            margin-bottom: 10px;
         }
 
         .main-view-tabs {
@@ -4398,12 +4387,10 @@
         </nav>
         <div class="main-view-panels">
             <div id="view-platforms" role="tabpanel" data-main-view-panel="platforms">
+                <p class="main-view-intro">按标签与平台状态筛选；清空后回到默认「定时放量」</p>
 
         <!-- 平台目录（主交互；标签与卡片由 Task 5 填充） -->
         <section class="platform-catalog" id="platformCatalog" aria-label="平台目录">
-            <header class="platform-catalog-header">
-                <p class="platform-catalog-subtitle">按标签与平台状态筛选；清空后回到默认「定时放量」</p>
-            </header>
             <div class="platform-tag-bar" id="platformTagBar" role="group" aria-label="平台标签">
                 <div class="platform-tag-bar-filters" id="platformTagBarFilters"><div class="platform-tag-bar-main"><div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选"><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="性价比高" aria-pressed="false">性价比高</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="模型强" aria-pressed="false">模型强</button><button type="button" class="platform-tag-chip platform-tag-chip--derived" data-platform-tag="可用性好" aria-pressed="false">可用性好</button></div><div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签"><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="热门模型" aria-pressed="false">热门模型</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="高用量工作流" aria-pressed="false">高用量工作流</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="可支付宝" aria-pressed="false">可支付宝</button><button type="button" class="platform-tag-chip platform-tag-chip--operational" data-platform-tag="按量调用" aria-pressed="false">按量调用</button></div></div><div class="platform-status-slider" data-platform-status-max="limited" role="group" aria-label="显示开放购买和定时放量平台"><span class="platform-status-prefix">显示</span><div class="platform-status-segments" tabindex="0"><button type="button" class="platform-status-seg is-active" data-platform-status="open" aria-pressed="true" title="仅显示开放购买平台">开放购买</button><span class="platform-status-and is-on" aria-hidden="true">和</span><button type="button" class="platform-status-seg is-active" data-platform-status="limited" aria-pressed="true" title="显示定时放量平台">定时放量</button><span class="platform-status-and" aria-hidden="true">和</span><button type="button" class="platform-status-seg" data-platform-status="paused" aria-pressed="false" title="显示暂时停售平台">暂时停售</button><button type="button" class="platform-status-seg" data-platform-status="delisted" aria-pressed="false" title="显示所有平台">所有</button></div><span class="platform-status-suffix">平台</span></div></div>
                 <div class="filter-trailing">
@@ -4417,6 +4404,7 @@
 
             </div>
             <div id="view-plans" role="tabpanel" data-main-view-panel="plans" hidden>
+                <p class="main-view-intro">先看使用量双视角图，再筛套餐大表；可用平台 / 类型 / 价格筛选，点表头可排序。</p>
 
         <section class="plan-usage-panel surface-panel" id="planUsagePanel" aria-labelledby="planUsageTitle">
             <div class="plan-usage-header">
