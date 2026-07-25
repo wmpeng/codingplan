@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="styles/plan-usage.css?v=260610">
     <link rel="stylesheet" href="styles/comparison-table.css?v=260722">
     <style>
+        html,
+        body {
+            overflow-x: clip;
+        }
+
         .header .models {
             color: var(--text-tertiary);
             font-size: 15px;
@@ -1094,38 +1099,70 @@
         }
 
         /* 主内容视图切换 */
+        .main-view-shell {
+            margin: 0 0 28px;
+            padding: 12px;
+            border: 1px solid rgba(16, 23, 37, 0.1);
+            border-radius: 16px;
+            background: rgba(229, 235, 243, 0.72);
+        }
+
         .main-view-tabs {
+            position: sticky;
+            top: 0;
+            z-index: 55;
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 0 0 24px;
+            flex-wrap: nowrap;
+            gap: 0;
+            margin: 0 0 18px;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
-            padding-bottom: 2px;
+            scrollbar-width: none;
+            padding: 0 12px;
+            border: 1px solid rgba(16, 23, 37, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 10px 24px rgba(16, 23, 37, 0.08);
+            backdrop-filter: blur(14px);
+        }
+
+        .main-view-tabs::-webkit-scrollbar {
+            display: none;
         }
 
         .main-view-tabs [role="tab"] {
             appearance: none;
-            border: 1px solid rgba(23, 32, 51, 0.12);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(244, 236, 223, 0.92));
+            position: relative;
+            border: none;
+            background: transparent;
             color: var(--text-secondary);
-            border-radius: 999px;
-            min-height: 40px;
-            padding: 0 16px;
-            font-size: 13px;
+            border-radius: 0;
+            min-height: 56px;
+            padding: 0 28px;
+            font-size: 15px;
             font-weight: 700;
             cursor: pointer;
-            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
-            box-shadow: 0 10px 20px rgba(23, 32, 51, 0.06);
+            transition: color 0.18s ease, background 0.18s ease;
+            box-shadow: none;
             white-space: nowrap;
             flex-shrink: 0;
         }
 
+        .main-view-tabs [role="tab"]::after {
+            content: '';
+            position: absolute;
+            left: 18px;
+            right: 18px;
+            bottom: 0;
+            height: 3px;
+            border-radius: 999px 999px 0 0;
+            background: transparent;
+            transition: background 0.18s ease, left 0.18s ease, right 0.18s ease;
+        }
+
         .main-view-tabs [role="tab"]:hover {
-            transform: translateY(-1px);
-            border-color: rgba(198, 107, 26, 0.28);
+            background: rgba(11, 104, 209, 0.06);
             color: var(--text-primary);
-            box-shadow: 0 14px 24px rgba(23, 32, 51, 0.08);
         }
 
         .main-view-tabs [role="tab"]:focus-visible {
@@ -1134,15 +1171,19 @@
         }
 
         .main-view-tabs [role="tab"].is-active {
-            background: linear-gradient(135deg, #173753, var(--accent-primary, #0f766e));
-            border-color: transparent;
-            color: white;
-            box-shadow: 0 14px 24px rgba(23, 55, 83, 0.18);
+            background: transparent;
+            color: var(--accent-primary, #0b68d1);
+            box-shadow: none;
+        }
+
+        .main-view-tabs [role="tab"].is-active::after {
+            left: 12px;
+            right: 12px;
+            background: var(--accent-primary, #0b68d1);
         }
 
         .main-view-tabs [role="tab"].is-active:hover {
-            color: white;
-            border-color: transparent;
+            color: var(--accent-primary, #0b68d1);
         }
 
         #settingsMount .page-nav-cluster--settings-only {
@@ -3773,16 +3814,20 @@
             color: #0b68d1;
         }
 
-        .main-view-tabs {
-            gap: 6px;
-            padding: 6px;
-            border: 1px solid rgba(16, 23, 37, 0.1);
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.86);
-            box-shadow: var(--shadow-sm);
+        .main-view-shell {
+            border-color: rgba(16, 23, 37, 0.1);
+            background: rgba(229, 235, 243, 0.72);
         }
 
-        .main-view-tabs [role="tab"],
+        .main-view-tabs {
+            gap: 0;
+            padding: 0 12px;
+            border: 1px solid rgba(16, 23, 37, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 10px 24px rgba(16, 23, 37, 0.08);
+        }
+
         .preset-tag-chip,
         .platform-tag-chip,
         .plans-table-toggle,
@@ -3797,6 +3842,17 @@
             border-color: rgba(16, 23, 37, 0.12);
             box-shadow: none;
             color: var(--text-secondary);
+        }
+
+        .main-view-tabs [role="tab"] {
+            border: none;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+            color: var(--text-secondary);
+            min-height: 56px;
+            padding: 0 28px;
+            font-size: 15px;
         }
 
         .platform-tag-bar,
@@ -3942,7 +3998,6 @@
             margin-bottom: 18px;
         }
 
-        .main-view-tabs [role="tab"]:hover,
         .preset-tag-chip:hover,
         .platform-tag-chip:hover,
         .platform-tag-chip--operational:hover,
@@ -3957,7 +4012,14 @@
             box-shadow: none;
         }
 
-        .main-view-tabs [role="tab"].is-active,
+        .main-view-tabs [role="tab"]:hover {
+            transform: none;
+            background: rgba(11, 104, 209, 0.06);
+            border-color: transparent;
+            color: var(--text-primary);
+            box-shadow: none;
+        }
+
         .preset-tag-chip.active,
         .platform-tag-chip.is-active,
         .platform-tag-chip.active,
@@ -3971,7 +4033,18 @@
             font-weight: 700;
         }
 
-        .main-view-tabs [role="tab"].is-active:hover,
+        .main-view-tabs [role="tab"].is-active {
+            background: transparent;
+            border-color: transparent;
+            color: #0b68d1;
+            box-shadow: none;
+            font-weight: 700;
+        }
+
+        .main-view-tabs [role="tab"].is-active::after {
+            background: #0b68d1;
+        }
+
         .preset-tag-chip.active:hover,
         .platform-tag-chip.is-active:hover,
         .platform-tag-chip.active:hover,
@@ -3981,6 +4054,12 @@
             background: #1f1c1b;
             border-color: #1f1c1b;
             color: #fff;
+        }
+
+        .main-view-tabs [role="tab"].is-active:hover {
+            background: rgba(11, 104, 209, 0.06);
+            border-color: transparent;
+            color: #0b68d1;
         }
 
         .dropdown-btn.primary {
@@ -4184,11 +4263,23 @@
                 line-height: 1.08;
             }
 
+            .main-view-shell {
+                padding: 8px;
+                border-radius: 14px;
+            }
+
             .main-view-tabs {
                 flex-wrap: nowrap;
                 max-width: 100%;
                 overflow-x: auto;
                 overscroll-behavior-x: contain;
+                padding: 0 8px;
+            }
+
+            .main-view-tabs [role="tab"] {
+                min-height: 50px;
+                padding: 0 18px;
+                font-size: 14px;
             }
 
             .platform-status-slider {
@@ -4298,11 +4389,12 @@
         <!-- 平台推荐：由 config.json 运行时渲染 -->
         <div class="recommendation-groups" id="recommendationGroups"></div>
 
-        <nav class="main-view-tabs" id="mainViewTabs" aria-label="主内容切换">
-            <button type="button" role="tab" data-main-view="platforms" aria-selected="true" class="is-active">平台对比</button>
-            <button type="button" role="tab" data-main-view="plans" aria-selected="false">套餐大表</button>
-            <button type="button" role="tab" data-main-view="monitor" aria-selected="false">可用性监控</button>
-            <button type="button" role="tab" data-main-view="payg" aria-selected="false">按量计费</button>
+        <div class="main-view-shell" id="mainViewShell">
+        <nav class="main-view-tabs" id="mainViewTabs" role="tablist" aria-label="主内容切换">
+            <button type="button" role="tab" data-main-view="platforms" aria-controls="view-platforms" aria-selected="true" class="is-active">平台对比</button>
+            <button type="button" role="tab" data-main-view="plans" aria-controls="view-plans" aria-selected="false">套餐大表</button>
+            <button type="button" role="tab" data-main-view="monitor" aria-controls="view-monitor" aria-selected="false">可用性监控</button>
+            <button type="button" role="tab" data-main-view="payg" aria-controls="view-payg" aria-selected="false">按量计费</button>
         </nav>
         <div class="main-view-panels">
             <div id="view-platforms" role="tabpanel" data-main-view-panel="platforms">
@@ -6694,6 +6786,7 @@
             </div>
             <div id="view-monitor" role="tabpanel" data-main-view-panel="monitor" hidden></div>
             <div id="view-payg" role="tabpanel" data-main-view-panel="payg" hidden></div>
+        </div>
         </div>
 
         <!-- 更新日志：由 config.json 运行时渲染 -->
