@@ -1223,11 +1223,11 @@
                 return -1;
             };
 
-            // 辅助函数：将价格统一换算为人民币（$1 = ¥7）
+            // 辅助函数：将价格统一换算为人民币
             const getPriceSortValue = (plan, field) => {
                 const v = plan[field];
                 if (typeof v !== 'number') return -1;  // '-' 等非数字排最小
-                return plan.currency === '$' ? v * 7 : v;
+                return plan.currency === '$' ? v * getUsdToCnyRate() : v;
             };
 
             filteredPlans.sort((a, b) => {
@@ -1290,6 +1290,12 @@
                         valueA = getRequestSortValue(a.measuredMonthlyTokenLimit);
                         valueB = getRequestSortValue(b.measuredMonthlyTokenLimit);
                         break;
+                    case 'pricePerMillionToken':
+                        valueA = getPricePerMillionToken(a);
+                        valueB = getPricePerMillionToken(b);
+                        if (valueA === null) valueA = -1;
+                        if (valueB === null) valueB = -1;
+                        break;
                     case 'benefits':
                         valueA = a['其他权益'];
                         valueB = b['其他权益'];
@@ -1349,7 +1355,7 @@
             if (filteredPlans.length === 0) {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="20">
+                        <td colspan="21">
                             <div class="empty-state">
                                 <div class="empty-state-icon">📭</div>
                                 <div class="empty-state-text">没有找到符合条件的套餐</div>
@@ -1383,6 +1389,7 @@
                     <td><span class="request-count">${formatMeasuredToken(plan.measuredFiveHoursTokenLimit)}</span></td>
                     <td><span class="request-count">${formatMeasuredToken(plan.measuredWeeklyTokenLimit)}</span></td>
                     <td><span class="request-count">${formatMeasuredToken(plan.measuredMonthlyTokenLimit)}</span></td>
+                    <td><span class="price-monthly">${formatPricePerMillionToken(plan)}</span></td>
                     <td>
                         ${plan.models.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
                     </td>
@@ -1419,6 +1426,26 @@
             return value + 'M';
         }
 
+        function getUsdToCnyRate() {
+            const rate = appConfig && appConfig.usdToCnyRate;
+            return typeof rate === 'number' && Number.isFinite(rate) && rate > 0 ? rate : 6.8;
+        }
+
+        function getPricePerMillionToken(plan) {
+            const monthly = plan && plan.monthlyPrice;
+            const limit = plan && plan.measuredMonthlyTokenLimit;
+            if (typeof monthly !== 'number' || !Number.isFinite(monthly)) return null;
+            if (typeof limit !== 'number' || !Number.isFinite(limit) || limit <= 0) return null;
+            const cny = plan.currency === '$' ? monthly * getUsdToCnyRate() : monthly;
+            return cny / limit;
+        }
+
+        function formatPricePerMillionToken(plan) {
+            const value = getPricePerMillionToken(plan);
+            if (value === null) return '-';
+            return `¥${value.toFixed(2)} / M`;
+        }
+
 
         // 加载配置文件
         async function loadConfig() {
@@ -1443,7 +1470,7 @@
                 appConfig = {
                     header: {
                         title: "AI Coding 平台评测与选型数据库",
-                        updateDate: "更新日期 2026.7.20 | 平台目录纳入按量调用（DeepSeek 官方、共继算力）",
+                        updateDate: "更新日期 2026.7.25 | 套餐大表新增「每 M Token 综合价格」",
                         subtitle: "覆盖 Coding Plan、Token Plan 与按量调用平台的结构化对比，集中查看价格口径、模型能力、额度、可用性与购买状态。",
                         models: "面向开发者与团队采购的第一轮筛选：先用平台目录建立候选池，再进入套餐大表、可用性监控和按量计费核对细节。",
                         watermarkUrl: "www.codingplan.fyi",
@@ -1452,6 +1479,7 @@
                             text: "Github 反馈"
                         }
                     },
+                    usdToCnyRate: 6.8,
                     platformCatalog: {
                         defaultSelectedTags: [],
                         operationalTags: ["热门模型", "高用量工作流", "可支付宝", "按量调用"],
@@ -2525,7 +2553,7 @@
                 if (!hasStaticRows) {
                     tableBody.innerHTML = `
                     <tr>
-                        <td colspan="20">
+                        <td colspan="21">
                             <div class="loading">加载数据中</div>
                         </td>
                     </tr>
@@ -2560,7 +2588,7 @@
                 console.error('加载数据失败:', error);
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="20">
+                        <td colspan="21">
                             <div class="empty-state">
                                 <div class="empty-state-icon">❌</div>
                                 <div class="empty-state-text">数据加载失败</div>

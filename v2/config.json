@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding 平台评测与选型数据库",
-    "updateDate": "更新日期 2026.7.20 | 平台目录纳入按量调用（DeepSeek 官方、共继算力）",
+    "updateDate": "更新日期 2026.7.25 | 套餐大表新增「每 M Token 综合价格」",
     "subtitle": "覆盖 Coding Plan、Token Plan 与按量调用平台的结构化对比，集中查看价格口径、模型能力、额度、可用性与购买状态。",
     "models": "面向开发者与团队采购的第一轮筛选：先用平台目录建立候选池，再进入套餐大表、可用性监控和按量计费核对细节。",
     "watermarkUrl": "www.codingplan.fyi",
@@ -10,6 +10,7 @@
       "text": "Github 反馈"
     }
   },
+  "usdToCnyRate": 6.8,
   "platformCatalog": {
     "defaultSelectedTags": [],
     "operationalTags": [
@@ -218,6 +219,7 @@
   "notes": [
     "包季/包年价格中的划线数字表示原始价格（包月×3 或 包月×12），未划线的为实际优惠价格。",
     "使用表格邀请链接，部分平台可享优惠",
+    "每 M Token 综合价格 = 连续包月价（美元按汇率折算人民币）÷ 实测月 Token，缺数时显示「-」，仅供横向对比。",
     "每元Token数（月）和 1M Token价格（月）来自月度使用量衍生数据，按每月窗口折算，仅供横向对比参考。",
     "本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议"
   ],
@@ -250,6 +252,10 @@
       "fiveHoursRequests": "5小时请求数",
       "weeklyRequests": "每周请求数",
       "monthlyRequests": "每月请求数",
+      "measuredFiveHoursTokenLimit": "实测5h Token",
+      "measuredWeeklyTokenLimit": "实测周Token",
+      "measuredMonthlyTokenLimit": "实测月Token",
+      "pricePerMillionToken": "每 M Token 综合价格",
       "benefits": "其他权益",
       "discontinued": "状态",
       "note": "备注"
@@ -277,6 +283,12 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.7.25",
+      "items": [
+        "套餐大表在「实测月Token」后新增「每 M Token 综合价格」列（包月价÷实测月 Token；美元套餐按汇率 6.8 折算）"
+      ]
+    },
     {
       "date": "2026.7.20",
       "items": [
