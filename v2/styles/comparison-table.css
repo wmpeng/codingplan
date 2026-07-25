@@ -334,12 +334,12 @@
 }
 
 .table-wrapper {
-    background: rgba(255, 251, 245, 0.84);
-    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 12px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    box-shadow: var(--shadow-md);
-    backdrop-filter: blur(8px);
+    border: 1px solid rgba(16, 23, 37, 0.1);
+    box-shadow: 0 8px 20px rgba(16, 23, 37, 0.05);
+    backdrop-filter: blur(10px);
     position: relative;
 }
 
@@ -408,20 +408,20 @@
 #paygTable th.sticky-first,
 #plansTable th.sticky-second,
 #paygTable th.sticky-second {
-    padding: 16px 18px;
+    padding: 14px 16px;
     text-align: left;
-    font-weight: 600;
+    font-weight: 800;
     font-size: 12px;
     white-space: nowrap;
     user-select: none;
-    transition: all 0.2s;
+    transition: background 0.15s ease, color 0.15s ease;
     position: relative;
     z-index: 10;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    background: rgba(20, 35, 55, 0.96);
-    color: rgba(248, 252, 255, 0.86);
-    border-bottom: 1px solid rgba(23, 32, 51, 0.08);
+    background: #f5f7fb;
+    color: var(--text-secondary);
+    border-bottom: 1px solid rgba(16, 23, 37, 0.1);
 }
 
 #plansTable th.sortable,
@@ -431,8 +431,8 @@
 
 #plansTable th:hover,
 #paygTable th:hover {
-    background: rgba(20, 35, 55, 0.96);
-    color: rgba(248, 252, 255, 0.86);
+    background: #eef2f7;
+    color: var(--text-primary);
 }
 
 #plansTable th.sortable::after,
@@ -445,21 +445,21 @@
     vertical-align: middle;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
-    border-top: 4px solid rgba(248, 252, 255, 0.45);
-    opacity: 0.55;
+    border-top: 4px solid var(--text-tertiary);
+    opacity: 0.45;
     transition: all 0.2s;
 }
 
 #plansTable th.sort-asc::after,
 #paygTable th.sort-asc::after {
     border-top: none;
-    border-bottom: 4px solid #5eead4;
+    border-bottom: 4px solid var(--accent-primary, #0b68d1);
     opacity: 1;
 }
 
 #plansTable th.sort-desc::after,
 #paygTable th.sort-desc::after {
-    border-top: 4px solid #5eead4;
+    border-top: 4px solid var(--accent-primary, #0b68d1);
     border-bottom: none;
     opacity: 1;
 }
@@ -475,35 +475,35 @@
 #plansTable th.sticky-first,
 #paygTable th.sticky-first {
     left: 0;
-    border-right: 2px solid rgba(255, 255, 255, 0.12);
+    border-right: 1px solid rgba(16, 23, 37, 0.1);
 }
 
 #plansTable th.sticky-second,
 #paygTable th.sticky-second {
     left: 0;
-    border-right: 2px solid rgba(255, 255, 255, 0.12);
+    border-right: 1px solid rgba(16, 23, 37, 0.1);
 }
 
 #plansTable td,
 #paygTable td {
-    padding: 16px 18px;
+    padding: 14px 16px;
     border-bottom: 1px solid var(--border-light);
     font-size: 13px;
     white-space: nowrap;
     color: var(--text-primary);
     position: relative;
     transition: background 0.15s ease;
-    background: rgba(255, 251, 245, 0.92);
+    background: #fff;
 }
 
 #plansTable tbody tr:nth-child(even) td,
 #paygTable tbody tr:nth-child(even) td {
-    background: rgba(248, 242, 231, 0.9);
+    background: #f7f9fc;
 }
 
 #plansTable tbody tr:hover td,
 #paygTable tbody tr:hover td {
-    background: rgba(232, 246, 243, 1);
+    background: #eef6ff;
     color: var(--text-primary);
 }
 
@@ -520,33 +520,33 @@
     z-index: 100;
     transform: translateZ(0);
     will-change: transform;
-    background: linear-gradient(90deg, rgba(255, 251, 245, 1) 0%, rgba(255, 251, 245, 1) 86%, rgba(255, 251, 245, 0) 100%);
+    background: linear-gradient(90deg, #fff 0%, #fff 86%, rgba(255, 255, 255, 0) 100%);
 }
 
 #plansTable td.sticky-first,
 #paygTable td.sticky-first {
     left: 0;
-    border-right: 2px solid var(--border-color);
+    border-right: 1px solid rgba(16, 23, 37, 0.1);
 }
 
 #plansTable td.sticky-second,
 #paygTable td.sticky-second {
     left: 0;
-    border-right: 2px solid var(--border-color);
+    border-right: 1px solid rgba(16, 23, 37, 0.1);
 }
 
 #plansTable tbody tr:nth-child(even) td.sticky-first,
 #paygTable tbody tr:nth-child(even) td.sticky-first,
 #plansTable tbody tr:nth-child(even) td.sticky-second,
 #paygTable tbody tr:nth-child(even) td.sticky-second {
-    background: linear-gradient(90deg, rgba(248, 242, 231, 1) 0%, rgba(248, 242, 231, 1) 86%, rgba(248, 242, 231, 0) 100%);
+    background: linear-gradient(90deg, #f7f9fc 0%, #f7f9fc 86%, rgba(247, 249, 252, 0) 100%);
 }
 
 #plansTable tbody tr:hover td.sticky-first,
 #paygTable tbody tr:hover td.sticky-first,
 #plansTable tbody tr:hover td.sticky-second,
 #paygTable tbody tr:hover td.sticky-second {
-    background: linear-gradient(90deg, rgba(232, 246, 243, 1) 0%, rgba(232, 246, 243, 1) 86%, rgba(232, 246, 243, 0) 100%);
+    background: linear-gradient(90deg, #eef6ff 0%, #eef6ff 86%, rgba(238, 246, 255, 0) 100%);
     box-shadow: none;
 }
 
@@ -568,15 +568,17 @@
 }
 
 .price {
-    color: #00a855;
-    font-weight: 500;
+    color: #00756e;
+    font-weight: 600;
     font-size: 13px;
+    font-variant-numeric: tabular-nums;
 }
 
 .price-monthly {
-    color: var(--accent-primary);
-    font-weight: 500;
+    color: #00756e;
+    font-weight: 600;
     font-size: 13px;
+    font-variant-numeric: tabular-nums;
 }
 
 .price-normal {

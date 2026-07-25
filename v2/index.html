@@ -9,7 +9,7 @@
     <link rel="icon" href="/favicon.ico?v=260610" type="image/x-icon">
     <link rel="stylesheet" href="styles/shared.css?v=260725b">
     <link rel="stylesheet" href="styles/plan-usage.css?v=260610">
-    <link rel="stylesheet" href="styles/comparison-table.css?v=260722">
+    <link rel="stylesheet" href="styles/comparison-table.css?v=260725c">
     <style>
         html,
         body {
@@ -3492,11 +3492,11 @@
         }
 
         .table-wrapper {
-            background: rgba(255, 251, 245, 0.84);
-            border-radius: 28px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: var(--shadow-md);
-            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.94);
+            border-radius: 12px;
+            border: 1px solid rgba(16, 23, 37, 0.1);
+            box-shadow: 0 8px 20px rgba(16, 23, 37, 0.05);
+            backdrop-filter: blur(10px);
         }
 
         .table-watermark-line {
@@ -3510,56 +3510,57 @@
         th,
         th.sticky-first,
         th.sticky-second {
-            background: rgba(20, 35, 55, 0.96);
-            color: rgba(248, 252, 255, 0.86);
-            border-bottom: 1px solid rgba(23, 32, 51, 0.08);
+            background: #f5f7fb;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(16, 23, 37, 0.1);
             letter-spacing: 0.04em;
+            font-weight: 800;
         }
 
         th:hover {
-            background: rgba(20, 35, 55, 0.96);
-            color: rgba(248, 252, 255, 0.86);
+            background: #eef2f7;
+            color: var(--text-primary);
         }
 
         td {
-            background: rgba(255, 251, 245, 0.92);
+            background: #fff;
         }
 
         tbody tr:nth-child(even) td {
-            background: rgba(248, 242, 231, 0.9);
+            background: #f7f9fc;
         }
 
         tbody tr:hover td {
-            background: rgba(232, 246, 243, 1);
+            background: #eef6ff;
         }
 
         td.sticky-first,
         td.sticky-second {
-            background: linear-gradient(90deg, rgba(255, 251, 245, 1) 0%, rgba(255, 251, 245, 1) 86%, rgba(255, 251, 245, 0) 100%);
+            background: linear-gradient(90deg, #fff 0%, #fff 86%, rgba(255, 255, 255, 0) 100%);
         }
 
         tbody tr:nth-child(even) td.sticky-first,
         tbody tr:nth-child(even) td.sticky-second {
-            background: linear-gradient(90deg, rgba(248, 242, 231, 1) 0%, rgba(248, 242, 231, 1) 86%, rgba(248, 242, 231, 0) 100%);
+            background: linear-gradient(90deg, #f7f9fc 0%, #f7f9fc 86%, rgba(247, 249, 252, 0) 100%);
         }
 
         tbody tr:hover td.sticky-first,
         tbody tr:hover td.sticky-second {
-            background: linear-gradient(90deg, rgba(232, 246, 243, 1) 0%, rgba(232, 246, 243, 1) 86%, rgba(232, 246, 243, 0) 100%);
+            background: linear-gradient(90deg, #eef6ff 0%, #eef6ff 86%, rgba(238, 246, 255, 0) 100%);
             box-shadow: none;
         }
 
         .action-btn {
-            background: linear-gradient(135deg, #173753, #0f766e);
-            border: 1px solid transparent;
-            border-radius: 999px;
+            background: #0b68d1;
+            border: 1px solid #0b68d1;
+            border-radius: 8px;
             font-weight: 700;
-            box-shadow: 0 10px 20px rgba(23, 55, 83, 0.18);
+            box-shadow: none;
         }
 
         .action-btn:hover {
-            background: linear-gradient(135deg, #122d45, #0b5c56);
-            border-color: transparent;
+            background: #0958b6;
+            border-color: #0958b6;
         }
 
         .recommendation-card {
@@ -4168,6 +4169,11 @@
 
         .table-wrapper {
             overflow: hidden;
+            background: rgba(255, 255, 255, 0.94);
+            border-radius: 12px;
+            border: 1px solid rgba(16, 23, 37, 0.1);
+            box-shadow: 0 8px 20px rgba(16, 23, 37, 0.05);
+            backdrop-filter: blur(10px);
         }
 
         .table-watermark {
@@ -4177,20 +4183,32 @@
         th,
         th.sticky-first,
         th.sticky-second {
-            background: #101725;
-            color: rgba(255, 255, 255, 0.86);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: #f5f7fb;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(16, 23, 37, 0.1);
             font-weight: 800;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.04em;
         }
 
         th:hover {
-            background: #172033;
-            color: #fff;
+            background: #eef2f7;
+            color: var(--text-primary);
+        }
+
+        th.sortable::after {
+            border-top-color: var(--text-tertiary);
+        }
+
+        th.sort-asc::after {
+            border-bottom-color: var(--accent-primary, #0b68d1);
+        }
+
+        th.sort-desc::after {
+            border-top-color: var(--accent-primary, #0b68d1);
         }
 
         td {
-            background: rgba(255, 255, 255, 0.94);
+            background: #fff;
             border-bottom-color: rgba(16, 23, 37, 0.07);
         }
 
