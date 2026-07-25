@@ -2416,7 +2416,7 @@
             if (!document.querySelector('link[data-monitor-css="1"]')) {
                 const link = document.createElement('link');
                 link.rel = 'stylesheet';
-                link.href = 'styles/monitor.css?v=260725o';
+                link.href = 'styles/monitor.css?v=260725p';
                 link.dataset.monitorCss = '1';
                 document.head.appendChild(link);
             }

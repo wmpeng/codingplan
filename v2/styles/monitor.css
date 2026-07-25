@@ -171,7 +171,7 @@
 }
 
 .monitor-platform {
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 1px solid rgba(16, 23, 37, 0.16);
 }
 .monitor-platform > .monitor-row {
     border-bottom: none;

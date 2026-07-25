@@ -8,7 +8,6 @@
   let paygPinnedIds = [];
   const selectedPlatformIds = new Set();
   const selectedModelNames = new Set();
-  let pricedOnly = false;
 
   async function loadJson(path) {
     const response = await fetch(path, { cache: 'no-store' });
@@ -60,8 +59,6 @@
     document.querySelectorAll('#paygModelCheckboxes input:checked').forEach((input) => {
       selectedModelNames.add(input.value);
     });
-    const pricedEl = document.getElementById('paygPricedOnly');
-    pricedOnly = !!(pricedEl && pricedEl.checked);
     updateCountBadges();
   }
 
@@ -186,8 +183,7 @@
     syncSelectionFromDom();
     let filtered = PlatformCatalog.filterPaygRows(allRows, {
       platformIds: selectedPlatformIds.size ? [...selectedPlatformIds] : [],
-      modelNames: selectedModelNames.size ? [...selectedModelNames] : [],
-      pricedOnly
+      modelNames: selectedModelNames.size ? [...selectedModelNames] : []
     });
     filtered = PlatformCatalog.mergePinnedIntoFiltered(
       allRows,
@@ -254,14 +250,11 @@
   function clearFilters() {
     selectedPlatformIds.clear();
     selectedModelNames.clear();
-    pricedOnly = false;
     sortKey = 'order';
     sortDir = 'asc';
     document.querySelectorAll('#paygVendorCheckboxes input, #paygModelCheckboxes input').forEach((input) => {
       input.checked = false;
     });
-    const pricedEl = document.getElementById('paygPricedOnly');
-    if (pricedEl) pricedEl.checked = false;
     closeAllDropdowns();
     applyAndRender();
   }
@@ -314,7 +307,6 @@
       applyAndRender();
     });
 
-    document.getElementById('paygPricedOnly')?.addEventListener('change', applyAndRender);
     document.getElementById('paygClearFilters')?.addEventListener('click', clearFilters);
 
     document.querySelectorAll('#paygTable th.sortable').forEach((th) => {
@@ -359,7 +351,6 @@
     `<div class="filter-bar surface-panel">` +
     `<div class="filter-dropdown"><button type="button" class="filter-btn" id="paygVendorBtn"><span>平台</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" id="paygVendorCount" style="display: none;">0</span></button><div class="dropdown-menu" id="paygVendorDropdown"><div class="dropdown-section"><div class="checkbox-group" id="paygVendorCheckboxes"></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" id="paygVendorReset">重置</button><button type="button" class="dropdown-btn primary" id="paygVendorDone">确定</button></div></div></div>` +
     `<div class="filter-dropdown"><button type="button" class="filter-btn" id="paygModelBtn"><span>模型</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" id="paygModelCount" style="display: none;">0</span></button><div class="dropdown-menu" id="paygModelDropdown"><div class="dropdown-section"><div class="checkbox-group" id="paygModelCheckboxes"></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" id="paygModelReset">重置</button><button type="button" class="dropdown-btn primary" id="paygModelDone">确定</button></div></div></div>` +
-    `<div class="filter-checkbox"><label class="checkbox-label"><input type="checkbox" id="paygPricedOnly"><span class="checkbox-text">仅显示有标价</span></label></div>` +
     `<div class="filter-trailing"><button type="button" class="reset-btn" id="paygClearFilters">清空筛选</button>` +
     `<div class="stats-bar">显示 <strong id="paygResultCount">0</strong> / <strong id="paygTotalCount">0</strong> 行</div></div></div>` +
     `<div class="table-wrapper surface-panel"><div class="table-watermark" id="paygTableWatermark" aria-hidden="true"><div class="table-watermark-line"></div><div class="table-watermark-line"></div><div class="table-watermark-line"></div></div>` +
