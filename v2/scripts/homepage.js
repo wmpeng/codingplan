@@ -2198,24 +2198,32 @@
             const bar = document.getElementById('platformTagBar');
             if (!bar) return;
 
+            let filters = document.getElementById('platformTagBarFilters');
+            if (!filters) {
+                filters = document.createElement('div');
+                filters.id = 'platformTagBarFilters';
+                filters.className = 'platform-tag-bar-filters';
+                bar.insertBefore(filters, bar.firstChild);
+            }
+
             const cat = getPlatformCatalogConfig();
             if (typeof PlatformCatalog !== 'undefined' && PlatformCatalog.buildPlatformTagBarHtml) {
-                bar.innerHTML = PlatformCatalog.buildPlatformTagBarHtml(
+                filters.innerHTML = PlatformCatalog.buildPlatformTagBarHtml(
                     cat,
                     platformSelectedLabels,
                     platformStatusMax
                 );
             } else {
-                bar.innerHTML = '';
+                filters.innerHTML = '';
             }
 
-            bar.querySelectorAll('[data-platform-tag]').forEach((btn) => {
+            filters.querySelectorAll('[data-platform-tag]').forEach((btn) => {
                 btn.addEventListener('click', () => {
                     togglePlatformTag(btn.getAttribute('data-platform-tag'));
                 });
             });
 
-            bindPlatformStatusSliderGestures(bar);
+            bindPlatformStatusSliderGestures(filters);
         }
 
         function buildPlatformCardHtml(platform) {

@@ -300,17 +300,19 @@
 }
 
 .stats-bar {
-    color: var(--text-secondary);
-    font-size: 13px;
-    display: flex;
+    color: var(--text-tertiary);
+    font-size: 12px;
+    display: inline-flex;
     align-items: center;
     margin-left: auto;
-    min-height: 42px;
-    padding: 0 14px;
+    min-height: 36px;
+    padding: 0 12px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(23, 32, 51, 0.08);
-    box-shadow: 0 10px 20px rgba(23, 32, 51, 0.05);
+    background: #fff;
+    border: 1px solid rgba(16, 23, 37, 0.12);
+    box-shadow: none;
+    white-space: nowrap;
+    flex: 0 0 auto;
 }
 
 .stats-bar strong {

@@ -351,6 +351,11 @@
       return copy;
     }
 
+    state.updateStatsBar = function updateStatsBar(showing, total) {
+      if (state.showingCountEl) state.showingCountEl.textContent = String(showing);
+      if (state.totalCountEl) state.totalCountEl.textContent = String(total);
+    };
+
     state.renderBoard = function renderBoard() {
       state.boardRoot.innerHTML = '';
       state.boardRoot.className = 'monitor-list';
@@ -358,15 +363,18 @@
       if (!state.boardData || !state.boardData.platforms || !state.boardData.platforms.length) {
         state.boardRoot.className = 'monitor-empty';
         state.boardRoot.textContent = state.config.emptyLabel || '暂无数据';
+        state.updateStatsBar(0, 0);
         return;
       }
 
+      const allPlatforms = state.boardData.platforms;
+      const totalCount = allPlatforms.length;
       const selectedModel = state.selectedModelValue;
       const sortByAvailability = state.sortCheckbox.checked;
 
       if (selectedModel) {
         const rows = [];
-        sortedPlatforms(state.boardData.platforms, sortByAvailability).forEach(function (platform) {
+        sortedPlatforms(allPlatforms, sortByAvailability).forEach(function (platform) {
           (platform.models || []).forEach(function (model) {
             if (model.model_slug !== selectedModel) return;
             rows.push({
@@ -375,6 +383,7 @@
             });
           });
         });
+        state.updateStatsBar(rows.length, totalCount);
         if (!rows.length) {
           state.boardRoot.className = 'monitor-empty';
           state.boardRoot.textContent = state.config.emptyLabel || '暂无数据';
@@ -397,7 +406,8 @@
         return;
       }
 
-      const platforms = sortedPlatforms(state.boardData.platforms, sortByAvailability);
+      const platforms = sortedPlatforms(allPlatforms, sortByAvailability);
+      state.updateStatsBar(platforms.length, totalCount);
       state.boardRoot.appendChild(renderSectionHead('平台', platforms.length + ' 个'));
       platforms.forEach(function (platform) {
         state.boardRoot.appendChild(renderPlatformBlock(platform));
@@ -485,6 +495,7 @@
     state.fetchBoard = function fetchBoard() {
       state.boardRoot.className = 'monitor-loading';
       state.boardRoot.textContent = state.config.loadingLabel || '加载中...';
+      state.updateStatsBar(0, 0);
 
       return fetch(getApiBase() + '/monitor/board?days=7')
         .then(function (r) { return r.json(); })
@@ -497,6 +508,7 @@
         .catch(function () {
           state.boardRoot.className = 'monitor-empty';
           state.boardRoot.textContent = state.config.errorLabel || '数据加载失败，请稍后重试';
+          state.updateStatsBar(0, 0);
         });
     };
 
@@ -557,6 +569,14 @@
 
       toolbar.appendChild(modelControl);
       toolbar.appendChild(state.sortToggle);
+
+      state.statsBar = document.createElement('div');
+      state.statsBar.className = 'stats-bar';
+      state.statsBar.innerHTML =
+        '显示 <strong data-monitor-showing="1">0</strong> / <strong data-monitor-total="1">0</strong> 个平台';
+      state.showingCountEl = state.statsBar.querySelector('[data-monitor-showing]');
+      state.totalCountEl = state.statsBar.querySelector('[data-monitor-total]');
+      toolbar.appendChild(state.statsBar);
 
       state.boardRoot = document.createElement('div');
       state.boardRoot.className = 'monitor-loading';
