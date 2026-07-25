@@ -3985,13 +3985,13 @@
             margin: 4px 0 22px;
         }
 
-        #view-payg {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
+        /* 勿写裸 #view-* { display:flex }，会盖掉 [hidden] 导致多 tab 同时显示 */
+        [data-main-view-panel][hidden] {
+            display: none !important;
         }
 
-        #view-monitor {
+        #view-payg:not([hidden]),
+        #view-monitor:not([hidden]) {
             display: flex;
             flex-direction: column;
             gap: 0;
