@@ -18,40 +18,6 @@
             line-height: 1.7;
         }
 
-        .hero-intel-strip {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 1px;
-            margin-top: 22px;
-            border: 1px solid rgba(16, 23, 37, 0.1);
-            border-radius: 14px;
-            overflow: hidden;
-            background: rgba(16, 23, 37, 0.1);
-        }
-
-        .hero-intel-item {
-            min-width: 0;
-            padding: 16px 18px;
-            background: rgba(255, 255, 255, 0.78);
-        }
-
-        .hero-intel-label {
-            display: block;
-            margin-bottom: 7px;
-            color: var(--text-tertiary);
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .hero-intel-value {
-            color: var(--text-primary);
-            font-size: 15px;
-            font-weight: 800;
-            line-height: 1.35;
-        }
-
         /* 顶部筛选栏 */
         .filter-bar {
             display: flex;
@@ -2816,10 +2782,6 @@
                 font-size: 22px;
             }
 
-            .hero-intel-strip {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
             .header .subtitle {
                 font-size: 13px;
             }
@@ -2929,10 +2891,6 @@
 
             .header h1 {
                 font-size: 18px;
-            }
-
-            .hero-intel-strip {
-                grid-template-columns: 1fr;
             }
 
             .github-link span {
@@ -4226,10 +4184,6 @@
                 line-height: 1.08;
             }
 
-            .hero-intel-strip {
-                margin-top: 16px;
-            }
-
             .main-view-tabs {
                 flex-wrap: nowrap;
                 max-width: 100%;
@@ -4297,24 +4251,6 @@
             <div class="update-date" id="updateDate">更新日期 2026.7.25 | 套餐大表新增「每 M Token 综合价格」</div>
             <div class="subtitle" id="subtitle">覆盖 Coding Plan、Token Plan 与按量调用平台的结构化对比，集中查看价格口径、模型能力、额度、可用性与购买状态。</div>
             <div class="models" id="models">面向开发者与团队采购的第一轮筛选：先用平台目录建立候选池，再进入套餐大表、可用性监控和按量计费核对细节。</div>
-            <div class="hero-intel-strip" aria-label="站点核心能力">
-                <div class="hero-intel-item">
-                    <span class="hero-intel-label">Coverage</span>
-                    <div class="hero-intel-value">平台、套餐、按量价格统一入口</div>
-                </div>
-                <div class="hero-intel-item">
-                    <span class="hero-intel-label">Method</span>
-                    <div class="hero-intel-value">价格、额度、模型与可用性分维度核验</div>
-                </div>
-                <div class="hero-intel-item">
-                    <span class="hero-intel-label">Workflow</span>
-                    <div class="hero-intel-value">标签筛选、排序、详情浮层与图表联动</div>
-                </div>
-                <div class="hero-intel-item">
-                    <span class="hero-intel-label">Audience</span>
-                    <div class="hero-intel-value">个人开发者、团队选型与预算评估</div>
-                </div>
-            </div>
         </div>
 
         <div class="hero-summary hero-summary--lede">
