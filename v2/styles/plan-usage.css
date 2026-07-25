@@ -79,7 +79,7 @@
 .plan-usage-chart {
     margin-top: 18px;
     width: 100%;
-    height: 320px;
+    height: 240px;
     border-radius: 22px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(248, 242, 231, 0.7));
     border: 1px solid rgba(23, 32, 51, 0.08);
@@ -95,7 +95,7 @@
 }
 
 .plan-composite-price-chart {
-    height: 340px;
+    height: 255px;
 }
 
 .plan-composite-price-panel .plan-usage-chart-block {
@@ -147,11 +147,11 @@
     }
 
     .plan-usage-chart {
-        height: 300px;
+        height: 225px;
     }
 
     .plan-composite-price-chart {
-        height: 300px;
+        height: 225px;
     }
 }
 
@@ -183,10 +183,10 @@
     }
 
     .plan-usage-chart {
-        height: 280px;
+        height: 210px;
     }
 
     .plan-composite-price-chart {
-        height: 280px;
+        height: 210px;
     }
 }

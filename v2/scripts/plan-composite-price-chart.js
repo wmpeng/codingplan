@@ -268,10 +268,10 @@
     return {
       animationDuration: 420,
       grid: {
-        left: 72,
-        right: 18,
+        left: 48,
+        right: 14,
         top: 36,
-        bottom: 108
+        bottom: 92
       },
       tooltip: {
         trigger: 'item',
@@ -338,9 +338,12 @@
       yAxis: {
         type: 'value',
         name: '￥/ M Token',
-        nameTextStyle: { color: '#64748b', fontSize: 12, padding: [0, 0, 0, 8] },
+        nameLocation: 'end',
+        nameGap: 8,
+        nameTextStyle: { color: '#64748b', fontSize: 11, align: 'left', padding: [0, 0, 0, 0] },
         axisLabel: {
           color: '#64748b',
+          fontSize: 11,
           formatter(value) {
             return Number(value).toFixed(2);
           }
@@ -373,7 +376,7 @@
     if (!chartEl) return;
     const host = chartEl.parentElement;
     const hostWidth = host && host.clientWidth ? host.clientWidth : 0;
-    const needed = Math.max(hostWidth, itemCount * 28 + 80);
+    const needed = Math.max(hostWidth, itemCount * 28 + 48);
     chartEl.style.width = `${needed}px`;
   }
 
