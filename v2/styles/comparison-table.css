@@ -285,7 +285,7 @@
 }
 
 .checkbox-text {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-secondary);
     user-select: none;
 }
