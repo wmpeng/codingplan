@@ -578,26 +578,26 @@
 
 #plansTable tbody tr.is-pinned td,
 #paygTable tbody tr.is-pinned td {
-    background: rgba(15, 118, 110, 0.04);
+    background: rgba(15, 118, 110, 0.09);
 }
 
 #plansTable tbody tr.is-pinned td.sticky-first,
 #plansTable tbody tr.is-pinned td.sticky-second,
 #paygTable tbody tr.is-pinned td.sticky-first,
 #paygTable tbody tr.is-pinned td.sticky-second {
-    background: #f7fbfa;
+    background: #e8f5f2;
 }
 
 #plansTable tbody tr.is-pinned:hover td,
 #paygTable tbody tr.is-pinned:hover td {
-    background: rgba(15, 118, 110, 0.07);
+    background: rgba(15, 118, 110, 0.13);
 }
 
 #plansTable tbody tr.is-pinned:hover td.sticky-first,
 #plansTable tbody tr.is-pinned:hover td.sticky-second,
 #paygTable tbody tr.is-pinned:hover td.sticky-first,
 #paygTable tbody tr.is-pinned:hover td.sticky-second {
-    background: #eef7f5;
+    background: #dcefeb;
 }
 
 .vendor-name-link {
