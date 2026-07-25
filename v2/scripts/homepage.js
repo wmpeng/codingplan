@@ -45,8 +45,7 @@
         let requestFilters = {
             fiveHours: { min: null, max: null },
             weekly: { min: null, max: null },
-            monthly: { min: null, max: null },
-            tokenLimit: { min: null, max: null }
+            monthly: { min: null, max: null }
         };
 
         // 检查价格筛选是否已应用
@@ -64,9 +63,6 @@
         const typeDropdown = document.getElementById('typeDropdown');
         const typeCheckboxes = document.getElementById('typeCheckboxes');
         const typeCount = document.getElementById('typeCount');
-        const tokenLimitBtn = document.getElementById('tokenLimitBtn');
-        const tokenLimitDropdown = document.getElementById('tokenLimitDropdown');
-        const tokenLimitCount = document.getElementById('tokenLimitCount');
         const vendorBtn = document.getElementById('vendorBtn');
         const modelBtn = document.getElementById('modelBtn');
         const vendorDropdown = document.getElementById('vendorDropdown');
@@ -302,12 +298,6 @@
                 if (type === 'type') {
                     tempSelectedTypes = new Set(selectedTypes);
                     syncTypeCheckboxes();
-                } else if (type === 'tokenLimit') {
-                    if (requestFilters.tokenLimit.min !== null && requestFilters.tokenLimit.max !== null) {
-                        updateRequestSliderVisuals('tokenLimit', requestFilters.tokenLimit.min, requestFilters.tokenLimit.max);
-                    } else {
-                        updateRequestSliderVisuals('tokenLimit', requestSliders.tokenLimit.minValue, requestSliders.tokenLimit.maxValue);
-                    }
                 } else if (type === 'vendor') {
                     tempSelectedVendors = new Set(selectedVendors);
                     syncVendorCheckboxes();
@@ -403,7 +393,6 @@
             };
 
             bindToggle(typeBtn, typeDropdown, 'type');
-            bindToggle(tokenLimitBtn, tokenLimitDropdown, 'tokenLimit');
             bindToggle(vendorBtn, vendorDropdown, 'vendor');
             bindToggle(firstMonthPriceBtn, firstMonthPriceDropdown, 'firstMonth');
             bindToggle(monthlyPriceBtn, monthlyPriceDropdown, 'monthly');
@@ -533,16 +522,6 @@
             } else {
                 typeCount.style.display = 'none';
                 typeBtn.classList.remove('active');
-            }
-        }
-
-        function updateTokenLimitCount() {
-            if (requestFilters.tokenLimit.min !== null || requestFilters.tokenLimit.max !== null) {
-                tokenLimitCount.style.display = 'inline-block';
-                tokenLimitBtn.classList.add('active');
-            } else {
-                tokenLimitCount.style.display = 'none';
-                tokenLimitBtn.classList.remove('active');
             }
         }
 
@@ -731,13 +710,6 @@
                     if (plan.monthlyRequests > requestFilters.monthly.max) return false;
                 }
 
-                // Token上限筛选
-                if (isRequestFilterApplied('tokenLimit')) {
-                    if (typeof plan.tokenLimit !== 'number') return false;
-                    if (plan.tokenLimit < requestFilters.tokenLimit.min) return false;
-                    if (plan.tokenLimit > requestFilters.tokenLimit.max) return false;
-                }
-
                 return true;
             });
 
@@ -762,22 +734,19 @@
         const requestSliders = {
             fiveHours: { min: 0, max: 0, minValue: 0, maxValue: 0 },
             weekly: { min: 0, max: 0, minValue: 0, maxValue: 0 },
-            monthly: { min: 0, max: 0, minValue: 0, maxValue: 0 },
-            tokenLimit: { min: 0, max: 0, minValue: 0, maxValue: 0 }
+            monthly: { min: 0, max: 0, minValue: 0, maxValue: 0 }
         };
 
         const requestPlanField = {
             fiveHours: 'fiveHoursRequests',
             weekly: 'weeklyRequests',
-            monthly: 'monthlyRequests',
-            tokenLimit: 'tokenLimit'
+            monthly: 'monthlyRequests'
         };
 
         const requestSliderIdPrefix = {
             fiveHours: 'fiveHoursRequest',
             weekly: 'weeklyRequest',
-            monthly: 'monthlyRequest',
-            tokenLimit: 'tokenLimit'
+            monthly: 'monthlyRequest'
         };
 
         // 计算价格类型的最大值
@@ -922,7 +891,6 @@
             initRequestSlider('fiveHours');
             initRequestSlider('weekly');
             initRequestSlider('monthly');
-            initRequestSlider('tokenLimit');
         }
 
         function initRequestSlider(requestType) {
@@ -969,7 +937,7 @@
             }
             const fmt = (n) => {
                 if (typeof n !== 'number') return String(n);
-                return requestType === 'tokenLimit' ? n.toLocaleString() + 'M' : n.toLocaleString();
+                return n.toLocaleString();
             };
             if (minValueEl) minValueEl.textContent = fmt(minValue);
             if (maxValueEl) maxValueEl.textContent = fmt(maxValue);
@@ -1169,21 +1137,6 @@
             updateRequestSliderVisuals('monthly', requestSliders.monthly.minValue, requestSliders.monthly.maxValue);
         }
 
-        function applyTokenLimitFilter() {
-            const isInitial = requestSliders.tokenLimit.min === requestSliders.tokenLimit.minValue &&
-                              requestSliders.tokenLimit.max === requestSliders.tokenLimit.maxValue;
-            if (isInitial) {
-                requestFilters.tokenLimit.min = null;
-                requestFilters.tokenLimit.max = null;
-            } else {
-                requestFilters.tokenLimit.min = requestSliders.tokenLimit.min;
-                requestFilters.tokenLimit.max = requestSliders.tokenLimit.max;
-            }
-            updateTokenLimitCount();
-            applyFilters();
-            closeDropdownWithoutFilter();
-        }
-
         // 重置筛选
         function resetVendorFilter() {
             // 重置只影响临时状态，不提交
@@ -1205,9 +1158,6 @@
             updateTempTypeCount();
         }
 
-        function resetTokenLimitFilter() {
-            updateRequestSliderVisuals('tokenLimit', requestSliders.tokenLimit.minValue, requestSliders.tokenLimit.maxValue);
-        }
 
         function resetAllFilters() {
             // 重置显示已下线套餐复选框
@@ -1230,8 +1180,6 @@
             requestFilters.weekly.max = null;
             requestFilters.monthly.min = null;
             requestFilters.monthly.max = null;
-            requestFilters.tokenLimit.min = null;
-            requestFilters.tokenLimit.max = null;
 
             // 重置所有滑块到初始范围
             Object.keys(priceSliders).forEach(type => {
@@ -1244,7 +1192,6 @@
             resetTypeFilter();
             resetVendorFilter();
             resetModelFilter();
-            resetTokenLimitFilter();
 
             selectedTypes.clear();
             selectedTags.clear();
@@ -1261,7 +1208,6 @@
             updateFiveHoursRequestCount();
             updateWeeklyRequestCount();
             updateMonthlyRequestCount();
-            updateTokenLimitCount();
             applyFilters();
         }
 
@@ -1344,10 +1290,6 @@
                         valueA = getRequestSortValue(a.measuredMonthlyTokenLimit);
                         valueB = getRequestSortValue(b.measuredMonthlyTokenLimit);
                         break;
-                    case 'tokenLimit':
-                        valueA = getRequestSortValue(a.tokenLimit);
-                        valueB = getRequestSortValue(b.tokenLimit);
-                        break;
                     case 'benefits':
                         valueA = a['其他权益'];
                         valueB = b['其他权益'];
@@ -1407,7 +1349,7 @@
             if (filteredPlans.length === 0) {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="18">
+                        <td colspan="20">
                             <div class="empty-state">
                                 <div class="empty-state-icon">📭</div>
                                 <div class="empty-state-text">没有找到符合条件的套餐</div>
@@ -1441,7 +1383,6 @@
                     <td><span class="request-count">${formatMeasuredToken(plan.measuredFiveHoursTokenLimit)}</span></td>
                     <td><span class="request-count">${formatMeasuredToken(plan.measuredWeeklyTokenLimit)}</span></td>
                     <td><span class="request-count">${formatMeasuredToken(plan.measuredMonthlyTokenLimit)}</span></td>
-                    <td><span class="request-count">${typeof plan.tokenLimit === 'number' ? plan.tokenLimit + 'M <span class="unit">Tokens</span>' : escapeHtml(plan.tokenLimit || '无限制')}</span></td>
                     <td>
                         ${plan.models.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
                     </td>
@@ -2584,7 +2525,7 @@
                 if (!hasStaticRows) {
                     tableBody.innerHTML = `
                     <tr>
-                        <td colspan="18">
+                        <td colspan="20">
                             <div class="loading">加载数据中</div>
                         </td>
                     </tr>
@@ -2619,7 +2560,7 @@
                 console.error('加载数据失败:', error);
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="18">
+                        <td colspan="20">
                             <div class="empty-state">
                                 <div class="empty-state-icon">❌</div>
                                 <div class="empty-state-text">数据加载失败</div>
@@ -2708,7 +2649,6 @@
     window.resetVendorFilter = resetVendorFilter;
     window.resetTypeFilter = resetTypeFilter;
     window.resetModelFilter = resetModelFilter;
-    window.resetTokenLimitFilter = resetTokenLimitFilter;
     window.resetFirstMonthPriceFilter = resetFirstMonthPriceFilter;
     window.applyFirstMonthPriceFilter = applyFirstMonthPriceFilter;
     window.resetMonthlyPriceFilter = resetMonthlyPriceFilter;

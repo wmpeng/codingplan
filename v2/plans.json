@@ -21,7 +21,6 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 6000,
     "monthlyRequests": 24000,
-    "tokenLimit": "无限制",
     "benefits": [
       "免费MCP次数"
     ],
@@ -53,7 +52,6 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 30000,
     "monthlyRequests": 120000,
-    "tokenLimit": "无限制",
     "benefits": [
       "免费MCP次数"
     ],
@@ -85,7 +83,6 @@
     "fiveHoursRequests": 24000,
     "weeklyRequests": 120000,
     "monthlyRequests": 480000,
-    "tokenLimit": "无限制",
     "benefits": [
       "免费MCP次数"
     ],
@@ -115,7 +112,6 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 6000,
     "monthlyRequests": 24000,
-    "tokenLimit": "无限制",
     "currency": "$",
     "benefits": [
       "免费MCP次数"
@@ -144,7 +140,6 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 30000,
     "monthlyRequests": 120000,
-    "tokenLimit": "无限制",
     "currency": "$",
     "benefits": [
       "免费MCP次数"
@@ -173,7 +168,6 @@
     "fiveHoursRequests": 24000,
     "weeklyRequests": 120000,
     "monthlyRequests": 480000,
-    "tokenLimit": "无限制",
     "currency": "$",
     "benefits": [
       "免费MCP次数"
@@ -202,7 +196,6 @@
     "fiveHoursRequests": 600,
     "weeklyRequests": 6000,
     "monthlyRequests": 24000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• Token Plan 升级后保留档，仅老用户可续订\n• 支持 M3 与多模态，和 M2.7 共享额度池\n• 若中途断订，后续不可再次订阅同档",
     "discontinued": true,
@@ -232,7 +225,6 @@
     "fiveHoursRequests": 1500,
     "weeklyRequests": 15000,
     "monthlyRequests": 60000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 当前公开订阅档位\n• 支持 M3 与多模态，和 M2.7 共享额度池\n• 套餐额度受 5 小时窗口与周窗口控制",
     "discontinued": true,
@@ -262,7 +254,6 @@
     "fiveHoursRequests": 4500,
     "weeklyRequests": 45000,
     "monthlyRequests": 180000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算",
     "discontinued": true,
@@ -292,7 +283,6 @@
     "fiveHoursRequests": 1500,
     "weeklyRequests": 15000,
     "monthlyRequests": 60000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 约100TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算",
     "discontinued": true,
@@ -322,7 +312,6 @@
     "fiveHoursRequests": 4500,
     "weeklyRequests": 45000,
     "monthlyRequests": 180000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 官方已停售并迁移至新版 Max\n• 迁移后月费 199→119，并补发差价积分\n• 新方案支持 M3 与多模态",
     "discontinued": true,
@@ -352,7 +341,6 @@
     "fiveHoursRequests": 1500,
     "weeklyRequests": 15000,
     "monthlyRequests": 60000,
-    "tokenLimit": 600,
     "benefits": [],
     "note": "",
     "measuredMonthlyTokenLimit": 600
@@ -379,7 +367,6 @@
     "fiveHoursRequests": 4500,
     "weeklyRequests": 45000,
     "monthlyRequests": 180000,
-    "tokenLimit": 1800,
     "benefits": [],
     "note": "",
     "measuredMonthlyTokenLimit": 1800
@@ -406,7 +393,6 @@
     "fiveHoursRequests": 15000,
     "weeklyRequests": 150000,
     "monthlyRequests": 600000,
-    "tokenLimit": 7100,
     "benefits": [],
     "note": "",
     "measuredMonthlyTokenLimit": 7100
@@ -436,7 +422,6 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 讯飞实际可用量比较多，按调用量计数，明示调用量"
   },
@@ -469,7 +454,6 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 高效版已支持 GLM-5.2\n• 讯飞实际可用量比较多，按调用量计数，明示调用量"
   },
@@ -502,7 +486,6 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）\n• DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍，GLM-5.2限时4倍用量",
     "discontinued": false,
@@ -539,7 +522,6 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）\n• DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍，GLM-5.2限时4倍用量",
     "discontinued": false,
@@ -569,7 +551,6 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
-    "tokenLimit": "无限制",
     "benefits": [],
     "summary": "入门档，Agent 约 4 倍速",
     "note": "Agent 4 倍速",
@@ -599,7 +580,6 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
-    "tokenLimit": "无限制",
     "benefits": [],
     "summary": "约 4 倍额度，支持 Agent 多任务并行",
     "note": "4 倍额度, Agent 多任务并行"
@@ -611,7 +591,8 @@
     "action": "https://api.dreamfree.space/c/s/cpyqkimi",
     "rating": 4,
     "tags": [
-      "模型强", "性价比高"
+      "模型强",
+      "性价比高"
     ],
     "firstMonthPrice": "-",
     "monthlyPrice": 199,
@@ -626,7 +607,6 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
-    "tokenLimit": "无限制",
     "benefits": [
       "免费Kimi-Claw"
     ],
@@ -643,7 +623,8 @@
     "action": "https://api.dreamfree.space/c/s/cpyqkimi",
     "rating": 4,
     "tags": [
-      "模型强", "性价比高"
+      "模型强",
+      "性价比高"
     ],
     "firstMonthPrice": "-",
     "monthlyPrice": 699,
@@ -658,7 +639,6 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
-    "tokenLimit": "无限制",
     "benefits": [
       "免费Kimi-Claw"
     ],
@@ -689,7 +669,6 @@
     "fiveHoursRequests": 300,
     "weeklyRequests": 750,
     "monthlyRequests": 1900,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：3 并发\n• 价格较贵，但费率明确，无隐藏倍率",
     "discontinued": false
@@ -718,7 +697,6 @@
     "fiveHoursRequests": 600,
     "weeklyRequests": 1500,
     "monthlyRequests": 3800,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：5 并发\n• 价格较贵，但费率明确，无隐藏倍率",
     "discontinued": false
@@ -747,7 +725,6 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 3000,
     "monthlyRequests": 7600,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：10 并发\n• 价格较贵，但费率明确，无隐藏倍率",
     "discontinued": false
@@ -776,7 +753,6 @@
     "fiveHoursRequests": 3000,
     "weeklyRequests": 7500,
     "monthlyRequests": 19000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：10 并发\n• 价格较贵，但费率明确，无隐藏倍率",
     "discontinued": false
@@ -805,7 +781,6 @@
     "fiveHoursRequests": 4800,
     "weeklyRequests": 12000,
     "monthlyRequests": 31000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：10 并发\n• 价格较贵，但费率明确，无隐藏倍率",
     "discontinued": false
@@ -834,7 +809,6 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 15000,
     "monthlyRequests": 39000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 倍率：DeepSeek-V4-Flash x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：10 并发\n• 价格较贵但费率明确，无隐藏倍率",
     "discontinued": false
@@ -873,7 +847,6 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
     "currency": "$",
     "benefits": [
       "首月半价"
@@ -886,7 +859,9 @@
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqmimo",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "firstMonthPrice": 34.32,
     "monthlyPrice": 39,
     "quarterlyPrice": "-",
@@ -901,7 +876,6 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 108,
     "benefits": [
       "TTS限时免费"
     ],
@@ -914,7 +888,9 @@
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqmimo",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "firstMonthPrice": 87.12,
     "monthlyPrice": 99,
     "quarterlyPrice": "-",
@@ -929,7 +905,6 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 290,
     "benefits": [
       "TTS限时免费"
     ],
@@ -942,7 +917,9 @@
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqmimo",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "firstMonthPrice": 289.52,
     "monthlyPrice": 329,
     "quarterlyPrice": "-",
@@ -957,7 +934,6 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 1002,
     "benefits": [
       "TTS限时免费"
     ],
@@ -970,7 +946,9 @@
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqmimo",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "firstMonthPrice": 579.92,
     "monthlyPrice": 659,
     "quarterlyPrice": "-",
@@ -985,7 +963,6 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 2162,
     "benefits": [
       "TTS限时免费"
     ],
@@ -1021,7 +998,6 @@
     "fiveHoursRequests": 200,
     "weeklyRequests": 700,
     "monthlyRequests": 2000,
-    "tokenLimit": 22,
     "benefits": [
       "联网搜索 50次/月"
     ],
@@ -1058,7 +1034,6 @@
     "fiveHoursRequests": 1000,
     "weeklyRequests": 3500,
     "monthlyRequests": 10000,
-    "tokenLimit": 111,
     "benefits": [
       "联网搜索 150次/月"
     ],
@@ -1095,7 +1070,6 @@
     "fiveHoursRequests": 2500,
     "weeklyRequests": 8750,
     "monthlyRequests": 25000,
-    "tokenLimit": 278,
     "benefits": [
       "联网搜索 400次/月"
     ],
@@ -1132,7 +1106,6 @@
     "fiveHoursRequests": 5000,
     "weeklyRequests": 17500,
     "monthlyRequests": 50000,
-    "tokenLimit": 556,
     "benefits": [
       "联网搜索 800次/月"
     ],
@@ -1164,7 +1137,6 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "",
     "discontinued": true,
@@ -1197,7 +1169,6 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "开始限量购买了，不确定每天放不放，放多少",
     "measuredFiveHoursTokenLimit": 200,
@@ -1210,7 +1181,9 @@
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "firstMonthPrice": "-",
     "monthlyPrice": 198,
     "quarterlyPrice": "-",
@@ -1229,7 +1202,6 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 375,
     "benefits": [],
     "note": "• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit。合输入¥1.58/MToken，缓存¥0.32/MToken，输出¥9.54/MToken\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%/5000 + 99×90%/25000 + 1/830 = 0.00675 Credit，即 1 Credit≈14.82K Token。表格按15K Token/Credit算",
     "measuredMonthlyTokenLimit": 375
@@ -1240,7 +1212,9 @@
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "firstMonthPrice": "-",
     "monthlyPrice": 698,
     "quarterlyPrice": "-",
@@ -1259,7 +1233,6 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 1500,
     "benefits": [],
     "note": "• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit。合输入¥1.40/MToken，缓存¥0.28/MToken，输出¥8.41/MToken\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%/5000 + 99×90%/25000 + 1/830 = 0.00675 Credit，即 1 Credit≈14.82K Token。表格按15K Token/Credit算",
     "measuredMonthlyTokenLimit": 1500
@@ -1270,7 +1243,9 @@
     "type": "Token Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
     "rating": 3,
-    "tags": ["模型强"],
+    "tags": [
+      "模型强"
+    ],
     "firstMonthPrice": "-",
     "monthlyPrice": 1398,
     "quarterlyPrice": "-",
@@ -1289,7 +1264,6 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 3750,
     "benefits": [],
     "note": "• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit。合输入¥1.12/MToken，缓存¥0.22/MToken，输出¥6.74/MToken\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%/5000 + 99×90%/25000 + 1/830 = 0.00675 Credit，即 1 Credit≈14.82K Token。表格按15K Token/Credit算",
     "measuredMonthlyTokenLimit": 3750
@@ -1301,7 +1275,8 @@
     "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
     "rating": 5,
     "tags": [
-      "模型强", "性价比高"
+      "模型强",
+      "性价比高"
     ],
     "firstMonthPrice": "-",
     "monthlyPrice": 20,
@@ -1319,7 +1294,6 @@
     "fiveHoursRequests": "Plus 基准",
     "weeklyRequests": "Plus 基准",
     "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
     "currency": "$",
     "benefits": [
       "可购买额外积分"
@@ -1336,7 +1310,8 @@
     "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
     "rating": 5,
     "tags": [
-      "模型强", "性价比高"
+      "模型强",
+      "性价比高"
     ],
     "firstMonthPrice": "-",
     "monthlyPrice": 100,
@@ -1354,7 +1329,6 @@
     "fiveHoursRequests": "Plus 的 5 倍",
     "weeklyRequests": "Plus 的 5 倍",
     "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
     "currency": "$",
     "benefits": [
       "可购买额外积分"
@@ -1371,7 +1345,8 @@
     "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
     "rating": 5,
     "tags": [
-      "模型强", "性价比高"
+      "模型强",
+      "性价比高"
     ],
     "firstMonthPrice": "-",
     "monthlyPrice": 200,
@@ -1389,7 +1364,6 @@
     "fiveHoursRequests": "Plus 的 20 倍",
     "weeklyRequests": "Plus 的 20 倍",
     "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
     "currency": "$",
     "benefits": [
       "可购买额外积分"
@@ -1405,7 +1379,6 @@
     "type": "Coding Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
     "rating": 3,
-    
     "firstMonthPrice": "-",
     "monthlyPrice": 39,
     "quarterlyPrice": "-",
@@ -1416,7 +1389,6 @@
     "fiveHoursRequests": 600,
     "weeklyRequests": 4200,
     "monthlyRequests": "-",
-    "tokenLimit": "-",
     "benefits": [],
     "note": ""
   },
@@ -1426,7 +1398,6 @@
     "type": "Coding Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
     "rating": 3,
-    
     "firstMonthPrice": "-",
     "monthlyPrice": 149,
     "quarterlyPrice": "-",
@@ -1437,7 +1408,6 @@
     "fiveHoursRequests": 2000,
     "weeklyRequests": 15000,
     "monthlyRequests": "-",
-    "tokenLimit": "-",
     "benefits": [],
     "note": ""
   },
@@ -1447,7 +1417,6 @@
     "type": "Coding Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
     "rating": 3,
-    
     "firstMonthPrice": "-",
     "monthlyPrice": 388,
     "quarterlyPrice": "-",
@@ -1458,7 +1427,6 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 35000,
     "monthlyRequests": "-",
-    "tokenLimit": "-",
     "benefits": [],
     "note": ""
   },
@@ -1481,7 +1449,6 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 292,
     "benefits": [],
     "note": "• 官方定价：缓存命中输入 ¥0.02/M Token，缓存未命中输入 ¥1/M Token，输出 ¥2/M Token\n• 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.02/1000000 + 99×10%×1/1000000 + 1×2/1000000 = 0.000013682 元\n• 约等于 1 元≈7.31M Token，再乘月费 40 元，得到月 Token 上限约 292M",
     "measuredMonthlyTokenLimit": 292
@@ -1505,7 +1472,6 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 1462,
     "benefits": [],
     "note": "• 官方定价：缓存命中输入 ¥0.02/M Token，缓存未命中输入 ¥1/M Token，输出 ¥2/M Token\n• 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.02/1000000 + 99×10%×1/1000000 + 1×2/1000000 = 0.000013682 元\n• 约等于 1 元≈7.31M Token，再乘月费 200 元，得到月 Token 上限约 1462M",
     "measuredMonthlyTokenLimit": 1462
@@ -1529,7 +1495,6 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 105,
     "benefits": [],
     "note": "• 官方定价：缓存命中输入 ¥0.025/M Token，缓存未命中输入 ¥3/M Token，输出 ¥6/M Token\n• 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.025/1000000 + 99×10%×3/1000000 + 1×6/1000000 = 0.0000379275 元\n• 约等于 1 元≈2.64M Token，再乘月费 40 元，得到月 Token 上限约 105M",
     "measuredMonthlyTokenLimit": 105
@@ -1553,7 +1518,6 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 527,
     "benefits": [],
     "note": "• 官方定价：缓存命中输入 ¥0.025/M Token，缓存未命中输入 ¥3/M Token，输出 ¥6/M Token\n• 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.025/1000000 + 99×10%×3/1000000 + 1×6/1000000 = 0.0000379275 元\n• 约等于 1 元≈2.64M Token，再乘月费 200 元，得到月 Token 上限约 527M",
     "measuredMonthlyTokenLimit": 527
@@ -1582,7 +1546,6 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 不同云区域可用模型不同\n• 参考文档 https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7015",
     "discontinued": true
@@ -1611,7 +1574,6 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 不同云区域可用模型不同\n• 参考文档 https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7015",
     "discontinued": true
@@ -1634,9 +1596,9 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 6,
     "benefits": [],
-    "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n"
+    "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n",
+    "measuredMonthlyTokenLimit": 6
   },
   {
     "vendor": "联通云",
@@ -1656,9 +1618,9 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 12,
     "benefits": [],
-    "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n"
+    "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n",
+    "measuredMonthlyTokenLimit": 12
   },
   {
     "vendor": "联通云",
@@ -1678,9 +1640,9 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 18,
     "benefits": [],
-    "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n"
+    "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n",
+    "measuredMonthlyTokenLimit": 18
   },
   {
     "vendor": "联通云",
@@ -1703,9 +1665,9 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 200,
     "benefits": [],
-    "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens"
+    "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens",
+    "measuredMonthlyTokenLimit": 200
   },
   {
     "vendor": "联通云",
@@ -1728,9 +1690,9 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 800,
     "benefits": [],
-    "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens"
+    "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens",
+    "measuredMonthlyTokenLimit": 800
   },
   {
     "vendor": "联通云",
@@ -1753,9 +1715,9 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 2000,
     "benefits": [],
-    "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens"
+    "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens",
+    "measuredMonthlyTokenLimit": 2000
   },
   {
     "vendor": "百度·千帆",
@@ -1780,7 +1742,6 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill"
   },
@@ -1807,7 +1768,6 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill"
   },
@@ -1832,7 +1792,6 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": ""
   },
@@ -1857,7 +1816,6 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": ""
   },
@@ -1884,7 +1842,6 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "",
     "discontinued": true
@@ -1912,7 +1869,6 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "",
     "discontinued": true
@@ -1939,9 +1895,9 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 35,
     "benefits": [],
-    "note": "注意此为TokenPlan，而非CodingPlan。35M(3500万) Tokens 额度，约 70 轮问答"
+    "note": "注意此为TokenPlan，而非CodingPlan。35M(3500万) Tokens 额度，约 70 轮问答",
+    "measuredMonthlyTokenLimit": 35
   },
   {
     "vendor": "腾讯云",
@@ -1965,9 +1921,9 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 100,
     "benefits": [],
-    "note": "注意此为TokenPlan，而非CodingPlan。100M(1亿) Tokens 额度，可执行约 200 轮问答"
+    "note": "注意此为TokenPlan，而非CodingPlan。100M(1亿) Tokens 额度，可执行约 200 轮问答",
+    "measuredMonthlyTokenLimit": 100
   },
   {
     "vendor": "腾讯云",
@@ -1991,9 +1947,9 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 320,
     "benefits": [],
-    "note": "注意此为TokenPlan，而非CodingPlan。320M(3.2亿) Tokens 额度"
+    "note": "注意此为TokenPlan，而非CodingPlan。320M(3.2亿) Tokens 额度",
+    "measuredMonthlyTokenLimit": 320
   },
   {
     "vendor": "腾讯云",
@@ -2017,9 +1973,9 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 650,
     "benefits": [],
-    "note": "注意此为TokenPlan，而非CodingPlan。650M(6.5亿) Tokens 额度"
+    "note": "注意此为TokenPlan，而非CodingPlan。650M(6.5亿) Tokens 额度",
+    "measuredMonthlyTokenLimit": 650
   },
   {
     "vendor": "阶跃星辰",
@@ -2041,7 +1997,6 @@
     "fiveHoursRequests": 1500,
     "weeklyRequests": 6000,
     "monthlyRequests": 24000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 当前主打 Step 自有模型，模型较弱\n• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算\n• 官方只有周限量无月限量，这里按照 1 月=4 周计算"
   },
@@ -2065,7 +2020,6 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 24000,
     "monthlyRequests": 96000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 当前主打 Step 自有模型，模型较弱\n• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算\n• 官方只有周限量无月限量，这里按照 1 月=4 周计算"
   },
@@ -2089,7 +2043,6 @@
     "fiveHoursRequests": 22500,
     "weeklyRequests": 90000,
     "monthlyRequests": 360000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 当前主打 Step 自有模型，模型较弱\n• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算\n• 官方只有周限量无月限量，这里按照 1 月=4 周计算"
   },
@@ -2113,7 +2066,6 @@
     "fiveHoursRequests": 75000,
     "weeklyRequests": 300000,
     "monthlyRequests": 1200000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 当前主打 Step 自有模型，模型较弱\n• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算\n• 官方只有周限量无月限量，这里按照 1 月=4 周计算"
   },
@@ -2137,7 +2089,6 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 6000,
     "monthlyRequests": 24000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
     "discontinued": true
@@ -2164,7 +2115,6 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 30000,
     "monthlyRequests": 120000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
     "discontinued": true
@@ -2191,7 +2141,6 @@
     "fiveHoursRequests": 24000,
     "weeklyRequests": 120000,
     "monthlyRequests": 480000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
     "discontinued": true
@@ -2213,7 +2162,6 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 模型较弱\n• 活动价首月 7.9 元，标准价 40 元/月，仅购买一个月时建议购买，不建议长期使用"
   },
@@ -2234,7 +2182,6 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 模型较弱\n• 活动价首月 7.9 元，标准价 40 元/月，仅购买一个月时建议购买，不建议长期使用"
   },
@@ -2258,7 +2205,6 @@
     "fiveHoursRequests": 1200,
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 模型较弱"
   },
@@ -2282,7 +2228,6 @@
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 模型较弱"
   },
@@ -2310,7 +2255,6 @@
     "fiveHoursRequests": 1000,
     "weeklyRequests": 6000,
     "monthlyRequests": 12000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 当前售罄\n• 支持 GLM-5.1、MiniMax-M2.7，在新增平台里模型覆盖还可以，但没有 Kimi-K2.6、DeepSeek-V4-Pro、Qwen-3.6-Plus",
     "discontinued": true
@@ -2339,7 +2283,6 @@
     "fiveHoursRequests": 5000,
     "weeklyRequests": 30000,
     "monthlyRequests": 60000,
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 当前售罄\n• 支持 GLM-5.1、MiniMax-M2.7，在新增平台里模型覆盖还可以，但没有 Kimi-K2.6、DeepSeek-V4-Pro、Qwen-3.6-Plus",
     "discontinued": true
@@ -2363,7 +2306,6 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 模型较弱\n• Free Trial 每天上午 10:00 发放，限量 100 名，30 天有效\n• 京东购买兑换码后需到卡券兑换页面兑换"
   },
@@ -2384,7 +2326,6 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 仅支持 GLM-4.7，不覆盖这批较新的热门模型\n• 按季度订阅，约 120 prompts，当前售罄\n• 京东购买兑换码后需到卡券兑换页面兑换",
     "discontinued": true
@@ -2406,7 +2347,6 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 仅支持 GLM-4.7，不覆盖这批较新的热门模型\n• 按季度订阅，约 600 prompts，当前售罄\n• 京东购买兑换码后需到卡券兑换页面兑换",
     "discontinued": true
@@ -2428,7 +2368,6 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
-    "tokenLimit": "无限制",
     "benefits": [],
     "note": "• 仅支持 GLM-4.7，不覆盖这批较新的热门模型\n• 按季度订阅，约 2400 prompts，当前售罄\n• 京东购买兑换码后需到卡券兑换页面兑换",
     "discontinued": true
@@ -2454,7 +2393,6 @@
     "fiveHoursRequests": 1500,
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
     "benefits": [
       "256K 上下文"
     ],
@@ -2487,7 +2425,6 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
     "currency": "$",
     "benefits": [
       "3 个并发任务"
@@ -2521,7 +2458,6 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
     "currency": "$",
     "benefits": [
       "10 个并发任务"
@@ -2552,7 +2488,6 @@
     "fiveHoursRequests": "Pro 基准",
     "weeklyRequests": "Pro 基准",
     "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
     "currency": "$",
     "benefits": [
       "原生 Claude 体验"
@@ -2586,7 +2521,6 @@
     "fiveHoursRequests": "Pro 的 5 倍",
     "weeklyRequests": "Pro 的 5 倍",
     "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
     "currency": "$",
     "benefits": [
       "原生 Claude 体验"
@@ -2620,7 +2554,6 @@
     "fiveHoursRequests": "Pro 的 20 倍",
     "weeklyRequests": "Pro 的 20 倍",
     "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
     "currency": "$",
     "benefits": [
       "原生 Claude 体验"
@@ -2656,7 +2589,6 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
     "currency": "$",
     "benefits": [
       "学生认证免费"
@@ -2686,7 +2618,6 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
     "currency": "$",
     "benefits": [
       "1000 积分"
@@ -2717,7 +2648,6 @@
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
-    "tokenLimit": "未公开",
     "currency": "$",
     "benefits": [
       "3900 积分"
@@ -2744,7 +2674,6 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 50,
     "benefits": [],
     "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止",
     "measuredMonthlyTokenLimit": 50
@@ -2769,7 +2698,6 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 130,
     "benefits": [],
     "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n• 页面标\"最受欢迎\"档",
     "measuredMonthlyTokenLimit": 130
@@ -2794,7 +2722,6 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 380,
     "benefits": [],
     "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止",
     "measuredMonthlyTokenLimit": 380
@@ -2819,7 +2746,6 @@
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "tokenLimit": 880,
     "benefits": [],
     "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止",
     "measuredMonthlyTokenLimit": 880

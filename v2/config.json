@@ -12,12 +12,38 @@
   },
   "platformCatalog": {
     "defaultSelectedTags": [],
-    "operationalTags": ["热门模型", "高用量工作流", "可支付宝", "按量调用"],
+    "operationalTags": [
+      "热门模型",
+      "高用量工作流",
+      "可支付宝",
+      "按量调用"
+    ],
     "defaultPlatformStatusMax": "limited",
     "derivedTags": [
-      { "id": "high-value", "label": "性价比高", "rule": { "dimension": "value", "minScore": 4 } },
-      { "id": "broad-models", "label": "模型强", "rule": { "dimension": "models", "minScore": 4 } },
-      { "id": "stable", "label": "可用性好", "rule": { "dimension": "stability", "minScore": 4 } }
+      {
+        "id": "high-value",
+        "label": "性价比高",
+        "rule": {
+          "dimension": "value",
+          "minScore": 4
+        }
+      },
+      {
+        "id": "broad-models",
+        "label": "模型强",
+        "rule": {
+          "dimension": "models",
+          "minScore": 4
+        }
+      },
+      {
+        "id": "stable",
+        "label": "可用性好",
+        "rule": {
+          "dimension": "stability",
+          "minScore": 4
+        }
+      }
     ]
   },
   "feedback": {
@@ -198,13 +224,12 @@
   "accountSale": {
     "title": "出纯手工账号",
     "description": "xxxxxx",
-    "accounts": [
-    ],
+    "accounts": [],
     "accounts_template": {
-        "platform": "xxxxx",
-        "detail": "xxxxxxx",
-        "price": "¥123"
-      },
+      "platform": "xxxxx",
+      "detail": "xxxxxxx",
+      "price": "¥123"
+    },
     "contact": {
       "label": "飞书群",
       "id": "https://api.dreamfree.space/c/s/cpfeishulink"
@@ -225,7 +250,6 @@
       "fiveHoursRequests": "5小时请求数",
       "weeklyRequests": "每周请求数",
       "monthlyRequests": "每月请求数",
-      "tokenLimit": "月Token上限",
       "benefits": "其他权益",
       "discontinued": "状态",
       "note": "备注"
@@ -244,7 +268,6 @@
     "monthlyPrice": "包月价格",
     "quarterlyPrice": "包季价格",
     "yearlyPrice": "包年价格",
-    "tokenLimit": "月Token上限(/M）",
     "reset": "清空筛选",
     "stats": "显示 {showing} / {total} 个套餐"
   },

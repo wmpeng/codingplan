@@ -106,7 +106,7 @@ describe('buildDetailBodyHtml', () => {
         monthlyPrice: 100,
         firstMonthPrice: 90,
         rating: 4,
-        tokenLimit: 600,
+        measuredMonthlyTokenLimit: 600,
         summary: '额度充足，适合主力日常',
         discontinued: false
       },
@@ -138,7 +138,6 @@ describe('buildDetailBodyHtml', () => {
         firstMonthPrice: '-',
         rating: 3,
         monthlyRequests: 1900,
-        tokenLimit: '无限制',
         summary: '   ',
         discontinued: false
       }
@@ -158,7 +157,6 @@ describe('buildDetailBodyHtml', () => {
         plan: 'Lite',
         type: 'Coding Plan',
         monthlyPrice: 49,
-        tokenLimit: '无限制',
         monthlyRequests: 24000,
         discontinued: false
       }
@@ -185,7 +183,6 @@ describe('buildDetailBodyHtml', () => {
         monthlyPrice: 10,
         firstMonthPrice: 5,
         currency: '$',
-        tokenLimit: '未公开',
         discontinued: false
       }
     ];
@@ -199,14 +196,13 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(!html.includes('platform-detail-plan-quota'));
   });
 
-  it('omits quota pill for 无限制 / 未公开 / 0', () => {
+  it('prefers measured monthly token over request counts for quota pill', () => {
     const plans = [
       {
         vendor: 'Kimi',
         plan: 'Andante',
         type: 'Coding Plan',
         monthlyPrice: 49,
-        tokenLimit: '无限制',
         fiveHoursRequests: '未公开',
         weeklyRequests: '未公开',
         monthlyRequests: '未公开',
@@ -218,18 +214,16 @@ describe('buildDetailBodyHtml', () => {
         plan: 'Zero',
         type: 'Token Plan',
         monthlyPrice: 1,
-        tokenLimit: 0,
         discontinued: false
       }
     ];
     const html = buildDetailBodyHtml(samplePlatform({ name: 'Kimi' }), { plans, monitorRow: null });
     assert.ok(html.includes('Andante'));
     assert.ok(html.includes('Zero'));
+    assert.ok(html.includes('84M Token'));
     assert.ok(!html.includes('未公开'));
     assert.ok(!html.includes('无限制'));
-    assert.ok(!html.includes('84M'));
     assert.ok(!html.includes('0M'));
-    assert.ok(!html.includes('platform-detail-plan-quota'));
   });
 
   it('omits plans section when empty', () => {

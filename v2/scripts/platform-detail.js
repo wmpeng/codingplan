@@ -87,18 +87,15 @@
     return num.toLocaleString('zh-CN');
   }
 
-  function isHiddenQuotaLabel(text) {
-    const t = String(text == null ? '' : text).trim();
-    return t === '' || t === '未公开' || t === '无限制' || t === '0' || t === '0M' || t === '-';
-  }
-
   function formatPlanQuota(plan) {
     if (!plan) return '';
-    const token = plan.tokenLimit;
 
-    if (typeof token === 'number' && Number.isFinite(token)) {
-      if (token <= 0) return '';
-      return `${token}M Token`;
+    if (
+      typeof plan.measuredMonthlyTokenLimit === 'number' &&
+      Number.isFinite(plan.measuredMonthlyTokenLimit) &&
+      plan.measuredMonthlyTokenLimit > 0
+    ) {
+      return `${plan.measuredMonthlyTokenLimit}M Token`;
     }
     if (typeof plan.monthlyRequests === 'number' && Number.isFinite(plan.monthlyRequests)) {
       const short = formatCountShort(plan.monthlyRequests);
@@ -111,24 +108,6 @@
     if (typeof plan.fiveHoursRequests === 'number' && Number.isFinite(plan.fiveHoursRequests)) {
       const short = formatCountShort(plan.fiveHoursRequests);
       return short ? `${short}次/5h` : '';
-    }
-    if (
-      typeof plan.measuredMonthlyTokenLimit === 'number' &&
-      Number.isFinite(plan.measuredMonthlyTokenLimit) &&
-      plan.measuredMonthlyTokenLimit > 0
-    ) {
-      // 仅当官方额度本身不是「无限制 / 未公开」占位时，才用实测补全
-      if (typeof token === 'string' && isHiddenQuotaLabel(token)) {
-        return '';
-      }
-      if (token == null || token === '') {
-        return `${plan.measuredMonthlyTokenLimit}M Token`;
-      }
-    }
-    if (typeof token === 'string' && token.trim()) {
-      const text = token.trim();
-      if (isHiddenQuotaLabel(text)) return '';
-      return text;
     }
     return '';
   }
