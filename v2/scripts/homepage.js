@@ -1211,114 +1211,86 @@
             applyFilters();
         }
 
-        // 排序数据
+        // 排序数据：有值的按列升降序；缺值（升/降序均）沉底，并保持原相对顺序
         function sortData(column, direction = 'asc') {
             currentSort = { column, direction };
 
-            // 辅助函数：将请求次数值转换为可排序的数值
             const getRequestSortValue = (value) => {
-                if (typeof value === 'number') return value;
-                if (value === '无限制') return Infinity;  // 无限制排在最大
-                if (value === '未公开') return -1;        // 未公开排在最小
-                return -1;
+                if (typeof value === 'number' && Number.isFinite(value)) return value;
+                if (value === '无限制') return Infinity;
+                return null; // 未公开 / 非数字等视为缺失
             };
 
-            // 辅助函数：将价格统一换算为人民币
             const getPriceSortValue = (plan, field) => {
                 const v = plan[field];
-                if (typeof v !== 'number') return -1;  // '-' 等非数字排最小
+                if (typeof v !== 'number' || !Number.isFinite(v)) return null;
                 return plan.currency === '$' ? v * getUsdToCnyRate() : v;
             };
 
-            filteredPlans.sort((a, b) => {
-                let valueA, valueB;
-
+            const getSortValue = (plan) => {
                 switch (column) {
                     case 'vendor':
-                        valueA = a['vendor'];
-                        valueB = b['vendor'];
-                        break;
+                        return plan.vendor || null;
                     case 'plan':
-                        valueA = a['plan'];
-                        valueB = b['plan'];
-                        break;
                     case 'action':
-                        valueA = a['plan'];
-                        valueB = b['plan'];
-                        break;
+                        return plan.plan || null;
                     case 'firstMonthPrice':
-                        valueA = getPriceSortValue(a, 'firstMonthPrice');
-                        valueB = getPriceSortValue(b, 'firstMonthPrice');
-                        break;
+                        return getPriceSortValue(plan, 'firstMonthPrice');
                     case 'monthlyPrice':
-                        valueA = getPriceSortValue(a, 'monthlyPrice');
-                        valueB = getPriceSortValue(b, 'monthlyPrice');
-                        break;
+                        return getPriceSortValue(plan, 'monthlyPrice');
                     case 'quarterlyPrice':
-                        valueA = getPriceSortValue(a, 'quarterlyPrice');
-                        valueB = getPriceSortValue(b, 'quarterlyPrice');
-                        break;
+                        return getPriceSortValue(plan, 'quarterlyPrice');
                     case 'yearlyPrice':
-                        valueA = getPriceSortValue(a, 'yearlyPrice');
-                        valueB = getPriceSortValue(b, 'yearlyPrice');
-                        break;
+                        return getPriceSortValue(plan, 'yearlyPrice');
                     case 'models':
-                        valueA = a['支持模型'];
-                        valueB = b['支持模型'];
-                        break;
+                        return Array.isArray(plan.models) ? plan.models.join(',') : null;
                     case 'fiveHoursRequests':
-                        valueA = getRequestSortValue(a.fiveHoursRequests);
-                        valueB = getRequestSortValue(b.fiveHoursRequests);
-                        break;
+                        return getRequestSortValue(plan.fiveHoursRequests);
                     case 'weeklyRequests':
-                        valueA = getRequestSortValue(a.weeklyRequests);
-                        valueB = getRequestSortValue(b.weeklyRequests);
-                        break;
+                        return getRequestSortValue(plan.weeklyRequests);
                     case 'monthlyRequests':
-                        valueA = getRequestSortValue(a.monthlyRequests);
-                        valueB = getRequestSortValue(b.monthlyRequests);
-                        break;
+                        return getRequestSortValue(plan.monthlyRequests);
                     case 'measuredFiveHoursTokenLimit':
-                        valueA = getRequestSortValue(a.measuredFiveHoursTokenLimit);
-                        valueB = getRequestSortValue(b.measuredFiveHoursTokenLimit);
-                        break;
+                        return getRequestSortValue(plan.measuredFiveHoursTokenLimit);
                     case 'measuredWeeklyTokenLimit':
-                        valueA = getRequestSortValue(a.measuredWeeklyTokenLimit);
-                        valueB = getRequestSortValue(b.measuredWeeklyTokenLimit);
-                        break;
+                        return getRequestSortValue(plan.measuredWeeklyTokenLimit);
                     case 'measuredMonthlyTokenLimit':
-                        valueA = getRequestSortValue(a.measuredMonthlyTokenLimit);
-                        valueB = getRequestSortValue(b.measuredMonthlyTokenLimit);
-                        break;
+                        return getRequestSortValue(plan.measuredMonthlyTokenLimit);
                     case 'pricePerMillionToken':
-                        valueA = getPricePerMillionToken(a);
-                        valueB = getPricePerMillionToken(b);
-                        if (valueA === null) valueA = -1;
-                        if (valueB === null) valueB = -1;
-                        break;
+                        return getPricePerMillionToken(plan);
                     case 'benefits':
-                        valueA = a['其他权益'];
-                        valueB = b['其他权益'];
-                        break;
+                        return Array.isArray(plan.benefits) ? plan.benefits.join(',') : null;
                     case 'note':
-                        valueA = a['note'];
-                        valueB = b['note'];
-                        break;
+                        return plan.note || null;
                     case 'rating':
-                        valueA = a.rating || 0;
-                        valueB = b.rating || 0;
-                        break;
+                        return typeof plan.rating === 'number' && Number.isFinite(plan.rating)
+                            ? plan.rating
+                            : null;
                     default:
-                        return 0;
+                        return null;
                 }
+            };
 
-                if (typeof valueA === 'number') {
-                    return direction === 'asc' ? valueA - valueB : valueB - valueA;
+            const isMissing = (value) => value === null || value === undefined || value === '';
+
+            filteredPlans.sort((a, b) => {
+                const valueA = getSortValue(a);
+                const valueB = getSortValue(b);
+                const missingA = isMissing(valueA);
+                const missingB = isMissing(valueB);
+
+                if (missingA && missingB) return a.originalIndex - b.originalIndex;
+                if (missingA) return 1;
+                if (missingB) return -1;
+
+                let cmp;
+                if (typeof valueA === 'number' && typeof valueB === 'number') {
+                    cmp = valueA - valueB;
                 } else {
-                    return direction === 'asc'
-                        ? valueA.localeCompare(valueB, 'zh-CN')
-                        : valueB.localeCompare(valueA, 'zh-CN');
+                    cmp = String(valueA).localeCompare(String(valueB), 'zh-CN');
                 }
+                if (cmp === 0) return a.originalIndex - b.originalIndex;
+                return direction === 'asc' ? cmp : -cmp;
             });
 
             renderTable();
