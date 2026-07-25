@@ -355,10 +355,10 @@
 
     state.renderBoard = function renderBoard() {
       state.boardRoot.innerHTML = '';
-      state.boardRoot.className = 'monitor-list';
+      state.boardRoot.className = 'monitor-board-panel monitor-list';
 
       if (!state.boardData || !state.boardData.platforms || !state.boardData.platforms.length) {
-        state.boardRoot.className = 'monitor-empty';
+        state.boardRoot.className = 'monitor-board-panel monitor-empty';
         state.boardRoot.textContent = state.config.emptyLabel || '暂无数据';
         state.updateStatsBar(0, 0);
         return;
@@ -382,7 +382,7 @@
         });
         state.updateStatsBar(rows.length, totalCount);
         if (!rows.length) {
-          state.boardRoot.className = 'monitor-empty';
+          state.boardRoot.className = 'monitor-board-panel monitor-empty';
           state.boardRoot.textContent = state.config.emptyLabel || '暂无数据';
           return;
         }
@@ -489,7 +489,7 @@
     };
 
     state.fetchBoard = function fetchBoard() {
-      state.boardRoot.className = 'monitor-loading';
+      state.boardRoot.className = 'monitor-board-panel monitor-loading';
       state.boardRoot.textContent = state.config.loadingLabel || '加载中...';
       state.updateStatsBar(0, 0);
 
@@ -502,7 +502,7 @@
           applyInitialPlatform(state);
         })
         .catch(function () {
-          state.boardRoot.className = 'monitor-empty';
+          state.boardRoot.className = 'monitor-board-panel monitor-empty';
           state.boardRoot.textContent = state.config.errorLabel || '数据加载失败，请稍后重试';
           state.updateStatsBar(0, 0);
         });
@@ -587,7 +587,7 @@
       toolbar.appendChild(trailing);
 
       state.boardRoot = document.createElement('div');
-      state.boardRoot.className = 'monitor-loading';
+      state.boardRoot.className = 'monitor-board-panel monitor-loading';
       state.boardRoot.textContent = '加载中...';
 
       rootEl.appendChild(toolbar);
