@@ -156,7 +156,7 @@
       discontinued: item.discontinued,
       itemStyle: {
         color: item.color,
-        borderRadius: [8, 8, 0, 0]
+        borderRadius: [4, 4, 0, 0]
       }
     }));
     return {
@@ -219,13 +219,13 @@
           type: 'bar',
           name: '每 M Token 综合价格',
           data: values,
-          barMaxWidth: 44,
+          barMaxWidth: 22,
           label: {
             show: true,
             position: 'top',
             distance: 4,
             color: '#334155',
-            fontSize: 10,
+            fontSize: 9,
             fontWeight: 600,
             formatter(params) {
               return formatCompositePriceLabel(params.value);
@@ -246,7 +246,7 @@
     if (!chartEl) return;
     const host = chartEl.parentElement;
     const hostWidth = host && host.clientWidth ? host.clientWidth : 0;
-    const needed = Math.max(hostWidth, itemCount * 56 + 80);
+    const needed = Math.max(hostWidth, itemCount * 28 + 80);
     chartEl.style.width = `${needed}px`;
   }
 
