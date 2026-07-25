@@ -88,7 +88,7 @@
       },
       "models": {
         "score": 5,
-        "reason": "唯一同时支持 GLM-5.2、DeepSeek-V4、MiniMax-M3、Kimi-K2.7-Code 的全家桶平台。"
+        "reason": "唯一同时支持 GLM-5.2、DeepSeek-V4、MiniMax-M3、Kimi-K2.7-Code、Kimi-K3 的全家桶平台。"
       }
     },
     "tags": [
@@ -103,7 +103,7 @@
     "dimensions": {
       "value": {
         "score": 5,
-        "reason": "用量多且按真实调用次数计费，39 元起档位丰俭由人，高效版 199 元即享 GLM-5.2。"
+        "reason": "用量多且按真实调用次数计费；高效版 199 元即享 GLM-5.2，速通版 699 元聚焦三大顶级模型。"
       },
       "stability": {
         "score": 3,
@@ -111,7 +111,7 @@
       },
       "models": {
         "score": 4,
-        "reason": "高效版支持 GLM-5.2，专业版支持 GLM-5.1 与 DeepSeek-V4，覆盖面广。"
+        "reason": "高效版支持 GLM-5.2 与 DeepSeek-V4；速通版聚焦 GLM-5.2 / DeepSeek-V4-Pro / Kimi-K2.7-Code。"
       }
     },
     "tags": [],
@@ -132,7 +132,7 @@
       },
       "models": {
         "score": 5,
-        "reason": "聚合 GLM-5.2、Kimi-K2.7-Code、MiniMax-M3、Qwen-3.7-Max、DeepSeek-V4 等主流模型。"
+        "reason": "聚合 GLM-5.2、Kimi-K3、Kimi-K2.7-Code、MiniMax-M3、Qwen-3.7-Max、DeepSeek-V4 等主流模型。"
       }
     },
     "tags": [
@@ -168,7 +168,7 @@
     "dimensions": {
       "value": {
         "score": 3,
-        "reason": "支持 Kimi-K2.7-Code，但实测用量较其他家略少，性价比中规中矩。"
+        "reason": "支持 Kimi-K3 / Kimi-K2.7-Code，但实测用量较其他家略少，性价比中规中矩。"
       },
       "stability": {
         "score": 4,
@@ -176,7 +176,7 @@
       },
       "models": {
         "score": 4,
-        "reason": "K2.7-Code 代码能力均衡，支持多模态图像输入与专业数据库实验功能。"
+        "reason": "已支持 Kimi-K3，K2.7-Code 代码能力均衡，支持多模态图像输入与专业数据库实验功能。"
       }
     },
     "tags": [],

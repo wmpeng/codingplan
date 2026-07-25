@@ -423,17 +423,17 @@
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
     "benefits": [],
-    "note": "• 讯飞实际可用量比较多，按调用量计数，明示调用量"
+    "note": "• 已下架\n• 历史方案，可作为参考",
+    "discontinued": true
   },
   {
     "vendor": "讯飞·星火",
     "plan": "高效版",
     "type": "Coding Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
-    "rating": 5,
+    "rating": 3,
     "tags": [
-      "模型强",
-      "性价比高"
+      "模型强"
     ],
     "firstMonthPrice": "-",
     "monthlyPrice": 199,
@@ -456,6 +456,30 @@
     "monthlyRequests": 90000,
     "benefits": [],
     "note": "• 高效版已支持 GLM-5.2\n• 讯飞实际可用量比较多，按调用量计数，明示调用量"
+  },
+  {
+    "vendor": "讯飞·星火",
+    "plan": "速通版",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
+    "rating": 3,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 699,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.2",
+      "DeepSeek-V4-Pro",
+      "Kimi-K2.7-Code"
+    ],
+    "fiveHoursRequests": "-",
+    "weeklyRequests": "-",
+    "monthlyRequests": "-",
+    "benefits": [],
+    "note": "• 价格比较贵，据宣传无需等待"
   },
   {
     "vendor": "字节·方舟",
@@ -543,6 +567,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": 468,
     "models": [
+      "Kimi-K3",
       "Kimi-K2.7-Code",
       "Kimi-K2.6",
       "Kimi-K2.5",
@@ -572,6 +597,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": 948,
     "models": [
+      "Kimi-K3",
       "Kimi-K2.7-Code",
       "Kimi-K2.6",
       "Kimi-K2.5",
@@ -599,6 +625,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": 1908,
     "models": [
+      "Kimi-K3",
       "Kimi-K2.7-Code",
       "Kimi-K2.6",
       "Kimi-K2.5",
@@ -631,6 +658,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": 6708,
     "models": [
+      "Kimi-K3",
       "Kimi-K2.7-Code",
       "Kimi-K2.6",
       "Kimi-K2.5",
@@ -832,6 +860,7 @@
       "GLM-5.1",
       "GLM-5",
       "Kimi-K2.7-Code",
+      "Kimi-K3",
       "Kimi-K2.6",
       "MiMo-V2.5-Pro",
       "MiMo-V2.5",
@@ -993,6 +1022,7 @@
       "MiniMax-M3",
       "Kimi-K2.6",
       "Kimi-K2.7-Code",
+      "Kimi-K3",
       "Doubao-Seedream-5.0-lite"
     ],
     "fiveHoursRequests": 200,
@@ -1028,6 +1058,7 @@
       "MiniMax-M3",
       "Kimi-K2.6",
       "Kimi-K2.7-Code",
+      "Kimi-K3",
       "Doubao-Seedream-5.0-lite",
       "Doubao-Seedance-2.0"
     ],
@@ -1064,6 +1095,7 @@
       "MiniMax-M3",
       "Kimi-K2.6",
       "Kimi-K2.7-Code",
+      "Kimi-K3",
       "Doubao-Seedream-5.0-lite",
       "Doubao-Seedance-2.0"
     ],
@@ -1100,6 +1132,7 @@
       "MiniMax-M3",
       "Kimi-K2.6",
       "Kimi-K2.7-Code",
+      "Kimi-K3",
       "Doubao-Seedream-5.0-lite",
       "Doubao-Seedance-2.0"
     ],
