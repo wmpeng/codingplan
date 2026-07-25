@@ -1537,11 +1537,6 @@
                         qrcode: "assets/feishu_group.png",
                         qrAlt: "飞书群二维码",
                         qrHint: "扫码即可进群"
-                    },
-                    usageCharts: {
-                        valueYLog: true,
-                        costXLog: true,
-                        costYLog: true
                     }
                 };
                 window.appConfig = appConfig;

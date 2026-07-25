@@ -8,7 +8,7 @@
     <title>AI Coding Plan 平台评测与对比 - Coding Plan 对比工具</title>
     <link rel="icon" href="/favicon.ico?v=260610" type="image/x-icon">
     <link rel="stylesheet" href="styles/shared.css?v=260725b">
-    <link rel="stylesheet" href="styles/plan-usage.css?v=260725d">
+    <link rel="stylesheet" href="styles/plan-usage.css?v=260725e">
     <link rel="stylesheet" href="styles/comparison-table.css?v=260725e">
     <style>
         html,
@@ -3877,8 +3877,7 @@
         .checkbox-label,
         .platform-tag-chip,
         .preset-tag-chip,
-        .monitor-control,
-        .plan-usage-panel .segment-btn {
+        .monitor-control {
             min-height: 36px;
             padding: 0 12px;
             border-radius: 8px;
@@ -3898,8 +3897,7 @@
             gap: 7px;
         }
 
-        .platform-status-segments,
-        .plan-usage-panel .segmented-control {
+        .platform-status-segments {
             min-height: 36px;
             padding: 3px;
             border-radius: 10px;
@@ -4436,56 +4434,6 @@
             </div>
             <div id="view-plans" role="tabpanel" data-main-view-panel="plans" hidden>
                 <p class="main-view-intro">横向对比套餐价格、额度与模型支持，辅助选型与预算评估。</p>
-
-        <section class="plan-usage-panel surface-panel" id="planUsagePanel" aria-labelledby="planUsageTitle">
-            <div class="plan-usage-header">
-                <div class="plan-usage-copy">
-                    <div class="plan-usage-kicker">套餐使用量</div>
-                    <h2 class="plan-usage-title" id="planUsageTitle">套餐使用量双视角对比</h2>
-                    <p class="plan-usage-description">部分信息参考 [作者：<a href="https://github.com/mahonzhan" target="_blank" rel="noopener noreferrer">mahonzhan</a>，来源：<a href="https://github.com/mahonzhan/awesome-coding-plan/tree/9ecfa7fc7a4b882a78d0b2dc605c18f98f8f8641?tab=readme-ov-file" target="_blank" rel="noopener noreferrer">awesome-coding-plan</a>，协议：<a href="https://github.com/mahonzhan/awesome-coding-plan/tree/9ecfa7fc7a4b882a78d0b2dc605c18f98f8f8641?tab=License-1-ov-file" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>] 项目整理内容，感谢原项目作者的公开分享。</p>
-                </div>
-                <div class="plan-usage-actions">
-                    <div class="plan-usage-actions-label">统计周期</div>
-                    <div class="segmented-control" role="group" aria-label="套餐使用量统计周期切换">
-                        <button type="button" class="segment-btn" data-usage-window="fiveHours" aria-pressed="false">5 小时</button>
-                        <button type="button" class="segment-btn" data-usage-window="weekly" aria-pressed="false">每周</button>
-                        <button type="button" class="segment-btn active" data-usage-window="monthly" aria-pressed="true">每月</button>
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="plan-usage-state" id="planUsageState" hidden></div> -->
-            <div class="plan-usage-chart-stack">
-                <section class="plan-usage-chart-block" aria-labelledby="planUsageValueTitle">
-                    <div class="plan-usage-chart-header">
-                        <div class="plan-usage-chart-heading-row">
-                            <h3 class="plan-usage-chart-title" id="planUsageValueTitle">不同平台不同套餐，每 1 元人民币能换来多少 Token</h3>
-                            <div class="segmented-control plan-usage-metric-control" role="group" aria-label="套餐使用量价值指标切换">
-                                <button type="button" class="segment-btn active" data-usage-value-metric="tokenPerCny" aria-pressed="true">1 元能买多少 Token</button>
-                                <button type="button" class="segment-btn" data-usage-value-metric="cnyPerMillionTokens" aria-pressed="false">1M Token 多少钱</button>
-                            </div>
-                        </div>
-                        <p class="plan-usage-chart-subtitle" id="planUsageValueSubtitle">按平台看性价比密度，纵轴越高，代表同样预算下可支持的 token 越多。纵轴为对数刻度，图上间距会被压缩，实际数值差距通常比视觉上更大。</p>
-                    </div>
-                    <div class="plan-usage-chart-scroll">
-                        <div class="plan-usage-chart" id="planUsageValueChart" hidden></div>
-                    </div>
-                </section>
-                <section class="plan-usage-chart-block" aria-labelledby="planUsageCostTitle">
-                    <div class="plan-usage-chart-header">
-                        <h3 class="plan-usage-chart-title" id="planUsageCostTitle">价格 vs Token上限</h3>
-                        <p class="plan-usage-chart-subtitle">同时看价格和绝对额度，越靠左上越适合优先考虑。横、纵轴均为对数刻度，图上间距会被压缩，实际价格与额度差距通常比视觉上更大。</p>
-                    </div>
-                    <div class="plan-usage-chart-scroll">
-                        <div class="plan-usage-chart" id="planUsageCostChart" hidden></div>
-                    </div>
-                </section>
-            </div>
-            <div class="plan-usage-footer">
-                <div class="plan-usage-footnote">上图更适合先看性价比，下图更适合同时看预算和总量。当前覆盖人民币计价套餐；Token Plan 仅纳入每月视角，周视角与 5 小时视角不展示，外币套餐暂未纳入。</div>
-            </div>
-        </section>
-
-        <hr class="section-divider">
 
         <section class="plan-usage-panel plan-composite-price-panel surface-panel" id="planCompositePricePanel" aria-labelledby="planCompositePriceTitle">
             <div class="plan-usage-header">
@@ -6816,7 +6764,7 @@
             <ul>
                 <li>包季/包年价格中的划线数字表示原始价格（包月×3 或 包月×12），未划线的为实际优惠价格。</li>
                 <li>使用表格邀请链接，部分平台可享优惠</li>
-                <li>每元Token数（月）和 1M Token价格（月）来自月度使用量衍生数据，按每月窗口折算，仅供横向对比参考。</li>
+                <li>每 M Token 综合价格 = 连续包月价（美元按汇率折算人民币）÷ 实测月 Token，缺数时显示「-」，仅供横向对比。</li>
                 <li>本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议</li>
             </ul></div>
 
@@ -6873,7 +6821,6 @@
     <script src="scripts/shared.js?v=260724b"></script>
     <script src="scripts/main-views.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-    <script src="scripts/plan-usage-chart.js?v=260617"></script>
     <script src="scripts/plan-composite-price-chart.js?v=260725g"></script>
     <script src="scripts/homepage.js?v=260725k"></script>
 </body>

@@ -54,92 +54,6 @@
     max-width: 860px;
 }
 
-.plan-usage-meta {
-    margin-top: 14px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.plan-usage-chip {
-    display: inline-flex;
-    align-items: center;
-    min-height: 34px;
-    padding: 0 13px;
-    border-radius: 999px;
-    border: 1px solid rgba(23, 32, 51, 0.08);
-    background: rgba(255, 255, 255, 0.72);
-    color: var(--text-secondary);
-    font-size: 12px;
-    font-weight: 700;
-    box-shadow: 0 10px 20px rgba(23, 32, 51, 0.05);
-}
-
-.plan-usage-chip strong {
-    color: var(--text-primary);
-    font-weight: 800;
-    margin-right: 6px;
-}
-
-.plan-usage-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: stretch;
-    min-width: 220px;
-}
-
-.plan-usage-actions-label {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-}
-
-.plan-usage-panel .segmented-control {
-    display: inline-flex;
-    border: 1px solid rgba(23, 32, 51, 0.12);
-    border-radius: 999px;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.72);
-    box-shadow: 0 10px 20px rgba(23, 32, 51, 0.05);
-}
-
-.plan-usage-panel .segment-btn {
-    min-width: 82px;
-    min-height: 42px;
-    padding: 0 16px;
-    border: none;
-    background: transparent;
-    color: var(--text-secondary);
-    font-size: 13px;
-    font-weight: 700;
-    font-family: inherit;
-    cursor: pointer;
-    transition: background 0.18s ease, color 0.18s ease;
-}
-
-.plan-usage-panel .segment-btn + .segment-btn {
-    border-left: 1px solid rgba(23, 32, 51, 0.1);
-}
-
-.plan-usage-panel .segment-btn:hover:not(:disabled) {
-    color: var(--text-primary);
-    background: rgba(15, 118, 110, 0.08);
-}
-
-.plan-usage-panel .segment-btn.active {
-    background: linear-gradient(135deg, #173753, #0f766e);
-    color: #f7fffd;
-}
-
-.plan-usage-panel .segment-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
 .plan-usage-state {
     margin-top: 18px;
     min-height: 52px;
@@ -201,81 +115,12 @@
     overscroll-behavior-x: contain;
 }
 
-.plan-usage-chart-stack {
-    display: grid;
-    gap: 20px;
-    min-width: 0;
-}
-
 .plan-usage-chart-block {
     padding: 18px 18px 16px;
     border-radius: 22px;
     border: 1px solid rgba(23, 32, 51, 0.08);
     background: rgba(255, 255, 255, 0.28);
     min-width: 0;
-}
-
-.plan-usage-chart-header {
-    display: grid;
-    gap: 8px;
-    min-width: 0;
-}
-
-.plan-usage-chart-heading-row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-    min-width: 0;
-}
-
-.plan-usage-chart-title {
-    margin: 0;
-    font-size: 18px;
-    line-height: 1.3;
-    color: var(--text-primary);
-    min-width: 0;
-}
-
-.plan-usage-metric-control {
-    flex-shrink: 0;
-}
-
-.plan-usage-metric-control .segment-btn {
-    min-width: 132px;
-    padding: 0 14px;
-}
-
-.plan-usage-chart-subtitle {
-    margin: 0;
-    max-width: 100%;
-    color: var(--text-tertiary);
-    font-size: 12px;
-    line-height: 1.7;
-    white-space: normal;
-    overflow-wrap: anywhere;
-}
-
-.plan-usage-footer {
-    margin-top: 14px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.plan-usage-footnote,
-.plan-usage-coverage {
-    color: var(--text-tertiary);
-    font-size: 12px;
-    line-height: 1.7;
-}
-
-.plan-usage-footnote strong,
-.plan-usage-coverage strong {
-    color: var(--text-primary);
 }
 
 @media (max-width: 900px) {
@@ -286,33 +131,6 @@
 
     .plan-usage-header {
         gap: 14px;
-    }
-
-    .plan-usage-actions {
-        min-width: 0;
-        width: 100%;
-    }
-
-    .plan-usage-panel .segmented-control {
-        width: 100%;
-    }
-
-    .plan-usage-chart-heading-row {
-        gap: 10px;
-    }
-
-    .plan-usage-metric-control {
-        width: 100%;
-    }
-
-    .plan-usage-metric-control .segment-btn {
-        flex: 1 1 0;
-        min-width: 0;
-    }
-
-    .plan-usage-panel .segment-btn {
-        flex: 1 1 0;
-        min-width: 0;
     }
 
     .plan-usage-chart {
@@ -341,15 +159,6 @@
 @media (max-width: 640px) {
     .plan-usage-title {
         font-size: 24px;
-    }
-
-    .plan-usage-meta {
-        gap: 8px;
-    }
-
-    .plan-usage-chip {
-        min-height: 32px;
-        padding: 0 11px;
     }
 
     .plan-usage-chart {
