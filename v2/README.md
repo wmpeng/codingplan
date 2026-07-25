@@ -65,9 +65,6 @@
 3. [小米·MiMo](https://api.dreamfree.space/c/s/cpyqmimo) ⭐️⭐️⭐️⭐️
     - Mimo-V2.5-Pro方面能力均衡，可作为DeepSeek的平替，价格和DeepSeek一致。
 
-**评分标准**: 基准3颗星，价格优势劣势1分，模型优势或独占模型1分，其他优势1分。TokenPlan因性价比较低，暂不推荐，能买CodingPlan尽量买CodingPlan
-
-
 ## 📋 套餐对比表
 
 | 平台 | 套餐 | 类型 | 链接 | 评分 | 标签 | 首月价格 | 连续包月 | 连续包季 | 连续包年 | 5小时请求数 | 每周请求数 | 每月总请求数 | 实测5h Token | 实测周Token | 实测月Token | 每元Token数（月） | 1M Token价格（月） | Token上限 | 支持模型 | 其他权益 | 状态 | 备注 |

@@ -1612,14 +1612,6 @@
                 renderRecommendations(appConfig.recommendations);
             }
 
-            // 渲染评分标准
-            if (appConfig.ratingGuide) {
-                const ratingGuideEl = document.getElementById('ratingGuide');
-                if (ratingGuideEl) {
-                    ratingGuideEl.textContent = appConfig.ratingGuide;
-                }
-            }
-
             // 渲染底部说明（无有效数据时不覆盖 HTML 中的静态默认文案）
             if (Array.isArray(appConfig.notes) && appConfig.notes.length > 0) {
                 renderNotesSection('notesSection', {
