@@ -14,10 +14,6 @@
   "platformCatalog": {
     "defaultSelectedTags": [],
     "operationalTags": [
-      "热门模型",
-      "高用量工作流",
-      "可支付宝",
-      "按量调用"
     ],
     "defaultPlatformStatusMax": "limited",
     "derivedTags": [
