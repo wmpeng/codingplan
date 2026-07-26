@@ -163,20 +163,20 @@
     "id": "deepseek-official",
     "name": "DeepSeek 官方",
     "rating": 5,
-    "summary": "原生 DeepSeek 按量通道，单价透明，适合不想抢固定套餐的用户。",
-    "detail": "DeepSeek 官方 API 直接提供 V4-Pro / Flash 等模型按量计费，无需抢 Coding Plan。标价清晰（Pro 档常见为输入 3 元/M、缓存 0.025 元/M、输出 6 元/M），但 7 月中旬起高峰时段可能翻倍，预算敏感场景需留意峰谷。适合把官方通道当主力或与折扣聚合平台搭配使用。站内另有 DeepSeek Flash / Pro 虚拟套餐条目，仅供与订阅档粗算对比，与本卡并不互相替代。",
+    "summary": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。",
+    "detail": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。之前官方说预计在 7 月中旬起推出V4正式版本，并伴随涨价，但仍没有最终确定。",
     "dimensions": {
       "value": {
         "score": 4,
-        "reason": "按量标价透明；高峰翻倍后重负载成本优势会收窄。"
+        "reason": "第一梯队模型中，最便宜的之一；按量标价透明；高峰翻倍后成本优势会收窄。"
       },
       "models": {
         "score": 5,
-        "reason": "原生 DeepSeek-V4 系列，推理与代码能力处于第一梯队。"
+        "reason": "DeepSeek-V4-Flash/Pro，推理与代码能力处于国产第一梯队；预计等正式版发布后，预计经过一定的后训练，Coding能力进一步提升。"
       },
       "stability": {
         "score": 5,
-        "reason": "官方直连通道成熟，可用性与账号体系最省心。"
+        "reason": "官方通道，稳定性强。"
       }
     },
     "tags": [],
@@ -248,48 +248,6 @@
       "stability": {
         "score": 5,
         "reason": "中小云厂商，但算力充足运行稳定，很少遇到拥挤。"
-      }
-    },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "deepseek-flash",
-    "name": "DeepSeek Flash",
-    "rating": 4,
-    "dimensions": {
-      "value": {
-        "score": 4,
-        "reason": "站内虚拟套餐用于横向对比，Flash 档按量价格亲民，适合高频轻量调用。"
-      },
-      "models": {
-        "score": 4,
-        "reason": "DeepSeek-V4-Flash 速度快、成本低，适合日常编程辅助。"
-      },
-      "stability": {
-        "score": 4,
-        "reason": "DeepSeek 官方通道稳定，但 7 月中旬起高峰时段价格翻倍。"
-      }
-    },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "deepseek-pro",
-    "name": "DeepSeek Pro",
-    "rating": 5,
-    "dimensions": {
-      "value": {
-        "score": 4,
-        "reason": "原生 DeepSeek-V4-Pro，输入 3 元/M、输出 6 元/M，按量透明；高峰涨价后优势收窄。"
-      },
-      "models": {
-        "score": 5,
-        "reason": "DeepSeek-V4-Pro 推理与代码能力处于第一梯队，是主流平替基准。"
-      },
-      "stability": {
-        "score": 4,
-        "reason": "官方直连稳定可靠，峰谷计费后高峰时段需关注成本波动。"
       }
     },
     "tags": [],
@@ -383,7 +341,7 @@
     "id": "iflytek",
     "name": "讯飞·星火",
     "rating": 3,
-    "summary": "曾经的高性价比平台，现已陨落。低价套餐已下架，仅剩高效版（199元）和速通版（699元）套餐，199元套餐也限购且高峰期拥挤，699元套餐性价比低。",
+    "summary": "曾经的高性价比平台，现已陨落。\n仅剩高效版（199元）和速通版（699元）套餐，199元套餐限购且高峰期拥挤，699元套餐性价比低。",
     "dimensions": {
       "value": {
         "score": 3,
