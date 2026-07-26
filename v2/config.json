@@ -80,7 +80,7 @@
   "recommendationGroups": [
     {
       "title": "综合推荐",
-      "subtitle": "各维度综合评估，最值得入手的几家。智谱和Kimi暂时不开放了，暂时不推荐了。",
+      "subtitle": "各维度综合评估，最值得入手的几家。智谱和Kimi暂时不开放了，暂时不推荐了",
       "items": [
         {
           "name": "MiniMax",
@@ -125,6 +125,25 @@
       "subtitle": "推荐几个不需要抢购的平台，智谱官方不放量，这里就不推荐了",
       "items": [
         {
+          "name": "OpenCode",
+          "rating": 5,
+          "reasons": [
+            "支持GLM-5.2、Kimi-K3、DeepSeek-V4-Pro等最新模型",
+            "首月半价$5。但只有go这一种套餐，够尝鲜，不够重度使用",
+            "无需抢购，可支付宝付款"
+          ]
+        },
+                {
+          "name": "共继算力",
+          "rating": 5,
+          "action": "https://api.dreamfree.space/c/s/cpyqgongji",
+          "reasons": [
+            "按量调用，支持 GLM-5.2、Kimi-K3、DeepSeek-V4-Pro",
+            "平台不拥挤，稳定性高",
+            "通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入注册，可以锁定专属8折折扣与额外￥20额度"
+          ]
+        },
+        {
           "name": "智谱国际版",
           "rating": 4,
           "reasons": [
@@ -134,44 +153,25 @@
           ]
         },
         {
-          "name": "OpenCode",
-          "rating": 5,
-          "reasons": [
-            "支持GLM-5.2、Kimi-K3、DeepSeek-V4-Pro等最新模型",
-            "首月半价$5。但只有go这一种套餐，够尝鲜，不够重度使用",
-            "无需抢购，可支付宝付款"
-          ]
-        },
-        {
           "name": "优云智算",
           "rating": 4,
           "reasons": [
             "全档位支持 GLM-5.2，且有限时优惠倍率",
             "用量较少，但真实按照接口调用量计费"
           ]
-        },
-        {
-          "name": "共继算力",
-          "rating": 5,
-          "action": "https://api.dreamfree.space/c/s/cpyqgongji",
-          "reasons": [
-            "按量调用，支持 GLM-5.2、Kimi-K3、DeepSeek-V4-Pro",
-            "平台不拥挤，稳定性高",
-            "通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入注册，可以锁定专属8折折扣与额外￥20额度"
-          ]
         }
       ]
     },
     {
       "title": "包含 Kimi-3",
-      "subtitle": "Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。",
+      "subtitle": "Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用",
       "items": [
         {
           "name": "Kimi",
           "rating": 5,
           "reasons": [
-            "支持 Kimi-K3。",
-            "官方原生平台，模型体验最稳定。"
+            "官方原生平台，模型体验最稳定，老会员推荐使用",
+            "发布 Kimi-K3 之后，会员停售了，之后应该会启用新的Coding套餐"
           ]
         },
         {
