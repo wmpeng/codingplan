@@ -3,14 +3,15 @@
     "id": "zhipu",
     "name": "智谱AI",
     "rating": 5,
+    "summary": "需抢购，且从6.17开始基本不放名额。可考虑智谱国际版替代。",
     "dimensions": {
       "value": {
         "score": 4,
-        "reason": "GLM Coding Plan 定价适中，模型能力对得起月费，但名额紧俏时性价比感知会打折。"
+        "reason": "GLM Coding Plan 定价适中，[查看模型用量](index.html?view=plans)，模型能力对得起月费，但名额紧俏时性价比感知会打折。"
       },
       "models": {
         "score": 5,
-        "reason": "GLM-5.2 代码能力 T0 级别，尤其适合编程场景，是 Opus 平替优选。"
+        "reason": "GLM-5.2 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
       },
       "stability": {
         "score": 4,

@@ -32,6 +32,56 @@ function escapeHtml(text) {
     .replace(/"/g, '&quot;');
 }
 
+function sanitizeInlineHttpUrl(url) {
+  if (typeof url !== 'string' || !url.trim()) return null;
+  try {
+    const base =
+      typeof globalThis !== 'undefined' &&
+      globalThis.location &&
+      typeof globalThis.location.origin === 'string'
+        ? globalThis.location.origin
+        : 'https://example.invalid';
+    const parsed = new URL(url.trim(), base);
+    if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+      return parsed.href;
+    }
+  } catch (error) {
+    return null;
+  }
+  return null;
+}
+
+/** Inline Markdown: `[label](https://...)` links and `**bold**`. */
+function formatInlineMarkdown(text) {
+  if (text === null || text === undefined) return '';
+
+  const linkPlaceholders = [];
+  const withLinkPlaceholders = String(text).replace(/\[([^\]]+)\]\(([^\s)]+)\)/g, (match, label, url) => {
+    const safeUrl = sanitizeInlineHttpUrl(url);
+    if (!safeUrl) return match;
+
+    const placeholder = `__INLINE_MD_LINK_${linkPlaceholders.length}__`;
+    linkPlaceholders.push(
+      `<a href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`
+    );
+    return placeholder;
+  });
+
+  let formatted = escapeHtml(withLinkPlaceholders);
+  formatted = formatted.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  formatted = formatted.replace(/__INLINE_MD_LINK_(\d+)__/g, (_, index) => {
+    return linkPlaceholders[Number(index)] || '';
+  });
+  return formatted;
+}
+
+function formatInlineMarkdownPreserveBreaks(text) {
+  return formatInlineMarkdown(text)
+    .replace(/\r\n/g, '\n')
+    .replace(/\r/g, '\n')
+    .replace(/\n/g, '<br>');
+}
+
 function normalizePlatformStatus(value) {
   if (PLATFORM_STATUSES.includes(value)) return value;
   return 'open';
@@ -969,7 +1019,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
       ? platform.summary.trim()
       : '';
   const summary = summaryText
-    ? `<p class="platform-summary">${escapeHtml(summaryText)}</p>`
+    ? `<p class="platform-summary">${formatInlineMarkdownPreserveBreaks(summaryText)}</p>`
     : '';
 
   const status = normalizePlatformStatus(platform.platformStatus);
@@ -988,7 +1038,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
       score === '—'
         ? `<span class="dim-score">${escapeHtml(score)}</span>`
         : `<span class="dim-score">${escapeHtml(score)}<span class="dim-score-unit">分</span></span>`;
-    return `<li data-dim="${escapeHtml(key)}"><div class="dim-meta">${scoreHtml}<span class="dim-label">${escapeHtml(label)}</span></div><span class="dim-reason">${escapeHtml(dim.reason || '')}</span></li>`;
+    return `<li data-dim="${escapeHtml(key)}"><div class="dim-meta">${scoreHtml}<span class="dim-label">${escapeHtml(label)}</span></div><span class="dim-reason">${formatInlineMarkdownPreserveBreaks(dim.reason || '')}</span></li>`;
   }).join('');
 
   const tags = Array.isArray(platform.tags) ? platform.tags : [];
@@ -1048,6 +1098,8 @@ const PlatformCatalog = {
   PLATFORM_STATUS_FILTER_SUFFIX,
   DEFAULT_PLATFORM_STATUS_MAX,
   escapeHtml,
+  formatInlineMarkdown,
+  formatInlineMarkdownPreserveBreaks,
   normalizePlatformStatus,
   platformStatusRank,
   platformStatusLabel,

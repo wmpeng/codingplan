@@ -333,12 +333,16 @@
             ? `<span class="platform-detail-dim-score">${esc(score)}</span>`
             : `<span class="platform-detail-dim-score">${esc(score)}<span class="platform-detail-dim-score-unit">分</span></span>`;
         const copy = copyForDim(dim);
+        const copyHtml =
+          typeof PlatformCatalog.formatInlineMarkdownPreserveBreaks === 'function'
+            ? PlatformCatalog.formatInlineMarkdownPreserveBreaks(copy)
+            : esc(copy);
         return (
           `<li class="platform-detail-dim" data-dim="${esc(key)}">` +
           scoreHtml +
           `<div class="platform-detail-dim-main">` +
           `<span class="platform-detail-dim-label">${esc(label)}</span>` +
-          `<p class="platform-detail-dim-copy">${esc(copy)}</p>` +
+          `<p class="platform-detail-dim-copy">${copyHtml}</p>` +
           `</div>` +
           `</li>`
         );
@@ -354,10 +358,14 @@
         ? platform.summary.trim()
         : '';
     const overviewCopy = overviewDetail || overviewSummary;
+    const overviewCopyHtml =
+      typeof PlatformCatalog.formatInlineMarkdownPreserveBreaks === 'function'
+        ? PlatformCatalog.formatInlineMarkdownPreserveBreaks(overviewCopy)
+        : esc(overviewCopy);
     const overviewHtml = overviewCopy
       ? (
           `<section class="platform-detail-section" data-section="overview">` +
-          `<p class="platform-detail-overview">${esc(overviewCopy)}</p>` +
+          `<p class="platform-detail-overview">${overviewCopyHtml}</p>` +
           `</section>`
         )
       : '';

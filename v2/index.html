@@ -1910,6 +1910,24 @@
             color: var(--text-secondary);
         }
 
+        .platform-summary a,
+        .platform-dimensions .dim-reason a,
+        .platform-detail-overview a,
+        .platform-detail-dim-copy a {
+            color: var(--accent-primary);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            transition: color 0.2s ease;
+        }
+
+        .platform-summary a:hover,
+        .platform-dimensions .dim-reason a:hover,
+        .platform-detail-overview a:hover,
+        .platform-detail-dim-copy a:hover {
+            color: var(--text-primary);
+        }
+
         .platform-rush {
             display: inline-flex;
             align-items: center;
@@ -4733,7 +4751,7 @@
             <div class="plan-usage-header">
                 <div class="plan-usage-copy">
                     <h2 class="plan-usage-title" id="planCompositePriceTitle">综合单价</h2>
-                    <p class="plan-usage-description">按缓存命中率95%，输入输出99:1计算。显示为每百万(M)Token的价格</p>
+                    <p class="plan-usage-description">各平台的旗舰或主力模型，按缓存命中率95%，输入输出99:1计算。显示为每百万(M)Token的价格</p>
                 </div>
             </div>
             <div class="plan-usage-chart-block">
@@ -6814,8 +6832,8 @@
 
     <script src="monitor/monitor-config.js"></script>
     <script src="monitor/monitor-config.local.js"></script>
-    <script src="scripts/platform-catalog.js?v=260725j"></script>
-    <script src="scripts/platform-detail.js?v=260725g"></script>
+    <script src="scripts/platform-catalog.js?v=260726a"></script>
+    <script src="scripts/platform-detail.js?v=260726a"></script>
     <script src="scripts/shared.js?v=260724b"></script>
     <script src="scripts/main-views.js"></script>
     <script src="scripts/plan-composite-price-chart.js?v=260725o"></script>

@@ -7,6 +7,8 @@ const {
   validatePlatformRecords,
   validatePaygPricing,
   escapeHtml,
+  formatInlineMarkdown,
+  formatInlineMarkdownPreserveBreaks,
   buildPlatformCardHtml,
   buildPlatformTagBarHtml,
   buildPlatformStatusSliderHtml,
@@ -239,6 +241,34 @@ describe('escapeHtml', () => {
   });
 });
 
+describe('formatInlineMarkdown', () => {
+  it('renders bold and safe http(s) links', () => {
+    assert.equal(formatInlineMarkdown('看看**重点**'), '看看<strong>重点</strong>');
+    assert.match(
+      formatInlineMarkdown('[加群](https://example.com/a)'),
+      /<a href="https:\/\/example\.com\/a" target="_blank" rel="noopener noreferrer">加群<\/a>/
+    );
+  });
+
+  it('leaves unsafe urls as plain text and still escapes html', () => {
+    assert.equal(
+      formatInlineMarkdown('[x](javascript:alert(1))'),
+      '[x](javascript:alert(1))'
+    );
+    assert.equal(
+      formatInlineMarkdown('<b>raw</b>'),
+      '&lt;b&gt;raw&lt;/b&gt;'
+    );
+  });
+
+  it('preserves line breaks after markdown', () => {
+    assert.equal(
+      formatInlineMarkdownPreserveBreaks('a\n**b**'),
+      'a<br><strong>b</strong>'
+    );
+  });
+});
+
 describe('buildPlatformCardHtml', () => {
   it('includes key classes and discontinued marker', () => {
     const active = buildPlatformCardHtml(samplePlatform(), [{ vendor: 'X', models: ['M1'], discontinued: false }]);
@@ -328,6 +358,24 @@ describe('buildPlatformCardHtml', () => {
 
     const missing = buildPlatformCardHtml(samplePlatform(), []);
     assert.doesNotMatch(missing, /platform-summary/);
+  });
+
+  it('renders markdown bold/links in summary and dimension reason', () => {
+    const html = buildPlatformCardHtml(
+      samplePlatform({
+        summary: '支持**加粗**与[链接](https://example.com/s)',
+        dimensions: {
+          value: { score: 4, reason: '见[说明](https://example.com/r)**重点**' },
+          models: { score: 4, reason: 'ok' },
+          stability: { score: 4, reason: 'ok' }
+        }
+      }),
+      []
+    );
+    assert.match(html, /platform-summary[\s\S]*<strong>加粗<\/strong>/);
+    assert.match(html, /platform-summary[\s\S]*href="https:\/\/example\.com\/s"/);
+    assert.match(html, /dim-reason[\s\S]*href="https:\/\/example\.com\/r"/);
+    assert.match(html, /dim-reason[\s\S]*<strong>重点<\/strong>/);
   });
 });
 

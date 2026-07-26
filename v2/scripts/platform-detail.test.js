@@ -65,6 +65,28 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(!none.includes('data-section="overview"'));
   });
 
+  it('renders markdown bold/links in overview and dimension copy', () => {
+    const html = buildDetailBodyHtml(
+      samplePlatform({
+        detail: '概览**加粗**与[链接](https://example.com/d)',
+        dimensions: {
+          value: {
+            score: 5,
+            reason: '短',
+            detail: '详解见[说明](https://example.com/v)与**重点**'
+          },
+          models: { score: 4, reason: '模型短' },
+          stability: { score: 3, reason: '稳定短' }
+        }
+      }),
+      { plans: [], monitorRow: null }
+    );
+    assert.match(html, /platform-detail-overview[\s\S]*<strong>加粗<\/strong>/);
+    assert.match(html, /platform-detail-overview[\s\S]*href="https:\/\/example\.com\/d"/);
+    assert.match(html, /platform-detail-dim-copy[\s\S]*href="https:\/\/example\.com\/v"/);
+    assert.match(html, /platform-detail-dim-copy[\s\S]*<strong>重点<\/strong>/);
+  });
+
   it('renders payg pricing section when paygEntry provided', () => {
     const html = buildDetailBodyHtml(samplePlatform({ id: 'gongji', name: '共继算力' }), {
       plans: [],
