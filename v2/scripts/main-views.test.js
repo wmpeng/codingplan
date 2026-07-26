@@ -4,13 +4,21 @@ const {
   normalizeMainView,
   readMainViewFromSearch,
   buildMainViewUrl,
-  applyMainViewDom
+  applyMainViewDom,
+  isPlainPrimaryClick
 } = require('./main-views.js');
 
 test('normalizeMainView', () => {
   assert.equal(normalizeMainView('payg'), 'payg');
   assert.equal(normalizeMainView('nope'), 'platforms');
   assert.equal(normalizeMainView(''), 'platforms');
+});
+
+test('isPlainPrimaryClick', () => {
+  assert.equal(isPlainPrimaryClick({ button: 0 }), true);
+  assert.equal(isPlainPrimaryClick({ button: 1 }), false);
+  assert.equal(isPlainPrimaryClick({ button: 0, ctrlKey: true }), false);
+  assert.equal(isPlainPrimaryClick({ button: 0, metaKey: true }), false);
 });
 
 test('readMainViewFromSearch', () => {

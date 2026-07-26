@@ -2531,6 +2531,10 @@
             // mountHomepageViews 初始化时已触发 onChange，勿再重复调用（会造成并发挂载）
 
             document.addEventListener('click', (e) => {
+                if (e.defaultPrevented) return;
+                if (typeof MainViews !== 'undefined' && MainViews.isPlainPrimaryClick && !MainViews.isPlainPrimaryClick(e)) {
+                    return;
+                }
                 const link = e.target.closest('a[href]');
                 if (!link || !window.__mainViewsController) return;
                 const href = link.getAttribute('href') || '';
@@ -2562,7 +2566,7 @@
                     next.searchParams.delete('platform');
                 }
                 history.pushState({ mainView: view }, '', next.pathname + (next.search || ''));
-                window.__mainViewsController.apply(view, { reason: 'in-app-link' });
+                window.__mainViewsController.apply(view, { reason: 'in-app-link', scroll: false });
                 void onMainViewChange(view);
             });
         }

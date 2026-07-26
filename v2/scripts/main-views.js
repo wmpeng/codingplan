@@ -43,6 +43,12 @@
     return qs ? `${pathname}?${qs}` : pathname || '?';
   }
 
+  function isPlainPrimaryClick(event) {
+    if (!event) return false;
+    if (typeof event.button === 'number' && event.button !== 0) return false;
+    return !(event.metaKey || event.ctrlKey || event.shiftKey || event.altKey);
+  }
+
   function applyMainViewDom(options) {
     const opts = options || {};
     const view = normalizeMainView(opts.view);
@@ -130,7 +136,10 @@
       tabsRoot.addEventListener('click', (e) => {
         const btn = e.target.closest('[data-main-view]');
         if (!btn || !tabsRoot.contains(btn)) return;
+        // Ctrl/⌘/中键等交给浏览器按 href 开新标签；普通点击站内切换且不滚顶
+        if (!isPlainPrimaryClick(e)) return;
         e.preventDefault();
+        e.stopPropagation();
         setView(btn.getAttribute('data-main-view'), { reason: 'tab', scroll: false });
       });
     }
@@ -155,6 +164,7 @@
     normalizeMainView,
     readMainViewFromSearch,
     buildMainViewUrl,
+    isPlainPrimaryClick,
     applyMainViewDom,
     mountHomepageViews
   };
