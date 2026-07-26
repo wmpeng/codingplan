@@ -1357,15 +1357,14 @@
       "GPT-5.4-mini",
       "GPT-Image-2.0"
     ],
-    "fiveHoursRequests": "Plus 基准",
-    "weeklyRequests": "Plus 基准",
-    "monthlyRequests": "未公开",
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
     "currency": "$",
     "benefits": [
-      "可购买额外积分"
     ],
-    "note": "• 官方按 5 小时与每周额度管理；免费版和 Go 套餐每周也有少量体验额度",
-    "measuredFiveHoursTokenLimit": 20,
+    "note": "• 无5h限制，只有周限制",
+    "measuredFiveHoursTokenLimit": 120,
     "measuredWeeklyTokenLimit": 120,
     "measuredMonthlyTokenLimit": 480
   },
@@ -1392,15 +1391,14 @@
       "GPT-5.4-mini",
       "GPT-Image-2.0"
     ],
-    "fiveHoursRequests": "Plus 的 5 倍",
-    "weeklyRequests": "Plus 的 5 倍",
-    "monthlyRequests": "未公开",
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
     "currency": "$",
     "benefits": [
-      "可购买额外积分"
     ],
-    "note": "• 官方当前按 5 小时与每周额度管理\n• 已转为 Token 计费口径；当前按 Plus 的 5 倍额度理解更稳妥",
-    "measuredFiveHoursTokenLimit": 100,
+    "note": "• 无5h限制，只有周限制",
+    "measuredFiveHoursTokenLimit": 600,
     "measuredWeeklyTokenLimit": 600,
     "measuredMonthlyTokenLimit": 2400
   },
@@ -1427,15 +1425,14 @@
       "GPT-5.4-mini",
       "GPT-Image-2.0"
     ],
-    "fiveHoursRequests": "Plus 的 20 倍",
-    "weeklyRequests": "Plus 的 20 倍",
-    "monthlyRequests": "未公开",
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
     "currency": "$",
     "benefits": [
-      "可购买额外积分"
     ],
-    "note": "• 官方按 5 小时与每周额度管理",
-    "measuredFiveHoursTokenLimit": 400,
+    "note": "• 无5h限制，只有周限制",
+    "measuredFiveHoursTokenLimit": 2400,
     "measuredWeeklyTokenLimit": 2400,
     "measuredMonthlyTokenLimit": 9600
   },
@@ -1456,7 +1453,8 @@
     "weeklyRequests": 4200,
     "monthlyRequests": "-",
     "benefits": [],
-    "note": ""
+    "note": "已下线",
+    "discontinued": true
   },
   {
     "vendor": "TaoToken",
@@ -2258,7 +2256,6 @@
     "action": "https://api.dreamfree.space/c/s/cpyqscnetcp",
     "rating": 2,
     "tags": [
-      "性价比高"
     ],
     "firstMonthPrice": "-",
     "monthlyPrice": 20,
@@ -2281,7 +2278,6 @@
     "action": "https://api.dreamfree.space/c/s/cpyqscnetcp",
     "rating": 2,
     "tags": [
-      "性价比高"
     ],
     "firstMonthPrice": "-",
     "monthlyPrice": 100,
@@ -2495,7 +2491,10 @@
     "benefits": [
       "3 个并发任务"
     ],
-    "note": "• 支持 GLM-5.1、Kimi-K2.6、MiniMax-M2.7、DeepSeek-V4-Pro，模型池很大\n• Pro 为 Free 的 50 倍额度；可选年付 200 美元"
+    "note": "• 支持 GLM-5.2、Kimi-K2.6、MiniMax-M3、DeepSeek-V4-Pro，模型丰富\n• 用量按照GLM-5.2计算",
+    "measuredFiveHoursTokenLimit": "-",
+    "measuredWeeklyTokenLimit": 400,
+    "measuredMonthlyTokenLimit": 1600
   },
   {
     "vendor": "Ollama",
@@ -2528,7 +2527,10 @@
     "benefits": [
       "10 个并发任务"
     ],
-    "note": "• 支持 GLM-5.1、Kimi-K2.6、MiniMax-M2.7、DeepSeek-V4-Pro，模型池很大\n• Max 为 Pro 的 5 倍额度"
+    "note": "• 暂时停售 • 支持 GLM-5.2、Kimi-K2.6、MiniMax-M3、DeepSeek-V4-Pro，模型丰富\n• 用量按照GLM-5.2计算",
+    "measuredFiveHoursTokenLimit": "-",
+    "measuredWeeklyTokenLimit": 2000,
+    "measuredMonthlyTokenLimit": 8000
   },
   {
     "vendor": "Claude",

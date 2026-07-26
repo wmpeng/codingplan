@@ -144,7 +144,7 @@
     "detail": "Coding Plan 性价比很高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。CodingPlan和TokenPlan的抵扣规则均不透明。",
     "dimensions": {
       "value": {
-        "score": 5,
+        "score": 4,
         "reason": "Coding Plan 性价比比肩Minimax，但不放量；Token Plan开放购买，性价比尚可。Qwen3.8-Max有限时1折活动。夜间有额外2折优惠。"
       },
       "models": {
@@ -281,7 +281,7 @@
     "dimensions": {
       "value": {
         "score": 2,
-        "reason": "Token Plan 按量性价比一般，且限个人用户每账号限购 1 套。"
+        "reason": "性价比较低。"
       },
       "models": {
         "score": 3,
@@ -293,24 +293,25 @@
       }
     },
     "tags": [],
-    "platformStatus": "open"
+    "platformStatus": "limited"
   },
   {
     "id": "tencent-cloud",
     "name": "腾讯云",
     "rating": 3,
+    "summary": "中规中矩，如果不是要使用混元模型，不推荐。",
     "dimensions": {
       "value": {
         "score": 3,
-        "reason": "Token Plan 39 元起，Coding Plan 已下线后按量为主，性价比中等。"
+        "reason": "Coding Plan 已下线，Token Plan性价比中等甚至较差。"
       },
       "models": {
-        "score": 3,
-        "reason": "HY 系列加 GLM、Kimi、MiniMax 接入，模型广度尚可但旗舰更新偏慢。"
+        "score": 2,
+        "reason": "HY 系列加 GLM、Kimi、MiniMax 接入，不跟踪最新模型。如使用混元模型，可以选择腾讯平台。"
       },
       "stability": {
         "score": 5,
-        "reason": "腾讯云大厂服务稳定，混元系列与第三方模型接入可靠。"
+        "reason": "腾讯云基础设施成熟，企业级稳定性有保障。"
       }
     },
     "tags": [],
@@ -319,23 +320,24 @@
   {
     "id": "jd-cloud",
     "name": "京东云",
-    "rating": 3,
+    "rating": 2,
+    "summary": "已经很久不更新，模型较差",
     "dimensions": {
       "value": {
         "score": 3,
-        "reason": "40 元起的中档套餐，模型组合实用但额度优势不明显。"
+        "reason": "有首月优惠，但是用量证据不足，不予评价。"
       },
       "models": {
-        "score": 3,
-        "reason": "覆盖 Kimi、GLM、MiniMax、DeepSeek、Qwen 等，但旗舰型号更新略滞后。"
+        "score": 2,
+        "reason": "模型更新明显较慢，应该基本没更新过，覆盖 Kimi、GLM、MiniMax、DeepSeek、Qwen 等"
       },
       "stability": {
         "score": 4,
-        "reason": "京东云官方运营，日常编程调用稳定。"
+        "reason": "京东云官方运营，证据不足，但推测稳定性尚可。"
       }
     },
     "tags": [],
-    "platformStatus": "open"
+    "platformStatus": "limited"
   },
   {
     "id": "iflytek",
@@ -362,19 +364,20 @@
   {
     "id": "unicom-cloud",
     "name": "联通云",
-    "rating": 3,
+    "rating": 2,
+    "summary": "Coding Plan已经下线。仅剩TokenPlan，模型差。",
     "dimensions": {
       "value": {
-        "score": 4,
-        "reason": "15 元起入门档价格亲民，Coding Plan 与 Token Plan 档位选择多。"
+        "score": 3,
+        "reason": "性价比一般"
       },
       "models": {
-        "score": 3,
-        "reason": "接入 DeepSeek-V4、GLM、Kimi、Qwen 等，覆盖面中等。"
+        "score": 1,
+        "reason": "接入 DeepSeek-V4-Flash、MiniMax-M2.5 模型。"
       },
       "stability": {
-        "score": 3,
-        "reason": "运营商云品牌，稳定性尚可但社区反馈与文档不如一线云厂商丰富。"
+        "score": 4,
+        "reason": "证据不足。但运营商云品牌，推测稳定性尚可。"
       }
     },
     "tags": [],
@@ -387,15 +390,15 @@
     "dimensions": {
       "value": {
         "score": 3,
-        "reason": "40 元档定价合理，但可选模型与套餐档位较少。"
+        "reason": "证据不足"
       },
       "models": {
-        "score": 2,
+        "score": 1,
         "reason": "目前以 MiniMax-M2.5 为主，旗舰模型覆盖明显不足。"
       },
       "stability": {
-        "score": 3,
-        "reason": "运营商云平台，基础稳定但 AI 编程场景生态较新。"
+        "score": 4,
+        "reason": "证据不足。但推测运营商云平台，稳定性应该尚可。"
       }
     },
     "tags": [],
@@ -404,19 +407,19 @@
   {
     "id": "stepfun",
     "name": "阶跃星辰",
-    "rating": 3,
+    "rating": 2,
     "dimensions": {
       "value": {
         "score": 3,
-        "reason": "49 元起，主打自研 step 系列，适合愿意尝鲜的用户。"
+        "reason": "证据不足"
       },
       "models": {
-        "score": 3,
+        "score": 1,
         "reason": "step-3.7-flash 等自研模型有特色，但第三方 SOTA 覆盖有限。"
       },
       "stability": {
-        "score": 3,
-        "reason": "平台体量较小，稳定性尚可但高峰表现因套餐而异。"
+        "score": 4,
+        "reason": "稳定性尚可。"
       }
     },
     "tags": [],
@@ -426,18 +429,19 @@
     "id": "taotoken",
     "name": "TaoToken",
     "rating": 3,
+    "summary": "CSDN推出的平台，专注 GLM-5.2，定价合理但当前套餐已售罄。",
     "dimensions": {
       "value": {
         "score": 3,
-        "reason": "39 元起专注 GLM-5.2，定价合理但当前套餐已售罄。"
+        "reason": "证据不足"
       },
       "models": {
-        "score": 3,
-        "reason": "专注 GLM-5.2 单一模型，深度够用但广度不足。"
+        "score": 4,
+        "reason": "专注 GLM-5.2 单一模型，深度够用但广度不足。但怀疑有不同供应商，不排除存在模型性能差异。"
       },
       "stability": {
-        "score": 3,
-        "reason": "新平台体量小，售罄状态下难以评估长期稳定性。"
+        "score": 2,
+        "reason": "新平台，证据不足。且看起来像是中专站，并且怀疑有不同供应商，稳定性存疑。"
       }
     },
     "tags": [],
@@ -446,57 +450,62 @@
   {
     "id": "codex",
     "name": "Codex",
-    "rating": 4,
+    "rating": 5,
+    "summary": "OpenAI 官方会员，性价比很高，用量很大。美中不足是需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
+    "detail": "OpenAI 官方会员，性价比很高，用量很大。官方取消了5小时限制，只有周限制，使用更加灵活。并且还经常重置额度和给充值机会。\n需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
     "dimensions": {
       "value": {
-        "score": 2,
-        "reason": "OpenAI Token Plan 按量计费，GPT-5 系列单价偏高，适合重度用户。"
+        "score": 5,
+        "reason": "性价比很高，尤其Pro x20夯爆了。官方取消了没有5小时限制，只有周限制，使用更加灵活。并且还经常重置额度和给充值机会。如使用GPT-5.6-Terra更有x2的额度。"
       },
       "models": {
         "score": 5,
-        "reason": "GPT-5.6、GPT-5.3-Codex 等最新 Codex 系列，编程专项能力强。"
+        "reason": "GPT-5.6-Sol，模型顶尖。"
       },
       "stability": {
         "score": 5,
         "reason": "OpenAI 官方基础设施，稳定性行业标杆。"
       }
     },
-    "tags": [],
+    "tags": ["外币支付"],
     "platformStatus": "open"
   },
   {
     "id": "claude",
     "name": "Claude",
     "rating": 4,
+    "summary": "Anthropic 官方会员，性价比高，支持多模型。国内使用限时比较多，除需要外币信用卡或者Paypal外，还需要境外手机号，和境外网络环境。",
+    "detail": "Anthropic 官方会员，性价比高，支持多模型。国内使用限时比较多，除需要外币信用卡或者Paypal外，还需要境外手机号，和境外网络环境。中国大陆使用难度很高。",
     "dimensions": {
       "value": {
-        "score": 2,
-        "reason": "Token Plan 按量费用高，仅适合对 Claude 系列有强需求的用户。"
+        "score": 5,
+        "reason": ""
       },
       "models": {
         "score": 5,
-        "reason": "Sonnet 4.6、Opus 4.7 等 Claude 全系旗舰，代码与推理能力顶尖。"
+        "reason": "Fable-5, Opus-5, Sonnect-5 等 Claude 系列模型，模型顶尖。"
       },
       "stability": {
-        "score": 5,
-        "reason": "Anthropic 官方 API，全球顶级稳定性与可用性。"
+        "score": 3,
+        "reason": "Anthropic 官方 API，本身稳定性没问题。但需要境外网络环境，从中国大陆访问限制比较多。"
       }
     },
-    "tags": [],
+    "tags": ["外币支付"],
     "platformStatus": "open"
   },
   {
     "id": "github",
     "name": "GitHub",
-    "rating": 4,
+    "rating": 3,
+    "summary": "GitHub 官方会员，支持多模型，但性价比低，不推荐。",
     "dimensions": {
       "value": {
-        "score": 3,
-        "reason": "Copilot 类 Token Plan 10 元起，多模型打包但按量上限需留意。"
+        "score": 2,
+        "reason": "现在按使用量计费，额度非常少，已经完全无性价比。"
       },
       "models": {
-        "score": 4,
-        "reason": "聚合 GPT、Gemini、Claude、Grok 等多厂商模型，一账号多模型。"
+        "score": 5,
+        "reason": "聚合 GPT、Claude、Grok、Gemini 等多厂商模型，模型更新及时，涵盖广。"
       },
       "stability": {
         "score": 5,
@@ -509,44 +518,46 @@
   {
     "id": "ollama",
     "name": "Ollama",
-    "rating": 3,
+    "rating": 4,
+    "summary": "Ollama 官方推出的云端模型会员，支持模型全，性价比很高。但需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
     "dimensions": {
       "value": {
-        "score": 4,
-        "reason": "20 元起，云端托管多开源模型，适合本地生态延伸用户。"
+        "score": 5,
+        "reason": "性价比很高，[查看模型用量对比](index.html?view=plans)"
       },
       "models": {
-        "score": 4,
-        "reason": "聚合 Kimi、GLM、DeepSeek、Qwen、Gemini 等大量开源与预览模型。"
+        "score": 5,
+        "reason": "模型强覆盖广，支持 Kimi、GLM、DeepSeek、Qwen、Gemini 等各家开源模型，即将支持Kimi-K3。"
       },
       "stability": {
-        "score": 3,
-        "reason": "依赖云端实例调度，稳定性因模型与时段波动。"
+        "score": 4,
+        "reason": "稳定性尚可。高峰时段可能略拥挤，整体可用性尚可。"
       }
     },
-    "tags": [],
+    "tags": ["外币支付"],
     "platformStatus": "open"
   },
   {
     "id": "chaosuan",
     "name": "超算",
     "rating": 2,
+    "summary": "已停售，证据不足。",
     "dimensions": {
       "value": {
-        "score": 4,
-        "reason": "20 元起价格较低，适合轻度体验与预算有限用户。"
+        "score": 3,
+        "reason": "证据不足"
       },
       "models": {
-        "score": 2,
+        "score": 1,
         "reason": "仅 MiniMax-M2.5 与 Qwen-3-235B 等少量模型，选择面窄。"
       },
       "stability": {
         "score": 3,
-        "reason": "小众平台，稳定性尚可但缺乏大规模用户验证。"
+        "reason": "证据不足"
       }
     },
     "tags": [],
-    "platformStatus": "open"
+    "platformStatus": "paused"
   },
   {
     "id": "sensetime",
@@ -554,8 +565,8 @@
     "rating": 2,
     "dimensions": {
       "value": {
-        "score": 3,
-        "reason": "套餐定价中等，适合已有商汤生态或特定场景用户。"
+        "score": 5,
+        "reason": "目前只有免费会员"
       },
       "models": {
         "score": 2,
@@ -575,20 +586,20 @@
     "rating": 2,
     "dimensions": {
       "value": {
-        "score": 2,
-        "reason": "套餐定价与可用模型信息有限，性价比难以横向对比。"
+        "score": 5,
+        "reason": "目前只有免费会员，不定时放量"
       },
       "models": {
-        "score": 2,
-        "reason": "目前以 GLM-4.7 为主，距当前 SOTA 有明显代差。"
+        "score": 1,
+        "reason": "目前以 GLM-4.7 为主。"
       },
       "stability": {
         "score": 3,
-        "reason": "国产 GPU 云新秀，基础服务可用但编程场景案例较少。"
+        "reason": "证据不足。"
       }
     },
     "tags": [],
-    "platformStatus": "open"
+    "platformStatus": "limited"
   },
   {
     "id": "infrafun",
