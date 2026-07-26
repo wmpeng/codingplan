@@ -1410,10 +1410,10 @@
                     </td>
                     <td class="rating-stars">${'★'.repeat(plan.rating || 0)}${'☆'.repeat(5 - (plan.rating || 0))}</td>
                     <td class="plan-tags-cell">${renderPlanTags(plan)}</td>
-                    <td><span class="price">${plan.currency||'¥'}${formatPrice(plan.firstMonthPrice)} <span class="unit">/ 首月</span></span></td>
-                    <td><span class="price-monthly">${plan.currency||'¥'}${formatPrice(plan.monthlyPrice)} <span class="unit">/ 月</span></span></td>
-                    <td><span class="price-normal">${plan.currency||'¥'}${formatPrice(plan.quarterlyPrice)} <span class="price-original">${plan.currency||'¥'}${formatPrice(plan.monthlyPrice * 3)}</span> <span class="unit">/ 季</span></span></td>
-                    <td><span class="price-normal">${plan.currency||'¥'}${formatPrice(plan.yearlyPrice)} <span class="price-original">${plan.currency||'¥'}${formatPrice(plan.monthlyPrice * 12)}</span> <span class="unit">/ 年</span></span></td>
+                    <td><span class="price">${formatPlanPriceDisplay(plan, plan.firstMonthPrice)} <span class="unit">/ 首月</span></span></td>
+                    <td><span class="price-monthly">${formatPlanPriceDisplay(plan, plan.monthlyPrice)} <span class="unit">/ 月</span></span></td>
+                    <td><span class="price-normal">${formatPlanPriceDisplay(plan, plan.quarterlyPrice)} <span class="price-original">${formatPlanPriceDisplay(plan, plan.monthlyPrice * 3)}</span> <span class="unit">/ 季</span></span></td>
+                    <td><span class="price-normal">${formatPlanPriceDisplay(plan, plan.yearlyPrice)} <span class="price-original">${formatPlanPriceDisplay(plan, plan.monthlyPrice * 12)}</span> <span class="unit">/ 年</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.fiveHoursRequests)} <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.weeklyRequests)} <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.monthlyRequests)} <span class="unit">/ 月</span></span></td>
@@ -1438,11 +1438,33 @@
 
         // 价格格式化函数：整数不显示小数，小数显示两位
         function formatPrice(price) {
+            if (typeof price !== 'number' || !Number.isFinite(price)) {
+                return String(price ?? '-');
+            }
             if (Number.isInteger(price)) {
                 return price.toString();
-            } else {
-                return price.toFixed(2);
             }
+            return price.toFixed(2);
+        }
+
+        // 美元原价展示：去掉多余尾零，保留如 16.2
+        function formatUsdAmount(price) {
+            if (typeof price !== 'number' || !Number.isFinite(price)) {
+                return String(price ?? '-');
+            }
+            if (Number.isInteger(price)) return String(price);
+            return String(Number(price.toFixed(2)));
+        }
+
+        // 美元套餐：人民币主显（取整）+ 括号美元；人民币套餐保持原样
+        function formatPlanPriceDisplay(plan, price) {
+            if (typeof price !== 'number' || !Number.isFinite(price)) return '-';
+            if (plan && plan.currency === '$') {
+                const cny = Math.round(price * getUsdToCnyRate());
+                return `¥${cny}($${formatUsdAmount(price)})`;
+            }
+            const currency = (plan && plan.currency) || '¥';
+            return `${currency}${formatPrice(price)}`;
         }
 
         // 请求次数格式化函数：数字则格式化，字符串直接返回
