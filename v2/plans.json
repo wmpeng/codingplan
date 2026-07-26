@@ -116,7 +116,10 @@
     "benefits": [
       "免费MCP次数"
     ],
-    "note": "• 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算"
+    "note": "• 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算\n• 实测用量参考国内版同档",
+    "measuredFiveHoursTokenLimit": 6,
+    "measuredWeeklyTokenLimit": 30,
+    "measuredMonthlyTokenLimit": 120
   },
   {
     "vendor": "智谱国际版",
@@ -144,7 +147,10 @@
     "benefits": [
       "免费MCP次数"
     ],
-    "note": "• 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算"
+    "note": "• 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算\n• 实测用量参考国内版同档",
+    "measuredFiveHoursTokenLimit": 30,
+    "measuredWeeklyTokenLimit": 150,
+    "measuredMonthlyTokenLimit": 600
   },
   {
     "vendor": "智谱国际版",
@@ -172,7 +178,10 @@
     "benefits": [
       "免费MCP次数"
     ],
-    "note": "• 4倍Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算"
+    "note": "• 4倍Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算\n• 实测用量参考国内版同档",
+    "measuredFiveHoursTokenLimit": 120,
+    "measuredWeeklyTokenLimit": 600,
+    "measuredMonthlyTokenLimit": 2400
   },
   {
     "vendor": "MiniMax",
