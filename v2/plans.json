@@ -9,7 +9,7 @@
       "模型强",
       "性价比高"
     ],
-    "firstMonthPrice": 46.55,
+    "firstMonthPrice": "-",
     "monthlyPrice": 49,
     "quarterlyPrice": 132.3,
     "yearlyPrice": 470.4,
@@ -39,7 +39,7 @@
       "模型强",
       "性价比高"
     ],
-    "firstMonthPrice": 141.55,
+    "firstMonthPrice": "-",
     "monthlyPrice": 149,
     "quarterlyPrice": 402.3,
     "yearlyPrice": 1430.4,
@@ -70,7 +70,7 @@
       "模型强",
       "性价比高"
     ],
-    "firstMonthPrice": 445.55,
+    "firstMonthPrice": "-",
     "monthlyPrice": 469,
     "quarterlyPrice": 1266.3,
     "yearlyPrice": 4502.4,
@@ -589,8 +589,8 @@
     "summary": "入门档，Agent 约 4 倍速",
     "note": "Agent 4 倍速",
     "measuredFiveHoursTokenLimit": 15,
-    "measuredWeeklyTokenLimit": 21,
-    "measuredMonthlyTokenLimit": 84
+    "measuredWeeklyTokenLimit": 20,
+    "measuredMonthlyTokenLimit": 80
   },
   {
     "vendor": "Kimi",
@@ -617,7 +617,10 @@
     "monthlyRequests": "未公开",
     "benefits": [],
     "summary": "约 4 倍额度，支持 Agent 多任务并行",
-    "note": "4 倍额度, Agent 多任务并行"
+    "note": "4 倍额度, Agent 多任务并行",
+    "measuredFiveHoursTokenLimit": 16,
+    "measuredWeeklyTokenLimit": 80,
+    "measuredMonthlyTokenLimit": 320
   },
   {
     "vendor": "Kimi",
@@ -648,9 +651,9 @@
     ],
     "summary": "约 20 倍额度，含免费 Kimi-Claw",
     "note": "20 倍额度",
-    "measuredFiveHoursTokenLimit": 65,
-    "measuredWeeklyTokenLimit": 357,
-    "measuredMonthlyTokenLimit": 1428
+    "measuredFiveHoursTokenLimit": 80,
+    "measuredWeeklyTokenLimit": 400,
+    "measuredMonthlyTokenLimit": 1600
   },
   {
     "vendor": "Kimi",
@@ -680,7 +683,10 @@
       "免费Kimi-Claw"
     ],
     "summary": "约 60 倍额度，含免费 Kimi-Claw",
-    "note": "60 倍额度"
+    "note": "60 倍额度",
+    "measuredFiveHoursTokenLimit": 240,
+    "measuredWeeklyTokenLimit": 1200,
+    "measuredMonthlyTokenLimit": 4800
   },
   {
     "vendor": "优云智算",
