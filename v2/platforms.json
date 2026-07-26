@@ -73,7 +73,8 @@
     "id": "bytedance-ark",
     "name": "字节·方舟",
     "rating": 5,
-    "summary": "同时支持 智谱GLM、DeepSeek、MiniMax、Kimi，适合体验各家模型的用户。8月8日前，有套餐2.5折优惠，叠加部分模型用量4倍活动，性价比超高。",
+    "summary": "CodingPlan需抢购，但每天确实会放号。同时支持智谱GLM、DeepSeek、MiniMax、Kimi各家模型。8月8日前，有套餐2.5折优惠，叠加部分模型用量4倍活动，性价比超高。",
+    "detail": "CodingPlan需抢购，但每天确实会放号，可以加方舟Coding用户群不定时放号前会群里说。同时支持智谱GLM、DeepSeek、MiniMax、Kimi各家模型。8月8日前，有套餐2.5折优惠，叠加部分模型用量4倍活动，性价比超高。",
     "dimensions": {
       "value": {
         "score": 5,
@@ -183,18 +184,19 @@
     "id": "youyun",
     "name": "优云智算",
     "rating": 4,
+    "summary": "所有套餐（￥49-￥999）套餐均支持GLM-5.2。当前适合作为使用GLM-5.2的平台购买。优点是按照真实接口调用量计费，且模型倍率透明，同时GLM-5.2限时优惠倍率；缺点是套餐包含的调用量较少。",
     "dimensions": {
       "value": {
         "score": 4,
-        "reason": "49 元起即支持 GLM-5.2，限时优惠倍率让入门档性价比不错。"
+        "reason": "按照真实接口调用量计费。GLM-5.2限时优惠倍率。但各个套餐的包含的调用量都较少。"
       },
       "models": {
         "score": 4,
-        "reason": "全档位支持 GLM-5.2，同时覆盖 Kimi、MiniMax、DeepSeek 等常见模型。"
+        "reason": "全档位支持 GLM-5.2，支持的 Kimi、MiniMax、DeepSeek 的模型较老。"
       },
       "stability": {
-        "score": 4,
-        "reason": "中小云厂商但 Coding Plan 运行稳定，适合体验与轻度使用。"
+        "score": 5,
+        "reason": "中小云厂商，但算力充足运行稳定，很少遇到拥挤。"
       }
     },
     "tags": [],
@@ -203,19 +205,20 @@
   {
     "id": "aliyun-bailian",
     "name": "阿里·百炼",
-    "rating": 3,
+    "rating": 4,
+    "summary": "Coding Plan 性价比很高但也不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。",
     "dimensions": {
       "value": {
-        "score": 2,
-        "reason": "Coding Plan 起价 198 元，Token Plan 按量性价比偏低，更适合已有阿里云生态的用户。"
+        "score": 5,
+        "reason": "Coding Plan 性价比比肩Minimax，但不放量；Token Plan开放购买，性价比尚可。Qwen3.8-Max有限时1折活动。夜间有额外2折优惠。"
       },
       "models": {
         "score": 4,
-        "reason": "Qwen-3.7-Plus/Max 系列齐全，同时接入 GLM、Kimi、MiniMax 等第三方模型。"
+        "reason": "TokenPlan 支持自家最新 Qwen-3.8-Max，Qwen-3.7-Max/Plus 模型。CodingPlan支持Qwen-3.7-Plus等模型。除了自家Qwen模型，对其他家模型支持稍差。"
       },
       "stability": {
         "score": 5,
-        "reason": "阿里云大厂基础设施，服务可用性与 SLA 有保障。"
+        "reason": "官方服务，稳定性强。"
       }
     },
     "tags": [],
