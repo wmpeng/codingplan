@@ -257,14 +257,15 @@
     "id": "baidu-qianfan",
     "name": "百度·千帆",
     "rating": 3,
+    "summary": "Coding Plan 下线，Token Plan 个人版新上线，首月半价活动中。搬家入手勉强还行，但是有其他更好的选择",
     "dimensions": {
       "value": {
         "score": 3,
-        "reason": "40 元起的中档定价，模型覆盖面不错但用量优势不突出。"
+        "reason": "Token Plan 个人版首购 4.9 元起，额度统一抵扣且取消原 Coding Plan 三层限流，性价比更突出。"
       },
       "models": {
-        "score": 4,
-        "reason": "接入 GLM-5.1、DeepSeek-V4、Kimi-K2.5 等主流开源模型。"
+        "score": 5,
+        "reason": "接入 GLM-5.2、DeepSeek-V4、Kimi-K2.6、ERNIE-5.1 等主流模型。"
       },
       "stability": {
         "score": 4,

@@ -1807,7 +1807,8 @@
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
     "benefits": [],
-    "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill"
+    "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill",
+    "discontinued": true
   },
   {
     "vendor": "百度·千帆",
@@ -1833,7 +1834,112 @@
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
     "benefits": [],
-    "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill"
+    "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill",
+    "discontinued": true
+  },
+  {
+    "vendor": "百度·千帆",
+    "plan": "Mini",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+    "rating": 3,
+    "tags": [],
+    "firstMonthPrice": 4.9,
+    "monthlyPrice": 9.9,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.2",
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V4-Pro",
+      "ERNIE-5.1"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "• 限时首购 5 折（每日限量）\n• 1000 万 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
+    "measuredMonthlyTokenLimit": 10
+  },
+  {
+    "vendor": "百度·千帆",
+    "plan": "Lite",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+    "rating": 3,
+    "tags": [],
+    "firstMonthPrice": 19.9,
+    "monthlyPrice": 40,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.2",
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V4-Pro",
+      "ERNIE-5.1"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "• 限时首购 5 折（每日限量）\n• 4200 万 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
+    "measuredMonthlyTokenLimit": 42
+  },
+  {
+    "vendor": "百度·千帆",
+    "plan": "Pro",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+    "rating": 3,
+    "tags": [],
+    "firstMonthPrice": 99.9,
+    "monthlyPrice": 200,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.2",
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V4-Pro",
+      "ERNIE-5.1"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "• 限时首购 5 折（每日限量）\n• 2.3 亿 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
+    "measuredMonthlyTokenLimit": 230
+  },
+  {
+    "vendor": "百度·千帆",
+    "plan": "Max",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+    "rating": 3,
+    "tags": [],
+    "firstMonthPrice": 299.9,
+    "monthlyPrice": 600,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.2",
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V4-Pro",
+      "ERNIE-5.1"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "• 限时首购 5 折（每日限量）\n• 7 亿 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
+    "measuredMonthlyTokenLimit": 700
   },
   {
     "vendor": "京东云",
