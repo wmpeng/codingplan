@@ -588,9 +588,9 @@
     "benefits": [],
     "summary": "入门档，Agent 约 4 倍速",
     "note": "Agent 4 倍速",
-    "measuredFiveHoursTokenLimit": 15,
-    "measuredWeeklyTokenLimit": 20,
-    "measuredMonthlyTokenLimit": 80
+    "measuredFiveHoursTokenLimit": 5,
+    "measuredWeeklyTokenLimit": 7,
+    "measuredMonthlyTokenLimit": 28
   },
   {
     "vendor": "Kimi",
@@ -618,9 +618,9 @@
     "benefits": [],
     "summary": "约 4 倍额度，支持 Agent 多任务并行",
     "note": "4 倍额度, Agent 多任务并行",
-    "measuredFiveHoursTokenLimit": 16,
-    "measuredWeeklyTokenLimit": 80,
-    "measuredMonthlyTokenLimit": 320
+    "measuredFiveHoursTokenLimit": 6,
+    "measuredWeeklyTokenLimit": 27,
+    "measuredMonthlyTokenLimit": 108
   },
   {
     "vendor": "Kimi",
@@ -651,9 +651,9 @@
     ],
     "summary": "约 20 倍额度，含免费 Kimi-Claw",
     "note": "20 倍额度",
-    "measuredFiveHoursTokenLimit": 80,
-    "measuredWeeklyTokenLimit": 400,
-    "measuredMonthlyTokenLimit": 1600
+    "measuredFiveHoursTokenLimit": 27,
+    "measuredWeeklyTokenLimit": 135,
+    "measuredMonthlyTokenLimit": 540
   },
   {
     "vendor": "Kimi",
@@ -684,9 +684,9 @@
     ],
     "summary": "约 60 倍额度，含免费 Kimi-Claw",
     "note": "60 倍额度",
-    "measuredFiveHoursTokenLimit": 240,
-    "measuredWeeklyTokenLimit": 1200,
-    "measuredMonthlyTokenLimit": 4800
+    "measuredFiveHoursTokenLimit": 80,
+    "measuredWeeklyTokenLimit": 400,
+    "measuredMonthlyTokenLimit": 1600
   },
   {
     "vendor": "优云智算",

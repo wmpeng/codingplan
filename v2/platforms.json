@@ -15,7 +15,7 @@
       },
       "stability": {
         "score": 4,
-        "reason": "官方直连服务稳定，高峰期限额紧但很少出现大面积不可用。"
+        "reason": "官方服务，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
       }
     },
     "tags": [],
@@ -25,21 +25,21 @@
     "id": "zhipu-intl",
     "name": "智谱国际版",
     "rating": 4,
-    "summary": "国内版的替代，无需抢购",
-    "detail": "智谱国际版在模型与套餐额度上与国内 Coding Plan 对齐，适合长期抢不到国内名额、又必须稳定使用 GLM 旗舰的用户。价格折算后通常明显高于国内版，差额主要来自汇率与海外计费通道；若你更在意最低单价，优先等国内放量或考虑其他平替。开通与续费无需蹲点抢购，国际版通道日常可用性较好。",
+    "summary": "国内版的替代，无需抢购。",
+    "detail": "智谱国际版在模型与套餐额度上与国内 Coding Plan 相同，适合长期抢不到国内名额、又想要使用 GLM 旗舰模型的用户。",
     "dimensions": {
       "value": {
-        "score": 3,
+        "score": 4,
         "reason": "用量与国内版完全一致，但价格折算后约为国内版两倍左右。",
-        "detail": "国际版套餐额度、限流与国内版 Coding Plan 对齐，模型侧也无阉割；差额主要来自汇率与海外计费通道。适合国内版长期抢不到、又必须稳定拿到 GLM 旗舰额度的用户，不适合单纯追求最低单价。"
+        "detail": "用量与国内版完全一致，但价格折算后约为国内版两倍左右。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享9折。[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)内有成品号出售。"
       },
       "models": {
         "score": 5,
-        "reason": "支持 GLM-5.2 等与国内版一致的旗舰模型，能力不打折。"
+        "reason": "GLM-5.2 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
       },
       "stability": {
-        "score": 4,
-        "reason": "国际版通道稳定，无需抢名额，开通流程顺畅。"
+        "score": 5,
+        "reason": "官方服务，稳定性强。"
       }
     },
     "tags": [],
@@ -49,21 +49,21 @@
     "id": "minimax",
     "name": "MiniMax",
     "rating": 5,
-    "summary": "额度高、随时可买，日常编程助手与轻量任务性价比突出。",
-    "detail": "MiniMax 在同价位里通常能提供更高的可用请求量，轻量改写、补全和日常助手类任务摊薄成本很低，适合作为主力日用平台。重推理或长上下文高压场景会更快吃完额度，建议搭配更高上限套餐或按量补充，而不是把它当唯一高压主力。支持 MiniMax-M3 及多模态，模型能力均衡；开通与续费无需抢购，档位选择也相对丰富。",
+    "summary": "额度高、随时可买，支持多模态，日常编程助手与轻量任务性价比突出。",
+    "detail": "额度高、随时可买，支持多模态，日常编程助手与轻量任务性价比突出。适合日常编程助手、Agent任务、酒馆、Subagent使用。",
     "dimensions": {
       "value": {
         "score": 5,
-        "reason": "额度依然最高，低难度任务和日常编程助手场景性价比突出。",
-        "detail": "同价位里可用请求量通常高于多数 Coding Plan：轻量改写、补全、日常助手类任务能摊薄到很低的单次成本。重推理或长上下文高压场景会更快吃完额度，那时更适合搭配更高上限或按量补充，而不是把 MiniMax 当唯一主力。"
+        "reason": "所有平台额度最慷慨的，日常低难度任务和日常编程助手场景性价比突出。"
       },
       "models": {
-        "score": 5,
-        "reason": "支持 MiniMax-M3 及多模态，模型能力均衡不拉胯。"
+        "score": 4,
+        "reason": "最新 MiniMax-M3，支持多模态图像输入。",
+        "detail": "最新 MiniMax-M3，支持多模态图像输入。对比非多模态模型，使用起来即使是编程场景也更加方便。基本是多模态模型中最强的。"
       },
       "stability": {
-        "score": 4,
-        "reason": "常规编程与助手场景稳定，无需抢购，续费体验顺畅。"
+        "score": 5,
+        "reason": "官方服务，稳定性强。"
       }
     },
     "tags": [],
@@ -73,10 +73,11 @@
     "id": "bytedance-ark",
     "name": "字节·方舟",
     "rating": 5,
+    "summary": "同时支持 智谱GLM、DeepSeek、MiniMax、Kimi，适合体验各家模型的用户。8月8日前，有套餐2.5折优惠，叠加部分模型用量4倍活动，性价比超高。",
     "dimensions": {
       "value": {
         "score": 5,
-        "reason": "2.5 折叠加为期一个月的用量 2.5 倍活动，相当于平时约 10 倍性价比。"
+        "reason": "8月8日前，有[套餐2.5折优惠](https://docs.volcengine.com/docs/82379/2525065?_vtm_=a441938.b105324.c854860_0.d562002_2.0.156_7654984365441992233&lang=zh)，叠加部分模型用[量4倍活动](https://docs.volcengine.com/docs/82379/2533566?_vtm_=a441938.b105324.c854860_0.d562002_4.0.156_7654984365441992233&lang=zh)，性价比超高。"
       },
       "models": {
         "score": 5,
@@ -84,7 +85,7 @@
       },
       "stability": {
         "score": 4,
-        "reason": "火山引擎大厂背书，服务可靠，但抢购期下单节奏受名额影响。"
+        "reason": "火山引擎大厂背书，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
       }
     },
     "tags": [],
@@ -93,19 +94,20 @@
   {
     "id": "iflytek",
     "name": "讯飞·星火",
-    "rating": 4,
+    "rating": 3,
+    "summary": "曾经的高性价比平台，现已陨落。低价套餐已下架，仅剩高效版（199元）和速通版（699元）套餐，199元套餐也限购且高峰期拥挤，699元套餐性价比低。",
     "dimensions": {
       "value": {
-        "score": 5,
-        "reason": "用量多且按真实调用次数计费；高效版 199 元即享 GLM-5.2，速通版 699 元聚焦三大顶级模型。"
+        "score": 3,
+        "reason": "已下架低价套餐，只剩下高效版（199元）和速通版（699元），199比较有性价比但限购，699元套餐性价比低。"
       },
       "models": {
         "score": 4,
-        "reason": "高效版支持 GLM-5.2 与 DeepSeek-V4；速通版聚焦 GLM-5.2 / DeepSeek-V4-Pro / Kimi-K2.7-Code。"
+        "reason": "GLM-5.2(500K上下文)、 DeepSeek-V4-Pro等旗舰模型。"
       },
       "stability": {
         "score": 3,
-        "reason": "GLM-5.2 高峰期比较拥挤，其他模型时段表现尚可。"
+        "reason": "高效版（199元）拥挤，速通版（699元）套餐高峰期拥挤，整体可用性一般。"
       }
     },
     "tags": [],
@@ -114,19 +116,20 @@
   {
     "id": "opencode",
     "name": "OpenCode",
-    "rating": 4,
+    "rating": 5,
+    "summary": "模型支持全，调用抵扣透明，性价比高，可直接支付宝付款，无需抢购。",
     "dimensions": {
       "value": {
         "score": 5,
-        "reason": "Go 套餐 $10/月（首月 $5），DeepSeek V4 Flash 每月可达约 15.8 万次请求，量大价低。"
+        "reason": "Go 套餐 $10/月（首月 $5），可使用$15~$60额度。DeepSeek V4 Flash 每月可达约 15.8 万次请求，量大价低，细节可见[官方文档](https://opencode.ai/docs/go/)。"
       },
       "models": {
         "score": 5,
-        "reason": "聚合 GLM-5.2、Kimi-K3、Kimi-K2.7-Code、MiniMax-M3、Qwen-3.7-Max、DeepSeek-V4 等主流模型。"
+        "reason": "聚合 Kimi-K3、GLM-5.2、MiniMax-M3、Qwen-3.7-Max、DeepSeek-V4 Pro/Flash 等模型，新模型上线及时。"
       },
       "stability": {
-        "score": 4,
-        "reason": "多模型聚合平台运行稳定，偶发国际线路波动但整体可用。"
+        "score": 5,
+        "reason": "各模型基本都是官方通道，稳定性强，较少出现不可用。"
       }
     },
     "tags": [],
@@ -136,18 +139,19 @@
     "id": "xiaomi-mimo",
     "name": "小米·MiMo",
     "rating": 4,
+    "summary": "各方面可以参考 DeepSeek，定价、模型定位、模型能力都和DeepSeek相似。有TokenPlan套餐，比直接调用模型略便宜一些，模型能力比DeepSeek略低一点。",
     "dimensions": {
       "value": {
-        "score": 4,
-        "reason": "MiMo-V2.5-Pro 能力与 DeepSeek 持平，按量价格与官方一致，适合不想抢 Coding Plan 的用户。"
+        "score": 5,
+        "reason": "购买TokenPlan套餐，价格比DeepSeek直接调用的价格还要便宜一些，性价比高。"
       },
       "models": {
-        "score": 3,
-        "reason": "以 MiMo 系列为主，模型覆盖面窄于多模型聚合平台。"
+        "score": 4,
+        "reason": "Mimo-V2.5-Pro/Mimo-V2.5对比DeepSeek-V4-Pro/Flash，Coding能力基本相当，Agent能力略低一些。"
       },
       "stability": {
-        "score": 4,
-        "reason": "小米官方按量通道，日常调用稳定，适合作为 DeepSeek 平替。"
+        "score": 5,
+        "reason": "官方服务，稳定性强。用户量没那么大，高峰期稳定性好。"
       }
     },
     "tags": [],
@@ -157,18 +161,19 @@
     "id": "kimi",
     "name": "Kimi",
     "rating": 4,
+    "summary": "拥有 Kimi-K3 国产最强模型。已暂停新用户套餐购买。发布后 Kimi-K3 后，变得比较拥挤且用量有所下降。新会员体系上天一天后又撤回，估计后续要调价。",
     "dimensions": {
       "value": {
         "score": 3,
-        "reason": "支持 Kimi-K3 / Kimi-K2.7-Code，但实测用量较其他家略少，性价比中规中矩。"
+        "reason": "Kimi-K3 发布后，用量有所下降，Allegretto和Allegro套餐性价相对较高，入门Andante套餐性价比低。新Coding会员体系上天一天后又撤回，估计后续要调价，性价比进一步降低。"
       },
       "models": {
-        "score": 4,
-        "reason": "已支持 Kimi-K3，K2.7-Code 代码能力均衡，支持多模态图像输入与专业数据库实验功能。"
+        "score": 5,
+        "reason": "支持 Kimi-K3 国产最强模型，适合编程场景。"
       },
       "stability": {
         "score": 4,
-        "reason": "月之暗面官方服务稳定，多模态与实验性功能持续迭代。"
+        "reason": "官方服务，稳定性强。Kimi-K3发布后高峰时段可能会有繁忙，整体可用性尚可。"
       }
     },
     "tags": [],
