@@ -137,29 +137,6 @@
     "platformStatus": "paused"
   },
   {
-    "id": "aliyun-bailian",
-    "name": "阿里·百炼",
-    "rating": 4,
-    "summary": "Coding Plan 性价比高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。",
-    "detail": "Coding Plan 性价比很高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。CodingPlan和TokenPlan的抵扣规则均不透明。",
-    "dimensions": {
-      "value": {
-        "score": 4,
-        "reason": "Coding Plan 性价比比肩Minimax，但不放量；Token Plan开放购买，性价比尚可。Qwen3.8-Max有限时1折活动。夜间有额外2折优惠。"
-      },
-      "models": {
-        "score": 4,
-        "reason": "TokenPlan 支持自家最新 Qwen-3.8-Max，Qwen-3.7-Max/Plus 模型。CodingPlan支持Qwen-3.7-Plus等模型。除了自家Qwen模型，对其他家模型支持稍差。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "官方服务，稳定性强。"
-      }
-    },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
     "id": "deepseek-official",
     "name": "DeepSeek",
     "rating": 5,
@@ -208,23 +185,23 @@
     "action": "https://api.dreamfree.space/c/s/cpyqgongji"
   },
   {
-    "id": "xiaomi-mimo",
-    "name": "小米·MiMo",
+    "id": "aliyun-bailian",
+    "name": "阿里·百炼",
     "rating": 4,
-    "summary": "定价、模型定位、模型能力都和DeepSeek相似。价格比DeepSeek略低一些，能力也略低一点。",
-    "detail": "各方面可以参考 DeepSeek，定价、模型定位、模型能力都和DeepSeek相似。有TokenPlan套餐，比直接调用模型略便宜一些，模型能力比DeepSeek略低一点。",
+    "summary": "Coding Plan 性价比高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。",
+    "detail": "Coding Plan 性价比很高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。CodingPlan和TokenPlan的抵扣规则均不透明。",
     "dimensions": {
       "value": {
-        "score": 5,
-        "reason": "购买TokenPlan套餐，价格比DeepSeek直接调用的价格还要便宜一些，性价比高。"
+        "score": 4,
+        "reason": "Coding Plan 性价比比肩Minimax，但不放量；Token Plan开放购买，性价比尚可。Qwen3.8-Max有限时1折活动。夜间有额外2折优惠。"
       },
       "models": {
         "score": 4,
-        "reason": "Mimo-V2.5-Pro/Mimo-V2.5对比DeepSeek-V4-Pro/Flash，Coding能力基本相当，Agent能力略低一些。"
+        "reason": "TokenPlan 支持自家最新 Qwen-3.8-Max，Qwen-3.7-Max/Plus 模型。CodingPlan支持Qwen-3.7-Plus等模型。除了自家Qwen模型，对其他家模型支持稍差。"
       },
       "stability": {
         "score": 5,
-        "reason": "官方服务，稳定性强。用户量没那么大，高峰期稳定性好。"
+        "reason": "官方服务，稳定性强。"
       }
     },
     "tags": [],
@@ -248,6 +225,103 @@
       "stability": {
         "score": 5,
         "reason": "中小云厂商，但算力充足运行稳定，很少遇到拥挤。"
+      }
+    },
+    "tags": [],
+    "platformStatus": "open"
+  },
+  {
+    "id": "codex",
+    "name": "Codex",
+    "rating": 5,
+    "summary": "OpenAI 官方会员，性价比很高，用量很大。美中不足是需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
+    "detail": "OpenAI 官方会员，性价比很高，用量很大。官方取消了5小时限制，只有周限制，使用更加灵活。并且还经常重置额度和给充值机会。\n需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
+    "dimensions": {
+      "value": {
+        "score": 5,
+        "reason": "性价比很高，尤其Pro x20夯爆了。官方取消了没有5小时限制，只有周限制，使用更加灵活。并且还经常重置额度和给充值机会。如使用GPT-5.6-Terra更有x2的额度。"
+      },
+      "models": {
+        "score": 5,
+        "reason": "GPT-5.6-Sol，模型顶尖。"
+      },
+      "stability": {
+        "score": 5,
+        "reason": "OpenAI 官方基础设施，稳定性行业标杆。"
+      }
+    },
+    "tags": [
+      "外币支付"
+    ],
+    "platformStatus": "open"
+  },
+  {
+    "id": "claude",
+    "name": "Claude",
+    "rating": 4,
+    "summary": "Anthropic 官方会员，性价比高，支持多模型。国内使用限时比较多，除需要外币信用卡或者Paypal外，还需要境外手机号，和境外网络环境。",
+    "detail": "Anthropic 官方会员，性价比高，支持多模型。国内使用限时比较多，除需要外币信用卡或者Paypal外，还需要境外手机号，和境外网络环境。中国大陆使用难度很高。",
+    "dimensions": {
+      "value": {
+        "score": 5,
+        "reason": ""
+      },
+      "models": {
+        "score": 5,
+        "reason": "Fable-5, Opus-5, Sonnect-5 等 Claude 系列模型，模型顶尖。"
+      },
+      "stability": {
+        "score": 3,
+        "reason": "Anthropic 官方 API，本身稳定性没问题。但需要境外网络环境，从中国大陆访问限制比较多。"
+      }
+    },
+    "tags": [
+      "外币支付"
+    ],
+    "platformStatus": "open"
+  },
+  {
+    "id": "ollama",
+    "name": "Ollama",
+    "rating": 4,
+    "summary": "Ollama 官方推出的云端模型会员，支持模型全，性价比很高。但需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
+    "dimensions": {
+      "value": {
+        "score": 5,
+        "reason": "性价比很高，[查看模型用量对比](index.html?view=plans)"
+      },
+      "models": {
+        "score": 5,
+        "reason": "模型强覆盖广，支持 Kimi、GLM、DeepSeek、Qwen、Gemini 等各家开源模型，即将支持Kimi-K3。"
+      },
+      "stability": {
+        "score": 4,
+        "reason": "稳定性尚可。高峰时段可能略拥挤，整体可用性尚可。"
+      }
+    },
+    "tags": [
+      "外币支付"
+    ],
+    "platformStatus": "open"
+  },
+  {
+    "id": "xiaomi-mimo",
+    "name": "小米·MiMo",
+    "rating": 4,
+    "summary": "定价、模型定位、模型能力都和DeepSeek相似。价格比DeepSeek略低一些，能力也略低一点。",
+    "detail": "各方面可以参考 DeepSeek，定价、模型定位、模型能力都和DeepSeek相似。有TokenPlan套餐，比直接调用模型略便宜一些，模型能力比DeepSeek略低一点。",
+    "dimensions": {
+      "value": {
+        "score": 5,
+        "reason": "购买TokenPlan套餐，价格比DeepSeek直接调用的价格还要便宜一些，性价比高。"
+      },
+      "models": {
+        "score": 4,
+        "reason": "Mimo-V2.5-Pro/Mimo-V2.5对比DeepSeek-V4-Pro/Flash，Coding能力基本相当，Agent能力略低一些。"
+      },
+      "stability": {
+        "score": 5,
+        "reason": "官方服务，稳定性强。用户量没那么大，高峰期稳定性好。"
       }
     },
     "tags": [],
@@ -339,6 +413,28 @@
     },
     "tags": [],
     "platformStatus": "limited"
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "rating": 3,
+    "summary": "GitHub 官方会员，支持多模型，但性价比低，不推荐。",
+    "dimensions": {
+      "value": {
+        "score": 2,
+        "reason": "现在按使用量计费，额度非常少，已经完全无性价比。"
+      },
+      "models": {
+        "score": 5,
+        "reason": "聚合 GPT、Claude、Grok、Gemini 等多厂商模型，模型更新及时，涵盖广。"
+      },
+      "stability": {
+        "score": 5,
+        "reason": "GitHub 官方服务，与 IDE 深度集成，稳定性出色。"
+      }
+    },
+    "tags": [],
+    "platformStatus": "open"
   },
   {
     "id": "iflytek",
@@ -446,96 +542,6 @@
       }
     },
     "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "codex",
-    "name": "Codex",
-    "rating": 5,
-    "summary": "OpenAI 官方会员，性价比很高，用量很大。美中不足是需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
-    "detail": "OpenAI 官方会员，性价比很高，用量很大。官方取消了5小时限制，只有周限制，使用更加灵活。并且还经常重置额度和给充值机会。\n需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
-    "dimensions": {
-      "value": {
-        "score": 5,
-        "reason": "性价比很高，尤其Pro x20夯爆了。官方取消了没有5小时限制，只有周限制，使用更加灵活。并且还经常重置额度和给充值机会。如使用GPT-5.6-Terra更有x2的额度。"
-      },
-      "models": {
-        "score": 5,
-        "reason": "GPT-5.6-Sol，模型顶尖。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "OpenAI 官方基础设施，稳定性行业标杆。"
-      }
-    },
-    "tags": ["外币支付"],
-    "platformStatus": "open"
-  },
-  {
-    "id": "claude",
-    "name": "Claude",
-    "rating": 4,
-    "summary": "Anthropic 官方会员，性价比高，支持多模型。国内使用限时比较多，除需要外币信用卡或者Paypal外，还需要境外手机号，和境外网络环境。",
-    "detail": "Anthropic 官方会员，性价比高，支持多模型。国内使用限时比较多，除需要外币信用卡或者Paypal外，还需要境外手机号，和境外网络环境。中国大陆使用难度很高。",
-    "dimensions": {
-      "value": {
-        "score": 5,
-        "reason": ""
-      },
-      "models": {
-        "score": 5,
-        "reason": "Fable-5, Opus-5, Sonnect-5 等 Claude 系列模型，模型顶尖。"
-      },
-      "stability": {
-        "score": 3,
-        "reason": "Anthropic 官方 API，本身稳定性没问题。但需要境外网络环境，从中国大陆访问限制比较多。"
-      }
-    },
-    "tags": ["外币支付"],
-    "platformStatus": "open"
-  },
-  {
-    "id": "github",
-    "name": "GitHub",
-    "rating": 3,
-    "summary": "GitHub 官方会员，支持多模型，但性价比低，不推荐。",
-    "dimensions": {
-      "value": {
-        "score": 2,
-        "reason": "现在按使用量计费，额度非常少，已经完全无性价比。"
-      },
-      "models": {
-        "score": 5,
-        "reason": "聚合 GPT、Claude、Grok、Gemini 等多厂商模型，模型更新及时，涵盖广。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "GitHub 官方服务，与 IDE 深度集成，稳定性出色。"
-      }
-    },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "ollama",
-    "name": "Ollama",
-    "rating": 4,
-    "summary": "Ollama 官方推出的云端模型会员，支持模型全，性价比很高。但需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
-    "dimensions": {
-      "value": {
-        "score": 5,
-        "reason": "性价比很高，[查看模型用量对比](index.html?view=plans)"
-      },
-      "models": {
-        "score": 5,
-        "reason": "模型强覆盖广，支持 Kimi、GLM、DeepSeek、Qwen、Gemini 等各家开源模型，即将支持Kimi-K3。"
-      },
-      "stability": {
-        "score": 4,
-        "reason": "稳定性尚可。高峰时段可能略拥挤，整体可用性尚可。"
-      }
-    },
-    "tags": ["外币支付"],
     "platformStatus": "open"
   },
   {

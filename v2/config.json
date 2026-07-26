@@ -87,25 +87,25 @@
           "rating": 5,
           "reasons": [
             "无需抢购。",
-            "支持GLM-5.2，是除了Kimi-K3之外，国内最强的代码模型。Kimi不放名额了。+1",
-            "用量与国内版完全一致。价格大约为国内版两倍左右。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享9折。"
+            "支持GLM-5.2，国内最强的代码模型之一。+1",
+            "用量与国内版完全一致，价格大约为国内版两倍左右。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享额外9折。"
           ]
         },
         {
           "name": "MiniMax",
           "rating": 5,
           "reasons": [
+            "性价比依然是所有平台最高。",
             "支持MiniMax-M3模型，模型支持多模态。",
-            "额度依然是所有平台最高。",
-            "适合自动化任务、Agent使用、高强度Coding。"
+            "适合自动化任务、Agent使用、酒馆、高强度Coding。"
           ]
         },
         {
           "name": "字节·方舟",
           "rating": 5,
           "reasons": [
-            "目前2.5折，且有为期一个月的用量2.5倍活动，折算后短期性价比显著提升。+1",
-            "支持GLM-5.2，DeepSeek-V4，MiniMax-M3，Kimi-K2.6，Kimi-K2.7-Code，Kimi-K3。唯一一家同时支持四家最新模型的平台。+1",
+            "目前2.5折，且有为期一个月的用量2.5倍活动，折算后短期性价比显著提升。",
+            "支持GLM-5.2，DeepSeek-V4，MiniMax-M3，Kimi-K3。",
             "当前需抢购"
           ]
         },
@@ -114,7 +114,7 @@
           "rating": 5,
           "reasons": [
             "支持Kimi-K3、GLM-5.2、DeepSeek V4 Pro等最新模型。",
-            "但只有go这一种套餐"
+            "但只有go这一种套餐，不够重度使用。"
           ] 
         }
       ]
