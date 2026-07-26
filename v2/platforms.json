@@ -20,7 +20,7 @@
     "tags": [
       "热门模型"
     ],
-    "platformStatus": "limited"
+    "platformStatus": "paused"
   },
   {
     "id": "zhipu-intl",
@@ -180,7 +180,7 @@
       }
     },
     "tags": [],
-    "platformStatus": "open"
+    "platformStatus": "paused"
   },
   {
     "id": "youyun",
