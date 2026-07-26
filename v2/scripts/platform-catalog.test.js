@@ -538,7 +538,7 @@ describe('validatePlatformRecords detail', () => {
 
 describe('payg pricing', () => {
   const platforms = [
-    samplePlatform({ id: 'deepseek-official', name: 'DeepSeek 官方' }),
+    samplePlatform({ id: 'deepseek-official', name: 'DeepSeek' }),
     samplePlatform({ id: 'gongji', name: '共继算力' })
   ];
 
@@ -569,7 +569,7 @@ describe('payg pricing', () => {
     const html = buildPlatformCardHtml(
       samplePlatform({
         id: 'deepseek-official',
-        name: 'DeepSeek 官方',
+        name: 'DeepSeek',
         action: 'https://platform.deepseek.com/'
       }),
       [],
@@ -605,7 +605,7 @@ describe('payg pricing', () => {
 
 describe('flattenPaygRows', () => {
   const platforms = [
-    samplePlatform({ id: 'deepseek-official', name: 'DeepSeek 官方', rating: 4 }),
+    samplePlatform({ id: 'deepseek-official', name: 'DeepSeek', rating: 4 }),
     samplePlatform({ id: 'gongji', name: '共继算力', rating: 3 })
   ];
   const payg = {

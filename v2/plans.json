@@ -2580,15 +2580,15 @@
     "quarterlyPrice": "-",
     "yearlyPrice": 200,
     "models": [
-      "Kimi-K2.6",
+      "GLM-5.2",
       "GLM-5.1",
+      "Kimi-K2.6-Code",
+      "Kimi-K2.6",
       "DeepSeek-V4-Pro",
       "DeepSeek-V4-Flash",
-      "MiniMax-M2.7",
-      "Qwen-3-Coder",
-      "Qwen-3-Coder-next",
-      "Gemini-3-Flash-Preview",
-      "Mistral-Large-3"
+      "MiniMax-M3",
+      "Qwen-3.5",
+      "Gemini-3-Flash-Preview"
     ],
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
@@ -2616,15 +2616,15 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "Kimi-K2.6",
+      "GLM-5.2",
       "GLM-5.1",
+      "Kimi-K2.6-Code",
+      "Kimi-K2.6",
       "DeepSeek-V4-Pro",
       "DeepSeek-V4-Flash",
-      "MiniMax-M2.7",
-      "Qwen-3-Coder",
-      "Qwen-3-Coder-next",
-      "Gemini-3-Flash-Preview",
-      "Mistral-Large-3"
+      "MiniMax-M3",
+      "Qwen-3.5",
+      "Gemini-3-Flash-Preview"
     ],
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",

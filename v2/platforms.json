@@ -161,7 +161,7 @@
   },
   {
     "id": "deepseek-official",
-    "name": "DeepSeek 官方",
+    "name": "DeepSeek",
     "rating": 5,
     "summary": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。",
     "detail": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。之前官方说预计在 7 月中旬起推出V4正式版本，并伴随涨价，但仍没有最终确定。",
