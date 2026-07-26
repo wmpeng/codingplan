@@ -36,6 +36,13 @@
     ],
     "models": [
       {
+        "name": "Kimi-K3",
+        "input": 16,
+        "cache": 1.6,
+        "output": 80,
+        "note": "官方 8 折"
+      },
+      {
         "name": "DeepSeek-V4-Pro",
         "input": 2.4,
         "cache": 0.02,
