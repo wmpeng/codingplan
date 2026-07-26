@@ -140,7 +140,7 @@
         if (!isPlainPrimaryClick(e)) return;
         e.preventDefault();
         e.stopPropagation();
-        setView(btn.getAttribute('data-main-view'), { reason: 'tab', scroll: false });
+        setView(btn.getAttribute('data-main-view'), { reason: 'tab', scroll: true });
       });
     }
 
