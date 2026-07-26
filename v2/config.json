@@ -120,36 +120,112 @@
       ]
     },
     {
-      "title": "按量计费推荐",
-      "subtitle": "不想抢固定套餐或 DeepSeek 涨价后想灵活按量，可考虑这些平台",
+      "title": "包含 GLM-5.2",
+      "subtitle": "前几个不用抢，后几个得抢",
       "items": [
         {
-          "name": "DeepSeek官方",
-          "rating": 5,
-          "action": "https://platform.deepseek.com/",
+          "name": "智谱国际版",
+          "rating": 4,
           "reasons": [
-            "原生DeepSeek，支持DeepSeek-V4-Pro。",
-            "目前价格[输入3元/M，缓存0.025元/M，输出6元/M](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)。",
-            "7月中旬引入峰谷计费，[高峰时段价格翻倍](https://www.ithome.com/0/970/123.htm)。"
+            "国际版支持GLM-5.2",
+            "用量与国内版完全一致。价格折算后大约为国内版两倍+。"
+          ]
+        },
+        {
+          "name": "OpenCode",
+          "rating": 4,
+          "reasons": [
+            "Go 套餐已支持 GLM-5.2，首月半价 $5。",
+            "多模型聚合平台，支持 DeepSeek-V4-Pro/Flash、MiMo、Kimi 等。",
+            "可支付宝付款。"
+          ]
+        },
+        {
+          "name": "优云智算",
+          "rating": 4,
+          "reasons": [
+            "Coding Plan 全档位支持 GLM-5.2。",
+            "限时优惠倍率。",
+            "档位丰富，从入门￥49开始就支持GLM-5.2，适合体验。"
           ]
         },
         {
           "name": "共继算力",
-          "rating": 4,
+          "rating": 5,
           "action": "https://api.dreamfree.space/c/s/cpyqgongji",
           "reasons": [
-            "支持DeepSeek-V4-Pro模型，目前平台人数不多，稳定性较好。",
-            "API价格为官方**8折**，即DeepSeek-V4-Pro输入2.4元/M，缓存0.02元/M，输出4.8元/M。官方7月涨价后，此平台价格优势更加明显。",
-            "一定要通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入，才可锁定**8折调用资格**和额外**20元调用额度**。加[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)了解更多。",
-            "还支持GLM-5.2，Kimi-K2.6，Qwen-3.7-Max等常见模型。"
+            "按量调用，支持 GLM-5.2。",
+            "同时支持 Kimi-K3、DeepSeek-V4-Pro 等，无需抢购。",
+            "务必通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入以锁定折扣与额外额度。"
           ]
         },
         {
-          "name": "小米·MiMo",
-          "rating": 4,
-          "action": "https://api.dreamfree.space/c/s/cpyqmimo",
+          "name": "智谱AI",
+          "rating": 5,
           "reasons": [
-            "Mimo-V2.5-Pro方面能力均衡，可作为DeepSeek的平替，价格和DeepSeek一致。"
+            "支持GLM-5.2模型。+2",
+            "模型能力T0级别，尤其适合代码场景，Opus平替优于Opus4.6。",
+            "需要抢购，**[加飞书群](https://api.dreamfree.space/c/s/cpfeishulink)提供免费代抢**。*目前官方不放名额，暂停中。"
+          ]
+        },
+        {
+          "name": "字节·方舟",
+          "rating": 5,
+          "reasons": [
+            "唯一同时支持GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3、Kimi-K3 的全家桶平台。",
+            "目前2.5折 + 用量2.5倍活动，性价比拉满。",
+            "当前需抢购"
+          ]
+        },
+        {
+          "name": "讯飞·星火",
+          "rating": 3,
+          "reasons": [
+            "高效版（199元）限购中，速通版（699元）开放购买，已支持 GLM-5.2(500K)。但GLM-5.2比较拥挤，其他模型还好。",
+            "无需抢购，随时可下单，智谱抢不到的最佳平替。",
+            "Kimi-2.7-Code、DeepSeek-V4-Pro 也同时支持，模型覆盖面广。"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "包含 Kimi-3",
+      "subtitle": "国内首家支持 Kimi-K3 满血版",
+      "items": [
+        {
+          "name": "Kimi",
+          "rating": 5,
+          "reasons": [
+            "支持 Kimi-K3。",
+            "官方原生平台，模型体验最稳定。"
+          ]
+        },
+        {
+          "name": "OpenCode",
+          "rating": 4,
+          "reasons": [
+            "OpenCode Go 套餐支持 Kimi-K3。",
+            "同时支持 GLM-5.2、DeepSeek-V4-Flash、Qwen-3.7-Max 等 150+ 模型。",
+            "海外专线，延迟低，无需抢购。"
+          ]
+        },
+        {
+          "name": "共继算力",
+          "rating": 5,
+          "action": "https://api.dreamfree.space/c/s/cpyqgongji",
+          "reasons": [
+            "按量调用，支持 Kimi-K3。",
+            "同时支持 GLM-5.2、DeepSeek-V4-Pro 等，无需抢购。",
+            "务必通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入以锁定折扣与额外额度。"
+          ]
+        },
+        {
+          "name": "字节·方舟",
+          "rating": 5,
+          "reasons": [
+            "Token Plan 全档位（Small/Medium/Large/Max）支持 Kimi-K3。",
+            "同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。",
+            "Coding Plan 当前仅支持 Kimi-K2.7-Code，需抢购；Token Plan 现货。"
           ]
         }
       ]
