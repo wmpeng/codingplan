@@ -73,7 +73,7 @@
     "id": "bytedance-ark",
     "name": "字节·方舟",
     "rating": 5,
-    "summary": "CodingPlan需抢购，但每天确实会放号。同时支持智谱GLM、DeepSeek、MiniMax、Kimi各家模型。8月8日前，有套餐2.5折优惠，叠加部分模型用量4倍活动，性价比超高。",
+    "summary": "需抢购，但确实会放号。支持智谱GLM、DeepSeek、MiniMax、Kimi各家模型。目前有套餐2.5折优惠，叠加部分模型用量4倍活动，性价比超高。",
     "detail": "CodingPlan需抢购，但每天确实会放号，可以加方舟Coding用户群不定时放号前会群里说。同时支持智谱GLM、DeepSeek、MiniMax、Kimi各家模型。8月8日前，有套餐2.5折优惠，叠加部分模型用量4倍活动，性价比超高。",
     "dimensions": {
       "value": {
@@ -140,7 +140,8 @@
     "id": "xiaomi-mimo",
     "name": "小米·MiMo",
     "rating": 4,
-    "summary": "各方面可以参考 DeepSeek，定价、模型定位、模型能力都和DeepSeek相似。有TokenPlan套餐，比直接调用模型略便宜一些，模型能力比DeepSeek略低一点。",
+    "summary": "定价、模型定位、模型能力都和DeepSeek相似。价格比DeepSeek略低一些，能力也略低一点。",
+    "detail": "各方面可以参考 DeepSeek，定价、模型定位、模型能力都和DeepSeek相似。有TokenPlan套餐，比直接调用模型略便宜一些，模型能力比DeepSeek略低一点。",
     "dimensions": {
       "value": {
         "score": 5,
@@ -184,7 +185,8 @@
     "id": "youyun",
     "name": "优云智算",
     "rating": 4,
-    "summary": "所有套餐（￥49-￥999）套餐均支持GLM-5.2。当前适合作为使用GLM-5.2的平台购买。优点是按照真实接口调用量计费，且模型倍率透明，同时GLM-5.2限时优惠倍率；缺点是套餐包含的调用量较少。",
+    "summary": "支持GLM-5.2。按照真实接口调用量计费，且模型倍率透明，但包含的调用量较少。",
+    "detail": "所有套餐（￥49-￥999）均支持GLM-5.2。当前适合作为使用GLM-5.2的平台购买。优点是按照真实接口调用量计费，且模型倍率透明，同时GLM-5.2限时优惠倍率；缺点是套餐包含的调用量较少。",
     "dimensions": {
       "value": {
         "score": 4,
@@ -206,7 +208,8 @@
     "id": "aliyun-bailian",
     "name": "阿里·百炼",
     "rating": 4,
-    "summary": "Coding Plan 性价比很高但也不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。",
+    "summary": "Coding Plan 性价比高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。",
+    "detail": "Coding Plan 性价比很高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。CodingPlan和TokenPlan的抵扣规则均不透明。",
     "dimensions": {
       "value": {
         "score": 5,
