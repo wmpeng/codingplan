@@ -48,7 +48,7 @@ describe('buildCompositePriceChartItems', () => {
     assert.equal(items[0].price, 0.4);
     assert.equal(items[1].color, items[2].color);
     assert.notEqual(items[0].color, items[1].color);
-    assert.equal(formatCompositePriceLabel(items[0].price), '¥0.40');
+    assert.equal(formatCompositePriceLabel(items[0].price), '￥0.40');
   });
 
   it('includes discontinued when present in input list', () => {

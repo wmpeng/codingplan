@@ -1475,7 +1475,7 @@
         function formatPricePerMillionToken(plan) {
             const value = getPricePerMillionToken(plan);
             if (value === null) return '-';
-            return `¥${value.toFixed(2)} / M`;
+            return `￥${value.toFixed(2)}/M Token`;
         }
 
 

@@ -46,7 +46,7 @@
       : DEFAULT_USD_TO_CNY_RATE;
   }
 
-  /** 与套餐表「每 M Token 综合价格」同口径：月费(人民币) / 实测月 Token(M) */
+  /** 与套餐表「综合单价」同口径：月费(人民币) / 实测月 Token(M) */
   function getPlanCompositePriceCny(plan, usdToCnyRate) {
     if (!plan || typeof plan !== 'object') return null;
     const monthly = plan.monthlyPrice;
@@ -78,7 +78,7 @@
 
   function formatCompositePriceLabel(value) {
     if (typeof value !== 'number' || !Number.isFinite(value)) return '-';
-    return `¥${value.toFixed(2)}`;
+    return `￥${value.toFixed(2)}`;
   }
 
   function buildAxisLabel(plan) {
@@ -291,7 +291,7 @@
             `<div style="min-width:180px">` +
             `<div style="font-size:14px;font-weight:800;margin-bottom:6px;">${escapeHtml(data.vendor)} · ${escapeHtml(data.plan)}</div>` +
             `<div style="color:#425065;margin-bottom:4px;">${escapeHtml(data.type || '')}</div>` +
-            `<div>每 M Token 综合价格：<strong>${escapeHtml(formatCompositePriceLabel(data.value))}</strong></div>` +
+            `<div>综合单价：<strong>${escapeHtml(formatCompositePriceLabel(data.value))}/M Token</strong></div>` +
             pinned +
             offline +
             `</div>`
@@ -353,7 +353,7 @@
       series: [
         {
           type: 'bar',
-          name: '每 M Token 综合价格',
+          name: '综合单价',
           data: values,
           barMaxWidth: 22,
           label: {
