@@ -1,3 +1,3 @@
 var MONITOR_CONFIG = MONITOR_CONFIG || {
-    apiBase: 'https://api.dreamfree.space/vc'
+    apiBase: 'https://api.dreamfree.space/vc_d'
 };
