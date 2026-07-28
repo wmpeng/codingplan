@@ -1,0 +1,75 @@
+{
+  "modelOrder": [
+    "DeepSeek-V4-Pro",
+    "DeepSeek-V4-Flash",
+    "GLM-5.2",
+    "Kimi-K2.6",
+    "Qwen-3.7-Max"
+  ],
+  "deepseek-official": {
+    "currency": "¥",
+    "unit": "per_m_tokens",
+    "notes": [
+      "7 月中旬起引入峰谷计费，高峰时段价格翻倍"
+    ],
+    "models": [
+      {
+        "name": "DeepSeek-V4-Pro",
+        "input": 3,
+        "cache": 0.025,
+        "output": 6
+      },
+      {
+        "name": "DeepSeek-V4-Flash",
+        "input": null,
+        "cache": null,
+        "output": null,
+        "note": "以官网定价页为准"
+      }
+    ]
+  },
+  "gongji": {
+    "currency": "¥",
+    "unit": "per_m_tokens",
+    "notes": [
+      "须通过邀请链接进入，方可锁定 8 折调用资格与额外额度"
+    ],
+    "models": [
+      {
+        "name": "Kimi-K3",
+        "input": 16,
+        "cache": 1.6,
+        "output": 80,
+        "note": "官方 8 折"
+      },
+      {
+        "name": "DeepSeek-V4-Pro",
+        "input": 2.4,
+        "cache": 0.02,
+        "output": 4.8,
+        "note": "官方 8 折"
+      },
+      {
+        "name": "GLM-5.2",
+        "input": null,
+        "cache": null,
+        "output": null,
+        "note": "以平台公示为准"
+      },
+      {
+        "name": "Kimi-K2.6",
+        "input": null,
+        "cache": null,
+        "output": null,
+        "note": "以平台公示为准"
+      },
+      {
+        "name": "Qwen-3.7-Max",
+        "input": null,
+        "cache": null,
+        "output": null,
+        "note": "以平台公示为准"
+      }
+    ]
+  }
+}

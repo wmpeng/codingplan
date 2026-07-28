@@ -101,3 +101,12 @@ assets/image*.png
 # Preview files
 .preview
 .codegraph
+
+# local playwright for smoke
+.dev/_pw/
+
+
+# local runtime configs
+**/*.local.js
+monitor/*.local.js
+

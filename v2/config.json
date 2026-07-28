@@ -1,0 +1,556 @@
+{
+  "header": {
+    "title": "AI Coding Plan 平台评测与对比",
+    "updateDate": "更新日期 2026.7.27 | 百度·千帆 Coding Plan 升级为 Token Plan（Mini / Lite / Pro / Max）",
+    "subtitle": "31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比。<br>涵盖DeepSeek V4，GLM-5.2，Qwen-3.7-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
+    "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
+    "watermarkUrl": "www.codingplan.fyi",
+    "entry": {
+      "url": "https://github.com/wmpeng/codingplan/issues",
+      "text": "Github 反馈"
+    }
+  },
+  "usdToCnyRate": 6.8,
+  "platformCatalog": {
+    "defaultSelectedTags": [],
+    "operationalTags": [
+    ],
+    "defaultPlatformStatusMax": "limited",
+    "derivedTags": [
+      {
+        "id": "high-value",
+        "label": "性价比高",
+        "rule": {
+          "dimension": "value",
+          "minScore": 4
+        }
+      },
+      {
+        "id": "broad-models",
+        "label": "模型强",
+        "rule": {
+          "dimension": "models",
+          "minScore": 4
+        }
+      },
+      {
+        "id": "stable",
+        "label": "可用性好",
+        "rule": {
+          "dimension": "stability",
+          "minScore": 4
+        }
+      }
+    ]
+  },
+  "feedback": {
+    "triggerText": "加入用户群获取最新消息",
+    "dataIssue": {
+      "text": "Github 讨论区",
+      "url": "https://github.com/wmpeng/codingplan/discussions"
+    },
+    "feedbackEntry": {
+      "text": "点此加入飞书讨论群",
+      "url": "https://api.dreamfree.space/c/s/cpfeishulink"
+    },
+    "group": {
+      "title": "飞书讨论群",
+      "qrImage": "assets/feishu_group_3.png",
+      "qrAlt": "飞书群二维码"
+    }
+  },
+  "community": {
+    "eyebrow": "加入社群",
+    "title": "进群获取价格变化和选型反馈",
+    "description": "扫码加入飞书群，第一时间看价格/限购提醒，也能聊套餐选型和实测体验。",
+    "status": "",
+    "highlights": [
+      "价格/限购提醒",
+      "选型与使用反馈"
+    ],
+    "secondaryAction": {
+      "text": "去 GitHub 讨论区",
+      "url": "https://github.com/wmpeng/codingplan/discussions"
+    },
+    "footnote": "扫码进飞书群，GitHub 可补充反馈。",
+    "qrcode": "assets/feishu_group_3.png",
+    "qrAlt": "飞书群二维码",
+    "qrHint": "扫码即可进群"
+  },
+  "recommendationGroups": [
+    {
+      "title": "综合推荐",
+      "subtitle": "各维度综合评估，最值得入手的几家。智谱和Kimi暂时不开放了，暂时不推荐了",
+      "items": [
+        {
+          "name": "MiniMax",
+          "rating": 5,
+          "reasons": [
+            "性价比依然是所有平台最高",
+            "支持MiniMax-M3模型，支持多模态",
+            "适合自动化、Agent、酒馆、高强度Coding等高强度场景"
+          ]
+        },
+        {
+          "name": "智谱国际版",
+          "rating": 5,
+          "reasons": [
+            "无需抢购",
+            "支持GLM-5.2，国内最强的代码模型之一",
+            "用量与国内版完全一致，价格大约为国内版两倍左右。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享额外9折"
+          ]
+        },
+        {
+          "name": "字节·方舟",
+          "rating": 5,
+          "reasons": [
+            "目前2.5折，且有用量4倍活动",
+            "支持GLM-5.2，DeepSeek-V4，MiniMax-M3，Kimi-K3",
+            "当前需抢购"
+          ]
+        },
+        {
+          "name": "OpenCode",
+          "rating": 5,
+          "reasons": [
+            "支持Kimi-K3、GLM-5.2、DeepSeek-V4-Pro等最新模型",
+            "首月半价$5。但只有go这一种套餐，不够重度使用",
+            "无需抢购，可支付宝付款"
+          ] 
+        }
+      ]
+    },
+    {
+      "title": "包含 GLM-5.2",
+      "subtitle": "推荐几个不需要抢购的平台，智谱官方不放量，这里就不推荐了",
+      "items": [
+        {
+          "name": "OpenCode",
+          "rating": 5,
+          "reasons": [
+            "支持GLM-5.2、Kimi-K3、DeepSeek-V4-Pro等最新模型",
+            "首月半价$5。但只有go这一种套餐，够尝鲜，不够重度使用",
+            "无需抢购，可支付宝付款"
+          ]
+        },
+                {
+          "name": "共继算力",
+          "rating": 5,
+          "action": "https://api.dreamfree.space/c/s/cpyqgongji",
+          "reasons": [
+            "按量调用，支持 GLM-5.2、Kimi-K3、DeepSeek-V4-Pro",
+            "平台不拥挤，稳定性高",
+            "通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入注册，可以锁定专属8折折扣与额外￥20额度"
+          ]
+        },
+        {
+          "name": "智谱国际版",
+          "rating": 4,
+          "reasons": [
+            "无需抢购。",
+            "支持GLM-5.2，国内最强的代码模型之一。",
+            "用量与国内版完全一致，价格大约为国内版两倍左右。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享额外9折。"
+          ]
+        },
+        {
+          "name": "优云智算",
+          "rating": 4,
+          "reasons": [
+            "全档位支持 GLM-5.2，且有限时优惠倍率",
+            "用量较少，但真实按照接口调用量计费"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "包含 Kimi-3",
+      "subtitle": "Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用",
+      "items": [
+        {
+          "name": "Kimi",
+          "rating": 5,
+          "reasons": [
+            "官方原生平台，模型体验最稳定，老会员推荐使用",
+            "发布 Kimi-K3 之后，会员停售了，之后应该会启用新的Coding套餐"
+          ]
+        },
+        {
+          "name": "OpenCode",
+          "rating": 5,
+          "reasons": [
+            "支持Kimi-K3、GLM-5.2、DeepSeek-V4-Pro等最新模型",
+            "首月半价$5。但只有go这一种套餐，够尝鲜，不够重度使用",
+            "无需抢购，可支付宝付款"
+          ]
+        },
+        {
+          "name": "共继算力",
+          "rating": 5,
+          "action": "https://api.dreamfree.space/c/s/cpyqgongji",
+          "reasons": [
+            "按量调用，支持 Kimi-K3、GLM-5.2、DeepSeek-V4-Pro",
+            "平台不拥挤，稳定性高",
+            "通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入注册，可以锁定专属8折折扣与额外￥20额度"
+          ]
+        },
+        {
+          "name": "字节·方舟",
+          "rating": 5,
+          "reasons": [
+            "Token Plan 全档位支持 Kimi-K3；Coding Plan暂不支持 Kimi-K3",
+            "同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。",
+            "Coding Plan 需抢购；Token Plan 现货。"
+          ]
+        }
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "name": "智谱AI",
+      "rating": 5,
+      "reasons": [
+        "支持GLM-5.2模型。+2",
+        "模型能力T0级别，尤其适合代码场景，Opus平替综合能力略逊于Opus4.8优于Opus4.6，可见👆上方能力评测。",
+        "需要抢购，**[加飞书群](https://api.dreamfree.space/c/s/cpfeishulink)提供免费代抢**。"
+      ]
+    },
+    {
+      "name": "讯飞·星火",
+      "rating": 5,
+      "reasons": [
+        "高效版已支持 GLM-5.2、DeepSeek-V4-Pro/Flash。+1",
+        "无忧版即支持无次Qwen3.5-35B-A3B（20M/日）。+0.5",
+        "抢不到智谱的平替，无需抢购，高效版（199元）即提供 GLM-5.2，速通版（699元）提供 GLM-5.2/DeepSeek-V4-Pro/Kimi-K2.7-Code 三大顶级模型。用量比较多。+0.5"
+      ]
+    },
+    {
+      "name": "MiniMax",
+      "rating": 5,
+      "reasons": [
+        "支持MiniMax-M3模型。+0.5",
+        "额度依然最高，适合高频编码、自动化任务与长上下文工作流。+1",
+        "支持多模态。+0.5"
+      ]
+    },
+    {
+      "name": "字节·方舟",
+      "rating": 5,
+      "reasons": [
+        "原本部分模型倍率较高、用量较少；目前2.5折且有为期一个月的用量2.5倍活动，折算后短期性价比显著提升。+1",
+        "支持GLM-5.2，DeepSeek-V4-Pro/Flash，MiniMax-M3，Kimi-K2.6，Kimi-K2.7-Code，Kimi-K3。唯一一家同时支持GLM，DeepSeek-V4-Pro/Flash，MiniMax，Kimi四家最新模型的平台。+1"
+      ]
+    },
+    {
+      "name": "Kimi",
+      "rating": 4,
+      "reasons": [
+        "支持Kimi-K3。+0.1",
+        "提供实验性专业数据库功能。+0.5",
+        "用量官方没有说明，但是实测比其他家用量要少一些。-1",
+        "模型能力均衡，可用作代码编写和日常需求，支持多模态（图像输入）。+0.5"
+      ]
+    }
+  ],
+  "notes": [
+    "包季/包年价格中的划线数字表示原始价格（包月×3 或 包月×12），未划线的为实际优惠价格。",
+    "使用表格邀请链接，部分平台可享优惠",
+    "综合单价 = 连续包月价（美元按汇率折算人民币）÷ 实测月 Token，单位为 ￥/M Token；缺数时显示「-」，仅供横向对比。",
+    "本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议"
+  ],
+  "accountSale": {
+    "title": "出纯手工账号",
+    "description": "xxxxxx",
+    "accounts": [],
+    "accounts_template": {
+      "platform": "xxxxx",
+      "detail": "xxxxxxx",
+      "price": "¥123"
+    },
+    "contact": {
+      "label": "飞书群",
+      "id": "https://api.dreamfree.space/c/s/cpfeishulink"
+    },
+    "qrcode": "assets/feishu_group_3.png"
+  },
+  "table": {
+    "columns": {
+      "vendor": "平台",
+      "plan": "套餐",
+      "type": "类型",
+      "action": "跳转链接",
+      "firstMonthPrice": "首月价格",
+      "monthlyPrice": "连续包月",
+      "quarterlyPrice": "连续包季",
+      "yearlyPrice": "连续包年",
+      "models": "支持模型",
+      "fiveHoursRequests": "5小时请求数",
+      "weeklyRequests": "每周请求数",
+      "monthlyRequests": "每月请求数",
+      "measuredFiveHoursTokenLimit": "实测5h Token",
+      "measuredWeeklyTokenLimit": "实测周Token",
+      "measuredMonthlyTokenLimit": "实测月Token",
+      "pricePerMillionToken": "综合单价",
+      "benefits": "其他权益",
+      "discontinued": "状态",
+      "note": "备注"
+    }
+  },
+  "filters": {
+    "vendor": "平台",
+    "type": "类型",
+    "model": "模型",
+    "firstMonthPrice": "首月价格",
+    "monthlyPrice": "包月价格",
+    "quarterlyPrice": "包季价格",
+    "yearlyPrice": "包年价格",
+    "reset": "清空筛选",
+    "stats": "显示 {showing} / {total} 个套餐"
+  },
+  "priceFilter": {
+    "title": "价格区间 (元)",
+    "reset": "重置",
+    "apply": "确定"
+  },
+  "updates": [
+    {
+      "date": "2026.7.27",
+      "items": [
+        "百度·千帆上线 Token Plan 个人版：Mini / Lite / Pro / Max 四档，限时首购 5 折（4.9 / 19.9 / 99.9 / 299.9 元起）；原 Coding Plan（Lite / Pro）标为已下线",
+        "百度·千帆 Token Plan 模型为 GLM-5.2、GLM-5.1、Kimi-K2.6、DeepSeek-V4-Flash、DeepSeek-V4-Pro、ERNIE-5.1"
+      ]
+    },
+    {
+      "date": "2026.7.25",
+      "items": [
+        "站点换新，V2新站点上线，可通过右上方设置切换至旧站点"
+      ]
+    },
+    {
+      "date": "2026.7.20",
+      "items": [
+        "平台目录新增按量调用平台：DeepSeek 官方、共继算力（定价见 payg-pricing.json，不进套餐大表）",
+        "筛选标签新增「按量调用」；DeepSeek Flash / Pro 虚拟套餐条目保持不动"
+      ]
+    },
+    {
+      "date": "2026.7.19",
+      "items": [
+        "字节·方舟 Token Plan（Small / Medium / Large / Max）追加支持 Kimi-K3 模型",
+        "Kimi Coding Plan（Andante / Moderato / Allegretto / Allegro）追加支持 Kimi-K3 模型",
+        "OpenCode Go 追加支持 Kimi-K3 模型"
+      ]
+    },
+    {
+      "date": "2026.7.15",
+      "items": [
+        "首页改版：新增平台目录与标签筛选（默认「无需抢购」），页头叙事调整为「选平台」",
+        "推荐分组精简为「综合推荐」「按量计费推荐」，「高性价比」「不抢购」等场景改由目录标签承担",
+        "Codex（Plus / Pro *5 / Pro *20）追加支持 GPT-5.6 模型"
+      ]
+    },
+    {
+      "date": "2026.7.10",
+      "items": [
+        "讯飞·星火 速通版（699元/月）上线，专注 GLM-5.2 / DeepSeek-V4-Pro / Kimi-K2.7-Code 三大顶级模型",
+        "讯飞·星火 专业版（39元）已下架"
+      ]
+    },
+    {
+      "date": "2026.7.6",
+      "items": [
+        "首页小改版：DeepSeek 涨价应对分组精简为 2 个平台（DeepSeek / 共继算力）",
+        "推荐卡片支持独立 action 链接：即使平台不在 plans.json，也可配置跳转"
+      ]
+    },
+    {
+      "date": "2026.7.1",
+      "items": [
+        "新增 TaoToken 平台（GLM-5.2 Coding Plan 三档套餐，当前已售罄）"
+      ]
+    },
+    {
+      "date": "2026.6.29",
+      "items": [
+        "讯飞·星火 高效版 追加支持 GLM-5.2 模型"
+      ]
+    },
+    {
+      "date": "2026.6.26",
+      "items": [
+        "优云智算 Coding Plan（Mini / Lite / Basic / Pro / Max / Ultra）追加支持 GLM-5.2 模型（限时倍率 x2）"
+      ]
+    },
+    {
+      "date": "2026.6.18",
+      "items": [
+        "新增 华为云 Token Plan（Lite / Standard / Pro / Max），覆盖 GLM / Kimi / DeepSeek 系列，限个人用户购买且每个用户限购 1 套"
+      ]
+    },
+    {
+      "date": "2026.6.17",
+      "items": [
+        "字节·方舟 Coding Plan / Token Plan 支持 Kimi-K2.7-Code，GLM-5.2"
+      ]
+    },
+    {
+      "date": "2026.6.16",
+      "items": [
+        "新增 DeepSeek 虚拟套餐，方便对比"
+      ]
+    },
+    {
+      "date": "2026.6.13",
+      "items": [
+        "智谱AI（国内版 / 国际版）Coding Plan 追加支持 GLM-5.2 模型",
+        "阶跃星辰 Coding Plan 追加支持 step-3.7-flash 模型",
+        "阿里·百炼 Coding Plan（Lite / Pro）追加 Qwen-3.7-Plus；Token Plan（标准 / 高级 / 尊享）追加 Qwen-3.7-Plus",
+        "Kimi Coding Plan（Andante / Moderato / Allegretto / Allegro）追加支持 Kimi-K2.7-Code 模型"
+      ]
+    },
+    {
+      "date": "2026.6.10",
+      "items": [
+        "字节·方舟 Coding Plan折扣，用量更新"
+      ]
+    },
+    {
+      "date": "2026.6.8",
+      "items": [
+        "字节·方舟 Coding Plan模型、权益更新，解除限购"
+      ]
+    },
+    {
+      "date": "2026.6.3",
+      "items": [
+        "DeepSeek-V4-Flash / DeepSeek-V4-Pro 同步永久降价口径；Codex 相关说明改为当前 Token 计费表述"
+      ]
+    },
+    {
+      "date": "2026.6.2",
+      "items": [
+        "MiniMax 同步最新套餐口径：新增 Ultra（469 元/月），Starter 与 Plus-极速标记为老用户保留档，Max-极速标记为停售迁移；类型仍按站内规则归类为 Coding Plan"
+      ]
+    },
+    {
+      "date": "2026.6.1",
+      "items": [
+        "MiniMax 套餐增加 MiniMax-M3 / MiniMax-M3-highspeed；同步阿里·百炼 Token Plan 的 Qwen-3.7-Max 展示"
+      ]
+    },
+    {
+      "date": "2026.5.27",
+      "items": [
+        "更新小米Mimo价格 https://platform.xiaomimimo.com/docs/zh-CN/news/v2.5-price-update"
+      ]
+    },
+    {
+      "date": "2026.5.26",
+      "items": [
+        "讯飞·星火增加Kimi-K2.6模型"
+      ]
+    },
+    {
+      "date": "2026.5.23",
+      "items": [
+        "百度·千帆新增 GLM-5.1、DeepSeek-V4-Flash、DeepSeek-V4-Pro；阿里·百炼 Token Plan 新增 GLM-5.1、Kimi-K2.6、Qwen-3.6-Flash、Qwen-3.7-Max"
+      ]
+    },
+    {
+      "date": "2026.5.18",
+      "items": [
+        "字节·方舟 Coding Plan Pro 套餐不再赠送 ArkClaw（5.18 12:00 起下线新购/续费/升配的赠送权益）https://www.volcengine.com/docs/82379/2406398"
+      ]
+    },
+    {
+      "date": "2026.5.15",
+      "items": [
+        "增加15个新平台，字节添加DeepseekV4"
+      ]
+    },
+    {
+      "date": "2026.5.8",
+      "items": [
+        "字节方舟上线AgentPlan，CodingPlan开始限购"
+      ]
+    },
+    {
+      "date": "2026.4.30",
+      "items": [
+        "更新腾讯TokenPlan模型"
+      ]
+    },
+    {
+      "date": "2026.4.23",
+      "items": [
+        "更新小米MiMo V2.5模型和倍率"
+      ]
+    },
+    {
+      "date": "2026.4.22",
+      "items": [
+        "更新字节方舟&Kimi CodingPlan支持的模型"
+      ]
+    },
+    {
+      "date": "2026.4.21",
+      "items": [
+        "阿里上线TokenPlan"
+      ]
+    },
+    {
+      "date": "2026.4.20",
+      "items": [
+        "腾讯下线CodingPlan，仅保留TokenPlan"
+      ]
+    },
+    {
+      "date": "2026.4.16",
+      "items": [
+        "去除讯飞·星火Lite套餐，因为其不包含主流SOTA模型"
+      ]
+    },
+    {
+      "date": "2026.4.15",
+      "items": [
+        "添加讯飞·星火套餐数据"
+      ]
+    },
+    {
+      "date": "2026.4.14",
+      "items": [
+        "增加类型列，区分CodingPlan和TokenPlan"
+      ]
+    },
+    {
+      "date": "2026.4.12",
+      "items": [
+        "更新智谱AI国际版价格，智谱国际版大幅度涨价"
+      ]
+    },
+    {
+      "date": "2026.4.10",
+      "items": [
+        "添加Qwen-3.6-Plus"
+      ]
+    },
+    {
+      "date": "2026.4.4",
+      "items": [
+        "添加腾讯TokenPlan（非CodingPlan）"
+      ]
+    },
+    {
+      "date": "2026.4.3",
+      "items": [
+        "添加小米·MiMo 及 京东·JoyBuilder"
+      ]
+    },
+    {
+      "date": "2026.3.28",
+      "items": [
+        "更新智谱AI GLM-5.1 模型信息"
+      ]
+    }
+  ]
+}
