@@ -185,29 +185,6 @@
     "action": "https://api.dreamfree.space/c/s/cpyqgongji"
   },
   {
-    "id": "aliyun-bailian",
-    "name": "阿里·百炼",
-    "rating": 4,
-    "summary": "Coding Plan 性价比高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。",
-    "detail": "Coding Plan 性价比很高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。CodingPlan和TokenPlan的抵扣规则均不透明。",
-    "dimensions": {
-      "value": {
-        "score": 4,
-        "reason": "Coding Plan 性价比比肩Minimax，但不放量；Token Plan开放购买，性价比尚可。Qwen3.8-Max有限时1折活动。夜间有额外2折优惠。"
-      },
-      "models": {
-        "score": 4,
-        "reason": "TokenPlan 支持自家最新 Qwen-3.8-Max，Qwen-3.7-Max/Plus 模型。CodingPlan支持Qwen-3.7-Plus等模型。除了自家Qwen模型，对其他家模型支持稍差。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "官方服务，稳定性强。"
-      }
-    },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
     "id": "youyun",
     "name": "优云智算",
     "rating": 4,
@@ -302,6 +279,29 @@
     "tags": [
       "外币支付"
     ],
+    "platformStatus": "open"
+  },
+  {
+    "id": "aliyun-bailian",
+    "name": "阿里·百炼",
+    "rating": 4,
+    "summary": "Coding Plan 性价比高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。",
+    "detail": "Coding Plan 性价比很高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。CodingPlan和TokenPlan的抵扣规则均不透明。",
+    "dimensions": {
+      "value": {
+        "score": 4,
+        "reason": "Coding Plan 性价比比肩Minimax，但不放量；Token Plan开放购买，性价比尚可。Qwen3.8-Max有限时1折活动。夜间有额外2折优惠。"
+      },
+      "models": {
+        "score": 4,
+        "reason": "TokenPlan 支持自家最新 Qwen-3.8-Max，Qwen-3.7-Max/Plus 模型。CodingPlan支持Qwen-3.7-Plus等模型。除了自家Qwen模型，对其他家模型支持稍差。"
+      },
+      "stability": {
+        "score": 5,
+        "reason": "官方服务，稳定性强。"
+      }
+    },
+    "tags": [],
     "platformStatus": "open"
   },
   {

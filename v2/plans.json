@@ -1,97 +1,5 @@
 [
   {
-    "vendor": "智谱AI",
-    "plan": "Lite",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
-    "rating": 5,
-    "tags": [
-      "模型强",
-      "性价比高"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 49,
-    "quarterlyPrice": 132.3,
-    "yearlyPrice": 470.4,
-    "models": [
-      "GLM-5.1",
-      "GLM-5.2",
-      "GLM-5-Turbo"
-    ],
-    "fiveHoursRequests": 1200,
-    "weeklyRequests": 6000,
-    "monthlyRequests": 24000,
-    "benefits": [
-      "免费MCP次数"
-    ],
-    "note": "• 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
-    "measuredFiveHoursTokenLimit": 6,
-    "measuredWeeklyTokenLimit": 30,
-    "measuredMonthlyTokenLimit": 120
-  },
-  {
-    "vendor": "智谱AI",
-    "plan": "Pro",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
-    "rating": 5,
-    "tags": [
-      "模型强",
-      "性价比高"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 149,
-    "quarterlyPrice": 402.3,
-    "yearlyPrice": 1430.4,
-    "models": [
-      "GLM-5.1",
-      "GLM-5.2",
-      "GLM-5-Turbo",
-      "GLM-5"
-    ],
-    "fiveHoursRequests": 6000,
-    "weeklyRequests": 30000,
-    "monthlyRequests": 120000,
-    "benefits": [
-      "免费MCP次数"
-    ],
-    "note": "• 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
-    "measuredFiveHoursTokenLimit": 30,
-    "measuredWeeklyTokenLimit": 150,
-    "measuredMonthlyTokenLimit": 600
-  },
-  {
-    "vendor": "智谱AI",
-    "plan": "Max",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
-    "rating": 5,
-    "tags": [
-      "模型强",
-      "性价比高"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 469,
-    "quarterlyPrice": 1266.3,
-    "yearlyPrice": 4502.4,
-    "models": [
-      "GLM-5.1",
-      "GLM-5.2",
-      "GLM-5-Turbo",
-      "GLM-5"
-    ],
-    "fiveHoursRequests": 24000,
-    "weeklyRequests": 120000,
-    "monthlyRequests": 480000,
-    "benefits": [
-      "免费MCP次数"
-    ],
-    "note": "• 20倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
-    "measuredFiveHoursTokenLimit": 120,
-    "measuredWeeklyTokenLimit": 600,
-    "measuredMonthlyTokenLimit": 2400
-  },
-  {
     "vendor": "智谱国际版",
     "plan": "Lite",
     "type": "Coding Plan",
@@ -182,6 +90,84 @@
     "measuredFiveHoursTokenLimit": 120,
     "measuredWeeklyTokenLimit": 600,
     "measuredMonthlyTokenLimit": 2400
+  },
+  {
+    "vendor": "MiniMax",
+    "plan": "新Plus",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqminimax",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": 44.1,
+    "monthlyPrice": 49,
+    "quarterlyPrice": "-",
+    "yearlyPrice": 490,
+    "models": [
+      "MiniMax-M3",
+      "MiniMax-M2.7",
+      "MiniMax-M2.5"
+    ],
+    "fiveHoursRequests": 1500,
+    "weeklyRequests": 15000,
+    "monthlyRequests": 60000,
+    "benefits": [],
+    "note": "",
+    "measuredMonthlyTokenLimit": 600
+  },
+  {
+    "vendor": "MiniMax",
+    "plan": "新Max",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqminimax",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": 107.1,
+    "monthlyPrice": 119,
+    "quarterlyPrice": "-",
+    "yearlyPrice": 1190,
+    "models": [
+      "MiniMax-M3",
+      "MiniMax-M2.7",
+      "MiniMax-M2.5"
+    ],
+    "fiveHoursRequests": 4500,
+    "weeklyRequests": 45000,
+    "monthlyRequests": 180000,
+    "benefits": [],
+    "note": "",
+    "measuredMonthlyTokenLimit": 1800
+  },
+  {
+    "vendor": "MiniMax",
+    "plan": "新Ultra",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqminimax",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": 422.1,
+    "monthlyPrice": 469,
+    "quarterlyPrice": "-",
+    "yearlyPrice": 4690,
+    "models": [
+      "MiniMax-M3",
+      "MiniMax-M2.7",
+      "MiniMax-M2.5"
+    ],
+    "fiveHoursRequests": 15000,
+    "weeklyRequests": 150000,
+    "monthlyRequests": 600000,
+    "benefits": [],
+    "note": "",
+    "measuredMonthlyTokenLimit": 7100
   },
   {
     "vendor": "MiniMax",
@@ -329,166 +315,43 @@
     "measuredMonthlyTokenLimit": 7200
   },
   {
-    "vendor": "MiniMax",
-    "plan": "新Plus",
+    "vendor": "OpenCode",
+    "plan": "Go",
     "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqminimax",
+    "action": "https://api.dreamfree.space/c/s/cpyqopencode",
     "rating": 5,
     "tags": [
       "模型强",
       "性价比高"
     ],
-    "firstMonthPrice": 44.1,
-    "monthlyPrice": 49,
-    "quarterlyPrice": "-",
-    "yearlyPrice": 490,
-    "models": [
-      "MiniMax-M3",
-      "MiniMax-M2.7",
-      "MiniMax-M2.5"
-    ],
-    "fiveHoursRequests": 1500,
-    "weeklyRequests": 15000,
-    "monthlyRequests": 60000,
-    "benefits": [],
-    "note": "",
-    "measuredMonthlyTokenLimit": 600
-  },
-  {
-    "vendor": "MiniMax",
-    "plan": "新Max",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqminimax",
-    "rating": 5,
-    "tags": [
-      "模型强",
-      "性价比高"
-    ],
-    "firstMonthPrice": 107.1,
-    "monthlyPrice": 119,
-    "quarterlyPrice": "-",
-    "yearlyPrice": 1190,
-    "models": [
-      "MiniMax-M3",
-      "MiniMax-M2.7",
-      "MiniMax-M2.5"
-    ],
-    "fiveHoursRequests": 4500,
-    "weeklyRequests": 45000,
-    "monthlyRequests": 180000,
-    "benefits": [],
-    "note": "",
-    "measuredMonthlyTokenLimit": 1800
-  },
-  {
-    "vendor": "MiniMax",
-    "plan": "新Ultra",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqminimax",
-    "rating": 5,
-    "tags": [
-      "模型强",
-      "性价比高"
-    ],
-    "firstMonthPrice": 422.1,
-    "monthlyPrice": 469,
-    "quarterlyPrice": "-",
-    "yearlyPrice": 4690,
-    "models": [
-      "MiniMax-M3",
-      "MiniMax-M2.7",
-      "MiniMax-M2.5"
-    ],
-    "fiveHoursRequests": 15000,
-    "weeklyRequests": 150000,
-    "monthlyRequests": 600000,
-    "benefits": [],
-    "note": "",
-    "measuredMonthlyTokenLimit": 7100
-  },
-  {
-    "vendor": "讯飞·星火",
-    "plan": "专业版",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
-    "rating": 5,
-    "tags": [
-      "模型强",
-      "性价比高"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 39,
+    "firstMonthPrice": 5,
+    "monthlyPrice": 10,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "GLM-5.1",
-      "Kimi-K2.6",
-      "Qwen3.6-35B-A3B",
-      "MiniMax-M2.5",
-      "Kimi-K2.5",
-      "DeepSeek-V3.2"
-    ],
-    "fiveHoursRequests": 1200,
-    "weeklyRequests": 9000,
-    "monthlyRequests": 18000,
-    "benefits": [],
-    "note": "• 已下架\n• 历史方案，可作为参考",
-    "discontinued": true
-  },
-  {
-    "vendor": "讯飞·星火",
-    "plan": "高效版",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
-    "rating": 3,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 199,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "DeepSeek-V4-Pro",
-      "DeepSeek-V4-Flash",
-      "GLM-5.1",
       "GLM-5.2",
-      "Kimi-K2.6",
-      "Qwen3.6-35B-A3B",
+      "GLM-5.1",
       "GLM-5",
+      "Kimi-K2.7-Code",
+      "Kimi-K3",
+      "Kimi-K2.6",
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "Qwen-3.7-Max",
+      "Qwen-3.7-Plus",
+      "Qwen-3.6-Plus",
+      "MiniMax-M3",
+      "MiniMax-M2.7",
       "MiniMax-M2.5",
-      "Kimi-K2.5",
-      "DeepSeek-V3.2"
-    ],
-    "fiveHoursRequests": 6000,
-    "weeklyRequests": 45000,
-    "monthlyRequests": 90000,
-    "benefits": [],
-    "note": "• 高效版已支持 GLM-5.2\n• 讯飞实际可用量比较多，按调用量计数，明示调用量"
-  },
-  {
-    "vendor": "讯飞·星火",
-    "plan": "速通版",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
-    "rating": 3,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 699,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5.2",
       "DeepSeek-V4-Pro",
-      "Kimi-K2.7-Code"
+      "DeepSeek-V4-Flash"
     ],
-    "fiveHoursRequests": "-",
-    "weeklyRequests": "-",
-    "monthlyRequests": "-",
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "currency": "$",
     "benefits": [],
-    "note": "• 价格比较贵，据宣传无需等待"
+    "note": "• 套餐额度按美元 Credits 计：基础 12 美元、周额度 30 美元、月额度 60 美元\n• 实际计费按 token 消耗"
   },
   {
     "vendor": "字节·方舟",
@@ -561,6 +424,145 @@
     "measuredFiveHoursTokenLimit": 83,
     "measuredWeeklyTokenLimit": 624,
     "measuredMonthlyTokenLimit": 1249
+  },
+  {
+    "vendor": "字节·方舟",
+    "plan": "Small",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
+    "rating": 3,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": 9.9,
+    "monthlyPrice": 40,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Doubao-Seed-2.0系列",
+      "DeepSeek-V4-Pro",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V3.2",
+      "GLM-5.1",
+      "GLM-5.2",
+      "MiniMax-M2.7",
+      "MiniMax-M3",
+      "Kimi-K2.6",
+      "Kimi-K2.7-Code",
+      "Kimi-K3",
+      "Doubao-Seedream-5.0-lite"
+    ],
+    "fiveHoursRequests": 200,
+    "weeklyRequests": 700,
+    "monthlyRequests": 2000,
+    "benefits": [],
+    "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
+    "measuredMonthlyTokenLimit": 22
+  },
+  {
+    "vendor": "字节·方舟",
+    "plan": "Medium",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
+    "rating": 3,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": 49.9,
+    "monthlyPrice": 200,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Doubao-Seed-2.0系列",
+      "DeepSeek-V4-Pro",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V3.2",
+      "GLM-5.1",
+      "GLM-5.2",
+      "MiniMax-M2.7",
+      "MiniMax-M3",
+      "Kimi-K2.6",
+      "Kimi-K2.7-Code",
+      "Kimi-K3",
+      "Doubao-Seedream-5.0-lite",
+      "Doubao-Seedance-2.0"
+    ],
+    "fiveHoursRequests": 1000,
+    "weeklyRequests": 3500,
+    "monthlyRequests": 10000,
+    "benefits": [],
+    "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
+    "measuredMonthlyTokenLimit": 111
+  },
+  {
+    "vendor": "字节·方舟",
+    "plan": "Large",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
+    "rating": 3,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 500,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Doubao-Seed-2.0系列",
+      "DeepSeek-V4-Pro",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V3.2",
+      "GLM-5.1",
+      "GLM-5.2",
+      "MiniMax-M2.7",
+      "MiniMax-M3",
+      "Kimi-K2.6",
+      "Kimi-K2.7-Code",
+      "Kimi-K3",
+      "Doubao-Seedream-5.0-lite",
+      "Doubao-Seedance-2.0"
+    ],
+    "fiveHoursRequests": 2500,
+    "weeklyRequests": 8750,
+    "monthlyRequests": 25000,
+    "benefits": [],
+    "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
+    "measuredMonthlyTokenLimit": 278
+  },
+  {
+    "vendor": "字节·方舟",
+    "plan": "Max",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
+    "rating": 3,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 1000,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Doubao-Seed-2.0系列",
+      "DeepSeek-V4-Pro",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V3.2",
+      "GLM-5.1",
+      "GLM-5.2",
+      "MiniMax-M2.7",
+      "MiniMax-M3",
+      "Kimi-K2.6",
+      "Kimi-K2.7-Code",
+      "Kimi-K3",
+      "Doubao-Seedream-5.0-lite",
+      "Doubao-Seedance-2.0"
+    ],
+    "fiveHoursRequests": 5000,
+    "weeklyRequests": 17500,
+    "monthlyRequests": 50000,
+    "benefits": [],
+    "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
+    "measuredMonthlyTokenLimit": 556
   },
   {
     "vendor": "Kimi",
@@ -687,6 +689,190 @@
     "measuredFiveHoursTokenLimit": 80,
     "measuredWeeklyTokenLimit": 400,
     "measuredMonthlyTokenLimit": 1600
+  },
+  {
+    "vendor": "智谱AI",
+    "plan": "Lite",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 49,
+    "quarterlyPrice": 132.3,
+    "yearlyPrice": 470.4,
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "GLM-5-Turbo"
+    ],
+    "fiveHoursRequests": 1200,
+    "weeklyRequests": 6000,
+    "monthlyRequests": 24000,
+    "benefits": [
+      "免费MCP次数"
+    ],
+    "note": "• 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
+    "measuredFiveHoursTokenLimit": 6,
+    "measuredWeeklyTokenLimit": 30,
+    "measuredMonthlyTokenLimit": 120
+  },
+  {
+    "vendor": "智谱AI",
+    "plan": "Pro",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 149,
+    "quarterlyPrice": 402.3,
+    "yearlyPrice": 1430.4,
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "GLM-5-Turbo",
+      "GLM-5"
+    ],
+    "fiveHoursRequests": 6000,
+    "weeklyRequests": 30000,
+    "monthlyRequests": 120000,
+    "benefits": [
+      "免费MCP次数"
+    ],
+    "note": "• 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
+    "measuredFiveHoursTokenLimit": 30,
+    "measuredWeeklyTokenLimit": 150,
+    "measuredMonthlyTokenLimit": 600
+  },
+  {
+    "vendor": "智谱AI",
+    "plan": "Max",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 469,
+    "quarterlyPrice": 1266.3,
+    "yearlyPrice": 4502.4,
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "GLM-5-Turbo",
+      "GLM-5"
+    ],
+    "fiveHoursRequests": 24000,
+    "weeklyRequests": 120000,
+    "monthlyRequests": 480000,
+    "benefits": [
+      "免费MCP次数"
+    ],
+    "note": "• 20倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
+    "measuredFiveHoursTokenLimit": 120,
+    "measuredWeeklyTokenLimit": 600,
+    "measuredMonthlyTokenLimit": 2400
+  },
+  {
+    "vendor": "DeepSeek Flash",
+    "plan": "虚拟套餐 40",
+    "type": "Token Plan",
+    "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+    "rating": 4,
+    "tags": [
+      "性价比高"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 40,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "DeepSeek-V4-Flash"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "• 官方定价：缓存命中输入 ¥0.02/M Token，缓存未命中输入 ¥1/M Token，输出 ¥2/M Token\n• 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.02/1000000 + 99×10%×1/1000000 + 1×2/1000000 = 0.000013682 元\n• 约等于 1 元≈7.31M Token，再乘月费 40 元，得到月 Token 上限约 292M",
+    "measuredMonthlyTokenLimit": 292
+  },
+  {
+    "vendor": "DeepSeek Flash",
+    "plan": "虚拟套餐 200",
+    "type": "Token Plan",
+    "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+    "rating": 4,
+    "tags": [
+      "性价比高"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 200,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "DeepSeek-V4-Flash"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "• 官方定价：缓存命中输入 ¥0.02/M Token，缓存未命中输入 ¥1/M Token，输出 ¥2/M Token\n• 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.02/1000000 + 99×10%×1/1000000 + 1×2/1000000 = 0.000013682 元\n• 约等于 1 元≈7.31M Token，再乘月费 200 元，得到月 Token 上限约 1462M",
+    "measuredMonthlyTokenLimit": 1462
+  },
+  {
+    "vendor": "DeepSeek Pro",
+    "plan": "虚拟套餐 40",
+    "type": "Token Plan",
+    "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+    "rating": 4,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 40,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "DeepSeek-V4-Pro"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "• 官方定价：缓存命中输入 ¥0.025/M Token，缓存未命中输入 ¥3/M Token，输出 ¥6/M Token\n• 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.025/1000000 + 99×10%×3/1000000 + 1×6/1000000 = 0.0000379275 元\n• 约等于 1 元≈2.64M Token，再乘月费 40 元，得到月 Token 上限约 105M",
+    "measuredMonthlyTokenLimit": 105
+  },
+  {
+    "vendor": "DeepSeek Pro",
+    "plan": "虚拟套餐 200",
+    "type": "Token Plan",
+    "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+    "rating": 4,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 200,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "DeepSeek-V4-Pro"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "• 官方定价：缓存命中输入 ¥0.025/M Token，缓存未命中输入 ¥3/M Token，输出 ¥6/M Token\n• 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.025/1000000 + 99×10%×3/1000000 + 1×6/1000000 = 0.0000379275 元\n• 约等于 1 元≈2.64M Token，再乘月费 200 元，得到月 Token 上限约 527M",
+    "measuredMonthlyTokenLimit": 527
   },
   {
     "vendor": "优云智算",
@@ -875,303 +1061,274 @@
     "measuredMonthlyTokenLimit": 1300
   },
   {
-    "vendor": "OpenCode",
-    "plan": "Go",
+    "vendor": "Codex",
+    "plan": "Plus",
     "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqopencode",
+    "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
     "rating": 5,
     "tags": [
       "模型强",
       "性价比高"
     ],
-    "firstMonthPrice": 5,
-    "monthlyPrice": 10,
+    "firstMonthPrice": "-",
+    "monthlyPrice": 20,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "GPT-5.6",
+      "GPT-5.5",
+      "GPT-5.4",
+      "GPT-5.3-Codex",
+      "GPT-5.2",
+      "GPT-5.4-mini",
+      "GPT-Image-2.0"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "currency": "$",
+    "benefits": [],
+    "note": "• 无5h限制，只有周限制",
+    "measuredFiveHoursTokenLimit": 120,
+    "measuredWeeklyTokenLimit": 120,
+    "measuredMonthlyTokenLimit": 480
+  },
+  {
+    "vendor": "Codex",
+    "plan": "Pro *5",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 100,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GPT-5.6",
+      "GPT-5.5",
+      "GPT-5.4",
+      "GPT-5.3-Codex",
+      "GPT-5.2",
+      "GPT-5.4-mini",
+      "GPT-Image-2.0"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "currency": "$",
+    "benefits": [],
+    "note": "• 无5h限制，只有周限制",
+    "measuredFiveHoursTokenLimit": 600,
+    "measuredWeeklyTokenLimit": 600,
+    "measuredMonthlyTokenLimit": 2400
+  },
+  {
+    "vendor": "Codex",
+    "plan": "Pro *20",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 200,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GPT-5.6",
+      "GPT-5.5",
+      "GPT-5.4",
+      "GPT-5.3-Codex",
+      "GPT-5.2",
+      "GPT-5.4-mini",
+      "GPT-Image-2.0"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "currency": "$",
+    "benefits": [],
+    "note": "• 无5h限制，只有周限制",
+    "measuredFiveHoursTokenLimit": 2400,
+    "measuredWeeklyTokenLimit": 2400,
+    "measuredMonthlyTokenLimit": 9600
+  },
+  {
+    "vendor": "Claude",
+    "plan": "Pro",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqclaudeup",
+    "rating": 4,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 20,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Claude Sonnet 4.6",
+      "Claude Sonnet 4.5",
+      "Claude Opus 4.7",
+      "Claude Opus 4.6",
+      "Claude Opus 4.5",
+      "Claude Haiku 4.5"
+    ],
+    "fiveHoursRequests": "Pro 基准",
+    "weeklyRequests": "Pro 基准",
+    "monthlyRequests": "未公开",
+    "currency": "$",
+    "benefits": [
+      "原生 Claude 体验"
+    ],
+    "note": "• 部分用户订阅时可能被要求实名认证\n• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent",
+    "measuredFiveHoursTokenLimit": 23,
+    "measuredWeeklyTokenLimit": 104,
+    "measuredMonthlyTokenLimit": 416
+  },
+  {
+    "vendor": "Claude",
+    "plan": "Max *5",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqclaudeup",
+    "rating": 4,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 100,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Claude Sonnet 4.6",
+      "Claude Sonnet 4.5",
+      "Claude Opus 4.7",
+      "Claude Opus 4.6",
+      "Claude Opus 4.5",
+      "Claude Haiku 4.5"
+    ],
+    "fiveHoursRequests": "Pro 的 5 倍",
+    "weeklyRequests": "Pro 的 5 倍",
+    "monthlyRequests": "未公开",
+    "currency": "$",
+    "benefits": [
+      "原生 Claude 体验"
+    ],
+    "note": "• 部分用户订阅时可能被要求实名认证\n• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent",
+    "measuredFiveHoursTokenLimit": 115,
+    "measuredWeeklyTokenLimit": 520,
+    "measuredMonthlyTokenLimit": 2080
+  },
+  {
+    "vendor": "Claude",
+    "plan": "Max *20",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqclaudeup",
+    "rating": 4,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 200,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Claude Sonnet 4.6",
+      "Claude Sonnet 4.5",
+      "Claude Opus 4.7",
+      "Claude Opus 4.6",
+      "Claude Opus 4.5",
+      "Claude Haiku 4.5"
+    ],
+    "fiveHoursRequests": "Pro 的 20 倍",
+    "weeklyRequests": "Pro 的 20 倍",
+    "monthlyRequests": "未公开",
+    "currency": "$",
+    "benefits": [
+      "原生 Claude 体验"
+    ],
+    "note": "• 部分用户订阅时可能被要求实名认证\n• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent",
+    "measuredFiveHoursTokenLimit": 460,
+    "measuredWeeklyTokenLimit": 2080,
+    "measuredMonthlyTokenLimit": 8320
+  },
+  {
+    "vendor": "Ollama",
+    "plan": "Pro",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqollama",
+    "rating": 3,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 20,
+    "quarterlyPrice": "-",
+    "yearlyPrice": 200,
+    "models": [
       "GLM-5.2",
       "GLM-5.1",
-      "GLM-5",
-      "Kimi-K2.7-Code",
-      "Kimi-K3",
+      "Kimi-K2.6-Code",
       "Kimi-K2.6",
-      "MiMo-V2.5-Pro",
-      "MiMo-V2.5",
-      "Qwen-3.7-Max",
-      "Qwen-3.7-Plus",
-      "Qwen-3.6-Plus",
-      "MiniMax-M3",
-      "MiniMax-M2.7",
-      "MiniMax-M2.5",
       "DeepSeek-V4-Pro",
-      "DeepSeek-V4-Flash"
+      "DeepSeek-V4-Flash",
+      "MiniMax-M3",
+      "Qwen-3.5",
+      "Gemini-3-Flash-Preview"
     ],
     "fiveHoursRequests": "未公开",
     "weeklyRequests": "未公开",
     "monthlyRequests": "未公开",
     "currency": "$",
     "benefits": [
+      "3 个并发任务"
     ],
-    "note": "• 套餐额度按美元 Credits 计：基础 12 美元、周额度 30 美元、月额度 60 美元\n• 实际计费按 token 消耗"
+    "note": "• 支持 GLM-5.2、Kimi-K2.6、MiniMax-M3、DeepSeek-V4-Pro，模型丰富\n• 用量按照GLM-5.2计算",
+    "measuredFiveHoursTokenLimit": "-",
+    "measuredWeeklyTokenLimit": 400,
+    "measuredMonthlyTokenLimit": 1600
   },
   {
-    "vendor": "小米·MiMo",
-    "plan": "Lite",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
-    "rating": 3,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": 34.32,
-    "monthlyPrice": 39,
-    "quarterlyPrice": "-",
-    "yearlyPrice": 411.84,
-    "models": [
-      "MiMo-V2.5-Pro",
-      "MiMo-V2.5",
-      "MiMo-V2.5-TTS",
-      "MiMo-V2-Pro",
-      "MiMo-V2-Omni"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [
-      "TTS限时免费"
-    ],
-    "note": "• 4.1B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
-    "measuredMonthlyTokenLimit": 108
-  },
-  {
-    "vendor": "小米·MiMo",
-    "plan": "Standard",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
-    "rating": 3,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": 87.12,
-    "monthlyPrice": 99,
-    "quarterlyPrice": "-",
-    "yearlyPrice": 1045.44,
-    "models": [
-      "MiMo-V2.5-Pro",
-      "MiMo-V2.5",
-      "MiMo-V2.5-TTS",
-      "MiMo-V2-Pro",
-      "MiMo-V2-Omni"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [
-      "TTS限时免费"
-    ],
-    "note": "• 11B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
-    "measuredMonthlyTokenLimit": 290
-  },
-  {
-    "vendor": "小米·MiMo",
-    "plan": "Pro",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
-    "rating": 3,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": 289.52,
-    "monthlyPrice": 329,
-    "quarterlyPrice": "-",
-    "yearlyPrice": 3474.24,
-    "models": [
-      "MiMo-V2.5-Pro",
-      "MiMo-V2.5",
-      "MiMo-V2.5-TTS",
-      "MiMo-V2-Pro",
-      "MiMo-V2-Omni"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [
-      "TTS限时免费"
-    ],
-    "note": "• 38B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
-    "measuredMonthlyTokenLimit": 1002
-  },
-  {
-    "vendor": "小米·MiMo",
+    "vendor": "Ollama",
     "plan": "Max",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
-    "rating": 3,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": 579.92,
-    "monthlyPrice": 659,
-    "quarterlyPrice": "-",
-    "yearlyPrice": 6959.04,
-    "models": [
-      "MiMo-V2.5-Pro",
-      "MiMo-V2.5",
-      "MiMo-V2.5-TTS",
-      "MiMo-V2-Pro",
-      "MiMo-V2-Omni"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [
-      "TTS限时免费"
-    ],
-    "note": "• 82B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
-    "measuredMonthlyTokenLimit": 2162
-  },
-  {
-    "vendor": "字节·方舟",
-    "plan": "Small",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
-    "rating": 3,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": 9.9,
-    "monthlyPrice": 40,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "Doubao-Seed-2.0系列",
-      "DeepSeek-V4-Pro",
-      "DeepSeek-V4-Flash",
-      "DeepSeek-V3.2",
-      "GLM-5.1",
-      "GLM-5.2",
-      "MiniMax-M2.7",
-      "MiniMax-M3",
-      "Kimi-K2.6",
-      "Kimi-K2.7-Code",
-      "Kimi-K3",
-      "Doubao-Seedream-5.0-lite"
-    ],
-    "fiveHoursRequests": 200,
-    "weeklyRequests": 700,
-    "monthlyRequests": 2000,
-    "benefits": [
-    ],
-    "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
-    "measuredMonthlyTokenLimit": 22
-  },
-  {
-    "vendor": "字节·方舟",
-    "plan": "Medium",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
-    "rating": 3,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": 49.9,
-    "monthlyPrice": 200,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "Doubao-Seed-2.0系列",
-      "DeepSeek-V4-Pro",
-      "DeepSeek-V4-Flash",
-      "DeepSeek-V3.2",
-      "GLM-5.1",
-      "GLM-5.2",
-      "MiniMax-M2.7",
-      "MiniMax-M3",
-      "Kimi-K2.6",
-      "Kimi-K2.7-Code",
-      "Kimi-K3",
-      "Doubao-Seedream-5.0-lite",
-      "Doubao-Seedance-2.0"
-    ],
-    "fiveHoursRequests": 1000,
-    "weeklyRequests": 3500,
-    "monthlyRequests": 10000,
-    "benefits": [
-    ],
-    "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
-    "measuredMonthlyTokenLimit": 111
-  },
-  {
-    "vendor": "字节·方舟",
-    "plan": "Large",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqollama",
     "rating": 3,
     "tags": [
       "模型强"
     ],
     "firstMonthPrice": "-",
-    "monthlyPrice": 500,
+    "monthlyPrice": 100,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "Doubao-Seed-2.0系列",
+      "GLM-5.2",
+      "GLM-5.1",
+      "Kimi-K2.6-Code",
+      "Kimi-K2.6",
       "DeepSeek-V4-Pro",
       "DeepSeek-V4-Flash",
-      "DeepSeek-V3.2",
-      "GLM-5.1",
-      "GLM-5.2",
-      "MiniMax-M2.7",
       "MiniMax-M3",
-      "Kimi-K2.6",
-      "Kimi-K2.7-Code",
-      "Kimi-K3",
-      "Doubao-Seedream-5.0-lite",
-      "Doubao-Seedance-2.0"
+      "Qwen-3.5",
+      "Gemini-3-Flash-Preview"
     ],
-    "fiveHoursRequests": 2500,
-    "weeklyRequests": 8750,
-    "monthlyRequests": 25000,
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "currency": "$",
     "benefits": [
+      "10 个并发任务"
     ],
-    "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
-    "measuredMonthlyTokenLimit": 278
-  },
-  {
-    "vendor": "字节·方舟",
-    "plan": "Max",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
-    "rating": 3,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 1000,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "Doubao-Seed-2.0系列",
-      "DeepSeek-V4-Pro",
-      "DeepSeek-V4-Flash",
-      "DeepSeek-V3.2",
-      "GLM-5.1",
-      "GLM-5.2",
-      "MiniMax-M2.7",
-      "MiniMax-M3",
-      "Kimi-K2.6",
-      "Kimi-K2.7-Code",
-      "Kimi-K3",
-      "Doubao-Seedream-5.0-lite",
-      "Doubao-Seedance-2.0"
-    ],
-    "fiveHoursRequests": 5000,
-    "weeklyRequests": 17500,
-    "monthlyRequests": 50000,
-    "benefits": [
-    ],
-    "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
-    "measuredMonthlyTokenLimit": 556
+    "note": "• 暂时停售 • 支持 GLM-5.2、Kimi-K2.6、MiniMax-M3、DeepSeek-V4-Pro，模型丰富\n• 用量按照GLM-5.2计算",
+    "measuredFiveHoursTokenLimit": "-",
+    "measuredWeeklyTokenLimit": 2000,
+    "measuredMonthlyTokenLimit": 8000
   },
   {
     "vendor": "阿里·百炼",
@@ -1330,256 +1487,755 @@
     "measuredMonthlyTokenLimit": 3750
   },
   {
-    "vendor": "Codex",
-    "plan": "Plus",
+    "vendor": "小米·MiMo",
+    "plan": "Lite",
     "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
-    "rating": 5,
+    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
+    "rating": 3,
     "tags": [
-      "模型强",
-      "性价比高"
+      "模型强"
     ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 20,
+    "firstMonthPrice": 34.32,
+    "monthlyPrice": 39,
     "quarterlyPrice": "-",
-    "yearlyPrice": "-",
+    "yearlyPrice": 411.84,
     "models": [
-      "GPT-5.6",
-      "GPT-5.5",
-      "GPT-5.4",
-      "GPT-5.3-Codex",
-      "GPT-5.2",
-      "GPT-5.4-mini",
-      "GPT-Image-2.0"
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
+      "MiMo-V2-Pro",
+      "MiMo-V2-Omni"
     ],
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "currency": "$",
     "benefits": [
+      "TTS限时免费"
     ],
-    "note": "• 无5h限制，只有周限制",
-    "measuredFiveHoursTokenLimit": 120,
-    "measuredWeeklyTokenLimit": 120,
-    "measuredMonthlyTokenLimit": 480
+    "note": "• 4.1B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
+    "measuredMonthlyTokenLimit": 108
   },
   {
-    "vendor": "Codex",
-    "plan": "Pro *5",
+    "vendor": "小米·MiMo",
+    "plan": "Standard",
     "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
-    "rating": 5,
+    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
+    "rating": 3,
     "tags": [
-      "模型强",
-      "性价比高"
+      "模型强"
     ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 100,
+    "firstMonthPrice": 87.12,
+    "monthlyPrice": 99,
     "quarterlyPrice": "-",
-    "yearlyPrice": "-",
+    "yearlyPrice": 1045.44,
     "models": [
-      "GPT-5.6",
-      "GPT-5.5",
-      "GPT-5.4",
-      "GPT-5.3-Codex",
-      "GPT-5.2",
-      "GPT-5.4-mini",
-      "GPT-Image-2.0"
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
+      "MiMo-V2-Pro",
+      "MiMo-V2-Omni"
     ],
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "currency": "$",
     "benefits": [
+      "TTS限时免费"
     ],
-    "note": "• 无5h限制，只有周限制",
-    "measuredFiveHoursTokenLimit": 600,
-    "measuredWeeklyTokenLimit": 600,
-    "measuredMonthlyTokenLimit": 2400
+    "note": "• 11B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
+    "measuredMonthlyTokenLimit": 290
   },
   {
-    "vendor": "Codex",
-    "plan": "Pro *20",
+    "vendor": "小米·MiMo",
+    "plan": "Pro",
     "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
-    "rating": 5,
+    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
+    "rating": 3,
     "tags": [
-      "模型强",
-      "性价比高"
+      "模型强"
     ],
+    "firstMonthPrice": 289.52,
+    "monthlyPrice": 329,
+    "quarterlyPrice": "-",
+    "yearlyPrice": 3474.24,
+    "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
+      "MiMo-V2-Pro",
+      "MiMo-V2-Omni"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [
+      "TTS限时免费"
+    ],
+    "note": "• 38B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
+    "measuredMonthlyTokenLimit": 1002
+  },
+  {
+    "vendor": "小米·MiMo",
+    "plan": "Max",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqmimo",
+    "rating": 3,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": 579.92,
+    "monthlyPrice": 659,
+    "quarterlyPrice": "-",
+    "yearlyPrice": 6959.04,
+    "models": [
+      "MiMo-V2.5-Pro",
+      "MiMo-V2.5",
+      "MiMo-V2.5-TTS",
+      "MiMo-V2-Pro",
+      "MiMo-V2-Omni"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [
+      "TTS限时免费"
+    ],
+    "note": "• 82B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
+    "measuredMonthlyTokenLimit": 2162
+  },
+  {
+    "vendor": "百度·千帆",
+    "plan": "Lite",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+    "rating": 3,
+    "tags": [],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 40,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5",
+      "GLM-5.1",
+      "Kimi-K2.5",
+      "MiniMax-M2.5",
+      "DeepSeek-V3.2",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V4-Pro"
+    ],
+    "fiveHoursRequests": 1200,
+    "weeklyRequests": 9000,
+    "monthlyRequests": 18000,
+    "benefits": [],
+    "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill",
+    "discontinued": true
+  },
+  {
+    "vendor": "百度·千帆",
+    "plan": "Pro",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+    "rating": 3,
+    "tags": [],
     "firstMonthPrice": "-",
     "monthlyPrice": 200,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "GPT-5.6",
-      "GPT-5.5",
-      "GPT-5.4",
-      "GPT-5.3-Codex",
-      "GPT-5.2",
-      "GPT-5.4-mini",
-      "GPT-Image-2.0"
+      "GLM-5",
+      "GLM-5.1",
+      "Kimi-K2.5",
+      "MiniMax-M2.5",
+      "DeepSeek-V3.2",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V4-Pro"
+    ],
+    "fiveHoursRequests": 6000,
+    "weeklyRequests": 45000,
+    "monthlyRequests": 90000,
+    "benefits": [],
+    "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill",
+    "discontinued": true
+  },
+  {
+    "vendor": "百度·千帆",
+    "plan": "Mini",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+    "rating": 3,
+    "tags": [],
+    "firstMonthPrice": 4.9,
+    "monthlyPrice": 9.9,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.2",
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V4-Pro",
+      "ERNIE-5.1"
     ],
     "fiveHoursRequests": "无限制",
     "weeklyRequests": "无限制",
     "monthlyRequests": "无限制",
-    "currency": "$",
-    "benefits": [
-    ],
-    "note": "• 无5h限制，只有周限制",
-    "measuredFiveHoursTokenLimit": 2400,
-    "measuredWeeklyTokenLimit": 2400,
-    "measuredMonthlyTokenLimit": 9600
+    "benefits": [],
+    "note": "• 限时首购 5 折（每日限量）\n• 1000 万 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
+    "measuredMonthlyTokenLimit": 10
   },
   {
-    "vendor": "TaoToken",
+    "vendor": "百度·千帆",
     "plan": "Lite",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
     "rating": 3,
-    "firstMonthPrice": "-",
-    "monthlyPrice": 39,
+    "tags": [],
+    "firstMonthPrice": 19.9,
+    "monthlyPrice": 40,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "GLM-5.2"
+      "GLM-5.2",
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V4-Pro",
+      "ERNIE-5.1"
     ],
-    "fiveHoursRequests": 600,
-    "weeklyRequests": 4200,
-    "monthlyRequests": "-",
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
     "benefits": [],
-    "note": "已下线",
-    "discontinued": true
+    "note": "• 限时首购 5 折（每日限量）\n• 4200 万 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
+    "measuredMonthlyTokenLimit": 42
   },
   {
-    "vendor": "TaoToken",
+    "vendor": "百度·千帆",
     "plan": "Pro",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
     "rating": 3,
+    "tags": [],
+    "firstMonthPrice": 99.9,
+    "monthlyPrice": 200,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.2",
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V4-Pro",
+      "ERNIE-5.1"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "• 限时首购 5 折（每日限量）\n• 2.3 亿 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
+    "measuredMonthlyTokenLimit": 230
+  },
+  {
+    "vendor": "百度·千帆",
+    "plan": "Max",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+    "rating": 3,
+    "tags": [],
+    "firstMonthPrice": 299.9,
+    "monthlyPrice": 600,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.2",
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash",
+      "DeepSeek-V4-Pro",
+      "ERNIE-5.1"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "• 限时首购 5 折（每日限量）\n• 7 亿 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
+    "measuredMonthlyTokenLimit": 700
+  },
+  {
+    "vendor": "华为云",
+    "plan": "Lite",
+    "type": "Token Plan",
+    "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
+    "rating": 3,
+    "tags": [],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 59,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.1",
+      "GLM-5",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止",
+    "measuredMonthlyTokenLimit": 50
+  },
+  {
+    "vendor": "华为云",
+    "plan": "Standard",
+    "type": "Token Plan",
+    "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
+    "rating": 3,
+    "tags": [],
     "firstMonthPrice": "-",
     "monthlyPrice": 149,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "GLM-5.2"
+      "GLM-5.1",
+      "GLM-5",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash"
     ],
-    "fiveHoursRequests": 2000,
-    "weeklyRequests": 15000,
-    "monthlyRequests": "-",
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
     "benefits": [],
-    "note": ""
+    "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n• 页面标\"最受欢迎\"档",
+    "measuredMonthlyTokenLimit": 130
   },
   {
-    "vendor": "TaoToken",
-    "plan": "Max",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
+    "vendor": "华为云",
+    "plan": "Pro",
+    "type": "Token Plan",
+    "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
     "rating": 3,
+    "tags": [],
     "firstMonthPrice": "-",
-    "monthlyPrice": 388,
+    "monthlyPrice": 399,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "GLM-5.2"
+      "GLM-5.1",
+      "GLM-5",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止",
+    "measuredMonthlyTokenLimit": 380
+  },
+  {
+    "vendor": "华为云",
+    "plan": "Max",
+    "type": "Token Plan",
+    "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
+    "rating": 3,
+    "tags": [],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 799,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.1",
+      "GLM-5",
+      "Kimi-K2.6",
+      "DeepSeek-V4-Flash"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止",
+    "measuredMonthlyTokenLimit": 880
+  },
+  {
+    "vendor": "腾讯云",
+    "plan": "Lite",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqtengxunc",
+    "rating": 3,
+    "tags": [
+      "性价比高"
+    ],
+    "firstMonthPrice": 7.9,
+    "monthlyPrice": 40,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "HY-2.0",
+      "HY-T1",
+      "GLM-5",
+      "Kimi-K2.5",
+      "MiniMax-M2.5"
+    ],
+    "fiveHoursRequests": 1200,
+    "weeklyRequests": 9000,
+    "monthlyRequests": 18000,
+    "benefits": [],
+    "note": "",
+    "discontinued": true
+  },
+  {
+    "vendor": "腾讯云",
+    "plan": "Pro",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqtengxunc",
+    "rating": 3,
+    "tags": [
+      "性价比高"
+    ],
+    "firstMonthPrice": 39.9,
+    "monthlyPrice": 200,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "HY-2.0",
+      "HY-T1",
+      "GLM-5",
+      "Kimi-K2.5",
+      "MiniMax-M2.5"
     ],
     "fiveHoursRequests": 6000,
-    "weeklyRequests": 35000,
-    "monthlyRequests": "-",
+    "weeklyRequests": 45000,
+    "monthlyRequests": 90000,
+    "benefits": [],
+    "note": "",
+    "discontinued": true
+  },
+  {
+    "vendor": "腾讯云",
+    "plan": "Lite",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
+    "rating": 2,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 39,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "HY-2.0",
+      "GLM-5.1",
+      "MiniMax-M2.7",
+      "Kimi-K2.5"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "注意此为TokenPlan，而非CodingPlan。35M(3500万) Tokens 额度，约 70 轮问答",
+    "measuredMonthlyTokenLimit": 35
+  },
+  {
+    "vendor": "腾讯云",
+    "plan": "Standard",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
+    "rating": 2,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 99,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "HY-2.0",
+      "GLM-5.1",
+      "MiniMax-M2.7",
+      "Kimi-K2.5"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "注意此为TokenPlan，而非CodingPlan。100M(1亿) Tokens 额度，可执行约 200 轮问答",
+    "measuredMonthlyTokenLimit": 100
+  },
+  {
+    "vendor": "腾讯云",
+    "plan": "Pro",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
+    "rating": 2,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 299,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "HY-2.0",
+      "GLM-5.1",
+      "MiniMax-M2.7",
+      "Kimi-K2.5"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "注意此为TokenPlan，而非CodingPlan。320M(3.2亿) Tokens 额度",
+    "measuredMonthlyTokenLimit": 320
+  },
+  {
+    "vendor": "腾讯云",
+    "plan": "Max",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
+    "rating": 2,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 599,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "HY-2.0",
+      "GLM-5.1",
+      "MiniMax-M2.7",
+      "Kimi-K2.5"
+    ],
+    "fiveHoursRequests": "无限制",
+    "weeklyRequests": "无限制",
+    "monthlyRequests": "无限制",
+    "benefits": [],
+    "note": "注意此为TokenPlan，而非CodingPlan。650M(6.5亿) Tokens 额度",
+    "measuredMonthlyTokenLimit": 650
+  },
+  {
+    "vendor": "京东云",
+    "plan": "Lite",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
+    "rating": 3,
+    "tags": [],
+    "firstMonthPrice": 19.9,
+    "monthlyPrice": 40,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "Kimi-K2.5",
+      "GLM-5",
+      "MiniMax-M2.5",
+      "DeepSeek-V3.2",
+      "Qwen-3-Coder"
+    ],
+    "fiveHoursRequests": 1200,
+    "weeklyRequests": 9000,
+    "monthlyRequests": 18000,
     "benefits": [],
     "note": ""
   },
   {
-    "vendor": "DeepSeek Flash",
-    "plan": "虚拟套餐 40",
-    "type": "Token Plan",
-    "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
-    "rating": 4,
-    "tags": [
-      "性价比高"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 40,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "DeepSeek-V4-Flash"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [],
-    "note": "• 官方定价：缓存命中输入 ¥0.02/M Token，缓存未命中输入 ¥1/M Token，输出 ¥2/M Token\n• 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.02/1000000 + 99×10%×1/1000000 + 1×2/1000000 = 0.000013682 元\n• 约等于 1 元≈7.31M Token，再乘月费 40 元，得到月 Token 上限约 292M",
-    "measuredMonthlyTokenLimit": 292
-  },
-  {
-    "vendor": "DeepSeek Flash",
-    "plan": "虚拟套餐 200",
-    "type": "Token Plan",
-    "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
-    "rating": 4,
-    "tags": [
-      "性价比高"
-    ],
-    "firstMonthPrice": "-",
+    "vendor": "京东云",
+    "plan": "Pro",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
+    "rating": 3,
+    "tags": [],
+    "firstMonthPrice": 99.9,
     "monthlyPrice": 200,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "DeepSeek-V4-Flash"
+      "Kimi-K2.5",
+      "GLM-5",
+      "MiniMax-M2.5",
+      "DeepSeek-V3.2",
+      "Qwen-3-Coder"
     ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
+    "fiveHoursRequests": 6000,
+    "weeklyRequests": 45000,
+    "monthlyRequests": 90000,
     "benefits": [],
-    "note": "• 官方定价：缓存命中输入 ¥0.02/M Token，缓存未命中输入 ¥1/M Token，输出 ¥2/M Token\n• 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.02/1000000 + 99×10%×1/1000000 + 1×2/1000000 = 0.000013682 元\n• 约等于 1 元≈7.31M Token，再乘月费 200 元，得到月 Token 上限约 1462M",
-    "measuredMonthlyTokenLimit": 1462
+    "note": ""
   },
   {
-    "vendor": "DeepSeek Pro",
-    "plan": "虚拟套餐 40",
+    "vendor": "GitHub",
+    "plan": "学生",
     "type": "Token Plan",
-    "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
-    "rating": 4,
+    "action": "https://api.dreamfree.space/c/s/cpyqghstudent",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": 0,
+    "monthlyPrice": 0,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GPT-4o",
+      "GPT-4.1",
+      "GPT-5-mini",
+      "GPT-5.2-Codex",
+      "Gemini 3.1 Pro",
+      "Claude Haiku 4.5",
+      "Grok Code Fast 1"
+    ],
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "currency": "$",
+    "benefits": [
+      "学生认证免费"
+    ],
+    "note": "• 学生认证免费，高级模型可对话 300 次\n• 存在周限额和 session 限额，不同模型有不同扣减倍率\n• 学生版可通过 Auto 模式路由至 GPT-5.3-Codex"
+  },
+  {
+    "vendor": "GitHub",
+    "plan": "Pro",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqghcopilot",
+    "rating": 3,
     "tags": [
       "模型强"
     ],
     "firstMonthPrice": "-",
-    "monthlyPrice": 40,
+    "monthlyPrice": 10,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "DeepSeek-V4-Pro"
+      "GPT-5.3-Codex",
+      "GPT-5.4",
+      "Claude Sonnet 4.6",
+      "Gemini 3.1 Pro",
+      "Grok Code Fast 1"
     ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [],
-    "note": "• 官方定价：缓存命中输入 ¥0.025/M Token，缓存未命中输入 ¥3/M Token，输出 ¥6/M Token\n• 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.025/1000000 + 99×10%×3/1000000 + 1×6/1000000 = 0.0000379275 元\n• 约等于 1 元≈2.64M Token，再乘月费 40 元，得到月 Token 上限约 105M",
-    "measuredMonthlyTokenLimit": 105
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "currency": "$",
+    "benefits": [
+      "1000 积分"
+    ],
+    "note": "• 存在周限额和 session 限额；不同模型有不同高级模型扣减倍率\n• 已改为用 token 计费模式"
   },
   {
-    "vendor": "DeepSeek Pro",
-    "plan": "虚拟套餐 200",
+    "vendor": "GitHub",
+    "plan": "Pro+",
     "type": "Token Plan",
-    "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
-    "rating": 4,
+    "action": "https://api.dreamfree.space/c/s/cpyqghcopilotp",
+    "rating": 3,
     "tags": [
       "模型强"
     ],
     "firstMonthPrice": "-",
-    "monthlyPrice": 200,
+    "monthlyPrice": 39,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "DeepSeek-V4-Pro"
+      "GPT-5.5",
+      "GPT-5.4",
+      "GPT-5.3-Codex",
+      "Claude Opus 4.7",
+      "Claude Sonnet 4.6",
+      "Gemini 3.1 Pro"
     ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "currency": "$",
+    "benefits": [
+      "3900 积分"
+    ],
+    "note": "• 存在周限额和 session 限额；不同模型有不同高级模型扣减倍率\n• 已改为用 token 计费模式"
+  },
+  {
+    "vendor": "讯飞·星火",
+    "plan": "专业版",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 39,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.1",
+      "Kimi-K2.6",
+      "Qwen3.6-35B-A3B",
+      "MiniMax-M2.5",
+      "Kimi-K2.5",
+      "DeepSeek-V3.2"
+    ],
+    "fiveHoursRequests": 1200,
+    "weeklyRequests": 9000,
+    "monthlyRequests": 18000,
     "benefits": [],
-    "note": "• 官方定价：缓存命中输入 ¥0.025/M Token，缓存未命中输入 ¥3/M Token，输出 ¥6/M Token\n• 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.025/1000000 + 99×10%×3/1000000 + 1×6/1000000 = 0.0000379275 元\n• 约等于 1 元≈2.64M Token，再乘月费 200 元，得到月 Token 上限约 527M",
-    "measuredMonthlyTokenLimit": 527
+    "note": "• 已下架\n• 历史方案，可作为参考",
+    "discontinued": true
+  },
+  {
+    "vendor": "讯飞·星火",
+    "plan": "高效版",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
+    "rating": 3,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 199,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "DeepSeek-V4-Pro",
+      "DeepSeek-V4-Flash",
+      "GLM-5.1",
+      "GLM-5.2",
+      "Kimi-K2.6",
+      "Qwen3.6-35B-A3B",
+      "GLM-5",
+      "MiniMax-M2.5",
+      "Kimi-K2.5",
+      "DeepSeek-V3.2"
+    ],
+    "fiveHoursRequests": 6000,
+    "weeklyRequests": 45000,
+    "monthlyRequests": 90000,
+    "benefits": [],
+    "note": "• 高效版已支持 GLM-5.2\n• 讯飞实际可用量比较多，按调用量计数，明示调用量"
+  },
+  {
+    "vendor": "讯飞·星火",
+    "plan": "速通版",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
+    "rating": 3,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 699,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.2",
+      "DeepSeek-V4-Pro",
+      "Kimi-K2.7-Code"
+    ],
+    "fiveHoursRequests": "-",
+    "weeklyRequests": "-",
+    "monthlyRequests": "-",
+    "benefits": [],
+    "note": "• 价格比较贵，据宣传无需等待"
   },
   {
     "vendor": "联通云",
@@ -1779,368 +2435,44 @@
     "measuredMonthlyTokenLimit": 2000
   },
   {
-    "vendor": "百度·千帆",
+    "vendor": "移动云",
     "plan": "Lite",
     "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+    "action": "https://api.dreamfree.space/c/s/cpyqmobilecp",
     "rating": 3,
     "tags": [],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 40,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5",
-      "GLM-5.1",
-      "Kimi-K2.5",
-      "MiniMax-M2.5",
-      "DeepSeek-V3.2",
-      "DeepSeek-V4-Flash",
-      "DeepSeek-V4-Pro"
-    ],
-    "fiveHoursRequests": 1200,
-    "weeklyRequests": 9000,
-    "monthlyRequests": 18000,
-    "benefits": [],
-    "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill",
-    "discontinued": true
-  },
-  {
-    "vendor": "百度·千帆",
-    "plan": "Pro",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
-    "rating": 3,
-    "tags": [],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 200,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5",
-      "GLM-5.1",
-      "Kimi-K2.5",
-      "MiniMax-M2.5",
-      "DeepSeek-V3.2",
-      "DeepSeek-V4-Flash",
-      "DeepSeek-V4-Pro"
-    ],
-    "fiveHoursRequests": 6000,
-    "weeklyRequests": 45000,
-    "monthlyRequests": 90000,
-    "benefits": [],
-    "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill",
-    "discontinued": true
-  },
-  {
-    "vendor": "百度·千帆",
-    "plan": "Mini",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
-    "rating": 3,
-    "tags": [],
-    "firstMonthPrice": 4.9,
-    "monthlyPrice": 9.9,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5.2",
-      "GLM-5.1",
-      "Kimi-K2.6",
-      "DeepSeek-V4-Flash",
-      "DeepSeek-V4-Pro",
-      "ERNIE-5.1"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [],
-    "note": "• 限时首购 5 折（每日限量）\n• 1000 万 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
-    "measuredMonthlyTokenLimit": 10
-  },
-  {
-    "vendor": "百度·千帆",
-    "plan": "Lite",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
-    "rating": 3,
-    "tags": [],
-    "firstMonthPrice": 19.9,
-    "monthlyPrice": 40,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5.2",
-      "GLM-5.1",
-      "Kimi-K2.6",
-      "DeepSeek-V4-Flash",
-      "DeepSeek-V4-Pro",
-      "ERNIE-5.1"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [],
-    "note": "• 限时首购 5 折（每日限量）\n• 4200 万 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
-    "measuredMonthlyTokenLimit": 42
-  },
-  {
-    "vendor": "百度·千帆",
-    "plan": "Pro",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
-    "rating": 3,
-    "tags": [],
-    "firstMonthPrice": 99.9,
-    "monthlyPrice": 200,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5.2",
-      "GLM-5.1",
-      "Kimi-K2.6",
-      "DeepSeek-V4-Flash",
-      "DeepSeek-V4-Pro",
-      "ERNIE-5.1"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [],
-    "note": "• 限时首购 5 折（每日限量）\n• 2.3 亿 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
-    "measuredMonthlyTokenLimit": 230
-  },
-  {
-    "vendor": "百度·千帆",
-    "plan": "Max",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
-    "rating": 3,
-    "tags": [],
-    "firstMonthPrice": 299.9,
-    "monthlyPrice": 600,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5.2",
-      "GLM-5.1",
-      "Kimi-K2.6",
-      "DeepSeek-V4-Flash",
-      "DeepSeek-V4-Pro",
-      "ERNIE-5.1"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [],
-    "note": "• 限时首购 5 折（每日限量）\n• 7 亿 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
-    "measuredMonthlyTokenLimit": 700
-  },
-  {
-    "vendor": "京东云",
-    "plan": "Lite",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
-    "rating": 3,
-    "tags": [],
-    "firstMonthPrice": 19.9,
-    "monthlyPrice": 40,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "Kimi-K2.5",
-      "GLM-5",
-      "MiniMax-M2.5",
-      "DeepSeek-V3.2",
-      "Qwen-3-Coder"
-    ],
-    "fiveHoursRequests": 1200,
-    "weeklyRequests": 9000,
-    "monthlyRequests": 18000,
-    "benefits": [],
-    "note": ""
-  },
-  {
-    "vendor": "京东云",
-    "plan": "Pro",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
-    "rating": 3,
-    "tags": [],
-    "firstMonthPrice": 99.9,
-    "monthlyPrice": 200,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "Kimi-K2.5",
-      "GLM-5",
-      "MiniMax-M2.5",
-      "DeepSeek-V3.2",
-      "Qwen-3-Coder"
-    ],
-    "fiveHoursRequests": 6000,
-    "weeklyRequests": 45000,
-    "monthlyRequests": 90000,
-    "benefits": [],
-    "note": ""
-  },
-  {
-    "vendor": "腾讯云",
-    "plan": "Lite",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqtengxunc",
-    "rating": 3,
-    "tags": [
-      "性价比高"
-    ],
     "firstMonthPrice": 7.9,
     "monthlyPrice": 40,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "HY-2.0",
-      "HY-T1",
-      "GLM-5",
-      "Kimi-K2.5",
       "MiniMax-M2.5"
     ],
     "fiveHoursRequests": 1200,
     "weeklyRequests": 9000,
     "monthlyRequests": 18000,
     "benefits": [],
-    "note": "",
-    "discontinued": true
+    "note": "• 模型较弱\n• 活动价首月 7.9 元，标准价 40 元/月，仅购买一个月时建议购买，不建议长期使用"
   },
   {
-    "vendor": "腾讯云",
+    "vendor": "移动云",
     "plan": "Pro",
     "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqtengxunc",
+    "action": "https://api.dreamfree.space/c/s/cpyqmobilecp",
     "rating": 3,
-    "tags": [
-      "性价比高"
-    ],
+    "tags": [],
     "firstMonthPrice": 39.9,
     "monthlyPrice": 200,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "HY-2.0",
-      "HY-T1",
-      "GLM-5",
-      "Kimi-K2.5",
       "MiniMax-M2.5"
     ],
     "fiveHoursRequests": 6000,
     "weeklyRequests": 45000,
     "monthlyRequests": 90000,
     "benefits": [],
-    "note": "",
-    "discontinued": true
-  },
-  {
-    "vendor": "腾讯云",
-    "plan": "Lite",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
-    "rating": 2,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 39,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "HY-2.0",
-      "GLM-5.1",
-      "MiniMax-M2.7",
-      "Kimi-K2.5"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [],
-    "note": "注意此为TokenPlan，而非CodingPlan。35M(3500万) Tokens 额度，约 70 轮问答",
-    "measuredMonthlyTokenLimit": 35
-  },
-  {
-    "vendor": "腾讯云",
-    "plan": "Standard",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
-    "rating": 2,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 99,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "HY-2.0",
-      "GLM-5.1",
-      "MiniMax-M2.7",
-      "Kimi-K2.5"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [],
-    "note": "注意此为TokenPlan，而非CodingPlan。100M(1亿) Tokens 额度，可执行约 200 轮问答",
-    "measuredMonthlyTokenLimit": 100
-  },
-  {
-    "vendor": "腾讯云",
-    "plan": "Pro",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
-    "rating": 2,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 299,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "HY-2.0",
-      "GLM-5.1",
-      "MiniMax-M2.7",
-      "Kimi-K2.5"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [],
-    "note": "注意此为TokenPlan，而非CodingPlan。320M(3.2亿) Tokens 额度",
-    "measuredMonthlyTokenLimit": 320
-  },
-  {
-    "vendor": "腾讯云",
-    "plan": "Max",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
-    "rating": 2,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 599,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "HY-2.0",
-      "GLM-5.1",
-      "MiniMax-M2.7",
-      "Kimi-K2.5"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [],
-    "note": "注意此为TokenPlan，而非CodingPlan。650M(6.5亿) Tokens 额度",
-    "measuredMonthlyTokenLimit": 650
+    "note": "• 模型较弱\n• 活动价首月 7.9 元，标准价 40 元/月，仅购买一个月时建议购买，不建议长期使用"
   },
   {
     "vendor": "阶跃星辰",
@@ -2235,120 +2567,62 @@
     "note": "• 当前主打 Step 自有模型，模型较弱\n• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算\n• 官方只有周限量无月限量，这里按照 1 月=4 周计算"
   },
   {
-    "vendor": "天翼云",
-    "plan": "GLM Lite",
+    "vendor": "TaoToken",
+    "plan": "Lite",
     "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqctyun",
-    "rating": 4,
-    "tags": [
-      "模型强"
-    ],
+    "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
+    "rating": 3,
     "firstMonthPrice": "-",
-    "monthlyPrice": 49,
+    "monthlyPrice": 39,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "GLM-5.1",
-      "GLM-5-Turbo"
+      "GLM-5.2"
     ],
-    "fiveHoursRequests": 1200,
-    "weeklyRequests": 6000,
-    "monthlyRequests": 24000,
+    "fiveHoursRequests": 600,
+    "weeklyRequests": 4200,
+    "monthlyRequests": "-",
     "benefits": [],
-    "note": "• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
+    "note": "已下线",
     "discontinued": true
   },
   {
-    "vendor": "天翼云",
-    "plan": "GLM Pro",
+    "vendor": "TaoToken",
+    "plan": "Pro",
     "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqctyun",
-    "rating": 4,
-    "tags": [
-      "模型强",
-      "性价比高"
-    ],
+    "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
+    "rating": 3,
     "firstMonthPrice": "-",
     "monthlyPrice": 149,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "GLM-5.1",
-      "GLM-5-Turbo",
-      "GLM-5"
+      "GLM-5.2"
     ],
-    "fiveHoursRequests": 6000,
-    "weeklyRequests": 30000,
-    "monthlyRequests": 120000,
+    "fiveHoursRequests": 2000,
+    "weeklyRequests": 15000,
+    "monthlyRequests": "-",
     "benefits": [],
-    "note": "• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
-    "discontinued": true
+    "note": ""
   },
   {
-    "vendor": "天翼云",
-    "plan": "GLM Max",
+    "vendor": "TaoToken",
+    "plan": "Max",
     "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqctyun",
-    "rating": 4,
-    "tags": [
-      "模型强",
-      "性价比高"
-    ],
+    "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
+    "rating": 3,
     "firstMonthPrice": "-",
-    "monthlyPrice": 469,
+    "monthlyPrice": 388,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "GLM-5.1",
-      "GLM-5-Turbo",
-      "GLM-5"
-    ],
-    "fiveHoursRequests": 24000,
-    "weeklyRequests": 120000,
-    "monthlyRequests": 480000,
-    "benefits": [],
-    "note": "• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
-    "discontinued": true
-  },
-  {
-    "vendor": "移动云",
-    "plan": "Lite",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqmobilecp",
-    "rating": 3,
-    "tags": [],
-    "firstMonthPrice": 7.9,
-    "monthlyPrice": 40,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "MiniMax-M2.5"
-    ],
-    "fiveHoursRequests": 1200,
-    "weeklyRequests": 9000,
-    "monthlyRequests": 18000,
-    "benefits": [],
-    "note": "• 模型较弱\n• 活动价首月 7.9 元，标准价 40 元/月，仅购买一个月时建议购买，不建议长期使用"
-  },
-  {
-    "vendor": "移动云",
-    "plan": "Pro",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqmobilecp",
-    "rating": 3,
-    "tags": [],
-    "firstMonthPrice": 39.9,
-    "monthlyPrice": 200,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "MiniMax-M2.5"
+      "GLM-5.2"
     ],
     "fiveHoursRequests": 6000,
-    "weeklyRequests": 45000,
-    "monthlyRequests": 90000,
+    "weeklyRequests": 35000,
+    "monthlyRequests": "-",
     "benefits": [],
-    "note": "• 模型较弱\n• 活动价首月 7.9 元，标准价 40 元/月，仅购买一个月时建议购买，不建议长期使用"
+    "note": ""
   },
   {
     "vendor": "超算",
@@ -2356,8 +2630,7 @@
     "type": "Coding Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqscnetcp",
     "rating": 2,
-    "tags": [
-    ],
+    "tags": [],
     "firstMonthPrice": "-",
     "monthlyPrice": 20,
     "quarterlyPrice": "-",
@@ -2378,8 +2651,7 @@
     "type": "Coding Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqscnetcp",
     "rating": 2,
-    "tags": [
-    ],
+    "tags": [],
     "firstMonthPrice": "-",
     "monthlyPrice": 100,
     "quarterlyPrice": "-",
@@ -2395,60 +2667,30 @@
     "note": "• 模型较弱"
   },
   {
-    "vendor": "无问芯穹",
-    "plan": "Lite",
+    "vendor": "商汤·日日新",
+    "plan": "Free·公测",
     "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqinfini",
-    "rating": 4,
+    "action": "https://api.dreamfree.space/c/s/cpyqsensenova",
+    "rating": 3,
     "tags": [
-      "模型强"
+      "性价比高"
     ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 40,
+    "firstMonthPrice": 0,
+    "monthlyPrice": 0,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "DeepSeek-V3.2",
-      "Kimi-K2.5",
-      "MiniMax-M2.5",
-      "MiniMax-M2.7",
-      "GLM-5",
-      "GLM-5.1"
+      "SenseNova 6.7 Flash-Lite",
+      "SenseNova U1 Fast",
+      "DeepSeek-V4-Flash"
     ],
-    "fiveHoursRequests": 1000,
-    "weeklyRequests": 6000,
-    "monthlyRequests": 12000,
-    "benefits": [],
-    "note": "• 当前售罄\n• 支持 GLM-5.1、MiniMax-M2.7，在新增平台里模型覆盖还可以，但没有 Kimi-K2.6、DeepSeek-V4-Pro、Qwen-3.6-Plus",
-    "discontinued": true
-  },
-  {
-    "vendor": "无问芯穹",
-    "plan": "Pro",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqinfini",
-    "rating": 4,
-    "tags": [
-      "模型强"
+    "fiveHoursRequests": 1500,
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "benefits": [
+      "256K 上下文"
     ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 200,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "DeepSeek-V3.2",
-      "Kimi-K2.5",
-      "MiniMax-M2.5",
-      "MiniMax-M2.7",
-      "GLM-5",
-      "GLM-5.1"
-    ],
-    "fiveHoursRequests": 5000,
-    "weeklyRequests": 30000,
-    "monthlyRequests": 60000,
-    "benefits": [],
-    "note": "• 当前售罄\n• 支持 GLM-5.1、MiniMax-M2.7，在新增平台里模型覆盖还可以，但没有 Kimi-K2.6、DeepSeek-V4-Pro、Qwen-3.6-Plus",
-    "discontinued": true
+    "note": "• 模型较弱\n• 免费公测，Lite / Pro 未上线\n• 日额度：SenseNova 6.7 Flash-Lite 1500 次、SenseNova U1 Fast 1500 次、DeepSeek-V4-Flash 150 次"
   },
   {
     "vendor": "摩尔线程",
@@ -2536,174 +2778,114 @@
     "discontinued": true
   },
   {
-    "vendor": "商汤·日日新",
-    "plan": "Free·公测",
+    "vendor": "天翼云",
+    "plan": "GLM Lite",
     "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqsensenova",
-    "rating": 3,
+    "action": "https://api.dreamfree.space/c/s/cpyqctyun",
+    "rating": 4,
     "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 49,
+    "quarterlyPrice": "-",
+    "yearlyPrice": "-",
+    "models": [
+      "GLM-5.1",
+      "GLM-5-Turbo"
+    ],
+    "fiveHoursRequests": 1200,
+    "weeklyRequests": 6000,
+    "monthlyRequests": 24000,
+    "benefits": [],
+    "note": "• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
+    "discontinued": true
+  },
+  {
+    "vendor": "天翼云",
+    "plan": "GLM Pro",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqctyun",
+    "rating": 4,
+    "tags": [
+      "模型强",
       "性价比高"
     ],
-    "firstMonthPrice": 0,
-    "monthlyPrice": 0,
+    "firstMonthPrice": "-",
+    "monthlyPrice": 149,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "SenseNova 6.7 Flash-Lite",
-      "SenseNova U1 Fast",
-      "DeepSeek-V4-Flash"
-    ],
-    "fiveHoursRequests": 1500,
-    "weeklyRequests": "未公开",
-    "monthlyRequests": "未公开",
-    "benefits": [
-      "256K 上下文"
-    ],
-    "note": "• 模型较弱\n• 免费公测，Lite / Pro 未上线\n• 日额度：SenseNova 6.7 Flash-Lite 1500 次、SenseNova U1 Fast 1500 次、DeepSeek-V4-Flash 150 次"
-  },
-  {
-    "vendor": "Ollama",
-    "plan": "Pro",
-    "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqollama",
-    "rating": 3,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 20,
-    "quarterlyPrice": "-",
-    "yearlyPrice": 200,
-    "models": [
-      "GLM-5.2",
       "GLM-5.1",
-      "Kimi-K2.6-Code",
-      "Kimi-K2.6",
-      "DeepSeek-V4-Pro",
-      "DeepSeek-V4-Flash",
-      "MiniMax-M3",
-      "Qwen-3.5",
-      "Gemini-3-Flash-Preview"
+      "GLM-5-Turbo",
+      "GLM-5"
     ],
-    "fiveHoursRequests": "未公开",
-    "weeklyRequests": "未公开",
-    "monthlyRequests": "未公开",
-    "currency": "$",
-    "benefits": [
-      "3 个并发任务"
-    ],
-    "note": "• 支持 GLM-5.2、Kimi-K2.6、MiniMax-M3、DeepSeek-V4-Pro，模型丰富\n• 用量按照GLM-5.2计算",
-    "measuredFiveHoursTokenLimit": "-",
-    "measuredWeeklyTokenLimit": 400,
-    "measuredMonthlyTokenLimit": 1600
+    "fiveHoursRequests": 6000,
+    "weeklyRequests": 30000,
+    "monthlyRequests": 120000,
+    "benefits": [],
+    "note": "• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
+    "discontinued": true
   },
   {
-    "vendor": "Ollama",
-    "plan": "Max",
+    "vendor": "天翼云",
+    "plan": "GLM Max",
     "type": "Coding Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqollama",
-    "rating": 3,
+    "action": "https://api.dreamfree.space/c/s/cpyqctyun",
+    "rating": 4,
     "tags": [
-      "模型强"
+      "模型强",
+      "性价比高"
     ],
     "firstMonthPrice": "-",
-    "monthlyPrice": 100,
+    "monthlyPrice": 469,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "GLM-5.2",
       "GLM-5.1",
-      "Kimi-K2.6-Code",
-      "Kimi-K2.6",
-      "DeepSeek-V4-Pro",
-      "DeepSeek-V4-Flash",
-      "MiniMax-M3",
-      "Qwen-3.5",
-      "Gemini-3-Flash-Preview"
+      "GLM-5-Turbo",
+      "GLM-5"
     ],
-    "fiveHoursRequests": "未公开",
-    "weeklyRequests": "未公开",
-    "monthlyRequests": "未公开",
-    "currency": "$",
-    "benefits": [
-      "10 个并发任务"
-    ],
-    "note": "• 暂时停售 • 支持 GLM-5.2、Kimi-K2.6、MiniMax-M3、DeepSeek-V4-Pro，模型丰富\n• 用量按照GLM-5.2计算",
-    "measuredFiveHoursTokenLimit": "-",
-    "measuredWeeklyTokenLimit": 2000,
-    "measuredMonthlyTokenLimit": 8000
+    "fiveHoursRequests": 24000,
+    "weeklyRequests": 120000,
+    "monthlyRequests": 480000,
+    "benefits": [],
+    "note": "• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
+    "discontinued": true
   },
   {
-    "vendor": "Claude",
-    "plan": "Pro",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqclaudeup",
+    "vendor": "无问芯穹",
+    "plan": "Lite",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqinfini",
     "rating": 4,
     "tags": [
       "模型强"
     ],
     "firstMonthPrice": "-",
-    "monthlyPrice": 20,
+    "monthlyPrice": 40,
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "Claude Sonnet 4.6",
-      "Claude Sonnet 4.5",
-      "Claude Opus 4.7",
-      "Claude Opus 4.6",
-      "Claude Opus 4.5",
-      "Claude Haiku 4.5"
+      "DeepSeek-V3.2",
+      "Kimi-K2.5",
+      "MiniMax-M2.5",
+      "MiniMax-M2.7",
+      "GLM-5",
+      "GLM-5.1"
     ],
-    "fiveHoursRequests": "Pro 基准",
-    "weeklyRequests": "Pro 基准",
-    "monthlyRequests": "未公开",
-    "currency": "$",
-    "benefits": [
-      "原生 Claude 体验"
-    ],
-    "note": "• 部分用户订阅时可能被要求实名认证\n• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent",
-    "measuredFiveHoursTokenLimit": 23,
-    "measuredWeeklyTokenLimit": 104,
-    "measuredMonthlyTokenLimit": 416
+    "fiveHoursRequests": 1000,
+    "weeklyRequests": 6000,
+    "monthlyRequests": 12000,
+    "benefits": [],
+    "note": "• 当前售罄\n• 支持 GLM-5.1、MiniMax-M2.7，在新增平台里模型覆盖还可以，但没有 Kimi-K2.6、DeepSeek-V4-Pro、Qwen-3.6-Plus",
+    "discontinued": true
   },
   {
-    "vendor": "Claude",
-    "plan": "Max *5",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqclaudeup",
-    "rating": 4,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 100,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "Claude Sonnet 4.6",
-      "Claude Sonnet 4.5",
-      "Claude Opus 4.7",
-      "Claude Opus 4.6",
-      "Claude Opus 4.5",
-      "Claude Haiku 4.5"
-    ],
-    "fiveHoursRequests": "Pro 的 5 倍",
-    "weeklyRequests": "Pro 的 5 倍",
-    "monthlyRequests": "未公开",
-    "currency": "$",
-    "benefits": [
-      "原生 Claude 体验"
-    ],
-    "note": "• 部分用户订阅时可能被要求实名认证\n• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent",
-    "measuredFiveHoursTokenLimit": 115,
-    "measuredWeeklyTokenLimit": 520,
-    "measuredMonthlyTokenLimit": 2080
-  },
-  {
-    "vendor": "Claude",
-    "plan": "Max *20",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqclaudeup",
+    "vendor": "无问芯穹",
+    "plan": "Pro",
+    "type": "Coding Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqinfini",
     "rating": 4,
     "tags": [
       "模型强"
@@ -2713,210 +2895,18 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
-      "Claude Sonnet 4.6",
-      "Claude Sonnet 4.5",
-      "Claude Opus 4.7",
-      "Claude Opus 4.6",
-      "Claude Opus 4.5",
-      "Claude Haiku 4.5"
-    ],
-    "fiveHoursRequests": "Pro 的 20 倍",
-    "weeklyRequests": "Pro 的 20 倍",
-    "monthlyRequests": "未公开",
-    "currency": "$",
-    "benefits": [
-      "原生 Claude 体验"
-    ],
-    "note": "• 部分用户订阅时可能被要求实名认证\n• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent",
-    "measuredFiveHoursTokenLimit": 460,
-    "measuredWeeklyTokenLimit": 2080,
-    "measuredMonthlyTokenLimit": 8320
-  },
-  {
-    "vendor": "GitHub",
-    "plan": "学生",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqghstudent",
-    "rating": 5,
-    "tags": [
-      "模型强",
-      "性价比高"
-    ],
-    "firstMonthPrice": 0,
-    "monthlyPrice": 0,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GPT-4o",
-      "GPT-4.1",
-      "GPT-5-mini",
-      "GPT-5.2-Codex",
-      "Gemini 3.1 Pro",
-      "Claude Haiku 4.5",
-      "Grok Code Fast 1"
-    ],
-    "fiveHoursRequests": "未公开",
-    "weeklyRequests": "未公开",
-    "monthlyRequests": "未公开",
-    "currency": "$",
-    "benefits": [
-      "学生认证免费"
-    ],
-    "note": "• 学生认证免费，高级模型可对话 300 次\n• 存在周限额和 session 限额，不同模型有不同扣减倍率\n• 学生版可通过 Auto 模式路由至 GPT-5.3-Codex"
-  },
-  {
-    "vendor": "GitHub",
-    "plan": "Pro",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqghcopilot",
-    "rating": 3,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 10,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GPT-5.3-Codex",
-      "GPT-5.4",
-      "Claude Sonnet 4.6",
-      "Gemini 3.1 Pro",
-      "Grok Code Fast 1"
-    ],
-    "fiveHoursRequests": "未公开",
-    "weeklyRequests": "未公开",
-    "monthlyRequests": "未公开",
-    "currency": "$",
-    "benefits": [
-      "1000 积分"
-    ],
-    "note": "• 存在周限额和 session 限额；不同模型有不同高级模型扣减倍率\n• 已改为用 token 计费模式"
-  },
-  {
-    "vendor": "GitHub",
-    "plan": "Pro+",
-    "type": "Token Plan",
-    "action": "https://api.dreamfree.space/c/s/cpyqghcopilotp",
-    "rating": 3,
-    "tags": [
-      "模型强"
-    ],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 39,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GPT-5.5",
-      "GPT-5.4",
-      "GPT-5.3-Codex",
-      "Claude Opus 4.7",
-      "Claude Sonnet 4.6",
-      "Gemini 3.1 Pro"
-    ],
-    "fiveHoursRequests": "未公开",
-    "weeklyRequests": "未公开",
-    "monthlyRequests": "未公开",
-    "currency": "$",
-    "benefits": [
-      "3900 积分"
-    ],
-    "note": "• 存在周限额和 session 限额；不同模型有不同高级模型扣减倍率\n• 已改为用 token 计费模式"
-  },
-  {
-    "vendor": "华为云",
-    "plan": "Lite",
-    "type": "Token Plan",
-    "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
-    "rating": 3,
-    "tags": [],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 59,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5.1",
+      "DeepSeek-V3.2",
+      "Kimi-K2.5",
+      "MiniMax-M2.5",
+      "MiniMax-M2.7",
       "GLM-5",
-      "Kimi-K2.6",
-      "DeepSeek-V4-Flash"
+      "GLM-5.1"
     ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
+    "fiveHoursRequests": 5000,
+    "weeklyRequests": 30000,
+    "monthlyRequests": 60000,
     "benefits": [],
-    "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止",
-    "measuredMonthlyTokenLimit": 50
-  },
-  {
-    "vendor": "华为云",
-    "plan": "Standard",
-    "type": "Token Plan",
-    "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
-    "rating": 3,
-    "tags": [],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 149,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5.1",
-      "GLM-5",
-      "Kimi-K2.6",
-      "DeepSeek-V4-Flash"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [],
-    "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n• 页面标\"最受欢迎\"档",
-    "measuredMonthlyTokenLimit": 130
-  },
-  {
-    "vendor": "华为云",
-    "plan": "Pro",
-    "type": "Token Plan",
-    "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
-    "rating": 3,
-    "tags": [],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 399,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5.1",
-      "GLM-5",
-      "Kimi-K2.6",
-      "DeepSeek-V4-Flash"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [],
-    "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止",
-    "measuredMonthlyTokenLimit": 380
-  },
-  {
-    "vendor": "华为云",
-    "plan": "Max",
-    "type": "Token Plan",
-    "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
-    "rating": 3,
-    "tags": [],
-    "firstMonthPrice": "-",
-    "monthlyPrice": 799,
-    "quarterlyPrice": "-",
-    "yearlyPrice": "-",
-    "models": [
-      "GLM-5.1",
-      "GLM-5",
-      "Kimi-K2.6",
-      "DeepSeek-V4-Flash"
-    ],
-    "fiveHoursRequests": "无限制",
-    "weeklyRequests": "无限制",
-    "monthlyRequests": "无限制",
-    "benefits": [],
-    "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止",
-    "measuredMonthlyTokenLimit": 880
+    "note": "• 当前售罄\n• 支持 GLM-5.1、MiniMax-M2.7，在新增平台里模型覆盖还可以，但没有 Kimi-K2.6、DeepSeek-V4-Pro、Qwen-3.6-Plus",
+    "discontinued": true
   }
 ]
