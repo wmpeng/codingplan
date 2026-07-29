@@ -911,7 +911,6 @@
     "monthlyRequests": "未公开",
     "currency": "$",
     "benefits": [
-      "首月半价"
     ],
     "note": "• 套餐额度按美元 Credits 计：基础 12 美元、周额度 30 美元、月额度 60 美元\n• 实际计费按 token 消耗"
   },
@@ -1062,7 +1061,6 @@
     "weeklyRequests": 700,
     "monthlyRequests": 2000,
     "benefits": [
-      "联网搜索 50次/月"
     ],
     "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
     "measuredMonthlyTokenLimit": 22
@@ -1099,7 +1097,6 @@
     "weeklyRequests": 3500,
     "monthlyRequests": 10000,
     "benefits": [
-      "联网搜索 150次/月"
     ],
     "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
     "measuredMonthlyTokenLimit": 111
@@ -1136,7 +1133,6 @@
     "weeklyRequests": 8750,
     "monthlyRequests": 25000,
     "benefits": [
-      "联网搜索 400次/月"
     ],
     "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
     "measuredMonthlyTokenLimit": 278
@@ -1173,7 +1169,6 @@
     "weeklyRequests": 17500,
     "monthlyRequests": 50000,
     "benefits": [
-      "联网搜索 800次/月"
     ],
     "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
     "measuredMonthlyTokenLimit": 556

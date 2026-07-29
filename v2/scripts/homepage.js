@@ -1412,6 +1412,7 @@
                     <td class="plan-tags-cell">${renderPlanTags(plan)}</td>
                     <td><span class="price">${formatPlanPriceDisplay(plan, plan.firstMonthPrice)} <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">${formatPlanPriceDisplay(plan, plan.monthlyPrice)} <span class="unit">/ 月</span></span></td>
+                    <td><span class="price-monthly">${formatPricePerMillionToken(plan)}</span></td>
                     <td><span class="price-normal">${formatPlanPriceDisplay(plan, plan.quarterlyPrice)} <span class="price-original">${formatPlanPriceDisplay(plan, plan.monthlyPrice * 3)}</span> <span class="unit">/ 季</span></span></td>
                     <td><span class="price-normal">${formatPlanPriceDisplay(plan, plan.yearlyPrice)} <span class="price-original">${formatPlanPriceDisplay(plan, plan.monthlyPrice * 12)}</span> <span class="unit">/ 年</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.fiveHoursRequests)} <span class="unit">/ 5小时</span></span></td>
@@ -1420,7 +1421,6 @@
                     <td><span class="request-count">${formatMeasuredToken(plan.measuredFiveHoursTokenLimit)}</span></td>
                     <td><span class="request-count">${formatMeasuredToken(plan.measuredWeeklyTokenLimit)}</span></td>
                     <td><span class="request-count">${formatMeasuredToken(plan.measuredMonthlyTokenLimit)}</span></td>
-                    <td><span class="price-monthly">${formatPricePerMillionToken(plan)}</span></td>
                     <td>
                         ${plan.models.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
                     </td>

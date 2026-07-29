@@ -281,6 +281,7 @@
       "action": "跳转链接",
       "firstMonthPrice": "首月价格",
       "monthlyPrice": "连续包月",
+      "pricePerMillionToken": "综合单价",
       "quarterlyPrice": "连续包季",
       "yearlyPrice": "连续包年",
       "models": "支持模型",
@@ -290,7 +291,6 @@
       "measuredFiveHoursTokenLimit": "实测5h Token",
       "measuredWeeklyTokenLimit": "实测周Token",
       "measuredMonthlyTokenLimit": "实测月Token",
-      "pricePerMillionToken": "综合单价",
       "benefits": "其他权益",
       "discontinued": "状态",
       "note": "备注"
