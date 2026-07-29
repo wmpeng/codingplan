@@ -351,7 +351,8 @@
     "monthlyRequests": "未公开",
     "currency": "$",
     "benefits": [],
-    "note": "• 套餐额度按美元 Credits 计：基础 12 美元、周额度 30 美元、月额度 60 美元\n• 实际计费按 token 消耗"
+    "note": "• 套餐额度按美元 Credits 计：基础 12 美元、周额度 30 美元、月额度 60 美元\n• 实际计费按 token 消耗",
+    "measuredMonthlyTokenLimit": 170
   },
   {
     "vendor": "字节·方舟",
