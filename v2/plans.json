@@ -1,6 +1,92 @@
 [
   {
     "vendor": "智谱国际版",
+    "plan": "新Lite",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqzai",
+    "rating": 4,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": 16.2,
+    "monthlyPrice": 18,
+    "quarterlyPrice": 43.2,
+    "yearlyPrice": 151.2,
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "GLM-5-Turbo"
+    ],
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "currency": "$",
+    "benefits": [],
+    "note": "• 中值约 0.65 亿 Token/周（官方区间 0.43～0.87 亿），Quarterly -20%，Yearly -30%",
+    "measuredFiveHoursTokenLimit": 13,
+    "measuredWeeklyTokenLimit": 65,
+    "measuredMonthlyTokenLimit": 260
+  },
+  {
+    "vendor": "智谱国际版",
+    "plan": "新Pro",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqzai",
+    "rating": 4,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": 72,
+    "monthlyPrice": 80,
+    "quarterlyPrice": 192,
+    "yearlyPrice": 672,
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "GLM-5-Turbo",
+      "GLM-5"
+    ],
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "currency": "$",
+    "benefits": [],
+    "note": "• 6 倍 Lite 用量，中值约 3.95 亿 Token/周，Quarterly -20%，Yearly -30%",
+    "measuredFiveHoursTokenLimit": 79,
+    "measuredWeeklyTokenLimit": 395,
+    "measuredMonthlyTokenLimit": 1580
+  },
+  {
+    "vendor": "智谱国际版",
+    "plan": "新Max",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqzai",
+    "rating": 4,
+    "tags": [
+      "模型强"
+    ],
+    "firstMonthPrice": 151.2,
+    "monthlyPrice": 168,
+    "quarterlyPrice": 403.2,
+    "yearlyPrice": 1411.2,
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "GLM-5-Turbo",
+      "GLM-5"
+    ],
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "currency": "$",
+    "benefits": [],
+    "note": "• 14 倍 Lite 用量，中值约 9.20 亿 Token/周，Quarterly -20%，Yearly -30%",
+    "measuredFiveHoursTokenLimit": 184,
+    "measuredWeeklyTokenLimit": 920,
+    "measuredMonthlyTokenLimit": 3680
+  },
+  {
+    "vendor": "智谱国际版",
     "plan": "Lite",
     "type": "Coding Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqzai",
@@ -25,6 +111,7 @@
       "免费MCP次数"
     ],
     "note": "• 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算\n• 实测用量参考国内版同档",
+    "discontinued": true,
     "measuredFiveHoursTokenLimit": 6,
     "measuredWeeklyTokenLimit": 30,
     "measuredMonthlyTokenLimit": 120
@@ -56,6 +143,7 @@
       "免费MCP次数"
     ],
     "note": "• 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算\n• 实测用量参考国内版同档",
+    "discontinued": true,
     "measuredFiveHoursTokenLimit": 30,
     "measuredWeeklyTokenLimit": 150,
     "measuredMonthlyTokenLimit": 600
@@ -87,6 +175,7 @@
       "免费MCP次数"
     ],
     "note": "• 4倍Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算\n• 实测用量参考国内版同档",
+    "discontinued": true,
     "measuredFiveHoursTokenLimit": 120,
     "measuredWeeklyTokenLimit": 600,
     "measuredMonthlyTokenLimit": 2400
@@ -693,6 +782,92 @@
   },
   {
     "vendor": "智谱AI",
+    "plan": "新Lite",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 118,
+    "quarterlyPrice": 283.2,
+    "yearlyPrice": 991.2,
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "GLM-5-Turbo"
+    ],
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "benefits": [],
+    "note": "• 中值约 0.65 亿 Token/周（官方区间 0.43～0.87 亿），连续包月 8 折，连续包年 7 折",
+    "measuredFiveHoursTokenLimit": 13,
+    "measuredWeeklyTokenLimit": 65,
+    "measuredMonthlyTokenLimit": 260
+  },
+  {
+    "vendor": "智谱AI",
+    "plan": "新Pro",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 538,
+    "quarterlyPrice": 1291.2,
+    "yearlyPrice": 4519.2,
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "GLM-5-Turbo",
+      "GLM-5"
+    ],
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "benefits": [],
+    "note": "• 6 倍 Lite 用量，中值约 3.95 亿 Token/周，连续包月 8 折，连续包年 7 折",
+    "measuredFiveHoursTokenLimit": 79,
+    "measuredWeeklyTokenLimit": 395,
+    "measuredMonthlyTokenLimit": 1580
+  },
+  {
+    "vendor": "智谱AI",
+    "plan": "新Max",
+    "type": "Token Plan",
+    "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
+    "rating": 5,
+    "tags": [
+      "模型强",
+      "性价比高"
+    ],
+    "firstMonthPrice": "-",
+    "monthlyPrice": 1078,
+    "quarterlyPrice": 2587.2,
+    "yearlyPrice": 9055.2,
+    "models": [
+      "GLM-5.1",
+      "GLM-5.2",
+      "GLM-5-Turbo",
+      "GLM-5"
+    ],
+    "fiveHoursRequests": "未公开",
+    "weeklyRequests": "未公开",
+    "monthlyRequests": "未公开",
+    "benefits": [],
+    "note": "• 14 倍 Lite 用量，中值约 9.20 亿 Token/周，连续包月 8 折，连续包年 7 折",
+    "measuredFiveHoursTokenLimit": 184,
+    "measuredWeeklyTokenLimit": 920,
+    "measuredMonthlyTokenLimit": 3680
+  },
+  {
+    "vendor": "智谱AI",
     "plan": "Lite",
     "type": "Coding Plan",
     "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
@@ -717,6 +892,7 @@
       "免费MCP次数"
     ],
     "note": "• 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
+    "discontinued": true,
     "measuredFiveHoursTokenLimit": 6,
     "measuredWeeklyTokenLimit": 30,
     "measuredMonthlyTokenLimit": 120
@@ -748,6 +924,7 @@
       "免费MCP次数"
     ],
     "note": "• 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
+    "discontinued": true,
     "measuredFiveHoursTokenLimit": 30,
     "measuredWeeklyTokenLimit": 150,
     "measuredMonthlyTokenLimit": 600
@@ -779,6 +956,7 @@
       "免费MCP次数"
     ],
     "note": "• 20倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
+    "discontinued": true,
     "measuredFiveHoursTokenLimit": 120,
     "measuredWeeklyTokenLimit": 600,
     "measuredMonthlyTokenLimit": 2400
