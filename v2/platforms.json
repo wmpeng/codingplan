@@ -2,7 +2,7 @@
   {
     "id": "zhipu-intl",
     "name": "智谱国际版",
-    "rating": 4,
+    "rating": 5,
     "summary": "国内版的替代，无需抢购。",
     "detail": "智谱国际版在模型与套餐额度上与国内 Coding Plan 相同，适合长期抢不到国内名额、又想要使用 GLM 旗舰模型的用户。",
     "dimensions": {
@@ -117,8 +117,8 @@
   {
     "id": "zhipu",
     "name": "智谱AI",
-    "rating": 4,
-    "summary": "需抢购，且从6.17开始基本不放名额。可考虑购买智谱国际版。",
+    "rating": 5,
+    "summary": "涨价后新套餐无需抢购。",
     "dimensions": {
       "value": {
         "score": 4,
