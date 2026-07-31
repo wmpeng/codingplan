@@ -1422,10 +1422,10 @@
     "benefits": [
       "3 个并发任务"
     ],
-    "note": "• 支持 GLM-5.2、Kimi-K2.6、MiniMax-M3、DeepSeek-V4-Pro，模型丰富\n• 用量按照GLM-5.2计算",
+    "note": "• 支持 GLM-5.2、Kimi-K2.6、MiniMax-M3、DeepSeek-V4-Pro，模型丰富\n• 倍率大约x10，用量按照GLM-5.2估计，",
     "measuredFiveHoursTokenLimit": "-",
-    "measuredWeeklyTokenLimit": 400,
-    "measuredMonthlyTokenLimit": 1600
+    "measuredWeeklyTokenLimit": 125,
+    "measuredMonthlyTokenLimit": 500
   },
   {
     "vendor": "Ollama",
@@ -1458,10 +1458,10 @@
     "benefits": [
       "10 个并发任务"
     ],
-    "note": "• 暂时停售 • 支持 GLM-5.2、Kimi-K2.6、MiniMax-M3、DeepSeek-V4-Pro，模型丰富\n• 用量按照GLM-5.2计算",
+    "note": "• 暂时停售 • 支持 GLM-5.2、Kimi-K2.6、MiniMax-M3、DeepSeek-V4-Pro，模型丰富\n• 用量按照GLM-5.2估计",
     "measuredFiveHoursTokenLimit": "-",
-    "measuredWeeklyTokenLimit": 2000,
-    "measuredMonthlyTokenLimit": 8000
+    "measuredWeeklyTokenLimit": 625,
+    "measuredMonthlyTokenLimit": 2500
   },
   {
     "vendor": "阿里·百炼",
