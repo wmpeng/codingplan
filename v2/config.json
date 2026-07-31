@@ -288,9 +288,9 @@
       "fiveHoursRequests": "5小时请求数",
       "weeklyRequests": "每周请求数",
       "monthlyRequests": "每月请求数",
-      "measuredFiveHoursTokenLimit": "实测5h Token",
-      "measuredWeeklyTokenLimit": "实测周Token",
-      "measuredMonthlyTokenLimit": "实测月Token",
+      "measuredFiveHoursTokenLimit": "5h Token",
+      "measuredWeeklyTokenLimit": "周Token",
+      "measuredMonthlyTokenLimit": "月Token",
       "benefits": "其他权益",
       "discontinued": "状态",
       "note": "备注"

@@ -8,8 +8,8 @@
     "dimensions": {
       "value": {
         "score": 4,
-        "reason": "用量与国内版完全一致，但价格折算后约为国内版两倍左右。",
-        "detail": "用量与国内版完全一致，但价格折算后约为国内版两倍左右。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享9折。[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)内有成品号出售。"
+        "reason": "用量与国内版一致，新套餐价格也基本一致。",
+        "detail": "用量与国内版完全一致，新套餐价格也基本一致。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享9折。[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)内有成品号出售。"
       },
       "models": {
         "score": 5,
@@ -117,12 +117,12 @@
   {
     "id": "zhipu",
     "name": "智谱AI",
-    "rating": 5,
+    "rating": 4,
     "summary": "需抢购，且从6.17开始基本不放名额。可考虑购买智谱国际版。",
     "dimensions": {
       "value": {
         "score": 4,
-        "reason": "GLM Coding Plan 定价适中，[查看模型用量](index.html?view=plans)，模型能力对得起月费，但名额紧俏时性价比感知会打折。"
+        "reason": "新套餐价格翻倍，性价比有所下降，[查看套餐用量](index.html?view=plans)。"
       },
       "models": {
         "score": 5,
@@ -165,7 +165,7 @@
     "name": "共继算力",
     "rating": 5,
     "summary": "DeepSeek 等模型官方约 8 折按量，人少时更稳，适合灵活充值调用。",
-    "detail": "共继算力以 API 按量为主，DeepSeek-V4-Pro 常见为官方约 8 折（如输入 2.4 / 缓存 0.02 / 输出 4.8 元/M），在官方高峰涨价后价差更明显。同时覆盖 GLM、Kimi、Qwen 等常见模型。务必通过邀请链接进入以锁定折扣与额外额度；平台体量相对较小，人数不多时稳定性体感较好，但仍建议关注公告与限流。不提供传统 Coding Plan / Token Plan 档位，按充值用量消费。",
+    "detail": "共继算力以 API 按量为主，DeepSeek-V4-Pro 常见为官方约 8 折（如输入 2.4 / 缓存 0.02 / 输出 4.8 元/M）。同时覆盖 GLM、Kimi、Qwen 等常见模型。务必通过邀请链接进入以锁定折扣与额外额度；平台体量相对较小，人数不多时稳定性体感较好，但仍建议关注公告与限流。不提供传统 Coding Plan / Token Plan 档位，按充值用量消费。",
     "dimensions": {
       "value": {
         "score": 5,
