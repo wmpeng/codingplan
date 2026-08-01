@@ -15,7 +15,7 @@
     "defaultSelectedTags": [],
     "operationalTags": [
     ],
-    "defaultPlatformStatusMax": "limited",
+    "defaultPlatformStatusMax": "paused",
     "derivedTags": [
       {
         "id": "high-value",

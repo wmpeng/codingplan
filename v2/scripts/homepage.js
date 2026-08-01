@@ -16,7 +16,7 @@
         let allPlatforms = [];
         let paygPricing = {};
         let platformSelectedLabels = [];
-        let platformStatusMax = 'limited';
+        let platformStatusMax = 'paused';
         let platformPinnedIds = [];
         let planPinnedIds = [];
         let currentSort = { column: null, direction: 'asc' };
@@ -1537,7 +1537,7 @@
                     platformCatalog: {
                         defaultSelectedTags: [],
                         operationalTags: ["热门模型", "高用量工作流", "可支付宝", "按量调用"],
-                        defaultPlatformStatusMax: "limited",
+                        defaultPlatformStatusMax: "paused",
                         derivedTags: [
                             { id: "high-value", label: "性价比高", rule: { dimension: "value", minScore: 4 } },
                             { id: "broad-models", label: "模型强", rule: { dimension: "models", minScore: 4 } },
@@ -1985,7 +1985,7 @@
             return appConfig.platformCatalog || {
                 defaultSelectedTags: [],
                 operationalTags: [],
-                defaultPlatformStatusMax: 'limited',
+                defaultPlatformStatusMax: 'paused',
                 derivedTags: []
             };
         }
@@ -1995,7 +1995,7 @@
             const fallback =
                 typeof PlatformCatalog !== 'undefined' && PlatformCatalog.DEFAULT_PLATFORM_STATUS_MAX
                     ? PlatformCatalog.DEFAULT_PLATFORM_STATUS_MAX
-                    : 'limited';
+                    : 'paused';
             const value = cat.defaultPlatformStatusMax || fallback;
             return typeof PlatformCatalog !== 'undefined' && PlatformCatalog.normalizePlatformStatus
                 ? PlatformCatalog.normalizePlatformStatus(value)

@@ -21,7 +21,7 @@ const PLATFORM_STATUS_SEGMENT_LABELS = {
   delisted: '所有'
 };
 const PLATFORM_STATUS_FILTER_SUFFIX = '平台';
-const DEFAULT_PLATFORM_STATUS_MAX = 'limited';
+const DEFAULT_PLATFORM_STATUS_MAX = 'paused';
 
 function escapeHtml(text) {
   if (text === null || text === undefined) return '';

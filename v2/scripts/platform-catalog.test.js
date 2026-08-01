@@ -131,19 +131,20 @@ describe('filterPlatforms', () => {
     );
   });
 
-  it('defaults platformStatusMax to limited', () => {
-    assert.equal(DEFAULT_PLATFORM_STATUS_MAX, 'limited');
+  it('defaults platformStatusMax to paused', () => {
+    assert.equal(DEFAULT_PLATFORM_STATUS_MAX, 'paused');
     const platforms = [
       samplePlatform({ id: '1' }),
       samplePlatform({ id: '2', platformStatus: 'limited' }),
-      samplePlatform({ id: '3', platformStatus: 'delisted' })
+      samplePlatform({ id: '3', platformStatus: 'paused' }),
+      samplePlatform({ id: '4', platformStatus: 'delisted' })
     ];
     const result = filterPlatforms(platforms, {
       selectedLabels: [],
       derivedTags,
       operationalTags: []
     });
-    assert.deepEqual(result.map(p => p.id), ['1', '2']);
+    assert.deepEqual(result.map(p => p.id), ['1', '2', '3']);
   });
 
   it('keeps pinned platforms even when filters would hide them', () => {
