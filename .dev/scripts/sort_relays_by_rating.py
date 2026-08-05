@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""将 codingplan/relays.json 中的平台条目按 matrix.rating.stars（综合评价）降序排序。"""
+"""将 codingplan/v1/relays.json 中的平台条目按 matrix.rating.stars（综合评价）降序排序。"""
 
 import argparse
 import json
 from pathlib import Path
 
-DEFAULT_RELAYS_PATH = str(Path(__file__).resolve().parents[2] / "relays.json")
+DEFAULT_RELAYS_PATH = str(Path(__file__).resolve().parents[2] / "v1" / "relays.json")
 
 
 def _rating_stars(entry):

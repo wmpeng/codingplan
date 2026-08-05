@@ -1,14 +1,47 @@
 {
   "header": {
-    "title": "AI Coding Plan 对比",
-    "updateDate": "更新日期2026.7.19 | 字节·方舟 / Kimi 追加支持 Kimi-K3 模型；Codex 追加支持 GPT-5.6 模型",
-    "subtitle": "29大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、讯飞·星火、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比\n支持DeepSeek V4，GLM-5.2，Qwen-3.7-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
-    "models": "DeepSeek 直连即将进入峰谷计费，成本波动会变大；同时不少 Coding Plan 仍存在限购。首页新增“DeepSeek 涨价应对”推荐分组，优先帮你找支持 DeepSeek-V4 且更容易买到的替代平台。",
+    "title": "AI Coding Plan 平台评测与对比",
+    "updateDate": "更新日期 2026.7.30 | 智谱国内&国际版发布新套餐，更新Ollama预估用量",
+    "subtitle": "31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比。<br>涵盖DeepSeek V4，GLM-5.2，Qwen-3.7-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
+    "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
     "entry": {
       "url": "https://github.com/wmpeng/codingplan/issues",
       "text": "Github 反馈"
     }
+  },
+  "usdToCnyRate": 6.8,
+  "platformCatalog": {
+    "defaultSelectedTags": [],
+    "operationalTags": [
+    ],
+    "defaultPlatformStatusMax": "paused",
+    "derivedTags": [
+      {
+        "id": "high-value",
+        "label": "性价比高",
+        "rule": {
+          "dimension": "value",
+          "minScore": 4
+        }
+      },
+      {
+        "id": "broad-models",
+        "label": "模型强",
+        "rule": {
+          "dimension": "models",
+          "minScore": 4
+        }
+      },
+      {
+        "id": "stable",
+        "label": "可用性好",
+        "rule": {
+          "dimension": "stability",
+          "minScore": 4
+        }
+      }
+    ]
   },
   "feedback": {
     "triggerText": "加入用户群获取最新消息",
@@ -64,7 +97,7 @@
           "reasons": [
             "无需抢购",
             "支持GLM-5.2，国内最强的代码模型之一",
-            "用量与国内版完全一致，价格大约为国内版两倍左右。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享额外9折"
+            "用量与国内版完全一致，价格大约为国内版两倍左右。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享额外9折。有成品号出售，加入[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)查看群公告了解详情。"
           ]
         },
         {
@@ -196,7 +229,7 @@
       "rating": 5,
       "reasons": [
         "支持MiniMax-M3模型。+0.5",
-        "额度依然最高。适合养龙虾或者作为日常编程任务或者助手。+1",
+        "额度依然最高，适合高频编码、自动化任务与长上下文工作流。+1",
         "支持多模态。+0.5"
       ]
     },
@@ -204,8 +237,8 @@
       "name": "字节·方舟",
       "rating": 5,
       "reasons": [
-        "原本部分模型倍率较高，用量较少。目前2.5折，且目前有为期一个月的用量2.5倍活动。相当于原本10倍的性价比，从拉到夯。+1",
-        "支持GLM-5.2，DeepSeek-V4-Pro/Flash，MiniMax-M3，Kimi-K2.6，Kimi-K2.7-Code。唯一一家同时支持GLM，DeepSeek-V4-Pro/Flash，MiniMax，Kimi四家最新模型的平台。+1"
+        "原本部分模型倍率较高、用量较少；目前2.5折且有为期一个月的用量2.5倍活动，折算后短期性价比显著提升。+1",
+        "支持GLM-5.2，DeepSeek-V4-Pro/Flash，MiniMax-M3，Kimi-K2.6，Kimi-K2.7-Code，Kimi-K3。唯一一家同时支持GLM，DeepSeek-V4-Pro/Flash，MiniMax，Kimi四家最新模型的平台。+1"
       ]
     },
     {
@@ -219,11 +252,10 @@
       ]
     }
   ],
-  "ratingGuide": "基准3颗星，价格优势劣势1分，模型优势或独占模型1分，其他优势1分。TokenPlan因性价比较低，暂不推荐，能买CodingPlan尽量买CodingPlan",
   "notes": [
     "包季/包年价格中的划线数字表示原始价格（包月×3 或 包月×12），未划线的为实际优惠价格。",
     "使用表格邀请链接，部分平台可享优惠",
-    "每元Token数（月）和 1M Token价格（月）来自月度使用量衍生数据，按每月窗口折算，仅供横向对比参考。",
+    "综合单价 = 连续包月价（美元按汇率折算人民币）÷ 实测月 Token，单位为 ￥/M Token；缺数时显示「-」，仅供横向对比。",
     "本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议"
   ],
   "accountSale": {
@@ -249,22 +281,20 @@
       "action": "跳转链接",
       "firstMonthPrice": "首月价格",
       "monthlyPrice": "连续包月",
+      "pricePerMillionToken": "综合单价",
       "quarterlyPrice": "连续包季",
       "yearlyPrice": "连续包年",
       "models": "支持模型",
       "fiveHoursRequests": "5小时请求数",
       "weeklyRequests": "每周请求数",
       "monthlyRequests": "每月请求数",
-      "tokenLimit": "月Token上限",
+      "measuredFiveHoursTokenLimit": "5h Token",
+      "measuredWeeklyTokenLimit": "周Token",
+      "measuredMonthlyTokenLimit": "月Token",
       "benefits": "其他权益",
       "discontinued": "状态",
       "note": "备注"
     }
-  },
-  "usageCharts": {
-    "valueYLog": false,
-    "costXLog": true,
-    "costYLog": true
   },
   "filters": {
     "vendor": "平台",
@@ -274,8 +304,7 @@
     "monthlyPrice": "包月价格",
     "quarterlyPrice": "包季价格",
     "yearlyPrice": "包年价格",
-    "tokenLimit": "月Token上限(/M）",
-    "reset": "重置筛选",
+    "reset": "清空筛选",
     "stats": "显示 {showing} / {total} 个套餐"
   },
   "priceFilter": {
@@ -285,18 +314,53 @@
   },
   "updates": [
     {
-      "date": "2026.7.10",
+      "date": "2026.7.30",
       "items": [
-        "讯飞·星火 速通版（699元/月）上线，专注 GLM-5.2 / DeepSeek-V4-Pro / Kimi-K2.7-Code 三大顶级模型",
-        "讯飞·星火 专业版（39元）已下架"
+        "智谱国内&国际版更新新套餐",
+        "更新Ollama预估用量"
+      ]
+    },
+    {
+      "date": "2026.7.27",
+      "items": [
+        "百度·千帆上线 Token Plan 个人版：Mini / Lite / Pro / Max 四档，限时首购 5 折（4.9 / 19.9 / 99.9 / 299.9 元起）；原 Coding Plan（Lite / Pro）标为已下线",
+        "百度·千帆 Token Plan 模型为 GLM-5.2、GLM-5.1、Kimi-K2.6、DeepSeek-V4-Flash、DeepSeek-V4-Pro、ERNIE-5.1"
+      ]
+    },
+    {
+      "date": "2026.7.25",
+      "items": [
+        "站点换新，V2新站点上线，可通过右上方设置切换至旧站点"
+      ]
+    },
+    {
+      "date": "2026.7.20",
+      "items": [
+        "平台目录新增按量调用平台：DeepSeek 官方、共绩算力（定价见 payg-pricing.json，不进套餐大表）",
+        "筛选标签新增「按量调用」；DeepSeek Flash / Pro 虚拟套餐条目保持不动"
       ]
     },
     {
       "date": "2026.7.19",
       "items": [
-        "字节·方舟 Coding Plan / Token Plan 全部档位追加支持 Kimi-K3 模型",
+        "字节·方舟 Token Plan（Small / Medium / Large / Max）追加支持 Kimi-K3 模型",
         "Kimi Coding Plan（Andante / Moderato / Allegretto / Allegro）追加支持 Kimi-K3 模型",
-        "Codex Token Plan（Plus / Pro *5 / Pro *20）追加支持 GPT-5.6 模型"
+        "OpenCode Go 追加支持 Kimi-K3 模型"
+      ]
+    },
+    {
+      "date": "2026.7.15",
+      "items": [
+        "首页改版：新增平台目录与标签筛选（默认「无需抢购」），页头叙事调整为「选平台」",
+        "推荐分组精简为「综合推荐」「按量计费推荐」，「高性价比」「不抢购」等场景改由目录标签承担",
+        "Codex（Plus / Pro *5 / Pro *20）追加支持 GPT-5.6 模型"
+      ]
+    },
+    {
+      "date": "2026.7.10",
+      "items": [
+        "讯飞·星火 速通版（699元/月）上线，专注 GLM-5.2 / DeepSeek-V4-Pro / Kimi-K2.7-Code 三大顶级模型",
+        "讯飞·星火 专业版（39元）已下架"
       ]
     },
     {

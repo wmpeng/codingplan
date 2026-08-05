@@ -1,11 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
-// 读取数据文件
-const configPath = path.join(__dirname, '../../config.json');
-const plansPath = path.join(__dirname, '../../plans.json');
-const derivedPath = path.join(__dirname, '../../index-usage-derived.json');
-const indexPath = path.join(__dirname, '../../index.html');
+// 读取旧站（v1）数据文件
+const configPath = path.join(__dirname, '../../v1/config.json');
+const plansPath = path.join(__dirname, '../../v1/plans.json');
+const derivedPath = path.join(__dirname, '../../v1/index-usage-derived.json');
+const indexPath = path.join(__dirname, '../../v1/index.html');
 
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const allPlans = JSON.parse(fs.readFileSync(plansPath, 'utf8'));
@@ -362,11 +362,11 @@ ${generateUpdates(updates)}${generateAccountSale(accountSale)}## 🤝 贡献
 function main() {
     const readme = generateReadme();
     
-    // 直接输出到 README.md
-    const outputPath = path.join(__dirname, '../../README.md');
+    // 直接输出到旧站 README.md
+    const outputPath = path.join(__dirname, '../../v1/README.md');
     fs.writeFileSync(outputPath, readme, 'utf8');
     
-    console.log('README.md 已生成');
+    console.log('v1/README.md 已生成');
 }
 
 main();
