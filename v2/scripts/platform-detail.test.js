@@ -88,7 +88,7 @@ describe('buildDetailBodyHtml', () => {
   });
 
   it('renders payg pricing section when paygEntry provided', () => {
-    const html = buildDetailBodyHtml(samplePlatform({ id: 'gongji', name: '共继算力' }), {
+    const html = buildDetailBodyHtml(samplePlatform({ id: 'gongji', name: '共绩算力' }), {
       plans: [],
       monitorRow: null,
       paygEntry: {

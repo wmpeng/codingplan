@@ -101,7 +101,7 @@
           ]
         },
                 {
-          "name": "共继算力",
+          "name": "共绩算力",
           "rating": 5,
           "action": "https://api.dreamfree.space/c/s/cpyqgongji",
           "reasons": [
@@ -151,7 +151,7 @@
           ]
         },
         {
-          "name": "共继算力",
+          "name": "共绩算力",
           "rating": 5,
           "action": "https://api.dreamfree.space/c/s/cpyqgongji",
           "reasons": [
@@ -302,7 +302,7 @@
     {
       "date": "2026.7.6",
       "items": [
-        "首页小改版：DeepSeek 涨价应对分组精简为 2 个平台（DeepSeek / 共继算力）",
+        "首页小改版：DeepSeek 涨价应对分组精简为 2 个平台（DeepSeek / 共绩算力）",
         "推荐卡片支持独立 action 链接：即使平台不在 plans.json，也可配置跳转"
       ]
     },

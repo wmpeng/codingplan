@@ -540,7 +540,7 @@ describe('validatePlatformRecords detail', () => {
 describe('payg pricing', () => {
   const platforms = [
     samplePlatform({ id: 'deepseek-official', name: 'DeepSeek' }),
-    samplePlatform({ id: 'gongji', name: '共继算力' })
+    samplePlatform({ id: 'gongji', name: '共绩算力' })
   ];
 
   it('validates keyed entries and rejects unknown platform ids', () => {
@@ -607,7 +607,7 @@ describe('payg pricing', () => {
 describe('flattenPaygRows', () => {
   const platforms = [
     samplePlatform({ id: 'deepseek-official', name: 'DeepSeek', rating: 4 }),
-    samplePlatform({ id: 'gongji', name: '共继算力', rating: 3 })
+    samplePlatform({ id: 'gongji', name: '共绩算力', rating: 3 })
   ];
   const payg = {
     modelOrder: ['DeepSeek-V4-Pro', 'DeepSeek-V4-Flash'],
