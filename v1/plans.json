@@ -802,6 +802,7 @@
       "Kimi-K2.6",
       "MiMo-V2.5-Pro",
       "MiMo-V2.5",
+      "Qwen-3.8-Max",
       "Qwen-3.7-Max",
       "Qwen-3.7-Plus",
       "Qwen-3.6-Plus",
@@ -1258,6 +1259,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "Qwen-3.8-Max",
       "Qwen-3.7-Max",
       "Qwen-3.7-Plus",
       "Qwen-3.6-Plus",
@@ -1290,6 +1292,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "Qwen-3.8-Max",
       "Qwen-3.7-Max",
       "Qwen-3.7-Plus",
       "Qwen-3.6-Plus",
@@ -1322,6 +1325,7 @@
     "quarterlyPrice": "-",
     "yearlyPrice": "-",
     "models": [
+      "Qwen-3.8-Max",
       "Qwen-3.7-Max",
       "Qwen-3.7-Plus",
       "Qwen-3.6-Plus",
