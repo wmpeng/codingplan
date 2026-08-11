@@ -45,6 +45,23 @@
     - 首月半价$5。但只有go这一种套餐，不够重度使用
     - 无需抢购，可支付宝付款
 
+### 包含 DeepSeek-V4-Flash-0731 正式版
+
+DeepSeek-V4-Flash 0731 正式版，性价比新高
+
+1. DeepSeek ⭐️⭐️⭐️⭐️⭐️
+    - 官方 DeepSeek-V4-Flash 0731 正式版，推理与代码能力处于国产第一梯队
+    - 按量标价透明，适合不想抢套餐的用户
+    - 高峰翻倍后成本优势会收窄
+2. OpenCode ⭐️⭐️⭐️⭐️⭐️
+    - 支持DeepSeek-V4-Flash 0731正式版、Kimi-K3、GLM-5.2等最新模型
+    - 首月半价$5。但只有go这一种套餐，够尝鲜，不够重度使用
+    - 无需抢购，可支付宝付款
+3. 字节·方舟 ⭐️⭐️⭐️⭐️⭐️
+    - Coding Plan / Token Plan 均支持 DeepSeek-V4-Flash
+    - 同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。
+    - 已解除限购，开放购买
+
 ### 包含 Kimi-3
 
 Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用

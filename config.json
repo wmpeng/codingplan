@@ -104,19 +104,51 @@
           "name": "字节·方舟",
           "rating": 5,
           "reasons": [
-            "目前2.5折，且有用量4倍活动",
+            "目前首两月2.5折",
             "支持GLM-5.2，DeepSeek-V4，MiniMax-M3，Kimi-K3",
-            "当前需抢购"
           ]
         },
         {
           "name": "OpenCode",
           "rating": 5,
           "reasons": [
-            "支持Kimi-K3、GLM-5.2、DeepSeek-V4-Pro等最新模型",
+            "支持Kimi-K3、GLM-5.2、DeepSeek-V4-Flash-0731、Gpt-5.6-Luna等最新模型",
             "首月半价$5。但只有go这一种套餐，不够重度使用",
             "无需抢购，可支付宝付款"
           ] 
+        }
+      ]
+    },
+    {
+      "title": "包含 DeepSeek-V4-Flash-0731 正式版",
+      "subtitle": "DeepSeek-V4-Flash 0731 正式版，性价比新高",
+      "items": [
+        {
+          "name": "DeepSeek",
+          "rating": 5,
+          "reasons": [
+            "官方 DeepSeek-V4-Flash 0731 正式版，推理与代码能力处于国产第一梯队",
+            "按量标价透明，适合不想抢套餐的用户",
+            "高峰翻倍后成本优势会收窄"
+          ]
+        },
+        {
+          "name": "OpenCode",
+          "rating": 5,
+          "reasons": [
+            "支持DeepSeek-V4-Flash 0731正式版、Kimi-K3、GLM-5.2等最新模型",
+            "首月半价$5。但只有go这一种套餐，够尝鲜，不够重度使用",
+            "无需抢购，可支付宝付款"
+          ]
+        },
+        {
+          "name": "字节·方舟",
+          "rating": 5,
+          "reasons": [
+            "Coding Plan / Token Plan 均支持 DeepSeek-V4-Flash",
+            "同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。",
+            "已解除限购，开放购买"
+          ]
         }
       ]
     },
