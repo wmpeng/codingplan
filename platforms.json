@@ -75,6 +75,7 @@
     "name": "OpenCode",
     "rating": 5,
     "summary": "模型支持全，调用抵扣透明，性价比高，可直接支付宝付款，无需抢购。",
+    "detail": "模型支持全，调用抵扣透明，性价比高，可直接支付宝付款，无需抢购。提供 Go 套餐付费代邀请服务，加[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)了解详情。",
     "dimensions": {
       "value": {
         "score": 5,
@@ -188,8 +189,8 @@
     "id": "youyun",
     "name": "优云智算",
     "rating": 4,
-    "summary": "支持GLM-5.2。按照真实接口调用量计费，且模型倍率透明，但包含的调用量较少。",
-    "detail": "所有套餐（￥49-￥999）均支持GLM-5.2。当前适合作为使用GLM-5.2的平台购买。优点是按照真实接口调用量计费，且模型倍率透明，同时GLM-5.2限时优惠倍率；缺点是套餐包含的调用量较少。",
+    "summary": "支持GLM-5.2和DeepSeek-V4-Flash（0731正式版）。按照真实接口调用量计费，且模型倍率透明，但包含的调用量较少。",
+    "detail": "所有套餐（￥49-￥999）均支持GLM-5.2和DeepSeek-V4-Flash 0731正式版。当前适合作为使用GLM-5.2、DeepSeek-V4-Flash的平台购买。优点是按照真实接口调用量计费，且模型倍率透明，同时GLM-5.2限时优惠倍率；缺点是套餐包含的调用量较少。",
     "dimensions": {
       "value": {
         "score": 4,
@@ -197,7 +198,7 @@
       },
       "models": {
         "score": 4,
-        "reason": "全档位支持 GLM-5.2，支持的 Kimi、MiniMax、DeepSeek 的模型较老。"
+        "reason": "全档位支持 GLM-5.2 和 DeepSeek-V4-Flash（0731正式版），支持的 Kimi、MiniMax 模型较老。"
       },
       "stability": {
         "score": 5,
