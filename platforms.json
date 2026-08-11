@@ -51,8 +51,8 @@
     "id": "bytedance-ark",
     "name": "字节·方舟",
     "rating": 5,
-    "summary": "需抢购，但确实会放号。支持智谱GLM、DeepSeek、MiniMax、Kimi各家模型。目前有套餐2.5折优惠，叠加部分模型用量4倍活动，性价比超高。",
-    "detail": "CodingPlan需抢购，但每天确实会放号，可以加方舟Coding用户群不定时放号前会群里说。同时支持智谱GLM、DeepSeek、MiniMax、Kimi各家模型。8月8日前，有套餐2.5折优惠，叠加部分模型用量4倍活动，性价比超高。",
+    "summary": "已解除限购，开放购买。支持智谱GLM、DeepSeek、MiniMax、Kimi各家模型。目前有套餐2.5折优惠，叠加部分模型用量4倍活动，性价比超高。",
+    "detail": "CodingPlan已解除限购，恢复开放购买，无需抢购。同时支持智谱GLM、DeepSeek、MiniMax、Kimi各家模型。8月8日前，有套餐2.5折优惠，叠加部分模型用量4倍活动，性价比超高。",
     "dimensions": {
       "value": {
         "score": 5,
@@ -68,7 +68,7 @@
       }
     },
     "tags": [],
-    "platformStatus": "limited"
+    "platformStatus": "open"
   },
   {
     "id": "opencode",
