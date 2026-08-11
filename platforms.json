@@ -24,6 +24,28 @@
     "platformStatus": "open"
   },
   {
+    "id": "zhipu",
+    "name": "智谱AI",
+    "rating": 5,
+    "summary": "涨价后新套餐无需抢购。",
+    "dimensions": {
+      "value": {
+        "score": 4,
+        "reason": "新套餐价格翻倍，性价比有所下降，[查看套餐用量](index.html?view=plans)。"
+      },
+      "models": {
+        "score": 5,
+        "reason": "GLM-5.2 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
+      },
+      "stability": {
+        "score": 4,
+        "reason": "官方服务，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
+      }
+    },
+    "tags": [],
+    "platformStatus": "open"
+  },
+  {
     "id": "minimax",
     "name": "MiniMax",
     "rating": 5,
@@ -114,28 +136,6 @@
     },
     "tags": [],
     "platformStatus": "paused"
-  },
-  {
-    "id": "zhipu",
-    "name": "智谱AI",
-    "rating": 5,
-    "summary": "涨价后新套餐无需抢购。",
-    "dimensions": {
-      "value": {
-        "score": 4,
-        "reason": "新套餐价格翻倍，性价比有所下降，[查看套餐用量](index.html?view=plans)。"
-      },
-      "models": {
-        "score": 5,
-        "reason": "GLM-5.2 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
-      },
-      "stability": {
-        "score": 4,
-        "reason": "官方服务，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
-      }
-    },
-    "tags": [],
-    "platformStatus": "open"
   },
   {
     "id": "deepseek-official",
