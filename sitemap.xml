@@ -1,28 +1,51 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://vibecoding.dreamfree.space/v2/</loc>
+    <loc>https://vibecoding.dreamfree.space/</loc>
   </url>
   <url>
-    <loc>https://vibecoding.dreamfree.space/v2/articles/models_comparition_20260513/</loc>
+    <loc>https://vibecoding.dreamfree.space/articles/models_comparition_20260513/</loc>
   </url>
   <url>
-    <loc>https://vibecoding.dreamfree.space/v2/articles/model_comparisons/20260604/</loc>
+    <loc>https://vibecoding.dreamfree.space/articles/model_comparisons/20260604/</loc>
   </url>
   <url>
-    <loc>https://vibecoding.dreamfree.space/v2/articles/model_comparisons/20260617/</loc>
+    <loc>https://vibecoding.dreamfree.space/articles/model_comparisons/20260617/</loc>
   </url>
   <url>
-    <loc>https://vibecoding.dreamfree.space/v2/articles/news/20260602_minimax_m3/</loc>
+    <loc>https://vibecoding.dreamfree.space/articles/model_comparisons/20260806/</loc>
   </url>
   <url>
-    <loc>https://vibecoding.dreamfree.space/v2/articles/plan_comparisons/20260603/</loc>
+    <loc>https://vibecoding.dreamfree.space/articles/news/20260602_minimax_m3/</loc>
   </url>
   <url>
-    <loc>https://vibecoding.dreamfree.space/v2/articles/plan_comparisons/20260628/</loc>
+    <loc>https://vibecoding.dreamfree.space/articles/news/20260613_glm_5_2/</loc>
   </url>
   <url>
-    <loc>https://vibecoding.dreamfree.space/v2/articles/plan_comparison_20260519/</loc>
+    <loc>https://vibecoding.dreamfree.space/articles/news/20260615_kimi_k27_code/</loc>
+  </url>
+  <url>
+    <loc>https://vibecoding.dreamfree.space/articles/news/20260718_kimi_k3/</loc>
+  </url>
+  <url>
+    <loc>https://vibecoding.dreamfree.space/articles/news/20260719_gpt_5_6/</loc>
+  </url>
+  <url>
+    <loc>https://vibecoding.dreamfree.space/articles/news/20260803_deepseek_v4_flash_0731/</loc>
+  </url>
+  <url>
+    <loc>https://vibecoding.dreamfree.space/articles/news/20260803_gpt56_price/</loc>
+  </url>
+  <url>
+    <loc>https://vibecoding.dreamfree.space/articles/plan_comparison_20260519/</loc>
+  </url>
+  <url>
+    <loc>https://vibecoding.dreamfree.space/articles/plan_comparisons/20260603/</loc>
+  </url>
+  <url>
+    <loc>https://vibecoding.dreamfree.space/articles/plan_comparisons/20260628/</loc>
+  </url>
+  <url>
+    <loc>https://vibecoding.dreamfree.space/articles/plan_comparisons/20260810/</loc>
   </url>
 </urlset>
-
