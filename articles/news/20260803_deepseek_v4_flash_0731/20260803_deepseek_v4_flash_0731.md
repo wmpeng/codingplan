@@ -5,7 +5,7 @@
 
 2026 年 7 月底，DeepSeek 先发布了 **V4-Flash** 正式版，新版本的 V4-Flash-0731 **非常适合 Agent、 Coding以及大批量并发调用**，这两个场景本来就是当前大模型最常见的落地方向。价格依旧很低，接口能力更完整，官方强调的重点也明显落在软件工程和工具调用场景上。
 
-![DeepSeek-V4-Flash-0731 官方信息图](assets/deepseek-v4-flash-0731-overview.png)
+![DeepSeek-V4-Flash-0731 官方信息图](assets/deepseek-v4-flash-0731-overview.jpg)
 
 ## 一、这次正式版到底升级了什么
 
