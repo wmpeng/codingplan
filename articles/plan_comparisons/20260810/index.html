@@ -440,11 +440,27 @@
       color: var(--text-primary);
     }
   
+  
+    .back-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-nav .back-home-btn {
+      margin-bottom: 0;
+    }
+
   </style>
 </head>
 <body class="article-page">
   <div class="doc-wrap">
-    <a href="../../../" class="back-home-btn">← 返回主页</a>
+    <nav class="back-nav" aria-label="返回">
+      <a href="../../../" class="back-home-btn">← 返回主页</a>
+      <a href="../../" class="back-home-btn">文章列表</a>
+    </nav>
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="侧栏目录">
         <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、三种常见计费方式</a><ol><li><a href="#sec-1-8-月初动态">1）8 月初动态</a></li><li><a href="#sec-2-实际用量与价格对比">2）实际用量与价格对比</a></li></ol></li><li><a href="#sec-h2-2">二、前沿模型官方平台</a><ol><li><a href="#sec-1-智谱ai-新套餐开放购买-价格翻倍">1. 智谱AI：新套餐开放购买，价格翻倍</a></li><li><a href="#sec-2-minimax-token-大池稳定-m3-体系适合长期高频">2. MiniMax：Token 大池稳定，M3 体系适合长期高频</a></li><li><a href="#sec-3-字节-方舟-模型池最全-2-5-折延续-已解除限购">3. 字节·方舟：模型池最全，2.5 折延续，已解除限购</a></li><li><a href="#sec-4-kimi-kimi-k3-旗舰模型上线-会员需预约">4. Kimi：Kimi-K3 旗舰模型上线，会员需预约</a></li><li><a href="#sec-5-deepseek-纯-api-按量-适合成本精算与弹性负载">5. DeepSeek：纯 API 按量，适合成本精算与弹性负载</a></li><li><a href="#sec-6-阿里-百炼-qwen-3-8-max-上线-token-体系更完整">6. 阿里·百炼：Qwen-3.8-Max 上线，Token 体系更完整</a></li></ol></li><li><a href="#sec-h2-3">三、其他主流平台</a><ol><li><a href="#sec-1-共绩算力-deepseek-官方约-8-折的按量通道">1. 共绩算力：DeepSeek 官方约 8 折的按量通道</a></li><li><a href="#sec-2-优云智算-glm-5-2-与-flash-正式版全档支持-按调用量计费">2. 优云智算：GLM-5.2 与 Flash 正式版全档支持，按调用量计费</a></li><li><a href="#sec-3-小米-mimo-经历一轮降价-量大管饱">3. 小米 MiMo：经历一轮降价，量大管饱</a></li></ol></li><li><a href="#sec-h2-4">四、推荐国际平台</a><ol><li><a href="#sec-1-opencode-go-多模型聚合-首月半价">1. OpenCode Go：多模型聚合，首月半价</a></li><li><a href="#sec-2-codex-openai-原生编程代理-token-计费更清晰">2. Codex：OpenAI 原生编程代理，Token 计费更清晰</a></li><li><a href="#sec-3-claude-code-原生体验最佳">3. Claude Code：原生体验最佳</a></li><li><a href="#sec-4-ollama-开源模型聚合-覆盖广">4. Ollama：开源模型聚合，覆盖广</a></li></ol></li><li><a href="#sec-h2-5">五、分场景选型建议</a><ol><li><a href="#sec-1-综合推荐">1）综合推荐</a></li><li><a href="#sec-2-包含-deepseek-v4-flash-0731-正式版">2）包含 DeepSeek-V4-Flash-0731 正式版</a></li><li><a href="#sec-3-包含-kimi-k3">3）包含 Kimi-K3</a></li><li><a href="#sec-4-包含-glm-5-2">4）包含 GLM-5.2</a></li><li><a href="#sec-5-不抢购-稳定大用量">5）不抢购 / 稳定大用量</a></li></ol></li><li><a href="#sec-h2-6">六、总结</a></li></ol></nav>
@@ -472,7 +488,7 @@
 <li>联通云 Coding Plan 已下线，对比表不再收录。</li>
 </ol>
 <h3 id="sec-2-实际用量与价格对比">2）实际用量与价格对比</h3>
-<figure><img src="./assets/unit-price.jpg" alt="各平台套餐综合单价对比" loading="lazy" /></figure>
+<figure class="doc-figure"><img src="./assets/unit-price.jpg" alt="各平台套餐综合单价对比" loading="lazy" /></figure>
 <blockquote>
 <p>访问 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a> 可查看完整的价格 vs Token 上限对比图表、每元 Token 性价比密度图等可视化数据。</p>
 </blockquote>
@@ -772,7 +788,7 @@
 </tbody>
 </table>
 <h2 id="sec-h2-2">二、前沿模型官方平台</h2>
-<figure><img src="./assets/platforms.jpg" alt="平台对比一览" loading="lazy" /></figure>
+<figure class="doc-figure"><img src="./assets/platforms.jpg" alt="平台对比一览" loading="lazy" /></figure>
 <blockquote>
 <p>访问 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a> 可查看各平台推荐评分、限购状态与模型覆盖详情，支持按性价比、可用性等标签筛选，并进入套餐对比与可用性监控页面。</p>
 </blockquote>

@@ -455,11 +455,27 @@
       background: rgba(15, 118, 110, 0.18);
       color: var(--text-primary);
     }
+  
+    .back-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-nav .back-home-btn {
+      margin-bottom: 0;
+    }
+
   </style>
 </head>
 <body class="article-page">
   <div class="doc-wrap">
-    <a href="../../../" class="back-home-btn">← 返回主页</a>
+    <nav class="back-nav" aria-label="返回">
+      <a href="../../../" class="back-home-btn">← 返回主页</a>
+      <a href="../../" class="back-home-btn">文章列表</a>
+    </nav>
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop">
         <nav class="doc-toc" aria-label="文章目录">

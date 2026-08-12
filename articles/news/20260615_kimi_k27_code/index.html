@@ -471,11 +471,27 @@
       padding: 0.1em 0.35em;
       border-radius: 0.25em;
     }
+  
+    .back-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-nav .back-home-btn {
+      margin-bottom: 0;
+    }
+
   </style>
 </head>
 <body class="article-page">
   <div class="doc-wrap">
-    <a href="../../../" class="back-home-btn">← 返回主页</a>
+    <nav class="back-nav" aria-label="返回">
+      <a href="../../../" class="back-home-btn">← 返回主页</a>
+      <a href="../../" class="back-home-btn">文章列表</a>
+    </nav>
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop">
         <nav class="doc-toc" aria-label="文章目录">
@@ -580,7 +596,7 @@
       <p>同时，官方强调在长程任务中<strong>大幅改善过度思考</strong>，平均 <strong>token 消耗减少约 30%</strong>（主要来自 thinking-token 的下降）——这对 Claude Code、OpenClaw 等长会话 Agent 的直接意义是：<strong>同样任务可能更省额度、更少等待</strong>。</p>
       <h3 id="sec-bench-abs">2. 绝对分数：接近 Opus 4.8，仍落后 GPT-5.5</h3>
       <p>Hugging Face Model Card 公布的绝对分如下（Thinking 模式，temperature=1.0，top_p=0.95）。下图与下表数据一致，图注标注 <strong>Internal Benchmark</strong>——其中多项为 Kimi 自研或厂商参与设计的基准，<strong>不能</strong>直接等同于 SWE-bench Verified 等行业通用榜。</p>
-      <figure><img src="assets/20260615_kimi_k27_code_benchmark.png" alt="Kimi K2.7 Code 官方 benchmark 对比（K2.7 Code / K2.6 / GPT-5.5 / Opus 4.8）" loading="lazy" /></figure>
+      <figure class="doc-figure"><img src="assets/20260615_kimi_k27_code_benchmark.png" alt="Kimi K2.7 Code 官方 benchmark 对比（K2.7 Code / K2.6 / GPT-5.5 / Opus 4.8）" loading="lazy" /></figure>
       <table><thead><tr><th>基准</th><th>K2.6</th><th><strong>K2.7 Code</strong></th><th>GPT-5.5</th><th>Claude Opus 4.8</th></tr></thead><tbody>
         <tr><td>Kimi Code Bench v2</td><td>50.9</td><td><strong>62.0</strong></td><td>69.0</td><td>67.4</td></tr>
         <tr><td>Program Bench</td><td>48.3</td><td><strong>53.6</strong></td><td>69.1</td><td>63.8</td></tr>

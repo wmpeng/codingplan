@@ -512,11 +512,27 @@
   
   
   
+  
+    .back-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-nav .back-home-btn {
+      margin-bottom: 0;
+    }
+
   </style>
 </head>
 <body class="article-page">
   <div class="doc-wrap">
-    <a href="../../../" class="back-home-btn">← 返回主页</a>
+    <nav class="back-nav" aria-label="返回">
+      <a href="../../../" class="back-home-btn">← 返回主页</a>
+      <a href="../../" class="back-home-btn">文章列表</a>
+    </nav>
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="侧栏目录">
         <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、这次正式版到底升级了什么</a></li><li><a href="#sec-二-全面压过-v4-pro-preview-coding-场景也压过-glm-5-2">二、全面压过 V4-Pro-Preview，Coding 场景也压过 GLM-5.2</a><ol><li><a href="#sec-1-官方评测详情">1. 官方评测详情</a></li><li><a href="#sec-2-artificial-analysis-评测-综合能力">2. Artificial Analysis 评测 综合能力</a></li><li><a href="#sec-3-artificial-analysis-评测-代码能力">3. Artificial Analysis 评测 代码能力</a></li></ol></li><li><a href="#sec-三-和-flash-preview-v4-pro-preview-glm-5-2-opu">三、和 Flash Preview、V4-Pro-Preview、GLM-5.2、Opus 4.8 怎么比</a><ol><li><a href="#sec-1-flash-0731-vs-flash-preview-能力全面已经往上走了一截">1. Flash-0731 vs Flash Preview：能力全面已经往上走了一截</a></li><li><a href="#sec-2-flash-0731-vs-v4-pro-preview-优先-flash-0731">2. Flash-0731 vs V4-Pro-Preview：优先 Flash-0731</a></li><li><a href="#sec-3-flash-0731-vs-glm-5-2-glm-综合更强一点-也更贵-v4-fl">3. Flash-0731 vs GLM-5.2：GLM 综合更强一点，也更贵；V4-Flash-0731 Coding更强，也便宜得多</a></li><li><a href="#sec-4-flash-0731-vs-opus-4-8-不是同一价格带-也不是同一选型逻辑">4. Flash-0731 vs Opus 4.8：不是同一价格带，也不是同一选型逻辑</a></li></ol></li><li><a href="#sec-h2-4">四、要不要用</a></li><li><a href="#sec-h2-5">五、总结</a></li></ol></nav>
@@ -528,7 +544,7 @@
         <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;"><strong>一句话速览：</strong><p>DeepSeek-V4-Flash-0731 已作为正式版上线 API 公测；模型结构与 preview 保持一致，但后训练后 Agent / Coding 能力明显增强；官方模型卡直接给出逐项 benchmark 对比表，正式版整体压过 V4-Pro-Preview；当前仅 Flash 正式版支持 Responses API，并已适配 Codex；价格仍维持缓存未命中输入 1 元、输出 2 元 / 百万 tokens，同时保留 1M 上下文、384K 最大输出和 2500 并发这套开发者最关心的基础规格。</p></div>
         <p class="lead">2026 年 7 月底，DeepSeek 先发布了 <strong>V4-Flash</strong> 正式版，新版本的 V4-Flash-0731 <strong>非常适合 Agent、 Coding以及大批量并发调用</strong>，这两个场景本来就是当前大模型最常见的落地方向。价格依旧很低，接口能力更完整，官方强调的重点也明显落在软件工程和工具调用场景上。</p>
         <nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、这次正式版到底升级了什么</a></li><li><a href="#sec-二-全面压过-v4-pro-preview-coding-场景也压过-glm-5-2">二、全面压过 V4-Pro-Preview，Coding 场景也压过 GLM-5.2</a><ol><li><a href="#sec-1-官方评测详情">1. 官方评测详情</a></li><li><a href="#sec-2-artificial-analysis-评测-综合能力">2. Artificial Analysis 评测 综合能力</a></li><li><a href="#sec-3-artificial-analysis-评测-代码能力">3. Artificial Analysis 评测 代码能力</a></li></ol></li><li><a href="#sec-三-和-flash-preview-v4-pro-preview-glm-5-2-opu">三、和 Flash Preview、V4-Pro-Preview、GLM-5.2、Opus 4.8 怎么比</a><ol><li><a href="#sec-1-flash-0731-vs-flash-preview-能力全面已经往上走了一截">1. Flash-0731 vs Flash Preview：能力全面已经往上走了一截</a></li><li><a href="#sec-2-flash-0731-vs-v4-pro-preview-优先-flash-0731">2. Flash-0731 vs V4-Pro-Preview：优先 Flash-0731</a></li><li><a href="#sec-3-flash-0731-vs-glm-5-2-glm-综合更强一点-也更贵-v4-fl">3. Flash-0731 vs GLM-5.2：GLM 综合更强一点，也更贵；V4-Flash-0731 Coding更强，也便宜得多</a></li><li><a href="#sec-4-flash-0731-vs-opus-4-8-不是同一价格带-也不是同一选型逻辑">4. Flash-0731 vs Opus 4.8：不是同一价格带，也不是同一选型逻辑</a></li></ol></li><li><a href="#sec-h2-4">四、要不要用</a></li><li><a href="#sec-h2-5">五、总结</a></li></ol></nav>
-        <figure><img src="./assets/deepseek-v4-flash-0731-overview.png" alt="DeepSeek-V4-Flash-0731 官方信息图" loading="lazy" /></figure>
+        <figure class="doc-figure"><img src="./assets/deepseek-v4-flash-0731-overview.png" alt="DeepSeek-V4-Flash-0731 官方信息图" loading="lazy" /></figure>
 <h2 id="sec-h2-1">一、这次正式版到底升级了什么</h2>
 <p><strong>DeepSeek-V4-Flash-0731 它沿用 preview 的结构和尺寸，在这个基础上做成了正式版。</strong> 官方模型卡明确写的是 superseding the preview version（取代 preview 预览版），官方发布口径也说明了“结构与尺寸不变，主要是重新<strong>后训练</strong>”。</p>
 <p>这次升级的重点在模型被重新打磨得更适合真实开发流程。官方对外反复强调的，也都是同一组关键词：</p>
@@ -593,12 +609,12 @@
 <p>DeepSeek 这次没有把 Flash 当成“便宜替补”，而是把它推到了 <strong>可以承担主力 Agent 任务</strong> 的位置。尤其是 Terminal Bench、Toolathlon、DSBench 这类任务，本来就更接近真实工具调用和软件工程流程，不是纯聊天问答。</p>
 <p>Flash-0731 的优势也不只是“便宜”。如果它只是价格低，官方不会主动拿它去和 V4-Pro-Preview 做逐项 benchmark 对照。至少从这次模型卡的写法看，<strong>Flash 正式版已经被放到了当前最值得优先落地的 DeepSeek 开发者主力模型位置上。</strong></p>
 <h3 id="sec-2-artificial-analysis-评测-综合能力">2. Artificial Analysis 评测 综合能力</h3>
-<figure><img src="./assets/aa-intelligence-index-deepseek-v4-flash-0731.png" alt="Artificial Analysis Intelligence Index 榜单" loading="lazy" /></figure>
+<figure class="doc-figure"><img src="./assets/aa-intelligence-index-deepseek-v4-flash-0731.png" alt="Artificial Analysis Intelligence Index 榜单" loading="lazy" /></figure>
 <!-- IMG_SOURCE -->
 <p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?models=mimo-v2-5-pro%2Cclaude-sonnet-5%2Cminimax-m3%2Cqwen3-7-max%2Cclaude-opus-4-8%2Cclaude-4-5-haiku-reasoning%2Cgpt-5-4%2Cgpt-5-5-high%2Cclaude-opus-5%2Cdeepseek-v4-pro%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cdeepseek-v4-flash-0420#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis Intelligence Index</a></p>
 <p>在这张 Intelligence Index 榜单里，DeepSeek V4 Flash 0731 拿到 <strong>50</strong>，明显高于同屏的 DeepSeek V4 Pro（<strong>44</strong>）和旧版 Flash（<strong>40</strong>），也已经贴到 GLM-5.2 的 <strong>51</strong>。第三方综合智能口径下，正式版 Flash 已经挤进开源权重模型的前排竞争带。</p>
 <h3 id="sec-3-artificial-analysis-评测-代码能力">3. Artificial Analysis 评测 代码能力</h3>
-<figure><img src="./assets/aa-coding-index-deepseek-v4-flash-0731.png" alt="Artificial Analysis Coding Index 榜单" loading="lazy" /></figure>
+<figure class="doc-figure"><img src="./assets/aa-coding-index-deepseek-v4-flash-0731.png" alt="Artificial Analysis Coding Index 榜单" loading="lazy" /></figure>
 <!-- IMG_SOURCE -->
 <p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?models=mimo-v2-5-pro%2Cclaude-sonnet-5%2Cminimax-m3%2Cqwen3-7-max%2Cclaude-opus-4-8%2Cclaude-4-5-haiku-reasoning%2Cgpt-5-4%2Cgpt-5-5-high%2Cclaude-opus-5%2Cdeepseek-v4-pro%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cdeepseek-v4-flash-0420&amp;intelligence=coding-index#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis Coding Index</a></p>
 <p>Coding Index 上，Flash-0731 是 <strong>69.1</strong>，略高于 GLM-5.2 的 <strong>68.8</strong>，并明显压过 DeepSeek V4 Pro 的 <strong>59.4</strong> 和旧版 Flash 的 <strong>56.2</strong>。这和官方把升级重点放在软件工程、Agent、工具调用上是对得上的：Coding 这一档已经能跟国产开源强对手正面硬刚。</p>
@@ -664,7 +680,7 @@
 <h3 id="sec-4-flash-0731-vs-opus-4-8-不是同一价格带-也不是同一选型逻辑">4. Flash-0731 vs Opus 4.8：不是同一价格带，也不是同一选型逻辑</h3>
 <p>Claude Opus 4.8 的 AA Intelligence 是 <strong>56</strong>，支持图像输入，能力上限和多模态完整度仍然更高。但它的价格也大约来到输入 <strong>35 元</strong>、输出 <strong>175 元</strong> / 百万 tokens，和 Flash-0731 根本不在同一预算区间。</p>
 <p>这组对比没必要对比“谁绝对更强”。更实际的问题是：<strong>谁更适合你现在要做的事。</strong> 如果你要的是极高上限、复杂多模态、预算不敏感，Opus 4.8 当然仍然很有吸引力；但如果你要的是 <strong>Agent 能落地、成本能控制、并发也够高</strong>，那 Flash-0731 的性价比就很难忽略。</p>
-<figure><img src="./assets/aa-intelligence-vs-cost-deepseek-v4-flash-0731.png" alt="Artificial Analysis 智力 / 成本散点图" loading="lazy" /></figure>
+<figure class="doc-figure"><img src="./assets/aa-intelligence-vs-cost-deepseek-v4-flash-0731.png" alt="Artificial Analysis 智力 / 成本散点图" loading="lazy" /></figure>
 <!-- IMG_SOURCE -->
 <p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?models=mimo-v2-5-pro%2Cclaude-sonnet-5%2Cminimax-m3%2Cqwen3-7-max%2Cclaude-opus-4-8%2Cclaude-4-5-haiku-reasoning%2Cgpt-5-4%2Cgpt-5-5-high%2Cclaude-opus-5%2Cdeepseek-v4-pro%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cdeepseek-v4-flash-0420%2Cgpt-5-6-luna%2Cmimo-v2-5-0424#intelligence-comparison-tabs" rel="noopener noreferrer">Artificial Analysis Intelligence vs. Cost per Task</a></p>
 <h2 id="sec-h2-4">四、要不要用</h2>

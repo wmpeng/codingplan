@@ -3004,12 +3004,72 @@
         }
 
         .hero-summary--lede {
-            grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.95fr);
+            grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.9fr) minmax(160px, 0.55fr);
             align-items: stretch;
         }
 
         .hero-summary--lede .hero-summary-card--reading {
             min-width: 0;
+        }
+
+        .hero-summary-card--news {
+            display: flex;
+            flex-direction: column;
+            padding: 16px 14px;
+            background: rgba(255, 251, 245, 0.72);
+            border-color: rgba(23, 32, 51, 0.1);
+            box-shadow: none;
+        }
+
+        .hero-summary-card--news .hero-summary-kicker {
+            color: #475569;
+            background: rgba(71, 85, 105, 0.1);
+            margin-bottom: 8px;
+        }
+
+        .hero-summary-card--news .hero-summary-title {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .hero-summary-news-list {
+            list-style: none;
+            margin: 0 0 12px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .hero-summary-news-list li {
+            min-width: 0;
+        }
+
+        .hero-summary-news-list a {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            overflow: hidden;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 13px;
+            line-height: 1.45;
+            font-weight: 600;
+        }
+
+        .hero-summary-news-list a:hover {
+            color: #0f766e;
+        }
+
+        .hero-summary-card--news .hero-summary-readmore {
+            margin-top: auto;
+            font-size: 13px;
         }
 
         .hero-summary-lede-inner {
@@ -3779,6 +3839,7 @@
 
         .hero-summary-card--reading,
         .hero-summary-card--guide,
+        .hero-summary-card--news,
         .hero-summary-card--community {
             background: rgba(255, 255, 255, 0.92);
             border-color: rgba(16, 23, 37, 0.12);
@@ -3787,6 +3848,7 @@
         .hero-summary-kicker,
         .hero-summary-card--reading .hero-summary-kicker,
         .hero-summary-card--guide .hero-summary-kicker,
+        .hero-summary-card--news .hero-summary-kicker,
         .hero-summary-card--community .hero-summary-kicker {
             display: inline-flex;
             align-items: center;
@@ -4409,6 +4471,18 @@
                     <p class="hero-summary-guide-note">先建立全局判断，再用下方平台目录与套餐对比把候选压缩到可执行清单。</p>
                 </div>
                 <a class="hero-summary-readmore" href="articles/plan_comparisons/20260810/index.html">查看对比详情 →</a>
+            </article>
+            <article class="hero-summary-card hero-summary-card--reading hero-summary-card--news">
+                <div class="hero-summary-kicker">News</div>
+                <h2 class="hero-summary-title">近期快讯</h2>
+                <ul class="hero-summary-news-list">
+                    <!-- ARTICLES_NEWS_LIST_START -->
+                    <li><a href="articles/news/20260803_deepseek_v4_flash_0731/index.html" title="DeepSeek-V4-Flash-0731 正式版上线：Agent / Coding 能力大涨，1 元输入 / 2 元输出依然低价">DeepSeek-V4-Flash-0731 正式版上线：Agent / Coding 能力大涨，1 元输入 / 2 元输出依然低价</a></li>
+                    <li><a href="articles/news/20260803_gpt56_price/index.html" title="GPT-5.6 Luna 降价 80%、Terra 降价 20%：选 Luna 还是 DeepSeek V4 Flash？">GPT-5.6 Luna 降价 80%、Terra 降价 20%：选 Luna 还是 DeepSeek V4 Flash？</a></li>
+                    <li><a href="articles/news/20260719_gpt_5_6/index.html" title="GPT-5.6 来了：更强能力、更省Token！Sol、Terra、Luna 三档怎么选？">GPT-5.6 来了：更强能力、更省Token！Sol、Terra、Luna 三档怎么选？</a></li>
+                    <!-- ARTICLES_NEWS_LIST_END -->
+                </ul>
+                <a class="hero-summary-readmore" href="articles/index.html">全部文章 →</a>
             </article>
             <!-- <article class="hero-summary-card hero-summary-card--accent">
                 <div class="hero-summary-kicker">How To Choose</div>

@@ -440,11 +440,27 @@
       color: var(--text-primary);
     }
   
+  
+    .back-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-nav .back-home-btn {
+      margin-bottom: 0;
+    }
+
   </style>
 </head>
 <body class="article-page">
   <div class="doc-wrap">
-    <a href="../../../" class="back-home-btn">← 返回主页</a>
+    <nav class="back-nav" aria-label="返回">
+      <a href="../../../" class="back-home-btn">← 返回主页</a>
+      <a href="../../" class="back-home-btn">文章列表</a>
+    </nav>
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="侧栏目录">
         <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、快速对比总览</a></li><li><a href="#sec-二-intelligence-index-opus-5-登顶-gpt-5-6-全线升级">二、Intelligence Index：Opus 5 登顶，GPT-5.6 全线升级</a></li><li><a href="#sec-三-agentic-index-qwen3-8-max-夺冠-国产创下历史高点">三、Agentic Index：Qwen3.8 Max 夺冠，国产创下历史高点</a></li><li><a href="#sec-四-成本对比-flash-0731-性价比最高-fable-opus-成本最高">四、成本对比：Flash 0731 性价比最高，Fable/Opus 成本最高</a></li><li><a href="#sec-h2-5">五、国产深度解析</a><ol><li><a href="#sec-qwen3-8-max-阿里-agentic-全球登顶-但注意纯文本限制">Qwen3.8 Max（阿里）：Agentic 全球登顶，但注意纯文本限制</a></li><li><a href="#sec-kimi-k3-月之暗面-国产-intelligence-最高-但新购受限">Kimi K3（月之暗面）：国产 Intelligence 最高，但新购受限</a></li><li><a href="#sec-deepseek-v4-flash-0731-vs-0420-升级明显">DeepSeek V4 Flash 0731 vs 0420：升级明显</a></li><li><a href="#sec-glm-5-2-智谱-ai-均衡国产旗舰-代码场景稳定">GLM-5.2（智谱 AI）：均衡国产旗舰，代码场景稳定</a></li></ol></li><li><a href="#sec-h2-6">六、选型建议</a><ol><li><a href="#sec-h3-6">最高综合智能</a></li><li><a href="#sec-agent-自动化为主">Agent 自动化为主</a></li><li><a href="#sec-h3-6-2">成本优先 / 高频调用</a></li><li><a href="#sec-h3-6-3">国产均衡优先</a></li><li><a href="#sec-h3-6-4">多模态需求</a></li></ol></li><li><a href="#sec-h2-7">七、本期变化总结</a></li></ol></nav>
@@ -618,7 +634,7 @@
 </table>
 
 <h2 id="sec-二-intelligence-index-opus-5-登顶-gpt-5-6-全线升级">二、Intelligence Index：Opus 5 登顶，GPT-5.6 全线升级</h2>
-<figure><img src="./assets/artificial-analysis-intelligence-index-5-aug-26.png" alt="Artificial Analysis Intelligence Index（2026 年 8 月 5 日）。" loading="lazy" /></figure>
+<figure class="doc-figure"><img src="./assets/artificial-analysis-intelligence-index-5-aug-26.png" alt="Artificial Analysis Intelligence Index（2026 年 8 月 5 日）。" loading="lazy" /></figure>
 <p class="img-source">数据来源：<a href="https://artificialanalysis.ai/?models=mimo-v2-5-pro%2Cgpt-5-5%2Cclaude-sonnet-5%2Cminimax-m3%2Cgpt-5-6-luna%2Cqwen3-7-max%2Cgemini-3-6-flash%2Cgrok-4-5%2Cclaude-opus-4-8%2Cclaude-4-5-haiku-reasoning%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cdeepseek-v4-pro%2Cclaude-fable-5%2Cdeepseek-v4-flash-0420%2Cgpt-5-6-sol%2Cgpt-oss-120b%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cqwen3-8-max&amp;capability-index=economics&amp;capability-models=mimo-v2-5-pro%2Cclaude-sonnet-5%2Cminimax-m3%2Cgpt-5-6-luna%2Cqwen3-7-max%2Cgemini-3-6-flash%2Cgrok-4-5%2Cclaude-opus-4-8%2Cclaude-4-5-haiku-reasoning%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cgpt-oss-120b%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cdeepseek-v4-pro%2Cgpt-5-5%2Cdeepseek-v4-flash-0420#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis - Intelligence Index</a></p>
 <p>Intelligence Index v4.1 综合 9 项评测：GDPval-AA v2、τ³-Banking、Terminal-Bench v2.1、SciCode、HLE、GPQA Diamond、CritPt、AA-Omniscience、AA-LCR。</p>
 <p><strong>Claude Opus 5</strong> 以 61 分独占榜首，比第二名 Claude Fable 5（60）领先 1 分，比 GPT-5.6 Sol（59）领先 2 分。这是 Anthropic 首次在 Intelligence 指数上同时击败 OpenAI 与自家上代旗舰。</p>
@@ -626,7 +642,7 @@
 <p>国产阵营中，<strong>Kimi K3</strong> 以 57 分创下本期国产 Intelligence 最高分，超过 Qwen3.8 Max（56）。<strong>GLM-5.2</strong> 以 51 分与 GPT-5.6 Luna 并列。<strong>DeepSeek V4 Flash 0731</strong> 以 50 分跻身中段，与 Gemini 3.6 Flash 持平，且单任务成本约 \$0.03，远低于同分位的其他型号。</p>
 
 <h2 id="sec-三-agentic-index-qwen3-8-max-夺冠-国产创下历史高点">三、Agentic Index：Qwen3.8 Max 夺冠，国产创下历史高点</h2>
-<figure><img src="./assets/artificial-analysis-agentic-index-5-aug-26.png" alt="Artificial Analysis Agentic Index（2026 年 8 月 5 日）。" loading="lazy" /></figure>
+<figure class="doc-figure"><img src="./assets/artificial-analysis-agentic-index-5-aug-26.png" alt="Artificial Analysis Agentic Index（2026 年 8 月 5 日）。" loading="lazy" /></figure>
 <p class="img-source">数据来源：<a href="https://artificialanalysis.ai/?models=mimo-v2-5-pro%2Cgpt-5-5%2Cclaude-sonnet-5%2Cminimax-m3%2Cgpt-5-6-luna%2Cqwen3-7-max%2Cgemini-3-6-flash%2Cgrok-4-5%2Cclaude-opus-4-8%2Cclaude-4-5-haiku-reasoning%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cdeepseek-v4-pro%2Cclaude-fable-5%2Cdeepseek-v4-flash-0420%2Cgpt-5-6-sol%2Cgpt-oss-120b%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cqwen3-8-max&amp;capability-index=economics&amp;capability-models=mimo-v2-5-pro%2Cclaude-sonnet-5%2Cminimax-m3%2Cgpt-5-6-luna%2Cqwen3-7-max%2Cgemini-3-6-flash%2Cgrok-4-5%2Cclaude-opus-4-8%2Cclaude-4-5-haiku-reasoning%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cgpt-oss-120b%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cdeepseek-v4-pro%2Cgpt-5-5%2Cdeepseek-v4-flash-0420&amp;intelligence=agentic-index#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis - Agentic Index</a></p>
 <p>本期 Agentic Index 采用 GDPval-AA v2 + τ³-Banking 口径，评估模型在真实世界多步骤任务与工具调用中的表现。与 6 月旧口径（GDPval-AA + τ²-Bench Telecom）不同，本期绝对分不宜直接与 6 月对比。</p>
 <p><strong>Qwen3.8 Max</strong> 以 55.4 分拿下 Agentic 第一，仅以 0.1 分的差距超过 Claude Opus 5（55.3），成为国产阵营首次登顶 Agentic 榜首的型号。这一结果意味着，在衡量自主多步骤任务执行能力的场景下，国产旗舰已达到全球顶尖水平。</p>
@@ -634,7 +650,7 @@
 <p><strong>DeepSeek V4 Flash 0731</strong> Agentic 45.7，比旧版 0420（31.1）提升 14.6 分，与 Grok 4.5 持平，跻身中段第一梯队。</p>
 
 <h2 id="sec-四-成本对比-flash-0731-性价比最高-fable-opus-成本最高">四、成本对比：Flash 0731 性价比最高，Fable/Opus 成本最高</h2>
-<figure><img src="./assets/cost-per-intelligence-index-task-5-aug-26.png" alt="Cost per Intelligence Index Task（2026 年 8 月 5 日）。" loading="lazy" /></figure>
+<figure class="doc-figure"><img src="./assets/cost-per-intelligence-index-task-5-aug-26.png" alt="Cost per Intelligence Index Task（2026 年 8 月 5 日）。" loading="lazy" /></figure>
 <p class="img-source">数据来源：<a href="https://artificialanalysis.ai/?models=mimo-v2-5-pro%2Cgpt-5-5%2Cclaude-sonnet-5%2Cminimax-m3%2Cgpt-5-6-luna%2Cqwen3-7-max%2Cgemini-3-6-flash%2Cgrok-4-5%2Cclaude-opus-4-8%2Cclaude-4-5-haiku-reasoning%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cdeepseek-v4-pro%2Cclaude-fable-5%2Cdeepseek-v4-flash-0420%2Cgpt-5-6-sol%2Cgpt-oss-120b%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cqwen3-8-max&amp;capability-index=economics&amp;capability-models=mimo-v2-5-pro%2Cclaude-sonnet-5%2Cminimax-m3%2Cgpt-5-6-luna%2Cqwen3-7-max%2Cgemini-3-6-flash%2Cgrok-4-5%2Cclaude-opus-4-8%2Cclaude-4-5-haiku-reasoning%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cgpt-oss-120b%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cdeepseek-v4-pro%2Cgpt-5-5%2Cdeepseek-v4-flash-0420#intelligence-efficiency-tabs" rel="noopener noreferrer">Artificial Analysis - Cost per Task</a></p>
 <p>成本差距在本期格外悬殊：Claude Fable 5 的每任务成本约 \$3.15，Qwen3.8 Max 约 \$3.26，同属高端付费段；而 DeepSeek V4 Flash 0731 约 \$0.03、GPT-5.6 Luna 约 \$0.05、DeepSeek V4 Pro 约 \$0.05，同属极低成本段。</p>
 <p><strong>Flash 0731 的性价比最为突出</strong>：Intelligence 50、Agentic 45.7，每任务成本约 \$0.03，是 Grok 4.5（同 Agentic 分，\$0.36）成本的不到 1/10，也是 Gemini 3.6 Flash（同 Intelligence 分，\$0.56）成本的约 1/19。</p>

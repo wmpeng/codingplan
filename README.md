@@ -15,11 +15,12 @@
 
 ## 延伸阅读
 
-- [2026年6月主流大模型对比：Claude Fable 5 三项领跑，GLM-5.2 Agentic 反超 GPT-5.5，Kimi K2.7 Code 上线](articles/model_comparisons/20260617/index.html)
-基于 Artificial Analysis 2026年6月17日基准测试，按 Intelligence、Coding、Agentic 三层对 19 款主流大模型横向评测，附选型建议。
-![Artificial Analysis Agentic Index 2026年6月17日榜单截图](articles/model_comparisons/20260617/assets/Artificial%20Analysis%20Agentic%20Index%20(17%20Jun%20'26).png)
-- [2026年6月28日 Coding Plan平台全面对比](articles/plan_comparisons/20260628/index.html)
-覆盖智谱 GLM-5.2、MiniMax、Kimi-K2.7-Code、DeepSeek、字节方舟促销、阿里百炼等平台的能力、价格、限购状态与选型建议。
+- [2026年8月主流大模型能力对比：Kimi K3 综合国产第一，Qwen3.8 Max Agentic 全球第一，DeepSeek V4 Flash 正式版越级打Pro，国产阵营全面突破](articles/model_comparisons/20260806/index.html)
+基于 Artificial Analysis 2026年8月5日基准测试，围绕 Intelligence Index 与 Agentic Index 对 21 款主流大模型横向评测，附选型建议。
+![Artificial Analysis Agentic Index 2026年8月5日榜单截图](articles/model_comparisons/20260806/assets/artificial-analysis-agentic-index-5-aug-26.png)
+- [2026年8月10日 Coding Plan平台全面对比](articles/plan_comparisons/20260810/index.html)
+8 月主线是「定价再平衡」：智谱新套餐涨价、Kimi 限购、DeepSeek 新模型上线、字节·方舟 2.5 折持续。覆盖主流平台能力、价格、限购状态与选型建议。
+- [全部文章](articles/index.html)
 
 
 ## 平台推荐
@@ -37,11 +38,10 @@
     - 支持GLM-5.2，国内最强的代码模型之一
     - 用量与国内版完全一致，价格大约为国内版两倍左右。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享额外9折。有成品号出售，加入[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)查看群公告了解详情。
 3. 字节·方舟 ⭐️⭐️⭐️⭐️⭐️
-    - 目前2.5折，且有用量4倍活动
+    - 目前首两月2.5折
     - 支持GLM-5.2，DeepSeek-V4，MiniMax-M3，Kimi-K3
-    - 当前需抢购
 4. OpenCode ⭐️⭐️⭐️⭐️⭐️
-    - 支持Kimi-K3、GLM-5.2、DeepSeek-V4-Pro等最新模型
+    - 支持Kimi-K3、GLM-5.2、DeepSeek-V4-Flash-0731、Gpt-5.6-Luna等最新模型
     - 首月半价$5。但只有go这一种套餐，不够重度使用
     - 无需抢购，可支付宝付款
 
