@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GPT-5.6 Luna 降价 80%、Terra 降价 20%：选 Luna 还是 DeepSeek V4 Flash？</title>
+  <meta name="description" content="本次核心更新：
+* Luna API 标准价降 80%，输入 $0.20 / 输出 $1.20（约 ¥1.4 / ¥8.4，每百万 tokens）
+* Terra API 标准价降 20%，输入 $2.00 / 输出 $12.00（约 ¥14 / ¥84）
+* Sol 标准价不变；新增 Fast mode，最高 2.5" />
+  <link rel="icon" href="../../../favicon.ico?v=20260803" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=20260803" />
+  <style>
+
+
+
+
+
+    body.article-page {
+      font-size: 17px;
+      line-height: 1.78;
+      padding: clamp(18px, 4vw, 36px) clamp(14px, 3.5vw, 28px) 56px;
+    }
+
+    .doc-wrap {
+      max-width: calc(64rem + 14.5rem + 2.5rem);
+      margin: 0 auto;
+    }
+
+    .doc-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .doc-toc-aside.doc-toc-aside--desktop {
+      display: none;
+    }
+
+    .doc-toc.doc-toc--inline {
+      display: block;
+    }
+
+    article.doc .doc-toc ol,
+    article.doc .doc-toc ul {
+      margin-bottom: 0;
+      padding-left: 0;
+      color: inherit;
+    }
+
+    article.doc .doc-toc li {
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    article.doc .doc-toc li::marker {
+      color: rgba(15, 118, 110, 0.45);
+    }
+
+    article.doc .doc-toc a,
+    article.doc .doc-toc a:hover {
+      border-bottom: none;
+      text-decoration: none;
+    }
+
+    article.doc {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    @media (max-width: 1023px) {
+      .doc-wrap {
+        max-width: 64rem;
+      }
+    }
+
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      padding: 0.6rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #3a2000;
+      background: var(--accent-primary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+    }
+    .back-home-btn:hover {
+      opacity: 0.85;
+      transform: translateX(-2px);
+    }
+
+    article.doc {
+      position: relative;
+      padding: clamp(1.5rem, 4.2vw, 2.85rem);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      background: linear-gradient(
+        155deg,
+        rgba(255, 253, 248, 0.97) 0%,
+        rgba(255, 249, 240, 0.9) 45%,
+        rgba(239, 246, 244, 0.55) 100%
+      );
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    article.doc::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(
+        90deg,
+        var(--accent-primary),
+        rgba(198, 107, 26, 0.85)
+      );
+      opacity: 0.92;
+    }
+
+    .doc-kicker {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc h1 {
+      font-size: clamp(1.45rem, 4.2vw, 1.95rem);
+      font-weight: 700;
+      line-height: 1.32;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin: 0 0 0.45rem;
+      max-width: 28em;
+    }
+
+    article.doc .doc-updates {
+      margin: 0 0 1.05rem;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-updates time {
+      font-variant-numeric: tabular-nums;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    article.doc .lead {
+      font-size: 0.98em;
+      color: var(--text-secondary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc p {
+      margin: 0 0 1rem;
+      color: var(--text-primary);
+    }
+
+    article.doc h2 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 2.35rem 0 0.85rem;
+      padding: 0 0 0 0.85rem;
+      border-left: 4px solid var(--accent-primary);
+      line-height: 1.35;
+    }
+
+    article.doc h2:first-of-type {
+      margin-top: 1.85rem;
+    }
+
+    article.doc h2[id],
+    article.doc h3[id],
+    article.doc h4[id] {
+      scroll-margin-top: 1.25rem;
+    }
+
+    article.doc h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin: 1.35rem 0 0.55rem;
+      line-height: 1.4;
+    }
+
+    .doc-toc {
+      margin: 0;
+      padding: 0.85rem 0.95rem 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: rgba(255, 253, 248, 0.92);
+      box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.06));
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .doc-toc-title {
+      margin: 0 0 0.55rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .doc-toc ol {
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .doc-toc > ol {
+      list-style: none;
+    }
+
+    .doc-toc > ol > li {
+      margin-bottom: 0.45rem;
+    }
+
+    .doc-toc > ol > li > a {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc ol ol {
+      margin: 0.3rem 0 0.1rem;
+      padding-left: 0.85rem;
+      list-style: none;
+      border-left: 2px solid rgba(15, 118, 110, 0.15);
+    }
+
+    .doc-toc ol ol li {
+      margin-bottom: 0.22rem;
+    }
+
+    .doc-toc ol ol a {
+      font-weight: 400;
+      color: var(--text-secondary);
+      font-size: 0.96em;
+    }
+
+    .doc-toc li {
+      margin-bottom: 0.25rem;
+    }
+
+    .doc-toc a {
+      display: block;
+      border-bottom: none;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .doc-toc a:hover {
+      color: var(--accent-primary);
+      text-decoration: none;
+      border-bottom: none;
+    }
+
+    .doc-toc.doc-toc--inline {
+      margin: 0 0 1.75rem;
+      padding: 1rem 1.15rem 1.05rem;
+      font-size: 0.92em;
+      line-height: 1.55;
+      background: rgba(15, 118, 110, 0.05);
+      box-shadow: none;
+    }
+
+    .doc-toc.doc-toc--inline .doc-toc-title {
+      font-size: 0.88rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li {
+      margin-bottom: 0.5rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li > a {
+      display: inline;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc.doc-toc--inline ol ol {
+      margin: 0.35rem 0 0.15rem;
+      padding-left: 1.15rem;
+      list-style: decimal;
+      border-left: none;
+    }
+
+    .doc-toc.doc-toc--inline ol ol li {
+      margin-bottom: 0.3rem;
+    }
+
+    .doc-toc.doc-toc--inline ol ol a {
+      display: inline;
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: 1em;
+    }
+
+    .doc-toc.doc-toc--inline a:hover {
+      color: var(--accent-primary);
+    }
+
+    @media (min-width: 1024px) {
+      .doc-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: clamp(1.25rem, 2.5vw, 2rem);
+      }
+
+      .doc-toc.doc-toc--inline {
+        display: none;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop {
+        display: block;
+        flex: 0 0 13.25rem;
+        width: 13.25rem;
+        position: sticky;
+        top: 1.25rem;
+        max-height: calc(100vh - 2.5rem);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(15, 118, 110, 0.35) transparent;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop::-webkit-scrollbar-thumb {
+        background: rgba(15, 118, 110, 0.28);
+        border-radius: 999px;
+      }
+
+      article.doc {
+        flex: 1 1 auto;
+        max-width: 64rem;
+      }
+    }
+
+    article.doc h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #243047;
+      margin: 1.45rem 0 0.55rem;
+    }
+
+    article.doc ul, article.doc ol {
+      margin: 0 0 1.1rem;
+      padding-left: 1.35rem;
+      color: var(--text-primary);
+    }
+
+    article.doc li {
+      margin-bottom: 0.45rem;
+      padding-left: 0.15rem;
+    }
+
+    article.doc li::marker {
+      color: rgba(15, 118, 110, 0.55);
+    }
+
+    article.doc ol li::marker {
+      color: rgba(15, 118, 110, 0.55);
+      font-weight: 600;
+    }
+
+    article.doc strong {
+      font-weight: 600;
+      color: #1a2436;
+    }
+
+    article.doc a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    article.doc a:hover {
+      color: #0d9488;
+      border-bottom-color: rgba(13, 148, 136, 0.55);
+    }
+
+    article.doc table {
+      width: fit-content;
+      max-width: 100%;
+      display: block;
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+      border-collapse: collapse;
+      font-size: 0.9em;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    article.doc thead {
+      background: rgba(15, 118, 110, 0.08);
+    }
+
+    article.doc th {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.88em;
+      color: var(--text-secondary);
+      border-bottom: 2px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    article.doc td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-primary);
+    }
+
+    article.doc tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    article.doc tbody tr:hover {
+      background: rgba(15, 118, 110, 0.04);
+    }
+
+    .doc-blockquote {
+      margin: 1.5rem 0;
+      padding: 0.85rem 1.15rem;
+      border-left: 4px solid var(--accent-primary);
+      background: rgba(15, 118, 110, 0.06);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 0.95em;
+      color: var(--text-secondary);
+    }
+
+    article.doc .doc-source {
+      margin-top: 2.25rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-source a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    article.doc .doc-source a:hover {
+      color: #0d9488;
+      border-bottom-color: rgba(13, 148, 136, 0.55);
+    }
+
+    ::selection {
+      background: rgba(15, 118, 110, 0.18);
+      color: var(--text-primary);
+    }
+
+    article.doc img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1rem 0 0.35rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    article.doc figure {
+      margin: 1rem 0 0.15rem;
+    }
+
+    article.doc .img-source {
+      margin: 0 0 1.35rem;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: var(--text-tertiary);
+      word-break: break-all;
+    }
+
+    article.doc .img-source a {
+      font-weight: 500;
+      font-size: inherit;
+      color: var(--text-tertiary);
+      border-bottom-color: rgba(15, 118, 110, 0.22);
+    }
+
+    article.doc .img-source a:hover {
+      color: var(--accent-primary);
+      border-bottom-color: rgba(13, 148, 136, 0.45);
+    }
+
+    article.doc code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+      background: rgba(15, 118, 110, 0.06);
+      padding: 0.1em 0.35em;
+      border-radius: 0.25em;
+    }
+  
+  
+  
+  
+  
+  </style>
+</head>
+<body class="article-page">
+  <div class="doc-wrap">
+    <a href="../../../" class="back-home-btn">← 返回主页</a>
+    <div class="doc-layout">
+      <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="侧栏目录">
+        <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、这次降了多少</a></li><li><a href="#sec-h2-2">二、为什么降价，谁最受益</a></li><li><a href="#sec-h2-3">三、怎么选模型和思考深度</a><ol><li><a href="#sec-h3-3">如果你更关心成本或者额度</a></li><li><a href="#sec-h3-3-2">如果你更关心速度</a></li><li><a href="#sec-h3-3-3">实际用法</a></li></ol></li><li><a href="#sec-h2-4">总结</a></li></ol></nav>
+      </aside>
+      <article class="doc">
+        <p class="doc-kicker">AI 行业快讯</p>
+        <h1>GPT-5.6 Luna 降价 80%、Terra 降价 20%：选 Luna 还是 DeepSeek V4 Flash？</h1>
+        <p class="doc-updates"><time datetime="2026-07-30">更新日期 2026.7.30</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
+        
+        <p class="lead">本次核心更新：
+* Luna API 标准价降 80%，输入 $0.20 / 输出 $1.20（约 ¥1.4 / ¥8.4，每百万 tokens）
+* Terra API 标准价降 20%，输入 $2.00 / 输出 $12.00（约 ¥14 / ¥84）
+* Sol 标准价不变；新增 Fast mode，最高 2.5 倍速度，定价为标准模式 2 倍
+* ChatGPT Work / Codex 订阅价与月度额度不变，Terra / Luna 的 credit 消耗同步减少
+* Luna 降价后更适合带工具调用、多步 Agent 的高频工作流</p>
+        <nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、这次降了多少</a></li><li><a href="#sec-h2-2">二、为什么降价，谁最受益</a></li><li><a href="#sec-h2-3">三、怎么选模型和思考深度</a><ol><li><a href="#sec-h3-3">如果你更关心成本或者额度</a></li><li><a href="#sec-h3-3-2">如果你更关心速度</a></li><li><a href="#sec-h3-3-3">实际用法</a></li></ol></li><li><a href="#sec-h2-4">总结</a></li></ol></nav>
+        <p>2026 年 7 月 30 日，OpenAI 下调了 GPT-5.6 Luna 和 Terra 的 API 价格。Luna 输入/输出降到原来的 20%，Terra 降到原来的 80%；Sol 标准价没有变动，但同日引入了 Fast mode。下文按降幅、受益场景、成本和耗时选型三部分展开。</p>
+<h2 id="sec-h2-1">一、这次降了多少</h2>
+<p>降价前后对比（每百万 tokens，标准模式）：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>降价前（输入 / 输出）</th>
+<th>降价后（输入 / 输出）</th>
+<th>降幅</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT-5.6 Luna</td>
+<td>$1.00 / $6.00</td>
+<td>$0.20 / $1.20</td>
+<td>−80%</td>
+</tr>
+<tr>
+<td>GPT-5.6 Terra</td>
+<td>$2.50 / $15.00</td>
+<td>$2.00 / $12.00</td>
+<td>−20%</td>
+</tr>
+<tr>
+<td>GPT-5.6 Sol</td>
+<td>$5.00 / $30.00</td>
+<td>$5.00 / $30.00</td>
+<td>不变</td>
+</tr>
+</tbody>
+</table>
+<p>折算人民币（1 USD ≈ 7 CNY）：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>输入（约）</th>
+<th>输出（约）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT-5.6 Luna</td>
+<td>¥1.4</td>
+<td>¥8.4</td>
+</tr>
+<tr>
+<td>GPT-5.6 Terra</td>
+<td>¥14</td>
+<td>¥84</td>
+</tr>
+<tr>
+<td>GPT-5.6 Sol</td>
+<td>¥35</td>
+<td>¥210</td>
+</tr>
+</tbody>
+</table>
+<p>Batch / Flex 价格同步下调：Luna 输入 $0.10 / 输出 $0.60，Terra 输入 $1.00 / 输出 $6.00。</p>
+<p>Luna 降到 ¥1.4 / ¥8.4 之后，价格已经很低，但官方定位仍是能调工具、跑多步工作流的一档，不是只能做轻量补全的小模型。</p>
+<h2 id="sec-h2-2">二、为什么降价，谁最受益</h2>
+<p>OpenAI 对外说得很直接：这轮不是临时促销，而是把模型和系统层面的效率提升折进了价格。官方提到三层变化：模型更会走直接路径，token 生成效率提升超过 15%，agentic harness 也少做了不少上下文里的重复劳动。更硬的一条数字是，GPT-5.6 Sol 参与生产 GPU kernel 优化和 token 生成实验后，端到端服务成本下降了 20%。这些效率收益，是本轮下调的基础。</p>
+<p>真正拉开差距的是 Luna 的 80%，Terra 的 20% 更像跟进微调。</p>
+<p>Luna 本来就有 Agent 能力，以前贵在「常驻跑」不划算。降到 ¥1.4 / ¥8.4 后，一批后台任务的成本门槛明显下来了：</p>
+<ul>
+<li>自动代码审查与验证</li>
+<li>批量文档处理与分类</li>
+<li>常驻巡检与监控工作流</li>
+<li>大量中低风险改动和测试回归</li>
+</ul>
+<p>ChatGPT Work 和 Codex 的订阅月费、月度额度总量都没变；Terra / Luna 的 credit 消耗减少，同样的月费能覆盖更多次工作流运行。</p>
+<h2 id="sec-h2-3">三、怎么选模型和思考深度</h2>
+<p>下面两张图来自 Artificial Analysis，分别从成本和耗时看 GPT-5.6 Sol、Terra、Luna 在各思考深度下的分布。</p>
+<h3 id="sec-h3-3">如果你更关心成本或者额度</h3>
+<figure><img src="./assets/gpt56-price-cost-pareto.png" alt="Artificial Analysis：GPT-5.6 Sol / Terra / Luna 各思考深度 Intelligence vs. Cost per Task" loading="lazy" /></figure>
+<p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?models=gpt-5-6-sol%2Cgpt-5-6-terra%2Cgpt-5-6-luna%2Cgpt-5-6-luna-high%2Cgpt-5-6-luna-xhigh%2Cgpt-5-6-luna-medium%2Cgpt-5-6-terra-high%2Cgpt-5-6-terra-xhigh%2Cgpt-5-6-terra-medium%2Cgpt-5-6-terra%2Cgpt-5-6-sol-xhigh%2Cgpt-5-6-sol-high%2Cgpt-5-6-sol-medium%2Cgpt-5-6-luna-low%2Cgpt-5-6-terra-low#intelligence-comparison-tabs" rel="noopener noreferrer">Artificial Analysis</a></p>
+<p>横轴是每任务成本，纵轴是智能水平。Sol、Terra、Luna 三档各有 low / medium / high / xhigh / max 等思考深度变体，点位从左下的 Luna-low 一直拉到右上的 Sol-max。图上有 Pareto line：线上的点，在该价位仍值得看；被线压住的点，通常有更省或更强的替代。</p>
+<p>只看「花多少钱换多少智能」，Luna 是这轮最大赢家：成本线上从 low 到 max 覆盖最完整。Terra 多数点位和 Sol 挤在一起；Sol 要到 medium 以上，才真正值得和前两档一起比。</p>
+<p>选型顺序可以记成：</p>
+<ul>
+<li>先用满 <strong>Luna 全段</strong></li>
+<li>Luna 智能不够时，上 <strong>Terra</strong> 的 xhigh / max</li>
+<li>再不够，再切 <strong>Sol</strong>，从 high 起用</li>
+</ul>
+<p>预算有限、想多跑任务时，别一上来就盯 Sol；先把 Luna 用满，顶不住再往 Terra 高思考深度和 Sol 高思考深度走。</p>
+<h3 id="sec-h3-3-2">如果你更关心速度</h3>
+<figure><img src="./assets/gpt56-price-time-pareto.png" alt="Artificial Analysis：GPT-5.6 Sol / Terra / Luna 各思考深度 Intelligence vs. Time per Task" loading="lazy" /></figure>
+<p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?models=gpt-5-6-sol%2Cgpt-5-6-terra%2Cgpt-5-6-luna%2Cgpt-5-6-luna-high%2Cgpt-5-6-luna-xhigh%2Cgpt-5-6-luna-medium%2Cgpt-5-6-terra-high%2Cgpt-5-6-terra-xhigh%2Cgpt-5-6-terra-medium%2Cgpt-5-6-terra%2Cgpt-5-6-sol-xhigh%2Cgpt-5-6-sol-high%2Cgpt-5-6-sol-medium%2Cgpt-5-6-luna-low%2Cgpt-5-6-terra-low&amp;intelligence-comparison=intelligence-vs-time-per-task#intelligence-comparison-tabs" rel="noopener noreferrer">Artificial Analysis</a></p>
+<p>换成耗时维度：思考深度越高通常越慢。更稳的做法是用更强模型配浅思考深度，少用弱模型硬堆高思考深度。</p>
+<p>选型顺序反过来：</p>
+<ul>
+<li>先用 <strong>Sol 各思考深度</strong></li>
+<li>不需要 Sol Low 那档智能时，切 <strong>Terra</strong> 的 medium 或 low</li>
+<li>不需要 Terra Low 那档智能时，再切 <strong>Luna</strong> 的 low</li>
+</ul>
+<p>想尽快出结果时，优先把 Sol 用满；还慢，再往 Terra 中低思考深度走，最后才是 Luna 的 low。</p>
+<h3 id="sec-h3-3-3">实际用法</h3>
+<p>三档现在更好分工：Luna 管省钱和规模化，Terra 做均衡主力，Sol 保上限，也兼顾速度选项。</p>
+<p>偏成本：Luna → Terra → Sol，尽量用更便宜的模型配更深思考深度，去够同一档能力。</p>
+<p>偏速度：Sol → Terra → Luna，尽量用更强模型配更浅思考深度，把等待压下来。</p>
+<h2 id="sec-h2-4">总结</h2>
+<p>这轮最该盯的是 Luna 降了 80%。价格已经很低，同时还能调工具、跑多步流程。以前算不过账的常驻 Agent 任务，现在可以重新算一遍。</p>
+<p>看成本：Luna 往上用，再看 Terra 高思考深度，最后才是 Sol。看速度：顺序基本反过来，优先更强模型配更浅思考深度。三档各自怎么用，比降价前清楚不少。</p>
+<p>Luna 适合高频、量大、预算敏感的任务；Terra 更像日常主力；Sol 留给更复杂、更贵但也更值的任务。ChatGPT Work / Codex 用户月费没变，Terra / Luna 更省 credit，同样的钱能多跑几轮工作流。</p>
+        <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>
+原文链接 <a href="https://vibecoding.dreamfree.space/articles/news/20260803_gpt56_price/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260803_gpt56_price/</a><br>
+ChatGPT <a href="https://api.dreamfree.space/c/s/cpyqchatgpt" rel="noopener noreferrer">https://chatgpt.com/#pricing</a></div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>

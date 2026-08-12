@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GLM-5.2 全量开放 Coding Plan：1M 上下文登场，Code V3 私有评测跃居第三</title>
+  <meta name="description" content="GLM-5.2 面向 GLM Coding Plan 全量开放，1M 上下文，Code V3 私有评测综合第三；下周 MIT 开源与 API。" />
+  <link rel="icon" href="../../../favicon.ico?v=20260613" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=20260613" />
+  <style>
+    body.article-page {
+      font-size: 17px;
+      line-height: 1.78;
+      padding: clamp(18px, 4vw, 36px) clamp(14px, 3.5vw, 28px) 56px;
+    }
+
+    .doc-wrap {
+      max-width: calc(64rem + 14.5rem + 2.5rem);
+      margin: 0 auto;
+    }
+
+    .doc-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .doc-toc-aside.doc-toc-aside--desktop {
+      display: none;
+    }
+
+    .doc-toc.doc-toc--inline {
+      display: block;
+    }
+
+    article.doc .doc-toc ol,
+    article.doc .doc-toc ul {
+      margin-bottom: 0;
+      padding-left: 0;
+      color: inherit;
+    }
+
+    article.doc .doc-toc li {
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    article.doc .doc-toc li::marker {
+      color: rgba(15, 118, 110, 0.45);
+    }
+
+    article.doc .doc-toc a,
+    article.doc .doc-toc a:hover {
+      border-bottom: none;
+      text-decoration: none;
+    }
+
+    article.doc {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    @media (max-width: 1023px) {
+      .doc-wrap {
+        max-width: 64rem;
+      }
+    }
+
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      padding: 0.6rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #3a2000;
+      background: var(--accent-primary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+    }
+    .back-home-btn:hover {
+      opacity: 0.85;
+      transform: translateX(-2px);
+    }
+
+    article.doc {
+      position: relative;
+      padding: clamp(1.5rem, 4.2vw, 2.85rem);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      background: linear-gradient(
+        155deg,
+        rgba(255, 253, 248, 0.97) 0%,
+        rgba(255, 249, 240, 0.9) 45%,
+        rgba(239, 246, 244, 0.55) 100%
+      );
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    article.doc::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(
+        90deg,
+        var(--accent-primary),
+        rgba(198, 107, 26, 0.85)
+      );
+      opacity: 0.92;
+    }
+
+    .doc-kicker {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc h1 {
+      font-size: clamp(1.45rem, 4.2vw, 1.95rem);
+      font-weight: 700;
+      line-height: 1.32;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin: 0 0 0.45rem;
+      max-width: 28em;
+    }
+
+    article.doc .doc-updates {
+      margin: 0 0 1.05rem;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-updates time {
+      font-variant-numeric: tabular-nums;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    article.doc .lead {
+      font-size: 0.98em;
+      color: var(--text-secondary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc p {
+      margin: 0 0 1rem;
+      color: var(--text-primary);
+    }
+
+    article.doc h2 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 2.35rem 0 0.85rem;
+      padding: 0 0 0 0.85rem;
+      border-left: 4px solid var(--accent-primary);
+      line-height: 1.35;
+    }
+
+    article.doc h2:first-of-type {
+      margin-top: 1.85rem;
+    }
+
+    article.doc h2[id],
+    article.doc h3[id] {
+      scroll-margin-top: 1.25rem;
+    }
+
+    .doc-toc {
+      margin: 0;
+      padding: 0.85rem 0.95rem 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: rgba(255, 253, 248, 0.92);
+      box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.06));
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .doc-toc-title {
+      margin: 0 0 0.55rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .doc-toc ol {
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .doc-toc > ol {
+      list-style: none;
+    }
+
+    .doc-toc > ol > li {
+      margin-bottom: 0.45rem;
+    }
+
+    .doc-toc > ol > li > a {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc ol ol {
+      margin: 0.3rem 0 0.1rem;
+      padding-left: 0.85rem;
+      list-style: none;
+      border-left: 2px solid rgba(15, 118, 110, 0.15);
+    }
+
+    .doc-toc ol ol li {
+      margin-bottom: 0.22rem;
+    }
+
+    .doc-toc ol ol a {
+      font-weight: 400;
+      color: var(--text-secondary);
+      font-size: 0.96em;
+    }
+
+    .doc-toc li {
+      margin-bottom: 0.25rem;
+    }
+
+    .doc-toc a {
+      display: block;
+      border-bottom: none;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .doc-toc a:hover {
+      color: var(--accent-primary);
+      text-decoration: none;
+      border-bottom: none;
+    }
+
+    /* 窄屏：文内目录（开场白后），样式独立于左侧栏 TOC */
+    .doc-toc.doc-toc--inline {
+      margin: 0 0 1.75rem;
+      padding: 1rem 1.15rem 1.05rem;
+      font-size: 0.92em;
+      line-height: 1.55;
+      background: rgba(15, 118, 110, 0.05);
+      box-shadow: none;
+    }
+
+    .doc-toc.doc-toc--inline .doc-toc-title {
+      font-size: 0.88rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li {
+      margin-bottom: 0.5rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li > a {
+      display: inline;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc.doc-toc--inline ol ol {
+      margin: 0.35rem 0 0.15rem;
+      padding-left: 1.15rem;
+      list-style: decimal;
+      border-left: none;
+    }
+
+    .doc-toc.doc-toc--inline ol ol li {
+      margin-bottom: 0.3rem;
+    }
+
+    .doc-toc.doc-toc--inline ol ol a {
+      display: inline;
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: 1em;
+    }
+
+    .doc-toc.doc-toc--inline a:hover {
+      color: var(--accent-primary);
+    }
+
+    @media (min-width: 1024px) {
+      .doc-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: clamp(1.25rem, 2.5vw, 2rem);
+      }
+
+      .doc-toc.doc-toc--inline {
+        display: none;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop {
+        display: block;
+        flex: 0 0 13.25rem;
+        width: 13.25rem;
+        position: sticky;
+        top: 1.25rem;
+        max-height: calc(100vh - 2.5rem);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(15, 118, 110, 0.35) transparent;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop::-webkit-scrollbar-thumb {
+        background: rgba(15, 118, 110, 0.28);
+        border-radius: 999px;
+      }
+
+      article.doc {
+        flex: 1 1 auto;
+        max-width: 64rem;
+      }
+    }
+
+    article.doc h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #243047;
+      margin: 1.45rem 0 0.55rem;
+    }
+
+    article.doc ul, article.doc ol {
+      margin: 0 0 1.1rem;
+      padding-left: 1.35rem;
+      color: var(--text-primary);
+    }
+
+    article.doc li {
+      margin-bottom: 0.45rem;
+      padding-left: 0.15rem;
+    }
+
+    article.doc li::marker {
+      color: rgba(15, 118, 110, 0.55);
+    }
+
+    article.doc ol li::marker {
+      color: rgba(15, 118, 110, 0.55);
+      font-weight: 600;
+    }
+
+    article.doc strong {
+      font-weight: 600;
+      color: #1a2436;
+    }
+
+    article.doc a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    article.doc a:hover {
+      color: #0d9488;
+      border-bottom-color: rgba(13, 148, 136, 0.55);
+    }
+
+    article.doc table {
+      width: fit-content;
+      max-width: 100%;
+      display: block;
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+      border-collapse: collapse;
+      font-size: 0.9em;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    article.doc thead {
+      background: rgba(15, 118, 110, 0.08);
+    }
+
+    article.doc th {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.88em;
+      color: var(--text-secondary);
+      border-bottom: 2px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    article.doc td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-primary);
+    }
+
+    article.doc tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    article.doc tbody tr:hover {
+      background: rgba(15, 118, 110, 0.04);
+    }
+
+    .doc-blockquote {
+      margin: 1.5rem 0;
+      padding: 0.85rem 1.15rem;
+      border-left: 4px solid var(--accent-primary);
+      background: rgba(15, 118, 110, 0.06);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 0.95em;
+      color: var(--text-secondary);
+    }
+
+    article.doc .doc-source {
+      margin-top: 2.25rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-source a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    article.doc .doc-source a:hover {
+      color: #0d9488;
+      border-bottom-color: rgba(13, 148, 136, 0.55);
+    }
+
+    ::selection {
+      background: rgba(15, 118, 110, 0.18);
+      color: var(--text-primary);
+    }
+  
+    article.doc img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1rem 0 1.5rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+    article.doc pre {
+      margin: 1rem 0 1.25rem;
+      padding: 1rem 1.1rem;
+      overflow-x: auto;
+      font-size: 0.82em;
+      line-height: 1.55;
+      background: rgba(15, 118, 110, 0.06);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+    article.doc pre code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color: var(--text-primary);
+    }
+
+  </style>
+</head>
+<body class="article-page">
+  <div class="doc-wrap">
+    <a href="../../../" class="back-home-btn">← 返回主页</a>
+    <div class="doc-layout">
+      <aside class="doc-toc-aside doc-toc-aside--desktop">
+        <nav class="doc-toc" aria-label="文章目录">
+          <p class="doc-toc-title">目录</p>
+          <ol>
+            <li><a href="#sec-core">一、核心升级</a><ol>
+              <li><a href="#sec-1m">1M 上下文</a></li>
+              <li><a href="#sec-effort">Thinking Effort</a></li>
+              <li><a href="#sec-highspeed">与 5.1 高速版</a></li>
+            </ol></li>
+            <li><a href="#sec-codev3">二、Code V3 评测</a><ol>
+              <li><a href="#sec-bench-src">榜单来源</a></li>
+              <li><a href="#sec-rank">综合排序</a></li>
+              <li><a href="#sec-vs51">对比 GLM-5.1</a></li>
+              <li><a href="#sec-opus">对比 Opus 4.8</a></li>
+              <li><a href="#sec-hidden">隐藏工程</a></li>
+              <li><a href="#sec-1m-proof">1M 实测体现</a></li>
+            </ol></li>
+            <li><a href="#sec-release">三、开放节奏</a></li>
+            <li><a href="#sec-plan">四、Coding Plan</a></li>
+            <li><a href="#sec-setup">五、接入指南</a><ol>
+              <li><a href="#sec-claude">Claude Code</a></li>
+              <li><a href="#sec-openclaw">OpenClaw</a></li>
+            </ol></li>
+            <li><a href="#sec-compare">六、同梯队对比</a></li>
+            <li><a href="#sec-advice">七、选型建议</a></li>
+            <li><a href="#sec-summary">八、总结</a></li>
+          </ol>
+        </nav>
+      </aside>
+      <article class="doc">
+      <p class="doc-kicker">产品更新 · Coding Plan</p>
+      <h1>GLM-5.2 全量开放 Coding Plan：1M 上下文登场，Code V3 私有评测跃居第三</h1>
+      <p class="doc-updates">更新日期：<time datetime="2026-06-13">2026.6.13</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
+      <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;">本次核心更新：6 月 13 日 17:21 起 <strong>GLM-5.2</strong> 面向 <strong>GLM Coding Plan 全量用户</strong>开放；官方称 <strong>1M 可用上下文</strong>；<strong>API 与 MIT 开源</strong>计划下周上线；智谱<strong>尚未公布</strong> SWE-bench 等官方榜单；<strong>LLM Benchmark Code V3</strong> 中 <strong>GLM-5.2(max)</strong> 综合第 <strong>3</strong>，公开 5 工程中获 <strong>3 个 A 档</strong>，维护者称可用性<strong>持平 Opus 4.8</strong>、<strong>大幅领先其他国产模型</strong>。</div>
+      <p class="lead">2026 年 6 月 13 日，<strong>智谱</strong>正式发布 <strong>GLM-5.2</strong>，并向 <strong>GLM Coding Plan</strong> 存量用户全量开放。官方 benchmark 尚空，但 Code V3 榜单维护者 <strong>toyama nao</strong>（知乎 llm2014 /「玩具匠」）在同日发布的解读中给出判断：<strong>GLM-5.2 把 Coding 能力推到世界一流模型的门口，并在国产模型中首次拉开代差</strong>。本文结合其解读与公开 CSV 数据，说明 GLM-5.2 相对 GLM-5.1 与同梯队模型意味着什么。</p>
+      <nav class="doc-toc doc-toc--inline" aria-label="文章目录">
+        <p class="doc-toc-title">目录</p>
+        <ol>
+          <li><a href="#sec-core">一、GLM-5.2 核心升级：从 200K 到 1M</a><ol>
+            <li><a href="#sec-1m">真正可用的 1M 上下文</a></li>
+            <li><a href="#sec-effort">High / Max 双档 Thinking Effort</a></li>
+            <li><a href="#sec-highspeed">与 GLM-5.1 高速版并存</a></li>
+          </ol></li>
+          <li><a href="#sec-codev3">二、Code V3 私有评测</a><ol>
+            <li><a href="#sec-bench-src">榜单来源</a></li>
+            <li><a href="#sec-rank">综合排序</a></li>
+            <li><a href="#sec-vs51">与 GLM-5.1 代际跃迁</a></li>
+            <li><a href="#sec-opus">与 Opus 4.8</a></li>
+            <li><a href="#sec-hidden">隐藏工程与国产对比</a></li>
+            <li><a href="#sec-1m-proof">1M 上下文实测</a></li>
+            <li><a href="#sec-how-read">如何理解榜单</a></li>
+          </ol></li>
+          <li><a href="#sec-release">三、开放节奏</a></li>
+          <li><a href="#sec-plan">四、GLM Coding Plan</a></li>
+          <li><a href="#sec-setup">五、接入指南</a><ol>
+            <li><a href="#sec-claude">Claude Code</a></li>
+            <li><a href="#sec-openclaw">OpenClaw</a></li>
+          </ol></li>
+          <li><a href="#sec-compare">六、与国产同梯队对比</a></li>
+          <li><a href="#sec-advice">七、选型建议</a></li>
+          <li><a href="#sec-summary">八、总结</a></li>
+        </ol>
+      </nav>
+      <h2 id="sec-core">一、GLM-5.2 核心升级：从 200K 到 1M</h2>
+      <h3 id="sec-1m">1. 真正可用的 1M 上下文</h3>
+      <p>GLM-5.2 将可用上下文从 GLM-5.1 的约 <strong>200K</strong> 提升到 <strong>1,000,000 tokens</strong>（开发者侧常见标识 <strong><code>glm-5.2[1m]</code></strong>）。Code V3 维护者指出，GLM-5.1 在超过 <strong>100K</strong> 后注意力快速散失，是此前「榜单不差、实战却拉胯」的主因之一；1M 窗口的目标，正是让 Agent <strong>少压缩、少遗忘</strong>。</p>
+      <h3 id="sec-effort">2. High / Max 双档 Thinking Effort</h3>
+      <p>GLM-5.2 引入 <strong>High / Max</strong> 两档思考强度。复杂 Coding 与架构级 Debug 建议使用 <strong>Max</strong>；Claude Code 内可通过 <code>/effort</code> → <strong>max</strong> 切换。</p>
+      <h3 id="sec-highspeed">3. 与 GLM-5.1 高速版并存</h3>
+      <p><strong>GLM-5.1 高速版</strong>（2026 年 5 月，约 <strong>400 tokens/s</strong>）仍适用于低延迟补全；<strong>GLM-5.2</strong> 定位长上下文旗舰，二者按场景切换即可。</p>
+      <h2 id="sec-codev3">二、Code V3 私有评测：官方榜单空缺下的参考坐标</h2>
+      <h3 id="sec-bench-src">1. 榜单来源</h3>
+      <p>智谱尚未发布 GLM-5.2 官方 benchmark 时，可参考维护者 <strong>toyama nao</strong>（llm2014）的 <a href="https://llm2014.github.io/llm_benchmark/#category=code_v3&amp;dataset=code_v3%7C2026-06%7C0" rel="noopener noreferrer"><strong>LLM Benchmark Code V3</strong></a>——个人私有题库、Agent 实装向，维护者亦提醒「不可盲信任何评测」。GLM-5.2 以 <strong><code>GLM-5.2(max)</code> + Claude Code</strong> 入榜；下图为 <strong>2026-06 月榜</strong>截图，下文结合 CSV 与维护者解读展开。</p>
+      <figure><img src="assets/2026_165850_llm2014.github.io.jpeg" alt="LLM Benchmark Code V3 2026-06 月榜" loading="lazy" /></figure>
+      <h3 id="sec-rank">2. 综合排序：GLM-5.2(max) 暂列总榜第三</h3>
+      <p>按该 CSV 当前行序（维护者按综合表现排序），<strong>GLM-5.2(max) 位列第 3</strong>，仅次于 <strong>GPT-5.5 (high)</strong> 与 <strong>Claude Opus 4.8 (high)</strong>，领先于 <strong>GPT-5.4 (high)</strong>、<strong>Claude Opus 4.6</strong> 等主流闭源模型。在<strong>国产 / 可经由 Coding Plan 使用的模型</strong>中，GLM-5.2 为<strong>本轮 Code V3 最高分</strong>；同榜 <strong>GLM-5.1</strong> 排在第 9 位，<strong>DeepSeek V4 Pro (max)</strong>、<strong>MiniMax-M3</strong> 等亦在榜，但综合位次低于 GLM-5.2。</p>
+      <p><strong>需再次强调</strong>：这是<strong>单一维护者、私有题目、小样本</strong>的 Agent 实装测试，<strong>不能</strong>等价为 SWE-bench Verified / Terminal-Bench 官方结果；但在智谱尚未发布 GLM-5.2 官方 benchmark 的窗口期，它是目前<strong>可核对原始 CSV、可复现查询路径</strong>的重要参考。</p>
+      <h3 id="sec-vs51">3. 与 GLM-5.1 的代际跃迁：从「过不了 5 关」到「3 个 A」</h3>
+      <p>维护者在解读中回顾：<strong>GLM-5.1</strong> 曾是国产模型中第一个真正冲过 Sonnet 把持的「编程基本可用线」，但超过 <strong>100K</strong> 后注意力快速散失，真实 Agent 环境下可用性明显下滑——若非这一短板，5.1 当时会更接近 Opus 4.5（非推理模式）。此后约两个月里，DeepSeek V4、Qwen3.7-Max、Kimi K2.6 等多次挑战国产 Coding SOTA 均未超越 GLM-5.1；而北美侧 GPT-5.5、Opus 4.8 继续抬升天花板。</p>
+      <p><strong>GLM-5.2</strong> 的核心修复点，正是 <strong>1M 上下文 + 后训练</strong> 对长链路的托底。公开 CSV 对比如下：</p>
+      <table><thead><tr><th>场景</th><th>GLM-5.1</th><th>GLM-5.2 (max)</th><th>变化解读</th></tr></thead><tbody><tr><td>MacOS App</td><td>20 / <strong>C+</strong></td><td>16 / <strong>B+</strong></td><td>效率与等级双提升</td></tr><tr><td>Flutter</td><td>14 / <strong>B</strong></td><td>6 / <strong>A</strong></td><td>跃升至 A 档</td></tr><tr><td>Web</td><td>15 / <strong>B</strong></td><td>8 / <strong>A</strong></td><td>跃升至 A 档</td></tr><tr><td>Game</td><td>60 / <strong>D</strong></td><td>8 / <strong>A</strong></td><td>此前最弱项大幅修复</td></tr><tr><td>Rust App</td><td><strong>Failed (2/9)</strong></td><td>43 / <strong>C</strong></td><td>由失败变为可完成</td></tr></tbody></table>
+      <p>维护者强调：<strong>GLM-5.1 无法完成全部 5 个公开工程</strong>；GLM-5.2 则在其中拿下 <strong>3 个 A 档</strong>（Flutter / Web / Game）。<strong>A 档</strong>在其体系里表示「几乎不犯错、需求理解一步到位」——这是比 CSV 数字更关键的可用性定义。</p>
+      <h3 id="sec-opus">4. 与 Opus 4.8：持平还是略输？</h3>
+      <p>按 CSV 行序，<strong>GLM-5.2(max) 总榜第 3</strong>，仅次于 GPT-5.5 与 Claude Opus 4.8。维护者认为：在公开 5 工程中，GLM-5.2 的可用性<strong>可与 Opus 4.8 持平</strong>；Mac、Rust 等小众场景略弱，但仍能<strong>不经深度人工干预</strong>完成项目。</p>
+      <p>读表时需注意 <strong>Opus 4.8 的 Skip</strong>：</p>
+      <table><thead><tr><th>模型</th><th>MacOS</th><th>Flutter</th><th>Web</th><th>Game</th><th>Rust</th></tr></thead><tbody><tr><td><strong>Claude Opus 4.8 (high)</strong></td><td>Skip</td><td>Skip</td><td>10/B+</td><td><strong>7/A</strong></td><td><strong>20/B</strong></td></tr><tr><td><strong>GLM-5.2 (max)</strong></td><td>16/B+</td><td><strong>6/A</strong></td><td>8/A</td><td>8/A</td><td>43/C</td></tr></tbody></table>
+      <p>维护者解释：Opus 4.8 在 MacOS / Flutter 未复测，是因为<strong>前代已在对应场景拿到 A</strong>，新版默认沿用 A，不再跑题——因此不宜把 Skip 简单理解成「未测 = 弱项」。在 <strong>Game</strong> 场景，二者均为 <strong>A 档</strong>，且维护者给出了一组消耗对比（<strong>维护者自述，未写入 CSV</strong>）：</p>
+      <ul><li><strong>Opus 4.8 (high)</strong>：<strong>564</strong> 次 tool calls，输出约 <strong>260K</strong> tokens</li><li><strong>GLM-5.2 (max)</strong>：<strong>557</strong> 次 tool calls，输出约 <strong>170K</strong> tokens</li></ul>
+      <p>成绩相近时，GLM-5.2 的调用与输出更省；但需注明这是 <strong>max 对 high</strong> 的错位对比，不能当作同档位公平赛。</p>
+      <p>与 <strong>GPT-5.5</strong> 相比，GLM-5.2 在 <strong>Web（8/A vs 2/A）</strong> 等路径上仍有差距；<strong>Flutter 6/A</strong> 则与 GPT-5.5 <strong>同级</strong>，为本轮亮点。</p>
+      <h3 id="sec-hidden">5. 隐藏工程与国产横向对比</h3>
+      <p>除公开 5 题外，维护者还测试了 <strong>2 个复杂度更高的隐藏工程</strong>（<strong>未公开题目，未写入 CSV</strong>）：</p>
+      <ul><li><strong>GLM-5.2</strong> 首次参与，均以 <strong>C 档</strong>通过，高难度环节通常只需 <strong>2～3 轮</strong>修正</li><li><strong>GLM-5.1</strong> 与 <strong>DeepSeek</strong> 在该隐藏题上<strong>无法完成</strong></li></ul>
+      <p>在公开 CSV 的国产横向对比中：</p>
+      <table><thead><tr><th>模型</th><th>MacOS</th><th>Flutter</th><th>Web</th><th>Game</th><th>Rust</th></tr></thead><tbody><tr><td>DeepSeek V4 Pro (max)</td><td>16/C</td><td>8/B</td><td>21/C</td><td>36/C</td><td>Failed</td></tr><tr><td>MiniMax-M3</td><td>Skip</td><td>19/C+</td><td>51/D+</td><td>Skip</td><td>Skip</td></tr><tr><td>Kimi-K2.6 (Think)</td><td>49/D</td><td>17/C</td><td>33/C</td><td>Failed</td><td>Failed</td></tr></tbody></table>
+      <p>维护者的总结性判断（<strong>评测者观点，非第三方共识</strong>）：GLM-5.2 <strong>大幅领先其他国产模型</strong>，国产 Coding 能力第一次在国内拉开「代差」；是否与 Opus / GPT「持平」则因任务而异。</p>
+      <h3 id="sec-1m-proof">6. 1M 上下文在实测里体现在哪？</h3>
+      <p>维护者从工程行为归纳了几点（与官方「1M 可用」叙事相互印证）：</p>
+      <ul><li><strong>架构规范性</strong>：跨技术栈能遵循「好实践」（未必是最佳实践），倾向<strong>多写代码、填实细节</strong>；5 个公开工程平均代码量比在测模型<strong>高约 30%</strong></li><li><strong>少漏细节</strong>：代码量更高的情况下，仍较少出现「看漏已有代码」导致的 Bug——被归因于 1M 窗口能装下更多上下文</li><li><strong>UI 审美</strong>：前端直出较<strong>朴素克制</strong>，不擅自动效炫技；但<strong>交互可用性</strong>高（隐藏题 E2 需在极小手势空间里做 clip 转场，此前模型多翻车，GLM-5.2 通过）</li><li><strong>Rust / 新库短板</strong>：G 类工程需大量较新三方库 API 时，GLM 更依赖试错推理，不如 GPT 主动检索官方文档；<strong>补充文档与背景知识</strong>后表现会明显改善</li></ul>
+      <h3 id="sec-how-read">7. 如何正确理解这份榜单？</h3>
+      <ol><li><strong>定位</strong>：私有 Code V3 ≠ 行业标准；维护者 README 亦提醒「不可盲信任何评测」。</li><li><strong>数据来源分层</strong>：<strong>CSV 可核对</strong>；隐藏题、tool call 统计、代码量 +30% 等来自<strong>维护者知乎解读</strong>，非独立第三方复现。</li><li><strong>条件</strong>：GLM-5.2 为 <strong>max + Claude Code + Think</strong>；换客户端或 effort 档位，结果会变。</li><li><strong>下一步</strong>：智谱官方 SWE-bench 落地后以厂商表格为准；可关注 Code V3 后续月榜是否纳入 GLM-5.2 其他变体。</li></ol>
+      <h2 id="sec-release">三、开放节奏：Coding Plan 今起可用，API 与权重下周</h2>
+      <p>据智谱官方消息（经 IT之家、第一财经等媒体报道），<strong>2026 年 6 月 13 日 17:21</strong> 起，GLM-5.2 已向 <strong>GLM Coding Plan</strong> 用户全量开放（Lite / Pro / Max / 团队版）。<strong>API</strong> 与 <strong>MIT 开源权重</strong>计划<strong>下周</strong>上线。</p>
+      <table><thead><tr><th>用户类型</th><th>当前</th><th>下周预期</th></tr></thead><tbody><tr><td>Coding Plan 订阅用户</td><td>套餐内直接可用 GLM-5.2</td><td>持续可用</td></tr><tr><td>API / 第三方集成</td><td>等待 API</td><td>OpenAI 兼容端点</td></tr><tr><td>本地部署</td><td>等待权重</td><td>MIT 协议</td></tr></tbody></table>
+      <p>「全量开放模型」≠ Coding Plan <strong>不限购</strong>——新用户仍需按平台规则抢购套餐。</p>
+      <h2 id="sec-plan">四、GLM Coding Plan：价格未变，GLM-5.2 直接纳入</h2>
+      <table><thead><tr><th>套餐</th><th>连续包月</th><th>5 小时请求</th><th>月请求</th><th>核心定位</th></tr></thead><tbody><tr><td>Lite</td><td>¥49</td><td>1,200</td><td>24,000</td><td>入门</td></tr><tr><td>Pro</td><td>¥149</td><td>6,000</td><td>120,000</td><td>个人主力</td></tr><tr><td>Max</td><td>¥469</td><td>24,000</td><td>480,000</td><td>团队 / 高强度 Agent</td></tr></tbody></table>
+      <p>三档 + 团队版均可调用 GLM-5.2；<strong>1M 上下文长会话</strong>更消耗 Token 计量，重度用户优先 <strong>Pro 以上</strong>。订阅入口：<a href="https://api.dreamfree.space/c/s/cpyqzhipu" rel="noopener noreferrer">智谱 AI GLM Coding Plan</a></p>
+      <h2 id="sec-setup">五、接入指南：Claude Code 与 OpenClaw</h2>
+      <h3 id="sec-claude">Claude Code</h3>
+      <pre><code>{
+  &quot;env&quot;: {
+    &quot;CLAUDE_CODE_AUTO_COMPACT_WINDOW&quot;: &quot;1000000&quot;,
+    &quot;ANTHROPIC_DEFAULT_HAIKU_MODEL&quot;: &quot;glm-4.5-air&quot;,
+    &quot;ANTHROPIC_DEFAULT_SONNET_MODEL&quot;: &quot;glm-5.2[1m]&quot;,
+    &quot;ANTHROPIC_DEFAULT_OPUS_MODEL&quot;: &quot;glm-5.2[1m]&quot;
+  }
+}</code></pre>
+      <p>会话内 <code>/effort</code> → <strong>max</strong>，与 Code V3 榜单中 <strong>GLM-5.2(max)</strong> 的测试条件对齐。</p>
+      <h3 id="sec-openclaw">OpenClaw</h3>
+      <p>在 <code>models.providers.zai.models</code> 中配置 <code>contextWindow: 1000000</code>、<code>maxTokens: 131072</code>（以官方文档为准），<code>agents.defaults.model.primary</code> 设为 <code>zai/glm-5.2</code> 后重启 Gateway。</p>
+      <h2 id="sec-compare">六、与国产同梯队对比（综合 Code V3 + 订阅体验）</h2>
+      <ul><li><strong>智谱 GLM-5.2</strong>：Code V3 本轮<strong>综合第三</strong>；Coding Plan <strong>限购</strong>，但模型升级<strong>不额外加价</strong>；1M + 下周 MIT 权重预期。</li><li><strong><a href="https://vibecoding.dreamfree.space/articles/news/20260602_minimax_m3/" rel="noopener noreferrer">MiniMax-M3</a></strong>：<strong>不限购</strong>，多模态 + 1M；Code V3 本轮 Web <strong>51/D+</strong>，与 GLM-5.2 差距较大（部分场景 Skip）。</li><li><strong>DeepSeek V4 Pro</strong>：按量灵活；Code V3 (max) 弱于 GLM-5.2，Rust 仍 Failed。</li><li><strong>字节·方舟</strong>：多模型聚合 + 活动价；GLM-5.2 需等智谱 API 或 Coding Plan 直连。</li></ul>
+      <h2 id="sec-advice">七、选型建议</h2>
+      <h3 id="sec-subscribed">已订阅 GLM Coding Plan</h3>
+      <ul><li><strong>立刻切换</strong> GLM-5.2(max) 跑真实仓库；优先在之前 GLM-5.1 吃力的 <strong>Game / Rust / 大 Web 项目</strong> 上验证。</li><li>对照 <a href="https://llm2014.github.io/llm_benchmark/#category=code_v3&amp;dataset=code_v3%7C2026-06%7C0" rel="noopener noreferrer">Code V3 榜单</a> 关注后续月份是否维持领先。</li></ul>
+      <h3 id="sec-not-subscribed">尚未订阅</h3>
+      <ul><li>能抢到套餐：<strong>Pro（¥149）</strong> 为多数个人甜点；1M 重度用户看 <strong>Max（¥469）</strong>。</li><li>抢不到：短期用 MiniMax-M3 等不限购方案；下周关注 MIT 权重本地部署。</li></ul>
+      <h2 id="sec-summary">八、总结</h2>
+      <p>GLM-5.2 发布在<strong>官方 benchmark 空白期</strong>，但 Code V3 给出了迄今最可跟进的一条线：<strong>CSV 上综合第三、五场景全面碾压 GLM-5.1、公开工程 3 个 A 档</strong>；维护者 toyama nao 进一步判断其<strong>可用性接近 Opus 4.8、国产 Coding 首次拉开代差</strong>——后者含隐藏题与消耗统计等<strong>维护者自述</strong>，需与 CSV 分层看待。</p>
+      <p>对<strong>已持有 Coding Plan</strong> 的开发者：值得立即以 <strong>max effort</strong> 切换 GLM-5.2，并在 Game / Rust / 大 Web 仓库上复验。对<strong>观望者</strong>：等 MIT 权重与官方 SWE-bench 双落地；在此之前，Code V3 + 维护者解读已是判断 GLM-5.2 是否「能干活」的最佳公开材料之一。</p>
+      <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>原文链接 <a href="https://vibecoding.dreamfree.space/articles/news/20260613_glm_5_2/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260613_glm_5_2/</a></div>
+    </article>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kimi K2.7 Code 发布并开源：编程专项大升级，高速版今日上线</title>
+  <meta name="description" content="月之暗面发布开源 Kimi K2.7 Code，Kimi Code 默认升舱，6 月 15 日高速版上线；相对 K2.6 token 消耗约减 30%，API 不涨价。" />
+  <link rel="icon" href="../../../favicon.ico?v=20260615" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=20260615" />
+  <style>
+    body.article-page {
+      font-size: 17px;
+      line-height: 1.78;
+      padding: clamp(18px, 4vw, 36px) clamp(14px, 3.5vw, 28px) 56px;
+    }
+
+    .doc-wrap {
+      max-width: calc(64rem + 14.5rem + 2.5rem);
+      margin: 0 auto;
+    }
+
+    .doc-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .doc-toc-aside.doc-toc-aside--desktop {
+      display: none;
+    }
+
+    .doc-toc.doc-toc--inline {
+      display: block;
+    }
+
+    article.doc .doc-toc ol,
+    article.doc .doc-toc ul {
+      margin-bottom: 0;
+      padding-left: 0;
+      color: inherit;
+    }
+
+    article.doc .doc-toc li {
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    article.doc .doc-toc li::marker {
+      color: rgba(15, 118, 110, 0.45);
+    }
+
+    article.doc .doc-toc a,
+    article.doc .doc-toc a:hover {
+      border-bottom: none;
+      text-decoration: none;
+    }
+
+    article.doc {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    @media (max-width: 1023px) {
+      .doc-wrap {
+        max-width: 64rem;
+      }
+    }
+
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      padding: 0.6rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #3a2000;
+      background: var(--accent-primary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+    }
+    .back-home-btn:hover {
+      opacity: 0.85;
+      transform: translateX(-2px);
+    }
+
+    article.doc {
+      position: relative;
+      padding: clamp(1.5rem, 4.2vw, 2.85rem);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      background: linear-gradient(
+        155deg,
+        rgba(255, 253, 248, 0.97) 0%,
+        rgba(255, 249, 240, 0.9) 45%,
+        rgba(239, 246, 244, 0.55) 100%
+      );
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    article.doc::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(
+        90deg,
+        var(--accent-primary),
+        rgba(198, 107, 26, 0.85)
+      );
+      opacity: 0.92;
+    }
+
+    .doc-kicker {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc h1 {
+      font-size: clamp(1.45rem, 4.2vw, 1.95rem);
+      font-weight: 700;
+      line-height: 1.32;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin: 0 0 0.45rem;
+      max-width: 28em;
+    }
+
+    article.doc .doc-updates {
+      margin: 0 0 1.05rem;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-updates time {
+      font-variant-numeric: tabular-nums;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    article.doc .lead {
+      font-size: 0.98em;
+      color: var(--text-secondary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc p {
+      margin: 0 0 1rem;
+      color: var(--text-primary);
+    }
+
+    article.doc h2 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 2.35rem 0 0.85rem;
+      padding: 0 0 0 0.85rem;
+      border-left: 4px solid var(--accent-primary);
+      line-height: 1.35;
+    }
+
+    article.doc h2:first-of-type {
+      margin-top: 1.85rem;
+    }
+
+    article.doc h2[id],
+    article.doc h3[id] {
+      scroll-margin-top: 1.25rem;
+    }
+
+    .doc-toc {
+      margin: 0;
+      padding: 0.85rem 0.95rem 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: rgba(255, 253, 248, 0.92);
+      box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.06));
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .doc-toc-title {
+      margin: 0 0 0.55rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .doc-toc ol {
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .doc-toc > ol {
+      list-style: none;
+    }
+
+    .doc-toc > ol > li {
+      margin-bottom: 0.45rem;
+    }
+
+    .doc-toc > ol > li > a {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc ol ol {
+      margin: 0.3rem 0 0.1rem;
+      padding-left: 0.85rem;
+      list-style: none;
+      border-left: 2px solid rgba(15, 118, 110, 0.15);
+    }
+
+    .doc-toc ol ol li {
+      margin-bottom: 0.22rem;
+    }
+
+    .doc-toc ol ol a {
+      font-weight: 400;
+      color: var(--text-secondary);
+      font-size: 0.96em;
+    }
+
+    .doc-toc li {
+      margin-bottom: 0.25rem;
+    }
+
+    .doc-toc a {
+      display: block;
+      border-bottom: none;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .doc-toc a:hover {
+      color: var(--accent-primary);
+      text-decoration: none;
+      border-bottom: none;
+    }
+
+    .doc-toc.doc-toc--inline {
+      margin: 0 0 1.75rem;
+      padding: 1rem 1.15rem 1.05rem;
+      font-size: 0.92em;
+      line-height: 1.55;
+      background: rgba(15, 118, 110, 0.05);
+      box-shadow: none;
+    }
+
+    .doc-toc.doc-toc--inline .doc-toc-title {
+      font-size: 0.88rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li {
+      margin-bottom: 0.5rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li > a {
+      display: inline;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc.doc-toc--inline ol ol {
+      margin: 0.35rem 0 0.15rem;
+      padding-left: 1.15rem;
+      list-style: decimal;
+      border-left: none;
+    }
+
+    .doc-toc.doc-toc--inline ol ol li {
+      margin-bottom: 0.3rem;
+    }
+
+    .doc-toc.doc-toc--inline ol ol a {
+      display: inline;
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: 1em;
+    }
+
+    .doc-toc.doc-toc--inline a:hover {
+      color: var(--accent-primary);
+    }
+
+    @media (min-width: 1024px) {
+      .doc-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: clamp(1.25rem, 2.5vw, 2rem);
+      }
+
+      .doc-toc.doc-toc--inline {
+        display: none;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop {
+        display: block;
+        flex: 0 0 13.25rem;
+        width: 13.25rem;
+        position: sticky;
+        top: 1.25rem;
+        max-height: calc(100vh - 2.5rem);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(15, 118, 110, 0.35) transparent;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop::-webkit-scrollbar-thumb {
+        background: rgba(15, 118, 110, 0.28);
+        border-radius: 999px;
+      }
+
+      article.doc {
+        flex: 1 1 auto;
+        max-width: 64rem;
+      }
+    }
+
+    article.doc h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #243047;
+      margin: 1.45rem 0 0.55rem;
+    }
+
+    article.doc ul, article.doc ol {
+      margin: 0 0 1.1rem;
+      padding-left: 1.35rem;
+      color: var(--text-primary);
+    }
+
+    article.doc li {
+      margin-bottom: 0.45rem;
+      padding-left: 0.15rem;
+    }
+
+    article.doc li::marker {
+      color: rgba(15, 118, 110, 0.55);
+    }
+
+    article.doc ol li::marker {
+      color: rgba(15, 118, 110, 0.55);
+      font-weight: 600;
+    }
+
+    article.doc strong {
+      font-weight: 600;
+      color: #1a2436;
+    }
+
+    article.doc a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    article.doc a:hover {
+      color: #0d9488;
+      border-bottom-color: rgba(13, 148, 136, 0.55);
+    }
+
+    article.doc table {
+      width: fit-content;
+      max-width: 100%;
+      display: block;
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+      border-collapse: collapse;
+      font-size: 0.9em;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    article.doc thead {
+      background: rgba(15, 118, 110, 0.08);
+    }
+
+    article.doc th {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.88em;
+      color: var(--text-secondary);
+      border-bottom: 2px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    article.doc td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-primary);
+    }
+
+    article.doc tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    article.doc tbody tr:hover {
+      background: rgba(15, 118, 110, 0.04);
+    }
+
+    .doc-blockquote {
+      margin: 1.5rem 0;
+      padding: 0.85rem 1.15rem;
+      border-left: 4px solid var(--accent-primary);
+      background: rgba(15, 118, 110, 0.06);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 0.95em;
+      color: var(--text-secondary);
+    }
+
+    article.doc .doc-source {
+      margin-top: 2.25rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-source a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    article.doc .doc-source a:hover {
+      color: #0d9488;
+      border-bottom-color: rgba(13, 148, 136, 0.55);
+    }
+
+    ::selection {
+      background: rgba(15, 118, 110, 0.18);
+      color: var(--text-primary);
+    }
+
+    article.doc img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1rem 0 1.5rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    article.doc code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+      background: rgba(15, 118, 110, 0.06);
+      padding: 0.1em 0.35em;
+      border-radius: 0.25em;
+    }
+  </style>
+</head>
+<body class="article-page">
+  <div class="doc-wrap">
+    <a href="../../../" class="back-home-btn">← 返回主页</a>
+    <div class="doc-layout">
+      <aside class="doc-toc-aside doc-toc-aside--desktop">
+        <nav class="doc-toc" aria-label="文章目录">
+          <p class="doc-toc-title">目录</p>
+          <ol>
+            <li><a href="#sec-what">一、K2.7 Code 是什么</a><ol>
+              <li><a href="#sec-arch">架构与定位</a></li>
+              <li><a href="#sec-opensource">改了什么，普通人怎么用</a></li>
+            </ol></li>
+            <li><a href="#sec-bench">二、官方 benchmark</a><ol>
+              <li><a href="#sec-bench-rel">相对 K2.6</a></li>
+              <li><a href="#sec-bench-abs">绝对分数</a></li>
+              <li><a href="#sec-bench-pending">Code V3 等第三方榜</a></li>
+            </ol></li>
+            <li><a href="#sec-community">三、社区实测</a><ol>
+              <li><a href="#sec-cpp-rank">综合位次</a></li>
+              <li><a href="#sec-cpp-vs">对比 K2.6</a></li>
+            </ol></li>
+            <li><a href="#sec-experience">四、使用体验</a><ol>
+              <li><a href="#sec-outlook">展望（推测）</a></li>
+            </ol></li>
+            <li><a href="#sec-agent">五、多模态与 Agent</a></li>
+            <li><a href="#sec-pricing">六、API 定价</a><ol>
+              <li><a href="#sec-api">开放平台按量</a></li>
+              <li><a href="#sec-member">会员套餐</a></li>
+            </ol></li>
+            <li><a href="#sec-compare">七、同梯队对比</a><ol>
+              <li><a href="#sec-vs26">相对 K2.6</a></li>
+              <li><a href="#sec-codev3">Code V3 历史</a></li>
+              <li><a href="#sec-vs-glm">与 GLM-5.2</a></li>
+            </ol></li>
+            <li><a href="#sec-advice">八、选型建议</a></li>
+            <li><a href="#sec-summary">九、总结</a></li>
+          </ol>
+        </nav>
+      </aside>
+      <article class="doc">
+      <p class="doc-kicker">产品更新 · Kimi Code</p>
+      <h1>Kimi K2.7 Code 发布并开源：编程专项大升级，高速版今日上线</h1>
+      <p class="doc-updates">更新日期：<time datetime="2026-06-15">2026.6.15</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
+      <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;">本次核心更新：<strong>6 月 12 日</strong>月之暗面发布并开源 <strong>Kimi K2.7 Code</strong>（Modified MIT）；<strong>Kimi Code Plan</strong> 默认模型同步升级；开放平台 API <strong>不涨按量价</strong>；<strong>6 月 15 日</strong> <strong>高速版</strong> <code>kimi-k2.7-code-highspeed</code> 上线（约 <strong>5–6×</strong> 输出速度、<strong>2×</strong> 价格）；相对 K2.6 官方称长程编程与指令遵循提升，思考 token 平均 <strong>-30%</strong>；非编程任务仍推荐 <strong>K2.6</strong>。</div>
+      <p class="lead">2026 年 6 月中旬，国产大模型在 <strong>Coding</strong> 赛道继续加速。<strong>月之暗面 Kimi</strong> 于 <strong>6 月 12 日</strong>发布并开源编程专用模型 <strong>Kimi K2.7 Code</strong>，<strong>6 月 15 日</strong>又上线同权重的高速推理版本。与一周前 <strong>GLM-5.2</strong> 全量开放 Coding Plan 形成呼应，Kimi 这次走的是另一条路：名字里就写着 <strong>Code</strong>，官方明确建议「纯对话、办公用 K2.6，编程用 K2.7」——在人人都想讲 AGI 的语境里，这种主动划边界、集中力量做编程的做法相当克制。下面从能力、定价、社区实测和怎么接入手把手说清楚。</p>
+      <nav class="doc-toc doc-toc--inline" aria-label="文章目录">
+        <p class="doc-toc-title">目录</p>
+        <ol>
+          <li><a href="#sec-what">一、K2.7 Code 是什么：编程专项后训练</a><ol>
+            <li><a href="#sec-arch">架构与定位</a></li>
+            <li><a href="#sec-opensource">改了什么，普通人怎么用</a></li>
+          </ol></li>
+          <li><a href="#sec-bench">二、官方能力与 benchmark</a><ol>
+            <li><a href="#sec-bench-rel">相对 K2.6 的三条主线</a></li>
+            <li><a href="#sec-bench-abs">绝对分数</a></li>
+              <li><a href="#sec-bench-pending">Code V3 等第三方榜</a></li>
+          </ol></li>
+          <li><a href="#sec-community">三、社区实测：C++ 代码审查</a><ol>
+            <li><a href="#sec-cpp-rank">综合位次</a></li>
+            <li><a href="#sec-cpp-vs">K2.7 相对 K2.6</a></li>
+          </ol></li>
+          <li><a href="#sec-experience">四、使用体验</a><ol>
+            <li><a href="#sec-outlook">展望（仅为推测）</a></li>
+          </ol></li>
+          <li><a href="#sec-agent">五、多模态与 Agent 工具链</a></li>
+          <li><a href="#sec-pricing">六、API 定价</a><ol>
+            <li><a href="#sec-api">开放平台按量</a></li>
+            <li><a href="#sec-member">Kimi Code 会员套餐</a></li>
+          </ol></li>
+          <li><a href="#sec-compare">七、与 K2.6、GLM-5.2 及国产梯队</a><ol>
+            <li><a href="#sec-vs26">相对 K2.6</a></li>
+            <li><a href="#sec-codev3">Code V3 历史参照</a></li>
+            <li><a href="#sec-vs-glm">与 GLM-5.2</a></li>
+          </ol></li>
+          <li><a href="#sec-advice">八、选型建议</a></li>
+          <li><a href="#sec-summary">九、总结</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="sec-what">一、K2.7 Code 是什么：不是大改版，而是「编程专项后训练」</h2>
+      <h3 id="sec-arch">1. 架构与定位</h3>
+      <p>Kimi K2.7 Code 基于 <strong>K2.6</strong> 构建，Hugging Face Model Card 给出的核心规格与 K2.6 一脉相承：</p>
+      <table><thead><tr><th>项目</th><th>参数</th></tr></thead><tbody>
+        <tr><td>架构</td><td>MoE（1T 总参 / <strong>32B</strong> 激活）</td></tr>
+        <tr><td>上下文</td><td><strong>256K</strong></td></tr>
+        <tr><td>视觉编码</td><td><strong>MoonViT</strong>（400M）</td></tr>
+        <tr><td>开源协议</td><td><strong>Modified MIT</strong></td></tr>
+        <tr><td>量化</td><td><strong>Native INT4</strong> 原生量化</td></tr>
+      </tbody></table>
+      <p>社区技术解读将其类比为 <strong>GPT-5.3-Codex</strong> 一类路线：<strong>核心 MoE 与 K2.6 基本一致</strong>，更像在 K2.6 之上做 <strong>coding-focused agentic tuning</strong>——强化长上下文编程、长程 Agent 工具调用与工程任务完成率，而不是推倒重来。MoonViT、图像与视频输入能力均保留；<strong>强制 Thinking + preserve_thinking</strong>，不支持 Instant 模式。</p>
+      <p>官方口径很直白：<strong>非编程任务请继续用 K2.6</strong>。在通用对话、办公写作等场景，专用 Coding 模型反而可能倒退——这与「大语言模型正在变成大编程模型」的行业趋势一致：厂商把算力与后训练预算 increasingly 押在 ROI 更清晰的编程场景上。</p>
+      <h3 id="sec-opensource">2. 开源权重：改了什么，普通人怎么用</h3>
+      <p><strong>6 月 12 日</strong>起，完整权重已在 <strong>Hugging Face</strong>（<code>moonshotai/Kimi-K2.7-Code</code>）以 <strong>Modified MIT</strong> 协议公开。Model Card 写明：<strong>1T MoE、32B 激活、256K 上下文</strong>，并采用与 Kimi-K2-Thinking 相同的 <strong>Native INT4</strong> 原生量化。在闭源顶流越来越贵、接入限制越来越多的背景下，月之暗面把 Coding 专用版权重摊开，至少让研究与生态跟进有据可查。</p>
+      <p>对个人开发者，主路径是 <strong>Kimi 开放平台 API</strong> 与 <strong>Kimi Code 会员</strong>——普通版按量价与 K2.6 一致，需要更快响应可上高速版。下文套餐与接入均按 API / 会员展开。</p>
+
+      <h2 id="sec-bench">二、官方能力与 benchmark：长程编程跃升，但要看清榜单性质</h2>
+      <h3 id="sec-bench-rel">1. 相对 K2.6 的三条主线</h3>
+      <p>月之暗面内外部评估给出的相对 K2.6 提升幅度如下：</p>
+      <table><thead><tr><th>基准</th><th>相对 K2.6 提升</th></tr></thead><tbody>
+        <tr><td>Kimi Code Bench v2</td><td><strong>+21.8%</strong></td></tr>
+        <tr><td>Program-Bench</td><td><strong>+11%</strong></td></tr>
+        <tr><td>MLS Bench Lite</td><td><strong>+31.5%</strong></td></tr>
+        <tr><td>Kimi Claw 24/7 / MCP Atlas / MCP Mark Verified</td><td>约 <strong>+10%</strong></td></tr>
+      </tbody></table>
+      <p>同时，官方强调在长程任务中<strong>大幅改善过度思考</strong>，平均 <strong>token 消耗减少约 30%</strong>（主要来自 thinking-token 的下降）——这对 Claude Code、OpenClaw 等长会话 Agent 的直接意义是：<strong>同样任务可能更省额度、更少等待</strong>。</p>
+      <h3 id="sec-bench-abs">2. 绝对分数：接近 Opus 4.8，仍落后 GPT-5.5</h3>
+      <p>Hugging Face Model Card 公布的绝对分如下（Thinking 模式，temperature=1.0，top_p=0.95）。下图与下表数据一致，图注标注 <strong>Internal Benchmark</strong>——其中多项为 Kimi 自研或厂商参与设计的基准，<strong>不能</strong>直接等同于 SWE-bench Verified 等行业通用榜。</p>
+      <figure><img src="assets/20260615_kimi_k27_code_benchmark.png" alt="Kimi K2.7 Code 官方 benchmark 对比（K2.7 Code / K2.6 / GPT-5.5 / Opus 4.8）" loading="lazy" /></figure>
+      <table><thead><tr><th>基准</th><th>K2.6</th><th><strong>K2.7 Code</strong></th><th>GPT-5.5</th><th>Claude Opus 4.8</th></tr></thead><tbody>
+        <tr><td>Kimi Code Bench v2</td><td>50.9</td><td><strong>62.0</strong></td><td>69.0</td><td>67.4</td></tr>
+        <tr><td>Program Bench</td><td>48.3</td><td><strong>53.6</strong></td><td>69.1</td><td>63.8</td></tr>
+        <tr><td>MLS Bench Lite</td><td>26.7</td><td><strong>35.1</strong></td><td>35.5</td><td>42.8</td></tr>
+        <tr><td>Kimi Claw 24/7 Bench</td><td>42.9</td><td><strong>46.9</strong></td><td>52.8</td><td>50.4</td></tr>
+        <tr><td>MCP Atlas</td><td>69.4</td><td><strong>76.0</strong></td><td>79.4</td><td>81.3</td></tr>
+        <tr><td>MCP Mark Verified</td><td>72.8</td><td><strong>81.1</strong></td><td>92.9</td><td>76.4</td></tr>
+      </tbody></table>
+      <p>读表要点：</p>
+      <ul>
+        <li><strong>Kimi Code Bench v2</strong> 上 K2.7（62.0）已<strong>逼近 Opus 4.8（67.4）</strong>，但仍明显低于 <strong>GPT-5.5（69.0）</strong>；</li>
+        <li><strong>Program Bench / MLS</strong> 上与北美顶流仍有差距；</li>
+        <li><strong>MCP Mark Verified</strong> 上 K2.7（81.1）已超过 Opus 4.8（76.4），Agent 工具链场景值得实测。</li>
+      </ul>
+      <h3 id="sec-bench-pending">3. Code V3、DeepSWE 这些榜还没跟上</h3>
+      <p>自家 benchmark 涨得猛，但第三方工程榜这边，<strong>K2.7 的名字暂时还看不到</strong>：</p>
+      <table><thead><tr><th>榜单</th><th>现状</th></tr></thead><tbody>
+        <tr><td><strong>LLM Benchmark Code V3</strong></td><td>只有 K2.6 的老数据，K2.7 还没入榜</td></tr>
+        <tr><td><strong>DeepSWE</strong> 等 Agent 工程榜</td><td>官方、社区都没放出 K2.7 分数</td></tr>
+        <tr><td><strong>SWE-bench Verified</strong> 等通用榜</td><td>月之暗面没公布 K2.7 成绩</td></tr>
+      </tbody></table>
+      <p>所以眼下判断 K2.7 到底能不能改写国产 Coding 格局，还得靠官方表 + 社区小样本；等 Code V3 维护者把 K2.7 跑进去，对比会更有说服力。</p>
+
+      <h2 id="sec-community">三、社区实测：C++ 代码审查小样本里的信号</h2>
+      <p>知乎用户 <strong>杞鋂</strong> 做了一组 <strong>C++ 单文件代码审查</strong>个人评测（<strong>7 个真实历史 bug</strong>，来自 bitcoin / godot / fmt 三个大型项目；<strong>Opus 4.8 盲评</strong>；环境以 Claude Code 为主）。<strong>样本极小，仅作个人开发参考，不可推广为通用 Coding 能力排名。</strong></p>
+      <h3 id="sec-cpp-rank">1. 综合位次</h3>
+      <p>在其自定义六项等权评分体系下（时效、性价比、低误报、精度、召回、克制，越低越好）：</p>
+      <ul>
+        <li><strong>GPT-5.5 (xhigh)</strong> 综合第 1；</li>
+        <li><strong>Kimi K2.7 Code</strong> 综合第 <strong>4</strong>（Qwen 3.7 第 3）；</li>
+        <li>七个样本中 <strong>n02 全员漏检</strong>——C++ 对各家仍是硬骨头。</li>
+      </ul>
+      <h3 id="sec-cpp-vs">2. K2.7 相对 K2.6 的变化（同一评测者）</h3>
+      <table><thead><tr><th>维度</th><th>变化</th></tr></thead><tbody>
+        <tr><td>精度</td><td>真 bug 占比更高，废话更少</td></tr>
+        <tr><td>克制</td><td>报告总量约少 <strong>30%</strong>，不再「凑数」</td></tr>
+        <tr><td>误报</td><td>高危假警更少</td></tr>
+        <tr><td>单次成本</td><td>约 <strong>¥0.139 → ¥0.103</strong> / 次审查</td></tr>
+        <tr><td>耗时</td><td><strong>变长</strong></td></tr>
+      </tbody></table>
+      <p>若你主要做 <strong>C++ / 后端代码审查</strong>（而非从零生成 UI），这组数据说明 K2.7 在「少废话、少误报、更准」上有可感知进步——但<strong>速度变慢</strong>，交互体验需自己权衡。作者亦提醒：C++ 审查比代码生成更少人工干扰，反而更适合做自动化对比。</p>
+
+      <h2 id="sec-experience">四、使用体验：思考方式变了，简单任务可能「人狠话少」</h2>
+      <p>开发者 <strong>waterwu</strong> 的体感与官方「减 thinking-token」叙事相互印证：</p>
+      <ul>
+        <li><strong>K2.6</strong>：习惯 <strong>先 think、再调工具</strong>；</li>
+        <li><strong>K2.7</strong>：倾向 <strong>先读文件、再思考</strong>；</li>
+        <li>虽 API 层 <strong>强制 Thinking</strong>，但任务简单、信息明确时，K2.7 可能 <strong>不显式长思考、直接开干</strong>——整体更快、token 更少，但也有人反馈「经常不思考」会缺乏安全感。</li>
+      </ul>
+      <p>这与「减少过度思考」并不矛盾：K2.7 更像在<strong>该想的时候想、该干的时候干</strong>。长程复杂任务仍依赖 preserve_thinking 与多步工具链；短平快补全则受益于更克制的推理开销。</p>
+      <h3 id="sec-outlook">展望（仅为推测）</h3>
+      <p>若对照 K2.6 当年的节奏——先发布 <strong>Code</strong> 专项版、再经后训练推出不带 Code 后缀的正式全量版——<strong>有人推测</strong>月之暗面后续还可能发布 <strong>正式 K2.7</strong> 并逐步接替 K2.7 Code 的命名。<strong>这仅是社区猜测，官方尚未公布任何路线图，请勿当作既定计划。</strong></p>
+      <p>另外，Cursor 基于 Kimi 基座训练的 <strong>Composer 2.5</strong> 在业界口碑不错，也侧面说明 Kimi 在 <strong>INT4 原生量化</strong>与 Coding 后训练上仍有挖掘空间；K2.7 Code 可视为这条产品线的又一次落地。</p>
+
+      <h2 id="sec-agent">五、多模态与 Agent 工具链</h2>
+      <p>K2.7 Code 继续支持 <strong>图像 + 视频</strong>输入（<strong>Kimi 官方 API</strong> 完整支持）。典型场景：</p>
+      <ul>
+        <li>设计图 → 前端代码；</li>
+        <li>报错截图 → 定位与修复；</li>
+        <li>长仓库 + 多文件 Agent 会话。</li>
+      </ul>
+      <p>工具调用方面须遵守 K2 系列约束：<code>tool_choice</code> 仅 <strong>auto / none</strong>；多轮 Agent 必须在上下文中保留 assistant 的 <strong><code>reasoning_content</code></strong>，否则 API 报错。</p>
+      <p><strong>推荐搭配</strong>：</p>
+      <ul>
+        <li>官方 <strong>Kimi Code CLI</strong>（<a href="https://www.kimi.com/code" rel="noopener noreferrer">kimi.com/code</a>）；</li>
+        <li>第三方：<strong>Claude Code、Roo Code、OpenCode、OpenClaw</strong> 等，通过 Kimi Code 会员 API Key 接入。</li>
+      </ul>
+      <p>开放平台 Base URL：<code>https://api.moonshot.cn/v1</code>；Kimi Code 订阅端点为 <code>https://api.kimi.com/coding/v1</code>（OpenAI 兼容）。</p>
+
+      <h2 id="sec-pricing">六、API 定价：普通版不涨，高速版 2× 价换 5–6× 速</h2>
+      <h3 id="sec-api">1. 开放平台按量（每百万 tokens）</h3>
+      <table><thead><tr><th>项目</th><th>普通版 K2.7 Code</th><th>高速版 K2.7 Code</th></tr></thead><tbody>
+        <tr><td>标准输入</td><td><strong>¥6.5</strong></td><td><strong>¥13</strong></td></tr>
+        <tr><td>标准输出</td><td><strong>¥27</strong></td><td><strong>¥54</strong></td></tr>
+        <tr><td>缓存命中输入</td><td><strong>¥1.3</strong></td><td><strong>¥2.6</strong></td></tr>
+      </tbody></table>
+      <p>普通版价格与 <strong>K2.6 完全一致</strong>；高速版为 <strong>2 倍价</strong>，输出速度约为普通版 <strong>5–6 倍</strong>——常规编程场景（输入长度中位数）约 <strong>180 tokens/s</strong>，短上下文可达 <strong>260 tokens/s</strong>。</p>
+      <p><strong>6 月 15 日起</strong>，高速版已向 <strong>Kimi Code Beta 成员、Kimi API 开发者、Kimi Business 用户</strong>开放。模型 ID：<code>kimi-k2.7-code</code>、<code>kimi-k2.7-code-highspeed</code>。普通 <strong>Kimi Code 会员</strong>能不能默认切到高速版、什么时候开放，官方还没说清楚，得再等等公告。</p>
+      <p>对 <strong>交互密集、补全频繁</strong> 的场景，2× 价换 6× 速往往划算；对 <strong>长程 Agent 一次性跑完</strong> 的任务，仍应优先看 <strong>总 token</strong> 而非峰值速度。</p>
+      <h3 id="sec-member">2. Kimi Code 会员套餐</h3>
+      <p>Kimi Code 权益包含在 <strong>Kimi 会员</strong>中，<strong>不限购</strong>，额度每 <strong>7 天</strong>刷新，另有 <strong>5 小时</strong>滚动频控。默认模型已升级为 <strong>K2.7 Code</strong>；手动关闭 Thinking 时 API 报错，Kimi Code 会回退 <strong>K2.6</strong>。</p>
+      <table><thead><tr><th>套餐</th><th>连续包月</th><th>Kimi Code 额度倍数</th><th>核心权益</th></tr></thead><tbody>
+        <tr><td>Andante</td><td><strong>¥49</strong></td><td>1×</td><td>Agent 4 倍速</td></tr>
+        <tr><td>Moderato</td><td><strong>¥99</strong></td><td>4×</td><td>Agent 多任务并行</td></tr>
+        <tr><td>Allegretto</td><td><strong>¥199</strong></td><td>20×</td><td>免费 Kimi-Claw</td></tr>
+        <tr><td>Allegro</td><td><strong>¥699</strong></td><td>60×</td><td>更高 Agent 集群额度</td></tr>
+      </tbody></table>
+      <p>社区反馈中，<strong>¥49 / ¥99 档</strong>对重度 Coding 往往偏紧，<strong>¥199</strong> 对个人又略过剩——<strong>高速版按量 API</strong> 恰好适合「用量不大但想要快」的开发者：理论上 <strong>2× 价 × 6× 速</strong> 可接近 <strong>12× 的 token 吞吐效率</strong>（仍受频控与套餐月额度约束）。</p>
+      <p>订阅入口：<a href="https://api.dreamfree.space/c/s/cpyqkimi" rel="noopener noreferrer">Kimi 会员与 Kimi Code</a></p>
+
+      <h2 id="sec-compare">七、与 K2.6、GLM-5.2 及国产梯队</h2>
+      <h3 id="sec-vs26">1. 相对 K2.6：代际跃迁，而非小修小补</h3>
+      <p>官方 benchmark 上，K2.7 Code 相对 K2.6 是<strong>全面抬升</strong>；token 效率还有 <strong>-30%</strong> 的额外红利。对 <strong>已订阅 Kimi Code</strong> 的用户，这是<strong>默认免费升舱</strong>，无需改套餐。</p>
+      <h3 id="sec-codev3">2. 相对 Code V3 上的 K2.6（历史参照）</h3>
+      <p>在 <a href="https://vibecoding.dreamfree.space/articles/news/20260613_glm_5_2/" rel="noopener noreferrer">GLM-5.2 解读</a> 所引用的 <strong>Code V3（2026-05）</strong> 中，<strong>Kimi-K2.6 (Think)</strong> 表现为 Mac <strong>49/D</strong>、Flutter <strong>17/C</strong>、Web <strong>33/C</strong>、Game / Rust <strong>Failed</strong>——明显弱于同期 <strong>GLM-5.1</strong>，更遑论 <strong>GLM-5.2</strong>。K2.7 官方分的大幅跃升说明月之暗面确实在 Coding 上押了重注，但是否能在 Code V3 等新一期榜单上改写国产格局，<strong>仍需等待维护者复测</strong>。</p>
+      <h3 id="sec-vs-glm">3. 与 GLM-5.2：不同叙事，不宜硬比一张表</h3>
+      <ul>
+        <li><strong>GLM-5.2</strong>：1M 上下文 + Coding Plan 全量开放；Code V3 暂列综合第三。</li>
+        <li><strong>Kimi K2.7 Code</strong>：256K 编程专项 + <strong>权重已开源</strong> + API 不涨价 + 今日高速版上线。</li>
+      </ul>
+      <p>二者都是国产 Coding 第一梯队的重要变量：<strong>智谱</strong>在长上下文与榜单实测上先声夺人；<strong>Kimi</strong> 则在<strong>开源权重</strong>、多模态 Agent 与<strong>会员不限购</strong>上保持差异化。选型应看你是 <strong>Coding Plan 限购环境下的 GLM 用户</strong>，还是 <strong>Kimi Code 存量 / 多模态 Agent</strong> 用户。</p>
+
+      <h2 id="sec-advice">八、选型建议</h2>
+      <h3>已订阅 Kimi Code</h3>
+      <ul>
+        <li><strong>立刻默认使用 K2.7 Code</strong>；非编程对话手动切回 <strong>K2.6</strong>（或接受 Code 回退逻辑）。</li>
+        <li>长 Agent 会话关注 <strong>token 是否下降</strong>；交互式编码可试 <strong>高速版 API</strong>（2× 价）。</li>
+        <li>C++ / 后端审查场景可参考社区小样本结论，在真实仓库上做 <strong>审查而非生成</strong> 验证。</li>
+      </ul>
+      <h3>尚未订阅、考虑按量</h3>
+      <ul>
+        <li>开放平台 <strong>普通版不涨</strong>：适合已有 <code>MOONSHOT_API_KEY</code>、想接产品集成的团队。</li>
+        <li><strong>高速版</strong>适合「脑子跟得上、机器也要跟得上」的短任务；长任务仍盯总账单。</li>
+      </ul>
+      <h3>与 GLM-5.2 / MiniMax-M3 如何选</h3>
+      <ul>
+        <li>能抢到 <strong>GLM Coding Plan</strong> 且需要 <strong>1M + Code V3 已验证的 A 档工程能力</strong>：GLM-5.2 仍是当前国产 Coding 的硬参考。</li>
+        <li>需要 <strong>不限购 + 多模态 + Kimi-Claw</strong>：Kimi <strong>Allegretto（¥199）</strong> 等档位仍值得对比。</li>
+        <li>更在意 <strong>按量速度</strong>、会员额度又不够用：可优先关注 <strong>高速版 API</strong>（2× 价、约 5–6× 输出速度）。</li>
+      </ul>
+      <h3>明确不推荐</h3>
+      <ul>
+        <li><strong>纯办公、写作、通用对话</strong>：请用 <strong>K2.6</strong>，不要用 K2.7 Code 硬撑。</li>
+      </ul>
+
+      <h2 id="sec-summary">九、总结</h2>
+      <p>Kimi K2.7 Code 不是「又一个更大的通用模型」，而是月之暗面在 <strong>Coding</strong> 上 <strong>断其一指</strong> 的专项产品：<strong>6 月 12 日</strong>发布并开源权重，<strong>6 月 15 日</strong>高速版补齐速度短板，<strong>存量 Kimi Code 用户默认升舱且 API 不涨价</strong>。官方 benchmark 与社区 C++ 审查小测共同指向一个方向——<strong>更准、更克制、更省 token</strong>。</p>
+      <p>对开发者而言，若你关心的是「在国内还能稳定用什么写代码」，K2.7 Code 走的 <strong>API + 会员</strong> 路线，和 GLM-5.2 那条 <strong>1M Coding Plan</strong> 路线，算是 2026 年国产 Coding 的两条主线。<strong>高速版今天已经能用了</strong>（目前主要是 API / Beta 等指定渠道）——建议拿自己的仓库跑一轮，再决定续 <strong>Kimi Code 会员</strong> 还是单独开 <strong>高速版按量</strong>。</p>
+
+      <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>原文链接 <a href="https://vibecoding.dreamfree.space/articles/news/20260615_kimi_k27_code/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260615_kimi_k27_code/</a></div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>

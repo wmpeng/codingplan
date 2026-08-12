@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DeepSeek-V4-Flash-0731 正式版上线：Agent / Coding 能力大涨，1 元输入 / 2 元输出依然低价</title>
+  <meta name="description" content="2026 年 7 月底，DeepSeek 先发布了 V4-Flash 正式版，新版本的 V4-Flash-0731 非常适合 Agent、 Coding以及大批量并发调用，这两个场景本来就是当前大模型最常见的落地方向。价格依旧很低，接口能力更完整，官方强调的重点也明显落在软件工程和工具调用场景上。" />
+  <link rel="icon" href="../../../favicon.ico?v=20260803" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=20260803" />
+  <style>
+
+
+
+
+    body.article-page {
+      font-size: 17px;
+      line-height: 1.78;
+      padding: clamp(18px, 4vw, 36px) clamp(14px, 3.5vw, 28px) 56px;
+    }
+
+    .doc-wrap {
+      max-width: calc(64rem + 14.5rem + 2.5rem);
+      margin: 0 auto;
+    }
+
+    .doc-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .doc-toc-aside.doc-toc-aside--desktop {
+      display: none;
+    }
+
+    .doc-toc.doc-toc--inline {
+      display: block;
+    }
+
+    article.doc .doc-toc ol,
+    article.doc .doc-toc ul {
+      margin-bottom: 0;
+      padding-left: 0;
+      color: inherit;
+    }
+
+    article.doc .doc-toc li {
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    article.doc .doc-toc li::marker {
+      color: rgba(15, 118, 110, 0.45);
+    }
+
+    article.doc .doc-toc a,
+    article.doc .doc-toc a:hover {
+      border-bottom: none;
+      text-decoration: none;
+    }
+
+    article.doc {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    @media (max-width: 1023px) {
+      .doc-wrap {
+        max-width: 64rem;
+      }
+    }
+
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      padding: 0.6rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #3a2000;
+      background: var(--accent-primary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+    }
+    .back-home-btn:hover {
+      opacity: 0.85;
+      transform: translateX(-2px);
+    }
+
+    article.doc {
+      position: relative;
+      padding: clamp(1.5rem, 4.2vw, 2.85rem);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      background: linear-gradient(
+        155deg,
+        rgba(255, 253, 248, 0.97) 0%,
+        rgba(255, 249, 240, 0.9) 45%,
+        rgba(239, 246, 244, 0.55) 100%
+      );
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    article.doc::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(
+        90deg,
+        var(--accent-primary),
+        rgba(198, 107, 26, 0.85)
+      );
+      opacity: 0.92;
+    }
+
+    .doc-kicker {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc h1 {
+      font-size: clamp(1.45rem, 4.2vw, 1.95rem);
+      font-weight: 700;
+      line-height: 1.32;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin: 0 0 0.45rem;
+      max-width: 28em;
+    }
+
+    article.doc .doc-updates {
+      margin: 0 0 1.05rem;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-updates time {
+      font-variant-numeric: tabular-nums;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    article.doc .lead {
+      font-size: 0.98em;
+      color: var(--text-secondary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc p {
+      margin: 0 0 1rem;
+      color: var(--text-primary);
+    }
+
+    article.doc h2 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 2.35rem 0 0.85rem;
+      padding: 0 0 0 0.85rem;
+      border-left: 4px solid var(--accent-primary);
+      line-height: 1.35;
+    }
+
+    article.doc h2:first-of-type {
+      margin-top: 1.85rem;
+    }
+
+    article.doc h2[id],
+    article.doc h3[id],
+    article.doc h4[id] {
+      scroll-margin-top: 1.25rem;
+    }
+
+    article.doc h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin: 1.35rem 0 0.55rem;
+      line-height: 1.4;
+    }
+
+    .doc-toc {
+      margin: 0;
+      padding: 0.85rem 0.95rem 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: rgba(255, 253, 248, 0.92);
+      box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.06));
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .doc-toc-title {
+      margin: 0 0 0.55rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .doc-toc ol {
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .doc-toc > ol {
+      list-style: none;
+    }
+
+    .doc-toc > ol > li {
+      margin-bottom: 0.45rem;
+    }
+
+    .doc-toc > ol > li > a {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc ol ol {
+      margin: 0.3rem 0 0.1rem;
+      padding-left: 0.85rem;
+      list-style: none;
+      border-left: 2px solid rgba(15, 118, 110, 0.15);
+    }
+
+    .doc-toc ol ol li {
+      margin-bottom: 0.22rem;
+    }
+
+    .doc-toc ol ol a {
+      font-weight: 400;
+      color: var(--text-secondary);
+      font-size: 0.96em;
+    }
+
+    .doc-toc li {
+      margin-bottom: 0.25rem;
+    }
+
+    .doc-toc a {
+      display: block;
+      border-bottom: none;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .doc-toc a:hover {
+      color: var(--accent-primary);
+      text-decoration: none;
+      border-bottom: none;
+    }
+
+    .doc-toc.doc-toc--inline {
+      margin: 0 0 1.75rem;
+      padding: 1rem 1.15rem 1.05rem;
+      font-size: 0.92em;
+      line-height: 1.55;
+      background: rgba(15, 118, 110, 0.05);
+      box-shadow: none;
+    }
+
+    .doc-toc.doc-toc--inline .doc-toc-title {
+      font-size: 0.88rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li {
+      margin-bottom: 0.5rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li > a {
+      display: inline;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc.doc-toc--inline ol ol {
+      margin: 0.35rem 0 0.15rem;
+      padding-left: 1.15rem;
+      list-style: decimal;
+      border-left: none;
+    }
+
+    .doc-toc.doc-toc--inline ol ol li {
+      margin-bottom: 0.3rem;
+    }
+
+    .doc-toc.doc-toc--inline ol ol a {
+      display: inline;
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: 1em;
+    }
+
+    .doc-toc.doc-toc--inline a:hover {
+      color: var(--accent-primary);
+    }
+
+    @media (min-width: 1024px) {
+      .doc-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: clamp(1.25rem, 2.5vw, 2rem);
+      }
+
+      .doc-toc.doc-toc--inline {
+        display: none;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop {
+        display: block;
+        flex: 0 0 13.25rem;
+        width: 13.25rem;
+        position: sticky;
+        top: 1.25rem;
+        max-height: calc(100vh - 2.5rem);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(15, 118, 110, 0.35) transparent;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop::-webkit-scrollbar-thumb {
+        background: rgba(15, 118, 110, 0.28);
+        border-radius: 999px;
+      }
+
+      article.doc {
+        flex: 1 1 auto;
+        max-width: 64rem;
+      }
+    }
+
+    article.doc h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #243047;
+      margin: 1.45rem 0 0.55rem;
+    }
+
+    article.doc ul, article.doc ol {
+      margin: 0 0 1.1rem;
+      padding-left: 1.35rem;
+      color: var(--text-primary);
+    }
+
+    article.doc li {
+      margin-bottom: 0.45rem;
+      padding-left: 0.15rem;
+    }
+
+    article.doc li::marker {
+      color: rgba(15, 118, 110, 0.55);
+    }
+
+    article.doc ol li::marker {
+      color: rgba(15, 118, 110, 0.55);
+      font-weight: 600;
+    }
+
+    article.doc strong {
+      font-weight: 600;
+      color: #1a2436;
+    }
+
+    article.doc a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    article.doc a:hover {
+      color: #0d9488;
+      border-bottom-color: rgba(13, 148, 136, 0.55);
+    }
+
+    article.doc table {
+      width: fit-content;
+      max-width: 100%;
+      display: block;
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+      border-collapse: collapse;
+      font-size: 0.9em;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    article.doc thead {
+      background: rgba(15, 118, 110, 0.08);
+    }
+
+    article.doc th {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.88em;
+      color: var(--text-secondary);
+      border-bottom: 2px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    article.doc td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-primary);
+    }
+
+    article.doc tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    article.doc tbody tr:hover {
+      background: rgba(15, 118, 110, 0.04);
+    }
+
+    .doc-blockquote {
+      margin: 1.5rem 0;
+      padding: 0.85rem 1.15rem;
+      border-left: 4px solid var(--accent-primary);
+      background: rgba(15, 118, 110, 0.06);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 0.95em;
+      color: var(--text-secondary);
+    }
+
+    article.doc .doc-source {
+      margin-top: 2.25rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-source a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    article.doc .doc-source a:hover {
+      color: #0d9488;
+      border-bottom-color: rgba(13, 148, 136, 0.55);
+    }
+
+    ::selection {
+      background: rgba(15, 118, 110, 0.18);
+      color: var(--text-primary);
+    }
+
+    article.doc img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1rem 0 0.35rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    article.doc figure {
+      margin: 1rem 0 0.15rem;
+    }
+
+    article.doc .img-source {
+      margin: 0 0 1.35rem;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: var(--text-tertiary);
+      word-break: break-all;
+    }
+
+    article.doc .img-source a {
+      font-weight: 500;
+      font-size: inherit;
+      color: var(--text-tertiary);
+      border-bottom-color: rgba(15, 118, 110, 0.22);
+    }
+
+    article.doc .img-source a:hover {
+      color: var(--accent-primary);
+      border-bottom-color: rgba(13, 148, 136, 0.45);
+    }
+
+    article.doc code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+      background: rgba(15, 118, 110, 0.06);
+      padding: 0.1em 0.35em;
+      border-radius: 0.25em;
+    }
+  
+  
+  
+  
+  </style>
+</head>
+<body class="article-page">
+  <div class="doc-wrap">
+    <a href="../../../" class="back-home-btn">← 返回主页</a>
+    <div class="doc-layout">
+      <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="侧栏目录">
+        <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、这次正式版到底升级了什么</a></li><li><a href="#sec-二-全面压过-v4-pro-preview-coding-场景也压过-glm-5-2">二、全面压过 V4-Pro-Preview，Coding 场景也压过 GLM-5.2</a><ol><li><a href="#sec-1-官方评测详情">1. 官方评测详情</a></li><li><a href="#sec-2-artificial-analysis-评测-综合能力">2. Artificial Analysis 评测 综合能力</a></li><li><a href="#sec-3-artificial-analysis-评测-代码能力">3. Artificial Analysis 评测 代码能力</a></li></ol></li><li><a href="#sec-三-和-flash-preview-v4-pro-preview-glm-5-2-opu">三、和 Flash Preview、V4-Pro-Preview、GLM-5.2、Opus 4.8 怎么比</a><ol><li><a href="#sec-1-flash-0731-vs-flash-preview-能力全面已经往上走了一截">1. Flash-0731 vs Flash Preview：能力全面已经往上走了一截</a></li><li><a href="#sec-2-flash-0731-vs-v4-pro-preview-优先-flash-0731">2. Flash-0731 vs V4-Pro-Preview：优先 Flash-0731</a></li><li><a href="#sec-3-flash-0731-vs-glm-5-2-glm-综合更强一点-也更贵-v4-fl">3. Flash-0731 vs GLM-5.2：GLM 综合更强一点，也更贵；V4-Flash-0731 Coding更强，也便宜得多</a></li><li><a href="#sec-4-flash-0731-vs-opus-4-8-不是同一价格带-也不是同一选型逻辑">4. Flash-0731 vs Opus 4.8：不是同一价格带，也不是同一选型逻辑</a></li></ol></li><li><a href="#sec-h2-4">四、要不要用</a></li><li><a href="#sec-h2-5">五、总结</a></li></ol></nav>
+      </aside>
+      <article class="doc">
+        <p class="doc-kicker">AI 行业快讯</p>
+        <h1>DeepSeek-V4-Flash-0731 正式版上线：Agent / Coding 能力大涨，1 元输入 / 2 元输出依然低价</h1>
+        <p class="doc-updates"><time datetime="2026-08-03">更新日期 2026.8.3</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
+        <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;"><strong>一句话速览：</strong><p>DeepSeek-V4-Flash-0731 已作为正式版上线 API 公测；模型结构与 preview 保持一致，但后训练后 Agent / Coding 能力明显增强；官方模型卡直接给出逐项 benchmark 对比表，正式版整体压过 V4-Pro-Preview；当前仅 Flash 正式版支持 Responses API，并已适配 Codex；价格仍维持缓存未命中输入 1 元、输出 2 元 / 百万 tokens，同时保留 1M 上下文、384K 最大输出和 2500 并发这套开发者最关心的基础规格。</p></div>
+        <p class="lead">2026 年 7 月底，DeepSeek 先发布了 <strong>V4-Flash</strong> 正式版，新版本的 V4-Flash-0731 <strong>非常适合 Agent、 Coding以及大批量并发调用</strong>，这两个场景本来就是当前大模型最常见的落地方向。价格依旧很低，接口能力更完整，官方强调的重点也明显落在软件工程和工具调用场景上。</p>
+        <nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、这次正式版到底升级了什么</a></li><li><a href="#sec-二-全面压过-v4-pro-preview-coding-场景也压过-glm-5-2">二、全面压过 V4-Pro-Preview，Coding 场景也压过 GLM-5.2</a><ol><li><a href="#sec-1-官方评测详情">1. 官方评测详情</a></li><li><a href="#sec-2-artificial-analysis-评测-综合能力">2. Artificial Analysis 评测 综合能力</a></li><li><a href="#sec-3-artificial-analysis-评测-代码能力">3. Artificial Analysis 评测 代码能力</a></li></ol></li><li><a href="#sec-三-和-flash-preview-v4-pro-preview-glm-5-2-opu">三、和 Flash Preview、V4-Pro-Preview、GLM-5.2、Opus 4.8 怎么比</a><ol><li><a href="#sec-1-flash-0731-vs-flash-preview-能力全面已经往上走了一截">1. Flash-0731 vs Flash Preview：能力全面已经往上走了一截</a></li><li><a href="#sec-2-flash-0731-vs-v4-pro-preview-优先-flash-0731">2. Flash-0731 vs V4-Pro-Preview：优先 Flash-0731</a></li><li><a href="#sec-3-flash-0731-vs-glm-5-2-glm-综合更强一点-也更贵-v4-fl">3. Flash-0731 vs GLM-5.2：GLM 综合更强一点，也更贵；V4-Flash-0731 Coding更强，也便宜得多</a></li><li><a href="#sec-4-flash-0731-vs-opus-4-8-不是同一价格带-也不是同一选型逻辑">4. Flash-0731 vs Opus 4.8：不是同一价格带，也不是同一选型逻辑</a></li></ol></li><li><a href="#sec-h2-4">四、要不要用</a></li><li><a href="#sec-h2-5">五、总结</a></li></ol></nav>
+        <figure><img src="./assets/deepseek-v4-flash-0731-overview.png" alt="DeepSeek-V4-Flash-0731 官方信息图" loading="lazy" /></figure>
+<h2 id="sec-h2-1">一、这次正式版到底升级了什么</h2>
+<p><strong>DeepSeek-V4-Flash-0731 它沿用 preview 的结构和尺寸，在这个基础上做成了正式版。</strong> 官方模型卡明确写的是 superseding the preview version（取代 preview 预览版），官方发布口径也说明了“结构与尺寸不变，主要是重新<strong>后训练</strong>”。</p>
+<p>这次升级的重点在模型被重新打磨得更适合真实开发流程。官方对外反复强调的，也都是同一组关键词：</p>
+<ul>
+<li>agentic capabilities（智能体 / Agent 能力）明显增强</li>
+<li>software engineering benchmarks（软件工程基准评分）大幅提升</li>
+<li>原生支持 Responses API，即针对 Codex 做了优化适配</li>
+</ul>
+<p>对开发者来说，这比“实验室里的分数又涨了一点”更有意义。因为 Flash 的定位已经不只是廉价补全模型，在低成本区间里，它开始承担更完整的 <strong>Agent 执行、工具调用、长任务推进</strong> 角色。</p>
+<p><strong>这次升级的只是 DeepSeek-V4-Flash，DeepSeek-V4-Pro 还没同步升级。</strong> 官方预告 V4-Pro 正式版会在 8 月上线。</p>
+<h2 id="sec-二-全面压过-v4-pro-preview-coding-场景也压过-glm-5-2">二、全面压过 V4-Pro-Preview，Coding 场景也压过 GLM-5.2</h2>
+<h3 id="sec-1-官方评测详情">1. 官方评测详情</h3>
+<p>Hugging Face 官方模型卡没有只放一列成绩单，而是直接给出了一张对比表。官方写得很明确：<strong>DeepSeek-V4-Flash-0731 在列出的 benchmark 上优于 DeepSeek-V4-Pro (Preview)，而且 activated parameter count 更小。</strong></p>
+<p>这里讲的已经不只是“Flash 比上一版更强了”。<strong>更轻的一档正式版 Flash，已经可以在官方列出的 Agent / Coding 基准上，压过当前公开的 V4-Pro-Preview。</strong></p>
+<p>官方表中，Flash-0731 这一列的核心成绩如下：</p>
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Flash-0731</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Terminal Bench 2.1</td>
+<td>82.7</td>
+</tr>
+<tr>
+<td>NL2Repo</td>
+<td>54.2</td>
+</tr>
+<tr>
+<td>Cybergym</td>
+<td>76.7</td>
+</tr>
+<tr>
+<td>DeepSWE</td>
+<td>54.4</td>
+</tr>
+<tr>
+<td>Toolathlon-Verified</td>
+<td>70.3</td>
+</tr>
+<tr>
+<td>Agents' Last Exam</td>
+<td>25.2</td>
+</tr>
+<tr>
+<td>AutomationBench Public</td>
+<td>25.1</td>
+</tr>
+<tr>
+<td>DSBench-FullStack</td>
+<td>68.7</td>
+</tr>
+<tr>
+<td>DSBench-Hard</td>
+<td>59.6</td>
+</tr>
+</tbody>
+</table>
+<p>DeepSeek 这次没有把 Flash 当成“便宜替补”，而是把它推到了 <strong>可以承担主力 Agent 任务</strong> 的位置。尤其是 Terminal Bench、Toolathlon、DSBench 这类任务，本来就更接近真实工具调用和软件工程流程，不是纯聊天问答。</p>
+<p>Flash-0731 的优势也不只是“便宜”。如果它只是价格低，官方不会主动拿它去和 V4-Pro-Preview 做逐项 benchmark 对照。至少从这次模型卡的写法看，<strong>Flash 正式版已经被放到了当前最值得优先落地的 DeepSeek 开发者主力模型位置上。</strong></p>
+<h3 id="sec-2-artificial-analysis-评测-综合能力">2. Artificial Analysis 评测 综合能力</h3>
+<figure><img src="./assets/aa-intelligence-index-deepseek-v4-flash-0731.png" alt="Artificial Analysis Intelligence Index 榜单" loading="lazy" /></figure>
+<!-- IMG_SOURCE -->
+<p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?models=mimo-v2-5-pro%2Cclaude-sonnet-5%2Cminimax-m3%2Cqwen3-7-max%2Cclaude-opus-4-8%2Cclaude-4-5-haiku-reasoning%2Cgpt-5-4%2Cgpt-5-5-high%2Cclaude-opus-5%2Cdeepseek-v4-pro%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cdeepseek-v4-flash-0420#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis Intelligence Index</a></p>
+<p>在这张 Intelligence Index 榜单里，DeepSeek V4 Flash 0731 拿到 <strong>50</strong>，明显高于同屏的 DeepSeek V4 Pro（<strong>44</strong>）和旧版 Flash（<strong>40</strong>），也已经贴到 GLM-5.2 的 <strong>51</strong>。第三方综合智能口径下，正式版 Flash 已经挤进开源权重模型的前排竞争带。</p>
+<h3 id="sec-3-artificial-analysis-评测-代码能力">3. Artificial Analysis 评测 代码能力</h3>
+<figure><img src="./assets/aa-coding-index-deepseek-v4-flash-0731.png" alt="Artificial Analysis Coding Index 榜单" loading="lazy" /></figure>
+<!-- IMG_SOURCE -->
+<p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?models=mimo-v2-5-pro%2Cclaude-sonnet-5%2Cminimax-m3%2Cqwen3-7-max%2Cclaude-opus-4-8%2Cclaude-4-5-haiku-reasoning%2Cgpt-5-4%2Cgpt-5-5-high%2Cclaude-opus-5%2Cdeepseek-v4-pro%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cdeepseek-v4-flash-0420&amp;intelligence=coding-index#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis Coding Index</a></p>
+<p>Coding Index 上，Flash-0731 是 <strong>69.1</strong>，略高于 GLM-5.2 的 <strong>68.8</strong>，并明显压过 DeepSeek V4 Pro 的 <strong>59.4</strong> 和旧版 Flash 的 <strong>56.2</strong>。这和官方把升级重点放在软件工程、Agent、工具调用上是对得上的：Coding 这一档已经能跟国产开源强对手正面硬刚。</p>
+<h2 id="sec-三-和-flash-preview-v4-pro-preview-glm-5-2-opu">三、和 Flash Preview、V4-Pro-Preview、GLM-5.2、Opus 4.8 怎么比</h2>
+<p>下面这几组对比更值得看：它比旧 Flash 强了多少；为什么它比 V4-Pro 更值得使用；和 GLM-5.2 这种国产开源强对手差在哪；面对 Opus 4.8 这种高端闭源模型又该怎么看。</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>当前可用口径</th>
+<th>价格口径</th>
+<th>能力定位</th>
+<th>更适合谁</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DeepSeek-V4-Flash-0731</td>
+<td>官方 benchmark 强，AA Intelligence 50</td>
+<td>官方 1 / 2 元</td>
+<td>低价 Agent 工具型旗舰</td>
+<td>高并发、重工作流、预算敏感开发者</td>
+</tr>
+<tr>
+<td>DeepSeek-V4-Flash-Preview</td>
+<td>2026-06-17 历史基线：42 / 38.7 / 61.3</td>
+<td>无现行独立口径</td>
+<td>正式版前的历史参考位</td>
+<td>想看升级幅度的人</td>
+</tr>
+<tr>
+<td>DeepSeek-V4-Pro-Preview</td>
+<td>官方被 Flash-0731 逐项压制；AA Intelligence 44</td>
+<td>约 3 / 6 元</td>
+<td>大参数、更重、更贵</td>
+<td>愿意为更重推理路线买单的人</td>
+</tr>
+<tr>
+<td>GLM-5.2</td>
+<td>AA Intelligence 51，Coding 68.8 同级</td>
+<td>约 10 / 31 元</td>
+<td>更快更强但更贵</td>
+<td>不敏感价格、重吞吐和综合能力的人</td>
+</tr>
+<tr>
+<td>Claude Opus 4.8</td>
+<td>AA Intelligence 56，支持图像输入</td>
+<td>约 35 / 175 元</td>
+<td>闭源高端、多模态上限更高</td>
+<td>追求上限、预算宽松团队</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-1-flash-0731-vs-flash-preview-能力全面已经往上走了一截">1. Flash-0731 vs Flash Preview：能力全面已经往上走了一截</h3>
+<p>DeepSeek V4 Flash 的 Intelligence / Coding / Agentic 大致是 <strong>42 / 38.7 / 61.3</strong>。而正式版 Flash-0731 当前在 AA 口径下已经到 <strong>50</strong>，官方 benchmark 也明显转向 Agent 与 Coding 强项。</p>
+<p>所以这次升级不太像“同款模型例行小修”，更接近 <strong>同一底座重新后训练之后，整体从够用档往上抬了一档，到了更适合直接部署的主力位。</strong></p>
+<h3 id="sec-2-flash-0731-vs-v4-pro-preview-优先-flash-0731">2. Flash-0731 vs V4-Pro-Preview：优先 Flash-0731</h3>
+<p>这是最关键的一组对比：正式版 Flash 已经全面超越了 V4-Pro-Preview；在价格只有约 1/3、模型参数规模不到 1/5 的情况下，优先选 Flash-0731 更顺理成章。</p>
+<h3 id="sec-3-flash-0731-vs-glm-5-2-glm-综合更强一点-也更贵-v4-fl">3. Flash-0731 vs GLM-5.2：GLM 综合更强一点，也更贵；V4-Flash-0731 Coding更强，也便宜得多</h3>
+<p>GLM-5.2 在 AA 口径下的 Intelligence Index 是 <strong>51</strong>，略高于 Flash-0731 的 <strong>50</strong>；截图里的 Coding Index 也能看到两者非常接近，GLM-5.2 为 <strong>68.8</strong>，Flash-0731 为 <strong>69.1</strong>，已经是同一竞争带。</p>
+<p>但价格差距非常大。GLM-5.2 的公开价格大约是输入 <strong>8 元</strong>、输出 <strong>38 元</strong>、缓存命中 <strong>2 元</strong> / 百万 tokens，而 Flash-0731 是 <strong>1 元 / 2 元 / 0.02 元</strong>。如果你的任务是大批量工作流、反复调用、多轮 Agent 实验，这个价差会直接反映在月度成本上。</p>
+<p>所以 GLM-5.2 更像“更快、更强、也更贵”的国产开源旗舰，而 Flash-0731 更像“没有那么奢侈，但足够强，而且特别适合高频调用”的开发者主力机。</p>
+<h3 id="sec-4-flash-0731-vs-opus-4-8-不是同一价格带-也不是同一选型逻辑">4. Flash-0731 vs Opus 4.8：不是同一价格带，也不是同一选型逻辑</h3>
+<p>Claude Opus 4.8 的 AA Intelligence 是 <strong>56</strong>，支持图像输入，能力上限和多模态完整度仍然更高。但它的价格也大约来到输入 <strong>35 元</strong>、输出 <strong>175 元</strong> / 百万 tokens，和 Flash-0731 根本不在同一预算区间。</p>
+<p>这组对比没必要对比“谁绝对更强”。更实际的问题是：<strong>谁更适合你现在要做的事。</strong> 如果你要的是极高上限、复杂多模态、预算不敏感，Opus 4.8 当然仍然很有吸引力；但如果你要的是 <strong>Agent 能落地、成本能控制、并发也够高</strong>，那 Flash-0731 的性价比就很难忽略。</p>
+<figure><img src="./assets/aa-intelligence-vs-cost-deepseek-v4-flash-0731.png" alt="Artificial Analysis 智力 / 成本散点图" loading="lazy" /></figure>
+<!-- IMG_SOURCE -->
+<p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?models=mimo-v2-5-pro%2Cclaude-sonnet-5%2Cminimax-m3%2Cqwen3-7-max%2Cclaude-opus-4-8%2Cclaude-4-5-haiku-reasoning%2Cgpt-5-4%2Cgpt-5-5-high%2Cclaude-opus-5%2Cdeepseek-v4-pro%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cdeepseek-v4-flash-0420%2Cgpt-5-6-luna%2Cmimo-v2-5-0424#intelligence-comparison-tabs" rel="noopener noreferrer">Artificial Analysis Intelligence vs. Cost per Task</a></p>
+<h2 id="sec-h2-4">四、要不要用</h2>
+<p>如果你属于下面这几类场景，Flash-0731 值得优先试：</p>
+<ul>
+<li>在 Codex 中使用</li>
+<li>做 Agent，但对调用成本非常敏感</li>
+<li>需要长上下文和高并发，又不想一上来就上高价闭源模型</li>
+<li>已经在用旧 Flash，可以无感迁移到正式版 Flash-0731</li>
+</ul>
+<p>如果你更看重下面这些点，则可以使用其他模型：</p>
+<ul>
+<li>想等更强能力、对更偏工程落地的 Flash 路线兴趣没那么大，更适合继续等 V4-Pro 正式版</li>
+<li>需要更高上限的闭源旗舰，尤其是更完整的多模态能力</li>
+</ul>
+<h2 id="sec-h2-5">五、总结</h2>
+<p>DeepSeek-V4-Flash-0731 这次正式版上线，重点不只是名字从 preview 变成正式版。<strong>DeepSeek 把一档本来就很适合开发者的低价模型，继续打磨成了更完整的 Agent 和 Coding 主力模型。</strong></p>
+<p>它的优势也不是靠某一个点撑起来的。真正让它站住的，是一整套组合拳：官方 benchmark 里对 V4-Pro-Preview 的逐项优势、1M 上下文、384K 最大输出、2500 并发、Responses API / Codex 适配，以及仍然压在 1 元输入 / 2 元输出的价格。</p>
+<p>如果你现在就要落地自动化工作流、批量 Agent 调用或者高频代码任务，Flash-0731 已经是一个非常值得先试的 DeepSeek 入口。如果你真正等的是更高参数、更重推理路线的 V4-Pro 正式版，那这次更新释放出的信号也很明确：<strong>DeepSeek 已经先把开发者侧的第一落点交给 Flash 了。</strong></p>
+        <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>
+相关体验 <a href="https://api.dreamfree.space/c/s/cpyqdeepseek" rel="noopener noreferrer">DeepSeek 路线对比与使用入口</a></div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>
