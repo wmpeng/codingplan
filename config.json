@@ -121,7 +121,6 @@
     },
     {
       "title": "包含 GLM-5.3",
-      "subtitle": "推荐几个无需抢购就能用上 GLM-5.3 的平台",
       "items": [
         {
           "name": "智谱AI",
@@ -154,7 +153,6 @@
     },
     {
       "title": "包含 DeepSeek-V4-Flash-0731 正式版",
-      "subtitle": "DeepSeek-V4-Flash-0731 正式版，性价比新高",
       "items": [
         {
           "name": "DeepSeek",
@@ -196,13 +194,13 @@
     },
     {
       "title": "包含 Kimi-3",
-      "subtitle": "Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用",
+      "subtitle": "Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。官方需要抢购",
       "items": [
         {
           "name": "Kimi",
           "rating": 5,
           "reasons": [
-            "官方原生平台，模型体验最稳定，老会员推荐使用",
+            "官方原生平台，模型体验最稳定，老会员推荐使用。需要抢购，目前无法新购买了",
             "发布 Kimi-K3 之后，会员停售了，之后应该会启用新的Coding套餐"
           ]
         },
