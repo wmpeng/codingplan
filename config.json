@@ -1,8 +1,8 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.8.16 | 智谱国内&国际版、OpenCode、字节·方舟在售套餐追加支持 GLM-5.3",
-    "subtitle": "31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比。<br>涵盖DeepSeek V4，GLM-5.3，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
+    "updateDate": "更新日期 2026.8.16 | GLM-5.3、DeepSeek-V4-Flash-0731 正式版平台支持更新",
+    "subtitle": "31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比。<br>涵盖DeepSeek-V4-Flash-0731，GLM-5.3，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
     "entry": {
@@ -154,13 +154,13 @@
     },
     {
       "title": "包含 DeepSeek-V4-Flash-0731 正式版",
-      "subtitle": "DeepSeek-V4-Flash 0731 正式版，性价比新高",
+      "subtitle": "DeepSeek-V4-Flash-0731 正式版，性价比新高",
       "items": [
         {
           "name": "DeepSeek",
           "rating": 5,
           "reasons": [
-            "官方 DeepSeek-V4-Flash 0731 正式版，推理与代码能力处于国产第一梯队",
+            "官方 DeepSeek-V4-Flash-0731 正式版，推理与代码能力处于国产第一梯队",
             "按量标价透明，适合不想抢套餐的用户",
             "高峰翻倍后成本优势会收窄"
           ]
@@ -169,7 +169,7 @@
           "name": "OpenCode",
           "rating": 5,
           "reasons": [
-            "支持DeepSeek-V4-Flash 0731正式版、Kimi-K3、GLM-5.2等最新模型",
+            "支持 DeepSeek-V4-Flash-0731 正式版、Kimi-K3、GLM-5.2 等最新模型",
             "首月半价$5。但只有go这一种套餐，够尝鲜，不够重度使用",
             "无需抢购，可支付宝付款"
           ]
@@ -178,9 +178,18 @@
           "name": "字节·方舟",
           "rating": 5,
           "reasons": [
-            "Coding Plan / Token Plan 均支持 DeepSeek-V4-Flash",
-            "同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。",
+            "Coding Plan / Token Plan 均支持 DeepSeek-V4-Flash-0731 正式版",
+            "同时支持 GLM-5.2、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731、MiniMax-M3，是国内模型最全的全家桶平台。",
             "已解除限购，开放购买"
+          ]
+        },
+        {
+          "name": "优云智算",
+          "rating": 4,
+          "reasons": [
+            "全档位支持 DeepSeek-V4-Flash-0731 正式版和 GLM-5.2",
+            "按照真实接口调用量计费，模型倍率透明",
+            "用量较少，适合作为低成本补充"
           ]
         }
       ]
@@ -381,6 +390,7 @@
     {
       "date": "2026.8.16",
       "items": [
+        "DeepSeek-V4-Flash-0731 正式版同步更新 DeepSeek、OpenCode、字节·方舟、优云智算支持",
         "智谱国内&国际版、OpenCode、字节·方舟在售套餐追加支持 GLM-5.3"
       ]
     },
