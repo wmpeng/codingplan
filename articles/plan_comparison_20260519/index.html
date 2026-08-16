@@ -171,13 +171,16 @@
 
     /* 表格样式 */
     article.doc table {
-      width: 100%;
+      width: fit-content;
+      max-width: 100%;
+      display: block;
+      overflow-x: auto;
       margin: 1rem 0 1.5rem;
       border-collapse: collapse;
       font-size: 0.9em;
       border-radius: var(--radius-md);
-      overflow: hidden;
       border: 1px solid var(--border-color);
+      -webkit-overflow-scrolling: touch;
     }
 
     article.doc thead {
