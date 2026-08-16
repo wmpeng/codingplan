@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DeepSeek V4 Pro 正式版全平台上线：Agent 与 Coding 能力接近顶级模型，8 月 17 日起调价</title>
+  <meta name="description" content="DeepSeek V4 Pro 正式版同步上线 APP、网页和 API，Agent 与 Coding 评测明显提升；8 月 17 日起 API 进入峰谷定价。" />
+  <link rel="icon" href="../../../favicon.ico?v=260515" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=260515" />
+  <style>
+    body.article-page {
+      font-size: 17px;
+      line-height: 1.78;
+      padding: clamp(18px, 4vw, 36px) clamp(14px, 3.5vw, 28px) 56px;
+    }
+
+    .doc-wrap {
+      max-width: calc(64rem + 14.5rem + 2.5rem);
+      margin: 0 auto;
+    }
+
+    .doc-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .doc-toc-aside.doc-toc-aside--desktop {
+      display: none;
+    }
+
+    .doc-toc.doc-toc--inline {
+      display: block;
+    }
+
+    article.doc .doc-toc ol,
+    article.doc .doc-toc ul {
+      margin-bottom: 0;
+      padding-left: 0;
+      color: inherit;
+    }
+
+    article.doc .doc-toc li {
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    article.doc .doc-toc li::marker {
+      color: rgba(15, 118, 110, 0.45);
+    }
+
+    article.doc .doc-toc a,
+    article.doc .doc-toc a:hover {
+      border-bottom: none;
+      text-decoration: none;
+    }
+
+    article.doc {
+      flex: 1 1 auto;
+      min-width: 0;
+      position: relative;
+      padding: clamp(1.5rem, 4.2vw, 2.85rem);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      background: linear-gradient(
+        155deg,
+        rgba(255, 253, 248, 0.97) 0%,
+        rgba(255, 249, 240, 0.9) 45%,
+        rgba(239, 246, 244, 0.55) 100%
+      );
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    article.doc::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(
+        90deg,
+        var(--accent-primary),
+        rgba(198, 107, 26, 0.85)
+      );
+      opacity: 0.92;
+    }
+
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      padding: 0.6rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #3a2000;
+      background: var(--accent-primary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+    }
+
+    .back-home-btn:hover {
+      opacity: 0.85;
+      transform: translateX(-2px);
+    }
+
+    .doc-kicker {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc h1 {
+      font-size: clamp(1.45rem, 4.2vw, 1.95rem);
+      font-weight: 700;
+      line-height: 1.32;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin: 0 0 0.45rem;
+      max-width: 28em;
+    }
+
+    article.doc .doc-updates {
+      margin: 0 0 1.05rem;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-updates time {
+      font-variant-numeric: tabular-nums;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    article.doc .lead {
+      font-size: 0.98em;
+      color: var(--text-secondary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc p {
+      margin: 0 0 1rem;
+      color: var(--text-primary);
+    }
+
+    article.doc h2 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 2.35rem 0 0.85rem;
+      padding: 0 0 0 0.85rem;
+      border-left: 4px solid var(--accent-primary);
+      line-height: 1.35;
+    }
+
+    article.doc h2:first-of-type {
+      margin-top: 1.85rem;
+    }
+
+    article.doc h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #243047;
+      margin: 1.45rem 0 0.55rem;
+    }
+
+    article.doc h2[id],
+    article.doc h3[id] {
+      scroll-margin-top: 1.25rem;
+    }
+
+    .doc-toc {
+      margin: 0;
+      padding: 0.85rem 0.95rem 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: rgba(255, 253, 248, 0.92);
+      box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.06));
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .doc-toc-title {
+      margin: 0 0 0.55rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .doc-toc ol {
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .doc-toc > ol {
+      list-style: none;
+    }
+
+    .doc-toc > ol > li {
+      margin-bottom: 0.45rem;
+    }
+
+    .doc-toc > ol > li > a {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc ol ol {
+      margin: 0.3rem 0 0.1rem;
+      padding-left: 0.85rem;
+      list-style: none;
+      border-left: 2px solid rgba(15, 118, 110, 0.15);
+    }
+
+    .doc-toc ol ol li {
+      margin-bottom: 0.22rem;
+    }
+
+    .doc-toc ol ol a {
+      font-weight: 400;
+      color: var(--text-secondary);
+      font-size: 0.96em;
+    }
+
+    .doc-toc li {
+      margin-bottom: 0.25rem;
+    }
+
+    .doc-toc a {
+      display: block;
+      border-bottom: none;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .doc-toc a:hover {
+      color: var(--accent-primary);
+      text-decoration: none;
+      border-bottom: none;
+    }
+
+    .doc-toc.doc-toc--inline {
+      margin: 0 0 1.75rem;
+      padding: 1rem 1.15rem 1.05rem;
+      font-size: 0.92em;
+      line-height: 1.55;
+      background: rgba(15, 118, 110, 0.05);
+      box-shadow: none;
+    }
+
+    .doc-toc.doc-toc--inline .doc-toc-title {
+      font-size: 0.88rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li {
+      margin-bottom: 0.5rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li > a {
+      display: inline;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc.doc-toc--inline ol ol {
+      margin: 0.35rem 0 0.15rem;
+      padding-left: 1.15rem;
+      list-style: decimal;
+      border-left: none;
+    }
+
+    .doc-toc.doc-toc--inline ol ol li {
+      margin-bottom: 0.3rem;
+    }
+
+    .doc-toc.doc-toc--inline ol ol a {
+      display: inline;
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: 1em;
+    }
+
+    .doc-toc.doc-toc--inline a:hover {
+      color: var(--accent-primary);
+    }
+
+    article.doc ul,
+    article.doc ol {
+      margin: 0 0 1.1rem;
+      padding-left: 1.35rem;
+      color: var(--text-primary);
+    }
+
+    article.doc li {
+      margin-bottom: 0.45rem;
+      padding-left: 0.15rem;
+    }
+
+    article.doc li::marker {
+      color: rgba(15, 118, 110, 0.55);
+    }
+
+    article.doc ol li::marker {
+      color: rgba(15, 118, 110, 0.55);
+      font-weight: 600;
+    }
+
+    article.doc strong {
+      font-weight: 600;
+      color: #1a2436;
+    }
+
+    article.doc a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    article.doc a:hover {
+      color: #0d9488;
+      border-bottom-color: rgba(13, 148, 136, 0.55);
+    }
+
+    article.doc table {
+      width: fit-content;
+      max-width: 100%;
+      display: block;
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+      border-collapse: collapse;
+      font-size: 0.9em;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    article.doc thead {
+      background: rgba(15, 118, 110, 0.08);
+    }
+
+    article.doc th {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.88em;
+      color: var(--text-secondary);
+      border-bottom: 2px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    article.doc td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-primary);
+    }
+
+    article.doc tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    article.doc tbody tr:hover {
+      background: rgba(15, 118, 110, 0.04);
+    }
+
+    .doc-blockquote {
+      margin: 1.5rem 0;
+      padding: 0.85rem 1.15rem;
+      border-left: 4px solid var(--accent-primary);
+      background: rgba(15, 118, 110, 0.06);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 0.95em;
+      color: var(--text-secondary);
+    }
+
+    .doc-blockquote p:last-child,
+    .doc-blockquote ul:last-child {
+      margin-bottom: 0;
+    }
+
+    article.doc img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1rem 0 0.35rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    article.doc figure {
+      margin: 1rem 0 0.15rem;
+    }
+
+    article.doc .img-source {
+      margin: 0 0 1.35rem;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: var(--text-tertiary);
+      word-break: break-all;
+    }
+
+    article.doc .img-source a {
+      font-weight: 500;
+      font-size: inherit;
+      color: var(--text-tertiary);
+      border-bottom-color: rgba(15, 118, 110, 0.22);
+    }
+
+    article.doc .img-source a:hover {
+      color: var(--accent-primary);
+      border-bottom-color: rgba(13, 148, 136, 0.45);
+    }
+
+    article.doc code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+      background: rgba(15, 118, 110, 0.06);
+      padding: 0.1em 0.35em;
+      border-radius: 0.25em;
+    }
+
+    article.doc pre {
+      margin: 1rem 0 1.25rem;
+      padding: 1rem 1.1rem;
+      overflow-x: auto;
+      font-size: 0.82em;
+      line-height: 1.55;
+      background: rgba(15, 118, 110, 0.06);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+
+    article.doc .doc-source {
+      margin-top: 2.25rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-source a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+    }
+
+    ::selection {
+      background: rgba(15, 118, 110, 0.18);
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 1023px) {
+      .doc-wrap {
+        max-width: 64rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .doc-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: clamp(1.25rem, 2.5vw, 2rem);
+      }
+
+      .doc-toc.doc-toc--inline {
+        display: none;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop {
+        display: block;
+        flex: 0 0 13.25rem;
+        width: 13.25rem;
+        position: sticky;
+        top: 1.25rem;
+        max-height: calc(100vh - 2.5rem);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(15, 118, 110, 0.35) transparent;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop::-webkit-scrollbar-thumb {
+        background: rgba(15, 118, 110, 0.28);
+        border-radius: 999px;
+      }
+
+      article.doc {
+        flex: 1 1 auto;
+        max-width: 64rem;
+      }
+    }
+  
+    .back-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-nav .back-home-btn {
+      margin-bottom: 0;
+    }
+
+  </style>
+</head>
+<body class="article-page">
+  <div class="doc-wrap">
+    <nav class="back-nav" aria-label="返回">
+      <a href="../../../" class="back-home-btn">← 返回主页</a>
+      <a href="../../" class="back-home-btn">文章列表</a>
+    </nav>
+    <div class="doc-layout">
+      <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="文章目录">
+        <nav class="doc-toc" aria-label="目录">
+          <p class="doc-toc-title">目录</p>
+          <ol>
+            <li><a href="#sec-release">一、正式版更新了什么</a></li>
+            <li><a href="#sec-benchmark">二、官方评测表</a>
+              <ol>
+                <li><a href="#sec-preview-gap">正式版与预览版的差距</a></li>
+                <li><a href="#sec-fable-gap">与 Fable 5 的差距</a></li>
+                <li><a href="#sec-opus-gap">与 Opus 4.8 的比较</a></li>
+                <li><a href="#sec-kimi-gap">与 Kimi K3、GLM-5.2 的比较</a></li>
+              </ol>
+            </li>
+            <li><a href="#sec-deepswe">三、DeepSWE</a></li>
+            <li><a href="#sec-aa">四、Artificial Analysis</a></li>
+            <li><a href="#sec-pricing">五、价格与峰谷定价</a></li>
+            <li><a href="#sec-use">六、要不要用</a></li>
+            <li><a href="#sec-summary">七、总结</a></li>
+          </ol>
+        </nav>
+      </aside>
+
+      <article class="doc">
+        <p class="doc-kicker">AI 行业快讯 · DeepSeek V4 Pro</p>
+        <h1>DeepSeek V4 Pro 正式版全平台上线：Agent 与 Coding 能力接近顶级模型，8 月 17 日起调价</h1>
+        <p class="doc-updates"><time datetime="2026-08-13">更新日期 2026.8.13</time> · 内容来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
+
+        <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;">
+          <p>本次核心更新：</p>
+          <ul>
+            <li>V4 Pro 正式版已同步上线 APP、网页和 API，网页和 APP 可在「专家模式」中使用。</li>
+            <li>API 模型名仍为 <code>deepseek-v4-pro</code>，支持 Responses API、Tool Calls、Anthropic API，并适配 Codex。</li>
+            <li>思考模式支持 low / high / max 三档。</li>
+            <li>官方评测显示，V4 Pro 相比预览版提升明显，在 Agent / Coding 多数项目上高于 Claude Opus 4.8，整体接近 Claude Fable 5。</li>
+            <li>DeepSWE 得分 63%；当前 API 价格为缓存命中输入 0.025 元、未命中输入 3 元、输出 6 元 / 百万 tokens。8 月 17 日 0 时起改为峰谷定价，高峰时段 Pro 未命中输入 9 元、输出 27 元。</li>
+          </ul>
+        </div>
+
+        <p class="lead">8 月 13 日，DeepSeek 在官网确认 V4 Pro 正式版上线。APP、网页端和 API 同步更新，网页和 APP 可在「专家模式」中调用，API 模型名仍为 <code>deepseek-v4-pro</code>。发布公告和定价页同时带来了两个变化：正式版的 Agent / Coding 评测成绩公开了，API 峰谷定价也定了下来。当前 3 元的未命中输入价格只保留到 8 月 16 日。</p>
+
+        <nav class="doc-toc doc-toc--inline" aria-label="目录">
+          <p class="doc-toc-title">目录</p>
+          <ol>
+            <li><a href="#sec-release">一、正式版更新了什么</a></li>
+            <li><a href="#sec-benchmark">二、官方评测表</a>
+              <ol>
+                <li><a href="#sec-preview-gap">正式版与预览版的差距</a></li>
+                <li><a href="#sec-fable-gap">与 Fable 5 的差距</a></li>
+                <li><a href="#sec-opus-gap">与 Opus 4.8 的比较</a></li>
+                <li><a href="#sec-kimi-gap">与 Kimi K3、GLM-5.2 的比较</a></li>
+              </ol>
+            </li>
+            <li><a href="#sec-deepswe">三、DeepSWE</a></li>
+            <li><a href="#sec-aa">四、Artificial Analysis</a></li>
+            <li><a href="#sec-pricing">五、价格与峰谷定价</a></li>
+            <li><a href="#sec-use">六、要不要用</a></li>
+            <li><a href="#sec-summary">七、总结</a></li>
+          </ol>
+        </nav>
+
+        <figure><img src="assets/deepseek-v4-pro-0813-homepage-announcement.jpeg" alt="DeepSeek 官网首页正式版公告" loading="lazy" /></figure>
+        <p class="img-source">图片来源：<a href="https://www.deepseek.com" rel="noopener noreferrer">DeepSeek官网</a></p>
+        <p>13 日下午，官网首页这则公告曾短暂撤下，晚上又重新出现。结合官网新闻页，APP、网页端和 API 全面上线已经是官方确认的信息。</p>
+
+        <h2 id="sec-release">一、正式版更新了什么</h2>
+        <p>官方给出的改动主要集中在 Agent 能力和接口支持：V4 Pro 支持 Responses API，并针对 Codex 接入做了适配。API 文档还列出了 Tool Calls、JSON Output、Anthropic API 和对话前缀续写等能力，FIM 补全目前仅支持非思考模式。</p>
+        <p>基础规格为 1M 上下文、384K 最大输出，并发限制为 500。Flash 的并发限制是 2500，Pro 更适合复杂任务，Flash 则适合高并发、低单价请求。</p>
+        <p>思考模式现在可以按任务复杂度选档：简单任务用 low，日常 Agent 用 high，高度复杂的任务用 max。官方默认开启思考模式，effort 默认为 high，V4 Pro 和 V4 Flash 都支持这三档。13 日早些时候，社区反馈 max 思考深度出现异常，随后又反馈问题已经修复。官方没有发布故障说明；需要使用 max 的任务，仍建议先用小流量确认当前行为。</p>
+        <p>社区用户还反馈，正式版的思维链比过去更精简，常常省略不影响语义的连接词和解释。这只是用户实测印象，不能据此判断模型的写作能力。</p>
+
+        <h2 id="sec-benchmark">二、官方评测表：正式版比预览版提升了多少</h2>
+        <p>DeepSeek 发布的对比表覆盖 HLE、Terminal Bench 2.1、NL2Repo、Cybergym、DeepSWE、Toolathlon、Agents' Last Exam、AutomationBench 和两项 DSBench。Flash-0731 一列与官方模型卡逐项相符，表内数据可以作为比较依据。官方还注明，公开基准中的 Code Agent 任务使用 DeepSeek Harness 极简模式、max 档、topp=0.95、temperature=1.0 测试，换用其他框架后结果可能略有不同。</p>
+        <figure><img src="assets/deepseek-v4-pro-0813-benchmark.jpg" alt="DeepSeek V4 Pro 正式版官方评测对比表" loading="lazy" /></figure>
+        <p class="img-source">图片来源：<a href="https://api-docs.deepseek.com/zh-cn/news/news260813/" rel="noopener noreferrer">DeepSeek官网</a></p>
+        <p>下表保留 V4 Pro 与几个主要对手的关键分数，完整对比见配图：</p>
+        <table>
+          <thead><tr><th>Benchmark</th><th>V4-Pro-0813</th><th>V4-Pro-Preview</th><th>GLM-5.2</th><th>Kimi-K3</th><th>Opus-4.8</th><th>Fable 5</th></tr></thead>
+          <tbody>
+            <tr><td>HLE（无工具 / 有工具）</td><td>42.7 / 60.0</td><td>37.7 / 48.2</td><td>40.5 / 54.7</td><td>43.5 / 56.0</td><td>49.8 / 57.9</td><td>53.3 / 63.0</td></tr>
+            <tr><td>Terminal Bench 2.1</td><td>87.9</td><td>72.1</td><td>81.0</td><td>88.3</td><td>85.0</td><td>88.0</td></tr>
+            <tr><td>NL2Repo</td><td>61.5</td><td>38.5</td><td>48.9</td><td>-</td><td>69.7</td><td>-</td></tr>
+            <tr><td>Cybergym</td><td>83.3</td><td>52.7</td><td>-</td><td>80.0</td><td>78.3</td><td>83.1</td></tr>
+            <tr><td>DeepSWE</td><td>62.7</td><td>12.8</td><td>46.2</td><td>67.5</td><td>58.0</td><td>70.0</td></tr>
+            <tr><td>Toolathlon-Verified</td><td>74.1</td><td>55.9</td><td>59.9</td><td>76.5</td><td>76.2</td><td>77.9</td></tr>
+            <tr><td>AutomationBench Public</td><td>31.8</td><td>12.8</td><td>12.9</td><td>30.8</td><td>27.2</td><td>29.1</td></tr>
+            <tr><td>DSBench-FullStack</td><td>71.1</td><td>41.8</td><td>61.8</td><td>73.7</td><td>71.6</td><td>77.2</td></tr>
+            <tr><td>DSBench-Hard</td><td>67.2</td><td>31.1</td><td>54.5</td><td>63.0</td><td>71.7</td><td>68.3</td></tr>
+          </tbody>
+        </table>
+
+        <h3 id="sec-preview-gap">正式版与预览版的差距</h3>
+        <p>正式版相较预览版提升明显：DeepSWE 从 12.8 提升到 62.7，Terminal Bench 2.1 从 72.1 提升到 87.9，DSBench-Hard 从 31.1 提升到 67.2。Flash-0731 的 DeepSWE 是 54.4，Pro 正式版又高出 8.3 个百分点。</p>
+        <p>V4 Pro 这次升级的重点落在后训练和 Agent 工作流，长周期代码任务、终端操作、工具调用和企业自动化的分数都明显提高。</p>
+
+        <h3 id="sec-fable-gap">V4 Pro 与 Fable 5 仍有差距</h3>
+        <p>V4 Pro 在 Terminal Bench 2.1 上是 87.9，Fable 5 是 88.0，几乎持平；Cybergym 上 V4 Pro 为 83.3，反而高于 Fable 5 的 83.1；AutomationBench Public 也以 31.8 高于 Fable 5 的 29.1。</p>
+        <p>但在 DeepSWE、Toolathlon 和 DSBench-FullStack 上，V4 Pro 分别为 62.7、74.1 和 71.1，Fable 5 则是 70.0、77.9 和 77.2。<strong>V4 Pro 已经接近 Fable 5，在少数 Agent 评测上反超，但整体仍有差距。</strong></p>
+
+        <h3 id="sec-opus-gap">V4 Pro 在 Agent / Coding 评测中多数领先 Opus 4.8</h3>
+        <p>V4 Pro 在 Terminal Bench、Cybergym、DeepSWE 和 AutomationBench 上高于 Opus 4.8，DSBench-FullStack 71.1 与 Opus 4.8 的 71.6 基本持平。HLE 的有工具成绩则是 V4 Pro 60.0 高于 Opus 4.8 的 57.9。</p>
+        <p>HLE 无工具、NL2Repo、Toolathlon 和 DSBench-Hard 上，Opus 4.8 仍然更高；Agents' Last Exam 两者同为 25.7。综合这些项目，V4 Pro 在 Agent / Coding 评测上多数领先 Opus 4.8，但在知识推理和部分工程任务上仍有差距。</p>
+
+        <h3 id="sec-kimi-gap">V4 Pro 与 Kimi K3 接近，领先 GLM-5.2</h3>
+        <p>Kimi K3 在 DeepSWE、Toolathlon、Agents' Last Exam 和 DSBench-FullStack 上高于 V4 Pro，但 V4 Pro 在 Cybergym、AutomationBench 和 DSBench-Hard 上领先，Terminal Bench 也只差 0.4 分。两者分数接近，Kimi K3 整体略高。</p>
+        <p>与 Kimi K3 的差距不同，V4 Pro 在除 Cybergym 外的各项对比中都高于 GLM-5.2。Artificial Analysis 的 Intelligence Index 中两者同为 53，综合智能分数与 Agent 评测并不完全一致。</p>
+
+        <h2 id="sec-deepswe">三、DeepSWE：更接近实际 Coding Agent 任务</h2>
+        <p>DeepSWE 更接近 Cursor、Codex 这类工具的实际用法：给模型一个目标，让它在真实仓库里翻代码、改文件、跑验证，遇到问题再继续修改，多步完成一项工作。</p>
+        <p>DeepSWE 由 Datacurve 维护，测试长周期软件工程任务。当前 v1.1 有 113 个任务、91 个仓库和 5 种语言，所有模型统一使用 mini-swe-agent。任务全部从零开始，不从现成 commit / PR 改编；验证器由人工编写，检查任务行为是否正确，不要求实现方式与参考答案一致。相比短题榜或固定仓库修补任务，DeepSWE 的 prompt 约为 SWE-bench Pro 的一半长，但解决方案代码量是后者的 5.5 倍，输出 token 约 2 倍，更接近 Agent 在项目中连续写代码的场景。</p>
+        <figure><img src="assets/deepswe-leaderboard-deepseek-v4-pro-0813.png" alt="DeepSWE v1.1 榜单：Pass@1、平均成本、输出 token 与步骤数" loading="lazy" /></figure>
+        <p class="img-source">图片来源：<a href="https://deepswe.datacurve.ai/" rel="noopener noreferrer">DeepSWE</a></p>
+        <p>在榜单的 max 配置下，V4 Pro 的 Pass@1 为 <strong>63%±6%</strong>，排在第 9 位，高于 Opus 4.8 的 59%±2%，低于 Fable 5 的 70%±4%、Kimi K3 的 69%±5% 和 Grok 4.6 的 67%±2%。官方对比表中的 DeepSWE 分数为 62.7，与榜单的 63%接近。V4 Pro 已经超过 Opus 4.8，但还没有追上 Fable 5 和 Kimi K3。</p>
+        <table>
+          <thead><tr><th>模型</th><th>DeepSWE Pass@1</th><th>DeepSWE 平均成本 / 任务</th></tr></thead>
+          <tbody>
+            <tr><td>Claude Fable 5</td><td>70%±4%</td><td>$21.63</td></tr>
+            <tr><td>Kimi K3</td><td>69%±5%</td><td>$4.65</td></tr>
+            <tr><td>Claude Opus 4.8</td><td>59%±2%</td><td>$13.22</td></tr>
+            <tr><td>DeepSeek V4 Pro 0813</td><td><strong>63%±6%</strong></td><td><strong>$0.06</strong></td></tr>
+            <tr><td>DeepSeek V4 Flash 0731</td><td>53%±4%</td><td>$0.10</td></tr>
+            <tr><td>GLM-5.2</td><td>44%±2%</td><td>$3.92</td></tr>
+          </tbody>
+        </table>
+        <figure><img src="assets/deepswe-score-vs-cost-deepseek-v4-pro-0813.png" alt="DeepSWE 分数与每任务平均成本散点图" loading="lazy" /></figure>
+        <p class="img-source">图片来源：<a href="https://deepswe.datacurve.ai/" rel="noopener noreferrer">DeepSWE</a></p>
+        <p>图的纵轴是 DeepSWE 分数，越高越好；横轴是每任务平均成本，而且刻度是反的：左边更贵，右边更便宜，最右侧接近 0。右上角标注了 most efficient，<strong>越靠上、越靠右越好</strong>。Claude Opus 5、Fable 5 的分数更高，但都落在左侧高价区；Kimi K3、Grok 4.6 位于中间。DeepSeek 的两个点明显贴近右侧：V4 Pro 每任务平均成本 $0.06，全榜最低，Flash 是 $0.10。V4 Pro 的分数不是榜首，63%也低于 Fable 5 的 70%，但它用接近 60%的完成率，换来了远低于其他高分模型的任务成本。这里的成本采用榜单评测口径，不能直接当成 8 月 17 日涨价后的 API 账单。</p>
+
+        <h2 id="sec-aa">四、Artificial Analysis：综合智能与 Agent 能力分开看</h2>
+        <p>Intelligence Index 看综合能力，Agentic Index 看 Agent 任务，两个分数对应不同维度。V4 Pro 0813 在 Intelligence Index 中与 GLM-5.2 并列，在 Agentic Index 中略高于 Opus 4.8、V4 Flash-0731 和 GLM-5.2。</p>
+        <table>
+          <thead><tr><th>模型</th><th>Intelligence Index</th><th>Agentic Index</th></tr></thead>
+          <tbody>
+            <tr><td>Claude Fable 5</td><td>62</td><td>57</td></tr>
+            <tr><td>Kimi K3</td><td>60</td><td>54</td></tr>
+            <tr><td>Claude Opus 4.8</td><td>57</td><td>49</td></tr>
+            <tr><td>DeepSeek V4 Pro 0813</td><td><strong>53</strong></td><td><strong>50</strong></td></tr>
+            <tr><td>DeepSeek V4 Flash 0731</td><td>52</td><td>48</td></tr>
+            <tr><td>GLM-5.2</td><td>53</td><td>46</td></tr>
+          </tbody>
+        </table>
+        <p>两项分数放在一起看，V4 Pro 的优势主要落在 Agent 任务，而不是综合能力榜首。</p>
+        <figure><img src="assets/aa-intelligence-index-deepseek-v4-pro-0813.png" alt="Artificial Analysis Intelligence Index" loading="lazy" /></figure>
+        <p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?capability-index=healthcare-and-medical&amp;capability-models=inkling%2Ck-exaone-2-0-0803%2Cminimax-m3%2Cnemotron-3-5-lightning%2Ccommand-a-plus%2Cgpt-5-6-luna%2Cnvidia-nemotron-3-ultra-550b-a55b%2Cqwen3-8-max%2Cnvidia-nemotron-3-super-120b-a12b%2Csolar-open2-250b%2Ca-x-k2%2Cdeepseek-v4-pro%2Cclaude-4-5-haiku-reasoning%2Cmotif-3%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cgrok-4-6%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cmistral-medium-3-5%2Cgpt-oss-120b%2Cglm-5-2%2Ckimi-k3&amp;text-to-image=nano-banana-2%2Copenai-gpt_image-1-5%2Cmai-image-2-5%2Cgemini_nano-banana-pro%2Cnano-banana-2-lite%2Cseedream-5-0-pro%2Cgrok-imagine-image-quality%2Cqwen-image-2-0-pro-alibaba-cloud-may-2026%2Cblack_forest_labs_flux-2-max%2Cmai-image-2-5-flash%2Chidream-o1-image-1-5%2Ckrea-2-medium-turbo%2Cgpt-image-2&amp;models=minimax-m3%2Cgpt-5-6-luna%2Cqwen3-8-max%2Cdeepseek-v4-pro%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cgrok-4-6%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cclaude-opus-4-8%2Cgpt-5-5%2Cdeepseek-v4-flash-0420-high%2Cdeepseek-v4-pro-0424-high#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis Intelligence Index</a></p>
+        <p>在 Artificial Analysis Intelligence Index v4.1.1 中，V4 Pro 0813 得分 53，与 GLM-5.2 并列，低于 Fable 5 的 62、Opus 5 的 63 和 Kimi K3 的 60，高于 V4 Pro 预览版的 44。和预览版相比，正式版的综合能力提升明显。</p>
+        <figure><img src="assets/aa-agentic-index-deepseek-v4-pro-0813.png" alt="Artificial Analysis Agentic Index" loading="lazy" /></figure>
+        <p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?capability-index=healthcare-and-medical&amp;capability-models=inkling%2Ck-exaone-2-0-0803%2Cminimax-m3%2Cnemotron-3-5-lightning%2Ccommand-a-plus%2Cgpt-5-6-luna%2Cnvidia-nemotron-3-ultra-550b-a55b%2Cqwen3-8-max%2Cnvidia-nemotron-3-super-120b-a12b%2Csolar-open2-250b%2Ca-x-k2%2Cdeepseek-v4-pro%2Cclaude-4-5-haiku-reasoning%2Cmotif-3%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cgrok-4-6%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cmistral-medium-3-5%2Cgpt-oss-120b%2Cglm-5-2%2Ckimi-k3&amp;text-to-image=nano-banana-2%2Copenai-gpt_image-1-5%2Cmai-image-2-5%2Cgemini_nano-banana-pro%2Cnano-banana-2-lite%2Cseedream-5-0-pro%2Cgrok-imagine-image-quality%2Cqwen-image-2-0-pro-alibaba-cloud-may-2026%2Cblack_forest_labs_flux-2-max%2Cmai-image-2-5-flash%2Chidream-o1-image-1-5%2Ckrea-2-medium-turbo%2Cgpt-image-2&amp;models=minimax-m3%2Cgpt-5-6-luna%2Cqwen3-8-max%2Cdeepseek-v4-pro%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cgrok-4-6%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cclaude-opus-4-8%2Cgpt-5-5%2Cdeepseek-v4-flash-0420-high%2Cdeepseek-v4-pro-0424-high&amp;intelligence=agentic-index#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis Agentic Index</a></p>
+        <p>Agentic Index 中，V4 Pro 0813 得分 50，高于 Opus 4.8 的 49、V4 Flash-0731 的 48 和 GLM-5.2 的 46，低于 Fable 5 的 57 和 Kimi K3 的 54。这个分数更能对应 V4 Pro 的使用场景：Agent、工具调用和长周期 Coding 任务。</p>
+
+        <h2 id="sec-pricing">五、价格：8 月 17 日起进入峰谷定价</h2>
+        <p>当前官方 API 定价如下，单位是每百万 tokens，有效期到北京时间 8 月 17 日 0 时之前：</p>
+        <table>
+          <thead><tr><th>项目</th><th>deepseek-v4-pro</th><th>deepseek-v4-flash</th></tr></thead>
+          <tbody>
+            <tr><td>缓存命中输入</td><td>0.025 元</td><td>0.02 元</td></tr>
+            <tr><td>缓存未命中输入</td><td>3 元</td><td>1 元</td></tr>
+            <tr><td>输出</td><td>6 元</td><td>2 元</td></tr>
+            <tr><td>上下文长度</td><td>1M</td><td>1M</td></tr>
+            <tr><td>最大输出</td><td>384K</td><td>384K</td></tr>
+            <tr><td>并发限制</td><td>500</td><td>2500</td></tr>
+          </tbody>
+        </table>
+        <p>8 月 17 日 0 时起，DeepSeek 对 V4 全系列实行峰谷定价。高峰时段是北京时间 9:00–12:00、14:00–18:00，其余为空闲时段；闲时价格是高峰的一半。</p>
+        <table>
+          <thead><tr><th>模型</th><th>时段</th><th>缓存命中输入</th><th>缓存未命中输入</th><th>输出</th></tr></thead>
+          <tbody>
+            <tr><td>deepseek-v4-pro</td><td>闲时</td><td>0.15 元</td><td>4.5 元</td><td>13.5 元</td></tr>
+            <tr><td>deepseek-v4-pro</td><td>高峰</td><td>0.30 元</td><td>9.0 元</td><td>27.0 元</td></tr>
+            <tr><td>deepseek-v4-flash</td><td>闲时</td><td>0.05 元</td><td>1.5 元</td><td>4.5 元</td></tr>
+            <tr><td>deepseek-v4-flash</td><td>高峰</td><td>0.10 元</td><td>3.0 元</td><td>9.0 元</td></tr>
+          </tbody>
+        </table>
+        <p>闲时价格并不会回到当前水平。Pro 未命中输入将从 3 元涨到闲时 4.5 元、高峰 9 元；输出从 6 元涨到闲时 13.5 元、高峰 27 元。Flash 也会一起上调：未命中输入从 1 元涨到闲时 1.5 元、高峰 3 元，输出从 2 元涨到闲时 4.5 元、高峰 9 元。</p>
+        <p>对 Agent 请求，输入通常占大头；如果 95% 的输入命中缓存，按 <strong>1% 输出、99% 输入、输入侧 95% 缓存命中</strong>折算，每百万 tokens 的综合价如下：</p>
+        <table>
+          <thead><tr><th>模型</th><th>当前</th><th>8 月 17 日起闲时</th><th>8 月 17 日起高峰</th></tr></thead>
+          <tbody>
+            <tr><td>deepseek-v4-pro</td><td>0.23 元</td><td>0.50 元</td><td>1.00 元</td></tr>
+            <tr><td>deepseek-v4-flash</td><td>0.09 元</td><td>0.17 元</td><td>0.33 元</td></tr>
+          </tbody>
+        </table>
+        <p>按这个用量结构，Pro 综合价约为当前的 2.2 倍（闲时）和 4.3 倍（高峰），Flash 约为 1.9 倍和 3.8 倍。综合价上涨的主要原因是缓存命中价格从 0.025 元提高到 0.15 / 0.30 元；在这个假设中，约 94% 的 token 都走缓存命中，输出只占 1%。</p>
+        <p>V4 Pro 当前的标价仍是 Flash 的 3 倍，并发只有 Flash 的五分之一。高频、低复杂度请求继续交给 Flash 更合适；需要复杂规划、长链路执行和高质量代码修改的任务，再考虑使用 Pro。涨价后，能错峰的 Agent 任务尽量放在闲时。</p>
+
+        <h2 id="sec-use">六、要不要用</h2>
+        <p>日常 vibe coding、在 Codex 或 Responses API 中运行长链路 Agent，V4 Pro 值得优先测试。DeepSWE 已经高于 Opus 4.8，整体接近 Fable 5；按当前假设计算，每百万 tokens 综合价约 0.23 元，8 月 16 日前完成迁移和压测成本最低。并发不超过 500、任务以修改代码仓库为主时，Pro 更合适。</p>
+        <p>如果请求量大、需要接近 2500 并发，或者任务本身不需要 Pro 的完成率，Flash 更合适。它的 DeepSWE 分数低一截，但综合价约 0.09 元，涨价后闲时约 0.17 元，仍然便宜不少。</p>
+        <p>如果最看重单项上限和知识推理的稳定性，Fable 5、Opus 4.8 仍然更稳。V4 Pro 在 Agent / Coding 上接近它们，但没有每项都追上。</p>
+        <p>8 月 17 日之后，可以排队的任务放到闲时，Pro 综合价约 0.50 元，是高峰 1.00 元的一半。高峰必须使用 Pro 时，可以先用 high 档思考，避免所有任务都以 max 档运行。</p>
+
+        <h2 id="sec-summary">七、总结</h2>
+        <p>DeepSeek V4 Pro 正式版已经进入 Coding Agent 第一梯队，APP、网页端和 API 也已同步上线。公开数据中，V4 Pro 尚未全面超过 Fable 5；与 Opus 4.8 的比较也有胜有负，但它在 Terminal Bench、Cybergym、DeepSWE、AutomationBench 等 Agent / Coding 任务上占据优势，DeepSWE 单项和榜单都高于 Opus 4.8。</p>
+        <p>价格仍是 V4 Pro 的重要优势：按高缓存命中计算，当前每百万 tokens 综合价约 0.23 元。8 月 17 日 0 时起，同样口径下高峰综合价约 1.00 元。需要 Coding Agent 能力、又要控制成本的，可以在调价前完成测试；追求高并发和低成本的，Flash 仍然更合适，只是它也会同步涨价。</p>
+
+        <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">
+          数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br />
+          相关体验 <a href="https://api.dreamfree.space/c/s/cpyqdeepseek" rel="noopener noreferrer">DeepSeek 路线对比与使用入口</a><br />
+          原文链接 <a href="https://api-docs.deepseek.com/zh-cn/news/news260813/" rel="noopener noreferrer">DeepSeek-V4-Pro 正式版上线</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>
