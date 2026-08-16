@@ -79,39 +79,6 @@
   },
   "recommendationGroups": [
     {
-      "title": "包含 GLM-5.3",
-      "subtitle": "推荐几个无需抢购就能用上 GLM-5.3 的平台",
-      "items": [
-        {
-          "name": "智谱AI",
-          "rating": 5,
-          "reasons": [
-            "在售新 Token Plan 支持 GLM-5.3，国内领先的代码模型之一",
-            "新套餐无需抢购",
-            "官方服务，模型与套餐信息透明"
-          ]
-        },
-        {
-          "name": "OpenCode",
-          "rating": 5,
-          "reasons": [
-            "支持 GLM-5.3、Kimi-K3、DeepSeek-V4-Pro/Flash 等最新模型",
-            "Go 套餐首月半价 $5，无需抢购",
-            "可支付宝付款，调用抵扣透明"
-          ]
-        },
-        {
-          "name": "字节·方舟",
-          "rating": 5,
-          "reasons": [
-            "在售 Coding Plan / Token Plan 均支持 GLM-5.3",
-            "同时支持 DeepSeek-V4、MiniMax-M3、Kimi-K3 等模型",
-            "已解除限购，开放购买"
-          ]
-        }
-      ]
-    },
-    {
       "title": "综合推荐",
       "subtitle": "各维度综合评估，最值得入手的几家。智谱和Kimi暂时不开放了，暂时不推荐了",
       "items": [
@@ -149,6 +116,39 @@
             "首月半价$5。但只有go这一种套餐，不够重度使用",
             "无需抢购，可支付宝付款"
           ] 
+        }
+      ]
+    },
+    {
+      "title": "包含 GLM-5.3",
+      "subtitle": "推荐几个无需抢购就能用上 GLM-5.3 的平台",
+      "items": [
+        {
+          "name": "智谱AI",
+          "rating": 5,
+          "reasons": [
+            "在售新 Token Plan 支持 GLM-5.3，国内领先的代码模型之一",
+            "新套餐无需抢购",
+            "官方服务，模型与套餐信息透明"
+          ]
+        },
+        {
+          "name": "OpenCode",
+          "rating": 5,
+          "reasons": [
+            "支持 GLM-5.3、Kimi-K3、DeepSeek-V4-Pro/Flash 等最新模型",
+            "Go 套餐首月半价 $5，无需抢购",
+            "可支付宝付款，调用抵扣透明"
+          ]
+        },
+        {
+          "name": "字节·方舟",
+          "rating": 5,
+          "reasons": [
+            "在售 Coding Plan / Token Plan 均支持 GLM-5.3",
+            "同时支持 DeepSeek-V4、MiniMax-M3、Kimi-K3 等模型",
+            "已解除限购，开放购买"
+          ]
         }
       ]
     },
@@ -232,48 +232,6 @@
             "Token Plan 全档位支持 Kimi-K3；Coding Plan暂不支持 Kimi-K3",
             "同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。",
             "Coding Plan 需抢购；Token Plan 现货。"
-          ]
-        }
-      ]
-    },
-    {
-      "title": "包含 GLM-5.2",
-      "subtitle": "推荐几个无需抢购就能用上 GLM-5.2 的平台",
-      "items": [
-        {
-          "name": "OpenCode",
-          "rating": 5,
-          "reasons": [
-            "支持GLM-5.2、Kimi-K3、DeepSeek-V4-Pro等最新模型",
-            "首月半价$5。但只有go这一种套餐，够尝鲜，不够重度使用",
-            "无需抢购，可支付宝付款"
-          ]
-        },
-                {
-          "name": "共绩算力",
-          "rating": 5,
-          "action": "https://api.dreamfree.space/c/s/cpyqgongji",
-          "reasons": [
-            "按量调用，支持 GLM-5.2、Kimi-K3、DeepSeek-V4-Pro",
-            "平台不拥挤，稳定性高",
-            "通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入注册，可以锁定专属8折折扣与额外￥20额度"
-          ]
-        },
-        {
-          "name": "智谱AI",
-          "rating": 5,
-          "reasons": [
-            "支持GLM-5.2，国内最强的代码模型之一",
-            "涨价后新套餐无需抢购",
-            "新套餐价格翻倍，性价比有所下降"
-          ]
-        },
-        {
-          "name": "优云智算",
-          "rating": 4,
-          "reasons": [
-            "全档位支持 GLM-5.2，且有限时优惠倍率",
-            "用量较少，但真实按照接口调用量计费"
           ]
         }
       ]

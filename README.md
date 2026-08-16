@@ -25,23 +25,6 @@
 
 ## 平台推荐
 
-### 包含 GLM-5.3
-
-推荐几个无需抢购就能用上 GLM-5.3 的平台
-
-1. 智谱AI ⭐️⭐️⭐️⭐️⭐️
-    - 在售新 Token Plan 支持 GLM-5.3，国内领先的代码模型之一
-    - 新套餐无需抢购
-    - 官方服务，模型与套餐信息透明
-2. OpenCode ⭐️⭐️⭐️⭐️⭐️
-    - 支持 GLM-5.3、Kimi-K3、DeepSeek-V4-Pro/Flash 等最新模型
-    - Go 套餐首月半价 $5，无需抢购
-    - 可支付宝付款，调用抵扣透明
-3. 字节·方舟 ⭐️⭐️⭐️⭐️⭐️
-    - 在售 Coding Plan / Token Plan 均支持 GLM-5.3
-    - 同时支持 DeepSeek-V4、MiniMax-M3、Kimi-K3 等模型
-    - 已解除限购，开放购买
-
 ### 综合推荐
 
 各维度综合评估，最值得入手的几家。智谱和Kimi暂时不开放了，暂时不推荐了
@@ -61,6 +44,23 @@
     - 支持Kimi-K3、GLM-5.2、DeepSeek-V4-Flash-0731、Gpt-5.6-Luna等最新模型
     - 首月半价$5。但只有go这一种套餐，不够重度使用
     - 无需抢购，可支付宝付款
+
+### 包含 GLM-5.3
+
+推荐几个无需抢购就能用上 GLM-5.3 的平台
+
+1. 智谱AI ⭐️⭐️⭐️⭐️⭐️
+    - 在售新 Token Plan 支持 GLM-5.3，国内领先的代码模型之一
+    - 新套餐无需抢购
+    - 官方服务，模型与套餐信息透明
+2. OpenCode ⭐️⭐️⭐️⭐️⭐️
+    - 支持 GLM-5.3、Kimi-K3、DeepSeek-V4-Pro/Flash 等最新模型
+    - Go 套餐首月半价 $5，无需抢购
+    - 可支付宝付款，调用抵扣透明
+3. 字节·方舟 ⭐️⭐️⭐️⭐️⭐️
+    - 在售 Coding Plan / Token Plan 均支持 GLM-5.3
+    - 同时支持 DeepSeek-V4、MiniMax-M3、Kimi-K3 等模型
+    - 已解除限购，开放购买
 
 ### 包含 DeepSeek-V4-Flash-0731 正式版
 
@@ -102,26 +102,6 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用
     - Token Plan 全档位支持 Kimi-K3；Coding Plan暂不支持 Kimi-K3
     - 同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。
     - Coding Plan 需抢购；Token Plan 现货。
-
-### 包含 GLM-5.2
-
-推荐几个无需抢购就能用上 GLM-5.2 的平台
-
-1. OpenCode ⭐️⭐️⭐️⭐️⭐️
-    - 支持GLM-5.2、Kimi-K3、DeepSeek-V4-Pro等最新模型
-    - 首月半价$5。但只有go这一种套餐，够尝鲜，不够重度使用
-    - 无需抢购，可支付宝付款
-2. [共绩算力](https://api.dreamfree.space/c/s/cpyqgongji) ⭐️⭐️⭐️⭐️⭐️
-    - 按量调用，支持 GLM-5.2、Kimi-K3、DeepSeek-V4-Pro
-    - 平台不拥挤，稳定性高
-    - 通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入注册，可以锁定专属8折折扣与额外￥20额度
-3. 智谱AI ⭐️⭐️⭐️⭐️⭐️
-    - 支持GLM-5.2，国内最强的代码模型之一
-    - 涨价后新套餐无需抢购
-    - 新套餐价格翻倍，性价比有所下降
-4. 优云智算 ⭐️⭐️⭐️⭐️
-    - 全档位支持 GLM-5.2，且有限时优惠倍率
-    - 用量较少，但真实按照接口调用量计费
 
 
 ## 🗂️ 平台对比表
