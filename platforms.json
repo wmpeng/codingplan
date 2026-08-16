@@ -1,29 +1,5 @@
 [
   {
-    "id": "zhipu-intl",
-    "name": "智谱国际版",
-    "rating": 5,
-    "summary": "国内版的替代，无需抢购。",
-    "detail": "智谱国际版在模型与套餐额度上与国内版相同，支持 GLM-5.3，适合长期抢不到国内名额、又想要使用 GLM 旗舰模型的用户。",
-    "dimensions": {
-      "value": {
-        "score": 4,
-        "reason": "用量与国内版一致，新套餐价格也基本一致。",
-        "detail": "用量与国内版完全一致，新套餐价格也基本一致。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享9折。[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)内有成品号出售。"
-      },
-      "models": {
-        "score": 5,
-        "reason": "GLM-5.3 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "官方服务，稳定性强。"
-      }
-    },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
     "id": "zhipu",
     "name": "智谱AI",
     "rating": 5,
@@ -40,6 +16,52 @@
       "stability": {
         "score": 4,
         "reason": "官方服务，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
+      }
+    },
+    "tags": [],
+    "platformStatus": "open"
+  },
+  {
+    "id": "opencode",
+    "name": "OpenCode",
+    "rating": 5,
+    "summary": "模型支持全，调用抵扣透明，性价比高，可直接支付宝付款，无需抢购。",
+    "detail": "模型支持全，调用抵扣透明，性价比高，可直接支付宝付款，无需抢购。提供 Go 套餐付费代邀请服务，加[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)了解详情。",
+    "dimensions": {
+      "value": {
+        "score": 5,
+        "reason": "Go 套餐 $10/月（首月 $5），可使用$15~$60额度。DeepSeek-V4-Flash-0731 每月可达约 15.8 万次请求，量大价低，细节可见[官方文档](https://opencode.ai/docs/go/)。"
+      },
+      "models": {
+        "score": 5,
+        "reason": "聚合 Kimi-K3、GLM-5.3、MiniMax-M3、Qwen-3.7-Max、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731 等模型，新模型上线及时。"
+      },
+      "stability": {
+        "score": 5,
+        "reason": "各模型基本都是官方通道，稳定性强，较少出现不可用。"
+      }
+    },
+    "tags": [],
+    "platformStatus": "open"
+  },
+  {
+    "id": "bytedance-ark",
+    "name": "字节·方舟",
+    "rating": 5,
+    "summary": "已解除限购，开放购买。支持智谱 GLM-5.3、DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro、MiniMax、Kimi各家模型，模型覆盖全面。",
+    "detail": "CodingPlan已解除限购，恢复开放购买，无需抢购。同时支持智谱 GLM-5.3、DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro、MiniMax、Kimi各家模型。",
+    "dimensions": {
+      "value": {
+        "score": 5,
+        "reason": "开放购买，无需抢购；具体套餐折扣和模型用量活动以官方公告为准。"
+      },
+      "models": {
+        "score": 5,
+        "reason": "支持 GLM-5.3、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731、MiniMax-M3、Kimi-K2.7-Code、Kimi-K3，模型覆盖全面。"
+      },
+      "stability": {
+        "score": 4,
+        "reason": "火山引擎大厂背书，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
       }
     },
     "tags": [],
@@ -70,46 +92,24 @@
     "platformStatus": "open"
   },
   {
-    "id": "bytedance-ark",
-    "name": "字节·方舟",
+    "id": "zhipu-intl",
+    "name": "智谱国际版",
     "rating": 5,
-    "summary": "已解除限购，开放购买。支持智谱 GLM-5.3、DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro、MiniMax、Kimi各家模型，模型覆盖全面。",
-    "detail": "CodingPlan已解除限购，恢复开放购买，无需抢购。同时支持智谱 GLM-5.3、DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro、MiniMax、Kimi各家模型。",
+    "summary": "国内版的替代，无需抢购。",
+    "detail": "智谱国际版在模型与套餐额度上与国内版相同，支持 GLM-5.3，适合长期抢不到国内名额、又想要使用 GLM 旗舰模型的用户。",
     "dimensions": {
       "value": {
-        "score": 5,
-        "reason": "开放购买，无需抢购；具体套餐折扣和模型用量活动以官方公告为准。"
-      },
-      "models": {
-        "score": 5,
-        "reason": "支持 GLM-5.3、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731、MiniMax-M3、Kimi-K2.7-Code、Kimi-K3，模型覆盖全面。"
-      },
-      "stability": {
         "score": 4,
-        "reason": "火山引擎大厂背书，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
-      }
-    },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "opencode",
-    "name": "OpenCode",
-    "rating": 5,
-    "summary": "模型支持全，调用抵扣透明，性价比高，可直接支付宝付款，无需抢购。",
-    "detail": "模型支持全，调用抵扣透明，性价比高，可直接支付宝付款，无需抢购。提供 Go 套餐付费代邀请服务，加[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)了解详情。",
-    "dimensions": {
-      "value": {
-        "score": 5,
-        "reason": "Go 套餐 $10/月（首月 $5），可使用$15~$60额度。DeepSeek-V4-Flash-0731 每月可达约 15.8 万次请求，量大价低，细节可见[官方文档](https://opencode.ai/docs/go/)。"
+        "reason": "用量与国内版一致，新套餐价格也基本一致。",
+        "detail": "用量与国内版完全一致，新套餐价格也基本一致。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享9折。[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)内有成品号出售。"
       },
       "models": {
         "score": 5,
-        "reason": "聚合 Kimi-K3、GLM-5.3、MiniMax-M3、Qwen-3.7-Max、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731 等模型，新模型上线及时。"
+        "reason": "GLM-5.3 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
       },
       "stability": {
         "score": 5,
-        "reason": "各模型基本都是官方通道，稳定性强，较少出现不可用。"
+        "reason": "官方服务，稳定性强。"
       }
     },
     "tags": [],
