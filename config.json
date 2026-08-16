@@ -101,21 +101,21 @@
           ]
         },
         {
-          "name": "字节·方舟",
-          "rating": 5,
-          "reasons": [
-            "已解除限购，开放购买，无需抢购",
-            "支持GLM-5.3、DeepSeek-V4，MiniMax-M3，Kimi-K3"
-          ]
-        },
-        {
           "name": "OpenCode",
           "rating": 5,
           "reasons": [
             "支持Kimi-K3、GLM-5.2、DeepSeek-V4-Flash-0731、Gpt-5.6-Luna等最新模型",
             "首月半价$5。但只有go这一种套餐，不够重度使用",
             "无需抢购，可支付宝付款"
-          ] 
+          ]
+        },
+        {
+          "name": "字节·方舟",
+          "rating": 5,
+          "reasons": [
+            "已解除限购，开放购买，无需抢购",
+            "支持GLM-5.3、DeepSeek-V4，MiniMax-M3，Kimi-K3"
+          ]
         }
       ]
     },
@@ -147,6 +147,16 @@
             "在售 Coding Plan / Token Plan 均支持 GLM-5.3",
             "同时支持 DeepSeek-V4、MiniMax-M3、Kimi-K3 等模型",
             "已解除限购，开放购买"
+          ]
+        },
+        {
+          "name": "共绩算力",
+          "rating": 5,
+          "action": "https://api.dreamfree.space/c/s/cpyqgongji",
+          "reasons": [
+            "按量调用，支持 GLM-5.3、DeepSeek-V4-Pro、Kimi-K3",
+            "平台不拥挤，稳定性高",
+            "通过**[邀请链接](https://api.dreamfree.space/c/s/cpyqgongji)**进入注册，可以锁定专属8折折扣与额外￥20额度"
           ]
         }
       ]

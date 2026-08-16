@@ -174,7 +174,7 @@
       },
       "models": {
         "score": 5,
-        "reason": "支持 Kimi-K3, DeepSeek-V4-Pro， GLM-5.2，以及 千问、混元 等常见模型。"
+        "reason": "支持 Kimi-K3、DeepSeek-V4-Pro、GLM-5.3，以及 千问、混元 等常见模型。"
       },
       "stability": {
         "score": 5,
