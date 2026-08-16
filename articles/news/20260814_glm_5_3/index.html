@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GLM-5.3 发布：专注编程，极致后训练，用一半尺寸超越DeepSeek V4 Pro 0813 正式版</title>
+  <meta name="description" content="GLM-5.3 沿用 GLM-5.2 基座，依靠后训练强化 Coding、Terminal Agent 与长程任务；总参数约 744B，激活参数约 40B，并已进入 GLM Coding Plan。" />
+  <link rel="icon" href="../../../favicon.ico?v=260515" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=260515" />
+  <style>
+    body.article-page {
+      font-size: 17px;
+      line-height: 1.78;
+      padding: clamp(18px, 4vw, 36px) clamp(14px, 3.5vw, 28px) 56px;
+    }
+
+    .doc-wrap {
+      max-width: calc(64rem + 14.5rem + 2.5rem);
+      margin: 0 auto;
+    }
+
+    .doc-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .doc-toc-aside.doc-toc-aside--desktop {
+      display: none;
+    }
+
+    .doc-toc.doc-toc--inline {
+      display: block;
+    }
+
+    article.doc .doc-toc ol,
+    article.doc .doc-toc ul {
+      margin-bottom: 0;
+      padding-left: 0;
+      color: inherit;
+    }
+
+    article.doc .doc-toc li {
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    article.doc .doc-toc li::marker {
+      color: rgba(15, 118, 110, 0.45);
+    }
+
+    article.doc .doc-toc a,
+    article.doc .doc-toc a:hover {
+      border-bottom: none;
+      text-decoration: none;
+    }
+
+    article.doc {
+      flex: 1 1 auto;
+      min-width: 0;
+      position: relative;
+      padding: clamp(1.5rem, 4.2vw, 2.85rem);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      background: linear-gradient(
+        155deg,
+        rgba(255, 253, 248, 0.97) 0%,
+        rgba(255, 249, 240, 0.9) 45%,
+        rgba(239, 246, 244, 0.55) 100%
+      );
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    article.doc::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(
+        90deg,
+        var(--accent-primary),
+        rgba(198, 107, 26, 0.85)
+      );
+      opacity: 0.92;
+    }
+
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      padding: 0.6rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #3a2000;
+      background: var(--accent-primary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+    }
+
+    .back-home-btn:hover {
+      opacity: 0.85;
+      transform: translateX(-2px);
+    }
+
+    .doc-kicker {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc h1 {
+      font-size: clamp(1.45rem, 4.2vw, 1.95rem);
+      font-weight: 700;
+      line-height: 1.32;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin: 0 0 0.45rem;
+      max-width: 28em;
+    }
+
+    article.doc .doc-updates {
+      margin: 0 0 1.05rem;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-updates time {
+      font-variant-numeric: tabular-nums;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    article.doc .lead {
+      font-size: 0.98em;
+      color: var(--text-secondary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc p {
+      margin: 0 0 1rem;
+      color: var(--text-primary);
+    }
+
+    article.doc h2 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 2.35rem 0 0.85rem;
+      padding: 0 0 0 0.85rem;
+      border-left: 4px solid var(--accent-primary);
+      line-height: 1.35;
+    }
+
+    article.doc h2:first-of-type {
+      margin-top: 1.85rem;
+    }
+
+    article.doc h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #243047;
+      margin: 1.45rem 0 0.55rem;
+    }
+
+    article.doc h2[id],
+    article.doc h3[id] {
+      scroll-margin-top: 1.25rem;
+    }
+
+    .doc-toc {
+      margin: 0;
+      padding: 0.85rem 0.95rem 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: rgba(255, 253, 248, 0.92);
+      box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.06));
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .doc-toc-title {
+      margin: 0 0 0.55rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .doc-toc ol {
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .doc-toc > ol {
+      list-style: none;
+    }
+
+    .doc-toc > ol > li {
+      margin-bottom: 0.45rem;
+    }
+
+    .doc-toc > ol > li > a {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc ol ol {
+      margin: 0.3rem 0 0.1rem;
+      padding-left: 0.85rem;
+      list-style: none;
+      border-left: 2px solid rgba(15, 118, 110, 0.15);
+    }
+
+    .doc-toc ol ol li {
+      margin-bottom: 0.22rem;
+    }
+
+    .doc-toc ol ol a {
+      font-weight: 400;
+      color: var(--text-secondary);
+      font-size: 0.96em;
+    }
+
+    .doc-toc li {
+      margin-bottom: 0.25rem;
+    }
+
+    .doc-toc a {
+      display: block;
+      border-bottom: none;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .doc-toc a:hover {
+      color: var(--accent-primary);
+      text-decoration: none;
+      border-bottom: none;
+    }
+
+    .doc-toc.doc-toc--inline {
+      margin: 0 0 1.75rem;
+      padding: 1rem 1.15rem 1.05rem;
+      font-size: 0.92em;
+      line-height: 1.55;
+      background: rgba(15, 118, 110, 0.05);
+      box-shadow: none;
+    }
+
+    .doc-toc.doc-toc--inline .doc-toc-title {
+      font-size: 0.88rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li {
+      margin-bottom: 0.5rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li > a {
+      display: inline;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc.doc-toc--inline ol ol {
+      margin: 0.35rem 0 0.15rem;
+      padding-left: 1.15rem;
+      list-style: decimal;
+      border-left: none;
+    }
+
+    .doc-toc.doc-toc--inline ol ol li {
+      margin-bottom: 0.3rem;
+    }
+
+    .doc-toc.doc-toc--inline ol ol a {
+      display: inline;
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: 1em;
+    }
+
+    .doc-toc.doc-toc--inline a:hover {
+      color: var(--accent-primary);
+    }
+
+    article.doc ul,
+    article.doc ol {
+      margin: 0 0 1.1rem;
+      padding-left: 1.35rem;
+      color: var(--text-primary);
+    }
+
+    article.doc li {
+      margin-bottom: 0.45rem;
+      padding-left: 0.15rem;
+    }
+
+    article.doc li::marker {
+      color: rgba(15, 118, 110, 0.55);
+    }
+
+    article.doc ol li::marker {
+      color: rgba(15, 118, 110, 0.55);
+      font-weight: 600;
+    }
+
+    article.doc strong {
+      font-weight: 600;
+      color: #1a2436;
+    }
+
+    article.doc a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    article.doc a:hover {
+      color: #0d9488;
+      border-bottom-color: rgba(13, 148, 136, 0.55);
+    }
+
+    article.doc table {
+      width: fit-content;
+      max-width: 100%;
+      display: block;
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+      border-collapse: collapse;
+      font-size: 0.9em;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    article.doc thead {
+      background: rgba(15, 118, 110, 0.08);
+    }
+
+    article.doc th {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.88em;
+      color: var(--text-secondary);
+      border-bottom: 2px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    article.doc td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-primary);
+    }
+
+    article.doc tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    article.doc tbody tr:hover {
+      background: rgba(15, 118, 110, 0.04);
+    }
+
+    .doc-blockquote {
+      margin: 1.5rem 0;
+      padding: 0.85rem 1.15rem;
+      border-left: 4px solid var(--accent-primary);
+      background: rgba(15, 118, 110, 0.06);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 0.95em;
+      color: var(--text-secondary);
+    }
+
+    .doc-blockquote p:last-child,
+    .doc-blockquote ul:last-child {
+      margin-bottom: 0;
+    }
+
+    article.doc img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1rem 0 0.35rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    article.doc figure {
+      margin: 1rem 0 0.15rem;
+    }
+
+    article.doc .img-source {
+      margin: 0 0 1.35rem;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: var(--text-tertiary);
+      word-break: break-all;
+    }
+
+    article.doc .img-source a {
+      font-weight: 500;
+      font-size: inherit;
+      color: var(--text-tertiary);
+      border-bottom-color: rgba(15, 118, 110, 0.22);
+    }
+
+    article.doc .img-source a:hover {
+      color: var(--accent-primary);
+      border-bottom-color: rgba(13, 148, 136, 0.45);
+    }
+
+    article.doc code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+      background: rgba(15, 118, 110, 0.06);
+      padding: 0.1em 0.35em;
+      border-radius: 0.25em;
+    }
+
+    article.doc .doc-source {
+      margin-top: 2.25rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-source a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+    }
+
+    ::selection {
+      background: rgba(15, 118, 110, 0.18);
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 1023px) {
+      .doc-wrap {
+        max-width: 64rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .doc-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: clamp(1.25rem, 2.5vw, 2rem);
+      }
+
+      .doc-toc.doc-toc--inline {
+        display: none;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop {
+        display: block;
+        flex: 0 0 13.25rem;
+        width: 13.25rem;
+        position: sticky;
+        top: 1.25rem;
+        max-height: calc(100vh - 2.5rem);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(15, 118, 110, 0.35) transparent;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop::-webkit-scrollbar-thumb {
+        background: rgba(15, 118, 110, 0.28);
+        border-radius: 999px;
+      }
+
+      article.doc {
+        flex: 1 1 auto;
+        max-width: 64rem;
+      }
+    }
+  
+    .back-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-nav .back-home-btn {
+      margin-bottom: 0;
+    }
+
+  </style>
+</head>
+<body class="article-page">
+  <div class="doc-wrap">
+    <nav class="back-nav" aria-label="返回">
+      <a href="../../../" class="back-home-btn">← 返回主页</a>
+      <a href="../../" class="back-home-btn">文章列表</a>
+    </nav>
+    <div class="doc-layout">
+      <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="文章目录">
+        <nav class="doc-toc" aria-label="目录">
+          <p class="doc-toc-title">目录</p>
+          <ol>
+            <li><a href="#sec-core">一、相同基座与后训练</a></li>
+            <li><a href="#sec-bench">二、官方跑分</a>
+              <ol>
+                <li><a href="#sec-bench-rise">相对 GLM-5.2</a></li>
+                <li><a href="#sec-compare">横向对比</a></li>
+                <li><a href="#sec-token">Token 效率</a></li>
+              </ol>
+            </li>
+            <li><a href="#sec-community">三、社区实测</a>
+              <ol>
+                <li><a href="#sec-threebody">三体 3D 场景</a></li>
+                <li><a href="#sec-vista">Vista 风格桌面</a></li>
+                <li><a href="#sec-simulation">柴油机仿真、池核与长提示词</a></li>
+                <li><a href="#sec-kingbench">KingBench 3</a></li>
+              </ol>
+            </li>
+            <li><a href="#sec-security">四、网络安全能力</a></li>
+            <li><a href="#sec-open">五、开放情况</a></li>
+            <li><a href="#sec-summary">六、总结</a></li>
+          </ol>
+        </nav>
+      </aside>
+
+      <article class="doc">
+        <p class="doc-kicker">产品更新 · Coding Plan</p>
+        <h1>GLM-5.3 发布：专注编程，极致后训练，用一半尺寸超越DeepSeek V4 Pro 0813 正式版</h1>
+        <p class="doc-updates">更新日期：<time datetime="2026-08-15">2026.8.15</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
+
+        <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;">
+          <p>本次核心更新：</p>
+          <ul>
+            <li>GLM-5.3 与 GLM-5.2 使用相同基础模型，官方称全部提升来自后训练。</li>
+            <li>GLM-5.3 总参数约 744B，激活参数约 40B。作为对比，DeepSeek V4 Pro 总参数约 1.6T、激活参数约 49B；Kimi K3 总参数约 2.8T、激活参数约 104B。</li>
+            <li>复杂 Coding、Terminal Agent 和长程任务能力明显增强，Terminal Bench 3.0 从 4.6 提升到 28.3，DeepSWE v1.1 从 46.2 提升到 66.9。</li>
+            <li>官方 Coding Plan 已上线，模型 API 仍在等待开放；权重计划在发布两周后、完成安全评估和加固后开放。</li>
+          </ul>
+        </div>
+
+        <p class="lead">8 月 14 日，智谱发布 <a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-5.3" rel="noopener noreferrer"><strong>GLM-5.3</strong></a>。它没有换成更大的基础模型，沿用 GLM-5.2 的基座，把资源继续投到后训练、任务环境和长程 Agent 训练上。</p>
+
+        <nav class="doc-toc doc-toc--inline" aria-label="目录">
+          <p class="doc-toc-title">目录</p>
+          <ol>
+            <li><a href="#sec-core">一、相同基座与后训练</a></li>
+            <li><a href="#sec-bench">二、官方跑分</a>
+              <ol>
+                <li><a href="#sec-bench-rise">相对 GLM-5.2</a></li>
+                <li><a href="#sec-compare">横向对比</a></li>
+                <li><a href="#sec-token">Token 效率</a></li>
+              </ol>
+            </li>
+            <li><a href="#sec-community">三、社区实测</a>
+              <ol>
+                <li><a href="#sec-threebody">三体 3D 场景</a></li>
+                <li><a href="#sec-vista">Vista 风格桌面</a></li>
+                <li><a href="#sec-simulation">柴油机仿真、池核与长提示词</a></li>
+                <li><a href="#sec-kingbench">KingBench 3</a></li>
+              </ol>
+            </li>
+            <li><a href="#sec-security">四、网络安全能力</a></li>
+            <li><a href="#sec-open">五、开放情况</a></li>
+            <li><a href="#sec-summary">六、总结</a></li>
+          </ol>
+        </nav>
+
+        <p><a href="https://z.ai/blog/glm-5.3" rel="noopener noreferrer">官方公开数据</a>里，GLM-5.3 的整体能力已经进入第一梯队：国产里强于 DeepSeek V4 Pro、Qwen3.8-Max，和 Kimi K3 接近；海外里整体强于 Claude Opus 4.8，接近 Fable 5 和 GPT-5.6 Sol。编程上，长程终端、持续改代码和自动化已经打到开源前列，Agents' Last Exam 与 GPT-5.6 Sol 基本持平；更难的终端任务、高难编程仍落后于 Fable 5 和 GPT-5.6 Sol。社区实测里，3D 场景、复杂 UI 和长提示词项目的完成质量也跟着上去了。</p>
+
+        <h2 id="sec-core">一、相同基座，全部提升来自后训练</h2>
+        <p>GLM-5.3 与 GLM-5.2 使用相同基础模型，<a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-5.3" rel="noopener noreferrer">官方文档</a>称全部提升来自后训练。GLM-5.2 已经搭好长程任务训练栈，5.3 继续在这套栈上加码：长程任务环境扩到数十倍，环境类型更多，后训练时间也更长。</p>
+        <p><a href="https://z.ai/blog/glm-5.3" rel="noopener noreferrer">官方博客</a>把这条路线叫做 post-training scaling（后训练规模化）。IndexShare 管长上下文，SAO 做长程任务强化学习，slime 跑大规模异步沙箱。短题对就是对、错就是错；复杂工程任务往往前面几十步都做对，最后改错一个名字，整条轨迹也会失败。后训练要解决的，就是让模型在终端和代码库里反复执行、试错、验证，并分清哪些步骤真正有用。</p>
+        <p>继续堆更大基座，和把现有基座的后训练做深，是两条路。GLM-5.3 选的是后者，也比较专注编程：目前只支持文本，仍然没有原生多模态。</p>
+        <p>尺寸按 GLM-5.2 <a href="https://github.com/zai-org/GLM-5.2" rel="noopener noreferrer">官方模型卡</a>的 <code>744B-A40B</code> 来理解：</p>
+        <table>
+          <thead><tr><th>参数口径</th><th>GLM-5.3</th><th><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4" rel="noopener noreferrer">DeepSeek V4 Pro</a></th><th>Kimi K3</th></tr></thead>
+          <tbody>
+            <tr><td>总参数</td><td>约 744B</td><td>约 1.6T</td><td>约 2.8T</td></tr>
+            <tr><td>激活参数</td><td>约 40B</td><td>约 49B</td><td>约 104B</td></tr>
+          </tbody>
+        </table>
+        <p>总参数不到 DeepSeek V4 Pro 的一半，也明显小于 Kimi K3；激活参数约 40B，对 DeepSeek V4 Pro 的 49B 只差一截，对 Kimi K3 的 104B 则小很多。不能据此说推理成本也会减半。</p>
+
+        <h2 id="sec-bench">二、官方跑分：从“能写代码”走向“能完成工程任务”</h2>
+        <h3 id="sec-bench-rise">相对 GLM-5.2：长程任务提升最明显</h3>
+        <p>相对上一代，六项全部上涨，涨幅最大的是长程终端和持续改代码：</p>
+        <table>
+          <thead><tr><th>Benchmark</th><th>评测目的</th><th>GLM-5.2</th><th>GLM-5.3</th></tr></thead>
+          <tbody>
+            <tr><td>Terminal Bench 3.0</td><td>看终端 Agent 能不能独立把任务做完</td><td>4.6</td><td><strong>28.3</strong></td></tr>
+            <tr><td>DeepSWE v1.1</td><td>看软件工程任务能不能持续推进</td><td>46.2</td><td><strong>66.9</strong></td></tr>
+            <tr><td>Agents' Last Exam（CLI）</td><td>看长程 Agent 在真实专业场景里的完成度</td><td>23.8</td><td><strong>28.5</strong></td></tr>
+            <tr><td>AutomationBench</td><td>看自动化流程能不能闭环</td><td>26.2</td><td><strong>48.2</strong></td></tr>
+            <tr><td>HLE w/ Tools</td><td>看带工具时的高难度解题能力</td><td>54.7</td><td><strong>62.5</strong></td></tr>
+            <tr><td>GDPval-AA v2</td><td>看专业工作任务的执行水平</td><td>1508</td><td><strong>1769</strong></td></tr>
+          </tbody>
+        </table>
+        <figure><img src="assets/glm-5-3-official-01.png" alt="GLM-5.3 官方公开 benchmark 对比图" loading="lazy" /></figure>
+        <p class="img-source">图片来源：<a href="https://z.ai/blog/glm-5.3" rel="noopener noreferrer">智谱官方博客</a></p>
+        <p>AutomationBench 和 GDPval 已经是五家里最高；Agents' Last Exam 与 GPT-5.6 Sol 基本持平。Terminal Bench 3.0、DeepSWE、HLE 超过 Kimi K3，仍低于 Fable 5 和 GPT-5.6 Sol。</p>
+
+        <h3 id="sec-compare">横向对比：编程、安全、Agent</h3>
+        <p>官方横向表覆盖 Kimi K3、DeepSeek V4 Pro、Qwen3.8-Max、Claude Opus 4.8、Fable 5 和 GPT-5.6 Sol。</p>
+        <figure><img src="assets/glm-5-3-official-03.jpeg" alt="GLM-5.3 多模型横向评测全表" loading="lazy" /></figure>
+        <p class="img-source">图片来源：<a href="https://z.ai/blog/glm-5.3" rel="noopener noreferrer">智谱官方博客</a></p>
+        <p>相对 GLM-5.2，Coding、Agent、Cyber 全面提升。</p>
+        <ul>
+          <li>国产里，整体强于 DeepSeek V4 Pro 和 Qwen3.8-Max；和 Kimi K3 接近，多数项略高。</li>
+          <li>和 Opus 4.8 比，整体已经更强：终端、持续改代码、自动化、长程 Agent 都领先，从需求生成仓库、工具调用仍弱于 Opus。</li>
+          <li>和 Fable 5、GPT-5.6 Sol 比，自动化、专业任务执行、部分 Agent、漏洞发现已经到同一水平或略高；更难的终端任务、高难编程和漏洞利用仍落后。</li>
+        </ul>
+
+        <h3 id="sec-token">Token 效率也在改善</h3>
+        <figure><img src="assets/glm-5-3-official-02.png" alt="Z.ai Code Bench：准确率与平均输出 Token 对比" loading="lazy" /></figure>
+        <p class="img-source">图片来源：<a href="https://z.ai/blog/glm-5.3" rel="noopener noreferrer">智谱官方博客</a></p>
+        <p>智谱内部的 Z.ai Code Bench 同时看任务完成率和平均输出 Token。相对 GLM-5.2，完成率更高、输出更短；相对 Opus 4.8，更短的轨迹也能拿到更高完成率；相对 Fable 5，准确率仍有差距。这里的 Token 是平均输出量，不是价格。</p>
+
+        <h2 id="sec-community">三、社区实测：复杂前端和交互任务</h2>
+        <p>知乎上已经有人用 GLM-5.3 做复杂前端和 3D 项目。</p>
+
+        <h3 id="sec-threebody">三体 3D 场景</h3>
+        <p><a href="https://www.zhihu.com/question/2071591447367770456/answer/2071593007758020845" rel="noopener noreferrer">van dark</a>用 GLM-5.3 生成了一个讲述《三体》经典场景的交互式 3D 网页，要求包含完整情节、更多建模细节、剧情播放按钮和二向箔动画。页面能通过按钮触发剧情，二向箔效果是逐渐扩张、把行星压成二维的动画。</p>
+
+        <h3 id="sec-vista">Vista 风格桌面</h3>
+        <p>同一组实测还要求复现 Windows Vista 风格的玻璃质感桌面，并加入类似 Windows 7 的 3D 窗口切换：按下按键后，多个窗口在三维空间中排列、倾斜并带虚化。窗口材质、颜色、层次、快捷键、空间切换和动效要一起稳住。van dark 还测了一个没有指定参考答案的新奇 UI，GLM-5.3 做出了带果冻弹跳效果的操作系统窗口。</p>
+        <p>这些项目能跑起来，还要持续维持一套视觉和交互目标。不少人会觉得 GLM-5.3 比 GLM-5.2 更“会做东西”，主要差在这里。</p>
+
+        <h3 id="sec-simulation">柴油机仿真、池核与长提示词</h3>
+        <p><a href="https://www.zhihu.com/question/2071591447367770456/answer/2071616276607382028" rel="noopener noreferrer">MNACSTMSYSD</a>的案例更偏工程可视化：四冲程柴油机高精度 3D 仿真、池核等。模型要处理三维场景、物理材质、交互逻辑和较长提示词，完成后还解释了渲染管线、材质体系和 InstancedMesh。</p>
+        <p>这些演示没有统一运行环境、完整提示词、人工修改记录和耗时 / 额度数据，也没有第三方复测。</p>
+
+        <h3 id="sec-kingbench">KingBench 3</h3>
+        <p><a href="https://x.com/aicodeking/status/2088131439892316259" rel="noopener noreferrer">AICodeKing</a>（<code>@aicodeking</code>）在 X 上发布了 KingBench 3 榜单。</p>
+        <figure><img src="assets/glm-5-3-kingbench-3.jpg" alt="KingBench 3 Leaderboard" loading="lazy" /></figure>
+        <p class="img-source">图片来源：<a href="https://x.com/aicodeking/status/2088131439892316259" rel="noopener noreferrer">AICodeKing</a></p>
+        <p>这张图的发布出处可以确认。任务样本、评分公式、测试设置和独立复测目前都没有完整公开，所以它反映的是社区讨论热度，不能替代 Terminal Bench、DeepSWE、Agents' Last Exam 这类公开基准。</p>
+
+        <h2 id="sec-security">四、网络安全能力上来了</h2>
+        <p>后训练规模扩大后，模型更会发现孤立漏洞，也能在更长的利用链上组织步骤。</p>
+        <p><a href="https://z.ai/blog/glm-5.3" rel="noopener noreferrer">官方评测</a>里，CyberGym 看漏洞发现与验证，GLM-5.3 为 84.5%，GLM-5.2 为 77.2%。ExploitBench 更靠近利用阶段，GLM-5.3 为 54.4%，GLM-5.2 为 24.4%；Fable 5 和 GPT-5.6 Sol 仍更高。ExploitGym 两小时 / 六小时为 105 / 130，Fable 5 为 181 / 247。</p>
+        <p>官方还披露了真实代码库测试中的漏洞发现统计。这些结果经过专家复核、筛选和去重，不等于已经全部公开、可复现。</p>
+        <p>对开发者，价值首先在防御：代码审计、漏洞定位、补丁验证和历史项目扫描。官方把安全评估和模型加固放在权重发布之前。</p>
+
+        <h2 id="sec-open">五、开放情况</h2>
+        <p>GLM-5.3 已经进入 <a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-5.3" rel="noopener noreferrer">GLM Coding Plan</a>，模型 API 仍在等待开放。权重计划在发布两周后、完成安全评估和加固后开放，见<a href="https://z.ai/blog/glm-5.3" rel="noopener noreferrer">官方博客</a>。</p>
+        <p>目前能确定的产品边界：</p>
+        <ul>
+          <li>只支持文本模态，没有原生视觉输入；</li>
+          <li>上下文窗口 1M，最大输出 128K Tokens；</li>
+          <li>思考功能始终开启，提供 low、high、max 三档；</li>
+          <li>迁移到 GLM-5.3 时，原来关闭思考的调用方式需要改成 <code>thinking.type: "enabled"</code>，并设置 <code>reasoning_effort</code>；</li>
+          <li>Coding Plan 采用积分配额，非高峰时段调用消耗标准积分的 50%。</li>
+        </ul>
+        <p>适合复杂改代码、终端操作、长程 Agent、前端项目和代码审查，尤其是以前经常“前面都做对了，最后一步把项目搞坏”的任务。由于不支持多模态，依赖截图、设计稿、视频等原生视觉输入的，目前不合适。</p>
+
+        <h2 id="sec-summary">六、总结</h2>
+        <p>不换更大基座，把后训练做深，744B 级模型也能把 Coding Agent 推到前沿。总参数不到 DeepSeek V4 Pro 一半，整体已经强于 DeepSeek V4 Pro 和 Opus 4.8，接近 Fable 5 和 GPT-5.6 Sol。</p>
+        <p>社区里的三体 3D、Vista 桌面、果冻窗口、柴油机仿真和池核，说明提升开始落到复杂项目能不能一次搭出来。</p>
+        <p>接下来要看的是权重开放后的第三方复测、不同代码库上的稳定性、实际 Token 消耗、Coding Plan 配额，以及安全能力在开放环境中的边界。</p>
+
+        <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">
+          数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br />
+          原文链接 <a href="https://vibecoding.dreamfree.space/articles/news/20260814_glm_5_3/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260814_glm_5_3/</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>
