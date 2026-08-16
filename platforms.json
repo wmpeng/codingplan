@@ -4,7 +4,7 @@
     "name": "智谱国际版",
     "rating": 5,
     "summary": "国内版的替代，无需抢购。",
-    "detail": "智谱国际版在模型与套餐额度上与国内 Coding Plan 相同，适合长期抢不到国内名额、又想要使用 GLM 旗舰模型的用户。",
+    "detail": "智谱国际版在模型与套餐额度上与国内版相同，支持 GLM-5.3，适合长期抢不到国内名额、又想要使用 GLM 旗舰模型的用户。",
     "dimensions": {
       "value": {
         "score": 4,
@@ -13,7 +13,7 @@
       },
       "models": {
         "score": 5,
-        "reason": "GLM-5.2 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
+        "reason": "GLM-5.3 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
       },
       "stability": {
         "score": 5,
@@ -35,7 +35,7 @@
       },
       "models": {
         "score": 5,
-        "reason": "GLM-5.2 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
+        "reason": "GLM-5.3 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
       },
       "stability": {
         "score": 4,
@@ -73,16 +73,16 @@
     "id": "bytedance-ark",
     "name": "字节·方舟",
     "rating": 5,
-    "summary": "已解除限购，开放购买。支持智谱GLM、DeepSeek、MiniMax、Kimi各家模型。目前有套餐2.5折优惠，叠加部分模型用量4倍活动，性价比超高。",
-    "detail": "CodingPlan已解除限购，恢复开放购买，无需抢购。同时支持智谱GLM、DeepSeek、MiniMax、Kimi各家模型。8月8日前，有套餐2.5折优惠，叠加部分模型用量4倍活动，性价比超高。",
+    "summary": "已解除限购，开放购买。支持智谱 GLM-5.3、DeepSeek、MiniMax、Kimi各家模型，模型覆盖全面。",
+    "detail": "CodingPlan已解除限购，恢复开放购买，无需抢购。同时支持智谱 GLM-5.3、DeepSeek、MiniMax、Kimi各家模型。",
     "dimensions": {
       "value": {
         "score": 5,
-        "reason": "8月8日前，有[套餐2.5折优惠](https://docs.volcengine.com/docs/82379/2525065?_vtm_=a441938.b105324.c854860_0.d562002_2.0.156_7654984365441992233&lang=zh)，叠加部分模型用[量4倍活动](https://docs.volcengine.com/docs/82379/2533566?_vtm_=a441938.b105324.c854860_0.d562002_4.0.156_7654984365441992233&lang=zh)，性价比超高。"
+        "reason": "开放购买，无需抢购；具体套餐折扣和模型用量活动以官方公告为准。"
       },
       "models": {
         "score": 5,
-        "reason": "唯一同时支持 GLM-5.2、DeepSeek-V4、MiniMax-M3、Kimi-K2.7-Code、Kimi-K3 的全家桶平台。"
+        "reason": "支持 GLM-5.3、DeepSeek-V4、MiniMax-M3、Kimi-K2.7-Code、Kimi-K3，模型覆盖全面。"
       },
       "stability": {
         "score": 4,
@@ -105,7 +105,7 @@
       },
       "models": {
         "score": 5,
-        "reason": "聚合 Kimi-K3、GLM-5.2、MiniMax-M3、Qwen-3.7-Max、DeepSeek-V4 Pro/Flash 等模型，新模型上线及时。"
+        "reason": "聚合 Kimi-K3、GLM-5.3、MiniMax-M3、Qwen-3.7-Max、DeepSeek-V4 Pro/Flash 等模型，新模型上线及时。"
       },
       "stability": {
         "score": 5,

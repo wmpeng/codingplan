@@ -1,8 +1,8 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.8.6 | 智谱国内&国际版发布新套餐，阿里发布Qwen-3.8-Max",
-    "subtitle": "31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比。<br>涵盖DeepSeek V4，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
+    "updateDate": "更新日期 2026.8.16 | 智谱国内&国际版、OpenCode、字节·方舟在售套餐追加支持 GLM-5.3",
+    "subtitle": "31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比。<br>涵盖DeepSeek V4，GLM-5.3，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
     "entry": {
@@ -79,6 +79,39 @@
   },
   "recommendationGroups": [
     {
+      "title": "包含 GLM-5.3",
+      "subtitle": "推荐几个无需抢购就能用上 GLM-5.3 的平台",
+      "items": [
+        {
+          "name": "智谱AI",
+          "rating": 5,
+          "reasons": [
+            "在售新 Token Plan 支持 GLM-5.3，国内领先的代码模型之一",
+            "新套餐无需抢购",
+            "官方服务，模型与套餐信息透明"
+          ]
+        },
+        {
+          "name": "OpenCode",
+          "rating": 5,
+          "reasons": [
+            "支持 GLM-5.3、Kimi-K3、DeepSeek-V4-Pro/Flash 等最新模型",
+            "Go 套餐首月半价 $5，无需抢购",
+            "可支付宝付款，调用抵扣透明"
+          ]
+        },
+        {
+          "name": "字节·方舟",
+          "rating": 5,
+          "reasons": [
+            "在售 Coding Plan / Token Plan 均支持 GLM-5.3",
+            "同时支持 DeepSeek-V4、MiniMax-M3、Kimi-K3 等模型",
+            "已解除限购，开放购买"
+          ]
+        }
+      ]
+    },
+    {
       "title": "综合推荐",
       "subtitle": "各维度综合评估，最值得入手的几家。智谱和Kimi暂时不开放了，暂时不推荐了",
       "items": [
@@ -104,8 +137,8 @@
           "name": "字节·方舟",
           "rating": 5,
           "reasons": [
-            "目前首两月2.5折",
-            "支持GLM-5.2，DeepSeek-V4，MiniMax-M3，Kimi-K3"
+            "已解除限购，开放购买，无需抢购",
+            "支持GLM-5.3、DeepSeek-V4，MiniMax-M3，Kimi-K3"
           ]
         },
         {
@@ -269,7 +302,7 @@
       "name": "字节·方舟",
       "rating": 5,
       "reasons": [
-        "原本部分模型倍率较高、用量较少；目前2.5折且有为期一个月的用量2.5倍活动，折算后短期性价比显著提升。+1",
+        "原本部分模型倍率较高、用量较少；当前具体折扣和用量活动以官方公告为准。+1",
         "支持GLM-5.2，DeepSeek-V4-Pro/Flash，MiniMax-M3，Kimi-K2.6，Kimi-K2.7-Code，Kimi-K3。唯一一家同时支持GLM，DeepSeek-V4-Pro/Flash，MiniMax，Kimi四家最新模型的平台。+1"
       ]
     },
@@ -345,6 +378,12 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.8.16",
+      "items": [
+        "智谱国内&国际版、OpenCode、字节·方舟在售套餐追加支持 GLM-5.3"
+      ]
+    },
     {
       "date": "2026.8.6",
       "items": [

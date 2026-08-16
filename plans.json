@@ -15,6 +15,7 @@
     "models": [
       "GLM-5.1",
       "GLM-5.2",
+      "GLM-5.3",
       "GLM-5-Turbo"
     ],
     "fiveHoursRequests": "未公开",
@@ -43,6 +44,7 @@
     "models": [
       "GLM-5.1",
       "GLM-5.2",
+      "GLM-5.3",
       "GLM-5-Turbo",
       "GLM-5"
     ],
@@ -72,6 +74,7 @@
     "models": [
       "GLM-5.1",
       "GLM-5.2",
+      "GLM-5.3",
       "GLM-5-Turbo",
       "GLM-5"
     ],
@@ -197,6 +200,7 @@
     "models": [
       "GLM-5.1",
       "GLM-5.2",
+      "GLM-5.3",
       "GLM-5-Turbo"
     ],
     "fiveHoursRequests": "未公开",
@@ -225,6 +229,7 @@
     "models": [
       "GLM-5.1",
       "GLM-5.2",
+      "GLM-5.3",
       "GLM-5-Turbo",
       "GLM-5"
     ],
@@ -254,6 +259,7 @@
     "models": [
       "GLM-5.1",
       "GLM-5.2",
+      "GLM-5.3",
       "GLM-5-Turbo",
       "GLM-5"
     ],
@@ -600,6 +606,7 @@
     "yearlyPrice": "-",
     "models": [
       "GLM-5.2",
+      "GLM-5.3",
       "GLM-5.1",
       "GLM-5",
       "Kimi-K2.7-Code",
@@ -643,6 +650,7 @@
       "Doubao-Seed-Code",
       "GLM-5.1",
       "GLM-5.2",
+      "GLM-5.3",
       "MiniMax-M2.7",
       "MiniMax-M3",
       "Kimi-K2.6",
@@ -679,6 +687,7 @@
       "Doubao-Seed-Code",
       "GLM-5.1",
       "GLM-5.2",
+      "GLM-5.3",
       "MiniMax-M2.7",
       "MiniMax-M3",
       "Kimi-K2.6",
@@ -717,6 +726,7 @@
       "DeepSeek-V3.2",
       "GLM-5.1",
       "GLM-5.2",
+      "GLM-5.3",
       "MiniMax-M2.7",
       "MiniMax-M3",
       "Kimi-K2.6",
@@ -751,6 +761,7 @@
       "DeepSeek-V3.2",
       "GLM-5.1",
       "GLM-5.2",
+      "GLM-5.3",
       "MiniMax-M2.7",
       "MiniMax-M3",
       "Kimi-K2.6",
@@ -786,6 +797,7 @@
       "DeepSeek-V3.2",
       "GLM-5.1",
       "GLM-5.2",
+      "GLM-5.3",
       "MiniMax-M2.7",
       "MiniMax-M3",
       "Kimi-K2.6",
@@ -821,6 +833,7 @@
       "DeepSeek-V3.2",
       "GLM-5.1",
       "GLM-5.2",
+      "GLM-5.3",
       "MiniMax-M2.7",
       "MiniMax-M3",
       "Kimi-K2.6",
