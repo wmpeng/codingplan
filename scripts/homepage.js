@@ -1556,7 +1556,7 @@
                         },
                         group: {
                             title: "飞书讨论群",
-                            qrImage: "assets/feishu_group_3.png",
+                            qrImage: "assets/feishu_group_latest.png",
                             qrAlt: "飞书群二维码"
                         }
                     },
@@ -1574,7 +1574,7 @@
                             url: "https://github.com/wmpeng/codingplan/discussions"
                         },
                         footnote: "扫码进飞书群，GitHub 可补充反馈。",
-                        qrcode: "assets/feishu_group_3.png",
+                        qrcode: "assets/feishu_group_latest.png",
                         qrAlt: "飞书群二维码",
                         qrHint: "扫码即可进群"
                     }
