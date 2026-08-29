@@ -6,7 +6,10 @@ const {
   buildUsageChartPoints,
   buildIntelligenceChartPoints,
   buildVendorColorMap,
-  buildModelColorMap
+  buildModelColorMap,
+  getPointColorKey,
+  excludeHiddenColorPoints,
+  tooltipHtml
 } = require('./model-comparison.js');
 
 const points = [
@@ -40,4 +43,20 @@ test('platform colors are stable regardless of input order', () => {
   const models = buildModelColorMap(['m3', 'm1', 'm2']);
   assert.deepEqual(models, buildModelColorMap(['m2', 'm1', 'm3']));
   assert.equal(new Set(Object.values(models)).size, 3);
+});
+
+test('legend visibility filters by the active color dimension', () => {
+  assert.equal(getPointColorKey(points[0], 'vendor'), 'A');
+  assert.equal(getPointColorKey(points[0], 'model'), 'm1');
+  assert.deepEqual(excludeHiddenColorPoints(points, 'vendor', new Set(['A'])), [points[1]]);
+  assert.deepEqual(excludeHiddenColorPoints(points, 'model', new Set(['m2'])), [points[0], points[2]]);
+});
+
+test('model color tooltip leads with the model and keeps platform second', () => {
+  const point = { ...points[0], vendor: 'MiniMax', plan: '新Ultra', model: 'MiniMax-M3' };
+  const byModel = tooltipHtml(point, 'artificialAnalysis', 'model');
+  assert.ok(byModel.indexOf('<strong>MiniMax-M3</strong>') < byModel.indexOf('<div>MiniMax · 新Ultra</div>'));
+
+  const byVendor = tooltipHtml(point, 'artificialAnalysis', 'vendor');
+  assert.ok(byVendor.indexOf('<strong>MiniMax · 新Ultra</strong>') < byVendor.indexOf('<div>MiniMax-M3</div>'));
 });

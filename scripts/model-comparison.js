@@ -81,6 +81,16 @@
         return map;
     }
 
+    function getPointColorKey(point, colorMode) {
+        return colorMode === 'model' ? point.canonicalModelId : point.vendor;
+    }
+
+    function excludeHiddenColorPoints(points, colorMode, hiddenColorKeys) {
+        const hidden = hiddenColorKeys instanceof Set ? hiddenColorKeys : new Set(hiddenColorKeys || []);
+        if (!hidden.size) return points || [];
+        return (points || []).filter((point) => !hidden.has(getPointColorKey(point, colorMode)));
+    }
+
     function escapeHtml(value) {
         return String(value == null ? '' : value)
             .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -110,14 +120,18 @@
         return `${BENCHMARKS[benchmark].short} ${formatNumber(score.score, 0)}${ci}${config}`;
     }
 
-    function tooltipHtml(point, benchmark) {
+    function tooltipHtml(point, benchmark, colorMode) {
         const modality = point.multimodal === true ? '多模态' : point.multimodal === false ? '纯文本' : '多模态状态未知';
         const billing = point.billingType === 'subscription' ? escapeHtml(point.plan || '订阅') : '按量 API';
+        const platformLine = `${escapeHtml(point.vendor)} · ${billing}`;
+        const modelLine = escapeHtml(point.model);
         const fee = point.billingType === 'subscription'
             ? `<div>月费：¥${formatNumber(point.monthlyFeeCny, 2)}</div><div>月额度：${compactNumber(point.monthlyTokenInM)} Token</div>`
             : '';
-        return `<div class="usage-tooltip"><strong>${escapeHtml(point.vendor)} · ${billing}</strong>` +
-            `<div>${escapeHtml(point.model)}</div><div>${modality}</div>${fee}` +
+        const heading = colorMode === 'model'
+            ? `<strong>${modelLine}</strong><div>${platformLine}</div>`
+            : `<strong>${platformLine}</strong><div>${modelLine}</div>`;
+        return `<div class="usage-tooltip">${heading}<div>${modality}</div>${fee}` +
             `<div>单位价格：¥${formatNumber(point.unitPriceCnyPerM, 4)} / M Token</div>` +
             `<div>${scoreText(point, benchmark)}</div></div>`;
     }
@@ -165,8 +179,7 @@
                     <div class="usage-chart" data-chart="usage" role="img" aria-label="月费和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的月费与月额度数据。</div>
                 </article>
                 <article class="usage-chart-card">
-                    <div class="usage-chart-head"><div><h3>单位价格 vs 智力</h3><p>越靠左上越有吸引力；圆点为订阅，菱形为按量 API。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标"><button type="button" data-benchmark="artificialAnalysis" class="is-active">AA</button><button type="button" data-benchmark="deepSWE">DeepSWE</button></div><label>价格轴<select data-scale="price"><option value="log">对数</option><option value="value">线性</option></select></label></div></div>
-                    <div class="usage-shape-legend"><span><i class="shape-circle"></i>订阅摊薄价</span><span><i class="shape-diamond"></i>按量 API</span></div>
+                    <div class="usage-chart-head"><div><h3>单位价格 vs 智力</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标"><button type="button" data-benchmark="artificialAnalysis" class="is-active">AA</button><button type="button" data-benchmark="deepSWE">DeepSWE</button></div><label>价格轴<select data-scale="price"><option value="log">对数</option><option value="value">线性</option></select></label></div></div>
                     <div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和智力评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据。</div>
                 </article>
             </section>`;
@@ -181,18 +194,22 @@
         };
     }
 
-    function seriesByColor(points, colorMode, colors, mapPoint) {
+    function seriesByColor(points, colorMode, colors, mapPoint, seriesPrefix) {
         const grouped = new Map();
         points.forEach((point) => {
-            const key = colorMode === 'model' ? point.canonicalModelId : point.vendor;
+            const key = getPointColorKey(point, colorMode);
             const label = colorMode === 'model' ? point.canonicalModel : point.vendor;
             if (!grouped.has(key)) grouped.set(key, { label, data: [] });
             grouped.get(key).data.push(mapPoint(point));
         });
         return [...grouped.entries()].map(([key, group]) => ({
-            name: group.label, type: 'scatter', symbolSize: 11, data: group.data,
+            id: `${seriesPrefix}:${key}`, name: group.label, type: 'scatter', symbolSize: 11, data: group.data,
             itemStyle: { color: colors[key], opacity: 0.82, borderColor: '#fff', borderWidth: 1 },
-            emphasis: { scale: 1.5, itemStyle: { opacity: 1, borderWidth: 2 } }
+            emphasis: {
+                focus: 'series', blurScope: 'coordinateSystem', scale: 1.5,
+                itemStyle: { opacity: 1, borderWidth: 2 }
+            },
+            blur: { itemStyle: { opacity: 0.1 } }
         }));
     }
 
@@ -236,7 +253,8 @@
             const modelColors = buildModelColorMap(models.map(([id]) => id));
             const state = {
                 vendors: new Set(), models: new Set(), multimodal: 'all', benchmark: 'artificialAnalysis',
-                aaScoreMin: '', deepSWEScoreMin: '', colorMode: 'vendor', tokensScale: 'log', priceScale: 'log'
+                aaScoreMin: '', deepSWEScoreMin: '', colorMode: 'vendor', hiddenColorKeys: new Set(),
+                tokensScale: 'log', priceScale: 'log'
             };
             const usageChart = echarts.init(container.querySelector('[data-chart="usage"]'));
             const intelligenceChart = echarts.init(container.querySelector('[data-chart="intelligence"]'));
@@ -269,7 +287,7 @@
                 const colors = byModel ? modelColors : vendorColors;
                 const entries = new Map();
                 visiblePoints.forEach((point) => {
-                    const key = byModel ? point.canonicalModelId : point.vendor;
+                    const key = getPointColorKey(point, state.colorMode);
                     const label = byModel ? point.canonicalModel : point.vendor;
                     entries.set(key, label);
                 });
@@ -280,7 +298,10 @@
                 container.querySelector('[data-color-legend-title]').textContent = state.colorMode === 'model' ? '模型颜色' : '平台颜色';
                 container.querySelector('[data-color-legend]').innerHTML = [...context.entries.entries()]
                     .sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'))
-                    .map(([key, label]) => `<span><i style="background:${context.colors[key]}"></i>${escapeHtml(label)}</span>`).join('');
+                    .map(([key, label]) => {
+                        const hidden = state.hiddenColorKeys.has(key);
+                        return `<button type="button" class="usage-legend-item${hidden ? ' is-hidden' : ''}" data-color-key="${escapeHtml(key)}" aria-pressed="${hidden ? 'false' : 'true'}" title="${hidden ? '点击恢复显示' : '悬停高亮，点击隐藏'}"><i style="background:${context.colors[key]}"></i><span>${escapeHtml(label)}</span></button>`;
+                    }).join('');
             }
 
             function render() {
@@ -288,38 +309,29 @@
                     vendors: state.vendors, models: state.models, multimodal: state.multimodal,
                     aaScoreMin: state.aaScoreMin, deepSWEScoreMin: state.deepSWEScoreMin
                 });
-                const usagePoints = buildUsageChartPoints(filtered);
-                const intelligencePoints = buildIntelligenceChartPoints(filtered, state.benchmark);
+                const visibleFiltered = excludeHiddenColorPoints(filtered, state.colorMode, state.hiddenColorKeys);
+                const usagePoints = buildUsageChartPoints(visibleFiltered);
+                const intelligencePoints = buildIntelligenceChartPoints(visibleFiltered, state.benchmark);
                 const color = colorContext(filtered);
                 renderColorLegend(color);
                 const totalUsage = buildUsageChartPoints(points).length;
                 const totalIntelligence = buildIntelligenceChartPoints(points, state.benchmark).length;
                 container.querySelector('[data-counts]').textContent = `额度图 ${usagePoints.length}/${totalUsage} · 智力图 ${intelligencePoints.length}/${totalIntelligence}`;
 
-                usageChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark)), {
+                usageChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode)), {
                     xAxis: { type: 'value', name: '月费（人民币）', nameLocation: 'middle', nameGap: 38, min: 0, axisLabel: { formatter: (v) => `¥${formatNumber(v, 0)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     yAxis: { type: state.tokensScale, name: '月 Token', nameLocation: 'middle', nameGap: 55, min: state.tokensScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: compactNumber }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
-                    series: seriesByColor(usagePoints, state.colorMode, color.colors, (point) => ({ value: [point.monthlyFeeCny, point.monthlyTokenInM], meta: point }))
+                    series: seriesByColor(usagePoints, state.colorMode, color.colors, (point) => ({ value: [point.monthlyFeeCny, point.monthlyTokenInM], meta: point }), 'usage')
                 }), true);
 
-                const intelligenceSeries = [];
-                color.entries.forEach((label, key) => {
-                    ['subscription', 'payg'].forEach((billingType) => {
-                        const colorPoints = intelligencePoints.filter((point) =>
-                            (state.colorMode === 'model' ? point.canonicalModelId : point.vendor) === key &&
-                            point.billingType === billingType
-                        );
-                        if (!colorPoints.length) return;
-                        intelligenceSeries.push({
-                            name: `${label} · ${billingType === 'subscription' ? '订阅' : '按量'}`,
-                            type: 'scatter', symbol: billingType === 'subscription' ? 'circle' : 'diamond', symbolSize: billingType === 'subscription' ? 11 : 13,
-                            data: colorPoints.map((point) => ({ value: [point.unitPriceCnyPerM, getPointScore(point, state.benchmark)], meta: point })),
-                            itemStyle: { color: color.colors[key], opacity: 0.84, borderColor: '#fff', borderWidth: 1 },
-                            emphasis: { scale: 1.5, itemStyle: { opacity: 1, borderWidth: 2 } }
-                        });
-                    });
-                });
-                intelligenceChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark)), {
+                const intelligenceSeries = seriesByColor(
+                    intelligencePoints,
+                    state.colorMode,
+                    color.colors,
+                    (point) => ({ value: [point.unitPriceCnyPerM, getPointScore(point, state.benchmark)], meta: point }),
+                    'intelligence'
+                );
+                intelligenceChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode)), {
                     xAxis: { type: state.priceScale, name: '人民币 / M Token', nameLocation: 'middle', nameGap: 38, min: state.priceScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => `¥${formatNumber(v, v < 1 ? 2 : 1)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     yAxis: { type: 'value', name: `${BENCHMARKS[state.benchmark].short} 评分`, nameLocation: 'middle', nameGap: 45, scale: true, axisLabel: { formatter: (v) => formatNumber(v, 0) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     series: intelligenceSeries
@@ -355,6 +367,48 @@
                     state.deepSWEScoreMin = container.querySelector('[data-filter="deepSWEScoreMin"]').value;
                     render();
                 });
+            });
+            function setChartSeriesHighlight(chart, targetIds, active) {
+                const series = (chart.getOption().series || []).filter((item) => item && item.id);
+                const targets = new Set(targetIds);
+                chart.dispatchAction({
+                    type: 'downplay',
+                    batch: series.map((item) => ({ seriesId: item.id }))
+                });
+                if (!active) return;
+                const matched = series.filter((item) => targets.has(item.id));
+                if (!matched.length) return;
+                chart.dispatchAction({
+                    type: 'highlight',
+                    batch: matched.map((item) => ({ seriesId: item.id }))
+                });
+            }
+
+            function setColorHighlight(key, active) {
+                setChartSeriesHighlight(usageChart, [`usage:${key}`], active);
+                setChartSeriesHighlight(intelligenceChart, [`intelligence:${key}`], active);
+            }
+            [usageChart, intelligenceChart].forEach((chart) => {
+                chart.on('mouseover', (params) => {
+                    if (params.componentType !== 'series' || !params.data || !params.data.meta) return;
+                    setColorHighlight(getPointColorKey(params.data.meta, state.colorMode), true);
+                });
+                chart.on('mouseout', (params) => {
+                    if (params.componentType !== 'series' || !params.data || !params.data.meta) return;
+                    setColorHighlight(getPointColorKey(params.data.meta, state.colorMode), false);
+                });
+            });
+            container.addEventListener('mouseover', (event) => {
+                const item = event.target.closest('[data-color-key]');
+                if (!item || item.contains(event.relatedTarget) || item.classList.contains('is-hidden')) return;
+                item.classList.add('is-hovered');
+                setColorHighlight(item.dataset.colorKey, true);
+            });
+            container.addEventListener('mouseout', (event) => {
+                const item = event.target.closest('[data-color-key]');
+                if (!item || item.contains(event.relatedTarget) || item.classList.contains('is-hidden')) return;
+                item.classList.remove('is-hovered');
+                setColorHighlight(item.dataset.colorKey, false);
             });
             container.addEventListener('click', (event) => {
                 const pickerToggle = event.target.closest('[data-picker-toggle]');
@@ -392,9 +446,17 @@
                     render();
                     return;
                 }
+                const colorLegendItem = event.target.closest('[data-color-key]');
+                if (colorLegendItem) {
+                    const key = colorLegendItem.dataset.colorKey;
+                    state.hiddenColorKeys.has(key) ? state.hiddenColorKeys.delete(key) : state.hiddenColorKeys.add(key);
+                    render();
+                    return;
+                }
                 const colorModeButton = event.target.closest('[data-color-mode]');
                 if (colorModeButton) {
                     state.colorMode = colorModeButton.dataset.colorMode;
+                    state.hiddenColorKeys.clear();
                     container.querySelectorAll('[data-color-mode]').forEach((button) => button.classList.toggle('is-active', button === colorModeButton));
                     render();
                     return;
@@ -402,6 +464,7 @@
                 if (event.target.closest('[data-action="clear"]')) {
                     state.vendors.clear(); state.models.clear(); state.multimodal = 'all';
                     state.aaScoreMin = ''; state.deepSWEScoreMin = '';
+                    state.hiddenColorKeys.clear();
                     container.querySelectorAll('[data-option-kind]').forEach((input) => { input.checked = false; });
                     container.querySelector('[data-filter="multimodal"]').value = 'all';
                     container.querySelector('[data-filter="aaScoreMin"]').value = '';
@@ -427,5 +490,5 @@
         return container.__usageMountPromise;
     }
 
-    return { getPointScore, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, mountModelComparisonView };
+    return { getPointScore, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, excludeHiddenColorPoints, tooltipHtml, mountModelComparisonView };
 });
