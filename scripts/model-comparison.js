@@ -70,13 +70,29 @@
         return map;
     }
 
+    function hslToHex(hue, saturation, lightness) {
+        const s = saturation / 100;
+        const l = lightness / 100;
+        const chroma = (1 - Math.abs(2 * l - 1)) * s;
+        const x = chroma * (1 - Math.abs(((hue / 60) % 2) - 1));
+        const match = l - chroma / 2;
+        let rgb;
+        if (hue < 60) rgb = [chroma, x, 0];
+        else if (hue < 120) rgb = [x, chroma, 0];
+        else if (hue < 180) rgb = [0, chroma, x];
+        else if (hue < 240) rgb = [0, x, chroma];
+        else if (hue < 300) rgb = [x, 0, chroma];
+        else rgb = [chroma, 0, x];
+        return `#${rgb.map((channel) => Math.round((channel + match) * 255).toString(16).padStart(2, '0')).join('')}`;
+    }
+
     function buildModelColorMap(modelIds) {
         const map = {};
         [...new Set(modelIds || [])].sort().forEach((modelId, index) => {
             const hue = Math.round((index * 137.508) % 360);
             const saturation = 62 + (index % 3) * 5;
             const lightness = 42 + (index % 4) * 4;
-            map[modelId] = `hsl(${hue} ${saturation}% ${lightness}%)`;
+            map[modelId] = hslToHex(hue, saturation, lightness);
         });
         return map;
     }
@@ -85,10 +101,9 @@
         return colorMode === 'model' ? point.canonicalModelId : point.vendor;
     }
 
-    function excludeHiddenColorPoints(points, colorMode, hiddenColorKeys) {
-        const hidden = hiddenColorKeys instanceof Set ? hiddenColorKeys : new Set(hiddenColorKeys || []);
-        if (!hidden.size) return points || [];
-        return (points || []).filter((point) => !hidden.has(getPointColorKey(point, colorMode)));
+    function filterBySoloColorKey(points, colorMode, soloColorKey) {
+        if (!soloColorKey) return points || [];
+        return (points || []).filter((point) => getPointColorKey(point, colorMode) === soloColorKey);
     }
 
     function escapeHtml(value) {
@@ -253,7 +268,7 @@
             const modelColors = buildModelColorMap(models.map(([id]) => id));
             const state = {
                 vendors: new Set(), models: new Set(), multimodal: 'all', benchmark: 'artificialAnalysis',
-                aaScoreMin: '', deepSWEScoreMin: '', colorMode: 'vendor', hiddenColorKeys: new Set(),
+                aaScoreMin: '', deepSWEScoreMin: '', colorMode: 'vendor', soloColorKey: null,
                 tokensScale: 'log', priceScale: 'log'
             };
             const usageChart = echarts.init(container.querySelector('[data-chart="usage"]'));
@@ -299,8 +314,10 @@
                 container.querySelector('[data-color-legend]').innerHTML = [...context.entries.entries()]
                     .sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'))
                     .map(([key, label]) => {
-                        const hidden = state.hiddenColorKeys.has(key);
-                        return `<button type="button" class="usage-legend-item${hidden ? ' is-hidden' : ''}" data-color-key="${escapeHtml(key)}" aria-pressed="${hidden ? 'false' : 'true'}" title="${hidden ? '点击恢复显示' : '悬停高亮，点击隐藏'}"><i style="background:${context.colors[key]}"></i><span>${escapeHtml(label)}</span></button>`;
+                        const solo = state.soloColorKey === key;
+                        const muted = state.soloColorKey && !solo;
+                        const subject = state.colorMode === 'model' ? '模型' : '平台';
+                        return `<button type="button" class="usage-legend-item${solo ? ' is-solo' : ''}${muted ? ' is-muted' : ''}" data-color-key="${escapeHtml(key)}" aria-pressed="${solo ? 'true' : 'false'}" title="${solo ? '点击恢复显示全部' : `点击只显示此${subject}`}；悬停高亮"><i style="background:${context.colors[key]}"></i><span>${escapeHtml(label)}</span></button>`;
                     }).join('');
             }
 
@@ -309,7 +326,7 @@
                     vendors: state.vendors, models: state.models, multimodal: state.multimodal,
                     aaScoreMin: state.aaScoreMin, deepSWEScoreMin: state.deepSWEScoreMin
                 });
-                const visibleFiltered = excludeHiddenColorPoints(filtered, state.colorMode, state.hiddenColorKeys);
+                const visibleFiltered = filterBySoloColorKey(filtered, state.colorMode, state.soloColorKey);
                 const usagePoints = buildUsageChartPoints(visibleFiltered);
                 const intelligencePoints = buildIntelligenceChartPoints(visibleFiltered, state.benchmark);
                 const color = colorContext(filtered);
@@ -400,13 +417,13 @@
             });
             container.addEventListener('mouseover', (event) => {
                 const item = event.target.closest('[data-color-key]');
-                if (!item || item.contains(event.relatedTarget) || item.classList.contains('is-hidden')) return;
+                if (!item || item.contains(event.relatedTarget)) return;
                 item.classList.add('is-hovered');
                 setColorHighlight(item.dataset.colorKey, true);
             });
             container.addEventListener('mouseout', (event) => {
                 const item = event.target.closest('[data-color-key]');
-                if (!item || item.contains(event.relatedTarget) || item.classList.contains('is-hidden')) return;
+                if (!item || item.contains(event.relatedTarget)) return;
                 item.classList.remove('is-hovered');
                 setColorHighlight(item.dataset.colorKey, false);
             });
@@ -449,14 +466,14 @@
                 const colorLegendItem = event.target.closest('[data-color-key]');
                 if (colorLegendItem) {
                     const key = colorLegendItem.dataset.colorKey;
-                    state.hiddenColorKeys.has(key) ? state.hiddenColorKeys.delete(key) : state.hiddenColorKeys.add(key);
+                    state.soloColorKey = state.soloColorKey === key ? null : key;
                     render();
                     return;
                 }
                 const colorModeButton = event.target.closest('[data-color-mode]');
                 if (colorModeButton) {
                     state.colorMode = colorModeButton.dataset.colorMode;
-                    state.hiddenColorKeys.clear();
+                    state.soloColorKey = null;
                     container.querySelectorAll('[data-color-mode]').forEach((button) => button.classList.toggle('is-active', button === colorModeButton));
                     render();
                     return;
@@ -464,7 +481,7 @@
                 if (event.target.closest('[data-action="clear"]')) {
                     state.vendors.clear(); state.models.clear(); state.multimodal = 'all';
                     state.aaScoreMin = ''; state.deepSWEScoreMin = '';
-                    state.hiddenColorKeys.clear();
+                    state.soloColorKey = null;
                     container.querySelectorAll('[data-option-kind]').forEach((input) => { input.checked = false; });
                     container.querySelector('[data-filter="multimodal"]').value = 'all';
                     container.querySelector('[data-filter="aaScoreMin"]').value = '';
@@ -490,5 +507,5 @@
         return container.__usageMountPromise;
     }
 
-    return { getPointScore, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, excludeHiddenColorPoints, tooltipHtml, mountModelComparisonView };
+    return { getPointScore, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, tooltipHtml, mountModelComparisonView };
 });

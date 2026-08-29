@@ -26,9 +26,9 @@
 .usage-legend-item { display: inline-flex; align-items: center; gap: 6px; margin: 0; padding: 4px 7px; border: 1px solid transparent; border-radius: 8px; background: transparent; color: inherit; font: inherit; white-space: nowrap; cursor: pointer; transition: color .16s ease, background .16s ease, border-color .16s ease, opacity .16s ease, box-shadow .16s ease; }
 .usage-legend-item:hover, .usage-legend-item.is-hovered { border-color: rgba(15,118,110,.2); background: rgba(255,255,255,.78); color: var(--text-primary); box-shadow: 0 5px 14px rgba(23,32,51,.08); }
 .usage-legend-item:focus-visible { outline: 2px solid rgba(15,118,110,.48); outline-offset: 2px; }
-.usage-legend-item.is-hidden { opacity: .38; }
-.usage-legend-item.is-hidden span { text-decoration: line-through; }
-.usage-legend-item.is-hidden:hover { opacity: .65; }
+.usage-legend-item.is-solo { border-color: rgba(15,118,110,.28); background: rgba(255,255,255,.92); color: var(--text-primary); box-shadow: 0 5px 14px rgba(23,32,51,.1); }
+.usage-legend-item.is-muted { opacity: .42; }
+.usage-legend-item.is-muted:hover, .usage-legend-item.is-muted.is-hovered { opacity: 1; }
 .usage-color-legend i { width: 9px; height: 9px; border-radius: 50%; }
 .usage-chart-card { position: relative; padding: 20px 22px 14px; border: 1px solid #dfe5ed; border-radius: 18px; background: #fff; box-shadow: 0 12px 32px rgba(30,48,73,.07); }
 .usage-chart-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }

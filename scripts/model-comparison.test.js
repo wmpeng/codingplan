@@ -8,7 +8,7 @@ const {
   buildVendorColorMap,
   buildModelColorMap,
   getPointColorKey,
-  excludeHiddenColorPoints,
+  filterBySoloColorKey,
   tooltipHtml
 } = require('./model-comparison.js');
 
@@ -43,13 +43,15 @@ test('platform colors are stable regardless of input order', () => {
   const models = buildModelColorMap(['m3', 'm1', 'm2']);
   assert.deepEqual(models, buildModelColorMap(['m2', 'm1', 'm3']));
   assert.equal(new Set(Object.values(models)).size, 3);
+  assert.equal(Object.values(models).every((color) => /^#[0-9a-f]{6}$/.test(color)), true);
 });
 
-test('legend visibility filters by the active color dimension', () => {
+test('legend solo mode filters by the active color dimension', () => {
   assert.equal(getPointColorKey(points[0], 'vendor'), 'A');
   assert.equal(getPointColorKey(points[0], 'model'), 'm1');
-  assert.deepEqual(excludeHiddenColorPoints(points, 'vendor', new Set(['A'])), [points[1]]);
-  assert.deepEqual(excludeHiddenColorPoints(points, 'model', new Set(['m2'])), [points[0], points[2]]);
+  assert.deepEqual(filterBySoloColorKey(points, 'vendor', 'A'), [points[0], points[2]]);
+  assert.deepEqual(filterBySoloColorKey(points, 'model', 'm2'), [points[1]]);
+  assert.deepEqual(filterBySoloColorKey(points, 'vendor', null), points);
 });
 
 test('model color tooltip leads with the model and keeps platform second', () => {
