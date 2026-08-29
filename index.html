@@ -4085,6 +4085,7 @@
         }
 
         #view-payg:not([hidden]),
+        #view-usage:not([hidden]),
         #view-monitor:not([hidden]) {
             display: flex;
             flex-direction: column;
@@ -4519,6 +4520,7 @@
         <nav class="main-view-tabs" id="mainViewTabs" role="tablist" aria-label="主内容切换">
             <a href="index.html" role="tab" data-main-view="platforms" aria-controls="view-platforms" aria-selected="true" class="is-active">平台对比</a>
             <a href="index.html?view=plans" role="tab" data-main-view="plans" aria-controls="view-plans" aria-selected="false">套餐对比</a>
+            <a href="index.html?view=usage" role="tab" data-main-view="usage" aria-controls="view-usage" aria-selected="false">额度/价格对比</a>
             <a href="index.html?view=monitor" role="tab" data-main-view="monitor" aria-controls="view-monitor" aria-selected="false">可用性监控</a>
             <a href="index.html?view=payg" role="tab" data-main-view="payg" aria-controls="view-payg" aria-selected="false">按量计费价格</a>
         </nav>
@@ -6874,6 +6876,7 @@
             </ul></div>
 
             </div>
+            <div id="view-usage" role="tabpanel" data-main-view-panel="usage" hidden></div>
             <div id="view-monitor" role="tabpanel" data-main-view-panel="monitor" hidden></div>
             <div id="view-payg" role="tabpanel" data-main-view-panel="payg" hidden></div>
         </div>
@@ -6923,9 +6926,9 @@
     <script src="monitor/monitor-config.local.js"></script>
     <script src="scripts/platform-catalog.js?v=260726a"></script>
     <script src="scripts/platform-detail.js?v=260726a"></script>
-    <script src="scripts/shared.js?v=260724b"></script>
-    <script src="scripts/main-views.js?v=260726b"></script>
+    <script src="scripts/shared.js?v=260829a"></script>
+    <script src="scripts/main-views.js?v=260829a"></script>
     <script src="scripts/plan-composite-price-chart.js?v=260726a"></script>
-    <script src="scripts/homepage.js?v=260726e"></script>
+    <script src="scripts/homepage.js?v=260829a"></script>
 </body>
 </html>

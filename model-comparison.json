@@ -1,0 +1,5505 @@
+{
+  "generatedAt": "2026-08-29T15:10:53Z",
+  "sourceGeneratedAt": {
+    "usage": "2026-08-29",
+    "modelInfo": "2026-08-29T14:42:53Z"
+  },
+  "usdToCnyRate": 6.8,
+  "benchmarks": {
+    "artificialAnalysis": {
+      "name": "Artificial Analysis Intelligence Index",
+      "version": "v4.1.1",
+      "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-6-sol",
+      "fetchedAt": "2026-08-29T14:42:53Z",
+      "availableConfigurations": 624
+    },
+    "deepSWE": {
+      "name": "DeepSWE",
+      "version": "v1.1",
+      "sourceUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json",
+      "generatedAt": "2026-08-26T07:38:24.821609+00:00",
+      "tasks": 113,
+      "availableConfigurations": 63
+    }
+  },
+  "coverage": {
+    "subscriptionCandidates": 213,
+    "subscriptionPoints": 200,
+    "subscriptionChartPoints": 200,
+    "payAsYouGoCandidates": 6,
+    "payAsYouGoPoints": 6,
+    "unmatchedModels": 0,
+    "missingMonthlyValues": 3,
+    "missingUnitPrices": 3,
+    "unsupportedCurrencies": 10
+  },
+  "unmatchedModelNames": [],
+  "points": [
+    {
+      "vendor": "Codex",
+      "model": "GPT-5.6-Sol",
+      "canonicalModelId": "gpt-5-6-sol",
+      "canonicalModel": "GPT-5.6-Sol",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 61,
+          "scoreExact": 60.9298701329203,
+          "configuration": "GPT-5.6 Sol (max)"
+        },
+        "deepSWE": {
+          "score": 73,
+          "scoreExact": 72.66666666666667,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 2.829822249837175
+        }
+      },
+      "id": "subscription:Codex:Plus:GPT-5.6-Sol",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Plus",
+      "originalMonthlyFee": 20.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 136.0,
+      "monthlyTokenInM": 480.0,
+      "unitPriceCnyPerM": 0.28356
+    },
+    {
+      "vendor": "Codex",
+      "model": "GPT-5.6-Luna",
+      "canonicalModelId": "gpt-5-6-luna",
+      "canonicalModel": "GPT-5.6-Luna",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 52.3180827840984,
+          "configuration": "GPT-5.6 Luna (max)"
+        },
+        "deepSWE": {
+          "score": 67,
+          "scoreExact": 67.1875,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.992001235671055
+        }
+      },
+      "id": "subscription:Codex:Plus:GPT-5.6-Luna",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Plus",
+      "originalMonthlyFee": 20.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 136.0,
+      "monthlyTokenInM": 4800.0,
+      "unitPriceCnyPerM": 0.02856
+    },
+    {
+      "vendor": "Codex",
+      "model": "GPT-5.6-Sol",
+      "canonicalModelId": "gpt-5-6-sol",
+      "canonicalModel": "GPT-5.6-Sol",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 61,
+          "scoreExact": 60.9298701329203,
+          "configuration": "GPT-5.6 Sol (max)"
+        },
+        "deepSWE": {
+          "score": 73,
+          "scoreExact": 72.66666666666667,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 2.829822249837175
+        }
+      },
+      "id": "subscription:Codex:Pro *5:GPT-5.6-Sol",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro *5",
+      "originalMonthlyFee": 100.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 680.0,
+      "monthlyTokenInM": 2400.0,
+      "unitPriceCnyPerM": 0.28356
+    },
+    {
+      "vendor": "Codex",
+      "model": "GPT-5.6-Luna",
+      "canonicalModelId": "gpt-5-6-luna",
+      "canonicalModel": "GPT-5.6-Luna",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 52.3180827840984,
+          "configuration": "GPT-5.6 Luna (max)"
+        },
+        "deepSWE": {
+          "score": 67,
+          "scoreExact": 67.1875,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.992001235671055
+        }
+      },
+      "id": "subscription:Codex:Pro *5:GPT-5.6-Luna",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro *5",
+      "originalMonthlyFee": 100.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 680.0,
+      "monthlyTokenInM": 24000.0,
+      "unitPriceCnyPerM": 0.02856
+    },
+    {
+      "vendor": "Codex",
+      "model": "GPT-5.6-Sol",
+      "canonicalModelId": "gpt-5-6-sol",
+      "canonicalModel": "GPT-5.6-Sol",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 61,
+          "scoreExact": 60.9298701329203,
+          "configuration": "GPT-5.6 Sol (max)"
+        },
+        "deepSWE": {
+          "score": 73,
+          "scoreExact": 72.66666666666667,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 2.829822249837175
+        }
+      },
+      "id": "subscription:Codex:Pro *20:GPT-5.6-Sol",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro *20",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 1360.0,
+      "monthlyTokenInM": 9600.0,
+      "unitPriceCnyPerM": 0.14144
+    },
+    {
+      "vendor": "Codex",
+      "model": "GPT-5.6-Luna",
+      "canonicalModelId": "gpt-5-6-luna",
+      "canonicalModel": "GPT-5.6-Luna",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 52.3180827840984,
+          "configuration": "GPT-5.6 Luna (max)"
+        },
+        "deepSWE": {
+          "score": 67,
+          "scoreExact": 67.1875,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.992001235671055
+        }
+      },
+      "id": "subscription:Codex:Pro *20:GPT-5.6-Luna",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro *20",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 1360.0,
+      "monthlyTokenInM": 96000.0,
+      "unitPriceCnyPerM": 0.01428
+    },
+    {
+      "vendor": "Claude",
+      "model": "Claude Opus",
+      "canonicalModelId": "claude-opus",
+      "canonicalModel": "Claude Opus",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:Claude:Pro:Claude Opus",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 20.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 136.0,
+      "monthlyTokenInM": 401.3,
+      "unitPriceCnyPerM": 0.33864
+    },
+    {
+      "vendor": "Claude",
+      "model": "Claude Opus",
+      "canonicalModelId": "claude-opus",
+      "canonicalModel": "Claude Opus",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:Claude:Max *5:Claude Opus",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max *5",
+      "originalMonthlyFee": 100.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 680.0,
+      "monthlyTokenInM": 3344.5,
+      "unitPriceCnyPerM": 0.20332
+    },
+    {
+      "vendor": "Claude",
+      "model": "Claude Opus",
+      "canonicalModelId": "claude-opus",
+      "canonicalModel": "Claude Opus",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:Claude:Max *20:Claude Opus",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max *20",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 1360.0,
+      "monthlyTokenInM": 6689.0,
+      "unitPriceCnyPerM": 0.20332
+    },
+    {
+      "vendor": "Kimi",
+      "model": "Kimi-K3 [256K]",
+      "canonicalModelId": "kimi-k3",
+      "canonicalModel": "Kimi-K3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.6994671342592,
+          "configuration": "Kimi K3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.51441241685144,
+          "configuration": "max",
+          "confidenceInterval": 5,
+          "confidenceIntervalExact": 4.53701407928232
+        }
+      },
+      "id": "subscription:Kimi:Moderato:Kimi-K3 [256K]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Moderato",
+      "originalMonthlyFee": 99.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 99.0,
+      "monthlyTokenInM": 84.0,
+      "unitPriceCnyPerM": 1.1786
+    },
+    {
+      "vendor": "Kimi",
+      "model": "Kimi-K3",
+      "canonicalModelId": "kimi-k3",
+      "canonicalModel": "Kimi-K3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.6994671342592,
+          "configuration": "Kimi K3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.51441241685144,
+          "configuration": "max",
+          "confidenceInterval": 5,
+          "confidenceIntervalExact": 4.53701407928232
+        }
+      },
+      "id": "subscription:Kimi:Allegretto:Kimi-K3",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Allegretto",
+      "originalMonthlyFee": 199.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 199.0,
+      "monthlyTokenInM": 600.0,
+      "unitPriceCnyPerM": 0.3317
+    },
+    {
+      "vendor": "Kimi",
+      "model": "Kimi-K3 [256K]",
+      "canonicalModelId": "kimi-k3",
+      "canonicalModel": "Kimi-K3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.6994671342592,
+          "configuration": "Kimi K3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.51441241685144,
+          "configuration": "max",
+          "confidenceInterval": 5,
+          "confidenceIntervalExact": 4.53701407928232
+        }
+      },
+      "id": "subscription:Kimi:Allegretto:Kimi-K3 [256K]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Allegretto",
+      "originalMonthlyFee": 199.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 199.0,
+      "monthlyTokenInM": 900.0,
+      "unitPriceCnyPerM": 0.2211
+    },
+    {
+      "vendor": "Kimi",
+      "model": "Kimi-K3",
+      "canonicalModelId": "kimi-k3",
+      "canonicalModel": "Kimi-K3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.6994671342592,
+          "configuration": "Kimi K3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.51441241685144,
+          "configuration": "max",
+          "confidenceInterval": 5,
+          "confidenceIntervalExact": 4.53701407928232
+        }
+      },
+      "id": "subscription:Kimi:Allegro:Kimi-K3",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Allegro",
+      "originalMonthlyFee": 699.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 699.0,
+      "monthlyTokenInM": 1600.0,
+      "unitPriceCnyPerM": 0.4369
+    },
+    {
+      "vendor": "Kimi",
+      "model": "Kimi-K3 [256K]",
+      "canonicalModelId": "kimi-k3",
+      "canonicalModel": "Kimi-K3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.6994671342592,
+          "configuration": "Kimi K3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.51441241685144,
+          "configuration": "max",
+          "confidenceInterval": 5,
+          "confidenceIntervalExact": 4.53701407928232
+        }
+      },
+      "id": "subscription:Kimi:Allegro:Kimi-K3 [256K]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Allegro",
+      "originalMonthlyFee": 699.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 699.0,
+      "monthlyTokenInM": 2400.0,
+      "unitPriceCnyPerM": 0.2913
+    },
+    {
+      "vendor": "小米·MiMo",
+      "model": "MiMo-V2.5-Pro",
+      "canonicalModelId": "mimo-v2-5-pro",
+      "canonicalModel": "MiMo-V2.5-Pro",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 43,
+          "scoreExact": 42.8796821546836,
+          "configuration": "MiMo-V2.5-Pro"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:小米·MiMo:Lite:MiMo-V2.5-Pro",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 39.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 39.0,
+      "monthlyTokenInM": 202.1,
+      "unitPriceCnyPerM": 0.193
+    },
+    {
+      "vendor": "小米·MiMo",
+      "model": "MiMo-V2.5",
+      "canonicalModelId": "mimo-v2-5",
+      "canonicalModel": "MiMo-V2.5",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 38,
+          "scoreExact": 38.0433645155222,
+          "configuration": "MiMo-V2.5"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:小米·MiMo:Lite:MiMo-V2.5",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 39.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 39.0,
+      "monthlyTokenInM": 521.3,
+      "unitPriceCnyPerM": 0.0748
+    },
+    {
+      "vendor": "小米·MiMo",
+      "model": "MiMo-V2.5-Pro",
+      "canonicalModelId": "mimo-v2-5-pro",
+      "canonicalModel": "MiMo-V2.5-Pro",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 43,
+          "scoreExact": 42.8796821546836,
+          "configuration": "MiMo-V2.5-Pro"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:小米·MiMo:Standard:MiMo-V2.5-Pro",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Standard",
+      "originalMonthlyFee": 99.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 99.0,
+      "monthlyTokenInM": 542.2,
+      "unitPriceCnyPerM": 0.1826
+    },
+    {
+      "vendor": "小米·MiMo",
+      "model": "MiMo-V2.5",
+      "canonicalModelId": "mimo-v2-5",
+      "canonicalModel": "MiMo-V2.5",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 38,
+          "scoreExact": 38.0433645155222,
+          "configuration": "MiMo-V2.5"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:小米·MiMo:Standard:MiMo-V2.5",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Standard",
+      "originalMonthlyFee": 99.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 99.0,
+      "monthlyTokenInM": 1398.5,
+      "unitPriceCnyPerM": 0.0708
+    },
+    {
+      "vendor": "小米·MiMo",
+      "model": "MiMo-V2.5-Pro",
+      "canonicalModelId": "mimo-v2-5-pro",
+      "canonicalModel": "MiMo-V2.5-Pro",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 43,
+          "scoreExact": 42.8796821546836,
+          "configuration": "MiMo-V2.5-Pro"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:小米·MiMo:Pro:MiMo-V2.5-Pro",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 329.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 329.0,
+      "monthlyTokenInM": 1873.0,
+      "unitPriceCnyPerM": 0.1757
+    },
+    {
+      "vendor": "小米·MiMo",
+      "model": "MiMo-V2.5",
+      "canonicalModelId": "mimo-v2-5",
+      "canonicalModel": "MiMo-V2.5",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 38,
+          "scoreExact": 38.0433645155222,
+          "configuration": "MiMo-V2.5"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:小米·MiMo:Pro:MiMo-V2.5",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 329.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 329.0,
+      "monthlyTokenInM": 4831.2,
+      "unitPriceCnyPerM": 0.0681
+    },
+    {
+      "vendor": "小米·MiMo",
+      "model": "MiMo-V2.5-Pro",
+      "canonicalModelId": "mimo-v2-5-pro",
+      "canonicalModel": "MiMo-V2.5-Pro",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 43,
+          "scoreExact": 42.8796821546836,
+          "configuration": "MiMo-V2.5-Pro"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:小米·MiMo:Max:MiMo-V2.5-Pro",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 659.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 659.0,
+      "monthlyTokenInM": 4041.8,
+      "unitPriceCnyPerM": 0.163
+    },
+    {
+      "vendor": "小米·MiMo",
+      "model": "MiMo-V2.5",
+      "canonicalModelId": "mimo-v2-5",
+      "canonicalModel": "MiMo-V2.5",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 38,
+          "scoreExact": 38.0433645155222,
+          "configuration": "MiMo-V2.5"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:小米·MiMo:Max:MiMo-V2.5",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 659.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 659.0,
+      "monthlyTokenInM": 10425.3,
+      "unitPriceCnyPerM": 0.0632
+    },
+    {
+      "vendor": "智谱国际版",
+      "model": "GLM-5.3 [off-peak]",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:智谱国际版:新Lite:GLM-5.3 [off-peak]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "新Lite",
+      "originalMonthlyFee": 18.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 122.4,
+      "monthlyTokenInM": 386.4,
+      "unitPriceCnyPerM": 0.31688
+    },
+    {
+      "vendor": "智谱国际版",
+      "model": "GLM-5.3 [peak]",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:智谱国际版:新Lite:GLM-5.3 [peak]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "新Lite",
+      "originalMonthlyFee": 18.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 122.4,
+      "monthlyTokenInM": 193.2,
+      "unitPriceCnyPerM": 0.63376
+    },
+    {
+      "vendor": "智谱国际版",
+      "model": "GLM-5.3-Flash [off-peak]",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:智谱国际版:新Lite:GLM-5.3-Flash [off-peak]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "新Lite",
+      "originalMonthlyFee": 18.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 122.4,
+      "monthlyTokenInM": 1170.0,
+      "unitPriceCnyPerM": 0.10472
+    },
+    {
+      "vendor": "智谱国际版",
+      "model": "GLM-5.3-Flash [peak]",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:智谱国际版:新Lite:GLM-5.3-Flash [peak]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "新Lite",
+      "originalMonthlyFee": 18.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 122.4,
+      "monthlyTokenInM": 585.0,
+      "unitPriceCnyPerM": 0.20944
+    },
+    {
+      "vendor": "智谱国际版",
+      "model": "GLM-5.3 [off-peak]",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:智谱国际版:新Pro:GLM-5.3 [off-peak]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "新Pro",
+      "originalMonthlyFee": 80.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 544.0,
+      "monthlyTokenInM": 2318.6,
+      "unitPriceCnyPerM": 0.2346
+    },
+    {
+      "vendor": "智谱国际版",
+      "model": "GLM-5.3 [peak]",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:智谱国际版:新Pro:GLM-5.3 [peak]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "新Pro",
+      "originalMonthlyFee": 80.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 544.0,
+      "monthlyTokenInM": 1159.3,
+      "unitPriceCnyPerM": 0.4692
+    },
+    {
+      "vendor": "智谱国际版",
+      "model": "GLM-5.3-Flash [off-peak]",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:智谱国际版:新Pro:GLM-5.3-Flash [off-peak]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "新Pro",
+      "originalMonthlyFee": 80.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 544.0,
+      "monthlyTokenInM": 7020.0,
+      "unitPriceCnyPerM": 0.07752
+    },
+    {
+      "vendor": "智谱国际版",
+      "model": "GLM-5.3-Flash [peak]",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:智谱国际版:新Pro:GLM-5.3-Flash [peak]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "新Pro",
+      "originalMonthlyFee": 80.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 544.0,
+      "monthlyTokenInM": 3510.0,
+      "unitPriceCnyPerM": 0.15504
+    },
+    {
+      "vendor": "智谱国际版",
+      "model": "GLM-5.3 [off-peak]",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:智谱国际版:新Max:GLM-5.3 [off-peak]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "新Max",
+      "originalMonthlyFee": 168.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 1142.4,
+      "monthlyTokenInM": 5410.1,
+      "unitPriceCnyPerM": 0.21148
+    },
+    {
+      "vendor": "智谱国际版",
+      "model": "GLM-5.3 [peak]",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:智谱国际版:新Max:GLM-5.3 [peak]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "新Max",
+      "originalMonthlyFee": 168.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 1142.4,
+      "monthlyTokenInM": 2705.1,
+      "unitPriceCnyPerM": 0.42228
+    },
+    {
+      "vendor": "智谱国际版",
+      "model": "GLM-5.3-Flash [off-peak]",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:智谱国际版:新Max:GLM-5.3-Flash [off-peak]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "新Max",
+      "originalMonthlyFee": 168.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 1142.4,
+      "monthlyTokenInM": 16379.9,
+      "unitPriceCnyPerM": 0.07004
+    },
+    {
+      "vendor": "智谱国际版",
+      "model": "GLM-5.3-Flash [peak]",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:智谱国际版:新Max:GLM-5.3-Flash [peak]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "新Max",
+      "originalMonthlyFee": 168.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 1142.4,
+      "monthlyTokenInM": 8189.9,
+      "unitPriceCnyPerM": 0.1394
+    },
+    {
+      "vendor": "智谱AI",
+      "model": "GLM-5.3 [off-peak]",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:智谱AI:Lite:GLM-5.3 [off-peak]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 118.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 118.0,
+      "monthlyTokenInM": 96.6,
+      "unitPriceCnyPerM": 1.2214
+    },
+    {
+      "vendor": "智谱AI",
+      "model": "GLM-5.3 [peak]",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:智谱AI:Lite:GLM-5.3 [peak]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 118.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 118.0,
+      "monthlyTokenInM": 48.3,
+      "unitPriceCnyPerM": 2.4428
+    },
+    {
+      "vendor": "智谱AI",
+      "model": "GLM-5.3-Flash [off-peak]",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:智谱AI:Lite:GLM-5.3-Flash [off-peak]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 118.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 118.0,
+      "monthlyTokenInM": 292.5,
+      "unitPriceCnyPerM": 0.4034
+    },
+    {
+      "vendor": "智谱AI",
+      "model": "GLM-5.3-Flash [peak]",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:智谱AI:Lite:GLM-5.3-Flash [peak]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 118.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 118.0,
+      "monthlyTokenInM": 146.2,
+      "unitPriceCnyPerM": 0.8068
+    },
+    {
+      "vendor": "智谱AI",
+      "model": "GLM-5.3 [off-peak]",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:智谱AI:Pro:GLM-5.3 [off-peak]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 538.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 538.0,
+      "monthlyTokenInM": 579.7,
+      "unitPriceCnyPerM": 0.9281
+    },
+    {
+      "vendor": "智谱AI",
+      "model": "GLM-5.3 [peak]",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:智谱AI:Pro:GLM-5.3 [peak]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 538.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 538.0,
+      "monthlyTokenInM": 289.8,
+      "unitPriceCnyPerM": 1.8563
+    },
+    {
+      "vendor": "智谱AI",
+      "model": "GLM-5.3-Flash [off-peak]",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:智谱AI:Pro:GLM-5.3-Flash [off-peak]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 538.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 538.0,
+      "monthlyTokenInM": 1755.0,
+      "unitPriceCnyPerM": 0.3066
+    },
+    {
+      "vendor": "智谱AI",
+      "model": "GLM-5.3-Flash [peak]",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:智谱AI:Pro:GLM-5.3-Flash [peak]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 538.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 538.0,
+      "monthlyTokenInM": 877.5,
+      "unitPriceCnyPerM": 0.6131
+    },
+    {
+      "vendor": "智谱AI",
+      "model": "GLM-5.3 [off-peak]",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:智谱AI:Max:GLM-5.3 [off-peak]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 1078.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 1078.0,
+      "monthlyTokenInM": 1352.5,
+      "unitPriceCnyPerM": 0.797
+    },
+    {
+      "vendor": "智谱AI",
+      "model": "GLM-5.3 [peak]",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:智谱AI:Max:GLM-5.3 [peak]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 1078.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 1078.0,
+      "monthlyTokenInM": 676.3,
+      "unitPriceCnyPerM": 1.5941
+    },
+    {
+      "vendor": "智谱AI",
+      "model": "GLM-5.3-Flash [off-peak]",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:智谱AI:Max:GLM-5.3-Flash [off-peak]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 1078.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 1078.0,
+      "monthlyTokenInM": 4095.0,
+      "unitPriceCnyPerM": 0.2632
+    },
+    {
+      "vendor": "智谱AI",
+      "model": "GLM-5.3-Flash [peak]",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:智谱AI:Max:GLM-5.3-Flash [peak]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 1078.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 1078.0,
+      "monthlyTokenInM": 2047.5,
+      "unitPriceCnyPerM": 0.5265
+    },
+    {
+      "vendor": "MiniMax",
+      "model": "MiniMax-M3",
+      "canonicalModelId": "minimax-m3",
+      "canonicalModel": "MiniMax-M3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.3968506399702,
+          "configuration": "MiniMax-M3"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:MiniMax:新Plus:MiniMax-M3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "新Plus",
+      "originalMonthlyFee": 49.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 49.0,
+      "monthlyTokenInM": 2000.0,
+      "unitPriceCnyPerM": 0.0245
+    },
+    {
+      "vendor": "MiniMax",
+      "model": "MiniMax-M3",
+      "canonicalModelId": "minimax-m3",
+      "canonicalModel": "MiniMax-M3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.3968506399702,
+          "configuration": "MiniMax-M3"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:MiniMax:新Max:MiniMax-M3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "新Max",
+      "originalMonthlyFee": 119.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 119.0,
+      "monthlyTokenInM": 6000.0,
+      "unitPriceCnyPerM": 0.0198
+    },
+    {
+      "vendor": "MiniMax",
+      "model": "MiniMax-M3",
+      "canonicalModelId": "minimax-m3",
+      "canonicalModel": "MiniMax-M3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.3968506399702,
+          "configuration": "MiniMax-M3"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:MiniMax:新Ultra:MiniMax-M3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "新Ultra",
+      "originalMonthlyFee": 469.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 469.0,
+      "monthlyTokenInM": 23332.0,
+      "unitPriceCnyPerM": 0.0201
+    },
+    {
+      "vendor": "优云智算",
+      "model": "GLM-5.1",
+      "canonicalModelId": "glm-5-1",
+      "canonicalModel": "GLM-5.1",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 41,
+          "scoreExact": 40.9675355215124,
+          "configuration": "GLM-5.1 (Reasoning)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Mini:GLM-5.1",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Mini",
+      "originalMonthlyFee": 49.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 49.0,
+      "monthlyTokenInM": 38.0,
+      "unitPriceCnyPerM": 1.2895
+    },
+    {
+      "vendor": "优云智算",
+      "model": "GLM-5.2",
+      "canonicalModelId": "glm-5-2",
+      "canonicalModel": "GLM-5.2",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 52.6409563457385,
+          "configuration": "GLM-5.2 (max)"
+        },
+        "deepSWE": {
+          "score": 44,
+          "scoreExact": 43.77777777777778,
+          "configuration": "max",
+          "confidenceInterval": 2,
+          "confidenceIntervalExact": 1.725629620580811
+        }
+      },
+      "id": "subscription:优云智算:Mini:GLM-5.2",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Mini",
+      "originalMonthlyFee": 49.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 49.0,
+      "monthlyTokenInM": 38.0,
+      "unitPriceCnyPerM": 1.2895
+    },
+    {
+      "vendor": "优云智算",
+      "model": "Kimi-K2.6",
+      "canonicalModelId": "kimi-k2-6",
+      "canonicalModel": "Kimi-K2.6",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.1382483763163,
+          "configuration": "Kimi K2.6"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Mini:Kimi-K2.6",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Mini",
+      "originalMonthlyFee": 49.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 49.0,
+      "monthlyTokenInM": 45.6,
+      "unitPriceCnyPerM": 1.0746
+    },
+    {
+      "vendor": "优云智算",
+      "model": "DeepSeek-V4-Flash-0731",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:优云智算:Mini:DeepSeek-V4-Flash-0731",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Mini",
+      "originalMonthlyFee": 49.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 49.0,
+      "monthlyTokenInM": 76.0,
+      "unitPriceCnyPerM": 0.6447
+    },
+    {
+      "vendor": "优云智算",
+      "model": "DeepSeek-V4-Flash-Vision-Exp",
+      "canonicalModelId": "deepseek-v4-flash-vision-exp",
+      "canonicalModel": "DeepSeek-V4-Flash-Vision-Exp",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 51,
+          "scoreExact": 51.4736425212072,
+          "configuration": "DeepSeek V4 Flash Vision (Reasoning, Max Effort)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Mini:DeepSeek-V4-Flash-Vision-Exp",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Mini",
+      "originalMonthlyFee": 49.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 49.0,
+      "monthlyTokenInM": 76.0,
+      "unitPriceCnyPerM": 0.6447
+    },
+    {
+      "vendor": "优云智算",
+      "model": "MiniMax-M2.7",
+      "canonicalModelId": "minimax-m2-7",
+      "canonicalModel": "MiniMax-M2.7",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 39,
+          "scoreExact": 38.8713536464198,
+          "configuration": "MiniMax-M2.7"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Mini:MiniMax-M2.7",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Mini",
+      "originalMonthlyFee": 49.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 49.0,
+      "monthlyTokenInM": 114.0,
+      "unitPriceCnyPerM": 0.4298
+    },
+    {
+      "vendor": "优云智算",
+      "model": "Qwen-3.8-27B",
+      "canonicalModelId": "qwen-3-8-27b",
+      "canonicalModel": "Qwen-3.8-27B",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 52.0246606497206,
+          "configuration": "Qwen3.8 27B (xhigh)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Mini:Qwen-3.8-27B",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Mini",
+      "originalMonthlyFee": 49.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 49.0,
+      "monthlyTokenInM": 456.0,
+      "unitPriceCnyPerM": 0.1075
+    },
+    {
+      "vendor": "优云智算",
+      "model": "GLM-5.1",
+      "canonicalModelId": "glm-5-1",
+      "canonicalModel": "GLM-5.1",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 41,
+          "scoreExact": 40.9675355215124,
+          "configuration": "GLM-5.1 (Reasoning)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Lite:GLM-5.1",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 99.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 99.0,
+      "monthlyTokenInM": 76.0,
+      "unitPriceCnyPerM": 1.3026
+    },
+    {
+      "vendor": "优云智算",
+      "model": "GLM-5.2",
+      "canonicalModelId": "glm-5-2",
+      "canonicalModel": "GLM-5.2",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 52.6409563457385,
+          "configuration": "GLM-5.2 (max)"
+        },
+        "deepSWE": {
+          "score": 44,
+          "scoreExact": 43.77777777777778,
+          "configuration": "max",
+          "confidenceInterval": 2,
+          "confidenceIntervalExact": 1.725629620580811
+        }
+      },
+      "id": "subscription:优云智算:Lite:GLM-5.2",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 99.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 99.0,
+      "monthlyTokenInM": 76.0,
+      "unitPriceCnyPerM": 1.3026
+    },
+    {
+      "vendor": "优云智算",
+      "model": "Kimi-K2.6",
+      "canonicalModelId": "kimi-k2-6",
+      "canonicalModel": "Kimi-K2.6",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.1382483763163,
+          "configuration": "Kimi K2.6"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Lite:Kimi-K2.6",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 99.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 99.0,
+      "monthlyTokenInM": 91.2,
+      "unitPriceCnyPerM": 1.0855
+    },
+    {
+      "vendor": "优云智算",
+      "model": "DeepSeek-V4-Flash-0731",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:优云智算:Lite:DeepSeek-V4-Flash-0731",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 99.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 99.0,
+      "monthlyTokenInM": 152.0,
+      "unitPriceCnyPerM": 0.6513
+    },
+    {
+      "vendor": "优云智算",
+      "model": "DeepSeek-V4-Flash-Vision-Exp",
+      "canonicalModelId": "deepseek-v4-flash-vision-exp",
+      "canonicalModel": "DeepSeek-V4-Flash-Vision-Exp",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 51,
+          "scoreExact": 51.4736425212072,
+          "configuration": "DeepSeek V4 Flash Vision (Reasoning, Max Effort)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Lite:DeepSeek-V4-Flash-Vision-Exp",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 99.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 99.0,
+      "monthlyTokenInM": 152.0,
+      "unitPriceCnyPerM": 0.6513
+    },
+    {
+      "vendor": "优云智算",
+      "model": "MiniMax-M2.7",
+      "canonicalModelId": "minimax-m2-7",
+      "canonicalModel": "MiniMax-M2.7",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 39,
+          "scoreExact": 38.8713536464198,
+          "configuration": "MiniMax-M2.7"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Lite:MiniMax-M2.7",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 99.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 99.0,
+      "monthlyTokenInM": 228.0,
+      "unitPriceCnyPerM": 0.4342
+    },
+    {
+      "vendor": "优云智算",
+      "model": "Qwen-3.8-27B",
+      "canonicalModelId": "qwen-3-8-27b",
+      "canonicalModel": "Qwen-3.8-27B",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 52.0246606497206,
+          "configuration": "Qwen3.8 27B (xhigh)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Lite:Qwen-3.8-27B",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 99.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 99.0,
+      "monthlyTokenInM": 912.0,
+      "unitPriceCnyPerM": 0.1086
+    },
+    {
+      "vendor": "优云智算",
+      "model": "GLM-5.1",
+      "canonicalModelId": "glm-5-1",
+      "canonicalModel": "GLM-5.1",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 41,
+          "scoreExact": 40.9675355215124,
+          "configuration": "GLM-5.1 (Reasoning)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Basic:GLM-5.1",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Basic",
+      "originalMonthlyFee": 199.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 199.0,
+      "monthlyTokenInM": 152.0,
+      "unitPriceCnyPerM": 1.3092
+    },
+    {
+      "vendor": "优云智算",
+      "model": "GLM-5.2",
+      "canonicalModelId": "glm-5-2",
+      "canonicalModel": "GLM-5.2",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 52.6409563457385,
+          "configuration": "GLM-5.2 (max)"
+        },
+        "deepSWE": {
+          "score": 44,
+          "scoreExact": 43.77777777777778,
+          "configuration": "max",
+          "confidenceInterval": 2,
+          "confidenceIntervalExact": 1.725629620580811
+        }
+      },
+      "id": "subscription:优云智算:Basic:GLM-5.2",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Basic",
+      "originalMonthlyFee": 199.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 199.0,
+      "monthlyTokenInM": 152.0,
+      "unitPriceCnyPerM": 1.3092
+    },
+    {
+      "vendor": "优云智算",
+      "model": "Kimi-K2.6",
+      "canonicalModelId": "kimi-k2-6",
+      "canonicalModel": "Kimi-K2.6",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.1382483763163,
+          "configuration": "Kimi K2.6"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Basic:Kimi-K2.6",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Basic",
+      "originalMonthlyFee": 199.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 199.0,
+      "monthlyTokenInM": 182.4,
+      "unitPriceCnyPerM": 1.091
+    },
+    {
+      "vendor": "优云智算",
+      "model": "DeepSeek-V4-Flash-0731",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:优云智算:Basic:DeepSeek-V4-Flash-0731",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Basic",
+      "originalMonthlyFee": 199.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 199.0,
+      "monthlyTokenInM": 304.0,
+      "unitPriceCnyPerM": 0.6546
+    },
+    {
+      "vendor": "优云智算",
+      "model": "DeepSeek-V4-Flash-Vision-Exp",
+      "canonicalModelId": "deepseek-v4-flash-vision-exp",
+      "canonicalModel": "DeepSeek-V4-Flash-Vision-Exp",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 51,
+          "scoreExact": 51.4736425212072,
+          "configuration": "DeepSeek V4 Flash Vision (Reasoning, Max Effort)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Basic:DeepSeek-V4-Flash-Vision-Exp",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Basic",
+      "originalMonthlyFee": 199.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 199.0,
+      "monthlyTokenInM": 304.0,
+      "unitPriceCnyPerM": 0.6546
+    },
+    {
+      "vendor": "优云智算",
+      "model": "MiniMax-M2.7",
+      "canonicalModelId": "minimax-m2-7",
+      "canonicalModel": "MiniMax-M2.7",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 39,
+          "scoreExact": 38.8713536464198,
+          "configuration": "MiniMax-M2.7"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Basic:MiniMax-M2.7",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Basic",
+      "originalMonthlyFee": 199.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 199.0,
+      "monthlyTokenInM": 456.0,
+      "unitPriceCnyPerM": 0.4364
+    },
+    {
+      "vendor": "优云智算",
+      "model": "Qwen-3.8-27B",
+      "canonicalModelId": "qwen-3-8-27b",
+      "canonicalModel": "Qwen-3.8-27B",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 52.0246606497206,
+          "configuration": "Qwen3.8 27B (xhigh)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Basic:Qwen-3.8-27B",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Basic",
+      "originalMonthlyFee": 199.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 199.0,
+      "monthlyTokenInM": 1824.0,
+      "unitPriceCnyPerM": 0.1091
+    },
+    {
+      "vendor": "优云智算",
+      "model": "GLM-5.1",
+      "canonicalModelId": "glm-5-1",
+      "canonicalModel": "GLM-5.1",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 41,
+          "scoreExact": 40.9675355215124,
+          "configuration": "GLM-5.1 (Reasoning)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Pro:GLM-5.1",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 380.0,
+      "unitPriceCnyPerM": 1.3132
+    },
+    {
+      "vendor": "优云智算",
+      "model": "GLM-5.2",
+      "canonicalModelId": "glm-5-2",
+      "canonicalModel": "GLM-5.2",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 52.6409563457385,
+          "configuration": "GLM-5.2 (max)"
+        },
+        "deepSWE": {
+          "score": 44,
+          "scoreExact": 43.77777777777778,
+          "configuration": "max",
+          "confidenceInterval": 2,
+          "confidenceIntervalExact": 1.725629620580811
+        }
+      },
+      "id": "subscription:优云智算:Pro:GLM-5.2",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 380.0,
+      "unitPriceCnyPerM": 1.3132
+    },
+    {
+      "vendor": "优云智算",
+      "model": "Kimi-K2.6",
+      "canonicalModelId": "kimi-k2-6",
+      "canonicalModel": "Kimi-K2.6",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.1382483763163,
+          "configuration": "Kimi K2.6"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Pro:Kimi-K2.6",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 456.0,
+      "unitPriceCnyPerM": 1.0943
+    },
+    {
+      "vendor": "优云智算",
+      "model": "DeepSeek-V4-Flash-0731",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:优云智算:Pro:DeepSeek-V4-Flash-0731",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 760.0,
+      "unitPriceCnyPerM": 0.6566
+    },
+    {
+      "vendor": "优云智算",
+      "model": "DeepSeek-V4-Flash-Vision-Exp",
+      "canonicalModelId": "deepseek-v4-flash-vision-exp",
+      "canonicalModel": "DeepSeek-V4-Flash-Vision-Exp",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 51,
+          "scoreExact": 51.4736425212072,
+          "configuration": "DeepSeek V4 Flash Vision (Reasoning, Max Effort)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Pro:DeepSeek-V4-Flash-Vision-Exp",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 760.0,
+      "unitPriceCnyPerM": 0.6566
+    },
+    {
+      "vendor": "优云智算",
+      "model": "MiniMax-M2.7",
+      "canonicalModelId": "minimax-m2-7",
+      "canonicalModel": "MiniMax-M2.7",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 39,
+          "scoreExact": 38.8713536464198,
+          "configuration": "MiniMax-M2.7"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Pro:MiniMax-M2.7",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 1140.0,
+      "unitPriceCnyPerM": 0.4377
+    },
+    {
+      "vendor": "优云智算",
+      "model": "Qwen-3.8-27B",
+      "canonicalModelId": "qwen-3-8-27b",
+      "canonicalModel": "Qwen-3.8-27B",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 52.0246606497206,
+          "configuration": "Qwen3.8 27B (xhigh)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Pro:Qwen-3.8-27B",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 4560.0,
+      "unitPriceCnyPerM": 0.1094
+    },
+    {
+      "vendor": "优云智算",
+      "model": "GLM-5.1",
+      "canonicalModelId": "glm-5-1",
+      "canonicalModel": "GLM-5.1",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 41,
+          "scoreExact": 40.9675355215124,
+          "configuration": "GLM-5.1 (Reasoning)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Max:GLM-5.1",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 799.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 799.0,
+      "monthlyTokenInM": 620.0,
+      "unitPriceCnyPerM": 1.2887
+    },
+    {
+      "vendor": "优云智算",
+      "model": "GLM-5.2",
+      "canonicalModelId": "glm-5-2",
+      "canonicalModel": "GLM-5.2",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 52.6409563457385,
+          "configuration": "GLM-5.2 (max)"
+        },
+        "deepSWE": {
+          "score": 44,
+          "scoreExact": 43.77777777777778,
+          "configuration": "max",
+          "confidenceInterval": 2,
+          "confidenceIntervalExact": 1.725629620580811
+        }
+      },
+      "id": "subscription:优云智算:Max:GLM-5.2",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 799.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 799.0,
+      "monthlyTokenInM": 620.0,
+      "unitPriceCnyPerM": 1.2887
+    },
+    {
+      "vendor": "优云智算",
+      "model": "Kimi-K2.6",
+      "canonicalModelId": "kimi-k2-6",
+      "canonicalModel": "Kimi-K2.6",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.1382483763163,
+          "configuration": "Kimi K2.6"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Max:Kimi-K2.6",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 799.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 799.0,
+      "monthlyTokenInM": 744.0,
+      "unitPriceCnyPerM": 1.0739
+    },
+    {
+      "vendor": "优云智算",
+      "model": "DeepSeek-V4-Flash-0731",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:优云智算:Max:DeepSeek-V4-Flash-0731",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 799.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 799.0,
+      "monthlyTokenInM": 1240.0,
+      "unitPriceCnyPerM": 0.6444
+    },
+    {
+      "vendor": "优云智算",
+      "model": "DeepSeek-V4-Flash-Vision-Exp",
+      "canonicalModelId": "deepseek-v4-flash-vision-exp",
+      "canonicalModel": "DeepSeek-V4-Flash-Vision-Exp",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 51,
+          "scoreExact": 51.4736425212072,
+          "configuration": "DeepSeek V4 Flash Vision (Reasoning, Max Effort)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Max:DeepSeek-V4-Flash-Vision-Exp",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 799.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 799.0,
+      "monthlyTokenInM": 1240.0,
+      "unitPriceCnyPerM": 0.6444
+    },
+    {
+      "vendor": "优云智算",
+      "model": "MiniMax-M2.7",
+      "canonicalModelId": "minimax-m2-7",
+      "canonicalModel": "MiniMax-M2.7",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 39,
+          "scoreExact": 38.8713536464198,
+          "configuration": "MiniMax-M2.7"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Max:MiniMax-M2.7",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 799.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 799.0,
+      "monthlyTokenInM": 1860.0,
+      "unitPriceCnyPerM": 0.4296
+    },
+    {
+      "vendor": "优云智算",
+      "model": "Qwen-3.8-27B",
+      "canonicalModelId": "qwen-3-8-27b",
+      "canonicalModel": "Qwen-3.8-27B",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 52.0246606497206,
+          "configuration": "Qwen3.8 27B (xhigh)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Max:Qwen-3.8-27B",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 799.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 799.0,
+      "monthlyTokenInM": 7440.0,
+      "unitPriceCnyPerM": 0.1074
+    },
+    {
+      "vendor": "优云智算",
+      "model": "GLM-5.1",
+      "canonicalModelId": "glm-5-1",
+      "canonicalModel": "GLM-5.1",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 41,
+          "scoreExact": 40.9675355215124,
+          "configuration": "GLM-5.1 (Reasoning)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Ultra:GLM-5.1",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Ultra",
+      "originalMonthlyFee": 999.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 999.0,
+      "monthlyTokenInM": 780.0,
+      "unitPriceCnyPerM": 1.2808
+    },
+    {
+      "vendor": "优云智算",
+      "model": "GLM-5.2",
+      "canonicalModelId": "glm-5-2",
+      "canonicalModel": "GLM-5.2",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 52.6409563457385,
+          "configuration": "GLM-5.2 (max)"
+        },
+        "deepSWE": {
+          "score": 44,
+          "scoreExact": 43.77777777777778,
+          "configuration": "max",
+          "confidenceInterval": 2,
+          "confidenceIntervalExact": 1.725629620580811
+        }
+      },
+      "id": "subscription:优云智算:Ultra:GLM-5.2",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Ultra",
+      "originalMonthlyFee": 999.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 999.0,
+      "monthlyTokenInM": 780.0,
+      "unitPriceCnyPerM": 1.2808
+    },
+    {
+      "vendor": "优云智算",
+      "model": "Kimi-K2.6",
+      "canonicalModelId": "kimi-k2-6",
+      "canonicalModel": "Kimi-K2.6",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.1382483763163,
+          "configuration": "Kimi K2.6"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Ultra:Kimi-K2.6",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Ultra",
+      "originalMonthlyFee": 999.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 999.0,
+      "monthlyTokenInM": 936.0,
+      "unitPriceCnyPerM": 1.0673
+    },
+    {
+      "vendor": "优云智算",
+      "model": "DeepSeek-V4-Flash-0731",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:优云智算:Ultra:DeepSeek-V4-Flash-0731",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Ultra",
+      "originalMonthlyFee": 999.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 999.0,
+      "monthlyTokenInM": 1560.0,
+      "unitPriceCnyPerM": 0.6404
+    },
+    {
+      "vendor": "优云智算",
+      "model": "DeepSeek-V4-Flash-Vision-Exp",
+      "canonicalModelId": "deepseek-v4-flash-vision-exp",
+      "canonicalModel": "DeepSeek-V4-Flash-Vision-Exp",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 51,
+          "scoreExact": 51.4736425212072,
+          "configuration": "DeepSeek V4 Flash Vision (Reasoning, Max Effort)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Ultra:DeepSeek-V4-Flash-Vision-Exp",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Ultra",
+      "originalMonthlyFee": 999.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 999.0,
+      "monthlyTokenInM": 1560.0,
+      "unitPriceCnyPerM": 0.6404
+    },
+    {
+      "vendor": "优云智算",
+      "model": "MiniMax-M2.7",
+      "canonicalModelId": "minimax-m2-7",
+      "canonicalModel": "MiniMax-M2.7",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 39,
+          "scoreExact": 38.8713536464198,
+          "configuration": "MiniMax-M2.7"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Ultra:MiniMax-M2.7",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Ultra",
+      "originalMonthlyFee": 999.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 999.0,
+      "monthlyTokenInM": 2340.0,
+      "unitPriceCnyPerM": 0.4269
+    },
+    {
+      "vendor": "优云智算",
+      "model": "Qwen-3.8-27B",
+      "canonicalModelId": "qwen-3-8-27b",
+      "canonicalModel": "Qwen-3.8-27B",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 52.0246606497206,
+          "configuration": "Qwen3.8 27B (xhigh)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:优云智算:Ultra:Qwen-3.8-27B",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Ultra",
+      "originalMonthlyFee": 999.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 999.0,
+      "monthlyTokenInM": 9360.0,
+      "unitPriceCnyPerM": 0.1067
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "GPT-5.6-Luna",
+      "canonicalModelId": "gpt-5-6-luna",
+      "canonicalModel": "GPT-5.6-Luna",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 52.3180827840984,
+          "configuration": "GPT-5.6 Luna (max)"
+        },
+        "deepSWE": {
+          "score": 67,
+          "scoreExact": 67.1875,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.992001235671055
+        }
+      },
+      "id": "subscription:OpenCode:Go:GPT-5.6-Luna",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 224.9,
+      "unitPriceCnyPerM": 0.3026
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "GPT-5.6-Luna [272K]",
+      "canonicalModelId": "gpt-5-6-luna",
+      "canonicalModel": "GPT-5.6-Luna",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 52.3180827840984,
+          "configuration": "GPT-5.6 Luna (max)"
+        },
+        "deepSWE": {
+          "score": 67,
+          "scoreExact": 67.1875,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.992001235671055
+        }
+      },
+      "id": "subscription:OpenCode:Go:GPT-5.6-Luna [272K]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 430.4,
+      "unitPriceCnyPerM": 0.15776
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "GLM-5.3",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:OpenCode:Go:GLM-5.3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 44.5,
+      "unitPriceCnyPerM": 1.52932
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "GLM-5.2",
+      "canonicalModelId": "glm-5-2",
+      "canonicalModel": "GLM-5.2",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 52.6409563457385,
+          "configuration": "GLM-5.2 (max)"
+        },
+        "deepSWE": {
+          "score": 44,
+          "scoreExact": 43.77777777777778,
+          "configuration": "max",
+          "confidenceInterval": 2,
+          "confidenceIntervalExact": 1.725629620580811
+        }
+      },
+      "id": "subscription:OpenCode:Go:GLM-5.2",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 177.8,
+      "unitPriceCnyPerM": 0.38216
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "GLM-5.1",
+      "canonicalModelId": "glm-5-1",
+      "canonicalModel": "GLM-5.1",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 41,
+          "scoreExact": 40.9675355215124,
+          "configuration": "GLM-5.1 (Reasoning)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:GLM-5.1",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 177.8,
+      "unitPriceCnyPerM": 0.38216
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "Kimi-K3",
+      "canonicalModelId": "kimi-k3",
+      "canonicalModel": "Kimi-K3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.6994671342592,
+          "configuration": "Kimi K3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.51441241685144,
+          "configuration": "max",
+          "confidenceInterval": 5,
+          "confidenceIntervalExact": 4.53701407928232
+        }
+      },
+      "id": "subscription:OpenCode:Go:Kimi-K3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 29.5,
+      "unitPriceCnyPerM": 2.30248
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "Kimi-K2.7-Code",
+      "canonicalModelId": "kimi-k2-7-code",
+      "canonicalModel": "Kimi-K2.7-Code",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 43,
+          "scoreExact": 43.0244715223736,
+          "configuration": "Kimi K2.7 Code"
+        },
+        "deepSWE": {
+          "score": 31,
+          "scoreExact": 30.53097345132743,
+          "configuration": null,
+          "confidenceInterval": 1,
+          "confidenceIntervalExact": 0.5007016522460913
+        }
+      },
+      "id": "subscription:OpenCode:Go:Kimi-K2.7-Code",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 243.1,
+      "unitPriceCnyPerM": 0.27948
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "Kimi-K2.6",
+      "canonicalModelId": "kimi-k2-6",
+      "canonicalModel": "Kimi-K2.6",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.1382483763163,
+          "configuration": "Kimi K2.6"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:Kimi-K2.6",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 274.6,
+      "unitPriceCnyPerM": 0.24752
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "LongCat-2.0",
+      "canonicalModelId": "longcat-2-0",
+      "canonicalModel": "LongCat-2.0",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 34,
+          "scoreExact": 33.9692584853255,
+          "configuration": "LongCat 2.0"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:LongCat-2.0",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 2255.9,
+      "unitPriceCnyPerM": 0.02992
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "MiMo-V2.5",
+      "canonicalModelId": "mimo-v2-5",
+      "canonicalModel": "MiMo-V2.5",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 38,
+          "scoreExact": 38.0433645155222,
+          "configuration": "MiMo-V2.5"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:MiMo-V2.5",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 5448.7,
+      "unitPriceCnyPerM": 0.01224
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "MiMo-V2.5-Pro",
+      "canonicalModelId": "mimo-v2-5-pro",
+      "canonicalModel": "MiMo-V2.5-Pro",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 43,
+          "scoreExact": 42.8796821546836,
+          "configuration": "MiMo-V2.5-Pro"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:MiMo-V2.5-Pro",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 509.9,
+      "unitPriceCnyPerM": 0.13328
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "MiniMax-M3",
+      "canonicalModelId": "minimax-m3",
+      "canonicalModel": "MiniMax-M3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.3968506399702,
+          "configuration": "MiniMax-M3"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:MiniMax-M3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 772.8,
+      "unitPriceCnyPerM": 0.08772
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "MiniMax-M2.7",
+      "canonicalModelId": "minimax-m2-7",
+      "canonicalModel": "MiniMax-M2.7",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 39,
+          "scoreExact": 38.8713536464198,
+          "configuration": "MiniMax-M2.7"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:MiniMax-M2.7",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 772.8,
+      "unitPriceCnyPerM": 0.08772
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "MiniMax-M2.5",
+      "canonicalModelId": "minimax-m2-5",
+      "canonicalModel": "MiniMax-M2.5",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 34,
+          "scoreExact": 34.474081034775786,
+          "configuration": "MiniMax-M2.5"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:MiniMax-M2.5",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 772.8,
+      "unitPriceCnyPerM": 0.08772
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "Muse-Spark-1.2-Contributor",
+      "canonicalModelId": "muse-spark-1-2",
+      "canonicalModel": "Muse-Spark-1.2",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 56.7615911905642,
+          "configuration": "Muse Spark 1.2 (xhigh)"
+        },
+        "deepSWE": {
+          "score": 55,
+          "scoreExact": 54.86725663716814,
+          "configuration": "xhigh",
+          "confidenceInterval": 2,
+          "confidenceIntervalExact": 2.124297201927127
+        }
+      },
+      "id": "subscription:OpenCode:Go:Muse-Spark-1.2-Contributor",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 7628.2,
+      "unitPriceCnyPerM": 0.00884
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "Qwen-3.8-Max",
+      "canonicalModelId": "qwen-3-8-max",
+      "canonicalModel": "Qwen-3.8-Max",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 58,
+          "scoreExact": 58.0774404479668,
+          "configuration": "Qwen3.8 Max"
+        },
+        "deepSWE": {
+          "score": 57,
+          "scoreExact": 57.46102449888642,
+          "configuration": "xhigh",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 2.6627926725075453
+        }
+      },
+      "id": "subscription:OpenCode:Go:Qwen-3.8-Max",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 41.0,
+      "unitPriceCnyPerM": 1.65852
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "Qwen-3.7-Max",
+      "canonicalModelId": "qwen-3-7-max",
+      "canonicalModel": "Qwen-3.7-Max",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 47,
+          "scoreExact": 46.71222295444,
+          "configuration": "Qwen3.7 Max"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:Qwen-3.7-Max",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 94.6,
+      "unitPriceCnyPerM": 0.71876
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "Qwen-3.7-Plus",
+      "canonicalModelId": "qwen-3-7-plus",
+      "canonicalModel": "Qwen-3.7-Plus",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 39,
+          "scoreExact": 39.3745992994168,
+          "configuration": "Qwen3.7 Plus"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:Qwen-3.7-Plus",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 304.4,
+      "unitPriceCnyPerM": 0.22372
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "Qwen-3.7-Plus [256K]",
+      "canonicalModelId": "qwen-3-7-plus",
+      "canonicalModel": "Qwen-3.7-Plus",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 39,
+          "scoreExact": 39.3745992994168,
+          "configuration": "Qwen3.7 Plus"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:Qwen-3.7-Plus [256K]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 913.1,
+      "unitPriceCnyPerM": 0.0748
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "Qwen-3.6-Plus",
+      "canonicalModelId": "qwen-3-6-plus",
+      "canonicalModel": "Qwen-3.6-Plus",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 40,
+          "scoreExact": 40.4880703723726,
+          "configuration": "Qwen3.6 Plus"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:Qwen-3.6-Plus",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 188.4,
+      "unitPriceCnyPerM": 0.36108
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "Qwen-3.6-Plus [256K]",
+      "canonicalModelId": "qwen-3-6-plus",
+      "canonicalModel": "Qwen-3.6-Plus",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 40,
+          "scoreExact": 40.4880703723726,
+          "configuration": "Qwen3.6 Plus"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:Qwen-3.6-Plus [256K]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 688.6,
+      "unitPriceCnyPerM": 0.0986
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "DeepSeek-V4-Pro-0813",
+      "canonicalModelId": "deepseek-v4-pro-0813",
+      "canonicalModel": "DeepSeek-V4-Pro-0813",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 53.1976849297815,
+          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 62.83185840707964,
+          "configuration": "max",
+          "confidenceInterval": 6,
+          "confidenceIntervalExact": 6.333430597228876
+        }
+      },
+      "id": "subscription:OpenCode:Go:DeepSeek-V4-Pro-0813",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 236.1,
+      "unitPriceCnyPerM": 0.28832
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "DeepSeek-V4-Flash-0731",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:OpenCode:Go:DeepSeek-V4-Flash-0731",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 1438.0,
+      "unitPriceCnyPerM": 0.0476
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "DeepSeek-V4-Flash-Vision-Exp",
+      "canonicalModelId": "deepseek-v4-flash-vision-exp",
+      "canonicalModel": "DeepSeek-V4-Flash-Vision-Exp",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 51,
+          "scoreExact": 51.4736425212072,
+          "configuration": "DeepSeek V4 Flash Vision (Reasoning, Max Effort)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:DeepSeek-V4-Flash-Vision-Exp",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 719.0,
+      "unitPriceCnyPerM": 0.09452
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "Hy3",
+      "canonicalModelId": "hy3",
+      "canonicalModel": "Hy3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 42,
+          "scoreExact": 42.2134908724756,
+          "configuration": "Hy3"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:Hy3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 1397.0,
+      "unitPriceCnyPerM": 0.04896
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "Grok-4.6",
+      "canonicalModelId": "grok-4-6",
+      "canonicalModel": "Grok-4.6",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 61,
+          "scoreExact": 60.92297113115,
+          "configuration": "Grok 4.6 (high)"
+        },
+        "deepSWE": {
+          "score": 67,
+          "scoreExact": 67.47787610619469,
+          "configuration": "medium",
+          "confidenceInterval": 2,
+          "confidenceIntervalExact": 2.28080457287792
+        }
+      },
+      "id": "subscription:OpenCode:Go:Grok-4.6",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 12.5,
+      "unitPriceCnyPerM": 5.45904
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "Grok-4.6 [200K]",
+      "canonicalModelId": "grok-4-6",
+      "canonicalModel": "Grok-4.6",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 61,
+          "scoreExact": 60.92297113115,
+          "configuration": "Grok 4.6 (high)"
+        },
+        "deepSWE": {
+          "score": 67,
+          "scoreExact": 67.47787610619469,
+          "configuration": "medium",
+          "confidenceInterval": 2,
+          "confidenceIntervalExact": 2.28080457287792
+        }
+      },
+      "id": "subscription:OpenCode:Go:Grok-4.6 [200K]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 24.9,
+      "unitPriceCnyPerM": 2.72952
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "GLM-5.3-Flash",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:OpenCode:Go:GLM-5.3-Flash",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 391.4,
+      "unitPriceCnyPerM": 0.1734
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "Qwen-3.8-Flash",
+      "canonicalModelId": "qwen-3-8-flash",
+      "canonicalModel": "Qwen-3.8-Flash",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:Qwen-3.8-Flash",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 1203.1,
+      "unitPriceCnyPerM": 0.05644
+    },
+    {
+      "vendor": "OpenCode",
+      "model": "Hy4-preview",
+      "canonicalModelId": "hy4-preview",
+      "canonicalModel": "Hy4-preview",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:OpenCode:Go:Hy4-preview",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Go",
+      "originalMonthlyFee": 10.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 68.0,
+      "monthlyTokenInM": 320.2,
+      "unitPriceCnyPerM": 0.21216
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.0-Mini",
+      "canonicalModelId": "doubao-seed-2-0-mini",
+      "canonicalModel": "Doubao-Seed-2.0-Mini",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Small:Doubao-Seed-2.0-Mini",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Small",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 800.0,
+      "unitPriceCnyPerM": 0.05
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.0-Lite",
+      "canonicalModelId": "doubao-seed-2-0-lite",
+      "canonicalModel": "Doubao-Seed-2.0-Lite",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Small:Doubao-Seed-2.0-Lite",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Small",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 400.0,
+      "unitPriceCnyPerM": 0.1
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "DeepSeek-V4-Flash-0731",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:字节·方舟:Small:DeepSeek-V4-Flash-0731",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Small",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 400.0,
+      "unitPriceCnyPerM": 0.1
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "GLM-5.3-Flash",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:字节·方舟:Small:GLM-5.3-Flash",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Small",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 800.0,
+      "unitPriceCnyPerM": 0.05
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.1-Turbo",
+      "canonicalModelId": "doubao-seed-2-1-turbo",
+      "canonicalModel": "Doubao-Seed-2.1-Turbo",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Small:Doubao-Seed-2.1-Turbo",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Small",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 80.0,
+      "unitPriceCnyPerM": 0.5
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-Evolving",
+      "canonicalModelId": "doubao-seed-evolving",
+      "canonicalModel": "Doubao-Seed-Evolving",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Small:Doubao-Seed-Evolving",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Small",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 80.0,
+      "unitPriceCnyPerM": 0.5
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "MiniMax-M3",
+      "canonicalModelId": "minimax-m3",
+      "canonicalModel": "MiniMax-M3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.3968506399702,
+          "configuration": "MiniMax-M3"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Small:MiniMax-M3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Small",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 80.0,
+      "unitPriceCnyPerM": 0.5
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Kimi-K2.7-Code",
+      "canonicalModelId": "kimi-k2-7-code",
+      "canonicalModel": "Kimi-K2.7-Code",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 43,
+          "scoreExact": 43.0244715223736,
+          "configuration": "Kimi K2.7 Code"
+        },
+        "deepSWE": {
+          "score": 31,
+          "scoreExact": 30.53097345132743,
+          "configuration": null,
+          "confidenceInterval": 1,
+          "confidenceIntervalExact": 0.5007016522460913
+        }
+      },
+      "id": "subscription:字节·方舟:Small:Kimi-K2.7-Code",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Small",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 44.4,
+      "unitPriceCnyPerM": 0.9
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "GLM-5.3",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:字节·方舟:Small:GLM-5.3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Small",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 44.4,
+      "unitPriceCnyPerM": 0.9
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "DeepSeek-V4-Pro-0813",
+      "canonicalModelId": "deepseek-v4-pro-0813",
+      "canonicalModel": "DeepSeek-V4-Pro-0813",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 53.1976849297815,
+          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 62.83185840707964,
+          "configuration": "max",
+          "confidenceInterval": 6,
+          "confidenceIntervalExact": 6.333430597228876
+        }
+      },
+      "id": "subscription:字节·方舟:Small:DeepSeek-V4-Pro-0813",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Small",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 36.4,
+      "unitPriceCnyPerM": 1.1
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.0-Mini",
+      "canonicalModelId": "doubao-seed-2-0-mini",
+      "canonicalModel": "Doubao-Seed-2.0-Mini",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Medium:Doubao-Seed-2.0-Mini",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Medium",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 4000.0,
+      "unitPriceCnyPerM": 0.05
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.0-Lite",
+      "canonicalModelId": "doubao-seed-2-0-lite",
+      "canonicalModel": "Doubao-Seed-2.0-Lite",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Medium:Doubao-Seed-2.0-Lite",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Medium",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 2000.0,
+      "unitPriceCnyPerM": 0.1
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "DeepSeek-V4-Flash-0731",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:字节·方舟:Medium:DeepSeek-V4-Flash-0731",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Medium",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 2000.0,
+      "unitPriceCnyPerM": 0.1
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "GLM-5.3-Flash",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:字节·方舟:Medium:GLM-5.3-Flash",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Medium",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 4000.0,
+      "unitPriceCnyPerM": 0.05
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.1-Turbo",
+      "canonicalModelId": "doubao-seed-2-1-turbo",
+      "canonicalModel": "Doubao-Seed-2.1-Turbo",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Medium:Doubao-Seed-2.1-Turbo",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Medium",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 400.0,
+      "unitPriceCnyPerM": 0.5
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-Evolving",
+      "canonicalModelId": "doubao-seed-evolving",
+      "canonicalModel": "Doubao-Seed-Evolving",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Medium:Doubao-Seed-Evolving",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Medium",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 400.0,
+      "unitPriceCnyPerM": 0.5
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "MiniMax-M3",
+      "canonicalModelId": "minimax-m3",
+      "canonicalModel": "MiniMax-M3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.3968506399702,
+          "configuration": "MiniMax-M3"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Medium:MiniMax-M3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Medium",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 400.0,
+      "unitPriceCnyPerM": 0.5
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Kimi-K2.7-Code",
+      "canonicalModelId": "kimi-k2-7-code",
+      "canonicalModel": "Kimi-K2.7-Code",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 43,
+          "scoreExact": 43.0244715223736,
+          "configuration": "Kimi K2.7 Code"
+        },
+        "deepSWE": {
+          "score": 31,
+          "scoreExact": 30.53097345132743,
+          "configuration": null,
+          "confidenceInterval": 1,
+          "confidenceIntervalExact": 0.5007016522460913
+        }
+      },
+      "id": "subscription:字节·方舟:Medium:Kimi-K2.7-Code",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Medium",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 222.2,
+      "unitPriceCnyPerM": 0.9
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "GLM-5.3",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:字节·方舟:Medium:GLM-5.3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Medium",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 222.2,
+      "unitPriceCnyPerM": 0.9
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "DeepSeek-V4-Pro-0813",
+      "canonicalModelId": "deepseek-v4-pro-0813",
+      "canonicalModel": "DeepSeek-V4-Pro-0813",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 53.1976849297815,
+          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 62.83185840707964,
+          "configuration": "max",
+          "confidenceInterval": 6,
+          "confidenceIntervalExact": 6.333430597228876
+        }
+      },
+      "id": "subscription:字节·方舟:Medium:DeepSeek-V4-Pro-0813",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Medium",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 181.8,
+      "unitPriceCnyPerM": 1.1
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Kimi-K3",
+      "canonicalModelId": "kimi-k3",
+      "canonicalModel": "Kimi-K3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.6994671342592,
+          "configuration": "Kimi K3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.51441241685144,
+          "configuration": "max",
+          "confidenceInterval": 5,
+          "confidenceIntervalExact": 4.53701407928232
+        }
+      },
+      "id": "subscription:字节·方舟:Medium:Kimi-K3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Medium",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 100.0,
+      "unitPriceCnyPerM": 2.0
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.0-Mini",
+      "canonicalModelId": "doubao-seed-2-0-mini",
+      "canonicalModel": "Doubao-Seed-2.0-Mini",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Large:Doubao-Seed-2.0-Mini",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Large",
+      "originalMonthlyFee": 500.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 500.0,
+      "monthlyTokenInM": 10000.0,
+      "unitPriceCnyPerM": 0.05
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.0-Lite",
+      "canonicalModelId": "doubao-seed-2-0-lite",
+      "canonicalModel": "Doubao-Seed-2.0-Lite",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Large:Doubao-Seed-2.0-Lite",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Large",
+      "originalMonthlyFee": 500.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 500.0,
+      "monthlyTokenInM": 5000.0,
+      "unitPriceCnyPerM": 0.1
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "DeepSeek-V4-Flash-0731",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:字节·方舟:Large:DeepSeek-V4-Flash-0731",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Large",
+      "originalMonthlyFee": 500.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 500.0,
+      "monthlyTokenInM": 5000.0,
+      "unitPriceCnyPerM": 0.1
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "GLM-5.3-Flash",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:字节·方舟:Large:GLM-5.3-Flash",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Large",
+      "originalMonthlyFee": 500.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 500.0,
+      "monthlyTokenInM": 10000.0,
+      "unitPriceCnyPerM": 0.05
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.1-Turbo",
+      "canonicalModelId": "doubao-seed-2-1-turbo",
+      "canonicalModel": "Doubao-Seed-2.1-Turbo",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Large:Doubao-Seed-2.1-Turbo",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Large",
+      "originalMonthlyFee": 500.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 500.0,
+      "monthlyTokenInM": 1000.0,
+      "unitPriceCnyPerM": 0.5
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-Evolving",
+      "canonicalModelId": "doubao-seed-evolving",
+      "canonicalModel": "Doubao-Seed-Evolving",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Large:Doubao-Seed-Evolving",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Large",
+      "originalMonthlyFee": 500.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 500.0,
+      "monthlyTokenInM": 1000.0,
+      "unitPriceCnyPerM": 0.5
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "MiniMax-M3",
+      "canonicalModelId": "minimax-m3",
+      "canonicalModel": "MiniMax-M3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.3968506399702,
+          "configuration": "MiniMax-M3"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Large:MiniMax-M3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Large",
+      "originalMonthlyFee": 500.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 500.0,
+      "monthlyTokenInM": 1000.0,
+      "unitPriceCnyPerM": 0.5
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Kimi-K2.7-Code",
+      "canonicalModelId": "kimi-k2-7-code",
+      "canonicalModel": "Kimi-K2.7-Code",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 43,
+          "scoreExact": 43.0244715223736,
+          "configuration": "Kimi K2.7 Code"
+        },
+        "deepSWE": {
+          "score": 31,
+          "scoreExact": 30.53097345132743,
+          "configuration": null,
+          "confidenceInterval": 1,
+          "confidenceIntervalExact": 0.5007016522460913
+        }
+      },
+      "id": "subscription:字节·方舟:Large:Kimi-K2.7-Code",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Large",
+      "originalMonthlyFee": 500.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 500.0,
+      "monthlyTokenInM": 555.6,
+      "unitPriceCnyPerM": 0.9
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "GLM-5.3",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:字节·方舟:Large:GLM-5.3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Large",
+      "originalMonthlyFee": 500.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 500.0,
+      "monthlyTokenInM": 555.6,
+      "unitPriceCnyPerM": 0.9
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "DeepSeek-V4-Pro-0813",
+      "canonicalModelId": "deepseek-v4-pro-0813",
+      "canonicalModel": "DeepSeek-V4-Pro-0813",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 53.1976849297815,
+          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 62.83185840707964,
+          "configuration": "max",
+          "confidenceInterval": 6,
+          "confidenceIntervalExact": 6.333430597228876
+        }
+      },
+      "id": "subscription:字节·方舟:Large:DeepSeek-V4-Pro-0813",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Large",
+      "originalMonthlyFee": 500.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 500.0,
+      "monthlyTokenInM": 454.5,
+      "unitPriceCnyPerM": 1.1
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Kimi-K3",
+      "canonicalModelId": "kimi-k3",
+      "canonicalModel": "Kimi-K3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.6994671342592,
+          "configuration": "Kimi K3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.51441241685144,
+          "configuration": "max",
+          "confidenceInterval": 5,
+          "confidenceIntervalExact": 4.53701407928232
+        }
+      },
+      "id": "subscription:字节·方舟:Large:Kimi-K3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Large",
+      "originalMonthlyFee": 500.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 500.0,
+      "monthlyTokenInM": 250.0,
+      "unitPriceCnyPerM": 2.0
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.0-Mini",
+      "canonicalModelId": "doubao-seed-2-0-mini",
+      "canonicalModel": "Doubao-Seed-2.0-Mini",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Max:Doubao-Seed-2.0-Mini",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 1000.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 1000.0,
+      "monthlyTokenInM": 20000.0,
+      "unitPriceCnyPerM": 0.05
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.0-Lite",
+      "canonicalModelId": "doubao-seed-2-0-lite",
+      "canonicalModel": "Doubao-Seed-2.0-Lite",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Max:Doubao-Seed-2.0-Lite",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 1000.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 1000.0,
+      "monthlyTokenInM": 10000.0,
+      "unitPriceCnyPerM": 0.1
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "DeepSeek-V4-Flash-0731",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:字节·方舟:Max:DeepSeek-V4-Flash-0731",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 1000.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 1000.0,
+      "monthlyTokenInM": 10000.0,
+      "unitPriceCnyPerM": 0.1
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "GLM-5.3-Flash",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:字节·方舟:Max:GLM-5.3-Flash",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 1000.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 1000.0,
+      "monthlyTokenInM": 20000.0,
+      "unitPriceCnyPerM": 0.05
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.1-Turbo",
+      "canonicalModelId": "doubao-seed-2-1-turbo",
+      "canonicalModel": "Doubao-Seed-2.1-Turbo",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Max:Doubao-Seed-2.1-Turbo",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 1000.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 1000.0,
+      "monthlyTokenInM": 2000.0,
+      "unitPriceCnyPerM": 0.5
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-Evolving",
+      "canonicalModelId": "doubao-seed-evolving",
+      "canonicalModel": "Doubao-Seed-Evolving",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Max:Doubao-Seed-Evolving",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 1000.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 1000.0,
+      "monthlyTokenInM": 2000.0,
+      "unitPriceCnyPerM": 0.5
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "MiniMax-M3",
+      "canonicalModelId": "minimax-m3",
+      "canonicalModel": "MiniMax-M3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.3968506399702,
+          "configuration": "MiniMax-M3"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Max:MiniMax-M3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 1000.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 1000.0,
+      "monthlyTokenInM": 2000.0,
+      "unitPriceCnyPerM": 0.5
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Kimi-K2.7-Code",
+      "canonicalModelId": "kimi-k2-7-code",
+      "canonicalModel": "Kimi-K2.7-Code",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 43,
+          "scoreExact": 43.0244715223736,
+          "configuration": "Kimi K2.7 Code"
+        },
+        "deepSWE": {
+          "score": 31,
+          "scoreExact": 30.53097345132743,
+          "configuration": null,
+          "confidenceInterval": 1,
+          "confidenceIntervalExact": 0.5007016522460913
+        }
+      },
+      "id": "subscription:字节·方舟:Max:Kimi-K2.7-Code",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 1000.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 1000.0,
+      "monthlyTokenInM": 1111.1,
+      "unitPriceCnyPerM": 0.9
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "GLM-5.3",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:字节·方舟:Max:GLM-5.3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 1000.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 1000.0,
+      "monthlyTokenInM": 1111.1,
+      "unitPriceCnyPerM": 0.9
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "DeepSeek-V4-Pro-0813",
+      "canonicalModelId": "deepseek-v4-pro-0813",
+      "canonicalModel": "DeepSeek-V4-Pro-0813",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 53.1976849297815,
+          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 62.83185840707964,
+          "configuration": "max",
+          "confidenceInterval": 6,
+          "confidenceIntervalExact": 6.333430597228876
+        }
+      },
+      "id": "subscription:字节·方舟:Max:DeepSeek-V4-Pro-0813",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 1000.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 1000.0,
+      "monthlyTokenInM": 909.1,
+      "unitPriceCnyPerM": 1.1
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Kimi-K3",
+      "canonicalModelId": "kimi-k3",
+      "canonicalModel": "Kimi-K3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.6994671342592,
+          "configuration": "Kimi K3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.51441241685144,
+          "configuration": "max",
+          "confidenceInterval": 5,
+          "confidenceIntervalExact": 4.53701407928232
+        }
+      },
+      "id": "subscription:字节·方舟:Max:Kimi-K3",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max",
+      "originalMonthlyFee": 1000.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 1000.0,
+      "monthlyTokenInM": 500.0,
+      "unitPriceCnyPerM": 2.0
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.8-Max [day]",
+      "canonicalModelId": "qwen-3-8-max",
+      "canonicalModel": "Qwen-3.8-Max",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 58,
+          "scoreExact": 58.0774404479668,
+          "configuration": "Qwen3.8 Max"
+        },
+        "deepSWE": {
+          "score": 57,
+          "scoreExact": 57.46102449888642,
+          "configuration": "xhigh",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 2.6627926725075453
+        }
+      },
+      "id": "subscription:阿里·百炼:Lite:Qwen-3.8-Max [day]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 39.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 39.0,
+      "monthlyTokenInM": 32.8,
+      "unitPriceCnyPerM": 1.1878
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.8-Max [night]",
+      "canonicalModelId": "qwen-3-8-max",
+      "canonicalModel": "Qwen-3.8-Max",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 58,
+          "scoreExact": 58.0774404479668,
+          "configuration": "Qwen3.8 Max"
+        },
+        "deepSWE": {
+          "score": 57,
+          "scoreExact": 57.46102449888642,
+          "configuration": "xhigh",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 2.6627926725075453
+        }
+      },
+      "id": "subscription:阿里·百炼:Lite:Qwen-3.8-Max [night]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 39.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 39.0,
+      "monthlyTokenInM": 65.7,
+      "unitPriceCnyPerM": 0.5939
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.8-Flash",
+      "canonicalModelId": "qwen-3-8-flash",
+      "canonicalModel": "Qwen-3.8-Flash",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:阿里·百炼:Lite:Qwen-3.8-Flash",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 39.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 39.0,
+      "monthlyTokenInM": 488.9,
+      "unitPriceCnyPerM": 0.0798
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.7-Max",
+      "canonicalModelId": "qwen-3-7-max",
+      "canonicalModel": "Qwen-3.7-Max",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 47,
+          "scoreExact": 46.71222295444,
+          "configuration": "Qwen3.7 Max"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:阿里·百炼:Lite:Qwen-3.7-Max",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 39.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 39.0,
+      "monthlyTokenInM": 65.7,
+      "unitPriceCnyPerM": 0.5939
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.7-Plus [256K]",
+      "canonicalModelId": "qwen-3-7-plus",
+      "canonicalModel": "Qwen-3.7-Plus",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 39,
+          "scoreExact": 39.3745992994168,
+          "configuration": "Qwen3.7 Plus"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:阿里·百炼:Lite:Qwen-3.7-Plus [256K]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 39.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 39.0,
+      "monthlyTokenInM": 241.5,
+      "unitPriceCnyPerM": 0.1615
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.6-Flash [256K]",
+      "canonicalModelId": "qwen-3-6-flash",
+      "canonicalModel": "Qwen-3.6-Flash",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:阿里·百炼:Lite:Qwen-3.6-Flash [256K]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 39.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 39.0,
+      "monthlyTokenInM": 310.0,
+      "unitPriceCnyPerM": 0.1258
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "DeepSeek-V4-Pro-Preview",
+      "canonicalModelId": "deepseek-v4-pro-preview",
+      "canonicalModel": "DeepSeek-V4-Pro-Preview",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.2683460762151,
+          "configuration": "DeepSeek V4 Pro (Reasoning, Max Effort)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:阿里·百炼:Lite:DeepSeek-V4-Pro-Preview",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 39.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 39.0,
+      "monthlyTokenInM": 33.5,
+      "unitPriceCnyPerM": 1.1644
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "DeepSeek-V4-Pro-0813 [day]",
+      "canonicalModelId": "deepseek-v4-pro-0813",
+      "canonicalModel": "DeepSeek-V4-Pro-0813",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 53.1976849297815,
+          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 62.83185840707964,
+          "configuration": "max",
+          "confidenceInterval": 6,
+          "confidenceIntervalExact": 6.333430597228876
+        }
+      },
+      "id": "subscription:阿里·百炼:Lite:DeepSeek-V4-Pro-0813 [day]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 39.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 39.0,
+      "monthlyTokenInM": 43.8,
+      "unitPriceCnyPerM": 0.8908
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "DeepSeek-V4-Pro-0813 [night]",
+      "canonicalModelId": "deepseek-v4-pro-0813",
+      "canonicalModel": "DeepSeek-V4-Pro-0813",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 53.1976849297815,
+          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 62.83185840707964,
+          "configuration": "max",
+          "confidenceInterval": 6,
+          "confidenceIntervalExact": 6.333430597228876
+        }
+      },
+      "id": "subscription:阿里·百炼:Lite:DeepSeek-V4-Pro-0813 [night]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 39.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 39.0,
+      "monthlyTokenInM": 87.6,
+      "unitPriceCnyPerM": 0.4454
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "DeepSeek-V4-Flash-0731 [busy]",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:阿里·百炼:Lite:DeepSeek-V4-Flash-0731 [busy]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 39.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 39.0,
+      "monthlyTokenInM": 131.3,
+      "unitPriceCnyPerM": 0.2969
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "DeepSeek-V4-Flash-0731 [idle]",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:阿里·百炼:Lite:DeepSeek-V4-Flash-0731 [idle]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 39.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 39.0,
+      "monthlyTokenInM": 262.7,
+      "unitPriceCnyPerM": 0.1485
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "GLM-5.2",
+      "canonicalModelId": "glm-5-2",
+      "canonicalModel": "GLM-5.2",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 52.6409563457385,
+          "configuration": "GLM-5.2 (max)"
+        },
+        "deepSWE": {
+          "score": 44,
+          "scoreExact": 43.77777777777778,
+          "configuration": "max",
+          "confidenceInterval": 2,
+          "confidenceIntervalExact": 1.725629620580811
+        }
+      },
+      "id": "subscription:阿里·百炼:Lite:GLM-5.2",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 39.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 39.0,
+      "monthlyTokenInM": 41.2,
+      "unitPriceCnyPerM": 0.9471
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.8-Max [day]",
+      "canonicalModelId": "qwen-3-8-max",
+      "canonicalModel": "Qwen-3.8-Max",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 58,
+          "scoreExact": 58.0774404479668,
+          "configuration": "Qwen3.8 Max"
+        },
+        "deepSWE": {
+          "score": 57,
+          "scoreExact": 57.46102449888642,
+          "configuration": "xhigh",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 2.6627926725075453
+        }
+      },
+      "id": "subscription:阿里·百炼:Standard:Qwen-3.8-Max [day]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Standard",
+      "originalMonthlyFee": 139.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 139.0,
+      "monthlyTokenInM": 131.3,
+      "unitPriceCnyPerM": 1.0583
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.8-Max [night]",
+      "canonicalModelId": "qwen-3-8-max",
+      "canonicalModel": "Qwen-3.8-Max",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 58,
+          "scoreExact": 58.0774404479668,
+          "configuration": "Qwen3.8 Max"
+        },
+        "deepSWE": {
+          "score": 57,
+          "scoreExact": 57.46102449888642,
+          "configuration": "xhigh",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 2.6627926725075453
+        }
+      },
+      "id": "subscription:阿里·百炼:Standard:Qwen-3.8-Max [night]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Standard",
+      "originalMonthlyFee": 139.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 139.0,
+      "monthlyTokenInM": 262.7,
+      "unitPriceCnyPerM": 0.5292
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.8-Flash",
+      "canonicalModelId": "qwen-3-8-flash",
+      "canonicalModel": "Qwen-3.8-Flash",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:阿里·百炼:Standard:Qwen-3.8-Flash",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Standard",
+      "originalMonthlyFee": 139.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 139.0,
+      "monthlyTokenInM": 1955.6,
+      "unitPriceCnyPerM": 0.0711
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.7-Max",
+      "canonicalModelId": "qwen-3-7-max",
+      "canonicalModel": "Qwen-3.7-Max",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 47,
+          "scoreExact": 46.71222295444,
+          "configuration": "Qwen3.7 Max"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:阿里·百炼:Standard:Qwen-3.7-Max",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Standard",
+      "originalMonthlyFee": 139.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 139.0,
+      "monthlyTokenInM": 262.7,
+      "unitPriceCnyPerM": 0.5292
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.7-Plus [256K]",
+      "canonicalModelId": "qwen-3-7-plus",
+      "canonicalModel": "Qwen-3.7-Plus",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 39,
+          "scoreExact": 39.3745992994168,
+          "configuration": "Qwen3.7 Plus"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:阿里·百炼:Standard:Qwen-3.7-Plus [256K]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Standard",
+      "originalMonthlyFee": 139.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 139.0,
+      "monthlyTokenInM": 966.0,
+      "unitPriceCnyPerM": 0.1439
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.6-Flash [256K]",
+      "canonicalModelId": "qwen-3-6-flash",
+      "canonicalModel": "Qwen-3.6-Flash",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:阿里·百炼:Standard:Qwen-3.6-Flash [256K]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Standard",
+      "originalMonthlyFee": 139.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 139.0,
+      "monthlyTokenInM": 1240.1,
+      "unitPriceCnyPerM": 0.1121
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "DeepSeek-V4-Pro-Preview",
+      "canonicalModelId": "deepseek-v4-pro-preview",
+      "canonicalModel": "DeepSeek-V4-Pro-Preview",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.2683460762151,
+          "configuration": "DeepSeek V4 Pro (Reasoning, Max Effort)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:阿里·百炼:Standard:DeepSeek-V4-Pro-Preview",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Standard",
+      "originalMonthlyFee": 139.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 139.0,
+      "monthlyTokenInM": 134.0,
+      "unitPriceCnyPerM": 1.0375
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "DeepSeek-V4-Pro-0813 [day]",
+      "canonicalModelId": "deepseek-v4-pro-0813",
+      "canonicalModel": "DeepSeek-V4-Pro-0813",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 53.1976849297815,
+          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 62.83185840707964,
+          "configuration": "max",
+          "confidenceInterval": 6,
+          "confidenceIntervalExact": 6.333430597228876
+        }
+      },
+      "id": "subscription:阿里·百炼:Standard:DeepSeek-V4-Pro-0813 [day]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Standard",
+      "originalMonthlyFee": 139.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 139.0,
+      "monthlyTokenInM": 175.1,
+      "unitPriceCnyPerM": 0.7938
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "DeepSeek-V4-Pro-0813 [night]",
+      "canonicalModelId": "deepseek-v4-pro-0813",
+      "canonicalModel": "DeepSeek-V4-Pro-0813",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 53.1976849297815,
+          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 62.83185840707964,
+          "configuration": "max",
+          "confidenceInterval": 6,
+          "confidenceIntervalExact": 6.333430597228876
+        }
+      },
+      "id": "subscription:阿里·百炼:Standard:DeepSeek-V4-Pro-0813 [night]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Standard",
+      "originalMonthlyFee": 139.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 139.0,
+      "monthlyTokenInM": 350.2,
+      "unitPriceCnyPerM": 0.3969
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "DeepSeek-V4-Flash-0731 [busy]",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:阿里·百炼:Standard:DeepSeek-V4-Flash-0731 [busy]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Standard",
+      "originalMonthlyFee": 139.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 139.0,
+      "monthlyTokenInM": 525.3,
+      "unitPriceCnyPerM": 0.2646
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "DeepSeek-V4-Flash-0731 [idle]",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:阿里·百炼:Standard:DeepSeek-V4-Flash-0731 [idle]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Standard",
+      "originalMonthlyFee": 139.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 139.0,
+      "monthlyTokenInM": 1050.7,
+      "unitPriceCnyPerM": 0.1323
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "GLM-5.2",
+      "canonicalModelId": "glm-5-2",
+      "canonicalModel": "GLM-5.2",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 52.6409563457385,
+          "configuration": "GLM-5.2 (max)"
+        },
+        "deepSWE": {
+          "score": 44,
+          "scoreExact": 43.77777777777778,
+          "configuration": "max",
+          "confidenceInterval": 2,
+          "confidenceIntervalExact": 1.725629620580811
+        }
+      },
+      "id": "subscription:阿里·百炼:Standard:GLM-5.2",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Standard",
+      "originalMonthlyFee": 139.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 139.0,
+      "monthlyTokenInM": 164.7,
+      "unitPriceCnyPerM": 0.8439
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.8-Max [day]",
+      "canonicalModelId": "qwen-3-8-max",
+      "canonicalModel": "Qwen-3.8-Max",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 58,
+          "scoreExact": 58.0774404479668,
+          "configuration": "Qwen3.8 Max"
+        },
+        "deepSWE": {
+          "score": 57,
+          "scoreExact": 57.46102449888642,
+          "configuration": "xhigh",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 2.6627926725075453
+        }
+      },
+      "id": "subscription:阿里·百炼:Pro:Qwen-3.8-Max [day]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 525.3,
+      "unitPriceCnyPerM": 0.9498
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.8-Max [night]",
+      "canonicalModelId": "qwen-3-8-max",
+      "canonicalModel": "Qwen-3.8-Max",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 58,
+          "scoreExact": 58.0774404479668,
+          "configuration": "Qwen3.8 Max"
+        },
+        "deepSWE": {
+          "score": 57,
+          "scoreExact": 57.46102449888642,
+          "configuration": "xhigh",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 2.6627926725075453
+        }
+      },
+      "id": "subscription:阿里·百炼:Pro:Qwen-3.8-Max [night]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 1050.7,
+      "unitPriceCnyPerM": 0.4749
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.8-Flash",
+      "canonicalModelId": "qwen-3-8-flash",
+      "canonicalModel": "Qwen-3.8-Flash",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:阿里·百炼:Pro:Qwen-3.8-Flash",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 7822.4,
+      "unitPriceCnyPerM": 0.0638
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.7-Max",
+      "canonicalModelId": "qwen-3-7-max",
+      "canonicalModel": "Qwen-3.7-Max",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 47,
+          "scoreExact": 46.71222295444,
+          "configuration": "Qwen3.7 Max"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:阿里·百炼:Pro:Qwen-3.7-Max",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 1050.7,
+      "unitPriceCnyPerM": 0.4749
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.7-Plus [256K]",
+      "canonicalModelId": "qwen-3-7-plus",
+      "canonicalModel": "Qwen-3.7-Plus",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 39,
+          "scoreExact": 39.3745992994168,
+          "configuration": "Qwen3.7 Plus"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:阿里·百炼:Pro:Qwen-3.7-Plus [256K]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 3864.0,
+      "unitPriceCnyPerM": 0.1291
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "Qwen-3.6-Flash [256K]",
+      "canonicalModelId": "qwen-3-6-flash",
+      "canonicalModel": "Qwen-3.6-Flash",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:阿里·百炼:Pro:Qwen-3.6-Flash [256K]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 4960.3,
+      "unitPriceCnyPerM": 0.1006
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "DeepSeek-V4-Pro-Preview",
+      "canonicalModelId": "deepseek-v4-pro-preview",
+      "canonicalModel": "DeepSeek-V4-Pro-Preview",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.2683460762151,
+          "configuration": "DeepSeek V4 Pro (Reasoning, Max Effort)"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:阿里·百炼:Pro:DeepSeek-V4-Pro-Preview",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 535.9,
+      "unitPriceCnyPerM": 0.9311
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "DeepSeek-V4-Pro-0813 [day]",
+      "canonicalModelId": "deepseek-v4-pro-0813",
+      "canonicalModel": "DeepSeek-V4-Pro-0813",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 53.1976849297815,
+          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 62.83185840707964,
+          "configuration": "max",
+          "confidenceInterval": 6,
+          "confidenceIntervalExact": 6.333430597228876
+        }
+      },
+      "id": "subscription:阿里·百炼:Pro:DeepSeek-V4-Pro-0813 [day]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 700.5,
+      "unitPriceCnyPerM": 0.7124
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "DeepSeek-V4-Pro-0813 [night]",
+      "canonicalModelId": "deepseek-v4-pro-0813",
+      "canonicalModel": "DeepSeek-V4-Pro-0813",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 53.1976849297815,
+          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 62.83185840707964,
+          "configuration": "max",
+          "confidenceInterval": 6,
+          "confidenceIntervalExact": 6.333430597228876
+        }
+      },
+      "id": "subscription:阿里·百炼:Pro:DeepSeek-V4-Pro-0813 [night]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 1400.9,
+      "unitPriceCnyPerM": 0.3562
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "DeepSeek-V4-Flash-0731 [busy]",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:阿里·百炼:Pro:DeepSeek-V4-Flash-0731 [busy]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 2101.4,
+      "unitPriceCnyPerM": 0.2375
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "DeepSeek-V4-Flash-0731 [idle]",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "subscription:阿里·百炼:Pro:DeepSeek-V4-Flash-0731 [idle]",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 4202.8,
+      "unitPriceCnyPerM": 0.1187
+    },
+    {
+      "vendor": "阿里·百炼",
+      "model": "GLM-5.2",
+      "canonicalModelId": "glm-5-2",
+      "canonicalModel": "GLM-5.2",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 52.6409563457385,
+          "configuration": "GLM-5.2 (max)"
+        },
+        "deepSWE": {
+          "score": 44,
+          "scoreExact": 43.77777777777778,
+          "configuration": "max",
+          "confidenceInterval": 2,
+          "confidenceIntervalExact": 1.725629620580811
+        }
+      },
+      "id": "subscription:阿里·百炼:Pro:GLM-5.2",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 499.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 499.0,
+      "monthlyTokenInM": 658.8,
+      "unitPriceCnyPerM": 0.7574
+    },
+    {
+      "vendor": "DeepSeek",
+      "model": "DeepSeek-V4-Flash-0731 [off-peak]",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "payg:DeepSeek:DeepSeek-V4-Flash-0731 [off-peak]",
+      "billingType": "payg",
+      "platformType": "API",
+      "plan": "按量 API",
+      "originalCurrency": "¥",
+      "unitPriceCnyPerM": 0.1444
+    },
+    {
+      "vendor": "DeepSeek",
+      "model": "DeepSeek-V4-Flash-0731 [peak]",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
+      },
+      "id": "payg:DeepSeek:DeepSeek-V4-Flash-0731 [peak]",
+      "billingType": "payg",
+      "platformType": "API",
+      "plan": "按量 API",
+      "originalCurrency": "¥",
+      "unitPriceCnyPerM": 0.2888
+    },
+    {
+      "vendor": "DeepSeek",
+      "model": "DeepSeek-V4-Flash-Vision-Exp [off-peak]",
+      "canonicalModelId": "deepseek-v4-flash-vision-exp",
+      "canonicalModel": "DeepSeek-V4-Flash-Vision-Exp",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 51,
+          "scoreExact": 51.4736425212072,
+          "configuration": "DeepSeek V4 Flash Vision (Reasoning, Max Effort)"
+        },
+        "deepSWE": null
+      },
+      "id": "payg:DeepSeek:DeepSeek-V4-Flash-Vision-Exp [off-peak]",
+      "billingType": "payg",
+      "platformType": "API",
+      "plan": "按量 API",
+      "originalCurrency": "¥",
+      "unitPriceCnyPerM": 0.1444
+    },
+    {
+      "vendor": "DeepSeek",
+      "model": "DeepSeek-V4-Flash-Vision-Exp [peak]",
+      "canonicalModelId": "deepseek-v4-flash-vision-exp",
+      "canonicalModel": "DeepSeek-V4-Flash-Vision-Exp",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 51,
+          "scoreExact": 51.4736425212072,
+          "configuration": "DeepSeek V4 Flash Vision (Reasoning, Max Effort)"
+        },
+        "deepSWE": null
+      },
+      "id": "payg:DeepSeek:DeepSeek-V4-Flash-Vision-Exp [peak]",
+      "billingType": "payg",
+      "platformType": "API",
+      "plan": "按量 API",
+      "originalCurrency": "¥",
+      "unitPriceCnyPerM": 0.2888
+    },
+    {
+      "vendor": "DeepSeek",
+      "model": "DeepSeek-V4-Pro-0813 [off-peak]",
+      "canonicalModelId": "deepseek-v4-pro-0813",
+      "canonicalModel": "DeepSeek-V4-Pro-0813",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 53.1976849297815,
+          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 62.83185840707964,
+          "configuration": "max",
+          "confidenceInterval": 6,
+          "confidenceIntervalExact": 6.333430597228876
+        }
+      },
+      "id": "payg:DeepSeek:DeepSeek-V4-Pro-0813 [off-peak]",
+      "billingType": "payg",
+      "platformType": "API",
+      "plan": "按量 API",
+      "originalCurrency": "¥",
+      "unitPriceCnyPerM": 0.4332
+    },
+    {
+      "vendor": "DeepSeek",
+      "model": "DeepSeek-V4-Pro-0813 [peak]",
+      "canonicalModelId": "deepseek-v4-pro-0813",
+      "canonicalModel": "DeepSeek-V4-Pro-0813",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 53.1976849297815,
+          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 62.83185840707964,
+          "configuration": "max",
+          "confidenceInterval": 6,
+          "confidenceIntervalExact": 6.333430597228876
+        }
+      },
+      "id": "payg:DeepSeek:DeepSeek-V4-Pro-0813 [peak]",
+      "billingType": "payg",
+      "platformType": "API",
+      "plan": "按量 API",
+      "originalCurrency": "¥",
+      "unitPriceCnyPerM": 0.8663
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+.usage-view { display: flex; flex-direction: column; gap: 18px; width: 100%; color: #172033; }
+.usage-heading { display: flex; align-items: end; justify-content: space-between; gap: 28px; padding: 8px 4px 0; }
+.usage-heading h2 { margin: 2px 0 0; font-size: clamp(1.45rem, 2.5vw, 2rem); letter-spacing: -.03em; }
+.usage-heading > p { max-width: 660px; margin: 0; color: #596579; line-height: 1.7; }
+.usage-eyebrow { margin: 0; color: #1677ff; font-size: 12px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+.usage-method-note { padding: 13px 16px; border: 1px solid #cfe2ff; border-radius: 12px; background: #f3f8ff; color: #43536a; font-size: 13px; line-height: 1.65; }
+.usage-method-note strong { color: #1f4f91; }
+.usage-filters.filter-bar { margin: 0; }
+.usage-filters .filter-btn { min-height: 42px; }
+.usage-filters .dropdown-menu { min-width: 280px; }
+.usage-model-menu { width: min(340px, calc(100vw - 32px)); }
+.usage-search { box-sizing: border-box; width: 100%; margin-bottom: 12px; padding: 10px 12px; border: 1px solid rgba(23,32,51,.12); border-radius: 12px; background: rgba(255,255,255,.86); color: var(--text-primary); font: inherit; font-size: 13px; outline: none; }
+.usage-search:focus { border-color: rgba(15,118,110,.45); box-shadow: 0 0 0 3px rgba(15,118,110,.08); }
+.usage-inline-filter { cursor: default; }
+.usage-inline-filter:hover { transform: none; }
+.usage-inline-filter select, .usage-inline-filter input { min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text-primary); font: inherit; font-size: 13px; font-weight: 650; }
+.usage-inline-filter select { width: 72px; cursor: pointer; }
+.usage-score-filter input { width: 54px; }
+.usage-score-filter input::placeholder { color: var(--text-tertiary); opacity: 1; }
+.usage-color-control { display: inline-flex; align-items: center; gap: 9px; min-height: 42px; padding: 4px 6px 4px 14px; border: 1px solid rgba(23,32,51,.08); border-radius: 999px; background: rgba(255,255,255,.72); color: var(--text-secondary); font-size: 13px; font-weight: 500; box-shadow: 0 10px 20px rgba(23,32,51,.05); }
+.usage-color-control .usage-segments { border: 0; background: rgba(23,32,51,.06); }
+.usage-counts { color: var(--text-tertiary); font-size: 12px; white-space: nowrap; }
+.usage-color-legend { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 7px 12px; padding: 1px 5px; color: #657187; font-size: 12px; }
+.usage-color-legend strong { color: var(--text-secondary); font-size: 12px; white-space: nowrap; }
+.usage-color-legend > div { display: flex; flex-wrap: wrap; gap: 7px 14px; max-height: 66px; overflow: auto; scrollbar-width: thin; }
+.usage-color-legend span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.usage-color-legend i { width: 9px; height: 9px; border-radius: 50%; }
+.usage-chart-card { position: relative; padding: 20px 22px 14px; border: 1px solid #dfe5ed; border-radius: 18px; background: #fff; box-shadow: 0 12px 32px rgba(30,48,73,.07); }
+.usage-chart-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.usage-chart-head h3 { margin: 0; color: #172033; font-size: 19px; }
+.usage-chart-head p { margin: 6px 0 0; color: #6a7689; font-size: 13px; }
+.usage-chart-head label { display: flex; align-items: center; gap: 7px; color: #68758a; font-size: 12px; white-space: nowrap; }
+.usage-chart-head select { min-height: 34px; padding: 0 28px 0 9px; border: 1px solid #d8dee8; border-radius: 8px; background: #fff; }
+.usage-chart-controls { display: flex; align-items: center; gap: 12px; }
+.usage-segments { display: flex; padding: 2px; border: 1px solid #d8dee8; border-radius: 9px; background: #f4f6f9; }
+.usage-segments button { padding: 6px 10px; border: 0; border-radius: 6px; background: transparent; color: #596579; cursor: pointer; }
+.usage-segments button.is-active { background: #172033; color: #fff; }
+.usage-shape-legend { display: flex; justify-content: flex-end; gap: 16px; margin: 10px 2px -4px; color: #68758a; font-size: 12px; }
+.usage-shape-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.shape-circle, .shape-diamond { width: 9px; height: 9px; background: #6b7b91; }
+.shape-circle { border-radius: 50%; }
+.shape-diamond { transform: rotate(45deg); }
+.usage-chart { width: 100%; height: 470px; margin-top: 4px; }
+.usage-empty { position: absolute; inset: 50% auto auto 50%; transform: translate(-50%, -10%); z-index: 3; padding: 13px 18px; border-radius: 10px; background: rgba(248,250,252,.95); color: #69768a; font-size: 13px; box-shadow: 0 4px 18px rgba(31,48,70,.08); }
+.usage-tooltip { min-width: 190px; line-height: 1.65; color: #263449; }
+.usage-tooltip strong { display: block; margin-bottom: 3px; color: #111827; }
+.usage-load-error { width: 100%; padding: 34px; border: 1px solid #fecaca; border-radius: 14px; background: #fff7f7; color: #991b1b; text-align: center; }
+
+@media (max-width: 760px) {
+  .usage-heading { display: block; padding-top: 0; }
+  .usage-heading > p { margin-top: 8px; font-size: 13px; }
+  .usage-filters.filter-bar { align-items: stretch; padding: 14px; border-radius: 22px; }
+  .usage-filters .filter-dropdown { flex: 1 1 130px; }
+  .usage-filters .filter-dropdown > .filter-btn { width: 100%; justify-content: space-between; }
+  .usage-inline-filter { flex: 1 1 145px; justify-content: space-between; }
+  .usage-score-filter { flex-basis: 100%; }
+  .usage-inline-filter select, .usage-inline-filter input { text-align: right; }
+  .usage-color-control { flex: 1 1 100%; justify-content: space-between; }
+  .usage-filters .filter-trailing { width: 100%; margin-left: 0; justify-content: space-between; }
+  .usage-filters .dropdown-menu { position: fixed; z-index: 100; top: 50%; left: 50%; width: calc(100vw - 32px); max-height: 70vh; transform: translate(-50%, -50%); animation-name: dropdownFadeCenter; }
+  .usage-color-legend { grid-template-columns: 1fr; }
+  .usage-color-legend > div { max-height: 72px; }
+  .usage-chart-card { padding: 16px 10px 10px; border-radius: 14px; }
+  .usage-chart-head { display: block; padding: 0 6px; }
+  .usage-chart-controls { justify-content: space-between; margin-top: 12px; }
+  .usage-chart-head > label { margin-top: 12px; }
+  .usage-shape-legend { justify-content: flex-start; padding-left: 6px; }
+  .usage-chart { height: 390px; }
+}

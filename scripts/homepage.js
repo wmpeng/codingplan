@@ -2450,6 +2450,24 @@
             }
         }
 
+        async function ensureUsageViewMounted() {
+            const root = document.getElementById('view-usage');
+            if (!root) return;
+            if (!document.querySelector('link[data-usage-css="1"]')) {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = 'styles/model-comparison.css?v=260829b';
+                link.dataset.usageCss = '1';
+                document.head.appendChild(link);
+            }
+            if (typeof window.mountModelComparisonView !== 'function') {
+                await loadScriptOnce('scripts/model-comparison.js?v=260829b');
+            }
+            if (typeof window.mountModelComparisonView === 'function') {
+                await window.mountModelComparisonView(root);
+            }
+        }
+
         async function ensureMonitorViewMounted() {
             const root = document.getElementById('view-monitor');
             if (!root) return;
@@ -2494,6 +2512,13 @@
                     console.error('按量计费视图加载失败:', err);
                 }
             }
+            if (view === 'usage') {
+                try {
+                    await ensureUsageViewMounted();
+                } catch (err) {
+                    console.error('额度/价格对比视图加载失败:', err);
+                }
+            }
             if (view === 'plans') {
                 requestAnimationFrame(() => {
                     window.dispatchEvent(new Event('resize'));
@@ -2521,6 +2546,7 @@
                 getPanels: () => ({
                     platforms: document.getElementById('view-platforms'),
                     plans: document.getElementById('view-plans'),
+                    usage: document.getElementById('view-usage'),
                     payg: document.getElementById('view-payg'),
                     monitor: document.getElementById('view-monitor')
                 }),
