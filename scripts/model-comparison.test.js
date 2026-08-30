@@ -50,23 +50,25 @@ test('platform colors are stable regardless of input order', () => {
 });
 
 test('legend solo mode filters by the active color dimension', () => {
-  assert.equal(getPointColorKey(points[0], 'vendor'), 'A');
+  assert.equal(getPointColorKey(points[0], 'vendor'), getPointPlatformKey(points[0]));
   assert.equal(getPointColorKey(points[0], 'model'), 'm1');
-  assert.deepEqual(filterBySoloColorKey(points, 'vendor', 'A'), [points[0], points[2]]);
+  assert.deepEqual(filterBySoloColorKey(points, 'vendor', getPointPlatformKey(points[0])), [points[0]]);
   assert.deepEqual(filterBySoloColorKey(points, 'model', 'm2'), [points[1]]);
   assert.deepEqual(filterBySoloColorKey(points, 'vendor', null), points);
 });
 
 test('single visible model or platform selects the opposite point label', () => {
+  const samePlatformModel = { ...points[0], canonicalModelId: 'm4' };
   assert.equal(getSoloPointLabelField([points[0]]), 'vendor');
-  assert.equal(getSoloPointLabelField([points[0], points[2]]), 'model');
+  assert.equal(getSoloPointLabelField([points[0], samePlatformModel]), 'model');
+  assert.equal(getSoloPointLabelField([points[0], points[2]]), null);
   assert.equal(getSoloPointLabelField([points[0], points[1]]), null);
 });
 
 test('platform and model filters match legend solo point-label behavior', () => {
   const samePlatformModel = { ...points[0], canonicalModelId: 'm4' };
   const platformFromFilter = filterPoints([...points, samePlatformModel], { platforms: new Set([getPointPlatformKey(points[0])]), multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '' });
-  const platformFromLegend = filterBySoloColorKey(points, 'vendor', 'A');
+  const platformFromLegend = filterBySoloColorKey([...points, samePlatformModel], 'vendor', getPointPlatformKey(points[0]));
   assert.equal(getSoloPointLabelField(platformFromFilter), 'model');
   assert.equal(getSoloPointLabelField(platformFromLegend), 'model');
 
@@ -78,7 +80,9 @@ test('platform and model filters match legend solo point-label behavior', () => 
 
 test('platform filter key separates plan types for the same vendor', () => {
   assert.notEqual(getPointPlatformKey(points[0]), getPointPlatformKey(points[2]));
+  assert.notEqual(getPointColorKey(points[0], 'vendor'), getPointColorKey(points[2], 'vendor'));
   assert.deepEqual(filterPoints(points, { platforms: new Set([getPointPlatformKey(points[0])]), multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '' }), [points[0]]);
+  assert.deepEqual(filterBySoloColorKey(points, 'vendor', getPointPlatformKey(points[0])), [points[0]]);
 });
 
 test('model point labels preserve complete bracket qualifiers', () => {

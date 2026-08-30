@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-29T15:10:53Z",
+  "generatedAt": "2026-08-30T17:09:37Z",
   "sourceGeneratedAt": {
-    "usage": "2026-08-29",
+    "usage": "2026-08-31",
     "modelInfo": "2026-08-29T14:42:53Z"
   },
   "usdToCnyRate": 6.8,
@@ -23,17 +23,23 @@
     }
   },
   "coverage": {
-    "subscriptionCandidates": 213,
-    "subscriptionPoints": 200,
-    "subscriptionChartPoints": 200,
+    "subscriptionCandidates": 236,
+    "subscriptionPoints": 211,
+    "subscriptionChartPoints": 211,
     "payAsYouGoCandidates": 6,
     "payAsYouGoPoints": 6,
-    "unmatchedModels": 0,
+    "unmatchedModels": 12,
     "missingMonthlyValues": 3,
     "missingUnitPrices": 3,
     "unsupportedCurrencies": 10
   },
-  "unmatchedModelNames": [],
+  "unmatchedModelNames": [
+    "Auto",
+    "Claude Opus 5",
+    "Claude Sonnet 5",
+    "Doubao-Seed-2.1-Turbo [256K]",
+    "Kimi-K2.7-Code [256K]"
+  ],
   "points": [
     {
       "vendor": "Codex",
@@ -214,66 +220,6 @@
       "monthlyFeeCny": 1360.0,
       "monthlyTokenInM": 96000.0,
       "unitPriceCnyPerM": 0.01428
-    },
-    {
-      "vendor": "Claude",
-      "model": "Claude Opus",
-      "canonicalModelId": "claude-opus",
-      "canonicalModel": "Claude Opus",
-      "multimodal": "unknown",
-      "scores": {
-        "artificialAnalysis": null,
-        "deepSWE": null
-      },
-      "id": "subscription:Claude:Pro:Claude Opus",
-      "billingType": "subscription",
-      "platformType": "Token Plan",
-      "plan": "Pro",
-      "originalMonthlyFee": 20.0,
-      "originalCurrency": "$",
-      "monthlyFeeCny": 136.0,
-      "monthlyTokenInM": 401.3,
-      "unitPriceCnyPerM": 0.33864
-    },
-    {
-      "vendor": "Claude",
-      "model": "Claude Opus",
-      "canonicalModelId": "claude-opus",
-      "canonicalModel": "Claude Opus",
-      "multimodal": "unknown",
-      "scores": {
-        "artificialAnalysis": null,
-        "deepSWE": null
-      },
-      "id": "subscription:Claude:Max *5:Claude Opus",
-      "billingType": "subscription",
-      "platformType": "Token Plan",
-      "plan": "Max *5",
-      "originalMonthlyFee": 100.0,
-      "originalCurrency": "$",
-      "monthlyFeeCny": 680.0,
-      "monthlyTokenInM": 3344.5,
-      "unitPriceCnyPerM": 0.20332
-    },
-    {
-      "vendor": "Claude",
-      "model": "Claude Opus",
-      "canonicalModelId": "claude-opus",
-      "canonicalModel": "Claude Opus",
-      "multimodal": "unknown",
-      "scores": {
-        "artificialAnalysis": null,
-        "deepSWE": null
-      },
-      "id": "subscription:Claude:Max *20:Claude Opus",
-      "billingType": "subscription",
-      "platformType": "Token Plan",
-      "plan": "Max *20",
-      "originalMonthlyFee": 200.0,
-      "originalCurrency": "$",
-      "monthlyFeeCny": 1360.0,
-      "monthlyTokenInM": 6689.0,
-      "unitPriceCnyPerM": 0.20332
     },
     {
       "vendor": "Kimi",
@@ -999,13 +945,13 @@
       },
       "id": "subscription:智谱AI:Lite:GLM-5.3 [off-peak]",
       "billingType": "subscription",
-      "platformType": "Coding Plan",
+      "platformType": "Token Plan",
       "plan": "Lite",
       "originalMonthlyFee": 118.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 118.0,
-      "monthlyTokenInM": 96.6,
-      "unitPriceCnyPerM": 1.2214
+      "monthlyTokenInM": 386.4,
+      "unitPriceCnyPerM": 0.3054
     },
     {
       "vendor": "智谱AI",
@@ -1029,13 +975,13 @@
       },
       "id": "subscription:智谱AI:Lite:GLM-5.3 [peak]",
       "billingType": "subscription",
-      "platformType": "Coding Plan",
+      "platformType": "Token Plan",
       "plan": "Lite",
       "originalMonthlyFee": 118.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 118.0,
-      "monthlyTokenInM": 48.3,
-      "unitPriceCnyPerM": 2.4428
+      "monthlyTokenInM": 193.2,
+      "unitPriceCnyPerM": 0.6107
     },
     {
       "vendor": "智谱AI",
@@ -1059,13 +1005,13 @@
       },
       "id": "subscription:智谱AI:Lite:GLM-5.3-Flash [off-peak]",
       "billingType": "subscription",
-      "platformType": "Coding Plan",
+      "platformType": "Token Plan",
       "plan": "Lite",
       "originalMonthlyFee": 118.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 118.0,
-      "monthlyTokenInM": 292.5,
-      "unitPriceCnyPerM": 0.4034
+      "monthlyTokenInM": 1170.0,
+      "unitPriceCnyPerM": 0.1009
     },
     {
       "vendor": "智谱AI",
@@ -1089,13 +1035,13 @@
       },
       "id": "subscription:智谱AI:Lite:GLM-5.3-Flash [peak]",
       "billingType": "subscription",
-      "platformType": "Coding Plan",
+      "platformType": "Token Plan",
       "plan": "Lite",
       "originalMonthlyFee": 118.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 118.0,
-      "monthlyTokenInM": 146.2,
-      "unitPriceCnyPerM": 0.8068
+      "monthlyTokenInM": 585.0,
+      "unitPriceCnyPerM": 0.2017
     },
     {
       "vendor": "智谱AI",
@@ -1119,13 +1065,13 @@
       },
       "id": "subscription:智谱AI:Pro:GLM-5.3 [off-peak]",
       "billingType": "subscription",
-      "platformType": "Coding Plan",
+      "platformType": "Token Plan",
       "plan": "Pro",
       "originalMonthlyFee": 538.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 538.0,
-      "monthlyTokenInM": 579.7,
-      "unitPriceCnyPerM": 0.9281
+      "monthlyTokenInM": 2318.6,
+      "unitPriceCnyPerM": 0.232
     },
     {
       "vendor": "智谱AI",
@@ -1149,13 +1095,13 @@
       },
       "id": "subscription:智谱AI:Pro:GLM-5.3 [peak]",
       "billingType": "subscription",
-      "platformType": "Coding Plan",
+      "platformType": "Token Plan",
       "plan": "Pro",
       "originalMonthlyFee": 538.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 538.0,
-      "monthlyTokenInM": 289.8,
-      "unitPriceCnyPerM": 1.8563
+      "monthlyTokenInM": 1159.3,
+      "unitPriceCnyPerM": 0.4641
     },
     {
       "vendor": "智谱AI",
@@ -1179,13 +1125,13 @@
       },
       "id": "subscription:智谱AI:Pro:GLM-5.3-Flash [off-peak]",
       "billingType": "subscription",
-      "platformType": "Coding Plan",
+      "platformType": "Token Plan",
       "plan": "Pro",
       "originalMonthlyFee": 538.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 538.0,
-      "monthlyTokenInM": 1755.0,
-      "unitPriceCnyPerM": 0.3066
+      "monthlyTokenInM": 7020.0,
+      "unitPriceCnyPerM": 0.0766
     },
     {
       "vendor": "智谱AI",
@@ -1209,13 +1155,13 @@
       },
       "id": "subscription:智谱AI:Pro:GLM-5.3-Flash [peak]",
       "billingType": "subscription",
-      "platformType": "Coding Plan",
+      "platformType": "Token Plan",
       "plan": "Pro",
       "originalMonthlyFee": 538.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 538.0,
-      "monthlyTokenInM": 877.5,
-      "unitPriceCnyPerM": 0.6131
+      "monthlyTokenInM": 3510.0,
+      "unitPriceCnyPerM": 0.1533
     },
     {
       "vendor": "智谱AI",
@@ -1239,13 +1185,13 @@
       },
       "id": "subscription:智谱AI:Max:GLM-5.3 [off-peak]",
       "billingType": "subscription",
-      "platformType": "Coding Plan",
+      "platformType": "Token Plan",
       "plan": "Max",
       "originalMonthlyFee": 1078.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 1078.0,
-      "monthlyTokenInM": 1352.5,
-      "unitPriceCnyPerM": 0.797
+      "monthlyTokenInM": 5410.1,
+      "unitPriceCnyPerM": 0.1993
     },
     {
       "vendor": "智谱AI",
@@ -1269,13 +1215,13 @@
       },
       "id": "subscription:智谱AI:Max:GLM-5.3 [peak]",
       "billingType": "subscription",
-      "platformType": "Coding Plan",
+      "platformType": "Token Plan",
       "plan": "Max",
       "originalMonthlyFee": 1078.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 1078.0,
-      "monthlyTokenInM": 676.3,
-      "unitPriceCnyPerM": 1.5941
+      "monthlyTokenInM": 2705.1,
+      "unitPriceCnyPerM": 0.3985
     },
     {
       "vendor": "智谱AI",
@@ -1299,13 +1245,13 @@
       },
       "id": "subscription:智谱AI:Max:GLM-5.3-Flash [off-peak]",
       "billingType": "subscription",
-      "platformType": "Coding Plan",
+      "platformType": "Token Plan",
       "plan": "Max",
       "originalMonthlyFee": 1078.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 1078.0,
-      "monthlyTokenInM": 4095.0,
-      "unitPriceCnyPerM": 0.2632
+      "monthlyTokenInM": 16379.9,
+      "unitPriceCnyPerM": 0.0658
     },
     {
       "vendor": "智谱AI",
@@ -1329,13 +1275,13 @@
       },
       "id": "subscription:智谱AI:Max:GLM-5.3-Flash [peak]",
       "billingType": "subscription",
-      "platformType": "Coding Plan",
+      "platformType": "Token Plan",
       "plan": "Max",
       "originalMonthlyFee": 1078.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 1078.0,
-      "monthlyTokenInM": 2047.5,
-      "unitPriceCnyPerM": 0.5265
+      "monthlyTokenInM": 8189.9,
+      "unitPriceCnyPerM": 0.1316
     },
     {
       "vendor": "MiniMax",
@@ -3278,6 +3224,334 @@
       "monthlyFeeCny": 68.0,
       "monthlyTokenInM": 320.2,
       "unitPriceCnyPerM": 0.21216
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "DeepSeek-V4-Flash",
+      "canonicalModelId": "deepseek-v4-flash",
+      "canonicalModel": "DeepSeek-V4-Flash",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Lite:DeepSeek-V4-Flash",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 600.0,
+      "unitPriceCnyPerM": 0.0667
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.0-Lite",
+      "canonicalModelId": "doubao-seed-2-0-lite",
+      "canonicalModel": "Doubao-Seed-2.0-Lite",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Lite:Doubao-Seed-2.0-Lite",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 600.0,
+      "unitPriceCnyPerM": 0.0667
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "GLM-5.3-Flash",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:字节·方舟:Lite:GLM-5.3-Flash",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 1200.0,
+      "unitPriceCnyPerM": 0.0333
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-Evolving",
+      "canonicalModelId": "doubao-seed-evolving",
+      "canonicalModel": "Doubao-Seed-Evolving",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Lite:Doubao-Seed-Evolving",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 120.0,
+      "unitPriceCnyPerM": 0.3333
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "MiniMax-M3",
+      "canonicalModelId": "minimax-m3",
+      "canonicalModel": "MiniMax-M3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.3968506399702,
+          "configuration": "MiniMax-M3"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Lite:MiniMax-M3",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 120.0,
+      "unitPriceCnyPerM": 0.3333
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "GLM-5.3",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:字节·方舟:Lite:GLM-5.3",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 66.7,
+      "unitPriceCnyPerM": 0.6
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "DeepSeek-V4-Pro",
+      "canonicalModelId": "deepseek-v4-pro",
+      "canonicalModel": "DeepSeek-V4-Pro",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Lite:DeepSeek-V4-Pro",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 54.5,
+      "unitPriceCnyPerM": 0.7333
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "DeepSeek-V4-Flash",
+      "canonicalModelId": "deepseek-v4-flash",
+      "canonicalModel": "DeepSeek-V4-Flash",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Pro:DeepSeek-V4-Flash",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 3000.0,
+      "unitPriceCnyPerM": 0.0667
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.0-Lite",
+      "canonicalModelId": "doubao-seed-2-0-lite",
+      "canonicalModel": "Doubao-Seed-2.0-Lite",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Pro:Doubao-Seed-2.0-Lite",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 3000.0,
+      "unitPriceCnyPerM": 0.0667
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "GLM-5.3-Flash",
+      "canonicalModelId": "glm-5-3-flash",
+      "canonicalModel": "GLM-5.3-Flash",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 57,
+          "scoreExact": 57.4592004791323,
+          "configuration": "GLM-5.3-Flash"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 63.39285714285714,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.377970751693644
+        }
+      },
+      "id": "subscription:字节·方舟:Pro:GLM-5.3-Flash",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 6000.0,
+      "unitPriceCnyPerM": 0.0333
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-Evolving",
+      "canonicalModelId": "doubao-seed-evolving",
+      "canonicalModel": "Doubao-Seed-Evolving",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Pro:Doubao-Seed-Evolving",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 600.0,
+      "unitPriceCnyPerM": 0.3333
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "MiniMax-M3",
+      "canonicalModelId": "minimax-m3",
+      "canonicalModel": "MiniMax-M3",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.3968506399702,
+          "configuration": "MiniMax-M3"
+        },
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Pro:MiniMax-M3",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 600.0,
+      "unitPriceCnyPerM": 0.3333
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "GLM-5.3",
+      "canonicalModelId": "glm-5-3",
+      "canonicalModel": "GLM-5.3",
+      "multimodal": false,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 60,
+          "scoreExact": 59.5134408119521,
+          "configuration": "GLM-5.3 (max)"
+        },
+        "deepSWE": {
+          "score": 69,
+          "scoreExact": 68.95787139689578,
+          "configuration": "max",
+          "confidenceInterval": 3,
+          "confidenceIntervalExact": 3.0186512715587
+        }
+      },
+      "id": "subscription:字节·方舟:Pro:GLM-5.3",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 333.3,
+      "unitPriceCnyPerM": 0.6
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "DeepSeek-V4-Pro",
+      "canonicalModelId": "deepseek-v4-pro",
+      "canonicalModel": "DeepSeek-V4-Pro",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Pro:DeepSeek-V4-Pro",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 272.7,
+      "unitPriceCnyPerM": 0.7333
     },
     {
       "vendor": "字节·方舟",

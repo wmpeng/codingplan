@@ -102,7 +102,7 @@
     }
 
     function getPointColorKey(point, colorMode) {
-        return colorMode === 'model' ? point.canonicalModelId : point.vendor;
+        return colorMode === 'model' ? point.canonicalModelId : getPointPlatformKey(point);
     }
 
     function filterBySoloColorKey(points, colorMode, soloColorKey) {
@@ -113,9 +113,9 @@
     function getSoloPointLabelField(points) {
         const visible = points || [];
         const modelIds = new Set(visible.map((point) => point.canonicalModelId));
-        const vendors = new Set(visible.map((point) => point.vendor));
+        const platforms = new Set(visible.map(getPointPlatformKey));
         if (modelIds.size === 1) return 'vendor';
-        if (vendors.size === 1) return 'model';
+        if (platforms.size === 1) return 'model';
         return null;
     }
 
@@ -234,7 +234,7 @@
         const grouped = new Map();
         points.forEach((point) => {
             const key = getPointColorKey(point, colorMode);
-            const label = colorMode === 'model' ? point.canonicalModel : point.vendor;
+            const label = colorMode === 'model' ? point.canonicalModel : getPointLabelText(point, 'vendor');
             if (!grouped.has(key)) grouped.set(key, { label, data: [] });
             grouped.get(key).data.push(mapPoint(point));
         });
@@ -287,7 +287,6 @@
             if (!response.ok) throw new Error(`对比数据加载失败：HTTP ${response.status}`);
             const dataset = await response.json();
             const points = Array.isArray(dataset.points) ? dataset.points : [];
-            const vendors = [...new Set(points.map((point) => point.vendor))].sort((a, b) => a.localeCompare(b, 'zh-CN'));
             const platformMap = new Map();
             points.forEach((point) => {
                 const label = point.platformType ? `${point.vendor} · ${point.platformType}` : point.vendor;
@@ -297,7 +296,7 @@
             const modelMap = new Map();
             points.forEach((point) => modelMap.set(point.canonicalModelId, point.canonicalModel));
             const models = [...modelMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
-            const vendorColors = buildVendorColorMap(vendors);
+            const platformColors = buildVendorColorMap(platforms.map(([key]) => key));
             const modelColors = buildModelColorMap(models.map(([id]) => id));
             const state = {
                 platforms: new Set(), models: new Set(), multimodal: 'all', benchmark: 'artificialAnalysis',
@@ -332,11 +331,11 @@
 
             function colorContext(visiblePoints) {
                 const byModel = state.colorMode === 'model';
-                const colors = byModel ? modelColors : vendorColors;
+                const colors = byModel ? modelColors : platformColors;
                 const entries = new Map();
                 visiblePoints.forEach((point) => {
                     const key = getPointColorKey(point, state.colorMode);
-                    const label = byModel ? point.canonicalModel : point.vendor;
+                    const label = byModel ? point.canonicalModel : getPointLabelText(point, 'vendor');
                     entries.set(key, label);
                 });
                 return { colors, entries };
