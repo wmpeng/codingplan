@@ -106,6 +106,21 @@
         return (points || []).filter((point) => getPointColorKey(point, colorMode) === soloColorKey);
     }
 
+    function getSoloPointLabelField(points) {
+        const visible = points || [];
+        const modelIds = new Set(visible.map((point) => point.canonicalModelId));
+        const vendors = new Set(visible.map((point) => point.vendor));
+        if (modelIds.size === 1) return 'vendor';
+        if (vendors.size === 1) return 'model';
+        return null;
+    }
+
+    function getPointLabelText(point, pointLabelField) {
+        if (pointLabelField === 'vendor') return point.vendor;
+        if (pointLabelField === 'model') return point.model || point.canonicalModel;
+        return '';
+    }
+
     function escapeHtml(value) {
         return String(value == null ? '' : value)
             .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -190,7 +205,7 @@
                 </div>
                 <div class="usage-color-legend"><strong data-color-legend-title>平台颜色</strong><div data-color-legend></div></div>
                 <article class="usage-chart-card">
-                    <div class="usage-chart-head"><div><h3>月费 vs 月 Token</h3><p>一个点代表一个平台 × 套餐 × 模型；越靠左上越有吸引力。</p></div><label>额度轴<select data-scale="tokens"><option value="log">对数</option><option value="value">线性</option></select></label></div>
+                    <div class="usage-chart-head"><div><h3>月费 vs 月 Token</h3><p>一个点代表一个平台 × 套餐 × 模型；越靠左上越有吸引力。</p></div><label>坐标轴<select data-scale="tokens"><option value="log">对数</option><option value="value">线性</option></select></label></div>
                     <div class="usage-chart" data-chart="usage" role="img" aria-label="月费和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的月费与月额度数据。</div>
                 </article>
                 <article class="usage-chart-card">
@@ -209,7 +224,7 @@
         };
     }
 
-    function seriesByColor(points, colorMode, colors, mapPoint, seriesPrefix) {
+    function seriesByColor(points, colorMode, colors, mapPoint, seriesPrefix, pointLabelField) {
         const grouped = new Map();
         points.forEach((point) => {
             const key = getPointColorKey(point, colorMode);
@@ -224,7 +239,13 @@
                 focus: 'series', blurScope: 'coordinateSystem', scale: 1.5,
                 itemStyle: { opacity: 1, borderWidth: 2 }
             },
-            blur: { itemStyle: { opacity: 0.1 } }
+            blur: { itemStyle: { opacity: 0.1 } },
+            label: {
+                show: Boolean(pointLabelField), position: 'right', distance: 6,
+                color: '#475569', fontSize: 11,
+                formatter: (params) => getPointLabelText(params.data.meta, pointLabelField)
+            },
+            labelLayout: { hideOverlap: true, moveOverlap: 'shiftY' }
         }));
     }
 
@@ -329,6 +350,7 @@
                 const visibleFiltered = filterBySoloColorKey(filtered, state.colorMode, state.soloColorKey);
                 const usagePoints = buildUsageChartPoints(visibleFiltered);
                 const intelligencePoints = buildIntelligenceChartPoints(visibleFiltered, state.benchmark);
+                const pointLabelField = getSoloPointLabelField(visibleFiltered);
                 const color = colorContext(filtered);
                 renderColorLegend(color);
                 const totalUsage = buildUsageChartPoints(points).length;
@@ -336,9 +358,9 @@
                 container.querySelector('[data-counts]').textContent = `额度图 ${usagePoints.length}/${totalUsage} · 智力图 ${intelligencePoints.length}/${totalIntelligence}`;
 
                 usageChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode)), {
-                    xAxis: { type: 'value', name: '月费（人民币）', nameLocation: 'middle', nameGap: 38, min: 0, axisLabel: { formatter: (v) => `¥${formatNumber(v, 0)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
+                    xAxis: { type: state.tokensScale, name: '月费（人民币）', nameLocation: 'middle', nameGap: 38, min: state.tokensScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => `¥${formatNumber(v, 0)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     yAxis: { type: state.tokensScale, name: '月 Token', nameLocation: 'middle', nameGap: 55, min: state.tokensScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: compactNumber }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
-                    series: seriesByColor(usagePoints, state.colorMode, color.colors, (point) => ({ value: [point.monthlyFeeCny, point.monthlyTokenInM], meta: point }), 'usage')
+                    series: seriesByColor(usagePoints, state.colorMode, color.colors, (point) => ({ value: [point.monthlyFeeCny, point.monthlyTokenInM], meta: point }), 'usage', pointLabelField)
                 }), true);
 
                 const intelligenceSeries = seriesByColor(
@@ -346,7 +368,8 @@
                     state.colorMode,
                     color.colors,
                     (point) => ({ value: [point.unitPriceCnyPerM, getPointScore(point, state.benchmark)], meta: point }),
-                    'intelligence'
+                    'intelligence',
+                    pointLabelField
                 );
                 intelligenceChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode)), {
                     xAxis: { type: state.priceScale, name: '人民币 / M Token', nameLocation: 'middle', nameGap: 38, min: state.priceScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => `¥${formatNumber(v, v < 1 ? 2 : 1)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
@@ -507,5 +530,5 @@
         return container.__usageMountPromise;
     }
 
-    return { getPointScore, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, tooltipHtml, mountModelComparisonView };
+    return { getPointScore, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, tooltipHtml, mountModelComparisonView };
 });

@@ -9,6 +9,8 @@ const {
   buildModelColorMap,
   getPointColorKey,
   filterBySoloColorKey,
+  getSoloPointLabelField,
+  getPointLabelText,
   tooltipHtml
 } = require('./model-comparison.js');
 
@@ -52,6 +54,31 @@ test('legend solo mode filters by the active color dimension', () => {
   assert.deepEqual(filterBySoloColorKey(points, 'vendor', 'A'), [points[0], points[2]]);
   assert.deepEqual(filterBySoloColorKey(points, 'model', 'm2'), [points[1]]);
   assert.deepEqual(filterBySoloColorKey(points, 'vendor', null), points);
+});
+
+test('single visible model or platform selects the opposite point label', () => {
+  assert.equal(getSoloPointLabelField([points[0]]), 'vendor');
+  assert.equal(getSoloPointLabelField([points[0], points[2]]), 'model');
+  assert.equal(getSoloPointLabelField([points[0], points[1]]), null);
+});
+
+test('platform and model filters match legend solo point-label behavior', () => {
+  const platformFromFilter = filterPoints(points, { vendors: new Set(['A']), multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '' });
+  const platformFromLegend = filterBySoloColorKey(points, 'vendor', 'A');
+  assert.equal(getSoloPointLabelField(platformFromFilter), 'model');
+  assert.equal(getSoloPointLabelField(platformFromLegend), 'model');
+
+  const modelFromFilter = filterPoints(points, { models: new Set(['m1']), multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '' });
+  const modelFromLegend = filterBySoloColorKey(points, 'model', 'm1');
+  assert.equal(getSoloPointLabelField(modelFromFilter), 'vendor');
+  assert.equal(getSoloPointLabelField(modelFromLegend), 'vendor');
+});
+
+test('model point labels preserve complete bracket qualifiers', () => {
+  assert.equal(getPointLabelText({ model: 'GLM-5.3-Flash [off-peak]', canonicalModel: 'GLM-5.3-Flash' }, 'model'), 'GLM-5.3-Flash [off-peak]');
+  assert.equal(getPointLabelText({ model: 'Kimi-K3 【256K】', canonicalModel: 'Kimi-K3' }, 'model'), 'Kimi-K3 【256K】');
+  assert.equal(getPointLabelText({ model: 'Model-X (peak)', canonicalModel: 'Model-X' }, 'model'), 'Model-X (peak)');
+  assert.equal(getPointLabelText({ vendor: '智谱国际版' }, 'vendor'), '智谱国际版');
 });
 
 test('model color tooltip leads with the model and keeps platform second', () => {
