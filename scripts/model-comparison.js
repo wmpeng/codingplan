@@ -26,16 +26,20 @@
         return Number.isFinite(exact) ? exact : null;
     }
 
+    function getPointPlatformKey(point) {
+        return `${point.vendor}\u0000${point.platformType || ''}`;
+    }
+
     function filterPoints(points, filters) {
         const state = filters || {};
-        const vendors = state.vendors instanceof Set ? state.vendors : new Set(state.vendors || []);
+        const platforms = state.platforms instanceof Set ? state.platforms : new Set(state.platforms || []);
         const models = state.models instanceof Set ? state.models : new Set(state.models || []);
         const aaScoreMin = Number(state.aaScoreMin);
         const deepSWEScoreMin = Number(state.deepSWEScoreMin);
         const hasAaScoreMin = state.aaScoreMin !== '' && state.aaScoreMin !== null && Number.isFinite(aaScoreMin);
         const hasDeepSWEScoreMin = state.deepSWEScoreMin !== '' && state.deepSWEScoreMin !== null && Number.isFinite(deepSWEScoreMin);
         return (points || []).filter((point) => {
-            if (vendors.size && !vendors.has(point.vendor)) return false;
+            if (platforms.size && !platforms.has(getPointPlatformKey(point))) return false;
             if (models.size && !models.has(point.canonicalModelId)) return false;
             if (state.multimodal === 'multimodal' && point.multimodal !== true) return false;
             if (state.multimodal === 'text' && point.multimodal !== false) return false;
@@ -116,7 +120,9 @@
     }
 
     function getPointLabelText(point, pointLabelField) {
-        if (pointLabelField === 'vendor') return point.vendor;
+        if (pointLabelField === 'vendor') {
+            return point.platformType ? `${point.vendor} · ${point.platformType}` : point.vendor;
+        }
         if (pointLabelField === 'model') return point.model || point.canonicalModel;
         return '';
     }
@@ -282,13 +288,19 @@
             const dataset = await response.json();
             const points = Array.isArray(dataset.points) ? dataset.points : [];
             const vendors = [...new Set(points.map((point) => point.vendor))].sort((a, b) => a.localeCompare(b, 'zh-CN'));
+            const platformMap = new Map();
+            points.forEach((point) => {
+                const label = point.platformType ? `${point.vendor} · ${point.platformType}` : point.vendor;
+                platformMap.set(getPointPlatformKey(point), label);
+            });
+            const platforms = [...platformMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
             const modelMap = new Map();
             points.forEach((point) => modelMap.set(point.canonicalModelId, point.canonicalModel));
             const models = [...modelMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
             const vendorColors = buildVendorColorMap(vendors);
             const modelColors = buildModelColorMap(models.map(([id]) => id));
             const state = {
-                vendors: new Set(), models: new Set(), multimodal: 'all', benchmark: 'artificialAnalysis',
+                platforms: new Set(), models: new Set(), multimodal: 'all', benchmark: 'artificialAnalysis',
                 aaScoreMin: '', deepSWEScoreMin: '', colorMode: 'vendor', soloColorKey: null,
                 tokensScale: 'log', priceScale: 'log'
             };
@@ -301,7 +313,7 @@
             function optionCheckbox(value, label, kind) {
                 return `<label class="checkbox-item"><input type="checkbox" data-option-kind="${kind}" value="${escapeHtml(value)}"><span>${escapeHtml(label)}</span></label>`;
             }
-            container.querySelector('[data-picker="vendors"] [data-options]').innerHTML = vendors.map((v) => optionCheckbox(v, v, 'vendor')).join('');
+            container.querySelector('[data-picker="vendors"] [data-options]').innerHTML = platforms.map(([key, label]) => optionCheckbox(key, label, 'platform')).join('');
             container.querySelector('[data-picker="models"] [data-options]').innerHTML = models.map(([id, name]) => optionCheckbox(id, name, 'model')).join('');
 
             function updatePickerCount(kind, set) {
@@ -344,7 +356,7 @@
 
             function render() {
                 const filtered = filterPoints(points, {
-                    vendors: state.vendors, models: state.models, multimodal: state.multimodal,
+                    platforms: state.platforms, models: state.models, multimodal: state.multimodal,
                     aaScoreMin: state.aaScoreMin, deepSWEScoreMin: state.deepSWEScoreMin
                 });
                 const visibleFiltered = filterBySoloColorKey(filtered, state.colorMode, state.soloColorKey);
@@ -382,9 +394,9 @@
 
             container.addEventListener('change', (event) => {
                 const target = event.target;
-                if (target.matches('[data-option-kind="vendor"]')) {
-                    target.checked ? state.vendors.add(target.value) : state.vendors.delete(target.value);
-                    updatePickerCount('vendors', state.vendors);
+                if (target.matches('[data-option-kind="platform"]')) {
+                    target.checked ? state.platforms.add(target.value) : state.platforms.delete(target.value);
+                    updatePickerCount('vendors', state.platforms);
                 } else if (target.matches('[data-option-kind="model"]')) {
                     target.checked ? state.models.add(target.value) : state.models.delete(target.value);
                     updatePickerCount('models', state.models);
@@ -472,7 +484,7 @@
                 if (pickerReset) {
                     const picker = pickerReset.closest('[data-picker]');
                     const kind = picker.dataset.picker;
-                    const set = kind === 'vendors' ? state.vendors : state.models;
+                    const set = kind === 'vendors' ? state.platforms : state.models;
                     set.clear();
                     picker.querySelectorAll('[data-option-kind]').forEach((input) => { input.checked = false; });
                     updatePickerCount(kind, set);
@@ -502,7 +514,7 @@
                     return;
                 }
                 if (event.target.closest('[data-action="clear"]')) {
-                    state.vendors.clear(); state.models.clear(); state.multimodal = 'all';
+                    state.platforms.clear(); state.models.clear(); state.multimodal = 'all';
                     state.aaScoreMin = ''; state.deepSWEScoreMin = '';
                     state.soloColorKey = null;
                     container.querySelectorAll('[data-option-kind]').forEach((input) => { input.checked = false; });
@@ -512,7 +524,7 @@
                     container.querySelector('[data-model-search]').value = '';
                     container.querySelectorAll('[data-picker="models"] [data-options] label').forEach((label) => { label.hidden = false; });
                     closeUsageDropdowns();
-                    updatePickerCount('vendors', state.vendors); updatePickerCount('models', state.models);
+                    updatePickerCount('vendors', state.platforms); updatePickerCount('models', state.models);
                     render();
                 }
             });
@@ -530,5 +542,5 @@
         return container.__usageMountPromise;
     }
 
-    return { getPointScore, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, tooltipHtml, mountModelComparisonView };
+    return { getPointScore, getPointPlatformKey, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, tooltipHtml, mountModelComparisonView };
 });
