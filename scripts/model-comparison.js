@@ -31,6 +31,17 @@
         'glm-5-3', 'glm-5-3-flash', 'kimi-k3', 'gpt-5-6-sol', 'gpt-5-6-luna',
         'claude-opus-5', 'claude-sonnet-5', 'grok-4-6', 'muse-spark-1-2'
     ];
+    const COMPARISON_TABLE_COLUMNS = [
+        { key: 'vendor', label: '平台' },
+        { key: 'platformType', label: '类型' },
+        { key: 'plan', label: '套餐' },
+        { key: 'price', label: '价格' },
+        { key: 'model', label: '模型' },
+        { key: 'fiveHourTokenInM', label: '5h用量' },
+        { key: 'weeklyTokenInM', label: '周用量' },
+        { key: 'monthlyTokenInM', label: '月用量' },
+        { key: 'unitPriceCnyPerM', label: '综合单价' }
+    ];
 
     function finitePositive(value) {
         const number = Number(value);
@@ -185,6 +196,55 @@
         return `${formatNumber(number, number < 10 ? 2 : 1)}M`;
     }
 
+    function comparisonSortValue(point, key) {
+        if (key === 'price') return finitePositive(point.monthlyFeeCny);
+        if (key === 'vendor' || key === 'platformType' || key === 'plan') return point[key] || '';
+        if (key === 'model') return point.model || point.canonicalModel || '';
+        return finitePositive(point[key]);
+    }
+
+    function sortComparisonRows(points, key, direction) {
+        const multiplier = direction === 'desc' ? -1 : 1;
+        return [...(points || [])].sort((left, right) => {
+            const a = comparisonSortValue(left, key);
+            const b = comparisonSortValue(right, key);
+            const aMissing = a === null || a === '';
+            const bMissing = b === null || b === '';
+            if (aMissing !== bMissing) return aMissing ? 1 : -1;
+            if (aMissing && bMissing) return String(left.id || '').localeCompare(String(right.id || ''), 'zh-CN');
+            if (typeof a === 'number' && typeof b === 'number') {
+                const delta = (a - b) * multiplier;
+                return delta || String(left.id || '').localeCompare(String(right.id || ''), 'zh-CN');
+            }
+            const compared = String(a).localeCompare(String(b), 'zh-CN', { numeric: true, sensitivity: 'base' }) * multiplier;
+            return compared || String(left.id || '').localeCompare(String(right.id || ''), 'zh-CN');
+        });
+    }
+
+    function comparisonTableHeadHtml(tableName) {
+        return `<tr>${COMPARISON_TABLE_COLUMNS.map((column) =>
+            `<th scope="col" class="sortable${column.key === 'vendor' ? ' sticky-first' : ''}" tabindex="0" aria-sort="none" data-table-sort="${tableName}" data-sort-key="${column.key}">${column.label}</th>`
+        ).join('')}</tr>`;
+    }
+
+    function comparisonTableRowHtml(point) {
+        const subscription = point.billingType === 'subscription';
+        const price = subscription && finitePositive(point.monthlyFeeCny) !== null
+            ? `¥${formatNumber(point.monthlyFeeCny, 2)} / 月` : '按量';
+        const unitPrice = finitePositive(point.unitPriceCnyPerM) !== null
+            ? `¥${formatNumber(point.unitPriceCnyPerM, 4)} / M` : '—';
+        return `<tr data-point-id="${escapeHtml(point.id)}">` +
+            `<td class="sticky-first"><strong>${escapeHtml(point.vendor)}</strong></td>` +
+            `<td>${escapeHtml(point.platformType || '—')}</td>` +
+            `<td>${escapeHtml(point.plan || (subscription ? '订阅' : '按量 API'))}</td>` +
+            `<td class="numeric">${price}</td>` +
+            `<td class="usage-table-model">${escapeHtml(point.model || point.canonicalModel)}</td>` +
+            `<td class="numeric">${subscription ? compactNumber(point.fiveHourTokenInM) : '—'}</td>` +
+            `<td class="numeric">${subscription ? compactNumber(point.weeklyTokenInM) : '—'}</td>` +
+            `<td class="numeric">${subscription ? compactNumber(point.monthlyTokenInM) : '—'}</td>` +
+            `<td class="numeric usage-table-unit-price">${unitPrice}</td></tr>`;
+    }
+
     function scoreText(point, benchmark) {
         const score = point.scores && point.scores[benchmark];
         if (!score) return '暂无评分';
@@ -250,11 +310,13 @@
                 <div class="usage-color-legend"><strong data-color-legend-title>平台颜色</strong><div data-color-legend></div></div>
                 <article class="usage-chart-card">
                     <div class="usage-chart-head"><div><h3>月费 vs 月 Token</h3><p>一个点代表一个平台 × 套餐 × 模型；越靠左上越有吸引力。</p></div><label>坐标轴<select data-scale="tokens"><option value="log">对数</option><option value="value">线性</option></select></label></div>
-                    <div class="usage-chart" data-chart="usage" role="img" aria-label="月费和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的月费与月额度数据。</div>
+                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="月费和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的月费与月额度数据。</div></div>
+                    <section class="usage-table-section" aria-label="月费和月 Token 数据明细"><div class="usage-table-heading"><h4>数据明细</h4><span data-table-count="usage"></span></div><div class="usage-table-scroll"><table class="usage-data-table" data-table="usage"><thead>${comparisonTableHeadHtml('usage')}</thead><tbody data-table-body="usage"></tbody></table></div></section>
                 </article>
                 <article class="usage-chart-card">
                     <div class="usage-chart-head"><div><h3>单位价格 vs 智力</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标"><button type="button" data-benchmark="artificialAnalysis" class="is-active">AA</button><button type="button" data-benchmark="deepSWE">DeepSWE</button></div><label>价格轴<select data-scale="price"><option value="log">对数</option><option value="value">线性</option></select></label></div></div>
-                    <div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和智力评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据。</div>
+                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和智力评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据。</div></div>
+                    <section class="usage-table-section" aria-label="单位价格和智力数据明细"><div class="usage-table-heading"><h4>数据明细</h4><span data-table-count="intelligence"></span></div><div class="usage-table-scroll"><table class="usage-data-table" data-table="intelligence"><thead>${comparisonTableHeadHtml('intelligence')}</thead><tbody data-table-body="intelligence"></tbody></table></div></section>
                 </article>
             </section>`;
     }
@@ -345,6 +407,11 @@
             enableClickPinnedTooltip(usageChart);
             enableClickPinnedTooltip(intelligenceChart);
             container.__usageCharts = [usageChart, intelligenceChart];
+            const tableSortState = {
+                usage: { key: 'unitPriceCnyPerM', direction: 'asc' },
+                intelligence: { key: 'unitPriceCnyPerM', direction: 'asc' }
+            };
+            const latestTableRows = { usage: [], intelligence: [] };
 
             function optionCheckbox(value, label, kind) {
                 return `<label class="checkbox-item"><input type="checkbox" data-option-kind="${kind}" value="${escapeHtml(value)}"><span>${escapeHtml(label)}</span></label>`;
@@ -406,6 +473,23 @@
                     }).join('');
             }
 
+            function renderDataTable(tableName, rows) {
+                latestTableRows[tableName] = rows || [];
+                const sort = tableSortState[tableName];
+                const sorted = sortComparisonRows(rows, sort.key, sort.direction);
+                const body = container.querySelector(`[data-table-body="${tableName}"]`);
+                body.innerHTML = sorted.length
+                    ? sorted.map(comparisonTableRowHtml).join('')
+                    : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length}">当前筛选下没有可展示的数据。</td></tr>`;
+                container.querySelector(`[data-table-count="${tableName}"]`).textContent = `${sorted.length} 条`;
+                container.querySelectorAll(`[data-table="${tableName}"] th[data-sort-key]`).forEach((header) => {
+                    const active = header.dataset.sortKey === sort.key;
+                    header.classList.toggle('sort-asc', active && sort.direction === 'asc');
+                    header.classList.toggle('sort-desc', active && sort.direction === 'desc');
+                    header.setAttribute('aria-sort', active ? (sort.direction === 'asc' ? 'ascending' : 'descending') : 'none');
+                });
+            }
+
             function render() {
                 const filtered = filterPoints(points, {
                     platforms: state.platforms, models: state.models, multimodal: state.multimodal,
@@ -440,6 +524,8 @@
                     yAxis: { type: 'value', name: `${BENCHMARKS[state.benchmark].short} 评分`, nameLocation: 'middle', nameGap: 45, scale: true, axisLabel: { formatter: (v) => formatNumber(v, 0) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     series: intelligenceSeries
                 }), true);
+                renderDataTable('usage', usagePoints);
+                renderDataTable('intelligence', intelligencePoints);
                 container.querySelector('[data-empty="usage"]').hidden = usagePoints.length > 0;
                 container.querySelector('[data-empty="intelligence"]').hidden = intelligencePoints.length > 0;
             }
@@ -515,6 +601,16 @@
                 setColorHighlight(item.dataset.colorKey, false);
             });
             container.addEventListener('click', (event) => {
+                const sortHeader = event.target.closest('[data-table-sort][data-sort-key]');
+                if (sortHeader) {
+                    const tableName = sortHeader.dataset.tableSort;
+                    const sort = tableSortState[tableName];
+                    const key = sortHeader.dataset.sortKey;
+                    sort.direction = sort.key === key && sort.direction === 'asc' ? 'desc' : 'asc';
+                    sort.key = key;
+                    renderDataTable(tableName, latestTableRows[tableName]);
+                    return;
+                }
                 const pickerToggle = event.target.closest('[data-picker-toggle]');
                 if (pickerToggle) {
                     event.stopPropagation();
@@ -574,6 +670,12 @@
                     render();
                 }
             });
+            container.addEventListener('keydown', (event) => {
+                if ((event.key === 'Enter' || event.key === ' ') && event.target.matches('[data-table-sort][data-sort-key]')) {
+                    event.preventDefault();
+                    event.target.click();
+                }
+            });
             document.addEventListener('click', () => closeUsageDropdowns());
             const resize = () => { usageChart.resize(); intelligenceChart.resize(); };
             root.addEventListener('resize', resize);
@@ -588,5 +690,5 @@
         return container.__usageMountPromise;
     }
 
-    return { DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, getPointScore, getPointPlatformKey, createDefaultFilterState, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, tooltipHtml, mountModelComparisonView };
+    return { DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, getPointScore, getPointPlatformKey, createDefaultFilterState, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });

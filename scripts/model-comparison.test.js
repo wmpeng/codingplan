@@ -15,6 +15,8 @@ const {
   filterBySoloColorKey,
   getSoloPointLabelField,
   getPointLabelText,
+  sortComparisonRows,
+  comparisonTableRowHtml,
   tooltipHtml
 } = require('./model-comparison.js');
 
@@ -139,4 +141,40 @@ test('model color tooltip leads with the model and keeps platform second', () =>
 
   const byVendor = tooltipHtml(point, 'artificialAnalysis', 'vendor');
   assert.ok(byVendor.indexOf('<strong>MiniMax · 新Ultra</strong>') < byVendor.indexOf('<div>MiniMax-M3</div>'));
+});
+
+test('comparison tables sort text and numeric values with missing values last', () => {
+  const rows = [
+    { id: 'b', vendor: '平台B', model: 'Model 10', monthlyFeeCny: 100, monthlyTokenInM: 50, unitPriceCnyPerM: 2 },
+    { id: 'a', vendor: '平台A', model: 'Model 2', monthlyFeeCny: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.5 },
+    { id: 'c', vendor: '平台C', model: 'Model 1', unitPriceCnyPerM: 1 }
+  ];
+  assert.deepEqual(sortComparisonRows(rows, 'vendor', 'asc').map((row) => row.id), ['a', 'b', 'c']);
+  assert.deepEqual(sortComparisonRows(rows, 'model', 'asc').map((row) => row.id), ['c', 'a', 'b']);
+  assert.deepEqual(sortComparisonRows(rows, 'price', 'asc').map((row) => row.id), ['a', 'b', 'c']);
+  assert.deepEqual(sortComparisonRows(rows, 'price', 'desc').map((row) => row.id), ['b', 'a', 'c']);
+  assert.deepEqual(sortComparisonRows(rows, 'monthlyTokenInM', 'desc').map((row) => row.id), ['a', 'b', 'c']);
+});
+
+test('comparison table rows format subscription and payg semantics', () => {
+  const subscription = comparisonTableRowHtml({
+    id: 'sub', billingType: 'subscription', vendor: '平台A', platformType: 'Token Plan', plan: 'Pro',
+    model: 'Model A [peak]', monthlyFeeCny: 70, fiveHourTokenInM: 12.5,
+    weeklyTokenInM: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.7
+  });
+  assert.match(subscription, /平台A/);
+  assert.match(subscription, /¥70 \/ 月/);
+  assert.match(subscription, /Model A \[peak\]/);
+  assert.match(subscription, /12\.5M/);
+  assert.match(subscription, /50M/);
+  assert.match(subscription, /100M/);
+  assert.match(subscription, /¥0\.7 \/ M/);
+
+  const payg = comparisonTableRowHtml({
+    id: 'api', billingType: 'payg', vendor: 'DeepSeek', platformType: 'API', plan: '按量 API',
+    model: 'Model A', unitPriceCnyPerM: 0.1444
+  });
+  assert.match(payg, /按量/);
+  assert.match(payg, /¥0\.1444 \/ M/);
+  assert.equal(payg.includes('undefined'), false);
 });

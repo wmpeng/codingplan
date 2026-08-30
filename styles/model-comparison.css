@@ -40,8 +40,35 @@
 .usage-segments { display: flex; padding: 2px; border: 1px solid #d8dee8; border-radius: 9px; background: #f4f6f9; }
 .usage-segments button { padding: 6px 10px; border: 0; border-radius: 6px; background: transparent; color: #596579; cursor: pointer; }
 .usage-segments button.is-active { background: #172033; color: #fff; }
+.usage-chart-stage { position: relative; }
 .usage-chart { width: 100%; height: 470px; margin-top: 4px; }
 .usage-empty { position: absolute; inset: 50% auto auto 50%; transform: translate(-50%, -10%); z-index: 3; padding: 13px 18px; border-radius: 10px; background: rgba(248,250,252,.95); color: #69768a; font-size: 13px; box-shadow: 0 4px 18px rgba(31,48,70,.08); }
+.usage-table-section { margin: 4px -4px 0; padding-top: 18px; border-top: 1px solid #e7ebf1; }
+.usage-table-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 4px 10px; }
+.usage-table-heading h4 { margin: 0; color: #253247; font-size: 14px; }
+.usage-table-heading span { color: #7a8699; font-size: 12px; }
+.usage-table-scroll { max-height: 480px; overflow: auto; border: 1px solid #e1e6ed; border-radius: 12px; background: #fff; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+.usage-data-table { width: 100%; min-width: 1000px; border-collapse: separate; border-spacing: 0; }
+.usage-data-table th { position: sticky; top: 0; z-index: 3; padding: 12px 14px; border-bottom: 1px solid #dfe5ed; background: #f5f7fb; color: #667287; font-size: 12px; font-weight: 800; letter-spacing: .02em; text-align: left; white-space: nowrap; user-select: none; }
+.usage-data-table th.sortable { cursor: pointer; transition: background .15s ease, color .15s ease; }
+.usage-data-table th.sortable:hover, .usage-data-table th.sortable:focus-visible { background: #edf2f8; color: #253247; outline: none; }
+.usage-data-table th.sortable::after { content: ''; display: inline-block; width: 0; height: 0; margin-left: 7px; vertical-align: middle; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid #9aa5b5; opacity: .5; }
+.usage-data-table th.sort-asc::after { border-top: 0; border-bottom: 4px solid #1677ff; opacity: 1; }
+.usage-data-table th.sort-desc::after { border-top-color: #1677ff; opacity: 1; }
+.usage-data-table td { padding: 12px 14px; border-bottom: 1px solid #edf0f4; background: #fff; color: #36445a; font-size: 12px; line-height: 1.45; white-space: nowrap; }
+.usage-data-table tbody tr:nth-child(even) td { background: #f9fafc; }
+.usage-data-table tbody tr:hover td { background: #eef6ff; }
+.usage-data-table tbody tr:last-child td { border-bottom: 0; }
+.usage-data-table th.sticky-first, .usage-data-table td.sticky-first { position: sticky; left: 0; }
+.usage-data-table th.sticky-first { z-index: 4; }
+.usage-data-table td.sticky-first { z-index: 2; border-right: 1px solid #e5e9ef; }
+.usage-data-table td.sticky-first strong { color: #1f2b3d; font-size: 12px; }
+.usage-data-table tbody tr:nth-child(even) td.sticky-first { background: #f9fafc; }
+.usage-data-table tbody tr:hover td.sticky-first { background: #eef6ff; }
+.usage-data-table .numeric { font-variant-numeric: tabular-nums; }
+.usage-table-model { color: #253247; font-weight: 650; }
+.usage-table-unit-price { color: #0f766e; font-weight: 750; }
+.usage-data-table .usage-table-empty { padding: 30px 14px; color: #7a8699; text-align: center; }
 .usage-tooltip { min-width: 190px; line-height: 1.65; color: #263449; }
 .usage-tooltip strong { display: block; margin-bottom: 3px; color: #111827; }
 .usage-load-error { width: 100%; padding: 34px; border: 1px solid #fecaca; border-radius: 14px; background: #fff7f7; color: #991b1b; text-align: center; }
@@ -65,4 +92,8 @@
   .usage-chart-controls { justify-content: space-between; margin-top: 12px; }
   .usage-chart-head > label { margin-top: 12px; }
   .usage-chart { height: 390px; }
+  .usage-table-section { margin-left: 0; margin-right: 0; }
+  .usage-table-scroll { max-height: 420px; border-radius: 10px; }
+  .usage-data-table { min-width: 920px; }
+  .usage-data-table th, .usage-data-table td { padding: 10px 12px; }
 }
