@@ -1,8 +1,11 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const {
+  DEFAULT_PLATFORM_SELECTIONS,
+  DEFAULT_MODEL_IDS,
   getPointScore,
   getPointPlatformKey,
+  createDefaultFilterState,
   filterPoints,
   buildUsageChartPoints,
   buildIntelligenceChartPoints,
@@ -20,6 +23,33 @@ const points = [
   { vendor: 'B', platformType: 'API', canonicalModelId: 'm2', multimodal: false, billingType: 'payg', unitPriceCnyPerM: 1.2, scores: { artificialAnalysis: { scoreExact: 45 }, deepSWE: null } },
   { vendor: 'A', platformType: 'Coding Plan', canonicalModelId: 'm3', multimodal: 'unknown', billingType: 'subscription', monthlyFeeCny: 50, monthlyTokenInM: 'unknown', unitPriceCnyPerM: .5, scores: { artificialAnalysis: null, deepSWE: { scoreExact: 55 } } }
 ];
+
+test('default filters use the curated available platforms and models', () => {
+  const defaultPoints = [
+    { vendor: '阿里·百炼', platformType: 'Token Plan', canonicalModelId: 'deepseek-v4-pro-0813' },
+    { vendor: '阿里·百炼', platformType: 'Coding Plan', canonicalModelId: 'not-default' },
+    { vendor: 'Claude', platformType: 'Token Plan', canonicalModelId: 'claude-opus-5' },
+    { vendor: 'OpenCode', platformType: 'Token Plan', canonicalModelId: 'grok-4-6' },
+    { vendor: 'OpenCode', platformType: 'Token Plan', canonicalModelId: 'muse-spark-1-2' }
+  ];
+  const defaults = createDefaultFilterState(defaultPoints);
+  assert.deepEqual(defaults.platforms, new Set([
+    getPointPlatformKey(defaultPoints[0]),
+    getPointPlatformKey(defaultPoints[2]),
+    getPointPlatformKey(defaultPoints[3])
+  ]));
+  assert.deepEqual(defaults.models, new Set([
+    'deepseek-v4-pro-0813', 'claude-opus-5', 'grok-4-6', 'muse-spark-1-2'
+  ]));
+  assert.equal(DEFAULT_PLATFORM_SELECTIONS.length, 9);
+  assert.equal(DEFAULT_MODEL_IDS.length, 12);
+  assert.equal(DEFAULT_MODEL_IDS.includes('grok-4-6'), true);
+  assert.equal(DEFAULT_MODEL_IDS.includes('muse-spark-1-2'), true);
+  assert.equal(defaults.multimodal, 'all');
+  assert.equal(defaults.aaScoreMin, '');
+  assert.equal(defaults.deepSWEScoreMin, '');
+  assert.equal(defaults.soloColorKey, null);
+});
 
 test('shared filters apply vendor, model, modality and exact score', () => {
   assert.deepEqual(filterPoints(points, { platforms: new Set([getPointPlatformKey(points[0])]), models: new Set(), multimodal: 'multimodal', aaScoreMin: 59.9, deepSWEScoreMin: 29 }), [points[0]]);

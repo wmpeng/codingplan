@@ -15,6 +15,22 @@
         '#db2777', '#4f46e5', '#65a30d', '#9333ea', '#ea580c', '#0f766e',
         '#475569', '#a16207', '#be123c', '#0369a1'
     ];
+    const DEFAULT_PLATFORM_SELECTIONS = [
+        ['阿里·百炼', 'Token Plan'],
+        ['智谱AI', 'Token Plan'],
+        ['字节·方舟', 'Coding Plan'],
+        ['Codex', 'Token Plan'],
+        ['Claude', 'Token Plan'],
+        ['DeepSeek', 'API'],
+        ['Kimi', 'Coding Plan'],
+        ['MiniMax', 'Token Plan'],
+        ['OpenCode', 'Token Plan']
+    ];
+    const DEFAULT_MODEL_IDS = [
+        'deepseek-v4-pro-0813', 'deepseek-v4-flash-0731', 'qwen-3-8-max',
+        'glm-5-3', 'glm-5-3-flash', 'kimi-k3', 'gpt-5-6-sol', 'gpt-5-6-luna',
+        'claude-opus-5', 'claude-sonnet-5', 'grok-4-6', 'muse-spark-1-2'
+    ];
 
     function finitePositive(value) {
         const number = Number(value);
@@ -29,6 +45,18 @@
 
     function getPointPlatformKey(point) {
         return JSON.stringify([String(point.vendor || ''), String(point.platformType || '')]);
+    }
+
+    function createDefaultFilterState(points) {
+        const availablePlatforms = new Set((points || []).map(getPointPlatformKey));
+        const availableModels = new Set((points || []).map((point) => point.canonicalModelId));
+        return {
+            platforms: new Set(DEFAULT_PLATFORM_SELECTIONS
+                .map(([vendor, platformType]) => getPointPlatformKey({ vendor, platformType }))
+                .filter((key) => availablePlatforms.has(key))),
+            models: new Set(DEFAULT_MODEL_IDS.filter((id) => availableModels.has(id))),
+            multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', soloColorKey: null
+        };
     }
 
     function filterPoints(points, filters) {
@@ -217,7 +245,7 @@
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>AA 最低分</span><input data-filter="aaScoreMin" aria-label="AA 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>DeepSWE 最低分</span><input data-filter="deepSWEScoreMin" aria-label="DeepSWE 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <div class="usage-color-control" aria-label="颜色区分方式"><span>颜色</span><div class="usage-segments"><button type="button" data-color-mode="vendor" class="is-active">按平台</button><button type="button" data-color-mode="model">按模型</button></div></div>
-                    <div class="filter-trailing"><button type="button" class="reset-btn" data-action="clear">清空筛选</button><div class="stats-bar usage-counts" data-counts aria-live="polite"></div></div>
+                    <div class="filter-trailing"><button type="button" class="reset-btn" data-action="restore-defaults">恢复默认</button><div class="stats-bar usage-counts" data-counts aria-live="polite"></div></div>
                 </div>
                 <div class="usage-color-legend"><strong data-color-legend-title>平台颜色</strong><div data-color-legend></div></div>
                 <article class="usage-chart-card">
@@ -308,11 +336,10 @@
             const models = [...modelMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
             const platformColors = buildVendorColorMap(platforms.map(([key]) => key));
             const modelColors = buildModelColorMap(models.map(([id]) => id));
-            const state = {
-                platforms: new Set(), models: new Set(), multimodal: 'all', benchmark: 'artificialAnalysis',
-                aaScoreMin: '', deepSWEScoreMin: '', colorMode: 'vendor', soloColorKey: null,
+            const state = Object.assign(createDefaultFilterState(points), {
+                benchmark: 'artificialAnalysis', colorMode: 'vendor',
                 tokensScale: 'log', priceScale: 'log'
-            };
+            });
             const usageChart = echarts.init(container.querySelector('[data-chart="usage"]'));
             const intelligenceChart = echarts.init(container.querySelector('[data-chart="intelligence"]'));
             enableClickPinnedTooltip(usageChart);
@@ -330,6 +357,22 @@
                 label.textContent = String(set.size);
                 label.hidden = set.size === 0;
             }
+
+            function syncFilterControls() {
+                container.querySelectorAll('[data-option-kind="platform"]').forEach((input) => {
+                    input.checked = state.platforms.has(input.value);
+                });
+                container.querySelectorAll('[data-option-kind="model"]').forEach((input) => {
+                    input.checked = state.models.has(input.value);
+                });
+                container.querySelector('[data-filter="multimodal"]').value = state.multimodal;
+                container.querySelector('[data-filter="aaScoreMin"]').value = state.aaScoreMin;
+                container.querySelector('[data-filter="deepSWEScoreMin"]').value = state.deepSWEScoreMin;
+                updatePickerCount('vendors', state.platforms);
+                updatePickerCount('models', state.models);
+            }
+
+            syncFilterControls();
 
             function closeUsageDropdowns(except) {
                 container.querySelectorAll('[data-picker]').forEach((picker) => {
@@ -522,18 +565,12 @@
                     render();
                     return;
                 }
-                if (event.target.closest('[data-action="clear"]')) {
-                    state.platforms.clear(); state.models.clear(); state.multimodal = 'all';
-                    state.aaScoreMin = ''; state.deepSWEScoreMin = '';
-                    state.soloColorKey = null;
-                    container.querySelectorAll('[data-option-kind]').forEach((input) => { input.checked = false; });
-                    container.querySelector('[data-filter="multimodal"]').value = 'all';
-                    container.querySelector('[data-filter="aaScoreMin"]').value = '';
-                    container.querySelector('[data-filter="deepSWEScoreMin"]').value = '';
+                if (event.target.closest('[data-action="restore-defaults"]')) {
+                    Object.assign(state, createDefaultFilterState(points));
+                    syncFilterControls();
                     container.querySelector('[data-model-search]').value = '';
                     container.querySelectorAll('[data-picker="models"] [data-options] label').forEach((label) => { label.hidden = false; });
                     closeUsageDropdowns();
-                    updatePickerCount('vendors', state.platforms); updatePickerCount('models', state.models);
                     render();
                 }
             });
@@ -551,5 +588,5 @@
         return container.__usageMountPromise;
     }
 
-    return { getPointScore, getPointPlatformKey, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, tooltipHtml, mountModelComparisonView };
+    return { DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, getPointScore, getPointPlatformKey, createDefaultFilterState, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, tooltipHtml, mountModelComparisonView };
 });

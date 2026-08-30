@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-30T17:28:02Z",
+  "generatedAt": "2026-08-30T17:40:47Z",
   "sourceGeneratedAt": {
     "usage": "2026-08-31",
-    "modelInfo": "2026-08-30T17:28:02Z"
+    "modelInfo": "2026-08-30T17:40:47Z"
   },
   "usdToCnyRate": 6.8,
   "benchmarks": {
@@ -10,7 +10,7 @@
       "name": "Artificial Analysis Intelligence Index",
       "version": "v4.1.1",
       "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-6-sol",
-      "fetchedAt": "2026-08-30T17:28:02Z",
+      "fetchedAt": "2026-08-30T17:40:47Z",
       "availableConfigurations": 624
     },
     "deepSWE": {
@@ -3401,15 +3401,25 @@
     },
     {
       "vendor": "字节·方舟",
-      "model": "DeepSeek-V4-Flash",
-      "canonicalModelId": "deepseek-v4-flash",
-      "canonicalModel": "DeepSeek-V4-Flash",
-      "multimodal": "unknown",
+      "model": "DeepSeek-V4-Flash-0731",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
       "scores": {
-        "artificialAnalysis": null,
-        "deepSWE": null
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
       },
-      "id": "subscription:字节·方舟:Lite:DeepSeek-V4-Flash",
+      "id": "subscription:字节·方舟:Lite:DeepSeek-V4-Flash-0731",
       "billingType": "subscription",
       "platformType": "Coding Plan",
       "plan": "Lite",
@@ -3615,15 +3625,25 @@
     },
     {
       "vendor": "字节·方舟",
-      "model": "DeepSeek-V4-Pro",
-      "canonicalModelId": "deepseek-v4-pro",
-      "canonicalModel": "DeepSeek-V4-Pro",
-      "multimodal": "unknown",
+      "model": "DeepSeek-V4-Pro-0813",
+      "canonicalModelId": "deepseek-v4-pro-0813",
+      "canonicalModel": "DeepSeek-V4-Pro-0813",
+      "multimodal": false,
       "scores": {
-        "artificialAnalysis": null,
-        "deepSWE": null
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 53.1976849297815,
+          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 62.83185840707964,
+          "configuration": "max",
+          "confidenceInterval": 6,
+          "confidenceIntervalExact": 6.333430597228876
+        }
       },
-      "id": "subscription:字节·方舟:Lite:DeepSeek-V4-Pro",
+      "id": "subscription:字节·方舟:Lite:DeepSeek-V4-Pro-0813",
       "billingType": "subscription",
       "platformType": "Coding Plan",
       "plan": "Lite",
@@ -3635,15 +3655,25 @@
     },
     {
       "vendor": "字节·方舟",
-      "model": "DeepSeek-V4-Flash",
-      "canonicalModelId": "deepseek-v4-flash",
-      "canonicalModel": "DeepSeek-V4-Flash",
-      "multimodal": "unknown",
+      "model": "DeepSeek-V4-Flash-0731",
+      "canonicalModelId": "deepseek-v4-flash-0731",
+      "canonicalModel": "DeepSeek-V4-Flash-0731",
+      "multimodal": false,
       "scores": {
-        "artificialAnalysis": null,
-        "deepSWE": null
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.7665776089032,
+          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 53,
+          "scoreExact": 53.31858407079646,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.5669502150324286
+        }
       },
-      "id": "subscription:字节·方舟:Pro:DeepSeek-V4-Flash",
+      "id": "subscription:字节·方舟:Pro:DeepSeek-V4-Flash-0731",
       "billingType": "subscription",
       "platformType": "Coding Plan",
       "plan": "Pro",
@@ -3849,15 +3879,25 @@
     },
     {
       "vendor": "字节·方舟",
-      "model": "DeepSeek-V4-Pro",
-      "canonicalModelId": "deepseek-v4-pro",
-      "canonicalModel": "DeepSeek-V4-Pro",
-      "multimodal": "unknown",
+      "model": "DeepSeek-V4-Pro-0813",
+      "canonicalModelId": "deepseek-v4-pro-0813",
+      "canonicalModel": "DeepSeek-V4-Pro-0813",
+      "multimodal": false,
       "scores": {
-        "artificialAnalysis": null,
-        "deepSWE": null
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 53.1976849297815,
+          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 63,
+          "scoreExact": 62.83185840707964,
+          "configuration": "max",
+          "confidenceInterval": 6,
+          "confidenceIntervalExact": 6.333430597228876
+        }
       },
-      "id": "subscription:字节·方舟:Pro:DeepSeek-V4-Pro",
+      "id": "subscription:字节·方舟:Pro:DeepSeek-V4-Pro-0813",
       "billingType": "subscription",
       "platformType": "Coding Plan",
       "plan": "Pro",
