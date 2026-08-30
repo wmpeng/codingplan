@@ -43,6 +43,11 @@ test('platform colors are stable regardless of input order', () => {
   const first = buildVendorColorMap(['B', 'A']);
   const second = buildVendorColorMap(['A', 'B']);
   assert.deepEqual(first, second);
+  const manyPlatforms = Array.from({ length: 30 }, (_, index) => `platform-${index}`);
+  const manyColors = buildVendorColorMap(manyPlatforms);
+  assert.deepEqual(manyColors, buildVendorColorMap([...manyPlatforms].reverse()));
+  assert.equal(new Set(Object.values(manyColors)).size, manyPlatforms.length);
+  assert.equal(Object.values(manyColors).every((color) => /^#[0-9a-f]{6}$/.test(color)), true);
   const models = buildModelColorMap(['m3', 'm1', 'm2']);
   assert.deepEqual(models, buildModelColorMap(['m2', 'm1', 'm3']));
   assert.equal(new Set(Object.values(models)).size, 3);
@@ -80,6 +85,8 @@ test('platform and model filters match legend solo point-label behavior', () => 
 
 test('platform filter key separates plan types for the same vendor', () => {
   assert.notEqual(getPointPlatformKey(points[0]), getPointPlatformKey(points[2]));
+  assert.deepEqual(JSON.parse(getPointPlatformKey(points[0])), ['A', 'Token Plan']);
+  assert.equal(/[\u0000-\u001f]/.test(getPointPlatformKey(points[0])), false);
   assert.notEqual(getPointColorKey(points[0], 'vendor'), getPointColorKey(points[2], 'vendor'));
   assert.deepEqual(filterPoints(points, { platforms: new Set([getPointPlatformKey(points[0])]), multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '' }), [points[0]]);
   assert.deepEqual(filterBySoloColorKey(points, 'vendor', getPointPlatformKey(points[0])), [points[0]]);

@@ -12,7 +12,8 @@
     };
     const PLATFORM_COLORS = [
         '#2563eb', '#dc2626', '#059669', '#7c3aed', '#d97706', '#0891b2',
-        '#db2777', '#4f46e5', '#65a30d', '#9333ea', '#ea580c', '#0f766e'
+        '#db2777', '#4f46e5', '#65a30d', '#9333ea', '#ea580c', '#0f766e',
+        '#475569', '#a16207', '#be123c', '#0369a1'
     ];
 
     function finitePositive(value) {
@@ -27,7 +28,7 @@
     }
 
     function getPointPlatformKey(point) {
-        return `${point.vendor}\u0000${point.platformType || ''}`;
+        return JSON.stringify([String(point.vendor || ''), String(point.platformType || '')]);
     }
 
     function filterPoints(points, filters) {
@@ -68,8 +69,17 @@
 
     function buildVendorColorMap(vendors) {
         const map = {};
+        const used = new Set();
         [...new Set(vendors || [])].sort((a, b) => a.localeCompare(b, 'zh-CN')).forEach((vendor, index) => {
-            map[vendor] = PLATFORM_COLORS[index % PLATFORM_COLORS.length];
+            let color = PLATFORM_COLORS[index];
+            let seed = index;
+            while (!color || used.has(color)) {
+                const hue = Math.round((seed * 137.508) % 360);
+                color = hslToHex(hue, 68 + (seed % 3) * 4, 42 + (seed % 4) * 3);
+                seed += 1;
+            }
+            map[vendor] = color;
+            used.add(color);
         });
         return map;
     }

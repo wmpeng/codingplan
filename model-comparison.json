@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-30T17:09:37Z",
+  "generatedAt": "2026-08-30T17:28:02Z",
   "sourceGeneratedAt": {
     "usage": "2026-08-31",
-    "modelInfo": "2026-08-29T14:42:53Z"
+    "modelInfo": "2026-08-30T17:28:02Z"
   },
   "usdToCnyRate": 6.8,
   "benchmarks": {
@@ -10,7 +10,7 @@
       "name": "Artificial Analysis Intelligence Index",
       "version": "v4.1.1",
       "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-6-sol",
-      "fetchedAt": "2026-08-29T14:42:53Z",
+      "fetchedAt": "2026-08-30T17:28:02Z",
       "availableConfigurations": 624
     },
     "deepSWE": {
@@ -24,22 +24,16 @@
   },
   "coverage": {
     "subscriptionCandidates": 236,
-    "subscriptionPoints": 211,
-    "subscriptionChartPoints": 211,
+    "subscriptionPoints": 223,
+    "subscriptionChartPoints": 223,
     "payAsYouGoCandidates": 6,
     "payAsYouGoPoints": 6,
-    "unmatchedModels": 12,
+    "unmatchedModels": 0,
     "missingMonthlyValues": 3,
     "missingUnitPrices": 3,
     "unsupportedCurrencies": 10
   },
-  "unmatchedModelNames": [
-    "Auto",
-    "Claude Opus 5",
-    "Claude Sonnet 5",
-    "Doubao-Seed-2.1-Turbo [256K]",
-    "Kimi-K2.7-Code [256K]"
-  ],
+  "unmatchedModelNames": [],
   "points": [
     {
       "vendor": "Codex",
@@ -220,6 +214,186 @@
       "monthlyFeeCny": 1360.0,
       "monthlyTokenInM": 96000.0,
       "unitPriceCnyPerM": 0.01428
+    },
+    {
+      "vendor": "Claude",
+      "model": "Claude Opus 5",
+      "canonicalModelId": "claude-opus-5",
+      "canonicalModel": "Claude Opus 5",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 63,
+          "scoreExact": 63.0532452071291,
+          "configuration": "Claude Opus 5 (Adaptive Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 74,
+          "scoreExact": 73.64864864864865,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.872310426371729
+        }
+      },
+      "id": "subscription:Claude:Pro:Claude Opus 5",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 20.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 136.0,
+      "monthlyTokenInM": 401.3,
+      "unitPriceCnyPerM": 0.33864
+    },
+    {
+      "vendor": "Claude",
+      "model": "Claude Sonnet 5",
+      "canonicalModelId": "claude-sonnet-5",
+      "canonicalModel": "Claude Sonnet 5",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 55,
+          "scoreExact": 55.261211717405,
+          "configuration": "Claude Sonnet 5 (Adaptive Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 54,
+          "scoreExact": 53.84615384615385,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.2369164701743856
+        }
+      },
+      "id": "subscription:Claude:Pro:Claude Sonnet 5",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 20.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 136.0,
+      "monthlyTokenInM": 668.9,
+      "unitPriceCnyPerM": 0.20332
+    },
+    {
+      "vendor": "Claude",
+      "model": "Claude Opus 5",
+      "canonicalModelId": "claude-opus-5",
+      "canonicalModel": "Claude Opus 5",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 63,
+          "scoreExact": 63.0532452071291,
+          "configuration": "Claude Opus 5 (Adaptive Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 74,
+          "scoreExact": 73.64864864864865,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.872310426371729
+        }
+      },
+      "id": "subscription:Claude:Max *5:Claude Opus 5",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max *5",
+      "originalMonthlyFee": 100.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 680.0,
+      "monthlyTokenInM": 3344.5,
+      "unitPriceCnyPerM": 0.20332
+    },
+    {
+      "vendor": "Claude",
+      "model": "Claude Sonnet 5",
+      "canonicalModelId": "claude-sonnet-5",
+      "canonicalModel": "Claude Sonnet 5",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 55,
+          "scoreExact": 55.261211717405,
+          "configuration": "Claude Sonnet 5 (Adaptive Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 54,
+          "scoreExact": 53.84615384615385,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.2369164701743856
+        }
+      },
+      "id": "subscription:Claude:Max *5:Claude Sonnet 5",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max *5",
+      "originalMonthlyFee": 100.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 680.0,
+      "monthlyTokenInM": 5574.1,
+      "unitPriceCnyPerM": 0.12172
+    },
+    {
+      "vendor": "Claude",
+      "model": "Claude Opus 5",
+      "canonicalModelId": "claude-opus-5",
+      "canonicalModel": "Claude Opus 5",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 63,
+          "scoreExact": 63.0532452071291,
+          "configuration": "Claude Opus 5 (Adaptive Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 74,
+          "scoreExact": 73.64864864864865,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 3.872310426371729
+        }
+      },
+      "id": "subscription:Claude:Max *20:Claude Opus 5",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max *20",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 1360.0,
+      "monthlyTokenInM": 6689.0,
+      "unitPriceCnyPerM": 0.20332
+    },
+    {
+      "vendor": "Claude",
+      "model": "Claude Sonnet 5",
+      "canonicalModelId": "claude-sonnet-5",
+      "canonicalModel": "Claude Sonnet 5",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 55,
+          "scoreExact": 55.261211717405,
+          "configuration": "Claude Sonnet 5 (Adaptive Reasoning, Max Effort)"
+        },
+        "deepSWE": {
+          "score": 54,
+          "scoreExact": 53.84615384615385,
+          "configuration": "max",
+          "confidenceInterval": 4,
+          "confidenceIntervalExact": 4.2369164701743856
+        }
+      },
+      "id": "subscription:Claude:Max *20:Claude Sonnet 5",
+      "billingType": "subscription",
+      "platformType": "Token Plan",
+      "plan": "Max *20",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "$",
+      "monthlyFeeCny": 1360.0,
+      "monthlyTokenInM": 11148.3,
+      "unitPriceCnyPerM": 0.12172
     },
     {
       "vendor": "Kimi",
@@ -3297,6 +3471,26 @@
     },
     {
       "vendor": "字节·方舟",
+      "model": "Auto",
+      "canonicalModelId": "auto",
+      "canonicalModel": "Auto",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Lite:Auto",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 300.0,
+      "unitPriceCnyPerM": 0.1333
+    },
+    {
+      "vendor": "字节·方舟",
       "model": "Doubao-Seed-Evolving",
       "canonicalModelId": "doubao-seed-evolving",
       "canonicalModel": "Doubao-Seed-Evolving",
@@ -3306,6 +3500,26 @@
         "deepSWE": null
       },
       "id": "subscription:字节·方舟:Lite:Doubao-Seed-Evolving",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 120.0,
+      "unitPriceCnyPerM": 0.3333
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.1-Turbo [256K]",
+      "canonicalModelId": "doubao-seed-2-1-turbo",
+      "canonicalModel": "Doubao-Seed-2.1-Turbo",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Lite:Doubao-Seed-2.1-Turbo [256K]",
       "billingType": "subscription",
       "platformType": "Coding Plan",
       "plan": "Lite",
@@ -3338,6 +3552,36 @@
       "monthlyFeeCny": 40.0,
       "monthlyTokenInM": 120.0,
       "unitPriceCnyPerM": 0.3333
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Kimi-K2.7-Code [256K]",
+      "canonicalModelId": "kimi-k2-7-code",
+      "canonicalModel": "Kimi-K2.7-Code",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 43,
+          "scoreExact": 43.0244715223736,
+          "configuration": "Kimi K2.7 Code"
+        },
+        "deepSWE": {
+          "score": 31,
+          "scoreExact": 30.53097345132743,
+          "configuration": null,
+          "confidenceInterval": 1,
+          "confidenceIntervalExact": 0.5007016522460913
+        }
+      },
+      "id": "subscription:字节·方舟:Lite:Kimi-K2.7-Code [256K]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Lite",
+      "originalMonthlyFee": 40.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 40.0,
+      "monthlyTokenInM": 66.7,
+      "unitPriceCnyPerM": 0.6
     },
     {
       "vendor": "字节·方舟",
@@ -3461,6 +3705,26 @@
     },
     {
       "vendor": "字节·方舟",
+      "model": "Auto",
+      "canonicalModelId": "auto",
+      "canonicalModel": "Auto",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Pro:Auto",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 1500.0,
+      "unitPriceCnyPerM": 0.1333
+    },
+    {
+      "vendor": "字节·方舟",
       "model": "Doubao-Seed-Evolving",
       "canonicalModelId": "doubao-seed-evolving",
       "canonicalModel": "Doubao-Seed-Evolving",
@@ -3470,6 +3734,26 @@
         "deepSWE": null
       },
       "id": "subscription:字节·方舟:Pro:Doubao-Seed-Evolving",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 600.0,
+      "unitPriceCnyPerM": 0.3333
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Doubao-Seed-2.1-Turbo [256K]",
+      "canonicalModelId": "doubao-seed-2-1-turbo",
+      "canonicalModel": "Doubao-Seed-2.1-Turbo",
+      "multimodal": "unknown",
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      },
+      "id": "subscription:字节·方舟:Pro:Doubao-Seed-2.1-Turbo [256K]",
       "billingType": "subscription",
       "platformType": "Coding Plan",
       "plan": "Pro",
@@ -3502,6 +3786,36 @@
       "monthlyFeeCny": 200.0,
       "monthlyTokenInM": 600.0,
       "unitPriceCnyPerM": 0.3333
+    },
+    {
+      "vendor": "字节·方舟",
+      "model": "Kimi-K2.7-Code [256K]",
+      "canonicalModelId": "kimi-k2-7-code",
+      "canonicalModel": "Kimi-K2.7-Code",
+      "multimodal": true,
+      "scores": {
+        "artificialAnalysis": {
+          "score": 43,
+          "scoreExact": 43.0244715223736,
+          "configuration": "Kimi K2.7 Code"
+        },
+        "deepSWE": {
+          "score": 31,
+          "scoreExact": 30.53097345132743,
+          "configuration": null,
+          "confidenceInterval": 1,
+          "confidenceIntervalExact": 0.5007016522460913
+        }
+      },
+      "id": "subscription:字节·方舟:Pro:Kimi-K2.7-Code [256K]",
+      "billingType": "subscription",
+      "platformType": "Coding Plan",
+      "plan": "Pro",
+      "originalMonthlyFee": 200.0,
+      "originalCurrency": "¥",
+      "monthlyFeeCny": 200.0,
+      "monthlyTokenInM": 333.3,
+      "unitPriceCnyPerM": 0.6
     },
     {
       "vendor": "字节·方舟",
