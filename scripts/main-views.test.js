@@ -9,6 +9,7 @@ const {
 } = require('./main-views.js');
 
 test('normalizeMainView', () => {
+  assert.equal(normalizeMainView('usage'), 'usage');
   assert.equal(normalizeMainView('payg'), 'payg');
   assert.equal(normalizeMainView('nope'), 'platforms');
   assert.equal(normalizeMainView(''), 'platforms');
@@ -22,6 +23,7 @@ test('isPlainPrimaryClick', () => {
 });
 
 test('readMainViewFromSearch', () => {
+  assert.equal(readMainViewFromSearch('?view=usage'), 'usage');
   assert.equal(readMainViewFromSearch('?view=monitor'), 'monitor');
   assert.equal(readMainViewFromSearch(''), 'platforms');
   assert.equal(readMainViewFromSearch('?view=x'), 'platforms');
@@ -45,6 +47,7 @@ test('applyMainViewDom toggles hidden and tab active', () => {
   const panels = {
     platforms: { hidden: false },
     plans: { hidden: false },
+    usage: { hidden: false },
     payg: { hidden: false },
     monitor: { hidden: false }
   };
@@ -54,7 +57,7 @@ test('applyMainViewDom toggles hidden and tab active', () => {
       return tabs;
     }
   };
-  ['platforms', 'plans', 'monitor', 'payg'].forEach((key) => {
+  ['platforms', 'plans', 'usage', 'monitor', 'payg'].forEach((key) => {
     tabs.push({
       key,
       classList: {
@@ -72,5 +75,6 @@ test('applyMainViewDom toggles hidden and tab active', () => {
   applyMainViewDom({ view: 'payg', panels, tabsRoot });
   assert.equal(panels.platforms.hidden, true);
   assert.equal(panels.payg.hidden, false);
+  assert.equal(panels.usage.hidden, true);
   assert.equal(tabs.find((t) => t.key === 'payg').classList._on, true);
 });

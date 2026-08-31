@@ -7,10 +7,11 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
 
-  const MAIN_VIEW_KEYS = ['platforms', 'plans', 'monitor', 'payg'];
+  const MAIN_VIEW_KEYS = ['platforms', 'usage', 'plans', 'monitor', 'payg'];
   const MAIN_VIEW_LABELS = {
     platforms: '平台对比',
     plans: '套餐对比',
+    usage: '额度/价格对比',
     monitor: '可用性监控',
     payg: '按量计费价格'
   };

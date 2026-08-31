@@ -4085,6 +4085,7 @@
         }
 
         #view-payg:not([hidden]),
+        #view-usage:not([hidden]),
         #view-monitor:not([hidden]) {
             display: flex;
             flex-direction: column;
@@ -4518,6 +4519,7 @@
         <div class="main-view-shell" id="mainViewShell">
         <nav class="main-view-tabs" id="mainViewTabs" role="tablist" aria-label="主内容切换">
             <a href="index.html" role="tab" data-main-view="platforms" aria-controls="view-platforms" aria-selected="true" class="is-active">平台对比</a>
+            <a href="index.html?view=usage" role="tab" data-main-view="usage" aria-controls="view-usage" aria-selected="false">额度/价格对比</a>
             <a href="index.html?view=plans" role="tab" data-main-view="plans" aria-controls="view-plans" aria-selected="false">套餐对比</a>
             <a href="index.html?view=monitor" role="tab" data-main-view="monitor" aria-controls="view-monitor" aria-selected="false">可用性监控</a>
             <a href="index.html?view=payg" role="tab" data-main-view="payg" aria-controls="view-payg" aria-selected="false">按量计费价格</a>
@@ -4541,7 +4543,7 @@
 
             </div>
             <div id="view-plans" role="tabpanel" data-main-view-panel="plans" hidden>
-                <p class="main-view-intro">横向对比套餐价格、额度与模型支持，辅助选型与预算评估。</p>
+                <p class="main-view-intro">横向对比套餐价格、请求次数与模型支持，辅助选型与预算评估。</p>
 
         <section class="plans-table-section" id="plansTableSection">
         <!-- 顶部筛选栏 -->
@@ -4836,21 +4838,6 @@
             </div>
         </div>
 
-        <section class="plan-usage-panel plan-composite-price-panel surface-panel" id="planCompositePricePanel" aria-labelledby="planCompositePriceTitle">
-            <div class="plan-usage-header">
-                <div class="plan-usage-copy">
-                    <h2 class="plan-usage-title" id="planCompositePriceTitle">综合单价</h2>
-                    <p class="plan-usage-description">按照旗舰或主力模型。来源：部分平台按缓存命中率90%，输入输出99:1，计算得出；部分平台个人实测得出；部分平台为固定Token；部分为收集的社区反馈。显示为每百万(M)Token的价格。</p>
-                </div>
-            </div>
-            <div class="plan-usage-chart-block">
-                <div class="plan-usage-state" id="planCompositePriceEmpty" hidden>暂无足够的月费与实测 Token 数据，无法绘制综合价格图。</div>
-                <div class="plan-usage-chart-scroll">
-                    <div class="plan-usage-chart plan-composite-price-chart" id="planCompositePriceChart" hidden></div>
-                </div>
-            </div>
-        </section>
-
         <!-- 表格 -->
         <div class="table-wrapper surface-panel">
             <div class="table-watermark" id="tableWatermark">
@@ -4872,15 +4859,11 @@
                             <th>标签</th>
                             <th class="sortable" data-column="firstMonthPrice">首月价格</th>
                             <th class="sortable" data-column="monthlyPrice">连续包月</th>
-                            <th class="sortable" data-column="pricePerMillionToken">综合单价</th>
                             <th class="sortable" data-column="quarterlyPrice">连续包季</th>
                             <th class="sortable" data-column="yearlyPrice">连续包年</th>
                             <th class="sortable" data-column="fiveHoursRequests">5小时请求数</th>
                             <th class="sortable" data-column="weeklyRequests">每周请求数</th>
                             <th class="sortable" data-column="monthlyRequests">每月请求数</th>
-                            <th class="sortable" data-column="measuredFiveHoursTokenLimit">实测5h Token</th>
-                            <th class="sortable" data-column="measuredWeeklyTokenLimit">实测周Token</th>
-                            <th class="sortable" data-column="measuredMonthlyTokenLimit">实测月Token</th>
                             <th>支持模型</th>
                             <th>其他权益</th>
                             <th>状态</th>
@@ -6869,11 +6852,11 @@
             <ul>
                 <li>包季/包年价格中的划线数字表示原始价格（包月×3 或 包月×12），未划线的为实际优惠价格。</li>
                 <li>使用表格邀请链接，部分平台可享优惠</li>
-                <li>综合单价 = 连续包月价（美元按汇率折算人民币）÷ 实测月 Token，单位为 ￥/M Token；缺数时显示「-」，仅供横向对比。</li>
                 <li>本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议</li>
             </ul></div>
 
             </div>
+            <div id="view-usage" role="tabpanel" data-main-view-panel="usage" hidden></div>
             <div id="view-monitor" role="tabpanel" data-main-view-panel="monitor" hidden></div>
             <div id="view-payg" role="tabpanel" data-main-view-panel="payg" hidden></div>
         </div>
@@ -6923,9 +6906,9 @@
     <script src="monitor/monitor-config.local.js"></script>
     <script src="scripts/platform-catalog.js?v=260726a"></script>
     <script src="scripts/platform-detail.js?v=260726a"></script>
-    <script src="scripts/shared.js?v=260724b"></script>
-    <script src="scripts/main-views.js?v=260726b"></script>
+    <script src="scripts/shared.js?v=260829a"></script>
+    <script src="scripts/main-views.js?v=260829a"></script>
     <script src="scripts/plan-composite-price-chart.js?v=260726a"></script>
-    <script src="scripts/homepage.js?v=260726e"></script>
+    <script src="scripts/homepage.js?v=260901b"></script>
 </body>
 </html>

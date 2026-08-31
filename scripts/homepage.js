@@ -1382,7 +1382,7 @@
             if (filteredPlans.length === 0) {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="21">
+                        <td colspan="17">
                             <div class="empty-state">
                                 <div class="empty-state-icon">📭</div>
                                 <div class="empty-state-text">没有找到符合条件的套餐</div>
@@ -1412,15 +1412,11 @@
                     <td class="plan-tags-cell">${renderPlanTags(plan)}</td>
                     <td><span class="price">${formatPlanPriceDisplay(plan, plan.firstMonthPrice)} <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">${formatPlanPriceDisplay(plan, plan.monthlyPrice)} <span class="unit">/ 月</span></span></td>
-                    <td><span class="price-monthly">${formatPricePerMillionToken(plan)}</span></td>
                     <td><span class="price-normal">${formatPlanPriceDisplay(plan, plan.quarterlyPrice)} <span class="price-original">${formatPlanPriceDisplay(plan, plan.monthlyPrice * 3)}</span> <span class="unit">/ 季</span></span></td>
                     <td><span class="price-normal">${formatPlanPriceDisplay(plan, plan.yearlyPrice)} <span class="price-original">${formatPlanPriceDisplay(plan, plan.monthlyPrice * 12)}</span> <span class="unit">/ 年</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.fiveHoursRequests)} <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.weeklyRequests)} <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.monthlyRequests)} <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">${formatMeasuredToken(plan.measuredFiveHoursTokenLimit)}</span></td>
-                    <td><span class="request-count">${formatMeasuredToken(plan.measuredWeeklyTokenLimit)}</span></td>
-                    <td><span class="request-count">${formatMeasuredToken(plan.measuredMonthlyTokenLimit)}</span></td>
                     <td>
                         ${plan.models.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
                     </td>
@@ -1631,10 +1627,13 @@
             }
 
             // 渲染底部说明（无有效数据时不覆盖 HTML 中的静态默认文案）
-            if (Array.isArray(appConfig.notes) && appConfig.notes.length > 0) {
+            const visiblePlanNotes = Array.isArray(appConfig.notes)
+                ? appConfig.notes.filter(note => !/^综合单价\s*=/.test(String(note || '').trim()))
+                : [];
+            if (visiblePlanNotes.length > 0) {
                 renderNotesSection('notesSection', {
                     title: '💡 说明',
-                    items: appConfig.notes,
+                    items: visiblePlanNotes,
                     renderItem: function(note) {
                         return escapeHtml(note);
                     }
@@ -2450,6 +2449,24 @@
             }
         }
 
+        async function ensureUsageViewMounted() {
+            const root = document.getElementById('view-usage');
+            if (!root) return;
+            if (!document.querySelector('link[data-usage-css="1"]')) {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = 'styles/model-comparison.css?v=260831l';
+                link.dataset.usageCss = '1';
+                document.head.appendChild(link);
+            }
+            if (typeof window.mountModelComparisonView !== 'function') {
+                await loadScriptOnce('scripts/model-comparison.js?v=260831s');
+            }
+            if (typeof window.mountModelComparisonView === 'function') {
+                await window.mountModelComparisonView(root);
+            }
+        }
+
         async function ensureMonitorViewMounted() {
             const root = document.getElementById('view-monitor');
             if (!root) return;
@@ -2494,6 +2511,13 @@
                     console.error('按量计费视图加载失败:', err);
                 }
             }
+            if (view === 'usage') {
+                try {
+                    await ensureUsageViewMounted();
+                } catch (err) {
+                    console.error('额度/价格对比视图加载失败:', err);
+                }
+            }
             if (view === 'plans') {
                 requestAnimationFrame(() => {
                     window.dispatchEvent(new Event('resize'));
@@ -2521,6 +2545,7 @@
                 getPanels: () => ({
                     platforms: document.getElementById('view-platforms'),
                     plans: document.getElementById('view-plans'),
+                    usage: document.getElementById('view-usage'),
                     payg: document.getElementById('view-payg'),
                     monitor: document.getElementById('view-monitor')
                 }),
