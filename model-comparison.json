@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-31T14:05:49Z",
+  "generatedAt": "2026-08-31T16:29:34Z",
   "sourceGeneratedAt": {
-    "usage": "2026-08-31",
+    "usage": "2026-09-01",
     "modelInfo": "2026-08-31T14:05:42Z"
   },
   "usdToCnyRate": 6.8,
@@ -1675,11 +1675,11 @@
       "originalMonthlyFee": 49.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 49.0,
-      "fiveHourTokenInM": 50.0,
-      "weeklyTokenInM": 500.0,
-      "monthlyTokenInM": 2000.0,
-      "unitPriceCnyPerM": 0.0245,
-      "note": "个人实测，缓存命中率约 95.5%；五小时按周额度的 1/10 换算"
+      "fiveHourTokenInM": 42.0,
+      "weeklyTokenInM": 420.0,
+      "monthlyTokenInM": 1680.0,
+      "unitPriceCnyPerM": 0.0292,
+      "note": "个人实测目标样本共 5,938,957 Token，缓存命中率约 95.45%、输出占比约 0.46%，对应五小时额度上升 14 个百分点；实验表现与普通输入、缓存读取、输出约按 1:0.2:4 计费基本吻合；五小时实测反推约 42.42M，正式取整为 42M，周按五小时的 10 倍、月按周的 4 倍换算"
     },
     {
       "vendor": "MiniMax",
@@ -1703,11 +1703,11 @@
       "originalMonthlyFee": 119.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 119.0,
-      "fiveHourTokenInM": 150.0,
-      "weeklyTokenInM": 1500.0,
-      "monthlyTokenInM": 6000.0,
-      "unitPriceCnyPerM": 0.0198,
-      "note": "按个人实测的新Plus用量 3 倍计算；五小时按周额度的 1/10 换算"
+      "fiveHourTokenInM": 126.0,
+      "weeklyTokenInM": 1260.0,
+      "monthlyTokenInM": 5040.0,
+      "unitPriceCnyPerM": 0.0236,
+      "note": "按个人实测的新Plus用量 3 倍计算（套餐比例 18/6）；个人实测目标样本共 5,938,957 Token，缓存命中率约 95.45%、输出占比约 0.46%，对应五小时额度上升 14 个百分点；实验表现与普通输入、缓存读取、输出约按 1:0.2:4 计费基本吻合；五小时实测反推约 42.42M，正式取整为 42M，周按五小时的 10 倍、月按周的 4 倍换算"
     },
     {
       "vendor": "MiniMax",
@@ -1731,11 +1731,11 @@
       "originalMonthlyFee": 469.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 469.0,
-      "fiveHourTokenInM": 583.3,
-      "weeklyTokenInM": 5833.0,
-      "monthlyTokenInM": 23332.0,
-      "unitPriceCnyPerM": 0.0201,
-      "note": "按个人实测的新Plus用量 11.66 倍计算；五小时按周额度的 1/10 换算"
+      "fiveHourTokenInM": 497.0,
+      "weeklyTokenInM": 4970.0,
+      "monthlyTokenInM": 19880.0,
+      "unitPriceCnyPerM": 0.0236,
+      "note": "按个人实测的新Plus用量 71/6 倍（约 11.83 倍）计算；个人实测目标样本共 5,938,957 Token，缓存命中率约 95.45%、输出占比约 0.46%，对应五小时额度上升 14 个百分点；实验表现与普通输入、缓存读取、输出约按 1:0.2:4 计费基本吻合；五小时实测反推约 42.42M，正式取整为 42M，周按五小时的 10 倍、月按周的 4 倍换算"
     },
     {
       "vendor": "优云智算",
