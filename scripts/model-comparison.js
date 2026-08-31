@@ -31,7 +31,7 @@
     const DEFAULT_MODEL_IDS = [
         'deepseek-v4-pro-0813', 'deepseek-v4-flash-0731', 'qwen-3-8-max',
         'glm-5-3', 'glm-5-3-flash', 'kimi-k3', 'gpt-5-6-sol', 'gpt-5-6-luna',
-        'claude-opus-5', 'claude-sonnet-5', 'grok-4-6', 'muse-spark-1-2',
+        'claude-opus-5', 'claude-sonnet-5', 'muse-spark-1-2',
         'minimax-m3', 'deepseek-v4-flash-vision-exp'
     ];
     const COMPARISON_TABLE_COLUMNS = [
@@ -898,7 +898,7 @@
                 unitPriceBarChart.resize();
                 unitPriceBarChart.setOption({
                     animationDuration: 420,
-                    grid: { left: 62, right: 20, top: 42, bottom: 128 },
+                    grid: { left: 62, right: 20, top: 42, bottom: 205 },
                     tooltip: { trigger: 'item', confine: true, appendToBody: false, formatter: (params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit) },
                     textStyle: { fontFamily: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' },
                     xAxis: {

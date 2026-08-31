@@ -63,12 +63,12 @@ test('default filters use the curated available platforms and models', () => {
     getPointPlatformKey(defaultPoints[3])
   ]));
   assert.deepEqual(defaults.models, new Set([
-    'deepseek-v4-pro-0813', 'claude-opus-5', 'grok-4-6', 'muse-spark-1-2',
+    'deepseek-v4-pro-0813', 'claude-opus-5', 'muse-spark-1-2',
     'minimax-m3', 'deepseek-v4-flash-vision-exp'
   ]));
   assert.equal(DEFAULT_PLATFORM_SELECTIONS.length, 9);
-  assert.equal(DEFAULT_MODEL_IDS.length, 14);
-  assert.equal(DEFAULT_MODEL_IDS.includes('grok-4-6'), true);
+  assert.equal(DEFAULT_MODEL_IDS.length, 13);
+  assert.equal(DEFAULT_MODEL_IDS.includes('grok-4-6'), false);
   assert.equal(DEFAULT_MODEL_IDS.includes('muse-spark-1-2'), true);
   assert.equal(DEFAULT_MODEL_IDS.includes('minimax-m3'), true);
   assert.equal(DEFAULT_MODEL_IDS.includes('deepseek-v4-flash-vision-exp'), true);
