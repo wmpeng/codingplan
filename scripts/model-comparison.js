@@ -70,8 +70,31 @@
                 .map(([vendor, platformType]) => getPointPlatformKey({ vendor, platformType }))
                 .filter((key) => availablePlatforms.has(key))),
             models: new Set(DEFAULT_MODEL_IDS.filter((id) => availableModels.has(id))),
-            multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', soloColorKey: null, tokenUnit: 'M'
+            multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', monthlyPriceMin: null,
+            monthlyPriceMax: null, soloColorKey: null, tokenUnit: 'M'
         };
+    }
+
+    function getMonthlyPriceBounds(points) {
+        const prices = (points || []).map((point) => finitePositive(point.monthlyFeeCny)).filter((value) => value !== null);
+        if (!prices.length) return { min: 1, max: 1000 };
+        const min = Math.max(1, Math.floor(Math.min(...prices)));
+        const max = Math.max(min + 1, Math.ceil(Math.max(...prices)));
+        return { min, max };
+    }
+
+    function priceToPercent(value, bounds) {
+        const minLog = Math.log10(bounds.min);
+        const maxLog = Math.log10(bounds.max);
+        const clamped = Math.max(bounds.min, Math.min(bounds.max, Number(value)));
+        return ((Math.log10(clamped) - minLog) / (maxLog - minLog || 1)) * 100;
+    }
+
+    function percentToPrice(percent, bounds) {
+        const clamped = Math.max(0, Math.min(100, Number(percent)));
+        const minLog = Math.log10(bounds.min);
+        const maxLog = Math.log10(bounds.max);
+        return Math.pow(10, minLog + (clamped / 100) * (maxLog - minLog));
     }
 
     function filterPoints(points, filters) {
@@ -82,6 +105,7 @@
         const deepSWEScoreMin = Number(state.deepSWEScoreMin);
         const hasAaScoreMin = state.aaScoreMin !== '' && state.aaScoreMin !== null && Number.isFinite(aaScoreMin);
         const hasDeepSWEScoreMin = state.deepSWEScoreMin !== '' && state.deepSWEScoreMin !== null && Number.isFinite(deepSWEScoreMin);
+        const hasMonthlyPriceFilter = finitePositive(state.monthlyPriceMin) !== null && finitePositive(state.monthlyPriceMax) !== null;
         return (points || []).filter((point) => {
             if (platforms.size && !platforms.has(getPointPlatformKey(point))) return false;
             if (models.size && !models.has(point.canonicalModelId)) return false;
@@ -91,6 +115,10 @@
             const deepSWEScore = getPointScore(point, 'deepSWE');
             if (hasAaScoreMin && (aaScore === null || aaScore < aaScoreMin)) return false;
             if (hasDeepSWEScoreMin && (deepSWEScore === null || deepSWEScore < deepSWEScoreMin)) return false;
+            if (hasMonthlyPriceFilter) {
+                const monthlyFee = finitePositive(point.monthlyFeeCny);
+                if (monthlyFee === null || monthlyFee < state.monthlyPriceMin || monthlyFee > state.monthlyPriceMax) return false;
+            }
             return true;
         });
     }
@@ -343,6 +371,7 @@
                 <div class="filter-bar surface-panel usage-filters" aria-label="图表筛选">
                     <div class="filter-dropdown" data-picker="vendors"><button type="button" class="filter-btn" data-picker-toggle><span>平台</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-count hidden>0</span></button><div class="dropdown-menu"><div class="dropdown-section"><div class="checkbox-group" data-options></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-picker-reset>重置</button><button type="button" class="dropdown-btn primary" data-picker-done>确定</button></div></div></div>
                     <div class="filter-dropdown" data-picker="models"><button type="button" class="filter-btn" data-picker-toggle><span>模型</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-count hidden>0</span></button><div class="dropdown-menu usage-model-menu"><input class="usage-search" type="search" data-model-search placeholder="搜索模型" aria-label="搜索模型"><div class="dropdown-section"><div class="checkbox-group" data-options></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-picker-reset>重置</button><button type="button" class="dropdown-btn primary" data-picker-done>确定</button></div></div></div>
+                    <div class="filter-dropdown" data-picker="monthly-price"><button type="button" class="filter-btn" data-picker-toggle><span>套餐价格</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-price-count hidden>●</span></button><div class="dropdown-menu usage-price-menu"><div class="dropdown-section"><div class="dropdown-title">包月价格区间（人民币）</div><div class="price-slider-container"><div class="price-slider" data-price-slider><div class="slider-track"></div><div class="slider-range" data-price-range></div><div class="slider-thumb" data-price-thumb="min" role="slider" tabindex="0" aria-label="最低套餐价格"></div><div class="slider-thumb" data-price-thumb="max" role="slider" tabindex="0" aria-label="最高套餐价格"></div></div><div class="slider-values"><span class="slider-value" data-price-value="min">¥0</span><span class="slider-value" data-price-value="max">¥0</span></div></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-price-reset>重置</button><button type="button" class="dropdown-btn primary" data-price-apply>确定</button></div></div></div>
                     <label class="filter-btn usage-inline-filter"><span>多模态</span><select data-filter="multimodal" aria-label="多模态"><option value="all">全部</option><option value="multimodal">多模态</option><option value="text">纯文本</option></select></label>
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>AA 最低分</span><input data-filter="aaScoreMin" aria-label="AA 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>DeepSWE 最低分</span><input data-filter="deepSWEScoreMin" aria-label="DeepSWE 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
@@ -456,6 +485,91 @@
                 comparison: { key: 'unitPriceCnyPerM', direction: 'asc' }
             };
             const latestTableRows = { comparison: [] };
+            const priceBounds = getMonthlyPriceBounds(points);
+            const priceSlider = { min: priceBounds.min, max: priceBounds.max };
+
+            function updatePriceSliderVisuals(minValue, maxValue) {
+                const first = Math.max(priceBounds.min, Math.min(priceBounds.max, Math.round(minValue)));
+                const second = Math.max(priceBounds.min, Math.min(priceBounds.max, Math.round(maxValue)));
+                priceSlider.min = Math.min(first, second);
+                priceSlider.max = Math.max(first, second);
+                const minPercent = priceToPercent(priceSlider.min, priceBounds);
+                const maxPercent = priceToPercent(priceSlider.max, priceBounds);
+                const minThumb = container.querySelector('[data-price-thumb="min"]');
+                const maxThumb = container.querySelector('[data-price-thumb="max"]');
+                const range = container.querySelector('[data-price-range]');
+                minThumb.style.left = `${minPercent}%`;
+                maxThumb.style.left = `${maxPercent}%`;
+                range.style.left = `${minPercent}%`;
+                range.style.width = `${maxPercent - minPercent}%`;
+                container.querySelector('[data-price-value="min"]').textContent = `¥${formatNumber(priceSlider.min, 0)}`;
+                container.querySelector('[data-price-value="max"]').textContent = `¥${formatNumber(priceSlider.max, 0)}`;
+                minThumb.setAttribute('aria-valuemin', String(priceBounds.min));
+                minThumb.setAttribute('aria-valuemax', String(priceSlider.max));
+                minThumb.setAttribute('aria-valuenow', String(priceSlider.min));
+                maxThumb.setAttribute('aria-valuemin', String(priceSlider.min));
+                maxThumb.setAttribute('aria-valuemax', String(priceBounds.max));
+                maxThumb.setAttribute('aria-valuenow', String(priceSlider.max));
+            }
+
+            function syncPriceSliderFromState() {
+                updatePriceSliderVisuals(
+                    state.monthlyPriceMin === null ? priceBounds.min : state.monthlyPriceMin,
+                    state.monthlyPriceMax === null ? priceBounds.max : state.monthlyPriceMax
+                );
+            }
+
+            function syncPriceFilterControl() {
+                const active = state.monthlyPriceMin !== null && state.monthlyPriceMax !== null;
+                const picker = container.querySelector('[data-picker="monthly-price"]');
+                picker.querySelector('[data-picker-toggle]').classList.toggle('active', active);
+                picker.querySelector('[data-price-count]').hidden = !active;
+            }
+
+            function bindPriceSlider() {
+                const slider = container.querySelector('[data-price-slider]');
+                let dragging = null;
+                const move = (event) => {
+                    if (!dragging) return;
+                    const pointer = event.touches ? event.touches[0] : event;
+                    const rect = slider.getBoundingClientRect();
+                    const percent = Math.max(0, Math.min(100, ((pointer.clientX - rect.left) / rect.width) * 100));
+                    const value = percentToPrice(percent, priceBounds);
+                    if (dragging === 'min') updatePriceSliderVisuals(Math.min(value, priceSlider.max), priceSlider.max);
+                    else updatePriceSliderVisuals(priceSlider.min, Math.max(value, priceSlider.min));
+                };
+                const stop = () => {
+                    dragging = null;
+                    document.removeEventListener('mousemove', move);
+                    document.removeEventListener('mouseup', stop);
+                    document.removeEventListener('touchmove', move);
+                    document.removeEventListener('touchend', stop);
+                };
+                container.querySelectorAll('[data-price-thumb]').forEach((thumb) => {
+                    const start = (event) => {
+                        event.preventDefault();
+                        dragging = thumb.dataset.priceThumb;
+                        document.addEventListener('mousemove', move);
+                        document.addEventListener('mouseup', stop);
+                        document.addEventListener('touchmove', move, { passive: false });
+                        document.addEventListener('touchend', stop);
+                    };
+                    thumb.addEventListener('mousedown', start);
+                    thumb.addEventListener('touchstart', start, { passive: false });
+                    thumb.addEventListener('keydown', (event) => {
+                        const direction = event.key === 'ArrowLeft' || event.key === 'ArrowDown' ? -1
+                            : event.key === 'ArrowRight' || event.key === 'ArrowUp' ? 1 : 0;
+                        if (!direction) return;
+                        event.preventDefault();
+                        const step = Math.max(1, Math.round((priceBounds.max - priceBounds.min) / 100));
+                        if (thumb.dataset.priceThumb === 'min') updatePriceSliderVisuals(priceSlider.min + direction * step, priceSlider.max);
+                        else updatePriceSliderVisuals(priceSlider.min, priceSlider.max + direction * step);
+                    });
+                });
+                updatePriceSliderVisuals(priceBounds.min, priceBounds.max);
+            }
+
+            bindPriceSlider();
 
             function optionCheckbox(value, label, kind) {
                 return `<label class="checkbox-item"><input type="checkbox" data-option-kind="${kind}" value="${escapeHtml(value)}"><span>${escapeHtml(label)}</span></label>`;
@@ -480,6 +594,8 @@
                 container.querySelector('[data-filter="aaScoreMin"]').value = state.aaScoreMin;
                 container.querySelector('[data-filter="deepSWEScoreMin"]').value = state.deepSWEScoreMin;
                 container.querySelectorAll('[data-token-unit]').forEach((button) => button.classList.toggle('is-active', button.dataset.tokenUnit === state.tokenUnit));
+                syncPriceSliderFromState();
+                syncPriceFilterControl();
                 updatePickerCount('vendors', state.platforms);
                 updatePickerCount('models', state.models);
             }
@@ -538,7 +654,8 @@
             function render() {
                 const filtered = filterPoints(points, {
                     platforms: state.platforms, models: state.models, multimodal: state.multimodal,
-                    aaScoreMin: state.aaScoreMin, deepSWEScoreMin: state.deepSWEScoreMin
+                    aaScoreMin: state.aaScoreMin, deepSWEScoreMin: state.deepSWEScoreMin,
+                    monthlyPriceMin: state.monthlyPriceMin, monthlyPriceMax: state.monthlyPriceMax
                 });
                 const visibleFiltered = filterBySoloColorKey(filtered, state.colorMode, state.soloColorKey);
                 const usagePoints = buildUsageChartPoints(visibleFiltered);
@@ -662,12 +779,28 @@
                     const picker = pickerToggle.closest('[data-picker]');
                     const menu = picker.querySelector('.dropdown-menu');
                     const willOpen = !menu.classList.contains('show');
+                    if (willOpen && picker.dataset.picker === 'monthly-price') syncPriceSliderFromState();
                     closeUsageDropdowns(picker);
                     menu.classList.toggle('show', willOpen);
                     pickerToggle.classList.toggle('active', willOpen);
                     return;
                 }
                 if (event.target.closest('.dropdown-menu')) event.stopPropagation();
+                const priceReset = event.target.closest('[data-price-reset]');
+                if (priceReset) {
+                    updatePriceSliderVisuals(priceBounds.min, priceBounds.max);
+                    return;
+                }
+                const priceApply = event.target.closest('[data-price-apply]');
+                if (priceApply) {
+                    const fullRange = priceSlider.min === priceBounds.min && priceSlider.max === priceBounds.max;
+                    state.monthlyPriceMin = fullRange ? null : priceSlider.min;
+                    state.monthlyPriceMax = fullRange ? null : priceSlider.max;
+                    closeUsageDropdowns();
+                    syncPriceFilterControl();
+                    render();
+                    return;
+                }
                 const pickerDone = event.target.closest('[data-picker-done]');
                 if (pickerDone) {
                     closeUsageDropdowns();
@@ -742,5 +875,5 @@
         return container.__usageMountPromise;
     }
 
-    return { DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });

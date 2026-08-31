@@ -9,6 +9,8 @@
 .usage-filters .filter-btn { min-height: 42px; }
 .usage-filters .dropdown-menu { min-width: 280px; }
 .usage-model-menu { width: min(340px, calc(100vw - 32px)); }
+.usage-price-menu { min-width: 300px !important; }
+.usage-price-menu .slider-thumb { touch-action: none; }
 .usage-search { box-sizing: border-box; width: 100%; margin-bottom: 12px; padding: 10px 12px; border: 1px solid rgba(23,32,51,.12); border-radius: 12px; background: rgba(255,255,255,.86); color: var(--text-primary); font: inherit; font-size: 13px; outline: none; }
 .usage-search:focus { border-color: rgba(15,118,110,.45); box-shadow: 0 0 0 3px rgba(15,118,110,.08); }
 .usage-inline-filter { cursor: default; }

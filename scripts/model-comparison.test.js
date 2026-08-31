@@ -7,6 +7,9 @@ const {
   getPointScore,
   getPointPlatformKey,
   createDefaultFilterState,
+  getMonthlyPriceBounds,
+  priceToPercent,
+  percentToPrice,
   filterPoints,
   buildUsageChartPoints,
   buildIntelligenceChartPoints,
@@ -65,12 +68,27 @@ test('default filters use the curated available platforms and models', () => {
   assert.equal(defaults.deepSWEScoreMin, '');
   assert.equal(defaults.soloColorKey, null);
   assert.equal(defaults.tokenUnit, 'M');
+  assert.equal(defaults.monthlyPriceMin, null);
+  assert.equal(defaults.monthlyPriceMax, null);
 });
 
 test('shared filters apply vendor, model, modality and exact score', () => {
   assert.deepEqual(filterPoints(points, { platforms: new Set([getPointPlatformKey(points[0])]), models: new Set(), multimodal: 'multimodal', aaScoreMin: 59.9, deepSWEScoreMin: 29 }), [points[0]]);
   assert.deepEqual(filterPoints(points, { platforms: new Set(), models: new Set(['m2']), multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '' }), [points[1]]);
   assert.deepEqual(filterPoints(points, { multimodal: 'all', aaScoreMin: 50, deepSWEScoreMin: 40 }), []);
+});
+
+test('monthly package price filter uses a logarithmic dual-slider range', () => {
+  const bounds = getMonthlyPriceBounds(points);
+  assert.deepEqual(bounds, { min: 50, max: 100 });
+  assert.equal(priceToPercent(bounds.min, bounds), 0);
+  assert.equal(Math.round(priceToPercent(bounds.max, bounds)), 100);
+  assert.equal(Math.round(percentToPrice(0, bounds)), bounds.min);
+  assert.equal(Math.round(percentToPrice(100, bounds)), bounds.max);
+  assert.deepEqual(filterPoints(points, {
+    multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '',
+    monthlyPriceMin: 60, monthlyPriceMax: 120
+  }), [points[0]]);
 });
 
 test('unknown modality only appears in all', () => {

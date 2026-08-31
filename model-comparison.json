@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T13:23:16Z",
+  "generatedAt": "2026-08-31T13:29:34Z",
   "sourceGeneratedAt": {
     "usage": "2026-08-31",
     "modelInfo": "2026-08-31T13:18:15Z"
@@ -543,7 +543,7 @@
       "weeklyTokenInM": 225.0,
       "monthlyTokenInM": 900.0,
       "unitPriceCnyPerM": 0.2211,
-      "note": "按同套餐 Kimi-K3 的社区用量反馈 1.5 倍计算；数据可能存在偏差，欢迎反馈"
+      "note": "按同套餐 Kimi-K3 的 1.5 倍保守折算；官方宣传约 2 倍，但社区测算差异较大，该比例并非直接实测结果"
     },
     {
       "vendor": "Kimi",
@@ -611,7 +611,7 @@
       "weeklyTokenInM": 600.0,
       "monthlyTokenInM": 2400.0,
       "unitPriceCnyPerM": 0.2913,
-      "note": "按同套餐 Kimi-K3 的社区用量反馈 1.5 倍计算；数据可能存在偏差，欢迎反馈"
+      "note": "按同套餐 Kimi-K3 的 1.5 倍保守折算；官方宣传约 2 倍，但社区测算差异较大，该比例并非直接实测结果"
     },
     {
       "vendor": "小米·MiMo",
@@ -3017,7 +3017,7 @@
       "weeklyTokenInM": 112.4269225004,
       "monthlyTokenInM": 224.9,
       "unitPriceCnyPerM": 0.3026,
-      "note": "完整上下文高价档（>272K token）"
+      "note": "价格：输入 $0.4/M Token、缓存读取 $0.04/M Token、输出 $1.8/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；完整上下文高价档（>272K token）"
     },
     {
       "vendor": "OpenCode",
@@ -3051,7 +3051,7 @@
       "weeklyTokenInM": 215.1771625305,
       "monthlyTokenInM": 430.4,
       "unitPriceCnyPerM": 0.15776,
-      "note": "上下文不超过 272K token 的低价档"
+      "note": "价格：输入 $0.2/M Token、缓存读取 $0.02/M Token、输出 $1.2/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；上下文不超过 272K token 的低价档"
     },
     {
       "vendor": "OpenCode",
@@ -3085,7 +3085,7 @@
       "weeklyTokenInM": 22.2278203399,
       "monthlyTokenInM": 44.5,
       "unitPriceCnyPerM": 1.52932,
-      "note": null
+      "note": "价格：输入 $1.4/M Token、缓存读取 $0.26/M Token、输出 $4.4/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15"
     },
     {
       "vendor": "OpenCode",
@@ -3119,7 +3119,7 @@
       "weeklyTokenInM": 88.9112813597,
       "monthlyTokenInM": 177.8,
       "unitPriceCnyPerM": 0.38216,
-      "note": null
+      "note": "价格：输入 $1.4/M Token、缓存读取 $0.26/M Token、输出 $4.4/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
     },
     {
       "vendor": "OpenCode",
@@ -3147,7 +3147,7 @@
       "weeklyTokenInM": 88.9112813597,
       "monthlyTokenInM": 177.8,
       "unitPriceCnyPerM": 0.38216,
-      "note": null
+      "note": "价格：输入 $1.4/M Token、缓存读取 $0.26/M Token、输出 $4.4/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
     },
     {
       "vendor": "OpenCode",
@@ -3181,7 +3181,7 @@
       "weeklyTokenInM": 14.7688672279,
       "monthlyTokenInM": 29.5,
       "unitPriceCnyPerM": 2.30248,
-      "note": null
+      "note": "价格：输入 $3/M Token、缓存读取 $0.3/M Token、输出 $15/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15"
     },
     {
       "vendor": "OpenCode",
@@ -3215,7 +3215,7 @@
       "weeklyTokenInM": 121.5263712226,
       "monthlyTokenInM": 243.1,
       "unitPriceCnyPerM": 0.27948,
-      "note": null
+      "note": "价格：输入 $0.95/M Token、缓存读取 $0.19/M Token、输出 $4/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
     },
     {
       "vendor": "OpenCode",
@@ -3243,7 +3243,7 @@
       "weeklyTokenInM": 137.2982002494,
       "monthlyTokenInM": 274.6,
       "unitPriceCnyPerM": 0.24752,
-      "note": null
+      "note": "价格：输入 $0.95/M Token、缓存读取 $0.16/M Token、输出 $4/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
     },
     {
       "vendor": "OpenCode",
@@ -3271,7 +3271,7 @@
       "weeklyTokenInM": 1127.9679657098,
       "monthlyTokenInM": 2255.9,
       "unitPriceCnyPerM": 0.02992,
-      "note": null
+      "note": "价格：输入 $0.3/M Token、缓存读取 $0.006/M Token、输出 $1.2/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
     },
     {
       "vendor": "OpenCode",
@@ -3299,7 +3299,7 @@
       "weeklyTokenInM": 2724.3749829727,
       "monthlyTokenInM": 5448.7,
       "unitPriceCnyPerM": 0.01224,
-      "note": null
+      "note": "价格：输入 $0.14/M Token、缓存读取 $0.0028/M Token、输出 $0.28/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
     },
     {
       "vendor": "OpenCode",
@@ -3327,7 +3327,7 @@
       "weeklyTokenInM": 254.947847231,
       "monthlyTokenInM": 509.9,
       "unitPriceCnyPerM": 0.13328,
-      "note": null
+      "note": "价格：输入 $0.435/M Token、缓存读取 $0.003625/M Token、输出 $0.87/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15"
     },
     {
       "vendor": "OpenCode",
@@ -3355,7 +3355,7 @@
       "weeklyTokenInM": 386.398763524,
       "monthlyTokenInM": 772.8,
       "unitPriceCnyPerM": 0.08772,
-      "note": null
+      "note": "价格：输入 $0.3/M Token、缓存读取 $0.06/M Token、输出 $1.2/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
     },
     {
       "vendor": "OpenCode",
@@ -3383,7 +3383,7 @@
       "weeklyTokenInM": 386.398763524,
       "monthlyTokenInM": 772.8,
       "unitPriceCnyPerM": 0.08772,
-      "note": null
+      "note": "价格：输入 $0.3/M Token、缓存读取 $0.06/M Token、输出 $1.2/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
     },
     {
       "vendor": "OpenCode",
@@ -3417,7 +3417,7 @@
       "weeklyTokenInM": 3814.1249761617,
       "monthlyTokenInM": 7628.2,
       "unitPriceCnyPerM": 0.00884,
-      "note": null
+      "note": "价格：输入 $0.1/M Token、缓存读取 $0.002/M Token、输出 $0.2/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
     },
     {
       "vendor": "OpenCode",
@@ -3451,7 +3451,7 @@
       "weeklyTokenInM": 20.5023065095,
       "monthlyTokenInM": 41.0,
       "unitPriceCnyPerM": 1.65852,
-      "note": null
+      "note": "价格：输入 $2/M Token、缓存读取 $0.25/M Token、输出 $6/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15"
     },
     {
       "vendor": "OpenCode",
@@ -3479,7 +3479,7 @@
       "weeklyTokenInM": 47.2813238771,
       "monthlyTokenInM": 94.6,
       "unitPriceCnyPerM": 0.71876,
-      "note": null
+      "note": "价格：输入 $2.5/M Token、缓存读取 $0.5/M Token、输出 $7.5/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
     },
     {
       "vendor": "OpenCode",
@@ -3507,7 +3507,7 @@
       "weeklyTokenInM": 152.1838380764,
       "monthlyTokenInM": 304.4,
       "unitPriceCnyPerM": 0.22372,
-      "note": "完整上下文高价档（>256K token，最高 1M 上下文）"
+      "note": "价格：输入 $1.2/M Token、缓存读取 $0.12/M Token、输出 $4.8/M Token；模型额度：5小时 $12、每周 $30、每月 $60；完整上下文高价档（>256K token，最高 1M 上下文）"
     },
     {
       "vendor": "OpenCode",
@@ -3535,7 +3535,7 @@
       "weeklyTokenInM": 456.5515142292,
       "monthlyTokenInM": 913.1,
       "unitPriceCnyPerM": 0.0748,
-      "note": "上下文不超过 256K token 的低价档"
+      "note": "价格：输入 $0.4/M Token、缓存读取 $0.04/M Token、输出 $1.6/M Token；模型额度：5小时 $12、每周 $30、每月 $60；上下文不超过 256K token 的低价档"
     },
     {
       "vendor": "OpenCode",
@@ -3563,7 +3563,7 @@
       "weeklyTokenInM": 94.1767383456,
       "monthlyTokenInM": 188.4,
       "unitPriceCnyPerM": 0.36108,
-      "note": "完整上下文高价档（>256K token）"
+      "note": "价格：输入 $2/M Token、缓存读取 $0.2/M Token、输出 $6/M Token；模型额度：5小时 $12、每周 $30、每月 $60；完整上下文高价档（>256K token）"
     },
     {
       "vendor": "OpenCode",
@@ -3591,7 +3591,7 @@
       "weeklyTokenInM": 344.2834600488,
       "monthlyTokenInM": 688.6,
       "unitPriceCnyPerM": 0.0986,
-      "note": "上下文不超过 256K token 的低价档"
+      "note": "价格：输入 $0.5/M Token、缓存读取 $0.05/M Token、输出 $3/M Token；模型额度：5小时 $12、每周 $30、每月 $60；上下文不超过 256K token 的低价档"
     },
     {
       "vendor": "OpenCode",
@@ -3625,7 +3625,7 @@
       "weeklyTokenInM": 118.0535333423,
       "monthlyTokenInM": 236.1,
       "unitPriceCnyPerM": 0.28832,
-      "note": "Off-Peak 价格，Peak 时段翻倍"
+      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；Off-Peak 价格，Peak 时段翻倍"
     },
     {
       "vendor": "OpenCode",
@@ -3659,7 +3659,7 @@
       "weeklyTokenInM": 719.0192577325,
       "monthlyTokenInM": 1438.0,
       "unitPriceCnyPerM": 0.0476,
-      "note": "Off-Peak 价格，Peak 时段翻倍"
+      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $6、每周 $15、每月 $30；Off-Peak 价格，Peak 时段翻倍"
     },
     {
       "vendor": "OpenCode",
@@ -3687,7 +3687,7 @@
       "weeklyTokenInM": 359.5096288662,
       "monthlyTokenInM": 719.0,
       "unitPriceCnyPerM": 0.09452,
-      "note": "Off-Peak 价格，Peak 时段翻倍"
+      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；Off-Peak 价格，Peak 时段翻倍"
     },
     {
       "vendor": "OpenCode",
@@ -3715,7 +3715,7 @@
       "weeklyTokenInM": 698.5069414127,
       "monthlyTokenInM": 1397.0,
       "unitPriceCnyPerM": 0.04896,
-      "note": null
+      "note": "价格：输入 $0.14/M Token、缓存读取 $0.035/M Token、输出 $0.58/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
     },
     {
       "vendor": "OpenCode",
@@ -3749,7 +3749,7 @@
       "weeklyTokenInM": 6.2279427029,
       "monthlyTokenInM": 12.5,
       "unitPriceCnyPerM": 5.45904,
-      "note": "完整上下文高价档（>200K token）"
+      "note": "价格：输入 $4/M Token、缓存读取 $1/M Token、输出 $12/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；完整上下文高价档（>200K token）"
     },
     {
       "vendor": "OpenCode",
@@ -3783,7 +3783,7 @@
       "weeklyTokenInM": 12.4558854059,
       "monthlyTokenInM": 24.9,
       "unitPriceCnyPerM": 2.72952,
-      "note": "上下文不超过 200K token 的低价档"
+      "note": "价格：输入 $2/M Token、缓存读取 $0.5/M Token、输出 $6/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；上下文不超过 200K token 的低价档"
     },
     {
       "vendor": "OpenCode",
@@ -3817,7 +3817,7 @@
       "weeklyTokenInM": 195.7202505219,
       "monthlyTokenInM": 391.4,
       "unitPriceCnyPerM": 0.1734,
-      "note": null
+      "note": "价格：输入 $0.15/M Token、缓存读取 $0.03/M Token、输出 $0.5/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15"
     },
     {
       "vendor": "OpenCode",
@@ -3845,7 +3845,7 @@
       "weeklyTokenInM": 601.5278808173,
       "monthlyTokenInM": 1203.1,
       "unitPriceCnyPerM": 0.05644,
-      "note": "标准模型名 Qwen-3.8-Flash-Next；对应评测 ID qwen3-8-flash-next"
+      "note": "价格：输入 $0.15/M Token、缓存读取 $0.016/M Token、输出 $0.47/M Token；模型额度：5小时 $6、每周 $15、每月 $30；标准模型名 Qwen-3.8-Flash-Next；对应评测 ID qwen3-8-flash-next"
     },
     {
       "vendor": "OpenCode",
@@ -3869,7 +3869,7 @@
       "weeklyTokenInM": 160.0905044985,
       "monthlyTokenInM": 320.2,
       "unitPriceCnyPerM": 0.21216,
-      "note": null
+      "note": "价格：输入 $0.834/M Token、缓存读取 $0.042/M Token、输出 $2.501/M Token；模型额度：5小时 $6、每周 $15、每月 $30"
     },
     {
       "vendor": "字节·方舟",
