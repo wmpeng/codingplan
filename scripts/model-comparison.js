@@ -70,7 +70,7 @@
                 .map(([vendor, platformType]) => getPointPlatformKey({ vendor, platformType }))
                 .filter((key) => availablePlatforms.has(key))),
             models: new Set(DEFAULT_MODEL_IDS.filter((id) => availableModels.has(id))),
-            multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', soloColorKey: null
+            multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', soloColorKey: null, tokenUnit: 'M'
         };
     }
 
@@ -438,7 +438,7 @@
             const modelColors = buildModelColorMap(models.map(([id]) => id));
             const state = Object.assign(createDefaultFilterState(points), {
                 benchmark: 'artificialAnalysis', colorMode: 'vendor',
-                tokensScale: 'log', priceScale: 'log', tokenUnit: 'M'
+                tokensScale: 'log', priceScale: 'log'
             });
             const usageChart = echarts.init(container.querySelector('[data-chart="usage"]'));
             const intelligenceChart = echarts.init(container.querySelector('[data-chart="intelligence"]'));
@@ -472,6 +472,7 @@
                 container.querySelector('[data-filter="multimodal"]').value = state.multimodal;
                 container.querySelector('[data-filter="aaScoreMin"]').value = state.aaScoreMin;
                 container.querySelector('[data-filter="deepSWEScoreMin"]').value = state.deepSWEScoreMin;
+                container.querySelectorAll('[data-token-unit]').forEach((button) => button.classList.toggle('is-active', button.dataset.tokenUnit === state.tokenUnit));
                 updatePickerCount('vendors', state.platforms);
                 updatePickerCount('models', state.models);
             }
@@ -734,5 +735,5 @@
         return container.__usageMountPromise;
     }
 
-    return { DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, getPointScore, getPointPlatformKey, createDefaultFilterState, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });

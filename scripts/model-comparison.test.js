@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const {
   DEFAULT_PLATFORM_SELECTIONS,
   DEFAULT_MODEL_IDS,
+  COMPARISON_TABLE_COLUMNS,
   getPointScore,
   getPointPlatformKey,
   createDefaultFilterState,
@@ -16,6 +17,10 @@ const {
   getSoloPointLabelField,
   getPointLabelText,
   sortComparisonRows,
+  tokenAmountInUnit,
+  unitPriceInTokenUnit,
+  formatTokenAmount,
+  formatUnitPrice,
   comparisonTableRowHtml,
   tooltipHtml
 } = require('./model-comparison.js');
@@ -32,25 +37,33 @@ test('default filters use the curated available platforms and models', () => {
     { vendor: '阿里·百炼', platformType: 'Coding Plan', canonicalModelId: 'not-default' },
     { vendor: 'Claude', platformType: 'Token Plan', canonicalModelId: 'claude-opus-5' },
     { vendor: 'OpenCode', platformType: 'Token Plan', canonicalModelId: 'grok-4-6' },
-    { vendor: 'OpenCode', platformType: 'Token Plan', canonicalModelId: 'muse-spark-1-2' }
+    { vendor: 'OpenCode', platformType: 'Token Plan', canonicalModelId: 'muse-spark-1-2' },
+    { vendor: 'MiniMax', platformType: 'Token Plan', canonicalModelId: 'minimax-m3' },
+    { vendor: 'DeepSeek', platformType: 'API', canonicalModelId: 'deepseek-v4-flash-vision-exp' }
   ];
   const defaults = createDefaultFilterState(defaultPoints);
   assert.deepEqual(defaults.platforms, new Set([
     getPointPlatformKey(defaultPoints[0]),
     getPointPlatformKey(defaultPoints[2]),
+    getPointPlatformKey(defaultPoints[6]),
+    getPointPlatformKey(defaultPoints[5]),
     getPointPlatformKey(defaultPoints[3])
   ]));
   assert.deepEqual(defaults.models, new Set([
-    'deepseek-v4-pro-0813', 'claude-opus-5', 'grok-4-6', 'muse-spark-1-2'
+    'deepseek-v4-pro-0813', 'claude-opus-5', 'grok-4-6', 'muse-spark-1-2',
+    'minimax-m3', 'deepseek-v4-flash-vision-exp'
   ]));
   assert.equal(DEFAULT_PLATFORM_SELECTIONS.length, 9);
-  assert.equal(DEFAULT_MODEL_IDS.length, 12);
+  assert.equal(DEFAULT_MODEL_IDS.length, 14);
   assert.equal(DEFAULT_MODEL_IDS.includes('grok-4-6'), true);
   assert.equal(DEFAULT_MODEL_IDS.includes('muse-spark-1-2'), true);
+  assert.equal(DEFAULT_MODEL_IDS.includes('minimax-m3'), true);
+  assert.equal(DEFAULT_MODEL_IDS.includes('deepseek-v4-flash-vision-exp'), true);
   assert.equal(defaults.multimodal, 'all');
   assert.equal(defaults.aaScoreMin, '');
   assert.equal(defaults.deepSWEScoreMin, '');
   assert.equal(defaults.soloColorKey, null);
+  assert.equal(defaults.tokenUnit, 'M');
 });
 
 test('shared filters apply vendor, model, modality and exact score', () => {
@@ -125,7 +138,7 @@ test('platform filter key separates plan types for the same vendor', () => {
 });
 
 test('model point labels preserve complete bracket qualifiers', () => {
-  assert.equal(getPointLabelText({ model: 'GLM-5.3-Flash [off-peak]', canonicalModel: 'GLM-5.3-Flash' }, 'model'), 'GLM-5.3-Flash [off-peak]');
+  assert.equal(getPointLabelText({ model: 'GLM-5.3-Flash [谷]', canonicalModel: 'GLM-5.3-Flash' }, 'model'), 'GLM-5.3-Flash [谷]');
   assert.equal(getPointLabelText({ model: 'Kimi-K3 【256K】', canonicalModel: 'Kimi-K3' }, 'model'), 'Kimi-K3 【256K】');
   assert.equal(getPointLabelText({ model: 'Model-X (peak)', canonicalModel: 'Model-X' }, 'model'), 'Model-X (peak)');
   assert.equal(getPointLabelText({ vendor: '智谱国际版', platformType: 'Token Plan' }, 'vendor'), '智谱国际版 · Token Plan');
@@ -159,7 +172,7 @@ test('comparison tables sort text and numeric values with missing values last', 
 test('comparison table rows format subscription and payg semantics', () => {
   const subscription = comparisonTableRowHtml({
     id: 'sub', billingType: 'subscription', vendor: '平台A', platformType: 'Token Plan', plan: 'Pro',
-    model: 'Model A [peak]', monthlyFeeCny: 70, fiveHourTokenInM: 12.5,
+    model: 'Model A [峰]', monthlyFeeCny: 70, fiveHourTokenInM: 12.5,
     weeklyTokenInM: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.7,
     scores: {
       artificialAnalysis: { score: 52, scoreExact: 51.6 },
@@ -169,7 +182,7 @@ test('comparison table rows format subscription and payg semantics', () => {
   });
   assert.match(subscription, /平台A/);
   assert.match(subscription, /¥70 \/ 月/);
-  assert.match(subscription, /Model A \[peak\]/);
+  assert.match(subscription, /Model A \[峰\]/);
   assert.match(subscription, /12\.5M/);
   assert.match(subscription, /50M/);
   assert.match(subscription, /100M/);
@@ -186,6 +199,35 @@ test('comparison table rows format subscription and payg semantics', () => {
   assert.match(payg, /¥0\.1444 \/ M/);
   assert.equal(payg.includes('0M'), false);
   assert.equal(payg.includes('undefined'), false);
+});
+
+test('token unit conversion keeps amount and unit price mathematically aligned', () => {
+  assert.equal(tokenAmountInUnit(250, 'M'), 250);
+  assert.equal(tokenAmountInUnit(250, 'yi'), 2.5);
+  assert.equal(unitPriceInTokenUnit(0.2, 'M'), 0.2);
+  assert.equal(unitPriceInTokenUnit(0.2, 'yi'), 20);
+  assert.equal(formatTokenAmount(250, 'M'), '250M');
+  assert.equal(formatTokenAmount(250, 'yi'), '2.5亿');
+  assert.equal(formatUnitPrice(0.2, 'M'), '¥0.2 / M');
+  assert.equal(formatUnitPrice(0.2, 'yi'), '¥20 / 亿');
+
+  const yiRow = comparisonTableRowHtml({
+    id: 'sub-yi', billingType: 'subscription', vendor: '平台A', platformType: 'Token Plan', plan: 'Pro',
+    model: 'Model A', monthlyFeeCny: 70, fiveHourTokenInM: 250,
+    weeklyTokenInM: 500, monthlyTokenInM: 1000, unitPriceCnyPerM: 0.2
+  }, 'yi');
+  assert.match(yiRow, /¥20 \/ 亿/);
+  assert.match(yiRow, /2\.5亿/);
+  assert.match(yiRow, /5亿/);
+  assert.match(yiRow, /10亿/);
+});
+
+test('unit price column appears before all three usage columns', () => {
+  const keys = COMPARISON_TABLE_COLUMNS.map((column) => column.key);
+  const unitPriceIndex = keys.indexOf('unitPriceCnyPerM');
+  assert.ok(unitPriceIndex < keys.indexOf('fiveHourTokenInM'));
+  assert.ok(unitPriceIndex < keys.indexOf('weeklyTokenInM'));
+  assert.ok(unitPriceIndex < keys.indexOf('monthlyTokenInM'));
 });
 
 test('comparison tables sort both benchmark scores by exact value', () => {

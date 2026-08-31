@@ -17,8 +17,8 @@
 .usage-inline-filter select { width: 72px; cursor: pointer; }
 .usage-score-filter input { width: 54px; }
 .usage-score-filter input::placeholder { color: var(--text-tertiary); opacity: 1; }
-.usage-color-control { display: inline-flex; align-items: center; gap: 9px; min-height: 42px; padding: 4px 6px 4px 14px; border: 1px solid rgba(23,32,51,.08); border-radius: 999px; background: rgba(255,255,255,.72); color: var(--text-secondary); font-size: 13px; font-weight: 500; box-shadow: 0 10px 20px rgba(23,32,51,.05); }
-.usage-color-control .usage-segments { border: 0; background: rgba(23,32,51,.06); }
+.usage-color-control, .usage-unit-control { display: inline-flex; align-items: center; gap: 9px; min-height: 42px; padding: 4px 6px 4px 14px; border: 1px solid rgba(23,32,51,.08); border-radius: 999px; background: rgba(255,255,255,.72); color: var(--text-secondary); font-size: 13px; font-weight: 500; box-shadow: 0 10px 20px rgba(23,32,51,.05); }
+.usage-color-control .usage-segments, .usage-unit-control .usage-segments { border: 0; background: rgba(23,32,51,.06); }
 .usage-counts { color: var(--text-tertiary); font-size: 12px; white-space: nowrap; }
 .usage-color-legend { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 7px 12px; padding: 1px 5px; color: #657187; font-size: 12px; }
 .usage-color-legend strong { color: var(--text-secondary); font-size: 12px; white-space: nowrap; }
@@ -82,7 +82,7 @@
   .usage-inline-filter { flex: 1 1 145px; justify-content: space-between; }
   .usage-score-filter { flex-basis: 100%; }
   .usage-inline-filter select, .usage-inline-filter input { text-align: right; }
-  .usage-color-control { flex: 1 1 100%; justify-content: space-between; }
+  .usage-color-control, .usage-unit-control { flex: 1 1 100%; justify-content: space-between; }
   .usage-filters .filter-trailing { width: 100%; margin-left: 0; justify-content: space-between; }
   .usage-filters .dropdown-menu { position: fixed; z-index: 100; top: 50%; left: 50%; width: calc(100vw - 32px); max-height: 70vh; transform: translate(-50%, -50%); animation-name: dropdownFadeCenter; }
   .usage-color-legend { grid-template-columns: 1fr; }
