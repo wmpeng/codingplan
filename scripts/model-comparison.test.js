@@ -21,6 +21,7 @@ const {
   unitPriceInTokenUnit,
   formatTokenAmount,
   formatUnitPrice,
+  platformCellHtml,
   comparisonTableRowHtml,
   tooltipHtml
 } = require('./model-comparison.js');
@@ -199,6 +200,19 @@ test('comparison table rows format subscription and payg semantics', () => {
   assert.match(payg, /¥0\.1444 \/ M/);
   assert.equal(payg.includes('0M'), false);
   assert.equal(payg.includes('undefined'), false);
+});
+
+test('platform table cell links to safe plan actions', () => {
+  const linked = platformCellHtml({ vendor: '平台A', actionUrl: 'https://example.com/plan?a=1&b=2' });
+  assert.match(linked, /class="usage-platform-link"/);
+  assert.match(linked, /href="https:\/\/example\.com\/plan\?a=1&amp;b=2"/);
+  assert.match(linked, /target="_blank"/);
+  assert.match(linked, /rel="noopener noreferrer"/);
+  assert.match(linked, /平台A/);
+
+  const unlinked = platformCellHtml({ vendor: '平台B', actionUrl: 'javascript:alert(1)' });
+  assert.equal(unlinked.includes('<a '), false);
+  assert.match(unlinked, /平台B/);
 });
 
 test('token unit conversion keeps amount and unit price mathematically aligned', () => {

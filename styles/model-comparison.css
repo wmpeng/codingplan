@@ -62,6 +62,12 @@
 .usage-data-table th.sticky-first { z-index: 4; }
 .usage-data-table td.sticky-first { z-index: 2; border-right: 1px solid #e5e9ef; }
 .usage-data-table td.sticky-first strong { color: #1f2b3d; font-size: 12px; }
+.usage-platform-link { display: inline-flex; align-items: center; gap: 5px; color: #1677ff; text-decoration: none; }
+.usage-platform-link strong { color: inherit !important; }
+.usage-platform-link span { font-size: 11px; transition: transform .15s ease; }
+.usage-platform-link:hover { color: #0958d9; text-decoration: underline; }
+.usage-platform-link:hover span { transform: translate(1px, -1px); }
+.usage-platform-link:focus-visible { border-radius: 4px; outline: 2px solid rgba(22,119,255,.35); outline-offset: 2px; }
 .usage-data-table tbody tr:nth-child(even) td.sticky-first { background: #f9fafc; }
 .usage-data-table tbody tr:hover td.sticky-first { background: #eef6ff; }
 .usage-data-table .numeric { font-variant-numeric: tabular-nums; }

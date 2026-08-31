@@ -186,6 +186,13 @@
             .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
 
+    function platformCellHtml(point) {
+        const vendor = escapeHtml(point.vendor);
+        const actionUrl = String(point.actionUrl || '').trim();
+        if (!/^https?:\/\//i.test(actionUrl)) return `<strong>${vendor}</strong>`;
+        return `<a class="usage-platform-link" href="${escapeHtml(actionUrl)}" target="_blank" rel="noopener noreferrer"><strong>${vendor}</strong><span aria-hidden="true">↗</span></a>`;
+    }
+
     function formatNumber(value, maximumFractionDigits) {
         const number = Number(value);
         if (!Number.isFinite(number)) return '—';
@@ -266,7 +273,7 @@
         const deepSWEInterval = deepSWEScore && Number.isFinite(Number(deepSWEScore.confidenceInterval))
             ? ` ±${formatNumber(deepSWEScore.confidenceInterval, 0)}` : '';
         return `<tr data-point-id="${escapeHtml(point.id)}">` +
-            `<td class="sticky-first"><strong>${escapeHtml(point.vendor)}</strong></td>` +
+            `<td class="sticky-first">${platformCellHtml(point)}</td>` +
             `<td>${escapeHtml(point.platformType || '—')}</td>` +
             `<td>${escapeHtml(point.plan || (subscription ? '订阅' : '按量 API'))}</td>` +
             `<td class="numeric">${price}</td>` +
@@ -735,5 +742,5 @@
         return container.__usageMountPromise;
     }
 
-    return { DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });
