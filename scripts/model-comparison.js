@@ -189,6 +189,7 @@
     }
 
     function compactNumber(value) {
+        if (value === null || value === undefined || value === '') return '—';
         const number = Number(value);
         if (!Number.isFinite(number)) return '—';
         if (number >= 1000000) return `${formatNumber(number / 1000000, 1)}T`;
@@ -311,12 +312,14 @@
                 <article class="usage-chart-card">
                     <div class="usage-chart-head"><div><h3>月费 vs 月 Token</h3><p>一个点代表一个平台 × 套餐 × 模型；越靠左上越有吸引力。</p></div><label>坐标轴<select data-scale="tokens"><option value="log">对数</option><option value="value">线性</option></select></label></div>
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="月费和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的月费与月额度数据。</div></div>
-                    <section class="usage-table-section" aria-label="月费和月 Token 数据明细"><div class="usage-table-heading"><h4>数据明细</h4><span data-table-count="usage"></span></div><div class="usage-table-scroll"><table class="usage-data-table" data-table="usage"><thead>${comparisonTableHeadHtml('usage')}</thead><tbody data-table-body="usage"></tbody></table></div></section>
                 </article>
                 <article class="usage-chart-card">
                     <div class="usage-chart-head"><div><h3>单位价格 vs 智力</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标"><button type="button" data-benchmark="artificialAnalysis" class="is-active">AA</button><button type="button" data-benchmark="deepSWE">DeepSWE</button></div><label>价格轴<select data-scale="price"><option value="log">对数</option><option value="value">线性</option></select></label></div></div>
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和智力评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据。</div></div>
-                    <section class="usage-table-section" aria-label="单位价格和智力数据明细"><div class="usage-table-heading"><h4>数据明细</h4><span data-table-count="intelligence"></span></div><div class="usage-table-scroll"><table class="usage-data-table" data-table="intelligence"><thead>${comparisonTableHeadHtml('intelligence')}</thead><tbody data-table-body="intelligence"></tbody></table></div></section>
+                </article>
+                <article class="usage-chart-card usage-data-card">
+                    <div class="usage-chart-head"><div><h3>数据明细</h3><p>汇总当前筛选下的平台 × 套餐 × 模型；按量 API 没有周期额度时显示“—”。</p></div><span class="usage-table-count" data-table-count="comparison"></span></div>
+                    <section class="usage-table-section" aria-label="额度和价格数据明细"><div class="usage-table-scroll"><table class="usage-data-table" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison')}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
                 </article>
             </section>`;
     }
@@ -408,10 +411,9 @@
             enableClickPinnedTooltip(intelligenceChart);
             container.__usageCharts = [usageChart, intelligenceChart];
             const tableSortState = {
-                usage: { key: 'unitPriceCnyPerM', direction: 'asc' },
-                intelligence: { key: 'unitPriceCnyPerM', direction: 'asc' }
+                comparison: { key: 'unitPriceCnyPerM', direction: 'asc' }
             };
-            const latestTableRows = { usage: [], intelligence: [] };
+            const latestTableRows = { comparison: [] };
 
             function optionCheckbox(value, label, kind) {
                 return `<label class="checkbox-item"><input type="checkbox" data-option-kind="${kind}" value="${escapeHtml(value)}"><span>${escapeHtml(label)}</span></label>`;
@@ -524,8 +526,7 @@
                     yAxis: { type: 'value', name: `${BENCHMARKS[state.benchmark].short} 评分`, nameLocation: 'middle', nameGap: 45, scale: true, axisLabel: { formatter: (v) => formatNumber(v, 0) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     series: intelligenceSeries
                 }), true);
-                renderDataTable('usage', usagePoints);
-                renderDataTable('intelligence', intelligencePoints);
+                renderDataTable('comparison', visibleFiltered);
                 container.querySelector('[data-empty="usage"]').hidden = usagePoints.length > 0;
                 container.querySelector('[data-empty="intelligence"]').hidden = intelligencePoints.length > 0;
             }

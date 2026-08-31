@@ -176,5 +176,6 @@ test('comparison table rows format subscription and payg semantics', () => {
   });
   assert.match(payg, /按量/);
   assert.match(payg, /¥0\.1444 \/ M/);
+  assert.equal(payg.includes('0M'), false);
   assert.equal(payg.includes('undefined'), false);
 });
