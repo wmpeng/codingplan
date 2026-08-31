@@ -13,6 +13,9 @@ const {
   filterPoints,
   buildUsageChartPoints,
   buildIntelligenceChartPoints,
+  buildUnitPriceBarChartPoints,
+  buildUnitPriceBarSeries,
+  getUnitPriceBarAxisLabel,
   buildVendorColorMap,
   buildModelColorMap,
   getPointColorKey,
@@ -101,6 +104,21 @@ test('chart builders exclude invalid coordinates and benchmark gaps', () => {
   assert.deepEqual(buildIntelligenceChartPoints(points, 'artificialAnalysis'), [points[0], points[1]]);
   assert.deepEqual(buildIntelligenceChartPoints(points, 'deepSWE'), [points[0], points[2]]);
   assert.equal(getPointScore(points[0], 'artificialAnalysis'), 60);
+});
+
+test('unit price bar chart keeps valid prices and sorts them low to high', () => {
+  const invalid = { vendor: 'C', canonicalModelId: 'm4', unitPriceCnyPerM: 'unknown' };
+  const sorted = buildUnitPriceBarChartPoints([points[1], invalid, points[2], points[0]]);
+  assert.deepEqual(sorted, [points[0], points[2], points[1]]);
+  assert.equal(getUnitPriceBarAxisLabel({ vendor: 'A', billingType: 'subscription', plan: 'Pro', model: 'Model [峰]' }), 'A · Pro · Model [峰]');
+  assert.equal(getUnitPriceBarAxisLabel({ vendor: 'B', billingType: 'payg', model: 'Model API' }), 'B · 按量 API · Model API');
+
+  const colors = buildVendorColorMap(sorted.map(getPointPlatformKey));
+  const result = buildUnitPriceBarSeries(sorted, 'vendor', colors, 'M');
+  assert.equal(result.categories.length, 3);
+  assert.equal(result.series.length, 3);
+  assert.equal(result.series.every((series) => series.type === 'bar'), true);
+  assert.deepEqual(result.series.flatMap((series) => series.data).filter(Boolean).map((item) => item.value).sort((a, b) => a - b), [0.2, 0.5, 1.2]);
 });
 
 test('platform colors are stable regardless of input order', () => {

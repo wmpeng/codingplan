@@ -2456,12 +2456,12 @@
             if (!document.querySelector('link[data-usage-css="1"]')) {
                 const link = document.createElement('link');
                 link.rel = 'stylesheet';
-                link.href = 'styles/model-comparison.css?v=260831j';
+                link.href = 'styles/model-comparison.css?v=260831k';
                 link.dataset.usageCss = '1';
                 document.head.appendChild(link);
             }
             if (typeof window.mountModelComparisonView !== 'function') {
-                await loadScriptOnce('scripts/model-comparison.js?v=260831o');
+                await loadScriptOnce('scripts/model-comparison.js?v=260831p');
             }
             if (typeof window.mountModelComparisonView === 'function') {
                 await window.mountModelComparisonView(root);

@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-31T13:36:05Z",
+  "generatedAt": "2026-08-31T14:05:49Z",
   "sourceGeneratedAt": {
     "usage": "2026-08-31",
-    "modelInfo": "2026-08-31T13:18:15Z"
+    "modelInfo": "2026-08-31T14:05:42Z"
   },
   "usdToCnyRate": 6.8,
   "benchmarks": {
@@ -10,7 +10,7 @@
       "name": "Artificial Analysis Intelligence Index",
       "version": "v4.1.1",
       "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-6-sol",
-      "fetchedAt": "2026-08-31T13:18:15Z",
+      "fetchedAt": "2026-08-31T14:05:42Z",
       "availableConfigurations": 625
     },
     "deepSWE": {

@@ -138,6 +138,20 @@
         );
     }
 
+    function buildUnitPriceBarChartPoints(points) {
+        return (points || []).filter((point) =>
+            finitePositive(point.unitPriceCnyPerM) !== null
+        ).slice().sort((a, b) => {
+            const byPrice = Number(a.unitPriceCnyPerM) - Number(b.unitPriceCnyPerM);
+            if (byPrice !== 0) return byPrice;
+            const byVendor = String(a.vendor || '').localeCompare(String(b.vendor || ''), 'zh-CN');
+            if (byVendor !== 0) return byVendor;
+            const byPlan = String(a.plan || '').localeCompare(String(b.plan || ''), 'zh-CN');
+            if (byPlan !== 0) return byPlan;
+            return String(a.model || a.canonicalModel || '').localeCompare(String(b.model || b.canonicalModel || ''), 'zh-CN');
+        });
+    }
+
     function buildVendorColorMap(vendors) {
         const map = {};
         const used = new Set();
@@ -388,6 +402,10 @@
                     <div class="usage-chart-head"><div><h3>单位价格 vs 智力</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标"><button type="button" data-benchmark="artificialAnalysis" class="is-active">AA</button><button type="button" data-benchmark="deepSWE">DeepSWE</button></div><label>价格轴<select data-scale="price"><option value="log">对数</option><option value="value">线性</option></select></label></div></div>
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和智力评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据。</div></div>
                 </article>
+                <article class="usage-chart-card">
+                    <div class="usage-chart-head"><div><h3>综合单价</h3><p>按当前筛选结果从低到高排列；横向滚动查看全部平台 × 套餐 × 模型。</p></div></div>
+                    <div class="usage-chart-stage usage-bar-chart-stage"><div class="usage-unit-price-scroll"><div class="usage-unit-price-chart" data-chart="unit-price" role="img" aria-label="各平台套餐模型综合单价柱状图"></div></div><div class="usage-empty" data-empty="unit-price" hidden>当前筛选下没有可绘制的综合单价数据。</div></div>
+                </article>
                 <article class="usage-chart-card usage-data-card">
                     <div class="usage-chart-head"><div><h3>数据明细</h3><p>汇总当前筛选下的平台 × 套餐 × 模型；按量 API 没有周期额度时显示“—”。</p></div><span class="usage-table-count" data-table-count="comparison"></span></div>
                     <section class="usage-table-section" aria-label="额度和价格数据明细"><div class="usage-table-scroll"><table class="usage-data-table" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison')}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
@@ -427,6 +445,55 @@
             },
             labelLayout: { hideOverlap: true, moveOverlap: 'shiftY' }
         }));
+    }
+
+    function getUnitPriceBarAxisLabel(point) {
+        const plan = point.billingType === 'subscription' ? (point.plan || '订阅') : '按量 API';
+        return `${point.vendor || '未知平台'} · ${plan} · ${point.model || point.canonicalModel || '未知模型'}`;
+    }
+
+    function buildUnitPriceBarSeries(points, colorMode, colors, tokenUnit) {
+        const categories = points.map(getUnitPriceBarAxisLabel);
+        const grouped = new Map();
+        points.forEach((point, index) => {
+            const key = getPointColorKey(point, colorMode);
+            const label = colorMode === 'model' ? point.canonicalModel : getPointLabelText(point, 'vendor');
+            if (!grouped.has(key)) grouped.set(key, { label, data: Array(points.length).fill(null) });
+            grouped.get(key).data[index] = {
+                value: unitPriceInTokenUnit(point.unitPriceCnyPerM, tokenUnit),
+                meta: point
+            };
+        });
+        return {
+            categories,
+            series: [...grouped.entries()].map(([key, group]) => ({
+                id: `unit-price:${key}`,
+                name: group.label,
+                type: 'bar',
+                data: group.data,
+                barMaxWidth: 24,
+                barGap: '-100%',
+                itemStyle: { color: colors[key], borderRadius: [4, 4, 0, 0] },
+                emphasis: { focus: 'series', blurScope: 'coordinateSystem', itemStyle: { opacity: 1 } },
+                blur: { itemStyle: { opacity: 0.1 } },
+                label: {
+                    show: true,
+                    position: 'top',
+                    distance: 4,
+                    color: '#475569',
+                    fontSize: 9,
+                    fontWeight: 600,
+                    formatter: (params) => `¥${formatNumber(params.value, params.value < 0.1 ? 3 : 2)}`
+                }
+            }))
+        };
+    }
+
+    function sizeUnitPriceBarChart(chartElement, itemCount) {
+        if (!chartElement) return;
+        const scrollHost = chartElement.parentElement;
+        const hostWidth = scrollHost && scrollHost.clientWidth ? scrollHost.clientWidth : 0;
+        chartElement.style.width = `${Math.max(hostWidth, itemCount * 46 + 90)}px`;
     }
 
     function enableClickPinnedTooltip(chart) {
@@ -478,9 +545,12 @@
             });
             const usageChart = echarts.init(container.querySelector('[data-chart="usage"]'));
             const intelligenceChart = echarts.init(container.querySelector('[data-chart="intelligence"]'));
+            const unitPriceBarElement = container.querySelector('[data-chart="unit-price"]');
+            const unitPriceBarChart = echarts.init(unitPriceBarElement);
             enableClickPinnedTooltip(usageChart);
             enableClickPinnedTooltip(intelligenceChart);
-            container.__usageCharts = [usageChart, intelligenceChart];
+            enableClickPinnedTooltip(unitPriceBarChart);
+            container.__usageCharts = [usageChart, intelligenceChart, unitPriceBarChart];
             const tableSortState = {
                 comparison: { key: 'unitPriceCnyPerM', direction: 'asc' }
             };
@@ -660,12 +730,14 @@
                 const visibleFiltered = filterBySoloColorKey(filtered, state.colorMode, state.soloColorKey);
                 const usagePoints = buildUsageChartPoints(visibleFiltered);
                 const intelligencePoints = buildIntelligenceChartPoints(visibleFiltered, state.benchmark);
+                const unitPriceBarPoints = buildUnitPriceBarChartPoints(visibleFiltered);
                 const pointLabelField = getSoloPointLabelField(visibleFiltered);
                 const color = colorContext(filtered);
                 renderColorLegend(color);
                 const totalUsage = buildUsageChartPoints(points).length;
                 const totalIntelligence = buildIntelligenceChartPoints(points, state.benchmark).length;
-                container.querySelector('[data-counts]').textContent = `额度图 ${usagePoints.length}/${totalUsage} · 智力图 ${intelligencePoints.length}/${totalIntelligence}`;
+                const totalUnitPrice = buildUnitPriceBarChartPoints(points).length;
+                container.querySelector('[data-counts]').textContent = `额度图 ${usagePoints.length}/${totalUsage} · 智力图 ${intelligencePoints.length}/${totalIntelligence} · 单价图 ${unitPriceBarPoints.length}/${totalUnitPrice}`;
 
                 const tokenUnitLabel = state.tokenUnit === 'yi' ? '亿' : 'M';
                 usageChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
@@ -687,9 +759,31 @@
                     yAxis: { type: 'value', name: `${BENCHMARKS[state.benchmark].short} 评分`, nameLocation: 'middle', nameGap: 45, scale: true, axisLabel: { formatter: (v) => formatNumber(v, 0) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     series: intelligenceSeries
                 }), true);
+                const unitPriceBar = buildUnitPriceBarSeries(unitPriceBarPoints, state.colorMode, color.colors, state.tokenUnit);
+                sizeUnitPriceBarChart(unitPriceBarElement, unitPriceBarPoints.length);
+                unitPriceBarChart.resize();
+                unitPriceBarChart.setOption({
+                    animationDuration: 420,
+                    grid: { left: 62, right: 20, top: 42, bottom: 128 },
+                    tooltip: { trigger: 'item', confine: true, appendToBody: false, formatter: (params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit) },
+                    textStyle: { fontFamily: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' },
+                    xAxis: {
+                        type: 'category', data: unitPriceBar.categories,
+                        axisTick: { alignWithLabel: true },
+                        axisLabel: { interval: 0, rotate: 58, hideOverlap: false, color: '#64748b', fontSize: 10 },
+                        axisLine: { lineStyle: { color: '#cbd5e1' } }
+                    },
+                    yAxis: {
+                        type: 'value', name: `人民币 / ${tokenUnitLabel} Token`, nameLocation: 'end', nameGap: 10,
+                        axisLabel: { color: '#64748b', formatter: (value) => `¥${formatNumber(value, value < 1 ? 2 : 1)}` },
+                        splitLine: { lineStyle: { color: '#e5e7eb' } }
+                    },
+                    series: unitPriceBar.series
+                }, true);
                 renderDataTable('comparison', visibleFiltered);
                 container.querySelector('[data-empty="usage"]').hidden = usagePoints.length > 0;
                 container.querySelector('[data-empty="intelligence"]').hidden = intelligencePoints.length > 0;
+                container.querySelector('[data-empty="unit-price"]').hidden = unitPriceBarPoints.length > 0;
             }
 
             container.addEventListener('change', (event) => {
@@ -739,8 +833,9 @@
             function setColorHighlight(key, active) {
                 setChartSeriesHighlight(usageChart, [`usage:${key}`], active);
                 setChartSeriesHighlight(intelligenceChart, [`intelligence:${key}`], active);
+                setChartSeriesHighlight(unitPriceBarChart, [`unit-price:${key}`], active);
             }
-            [usageChart, intelligenceChart].forEach((chart) => {
+            [usageChart, intelligenceChart, unitPriceBarChart].forEach((chart) => {
                 chart.on('mouseover', (params) => {
                     if (params.componentType !== 'series' || !params.data || !params.data.meta) return;
                     setColorHighlight(getPointColorKey(params.data.meta, state.colorMode), true);
@@ -862,7 +957,12 @@
                 }
             });
             document.addEventListener('click', () => closeUsageDropdowns());
-            const resize = () => { usageChart.resize(); intelligenceChart.resize(); };
+            const resize = () => {
+                usageChart.resize();
+                intelligenceChart.resize();
+                sizeUnitPriceBarChart(unitPriceBarElement, buildUnitPriceBarChartPoints(filterBySoloColorKey(filterPoints(points, state), state.colorMode, state.soloColorKey)).length);
+                unitPriceBarChart.resize();
+            };
             root.addEventListener('resize', resize);
             if (root.ResizeObserver) new root.ResizeObserver(resize).observe(container);
             render();
@@ -875,5 +975,5 @@
         return container.__usageMountPromise;
     }
 
-    return { DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });

@@ -44,6 +44,9 @@
 .usage-segments button.is-active { background: #172033; color: #fff; }
 .usage-chart-stage { position: relative; }
 .usage-chart { width: 100%; height: 470px; margin-top: 4px; }
+.usage-bar-chart-stage { margin-top: 8px; }
+.usage-unit-price-scroll { width: 100%; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+.usage-unit-price-chart { width: 100%; min-width: 100%; height: 340px; }
 .usage-empty { position: absolute; inset: 50% auto auto 50%; transform: translate(-50%, -10%); z-index: 3; padding: 13px 18px; border-radius: 10px; background: rgba(248,250,252,.95); color: #69768a; font-size: 13px; box-shadow: 0 4px 18px rgba(31,48,70,.08); }
 .usage-data-card { padding-bottom: 22px; }
 .usage-table-count { align-self: center; color: #7a8699; font-size: 12px; white-space: nowrap; }
@@ -100,6 +103,7 @@
   .usage-chart-controls { justify-content: space-between; margin-top: 12px; }
   .usage-chart-head > label { margin-top: 12px; }
   .usage-chart { height: 390px; }
+  .usage-unit-price-chart { height: 310px; }
   .usage-table-section { margin-left: 0; margin-right: 0; }
   .usage-table-scroll { border-radius: 10px; }
   .usage-data-table { min-width: 1320px; }
