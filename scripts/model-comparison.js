@@ -10,6 +10,8 @@
         artificialAnalysis: { label: 'AA 智力', short: 'AA' },
         deepSWE: { label: 'DeepSWE', short: 'DeepSWE' }
     };
+    const ATTRACTIVE_UNIT_PRICE_CNY_PER_YI = 15;
+    const ATTRACTIVE_UNIT_PRICE_CNY_PER_M = ATTRACTIVE_UNIT_PRICE_CNY_PER_YI / 100;
     const PLATFORM_COLORS = [
         '#2563eb', '#dc2626', '#059669', '#7c3aed', '#d97706', '#0891b2',
         '#db2777', '#4f46e5', '#65a30d', '#9333ea', '#ea580c', '#0f766e',
@@ -150,6 +152,127 @@
             if (byPlan !== 0) return byPlan;
             return String(a.model || a.canonicalModel || '').localeCompare(String(b.model || b.canonicalModel || ''), 'zh-CN');
         });
+    }
+
+    function getAttractiveUnitPriceThreshold(tokenUnit) {
+        return unitPriceInTokenUnit(ATTRACTIVE_UNIT_PRICE_CNY_PER_M, tokenUnit);
+    }
+
+    function getChartAxisBounds(values, scale) {
+        const valid = (values || []).map(Number).filter((value) => Number.isFinite(value) && value > 0);
+        if (!valid.length) return scale === 'log' ? { min: 1, max: 10 } : { min: 0, max: 1 };
+        const minValue = Math.min(...valid);
+        const maxValue = Math.max(...valid);
+        if (scale === 'log') {
+            let min = Math.pow(10, Math.floor(Math.log10(minValue)));
+            let max = Math.pow(10, Math.ceil(Math.log10(maxValue)));
+            if (max <= min) max = min * 10;
+            return { min, max };
+        }
+        return { min: 0, max: Math.max(1, maxValue * 1.05) };
+    }
+
+    function clipRectangleAboveUnitPriceLine(xBounds, yBounds, threshold) {
+        let polygon = [
+            [xBounds.min, yBounds.min], [xBounds.max, yBounds.min],
+            [xBounds.max, yBounds.max], [xBounds.min, yBounds.max]
+        ];
+        const signedDistance = (point) => point[1] - point[0] / threshold;
+        const output = [];
+        polygon.forEach((current, index) => {
+            const previous = polygon[(index + polygon.length - 1) % polygon.length];
+            const currentDistance = signedDistance(current);
+            const previousDistance = signedDistance(previous);
+            const currentInside = currentDistance >= -1e-10;
+            const previousInside = previousDistance >= -1e-10;
+            if (currentInside !== previousInside) {
+                const ratio = previousDistance / (previousDistance - currentDistance);
+                output.push([
+                    previous[0] + ratio * (current[0] - previous[0]),
+                    previous[1] + ratio * (current[1] - previous[1])
+                ]);
+            }
+            if (currentInside) output.push(current);
+        });
+        return output;
+    }
+
+    function getUnitPriceBoundaryPoints(xBounds, yBounds, threshold) {
+        const candidates = [
+            [xBounds.min, xBounds.min / threshold],
+            [xBounds.max, xBounds.max / threshold],
+            [yBounds.min * threshold, yBounds.min],
+            [yBounds.max * threshold, yBounds.max]
+        ];
+        const points = [];
+        candidates.forEach((point) => {
+            if (point[0] < xBounds.min - 1e-10 || point[0] > xBounds.max + 1e-10) return;
+            if (point[1] < yBounds.min - 1e-10 || point[1] > yBounds.max + 1e-10) return;
+            if (!points.some((existing) => Math.abs(existing[0] - point[0]) < 1e-8 && Math.abs(existing[1] - point[1]) < 1e-8)) {
+                points.push(point);
+            }
+        });
+        return points.sort((a, b) => a[0] - b[0]).slice(0, 2);
+    }
+
+    function buildUsageAttractiveZone(points, tokenUnit, scale) {
+        const threshold = getAttractiveUnitPriceThreshold(tokenUnit);
+        const xBounds = getChartAxisBounds((points || []).map((point) => point.monthlyFeeCny), scale);
+        const yBounds = getChartAxisBounds((points || []).map((point) => tokenAmountInUnit(point.monthlyTokenInM, tokenUnit)), scale);
+        return {
+            threshold,
+            xBounds,
+            yBounds,
+            polygon: clipRectangleAboveUnitPriceLine(xBounds, yBounds, threshold),
+            boundary: getUnitPriceBoundaryPoints(xBounds, yBounds, threshold)
+        };
+    }
+
+    function attractiveZoneLabel() {
+        return `≤ ¥${ATTRACTIVE_UNIT_PRICE_CNY_PER_YI} / 亿 Token`;
+    }
+
+    function buildUsageAttractiveZoneSeries(zone) {
+        return {
+            id: 'usage-attractive-zone', type: 'custom', coordinateSystem: 'cartesian2d',
+            silent: true, clip: true, z: 0, data: [0],
+            renderItem: function (_params, api) {
+                const children = [];
+                const polygonPoints = zone.polygon.map((point) => api.coord(point));
+                if (polygonPoints.length >= 3) {
+                    children.push({ type: 'polygon', shape: { points: polygonPoints }, style: { fill: 'rgba(34, 197, 94, 0.11)' } });
+                }
+                const boundaryPoints = zone.boundary.map((point) => api.coord(point));
+                if (boundaryPoints.length === 2) {
+                    children.push({ type: 'polyline', shape: { points: boundaryPoints }, style: { stroke: '#22a447', lineWidth: 1.5, lineDash: [6, 4] } });
+                    const midpoint = [(boundaryPoints[0][0] + boundaryPoints[1][0]) / 2, (boundaryPoints[0][1] + boundaryPoints[1][1]) / 2];
+                    children.push({ type: 'text', style: { x: midpoint[0] + 8, y: midpoint[1] - 10, text: attractiveZoneLabel(), fill: '#15803d', font: '600 11px sans-serif', backgroundColor: 'rgba(240, 253, 244, 0.9)', padding: [3, 5], borderRadius: 4 } });
+                }
+                return { type: 'group', children };
+            }
+        };
+    }
+
+    function buildIntelligenceAttractiveZoneSeries(threshold, scoreReference) {
+        return {
+            id: 'intelligence-attractive-zone', type: 'custom', coordinateSystem: 'cartesian2d',
+            silent: true, clip: true, z: 0, data: [[threshold, scoreReference]],
+            renderItem: function (params, api) {
+                const coord = api.coord([threshold, scoreReference]);
+                const left = params.coordSys.x;
+                const right = params.coordSys.x + params.coordSys.width;
+                const boundaryX = Math.max(left, Math.min(right, coord[0]));
+                const children = [];
+                if (boundaryX > left) {
+                    children.push({ type: 'rect', shape: { x: left, y: params.coordSys.y, width: boundaryX - left, height: params.coordSys.height }, style: { fill: 'rgba(34, 197, 94, 0.11)' } });
+                }
+                if (boundaryX > left && boundaryX < right) {
+                    children.push({ type: 'line', shape: { x1: boundaryX, y1: params.coordSys.y, x2: boundaryX, y2: params.coordSys.y + params.coordSys.height }, style: { stroke: '#22a447', lineWidth: 1.5, lineDash: [6, 4] } });
+                    children.push({ type: 'text', style: { x: boundaryX - 8, y: params.coordSys.y + 14, text: attractiveZoneLabel(), textAlign: 'right', fill: '#15803d', font: '600 11px sans-serif', backgroundColor: 'rgba(240, 253, 244, 0.9)', padding: [3, 5], borderRadius: 4 } });
+                }
+                return { type: 'group', children };
+            }
+        };
     }
 
     function buildVendorColorMap(vendors) {
@@ -740,10 +863,11 @@
                 container.querySelector('[data-counts]').textContent = `额度图 ${usagePoints.length}/${totalUsage} · 智力图 ${intelligencePoints.length}/${totalIntelligence} · 单价图 ${unitPriceBarPoints.length}/${totalUnitPrice}`;
 
                 const tokenUnitLabel = state.tokenUnit === 'yi' ? '亿' : 'M';
+                const usageZone = buildUsageAttractiveZone(usagePoints, state.tokenUnit, state.tokensScale);
                 usageChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
-                    xAxis: { type: state.tokensScale, name: '月费（人民币）', nameLocation: 'middle', nameGap: 38, min: state.tokensScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => `¥${formatNumber(v, 0)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
-                    yAxis: { type: state.tokensScale, name: `月 Token（${tokenUnitLabel}）`, nameLocation: 'middle', nameGap: 55, min: state.tokensScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => formatNumber(v, v < 1 ? 3 : v < 10 ? 2 : 1) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
-                    series: seriesByColor(usagePoints, state.colorMode, color.colors, (point) => ({ value: [point.monthlyFeeCny, tokenAmountInUnit(point.monthlyTokenInM, state.tokenUnit)], meta: point }), 'usage', pointLabelField)
+                    xAxis: { type: state.tokensScale, name: '月费（人民币）', nameLocation: 'middle', nameGap: 38, min: usageZone.xBounds.min, max: usageZone.xBounds.max, logBase: 10, axisLabel: { formatter: (v) => `¥${formatNumber(v, 0)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
+                    yAxis: { type: state.tokensScale, name: `月 Token（${tokenUnitLabel}）`, nameLocation: 'middle', nameGap: 55, min: usageZone.yBounds.min, max: usageZone.yBounds.max, logBase: 10, axisLabel: { formatter: (v) => formatNumber(v, v < 1 ? 3 : v < 10 ? 2 : 1) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
+                    series: [buildUsageAttractiveZoneSeries(usageZone), ...seriesByColor(usagePoints, state.colorMode, color.colors, (point) => ({ value: [point.monthlyFeeCny, tokenAmountInUnit(point.monthlyTokenInM, state.tokenUnit)], meta: point }), 'usage', pointLabelField)]
                 }), true);
 
                 const intelligenceSeries = seriesByColor(
@@ -754,10 +878,20 @@
                     'intelligence',
                     pointLabelField
                 );
+                const intelligenceScores = intelligencePoints
+                    .map((point) => getPointScore(point, state.benchmark))
+                    .filter((value) => value !== null);
+                const intelligenceScoreReference = intelligenceScores.length ? Math.min(...intelligenceScores) : 0;
                 intelligenceChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
                     xAxis: { type: state.priceScale, name: `人民币 / ${tokenUnitLabel} Token`, nameLocation: 'middle', nameGap: 38, min: state.priceScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => `¥${formatNumber(v, v < 1 ? 2 : 1)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     yAxis: { type: 'value', name: `${BENCHMARKS[state.benchmark].short} 评分`, nameLocation: 'middle', nameGap: 45, scale: true, axisLabel: { formatter: (v) => formatNumber(v, 0) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
-                    series: intelligenceSeries
+                    series: [
+                        buildIntelligenceAttractiveZoneSeries(
+                            getAttractiveUnitPriceThreshold(state.tokenUnit),
+                            intelligenceScoreReference
+                        ),
+                        ...intelligenceSeries
+                    ]
                 }), true);
                 const unitPriceBar = buildUnitPriceBarSeries(unitPriceBarPoints, state.colorMode, color.colors, state.tokenUnit);
                 sizeUnitPriceBarChart(unitPriceBarElement, unitPriceBarPoints.length);
@@ -815,7 +949,7 @@
                 });
             });
             function setChartSeriesHighlight(chart, targetIds, active) {
-                const series = (chart.getOption().series || []).filter((item) => item && item.id);
+                const series = (chart.getOption().series || []).filter((item) => item && item.id && !String(item.id).includes('attractive-zone'));
                 const targets = new Set(targetIds);
                 chart.dispatchAction({
                     type: 'downplay',
@@ -975,5 +1109,5 @@
         return container.__usageMountPromise;
     }
 
-    return { DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });

@@ -1,6 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const {
+  ATTRACTIVE_UNIT_PRICE_CNY_PER_YI,
   DEFAULT_PLATFORM_SELECTIONS,
   DEFAULT_MODEL_IDS,
   COMPARISON_TABLE_COLUMNS,
@@ -16,6 +17,11 @@ const {
   buildUnitPriceBarChartPoints,
   buildUnitPriceBarSeries,
   getUnitPriceBarAxisLabel,
+  getAttractiveUnitPriceThreshold,
+  getChartAxisBounds,
+  clipRectangleAboveUnitPriceLine,
+  getUnitPriceBoundaryPoints,
+  buildUsageAttractiveZone,
   buildVendorColorMap,
   buildModelColorMap,
   getPointColorKey,
@@ -119,6 +125,32 @@ test('unit price bar chart keeps valid prices and sorts them low to high', () =>
   assert.equal(result.series.length, 3);
   assert.equal(result.series.every((series) => series.type === 'bar'), true);
   assert.deepEqual(result.series.flatMap((series) => series.data).filter(Boolean).map((item) => item.value).sort((a, b) => a - b), [0.2, 0.5, 1.2]);
+});
+
+test('15 yuan per yi attractive zones keep the unit-price boundary consistent', () => {
+  assert.equal(ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, 15);
+  assert.equal(getAttractiveUnitPriceThreshold('M'), 0.15);
+  assert.equal(getAttractiveUnitPriceThreshold('yi'), 15);
+  assert.deepEqual(getChartAxisBounds([39, 1360], 'log'), { min: 10, max: 10000 });
+
+  const xBounds = { min: 10, max: 10000 };
+  const yBounds = { min: 10, max: 100000 };
+  const polygon = clipRectangleAboveUnitPriceLine(xBounds, yBounds, 0.15);
+  assert.ok(polygon.length >= 3);
+  assert.equal(polygon.every(([x, y]) => y + 1e-8 >= x / 0.15), true);
+  assert.equal(getUnitPriceBoundaryPoints(xBounds, yBounds, 0.15).length, 2);
+
+  const zoneM = buildUsageAttractiveZone([
+    { monthlyFeeCny: 39, monthlyTokenInM: 100 },
+    { monthlyFeeCny: 1360, monthlyTokenInM: 96000 }
+  ], 'M', 'log');
+  const zoneYi = buildUsageAttractiveZone([
+    { monthlyFeeCny: 39, monthlyTokenInM: 100 },
+    { monthlyFeeCny: 1360, monthlyTokenInM: 96000 }
+  ], 'yi', 'log');
+  assert.equal(zoneM.threshold, 0.15);
+  assert.equal(zoneYi.threshold, 15);
+  assert.deepEqual(zoneM.xBounds, zoneYi.xBounds);
 });
 
 test('platform colors are stable regardless of input order', () => {
