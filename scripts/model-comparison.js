@@ -29,7 +29,8 @@
     const DEFAULT_MODEL_IDS = [
         'deepseek-v4-pro-0813', 'deepseek-v4-flash-0731', 'qwen-3-8-max',
         'glm-5-3', 'glm-5-3-flash', 'kimi-k3', 'gpt-5-6-sol', 'gpt-5-6-luna',
-        'claude-opus-5', 'claude-sonnet-5', 'grok-4-6', 'muse-spark-1-2'
+        'claude-opus-5', 'claude-sonnet-5', 'grok-4-6', 'muse-spark-1-2',
+        'minimax-m3', 'deepseek-v4-flash-vision-exp'
     ];
     const COMPARISON_TABLE_COLUMNS = [
         { key: 'vendor', label: '平台' },
@@ -37,10 +38,10 @@
         { key: 'plan', label: '套餐' },
         { key: 'price', label: '价格' },
         { key: 'model', label: '模型' },
+        { key: 'unitPriceCnyPerM', label: '综合单价' },
         { key: 'fiveHourTokenInM', label: '5h用量' },
         { key: 'weeklyTokenInM', label: '周用量' },
         { key: 'monthlyTokenInM', label: '月用量' },
-        { key: 'unitPriceCnyPerM', label: '综合单价' },
         { key: 'artificialAnalysis', label: 'AA分数' },
         { key: 'deepSWE', label: 'DeepSWE分数' },
         { key: 'note', label: '备注' }
@@ -191,13 +192,36 @@
         return number.toLocaleString('zh-CN', { maximumFractionDigits });
     }
 
-    function compactNumber(value) {
-        if (value === null || value === undefined || value === '') return '—';
+    function normalizeTokenUnit(unit) {
+        return unit === 'yi' ? 'yi' : 'M';
+    }
+
+    function tokenAmountInUnit(value, unit) {
         const number = Number(value);
+        if (!Number.isFinite(number)) return null;
+        return normalizeTokenUnit(unit) === 'yi' ? number / 100 : number;
+    }
+
+    function unitPriceInTokenUnit(value, unit) {
+        const number = Number(value);
+        if (!Number.isFinite(number)) return null;
+        return normalizeTokenUnit(unit) === 'yi' ? number * 100 : number;
+    }
+
+    function formatTokenAmount(value, unit) {
+        if (value === null || value === undefined || value === '') return '—';
+        const normalized = normalizeTokenUnit(unit);
+        const number = tokenAmountInUnit(value, normalized);
         if (!Number.isFinite(number)) return '—';
-        if (number >= 1000000) return `${formatNumber(number / 1000000, 1)}T`;
-        if (number >= 1000) return `${formatNumber(number / 1000, 1)}B`;
-        return `${formatNumber(number, number < 10 ? 2 : 1)}M`;
+        const digits = number < 1 ? 3 : number < 10 ? 2 : 1;
+        return `${formatNumber(number, digits)}${normalized === 'yi' ? '亿' : 'M'}`;
+    }
+
+    function formatUnitPrice(value, unit) {
+        const normalized = normalizeTokenUnit(unit);
+        const number = unitPriceInTokenUnit(value, normalized);
+        if (!Number.isFinite(number) || number <= 0) return '—';
+        return `¥${formatNumber(number, 4)} / ${normalized === 'yi' ? '亿' : 'M'}`;
     }
 
     function comparisonSortValue(point, key) {
@@ -232,12 +256,11 @@
         ).join('')}</tr>`;
     }
 
-    function comparisonTableRowHtml(point) {
+    function comparisonTableRowHtml(point, tokenUnit) {
         const subscription = point.billingType === 'subscription';
         const price = subscription && finitePositive(point.monthlyFeeCny) !== null
             ? `¥${formatNumber(point.monthlyFeeCny, 2)} / 月` : '按量';
-        const unitPrice = finitePositive(point.unitPriceCnyPerM) !== null
-            ? `¥${formatNumber(point.unitPriceCnyPerM, 4)} / M` : '—';
+        const unitPrice = formatUnitPrice(point.unitPriceCnyPerM, tokenUnit);
         const aaScore = point.scores && point.scores.artificialAnalysis;
         const deepSWEScore = point.scores && point.scores.deepSWE;
         const deepSWEInterval = deepSWEScore && Number.isFinite(Number(deepSWEScore.confidenceInterval))
@@ -248,10 +271,10 @@
             `<td>${escapeHtml(point.plan || (subscription ? '订阅' : '按量 API'))}</td>` +
             `<td class="numeric">${price}</td>` +
             `<td class="usage-table-model">${escapeHtml(point.model || point.canonicalModel)}</td>` +
-            `<td class="numeric">${subscription ? compactNumber(point.fiveHourTokenInM) : '—'}</td>` +
-            `<td class="numeric">${subscription ? compactNumber(point.weeklyTokenInM) : '—'}</td>` +
-            `<td class="numeric">${subscription ? compactNumber(point.monthlyTokenInM) : '—'}</td>` +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
+            `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
+            `<td class="numeric">${subscription ? formatTokenAmount(point.weeklyTokenInM, tokenUnit) : '—'}</td>` +
+            `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${aaScore ? formatNumber(aaScore.score, 0) : '—'}</td>` +
             `<td class="numeric">${deepSWEScore ? `${formatNumber(deepSWEScore.score, 0)}${deepSWEInterval}` : '—'}</td>` +
             `<td class="usage-table-note">${escapeHtml(point.note || '—')}</td></tr>`;
@@ -266,19 +289,19 @@
         return `${BENCHMARKS[benchmark].short} ${formatNumber(score.score, 0)}${ci}${config}`;
     }
 
-    function tooltipHtml(point, benchmark, colorMode) {
+    function tooltipHtml(point, benchmark, colorMode, tokenUnit) {
         const modality = point.multimodal === true ? '多模态' : point.multimodal === false ? '纯文本' : '多模态状态未知';
         const billing = point.billingType === 'subscription' ? escapeHtml(point.plan || '订阅') : '按量 API';
         const platformLine = `${escapeHtml(point.vendor)} · ${billing}`;
         const modelLine = escapeHtml(point.model);
         const fee = point.billingType === 'subscription'
-            ? `<div>月费：¥${formatNumber(point.monthlyFeeCny, 2)}</div><div>月额度：${compactNumber(point.monthlyTokenInM)} Token</div>`
+            ? `<div>月费：¥${formatNumber(point.monthlyFeeCny, 2)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
             : '';
         const heading = colorMode === 'model'
             ? `<strong>${modelLine}</strong><div>${platformLine}</div>`
             : `<strong>${platformLine}</strong><div>${modelLine}</div>`;
         return `<div class="usage-tooltip">${heading}<div>${modality}</div>${fee}` +
-            `<div>单位价格：¥${formatNumber(point.unitPriceCnyPerM, 4)} / M Token</div>` +
+            `<div>单位价格：${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)} Token</div>` +
             `<div>${scoreText(point, benchmark)}</div></div>`;
     }
 
@@ -309,7 +332,7 @@
                     <div><p class="usage-eyebrow">模型购买决策</p><h2 id="usageViewTitle">额度 / 价格对比</h2></div>
                     <p>把同一套餐下的不同模型拆成独立点，比较钱花在哪里、实际能换来多少额度和模型能力。</p>
                 </header>
-                <div class="usage-method-note"><strong>统一口径：</strong>订阅价是“月费 ÷ 可用月额度”的摊薄成本，假设额度得到充分利用；按量价是统一工作负载下的边际调用成本。两者单位均为人民币 / M Token。</div>
+                <div class="usage-method-note"><strong>统一口径：</strong>订阅价是“月费 ÷ 可用月额度”的摊薄成本，假设额度得到充分利用；按量价是统一工作负载下的边际调用成本。用量和单位价格可统一切换为 M Token 或亿 Token。</div>
                 <div class="filter-bar surface-panel usage-filters" aria-label="图表筛选">
                     <div class="filter-dropdown" data-picker="vendors"><button type="button" class="filter-btn" data-picker-toggle><span>平台</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-count hidden>0</span></button><div class="dropdown-menu"><div class="dropdown-section"><div class="checkbox-group" data-options></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-picker-reset>重置</button><button type="button" class="dropdown-btn primary" data-picker-done>确定</button></div></div></div>
                     <div class="filter-dropdown" data-picker="models"><button type="button" class="filter-btn" data-picker-toggle><span>模型</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-count hidden>0</span></button><div class="dropdown-menu usage-model-menu"><input class="usage-search" type="search" data-model-search placeholder="搜索模型" aria-label="搜索模型"><div class="dropdown-section"><div class="checkbox-group" data-options></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-picker-reset>重置</button><button type="button" class="dropdown-btn primary" data-picker-done>确定</button></div></div></div>
@@ -317,6 +340,7 @@
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>AA 最低分</span><input data-filter="aaScoreMin" aria-label="AA 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>DeepSWE 最低分</span><input data-filter="deepSWEScoreMin" aria-label="DeepSWE 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <div class="usage-color-control" aria-label="颜色区分方式"><span>颜色</span><div class="usage-segments"><button type="button" data-color-mode="vendor" class="is-active">按平台</button><button type="button" data-color-mode="model">按模型</button></div></div>
+                    <div class="usage-unit-control" aria-label="Token 单位"><span>单位</span><div class="usage-segments"><button type="button" data-token-unit="M" class="is-active">M</button><button type="button" data-token-unit="yi">亿</button></div></div>
                     <div class="filter-trailing"><button type="button" class="reset-btn" data-action="restore-defaults">恢复默认</button><div class="stats-bar usage-counts" data-counts aria-live="polite"></div></div>
                 </div>
                 <div class="usage-color-legend"><strong data-color-legend-title>平台颜色</strong><div data-color-legend></div></div>
@@ -414,7 +438,7 @@
             const modelColors = buildModelColorMap(models.map(([id]) => id));
             const state = Object.assign(createDefaultFilterState(points), {
                 benchmark: 'artificialAnalysis', colorMode: 'vendor',
-                tokensScale: 'log', priceScale: 'log'
+                tokensScale: 'log', priceScale: 'log', tokenUnit: 'M'
             });
             const usageChart = echarts.init(container.querySelector('[data-chart="usage"]'));
             const intelligenceChart = echarts.init(container.querySelector('[data-chart="intelligence"]'));
@@ -492,7 +516,7 @@
                 const sorted = sortComparisonRows(rows, sort.key, sort.direction);
                 const body = container.querySelector(`[data-table-body="${tableName}"]`);
                 body.innerHTML = sorted.length
-                    ? sorted.map(comparisonTableRowHtml).join('')
+                    ? sorted.map((point) => comparisonTableRowHtml(point, state.tokenUnit)).join('')
                     : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length}">当前筛选下没有可展示的数据。</td></tr>`;
                 container.querySelector(`[data-table-count="${tableName}"]`).textContent = `${sorted.length} 条`;
                 container.querySelectorAll(`[data-table="${tableName}"] th[data-sort-key]`).forEach((header) => {
@@ -518,22 +542,23 @@
                 const totalIntelligence = buildIntelligenceChartPoints(points, state.benchmark).length;
                 container.querySelector('[data-counts]').textContent = `额度图 ${usagePoints.length}/${totalUsage} · 智力图 ${intelligencePoints.length}/${totalIntelligence}`;
 
-                usageChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode)), {
+                const tokenUnitLabel = state.tokenUnit === 'yi' ? '亿' : 'M';
+                usageChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
                     xAxis: { type: state.tokensScale, name: '月费（人民币）', nameLocation: 'middle', nameGap: 38, min: state.tokensScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => `¥${formatNumber(v, 0)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
-                    yAxis: { type: state.tokensScale, name: '月 Token', nameLocation: 'middle', nameGap: 55, min: state.tokensScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: compactNumber }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
-                    series: seriesByColor(usagePoints, state.colorMode, color.colors, (point) => ({ value: [point.monthlyFeeCny, point.monthlyTokenInM], meta: point }), 'usage', pointLabelField)
+                    yAxis: { type: state.tokensScale, name: `月 Token（${tokenUnitLabel}）`, nameLocation: 'middle', nameGap: 55, min: state.tokensScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => formatNumber(v, v < 1 ? 3 : v < 10 ? 2 : 1) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
+                    series: seriesByColor(usagePoints, state.colorMode, color.colors, (point) => ({ value: [point.monthlyFeeCny, tokenAmountInUnit(point.monthlyTokenInM, state.tokenUnit)], meta: point }), 'usage', pointLabelField)
                 }), true);
 
                 const intelligenceSeries = seriesByColor(
                     intelligencePoints,
                     state.colorMode,
                     color.colors,
-                    (point) => ({ value: [point.unitPriceCnyPerM, getPointScore(point, state.benchmark)], meta: point }),
+                    (point) => ({ value: [unitPriceInTokenUnit(point.unitPriceCnyPerM, state.tokenUnit), getPointScore(point, state.benchmark)], meta: point }),
                     'intelligence',
                     pointLabelField
                 );
-                intelligenceChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode)), {
-                    xAxis: { type: state.priceScale, name: '人民币 / M Token', nameLocation: 'middle', nameGap: 38, min: state.priceScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => `¥${formatNumber(v, v < 1 ? 2 : 1)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
+                intelligenceChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
+                    xAxis: { type: state.priceScale, name: `人民币 / ${tokenUnitLabel} Token`, nameLocation: 'middle', nameGap: 38, min: state.priceScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => `¥${formatNumber(v, v < 1 ? 2 : 1)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     yAxis: { type: 'value', name: `${BENCHMARKS[state.benchmark].short} 评分`, nameLocation: 'middle', nameGap: 45, scale: true, axisLabel: { formatter: (v) => formatNumber(v, 0) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     series: intelligenceSeries
                 }), true);
@@ -673,6 +698,13 @@
                     render();
                     return;
                 }
+                const tokenUnitButton = event.target.closest('[data-token-unit]');
+                if (tokenUnitButton) {
+                    state.tokenUnit = normalizeTokenUnit(tokenUnitButton.dataset.tokenUnit);
+                    container.querySelectorAll('[data-token-unit]').forEach((button) => button.classList.toggle('is-active', button === tokenUnitButton));
+                    render();
+                    return;
+                }
                 if (event.target.closest('[data-action="restore-defaults"]')) {
                     Object.assign(state, createDefaultFilterState(points));
                     syncFilterControls();
@@ -702,5 +734,5 @@
         return container.__usageMountPromise;
     }
 
-    return { DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, getPointScore, getPointPlatformKey, createDefaultFilterState, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, getPointScore, getPointPlatformKey, createDefaultFilterState, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });

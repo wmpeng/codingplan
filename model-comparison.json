@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T12:49:13Z",
+  "generatedAt": "2026-08-31T13:02:28Z",
   "sourceGeneratedAt": {
     "usage": "2026-08-31",
     "modelInfo": "2026-08-30T17:40:47Z"
@@ -832,7 +832,7 @@
           "confidenceIntervalExact": 3.0186512715587
         }
       },
-      "id": "subscription:智谱国际版:新Lite:GLM-5.3 [off-peak]",
+      "id": "subscription:智谱国际版:新Lite:GLM-5.3 [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "新Lite",
@@ -865,7 +865,7 @@
           "confidenceIntervalExact": 3.0186512715587
         }
       },
-      "id": "subscription:智谱国际版:新Lite:GLM-5.3 [peak]",
+      "id": "subscription:智谱国际版:新Lite:GLM-5.3 [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "新Lite",
@@ -898,7 +898,7 @@
           "confidenceIntervalExact": 4.377970751693644
         }
       },
-      "id": "subscription:智谱国际版:新Lite:GLM-5.3-Flash [off-peak]",
+      "id": "subscription:智谱国际版:新Lite:GLM-5.3-Flash [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "新Lite",
@@ -931,7 +931,7 @@
           "confidenceIntervalExact": 4.377970751693644
         }
       },
-      "id": "subscription:智谱国际版:新Lite:GLM-5.3-Flash [peak]",
+      "id": "subscription:智谱国际版:新Lite:GLM-5.3-Flash [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "新Lite",
@@ -964,7 +964,7 @@
           "confidenceIntervalExact": 3.0186512715587
         }
       },
-      "id": "subscription:智谱国际版:新Pro:GLM-5.3 [off-peak]",
+      "id": "subscription:智谱国际版:新Pro:GLM-5.3 [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "新Pro",
@@ -997,7 +997,7 @@
           "confidenceIntervalExact": 3.0186512715587
         }
       },
-      "id": "subscription:智谱国际版:新Pro:GLM-5.3 [peak]",
+      "id": "subscription:智谱国际版:新Pro:GLM-5.3 [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "新Pro",
@@ -1030,7 +1030,7 @@
           "confidenceIntervalExact": 4.377970751693644
         }
       },
-      "id": "subscription:智谱国际版:新Pro:GLM-5.3-Flash [off-peak]",
+      "id": "subscription:智谱国际版:新Pro:GLM-5.3-Flash [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "新Pro",
@@ -1063,7 +1063,7 @@
           "confidenceIntervalExact": 4.377970751693644
         }
       },
-      "id": "subscription:智谱国际版:新Pro:GLM-5.3-Flash [peak]",
+      "id": "subscription:智谱国际版:新Pro:GLM-5.3-Flash [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "新Pro",
@@ -1096,7 +1096,7 @@
           "confidenceIntervalExact": 3.0186512715587
         }
       },
-      "id": "subscription:智谱国际版:新Max:GLM-5.3 [off-peak]",
+      "id": "subscription:智谱国际版:新Max:GLM-5.3 [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "新Max",
@@ -1129,7 +1129,7 @@
           "confidenceIntervalExact": 3.0186512715587
         }
       },
-      "id": "subscription:智谱国际版:新Max:GLM-5.3 [peak]",
+      "id": "subscription:智谱国际版:新Max:GLM-5.3 [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "新Max",
@@ -1162,7 +1162,7 @@
           "confidenceIntervalExact": 4.377970751693644
         }
       },
-      "id": "subscription:智谱国际版:新Max:GLM-5.3-Flash [off-peak]",
+      "id": "subscription:智谱国际版:新Max:GLM-5.3-Flash [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "新Max",
@@ -1195,7 +1195,7 @@
           "confidenceIntervalExact": 4.377970751693644
         }
       },
-      "id": "subscription:智谱国际版:新Max:GLM-5.3-Flash [peak]",
+      "id": "subscription:智谱国际版:新Max:GLM-5.3-Flash [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "新Max",
@@ -1228,7 +1228,7 @@
           "confidenceIntervalExact": 3.0186512715587
         }
       },
-      "id": "subscription:智谱AI:Lite:GLM-5.3 [off-peak]",
+      "id": "subscription:智谱AI:Lite:GLM-5.3 [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Lite",
@@ -1261,7 +1261,7 @@
           "confidenceIntervalExact": 3.0186512715587
         }
       },
-      "id": "subscription:智谱AI:Lite:GLM-5.3 [peak]",
+      "id": "subscription:智谱AI:Lite:GLM-5.3 [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Lite",
@@ -1294,7 +1294,7 @@
           "confidenceIntervalExact": 4.377970751693644
         }
       },
-      "id": "subscription:智谱AI:Lite:GLM-5.3-Flash [off-peak]",
+      "id": "subscription:智谱AI:Lite:GLM-5.3-Flash [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Lite",
@@ -1327,7 +1327,7 @@
           "confidenceIntervalExact": 4.377970751693644
         }
       },
-      "id": "subscription:智谱AI:Lite:GLM-5.3-Flash [peak]",
+      "id": "subscription:智谱AI:Lite:GLM-5.3-Flash [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Lite",
@@ -1360,7 +1360,7 @@
           "confidenceIntervalExact": 3.0186512715587
         }
       },
-      "id": "subscription:智谱AI:Pro:GLM-5.3 [off-peak]",
+      "id": "subscription:智谱AI:Pro:GLM-5.3 [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Pro",
@@ -1393,7 +1393,7 @@
           "confidenceIntervalExact": 3.0186512715587
         }
       },
-      "id": "subscription:智谱AI:Pro:GLM-5.3 [peak]",
+      "id": "subscription:智谱AI:Pro:GLM-5.3 [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Pro",
@@ -1426,7 +1426,7 @@
           "confidenceIntervalExact": 4.377970751693644
         }
       },
-      "id": "subscription:智谱AI:Pro:GLM-5.3-Flash [off-peak]",
+      "id": "subscription:智谱AI:Pro:GLM-5.3-Flash [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Pro",
@@ -1459,7 +1459,7 @@
           "confidenceIntervalExact": 4.377970751693644
         }
       },
-      "id": "subscription:智谱AI:Pro:GLM-5.3-Flash [peak]",
+      "id": "subscription:智谱AI:Pro:GLM-5.3-Flash [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Pro",
@@ -1492,7 +1492,7 @@
           "confidenceIntervalExact": 3.0186512715587
         }
       },
-      "id": "subscription:智谱AI:Max:GLM-5.3 [off-peak]",
+      "id": "subscription:智谱AI:Max:GLM-5.3 [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Max",
@@ -1525,7 +1525,7 @@
           "confidenceIntervalExact": 3.0186512715587
         }
       },
-      "id": "subscription:智谱AI:Max:GLM-5.3 [peak]",
+      "id": "subscription:智谱AI:Max:GLM-5.3 [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Max",
@@ -1558,7 +1558,7 @@
           "confidenceIntervalExact": 4.377970751693644
         }
       },
-      "id": "subscription:智谱AI:Max:GLM-5.3-Flash [off-peak]",
+      "id": "subscription:智谱AI:Max:GLM-5.3-Flash [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Max",
@@ -1591,7 +1591,7 @@
           "confidenceIntervalExact": 4.377970751693644
         }
       },
-      "id": "subscription:智谱AI:Max:GLM-5.3-Flash [peak]",
+      "id": "subscription:智谱AI:Max:GLM-5.3-Flash [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Max",
@@ -5567,7 +5567,7 @@
           "confidenceIntervalExact": 2.6627926725075453
         }
       },
-      "id": "subscription:阿里·百炼:Lite:Qwen-3.8-Max [day]",
+      "id": "subscription:阿里·百炼:Lite:Qwen-3.8-Max [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Lite",
@@ -5600,7 +5600,7 @@
           "confidenceIntervalExact": 2.6627926725075453
         }
       },
-      "id": "subscription:阿里·百炼:Lite:Qwen-3.8-Max [night]",
+      "id": "subscription:阿里·百炼:Lite:Qwen-3.8-Max [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Lite",
@@ -5760,7 +5760,7 @@
           "confidenceIntervalExact": 6.333430597228876
         }
       },
-      "id": "subscription:阿里·百炼:Lite:DeepSeek-V4-Pro-0813 [day]",
+      "id": "subscription:阿里·百炼:Lite:DeepSeek-V4-Pro-0813 [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Lite",
@@ -5793,7 +5793,7 @@
           "confidenceIntervalExact": 6.333430597228876
         }
       },
-      "id": "subscription:阿里·百炼:Lite:DeepSeek-V4-Pro-0813 [night]",
+      "id": "subscription:阿里·百炼:Lite:DeepSeek-V4-Pro-0813 [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Lite",
@@ -5826,7 +5826,7 @@
           "confidenceIntervalExact": 3.5669502150324286
         }
       },
-      "id": "subscription:阿里·百炼:Lite:DeepSeek-V4-Flash-0731 [busy]",
+      "id": "subscription:阿里·百炼:Lite:DeepSeek-V4-Flash-0731 [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Lite",
@@ -5859,7 +5859,7 @@
           "confidenceIntervalExact": 3.5669502150324286
         }
       },
-      "id": "subscription:阿里·百炼:Lite:DeepSeek-V4-Flash-0731 [idle]",
+      "id": "subscription:阿里·百炼:Lite:DeepSeek-V4-Flash-0731 [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Lite",
@@ -5925,7 +5925,7 @@
           "confidenceIntervalExact": 2.6627926725075453
         }
       },
-      "id": "subscription:阿里·百炼:Standard:Qwen-3.8-Max [day]",
+      "id": "subscription:阿里·百炼:Standard:Qwen-3.8-Max [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Standard",
@@ -5958,7 +5958,7 @@
           "confidenceIntervalExact": 2.6627926725075453
         }
       },
-      "id": "subscription:阿里·百炼:Standard:Qwen-3.8-Max [night]",
+      "id": "subscription:阿里·百炼:Standard:Qwen-3.8-Max [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Standard",
@@ -6118,7 +6118,7 @@
           "confidenceIntervalExact": 6.333430597228876
         }
       },
-      "id": "subscription:阿里·百炼:Standard:DeepSeek-V4-Pro-0813 [day]",
+      "id": "subscription:阿里·百炼:Standard:DeepSeek-V4-Pro-0813 [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Standard",
@@ -6151,7 +6151,7 @@
           "confidenceIntervalExact": 6.333430597228876
         }
       },
-      "id": "subscription:阿里·百炼:Standard:DeepSeek-V4-Pro-0813 [night]",
+      "id": "subscription:阿里·百炼:Standard:DeepSeek-V4-Pro-0813 [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Standard",
@@ -6184,7 +6184,7 @@
           "confidenceIntervalExact": 3.5669502150324286
         }
       },
-      "id": "subscription:阿里·百炼:Standard:DeepSeek-V4-Flash-0731 [busy]",
+      "id": "subscription:阿里·百炼:Standard:DeepSeek-V4-Flash-0731 [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Standard",
@@ -6217,7 +6217,7 @@
           "confidenceIntervalExact": 3.5669502150324286
         }
       },
-      "id": "subscription:阿里·百炼:Standard:DeepSeek-V4-Flash-0731 [idle]",
+      "id": "subscription:阿里·百炼:Standard:DeepSeek-V4-Flash-0731 [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Standard",
@@ -6283,7 +6283,7 @@
           "confidenceIntervalExact": 2.6627926725075453
         }
       },
-      "id": "subscription:阿里·百炼:Pro:Qwen-3.8-Max [day]",
+      "id": "subscription:阿里·百炼:Pro:Qwen-3.8-Max [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Pro",
@@ -6316,7 +6316,7 @@
           "confidenceIntervalExact": 2.6627926725075453
         }
       },
-      "id": "subscription:阿里·百炼:Pro:Qwen-3.8-Max [night]",
+      "id": "subscription:阿里·百炼:Pro:Qwen-3.8-Max [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Pro",
@@ -6476,7 +6476,7 @@
           "confidenceIntervalExact": 6.333430597228876
         }
       },
-      "id": "subscription:阿里·百炼:Pro:DeepSeek-V4-Pro-0813 [day]",
+      "id": "subscription:阿里·百炼:Pro:DeepSeek-V4-Pro-0813 [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Pro",
@@ -6509,7 +6509,7 @@
           "confidenceIntervalExact": 6.333430597228876
         }
       },
-      "id": "subscription:阿里·百炼:Pro:DeepSeek-V4-Pro-0813 [night]",
+      "id": "subscription:阿里·百炼:Pro:DeepSeek-V4-Pro-0813 [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Pro",
@@ -6542,7 +6542,7 @@
           "confidenceIntervalExact": 3.5669502150324286
         }
       },
-      "id": "subscription:阿里·百炼:Pro:DeepSeek-V4-Flash-0731 [busy]",
+      "id": "subscription:阿里·百炼:Pro:DeepSeek-V4-Flash-0731 [峰]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Pro",
@@ -6575,7 +6575,7 @@
           "confidenceIntervalExact": 3.5669502150324286
         }
       },
-      "id": "subscription:阿里·百炼:Pro:DeepSeek-V4-Flash-0731 [idle]",
+      "id": "subscription:阿里·百炼:Pro:DeepSeek-V4-Flash-0731 [谷]",
       "billingType": "subscription",
       "platformType": "Token Plan",
       "plan": "Pro",
@@ -6641,7 +6641,7 @@
           "confidenceIntervalExact": 3.5669502150324286
         }
       },
-      "id": "payg:DeepSeek:DeepSeek-V4-Flash-0731 [off-peak]",
+      "id": "payg:DeepSeek:DeepSeek-V4-Flash-0731 [谷]",
       "billingType": "payg",
       "platformType": "API",
       "plan": "按量 API",
@@ -6669,7 +6669,7 @@
           "confidenceIntervalExact": 3.5669502150324286
         }
       },
-      "id": "payg:DeepSeek:DeepSeek-V4-Flash-0731 [peak]",
+      "id": "payg:DeepSeek:DeepSeek-V4-Flash-0731 [峰]",
       "billingType": "payg",
       "platformType": "API",
       "plan": "按量 API",
@@ -6691,7 +6691,7 @@
         },
         "deepSWE": null
       },
-      "id": "payg:DeepSeek:DeepSeek-V4-Flash-Vision-Exp [off-peak]",
+      "id": "payg:DeepSeek:DeepSeek-V4-Flash-Vision-Exp [谷]",
       "billingType": "payg",
       "platformType": "API",
       "plan": "按量 API",
@@ -6713,7 +6713,7 @@
         },
         "deepSWE": null
       },
-      "id": "payg:DeepSeek:DeepSeek-V4-Flash-Vision-Exp [peak]",
+      "id": "payg:DeepSeek:DeepSeek-V4-Flash-Vision-Exp [峰]",
       "billingType": "payg",
       "platformType": "API",
       "plan": "按量 API",
@@ -6741,7 +6741,7 @@
           "confidenceIntervalExact": 6.333430597228876
         }
       },
-      "id": "payg:DeepSeek:DeepSeek-V4-Pro-0813 [off-peak]",
+      "id": "payg:DeepSeek:DeepSeek-V4-Pro-0813 [谷]",
       "billingType": "payg",
       "platformType": "API",
       "plan": "按量 API",
@@ -6769,7 +6769,7 @@
           "confidenceIntervalExact": 6.333430597228876
         }
       },
-      "id": "payg:DeepSeek:DeepSeek-V4-Pro-0813 [peak]",
+      "id": "payg:DeepSeek:DeepSeek-V4-Pro-0813 [峰]",
       "billingType": "payg",
       "platformType": "API",
       "plan": "按量 API",
