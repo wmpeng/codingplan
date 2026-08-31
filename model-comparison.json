@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T12:33:27Z",
+  "generatedAt": "2026-08-31T12:38:20Z",
   "sourceGeneratedAt": {
     "usage": "2026-08-31",
     "modelInfo": "2026-08-30T17:40:47Z"
@@ -126,7 +126,7 @@
       "originalMonthlyFee": 100.0,
       "originalCurrency": "$",
       "monthlyFeeCny": 680.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 600.0,
       "weeklyTokenInM": 600.0,
       "monthlyTokenInM": 2400.0,
       "unitPriceCnyPerM": 0.28356
@@ -158,7 +158,7 @@
       "originalMonthlyFee": 100.0,
       "originalCurrency": "$",
       "monthlyFeeCny": 680.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 6000.0,
       "weeklyTokenInM": 6000.0,
       "monthlyTokenInM": 24000.0,
       "unitPriceCnyPerM": 0.02856
@@ -190,7 +190,7 @@
       "originalMonthlyFee": 200.0,
       "originalCurrency": "$",
       "monthlyFeeCny": 1360.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 2400.0,
       "weeklyTokenInM": 2400.0,
       "monthlyTokenInM": 9600.0,
       "unitPriceCnyPerM": 0.14144
@@ -222,7 +222,7 @@
       "originalMonthlyFee": 200.0,
       "originalCurrency": "$",
       "monthlyFeeCny": 1360.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 24000.0,
       "weeklyTokenInM": 24000.0,
       "monthlyTokenInM": 96000.0,
       "unitPriceCnyPerM": 0.01428
@@ -600,8 +600,8 @@
       "originalMonthlyFee": 39.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 39.0,
-      "fiveHourTokenInM": null,
-      "weeklyTokenInM": null,
+      "fiveHourTokenInM": 202.1,
+      "weeklyTokenInM": 202.1,
       "monthlyTokenInM": 202.1,
       "unitPriceCnyPerM": 0.193
     },
@@ -626,8 +626,8 @@
       "originalMonthlyFee": 39.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 39.0,
-      "fiveHourTokenInM": null,
-      "weeklyTokenInM": null,
+      "fiveHourTokenInM": 521.3,
+      "weeklyTokenInM": 521.3,
       "monthlyTokenInM": 521.3,
       "unitPriceCnyPerM": 0.0748
     },
@@ -652,8 +652,8 @@
       "originalMonthlyFee": 99.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 99.0,
-      "fiveHourTokenInM": null,
-      "weeklyTokenInM": null,
+      "fiveHourTokenInM": 542.2,
+      "weeklyTokenInM": 542.2,
       "monthlyTokenInM": 542.2,
       "unitPriceCnyPerM": 0.1826
     },
@@ -678,8 +678,8 @@
       "originalMonthlyFee": 99.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 99.0,
-      "fiveHourTokenInM": null,
-      "weeklyTokenInM": null,
+      "fiveHourTokenInM": 1398.5,
+      "weeklyTokenInM": 1398.5,
       "monthlyTokenInM": 1398.5,
       "unitPriceCnyPerM": 0.0708
     },
@@ -704,8 +704,8 @@
       "originalMonthlyFee": 329.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 329.0,
-      "fiveHourTokenInM": null,
-      "weeklyTokenInM": null,
+      "fiveHourTokenInM": 1873.0,
+      "weeklyTokenInM": 1873.0,
       "monthlyTokenInM": 1873.0,
       "unitPriceCnyPerM": 0.1757
     },
@@ -730,8 +730,8 @@
       "originalMonthlyFee": 329.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 329.0,
-      "fiveHourTokenInM": null,
-      "weeklyTokenInM": null,
+      "fiveHourTokenInM": 4831.2,
+      "weeklyTokenInM": 4831.2,
       "monthlyTokenInM": 4831.2,
       "unitPriceCnyPerM": 0.0681
     },
@@ -756,8 +756,8 @@
       "originalMonthlyFee": 659.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 659.0,
-      "fiveHourTokenInM": null,
-      "weeklyTokenInM": null,
+      "fiveHourTokenInM": 4041.8,
+      "weeklyTokenInM": 4041.8,
       "monthlyTokenInM": 4041.8,
       "unitPriceCnyPerM": 0.163
     },
@@ -782,8 +782,8 @@
       "originalMonthlyFee": 659.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 659.0,
-      "fiveHourTokenInM": null,
-      "weeklyTokenInM": null,
+      "fiveHourTokenInM": 10425.3,
+      "weeklyTokenInM": 10425.3,
       "monthlyTokenInM": 10425.3,
       "unitPriceCnyPerM": 0.0632
     },
@@ -5388,7 +5388,7 @@
       "originalMonthlyFee": 39.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 39.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 8.2085631731,
       "weeklyTokenInM": 8.2085631731,
       "monthlyTokenInM": 32.8,
       "unitPriceCnyPerM": 1.1878
@@ -5420,7 +5420,7 @@
       "originalMonthlyFee": 39.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 39.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 16.4171263462,
       "weeklyTokenInM": 16.4171263462,
       "monthlyTokenInM": 65.7,
       "unitPriceCnyPerM": 0.5939
@@ -5442,7 +5442,7 @@
       "originalMonthlyFee": 39.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 39.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 122.2254815684,
       "weeklyTokenInM": 122.2254815684,
       "monthlyTokenInM": 488.9,
       "unitPriceCnyPerM": 0.0798
@@ -5468,7 +5468,7 @@
       "originalMonthlyFee": 39.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 39.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 16.4171263462,
       "weeklyTokenInM": 16.4171263462,
       "monthlyTokenInM": 65.7,
       "unitPriceCnyPerM": 0.5939
@@ -5494,7 +5494,7 @@
       "originalMonthlyFee": 39.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 39.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 60.3748068006,
       "weeklyTokenInM": 60.3748068006,
       "monthlyTokenInM": 241.5,
       "unitPriceCnyPerM": 0.1615
@@ -5516,7 +5516,7 @@
       "originalMonthlyFee": 39.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 39.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 77.5049603175,
       "weeklyTokenInM": 77.5049603175,
       "monthlyTokenInM": 310.0,
       "unitPriceCnyPerM": 0.1258
@@ -5542,7 +5542,7 @@
       "originalMonthlyFee": 39.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 39.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 8.3735262594,
       "weeklyTokenInM": 8.3735262594,
       "monthlyTokenInM": 33.5,
       "unitPriceCnyPerM": 1.1644
@@ -5574,7 +5574,7 @@
       "originalMonthlyFee": 39.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 39.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 10.9447508975,
       "weeklyTokenInM": 10.9447508975,
       "monthlyTokenInM": 43.8,
       "unitPriceCnyPerM": 0.8908
@@ -5606,7 +5606,7 @@
       "originalMonthlyFee": 39.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 39.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 21.8895017949,
       "weeklyTokenInM": 21.8895017949,
       "monthlyTokenInM": 87.6,
       "unitPriceCnyPerM": 0.4454
@@ -5638,7 +5638,7 @@
       "originalMonthlyFee": 39.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 39.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 32.8342526924,
       "weeklyTokenInM": 32.8342526924,
       "monthlyTokenInM": 131.3,
       "unitPriceCnyPerM": 0.2969
@@ -5670,7 +5670,7 @@
       "originalMonthlyFee": 39.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 39.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 65.6685053848,
       "weeklyTokenInM": 65.6685053848,
       "monthlyTokenInM": 262.7,
       "unitPriceCnyPerM": 0.1485
@@ -5702,7 +5702,7 @@
       "originalMonthlyFee": 39.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 39.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 10.2944204241,
       "weeklyTokenInM": 10.2944204241,
       "monthlyTokenInM": 41.2,
       "unitPriceCnyPerM": 0.9471
@@ -5734,7 +5734,7 @@
       "originalMonthlyFee": 139.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 139.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 32.8342526924,
       "weeklyTokenInM": 32.8342526924,
       "monthlyTokenInM": 131.3,
       "unitPriceCnyPerM": 1.0583
@@ -5766,7 +5766,7 @@
       "originalMonthlyFee": 139.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 139.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 65.6685053848,
       "weeklyTokenInM": 65.6685053848,
       "monthlyTokenInM": 262.7,
       "unitPriceCnyPerM": 0.5292
@@ -5788,7 +5788,7 @@
       "originalMonthlyFee": 139.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 139.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 488.9019262736,
       "weeklyTokenInM": 488.9019262736,
       "monthlyTokenInM": 1955.6,
       "unitPriceCnyPerM": 0.0711
@@ -5814,7 +5814,7 @@
       "originalMonthlyFee": 139.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 139.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 65.6685053848,
       "weeklyTokenInM": 65.6685053848,
       "monthlyTokenInM": 262.7,
       "unitPriceCnyPerM": 0.5292
@@ -5840,7 +5840,7 @@
       "originalMonthlyFee": 139.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 139.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 241.4992272025,
       "weeklyTokenInM": 241.4992272025,
       "monthlyTokenInM": 966.0,
       "unitPriceCnyPerM": 0.1439
@@ -5862,7 +5862,7 @@
       "originalMonthlyFee": 139.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 139.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 310.0198412698,
       "weeklyTokenInM": 310.0198412698,
       "monthlyTokenInM": 1240.1,
       "unitPriceCnyPerM": 0.1121
@@ -5888,7 +5888,7 @@
       "originalMonthlyFee": 139.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 139.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 33.4941050375,
       "weeklyTokenInM": 33.4941050375,
       "monthlyTokenInM": 134.0,
       "unitPriceCnyPerM": 1.0375
@@ -5920,7 +5920,7 @@
       "originalMonthlyFee": 139.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 139.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 43.7790035899,
       "weeklyTokenInM": 43.7790035899,
       "monthlyTokenInM": 175.1,
       "unitPriceCnyPerM": 0.7938
@@ -5952,7 +5952,7 @@
       "originalMonthlyFee": 139.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 139.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 87.5580071798,
       "weeklyTokenInM": 87.5580071798,
       "monthlyTokenInM": 350.2,
       "unitPriceCnyPerM": 0.3969
@@ -5984,7 +5984,7 @@
       "originalMonthlyFee": 139.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 139.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 131.3370107696,
       "weeklyTokenInM": 131.3370107696,
       "monthlyTokenInM": 525.3,
       "unitPriceCnyPerM": 0.2646
@@ -6016,7 +6016,7 @@
       "originalMonthlyFee": 139.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 139.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 262.6740215393,
       "weeklyTokenInM": 262.6740215393,
       "monthlyTokenInM": 1050.7,
       "unitPriceCnyPerM": 0.1323
@@ -6048,7 +6048,7 @@
       "originalMonthlyFee": 139.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 139.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 41.1776816965,
       "weeklyTokenInM": 41.1776816965,
       "monthlyTokenInM": 164.7,
       "unitPriceCnyPerM": 0.8439
@@ -6080,7 +6080,7 @@
       "originalMonthlyFee": 499.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 499.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 131.3370107696,
       "weeklyTokenInM": 131.3370107696,
       "monthlyTokenInM": 525.3,
       "unitPriceCnyPerM": 0.9498
@@ -6112,7 +6112,7 @@
       "originalMonthlyFee": 499.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 499.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 262.6740215393,
       "weeklyTokenInM": 262.6740215393,
       "monthlyTokenInM": 1050.7,
       "unitPriceCnyPerM": 0.4749
@@ -6134,7 +6134,7 @@
       "originalMonthlyFee": 499.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 499.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 1955.6077050944,
       "weeklyTokenInM": 1955.6077050944,
       "monthlyTokenInM": 7822.4,
       "unitPriceCnyPerM": 0.0638
@@ -6160,7 +6160,7 @@
       "originalMonthlyFee": 499.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 499.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 262.6740215393,
       "weeklyTokenInM": 262.6740215393,
       "monthlyTokenInM": 1050.7,
       "unitPriceCnyPerM": 0.4749
@@ -6186,7 +6186,7 @@
       "originalMonthlyFee": 499.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 499.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 965.9969088099,
       "weeklyTokenInM": 965.9969088099,
       "monthlyTokenInM": 3864.0,
       "unitPriceCnyPerM": 0.1291
@@ -6208,7 +6208,7 @@
       "originalMonthlyFee": 499.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 499.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 1240.0793650794,
       "weeklyTokenInM": 1240.0793650794,
       "monthlyTokenInM": 4960.3,
       "unitPriceCnyPerM": 0.1006
@@ -6234,7 +6234,7 @@
       "originalMonthlyFee": 499.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 499.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 133.9764201501,
       "weeklyTokenInM": 133.9764201501,
       "monthlyTokenInM": 535.9,
       "unitPriceCnyPerM": 0.9311
@@ -6266,7 +6266,7 @@
       "originalMonthlyFee": 499.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 499.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 175.1160143595,
       "weeklyTokenInM": 175.1160143595,
       "monthlyTokenInM": 700.5,
       "unitPriceCnyPerM": 0.7124
@@ -6298,7 +6298,7 @@
       "originalMonthlyFee": 499.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 499.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 350.232028719,
       "weeklyTokenInM": 350.232028719,
       "monthlyTokenInM": 1400.9,
       "unitPriceCnyPerM": 0.3562
@@ -6330,7 +6330,7 @@
       "originalMonthlyFee": 499.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 499.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 525.3480430785,
       "weeklyTokenInM": 525.3480430785,
       "monthlyTokenInM": 2101.4,
       "unitPriceCnyPerM": 0.2375
@@ -6362,7 +6362,7 @@
       "originalMonthlyFee": 499.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 499.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 1050.6960861571,
       "weeklyTokenInM": 1050.6960861571,
       "monthlyTokenInM": 4202.8,
       "unitPriceCnyPerM": 0.1187
@@ -6394,7 +6394,7 @@
       "originalMonthlyFee": 499.0,
       "originalCurrency": "¥",
       "monthlyFeeCny": 499.0,
-      "fiveHourTokenInM": null,
+      "fiveHourTokenInM": 164.7107267861,
       "weeklyTokenInM": 164.7107267861,
       "monthlyTokenInM": 658.8,
       "unitPriceCnyPerM": 0.7574
