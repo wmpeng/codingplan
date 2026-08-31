@@ -40,7 +40,10 @@
         { key: 'fiveHourTokenInM', label: '5h用量' },
         { key: 'weeklyTokenInM', label: '周用量' },
         { key: 'monthlyTokenInM', label: '月用量' },
-        { key: 'unitPriceCnyPerM', label: '综合单价' }
+        { key: 'unitPriceCnyPerM', label: '综合单价' },
+        { key: 'artificialAnalysis', label: 'AA分数' },
+        { key: 'deepSWE', label: 'DeepSWE分数' },
+        { key: 'note', label: '备注' }
     ];
 
     function finitePositive(value) {
@@ -199,7 +202,8 @@
 
     function comparisonSortValue(point, key) {
         if (key === 'price') return finitePositive(point.monthlyFeeCny);
-        if (key === 'vendor' || key === 'platformType' || key === 'plan') return point[key] || '';
+        if (key === 'artificialAnalysis' || key === 'deepSWE') return getPointScore(point, key);
+        if (key === 'vendor' || key === 'platformType' || key === 'plan' || key === 'note') return point[key] || '';
         if (key === 'model') return point.model || point.canonicalModel || '';
         return finitePositive(point[key]);
     }
@@ -234,6 +238,10 @@
             ? `¥${formatNumber(point.monthlyFeeCny, 2)} / 月` : '按量';
         const unitPrice = finitePositive(point.unitPriceCnyPerM) !== null
             ? `¥${formatNumber(point.unitPriceCnyPerM, 4)} / M` : '—';
+        const aaScore = point.scores && point.scores.artificialAnalysis;
+        const deepSWEScore = point.scores && point.scores.deepSWE;
+        const deepSWEInterval = deepSWEScore && Number.isFinite(Number(deepSWEScore.confidenceInterval))
+            ? ` ±${formatNumber(deepSWEScore.confidenceInterval, 0)}` : '';
         return `<tr data-point-id="${escapeHtml(point.id)}">` +
             `<td class="sticky-first"><strong>${escapeHtml(point.vendor)}</strong></td>` +
             `<td>${escapeHtml(point.platformType || '—')}</td>` +
@@ -243,7 +251,10 @@
             `<td class="numeric">${subscription ? compactNumber(point.fiveHourTokenInM) : '—'}</td>` +
             `<td class="numeric">${subscription ? compactNumber(point.weeklyTokenInM) : '—'}</td>` +
             `<td class="numeric">${subscription ? compactNumber(point.monthlyTokenInM) : '—'}</td>` +
-            `<td class="numeric usage-table-unit-price">${unitPrice}</td></tr>`;
+            `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
+            `<td class="numeric">${aaScore ? formatNumber(aaScore.score, 0) : '—'}</td>` +
+            `<td class="numeric">${deepSWEScore ? `${formatNumber(deepSWEScore.score, 0)}${deepSWEInterval}` : '—'}</td>` +
+            `<td class="usage-table-note">${escapeHtml(point.note || '—')}</td></tr>`;
     }
 
     function scoreText(point, benchmark) {

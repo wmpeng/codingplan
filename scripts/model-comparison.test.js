@@ -160,7 +160,12 @@ test('comparison table rows format subscription and payg semantics', () => {
   const subscription = comparisonTableRowHtml({
     id: 'sub', billingType: 'subscription', vendor: '平台A', platformType: 'Token Plan', plan: 'Pro',
     model: 'Model A [peak]', monthlyFeeCny: 70, fiveHourTokenInM: 12.5,
-    weeklyTokenInM: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.7
+    weeklyTokenInM: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.7,
+    scores: {
+      artificialAnalysis: { score: 52, scoreExact: 51.6 },
+      deepSWE: { score: 41, scoreExact: 40.7, confidenceInterval: 3 }
+    },
+    note: '按官方额度推算'
   });
   assert.match(subscription, /平台A/);
   assert.match(subscription, /¥70 \/ 月/);
@@ -169,6 +174,9 @@ test('comparison table rows format subscription and payg semantics', () => {
   assert.match(subscription, /50M/);
   assert.match(subscription, /100M/);
   assert.match(subscription, /¥0\.7 \/ M/);
+  assert.match(subscription, />52</);
+  assert.match(subscription, /41 ±3/);
+  assert.match(subscription, /按官方额度推算/);
 
   const payg = comparisonTableRowHtml({
     id: 'api', billingType: 'payg', vendor: 'DeepSeek', platformType: 'API', plan: '按量 API',
@@ -178,4 +186,14 @@ test('comparison table rows format subscription and payg semantics', () => {
   assert.match(payg, /¥0\.1444 \/ M/);
   assert.equal(payg.includes('0M'), false);
   assert.equal(payg.includes('undefined'), false);
+});
+
+test('comparison tables sort both benchmark scores by exact value', () => {
+  const rows = [
+    { id: 'a', scores: { artificialAnalysis: { scoreExact: 50.2 }, deepSWE: { scoreExact: 20.1 } } },
+    { id: 'b', scores: { artificialAnalysis: { scoreExact: 50.8 }, deepSWE: { scoreExact: 30.4 } } },
+    { id: 'c', scores: { artificialAnalysis: null, deepSWE: null } }
+  ];
+  assert.deepEqual(sortComparisonRows(rows, 'artificialAnalysis', 'desc').map((row) => row.id), ['b', 'a', 'c']);
+  assert.deepEqual(sortComparisonRows(rows, 'deepSWE', 'asc').map((row) => row.id), ['a', 'b', 'c']);
 });
