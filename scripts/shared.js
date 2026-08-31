@@ -193,8 +193,8 @@ function renderPageNav(target, options = {}) {
         ? options.tabs
         : [
             { key: 'platforms', href: 'index.html?view=platforms', text: '平台对比' },
-            { key: 'plans', href: 'index.html?view=plans', text: '套餐对比' },
             { key: 'usage', href: 'index.html?view=usage', text: '额度/价格对比' },
+            { key: 'plans', href: 'index.html?view=plans', text: '套餐对比' },
             { key: 'monitor', href: 'index.html?view=monitor', text: '可用性监控' },
             { key: 'payg', href: 'index.html?view=payg', text: '按量计费价格' }
         ];
