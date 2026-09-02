@@ -269,11 +269,7 @@ const PAYG_TABLE_PIN_STORAGE_KEY = 'paygTablePinnedIds';
 
 function getPlanRowPinId(plan) {
   if (!plan || typeof plan !== 'object') return '';
-  const vendor = String(plan.vendor || '').trim();
-  const name = String(plan.plan || '').trim();
-  const type = String(plan.type || 'Coding Plan').trim() || 'Coding Plan';
-  if (!vendor || !name) return '';
-  return `${vendor}|${name}|${type}`;
+  return String(plan.slug || plan.id || '').trim();
 }
 
 function getPaygRowPinId(row) {
@@ -405,12 +401,12 @@ function buildPlatformPinButtonHtml({ platformId, pinned, variant } = {}) {
   );
 }
 
-function collectModelsForVendor(plans, vendorName) {
+function collectModelsForVendor(plans, platformSlug) {
   const seen = new Set();
   const models = [];
 
   for (const plan of plans) {
-    if (plan.vendor !== vendorName || plan.discontinued) {
+    if (plan.platformSlug !== platformSlug || plan.discontinued) {
       continue;
     }
     for (const model of plan.models || []) {
@@ -431,9 +427,9 @@ function dimensionCopy(dim) {
   return typeof dim.reason === 'string' ? dim.reason : '';
 }
 
-function collectPlansForVendor(plans, vendorName) {
-  if (!Array.isArray(plans) || !vendorName) return [];
-  return plans.filter(p => p && p.vendor === vendorName);
+function collectPlansForVendor(plans, platformSlug) {
+  if (!Array.isArray(plans) || !platformSlug) return [];
+  return plans.filter(p => p && p.platformSlug === platformSlug);
 }
 
 function matchMonitorPlatform(platform, boardPlatforms) {
@@ -453,7 +449,8 @@ function resolvePlatformAction(platform, plans) {
     return platform.action;
   }
 
-  const plan = plans.find(p => p.vendor === platform.name);
+  const platformSlug = platform.slug || platform.id;
+  const plan = plans.find(p => p.platformSlug === platformSlug);
   return plan?.action ?? null;
 }
 
@@ -872,12 +869,12 @@ function validatePaygPricing(paygPricing, platforms) {
 
 function validatePlatformRecords(platforms, plans) {
   const errors = [];
-  const platformNames = new Set(platforms.map(p => p.name));
+  const platformSlugs = new Set(platforms.map(p => p.slug || p.id));
 
-  const vendors = [...new Set(plans.map(p => p.vendor))];
-  for (const vendor of vendors) {
-    if (!platformNames.has(vendor)) {
-      errors.push(`Plan vendor "${vendor}" has no matching platform`);
+  const referencedSlugs = [...new Set(plans.map(p => p.platformSlug))];
+  for (const platformSlug of referencedSlugs) {
+    if (!platformSlugs.has(platformSlug)) {
+      errors.push(`Plan platformSlug "${platformSlug}" has no matching platform`);
     }
   }
 
@@ -1046,7 +1043,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     ? `<div class="platform-tags" aria-label="标签">${tags.map((tag) => `<span class="platform-tag">${escapeHtml(tag)}</span>`).join('')}</div>`
     : '';
 
-  let models = collectModelsForVendor(plans, platform.name);
+  let models = collectModelsForVendor(plans, platform.slug || platform.id);
   if (!models.length && paygEntry) {
     models = collectModelsFromPayg(paygEntry);
   }

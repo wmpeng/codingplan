@@ -483,7 +483,7 @@
             const id = String(group.id || '').trim();
             const title = String(group.title || '').trim();
             const kind = group.kind === 'multi' ? 'multi' : group.kind === 'single' ? 'single' : '';
-            const modelIds = [...new Set((Array.isArray(group.modelIds) ? group.modelIds : [])
+            const modelIds = [...new Set((Array.isArray(group.modelSlugs) ? group.modelSlugs : [])
                 .map((value) => String(value || '').trim()).filter(Boolean))];
             if (!id || !title || !kind || !modelIds.length || seenIds.has(id)) return [];
             if (kind === 'single' && modelIds.length !== 1) return [];
@@ -785,12 +785,23 @@
         if (container.__usageMountPromise) return container.__usageMountPromise;
         container.__usageMountPromise = (async () => {
             renderShell(container);
-            const [echarts, response, presetConfig] = await Promise.all([
-                loadEcharts(), fetch('model-comparison.json', { cache: 'no-store' }), loadPresetConfig()
+            const [echarts, platformResponse, planResponse, modelResponse, relationResponse, presetConfig] = await Promise.all([
+                loadEcharts(),
+                fetch('platforms.json', { cache: 'no-store' }),
+                fetch('plans.json', { cache: 'no-store' }),
+                fetch('models.json', { cache: 'no-store' }),
+                fetch('plan-models.json', { cache: 'no-store' }),
+                loadPresetConfig()
             ]);
-            if (!response.ok) throw new Error(`对比数据加载失败：HTTP ${response.status}`);
-            const dataset = await response.json();
-            const points = Array.isArray(dataset.points) ? dataset.points : [];
+            const responses = [platformResponse, planResponse, modelResponse, relationResponse];
+            const labels = ['platforms.json', 'plans.json', 'models.json', 'plan-models.json'];
+            responses.forEach((response, index) => {
+                if (!response.ok) throw new Error(`${labels[index]} 加载失败：HTTP ${response.status}`);
+            });
+            const documents = await Promise.all(responses.map(response => response.json()));
+            const context = root.EntityData.buildContext(...documents);
+            const rate = root.appConfig && root.appConfig.usdToCnyRate || 6.8;
+            const points = root.EntityData.buildComparisonPoints(context, rate);
             const platformMap = new Map();
             points.forEach((point) => {
                 const label = point.platformType ? `${point.vendor} · ${point.platformType}` : point.vendor;

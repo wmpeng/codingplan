@@ -1,654 +1,667 @@
-[
-  {
-    "id": "zhipu",
-    "name": "智谱AI",
-    "rating": 5,
-    "summary": "涨价后新套餐无需抢购。",
-    "dimensions": {
-      "value": {
-        "score": 4,
-        "reason": "新套餐价格翻倍，性价比有所下降，[查看套餐用量](index.html?view=plans)。"
+{
+  "schemaVersion": 1,
+  "platforms": [
+    {
+      "slug": "zhipu",
+      "name": "智谱AI",
+      "rating": 5,
+      "summary": "涨价后新套餐无需抢购。",
+      "dimensions": {
+        "value": {
+          "score": 4,
+          "reason": "新套餐价格翻倍，性价比有所下降，[查看套餐用量](index.html?view=plans)。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "GLM-5.3 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
+        },
+        "stability": {
+          "score": 4,
+          "reason": "官方服务，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
+        }
       },
-      "models": {
-        "score": 5,
-        "reason": "GLM-5.3 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
-      },
-      "stability": {
-        "score": 4,
-        "reason": "官方服务，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "opencode",
-    "name": "OpenCode",
-    "rating": 5,
-    "summary": "模型支持全，调用抵扣透明，性价比高，可直接支付宝付款，无需抢购。",
-    "detail": "模型支持全，调用抵扣透明，性价比高，可直接支付宝付款，无需抢购。提供 Go 套餐付费代邀请服务，加[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)了解详情。",
-    "dimensions": {
-      "value": {
-        "score": 5,
-        "reason": "Go 套餐 $10/月（首月 $5），可使用$15~$60额度。DeepSeek-V4-Flash-0731 每月可达约 15.8 万次请求，量大价低，细节可见[官方文档](https://opencode.ai/docs/go/)。"
+    {
+      "slug": "opencode",
+      "name": "OpenCode",
+      "rating": 5,
+      "summary": "模型支持全，调用抵扣透明，性价比高，可直接支付宝付款，无需抢购。",
+      "detail": "模型支持全，调用抵扣透明，性价比高，可直接支付宝付款，无需抢购。提供 Go 套餐付费代邀请服务，加[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)了解详情。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "Go 套餐 $10/月（首月 $5），可使用$15~$60额度。DeepSeek-V4-Flash-0731 每月可达约 15.8 万次请求，量大价低，细节可见[官方文档](https://opencode.ai/docs/go/)。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "聚合 Kimi-K3、GLM-5.3、MiniMax-M3、Qwen-3.7-Max、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731 等模型，新模型上线及时。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "各模型基本都是官方通道，稳定性强，较少出现不可用。"
+        }
       },
-      "models": {
-        "score": 5,
-        "reason": "聚合 Kimi-K3、GLM-5.3、MiniMax-M3、Qwen-3.7-Max、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731 等模型，新模型上线及时。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "各模型基本都是官方通道，稳定性强，较少出现不可用。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "bytedance-ark",
-    "name": "字节·方舟",
-    "rating": 5,
-    "summary": "已解除限购，开放购买。支持智谱 GLM-5.3、DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro、MiniMax、Kimi各家模型，模型覆盖全面。",
-    "detail": "CodingPlan已解除限购，恢复开放购买，无需抢购。同时支持智谱 GLM-5.3、DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro、MiniMax、Kimi各家模型。",
-    "dimensions": {
-      "value": {
-        "score": 5,
-        "reason": "开放购买，无需抢购；具体套餐折扣和模型用量活动以官方公告为准。"
+    {
+      "slug": "bytedance-ark",
+      "name": "字节·方舟",
+      "rating": 5,
+      "summary": "已解除限购，开放购买。支持智谱 GLM-5.3、DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro、MiniMax、Kimi各家模型，模型覆盖全面。",
+      "detail": "CodingPlan已解除限购，恢复开放购买，无需抢购。同时支持智谱 GLM-5.3、DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro、MiniMax、Kimi各家模型。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "开放购买，无需抢购；具体套餐折扣和模型用量活动以官方公告为准。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "支持 GLM-5.3、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731、MiniMax-M3、Kimi-K2.7-Code、Kimi-K3，模型覆盖全面。"
+        },
+        "stability": {
+          "score": 4,
+          "reason": "火山引擎大厂背书，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
+        }
       },
-      "models": {
-        "score": 5,
-        "reason": "支持 GLM-5.3、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731、MiniMax-M3、Kimi-K2.7-Code、Kimi-K3，模型覆盖全面。"
-      },
-      "stability": {
-        "score": 4,
-        "reason": "火山引擎大厂背书，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "minimax",
-    "name": "MiniMax",
-    "rating": 5,
-    "summary": "额度高、随时可买，支持多模态，日常编程助手与轻量任务性价比突出。",
-    "detail": "额度高、随时可买，支持多模态，日常编程助手与轻量任务性价比突出。适合日常编程助手、Agent任务、酒馆、Subagent使用。",
-    "dimensions": {
-      "value": {
-        "score": 5,
-        "reason": "所有平台额度最慷慨的，日常低难度任务和日常编程助手场景性价比突出。"
+    {
+      "slug": "minimax",
+      "name": "MiniMax",
+      "rating": 5,
+      "summary": "额度高、随时可买，支持多模态，日常编程助手与轻量任务性价比突出。",
+      "detail": "额度高、随时可买，支持多模态，日常编程助手与轻量任务性价比突出。适合日常编程助手、Agent任务、酒馆、Subagent使用。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "所有平台额度最慷慨的，日常低难度任务和日常编程助手场景性价比突出。"
+        },
+        "models": {
+          "score": 4,
+          "reason": "最新 MiniMax-M3，支持多模态图像输入。",
+          "detail": "最新 MiniMax-M3，支持多模态图像输入。对比非多模态模型，使用起来即使是编程场景也更加方便。基本是多模态模型中最强的。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "官方服务，稳定性强。"
+        }
       },
-      "models": {
-        "score": 4,
-        "reason": "最新 MiniMax-M3，支持多模态图像输入。",
-        "detail": "最新 MiniMax-M3，支持多模态图像输入。对比非多模态模型，使用起来即使是编程场景也更加方便。基本是多模态模型中最强的。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "官方服务，稳定性强。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "zhipu-intl",
-    "name": "智谱国际版",
-    "rating": 5,
-    "summary": "国内版的替代，无需抢购。",
-    "detail": "智谱国际版在模型与套餐额度上与国内版相同，支持 GLM-5.3，适合长期抢不到国内名额、又想要使用 GLM 旗舰模型的用户。",
-    "dimensions": {
-      "value": {
-        "score": 4,
-        "reason": "用量与国内版一致，新套餐价格也基本一致。",
-        "detail": "用量与国内版完全一致，新套餐价格也基本一致。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享9折。[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)内有成品号出售。"
+    {
+      "slug": "zhipu-intl",
+      "name": "智谱国际版",
+      "rating": 5,
+      "summary": "国内版的替代，无需抢购。",
+      "detail": "智谱国际版在模型与套餐额度上与国内版相同，支持 GLM-5.3，适合长期抢不到国内名额、又想要使用 GLM 旗舰模型的用户。",
+      "dimensions": {
+        "value": {
+          "score": 4,
+          "reason": "用量与国内版一致，新套餐价格也基本一致。",
+          "detail": "用量与国内版完全一致，新套餐价格也基本一致。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享9折。[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)内有成品号出售。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "GLM-5.3 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "官方服务，稳定性强。"
+        }
       },
-      "models": {
-        "score": 5,
-        "reason": "GLM-5.3 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "官方服务，稳定性强。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "kimi",
-    "name": "Kimi",
-    "rating": 4,
-    "summary": "拥有 Kimi-K3 国产最强模型。已暂停新用户套餐购买。发布后 Kimi-K3 后，变得比较拥挤且用量有所下降。新会员体系上天一天后又撤回，估计后续要调价。",
-    "dimensions": {
-      "value": {
-        "score": 3,
-        "reason": "Kimi-K3 发布后，用量有所下降，Allegretto和Allegro套餐性价相对较高，入门Andante套餐性价比低。新Coding会员体系上天一天后又撤回，估计后续要调价，性价比进一步降低。"
+    {
+      "slug": "kimi",
+      "name": "Kimi",
+      "rating": 4,
+      "summary": "拥有 Kimi-K3 国产最强模型。已暂停新用户套餐购买。发布后 Kimi-K3 后，变得比较拥挤且用量有所下降。新会员体系上天一天后又撤回，估计后续要调价。",
+      "dimensions": {
+        "value": {
+          "score": 3,
+          "reason": "Kimi-K3 发布后，用量有所下降，Allegretto和Allegro套餐性价相对较高，入门Andante套餐性价比低。新Coding会员体系上天一天后又撤回，估计后续要调价，性价比进一步降低。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "支持 Kimi-K3 国产最强模型，适合编程场景。"
+        },
+        "stability": {
+          "score": 4,
+          "reason": "官方服务，稳定性强。Kimi-K3发布后高峰时段可能会有繁忙，整体可用性尚可。"
+        }
       },
-      "models": {
-        "score": 5,
-        "reason": "支持 Kimi-K3 国产最强模型，适合编程场景。"
-      },
-      "stability": {
-        "score": 4,
-        "reason": "官方服务，稳定性强。Kimi-K3发布后高峰时段可能会有繁忙，整体可用性尚可。"
-      }
+      "tags": [],
+      "platformStatus": "paused"
     },
-    "tags": [],
-    "platformStatus": "paused"
-  },
-  {
-    "id": "deepseek-official",
-    "name": "DeepSeek",
-    "rating": 5,
-    "summary": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。",
-    "detail": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。DeepSeek-V4-Flash-0731 正式版已上线，按量使用更灵活。",
-    "dimensions": {
-      "value": {
-        "score": 4,
-        "reason": "第一梯队模型中，最便宜的之一；按量标价透明；高峰翻倍后成本优势会收窄。"
+    {
+      "slug": "deepseek-official",
+      "name": "DeepSeek",
+      "rating": 5,
+      "summary": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。",
+      "detail": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。DeepSeek-V4-Flash-0731 正式版已上线，按量使用更灵活。",
+      "dimensions": {
+        "value": {
+          "score": 4,
+          "reason": "第一梯队模型中，最便宜的之一；按量标价透明；高峰翻倍后成本优势会收窄。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro，推理与代码能力处于国产第一梯队。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "官方通道，稳定性强。"
+        }
       },
-      "models": {
-        "score": 5,
-        "reason": "DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro，推理与代码能力处于国产第一梯队。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "官方通道，稳定性强。"
-      }
+      "tags": [],
+      "platformStatus": "open",
+      "action": "https://platform.deepseek.com/"
     },
-    "tags": [],
-    "platformStatus": "open",
-    "action": "https://platform.deepseek.com/"
-  },
-  {
-    "id": "gongji",
-    "name": "共绩算力",
-    "rating": 5,
-    "summary": "DeepSeek 等模型官方约 8 折按量，人少时更稳，适合灵活充值调用。",
-    "detail": "共绩算力以 API 按量为主，DeepSeek-V4-Pro 常见为官方约 8 折（如输入 2.4 / 缓存 0.02 / 输出 4.8 元/M）。同时覆盖 GLM、Kimi、Qwen 等常见模型。务必通过邀请链接进入以锁定折扣与额外额度；平台体量相对较小，人数不多时稳定性体感较好，但仍建议关注公告与限流。不提供传统 Coding Plan / Token Plan 档位，按充值用量消费。",
-    "dimensions": {
-      "value": {
-        "score": 5,
-        "reason": "DeepSeek 官方约 8 折，高峰涨价后相对优势更明显。"
+    {
+      "slug": "gongji",
+      "name": "共绩算力",
+      "rating": 5,
+      "summary": "DeepSeek 等模型官方约 8 折按量，人少时更稳，适合灵活充值调用。",
+      "detail": "共绩算力以 API 按量为主，DeepSeek-V4-Pro 常见为官方约 8 折（如输入 2.4 / 缓存 0.02 / 输出 4.8 元/M）。同时覆盖 GLM、Kimi、Qwen 等常见模型。务必通过邀请链接进入以锁定折扣与额外额度；平台体量相对较小，人数不多时稳定性体感较好，但仍建议关注公告与限流。不提供传统 Coding Plan / Token Plan 档位，按充值用量消费。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "DeepSeek 官方约 8 折，高峰涨价后相对优势更明显。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "支持 Kimi-K3、DeepSeek-V4-Pro、GLM-5.3，以及 千问、混元 等常见模型。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "当前用户规模不大，实测稳定性较强。"
+        }
       },
-      "models": {
-        "score": 5,
-        "reason": "支持 Kimi-K3、DeepSeek-V4-Pro、GLM-5.3，以及 千问、混元 等常见模型。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "当前用户规模不大，实测稳定性较强。"
-      }
+      "tags": [],
+      "platformStatus": "open",
+      "action": "https://api.dreamfree.space/c/s/cpyqgongji"
     },
-    "tags": [],
-    "platformStatus": "open",
-    "action": "https://api.dreamfree.space/c/s/cpyqgongji"
-  },
-  {
-    "id": "youyun",
-    "name": "优云智算",
-    "rating": 4,
-    "summary": "支持GLM-5.2和DeepSeek-V4-Flash-0731正式版。按照真实接口调用量计费，且模型倍率透明，但包含的调用量较少。",
-    "detail": "所有套餐（￥49-￥999）均支持GLM-5.2和DeepSeek-V4-Flash-0731正式版。当前适合作为使用GLM-5.2、DeepSeek-V4-Flash-0731的平台购买。优点是按照真实接口调用量计费，且模型倍率透明，同时GLM-5.2限时优惠倍率；缺点是套餐包含的调用量较少。",
-    "dimensions": {
-      "value": {
-        "score": 4,
-        "reason": "按照真实接口调用量计费。GLM-5.2限时优惠倍率。但各个套餐的包含的调用量都较少。"
+    {
+      "slug": "youyun",
+      "name": "优云智算",
+      "rating": 4,
+      "summary": "支持GLM-5.2和DeepSeek-V4-Flash-0731正式版。按照真实接口调用量计费，且模型倍率透明，但包含的调用量较少。",
+      "detail": "所有套餐（￥49-￥999）均支持GLM-5.2和DeepSeek-V4-Flash-0731正式版。当前适合作为使用GLM-5.2、DeepSeek-V4-Flash-0731的平台购买。优点是按照真实接口调用量计费，且模型倍率透明，同时GLM-5.2限时优惠倍率；缺点是套餐包含的调用量较少。",
+      "dimensions": {
+        "value": {
+          "score": 4,
+          "reason": "按照真实接口调用量计费。GLM-5.2限时优惠倍率。但各个套餐的包含的调用量都较少。"
+        },
+        "models": {
+          "score": 4,
+          "reason": "全档位支持 GLM-5.2 和 DeepSeek-V4-Flash-0731 正式版，支持的 Kimi、MiniMax 模型较老。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "新兴平台，算力充足，很少遇到拥挤。"
+        }
       },
-      "models": {
-        "score": 4,
-        "reason": "全档位支持 GLM-5.2 和 DeepSeek-V4-Flash-0731 正式版，支持的 Kimi、MiniMax 模型较老。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "新兴平台，算力充足，很少遇到拥挤。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "codex",
-    "name": "Codex",
-    "rating": 5,
-    "summary": "OpenAI 官方会员，性价比很高，用量很大。美中不足是需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
-    "detail": "OpenAI 官方会员，性价比很高，用量很大。官方取消了5小时限制，只有周限制，使用更加灵活。并且还经常重置额度和给充值机会。\n需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
-    "dimensions": {
-      "value": {
-        "score": 5,
-        "reason": "性价比很高，尤其Pro x20夯爆了。并且取消了5小时限制，只有周限制，使用更加灵活。并且还经常重置额度和给充值机会。如使用GPT-5.6-Terra更有x2的额度。"
+    {
+      "slug": "codex",
+      "name": "Codex",
+      "rating": 5,
+      "summary": "OpenAI 官方会员，性价比很高，用量很大。美中不足是需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
+      "detail": "OpenAI 官方会员，性价比很高，用量很大。官方取消了5小时限制，只有周限制，使用更加灵活。并且还经常重置额度和给充值机会。\n需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "性价比很高，尤其Pro x20夯爆了。并且取消了5小时限制，只有周限制，使用更加灵活。并且还经常重置额度和给充值机会。如使用GPT-5.6-Terra更有x2的额度。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "GPT-5.6-Sol，模型顶尖。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "OpenAI 官方基础设施，稳定性行业标杆。"
+        }
       },
-      "models": {
-        "score": 5,
-        "reason": "GPT-5.6-Sol，模型顶尖。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "OpenAI 官方基础设施，稳定性行业标杆。"
-      }
+      "tags": [
+        "外币支付"
+      ],
+      "platformStatus": "open"
     },
-    "tags": [
-      "外币支付"
-    ],
-    "platformStatus": "open"
-  },
-  {
-    "id": "claude",
-    "name": "Claude",
-    "rating": 4,
-    "summary": "Anthropic 官方会员，性价比高，支持多模型。国内使用限时比较多，除需要外币信用卡或者Paypal外，还需要境外手机号，和境外网络环境。",
-    "detail": "Anthropic 官方会员，性价比高，支持多模型。国内使用限时比较多，除需要外币信用卡或者Paypal外，还需要境外手机号，和境外网络环境。中国大陆使用难度很高。",
-    "dimensions": {
-      "value": {
-        "score": 5,
-        "reason": "用量很大"
+    {
+      "slug": "claude",
+      "name": "Claude",
+      "rating": 4,
+      "summary": "Anthropic 官方会员，性价比高，支持多模型。国内使用限时比较多，除需要外币信用卡或者Paypal外，还需要境外手机号，和境外网络环境。",
+      "detail": "Anthropic 官方会员，性价比高，支持多模型。国内使用限时比较多，除需要外币信用卡或者Paypal外，还需要境外手机号，和境外网络环境。中国大陆使用难度很高。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "用量很大"
+        },
+        "models": {
+          "score": 5,
+          "reason": "Fable-5, Opus-5, Sonnect-5 等 Claude 系列模型，模型顶尖。"
+        },
+        "stability": {
+          "score": 3,
+          "reason": "Anthropic 官方 API，本身稳定性没问题。但需要境外网络环境，从中国大陆访问限制比较多。"
+        }
       },
-      "models": {
-        "score": 5,
-        "reason": "Fable-5, Opus-5, Sonnect-5 等 Claude 系列模型，模型顶尖。"
-      },
-      "stability": {
-        "score": 3,
-        "reason": "Anthropic 官方 API，本身稳定性没问题。但需要境外网络环境，从中国大陆访问限制比较多。"
-      }
+      "tags": [
+        "外币支付"
+      ],
+      "platformStatus": "open"
     },
-    "tags": [
-      "外币支付"
-    ],
-    "platformStatus": "open"
-  },
-  {
-    "id": "ollama",
-    "name": "Ollama",
-    "rating": 4,
-    "summary": "Ollama 官方推出的云端模型会员，支持模型全，性价比很高。但需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
-    "dimensions": {
-      "value": {
-        "score": 5,
-        "reason": "性价比很高，[查看模型用量对比](index.html?view=plans)"
+    {
+      "slug": "ollama",
+      "name": "Ollama",
+      "rating": 4,
+      "summary": "Ollama 官方推出的云端模型会员，支持模型全，性价比很高。但需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "性价比很高，[查看模型用量对比](index.html?view=plans)"
+        },
+        "models": {
+          "score": 5,
+          "reason": "模型强覆盖广，支持 Kimi、GLM、DeepSeek、Qwen、Gemini 等各家开源模型，即将支持Kimi-K3。"
+        },
+        "stability": {
+          "score": 4,
+          "reason": "稳定性尚可。高峰时段可能略拥挤，整体可用性尚可。"
+        }
       },
-      "models": {
-        "score": 5,
-        "reason": "模型强覆盖广，支持 Kimi、GLM、DeepSeek、Qwen、Gemini 等各家开源模型，即将支持Kimi-K3。"
-      },
-      "stability": {
-        "score": 4,
-        "reason": "稳定性尚可。高峰时段可能略拥挤，整体可用性尚可。"
-      }
+      "tags": [
+        "外币支付"
+      ],
+      "platformStatus": "open"
     },
-    "tags": [
-      "外币支付"
-    ],
-    "platformStatus": "open"
-  },
-  {
-    "id": "aliyun-bailian",
-    "name": "阿里·百炼",
-    "rating": 4,
-    "summary": "Coding Plan 性价比高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。",
-    "detail": "Coding Plan 性价比很高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。CodingPlan和TokenPlan的抵扣规则均不透明。",
-    "dimensions": {
-      "value": {
-        "score": 4,
-        "reason": "Coding Plan 性价比比肩Minimax，但不放量；Token Plan开放购买，性价比尚可。Qwen3.8-Max有限时1折活动。夜间有额外2折优惠。"
+    {
+      "slug": "aliyun-bailian",
+      "name": "阿里·百炼",
+      "rating": 4,
+      "summary": "Coding Plan 性价比高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。",
+      "detail": "Coding Plan 性价比很高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。CodingPlan和TokenPlan的抵扣规则均不透明。",
+      "dimensions": {
+        "value": {
+          "score": 4,
+          "reason": "Coding Plan 性价比比肩Minimax，但不放量；Token Plan开放购买，性价比尚可。Qwen3.8-Max有限时1折活动。夜间有额外2折优惠。"
+        },
+        "models": {
+          "score": 4,
+          "reason": "TokenPlan 支持自家最新 Qwen-3.8-Max，Qwen-3.7-Max/Plus 模型。CodingPlan支持Qwen-3.7-Plus等模型。除了自家Qwen模型，对其他家模型支持稍差。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "官方服务，稳定性强。"
+        }
       },
-      "models": {
-        "score": 4,
-        "reason": "TokenPlan 支持自家最新 Qwen-3.8-Max，Qwen-3.7-Max/Plus 模型。CodingPlan支持Qwen-3.7-Plus等模型。除了自家Qwen模型，对其他家模型支持稍差。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "官方服务，稳定性强。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "xiaomi-mimo",
-    "name": "小米·MiMo",
-    "rating": 4,
-    "summary": "定价、模型定位、模型能力都和DeepSeek相似。价格比DeepSeek略低一些，能力也略低一点。",
-    "detail": "各方面可以参考 DeepSeek，定价、模型定位、模型能力都和DeepSeek相似。有TokenPlan套餐，比直接调用模型略便宜一些，模型能力比DeepSeek略低一点。",
-    "dimensions": {
-      "value": {
-        "score": 5,
-        "reason": "购买TokenPlan套餐，价格比DeepSeek直接调用的价格还要便宜一些，性价比高。"
+    {
+      "slug": "xiaomi-mimo",
+      "name": "小米·MiMo",
+      "rating": 4,
+      "summary": "定价、模型定位、模型能力都和DeepSeek相似。价格比DeepSeek略低一些，能力也略低一点。",
+      "detail": "各方面可以参考 DeepSeek，定价、模型定位、模型能力都和DeepSeek相似。有TokenPlan套餐，比直接调用模型略便宜一些，模型能力比DeepSeek略低一点。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "购买TokenPlan套餐，价格比DeepSeek直接调用的价格还要便宜一些，性价比高。"
+        },
+        "models": {
+          "score": 4,
+          "reason": "Mimo-V2.5-Pro/Mimo-V2.5对比DeepSeek-V4-Pro/Flash，Coding能力基本相当，Agent能力略低一些。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "官方服务，稳定性强。用户量没那么大，高峰期稳定性好。"
+        }
       },
-      "models": {
-        "score": 4,
-        "reason": "Mimo-V2.5-Pro/Mimo-V2.5对比DeepSeek-V4-Pro/Flash，Coding能力基本相当，Agent能力略低一些。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "官方服务，稳定性强。用户量没那么大，高峰期稳定性好。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "baidu-qianfan",
-    "name": "百度·千帆",
-    "rating": 3,
-    "summary": "Coding Plan 下线，Token Plan 个人版新上线，首月半价活动中。搬家入手勉强还行，但是有其他更好的选择",
-    "dimensions": {
-      "value": {
-        "score": 3,
-        "reason": "Token Plan 个人版首购 4.9 元起，额度统一抵扣且取消原 Coding Plan 三层限流，性价比更突出。"
+    {
+      "slug": "baidu-qianfan",
+      "name": "百度·千帆",
+      "rating": 3,
+      "summary": "Coding Plan 下线，Token Plan 个人版新上线，首月半价活动中。搬家入手勉强还行，但是有其他更好的选择",
+      "dimensions": {
+        "value": {
+          "score": 3,
+          "reason": "Token Plan 个人版首购 4.9 元起，额度统一抵扣且取消原 Coding Plan 三层限流，性价比更突出。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "接入 GLM-5.2、DeepSeek-V4、Kimi-K2.6、ERNIE-5.1 等主流模型。"
+        },
+        "stability": {
+          "score": 4,
+          "reason": "百度智能云官方通道，稳定性符合大厂预期。"
+        }
       },
-      "models": {
-        "score": 5,
-        "reason": "接入 GLM-5.2、DeepSeek-V4、Kimi-K2.6、ERNIE-5.1 等主流模型。"
-      },
-      "stability": {
-        "score": 4,
-        "reason": "百度智能云官方通道，稳定性符合大厂预期。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "huawei-cloud",
-    "name": "华为云",
-    "rating": 3,
-    "dimensions": {
-      "value": {
-        "score": 2,
-        "reason": "性价比较低。"
+    {
+      "slug": "huawei-cloud",
+      "name": "华为云",
+      "rating": 3,
+      "dimensions": {
+        "value": {
+          "score": 2,
+          "reason": "性价比较低。"
+        },
+        "models": {
+          "score": 3,
+          "reason": "覆盖 GLM、Kimi、DeepSeek 系列，但模型更新节奏略慢于头部 Coding Plan。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "华为云基础设施成熟，企业级稳定性有保障。"
+        }
       },
-      "models": {
-        "score": 3,
-        "reason": "覆盖 GLM、Kimi、DeepSeek 系列，但模型更新节奏略慢于头部 Coding Plan。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "华为云基础设施成熟，企业级稳定性有保障。"
-      }
+      "tags": [],
+      "platformStatus": "limited"
     },
-    "tags": [],
-    "platformStatus": "limited"
-  },
-  {
-    "id": "tencent-cloud",
-    "name": "腾讯云",
-    "rating": 3,
-    "summary": "中规中矩，如果不是要使用混元模型，不推荐。",
-    "dimensions": {
-      "value": {
-        "score": 3,
-        "reason": "Coding Plan 已下线，Token Plan性价比中等甚至较差。"
+    {
+      "slug": "tencent-cloud",
+      "name": "腾讯云",
+      "rating": 3,
+      "summary": "中规中矩，如果不是要使用混元模型，不推荐。",
+      "dimensions": {
+        "value": {
+          "score": 3,
+          "reason": "Coding Plan 已下线，Token Plan性价比中等甚至较差。"
+        },
+        "models": {
+          "score": 2,
+          "reason": "HY 系列加 GLM、Kimi、MiniMax 接入，不跟踪最新模型。如使用混元模型，可以选择腾讯平台。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "腾讯云基础设施成熟，企业级稳定性有保障。"
+        }
       },
-      "models": {
-        "score": 2,
-        "reason": "HY 系列加 GLM、Kimi、MiniMax 接入，不跟踪最新模型。如使用混元模型，可以选择腾讯平台。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "腾讯云基础设施成熟，企业级稳定性有保障。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "jd-cloud",
-    "name": "京东云",
-    "rating": 2,
-    "summary": "已经很久不更新，模型较差",
-    "dimensions": {
-      "value": {
-        "score": 3,
-        "reason": "有首月优惠，但是用量证据不足，不予评价。"
+    {
+      "slug": "jd-cloud",
+      "name": "京东云",
+      "rating": 2,
+      "summary": "已经很久不更新，模型较差",
+      "dimensions": {
+        "value": {
+          "score": 3,
+          "reason": "有首月优惠，但是用量证据不足，不予评价。"
+        },
+        "models": {
+          "score": 2,
+          "reason": "模型更新明显较慢，应该基本没更新过，覆盖 Kimi、GLM、MiniMax、DeepSeek、Qwen 等"
+        },
+        "stability": {
+          "score": 4,
+          "reason": "京东云官方运营，证据不足，但推测稳定性尚可。"
+        }
       },
-      "models": {
-        "score": 2,
-        "reason": "模型更新明显较慢，应该基本没更新过，覆盖 Kimi、GLM、MiniMax、DeepSeek、Qwen 等"
-      },
-      "stability": {
-        "score": 4,
-        "reason": "京东云官方运营，证据不足，但推测稳定性尚可。"
-      }
+      "tags": [],
+      "platformStatus": "limited"
     },
-    "tags": [],
-    "platformStatus": "limited"
-  },
-  {
-    "id": "github",
-    "name": "GitHub",
-    "rating": 3,
-    "summary": "GitHub 官方会员，支持多模型，但性价比低，不推荐。",
-    "dimensions": {
-      "value": {
-        "score": 2,
-        "reason": "现在按使用量计费，额度非常少，已经完全无性价比。"
+    {
+      "slug": "github",
+      "name": "GitHub",
+      "rating": 3,
+      "summary": "GitHub 官方会员，支持多模型，但性价比低，不推荐。",
+      "dimensions": {
+        "value": {
+          "score": 2,
+          "reason": "现在按使用量计费，额度非常少，已经完全无性价比。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "聚合 GPT、Claude、Grok、Gemini 等多厂商模型，模型更新及时，涵盖广。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "GitHub 官方服务，与 IDE 深度集成，稳定性出色。"
+        }
       },
-      "models": {
-        "score": 5,
-        "reason": "聚合 GPT、Claude、Grok、Gemini 等多厂商模型，模型更新及时，涵盖广。"
-      },
-      "stability": {
-        "score": 5,
-        "reason": "GitHub 官方服务，与 IDE 深度集成，稳定性出色。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "iflytek",
-    "name": "讯飞·星火",
-    "rating": 3,
-    "summary": "曾经的高性价比平台，现已陨落。\n仅剩高效版（199元）和速通版（699元）套餐，199元套餐限购且高峰期拥挤，699元套餐性价比低。",
-    "dimensions": {
-      "value": {
-        "score": 3,
-        "reason": "已下架低价套餐，只剩下高效版（199元）和速通版（699元），199比较有性价比但限购，699元套餐性价比低。"
+    {
+      "slug": "iflytek",
+      "name": "讯飞·星火",
+      "rating": 3,
+      "summary": "曾经的高性价比平台，现已陨落。\n仅剩高效版（199元）和速通版（699元）套餐，199元套餐限购且高峰期拥挤，699元套餐性价比低。",
+      "dimensions": {
+        "value": {
+          "score": 3,
+          "reason": "已下架低价套餐，只剩下高效版（199元）和速通版（699元），199比较有性价比但限购，699元套餐性价比低。"
+        },
+        "models": {
+          "score": 4,
+          "reason": "GLM-5.2(500K上下文)、 DeepSeek-V4-Pro等旗舰模型。"
+        },
+        "stability": {
+          "score": 3,
+          "reason": "高效版（199元）拥挤，速通版（699元）套餐高峰期拥挤，整体可用性一般。"
+        }
       },
-      "models": {
-        "score": 4,
-        "reason": "GLM-5.2(500K上下文)、 DeepSeek-V4-Pro等旗舰模型。"
-      },
-      "stability": {
-        "score": 3,
-        "reason": "高效版（199元）拥挤，速通版（699元）套餐高峰期拥挤，整体可用性一般。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "unicom-cloud",
-    "name": "联通云",
-    "rating": 2,
-    "summary": "Coding Plan已经下线。仅剩TokenPlan，模型差。",
-    "dimensions": {
-      "value": {
-        "score": 3,
-        "reason": "性价比一般"
+    {
+      "slug": "unicom-cloud",
+      "name": "联通云",
+      "rating": 2,
+      "summary": "Coding Plan已经下线。仅剩TokenPlan，模型差。",
+      "dimensions": {
+        "value": {
+          "score": 3,
+          "reason": "性价比一般"
+        },
+        "models": {
+          "score": 1,
+          "reason": "接入 DeepSeek-V4-Flash、MiniMax-M2.5 模型。"
+        },
+        "stability": {
+          "score": 4,
+          "reason": "证据不足。但运营商云品牌，推测稳定性尚可。"
+        }
       },
-      "models": {
-        "score": 1,
-        "reason": "接入 DeepSeek-V4-Flash、MiniMax-M2.5 模型。"
-      },
-      "stability": {
-        "score": 4,
-        "reason": "证据不足。但运营商云品牌，推测稳定性尚可。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "cmcc-cloud",
-    "name": "移动云",
-    "rating": 2,
-    "dimensions": {
-      "value": {
-        "score": 3,
-        "reason": "证据不足"
+    {
+      "slug": "cmcc-cloud",
+      "name": "移动云",
+      "rating": 2,
+      "dimensions": {
+        "value": {
+          "score": 3,
+          "reason": "证据不足"
+        },
+        "models": {
+          "score": 1,
+          "reason": "目前以 MiniMax-M2.5 为主，旗舰模型覆盖明显不足。"
+        },
+        "stability": {
+          "score": 4,
+          "reason": "证据不足。但推测运营商云平台，稳定性应该尚可。"
+        }
       },
-      "models": {
-        "score": 1,
-        "reason": "目前以 MiniMax-M2.5 为主，旗舰模型覆盖明显不足。"
-      },
-      "stability": {
-        "score": 4,
-        "reason": "证据不足。但推测运营商云平台，稳定性应该尚可。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "stepfun",
-    "name": "阶跃星辰",
-    "rating": 2,
-    "dimensions": {
-      "value": {
-        "score": 3,
-        "reason": "证据不足"
+    {
+      "slug": "stepfun",
+      "name": "阶跃星辰",
+      "rating": 2,
+      "dimensions": {
+        "value": {
+          "score": 3,
+          "reason": "证据不足"
+        },
+        "models": {
+          "score": 1,
+          "reason": "step-3.7-flash 等自研模型有特色，但第三方 SOTA 覆盖有限。"
+        },
+        "stability": {
+          "score": 4,
+          "reason": "稳定性尚可。"
+        }
       },
-      "models": {
-        "score": 1,
-        "reason": "step-3.7-flash 等自研模型有特色，但第三方 SOTA 覆盖有限。"
-      },
-      "stability": {
-        "score": 4,
-        "reason": "稳定性尚可。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "taotoken",
-    "name": "TaoToken",
-    "rating": 3,
-    "summary": "CSDN推出的平台，专注 GLM-5.2，定价合理但当前套餐已售罄。",
-    "dimensions": {
-      "value": {
-        "score": 3,
-        "reason": "证据不足"
+    {
+      "slug": "taotoken",
+      "name": "TaoToken",
+      "rating": 3,
+      "summary": "CSDN推出的平台，专注 GLM-5.2，定价合理但当前套餐已售罄。",
+      "dimensions": {
+        "value": {
+          "score": 3,
+          "reason": "证据不足"
+        },
+        "models": {
+          "score": 4,
+          "reason": "专注 GLM-5.2 单一模型，深度够用但广度不足。但怀疑有不同供应商，不排除存在模型性能差异。"
+        },
+        "stability": {
+          "score": 2,
+          "reason": "新平台，证据不足。且看起来像是中专站，并且怀疑有不同供应商，稳定性存疑。"
+        }
       },
-      "models": {
-        "score": 4,
-        "reason": "专注 GLM-5.2 单一模型，深度够用但广度不足。但怀疑有不同供应商，不排除存在模型性能差异。"
-      },
-      "stability": {
-        "score": 2,
-        "reason": "新平台，证据不足。且看起来像是中专站，并且怀疑有不同供应商，稳定性存疑。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "chaosuan",
-    "name": "超算",
-    "rating": 2,
-    "summary": "已停售，证据不足。",
-    "dimensions": {
-      "value": {
-        "score": 3,
-        "reason": "证据不足"
+    {
+      "slug": "chaosuan",
+      "name": "超算",
+      "rating": 2,
+      "summary": "已停售，证据不足。",
+      "dimensions": {
+        "value": {
+          "score": 3,
+          "reason": "证据不足"
+        },
+        "models": {
+          "score": 1,
+          "reason": "仅 MiniMax-M2.5 与 Qwen-3-235B 等少量模型，选择面窄。"
+        },
+        "stability": {
+          "score": 3,
+          "reason": "证据不足"
+        }
       },
-      "models": {
-        "score": 1,
-        "reason": "仅 MiniMax-M2.5 与 Qwen-3-235B 等少量模型，选择面窄。"
-      },
-      "stability": {
-        "score": 3,
-        "reason": "证据不足"
-      }
+      "tags": [],
+      "platformStatus": "paused"
     },
-    "tags": [],
-    "platformStatus": "paused"
-  },
-  {
-    "id": "sensetime",
-    "name": "商汤·日日新",
-    "rating": 2,
-    "dimensions": {
-      "value": {
-        "score": 5,
-        "reason": "目前只有免费会员"
+    {
+      "slug": "sensetime",
+      "name": "商汤·日日新",
+      "rating": 2,
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "目前只有免费会员"
+        },
+        "models": {
+          "score": 2,
+          "reason": "以 SenseNova 自研系列加 DeepSeek-V4-Flash 为主，编程向模型选择少。"
+        },
+        "stability": {
+          "score": 3,
+          "reason": "商汤官方运营，基础服务稳定但编程社区声量较小。"
+        }
       },
-      "models": {
-        "score": 2,
-        "reason": "以 SenseNova 自研系列加 DeepSeek-V4-Flash 为主，编程向模型选择少。"
-      },
-      "stability": {
-        "score": 3,
-        "reason": "商汤官方运营，基础服务稳定但编程社区声量较小。"
-      }
+      "tags": [],
+      "platformStatus": "open"
     },
-    "tags": [],
-    "platformStatus": "open"
-  },
-  {
-    "id": "moorethreads",
-    "name": "摩尔线程",
-    "rating": 2,
-    "dimensions": {
-      "value": {
-        "score": 5,
-        "reason": "目前只有免费会员，不定时放量"
+    {
+      "slug": "moorethreads",
+      "name": "摩尔线程",
+      "rating": 2,
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "目前只有免费会员，不定时放量"
+        },
+        "models": {
+          "score": 1,
+          "reason": "目前以 GLM-4.7 为主。"
+        },
+        "stability": {
+          "score": 3,
+          "reason": "证据不足。"
+        }
       },
-      "models": {
-        "score": 1,
-        "reason": "目前以 GLM-4.7 为主。"
-      },
-      "stability": {
-        "score": 3,
-        "reason": "证据不足。"
-      }
+      "tags": [],
+      "platformStatus": "limited"
     },
-    "tags": [],
-    "platformStatus": "limited"
-  },
-  {
-    "id": "infrafun",
-    "name": "无问芯穹",
-    "rating": 1,
-    "dimensions": {
-      "value": {
-        "score": 2,
-        "reason": "全部套餐已停售，性价比数据仅供历史存档。"
+    {
+      "slug": "infrafun",
+      "name": "无问芯穹",
+      "rating": 1,
+      "dimensions": {
+        "value": {
+          "score": 2,
+          "reason": "全部套餐已停售，性价比数据仅供历史存档。"
+        },
+        "models": {
+          "score": 2,
+          "reason": "曾聚合 DeepSeek、Kimi、MiniMax、GLM 等，但已无活跃套餐。"
+        },
+        "stability": {
+          "score": 1,
+          "reason": "平台 Coding Plan 已下线，服务不可用。"
+        }
       },
-      "models": {
-        "score": 2,
-        "reason": "曾聚合 DeepSeek、Kimi、MiniMax、GLM 等，但已无活跃套餐。"
-      },
-      "stability": {
-        "score": 1,
-        "reason": "平台 Coding Plan 已下线，服务不可用。"
-      }
+      "tags": [],
+      "platformStatus": "delisted"
     },
-    "tags": [],
-    "platformStatus": "delisted"
-  },
-  {
-    "id": "ctyun",
-    "name": "天翼云",
-    "rating": 1,
-    "dimensions": {
-      "value": {
-        "score": 2,
-        "reason": "套餐已全部停售，仅作历史对比参考，无法新购。"
+    {
+      "slug": "ctyun",
+      "name": "天翼云",
+      "rating": 1,
+      "dimensions": {
+        "value": {
+          "score": 2,
+          "reason": "套餐已全部停售，仅作历史对比参考，无法新购。"
+        },
+        "models": {
+          "score": 2,
+          "reason": "曾支持 GLM-5 系列，但停售后模型接入无更新。"
+        },
+        "stability": {
+          "score": 1,
+          "reason": "Coding Plan 已全面下线，存量用户亦无法续费。"
+        }
       },
-      "models": {
-        "score": 2,
-        "reason": "曾支持 GLM-5 系列，但停售后模型接入无更新。"
-      },
-      "stability": {
-        "score": 1,
-        "reason": "Coding Plan 已全面下线，存量用户亦无法续费。"
-      }
+      "tags": [],
+      "platformStatus": "delisted"
     },
-    "tags": [],
-    "platformStatus": "delisted"
-  }
-]
+    {
+      "slug": "command-code",
+      "name": "Command Code",
+      "rating": 0,
+      "summary": "仅用于模型与套餐关系数据。",
+      "dimensions": {},
+      "tags": [],
+      "platformStatus": "open",
+      "catalogVisible": false
+    }
+  ]
+}

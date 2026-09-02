@@ -373,12 +373,17 @@
       }
       const tbody = document.getElementById('paygTableBody');
       try {
-        const [platforms, paygPricing, plans, config] = await Promise.all([
+        const [platformDoc, paygPricing, planDoc, modelDoc, planModelDoc, config] = await Promise.all([
           loadJson('./platforms.json'),
           loadJson('./payg-pricing.json'),
-          loadJson('./plans.json').catch(() => []),
+          loadJson('./plans.json'),
+          loadJson('./models.json'),
+          loadJson('./plan-models.json'),
           loadJson('./config.json').catch(() => (typeof window !== 'undefined' ? window.appConfig : null))
         ]);
+        const entityContext = EntityData.buildContext(platformDoc, planDoc, modelDoc, planModelDoc);
+        const platforms = EntityData.hydratePlatforms(entityContext);
+        const plans = EntityData.hydratePlans(entityContext);
         const rate = config && config.usdToCnyRate;
         usdToCnyRate =
           typeof rate === 'number' && Number.isFinite(rate) && rate > 0 ? rate : 6.8;

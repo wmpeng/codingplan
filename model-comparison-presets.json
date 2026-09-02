@@ -7,51 +7,51 @@
       "id": "deepseek-v4-flash-0731",
       "title": "DeepSeek V4 Flash 0731",
       "kind": "single",
-      "modelIds": [
+      "enabled": true,
+      "modelSlugs": [
         "deepseek-v4-flash-0731"
-      ],
-      "enabled": true
+      ]
     },
     {
       "id": "glm-5-3-flash",
       "title": "GLM 5.3 Flash",
       "kind": "single",
-      "modelIds": [
+      "enabled": true,
+      "modelSlugs": [
         "glm-5-3-flash"
-      ],
-      "enabled": true
+      ]
     },
     {
       "id": "gpt-5-6-luna",
       "title": "GPT 5.6 Luna",
       "kind": "single",
-      "modelIds": [
+      "enabled": true,
+      "modelSlugs": [
         "gpt-5-6-luna"
-      ],
-      "enabled": true
+      ]
     },
     {
       "id": "high-volume-models",
       "title": "甜品级模型对比",
       "kind": "multi",
-      "modelIds": [
+      "enabled": true,
+      "modelSlugs": [
         "deepseek-v4-flash-0731",
         "glm-5-3-flash",
         "gpt-5-6-luna"
-      ],
-      "enabled": true
+      ]
     },
     {
       "id": "sota-models",
       "title": "SOTA模型对比",
       "kind": "multi",
-      "modelIds": [
+      "enabled": true,
+      "modelSlugs": [
         "claude-opus-5",
         "gpt-5-6-sol",
         "glm-5-3",
         "kimi-k3"
-      ],
-      "enabled": true
+      ]
     }
   ]
 }

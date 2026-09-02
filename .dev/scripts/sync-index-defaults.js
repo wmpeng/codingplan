@@ -4,10 +4,20 @@ const path = require('path');
 const rootDir = path.join(__dirname, '../..');
 const configPath = path.join(rootDir, 'config.json');
 const plansPath = path.join(rootDir, 'plans.json');
+const platformsPath = path.join(rootDir, 'platforms.json');
+const modelsPath = path.join(rootDir, 'models.json');
+const planModelsPath = path.join(rootDir, 'plan-models.json');
 const indexPath = path.join(rootDir, 'index.html');
+const EntityData = require(path.join(rootDir, 'scripts/entity-data.js'));
 
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-const allPlans = JSON.parse(fs.readFileSync(plansPath, 'utf8'));
+const entityContext = EntityData.buildContext(
+    JSON.parse(fs.readFileSync(platformsPath, 'utf8')),
+    JSON.parse(fs.readFileSync(plansPath, 'utf8')),
+    JSON.parse(fs.readFileSync(modelsPath, 'utf8')),
+    JSON.parse(fs.readFileSync(planModelsPath, 'utf8'))
+);
+const allPlans = EntityData.hydratePlans(entityContext);
 let indexHtml = fs.readFileSync(indexPath, 'utf8');
 
 const WATERMARK = config.header?.watermarkUrl || 'www.codingplan.fyi';
@@ -39,18 +49,21 @@ function formatRecommendationText(text) {
     return formatted;
 }
 
-function getVendorActionUrl(vendorName) {
-    const matchedPlan = allPlans.find(plan => plan.vendor === vendorName);
-    return matchedPlan && matchedPlan.action ? matchedPlan.action : null;
+function getPlatformActionUrl(platformSlug) {
+    const platform = entityContext.platformBySlug.get(platformSlug);
+    const matchedPlan = allPlans.find(plan => plan.platformSlug === platformSlug);
+    return (matchedPlan && matchedPlan.action) || (platform && platform.action) || null;
 }
 
 function buildRecommendationCardHtml(rec) {
     const stars = '⭐️'.repeat(rec.rating || 0);
     const reasonsHtml = (rec.reasons || []).map(reason => `<li>${formatRecommendationText(reason)}</li>`).join('');
-    const matchedPlanUrl = getVendorActionUrl(rec.name);
+    const platform = entityContext.platformBySlug.get(rec.platformSlug);
+    const displayName = platform ? platform.name : rec.platformSlug;
+    const matchedPlanUrl = rec.action || getPlatformActionUrl(rec.platformSlug);
     const nameHtml = matchedPlanUrl
-        ? `<a class="recommendation-name-link" href="${escapeHtml(matchedPlanUrl)}" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">${escapeHtml(rec.name)}</span>${LINK_ICON}</a>`
-        : `<span class="recommendation-name">${escapeHtml(rec.name)}</span>`;
+        ? `<a class="recommendation-name-link" href="${escapeHtml(matchedPlanUrl)}" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">${escapeHtml(displayName)}</span>${LINK_ICON}</a>`
+        : `<span class="recommendation-name">${escapeHtml(displayName)}</span>`;
 
     return `
                     <div class="recommendation-card">
@@ -192,12 +205,8 @@ function generateTableRowsHtml(plans) {
                     <td><span class="request-count">${formatMeasuredToken(plan.measuredWeeklyTokenLimit)}</span></td>
                     <td><span class="request-count">${formatMeasuredToken(plan.measuredMonthlyTokenLimit)}</span></td>
                     <td><span class="request-count">${tokenLimitHtml}</span></td>
-                    <td>
-                        ${(plan.models || []).map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
-                    </td>
-                    <td>
-                        ${(plan.benefits || []).map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}
-                    </td>
+                    <td>${(plan.models || []).map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}</td>
+                    <td>${(plan.benefits || []).map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}</td>
                     <td>${plan.discontinued ? '<span class="status-offline">已下线</span>' : ''}</td>
                     <td><span class="note">${noteHtml}</span></td>
                 </tr>`;
@@ -213,13 +222,19 @@ function replaceSection(html, pattern, newContent) {
 }
 
 function replaceElementText(html, id, text) {
-    const pattern = new RegExp(`(<[^>]+id="${id}"[^>]*>)([\\s\\S]*?)(</[^>]+>)`);
+    const opener = new RegExp(`<([a-z][a-z0-9-]*)[^>]+id="${id}"[^>]*>`, 'i').exec(html);
+    if (!opener) throw new Error(`Element #${id} not found`);
+    const tag = opener[1];
+    const pattern = new RegExp(`(<${tag}[^>]+id="${id}"[^>]*>)([\\s\\S]*?)(</${tag}>)`, 'i');
     if (!pattern.test(html)) throw new Error(`Element #${id} not found`);
     return html.replace(pattern, `$1${text}$3`);
 }
 
 function replaceElementInnerHtml(html, id, innerHtml) {
-    const pattern = new RegExp(`(<[^>]+id="${id}"[^>]*>)([\\s\\S]*?)(</[^>]+>)`);
+    const opener = new RegExp(`<([a-z][a-z0-9-]*)[^>]+id="${id}"[^>]*>`, 'i').exec(html);
+    if (!opener) throw new Error(`Element #${id} not found`);
+    const tag = opener[1];
+    const pattern = new RegExp(`(<${tag}[^>]+id="${id}"[^>]*>)([\\s\\S]*?)(</${tag}>)`, 'i');
     if (!pattern.test(html)) throw new Error(`Element #${id} not found`);
     return html.replace(pattern, `$1${innerHtml}$3`);
 }
@@ -233,12 +248,12 @@ indexHtml = replaceElementText(indexHtml, 'updateDate', escapeHtml(header.update
 indexHtml = replaceElementInnerHtml(
     indexHtml,
     'subtitle',
-    escapeHtml(header.subtitle || '').replace(/\n/g, '<br>')
+    escapeHtml(header.subtitle || '').replace(/&lt;br\s*\/?&gt;/gi, '<br>').replace(/\n/g, '<br>')
 );
 indexHtml = replaceElementInnerHtml(
     indexHtml,
     'models',
-    escapeHtml(header.models || '').replace(/\n/g, '<br>')
+    formatRecommendationText(header.models || '').replace(/\n/g, '<br>')
 );
 
 if (header.entry) {
@@ -255,19 +270,19 @@ if (header.entry) {
 
 indexHtml = replaceSection(
     indexHtml,
-    /(<div class="recommendation-groups" id="recommendationGroups">)[\s\S]*?(<\/div>\r\n\r\n        <!-- 评分标准 -->)/,
+    /(<div class="recommendation-groups" id="recommendationGroups">)[\s\S]*?(<\/div>\r?\n\r?\n        <div class="main-view-shell")/,
     generateRecommendationGroupsHtml(config.recommendationGroups)
 );
 
 indexHtml = replaceSection(
     indexHtml,
-    /(<div class="notes-section" id="notesSection">)[\s\S]*?(<\/div>\r\n\r\n        <!-- 更新日志（与 config\.json 同步） -->)/,
+    /(<div class="notes-section" id="notesSection">)[\s\S]*?(<\/ul><\/div>)/,
     generateNotesHtml(config.notes)
 );
 
 indexHtml = replaceSection(
     indexHtml,
-    /(<div class="updates-section" id="updatesSection">)[\s\S]*?(<\/div>\r\n\r\n        <!-- 账号出售区域)/,
+    /(<div class="updates-section" id="updatesSection">)[\s\S]*?(<\/div>\r?\n\r?\n        <!-- 账号出售区域)/,
     generateUpdatesHtml(config.updates)
 );
 

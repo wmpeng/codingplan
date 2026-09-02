@@ -4,6 +4,7 @@ const { buildDetailBodyHtml } = require('./platform-detail.js');
 
 function samplePlatform(overrides = {}) {
   return {
+    slug: 'demo',
     id: 'demo',
     name: 'Demo Platform',
     rating: 4,
@@ -122,7 +123,7 @@ describe('buildDetailBodyHtml', () => {
   it('renders plans section when vendor has plans', () => {
     const plans = [
       {
-        vendor: 'X',
+        platformSlug: 'x',
         plan: 'Pro',
         type: 'Token Plan',
         monthlyPrice: 100,
@@ -132,9 +133,9 @@ describe('buildDetailBodyHtml', () => {
         summary: '额度充足，适合主力日常',
         discontinued: false
       },
-      { vendor: 'X', plan: 'Old', type: 'Coding Plan', monthlyPrice: 50, discontinued: true }
+      { platformSlug: 'x', plan: 'Old', type: 'Coding Plan', monthlyPrice: 50, discontinued: true }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
     assert.ok(html.includes('data-section="plans"'));
     assert.ok(html.includes('platform-detail-plans-list'));
     assert.ok(html.includes('platform-detail-plan-title-row'));
@@ -153,7 +154,7 @@ describe('buildDetailBodyHtml', () => {
   it('omits empty summary and keeps price on one line without first-month when absent', () => {
     const plans = [
       {
-        vendor: 'X',
+        platformSlug: 'x',
         plan: 'Lite',
         type: 'Coding Plan',
         monthlyPrice: 49,
@@ -164,7 +165,7 @@ describe('buildDetailBodyHtml', () => {
         discontinued: false
       }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
     assert.ok(html.includes('Lite'));
     assert.ok(html.includes('1,900次/月') || html.includes('1900'));
     assert.ok(!html.includes('platform-detail-plan-summary'));
@@ -175,7 +176,7 @@ describe('buildDetailBodyHtml', () => {
   it('summarizes coding plan quota with monthly requests when token unlimited', () => {
     const plans = [
       {
-        vendor: 'X',
+        platformSlug: 'x',
         plan: 'Lite',
         type: 'Coding Plan',
         monthlyPrice: 49,
@@ -183,23 +184,23 @@ describe('buildDetailBodyHtml', () => {
         discontinued: false
       }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
     assert.ok(html.includes('2.4万次/月') || html.includes('24000'));
     assert.ok(html.includes('Coding Plan'));
   });
 
   it('hides plans section when only discontinued plans exist', () => {
     const plans = [
-      { vendor: 'X', plan: 'Old', type: 'Coding Plan', monthlyPrice: 50, discontinued: true }
+      { platformSlug: 'x', plan: 'Old', type: 'Coding Plan', monthlyPrice: 50, discontinued: true }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
     assert.ok(!html.includes('data-section="plans"'));
   });
 
   it('still shows plans but omits unpublished quota label', () => {
     const plans = [
       {
-        vendor: 'OpenCode',
+        platformSlug: 'opencode',
         plan: 'Go',
         type: 'Token Plan',
         monthlyPrice: 10,
@@ -208,7 +209,7 @@ describe('buildDetailBodyHtml', () => {
         discontinued: false
       }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'OpenCode' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'opencode', name: 'OpenCode' }), { plans, monitorRow: null });
     assert.ok(html.includes('data-section="plans"'));
     assert.ok(html.includes('Go'));
     assert.ok(html.includes('Token Plan'));
@@ -221,7 +222,7 @@ describe('buildDetailBodyHtml', () => {
   it('prefers measured monthly token over request counts for quota pill', () => {
     const plans = [
       {
-        vendor: 'Kimi',
+        platformSlug: 'kimi',
         plan: 'Andante',
         type: 'Coding Plan',
         monthlyPrice: 49,
@@ -232,14 +233,14 @@ describe('buildDetailBodyHtml', () => {
         discontinued: false
       },
       {
-        vendor: 'Kimi',
+        platformSlug: 'kimi',
         plan: 'Zero',
         type: 'Token Plan',
         monthlyPrice: 1,
         discontinued: false
       }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'Kimi' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'kimi', name: 'Kimi' }), { plans, monitorRow: null });
     assert.ok(html.includes('Andante'));
     assert.ok(html.includes('Zero'));
     assert.ok(html.includes('84M Token'));

@@ -3,6 +3,8 @@
         const PLANS_FILE_PATH = './plans.json';
         const CONFIG_FILE_PATH = './config.json';
         const PLATFORMS_FILE_PATH = './platforms.json';
+        const MODELS_FILE_PATH = './models.json';
+        const PLAN_MODELS_FILE_PATH = './plan-models.json';
         const PAYG_PRICING_FILE_PATH = './payg-pricing.json';
 
         // 全局配置
@@ -14,6 +16,8 @@
         let allPlans = [];
         let filteredPlans = [];
         let allPlatforms = [];
+        let entityContext = null;
+        let entityDataPromise = null;
         let paygPricing = {};
         let platformSelectedLabels = [];
         let platformStatusMax = 'paused';
@@ -1619,11 +1623,9 @@
                 renderFeedbackFloat({});
             }
 
-            // 渲染平台推荐（优先 recommendationGroups，兜底 recommendations）
+            // 根据 recommendationGroups 中的 platformSlug 渲染平台推荐
             if (Array.isArray(appConfig.recommendationGroups) && appConfig.recommendationGroups.length > 0) {
                 renderRecommendationGroups(appConfig.recommendationGroups);
-            } else if (appConfig.recommendations && appConfig.recommendations.length > 0) {
-                renderRecommendations(appConfig.recommendations);
             }
 
             // 渲染底部说明（无有效数据时不覆盖 HTML 中的静态默认文案）
@@ -1859,14 +1861,16 @@
                 return `<li>${formatRecommendationText(reason)}</li>`;
             }).join('');
 
-            // 优先使用配置中的 action；未配置时再按平台名匹配 plans.json 的链接
+            const platform = entityContext && entityContext.platformBySlug.get(rec.platformSlug);
+            const displayName = platform ? platform.name : rec.platformSlug;
+            // 优先使用配置中的 action；未配置时再按 platformSlug 匹配套餐链接
             const configuredUrl = sanitizeHttpUrl(rec && rec.action);
-            const matchedPlan = Array.isArray(allPlans) ? allPlans.find(p => p.vendor === rec.name) : null;
+            const matchedPlan = Array.isArray(allPlans) ? allPlans.find(p => p.platformSlug === rec.platformSlug) : null;
             const matchedPlanUrl = matchedPlan ? sanitizeHttpUrl(matchedPlan.action) : null;
-            const recommendationUrl = configuredUrl || matchedPlanUrl;
+            const recommendationUrl = configuredUrl || matchedPlanUrl || sanitizeHttpUrl(platform && platform.action);
             const nameHtml = recommendationUrl
-                ? `<a class="recommendation-name-link" href="${escapeHtml(recommendationUrl)}" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">${escapeHtml(rec.name)}</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>`
-                : `<span class="recommendation-name">${escapeHtml(rec.name)}</span>`;
+                ? `<a class="recommendation-name-link" href="${escapeHtml(recommendationUrl)}" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">${escapeHtml(displayName)}</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>`
+                : `<span class="recommendation-name">${escapeHtml(displayName)}</span>`;
 
             return `
                 <div class="recommendation-card">
@@ -1909,22 +1913,6 @@
                     </section>
                 `;
             }).join('');
-        }
-
-        // 渲染平台推荐（向后兼容：当 config 仅提供 recommendations 平铺数据时使用）
-        function renderRecommendations(recommendations) {
-            const container = document.getElementById('recommendationGroups');
-            if (!container) return;
-            if (!Array.isArray(recommendations) || recommendations.length === 0) return;
-
-            const cardsHtml = recommendations.map(buildRecommendationCardHtml).join('');
-            container.innerHTML = `
-                <section class="recommendation-group recommendation-group--flat">
-                    <div class="recommendations">
-                        ${cardsHtml}
-                    </div>
-                </section>
-            `;
         }
 
         // 处理价格数据：补全缺失值
@@ -2001,15 +1989,30 @@
                 : value;
         }
 
+        async function loadEntityData() {
+            if (entityDataPromise) return entityDataPromise;
+            entityDataPromise = Promise.all([
+                fetch(PLATFORMS_FILE_PATH, { cache: 'no-store' }),
+                fetch(PLANS_FILE_PATH, { cache: 'no-store' }),
+                fetch(MODELS_FILE_PATH, { cache: 'no-store' }),
+                fetch(PLAN_MODELS_FILE_PATH, { cache: 'no-store' })
+            ]).then(async responses => {
+                const labels = ['platforms.json', 'plans.json', 'models.json', 'plan-models.json'];
+                responses.forEach((response, index) => {
+                    if (!response.ok) throw new Error(`${labels[index]} load failed: HTTP ${response.status}`);
+                });
+                const documents = await Promise.all(responses.map(response => response.json()));
+                entityContext = EntityData.buildContext(...documents);
+                allPlatforms = EntityData.hydratePlatforms(entityContext);
+                allPlans = EntityData.hydratePlans(entityContext).map((item, index) => processPrices(item, index));
+                window.codingplanEntityContext = entityContext;
+                return entityContext;
+            });
+            return entityDataPromise;
+        }
+
         async function loadPlatforms() {
-            const response = await fetch(PLATFORMS_FILE_PATH, { cache: 'no-store' });
-            if (!response.ok) {
-                throw new Error(`platforms.json load failed: HTTP ${response.status}`);
-            }
-            allPlatforms = await response.json();
-            if (!Array.isArray(allPlatforms)) {
-                throw new Error('platforms.json must be an array');
-            }
+            await loadEntityData();
             console.log(`成功加载 ${allPlatforms.length} 个平台`);
         }
 
@@ -2278,10 +2281,15 @@
                 window.localStorage,
                 PlatformCatalog.PLANS_TABLE_PIN_STORAGE_KEY
             );
+            const legacyToSlug = new Map(allPlans.map(plan => [
+                `${plan.vendor}|${plan.plan}|${plan.type || 'Coding Plan'}`,
+                plan.slug
+            ]));
+            const migrated = raw.map(id => legacyToSlug.get(id) || id);
             const validIds = allPlans.map(PlatformCatalog.getPlanRowPinId).filter(Boolean);
-            const cleaned = PlatformCatalog.sanitizePinnedIdList(raw, validIds);
+            const cleaned = PlatformCatalog.sanitizePinnedIdList(migrated, validIds);
             planPinnedIds = cleaned;
-            if (cleaned.length !== raw.length) {
+            if (JSON.stringify(cleaned) !== JSON.stringify(raw)) {
                 PlatformCatalog.writePinnedIdsToStorage(
                     window.localStorage,
                     cleaned,
@@ -2442,7 +2450,7 @@
             const root = document.getElementById('view-payg');
             if (!root) return;
             if (typeof window.mountPaygView !== 'function') {
-                await loadScriptOnce('scripts/payg.js?v=260725j');
+                await loadScriptOnce('scripts/payg.js?v=260902a');
             }
             if (typeof window.mountPaygView === 'function') {
                 await window.mountPaygView(root);
@@ -2696,14 +2704,7 @@
                 `;
                 }
 
-                const response = await fetch(PLANS_FILE_PATH, {
-                    cache: 'no-store'
-                });
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const plansData = await response.json();
-                allPlans = plansData.map((item, index) => processPrices(item, index));
+                await loadEntityData();
                 filteredPlans = [...allPlans];
                 loadPlanPinnedIds();
 
@@ -2716,8 +2717,6 @@
                 // 数据加载后重新渲染推荐卡片（此时 allPlans 已有数据，可匹配链接）
                 if (Array.isArray(appConfig.recommendationGroups) && appConfig.recommendationGroups.length > 0) {
                     renderRecommendationGroups(appConfig.recommendationGroups);
-                } else if (appConfig.recommendations && appConfig.recommendations.length > 0) {
-                    renderRecommendations(appConfig.recommendations);
                 }
 
                 console.log(`成功加载 ${allPlans.length} 条套餐数据`);
@@ -2764,6 +2763,7 @@
                     el.textContent = watermarkUrl;
                 });
 
+                await loadEntityData();
                 await Promise.all([loadData(), loadPlatforms()]);
                 await loadPaygPricing();
                 bindPlansTableInteractions();

@@ -52,6 +52,7 @@ const derivedTags = [
 
 function samplePlatform(overrides = {}) {
   return {
+    slug: 'x',
     id: 'x',
     name: 'X',
     rating: 4,
@@ -183,27 +184,27 @@ describe('filterPlatforms', () => {
 describe('collectModelsForVendor', () => {
   it('unions active plan models only', () => {
     const plans = [
-      { vendor: 'MiniMax', models: ['M3', 'M2.7'], discontinued: false },
-      { vendor: 'MiniMax', models: ['M2.5'], discontinued: true },
-      { vendor: 'Kimi', models: ['K2.6'], discontinued: false }
+      { platformSlug: 'minimax', models: ['M3', 'M2.7'], discontinued: false },
+      { platformSlug: 'minimax', models: ['M2.5'], discontinued: true },
+      { platformSlug: 'kimi', models: ['K2.6'], discontinued: false }
     ];
-    assert.deepEqual(collectModelsForVendor(plans, 'MiniMax'), ['M3', 'M2.7']);
+    assert.deepEqual(collectModelsForVendor(plans, 'minimax'), ['M3', 'M2.7']);
   });
 });
 
 describe('resolvePlatformAction', () => {
   it('prefers platform.action then first plan action', () => {
-    const plans = [{ vendor: 'A', action: 'https://plan' }];
-    assert.equal(resolvePlatformAction({ name: 'A', action: 'https://own' }, plans), 'https://own');
-    assert.equal(resolvePlatformAction({ name: 'A', action: null }, plans), 'https://plan');
+    const plans = [{ platformSlug: 'a', action: 'https://plan' }];
+    assert.equal(resolvePlatformAction({ slug: 'a', name: 'A', action: 'https://own' }, plans), 'https://own');
+    assert.equal(resolvePlatformAction({ slug: 'a', name: 'A', action: null }, plans), 'https://plan');
   });
 });
 
 describe('validatePlatformRecords', () => {
   it('errors when plan vendor missing platform', () => {
-    const r = validatePlatformRecords([], [{ vendor: 'Z' }]);
+    const r = validatePlatformRecords([], [{ platformSlug: 'z' }]);
     assert.equal(r.ok, false);
-    assert.match(r.errors.join('\n'), /Z/);
+    assert.match(r.errors.join('\n'), /platformSlug "z"/);
   });
 
   it('errors on bad score or missing reason', () => {
@@ -214,13 +215,13 @@ describe('validatePlatformRecords', () => {
         models: { score: 4, reason: 'c' }
 }
     });
-    const r = validatePlatformRecords([bad], [{ vendor: 'X' }]);
+    const r = validatePlatformRecords([bad], [{ platformSlug: 'x' }]);
     assert.equal(r.ok, false);
   });
 
   it('errors on invalid platformStatus', () => {
     const bad = samplePlatform({ platformStatus: 'nope' });
-    const r = validatePlatformRecords([bad], [{ vendor: 'X' }]);
+    const r = validatePlatformRecords([bad], [{ platformSlug: 'x' }]);
     assert.equal(r.ok, false);
     assert.match(r.errors.join('\n'), /platformStatus/);
   });
@@ -236,7 +237,7 @@ describe('escapeHtml', () => {
         stability: { score: 3, reason: 'ok' },
         models: { score: 3, reason: 'ok' }
 }
-    }), [{ vendor: 'X', models: [], discontinued: false }]);
+    }), [{ platformSlug: 'x', models: [], discontinued: false }]);
     assert.doesNotMatch(html, /<script>/);
     assert.match(html, /&lt;script&gt;/);
   });
@@ -272,14 +273,14 @@ describe('formatInlineMarkdown', () => {
 
 describe('buildPlatformCardHtml', () => {
   it('includes key classes and discontinued marker', () => {
-    const active = buildPlatformCardHtml(samplePlatform(), [{ vendor: 'X', models: ['M1'], discontinued: false }]);
+    const active = buildPlatformCardHtml(samplePlatform(), [{ platformSlug: 'x', models: ['M1'], discontinued: false }]);
     assert.match(active, /class="platform-card"/);
     assert.match(active, /class="platform-dimensions"/);
     assert.doesNotMatch(active, /is-discontinued/);
 
     const dead = buildPlatformCardHtml(
       samplePlatform({ platformStatus: 'delisted' }),
-      [{ vendor: 'X', models: [], discontinued: false }]
+      [{ platformSlug: 'x', models: [], discontinued: false }]
     );
     assert.match(dead, /platform-card is-discontinued/);
   });
@@ -287,7 +288,7 @@ describe('buildPlatformCardHtml', () => {
   it('adds external link icon on titled action links', () => {
     const withLink = buildPlatformCardHtml(
       samplePlatform({ action: 'https://example.com' }),
-      [{ vendor: 'X', models: ['M1'], discontinued: false }]
+      [{ platformSlug: 'x', models: ['M1'], discontinued: false }]
     );
     assert.match(withLink, /platform-name-link/);
     assert.match(withLink, /class="link-icon"/);
@@ -301,7 +302,7 @@ describe('buildPlatformCardHtml', () => {
   it('omits badge for open; shows limited/paused/delisted beside title', () => {
     const open = buildPlatformCardHtml(
       samplePlatform({ action: 'https://example.com', platformStatus: 'open' }),
-      [{ vendor: 'X', models: ['M1'], discontinued: false }]
+      [{ platformSlug: 'x', models: ['M1'], discontinued: false }]
     );
     assert.doesNotMatch(open, /platform-rush/);
 
@@ -337,7 +338,7 @@ describe('buildPlatformCardHtml', () => {
   it('limits model tags on card face with +N overflow', () => {
     const models = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7'];
     const html = buildPlatformCardHtml(samplePlatform({ name: 'X' }), [
-      { vendor: 'X', models, discontinued: false }
+      { platformSlug: 'x', models, discontinued: false }
     ]);
     assert.ok(html.includes('M1'));
     assert.ok(html.includes('M5'));
@@ -469,11 +470,11 @@ describe('dimensionCopy', () => {
 describe('collectPlansForVendor', () => {
   it('returns all plans for vendor including discontinued, in order', () => {
     const plans = [
-      { vendor: 'A', plan: '1', discontinued: false },
-      { vendor: 'B', plan: 'x' },
-      { vendor: 'A', plan: '2', discontinued: true }
+      { platformSlug: 'a', plan: '1', discontinued: false },
+      { platformSlug: 'b', plan: 'x' },
+      { platformSlug: 'a', plan: '2', discontinued: true }
     ];
-    const rows = collectPlansForVendor(plans, 'A');
+    const rows = collectPlansForVendor(plans, 'a');
     assert.equal(rows.length, 2);
     assert.equal(rows[0].plan, '1');
     assert.equal(rows[1].plan, '2');
@@ -817,12 +818,12 @@ describe('platform pins', () => {
 describe('table row pins', () => {
   it('builds stable plan and payg pin ids', () => {
     assert.equal(
-      getPlanRowPinId({ vendor: '腾讯云', plan: 'Lite', type: 'Token Plan' }),
-      '腾讯云|Lite|Token Plan'
+      getPlanRowPinId({ slug: 'tencent-lite', platformSlug: 'tencent-cloud', name: 'Lite', type: 'Token Plan' }),
+      'tencent-lite'
     );
     assert.equal(
-      getPlanRowPinId({ vendor: '智谱AI', plan: 'Lite' }),
-      '智谱AI|Lite|Coding Plan'
+      getPlanRowPinId({ slug: 'zhipu-lite', platformSlug: 'zhipu', name: 'Lite' }),
+      'zhipu-lite'
     );
     assert.equal(getPaygRowPinId({ platformId: 'deepseek-official', modelName: 'DeepSeek-V4-Pro' }), 'deepseek-official|DeepSeek-V4-Pro');
     assert.equal(PLANS_TABLE_PIN_STORAGE_KEY, 'plansTablePinnedIds');

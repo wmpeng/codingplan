@@ -321,8 +321,8 @@
     const rawPlans = Array.isArray(context.plans) ? context.plans : [];
     const vendorPlans =
       typeof PlatformCatalog.collectPlansForVendor === 'function'
-        ? PlatformCatalog.collectPlansForVendor(rawPlans, platform && platform.name)
-        : rawPlans.filter(p => p && p.vendor === (platform && platform.name));
+        ? PlatformCatalog.collectPlansForVendor(rawPlans, platform && (platform.slug || platform.id))
+        : rawPlans.filter(p => p && p.platformSlug === (platform && (platform.slug || platform.id)));
 
     const dims = dimensionMeta()
       .map(({ key, label }) => {
