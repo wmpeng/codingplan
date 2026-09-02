@@ -2455,12 +2455,12 @@
             if (!document.querySelector('link[data-usage-css="1"]')) {
                 const link = document.createElement('link');
                 link.rel = 'stylesheet';
-                link.href = 'styles/model-comparison.css?v=260902b';
+                link.href = 'styles/model-comparison.css?v=260902c';
                 link.dataset.usageCss = '1';
                 document.head.appendChild(link);
             }
             if (typeof window.mountModelComparisonView !== 'function') {
-                await loadScriptOnce('scripts/model-comparison.js?v=260902b');
+                await loadScriptOnce('scripts/model-comparison.js?v=260902d');
             }
             if (typeof window.mountModelComparisonView === 'function') {
                 await window.mountModelComparisonView(root);

@@ -83,12 +83,16 @@
         return JSON.stringify([String(point.vendor || ''), String(point.platformType || '')]);
     }
 
+    function getDefaultPlatformSelectionKeys() {
+        return new Set(DEFAULT_PLATFORM_SELECTIONS
+            .map(([vendor, platformType]) => getPointPlatformKey({ vendor, platformType })));
+    }
+
     function createDefaultFilterState(points) {
         const availablePlatforms = new Set((points || []).map(getPointPlatformKey));
         const availableModels = new Set((points || []).map((point) => point.canonicalModelId));
         return {
-            platforms: new Set(DEFAULT_PLATFORM_SELECTIONS
-                .map(([vendor, platformType]) => getPointPlatformKey({ vendor, platformType }))
+            platforms: new Set([...getDefaultPlatformSelectionKeys()]
                 .filter((key) => availablePlatforms.has(key))),
             models: new Set(DEFAULT_MODEL_IDS.filter((id) => availableModels.has(id))),
             multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', monthlyPriceMin: null,
@@ -493,10 +497,17 @@
         };
     }
 
-    function buildPresetComparisonRows(points, group) {
+    function normalizePresetPlatformScope(value) {
+        return value === 'all' ? 'all' : 'featured';
+    }
+
+    function buildPresetComparisonRows(points, group, platformScope) {
         const modelIds = new Set(group && Array.isArray(group.modelIds) ? group.modelIds : []);
+        const defaultPlatformKeys = getDefaultPlatformSelectionKeys();
+        const scope = normalizePresetPlatformScope(platformScope);
         return sortComparisonRows((points || []).filter((point) =>
             point.billingType === 'subscription' &&
+            (scope === 'all' || defaultPlatformKeys.has(getPointPlatformKey(point))) &&
             modelIds.has(point.canonicalModelId) &&
             finitePositive(point.monthlyFeeCny) !== null &&
             finitePositive(point.unitPriceCnyPerM) !== null &&
@@ -512,10 +523,10 @@
         return model;
     }
 
-    function presetComparisonTableHtml(group, points, tokenUnit) {
+    function presetComparisonTableHtml(group, points, tokenUnit, platformScope) {
         const kind = group && group.kind === 'multi' ? 'multi' : 'single';
         const columns = PRESET_TABLE_COLUMNS[kind];
-        const rows = buildPresetComparisonRows(points, group);
+        const rows = buildPresetComparisonRows(points, group, platformScope);
         const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
         const body = rows.length ? rows.map((point) => {
             const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
@@ -540,9 +551,10 @@
             `<div class="usage-preset-table-scroll"><table class="usage-preset-table"><thead>${head}</thead><tbody>${body}</tbody></table></div></article>`;
     }
 
-    function renderPresetComparisons(host, config, points, tokenUnit) {
+    function renderPresetComparisons(host, config, points, tokenUnit, platformScope) {
         if (!host) return [];
         const normalized = normalizePresetConfig(config);
+        const scope = normalizePresetPlatformScope(platformScope);
         const singles = normalized.groups.filter((group) => group.kind === 'single');
         const multis = normalized.groups.filter((group) => group.kind === 'multi');
         if (!normalized.groups.length) {
@@ -551,9 +563,9 @@
             return [];
         }
         host.hidden = false;
-        host.innerHTML = `<div class="usage-preset-heading"><div><p class="usage-eyebrow">快速选择</p><h3>${escapeHtml(normalized.title)}</h3>${normalized.description ? `<p>${escapeHtml(normalized.description)}</p>` : ''}</div><span>固定精选 · 不受筛选影响</span></div>` +
-            (singles.length ? `<div class="usage-preset-grid usage-preset-grid--single">${singles.map((group) => presetComparisonTableHtml(group, points, tokenUnit)).join('')}</div>` : '') +
-            (multis.length ? `<div class="usage-preset-grid usage-preset-grid--multi">${multis.map((group) => presetComparisonTableHtml(group, points, tokenUnit)).join('')}</div>` : '');
+        host.innerHTML = `<div class="usage-preset-heading"><div><p class="usage-eyebrow">快速选择</p><h3>${escapeHtml(normalized.title)}</h3>${normalized.description ? `<p>${escapeHtml(normalized.description)}</p>` : ''}</div><div class="usage-preset-heading-actions"><span class="usage-preset-note">固定对比 · 不受下方筛选影响</span><div class="usage-segments usage-preset-scope-control" role="group" aria-label="预置对比平台范围"><button type="button" data-preset-platform-scope="featured" class="${scope === 'featured' ? 'is-active' : ''}" aria-pressed="${scope === 'featured'}">仅显示精选平台</button><button type="button" data-preset-platform-scope="all" class="${scope === 'all' ? 'is-active' : ''}" aria-pressed="${scope === 'all'}">显示所有平台</button></div></div></div>` +
+            (singles.length ? `<div class="usage-preset-grid usage-preset-grid--single">${singles.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope)).join('')}</div>` : '') +
+            (multis.length ? `<div class="usage-preset-grid usage-preset-grid--multi">${multis.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope)).join('')}</div>` : '');
         return normalized.groups;
     }
 
@@ -784,7 +796,7 @@
             const modelColors = buildModelColorMap(models.map(([id]) => id));
             const state = Object.assign(createDefaultFilterState(points), {
                 benchmark: 'artificialAnalysis', colorMode: 'vendor',
-                tokensScale: 'log', priceScale: 'log'
+                tokensScale: 'log', priceScale: 'log', presetPlatformScope: 'featured'
             });
             const usageChart = echarts.init(container.querySelector('[data-chart="usage"]'));
             const intelligenceChart = echarts.init(container.querySelector('[data-chart="intelligence"]'));
@@ -800,7 +812,7 @@
             const latestTableRows = { comparison: [] };
             const priceBounds = getMonthlyPriceBounds(points);
             const priceSlider = { min: priceBounds.min, max: priceBounds.max };
-            let renderedPresetTokenUnit = null;
+            let renderedPresetKey = null;
 
             function updatePriceSliderVisuals(minValue, maxValue) {
                 const first = Math.max(priceBounds.min, Math.min(priceBounds.max, Math.round(minValue)));
@@ -966,9 +978,10 @@
             }
 
             function render() {
-                if (renderedPresetTokenUnit !== state.tokenUnit) {
-                    renderPresetComparisons(container.querySelector('[data-presets]'), presetConfig, points, state.tokenUnit);
-                    renderedPresetTokenUnit = state.tokenUnit;
+                const presetRenderKey = `${state.tokenUnit}:${state.presetPlatformScope}`;
+                if (renderedPresetKey !== presetRenderKey) {
+                    renderPresetComparisons(container.querySelector('[data-presets]'), presetConfig, points, state.tokenUnit, state.presetPlatformScope);
+                    renderedPresetKey = presetRenderKey;
                 }
                 const filtered = filterPoints(points, {
                     platforms: state.platforms, models: state.models, multimodal: state.multimodal,
@@ -1200,6 +1213,12 @@
                     render();
                     return;
                 }
+                const presetPlatformScopeButton = event.target.closest('[data-preset-platform-scope]');
+                if (presetPlatformScopeButton) {
+                    state.presetPlatformScope = normalizePresetPlatformScope(presetPlatformScopeButton.dataset.presetPlatformScope);
+                    render();
+                    return;
+                }
                 if (event.target.closest('[data-action="restore-defaults"]')) {
                     Object.assign(state, createDefaultFilterState(points));
                     syncFilterControls();
@@ -1234,5 +1253,5 @@
         return container.__usageMountPromise;
     }
 
-    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });

@@ -256,19 +256,22 @@ test('preset comparisons are configured outside the renderer', () => {
 
 test('preset rows keep only comparable subscriptions and sort by unit price', () => {
   const group = { kind: 'single', modelIds: ['m1'] };
+  const defaultPlatform = { vendor: '智谱AI', platformType: 'Token Plan' };
   const rows = [
-    { id: 'expensive', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 100, monthlyTokenInM: 100, unitPriceCnyPerM: 1 },
-    { id: 'cheap', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.5 },
-    { id: 'api', billingType: 'payg', canonicalModelId: 'm1', unitPriceCnyPerM: 0.1 },
-    { id: 'unknown', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 20, monthlyTokenInM: 'unknown', unitPriceCnyPerM: 0.2 },
-    { id: 'other', billingType: 'subscription', canonicalModelId: 'm2', monthlyFeeCny: 10, monthlyTokenInM: 100, unitPriceCnyPerM: 0.1 }
+    { ...defaultPlatform, id: 'expensive', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 100, monthlyTokenInM: 100, unitPriceCnyPerM: 1 },
+    { ...defaultPlatform, id: 'cheap', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.5 },
+    { ...defaultPlatform, id: 'api', billingType: 'payg', canonicalModelId: 'm1', unitPriceCnyPerM: 0.1 },
+    { ...defaultPlatform, id: 'unknown', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 20, monthlyTokenInM: 'unknown', unitPriceCnyPerM: 0.2 },
+    { ...defaultPlatform, id: 'other', billingType: 'subscription', canonicalModelId: 'm2', monthlyFeeCny: 10, monthlyTokenInM: 100, unitPriceCnyPerM: 0.1 },
+    { vendor: '智谱AI', platformType: 'Coding Plan', id: 'not-default-type', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 10, monthlyTokenInM: 100, unitPriceCnyPerM: 0.1 }
   ];
   assert.deepEqual(buildPresetComparisonRows(rows, group).map((row) => row.id), ['cheap', 'expensive']);
+  assert.deepEqual(buildPresetComparisonRows(rows, group, 'all').map((row) => row.id), ['not-default-type', 'cheap', 'expensive']);
 });
 
 test('preset tables add model only for multi groups and preserve single-model qualifiers', () => {
   const point = {
-    id: 'row', billingType: 'subscription', vendor: '平台A', platformType: 'Token Plan', plan: 'Pro',
+    id: 'row', billingType: 'subscription', vendor: '智谱AI', platformType: 'Token Plan', plan: 'Pro',
     model: 'GLM-5.3-Flash [谷]', canonicalModel: 'GLM-5.3-Flash', canonicalModelId: 'glm-5-3-flash',
     monthlyFeeCny: 100, monthlyTokenInM: 1000, unitPriceCnyPerM: 0.1
   };
