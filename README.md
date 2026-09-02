@@ -66,7 +66,7 @@
 
 ### 包含 DeepSeek-V4-Flash-0731 正式版
 
-1. [DeepSeek](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) ⭐️⭐️⭐️⭐️⭐️
+1. [DeepSeek](https://platform.deepseek.com/) ⭐️⭐️⭐️⭐️⭐️
     - 官方 DeepSeek-V4-Flash-0731 正式版，推理与代码能力处于国产第一梯队
     - 按量标价透明，适合不想抢套餐的用户
     - 高峰翻倍后成本优势会收窄
@@ -161,8 +161,6 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | Kimi | Moderato | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqkimi) | ⭐️⭐️⭐️⭐️ | 模型强 | - | ¥99 | - / 季 | ¥948 ~~1188~~ / 年 | 未公开 | 未公开 | 未公开 | 6M Tokens | 27M Tokens | 108M Tokens | - | Kimi-K3, Kimi-K2.7-Code, Kimi-K2.6, Kimi-K2.5, Kimi-K2 | - | 在售 | 4 倍额度, Agent 多任务并行 |
 | Kimi | Allegretto | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqkimi) | ⭐️⭐️⭐️⭐️ | 模型强 / 性价比高 | - | ¥199 | - / 季 | ¥1908 ~~2388~~ / 年 | 未公开 | 未公开 | 未公开 | 27M Tokens | 135M Tokens | 540M Tokens | - | Kimi-K3, Kimi-K2.7-Code, Kimi-K2.6, Kimi-K2.5, Kimi-K2 | 免费Kimi-Claw | 在售 | 20 倍额度 |
 | Kimi | Allegro | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqkimi) | ⭐️⭐️⭐️⭐️ | 模型强 / 性价比高 | - | ¥699 | - / 季 | ¥6708 ~~8388~~ / 年 | 未公开 | 未公开 | 未公开 | 80M Tokens | 400M Tokens | 1,600M Tokens | - | Kimi-K3, Kimi-K2.7-Code, Kimi-K2.6, Kimi-K2.5, Kimi-K2 | 免费Kimi-Claw | 在售 | 60 倍额度 |
-| DeepSeek Flash | 虚拟套餐 | Token Plan | [跳转](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) | ⭐️⭐️⭐️⭐️ | 性价比高 | - | ¥200 | - / 季 | - / 年 | 无限制 | 无限制 | 无限制 | - | - | 1,462M Tokens | - | DeepSeek-V4-Flash-0731 | - | 在售 | • 官方定价：缓存命中输入 ¥0.02/M Token，缓存未命中输入 ¥1/M Token，输出 ¥2/M Token <br> • 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.02/1000000 + 99×10%×1/1000000 + 1×2/1000000 = 0.000013682 元 <br> • 约等于 1 元≈7.31M Token，再乘月费 200 元，得到月 Token 上限约 1462M |
-| DeepSeek Pro | 虚拟套餐 | Token Plan | [跳转](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) | ⭐️⭐️⭐️⭐️ | 模型强 | - | ¥200 | - / 季 | - / 年 | 无限制 | 无限制 | 无限制 | - | - | 527M Tokens | - | DeepSeek-V4-Pro-0813 | - | 在售 | • 官方定价：缓存命中输入 ¥0.025/M Token，缓存未命中输入 ¥3/M Token，输出 ¥6/M Token <br> • 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.025/1000000 + 99×10%×3/1000000 + 1×6/1000000 = 0.0000379275 元 <br> • 约等于 1 元≈2.64M Token，再乘月费 200 元，得到月 Token 上限约 527M |
 | 优云智算 | Mini | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqyyzs) | ⭐️⭐️⭐️⭐️ | 模型强 | - | ¥49 | - / 季 | - / 年 | 300 | 750 | 1,900 | 10M Tokens | 25M Tokens | 65M Tokens | - | GLM-5.2, GLM-5.1, Kimi-K2.6, MiniMax-M2.7, DeepSeek-V4-Flash-0731, DeepSeek-V3.2 | - | 在售 | • 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6 <br> • 限流：3 并发 <br> • 价格较贵，但费率明确，无隐藏倍率 |
 | 优云智算 | Lite | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqyyzs) | ⭐️⭐️⭐️⭐️ | 模型强 | - | ¥99 | - / 季 | - / 年 | 600 | 1,500 | 3,800 | 20M Tokens | 50M Tokens | 130M Tokens | - | GLM-5.2, GLM-5.1, Kimi-K2.6, MiniMax-M2.7, DeepSeek-V4-Flash-0731, DeepSeek-V3.2 | - | 在售 | • 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6 <br> • 限流：5 并发 <br> • 价格较贵，但费率明确，无隐藏倍率 |
 | 优云智算 | Basic | Coding Plan | [跳转](https://api.dreamfree.space/c/s/cpyqyyzs) | ⭐️⭐️⭐️⭐️ | 模型强 | - | ¥199 | - / 季 | - / 年 | 1,200 | 3,000 | 7,600 | 40M Tokens | 100M Tokens | 260M Tokens | - | GLM-5.2, GLM-5.1, Kimi-K2.6, MiniMax-M2.7, DeepSeek-V4-Flash-0731, DeepSeek-V3.2 | - | 在售 | • 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6 <br> • 限流：10 并发 <br> • 价格较贵，但费率明确，无隐藏倍率 |
@@ -259,7 +257,7 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 ### 2026.7.20
 
 - 平台目录新增按量调用平台：DeepSeek 官方、共绩算力；价格统一纳入额度/价格对比与平台详情
-- 筛选标签新增「按量调用」；DeepSeek Flash / Pro 虚拟套餐条目保持不动
+- 筛选标签新增「按量调用」；API 价格与订阅套餐分开呈现
 
 ### 2026.7.19
 

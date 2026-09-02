@@ -759,50 +759,6 @@
       "measuredMonthlyTokenLimit": 1600
     },
     {
-      "slug": "deepseek-official-token-plan-plan-32",
-      "platformSlug": "deepseek-official",
-      "name": "虚拟套餐",
-      "type": "Token Plan",
-      "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
-      "rating": 4,
-      "tags": [
-        "性价比高"
-      ],
-      "firstMonthPrice": "-",
-      "monthlyPrice": 200,
-      "quarterlyPrice": "-",
-      "yearlyPrice": "-",
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
-      "benefits": [],
-      "note": "• 官方定价：缓存命中输入 ¥0.02/M Token，缓存未命中输入 ¥1/M Token，输出 ¥2/M Token\n• 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.02/1000000 + 99×10%×1/1000000 + 1×2/1000000 = 0.000013682 元\n• 约等于 1 元≈7.31M Token，再乘月费 200 元，得到月 Token 上限约 1462M",
-      "measuredMonthlyTokenLimit": 1462,
-      "tableVendorLabel": "DeepSeek Flash"
-    },
-    {
-      "slug": "deepseek-official-token-plan-plan-33",
-      "platformSlug": "deepseek-official",
-      "name": "虚拟套餐",
-      "type": "Token Plan",
-      "action": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
-      "rating": 4,
-      "tags": [
-        "模型强"
-      ],
-      "firstMonthPrice": "-",
-      "monthlyPrice": 200,
-      "quarterlyPrice": "-",
-      "yearlyPrice": "-",
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
-      "benefits": [],
-      "note": "• 官方定价：缓存命中输入 ¥0.025/M Token，缓存未命中输入 ¥3/M Token，输出 ¥6/M Token\n• 按输入输出99:1、输入缓存命中率90%估算：100 Token 约消耗 99×90%×0.025/1000000 + 99×10%×3/1000000 + 1×6/1000000 = 0.0000379275 元\n• 约等于 1 元≈2.64M Token，再乘月费 200 元，得到月 Token 上限约 527M",
-      "measuredMonthlyTokenLimit": 527,
-      "tableVendorLabel": "DeepSeek Pro"
-    },
-    {
       "slug": "youyun-mini",
       "platformSlug": "youyun",
       "name": "Mini",

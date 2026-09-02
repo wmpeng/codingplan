@@ -56,7 +56,7 @@
           .map((relation) => displayModelName(context.modelBySlug.get(relation.modelSlug), relation));
         return {
           ...plan,
-          platformName: plan.tableVendorLabel || (platform && platform.name) || plan.platformSlug,
+          platformName: (platform && platform.name) || plan.platformSlug,
           modelLabels: names
         };
       });

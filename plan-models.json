@@ -15850,36 +15850,6 @@
       "note": null
     },
     {
-      "slug": "deepseek-official-token-plan-plan-32--deepseek-v4-flash-0731",
-      "planSlug": "deepseek-official-token-plan-plan-32",
-      "modelSlug": "deepseek-v4-flash-0731",
-      "timeTier": null,
-      "contextTier": null,
-      "serviceTier": null,
-      "catalogOrder": 0,
-      "method": "unknown",
-      "usage": {
-        "monthlyTokenInM": "unknown"
-      },
-      "pricing": null,
-      "note": null
-    },
-    {
-      "slug": "deepseek-official-token-plan-plan-33--deepseek-v4-pro-0813",
-      "planSlug": "deepseek-official-token-plan-plan-33",
-      "modelSlug": "deepseek-v4-pro-0813",
-      "timeTier": null,
-      "contextTier": null,
-      "serviceTier": null,
-      "catalogOrder": 0,
-      "method": "unknown",
-      "usage": {
-        "monthlyTokenInM": "unknown"
-      },
-      "pricing": null,
-      "note": null
-    },
-    {
       "slug": "ollama-coding-plan-pro--glm-5-2",
       "planSlug": "ollama-coding-plan-pro",
       "modelSlug": "glm-5-2",
