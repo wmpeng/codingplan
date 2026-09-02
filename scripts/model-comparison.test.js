@@ -1,5 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 const {
   ATTRACTIVE_UNIT_PRICE_CNY_PER_YI,
   DEFAULT_PLATFORM_SELECTIONS,
@@ -29,6 +31,10 @@ const {
   getSoloPointLabelField,
   getPointLabelText,
   sortComparisonRows,
+  normalizePresetConfig,
+  buildPresetComparisonRows,
+  getPresetModelQualifier,
+  presetComparisonTableHtml,
   tokenAmountInUnit,
   unitPriceInTokenUnit,
   formatTokenAmount,
@@ -236,6 +242,46 @@ test('comparison tables sort text and numeric values with missing values last', 
   assert.deepEqual(sortComparisonRows(rows, 'price', 'asc').map((row) => row.id), ['a', 'b', 'c']);
   assert.deepEqual(sortComparisonRows(rows, 'price', 'desc').map((row) => row.id), ['b', 'a', 'c']);
   assert.deepEqual(sortComparisonRows(rows, 'monthlyTokenInM', 'desc').map((row) => row.id), ['a', 'b', 'c']);
+});
+
+test('preset comparisons are configured outside the renderer', () => {
+  const source = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'model-comparison-presets.json'), 'utf8'));
+  const config = normalizePresetConfig(source);
+  assert.equal(config.groups.length, 5);
+  assert.deepEqual(config.groups.map((group) => group.kind), ['single', 'single', 'single', 'multi', 'multi']);
+  assert.deepEqual(config.groups[0].modelIds, ['deepseek-v4-flash-0731']);
+  assert.deepEqual(config.groups[3].modelIds, ['claude-opus-5', 'gpt-5-6-sol', 'glm-5-3', 'kimi-k3']);
+  assert.deepEqual(config.groups[4].modelIds, ['deepseek-v4-flash-0731', 'glm-5-3-flash', 'gpt-5-6-luna']);
+});
+
+test('preset rows keep only comparable subscriptions and sort by unit price', () => {
+  const group = { kind: 'single', modelIds: ['m1'] };
+  const rows = [
+    { id: 'expensive', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 100, monthlyTokenInM: 100, unitPriceCnyPerM: 1 },
+    { id: 'cheap', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.5 },
+    { id: 'api', billingType: 'payg', canonicalModelId: 'm1', unitPriceCnyPerM: 0.1 },
+    { id: 'unknown', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 20, monthlyTokenInM: 'unknown', unitPriceCnyPerM: 0.2 },
+    { id: 'other', billingType: 'subscription', canonicalModelId: 'm2', monthlyFeeCny: 10, monthlyTokenInM: 100, unitPriceCnyPerM: 0.1 }
+  ];
+  assert.deepEqual(buildPresetComparisonRows(rows, group).map((row) => row.id), ['cheap', 'expensive']);
+});
+
+test('preset tables add model only for multi groups and preserve single-model qualifiers', () => {
+  const point = {
+    id: 'row', billingType: 'subscription', vendor: '平台A', platformType: 'Token Plan', plan: 'Pro',
+    model: 'GLM-5.3-Flash [谷]', canonicalModel: 'GLM-5.3-Flash', canonicalModelId: 'glm-5-3-flash',
+    monthlyFeeCny: 100, monthlyTokenInM: 1000, unitPriceCnyPerM: 0.1
+  };
+  assert.equal(getPresetModelQualifier(point), '[谷]');
+  const single = presetComparisonTableHtml({ id: 'single', title: '单模型', kind: 'single', modelIds: ['glm-5-3-flash'] }, [point], 'M');
+  const multi = presetComparisonTableHtml({ id: 'multi', title: '多模型', kind: 'multi', modelIds: ['glm-5-3-flash'] }, [point], 'yi');
+  assert.equal(single.includes('<th scope="col">模型</th>'), false);
+  assert.match(single, /usage-preset-qualifier">\[谷\]/);
+  assert.match(single, /¥0\.1 \/ M/);
+  assert.equal(multi.includes('<th scope="col">模型</th>'), true);
+  assert.match(multi, /GLM-5\.3-Flash \[谷\]/);
+  assert.match(multi, /¥10 \/ 亿/);
+  assert.match(multi, /10亿/);
 });
 
 test('comparison table rows format subscription and payg semantics', () => {

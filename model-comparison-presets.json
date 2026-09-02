@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "title": "常见对比",
+  "description": "固定精选常用模型与套餐，帮助快速找到值得进一步比较的选项。",
+  "groups": [
+    {
+      "id": "deepseek-v4-flash-0731",
+      "title": "DeepSeek V4 Flash 0731",
+      "kind": "single",
+      "modelIds": [
+        "deepseek-v4-flash-0731"
+      ],
+      "enabled": true
+    },
+    {
+      "id": "glm-5-3-flash",
+      "title": "GLM 5.3 Flash",
+      "kind": "single",
+      "modelIds": [
+        "glm-5-3-flash"
+      ],
+      "enabled": true
+    },
+    {
+      "id": "gpt-5-6-luna",
+      "title": "GPT 5.6 Luna",
+      "kind": "single",
+      "modelIds": [
+        "gpt-5-6-luna"
+      ],
+      "enabled": true
+    },
+    {
+      "id": "sota-models",
+      "title": "SOTA模型对比",
+      "kind": "multi",
+      "modelIds": [
+        "claude-opus-5",
+        "gpt-5-6-sol",
+        "glm-5-3",
+        "kimi-k3"
+      ],
+      "enabled": true
+    },
+    {
+      "id": "high-volume-models",
+      "title": "量大模型对比",
+      "kind": "multi",
+      "modelIds": [
+        "deepseek-v4-flash-0731",
+        "glm-5-3-flash",
+        "gpt-5-6-luna"
+      ],
+      "enabled": true
+    }
+  ]
+}

@@ -48,6 +48,25 @@
         { key: 'deepSWE', label: 'DeepSWE分数' },
         { key: 'note', label: '备注' }
     ];
+    const PRESET_TABLE_COLUMNS = {
+        single: [
+            { key: 'vendor', label: '平台' },
+            { key: 'platformType', label: '类型' },
+            { key: 'plan', label: '套餐' },
+            { key: 'price', label: '价格' },
+            { key: 'unitPriceCnyPerM', label: '综合单价' },
+            { key: 'monthlyTokenInM', label: '月用量' }
+        ],
+        multi: [
+            { key: 'vendor', label: '平台' },
+            { key: 'platformType', label: '类型' },
+            { key: 'plan', label: '套餐' },
+            { key: 'model', label: '模型' },
+            { key: 'price', label: '价格' },
+            { key: 'unitPriceCnyPerM', label: '综合单价' },
+            { key: 'monthlyTokenInM', label: '月用量' }
+        ]
+    };
 
     function finitePositive(value) {
         const number = Number(value);
@@ -452,6 +471,103 @@
             `<td class="usage-table-note">${escapeHtml(point.note || '—')}</td></tr>`;
     }
 
+    function normalizePresetConfig(config) {
+        const source = config && typeof config === 'object' ? config : {};
+        const seenIds = new Set();
+        const groups = (Array.isArray(source.groups) ? source.groups : []).flatMap((group) => {
+            if (!group || group.enabled === false) return [];
+            const id = String(group.id || '').trim();
+            const title = String(group.title || '').trim();
+            const kind = group.kind === 'multi' ? 'multi' : group.kind === 'single' ? 'single' : '';
+            const modelIds = [...new Set((Array.isArray(group.modelIds) ? group.modelIds : [])
+                .map((value) => String(value || '').trim()).filter(Boolean))];
+            if (!id || !title || !kind || !modelIds.length || seenIds.has(id)) return [];
+            if (kind === 'single' && modelIds.length !== 1) return [];
+            seenIds.add(id);
+            return [{ id, title, kind, modelIds }];
+        });
+        return {
+            title: String(source.title || '').trim() || '常见对比',
+            description: String(source.description || '').trim(),
+            groups
+        };
+    }
+
+    function buildPresetComparisonRows(points, group) {
+        const modelIds = new Set(group && Array.isArray(group.modelIds) ? group.modelIds : []);
+        return sortComparisonRows((points || []).filter((point) =>
+            point.billingType === 'subscription' &&
+            modelIds.has(point.canonicalModelId) &&
+            finitePositive(point.monthlyFeeCny) !== null &&
+            finitePositive(point.unitPriceCnyPerM) !== null &&
+            finitePositive(point.monthlyTokenInM) !== null
+        ), 'unitPriceCnyPerM', 'asc');
+    }
+
+    function getPresetModelQualifier(point) {
+        const model = String(point && point.model || '').trim();
+        const canonical = String(point && point.canonicalModel || '').trim();
+        if (!model || !canonical || model === canonical) return '';
+        if (model.startsWith(canonical)) return model.slice(canonical.length).trim();
+        return model;
+    }
+
+    function presetComparisonTableHtml(group, points, tokenUnit) {
+        const kind = group && group.kind === 'multi' ? 'multi' : 'single';
+        const columns = PRESET_TABLE_COLUMNS[kind];
+        const rows = buildPresetComparisonRows(points, group);
+        const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
+        const body = rows.length ? rows.map((point) => {
+            const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
+            const plan = `<span>${escapeHtml(point.plan || '订阅')}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
+            const values = {
+                vendor: platformCellHtml(point),
+                platformType: escapeHtml(point.platformType || '—'),
+                plan,
+                model: `<span class="usage-table-model">${escapeHtml(point.model || point.canonicalModel || '—')}</span>`,
+                price: `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`,
+                unitPriceCnyPerM: formatUnitPrice(point.unitPriceCnyPerM, tokenUnit),
+                monthlyTokenInM: formatTokenAmount(point.monthlyTokenInM, tokenUnit)
+            };
+            return `<tr data-point-id="${escapeHtml(point.id)}">${columns.map((column) => {
+                const numeric = ['price', 'unitPriceCnyPerM', 'monthlyTokenInM'].includes(column.key);
+                const unitPrice = column.key === 'unitPriceCnyPerM' ? ' usage-table-unit-price' : '';
+                return `<td class="${numeric ? 'numeric' : ''}${unitPrice}">${values[column.key]}</td>`;
+            }).join('')}</tr>`;
+        }).join('') : `<tr><td class="usage-table-empty" colspan="${columns.length}">当前暂无可比较的套餐。</td></tr>`;
+        return `<article class="usage-preset-card usage-preset-card--${kind}" data-preset-id="${escapeHtml(group.id)}">` +
+            `<header><div><h4>${escapeHtml(group.title)}</h4><p>按综合单价从低到高</p></div><span>${rows.length} 条</span></header>` +
+            `<div class="usage-preset-table-scroll"><table class="usage-preset-table"><thead>${head}</thead><tbody>${body}</tbody></table></div></article>`;
+    }
+
+    function renderPresetComparisons(host, config, points, tokenUnit) {
+        if (!host) return [];
+        const normalized = normalizePresetConfig(config);
+        const singles = normalized.groups.filter((group) => group.kind === 'single');
+        const multis = normalized.groups.filter((group) => group.kind === 'multi');
+        if (!normalized.groups.length) {
+            host.hidden = true;
+            host.innerHTML = '';
+            return [];
+        }
+        host.hidden = false;
+        host.innerHTML = `<div class="usage-preset-heading"><div><p class="usage-eyebrow">快速选择</p><h3>${escapeHtml(normalized.title)}</h3>${normalized.description ? `<p>${escapeHtml(normalized.description)}</p>` : ''}</div><span>固定精选 · 不受筛选影响</span></div>` +
+            (singles.length ? `<div class="usage-preset-grid usage-preset-grid--single">${singles.map((group) => presetComparisonTableHtml(group, points, tokenUnit)).join('')}</div>` : '') +
+            (multis.length ? `<div class="usage-preset-grid usage-preset-grid--multi">${multis.map((group) => presetComparisonTableHtml(group, points, tokenUnit)).join('')}</div>` : '');
+        return normalized.groups;
+    }
+
+    async function loadPresetConfig() {
+        try {
+            const response = await fetch('model-comparison-presets.json', { cache: 'no-store' });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return await response.json();
+        } catch (error) {
+            console.warn('常见对比配置加载失败:', error);
+            return { groups: [] };
+        }
+    }
+
     function scoreText(point, benchmark) {
         const score = point.scores && point.scores[benchmark];
         if (!score) return '暂无评分';
@@ -505,6 +621,8 @@
                     <p>把同一套餐下的不同模型拆成独立点，比较钱花在哪里、实际能换来多少额度和模型能力。</p>
                 </header>
                 <div class="usage-method-note"><strong>统一口径：</strong>有具体输入、输出、缓存价格的为计算得出，其余的除了Kimi套餐没有购买到之外，均为实测数据，实测尽量构造95%缓存命中率和0.5%的输出占比。</div>
+                <section class="usage-presets" data-presets aria-label="常见模型对比" hidden></section>
+                <div class="usage-explorer-heading"><h3>完整对比</h3><p>使用筛选、图表与数据明细继续探索全部套餐和模型。</p></div>
                 <div class="filter-bar surface-panel usage-filters" aria-label="图表筛选">
                     <div class="filter-dropdown" data-picker="vendors"><button type="button" class="filter-btn" data-picker-toggle><span>平台</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-count hidden>0</span></button><div class="dropdown-menu"><div class="dropdown-section"><div class="checkbox-group" data-options></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-picker-reset>重置</button><button type="button" class="dropdown-btn primary" data-picker-done>确定</button></div></div></div>
                     <div class="filter-dropdown" data-picker="models"><button type="button" class="filter-btn" data-picker-toggle><span>模型</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-count hidden>0</span></button><div class="dropdown-menu usage-model-menu"><input class="usage-search" type="search" data-model-search placeholder="搜索模型" aria-label="搜索模型"><div class="dropdown-section"><div class="checkbox-group" data-options></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-picker-reset>重置</button><button type="button" class="dropdown-btn primary" data-picker-done>确定</button></div></div></div>
@@ -647,7 +765,9 @@
         if (container.__usageMountPromise) return container.__usageMountPromise;
         container.__usageMountPromise = (async () => {
             renderShell(container);
-            const [echarts, response] = await Promise.all([loadEcharts(), fetch('model-comparison.json')]);
+            const [echarts, response, presetConfig] = await Promise.all([
+                loadEcharts(), fetch('model-comparison.json'), loadPresetConfig()
+            ]);
             if (!response.ok) throw new Error(`对比数据加载失败：HTTP ${response.status}`);
             const dataset = await response.json();
             const points = Array.isArray(dataset.points) ? dataset.points : [];
@@ -680,6 +800,7 @@
             const latestTableRows = { comparison: [] };
             const priceBounds = getMonthlyPriceBounds(points);
             const priceSlider = { min: priceBounds.min, max: priceBounds.max };
+            let renderedPresetTokenUnit = null;
 
             function updatePriceSliderVisuals(minValue, maxValue) {
                 const first = Math.max(priceBounds.min, Math.min(priceBounds.max, Math.round(minValue)));
@@ -845,6 +966,10 @@
             }
 
             function render() {
+                if (renderedPresetTokenUnit !== state.tokenUnit) {
+                    renderPresetComparisons(container.querySelector('[data-presets]'), presetConfig, points, state.tokenUnit);
+                    renderedPresetTokenUnit = state.tokenUnit;
+                }
                 const filtered = filterPoints(points, {
                     platforms: state.platforms, models: state.models, multimodal: state.multimodal,
                     aaScoreMin: state.aaScoreMin, deepSWEScoreMin: state.deepSWEScoreMin,
@@ -1109,5 +1234,5 @@
         return container.__usageMountPromise;
     }
 
-    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });
