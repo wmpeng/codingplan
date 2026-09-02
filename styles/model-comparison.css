@@ -51,18 +51,27 @@
 .usage-preset-card > header p { margin: 3px 0 0; color: #8490a1; font-size: 10px; }
 .usage-preset-card > header > span { padding: 3px 7px; border-radius: 999px; background: #edf2f7; color: #667489; font-size: 10px; white-space: nowrap; }
 .usage-preset-table-scroll { width: 100%; overflow-x: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
-.usage-preset-table { width: 100%; border-collapse: separate; border-spacing: 0; }
-.usage-preset-card--single .usage-preset-table { min-width: 470px; }
-.usage-preset-card--multi .usage-preset-table { min-width: 610px; }
-.usage-preset-table th { padding: 8px 7px; border-bottom: 1px solid #dfe6ed; background: #f3f6f9; color: #6c788a; font-size: 10px; font-weight: 800; text-align: left; white-space: nowrap; }
-.usage-preset-table td { padding: 8px 7px; border-bottom: 1px solid #edf1f4; color: #344258; font-size: 11px; line-height: 1.35; vertical-align: top; white-space: nowrap; }
+.usage-preset-table { width: 100%; min-width: 0; table-layout: fixed; border-collapse: separate; border-spacing: 0; }
+.usage-preset-table th { padding: 9px 10px; border-bottom: 1px solid #dfe6ed; background: #f3f6f9; color: #6c788a; font-size: 11px; font-weight: 800; text-align: left; white-space: nowrap; }
+.usage-preset-table th:first-child { width: 68%; }
+.usage-preset-table th:last-child { width: 32%; text-align: right; }
+.usage-preset-table td { padding: 10px; border-bottom: 1px solid #edf1f4; color: #344258; font-size: 12px; line-height: 1.35; vertical-align: top; }
 .usage-preset-table tbody tr:nth-child(even) td { background: #fbfcfd; }
 .usage-preset-table tbody tr:hover td { background: #eef8f5; }
 .usage-preset-table tbody tr:last-child td { border-bottom: 0; }
 .usage-preset-table .numeric { font-variant-numeric: tabular-nums; text-align: right; }
 .usage-preset-table .usage-platform-link { gap: 3px; }
-.usage-preset-table .usage-platform-link strong { font-size: 11px; }
-.usage-preset-qualifier { display: block; margin-top: 2px; color: #8a5a00; font-size: 9px; font-weight: 750; }
+.usage-preset-table .usage-platform-link strong { font-size: 12px; }
+.usage-preset-primary-line, .usage-preset-secondary-line { display: flex; align-items: baseline; gap: 5px; min-width: 0; }
+.usage-preset-primary-line { justify-content: space-between; color: #1f2c40; font-weight: 700; }
+.usage-preset-primary-line .usage-table-model { overflow-wrap: anywhere; text-align: right; }
+.usage-preset-price { flex: 0 0 auto; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.usage-preset-secondary-line { margin-top: 4px; color: #7a8698; font-size: 10px; flex-wrap: wrap; }
+.usage-preset-separator { color: #b0b9c5; }
+.usage-preset-qualifier { display: inline; margin-left: -2px; color: #8a5a00; font-size: 9px; font-weight: 750; }
+.usage-preset-metrics { font-variant-numeric: tabular-nums; text-align: right; }
+.usage-preset-metric-primary { color: #243349; font-size: 12px; font-weight: 750; white-space: nowrap; }
+.usage-preset-metric-secondary { justify-content: flex-end; white-space: nowrap; }
 .usage-preset-table .usage-table-empty { padding: 22px 10px; color: #7a8699; text-align: center; }
 .usage-explorer-heading { padding: 6px 4px 0; }
 .usage-chart-card { position: relative; padding: 20px 22px 14px; border: 1px solid #dfe5ed; border-radius: 18px; background: #fff; box-shadow: 0 12px 32px rgba(30,48,73,.07); }
@@ -136,8 +145,8 @@
   .usage-preset-heading-actions { align-items: flex-start; flex-direction: column; margin-top: 10px; }
   .usage-preset-grid--single { grid-template-columns: 1fr; }
   .usage-preset-grid--multi { grid-template-columns: 1fr; }
-  .usage-preset-card--single .usage-preset-table { min-width: 520px; }
-  .usage-preset-card--multi .usage-preset-table { min-width: 610px; }
+  .usage-preset-table th:first-child { width: 65%; }
+  .usage-preset-table th:last-child { width: 35%; }
   .usage-chart-card { padding: 16px 10px 10px; border-radius: 14px; }
   .usage-chart-head { display: block; padding: 0 6px; }
   .usage-chart-controls { justify-content: space-between; margin-top: 12px; }

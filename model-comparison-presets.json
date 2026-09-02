@@ -31,6 +31,17 @@
       "enabled": true
     },
     {
+      "id": "high-volume-models",
+      "title": "甜品级模型对比",
+      "kind": "multi",
+      "modelIds": [
+        "deepseek-v4-flash-0731",
+        "glm-5-3-flash",
+        "gpt-5-6-luna"
+      ],
+      "enabled": true
+    },
+    {
       "id": "sota-models",
       "title": "SOTA模型对比",
       "kind": "multi",
@@ -39,17 +50,6 @@
         "gpt-5-6-sol",
         "glm-5-3",
         "kimi-k3"
-      ],
-      "enabled": true
-    },
-    {
-      "id": "high-volume-models",
-      "title": "量大模型对比",
-      "kind": "multi",
-      "modelIds": [
-        "deepseek-v4-flash-0731",
-        "glm-5-3-flash",
-        "gpt-5-6-luna"
       ],
       "enabled": true
     }

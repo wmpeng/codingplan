@@ -50,21 +50,12 @@
     ];
     const PRESET_TABLE_COLUMNS = {
         single: [
-            { key: 'vendor', label: '平台' },
-            { key: 'platformType', label: '类型' },
-            { key: 'plan', label: '套餐' },
-            { key: 'price', label: '套餐价格' },
-            { key: 'unitPriceCnyPerM', label: '综合单价' },
-            { key: 'monthlyTokenInM', label: '月用量' }
+            { key: 'identity', label: '平台 / 套餐' },
+            { key: 'metrics', label: '综合单价 / 月用量' }
         ],
         multi: [
-            { key: 'vendor', label: '平台' },
-            { key: 'platformType', label: '类型' },
-            { key: 'plan', label: '套餐' },
-            { key: 'model', label: '模型' },
-            { key: 'price', label: '套餐价格' },
-            { key: 'unitPriceCnyPerM', label: '综合单价' },
-            { key: 'monthlyTokenInM', label: '月用量' }
+            { key: 'identity', label: '平台 / 模型 / 套餐' },
+            { key: 'metrics', label: '综合单价 / 月用量' }
         ]
     };
 
@@ -548,19 +539,19 @@
             const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
             const planName = point.plan || (point.billingType === 'payg' ? '按量 API' : '订阅');
             const plan = `<span>${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
+            const price = point.billingType === 'payg' ? '按量' : `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`;
+            const model = `<span class="usage-table-model">${escapeHtml(point.model || point.canonicalModel || '—')}</span>`;
+            const separator = '<span class="usage-preset-separator">·</span>';
+            const primaryDetail = kind === 'multi' ? model : `<span class="usage-preset-price">${price}</span>`;
+            const secondaryDetail = kind === 'multi' ? `${separator}<span class="usage-preset-price">${price}</span>` : '';
             const values = {
-                vendor: platformCellHtml(point),
-                platformType: escapeHtml(point.platformType || '—'),
-                plan,
-                model: `<span class="usage-table-model">${escapeHtml(point.model || point.canonicalModel || '—')}</span>`,
-                price: point.billingType === 'payg' ? '按量' : `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`,
-                unitPriceCnyPerM: formatUnitPrice(point.unitPriceCnyPerM, tokenUnit),
-                monthlyTokenInM: formatTokenAmount(point.monthlyTokenInM, tokenUnit)
+                identity: `<div class="usage-preset-primary-line">${platformCellHtml(point)}${primaryDetail}</div>` +
+                    `<div class="usage-preset-secondary-line"><span>${escapeHtml(point.platformType || '—')}</span>${separator}${plan}${secondaryDetail}</div>`,
+                metrics: `<div class="usage-preset-metric-primary">${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)}</div>` +
+                    `<div class="usage-preset-secondary-line usage-preset-metric-secondary"><span>月用量</span><span>${formatTokenAmount(point.monthlyTokenInM, tokenUnit)}</span></div>`
             };
             return `<tr data-point-id="${escapeHtml(point.id)}">${columns.map((column) => {
-                const numeric = ['price', 'unitPriceCnyPerM', 'monthlyTokenInM'].includes(column.key);
-                const unitPrice = column.key === 'unitPriceCnyPerM' ? ' usage-table-unit-price' : '';
-                return `<td class="${numeric ? 'numeric' : ''}${unitPrice}">${values[column.key]}</td>`;
+                return `<td class="${column.key === 'metrics' ? 'usage-preset-metrics' : 'usage-preset-identity'}">${values[column.key]}</td>`;
             }).join('')}</tr>`;
         }).join('') : `<tr><td class="usage-table-empty" colspan="${columns.length}">当前暂无可比较的套餐。</td></tr>`;
         return `<article class="usage-preset-card usage-preset-card--${kind}" data-preset-id="${escapeHtml(group.id)}">` +

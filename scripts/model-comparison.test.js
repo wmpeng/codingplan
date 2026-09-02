@@ -262,8 +262,10 @@ test('preset comparisons are configured outside the renderer', () => {
   assert.equal(config.groups.length, 5);
   assert.deepEqual(config.groups.map((group) => group.kind), ['single', 'single', 'single', 'multi', 'multi']);
   assert.deepEqual(config.groups[0].modelIds, ['deepseek-v4-flash-0731']);
-  assert.deepEqual(config.groups[3].modelIds, ['claude-opus-5', 'gpt-5-6-sol', 'glm-5-3', 'kimi-k3']);
-  assert.deepEqual(config.groups[4].modelIds, ['deepseek-v4-flash-0731', 'glm-5-3-flash', 'gpt-5-6-luna']);
+  assert.equal(config.groups[3].title, '甜品级模型对比');
+  assert.deepEqual(config.groups[3].modelIds, ['deepseek-v4-flash-0731', 'glm-5-3-flash', 'gpt-5-6-luna']);
+  assert.equal(config.groups[4].title, 'SOTA模型对比');
+  assert.deepEqual(config.groups[4].modelIds, ['claude-opus-5', 'gpt-5-6-sol', 'glm-5-3', 'kimi-k3']);
 });
 
 test('preset rows include subscriptions and payg while sorting by unit and package price', () => {
@@ -290,12 +292,14 @@ test('preset tables add model only for multi groups and preserve single-model qu
   assert.equal(getPresetModelQualifier(point), '[谷]');
   const single = presetComparisonTableHtml({ id: 'single', title: '单模型', kind: 'single', modelIds: ['glm-5-3-flash'] }, [point], 'M');
   const multi = presetComparisonTableHtml({ id: 'multi', title: '多模型', kind: 'multi', modelIds: ['glm-5-3-flash'] }, [point], 'yi');
-  assert.equal(single.includes('<th scope="col">模型</th>'), false);
+  assert.match(single, /平台 \/ 套餐/);
+  assert.equal(single.includes('平台 / 模型 / 套餐'), false);
   assert.equal(single.includes('按综合单价从低到高'), false);
   assert.equal(single.includes('包含：'), false);
   assert.match(single, /usage-preset-qualifier">\[谷\]/);
   assert.match(single, /¥0\.1 \/ M/);
-  assert.equal(multi.includes('<th scope="col">模型</th>'), true);
+  assert.match(multi, /平台 \/ 模型 \/ 套餐/);
+  assert.equal(multi.includes('<th scope="col">模型</th>'), false);
   assert.match(multi, /包含：GLM-5\.3-Flash/);
   assert.match(multi, /GLM-5\.3-Flash \[谷\]/);
   assert.match(multi, /¥10 \/ 亿/);
@@ -311,9 +315,9 @@ test('preset tables show payg rows with explicit unavailable subscription fields
   const html = presetComparisonTableHtml({
     id: 'api', title: 'API', kind: 'single', modelIds: ['deepseek-v4-flash-0731']
   }, [apiPoint], 'yi');
-  assert.match(html, /<td class="numeric">按量<\/td>/);
+  assert.match(html, /usage-preset-price">按量<\/span>/);
   assert.match(html, /¥10 \/ 亿/);
-  assert.match(html, /<td class="numeric">—<\/td>/);
+  assert.match(html, /usage-preset-metric-secondary"><span>月用量<\/span><span>—<\/span>/);
 });
 
 test('comparison table rows format subscription and payg semantics', () => {
