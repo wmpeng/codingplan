@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles/shared.css?v=260725b">
     <link rel="stylesheet" href="styles/plan-usage.css?v=260725k">
     <link rel="stylesheet" href="styles/comparison-table.css?v=260902a">
+    <link rel="stylesheet" href="styles/platform-comparison.css?v=260903a">
     <style>
         html,
         body {
@@ -4737,7 +4738,14 @@
         </nav>
         <div class="main-view-panels">
             <div id="view-platforms" role="tabpanel" data-main-view-panel="platforms">
-                <p class="main-view-intro">按标签与购买状态快速筛选平台，建立第一轮候选池。</p>
+                <div class="platform-catalog-intro-row">
+                    <p class="main-view-intro">按标签与购买状态快速筛选平台，建立第一轮候选池。</p>
+                    <button type="button" class="platform-compare-launcher" id="platformCompareLauncher">
+                        <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M8 4v16M16 4v16M4 8h16M4 16h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                        <span>开始横向对比</span>
+                        <span class="platform-compare-launcher-count" id="platformCompareLauncherCount" hidden></span>
+                    </button>
+                </div>
 
         <!-- 平台目录（主交互；标签与卡片由 Task 5 填充） -->
         <section class="platform-catalog" id="platformCatalog" aria-label="平台目录">
@@ -7450,8 +7458,9 @@
     <script src="scripts/platform-catalog.js?v=260902d"></script>
     <script src="scripts/platform-detail.js?v=260902d"></script>
     <script src="scripts/shared.js?v=260902a"></script>
+    <script src="scripts/platform-comparison.js?v=260903a"></script>
     <script src="scripts/main-views.js?v=260902a"></script>
     <script src="scripts/plan-composite-price-chart.js?v=260902a"></script>
-    <script src="scripts/homepage.js?v=260902n"></script>
+    <script src="scripts/homepage.js?v=260903a"></script>
 </body>
 </html>

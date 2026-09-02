@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="横向对比 AI Coding 平台的购买状态、模型能力、稳定性、套餐概况与使用提醒。">
+    <title>平台横向对比 - Coding Plan</title>
+    <link rel="icon" href="/favicon.ico?v=260610" type="image/x-icon">
+    <link rel="stylesheet" href="styles/shared.css?v=260725b">
+    <link rel="stylesheet" href="styles/platform-comparison.css?v=260903a">
+</head>
+<body class="platform-comparison-page">
+    <main class="container platform-comparison-container">
+        <nav class="platform-comparison-breadcrumb" aria-label="面包屑">
+            <a href="index.html?view=platforms">平台目录</a>
+            <span aria-hidden="true">/</span>
+            <span>平台横向对比</span>
+        </nav>
+
+        <header class="platform-comparison-hero">
+            <div>
+                <p class="platform-comparison-kicker">PLATFORM COMPARE</p>
+                <h1>把候选平台放在一张桌上</h1>
+                <p>先看购买门槛、模型能力与稳定性，再决定值得深入研究哪些套餐。</p>
+            </div>
+            <button type="button" class="platform-comparison-secondary-btn" id="platformComparisonChoose">重新选择</button>
+        </header>
+
+        <div class="platform-comparison-loading" id="platformComparisonLoading" role="status">正在整理平台信息…</div>
+        <div class="platform-comparison-error" id="platformComparisonError" hidden></div>
+
+        <section id="platformComparisonApp" hidden>
+            <div class="platform-comparison-selection-wrap" aria-label="当前对比平台">
+                <div class="platform-comparison-selection" id="platformComparisonSelection"></div>
+            </div>
+
+            <section class="platform-comparison-summary" aria-labelledby="platformComparisonSummaryTitle">
+                <div class="platform-comparison-section-heading">
+                    <div>
+                        <p class="platform-comparison-eyebrow">一屏决策摘要</p>
+                        <h2 id="platformComparisonSummaryTitle">先看谁在哪方面占优</h2>
+                    </div>
+                    <p>领先仅针对当前所选平台，不代表所有场景下的总排名。</p>
+                </div>
+                <div class="platform-comparison-summary-grid" id="platformComparisonSummary"></div>
+            </section>
+
+            <section class="platform-comparison-details" aria-labelledby="platformComparisonDetailsTitle">
+                <div class="platform-comparison-toolbar">
+                    <div>
+                        <p class="platform-comparison-eyebrow">详细对比</p>
+                        <h2 id="platformComparisonDetailsTitle">关键差异与选择依据</h2>
+                    </div>
+                    <label class="platform-comparison-diff-toggle">
+                        <input type="checkbox" id="platformComparisonOnlyDifferences">
+                        <span aria-hidden="true"></span>
+                        只看差异
+                    </label>
+                </div>
+                <p class="platform-comparison-focus-hint" id="platformComparisonFocusHint">点每行左侧的书签，可把最关心的指标置顶。</p>
+                <div class="platform-comparison-matrix-wrap">
+                    <div class="platform-comparison-matrix" id="platformComparisonMatrix"></div>
+                </div>
+            </section>
+
+            <footer class="platform-comparison-footer">
+                <div>
+                    <strong>平台只是第一层选择</strong>
+                    <p>确认候选后，可回到套餐表继续核对价格、额度和具体模型。</p>
+                </div>
+                <a href="index.html?view=plans" class="platform-comparison-primary-link">查看套餐对比 <span aria-hidden="true">→</span></a>
+            </footer>
+        </section>
+    </main>
+
+    <script src="scripts/entity-data.js?v=260902f"></script>
+    <script src="scripts/platform-catalog.js?v=260902d"></script>
+    <script src="scripts/platform-comparison.js?v=260903a"></script>
+    <script>
+        PlatformComparison.bootComparePage();
+    </script>
+</body>
+</html>

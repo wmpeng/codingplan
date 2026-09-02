@@ -2316,6 +2316,9 @@
             );
             persistPlatformPinnedIds();
             applyPlatformFilters();
+            if (typeof PlatformComparison !== 'undefined' && PlatformComparison.updateLauncherCount) {
+                PlatformComparison.updateLauncherCount();
+            }
             if (typeof PlatformDetail !== 'undefined' && PlatformDetail.syncPinUi) {
                 PlatformDetail.syncPinUi();
             }
@@ -2597,6 +2600,15 @@
             renderPlatformTagBar();
             loadPlatformPinnedIds();
             applyPlatformFilters();
+
+            if (typeof PlatformComparison !== 'undefined' && PlatformComparison.mountLauncher) {
+                PlatformComparison.mountLauncher({
+                    button: document.getElementById('platformCompareLauncher'),
+                    count: document.getElementById('platformCompareLauncherCount'),
+                    platforms: allPlatforms,
+                    getPinnedIds: () => platformPinnedIds
+                });
+            }
 
             const clearBtn = document.getElementById('platformClearFilters');
             if (clearBtn && !clearBtn.dataset.bound) {
