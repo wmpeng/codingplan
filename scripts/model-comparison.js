@@ -538,6 +538,11 @@
         const kind = group && group.kind === 'multi' ? 'multi' : 'single';
         const columns = PRESET_TABLE_COLUMNS[kind];
         const rows = buildPresetComparisonRows(points, group, platformScope);
+        const modelNamesById = new Map((points || []).map((point) => [point.canonicalModelId, point.canonicalModel]));
+        const includedModels = kind === 'multi'
+            ? group.modelIds.map((id) => modelNamesById.get(id) || id).join('、')
+            : '';
+        const subtitle = includedModels ? `<p>包含：${escapeHtml(includedModels)}</p>` : '';
         const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
         const body = rows.length ? rows.map((point) => {
             const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
@@ -559,7 +564,7 @@
             }).join('')}</tr>`;
         }).join('') : `<tr><td class="usage-table-empty" colspan="${columns.length}">当前暂无可比较的套餐。</td></tr>`;
         return `<article class="usage-preset-card usage-preset-card--${kind}" data-preset-id="${escapeHtml(group.id)}">` +
-            `<header><div><h4>${escapeHtml(group.title)}</h4><p>按综合单价从低到高</p></div><span>${rows.length} 条</span></header>` +
+            `<header><div><h4>${escapeHtml(group.title)}</h4>${subtitle}</div><span>${rows.length} 条</span></header>` +
             `<div class="usage-preset-table-scroll"><table class="usage-preset-table"><thead>${head}</thead><tbody>${body}</tbody></table></div></article>`;
     }
 

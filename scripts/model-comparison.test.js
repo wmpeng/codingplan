@@ -291,9 +291,12 @@ test('preset tables add model only for multi groups and preserve single-model qu
   const single = presetComparisonTableHtml({ id: 'single', title: '单模型', kind: 'single', modelIds: ['glm-5-3-flash'] }, [point], 'M');
   const multi = presetComparisonTableHtml({ id: 'multi', title: '多模型', kind: 'multi', modelIds: ['glm-5-3-flash'] }, [point], 'yi');
   assert.equal(single.includes('<th scope="col">模型</th>'), false);
+  assert.equal(single.includes('按综合单价从低到高'), false);
+  assert.equal(single.includes('包含：'), false);
   assert.match(single, /usage-preset-qualifier">\[谷\]/);
   assert.match(single, /¥0\.1 \/ M/);
   assert.equal(multi.includes('<th scope="col">模型</th>'), true);
+  assert.match(multi, /包含：GLM-5\.3-Flash/);
   assert.match(multi, /GLM-5\.3-Flash \[谷\]/);
   assert.match(multi, /¥10 \/ 亿/);
   assert.match(multi, /10亿/);
