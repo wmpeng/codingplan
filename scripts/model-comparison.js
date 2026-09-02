@@ -786,7 +786,7 @@
         container.__usageMountPromise = (async () => {
             renderShell(container);
             const [echarts, response, presetConfig] = await Promise.all([
-                loadEcharts(), fetch('model-comparison.json'), loadPresetConfig()
+                loadEcharts(), fetch('model-comparison.json', { cache: 'no-store' }), loadPresetConfig()
             ]);
             if (!response.ok) throw new Error(`对比数据加载失败：HTTP ${response.status}`);
             const dataset = await response.json();
