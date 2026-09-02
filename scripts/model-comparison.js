@@ -38,7 +38,7 @@
         { key: 'vendor', label: '平台' },
         { key: 'platformType', label: '类型' },
         { key: 'plan', label: '套餐' },
-        { key: 'price', label: '价格' },
+        { key: 'price', label: '套餐价格' },
         { key: 'model', label: '模型' },
         { key: 'unitPriceCnyPerM', label: '综合单价' },
         { key: 'fiveHourTokenInM', label: '5h用量' },
@@ -48,6 +48,16 @@
         { key: 'deepSWE', label: 'DeepSWE分数' },
         { key: 'note', label: '备注' }
     ];
+    const PRESET_TABLE_COLUMNS = {
+        single: [
+            { key: 'identity', label: '平台 / 套餐' },
+            { key: 'metrics', label: '综合单价 / 月用量' }
+        ],
+        multi: [
+            { key: 'identity', label: '平台 / 模型 / 套餐' },
+            { key: 'metrics', label: '综合单价 / 月用量' }
+        ]
+    };
 
     function finitePositive(value) {
         const number = Number(value);
@@ -64,16 +74,20 @@
         return JSON.stringify([String(point.vendor || ''), String(point.platformType || '')]);
     }
 
+    function getDefaultPlatformSelectionKeys() {
+        return new Set(DEFAULT_PLATFORM_SELECTIONS
+            .map(([vendor, platformType]) => getPointPlatformKey({ vendor, platformType })));
+    }
+
     function createDefaultFilterState(points) {
         const availablePlatforms = new Set((points || []).map(getPointPlatformKey));
         const availableModels = new Set((points || []).map((point) => point.canonicalModelId));
         return {
-            platforms: new Set(DEFAULT_PLATFORM_SELECTIONS
-                .map(([vendor, platformType]) => getPointPlatformKey({ vendor, platformType }))
+            platforms: new Set([...getDefaultPlatformSelectionKeys()]
                 .filter((key) => availablePlatforms.has(key))),
             models: new Set(DEFAULT_MODEL_IDS.filter((id) => availableModels.has(id))),
             multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', monthlyPriceMin: null,
-            monthlyPriceMax: null, soloColorKey: null, tokenUnit: 'M'
+            monthlyPriceMax: null, soloColorKey: null, tokenUnit: 'yi'
         };
     }
 
@@ -412,13 +426,22 @@
             const aMissing = a === null || a === '';
             const bMissing = b === null || b === '';
             if (aMissing !== bMissing) return aMissing ? 1 : -1;
-            if (aMissing && bMissing) return String(left.id || '').localeCompare(String(right.id || ''), 'zh-CN');
+            let compared = 0;
             if (typeof a === 'number' && typeof b === 'number') {
-                const delta = (a - b) * multiplier;
-                return delta || String(left.id || '').localeCompare(String(right.id || ''), 'zh-CN');
+                compared = (a - b) * multiplier;
+            } else if (!aMissing || !bMissing) {
+                compared = String(a).localeCompare(String(b), 'zh-CN', { numeric: true, sensitivity: 'base' }) * multiplier;
             }
-            const compared = String(a).localeCompare(String(b), 'zh-CN', { numeric: true, sensitivity: 'base' }) * multiplier;
-            return compared || String(left.id || '').localeCompare(String(right.id || ''), 'zh-CN');
+            if (compared) return compared;
+            if (key === 'unitPriceCnyPerM') {
+                const aPrice = comparisonSortValue(left, 'price');
+                const bPrice = comparisonSortValue(right, 'price');
+                const aPriceMissing = aPrice === null || aPrice === '';
+                const bPriceMissing = bPrice === null || bPrice === '';
+                if (aPriceMissing !== bPriceMissing) return aPriceMissing ? 1 : -1;
+                if (!aPriceMissing && !bPriceMissing && aPrice !== bPrice) return aPrice - bPrice;
+            }
+            return String(left.id || '').localeCompare(String(right.id || ''), 'zh-CN');
         });
     }
 
@@ -450,6 +473,119 @@
             `<td class="numeric">${aaScore ? formatNumber(aaScore.score, 0) : '—'}</td>` +
             `<td class="numeric">${deepSWEScore ? `${formatNumber(deepSWEScore.score, 0)}${deepSWEInterval}` : '—'}</td>` +
             `<td class="usage-table-note">${escapeHtml(point.note || '—')}</td></tr>`;
+    }
+
+    function normalizePresetConfig(config) {
+        const source = config && typeof config === 'object' ? config : {};
+        const seenIds = new Set();
+        const groups = (Array.isArray(source.groups) ? source.groups : []).flatMap((group) => {
+            if (!group || group.enabled === false) return [];
+            const id = String(group.id || '').trim();
+            const title = String(group.title || '').trim();
+            const kind = group.kind === 'multi' ? 'multi' : group.kind === 'single' ? 'single' : '';
+            const modelIds = [...new Set((Array.isArray(group.modelIds) ? group.modelIds : [])
+                .map((value) => String(value || '').trim()).filter(Boolean))];
+            if (!id || !title || !kind || !modelIds.length || seenIds.has(id)) return [];
+            if (kind === 'single' && modelIds.length !== 1) return [];
+            seenIds.add(id);
+            return [{ id, title, kind, modelIds }];
+        });
+        return {
+            title: String(source.title || '').trim() || '常见对比',
+            description: String(source.description || '').trim(),
+            groups
+        };
+    }
+
+    function normalizePresetPlatformScope(value) {
+        return value === 'all' ? 'all' : 'featured';
+    }
+
+    function buildPresetComparisonRows(points, group, platformScope) {
+        const modelIds = new Set(group && Array.isArray(group.modelIds) ? group.modelIds : []);
+        const defaultPlatformKeys = getDefaultPlatformSelectionKeys();
+        const scope = normalizePresetPlatformScope(platformScope);
+        return sortComparisonRows((points || []).filter((point) =>
+            (point.billingType === 'subscription' || point.billingType === 'payg') &&
+            (scope === 'all' || defaultPlatformKeys.has(getPointPlatformKey(point))) &&
+            modelIds.has(point.canonicalModelId) &&
+            finitePositive(point.unitPriceCnyPerM) !== null &&
+            (point.billingType === 'payg' || (
+                finitePositive(point.monthlyFeeCny) !== null &&
+                finitePositive(point.monthlyTokenInM) !== null
+            ))
+        ), 'unitPriceCnyPerM', 'asc');
+    }
+
+    function getPresetModelQualifier(point) {
+        const model = String(point && point.model || '').trim();
+        const canonical = String(point && point.canonicalModel || '').trim();
+        if (!model || !canonical || model === canonical) return '';
+        if (model.startsWith(canonical)) return model.slice(canonical.length).trim();
+        return model;
+    }
+
+    function presetComparisonTableHtml(group, points, tokenUnit, platformScope) {
+        const kind = group && group.kind === 'multi' ? 'multi' : 'single';
+        const columns = PRESET_TABLE_COLUMNS[kind];
+        const rows = buildPresetComparisonRows(points, group, platformScope);
+        const modelNamesById = new Map((points || []).map((point) => [point.canonicalModelId, point.canonicalModel]));
+        const includedModels = kind === 'multi'
+            ? group.modelIds.map((id) => modelNamesById.get(id) || id).join('、')
+            : '';
+        const subtitle = includedModels ? `<p>包含：${escapeHtml(includedModels)}</p>` : '';
+        const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
+        const body = rows.length ? rows.map((point) => {
+            const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
+            const planName = point.plan || (point.billingType === 'payg' ? '按量 API' : '订阅');
+            const plan = `<span>${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
+            const price = point.billingType === 'payg' ? '按量' : `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`;
+            const model = `<span class="usage-table-model">${escapeHtml(point.model || point.canonicalModel || '—')}</span>`;
+            const separator = '<span class="usage-preset-separator">·</span>';
+            const primaryDetail = kind === 'multi' ? model : `<span class="usage-preset-price">${price}</span>`;
+            const secondaryDetail = kind === 'multi' ? `${separator}<span class="usage-preset-price">${price}</span>` : '';
+            const values = {
+                identity: `<div class="usage-preset-primary-line">${platformCellHtml(point)}${primaryDetail}</div>` +
+                    `<div class="usage-preset-secondary-line"><span>${escapeHtml(point.platformType || '—')}</span>${separator}${plan}${secondaryDetail}</div>`,
+                metrics: `<div class="usage-preset-metric-primary">${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)}</div>` +
+                    `<div class="usage-preset-secondary-line usage-preset-metric-secondary"><span>月用量</span><span>${formatTokenAmount(point.monthlyTokenInM, tokenUnit)}</span></div>`
+            };
+            return `<tr data-point-id="${escapeHtml(point.id)}">${columns.map((column) => {
+                return `<td class="${column.key === 'metrics' ? 'usage-preset-metrics' : 'usage-preset-identity'}">${values[column.key]}</td>`;
+            }).join('')}</tr>`;
+        }).join('') : `<tr><td class="usage-table-empty" colspan="${columns.length}">当前暂无可比较的套餐。</td></tr>`;
+        return `<article class="usage-preset-card usage-preset-card--${kind}" data-preset-id="${escapeHtml(group.id)}">` +
+            `<header><div><h4>${escapeHtml(group.title)}</h4>${subtitle}</div><span>${rows.length} 条</span></header>` +
+            `<div class="usage-preset-table-scroll"><table class="usage-preset-table"><thead>${head}</thead><tbody>${body}</tbody></table></div></article>`;
+    }
+
+    function renderPresetComparisons(host, config, points, tokenUnit, platformScope) {
+        if (!host) return [];
+        const normalized = normalizePresetConfig(config);
+        const scope = normalizePresetPlatformScope(platformScope);
+        const singles = normalized.groups.filter((group) => group.kind === 'single');
+        const multis = normalized.groups.filter((group) => group.kind === 'multi');
+        if (!normalized.groups.length) {
+            host.hidden = true;
+            host.innerHTML = '';
+            return [];
+        }
+        host.hidden = false;
+        host.innerHTML = `<div class="usage-preset-heading"><div><p class="usage-eyebrow">快速选择</p><h3>${escapeHtml(normalized.title)}</h3>${normalized.description ? `<p>${escapeHtml(normalized.description)}</p>` : ''}</div><div class="usage-preset-heading-actions"><span class="usage-preset-note">固定对比 · 不受下方筛选影响</span><div class="usage-segments usage-preset-scope-control" role="group" aria-label="预置对比平台范围"><button type="button" data-preset-platform-scope="featured" class="${scope === 'featured' ? 'is-active' : ''}" aria-pressed="${scope === 'featured'}">仅显示精选平台</button><button type="button" data-preset-platform-scope="all" class="${scope === 'all' ? 'is-active' : ''}" aria-pressed="${scope === 'all'}">显示所有平台</button></div></div></div>` +
+            (singles.length ? `<div class="usage-preset-grid usage-preset-grid--single">${singles.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope)).join('')}</div>` : '') +
+            (multis.length ? `<div class="usage-preset-grid usage-preset-grid--multi">${multis.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope)).join('')}</div>` : '');
+        return normalized.groups;
+    }
+
+    async function loadPresetConfig() {
+        try {
+            const response = await fetch('model-comparison-presets.json', { cache: 'no-store' });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return await response.json();
+        } catch (error) {
+            console.warn('常见对比配置加载失败:', error);
+            return { groups: [] };
+        }
     }
 
     function scoreText(point, benchmark) {
@@ -505,6 +641,8 @@
                     <p>把同一套餐下的不同模型拆成独立点，比较钱花在哪里、实际能换来多少额度和模型能力。</p>
                 </header>
                 <div class="usage-method-note"><strong>统一口径：</strong>有具体输入、输出、缓存价格的为计算得出，其余的除了Kimi套餐没有购买到之外，均为实测数据，实测尽量构造95%缓存命中率和0.5%的输出占比。</div>
+                <section class="usage-presets" data-presets aria-label="常见模型对比" hidden></section>
+                <div class="usage-explorer-heading"><h3>完整对比</h3><p>使用筛选、图表与数据明细继续探索全部套餐和模型。</p></div>
                 <div class="filter-bar surface-panel usage-filters" aria-label="图表筛选">
                     <div class="filter-dropdown" data-picker="vendors"><button type="button" class="filter-btn" data-picker-toggle><span>平台</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-count hidden>0</span></button><div class="dropdown-menu"><div class="dropdown-section"><div class="checkbox-group" data-options></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-picker-reset>重置</button><button type="button" class="dropdown-btn primary" data-picker-done>确定</button></div></div></div>
                     <div class="filter-dropdown" data-picker="models"><button type="button" class="filter-btn" data-picker-toggle><span>模型</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-count hidden>0</span></button><div class="dropdown-menu usage-model-menu"><input class="usage-search" type="search" data-model-search placeholder="搜索模型" aria-label="搜索模型"><div class="dropdown-section"><div class="checkbox-group" data-options></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-picker-reset>重置</button><button type="button" class="dropdown-btn primary" data-picker-done>确定</button></div></div></div>
@@ -513,7 +651,7 @@
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>AA 最低分</span><input data-filter="aaScoreMin" aria-label="AA 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>DeepSWE 最低分</span><input data-filter="deepSWEScoreMin" aria-label="DeepSWE 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <div class="usage-color-control" aria-label="颜色区分方式"><span>颜色</span><div class="usage-segments"><button type="button" data-color-mode="vendor" class="is-active">按平台</button><button type="button" data-color-mode="model">按模型</button></div></div>
-                    <div class="usage-unit-control" aria-label="Token 单位"><span>单位</span><div class="usage-segments"><button type="button" data-token-unit="M" class="is-active">M</button><button type="button" data-token-unit="yi">亿</button></div></div>
+                    <div class="usage-unit-control" aria-label="Token 单位"><span>单位</span><div class="usage-segments"><button type="button" data-token-unit="M">M</button><button type="button" data-token-unit="yi" class="is-active">亿</button></div></div>
                     <div class="filter-trailing"><button type="button" class="reset-btn" data-action="restore-defaults">恢复默认</button><div class="stats-bar usage-counts" data-counts aria-live="polite"></div></div>
                 </div>
                 <div class="usage-color-legend"><strong data-color-legend-title>平台颜色</strong><div data-color-legend></div></div>
@@ -647,7 +785,9 @@
         if (container.__usageMountPromise) return container.__usageMountPromise;
         container.__usageMountPromise = (async () => {
             renderShell(container);
-            const [echarts, response] = await Promise.all([loadEcharts(), fetch('model-comparison.json')]);
+            const [echarts, response, presetConfig] = await Promise.all([
+                loadEcharts(), fetch('model-comparison.json'), loadPresetConfig()
+            ]);
             if (!response.ok) throw new Error(`对比数据加载失败：HTTP ${response.status}`);
             const dataset = await response.json();
             const points = Array.isArray(dataset.points) ? dataset.points : [];
@@ -664,7 +804,7 @@
             const modelColors = buildModelColorMap(models.map(([id]) => id));
             const state = Object.assign(createDefaultFilterState(points), {
                 benchmark: 'artificialAnalysis', colorMode: 'vendor',
-                tokensScale: 'log', priceScale: 'log'
+                tokensScale: 'log', priceScale: 'log', presetPlatformScope: 'featured'
             });
             const usageChart = echarts.init(container.querySelector('[data-chart="usage"]'));
             const intelligenceChart = echarts.init(container.querySelector('[data-chart="intelligence"]'));
@@ -680,6 +820,7 @@
             const latestTableRows = { comparison: [] };
             const priceBounds = getMonthlyPriceBounds(points);
             const priceSlider = { min: priceBounds.min, max: priceBounds.max };
+            let renderedPresetKey = null;
 
             function updatePriceSliderVisuals(minValue, maxValue) {
                 const first = Math.max(priceBounds.min, Math.min(priceBounds.max, Math.round(minValue)));
@@ -845,6 +986,11 @@
             }
 
             function render() {
+                const presetRenderKey = `${state.tokenUnit}:${state.presetPlatformScope}`;
+                if (renderedPresetKey !== presetRenderKey) {
+                    renderPresetComparisons(container.querySelector('[data-presets]'), presetConfig, points, state.tokenUnit, state.presetPlatformScope);
+                    renderedPresetKey = presetRenderKey;
+                }
                 const filtered = filterPoints(points, {
                     platforms: state.platforms, models: state.models, multimodal: state.multimodal,
                     aaScoreMin: state.aaScoreMin, deepSWEScoreMin: state.deepSWEScoreMin,
@@ -1075,6 +1221,12 @@
                     render();
                     return;
                 }
+                const presetPlatformScopeButton = event.target.closest('[data-preset-platform-scope]');
+                if (presetPlatformScopeButton) {
+                    state.presetPlatformScope = normalizePresetPlatformScope(presetPlatformScopeButton.dataset.presetPlatformScope);
+                    render();
+                    return;
+                }
                 if (event.target.closest('[data-action="restore-defaults"]')) {
                     Object.assign(state, createDefaultFilterState(points));
                     syncFilterControls();
@@ -1109,5 +1261,5 @@
         return container.__usageMountPromise;
     }
 
-    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });
