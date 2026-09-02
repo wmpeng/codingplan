@@ -15204,6 +15204,97 @@
       "note": "高峰时段（周一~五 9-12/14-18）价格"
     },
     {
+      "slug": "gongji-api--kimi-k3",
+      "planSlug": "gongji-api",
+      "modelSlug": "kimi-k3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "catalogOrder": 0,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 2.7084
+      },
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 16.0,
+        "cachePerM": 1.6,
+        "outputPerM": 80.0,
+        "inputCnyPerM": 16.0,
+        "cacheCnyPerM": 1.6,
+        "outputCnyPerM": 80.0
+      },
+      "note": "官方价格的 8 折"
+    },
+    {
+      "slug": "gongji-api--deepseek-v4-pro-0813",
+      "planSlug": "gongji-api",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "catalogOrder": 1,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.1623
+      },
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 2.4,
+        "cachePerM": 0.02,
+        "outputPerM": 4.8,
+        "inputCnyPerM": 2.4,
+        "cacheCnyPerM": 0.02,
+        "outputCnyPerM": 4.8
+      },
+      "note": "官方价格的 8 折"
+    },
+    {
+      "slug": "gongji-api--glm-5-2",
+      "planSlug": "gongji-api",
+      "modelSlug": "glm-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "catalogOrder": 2,
+      "method": "unknown",
+      "usage": {
+        "unitPriceCnyPerM": "unknown"
+      },
+      "pricing": null,
+      "note": "以平台公示为准"
+    },
+    {
+      "slug": "gongji-api--kimi-k2-6",
+      "planSlug": "gongji-api",
+      "modelSlug": "kimi-k2-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "catalogOrder": 3,
+      "method": "unknown",
+      "usage": {
+        "unitPriceCnyPerM": "unknown"
+      },
+      "pricing": null,
+      "note": "以平台公示为准"
+    },
+    {
+      "slug": "gongji-api--qwen-3-7-max",
+      "planSlug": "gongji-api",
+      "modelSlug": "qwen-3-7-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "catalogOrder": 4,
+      "method": "unknown",
+      "usage": {
+        "unitPriceCnyPerM": "unknown"
+      },
+      "pricing": null,
+      "note": "以平台公示为准"
+    },
+    {
       "slug": "zhipu-intl-coding-plan-lite--glm-5-1",
       "planSlug": "zhipu-intl-coding-plan-lite",
       "modelSlug": "glm-5-1",

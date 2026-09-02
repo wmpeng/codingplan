@@ -2509,6 +2509,22 @@
       "benefits": [],
       "note": "",
       "planTableVisible": false
+    },
+    {
+      "slug": "gongji-api",
+      "platformSlug": "gongji",
+      "name": "按量 API",
+      "type": "API",
+      "action": "https://api.dreamfree.space/c/s/cpyqgongji",
+      "rating": 0,
+      "tags": [],
+      "firstMonthPrice": "-",
+      "monthlyPrice": "-",
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "benefits": [],
+      "note": "须通过邀请链接进入，方可锁定 8 折调用资格与额外额度。",
+      "planTableVisible": false
     }
   ]
 }

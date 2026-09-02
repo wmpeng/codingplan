@@ -64,11 +64,6 @@ function assert(cond, msg) {
   assert(Math.abs(afterPlans - before) < 5, `scroll jumped on plans: ${before} -> ${afterPlans}`);
   assert(await page.locator('#view-plans').isVisible(), 'plans visible');
 
-  await page.click('[data-main-view="payg"]');
-  await page.waitForTimeout(800);
-  const afterPayg = await page.evaluate(() => window.scrollY);
-  assert(Math.abs(afterPayg - before) < 5, `scroll jumped on payg: ${before} -> ${afterPayg}`);
-
   await page.click('[data-main-view="monitor"]');
   await page.waitForTimeout(800);
   const afterMonitor = await page.evaluate(() => window.scrollY);
@@ -79,7 +74,7 @@ function assert(cond, msg) {
   const afterPlatforms = await page.evaluate(() => window.scrollY);
   assert(Math.abs(afterPlatforms - before) < 5, `scroll jumped on platforms: ${before} -> ${afterPlatforms}`);
 
-  console.log(`SCROLL_OK before=${before} plans=${afterPlans} payg=${afterPayg} monitor=${afterMonitor} platforms=${afterPlatforms}`);
+  console.log(`SCROLL_OK before=${before} plans=${afterPlans} monitor=${afterMonitor} platforms=${afterPlatforms}`);
   await browser.close();
   server.close();
 })().catch((err) => {

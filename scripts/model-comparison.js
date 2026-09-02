@@ -41,6 +41,7 @@
         { key: 'price', label: '套餐价格' },
         { key: 'model', label: '模型' },
         { key: 'unitPriceCnyPerM', label: '综合单价' },
+        { key: 'apiPricing', label: 'API 单价（输入 / 缓存 / 输出）', sortable: false },
         { key: 'fiveHourTokenInM', label: '5h用量' },
         { key: 'weeklyTokenInM', label: '周用量' },
         { key: 'monthlyTokenInM', label: '月用量' },
@@ -410,6 +411,16 @@
         return `¥${formatNumber(number, 4)} / ${normalized === 'yi' ? '亿' : 'M'}`;
     }
 
+    function formatApiPricing(pricing) {
+        if (!pricing || typeof pricing !== 'object') return '—';
+        const currency = String(pricing.currency || '¥');
+        const format = (value) => {
+            const number = Number(value);
+            return Number.isFinite(number) ? `${currency}${formatNumber(number, 6)}` : '—';
+        };
+        return `输入 ${format(pricing.inputPerM)} · 缓存 ${format(pricing.cachePerM)} · 输出 ${format(pricing.outputPerM)} / M`;
+    }
+
     function comparisonSortValue(point, key) {
         if (key === 'price') return finitePositive(point.monthlyFeeCny);
         if (key === 'artificialAnalysis' || key === 'deepSWE') return getPointScore(point, key);
@@ -448,9 +459,14 @@
     }
 
     function comparisonTableHeadHtml(tableName) {
-        return `<tr>${COMPARISON_TABLE_COLUMNS.map((column) =>
-            `<th scope="col" class="sortable${column.key === 'vendor' ? ' sticky-first' : ''}" tabindex="0" aria-sort="none" data-table-sort="${tableName}" data-sort-key="${column.key}">${column.label}</th>`
-        ).join('')}</tr>`;
+        return `<tr>${COMPARISON_TABLE_COLUMNS.map((column) => {
+            const sortable = column.sortable !== false;
+            const classes = `${sortable ? 'sortable' : ''}${column.key === 'vendor' ? ' sticky-first' : ''}`.trim();
+            const sorting = sortable
+                ? ` tabindex="0" aria-sort="none" data-table-sort="${tableName}" data-sort-key="${column.key}"`
+                : '';
+            return `<th scope="col"${classes ? ` class="${classes}"` : ''}${sorting}>${column.label}</th>`;
+        }).join('')}</tr>`;
     }
 
     function comparisonTableRowHtml(point, tokenUnit) {
@@ -469,6 +485,7 @@
             `<td class="numeric">${price}</td>` +
             `<td class="usage-table-model">${escapeHtml(point.modelName || point.canonicalModelName)}</td>` +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
+            `<td class="usage-table-api-pricing">${subscription ? '—' : escapeHtml(formatApiPricing(point.apiPricing))}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.weeklyTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}</td>` +
@@ -508,11 +525,11 @@
         const defaultPlatformKeys = getDefaultPlatformSelectionKeys();
         const scope = normalizePresetPlatformScope(platformScope);
         return sortComparisonRows((points || []).filter((point) =>
-            (point.billingType === 'subscription' || point.billingType === 'payg') &&
+            (point.billingType === 'subscription' || point.billingType === 'api') &&
             (scope === 'all' || defaultPlatformKeys.has(getPointPlatformKey(point))) &&
             modelSlugs.has(point.modelSlug) &&
             finitePositive(point.unitPriceCnyPerM) !== null &&
-            (point.billingType === 'payg' || (
+            (point.billingType === 'api' || (
                 finitePositive(point.monthlyFeeCny) !== null &&
                 finitePositive(point.monthlyTokenInM) !== null
             ))
@@ -539,9 +556,9 @@
         const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
         const body = rows.length ? rows.map((point) => {
             const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
-            const planName = point.planName || (point.billingType === 'payg' ? '按量 API' : '订阅');
+            const planName = point.planName || (point.billingType === 'api' ? '按量 API' : '订阅');
             const plan = `<span>${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
-            const price = point.billingType === 'payg' ? '按量' : `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`;
+            const price = point.billingType === 'api' ? '按量' : `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`;
             const model = `<span class="usage-table-model">${escapeHtml(point.modelName || point.canonicalModelName || '—')}</span>`;
             const separator = '<span class="usage-preset-separator">·</span>';
             const primaryDetail = kind === 'multi' ? model : `<span class="usage-preset-price">${price}</span>`;
@@ -607,10 +624,13 @@
         const fee = point.billingType === 'subscription'
             ? `<div>月费：¥${formatNumber(point.monthlyFeeCny, 2)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
             : '';
+        const apiPricing = point.billingType === 'api'
+            ? `<div>API 单价：${escapeHtml(formatApiPricing(point.apiPricing))}</div>`
+            : '';
         const heading = colorMode === 'model'
             ? `<strong>${modelLine}</strong><div>${platformLine}</div>`
             : `<strong>${platformLine}</strong><div>${modelLine}</div>`;
-        return `<div class="usage-tooltip">${heading}<div>${modality}</div>${fee}` +
+        return `<div class="usage-tooltip">${heading}<div>${modality}</div>${fee}${apiPricing}` +
             `<div>单位价格：${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)} Token</div>` +
             `<div>${scoreText(point, benchmark)}</div></div>`;
     }
@@ -1274,5 +1294,5 @@
         return container.__usageMountPromise;
     }
 
-    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_SLUGS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_SLUGS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, formatApiPricing, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });

@@ -5,23 +5,12 @@ const {
   collectModelsForVendor,
   resolvePlatformAction,
   validatePlatformRecords,
-  validatePaygPricing,
   escapeHtml,
   formatInlineMarkdown,
   formatInlineMarkdownPreserveBreaks,
   buildPlatformCardHtml,
   buildPlatformTagBarHtml,
   buildPlatformStatusSliderHtml,
-  buildPaygPricingSectionHtml,
-  getPaygEntry,
-  collectModelsFromPayg,
-  flattenPaygRows,
-  filterPaygRows,
-  sortPaygRows,
-  collectPaygFilterOptions,
-  paygRowHasAnyPrice,
-  getPaygCompositePriceCny,
-  formatPaygCompositePrice,
   normalizePinnedIds,
   sanitizePinnedIds,
   isPlatformPinned,
@@ -29,7 +18,6 @@ const {
   sortPlatformsByPinned,
   sortItemsByPinned,
   getPlanRowPinId,
-  getPaygRowPinId,
   sanitizePinnedIdList,
   mergePinnedIntoFiltered,
   partitionPinnedItems,
@@ -39,7 +27,6 @@ const {
   buildPlatformPinButtonHtml,
   PLATFORM_PIN_MAX,
   PLANS_TABLE_PIN_STORAGE_KEY,
-  PAYG_TABLE_PIN_STORAGE_KEY,
   dimensionCopy,
   collectPlansForVendor,
   matchMonitorPlatform,
@@ -538,214 +525,6 @@ describe('validatePlatformRecords detail', () => {
   });
 });
 
-describe('payg pricing', () => {
-  const platforms = [
-    samplePlatform({ slug: 'deepseek-official', name: 'DeepSeek' }),
-    samplePlatform({ slug: 'gongji', name: '共绩算力' })
-  ];
-
-  it('validates keyed entries and rejects unknown platform ids', () => {
-    const okDoc = {
-      modelOrder: ['DeepSeek-V4-Pro'],
-      'deepseek-official': {
-        currency: '¥',
-        models: [{ name: 'DeepSeek-V4-Pro', input: 3, cache: 0.025, output: 6 }]
-      }
-    };
-    assert.equal(validatePaygPricing(okDoc, platforms).ok, true);
-
-    const bad = validatePaygPricing({ nope: { models: [{ name: 'X', input: 1 }] } }, platforms);
-    assert.equal(bad.ok, false);
-    assert.ok(bad.errors.some((e) => e.includes('no matching platform')));
-  });
-
-  it('card uses payg models and badge when no plans', () => {
-    const paygPricing = {
-      'deepseek-official': {
-        models: [
-          { name: 'DeepSeek-V4-Pro', input: 3, cache: 0.025, output: 6 },
-          { name: 'DeepSeek-V4-Flash', input: null, cache: null, output: null, note: '官网' }
-        ]
-      }
-    };
-    const html = buildPlatformCardHtml(
-      samplePlatform({
-        slug: 'deepseek-official',
-        name: 'DeepSeek',
-        action: 'https://platform.deepseek.com/'
-      }),
-      [],
-      { paygPricing }
-    );
-    assert.match(html, /platform-rush--payg/);
-    assert.ok(html.includes('按量'));
-    assert.ok(html.includes('DeepSeek-V4-Pro'));
-    assert.ok(html.includes('DeepSeek-V4-Flash'));
-  });
-
-  it('builds payg pricing section html', () => {
-    const entry = getPaygEntry(
-      {
-        gongji: {
-          currency: '¥',
-          notes: ['须邀请链接'],
-          models: [{ name: 'DeepSeek-V4-Pro', input: 2.4, cache: 0.02, output: 4.8, note: '8折' }]
-        }
-      },
-      'gongji'
-    );
-    assert.deepEqual(collectModelsFromPayg(entry), ['DeepSeek-V4-Pro']);
-    const html = buildPaygPricingSectionHtml(entry);
-    assert.match(html, /data-section="payg"/);
-    assert.ok(html.includes('¥2.4'));
-    assert.ok(html.includes('须邀请链接'));
-    assert.ok(html.includes('8折'));
-    assert.ok(html.includes('view=payg'));
-    assert.ok(html.includes('在按量计费价格中查看'));
-  });
-});
-
-describe('flattenPaygRows', () => {
-  const platforms = [
-    samplePlatform({ slug: 'deepseek-official', name: 'DeepSeek', rating: 4 }),
-    samplePlatform({ slug: 'gongji', name: '共绩算力', rating: 3 })
-  ];
-  const payg = {
-    modelOrder: ['DeepSeek-V4-Pro', 'DeepSeek-V4-Flash'],
-    'deepseek-official': {
-      currency: '¥',
-      unit: 'per_m_tokens',
-      notes: ['峰谷翻倍'],
-      models: [
-        { name: 'DeepSeek-V4-Flash', input: null, cache: null, output: null, note: '以官网为准' },
-        { name: 'DeepSeek-V4-Pro', input: 3, cache: 0.025, output: 6 }
-      ]
-    },
-    'orphan-id': {
-      currency: '¥',
-      unit: 'per_m_tokens',
-      models: [{ name: 'X', input: 1, cache: 1, output: 1 }]
-    }
-  };
-
-  it('expands platform×model using top-level modelOrder', () => {
-    const rows = flattenPaygRows(payg, platforms, []);
-    assert.equal(rows.length, 2);
-    assert.equal(rows[0].platformId, 'deepseek-official');
-    assert.equal(rows[0].modelName, 'DeepSeek-V4-Flash');
-    assert.equal(rows[0].order, 1);
-    assert.equal(rows[1].modelName, 'DeepSeek-V4-Pro');
-    assert.equal(rows[1].order, 0);
-    assert.equal(rows[1].input, 3);
-    assert.deepEqual(rows[1].notes, ['峰谷翻倍']);
-  });
-});
-
-describe('paygRowHasAnyPrice', () => {
-  it('true when any price is finite', () => {
-    assert.equal(paygRowHasAnyPrice({ input: null, cache: 0.02, output: null }), true);
-    assert.equal(paygRowHasAnyPrice({ input: null, cache: null, output: null }), false);
-  });
-});
-
-describe('filterPaygRows', () => {
-  const rows = [
-    { platformId: 'a', modelName: 'M1', input: 1, cache: 1, output: 1 },
-    { platformId: 'a', modelName: 'M2', input: null, cache: null, output: null },
-    { platformId: 'b', modelName: 'M1', input: 2, cache: 2, output: 2 }
-  ];
-  it('filters by platform, model, and pricedOnly', () => {
-    assert.equal(filterPaygRows(rows, { platformIds: ['a'] }).length, 2);
-    assert.equal(filterPaygRows(rows, { modelNames: ['M1'] }).length, 2);
-    assert.equal(filterPaygRows(rows, { pricedOnly: true }).length, 2);
-    assert.equal(filterPaygRows(rows, { platformIds: ['a'], pricedOnly: true }).length, 1);
-  });
-});
-
-describe('getPaygCompositePriceCny', () => {
-  it('uses 99:1 input/output and 95% cache hit', () => {
-    const value = getPaygCompositePriceCny(
-      { input: 1, cache: 0.1, output: 2, currency: '¥' },
-      6.8
-    );
-    // 0.99*0.95*0.1 + 0.99*0.05*1 + 0.01*2 = 0.16355
-    assert.ok(Math.abs(value - 0.16355) < 1e-9);
-    assert.equal(
-      formatPaygCompositePrice({ input: 1, cache: 0.1, output: 2, currency: '¥' }, 6.8),
-      '¥0.16 / M'
-    );
-  });
-
-  it('falls back cache to input; skips when input/output missing', () => {
-    const noCache = getPaygCompositePriceCny(
-      { input: 1, cache: null, output: 2, currency: '¥' },
-      6.8
-    );
-    // 0.99*1 + 0.01*2 = 1.01
-    assert.ok(Math.abs(noCache - 1.01) < 1e-9);
-    assert.equal(getPaygCompositePriceCny({ input: null, cache: 0.1, output: 2 }, 6.8), null);
-    assert.equal(getPaygCompositePriceCny({ input: 1, cache: 0.1, output: null }, 6.8), null);
-    assert.equal(formatPaygCompositePrice({ input: null, cache: 0.1, output: 2 }, 6.8), '-');
-  });
-
-  it('converts USD rows to CNY with usdToCnyRate', () => {
-    const value = getPaygCompositePriceCny(
-      { input: 1, cache: 0.1, output: 2, currency: '$' },
-      6.8
-    );
-    // CNY units: 6.8 / 0.68 / 13.6 → 1.11214
-    assert.ok(Math.abs(value - 1.11214) < 1e-9);
-  });
-});
-
-describe('sortPaygRows', () => {
-  it('sorts input asc with missing prices last', () => {
-    const rows = [
-      { modelName: 'c', input: null },
-      { modelName: 'b', input: 2 },
-      { modelName: 'a', input: 1 }
-    ];
-    const sorted = sortPaygRows(rows, { key: 'input', dir: 'asc' });
-    assert.deepEqual(sorted.map((r) => r.modelName), ['a', 'b', 'c']);
-  });
-
-  it('sorts composite asc with missing last', () => {
-    const rows = [
-      { modelName: 'miss', input: null, cache: null, output: null, currency: '¥' },
-      { modelName: 'high', input: 10, cache: 1, output: 20, currency: '¥' },
-      { modelName: 'low', input: 1, cache: 0.1, output: 2, currency: '¥' }
-    ];
-    const sorted = sortPaygRows(rows, { key: 'composite', dir: 'asc', usdToCnyRate: 6.8 });
-    assert.deepEqual(sorted.map((r) => r.modelName), ['low', 'high', 'miss']);
-  });
-
-  it('sorts by model order then input price', () => {
-    const rows = [
-      { modelName: 'Flash', order: 20, input: 1 },
-      { modelName: 'Pro', order: 10, input: 3 },
-      { modelName: 'Pro', order: 10, input: 2.4 }
-    ];
-    const sorted = sortPaygRows(rows, { key: 'order', dir: 'asc' });
-    assert.deepEqual(
-      sorted.map((r) => `${r.modelName}:${r.input}`),
-      ['Pro:2.4', 'Pro:3', 'Flash:1']
-    );
-  });
-});
-
-describe('collectPaygFilterOptions', () => {
-  it('dedupes platforms and sorts models by order', () => {
-    const rows = [
-      { platformId: 'a', platformName: 'A', modelName: 'M2', order: 20 },
-      { platformId: 'b', platformName: 'B', modelName: 'M1', order: 10 },
-      { platformId: 'a', platformName: 'A', modelName: 'M1', order: 10 }
-    ];
-    const opts = collectPaygFilterOptions(rows);
-    assert.deepEqual(opts.platforms.map((p) => p.id), ['a', 'b']);
-    assert.deepEqual(opts.models, ['M1', 'M2']);
-  });
-});
-
 describe('platform pins', () => {
   it('normalizes and sanitizes pinned ids against platforms', () => {
     assert.deepEqual(normalizePinnedIds(['a', '', 'a', 2, null, '  b  ']), ['a', '2', 'b']);
@@ -816,7 +595,7 @@ describe('platform pins', () => {
 });
 
 describe('table row pins', () => {
-  it('builds stable plan and payg pin ids', () => {
+  it('builds stable plan pin ids', () => {
     assert.equal(
       getPlanRowPinId({ slug: 'tencent-lite', platformSlug: 'tencent-cloud', name: 'Lite', type: 'Token Plan' }),
       'tencent-lite'
@@ -825,30 +604,36 @@ describe('table row pins', () => {
       getPlanRowPinId({ slug: 'zhipu-lite', platformSlug: 'zhipu', name: 'Lite' }),
       'zhipu-lite'
     );
-    assert.equal(getPaygRowPinId({ platformId: 'deepseek-official', modelName: 'DeepSeek-V4-Pro' }), 'deepseek-official|DeepSeek-V4-Pro');
     assert.equal(PLANS_TABLE_PIN_STORAGE_KEY, 'plansTablePinnedIds');
-    assert.equal(PAYG_TABLE_PIN_STORAGE_KEY, 'paygTablePinnedIds');
   });
 
   it('merges pinned rows back and partitions for sort-safe head', () => {
-    const all = [
-      { platformId: 'a', modelName: 'M1', input: 1 },
-      { platformId: 'b', modelName: 'M2', input: 9 },
-      { platformId: 'c', modelName: 'M3', input: 3 }
-    ];
+    const all = [{ slug: 'a' }, { slug: 'b' }, { slug: 'c' }];
     const filtered = [all[2]];
-    const pinned = ['b|M2', 'a|M1'];
-    const merged = mergePinnedIntoFiltered(all, filtered, pinned, getPaygRowPinId);
+    const pinned = ['b', 'a'];
+    const merged = mergePinnedIntoFiltered(all, filtered, pinned, getPlanRowPinId);
     assert.deepEqual(
-      merged.map(getPaygRowPinId),
-      ['c|M3', 'b|M2', 'a|M1']
+      merged.map(getPlanRowPinId),
+      ['c', 'b', 'a']
     );
-    const { head, tail } = partitionPinnedItems(merged, pinned, getPaygRowPinId);
-    assert.deepEqual(head.map(getPaygRowPinId), ['b|M2', 'a|M1']);
-    assert.deepEqual(tail.map(getPaygRowPinId), ['c|M3']);
-    const ordered = sortItemsByPinned(merged, pinned, getPaygRowPinId);
-    assert.deepEqual(ordered.map(getPaygRowPinId), ['b|M2', 'a|M1', 'c|M3']);
-    assert.deepEqual(sanitizePinnedIdList(['b|M2', 'gone'], ['b|M2', 'c|M3']), ['b|M2']);
-    assert.match(buildRowPinButtonHtml({ pinId: 'b|M2', pinned: true }), /data-table-pin="1"/);
+    const { head, tail } = partitionPinnedItems(merged, pinned, getPlanRowPinId);
+    assert.deepEqual(head.map(getPlanRowPinId), ['b', 'a']);
+    assert.deepEqual(tail.map(getPlanRowPinId), ['c']);
+    const ordered = sortItemsByPinned(merged, pinned, getPlanRowPinId);
+    assert.deepEqual(ordered.map(getPlanRowPinId), ['b', 'a', 'c']);
+    assert.deepEqual(sanitizePinnedIdList(['b', 'gone'], ['b', 'c']), ['b']);
+    assert.match(buildRowPinButtonHtml({ pinId: 'b', pinned: true }), /data-table-pin="1"/);
   });
+});
+
+it('platform card gets API badge and models from entity-derived options', () => {
+  const html = buildPlatformCardHtml(
+    samplePlatform({ slug: 'gongji', name: '共绩算力' }),
+    [],
+    { hasApiPlan: true, apiModelNames: ['Kimi-K3', 'DeepSeek-V4-Pro-0813'] }
+  );
+  assert.match(html, /platform-rush--api/);
+  assert.match(html, /按量/);
+  assert.match(html, /Kimi-K3/);
+  assert.match(html, /DeepSeek-V4-Pro-0813/);
 });

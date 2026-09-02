@@ -94,7 +94,7 @@
 .usage-table-count { align-self: center; color: #7a8699; font-size: 12px; white-space: nowrap; }
 .usage-table-section { margin: 18px -4px 0; padding-top: 18px; border-top: 1px solid #e7ebf1; }
 .usage-table-scroll { overflow-x: auto; overflow-y: visible; border: 1px solid #e1e6ed; border-radius: 12px; background: #fff; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
-.usage-data-table { width: 100%; min-width: 1420px; border-collapse: separate; border-spacing: 0; }
+.usage-data-table { width: 100%; min-width: 1700px; border-collapse: separate; border-spacing: 0; }
 .usage-data-table th { position: sticky; top: 0; z-index: 3; padding: 12px 14px; border-bottom: 1px solid #dfe5ed; background: #f5f7fb; color: #667287; font-size: 12px; font-weight: 800; letter-spacing: .02em; text-align: left; white-space: nowrap; user-select: none; }
 .usage-data-table th.sortable { cursor: pointer; transition: background .15s ease, color .15s ease; }
 .usage-data-table th.sortable:hover, .usage-data-table th.sortable:focus-visible { background: #edf2f8; color: #253247; outline: none; }
@@ -120,6 +120,7 @@
 .usage-data-table .numeric { font-variant-numeric: tabular-nums; }
 .usage-table-model { color: #253247; font-weight: 650; }
 .usage-table-unit-price { color: #0f766e; font-weight: 750; }
+.usage-table-api-pricing { min-width: 280px; color: #475569; white-space: normal !important; }
 .usage-table-note { min-width: 260px; max-width: 420px; white-space: normal !important; }
 .usage-data-table .usage-table-empty { padding: 30px 14px; color: #7a8699; text-align: center; }
 .usage-tooltip { min-width: 190px; line-height: 1.65; color: #263449; }
@@ -155,6 +156,6 @@
   .usage-unit-price-chart { height: 400px; }
   .usage-table-section { margin-left: 0; margin-right: 0; }
   .usage-table-scroll { border-radius: 10px; }
-  .usage-data-table { min-width: 1320px; }
+  .usage-data-table { min-width: 1600px; }
   .usage-data-table th, .usage-data-table td { padding: 10px 12px; }
 }

@@ -5,7 +5,6 @@
         const PLATFORMS_FILE_PATH = './platforms.json';
         const MODELS_FILE_PATH = './models.json';
         const PLAN_MODELS_FILE_PATH = './plan-models.json';
-        const PAYG_PRICING_FILE_PATH = './payg-pricing.json';
 
         // 全局配置
         let appConfig = {};
@@ -18,7 +17,6 @@
         let allPlatforms = [];
         let entityContext = null;
         let entityDataPromise = null;
-        let paygPricing = {};
         let platformSelectedLabels = [];
         let platformStatusMax = 'paused';
         let platformPinnedIds = [];
@@ -2016,25 +2014,6 @@
             console.log(`成功加载 ${allPlatforms.length} 个平台`);
         }
 
-        async function loadPaygPricing() {
-            const response = await fetch(PAYG_PRICING_FILE_PATH, { cache: 'no-store' });
-            if (!response.ok) {
-                throw new Error(`payg-pricing.json load failed: HTTP ${response.status}`);
-            }
-            const data = await response.json();
-            if (!data || typeof data !== 'object' || Array.isArray(data)) {
-                throw new Error('payg-pricing.json must be an object');
-            }
-            paygPricing = data;
-            if (typeof PlatformCatalog !== 'undefined' && PlatformCatalog.validatePaygPricing) {
-                const result = PlatformCatalog.validatePaygPricing(paygPricing, allPlatforms);
-                if (!result.ok) {
-                    console.warn('payg-pricing validation:', result.errors.join('; '));
-                }
-            }
-            console.log(`成功加载按量定价 ${Object.keys(paygPricing).length} 个平台`);
-        }
-
         function togglePlatformTag(label) {
             const idx = platformSelectedLabels.indexOf(label);
             if (idx >= 0) {
@@ -2247,9 +2226,13 @@
         }
 
         function buildPlatformCardHtml(platform) {
+            const apiGroups = entityContext && typeof EntityData.buildApiPricingGroups === 'function'
+                ? EntityData.buildApiPricingGroups(entityContext, platform.slug)
+                : [];
             return PlatformCatalog.buildPlatformCardHtml(platform, allPlans, {
                 sanitizeUrl: typeof sanitizeHttpUrl === 'function' ? sanitizeHttpUrl : (u) => u,
-                paygPricing,
+                hasApiPlan: apiGroups.length > 0,
+                apiModelNames: apiGroups.flatMap((group) => group.rows.map((row) => row.modelName)),
                 pinnedIds: platformPinnedIds
             });
         }
@@ -2441,29 +2424,18 @@
             });
         }
 
-        async function ensurePaygViewMounted() {
-            const root = document.getElementById('view-payg');
-            if (!root) return;
-            if (typeof window.mountPaygView !== 'function') {
-                await loadScriptOnce('scripts/payg.js?v=260902b');
-            }
-            if (typeof window.mountPaygView === 'function') {
-                await window.mountPaygView(root);
-            }
-        }
-
         async function ensureUsageViewMounted() {
             const root = document.getElementById('view-usage');
             if (!root) return;
             if (!document.querySelector('link[data-usage-css="1"]')) {
                 const link = document.createElement('link');
                 link.rel = 'stylesheet';
-                link.href = 'styles/model-comparison.css?v=260902e';
+                link.href = 'styles/model-comparison.css?v=260902f';
                 link.dataset.usageCss = '1';
                 document.head.appendChild(link);
             }
             if (typeof window.mountModelComparisonView !== 'function') {
-                await loadScriptOnce('scripts/model-comparison.js?v=260902j');
+                await loadScriptOnce('scripts/model-comparison.js?v=260902k');
             }
             if (typeof window.mountModelComparisonView === 'function') {
                 await window.mountModelComparisonView(root);
@@ -2507,13 +2479,6 @@
                     });
                 }
             }
-            if (view === 'payg') {
-                try {
-                    await ensurePaygViewMounted();
-                } catch (err) {
-                    console.error('按量计费视图加载失败:', err);
-                }
-            }
             if (view === 'usage') {
                 try {
                     await ensureUsageViewMounted();
@@ -2549,7 +2514,6 @@
                     platforms: document.getElementById('view-platforms'),
                     plans: document.getElementById('view-plans'),
                     usage: document.getElementById('view-usage'),
-                    payg: document.getElementById('view-payg'),
                     monitor: document.getElementById('view-monitor')
                 }),
                 onChange: (view, meta) => {
@@ -2645,7 +2609,7 @@
             if (typeof PlatformDetail !== 'undefined' && PlatformDetail && typeof PlatformDetail.init === 'function') {
                 PlatformDetail.init({
                     getPlans: () => allPlans,
-                    getPaygPricing: () => paygPricing,
+                    getEntityContext: () => entityContext,
                     monitorApiBase: (window.MONITOR_CONFIG && window.MONITOR_CONFIG.apiBase) || 'https://api.dreamfree.space/vc',
                     onJumpPlansTable: focusVendorInPlansTable,
                     isPlatformPinned: (id) => PlatformCatalog.isPlatformPinned(id, platformPinnedIds),
@@ -2760,7 +2724,6 @@
 
                 await loadEntityData();
                 await Promise.all([loadData(), loadPlatforms()]);
-                await loadPaygPricing();
                 bindPlansTableInteractions();
                 initPlatformCatalog();
                 initMainViewsShell();
@@ -2772,14 +2735,6 @@
                 try {
                     if (!allPlatforms.length) {
                         await loadPlatforms();
-                    }
-                    if (!Object.keys(paygPricing).length) {
-                        try {
-                            await loadPaygPricing();
-                        } catch (paygError) {
-                            console.warn('按量定价加载失败，目录仍可启动:', paygError);
-                            paygPricing = {};
-                        }
                     }
                     initPlatformCatalog();
                     window.__codingplanCatalogReady = true;

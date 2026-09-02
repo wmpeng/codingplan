@@ -371,7 +371,6 @@
 
 .table-scroll,
 #plansTable,
-#paygTable {
     position: relative;
     z-index: 2;
 }
@@ -383,7 +382,6 @@
 }
 
 #plansTable,
-#paygTable {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
@@ -393,21 +391,16 @@
     min-width: 1200px;
 }
 
-#paygTable {
     min-width: 920px;
 }
 
 #plansTable thead,
-#paygTable thead {
     background: transparent;
 }
 
 #plansTable th,
-#paygTable th,
 #plansTable th.sticky-first,
-#paygTable th.sticky-first,
 #plansTable th.sticky-second,
-#paygTable th.sticky-second {
     padding: 14px 16px;
     text-align: left;
     font-weight: 800;
@@ -425,18 +418,15 @@
 }
 
 #plansTable th.sortable,
-#paygTable th.sortable {
     cursor: pointer;
 }
 
 #plansTable th:hover,
-#paygTable th:hover {
     background: #eef2f7;
     color: var(--text-primary);
 }
 
 #plansTable th.sortable::after,
-#paygTable th.sortable::after {
     content: '';
     display: inline-block;
     width: 0;
@@ -451,41 +441,34 @@
 }
 
 #plansTable th.sort-asc::after,
-#paygTable th.sort-asc::after {
     border-top: none;
     border-bottom: 4px solid var(--accent-primary, #0b68d1);
     opacity: 1;
 }
 
 #plansTable th.sort-desc::after,
-#paygTable th.sort-desc::after {
     border-top: 4px solid var(--accent-primary, #0b68d1);
     border-bottom: none;
     opacity: 1;
 }
 
 #plansTable th.sticky-first,
-#paygTable th.sticky-first,
 #plansTable th.sticky-second,
-#paygTable th.sticky-second {
     position: sticky;
     z-index: 20;
 }
 
 #plansTable th.sticky-first,
-#paygTable th.sticky-first {
     left: 0;
     border-right: 1px solid rgba(16, 23, 37, 0.1);
 }
 
 #plansTable th.sticky-second,
-#paygTable th.sticky-second {
     left: 0;
     border-right: 1px solid rgba(16, 23, 37, 0.1);
 }
 
 #plansTable td,
-#paygTable td {
     padding: 14px 16px;
     border-bottom: 1px solid var(--border-light);
     font-size: 13px;
@@ -497,25 +480,20 @@
 }
 
 #plansTable tbody tr:nth-child(even) td,
-#paygTable tbody tr:nth-child(even) td {
     background: #f7f9fc;
 }
 
 #plansTable tbody tr:hover td,
-#paygTable tbody tr:hover td {
     background: #eef6ff;
     color: var(--text-primary);
 }
 
 #plansTable tbody tr:hover td.rating-stars,
-#paygTable tbody tr:hover td.rating-stars {
     color: #f59e0b;
 }
 
 #plansTable td.sticky-first,
-#paygTable td.sticky-first,
 #plansTable td.sticky-second,
-#paygTable td.sticky-second {
     position: sticky;
     z-index: 100;
     transform: translateZ(0);
@@ -524,28 +502,22 @@
 }
 
 #plansTable td.sticky-first,
-#paygTable td.sticky-first {
     left: 0;
     border-right: 1px solid rgba(16, 23, 37, 0.1);
 }
 
 #plansTable td.sticky-second,
-#paygTable td.sticky-second {
     left: 0;
     border-right: 1px solid rgba(16, 23, 37, 0.1);
 }
 
 #plansTable tbody tr:nth-child(even) td.sticky-first,
-#paygTable tbody tr:nth-child(even) td.sticky-first,
 #plansTable tbody tr:nth-child(even) td.sticky-second,
-#paygTable tbody tr:nth-child(even) td.sticky-second {
     background: linear-gradient(90deg, #f7f9fc 0%, #f7f9fc 86%, rgba(247, 249, 252, 0) 100%);
 }
 
 #plansTable tbody tr:hover td.sticky-first,
-#paygTable tbody tr:hover td.sticky-first,
 #plansTable tbody tr:hover td.sticky-second,
-#paygTable tbody tr:hover td.sticky-second {
     background: linear-gradient(90deg, #eef6ff 0%, #eef6ff 86%, rgba(238, 246, 255, 0) 100%);
     box-shadow: none;
 }
@@ -577,26 +549,20 @@
 }
 
 #plansTable tbody tr.is-pinned td,
-#paygTable tbody tr.is-pinned td {
     background: rgba(15, 118, 110, 0.09);
 }
 
 #plansTable tbody tr.is-pinned td.sticky-first,
 #plansTable tbody tr.is-pinned td.sticky-second,
-#paygTable tbody tr.is-pinned td.sticky-first,
-#paygTable tbody tr.is-pinned td.sticky-second {
     background: #e8f5f2;
 }
 
 #plansTable tbody tr.is-pinned:hover td,
-#paygTable tbody tr.is-pinned:hover td {
     background: rgba(15, 118, 110, 0.13);
 }
 
 #plansTable tbody tr.is-pinned:hover td.sticky-first,
 #plansTable tbody tr.is-pinned:hover td.sticky-second,
-#paygTable tbody tr.is-pinned:hover td.sticky-first,
-#paygTable tbody tr.is-pinned:hover td.sticky-second {
     background: #dcefeb;
 }
 

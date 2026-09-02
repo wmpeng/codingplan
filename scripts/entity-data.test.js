@@ -28,3 +28,28 @@ test('builds comparison points without name-based joins', () => {
   assert.equal(point.monthlyFeeCny, 68);
   assert.deepEqual(point.scores, { artificialAnalysis: { score: 10, scoreExact: 10.2 } });
 });
+
+test('builds API pricing groups and keeps raw input cache output prices', () => {
+  const context = EntityData.buildContext(
+    { schemaVersion: 1, platforms: [{ slug: 'platform-a', name: '平台A' }] },
+    { schemaVersion: 1, plans: [{ slug: 'platform-a-api', platformSlug: 'platform-a', name: '按量 API', type: 'API', note: '活动说明' }] },
+    { schemaVersion: 1, models: [{ slug: 'model-a', name: 'Model A', multimodal: false }] },
+    { schemaVersion: 1, planModels: [{
+      slug: 'platform-a-api--model-a--feng', planSlug: 'platform-a-api', modelSlug: 'model-a',
+      timeTier: '峰', contextTier: null, serviceTier: null, catalogOrder: 0, method: 'calculated',
+      usage: { unitPriceCnyPerM: 0.25 },
+      pricing: { currency: '¥', inputPerM: 1, cachePerM: 0.1, outputPerM: 2 }, note: '高峰价格'
+    }] }
+  );
+  const groups = EntityData.buildApiPricingGroups(context, 'platform-a');
+  assert.equal(groups.length, 1);
+  assert.equal(groups[0].planSlug, 'platform-a-api');
+  assert.equal(groups[0].planNote, '活动说明');
+  assert.deepEqual(groups[0].rows[0], {
+    slug: 'platform-a-api--model-a--feng', modelSlug: 'model-a', modelName: 'Model A [峰]',
+    method: 'calculated', currency: '¥', inputPerM: 1, cachePerM: 0.1,
+    outputPerM: 2, unitPriceCnyPerM: 0.25, note: '高峰价格'
+  });
+  const point = EntityData.buildComparisonPoints(context, 6.8)[0];
+  assert.deepEqual(point.apiPricing, { currency: '¥', inputPerM: 1, cachePerM: 0.1, outputPerM: 2 });
+});

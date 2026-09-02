@@ -101,7 +101,7 @@ async function main() {
       await page.goto(`${BASE}/index.html`, { waitUntil: 'networkidle' });
       await page.waitForSelector('[data-main-view]', { timeout: 20000 });
 
-      for (const key of ['platforms', 'plans', 'payg', 'monitor', 'platforms']) {
+      for (const key of ['platforms', 'usage', 'plans', 'monitor', 'platforms']) {
         await page.click(`[data-main-view="${key}"]`);
         await page.waitForTimeout(900);
         const sel = await page.getAttribute(`[data-main-view="${key}"]`, 'aria-selected');
@@ -135,19 +135,19 @@ async function main() {
       ]);
       results.push('PASS classic 体验新版 back to root');
 
-      for (const view of ['plans', 'payg', 'monitor']) {
+      for (const view of ['usage', 'plans', 'monitor']) {
         await page.goto(`${BASE}/index.html?view=${view}`, { waitUntil: 'domcontentloaded' });
         await page.waitForTimeout(1000);
         const sel = await page.getAttribute(`[data-main-view="${view}"]`, 'aria-selected');
         assert(sel === 'true', `deep link view=${view}`);
       }
-      results.push('PASS new deep links plans/payg/monitor');
+      results.push('PASS new deep links usage/plans/monitor');
 
       // /v2/ redirect preserves view
-      await page.goto(`${BASE}/v2/index.html?view=payg`, { waitUntil: 'domcontentloaded' });
+      await page.goto(`${BASE}/v2/index.html?view=usage`, { waitUntil: 'domcontentloaded' });
       await page.waitForTimeout(800);
       assert(!page.url().includes('/v2/'), 'v2 stub should redirect');
-      assert(page.url().includes('view=payg'), 'v2 stub should keep query');
+      assert(page.url().includes('view=usage'), 'v2 stub should keep query');
       results.push('PASS /v2/ stub redirects with query');
 
       const chips = page.locator('.preset-tag-filters button, .filter-chip, [data-filter]');

@@ -96,6 +96,47 @@
     return { fiveHours, weekly, monthly };
   }
 
+  function buildApiPricingGroups(context, platformSlug) {
+    return context.plans
+      .filter((plan) => plan.type === 'API' && plan.platformSlug === platformSlug && !plan.discontinued)
+      .map((plan) => {
+        const rows = (context.relationsByPlanSlug.get(plan.slug) || [])
+          .slice()
+          .sort((left, right) => {
+            const leftOrder = Number.isInteger(left.catalogOrder) ? left.catalogOrder : Number.MAX_SAFE_INTEGER;
+            const rightOrder = Number.isInteger(right.catalogOrder) ? right.catalogOrder : Number.MAX_SAFE_INTEGER;
+            if (leftOrder !== rightOrder) return leftOrder - rightOrder;
+            const leftModel = context.modelBySlug.get(left.modelSlug);
+            const rightModel = context.modelBySlug.get(right.modelSlug);
+            return displayModelName(leftModel, left).localeCompare(displayModelName(rightModel, right), 'zh-CN');
+          })
+          .map((relation) => {
+            const model = context.modelBySlug.get(relation.modelSlug);
+            const pricing = relation.pricing || null;
+            return {
+              slug: relation.slug,
+              modelSlug: relation.modelSlug,
+              modelName: displayModelName(model, relation),
+              method: relation.method,
+              currency: pricing && pricing.currency,
+              inputPerM: pricing && pricing.inputPerM,
+              cachePerM: pricing && pricing.cachePerM,
+              outputPerM: pricing && pricing.outputPerM,
+              unitPriceCnyPerM: relation.usage && relation.usage.unitPriceCnyPerM,
+              note: relation.note
+            };
+          });
+        return {
+          planSlug: plan.slug,
+          planName: plan.name,
+          planNote: plan.note || null,
+          actionUrl: plan.action || null,
+          rows
+        };
+      })
+      .filter((group) => group.rows.length > 0);
+  }
+
   function buildComparisonPoints(context, usdToCnyRate) {
     const points = [];
     for (const relation of context.planModels) {
@@ -107,12 +148,12 @@
       const usage = relation.usage || {};
       const unit = positiveNumber(usage.unitPriceCnyPerM);
       const windows = displayWindows(usage);
-      const billingType = plan.type === 'API' ? 'payg' : 'subscription';
+      const billingType = plan.type === 'API' ? 'api' : 'subscription';
       const fee = positiveNumber(plan.comparisonMonthlyPrice ?? plan.monthlyPrice);
       const displayCurrency = plan.currency || '¥';
       const rate = currencyRate(displayCurrency, usdToCnyRate);
       const monthlyFeeCny = fee && rate ? Math.round(fee * rate * 1e6) / 1e6 : null;
-      if (billingType === 'payg' ? !unit : !((monthlyFeeCny && windows.monthly) || unit)) continue;
+      if (billingType === 'api' ? !unit : !((monthlyFeeCny && windows.monthly) || unit)) continue;
       points.push({
         slug: relation.slug,
         platformSlug: platform.slug,
@@ -131,6 +172,14 @@
         originalCurrency: billingType === 'subscription'
           ? displayCurrency
           : (relation.pricing && relation.pricing.currency) || undefined,
+        apiPricing: billingType === 'api' && relation.pricing
+          ? {
+              currency: relation.pricing.currency,
+              inputPerM: relation.pricing.inputPerM,
+              cachePerM: relation.pricing.cachePerM,
+              outputPerM: relation.pricing.outputPerM
+            }
+          : null,
         monthlyFeeCny: billingType === 'subscription' ? monthlyFeeCny : undefined,
         ...(billingType === 'subscription' ? {
           fiveHourTokenInM: windows.fiveHours,
@@ -150,6 +199,7 @@
     buildContext,
     listPlatforms,
     buildPlanCatalog,
+    buildApiPricingGroups,
     buildComparisonPoints
   };
 });

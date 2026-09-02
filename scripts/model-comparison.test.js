@@ -39,6 +39,7 @@ const {
   unitPriceInTokenUnit,
   formatTokenAmount,
   formatUnitPrice,
+  formatApiPricing,
   platformCellHtml,
   comparisonTableRowHtml,
   tooltipHtml
@@ -46,7 +47,7 @@ const {
 
 const points = [
   { platformName: 'A', platformType: 'Token Plan', modelSlug: 'm1', multimodal: true, billingType: 'subscription', monthlyFeeCny: 100, monthlyTokenInM: 500, unitPriceCnyPerM: .2, scores: { artificialAnalysis: { scoreExact: 60 }, deepSWE: { scoreExact: 30 } } },
-  { platformName: 'B', platformType: 'API', modelSlug: 'm2', multimodal: false, billingType: 'payg', unitPriceCnyPerM: 1.2, scores: { artificialAnalysis: { scoreExact: 45 }, deepSWE: null } },
+  { platformName: 'B', platformType: 'API', modelSlug: 'm2', multimodal: false, billingType: 'api', unitPriceCnyPerM: 1.2, scores: { artificialAnalysis: { scoreExact: 45 }, deepSWE: null } },
   { platformName: 'A', platformType: 'Coding Plan', modelSlug: 'm3', multimodal: 'unknown', billingType: 'subscription', monthlyFeeCny: 50, monthlyTokenInM: 'unknown', unitPriceCnyPerM: .5, scores: { artificialAnalysis: null, deepSWE: { scoreExact: 55 } } }
 ];
 
@@ -123,7 +124,7 @@ test('unit price bar chart keeps valid prices and sorts them low to high', () =>
   const sorted = buildUnitPriceBarChartPoints([points[1], invalid, points[2], points[0]]);
   assert.deepEqual(sorted, [points[0], points[2], points[1]]);
   assert.equal(getUnitPriceBarAxisLabel({ platformName: 'A', billingType: 'subscription', planName: 'Pro', modelName: 'Model [峰]' }), 'A · Pro · Model [峰]');
-  assert.equal(getUnitPriceBarAxisLabel({ platformName: 'B', billingType: 'payg', modelName: 'Model API' }), 'B · 按量 API · Model API');
+  assert.equal(getUnitPriceBarAxisLabel({ platformName: 'B', billingType: 'api', modelName: 'Model API' }), 'B · 按量 API · Model API');
 
   const colors = buildVendorColorMap(sorted.map(getPointPlatformKey));
   const result = buildUnitPriceBarSeries(sorted, 'vendor', colors, 'M');
@@ -268,13 +269,13 @@ test('preset comparisons are configured outside the renderer', () => {
   assert.deepEqual(config.groups[4].modelSlugs, ['claude-opus-5', 'gpt-5-6-sol', 'glm-5-3', 'kimi-k3']);
 });
 
-test('preset rows include subscriptions and payg while sorting by unit and package price', () => {
+test('preset rows include subscriptions and API while sorting by unit and package price', () => {
   const group = { kind: 'single', modelSlugs: ['m1'] };
   const defaultPlatform = { platformName: '智谱AI', platformType: 'Token Plan' };
   const rows = [
     { ...defaultPlatform, slug: 'expensive', billingType: 'subscription', modelSlug: 'm1', monthlyFeeCny: 100, monthlyTokenInM: 100, unitPriceCnyPerM: 1 },
     { ...defaultPlatform, slug: 'cheap', billingType: 'subscription', modelSlug: 'm1', monthlyFeeCny: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.5 },
-    { platformName: 'DeepSeek', platformType: 'API', slug: 'api', billingType: 'payg', modelSlug: 'm1', unitPriceCnyPerM: 0.1 },
+    { platformName: 'DeepSeek', platformType: 'API', slug: 'api', billingType: 'api', modelSlug: 'm1', unitPriceCnyPerM: 0.1 },
     { ...defaultPlatform, slug: 'unknown', billingType: 'subscription', modelSlug: 'm1', monthlyFeeCny: 20, monthlyTokenInM: 'unknown', unitPriceCnyPerM: 0.2 },
     { ...defaultPlatform, slug: 'other', billingType: 'subscription', modelSlug: 'm2', monthlyFeeCny: 10, monthlyTokenInM: 100, unitPriceCnyPerM: 0.1 },
     { platformName: '智谱AI', platformType: 'Coding Plan', slug: 'not-default-type', billingType: 'subscription', modelSlug: 'm1', monthlyFeeCny: 10, monthlyTokenInM: 100, unitPriceCnyPerM: 0.1 }
@@ -306,9 +307,9 @@ test('preset tables add model only for multi groups and preserve single-model qu
   assert.match(multi, /10亿/);
 });
 
-test('preset tables show payg rows with explicit unavailable subscription fields', () => {
+test('preset tables show API rows with explicit unavailable subscription fields', () => {
   const apiPoint = {
-    slug: 'api', billingType: 'payg', platformName: 'DeepSeek', platformType: 'API', planName: '按量 API',
+    slug: 'api', billingType: 'api', platformName: 'DeepSeek', platformType: 'API', planName: '按量 API',
     modelName: 'DeepSeek-V4-Flash-0731', canonicalModelName: 'DeepSeek-V4-Flash-0731',
     modelSlug: 'deepseek-v4-flash-0731', unitPriceCnyPerM: 0.1
   };
@@ -320,7 +321,7 @@ test('preset tables show payg rows with explicit unavailable subscription fields
   assert.match(html, /usage-preset-metric-secondary"><span>月用量<\/span><span>—<\/span>/);
 });
 
-test('comparison table rows format subscription and payg semantics', () => {
+test('comparison table rows format subscription and API semantics', () => {
   const subscription = comparisonTableRowHtml({
     slug: 'sub', billingType: 'subscription', platformName: '平台A', platformType: 'Token Plan', planName: 'Pro',
     modelName: 'Model A [峰]', monthlyFeeCny: 70, fiveHourTokenInM: 12.5,
@@ -342,14 +343,24 @@ test('comparison table rows format subscription and payg semantics', () => {
   assert.match(subscription, /41 ±3/);
   assert.match(subscription, /按官方额度推算/);
 
-  const payg = comparisonTableRowHtml({
-    slug: 'api', billingType: 'payg', platformName: 'DeepSeek', platformType: 'API', planName: '按量 API',
-    modelName: 'Model A', unitPriceCnyPerM: 0.1444
+  const api = comparisonTableRowHtml({
+    slug: 'api', billingType: 'api', platformName: 'DeepSeek', platformType: 'API', planName: '按量 API',
+    modelName: 'Model A', unitPriceCnyPerM: 0.1444,
+    apiPricing: { currency: '¥', inputPerM: 1.5, cachePerM: 0.05, outputPerM: 4.5 }
   });
-  assert.match(payg, /按量/);
-  assert.match(payg, /¥0\.1444 \/ M/);
-  assert.equal(payg.includes('0M'), false);
-  assert.equal(payg.includes('undefined'), false);
+  assert.match(api, /按量/);
+  assert.match(api, /¥0\.1444 \/ M/);
+  assert.match(api, /输入 ¥1\.5 · 缓存 ¥0\.05 · 输出 ¥4\.5 \/ M/);
+  assert.equal(api.includes('0M'), false);
+  assert.equal(api.includes('undefined'), false);
+});
+
+test('API pricing formatter preserves raw price components and unknowns', () => {
+  assert.equal(
+    formatApiPricing({ currency: '$', inputPerM: 2, cachePerM: 0.2, outputPerM: 8 }),
+    '输入 $2 · 缓存 $0.2 · 输出 $8 / M'
+  );
+  assert.equal(formatApiPricing(null), '—');
 });
 
 test('platform table cell links to safe plan actions', () => {
@@ -389,6 +400,8 @@ test('token unit conversion keeps amount and unit price mathematically aligned',
 test('unit price column appears before all three usage columns', () => {
   const keys = COMPARISON_TABLE_COLUMNS.map((column) => column.key);
   const unitPriceIndex = keys.indexOf('unitPriceCnyPerM');
+  const apiPricingIndex = keys.indexOf('apiPricing');
+  assert.equal(apiPricingIndex, unitPriceIndex + 1);
   assert.ok(unitPriceIndex < keys.indexOf('fiveHourTokenInM'));
   assert.ok(unitPriceIndex < keys.indexOf('weeklyTokenInM'));
   assert.ok(unitPriceIndex < keys.indexOf('monthlyTokenInM'));

@@ -88,25 +88,34 @@ describe('buildDetailBodyHtml', () => {
     assert.match(html, /platform-detail-dim-copy[\s\S]*<strong>重点<\/strong>/);
   });
 
-  it('renders payg pricing section when paygEntry provided', () => {
+  it('renders API pricing from PlanModel groups and links to the comparison view', () => {
     const html = buildDetailBodyHtml(samplePlatform({ slug: 'gongji', name: '共绩算力' }), {
       plans: [],
       monitorRow: null,
-      paygEntry: {
-        currency: '¥',
-        notes: ['须邀请'],
-        models: [{ name: 'DeepSeek-V4-Pro', input: 2.4, cache: 0.02, output: 4.8 }]
-      }
+      apiPricingGroups: [{
+        planSlug: 'gongji-api',
+        planName: '按量 API',
+        planNote: '须邀请',
+        rows: [{
+          slug: 'gongji-api--deepseek-v4-pro-0813',
+          modelName: 'DeepSeek-V4-Pro-0813', currency: '¥',
+          inputPerM: 2.4, cachePerM: 0.02, outputPerM: 4.8,
+          unitPriceCnyPerM: 0.1257, note: '官方价格的 8 折'
+        }]
+      }]
     });
-    assert.ok(html.includes('data-section="payg"'));
-    assert.ok(html.includes('按量定价'));
+    assert.ok(html.includes('data-section="api-pricing"'));
+    assert.ok(html.includes('按量 API 定价'));
     assert.ok(html.includes('¥2.4'));
-    assert.ok(html.includes('在按量计费价格中查看'));
-    assert.ok(html.includes('view=payg'));
+    assert.ok(html.includes('¥0.02'));
+    assert.ok(html.includes('¥4.8'));
+    assert.ok(html.includes('官方价格的 8 折'));
+    assert.ok(html.includes('在额度/价格对比中查看'));
+    assert.ok(html.includes('view=usage'));
     assert.ok(!html.includes('data-section="plans"'));
     const dimsAt = html.indexOf('data-section="dimensions"');
-    const paygAt = html.indexOf('data-section="payg"');
-    assert.ok(dimsAt >= 0 && paygAt > dimsAt);
+    const apiAt = html.indexOf('data-section="api-pricing"');
+    assert.ok(dimsAt >= 0 && apiAt > dimsAt);
   });
 
   it('renders pin button in detail header', () => {

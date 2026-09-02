@@ -9,7 +9,7 @@
     <link rel="icon" href="/favicon.ico?v=260610" type="image/x-icon">
     <link rel="stylesheet" href="styles/shared.css?v=260725b">
     <link rel="stylesheet" href="styles/plan-usage.css?v=260725k">
-    <link rel="stylesheet" href="styles/comparison-table.css?v=260725f">
+    <link rel="stylesheet" href="styles/comparison-table.css?v=260902a">
     <style>
         html,
         body {
@@ -1962,7 +1962,7 @@
             color: #64748b;
         }
 
-        .platform-rush--payg {
+        .platform-rush--api {
             background: rgba(180, 83, 9, 0.12);
             color: #b45309;
         }
@@ -2265,32 +2265,32 @@
             overflow-wrap: anywhere;
         }
 
-        .platform-detail-section[data-section="payg"] {
+        .platform-detail-section[data-section="api-pricing"] {
             margin-top: 22px;
         }
 
-        .platform-detail-payg-unit {
+        .platform-detail-api-unit {
             margin: 0 0 10px;
             font-size: 12px;
             color: var(--text-tertiary);
         }
 
-        .platform-detail-payg-table-wrap {
+        .platform-detail-api-table-wrap {
             overflow-x: auto;
             border-radius: 14px;
             border: 1px solid rgba(23, 32, 51, 0.08);
             background: rgba(255, 252, 247, 0.95);
         }
 
-        .platform-detail-payg-table {
+        .platform-detail-api-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 13px;
             min-width: 0;
         }
 
-        .platform-detail-payg-table th,
-        .platform-detail-payg-table td {
+        .platform-detail-api-table th,
+        .platform-detail-api-table td {
             padding: 12px 14px;
             text-align: left;
             border-bottom: 1px solid rgba(23, 32, 51, 0.06);
@@ -2308,7 +2308,7 @@
             transition: none;
         }
 
-        .platform-detail-payg-table thead th {
+        .platform-detail-api-table thead th {
             font-size: 12px;
             font-weight: 800;
             color: var(--text-secondary);
@@ -2316,26 +2316,26 @@
             border-bottom: 1px solid rgba(23, 32, 51, 0.08);
         }
 
-        .platform-detail-payg-table thead th:hover,
-        .platform-detail-payg-table tbody td:hover {
+        .platform-detail-api-table thead th:hover,
+        .platform-detail-api-table tbody td:hover {
             background: inherit;
             color: inherit;
         }
 
-        .platform-detail-payg-table tbody tr:nth-child(even) td {
+        .platform-detail-api-table tbody tr:nth-child(even) td {
             background: rgba(248, 242, 231, 0.45);
         }
 
-        .platform-detail-payg-table tbody tr:last-child td {
+        .platform-detail-api-table tbody tr:last-child td {
             border-bottom: 0;
         }
 
-        .platform-detail-payg-model-name {
+        .platform-detail-api-model-name {
             font-weight: 700;
             color: var(--text-primary);
         }
 
-        .platform-detail-payg-model-note {
+        .platform-detail-api-model-note {
             margin-top: 4px;
             font-size: 12px;
             font-weight: 500;
@@ -2343,12 +2343,20 @@
             line-height: 1.45;
         }
 
-        .platform-detail-payg-notes {
+        .platform-detail-api-note {
             margin: 12px 0 0;
-            padding-left: 1.15em;
             font-size: 13px;
             line-height: 1.6;
             color: var(--text-secondary);
+        }
+
+        .platform-detail-api-group + .platform-detail-api-group {
+            margin-top: 16px;
+        }
+
+        .platform-detail-api-group h4 {
+            margin: 0 0 8px;
+            font-size: 13px;
         }
 
         .platform-detail-dimensions {
@@ -4084,7 +4092,6 @@
             display: none !important;
         }
 
-        #view-payg:not([hidden]),
         #view-usage:not([hidden]),
         #view-monitor:not([hidden]) {
             display: flex;
@@ -4191,7 +4198,7 @@
         .platform-dimensions li,
         .platform-detail-dim,
         .platform-detail-plan-item,
-        .platform-detail-payg-table-wrap {
+        .platform-detail-api-table-wrap {
             border-radius: 10px;
             background: #f5f7fb;
             border: 1px solid rgba(16, 23, 37, 0.07);
@@ -4727,7 +4734,6 @@
             <a href="index.html?view=usage" role="tab" data-main-view="usage" aria-controls="view-usage" aria-selected="false">额度/价格对比</a>
             <a href="index.html?view=plans" role="tab" data-main-view="plans" aria-controls="view-plans" aria-selected="false">套餐对比</a>
             <a href="index.html?view=monitor" role="tab" data-main-view="monitor" aria-controls="view-monitor" aria-selected="false">可用性监控</a>
-            <a href="index.html?view=payg" role="tab" data-main-view="payg" aria-controls="view-payg" aria-selected="false">按量计费价格</a>
         </nav>
         <div class="main-view-panels">
             <div id="view-platforms" role="tabpanel" data-main-view-panel="platforms">
@@ -7282,7 +7288,6 @@
         </div>
             <div id="view-usage" role="tabpanel" data-main-view-panel="usage" hidden></div>
             <div id="view-monitor" role="tabpanel" data-main-view-panel="monitor" hidden></div>
-            <div id="view-payg" role="tabpanel" data-main-view-panel="payg" hidden></div>
         </div>
         </div>
 
@@ -7312,7 +7317,7 @@
                 </li>
                 <li class="update-item">
                     <div class="log-date">2026.7.20</div>
-                    <ul class="update-items"><li>平台目录新增按量调用平台：DeepSeek 官方、共绩算力（定价见 payg-pricing.json，不进套餐大表）</li><li>筛选标签新增「按量调用」；DeepSeek Flash / Pro 虚拟套餐条目保持不动</li></ul>
+                    <ul class="update-items"><li>平台目录新增按量调用平台：DeepSeek 官方、共绩算力；价格统一纳入额度/价格对比与平台详情</li><li>筛选标签新增「按量调用」；DeepSeek Flash / Pro 虚拟套餐条目保持不动</li></ul>
                 </li>
                 <li class="update-item">
                     <div class="log-date">2026.7.19</div>
@@ -7495,12 +7500,12 @@
 
     <script src="monitor/monitor-config.js"></script>
     <script src="monitor/monitor-config.local.js"></script>
-    <script src="scripts/entity-data.js?v=260902d"></script>
-    <script src="scripts/platform-catalog.js?v=260902c"></script>
-    <script src="scripts/platform-detail.js?v=260902c"></script>
-    <script src="scripts/shared.js?v=260829a"></script>
-    <script src="scripts/main-views.js?v=260829a"></script>
+    <script src="scripts/entity-data.js?v=260902e"></script>
+    <script src="scripts/platform-catalog.js?v=260902d"></script>
+    <script src="scripts/platform-detail.js?v=260902d"></script>
+    <script src="scripts/shared.js?v=260902a"></script>
+    <script src="scripts/main-views.js?v=260902a"></script>
     <script src="scripts/plan-composite-price-chart.js?v=260902a"></script>
-    <script src="scripts/homepage.js?v=260902m"></script>
+    <script src="scripts/homepage.js?v=260902n"></script>
 </body>
 </html>
