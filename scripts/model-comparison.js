@@ -435,13 +435,22 @@
             const aMissing = a === null || a === '';
             const bMissing = b === null || b === '';
             if (aMissing !== bMissing) return aMissing ? 1 : -1;
-            if (aMissing && bMissing) return String(left.id || '').localeCompare(String(right.id || ''), 'zh-CN');
+            let compared = 0;
             if (typeof a === 'number' && typeof b === 'number') {
-                const delta = (a - b) * multiplier;
-                return delta || String(left.id || '').localeCompare(String(right.id || ''), 'zh-CN');
+                compared = (a - b) * multiplier;
+            } else if (!aMissing || !bMissing) {
+                compared = String(a).localeCompare(String(b), 'zh-CN', { numeric: true, sensitivity: 'base' }) * multiplier;
             }
-            const compared = String(a).localeCompare(String(b), 'zh-CN', { numeric: true, sensitivity: 'base' }) * multiplier;
-            return compared || String(left.id || '').localeCompare(String(right.id || ''), 'zh-CN');
+            if (compared) return compared;
+            if (key === 'unitPriceCnyPerM') {
+                const aPrice = comparisonSortValue(left, 'price');
+                const bPrice = comparisonSortValue(right, 'price');
+                const aPriceMissing = aPrice === null || aPrice === '';
+                const bPriceMissing = bPrice === null || bPrice === '';
+                if (aPriceMissing !== bPriceMissing) return aPriceMissing ? 1 : -1;
+                if (!aPriceMissing && !bPriceMissing && aPrice !== bPrice) return aPrice - bPrice;
+            }
+            return String(left.id || '').localeCompare(String(right.id || ''), 'zh-CN');
         });
     }
 

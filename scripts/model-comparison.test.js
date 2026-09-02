@@ -244,6 +244,18 @@ test('comparison tables sort text and numeric values with missing values last', 
   assert.deepEqual(sortComparisonRows(rows, 'monthlyTokenInM', 'desc').map((row) => row.id), ['a', 'b', 'c']);
 });
 
+test('unit price sorting uses package price ascending as the tie breaker', () => {
+  const rows = [
+    { id: 'higher-package', monthlyFeeCny: 200, unitPriceCnyPerM: 0.5 },
+    { id: 'lower-package', monthlyFeeCny: 100, unitPriceCnyPerM: 0.5 },
+    { id: 'missing-package', unitPriceCnyPerM: 0.5 },
+    { id: 'lower-unit-price', monthlyFeeCny: 500, unitPriceCnyPerM: 0.4 }
+  ];
+  assert.deepEqual(sortComparisonRows(rows, 'unitPriceCnyPerM', 'asc').map((row) => row.id), [
+    'lower-unit-price', 'lower-package', 'higher-package', 'missing-package'
+  ]);
+});
+
 test('preset comparisons are configured outside the renderer', () => {
   const source = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'model-comparison-presets.json'), 'utf8'));
   const config = normalizePresetConfig(source);
