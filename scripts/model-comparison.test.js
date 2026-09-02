@@ -82,7 +82,7 @@ test('default filters use the curated available platforms and models', () => {
   assert.equal(defaults.aaScoreMin, '');
   assert.equal(defaults.deepSWEScoreMin, '');
   assert.equal(defaults.soloColorKey, null);
-  assert.equal(defaults.tokenUnit, 'M');
+  assert.equal(defaults.tokenUnit, 'yi');
   assert.equal(defaults.monthlyPriceMin, null);
   assert.equal(defaults.monthlyPriceMax, null);
 });

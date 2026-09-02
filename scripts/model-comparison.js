@@ -38,7 +38,7 @@
         { key: 'vendor', label: '平台' },
         { key: 'platformType', label: '类型' },
         { key: 'plan', label: '套餐' },
-        { key: 'price', label: '价格' },
+        { key: 'price', label: '套餐价格' },
         { key: 'model', label: '模型' },
         { key: 'unitPriceCnyPerM', label: '综合单价' },
         { key: 'fiveHourTokenInM', label: '5h用量' },
@@ -53,7 +53,7 @@
             { key: 'vendor', label: '平台' },
             { key: 'platformType', label: '类型' },
             { key: 'plan', label: '套餐' },
-            { key: 'price', label: '价格' },
+            { key: 'price', label: '套餐价格' },
             { key: 'unitPriceCnyPerM', label: '综合单价' },
             { key: 'monthlyTokenInM', label: '月用量' }
         ],
@@ -62,7 +62,7 @@
             { key: 'platformType', label: '类型' },
             { key: 'plan', label: '套餐' },
             { key: 'model', label: '模型' },
-            { key: 'price', label: '价格' },
+            { key: 'price', label: '套餐价格' },
             { key: 'unitPriceCnyPerM', label: '综合单价' },
             { key: 'monthlyTokenInM', label: '月用量' }
         ]
@@ -92,7 +92,7 @@
                 .filter((key) => availablePlatforms.has(key))),
             models: new Set(DEFAULT_MODEL_IDS.filter((id) => availableModels.has(id))),
             multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', monthlyPriceMin: null,
-            monthlyPriceMax: null, soloColorKey: null, tokenUnit: 'M'
+            monthlyPriceMax: null, soloColorKey: null, tokenUnit: 'yi'
         };
     }
 
@@ -631,7 +631,7 @@
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>AA 最低分</span><input data-filter="aaScoreMin" aria-label="AA 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>DeepSWE 最低分</span><input data-filter="deepSWEScoreMin" aria-label="DeepSWE 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <div class="usage-color-control" aria-label="颜色区分方式"><span>颜色</span><div class="usage-segments"><button type="button" data-color-mode="vendor" class="is-active">按平台</button><button type="button" data-color-mode="model">按模型</button></div></div>
-                    <div class="usage-unit-control" aria-label="Token 单位"><span>单位</span><div class="usage-segments"><button type="button" data-token-unit="M" class="is-active">M</button><button type="button" data-token-unit="yi">亿</button></div></div>
+                    <div class="usage-unit-control" aria-label="Token 单位"><span>单位</span><div class="usage-segments"><button type="button" data-token-unit="M">M</button><button type="button" data-token-unit="yi" class="is-active">亿</button></div></div>
                     <div class="filter-trailing"><button type="button" class="reset-btn" data-action="restore-defaults">恢复默认</button><div class="stats-bar usage-counts" data-counts aria-live="polite"></div></div>
                 </div>
                 <div class="usage-color-legend"><strong data-color-legend-title>平台颜色</strong><div data-color-legend></div></div>
