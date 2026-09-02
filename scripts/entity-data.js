@@ -38,32 +38,26 @@
     return { platforms, plans, models, planModels, platformBySlug, planBySlug, modelBySlug, relationsByPlanSlug };
   }
 
-  function hydratePlatforms(context, options) {
+  function listPlatforms(context, options) {
     const includeHidden = !!(options && options.includeHidden);
     return context.platforms
-      .filter((platform) => includeHidden || platform.catalogVisible !== false)
-      .map((platform) => ({ ...platform, id: platform.slug }));
+      .filter((platform) => includeHidden || platform.catalogVisible !== false);
   }
 
-  function hydratePlans(context, options) {
+  function buildPlanCatalog(context, options) {
     const includeHidden = !!(options && options.includeHidden);
     return context.plans
       .filter((plan) => includeHidden || (plan.planTableVisible !== false && plan.type !== 'API'))
       .map((plan) => {
         const platform = context.platformBySlug.get(plan.platformSlug);
         const names = (context.relationsByPlanSlug.get(plan.slug) || [])
-          .flatMap((relation) => (relation.catalogEntries || []).map((entry) => ({
-            order: entry.order,
-            label: entry.label || displayModelName(context.modelBySlug.get(relation.modelSlug), relation)
-          })))
-          .sort((left, right) => left.order - right.order)
-          .map((entry) => entry.label);
+          .filter((relation) => Number.isInteger(relation.catalogOrder))
+          .sort((left, right) => left.catalogOrder - right.catalogOrder)
+          .map((relation) => displayModelName(context.modelBySlug.get(relation.modelSlug), relation));
         return {
           ...plan,
-          id: plan.slug,
-          vendor: plan.tableVendorLabel || (platform && platform.name) || plan.platformSlug,
-          plan: plan.name,
-          models: names
+          platformName: plan.tableVendorLabel || (platform && platform.name) || plan.platformSlug,
+          modelLabels: names
         };
       });
   }
@@ -120,16 +114,15 @@
       const monthlyFeeCny = fee && rate ? Math.round(fee * rate * 1e6) / 1e6 : null;
       if (billingType === 'payg' ? !unit : !((monthlyFeeCny && windows.monthly) || unit)) continue;
       points.push({
-        id: relation.slug,
+        slug: relation.slug,
         platformSlug: platform.slug,
         planSlug: plan.slug,
         modelSlug: model.slug,
-        vendor: platform.name,
+        platformName: platform.name,
         platformType: plan.type,
-        plan: plan.comparisonName || plan.name,
-        model: displayModelName(model, relation),
-        canonicalModelId: model.slug,
-        canonicalModel: model.name,
+        planName: plan.comparisonName || plan.name,
+        modelName: displayModelName(model, relation),
+        canonicalModelName: model.name,
         multimodal: model.multimodal,
         scores: comparisonScores(model.scores),
         billingType,
@@ -155,8 +148,8 @@
     collection,
     displayModelName,
     buildContext,
-    hydratePlatforms,
-    hydratePlans,
+    listPlatforms,
+    buildPlanCatalog,
     buildComparisonPoints
   };
 });

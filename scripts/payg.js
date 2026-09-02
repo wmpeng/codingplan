@@ -382,8 +382,8 @@
           loadJson('./config.json').catch(() => (typeof window !== 'undefined' ? window.appConfig : null))
         ]);
         const entityContext = EntityData.buildContext(platformDoc, planDoc, modelDoc, planModelDoc);
-        const platforms = EntityData.hydratePlatforms(entityContext);
-        const plans = EntityData.hydratePlans(entityContext);
+        const platforms = EntityData.listPlatforms(entityContext);
+        const plans = EntityData.buildPlanCatalog(entityContext);
         const rate = config && config.usdToCnyRate;
         usdToCnyRate =
           typeof rate === 'number' && Number.isFinite(rate) && rate > 0 ? rate : 6.8;

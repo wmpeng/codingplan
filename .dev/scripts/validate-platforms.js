@@ -10,8 +10,8 @@ const context = EntityData.buildContext(
   JSON.parse(fs.readFileSync(path.join(root, 'models.json'), 'utf8')),
   JSON.parse(fs.readFileSync(path.join(root, 'plan-models.json'), 'utf8'))
 );
-const visiblePlatforms = EntityData.hydratePlatforms(context);
-const visiblePlans = EntityData.hydratePlans(context);
+const visiblePlatforms = EntityData.listPlatforms(context);
+const visiblePlans = EntityData.buildPlanCatalog(context);
 const result = validatePlatformRecords(visiblePlatforms, visiblePlans);
 const errors = [...result.errors];
 for (const plan of context.plans) {

@@ -17,7 +17,7 @@ const entityContext = EntityData.buildContext(
     JSON.parse(fs.readFileSync(modelsPath, 'utf8')),
     JSON.parse(fs.readFileSync(planModelsPath, 'utf8'))
 );
-const allPlans = EntityData.hydratePlans(entityContext);
+const allPlans = EntityData.buildPlanCatalog(entityContext);
 let indexHtml = fs.readFileSync(indexPath, 'utf8');
 
 const WATERMARK = config.header?.watermarkUrl || 'www.codingplan.fyi';
@@ -184,8 +184,8 @@ function generateTableRowsHtml(plans) {
         const noteHtml = escapeHtml(plan.note || '').replace(/\n/g, '<br>');
 
         return `                        <tr class="plan-row${plan.discontinued ? ' discontinued' : ''}">
-                    <td class="sticky-first"><span class="vendor-name">${escapeHtml(plan.vendor)}</span></td>
-                    <td class="sticky-second"><span class="plan-name">${escapeHtml(plan.plan)}</span></td>
+                    <td class="sticky-first"><span class="vendor-name">${escapeHtml(plan.platformName)}</span></td>
+                    <td class="sticky-second"><span class="plan-name">${escapeHtml(plan.name)}</span></td>
                     <td><span class="type-tag ${type === 'Token Plan' ? 'token-plan' : 'coding-plan'}">${escapeHtml(type)}</span></td>
                     <td>
                         <a href="${escapeHtml(plan.action)}" target="_blank" class="action-btn">
@@ -205,7 +205,7 @@ function generateTableRowsHtml(plans) {
                     <td><span class="request-count">${formatMeasuredToken(plan.measuredWeeklyTokenLimit)}</span></td>
                     <td><span class="request-count">${formatMeasuredToken(plan.measuredMonthlyTokenLimit)}</span></td>
                     <td><span class="request-count">${tokenLimitHtml}</span></td>
-                    <td>${(plan.models || []).map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}</td>
+                    <td>${(plan.modelLabels || []).map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}</td>
                     <td>${(plan.benefits || []).map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}</td>
                     <td>${plan.discontinued ? '<span class="status-offline">已下线</span>' : ''}</td>
                     <td><span class="note">${noteHtml}</span></td>

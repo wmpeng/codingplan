@@ -158,7 +158,7 @@ function filterPlatforms(platforms, {
 }) {
   const pinnedSet = new Set(normalizePinnedIds(pinnedIds));
   function isPinnedPlatform(platform) {
-    const id = platform && typeof platform.id === 'string' ? platform.id.trim() : '';
+    const id = platform && typeof platform.slug === 'string' ? platform.slug.trim() : '';
     return !!(id && pinnedSet.has(id));
   }
 
@@ -212,7 +212,7 @@ function normalizePinnedIds(raw) {
 function sanitizePinnedIds(pinnedIds, platforms) {
   const valid = new Set(
     (Array.isArray(platforms) ? platforms : [])
-      .map((p) => (p && typeof p.id === 'string' ? p.id.trim() : ''))
+      .map((p) => (p && typeof p.slug === 'string' ? p.slug.trim() : ''))
       .filter(Boolean)
   );
   return normalizePinnedIds(pinnedIds).filter((id) => valid.has(id));
@@ -241,7 +241,7 @@ function togglePinnedId(pinnedIds, platformId, options = {}) {
 
 function sortPlatformsByPinned(platforms, pinnedIds) {
   return sortItemsByPinned(platforms, pinnedIds, (platform) =>
-    platform && typeof platform.id === 'string' ? platform.id.trim() : ''
+    platform && typeof platform.slug === 'string' ? platform.slug.trim() : ''
   );
 }
 
@@ -269,7 +269,7 @@ const PAYG_TABLE_PIN_STORAGE_KEY = 'paygTablePinnedIds';
 
 function getPlanRowPinId(plan) {
   if (!plan || typeof plan !== 'object') return '';
-  return String(plan.slug || plan.id || '').trim();
+  return String(plan.slug || '').trim();
 }
 
 function getPaygRowPinId(row) {
@@ -409,7 +409,7 @@ function collectModelsForVendor(plans, platformSlug) {
     if (plan.platformSlug !== platformSlug || plan.discontinued) {
       continue;
     }
-    for (const model of plan.models || []) {
+    for (const model of plan.modelLabels || []) {
       if (!seen.has(model)) {
         seen.add(model);
         models.push(model);
@@ -449,8 +449,7 @@ function resolvePlatformAction(platform, plans) {
     return platform.action;
   }
 
-  const platformSlug = platform.slug || platform.id;
-  const plan = plans.find(p => p.platformSlug === platformSlug);
+  const plan = plans.find(p => p.platformSlug === platform.slug);
   return plan?.action ?? null;
 }
 
@@ -577,8 +576,8 @@ function flattenPaygRows(paygPricing, platforms, plans) {
   const planList = Array.isArray(plans) ? plans : [];
   const byId = new Map(
     (Array.isArray(platforms) ? platforms : [])
-      .filter((p) => p && typeof p.id === 'string' && p.id)
-      .map((p) => [p.id, p])
+      .filter((p) => p && typeof p.slug === 'string' && p.slug)
+      .map((p) => [p.slug, p])
   );
   if (!paygPricing || typeof paygPricing !== 'object' || Array.isArray(paygPricing)) {
     return [];
@@ -796,7 +795,7 @@ function validatePaygPricing(paygPricing, platforms) {
 
   const platformIds = new Set(
     (Array.isArray(platforms) ? platforms : [])
-      .map((p) => (p && typeof p.id === 'string' ? p.id : ''))
+      .map((p) => (p && typeof p.slug === 'string' ? p.slug : ''))
       .filter(Boolean)
   );
 
@@ -869,7 +868,7 @@ function validatePaygPricing(paygPricing, platforms) {
 
 function validatePlatformRecords(platforms, plans) {
   const errors = [];
-  const platformSlugs = new Set(platforms.map(p => p.slug || p.id));
+  const platformSlugs = new Set(platforms.map(p => p.slug));
 
   const referencedSlugs = [...new Set(plans.map(p => p.platformSlug))];
   for (const platformSlug of referencedSlugs) {
@@ -1001,7 +1000,7 @@ const EXTERNAL_LINK_ICON =
 
 function buildPlatformCardHtml(platform, plans, options = {}) {
   const sanitizeUrl = options.sanitizeUrl || (url => url);
-  const paygEntry = getPaygEntry(options.paygPricing, platform && platform.id);
+  const paygEntry = getPaygEntry(options.paygPricing, platform && platform.slug);
   const rawAction = resolvePlatformAction(platform, plans);
   const action = sanitizeUrl(rawAction);
   const name = escapeHtml(platform.name || '');
@@ -1043,7 +1042,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     ? `<div class="platform-tags" aria-label="标签">${tags.map((tag) => `<span class="platform-tag">${escapeHtml(tag)}</span>`).join('')}</div>`
     : '';
 
-  let models = collectModelsForVendor(plans, platform.slug || platform.id);
+  let models = collectModelsForVendor(plans, platform.slug);
   if (!models.length && paygEntry) {
     models = collectModelsFromPayg(paygEntry);
   }
@@ -1055,7 +1054,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     : '';
 
   const discontinuedClass = status === 'delisted' ? ' is-discontinued' : '';
-  const platformId = platform && typeof platform.id === 'string' ? platform.id.trim() : '';
+  const platformId = platform && typeof platform.slug === 'string' ? platform.slug.trim() : '';
   const pinned = isPlatformPinned(platformId, options.pinnedIds);
   const pinnedClass = pinned ? ' is-pinned' : '';
   const pinHtml = buildPlatformPinButtonHtml({

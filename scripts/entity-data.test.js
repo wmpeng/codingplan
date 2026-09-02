@@ -7,15 +7,15 @@ function fixture() {
     { schemaVersion: 1, platforms: [{ slug: 'platform-a', name: '平台A' }] },
     { schemaVersion: 1, plans: [{ slug: 'plan-a', platformSlug: 'platform-a', name: 'Pro', type: 'Token Plan', monthlyPrice: 10, currency: '$' }] },
     { schemaVersion: 1, models: [{ slug: 'model-a', name: 'Model A', multimodal: false, scores: { artificialAnalysis: { score: 10, scoreExact: 10.2, modelSlug: 'internal-source-key', sourceUrl: 'https://example.com' } } }] },
-    { schemaVersion: 1, planModels: [{ slug: 'plan-a--model-a--gu', planSlug: 'plan-a', modelSlug: 'model-a', timeTier: '谷', contextTier: null, serviceTier: null, catalogEntries: [{ order: 0, label: 'Model A [谷]' }], usage: { monthlyTokenInM: 100, unitPriceCnyPerM: 0.68 }, note: null }] }
+    { schemaVersion: 1, planModels: [{ slug: 'plan-a--model-a--gu', planSlug: 'plan-a', modelSlug: 'model-a', timeTier: '谷', contextTier: null, serviceTier: null, catalogOrder: 0, usage: { monthlyTokenInM: 100, unitPriceCnyPerM: 0.68 }, note: null }] }
   );
 }
 
-test('hydrates legacy presentation fields from slug joins', () => {
-  const plan = EntityData.hydratePlans(fixture())[0];
-  assert.equal(plan.vendor, '平台A');
-  assert.equal(plan.plan, 'Pro');
-  assert.deepEqual(plan.models, ['Model A [谷]']);
+test('builds explicit catalog presentation fields from slug joins', () => {
+  const plan = EntityData.buildPlanCatalog(fixture())[0];
+  assert.equal(plan.platformName, '平台A');
+  assert.equal(plan.name, 'Pro');
+  assert.deepEqual(plan.modelLabels, ['Model A [谷]']);
 });
 
 test('builds comparison points without name-based joins', () => {
@@ -23,6 +23,8 @@ test('builds comparison points without name-based joins', () => {
   assert.equal(point.platformSlug, 'platform-a');
   assert.equal(point.planSlug, 'plan-a');
   assert.equal(point.modelSlug, 'model-a');
+  assert.equal(point.platformName, '平台A');
+  assert.equal(point.planName, 'Pro');
   assert.equal(point.monthlyFeeCny, 68);
   assert.deepEqual(point.scores, { artificialAnalysis: { score: 10, scoreExact: 10.2 } });
 });

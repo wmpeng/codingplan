@@ -82,9 +82,9 @@
   }
 
   function buildAxisLabel(plan) {
-    const vendor = String((plan && plan.vendor) || '').trim() || '未知平台';
-    const name = String((plan && plan.plan) || '').trim() || '未知套餐';
-    return `${vendor} ${name}`;
+    const platformName = String((plan && plan.platformName) || '').trim() || '未知平台';
+    const planName = String((plan && plan.name) || '').trim() || '未知套餐';
+    return `${platformName} ${planName}`;
   }
 
   const PIN_BOOKMARK_ICON =
@@ -111,8 +111,8 @@
       const price = getPlanCompositePriceCny(plan, rate);
       if (price == null) continue;
       prepared.push({
-        vendor: String((plan && plan.vendor) || '').trim() || '未知平台',
-        plan: String((plan && plan.plan) || '').trim() || '未知套餐',
+        platformName: String((plan && plan.platformName) || '').trim() || '未知平台',
+        planName: String((plan && plan.name) || '').trim() || '未知套餐',
         type: String((plan && plan.type) || 'Coding Plan').trim() || 'Coding Plan',
         discontinued: !!(plan && plan.discontinued),
         pinned: !!isPinned(plan),
@@ -123,18 +123,18 @@
         axisLabel: buildAxisLabel(plan)
       });
     }
-    const colorMap = buildVendorColorMap(prepared.map((item) => item.vendor));
+    const colorMap = buildVendorColorMap(prepared.map((item) => item.platformName));
     prepared.sort((a, b) => {
       if (a.price !== b.price) return a.price - b.price;
-      const byVendor = a.vendor.localeCompare(b.vendor, 'zh');
+      const byVendor = a.platformName.localeCompare(b.platformName, 'zh');
       if (byVendor !== 0) return byVendor;
-      const byPlan = a.plan.localeCompare(b.plan, 'zh');
+      const byPlan = a.planName.localeCompare(b.planName, 'zh');
       if (byPlan !== 0) return byPlan;
       return a.originalIndex - b.originalIndex;
     });
     return prepared.map((item) => ({
       ...item,
-      color: colorMap.get(item.vendor) || VENDOR_COLOR_PALETTE[0],
+      color: colorMap.get(item.platformName) || VENDOR_COLOR_PALETTE[0],
       label: formatCompositePriceLabel(item.price)
     }));
   }
@@ -255,8 +255,8 @@
     const categories = items.map((item) => item.axisLabel);
     const values = items.map((item) => ({
       value: item.price,
-      vendor: item.vendor,
-      plan: item.plan,
+      platformName: item.platformName,
+      planName: item.planName,
       type: item.type,
       discontinued: item.discontinued,
       pinned: item.pinned,
@@ -289,7 +289,7 @@
             : '';
           return (
             `<div style="min-width:180px">` +
-            `<div style="font-size:14px;font-weight:800;margin-bottom:6px;">${escapeHtml(data.vendor)} · ${escapeHtml(data.plan)}</div>` +
+            `<div style="font-size:14px;font-weight:800;margin-bottom:6px;">${escapeHtml(data.platformName)} · ${escapeHtml(data.planName)}</div>` +
             `<div style="color:#425065;margin-bottom:4px;">${escapeHtml(data.type || '')}</div>` +
             `<div>综合单价：<strong>${escapeHtml(formatCompositePriceLabel(data.value))}/M Token</strong></div>` +
             pinned +

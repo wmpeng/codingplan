@@ -5,7 +5,7 @@ const path = require('node:path');
 const {
   ATTRACTIVE_UNIT_PRICE_CNY_PER_YI,
   DEFAULT_PLATFORM_SELECTIONS,
-  DEFAULT_MODEL_IDS,
+  DEFAULT_MODEL_SLUGS,
   COMPARISON_TABLE_COLUMNS,
   getPointScore,
   getPointPlatformKey,
@@ -45,20 +45,20 @@ const {
 } = require('./model-comparison.js');
 
 const points = [
-  { vendor: 'A', platformType: 'Token Plan', canonicalModelId: 'm1', multimodal: true, billingType: 'subscription', monthlyFeeCny: 100, monthlyTokenInM: 500, unitPriceCnyPerM: .2, scores: { artificialAnalysis: { scoreExact: 60 }, deepSWE: { scoreExact: 30 } } },
-  { vendor: 'B', platformType: 'API', canonicalModelId: 'm2', multimodal: false, billingType: 'payg', unitPriceCnyPerM: 1.2, scores: { artificialAnalysis: { scoreExact: 45 }, deepSWE: null } },
-  { vendor: 'A', platformType: 'Coding Plan', canonicalModelId: 'm3', multimodal: 'unknown', billingType: 'subscription', monthlyFeeCny: 50, monthlyTokenInM: 'unknown', unitPriceCnyPerM: .5, scores: { artificialAnalysis: null, deepSWE: { scoreExact: 55 } } }
+  { platformName: 'A', platformType: 'Token Plan', modelSlug: 'm1', multimodal: true, billingType: 'subscription', monthlyFeeCny: 100, monthlyTokenInM: 500, unitPriceCnyPerM: .2, scores: { artificialAnalysis: { scoreExact: 60 }, deepSWE: { scoreExact: 30 } } },
+  { platformName: 'B', platformType: 'API', modelSlug: 'm2', multimodal: false, billingType: 'payg', unitPriceCnyPerM: 1.2, scores: { artificialAnalysis: { scoreExact: 45 }, deepSWE: null } },
+  { platformName: 'A', platformType: 'Coding Plan', modelSlug: 'm3', multimodal: 'unknown', billingType: 'subscription', monthlyFeeCny: 50, monthlyTokenInM: 'unknown', unitPriceCnyPerM: .5, scores: { artificialAnalysis: null, deepSWE: { scoreExact: 55 } } }
 ];
 
 test('default filters use the curated available platforms and models', () => {
   const defaultPoints = [
-    { vendor: '阿里·百炼', platformType: 'Token Plan', canonicalModelId: 'deepseek-v4-pro-0813' },
-    { vendor: '阿里·百炼', platformType: 'Coding Plan', canonicalModelId: 'not-default' },
-    { vendor: 'Claude', platformType: 'Token Plan', canonicalModelId: 'claude-opus-5' },
-    { vendor: 'OpenCode', platformType: 'Token Plan', canonicalModelId: 'grok-4-6' },
-    { vendor: 'OpenCode', platformType: 'Token Plan', canonicalModelId: 'muse-spark-1-2' },
-    { vendor: 'MiniMax', platformType: 'Token Plan', canonicalModelId: 'minimax-m3' },
-    { vendor: 'DeepSeek', platformType: 'API', canonicalModelId: 'deepseek-v4-flash-vision-exp' }
+    { platformName: '阿里·百炼', platformType: 'Token Plan', modelSlug: 'deepseek-v4-pro-0813' },
+    { platformName: '阿里·百炼', platformType: 'Coding Plan', modelSlug: 'not-default' },
+    { platformName: 'Claude', platformType: 'Token Plan', modelSlug: 'claude-opus-5' },
+    { platformName: 'OpenCode', platformType: 'Token Plan', modelSlug: 'grok-4-6' },
+    { platformName: 'OpenCode', platformType: 'Token Plan', modelSlug: 'muse-spark-1-2' },
+    { platformName: 'MiniMax', platformType: 'Token Plan', modelSlug: 'minimax-m3' },
+    { platformName: 'DeepSeek', platformType: 'API', modelSlug: 'deepseek-v4-flash-vision-exp' }
   ];
   const defaults = createDefaultFilterState(defaultPoints);
   assert.deepEqual(defaults.platforms, new Set([
@@ -73,11 +73,11 @@ test('default filters use the curated available platforms and models', () => {
     'minimax-m3', 'deepseek-v4-flash-vision-exp'
   ]));
   assert.equal(DEFAULT_PLATFORM_SELECTIONS.length, 9);
-  assert.equal(DEFAULT_MODEL_IDS.length, 13);
-  assert.equal(DEFAULT_MODEL_IDS.includes('grok-4-6'), false);
-  assert.equal(DEFAULT_MODEL_IDS.includes('muse-spark-1-2'), true);
-  assert.equal(DEFAULT_MODEL_IDS.includes('minimax-m3'), true);
-  assert.equal(DEFAULT_MODEL_IDS.includes('deepseek-v4-flash-vision-exp'), true);
+  assert.equal(DEFAULT_MODEL_SLUGS.length, 13);
+  assert.equal(DEFAULT_MODEL_SLUGS.includes('grok-4-6'), false);
+  assert.equal(DEFAULT_MODEL_SLUGS.includes('muse-spark-1-2'), true);
+  assert.equal(DEFAULT_MODEL_SLUGS.includes('minimax-m3'), true);
+  assert.equal(DEFAULT_MODEL_SLUGS.includes('deepseek-v4-flash-vision-exp'), true);
   assert.equal(defaults.multimodal, 'all');
   assert.equal(defaults.aaScoreMin, '');
   assert.equal(defaults.deepSWEScoreMin, '');
@@ -119,11 +119,11 @@ test('chart builders exclude invalid coordinates and benchmark gaps', () => {
 });
 
 test('unit price bar chart keeps valid prices and sorts them low to high', () => {
-  const invalid = { vendor: 'C', canonicalModelId: 'm4', unitPriceCnyPerM: 'unknown' };
+  const invalid = { platformName: 'C', modelSlug: 'm4', unitPriceCnyPerM: 'unknown' };
   const sorted = buildUnitPriceBarChartPoints([points[1], invalid, points[2], points[0]]);
   assert.deepEqual(sorted, [points[0], points[2], points[1]]);
-  assert.equal(getUnitPriceBarAxisLabel({ vendor: 'A', billingType: 'subscription', plan: 'Pro', model: 'Model [峰]' }), 'A · Pro · Model [峰]');
-  assert.equal(getUnitPriceBarAxisLabel({ vendor: 'B', billingType: 'payg', model: 'Model API' }), 'B · 按量 API · Model API');
+  assert.equal(getUnitPriceBarAxisLabel({ platformName: 'A', billingType: 'subscription', planName: 'Pro', modelName: 'Model [峰]' }), 'A · Pro · Model [峰]');
+  assert.equal(getUnitPriceBarAxisLabel({ platformName: 'B', billingType: 'payg', modelName: 'Model API' }), 'B · 按量 API · Model API');
 
   const colors = buildVendorColorMap(sorted.map(getPointPlatformKey));
   const result = buildUnitPriceBarSeries(sorted, 'vendor', colors, 'M');
@@ -183,7 +183,7 @@ test('legend solo mode filters by the active color dimension', () => {
 });
 
 test('single visible model or platform selects the opposite point label', () => {
-  const samePlatformModel = { ...points[0], canonicalModelId: 'm4' };
+  const samePlatformModel = { ...points[0], modelSlug: 'm4' };
   assert.equal(getSoloPointLabelField([points[0]]), 'vendor');
   assert.equal(getSoloPointLabelField([points[0], samePlatformModel]), 'model');
   assert.equal(getSoloPointLabelField([points[0], points[2]]), null);
@@ -191,7 +191,7 @@ test('single visible model or platform selects the opposite point label', () => 
 });
 
 test('platform and model filters match legend solo point-label behavior', () => {
-  const samePlatformModel = { ...points[0], canonicalModelId: 'm4' };
+  const samePlatformModel = { ...points[0], modelSlug: 'm4' };
   const platformFromFilter = filterPoints([...points, samePlatformModel], { platforms: new Set([getPointPlatformKey(points[0])]), multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '' });
   const platformFromLegend = filterBySoloColorKey([...points, samePlatformModel], 'vendor', getPointPlatformKey(points[0]));
   assert.equal(getSoloPointLabelField(platformFromFilter), 'model');
@@ -213,17 +213,17 @@ test('platform filter key separates plan types for the same vendor', () => {
 });
 
 test('model point labels preserve complete bracket qualifiers', () => {
-  assert.equal(getPointLabelText({ model: 'GLM-5.3-Flash [谷]', canonicalModel: 'GLM-5.3-Flash' }, 'model'), 'GLM-5.3-Flash [谷]');
-  assert.equal(getPointLabelText({ model: 'Kimi-K3 【256K】', canonicalModel: 'Kimi-K3' }, 'model'), 'Kimi-K3 【256K】');
-  assert.equal(getPointLabelText({ model: 'Model-X (peak)', canonicalModel: 'Model-X' }, 'model'), 'Model-X (peak)');
-  assert.equal(getPointLabelText({ vendor: '智谱国际版', platformType: 'Token Plan' }, 'vendor'), '智谱国际版 · Token Plan');
-  assert.equal(getPointLabelText({ vendor: '智谱AI', platformType: 'Coding Plan' }, 'vendor'), '智谱AI · Coding Plan');
-  assert.equal(getPointLabelText({ vendor: 'DeepSeek', platformType: 'API' }, 'vendor'), 'DeepSeek · API');
-  assert.equal(getPointLabelText({ vendor: '未知平台' }, 'vendor'), '未知平台');
+  assert.equal(getPointLabelText({ modelName: 'GLM-5.3-Flash [谷]', canonicalModelName: 'GLM-5.3-Flash' }, 'model'), 'GLM-5.3-Flash [谷]');
+  assert.equal(getPointLabelText({ modelName: 'Kimi-K3 【256K】', canonicalModelName: 'Kimi-K3' }, 'model'), 'Kimi-K3 【256K】');
+  assert.equal(getPointLabelText({ modelName: 'Model-X (peak)', canonicalModelName: 'Model-X' }, 'model'), 'Model-X (peak)');
+  assert.equal(getPointLabelText({ platformName: '智谱国际版', platformType: 'Token Plan' }, 'vendor'), '智谱国际版 · Token Plan');
+  assert.equal(getPointLabelText({ platformName: '智谱AI', platformType: 'Coding Plan' }, 'vendor'), '智谱AI · Coding Plan');
+  assert.equal(getPointLabelText({ platformName: 'DeepSeek', platformType: 'API' }, 'vendor'), 'DeepSeek · API');
+  assert.equal(getPointLabelText({ platformName: '未知平台' }, 'vendor'), '未知平台');
 });
 
 test('model color tooltip leads with the model and keeps platform second', () => {
-  const point = { ...points[0], vendor: 'MiniMax', plan: '新Ultra', model: 'MiniMax-M3' };
+  const point = { ...points[0], platformName: 'MiniMax', planName: '新Ultra', modelName: 'MiniMax-M3' };
   const byModel = tooltipHtml(point, 'artificialAnalysis', 'model');
   assert.ok(byModel.indexOf('<strong>MiniMax-M3</strong>') < byModel.indexOf('<div>MiniMax · 新Ultra</div>'));
 
@@ -233,25 +233,25 @@ test('model color tooltip leads with the model and keeps platform second', () =>
 
 test('comparison tables sort text and numeric values with missing values last', () => {
   const rows = [
-    { id: 'b', vendor: '平台B', model: 'Model 10', monthlyFeeCny: 100, monthlyTokenInM: 50, unitPriceCnyPerM: 2 },
-    { id: 'a', vendor: '平台A', model: 'Model 2', monthlyFeeCny: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.5 },
-    { id: 'c', vendor: '平台C', model: 'Model 1', unitPriceCnyPerM: 1 }
+    { slug: 'b', platformName: '平台B', modelName: 'Model 10', monthlyFeeCny: 100, monthlyTokenInM: 50, unitPriceCnyPerM: 2 },
+    { slug: 'a', platformName: '平台A', modelName: 'Model 2', monthlyFeeCny: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.5 },
+    { slug: 'c', platformName: '平台C', modelName: 'Model 1', unitPriceCnyPerM: 1 }
   ];
-  assert.deepEqual(sortComparisonRows(rows, 'vendor', 'asc').map((row) => row.id), ['a', 'b', 'c']);
-  assert.deepEqual(sortComparisonRows(rows, 'model', 'asc').map((row) => row.id), ['c', 'a', 'b']);
-  assert.deepEqual(sortComparisonRows(rows, 'price', 'asc').map((row) => row.id), ['a', 'b', 'c']);
-  assert.deepEqual(sortComparisonRows(rows, 'price', 'desc').map((row) => row.id), ['b', 'a', 'c']);
-  assert.deepEqual(sortComparisonRows(rows, 'monthlyTokenInM', 'desc').map((row) => row.id), ['a', 'b', 'c']);
+  assert.deepEqual(sortComparisonRows(rows, 'vendor', 'asc').map((row) => row.slug), ['a', 'b', 'c']);
+  assert.deepEqual(sortComparisonRows(rows, 'model', 'asc').map((row) => row.slug), ['c', 'a', 'b']);
+  assert.deepEqual(sortComparisonRows(rows, 'price', 'asc').map((row) => row.slug), ['a', 'b', 'c']);
+  assert.deepEqual(sortComparisonRows(rows, 'price', 'desc').map((row) => row.slug), ['b', 'a', 'c']);
+  assert.deepEqual(sortComparisonRows(rows, 'monthlyTokenInM', 'desc').map((row) => row.slug), ['a', 'b', 'c']);
 });
 
 test('unit price sorting uses package price ascending as the tie breaker', () => {
   const rows = [
-    { id: 'higher-package', monthlyFeeCny: 200, unitPriceCnyPerM: 0.5 },
-    { id: 'lower-package', monthlyFeeCny: 100, unitPriceCnyPerM: 0.5 },
-    { id: 'missing-package', unitPriceCnyPerM: 0.5 },
-    { id: 'lower-unit-price', monthlyFeeCny: 500, unitPriceCnyPerM: 0.4 }
+    { slug: 'higher-package', monthlyFeeCny: 200, unitPriceCnyPerM: 0.5 },
+    { slug: 'lower-package', monthlyFeeCny: 100, unitPriceCnyPerM: 0.5 },
+    { slug: 'missing-package', unitPriceCnyPerM: 0.5 },
+    { slug: 'lower-unit-price', monthlyFeeCny: 500, unitPriceCnyPerM: 0.4 }
   ];
-  assert.deepEqual(sortComparisonRows(rows, 'unitPriceCnyPerM', 'asc').map((row) => row.id), [
+  assert.deepEqual(sortComparisonRows(rows, 'unitPriceCnyPerM', 'asc').map((row) => row.slug), [
     'lower-unit-price', 'lower-package', 'higher-package', 'missing-package'
   ]);
 });
@@ -261,37 +261,37 @@ test('preset comparisons are configured outside the renderer', () => {
   const config = normalizePresetConfig(source);
   assert.equal(config.groups.length, 5);
   assert.deepEqual(config.groups.map((group) => group.kind), ['single', 'single', 'single', 'multi', 'multi']);
-  assert.deepEqual(config.groups[0].modelIds, ['deepseek-v4-flash-0731']);
+  assert.deepEqual(config.groups[0].modelSlugs, ['deepseek-v4-flash-0731']);
   assert.equal(config.groups[3].title, '甜品级模型对比');
-  assert.deepEqual(config.groups[3].modelIds, ['deepseek-v4-flash-0731', 'glm-5-3-flash', 'gpt-5-6-luna']);
+  assert.deepEqual(config.groups[3].modelSlugs, ['deepseek-v4-flash-0731', 'glm-5-3-flash', 'gpt-5-6-luna']);
   assert.equal(config.groups[4].title, 'SOTA模型对比');
-  assert.deepEqual(config.groups[4].modelIds, ['claude-opus-5', 'gpt-5-6-sol', 'glm-5-3', 'kimi-k3']);
+  assert.deepEqual(config.groups[4].modelSlugs, ['claude-opus-5', 'gpt-5-6-sol', 'glm-5-3', 'kimi-k3']);
 });
 
 test('preset rows include subscriptions and payg while sorting by unit and package price', () => {
-  const group = { kind: 'single', modelIds: ['m1'] };
-  const defaultPlatform = { vendor: '智谱AI', platformType: 'Token Plan' };
+  const group = { kind: 'single', modelSlugs: ['m1'] };
+  const defaultPlatform = { platformName: '智谱AI', platformType: 'Token Plan' };
   const rows = [
-    { ...defaultPlatform, id: 'expensive', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 100, monthlyTokenInM: 100, unitPriceCnyPerM: 1 },
-    { ...defaultPlatform, id: 'cheap', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.5 },
-    { vendor: 'DeepSeek', platformType: 'API', id: 'api', billingType: 'payg', canonicalModelId: 'm1', unitPriceCnyPerM: 0.1 },
-    { ...defaultPlatform, id: 'unknown', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 20, monthlyTokenInM: 'unknown', unitPriceCnyPerM: 0.2 },
-    { ...defaultPlatform, id: 'other', billingType: 'subscription', canonicalModelId: 'm2', monthlyFeeCny: 10, monthlyTokenInM: 100, unitPriceCnyPerM: 0.1 },
-    { vendor: '智谱AI', platformType: 'Coding Plan', id: 'not-default-type', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 10, monthlyTokenInM: 100, unitPriceCnyPerM: 0.1 }
+    { ...defaultPlatform, slug: 'expensive', billingType: 'subscription', modelSlug: 'm1', monthlyFeeCny: 100, monthlyTokenInM: 100, unitPriceCnyPerM: 1 },
+    { ...defaultPlatform, slug: 'cheap', billingType: 'subscription', modelSlug: 'm1', monthlyFeeCny: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.5 },
+    { platformName: 'DeepSeek', platformType: 'API', slug: 'api', billingType: 'payg', modelSlug: 'm1', unitPriceCnyPerM: 0.1 },
+    { ...defaultPlatform, slug: 'unknown', billingType: 'subscription', modelSlug: 'm1', monthlyFeeCny: 20, monthlyTokenInM: 'unknown', unitPriceCnyPerM: 0.2 },
+    { ...defaultPlatform, slug: 'other', billingType: 'subscription', modelSlug: 'm2', monthlyFeeCny: 10, monthlyTokenInM: 100, unitPriceCnyPerM: 0.1 },
+    { platformName: '智谱AI', platformType: 'Coding Plan', slug: 'not-default-type', billingType: 'subscription', modelSlug: 'm1', monthlyFeeCny: 10, monthlyTokenInM: 100, unitPriceCnyPerM: 0.1 }
   ];
-  assert.deepEqual(buildPresetComparisonRows(rows, group).map((row) => row.id), ['api', 'cheap', 'expensive']);
-  assert.deepEqual(buildPresetComparisonRows(rows, group, 'all').map((row) => row.id), ['not-default-type', 'api', 'cheap', 'expensive']);
+  assert.deepEqual(buildPresetComparisonRows(rows, group).map((row) => row.slug), ['api', 'cheap', 'expensive']);
+  assert.deepEqual(buildPresetComparisonRows(rows, group, 'all').map((row) => row.slug), ['not-default-type', 'api', 'cheap', 'expensive']);
 });
 
 test('preset tables add model only for multi groups and preserve single-model qualifiers', () => {
   const point = {
-    id: 'row', billingType: 'subscription', vendor: '智谱AI', platformType: 'Token Plan', plan: 'Pro',
-    model: 'GLM-5.3-Flash [谷]', canonicalModel: 'GLM-5.3-Flash', canonicalModelId: 'glm-5-3-flash',
+    slug: 'row', billingType: 'subscription', platformName: '智谱AI', platformType: 'Token Plan', planName: 'Pro',
+    modelName: 'GLM-5.3-Flash [谷]', canonicalModelName: 'GLM-5.3-Flash', modelSlug: 'glm-5-3-flash',
     monthlyFeeCny: 100, monthlyTokenInM: 1000, unitPriceCnyPerM: 0.1
   };
   assert.equal(getPresetModelQualifier(point), '[谷]');
-  const single = presetComparisonTableHtml({ id: 'single', title: '单模型', kind: 'single', modelIds: ['glm-5-3-flash'] }, [point], 'M');
-  const multi = presetComparisonTableHtml({ id: 'multi', title: '多模型', kind: 'multi', modelIds: ['glm-5-3-flash'] }, [point], 'yi');
+  const single = presetComparisonTableHtml({ id: 'single', title: '单模型', kind: 'single', modelSlugs: ['glm-5-3-flash'] }, [point], 'M');
+  const multi = presetComparisonTableHtml({ id: 'multi', title: '多模型', kind: 'multi', modelSlugs: ['glm-5-3-flash'] }, [point], 'yi');
   assert.match(single, /平台 \/ 套餐/);
   assert.equal(single.includes('平台 / 模型 / 套餐'), false);
   assert.equal(single.includes('按综合单价从低到高'), false);
@@ -308,12 +308,12 @@ test('preset tables add model only for multi groups and preserve single-model qu
 
 test('preset tables show payg rows with explicit unavailable subscription fields', () => {
   const apiPoint = {
-    id: 'api', billingType: 'payg', vendor: 'DeepSeek', platformType: 'API', plan: '按量 API',
-    model: 'DeepSeek-V4-Flash-0731', canonicalModel: 'DeepSeek-V4-Flash-0731',
-    canonicalModelId: 'deepseek-v4-flash-0731', unitPriceCnyPerM: 0.1
+    slug: 'api', billingType: 'payg', platformName: 'DeepSeek', platformType: 'API', planName: '按量 API',
+    modelName: 'DeepSeek-V4-Flash-0731', canonicalModelName: 'DeepSeek-V4-Flash-0731',
+    modelSlug: 'deepseek-v4-flash-0731', unitPriceCnyPerM: 0.1
   };
   const html = presetComparisonTableHtml({
-    id: 'api', title: 'API', kind: 'single', modelIds: ['deepseek-v4-flash-0731']
+    id: 'api', title: 'API', kind: 'single', modelSlugs: ['deepseek-v4-flash-0731']
   }, [apiPoint], 'yi');
   assert.match(html, /usage-preset-price">按量<\/span>/);
   assert.match(html, /¥10 \/ 亿/);
@@ -322,8 +322,8 @@ test('preset tables show payg rows with explicit unavailable subscription fields
 
 test('comparison table rows format subscription and payg semantics', () => {
   const subscription = comparisonTableRowHtml({
-    id: 'sub', billingType: 'subscription', vendor: '平台A', platformType: 'Token Plan', plan: 'Pro',
-    model: 'Model A [峰]', monthlyFeeCny: 70, fiveHourTokenInM: 12.5,
+    slug: 'sub', billingType: 'subscription', platformName: '平台A', platformType: 'Token Plan', planName: 'Pro',
+    modelName: 'Model A [峰]', monthlyFeeCny: 70, fiveHourTokenInM: 12.5,
     weeklyTokenInM: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.7,
     scores: {
       artificialAnalysis: { score: 52, scoreExact: 51.6 },
@@ -343,8 +343,8 @@ test('comparison table rows format subscription and payg semantics', () => {
   assert.match(subscription, /按官方额度推算/);
 
   const payg = comparisonTableRowHtml({
-    id: 'api', billingType: 'payg', vendor: 'DeepSeek', platformType: 'API', plan: '按量 API',
-    model: 'Model A', unitPriceCnyPerM: 0.1444
+    slug: 'api', billingType: 'payg', platformName: 'DeepSeek', platformType: 'API', planName: '按量 API',
+    modelName: 'Model A', unitPriceCnyPerM: 0.1444
   });
   assert.match(payg, /按量/);
   assert.match(payg, /¥0\.1444 \/ M/);
@@ -353,14 +353,14 @@ test('comparison table rows format subscription and payg semantics', () => {
 });
 
 test('platform table cell links to safe plan actions', () => {
-  const linked = platformCellHtml({ vendor: '平台A', actionUrl: 'https://example.com/plan?a=1&b=2' });
+  const linked = platformCellHtml({ platformName: '平台A', actionUrl: 'https://example.com/plan?a=1&b=2' });
   assert.match(linked, /class="usage-platform-link"/);
   assert.match(linked, /href="https:\/\/example\.com\/plan\?a=1&amp;b=2"/);
   assert.match(linked, /target="_blank"/);
   assert.match(linked, /rel="noopener noreferrer"/);
   assert.match(linked, /平台A/);
 
-  const unlinked = platformCellHtml({ vendor: '平台B', actionUrl: 'javascript:alert(1)' });
+  const unlinked = platformCellHtml({ platformName: '平台B', actionUrl: 'javascript:alert(1)' });
   assert.equal(unlinked.includes('<a '), false);
   assert.match(unlinked, /平台B/);
 });
@@ -376,8 +376,8 @@ test('token unit conversion keeps amount and unit price mathematically aligned',
   assert.equal(formatUnitPrice(0.2, 'yi'), '¥20 / 亿');
 
   const yiRow = comparisonTableRowHtml({
-    id: 'sub-yi', billingType: 'subscription', vendor: '平台A', platformType: 'Token Plan', plan: 'Pro',
-    model: 'Model A', monthlyFeeCny: 70, fiveHourTokenInM: 250,
+    slug: 'sub-yi', billingType: 'subscription', platformName: '平台A', platformType: 'Token Plan', planName: 'Pro',
+    modelName: 'Model A', monthlyFeeCny: 70, fiveHourTokenInM: 250,
     weeklyTokenInM: 500, monthlyTokenInM: 1000, unitPriceCnyPerM: 0.2
   }, 'yi');
   assert.match(yiRow, /¥20 \/ 亿/);
@@ -396,10 +396,10 @@ test('unit price column appears before all three usage columns', () => {
 
 test('comparison tables sort both benchmark scores by exact value', () => {
   const rows = [
-    { id: 'a', scores: { artificialAnalysis: { scoreExact: 50.2 }, deepSWE: { scoreExact: 20.1 } } },
-    { id: 'b', scores: { artificialAnalysis: { scoreExact: 50.8 }, deepSWE: { scoreExact: 30.4 } } },
-    { id: 'c', scores: { artificialAnalysis: null, deepSWE: null } }
+    { slug: 'a', scores: { artificialAnalysis: { scoreExact: 50.2 }, deepSWE: { scoreExact: 20.1 } } },
+    { slug: 'b', scores: { artificialAnalysis: { scoreExact: 50.8 }, deepSWE: { scoreExact: 30.4 } } },
+    { slug: 'c', scores: { artificialAnalysis: null, deepSWE: null } }
   ];
-  assert.deepEqual(sortComparisonRows(rows, 'artificialAnalysis', 'desc').map((row) => row.id), ['b', 'a', 'c']);
-  assert.deepEqual(sortComparisonRows(rows, 'deepSWE', 'asc').map((row) => row.id), ['a', 'b', 'c']);
+  assert.deepEqual(sortComparisonRows(rows, 'artificialAnalysis', 'desc').map((row) => row.slug), ['b', 'a', 'c']);
+  assert.deepEqual(sortComparisonRows(rows, 'deepSWE', 'asc').map((row) => row.slug), ['a', 'b', 'c']);
 });

@@ -53,7 +53,7 @@ const derivedTags = [
 function samplePlatform(overrides = {}) {
   return {
     slug: 'x',
-    id: 'x',
+    slug: 'x',
     name: 'X',
     rating: 4,
     platformStatus: 'open',
@@ -70,9 +70,9 @@ function samplePlatform(overrides = {}) {
 describe('filterPlatforms', () => {
   it('AND matches derived + operational tags', () => {
     const platforms = [
-      samplePlatform({ id: 'a', name: 'A', tags: ['适合养龙虾'] }),
+      samplePlatform({ slug: 'a', name: 'A', tags: ['适合养龙虾'] }),
       samplePlatform({
-        id: 'b',
+        slug: 'b',
         name: 'B',
         platformStatus: 'limited',
         tags: ['适合养龙虾'],
@@ -82,7 +82,7 @@ describe('filterPlatforms', () => {
           models: { score: 4, reason: 'c' }
 }
       }),
-      samplePlatform({ id: 'c', name: 'C', tags: [] })
+      samplePlatform({ slug: 'c', name: 'C', tags: [] })
     ];
     const result = filterPlatforms(platforms, {
       selectedLabels: ['性价比高', '适合养龙虾'],
@@ -90,15 +90,15 @@ describe('filterPlatforms', () => {
       derivedTags,
       operationalTags: ['适合养龙虾']
     });
-    assert.deepEqual(result.map(p => p.id), ['a', 'b']);
+    assert.deepEqual(result.map(p => p.slug), ['a', 'b']);
   });
 
   it('filters by platformStatusMax inclusive rank', () => {
     const platforms = [
-      samplePlatform({ id: 'open', platformStatus: 'open' }),
-      samplePlatform({ id: 'limited', platformStatus: 'limited' }),
-      samplePlatform({ id: 'paused', platformStatus: 'paused' }),
-      samplePlatform({ id: 'delisted', platformStatus: 'delisted' })
+      samplePlatform({ slug: 'open', platformStatus: 'open' }),
+      samplePlatform({ slug: 'limited', platformStatus: 'limited' }),
+      samplePlatform({ slug: 'paused', platformStatus: 'paused' }),
+      samplePlatform({ slug: 'delisted', platformStatus: 'delisted' })
     ];
 
     assert.deepEqual(
@@ -107,7 +107,7 @@ describe('filterPlatforms', () => {
         platformStatusMax: 'open',
         derivedTags,
         operationalTags: []
-      }).map(p => p.id),
+      }).map(p => p.slug),
       ['open']
     );
 
@@ -117,7 +117,7 @@ describe('filterPlatforms', () => {
         platformStatusMax: 'limited',
         derivedTags,
         operationalTags: []
-      }).map(p => p.id),
+      }).map(p => p.slug),
       ['open', 'limited']
     );
 
@@ -127,7 +127,7 @@ describe('filterPlatforms', () => {
         platformStatusMax: 'delisted',
         derivedTags,
         operationalTags: []
-      }).map(p => p.id),
+      }).map(p => p.slug),
       ['open', 'limited', 'paused', 'delisted']
     );
   });
@@ -135,24 +135,24 @@ describe('filterPlatforms', () => {
   it('defaults platformStatusMax to paused', () => {
     assert.equal(DEFAULT_PLATFORM_STATUS_MAX, 'paused');
     const platforms = [
-      samplePlatform({ id: '1' }),
-      samplePlatform({ id: '2', platformStatus: 'limited' }),
-      samplePlatform({ id: '3', platformStatus: 'paused' }),
-      samplePlatform({ id: '4', platformStatus: 'delisted' })
+      samplePlatform({ slug: '1' }),
+      samplePlatform({ slug: '2', platformStatus: 'limited' }),
+      samplePlatform({ slug: '3', platformStatus: 'paused' }),
+      samplePlatform({ slug: '4', platformStatus: 'delisted' })
     ];
     const result = filterPlatforms(platforms, {
       selectedLabels: [],
       derivedTags,
       operationalTags: []
     });
-    assert.deepEqual(result.map(p => p.id), ['1', '2', '3']);
+    assert.deepEqual(result.map(p => p.slug), ['1', '2', '3']);
   });
 
   it('keeps pinned platforms even when filters would hide them', () => {
     const platforms = [
-      samplePlatform({ id: 'match', tags: ['适合养龙虾'] }),
+      samplePlatform({ slug: 'match', tags: ['适合养龙虾'] }),
       samplePlatform({
-        id: 'pinned-tag-miss',
+        slug: 'pinned-tag-miss',
         tags: [],
         dimensions: {
           value: { score: 1, reason: 'a' },
@@ -161,7 +161,7 @@ describe('filterPlatforms', () => {
         }
       }),
       samplePlatform({
-        id: 'pinned-delisted',
+        slug: 'pinned-delisted',
         platformStatus: 'delisted',
         tags: ['适合养龙虾']
       })
@@ -173,7 +173,7 @@ describe('filterPlatforms', () => {
       operationalTags: ['适合养龙虾'],
       pinnedIds: ['pinned-tag-miss', 'pinned-delisted']
     });
-    assert.deepEqual(result.map((p) => p.id), [
+    assert.deepEqual(result.map((p) => p.slug), [
       'match',
       'pinned-tag-miss',
       'pinned-delisted'
@@ -184,9 +184,9 @@ describe('filterPlatforms', () => {
 describe('collectModelsForVendor', () => {
   it('unions active plan models only', () => {
     const plans = [
-      { platformSlug: 'minimax', models: ['M3', 'M2.7'], discontinued: false },
-      { platformSlug: 'minimax', models: ['M2.5'], discontinued: true },
-      { platformSlug: 'kimi', models: ['K2.6'], discontinued: false }
+      { platformSlug: 'minimax', modelLabels: ['M3', 'M2.7'], discontinued: false },
+      { platformSlug: 'minimax', modelLabels: ['M2.5'], discontinued: true },
+      { platformSlug: 'kimi', modelLabels: ['K2.6'], discontinued: false }
     ];
     assert.deepEqual(collectModelsForVendor(plans, 'minimax'), ['M3', 'M2.7']);
   });
@@ -201,7 +201,7 @@ describe('resolvePlatformAction', () => {
 });
 
 describe('validatePlatformRecords', () => {
-  it('errors when plan vendor missing platform', () => {
+  it('errors when plan platformSlug is missing from platforms', () => {
     const r = validatePlatformRecords([], [{ platformSlug: 'z' }]);
     assert.equal(r.ok, false);
     assert.match(r.errors.join('\n'), /platformSlug "z"/);
@@ -237,7 +237,7 @@ describe('escapeHtml', () => {
         stability: { score: 3, reason: 'ok' },
         models: { score: 3, reason: 'ok' }
 }
-    }), [{ platformSlug: 'x', models: [], discontinued: false }]);
+    }), [{ platformSlug: 'x', modelLabels: [], discontinued: false }]);
     assert.doesNotMatch(html, /<script>/);
     assert.match(html, /&lt;script&gt;/);
   });
@@ -273,14 +273,14 @@ describe('formatInlineMarkdown', () => {
 
 describe('buildPlatformCardHtml', () => {
   it('includes key classes and discontinued marker', () => {
-    const active = buildPlatformCardHtml(samplePlatform(), [{ platformSlug: 'x', models: ['M1'], discontinued: false }]);
+    const active = buildPlatformCardHtml(samplePlatform(), [{ platformSlug: 'x', modelLabels: ['M1'], discontinued: false }]);
     assert.match(active, /class="platform-card"/);
     assert.match(active, /class="platform-dimensions"/);
     assert.doesNotMatch(active, /is-discontinued/);
 
     const dead = buildPlatformCardHtml(
       samplePlatform({ platformStatus: 'delisted' }),
-      [{ platformSlug: 'x', models: [], discontinued: false }]
+      [{ platformSlug: 'x', modelLabels: [], discontinued: false }]
     );
     assert.match(dead, /platform-card is-discontinued/);
   });
@@ -288,7 +288,7 @@ describe('buildPlatformCardHtml', () => {
   it('adds external link icon on titled action links', () => {
     const withLink = buildPlatformCardHtml(
       samplePlatform({ action: 'https://example.com' }),
-      [{ platformSlug: 'x', models: ['M1'], discontinued: false }]
+      [{ platformSlug: 'x', modelLabels: ['M1'], discontinued: false }]
     );
     assert.match(withLink, /platform-name-link/);
     assert.match(withLink, /class="link-icon"/);
@@ -302,7 +302,7 @@ describe('buildPlatformCardHtml', () => {
   it('omits badge for open; shows limited/paused/delisted beside title', () => {
     const open = buildPlatformCardHtml(
       samplePlatform({ action: 'https://example.com', platformStatus: 'open' }),
-      [{ platformSlug: 'x', models: ['M1'], discontinued: false }]
+      [{ platformSlug: 'x', modelLabels: ['M1'], discontinued: false }]
     );
     assert.doesNotMatch(open, /platform-rush/);
 
@@ -338,7 +338,7 @@ describe('buildPlatformCardHtml', () => {
   it('limits model tags on card face with +N overflow', () => {
     const models = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7'];
     const html = buildPlatformCardHtml(samplePlatform({ name: 'X' }), [
-      { platformSlug: 'x', models, discontinued: false }
+      { platformSlug: 'x', modelLabels: models, discontinued: false }
     ]);
     assert.ok(html.includes('M1'));
     assert.ok(html.includes('M5'));
@@ -470,14 +470,14 @@ describe('dimensionCopy', () => {
 describe('collectPlansForVendor', () => {
   it('returns all plans for vendor including discontinued, in order', () => {
     const plans = [
-      { platformSlug: 'a', plan: '1', discontinued: false },
-      { platformSlug: 'b', plan: 'x' },
-      { platformSlug: 'a', plan: '2', discontinued: true }
+      { platformSlug: 'a', name: '1', discontinued: false },
+      { platformSlug: 'b', name: 'x' },
+      { platformSlug: 'a', name: '2', discontinued: true }
     ];
     const rows = collectPlansForVendor(plans, 'a');
     assert.equal(rows.length, 2);
-    assert.equal(rows[0].plan, '1');
-    assert.equal(rows[1].plan, '2');
+    assert.equal(rows[0].name, '1');
+    assert.equal(rows[1].name, '2');
   });
 });
 
@@ -540,8 +540,8 @@ describe('validatePlatformRecords detail', () => {
 
 describe('payg pricing', () => {
   const platforms = [
-    samplePlatform({ id: 'deepseek-official', name: 'DeepSeek' }),
-    samplePlatform({ id: 'gongji', name: '共绩算力' })
+    samplePlatform({ slug: 'deepseek-official', name: 'DeepSeek' }),
+    samplePlatform({ slug: 'gongji', name: '共绩算力' })
   ];
 
   it('validates keyed entries and rejects unknown platform ids', () => {
@@ -570,7 +570,7 @@ describe('payg pricing', () => {
     };
     const html = buildPlatformCardHtml(
       samplePlatform({
-        id: 'deepseek-official',
+        slug: 'deepseek-official',
         name: 'DeepSeek',
         action: 'https://platform.deepseek.com/'
       }),
@@ -607,8 +607,8 @@ describe('payg pricing', () => {
 
 describe('flattenPaygRows', () => {
   const platforms = [
-    samplePlatform({ id: 'deepseek-official', name: 'DeepSeek', rating: 4 }),
-    samplePlatform({ id: 'gongji', name: '共绩算力', rating: 3 })
+    samplePlatform({ slug: 'deepseek-official', name: 'DeepSeek', rating: 4 }),
+    samplePlatform({ slug: 'gongji', name: '共绩算力', rating: 3 })
   ];
   const payg = {
     modelOrder: ['DeepSeek-V4-Pro', 'DeepSeek-V4-Flash'],
@@ -750,8 +750,8 @@ describe('platform pins', () => {
   it('normalizes and sanitizes pinned ids against platforms', () => {
     assert.deepEqual(normalizePinnedIds(['a', '', 'a', 2, null, '  b  ']), ['a', '2', 'b']);
     const cleaned = sanitizePinnedIds(['a', 'gone', 'b', 'gone'], [
-      samplePlatform({ id: 'a' }),
-      samplePlatform({ id: 'b' })
+      samplePlatform({ slug: 'a' }),
+      samplePlatform({ slug: 'b' })
     ]);
     assert.deepEqual(cleaned, ['a', 'b']);
   });
@@ -777,12 +777,12 @@ describe('platform pins', () => {
 
   it('sorts pinned platforms to the front by pin order', () => {
     const platforms = [
-      samplePlatform({ id: 'a', name: 'A' }),
-      samplePlatform({ id: 'b', name: 'B' }),
-      samplePlatform({ id: 'c', name: 'C' })
+      samplePlatform({ slug: 'a', name: 'A' }),
+      samplePlatform({ slug: 'b', name: 'B' }),
+      samplePlatform({ slug: 'c', name: 'C' })
     ];
     const sorted = sortPlatformsByPinned(platforms, ['c', 'missing', 'a']);
-    assert.deepEqual(sorted.map((p) => p.id), ['c', 'a', 'b']);
+    assert.deepEqual(sorted.map((p) => p.slug), ['c', 'a', 'b']);
   });
 
   it('storage helpers tolerate bad JSON and missing storage', () => {
@@ -803,7 +803,7 @@ describe('platform pins', () => {
 
   it('card html includes pin button state', () => {
     const html = buildPlatformCardHtml(
-      samplePlatform({ id: 'zhipu', name: '智谱AI', action: 'https://example.com' }),
+      samplePlatform({ slug: 'zhipu', name: '智谱AI', action: 'https://example.com' }),
       [],
       { pinnedIds: ['zhipu'] }
     );

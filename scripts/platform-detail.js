@@ -123,7 +123,7 @@
 
     const rows = active
       .map(plan => {
-        const planName = esc(plan && plan.plan);
+        const planName = esc(plan && plan.name);
         const type = esc((plan && plan.type) || 'Coding Plan');
         const rating = Math.max(0, Math.min(5, Number(plan && plan.rating) || 0));
         const stars = rating > 0 ? '⭐️'.repeat(rating) : '';
@@ -302,7 +302,7 @@
       ? `<a class="platform-detail-action" href="${esc(actionUrl)}" target="_blank" rel="noopener noreferrer">去官网 →</a>`
       : '';
     const platformId =
-      platform && typeof platform.id === 'string' ? platform.id.trim() : '';
+      platform && typeof platform.slug === 'string' ? platform.slug.trim() : '';
     const pinned =
       typeof context.isPinned === 'boolean'
         ? context.isPinned
@@ -321,8 +321,8 @@
     const rawPlans = Array.isArray(context.plans) ? context.plans : [];
     const vendorPlans =
       typeof PlatformCatalog.collectPlansForVendor === 'function'
-        ? PlatformCatalog.collectPlansForVendor(rawPlans, platform && (platform.slug || platform.id))
-        : rawPlans.filter(p => p && p.platformSlug === (platform && (platform.slug || platform.id)));
+        ? PlatformCatalog.collectPlansForVendor(rawPlans, platform && platform.slug)
+        : rawPlans.filter(p => p && p.platformSlug === (platform && platform.slug));
 
     const dims = dimensionMeta()
       .map(({ key, label }) => {
@@ -555,7 +555,7 @@
       typeof options.getPaygPricing === 'function' ? options.getPaygPricing() : null;
     const paygEntry =
       typeof PlatformCatalog.getPaygEntry === 'function'
-        ? PlatformCatalog.getPaygEntry(paygPricing, platform && platform.id)
+        ? PlatformCatalog.getPaygEntry(paygPricing, platform && platform.slug)
         : null;
     const paygModelOrder =
       typeof PlatformCatalog.getPaygModelOrderList === 'function'
@@ -568,7 +568,7 @@
       paygModelOrder,
       isPinned:
         typeof options.isPlatformPinned === 'function'
-          ? !!options.isPlatformPinned(platform && platform.id)
+          ? !!options.isPlatformPinned(platform && platform.slug)
           : false
     });
 
@@ -583,7 +583,7 @@
       document.body.style.overflow = 'hidden';
     }
 
-    openPlatformId = platform.id || null;
+    openPlatformId = platform.slug || null;
     openPlatformName = platform.name || null;
     triggerEl = opts.triggerEl || null;
 
@@ -612,7 +612,7 @@
       paygModelOrder,
       isPinned:
         typeof options.isPlatformPinned === 'function'
-          ? !!options.isPlatformPinned(platform && platform.id)
+          ? !!options.isPlatformPinned(platform && platform.slug)
           : false
     });
   }

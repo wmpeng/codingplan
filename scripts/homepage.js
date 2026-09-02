@@ -232,7 +232,7 @@
                 typeCheckboxes.appendChild(div);
             });
 
-            const vendors = uniqueStringsInOrder(allPlans.map(p => p['vendor']));
+            const vendors = uniqueStringsInOrder(allPlans.map(p => p.platformName));
             vendors.forEach(vendor => {
                 const div = document.createElement('div');
                 div.className = 'checkbox-item';
@@ -244,7 +244,7 @@
             });
 
             const models = sortModelsForFilterDropdown(
-                uniqueStringsInOrder(allPlans.flatMap(p => p.models || []))
+                uniqueStringsInOrder(allPlans.flatMap(p => p.modelLabels || []))
             );
             models.forEach(model => {
                 const div = document.createElement('div');
@@ -654,13 +654,13 @@
                 }
 
                 // 厂商筛选
-                if (selectedVendors.size > 0 && !selectedVendors.has(plan['vendor'])) {
+                if (selectedVendors.size > 0 && !selectedVendors.has(plan.platformName)) {
                     return false;
                 }
 
                 // 模型筛选（多选时取交集：套餐必须同时包含所有选中的模型）
                 if (selectedModels.size > 0) {
-                    const hasAllModels = [...selectedModels].every(model => plan.models.includes(model));
+                    const hasAllModels = [...selectedModels].every(model => plan.modelLabels.includes(model));
                     if (!hasAllModels) return false;
                 }
 
@@ -1281,10 +1281,10 @@
             const getSortValue = (plan) => {
                 switch (column) {
                     case 'vendor':
-                        return plan.vendor || null;
+                        return plan.platformName || null;
                     case 'plan':
                     case 'action':
-                        return plan.plan || null;
+                        return plan.name || null;
                     case 'firstMonthPrice':
                         return getPriceSortValue(plan, 'firstMonthPrice');
                     case 'monthlyPrice':
@@ -1294,7 +1294,7 @@
                     case 'yearlyPrice':
                         return getPriceSortValue(plan, 'yearlyPrice');
                     case 'models':
-                        return Array.isArray(plan.models) ? plan.models.join(',') : null;
+                        return Array.isArray(plan.modelLabels) ? plan.modelLabels.join(',') : null;
                     case 'fiveHoursRequests':
                         return getRequestSortValue(plan.fiveHoursRequests);
                     case 'weeklyRequests':
@@ -1404,8 +1404,8 @@
                 const pinHtml = PlatformCatalog.buildRowPinButtonHtml({ pinId, pinned });
                 return `
                 <tr class="plan-row${plan.discontinued ? ' discontinued' : ''}${pinned ? ' is-pinned' : ''}">
-                    <td class="sticky-first"><span class="table-pin-cell">${pinHtml}<span class="vendor-name">${escapeHtml(plan['vendor'])}</span></span></td>
-                    <td class="sticky-second"><span class="plan-name">${escapeHtml(plan['plan'])}</span></td>
+                    <td class="sticky-first"><span class="table-pin-cell">${pinHtml}<span class="vendor-name">${escapeHtml(plan.platformName)}</span></span></td>
+                    <td class="sticky-second"><span class="plan-name">${escapeHtml(plan.name)}</span></td>
                     <td><span class="type-tag ${(plan.type || 'Coding Plan') === 'Token Plan' ? 'token-plan' : 'coding-plan'}">${escapeHtml(plan.type || 'Coding Plan')}</span></td>
                     <td>
                         <a href="${escapeHtml(plan['action'])}" target="_blank" class="action-btn">
@@ -1422,7 +1422,7 @@
                     <td><span class="request-count">${formatRequestCount(plan.weeklyRequests)} <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.monthlyRequests)} <span class="unit">/ 月</span></span></td>
                     <td>
-                        ${plan.models.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
+                        ${plan.modelLabels.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
                     </td>
                     <td>
                         ${plan.benefits.map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}
@@ -2003,8 +2003,8 @@
                 });
                 const documents = await Promise.all(responses.map(response => response.json()));
                 entityContext = EntityData.buildContext(...documents);
-                allPlatforms = EntityData.hydratePlatforms(entityContext);
-                allPlans = EntityData.hydratePlans(entityContext).map((item, index) => processPrices(item, index));
+                allPlatforms = EntityData.listPlatforms(entityContext);
+                allPlans = EntityData.buildPlanCatalog(entityContext).map((item, index) => processPrices(item, index));
                 window.codingplanEntityContext = entityContext;
                 return entityContext;
             });
@@ -2281,13 +2281,8 @@
                 window.localStorage,
                 PlatformCatalog.PLANS_TABLE_PIN_STORAGE_KEY
             );
-            const legacyToSlug = new Map(allPlans.map(plan => [
-                `${plan.vendor}|${plan.plan}|${plan.type || 'Coding Plan'}`,
-                plan.slug
-            ]));
-            const migrated = raw.map(id => legacyToSlug.get(id) || id);
             const validIds = allPlans.map(PlatformCatalog.getPlanRowPinId).filter(Boolean);
-            const cleaned = PlatformCatalog.sanitizePinnedIdList(migrated, validIds);
+            const cleaned = PlatformCatalog.sanitizePinnedIdList(raw, validIds);
             planPinnedIds = cleaned;
             if (JSON.stringify(cleaned) !== JSON.stringify(raw)) {
                 PlatformCatalog.writePinnedIdsToStorage(
@@ -2328,7 +2323,7 @@
             const id = typeof platformId === 'string' ? platformId.trim() : '';
             if (!id) return;
             // 只允许 pin 当前仍存在的平台，避免脏 id 写回
-            const exists = allPlatforms.some((p) => p && p.id === id);
+            const exists = allPlatforms.some((p) => p && p.slug === id);
             if (!exists && !PlatformCatalog.isPlatformPinned(id, platformPinnedIds)) {
                 return;
             }
@@ -2389,7 +2384,7 @@
 
             if (typeof PlatformDetail !== 'undefined' && PlatformDetail.isOpen()) {
                 const openId = PlatformDetail.getOpenPlatformId();
-                const stillVisible = filtered.some(p => p.id === openId);
+                const stillVisible = filtered.some(p => p.slug === openId);
                 if (!stillVisible) PlatformDetail.close();
             }
         }
@@ -2450,7 +2445,7 @@
             const root = document.getElementById('view-payg');
             if (!root) return;
             if (typeof window.mountPaygView !== 'function') {
-                await loadScriptOnce('scripts/payg.js?v=260902a');
+                await loadScriptOnce('scripts/payg.js?v=260902b');
             }
             if (typeof window.mountPaygView === 'function') {
                 await window.mountPaygView(root);
@@ -2468,7 +2463,7 @@
                 document.head.appendChild(link);
             }
             if (typeof window.mountModelComparisonView !== 'function') {
-                await loadScriptOnce('scripts/model-comparison.js?v=260902i');
+                await loadScriptOnce('scripts/model-comparison.js?v=260902j');
             }
             if (typeof window.mountModelComparisonView === 'function') {
                 await window.mountModelComparisonView(root);
@@ -2673,7 +2668,7 @@
                         const card = e.target.closest('.platform-card');
                         if (!card) return;
                         const id = card.getAttribute('data-platform-id');
-                        const platform = allPlatforms.find(p => p.id === id);
+                        const platform = allPlatforms.find(p => p.slug === id);
                         if (platform) PlatformDetail.open(platform, { triggerEl: card });
                     });
                     grid.addEventListener('keydown', (e) => {
@@ -2683,7 +2678,7 @@
                         if (!card || e.target.closest('a')) return;
                         e.preventDefault();
                         const id = card.getAttribute('data-platform-id');
-                        const platform = allPlatforms.find(p => p.id === id);
+                        const platform = allPlatforms.find(p => p.slug === id);
                         if (platform) PlatformDetail.open(platform, { triggerEl: card });
                     });
                 }

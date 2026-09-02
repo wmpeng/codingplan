@@ -34,15 +34,15 @@ describe('buildCompositePriceChartItems', () => {
   it('keeps only computable rows, sorts ascending, same vendor same color', () => {
     const items = buildCompositePriceChartItems(
       [
-        { vendor: 'B厂', plan: '贵', monthlyPrice: 200, measuredMonthlyTokenLimit: 100 },
-        { vendor: 'A厂', plan: '便宜', monthlyPrice: 40, measuredMonthlyTokenLimit: 100 },
-        { vendor: 'B厂', plan: '中', monthlyPrice: 80, measuredMonthlyTokenLimit: 100 },
-        { vendor: '跳过', plan: '无额度', monthlyPrice: 10 }
+        { platformName: 'B厂', name: '贵', monthlyPrice: 200, measuredMonthlyTokenLimit: 100 },
+        { platformName: 'A厂', name: '便宜', monthlyPrice: 40, measuredMonthlyTokenLimit: 100 },
+        { platformName: 'B厂', name: '中', monthlyPrice: 80, measuredMonthlyTokenLimit: 100 },
+        { platformName: '跳过', name: '无额度', monthlyPrice: 10 }
       ],
       { usdToCnyRate: 6.8 }
     );
     assert.deepEqual(
-      items.map((x) => `${x.vendor}|${x.plan}`),
+      items.map((x) => `${x.platformName}|${x.planName}`),
       ['A厂|便宜', 'B厂|中', 'B厂|贵']
     );
     assert.equal(items[0].price, 0.4);
@@ -54,31 +54,31 @@ describe('buildCompositePriceChartItems', () => {
   it('includes discontinued when present in input list', () => {
     const items = buildCompositePriceChartItems(
       [
-        { vendor: 'A', plan: '在售', monthlyPrice: 40, measuredMonthlyTokenLimit: 100 },
-        { vendor: 'B', plan: '下线', monthlyPrice: 10, measuredMonthlyTokenLimit: 100, discontinued: true }
+        { platformName: 'A', name: '在售', monthlyPrice: 40, measuredMonthlyTokenLimit: 100 },
+        { platformName: 'B', name: '下线', monthlyPrice: 10, measuredMonthlyTokenLimit: 100, discontinued: true }
       ],
       { usdToCnyRate: 6.8 }
     );
-    assert.deepEqual(items.map((x) => x.plan), ['下线', '在售']);
+    assert.deepEqual(items.map((x) => x.planName), ['下线', '在售']);
     assert.equal(items[0].discontinued, true);
   });
 
   it('marks pinned without changing price sort order', () => {
     const items = buildCompositePriceChartItems(
       [
-        { vendor: 'B', plan: '贵', monthlyPrice: 200, measuredMonthlyTokenLimit: 100 },
-        { vendor: 'A', plan: '便宜', monthlyPrice: 40, measuredMonthlyTokenLimit: 100 },
-        { vendor: 'C', plan: '中', monthlyPrice: 80, measuredMonthlyTokenLimit: 100 }
+        { platformName: 'B', name: '贵', monthlyPrice: 200, measuredMonthlyTokenLimit: 100 },
+        { platformName: 'A', name: '便宜', monthlyPrice: 40, measuredMonthlyTokenLimit: 100 },
+        { platformName: 'C', name: '中', monthlyPrice: 80, measuredMonthlyTokenLimit: 100 }
       ],
       {
         usdToCnyRate: 6.8,
         isPinned(plan) {
-          return plan.plan === '贵';
+          return plan.name === '贵';
         }
       }
     );
     assert.deepEqual(
-      items.map((x) => `${x.plan}:${x.pinned ? 1 : 0}`),
+      items.map((x) => `${x.planName}:${x.pinned ? 1 : 0}`),
       ['便宜:0', '中:0', '贵:1']
     );
   });

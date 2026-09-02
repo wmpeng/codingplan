@@ -28,7 +28,7 @@
         ['MiniMax', 'Token Plan'],
         ['OpenCode', 'Token Plan']
     ];
-    const DEFAULT_MODEL_IDS = [
+    const DEFAULT_MODEL_SLUGS = [
         'deepseek-v4-pro-0813', 'deepseek-v4-flash-0731', 'qwen-3-8-max',
         'glm-5-3', 'glm-5-3-flash', 'kimi-k3', 'gpt-5-6-sol', 'gpt-5-6-luna',
         'claude-opus-5', 'claude-sonnet-5', 'muse-spark-1-2',
@@ -71,21 +71,21 @@
     }
 
     function getPointPlatformKey(point) {
-        return JSON.stringify([String(point.vendor || ''), String(point.platformType || '')]);
+        return JSON.stringify([String(point.platformName || ''), String(point.platformType || '')]);
     }
 
     function getDefaultPlatformSelectionKeys() {
         return new Set(DEFAULT_PLATFORM_SELECTIONS
-            .map(([vendor, platformType]) => getPointPlatformKey({ vendor, platformType })));
+            .map(([platformName, platformType]) => getPointPlatformKey({ platformName, platformType })));
     }
 
     function createDefaultFilterState(points) {
         const availablePlatforms = new Set((points || []).map(getPointPlatformKey));
-        const availableModels = new Set((points || []).map((point) => point.canonicalModelId));
+        const availableModels = new Set((points || []).map((point) => point.modelSlug));
         return {
             platforms: new Set([...getDefaultPlatformSelectionKeys()]
                 .filter((key) => availablePlatforms.has(key))),
-            models: new Set(DEFAULT_MODEL_IDS.filter((id) => availableModels.has(id))),
+            models: new Set(DEFAULT_MODEL_SLUGS.filter((slug) => availableModels.has(slug))),
             multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', monthlyPriceMin: null,
             monthlyPriceMax: null, soloColorKey: null, tokenUnit: 'yi'
         };
@@ -124,7 +124,7 @@
         const hasMonthlyPriceFilter = finitePositive(state.monthlyPriceMin) !== null && finitePositive(state.monthlyPriceMax) !== null;
         return (points || []).filter((point) => {
             if (platforms.size && !platforms.has(getPointPlatformKey(point))) return false;
-            if (models.size && !models.has(point.canonicalModelId)) return false;
+            if (models.size && !models.has(point.modelSlug)) return false;
             if (state.multimodal === 'multimodal' && point.multimodal !== true) return false;
             if (state.multimodal === 'text' && point.multimodal !== false) return false;
             const aaScore = getPointScore(point, 'artificialAnalysis');
@@ -160,11 +160,11 @@
         ).slice().sort((a, b) => {
             const byPrice = Number(a.unitPriceCnyPerM) - Number(b.unitPriceCnyPerM);
             if (byPrice !== 0) return byPrice;
-            const byVendor = String(a.vendor || '').localeCompare(String(b.vendor || ''), 'zh-CN');
+            const byVendor = String(a.platformName || '').localeCompare(String(b.platformName || ''), 'zh-CN');
             if (byVendor !== 0) return byVendor;
-            const byPlan = String(a.plan || '').localeCompare(String(b.plan || ''), 'zh-CN');
+            const byPlan = String(a.planName || '').localeCompare(String(b.planName || ''), 'zh-CN');
             if (byPlan !== 0) return byPlan;
-            return String(a.model || a.canonicalModel || '').localeCompare(String(b.model || b.canonicalModel || ''), 'zh-CN');
+            return String(a.modelName || a.canonicalModelName || '').localeCompare(String(b.modelName || b.canonicalModelName || ''), 'zh-CN');
         });
     }
 
@@ -322,19 +322,19 @@
         return `#${rgb.map((channel) => Math.round((channel + match) * 255).toString(16).padStart(2, '0')).join('')}`;
     }
 
-    function buildModelColorMap(modelIds) {
+    function buildModelColorMap(modelSlugs) {
         const map = {};
-        [...new Set(modelIds || [])].sort().forEach((modelId, index) => {
+        [...new Set(modelSlugs || [])].sort().forEach((modelSlug, index) => {
             const hue = Math.round((index * 137.508) % 360);
             const saturation = 62 + (index % 3) * 5;
             const lightness = 42 + (index % 4) * 4;
-            map[modelId] = hslToHex(hue, saturation, lightness);
+            map[modelSlug] = hslToHex(hue, saturation, lightness);
         });
         return map;
     }
 
     function getPointColorKey(point, colorMode) {
-        return colorMode === 'model' ? point.canonicalModelId : getPointPlatformKey(point);
+        return colorMode === 'model' ? point.modelSlug : getPointPlatformKey(point);
     }
 
     function filterBySoloColorKey(points, colorMode, soloColorKey) {
@@ -344,18 +344,18 @@
 
     function getSoloPointLabelField(points) {
         const visible = points || [];
-        const modelIds = new Set(visible.map((point) => point.canonicalModelId));
+        const modelSlugs = new Set(visible.map((point) => point.modelSlug));
         const platforms = new Set(visible.map(getPointPlatformKey));
-        if (modelIds.size === 1) return 'vendor';
+        if (modelSlugs.size === 1) return 'vendor';
         if (platforms.size === 1) return 'model';
         return null;
     }
 
     function getPointLabelText(point, pointLabelField) {
         if (pointLabelField === 'vendor') {
-            return point.platformType ? `${point.vendor} · ${point.platformType}` : point.vendor;
+            return point.platformType ? `${point.platformName} · ${point.platformType}` : point.platformName;
         }
-        if (pointLabelField === 'model') return point.model || point.canonicalModel;
+        if (pointLabelField === 'model') return point.modelName || point.canonicalModelName;
         return '';
     }
 
@@ -366,7 +366,7 @@
     }
 
     function platformCellHtml(point) {
-        const vendor = escapeHtml(point.vendor);
+        const vendor = escapeHtml(point.platformName);
         const actionUrl = String(point.actionUrl || '').trim();
         if (!/^https?:\/\//i.test(actionUrl)) return `<strong>${vendor}</strong>`;
         return `<a class="usage-platform-link" href="${escapeHtml(actionUrl)}" target="_blank" rel="noopener noreferrer"><strong>${vendor}</strong><span aria-hidden="true">↗</span></a>`;
@@ -413,8 +413,10 @@
     function comparisonSortValue(point, key) {
         if (key === 'price') return finitePositive(point.monthlyFeeCny);
         if (key === 'artificialAnalysis' || key === 'deepSWE') return getPointScore(point, key);
-        if (key === 'vendor' || key === 'platformType' || key === 'plan' || key === 'note') return point[key] || '';
-        if (key === 'model') return point.model || point.canonicalModel || '';
+        if (key === 'vendor') return point.platformName || '';
+        if (key === 'plan') return point.planName || '';
+        if (key === 'platformType' || key === 'note') return point[key] || '';
+        if (key === 'model') return point.modelName || point.canonicalModelName || '';
         return finitePositive(point[key]);
     }
 
@@ -441,7 +443,7 @@
                 if (aPriceMissing !== bPriceMissing) return aPriceMissing ? 1 : -1;
                 if (!aPriceMissing && !bPriceMissing && aPrice !== bPrice) return aPrice - bPrice;
             }
-            return String(left.id || '').localeCompare(String(right.id || ''), 'zh-CN');
+            return String(left.slug || '').localeCompare(String(right.slug || ''), 'zh-CN');
         });
     }
 
@@ -460,12 +462,12 @@
         const deepSWEScore = point.scores && point.scores.deepSWE;
         const deepSWEInterval = deepSWEScore && Number.isFinite(Number(deepSWEScore.confidenceInterval))
             ? ` ±${formatNumber(deepSWEScore.confidenceInterval, 0)}` : '';
-        return `<tr data-point-id="${escapeHtml(point.id)}">` +
+        return `<tr data-point-id="${escapeHtml(point.slug)}">` +
             `<td class="sticky-first">${platformCellHtml(point)}</td>` +
             `<td>${escapeHtml(point.platformType || '—')}</td>` +
-            `<td>${escapeHtml(point.plan || (subscription ? '订阅' : '按量 API'))}</td>` +
+            `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}</td>` +
             `<td class="numeric">${price}</td>` +
-            `<td class="usage-table-model">${escapeHtml(point.model || point.canonicalModel)}</td>` +
+            `<td class="usage-table-model">${escapeHtml(point.modelName || point.canonicalModelName)}</td>` +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.weeklyTokenInM, tokenUnit) : '—'}</td>` +
@@ -483,12 +485,12 @@
             const id = String(group.id || '').trim();
             const title = String(group.title || '').trim();
             const kind = group.kind === 'multi' ? 'multi' : group.kind === 'single' ? 'single' : '';
-            const modelIds = [...new Set((Array.isArray(group.modelSlugs) ? group.modelSlugs : [])
+            const modelSlugs = [...new Set((Array.isArray(group.modelSlugs) ? group.modelSlugs : [])
                 .map((value) => String(value || '').trim()).filter(Boolean))];
-            if (!id || !title || !kind || !modelIds.length || seenIds.has(id)) return [];
-            if (kind === 'single' && modelIds.length !== 1) return [];
+            if (!id || !title || !kind || !modelSlugs.length || seenIds.has(id)) return [];
+            if (kind === 'single' && modelSlugs.length !== 1) return [];
             seenIds.add(id);
-            return [{ id, title, kind, modelIds }];
+            return [{ id, title, kind, modelSlugs }];
         });
         return {
             title: String(source.title || '').trim() || '常见对比',
@@ -502,13 +504,13 @@
     }
 
     function buildPresetComparisonRows(points, group, platformScope) {
-        const modelIds = new Set(group && Array.isArray(group.modelIds) ? group.modelIds : []);
+        const modelSlugs = new Set(group && Array.isArray(group.modelSlugs) ? group.modelSlugs : []);
         const defaultPlatformKeys = getDefaultPlatformSelectionKeys();
         const scope = normalizePresetPlatformScope(platformScope);
         return sortComparisonRows((points || []).filter((point) =>
             (point.billingType === 'subscription' || point.billingType === 'payg') &&
             (scope === 'all' || defaultPlatformKeys.has(getPointPlatformKey(point))) &&
-            modelIds.has(point.canonicalModelId) &&
+            modelSlugs.has(point.modelSlug) &&
             finitePositive(point.unitPriceCnyPerM) !== null &&
             (point.billingType === 'payg' || (
                 finitePositive(point.monthlyFeeCny) !== null &&
@@ -518,8 +520,8 @@
     }
 
     function getPresetModelQualifier(point) {
-        const model = String(point && point.model || '').trim();
-        const canonical = String(point && point.canonicalModel || '').trim();
+        const model = String(point && point.modelName || '').trim();
+        const canonical = String(point && point.canonicalModelName || '').trim();
         if (!model || !canonical || model === canonical) return '';
         if (model.startsWith(canonical)) return model.slice(canonical.length).trim();
         return model;
@@ -529,18 +531,18 @@
         const kind = group && group.kind === 'multi' ? 'multi' : 'single';
         const columns = PRESET_TABLE_COLUMNS[kind];
         const rows = buildPresetComparisonRows(points, group, platformScope);
-        const modelNamesById = new Map((points || []).map((point) => [point.canonicalModelId, point.canonicalModel]));
+        const modelNamesBySlug = new Map((points || []).map((point) => [point.modelSlug, point.canonicalModelName]));
         const includedModels = kind === 'multi'
-            ? group.modelIds.map((id) => modelNamesById.get(id) || id).join('、')
+            ? group.modelSlugs.map((slug) => modelNamesBySlug.get(slug) || slug).join('、')
             : '';
         const subtitle = includedModels ? `<p>包含：${escapeHtml(includedModels)}</p>` : '';
         const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
         const body = rows.length ? rows.map((point) => {
             const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
-            const planName = point.plan || (point.billingType === 'payg' ? '按量 API' : '订阅');
+            const planName = point.planName || (point.billingType === 'payg' ? '按量 API' : '订阅');
             const plan = `<span>${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
             const price = point.billingType === 'payg' ? '按量' : `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`;
-            const model = `<span class="usage-table-model">${escapeHtml(point.model || point.canonicalModel || '—')}</span>`;
+            const model = `<span class="usage-table-model">${escapeHtml(point.modelName || point.canonicalModelName || '—')}</span>`;
             const separator = '<span class="usage-preset-separator">·</span>';
             const primaryDetail = kind === 'multi' ? model : `<span class="usage-preset-price">${price}</span>`;
             const secondaryDetail = kind === 'multi' ? `${separator}<span class="usage-preset-price">${price}</span>` : '';
@@ -550,7 +552,7 @@
                 metrics: `<div class="usage-preset-metric-primary">${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)}</div>` +
                     `<div class="usage-preset-secondary-line usage-preset-metric-secondary"><span>月用量</span><span>${formatTokenAmount(point.monthlyTokenInM, tokenUnit)}</span></div>`
             };
-            return `<tr data-point-id="${escapeHtml(point.id)}">${columns.map((column) => {
+            return `<tr data-point-id="${escapeHtml(point.slug)}">${columns.map((column) => {
                 return `<td class="${column.key === 'metrics' ? 'usage-preset-metrics' : 'usage-preset-identity'}">${values[column.key]}</td>`;
             }).join('')}</tr>`;
         }).join('') : `<tr><td class="usage-table-empty" colspan="${columns.length}">当前暂无可比较的套餐。</td></tr>`;
@@ -599,9 +601,9 @@
 
     function tooltipHtml(point, benchmark, colorMode, tokenUnit) {
         const modality = point.multimodal === true ? '多模态' : point.multimodal === false ? '纯文本' : '多模态状态未知';
-        const billing = point.billingType === 'subscription' ? escapeHtml(point.plan || '订阅') : '按量 API';
-        const platformLine = `${escapeHtml(point.vendor)} · ${billing}`;
-        const modelLine = escapeHtml(point.model);
+        const billing = point.billingType === 'subscription' ? escapeHtml(point.planName || '订阅') : '按量 API';
+        const platformLine = `${escapeHtml(point.platformName)} · ${billing}`;
+        const modelLine = escapeHtml(point.modelName);
         const fee = point.billingType === 'subscription'
             ? `<div>月费：¥${formatNumber(point.monthlyFeeCny, 2)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
             : '';
@@ -687,7 +689,7 @@
         const grouped = new Map();
         points.forEach((point) => {
             const key = getPointColorKey(point, colorMode);
-            const label = colorMode === 'model' ? point.canonicalModel : getPointLabelText(point, 'vendor');
+            const label = colorMode === 'model' ? point.canonicalModelName : getPointLabelText(point, 'vendor');
             if (!grouped.has(key)) grouped.set(key, { label, data: [] });
             grouped.get(key).data.push(mapPoint(point));
         });
@@ -709,8 +711,8 @@
     }
 
     function getUnitPriceBarAxisLabel(point) {
-        const plan = point.billingType === 'subscription' ? (point.plan || '订阅') : '按量 API';
-        return `${point.vendor || '未知平台'} · ${plan} · ${point.model || point.canonicalModel || '未知模型'}`;
+        const plan = point.billingType === 'subscription' ? (point.planName || '订阅') : '按量 API';
+        return `${point.platformName || '未知平台'} · ${plan} · ${point.modelName || point.canonicalModelName || '未知模型'}`;
     }
 
     function buildUnitPriceBarSeries(points, colorMode, colors, tokenUnit) {
@@ -718,7 +720,7 @@
         const grouped = new Map();
         points.forEach((point, index) => {
             const key = getPointColorKey(point, colorMode);
-            const label = colorMode === 'model' ? point.canonicalModel : getPointLabelText(point, 'vendor');
+            const label = colorMode === 'model' ? point.canonicalModelName : getPointLabelText(point, 'vendor');
             if (!grouped.has(key)) grouped.set(key, { label, data: Array(points.length).fill(null) });
             grouped.get(key).data[index] = {
                 value: unitPriceInTokenUnit(point.unitPriceCnyPerM, tokenUnit),
@@ -804,12 +806,12 @@
             const points = root.EntityData.buildComparisonPoints(context, rate);
             const platformMap = new Map();
             points.forEach((point) => {
-                const label = point.platformType ? `${point.vendor} · ${point.platformType}` : point.vendor;
+                const label = point.platformType ? `${point.platformName} · ${point.platformType}` : point.platformName;
                 platformMap.set(getPointPlatformKey(point), label);
             });
             const platforms = [...platformMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
             const modelMap = new Map();
-            points.forEach((point) => modelMap.set(point.canonicalModelId, point.canonicalModel));
+            points.forEach((point) => modelMap.set(point.modelSlug, point.canonicalModelName));
             const models = [...modelMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
             const platformColors = buildVendorColorMap(platforms.map(([key]) => key));
             const modelColors = buildModelColorMap(models.map(([id]) => id));
@@ -961,7 +963,7 @@
                 const entries = new Map();
                 visiblePoints.forEach((point) => {
                     const key = getPointColorKey(point, state.colorMode);
-                    const label = byModel ? point.canonicalModel : getPointLabelText(point, 'vendor');
+                    const label = byModel ? point.canonicalModelName : getPointLabelText(point, 'vendor');
                     entries.set(key, label);
                 });
                 return { colors, entries };
@@ -1272,5 +1274,5 @@
         return container.__usageMountPromise;
     }
 
-    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_SLUGS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });
