@@ -266,19 +266,19 @@ test('preset comparisons are configured outside the renderer', () => {
   assert.deepEqual(config.groups[4].modelIds, ['deepseek-v4-flash-0731', 'glm-5-3-flash', 'gpt-5-6-luna']);
 });
 
-test('preset rows keep only comparable subscriptions and sort by unit price', () => {
+test('preset rows include subscriptions and payg while sorting by unit and package price', () => {
   const group = { kind: 'single', modelIds: ['m1'] };
   const defaultPlatform = { vendor: '智谱AI', platformType: 'Token Plan' };
   const rows = [
     { ...defaultPlatform, id: 'expensive', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 100, monthlyTokenInM: 100, unitPriceCnyPerM: 1 },
     { ...defaultPlatform, id: 'cheap', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.5 },
-    { ...defaultPlatform, id: 'api', billingType: 'payg', canonicalModelId: 'm1', unitPriceCnyPerM: 0.1 },
+    { vendor: 'DeepSeek', platformType: 'API', id: 'api', billingType: 'payg', canonicalModelId: 'm1', unitPriceCnyPerM: 0.1 },
     { ...defaultPlatform, id: 'unknown', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 20, monthlyTokenInM: 'unknown', unitPriceCnyPerM: 0.2 },
     { ...defaultPlatform, id: 'other', billingType: 'subscription', canonicalModelId: 'm2', monthlyFeeCny: 10, monthlyTokenInM: 100, unitPriceCnyPerM: 0.1 },
     { vendor: '智谱AI', platformType: 'Coding Plan', id: 'not-default-type', billingType: 'subscription', canonicalModelId: 'm1', monthlyFeeCny: 10, monthlyTokenInM: 100, unitPriceCnyPerM: 0.1 }
   ];
-  assert.deepEqual(buildPresetComparisonRows(rows, group).map((row) => row.id), ['cheap', 'expensive']);
-  assert.deepEqual(buildPresetComparisonRows(rows, group, 'all').map((row) => row.id), ['not-default-type', 'cheap', 'expensive']);
+  assert.deepEqual(buildPresetComparisonRows(rows, group).map((row) => row.id), ['api', 'cheap', 'expensive']);
+  assert.deepEqual(buildPresetComparisonRows(rows, group, 'all').map((row) => row.id), ['not-default-type', 'api', 'cheap', 'expensive']);
 });
 
 test('preset tables add model only for multi groups and preserve single-model qualifiers', () => {
@@ -297,6 +297,20 @@ test('preset tables add model only for multi groups and preserve single-model qu
   assert.match(multi, /GLM-5\.3-Flash \[谷\]/);
   assert.match(multi, /¥10 \/ 亿/);
   assert.match(multi, /10亿/);
+});
+
+test('preset tables show payg rows with explicit unavailable subscription fields', () => {
+  const apiPoint = {
+    id: 'api', billingType: 'payg', vendor: 'DeepSeek', platformType: 'API', plan: '按量 API',
+    model: 'DeepSeek-V4-Flash-0731', canonicalModel: 'DeepSeek-V4-Flash-0731',
+    canonicalModelId: 'deepseek-v4-flash-0731', unitPriceCnyPerM: 0.1
+  };
+  const html = presetComparisonTableHtml({
+    id: 'api', title: 'API', kind: 'single', modelIds: ['deepseek-v4-flash-0731']
+  }, [apiPoint], 'yi');
+  assert.match(html, /<td class="numeric">按量<\/td>/);
+  assert.match(html, /¥10 \/ 亿/);
+  assert.match(html, /<td class="numeric">—<\/td>/);
 });
 
 test('comparison table rows format subscription and payg semantics', () => {

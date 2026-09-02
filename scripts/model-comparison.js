@@ -515,12 +515,14 @@
         const defaultPlatformKeys = getDefaultPlatformSelectionKeys();
         const scope = normalizePresetPlatformScope(platformScope);
         return sortComparisonRows((points || []).filter((point) =>
-            point.billingType === 'subscription' &&
+            (point.billingType === 'subscription' || point.billingType === 'payg') &&
             (scope === 'all' || defaultPlatformKeys.has(getPointPlatformKey(point))) &&
             modelIds.has(point.canonicalModelId) &&
-            finitePositive(point.monthlyFeeCny) !== null &&
             finitePositive(point.unitPriceCnyPerM) !== null &&
-            finitePositive(point.monthlyTokenInM) !== null
+            (point.billingType === 'payg' || (
+                finitePositive(point.monthlyFeeCny) !== null &&
+                finitePositive(point.monthlyTokenInM) !== null
+            ))
         ), 'unitPriceCnyPerM', 'asc');
     }
 
@@ -539,13 +541,14 @@
         const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
         const body = rows.length ? rows.map((point) => {
             const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
-            const plan = `<span>${escapeHtml(point.plan || '订阅')}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
+            const planName = point.plan || (point.billingType === 'payg' ? '按量 API' : '订阅');
+            const plan = `<span>${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
             const values = {
                 vendor: platformCellHtml(point),
                 platformType: escapeHtml(point.platformType || '—'),
                 plan,
                 model: `<span class="usage-table-model">${escapeHtml(point.model || point.canonicalModel || '—')}</span>`,
-                price: `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`,
+                price: point.billingType === 'payg' ? '按量' : `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`,
                 unitPriceCnyPerM: formatUnitPrice(point.unitPriceCnyPerM, tokenUnit),
                 monthlyTokenInM: formatTokenAmount(point.monthlyTokenInM, tokenUnit)
             };
