@@ -73,10 +73,10 @@ describe('comparison URL state', () => {
 describe('comparison presentation helpers', () => {
   it('does not combine prices across currencies', () => {
     assert.equal(formatPriceRange([
-      { type: 'Coding Plan', monthlyPrice: 29, currency: '¥' },
-      { type: 'Token Plan', monthlyPrice: 119, currency: '¥' },
-      { type: 'Coding Plan', monthlyPrice: 10, currency: '$' },
-      { type: 'API', monthlyPrice: 1, currency: '¥' }
+      { billingMode: 'subscription', monthlyPrice: 29, currency: '¥' },
+      { billingMode: 'subscription', monthlyPrice: 119, currency: '¥' },
+      { billingMode: 'subscription', monthlyPrice: 10, currency: '$' },
+      { billingMode: 'payg', monthlyPrice: 1, currency: '¥' }
     ]), '¥29–119/月；$10/月');
   });
 

@@ -9,7 +9,6 @@
   const METRIC_PIN_STORAGE_KEY = 'platformComparisonPinnedMetricIds';
   const VALID_METRIC_IDS = [
     'purchase-status',
-    'plan-types',
     'models-score',
     'model-catalog',
     'stability-score',
@@ -274,7 +273,7 @@
   function formatPriceRange(plans) {
     const byCurrency = new Map();
     for (const plan of plans) {
-      if (plan.type === 'API') continue;
+      if (plan.billingMode === 'payg') continue;
       const price = positivePrice(plan.monthlyPrice);
       if (price === null) continue;
       const currency = String(plan.currency || '¥').trim() || '¥';
@@ -309,7 +308,6 @@
       modelNames.push(model ? model.name : relation.modelSlug);
     });
     modelNames.sort((left, right) => left.localeCompare(right, 'zh-CN'));
-    const types = Array.from(new Set(activePlans.map((plan) => plan.type).filter(Boolean)));
     const dims = ['value', 'models', 'stability']
       .map((key) => ({ key, score: scoreOf(platform, key), data: platform.dimensions && platform.dimensions[key] }))
       .filter((item) => item.data)
@@ -329,7 +327,6 @@
       statusLabel,
       activePlans,
       visiblePlans,
-      types,
       modelNames,
       monthlyPrice: formatPriceRange(activePlans),
       notice: noticeDimension
@@ -387,11 +384,6 @@
         render: (view) => `<span class="platform-comparison-status platform-comparison-status--${escapeHtml(view.status)}">${escapeHtml(view.statusLabel)}</span>`
       },
       {
-        id: 'plan-types', group: '购买与使用门槛', label: '可用方式',
-        key: (view) => view.types.slice().sort().join('|'),
-        render: (view) => escapeHtml(view.types.length ? view.types.join('、') : '暂无在售方式')
-      },
-      {
         id: 'models-score', group: '模型能力', label: '模型能力',
         key: (view) => scoreOf(view.platform, 'models'),
         render: (view) => dimensionCell(view, 'models', modelLead)
@@ -418,7 +410,7 @@
       {
         id: 'active-plans', group: '套餐概况', label: '在售方案',
         key: (view) => view.activePlans.length,
-        render: (view) => `<strong>${view.activePlans.length} 个</strong>${view.types.length ? ` · ${escapeHtml(view.types.join('、'))}` : ''}`
+        render: (view) => `<strong>${view.activePlans.length} 个</strong>`
       },
       {
         id: 'monthly-price', group: '套餐概况', label: '订阅月价范围',

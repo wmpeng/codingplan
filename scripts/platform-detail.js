@@ -173,7 +173,6 @@
     const rows = active
       .map(plan => {
         const planName = esc(plan && plan.name);
-        const type = esc((plan && plan.type) || 'Coding Plan');
         const rating = Math.max(0, Math.min(5, Number(plan && plan.rating) || 0));
         const stars = rating > 0 ? '⭐️'.repeat(rating) : '';
         const ratingHtml = stars
@@ -195,7 +194,6 @@
           `<div class="platform-detail-plan-title-row">` +
           `<span class="platform-detail-plan-name">${planName}</span>` +
           ratingHtml +
-          `<span class="platform-detail-plan-type-badge">${type}</span>` +
           `</div>` +
           summaryHtml +
           `</div>` +

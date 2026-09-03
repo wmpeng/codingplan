@@ -47,7 +47,7 @@
   function buildPlanCatalog(context, options) {
     const includeHidden = !!(options && options.includeHidden);
     return context.plans
-      .filter((plan) => includeHidden || (plan.planTableVisible !== false && plan.type !== 'API'))
+      .filter((plan) => includeHidden || (plan.planTableVisible !== false && plan.billingMode !== 'payg'))
       .map((plan) => {
         const platform = context.platformBySlug.get(plan.platformSlug);
         const names = (context.relationsByPlanSlug.get(plan.slug) || [])
@@ -98,7 +98,7 @@
 
   function buildApiPricingGroups(context, platformSlug) {
     return context.plans
-      .filter((plan) => plan.type === 'API' && plan.platformSlug === platformSlug && !plan.discontinued)
+      .filter((plan) => plan.billingMode === 'payg' && plan.platformSlug === platformSlug && !plan.discontinued)
       .map((plan) => {
         const rows = (context.relationsByPlanSlug.get(plan.slug) || [])
           .slice()
@@ -148,31 +148,30 @@
       const usage = relation.usage || {};
       const unit = positiveNumber(usage.unitPriceCnyPerM);
       const windows = displayWindows(usage);
-      const billingType = plan.type === 'API' ? 'api' : 'subscription';
+      const billingMode = plan.billingMode;
       const fee = positiveNumber(plan.comparisonMonthlyPrice ?? plan.monthlyPrice);
       const displayCurrency = plan.currency || '¥';
       const rate = currencyRate(displayCurrency, usdToCnyRate);
       const monthlyFeeCny = fee && rate ? Math.round(fee * rate * 1e6) / 1e6 : null;
-      if (billingType === 'api' ? !unit : !((monthlyFeeCny && windows.monthly) || unit)) continue;
+      if (billingMode === 'payg' ? !unit : !((monthlyFeeCny && windows.monthly) || unit)) continue;
       points.push({
         slug: relation.slug,
         platformSlug: platform.slug,
         planSlug: plan.slug,
         modelSlug: model.slug,
         platformName: platform.name,
-        platformType: plan.type,
         planName: plan.comparisonName || plan.name,
         modelName: displayModelName(model, relation),
         canonicalModelName: model.name,
         multimodal: model.multimodal,
         scores: comparisonScores(model.scores),
-        billingType,
+        billingMode,
         actionUrl: plan.action || platform.action || null,
-        originalMonthlyFee: billingType === 'subscription' ? fee : undefined,
-        originalCurrency: billingType === 'subscription'
+        originalMonthlyFee: billingMode === 'subscription' ? fee : undefined,
+        originalCurrency: billingMode === 'subscription'
           ? displayCurrency
           : (relation.pricing && relation.pricing.currency) || undefined,
-        apiPricing: billingType === 'api' && relation.pricing
+        apiPricing: billingMode === 'payg' && relation.pricing
           ? {
               currency: relation.pricing.currency,
               inputPerM: relation.pricing.inputPerM,
@@ -180,8 +179,8 @@
               outputPerM: relation.pricing.outputPerM
             }
           : null,
-        monthlyFeeCny: billingType === 'subscription' ? monthlyFeeCny : undefined,
-        ...(billingType === 'subscription' ? {
+        monthlyFeeCny: billingMode === 'subscription' ? monthlyFeeCny : undefined,
+        ...(billingMode === 'subscription' ? {
           fiveHourTokenInM: windows.fiveHours,
           weeklyTokenInM: windows.weekly,
           monthlyTokenInM: windows.monthly

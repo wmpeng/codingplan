@@ -24,6 +24,16 @@
       "platformStatus": "open"
     },
     {
+      "slug": "zhipu-coding-legacy",
+      "name": "智谱AI Coding Plan（已下架）",
+      "rating": 5,
+      "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
+      "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
+      "tags": [],
+      "platformStatus": "delisted",
+      "catalogVisible": false
+    },
+    {
       "slug": "opencode",
       "name": "OpenCode",
       "rating": 5,
@@ -48,22 +58,45 @@
     },
     {
       "slug": "bytedance-ark",
-      "name": "字节·方舟",
+      "name": "字节·方舟 Coding Plan",
       "rating": 5,
-      "summary": "已解除限购，开放购买。支持智谱 GLM-5.3、DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro、MiniMax、Kimi各家模型，模型覆盖全面。",
-      "detail": "CodingPlan已解除限购，恢复开放购买，无需抢购。同时支持智谱 GLM-5.3、DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro、MiniMax、Kimi各家模型。",
+      "summary": "开放购买，模型覆盖全面。",
+      "detail": "Coding Plan 开放购买，支持 GLM-5.3、DeepSeek-V4、MiniMax-M3 等模型。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "开放购买，无需抢购；具体套餐折扣和模型用量活动以官方公告为准。"
+          "reason": "开放购买，无需抢购；具体套餐活动以官方公告为准。"
         },
         "models": {
           "score": 5,
-          "reason": "支持 GLM-5.3、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731、MiniMax-M3、Kimi-K2.7-Code、Kimi-K3，模型覆盖全面。"
+          "reason": "支持 GLM-5.3、DeepSeek-V4、MiniMax-M3 等模型。"
         },
         "stability": {
           "score": 4,
-          "reason": "火山引擎大厂背书，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
+          "reason": "火山引擎官方服务，整体稳定。"
+        }
+      },
+      "tags": [],
+      "platformStatus": "open"
+    },
+    {
+      "slug": "bytedance-ark-agent",
+      "name": "字节·方舟 Agent Plan",
+      "rating": 5,
+      "summary": "开放购买，按 AFP 抵扣，模型覆盖全面。",
+      "detail": "Agent Plan 开放购买，按 AFP 抵扣，支持 GLM-5.3、DeepSeek-V4、MiniMax-M3、Kimi-K3 等模型。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "开放购买，额度与模型抵扣规则明确。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "支持 GLM-5.3、DeepSeek-V4、MiniMax-M3、Kimi-K3 等模型。"
+        },
+        "stability": {
+          "score": 4,
+          "reason": "火山引擎官方服务，整体稳定。"
         }
       },
       "tags": [],
@@ -94,6 +127,16 @@
       "platformStatus": "open"
     },
     {
+      "slug": "minimax-coding-legacy",
+      "name": "MiniMax Coding Plan（已下架）",
+      "rating": 5,
+      "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
+      "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
+      "tags": [],
+      "platformStatus": "delisted",
+      "catalogVisible": false
+    },
+    {
       "slug": "zhipu-intl",
       "name": "智谱国际版",
       "rating": 5,
@@ -116,6 +159,16 @@
       },
       "tags": [],
       "platformStatus": "open"
+    },
+    {
+      "slug": "zhipu-intl-coding-legacy",
+      "name": "智谱国际版 Coding Plan（已下架）",
+      "rating": 5,
+      "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
+      "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
+      "tags": [],
+      "platformStatus": "delisted",
+      "catalogVisible": false
     },
     {
       "slug": "kimi",
@@ -286,26 +339,49 @@
     },
     {
       "slug": "aliyun-bailian",
-      "name": "阿里·百炼",
+      "name": "阿里·百炼 Token Plan",
       "rating": 4,
-      "summary": "Coding Plan 性价比高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。",
-      "detail": "Coding Plan 性价比很高但不放量；Token Plan 开放购买，性价比尚可。除了自家Qwen模型，对其他家模型支持稍差。CodingPlan和TokenPlan的抵扣规则均不透明。",
+      "summary": "开放购买，支持 Qwen-3.8-Max 等模型，夜间抵扣成本更低。",
+      "detail": "Token Plan 开放购买，按 Credits 抵扣；支持 Qwen-3.8-Max 等模型，夜间有额外优惠。",
       "dimensions": {
         "value": {
           "score": 4,
-          "reason": "Coding Plan 性价比比肩Minimax，但不放量；Token Plan开放购买，性价比尚可。Qwen3.8-Max有限时1折活动。夜间有额外2折优惠。"
+          "reason": "开放购买，夜间抵扣成本更低；具体活动以官方公告为准。"
         },
         "models": {
           "score": 4,
-          "reason": "TokenPlan 支持自家最新 Qwen-3.8-Max，Qwen-3.7-Max/Plus 模型。CodingPlan支持Qwen-3.7-Plus等模型。除了自家Qwen模型，对其他家模型支持稍差。"
+          "reason": "支持 Qwen-3.8-Max、Qwen-3.7-Max/Plus 等模型。"
         },
         "stability": {
           "score": 5,
-          "reason": "官方服务，稳定性强。"
+          "reason": "阿里云官方服务，稳定性强。"
         }
       },
       "tags": [],
       "platformStatus": "open"
+    },
+    {
+      "slug": "aliyun-bailian-coding",
+      "name": "阿里·百炼 Coding Plan",
+      "rating": 4,
+      "summary": "Pro 套餐性价比高，但供应有限。",
+      "detail": "Coding Plan Pro 性价比较高，但供应有限；具体开放情况以官方页面为准。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "套餐性价比较高，但供应有限。"
+        },
+        "models": {
+          "score": 4,
+          "reason": "支持 Qwen 系列编程模型。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "阿里云官方服务，稳定性强。"
+        }
+      },
+      "tags": [],
+      "platformStatus": "limited"
     },
     {
       "slug": "xiaomi-mimo",
@@ -353,6 +429,16 @@
       "platformStatus": "open"
     },
     {
+      "slug": "baidu-qianfan-coding-legacy",
+      "name": "百度·千帆 Coding Plan（已下架）",
+      "rating": 3,
+      "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
+      "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
+      "tags": [],
+      "platformStatus": "delisted",
+      "catalogVisible": false
+    },
+    {
       "slug": "huawei-cloud",
       "name": "华为云",
       "rating": 3,
@@ -394,6 +480,16 @@
       },
       "tags": [],
       "platformStatus": "open"
+    },
+    {
+      "slug": "tencent-cloud-coding-legacy",
+      "name": "腾讯云 Coding Plan（已下架）",
+      "rating": 3,
+      "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
+      "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
+      "tags": [],
+      "platformStatus": "delisted",
+      "catalogVisible": false
     },
     {
       "slug": "jd-cloud",
@@ -482,6 +578,16 @@
       },
       "tags": [],
       "platformStatus": "open"
+    },
+    {
+      "slug": "unicom-cloud-coding-legacy",
+      "name": "联通云 Coding Plan（已下架）",
+      "rating": 2,
+      "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
+      "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
+      "tags": [],
+      "platformStatus": "delisted",
+      "catalogVisible": false
     },
     {
       "slug": "cmcc-cloud",

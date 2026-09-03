@@ -113,7 +113,6 @@
       prepared.push({
         platformName: String((plan && plan.platformName) || '').trim() || '未知平台',
         planName: String((plan && plan.name) || '').trim() || '未知套餐',
-        type: String((plan && plan.type) || 'Coding Plan').trim() || 'Coding Plan',
         discontinued: !!(plan && plan.discontinued),
         pinned: !!isPinned(plan),
         price,
@@ -257,7 +256,6 @@
       value: item.price,
       platformName: item.platformName,
       planName: item.planName,
-      type: item.type,
       discontinued: item.discontinued,
       pinned: item.pinned,
       itemStyle: {
@@ -290,7 +288,6 @@
           return (
             `<div style="min-width:180px">` +
             `<div style="font-size:14px;font-weight:800;margin-bottom:6px;">${escapeHtml(data.platformName)} · ${escapeHtml(data.planName)}</div>` +
-            `<div style="color:#425065;margin-bottom:4px;">${escapeHtml(data.type || '')}</div>` +
             `<div>综合单价：<strong>${escapeHtml(formatCompositePriceLabel(data.value))}/M Token</strong></div>` +
             pinned +
             offline +

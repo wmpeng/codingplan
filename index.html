@@ -795,29 +795,6 @@
             transform: translateX(3px);
         }
 
-        /* 类型标签 */
-        .type-tag {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            white-space: nowrap;
-        }
-
-        .type-tag.coding-plan {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(139, 92, 246, 0.12));
-            color: #6366f1;
-            border: 1px solid rgba(99, 102, 241, 0.25);
-        }
-
-        .type-tag.token-plan {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(249, 115, 22, 0.12));
-            color: #d97706;
-            border: 1px solid rgba(245, 158, 11, 0.25);
-        }
-
         /* 模型标签 */
         .model-tag {
             display: inline-block;
@@ -2475,19 +2452,6 @@
             letter-spacing: 0.5px;
             font-size: 12px;
             line-height: 1;
-            white-space: nowrap;
-        }
-
-        .platform-detail-plan-type-badge {
-            display: inline-flex;
-            align-items: center;
-            min-height: 20px;
-            padding: 0 7px;
-            border-radius: 999px;
-            font-size: 11px;
-            font-weight: 700;
-            background: rgba(23, 55, 83, 0.08);
-            color: var(--text-secondary);
             white-space: nowrap;
         }
 
@@ -4228,21 +4192,12 @@
             color: #39465a;
         }
 
-        .type-tag,
         .plan-tag,
-        .platform-detail-plan-type-badge,
         .status-offline,
         .benefit {
             border-radius: 6px;
         }
 
-        .type-tag.coding-plan {
-            background: rgba(11, 104, 209, 0.08);
-            color: #0b68d1;
-            border-color: rgba(11, 104, 209, 0.2);
-        }
-
-        .type-tag.token-plan,
         .benefit {
             background: rgba(0, 133, 122, 0.08);
             color: #00756e;
@@ -4462,8 +4417,8 @@
                 <div id="settingsMount"></div>
             </div>
             <h1 id="pageTitle">AI Coding Plan 平台评测与对比</h1>
-            <div class="update-date" id="updateDate">更新日期 2026.8.16 | GLM-5.3、DeepSeek-V4-Flash-0731 正式版平台支持更新</div>
-            <div class="subtitle" id="subtitle">31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比。<br>涵盖DeepSeek-V4-Flash-0731，GLM-5.3，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型</div>
+            <div class="update-date" id="updateDate">更新日期 2026.9.4 | 平台产品线与计费结构更新</div>
+            <div class="subtitle" id="subtitle">31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，订阅套餐与按量 API 全面对比。<br>涵盖DeepSeek-V4-Flash-0731，GLM-5.3，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型</div>
             <div class="models" id="models">快速选出当下最适合的平台和使用方式。<a href="https://api.dreamfree.space/c/s/cpfeishulink" target="_blank" rel="noopener noreferrer">加群</a>参与讨论和获取最新消息</div>
         </div>
 
@@ -4565,7 +4520,7 @@
                     <div class="recommendation-card">
                         <div class="card-watermark">www.codingplan.fyi</div>
                         <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">字节·方舟</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">字节·方舟 Coding Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
                         </div>
                         <ul class="recommendation-reasons">
@@ -4587,7 +4542,7 @@
                             <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
                         </div>
                         <ul class="recommendation-reasons">
-                            <li>在售新 Token Plan 支持 GLM-5.3，国内领先的代码模型之一</li><li>新套餐无需抢购</li><li>官方服务，模型与套餐信息透明</li>
+                            <li>在售新套餐支持 GLM-5.3，国内领先的代码模型之一</li><li>新套餐无需抢购</li><li>官方服务，模型与套餐信息透明</li>
                         </ul>
                     </div>
 
@@ -4605,11 +4560,11 @@
                     <div class="recommendation-card">
                         <div class="card-watermark">www.codingplan.fyi</div>
                         <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">字节·方舟</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">字节·方舟 Coding Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
                         </div>
                         <ul class="recommendation-reasons">
-                            <li>在售 Coding Plan / Token Plan 均支持 GLM-5.3</li><li>同时支持 DeepSeek-V4、MiniMax-M3、Kimi-K3 等模型</li><li>已解除限购，开放购买</li>
+                            <li>Coding Plan 支持 GLM-5.3</li><li>同时支持 DeepSeek-V4、MiniMax-M3、Kimi-K3 等模型</li><li>已解除限购，开放购买</li>
                         </ul>
                     </div>
 
@@ -4656,11 +4611,11 @@
                     <div class="recommendation-card">
                         <div class="card-watermark">www.codingplan.fyi</div>
                         <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">字节·方舟</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">字节·方舟 Coding Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
                         </div>
                         <ul class="recommendation-reasons">
-                            <li>Coding Plan / Token Plan 均支持 DeepSeek-V4-Flash-0731 正式版</li><li>同时支持 GLM-5.2、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731、MiniMax-M3，是国内模型最全的全家桶平台。</li><li>已解除限购，开放购买</li>
+                            <li>Coding Plan 支持 DeepSeek-V4-Flash-0731 正式版</li><li>同时支持 GLM-5.2、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731、MiniMax-M3，是国内模型最全的全家桶平台。</li><li>已解除限购，开放购买</li>
                         </ul>
                     </div>
 
@@ -4719,11 +4674,11 @@
                     <div class="recommendation-card">
                         <div class="card-watermark">www.codingplan.fyi</div>
                         <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">字节·方舟</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhout" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">字节·方舟 Agent Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
                             <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
                         </div>
                         <ul class="recommendation-reasons">
-                            <li>Token Plan 全档位支持 Kimi-K3；Coding Plan暂不支持 Kimi-K3</li><li>同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。</li><li>Coding Plan 需抢购；Token Plan 现货。</li>
+                            <li>Agent Plan 全档位支持 Kimi-K3</li><li>同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。</li><li>现货开放购买。</li>
                         </ul>
                     </div>
                 </div>
@@ -4782,26 +4737,6 @@
                     </div>
                     <div class="dropdown-actions">
                         <button class="dropdown-btn secondary" onclick="resetVendorFilter()">重置</button>
-                        <button class="dropdown-btn primary" onclick="closeAllDropdowns()">确定</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 类型筛选下拉 -->
-            <div class="filter-dropdown">
-                <button class="filter-btn" id="typeBtn">
-                    <span>类型</span>
-                    <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-                    <span class="count" id="typeCount" style="display: none;">0</span>
-                </button>
-                <div class="dropdown-menu" id="typeDropdown">
-                    <div class="dropdown-section">
-                        <div class="checkbox-group" id="typeCheckboxes">
-                            <!-- 动态填充 -->
-                        </div>
-                    </div>
-                    <div class="dropdown-actions">
-                        <button class="dropdown-btn secondary" onclick="resetTypeFilter()">重置</button>
                         <button class="dropdown-btn primary" onclick="closeAllDropdowns()">确定</button>
                     </div>
                 </div>
@@ -5072,7 +5007,6 @@
                         <tr>
                             <th class="sortable sticky-first" data-column="vendor">平台</th>
                             <th class="sticky-second">套餐</th>
-                            <th>类型</th>
                             <th>跳转链接</th>
                             <th class="sortable" data-column="rating">评分</th>
                             <th>标签</th>
@@ -5094,7 +5028,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">智谱国际版</span></td>
                     <td class="sticky-second"><span class="plan-name">新Lite</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqzai" target="_blank" class="action-btn">
                             跳转开通
@@ -5121,7 +5054,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">智谱国际版</span></td>
                     <td class="sticky-second"><span class="plan-name">新Pro</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqzai" target="_blank" class="action-btn">
                             跳转开通
@@ -5148,7 +5080,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">智谱国际版</span></td>
                     <td class="sticky-second"><span class="plan-name">新Max</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqzai" target="_blank" class="action-btn">
                             跳转开通
@@ -5175,7 +5106,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">智谱AI</span></td>
                     <td class="sticky-second"><span class="plan-name">新Lite</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqzhipu" target="_blank" class="action-btn">
                             跳转开通
@@ -5202,7 +5132,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">智谱AI</span></td>
                     <td class="sticky-second"><span class="plan-name">新Pro</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqzhipu" target="_blank" class="action-btn">
                             跳转开通
@@ -5229,7 +5158,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">智谱AI</span></td>
                     <td class="sticky-second"><span class="plan-name">新Max</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqzhipu" target="_blank" class="action-btn">
                             跳转开通
@@ -5256,7 +5184,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">MiniMax</span></td>
                     <td class="sticky-second"><span class="plan-name">新Plus</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqminimax" target="_blank" class="action-btn">
                             跳转开通
@@ -5283,7 +5210,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">MiniMax</span></td>
                     <td class="sticky-second"><span class="plan-name">新Max</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqminimax" target="_blank" class="action-btn">
                             跳转开通
@@ -5310,7 +5236,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">MiniMax</span></td>
                     <td class="sticky-second"><span class="plan-name">新Ultra</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqminimax" target="_blank" class="action-btn">
                             跳转开通
@@ -5337,7 +5262,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">OpenCode</span></td>
                     <td class="sticky-second"><span class="plan-name">Go</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqopencode" target="_blank" class="action-btn">
                             跳转开通
@@ -5362,9 +5286,8 @@
                     <td><span class="note">• 套餐额度按美元 Credits 计：基础 12 美元、周额度 30 美元、月额度 60 美元<br>• 实际计费按 token 消耗。用量按照GLM-5.2, 90%缓存命中率计算</span></td>
                 </tr>
                         <tr class="plan-row">
-                    <td class="sticky-first"><span class="vendor-name">字节·方舟</span></td>
+                    <td class="sticky-first"><span class="vendor-name">字节·方舟 Coding Plan</span></td>
                     <td class="sticky-second"><span class="plan-name">Lite</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" class="action-btn">
                             跳转开通
@@ -5389,9 +5312,8 @@
                     <td><span class="note">• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）<br>• DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍，GLM-5.2限时4倍用量</span></td>
                 </tr>
                         <tr class="plan-row">
-                    <td class="sticky-first"><span class="vendor-name">字节·方舟</span></td>
+                    <td class="sticky-first"><span class="vendor-name">字节·方舟 Coding Plan</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" class="action-btn">
                             跳转开通
@@ -5416,9 +5338,8 @@
                     <td><span class="note">• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）<br>• DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍，GLM-5.2限时4倍用量</span></td>
                 </tr>
                         <tr class="plan-row">
-                    <td class="sticky-first"><span class="vendor-name">字节·方舟</span></td>
+                    <td class="sticky-first"><span class="vendor-name">字节·方舟 Agent Plan</span></td>
                     <td class="sticky-second"><span class="plan-name">Small</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqfangzhout" target="_blank" class="action-btn">
                             跳转开通
@@ -5443,9 +5364,8 @@
                     <td><span class="note">• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。<br>• 按照最优模型9倍系数计算，1AFP=1111Token。<br>• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。</span></td>
                 </tr>
                         <tr class="plan-row">
-                    <td class="sticky-first"><span class="vendor-name">字节·方舟</span></td>
+                    <td class="sticky-first"><span class="vendor-name">字节·方舟 Agent Plan</span></td>
                     <td class="sticky-second"><span class="plan-name">Medium</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqfangzhout" target="_blank" class="action-btn">
                             跳转开通
@@ -5470,9 +5390,8 @@
                     <td><span class="note">• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。<br>• 按照最优模型9倍系数计算，1AFP=1111Token。<br>• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。</span></td>
                 </tr>
                         <tr class="plan-row">
-                    <td class="sticky-first"><span class="vendor-name">字节·方舟</span></td>
+                    <td class="sticky-first"><span class="vendor-name">字节·方舟 Agent Plan</span></td>
                     <td class="sticky-second"><span class="plan-name">Large</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqfangzhout" target="_blank" class="action-btn">
                             跳转开通
@@ -5497,9 +5416,8 @@
                     <td><span class="note">• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。<br>• 按照最优模型9倍系数计算，1AFP=1111Token。<br>• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。</span></td>
                 </tr>
                         <tr class="plan-row">
-                    <td class="sticky-first"><span class="vendor-name">字节·方舟</span></td>
+                    <td class="sticky-first"><span class="vendor-name">字节·方舟 Agent Plan</span></td>
                     <td class="sticky-second"><span class="plan-name">Max</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqfangzhout" target="_blank" class="action-btn">
                             跳转开通
@@ -5526,7 +5444,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">Kimi</span></td>
                     <td class="sticky-second"><span class="plan-name">Andante</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqkimi" target="_blank" class="action-btn">
                             跳转开通
@@ -5553,7 +5470,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">Kimi</span></td>
                     <td class="sticky-second"><span class="plan-name">Moderato</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqkimi" target="_blank" class="action-btn">
                             跳转开通
@@ -5580,7 +5496,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">Kimi</span></td>
                     <td class="sticky-second"><span class="plan-name">Allegretto</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqkimi" target="_blank" class="action-btn">
                             跳转开通
@@ -5607,7 +5522,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">Kimi</span></td>
                     <td class="sticky-second"><span class="plan-name">Allegro</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqkimi" target="_blank" class="action-btn">
                             跳转开通
@@ -5634,7 +5548,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">优云智算</span></td>
                     <td class="sticky-second"><span class="plan-name">Mini</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqyyzs" target="_blank" class="action-btn">
                             跳转开通
@@ -5661,7 +5574,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">优云智算</span></td>
                     <td class="sticky-second"><span class="plan-name">Lite</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqyyzs" target="_blank" class="action-btn">
                             跳转开通
@@ -5688,7 +5600,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">优云智算</span></td>
                     <td class="sticky-second"><span class="plan-name">Basic</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqyyzs" target="_blank" class="action-btn">
                             跳转开通
@@ -5715,7 +5626,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">优云智算</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqyyzs" target="_blank" class="action-btn">
                             跳转开通
@@ -5742,7 +5652,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">优云智算</span></td>
                     <td class="sticky-second"><span class="plan-name">Max</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqyyzs" target="_blank" class="action-btn">
                             跳转开通
@@ -5769,7 +5678,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">优云智算</span></td>
                     <td class="sticky-second"><span class="plan-name">Ultra</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqyyzs" target="_blank" class="action-btn">
                             跳转开通
@@ -5796,7 +5704,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">Codex</span></td>
                     <td class="sticky-second"><span class="plan-name">Plus</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqchatgpt" target="_blank" class="action-btn">
                             跳转开通
@@ -5823,7 +5730,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">Codex</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro *5</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqchatgpt" target="_blank" class="action-btn">
                             跳转开通
@@ -5850,7 +5756,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">Codex</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro *20</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqchatgpt" target="_blank" class="action-btn">
                             跳转开通
@@ -5877,7 +5782,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">Claude</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqclaudeup" target="_blank" class="action-btn">
                             跳转开通
@@ -5904,7 +5808,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">Claude</span></td>
                     <td class="sticky-second"><span class="plan-name">Max *5</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqclaudeup" target="_blank" class="action-btn">
                             跳转开通
@@ -5931,7 +5834,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">Claude</span></td>
                     <td class="sticky-second"><span class="plan-name">Max *20</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqclaudeup" target="_blank" class="action-btn">
                             跳转开通
@@ -5958,7 +5860,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">Ollama</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqollama" target="_blank" class="action-btn">
                             跳转开通
@@ -5985,7 +5886,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">Ollama</span></td>
                     <td class="sticky-second"><span class="plan-name">Max</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqollama" target="_blank" class="action-btn">
                             跳转开通
@@ -6010,9 +5910,8 @@
                     <td><span class="note">• 暂时停售 • 支持 GLM-5.2、Kimi-K2.6、MiniMax-M3、DeepSeek-V4-Pro，模型丰富<br>• 用量按照GLM-5.2估计</span></td>
                 </tr>
                         <tr class="plan-row">
-                    <td class="sticky-first"><span class="vendor-name">阿里·百炼</span></td>
+                    <td class="sticky-first"><span class="vendor-name">阿里·百炼 Coding Plan</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqbailianc" target="_blank" class="action-btn">
                             跳转开通
@@ -6037,9 +5936,8 @@
                     <td><span class="note">开始限量购买了，不确定每天放不放，放多少</span></td>
                 </tr>
                         <tr class="plan-row">
-                    <td class="sticky-first"><span class="vendor-name">阿里·百炼</span></td>
+                    <td class="sticky-first"><span class="vendor-name">阿里·百炼 Token Plan</span></td>
                     <td class="sticky-second"><span class="plan-name">标准</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqbailiant" target="_blank" class="action-btn">
                             跳转开通
@@ -6064,9 +5962,8 @@
                     <td><span class="note">• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit。合输入¥1.58/MToken，缓存¥0.32/MToken，输出¥9.54/MToken<br>• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%/5000 + 99×90%/25000 + 1/830 = 0.00675 Credit，即 1 Credit≈14.82K Token。表格按15K Token/Credit算</span></td>
                 </tr>
                         <tr class="plan-row">
-                    <td class="sticky-first"><span class="vendor-name">阿里·百炼</span></td>
+                    <td class="sticky-first"><span class="vendor-name">阿里·百炼 Token Plan</span></td>
                     <td class="sticky-second"><span class="plan-name">高级</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqbailiant" target="_blank" class="action-btn">
                             跳转开通
@@ -6091,9 +5988,8 @@
                     <td><span class="note">• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit。合输入¥1.40/MToken，缓存¥0.28/MToken，输出¥8.41/MToken<br>• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%/5000 + 99×90%/25000 + 1/830 = 0.00675 Credit，即 1 Credit≈14.82K Token。表格按15K Token/Credit算</span></td>
                 </tr>
                         <tr class="plan-row">
-                    <td class="sticky-first"><span class="vendor-name">阿里·百炼</span></td>
+                    <td class="sticky-first"><span class="vendor-name">阿里·百炼 Token Plan</span></td>
                     <td class="sticky-second"><span class="plan-name">尊享</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqbailiant" target="_blank" class="action-btn">
                             跳转开通
@@ -6120,7 +6016,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">小米·MiMo</span></td>
                     <td class="sticky-second"><span class="plan-name">Lite</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqmimo" target="_blank" class="action-btn">
                             跳转开通
@@ -6147,7 +6042,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">小米·MiMo</span></td>
                     <td class="sticky-second"><span class="plan-name">Standard</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqmimo" target="_blank" class="action-btn">
                             跳转开通
@@ -6174,7 +6068,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">小米·MiMo</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqmimo" target="_blank" class="action-btn">
                             跳转开通
@@ -6201,7 +6094,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">小米·MiMo</span></td>
                     <td class="sticky-second"><span class="plan-name">Max</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqmimo" target="_blank" class="action-btn">
                             跳转开通
@@ -6228,7 +6120,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">百度·千帆</span></td>
                     <td class="sticky-second"><span class="plan-name">Mini</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqqianfan" target="_blank" class="action-btn">
                             跳转开通
@@ -6255,7 +6146,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">百度·千帆</span></td>
                     <td class="sticky-second"><span class="plan-name">Lite</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqqianfan" target="_blank" class="action-btn">
                             跳转开通
@@ -6282,7 +6172,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">百度·千帆</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqqianfan" target="_blank" class="action-btn">
                             跳转开通
@@ -6309,7 +6198,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">百度·千帆</span></td>
                     <td class="sticky-second"><span class="plan-name">Max</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqqianfan" target="_blank" class="action-btn">
                             跳转开通
@@ -6336,7 +6224,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">华为云</span></td>
                     <td class="sticky-second"><span class="plan-name">Lite</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement" target="_blank" class="action-btn">
                             跳转开通
@@ -6363,7 +6250,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">华为云</span></td>
                     <td class="sticky-second"><span class="plan-name">Standard</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement" target="_blank" class="action-btn">
                             跳转开通
@@ -6390,7 +6276,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">华为云</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement" target="_blank" class="action-btn">
                             跳转开通
@@ -6417,7 +6302,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">华为云</span></td>
                     <td class="sticky-second"><span class="plan-name">Max</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement" target="_blank" class="action-btn">
                             跳转开通
@@ -6444,7 +6328,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">腾讯云</span></td>
                     <td class="sticky-second"><span class="plan-name">Lite</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqtengxunt" target="_blank" class="action-btn">
                             跳转开通
@@ -6471,7 +6354,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">腾讯云</span></td>
                     <td class="sticky-second"><span class="plan-name">Standard</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqtengxunt" target="_blank" class="action-btn">
                             跳转开通
@@ -6498,7 +6380,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">腾讯云</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqtengxunt" target="_blank" class="action-btn">
                             跳转开通
@@ -6525,7 +6406,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">腾讯云</span></td>
                     <td class="sticky-second"><span class="plan-name">Max</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqtengxunt" target="_blank" class="action-btn">
                             跳转开通
@@ -6552,7 +6432,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">京东云</span></td>
                     <td class="sticky-second"><span class="plan-name">Lite</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqjingdong" target="_blank" class="action-btn">
                             跳转开通
@@ -6579,7 +6458,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">京东云</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqjingdong" target="_blank" class="action-btn">
                             跳转开通
@@ -6606,7 +6484,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">GitHub</span></td>
                     <td class="sticky-second"><span class="plan-name">学生</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqghstudent" target="_blank" class="action-btn">
                             跳转开通
@@ -6633,7 +6510,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">GitHub</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqghcopilot" target="_blank" class="action-btn">
                             跳转开通
@@ -6660,7 +6536,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">GitHub</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro+</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqghcopilotp" target="_blank" class="action-btn">
                             跳转开通
@@ -6687,7 +6562,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">讯飞·星火</span></td>
                     <td class="sticky-second"><span class="plan-name">高效版</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqxunfei" target="_blank" class="action-btn">
                             跳转开通
@@ -6714,7 +6588,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">讯飞·星火</span></td>
                     <td class="sticky-second"><span class="plan-name">速通版</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqxunfei" target="_blank" class="action-btn">
                             跳转开通
@@ -6741,7 +6614,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">联通云</span></td>
                     <td class="sticky-second"><span class="plan-name">个人 Lite</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqunicomtp" target="_blank" class="action-btn">
                             跳转开通
@@ -6768,7 +6640,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">联通云</span></td>
                     <td class="sticky-second"><span class="plan-name">个人 Pro</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqunicomtp" target="_blank" class="action-btn">
                             跳转开通
@@ -6795,7 +6666,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">联通云</span></td>
                     <td class="sticky-second"><span class="plan-name">个人 Max</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqunicomtp" target="_blank" class="action-btn">
                             跳转开通
@@ -6822,7 +6692,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">联通云</span></td>
                     <td class="sticky-second"><span class="plan-name">团队 Lite</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqunicomtp" target="_blank" class="action-btn">
                             跳转开通
@@ -6849,7 +6718,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">联通云</span></td>
                     <td class="sticky-second"><span class="plan-name">团队 Pro</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqunicomtp" target="_blank" class="action-btn">
                             跳转开通
@@ -6876,7 +6744,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">联通云</span></td>
                     <td class="sticky-second"><span class="plan-name">团队 Max</span></td>
-                    <td><span class="type-tag token-plan">Token Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqunicomtp" target="_blank" class="action-btn">
                             跳转开通
@@ -6903,7 +6770,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">移动云</span></td>
                     <td class="sticky-second"><span class="plan-name">Lite</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqmobilecp" target="_blank" class="action-btn">
                             跳转开通
@@ -6930,7 +6796,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">移动云</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqmobilecp" target="_blank" class="action-btn">
                             跳转开通
@@ -6957,7 +6822,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">阶跃星辰</span></td>
                     <td class="sticky-second"><span class="plan-name">Flash Mini</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqstepfun" target="_blank" class="action-btn">
                             跳转开通
@@ -6984,7 +6848,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">阶跃星辰</span></td>
                     <td class="sticky-second"><span class="plan-name">Flash Plus</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqstepfun" target="_blank" class="action-btn">
                             跳转开通
@@ -7011,7 +6874,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">阶跃星辰</span></td>
                     <td class="sticky-second"><span class="plan-name">Flash Pro</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqstepfun" target="_blank" class="action-btn">
                             跳转开通
@@ -7038,7 +6900,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">阶跃星辰</span></td>
                     <td class="sticky-second"><span class="plan-name">Flash Max</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqstepfun" target="_blank" class="action-btn">
                             跳转开通
@@ -7065,7 +6926,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">TaoToken</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqtaotoken" target="_blank" class="action-btn">
                             跳转开通
@@ -7092,7 +6952,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">TaoToken</span></td>
                     <td class="sticky-second"><span class="plan-name">Max</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqtaotoken" target="_blank" class="action-btn">
                             跳转开通
@@ -7119,7 +6978,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">超算</span></td>
                     <td class="sticky-second"><span class="plan-name">Lite</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqscnetcp" target="_blank" class="action-btn">
                             跳转开通
@@ -7146,7 +7004,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">超算</span></td>
                     <td class="sticky-second"><span class="plan-name">Pro</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqscnetcp" target="_blank" class="action-btn">
                             跳转开通
@@ -7173,7 +7030,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">商汤·日日新</span></td>
                     <td class="sticky-second"><span class="plan-name">Free·公测</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqsensenova" target="_blank" class="action-btn">
                             跳转开通
@@ -7200,7 +7056,6 @@
                         <tr class="plan-row">
                     <td class="sticky-first"><span class="vendor-name">摩尔线程</span></td>
                     <td class="sticky-second"><span class="plan-name">Free Trial</span></td>
-                    <td><span class="type-tag coding-plan">Coding Plan</span></td>
                     <td>
                         <a href="https://api.dreamfree.space/c/s/cpyqmoorefree" target="_blank" class="action-btn">
                             跳转开通
@@ -7249,6 +7104,10 @@
         <div class="updates-section" id="updatesSection">
             <h3>📝 更新日志</h3>
             <ul class="updates-list">
+                <li class="update-item">
+                    <div class="log-date">2026.9.4</div>
+                    <ul class="update-items"><li>平台按实际产品线独立展示，套餐计费结构统一为订阅与按量，筛选和对比更简洁</li></ul>
+                </li>
                 <li class="update-item">
                     <div class="log-date">2026.8.16</div>
                     <ul class="update-items"><li>DeepSeek-V4-Flash-0731 正式版同步更新 DeepSeek、OpenCode、字节·方舟、优云智算支持</li><li>智谱国内&amp;国际版、OpenCode、字节·方舟在售套餐追加支持 GLM-5.3</li></ul>
@@ -7454,13 +7313,13 @@
 
     <script src="monitor/monitor-config.js"></script>
     <script src="monitor/monitor-config.local.js"></script>
-    <script src="scripts/entity-data.js?v=260902f"></script>
+    <script src="scripts/entity-data.js?v=260904a"></script>
     <script src="scripts/platform-catalog.js?v=260902d"></script>
-    <script src="scripts/platform-detail.js?v=260902d"></script>
+    <script src="scripts/platform-detail.js?v=260904a"></script>
     <script src="scripts/shared.js?v=260902a"></script>
-    <script src="scripts/platform-comparison.js?v=260903a"></script>
+    <script src="scripts/platform-comparison.js?v=260904a"></script>
     <script src="scripts/main-views.js?v=260902a"></script>
-    <script src="scripts/plan-composite-price-chart.js?v=260902a"></script>
-    <script src="scripts/homepage.js?v=260903b"></script>
+    <script src="scripts/plan-composite-price-chart.js?v=260904a"></script>
+    <script src="scripts/homepage.js?v=260904a"></script>
 </body>
 </html>

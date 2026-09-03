@@ -17,16 +17,9 @@
         '#db2777', '#4f46e5', '#65a30d', '#9333ea', '#ea580c', '#0f766e',
         '#475569', '#a16207', '#be123c', '#0369a1'
     ];
-    const DEFAULT_PLATFORM_SELECTIONS = [
-        ['阿里·百炼', 'Token Plan'],
-        ['智谱AI', 'Token Plan'],
-        ['字节·方舟', 'Coding Plan'],
-        ['Codex', 'Token Plan'],
-        ['Claude', 'Token Plan'],
-        ['DeepSeek', 'API'],
-        ['Kimi', 'Coding Plan'],
-        ['MiniMax', 'Token Plan'],
-        ['OpenCode', 'Token Plan']
+    const DEFAULT_PLATFORM_SLUGS = [
+        'aliyun-bailian', 'zhipu', 'bytedance-ark', 'codex', 'claude',
+        'deepseek-official', 'kimi', 'minimax', 'opencode'
     ];
     const DEFAULT_MODEL_SLUGS = [
         'deepseek-v4-pro-0813', 'deepseek-v4-flash-0731', 'qwen-3-8-max',
@@ -36,7 +29,6 @@
     ];
     const COMPARISON_TABLE_COLUMNS = [
         { key: 'vendor', label: '平台' },
-        { key: 'platformType', label: '类型' },
         { key: 'plan', label: '套餐' },
         { key: 'price', label: '套餐价格' },
         { key: 'model', label: '模型' },
@@ -72,12 +64,11 @@
     }
 
     function getPointPlatformKey(point) {
-        return JSON.stringify([String(point.platformName || ''), String(point.platformType || '')]);
+        return String(point.platformSlug || point.platformName || '');
     }
 
     function getDefaultPlatformSelectionKeys() {
-        return new Set(DEFAULT_PLATFORM_SELECTIONS
-            .map(([platformName, platformType]) => getPointPlatformKey({ platformName, platformType })));
+        return new Set(DEFAULT_PLATFORM_SLUGS);
     }
 
     function createDefaultFilterState(points) {
@@ -142,7 +133,7 @@
 
     function buildUsageChartPoints(points) {
         return (points || []).filter((point) =>
-            point.billingType === 'subscription' &&
+            point.billingMode === 'subscription' &&
             finitePositive(point.monthlyFeeCny) !== null &&
             finitePositive(point.monthlyTokenInM) !== null
         );
@@ -354,7 +345,7 @@
 
     function getPointLabelText(point, pointLabelField) {
         if (pointLabelField === 'vendor') {
-            return point.platformType ? `${point.platformName} · ${point.platformType}` : point.platformName;
+            return point.platformName;
         }
         if (pointLabelField === 'model') return point.modelName || point.canonicalModelName;
         return '';
@@ -426,7 +417,7 @@
         if (key === 'artificialAnalysis' || key === 'deepSWE') return getPointScore(point, key);
         if (key === 'vendor') return point.platformName || '';
         if (key === 'plan') return point.planName || '';
-        if (key === 'platformType' || key === 'note') return point[key] || '';
+        if (key === 'note') return point[key] || '';
         if (key === 'model') return point.modelName || point.canonicalModelName || '';
         return finitePositive(point[key]);
     }
@@ -470,7 +461,7 @@
     }
 
     function comparisonTableRowHtml(point, tokenUnit) {
-        const subscription = point.billingType === 'subscription';
+        const subscription = point.billingMode === 'subscription';
         const price = subscription && finitePositive(point.monthlyFeeCny) !== null
             ? `¥${formatNumber(point.monthlyFeeCny, 2)} / 月` : '按量';
         const unitPrice = formatUnitPrice(point.unitPriceCnyPerM, tokenUnit);
@@ -480,7 +471,6 @@
             ? ` ±${formatNumber(deepSWEScore.confidenceInterval, 0)}` : '';
         return `<tr data-point-id="${escapeHtml(point.slug)}">` +
             `<td class="sticky-first">${platformCellHtml(point)}</td>` +
-            `<td>${escapeHtml(point.platformType || '—')}</td>` +
             `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}</td>` +
             `<td class="numeric">${price}</td>` +
             `<td class="usage-table-model">${escapeHtml(point.modelName || point.canonicalModelName)}</td>` +
@@ -525,11 +515,11 @@
         const defaultPlatformKeys = getDefaultPlatformSelectionKeys();
         const scope = normalizePresetPlatformScope(platformScope);
         return sortComparisonRows((points || []).filter((point) =>
-            (point.billingType === 'subscription' || point.billingType === 'api') &&
+            (point.billingMode === 'subscription' || point.billingMode === 'payg') &&
             (scope === 'all' || defaultPlatformKeys.has(getPointPlatformKey(point))) &&
             modelSlugs.has(point.modelSlug) &&
             finitePositive(point.unitPriceCnyPerM) !== null &&
-            (point.billingType === 'api' || (
+            (point.billingMode === 'payg' || (
                 finitePositive(point.monthlyFeeCny) !== null &&
                 finitePositive(point.monthlyTokenInM) !== null
             ))
@@ -556,16 +546,16 @@
         const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
         const body = rows.length ? rows.map((point) => {
             const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
-            const planName = point.planName || (point.billingType === 'api' ? '按量 API' : '订阅');
+            const planName = point.planName || (point.billingMode === 'payg' ? '按量 API' : '订阅');
             const plan = `<span>${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
-            const price = point.billingType === 'api' ? '按量' : `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`;
+            const price = point.billingMode === 'payg' ? '按量' : `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`;
             const model = `<span class="usage-table-model">${escapeHtml(point.modelName || point.canonicalModelName || '—')}</span>`;
             const separator = '<span class="usage-preset-separator">·</span>';
             const primaryDetail = kind === 'multi' ? model : `<span class="usage-preset-price">${price}</span>`;
             const secondaryDetail = kind === 'multi' ? `${separator}<span class="usage-preset-price">${price}</span>` : '';
             const values = {
                 identity: `<div class="usage-preset-primary-line">${platformCellHtml(point)}${primaryDetail}</div>` +
-                    `<div class="usage-preset-secondary-line"><span>${escapeHtml(point.platformType || '—')}</span>${separator}${plan}${secondaryDetail}</div>`,
+                    `<div class="usage-preset-secondary-line">${plan}${secondaryDetail}</div>`,
                 metrics: `<div class="usage-preset-metric-primary">${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)}</div>` +
                     `<div class="usage-preset-secondary-line usage-preset-metric-secondary"><span>月用量</span><span>${formatTokenAmount(point.monthlyTokenInM, tokenUnit)}</span></div>`
             };
@@ -618,13 +608,13 @@
 
     function tooltipHtml(point, benchmark, colorMode, tokenUnit) {
         const modality = point.multimodal === true ? '多模态' : point.multimodal === false ? '纯文本' : '多模态状态未知';
-        const billing = point.billingType === 'subscription' ? escapeHtml(point.planName || '订阅') : '按量 API';
+        const billing = point.billingMode === 'subscription' ? escapeHtml(point.planName || '订阅') : '按量 API';
         const platformLine = `${escapeHtml(point.platformName)} · ${billing}`;
         const modelLine = escapeHtml(point.modelName);
-        const fee = point.billingType === 'subscription'
+        const fee = point.billingMode === 'subscription'
             ? `<div>月费：¥${formatNumber(point.monthlyFeeCny, 2)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
             : '';
-        const apiPricing = point.billingType === 'api'
+        const apiPricing = point.billingMode === 'payg'
             ? `<div>API 单价：${escapeHtml(formatApiPricing(point.apiPricing))}</div>`
             : '';
         const heading = colorMode === 'model'
@@ -731,7 +721,7 @@
     }
 
     function getUnitPriceBarAxisLabel(point) {
-        const plan = point.billingType === 'subscription' ? (point.planName || '订阅') : '按量 API';
+        const plan = point.billingMode === 'subscription' ? (point.planName || '订阅') : '按量 API';
         return `${point.platformName || '未知平台'} · ${plan} · ${point.modelName || point.canonicalModelName || '未知模型'}`;
     }
 
@@ -826,8 +816,7 @@
             const points = root.EntityData.buildComparisonPoints(context, rate);
             const platformMap = new Map();
             points.forEach((point) => {
-                const label = point.platformType ? `${point.platformName} · ${point.platformType}` : point.platformName;
-                platformMap.set(getPointPlatformKey(point), label);
+                platformMap.set(getPointPlatformKey(point), point.platformName);
             });
             const platforms = [...platformMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
             const modelMap = new Map();
@@ -1294,5 +1283,5 @@
         return container.__usageMountPromise;
     }
 
-    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_SLUGS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, formatApiPricing, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SLUGS, DEFAULT_MODEL_SLUGS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, formatApiPricing, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });

@@ -177,7 +177,6 @@ function renderPlanTags(plan) {
 function generateTableRowsHtml(plans) {
     return plans.map(plan => {
         const currency = plan.currency || '¥';
-        const type = plan.type || 'Coding Plan';
         const tokenLimitHtml = typeof plan.tokenLimit === 'number'
             ? `${plan.tokenLimit}M <span class="unit">Tokens</span>`
             : escapeHtml(plan.tokenLimit || '无限制');
@@ -186,7 +185,6 @@ function generateTableRowsHtml(plans) {
         return `                        <tr class="plan-row${plan.discontinued ? ' discontinued' : ''}">
                     <td class="sticky-first"><span class="vendor-name">${escapeHtml(plan.platformName)}</span></td>
                     <td class="sticky-second"><span class="plan-name">${escapeHtml(plan.name)}</span></td>
-                    <td><span class="type-tag ${type === 'Token Plan' ? 'token-plan' : 'coding-plan'}">${escapeHtml(type)}</span></td>
                     <td>
                         <a href="${escapeHtml(plan.action)}" target="_blank" class="action-btn">
                             跳转开通

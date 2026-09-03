@@ -1,8 +1,8 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.8.16 | GLM-5.3、DeepSeek-V4-Flash-0731 正式版平台支持更新",
-    "subtitle": "31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比。<br>涵盖DeepSeek-V4-Flash-0731，GLM-5.3，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
+    "updateDate": "更新日期 2026.9.4 | 平台产品线与计费结构更新",
+    "subtitle": "31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，订阅套餐与按量 API 全面对比。<br>涵盖DeepSeek-V4-Flash-0731，GLM-5.3，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
     "entry": {
@@ -124,7 +124,7 @@
         {
           "rating": 5,
           "reasons": [
-            "在售新 Token Plan 支持 GLM-5.3，国内领先的代码模型之一",
+            "在售新套餐支持 GLM-5.3，国内领先的代码模型之一",
             "新套餐无需抢购",
             "官方服务，模型与套餐信息透明"
           ],
@@ -142,7 +142,7 @@
         {
           "rating": 5,
           "reasons": [
-            "在售 Coding Plan / Token Plan 均支持 GLM-5.3",
+            "Coding Plan 支持 GLM-5.3",
             "同时支持 DeepSeek-V4、MiniMax-M3、Kimi-K3 等模型",
             "已解除限购，开放购买"
           ],
@@ -184,7 +184,7 @@
         {
           "rating": 5,
           "reasons": [
-            "Coding Plan / Token Plan 均支持 DeepSeek-V4-Flash-0731 正式版",
+            "Coding Plan 支持 DeepSeek-V4-Flash-0731 正式版",
             "同时支持 GLM-5.2、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731、MiniMax-M3，是国内模型最全的全家桶平台。",
             "已解除限购，开放购买"
           ],
@@ -235,11 +235,11 @@
         {
           "rating": 5,
           "reasons": [
-            "Token Plan 全档位支持 Kimi-K3；Coding Plan暂不支持 Kimi-K3",
+            "Agent Plan 全档位支持 Kimi-K3",
             "同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。",
-            "Coding Plan 需抢购；Token Plan 现货。"
+            "现货开放购买。"
           ],
-          "platformSlug": "bytedance-ark"
+          "platformSlug": "bytedance-ark-agent"
         }
       ]
     }
@@ -305,6 +305,12 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.9.4",
+      "items": [
+        "平台按实际产品线独立展示，套餐计费结构统一为订阅与按量，筛选和对比更简洁"
+      ]
+    },
     {
       "date": "2026.8.16",
       "items": [

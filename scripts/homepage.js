@@ -25,7 +25,6 @@
         // 已确认的选择
         let selectedVendors = new Set();
         let selectedModels = new Set();
-        let selectedTypes = new Set();
         let selectedTags = new Set();
         let priceFilters = {
             firstMonth: { min: null, max: null },
@@ -37,7 +36,6 @@
         // 临时选择（下拉框中的操作，只有点确定才提交）
         let tempSelectedVendors = new Set();
         let tempSelectedModels = new Set();
-        let tempSelectedTypes = new Set();
         let tempPriceFilters = {
             firstMonth: { min: null, max: null },
             monthly: { min: null, max: null },
@@ -62,10 +60,6 @@
         let activeDropdown = null;
 
         // DOM 元素
-        const typeBtn = document.getElementById('typeBtn');
-        const typeDropdown = document.getElementById('typeDropdown');
-        const typeCheckboxes = document.getElementById('typeCheckboxes');
-        const typeCount = document.getElementById('typeCount');
         const vendorBtn = document.getElementById('vendorBtn');
         const modelBtn = document.getElementById('modelBtn');
         const vendorDropdown = document.getElementById('vendorDropdown');
@@ -218,18 +212,6 @@
 
         // 初始化筛选器
         function initFilters() {
-            // 类型筛选
-            const types = [...new Set(allPlans.map(p => p.type || 'Coding Plan'))].sort();
-            types.forEach(type => {
-                const div = document.createElement('div');
-                div.className = 'checkbox-item';
-                div.innerHTML = `
-                    <input type="checkbox" id="type_${type}" value="${type}" onchange="updateTypeSelection()">
-                    <label for="type_${type}">${type}</label>
-                `;
-                typeCheckboxes.appendChild(div);
-            });
-
             const vendors = uniqueStringsInOrder(allPlans.map(p => p.platformName));
             vendors.forEach(vendor => {
                 const div = document.createElement('div');
@@ -298,10 +280,7 @@
                 activeDropdown = dropdown;
 
                 // 打开下拉框时，初始化临时状态为当前已确认状态
-                if (type === 'type') {
-                    tempSelectedTypes = new Set(selectedTypes);
-                    syncTypeCheckboxes();
-                } else if (type === 'vendor') {
+                if (type === 'vendor') {
                     tempSelectedVendors = new Set(selectedVendors);
                     syncVendorCheckboxes();
                 } else if (type === 'model') {
@@ -327,15 +306,6 @@
             }
         }
 
-        // 同步厂商复选框状态
-        function syncTypeCheckboxes() {
-            document.querySelectorAll('#typeCheckboxes input').forEach(cb => {
-                cb.checked = tempSelectedTypes.has(cb.value);
-            });
-        }
-
-
-
         function syncVendorCheckboxes() {
             document.querySelectorAll('#vendorCheckboxes input').forEach(cb => {
                 cb.checked = tempSelectedVendors.has(cb.value);
@@ -351,10 +321,7 @@
 
         function closeAllDropdowns() {
             // 提交临时状态到正式状态
-            if (activeDropdown === typeDropdown) {
-                selectedTypes = new Set(tempSelectedTypes);
-                updateTypeCount();
-            } else if (activeDropdown === vendorDropdown) {
+            if (activeDropdown === vendorDropdown) {
                 selectedVendors = new Set(tempSelectedVendors);
                 updateVendorCount();
             } else if (activeDropdown === modelDropdown) {
@@ -372,9 +339,7 @@
         // 价格筛选的确定按钮单独处理，避免重复调用 applyFilters
         function closeDropdownWithoutFilter() {
             // 恢复按钮显示到已确认状态
-            if (activeDropdown === typeDropdown) {
-                updateTypeCount();
-            } else if (activeDropdown === vendorDropdown) {
+            if (activeDropdown === vendorDropdown) {
                 updateVendorCount();
             } else if (activeDropdown === modelDropdown) {
                 updateModelCount();
@@ -395,7 +360,6 @@
                 });
             };
 
-            bindToggle(typeBtn, typeDropdown, 'type');
             bindToggle(vendorBtn, vendorDropdown, 'vendor');
             bindToggle(firstMonthPriceBtn, firstMonthPriceDropdown, 'firstMonth');
             bindToggle(monthlyPriceBtn, monthlyPriceDropdown, 'monthly');
@@ -474,16 +438,6 @@
 
         // 更新选择
         // 复选框操作只修改临时状态
-        function updateTypeSelection() {
-            tempSelectedTypes.clear();
-            document.querySelectorAll('#typeCheckboxes input:checked').forEach(cb => {
-                tempSelectedTypes.add(cb.value);
-            });
-            updateTempTypeCount();
-        }
-
-
-
         function updateVendorSelection() {
             tempSelectedVendors.clear();
             document.querySelectorAll('#vendorCheckboxes input:checked').forEach(cb => {
@@ -503,17 +457,6 @@
         }
 
         // 显示临时计数
-        function updateTempTypeCount() {
-            if (tempSelectedTypes.size > 0) {
-                typeCount.textContent = tempSelectedTypes.size;
-                typeCount.style.display = 'inline-block';
-            } else {
-                typeCount.style.display = 'none';
-            }
-        }
-
-
-
         function updateTempVendorCount() {
             if (tempSelectedVendors.size > 0) {
                 vendorCount.textContent = tempSelectedVendors.size;
@@ -533,17 +476,6 @@
         }
 
         // 更新已确认状态的按钮显示
-        function updateTypeCount() {
-            if (selectedTypes.size > 0) {
-                typeCount.textContent = selectedTypes.size;
-                typeCount.style.display = 'inline-block';
-                typeBtn.classList.add('active');
-            } else {
-                typeCount.style.display = 'none';
-                typeBtn.classList.remove('active');
-            }
-        }
-
         function updateVendorCount() {
             if (selectedVendors.size > 0) {
                 vendorCount.textContent = selectedVendors.size;
@@ -643,11 +575,6 @@
                 // 已下线筛选：默认隐藏已下线套餐
                 const showDiscontinued = document.getElementById('showDiscontinued').checked;
                 if (plan.discontinued && !showDiscontinued) {
-                    return false;
-                }
-
-                // 类型筛选
-                if (selectedTypes.size > 0 && !selectedTypes.has(plan.type || 'Coding Plan')) {
                     return false;
                 }
 
@@ -1201,13 +1128,6 @@
             updateTempModelCount();
         }
 
-        function resetTypeFilter() {
-            tempSelectedTypes.clear();
-            document.querySelectorAll('#typeCheckboxes input').forEach(cb => cb.checked = false);
-            updateTempTypeCount();
-        }
-
-
         function resetAllFilters() {
             // 重置显示已下线套餐复选框
             document.getElementById('showDiscontinued').checked = false;
@@ -1238,13 +1158,10 @@
                 updateRequestSliderVisuals(type, requestSliders[type].minValue, requestSliders[type].maxValue);
             });
 
-            resetTypeFilter();
             resetVendorFilter();
             resetModelFilter();
 
-            selectedTypes.clear();
             selectedTags.clear();
-            updateTypeCount();
             selectedVendors.clear();
             updateVendorCount();
             selectedModels.clear();
@@ -1384,7 +1301,7 @@
             if (filteredPlans.length === 0) {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="17">
+                        <td colspan="16">
                             <div class="empty-state">
                                 <div class="empty-state-icon">📭</div>
                                 <div class="empty-state-text">没有找到符合条件的套餐</div>
@@ -1404,7 +1321,6 @@
                 <tr class="plan-row${plan.discontinued ? ' discontinued' : ''}${pinned ? ' is-pinned' : ''}">
                     <td class="sticky-first"><span class="table-pin-cell">${pinHtml}<span class="vendor-name">${escapeHtml(plan.platformName)}</span></span></td>
                     <td class="sticky-second"><span class="plan-name">${escapeHtml(plan.name)}</span></td>
-                    <td><span class="type-tag ${(plan.type || 'Coding Plan') === 'Token Plan' ? 'token-plan' : 'coding-plan'}">${escapeHtml(plan.type || 'Coding Plan')}</span></td>
                     <td>
                         <a href="${escapeHtml(plan['action'])}" target="_blank" class="action-btn">
                             跳转开通
@@ -1523,7 +1439,7 @@
                     header: {
                         title: "AI Coding Plan 平台评测与对比",
                         updateDate: "更新日期 2026.7.26 | 同步讯飞·星火速通版；字节·方舟 / Kimi / OpenCode 追加 Kimi-K3",
-                        subtitle: "31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比。<br>涵盖DeepSeek V4，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
+                        subtitle: "31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，订阅套餐与按量 API 全面对比。<br>涵盖DeepSeek V4，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
                         models: "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)获取最新消息和选型反馈。",
                         watermarkUrl: "www.codingplan.fyi",
                         entry: {
@@ -2438,7 +2354,7 @@
                 document.head.appendChild(link);
             }
             if (typeof window.mountModelComparisonView !== 'function') {
-                await loadScriptOnce('scripts/model-comparison.js?v=260902k');
+                await loadScriptOnce('scripts/model-comparison.js?v=260904a');
             }
             if (typeof window.mountModelComparisonView === 'function') {
                 await window.mountModelComparisonView(root);
@@ -2771,11 +2687,9 @@
         scheduleHomepageBoot();
 
     
-    window.updateTypeSelection = updateTypeSelection;
     window.updateVendorSelection = updateVendorSelection;
     window.updateModelSelection = updateModelSelection;
     window.resetVendorFilter = resetVendorFilter;
-    window.resetTypeFilter = resetTypeFilter;
     window.resetModelFilter = resetModelFilter;
     window.resetFirstMonthPriceFilter = resetFirstMonthPriceFilter;
     window.applyFirstMonthPriceFilter = applyFirstMonthPriceFilter;
