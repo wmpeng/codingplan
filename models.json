@@ -427,6 +427,16 @@
       }
     },
     {
+      "slug": "deepseek-v4-preview",
+      "name": "DeepSeek-V4-Preview",
+      "multimodal": "unknown",
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
       "slug": "deepseek-v4-pro-0813",
       "name": "DeepSeek-V4-Pro-0813",
       "multimodal": false,

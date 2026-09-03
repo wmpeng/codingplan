@@ -220,16 +220,16 @@
       "slug": "gongji",
       "name": "共绩算力",
       "rating": 5,
-      "summary": "DeepSeek 等模型官方约 8 折按量，人少时更稳，适合灵活充值调用。",
-      "detail": "共绩算力以 API 按量为主，DeepSeek-V4-Pro 常见为官方约 8 折（如输入 2.4 / 缓存 0.02 / 输出 4.8 元/M）。同时覆盖 GLM、Kimi、Qwen 等常见模型。务必通过邀请链接进入以锁定折扣与额外额度；平台体量相对较小，人数不多时稳定性体感较好，但仍建议关注公告与限流。不提供传统 Coding Plan / Token Plan 档位，按充值用量消费。",
+      "summary": "GLM、Kimi、Qwen、DeepSeek 等模型标价 8 折按量，人少时更稳，适合灵活充值调用。",
+      "detail": "共绩算力以 API 按量为主，当前收录 GLM-5.3、GLM-5.3-Flash、Kimi-K3、Qwen-3.7-Max、DeepSeek-V4 预览版等 10 个可用模型，邀请资格按模型广场标价 8 折计费。务必通过邀请链接进入以锁定折扣与额外额度；平台体量相对较小，人数不多时稳定性体感较好，但仍建议关注公告与限流。不提供传统 Coding Plan / Token Plan 档位，按充值用量消费。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "DeepSeek 官方约 8 折，高峰涨价后相对优势更明显。"
+          "reason": "模型广场标价 8 折，适合按量调用。"
         },
         "models": {
           "score": 5,
-          "reason": "支持 Kimi-K3、DeepSeek-V4-Pro、GLM-5.3，以及 千问、混元 等常见模型。"
+          "reason": "支持 Kimi-K3、GLM-5.3、Qwen-3.7-Max 与 DeepSeek-V4 预览版等模型。"
         },
         "stability": {
           "score": 5,

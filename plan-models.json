@@ -15204,13 +15204,105 @@
       "note": "高峰时段（周一~五 9-12/14-18）价格"
     },
     {
+      "slug": "gongji-api--glm-5-3-flash",
+      "planSlug": "gongji-api",
+      "modelSlug": "glm-5-3-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "catalogOrder": 0,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.1047
+      },
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 0.32,
+        "cachePerM": 0.088,
+        "outputPerM": 1.12,
+        "inputCnyPerM": 0.32,
+        "cacheCnyPerM": 0.088,
+        "outputCnyPerM": 1.12
+      },
+      "note": "按页面当前标价的 8 折计算；页面另标注限时五折，未公布活动起止日期"
+    },
+    {
+      "slug": "gongji-api--deepseek-v4-preview",
+      "planSlug": "gongji-api",
+      "modelSlug": "deepseek-v4-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "catalogOrder": 1,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.0629
+      },
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 0.8,
+        "cachePerM": 0.016,
+        "outputPerM": 1.6,
+        "inputCnyPerM": 0.8,
+        "cacheCnyPerM": 0.016,
+        "outputCnyPerM": 1.6
+      },
+      "note": "按页面当前标价的 8 折计算；正式版资源自 2026-08-19 00:00 起维护，官方未公布结束时间"
+    },
+    {
+      "slug": "gongji-api--deepseek-v4-pro-preview",
+      "planSlug": "gongji-api",
+      "modelSlug": "deepseek-v4-pro-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "catalogOrder": 2,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.1585
+      },
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 2.4,
+        "cachePerM": 0.016,
+        "outputPerM": 4.8,
+        "inputCnyPerM": 2.4,
+        "cacheCnyPerM": 0.016,
+        "outputCnyPerM": 4.8
+      },
+      "note": "按页面当前标价的 8 折计算；正式版资源自 2026-08-19 00:00 起维护，官方未公布结束时间"
+    },
+    {
+      "slug": "gongji-api--glm-5-3",
+      "planSlug": "gongji-api",
+      "modelSlug": "glm-5-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "catalogOrder": 3,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 1.9428
+      },
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 6.4,
+        "cachePerM": 1.6,
+        "outputPerM": 22.4,
+        "inputCnyPerM": 6.4,
+        "cacheCnyPerM": 1.6,
+        "outputCnyPerM": 22.4
+      },
+      "note": "按页面当前标价的 8 折计算"
+    },
+    {
       "slug": "gongji-api--kimi-k3",
       "planSlug": "gongji-api",
       "modelSlug": "kimi-k3",
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "catalogOrder": 0,
+      "catalogOrder": 4,
       "method": "calculated",
       "usage": {
         "unitPriceCnyPerM": 2.7084
@@ -15224,30 +15316,30 @@
         "cacheCnyPerM": 1.6,
         "outputCnyPerM": 80.0
       },
-      "note": "官方价格的 8 折"
+      "note": "按页面当前标价的 8 折计算"
     },
     {
-      "slug": "gongji-api--deepseek-v4-pro-0813",
+      "slug": "gongji-api--glm-5-1",
       "planSlug": "gongji-api",
-      "modelSlug": "deepseek-v4-pro-0813",
+      "modelSlug": "glm-5-1",
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "catalogOrder": 1,
+      "catalogOrder": 5,
       "method": "calculated",
       "usage": {
-        "unitPriceCnyPerM": 0.1623
+        "unitPriceCnyPerM": 1.9428
       },
       "pricing": {
         "currency": "¥",
-        "inputPerM": 2.4,
-        "cachePerM": 0.02,
-        "outputPerM": 4.8,
-        "inputCnyPerM": 2.4,
-        "cacheCnyPerM": 0.02,
-        "outputCnyPerM": 4.8
+        "inputPerM": 6.4,
+        "cachePerM": 1.6,
+        "outputPerM": 22.4,
+        "inputCnyPerM": 6.4,
+        "cacheCnyPerM": 1.6,
+        "outputCnyPerM": 22.4
       },
-      "note": "官方价格的 8 折"
+      "note": "按页面当前标价的 8 折计算"
     },
     {
       "slug": "gongji-api--glm-5-2",
@@ -15256,13 +15348,21 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "catalogOrder": 2,
-      "method": "unknown",
+      "catalogOrder": 6,
+      "method": "calculated",
       "usage": {
-        "unitPriceCnyPerM": "unknown"
+        "unitPriceCnyPerM": 1.9428
       },
-      "pricing": null,
-      "note": "以平台公示为准"
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 6.4,
+        "cachePerM": 1.6,
+        "outputPerM": 22.4,
+        "inputCnyPerM": 6.4,
+        "cacheCnyPerM": 1.6,
+        "outputCnyPerM": 22.4
+      },
+      "note": "按页面当前标价的 8 折计算"
     },
     {
       "slug": "gongji-api--kimi-k2-6",
@@ -15271,13 +15371,21 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "catalogOrder": 3,
-      "method": "unknown",
+      "catalogOrder": 7,
+      "method": "calculated",
       "usage": {
-        "unitPriceCnyPerM": "unknown"
+        "unitPriceCnyPerM": 1.1985
       },
-      "pricing": null,
-      "note": "以平台公示为准"
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 5.2,
+        "cachePerM": 0.88,
+        "outputPerM": 21.6,
+        "inputCnyPerM": 5.2,
+        "cacheCnyPerM": 0.88,
+        "outputCnyPerM": 21.6
+      },
+      "note": "按页面当前标价的 8 折计算"
     },
     {
       "slug": "gongji-api--qwen-3-7-max",
@@ -15286,13 +15394,44 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "catalogOrder": 4,
-      "method": "unknown",
+      "catalogOrder": 8,
+      "method": "calculated",
       "usage": {
-        "unitPriceCnyPerM": "unknown"
+        "unitPriceCnyPerM": 1.529
       },
-      "pricing": null,
-      "note": "以平台公示为准"
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 9.6,
+        "cachePerM": 0.96,
+        "outputPerM": 28.8,
+        "inputCnyPerM": 9.6,
+        "cacheCnyPerM": 0.96,
+        "outputCnyPerM": 28.8
+      },
+      "note": "按页面当前标价的 8 折计算"
+    },
+    {
+      "slug": "gongji-api--glm-5",
+      "planSlug": "gongji-api",
+      "modelSlug": "glm-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "catalogOrder": 9,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 1.4611
+      },
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 4.8,
+        "cachePerM": 1.2,
+        "outputPerM": 17.6,
+        "inputCnyPerM": 4.8,
+        "cacheCnyPerM": 1.2,
+        "outputCnyPerM": 17.6
+      },
+      "note": "按页面当前标价的 8 折计算"
     },
     {
       "slug": "zhipu-intl-coding-plan-lite--glm-5-1",
