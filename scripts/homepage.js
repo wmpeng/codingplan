@@ -2433,7 +2433,7 @@
             if (!document.querySelector('link[data-usage-css="1"]')) {
                 const link = document.createElement('link');
                 link.rel = 'stylesheet';
-                link.href = 'styles/model-comparison.css?v=260902f';
+                link.href = 'styles/model-comparison.css?v=260903a';
                 link.dataset.usageCss = '1';
                 document.head.appendChild(link);
             }
