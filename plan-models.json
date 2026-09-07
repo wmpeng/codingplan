@@ -14,7 +14,7 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "method": "measured",
+      "method": "multiplied",
       "usage": {
         "fiveHourTokenInM": 6.6666666667,
         "weeklyTokenInM": 40,
@@ -312,7 +312,7 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "method": "measured",
+      "method": "multiplied",
       "usage": {
         "fiveHourTokenInM": "unlimited",
         "weeklyTokenInM": 800,
@@ -320,7 +320,7 @@
         "unitPriceCnyPerM": 0.425
       },
       "pricing": null,
-      "note": "用户实测周额度 200M；测试以中等思考强度为主，缓存命中率约 96.8%，输出占比约 0.24%"
+      "note": "按 Pro *5 用户实测周额度 200M 的 4 倍计算；测试以中等思考强度为主，缓存命中率约 96.8%，输出占比约 0.24%"
     },
     {
       "slug": "codex-pro20--gpt-5-6",
@@ -427,7 +427,7 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "method": "measured",
+      "method": "multiplied",
       "usage": {
         "fiveHourTokenInM": "unlimited",
         "weeklyTokenInM": 2400,
@@ -2557,7 +2557,7 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "method": "measured",
+      "method": "multiplied",
       "usage": {
         "fiveHourTokenInM": 126,
         "weeklyTokenInM": 1260,
@@ -2602,7 +2602,7 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "method": "measured",
+      "method": "multiplied",
       "usage": {
         "fiveHourTokenInM": 497.0,
         "weeklyTokenInM": 4970.0,
@@ -11221,7 +11221,7 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "method": "measured",
+      "method": "multiplied",
       "usage": {
         "fiveHourTokenInM": 200,
         "weeklyTokenInM": 1500,
