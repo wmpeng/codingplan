@@ -1,12 +1,30 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-04T00:00:00Z",
+  "generatedAt": "2026-09-07T00:00:00Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
     "tokensPerRequest": 120000
   },
   "planModels": [
+    {
+      "slug": "codex-plus--gpt-6-astra",
+      "planSlug": "codex-plus",
+      "modelSlug": "gpt-6-astra",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "catalogOrder": null,
+      "method": "measured",
+      "usage": {
+        "fiveHourTokenInM": 6.6666666667,
+        "weeklyTokenInM": 40,
+        "monthlyTokenInM": 160,
+        "unitPriceCnyPerM": 0.85
+      },
+      "pricing": null,
+      "note": "按 Pro *5 用户实测周额度 200M 的五分之一折算；测试以中等思考强度为主，缓存命中率约 96.8%，输出占比约 0.24%；Plus 五小时按周额度的 1/6 换算"
+    },
     {
       "slug": "codex-plus--gpt-5-6-sol",
       "planSlug": "codex-plus",
@@ -147,6 +165,24 @@
       },
       "pricing": null,
       "note": null
+    },
+    {
+      "slug": "codex-pro5--gpt-6-astra",
+      "planSlug": "codex-pro5",
+      "modelSlug": "gpt-6-astra",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "catalogOrder": null,
+      "method": "measured",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": 200,
+        "monthlyTokenInM": 800,
+        "unitPriceCnyPerM": 0.85
+      },
+      "pricing": null,
+      "note": "用户实测周额度 200M；测试以中等思考强度为主，缓存命中率约 96.8%，输出占比约 0.24%"
     },
     {
       "slug": "codex-pro5--gpt-5-6-sol",
@@ -290,6 +326,24 @@
       "note": null
     },
     {
+      "slug": "codex-pro20--gpt-6-astra",
+      "planSlug": "codex-pro20",
+      "modelSlug": "gpt-6-astra",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "catalogOrder": 0,
+      "method": "measured",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": 800,
+        "monthlyTokenInM": 3200,
+        "unitPriceCnyPerM": 0.425
+      },
+      "pricing": null,
+      "note": "用户实测周额度 200M；测试以中等思考强度为主，缓存命中率约 96.8%，输出占比约 0.24%"
+    },
+    {
       "slug": "codex-pro20--gpt-5-6-sol",
       "planSlug": "codex-pro20",
       "modelSlug": "gpt-5-6-sol",
@@ -332,7 +386,7 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "catalogOrder": 0,
+      "catalogOrder": 1,
       "method": "unknown",
       "usage": {
         "monthlyTokenInM": "unknown"
@@ -347,7 +401,7 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "catalogOrder": 1,
+      "catalogOrder": 2,
       "method": "unknown",
       "usage": {
         "monthlyTokenInM": "unknown"
@@ -362,7 +416,7 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "catalogOrder": 2,
+      "catalogOrder": 3,
       "method": "unknown",
       "usage": {
         "monthlyTokenInM": "unknown"
@@ -377,7 +431,7 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "catalogOrder": 3,
+      "catalogOrder": 4,
       "method": "unknown",
       "usage": {
         "monthlyTokenInM": "unknown"
@@ -392,7 +446,7 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "catalogOrder": 4,
+      "catalogOrder": 5,
       "method": "unknown",
       "usage": {
         "monthlyTokenInM": "unknown"
@@ -407,7 +461,7 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "catalogOrder": 5,
+      "catalogOrder": 6,
       "method": "unknown",
       "usage": {
         "monthlyTokenInM": "unknown"
@@ -422,7 +476,7 @@
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
-      "catalogOrder": 6,
+      "catalogOrder": 7,
       "method": "unknown",
       "usage": {
         "monthlyTokenInM": "unknown"

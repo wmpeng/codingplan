@@ -1,10 +1,10 @@
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.9.4 | 平台产品线与计费结构更新
+> 更新日期 2026.9.7 | 新增 GPT-6-Astra 与 Codex 实测额度
 
 ## 📖 简介
 
-31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，订阅套餐与按量 API 全面对比。<br>涵盖DeepSeek-V4-Flash-0731，GLM-5.3，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型
+31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，订阅套餐与按量 API 全面对比。<br>涵盖GPT-6-Astra，DeepSeek-V4-Flash-0731，GLM-5.3，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型
 
 快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息
 
@@ -171,7 +171,7 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | 优云智算 | Ultra | [跳转](https://api.dreamfree.space/c/s/cpyqyyzs) | ⭐️⭐️⭐️⭐️ | 模型强 | - | ¥999 | - / 季 | - / 年 | 6,000 | 15,000 | 39,000 | 200M Tokens | 500M Tokens | 1,300M Tokens | - | GLM-5.2, GLM-5.1, Kimi-K2.6, MiniMax-M2.7, DeepSeek-V4-Flash-0731, DeepSeek-V3.2 | - | 在售 | • 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6 <br> • 限流：10 并发 <br> • 价格较贵但费率明确，无隐藏倍率 |
 | Codex | Plus | [跳转](https://api.dreamfree.space/c/s/cpyqchatgpt) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高 | - | $20 | - / 季 | - / 年 | 无限制 | 无限制 | 无限制 | 120M Tokens | 120M Tokens | 480M Tokens | - | GPT-5.6, GPT-5.5, GPT-5.4, GPT-5.3-Codex, GPT-5.2, GPT-5.4-mini, GPT-Image-2.0 | - | 在售 | • 无5h限制，只有周限制 |
 | Codex | Pro *5 | [跳转](https://api.dreamfree.space/c/s/cpyqchatgpt) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高 | - | $100 | - / 季 | - / 年 | 无限制 | 无限制 | 无限制 | 600M Tokens | 600M Tokens | 2,400M Tokens | - | GPT-5.6, GPT-5.5, GPT-5.4, GPT-5.3-Codex, GPT-5.2, GPT-5.4-mini, GPT-Image-2.0 | - | 在售 | • 无5h限制，只有周限制 |
-| Codex | Pro *20 | [跳转](https://api.dreamfree.space/c/s/cpyqchatgpt) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高 | - | $200 | - / 季 | - / 年 | 无限制 | 无限制 | 无限制 | 2,400M Tokens | 2,400M Tokens | 9,600M Tokens | - | GPT-5.6, GPT-5.5, GPT-5.4, GPT-5.3-Codex, GPT-5.2, GPT-5.4-mini, GPT-Image-2.0 | - | 在售 | • 无5h限制，只有周限制 |
+| Codex | Pro *20 | [跳转](https://api.dreamfree.space/c/s/cpyqchatgpt) | ⭐️⭐️⭐️⭐️⭐️ | 模型强 / 性价比高 | - | $200 | - / 季 | - / 年 | 无限制 | 无限制 | 无限制 | 2,400M Tokens | 2,400M Tokens | 9,600M Tokens | - | GPT-6-Astra, GPT-5.6, GPT-5.5, GPT-5.4, GPT-5.3-Codex, GPT-5.2, GPT-5.4-mini, GPT-Image-2.0 | - | 在售 | • 无5h限制，只有周限制 |
 | Claude | Pro | [跳转](https://api.dreamfree.space/c/s/cpyqclaudeup) | ⭐️⭐️⭐️⭐️ | 模型强 | - | $20 | - / 季 | - / 年 | Pro 基准 | Pro 基准 | 未公开 | 23M Tokens | 104M Tokens | 416M Tokens | - | Claude Sonnet 4.6, Claude Sonnet 4.5, Claude Opus 4.7, Claude Opus 4.6, Claude Opus 4.5, Claude Haiku 4.5 | 原生 Claude 体验 | 在售 | • 部分用户订阅时可能被要求实名认证 <br> • 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent |
 | Claude | Max *5 | [跳转](https://api.dreamfree.space/c/s/cpyqclaudeup) | ⭐️⭐️⭐️⭐️ | 模型强 | - | $100 | - / 季 | - / 年 | Pro 的 5 倍 | Pro 的 5 倍 | 未公开 | 115M Tokens | 520M Tokens | 2,080M Tokens | - | Claude Sonnet 4.6, Claude Sonnet 4.5, Claude Opus 4.7, Claude Opus 4.6, Claude Opus 4.5, Claude Haiku 4.5 | 原生 Claude 体验 | 在售 | • 部分用户订阅时可能被要求实名认证 <br> • 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent |
 | Claude | Max *20 | [跳转](https://api.dreamfree.space/c/s/cpyqclaudeup) | ⭐️⭐️⭐️⭐️ | 模型强 | - | $200 | - / 季 | - / 年 | Pro 的 20 倍 | Pro 的 20 倍 | 未公开 | 460M Tokens | 2,080M Tokens | 8,320M Tokens | - | Claude Sonnet 4.6, Claude Sonnet 4.5, Claude Opus 4.7, Claude Opus 4.6, Claude Opus 4.5, Claude Haiku 4.5 | 原生 Claude 体验 | 在售 | • 部分用户订阅时可能被要求实名认证 <br> • 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent |
@@ -233,8 +233,10 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 
 ## 📝 更新日志
 
-### 2026.9.4
+### 2026.9.7
 
+- Codex 新增 GPT-6-Astra，支持 Plus、Pro *5、Pro *20 套餐
+- GPT-6-Astra Pro *5 周额度按实测更新为 200M Tokens；缓存命中约 96.8%，输出占比约 0.24%，以中等思考强度为主
 - 平台按实际产品线独立展示，套餐计费结构统一为订阅与按量，筛选和对比更简洁
 - 共绩算力重新核对模型广场：收录 10 个当前可用模型，并按邀请资格的标价 8 折更新按量价格
 

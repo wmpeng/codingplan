@@ -23,7 +23,7 @@
     ];
     const DEFAULT_MODEL_SLUGS = [
         'deepseek-v4-pro-0813', 'deepseek-v4-flash-0731', 'qwen-3-8-max',
-        'glm-5-3', 'glm-5-3-flash', 'kimi-k3', 'gpt-5-6-sol', 'gpt-5-6-luna',
+        'glm-5-3', 'glm-5-3-flash', 'kimi-k3', 'gpt-6-astra', 'gpt-5-6-sol', 'gpt-5-6-luna',
         'claude-opus-5', 'claude-sonnet-5', 'muse-spark-1-2',
         'minimax-m3', 'deepseek-v4-flash-vision-exp'
     ];

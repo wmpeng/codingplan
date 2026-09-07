@@ -74,7 +74,8 @@ test('default filters use the curated available platforms and models', () => {
     'minimax-m3', 'deepseek-v4-flash-vision-exp'
   ]));
   assert.equal(DEFAULT_PLATFORM_SLUGS.length, 9);
-  assert.equal(DEFAULT_MODEL_SLUGS.length, 13);
+  assert.equal(DEFAULT_MODEL_SLUGS.length, 14);
+  assert.equal(DEFAULT_MODEL_SLUGS.includes('gpt-6-astra'), true);
   assert.equal(DEFAULT_MODEL_SLUGS.includes('grok-4-6'), false);
   assert.equal(DEFAULT_MODEL_SLUGS.includes('muse-spark-1-2'), true);
   assert.equal(DEFAULT_MODEL_SLUGS.includes('minimax-m3'), true);
@@ -266,7 +267,7 @@ test('preset comparisons are configured outside the renderer', () => {
   assert.equal(config.groups[3].title, '甜品级模型对比');
   assert.deepEqual(config.groups[3].modelSlugs, ['deepseek-v4-flash-0731', 'glm-5-3-flash', 'gpt-5-6-luna']);
   assert.equal(config.groups[4].title, 'SOTA模型对比');
-  assert.deepEqual(config.groups[4].modelSlugs, ['claude-opus-5', 'gpt-5-6-sol', 'glm-5-3', 'kimi-k3']);
+  assert.deepEqual(config.groups[4].modelSlugs, ['gpt-6-astra', 'claude-opus-5', 'gpt-5-6-sol', 'glm-5-3', 'kimi-k3']);
 });
 
 test('preset rows include subscriptions and API while sorting by unit and package price', () => {
