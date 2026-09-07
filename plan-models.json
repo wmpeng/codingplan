@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-07T00:00:00Z",
+  "generatedAt": "2026-09-08T00:00:00Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -3559,6 +3559,30 @@
       "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；官方上下文上限 256K；容量持续期间免费，官方未公布结束日期；免费状态结束后的额度未知"
     },
     {
+      "slug": "commandcode-go--longcat-2-0",
+      "planSlug": "commandcode-go",
+      "modelSlug": "longcat-2-0",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": "unlimited",
+        "monthlyTokenInM": "unlimited"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.0,
+        "cachePerM": 0.0,
+        "outputPerM": 0.0,
+        "inputCnyPerM": 0.0,
+        "cacheCnyPerM": 0.0,
+        "outputCnyPerM": 0.0
+      },
+      "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；官方上下文上限 1M；当前免费，官方未公布活动结束日期；免费活动，官方未公布结束日期；活动结束后的额度未知"
+    },
+    {
       "slug": "commandcode-go--hy4-preview",
       "planSlug": "commandcode-go",
       "modelSlug": "hy4-preview",
@@ -4059,6 +4083,31 @@
       "note": "价格：输入 $0.28/M Token、缓存读取 $0.07/M Token、输出 $0.56/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
     },
     {
+      "slug": "commandcode-go--qwen-3-8-max-0902",
+      "planSlug": "commandcode-go",
+      "modelSlug": "qwen-3-8-max-0902",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 8.2009226038,
+        "weeklyTokenInM": 16.4018452076,
+        "monthlyTokenInM": 27.3,
+        "unitPriceCnyPerM": 0.24888
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.25,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.7,
+        "outputCnyPerM": 40.8
+      },
+      "note": "价格：输入 $2/M Token、缓存读取 $0.25/M Token、输出 $6/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
       "slug": "commandcode-go--qwen-3-8-max",
       "planSlug": "commandcode-go",
       "modelSlug": "qwen-3-8-max",
@@ -4406,7 +4455,32 @@
         "cacheCnyPerM": 0.136,
         "outputCnyPerM": 8.16
       },
-      "note": "价格：输入 $0.2/M Token、缓存读取 $0.02/M Token、输出 $1.2/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1.1M"
+      "note": "价格：输入 $0.2/M Token、缓存读取 $0.02/M Token、输出 $1.2/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1.1M；当前在中国不可用"
+    },
+    {
+      "slug": "commandcode-go--muse-spark-1-3--service-contributor",
+      "planSlug": "commandcode-go",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "Contributor",
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 381.4124976162,
+        "weeklyTokenInM": 762.8249952323,
+        "monthlyTokenInM": 1271.4,
+        "unitPriceCnyPerM": 0.00544
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.002,
+        "outputPerM": 0.2,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.0136,
+        "outputCnyPerM": 1.36
+      },
+      "note": "价格：输入 $0.1/M Token、缓存读取 $0.002/M Token、输出 $0.2/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
     },
     {
       "slug": "commandcode-go--muse-spark-1-2--service-contributor",
@@ -4531,6 +4605,30 @@
         "outputCnyPerM": 0.0
       },
       "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；官方上下文上限 256K；容量持续期间免费，官方未公布结束日期；免费状态结束后的额度未知"
+    },
+    {
+      "slug": "commandcode-goat--longcat-2-0",
+      "planSlug": "commandcode-goat",
+      "modelSlug": "longcat-2-0",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": "unlimited",
+        "monthlyTokenInM": "unlimited"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.0,
+        "cachePerM": 0.0,
+        "outputPerM": 0.0,
+        "inputCnyPerM": 0.0,
+        "cacheCnyPerM": 0.0,
+        "outputCnyPerM": 0.0
+      },
+      "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；官方上下文上限 1M；当前免费，官方未公布活动结束日期；免费活动，官方未公布结束日期；活动结束后的额度未知"
     },
     {
       "slug": "commandcode-goat--hy4-preview",
@@ -5033,6 +5131,31 @@
       "note": "价格：输入 $0.28/M Token、缓存读取 $0.07/M Token、输出 $0.56/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
     },
     {
+      "slug": "commandcode-goat--qwen-3-8-max-0902",
+      "planSlug": "commandcode-goat",
+      "modelSlug": "qwen-3-8-max-0902",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 10.9345634717,
+        "weeklyTokenInM": 27.3364086793,
+        "monthlyTokenInM": 54.7,
+        "unitPriceCnyPerM": 1.24372
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.25,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.7,
+        "outputCnyPerM": 40.8
+      },
+      "note": "价格：输入 $2/M Token、缓存读取 $0.25/M Token、输出 $6/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
       "slug": "commandcode-goat--qwen-3-8-max",
       "planSlug": "commandcode-goat",
       "modelSlug": "qwen-3-8-max",
@@ -5405,7 +5528,32 @@
         "cacheCnyPerM": 0.136,
         "outputCnyPerM": 8.16
       },
-      "note": "价格：输入 $0.2/M Token、缓存读取 $0.02/M Token、输出 $1.2/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1.1M"
+      "note": "价格：输入 $0.2/M Token、缓存读取 $0.02/M Token、输出 $1.2/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1.1M；当前在中国不可用"
+    },
+    {
+      "slug": "commandcode-goat--gemini-3-8-flash",
+      "planSlug": "commandcode-goat",
+      "modelSlug": "gemini-3-8-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 31.5069167528,
+        "weeklyTokenInM": 78.767291882,
+        "monthlyTokenInM": 157.5,
+        "unitPriceCnyPerM": 0.4318
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.5,
+        "cachePerM": 0.15,
+        "outputPerM": 7.5,
+        "inputCnyPerM": 10.2,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 51.0
+      },
+      "note": "价格：输入 $1.5/M Token、缓存读取 $0.15/M Token、输出 $7.5/M Token；模型额度：5小时 $8、每周 $20、每月 $40；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
     },
     {
       "slug": "commandcode-goat--gemini-3-7-flash",
@@ -5430,7 +5578,57 @@
         "cacheCnyPerM": 1.02,
         "outputCnyPerM": 51.0
       },
-      "note": "价格：输入 $1.5/M Token、缓存读取 $0.15/M Token、输出 $7.5/M Token；模型额度：5小时 $8、每周 $20、每月 $40；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+      "note": "价格：输入 $1.5/M Token、缓存读取 $0.15/M Token、输出 $7.5/M Token；模型额度：5小时 $8、每周 $20、每月 $40；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前在中国不可用"
+    },
+    {
+      "slug": "commandcode-goat--muse-spark-1-3",
+      "planSlug": "commandcode-goat",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 17.76001776,
+        "weeklyTokenInM": 44.4000444,
+        "monthlyTokenInM": 88.8,
+        "unitPriceCnyPerM": 0.76568
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.25,
+        "cachePerM": 0.15,
+        "outputPerM": 4.25,
+        "inputCnyPerM": 8.5,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 28.9
+      },
+      "note": "价格：输入 $1.25/M Token、缓存读取 $0.15/M Token、输出 $4.25/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-goat--muse-spark-1-3--service-contributor",
+      "planSlug": "commandcode-goat",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "Contributor",
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 508.5499968216,
+        "weeklyTokenInM": 1271.3749920539,
+        "monthlyTokenInM": 2542.7,
+        "unitPriceCnyPerM": 0.02652
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.002,
+        "outputPerM": 0.2,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.0136,
+        "outputCnyPerM": 1.36
+      },
+      "note": "价格：输入 $0.1/M Token、缓存读取 $0.002/M Token、输出 $0.2/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
     },
     {
       "slug": "commandcode-goat--muse-spark-1-2",
@@ -5605,6 +5803,30 @@
         "outputCnyPerM": 0.0
       },
       "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；官方上下文上限 256K；容量持续期间免费，官方未公布结束日期；免费状态结束后的额度未知"
+    },
+    {
+      "slug": "commandcode-pro--longcat-2-0",
+      "planSlug": "commandcode-pro",
+      "modelSlug": "longcat-2-0",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": "unlimited",
+        "monthlyTokenInM": "unlimited"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.0,
+        "cachePerM": 0.0,
+        "outputPerM": 0.0,
+        "inputCnyPerM": 0.0,
+        "cacheCnyPerM": 0.0,
+        "outputCnyPerM": 0.0
+      },
+      "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；官方上下文上限 1M；当前免费，官方未公布活动结束日期；免费活动，官方未公布结束日期；活动结束后的额度未知"
     },
     {
       "slug": "commandcode-pro--hy4-preview",
@@ -6107,6 +6329,31 @@
       "note": "价格：输入 $0.28/M Token、缓存读取 $0.07/M Token、输出 $0.56/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
     },
     {
+      "slug": "commandcode-pro--qwen-3-8-max-0902",
+      "planSlug": "commandcode-pro",
+      "modelSlug": "qwen-3-8-max-0902",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 16.4018452076,
+        "weeklyTokenInM": 41.004613019,
+        "monthlyTokenInM": 82.0,
+        "unitPriceCnyPerM": 1.65852
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.25,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.7,
+        "outputCnyPerM": 40.8
+      },
+      "note": "价格：输入 $2/M Token、缓存读取 $0.25/M Token、输出 $6/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
       "slug": "commandcode-pro--qwen-3-8-max",
       "planSlug": "commandcode-pro",
       "modelSlug": "qwen-3-8-max",
@@ -6579,7 +6826,7 @@
         "cacheCnyPerM": 0.136,
         "outputCnyPerM": 8.16
       },
-      "note": "价格：输入 $0.2/M Token、缓存读取 $0.02/M Token、输出 $1.2/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1.1M"
+      "note": "价格：输入 $0.2/M Token、缓存读取 $0.02/M Token、输出 $1.2/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1.1M；当前在中国不可用"
     },
     {
       "slug": "commandcode-pro--gpt-5-5",
@@ -6682,6 +6929,31 @@
       "note": "价格：输入 $2/M Token、缓存读取 $0.5/M Token、输出 $8/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 400K"
     },
     {
+      "slug": "commandcode-pro--gemini-3-8-flash",
+      "planSlug": "commandcode-pro",
+      "modelSlug": "gemini-3-8-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 39.383645941,
+        "weeklyTokenInM": 98.4591148526,
+        "monthlyTokenInM": 196.9,
+        "unitPriceCnyPerM": 0.69088
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.5,
+        "cachePerM": 0.15,
+        "outputPerM": 7.5,
+        "inputCnyPerM": 10.2,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 51.0
+      },
+      "note": "价格：输入 $1.5/M Token、缓存读取 $0.15/M Token、输出 $7.5/M Token；模型额度：5小时 $10、每周 $25、每月 $50；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
       "slug": "commandcode-pro--gemini-3-7-flash",
       "planSlug": "commandcode-pro",
       "modelSlug": "gemini-3-7-flash",
@@ -6704,7 +6976,7 @@
         "cacheCnyPerM": 1.02,
         "outputCnyPerM": 51.0
       },
-      "note": "价格：输入 $1.5/M Token、缓存读取 $0.15/M Token、输出 $7.5/M Token；模型额度：5小时 $10、每周 $25、每月 $50；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+      "note": "价格：输入 $1.5/M Token、缓存读取 $0.15/M Token、输出 $7.5/M Token；模型额度：5小时 $10、每周 $25、每月 $50；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前在中国不可用"
     },
     {
       "slug": "commandcode-pro--gemini-3-6-flash",
@@ -6805,6 +7077,56 @@
         "outputCnyPerM": 10.2
       },
       "note": "价格：输入 $0.25/M Token、缓存读取 $0.03/M Token、输出 $1.5/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-pro--muse-spark-1-3",
+      "planSlug": "commandcode-pro",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 26.64002664,
+        "weeklyTokenInM": 66.6000666001,
+        "monthlyTokenInM": 133.2,
+        "unitPriceCnyPerM": 1.02136
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.25,
+        "cachePerM": 0.15,
+        "outputPerM": 4.25,
+        "inputCnyPerM": 8.5,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 28.9
+      },
+      "note": "价格：输入 $1.25/M Token、缓存读取 $0.15/M Token、输出 $4.25/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-pro--muse-spark-1-3--service-contributor",
+      "planSlug": "commandcode-pro",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "Contributor",
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 762.8249952323,
+        "weeklyTokenInM": 1907.0624880809,
+        "monthlyTokenInM": 3814.1,
+        "unitPriceCnyPerM": 0.03536
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.002,
+        "outputPerM": 0.2,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.0136,
+        "outputCnyPerM": 1.36
+      },
+      "note": "价格：输入 $0.1/M Token、缓存读取 $0.002/M Token、输出 $0.2/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
     },
     {
       "slug": "commandcode-pro--muse-spark-1-2",
@@ -7004,6 +7326,30 @@
         "outputCnyPerM": 0.0
       },
       "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；官方上下文上限 256K；容量持续期间免费，官方未公布结束日期；免费状态结束后的额度未知"
+    },
+    {
+      "slug": "commandcode-max10--longcat-2-0",
+      "planSlug": "commandcode-max10",
+      "modelSlug": "longcat-2-0",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": "unlimited",
+        "monthlyTokenInM": "unlimited"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.0,
+        "cachePerM": 0.0,
+        "outputPerM": 0.0,
+        "inputCnyPerM": 0.0,
+        "cacheCnyPerM": 0.0,
+        "outputCnyPerM": 0.0
+      },
+      "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；官方上下文上限 1M；当前免费，官方未公布活动结束日期；免费活动，官方未公布结束日期；活动结束后的额度未知"
     },
     {
       "slug": "commandcode-max10--hy4-preview",
@@ -7504,6 +7850,31 @@
         "outputCnyPerM": 3.808
       },
       "note": "价格：输入 $0.28/M Token、缓存读取 $0.07/M Token、输出 $0.56/M Token；模型额度：5小时 $45、每周 $90、每月 $150；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-max10--qwen-3-8-max-0902",
+      "planSlug": "commandcode-max10",
+      "modelSlug": "qwen-3-8-max-0902",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 123.0138390569,
+        "weeklyTokenInM": 246.0276781138,
+        "monthlyTokenInM": 410.0,
+        "unitPriceCnyPerM": 1.65852
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.25,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.7,
+        "outputCnyPerM": 40.8
+      },
+      "note": "价格：输入 $2/M Token、缓存读取 $0.25/M Token、输出 $6/M Token；模型额度：5小时 $45、每周 $90、每月 $150；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
     },
     {
       "slug": "commandcode-max10--qwen-3-8-max",
@@ -8056,6 +8427,31 @@
       "note": "价格：输入 $1/M Token、缓存读取 $0.1/M Token、输出 $5/M Token；模型额度：5小时 $30、每周 $60、每月 $100；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 200K"
     },
     {
+      "slug": "commandcode-max10--gpt-6-astra",
+      "planSlug": "commandcode-max10",
+      "modelSlug": "gpt-6-astra",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 17.7226406735,
+        "weeklyTokenInM": 35.4452813469,
+        "monthlyTokenInM": 59.1,
+        "unitPriceCnyPerM": 11.51104
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 10.0,
+        "cachePerM": 1.0,
+        "outputPerM": 50.0,
+        "inputCnyPerM": 68.0,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 340.0
+      },
+      "note": "价格：输入 $10/M Token、缓存读取 $1/M Token、输出 $50/M Token；模型额度：5小时 $30、每周 $60、每月 $100；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1.1M"
+    },
+    {
       "slug": "commandcode-max10--gpt-5-6-sol",
       "planSlug": "commandcode-max10",
       "modelSlug": "gpt-5-6-sol",
@@ -8128,7 +8524,7 @@
         "cacheCnyPerM": 0.136,
         "outputCnyPerM": 8.16
       },
-      "note": "价格：输入 $0.2/M Token、缓存读取 $0.02/M Token、输出 $1.2/M Token；模型额度：5小时 $45、每周 $90、每月 $150；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1.1M"
+      "note": "价格：输入 $0.2/M Token、缓存读取 $0.02/M Token、输出 $1.2/M Token；模型额度：5小时 $45、每周 $90、每月 $150；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1.1M；当前在中国不可用"
     },
     {
       "slug": "commandcode-max10--gpt-5-5",
@@ -8231,6 +8627,31 @@
       "note": "价格：输入 $2/M Token、缓存读取 $0.5/M Token、输出 $8/M Token；模型额度：5小时 $30、每周 $60、每月 $100；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 400K"
     },
     {
+      "slug": "commandcode-max10--gemini-3-8-flash",
+      "planSlug": "commandcode-max10",
+      "modelSlug": "gemini-3-8-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 177.2264067346,
+        "weeklyTokenInM": 354.4528134692,
+        "monthlyTokenInM": 590.8,
+        "unitPriceCnyPerM": 1.15124
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.5,
+        "cachePerM": 0.15,
+        "outputPerM": 7.5,
+        "inputCnyPerM": 10.2,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 51.0
+      },
+      "note": "价格：输入 $1.5/M Token、缓存读取 $0.15/M Token、输出 $7.5/M Token；模型额度：5小时 $45、每周 $90、每月 $150；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
       "slug": "commandcode-max10--gemini-3-7-flash",
       "planSlug": "commandcode-max10",
       "modelSlug": "gemini-3-7-flash",
@@ -8253,7 +8674,7 @@
         "cacheCnyPerM": 1.02,
         "outputCnyPerM": 51.0
       },
-      "note": "价格：输入 $1.5/M Token、缓存读取 $0.15/M Token、输出 $7.5/M Token；模型额度：5小时 $45、每周 $90、每月 $150；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+      "note": "价格：输入 $1.5/M Token、缓存读取 $0.15/M Token、输出 $7.5/M Token；模型额度：5小时 $45、每周 $90、每月 $150；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前在中国不可用"
     },
     {
       "slug": "commandcode-max10--gemini-3-6-flash",
@@ -8379,6 +8800,56 @@
         "outputCnyPerM": 204.0
       },
       "note": "价格：输入 $5/M Token、缓存读取 $0.5/M Token、输出 $30/M Token；模型额度：5小时 $30、每周 $60、每月 $100；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-max10--muse-spark-1-3",
+      "planSlug": "commandcode-max10",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 199.8001998002,
+        "weeklyTokenInM": 399.6003996004,
+        "monthlyTokenInM": 666.0,
+        "unitPriceCnyPerM": 1.02136
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.25,
+        "cachePerM": 0.15,
+        "outputPerM": 4.25,
+        "inputCnyPerM": 8.5,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 28.9
+      },
+      "note": "价格：输入 $1.25/M Token、缓存读取 $0.15/M Token、输出 $4.25/M Token；模型额度：5小时 $45、每周 $90、每月 $150；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-max10--muse-spark-1-3--service-contributor",
+      "planSlug": "commandcode-max10",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "Contributor",
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 5721.1874642426,
+        "weeklyTokenInM": 11442.3749284851,
+        "monthlyTokenInM": 19070.6,
+        "unitPriceCnyPerM": 0.03536
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.002,
+        "outputPerM": 0.2,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.0136,
+        "outputCnyPerM": 1.36
+      },
+      "note": "价格：输入 $0.1/M Token、缓存读取 $0.002/M Token、输出 $0.2/M Token；模型额度：5小时 $45、每周 $90、每月 $150；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
     },
     {
       "slug": "commandcode-max10--muse-spark-1-2",
@@ -8578,6 +9049,30 @@
         "outputCnyPerM": 0.0
       },
       "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；官方上下文上限 256K；容量持续期间免费，官方未公布结束日期；免费状态结束后的额度未知"
+    },
+    {
+      "slug": "commandcode-max20--longcat-2-0",
+      "planSlug": "commandcode-max20",
+      "modelSlug": "longcat-2-0",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": "unlimited",
+        "monthlyTokenInM": "unlimited"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.0,
+        "cachePerM": 0.0,
+        "outputPerM": 0.0,
+        "inputCnyPerM": 0.0,
+        "cacheCnyPerM": 0.0,
+        "outputCnyPerM": 0.0
+      },
+      "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；官方上下文上限 1M；当前免费，官方未公布活动结束日期；免费活动，官方未公布结束日期；活动结束后的额度未知"
     },
     {
       "slug": "commandcode-max20--hy4-preview",
@@ -9078,6 +9573,31 @@
         "outputCnyPerM": 3.808
       },
       "note": "价格：输入 $0.28/M Token、缓存读取 $0.07/M Token、输出 $0.56/M Token；模型额度：5小时 $90、每周 $180、每月 $300；模型额度为 Max 10× 的 2 倍；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-max20--qwen-3-8-max-0902",
+      "planSlug": "commandcode-max20",
+      "modelSlug": "qwen-3-8-max-0902",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 246.0276781138,
+        "weeklyTokenInM": 492.0553562276,
+        "monthlyTokenInM": 820.1,
+        "unitPriceCnyPerM": 1.65852
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.25,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.7,
+        "outputCnyPerM": 40.8
+      },
+      "note": "价格：输入 $2/M Token、缓存读取 $0.25/M Token、输出 $6/M Token；模型额度：5小时 $90、每周 $180、每月 $300；模型额度为 Max 10× 的 2 倍；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
     },
     {
       "slug": "commandcode-max20--qwen-3-8-max",
@@ -9630,6 +10150,31 @@
       "note": "价格：输入 $1/M Token、缓存读取 $0.1/M Token、输出 $5/M Token；模型额度：5小时 $60、每周 $120、每月 $200；模型额度为 Max 10× 的 2 倍；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 200K"
     },
     {
+      "slug": "commandcode-max20--gpt-6-astra",
+      "planSlug": "commandcode-max20",
+      "modelSlug": "gpt-6-astra",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 35.4452813469,
+        "weeklyTokenInM": 70.8905626938,
+        "monthlyTokenInM": 118.2,
+        "unitPriceCnyPerM": 11.51104
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 10.0,
+        "cachePerM": 1.0,
+        "outputPerM": 50.0,
+        "inputCnyPerM": 68.0,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 340.0
+      },
+      "note": "价格：输入 $10/M Token、缓存读取 $1/M Token、输出 $50/M Token；模型额度：5小时 $60、每周 $120、每月 $200；模型额度为 Max 10× 的 2 倍；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1.1M"
+    },
+    {
       "slug": "commandcode-max20--gpt-5-6-sol",
       "planSlug": "commandcode-max20",
       "modelSlug": "gpt-5-6-sol",
@@ -9702,7 +10247,7 @@
         "cacheCnyPerM": 0.136,
         "outputCnyPerM": 8.16
       },
-      "note": "价格：输入 $0.2/M Token、缓存读取 $0.02/M Token、输出 $1.2/M Token；模型额度：5小时 $90、每周 $180、每月 $300；模型额度为 Max 10× 的 2 倍；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1.1M"
+      "note": "价格：输入 $0.2/M Token、缓存读取 $0.02/M Token、输出 $1.2/M Token；模型额度：5小时 $90、每周 $180、每月 $300；模型额度为 Max 10× 的 2 倍；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1.1M；当前在中国不可用"
     },
     {
       "slug": "commandcode-max20--gpt-5-5",
@@ -9805,6 +10350,31 @@
       "note": "价格：输入 $2/M Token、缓存读取 $0.5/M Token、输出 $8/M Token；模型额度：5小时 $60、每周 $120、每月 $200；模型额度为 Max 10× 的 2 倍；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 400K"
     },
     {
+      "slug": "commandcode-max20--gemini-3-8-flash",
+      "planSlug": "commandcode-max20",
+      "modelSlug": "gemini-3-8-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 354.4528134692,
+        "weeklyTokenInM": 708.9056269384,
+        "monthlyTokenInM": 1181.5,
+        "unitPriceCnyPerM": 1.15124
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.5,
+        "cachePerM": 0.15,
+        "outputPerM": 7.5,
+        "inputCnyPerM": 10.2,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 51.0
+      },
+      "note": "价格：输入 $1.5/M Token、缓存读取 $0.15/M Token、输出 $7.5/M Token；模型额度：5小时 $90、每周 $180、每月 $300；模型额度为 Max 10× 的 2 倍；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
       "slug": "commandcode-max20--gemini-3-7-flash",
       "planSlug": "commandcode-max20",
       "modelSlug": "gemini-3-7-flash",
@@ -9827,7 +10397,7 @@
         "cacheCnyPerM": 1.02,
         "outputCnyPerM": 51.0
       },
-      "note": "价格：输入 $1.5/M Token、缓存读取 $0.15/M Token、输出 $7.5/M Token；模型额度：5小时 $90、每周 $180、每月 $300；模型额度为 Max 10× 的 2 倍；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+      "note": "价格：输入 $1.5/M Token、缓存读取 $0.15/M Token、输出 $7.5/M Token；模型额度：5小时 $90、每周 $180、每月 $300；模型额度为 Max 10× 的 2 倍；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前在中国不可用"
     },
     {
       "slug": "commandcode-max20--gemini-3-6-flash",
@@ -9953,6 +10523,56 @@
         "outputCnyPerM": 204.0
       },
       "note": "价格：输入 $5/M Token、缓存读取 $0.5/M Token、输出 $30/M Token；模型额度：5小时 $60、每周 $120、每月 $200；模型额度为 Max 10× 的 2 倍；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-max20--muse-spark-1-3",
+      "planSlug": "commandcode-max20",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 399.6003996004,
+        "weeklyTokenInM": 799.2007992008,
+        "monthlyTokenInM": 1332.0,
+        "unitPriceCnyPerM": 1.02136
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.25,
+        "cachePerM": 0.15,
+        "outputPerM": 4.25,
+        "inputCnyPerM": 8.5,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 28.9
+      },
+      "note": "价格：输入 $1.25/M Token、缓存读取 $0.15/M Token、输出 $4.25/M Token；模型额度：5小时 $90、每周 $180、每月 $300；模型额度为 Max 10× 的 2 倍；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-max20--muse-spark-1-3--service-contributor",
+      "planSlug": "commandcode-max20",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "Contributor",
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 11442.3749284851,
+        "weeklyTokenInM": 22884.7498569703,
+        "monthlyTokenInM": 38141.2,
+        "unitPriceCnyPerM": 0.03536
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.002,
+        "outputPerM": 0.2,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.0136,
+        "outputCnyPerM": 1.36
+      },
+      "note": "价格：输入 $0.1/M Token、缓存读取 $0.002/M Token、输出 $0.2/M Token；模型额度：5小时 $90、每周 $180、每月 $300；模型额度为 Max 10× 的 2 倍；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
     },
     {
       "slug": "commandcode-max20--muse-spark-1-2",
@@ -10128,6 +10748,1568 @@
         "outputCnyPerM": 8.16
       },
       "note": "价格：输入 $0.5/M Token、缓存读取 $0.1/M Token、输出 $1.2/M Token；模型额度：5小时 $90、每周 $180、每月 $300；模型额度为 Max 10× 的 2 倍；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--laguna-s-2-1",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "laguna-s-2-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.0
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.0,
+        "cachePerM": 0.0,
+        "outputPerM": 0.0,
+        "inputCnyPerM": 0.0,
+        "cacheCnyPerM": 0.0,
+        "outputCnyPerM": 0.0
+      },
+      "note": "官方上下文上限 256K"
+    },
+    {
+      "slug": "commandcode-provider--ling-3-0-flash",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "ling-3-0-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.0
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.0,
+        "cachePerM": 0.0,
+        "outputPerM": 0.0,
+        "inputCnyPerM": 0.0,
+        "cacheCnyPerM": 0.0,
+        "outputCnyPerM": 0.0
+      },
+      "note": "官方上下文上限 256K；当前免费，官方未公布活动结束日期"
+    },
+    {
+      "slug": "commandcode-provider--longcat-2-0",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "longcat-2-0",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.0
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.0,
+        "cachePerM": 0.0,
+        "outputPerM": 0.0,
+        "inputCnyPerM": 0.0,
+        "cacheCnyPerM": 0.0,
+        "outputCnyPerM": 0.0
+      },
+      "note": "官方上下文上限 1M；当前免费，官方未公布活动结束日期"
+    },
+    {
+      "slug": "commandcode-provider--hy4-preview",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "hy4-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.63716
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.834,
+        "cachePerM": 0.042,
+        "outputPerM": 2.501,
+        "inputCnyPerM": 5.6712,
+        "cacheCnyPerM": 0.2856,
+        "outputCnyPerM": 17.0068
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--hy3",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "hy3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.29172
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.14,
+        "cachePerM": 0.035,
+        "outputPerM": 0.58,
+        "inputCnyPerM": 0.952,
+        "cacheCnyPerM": 0.238,
+        "outputCnyPerM": 3.944
+      },
+      "note": "官方上下文上限 262K"
+    },
+    {
+      "slug": "commandcode-provider--kimi-k3",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "kimi-k3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 3.45304
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 3.0,
+        "cachePerM": 0.3,
+        "outputPerM": 15.0,
+        "inputCnyPerM": 20.4,
+        "cacheCnyPerM": 2.04,
+        "outputCnyPerM": 102.0
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--kimi-k2-7-code",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "kimi-k2-7-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 1.67892
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.95,
+        "cachePerM": 0.19,
+        "outputPerM": 4.0,
+        "inputCnyPerM": 6.46,
+        "cacheCnyPerM": 1.292,
+        "outputCnyPerM": 27.2
+      },
+      "note": "官方上下文上限 256K"
+    },
+    {
+      "slug": "commandcode-provider--kimi-k2-7-code-highspeed--service-highspeed",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "kimi-k2-7-code-highspeed",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 3.35716
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.9,
+        "cachePerM": 0.38,
+        "outputPerM": 8.0,
+        "inputCnyPerM": 12.92,
+        "cacheCnyPerM": 2.584,
+        "outputCnyPerM": 54.4
+      },
+      "note": "官方上下文上限 262K"
+    },
+    {
+      "slug": "commandcode-provider--kimi-k2-6",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "kimi-k2-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 1.4858
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.95,
+        "cachePerM": 0.16,
+        "outputPerM": 4.0,
+        "inputCnyPerM": 6.46,
+        "cacheCnyPerM": 1.088,
+        "outputCnyPerM": 27.2
+      },
+      "note": "官方上下文上限 256K"
+    },
+    {
+      "slug": "commandcode-provider--kimi-k2-5",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "kimi-k2-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.94792
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.6,
+        "cachePerM": 0.1,
+        "outputPerM": 3.0,
+        "inputCnyPerM": 4.08,
+        "cacheCnyPerM": 0.68,
+        "outputCnyPerM": 20.4
+      },
+      "note": "官方上下文上限 256K"
+    },
+    {
+      "slug": "commandcode-provider--glm-5-3-flash",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "glm-5-3-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.26044
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.15,
+        "cachePerM": 0.03,
+        "outputPerM": 0.5,
+        "inputCnyPerM": 1.02,
+        "cacheCnyPerM": 0.204,
+        "outputCnyPerM": 3.4
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--glm-5-3",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "glm-5-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 2.29432
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.4,
+        "cachePerM": 0.26,
+        "outputPerM": 4.4,
+        "inputCnyPerM": 9.52,
+        "cacheCnyPerM": 1.768,
+        "outputCnyPerM": 29.92
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--glm-5-2",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "glm-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 2.29432
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.4,
+        "cachePerM": 0.26,
+        "outputPerM": 4.4,
+        "inputCnyPerM": 9.52,
+        "cacheCnyPerM": 1.768,
+        "outputCnyPerM": 29.92
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--glm-5-2-fast",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "glm-5-2-fast",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 4.57708
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 3.0,
+        "cachePerM": 0.5,
+        "outputPerM": 10.25,
+        "inputCnyPerM": 20.4,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 69.7
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--glm-5-1",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "glm-5-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 2.29432
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.4,
+        "cachePerM": 0.26,
+        "outputPerM": 4.4,
+        "inputCnyPerM": 9.52,
+        "cacheCnyPerM": 1.768,
+        "outputCnyPerM": 29.92
+      },
+      "note": null
+    },
+    {
+      "slug": "commandcode-provider--glm-5",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "glm-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 1.73264
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.0,
+        "cachePerM": 0.2,
+        "outputPerM": 3.2,
+        "inputCnyPerM": 6.8,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 21.76
+      },
+      "note": "官方上下文上限 200K"
+    },
+    {
+      "slug": "commandcode-provider--minimax-m3",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.52768
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.3,
+        "cachePerM": 0.06,
+        "outputPerM": 1.2,
+        "inputCnyPerM": 2.04,
+        "cacheCnyPerM": 0.408,
+        "outputCnyPerM": 8.16
+      },
+      "note": "官方上下文上限 1M；当前为 50% 优惠价，官方未公布结束日期；原价输入/输出/缓存读取为 $0.60/$2.40/$0.12 每 M Token"
+    },
+    {
+      "slug": "commandcode-provider--minimax-m2-7",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "minimax-m2-7",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.52768
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.3,
+        "cachePerM": 0.06,
+        "outputPerM": 1.2,
+        "inputCnyPerM": 2.04,
+        "cacheCnyPerM": 0.408,
+        "outputCnyPerM": 8.16
+      },
+      "note": null
+    },
+    {
+      "slug": "commandcode-provider--minimax-m2-5",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "minimax-m2-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.33524
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.3,
+        "cachePerM": 0.03,
+        "outputPerM": 1.2,
+        "inputCnyPerM": 2.04,
+        "cacheCnyPerM": 0.204,
+        "outputCnyPerM": 8.16
+      },
+      "note": "官方上下文上限 200K"
+    },
+    {
+      "slug": "commandcode-provider--deepseek-v4-pro-0813",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.4318
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.66,
+        "cachePerM": 0.022,
+        "outputPerM": 1.98,
+        "inputCnyPerM": 4.488,
+        "cacheCnyPerM": 0.1496,
+        "outputCnyPerM": 13.464
+      },
+      "note": "官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $1.32/$3.96 每 M Token，官方未另列 Peak 缓存读取价"
+    },
+    {
+      "slug": "commandcode-provider--deepseek-v4-flash-0731",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "deepseek-v4-flash-0731",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.14212
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.22,
+        "cachePerM": 0.007,
+        "outputPerM": 0.66,
+        "inputCnyPerM": 1.496,
+        "cacheCnyPerM": 0.0476,
+        "outputCnyPerM": 4.488
+      },
+      "note": "官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $0.44/$1.32 每 M Token，官方未另列 Peak 缓存读取价"
+    },
+    {
+      "slug": "commandcode-provider--deepseek-v4-flash-vision-exp",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "deepseek-v4-flash-vision-exp",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.14212
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.22,
+        "cachePerM": 0.007,
+        "outputPerM": 0.66,
+        "inputCnyPerM": 1.496,
+        "cacheCnyPerM": 0.0476,
+        "outputCnyPerM": 4.488
+      },
+      "note": "官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $0.44/$1.32 每 M Token，官方未另列 Peak 缓存读取价"
+    },
+    {
+      "slug": "commandcode-provider--deepseek-v4-flash-fast",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "deepseek-v4-flash-fast",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.56372
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.28,
+        "cachePerM": 0.07,
+        "outputPerM": 0.56,
+        "inputCnyPerM": 1.904,
+        "cacheCnyPerM": 0.476,
+        "outputCnyPerM": 3.808
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--qwen-3-8-max-0902",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "qwen-3-8-max-0902",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 2.48744
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.25,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.7,
+        "outputCnyPerM": 40.8
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--qwen-3-8-max",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "qwen-3-8-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 2.48744
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.25,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.7,
+        "outputCnyPerM": 40.8
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--qwen-3-8-27b",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "qwen-3-8-27b",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.49436
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.4,
+        "cachePerM": 0.04,
+        "outputPerM": 3.0,
+        "inputCnyPerM": 2.72,
+        "cacheCnyPerM": 0.272,
+        "outputCnyPerM": 20.4
+      },
+      "note": "官方上下文上限 262K"
+    },
+    {
+      "slug": "commandcode-provider--qwen-3-6-max-preview",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "qwen-3-6-max-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 2.37592
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.3,
+        "cachePerM": 0.26,
+        "outputPerM": 7.8,
+        "inputCnyPerM": 8.84,
+        "cacheCnyPerM": 1.768,
+        "outputCnyPerM": 53.04
+      },
+      "note": null
+    },
+    {
+      "slug": "commandcode-provider--qwen-3-6-plus",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "qwen-3-6-plus",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.91392
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.5,
+        "cachePerM": 0.1,
+        "outputPerM": 3.0,
+        "inputCnyPerM": 3.4,
+        "cacheCnyPerM": 0.68,
+        "outputCnyPerM": 20.4
+      },
+      "note": null
+    },
+    {
+      "slug": "commandcode-provider--qwen-3-7-max",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "qwen-3-7-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 4.3146
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.5,
+        "cachePerM": 0.5,
+        "outputPerM": 7.5,
+        "inputCnyPerM": 17.0,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 51.0
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--qwen-3-7-plus",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "qwen-3-7-plus",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.7038
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.4,
+        "cachePerM": 0.08,
+        "outputPerM": 1.6,
+        "inputCnyPerM": 2.72,
+        "cacheCnyPerM": 0.544,
+        "outputCnyPerM": 10.88
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--qwen-3-8-flash-next",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "qwen-3-8-flash-next",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.17272
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.16,
+        "cachePerM": 0.016,
+        "outputPerM": 0.47,
+        "inputCnyPerM": 1.088,
+        "cacheCnyPerM": 0.1088,
+        "outputCnyPerM": 3.196
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--qwen-3-7-flash",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "qwen-3-7-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.05304
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.03,
+        "cachePerM": 0.006,
+        "outputPerM": 0.13,
+        "inputCnyPerM": 0.204,
+        "cacheCnyPerM": 0.0408,
+        "outputCnyPerM": 0.884
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--step-3-7-flash",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "step-3-7-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.3638
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.2,
+        "cachePerM": 0.04,
+        "outputPerM": 1.15,
+        "inputCnyPerM": 1.36,
+        "cacheCnyPerM": 0.272,
+        "outputCnyPerM": 7.82
+      },
+      "note": "官方上下文上限 256K"
+    },
+    {
+      "slug": "commandcode-provider--step-3-5-flash",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "step-3-5-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.17272
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.02,
+        "outputPerM": 0.3,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.136,
+        "outputCnyPerM": 2.04
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--mimo-v2-5-pro",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "mimo-v2-5-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.19992
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.435,
+        "cachePerM": 0.0036,
+        "outputPerM": 0.87,
+        "inputCnyPerM": 2.958,
+        "cacheCnyPerM": 0.02448,
+        "outputCnyPerM": 5.916
+      },
+      "note": "官方上下文上限 1M；当前为最高 99% 优惠价，官方未公布结束日期；原价输入/输出/缓存读取为 $2/$6/$0.40 每 M Token"
+    },
+    {
+      "slug": "commandcode-provider--mimo-v2-5",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "mimo-v2-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.0748
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.14,
+        "cachePerM": 0.0028,
+        "outputPerM": 0.28,
+        "inputCnyPerM": 0.952,
+        "cacheCnyPerM": 0.01904,
+        "outputCnyPerM": 1.904
+      },
+      "note": "官方上下文上限 1M；当前为最高 98% 优惠价，官方未公布结束日期；原价输入/输出/缓存读取为 $0.80/$4/$0.16 每 M Token"
+    },
+    {
+      "slug": "commandcode-provider--nemotron-3-ultra",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "nemotron-3-ultra",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 1.05604
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.6,
+        "cachePerM": 0.12,
+        "outputPerM": 2.4,
+        "inputCnyPerM": 4.08,
+        "cacheCnyPerM": 0.816,
+        "outputCnyPerM": 16.32
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--claude-fable-5-1",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "claude-fable-5-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 6.68984
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 10.0,
+        "cachePerM": 0.25,
+        "outputPerM": 50.0,
+        "inputCnyPerM": 68.0,
+        "cacheCnyPerM": 1.7,
+        "outputCnyPerM": 340.0
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--claude-fable-5",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "claude-fable-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 11.51104
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 10.0,
+        "cachePerM": 1.0,
+        "outputPerM": 50.0,
+        "inputCnyPerM": 68.0,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 340.0
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--claude-opus-5",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "claude-opus-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 5.75552
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 5.0,
+        "cachePerM": 0.5,
+        "outputPerM": 25.0,
+        "inputCnyPerM": 34.0,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 170.0
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--claude-opus-4-8",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "claude-opus-4-8",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 5.75552
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 5.0,
+        "cachePerM": 0.5,
+        "outputPerM": 25.0,
+        "inputCnyPerM": 34.0,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 170.0
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--claude-opus-4-7",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "claude-opus-4-7",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 5.75552
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 5.0,
+        "cachePerM": 0.5,
+        "outputPerM": 25.0,
+        "inputCnyPerM": 34.0,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 170.0
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--claude-opus-4-6",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "claude-opus-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 5.75552
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 5.0,
+        "cachePerM": 0.5,
+        "outputPerM": 25.0,
+        "inputCnyPerM": 34.0,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 170.0
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--claude-sonnet-5",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "claude-sonnet-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 2.30248
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.2,
+        "outputPerM": 10.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 68.0
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--claude-sonnet-4-6",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "claude-sonnet-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 3.45304
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 3.0,
+        "cachePerM": 0.3,
+        "outputPerM": 15.0,
+        "inputCnyPerM": 20.4,
+        "cacheCnyPerM": 2.04,
+        "outputCnyPerM": 102.0
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--claude-haiku-4-5",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "claude-haiku-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 1.15124
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.0,
+        "cachePerM": 0.1,
+        "outputPerM": 5.0,
+        "inputCnyPerM": 6.8,
+        "cacheCnyPerM": 0.68,
+        "outputCnyPerM": 34.0
+      },
+      "note": "官方上下文上限 200K"
+    },
+    {
+      "slug": "commandcode-provider--gpt-6-astra",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "gpt-6-astra",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 11.51104
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 10.0,
+        "cachePerM": 1.0,
+        "outputPerM": 50.0,
+        "inputCnyPerM": 68.0,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 340.0
+      },
+      "note": "官方上下文上限 1.1M"
+    },
+    {
+      "slug": "commandcode-provider--gpt-5-6-sol",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 5.92552
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 5.0,
+        "cachePerM": 0.5,
+        "outputPerM": 30.0,
+        "inputCnyPerM": 34.0,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 204.0
+      },
+      "note": "官方上下文上限 1.1M"
+    },
+    {
+      "slug": "commandcode-provider--gpt-5-6-terra",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 2.37048
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.2,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 81.6
+      },
+      "note": "官方上下文上限 1.1M"
+    },
+    {
+      "slug": "commandcode-provider--gpt-5-6-luna",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.23732
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.2,
+        "cachePerM": 0.02,
+        "outputPerM": 1.2,
+        "inputCnyPerM": 1.36,
+        "cacheCnyPerM": 0.136,
+        "outputCnyPerM": 8.16
+      },
+      "note": "官方上下文上限 1.1M；当前在中国不可用"
+    },
+    {
+      "slug": "commandcode-provider--gpt-5-5",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "gpt-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 5.92552
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 5.0,
+        "cachePerM": 0.5,
+        "outputPerM": 30.0,
+        "inputCnyPerM": 34.0,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 204.0
+      },
+      "note": "官方上下文上限 400K"
+    },
+    {
+      "slug": "commandcode-provider--gpt-5-4",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "gpt-5-4",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 2.96276
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.5,
+        "cachePerM": 0.25,
+        "outputPerM": 15.0,
+        "inputCnyPerM": 17.0,
+        "cacheCnyPerM": 1.7,
+        "outputCnyPerM": 102.0
+      },
+      "note": "官方上下文上限 400K"
+    },
+    {
+      "slug": "commandcode-provider--gpt-5-4-mini",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "gpt-5-4-mini",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.88876
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.75,
+        "cachePerM": 0.075,
+        "outputPerM": 4.5,
+        "inputCnyPerM": 5.1,
+        "cacheCnyPerM": 0.51,
+        "outputCnyPerM": 30.6
+      },
+      "note": "官方上下文上限 400K"
+    },
+    {
+      "slug": "commandcode-provider--gpt-5-3-codex",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "gpt-5-3-codex",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 4.16228
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 8.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 54.4
+      },
+      "note": "官方上下文上限 400K"
+    },
+    {
+      "slug": "commandcode-provider--gemini-3-8-flash",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "gemini-3-8-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 1.72652
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.5,
+        "cachePerM": 0.15,
+        "outputPerM": 7.5,
+        "inputCnyPerM": 10.2,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 51.0
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--gemini-3-7-flash",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "gemini-3-7-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 1.72652
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.5,
+        "cachePerM": 0.15,
+        "outputPerM": 7.5,
+        "inputCnyPerM": 10.2,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 51.0
+      },
+      "note": "官方上下文上限 1M；当前在中国不可用"
+    },
+    {
+      "slug": "commandcode-provider--gemini-3-6-flash",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "gemini-3-6-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 1.72652
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.5,
+        "cachePerM": 0.15,
+        "outputPerM": 7.5,
+        "inputCnyPerM": 10.2,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 51.0
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--gemini-3-5-flash",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "gemini-3-5-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 1.77752
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.5,
+        "cachePerM": 0.15,
+        "outputPerM": 9.0,
+        "inputCnyPerM": 10.2,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 61.2
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--gemini-3-5-flash-lite",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "gemini-3-5-flash-lite",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.37944
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.3,
+        "cachePerM": 0.03,
+        "outputPerM": 2.5,
+        "inputCnyPerM": 2.04,
+        "cacheCnyPerM": 0.204,
+        "outputCnyPerM": 17.0
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--gemini-3-1-flash-lite",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "gemini-3-1-flash-lite",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.32844
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.25,
+        "cachePerM": 0.03,
+        "outputPerM": 1.5,
+        "inputCnyPerM": 1.7,
+        "cacheCnyPerM": 0.204,
+        "outputCnyPerM": 10.2
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--fugu-ultra",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "fugu-ultra",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 5.92552
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 5.0,
+        "cachePerM": 0.5,
+        "outputPerM": 30.0,
+        "inputCnyPerM": 34.0,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 204.0
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--muse-spark-1-3",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 1.53136
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.25,
+        "cachePerM": 0.15,
+        "outputPerM": 4.25,
+        "inputCnyPerM": 8.5,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 28.9
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--muse-spark-1-3--service-contributor",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "Contributor",
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.05372
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.002,
+        "outputPerM": 0.2,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.0136,
+        "outputCnyPerM": 1.36
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--muse-spark-1-2",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "muse-spark-1-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 1.53136
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.25,
+        "cachePerM": 0.15,
+        "outputPerM": 4.25,
+        "inputCnyPerM": 8.5,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 28.9
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--muse-spark-1-2--service-contributor",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "muse-spark-1-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "Contributor",
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.05372
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.002,
+        "outputPerM": 0.2,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.0136,
+        "outputCnyPerM": 1.36
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--muse-spark-1-1",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "muse-spark-1-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 1.53136
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.25,
+        "cachePerM": 0.15,
+        "outputPerM": 4.25,
+        "inputCnyPerM": 8.5,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 28.9
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--grok-4-6",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "grok-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 4.09428
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "官方上下文上限 500K"
+    },
+    {
+      "slug": "commandcode-provider--grok-4-5",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "grok-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 4.09428
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "官方上下文上限 500K"
+    },
+    {
+      "slug": "commandcode-provider--inkling",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "inkling",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 1.56876
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.0,
+        "cachePerM": 0.17,
+        "outputPerM": 4.05,
+        "inputCnyPerM": 6.8,
+        "cacheCnyPerM": 1.156,
+        "outputCnyPerM": 27.54
+      },
+      "note": "官方上下文上限 256K"
+    },
+    {
+      "slug": "commandcode-provider--inkling-small",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "inkling-small",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 0.85272
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.5,
+        "cachePerM": 0.1,
+        "outputPerM": 1.2,
+        "inputCnyPerM": 3.4,
+        "cacheCnyPerM": 0.68,
+        "outputCnyPerM": 8.16
+      },
+      "note": "官方上下文上限 1M"
+    },
+    {
+      "slug": "commandcode-provider--claude-sonnet-4-5",
+      "planSlug": "commandcode-provider",
+      "modelSlug": "claude-sonnet-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "unitPriceCnyPerM": 3.45304
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 3.0,
+        "cachePerM": 0.3,
+        "outputPerM": 15.0,
+        "inputCnyPerM": 20.4,
+        "cacheCnyPerM": 2.04,
+        "outputCnyPerM": 102.0
+      },
+      "note": "官方上下文上限 1M"
     },
     {
       "slug": "opencode-go--gpt-5-6-luna",

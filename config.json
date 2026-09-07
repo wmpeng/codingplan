@@ -1,8 +1,8 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.9.7 | 新增 Claude Fable 5.1",
-    "subtitle": "31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，订阅套餐与按量 API 全面对比。<br>涵盖Claude Fable 5.1，GPT-6-Astra，DeepSeek-V4-Flash-0731，GLM-5.3，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
+    "updateDate": "更新日期 2026.9.8 | 完整收录 Command Code",
+    "subtitle": "32 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，订阅套餐与按量 API 全面对比。<br>涵盖Claude Fable 5.1，GPT-6-Astra，DeepSeek-V4-Flash-0731，GLM-5.3，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
     "entry": {
@@ -305,6 +305,13 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.9.8",
+      "items": [
+        "完整收录 Command Code：新增平台介绍及 Go、GOAT、Pro、Max、Provider API、Team Pro 套餐",
+        "Command Code 同步 71 个模型价格与最新套餐支持关系，新增 GPT-6-Astra、Gemini-3.8-Flash、Muse-Spark-1.3、LongCat-2.0 等模型"
+      ]
+    },
     {
       "date": "2026.9.7",
       "items": [

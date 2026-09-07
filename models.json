@@ -21,7 +21,7 @@
   "coverage": {
     "artificialAnalysisScores": 77,
     "deepSWEScores": 27,
-    "multimodalKnown": 78
+    "multimodalKnown": 82
   },
   "models": [
     {
@@ -816,6 +816,16 @@
           "modelName": "gemini-3-7-flash",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         }
+      }
+    },
+    {
+      "slug": "gemini-3-8-flash",
+      "name": "Gemini-3.8-Flash",
+      "multimodal": true,
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
       }
     },
     {
@@ -1743,6 +1753,16 @@
       }
     },
     {
+      "slug": "ling-3-0-flash",
+      "name": "Ling-3.0-Flash",
+      "multimodal": false,
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
       "slug": "longcat-2-0",
       "name": "LongCat-2.0",
       "multimodal": false,
@@ -2006,6 +2026,16 @@
           "modelName": "muse-spark-1-2",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         }
+      }
+    },
+    {
+      "slug": "muse-spark-1-3",
+      "name": "Muse-Spark-1.3",
+      "multimodal": true,
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
       }
     },
     {
@@ -2311,6 +2341,16 @@
           "modelName": "qwen3-8-max",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         }
+      }
+    },
+    {
+      "slug": "qwen-3-8-max-0902",
+      "name": "Qwen-3.8-Max-0902",
+      "multimodal": true,
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
       }
     },
     {

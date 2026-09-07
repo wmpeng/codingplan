@@ -762,12 +762,29 @@
     {
       "slug": "command-code",
       "name": "Command Code",
-      "rating": 0,
-      "summary": "仅用于模型与套餐关系数据。",
-      "dimensions": {},
-      "tags": [],
-      "platformStatus": "open",
-      "catalogVisible": false
+      "rating": 5,
+      "summary": "$1/月起，按模型实际 Token 价格扣减美元 Credits，模型覆盖广且额度规则透明。",
+      "detail": "Command Code 提供 Go、GOAT、Pro、Max、Provider API 与团队套餐。订阅额度按模型实际 Token 价格扣减，支持 5 小时、周和月窗口；Provider API 兼容 OpenAI 与 Anthropic 接口，按量价格无额外加价。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "Go 仅 $1/月并含 $10 Credits；各档套餐包含额度高于订阅价格，优惠模型还能进一步放大可用量。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "覆盖 Claude、GPT、Gemini、Kimi、GLM、DeepSeek、MiniMax、Qwen 等大量闭源与开源模型，新模型更新较快。"
+        },
+        "stability": {
+          "score": 4,
+          "reason": "开放模型通过多个上游路由保障可用性，并支持零数据保留路由；实际价格和可用性仍可能随上游变化。"
+        }
+      },
+      "tags": [
+        "性价比高",
+        "模型强",
+        "无需抢购"
+      ],
+      "platformStatus": "open"
     }
   ]
 }
