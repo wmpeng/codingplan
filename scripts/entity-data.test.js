@@ -6,8 +6,15 @@ function fixture() {
   return EntityData.buildContext(
     { schemaVersion: 1, platforms: [{ slug: 'platform-a', name: '平台A' }] },
     { schemaVersion: 1, plans: [{ slug: 'plan-a', platformSlug: 'platform-a', name: 'Pro', billingMode: 'subscription', monthlyPrice: 10, currency: '$' }] },
-    { schemaVersion: 1, models: [{ slug: 'model-a', name: 'Model A', multimodal: false, scores: { artificialAnalysis: { score: 10, scoreExact: 10.2, modelSlug: 'internal-source-key', sourceUrl: 'https://example.com' } } }] },
-    { schemaVersion: 1, planModels: [{ slug: 'plan-a--model-a--gu', planSlug: 'plan-a', modelSlug: 'model-a', timeTier: '谷', contextTier: null, serviceTier: null, catalogOrder: 0, usage: { monthlyTokenInM: 100, unitPriceCnyPerM: 0.68 }, note: null }] }
+    { schemaVersion: 1, models: [
+      { slug: 'model-a', name: 'Model A', multimodal: false, scores: { artificialAnalysis: { score: 10, scoreExact: 10.2, modelSlug: 'internal-source-key', sourceUrl: 'https://example.com' } } },
+      { slug: 'model-b', name: 'Model B', multimodal: false, scores: {} }
+    ] },
+    { schemaVersion: 1, planModels: [
+      { slug: 'plan-a--model-a--gu', planSlug: 'plan-a', modelSlug: 'model-a', timeTier: '谷', contextTier: null, serviceTier: null, usage: { monthlyTokenInM: 100, unitPriceCnyPerM: 0.68 }, note: null },
+      { slug: 'plan-a--model-b--ctx-256k', planSlug: 'plan-a', modelSlug: 'model-b', timeTier: null, contextTier: '256K', serviceTier: null, usage: {}, note: null },
+      { slug: 'plan-a--model-a', planSlug: 'plan-a', modelSlug: 'model-a', timeTier: null, contextTier: null, serviceTier: null, usage: {}, note: null }
+    ] }
   );
 }
 
@@ -15,7 +22,7 @@ test('builds explicit catalog presentation fields from slug joins', () => {
   const plan = EntityData.buildPlanCatalog(fixture())[0];
   assert.equal(plan.platformName, '平台A');
   assert.equal(plan.name, 'Pro');
-  assert.deepEqual(plan.modelLabels, ['Model A [谷]']);
+  assert.deepEqual(plan.modelLabels, ['Model A', 'Model B [256K]']);
 });
 
 test('builds comparison points without name-based joins', () => {
@@ -37,7 +44,7 @@ test('builds API pricing groups and keeps raw input cache output prices', () => 
     { schemaVersion: 1, models: [{ slug: 'model-a', name: 'Model A', multimodal: false }] },
     { schemaVersion: 1, planModels: [{
       slug: 'platform-a-api--model-a--feng', planSlug: 'platform-a-api', modelSlug: 'model-a',
-      timeTier: '峰', contextTier: null, serviceTier: null, catalogOrder: 0, method: 'calculated',
+      timeTier: '峰', contextTier: null, serviceTier: null, method: 'calculated',
       usage: { unitPriceCnyPerM: 0.25 },
       pricing: { currency: '¥', inputPerM: 1, cachePerM: 0.1, outputPerM: 2 }, note: '高峰价格'
     }] }

@@ -50,9 +50,16 @@
       .filter((plan) => includeHidden || (plan.planTableVisible !== false && plan.billingMode !== 'payg'))
       .map((plan) => {
         const platform = context.platformBySlug.get(plan.platformSlug);
-        const names = (context.relationsByPlanSlug.get(plan.slug) || [])
-          .filter((relation) => Number.isInteger(relation.catalogOrder))
-          .sort((left, right) => left.catalogOrder - right.catalogOrder)
+        const selectedByModel = new Map();
+        (context.relationsByPlanSlug.get(plan.slug) || []).forEach((relation) => {
+          const selected = selectedByModel.get(relation.modelSlug);
+          const isPlain = !relation.timeTier && !relation.contextTier && !relation.serviceTier;
+          const selectedIsPlain = selected && !selected.timeTier && !selected.contextTier && !selected.serviceTier;
+          if (!selected || (isPlain && !selectedIsPlain)) {
+            selectedByModel.set(relation.modelSlug, relation);
+          }
+        });
+        const names = Array.from(selectedByModel.values())
           .map((relation) => displayModelName(context.modelBySlug.get(relation.modelSlug), relation));
         return {
           ...plan,
@@ -101,15 +108,6 @@
       .filter((plan) => plan.billingMode === 'payg' && plan.platformSlug === platformSlug && !plan.discontinued)
       .map((plan) => {
         const rows = (context.relationsByPlanSlug.get(plan.slug) || [])
-          .slice()
-          .sort((left, right) => {
-            const leftOrder = Number.isInteger(left.catalogOrder) ? left.catalogOrder : Number.MAX_SAFE_INTEGER;
-            const rightOrder = Number.isInteger(right.catalogOrder) ? right.catalogOrder : Number.MAX_SAFE_INTEGER;
-            if (leftOrder !== rightOrder) return leftOrder - rightOrder;
-            const leftModel = context.modelBySlug.get(left.modelSlug);
-            const rightModel = context.modelBySlug.get(right.modelSlug);
-            return displayModelName(leftModel, left).localeCompare(displayModelName(rightModel, right), 'zh-CN');
-          })
           .map((relation) => {
             const model = context.modelBySlug.get(relation.modelSlug);
             const pricing = relation.pricing || null;
