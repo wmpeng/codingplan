@@ -455,6 +455,34 @@
       "note": "按个人实测的 GPT-5.6-Sol 用量约 10 倍计算"
     },
     {
+      "slug": "claude-pro--claude-fable-5-1",
+      "planSlug": "claude-pro",
+      "modelSlug": "claude-fable-5-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "Claude Code 2.1.255 起支持；Pro 套餐可用，但官方明确不计入订阅额度，需从首次调用起按 Usage Credits 额外计费；因此不估算套餐 Token 用量；官方上下文上限 1M"
+    },
+    {
+      "slug": "claude-pro--claude-fable-5",
+      "planSlug": "claude-pro",
+      "modelSlug": "claude-fable-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "Claude Code 2.1.170 起支持；Pro 套餐可用，但官方明确不计入订阅额度，需从首次调用起按 Usage Credits 额外计费；因此不估算套餐 Token 用量；官方上下文上限 1M"
+    },
+    {
       "slug": "claude-pro--claude-opus-5",
       "planSlug": "claude-pro",
       "modelSlug": "claude-opus-5",
@@ -573,6 +601,40 @@
       "note": null
     },
     {
+      "slug": "claude-max5--claude-fable-5-1",
+      "planSlug": "claude-max5",
+      "modelSlug": "claude-fable-5-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 66.2,
+        "weeklyTokenInM": 209,
+        "monthlyTokenInM": 836.1,
+        "unitPriceCnyPerM": 0.81328
+      },
+      "pricing": null,
+      "note": "Claude Code 2.1.255 起支持；按官方 Fable 每周最多占套餐周额度 50%、Fable 输入/输出价格为 Opus 5 的 2 倍及现有 credits 价格比例关系推算：5小时为 Opus 5 的 1/2，周为 Opus 5 的 1/4，月按周×4；缓存命中率95%、输出占比0.5%；未单独实测，数据可能存在偏差，欢迎反馈；官方上下文上限 1M"
+    },
+    {
+      "slug": "claude-max5--claude-fable-5",
+      "planSlug": "claude-max5",
+      "modelSlug": "claude-fable-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 66.2,
+        "weeklyTokenInM": 209,
+        "monthlyTokenInM": 836.1,
+        "unitPriceCnyPerM": 0.81328
+      },
+      "pricing": null,
+      "note": "Claude Code 2.1.170 起支持；按官方 Fable 每周最多占套餐周额度 50%、Fable 输入/输出价格为 Opus 5 的 2 倍及现有 credits 价格比例关系推算：5小时为 Opus 5 的 1/2，周为 Opus 5 的 1/4，月按周×4；缓存命中率95%、输出占比0.5%；未单独实测，数据可能存在偏差，欢迎反馈；官方上下文上限 1M"
+    },
+    {
       "slug": "claude-max5--claude-opus-5",
       "planSlug": "claude-max5",
       "modelSlug": "claude-opus-5",
@@ -689,6 +751,40 @@
       },
       "pricing": null,
       "note": null
+    },
+    {
+      "slug": "claude-max20--claude-fable-5-1",
+      "planSlug": "claude-max20",
+      "modelSlug": "claude-fable-5-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 220.8,
+        "weeklyTokenInM": 418.1,
+        "monthlyTokenInM": 1672.2,
+        "unitPriceCnyPerM": 0.81328
+      },
+      "pricing": null,
+      "note": "Claude Code 2.1.255 起支持；按官方 Fable 每周最多占套餐周额度 50%、Fable 输入/输出价格为 Opus 5 的 2 倍及现有 credits 价格比例关系推算：5小时为 Opus 5 的 1/2，周为 Opus 5 的 1/4，月按周×4；缓存命中率95%、输出占比0.5%；未单独实测，数据可能存在偏差，欢迎反馈；官方上下文上限 1M"
+    },
+    {
+      "slug": "claude-max20--claude-fable-5",
+      "planSlug": "claude-max20",
+      "modelSlug": "claude-fable-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 220.8,
+        "weeklyTokenInM": 418.1,
+        "monthlyTokenInM": 1672.2,
+        "unitPriceCnyPerM": 0.81328
+      },
+      "pricing": null,
+      "note": "Claude Code 2.1.170 起支持；按官方 Fable 每周最多占套餐周额度 50%、Fable 输入/输出价格为 Opus 5 的 2 倍及现有 credits 价格比例关系推算：5小时为 Opus 5 的 1/2，周为 Opus 5 的 1/4，月按周×4；缓存命中率95%、输出占比0.5%；未单独实测，数据可能存在偏差，欢迎反馈；官方上下文上限 1M"
     },
     {
       "slug": "claude-max20--claude-opus-5",

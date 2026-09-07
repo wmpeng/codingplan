@@ -1,8 +1,8 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.9.7 | 新增 GPT-6-Astra 与 Codex 实测额度",
-    "subtitle": "31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，订阅套餐与按量 API 全面对比。<br>涵盖GPT-6-Astra，DeepSeek-V4-Flash-0731，GLM-5.3，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
+    "updateDate": "更新日期 2026.9.7 | 新增 Claude Fable 5.1",
+    "subtitle": "31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，订阅套餐与按量 API 全面对比。<br>涵盖Claude Fable 5.1，GPT-6-Astra，DeepSeek-V4-Flash-0731，GLM-5.3，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
     "entry": {
@@ -308,6 +308,7 @@
     {
       "date": "2026.9.7",
       "items": [
+        "Claude 新增 Fable 5.1：Pro 可用但需额外 Usage Credits，Max 套餐内最多使用周额度的 50%",
         "Codex 新增 GPT-6-Astra，支持 Plus、Pro *5、Pro *20 套餐",
         "GPT-6-Astra Pro *5 周额度按实测更新为 200M Tokens；缓存命中约 96.8%，输出占比约 0.24%，以中等思考强度为主"
       ]

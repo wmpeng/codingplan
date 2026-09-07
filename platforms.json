@@ -301,7 +301,7 @@
         },
         "models": {
           "score": 5,
-          "reason": "Fable-5, Opus-5, Sonnect-5 等 Claude 系列模型，模型顶尖。"
+          "reason": "Fable 5.1、Fable 5、Opus 5、Sonnet 5 等 Claude 系列模型，模型顶尖。"
         },
         "stability": {
           "score": 3,
