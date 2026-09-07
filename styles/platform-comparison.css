@@ -58,6 +58,10 @@
     text-align: center;
 }
 
+.platform-compare-launcher[hidden] {
+    display: none;
+}
+
 .platform-comparison-secondary-btn {
     color: var(--text-primary);
     border: 1px solid var(--border-color);
