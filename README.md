@@ -301,8 +301,8 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 
 ## 延伸阅读
 
-- [2026年8月主流大模型能力对比：Kimi K3 综合国产第一，Qwen3.8 Max Agentic 全球第一，DeepSeek V4 Flash 正式版越级打Pro，国产阵营全面突破](articles/model_comparisons/20260806/index.html) — 基于 Artificial Analysis 2026年8月5日基准测试，围绕 Intelligence Index 与 Agentic Index 对 21 款主流大模型横向评测，附选型建议。
-- [2026年8月10日 Coding Plan平台全面对比](articles/plan_comparisons/20260810/index.html) — 8 月主线是「定价再平衡」：智谱新套餐涨价、Kimi 限购、DeepSeek 新模型上线、字节·方舟 2.5 折持续。覆盖主流平台能力、价格、限购状态与选型建议。
+- [2026年9月主流大模型能力对比：Fable 5.1 综合领先，GPT-6 Astra 编码突出，GLM Flash 与 Luna 如何选](articles/model_comparisons/20260907/index.html) — 过去一个月，Fable 5.1、GPT-6 Astra、GLM-5.3 Flash 等模型陆续进入选型名单。综合能力、网页开发和仓库工程的榜首并不完全相同，日常大量调用时，还要考虑完成任务的成本。
+- [2026年8月24日 AI Coding Plan 与 API 平台对比：智谱 GLM-5.3、MiniMax、DeepSeek 视觉版和 OpenCode 调整后怎么选](articles/plan_comparisons/20260824/index.html) — 8 月下旬这轮变化，不只是某个平台又加了一个模型。智谱把 GLM-5.3 纳入新套餐，DeepSeek 同时调整了峰谷价格并推出视觉实验版，OpenCode 的模型池和套餐展示也发生变化。
 - [查看全部文章](articles/index.html)
 
 ## 数据反馈
