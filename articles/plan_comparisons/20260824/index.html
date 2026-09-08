@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026年8月24日 AI Coding Plan 与 API 平台对比：智谱 GLM-5.3、MiniMax、DeepSeek 视觉版和 OpenCode 调整后怎么选</title>
+  <meta name="description" content="8 月下旬这轮变化，不只是某个平台又加了一个模型。智谱把 GLM-5.3 纳入新套餐，DeepSeek 同时调整了峰谷价格并推出视觉实验版，OpenCode 的模型池和套餐展示也发生变化。与此同时，Kimi 仍无法新订阅、Ollama Max 仍停售，阿里百炼的 Coding Plan 仍然很难抢。 如果只想先看结论：国内用户优先从智谱、MiniMax和字节方舟里选稳定可买的订" />
+  <link rel="icon" href="../../../favicon.ico?v=20260824" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=20260824" />
+  <style>
+
+    body.article-page {
+      font-size: 17px;
+      line-height: 1.78;
+      padding: clamp(18px, 4vw, 36px) clamp(14px, 3.5vw, 28px) 56px;
+    }
+
+    .doc-wrap {
+      max-width: calc(64rem + 14.5rem + 2.5rem);
+      margin: 0 auto;
+    }
+
+    .doc-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .doc-toc-aside.doc-toc-aside--desktop {
+      display: none;
+    }
+
+    .doc-toc.doc-toc--inline {
+      display: block;
+    }
+
+    article.doc .doc-toc ol,
+    article.doc .doc-toc ul {
+      margin-bottom: 0;
+      padding-left: 0;
+      color: inherit;
+    }
+
+    article.doc .doc-toc li {
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    article.doc .doc-toc li::marker {
+      color: rgba(15, 118, 110, 0.45);
+    }
+
+    article.doc .doc-toc a,
+    article.doc .doc-toc a:hover {
+      border-bottom: none;
+      text-decoration: none;
+    }
+
+    article.doc {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    @media (max-width: 1023px) {
+      .doc-wrap {
+        max-width: 64rem;
+      }
+    }
+
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      padding: 0.6rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #3a2000;
+      background: var(--accent-primary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+    }
+
+    .back-home-btn:hover {
+      opacity: 0.85;
+      transform: translateX(-2px);
+    }
+
+    article.doc {
+      position: relative;
+      padding: clamp(1.5rem, 4.2vw, 2.85rem);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      background: linear-gradient(
+        155deg,
+        rgba(255, 253, 248, 0.97) 0%,
+        rgba(255, 249, 240, 0.9) 45%,
+        rgba(239, 246, 244, 0.55) 100%
+      );
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    article.doc::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-primary), rgba(198, 107, 26, 0.85));
+      opacity: 0.92;
+    }
+
+    .doc-kicker {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc h1 {
+      font-size: clamp(1.45rem, 4.2vw, 1.95rem);
+      font-weight: 700;
+      line-height: 1.32;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin: 0 0 0.45rem;
+      max-width: 28em;
+    }
+
+    article.doc .doc-updates {
+      margin: 0 0 1.05rem;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-updates time {
+      font-variant-numeric: tabular-nums;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    article.doc .lead {
+      font-size: 0.98em;
+      color: var(--text-secondary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc p {
+      margin: 0 0 1rem;
+      color: var(--text-primary);
+    }
+
+    article.doc h2 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 2.35rem 0 0.85rem;
+      padding: 0 0 0 0.85rem;
+      border-left: 4px solid var(--accent-primary);
+      line-height: 1.35;
+    }
+
+    article.doc h2:first-of-type {
+      margin-top: 1.85rem;
+    }
+
+    article.doc h2[id],
+    article.doc h3[id] {
+      scroll-margin-top: 1.25rem;
+    }
+
+    .doc-toc {
+      margin: 0;
+      padding: 0.85rem 0.95rem 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: rgba(255, 253, 248, 0.92);
+      box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.06));
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .doc-toc-title {
+      margin: 0 0 0.55rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .doc-toc ol {
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .doc-toc > ol {
+      list-style: none;
+    }
+
+    .doc-toc > ol > li {
+      margin-bottom: 0.45rem;
+    }
+
+    .doc-toc > ol > li > a {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc ol ol {
+      margin: 0.3rem 0 0.1rem;
+      padding-left: 0.85rem;
+      list-style: none;
+      border-left: 2px solid rgba(15, 118, 110, 0.15);
+    }
+
+    .doc-toc ol ol li {
+      margin-bottom: 0.22rem;
+    }
+
+    .doc-toc ol ol a {
+      font-weight: 400;
+      color: var(--text-secondary);
+      font-size: 0.96em;
+    }
+
+    .doc-toc a {
+      display: block;
+      border-bottom: none;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .doc-toc a:hover {
+      color: var(--accent-primary);
+    }
+
+    .doc-toc.doc-toc--inline {
+      margin: 0 0 1.75rem;
+      padding: 1rem 1.15rem 1.05rem;
+      font-size: 0.92em;
+      line-height: 1.55;
+      background: rgba(15, 118, 110, 0.05);
+      box-shadow: none;
+    }
+
+    .doc-toc.doc-toc--inline .doc-toc-title {
+      font-size: 0.88rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li {
+      margin-bottom: 0.5rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li > a {
+      display: inline;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc.doc-toc--inline ol ol {
+      margin: 0.35rem 0 0.15rem;
+      padding-left: 1.15rem;
+      list-style: none;
+      border-left: none;
+    }
+
+    .doc-toc.doc-toc--inline ol ol a {
+      display: inline;
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: 1em;
+    }
+
+    @media (min-width: 1024px) {
+      .doc-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: clamp(1.25rem, 2.5vw, 2rem);
+      }
+
+      .doc-toc.doc-toc--inline {
+        display: none;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop {
+        display: block;
+        flex: 0 0 13.25rem;
+        width: 13.25rem;
+        position: sticky;
+        top: 1.25rem;
+        max-height: calc(100vh - 2.5rem);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(15, 118, 110, 0.35) transparent;
+      }
+
+      article.doc {
+        flex: 1 1 auto;
+        max-width: 64rem;
+      }
+    }
+
+    article.doc h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #243047;
+      margin: 1.45rem 0 0.55rem;
+    }
+
+    article.doc ul,
+    article.doc ol {
+      margin: 0 0 1.1rem;
+      padding-left: 1.35rem;
+      color: var(--text-primary);
+    }
+
+    article.doc li {
+      margin-bottom: 0.45rem;
+      padding-left: 0.15rem;
+    }
+
+    article.doc li::marker {
+      color: rgba(15, 118, 110, 0.55);
+    }
+
+    article.doc ol li::marker {
+      color: rgba(15, 118, 110, 0.55);
+      font-weight: 600;
+    }
+
+    article.doc strong {
+      font-weight: 600;
+      color: #1a2436;
+    }
+
+    article.doc a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    article.doc a:hover {
+      color: #0d9488;
+      border-bottom-color: rgba(13, 148, 136, 0.55);
+    }
+
+    article.doc table {
+      width: fit-content;
+      max-width: 100%;
+      display: block;
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+      border-collapse: collapse;
+      font-size: 0.9em;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    article.doc thead {
+      background: rgba(15, 118, 110, 0.08);
+    }
+
+    article.doc th {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.88em;
+      color: var(--text-secondary);
+      border-bottom: 2px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    article.doc td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-primary);
+      vertical-align: top;
+    }
+
+    article.doc tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    article.doc tbody tr:hover {
+      background: rgba(15, 118, 110, 0.04);
+    }
+
+    .doc-blockquote {
+      margin: 1.5rem 0;
+      padding: 0.85rem 1.15rem;
+      border-left: 4px solid var(--accent-primary);
+      background: rgba(15, 118, 110, 0.06);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 0.95em;
+      color: var(--text-secondary);
+    }
+
+    .doc-figure {
+      margin: 1.35rem 0 1.6rem;
+    }
+
+    .doc-figure img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
+      background: #fff;
+    }
+
+    .doc-figure figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-source {
+      margin-top: 2.25rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--text-tertiary);
+    }
+
+    ::selection {
+      background: rgba(15, 118, 110, 0.18);
+      color: var(--text-primary);
+    }
+  
+  
+  
+    .back-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-nav .back-home-btn {
+      margin-bottom: 0;
+    }
+
+  </style>
+</head>
+<body class="article-page">
+  <div class="doc-wrap">
+    <nav class="back-nav" aria-label="返回">
+      <a href="../../../" class="back-home-btn">← 返回主页</a>
+      <a href="../../" class="back-home-btn">文章列表</a>
+    </nav>
+    <div class="doc-layout">
+      <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="侧栏目录">
+        <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、先分清两种计费方式</a><ol><li><a href="#sec-主要平台与套餐总表">主要平台与套餐总表</a></li></ol></li><li><a href="#sec-h2-2">二、平台与套餐逐一对比</a><ol><li><a href="#sec-1-智谱-ai-glm-5-3-新套餐已经落地">1. 智谱 AI：GLM-5.3 新套餐已经落地</a></li><li><a href="#sec-2-opencode-一个订阅覆盖多家模型">2. OpenCode：一个订阅覆盖多家模型</a></li><li><a href="#sec-3-minimax-低门槛-高额度仍然突出">3. MiniMax：低门槛、高额度仍然突出</a></li><li><a href="#sec-4-kimi-k3-有吸引力-但仍不能新订阅">4. Kimi：K3 有吸引力，但仍不能新订阅</a></li><li><a href="#sec-5-字节方舟-coding-plan-与-token-plan-都已不限购">5. 字节方舟：Coding Plan 与 Token Plan 都已不限购</a></li><li><a href="#sec-6-优云智算-档位完整-倍率相对透明">6. 优云智算：档位完整，倍率相对透明</a></li><li><a href="#sec-7-deepseek-峰谷价格与视觉实验版是本期重点">7. DeepSeek：峰谷价格与视觉实验版是本期重点</a></li><li><a href="#sec-8-codex-能力强-但使用门槛不只在价格">8. Codex：能力强，但使用门槛不只在价格</a></li><li><a href="#sec-9-claude-code-成熟的代码-agent-账号风险需计入成本">9. Claude Code：成熟的代码 Agent，账号风险需计入成本</a></li><li><a href="#sec-10-ollama-pro-可买-max-仍停售">10. Ollama：Pro 可买，Max 仍停售</a></li><li><a href="#sec-11-阿里百炼-coding-plan-难抢-token-plan-更现实">11. 阿里百炼：Coding Plan 难抢，Token Plan 更现实</a></li><li><a href="#sec-补充一-共绩算力-按量付费-但旧价表已经失效">补充一：共绩算力——按量付费，但旧价表已经失效</a></li><li><a href="#sec-补充二-小米-mimo-额度高-但先确认当期购买页">补充二：小米 MiMo——额度高，但先确认当期购买页</a></li></ol></li><li><a href="#sec-h2-3">三、价格与用量横向看</a></li><li><a href="#sec-h2-4">四、按使用场景给出选择顺序</a><ol><li><a href="#sec-想要一个省心的国产主力套餐">想要一个省心的国产主力套餐</a></li><li><a href="#sec-想用一个入口切换多家模型">想用一个入口切换多家模型</a></li><li><a href="#sec-只想按量调用-成本越透明越好">只想按量调用，成本越透明越好</a></li><li><a href="#sec-有境外支付方式和网络条件">有境外支付方式和网络条件</a></li></ol></li><li><a href="#sec-h2-5">五、结论</a></li></ol></nav>
+      </aside>
+      <article class="doc">
+        <p class="doc-kicker">平台对比 · Coding Plan</p>
+        <h1>2026年8月24日 AI Coding Plan 与 API 平台对比：智谱 GLM-5.3、MiniMax、DeepSeek 视觉版和 OpenCode 调整后怎么选</h1>
+        <p class="doc-updates"><time datetime="2026-08-24">更新时间 2026年8月24日</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
+        <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;"><p>本文比较面向 AI 编程的订阅套餐与按量 API。价格、在售状态和模型阵容变化很快，下单前仍应以平台结算页为准。</p></div>
+        <nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、先分清两种计费方式</a><ol><li><a href="#sec-主要平台与套餐总表">主要平台与套餐总表</a></li></ol></li><li><a href="#sec-h2-2">二、平台与套餐逐一对比</a><ol><li><a href="#sec-1-智谱-ai-glm-5-3-新套餐已经落地">1. 智谱 AI：GLM-5.3 新套餐已经落地</a></li><li><a href="#sec-2-opencode-一个订阅覆盖多家模型">2. OpenCode：一个订阅覆盖多家模型</a></li><li><a href="#sec-3-minimax-低门槛-高额度仍然突出">3. MiniMax：低门槛、高额度仍然突出</a></li><li><a href="#sec-4-kimi-k3-有吸引力-但仍不能新订阅">4. Kimi：K3 有吸引力，但仍不能新订阅</a></li><li><a href="#sec-5-字节方舟-coding-plan-与-token-plan-都已不限购">5. 字节方舟：Coding Plan 与 Token Plan 都已不限购</a></li><li><a href="#sec-6-优云智算-档位完整-倍率相对透明">6. 优云智算：档位完整，倍率相对透明</a></li><li><a href="#sec-7-deepseek-峰谷价格与视觉实验版是本期重点">7. DeepSeek：峰谷价格与视觉实验版是本期重点</a></li><li><a href="#sec-8-codex-能力强-但使用门槛不只在价格">8. Codex：能力强，但使用门槛不只在价格</a></li><li><a href="#sec-9-claude-code-成熟的代码-agent-账号风险需计入成本">9. Claude Code：成熟的代码 Agent，账号风险需计入成本</a></li><li><a href="#sec-10-ollama-pro-可买-max-仍停售">10. Ollama：Pro 可买，Max 仍停售</a></li><li><a href="#sec-11-阿里百炼-coding-plan-难抢-token-plan-更现实">11. 阿里百炼：Coding Plan 难抢，Token Plan 更现实</a></li><li><a href="#sec-补充一-共绩算力-按量付费-但旧价表已经失效">补充一：共绩算力——按量付费，但旧价表已经失效</a></li><li><a href="#sec-补充二-小米-mimo-额度高-但先确认当期购买页">补充二：小米 MiMo——额度高，但先确认当期购买页</a></li></ol></li><li><a href="#sec-h2-3">三、价格与用量横向看</a></li><li><a href="#sec-h2-4">四、按使用场景给出选择顺序</a><ol><li><a href="#sec-想要一个省心的国产主力套餐">想要一个省心的国产主力套餐</a></li><li><a href="#sec-想用一个入口切换多家模型">想用一个入口切换多家模型</a></li><li><a href="#sec-只想按量调用-成本越透明越好">只想按量调用，成本越透明越好</a></li><li><a href="#sec-有境外支付方式和网络条件">有境外支付方式和网络条件</a></li></ol></li><li><a href="#sec-h2-5">五、结论</a></li></ol></nav>
+        <p class="lead">8 月下旬这轮变化，不只是某个平台又加了一个模型。智谱把 GLM-5.3 纳入新套餐，DeepSeek 同时调整了峰谷价格并推出视觉实验版，OpenCode 的模型池和套餐展示也发生变化。与此同时，Kimi 仍无法新订阅、Ollama Max 仍停售，阿里百炼的 Coding Plan 仍然很难抢。</p>
+<p>如果只想先看结论：国内用户优先从智谱、MiniMax和字节方舟里选稳定可买的订阅，重视透明倍率时再补看优云智算；想用多家模型，可重点看 OpenCode；只在业务程序里调用模型，则直接比较 DeepSeek 等 API 的输入、输出价格；有境外支付方式和相应网络条件，再考虑 Codex、Claude Code 与 Ollama。</p>
+<p>单看模型能力，GLM-5.3、Kimi-K3、Codex 使用的 GPT-5.6，以及 Claude Code 对应的 Claude 系列，都属于当前代码与 Agent 能力最强的一批模型。它们之间更实际的差异，主要落在可购买状态、额度、支付与网络门槛上。</p>
+<p>本期最值得注意的变化有六项：</p>
+<div class="doc-blockquote"><ul>
+<li>智谱新套餐已全面支持 GLM-5.3，国内 Lite、Pro、Max 分别为 118 元、538 元和 1078 元。</li>
+<li>DeepSeek 自 8 月 17 日启用峰谷计费，V4 Flash、V4 Pro 在不同时段价格不同。</li>
+<li>DeepSeek-V4-Flash-Vision-Exp 于 8 月 21 日上线，开始支持视觉输入，但仍是实验版本。</li>
+<li>OpenCode Go 当前结算页显示首期约 5 美元、续费 10 美元；这更适合视为当前结算优惠，而不是长期固定价。</li>
+<li>共绩算力已下架 DeepSeek V4 Pro、V4 Flash 正式版，目前只剩预览版，不应再按旧价表推荐正式版。</li>
+<li>Kimi 仍不能新订阅；字节方舟已不限购；阿里百炼 Token Plan 不限购，但 Coding Plan 仍限量且放量较少。</li>
+</ul></div>
+<h2 id="sec-h2-1">一、先分清两种计费方式</h2>
+<p>市场上的产品名称很多，但真正影响选择的只有两类。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>常见产品</th>
+<th>怎么收费</th>
+<th>更适合谁</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>订阅套餐</td>
+<td>Coding Plan、Token Plan、OpenCode Go</td>
+<td>按月付费，通常附带 5 小时、每周或每月用量上限</td>
+<td>高频使用 Claude Code、OpenCode、Cline、Roo Code 等编程工具的个人开发者</td>
+</tr>
+<tr>
+<td>按量 API</td>
+<td>DeepSeek API、OpenCode Zen、共绩算力等</td>
+<td>按实际输入、缓存命中和输出 Token 结算</td>
+<td>要接入自己程序、团队网关，或使用频率不稳定的用户</td>
+</tr>
+</tbody></table>
+<p>订阅套餐的优势是预算容易控制，但“每月多少 Token”通常只是依据平台限额和典型消耗得到的估算，并不等于硬性承诺。按量 API 则更透明，不过输出 Token 往往明显贵于输入 Token，复杂 Agent 任务也可能因为多轮调用迅速放大成本。</p>
+<p>因此，不要只比较月费。还应同时看模型是否适合自己的工具、5 小时和每周限制、是否能够正常购买，以及平台是否会频繁调整模型倍率。</p>
+<h3 id="sec-主要平台与套餐总表">主要平台与套餐总表</h3>
+<p>下面这张表先把主流档位放在一起。月 Token 是便于横向比较的参考估算，不是平台承诺；OpenCode、DeepSeek 和共绩算力的可用量随模型或实际调用变化，因此不强行换算成一个固定月上限。</p>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>套餐</th>
+<th>类型</th>
+<th align="right">月费 / 计费方式</th>
+<th align="right">参考月 Token</th>
+<th>当前购买状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqzhipu" rel="noopener noreferrer">智谱 AI</a></td>
+<td>新 Lite</td>
+<td>订阅</td>
+<td align="right">¥118</td>
+<td align="right">260M</td>
+<td>可购买</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqzhipu" rel="noopener noreferrer">智谱 AI</a></td>
+<td>新 Pro</td>
+<td>订阅</td>
+<td align="right">¥538</td>
+<td align="right">1580M</td>
+<td>可购买</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqzhipu" rel="noopener noreferrer">智谱 AI</a></td>
+<td>新 Max</td>
+<td>订阅</td>
+<td align="right">¥1078</td>
+<td align="right">3680M</td>
+<td>可购买</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqopencode" rel="noopener noreferrer">OpenCode</a></td>
+<td>Go</td>
+<td>订阅</td>
+<td align="right">当前首期约 $5，之后 $10/月</td>
+<td align="right">按模型差异较大</td>
+<td>可购买</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqminimax" rel="noopener noreferrer">MiniMax</a></td>
+<td>Plus</td>
+<td>订阅</td>
+<td align="right">¥49</td>
+<td align="right">600M</td>
+<td>可购买</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqminimax" rel="noopener noreferrer">MiniMax</a></td>
+<td>Max</td>
+<td>订阅</td>
+<td align="right">¥119</td>
+<td align="right">1800M</td>
+<td>可购买</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqminimax" rel="noopener noreferrer">MiniMax</a></td>
+<td>Ultra</td>
+<td>订阅</td>
+<td align="right">¥469</td>
+<td align="right">7100M</td>
+<td>可购买</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqkimi" rel="noopener noreferrer">Kimi</a></td>
+<td>Andante / Moderato</td>
+<td>订阅</td>
+<td align="right">¥49 / ¥99</td>
+<td align="right">28M / 108M</td>
+<td>不能新订阅</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqkimi" rel="noopener noreferrer">Kimi</a></td>
+<td>Allegretto / Allegro</td>
+<td>订阅</td>
+<td align="right">¥199 / ¥699</td>
+<td align="right">540M / 1600M</td>
+<td>不能新订阅</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqfangzhou" rel="noopener noreferrer">字节方舟</a></td>
+<td>Coding Plan Lite / Pro</td>
+<td>订阅</td>
+<td align="right">¥40 / ¥200</td>
+<td align="right">按模型倍率折算</td>
+<td>可购买</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqfangzhou" rel="noopener noreferrer">字节方舟</a></td>
+<td>Token Plan Small / Medium / Large / Max</td>
+<td>订阅</td>
+<td align="right">¥40 / ¥200 / ¥500 / ¥1000</td>
+<td align="right">按套餐额度</td>
+<td>可购买</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqyyzs" rel="noopener noreferrer">优云智算</a></td>
+<td>Mini / Lite / Basic</td>
+<td>订阅</td>
+<td align="right">¥49 / ¥99 / ¥199</td>
+<td align="right">65M / 130M / 260M</td>
+<td>可购买</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqyyzs" rel="noopener noreferrer">优云智算</a></td>
+<td>Pro / Max / Ultra</td>
+<td>订阅</td>
+<td align="right">¥499 / ¥799 / ¥999</td>
+<td align="right">650M / 1040M / 1300M</td>
+<td>可购买</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqdeepseek" rel="noopener noreferrer">DeepSeek</a></td>
+<td>V4 Flash / V4 Pro / Vision Exp</td>
+<td>API 按量</td>
+<td align="right">峰谷计价</td>
+<td align="right">随实际调用</td>
+<td>可使用</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqchatgpt" rel="noopener noreferrer">Codex</a></td>
+<td>Plus / Pro×5 / Pro×20</td>
+<td>订阅</td>
+<td align="right">$20 / $100 / $200</td>
+<td align="right">按档位倍率</td>
+<td>需境外条件</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqclaudeup" rel="noopener noreferrer">Claude Code</a></td>
+<td>Pro / Max×5 / Max×20</td>
+<td>订阅</td>
+<td align="right">$20 / $100 / $200</td>
+<td align="right">按档位倍率</td>
+<td>需境外条件</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqollama" rel="noopener noreferrer">Ollama</a></td>
+<td>Pro</td>
+<td>订阅</td>
+<td align="right">$20</td>
+<td align="right">按套餐额度</td>
+<td>可购买，需境外支付</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqollama" rel="noopener noreferrer">Ollama</a></td>
+<td>Max</td>
+<td>订阅</td>
+<td align="right">$100</td>
+<td align="right">按套餐额度</td>
+<td>仍停售</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqbailianc" rel="noopener noreferrer">阿里百炼</a></td>
+<td>Coding Plan Pro</td>
+<td>订阅</td>
+<td align="right">¥200</td>
+<td align="right">3000M</td>
+<td>限购、放量少</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqbailianc" rel="noopener noreferrer">阿里百炼</a></td>
+<td>Token Plan 标准 / 高级 / 尊享</td>
+<td>订阅</td>
+<td align="right">¥198 / ¥698 / ¥1398</td>
+<td align="right">375M / 1500M / 3750M</td>
+<td>不限购</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqmimo" rel="noopener noreferrer">小米 MiMo</a></td>
+<td>Lite / Standard / Pro / Max</td>
+<td>订阅</td>
+<td align="right">¥39 / ¥99 / ¥329 / ¥659</td>
+<td align="right">108M / 290M / 1002M / 2162M</td>
+<td>下单前确认</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqgongji" rel="noopener noreferrer">共绩算力</a></td>
+<td>V4 Pro / V4 Flash 预览版等</td>
+<td>API 按量</td>
+<td align="right">按实际调用</td>
+<td align="right">随实际调用</td>
+<td>正式版已下架</td>
+</tr>
+</tbody></table>
+<h2 id="sec-h2-2">二、平台与套餐逐一对比</h2>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>评分</th>
+<th>一句话特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqzhipu" rel="noopener noreferrer">智谱 AI</a></td>
+<td>★★★★☆</td>
+<td>GLM-5.3 模型强，但套餐额度偏少</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqopencode" rel="noopener noreferrer">OpenCode</a></td>
+<td>★★★★★</td>
+<td>一个订阅切换多家模型，适合混合使用</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqminimax" rel="noopener noreferrer">MiniMax</a></td>
+<td>★★★★★</td>
+<td>入门价格低，Token 额度充足</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqkimi" rel="noopener noreferrer">Kimi</a></td>
+<td>★★★★☆</td>
+<td>Kimi-K3 能力强，但当前不能新订阅</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqfangzhou" rel="noopener noreferrer">字节方舟</a></td>
+<td>★★★★★</td>
+<td>国内多模型平台，Coding Plan 与 Token Plan 均可购买</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqyyzs" rel="noopener noreferrer">优云智算</a></td>
+<td>★★★★☆</td>
+<td>套餐档位完整，模型倍率相对透明</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqdeepseek" rel="noopener noreferrer">DeepSeek</a></td>
+<td>★★★★★</td>
+<td>官方 API 峰谷计费，并提供视觉实验版</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqchatgpt" rel="noopener noreferrer">Codex</a></td>
+<td>★★★★★</td>
+<td>GPT-5.6 与原生代码 Agent，境外使用门槛较高</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqclaudeup" rel="noopener noreferrer">Claude Code</a></td>
+<td>★★★★☆</td>
+<td>长任务和大型代码库能力强，账号风险需注意</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqollama" rel="noopener noreferrer">Ollama</a></td>
+<td>★★★★☆</td>
+<td>本地与云端模型统一入口，Max 仍停售</td>
+</tr>
+<tr>
+<td><a href="https://api.dreamfree.space/c/s/cpyqbailianc" rel="noopener noreferrer">阿里百炼</a></td>
+<td>★★★★☆</td>
+<td>Token Plan 不限购，Coding Plan 仍较难买</td>
+</tr>
+</tbody></table>
+<figure class="doc-figure"><img src="./assets/platforms.jpg" alt="AI 编程平台对比总览" loading="lazy" /></figure>
+<div class="doc-blockquote">
+<p>平台格局与主要特点可通过图片快速浏览；图中平台卡片不作为当前价格、模型和购买状态的依据，相关信息以本文表格及平台结算页为准。</p>
+<p>图片来源：<a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">Vibe Coding 套餐对比</a></p>
+</div>
+<div class="doc-blockquote">
+<p><strong>综合价格口径</strong>：订阅套餐按“月费 ÷ 参考月 Token”计算；美元套餐按本期结算页汇率 <code>1 USD = 6.9916 CNY</code> 换算。API 按总 Token 中输出占 0.5%、输入占 99.5%计算，输入部分再按 95%缓存命中、5%未命中加权，即：<code>99.5% ×（95% × 缓存命中输入价 + 5% × 未命中输入价）+ 0.5% × 输出价</code>。结果统一为元/M Tokens，四舍五入保留两位小数。</p>
+</div>
+<h3 id="sec-1-智谱-ai-glm-5-3-新套餐已经落地"><a href="https://api.dreamfree.space/c/s/cpyqzhipu" rel="noopener noreferrer">1. 智谱 AI：GLM-5.3 新套餐已经落地</a></h3>
+<p>跳转入口 ➡️ <a href="https://api.dreamfree.space/c/s/cpyqzhipu" rel="noopener noreferrer">智谱 GLM Coding Plan</a></p>
+<p><strong>综合评分</strong>：★★★★☆<br><strong>购买状态</strong>：新套餐可直接购买，无需抢购。<br><strong>计费方式</strong>：订阅，采用积分额度，并同时受 5 小时和每周限额约束。</p>
+<p>智谱的特点很鲜明：<strong>模型好，但额度偏少</strong>。新一代 Coding Plan 已全面支持 GLM-5.3，模型能力是它最重要的购买理由；与 MiniMax 等大额度方案相比，同价位可用量不占优势。</p>
+<p><strong>核心优势</strong>：</p>
+<ul>
+<li>GLM-5.3 是智谱当前旗舰文本模型，处于当前代码模型第一梯队，也是目前最强的国产代码模型之一。</li>
+<li>100 万上下文、最高 12.8 万输出，支持 low、high、max 三档思考强度。</li>
+<li>国内付款和使用路径相对直接，新套餐当前不需要抢购。</li>
+</ul>
+<p><strong>国内套餐价格</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>套餐</th>
+<th align="right">月费</th>
+<th align="right">参考月 Token</th>
+<th align="right">综合价格（元/M Tokens）</th>
+<th>额度机制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>新 Lite</td>
+<td align="right">¥118</td>
+<td align="right">260M</td>
+<td align="right">0.45</td>
+<td>5 小时 + 每周积分上限</td>
+</tr>
+<tr>
+<td>新 Pro</td>
+<td align="right">¥538</td>
+<td align="right">1580M</td>
+<td align="right">0.34</td>
+<td>5 小时 + 每周积分上限</td>
+</tr>
+<tr>
+<td>新 Max</td>
+<td align="right">¥1078</td>
+<td align="right">3680M</td>
+<td align="right">0.29</td>
+<td>5 小时 + 每周积分上限</td>
+</tr>
+</tbody></table>
+<p>国际版对应为 $18、$80 和 $168。国内外档位都应结合自己的支付方式和实际使用路径选择，不必只按汇率机械换算。</p>
+<p>GLM-5.3 是文本模型，提供 100 万上下文、最高 12.8 万输出，默认持续思考，并提供 low、high、max 三档思考强度。它适合长代码库理解、复杂修改和需要较长输出的任务，但不能把“长上下文”直接等同于每次任务都会完整塞入 100 万 Token。</p>
+<p><strong>不足</strong>：同价位额度偏少，高强度 Agent、多轮长上下文任务更容易碰到周期限额。<br><strong>适用人群</strong>：更看重 GLM-5.3 代码质量和长上下文能力，而不是单纯追求最大 Token 数的开发者。</p>
+<h3 id="sec-2-opencode-一个订阅覆盖多家模型"><a href="https://api.dreamfree.space/c/s/cpyqopencode" rel="noopener noreferrer">2. OpenCode：一个订阅覆盖多家模型</a></h3>
+<p>跳转入口 ➡️ <a href="https://api.dreamfree.space/c/s/cpyqopencode" rel="noopener noreferrer">OpenCode Go / Zen</a></p>
+<p><strong>综合评分</strong>：★★★★★<br><strong>购买状态</strong>：Go 可订阅，Zen 可按量使用。<br><strong>计费方式</strong>：Go 是订阅；Zen 是 API 按量，二者不要混为同一个套餐。</p>
+<p>OpenCode 的核心价值不是单个模型最低价，而是可以在同一个工具和账户里切换多家模型。Go 套餐长期标价为每月 10 美元；当前结算页显示首期约 34.96 元、下期约 69.92 元，折合首期约 5 美元、续费约 10 美元。首期价格可能随结算活动变化，不宜当作永久承诺。</p>
+<p><strong>Go 套餐</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>套餐</th>
+<th align="right">当前首期</th>
+<th align="right">后续月费</th>
+<th align="right">5 小时 Usage</th>
+<th align="right">每周 Usage</th>
+<th align="right">每月 Usage</th>
+<th>综合价格（元/M Tokens）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Go</td>
+<td align="right">约 ¥34.96（$5）</td>
+<td align="right">约 ¥69.92（$10）</td>
+<td align="right">$12</td>
+<td align="right">$30</td>
+<td align="right">$60</td>
+<td>按模型变化，无法统一换算</td>
+</tr>
+</tbody></table>
+<p>这里的 Usage 是订阅内的模型使用额度，不是月费之外继续扣款。</p>
+<p><strong>核心优势</strong>：</p>
+<ul>
+<li>一个账户覆盖国产与国际模型，适合按任务切换模型。</li>
+<li>当前同时提供高质量复杂任务模型、低成本高频模型和视觉实验模型。</li>
+<li>Go 额度耗尽后仍可关注免费模型；Zen 则适合低频或不固定用量。</li>
+</ul>
+<p>当前模型池包括 GLM-5.3、GPT-5.6 Luna、Kimi K3、DeepSeek V4 Pro、V4 Flash、V4 Flash Vision Exp、MiMo V2.5 和 Ox Alpha Free 等。套餐用量同时设有 5 小时 12 美元、每周 30 美元、每月 60 美元的使用上限；这些“美元用量”是平台计量额度，不是订阅费之外再扣一笔钱。</p>
+<p><strong>不同模型的典型月用量</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th align="right">月 Usage</th>
+<th align="right">典型月请求数</th>
+<th>更适合的任务</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GPT 5.6 Luna</td>
+<td align="right">$15</td>
+<td align="right">约 10,250 次</td>
+<td>复杂代码与综合任务</td>
+</tr>
+<tr>
+<td>DeepSeek V4 Pro</td>
+<td align="right">$15</td>
+<td align="right">约 5,200 次</td>
+<td>质量优先的复杂任务</td>
+</tr>
+<tr>
+<td>DeepSeek V4 Flash</td>
+<td align="right">$30</td>
+<td align="right">约 37,800 次</td>
+<td>低成本、大量文本调用</td>
+</tr>
+<tr>
+<td>DeepSeek V4 Flash Vision Exp</td>
+<td align="right">$15</td>
+<td align="right">约 18,900 次</td>
+<td>截图、界面和视觉 Agent 尝试</td>
+</tr>
+<tr>
+<td>MiMo-V2.5</td>
+<td align="right">$60</td>
+<td align="right">约 150,400 次</td>
+<td>高频低成本调用</td>
+</tr>
+<tr>
+<td>GLM-5.3</td>
+<td align="right">$15</td>
+<td align="right">约 1,080 次</td>
+<td>高质量代码任务，额度明显较少</td>
+</tr>
+</tbody></table>
+<p>实际消耗会随上下文、输出长度和 Agent 调用次数变化，典型请求数不是保证值。</p>
+<p>如果不想订阅，OpenCode Zen 还提供按量模式。免费列表目前包括 MiMo-V2.5 Free 和 Ox Alpha Free；Ox Alpha 是匿名模型，尚不能证实就是 GLM，因此不建议按传言给它贴具体厂商标签。旧的 DeepSeek 免费入口也不再适合作为推荐理由。</p>
+<p><strong>不足</strong>：Go 只有一个订阅档位，高消耗模型会更快触发周限额；模型很多，也增加了选错模型和用量规划的难度。<br><strong>适用人群</strong>：希望一个入口切换多家模型、又愿意按任务管理模型消耗的个人开发者。</p>
+<h3 id="sec-3-minimax-低门槛-高额度仍然突出"><a href="https://api.dreamfree.space/c/s/cpyqminimax" rel="noopener noreferrer">3. MiniMax：低门槛、高额度仍然突出</a></h3>
+<p>跳转入口 ➡️ <a href="https://api.dreamfree.space/c/s/cpyqminimax" rel="noopener noreferrer">MiniMax Token Plan</a></p>
+<p><strong>综合评分</strong>：★★★★★<br><strong>购买状态</strong>：公开档位可正常购买。<br><strong>计费方式</strong>：订阅。</p>
+<p><strong>核心优势</strong>：</p>
+<ul>
+<li>49 元即可进入，三档套餐的 Token 池都比较宽裕。</li>
+<li>支持 M3、M2.7、M2.5，M3 具备多模态能力。</li>
+<li>适合高频补全、批量生成和 Agent 工作流，不需要为了限购等待。</li>
+</ul>
+<p><strong>套餐价格</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>套餐</th>
+<th align="right">月费</th>
+<th align="right">参考月 Token</th>
+<th align="right">综合价格（元/M Tokens）</th>
+<th>适合场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Plus</td>
+<td align="right">¥49</td>
+<td align="right">600M</td>
+<td align="right">0.08</td>
+<td>日常编程与轻量 Agent</td>
+</tr>
+<tr>
+<td>Max</td>
+<td align="right">¥119</td>
+<td align="right">1800M</td>
+<td align="right">0.07</td>
+<td>高频开发与多模态任务</td>
+</tr>
+<tr>
+<td>Ultra</td>
+<td align="right">¥469</td>
+<td align="right">7100M</td>
+<td align="right">0.07</td>
+<td>重度、长时间使用</td>
+</tr>
+</tbody></table>
+<p>它的优势是入门价低、额度相对宽裕，适合高频补全、批量生成和中等复杂度的 Agent 任务。需要注意的是，估算 Token 不能与其他平台简单一比一兑换：模型倍率、上下文长度和工具调用方式都会改变真实可用次数。当前套餐可正常购买，无需为限购焦虑。</p>
+<p><strong>不足</strong>：总 Token 多不代表所有模型都以相同倍率消耗，复杂代码质量也需要结合实际项目验证。<br><strong>适用人群</strong>：预算有限但使用频率高，希望用一个国产订阅支撑大量日常任务的开发者。</p>
+<h3 id="sec-4-kimi-k3-有吸引力-但仍不能新订阅"><a href="https://api.dreamfree.space/c/s/cpyqkimi" rel="noopener noreferrer">4. Kimi：K3 有吸引力，但仍不能新订阅</a></h3>
+<p>跳转入口 ➡️ <a href="https://api.dreamfree.space/c/s/cpyqkimi" rel="noopener noreferrer">Kimi Code</a></p>
+<p><strong>综合评分</strong>：★★★★☆<br><strong>购买状态</strong>：当前仍不能新订阅。<br><strong>计费方式</strong>：订阅。</p>
+<p><strong>核心优势</strong>：</p>
+<ul>
+<li>原生支持 Kimi-K3；Kimi-K3 处于当前代码模型第一梯队，也是目前综合能力最强的代码模型之一。</li>
+<li>套餐从 49 元到 699 元，覆盖轻度到重度使用。</li>
+<li>已有订阅资格的用户可以继续在原生环境使用。</li>
+</ul>
+<p><strong>套餐价格</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>套餐</th>
+<th align="right">月费</th>
+<th align="right">参考月 Token</th>
+<th align="right">综合价格（元/M Tokens）</th>
+<th>购买状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Andante</td>
+<td align="right">¥49</td>
+<td align="right">28M</td>
+<td align="right">1.75</td>
+<td>不能新订阅</td>
+</tr>
+<tr>
+<td>Moderato</td>
+<td align="right">¥99</td>
+<td align="right">108M</td>
+<td align="right">0.92</td>
+<td>不能新订阅</td>
+</tr>
+<tr>
+<td>Allegretto</td>
+<td align="right">¥199</td>
+<td align="right">540M</td>
+<td align="right">0.37</td>
+<td>不能新订阅</td>
+</tr>
+<tr>
+<td>Allegro</td>
+<td align="right">¥699</td>
+<td align="right">1600M</td>
+<td align="right">0.44</td>
+<td>不能新订阅</td>
+</tr>
+</tbody></table>
+<p>问题不在纸面套餐，而在购买状态：截至本期，Kimi 仍不能新订阅。已有资格的用户可以继续评估 K3 的代码和长上下文表现；新用户则不应把它当作立即可买的主方案，应准备 MiniMax、智谱或字节方舟作为替代。</p>
+<p><strong>不足</strong>：新用户当前买不到，低档位参考用量也不占优势。<br><strong>适用人群</strong>：已有会员资格、明确偏好 Kimi-K3 的用户。</p>
+<h3 id="sec-5-字节方舟-coding-plan-与-token-plan-都已不限购"><a href="https://api.dreamfree.space/c/s/cpyqfangzhou" rel="noopener noreferrer">5. 字节方舟：Coding Plan 与 Token Plan 都已不限购</a></h3>
+<p>跳转入口 ➡️ <a href="https://api.dreamfree.space/c/s/cpyqfangzhou" rel="noopener noreferrer">字节方舟 Coding Plan / Token Plan</a></p>
+<p><strong>综合评分</strong>：★★★★★<br><strong>购买状态</strong>：Coding Plan 与 Token Plan 均已不限购。<br><strong>计费方式</strong>：订阅。</p>
+<p><strong>核心优势</strong>：</p>
+<ul>
+<li>同时覆盖 GLM-5.3、DeepSeek V4、MiniMax M3 和 Kimi 系列。</li>
+<li>Coding Plan 适合现成编程工具，Token Plan 适合更稳定的 Token 预算。</li>
+<li>当前开放购买，不需要等待放量。</li>
+</ul>
+<p><strong>Coding Plan</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>套餐</th>
+<th align="right">月费</th>
+<th align="right">参考月 Token</th>
+<th align="right">综合价格（元/M Tokens）</th>
+<th>适合场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Lite</td>
+<td align="right">¥40</td>
+<td align="right">250M</td>
+<td align="right">0.16</td>
+<td>低成本体验多模型</td>
+</tr>
+<tr>
+<td>Pro</td>
+<td align="right">¥200</td>
+<td align="right">1249M</td>
+<td align="right">0.16</td>
+<td>高频使用、多模型切换</td>
+</tr>
+</tbody></table>
+<p><strong>Token Plan</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>套餐</th>
+<th align="right">月费</th>
+<th>综合价格（元/M Tokens）</th>
+<th>套餐定位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Small</td>
+<td align="right">¥40</td>
+<td>暂无统一用量口径</td>
+<td>轻量 Token 预算</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td align="right">¥200</td>
+<td>暂无统一用量口径</td>
+<td>日常开发主力</td>
+</tr>
+<tr>
+<td>Large</td>
+<td align="right">¥500</td>
+<td>暂无统一用量口径</td>
+<td>高频或团队使用</td>
+</tr>
+<tr>
+<td>Max</td>
+<td align="right">¥1000</td>
+<td>暂无统一用量口径</td>
+<td>大用量需求</td>
+</tr>
+</tbody></table>
+<p>平台覆盖 GLM-5.3、DeepSeek V4、MiniMax M3 和 Kimi 系列，适合希望在国内平台统一调用多家模型的用户。当前已经不限购，选择时应回到模型覆盖、倍率和额度本身，不必为了短期购买资格抢单。Coding Plan 更适合现成编程工具，Token Plan 更适合需要稳定 Token 预算或团队接入的用户。</p>
+<p><strong>不足</strong>：模型池越多，倍率和实际用量差异越需要提前看清；同一月费在不同模型上的可用次数可能差很多。<br><strong>适用人群</strong>：希望国内付款、同时切换多家主流模型的个人或团队。</p>
+<h3 id="sec-6-优云智算-档位完整-倍率相对透明"><a href="https://api.dreamfree.space/c/s/cpyqyyzs" rel="noopener noreferrer">6. 优云智算：档位完整，倍率相对透明</a></h3>
+<p>跳转入口 ➡️ <a href="https://api.dreamfree.space/c/s/cpyqyyzs" rel="noopener noreferrer">优云智算 Coding Plan</a></p>
+<p><strong>综合评分</strong>：★★★★☆<br><strong>购买状态</strong>：当前可购买。<br><strong>计费方式</strong>：订阅。</p>
+<p><strong>核心优势</strong>：</p>
+<ul>
+<li>从 49 元到 999 元共六档，预算跨度完整。</li>
+<li>模型倍率公开程度较高，方便估算实际消耗。</li>
+<li>全档支持 DeepSeek V4 Flash 正式版和 GLM-5.2。</li>
+</ul>
+<p><strong>套餐价格</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>套餐</th>
+<th align="right">月费</th>
+<th align="right">参考月 Token</th>
+<th align="right">综合价格（元/M Tokens）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mini</td>
+<td align="right">¥49</td>
+<td align="right">65M</td>
+<td align="right">0.75</td>
+</tr>
+<tr>
+<td>Lite</td>
+<td align="right">¥99</td>
+<td align="right">130M</td>
+<td align="right">0.76</td>
+</tr>
+<tr>
+<td>Basic</td>
+<td align="right">¥199</td>
+<td align="right">260M</td>
+<td align="right">0.77</td>
+</tr>
+<tr>
+<td>Pro</td>
+<td align="right">¥499</td>
+<td align="right">650M</td>
+<td align="right">0.77</td>
+</tr>
+<tr>
+<td>Max</td>
+<td align="right">¥799</td>
+<td align="right">1040M</td>
+<td align="right">0.77</td>
+</tr>
+<tr>
+<td>Ultra</td>
+<td align="right">¥999</td>
+<td align="right">1300M</td>
+<td align="right">0.77</td>
+</tr>
+</tbody></table>
+<p>它的特点是档位跨度大、模型倍率展示较透明，所有套餐支持 DeepSeek V4 Flash 正式版和 GLM-5.2。对于希望按预算逐级扩容、又在意用量可解释性的用户，这种设计比只给一个模糊“请求次数”更容易规划。最终仍应以结算页显示的当期模型和倍率为准。</p>
+<p><strong>不足</strong>：同价位参考用量通常不如 MiniMax，优势主要在透明度和档位完整。<br><strong>适用人群</strong>：希望按预算逐级扩容，并重视模型倍率和消耗可解释性的开发者。</p>
+<h3 id="sec-7-deepseek-峰谷价格与视觉实验版是本期重点"><a href="https://api.dreamfree.space/c/s/cpyqdeepseek" rel="noopener noreferrer">7. DeepSeek：峰谷价格与视觉实验版是本期重点</a></h3>
+<p>跳转入口 ➡️ <a href="https://api.dreamfree.space/c/s/cpyqdeepseek" rel="noopener noreferrer">DeepSeek API</a></p>
+<p><strong>综合评分</strong>：★★★★★<br><strong>购买状态</strong>：API 可直接充值使用。<br><strong>计费方式</strong>：API 按量，无固定月费。</p>
+<p><strong>核心优势</strong>：</p>
+<ul>
+<li>官方 API 直接提供 V4 Flash、V4 Pro 和视觉实验版。</li>
+<li>输入、缓存命中和输出分别定价，成本结构清楚。</li>
+<li>闲时价格为高峰的一半，适合可调度的批处理和自动化任务。</li>
+</ul>
+<p>DeepSeek 更适合作为按量 API，而不是虚构成固定月费套餐。从 8 月 17 日起，V4 Flash 与 V4 Pro 按北京时间划分峰谷：工作日 9:00—12:00、14:00—18:00 为高峰，其余时段为低峰。</p>
+<table>
+<thead>
+<tr>
+<th>模型与时段</th>
+<th align="right">缓存命中输入</th>
+<th align="right">未命中输入</th>
+<th align="right">输出</th>
+<th align="right">综合价格（元/M Tokens）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>V4 Flash / Vision Exp 低峰</td>
+<td align="right">0.05 元/百万 Token</td>
+<td align="right">1.5 元/百万 Token</td>
+<td align="right">4.5 元/百万 Token</td>
+<td align="right">0.14</td>
+</tr>
+<tr>
+<td>V4 Flash / Vision Exp 高峰</td>
+<td align="right">0.10 元/百万 Token</td>
+<td align="right">3 元/百万 Token</td>
+<td align="right">9 元/百万 Token</td>
+<td align="right">0.29</td>
+</tr>
+<tr>
+<td>V4 Pro 低峰</td>
+<td align="right">0.15 元/百万 Token</td>
+<td align="right">4.5 元/百万 Token</td>
+<td align="right">13.5 元/百万 Token</td>
+<td align="right">0.43</td>
+</tr>
+<tr>
+<td>V4 Pro 高峰</td>
+<td align="right">0.30 元/百万 Token</td>
+<td align="right">9 元/百万 Token</td>
+<td align="right">27 元/百万 Token</td>
+<td align="right">0.87</td>
+</tr>
+</tbody></table>
+<p>8 月 21 日上线的视觉实验版全名为 DeepSeek-V4-Flash-Vision-Exp，API 标识为 <code>deepseek-v4-flash-vision-exp</code>。官方口径是纯文本能力与 V4 Flash 正式版一致，同时增加图片输入；图片输入最多按 384 Token 处理。它适合低成本尝试截图、界面和图表理解，但“Exp”意味着仍应先做兼容性和稳定性测试，再用于重要生产链路。</p>
+<p><strong>不足</strong>：账单随调用量波动，输出较多、缓存命中率低或在高峰运行时，成本会明显上升；视觉版仍是实验模型。<br><strong>适用人群</strong>：用量波动大、能够管理缓存和任务调度，或需要低成本尝试视觉输入的个人和团队。</p>
+<h3 id="sec-8-codex-能力强-但使用门槛不只在价格"><a href="https://api.dreamfree.space/c/s/cpyqchatgpt" rel="noopener noreferrer">8. Codex：能力强，但使用门槛不只在价格</a></h3>
+<p>跳转入口 ➡️ <a href="https://api.dreamfree.space/c/s/cpyqchatgpt" rel="noopener noreferrer">Codex</a></p>
+<p><strong>综合评分</strong>：★★★★★<br><strong>购买状态</strong>：订阅档位可购买。<br><strong>使用门槛</strong>：需要境外支付方式和相应网络条件。<br><strong>计费方式</strong>：订阅。</p>
+<p><strong>核心优势</strong>：</p>
+<ul>
+<li>OpenAI 原生代码 Agent 生态，覆盖代码阅读、编辑、终端和多步骤任务。</li>
+<li>可使用 GPT-5.6 等模型；GPT-5.6 属于当前综合代码能力最强的一批模型，适合复杂工程协作。</li>
+<li>三档额度覆盖个人体验到重度使用。</li>
+</ul>
+<p><strong>订阅价格</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>套餐</th>
+<th align="right">月费</th>
+<th align="right">参考月 Token</th>
+<th align="right">综合价格（元/M Tokens）</th>
+<th>套餐定位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Plus</td>
+<td align="right">$20</td>
+<td align="right">480M</td>
+<td align="right">0.29</td>
+<td>基础使用</td>
+</tr>
+<tr>
+<td>Pro×5</td>
+<td align="right">$100</td>
+<td align="right">2400M</td>
+<td align="right">0.29</td>
+<td>5 倍额度</td>
+</tr>
+<tr>
+<td>Pro×20</td>
+<td align="right">$200</td>
+<td align="right">9600M</td>
+<td align="right">0.15</td>
+<td>20 倍额度</td>
+</tr>
+</tbody></table>
+<p>Codex 在代码理解、修改、终端协作和多步骤任务上有完整生态，适合对 Agent 工作流要求较高的开发者。</p>
+<p>国内用户需要同时考虑境外支付方式和相应网络条件，不能只看美元价格。团队使用还应先确认账号、账单和数据管理要求。具备这些条件且重视综合能力时，Codex 值得优先体验；否则国内套餐往往更省心。</p>
+<p><strong>不足</strong>：支付和网络门槛会增加实际使用成本，美元订阅也需要考虑汇率。<br><strong>适用人群</strong>：已经具备境外支付方式和网络条件，重视 OpenAI 原生 Agent 能力的开发者与团队。</p>
+<h3 id="sec-9-claude-code-成熟的代码-agent-账号风险需计入成本"><a href="https://api.dreamfree.space/c/s/cpyqclaudeup" rel="noopener noreferrer">9. Claude Code：成熟的代码 Agent，账号风险需计入成本</a></h3>
+<p>跳转入口 ➡️ <a href="https://api.dreamfree.space/c/s/cpyqclaudeup" rel="noopener noreferrer">Claude Code</a></p>
+<p><strong>综合评分</strong>：★★★★☆<br><strong>购买状态</strong>：订阅档位可购买。<br><strong>使用门槛</strong>：需要境外支付方式和相应网络条件。<br><strong>计费方式</strong>：订阅。</p>
+<p><strong>核心优势</strong>：</p>
+<ul>
+<li>Claude 系列属于当前代码与长任务能力最强的一批模型，原生代码 Agent 体验成熟，适合代码库阅读、规划、重构和长任务。</li>
+<li>三档订阅结构直观，可以按使用强度升级。</li>
+<li>对大型代码库和复杂系统修改有较完整的工作流。</li>
+</ul>
+<p><strong>订阅价格</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>套餐</th>
+<th align="right">月费</th>
+<th align="right">参考月 Token</th>
+<th align="right">综合价格（元/M Tokens）</th>
+<th>套餐定位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pro</td>
+<td align="right">$20</td>
+<td align="right">416M</td>
+<td align="right">0.34</td>
+<td>基础额度</td>
+</tr>
+<tr>
+<td>Max×5</td>
+<td align="right">$100</td>
+<td align="right">2080M</td>
+<td align="right">0.34</td>
+<td>5 倍额度</td>
+</tr>
+<tr>
+<td>Max×20</td>
+<td align="right">$200</td>
+<td align="right">8320M</td>
+<td align="right">0.17</td>
+<td>20 倍额度</td>
+</tr>
+</tbody></table>
+<p>Claude Code 在代码库阅读、规划和长任务执行方面有较成熟的体验，但国内用户也需要境外支付方式与相应网络条件。</p>
+<p>此外，账号风控和封禁风险相对较高。这里的“成本”不只是订阅费，还包括账号连续性、支付稳定性和工作中断风险。适合已经具备稳定使用条件、并愿意为长任务体验付费的人；不适合作为无法接受账号中断用户的唯一方案。</p>
+<p><strong>不足</strong>：除支付和网络门槛外，还需要把账号风控、封禁和工作中断风险计入成本。<br><strong>适用人群</strong>：具备境外支付与网络条件，偏好 Claude 原生长任务体验，并有备用工作流的开发者。</p>
+<h3 id="sec-10-ollama-pro-可买-max-仍停售"><a href="https://api.dreamfree.space/c/s/cpyqollama" rel="noopener noreferrer">10. Ollama：Pro 可买，Max 仍停售</a></h3>
+<p>跳转入口 ➡️ <a href="https://api.dreamfree.space/c/s/cpyqollama" rel="noopener noreferrer">Ollama</a></p>
+<p><strong>综合评分</strong>：★★★★☆<br><strong>购买状态</strong>：Pro 可买，Max 仍停售。<br><strong>使用门槛</strong>：付费订阅需要境外支付方式。<br><strong>计费方式</strong>：订阅，也可免费使用本地运行方式。</p>
+<p><strong>核心优势</strong>：</p>
+<ul>
+<li>本地与云端模型可以放在同一套 Ollama 工具链中管理。</li>
+<li>适合已经围绕 Ollama 搭建开发环境的用户。</li>
+<li>只使用本地开源模型时，不一定需要购买订阅。</li>
+</ul>
+<p><strong>会员价格</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>套餐</th>
+<th align="right">月费</th>
+<th align="right">参考月 Token</th>
+<th align="right">综合价格（元/M Tokens）</th>
+<th>当前状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pro</td>
+<td align="right">$20</td>
+<td align="right">500M</td>
+<td align="right">0.28</td>
+<td>可购买</td>
+</tr>
+<tr>
+<td>Max</td>
+<td align="right">$100</td>
+<td align="right">2500M</td>
+<td align="right">0.28</td>
+<td>仍停售</td>
+</tr>
+</tbody></table>
+<p>Ollama Pro 适合已经使用 Ollama 工具链、希望在本地与云端模型之间切换的用户。它的吸引力在于统一入口和模型聚合，而不是所有模型都绝对便宜。</p>
+<p>每月 100 美元的 Max 仍处于停售状态，因此不要按旧套餐表把它列为可购买选项。选择 Ollama 前还要确认目标模型的实际可用性、区域与支付条件；只需要本地开源模型时，也可以先使用免费的本地运行方式，不必为了品牌入口订阅。</p>
+<p><strong>不足</strong>：Max 当前买不到，付费版也不是所有模型的最低成本入口。<br><strong>适用人群</strong>：已经使用 Ollama、本地和云端模型都需要统一管理，并具备境外支付方式的用户。</p>
+<h3 id="sec-11-阿里百炼-coding-plan-难抢-token-plan-更现实"><a href="https://api.dreamfree.space/c/s/cpyqbailianc" rel="noopener noreferrer">11. 阿里百炼：Coding Plan 难抢，Token Plan 更现实</a></h3>
+<p>跳转入口 ➡️ <a href="https://api.dreamfree.space/c/s/cpyqbailianc" rel="noopener noreferrer">阿里百炼</a></p>
+<p><strong>综合评分</strong>：★★★★☆<br><strong>购买状态</strong>：Coding Plan 限购且放量少；Token Plan 不限购。<br><strong>计费方式</strong>：订阅。</p>
+<p><strong>核心优势</strong>：</p>
+<ul>
+<li>Token Plan 可使用 Qwen 3.8 Max，适合通义和阿里云生态用户。</li>
+<li>Token Plan 三档均不限购，比等待 Coding Plan 更确定。</li>
+<li>企业控制台、模型接入和预算管理可以放在同一生态内完成。</li>
+</ul>
+<p><strong>Coding Plan</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>套餐</th>
+<th align="right">月费</th>
+<th align="right">参考月 Token</th>
+<th align="right">综合价格（元/M Tokens）</th>
+<th>当前状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pro</td>
+<td align="right">¥200</td>
+<td align="right">3000M</td>
+<td align="right">0.07</td>
+<td>限购、放量很少</td>
+</tr>
+</tbody></table>
+<p><strong>Token Plan</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>套餐</th>
+<th align="right">月费</th>
+<th align="right">参考月 Token</th>
+<th align="right">综合价格（元/M Tokens）</th>
+<th>当前状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>标准</td>
+<td align="right">¥198</td>
+<td align="right">375M</td>
+<td align="right">0.53</td>
+<td>不限购</td>
+</tr>
+<tr>
+<td>高级</td>
+<td align="right">¥698</td>
+<td align="right">1500M</td>
+<td align="right">0.47</td>
+<td>不限购</td>
+</tr>
+<tr>
+<td>尊享</td>
+<td align="right">¥1398</td>
+<td align="right">3750M</td>
+<td align="right">0.37</td>
+<td>不限购</td>
+</tr>
+</tbody></table>
+<p>阿里百炼 Coding Plan Pro 仍然限购，而且放量很少。对新用户来说，它不是一个能随时下单的确定选项。</p>
+<p>Token Plan 的 Standard、Advanced、Premium 分别为 198 元、698 元和 1398 元，目前不限购，并可使用 Qwen 3.8 Max。若目标是阿里模型生态、企业控制台和稳定 Token 预算，Token Plan 比等待 Coding Plan 更现实；若只是个人轻量编程，则需要比较最低档实际额度与其他 40—118 元入门方案的差距。</p>
+<p><strong>不足</strong>：Coding Plan 购买不确定；Token Plan 入门价接近 200 元，对轻量个人用户不算低。<br><strong>适用人群</strong>：主要使用 Qwen、已经在阿里云生态内，或需要企业化控制台的用户。</p>
+<h3 id="sec-补充一-共绩算力-按量付费-但旧价表已经失效"><a href="https://api.dreamfree.space/c/s/cpyqgongji" rel="noopener noreferrer">补充一：共绩算力——按量付费，但旧价表已经失效</a></h3>
+<p>跳转入口 ➡️ <a href="https://api.dreamfree.space/c/s/cpyqgongji" rel="noopener noreferrer">共绩算力</a></p>
+<p><strong>综合评分</strong>：★★★☆☆<br><strong>购买状态</strong>：按量充值，无订阅费。<br><strong>计费方式</strong>：API 按量。</p>
+<table>
+<thead>
+<tr>
+<th>当前模型状态</th>
+<th>是否可用</th>
+<th>综合价格（元/M Tokens）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DeepSeek V4 Pro 正式版</td>
+<td>否</td>
+<td>不计算</td>
+<td>已下架</td>
+</tr>
+<tr>
+<td>DeepSeek V4 Flash 正式版</td>
+<td>否</td>
+<td>不计算</td>
+<td>已下架</td>
+</tr>
+<tr>
+<td>V4 Pro / V4 Flash 预览版</td>
+<td>是</td>
+<td>当前价格未确认</td>
+<td>具体模型名和价格以控制台为准</td>
+</tr>
+</tbody></table>
+<p><strong>核心优势</strong>：没有固定月费，适合不想绑定订阅、用量不稳定的用户。</p>
+<p>公开价格页面仍可能残留旧的正式版信息，因此本期不引用其旧价格，也不编造预览版 API 标识。只有在控制台确认当前模型名和价格后，才适合用于新项目。</p>
+<p><strong>不足</strong>：正式版已下架，公开页和控制台状态可能不同，不能直接沿用旧价表。<br><strong>适用人群</strong>：愿意先核对控制台、只把预览版作为补充测试通道的按量用户。</p>
+<h3 id="sec-补充二-小米-mimo-额度高-但先确认当期购买页"><a href="https://api.dreamfree.space/c/s/cpyqmimo" rel="noopener noreferrer">补充二：小米 MiMo——额度高，但先确认当期购买页</a></h3>
+<p>跳转入口 ➡️ <a href="https://api.dreamfree.space/c/s/cpyqmimo" rel="noopener noreferrer">小米 MiMo</a></p>
+<p><strong>综合评分</strong>：★★★★☆<br><strong>购买状态</strong>：本期下单前需确认当期购买页。<br><strong>计费方式</strong>：订阅。</p>
+<p><strong>核心优势</strong>：同价位参考 Token 较多，没有固定 5 小时窗口时，更适合集中跑大量任务。</p>
+<p><strong>套餐价格</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>套餐</th>
+<th align="right">月费</th>
+<th align="right">参考月 Token</th>
+<th align="right">综合价格（元/M Tokens）</th>
+<th>适合场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Lite</td>
+<td align="right">¥39</td>
+<td align="right">108M</td>
+<td align="right">0.36</td>
+<td>轻量体验</td>
+</tr>
+<tr>
+<td>Standard</td>
+<td align="right">¥99</td>
+<td align="right">290M</td>
+<td align="right">0.34</td>
+<td>日常开发</td>
+</tr>
+<tr>
+<td>Pro</td>
+<td align="right">¥329</td>
+<td align="right">1002M</td>
+<td align="right">0.33</td>
+<td>高频 Agent</td>
+</tr>
+<tr>
+<td>Max</td>
+<td align="right">¥659</td>
+<td align="right">2162M</td>
+<td align="right">0.30</td>
+<td>大量集中调用</td>
+</tr>
+</tbody></table>
+<p>MiMo 适合作为高额度补充选项，但本期没有把购买状态作为已确认事实；准备下单时应直接检查当前结算页。</p>
+<p><strong>不足</strong>：本期购买状态未作为已确认事实，不能只看套餐数字就直接下单。<br><strong>适用人群</strong>：Token 消耗较大、愿意在购买前核对当前结算页的开发者。</p>
+<h2 id="sec-h2-3">三、价格与用量横向看</h2>
+<figure class="doc-figure"><img src="./assets/unit-price.jpg" alt="AI 编程套餐单价与用量对比" loading="lazy" /></figure>
+<div class="doc-blockquote">
+<p>这张图用于快速理解价格与用量的比较方式；图内单价采用图片中标注的计算假设，本文表格则统一按 95% 缓存命中率、0.5% 输出占比重新计算，具体套餐、价格和购买状态以本文表格及平台结算页为准。</p>
+<p>图片来源：<a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">Vibe Coding 套餐对比</a></p>
+</div>
+<p>把常见入门档放在一起，最便宜不一定最适合：</p>
+<table>
+<thead>
+<tr>
+<th>需求</th>
+<th>优先观察</th>
+<th>关键判断</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>40—50 元入门</td>
+<td>字节方舟、MiniMax、MiMo</td>
+<td>目标模型是否可用，额度是否按高倍率消耗</td>
+</tr>
+<tr>
+<td>100—120 元主力订阅</td>
+<td>智谱 Lite、MiniMax Max、优云智算 Lite</td>
+<td>更看重单模型能力还是总调用量</td>
+</tr>
+<tr>
+<td>多模型切换</td>
+<td>OpenCode Go、字节方舟</td>
+<td>模型池、每周上限和单模型消耗差异</td>
+</tr>
+<tr>
+<td>高强度国产模型</td>
+<td>智谱 Pro/Max、MiniMax Ultra、优云智算高档</td>
+<td>先用低档验证工作流，再决定是否升级</td>
+</tr>
+<tr>
+<td>自建程序或团队网关</td>
+<td>DeepSeek API、OpenCode Zen</td>
+<td>输入输出比例、缓存命中率和峰谷调度</td>
+</tr>
+<tr>
+<td>国际一线 Agent</td>
+<td>Codex、Claude Code</td>
+<td>境外支付、网络、账号稳定性和美元预算</td>
+</tr>
+</tbody></table>
+<p>如果任务可以延迟，DeepSeek 低峰价只有高峰的一半，批处理和自动化任务应优先调度到低峰。若任务大量输出代码，不能只盯着缓存输入价，因为输出往往才是主要成本。订阅用户则应先用一周记录真实请求量，再根据触发的 5 小时和周限制判断是否升档。</p>
+<h2 id="sec-h2-4">四、按使用场景给出选择顺序</h2>
+<h3 id="sec-想要一个省心的国产主力套餐">想要一个省心的国产主力套餐</h3>
+<p>先看<a href="https://api.dreamfree.space/c/s/cpyqzhipu" rel="noopener noreferrer">智谱 AI</a>，再比较<a href="https://api.dreamfree.space/c/s/cpyqminimax" rel="noopener noreferrer">MiniMax</a>、<a href="https://api.dreamfree.space/c/s/cpyqfangzhou" rel="noopener noreferrer">字节方舟</a>和<a href="https://api.dreamfree.space/c/s/cpyqyyzs" rel="noopener noreferrer">优云智算</a>。智谱偏最新旗舰模型与长上下文，MiniMax 偏低价高额度，方舟偏多模型，优云智算偏档位和倍率透明。</p>
+<h3 id="sec-想用一个入口切换多家模型">想用一个入口切换多家模型</h3>
+<p>优先看<a href="https://api.dreamfree.space/c/s/cpyqopencode" rel="noopener noreferrer">OpenCode</a>。它的优势是模型组合，不是每个模型都最低价。购买后应观察一周的模型级用量，避免高消耗模型快速触发周限额。</p>
+<h3 id="sec-只想按量调用-成本越透明越好">只想按量调用，成本越透明越好</h3>
+<p>优先使用<a href="https://api.dreamfree.space/c/s/cpyqdeepseek" rel="noopener noreferrer">DeepSeek API</a>，并尽量利用低峰时段和缓存。共绩算力可作为补充，但当前正式版已下架，必须先在控制台确认预览版名称和价格。</p>
+<h3 id="sec-有境外支付方式和网络条件">有境外支付方式和网络条件</h3>
+<p>在境外支付方式和网络条件都具备时，再按工作流选择<a href="https://api.dreamfree.space/c/s/cpyqchatgpt" rel="noopener noreferrer">Codex</a>或<a href="https://api.dreamfree.space/c/s/cpyqclaudeup" rel="noopener noreferrer">Claude Code</a>。如果账号连续性是刚需，不要只准备一个国际平台，应同时保留国内模型作为备用。</p>
+<h2 id="sec-h2-5">五、结论</h2>
+<p>2026 年 8 月下旬，选择 AI 编程套餐的关键已经从“谁家有模型”变成“谁家能稳定买、模型倍率是否清楚、额度是否适合自己的 Agent 工作流”。</p>
+<p>对大多数国内个人开发者，推荐顺序是：先从智谱、OpenCode、MiniMax 中找主方案，再根据 Kimi 的购买状态、字节方舟的多模型能力和 DeepSeek 的按量价格补足需求；优云智算更适合作为重视透明倍率时的补充选择。具备境外条件后，再把 Codex、Claude Code、Ollama 纳入比较；阿里百炼则优先看不限购的 Token Plan。</p>
+<p>最稳妥的购买方法不是直接上最高档，而是先用最低可用档跑一周真实项目，记录模型、请求次数、上下文长度和限额触发情况，再决定升级或分流。这样比只看宣传页上的 Token 总量更接近真实成本。</p>
+
+        <div class="doc-blockquote doc-source">数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br />
+原文链接 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>

@@ -100,11 +100,11 @@ async function main() {
     {
       const ctx = await browser.newContext();
       const page = await ctx.newPage();
-      await page.goto(`${BASE}/v2/index.html?view=payg`, { waitUntil: 'domcontentloaded' });
+      await page.goto(`${BASE}/v2/index.html?view=usage`, { waitUntil: 'domcontentloaded' });
       await waitQuiet(page, 800);
       const url = page.url();
       assert(!url.includes('/v2/'), `/v2/ should redirect off v2, got ${url}`);
-      assert(url.includes('view=payg'), `/v2/ should preserve query, got ${url}`);
+      assert(url.includes('view=usage'), `/v2/ should preserve query, got ${url}`);
       results.push('PASS A5 /v2/ redirects to root with query');
       await ctx.close();
     }
@@ -138,7 +138,7 @@ async function main() {
 
       const tabBtns = await page.$$('[data-main-view]');
       assert(tabBtns.length >= 4, `expected 4 main view tabs, got ${tabBtns.length}`);
-      for (const key of ['platforms', 'plans', 'payg', 'monitor']) {
+      for (const key of ['platforms', 'usage', 'plans', 'monitor']) {
         await page.click(`[data-main-view="${key}"]`);
         await waitQuiet(page, 800);
         const selected = await page.getAttribute(`[data-main-view="${key}"]`, 'aria-selected');
@@ -159,10 +159,10 @@ async function main() {
       assert(orderOk, 'site edition row should be above ultra-wide');
       results.push('PASS B2 settings edition above ultra-wide');
 
-      await page.goto(`${BASE}/index.html?view=payg`, { waitUntil: 'domcontentloaded' });
+      await page.goto(`${BASE}/index.html?view=usage`, { waitUntil: 'domcontentloaded' });
       await waitQuiet(page, 1200);
-      assert(page.url().includes('view=payg'), 'payg deep link should load');
-      results.push('PASS B3 view=payg deep link');
+      assert(page.url().includes('view=usage'), 'usage deep link should load');
+      results.push('PASS B3 view=usage deep link');
 
       await page.goto(`${BASE}/index.html?view=monitor`, { waitUntil: 'domcontentloaded' });
       await waitQuiet(page, 1500);

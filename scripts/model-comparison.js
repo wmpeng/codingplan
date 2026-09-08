@@ -17,30 +17,23 @@
         '#db2777', '#4f46e5', '#65a30d', '#9333ea', '#ea580c', '#0f766e',
         '#475569', '#a16207', '#be123c', '#0369a1'
     ];
-    const DEFAULT_PLATFORM_SELECTIONS = [
-        ['阿里·百炼', 'Token Plan'],
-        ['智谱AI', 'Token Plan'],
-        ['字节·方舟', 'Coding Plan'],
-        ['Codex', 'Token Plan'],
-        ['Claude', 'Token Plan'],
-        ['DeepSeek', 'API'],
-        ['Kimi', 'Coding Plan'],
-        ['MiniMax', 'Token Plan'],
-        ['OpenCode', 'Token Plan']
+    const DEFAULT_PLATFORM_SLUGS = [
+        'aliyun-bailian', 'zhipu', 'bytedance-ark', 'codex', 'claude',
+        'deepseek-official', 'kimi', 'minimax', 'opencode'
     ];
-    const DEFAULT_MODEL_IDS = [
+    const DEFAULT_MODEL_SLUGS = [
         'deepseek-v4-pro-0813', 'deepseek-v4-flash-0731', 'qwen-3-8-max',
-        'glm-5-3', 'glm-5-3-flash', 'kimi-k3', 'gpt-5-6-sol', 'gpt-5-6-luna',
+        'glm-5-3', 'glm-5-3-flash', 'kimi-k3', 'gpt-6-astra', 'gpt-5-6-sol', 'gpt-5-6-luna',
         'claude-opus-5', 'claude-sonnet-5', 'muse-spark-1-2',
         'minimax-m3', 'deepseek-v4-flash-vision-exp'
     ];
     const COMPARISON_TABLE_COLUMNS = [
         { key: 'vendor', label: '平台' },
-        { key: 'platformType', label: '类型' },
         { key: 'plan', label: '套餐' },
         { key: 'price', label: '套餐价格' },
         { key: 'model', label: '模型' },
         { key: 'unitPriceCnyPerM', label: '综合单价' },
+        { key: 'apiPricing', label: 'API 单价（输入 / 缓存 / 输出）', sortable: false },
         { key: 'fiveHourTokenInM', label: '5h用量' },
         { key: 'weeklyTokenInM', label: '周用量' },
         { key: 'monthlyTokenInM', label: '月用量' },
@@ -71,21 +64,20 @@
     }
 
     function getPointPlatformKey(point) {
-        return JSON.stringify([String(point.vendor || ''), String(point.platformType || '')]);
+        return String(point.platformSlug || point.platformName || '');
     }
 
     function getDefaultPlatformSelectionKeys() {
-        return new Set(DEFAULT_PLATFORM_SELECTIONS
-            .map(([vendor, platformType]) => getPointPlatformKey({ vendor, platformType })));
+        return new Set(DEFAULT_PLATFORM_SLUGS);
     }
 
     function createDefaultFilterState(points) {
         const availablePlatforms = new Set((points || []).map(getPointPlatformKey));
-        const availableModels = new Set((points || []).map((point) => point.canonicalModelId));
+        const availableModels = new Set((points || []).map((point) => point.modelSlug));
         return {
             platforms: new Set([...getDefaultPlatformSelectionKeys()]
                 .filter((key) => availablePlatforms.has(key))),
-            models: new Set(DEFAULT_MODEL_IDS.filter((id) => availableModels.has(id))),
+            models: new Set(DEFAULT_MODEL_SLUGS.filter((slug) => availableModels.has(slug))),
             multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', monthlyPriceMin: null,
             monthlyPriceMax: null, soloColorKey: null, tokenUnit: 'yi'
         };
@@ -124,7 +116,7 @@
         const hasMonthlyPriceFilter = finitePositive(state.monthlyPriceMin) !== null && finitePositive(state.monthlyPriceMax) !== null;
         return (points || []).filter((point) => {
             if (platforms.size && !platforms.has(getPointPlatformKey(point))) return false;
-            if (models.size && !models.has(point.canonicalModelId)) return false;
+            if (models.size && !models.has(point.modelSlug)) return false;
             if (state.multimodal === 'multimodal' && point.multimodal !== true) return false;
             if (state.multimodal === 'text' && point.multimodal !== false) return false;
             const aaScore = getPointScore(point, 'artificialAnalysis');
@@ -141,7 +133,7 @@
 
     function buildUsageChartPoints(points) {
         return (points || []).filter((point) =>
-            point.billingType === 'subscription' &&
+            point.billingMode === 'subscription' &&
             finitePositive(point.monthlyFeeCny) !== null &&
             finitePositive(point.monthlyTokenInM) !== null
         );
@@ -160,11 +152,11 @@
         ).slice().sort((a, b) => {
             const byPrice = Number(a.unitPriceCnyPerM) - Number(b.unitPriceCnyPerM);
             if (byPrice !== 0) return byPrice;
-            const byVendor = String(a.vendor || '').localeCompare(String(b.vendor || ''), 'zh-CN');
+            const byVendor = String(a.platformName || '').localeCompare(String(b.platformName || ''), 'zh-CN');
             if (byVendor !== 0) return byVendor;
-            const byPlan = String(a.plan || '').localeCompare(String(b.plan || ''), 'zh-CN');
+            const byPlan = String(a.planName || '').localeCompare(String(b.planName || ''), 'zh-CN');
             if (byPlan !== 0) return byPlan;
-            return String(a.model || a.canonicalModel || '').localeCompare(String(b.model || b.canonicalModel || ''), 'zh-CN');
+            return String(a.modelName || a.canonicalModelName || '').localeCompare(String(b.modelName || b.canonicalModelName || ''), 'zh-CN');
         });
     }
 
@@ -322,19 +314,19 @@
         return `#${rgb.map((channel) => Math.round((channel + match) * 255).toString(16).padStart(2, '0')).join('')}`;
     }
 
-    function buildModelColorMap(modelIds) {
+    function buildModelColorMap(modelSlugs) {
         const map = {};
-        [...new Set(modelIds || [])].sort().forEach((modelId, index) => {
+        [...new Set(modelSlugs || [])].sort().forEach((modelSlug, index) => {
             const hue = Math.round((index * 137.508) % 360);
             const saturation = 62 + (index % 3) * 5;
             const lightness = 42 + (index % 4) * 4;
-            map[modelId] = hslToHex(hue, saturation, lightness);
+            map[modelSlug] = hslToHex(hue, saturation, lightness);
         });
         return map;
     }
 
     function getPointColorKey(point, colorMode) {
-        return colorMode === 'model' ? point.canonicalModelId : getPointPlatformKey(point);
+        return colorMode === 'model' ? point.modelSlug : getPointPlatformKey(point);
     }
 
     function filterBySoloColorKey(points, colorMode, soloColorKey) {
@@ -344,18 +336,18 @@
 
     function getSoloPointLabelField(points) {
         const visible = points || [];
-        const modelIds = new Set(visible.map((point) => point.canonicalModelId));
+        const modelSlugs = new Set(visible.map((point) => point.modelSlug));
         const platforms = new Set(visible.map(getPointPlatformKey));
-        if (modelIds.size === 1) return 'vendor';
+        if (modelSlugs.size === 1) return 'vendor';
         if (platforms.size === 1) return 'model';
         return null;
     }
 
     function getPointLabelText(point, pointLabelField) {
         if (pointLabelField === 'vendor') {
-            return point.platformType ? `${point.vendor} · ${point.platformType}` : point.vendor;
+            return point.platformName;
         }
-        if (pointLabelField === 'model') return point.model || point.canonicalModel;
+        if (pointLabelField === 'model') return point.modelName || point.canonicalModelName;
         return '';
     }
 
@@ -366,7 +358,7 @@
     }
 
     function platformCellHtml(point) {
-        const vendor = escapeHtml(point.vendor);
+        const vendor = escapeHtml(point.platformName);
         const actionUrl = String(point.actionUrl || '').trim();
         if (!/^https?:\/\//i.test(actionUrl)) return `<strong>${vendor}</strong>`;
         return `<a class="usage-platform-link" href="${escapeHtml(actionUrl)}" target="_blank" rel="noopener noreferrer"><strong>${vendor}</strong><span aria-hidden="true">↗</span></a>`;
@@ -410,11 +402,23 @@
         return `¥${formatNumber(number, 4)} / ${normalized === 'yi' ? '亿' : 'M'}`;
     }
 
+    function formatApiPricing(pricing) {
+        if (!pricing || typeof pricing !== 'object') return '—';
+        const currency = String(pricing.currency || '¥');
+        const format = (value) => {
+            const number = Number(value);
+            return Number.isFinite(number) ? `${currency}${formatNumber(number, 6)}` : '—';
+        };
+        return `输入 ${format(pricing.inputPerM)} · 缓存 ${format(pricing.cachePerM)} · 输出 ${format(pricing.outputPerM)} / M`;
+    }
+
     function comparisonSortValue(point, key) {
         if (key === 'price') return finitePositive(point.monthlyFeeCny);
         if (key === 'artificialAnalysis' || key === 'deepSWE') return getPointScore(point, key);
-        if (key === 'vendor' || key === 'platformType' || key === 'plan' || key === 'note') return point[key] || '';
-        if (key === 'model') return point.model || point.canonicalModel || '';
+        if (key === 'vendor') return point.platformName || '';
+        if (key === 'plan') return point.planName || '';
+        if (key === 'note') return point[key] || '';
+        if (key === 'model') return point.modelName || point.canonicalModelName || '';
         return finitePositive(point[key]);
     }
 
@@ -441,18 +445,23 @@
                 if (aPriceMissing !== bPriceMissing) return aPriceMissing ? 1 : -1;
                 if (!aPriceMissing && !bPriceMissing && aPrice !== bPrice) return aPrice - bPrice;
             }
-            return String(left.id || '').localeCompare(String(right.id || ''), 'zh-CN');
+            return String(left.slug || '').localeCompare(String(right.slug || ''), 'zh-CN');
         });
     }
 
     function comparisonTableHeadHtml(tableName) {
-        return `<tr>${COMPARISON_TABLE_COLUMNS.map((column) =>
-            `<th scope="col" class="sortable${column.key === 'vendor' ? ' sticky-first' : ''}" tabindex="0" aria-sort="none" data-table-sort="${tableName}" data-sort-key="${column.key}">${column.label}</th>`
-        ).join('')}</tr>`;
+        return `<tr>${COMPARISON_TABLE_COLUMNS.map((column) => {
+            const sortable = column.sortable !== false;
+            const classes = `${sortable ? 'sortable' : ''}${column.key === 'vendor' ? ' sticky-first' : ''}`.trim();
+            const sorting = sortable
+                ? ` tabindex="0" aria-sort="none" data-table-sort="${tableName}" data-sort-key="${column.key}"`
+                : '';
+            return `<th scope="col"${classes ? ` class="${classes}"` : ''}${sorting}>${column.label}</th>`;
+        }).join('')}</tr>`;
     }
 
     function comparisonTableRowHtml(point, tokenUnit) {
-        const subscription = point.billingType === 'subscription';
+        const subscription = point.billingMode === 'subscription';
         const price = subscription && finitePositive(point.monthlyFeeCny) !== null
             ? `¥${formatNumber(point.monthlyFeeCny, 2)} / 月` : '按量';
         const unitPrice = formatUnitPrice(point.unitPriceCnyPerM, tokenUnit);
@@ -460,13 +469,13 @@
         const deepSWEScore = point.scores && point.scores.deepSWE;
         const deepSWEInterval = deepSWEScore && Number.isFinite(Number(deepSWEScore.confidenceInterval))
             ? ` ±${formatNumber(deepSWEScore.confidenceInterval, 0)}` : '';
-        return `<tr data-point-id="${escapeHtml(point.id)}">` +
+        return `<tr data-point-id="${escapeHtml(point.slug)}">` +
             `<td class="sticky-first">${platformCellHtml(point)}</td>` +
-            `<td>${escapeHtml(point.platformType || '—')}</td>` +
-            `<td>${escapeHtml(point.plan || (subscription ? '订阅' : '按量 API'))}</td>` +
+            `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}</td>` +
             `<td class="numeric">${price}</td>` +
-            `<td class="usage-table-model">${escapeHtml(point.model || point.canonicalModel)}</td>` +
+            `<td class="usage-table-model">${escapeHtml(point.modelName || point.canonicalModelName)}</td>` +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
+            `<td class="usage-table-api-pricing">${subscription ? '—' : escapeHtml(formatApiPricing(point.apiPricing))}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.weeklyTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}</td>` +
@@ -483,12 +492,12 @@
             const id = String(group.id || '').trim();
             const title = String(group.title || '').trim();
             const kind = group.kind === 'multi' ? 'multi' : group.kind === 'single' ? 'single' : '';
-            const modelIds = [...new Set((Array.isArray(group.modelIds) ? group.modelIds : [])
+            const modelSlugs = [...new Set((Array.isArray(group.modelSlugs) ? group.modelSlugs : [])
                 .map((value) => String(value || '').trim()).filter(Boolean))];
-            if (!id || !title || !kind || !modelIds.length || seenIds.has(id)) return [];
-            if (kind === 'single' && modelIds.length !== 1) return [];
+            if (!id || !title || !kind || !modelSlugs.length || seenIds.has(id)) return [];
+            if (kind === 'single' && modelSlugs.length !== 1) return [];
             seenIds.add(id);
-            return [{ id, title, kind, modelIds }];
+            return [{ id, title, kind, modelSlugs }];
         });
         return {
             title: String(source.title || '').trim() || '常见对比',
@@ -502,15 +511,15 @@
     }
 
     function buildPresetComparisonRows(points, group, platformScope) {
-        const modelIds = new Set(group && Array.isArray(group.modelIds) ? group.modelIds : []);
+        const modelSlugs = new Set(group && Array.isArray(group.modelSlugs) ? group.modelSlugs : []);
         const defaultPlatformKeys = getDefaultPlatformSelectionKeys();
         const scope = normalizePresetPlatformScope(platformScope);
         return sortComparisonRows((points || []).filter((point) =>
-            (point.billingType === 'subscription' || point.billingType === 'payg') &&
+            (point.billingMode === 'subscription' || point.billingMode === 'payg') &&
             (scope === 'all' || defaultPlatformKeys.has(getPointPlatformKey(point))) &&
-            modelIds.has(point.canonicalModelId) &&
+            modelSlugs.has(point.modelSlug) &&
             finitePositive(point.unitPriceCnyPerM) !== null &&
-            (point.billingType === 'payg' || (
+            (point.billingMode === 'payg' || (
                 finitePositive(point.monthlyFeeCny) !== null &&
                 finitePositive(point.monthlyTokenInM) !== null
             ))
@@ -518,8 +527,8 @@
     }
 
     function getPresetModelQualifier(point) {
-        const model = String(point && point.model || '').trim();
-        const canonical = String(point && point.canonicalModel || '').trim();
+        const model = String(point && point.modelName || '').trim();
+        const canonical = String(point && point.canonicalModelName || '').trim();
         if (!model || !canonical || model === canonical) return '';
         if (model.startsWith(canonical)) return model.slice(canonical.length).trim();
         return model;
@@ -529,28 +538,28 @@
         const kind = group && group.kind === 'multi' ? 'multi' : 'single';
         const columns = PRESET_TABLE_COLUMNS[kind];
         const rows = buildPresetComparisonRows(points, group, platformScope);
-        const modelNamesById = new Map((points || []).map((point) => [point.canonicalModelId, point.canonicalModel]));
+        const modelNamesBySlug = new Map((points || []).map((point) => [point.modelSlug, point.canonicalModelName]));
         const includedModels = kind === 'multi'
-            ? group.modelIds.map((id) => modelNamesById.get(id) || id).join('、')
+            ? group.modelSlugs.map((slug) => modelNamesBySlug.get(slug) || slug).join('、')
             : '';
         const subtitle = includedModels ? `<p>包含：${escapeHtml(includedModels)}</p>` : '';
         const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
         const body = rows.length ? rows.map((point) => {
             const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
-            const planName = point.plan || (point.billingType === 'payg' ? '按量 API' : '订阅');
+            const planName = point.planName || (point.billingMode === 'payg' ? '按量 API' : '订阅');
             const plan = `<span>${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
-            const price = point.billingType === 'payg' ? '按量' : `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`;
-            const model = `<span class="usage-table-model">${escapeHtml(point.model || point.canonicalModel || '—')}</span>`;
+            const price = point.billingMode === 'payg' ? '按量' : `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`;
+            const model = `<span class="usage-table-model">${escapeHtml(point.modelName || point.canonicalModelName || '—')}</span>`;
             const separator = '<span class="usage-preset-separator">·</span>';
             const primaryDetail = kind === 'multi' ? model : `<span class="usage-preset-price">${price}</span>`;
             const secondaryDetail = kind === 'multi' ? `${separator}<span class="usage-preset-price">${price}</span>` : '';
             const values = {
                 identity: `<div class="usage-preset-primary-line">${platformCellHtml(point)}${primaryDetail}</div>` +
-                    `<div class="usage-preset-secondary-line"><span>${escapeHtml(point.platformType || '—')}</span>${separator}${plan}${secondaryDetail}</div>`,
+                    `<div class="usage-preset-secondary-line">${plan}${secondaryDetail}</div>`,
                 metrics: `<div class="usage-preset-metric-primary">${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)}</div>` +
                     `<div class="usage-preset-secondary-line usage-preset-metric-secondary"><span>月用量</span><span>${formatTokenAmount(point.monthlyTokenInM, tokenUnit)}</span></div>`
             };
-            return `<tr data-point-id="${escapeHtml(point.id)}">${columns.map((column) => {
+            return `<tr data-point-id="${escapeHtml(point.slug)}">${columns.map((column) => {
                 return `<td class="${column.key === 'metrics' ? 'usage-preset-metrics' : 'usage-preset-identity'}">${values[column.key]}</td>`;
             }).join('')}</tr>`;
         }).join('') : `<tr><td class="usage-table-empty" colspan="${columns.length}">当前暂无可比较的套餐。</td></tr>`;
@@ -571,7 +580,7 @@
             return [];
         }
         host.hidden = false;
-        host.innerHTML = `<div class="usage-preset-heading"><div><p class="usage-eyebrow">快速选择</p><h3>${escapeHtml(normalized.title)}</h3>${normalized.description ? `<p>${escapeHtml(normalized.description)}</p>` : ''}</div><div class="usage-preset-heading-actions"><span class="usage-preset-note">固定对比 · 不受下方筛选影响</span><div class="usage-segments usage-preset-scope-control" role="group" aria-label="预置对比平台范围"><button type="button" data-preset-platform-scope="featured" class="${scope === 'featured' ? 'is-active' : ''}" aria-pressed="${scope === 'featured'}">仅显示精选平台</button><button type="button" data-preset-platform-scope="all" class="${scope === 'all' ? 'is-active' : ''}" aria-pressed="${scope === 'all'}">显示所有平台</button></div></div></div>` +
+        host.innerHTML = `<div class="usage-preset-heading"><div><h3>${escapeHtml(normalized.title)}</h3>${normalized.description ? `<p>${escapeHtml(normalized.description)}</p>` : ''}</div><div class="usage-preset-heading-actions"><span class="usage-preset-note">固定对比 · 不受下方筛选影响</span><div class="usage-segments usage-preset-scope-control" role="group" aria-label="预置对比平台范围"><button type="button" data-preset-platform-scope="featured" class="${scope === 'featured' ? 'is-active' : ''}" aria-pressed="${scope === 'featured'}">仅显示精选平台</button><button type="button" data-preset-platform-scope="all" class="${scope === 'all' ? 'is-active' : ''}" aria-pressed="${scope === 'all'}">显示所有平台</button></div></div></div>` +
             (singles.length ? `<div class="usage-preset-grid usage-preset-grid--single">${singles.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope)).join('')}</div>` : '') +
             (multis.length ? `<div class="usage-preset-grid usage-preset-grid--multi">${multis.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope)).join('')}</div>` : '');
         return normalized.groups;
@@ -599,16 +608,19 @@
 
     function tooltipHtml(point, benchmark, colorMode, tokenUnit) {
         const modality = point.multimodal === true ? '多模态' : point.multimodal === false ? '纯文本' : '多模态状态未知';
-        const billing = point.billingType === 'subscription' ? escapeHtml(point.plan || '订阅') : '按量 API';
-        const platformLine = `${escapeHtml(point.vendor)} · ${billing}`;
-        const modelLine = escapeHtml(point.model);
-        const fee = point.billingType === 'subscription'
+        const billing = point.billingMode === 'subscription' ? escapeHtml(point.planName || '订阅') : '按量 API';
+        const platformLine = `${escapeHtml(point.platformName)} · ${billing}`;
+        const modelLine = escapeHtml(point.modelName);
+        const fee = point.billingMode === 'subscription'
             ? `<div>月费：¥${formatNumber(point.monthlyFeeCny, 2)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
+            : '';
+        const apiPricing = point.billingMode === 'payg'
+            ? `<div>API 单价：${escapeHtml(formatApiPricing(point.apiPricing))}</div>`
             : '';
         const heading = colorMode === 'model'
             ? `<strong>${modelLine}</strong><div>${platformLine}</div>`
             : `<strong>${platformLine}</strong><div>${modelLine}</div>`;
-        return `<div class="usage-tooltip">${heading}<div>${modality}</div>${fee}` +
+        return `<div class="usage-tooltip">${heading}<div>${modality}</div>${fee}${apiPricing}` +
             `<div>单位价格：${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)} Token</div>` +
             `<div>${scoreText(point, benchmark)}</div></div>`;
     }
@@ -687,7 +699,7 @@
         const grouped = new Map();
         points.forEach((point) => {
             const key = getPointColorKey(point, colorMode);
-            const label = colorMode === 'model' ? point.canonicalModel : getPointLabelText(point, 'vendor');
+            const label = colorMode === 'model' ? point.canonicalModelName : getPointLabelText(point, 'vendor');
             if (!grouped.has(key)) grouped.set(key, { label, data: [] });
             grouped.get(key).data.push(mapPoint(point));
         });
@@ -709,8 +721,8 @@
     }
 
     function getUnitPriceBarAxisLabel(point) {
-        const plan = point.billingType === 'subscription' ? (point.plan || '订阅') : '按量 API';
-        return `${point.vendor || '未知平台'} · ${plan} · ${point.model || point.canonicalModel || '未知模型'}`;
+        const plan = point.billingMode === 'subscription' ? (point.planName || '订阅') : '按量 API';
+        return `${point.platformName || '未知平台'} · ${plan} · ${point.modelName || point.canonicalModelName || '未知模型'}`;
     }
 
     function buildUnitPriceBarSeries(points, colorMode, colors, tokenUnit) {
@@ -718,7 +730,7 @@
         const grouped = new Map();
         points.forEach((point, index) => {
             const key = getPointColorKey(point, colorMode);
-            const label = colorMode === 'model' ? point.canonicalModel : getPointLabelText(point, 'vendor');
+            const label = colorMode === 'model' ? point.canonicalModelName : getPointLabelText(point, 'vendor');
             if (!grouped.has(key)) grouped.set(key, { label, data: Array(points.length).fill(null) });
             grouped.get(key).data[index] = {
                 value: unitPriceInTokenUnit(point.unitPriceCnyPerM, tokenUnit),
@@ -785,20 +797,30 @@
         if (container.__usageMountPromise) return container.__usageMountPromise;
         container.__usageMountPromise = (async () => {
             renderShell(container);
-            const [echarts, response, presetConfig] = await Promise.all([
-                loadEcharts(), fetch('model-comparison.json'), loadPresetConfig()
+            const [echarts, platformResponse, planResponse, modelResponse, relationResponse, presetConfig] = await Promise.all([
+                loadEcharts(),
+                fetch('platforms.json', { cache: 'no-store' }),
+                fetch('plans.json', { cache: 'no-store' }),
+                fetch('models.json', { cache: 'no-store' }),
+                fetch('plan-models.json', { cache: 'no-store' }),
+                loadPresetConfig()
             ]);
-            if (!response.ok) throw new Error(`对比数据加载失败：HTTP ${response.status}`);
-            const dataset = await response.json();
-            const points = Array.isArray(dataset.points) ? dataset.points : [];
+            const responses = [platformResponse, planResponse, modelResponse, relationResponse];
+            const labels = ['platforms.json', 'plans.json', 'models.json', 'plan-models.json'];
+            responses.forEach((response, index) => {
+                if (!response.ok) throw new Error(`${labels[index]} 加载失败：HTTP ${response.status}`);
+            });
+            const documents = await Promise.all(responses.map(response => response.json()));
+            const context = root.EntityData.buildContext(...documents);
+            const rate = root.appConfig && root.appConfig.usdToCnyRate || 6.8;
+            const points = root.EntityData.buildComparisonPoints(context, rate);
             const platformMap = new Map();
             points.forEach((point) => {
-                const label = point.platformType ? `${point.vendor} · ${point.platformType}` : point.vendor;
-                platformMap.set(getPointPlatformKey(point), label);
+                platformMap.set(getPointPlatformKey(point), point.platformName);
             });
             const platforms = [...platformMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
             const modelMap = new Map();
-            points.forEach((point) => modelMap.set(point.canonicalModelId, point.canonicalModel));
+            points.forEach((point) => modelMap.set(point.modelSlug, point.canonicalModelName));
             const models = [...modelMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
             const platformColors = buildVendorColorMap(platforms.map(([key]) => key));
             const modelColors = buildModelColorMap(models.map(([id]) => id));
@@ -950,7 +972,7 @@
                 const entries = new Map();
                 visiblePoints.forEach((point) => {
                     const key = getPointColorKey(point, state.colorMode);
-                    const label = byModel ? point.canonicalModel : getPointLabelText(point, 'vendor');
+                    const label = byModel ? point.canonicalModelName : getPointLabelText(point, 'vendor');
                     entries.set(key, label);
                 });
                 return { colors, entries };
@@ -1261,5 +1283,5 @@
         return container.__usageMountPromise;
     }
 
-    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SELECTIONS, DEFAULT_MODEL_IDS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SLUGS, DEFAULT_MODEL_SLUGS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, formatApiPricing, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });

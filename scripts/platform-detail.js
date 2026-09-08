@@ -3,18 +3,22 @@
     typeof require === 'function'
       ? require('./platform-catalog.js')
       : root.PlatformCatalog;
-  const api = factory(catalog || {});
+  const entityData =
+    typeof require === 'function'
+      ? require('./entity-data.js')
+      : root.EntityData;
+  const api = factory(catalog || {}, entityData || {});
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = api;
   } else {
     root.PlatformDetail = api;
   }
-})(typeof globalThis !== 'undefined' ? globalThis : this, function (PlatformCatalog) {
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (PlatformCatalog, EntityData) {
   const DEFAULT_MONITOR_API_BASE = 'https://api.dreamfree.space/vc';
 
   let options = {
     getPlans: () => [],
-    getPaygPricing: () => null,
+    getEntityContext: () => null,
     monitorApiBase: DEFAULT_MONITOR_API_BASE,
     onJumpPlansTable: () => {},
     isPlatformPinned: () => false,
@@ -60,6 +64,51 @@
     const num = Number(amount);
     const text = Number.isInteger(num) ? String(num) : String(num);
     return `${cur}${text}`;
+  }
+
+  function formatApiPrice(value, currency) {
+    if (typeof value !== 'number' || !Number.isFinite(value)) return '—';
+    return `${currency || '¥'}${value.toLocaleString('zh-CN', { maximumFractionDigits: 6 })}`;
+  }
+
+  function buildApiPricingSectionHtml(groups) {
+    const validGroups = Array.isArray(groups) ? groups.filter((group) => group && Array.isArray(group.rows) && group.rows.length) : [];
+    if (!validGroups.length) return '';
+    const content = validGroups.map((group) => {
+      const rows = group.rows.map((row) => {
+        const note = row.note
+          ? `<div class="platform-detail-api-model-note">${esc(row.note)}</div>`
+          : '';
+        return (
+          `<tr>` +
+          `<td><span class="platform-detail-api-model-name">${esc(row.modelName)}</span>${note}</td>` +
+          `<td>${esc(formatApiPrice(row.inputPerM, row.currency))}</td>` +
+          `<td>${esc(formatApiPrice(row.cachePerM, row.currency))}</td>` +
+          `<td>${esc(formatApiPrice(row.outputPerM, row.currency))}</td>` +
+          `<td>${esc(formatApiPrice(row.unitPriceCnyPerM, '¥'))}</td>` +
+          `</tr>`
+        );
+      }).join('');
+      const note = group.planNote
+        ? `<p class="platform-detail-api-note">${esc(group.planNote)}</p>`
+        : '';
+      return (
+        `<div class="platform-detail-api-group">` +
+        (validGroups.length > 1 ? `<h4>${esc(group.planName)}</h4>` : '') +
+        `<div class="platform-detail-api-table-wrap">` +
+        `<table class="platform-detail-api-table">` +
+        `<thead><tr><th scope="col">模型</th><th scope="col">输入</th><th scope="col">缓存</th><th scope="col">输出</th><th scope="col">综合</th></tr></thead>` +
+        `<tbody>${rows}</tbody></table></div>${note}</div>`
+      );
+    }).join('');
+    return (
+      `<section class="platform-detail-section" data-section="api-pricing" aria-labelledby="platformDetailApiPricingHeading">` +
+      `<h3 id="platformDetailApiPricingHeading" class="platform-detail-section-title">按量 API 定价</h3>` +
+      `<p class="platform-detail-api-unit">单位：每百万 Token；综合价按站点统一工作负载计算</p>` +
+      content +
+      `<a class="platform-detail-avail-link" href="index.html?view=usage">在额度/价格对比中查看 →</a>` +
+      `</section>`
+    );
   }
 
   function formatPlanPriceHtml(plan) {
@@ -123,8 +172,7 @@
 
     const rows = active
       .map(plan => {
-        const planName = esc(plan && plan.plan);
-        const type = esc((plan && plan.type) || 'Coding Plan');
+        const planName = esc(plan && plan.name);
         const rating = Math.max(0, Math.min(5, Number(plan && plan.rating) || 0));
         const stars = rating > 0 ? '⭐️'.repeat(rating) : '';
         const ratingHtml = stars
@@ -146,7 +194,6 @@
           `<div class="platform-detail-plan-title-row">` +
           `<span class="platform-detail-plan-name">${planName}</span>` +
           ratingHtml +
-          `<span class="platform-detail-plan-type-badge">${type}</span>` +
           `</div>` +
           summaryHtml +
           `</div>` +
@@ -302,7 +349,7 @@
       ? `<a class="platform-detail-action" href="${esc(actionUrl)}" target="_blank" rel="noopener noreferrer">去官网 →</a>`
       : '';
     const platformId =
-      platform && typeof platform.id === 'string' ? platform.id.trim() : '';
+      platform && typeof platform.slug === 'string' ? platform.slug.trim() : '';
     const pinned =
       typeof context.isPinned === 'boolean'
         ? context.isPinned
@@ -321,8 +368,8 @@
     const rawPlans = Array.isArray(context.plans) ? context.plans : [];
     const vendorPlans =
       typeof PlatformCatalog.collectPlansForVendor === 'function'
-        ? PlatformCatalog.collectPlansForVendor(rawPlans, platform && platform.name)
-        : rawPlans.filter(p => p && p.vendor === (platform && platform.name));
+        ? PlatformCatalog.collectPlansForVendor(rawPlans, platform && platform.slug)
+        : rawPlans.filter(p => p && p.platformSlug === (platform && platform.slug));
 
     const dims = dimensionMeta()
       .map(({ key, label }) => {
@@ -388,12 +435,7 @@
       `<h3 id="platformDetailDimsHeading" class="platform-detail-section-title">评价详解</h3>` +
       `<ul class="platform-detail-dimensions">${dims}</ul>` +
       `</section>` +
-      (typeof PlatformCatalog.buildPaygPricingSectionHtml === 'function'
-        ? PlatformCatalog.buildPaygPricingSectionHtml(
-            context.paygEntry,
-            context.paygModelOrder
-          )
-        : '') +
+      buildApiPricingSectionHtml(context.apiPricingGroups) +
       buildPlansSectionHtml(vendorPlans) +
       buildAvailabilitySectionHtml(platform, monitorRow)
     );
@@ -500,7 +542,7 @@
   function init(userOptions) {
     options = {
       getPlans: () => [],
-      getPaygPricing: () => null,
+      getEntityContext: () => null,
       monitorApiBase: DEFAULT_MONITOR_API_BASE,
       onJumpPlansTable: () => {},
       isPlatformPinned: () => false,
@@ -551,24 +593,19 @@
     const seq = ++openSeq;
     const plans =
       typeof options.getPlans === 'function' ? options.getPlans() || [] : [];
-    const paygPricing =
-      typeof options.getPaygPricing === 'function' ? options.getPaygPricing() : null;
-    const paygEntry =
-      typeof PlatformCatalog.getPaygEntry === 'function'
-        ? PlatformCatalog.getPaygEntry(paygPricing, platform && platform.id)
-        : null;
-    const paygModelOrder =
-      typeof PlatformCatalog.getPaygModelOrderList === 'function'
-        ? PlatformCatalog.getPaygModelOrderList(paygPricing)
+    const entityContext =
+      typeof options.getEntityContext === 'function' ? options.getEntityContext() : null;
+    const apiPricingGroups =
+      entityContext && typeof EntityData.buildApiPricingGroups === 'function'
+        ? EntityData.buildApiPricingGroups(entityContext, platform && platform.slug)
         : [];
     const html = buildDetailBodyHtml(platform, {
       plans,
       monitorRow: null,
-      paygEntry,
-      paygModelOrder,
+      apiPricingGroups,
       isPinned:
         typeof options.isPlatformPinned === 'function'
-          ? !!options.isPlatformPinned(platform && platform.id)
+          ? !!options.isPlatformPinned(platform && platform.slug)
           : false
     });
 
@@ -583,7 +620,7 @@
       document.body.style.overflow = 'hidden';
     }
 
-    openPlatformId = platform.id || null;
+    openPlatformId = platform.slug || null;
     openPlatformName = platform.name || null;
     triggerEl = opts.triggerEl || null;
 
@@ -608,11 +645,10 @@
     body.innerHTML = buildDetailBodyHtml(platform, {
       plans,
       monitorRow,
-      paygEntry,
-      paygModelOrder,
+      apiPricingGroups,
       isPinned:
         typeof options.isPlatformPinned === 'function'
-          ? !!options.isPlatformPinned(platform && platform.id)
+          ? !!options.isPlatformPinned(platform && platform.slug)
           : false
     });
   }
@@ -624,6 +660,7 @@
     isOpen,
     getOpenPlatformId,
     syncPinUi,
+    buildApiPricingSectionHtml,
     buildDetailBodyHtml
   };
 });

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GLM-5.3 在 AA 14 模型对比中综合第 5，Agentic 第 2：双榜成绩出炉</title>
+  <meta name="description" content="Artificial Analysis 于 8 月 18 日收录 GLM-5.3（max）评测：综合智能 60 分、在这份 14 模型对比集内第 5，Agentic 59 分第 2；第三方 DeepSWE 榜单 69%±3% 并列第一梯队；API 已开放，输入 ¥8、输出 ¥28（每百万 tokens）。" />
+  <link rel="icon" href="../../../favicon.ico?v=20260818" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=20260818" />
+<style>
+    body.article-page {
+      font-size: 17px;
+      line-height: 1.78;
+      padding: clamp(18px, 4vw, 36px) clamp(14px, 3.5vw, 28px) 56px;
+    }
+
+    .doc-wrap {
+      max-width: calc(64rem + 14.5rem + 2.5rem);
+      margin: 0 auto;
+    }
+
+    .doc-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .doc-toc-aside.doc-toc-aside--desktop {
+      display: none;
+    }
+
+    .doc-toc.doc-toc--inline {
+      display: block;
+    }
+
+    article.doc .doc-toc ol,
+    article.doc .doc-toc ul {
+      margin-bottom: 0;
+      padding-left: 0;
+      color: inherit;
+    }
+
+    article.doc .doc-toc li {
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    article.doc .doc-toc li::marker {
+      color: rgba(15, 118, 110, 0.45);
+    }
+
+    article.doc .doc-toc a,
+    article.doc .doc-toc a:hover {
+      border-bottom: none;
+      text-decoration: none;
+    }
+
+    article.doc {
+      flex: 1 1 auto;
+      min-width: 0;
+      position: relative;
+      padding: clamp(1.5rem, 4.2vw, 2.85rem);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      background: linear-gradient(
+        155deg,
+        rgba(255, 253, 248, 0.97) 0%,
+        rgba(255, 249, 240, 0.9) 45%,
+        rgba(239, 246, 244, 0.55) 100%
+      );
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    article.doc::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(
+        90deg,
+        var(--accent-primary),
+        rgba(198, 107, 26, 0.85)
+      );
+      opacity: 0.92;
+    }
+
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      padding: 0.6rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #3a2000;
+      background: var(--accent-primary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+    }
+
+    .back-home-btn:hover {
+      opacity: 0.85;
+      transform: translateX(-2px);
+    }
+
+    .doc-kicker {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc h1 {
+      font-size: clamp(1.45rem, 4.2vw, 1.95rem);
+      font-weight: 700;
+      line-height: 1.32;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin: 0 0 0.45rem;
+      max-width: 28em;
+    }
+
+    article.doc .doc-updates {
+      margin: 0 0 1.05rem;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-updates time {
+      font-variant-numeric: tabular-nums;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    article.doc .lead {
+      font-size: 0.98em;
+      color: var(--text-secondary);
+      margin: 0 0 0.65rem;
+    }
+
+    article.doc p {
+      margin: 0 0 1rem;
+      color: var(--text-primary);
+    }
+
+    article.doc h2 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 2.35rem 0 0.85rem;
+      padding: 0 0 0 0.85rem;
+      border-left: 4px solid var(--accent-primary);
+      line-height: 1.35;
+    }
+
+    article.doc h2:first-of-type {
+      margin-top: 1.85rem;
+    }
+
+    article.doc h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #243047;
+      margin: 1.45rem 0 0.55rem;
+    }
+
+    article.doc h2[id],
+    article.doc h3[id] {
+      scroll-margin-top: 1.25rem;
+    }
+
+    .doc-toc {
+      margin: 0;
+      padding: 0.85rem 0.95rem 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: rgba(255, 253, 248, 0.92);
+      box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.06));
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .doc-toc-title {
+      margin: 0 0 0.55rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+
+    .doc-toc ol {
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .doc-toc > ol {
+      list-style: none;
+    }
+
+    .doc-toc > ol > li {
+      margin-bottom: 0.45rem;
+    }
+
+    .doc-toc > ol > li > a {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc ol ol {
+      margin: 0.3rem 0 0.1rem;
+      padding-left: 0.85rem;
+      list-style: none;
+      border-left: 2px solid rgba(15, 118, 110, 0.15);
+    }
+
+    .doc-toc ol ol li {
+      margin-bottom: 0.22rem;
+    }
+
+    .doc-toc ol ol a {
+      font-weight: 400;
+      color: var(--text-secondary);
+      font-size: 0.96em;
+    }
+
+    .doc-toc li {
+      margin-bottom: 0.25rem;
+    }
+
+    .doc-toc a {
+      display: block;
+      border-bottom: none;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .doc-toc a:hover {
+      color: var(--accent-primary);
+      text-decoration: none;
+      border-bottom: none;
+    }
+
+    .doc-toc.doc-toc--inline {
+      margin: 0 0 1.75rem;
+      padding: 1rem 1.15rem 1.05rem;
+      font-size: 0.92em;
+      line-height: 1.55;
+      background: rgba(15, 118, 110, 0.05);
+      box-shadow: none;
+    }
+
+    .doc-toc.doc-toc--inline .doc-toc-title {
+      font-size: 0.88rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li {
+      margin-bottom: 0.5rem;
+    }
+
+    .doc-toc.doc-toc--inline > ol > li > a {
+      display: inline;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .doc-toc.doc-toc--inline ol ol {
+      margin: 0.35rem 0 0.15rem;
+      padding-left: 1.15rem;
+      list-style: decimal;
+      border-left: none;
+    }
+
+    .doc-toc.doc-toc--inline ol ol li {
+      margin-bottom: 0.3rem;
+    }
+
+    .doc-toc.doc-toc--inline ol ol a {
+      display: inline;
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: 1em;
+    }
+
+    .doc-toc.doc-toc--inline a:hover {
+      color: var(--accent-primary);
+    }
+
+    article.doc ul,
+    article.doc ol {
+      margin: 0 0 1.1rem;
+      padding-left: 1.35rem;
+      color: var(--text-primary);
+    }
+
+    article.doc li {
+      margin-bottom: 0.45rem;
+      padding-left: 0.15rem;
+    }
+
+    article.doc li::marker {
+      color: rgba(15, 118, 110, 0.55);
+    }
+
+    article.doc ol li::marker {
+      color: rgba(15, 118, 110, 0.55);
+      font-weight: 600;
+    }
+
+    article.doc strong {
+      font-weight: 600;
+      color: #1a2436;
+    }
+
+    article.doc a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    article.doc a:hover {
+      color: #0d9488;
+      border-bottom-color: rgba(13, 148, 136, 0.55);
+    }
+
+    article.doc table {
+      width: fit-content;
+      max-width: 100%;
+      display: block;
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+      border-collapse: collapse;
+      font-size: 0.9em;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    article.doc thead {
+      background: rgba(15, 118, 110, 0.08);
+    }
+
+    article.doc th {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.88em;
+      color: var(--text-secondary);
+      border-bottom: 2px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    article.doc td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-primary);
+    }
+
+    article.doc tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    article.doc tbody tr:hover {
+      background: rgba(15, 118, 110, 0.04);
+    }
+
+    .doc-blockquote {
+      margin: 1.5rem 0;
+      padding: 0.85rem 1.15rem;
+      border-left: 4px solid var(--accent-primary);
+      background: rgba(15, 118, 110, 0.06);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 0.95em;
+      color: var(--text-secondary);
+    }
+
+    .doc-blockquote p:last-child,
+    .doc-blockquote ul:last-child {
+      margin-bottom: 0;
+    }
+
+    article.doc img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1rem 0 0.35rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    article.doc figure {
+      margin: 1rem 0 0.15rem;
+    }
+
+    article.doc .img-source {
+      margin: 0 0 1.35rem;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: var(--text-tertiary);
+      word-break: break-all;
+    }
+
+    article.doc .img-source a {
+      font-weight: 500;
+      font-size: inherit;
+      color: var(--text-tertiary);
+      border-bottom-color: rgba(15, 118, 110, 0.22);
+    }
+
+    article.doc .img-source a:hover {
+      color: var(--accent-primary);
+      border-bottom-color: rgba(13, 148, 136, 0.45);
+    }
+
+    article.doc code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+      background: rgba(15, 118, 110, 0.06);
+      padding: 0.1em 0.35em;
+      border-radius: 0.25em;
+    }
+
+    article.doc .doc-source {
+      margin-top: 2.25rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--text-tertiary);
+    }
+
+    article.doc .doc-source a {
+      color: var(--accent-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(15, 118, 110, 0.35);
+    }
+
+    ::selection {
+      background: rgba(15, 118, 110, 0.18);
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 1023px) {
+      .doc-wrap {
+        max-width: 64rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .doc-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: clamp(1.25rem, 2.5vw, 2rem);
+      }
+
+      .doc-toc.doc-toc--inline {
+        display: none;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop {
+        display: block;
+        flex: 0 0 13.25rem;
+        width: 13.25rem;
+        position: sticky;
+        top: 1.25rem;
+        max-height: calc(100vh - 2.5rem);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(15, 118, 110, 0.35) transparent;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .doc-toc-aside.doc-toc-aside--desktop::-webkit-scrollbar-thumb {
+        background: rgba(15, 118, 110, 0.28);
+        border-radius: 999px;
+      }
+
+      article.doc {
+        flex: 1 1 auto;
+        max-width: 64rem;
+      }
+    }
+  
+    .back-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-nav .back-home-btn {
+      margin-bottom: 0;
+    }
+
+  </style>
+</head>
+<body class="article-page">
+  <div class="doc-wrap">
+    <nav class="back-nav" aria-label="返回">
+      <a href="../../../" class="back-home-btn">← 返回主页</a>
+      <a href="../../" class="back-home-btn">文章列表</a>
+    </nav>
+    <div class="doc-layout">
+      <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="文章目录">
+        <nav class="doc-toc" aria-label="目录">
+          <p class="doc-toc-title">目录</p>
+          <ol>
+            <li><a href="#sec-deepswe">一、先回看 DeepSWE</a></li>
+            <li><a href="#sec-intelligence">二、综合智能榜</a></li>
+            <li><a href="#sec-agentic">三、Agentic Index</a></li>
+            <li><a href="#sec-tiers">四、三榜都在第一梯队</a></li>
+            <li><a href="#sec-summary">五、总结</a></li>
+          </ol>
+        </nav>
+      </aside>
+
+      <article class="doc">
+        <p class="doc-kicker">产品更新 · GLM-5.3</p>
+        <h1>GLM-5.3 在 AA 14 模型对比中综合第 5，Agentic 第 2：双榜成绩出炉</h1>
+        <p class="doc-updates">更新日期：<time datetime="2026-08-23">2026.8.23</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
+
+        <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;">
+          <p>本次核心更新：</p>
+          <ul>
+            <li>Artificial Analysis 于 8 月 18 日收录 GLM-5.3（max）评测，当前榜单版本为 Intelligence Index（综合智能指数）v4.1.1。</li>
+            <li>综合智能榜：GLM-5.3 显示 60 分，在这份 14 模型对比集内排第 5。</li>
+            <li>Agentic Index（智能体指数）：GLM-5.3 显示 59 分，在这份 14 模型对比集内排第 2，仅次于 Claude Opus 5。</li>
+            <li>第三方 DeepSWE 实时榜单：GLM-5.3 为 69%±3%，与 Kimi K3 并列第一梯队。</li>
+            <li>API 已于 8 月 19 日开放，定价与 GLM-5.2 一致：输入 ¥8、输出 ¥28（每百万 tokens）；完整权重按官方计划于 8 月 28 日开源。</li>
+          </ul>
+        </div>
+
+        <p class="lead">8 月 14 日智谱发布 GLM-5.3 后，独立评测机构 Artificial Analysis（下称 AA）在 8 月 18 日收录了 GLM-5.3（max）的评测结果。这是第三方视角的独立评测补充，不是模型再次发布。AA 把各家模型放进同一套任务里跑分，用 Intelligence Index 给出综合分数，再单独加权出更接近工具调用和长程任务表现的 Agentic Index。当前版本 v4.1.1 下，GLM-5.3 综合智能 60 分、Agentic 59 分，在 8 月 22 日截图的这份 14 模型对比集内分别排第 5 和第 2。</p>
+
+                <nav class="doc-toc doc-toc--inline" aria-label="目录">
+          <p class="doc-toc-title">目录</p>
+          <ol>
+            <li><a href="#sec-deepswe">一、先回看 DeepSWE</a></li>
+            <li><a href="#sec-intelligence">二、综合智能榜</a></li>
+            <li><a href="#sec-agentic">三、Agentic Index</a></li>
+            <li><a href="#sec-tiers">四、三榜都在第一梯队</a></li>
+            <li><a href="#sec-summary">五、总结</a></li>
+          </ol>
+        </nav>
+
+<h2 id="sec-deepswe">一、先回看 DeepSWE：第三方榜 69%±3%，并列第一梯队</h2>
+<p>在上一篇 <a href="https://vibecoding.dreamfree.space/articles/news/20260814_glm_5_3/" rel="noopener noreferrer">《GLM-5.3 发布》</a> 里已经梳理过官方跑分：提升几乎全部来自后训练，最突出的是长程软件工程任务。官方口径里，DeepSWE v1.1 从 GLM-5.2 的 46.2 提升到 66.9，Terminal Bench 3.0 从 4.6 提升到 28.3，Agents' Last Exam（CLI）从 23.8 提升到 28.5。</p>
+<p>第三方榜单 DeepSWE（<a href="https://deepswe.datacurve.ai/" rel="noopener noreferrer">deepswe.datacurve.ai</a>）用统一环境重新跑了一遍：113 个任务、覆盖 91 个仓库、5 种语言，所有模型都跑在 mini-swe-agent 上，保证执行环境一致。榜单收录 25 个模型配置，截图展示其中 18 个；下面列出与本文相关的 11 个配置。对应 v1.1，更新于 8 月 20 日：</p>
+<figure class="doc-figure"><img src="assets/deepswe-leaderboard-1.jpeg" alt="DeepSWE 实时榜单：GLM-5.3 与 Kimi K3 同处 69% 第一梯队" loading="lazy" /></figure>
+<p class="img-source">图片来源：<a href="https://deepswe.datacurve.ai/" rel="noopener noreferrer">DeepSWE 实时榜单</a></p>
+<figure class="doc-figure"><img src="assets/deepswe-leaderboard-2.jpeg" alt="DeepSWE 榜单明细：GLM-5.3 69%±3%、平均成本约 ¥28（$3.99）" loading="lazy" /></figure>
+<p class="img-source">图片来源：<a href="https://deepswe.datacurve.ai/" rel="noopener noreferrer">DeepSWE 实时榜单</a></p>
+<table>
+<thead><tr><th>模型</th><th>DeepSWE Pass@1</th></tr></thead>
+<tbody>
+<tr><td>Claude Opus 5 (max)</td><td>74%±4%</td></tr>
+<tr><td>GPT-5.6 Sol (max)</td><td>73%±3%</td></tr>
+<tr><td>Fable 5 (max)</td><td>70%±4%</td></tr>
+<tr><td>GLM-5.3 (max)</td><td>69%±3%</td></tr>
+<tr><td>Kimi K3 (max)</td><td>69%±5%</td></tr>
+<tr><td>GPT-5.6 Luna (max)</td><td>67%±4%</td></tr>
+<tr><td>GPT-5.5 (xhigh)</td><td>67%±6%</td></tr>
+<tr><td>Grok 4.6 (xhigh)</td><td>67%±2%</td></tr>
+<tr><td>Gemini 3.7 Flash (high)</td><td>65%±2%</td></tr>
+<tr><td>DeepSeek V4 Pro (max)</td><td>63%±6%</td></tr>
+<tr><td>GLM-5.2 (max)</td><td>44%±2%</td></tr>
+</tbody>
+</table>
+<p>这份榜单里，第一梯队是 74%–69%：Claude Opus 5、GPT-5.6 Sol、Fable 5、GLM-5.3、Kimi K3。GLM-5.3 的 69%±3% 与 Kimi K3 的 69%±5% 同档；第二梯队则是 GPT-5.6 Luna、GPT-5.5、Grok 4.6、Gemini 3.7 Flash、DeepSeek V4 Pro，分数为 67%–63%。GLM-5.2 在同一环境里只有 44%±2%，与官方口径 46.2 → 66.9 的跃升方向一致。</p>
+<p>成本上，GLM-5.3 单任务平均成本约 ¥28（$3.99），是第一梯队五款里最低的；Kimi K3 约 ¥33（$4.65），其余三款都在约 ¥56（$8）以上。榜单上的 69%±3% 与官方 66.9 不是同一套环境：官方是智谱自测口径，Datacurve 用 mini-swe-agent 统一重跑，两者不能直接比较。</p>
+<p>DeepSWE 这类基准考的不是「生成一段代码」，而是持续定位问题、修改、运行、再验证的完整闭环。长任务里，前面几十步都做对、最后一步改错，整条轨迹就会失败；GLM-5.3 的后训练路线正是围绕这类长程执行稳定性加码。AA 的 Agentic Index 测的是同一方向：工具使用、规划与复杂任务执行。66.9、69%±3% 与 59 分属不同基准、不同评分体系，不能直接比较数值。</p>
+<h2 id="sec-intelligence">二、综合智能榜：整数分 60，在这份对比集内第 5</h2>
+<p>AA 的 Intelligence Index v4.1.1 由 9 项评测加权得出，覆盖编程、数学、科学、长上下文等能力，包括 GDPval-AA v2、τ³-Banking、Terminal-Bench v2.1、SciCode、Humanity's Last Exam、GPQA Diamond 等。8 月 22 日截图的 14 个模型里，GLM-5.3 显示为 60 分：</p>
+<table>
+<thead><tr><th>模型</th><th>Intelligence Index</th></tr></thead>
+<tbody>
+<tr><td>Claude Opus 5 (max)</td><td>63</td></tr>
+<tr><td>GPT-5.6 Sol (max)</td><td>61</td></tr>
+<tr><td>Grok 4.6 (high)</td><td>61</td></tr>
+<tr><td>Kimi K3 (max)</td><td>60</td></tr>
+<tr><td>GLM-5.3 (max)</td><td>60</td></tr>
+<tr><td>Qwen3.8 2.4T A95B</td><td>58</td></tr>
+<tr><td>Muse Spark 1.2 (xhigh)</td><td>57</td></tr>
+<tr><td>GPT-5.6 Terra (max)</td><td>57</td></tr>
+<tr><td>Gemini 3.7 Flash (high)</td><td>56</td></tr>
+<tr><td>DeepSeek V4 Pro 0813 (max)</td><td>53</td></tr>
+<tr><td>GPT-5.6 Luna (max)</td><td>52</td></tr>
+<tr><td>Qwen3.8 27B (xhigh)</td><td>52</td></tr>
+<tr><td>DeepSeek V4 Flash 0731 (max)</td><td>52</td></tr>
+<tr><td>MiniMax-M3</td><td>45</td></tr>
+</tbody>
+</table>
+<figure class="doc-figure"><img src="assets/aa-intelligence-index.png" alt="Artificial Analysis Intelligence Index v4.1.1：GLM-5.3 显示 60 分，14 模型对比集内第 5" loading="lazy" /></figure>
+<p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?models=muse-spark-1-2%2Cminimax-m3%2Cgpt-5-6-luna%2Cdeepseek-v4-pro%2Cqwen3-8-2-4t-a95b%2Cqwen3-8-27b%2Cgemini-3-7-flash%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cgrok-4-6%2Cglm-5-3%2Cgpt-5-6-sol%2Ckimi-k3%2Cdeepseek-v4-flash#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis · Intelligence Index</a></p>
+<p>Kimi K3 与 GLM-5.3 同为 60 分，Kimi K3 第 4、GLM-5.3 第 5。再往上是 Grok 4.6 和 GPT-5.6 Sol（均显示 61）、Claude Opus 5（63）。往下看，Qwen3.8 2.4T A95B 为 58，DeepSeek V4 Pro 0813 为 53。</p>
+<p>在这份对比集内，国产模型里 GLM-5.3 紧贴 Kimi K3，明显高于 Qwen3.8 2.4T A95B 和 DeepSeek V4 Pro；整体落后于 Claude Opus 5、GPT-5.6 Sol、Grok 4.6 三款第一梯队。</p>
+<h2 id="sec-agentic">三、Agentic Index：整数分 59，在这份对比集内第 2</h2>
+<p>Agentic Index 把工具使用、规划、自主执行和复杂工作任务相关的评测（GDPval-AA v2、τ³-Banking 等）加权成单一分数，和综合智能榜不是同一把尺子。GLM-5.3 显示 59 分：</p>
+<table>
+<thead><tr><th>模型</th><th>Agentic Index</th></tr></thead>
+<tbody>
+<tr><td>Claude Opus 5 (max)</td><td>59</td></tr>
+<tr><td>GLM-5.3 (max)</td><td>59</td></tr>
+<tr><td>Grok 4.6 (high)</td><td>59</td></tr>
+<tr><td>GPT-5.6 Sol (max)</td><td>58</td></tr>
+<tr><td>Qwen3.8 2.4T A95B</td><td>57</td></tr>
+<tr><td>Kimi K3 (max)</td><td>54</td></tr>
+<tr><td>Qwen3.8 27B (xhigh)</td><td>51</td></tr>
+<tr><td>GPT-5.6 Terra (max)</td><td>50</td></tr>
+<tr><td>DeepSeek V4 Pro 0813 (max)</td><td>50</td></tr>
+<tr><td>Muse Spark 1.2 (xhigh)</td><td>49</td></tr>
+<tr><td>DeepSeek V4 Flash 0731 (max)</td><td>48</td></tr>
+<tr><td>GPT-5.6 Luna (max)</td><td>47</td></tr>
+<tr><td>Gemini 3.7 Flash (high)</td><td>45</td></tr>
+<tr><td>MiniMax-M3</td><td>36</td></tr>
+</tbody>
+</table>
+<figure class="doc-figure"><img src="assets/aa-agentic-index.png" alt="Artificial Analysis Agentic Index：GLM-5.3 显示 59 分，14 模型对比集内第 2" loading="lazy" /></figure>
+<p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?models=muse-spark-1-2%2Cminimax-m3%2Cgpt-5-6-luna%2Cdeepseek-v4-pro%2Cqwen3-8-2-4t-a95b%2Cqwen3-8-27b%2Cgemini-3-7-flash%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cgrok-4-6%2Cglm-5-3%2Cgpt-5-6-sol%2Ckimi-k3%2Cdeepseek-v4-flash&intelligence=agentic-index#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis · Agentic Index</a></p>
+<p>Claude Opus 5、GLM-5.3、Grok 4.6 都显示 59 分，Claude Opus 5 第 1、GLM-5.3 第 2、Grok 4.6 第 3。GLM-5.3 明显高于 Kimi K3（54）和 DeepSeek V4 Pro 0813（50）；其中 Kimi K3 在 Agentic 榜上的位置比综合榜更靠后。这类任务通常要求模型自己读仓库、跑命令、看报错再修正，评估方式与 Coding Agent 的实际使用更接近。</p>
+<p>这与 DeepSWE 的提升方向一致：长程执行和 agentic 能力是 GLM-5.3 相对最突出的部分。对依赖工具调用、终端操作和长任务自动化的场景，这个位置比综合榜更有参考价值。Agentic 59 分不表示比综合 60 分差，两套指数考察范围不同，不能直接比大小。</p>
+<h2 id="sec-tiers">四、三榜都在第一梯队</h2>
+<p>把 DeepSWE、AA 综合智能、AA Agentic 三张榜放在一起，GLM-5.3 都落在第一梯队：</p>
+<table>
+<thead><tr><th>榜单</th><th>第一梯队</th><th>第二梯队</th><th>GLM-5.3</th></tr></thead>
+<tbody>
+<tr><td>DeepSWE（Datacurve 第三方榜）</td><td>74%–69%：Claude Opus 5、GPT-5.6 Sol、Fable 5、GLM-5.3、Kimi K3</td><td>67%–63%：GPT-5.6 Luna、GPT-5.5、Grok 4.6、Gemini 3.7 Flash、DeepSeek V4 Pro</td><td>69%±3%，并列第一梯队；单任务平均成本约 ¥28（$3.99）第一梯队最低</td></tr>
+<tr><td>AA 综合智能 v4.1.1（14 模型）</td><td>63–60：Claude Opus 5、GPT-5.6 Sol、Grok 4.6、Kimi K3、GLM-5.3</td><td>58–53：Qwen3.8 2.4T、Muse Spark 1.2、GPT-5.6 Terra、Gemini 3.7 Flash、DeepSeek V4 Pro</td><td>60 分，第 5</td></tr>
+<tr><td>AA Agentic v4.1.1（14 模型）</td><td>59：Claude Opus 5、GLM-5.3、Grok 4.6</td><td>58–50：GPT-5.6 Sol、Qwen3.8 2.4T、Kimi K3、Qwen3.8 27B、GPT-5.6 Terra、DeepSeek V4 Pro</td><td>59 分，第 2</td></tr>
+</tbody>
+</table>
+<p>三张榜交叉看：综合智能和 DeepSWE 上，GLM-5.3 与 Kimi K3 基本同档；Agentic 榜上 GLM-5.3 领先 Kimi K3 一个身位（59 对 54）。成本是 DeepSWE 上最突出的优势，第一梯队里只有 GLM-5.3 和 Kimi K3 的单任务平均成本在约 ¥35（$5）以内，GLM-5.3 的约 ¥28（$3.99）最低。</p>
+<p>两个前提需要记住：AA 分数绑定版本（当前 v4.1.1），版本更新后分数会变，不能拿旧版本分数判断涨跌；综合指数、Agentic Index、DeepSWE 是三套不同口径，不能互相比较绝对数值。</p>
+<p>开放情况：GLM Coding Plan 已全量上线 GLM-5.3；API 已于 8 月 19 日开放（模型 ID <code>glm-5.3</code>，支持 OpenAI Chat Completion、OpenAI Response 与 Anthropic Message 三种协议），定价与 GLM-5.2 一致，输入 ¥8、输出 ¥28（每百万 tokens）；完整权重按官方计划于 8 月 28 日开源，官方把安全评估和模型加固放在权重发布之前，截至 8 月 23 日尚未放出。</p>
+<p>想立刻在编辑器或 CLI 里跑 Coding Agent，现在就能通过 Coding Plan 或 API 上手；权重放出后再评估私有化部署。榜单给出的是相对位置，实际体验还要在自己的代码库和工作流里跑一遍。</p>
+<h2 id="sec-summary">五、总结</h2>
+<p>AA 双榜和 DeepSWE 第三方榜补上了两个第三方视角：综合智能在这份 14 模型对比集内第 5、Agentic 第 2、DeepSWE 69%±3% 并列第一梯队。整体能力和长程执行都稳在第一梯队，Agentic 与 DeepSWE 的位次比综合榜更靠前。</p>
+<p>接下来值得关注的是权重开放后的第三方复测、AA 榜单版本更新，以及实际使用中的 Token 消耗和长期稳定性。</p>
+
+                <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">
+          数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br />
+          原文链接 <a href="https://vibecoding.dreamfree.space/articles/news/20260818_glm_5_3_aa/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260818_glm_5_3_aa/</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>

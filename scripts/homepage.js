@@ -3,7 +3,8 @@
         const PLANS_FILE_PATH = './plans.json';
         const CONFIG_FILE_PATH = './config.json';
         const PLATFORMS_FILE_PATH = './platforms.json';
-        const PAYG_PRICING_FILE_PATH = './payg-pricing.json';
+        const MODELS_FILE_PATH = './models.json';
+        const PLAN_MODELS_FILE_PATH = './plan-models.json';
 
         // 全局配置
         let appConfig = {};
@@ -14,7 +15,8 @@
         let allPlans = [];
         let filteredPlans = [];
         let allPlatforms = [];
-        let paygPricing = {};
+        let entityContext = null;
+        let entityDataPromise = null;
         let platformSelectedLabels = [];
         let platformStatusMax = 'paused';
         let platformPinnedIds = [];
@@ -23,7 +25,6 @@
         // 已确认的选择
         let selectedVendors = new Set();
         let selectedModels = new Set();
-        let selectedTypes = new Set();
         let selectedTags = new Set();
         let priceFilters = {
             firstMonth: { min: null, max: null },
@@ -35,7 +36,6 @@
         // 临时选择（下拉框中的操作，只有点确定才提交）
         let tempSelectedVendors = new Set();
         let tempSelectedModels = new Set();
-        let tempSelectedTypes = new Set();
         let tempPriceFilters = {
             firstMonth: { min: null, max: null },
             monthly: { min: null, max: null },
@@ -60,10 +60,6 @@
         let activeDropdown = null;
 
         // DOM 元素
-        const typeBtn = document.getElementById('typeBtn');
-        const typeDropdown = document.getElementById('typeDropdown');
-        const typeCheckboxes = document.getElementById('typeCheckboxes');
-        const typeCount = document.getElementById('typeCount');
         const vendorBtn = document.getElementById('vendorBtn');
         const modelBtn = document.getElementById('modelBtn');
         const vendorDropdown = document.getElementById('vendorDropdown');
@@ -216,19 +212,7 @@
 
         // 初始化筛选器
         function initFilters() {
-            // 类型筛选
-            const types = [...new Set(allPlans.map(p => p.type || 'Coding Plan'))].sort();
-            types.forEach(type => {
-                const div = document.createElement('div');
-                div.className = 'checkbox-item';
-                div.innerHTML = `
-                    <input type="checkbox" id="type_${type}" value="${type}" onchange="updateTypeSelection()">
-                    <label for="type_${type}">${type}</label>
-                `;
-                typeCheckboxes.appendChild(div);
-            });
-
-            const vendors = uniqueStringsInOrder(allPlans.map(p => p['vendor']));
+            const vendors = uniqueStringsInOrder(allPlans.map(p => p.platformName));
             vendors.forEach(vendor => {
                 const div = document.createElement('div');
                 div.className = 'checkbox-item';
@@ -240,7 +224,7 @@
             });
 
             const models = sortModelsForFilterDropdown(
-                uniqueStringsInOrder(allPlans.flatMap(p => p.models || []))
+                uniqueStringsInOrder(allPlans.flatMap(p => p.modelLabels || []))
             );
             models.forEach(model => {
                 const div = document.createElement('div');
@@ -296,10 +280,7 @@
                 activeDropdown = dropdown;
 
                 // 打开下拉框时，初始化临时状态为当前已确认状态
-                if (type === 'type') {
-                    tempSelectedTypes = new Set(selectedTypes);
-                    syncTypeCheckboxes();
-                } else if (type === 'vendor') {
+                if (type === 'vendor') {
                     tempSelectedVendors = new Set(selectedVendors);
                     syncVendorCheckboxes();
                 } else if (type === 'model') {
@@ -325,15 +306,6 @@
             }
         }
 
-        // 同步厂商复选框状态
-        function syncTypeCheckboxes() {
-            document.querySelectorAll('#typeCheckboxes input').forEach(cb => {
-                cb.checked = tempSelectedTypes.has(cb.value);
-            });
-        }
-
-
-
         function syncVendorCheckboxes() {
             document.querySelectorAll('#vendorCheckboxes input').forEach(cb => {
                 cb.checked = tempSelectedVendors.has(cb.value);
@@ -349,10 +321,7 @@
 
         function closeAllDropdowns() {
             // 提交临时状态到正式状态
-            if (activeDropdown === typeDropdown) {
-                selectedTypes = new Set(tempSelectedTypes);
-                updateTypeCount();
-            } else if (activeDropdown === vendorDropdown) {
+            if (activeDropdown === vendorDropdown) {
                 selectedVendors = new Set(tempSelectedVendors);
                 updateVendorCount();
             } else if (activeDropdown === modelDropdown) {
@@ -370,9 +339,7 @@
         // 价格筛选的确定按钮单独处理，避免重复调用 applyFilters
         function closeDropdownWithoutFilter() {
             // 恢复按钮显示到已确认状态
-            if (activeDropdown === typeDropdown) {
-                updateTypeCount();
-            } else if (activeDropdown === vendorDropdown) {
+            if (activeDropdown === vendorDropdown) {
                 updateVendorCount();
             } else if (activeDropdown === modelDropdown) {
                 updateModelCount();
@@ -393,7 +360,6 @@
                 });
             };
 
-            bindToggle(typeBtn, typeDropdown, 'type');
             bindToggle(vendorBtn, vendorDropdown, 'vendor');
             bindToggle(firstMonthPriceBtn, firstMonthPriceDropdown, 'firstMonth');
             bindToggle(monthlyPriceBtn, monthlyPriceDropdown, 'monthly');
@@ -472,16 +438,6 @@
 
         // 更新选择
         // 复选框操作只修改临时状态
-        function updateTypeSelection() {
-            tempSelectedTypes.clear();
-            document.querySelectorAll('#typeCheckboxes input:checked').forEach(cb => {
-                tempSelectedTypes.add(cb.value);
-            });
-            updateTempTypeCount();
-        }
-
-
-
         function updateVendorSelection() {
             tempSelectedVendors.clear();
             document.querySelectorAll('#vendorCheckboxes input:checked').forEach(cb => {
@@ -501,17 +457,6 @@
         }
 
         // 显示临时计数
-        function updateTempTypeCount() {
-            if (tempSelectedTypes.size > 0) {
-                typeCount.textContent = tempSelectedTypes.size;
-                typeCount.style.display = 'inline-block';
-            } else {
-                typeCount.style.display = 'none';
-            }
-        }
-
-
-
         function updateTempVendorCount() {
             if (tempSelectedVendors.size > 0) {
                 vendorCount.textContent = tempSelectedVendors.size;
@@ -531,17 +476,6 @@
         }
 
         // 更新已确认状态的按钮显示
-        function updateTypeCount() {
-            if (selectedTypes.size > 0) {
-                typeCount.textContent = selectedTypes.size;
-                typeCount.style.display = 'inline-block';
-                typeBtn.classList.add('active');
-            } else {
-                typeCount.style.display = 'none';
-                typeBtn.classList.remove('active');
-            }
-        }
-
         function updateVendorCount() {
             if (selectedVendors.size > 0) {
                 vendorCount.textContent = selectedVendors.size;
@@ -644,19 +578,14 @@
                     return false;
                 }
 
-                // 类型筛选
-                if (selectedTypes.size > 0 && !selectedTypes.has(plan.type || 'Coding Plan')) {
-                    return false;
-                }
-
                 // 厂商筛选
-                if (selectedVendors.size > 0 && !selectedVendors.has(plan['vendor'])) {
+                if (selectedVendors.size > 0 && !selectedVendors.has(plan.platformName)) {
                     return false;
                 }
 
                 // 模型筛选（多选时取交集：套餐必须同时包含所有选中的模型）
                 if (selectedModels.size > 0) {
-                    const hasAllModels = [...selectedModels].every(model => plan.models.includes(model));
+                    const hasAllModels = [...selectedModels].every(model => plan.modelLabels.includes(model));
                     if (!hasAllModels) return false;
                 }
 
@@ -1199,13 +1128,6 @@
             updateTempModelCount();
         }
 
-        function resetTypeFilter() {
-            tempSelectedTypes.clear();
-            document.querySelectorAll('#typeCheckboxes input').forEach(cb => cb.checked = false);
-            updateTempTypeCount();
-        }
-
-
         function resetAllFilters() {
             // 重置显示已下线套餐复选框
             document.getElementById('showDiscontinued').checked = false;
@@ -1236,13 +1158,10 @@
                 updateRequestSliderVisuals(type, requestSliders[type].minValue, requestSliders[type].maxValue);
             });
 
-            resetTypeFilter();
             resetVendorFilter();
             resetModelFilter();
 
-            selectedTypes.clear();
             selectedTags.clear();
-            updateTypeCount();
             selectedVendors.clear();
             updateVendorCount();
             selectedModels.clear();
@@ -1277,10 +1196,10 @@
             const getSortValue = (plan) => {
                 switch (column) {
                     case 'vendor':
-                        return plan.vendor || null;
+                        return plan.platformName || null;
                     case 'plan':
                     case 'action':
-                        return plan.plan || null;
+                        return plan.name || null;
                     case 'firstMonthPrice':
                         return getPriceSortValue(plan, 'firstMonthPrice');
                     case 'monthlyPrice':
@@ -1290,7 +1209,7 @@
                     case 'yearlyPrice':
                         return getPriceSortValue(plan, 'yearlyPrice');
                     case 'models':
-                        return Array.isArray(plan.models) ? plan.models.join(',') : null;
+                        return Array.isArray(plan.modelLabels) ? plan.modelLabels.join(',') : null;
                     case 'fiveHoursRequests':
                         return getRequestSortValue(plan.fiveHoursRequests);
                     case 'weeklyRequests':
@@ -1382,7 +1301,7 @@
             if (filteredPlans.length === 0) {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="17">
+                        <td colspan="16">
                             <div class="empty-state">
                                 <div class="empty-state-icon">📭</div>
                                 <div class="empty-state-text">没有找到符合条件的套餐</div>
@@ -1400,9 +1319,8 @@
                 const pinHtml = PlatformCatalog.buildRowPinButtonHtml({ pinId, pinned });
                 return `
                 <tr class="plan-row${plan.discontinued ? ' discontinued' : ''}${pinned ? ' is-pinned' : ''}">
-                    <td class="sticky-first"><span class="table-pin-cell">${pinHtml}<span class="vendor-name">${escapeHtml(plan['vendor'])}</span></span></td>
-                    <td class="sticky-second"><span class="plan-name">${escapeHtml(plan['plan'])}</span></td>
-                    <td><span class="type-tag ${(plan.type || 'Coding Plan') === 'Token Plan' ? 'token-plan' : 'coding-plan'}">${escapeHtml(plan.type || 'Coding Plan')}</span></td>
+                    <td class="sticky-first"><span class="table-pin-cell">${pinHtml}<span class="vendor-name">${escapeHtml(plan.platformName)}</span></span></td>
+                    <td class="sticky-second"><span class="plan-name">${escapeHtml(plan.name)}</span></td>
                     <td>
                         <a href="${escapeHtml(plan['action'])}" target="_blank" class="action-btn">
                             跳转开通
@@ -1418,7 +1336,7 @@
                     <td><span class="request-count">${formatRequestCount(plan.weeklyRequests)} <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.monthlyRequests)} <span class="unit">/ 月</span></span></td>
                     <td>
-                        ${plan.models.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
+                        ${plan.modelLabels.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
                     </td>
                     <td>
                         ${plan.benefits.map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}
@@ -1520,8 +1438,8 @@
                 appConfig = {
                     header: {
                         title: "AI Coding Plan 平台评测与对比",
-                        updateDate: "更新日期 2026.7.26 | 同步讯飞·星火速通版；字节·方舟 / Kimi / OpenCode 追加 Kimi-K3",
-                        subtitle: "31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，Coding Plan / Token Plan 全面对比。<br>涵盖DeepSeek V4，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
+                        updateDate: "更新日期 2026.9.7 | 新增 GPT-6-Astra 与 Codex 实测额度",
+                        subtitle: "31 大平台 智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Codex、Claude Code、百度·千帆、华为云、腾讯云、京东云，订阅套餐与按量 API 全面对比。<br>涵盖GPT-6-Astra，DeepSeek-V4-Flash-0731，GLM-5.3，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
                         models: "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)获取最新消息和选型反馈。",
                         watermarkUrl: "www.codingplan.fyi",
                         entry: {
@@ -1619,11 +1537,9 @@
                 renderFeedbackFloat({});
             }
 
-            // 渲染平台推荐（优先 recommendationGroups，兜底 recommendations）
+            // 根据 recommendationGroups 中的 platformSlug 渲染平台推荐
             if (Array.isArray(appConfig.recommendationGroups) && appConfig.recommendationGroups.length > 0) {
                 renderRecommendationGroups(appConfig.recommendationGroups);
-            } else if (appConfig.recommendations && appConfig.recommendations.length > 0) {
-                renderRecommendations(appConfig.recommendations);
             }
 
             // 渲染底部说明（无有效数据时不覆盖 HTML 中的静态默认文案）
@@ -1859,14 +1775,16 @@
                 return `<li>${formatRecommendationText(reason)}</li>`;
             }).join('');
 
-            // 优先使用配置中的 action；未配置时再按平台名匹配 plans.json 的链接
+            const platform = entityContext && entityContext.platformBySlug.get(rec.platformSlug);
+            const displayName = platform ? platform.name : rec.platformSlug;
+            // 优先使用配置中的 action；未配置时再按 platformSlug 匹配套餐链接
             const configuredUrl = sanitizeHttpUrl(rec && rec.action);
-            const matchedPlan = Array.isArray(allPlans) ? allPlans.find(p => p.vendor === rec.name) : null;
+            const matchedPlan = Array.isArray(allPlans) ? allPlans.find(p => p.platformSlug === rec.platformSlug) : null;
             const matchedPlanUrl = matchedPlan ? sanitizeHttpUrl(matchedPlan.action) : null;
-            const recommendationUrl = configuredUrl || matchedPlanUrl;
+            const recommendationUrl = configuredUrl || matchedPlanUrl || sanitizeHttpUrl(platform && platform.action);
             const nameHtml = recommendationUrl
-                ? `<a class="recommendation-name-link" href="${escapeHtml(recommendationUrl)}" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">${escapeHtml(rec.name)}</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>`
-                : `<span class="recommendation-name">${escapeHtml(rec.name)}</span>`;
+                ? `<a class="recommendation-name-link" href="${escapeHtml(recommendationUrl)}" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">${escapeHtml(displayName)}</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>`
+                : `<span class="recommendation-name">${escapeHtml(displayName)}</span>`;
 
             return `
                 <div class="recommendation-card">
@@ -1909,22 +1827,6 @@
                     </section>
                 `;
             }).join('');
-        }
-
-        // 渲染平台推荐（向后兼容：当 config 仅提供 recommendations 平铺数据时使用）
-        function renderRecommendations(recommendations) {
-            const container = document.getElementById('recommendationGroups');
-            if (!container) return;
-            if (!Array.isArray(recommendations) || recommendations.length === 0) return;
-
-            const cardsHtml = recommendations.map(buildRecommendationCardHtml).join('');
-            container.innerHTML = `
-                <section class="recommendation-group recommendation-group--flat">
-                    <div class="recommendations">
-                        ${cardsHtml}
-                    </div>
-                </section>
-            `;
         }
 
         // 处理价格数据：补全缺失值
@@ -2001,35 +1903,31 @@
                 : value;
         }
 
-        async function loadPlatforms() {
-            const response = await fetch(PLATFORMS_FILE_PATH, { cache: 'no-store' });
-            if (!response.ok) {
-                throw new Error(`platforms.json load failed: HTTP ${response.status}`);
-            }
-            allPlatforms = await response.json();
-            if (!Array.isArray(allPlatforms)) {
-                throw new Error('platforms.json must be an array');
-            }
-            console.log(`成功加载 ${allPlatforms.length} 个平台`);
+        async function loadEntityData() {
+            if (entityDataPromise) return entityDataPromise;
+            entityDataPromise = Promise.all([
+                fetch(PLATFORMS_FILE_PATH, { cache: 'no-store' }),
+                fetch(PLANS_FILE_PATH, { cache: 'no-store' }),
+                fetch(MODELS_FILE_PATH, { cache: 'no-store' }),
+                fetch(PLAN_MODELS_FILE_PATH, { cache: 'no-store' })
+            ]).then(async responses => {
+                const labels = ['platforms.json', 'plans.json', 'models.json', 'plan-models.json'];
+                responses.forEach((response, index) => {
+                    if (!response.ok) throw new Error(`${labels[index]} load failed: HTTP ${response.status}`);
+                });
+                const documents = await Promise.all(responses.map(response => response.json()));
+                entityContext = EntityData.buildContext(...documents);
+                allPlatforms = EntityData.listPlatforms(entityContext);
+                allPlans = EntityData.buildPlanCatalog(entityContext).map((item, index) => processPrices(item, index));
+                window.codingplanEntityContext = entityContext;
+                return entityContext;
+            });
+            return entityDataPromise;
         }
 
-        async function loadPaygPricing() {
-            const response = await fetch(PAYG_PRICING_FILE_PATH, { cache: 'no-store' });
-            if (!response.ok) {
-                throw new Error(`payg-pricing.json load failed: HTTP ${response.status}`);
-            }
-            const data = await response.json();
-            if (!data || typeof data !== 'object' || Array.isArray(data)) {
-                throw new Error('payg-pricing.json must be an object');
-            }
-            paygPricing = data;
-            if (typeof PlatformCatalog !== 'undefined' && PlatformCatalog.validatePaygPricing) {
-                const result = PlatformCatalog.validatePaygPricing(paygPricing, allPlatforms);
-                if (!result.ok) {
-                    console.warn('payg-pricing validation:', result.errors.join('; '));
-                }
-            }
-            console.log(`成功加载按量定价 ${Object.keys(paygPricing).length} 个平台`);
+        async function loadPlatforms() {
+            await loadEntityData();
+            console.log(`成功加载 ${allPlatforms.length} 个平台`);
         }
 
         function togglePlatformTag(label) {
@@ -2244,9 +2142,13 @@
         }
 
         function buildPlatformCardHtml(platform) {
+            const apiGroups = entityContext && typeof EntityData.buildApiPricingGroups === 'function'
+                ? EntityData.buildApiPricingGroups(entityContext, platform.slug)
+                : [];
             return PlatformCatalog.buildPlatformCardHtml(platform, allPlans, {
                 sanitizeUrl: typeof sanitizeHttpUrl === 'function' ? sanitizeHttpUrl : (u) => u,
-                paygPricing,
+                hasApiPlan: apiGroups.length > 0,
+                apiModelNames: apiGroups.flatMap((group) => group.rows.map((row) => row.modelName)),
                 pinnedIds: platformPinnedIds
             });
         }
@@ -2281,7 +2183,7 @@
             const validIds = allPlans.map(PlatformCatalog.getPlanRowPinId).filter(Boolean);
             const cleaned = PlatformCatalog.sanitizePinnedIdList(raw, validIds);
             planPinnedIds = cleaned;
-            if (cleaned.length !== raw.length) {
+            if (JSON.stringify(cleaned) !== JSON.stringify(raw)) {
                 PlatformCatalog.writePinnedIdsToStorage(
                     window.localStorage,
                     cleaned,
@@ -2320,7 +2222,7 @@
             const id = typeof platformId === 'string' ? platformId.trim() : '';
             if (!id) return;
             // 只允许 pin 当前仍存在的平台，避免脏 id 写回
-            const exists = allPlatforms.some((p) => p && p.id === id);
+            const exists = allPlatforms.some((p) => p && p.slug === id);
             if (!exists && !PlatformCatalog.isPlatformPinned(id, platformPinnedIds)) {
                 return;
             }
@@ -2330,6 +2232,9 @@
             );
             persistPlatformPinnedIds();
             applyPlatformFilters();
+            if (typeof PlatformComparison !== 'undefined' && PlatformComparison.updateLauncherCount) {
+                PlatformComparison.updateLauncherCount();
+            }
             if (typeof PlatformDetail !== 'undefined' && PlatformDetail.syncPinUi) {
                 PlatformDetail.syncPinUi();
             }
@@ -2381,7 +2286,7 @@
 
             if (typeof PlatformDetail !== 'undefined' && PlatformDetail.isOpen()) {
                 const openId = PlatformDetail.getOpenPlatformId();
-                const stillVisible = filtered.some(p => p.id === openId);
+                const stillVisible = filtered.some(p => p.slug === openId);
                 if (!stillVisible) PlatformDetail.close();
             }
         }
@@ -2438,29 +2343,18 @@
             });
         }
 
-        async function ensurePaygViewMounted() {
-            const root = document.getElementById('view-payg');
-            if (!root) return;
-            if (typeof window.mountPaygView !== 'function') {
-                await loadScriptOnce('scripts/payg.js?v=260725j');
-            }
-            if (typeof window.mountPaygView === 'function') {
-                await window.mountPaygView(root);
-            }
-        }
-
         async function ensureUsageViewMounted() {
             const root = document.getElementById('view-usage');
             if (!root) return;
             if (!document.querySelector('link[data-usage-css="1"]')) {
                 const link = document.createElement('link');
                 link.rel = 'stylesheet';
-                link.href = 'styles/model-comparison.css?v=260902e';
+                link.href = 'styles/model-comparison.css?v=260903a';
                 link.dataset.usageCss = '1';
                 document.head.appendChild(link);
             }
             if (typeof window.mountModelComparisonView !== 'function') {
-                await loadScriptOnce('scripts/model-comparison.js?v=260902h');
+                await loadScriptOnce('scripts/model-comparison.js?v=260908a');
             }
             if (typeof window.mountModelComparisonView === 'function') {
                 await window.mountModelComparisonView(root);
@@ -2504,13 +2398,6 @@
                     });
                 }
             }
-            if (view === 'payg') {
-                try {
-                    await ensurePaygViewMounted();
-                } catch (err) {
-                    console.error('按量计费视图加载失败:', err);
-                }
-            }
             if (view === 'usage') {
                 try {
                     await ensureUsageViewMounted();
@@ -2546,7 +2433,6 @@
                     platforms: document.getElementById('view-platforms'),
                     plans: document.getElementById('view-plans'),
                     usage: document.getElementById('view-usage'),
-                    payg: document.getElementById('view-payg'),
                     monitor: document.getElementById('view-monitor')
                 }),
                 onChange: (view, meta) => {
@@ -2631,6 +2517,15 @@
             loadPlatformPinnedIds();
             applyPlatformFilters();
 
+            if (typeof PlatformComparison !== 'undefined' && PlatformComparison.mountLauncher) {
+                PlatformComparison.mountLauncher({
+                    button: document.getElementById('platformCompareLauncher'),
+                    count: document.getElementById('platformCompareLauncherCount'),
+                    platforms: allPlatforms,
+                    getPinnedIds: () => platformPinnedIds
+                });
+            }
+
             const clearBtn = document.getElementById('platformClearFilters');
             if (clearBtn && !clearBtn.dataset.bound) {
                 clearBtn.dataset.bound = '1';
@@ -2642,7 +2537,7 @@
             if (typeof PlatformDetail !== 'undefined' && PlatformDetail && typeof PlatformDetail.init === 'function') {
                 PlatformDetail.init({
                     getPlans: () => allPlans,
-                    getPaygPricing: () => paygPricing,
+                    getEntityContext: () => entityContext,
                     monitorApiBase: (window.MONITOR_CONFIG && window.MONITOR_CONFIG.apiBase) || 'https://api.dreamfree.space/vc',
                     onJumpPlansTable: focusVendorInPlansTable,
                     isPlatformPinned: (id) => PlatformCatalog.isPlatformPinned(id, platformPinnedIds),
@@ -2665,7 +2560,7 @@
                         const card = e.target.closest('.platform-card');
                         if (!card) return;
                         const id = card.getAttribute('data-platform-id');
-                        const platform = allPlatforms.find(p => p.id === id);
+                        const platform = allPlatforms.find(p => p.slug === id);
                         if (platform) PlatformDetail.open(platform, { triggerEl: card });
                     });
                     grid.addEventListener('keydown', (e) => {
@@ -2675,7 +2570,7 @@
                         if (!card || e.target.closest('a')) return;
                         e.preventDefault();
                         const id = card.getAttribute('data-platform-id');
-                        const platform = allPlatforms.find(p => p.id === id);
+                        const platform = allPlatforms.find(p => p.slug === id);
                         if (platform) PlatformDetail.open(platform, { triggerEl: card });
                     });
                 }
@@ -2696,14 +2591,7 @@
                 `;
                 }
 
-                const response = await fetch(PLANS_FILE_PATH, {
-                    cache: 'no-store'
-                });
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const plansData = await response.json();
-                allPlans = plansData.map((item, index) => processPrices(item, index));
+                await loadEntityData();
                 filteredPlans = [...allPlans];
                 loadPlanPinnedIds();
 
@@ -2716,8 +2604,6 @@
                 // 数据加载后重新渲染推荐卡片（此时 allPlans 已有数据，可匹配链接）
                 if (Array.isArray(appConfig.recommendationGroups) && appConfig.recommendationGroups.length > 0) {
                     renderRecommendationGroups(appConfig.recommendationGroups);
-                } else if (appConfig.recommendations && appConfig.recommendations.length > 0) {
-                    renderRecommendations(appConfig.recommendations);
                 }
 
                 console.log(`成功加载 ${allPlans.length} 条套餐数据`);
@@ -2764,8 +2650,8 @@
                     el.textContent = watermarkUrl;
                 });
 
+                await loadEntityData();
                 await Promise.all([loadData(), loadPlatforms()]);
-                await loadPaygPricing();
                 bindPlansTableInteractions();
                 initPlatformCatalog();
                 initMainViewsShell();
@@ -2777,14 +2663,6 @@
                 try {
                     if (!allPlatforms.length) {
                         await loadPlatforms();
-                    }
-                    if (!Object.keys(paygPricing).length) {
-                        try {
-                            await loadPaygPricing();
-                        } catch (paygError) {
-                            console.warn('按量定价加载失败，目录仍可启动:', paygError);
-                            paygPricing = {};
-                        }
                     }
                     initPlatformCatalog();
                     window.__codingplanCatalogReady = true;
@@ -2809,11 +2687,9 @@
         scheduleHomepageBoot();
 
     
-    window.updateTypeSelection = updateTypeSelection;
     window.updateVendorSelection = updateVendorSelection;
     window.updateModelSelection = updateModelSelection;
     window.resetVendorFilter = resetVendorFilter;
-    window.resetTypeFilter = resetTypeFilter;
     window.resetModelFilter = resetModelFilter;
     window.resetFirstMonthPriceFilter = resetFirstMonthPriceFilter;
     window.applyFirstMonthPriceFilter = applyFirstMonthPriceFilter;

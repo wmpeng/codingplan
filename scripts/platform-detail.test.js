@@ -4,7 +4,8 @@ const { buildDetailBodyHtml } = require('./platform-detail.js');
 
 function samplePlatform(overrides = {}) {
   return {
-    id: 'demo',
+    slug: 'demo',
+    slug: 'demo',
     name: 'Demo Platform',
     rating: 4,
     status: 'active',
@@ -87,29 +88,38 @@ describe('buildDetailBodyHtml', () => {
     assert.match(html, /platform-detail-dim-copy[\s\S]*<strong>重点<\/strong>/);
   });
 
-  it('renders payg pricing section when paygEntry provided', () => {
-    const html = buildDetailBodyHtml(samplePlatform({ id: 'gongji', name: '共绩算力' }), {
+  it('renders API pricing from PlanModel groups and links to the comparison view', () => {
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'gongji', name: '共绩算力' }), {
       plans: [],
       monitorRow: null,
-      paygEntry: {
-        currency: '¥',
-        notes: ['须邀请'],
-        models: [{ name: 'DeepSeek-V4-Pro', input: 2.4, cache: 0.02, output: 4.8 }]
-      }
+      apiPricingGroups: [{
+        planSlug: 'gongji-api',
+        planName: '按量 API',
+        planNote: '须邀请',
+        rows: [{
+          slug: 'gongji-api--deepseek-v4-pro-0813',
+          modelName: 'DeepSeek-V4-Pro-0813', currency: '¥',
+          inputPerM: 2.4, cachePerM: 0.02, outputPerM: 4.8,
+          unitPriceCnyPerM: 0.1257, note: '官方价格的 8 折'
+        }]
+      }]
     });
-    assert.ok(html.includes('data-section="payg"'));
-    assert.ok(html.includes('按量定价'));
+    assert.ok(html.includes('data-section="api-pricing"'));
+    assert.ok(html.includes('按量 API 定价'));
     assert.ok(html.includes('¥2.4'));
-    assert.ok(html.includes('在按量计费价格中查看'));
-    assert.ok(html.includes('view=payg'));
+    assert.ok(html.includes('¥0.02'));
+    assert.ok(html.includes('¥4.8'));
+    assert.ok(html.includes('官方价格的 8 折'));
+    assert.ok(html.includes('在额度/价格对比中查看'));
+    assert.ok(html.includes('view=usage'));
     assert.ok(!html.includes('data-section="plans"'));
     const dimsAt = html.indexOf('data-section="dimensions"');
-    const paygAt = html.indexOf('data-section="payg"');
-    assert.ok(dimsAt >= 0 && paygAt > dimsAt);
+    const apiAt = html.indexOf('data-section="api-pricing"');
+    assert.ok(dimsAt >= 0 && apiAt > dimsAt);
   });
 
   it('renders pin button in detail header', () => {
-    const html = buildDetailBodyHtml(samplePlatform({ id: 'opencode', name: 'OpenCode' }), {
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'opencode', name: 'OpenCode' }), {
       plans: [],
       monitorRow: null,
       isPinned: true
@@ -122,9 +132,9 @@ describe('buildDetailBodyHtml', () => {
   it('renders plans section when vendor has plans', () => {
     const plans = [
       {
-        vendor: 'X',
-        plan: 'Pro',
-        type: 'Token Plan',
+        platformSlug: 'x',
+        name: 'Pro',
+        billingMode: 'subscription',
         monthlyPrice: 100,
         firstMonthPrice: 90,
         rating: 4,
@@ -132,9 +142,9 @@ describe('buildDetailBodyHtml', () => {
         summary: '额度充足，适合主力日常',
         discontinued: false
       },
-      { vendor: 'X', plan: 'Old', type: 'Coding Plan', monthlyPrice: 50, discontinued: true }
+      { platformSlug: 'x', name: 'Old', billingMode: 'subscription', monthlyPrice: 50, discontinued: true }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
     assert.ok(html.includes('data-section="plans"'));
     assert.ok(html.includes('platform-detail-plans-list'));
     assert.ok(html.includes('platform-detail-plan-title-row'));
@@ -144,7 +154,6 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('¥100'));
     assert.ok(html.includes('首月'));
     assert.ok(html.includes('platform-detail-price-sep'));
-    assert.ok(html.includes('Token Plan'));
     assert.ok(html.includes('platform-detail-plan-rating'));
     assert.ok(html.includes('额度充足，适合主力日常'));
     assert.ok(html.includes('在套餐对比中查看'));
@@ -153,9 +162,9 @@ describe('buildDetailBodyHtml', () => {
   it('omits empty summary and keeps price on one line without first-month when absent', () => {
     const plans = [
       {
-        vendor: 'X',
-        plan: 'Lite',
-        type: 'Coding Plan',
+        platformSlug: 'x',
+        name: 'Lite',
+        billingMode: 'subscription',
         monthlyPrice: 49,
         firstMonthPrice: '-',
         rating: 3,
@@ -164,7 +173,7 @@ describe('buildDetailBodyHtml', () => {
         discontinued: false
       }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
     assert.ok(html.includes('Lite'));
     assert.ok(html.includes('1,900次/月') || html.includes('1900'));
     assert.ok(!html.includes('platform-detail-plan-summary'));
@@ -175,43 +184,41 @@ describe('buildDetailBodyHtml', () => {
   it('summarizes coding plan quota with monthly requests when token unlimited', () => {
     const plans = [
       {
-        vendor: 'X',
-        plan: 'Lite',
-        type: 'Coding Plan',
+        platformSlug: 'x',
+        name: 'Lite',
+        billingMode: 'subscription',
         monthlyPrice: 49,
         monthlyRequests: 24000,
         discontinued: false
       }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
     assert.ok(html.includes('2.4万次/月') || html.includes('24000'));
-    assert.ok(html.includes('Coding Plan'));
   });
 
   it('hides plans section when only discontinued plans exist', () => {
     const plans = [
-      { vendor: 'X', plan: 'Old', type: 'Coding Plan', monthlyPrice: 50, discontinued: true }
+      { platformSlug: 'x', name: 'Old', billingMode: 'subscription', monthlyPrice: 50, discontinued: true }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
     assert.ok(!html.includes('data-section="plans"'));
   });
 
   it('still shows plans but omits unpublished quota label', () => {
     const plans = [
       {
-        vendor: 'OpenCode',
-        plan: 'Go',
-        type: 'Token Plan',
+        platformSlug: 'opencode',
+        name: 'Go',
+        billingMode: 'subscription',
         monthlyPrice: 10,
         firstMonthPrice: 5,
         currency: '$',
         discontinued: false
       }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'OpenCode' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'opencode', name: 'OpenCode' }), { plans, monitorRow: null });
     assert.ok(html.includes('data-section="plans"'));
     assert.ok(html.includes('Go'));
-    assert.ok(html.includes('Token Plan'));
     assert.ok(html.includes('$10') || html.includes('10'));
     assert.ok(html.includes('platform-detail-plan-main'));
     assert.ok(!html.includes('未公开'));
@@ -221,9 +228,9 @@ describe('buildDetailBodyHtml', () => {
   it('prefers measured monthly token over request counts for quota pill', () => {
     const plans = [
       {
-        vendor: 'Kimi',
-        plan: 'Andante',
-        type: 'Coding Plan',
+        platformSlug: 'kimi',
+        name: 'Andante',
+        billingMode: 'subscription',
         monthlyPrice: 49,
         fiveHoursRequests: '未公开',
         weeklyRequests: '未公开',
@@ -232,14 +239,14 @@ describe('buildDetailBodyHtml', () => {
         discontinued: false
       },
       {
-        vendor: 'Kimi',
-        plan: 'Zero',
-        type: 'Token Plan',
+        platformSlug: 'kimi',
+        name: 'Zero',
+        billingMode: 'subscription',
         monthlyPrice: 1,
         discontinued: false
       }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'Kimi' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'kimi', name: 'Kimi' }), { plans, monitorRow: null });
     assert.ok(html.includes('Andante'));
     assert.ok(html.includes('Zero'));
     assert.ok(html.includes('84M Token'));

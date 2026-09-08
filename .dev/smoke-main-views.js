@@ -66,11 +66,11 @@ function assert(cond, msg) {
   assert((await page.locator('#plansTableToggle').count()) === 0, 'toggle gone');
   assert(await page.locator('#plansTable').isVisible(), 'table visible');
 
-  await page.click('[data-main-view="payg"]');
-  await page.waitForSelector('#paygTableBody tr', { timeout: 25000 });
-  assert(page.url().includes('view=payg'), 'url payg');
-  assert(await page.locator('#view-payg').isVisible(), 'payg visible');
-  assert((await page.locator('#paygTableBody tr').count()) > 0, 'payg rows');
+  await page.click('[data-main-view="usage"]');
+  await page.waitForSelector('.usage-data-table tbody tr', { timeout: 25000 });
+  assert(page.url().includes('view=usage'), 'url usage');
+  assert(await page.locator('#view-usage').isVisible(), 'usage visible');
+  assert((await page.locator('.usage-data-table tbody tr').count()) > 0, 'usage rows');
 
   await page.click('[data-main-view="monitor"]');
   await page.waitForTimeout(2000);
@@ -81,17 +81,13 @@ function assert(cond, msg) {
     (await page.locator('#view-monitor').innerHTML()).length > 50;
   assert(monitorHasUi, 'monitor ui mounted');
 
-  await page.goto(`${base}/index.html?view=payg`, { waitUntil: 'domcontentloaded' });
+  await page.goto(`${base}/index.html?view=usage`, { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(
-    () => window.__mainViewsController && window.__mainViewsController.getView() === 'payg',
+    () => window.__mainViewsController && window.__mainViewsController.getView() === 'usage',
     null,
     { timeout: 25000 }
   );
-  assert(await page.locator('#view-payg').isVisible(), 'deep link payg');
-
-  await page.goto(`${base}/payg.html`, { waitUntil: 'domcontentloaded' });
-  assert(page.url().includes('payg.html'), 'standalone payg no redirect');
-  await page.waitForSelector('#paygTable', { timeout: 15000 });
+  assert(await page.locator('#view-usage').isVisible(), 'deep link usage');
 
   await page.goto(`${base}/monitor/index.html`, { waitUntil: 'domcontentloaded' });
   assert(page.url().includes('monitor/'), 'standalone monitor no redirect');

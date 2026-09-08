@@ -10,7 +10,6 @@ const {
 
 test('normalizeMainView', () => {
   assert.equal(normalizeMainView('usage'), 'usage');
-  assert.equal(normalizeMainView('payg'), 'payg');
   assert.equal(normalizeMainView('nope'), 'platforms');
   assert.equal(normalizeMainView(''), 'platforms');
 });
@@ -38,7 +37,7 @@ test('buildMainViewUrl keeps other params', () => {
   assert.equal(params.get('view'), 'monitor');
   assert.equal(params.get('platform'), 'youyun');
   assert.equal(
-    buildMainViewUrl('platforms', { pathname: '/index.html', currentSearch: '?view=payg' }),
+    buildMainViewUrl('platforms', { pathname: '/index.html', currentSearch: '?view=unknown' }),
     '/index.html'
   );
 });
@@ -48,7 +47,6 @@ test('applyMainViewDom toggles hidden and tab active', () => {
     platforms: { hidden: false },
     plans: { hidden: false },
     usage: { hidden: false },
-    payg: { hidden: false },
     monitor: { hidden: false }
   };
   const tabs = [];
@@ -57,7 +55,7 @@ test('applyMainViewDom toggles hidden and tab active', () => {
       return tabs;
     }
   };
-  ['platforms', 'plans', 'usage', 'monitor', 'payg'].forEach((key) => {
+  ['platforms', 'plans', 'usage', 'monitor'].forEach((key) => {
     tabs.push({
       key,
       classList: {
@@ -72,9 +70,8 @@ test('applyMainViewDom toggles hidden and tab active', () => {
       setAttribute() {}
     });
   });
-  applyMainViewDom({ view: 'payg', panels, tabsRoot });
+  applyMainViewDom({ view: 'usage', panels, tabsRoot });
   assert.equal(panels.platforms.hidden, true);
-  assert.equal(panels.payg.hidden, false);
-  assert.equal(panels.usage.hidden, true);
-  assert.equal(tabs.find((t) => t.key === 'payg').classList._on, true);
+  assert.equal(panels.usage.hidden, false);
+  assert.equal(tabs.find((t) => t.key === 'usage').classList._on, true);
 });
