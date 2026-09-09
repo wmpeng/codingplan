@@ -578,8 +578,8 @@ const EXTERNAL_LINK_ICON =
 
 function buildPlatformCardHtml(platform, plans, options = {}) {
   const sanitizeUrl = options.sanitizeUrl || (url => url);
-  const apiModelNames = Array.isArray(options.apiModelNames)
-    ? options.apiModelNames.filter((name) => typeof name === 'string' && name.trim())
+  const supportedModels = Array.isArray(options.supportedModels)
+    ? options.supportedModels
     : [];
   const hasApiPlan = !!options.hasApiPlan;
   const rawAction = resolvePlatformAction(platform, plans);
@@ -623,10 +623,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     ? `<div class="platform-tags" aria-label="标签">${tags.map((tag) => `<span class="platform-tag">${escapeHtml(tag)}</span>`).join('')}</div>`
     : '';
 
-  let models = collectModelsForVendor(plans, platform.slug);
-  if (!models.length && apiModelNames.length) {
-    models = [...new Set(apiModelNames)];
-  }
+  const models = supportedModels.length ? supportedModels.map(model => model.name) : collectModelsForVendor(plans, platform.slug);
   const modelLimit = 5;
   const shownModels = models.slice(0, modelLimit);
   const extraModels = models.length - shownModels.length;

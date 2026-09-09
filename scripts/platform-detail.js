@@ -81,7 +81,7 @@
           : '';
         return (
           `<tr>` +
-          `<td><span class="platform-detail-api-model-name">${esc(row.modelName)}</span>${note}</td>` +
+          `<td><span class="platform-detail-api-model-name">${esc(row.modelName)}</span>${row.tierLabel ? `<div>${esc(row.tierLabel)}</div>` : ''}${note}</td>` +
           `<td>${esc(formatApiPrice(row.inputPerM, row.currency))}</td>` +
           `<td>${esc(formatApiPrice(row.cachePerM, row.currency))}</td>` +
           `<td>${esc(formatApiPrice(row.outputPerM, row.currency))}</td>` +

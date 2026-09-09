@@ -124,8 +124,8 @@ test('unit price bar chart keeps valid prices and sorts them low to high', () =>
   const invalid = { platformName: 'C', modelSlug: 'm4', unitPriceCnyPerM: 'unknown' };
   const sorted = buildUnitPriceBarChartPoints([points[1], invalid, points[2], points[0]]);
   assert.deepEqual(sorted, [points[0], points[2], points[1]]);
-  assert.equal(getUnitPriceBarAxisLabel({ platformName: 'A', billingMode: 'subscription', planName: 'Pro', modelName: 'Model [峰]' }), 'A · Pro · Model [峰]');
-  assert.equal(getUnitPriceBarAxisLabel({ platformName: 'B', billingMode: 'payg', modelName: 'Model API' }), 'B · 按量 API · Model API');
+  assert.equal(getUnitPriceBarAxisLabel({ platformName: 'A', billingMode: 'subscription', planName: 'Pro', relationLabel: 'Model [峰]' }), 'A · Pro · Model [峰]');
+  assert.equal(getUnitPriceBarAxisLabel({ platformName: 'B', billingMode: 'payg', relationLabel: 'Model API' }), 'B · 按量 API · Model API');
 
   const colors = buildVendorColorMap(sorted.map(getPointPlatformKey));
   const result = buildUnitPriceBarSeries(sorted, 'vendor', colors, 'M');
@@ -215,9 +215,9 @@ test('platform filter key uses stable platform slugs', () => {
 });
 
 test('model point labels preserve complete bracket qualifiers', () => {
-  assert.equal(getPointLabelText({ modelName: 'GLM-5.3-Flash [谷]', canonicalModelName: 'GLM-5.3-Flash' }, 'model'), 'GLM-5.3-Flash [谷]');
-  assert.equal(getPointLabelText({ modelName: 'Kimi-K3 【256K】', canonicalModelName: 'Kimi-K3' }, 'model'), 'Kimi-K3 【256K】');
-  assert.equal(getPointLabelText({ modelName: 'Model-X (peak)', canonicalModelName: 'Model-X' }, 'model'), 'Model-X (peak)');
+  assert.equal(getPointLabelText({ relationLabel: 'GLM-5.3-Flash [谷]', modelName: 'GLM-5.3-Flash' }, 'model'), 'GLM-5.3-Flash [谷]');
+  assert.equal(getPointLabelText({ relationLabel: 'Kimi-K3 【256K】', modelName: 'Kimi-K3' }, 'model'), 'Kimi-K3 【256K】');
+  assert.equal(getPointLabelText({ relationLabel: 'Model-X (peak)', modelName: 'Model-X' }, 'model'), 'Model-X (peak)');
   assert.equal(getPointLabelText({ platformName: '智谱国际版' }, 'vendor'), '智谱国际版');
   assert.equal(getPointLabelText({ platformName: '阿里·百炼 Coding Plan' }, 'vendor'), '阿里·百炼 Coding Plan');
   assert.equal(getPointLabelText({ platformName: 'DeepSeek' }, 'vendor'), 'DeepSeek');
@@ -225,7 +225,7 @@ test('model point labels preserve complete bracket qualifiers', () => {
 });
 
 test('model color tooltip leads with the model and keeps platform second', () => {
-  const point = { ...points[0], platformName: 'MiniMax', planName: '新Ultra', modelName: 'MiniMax-M3' };
+  const point = { ...points[0], platformName: 'MiniMax', planName: '新Ultra', relationLabel: 'MiniMax-M3' };
   const byModel = tooltipHtml(point, 'artificialAnalysis', 'model');
   assert.ok(byModel.indexOf('<strong>MiniMax-M3</strong>') < byModel.indexOf('<div>MiniMax · 新Ultra</div>'));
 
@@ -235,9 +235,9 @@ test('model color tooltip leads with the model and keeps platform second', () =>
 
 test('comparison tables sort text and numeric values with missing values last', () => {
   const rows = [
-    { slug: 'b', platformName: '平台B', modelName: 'Model 10', monthlyFeeCny: 100, monthlyTokenInM: 50, unitPriceCnyPerM: 2 },
-    { slug: 'a', platformName: '平台A', modelName: 'Model 2', monthlyFeeCny: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.5 },
-    { slug: 'c', platformName: '平台C', modelName: 'Model 1', unitPriceCnyPerM: 1 }
+    { slug: 'b', platformName: '平台B', relationLabel: 'Model 10', monthlyFeeCny: 100, monthlyTokenInM: 50, unitPriceCnyPerM: 2 },
+    { slug: 'a', platformName: '平台A', relationLabel: 'Model 2', monthlyFeeCny: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.5 },
+    { slug: 'c', platformName: '平台C', relationLabel: 'Model 1', unitPriceCnyPerM: 1 }
   ];
   assert.deepEqual(sortComparisonRows(rows, 'vendor', 'asc').map((row) => row.slug), ['a', 'b', 'c']);
   assert.deepEqual(sortComparisonRows(rows, 'model', 'asc').map((row) => row.slug), ['c', 'a', 'b']);
@@ -288,7 +288,7 @@ test('preset rows include subscriptions and API while sorting by unit and packag
 test('preset tables add model only for multi groups and preserve single-model qualifiers', () => {
   const point = {
     slug: 'row', billingMode: 'subscription', platformSlug: 'zhipu', platformName: '智谱AI', planName: 'Pro',
-    modelName: 'GLM-5.3-Flash [谷]', canonicalModelName: 'GLM-5.3-Flash', modelSlug: 'glm-5-3-flash',
+    relationLabel: 'GLM-5.3-Flash [谷]', modelName: 'GLM-5.3-Flash', tierLabel: '[谷]', modelSlug: 'glm-5-3-flash',
     monthlyFeeCny: 100, monthlyTokenInM: 1000, unitPriceCnyPerM: 0.1
   };
   assert.equal(getPresetModelQualifier(point), '[谷]');
@@ -311,7 +311,7 @@ test('preset tables add model only for multi groups and preserve single-model qu
 test('preset tables show API rows with explicit unavailable subscription fields', () => {
   const apiPoint = {
     slug: 'api', billingMode: 'payg', platformSlug: 'deepseek-official', platformName: 'DeepSeek', planName: '按量 API',
-    modelName: 'DeepSeek-V4-Flash-0731', canonicalModelName: 'DeepSeek-V4-Flash-0731',
+    relationLabel: 'DeepSeek-V4-Flash-0731', modelName: 'DeepSeek-V4-Flash-0731',
     modelSlug: 'deepseek-v4-flash-0731', unitPriceCnyPerM: 0.1
   };
   const html = presetComparisonTableHtml({
@@ -325,7 +325,7 @@ test('preset tables show API rows with explicit unavailable subscription fields'
 test('comparison table rows format subscription and API semantics', () => {
   const subscription = comparisonTableRowHtml({
     slug: 'sub', billingMode: 'subscription', platformName: '平台A', planName: 'Pro',
-    modelName: 'Model A [峰]', monthlyFeeCny: 70, fiveHourTokenInM: 12.5,
+    relationLabel: 'Model A [峰]', monthlyFeeCny: 70, fiveHourTokenInM: 12.5,
     weeklyTokenInM: 50, monthlyTokenInM: 100, unitPriceCnyPerM: 0.7,
     scores: {
       artificialAnalysis: { score: 52, scoreExact: 51.6 },
@@ -346,7 +346,7 @@ test('comparison table rows format subscription and API semantics', () => {
 
   const api = comparisonTableRowHtml({
     slug: 'api', billingMode: 'payg', platformName: 'DeepSeek', planName: '按量 API',
-    modelName: 'Model A', unitPriceCnyPerM: 0.1444,
+    relationLabel: 'Model A', unitPriceCnyPerM: 0.1444,
     apiPricing: { currency: '¥', inputPerM: 1.5, cachePerM: 0.05, outputPerM: 4.5 }
   });
   assert.match(api, /按量/);
@@ -389,7 +389,7 @@ test('token unit conversion keeps amount and unit price mathematically aligned',
 
   const yiRow = comparisonTableRowHtml({
     slug: 'sub-yi', billingMode: 'subscription', platformName: '平台A', planName: 'Pro',
-    modelName: 'Model A', monthlyFeeCny: 70, fiveHourTokenInM: 250,
+    relationLabel: 'Model A', monthlyFeeCny: 70, fiveHourTokenInM: 250,
     weeklyTokenInM: 500, monthlyTokenInM: 1000, unitPriceCnyPerM: 0.2
   }, 'yi');
   assert.match(yiRow, /¥20 \/ 亿/);

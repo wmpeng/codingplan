@@ -630,7 +630,7 @@ it('platform card gets API badge and models from entity-derived options', () => 
   const html = buildPlatformCardHtml(
     samplePlatform({ slug: 'gongji', name: '共绩算力' }),
     [],
-    { hasApiPlan: true, apiModelNames: ['Kimi-K3', 'DeepSeek-V4-Pro-0813'] }
+    { hasApiPlan: true, supportedModels: [{slug:'kimi-k3',name:'Kimi-K3'}, {slug:'deepseek-v4-pro-0813',name:'DeepSeek-V4-Pro-0813'}] }
   );
   assert.match(html, /platform-rush--api/);
   assert.match(html, /按量/);

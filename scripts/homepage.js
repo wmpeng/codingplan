@@ -162,19 +162,19 @@
             const priority = [];
             const rest = [];
             for (const m of modelsInDataOrder) {
-                if (modelFilterPrefixRank(m) >= 0) {
+                if (modelFilterPrefixRank(entityContext.modelBySlug.get(m).name) >= 0) {
                     priority.push(m);
                 } else {
                     rest.push(m);
                 }
             }
             priority.sort((a, b) => {
-                const ra = modelFilterPrefixRank(a);
-                const rb = modelFilterPrefixRank(b);
+                const ra = modelFilterPrefixRank(entityContext.modelBySlug.get(a).name);
+                const rb = modelFilterPrefixRank(entityContext.modelBySlug.get(b).name);
                 if (ra !== rb) return ra - rb;
                 return modelsInDataOrder.indexOf(a) - modelsInDataOrder.indexOf(b);
             });
-            rest.sort((a, b) => a.localeCompare(b, 'zh-CN'));
+            rest.sort((a, b) => entityContext.modelBySlug.get(a).name.localeCompare(entityContext.modelBySlug.get(b).name, 'zh-CN'));
             return priority.concat(rest);
         }
 
@@ -224,14 +224,14 @@
             });
 
             const models = sortModelsForFilterDropdown(
-                uniqueStringsInOrder(allPlans.flatMap(p => p.modelLabels || []))
+                uniqueStringsInOrder(allPlans.flatMap(p => (p.supportedModels || []).map(model => model.slug)))
             );
             models.forEach(model => {
                 const div = document.createElement('div');
                 div.className = 'checkbox-item';
                 div.innerHTML = `
                     <input type="checkbox" id="model_${model}" value="${model}" onchange="updateModelSelection()">
-                    <label for="model_${model}">${model}</label>
+                    <label for="model_${model}">${escapeHtml(entityContext.modelBySlug.get(model).name)}</label>
                 `;
                 modelCheckboxes.appendChild(div);
             });
@@ -585,7 +585,7 @@
 
                 // 模型筛选（多选时取交集：套餐必须同时包含所有选中的模型）
                 if (selectedModels.size > 0) {
-                    const hasAllModels = [...selectedModels].every(model => plan.modelLabels.includes(model));
+                    const hasAllModels = [...selectedModels].every(slug => plan.supportedModels.some(model => model.slug === slug));
                     if (!hasAllModels) return false;
                 }
 
@@ -2154,7 +2154,7 @@
             return PlatformCatalog.buildPlatformCardHtml(platform, allPlans, {
                 sanitizeUrl: typeof sanitizeHttpUrl === 'function' ? sanitizeHttpUrl : (u) => u,
                 hasApiPlan: apiGroups.length > 0,
-                apiModelNames: apiGroups.flatMap((group) => group.rows.map((row) => row.modelName)),
+                supportedModels: EntityData.platformModels(entityContext, platform.slug),
                 pinnedIds: platformPinnedIds
             });
         }

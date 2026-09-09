@@ -156,7 +156,7 @@
             if (byVendor !== 0) return byVendor;
             const byPlan = String(a.planName || '').localeCompare(String(b.planName || ''), 'zh-CN');
             if (byPlan !== 0) return byPlan;
-            return String(a.modelName || a.canonicalModelName || '').localeCompare(String(b.modelName || b.canonicalModelName || ''), 'zh-CN');
+            return String(a.relationLabel || a.modelName || '').localeCompare(String(b.relationLabel || b.modelName || ''), 'zh-CN');
         });
     }
 
@@ -347,7 +347,7 @@
         if (pointLabelField === 'vendor') {
             return point.platformName;
         }
-        if (pointLabelField === 'model') return point.modelName || point.canonicalModelName;
+        if (pointLabelField === 'model') return point.relationLabel || point.modelName;
         return '';
     }
 
@@ -418,7 +418,7 @@
         if (key === 'vendor') return point.platformName || '';
         if (key === 'plan') return point.planName || '';
         if (key === 'note') return point[key] || '';
-        if (key === 'model') return point.modelName || point.canonicalModelName || '';
+        if (key === 'model') return point.relationLabel || point.modelName || '';
         return finitePositive(point[key]);
     }
 
@@ -473,7 +473,7 @@
             `<td class="sticky-first">${platformCellHtml(point)}</td>` +
             `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}</td>` +
             `<td class="numeric">${price}</td>` +
-            `<td class="usage-table-model">${escapeHtml(point.modelName || point.canonicalModelName)}</td>` +
+            `<td class="usage-table-model">${escapeHtml(point.relationLabel || point.modelName)}</td>` +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
             `<td class="usage-table-api-pricing">${subscription ? '—' : escapeHtml(formatApiPricing(point.apiPricing))}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
@@ -527,18 +527,14 @@
     }
 
     function getPresetModelQualifier(point) {
-        const model = String(point && point.modelName || '').trim();
-        const canonical = String(point && point.canonicalModelName || '').trim();
-        if (!model || !canonical || model === canonical) return '';
-        if (model.startsWith(canonical)) return model.slice(canonical.length).trim();
-        return model;
+        return String(point && point.tierLabel || '').trim();
     }
 
     function presetComparisonTableHtml(group, points, tokenUnit, platformScope) {
         const kind = group && group.kind === 'multi' ? 'multi' : 'single';
         const columns = PRESET_TABLE_COLUMNS[kind];
         const rows = buildPresetComparisonRows(points, group, platformScope);
-        const modelNamesBySlug = new Map((points || []).map((point) => [point.modelSlug, point.canonicalModelName]));
+        const modelNamesBySlug = new Map((points || []).map((point) => [point.modelSlug, point.modelName]));
         const includedModels = kind === 'multi'
             ? group.modelSlugs.map((slug) => modelNamesBySlug.get(slug) || slug).join('、')
             : '';
@@ -549,7 +545,7 @@
             const planName = point.planName || (point.billingMode === 'payg' ? '按量 API' : '订阅');
             const plan = `<span>${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
             const price = point.billingMode === 'payg' ? '按量' : `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`;
-            const model = `<span class="usage-table-model">${escapeHtml(point.modelName || point.canonicalModelName || '—')}</span>`;
+            const model = `<span class="usage-table-model">${escapeHtml(point.relationLabel || point.modelName || '—')}</span>`;
             const separator = '<span class="usage-preset-separator">·</span>';
             const primaryDetail = kind === 'multi' ? model : `<span class="usage-preset-price">${price}</span>`;
             const secondaryDetail = kind === 'multi' ? `${separator}<span class="usage-preset-price">${price}</span>` : '';
@@ -610,7 +606,7 @@
         const modality = point.multimodal === true ? '多模态' : point.multimodal === false ? '纯文本' : '多模态状态未知';
         const billing = point.billingMode === 'subscription' ? escapeHtml(point.planName || '订阅') : '按量 API';
         const platformLine = `${escapeHtml(point.platformName)} · ${billing}`;
-        const modelLine = escapeHtml(point.modelName);
+        const modelLine = escapeHtml(point.relationLabel);
         const fee = point.billingMode === 'subscription'
             ? `<div>月费：¥${formatNumber(point.monthlyFeeCny, 2)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
             : '';
@@ -699,7 +695,7 @@
         const grouped = new Map();
         points.forEach((point) => {
             const key = getPointColorKey(point, colorMode);
-            const label = colorMode === 'model' ? point.canonicalModelName : getPointLabelText(point, 'vendor');
+            const label = colorMode === 'model' ? point.modelName : getPointLabelText(point, 'vendor');
             if (!grouped.has(key)) grouped.set(key, { label, data: [] });
             grouped.get(key).data.push(mapPoint(point));
         });
@@ -722,7 +718,7 @@
 
     function getUnitPriceBarAxisLabel(point) {
         const plan = point.billingMode === 'subscription' ? (point.planName || '订阅') : '按量 API';
-        return `${point.platformName || '未知平台'} · ${plan} · ${point.modelName || point.canonicalModelName || '未知模型'}`;
+        return `${point.platformName || '未知平台'} · ${plan} · ${point.relationLabel || point.modelName || '未知模型'}`;
     }
 
     function buildUnitPriceBarSeries(points, colorMode, colors, tokenUnit) {
@@ -730,7 +726,7 @@
         const grouped = new Map();
         points.forEach((point, index) => {
             const key = getPointColorKey(point, colorMode);
-            const label = colorMode === 'model' ? point.canonicalModelName : getPointLabelText(point, 'vendor');
+            const label = colorMode === 'model' ? point.modelName : getPointLabelText(point, 'vendor');
             if (!grouped.has(key)) grouped.set(key, { label, data: Array(points.length).fill(null) });
             grouped.get(key).data[index] = {
                 value: unitPriceInTokenUnit(point.unitPriceCnyPerM, tokenUnit),
@@ -820,7 +816,7 @@
             });
             const platforms = [...platformMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
             const modelMap = new Map();
-            points.forEach((point) => modelMap.set(point.modelSlug, point.canonicalModelName));
+            points.forEach((point) => modelMap.set(point.modelSlug, point.modelName));
             const models = [...modelMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
             const platformColors = buildVendorColorMap(platforms.map(([key]) => key));
             const modelColors = buildModelColorMap(models.map(([id]) => id));
@@ -972,7 +968,7 @@
                 const entries = new Map();
                 visiblePoints.forEach((point) => {
                     const key = getPointColorKey(point, state.colorMode);
-                    const label = byModel ? point.canonicalModelName : getPointLabelText(point, 'vendor');
+                    const label = byModel ? point.modelName : getPointLabelText(point, 'vendor');
                     entries.set(key, label);
                 });
                 return { colors, entries };

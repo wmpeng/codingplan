@@ -12,14 +12,27 @@
     return documentValue[key];
   }
 
-  function displayModelName(model, relation) {
-    let name = model ? model.name : relation.modelSlug;
-    if (relation.serviceTier === '高速') {
-      if (!/-highspeed$/i.test(name)) name += '-highspeed';
-    } else if (relation.serviceTier) name += `-${relation.serviceTier}`;
-    if (relation.contextTier) name += ` [${relation.contextTier}]`;
-    if (relation.timeTier) name += ` [${relation.timeTier}]`;
-    return name;
+  function billingPresentation(model, relation) {
+    const modelName = model ? model.name : relation.modelSlug;
+    const tierLabel = [relation.serviceTier, relation.contextTier, relation.timeTier]
+      .filter(Boolean).map(tier => `[${tier}]`).join(' ');
+    return { modelName, tierLabel, relationLabel: [modelName, tierLabel].filter(Boolean).join(' ') };
+  }
+
+  // Inventory is a set of model identities, never a selection of billing rows.
+  function supportedModels(context, plans) {
+    const models = new Map();
+    for (const plan of plans) {
+      for (const relation of context.relationsByPlanSlug.get(plan.slug) || []) {
+        const model = context.modelBySlug.get(relation.modelSlug);
+        if (model && !models.has(model.slug)) models.set(model.slug, { slug: model.slug, name: model.name });
+      }
+    }
+    return [...models.values()];
+  }
+
+  function platformModels(context, platformSlug) {
+    return supportedModels(context, context.plans.filter(plan => plan.platformSlug === platformSlug && !plan.discontinued));
   }
 
   function buildContext(platformDoc, planDoc, modelDoc, planModelDoc) {
@@ -50,21 +63,12 @@
       .filter((plan) => includeHidden || (plan.planTableVisible !== false && plan.billingMode !== 'payg'))
       .map((plan) => {
         const platform = context.platformBySlug.get(plan.platformSlug);
-        const selectedByModel = new Map();
-        (context.relationsByPlanSlug.get(plan.slug) || []).forEach((relation) => {
-          const selected = selectedByModel.get(relation.modelSlug);
-          const isPlain = !relation.timeTier && !relation.contextTier && !relation.serviceTier;
-          const selectedIsPlain = selected && !selected.timeTier && !selected.contextTier && !selected.serviceTier;
-          if (!selected || (isPlain && !selectedIsPlain)) {
-            selectedByModel.set(relation.modelSlug, relation);
-          }
-        });
-        const names = Array.from(selectedByModel.values())
-          .map((relation) => displayModelName(context.modelBySlug.get(relation.modelSlug), relation));
+        const models = supportedModels(context, [plan]);
         return {
           ...plan,
           platformName: (platform && platform.name) || plan.platformSlug,
-          modelLabels: names
+          supportedModels: models,
+          modelLabels: models.map(model => model.name)
         };
       });
   }
@@ -114,7 +118,7 @@
             return {
               slug: relation.slug,
               modelSlug: relation.modelSlug,
-              modelName: displayModelName(model, relation),
+              ...billingPresentation(model, relation),
               method: relation.method,
               currency: pricing && pricing.currency,
               inputPerM: pricing && pricing.inputPerM,
@@ -159,8 +163,7 @@
         modelSlug: model.slug,
         platformName: platform.name,
         planName: plan.comparisonName || plan.name,
-        modelName: displayModelName(model, relation),
-        canonicalModelName: model.name,
+        ...billingPresentation(model, relation),
         multimodal: model.multimodal,
         scores: comparisonScores(model.scores),
         billingMode,
@@ -209,7 +212,9 @@
     catalogCounts,
     headerSubtitle,
     collection,
-    displayModelName,
+    billingPresentation,
+    supportedModels,
+    platformModels,
     buildContext,
     listPlatforms,
     buildPlanCatalog,
