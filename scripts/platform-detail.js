@@ -425,7 +425,7 @@
       actionLink +
       `</div>` +
       `<div class="platform-detail-meta">` +
-      `<span class="platform-detail-rating" aria-label="${rating} 星">${stars}</span>` +
+      `<span class="platform-detail-rating" aria-label="${rating > 0 ? `${rating} 星` : '待评定'}">${rating > 0 ? stars : '待评定'}</span>` +
       statusHtml +
       (discontinued ? `<span class="platform-detail-status">已停售</span>` : '') +
       `</div>` +

@@ -2,6 +2,21 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const EntityData = require('./entity-data.js');
 
+test('header counts use public platforms, active subscriptions and model identities', () => {
+  const context = fixture();
+  context.platforms.push({slug:'hidden', catalogVisible:false});
+  context.plans.push(
+    {slug:'old',platformSlug:'platform-a',billingMode:'subscription',discontinued:true},
+    {slug:'api',platformSlug:'platform-a',billingMode:'payg'},
+    {slug:'hidden-plan',platformSlug:'platform-a',billingMode:'subscription',planTableVisible:false}
+  );
+  assert.deepEqual(EntityData.catalogCounts(context), {platforms:1,plans:1,models:2});
+  assert.equal(EntityData.headerSubtitle(context, '31 大平台 介绍'), '1 大平台 · 1 个在售套餐 · 2 个模型<br>介绍');
+  assert.equal(EntityData.headerSubtitle(null, '介绍'), '介绍');
+  context.models.push({slug:'model-c'});
+  assert.equal(EntityData.catalogCounts(context).models, 3);
+});
+
 function fixture() {
   return EntityData.buildContext(
     { schemaVersion: 1, platforms: [{ slug: 'platform-a', name: '平台A' }] },

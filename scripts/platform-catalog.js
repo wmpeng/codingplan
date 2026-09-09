@@ -138,7 +138,7 @@ function matchesDerivedTag(platform, rule) {
   }
   if (rule.dimension !== undefined && rule.minScore !== undefined) {
     const dim = platform.dimensions?.[rule.dimension];
-    if (!dim || dim.score < rule.minScore) {
+    if (!dim || !Number.isFinite(dim.score) || dim.score < rule.minScore) {
       return false;
     }
   }
@@ -485,7 +485,7 @@ function validatePlatformRecords(platforms, plans) {
       }
 
       const { score, reason } = dim;
-      if (!Number.isInteger(score) || score < 1 || score > 5) {
+      if (score !== null && (!Number.isInteger(score) || score < 1 || score > 5)) {
         errors.push(`${prefix}: dimension "${key}" score must be an integer in [1, 5]`);
       }
       if (typeof reason !== 'string' || reason.trim() === '') {
@@ -654,7 +654,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
                         </div>
                         <div class="platform-card-aside">
                             ${pinHtml}
-                            <span class="platform-rating" aria-label="${rating} 星">${stars}</span>
+                            <span class="platform-rating" aria-label="${rating > 0 ? `${rating} 星` : '待评定'}">${rating > 0 ? stars : '待评定'}</span>
                         </div>
                     </header>
                     ${summary}

@@ -1324,7 +1324,9 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpcommandcode",
       "rating": 5,
-      "tags": ["性价比高"],
+      "tags": [
+        "性价比高"
+      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 1,
       "quarterlyPrice": "-",
@@ -1333,7 +1335,11 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "currency": "$",
-      "benefits": ["每月 $10 模型 Credits", "5 小时 / 周额度为 $3 / $6", "支持开源模型及部分闭源模型"],
+      "benefits": [
+        "每月 $10 模型 Credits",
+        "5 小时 / 周额度为 $3 / $6",
+        "支持开源模型及部分闭源模型"
+      ],
       "note": "按模型实际 Token 价格扣减 Credits；只能在 Command Code 客户端内使用，目前稳定性较弱。"
     },
     {
@@ -1343,7 +1349,10 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpcommandcode",
       "rating": 5,
-      "tags": ["模型强", "性价比高"],
+      "tags": [
+        "模型强",
+        "性价比高"
+      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 10,
       "quarterlyPrice": "-",
@@ -1352,7 +1361,11 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "currency": "$",
-      "benefits": ["最高每月 $70 模型 Credits", "5 小时 / 周额度为 $14 / $35", "支持 48 个模型"],
+      "benefits": [
+        "最高每月 $70 模型 Credits",
+        "5 小时 / 周额度为 $14 / $35",
+        "支持 48 个模型"
+      ],
       "note": "不同模型拥有独立月额度，范围为 $20–$70；所有额度共享套餐池。"
     },
     {
@@ -1362,7 +1375,9 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpcommandcode",
       "rating": 4,
-      "tags": ["模型强"],
+      "tags": [
+        "模型强"
+      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 20,
       "quarterlyPrice": "-",
@@ -1371,7 +1386,11 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "currency": "$",
-      "benefits": ["最高每月 $80 模型 Credits", "5 小时 / 周额度为 $16 / $40", "支持 61 个模型"],
+      "benefits": [
+        "最高每月 $80 模型 Credits",
+        "5 小时 / 周额度为 $16 / $40",
+        "支持 61 个模型"
+      ],
       "note": "不同模型拥有独立月额度，范围为 $20–$80；所有额度共享套餐池。"
     },
     {
@@ -1795,6 +1814,398 @@
         "3900 积分"
       ],
       "note": "• 存在周限额和 session 限额；不同模型有不同高级模型扣减倍率\n• 已改为用 token 计费模式"
+    },
+    {
+      "slug": "qoder-cn-pro",
+      "platformSlug": "qoder-cn",
+      "name": "Pro",
+      "billingMode": "subscription",
+      "action": "https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 59,
+      "currency": "¥",
+      "benefits": [
+        "2,000 Credits/月",
+        "覆盖 Qoder CN 全家桶"
+      ],
+      "note": "Credits 不等于 Token；用量尚未确认。年付为月付总价的 9 折。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次付费 Pro 加赠 2000 Credits；续费、升级或过期重开加赠 1000 Credits。加赠仅限 Qwen，会员卡不适用；到账后 30 天有效。",
+      "yearlyPrice": 637.2,
+      "summary": "2,000 Credits/月；覆盖 Qoder CN 全家桶",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开"
+    },
+    {
+      "slug": "qoder-cn-pro-plus",
+      "platformSlug": "qoder-cn",
+      "name": "Pro+",
+      "billingMode": "subscription",
+      "action": "https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 169,
+      "currency": "¥",
+      "benefits": [
+        "6,000 Credits/月",
+        "覆盖 Qoder CN 全家桶"
+      ],
+      "note": "Credits 不等于 Token；用量尚未确认。年付为月付总价的 9 折。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次付费 Pro+ 加赠 6000 Credits；续费、升级或过期重开加赠 1000 Credits。加赠仅限 Qwen，会员卡不适用；到账后 30 天有效。",
+      "yearlyPrice": 1825.2,
+      "summary": "6,000 Credits/月；覆盖 Qoder CN 全家桶",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开"
+    },
+    {
+      "slug": "qoder-cn-ultra",
+      "platformSlug": "qoder-cn",
+      "name": "Ultra",
+      "billingMode": "subscription",
+      "action": "https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 559,
+      "currency": "¥",
+      "benefits": [
+        "20,000 Credits/月",
+        "覆盖 Qoder CN 全家桶"
+      ],
+      "note": "Credits 不等于 Token；用量尚未确认。年付为月付总价的 9 折。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次开通 Ultra 不享等额加赠；续费、升级或过期重开加赠 1000 Credits。加赠仅限 Qwen，会员卡不适用；到账后 30 天有效。",
+      "yearlyPrice": 6037.2,
+      "summary": "20,000 Credits/月；覆盖 Qoder CN 全家桶",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开"
+    },
+    {
+      "slug": "qoder-intl-pro",
+      "platformSlug": "qoder-intl",
+      "name": "Pro",
+      "billingMode": "subscription",
+      "action": "https://qoder.com/pricing",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 20,
+      "currency": "$",
+      "benefits": [
+        "2,000 Credits/月",
+        "Quest、Repo Wiki、知识卡片"
+      ],
+      "note": "Credits 在当前订阅周期内有效，到期清零；耗尽后可使用受限基础模型或购买加量包。价格未含适用税费；Token 用量尚未确认。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次付费 Pro 加赠 2000 Credits；续费、升级或过期重开加赠 1000 Credits。加赠为通用 Credits；到账后 30 天有效。",
+      "summary": "2,000 Credits/月；Quest、Repo Wiki、知识卡片",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开"
+    },
+    {
+      "slug": "qoder-intl-pro-plus",
+      "platformSlug": "qoder-intl",
+      "name": "Pro+",
+      "billingMode": "subscription",
+      "action": "https://qoder.com/pricing",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 60,
+      "currency": "$",
+      "benefits": [
+        "6,000 Credits/月",
+        "Quest、Repo Wiki、知识卡片"
+      ],
+      "note": "Credits 在当前订阅周期内有效，到期清零；耗尽后可使用受限基础模型或购买加量包。价格未含适用税费；Token 用量尚未确认。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次付费 Pro+ 加赠 6000 Credits；续费、升级或过期重开加赠 1000 Credits。加赠为通用 Credits；到账后 30 天有效。",
+      "summary": "6,000 Credits/月；Quest、Repo Wiki、知识卡片",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开"
+    },
+    {
+      "slug": "qoder-intl-ultra",
+      "platformSlug": "qoder-intl",
+      "name": "Ultra",
+      "billingMode": "subscription",
+      "action": "https://qoder.com/pricing",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 200,
+      "currency": "$",
+      "benefits": [
+        "20,000 Credits/月",
+        "Quest、Repo Wiki、知识卡片"
+      ],
+      "note": "Credits 在当前订阅周期内有效，到期清零；耗尽后可使用受限基础模型或购买加量包。价格未含适用税费；Token 用量尚未确认。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次开通 Ultra 不享等额加赠；续费、升级或过期重开加赠 1000 Credits。加赠为通用 Credits；到账后 30 天有效。",
+      "summary": "20,000 Credits/月；Quest、Repo Wiki、知识卡片",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开"
+    },
+    {
+      "slug": "workbuddy-standard",
+      "platformSlug": "workbuddy",
+      "name": "标准版",
+      "billingMode": "subscription",
+      "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 70,
+      "currency": "¥",
+      "benefits": [
+        "2000 基础积分/月",
+        "WorkBuddy / CodeBuddy 积分共享",
+        "全模型可选、无限代码补全"
+      ],
+      "note": "单次购买 ¥99/期。普通年付 ¥840/年。连续包月 ¥70/月；连续包年 ¥672/年。当前加赠后共 4000 积分/月，官方未公布个人版加赠活动起止日期；赠送积分到账后 1 个月有效。Token 用量尚未确认。",
+      "yearlyPrice": 672,
+      "summary": "2000 基础积分/月；WorkBuddy / CodeBuddy 积分共享；全模型可选、无限代码补全",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "firstMonthPrice": 70
+    },
+    {
+      "slug": "workbuddy-advanced",
+      "platformSlug": "workbuddy",
+      "name": "高级版",
+      "billingMode": "subscription",
+      "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 140,
+      "currency": "¥",
+      "benefits": [
+        "4000 基础积分/月",
+        "WorkBuddy / CodeBuddy 积分共享",
+        "全模型可选、无限代码补全"
+      ],
+      "note": "单次购买 ¥199/期。普通年付 ¥1680/年。连续包月 ¥140/月；连续包年 ¥1344/年。当前加赠后共 9000 积分/月，官方未公布个人版加赠活动起止日期；赠送积分到账后 1 个月有效。Token 用量尚未确认。",
+      "yearlyPrice": 1344,
+      "summary": "4000 基础积分/月；WorkBuddy / CodeBuddy 积分共享；全模型可选、无限代码补全",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "firstMonthPrice": 140
+    },
+    {
+      "slug": "workbuddy-flagship",
+      "platformSlug": "workbuddy",
+      "name": "旗舰版",
+      "billingMode": "subscription",
+      "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 700,
+      "currency": "¥",
+      "benefits": [
+        "20000 基础积分/月",
+        "WorkBuddy / CodeBuddy 积分共享",
+        "全模型可选、无限代码补全"
+      ],
+      "note": "单次购买 ¥999/期。普通年付 ¥8400/年。连续包月 ¥700/月；连续包年 ¥6720/年。当前加赠后共 50000 积分/月，官方未公布个人版加赠活动起止日期；赠送积分到账后 1 个月有效。Token 用量尚未确认。",
+      "yearlyPrice": 6720,
+      "summary": "20000 基础积分/月；WorkBuddy / CodeBuddy 积分共享；全模型可选、无限代码补全",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "firstMonthPrice": 700
+    },
+    {
+      "slug": "trae-cn-lite",
+      "platformSlug": "trae-cn",
+      "name": "Lite",
+      "billingMode": "subscription",
+      "action": "https://www.trae.cn",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 45,
+      "currency": "¥",
+      "benefits": [
+        "2000 Work 专属积分/周期",
+        "仅适用于 TraeWork",
+        "云端任务最多 2 个并行"
+      ],
+      "note": "单次购买 ¥49/期。套餐有效期为 31 个自然日。连续包月 ¥45/周期。付费新用户连续包月首期 ¥29.9，第二期恢复 ¥45；官方未公布该首期优惠活动起止日期。登录、签到等奖励不计入基础套餐积分。Token 用量尚未确认。",
+      "summary": "2000 Work 专属积分/周期；仅适用于 TraeWork；云端任务最多 2 个并行",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开",
+      "firstMonthPrice": 29.9
+    },
+    {
+      "slug": "trae-cn-pro",
+      "platformSlug": "trae-cn",
+      "name": "Pro",
+      "billingMode": "subscription",
+      "action": "https://www.trae.cn",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 89,
+      "currency": "¥",
+      "benefits": [
+        "4000 通用积分/周期",
+        "适用于 TraeCode 与 TraeWork",
+        "云端任务最多 10 个并行"
+      ],
+      "note": "单次购买 ¥99/期。套餐有效期为 31 个自然日。连续包月 ¥89/周期。付费新用户连续包月首期 ¥69，第二期恢复 ¥89；官方未公布该首期优惠活动起止日期。登录、签到等奖励不计入基础套餐积分。Token 用量尚未确认。",
+      "summary": "4000 通用积分/周期；适用于 TraeCode 与 TraeWork；云端任务最多 10 个并行",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开",
+      "firstMonthPrice": 69
+    },
+    {
+      "slug": "trae-cn-pro-plus",
+      "platformSlug": "trae-cn",
+      "name": "Pro+",
+      "billingMode": "subscription",
+      "action": "https://www.trae.cn",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 219,
+      "currency": "¥",
+      "benefits": [
+        "12000 通用积分/周期",
+        "适用于 TraeCode 与 TraeWork",
+        "云端任务最多 10 个并行"
+      ],
+      "note": "单次购买 ¥239/期。套餐有效期为 31 个自然日。连续包月 ¥219/周期。登录、签到等奖励不计入基础套餐积分。Token 用量尚未确认。",
+      "summary": "12000 通用积分/周期；适用于 TraeCode 与 TraeWork；云端任务最多 10 个并行",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开",
+      "firstMonthPrice": 219
+    },
+    {
+      "slug": "trae-cn-ultra",
+      "platformSlug": "trae-cn",
+      "name": "Ultra",
+      "billingMode": "subscription",
+      "action": "https://www.trae.cn",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 629,
+      "currency": "¥",
+      "benefits": [
+        "40000 通用积分/周期",
+        "适用于 TraeCode 与 TraeWork",
+        "云端任务最多 20 个并行"
+      ],
+      "note": "单次购买 ¥699/期。套餐有效期为 31 个自然日。连续包月 ¥629/周期。登录、签到等奖励不计入基础套餐积分。Token 用量尚未确认。",
+      "summary": "40000 通用积分/周期；适用于 TraeCode 与 TraeWork；云端任务最多 20 个并行",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开",
+      "firstMonthPrice": 629
+    },
+    {
+      "slug": "trae-intl-lite",
+      "platformSlug": "trae-intl",
+      "name": "Lite",
+      "billingMode": "subscription",
+      "action": "https://www.trae.ai/pricing",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 3,
+      "currency": "$",
+      "benefits": [
+        "$5 基础使用额度/月",
+        "无限代码补全、TraeCode SOLO",
+        "TraeWork 云端任务最多 2 个并行"
+      ],
+      "note": "基础使用额度不是固定 Token 数。Token 用量尚未确认。",
+      "summary": "$5 基础使用额度/月；无限代码补全、TraeCode SOLO；TraeWork 云端任务最多 2 个并行",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开"
+    },
+    {
+      "slug": "trae-intl-pro",
+      "platformSlug": "trae-intl",
+      "name": "Pro",
+      "billingMode": "subscription",
+      "action": "https://www.trae.ai/pricing",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 10,
+      "currency": "$",
+      "benefits": [
+        "$20 基础使用额度/月",
+        "无限代码补全、TraeCode SOLO",
+        "TraeWork 云端任务最多 10 个并行"
+      ],
+      "note": "基础使用额度不是固定 Token 数。新用户限时可试用 7 天，之后 $10/月；官方未公布试用活动起止日期。Token 用量尚未确认。",
+      "summary": "$20 基础使用额度/月；无限代码补全、TraeCode SOLO；TraeWork 云端任务最多 10 个并行",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开"
+    },
+    {
+      "slug": "trae-intl-pro-plus",
+      "platformSlug": "trae-intl",
+      "name": "Pro+",
+      "billingMode": "subscription",
+      "action": "https://www.trae.ai/pricing",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 30,
+      "currency": "$",
+      "benefits": [
+        "$90 基础使用额度/月",
+        "无限代码补全、TraeCode SOLO",
+        "TraeWork 云端任务最多 15 个并行"
+      ],
+      "note": "基础使用额度不是固定 Token 数。Token 用量尚未确认。",
+      "summary": "$90 基础使用额度/月；无限代码补全、TraeCode SOLO；TraeWork 云端任务最多 15 个并行",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开"
+    },
+    {
+      "slug": "trae-intl-ultra",
+      "platformSlug": "trae-intl",
+      "name": "Ultra",
+      "billingMode": "subscription",
+      "action": "https://www.trae.ai/pricing",
+      "rating": 0,
+      "tags": [],
+      "monthlyPrice": 100,
+      "currency": "$",
+      "benefits": [
+        "$400 基础使用额度/月",
+        "无限代码补全、TraeCode SOLO",
+        "TraeWork 云端任务最多 20 个并行"
+      ],
+      "note": "基础使用额度不是固定 Token 数。可优先体验新模型。Token 用量尚未确认。",
+      "summary": "$400 基础使用额度/月；无限代码补全、TraeCode SOLO；TraeWork 云端任务最多 20 个并行",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开"
     },
     {
       "slug": "iflytek-coding-plan-plan-78",

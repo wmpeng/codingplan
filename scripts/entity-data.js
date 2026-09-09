@@ -190,7 +190,24 @@
     return points;
   }
 
+  function catalogCounts(context) {
+    return {
+      platforms: listPlatforms(context).length,
+      plans: buildPlanCatalog(context).filter(plan => !plan.discontinued).length,
+      models: context.models.length
+    };
+  }
+
+  function headerSubtitle(context, subtitle) {
+    const text = String(subtitle || '').replace(/^\d+\s*大平台\s*/, '');
+    if (!context) return text;
+    const counts = catalogCounts(context);
+    return `${counts.platforms} 大平台 · ${counts.plans} 个在售套餐 · ${counts.models} 个模型<br>${text}`;
+  }
+
   return {
+    catalogCounts,
+    headerSubtitle,
     collection,
     displayModelName,
     buildContext,

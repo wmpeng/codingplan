@@ -531,6 +531,16 @@
       }
     },
     {
+      "slug": "doubao-seed-2-1-pro",
+      "name": "Doubao-Seed-2.1-Pro",
+      "multimodal": "unknown",
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
       "slug": "doubao-seed-code",
       "name": "Doubao-Seed-Code",
       "multimodal": true,
@@ -1022,6 +1032,16 @@
           "modelName": "glm-5-3-flash",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         }
+      }
+    },
+    {
+      "slug": "glm-5v-turbo",
+      "name": "GLM-5v-Turbo",
+      "multimodal": "unknown",
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
       }
     },
     {

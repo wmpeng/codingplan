@@ -127,8 +127,10 @@ function processPrices(item, index) {
     let yearlyPrice = parseFloat(item.yearlyPrice);
 
     if (Number.isNaN(firstMonthPrice) || item.firstMonthPrice === '-') firstMonthPrice = monthlyPrice;
-    if (Number.isNaN(quarterlyPrice) || item.quarterlyPrice === '-') quarterlyPrice = monthlyPrice * 3;
-    if (Number.isNaN(yearlyPrice) || item.yearlyPrice === '-') yearlyPrice = quarterlyPrice * 4;
+    if (item.quarterlyPrice === '未公开') quarterlyPrice = '未公开';
+    else if (Number.isNaN(quarterlyPrice) || item.quarterlyPrice === '-') quarterlyPrice = monthlyPrice * 3;
+    if (item.yearlyPrice === '未公开') yearlyPrice = '未公开';
+    else if (Number.isNaN(yearlyPrice) || item.yearlyPrice === '-') yearlyPrice = quarterlyPrice * 4;
 
     const preserveString = (value) => {
         if (value === '未公开' || value === '无限制') return value;
@@ -148,6 +150,7 @@ function processPrices(item, index) {
 }
 
 function formatPrice(price) {
+    if (typeof price !== 'number' || !Number.isFinite(price)) return String(price ?? '-');
     if (Number.isInteger(price)) return String(price);
     return price.toFixed(2);
 }
@@ -190,12 +193,12 @@ function generateTableRowsHtml(plans) {
                             跳转开通
                         </a>
                     </td>
-                    <td class="rating-stars">${'★'.repeat(plan.rating || 0)}${'☆'.repeat(5 - (plan.rating || 0))}</td>
+                    <td class="rating-stars">${plan.rating > 0 ? '★'.repeat(plan.rating) + '☆'.repeat(5 - plan.rating) : '待评定'}</td>
                     <td class="plan-tags-cell">${renderPlanTags(plan)}</td>
                     <td><span class="price">${currency}${formatPrice(plan.firstMonthPrice)} <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">${currency}${formatPrice(plan.monthlyPrice)} <span class="unit">/ 月</span></span></td>
-                    <td><span class="price-normal">${currency}${formatPrice(plan.quarterlyPrice)} <span class="price-original">${currency}${formatPrice(plan.monthlyPrice * 3)}</span> <span class="unit">/ 季</span></span></td>
-                    <td><span class="price-normal">${currency}${formatPrice(plan.yearlyPrice)} <span class="price-original">${currency}${formatPrice(plan.monthlyPrice * 12)}</span> <span class="unit">/ 年</span></span></td>
+                    <td><span class="price-normal">${currency}${formatPrice(plan.quarterlyPrice)} ${typeof plan.quarterlyPrice === 'number' ? `<span class="price-original">${currency}${formatPrice(plan.monthlyPrice * 3)}</span>` : ''} <span class="unit">/ 季</span></span></td>
+                    <td><span class="price-normal">${currency}${formatPrice(plan.yearlyPrice)} ${typeof plan.yearlyPrice === 'number' ? `<span class="price-original">${currency}${formatPrice(plan.monthlyPrice * 12)}</span>` : ''} <span class="unit">/ 年</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.fiveHoursRequests)} <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.weeklyRequests)} <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.monthlyRequests)} <span class="unit">/ 月</span></span></td>
@@ -246,7 +249,7 @@ indexHtml = replaceElementText(indexHtml, 'updateDate', escapeHtml(header.update
 indexHtml = replaceElementInnerHtml(
     indexHtml,
     'subtitle',
-    escapeHtml(header.subtitle || '').replace(/&lt;br\s*\/?&gt;/gi, '<br>').replace(/\n/g, '<br>')
+    escapeHtml(EntityData.headerSubtitle(entityContext, header.subtitle)).replace(/&lt;br\s*\/?&gt;/gi, '<br>').replace(/\n/g, '<br>')
 );
 indexHtml = replaceElementInnerHtml(
     indexHtml,
