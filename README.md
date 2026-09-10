@@ -2,7 +2,7 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.9.10 | DeepSeek 官方上线 V4.1 Flash 并调价；OpenCode Go、Command Code 的 DeepSeek 峰谷价拆分为 [谷]/[峰]
+> 更新日期 2026.9.10 | DeepSeek 官方上线 V4.1 Flash 并调价；OpenCode Go 新增 DeepSeek V4.1 Flash 与 Muse Spark 1.3
 
 当前展示 **37 个平台、99 个在售订阅套餐、2 个按量 API、118 个模型和 1090 条套餐模型关系**。
 
@@ -281,8 +281,6 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 
 ### 2026.9.10
 
-- OpenCode Go 与 Command Code 的 DeepSeek 模型按官方峰谷价拆成 [谷]/[峰] 两档：同等美元额度在峰值时段可用 Token 减半，页面可直接对比
-- Command Code 官方未公布 Peak 缓存读取价，按 Off-Peak 价格 ×2 推断，已在备注中标注「推断、待官方补充」
 - DeepSeek 官方上线 V4.1 Flash（552B MoE、原生多模态、1M 上下文）并下调价格：空闲 ¥1/¥0.02/¥4、高峰 ¥2/¥0.04/¥8 每百万 tokens，新价格 9.10 12:00 生效
 - DeepSeek 官方旧模型名 deepseek-v4-flash、deepseek-v4-flash-vision-exp 改由 V4.1 Flash 承接并按 Flash 价格计费；V4 Pro 将于 9.14 12:00 后路由到 V4.1 Flash
 - OpenCode Go 对齐官方当前 27 个模型，新增 DeepSeek-V4.1-Flash（限时 4 倍用量，官方未公布活动起止日期）与 Muse-Spark-1.3 Contributor
