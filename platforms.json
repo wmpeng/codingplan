@@ -197,15 +197,15 @@
       "name": "DeepSeek",
       "rating": 5,
       "summary": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。",
-      "detail": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。DeepSeek-V4-Flash-0731 正式版已上线，按量使用更灵活。",
+      "detail": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。DeepSeek V4.1 Flash 已上线，原生多模态、1M 上下文，空闲时段价格更低，按量使用更灵活。",
       "dimensions": {
         "value": {
           "score": 4,
-          "reason": "第一梯队模型中，最便宜的之一；按量标价透明；高峰翻倍后成本优势会收窄。"
+          "reason": "第一梯队模型中，最便宜的之一；空闲时段价格再降一半；按量标价透明，高峰翻倍后成本优势会收窄。"
         },
         "models": {
           "score": 5,
-          "reason": "DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro，推理与代码能力处于国产第一梯队。"
+          "reason": "DeepSeek-V4.1-Flash 支持原生多模态，推理与代码能力处于国产第一梯队；V4 Pro 计划有序下线。"
         },
         "stability": {
           "score": 5,

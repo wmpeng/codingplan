@@ -21,7 +21,7 @@
   "coverage": {
     "artificialAnalysisScores": 77,
     "deepSWEScores": 27,
-    "multimodalKnown": 82
+    "multimodalKnown": 83
   },
   "models": [
     {
@@ -364,7 +364,7 @@
     {
       "slug": "deepseek-v4-1-flash",
       "name": "DeepSeek-V4.1-Flash",
-      "multimodal": "unknown",
+      "multimodal": true,
       "modalities": null,
       "scores": {
         "artificialAnalysis": null,

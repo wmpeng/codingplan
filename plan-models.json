@@ -14728,92 +14728,48 @@
       "note": null
     },
     {
-      "slug": "deepseek-official-api--deepseek-v4-flash-0731--gu",
+      "slug": "deepseek-official-api--deepseek-v4-1-flash--gu",
       "planSlug": "deepseek-official-api",
-      "modelSlug": "deepseek-v4-flash-0731",
+      "modelSlug": "deepseek-v4-1-flash",
       "timeTier": "谷",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
       "usage": {
-        "unitPriceCnyPerM": 0.1444
+        "unitPriceCnyPerM": 0.0887
       },
       "pricing": {
         "currency": "¥",
-        "inputPerM": 1.5,
-        "cachePerM": 0.05,
-        "outputPerM": 4.5,
-        "inputCnyPerM": 1.5,
-        "cacheCnyPerM": 0.05,
-        "outputCnyPerM": 4.5
+        "inputPerM": 1.0,
+        "cachePerM": 0.02,
+        "outputPerM": 4.0,
+        "inputCnyPerM": 1.0,
+        "cacheCnyPerM": 0.02,
+        "outputCnyPerM": 4.0
       },
-      "note": "空闲时段价格，为高峰的一半（高峰 3.0/0.10/9.0）"
+      "note": "API 模型名 deepseek-flash；空闲时段价格，为高峰的一半（高峰 2.0/0.04/8.0）"
     },
     {
-      "slug": "deepseek-official-api--deepseek-v4-flash-0731--feng",
+      "slug": "deepseek-official-api--deepseek-v4-1-flash--feng",
       "planSlug": "deepseek-official-api",
-      "modelSlug": "deepseek-v4-flash-0731",
+      "modelSlug": "deepseek-v4-1-flash",
       "timeTier": "峰",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
       "usage": {
-        "unitPriceCnyPerM": 0.2888
+        "unitPriceCnyPerM": 0.1773
       },
       "pricing": {
         "currency": "¥",
-        "inputPerM": 3.0,
-        "cachePerM": 0.1,
-        "outputPerM": 9.0,
-        "inputCnyPerM": 3.0,
-        "cacheCnyPerM": 0.1,
-        "outputCnyPerM": 9.0
+        "inputPerM": 2.0,
+        "cachePerM": 0.04,
+        "outputPerM": 8.0,
+        "inputCnyPerM": 2.0,
+        "cacheCnyPerM": 0.04,
+        "outputCnyPerM": 8.0
       },
-      "note": "高峰时段（周一~五 9-12/14-18）价格"
-    },
-    {
-      "slug": "deepseek-official-api--deepseek-v4-flash-vision-exp--gu",
-      "planSlug": "deepseek-official-api",
-      "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": "谷",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "unitPriceCnyPerM": 0.1444
-      },
-      "pricing": {
-        "currency": "¥",
-        "inputPerM": 1.5,
-        "cachePerM": 0.05,
-        "outputPerM": 4.5,
-        "inputCnyPerM": 1.5,
-        "cacheCnyPerM": 0.05,
-        "outputCnyPerM": 4.5
-      },
-      "note": "与 V4-Flash 同价；空闲时段价格，为高峰的一半"
-    },
-    {
-      "slug": "deepseek-official-api--deepseek-v4-flash-vision-exp--feng",
-      "planSlug": "deepseek-official-api",
-      "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": "峰",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "unitPriceCnyPerM": 0.2888
-      },
-      "pricing": {
-        "currency": "¥",
-        "inputPerM": 3.0,
-        "cachePerM": 0.1,
-        "outputPerM": 9.0,
-        "inputCnyPerM": 3.0,
-        "cacheCnyPerM": 0.1,
-        "outputCnyPerM": 9.0
-      },
-      "note": "与 V4-Flash 同价；高峰时段价格"
+      "note": "API 模型名 deepseek-flash；高峰时段（周一~五 9-12/14-18）价格；旧模型名 deepseek-v4-flash、deepseek-v4-flash-vision-exp 同样由本模型提供服务并按本价格计费"
     },
     {
       "slug": "deepseek-official-api--deepseek-v4-pro-0813--gu",
@@ -14835,7 +14791,7 @@
         "cacheCnyPerM": 0.15,
         "outputCnyPerM": 13.5
       },
-      "note": "空闲时段价格，为高峰的一半（高峰 9.0/0.30/27.0）"
+      "note": "空闲时段价格，为高峰的一半（高峰 9.0/0.30/27.0）；北京时间 2026-09-14 12:00 后请求路由到 V4.1 Flash 并按 Flash 价格计费"
     },
     {
       "slug": "deepseek-official-api--deepseek-v4-pro-0813--feng",
@@ -14857,7 +14813,7 @@
         "cacheCnyPerM": 0.3,
         "outputCnyPerM": 27.0
       },
-      "note": "高峰时段（周一~五 9-12/14-18）价格"
+      "note": "高峰时段（周一~五 9-12/14-18）价格；北京时间 2026-09-14 12:00 后请求路由到 V4.1 Flash 并按 Flash 价格计费"
     },
     {
       "slug": "gongji-api--glm-5-3-flash",
