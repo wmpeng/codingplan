@@ -2,9 +2,9 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.9.10 | DeepSeek 官方上线 V4.1 Flash 并调价；OpenCode Go 新增 DeepSeek V4.1 Flash 与 Muse Spark 1.3
+> 更新日期 2026.9.10 | DeepSeek 官方上线 V4.1 Flash 并调价；OpenCode Go、Command Code 的 DeepSeek 峰谷价拆分为 [谷]/[峰]
 
-当前展示 **37 个平台、99 个在售订阅套餐、2 个按量 API、118 个模型和 1077 条套餐模型关系**。
+当前展示 **37 个平台、99 个在售订阅套餐、2 个按量 API、118 个模型和 1090 条套餐模型关系**。
 
 [在线平台对比](https://www.codingplan.fyi) · [额度/价格对比](https://www.codingplan.fyi/?view=usage) · [套餐对比](https://www.codingplan.fyi/?view=plans)
 
@@ -68,22 +68,23 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 | 口径 |
 |---|---|---|---:|---:|---:|---:|---|
-| [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | - | $1/月 | 143.8M | 287.61M | 479.3M | ¥0.0143/M | 计算 |
-| [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | - | $10/月 | 575.22M | 1,438.04M | 2,876.1M | ¥0.0238/M | 计算 |
-| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | - | $10/月 | 451.19M | 1,127.97M | 2,255.9M | ¥0.0299/M | 计算 |
-| [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | - | $20/月 | 671.08M | 1,677.71M | 3,355.4M | ¥0.0408/M | 计算 |
+| [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | [谷] | $1/月 | 143.8M | 287.61M | 479.3M | ¥0.0143/M | 计算 |
+| [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | [谷] | $10/月 | 575.22M | 1,438.04M | 2,876.1M | ¥0.0238/M | 计算 |
+| [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | [峰] | $1/月 | 71.9M | 143.8M | 239.7M | ¥0.0286/M | 计算 |
+| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | [谷] | $10/月 | 451.19M | 1,127.97M | 2,255.9M | ¥0.0299/M | 计算 |
+| [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | [谷] | $20/月 | 671.08M | 1,677.71M | 3,355.4M | ¥0.0408/M | 计算 |
+| [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | [峰] | $10/月 | 287.61M | 719.02M | 1,438M | ¥0.0476/M | 计算 |
+| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | [峰] | $10/月 | 225.59M | 563.98M | 1,128M | ¥0.0605/M | 计算 |
 | [字节·方舟 Coding Plan · Lite](https://api.dreamfree.space/c/s/cpyqfangzhou) | - | ¥40/月 | 40M | 300M | 600M | ¥0.0667/M | 实测 |
-| [字节·方舟 Coding Plan · Pro](https://api.dreamfree.space/c/s/cpyqfangzhou) | - | ¥200/月 | 200M | 1,500M | 3,000M | ¥0.0667/M | 倍率换算 |
-| [字节·方舟 Agent Plan · Small](https://api.dreamfree.space/c/s/cpyqfangzhout) | - | ¥40/月 | 40M | 140M | 400M | ¥0.1/M | 计算 |
-| [字节·方舟 Agent Plan · Medium](https://api.dreamfree.space/c/s/cpyqfangzhout) | - | ¥200/月 | 200M | 700M | 2,000M | ¥0.1/M | 计算 |
 
-还有 14 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/?view=usage)。
+还有 18 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/?view=usage)。
 
 ### DeepSeek-V4.1-Flash
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 | 口径 |
 |---|---|---|---:|---:|---:|---:|---|
-| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | - | $10/月 | 902.37M | 2,255.94M | 4,511.9M | ¥0.015/M | 计算 |
+| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | [谷] | $10/月 | 902.37M | 2,255.94M | 4,511.9M | ¥0.015/M | 计算 |
+| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | [峰] | $10/月 | 451.19M | 1,127.97M | 2,255.9M | ¥0.0299/M | 计算 |
 | [DeepSeek · 按量 API](https://platform.deepseek.com/) | [谷] | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M | 计算 |
 | [DeepSeek · 按量 API](https://platform.deepseek.com/) | [峰] | 入¥2 / 缓存¥0.04 / 出¥8 | - | - | - | ¥0.1773/M | 计算 |
 
@@ -261,7 +262,7 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 
 ## 数据口径
 
-实测 14 · 计算 311 · 请求估算 42 · 倍率换算 29 · 未知 681
+实测 14 · 计算 324 · 请求估算 42 · 倍率换算 29 · 未知 681
 
 | 标记 | 含义 |
 |---|---|
@@ -280,6 +281,8 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 
 ### 2026.9.10
 
+- OpenCode Go 与 Command Code 的 DeepSeek 模型按官方峰谷价拆成 [谷]/[峰] 两档：同等美元额度在峰值时段可用 Token 减半，页面可直接对比
+- Command Code 官方未公布 Peak 缓存读取价，按 Off-Peak 价格 ×2 推断，已在备注中标注「推断、待官方补充」
 - DeepSeek 官方上线 V4.1 Flash（552B MoE、原生多模态、1M 上下文）并下调价格：空闲 ¥1/¥0.02/¥4、高峰 ¥2/¥0.04/¥8 每百万 tokens，新价格 9.10 12:00 生效
 - DeepSeek 官方旧模型名 deepseek-v4-flash、deepseek-v4-flash-vision-exp 改由 V4.1 Flash 承接并按 Flash 价格计费；V4 Pro 将于 9.14 12:00 后路由到 V4.1 Flash
 - OpenCode Go 对齐官方当前 27 个模型，新增 DeepSeek-V4.1-Flash（限时 4 倍用量，官方未公布活动起止日期）与 Muse-Spark-1.3 Contributor
