@@ -2,7 +2,7 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.9.10 | DeepSeek 官方上线 V4.1 Flash 并调价；OpenCode Go 新增 DeepSeek V4.1 Flash 与 Muse Spark 1.3
+> 更新日期 2026.9.11 | WorkBuddy 的 DeepSeek Flash 更新为 DeepSeek V4.1 Flash
 
 当前展示 **37 个平台、99 个在售订阅套餐、2 个按量 API、118 个模型和 1090 条套餐模型关系**。
 
@@ -246,7 +246,7 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | GitHub | 3 | $0–$39/月 | Claude Haiku 4.5、Claude Opus 4.7、Claude Sonnet 4.6、Gemini 3.1 Pro、等 12 个 |
 | Qoder 国内版 | 3 | ¥59–¥559/月 | DeepSeek-V4-Flash-0731、Auto、DeepSeek-V4-Pro-0813、GLM-5.2、等 10 个 |
 | Qoder 国际版 | 3 | $20–$200/月 | DeepSeek-V4-Flash-0731、GLM-5.3、GLM-5.3-Flash、Kimi-K3、等 12 个 |
-| WorkBuddy | 3 | ¥70–¥700/月 | DeepSeek-V4-Flash-0731、Kimi-K3、Auto、DeepSeek-V4-Pro-0813、等 12 个 |
+| WorkBuddy | 3 | ¥70–¥700/月 | DeepSeek-V4.1-Flash、Kimi-K3、Auto、DeepSeek-V4-Pro-0813、等 12 个 |
 | TRAE 国内版 | 4 | ¥45–¥629/月 | DeepSeek-V4-Flash-0731、GLM-5.3、GLM-5.3-Flash、Kimi-K3、等 18 个 |
 | TRAE 国际版 | 4 | $3–$100/月 | Doubao-Seed-2.1-Turbo、Gemini 3.1 Pro、Gemini-3-Flash-Preview、GPT-5.2、等 8 个 |
 | 讯飞·星火 | 2 | ¥199–¥699/月 | DeepSeek-V4-Flash-0731、DeepSeek-V3.2、DeepSeek-V4-Pro-0813、GLM-5、等 11 个 |
@@ -278,6 +278,10 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 - 本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议
 
 ## 最近更新
+
+### 2026.9.11
+
+- WorkBuddy（标准版 / 高级版 / 旗舰版）的 DeepSeek Flash 更新为 DeepSeek V4.1 Flash：DeepSeek 官方 9.10 公告 WorkBuddy（含 CodeBuddy）已全量接入 V4.1 Flash，客户端该条目仍显示 DeepSeek-V4-Flash
 
 ### 2026.9.10
 
@@ -314,11 +318,6 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 ### 2026.8.6
 
 - 阿里发布Qwen-3.8-Max
-
-### 2026.7.30
-
-- 智谱国内&国际版更新新套餐
-- 更新Ollama预估用量
 
 ## 延伸阅读
 

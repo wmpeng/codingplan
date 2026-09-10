@@ -14,7 +14,7 @@
     },
     {
       "id": "deepseek-v4-1-flash",
-      "title": "DeepSeek V4.1 Flash（限时 4 倍）",
+      "title": "DeepSeek V4.1 Flash",
       "kind": "single",
       "enabled": true,
       "modelSlugs": [

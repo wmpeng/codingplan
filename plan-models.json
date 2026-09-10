@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-10T00:00:00Z",
+  "generatedAt": "2026-09-11T00:00:00Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -1072,9 +1072,9 @@
       "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
     },
     {
-      "slug": "workbuddy-standard--deepseek-v4-flash-0731",
+      "slug": "workbuddy-standard--deepseek-v4-1-flash",
       "planSlug": "workbuddy-standard",
-      "modelSlug": "deepseek-v4-flash-0731",
+      "modelSlug": "deepseek-v4-1-flash",
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
@@ -1083,7 +1083,7 @@
         "monthlyTokenInM": "unknown"
       },
       "pricing": null,
-      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+      "note": "官方模型列表入口仍显示 DeepSeek-V4-Flash；DeepSeek 官方 2026-09-10 公告 WorkBuddy（含 CodeBuddy）已全量接入 DeepSeek V4.1 Flash，该条目由 V4.1 Flash 提供服务；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
     },
     {
       "slug": "workbuddy-standard--deepseek-v4-pro-0813",
@@ -1240,9 +1240,9 @@
       "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
     },
     {
-      "slug": "workbuddy-advanced--deepseek-v4-flash-0731",
+      "slug": "workbuddy-advanced--deepseek-v4-1-flash",
       "planSlug": "workbuddy-advanced",
-      "modelSlug": "deepseek-v4-flash-0731",
+      "modelSlug": "deepseek-v4-1-flash",
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
@@ -1251,7 +1251,7 @@
         "monthlyTokenInM": "unknown"
       },
       "pricing": null,
-      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+      "note": "官方模型列表入口仍显示 DeepSeek-V4-Flash；DeepSeek 官方 2026-09-10 公告 WorkBuddy（含 CodeBuddy）已全量接入 DeepSeek V4.1 Flash，该条目由 V4.1 Flash 提供服务；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
     },
     {
       "slug": "workbuddy-advanced--deepseek-v4-pro-0813",
@@ -1408,9 +1408,9 @@
       "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
     },
     {
-      "slug": "workbuddy-flagship--deepseek-v4-flash-0731",
+      "slug": "workbuddy-flagship--deepseek-v4-1-flash",
       "planSlug": "workbuddy-flagship",
-      "modelSlug": "deepseek-v4-flash-0731",
+      "modelSlug": "deepseek-v4-1-flash",
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
@@ -1419,7 +1419,7 @@
         "monthlyTokenInM": "unknown"
       },
       "pricing": null,
-      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+      "note": "官方模型列表入口仍显示 DeepSeek-V4-Flash；DeepSeek 官方 2026-09-10 公告 WorkBuddy（含 CodeBuddy）已全量接入 DeepSeek V4.1 Flash，该条目由 V4.1 Flash 提供服务；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
     },
     {
       "slug": "workbuddy-flagship--deepseek-v4-pro-0813",

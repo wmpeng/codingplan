@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.9.10 | DeepSeek 官方上线 V4.1 Flash 并调价；OpenCode Go 新增 DeepSeek V4.1 Flash 与 Muse Spark 1.3",
+    "updateDate": "更新日期 2026.9.11 | WorkBuddy 的 DeepSeek Flash 更新为 DeepSeek V4.1 Flash",
     "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Qoder、WorkBuddy、TRAE 等平台，订阅套餐与按量 API 全面对比。<br>涵盖Claude Fable 5.1，GPT-6-Astra，DeepSeek-V4.1-Flash，DeepSeek-V4-Flash-0731，GLM-5.3，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
@@ -305,6 +305,12 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.9.11",
+      "items": [
+        "WorkBuddy（标准版 / 高级版 / 旗舰版）的 DeepSeek Flash 更新为 DeepSeek V4.1 Flash：DeepSeek 官方 9.10 公告 WorkBuddy（含 CodeBuddy）已全量接入 V4.1 Flash，客户端该条目仍显示 DeepSeek-V4-Flash"
+      ]
+    },
     {
       "date": "2026.9.10",
       "items": [
