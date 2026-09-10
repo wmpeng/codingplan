@@ -180,24 +180,6 @@
             "无需抢购，可支付宝付款"
           ],
           "platformSlug": "opencode"
-        },
-        {
-          "rating": 5,
-          "reasons": [
-            "Coding Plan 支持 DeepSeek-V4-Flash-0731 正式版",
-            "同时支持 GLM-5.2、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731、MiniMax-M3，是国内模型最全的全家桶平台。",
-            "已解除限购，开放购买"
-          ],
-          "platformSlug": "bytedance-ark"
-        },
-        {
-          "rating": 4,
-          "reasons": [
-            "全档位支持 DeepSeek-V4-Flash-0731 正式版和 GLM-5.2",
-            "按照真实接口调用量计费，模型倍率透明",
-            "用量较少，适合作为低成本补充"
-          ],
-          "platformSlug": "youyun"
         }
       ]
     },
