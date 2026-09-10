@@ -261,13 +261,15 @@ test('unit price sorting uses package price ascending as the tie breaker', () =>
 test('preset comparisons are configured outside the renderer', () => {
   const source = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'model-comparison-presets.json'), 'utf8'));
   const config = normalizePresetConfig(source);
-  assert.equal(config.groups.length, 5);
-  assert.deepEqual(config.groups.map((group) => group.kind), ['single', 'single', 'single', 'multi', 'multi']);
+  assert.equal(config.groups.length, 6);
+  assert.deepEqual(config.groups.map((group) => group.kind), ['single', 'single', 'single', 'single', 'multi', 'multi']);
   assert.deepEqual(config.groups[0].modelSlugs, ['deepseek-v4-flash-0731']);
-  assert.equal(config.groups[3].title, '甜品级模型对比');
-  assert.deepEqual(config.groups[3].modelSlugs, ['deepseek-v4-flash-0731', 'glm-5-3-flash', 'gpt-5-6-luna']);
-  assert.equal(config.groups[4].title, 'SOTA模型对比');
-  assert.deepEqual(config.groups[4].modelSlugs, ['gpt-6-astra', 'claude-opus-5', 'gpt-5-6-sol', 'glm-5-3', 'kimi-k3']);
+  assert.equal(config.groups[1].title, 'DeepSeek V4.1 Flash（限时 4 倍）');
+  assert.deepEqual(config.groups[1].modelSlugs, ['deepseek-v4-1-flash']);
+  assert.equal(config.groups[4].title, '甜品级模型对比');
+  assert.deepEqual(config.groups[4].modelSlugs, ['deepseek-v4-1-flash', 'deepseek-v4-flash-0731', 'glm-5-3-flash', 'gpt-5-6-luna']);
+  assert.equal(config.groups[5].title, 'SOTA模型对比');
+  assert.deepEqual(config.groups[5].modelSlugs, ['gpt-6-astra', 'claude-opus-5', 'gpt-5-6-sol', 'glm-5-3', 'kimi-k3']);
 });
 
 test('preset rows include subscriptions and API while sorting by unit and package price', () => {

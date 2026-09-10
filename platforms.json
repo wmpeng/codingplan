@@ -42,11 +42,11 @@
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "Go 套餐 $10/月（首月 $5），可使用$15~$60额度。DeepSeek-V4-Flash-0731 每月可达约 15.8 万次请求，量大价低，细节可见[官方文档](https://opencode.ai/docs/go/)。"
+          "reason": "Go 套餐 $10/月（首月 $5），模型额度为 $15~$60。DeepSeek-V4.1-Flash 当前限时 4 倍用量，官方未公布活动起止日期，细节可见[官方文档](https://opencode.ai/docs/zh-cn/go/)。"
         },
         "models": {
           "score": 5,
-          "reason": "聚合 Kimi-K3、GLM-5.3、MiniMax-M3、Qwen-3.7-Max、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731 等模型，新模型上线及时。"
+          "reason": "聚合 Kimi-K3、GLM-5.3、MiniMax-M3、Qwen-3.8-Max、DeepSeek-V4.1-Flash、Muse-Spark-1.3 等 27 个模型，新模型上线及时。"
         },
         "stability": {
           "score": 5,

@@ -10639,6 +10639,31 @@
       "note": "价格：输入 $0.3/M Token、缓存读取 $0.06/M Token、输出 $1.2/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
     },
     {
+      "slug": "opencode-go--muse-spark-1-3--service-contributor",
+      "planSlug": "opencode-go",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "Contributor",
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 1525.6499904647,
+        "weeklyTokenInM": 3814.1249761617,
+        "monthlyTokenInM": 7628.2,
+        "unitPriceCnyPerM": 0.00884
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.002,
+        "outputPerM": 0.2,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.0136,
+        "outputCnyPerM": 1.36
+      },
+      "note": "价格：输入 $0.1/M Token、缓存读取 $0.002/M Token、输出 $0.2/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
+    },
+    {
       "slug": "opencode-go--muse-spark-1-2--service-contributor",
       "planSlug": "opencode-go",
       "modelSlug": "muse-spark-1-2",
@@ -10697,10 +10722,10 @@
       "serviceTier": null,
       "method": "calculated",
       "usage": {
-        "fiveHourTokenInM": 18.9125295508,
-        "weeklyTokenInM": 47.2813238771,
-        "monthlyTokenInM": 94.6,
-        "unitPriceCnyPerM": 0.71876
+        "fiveHourTokenInM": 9.4562647754,
+        "weeklyTokenInM": 23.6406619385,
+        "monthlyTokenInM": 47.3,
+        "unitPriceCnyPerM": 1.4382
       },
       "pricing": {
         "currency": "$",
@@ -10711,7 +10736,7 @@
         "cacheCnyPerM": 3.4,
         "outputCnyPerM": 51.0
       },
-      "note": "价格：输入 $2.5/M Token、缓存读取 $0.5/M Token、输出 $7.5/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
+      "note": "价格：输入 $2.5/M Token、缓存读取 $0.5/M Token、输出 $7.5/M Token；模型额度：5小时 $6、每周 $15、每月 $30"
     },
     {
       "slug": "opencode-go--qwen-3-7-plus",
@@ -10814,6 +10839,31 @@
       "note": "价格：输入 $0.5/M Token、缓存读取 $0.05/M Token、输出 $3/M Token；模型额度：5小时 $12、每周 $30、每月 $60；上下文不超过 256K token 的低价档"
     },
     {
+      "slug": "opencode-go--deepseek-v4-1-flash",
+      "planSlug": "opencode-go",
+      "modelSlug": "deepseek-v4-1-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 902.3743725678,
+        "weeklyTokenInM": 2255.9359314195,
+        "monthlyTokenInM": 4511.9,
+        "unitPriceCnyPerM": 0.01496
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.15,
+        "cachePerM": 0.003,
+        "outputPerM": 0.6,
+        "inputCnyPerM": 1.02,
+        "cacheCnyPerM": 0.0204,
+        "outputCnyPerM": 4.08
+      },
+      "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 $12、每周 $30、每月 $60；Off-Peak 价格；Peak 为周一至周五 09:00-12:00、14:00-18:00（UTC+8），输入/缓存读取/输出为 $0.30/$0.006/$1.20 每 M Token；当前限时 4 倍用量，官方未公布活动起止日期；活动结束后常规模型额度为 5小时 $3、每周 $7.5、每月 $15。"
+    },
+    {
       "slug": "opencode-go--deepseek-v4-pro-0813",
       "planSlug": "opencode-go",
       "modelSlug": "deepseek-v4-pro-0813",
@@ -10836,7 +10886,7 @@
         "cacheCnyPerM": 0.1496,
         "outputCnyPerM": 13.464
       },
-      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；Off-Peak 价格，Peak 时段翻倍"
+      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；Off-Peak 价格；Peak 为周一至周五 09:00-12:00、14:00-18:00（UTC+8），输入/缓存读取/输出为 $1.32/$0.044/$3.96 每 M Token"
     },
     {
       "slug": "opencode-go--deepseek-v4-flash-0731",
@@ -10847,21 +10897,21 @@
       "serviceTier": null,
       "method": "calculated",
       "usage": {
-        "fiveHourTokenInM": 287.607703093,
-        "weeklyTokenInM": 719.0192577325,
-        "monthlyTokenInM": 1438.0,
-        "unitPriceCnyPerM": 0.0476
+        "fiveHourTokenInM": 451.1871862839,
+        "weeklyTokenInM": 1127.9679657098,
+        "monthlyTokenInM": 2255.9,
+        "unitPriceCnyPerM": 0.02992
       },
       "pricing": {
         "currency": "$",
-        "inputPerM": 0.22,
-        "cachePerM": 0.007,
-        "outputPerM": 0.66,
-        "inputCnyPerM": 1.496,
-        "cacheCnyPerM": 0.0476,
-        "outputCnyPerM": 4.488
+        "inputPerM": 0.15,
+        "cachePerM": 0.003,
+        "outputPerM": 0.6,
+        "inputCnyPerM": 1.02,
+        "cacheCnyPerM": 0.0204,
+        "outputCnyPerM": 4.08
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $6、每周 $15、每月 $30；Off-Peak 价格，Peak 时段翻倍"
+      "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 $6、每周 $15、每月 $30；Off-Peak 价格；Peak 为周一至周五 09:00-12:00、14:00-18:00（UTC+8），输入/缓存读取/输出为 $0.30/$0.006/$1.20 每 M Token"
     },
     {
       "slug": "opencode-go--deepseek-v4-flash-vision-exp",
@@ -10872,21 +10922,21 @@
       "serviceTier": null,
       "method": "calculated",
       "usage": {
-        "fiveHourTokenInM": 143.8038515465,
-        "weeklyTokenInM": 359.5096288662,
-        "monthlyTokenInM": 719.0,
-        "unitPriceCnyPerM": 0.09452
+        "fiveHourTokenInM": 225.593593142,
+        "weeklyTokenInM": 563.9839828549,
+        "monthlyTokenInM": 1128.0,
+        "unitPriceCnyPerM": 0.06052
       },
       "pricing": {
         "currency": "$",
-        "inputPerM": 0.22,
-        "cachePerM": 0.007,
-        "outputPerM": 0.66,
-        "inputCnyPerM": 1.496,
-        "cacheCnyPerM": 0.0476,
-        "outputCnyPerM": 4.488
+        "inputPerM": 0.15,
+        "cachePerM": 0.003,
+        "outputPerM": 0.6,
+        "inputCnyPerM": 1.02,
+        "cacheCnyPerM": 0.0204,
+        "outputCnyPerM": 4.08
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；Off-Peak 价格，Peak 时段翻倍"
+      "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；Off-Peak 价格；Peak 为周一至周五 09:00-12:00、14:00-18:00（UTC+8），输入/缓存读取/输出为 $0.30/$0.006/$1.20 每 M Token"
     },
     {
       "slug": "opencode-go--hy3",
@@ -10972,10 +11022,10 @@
       "serviceTier": null,
       "method": "calculated",
       "usage": {
-        "fiveHourTokenInM": 78.2881002088,
-        "weeklyTokenInM": 195.7202505219,
-        "monthlyTokenInM": 391.4,
-        "unitPriceCnyPerM": 0.1734
+        "fiveHourTokenInM": 313.1524008351,
+        "weeklyTokenInM": 782.8810020877,
+        "monthlyTokenInM": 1565.8,
+        "unitPriceCnyPerM": 0.04352
       },
       "pricing": {
         "currency": "$",
@@ -10986,7 +11036,7 @@
         "cacheCnyPerM": 0.204,
         "outputCnyPerM": 3.4
       },
-      "note": "价格：输入 $0.15/M Token、缓存读取 $0.03/M Token、输出 $0.5/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15"
+      "note": "价格：输入 $0.15/M Token、缓存读取 $0.03/M Token、输出 $0.5/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
     },
     {
       "slug": "opencode-go--qwen-3-8-flash-next",
@@ -11037,34 +11087,6 @@
         "outputCnyPerM": 17.0068
       },
       "note": "价格：输入 $0.834/M Token、缓存读取 $0.042/M Token、输出 $2.501/M Token；模型额度：5小时 $6、每周 $15、每月 $30"
-    },
-    {
-      "slug": "opencode-go--glm-5",
-      "planSlug": "opencode-go",
-      "modelSlug": "glm-5",
-      "timeTier": null,
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "unknown",
-      "usage": {
-        "monthlyTokenInM": "unknown"
-      },
-      "pricing": null,
-      "note": null
-    },
-    {
-      "slug": "opencode-go--minimax-m2-5",
-      "planSlug": "opencode-go",
-      "modelSlug": "minimax-m2-5",
-      "timeTier": null,
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "unknown",
-      "usage": {
-        "monthlyTokenInM": "unknown"
-      },
-      "pricing": null,
-      "note": null
     },
     {
       "slug": "volcengine-coding-lite--deepseek-v4-flash-0731",

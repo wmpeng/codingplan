@@ -521,7 +521,7 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
-      "note": "• 套餐额度按美元 Credits 计：基础 12 美元、周额度 30 美元、月额度 60 美元\n• 实际计费按 token 消耗。用量按照GLM-5.2, 90%缓存命中率计算",
+      "note": "• 套餐额度按美元 Credits 计：5 小时 12 美元、周额度 30 美元、月额度 60 美元\n• 各模型另有独立的 5 小时/周/月额度；DeepSeek V4.1 Flash 当前限时 4 倍，官方未公布活动起止日期\n• 排序用月 Token 估算按 GLM-5.2、90% 缓存命中率计算",
       "measuredMonthlyTokenLimit": 146
     },
     {
