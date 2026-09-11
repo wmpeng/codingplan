@@ -42,11 +42,11 @@
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "Go 套餐 $10/月（首月 $5），可使用$15~$60额度。DeepSeek-V4-Flash-0731 每月可达约 15.8 万次请求，量大价低，细节可见[官方文档](https://opencode.ai/docs/go/)。"
+          "reason": "Go 套餐 $10/月（首月 $5），模型额度为 $15~$60。DeepSeek-V4.1-Flash 当前限时 4 倍用量，官方未公布活动起止日期，细节可见[官方文档](https://opencode.ai/docs/zh-cn/go/)。"
         },
         "models": {
           "score": 5,
-          "reason": "聚合 Kimi-K3、GLM-5.3、MiniMax-M3、Qwen-3.7-Max、DeepSeek-V4-Pro、DeepSeek-V4-Flash-0731 等模型，新模型上线及时。"
+          "reason": "聚合 Kimi-K3、GLM-5.3、MiniMax-M3、Qwen-3.8-Max、DeepSeek-V4.1-Flash、Muse-Spark-1.3 等 27 个模型，新模型上线及时。"
         },
         "stability": {
           "score": 5,
@@ -197,15 +197,15 @@
       "name": "DeepSeek",
       "rating": 5,
       "summary": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。",
-      "detail": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。DeepSeek-V4-Flash-0731 正式版已上线，按量使用更灵活。",
+      "detail": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。DeepSeek V4.1 Flash 已上线，原生多模态、1M 上下文，空闲时段价格更低，按量使用更灵活。",
       "dimensions": {
         "value": {
           "score": 4,
-          "reason": "第一梯队模型中，最便宜的之一；按量标价透明；高峰翻倍后成本优势会收窄。"
+          "reason": "第一梯队模型中，最便宜的之一；空闲时段价格再降一半；按量标价透明，高峰翻倍后成本优势会收窄。"
         },
         "models": {
           "score": 5,
-          "reason": "DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro，推理与代码能力处于国产第一梯队。"
+          "reason": "DeepSeek-V4.1-Flash 支持原生多模态，推理与代码能力处于国产第一梯队；V4 Pro 计划有序下线。"
         },
         "stability": {
           "score": 5,
@@ -561,6 +561,121 @@
       },
       "tags": [],
       "platformStatus": "open"
+    },
+    {
+      "slug": "qoder-cn",
+      "name": "Qoder 国内版",
+      "rating": 0,
+      "summary": "阿里旗下 AI 编程与办公工具，个人订阅覆盖 Qoder CN 全家桶。",
+      "detail": "个人套餐覆盖 IDE、JetBrains 插件、QoderWork、CLI 和 Mobile；与国际版分别订阅。",
+      "tags": [],
+      "platformStatus": "open",
+      "dimensions": {
+        "value": {
+          "score": null,
+          "reason": "¥59 起，按积分使用；实际 Token 性价比尚未实测。"
+        },
+        "models": {
+          "score": null,
+          "reason": "支持千问、DeepSeek、GLM、Kimi、MiniMax；客户端模型列表可能不同。"
+        },
+        "stability": {
+          "score": null,
+          "reason": "阿里旗下官方产品；尚未完成本站稳定性实测。"
+        }
+      }
+    },
+    {
+      "slug": "qoder-intl",
+      "name": "Qoder 国际版",
+      "rating": 0,
+      "summary": "AI 编程平台，提供 Pro、Pro+、Ultra 个人订阅。",
+      "detail": "支持 Quest、Repo Wiki 等功能，按 Credits 消耗；与国内版价格和订阅分开。",
+      "tags": [],
+      "platformStatus": "open",
+      "dimensions": {
+        "value": {
+          "score": null,
+          "reason": "$20 起，按 Credits 使用；不能与国内版积分等值比较。"
+        },
+        "models": {
+          "score": null,
+          "reason": "提供自动路由与多厂商模型，支持列表随客户端更新。"
+        },
+        "stability": {
+          "score": null,
+          "reason": "官方客户端服务；尚未完成本站稳定性实测。"
+        }
+      }
+    },
+    {
+      "slug": "workbuddy",
+      "name": "WorkBuddy",
+      "rating": 0,
+      "summary": "腾讯 AI 办公工作台，与 CodeBuddy 同账号共享订阅积分。",
+      "detail": "覆盖办公任务与编程辅助；无需为 WorkBuddy 和 CodeBuddy 分别购买个人订阅。",
+      "tags": [],
+      "platformStatus": "open",
+      "dimensions": {
+        "value": {
+          "score": null,
+          "reason": "¥99 单月起，可与 CodeBuddy 共享积分；连续包月另有优惠。"
+        },
+        "models": {
+          "score": null,
+          "reason": "支持混元、GLM、Kimi、MiniMax、DeepSeek，按客户端开放情况使用。"
+        },
+        "stability": {
+          "score": null,
+          "reason": "腾讯官方产品；尚未完成本站稳定性实测。"
+        }
+      }
+    },
+    {
+      "slug": "trae-cn",
+      "name": "TRAE 国内版",
+      "rating": 0,
+      "summary": "字节旗下 AI 编程与办公工具，采用积分制个人订阅。",
+      "detail": "Lite 仅含 TraeWork 专属积分；Pro、Pro+、Ultra 的通用积分可在 TraeCode 与 TraeWork 使用。",
+      "tags": [],
+      "platformStatus": "open",
+      "dimensions": {
+        "value": {
+          "score": null,
+          "reason": "¥49 单月起；Lite 仅限 Work，编程用户注意套餐适用范围。"
+        },
+        "models": {
+          "score": null,
+          "reason": "支持 Seed、GLM、Kimi、MiniMax、Qwen、DeepSeek；不同模式和套餐有差异。"
+        },
+        "stability": {
+          "score": null,
+          "reason": "字节官方产品；高峰优先为套餐权益，不代表稳定性实测结果。"
+        }
+      }
+    },
+    {
+      "slug": "trae-intl",
+      "name": "TRAE 国际版",
+      "rating": 0,
+      "summary": "提供 TraeCode 与 TraeWork，个人订阅采用美元计价。",
+      "detail": "包含基础使用额度、无限代码补全与 SOLO 模式；与国内版订阅和计费体系分开。",
+      "tags": [],
+      "platformStatus": "open",
+      "dimensions": {
+        "value": {
+          "score": null,
+          "reason": "$3/月起，包含美元基础使用额度；尚未测算 Token 用量。"
+        },
+        "models": {
+          "score": null,
+          "reason": "内置 GPT、Gemini、Seed、Kimi、MiniMax；美国地区不提供 GPT、MiniMax。"
+        },
+        "stability": {
+          "score": null,
+          "reason": "字节官方产品；存在地区限制，尚未完成本站稳定性实测。"
+        }
+      }
     },
     {
       "slug": "iflytek",

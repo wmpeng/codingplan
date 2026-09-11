@@ -138,7 +138,7 @@ function matchesDerivedTag(platform, rule) {
   }
   if (rule.dimension !== undefined && rule.minScore !== undefined) {
     const dim = platform.dimensions?.[rule.dimension];
-    if (!dim || dim.score < rule.minScore) {
+    if (!dim || !Number.isFinite(dim.score) || dim.score < rule.minScore) {
       return false;
     }
   }
@@ -485,7 +485,7 @@ function validatePlatformRecords(platforms, plans) {
       }
 
       const { score, reason } = dim;
-      if (!Number.isInteger(score) || score < 1 || score > 5) {
+      if (score !== null && (!Number.isInteger(score) || score < 1 || score > 5)) {
         errors.push(`${prefix}: dimension "${key}" score must be an integer in [1, 5]`);
       }
       if (typeof reason !== 'string' || reason.trim() === '') {
@@ -578,8 +578,8 @@ const EXTERNAL_LINK_ICON =
 
 function buildPlatformCardHtml(platform, plans, options = {}) {
   const sanitizeUrl = options.sanitizeUrl || (url => url);
-  const apiModelNames = Array.isArray(options.apiModelNames)
-    ? options.apiModelNames.filter((name) => typeof name === 'string' && name.trim())
+  const supportedModels = Array.isArray(options.supportedModels)
+    ? options.supportedModels
     : [];
   const hasApiPlan = !!options.hasApiPlan;
   const rawAction = resolvePlatformAction(platform, plans);
@@ -623,10 +623,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     ? `<div class="platform-tags" aria-label="标签">${tags.map((tag) => `<span class="platform-tag">${escapeHtml(tag)}</span>`).join('')}</div>`
     : '';
 
-  let models = collectModelsForVendor(plans, platform.slug);
-  if (!models.length && apiModelNames.length) {
-    models = [...new Set(apiModelNames)];
-  }
+  const models = supportedModels.length ? supportedModels.map(model => model.name) : collectModelsForVendor(plans, platform.slug);
   const modelLimit = 5;
   const shownModels = models.slice(0, modelLimit);
   const extraModels = models.length - shownModels.length;
@@ -654,7 +651,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
                         </div>
                         <div class="platform-card-aside">
                             ${pinHtml}
-                            <span class="platform-rating" aria-label="${rating} 星">${stars}</span>
+                            <span class="platform-rating" aria-label="${rating > 0 ? `${rating} 星` : '待评定'}">${rating > 0 ? stars : '待评定'}</span>
                         </div>
                     </header>
                     ${summary}

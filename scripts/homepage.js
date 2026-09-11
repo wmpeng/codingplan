@@ -162,19 +162,19 @@
             const priority = [];
             const rest = [];
             for (const m of modelsInDataOrder) {
-                if (modelFilterPrefixRank(m) >= 0) {
+                if (modelFilterPrefixRank(entityContext.modelBySlug.get(m).name) >= 0) {
                     priority.push(m);
                 } else {
                     rest.push(m);
                 }
             }
             priority.sort((a, b) => {
-                const ra = modelFilterPrefixRank(a);
-                const rb = modelFilterPrefixRank(b);
+                const ra = modelFilterPrefixRank(entityContext.modelBySlug.get(a).name);
+                const rb = modelFilterPrefixRank(entityContext.modelBySlug.get(b).name);
                 if (ra !== rb) return ra - rb;
                 return modelsInDataOrder.indexOf(a) - modelsInDataOrder.indexOf(b);
             });
-            rest.sort((a, b) => a.localeCompare(b, 'zh-CN'));
+            rest.sort((a, b) => entityContext.modelBySlug.get(a).name.localeCompare(entityContext.modelBySlug.get(b).name, 'zh-CN'));
             return priority.concat(rest);
         }
 
@@ -224,14 +224,14 @@
             });
 
             const models = sortModelsForFilterDropdown(
-                uniqueStringsInOrder(allPlans.flatMap(p => p.modelLabels || []))
+                uniqueStringsInOrder(allPlans.flatMap(p => (p.supportedModels || []).map(model => model.slug)))
             );
             models.forEach(model => {
                 const div = document.createElement('div');
                 div.className = 'checkbox-item';
                 div.innerHTML = `
                     <input type="checkbox" id="model_${model}" value="${model}" onchange="updateModelSelection()">
-                    <label for="model_${model}">${model}</label>
+                    <label for="model_${model}">${escapeHtml(entityContext.modelBySlug.get(model).name)}</label>
                 `;
                 modelCheckboxes.appendChild(div);
             });
@@ -585,7 +585,7 @@
 
                 // 模型筛选（多选时取交集：套餐必须同时包含所有选中的模型）
                 if (selectedModels.size > 0) {
-                    const hasAllModels = [...selectedModels].every(model => plan.modelLabels.includes(model));
+                    const hasAllModels = [...selectedModels].every(slug => plan.supportedModels.some(model => model.slug === slug));
                     if (!hasAllModels) return false;
                 }
 
@@ -1326,12 +1326,12 @@
                             跳转开通
                         </a>
                     </td>
-                    <td class="rating-stars">${'★'.repeat(plan.rating || 0)}${'☆'.repeat(5 - (plan.rating || 0))}</td>
+                    <td class="rating-stars">${plan.rating > 0 ? '★'.repeat(plan.rating) + '☆'.repeat(5 - plan.rating) : '待评定'}</td>
                     <td class="plan-tags-cell">${renderPlanTags(plan)}</td>
                     <td><span class="price">${formatPlanPriceDisplay(plan, plan.firstMonthPrice)} <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">${formatPlanPriceDisplay(plan, plan.monthlyPrice)} <span class="unit">/ 月</span></span></td>
-                    <td><span class="price-normal">${formatPlanPriceDisplay(plan, plan.quarterlyPrice)} <span class="price-original">${formatPlanPriceDisplay(plan, plan.monthlyPrice * 3)}</span> <span class="unit">/ 季</span></span></td>
-                    <td><span class="price-normal">${formatPlanPriceDisplay(plan, plan.yearlyPrice)} <span class="price-original">${formatPlanPriceDisplay(plan, plan.monthlyPrice * 12)}</span> <span class="unit">/ 年</span></span></td>
+                    <td><span class="price-normal">${formatPlanPriceDisplay(plan, plan.quarterlyPrice)} ${typeof plan.quarterlyPrice === 'number' ? `<span class="price-original">${formatPlanPriceDisplay(plan, plan.monthlyPrice * 3)}</span>` : ''} <span class="unit">/ 季</span></span></td>
+                    <td><span class="price-normal">${formatPlanPriceDisplay(plan, plan.yearlyPrice)} ${typeof plan.yearlyPrice === 'number' ? `<span class="price-original">${formatPlanPriceDisplay(plan, plan.monthlyPrice * 12)}</span>` : ''} <span class="unit">/ 年</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.fiveHoursRequests)} <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.weeklyRequests)} <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.monthlyRequests)} <span class="unit">/ 月</span></span></td>
@@ -1372,6 +1372,7 @@
 
         // 美元套餐：人民币主显（取整）+ 括号美元；人民币套餐保持原样
         function formatPlanPriceDisplay(plan, price) {
+            if (price === '未公开') return '未公开';
             if (typeof price !== 'number' || !Number.isFinite(price)) return '-';
             if (plan && plan.currency === '$') {
                 const cny = Math.round(price * getUsdToCnyRate());
@@ -1510,7 +1511,7 @@
                 document.title = `${h.title} - Coding Plan 对比工具`;
                 document.getElementById('pageTitle').textContent = h.title;
                 document.getElementById('updateDate').textContent = h.updateDate;
-                document.getElementById('subtitle').innerHTML = (h.subtitle || '').replace(/\n/g, '<br>');
+                document.getElementById('subtitle').innerHTML = EntityData.headerSubtitle(entityContext, h.subtitle).replace(/\n/g, '<br>');
                 document.getElementById('models').innerHTML = formatRecommendationText(h.models || '').replace(/\n/g, '<br>');
                 
                 if (h.entry || h.github) {
@@ -1843,12 +1844,16 @@
             }
 
             // 如果包季价格为 "-" 或 NaN，使用包月价格 * 3
-            if (isNaN(quarterlyPrice) || item.quarterlyPrice === '-') {
+            if (item.quarterlyPrice === '未公开') {
+                quarterlyPrice = '未公开';
+            } else if (isNaN(quarterlyPrice) || item.quarterlyPrice === '-') {
                 quarterlyPrice = monthlyPrice * 3;
             }
 
             // 如果包年价格为 "-" 或 NaN，使用包季价格 * 4
-            if (isNaN(yearlyPrice) || item.yearlyPrice === '-') {
+            if (item.yearlyPrice === '未公开') {
+                yearlyPrice = '未公开';
+            } else if (isNaN(yearlyPrice) || item.yearlyPrice === '-') {
                 yearlyPrice = quarterlyPrice * 4;
             }
 
@@ -1858,7 +1863,7 @@
                     return value;
                 }
                 const num = parseInt(value);
-                return isNaN(num) ? 0 : num;
+                return isNaN(num) ? '未公开' : num;
             };
 
             item.fiveHoursRequests = preserveString(item.fiveHoursRequests);
@@ -1920,6 +1925,7 @@
                 allPlatforms = EntityData.listPlatforms(entityContext);
                 allPlans = EntityData.buildPlanCatalog(entityContext).map((item, index) => processPrices(item, index));
                 window.codingplanEntityContext = entityContext;
+                document.getElementById('subtitle').innerHTML = EntityData.headerSubtitle(entityContext, appConfig.header?.subtitle).replace(/\n/g, '<br>');
                 return entityContext;
             });
             return entityDataPromise;
@@ -2148,7 +2154,7 @@
             return PlatformCatalog.buildPlatformCardHtml(platform, allPlans, {
                 sanitizeUrl: typeof sanitizeHttpUrl === 'function' ? sanitizeHttpUrl : (u) => u,
                 hasApiPlan: apiGroups.length > 0,
-                apiModelNames: apiGroups.flatMap((group) => group.rows.map((row) => row.modelName)),
+                supportedModels: EntityData.platformModels(entityContext, platform.slug),
                 pinnedIds: platformPinnedIds
             });
         }

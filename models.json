@@ -21,7 +21,7 @@
   "coverage": {
     "artificialAnalysisScores": 77,
     "deepSWEScores": 27,
-    "multimodalKnown": 82
+    "multimodalKnown": 83
   },
   "models": [
     {
@@ -362,6 +362,16 @@
       }
     },
     {
+      "slug": "deepseek-v4-1-flash",
+      "name": "DeepSeek-V4.1-Flash",
+      "multimodal": true,
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
       "slug": "deepseek-v4-flash-0731",
       "name": "DeepSeek-V4-Flash-0731",
       "multimodal": false,
@@ -523,6 +533,16 @@
     {
       "slug": "doubao-seed-2-1-turbo",
       "name": "Doubao-Seed-2.1-Turbo",
+      "multimodal": "unknown",
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "doubao-seed-2-1-pro",
+      "name": "Doubao-Seed-2.1-Pro",
       "multimodal": "unknown",
       "modalities": null,
       "scores": {
@@ -1022,6 +1042,16 @@
           "modelName": "glm-5-3-flash",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         }
+      }
+    },
+    {
+      "slug": "glm-5v-turbo",
+      "name": "GLM-5v-Turbo",
+      "multimodal": "unknown",
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
       }
     },
     {

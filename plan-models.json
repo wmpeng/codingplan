@@ -1,12 +1,3022 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-08T00:00:00Z",
+  "generatedAt": "2026-09-11T00:00:00Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
     "tokensPerRequest": 120000
   },
   "planModels": [
+    {
+      "slug": "qoder-cn-pro--auto",
+      "planSlug": "qoder-cn-pro",
+      "modelSlug": "auto",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.5×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro--qwen-3-8-max",
+      "planSlug": "qoder-cn-pro",
+      "modelSlug": "qwen-3-8-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro--qwen-3-7-max",
+      "planSlug": "qoder-cn-pro",
+      "modelSlug": "qwen-3-7-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 1×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro--qwen-3-7-plus",
+      "planSlug": "qoder-cn-pro",
+      "modelSlug": "qwen-3-7-plus",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.1×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro--qwen-3-6-flash",
+      "planSlug": "qoder-cn-pro",
+      "modelSlug": "qwen-3-6-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.1×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro--deepseek-v4-pro-0813",
+      "planSlug": "qoder-cn-pro",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.5×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro--deepseek-v4-flash-0731",
+      "planSlug": "qoder-cn-pro",
+      "modelSlug": "deepseek-v4-flash-0731",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.1×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro--glm-5-2",
+      "planSlug": "qoder-cn-pro",
+      "modelSlug": "glm-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.6×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro--kimi-k2-7-code",
+      "planSlug": "qoder-cn-pro",
+      "modelSlug": "kimi-k2-7-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro--minimax-m2-7",
+      "planSlug": "qoder-cn-pro",
+      "modelSlug": "minimax-m2-7",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro-plus--auto",
+      "planSlug": "qoder-cn-pro-plus",
+      "modelSlug": "auto",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.5×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro-plus--qwen-3-8-max",
+      "planSlug": "qoder-cn-pro-plus",
+      "modelSlug": "qwen-3-8-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro-plus--qwen-3-7-max",
+      "planSlug": "qoder-cn-pro-plus",
+      "modelSlug": "qwen-3-7-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 1×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro-plus--qwen-3-7-plus",
+      "planSlug": "qoder-cn-pro-plus",
+      "modelSlug": "qwen-3-7-plus",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.1×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro-plus--qwen-3-6-flash",
+      "planSlug": "qoder-cn-pro-plus",
+      "modelSlug": "qwen-3-6-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.1×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro-plus--deepseek-v4-pro-0813",
+      "planSlug": "qoder-cn-pro-plus",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.5×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro-plus--deepseek-v4-flash-0731",
+      "planSlug": "qoder-cn-pro-plus",
+      "modelSlug": "deepseek-v4-flash-0731",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.1×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro-plus--glm-5-2",
+      "planSlug": "qoder-cn-pro-plus",
+      "modelSlug": "glm-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.6×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro-plus--kimi-k2-7-code",
+      "planSlug": "qoder-cn-pro-plus",
+      "modelSlug": "kimi-k2-7-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-pro-plus--minimax-m2-7",
+      "planSlug": "qoder-cn-pro-plus",
+      "modelSlug": "minimax-m2-7",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-ultra--auto",
+      "planSlug": "qoder-cn-ultra",
+      "modelSlug": "auto",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.5×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-ultra--qwen-3-8-max",
+      "planSlug": "qoder-cn-ultra",
+      "modelSlug": "qwen-3-8-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-ultra--qwen-3-7-max",
+      "planSlug": "qoder-cn-ultra",
+      "modelSlug": "qwen-3-7-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 1×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-ultra--qwen-3-7-plus",
+      "planSlug": "qoder-cn-ultra",
+      "modelSlug": "qwen-3-7-plus",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.1×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-ultra--qwen-3-6-flash",
+      "planSlug": "qoder-cn-ultra",
+      "modelSlug": "qwen-3-6-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.1×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-ultra--deepseek-v4-pro-0813",
+      "planSlug": "qoder-cn-ultra",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.5×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-ultra--deepseek-v4-flash-0731",
+      "planSlug": "qoder-cn-ultra",
+      "modelSlug": "deepseek-v4-flash-0731",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.1×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-ultra--glm-5-2",
+      "planSlug": "qoder-cn-ultra",
+      "modelSlug": "glm-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；QoderWork 参考消耗倍率 0.6×；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-ultra--kimi-k2-7-code",
+      "planSlug": "qoder-cn-ultra",
+      "modelSlug": "kimi-k2-7-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-cn-ultra--minimax-m2-7",
+      "planSlug": "qoder-cn-ultra",
+      "modelSlug": "minimax-m2-7",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方列为可选模型；倍率不是实际抵扣常数，客户端列表为准。Token 用量未公开。"
+    },
+    {
+      "slug": "qoder-intl-pro--auto",
+      "planSlug": "qoder-intl-pro",
+      "modelSlug": "auto",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 1×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro--qwen-3-8-max",
+      "planSlug": "qoder-intl-pro",
+      "modelSlug": "qwen-3-8-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.5×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro--qwen-3-8-flash-next",
+      "planSlug": "qoder-intl-pro",
+      "modelSlug": "qwen-3-8-flash-next",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.1×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro--qwen-3-7-max",
+      "planSlug": "qoder-intl-pro",
+      "modelSlug": "qwen-3-7-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.5×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro--qwen-3-7-plus",
+      "planSlug": "qoder-intl-pro",
+      "modelSlug": "qwen-3-7-plus",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.1×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro--deepseek-v4-pro-0813",
+      "planSlug": "qoder-intl-pro",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.8×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro--deepseek-v4-flash-0731",
+      "planSlug": "qoder-intl-pro",
+      "modelSlug": "deepseek-v4-flash-0731",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.3×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro--glm-5-3",
+      "planSlug": "qoder-intl-pro",
+      "modelSlug": "glm-5-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.6×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro--glm-5-3-flash",
+      "planSlug": "qoder-intl-pro",
+      "modelSlug": "glm-5-3-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.1×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro--kimi-k3",
+      "planSlug": "qoder-intl-pro",
+      "modelSlug": "kimi-k3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.8×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro--kimi-k2-7-code",
+      "planSlug": "qoder-intl-pro",
+      "modelSlug": "kimi-k2-7-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.3×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro--minimax-m3",
+      "planSlug": "qoder-intl-pro",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.2×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro-plus--auto",
+      "planSlug": "qoder-intl-pro-plus",
+      "modelSlug": "auto",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 1×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro-plus--qwen-3-8-max",
+      "planSlug": "qoder-intl-pro-plus",
+      "modelSlug": "qwen-3-8-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.5×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro-plus--qwen-3-8-flash-next",
+      "planSlug": "qoder-intl-pro-plus",
+      "modelSlug": "qwen-3-8-flash-next",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.1×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro-plus--qwen-3-7-max",
+      "planSlug": "qoder-intl-pro-plus",
+      "modelSlug": "qwen-3-7-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.5×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro-plus--qwen-3-7-plus",
+      "planSlug": "qoder-intl-pro-plus",
+      "modelSlug": "qwen-3-7-plus",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.1×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro-plus--deepseek-v4-pro-0813",
+      "planSlug": "qoder-intl-pro-plus",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.8×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro-plus--deepseek-v4-flash-0731",
+      "planSlug": "qoder-intl-pro-plus",
+      "modelSlug": "deepseek-v4-flash-0731",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.3×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro-plus--glm-5-3",
+      "planSlug": "qoder-intl-pro-plus",
+      "modelSlug": "glm-5-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.6×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro-plus--glm-5-3-flash",
+      "planSlug": "qoder-intl-pro-plus",
+      "modelSlug": "glm-5-3-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.1×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro-plus--kimi-k3",
+      "planSlug": "qoder-intl-pro-plus",
+      "modelSlug": "kimi-k3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.8×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro-plus--kimi-k2-7-code",
+      "planSlug": "qoder-intl-pro-plus",
+      "modelSlug": "kimi-k2-7-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.3×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-pro-plus--minimax-m3",
+      "planSlug": "qoder-intl-pro-plus",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.2×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-ultra--auto",
+      "planSlug": "qoder-intl-ultra",
+      "modelSlug": "auto",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 1×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-ultra--qwen-3-8-max",
+      "planSlug": "qoder-intl-ultra",
+      "modelSlug": "qwen-3-8-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.5×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-ultra--qwen-3-8-flash-next",
+      "planSlug": "qoder-intl-ultra",
+      "modelSlug": "qwen-3-8-flash-next",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.1×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-ultra--qwen-3-7-max",
+      "planSlug": "qoder-intl-ultra",
+      "modelSlug": "qwen-3-7-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.5×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-ultra--qwen-3-7-plus",
+      "planSlug": "qoder-intl-ultra",
+      "modelSlug": "qwen-3-7-plus",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.1×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-ultra--deepseek-v4-pro-0813",
+      "planSlug": "qoder-intl-ultra",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.8×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-ultra--deepseek-v4-flash-0731",
+      "planSlug": "qoder-intl-ultra",
+      "modelSlug": "deepseek-v4-flash-0731",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.3×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-ultra--glm-5-3",
+      "planSlug": "qoder-intl-ultra",
+      "modelSlug": "glm-5-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.6×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-ultra--glm-5-3-flash",
+      "planSlug": "qoder-intl-ultra",
+      "modelSlug": "glm-5-3-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.1×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-ultra--kimi-k3",
+      "planSlug": "qoder-intl-ultra",
+      "modelSlug": "kimi-k3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.8×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-ultra--kimi-k2-7-code",
+      "planSlug": "qoder-intl-ultra",
+      "modelSlug": "kimi-k2-7-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.3×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "qoder-intl-ultra--minimax-m3",
+      "planSlug": "qoder-intl-ultra",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "参考 Credits 消耗倍率约 0.2×，实际随参数、缓存及任务变化；不是 Token 额度倍率。"
+    },
+    {
+      "slug": "workbuddy-standard--auto",
+      "planSlug": "workbuddy-standard",
+      "modelSlug": "auto",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-standard--hy3",
+      "planSlug": "workbuddy-standard",
+      "modelSlug": "hy3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-standard--glm-5-2",
+      "planSlug": "workbuddy-standard",
+      "modelSlug": "glm-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-standard--glm-5-1",
+      "planSlug": "workbuddy-standard",
+      "modelSlug": "glm-5-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-standard--glm-5v-turbo",
+      "planSlug": "workbuddy-standard",
+      "modelSlug": "glm-5v-turbo",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-standard--minimax-m3",
+      "planSlug": "workbuddy-standard",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-standard--minimax-m2-7",
+      "planSlug": "workbuddy-standard",
+      "modelSlug": "minimax-m2-7",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-standard--kimi-k3",
+      "planSlug": "workbuddy-standard",
+      "modelSlug": "kimi-k3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-standard--kimi-k2-7-code",
+      "planSlug": "workbuddy-standard",
+      "modelSlug": "kimi-k2-7-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-standard--kimi-k2-6",
+      "planSlug": "workbuddy-standard",
+      "modelSlug": "kimi-k2-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-standard--deepseek-v4-1-flash",
+      "planSlug": "workbuddy-standard",
+      "modelSlug": "deepseek-v4-1-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方模型列表入口仍显示 DeepSeek-V4-Flash；DeepSeek 官方 2026-09-10 公告 WorkBuddy（含 CodeBuddy）已全量接入 DeepSeek V4.1 Flash，该条目由 V4.1 Flash 提供服务；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-standard--deepseek-v4-pro-0813",
+      "planSlug": "workbuddy-standard",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-advanced--auto",
+      "planSlug": "workbuddy-advanced",
+      "modelSlug": "auto",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-advanced--hy3",
+      "planSlug": "workbuddy-advanced",
+      "modelSlug": "hy3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-advanced--glm-5-2",
+      "planSlug": "workbuddy-advanced",
+      "modelSlug": "glm-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-advanced--glm-5-1",
+      "planSlug": "workbuddy-advanced",
+      "modelSlug": "glm-5-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-advanced--glm-5v-turbo",
+      "planSlug": "workbuddy-advanced",
+      "modelSlug": "glm-5v-turbo",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-advanced--minimax-m3",
+      "planSlug": "workbuddy-advanced",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-advanced--minimax-m2-7",
+      "planSlug": "workbuddy-advanced",
+      "modelSlug": "minimax-m2-7",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-advanced--kimi-k3",
+      "planSlug": "workbuddy-advanced",
+      "modelSlug": "kimi-k3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-advanced--kimi-k2-7-code",
+      "planSlug": "workbuddy-advanced",
+      "modelSlug": "kimi-k2-7-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-advanced--kimi-k2-6",
+      "planSlug": "workbuddy-advanced",
+      "modelSlug": "kimi-k2-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-advanced--deepseek-v4-1-flash",
+      "planSlug": "workbuddy-advanced",
+      "modelSlug": "deepseek-v4-1-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方模型列表入口仍显示 DeepSeek-V4-Flash；DeepSeek 官方 2026-09-10 公告 WorkBuddy（含 CodeBuddy）已全量接入 DeepSeek V4.1 Flash，该条目由 V4.1 Flash 提供服务；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-advanced--deepseek-v4-pro-0813",
+      "planSlug": "workbuddy-advanced",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-flagship--auto",
+      "planSlug": "workbuddy-flagship",
+      "modelSlug": "auto",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-flagship--hy3",
+      "planSlug": "workbuddy-flagship",
+      "modelSlug": "hy3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-flagship--glm-5-2",
+      "planSlug": "workbuddy-flagship",
+      "modelSlug": "glm-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-flagship--glm-5-1",
+      "planSlug": "workbuddy-flagship",
+      "modelSlug": "glm-5-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-flagship--glm-5v-turbo",
+      "planSlug": "workbuddy-flagship",
+      "modelSlug": "glm-5v-turbo",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-flagship--minimax-m3",
+      "planSlug": "workbuddy-flagship",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-flagship--minimax-m2-7",
+      "planSlug": "workbuddy-flagship",
+      "modelSlug": "minimax-m2-7",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-flagship--kimi-k3",
+      "planSlug": "workbuddy-flagship",
+      "modelSlug": "kimi-k3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-flagship--kimi-k2-7-code",
+      "planSlug": "workbuddy-flagship",
+      "modelSlug": "kimi-k2-7-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-flagship--kimi-k2-6",
+      "planSlug": "workbuddy-flagship",
+      "modelSlug": "kimi-k2-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-flagship--deepseek-v4-1-flash",
+      "planSlug": "workbuddy-flagship",
+      "modelSlug": "deepseek-v4-1-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "官方模型列表入口仍显示 DeepSeek-V4-Flash；DeepSeek 官方 2026-09-10 公告 WorkBuddy（含 CodeBuddy）已全量接入 DeepSeek V4.1 Flash，该条目由 V4.1 Flash 提供服务；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "workbuddy-flagship--deepseek-v4-pro-0813",
+      "planSlug": "workbuddy-flagship",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+    },
+    {
+      "slug": "trae-cn-lite--doubao-seed-2-1-pro",
+      "planSlug": "trae-cn-lite",
+      "modelSlug": "doubao-seed-2-1-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-lite--doubao-seed-2-1-turbo",
+      "planSlug": "trae-cn-lite",
+      "modelSlug": "doubao-seed-2-1-turbo",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-lite--doubao-seed-code",
+      "planSlug": "trae-cn-lite",
+      "modelSlug": "doubao-seed-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork Code 模式支持；Lite 套餐仍仅限 TraeWork 内使用。"
+    },
+    {
+      "slug": "trae-cn-lite--glm-5-3",
+      "planSlug": "trae-cn-lite",
+      "modelSlug": "glm-5-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-lite--glm-5-2",
+      "planSlug": "trae-cn-lite",
+      "modelSlug": "glm-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-lite--deepseek-v4-flash-0731",
+      "planSlug": "trae-cn-lite",
+      "modelSlug": "deepseek-v4-flash-0731",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-lite--deepseek-v4-preview",
+      "planSlug": "trae-cn-lite",
+      "modelSlug": "deepseek-v4-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-lite--deepseek-v4-pro-0813",
+      "planSlug": "trae-cn-lite",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-lite--deepseek-v4-pro-preview",
+      "planSlug": "trae-cn-lite",
+      "modelSlug": "deepseek-v4-pro-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-lite--kimi-k3",
+      "planSlug": "trae-cn-lite",
+      "modelSlug": "kimi-k3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-lite--kimi-k2-7-code",
+      "planSlug": "trae-cn-lite",
+      "modelSlug": "kimi-k2-7-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-lite--kimi-k2-6",
+      "planSlug": "trae-cn-lite",
+      "modelSlug": "kimi-k2-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-lite--minimax-m3",
+      "planSlug": "trae-cn-lite",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-lite--qwen-3-8-max",
+      "planSlug": "trae-cn-lite",
+      "modelSlug": "qwen-3-8-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-lite--qwen-3-7-plus",
+      "planSlug": "trae-cn-lite",
+      "modelSlug": "qwen-3-7-plus",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro--doubao-seed-2-1-pro",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "doubao-seed-2-1-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro--doubao-seed-2-1-turbo",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "doubao-seed-2-1-turbo",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro--doubao-seed-code",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "doubao-seed-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork Code 模式支持；Lite 套餐仍仅限 TraeWork 内使用。"
+    },
+    {
+      "slug": "trae-cn-pro--glm-5-3",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "glm-5-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro--glm-5-2",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "glm-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro--deepseek-v4-flash-0731",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "deepseek-v4-flash-0731",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro--deepseek-v4-preview",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "deepseek-v4-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro--deepseek-v4-pro-0813",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro--deepseek-v4-pro-preview",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "deepseek-v4-pro-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro--kimi-k3",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "kimi-k3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro--kimi-k2-7-code",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "kimi-k2-7-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro--kimi-k2-6",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "kimi-k2-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro--minimax-m3",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro--qwen-3-8-max",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "qwen-3-8-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro--qwen-3-7-plus",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "qwen-3-7-plus",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro--glm-5-3-flash",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "glm-5-3-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "仅 TraeCode；Lite 套餐不含 TraeCode 权益。"
+    },
+    {
+      "slug": "trae-cn-pro--qwen-3-8-flash-next",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "qwen-3-8-flash-next",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "仅 TraeCode；平台名 Qwen3.8-Flash。"
+    },
+    {
+      "slug": "trae-cn-pro--doubao-seed-evolving",
+      "planSlug": "trae-cn-pro",
+      "modelSlug": "doubao-seed-evolving",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "仅 TraeCode；TraeWork 的 Seed-Evolving 需 Pro+ 或 Ultra。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--doubao-seed-2-1-pro",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "doubao-seed-2-1-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--doubao-seed-2-1-turbo",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "doubao-seed-2-1-turbo",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--doubao-seed-code",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "doubao-seed-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork Code 模式支持；Lite 套餐仍仅限 TraeWork 内使用。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--glm-5-3",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "glm-5-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--glm-5-2",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "glm-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--deepseek-v4-flash-0731",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "deepseek-v4-flash-0731",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--deepseek-v4-preview",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "deepseek-v4-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--deepseek-v4-pro-0813",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--deepseek-v4-pro-preview",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "deepseek-v4-pro-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--kimi-k3",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "kimi-k3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--kimi-k2-7-code",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "kimi-k2-7-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--kimi-k2-6",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "kimi-k2-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--minimax-m3",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--qwen-3-8-max",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "qwen-3-8-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--qwen-3-7-plus",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "qwen-3-7-plus",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--glm-5-3-flash",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "glm-5-3-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "仅 TraeCode；Lite 套餐不含 TraeCode 权益。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--qwen-3-8-flash-next",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "qwen-3-8-flash-next",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "仅 TraeCode；平台名 Qwen3.8-Flash。"
+    },
+    {
+      "slug": "trae-cn-pro-plus--doubao-seed-evolving",
+      "planSlug": "trae-cn-pro-plus",
+      "modelSlug": "doubao-seed-evolving",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 与 TraeWork 均可使用。"
+    },
+    {
+      "slug": "trae-cn-ultra--doubao-seed-2-1-pro",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "doubao-seed-2-1-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-ultra--doubao-seed-2-1-turbo",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "doubao-seed-2-1-turbo",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-ultra--doubao-seed-code",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "doubao-seed-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork Code 模式支持；Lite 套餐仍仅限 TraeWork 内使用。"
+    },
+    {
+      "slug": "trae-cn-ultra--glm-5-3",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "glm-5-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-ultra--glm-5-2",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "glm-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-ultra--deepseek-v4-flash-0731",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "deepseek-v4-flash-0731",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-ultra--deepseek-v4-preview",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "deepseek-v4-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-ultra--deepseek-v4-pro-0813",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-ultra--deepseek-v4-pro-preview",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "deepseek-v4-pro-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-ultra--kimi-k3",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "kimi-k3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-ultra--kimi-k2-7-code",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "kimi-k2-7-code",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-ultra--kimi-k2-6",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "kimi-k2-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-ultra--minimax-m3",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-ultra--qwen-3-8-max",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "qwen-3-8-max",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-ultra--qwen-3-7-plus",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "qwen-3-7-plus",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeWork 内置模型；不同模式支持范围有差异，非 BYOK。"
+    },
+    {
+      "slug": "trae-cn-ultra--glm-5-3-flash",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "glm-5-3-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "仅 TraeCode；Lite 套餐不含 TraeCode 权益。"
+    },
+    {
+      "slug": "trae-cn-ultra--qwen-3-8-flash-next",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "qwen-3-8-flash-next",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "仅 TraeCode；平台名 Qwen3.8-Flash。"
+    },
+    {
+      "slug": "trae-cn-ultra--doubao-seed-evolving",
+      "planSlug": "trae-cn-ultra",
+      "modelSlug": "doubao-seed-evolving",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 与 TraeWork 均可使用。"
+    },
+    {
+      "slug": "trae-intl-lite--gpt-5-4--ctx-272k",
+      "planSlug": "trae-intl-lite",
+      "modelSlug": "gpt-5-4",
+      "timeTier": null,
+      "contextTier": "272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $2.5、缓存读取 $0.25、缓存写入 $0、输出 $15。适用输入 ≤272K。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-lite--gpt-5-4",
+      "planSlug": "trae-intl-lite",
+      "modelSlug": "gpt-5-4",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $5、缓存读取 $0.5、缓存写入 $0、输出 $22.5。适用输入 >272K；此为计费阈值，不代表最大上下文。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-lite--gpt-5-2",
+      "planSlug": "trae-intl-lite",
+      "modelSlug": "gpt-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $1.75、缓存读取 $0.175、缓存写入 $0、输出 $14。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-lite--doubao-seed-2-1-turbo",
+      "planSlug": "trae-intl-lite",
+      "modelSlug": "doubao-seed-2-1-turbo",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.5、缓存读取 $0.1、缓存写入 $0.0083、输出 $2.5。"
+    },
+    {
+      "slug": "trae-intl-lite--minimax-m3--ctx-200k",
+      "planSlug": "trae-intl-lite",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": "200K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.6、缓存读取 $0.12、缓存写入 $0、输出 $2.4。适用输入 ≤200K。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-lite--minimax-m3",
+      "planSlug": "trae-intl-lite",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $1.2、缓存读取 $0.24、缓存写入 $0、输出 $4.8。适用输入 >200K；此为计费阈值，不代表最大上下文。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-lite--minimax-m2-7",
+      "planSlug": "trae-intl-lite",
+      "modelSlug": "minimax-m2-7",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.3、缓存读取 $0.06、缓存写入 $0.375、输出 $1.2。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-lite--kimi-k2-5",
+      "planSlug": "trae-intl-lite",
+      "modelSlug": "kimi-k2-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.6、缓存读取 $0.1、缓存写入 $0、输出 $3。"
+    },
+    {
+      "slug": "trae-intl-lite--gemini-3-1-pro--ctx-200k",
+      "planSlug": "trae-intl-lite",
+      "modelSlug": "gemini-3-1-pro",
+      "timeTier": null,
+      "contextTier": "200K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $2、缓存读取 $0.2、缓存写入 $0、输出 $12。适用输入 ≤200K。平台路由为 Gemini-3.1-Pro-Preview。"
+    },
+    {
+      "slug": "trae-intl-lite--gemini-3-1-pro",
+      "planSlug": "trae-intl-lite",
+      "modelSlug": "gemini-3-1-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $4、缓存读取 $0.4、缓存写入 $0、输出 $18。适用输入 >200K；此为计费阈值，不代表最大上下文。平台路由为 Gemini-3.1-Pro-Preview。"
+    },
+    {
+      "slug": "trae-intl-lite--gemini-3-flash-preview",
+      "planSlug": "trae-intl-lite",
+      "modelSlug": "gemini-3-flash-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.5、缓存读取 $0.05、缓存写入 $0、输出 $3。"
+    },
+    {
+      "slug": "trae-intl-pro--gpt-5-4--ctx-272k",
+      "planSlug": "trae-intl-pro",
+      "modelSlug": "gpt-5-4",
+      "timeTier": null,
+      "contextTier": "272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $2.5、缓存读取 $0.25、缓存写入 $0、输出 $15。适用输入 ≤272K。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-pro--gpt-5-4",
+      "planSlug": "trae-intl-pro",
+      "modelSlug": "gpt-5-4",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $5、缓存读取 $0.5、缓存写入 $0、输出 $22.5。适用输入 >272K；此为计费阈值，不代表最大上下文。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-pro--gpt-5-2",
+      "planSlug": "trae-intl-pro",
+      "modelSlug": "gpt-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $1.75、缓存读取 $0.175、缓存写入 $0、输出 $14。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-pro--doubao-seed-2-1-turbo",
+      "planSlug": "trae-intl-pro",
+      "modelSlug": "doubao-seed-2-1-turbo",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.5、缓存读取 $0.1、缓存写入 $0.0083、输出 $2.5。"
+    },
+    {
+      "slug": "trae-intl-pro--minimax-m3--ctx-200k",
+      "planSlug": "trae-intl-pro",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": "200K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.6、缓存读取 $0.12、缓存写入 $0、输出 $2.4。适用输入 ≤200K。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-pro--minimax-m3",
+      "planSlug": "trae-intl-pro",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $1.2、缓存读取 $0.24、缓存写入 $0、输出 $4.8。适用输入 >200K；此为计费阈值，不代表最大上下文。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-pro--minimax-m2-7",
+      "planSlug": "trae-intl-pro",
+      "modelSlug": "minimax-m2-7",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.3、缓存读取 $0.06、缓存写入 $0.375、输出 $1.2。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-pro--kimi-k2-5",
+      "planSlug": "trae-intl-pro",
+      "modelSlug": "kimi-k2-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.6、缓存读取 $0.1、缓存写入 $0、输出 $3。"
+    },
+    {
+      "slug": "trae-intl-pro--gemini-3-1-pro--ctx-200k",
+      "planSlug": "trae-intl-pro",
+      "modelSlug": "gemini-3-1-pro",
+      "timeTier": null,
+      "contextTier": "200K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $2、缓存读取 $0.2、缓存写入 $0、输出 $12。适用输入 ≤200K。平台路由为 Gemini-3.1-Pro-Preview。"
+    },
+    {
+      "slug": "trae-intl-pro--gemini-3-1-pro",
+      "planSlug": "trae-intl-pro",
+      "modelSlug": "gemini-3-1-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $4、缓存读取 $0.4、缓存写入 $0、输出 $18。适用输入 >200K；此为计费阈值，不代表最大上下文。平台路由为 Gemini-3.1-Pro-Preview。"
+    },
+    {
+      "slug": "trae-intl-pro--gemini-3-flash-preview",
+      "planSlug": "trae-intl-pro",
+      "modelSlug": "gemini-3-flash-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.5、缓存读取 $0.05、缓存写入 $0、输出 $3。"
+    },
+    {
+      "slug": "trae-intl-pro-plus--gpt-5-4--ctx-272k",
+      "planSlug": "trae-intl-pro-plus",
+      "modelSlug": "gpt-5-4",
+      "timeTier": null,
+      "contextTier": "272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $2.5、缓存读取 $0.25、缓存写入 $0、输出 $15。适用输入 ≤272K。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-pro-plus--gpt-5-4",
+      "planSlug": "trae-intl-pro-plus",
+      "modelSlug": "gpt-5-4",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $5、缓存读取 $0.5、缓存写入 $0、输出 $22.5。适用输入 >272K；此为计费阈值，不代表最大上下文。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-pro-plus--gpt-5-2",
+      "planSlug": "trae-intl-pro-plus",
+      "modelSlug": "gpt-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $1.75、缓存读取 $0.175、缓存写入 $0、输出 $14。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-pro-plus--doubao-seed-2-1-turbo",
+      "planSlug": "trae-intl-pro-plus",
+      "modelSlug": "doubao-seed-2-1-turbo",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.5、缓存读取 $0.1、缓存写入 $0.0083、输出 $2.5。"
+    },
+    {
+      "slug": "trae-intl-pro-plus--minimax-m3--ctx-200k",
+      "planSlug": "trae-intl-pro-plus",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": "200K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.6、缓存读取 $0.12、缓存写入 $0、输出 $2.4。适用输入 ≤200K。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-pro-plus--minimax-m3",
+      "planSlug": "trae-intl-pro-plus",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $1.2、缓存读取 $0.24、缓存写入 $0、输出 $4.8。适用输入 >200K；此为计费阈值，不代表最大上下文。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-pro-plus--minimax-m2-7",
+      "planSlug": "trae-intl-pro-plus",
+      "modelSlug": "minimax-m2-7",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.3、缓存读取 $0.06、缓存写入 $0.375、输出 $1.2。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-pro-plus--kimi-k2-5",
+      "planSlug": "trae-intl-pro-plus",
+      "modelSlug": "kimi-k2-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.6、缓存读取 $0.1、缓存写入 $0、输出 $3。"
+    },
+    {
+      "slug": "trae-intl-pro-plus--gemini-3-1-pro--ctx-200k",
+      "planSlug": "trae-intl-pro-plus",
+      "modelSlug": "gemini-3-1-pro",
+      "timeTier": null,
+      "contextTier": "200K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $2、缓存读取 $0.2、缓存写入 $0、输出 $12。适用输入 ≤200K。平台路由为 Gemini-3.1-Pro-Preview。"
+    },
+    {
+      "slug": "trae-intl-pro-plus--gemini-3-1-pro",
+      "planSlug": "trae-intl-pro-plus",
+      "modelSlug": "gemini-3-1-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $4、缓存读取 $0.4、缓存写入 $0、输出 $18。适用输入 >200K；此为计费阈值，不代表最大上下文。平台路由为 Gemini-3.1-Pro-Preview。"
+    },
+    {
+      "slug": "trae-intl-pro-plus--gemini-3-flash-preview",
+      "planSlug": "trae-intl-pro-plus",
+      "modelSlug": "gemini-3-flash-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.5、缓存读取 $0.05、缓存写入 $0、输出 $3。"
+    },
+    {
+      "slug": "trae-intl-ultra--gpt-5-4--ctx-272k",
+      "planSlug": "trae-intl-ultra",
+      "modelSlug": "gpt-5-4",
+      "timeTier": null,
+      "contextTier": "272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $2.5、缓存读取 $0.25、缓存写入 $0、输出 $15。适用输入 ≤272K。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-ultra--gpt-5-4",
+      "planSlug": "trae-intl-ultra",
+      "modelSlug": "gpt-5-4",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $5、缓存读取 $0.5、缓存写入 $0、输出 $22.5。适用输入 >272K；此为计费阈值，不代表最大上下文。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-ultra--gpt-5-2",
+      "planSlug": "trae-intl-ultra",
+      "modelSlug": "gpt-5-2",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $1.75、缓存读取 $0.175、缓存写入 $0、输出 $14。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-ultra--doubao-seed-2-1-turbo",
+      "planSlug": "trae-intl-ultra",
+      "modelSlug": "doubao-seed-2-1-turbo",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.5、缓存读取 $0.1、缓存写入 $0.0083、输出 $2.5。"
+    },
+    {
+      "slug": "trae-intl-ultra--minimax-m3--ctx-200k",
+      "planSlug": "trae-intl-ultra",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": "200K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.6、缓存读取 $0.12、缓存写入 $0、输出 $2.4。适用输入 ≤200K。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-ultra--minimax-m3",
+      "planSlug": "trae-intl-ultra",
+      "modelSlug": "minimax-m3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $1.2、缓存读取 $0.24、缓存写入 $0、输出 $4.8。适用输入 >200K；此为计费阈值，不代表最大上下文。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-ultra--minimax-m2-7",
+      "planSlug": "trae-intl-ultra",
+      "modelSlug": "minimax-m2-7",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.3、缓存读取 $0.06、缓存写入 $0.375、输出 $1.2。美国地区不可用。"
+    },
+    {
+      "slug": "trae-intl-ultra--kimi-k2-5",
+      "planSlug": "trae-intl-ultra",
+      "modelSlug": "kimi-k2-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.6、缓存读取 $0.1、缓存写入 $0、输出 $3。"
+    },
+    {
+      "slug": "trae-intl-ultra--gemini-3-1-pro--ctx-200k",
+      "planSlug": "trae-intl-ultra",
+      "modelSlug": "gemini-3-1-pro",
+      "timeTier": null,
+      "contextTier": "200K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $2、缓存读取 $0.2、缓存写入 $0、输出 $12。适用输入 ≤200K。平台路由为 Gemini-3.1-Pro-Preview。"
+    },
+    {
+      "slug": "trae-intl-ultra--gemini-3-1-pro",
+      "planSlug": "trae-intl-ultra",
+      "modelSlug": "gemini-3-1-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $4、缓存读取 $0.4、缓存写入 $0、输出 $18。适用输入 >200K；此为计费阈值，不代表最大上下文。平台路由为 Gemini-3.1-Pro-Preview。"
+    },
+    {
+      "slug": "trae-intl-ultra--gemini-3-flash-preview",
+      "planSlug": "trae-intl-ultra",
+      "modelSlug": "gemini-3-flash-preview",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "TraeCode 内置模型；每百万 Token 输入 $0.5、缓存读取 $0.05、缓存写入 $0、输出 $3。"
+    },
     {
       "slug": "codex-plus--gpt-6-astra",
       "planSlug": "codex-plus",
@@ -2058,10 +5068,10 @@
       "note": "价格：输入 $0.3/M Token、缓存读取 $0.03/M Token、输出 $1.2/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 200K"
     },
     {
-      "slug": "commandcode-go--deepseek-v4-pro-0813",
+      "slug": "commandcode-go--deepseek-v4-pro-0813--gu",
       "planSlug": "commandcode-go",
       "modelSlug": "deepseek-v4-pro-0813",
-      "timeTier": null,
+      "timeTier": "谷",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -2080,13 +5090,38 @@
         "cacheCnyPerM": 0.1496,
         "outputCnyPerM": 13.464
       },
-      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $1.32/$3.96 每 M Token，官方未另列 Peak 缓存读取价"
+      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
     },
     {
-      "slug": "commandcode-go--deepseek-v4-flash-0731",
+      "slug": "commandcode-go--deepseek-v4-pro-0813--feng",
+      "planSlug": "commandcode-go",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": "峰",
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 23.6107066685,
+        "weeklyTokenInM": 47.2214133369,
+        "monthlyTokenInM": 78.7,
+        "unitPriceCnyPerM": 0.08636
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.32,
+        "cachePerM": 0.044,
+        "outputPerM": 3.96,
+        "inputCnyPerM": 8.976,
+        "cacheCnyPerM": 0.2992,
+        "outputCnyPerM": 26.928
+      },
+      "note": "价格：输入 $1.32/M Token、缓存读取 $0.044/M Token、输出 $3.96/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
+    },
+    {
+      "slug": "commandcode-go--deepseek-v4-flash-0731--gu",
       "planSlug": "commandcode-go",
       "modelSlug": "deepseek-v4-flash-0731",
-      "timeTier": null,
+      "timeTier": "谷",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -2105,13 +5140,38 @@
         "cacheCnyPerM": 0.0476,
         "outputCnyPerM": 4.488
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $0.44/$1.32 每 M Token，官方未另列 Peak 缓存读取价"
+      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
     },
     {
-      "slug": "commandcode-go--deepseek-v4-flash-vision-exp",
+      "slug": "commandcode-go--deepseek-v4-flash-0731--feng",
+      "planSlug": "commandcode-go",
+      "modelSlug": "deepseek-v4-flash-0731",
+      "timeTier": "峰",
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 71.9019257732,
+        "weeklyTokenInM": 143.8038515465,
+        "monthlyTokenInM": 239.7,
+        "unitPriceCnyPerM": 0.02856
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.44,
+        "cachePerM": 0.014,
+        "outputPerM": 1.32,
+        "inputCnyPerM": 2.992,
+        "cacheCnyPerM": 0.0952,
+        "outputCnyPerM": 8.976
+      },
+      "note": "价格：输入 $0.44/M Token、缓存读取 $0.014/M Token、输出 $1.32/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
+    },
+    {
+      "slug": "commandcode-go--deepseek-v4-flash-vision-exp--gu",
       "planSlug": "commandcode-go",
       "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": null,
+      "timeTier": "谷",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -2130,7 +5190,32 @@
         "cacheCnyPerM": 0.0476,
         "outputCnyPerM": 4.488
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $0.44/$1.32 每 M Token，官方未另列 Peak 缓存读取价"
+      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
+    },
+    {
+      "slug": "commandcode-go--deepseek-v4-flash-vision-exp--feng",
+      "planSlug": "commandcode-go",
+      "modelSlug": "deepseek-v4-flash-vision-exp",
+      "timeTier": "峰",
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 71.9019257732,
+        "weeklyTokenInM": 143.8038515465,
+        "monthlyTokenInM": 239.7,
+        "unitPriceCnyPerM": 0.02856
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.44,
+        "cachePerM": 0.014,
+        "outputPerM": 1.32,
+        "inputCnyPerM": 2.992,
+        "cacheCnyPerM": 0.0952,
+        "outputCnyPerM": 8.976
+      },
+      "note": "价格：输入 $0.44/M Token、缓存读取 $0.014/M Token、输出 $1.32/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
     },
     {
       "slug": "commandcode-go--deepseek-v4-flash-fast",
@@ -3106,10 +6191,10 @@
       "note": "价格：输入 $0.3/M Token、缓存读取 $0.03/M Token、输出 $1.2/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 200K"
     },
     {
-      "slug": "commandcode-goat--deepseek-v4-pro-0813",
+      "slug": "commandcode-goat--deepseek-v4-pro-0813--gu",
       "planSlug": "commandcode-goat",
       "modelSlug": "deepseek-v4-pro-0813",
-      "timeTier": null,
+      "timeTier": "谷",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -3128,13 +6213,38 @@
         "cacheCnyPerM": 0.1496,
         "outputCnyPerM": 13.464
       },
-      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $1.32/$3.96 每 M Token，官方未另列 Peak 缓存读取价"
+      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
     },
     {
-      "slug": "commandcode-goat--deepseek-v4-flash-0731",
+      "slug": "commandcode-goat--deepseek-v4-pro-0813--feng",
+      "planSlug": "commandcode-goat",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": "峰",
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 31.4809422246,
+        "weeklyTokenInM": 78.7023555615,
+        "monthlyTokenInM": 157.4,
+        "unitPriceCnyPerM": 0.4318
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.32,
+        "cachePerM": 0.044,
+        "outputPerM": 3.96,
+        "inputCnyPerM": 8.976,
+        "cacheCnyPerM": 0.2992,
+        "outputCnyPerM": 26.928
+      },
+      "note": "价格：输入 $1.32/M Token、缓存读取 $0.044/M Token、输出 $3.96/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
+    },
+    {
+      "slug": "commandcode-goat--deepseek-v4-flash-0731--gu",
       "planSlug": "commandcode-goat",
       "modelSlug": "deepseek-v4-flash-0731",
-      "timeTier": null,
+      "timeTier": "谷",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -3153,13 +6263,38 @@
         "cacheCnyPerM": 0.0476,
         "outputCnyPerM": 4.488
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $12、每周 $30、每月 $60；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $0.44/$1.32 每 M Token，官方未另列 Peak 缓存读取价"
+      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $12、每周 $30、每月 $60；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
     },
     {
-      "slug": "commandcode-goat--deepseek-v4-flash-vision-exp",
+      "slug": "commandcode-goat--deepseek-v4-flash-0731--feng",
+      "planSlug": "commandcode-goat",
+      "modelSlug": "deepseek-v4-flash-0731",
+      "timeTier": "峰",
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 287.607703093,
+        "weeklyTokenInM": 719.0192577325,
+        "monthlyTokenInM": 1438.0,
+        "unitPriceCnyPerM": 0.0476
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.44,
+        "cachePerM": 0.014,
+        "outputPerM": 1.32,
+        "inputCnyPerM": 2.992,
+        "cacheCnyPerM": 0.0952,
+        "outputCnyPerM": 8.976
+      },
+      "note": "价格：输入 $0.44/M Token、缓存读取 $0.014/M Token、输出 $1.32/M Token；模型额度：5小时 $12、每周 $30、每月 $60；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
+    },
+    {
+      "slug": "commandcode-goat--deepseek-v4-flash-vision-exp--gu",
       "planSlug": "commandcode-goat",
       "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": null,
+      "timeTier": "谷",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -3178,7 +6313,32 @@
         "cacheCnyPerM": 0.0476,
         "outputCnyPerM": 4.488
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $0.44/$1.32 每 M Token，官方未另列 Peak 缓存读取价"
+      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
+    },
+    {
+      "slug": "commandcode-goat--deepseek-v4-flash-vision-exp--feng",
+      "planSlug": "commandcode-goat",
+      "modelSlug": "deepseek-v4-flash-vision-exp",
+      "timeTier": "峰",
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 95.8692343643,
+        "weeklyTokenInM": 239.6730859108,
+        "monthlyTokenInM": 479.3,
+        "unitPriceCnyPerM": 0.14212
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.44,
+        "cachePerM": 0.014,
+        "outputPerM": 1.32,
+        "inputCnyPerM": 2.992,
+        "cacheCnyPerM": 0.0952,
+        "outputCnyPerM": 8.976
+      },
+      "note": "价格：输入 $0.44/M Token、缓存读取 $0.014/M Token、输出 $1.32/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
     },
     {
       "slug": "commandcode-goat--deepseek-v4-flash-fast",
@@ -4304,10 +7464,10 @@
       "note": "价格：输入 $0.3/M Token、缓存读取 $0.03/M Token、输出 $1.2/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 200K"
     },
     {
-      "slug": "commandcode-pro--deepseek-v4-pro-0813",
+      "slug": "commandcode-pro--deepseek-v4-pro-0813--gu",
       "planSlug": "commandcode-pro",
       "modelSlug": "deepseek-v4-pro-0813",
-      "timeTier": null,
+      "timeTier": "谷",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -4326,13 +7486,38 @@
         "cacheCnyPerM": 0.1496,
         "outputCnyPerM": 13.464
       },
-      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $1.32/$3.96 每 M Token，官方未另列 Peak 缓存读取价"
+      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
     },
     {
-      "slug": "commandcode-pro--deepseek-v4-flash-0731",
+      "slug": "commandcode-pro--deepseek-v4-pro-0813--feng",
+      "planSlug": "commandcode-pro",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": "峰",
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 47.2214133369,
+        "weeklyTokenInM": 118.0535333423,
+        "monthlyTokenInM": 236.1,
+        "unitPriceCnyPerM": 0.57596
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.32,
+        "cachePerM": 0.044,
+        "outputPerM": 3.96,
+        "inputCnyPerM": 8.976,
+        "cacheCnyPerM": 0.2992,
+        "outputCnyPerM": 26.928
+      },
+      "note": "价格：输入 $1.32/M Token、缓存读取 $0.044/M Token、输出 $3.96/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
+    },
+    {
+      "slug": "commandcode-pro--deepseek-v4-flash-0731--gu",
       "planSlug": "commandcode-pro",
       "modelSlug": "deepseek-v4-flash-0731",
-      "timeTier": null,
+      "timeTier": "谷",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -4351,13 +7536,38 @@
         "cacheCnyPerM": 0.0476,
         "outputCnyPerM": 4.488
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $14、每周 $35、每月 $70；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $0.44/$1.32 每 M Token，官方未另列 Peak 缓存读取价"
+      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $14、每周 $35、每月 $70；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
     },
     {
-      "slug": "commandcode-pro--deepseek-v4-flash-vision-exp",
+      "slug": "commandcode-pro--deepseek-v4-flash-0731--feng",
+      "planSlug": "commandcode-pro",
+      "modelSlug": "deepseek-v4-flash-0731",
+      "timeTier": "峰",
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 335.5423202751,
+        "weeklyTokenInM": 838.8558006879,
+        "monthlyTokenInM": 1677.7,
+        "unitPriceCnyPerM": 0.08092
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.44,
+        "cachePerM": 0.014,
+        "outputPerM": 1.32,
+        "inputCnyPerM": 2.992,
+        "cacheCnyPerM": 0.0952,
+        "outputCnyPerM": 8.976
+      },
+      "note": "价格：输入 $0.44/M Token、缓存读取 $0.014/M Token、输出 $1.32/M Token；模型额度：5小时 $14、每周 $35、每月 $70；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
+    },
+    {
+      "slug": "commandcode-pro--deepseek-v4-flash-vision-exp--gu",
       "planSlug": "commandcode-pro",
       "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": null,
+      "timeTier": "谷",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -4376,7 +7586,32 @@
         "cacheCnyPerM": 0.0476,
         "outputCnyPerM": 4.488
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $0.44/$1.32 每 M Token，官方未另列 Peak 缓存读取价"
+      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
+    },
+    {
+      "slug": "commandcode-pro--deepseek-v4-flash-vision-exp--feng",
+      "planSlug": "commandcode-pro",
+      "modelSlug": "deepseek-v4-flash-vision-exp",
+      "timeTier": "峰",
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 143.8038515465,
+        "weeklyTokenInM": 359.5096288662,
+        "monthlyTokenInM": 719.0,
+        "unitPriceCnyPerM": 0.18904
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.44,
+        "cachePerM": 0.014,
+        "outputPerM": 1.32,
+        "inputCnyPerM": 2.992,
+        "cacheCnyPerM": 0.0952,
+        "outputCnyPerM": 8.976
+      },
+      "note": "价格：输入 $0.44/M Token、缓存读取 $0.014/M Token、输出 $1.32/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
     },
     {
       "slug": "commandcode-pro--deepseek-v4-flash-fast",
@@ -7629,6 +10864,31 @@
       "note": "价格：输入 $0.3/M Token、缓存读取 $0.06/M Token、输出 $1.2/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
     },
     {
+      "slug": "opencode-go--muse-spark-1-3--service-contributor",
+      "planSlug": "opencode-go",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "Contributor",
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 1525.6499904647,
+        "weeklyTokenInM": 3814.1249761617,
+        "monthlyTokenInM": 7628.2,
+        "unitPriceCnyPerM": 0.00884
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.002,
+        "outputPerM": 0.2,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.0136,
+        "outputCnyPerM": 1.36
+      },
+      "note": "价格：输入 $0.1/M Token、缓存读取 $0.002/M Token、输出 $0.2/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
+    },
+    {
       "slug": "opencode-go--muse-spark-1-2--service-contributor",
       "planSlug": "opencode-go",
       "modelSlug": "muse-spark-1-2",
@@ -7687,10 +10947,10 @@
       "serviceTier": null,
       "method": "calculated",
       "usage": {
-        "fiveHourTokenInM": 18.9125295508,
-        "weeklyTokenInM": 47.2813238771,
-        "monthlyTokenInM": 94.6,
-        "unitPriceCnyPerM": 0.71876
+        "fiveHourTokenInM": 9.4562647754,
+        "weeklyTokenInM": 23.6406619385,
+        "monthlyTokenInM": 47.3,
+        "unitPriceCnyPerM": 1.4382
       },
       "pricing": {
         "currency": "$",
@@ -7701,7 +10961,7 @@
         "cacheCnyPerM": 3.4,
         "outputCnyPerM": 51.0
       },
-      "note": "价格：输入 $2.5/M Token、缓存读取 $0.5/M Token、输出 $7.5/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
+      "note": "价格：输入 $2.5/M Token、缓存读取 $0.5/M Token、输出 $7.5/M Token；模型额度：5小时 $6、每周 $15、每月 $30"
     },
     {
       "slug": "opencode-go--qwen-3-7-plus",
@@ -7804,10 +11064,60 @@
       "note": "价格：输入 $0.5/M Token、缓存读取 $0.05/M Token、输出 $3/M Token；模型额度：5小时 $12、每周 $30、每月 $60；上下文不超过 256K token 的低价档"
     },
     {
-      "slug": "opencode-go--deepseek-v4-pro-0813",
+      "slug": "opencode-go--deepseek-v4-1-flash--gu",
+      "planSlug": "opencode-go",
+      "modelSlug": "deepseek-v4-1-flash",
+      "timeTier": "谷",
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 902.3743725678,
+        "weeklyTokenInM": 2255.9359314195,
+        "monthlyTokenInM": 4511.9,
+        "unitPriceCnyPerM": 0.01496
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.15,
+        "cachePerM": 0.003,
+        "outputPerM": 0.6,
+        "inputCnyPerM": 1.02,
+        "cacheCnyPerM": 0.0204,
+        "outputCnyPerM": 4.08
+      },
+      "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 $12、每周 $30、每月 $60；官方 Off-Peak（每日非高峰时段，含周末）价格；当前限时 4 倍用量，官方未公布活动起止日期；活动结束后常规模型额度为 5小时 $3、每周 $7.5、每月 $15。"
+    },
+    {
+      "slug": "opencode-go--deepseek-v4-1-flash--feng",
+      "planSlug": "opencode-go",
+      "modelSlug": "deepseek-v4-1-flash",
+      "timeTier": "峰",
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 451.1871862839,
+        "weeklyTokenInM": 1127.9679657098,
+        "monthlyTokenInM": 2255.9,
+        "unitPriceCnyPerM": 0.02992
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.3,
+        "cachePerM": 0.006,
+        "outputPerM": 1.2,
+        "inputCnyPerM": 2.04,
+        "cacheCnyPerM": 0.0408,
+        "outputCnyPerM": 8.16
+      },
+      "note": "价格：输入 $0.3/M Token、缓存读取 $0.006/M Token、输出 $1.2/M Token；模型额度：5小时 $12、每周 $30、每月 $60；官方 Peak 价格；周一至周五 09:00-12:00、14:00-18:00（UTC+8）；当前限时 4 倍用量，官方未公布活动起止日期；活动结束后常规模型额度为 5小时 $3、每周 $7.5、每月 $15。"
+    },
+    {
+      "slug": "opencode-go--deepseek-v4-pro-0813--gu",
       "planSlug": "opencode-go",
       "modelSlug": "deepseek-v4-pro-0813",
-      "timeTier": null,
+      "timeTier": "谷",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -7826,57 +11136,132 @@
         "cacheCnyPerM": 0.1496,
         "outputCnyPerM": 13.464
       },
-      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；Off-Peak 价格，Peak 时段翻倍"
+      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；官方 Off-Peak（每日非高峰时段，含周末）价格"
     },
     {
-      "slug": "opencode-go--deepseek-v4-flash-0731",
+      "slug": "opencode-go--deepseek-v4-pro-0813--feng",
+      "planSlug": "opencode-go",
+      "modelSlug": "deepseek-v4-pro-0813",
+      "timeTier": "峰",
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 23.6107066685,
+        "weeklyTokenInM": 59.0267666711,
+        "monthlyTokenInM": 118.1,
+        "unitPriceCnyPerM": 0.57596
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.32,
+        "cachePerM": 0.044,
+        "outputPerM": 3.96,
+        "inputCnyPerM": 8.976,
+        "cacheCnyPerM": 0.2992,
+        "outputCnyPerM": 26.928
+      },
+      "note": "价格：输入 $1.32/M Token、缓存读取 $0.044/M Token、输出 $3.96/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；官方 Peak 价格；周一至周五 09:00-12:00、14:00-18:00（UTC+8）"
+    },
+    {
+      "slug": "opencode-go--deepseek-v4-flash-0731--gu",
       "planSlug": "opencode-go",
       "modelSlug": "deepseek-v4-flash-0731",
-      "timeTier": null,
+      "timeTier": "谷",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
       "usage": {
-        "fiveHourTokenInM": 287.607703093,
-        "weeklyTokenInM": 719.0192577325,
-        "monthlyTokenInM": 1438.0,
-        "unitPriceCnyPerM": 0.0476
+        "fiveHourTokenInM": 451.1871862839,
+        "weeklyTokenInM": 1127.9679657098,
+        "monthlyTokenInM": 2255.9,
+        "unitPriceCnyPerM": 0.02992
       },
       "pricing": {
         "currency": "$",
-        "inputPerM": 0.22,
-        "cachePerM": 0.007,
-        "outputPerM": 0.66,
-        "inputCnyPerM": 1.496,
-        "cacheCnyPerM": 0.0476,
-        "outputCnyPerM": 4.488
+        "inputPerM": 0.15,
+        "cachePerM": 0.003,
+        "outputPerM": 0.6,
+        "inputCnyPerM": 1.02,
+        "cacheCnyPerM": 0.0204,
+        "outputCnyPerM": 4.08
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $6、每周 $15、每月 $30；Off-Peak 价格，Peak 时段翻倍"
+      "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 $6、每周 $15、每月 $30；官方 Off-Peak（每日非高峰时段，含周末）价格"
     },
     {
-      "slug": "opencode-go--deepseek-v4-flash-vision-exp",
+      "slug": "opencode-go--deepseek-v4-flash-0731--feng",
       "planSlug": "opencode-go",
-      "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": null,
+      "modelSlug": "deepseek-v4-flash-0731",
+      "timeTier": "峰",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
       "usage": {
-        "fiveHourTokenInM": 143.8038515465,
-        "weeklyTokenInM": 359.5096288662,
-        "monthlyTokenInM": 719.0,
-        "unitPriceCnyPerM": 0.09452
+        "fiveHourTokenInM": 225.593593142,
+        "weeklyTokenInM": 563.9839828549,
+        "monthlyTokenInM": 1128.0,
+        "unitPriceCnyPerM": 0.06052
       },
       "pricing": {
         "currency": "$",
-        "inputPerM": 0.22,
-        "cachePerM": 0.007,
-        "outputPerM": 0.66,
-        "inputCnyPerM": 1.496,
-        "cacheCnyPerM": 0.0476,
-        "outputCnyPerM": 4.488
+        "inputPerM": 0.3,
+        "cachePerM": 0.006,
+        "outputPerM": 1.2,
+        "inputCnyPerM": 2.04,
+        "cacheCnyPerM": 0.0408,
+        "outputCnyPerM": 8.16
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；Off-Peak 价格，Peak 时段翻倍"
+      "note": "价格：输入 $0.3/M Token、缓存读取 $0.006/M Token、输出 $1.2/M Token；模型额度：5小时 $6、每周 $15、每月 $30；官方 Peak 价格；周一至周五 09:00-12:00、14:00-18:00（UTC+8）"
+    },
+    {
+      "slug": "opencode-go--deepseek-v4-flash-vision-exp--gu",
+      "planSlug": "opencode-go",
+      "modelSlug": "deepseek-v4-flash-vision-exp",
+      "timeTier": "谷",
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 225.593593142,
+        "weeklyTokenInM": 563.9839828549,
+        "monthlyTokenInM": 1128.0,
+        "unitPriceCnyPerM": 0.06052
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.15,
+        "cachePerM": 0.003,
+        "outputPerM": 0.6,
+        "inputCnyPerM": 1.02,
+        "cacheCnyPerM": 0.0204,
+        "outputCnyPerM": 4.08
+      },
+      "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；官方 Off-Peak（每日非高峰时段，含周末）价格"
+    },
+    {
+      "slug": "opencode-go--deepseek-v4-flash-vision-exp--feng",
+      "planSlug": "opencode-go",
+      "modelSlug": "deepseek-v4-flash-vision-exp",
+      "timeTier": "峰",
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": 112.796796571,
+        "weeklyTokenInM": 281.9919914274,
+        "monthlyTokenInM": 564.0,
+        "unitPriceCnyPerM": 0.12036
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.3,
+        "cachePerM": 0.006,
+        "outputPerM": 1.2,
+        "inputCnyPerM": 2.04,
+        "cacheCnyPerM": 0.0408,
+        "outputCnyPerM": 8.16
+      },
+      "note": "价格：输入 $0.3/M Token、缓存读取 $0.006/M Token、输出 $1.2/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；官方 Peak 价格；周一至周五 09:00-12:00、14:00-18:00（UTC+8）"
     },
     {
       "slug": "opencode-go--hy3",
@@ -7962,10 +11347,10 @@
       "serviceTier": null,
       "method": "calculated",
       "usage": {
-        "fiveHourTokenInM": 78.2881002088,
-        "weeklyTokenInM": 195.7202505219,
-        "monthlyTokenInM": 391.4,
-        "unitPriceCnyPerM": 0.1734
+        "fiveHourTokenInM": 313.1524008351,
+        "weeklyTokenInM": 782.8810020877,
+        "monthlyTokenInM": 1565.8,
+        "unitPriceCnyPerM": 0.04352
       },
       "pricing": {
         "currency": "$",
@@ -7976,7 +11361,7 @@
         "cacheCnyPerM": 0.204,
         "outputCnyPerM": 3.4
       },
-      "note": "价格：输入 $0.15/M Token、缓存读取 $0.03/M Token、输出 $0.5/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15"
+      "note": "价格：输入 $0.15/M Token、缓存读取 $0.03/M Token、输出 $0.5/M Token；模型额度：5小时 $12、每周 $30、每月 $60"
     },
     {
       "slug": "opencode-go--qwen-3-8-flash-next",
@@ -8027,34 +11412,6 @@
         "outputCnyPerM": 17.0068
       },
       "note": "价格：输入 $0.834/M Token、缓存读取 $0.042/M Token、输出 $2.501/M Token；模型额度：5小时 $6、每周 $15、每月 $30"
-    },
-    {
-      "slug": "opencode-go--glm-5",
-      "planSlug": "opencode-go",
-      "modelSlug": "glm-5",
-      "timeTier": null,
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "unknown",
-      "usage": {
-        "monthlyTokenInM": "unknown"
-      },
-      "pricing": null,
-      "note": null
-    },
-    {
-      "slug": "opencode-go--minimax-m2-5",
-      "planSlug": "opencode-go",
-      "modelSlug": "minimax-m2-5",
-      "timeTier": null,
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "unknown",
-      "usage": {
-        "monthlyTokenInM": "unknown"
-      },
-      "pricing": null,
-      "note": null
     },
     {
       "slug": "volcengine-coding-lite--deepseek-v4-flash-0731",
@@ -11696,92 +15053,48 @@
       "note": null
     },
     {
-      "slug": "deepseek-official-api--deepseek-v4-flash-0731--gu",
+      "slug": "deepseek-official-api--deepseek-v4-1-flash--gu",
       "planSlug": "deepseek-official-api",
-      "modelSlug": "deepseek-v4-flash-0731",
+      "modelSlug": "deepseek-v4-1-flash",
       "timeTier": "谷",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
       "usage": {
-        "unitPriceCnyPerM": 0.1444
+        "unitPriceCnyPerM": 0.0887
       },
       "pricing": {
         "currency": "¥",
-        "inputPerM": 1.5,
-        "cachePerM": 0.05,
-        "outputPerM": 4.5,
-        "inputCnyPerM": 1.5,
-        "cacheCnyPerM": 0.05,
-        "outputCnyPerM": 4.5
+        "inputPerM": 1.0,
+        "cachePerM": 0.02,
+        "outputPerM": 4.0,
+        "inputCnyPerM": 1.0,
+        "cacheCnyPerM": 0.02,
+        "outputCnyPerM": 4.0
       },
-      "note": "空闲时段价格，为高峰的一半（高峰 3.0/0.10/9.0）"
+      "note": "API 模型名 deepseek-flash；空闲时段价格，为高峰的一半（高峰 2.0/0.04/8.0）"
     },
     {
-      "slug": "deepseek-official-api--deepseek-v4-flash-0731--feng",
+      "slug": "deepseek-official-api--deepseek-v4-1-flash--feng",
       "planSlug": "deepseek-official-api",
-      "modelSlug": "deepseek-v4-flash-0731",
+      "modelSlug": "deepseek-v4-1-flash",
       "timeTier": "峰",
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
       "usage": {
-        "unitPriceCnyPerM": 0.2888
+        "unitPriceCnyPerM": 0.1773
       },
       "pricing": {
         "currency": "¥",
-        "inputPerM": 3.0,
-        "cachePerM": 0.1,
-        "outputPerM": 9.0,
-        "inputCnyPerM": 3.0,
-        "cacheCnyPerM": 0.1,
-        "outputCnyPerM": 9.0
+        "inputPerM": 2.0,
+        "cachePerM": 0.04,
+        "outputPerM": 8.0,
+        "inputCnyPerM": 2.0,
+        "cacheCnyPerM": 0.04,
+        "outputCnyPerM": 8.0
       },
-      "note": "高峰时段（周一~五 9-12/14-18）价格"
-    },
-    {
-      "slug": "deepseek-official-api--deepseek-v4-flash-vision-exp--gu",
-      "planSlug": "deepseek-official-api",
-      "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": "谷",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "unitPriceCnyPerM": 0.1444
-      },
-      "pricing": {
-        "currency": "¥",
-        "inputPerM": 1.5,
-        "cachePerM": 0.05,
-        "outputPerM": 4.5,
-        "inputCnyPerM": 1.5,
-        "cacheCnyPerM": 0.05,
-        "outputCnyPerM": 4.5
-      },
-      "note": "与 V4-Flash 同价；空闲时段价格，为高峰的一半"
-    },
-    {
-      "slug": "deepseek-official-api--deepseek-v4-flash-vision-exp--feng",
-      "planSlug": "deepseek-official-api",
-      "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": "峰",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "unitPriceCnyPerM": 0.2888
-      },
-      "pricing": {
-        "currency": "¥",
-        "inputPerM": 3.0,
-        "cachePerM": 0.1,
-        "outputPerM": 9.0,
-        "inputCnyPerM": 3.0,
-        "cacheCnyPerM": 0.1,
-        "outputCnyPerM": 9.0
-      },
-      "note": "与 V4-Flash 同价；高峰时段价格"
+      "note": "API 模型名 deepseek-flash；高峰时段（周一~五 9-12/14-18）价格；旧模型名 deepseek-v4-flash、deepseek-v4-flash-vision-exp 同样由本模型提供服务并按本价格计费"
     },
     {
       "slug": "deepseek-official-api--deepseek-v4-pro-0813--gu",
@@ -11803,7 +15116,7 @@
         "cacheCnyPerM": 0.15,
         "outputCnyPerM": 13.5
       },
-      "note": "空闲时段价格，为高峰的一半（高峰 9.0/0.30/27.0）"
+      "note": "空闲时段价格，为高峰的一半（高峰 9.0/0.30/27.0）；北京时间 2026-09-14 12:00 后请求路由到 V4.1 Flash 并按 Flash 价格计费"
     },
     {
       "slug": "deepseek-official-api--deepseek-v4-pro-0813--feng",
@@ -11825,7 +15138,7 @@
         "cacheCnyPerM": 0.3,
         "outputCnyPerM": 27.0
       },
-      "note": "高峰时段（周一~五 9-12/14-18）价格"
+      "note": "高峰时段（周一~五 9-12/14-18）价格；北京时间 2026-09-14 12:00 后请求路由到 V4.1 Flash 并按 Flash 价格计费"
     },
     {
       "slug": "gongji-api--glm-5-3-flash",

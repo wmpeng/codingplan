@@ -13,6 +13,15 @@
       ]
     },
     {
+      "id": "deepseek-v4-1-flash",
+      "title": "DeepSeek V4.1 Flash",
+      "kind": "single",
+      "enabled": true,
+      "modelSlugs": [
+        "deepseek-v4-1-flash"
+      ]
+    },
+    {
       "id": "glm-5-3-flash",
       "title": "GLM 5.3 Flash",
       "kind": "single",
@@ -36,6 +45,7 @@
       "kind": "multi",
       "enabled": true,
       "modelSlugs": [
+        "deepseek-v4-1-flash",
         "deepseek-v4-flash-0731",
         "glm-5-3-flash",
         "gpt-5-6-luna"
