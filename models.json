@@ -1793,6 +1793,16 @@
       }
     },
     {
+      "slug": "ling-3-0-flash-sante",
+      "name": "Ling-3.0-Flash-Sante",
+      "multimodal": "unknown",
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
       "slug": "longcat-2-0",
       "name": "LongCat-2.0",
       "multimodal": false,
