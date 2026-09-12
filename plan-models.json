@@ -4687,7 +4687,7 @@
         "cacheCnyPerM": 0.0,
         "outputCnyPerM": 0.0
       },
-      "note": "官方上下文上限 262K；当前免费，每日最多 100 次请求；请求上限不是 Credits 或 Token 额度，官方未公布活动结束日期；套餐页当前列为免费；每日请求上限不换算为 Credits 或 Token，用量字段保持未知"
+      "note": "官方上下文上限 262K；免费，每日最多 100 次请求；官方未公布活动结束日期"
     },
     {
       "slug": "commandcode-go--hy4-preview",
@@ -5882,7 +5882,7 @@
         "cacheCnyPerM": 0.0,
         "outputCnyPerM": 0.0
       },
-      "note": "官方上下文上限 262K；当前免费，每日最多 100 次请求；请求上限不是 Credits 或 Token 额度，官方未公布活动结束日期；套餐页当前列为免费；每日请求上限不换算为 Credits 或 Token，用量字段保持未知"
+      "note": "官方上下文上限 262K；免费，每日最多 100 次请求；官方未公布活动结束日期"
     },
     {
       "slug": "commandcode-goat--hy4-preview",
@@ -7227,7 +7227,7 @@
         "cacheCnyPerM": 0.0,
         "outputCnyPerM": 0.0
       },
-      "note": "官方上下文上限 262K；当前免费，每日最多 100 次请求；请求上限不是 Credits 或 Token 额度，官方未公布活动结束日期；套餐页当前列为免费；每日请求上限不换算为 Credits 或 Token，用量字段保持未知"
+      "note": "官方上下文上限 262K；免费，每日最多 100 次请求；官方未公布活动结束日期"
     },
     {
       "slug": "commandcode-pro--hy4-preview",
