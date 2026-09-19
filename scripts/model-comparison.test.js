@@ -108,6 +108,30 @@ test('monthly package price filter uses a logarithmic dual-slider range', () => 
   }), [points[0]]);
 });
 
+test('shared monthly budget accepts a single lower or upper bound', () => {
+  assert.deepEqual(filterPoints(points, {
+    multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '',
+    monthlyPriceMin: null, monthlyPriceMax: 90
+  }), [points[2]]);
+  assert.deepEqual(filterPoints(points, {
+    multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '',
+    monthlyPriceMin: 90, monthlyPriceMax: null
+  }), [points[0]]);
+});
+
+test('all-model matching keeps rows only within the same visible platform and plan', () => {
+  const rows = [
+    { slug: 'a1', platformSlug: 'p', planSlug: 'plan-a', billingMode: 'subscription', modelSlug: 'm1' },
+    { slug: 'a2', platformSlug: 'p', planSlug: 'plan-a', billingMode: 'subscription', modelSlug: 'm2' },
+    { slug: 'b1', platformSlug: 'p', planSlug: 'plan-b', billingMode: 'subscription', modelSlug: 'm1' }
+  ];
+  assert.deepEqual(filterPoints(rows, {
+    platforms: new Set(['p']), models: new Set(['m1', 'm2']),
+    platformsSpecified: true, modelsSpecified: true, modelMatch: 'all',
+    multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: ''
+  }).map(row => row.slug), ['a1', 'a2']);
+});
+
 test('unknown modality only appears in all', () => {
   assert.equal(filterPoints(points, { multimodal: 'text', aaScoreMin: '', deepSWEScoreMin: '' }).includes(points[2]), false);
   assert.equal(filterPoints(points, { multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '' }).includes(points[2]), true);
@@ -345,6 +369,13 @@ test('comparison table rows format subscription and API semantics', () => {
   assert.match(subscription, />52</);
   assert.match(subscription, /41 ±3/);
   assert.match(subscription, /按官方额度推算/);
+
+  const usdSubscription = comparisonTableRowHtml({
+    slug: 'usd-sub', billingMode: 'subscription', platformName: '平台B', planName: 'Go',
+    originalMonthlyFee: 10, originalCurrency: '$', monthlyFeeCny: 68,
+    relationLabel: 'Model B', unitPriceCnyPerM: 1
+  });
+  assert.match(usdSubscription, /\$10（约 ¥68） \/ 月/);
 
   const api = comparisonTableRowHtml({
     slug: 'api', billingMode: 'payg', platformName: 'DeepSeek', planName: '按量 API',

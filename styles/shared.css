@@ -1,5 +1,16 @@
 /* ── 公共基础样式，index.html 和 tools.html 共用 ── */
 
+.platform-guide-entry { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin: 18px 0 24px; font-size: 13px; }
+.platform-guide-entry > span { color: #59697b; }
+.platform-guide-entry a, .platform-guide-link { color: #075f88; text-decoration: none; font-weight: 600; }
+.platform-guide-entry a { padding: 10px 0; }
+.platform-guide-entry a:hover, .platform-guide-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.platform-card-links { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+.platform-card-links .platform-card-hint { margin: 0; }
+.platform-card-links .platform-guide-link { padding: 10px 0; font-size: 13px; }
+.platform-detail-title-row .platform-guide-link { font-size: 13px; padding: 10px 0; }
+.platform-guide-entry a:focus-visible, .platform-guide-link:focus-visible { outline: 3px solid #0b68d1; outline-offset: 3px; }
+
 * {
     margin: 0;
     padding: 0;

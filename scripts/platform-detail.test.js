@@ -111,7 +111,8 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('¥4.8'));
     assert.ok(html.includes('官方价格的 8 折'));
     assert.ok(html.includes('在额度/价格对比中查看'));
-    assert.ok(html.includes('view=usage'));
+    assert.ok(html.includes('href="/pricing/"'));
+    assert.ok(!html.includes('view=usage'));
     assert.ok(!html.includes('data-section="plans"'));
     const dimsAt = html.indexOf('data-section="dimensions"');
     const apiAt = html.indexOf('data-section="api-pricing"');

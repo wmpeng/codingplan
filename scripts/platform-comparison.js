@@ -624,7 +624,7 @@
           selectedIds: initial,
           capacity,
           onConfirm: setSelection,
-          onCancel: required ? () => { window.location.href = 'index.html?view=platforms'; } : null
+          onCancel: required ? () => { window.location.href = '/platforms/'; } : null
         });
       }
 

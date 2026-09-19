@@ -1,0 +1,81 @@
+.homepage-unified-active #platformTagBar,
+.homepage-unified-active #plansTableSection > .filter-bar {
+  display: none;
+}
+
+.main-view-full-link {
+  color: #3157c8;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.main-view-full-link:hover,
+.main-view-full-link:focus-visible {
+  text-decoration: underline;
+}
+
+.homepage-unified-active .main-view-shell > .filter-state-bar {
+  margin-bottom: 12px;
+}
+
+.homepage-unified-active .usage-view > .usage-filters,
+.homepage-unified-active #view-monitor .monitor-toolbar {
+  display: none;
+}
+
+.homepage-unified-active .filter-state-bar {
+  background: rgba(255, 255, 255, .96);
+}
+
+.homepage-unified-active .filter-state-hint {
+  margin: 9px 2px 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.homepage-unified-active .filter-subgroup {
+  grid-column: span 2;
+  border: 1px solid var(--tool-line, #e2e8f0);
+  border-radius: 10px;
+  padding: 9px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.homepage-unified-active .filter-subgroup strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #334155;
+}
+
+.homepage-unified-active .filter-subgroup label,
+.homepage-unified-active .filter-range {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 5px 0;
+}
+
+.homepage-unified-active .filter-subgroup label {
+  display: inline-flex;
+  margin-right: 10px;
+}
+
+.homepage-unified-active .filter-range span:first-child {
+  min-width: 105px;
+}
+
+.homepage-unified-active .filter-range input {
+  width: 82px;
+  box-sizing: border-box;
+  border: 1px solid var(--tool-line, #e2e8f0);
+  border-radius: 7px;
+  padding: 5px 6px;
+}
+
+@media (max-width: 800px) {
+  .homepage-unified-active .filter-subgroup { grid-column: span 1; }
+}

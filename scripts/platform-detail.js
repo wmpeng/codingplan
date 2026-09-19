@@ -106,7 +106,7 @@
       `<h3 id="platformDetailApiPricingHeading" class="platform-detail-section-title">按量 API 定价</h3>` +
       `<p class="platform-detail-api-unit">单位：每百万 Token；综合价按站点统一工作负载计算</p>` +
       content +
-      `<a class="platform-detail-avail-link" href="index.html?view=usage">在额度/价格对比中查看 →</a>` +
+      `<a class="platform-detail-avail-link" href="/pricing/">在额度/价格对比中查看 →</a>` +
       `</section>`
     );
   }
@@ -267,7 +267,7 @@
       (platform && platform.monitorSlug && String(platform.monitorSlug).trim()) ||
       (platform && platform.name) ||
       '';
-    const href = `index.html?view=monitor&platform=${encodeURIComponent(slug)}`;
+    const href = `/monitor/?platform=${encodeURIComponent(slug)}`;
 
     return (
       `<section class="platform-detail-section" data-section="availability" aria-labelledby="platformDetailAvailHeading">` +
@@ -423,6 +423,7 @@
       `<h2 id="platformDetailTitle" class="platform-detail-title">${name}</h2>` +
       pinHtml +
       actionLink +
+      (PlatformCatalog.getPlatformGuideUrl(platformId) ? `<a class="platform-guide-link" href="${esc(PlatformCatalog.getPlatformGuideUrl(platformId))}">查看完整介绍 →</a>` : '') +
       `</div>` +
       `<div class="platform-detail-meta">` +
       `<span class="platform-detail-rating" aria-label="${rating > 0 ? `${rating} 星` : '待评定'}">${rating > 0 ? stars : '待评定'}</span>` +

@@ -43,6 +43,12 @@
     return qs ? `${pathname}?${qs}` : pathname || '?';
   }
 
+  function readPlanPlatform(search, platforms) {
+    const params = new URLSearchParams(search || '');
+    if (params.get('view') !== 'plans') return null;
+    return (platforms || []).find(p => p.slug === params.get('platform') && p.catalogVisible !== false) || null;
+  }
+
   function isPlainPrimaryClick(event) {
     if (!event) return false;
     if (typeof event.button === 'number' && event.button !== 0) return false;
@@ -160,6 +166,7 @@
 
   return {
     MAIN_VIEW_KEYS,
+    readPlanPlatform,
     MAIN_VIEW_LABELS,
     normalizeMainView,
     readMainViewFromSearch,

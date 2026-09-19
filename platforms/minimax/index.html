@@ -1,0 +1,98 @@
+<!-- Generated platform guide; edit scripts/codingplan/platform_pages/content instead. -->
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MiniMax Token Plan：套餐价格、模型额度与接入指南 - Coding Plan</title>
+  <meta name="description" content="了解 MiniMax Token Plan 的新 Plus、新 Max、新 Ultra 套餐，查看价格、支持模型、实测用量口径和接入要点，判断是否适合自己的编程与 Agent 工作流。">
+  <link rel="canonical" href="https://vibecoding.dreamfree.space/platforms/minimax/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="Coding Plan">
+  <meta property="og:title" content="MiniMax Token Plan：套餐价格、模型额度与接入指南 - Coding Plan">
+  <meta property="og:description" content="了解 MiniMax Token Plan 的新 Plus、新 Max、新 Ultra 套餐，查看价格、支持模型、实测用量口径和接入要点，判断是否适合自己的编程与 Agent 工作流。">
+  <meta property="og:url" content="https://vibecoding.dreamfree.space/platforms/minimax/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MiniMax Token Plan：套餐价格、模型额度与接入指南 - Coding Plan">
+  <meta name="twitter:description" content="了解 MiniMax Token Plan 的新 Plus、新 Max、新 Ultra 套餐，查看价格、支持模型、实测用量口径和接入要点，判断是否适合自己的编程与 Agent 工作流。">
+  <link rel="icon" href="/favicon.ico?v=260610">
+  <link rel="stylesheet" href="/styles/shared.css?v=260918a">
+  <link rel="stylesheet" href="/styles/platform-guide.css?v=38b7a33252">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://vibecoding.dreamfree.space/platforms/minimax/","url":"https://vibecoding.dreamfree.space/platforms/minimax/","name":"MiniMax Token Plan：套餐价格、模型额度与接入指南 - Coding Plan","description":"了解 MiniMax Token Plan 的新 Plus、新 Max、新 Ultra 套餐，查看价格、支持模型、实测用量口径和接入要点，判断是否适合自己的编程与 Agent 工作流。","inLanguage":"zh-CN","datePublished":"2026-09-17","dateModified":"2026-09-17","isPartOf":{"@type":"WebSite","name":"Coding Plan","url":"https://vibecoding.dreamfree.space/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Coding Plan","item":"https://vibecoding.dreamfree.space/"},{"@type":"ListItem","position":2,"name":"平台介绍","item":"https://vibecoding.dreamfree.space/platforms/"},{"@type":"ListItem","position":3,"name":"MiniMax Token Plan","item":"https://vibecoding.dreamfree.space/platforms/minimax/"}]}]}</script>
+</head>
+<body class="platform-guide">
+  <a class="guide-skip" href="#guide-content">跳到介绍正文</a>
+  <div class="guide-shell">
+    <nav class="guide-breadcrumb" aria-label="面包屑"><a href="/">Coding Plan</a><span>/</span><a href="/platforms/">平台介绍</a><span>/</span><span aria-current="page">MiniMax Token Plan</span></nav>
+    <header class="guide-hero">
+      <div class="guide-hero-copy">
+        <p class="guide-eyebrow">平台介绍 · 开放购买</p>
+        <h1>MiniMax Token Plan</h1>
+        <p class="guide-lead">以 MiniMax 模型为主的个人订阅服务。它适合日常编程助手、Agent、酒馆和 Subagent 等高频场景；选择档位时要同时看 M3 的用量参考、五小时与周窗口，以及自己是否需要多模态输入。</p>
+        <div class="guide-actions"><a class="guide-button" href="/plans/?platform=minimax">查看套餐对比 →</a><a class="guide-button secondary" href="https://platform.minimaxi.com/subscribe/token-plan">查看官网</a></div>
+        <p class="guide-dates">介绍更新 <time datetime="2026-09-17">2026-09-17</time><span>·</span>套餐与模型记录 <time datetime="2026-09-01">2026-09-01</time></p>
+      </div>
+      <div class="guide-monogram" aria-hidden="true">M3</div>
+    </header>
+    <div class="guide-layout">
+      <nav class="guide-toc" aria-label="本页目录"><p>本页内容</p><a href="#overview"><span>01</span>先看是否适合自己</a><a href="#plans"><span>02</span>套餐与价格</a><a href="#models"><span>03</span>支持哪些模型</a><a href="#credits"><span>04</span>用量和额度怎么理解</a><a href="#tools"><span>05</span>接入工具与使用边界</a><a href="#before-buying"><span>06</span>MiniMax 选购时容易混淆的地方</a><a href="#related"><span>07</span>继续比较</a><a href="#sources"><span>08</span>官方资料与记录说明</a></nav>
+      <main id="guide-content" class="guide-content"><section id="overview" class="guide-section"><h2>先看是否适合自己</h2><p>MiniMax Token Plan 是以 MiniMax 模型为主的个人订阅，当前收录新 Plus、新 Max、新 Ultra 三档。现有平台资料把它定位为额度较高、可随时购买、适合日常编程助手与 Agent 任务的服务。</p>
+<ul>
+<li><strong>可以优先考虑</strong>：日常需要持续使用编程助手，或会运行 Agent、酒馆、Subagent，希望把预算固定在月度订阅内。</li>
+<li><strong>先比较再决定</strong>：希望在同一个订阅中频繁切换多家模型，或主要为自建应用购买通用 API 服务。</li>
+<li><strong>购买前先确认</strong>：所用客户端是否支持 MiniMax Token Plan 的接入方式，常用模型是否在当前套餐中，以及自己的任务会先触及五小时还是周窗口。</li>
+</ul>
+<blockquote>
+<p>本页沿用本站现有平台、套餐、模型和 PlanModel 记录。介绍更新时间与数据记录日期分开显示；实测用量是特定负载下的参考，不是官方承诺的固定 Token 包。</p>
+</blockquote>
+</section>
+<section id="plans" class="guide-section"><h2>套餐与价格</h2><div class="guide-plan-grid"><article class="guide-plan">
+    <h3>新Plus</h3><p class="guide-price">¥49<small>/ 月</small></p>
+    <dl><div><dt>首月优惠</dt><dd>¥44.1</dd></div><div><dt>按季支付</dt><dd>未单列</dd></div><div><dt>按年支付</dt><dd>¥490</dd></div></dl>
+
+    <p class="guide-plan-advice">适合先把 M3 接入日常工作流，观察真实项目的消耗和任务完成质量，再决定是否升级。</p>
+  </article><article class="guide-plan">
+    <h3>新Max</h3><p class="guide-price">¥119<small>/ 月</small></p>
+    <dl><div><dt>首月优惠</dt><dd>¥107.1</dd></div><div><dt>按季支付</dt><dd>未单列</dd></div><div><dt>按年支付</dt><dd>¥1,190</dd></div></dl>
+
+    <p class="guide-plan-advice">适合每天持续使用、容易触及 Plus 窗口的用户；先确认增加的是可用量，而不是单纯追求更高档位。</p>
+  </article><article class="guide-plan">
+    <h3>新Ultra</h3><p class="guide-price">¥469<small>/ 月</small></p>
+    <dl><div><dt>首月优惠</dt><dd>¥422.1</dd></div><div><dt>按季支付</dt><dd>未单列</dd></div><div><dt>按年支付</dt><dd>¥4,690</dd></div></dl>
+
+    <p class="guide-plan-advice">适合长时间、高频率或多项目并行的重度工作流。购买前先确认自己的实际消耗足以用到更大额度。</p>
+  </article></div><p class="guide-muted">首月、季付与年付只展示已收录价格；“未单列”不表示免费。购买资格、优惠和续费金额以订购页面为准。</p><p>三档套餐的主要差别是价格和可用量级。先用新 Plus 完成几轮真实项目任务，再根据五小时和周窗口的实际消耗决定是否升级；额度倍数不应直接理解为速度倍数或并发保证。</p>
+</section>
+<section id="models" class="guide-section"><h2>支持哪些模型</h2><p>本站收录 3 个支持模型；同一模型的不同计费档位合并展示。</p><div class="guide-table-wrap" tabindex="0" role="region" aria-label="套餐支持模型"><table><caption>套餐支持模型</caption><thead><tr><th scope="col">模型</th><th scope="col">支持套餐</th></tr></thead><tbody><tr><th scope="row">MiniMax-M3</th><td>新Plus、新Max、新Ultra</td></tr><tr><th scope="row">MiniMax-M2.7</th><td>新Plus、新Max、新Ultra</td></tr><tr><th scope="row">MiniMax-M2.5</th><td>新Plus、新Max、新Ultra</td></tr></tbody></table></div><p class="guide-muted">模型记录日期：2026-09-01。可选名称与实际服务版本可能不同，使用前请核对官方说明。</p><p>本站当前记录的三款模型都出现在三档套餐的支持关系中。MiniMax-M3 在模型资料中标记为支持文本、图片和视频输入；MiniMax-M2.5 与 MiniMax-M2.7 当前记录为文本输入。支持关系回答的是“套餐可以选择哪些模型”，不代表每个模型都有独立公开的 Token 用量。</p>
+</section>
+<section id="credits" class="guide-section"><h2>用量和额度怎么理解</h2><div class="guide-table-wrap" tabindex="0" role="region" aria-label="模型使用额度（不是订阅价格）"><table><caption>模型使用额度（不是订阅价格）</caption><thead><tr><th scope="col">模型</th><th scope="col">每 5 小时</th><th scope="col">每周</th><th scope="col">每月</th></tr></thead><tbody><tr><th scope="row">MiniMax-M3 · 新Plus</th><td>42,000,000 Token</td><td>420,000,000 Token</td><td>1,680,000,000 Token</td></tr><tr><th scope="row">MiniMax-M3 · 新Max</th><td>126,000,000 Token</td><td>1,260,000,000 Token</td><td>5,040,000,000 Token</td></tr><tr><th scope="row">MiniMax-M3 · 新Ultra</th><td>497,000,000 Token</td><td>4,970,000,000 Token</td><td>19,880,000,000 Token</td></tr></tbody></table></div><p>当前可计算的用量记录来自 MiniMax-M3 的个人实测和套餐倍率换算：新 Plus 是基准，新 Max 按 3 倍，新 Ultra 按约 11.83 倍。数据采用特定缓存命中率和输出占比的工作负载，适合横向比较量级，不应当作官方精确额度或所有任务都能复现的固定请求数。</p>
+<p>MiniMax-M2.5 和 MiniMax-M2.7 只确认了套餐支持关系，当前没有可靠的独立 Token 用量，因此保留未知。多模态输入、长上下文、输出比例和连续 Agent 运行都会影响实际消耗。</p>
+<p>本站的<a href="/pricing/">额度与价格对比</a>提供统一条件下的参考。五小时、每周和每月是不同窗口，短时间集中运行与跨天持续使用可能触发不同限制；具体余额和刷新时间以官方账户页面为准。</p>
+</section>
+<section id="tools" class="guide-section"><h2>接入工具与使用边界</h2><p>MiniMax Token Plan 可用于官方 MiniMax Code，也可以按官方说明获取对应的 Token Plan Key，接入支持的 OpenAI 兼容工具。实际配置时要区分 Token Plan 端点、API 端点和普通 API 余额，不能因为客户端接受 API Key 就默认请求会消耗订阅额度。</p>
+<p>建议按以下顺序检查：</p>
+<ol>
+<li>确认账号、套餐和密钥属于同一 MiniMax 产品线。</li>
+<li>按官方当前说明配置端点、模型 ID 和鉴权方式。</li>
+<li>先运行一个小任务，检查用量是否记入预期套餐。</li>
+<li>确认正常后，再放大到长上下文、多模态和连续 Agent 任务。</li>
+</ol>
+<p>如果是为自己的网站、应用或其他服务选购模型，需要另行确认 API 的计费方式与服务条款；不要把个人 Token Plan 订阅当成所有调用场景的通用余额。</p>
+</section>
+<section id="before-buying" class="guide-section"><h2>MiniMax 选购时容易混淆的地方</h2><h3>M3、M2.7 与 M2.5 的用量不能混看</h3>
+<p>三款模型都在现有套餐支持关系中，但当前只有 M3 有可展示的实测用量。M2.7 和 M2.5 的“支持”不等于已经有可独立换算的额度，不能用 M3 的 Token 数字替代它们。</p>
+<h3>实测参考不等于官方额度</h3>
+<p>本站的 M3 数值来自个人实测，并按现有套餐比例推导 Max 与 Ultra。它用于统一条件下的比较，不能覆盖所有缓存命中率、输出长度、上下文规模和多模态任务；购买前应以官方用量页为准。</p>
+<h3>订阅与 API 产品线要分开</h3>
+<p>MiniMax 同时提供 Token Plan 和 API 服务。若目标是程序化调用、自建应用或按 API 价格控制成本，应单独核对 API 产品的模型、价格和限流规则；不要只看 Token Plan 的月费。</p>
+</section>
+<section id="related" class="guide-section"><h2>继续比较</h2><p>如果希望一个订阅里切换多家模型，可以继续了解 OpenCode Go；如果已经确定主要使用 MiniMax 模型，则回到套餐表比较 M3 的工作量和自己的窗口消耗。</p>
+<div class="guide-related"><a class="guide-related-card" href="/platforms/opencode/"><strong>OpenCode Go</strong><span>了解 OpenCode Go 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。</span><span>阅读平台介绍 →</span></a></div><ul class="guide-article-links"><li><a href="/articles/plan_comparisons/20260824/index.html">AI Coding Plan 与 API 平台对比：智谱、MiniMax、DeepSeek 视觉版和 OpenCode 怎么选</a></li><li><a href="/articles/model_comparisons/20260907/index.html">主流大模型能力对比：综合能力与编程表现</a></li><li><a href="/articles/news/20260602_minimax_m3/index.html">MiniMax M3：前沿 Coding 能力与原生多模态</a></li></ul></section>
+<section id="sources" class="guide-section"><h2>官方资料与记录说明</h2><ul class="guide-sources"><li><a href="https://platform.minimaxi.com/subscribe/token-plan">MiniMax Token Plan 官方订阅页</a><span>查看当前套餐价格、订阅入口、支持范围和用量说明。</span></li><li><a href="https://www.minimaxi.com/models/text/m3">MiniMax M3 官方模型页</a><span>核对 M3 的模型能力、上下文与多模态说明。</span></li><li><a href="https://www.minimaxi.com/blog/minimax-m3">MiniMax M3 官方博客</a><span>了解 M3 在 MiniMax Code、Token Plan 和 API 中的官方发布信息。</span></li></ul><p>套餐价格、模型支持和 M3 用量参考采用本站当前收录资料，数据记录日期见页首。介绍中的选购建议由 Coding Plan 整理，不代表官方保证；历史文章保留各自日期下的比较结论。</p>
+</section></main>
+    </div>
+    <footer class="guide-footer"><p>价格、活动与可用模型可能变化，购买和接入前请核对官方页面。本站的选择建议不代表服务承诺。</p><div><a href="/platforms/">全部平台</a><a href="/plans/">套餐对比</a><a href="/">返回首页</a><a href="https://github.com/wmpeng/codingplan/issues">反馈资料问题</a></div></footer>
+  </div>
+</body>
+</html>

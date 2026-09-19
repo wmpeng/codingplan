@@ -571,6 +571,26 @@
 
         // 应用筛选
         function applyFilters() {
+            // 首页统一筛选器接管后，所有套餐视图都使用同一份标准化状态。
+            if (window.__codingplanUnifiedFiltersState && typeof CodingPlanFilters !== 'undefined') {
+                filteredPlans = CodingPlanFilters.filterPlans(allPlans, window.__codingplanUnifiedFiltersState, {
+                    usdToCnyRate: getUsdToCnyRate(),
+                    context: entityContext,
+                    platformCatalog: getPlatformCatalogConfig()
+                });
+                showingCount.textContent = filteredPlans.length;
+                totalCount.textContent = allPlans.length;
+                if (currentSort.column) {
+                    sortData(currentSort.column, currentSort.direction);
+                } else {
+                    filteredPlans = PlatformCatalog.sortItemsByPinned
+                        ? PlatformCatalog.sortItemsByPinned(filteredPlans, planPinnedIds, PlatformCatalog.getPlanRowPinId)
+                        : filteredPlans;
+                    renderTable();
+                }
+                refreshCompositePriceChart();
+                return;
+            }
             filteredPlans = allPlans.filter(plan => {
                 // 已下线筛选：默认隐藏已下线套餐
                 const showDiscontinued = document.getElementById('showDiscontinued').checked;
@@ -2253,6 +2273,30 @@
                 return;
             }
 
+            if (window.__codingplanUnifiedFiltersState && typeof CodingPlanFilters !== 'undefined') {
+                const filteredUnified = CodingPlanFilters.filterPlatforms(allPlatforms, window.__codingplanUnifiedFiltersState, {
+                    platformCatalog: cat,
+                    context: entityContext,
+                    entityData: EntityData
+                });
+                const orderedUnified = PlatformCatalog.sortPlatformsByPinned
+                    ? PlatformCatalog.sortPlatformsByPinned(filteredUnified, platformPinnedIds)
+                    : filteredUnified;
+                const grid = document.getElementById('platformCardGrid');
+                const empty = document.getElementById('platformCatalogEmpty');
+                const showingEl = document.getElementById('platformShowingCount');
+                const totalEl = document.getElementById('platformTotalCount');
+                if (grid) grid.innerHTML = orderedUnified.map(buildPlatformCardHtml).join('');
+                if (empty) empty.hidden = orderedUnified.length > 0;
+                if (showingEl) showingEl.textContent = String(orderedUnified.length);
+                if (totalEl) totalEl.textContent = String(allPlatforms.length);
+                if (typeof PlatformDetail !== 'undefined' && PlatformDetail.isOpen()) {
+                    const openId = PlatformDetail.getOpenPlatformId();
+                    if (!orderedUnified.some(platform => platform.slug === openId)) PlatformDetail.close();
+                }
+                return;
+            }
+
             const filterOpts = {
                 selectedLabels: platformSelectedLabels,
                 platformStatusMax,
@@ -2309,6 +2353,17 @@
         }
 
         function focusVendorInPlansTable(vendorName) {
+            // The homepage now owns one shared filter state. A modal's old
+            // vendor checkbox path cannot update that state safely, so keep
+            // the deep-link contract and open the independent full plans page
+            // when the platform is known.
+            if (window.__codingplanUnifiedFiltersState && Array.isArray(allPlatforms)) {
+                const platform = allPlatforms.find(item => item && item.name === vendorName);
+                if (platform && platform.slug) {
+                    window.location.href = `/plans/?platform=${encodeURIComponent(platform.slug)}`;
+                    return;
+                }
+            }
             if (window.__mainViewsController && typeof window.__mainViewsController.setView === 'function') {
                 window.__mainViewsController.setView('plans', { reason: 'jump-plans', scroll: true });
             }
@@ -2360,10 +2415,13 @@
                 document.head.appendChild(link);
             }
             if (typeof window.mountModelComparisonView !== 'function') {
-                await loadScriptOnce('scripts/model-comparison.js?v=260908a');
+                await loadScriptOnce('scripts/model-comparison.js?v=260918a');
             }
             if (typeof window.mountModelComparisonView === 'function') {
-                await window.mountModelComparisonView(root);
+                await window.mountModelComparisonView(root, {
+                    mode: 'home',
+                    filterState: window.__codingplanUnifiedFiltersState || null
+                });
             }
         }
 
@@ -2378,18 +2436,40 @@
                 document.head.appendChild(link);
             }
             if (typeof window.mountMonitorBoard !== 'function') {
-                await loadScriptOnce('scripts/monitor-board.js?v=260725i');
+                await loadScriptOnce('scripts/monitor-board.js?v=260918a');
             }
             if (typeof window.mountMonitorBoard === 'function') {
                 const platform = new URLSearchParams(location.search).get('platform') || '';
                 await window.mountMonitorBoard(root, {
                     configUrl: 'monitor/monitor-config.json',
-                    initialPlatform: platform
+                    initialPlatform: platform,
+                    filterState: window.__codingplanUnifiedFiltersState || null,
+                    catalogContext: window.codingplanEntityContext || null
                 });
             }
         }
 
+        let linkedPlanPlatform = null;
         async function onMainViewChange(view) {
+            if (view === 'plans' && typeof MainViews.readPlanPlatform === 'function') {
+                const platform = MainViews.readPlanPlatform(location.search, allPlatforms);
+                if (platform && linkedPlanPlatform !== platform.slug) {
+                    resetAllFilters();
+                    selectedVendors = new Set([platform.name]);
+                    tempSelectedVendors = new Set([platform.name]);
+                    document.querySelectorAll('#vendorCheckboxes input').forEach(cb => { cb.checked = cb.value === platform.name; });
+                    updateVendorCount();
+                    applyFilters();
+                    linkedPlanPlatform = platform.slug;
+                } else if (!platform && linkedPlanPlatform) {
+                    selectedVendors = new Set();
+                    tempSelectedVendors = new Set();
+                    document.querySelectorAll('#vendorCheckboxes input').forEach(cb => { cb.checked = false; });
+                    updateVendorCount();
+                    applyFilters();
+                    linkedPlanPlatform = null;
+                }
+            }
             if (typeof PlatformDetail !== 'undefined' && PlatformDetail.isOpen && PlatformDetail.isOpen()) {
                 PlatformDetail.close();
             }
@@ -2663,6 +2743,17 @@
                 initMainViewsShell();
                 refreshCompositePriceChart();
                 window.__codingplanCatalogReady = true;
+                window.__codingplanHomeApi = {
+                    getContext: () => entityContext,
+                    getPlatforms: () => allPlatforms.slice(),
+                    getPlans: () => allPlans.slice(),
+                    setUnifiedFilters(state) {
+                        window.__codingplanUnifiedFiltersState = state;
+                        applyFilters();
+                        applyPlatformFilters();
+                    }
+                };
+                window.dispatchEvent(new CustomEvent('codingplan:catalog-ready'));
             } catch (error) {
                 window.__codingplanBootError = String(error && error.message ? error.message : error);
                 console.error('首页启动失败:', error);
@@ -2672,6 +2763,17 @@
                     }
                     initPlatformCatalog();
                     window.__codingplanCatalogReady = true;
+                    window.__codingplanHomeApi = {
+                        getContext: () => entityContext,
+                        getPlatforms: () => allPlatforms.slice(),
+                        getPlans: () => allPlans.slice(),
+                        setUnifiedFilters(state) {
+                            window.__codingplanUnifiedFiltersState = state;
+                            applyFilters();
+                            applyPlatformFilters();
+                        }
+                    };
+                    window.dispatchEvent(new CustomEvent('codingplan:catalog-ready'));
                 } catch (catalogError) {
                     window.__codingplanBootError = String(catalogError && catalogError.message ? catalogError.message : catalogError);
                     console.error('平台目录兜底启动失败:', catalogError);

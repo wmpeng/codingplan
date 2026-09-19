@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const {
   normalizeMainView,
+  readPlanPlatform,
   readMainViewFromSearch,
   buildMainViewUrl,
   applyMainViewDom,
@@ -12,6 +13,14 @@ test('normalizeMainView', () => {
   assert.equal(normalizeMainView('usage'), 'usage');
   assert.equal(normalizeMainView('nope'), 'platforms');
   assert.equal(normalizeMainView(''), 'platforms');
+});
+
+test('平台套餐深链按 slug 筛选，忽略错误视图、名称与隐藏平台', () => {
+  const platforms = [{ slug: 'zhipu', name: '智谱AI' }, { slug: 'hidden', catalogVisible: false }];
+  assert.equal(readPlanPlatform('?view=plans&platform=zhipu', platforms), platforms[0]);
+  for (const search of ['?view=usage&platform=zhipu', '?view=plans&platform=智谱AI', '?view=plans&platform=hidden', '?view=plans&platform=missing']) {
+    assert.equal(readPlanPlatform(search, platforms), null);
+  }
 });
 
 test('isPlainPrimaryClick', () => {

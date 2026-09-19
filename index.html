@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="baidu-site-verification" content="codeva-LiaxYnxu2a" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="国内31大主流AI平台Coding Plan套餐对比工具，涵盖智谱AI、字节方舟、阿里百炼、MiniMax、Kimi、小米Mimo、讯飞星火、百度千帆、腾讯云、京东云、阶跃星辰、无问芯穹、联通云、天翼云、移动云等平台，价格、模型、请求数等详细信息，支持筛选排序，帮您选到最划算的套餐。涵盖DeepSeek V4，GLM-5.2，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型。">
-    <title>AI Coding Plan 平台评测与对比 - Coding Plan 对比工具</title>
+    <meta name="description" content="对比 AI 编程平台、套餐价格、额度、支持模型和可用性，先看精选结果，也可进入完整工具查看全部数据。">
+    <title>Coding Plan 对比：AI 编程平台、价格、套餐与可用性</title>
+    <link rel="canonical" href="https://vibecoding.dreamfree.space/">
     <link rel="icon" href="/favicon.ico?v=260610" type="image/x-icon">
-    <link rel="stylesheet" href="styles/shared.css?v=260725b">
+    <link rel="stylesheet" href="styles/shared.css?v=260918a">
     <link rel="stylesheet" href="styles/plan-usage.css?v=260725k">
     <link rel="stylesheet" href="styles/comparison-table.css?v=260902a">
     <link rel="stylesheet" href="styles/platform-comparison.css?v=260903a">
+    <link rel="stylesheet" href="styles/homepage-filters.css?v=260917a">
     <style>
         html,
         body {
@@ -4422,6 +4424,10 @@
             <div class="models" id="models">快速选出当下最适合的平台和使用方式。<a href="https://api.dreamfree.space/c/s/cpfeishulink" target="_blank" rel="noopener noreferrer">加群</a>参与讨论和获取最新消息</div>
         </div>
 
+        <!-- PLATFORM_GUIDES_START -->
+        <nav class="platform-guide-entry" aria-label="平台介绍"><span>平台介绍</span><a href="/platforms/command-code/">Command Code →</a><a href="/platforms/minimax/">MiniMax Token Plan →</a><a href="/platforms/opencode/">OpenCode Go →</a><a href="/platforms/zhipu/">智谱 GLM Coding Plan →</a><a href="/platforms/">全部介绍</a></nav>
+        <!-- PLATFORM_GUIDES_END -->
+
         <div class="hero-summary hero-summary--lede">
             <!-- ARTICLES_MODEL_FEATURE_START -->
             <article class="hero-summary-card hero-summary-card--reading">
@@ -4667,6 +4673,7 @@
             </section></div>
 
         <div class="main-view-shell" id="mainViewShell">
+        <div id="homepageUnifiedFiltersMount"></div>
         <nav class="main-view-tabs" id="mainViewTabs" role="tablist" aria-label="主内容切换">
             <a href="index.html" role="tab" data-main-view="platforms" aria-controls="view-platforms" aria-selected="true" class="is-active">平台对比</a>
             <a href="index.html?view=usage" role="tab" data-main-view="usage" aria-controls="view-usage" aria-selected="false">额度/价格对比</a>
@@ -4677,6 +4684,7 @@
             <div id="view-platforms" role="tabpanel" data-main-view-panel="platforms">
                 <div class="platform-catalog-intro-row">
                     <p class="main-view-intro">按标签与购买状态快速筛选平台，建立第一轮候选池。</p>
+                    <a class="main-view-full-link" href="/platforms/">查看完整平台中心 →</a>
                     <button type="button" class="platform-compare-launcher" id="platformCompareLauncher" hidden>
                         <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M8 4v16M16 4v16M4 8h16M4 16h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
                         <span>开始横向对比</span>
@@ -4694,12 +4702,12 @@
                 </div>
             </div>
             <div class="platform-card-grid" id="platformCardGrid"></div>
-            <p class="platform-catalog-empty" id="platformCatalogEmpty" hidden>无匹配平台，试试清空筛选。</p>
+            <p class="platform-catalog-empty" id="platformCatalogEmpty" hidden>无匹配平台；请查看上方生效限制，在对应选择器逐项清空或恢复默认。</p>
         </section>
 
             </div>
             <div id="view-plans" role="tabpanel" data-main-view-panel="plans" hidden>
-                <p class="main-view-intro">横向对比套餐价格、请求次数与模型支持，辅助选型与预算评估。</p>
+                <p class="main-view-intro">横向对比套餐价格、请求次数与模型支持，辅助选型与预算评估。 <a class="main-view-full-link" href="/plans/">查看完整套餐表 →</a></p>
 
         <section class="plans-table-section" id="plansTableSection">
         <!-- 顶部筛选栏 -->
@@ -4934,7 +4942,7 @@
                 </div>
             </div>
 
-            
+
             <!-- 模型筛选下拉 -->
             <div class="filter-dropdown">
                 <button class="filter-btn" id="modelBtn">
@@ -7839,13 +7847,16 @@
 
     <script src="monitor/monitor-config.js"></script>
     <script src="monitor/monitor-config.local.js"></script>
-    <script src="scripts/entity-data.js?v=260904a"></script>
-    <script src="scripts/platform-catalog.js?v=260902d"></script>
-    <script src="scripts/platform-detail.js?v=260904a"></script>
-    <script src="scripts/shared.js?v=260902a"></script>
-    <script src="scripts/platform-comparison.js?v=260904a"></script>
-    <script src="scripts/main-views.js?v=260902a"></script>
+    <script src="scripts/entity-data.js?v=260918a"></script>
+    <script src="scripts/filter-state.js?v=260917a"></script>
+    <script src="scripts/platform-pages.js?v=b5b0ec3644"></script>
+    <script src="scripts/platform-catalog.js?v=260915a"></script>
+    <script src="scripts/platform-detail.js?v=260915a"></script>
+    <script src="scripts/shared.js?v=260918a"></script>
+    <script src="scripts/platform-comparison.js?v=260918a"></script>
+    <script src="scripts/main-views.js?v=260915a"></script>
     <script src="scripts/plan-composite-price-chart.js?v=260904a"></script>
-    <script src="scripts/homepage.js?v=260908a"></script>
+    <script src="scripts/homepage.js?v=260918a"></script>
+    <script src="scripts/homepage-filters.js?v=260918a"></script>
 </body>
 </html>

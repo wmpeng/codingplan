@@ -6,7 +6,11 @@
 
 当前展示 **37 个平台、99 个在售订阅套餐、2 个按量 API、119 个模型和 1099 条套餐模型关系**。
 
-[在线平台对比](https://www.codingplan.fyi) · [额度/价格对比](https://www.codingplan.fyi/?view=usage) · [套餐对比](https://www.codingplan.fyi/?view=plans)
+[在线平台中心](https://www.codingplan.fyi/platforms/) · [额度/价格对比](https://www.codingplan.fyi/pricing/) · [套餐对比](https://www.codingplan.fyi/plans/) · [可用性看板](https://www.codingplan.fyi/monitor/)
+
+## 平台介绍
+
+[Command Code](https://vibecoding.dreamfree.space/platforms/command-code/) · [MiniMax Token Plan](https://vibecoding.dreamfree.space/platforms/minimax/) · [OpenCode Go](https://vibecoding.dreamfree.space/platforms/opencode/) · [智谱 GLM Coding Plan](https://vibecoding.dreamfree.space/platforms/zhipu/) · [全部介绍](https://vibecoding.dreamfree.space/platforms/)
 
 ## 目录
 
@@ -75,7 +79,7 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | [峰] | $20/月 | 526.39M | 1,315.96M | 2,631.9M | ¥0.0517/M | 计算 |
 | [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | [峰] | $10/月 | 225.59M | 563.98M | 1,128M | ¥0.0605/M | 计算 |
 
-还有 18 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/?view=usage)。
+还有 18 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/pricing/)。
 
 ### DeepSeek-V4.1-Flash
 
@@ -90,7 +94,7 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | [DeepSeek · 按量 API](https://platform.deepseek.com/) | [谷] | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M | 计算 |
 | [DeepSeek · 按量 API](https://platform.deepseek.com/) | [峰] | 入¥2 / 缓存¥0.04 / 出¥8 | - | - | - | ¥0.1773/M | 计算 |
 
-还有 2 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/?view=usage)。
+还有 2 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/pricing/)。
 
 ### GLM-5.3-Flash
 
@@ -105,7 +109,7 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | [字节·方舟 Agent Plan · Large](https://api.dreamfree.space/c/s/cpyqfangzhout) | - | ¥500/月 | 1,000M | 3,500M | 10,000M | ¥0.05/M | 计算 |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥0.32 / 缓存¥0.09 / 出¥1.12 | - | - | - | ¥0.1047/M | 计算 |
 
-还有 15 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/?view=usage)。
+还有 15 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/pricing/)。
 
 ### GPT-5.6-Luna
 
@@ -159,7 +163,7 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | [智谱国际版 · 新Lite](https://api.dreamfree.space/c/s/cpyqzai) | [谷] | $18/月 | 19.32M | 96.61M | 386.4M | ¥0.3169/M | 计算 |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥6.4 / 缓存¥1.6 / 出¥22.4 | - | - | - | ¥1.9428/M | 计算 |
 
-还有 15 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/?view=usage)。
+还有 15 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/pricing/)。
 
 ### Kimi-K3
 
@@ -174,7 +178,7 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | - | $10/月 | 7.88M | 19.69M | 39.4M | ¥1.7265/M | 计算 |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥16 / 缓存¥1.6 / 出¥80 | - | - | - | ¥2.7084/M | 计算 |
 
-还有 5 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/?view=usage)。
+还有 5 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/pricing/)。
 
 ## 平台对比
 
@@ -218,7 +222,7 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | 无问芯穹 | 已下线 | ⭐️ | - | - |
 | 天翼云 | 已下线 | ⭐️ | - | - |
 
-更详细的性价比、模型覆盖、稳定性评价和状态筛选见[在线平台对比](https://www.codingplan.fyi)。
+更详细的性价比、模型覆盖、稳定性评价和状态筛选见[在线平台中心](https://www.codingplan.fyi/platforms/)。
 
 ## 套餐概览
 
@@ -262,7 +266,7 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | 商汤·日日新 | 1 | ¥0/月 | DeepSeek-V4-Flash-0731、SenseNova 6.7 Flash-Lite、SenseNova U1 Fast |
 | 摩尔线程 | 1 | ¥0/月 | GLM-4.7 |
 
-全部价格、周期优惠、请求数、权益和备注见[在线套餐对比](https://www.codingplan.fyi/?view=plans)。
+全部价格、周期优惠、请求数、权益和备注见[在线套餐对比](https://www.codingplan.fyi/plans/)。
 
 ## 数据口径
 

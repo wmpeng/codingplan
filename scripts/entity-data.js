@@ -32,6 +32,7 @@
   }
 
   function platformModels(context, platformSlug) {
+    // 平台卡片与平台模型筛选也要覆盖按量 API；planTableVisible 只控制套餐表展示。
     return supportedModels(context, context.plans.filter(plan => plan.platformSlug === platformSlug && !plan.discontinued));
   }
 
@@ -162,11 +163,14 @@
         planSlug: plan.slug,
         modelSlug: model.slug,
         platformName: platform.name,
+        platformVisible: platform.catalogVisible !== false,
         planName: plan.comparisonName || plan.name,
         ...billingPresentation(model, relation),
         multimodal: model.multimodal,
         scores: comparisonScores(model.scores),
         billingMode,
+        discontinued: !!plan.discontinued,
+        planTableVisible: plan.planTableVisible !== false,
         actionUrl: plan.action || platform.action || null,
         originalMonthlyFee: billingMode === 'subscription' ? fee : undefined,
         originalCurrency: billingMode === 'subscription'

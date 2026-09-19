@@ -326,4 +326,10 @@ indexHtml = indexHtml.replace(
 );
 
 fs.writeFileSync(indexPath, indexHtml, 'utf8');
+const guideGenerator = path.resolve(rootDir, '../scripts/codingplan/platform_pages/generate.js');
+if (fs.existsSync(guideGenerator)) {
+    require(guideGenerator).generate();
+} else {
+    console.warn('独立网站 checkout：请在维护仓库运行平台介绍生成与检查。');
+}
 console.log(`index.html 默认内容已同步：${activePlans.length} 条在售套餐，${(config.updates || []).length} 条更新记录`);

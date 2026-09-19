@@ -9,7 +9,7 @@
       "dimensions": {
         "value": {
           "score": 4,
-          "reason": "新套餐价格翻倍，性价比有所下降，[查看套餐用量](index.html?view=plans)。"
+          "reason": "新套餐价格翻倍，性价比有所下降，[查看套餐用量](/plans/?platform=zhipu)。"
         },
         "models": {
           "score": 5,
@@ -321,7 +321,7 @@
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "性价比很高，[查看模型用量对比](index.html?view=plans)"
+          "reason": "性价比很高，[查看模型用量对比](/plans/?platform=bytedance-ark)"
         },
         "models": {
           "score": 5,

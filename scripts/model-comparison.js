@@ -71,14 +71,30 @@
         return new Set(DEFAULT_PLATFORM_SLUGS);
     }
 
-    function createDefaultFilterState(points) {
+    function createDefaultFilterState(points, options) {
         const availablePlatforms = new Set((points || []).map(getPointPlatformKey));
         const availableModels = new Set((points || []).map((point) => point.modelSlug));
+        const full = options && options.mode === 'full';
+        const configured = !full && root.CodingPlanFilters && typeof root.CodingPlanFilters.createDefaultState === 'function'
+            ? root.CodingPlanFilters.createDefaultState(root.appConfig || {})
+            : null;
+        const defaultPlatforms = configured && configured.platformSlugs !== null
+            ? configured.platformSlugs
+            : DEFAULT_PLATFORM_SLUGS;
+        const defaultModels = configured && configured.modelSlugs !== null
+            ? configured.modelSlugs
+            : DEFAULT_MODEL_SLUGS;
         return {
-            platforms: new Set([...getDefaultPlatformSelectionKeys()]
+            platforms: new Set((full ? [...availablePlatforms] : defaultPlatforms)
                 .filter((key) => availablePlatforms.has(key))),
-            models: new Set(DEFAULT_MODEL_SLUGS.filter((slug) => availableModels.has(slug))),
-            multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', monthlyPriceMin: null,
+        models: new Set((full ? [...availableModels] : defaultModels).filter((slug) => availableModels.has(slug))),
+        platformsSpecified: true,
+            modelsSpecified: true,
+            planSlugs: null,
+            planSlugsSpecified: false,
+            modelMatch: 'any',
+            includeDiscontinued: full ? true : !!(configured && configured.includeDiscontinued),
+        multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', monthlyPriceMin: null,
             monthlyPriceMax: null, soloColorKey: null, tokenUnit: 'yi'
         };
     }
@@ -109,14 +125,40 @@
         const state = filters || {};
         const platforms = state.platforms instanceof Set ? state.platforms : new Set(state.platforms || []);
         const models = state.models instanceof Set ? state.models : new Set(state.models || []);
+        const modelGroups = new Map();
+        if (state.modelMatch === 'all' && state.modelsSpecified) {
+            (points || []).forEach((point) => {
+                if (point.platformVisible === false || (point.planTableVisible === false && point.billingMode !== 'payg')) return;
+                if (state.includeDiscontinued === false && point.discontinued) return;
+                const key = `${getPointPlatformKey(point)}::${point.billingMode || ''}::${point.planSlug || ''}`;
+                if (!modelGroups.has(key)) modelGroups.set(key, new Set());
+                modelGroups.get(key).add(point.modelSlug);
+            });
+        }
         const aaScoreMin = Number(state.aaScoreMin);
         const deepSWEScoreMin = Number(state.deepSWEScoreMin);
         const hasAaScoreMin = state.aaScoreMin !== '' && state.aaScoreMin !== null && Number.isFinite(aaScoreMin);
         const hasDeepSWEScoreMin = state.deepSWEScoreMin !== '' && state.deepSWEScoreMin !== null && Number.isFinite(deepSWEScoreMin);
-        const hasMonthlyPriceFilter = finitePositive(state.monthlyPriceMin) !== null && finitePositive(state.monthlyPriceMax) !== null;
+        const hasMonthlyPriceMin = state.monthlyPriceMin !== null && state.monthlyPriceMin !== undefined && Number.isFinite(Number(state.monthlyPriceMin));
+        const hasMonthlyPriceMax = state.monthlyPriceMax !== null && state.monthlyPriceMax !== undefined && Number.isFinite(Number(state.monthlyPriceMax));
+        const hasMonthlyPriceFilter = hasMonthlyPriceMin || hasMonthlyPriceMax;
         return (points || []).filter((point) => {
+            if (point.platformVisible === false) return false;
+            if (point.planTableVisible === false && point.billingMode !== 'payg') return false;
+            if (state.includeDiscontinued === false && point.discontinued) return false;
+            if (state.platformsSpecified && !platforms.size) return false;
             if (platforms.size && !platforms.has(getPointPlatformKey(point))) return false;
+            if (state.modelsSpecified && !models.size) return false;
             if (models.size && !models.has(point.modelSlug)) return false;
+            if (state.modelMatch === 'all' && state.modelsSpecified) {
+                const key = `${getPointPlatformKey(point)}::${point.billingMode || ''}::${point.planSlug || ''}`;
+                const available = modelGroups.get(key) || new Set();
+                if (!models.size || ![...models].every((slug) => available.has(slug))) return false;
+            }
+            if (state.planSlugsSpecified && point.billingMode === 'subscription') {
+                const planSlugs = state.planSlugs instanceof Set ? state.planSlugs : new Set(state.planSlugs || []);
+                if (!planSlugs.size || !planSlugs.has(point.planSlug)) return false;
+            }
             if (state.multimodal === 'multimodal' && point.multimodal !== true) return false;
             if (state.multimodal === 'text' && point.multimodal !== false) return false;
             const aaScore = getPointScore(point, 'artificialAnalysis');
@@ -125,7 +167,9 @@
             if (hasDeepSWEScoreMin && (deepSWEScore === null || deepSWEScore < deepSWEScoreMin)) return false;
             if (hasMonthlyPriceFilter) {
                 const monthlyFee = finitePositive(point.monthlyFeeCny);
-                if (monthlyFee === null || monthlyFee < state.monthlyPriceMin || monthlyFee > state.monthlyPriceMax) return false;
+                if (monthlyFee === null) return false;
+                if (hasMonthlyPriceMin && monthlyFee < Number(state.monthlyPriceMin)) return false;
+                if (hasMonthlyPriceMax && monthlyFee > Number(state.monthlyPriceMax)) return false;
             }
             return true;
         });
@@ -412,6 +456,26 @@
         return `输入 ${format(pricing.inputPerM)} · 缓存 ${format(pricing.cachePerM)} · 输出 ${format(pricing.outputPerM)} / M`;
     }
 
+    function currencySymbol(currency) {
+        const normalized = String(currency || '').trim().toUpperCase();
+        if (['$', 'USD', 'US$'].includes(normalized)) return '$';
+        if (['¥', '￥', 'CNY', 'RMB'].includes(normalized)) return '¥';
+        return String(currency || '¥');
+    }
+
+    function formatSubscriptionMonthlyPrice(point) {
+        const original = finitePositive(point && point.originalMonthlyFee);
+        const cny = finitePositive(point && point.monthlyFeeCny);
+        if (original === null && cny === null) return '未公开';
+        const originalCurrency = currencySymbol(point && point.originalCurrency);
+        const originalText = original === null
+            ? `¥${formatNumber(cny, 2)}`
+            : `${originalCurrency}${formatNumber(original, 2)}`;
+        const isCny = originalCurrency === '¥';
+        const converted = !isCny && cny !== null ? `（约 ¥${formatNumber(cny, 2)}）` : '';
+        return `${originalText}${converted} / 月`;
+    }
+
     function comparisonSortValue(point, key) {
         if (key === 'price') return finitePositive(point.monthlyFeeCny);
         if (key === 'artificialAnalysis' || key === 'deepSWE') return getPointScore(point, key);
@@ -463,7 +527,7 @@
     function comparisonTableRowHtml(point, tokenUnit) {
         const subscription = point.billingMode === 'subscription';
         const price = subscription && finitePositive(point.monthlyFeeCny) !== null
-            ? `¥${formatNumber(point.monthlyFeeCny, 2)} / 月` : '按量';
+            ? formatSubscriptionMonthlyPrice(point) : '按量';
         const unitPrice = formatUnitPrice(point.unitPriceCnyPerM, tokenUnit);
         const aaScore = point.scores && point.scores.artificialAnalysis;
         const deepSWEScore = point.scores && point.scores.deepSWE;
@@ -544,7 +608,7 @@
             const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
             const planName = point.planName || (point.billingMode === 'payg' ? '按量 API' : '订阅');
             const plan = `<span>${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
-            const price = point.billingMode === 'payg' ? '按量' : `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`;
+            const price = point.billingMode === 'payg' ? '按量' : formatSubscriptionMonthlyPrice(point);
             const model = `<span class="usage-table-model">${escapeHtml(point.relationLabel || point.modelName || '—')}</span>`;
             const separator = '<span class="usage-preset-separator">·</span>';
             const primaryDetail = kind === 'multi' ? model : `<span class="usage-preset-price">${price}</span>`;
@@ -584,7 +648,7 @@
 
     async function loadPresetConfig() {
         try {
-            const response = await fetch('model-comparison-presets.json', { cache: 'no-store' });
+            const response = await fetch('/model-comparison-presets.json', { cache: 'no-store' });
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             return await response.json();
         } catch (error) {
@@ -608,7 +672,7 @@
         const platformLine = `${escapeHtml(point.platformName)} · ${billing}`;
         const modelLine = escapeHtml(point.relationLabel);
         const fee = point.billingMode === 'subscription'
-            ? `<div>月费：¥${formatNumber(point.monthlyFeeCny, 2)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
+            ? `<div>月费：${formatSubscriptionMonthlyPrice(point)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
             : '';
         const apiPricing = point.billingMode === 'payg'
             ? `<div>API 单价：${escapeHtml(formatApiPricing(point.apiPricing))}</div>`
@@ -632,7 +696,7 @@
                 return;
             }
             const script = document.createElement('script');
-            script.src = 'vendor/echarts.min.js';
+            script.src = '/vendor/echarts.min.js';
             script.dataset.usageEcharts = '1';
             script.onload = () => resolve(root.echarts);
             script.onerror = () => reject(new Error('ECharts 加载失败'));
@@ -646,9 +710,9 @@
             <section class="usage-view" aria-labelledby="usageViewTitle">
                 <header class="usage-heading">
                     <div><p class="usage-eyebrow">模型购买决策</p><h2 id="usageViewTitle">额度 / 价格对比</h2></div>
-                    <p>把同一套餐下的不同模型拆成独立点，比较钱花在哪里、实际能换来多少额度和模型能力。</p>
+                    <p>把同一套餐下的不同模型拆成独立点，比较钱花在哪里、实际能换来多少额度和模型能力。 <a class="main-view-full-link" href="/pricing/">查看完整价格页 →</a></p>
                 </header>
-                <div class="usage-method-note"><strong>统一口径：</strong>有具体输入、输出、缓存价格的为计算得出，其余的除了Kimi套餐没有购买到之外，均为实测数据，实测尽量构造95%缓存命中率和0.5%的输出占比。</div>
+                <div class="usage-method-note"><strong>统一口径：</strong>价格筛选和坐标统一按折合人民币计算，美元按当前站点汇率 USD 1 ≈ ¥${formatNumber(Number(root.appConfig && root.appConfig.usdToCnyRate) || 6.8, 2)}；表格保留原始币种。具体输入、输出、缓存价格的为计算得出，其余的除了Kimi套餐没有购买到之外，均为实测数据，实测尽量构造95%缓存命中率和0.5%的输出占比。</div>
                 <section class="usage-presets" data-presets aria-label="常见模型对比" hidden></section>
                 <div class="usage-explorer-heading"><h3>完整对比</h3><p>使用筛选、图表与数据明细继续探索全部套餐和模型。</p></div>
                 <div class="filter-bar surface-panel usage-filters" aria-label="图表筛选">
@@ -665,15 +729,15 @@
                 <div class="usage-color-legend"><strong data-color-legend-title>平台颜色</strong><div data-color-legend></div></div>
                 <article class="usage-chart-card">
                     <div class="usage-chart-head"><div><h3>月费 vs 月 Token</h3><p>一个点代表一个平台 × 套餐 × 模型；越靠左上越有吸引力。</p></div><label>坐标轴<select data-scale="tokens"><option value="log">对数</option><option value="value">线性</option></select></label></div>
-                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="月费和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的月费与月额度数据。</div></div>
+                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="月费和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的月费与月额度数据；请查看上方生效限制并逐项清空，或恢复默认。</div></div>
                 </article>
                 <article class="usage-chart-card">
                     <div class="usage-chart-head"><div><h3>单位价格 vs 智力</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标"><button type="button" data-benchmark="artificialAnalysis" class="is-active">AA</button><button type="button" data-benchmark="deepSWE">DeepSWE</button></div><label>价格轴<select data-scale="price"><option value="log">对数</option><option value="value">线性</option></select></label></div></div>
-                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和智力评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据。</div></div>
+                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和智力评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据；请查看上方生效限制并逐项清空，或恢复默认。</div></div>
                 </article>
                 <article class="usage-chart-card">
                     <div class="usage-chart-head"><div><h3>综合单价</h3><p>按当前筛选结果从低到高排列；横向滚动查看全部平台 × 套餐 × 模型。</p></div></div>
-                    <div class="usage-chart-stage usage-bar-chart-stage"><div class="usage-unit-price-scroll"><div class="usage-unit-price-chart" data-chart="unit-price" role="img" aria-label="各平台套餐模型综合单价柱状图"></div></div><div class="usage-empty" data-empty="unit-price" hidden>当前筛选下没有可绘制的综合单价数据。</div></div>
+                    <div class="usage-chart-stage usage-bar-chart-stage"><div class="usage-unit-price-scroll"><div class="usage-unit-price-chart" data-chart="unit-price" role="img" aria-label="各平台套餐模型综合单价柱状图"></div></div><div class="usage-empty" data-empty="unit-price" hidden>当前筛选下没有可绘制的综合单价数据；请查看上方生效限制并逐项清空，或恢复默认。</div></div>
                 </article>
                 <article class="usage-chart-card usage-data-card">
                     <div class="usage-chart-head"><div><h3>数据明细</h3><p>汇总当前筛选下的平台 × 套餐 × 模型；按量 API 没有周期额度时显示“—”。</p></div><span class="usage-table-count" data-table-count="comparison"></span></div>
@@ -782,7 +846,7 @@
         });
     }
 
-    async function mountModelComparisonView(container) {
+    async function mountModelComparisonView(container, options) {
         if (!container) return;
         if (container.__usageMounted) {
             requestAnimationFrame(() => {
@@ -795,10 +859,10 @@
             renderShell(container);
             const [echarts, platformResponse, planResponse, modelResponse, relationResponse, presetConfig] = await Promise.all([
                 loadEcharts(),
-                fetch('platforms.json', { cache: 'no-store' }),
-                fetch('plans.json', { cache: 'no-store' }),
-                fetch('models.json', { cache: 'no-store' }),
-                fetch('plan-models.json', { cache: 'no-store' }),
+                fetch('/platforms.json', { cache: 'no-store' }),
+                fetch('/plans.json', { cache: 'no-store' }),
+                fetch('/models.json', { cache: 'no-store' }),
+                fetch('/plan-models.json', { cache: 'no-store' }),
                 loadPresetConfig()
             ]);
             const responses = [platformResponse, planResponse, modelResponse, relationResponse];
@@ -820,7 +884,8 @@
             const models = [...modelMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
             const platformColors = buildVendorColorMap(platforms.map(([key]) => key));
             const modelColors = buildModelColorMap(models.map(([id]) => id));
-            const state = Object.assign(createDefaultFilterState(points), {
+            const mountOptions = options || {};
+            const state = Object.assign(createDefaultFilterState(points, mountOptions), {
                 benchmark: 'artificialAnalysis', colorMode: 'vendor',
                 tokensScale: 'log', priceScale: 'log', presetPlatformScope: 'featured'
             });
@@ -839,6 +904,37 @@
             const priceBounds = getMonthlyPriceBounds(points);
             const priceSlider = { min: priceBounds.min, max: priceBounds.max };
             let renderedPresetKey = null;
+
+            function applyExternalFilter(external) {
+                if (!external) return;
+                state.platforms = external.platformSlugs === null
+                    ? new Set(platforms.map(([key]) => key))
+                    : new Set(external.platformSlugs || []);
+                state.models = external.modelSlugs === null
+                    ? new Set(models.map(([key]) => key))
+                    : new Set(external.modelSlugs || []);
+                state.platformsSpecified = true;
+                state.modelsSpecified = true;
+                state.planSlugs = external.planSlugs === null ? null : new Set(external.planSlugs || []);
+                state.planSlugsSpecified = external.planSlugs !== null && external.planSlugs !== undefined;
+                state.modelMatch = external.modelMatch === 'all' ? 'all' : 'any';
+                state.includeDiscontinued = external.includeDiscontinued === true;
+                state.multimodal = external.multimodal || 'all';
+                state.aaScoreMin = external.aaScoreMin == null ? '' : external.aaScoreMin;
+                state.deepSWEScoreMin = external.deepSWEScoreMin == null ? '' : external.deepSWEScoreMin;
+                const budget = external.budgetCny;
+                const monthlyRange = external.priceRanges && external.priceRanges.monthlyPrice;
+                const numericBounds = values => values
+                    .filter(value => value !== null && value !== undefined && value !== '')
+                    .map(value => Number(value)).filter(Number.isFinite);
+                const minimums = numericBounds([budget && budget.min, monthlyRange && monthlyRange.min]);
+                const maximums = numericBounds([budget && budget.max, monthlyRange && monthlyRange.max]);
+                state.monthlyPriceMin = minimums.length ? Math.max(...minimums) : null;
+                state.monthlyPriceMax = maximums.length ? Math.min(...maximums) : null;
+                syncFilterControls();
+            }
+
+            applyExternalFilter(mountOptions.filterState || root.__codingplanUnifiedFiltersState);
 
             function updatePriceSliderVisuals(minValue, maxValue) {
                 const first = Math.max(priceBounds.min, Math.min(priceBounds.max, Math.round(minValue)));
@@ -993,7 +1089,7 @@
                 const body = container.querySelector(`[data-table-body="${tableName}"]`);
                 body.innerHTML = sorted.length
                     ? sorted.map((point) => comparisonTableRowHtml(point, state.tokenUnit)).join('')
-                    : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length}">当前筛选下没有可展示的数据。</td></tr>`;
+                    : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length}">当前筛选下没有可展示的数据；请查看上方生效限制并逐项清空，或恢复默认。</td></tr>`;
                 container.querySelector(`[data-table-count="${tableName}"]`).textContent = `${sorted.length} 条`;
                 container.querySelectorAll(`[data-table="${tableName}"] th[data-sort-key]`).forEach((header) => {
                     const active = header.dataset.sortKey === sort.key;
@@ -1012,7 +1108,10 @@
                 const filtered = filterPoints(points, {
                     platforms: state.platforms, models: state.models, multimodal: state.multimodal,
                     aaScoreMin: state.aaScoreMin, deepSWEScoreMin: state.deepSWEScoreMin,
-                    monthlyPriceMin: state.monthlyPriceMin, monthlyPriceMax: state.monthlyPriceMax
+                    monthlyPriceMin: state.monthlyPriceMin, monthlyPriceMax: state.monthlyPriceMax,
+                    platformsSpecified: state.platformsSpecified, modelsSpecified: state.modelsSpecified,
+                    planSlugs: state.planSlugs, planSlugsSpecified: state.planSlugsSpecified,
+                    modelMatch: state.modelMatch, includeDiscontinued: state.includeDiscontinued
                 });
                 const visibleFiltered = filterBySoloColorKey(filtered, state.colorMode, state.soloColorKey);
                 const usagePoints = buildUsageChartPoints(visibleFiltered);
@@ -1099,6 +1198,12 @@
                 else if (target.matches('[data-scale="price"]')) state.priceScale = target.value;
                 render();
             });
+            function onSharedFilterChange(event) {
+                applyExternalFilter(event && event.detail && event.detail.state);
+                render();
+            }
+            root.addEventListener('codingplan:filters-changed', onSharedFilterChange);
+            container.__usageCleanup = () => root.removeEventListener('codingplan:filters-changed', onSharedFilterChange);
             container.querySelector('[data-model-search]').addEventListener('input', (event) => {
                 const query = event.target.value.trim().toLocaleLowerCase('zh-CN');
                 container.querySelectorAll('[data-picker="models"] [data-options] label').forEach((label) => {
@@ -1246,7 +1351,13 @@
                     return;
                 }
                 if (event.target.closest('[data-action="restore-defaults"]')) {
-                    Object.assign(state, createDefaultFilterState(points));
+                    if (mountOptions.mode !== 'full' && root.__codingplanHomeApi && root.CodingPlanFilters) {
+                        const sharedDefaults = root.CodingPlanFilters.createDefaultState(root.appConfig || {});
+                        root.__codingplanHomeApi.setUnifiedFilters(sharedDefaults);
+                        root.dispatchEvent(new CustomEvent('codingplan:filters-changed', { detail: { state: sharedDefaults } }));
+                        return;
+                    }
+                    Object.assign(state, createDefaultFilterState(points, mountOptions));
                     syncFilterControls();
                     container.querySelector('[data-model-search]').value = '';
                     container.querySelectorAll('[data-picker="models"] [data-options] label').forEach((label) => { label.hidden = false; });

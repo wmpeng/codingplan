@@ -1,3 +1,8 @@
+const PlatformGuideRegistry = typeof module === 'object' && module.exports
+  ? require('./platform-pages.js') : (globalThis.PlatformPages || { getUrl: () => null });
+
+function getPlatformGuideUrl(slug) { return PlatformGuideRegistry.getUrl(slug); }
+
 const DIMENSION_KEYS = ['value', 'models', 'stability'];
 
 const PLATFORM_DIMENSION_META = [
@@ -658,12 +663,13 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
                     <ul class="platform-dimensions">${dimsHtml}</ul>
                     ${tagsHtml}
                     ${modelsHtml}
-                    <span class="platform-card-hint">查看详情 <span aria-hidden="true">→</span></span>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span>${getPlatformGuideUrl(platformId) ? `<a class="platform-guide-link" href="${escapeHtml(getPlatformGuideUrl(platformId))}">平台介绍 →</a>` : ''}</div>
                 </article>
             `;
 }
 
 const PlatformCatalog = {
+  getPlatformGuideUrl,
   DIMENSION_KEYS,
   PLATFORM_DIMENSION_META,
   PLATFORM_STATUSES,
