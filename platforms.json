@@ -321,7 +321,7 @@
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "性价比很高，[查看模型用量对比](/plans/?platform=bytedance-ark)"
+          "reason": "性价比很高，[查看模型用量对比](/plans/?platform=ollama)"
         },
         "models": {
           "score": 5,
