@@ -125,54 +125,21 @@
         const state = filters || {};
         const platforms = state.platforms instanceof Set ? state.platforms : new Set(state.platforms || []);
         const models = state.models instanceof Set ? state.models : new Set(state.models || []);
-        const modelGroups = new Map();
-        if (state.modelMatch === 'all' && state.modelsSpecified) {
-            (points || []).forEach((point) => {
-                if (point.platformVisible === false || (point.planTableVisible === false && point.billingMode !== 'payg')) return;
-                if (state.includeDiscontinued === false && point.discontinued) return;
-                const key = `${getPointPlatformKey(point)}::${point.billingMode || ''}::${point.planSlug || ''}`;
-                if (!modelGroups.has(key)) modelGroups.set(key, new Set());
-                modelGroups.get(key).add(point.modelSlug);
-            });
-        }
-        const aaScoreMin = Number(state.aaScoreMin);
-        const deepSWEScoreMin = Number(state.deepSWEScoreMin);
-        const hasAaScoreMin = state.aaScoreMin !== '' && state.aaScoreMin !== null && Number.isFinite(aaScoreMin);
-        const hasDeepSWEScoreMin = state.deepSWEScoreMin !== '' && state.deepSWEScoreMin !== null && Number.isFinite(deepSWEScoreMin);
-        const hasMonthlyPriceMin = state.monthlyPriceMin !== null && state.monthlyPriceMin !== undefined && Number.isFinite(Number(state.monthlyPriceMin));
-        const hasMonthlyPriceMax = state.monthlyPriceMax !== null && state.monthlyPriceMax !== undefined && Number.isFinite(Number(state.monthlyPriceMax));
-        const hasMonthlyPriceFilter = hasMonthlyPriceMin || hasMonthlyPriceMax;
-        return (points || []).filter((point) => {
-            if (point.platformVisible === false) return false;
-            if (point.planTableVisible === false && point.billingMode !== 'payg') return false;
-            if (state.includeDiscontinued === false && point.discontinued) return false;
-            if (state.platformsSpecified && !platforms.size) return false;
-            if (platforms.size && !platforms.has(getPointPlatformKey(point))) return false;
-            if (state.modelsSpecified && !models.size) return false;
-            if (models.size && !models.has(point.modelSlug)) return false;
-            if (state.modelMatch === 'all' && state.modelsSpecified) {
-                const key = `${getPointPlatformKey(point)}::${point.billingMode || ''}::${point.planSlug || ''}`;
-                const available = modelGroups.get(key) || new Set();
-                if (!models.size || ![...models].every((slug) => available.has(slug))) return false;
-            }
-            if (state.planSlugsSpecified && point.billingMode === 'subscription') {
-                const planSlugs = state.planSlugs instanceof Set ? state.planSlugs : new Set(state.planSlugs || []);
-                if (!planSlugs.size || !planSlugs.has(point.planSlug)) return false;
-            }
-            if (state.multimodal === 'multimodal' && point.multimodal !== true) return false;
-            if (state.multimodal === 'text' && point.multimodal !== false) return false;
-            const aaScore = getPointScore(point, 'artificialAnalysis');
-            const deepSWEScore = getPointScore(point, 'deepSWE');
-            if (hasAaScoreMin && (aaScore === null || aaScore < aaScoreMin)) return false;
-            if (hasDeepSWEScoreMin && (deepSWEScore === null || deepSWEScore < deepSWEScoreMin)) return false;
-            if (hasMonthlyPriceFilter) {
-                const monthlyFee = finitePositive(point.monthlyFeeCny);
-                if (monthlyFee === null) return false;
-                if (hasMonthlyPriceMin && monthlyFee < Number(state.monthlyPriceMin)) return false;
-                if (hasMonthlyPriceMax && monthlyFee > Number(state.monthlyPriceMax)) return false;
-            }
-            return true;
-        });
+        // Share the same filtering rules with the homepage and standalone tools.
+        const shared = root.CodingPlanFilters || (typeof require === 'function' ? require('./filter-state.js') : null);
+        const selected = (values, specified) => specified || values.size ? [...values] : null;
+        return shared.filterPoints(points, shared.normalizeState({
+            platformSlugs: selected(platforms, state.platformsSpecified),
+            modelSlugs: selected(models, state.modelsSpecified),
+            planSlugs: state.planSlugsSpecified ? [...(state.planSlugs || [])] : null,
+            modelMatch: state.modelMatch === 'all' && state.modelsSpecified ? 'all' : 'any',
+            includeDiscontinued: state.includeDiscontinued !== false,
+            multimodal: state.multimodal,
+            aaScoreMin: state.aaScoreMin,
+            deepSWEScoreMin: state.deepSWEScoreMin,
+            budgetCny: { min: state.monthlyPriceMin, max: state.monthlyPriceMax },
+            priceRanges: state.priceRanges
+        }, { mode: 'full' }), { context: state.filterContext, usdToCnyRate: root.appConfig && root.appConfig.usdToCnyRate });
     }
 
     function buildUsageChartPoints(points) {
@@ -917,12 +884,14 @@
                 state.modelsSpecified = true;
                 state.planSlugs = external.planSlugs === null ? null : new Set(external.planSlugs || []);
                 state.planSlugsSpecified = external.planSlugs !== null && external.planSlugs !== undefined;
-                state.modelMatch = external.modelMatch === 'all' ? 'all' : 'any';
+                state.modelMatch = external.modelSlugs !== null && external.modelMatch === 'all' ? 'all' : 'any';
                 state.includeDiscontinued = external.includeDiscontinued === true;
                 state.multimodal = external.multimodal || 'all';
                 state.aaScoreMin = external.aaScoreMin == null ? '' : external.aaScoreMin;
                 state.deepSWEScoreMin = external.deepSWEScoreMin == null ? '' : external.deepSWEScoreMin;
                 const budget = external.budgetCny;
+                state.priceRanges = external.priceRanges || {};
+                state.filterContext = context;
                 const monthlyRange = external.priceRanges && external.priceRanges.monthlyPrice;
                 const numericBounds = values => values
                     .filter(value => value !== null && value !== undefined && value !== '')
@@ -1111,7 +1080,8 @@
                     monthlyPriceMin: state.monthlyPriceMin, monthlyPriceMax: state.monthlyPriceMax,
                     platformsSpecified: state.platformsSpecified, modelsSpecified: state.modelsSpecified,
                     planSlugs: state.planSlugs, planSlugsSpecified: state.planSlugsSpecified,
-                    modelMatch: state.modelMatch, includeDiscontinued: state.includeDiscontinued
+                    modelMatch: state.modelMatch, includeDiscontinued: state.includeDiscontinued,
+                    priceRanges: state.priceRanges, filterContext: state.filterContext
                 });
                 const visibleFiltered = filterBySoloColorKey(filtered, state.colorMode, state.soloColorKey);
                 const usagePoints = buildUsageChartPoints(visibleFiltered);

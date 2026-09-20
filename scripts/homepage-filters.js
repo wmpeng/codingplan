@@ -9,7 +9,7 @@
   }
 
   function optionLabel(item, kind) {
-    if (kind === 'plans') return `${item.platformName || item.platformSlug} · ${item.name}`;
+    if (kind === 'planSlugs') return `${item.platformName || item.platformSlug} · ${item.name}`;
     return item.name || item.slug;
   }
 
@@ -17,10 +17,9 @@
     return state[key] === null ? null : (Array.isArray(state[key]) ? state[key] : []);
   }
 
-  function buildPicker({ id, label, key, items, state, onChange }) {
+  function buildPicker({ id, label, key, items, state }) {
     const rawSelected = valuesFor(state, key);
     const selected = rawSelected === null ? items.map(item => item.slug) : (rawSelected || []);
-    const defaults = (state.__defaults && state.__defaults[key]) || [];
     const allIds = items.map(item => item.slug);
     const countText = rawSelected === null || selected.length === allIds.length ? '全部' : `${selected.length} 项`;
     const options = items.map(item => {
@@ -37,11 +36,13 @@
     </details>`;
   }
 
+  const rangeLabels = { firstMonthPrice: '首月价格', monthlyPrice: '包月价格', quarterlyPrice: '包季价格', yearlyPrice: '包年价格', fiveHoursRequests: '5 小时请求数', weeklyRequests: '每周请求数', monthlyRequests: '每月请求数' };
+
   function buildRange(key, label, state) {
     const range = state[key] && state[key][label] ? state[key][label] : {};
     const min = range.min == null ? '' : range.min;
     const max = range.max == null ? '' : range.max;
-    return `<div class="filter-range" data-range-group="${escapeHtml(key)}" data-range-key="${escapeHtml(label)}"><span>${escapeHtml(label)}</span><input type="number" data-range-part="min" placeholder="最低" value="${escapeHtml(min)}"><span aria-hidden="true">—</span><input type="number" data-range-part="max" placeholder="最高" value="${escapeHtml(max)}"></div>`;
+    return `<div class="filter-range" data-range-group="${escapeHtml(key)}" data-range-key="${escapeHtml(label)}"><span>${escapeHtml(rangeLabels[label] || label)}</span><input aria-label="${escapeHtml(rangeLabels[label] || label)}最低" type="number" data-range-part="min" placeholder="最低" value="${escapeHtml(min)}"><span aria-hidden="true">—</span><input aria-label="${escapeHtml(rangeLabels[label] || label)}最高" type="number" data-range-part="max" placeholder="最高" value="${escapeHtml(max)}"></div>`;
   }
 
   function mount() {
@@ -64,9 +65,9 @@
     const state = Filters.normalizeState(defaults);
     // 深链只预选当前平台，选择器的“恢复默认”仍回到配置中的精选名单。
     const configuredDefaults = {
-      platformSlugs: [...(state.platformSlugs || [])],
-      planSlugs: [...(state.planSlugs || [])],
-      modelSlugs: [...(state.modelSlugs || [])]
+      platformSlugs: state.platformSlugs === null ? null : [...state.platformSlugs],
+      planSlugs: state.planSlugs === null ? null : [...state.planSlugs],
+      modelSlugs: state.modelSlugs === null ? null : [...state.modelSlugs]
     };
     const params = new URLSearchParams(root.location && root.location.search || '');
     const linkedPlatform = params.get('platform');
@@ -77,11 +78,11 @@
 
     mountPoint.innerHTML = `<section class="filter-state-bar surface-panel" aria-label="统一筛选">
       <div class="filter-state-summary"><span class="filter-state-label">当前筛选</span><span class="filter-state-chip" data-summary="platformSlugs"></span><span class="filter-state-chip" data-summary="planSlugs"></span><span class="filter-state-chip" data-summary="modelSlugs"></span><span class="filter-state-chip" data-summary="budgetCny" hidden></span><div class="filter-state-actions"><button type="button" class="filter-state-btn" data-filter-action="clear-all">清空全部</button><button type="button" class="filter-state-btn primary" data-filter-action="restore-all">恢复默认</button></div></div>
-      <p class="filter-state-hint" data-filter-hint></p>
+      <p class="filter-state-hint" data-filter-hint></p><div class="filter-active-limits" data-active-limits aria-label="逐项取消筛选限制"></div>
       <div class="filter-state-grid">
-        ${buildPicker({ id: 'homePlatformPicker', label: '平台', key: 'platformSlugs', items: platforms, state, onChange: null })}
-        ${buildPicker({ id: 'homePlanPicker', label: '套餐', key: 'planSlugs', items: plans, state, onChange: null })}
-        ${buildPicker({ id: 'homeModelPicker', label: '模型', key: 'modelSlugs', items: models, state, onChange: null })}
+        ${buildPicker({ id: 'homePlatformPicker', label: '平台', key: 'platformSlugs', items: platforms, state })}
+        ${buildPicker({ id: 'homePlanPicker', label: '套餐', key: 'planSlugs', items: plans, state })}
+        ${buildPicker({ id: 'homeModelPicker', label: '模型', key: 'modelSlugs', items: models, state })}
         <details class="filter-picker" data-picker="budgetCny" id="homeBudgetPicker"><summary><span>月预算（人民币）</span><span class="filter-picker-count" data-budget-label>不限</span></summary><div class="filter-picker-menu"><div class="filter-range budget-range"><input type="number" min="0" step="1" data-budget-part="min" placeholder="最低预算"><span aria-hidden="true">—</span><input type="number" min="0" step="1" data-budget-part="max" placeholder="最高预算"></div><p class="filter-help">美元套餐按当前站点汇率换算；按量 API 不参加月预算筛选。</p><div class="filter-picker-tools"><button type="button" data-budget-action="clear">取消限制</button></div></div></details>
       </div>
       <details class="filter-more"><summary>更多筛选与口径</summary><div class="filter-more-grid">
@@ -135,7 +136,7 @@
       if (state.platformStatusMax !== 'delisted') active.push(`平台状态：${statusLabels[state.platformStatusMax] || state.platformStatusMax}`);
       if (state.modelMatch === 'all') active.push('模型需同时支持全部所选');
       if (state.multimodal !== 'all') active.push(state.multimodal === 'multimodal' ? '仅多模态' : '仅纯文本');
-      if (state.includeDiscontinued) active.push('包含下架套餐');
+      if (!state.includeDiscontinued) active.push('排除下架套餐');
       if (state.platformTags.length) active.push(`平台标签 ${state.platformTags.length} 项`);
       if (state.planTags.length) active.push(`套餐标签 ${state.planTags.length} 项`);
       if (Object.keys(state.priceRanges).length) active.push(`价格范围 ${Object.keys(state.priceRanges).length} 项`);
@@ -144,8 +145,28 @@
       if (state.deepSWEScoreMin != null) active.push(`DeepSWE ≥ ${state.deepSWEScoreMin}`);
       const hint = mountPoint.querySelector('[data-filter-hint]');
       if (hint) hint.textContent = active.length
-        ? `生效限制：${active.join('、')}。无结果时可在对应选择器逐项清空，或恢复默认。`
-        : '更多筛选未启用；无结果时可在对应选择器逐项清空，或恢复默认。';
+        ? `当前条件（各视图仅使用适用项）：${active.join('、')}。无结果时可取消下方限制，或恢复默认。`
+        : '更多筛选未启用；无结果时可取消下方限制，或恢复默认。';
+      const limits = [];
+      for (const [key, label] of [['platformSlugs', '平台'], ['planSlugs', '套餐'], ['modelSlugs', '模型']]) {
+        if (state[key] !== null) limits.push([key, '', `${label}选择`]);
+      }
+      if (budget) limits.push(['budgetCny', '', '月预算']);
+      if (state.platformStatusMax !== 'delisted') limits.push(['platformStatusMax', '', '平台状态']);
+      if (!state.includeDiscontinued) limits.push(['includeDiscontinued', '', '排除下架套餐']);
+      if (state.modelMatch === 'all') limits.push(['modelMatch', '', '全部模型匹配']);
+      if (state.multimodal !== 'all') limits.push(['multimodal', '', '多模态']);
+      for (const key of ['aaScoreMin', 'deepSWEScoreMin']) {
+        if (state[key] != null) limits.push([key, '', key === 'aaScoreMin' ? 'AA 分数' : 'DeepSWE 分数']);
+      }
+      for (const key of ['platformTags', 'planTags']) {
+        for (const tag of state[key]) limits.push([key, tag, tag]);
+      }
+      for (const key of ['priceRanges', 'requestRanges']) {
+        for (const item of Object.keys(state[key])) limits.push([key, item, rangeLabels[item] || item]);
+      }
+      mountPoint.querySelector('[data-active-limits]').innerHTML = limits.map(([key, item, label]) =>
+        `<button type="button" class="filter-state-btn" data-remove-filter="${escapeHtml(key)}" data-remove-item="${escapeHtml(item)}" aria-label="取消${escapeHtml(label)}限制">${escapeHtml(label)} ×</button>`).join('');
       budgetLabel.textContent = budgetText;
       const budgetMin = mountPoint.querySelector('[data-budget-part="min"]');
       const budgetMax = mountPoint.querySelector('[data-budget-part="max"]');
@@ -161,7 +182,6 @@
         const selected = state[key] === null ? items.map(item => item.slug) : (state[key] || []);
         const details = mountPoint.querySelector(`[data-picker="${key}"]`);
         details.querySelector('[data-picker-count]').textContent = selected.length === items.length ? '全部' : `${selected.length} 项`;
-        details.querySelectorAll('[data-picker-option]');
         details.querySelectorAll('input[type="checkbox"]').forEach(input => { input.checked = selected.includes(input.value); });
       }
       mountPoint.querySelectorAll('[data-tag-options]').forEach(host => {
@@ -221,7 +241,7 @@
         publish();
         return;
       }
-      if (target.matches('[data-filter-field]')) {
+      if (target.matches('input[type="number"][data-filter-field]')) {
         const key = target.getAttribute('data-filter-field');
         state[key] = target.type === 'checkbox' ? target.checked : (target.value === '' ? null : target.value);
         publish();
@@ -250,6 +270,16 @@
     });
 
     mountPoint.addEventListener('click', event => {
+      const remove = event.target.closest('[data-remove-filter]');
+      if (remove) {
+        const key = remove.dataset.removeFilter;
+        const item = remove.dataset.removeItem;
+        if (key === 'platformTags' || key === 'planTags') state[key] = state[key].filter(value => value !== item);
+        else if (key === 'priceRanges' || key === 'requestRanges') delete state[key][item];
+        else state[key] = Filters.createDefaultState({}, { mode: 'full' })[key];
+        publish();
+        return;
+      }
       const action = event.target.closest('[data-picker-action]');
       if (action) {
         const picker = action.closest('[data-picker]');
@@ -294,6 +324,27 @@
     });
 
     mountPoint.dataset.mounted = '1';
+    mountPoint.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      const picker = event.target.closest('.filter-picker[open]');
+      if (picker) {
+        picker.open = false;
+        picker.querySelector('summary').focus();
+        event.preventDefault();
+      }
+    });
+    mountPoint.querySelectorAll('.filter-picker').forEach(picker => {
+      picker.addEventListener('toggle', () => {
+        if (picker.open) mountPoint.querySelectorAll('.filter-picker[open]').forEach(other => {
+          if (other !== picker) other.open = false;
+        });
+      });
+    });
+    document.addEventListener('click', event => {
+      mountPoint.querySelectorAll('.filter-picker[open]').forEach(picker => {
+        if (!picker.contains(event.target)) picker.open = false;
+      });
+    });
     document.body.classList.add('homepage-unified-active');
     root.__codingplanUnifiedFiltersState = Filters.normalizeState(state);
     render();

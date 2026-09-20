@@ -21,13 +21,21 @@
 }
 
 .homepage-unified-active .usage-view > .usage-filters,
-.homepage-unified-active #view-monitor .monitor-toolbar {
+.homepage-unified-active #view-monitor .monitor-control,
+.homepage-unified-active #view-monitor #monitorClearFilters {
   display: none;
 }
 
 .homepage-unified-active .filter-state-bar {
   background: rgba(255, 255, 255, .96);
+  padding: 14px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 30;
 }
+
+.homepage-unified-active .filter-picker[open] { z-index: 31; }
+.homepage-unified-active .filter-inline input[type="checkbox"] { width: auto; }
 
 .homepage-unified-active .filter-state-hint {
   margin: 9px 2px 0;
@@ -79,3 +87,6 @@
 @media (max-width: 800px) {
   .homepage-unified-active .filter-subgroup { grid-column: span 1; }
 }
+
+.filter-active-limits { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.filter-picker-menu label[hidden] { display: none; }

@@ -105,18 +105,18 @@ test('monthly package price filter uses a logarithmic dual-slider range', () => 
   assert.deepEqual(filterPoints(points, {
     multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '',
     monthlyPriceMin: 60, monthlyPriceMax: 120
-  }), [points[0]]);
+  }), [points[0], points[1]]);
 });
 
 test('shared monthly budget accepts a single lower or upper bound', () => {
   assert.deepEqual(filterPoints(points, {
     multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '',
     monthlyPriceMin: null, monthlyPriceMax: 90
-  }), [points[2]]);
+  }), [points[1], points[2]]);
   assert.deepEqual(filterPoints(points, {
     multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '',
     monthlyPriceMin: 90, monthlyPriceMax: null
-  }), [points[0]]);
+  }), [points[0], points[1]]);
 });
 
 test('all-model matching keeps rows only within the same visible platform and plan', () => {

@@ -114,3 +114,9 @@ body.tool-page {
   .filter-state-summary { align-items: flex-start; }
   .filter-state-chip { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 }
+
+.plan-selection-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.plan-selection-tools input { width: 100%; min-width: 0; box-sizing: border-box; padding: 6px; }
+.plan-checks label[hidden] { display: none; }
+#plansPage .tool-table { min-width: 1800px; }
+#plansPage .plan-note { min-width: 240px; white-space: pre-line; }

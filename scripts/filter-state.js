@@ -32,8 +32,8 @@
 
   function cloneRange(range) {
     if (!range || typeof range !== 'object') return null;
-    const min = Number.isFinite(Number(range.min)) ? Number(range.min) : null;
-    const max = Number.isFinite(Number(range.max)) ? Number(range.max) : null;
+    const min = nullableNumber(range.min, null);
+    const max = nullableNumber(range.max, null);
     if (min === null && max === null) return null;
     return { min, max };
   }
@@ -49,7 +49,7 @@
   }
 
   function nullableNumber(value, fallback) {
-    if (value === null || value === undefined || value === '') return fallback;
+    if (value === null || value === undefined || typeof value === 'boolean' || (typeof value === 'string' && !value.trim())) return fallback;
     const number = Number(value);
     return Number.isFinite(number) ? number : fallback;
   }
@@ -99,8 +99,8 @@
   }
 
   function toCny(value, currency, rate) {
-    const number = Number(value);
-    if (!Number.isFinite(number)) return null;
+    const number = nullableNumber(value, null);
+    if (number === null) return null;
     const normalized = String(currency || '¥').trim().toUpperCase();
     if (['¥', '￥', 'CNY', 'RMB'].includes(normalized)) return number;
     if (['$', 'USD', 'US$'].includes(normalized)) {
@@ -112,8 +112,8 @@
 
   function inRange(value, range) {
     if (!range) return true;
-    const number = Number(value);
-    if (!Number.isFinite(number)) return false;
+    const number = nullableNumber(value, null);
+    if (number === null) return false;
     if (range.min !== null && number < range.min) return false;
     if (range.max !== null && number > range.max) return false;
     return true;
@@ -159,6 +159,10 @@
         if (!inRange(toCny(plan[key], plan.currency, rate), range)) return false;
       }
       for (const [key, range] of Object.entries(current.requestRanges)) {
+        if (plan[key] === '无限制' || plan[key] === 'unlimited') {
+          if (range.max !== null) return false;
+          continue;
+        }
         if (!inRange(plan[key], range)) return false;
       }
       return true;
@@ -196,8 +200,8 @@
   function scoreAtLeast(point, key, minimum) {
     if (minimum === null) return true;
     const score = point && point.scores && point.scores[key];
-    const exact = Number(score && (score.scoreExact === undefined ? score.score : score.scoreExact));
-    return Number.isFinite(exact) && exact >= minimum;
+    const exact = nullableNumber(score && (score.scoreExact === undefined ? score.score : score.scoreExact), null);
+    return exact !== null && exact >= minimum;
   }
 
   function filterPoints(points, state, options) {
@@ -230,10 +234,17 @@
       if (current.multimodal === 'text' && point.multimodal !== false) return false;
       if (!scoreAtLeast(point, 'artificialAnalysis', current.aaScoreMin)) return false;
       if (!scoreAtLeast(point, 'deepSWE', current.deepSWEScoreMin)) return false;
-      if (point.billingMode === 'subscription' && !inRange(toCny(point.originalMonthlyFee, point.originalCurrency, rate), current.budgetCny)) return false;
+      const monthly = point.monthlyFeeCny === undefined
+        ? toCny(point.originalMonthlyFee, point.originalCurrency, rate)
+        : point.monthlyFeeCny;
+      if (point.billingMode === 'subscription' && !inRange(monthly, current.budgetCny)) return false;
       if (point.billingMode === 'subscription') {
         for (const [key, range] of Object.entries(current.priceRanges)) {
-          if (key === 'monthlyPrice' && !inRange(point.monthlyFeeCny, range)) return false;
+          if (key === 'monthlyPrice' && !inRange(monthly, range)) return false;
+          if (key !== 'monthlyPrice') {
+            const plan = opts.context && opts.context.planBySlug && opts.context.planBySlug.get(point.planSlug);
+            if (!plan || !inRange(toCny(plan[key], plan.currency, rate), range)) return false;
+          }
         }
       }
       return true;

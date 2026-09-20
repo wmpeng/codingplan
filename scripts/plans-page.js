@@ -25,6 +25,7 @@
       const linkedPlatform = params.get('platform');
       if (linkedPlatform && platforms.some(item => item.slug === linkedPlatform)) initial.platformSlugs = [linkedPlatform];
       let state = Filters.normalizeState(initial);
+      const pinned = new Set();
       let sort = { key: 'monthlyPrice', direction: 'asc' };
 
       const platformOptions = host.querySelector('[data-plan-platforms]');
@@ -43,27 +44,47 @@
       function checks(items, key, label) {
         return items.map(item => `<label><input type="checkbox" data-plan-selection="${key}" value="${esc(item.slug)}"><span>${esc(label(item))}</span></label>`).join('');
       }
+      for (const [container, key] of [[platformOptions, 'platformSlugs'], [modelOptions, 'modelSlugs']]) {
+        container.insertAdjacentHTML('beforebegin', `<div class="plan-selection-tools"><input type="search" data-plan-search="${key}" aria-label="搜索${key === 'platformSlugs' ? '平台' : '模型'}" placeholder="搜索"><button type="button" data-plan-select="${key}" data-selection-action="all">全选</button><button type="button" data-plan-select="${key}" data-selection-action="clear">清空</button></div>`);
+      }
       platformOptions.innerHTML = checks(platforms, 'platformSlugs', item => item.name);
       modelOptions.innerHTML = checks(models, 'modelSlugs', item => item.name);
       tagOptions.innerHTML = tags.map(tag => `<label><input type="checkbox" data-plan-tag value="${esc(tag)}"><span>${esc(tag)}</span></label>`).join('');
 
       function apply() {
         const filtered = Filters.filterPlans(allPlans, state, { usdToCnyRate: config.usdToCnyRate, context });
+        const valueForSort = plan => {
+          const value = plan[sort.key];
+          if (sort.key.endsWith('Price')) return Filters.toCny(value, plan.currency, config.usdToCnyRate);
+          if (sort.key.endsWith('Requests')) return value === '无限制' ? Infinity : typeof value === 'number' ? value : null;
+          if (sort.key === 'rating') return value > 0 ? value : null;
+          return Array.isArray(value) ? value.join('、') : value;
+        };
         filtered.sort((a, b) => {
-          const left = sort.key === 'monthlyPrice' ? Filters.toCny(a[sort.key], a.currency, config.usdToCnyRate) : a[sort.key];
-          const right = sort.key === 'monthlyPrice' ? Filters.toCny(b[sort.key], b.currency, config.usdToCnyRate) : b[sort.key];
-          const leftNumber = Number(left);
-          const rightNumber = Number(right);
-          const leftMissing = !Number.isFinite(leftNumber);
-          const rightMissing = !Number.isFinite(rightNumber);
-          if (leftMissing !== rightMissing) return leftMissing ? 1 : -1;
-          if (leftMissing) return 0;
-          const result = leftNumber - rightNumber;
+          if (pinned.has(a.slug) !== pinned.has(b.slug)) return pinned.has(a.slug) ? -1 : 1;
+          const left = valueForSort(a); const right = valueForSort(b);
+          if (left == null || right == null) return left == null ? (right == null ? 0 : 1) : -1;
+          const result = left === right ? 0 : typeof left === 'number' && typeof right === 'number'
+            ? left - right : String(left).localeCompare(String(right), 'zh-CN');
           return sort.direction === 'asc' ? result : -result;
         });
+        host.querySelectorAll('[data-plan-sort]').forEach(button => {
+          button.closest('th').setAttribute('aria-sort', button.dataset.planSort === sort.key ? (sort.direction === 'asc' ? 'ascending' : 'descending') : 'none');
+        });
         count.textContent = `${filtered.length} / ${allPlans.length} 个套餐`;
-        tableBody.innerHTML = filtered.length ? filtered.map(plan => `<tr><td><strong>${esc(plan.platformName)}</strong></td><td>${esc(plan.name)}</td><td>${esc(plan.currency || '¥')}${number(plan.monthlyPrice)}<small> / 月</small><br><span class="tool-muted">首月 ${esc(money(plan, 'firstMonthPrice'))} · 季 ${esc(money(plan, 'quarterlyPrice'))} · 年 ${esc(money(plan, 'yearlyPrice'))}</span></td><td>${esc(plan.fiveHoursRequests)} / ${esc(plan.weeklyRequests)} / ${esc(plan.monthlyRequests)}</td><td>${(plan.modelLabels || []).map(name => `<span class="tool-tag">${esc(name)}</span>`).join('')}</td><td>${(plan.tags || []).map(tag => `<span class="tool-tag">${esc(tag)}</span>`).join('')}</td><td>${plan.discontinued ? '<span class="tool-tag">已下架</span>' : `<a href="${esc(plan.action || '#')}" target="_blank" rel="noopener noreferrer">开通 ↗</a>`}</td></tr>`).join('') : '<tr><td colspan="7"><div class="tool-empty">当前条件下没有套餐；请查看上方生效限制并逐项清空，或恢复全量。</div></td></tr>';
-        host.querySelectorAll('[data-plan-selection]').forEach(input => { input.checked = (state[input.getAttribute('data-plan-selection')] || []).includes(input.value); });
+        tableBody.innerHTML = filtered.length ? filtered.map(plan => `<tr>
+          <td><button type="button" class="table-sort-button" data-plan-pin="${esc(plan.slug)}" aria-pressed="${pinned.has(plan.slug)}" aria-label="${pinned.has(plan.slug) ? '取消置顶' : '置顶'} ${esc(plan.name)}">${pinned.has(plan.slug) ? '★' : '☆'}</button> <strong>${esc(plan.platformName)}</strong></td>
+          <td>${esc(plan.name)}${plan.discontinued ? '<span class="tool-tag">已下架</span>' : ''}</td>
+          ${['firstMonthPrice', 'monthlyPrice', 'quarterlyPrice', 'yearlyPrice'].map(key => `<td>${esc(money(plan, key))}</td>`).join('')}
+          ${['fiveHoursRequests', 'weeklyRequests', 'monthlyRequests'].map(key => `<td>${esc(plan[key] == null ? '未公开' : plan[key])}</td>`).join('')}
+          <td>${(plan.modelLabels || []).map(name => `<span class="tool-tag">${esc(name)}</span>`).join('')}</td>
+          <td>${(plan.tags || []).map(tag => `<span class="tool-tag">${esc(tag)}</span>`).join('')}</td>
+          <td>${plan.rating > 0 ? esc(plan.rating) + ' / 5' : '待评定'}</td>
+          <td>${(plan.benefits || []).map(benefit => `<span class="tool-tag">${esc(benefit)}</span>`).join('')}</td>
+          <td class="plan-note">${esc(plan.note || '')}</td>
+          <td>${plan.discontinued ? '已下架' : `<a href="${esc(plan.action || '#')}" target="_blank" rel="noopener noreferrer">开通 ↗</a>`}</td>
+        </tr>`).join('') : '<tr><td colspan="15"><div class="tool-empty">当前条件下没有套餐；可调整上方条件，或恢复全量。</div></td></tr>';
+        host.querySelectorAll('[data-plan-selection]').forEach(input => { const selection = state[input.getAttribute('data-plan-selection')]; input.checked = selection === null || selection.includes(input.value); });
         host.querySelectorAll('[data-plan-tag]').forEach(input => { input.checked = state.planTags.includes(input.value); });
         modelMatch.value = state.modelMatch;
         status.value = state.platformStatusMax;
@@ -91,8 +112,27 @@
         else if (target === includeDiscontinued) state.includeDiscontinued = target.checked;
         update();
       });
-      host.addEventListener('input', update);
+      host.addEventListener('input', event => {
+        const target = event.target;
+        if (target.matches('[data-plan-search]')) {
+          const key = target.dataset.planSearch;
+          host.querySelectorAll(`[data-plan-selection="${key}"]`).forEach(input => { input.closest('label').hidden = !input.closest('label').textContent.toLowerCase().includes(target.value.trim().toLowerCase()); });
+        } else if (target.matches('input[type="number"]')) update();
+      });
       host.addEventListener('click', event => {
+        const selection = event.target.closest('[data-plan-select]');
+        if (selection) {
+          state[selection.dataset.planSelect] = selection.dataset.selectionAction === 'all' ? null : [];
+          apply();
+          return;
+        }
+        const pin = event.target.closest('[data-plan-pin]');
+        if (pin) {
+          const slug = pin.dataset.planPin;
+          if (pinned.has(slug)) pinned.delete(slug); else pinned.add(slug);
+          apply();
+          return;
+        }
         const reset = event.target.closest('[data-plan-reset]');
         if (reset) {
           state = Filters.createDefaultState(config, { mode: 'full' });

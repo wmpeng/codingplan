@@ -11,6 +11,46 @@ const unrestricted = (overrides = {}) => Filters.normalizeState({
   ...overrides
 });
 
+test('单侧范围在多次规范化后仍保持开放，未知值不转换成零', () => {
+  for (const range of [{ min: 50, max: null }, { min: null, max: 100 }]) {
+    const state = unrestricted({ budgetCny: range, requestRanges: { weeklyRequests: range } });
+    assert.deepEqual(Filters.cloneState(state).budgetCny, range);
+    assert.deepEqual(Filters.cloneState(state).requestRanges.weeklyRequests, range);
+  }
+  assert.equal(unrestricted({ budgetCny: { min: '', max: null } }).budgetCny, null);
+  for (const value of [null, undefined, '', ' ', 'unknown', false]) {
+    assert.equal(Filters.toCny(value, '¥', 7), null);
+    assert.equal(Filters.inRange(value, { min: null, max: 100 }), false);
+    assert.equal(Filters.inRange(value, null), true);
+  }
+  assert.equal(Filters.toCny(0, '¥', 7), 0);
+  assert.equal(Filters.inRange(0, { min: null, max: 100 }), true);
+  const plans = [0, 50, 100, null, 'unknown'].map((monthlyPrice, i) => ({ slug: String(i), monthlyPrice, currency: '¥' }));
+  assert.deepEqual(Filters.filterPlans(plans, unrestricted({ budgetCny: { min: 50, max: null } })).map(p => p.slug), ['1', '2']);
+  assert.deepEqual(Filters.filterPlans(plans, unrestricted({ budgetCny: { min: null, max: 50 } })).map(p => p.slug), ['0', '1']);
+});
+
+test('评分阈值为零仍排除未知评分；平台视图忽略套餐与预算', () => {
+  const points = [null, { scoreExact: null }, { scoreExact: 0 }].map((score, i) => ({ slug: String(i), scores: { artificialAnalysis: score } }));
+  assert.deepEqual(Filters.filterPoints(points, unrestricted({ aaScoreMin: 0 })).map(p => p.slug), ['2']);
+  const platforms = [{ slug: 'a' }];
+  assert.deepEqual(Filters.filterPlatforms(platforms, unrestricted({ planSlugs: [], budgetCny: { max: 0 } })), platforms);
+});
+
+test('订阅价格点按关联套餐筛选季价，按量 API 不受套餐价格和请求条件影响', () => {
+  const points = [
+    { slug: 'known', planSlug: 'a', billingMode: 'subscription' },
+    { slug: 'unknown', planSlug: 'b', billingMode: 'subscription' },
+    { slug: 'api', billingMode: 'payg' }
+  ];
+  const context = { planBySlug: new Map([['a', { quarterlyPrice: 10, currency: '$' }], ['b', { quarterlyPrice: 'unknown' }]]) };
+  const state = unrestricted({ priceRanges: { quarterlyPrice: { min: 70, max: null } }, requestRanges: { weeklyRequests: { min: 100 } } });
+  assert.deepEqual(Filters.filterPoints(points, state, { context, usdToCnyRate: 7 }).map(p => p.slug), ['known', 'api']);
+  const plans = [{ slug: 'unlimited', weeklyRequests: '无限制' }, { slug: 'unknown', weeklyRequests: '未公开' }];
+  assert.deepEqual(Filters.filterPlans(plans, unrestricted({ requestRanges: { weeklyRequests: { min: 100 } } })).map(p => p.slug), ['unlimited']);
+  assert.deepEqual(Filters.filterPlans(plans, unrestricted({ requestRanges: { weeklyRequests: { max: 100 } } })), []);
+});
+
 test('默认精选配置可读取并校验稳定 slug', () => {
   const config = {
     homepageFilters: {
