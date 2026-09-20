@@ -2415,7 +2415,7 @@
                 document.head.appendChild(link);
             }
             if (typeof window.mountModelComparisonView !== 'function') {
-                await loadScriptOnce('scripts/model-comparison.js?v=260920a');
+                await loadScriptOnce('scripts/model-comparison.js?v=260920f');
             }
             if (typeof window.mountModelComparisonView === 'function') {
                 await window.mountModelComparisonView(root, {
@@ -2436,7 +2436,7 @@
                 document.head.appendChild(link);
             }
             if (typeof window.mountMonitorBoard !== 'function') {
-                await loadScriptOnce('scripts/monitor-board.js?v=260920e');
+                await loadScriptOnce('scripts/monitor-board.js?v=260920f');
             }
             if (typeof window.mountMonitorBoard === 'function') {
                 const platform = new URLSearchParams(location.search).get('platform') || '';

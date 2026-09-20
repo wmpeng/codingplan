@@ -544,8 +544,8 @@
       state.boardRoot.textContent = state.config.loadingLabel || '加载中...';
       state.updateStatsBar(0, 0);
 
-      return fetch(getApiBase() + '/monitor/board?days=7')
-        .then(function (r) { return r.json(); })
+      return fetch(getApiBase() + '/monitor/board?days=7', { signal: AbortSignal.timeout(15000) })
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
         .then(function (resp) {
           state.boardData = (resp && resp.data) || resp;
           state.boardData = applyCatalogContext(state.boardData, state.catalogContext);
@@ -557,6 +557,10 @@
           state.boardRoot.className = 'monitor-board-panel monitor-empty';
           state.boardRoot.textContent = state.config.errorLabel || '数据加载失败，请稍后重试';
           state.updateStatsBar(0, 0);
+          const retry = document.createElement('button');
+          retry.type = 'button'; retry.className = 'tool-button monitor-retry'; retry.textContent = '重新加载';
+          retry.addEventListener('click', state.fetchBoard);
+          state.boardRoot.appendChild(retry);
         });
     };
 
@@ -677,8 +681,10 @@
       state.boardRoot.className = 'monitor-board-panel monitor-loading';
       state.boardRoot.textContent = '加载中...';
 
-      rootEl.appendChild(intro);
-      rootEl.appendChild(fullLink);
+      if (state.options.mode !== 'full') {
+        rootEl.appendChild(intro);
+        rootEl.appendChild(fullLink);
+      }
       rootEl.appendChild(toolbar);
       rootEl.appendChild(state.boardRoot);
 

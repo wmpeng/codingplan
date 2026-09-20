@@ -3,26 +3,17 @@
   function boot() {
     const host = document.getElementById('platformHubApp');
     if (!host || !root.EntityData || !root.PlatformCatalog) return;
-    Promise.all(['platforms.json', 'plans.json', 'models.json', 'plan-models.json', 'config.json'].map(file => fetch('/' + file, { cache: 'no-store' }).then(response => {
-      if (!response.ok) throw new Error(`${file} 加载失败`);
-      return response.json();
-    }))).then(([platformDoc, planDoc, modelDoc, relationDoc, appConfig]) => {
-      const context = root.EntityData.buildContext(platformDoc, planDoc, modelDoc, relationDoc);
+    root.CodingPlanToolPage.load().then(({ context, config: appConfig }) => {
       const platforms = root.EntityData.listPlatforms(context);
       const plans = root.EntityData.buildPlanCatalog(context);
       const config = appConfig && appConfig.platformCatalog || {};
-      const state = { platformSlugs: null, modelSlugs: null, planSlugs: null, modelMatch: 'any', platformStatusMax: 'delisted', platformTags: [] };
+      let state = root.CodingPlanFilters.createDefaultState(appConfig, { mode: 'full' });
       const search = host.querySelector('[data-hub-search]');
-      const status = host.querySelector('[data-hub-status]');
-      const tagHost = host.querySelector('[data-hub-tags]');
       const grid = host.querySelector('[data-hub-grid]');
       const empty = host.querySelector('[data-hub-empty]');
       const showing = host.querySelector('[data-hub-showing]');
       const pinned = root.PlatformCatalog.readPinnedIdsFromStorage(root.localStorage);
       let pinnedIds = root.PlatformCatalog.sanitizePinnedIds(pinned, platforms);
-
-      const tagValues = [...new Set([...(config.derivedTags || []).map(item => item.label), ...platforms.flatMap(item => item.tags || [])])];
-      tagHost.innerHTML = tagValues.map(tag => `<button type="button" class="hub-tag" data-hub-tag="${root.PlatformCatalog.escapeHtml(tag)}" aria-pressed="false">${root.PlatformCatalog.escapeHtml(tag)}</button>`).join('');
 
       function render() {
         let filtered = root.CodingPlanFilters
@@ -46,16 +37,6 @@
       }
 
       search.addEventListener('input', render);
-      status.addEventListener('change', () => { state.platformStatusMax = status.value; render(); });
-      tagHost.addEventListener('click', event => {
-        const button = event.target.closest('[data-hub-tag]');
-        if (!button) return;
-        const tag = button.getAttribute('data-hub-tag');
-        state.platformTags = state.platformTags.includes(tag) ? state.platformTags.filter(item => item !== tag) : [...state.platformTags, tag];
-        button.setAttribute('aria-pressed', String(state.platformTags.includes(tag)));
-        button.classList.toggle('is-active', state.platformTags.includes(tag));
-        render();
-      });
       grid.addEventListener('click', event => {
         const pinButton = event.target.closest('[data-platform-pin="1"]');
         if (pinButton) {
@@ -94,13 +75,10 @@
         }
       });
       if (root.PlatformComparison && root.PlatformComparison.mountLauncher) {
-        root.PlatformComparison.mountLauncher({ button: host.querySelector('[data-hub-compare]'), count: host.querySelector('[data-hub-compare-count]'), platforms, getPinnedIds: () => pinnedIds });
+        root.PlatformComparison.mountLauncher({ button: document.querySelector('[data-hub-compare]'), count: document.querySelector('[data-hub-compare-count]'), platforms, getPinnedIds: () => pinnedIds });
       }
-      render();
-    }).catch(error => {
-      host.querySelector('[data-hub-error]').hidden = false;
-      host.querySelector('[data-hub-error]').textContent = error.message || '平台数据加载失败';
-    });
+      root.CodingPlanToolPage.filters({ context, config: appConfig }, 'platforms', next => { state = next; render(); });
+    }).catch(error => root.CodingPlanToolPage.error(host, error.message));
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })(typeof globalThis !== 'undefined' ? globalThis : this);

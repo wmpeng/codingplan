@@ -45,23 +45,26 @@
     return `<div class="filter-range" data-range-group="${escapeHtml(key)}" data-range-key="${escapeHtml(label)}"><span>${escapeHtml(rangeLabels[label] || label)}</span><input aria-label="${escapeHtml(rangeLabels[label] || label)}最低" type="number" data-range-part="min" placeholder="最低" value="${escapeHtml(min)}"><span aria-hidden="true">—</span><input aria-label="${escapeHtml(rangeLabels[label] || label)}最高" type="number" data-range-part="max" placeholder="最高" value="${escapeHtml(max)}"></div>`;
   }
 
-  function mount() {
-    const mountPoint = document.getElementById('homepageUnifiedFiltersMount');
-    const context = root.codingplanEntityContext;
+  function mount(options) {
+    const opts = options || {};
+    const full = opts.mode === 'full';
+    const config = opts.config || root.appConfig || {};
+    const mountPoint = opts.element || document.getElementById('homepageUnifiedFiltersMount');
+    const context = opts.context || root.codingplanEntityContext;
     if (!mountPoint || !context || !root.EntityData) return false;
     if (mountPoint.dataset.mounted === '1') return true;
-    const catalog = (root.appConfig && root.appConfig.platformCatalog) || {};
+    const catalog = (config && config.platformCatalog) || {};
     const platforms = (context.platforms || []).filter(item => item.catalogVisible !== false);
     const plans = root.EntityData.buildPlanCatalog(context).filter(item => item.planTableVisible !== false);
     const models = (context.models || []).filter(item => item.catalogVisible !== false);
-    const defaultValidation = Filters.validateDefaults(root.appConfig && root.appConfig.homepageFilters && root.appConfig.homepageFilters.defaults, context);
-    if (!defaultValidation.ok) {
+    const defaultValidation = Filters.validateDefaults(config.homepageFilters && config.homepageFilters.defaults, context);
+    if (!full && !defaultValidation.ok) {
       mountPoint.innerHTML = `<p class="filter-state-error">首页默认筛选配置无效：${escapeHtml(defaultValidation.errors.join('；'))}</p>`;
       mountPoint.dataset.mounted = '1';
       console.error(defaultValidation.errors.join('\n'));
       return true;
     }
-    const defaults = Filters.createDefaultState(root.appConfig || {});
+    const defaults = Filters.createDefaultState(config, { mode: full ? 'full' : 'home' });
     const state = Filters.normalizeState(defaults);
     // 深链只预选当前平台，选择器的“恢复默认”仍回到配置中的精选名单。
     const configuredDefaults = {
@@ -71,7 +74,7 @@
     };
     const params = new URLSearchParams(root.location && root.location.search || '');
     const linkedPlatform = params.get('platform');
-    if (params.get('view') === 'plans' && linkedPlatform && platforms.some(item => item.slug === linkedPlatform)) {
+    if ((full || params.get('view') === 'plans') && linkedPlatform && platforms.some(item => item.slug === linkedPlatform)) {
       state.platformSlugs = [linkedPlatform];
     }
     state.__defaults = configuredDefaults;
@@ -83,7 +86,7 @@
         ${buildPicker({ id: 'homePlatformPicker', label: '平台', key: 'platformSlugs', items: platforms, state })}
         ${buildPicker({ id: 'homePlanPicker', label: '套餐', key: 'planSlugs', items: plans, state })}
         ${buildPicker({ id: 'homeModelPicker', label: '模型', key: 'modelSlugs', items: models, state })}
-        <details class="filter-picker" data-picker="budgetCny" id="homeBudgetPicker"><summary><span>月预算（人民币）</span><span class="filter-picker-count" data-budget-label>不限</span></summary>
+        <details class="filter-picker" data-picker="budgetCny" id="homeBudgetPicker"><summary><span>月预算（¥）</span><span class="filter-picker-count" data-budget-label>不限</span></summary>
           <div class="filter-picker-menu budget-menu">
             <div class="budget-heading">月预算<span>拖动滑块或点击金额输入</span></div>
             <div class="budget-values">
@@ -121,6 +124,28 @@
     more.appendChild(mountPoint.querySelector('[data-filter-hint]'));
     more.appendChild(mountPoint.querySelector('[data-active-limits]'));
 
+    if (full) {
+      mountPoint.querySelector('[data-filter-action="restore-all"]').textContent = '恢复全量';
+      mountPoint.querySelector('.filter-more > .filter-help').textContent = opts.view === 'monitor'
+        ? '只筛选已监控的平台和模型，未监控项目没有统计结果。不勾选表示不限。'
+        : '不勾选或全选均表示该项不限；不同筛选条件同时生效。';
+      const hide = selector => mountPoint.querySelectorAll(selector).forEach(el => { el.hidden = true; });
+      if (opts.view !== 'plans' && opts.view !== 'pricing') hide('[data-picker="planSlugs"], [data-picker="budgetCny"]');
+      const allowed = {
+        platforms: ['modelMatch', 'platformStatusMax'],
+        plans: ['modelMatch', 'platformStatusMax', 'includeDiscontinued'],
+        pricing: ['modelMatch', 'multimodal', 'aaScoreMin', 'deepSWEScoreMin', 'includeDiscontinued'],
+        monitor: ['modelMatch']
+      }[opts.view] || [];
+      mountPoint.querySelectorAll('[data-filter-field]').forEach(input => { input.closest('label').hidden = !allowed.includes(input.dataset.filterField); });
+      mountPoint.querySelectorAll('.filter-subgroup').forEach(group => {
+        const tags = group.querySelector('[data-tag-options]');
+        const range = group.querySelector('[data-range-group]');
+        group.hidden = tags ? !(opts.view === 'plans' || (opts.view === 'platforms' && tags.dataset.tagOptions === 'platformTags'))
+          : range ? !(opts.view === 'plans' || (opts.view === 'pricing' && range.dataset.rangeGroup === 'priceRanges')) : false;
+      });
+    }
+
     const tagValues = [...new Set(platforms.flatMap(item => Array.isArray(item.tags) ? item.tags : []))];
     const derived = (catalog.derivedTags || []).map(item => item.label).filter(Boolean);
     const planTags = [...new Set(plans.flatMap(item => Array.isArray(item.tags) ? item.tags : []))];
@@ -142,7 +167,7 @@
       else el.textContent = `${label}${selected.length}项`;
     }
 
-    const budgetScaleBase = Math.max(1000, Math.ceil(Math.max(0, ...plans.map(plan => Filters.toCny(plan.monthlyPrice, plan.currency, root.appConfig.usdToCnyRate) || 0)) / 100) * 100);
+    const budgetScaleBase = Math.max(1000, Math.ceil(Math.max(0, ...plans.map(plan => Filters.toCny(plan.monthlyPrice, plan.currency, config.usdToCnyRate) || 0)) / 100) * 100);
     let budgetScaleMax = budgetScaleBase;
     const budgetPosition = value => Math.sqrt(Math.max(0, Math.min(budgetScaleMax, value)) / budgetScaleMax) * 1000;
     const budgetAmount = position => Math.round((Number(position) / 1000) ** 2 * budgetScaleMax);
@@ -251,7 +276,8 @@
       const clean = Filters.normalizeState(state);
       delete clean.__defaults;
       root.__codingplanUnifiedFiltersState = clean;
-      if (root.__codingplanHomeApi && typeof root.__codingplanHomeApi.setUnifiedFilters === 'function') root.__codingplanHomeApi.setUnifiedFilters(clean);
+      if (!full && root.__codingplanHomeApi && typeof root.__codingplanHomeApi.setUnifiedFilters === 'function') root.__codingplanHomeApi.setUnifiedFilters(clean);
+      if (opts.onChange) opts.onChange(clean);
       root.dispatchEvent(new CustomEvent('codingplan:filters-changed', { detail: { state: clean } }));
       render();
     }
@@ -370,7 +396,7 @@
       const globalAction = event.target.closest('[data-filter-action]');
       if (globalAction) {
         if (globalAction.getAttribute('data-filter-action') === 'restore-all') {
-          const restored = Filters.createDefaultState(root.appConfig || {});
+          const restored = Filters.createDefaultState(config, { mode: full ? 'full' : 'home' });
           for (const key of Object.keys(restored)) state[key] = restored[key];
         } else {
           state.platformSlugs = [];
@@ -414,7 +440,7 @@
         if (!picker.contains(event.target)) picker.open = false;
       });
     });
-    document.body.classList.add('homepage-unified-active');
+    document.body.classList.add(full ? 'tool-unified-active' : 'homepage-unified-active');
     root.__codingplanUnifiedFiltersState = Filters.normalizeState(state);
     render();
     publish();
@@ -427,6 +453,8 @@
     root.setTimeout(() => { if (!mount()) waitForCatalog(); }, 250);
   }
 
+  root.CodingPlanFilterUI = { mount };
+  if (!document.getElementById('homepageUnifiedFiltersMount')) return;
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', waitForCatalog);
   else waitForCatalog();
 })(typeof globalThis !== 'undefined' ? globalThis : this);

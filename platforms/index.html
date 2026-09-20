@@ -9,41 +9,39 @@
   <link rel="canonical" href="https://vibecoding.dreamfree.space/platforms/">
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/styles/shared.css">
-  <link rel="stylesheet" href="/styles/platform-guide.css">
-  <link rel="stylesheet" href="/styles/tool-page.css">
+  <link rel="stylesheet" href="/styles/platform-cards.css?v=260920f">
+  <link rel="stylesheet" href="/styles/platform-comparison.css">
+  <link rel="stylesheet" href="/styles/tool-page.css?v=260920f"><link rel="stylesheet" href="/styles/homepage-filters.css?v=260920f">
 </head>
-<body class="tool-page platform-guide">
+<body class="tool-page">
   <main class="tool-page-main">
     <div class="tool-topbar">
       <a class="tool-brand" href="/">Coding Plan</a>
-      <nav class="tool-nav" aria-label="主导航"><a href="/platforms/" aria-current="page">平台</a><a href="/pricing/">价格</a><a href="/plans/">套餐</a><a href="/monitor/">可用性</a></nav>
+      <nav class="tool-nav" aria-label="主导航"><a href="/platforms/" aria-current="page">平台</a><a href="/pricing/">价格与额度</a><a href="/plans/">套餐</a><a href="/monitor/">可用性监控</a></nav>
     </div>
     <div class="tool-breadcrumb"><a href="/">首页</a><span>/</span><span aria-current="page">平台中心</span></div>
     <header class="tool-hero">
-      <div><p class="tool-eyebrow">PLATFORM DIRECTORY</p><h1>AI 编程平台大全</h1><p>先按名称、购买状态和标签缩小范围，再进入平台介绍或横向比较。这里展示完整平台目录。</p></div>
+      <div><h1>平台中心</h1><p>查看平台支持的模型、购买状态和套餐；点击卡片了解详情，也可以选择平台横向比较。</p></div>
       <button type="button" class="tool-button primary" data-hub-compare>开始横向对比 <span data-hub-compare-count></span></button>
     </header>
+    <div id="toolFilters" aria-label="筛选条件"></div>
     <section id="platformHubApp">
-      <div class="tool-panel platform-hub-panel">
-        <div class="platform-hub-tools"><input type="search" data-hub-search placeholder="搜索平台名称或 slug" aria-label="搜索平台"><select data-hub-status aria-label="平台状态"><option value="open">开放购买</option><option value="limited">含定时放量</option><option value="paused">含暂停售</option><option value="delisted" selected>全部状态</option></select></div>
-        <div data-hub-tags aria-label="平台标签"></div>
-        <div class="tool-count" data-hub-showing>加载中…</div>
-      </div>
+      <div class="tool-result-bar"><input type="search" data-hub-search placeholder="搜索平台名称" aria-label="搜索平台"><span class="tool-count" data-hub-showing aria-live="polite">加载中…</span></div>
       <div class="platform-card-grid" data-hub-grid></div>
       <p class="tool-empty" data-hub-empty hidden>当前条件下没有平台。</p>
       <p class="tool-empty" data-hub-error hidden></p>
     </section>
-    <section class="tool-panel platform-guide-directory"><p class="tool-eyebrow">平台介绍</p><h2>先了解平台，再选择套餐</h2><div class="hub-guide-grid"><a class="hub-guide-card" href="/platforms/command-code/"><strong>Command Code</strong><span>了解 Command Code 的 Go、GOAT、Pro 三档个人订阅，查看支持模型、美元 Credits、模型额度和客户端限制，判断适合自己的多模型编程工作流。</span><span>阅读介绍 →</span></a><a class="hub-guide-card" href="/platforms/minimax/"><strong>MiniMax Token Plan</strong><span>了解 MiniMax Token Plan 的新 Plus、新 Max、新 Ultra 套餐，查看价格、支持模型、实测用量口径和接入要点，判断是否适合自己的编程与 Agent 工作流。</span><span>阅读介绍 →</span></a><a class="hub-guide-card" href="/platforms/opencode/"><strong>OpenCode Go</strong><span>了解 OpenCode Go 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。</span><span>阅读介绍 →</span></a><a class="hub-guide-card" href="/platforms/zhipu/"><strong>智谱 GLM Coding Plan</strong><span>了解智谱 GLM Coding Plan 的 Lite、Pro、Max 套餐，查看价格、支持模型、积分额度和接入边界，按自己的编程工作量选择档位。</span><span>阅读介绍 →</span></a></div></section>
+    <section class="tool-panel platform-guide-directory"><h2>平台介绍</h2><div class="hub-guide-grid"><a class="hub-guide-card" href="/platforms/command-code/"><strong>Command Code</strong><span>了解 Command Code 的 Go、GOAT、Pro 三档个人订阅，查看支持模型、美元 Credits、模型额度和客户端限制，判断适合自己的多模型编程工作流。</span><span>阅读介绍 →</span></a><a class="hub-guide-card" href="/platforms/minimax/"><strong>MiniMax Token Plan</strong><span>了解 MiniMax Token Plan 的新 Plus、新 Max、新 Ultra 套餐，查看价格、支持模型、实测用量口径和接入要点，判断是否适合自己的编程与 Agent 工作流。</span><span>阅读介绍 →</span></a><a class="hub-guide-card" href="/platforms/opencode/"><strong>OpenCode Go</strong><span>了解 OpenCode Go 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。</span><span>阅读介绍 →</span></a><a class="hub-guide-card" href="/platforms/zhipu/"><strong>智谱 GLM Coding Plan</strong><span>了解智谱 GLM Coding Plan 的 Lite、Pro、Max 套餐，查看价格、支持模型、积分额度和接入边界，按自己的编程工作量选择档位。</span><span>阅读介绍 →</span></a></div></section>
     <footer class="tool-footer"><span>价格、活动和可用模型可能变化，购买前请核对官方页面。</span><a href="/">返回首页</a></footer>
   </main>
   <div id="platformDetailOverlay" class="platform-detail-overlay" hidden><div class="platform-detail-backdrop" data-platform-detail-close="1"></div><div class="platform-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="platformDetailTitle" tabindex="-1"><button type="button" class="platform-detail-close" id="platformDetailClose" aria-label="关闭">×</button><div id="platformDetailBody"></div></div></div>
   <script src="/monitor/monitor-config.js"></script>
-  <script src="/scripts/entity-data.js"></script>
-  <script src="/scripts/filter-state.js"></script>
+  <script src="/scripts/entity-data.js"></script><script src="/scripts/filter-state.js?v=260920f"></script><script src="/scripts/homepage-filters.js?v=260920f"></script><script src="/scripts/tool-page.js?v=260920f"></script>
+
   <script src="/scripts/platform-pages.js"></script>
   <script src="/scripts/platform-catalog.js"></script>
   <script src="/scripts/platform-detail.js"></script>
   <script src="/scripts/platform-comparison.js"></script>
-  <script src="/scripts/platforms-page.js"></script>
+  <script src="/scripts/platforms-page.js?v=260920f"></script>
 </body>
 </html>

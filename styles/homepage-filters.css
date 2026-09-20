@@ -1,5 +1,5 @@
-.homepage-unified-active #platformTagBar,
-.homepage-unified-active #plansTableSection > .filter-bar {
+:is(.homepage-unified-active, .tool-unified-active) #platformTagBar,
+:is(.homepage-unified-active, .tool-unified-active) #plansTableSection > .filter-bar {
   display: none;
 }
 
@@ -16,17 +16,17 @@
   text-decoration: underline;
 }
 
-.homepage-unified-active .main-view-shell > .filter-state-bar {
+:is(.homepage-unified-active, .tool-unified-active) .main-view-shell > .filter-state-bar {
   margin-bottom: 12px;
 }
 
-.homepage-unified-active .usage-view > .usage-filters,
-.homepage-unified-active #view-monitor .monitor-control,
-.homepage-unified-active #view-monitor #monitorClearFilters {
+:is(.homepage-unified-active, .tool-unified-active) .usage-view > .usage-filters,
+:is(.homepage-unified-active, .tool-unified-active) #view-monitor .monitor-control,
+:is(.homepage-unified-active, .tool-unified-active) #view-monitor #monitorClearFilters {
   display: none;
 }
 
-.homepage-unified-active .filter-state-bar {
+:is(.homepage-unified-active, .tool-unified-active) .filter-state-bar {
   background: rgba(255, 255, 255, .96);
   padding: 14px;
   margin-bottom: 12px;
@@ -34,17 +34,17 @@
   z-index: 60;
 }
 
-.homepage-unified-active .filter-picker[open] { z-index: 31; }
-.homepage-unified-active .filter-inline input[type="checkbox"] { width: auto; }
+:is(.homepage-unified-active, .tool-unified-active) .filter-picker[open] { z-index: 31; }
+:is(.homepage-unified-active, .tool-unified-active) .filter-inline input[type="checkbox"] { width: auto; }
 
-.homepage-unified-active .filter-state-hint {
+:is(.homepage-unified-active, .tool-unified-active) .filter-state-hint {
   margin: 9px 2px 0;
   color: #64748b;
   font-size: 12px;
   line-height: 1.5;
 }
 
-.homepage-unified-active .filter-subgroup {
+:is(.homepage-unified-active, .tool-unified-active) .filter-subgroup {
   grid-column: span 2;
   border: 1px solid var(--tool-line, #e2e8f0);
   border-radius: 10px;
@@ -53,30 +53,30 @@
   font-size: 12px;
 }
 
-.homepage-unified-active .filter-subgroup strong {
+:is(.homepage-unified-active, .tool-unified-active) .filter-subgroup strong {
   display: block;
   margin-bottom: 6px;
   color: #334155;
 }
 
-.homepage-unified-active .filter-subgroup label,
-.homepage-unified-active .filter-range {
+:is(.homepage-unified-active, .tool-unified-active) .filter-subgroup label,
+:is(.homepage-unified-active, .tool-unified-active) .filter-range {
   display: flex;
   align-items: center;
   gap: 6px;
   margin: 5px 0;
 }
 
-.homepage-unified-active .filter-subgroup label {
+:is(.homepage-unified-active, .tool-unified-active) .filter-subgroup label {
   display: inline-flex;
   margin-right: 10px;
 }
 
-.homepage-unified-active .filter-range span:first-child {
+:is(.homepage-unified-active, .tool-unified-active) .filter-range span:first-child {
   min-width: 105px;
 }
 
-.homepage-unified-active .filter-range input {
+:is(.homepage-unified-active, .tool-unified-active) .filter-range input {
   width: 82px;
   box-sizing: border-box;
   border: 1px solid var(--tool-line, #e2e8f0);
@@ -85,14 +85,14 @@
 }
 
 @media (max-width: 800px) {
-  .homepage-unified-active .filter-subgroup { grid-column: span 1; }
+  :is(.homepage-unified-active, .tool-unified-active) .filter-subgroup { grid-column: span 1; }
 }
 
 .filter-active-limits { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
 .filter-picker-menu label[hidden] { display: none; }
 
 /* Match the original Tab filter bar: compact controls and restrained borders. */
-.homepage-unified-active .filter-state-bar {
+:is(.homepage-unified-active, .tool-unified-active) .filter-state-bar {
   padding: 10px 12px;
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -100,16 +100,16 @@
   box-shadow: var(--shadow-sm);
   overflow: visible;
 }
-.homepage-unified-active .filter-state-summary { display: none; }
-.homepage-unified-active .filter-state-grid {
+:is(.homepage-unified-active, .tool-unified-active) .filter-state-summary { display: none; }
+:is(.homepage-unified-active, .tool-unified-active) .filter-state-grid {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
   margin: 0;
 }
-.homepage-unified-active .filter-picker { flex: 0 0 auto; }
-.homepage-unified-active .filter-picker > summary {
+:is(.homepage-unified-active, .tool-unified-active) .filter-picker { flex: 0 0 auto; }
+:is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary {
   width: auto;
   min-height: 38px;
   gap: 10px;
@@ -122,7 +122,7 @@
   font-size: 13px;
   font-weight: 500;
 }
-.homepage-unified-active .filter-picker > summary::after {
+:is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary::after {
   content: '';
   width: 6px;
   height: 6px;
@@ -130,13 +130,13 @@
   border-bottom: 1.5px solid currentColor;
   transform: translateY(-2px) rotate(45deg);
 }
-.homepage-unified-active .filter-picker[open] > summary,
-.homepage-unified-active .filter-picker > summary:hover {
+:is(.homepage-unified-active, .tool-unified-active) .filter-picker[open] > summary,
+:is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary:hover {
   border-color: rgba(11, 104, 209, .35);
   color: var(--accent-primary);
   background: #f3f8ff;
 }
-.homepage-unified-active .filter-picker-count {
+:is(.homepage-unified-active, .tool-unified-active) .filter-picker-count {
   padding: 1px 6px;
   border-radius: 5px;
   background: #edf3fb;
@@ -145,8 +145,8 @@
   font-weight: 600;
   white-space: nowrap;
 }
-.homepage-unified-active .filter-state-actions { width: auto; margin-left: auto; gap: 8px; }
-.homepage-unified-active .filter-state-actions .filter-state-btn {
+:is(.homepage-unified-active, .tool-unified-active) .filter-state-actions { width: auto; margin-left: auto; gap: 8px; }
+:is(.homepage-unified-active, .tool-unified-active) .filter-state-actions .filter-state-btn {
   min-height: 38px;
   padding: 8px 12px;
   border-radius: 9px;
@@ -155,8 +155,8 @@
   background: #fff;
   font-weight: 500;
 }
-.homepage-unified-active .filter-state-actions .primary { color: var(--accent-primary); border-color: #b9d2ef; background: #f3f8ff; }
-.homepage-unified-active .filter-picker-menu {
+:is(.homepage-unified-active, .tool-unified-active) .filter-state-actions .primary { color: var(--accent-primary); border-color: #b9d2ef; background: #f3f8ff; }
+:is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu {
   width: 320px;
   right: auto;
   max-height: min(420px, 60vh);
@@ -167,30 +167,30 @@
   border-radius: 12px;
   box-shadow: 0 12px 28px rgba(16, 23, 37, .14);
 }
-.homepage-unified-active .filter-picker-menu > * { flex-shrink: 0; }
-.homepage-unified-active [data-picker-options] { overflow-y: auto; min-height: 0; flex: 1 1 auto; overscroll-behavior: contain; }
-.homepage-unified-active .filter-picker-menu label { align-items: center; gap: 10px; padding: 8px; border-radius: 6px; color: var(--text-secondary); }
-.homepage-unified-active .filter-picker-menu input[type="checkbox"] { accent-color: var(--accent-primary); width: 14px; height: 14px; }
-.homepage-unified-active .filter-more { border: 0; margin-top: 8px; padding-top: 0; }
-.homepage-unified-active .filter-more > summary { width: fit-content; font-size: 12px; color: var(--text-tertiary); padding: 3px 0; }
-.homepage-unified-active .filter-more[open] { border-top: 1px solid var(--border-light); padding-top: 8px; }
-.homepage-unified-active .filter-active-limits .filter-state-btn { font-size: 12px; padding: 4px 8px; background: #f8fafc; }
-.homepage-unified-active .filter-picker > summary:focus-visible,
-.homepage-unified-active .filter-state-btn:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+:is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu > * { flex-shrink: 0; }
+:is(.homepage-unified-active, .tool-unified-active) [data-picker-options] { overflow-y: auto; min-height: 0; flex: 1 1 auto; overscroll-behavior: contain; }
+:is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu label { align-items: center; gap: 10px; padding: 8px; border-radius: 6px; color: var(--text-secondary); }
+:is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu input[type="checkbox"] { accent-color: var(--accent-primary); width: 14px; height: 14px; }
+:is(.homepage-unified-active, .tool-unified-active) .filter-more { border: 0; margin-top: 8px; padding-top: 0; }
+:is(.homepage-unified-active, .tool-unified-active) .filter-more > summary { width: fit-content; font-size: 12px; color: var(--text-tertiary); padding: 3px 0; }
+:is(.homepage-unified-active, .tool-unified-active) .filter-more[open] { border-top: 1px solid var(--border-light); padding-top: 8px; }
+:is(.homepage-unified-active, .tool-unified-active) .filter-active-limits .filter-state-btn { font-size: 12px; padding: 4px 8px; background: #f8fafc; }
+:is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary:focus-visible,
+:is(.homepage-unified-active, .tool-unified-active) .filter-state-btn:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
 @media (max-width: 800px) {
-  .homepage-unified-active .filter-picker { flex: 1 1 calc(50% - 10px); min-width: 0; }
-  .homepage-unified-active .filter-picker > summary { width: 100%; }
-  .homepage-unified-active .filter-picker-menu { width: auto; left: 12px; right: 12px; }
-  .homepage-unified-active .filter-state-actions { margin-left: 0; width: 100%; }
+  :is(.homepage-unified-active, .tool-unified-active) .filter-picker { flex: 1 1 calc(50% - 10px); min-width: 0; }
+  :is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary { width: 100%; }
+  :is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu { width: auto; left: 12px; right: 12px; }
+  :is(.homepage-unified-active, .tool-unified-active) .filter-state-actions { margin-left: 0; width: 100%; }
 }
 
-.homepage-unified-active .filter-picker-menu { font-family: inherit; font-size: 13px; line-height: 1.5; }
-.homepage-unified-active .budget-menu { width: 350px; padding: 16px; gap: 12px; overflow-y: auto; }
+:is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu { font-family: inherit; font-size: 13px; line-height: 1.5; }
+:is(.homepage-unified-active, .tool-unified-active) .budget-menu { width: 350px; padding: 16px; gap: 12px; overflow-y: auto; }
 .budget-heading { display: flex; align-items: center; justify-content: space-between; color: var(--text-primary); font-size: 14px; font-weight: 600; }
 .budget-heading span { font-size: 12px; color: var(--text-tertiary); font-weight: 400; }
-.homepage-unified-active .budget-values { display: flex; align-items: center; gap: 12px; }
-.homepage-unified-active .budget-values label { display: block; flex: 1; min-width: 0; padding: 0; font-size: 12px; color: var(--text-secondary); }
-.homepage-unified-active .budget-values label:hover { background: transparent; }
+:is(.homepage-unified-active, .tool-unified-active) .budget-values { display: flex; align-items: center; gap: 12px; }
+:is(.homepage-unified-active, .tool-unified-active) .budget-values label { display: block; flex: 1; min-width: 0; padding: 0; font-size: 12px; color: var(--text-secondary); }
+:is(.homepage-unified-active, .tool-unified-active) .budget-values label:hover { background: transparent; }
 .budget-values label > div { display: flex; align-items: center; gap: 6px; border: 1px solid var(--border-color); border-radius: 8px; padding: 8px 10px; margin-top: 5px; background: #fff; }
 .budget-values label > div:focus-within { border-color: var(--accent-primary); box-shadow: 0 0 0 2px rgba(11,104,209,.08); }
 .budget-values input { width: 100%; min-width: 0; border: 0; outline: 0; color: var(--text-primary); font: inherit; font-size: 15px; font-variant-numeric: tabular-nums; background: transparent; }
@@ -207,7 +207,17 @@
 .budget-presets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
 .budget-presets button { border: 1px solid var(--border-color); background: #fff; border-radius: 7px; padding: 7px 4px; color: var(--text-secondary); font: inherit; font-size: 12px; cursor: pointer; }
 .budget-presets button:hover, .budget-presets button[aria-pressed="true"] { background: #edf5ff; border-color: #91bdf1; color: var(--accent-primary); }
-.homepage-unified-active .budget-menu .filter-help { margin: 0; font-size: 12px; line-height: 1.6; color: var(--text-tertiary); }
-.homepage-unified-active .budget-footer { margin: 0; padding: 10px 0 0; border-bottom: 0; border-top: 1px solid var(--border-light); justify-content: space-between; }
-.homepage-unified-active .budget-footer [data-budget-action="done"] { border-radius: 6px; padding: 5px 16px; background: var(--accent-primary); color: #fff; }
-@media (max-width: 800px) { .homepage-unified-active .budget-menu { width: auto; } }
+:is(.homepage-unified-active, .tool-unified-active) .budget-menu .filter-help { margin: 0; font-size: 12px; line-height: 1.6; color: var(--text-tertiary); }
+:is(.homepage-unified-active, .tool-unified-active) .budget-footer { margin: 0; padding: 10px 0 0; border-bottom: 0; border-top: 1px solid var(--border-light); justify-content: space-between; }
+:is(.homepage-unified-active, .tool-unified-active) .budget-footer [data-budget-action="done"] { border-radius: 6px; padding: 5px 16px; background: var(--accent-primary); color: #fff; }
+@media (max-width: 800px) { :is(.homepage-unified-active, .tool-unified-active) .budget-menu { width: auto; } }
+
+.tool-unified-active [hidden] { display: none !important; }
+.tool-unified-active .filter-state-bar { position: relative; top: auto; }
+.tool-unified-active .filter-more-grid { padding-bottom: 6px; }
+
+/* Display controls belong to the chart, even when filtering is shared. */
+:is(.homepage-unified-active, .tool-unified-active) .usage-view > .usage-filters { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; padding: 10px 14px; border-radius: 10px; background: #fff; border: 1px solid var(--border-color); }
+:is(.homepage-unified-active, .tool-unified-active) .usage-filters > .filter-dropdown,
+:is(.homepage-unified-active, .tool-unified-active) .usage-filters > .usage-inline-filter,
+:is(.homepage-unified-active, .tool-unified-active) .usage-filters [data-action="restore-defaults"] { display: none; }
