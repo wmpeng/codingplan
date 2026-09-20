@@ -2228,7 +2228,7 @@
                 const filteredUnified = CodingPlanFilters.filterPlatforms(allPlatforms, window.__codingplanUnifiedFiltersState, {
                     platformCatalog: cat,
                     context: entityContext,
-                    entityData: EntityData
+                    usdToCnyRate: appConfig.usdToCnyRate, entityData: EntityData
                 });
                 const orderedUnified = PlatformCatalog.sortPlatformsByPinned
                     ? PlatformCatalog.sortPlatformsByPinned(filteredUnified, platformPinnedIds)
@@ -2366,7 +2366,7 @@
                 document.head.appendChild(link);
             }
             if (typeof window.mountModelComparisonView !== 'function') {
-                await loadScriptOnce('scripts/model-comparison.js?v=260920g');
+                await loadScriptOnce('scripts/model-comparison.js?v=260921a');
             }
             if (typeof window.mountModelComparisonView === 'function') {
                 await window.mountModelComparisonView(root, {

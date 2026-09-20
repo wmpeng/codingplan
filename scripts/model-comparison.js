@@ -127,8 +127,9 @@
         const shared = root.CodingPlanFilters || (typeof require === 'function' ? require('./filter-state.js') : null);
         const selected = (values, specified) => specified || values.size ? [...values] : null;
         return shared.filterPoints(points, shared.normalizeState({
-            platformSlugs: selected(platforms, state.platformsSpecified),
-            modelSlugs: selected(models, state.modelsSpecified),
+            ...(state.sharedFilters || {}),
+            platformSlugs: state.sharedFilters ? state.sharedFilters.platformSlugs : selected(platforms, state.platformsSpecified),
+            modelSlugs: state.sharedFilters ? state.sharedFilters.modelSlugs : selected(models, state.modelsSpecified),
             modelMatch: state.modelMatch === 'all' && state.modelsSpecified ? 'all' : 'any',
             includeDiscontinued: state.includeDiscontinued !== false,
             multimodal: state.multimodal,
@@ -836,6 +837,7 @@
             });
             const documents = await Promise.all(responses.map(response => response.json()));
             const context = root.EntityData.buildContext(...documents);
+            context.modelGroups = presetConfig.groups || [];
             const rate = root.appConfig && root.appConfig.usdToCnyRate || 6.8;
             const points = root.EntityData.buildComparisonPoints(context, rate);
             const platformMap = new Map();
@@ -890,6 +892,7 @@
                 const budget = external.budgetCny;
                 state.priceRanges = external.priceRanges || {};
                 state.filterContext = context;
+                state.sharedFilters = external;
                 const monthlyRange = external.priceRanges && external.priceRanges.monthlyPrice;
                 const numericBounds = values => values
                     .filter(value => value !== null && value !== undefined && value !== '')
@@ -1078,7 +1081,7 @@
                     platformsSpecified: state.platformsSpecified, modelsSpecified: state.modelsSpecified,
                     modelMatch: state.modelMatch, includeDiscontinued: state.includeDiscontinued,
                     monthlyTokenRange: state.monthlyTokenRange,
-                    priceRanges: state.priceRanges, filterContext: state.filterContext
+                    priceRanges: state.priceRanges, filterContext: state.filterContext, sharedFilters: state.sharedFilters
                 });
                 const visibleFiltered = filterBySoloColorKey(filtered, state.colorMode, state.soloColorKey);
                 const usagePoints = buildUsageChartPoints(visibleFiltered);

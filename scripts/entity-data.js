@@ -49,7 +49,7 @@
       if (!relationsByPlanSlug.has(relation.planSlug)) relationsByPlanSlug.set(relation.planSlug, []);
       relationsByPlanSlug.get(relation.planSlug).push(relation);
     });
-    return { platforms, plans, models, planModels, platformBySlug, planBySlug, modelBySlug, relationsByPlanSlug };
+    return { workload: planModelDoc.workload, platforms, plans, models, planModels, platformBySlug, planBySlug, modelBySlug, relationsByPlanSlug };
   }
 
   function listPlatforms(context, options) {

@@ -10,7 +10,7 @@ const unrestricted = (overrides = {}) => Filters.normalizeState({
   ...overrides
 });
 
-test('月 Token 按同一模型关系匹配，不相加；未知与按量 API 仅在范围启用时排除', () => {
+test('月 Token 按同一模型关系匹配，不相加；未知订阅在范围启用时排除，按量 API 保留', () => {
   const plan = { slug: 'p', supportedModels: ['a', 'b'], monthlyTokenOptions: [
     { modelSlug: 'a', value: 100 }, { modelSlug: 'b', value: 300 }, { modelSlug: 'b', value: null }
   ] };
@@ -29,7 +29,7 @@ test('月 Token 按同一模型关系匹配，不相加；未知与按量 API �
     { slug: 'api', billingMode: 'payg' }
   ];
   assert.deepEqual(Filters.filterPoints(points, unrestricted()), points);
-  assert.deepEqual(Filters.filterPoints(points, unrestricted({ monthlyTokenRange: { min: 200 } })).map(p => p.slug), ['b']);
+  assert.deepEqual(Filters.filterPoints(points, unrestricted({ monthlyTokenRange: { min: 200 } })).map(p => p.slug), ['b', 'api']);
   assert.deepEqual(Filters.filterPoints(points, state), []);
   assert.equal(Filters.tokenInRange('unlimited', { min: 200, max: null }), true);
   assert.equal(Filters.tokenInRange('unlimited', { min: null, max: 200 }), false);

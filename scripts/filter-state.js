@@ -73,6 +73,13 @@
       platformSlugs: entitySelection(input.platformSlugs === undefined ? base.platformSlugs : input.platformSlugs),
       modelSlugs: entitySelection(input.modelSlugs === undefined ? base.modelSlugs : input.modelSlugs),
       modelMatch: input.modelMatch === 'all' ? 'all' : 'any',
+      useCase: ['coding', 'general', 'api'].includes(input.useCase) ? input.useCase : 'any',
+      tool: ['codex', 'claude', 'github', 'other'].includes(input.tool) ? input.tool : 'any',
+      modelGroup: ['sota-models', 'high-volume-models'].includes(input.modelGroup) ? input.modelGroup : 'any',
+      imageRequired: input.imageRequired === true,
+      domesticNetworkOnly: input.domesticNetworkOnly === true,
+      domesticPaymentOnly: input.domesticPaymentOnly === true,
+      preference: ['cost', 'quality', 'variety'].includes(input.preference) ? input.preference : 'balanced',
       monthlyTokenRange: cloneRange(input.monthlyTokenRange),
       tokenUnit: input.tokenUnit === 'M' ? 'M' : 'yi',
       budgetCny: cloneRange(input.budgetCny === undefined ? base.budgetCny : input.budgetCny),
@@ -175,6 +182,10 @@
     const current = normalizeState(state);
     const opts = options || {};
     const rate = opts.usdToCnyRate;
+    if (opts.context && Array.isArray(opts.context.plans)) {
+      const ids = new Set(matchingOffers(opts.context, current, opts).map(offer => offer.plan.slug));
+      return (plans || []).filter(plan => plan.planTableVisible !== false && ids.has(plan.slug));
+    }
     return (plans || []).filter(plan => {
       if (plan.planTableVisible === false) return false;
       if (!current.includeDiscontinued && plan.discontinued) return false;
@@ -215,6 +226,10 @@
     const current = normalizeState(state);
     const opts = options || {};
     const config = opts.platformCatalog || {};
+    if (opts.context && Array.isArray(opts.context.plans)) {
+      const ids = new Set(matchingOffers(opts.context, current, opts).map(offer => offer.platform.slug));
+      return (platforms || []).filter(platform => ids.has(platform.slug));
+    }
     return (platforms || []).filter(platform => {
       if (platform.catalogVisible === false) return false;
       if (!selectedMatch(platform.slug, current.platformSlugs)) return false;
@@ -241,12 +256,16 @@
     const current = normalizeState(state);
     const opts = options || {};
     const rate = opts.usdToCnyRate;
+    if (opts.context && Array.isArray(opts.context.plans)) {
+      const ids = new Set(matchingOffers(opts.context, current, opts).flatMap(offer => offer.rows.map(row => row.slug)));
+      return (points || []).filter(point => ids.has(point.slug));
+    }
     const modelGroups = new Map();
     if (current.modelSlugs !== null && current.modelMatch === 'all') {
       (points || []).forEach(point => {
         if (point.platformVisible === false || (point.planTableVisible === false && point.billingMode !== 'payg')) return;
         if (!current.includeDiscontinued && point.discontinued) return;
-        if (current.monthlyTokenRange && (point.billingMode !== 'subscription' || !tokenInRange(point.monthlyTokenInM, current.monthlyTokenRange))) return;
+        if (current.monthlyTokenRange && point.billingMode !== 'payg' && !tokenInRange(point.monthlyTokenInM, current.monthlyTokenRange)) return;
         const key = `${point.platformSlug || ''}::${point.billingMode || ''}::${point.planSlug || ''}`;
         if (!modelGroups.has(key)) modelGroups.set(key, new Set());
         modelGroups.get(key).add(point.modelSlug);
@@ -258,7 +277,8 @@
       if (!current.includeDiscontinued && point.discontinued) return false;
       if (!selectedMatch(point.platformSlug, current.platformSlugs)) return false;
       if (!selectedMatch(point.modelSlug, current.modelSlugs)) return false;
-      if (current.monthlyTokenRange && (point.billingMode !== 'subscription' || !tokenInRange(point.monthlyTokenInM, current.monthlyTokenRange))) return false;
+      if (current.monthlyTokenRange && point.billingMode !== 'payg' && !tokenInRange(point.monthlyTokenInM, current.monthlyTokenRange)) return false;
+      if (point.billingMode === 'payg' && current.monthlyTokenRange && current.budgetCny && !inRange(apiCost(point, current), current.budgetCny)) return false;
       if (current.modelMatch === 'all' && current.modelSlugs !== null) {
         const key = `${point.platformSlug || ''}::${point.billingMode || ''}::${point.planSlug || ''}`;
         const available = modelGroups.get(key) || new Set();
@@ -283,6 +303,55 @@
       }
       return true;
     });
+  }
+
+  function targetTokens(state) {
+    const range = state.monthlyTokenRange;
+    return range ? (range.min == null ? range.max : range.min) : null;
+  }
+
+  function apiCost(row, state) {
+    const amount = targetTokens(state);
+    const unit = nullableNumber(row.usage ? row.usage.unitPriceCnyPerM : row.unitPriceCnyPerM, null);
+    return amount === null || unit === null ? null : amount * unit;
+  }
+
+  // All eligibility conditions are evaluated on the same plan and model relation.
+  function matchingOffers(context, state, options) {
+    const s = normalizeState(state), opts = options || {};
+    const selectedGroup = (context.modelGroups || []).find(group => group.id === s.modelGroup);
+    const offers = [];
+    for (const plan of context.plans) {
+      const platform = context.platformBySlug.get(plan.platformSlug);
+      if (!platform || platform.catalogVisible === false || (plan.planTableVisible === false && plan.billingMode !== 'payg')) continue;
+      if (!s.includeDiscontinued && plan.discontinued) continue;
+      if (!selectedMatch(platform.slug, s.platformSlugs)) continue;
+      if ((STATUS_RANK[platform.platformStatus || 'open'] || 0) > STATUS_RANK[s.platformStatusMax]) continue;
+      if (s.platformTags.length && !s.platformTags.every(tag => platformTagMatches(platform, tag, opts.platformCatalog || {}))) continue;
+      if (s.domesticNetworkOnly && platform.requiresOverseasNetwork !== false) continue;
+      if (s.domesticPaymentOnly && platform.requiresOverseasPayment !== false) continue;
+      if (s.tool !== 'any' && platform.externalUsage !== true && platform.slug !== s.tool) continue;
+      if (s.useCase === 'api' && plan.billingMode !== 'payg') continue;
+      if (s.useCase === 'general' && platform.usageScope !== 'general' && plan.billingMode !== 'payg') continue;
+      const monthlyCost = toCny(plan.monthlyPrice, plan.currency, opts.usdToCnyRate);
+      if (plan.billingMode !== 'payg' && !inRange(monthlyCost, s.budgetCny)) continue;
+      if (plan.billingMode !== 'payg' && Object.entries(s.priceRanges).some(([key, range]) => !inRange(toCny(plan[key], plan.currency, opts.usdToCnyRate), range))) continue;
+      if (Object.entries(s.requestRanges).some(([key, range]) => !tokenInRange(plan[key] === '无限制' ? 'unlimited' : plan[key], range))) continue;
+      const rows = (context.relationsByPlanSlug.get(plan.slug) || []).filter(row => {
+        const model = context.modelBySlug.get(row.modelSlug);
+        if (!model || !selectedMatch(model.slug, s.modelSlugs)) return false;
+        if (s.modelGroup !== 'any' && (!selectedGroup || !selectedGroup.modelSlugs.includes(model.slug))) return false;
+        if (s.imageRequired && !(model.modalities && model.modalities.input && model.modalities.input.includes('image'))) return false;
+        if (s.multimodal === 'multimodal' && model.multimodal !== true) return false;
+        if (s.multimodal === 'text' && model.multimodal !== false) return false;
+        if (!scoreAtLeast(model, 'artificialAnalysis', s.aaScoreMin) || !scoreAtLeast(model, 'deepSWE', s.deepSWEScoreMin)) return false;
+        if (plan.billingMode === 'payg') return !(s.monthlyTokenRange && s.budgetCny) || inRange(apiCost(row, s), s.budgetCny);
+        return !s.monthlyTokenRange || tokenInRange(row.usage && row.usage.monthlyTokenInM, s.monthlyTokenRange);
+      });
+      if (!rows.length || (s.modelMatch === 'all' && s.modelSlugs && !s.modelSlugs.every(slug => rows.some(row => row.modelSlug === slug)))) continue;
+      offers.push({ plan, platform, rows, monthlyCost });
+    }
+    return offers;
   }
 
   function validateDefaults(raw, context) {
@@ -324,6 +393,9 @@
     filterPlans,
     filterPlatforms,
     filterPoints,
+    matchingOffers,
+    targetTokens,
+    apiCost,
     validateDefaults,
     selectionLabel
   };

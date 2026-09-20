@@ -228,3 +228,19 @@
 .global-token-unit button { border: 1px solid #cbd5e1; background: white; color: #334155; border-radius: 6px; padding: 7px 10px; cursor: pointer; }
 .global-token-unit button[aria-pressed="true"] { background: #173753; border-color: #173753; color: white; }
 .monthly-token-cell { min-width: 145px; font-variant-numeric: tabular-nums; }
+
+/* First-version purchasing filters are all visible, without a More drawer. */
+.guide-filter-fields { display:flex; flex-wrap:wrap; gap:12px 18px; padding:14px 0; }
+.guide-filter-fields .filter-inline { display:flex; gap:8px; align-items:center; font-size:13px; }
+.guide-filter-fields select { max-width:200px; border:1px solid #cbd5e1; border-radius:7px; padding:7px; background:#fff; }
+.guide-filter-fields input[type=checkbox] { width:16px; }
+.filter-state-actions { display:flex!important; gap:8px; flex-wrap:wrap; }
+.filter-active-limits { display:flex; gap:6px; flex-wrap:wrap; margin-top:10px; }
+.filter-state-actions button,.filter-active-limits button { border:1px solid #cbd5e1; border-radius:7px; background:white; padding:6px 10px; color:#334155; cursor:pointer; }
+.filter-state-grid > .filter-picker { min-width:130px; }
+.budget-menu .filter-inline { display:flex; gap:8px; align-items:center; }
+.budget-menu input[type=number] { width:130px; padding:8px; border:1px solid #cbd5e1; border-radius:7px; }
+@media(max-width:650px){.guide-filter-fields {gap:10px;} .guide-filter-fields select {max-width:170px;} .filter-state-grid {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));} .filter-state-grid>.filter-picker{min-width:0;} }
+
+.guide-filter-fields .filter-choice > span { white-space:nowrap; flex-shrink:0; }
+@media(max-width:650px){ .guide-filter-fields .filter-choice { width:100%; } .guide-filter-fields .filter-choice > span { width:70px; } .guide-filter-fields .filter-choice select { flex:1; min-width:0; max-width:none; } }

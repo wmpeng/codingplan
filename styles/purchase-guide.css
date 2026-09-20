@@ -1,0 +1,237 @@
+#purchaseGuide {
+  margin: 24px 0;
+  color: #172b46;
+}
+.purchase-guide-panel {
+  padding: 26px;
+  background: linear-gradient(120deg, #f5faff, #edf4ff);
+  border: 1px solid #c9dcf6;
+  border-radius: 20px;
+}
+.guide-header,
+.guide-step-actions,
+.guide-result-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+.guide-header h2 {
+  margin: 6px 0;
+  font-size: clamp(22px, 3vw, 30px);
+}
+.guide-header p,
+.guide-question > p {
+  color: #53657c;
+  margin: 8px 0 18px;
+}
+.guide-eyebrow {
+  color: #17617a;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+#purchaseGuide button,
+.guide-filter-fields select,
+.filter-state-actions button,
+.filter-active-limits button {
+  cursor: pointer;
+  font: inherit;
+  border: 1px solid #b8cbe3;
+  border-radius: 9px;
+  padding: 9px 14px;
+  background: #fff;
+  color: #213c60;
+}
+#purchaseGuide button:hover,
+#purchaseGuide button:focus-visible {
+  border-color: #1769c2;
+  background: #f0f7ff;
+}
+#purchaseGuide button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+#purchaseGuide .guide-primary,
+#purchaseGuide button[aria-pressed="true"] {
+  background: #1769c2;
+  border-color: #1769c2;
+  color: white;
+}
+.guide-intro-actions,
+.guide-card-links {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.guide-progress {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 22px 0;
+}
+#purchaseGuide .guide-progress button {
+  padding: 7px 12px;
+  font-size: 13px;
+  background: transparent;
+}
+#purchaseGuide .guide-progress [aria-current="step"] {
+  color: #075bba;
+  border-color: #075bba;
+  background: white;
+  font-weight: 700;
+}
+.guide-question {
+  min-height: 190px;
+}
+.guide-question h3 {
+  margin: 8px 0;
+  font-size: 22px;
+}
+.guide-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0;
+}
+.guide-number,
+.guide-check {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 14px 0;
+}
+.guide-number input {
+  width: 130px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #bacce0;
+  border-radius: 8px;
+  font: inherit;
+}
+.guide-note {
+  color: #5c6d82;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.guide-summary {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #cbdcf0;
+  font-size: 14px;
+}
+.guide-result-heading {
+  margin-top: 24px;
+}
+.guide-result-heading span {
+  color: #65758b;
+  font-size: 13px;
+}
+.guide-result-group > h3 {
+  margin: 20px 0 12px;
+  font-size: 18px;
+}
+.guide-result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.guide-result-card {
+  padding: 22px;
+  border: 1px solid #d5e0ee;
+  border-radius: 16px;
+  background: white;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.guide-result-card h4 {
+  font-size: 21px;
+  margin: 8px 0;
+}
+.guide-result-card p,
+.guide-result-card li {
+  font-size: 14px;
+  line-height: 1.65;
+}
+.guide-result-card ul {
+  padding-left: 20px;
+}
+.guide-result-card .guide-price {
+  font-size: 26px;
+  font-weight: 700;
+  color: #075bba;
+  margin: 12px 0;
+}
+.guide-price small {
+  font-size: 13px;
+  color: #596e87;
+  font-weight: 400;
+}
+.guide-result-card details {
+  margin: 14px 0;
+  font-size: 13px;
+  color: #566b84;
+}
+.guide-result-card summary {
+  cursor: pointer;
+}
+.guide-card-links {
+  font-size: 14px;
+  padding-top: 12px;
+}
+.guide-advice {
+  padding: 24px;
+  background: white;
+  border: 1px solid #d5e0ee;
+  border-radius: 16px;
+  margin: 18px 0;
+  line-height: 1.7;
+}
+.guide-advice a {
+  margin-right: 18px;
+}
+@media (max-width: 650px) {
+  .purchase-guide-panel {
+    padding: 18px;
+  }
+  .guide-header {
+    align-items: flex-start;
+  }
+  .guide-header-actions {
+    flex-shrink: 0;
+  }
+  .guide-result-grid {
+    grid-template-columns: 1fr;
+  }
+  .guide-result-heading {
+    display: block;
+  }
+  .guide-question {
+    min-height: 0;
+  }
+  .guide-step-actions {
+    gap: 6px;
+  }
+  #purchaseGuide .guide-step-actions button {
+    padding: 9px;
+    font-size: 13px;
+  }
+  .guide-progress {
+    gap: 4px;
+  }
+  #purchaseGuide .guide-progress button {
+    padding: 6px 8px;
+  }
+  .guide-options button {
+    flex: 1 1 130px;
+  }
+  .guide-number input {
+    width: 100px;
+  }
+  .guide-check {
+    align-items: flex-start;
+  }
+}
+
+.header-actions [data-open-guide] { display:inline-flex; align-items:center; padding:10px 14px; border-radius:10px; background:#1769c2; color:white; text-decoration:none; font-weight:700; white-space:nowrap; }

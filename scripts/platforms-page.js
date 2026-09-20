@@ -17,7 +17,7 @@
 
       function render() {
         let filtered = root.CodingPlanFilters
-          ? root.CodingPlanFilters.filterPlatforms(platforms, state, { platformCatalog: config, context, entityData: root.EntityData })
+          ? root.CodingPlanFilters.filterPlatforms(platforms, state, { platformCatalog: config, context, usdToCnyRate: appConfig.usdToCnyRate, entityData: root.EntityData })
           : platforms;
         const query = (search.value || '').trim().toLocaleLowerCase('zh-CN');
         if (query) filtered = filtered.filter(item => `${item.name} ${item.slug}`.toLocaleLowerCase('zh-CN').includes(query));
