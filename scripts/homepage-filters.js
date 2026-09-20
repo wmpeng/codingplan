@@ -99,6 +99,14 @@
       </div><p class="filter-help">平台、套餐和模型的筛选会在适用的 Tab 中联动；监控只使用平台和模型条件。清空实体选择会得到空结果，全选表示该维度不缩小范围。</p></details>
     </section>`;
 
+    // Keep the main row compact; detailed conditions remain available in More.
+    const filterRow = mountPoint.querySelector('.filter-state-grid');
+    filterRow.appendChild(mountPoint.querySelector('.filter-state-actions'));
+    const more = mountPoint.querySelector('.filter-more');
+    more.querySelector('summary').textContent = '更多筛选';
+    more.appendChild(mountPoint.querySelector('[data-filter-hint]'));
+    more.appendChild(mountPoint.querySelector('[data-active-limits]'));
+
     const tagValues = [...new Set(platforms.flatMap(item => Array.isArray(item.tags) ? item.tags : []))];
     const derived = (catalog.derivedTags || []).map(item => item.label).filter(Boolean);
     const planTags = [...new Set(plans.flatMap(item => Array.isArray(item.tags) ? item.tags : []))];

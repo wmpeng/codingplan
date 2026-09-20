@@ -31,7 +31,7 @@
   padding: 14px;
   margin-bottom: 12px;
   position: relative;
-  z-index: 30;
+  z-index: 60;
 }
 
 .homepage-unified-active .filter-picker[open] { z-index: 31; }
@@ -90,3 +90,96 @@
 
 .filter-active-limits { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
 .filter-picker-menu label[hidden] { display: none; }
+
+/* Match the original Tab filter bar: compact controls and restrained borders. */
+.homepage-unified-active .filter-state-bar {
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: var(--shadow-sm);
+  overflow: visible;
+}
+.homepage-unified-active .filter-state-summary { display: none; }
+.homepage-unified-active .filter-state-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+.homepage-unified-active .filter-picker { flex: 0 0 auto; }
+.homepage-unified-active .filter-picker > summary {
+  width: auto;
+  min-height: 38px;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 9px;
+  border-color: var(--border-color);
+  background: #fff;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+}
+.homepage-unified-active .filter-picker > summary::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+.homepage-unified-active .filter-picker[open] > summary,
+.homepage-unified-active .filter-picker > summary:hover {
+  border-color: rgba(11, 104, 209, .35);
+  color: var(--accent-primary);
+  background: #f3f8ff;
+}
+.homepage-unified-active .filter-picker-count {
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: #edf3fb;
+  color: var(--accent-primary);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.homepage-unified-active .filter-state-actions { width: auto; margin-left: auto; gap: 8px; }
+.homepage-unified-active .filter-state-actions .filter-state-btn {
+  min-height: 38px;
+  padding: 8px 12px;
+  border-radius: 9px;
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+  background: #fff;
+  font-weight: 500;
+}
+.homepage-unified-active .filter-state-actions .primary { color: var(--accent-primary); border-color: #b9d2ef; background: #f3f8ff; }
+.homepage-unified-active .filter-picker-menu {
+  width: 320px;
+  right: auto;
+  max-height: min(420px, 60vh);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-color: var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(16, 23, 37, .14);
+}
+.homepage-unified-active .filter-picker-menu > * { flex-shrink: 0; }
+.homepage-unified-active [data-picker-options] { overflow-y: auto; min-height: 0; flex: 1 1 auto; overscroll-behavior: contain; }
+.homepage-unified-active .filter-picker-menu label { align-items: center; gap: 10px; padding: 8px; border-radius: 6px; color: var(--text-secondary); }
+.homepage-unified-active .filter-picker-menu input[type="checkbox"] { accent-color: var(--accent-primary); width: 14px; height: 14px; }
+.homepage-unified-active .filter-more { border: 0; margin-top: 8px; padding-top: 0; }
+.homepage-unified-active .filter-more > summary { width: fit-content; font-size: 12px; color: var(--text-tertiary); padding: 3px 0; }
+.homepage-unified-active .filter-more[open] { border-top: 1px solid var(--border-light); padding-top: 8px; }
+.homepage-unified-active .filter-active-limits .filter-state-btn { font-size: 12px; padding: 4px 8px; background: #f8fafc; }
+.homepage-unified-active .filter-picker > summary:focus-visible,
+.homepage-unified-active .filter-state-btn:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+@media (max-width: 800px) {
+  .homepage-unified-active .filter-picker { flex: 1 1 calc(50% - 10px); min-width: 0; }
+  .homepage-unified-active .filter-picker > summary { width: 100%; }
+  .homepage-unified-active .filter-picker-menu { width: auto; left: 12px; right: 12px; }
+  .homepage-unified-active .filter-state-actions { margin-left: 0; width: 100%; }
+}
