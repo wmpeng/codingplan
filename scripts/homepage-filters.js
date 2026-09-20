@@ -83,7 +83,21 @@
         ${buildPicker({ id: 'homePlatformPicker', label: '平台', key: 'platformSlugs', items: platforms, state })}
         ${buildPicker({ id: 'homePlanPicker', label: '套餐', key: 'planSlugs', items: plans, state })}
         ${buildPicker({ id: 'homeModelPicker', label: '模型', key: 'modelSlugs', items: models, state })}
-        <details class="filter-picker" data-picker="budgetCny" id="homeBudgetPicker"><summary><span>月预算（人民币）</span><span class="filter-picker-count" data-budget-label>不限</span></summary><div class="filter-picker-menu"><div class="filter-range budget-range"><input type="number" min="0" step="1" data-budget-part="min" placeholder="最低预算"><span aria-hidden="true">—</span><input type="number" min="0" step="1" data-budget-part="max" placeholder="最高预算"></div><p class="filter-help">美元套餐按当前站点汇率换算；按量 API 不参加月预算筛选。</p><div class="filter-picker-tools"><button type="button" data-budget-action="clear">取消限制</button></div></div></details>
+        <details class="filter-picker" data-picker="budgetCny" id="homeBudgetPicker"><summary><span>月预算（人民币）</span><span class="filter-picker-count" data-budget-label>不限</span></summary>
+          <div class="filter-picker-menu budget-menu">
+            <div class="budget-heading">月预算<span>拖动滑块或点击金额输入</span></div>
+            <div class="budget-values">
+              <label><span>最低金额</span><div><span>¥</span><input type="number" min="0" step="1" data-budget-part="min" placeholder="0" aria-label="最低月预算（人民币）"></div></label>
+              <span class="budget-dash" aria-hidden="true">—</span>
+              <label><span>最高金额</span><div><span>¥</span><input type="number" min="0" step="1" data-budget-part="max" placeholder="不限" aria-label="最高月预算（人民币）"></div></label>
+            </div>
+            <div class="budget-slider"><div class="budget-track"></div><div class="budget-selected" data-budget-track></div><input type="range" min="0" max="1000" step="1" value="0" data-budget-slider="min" aria-label="拖动最低月预算"><input type="range" min="0" max="1000" step="1" value="1000" data-budget-slider="max" aria-label="拖动最高月预算"></div>
+            <div class="budget-scale"><span>¥0</span><span data-budget-scale></span></div>
+            <div class="budget-presets" aria-label="常用月预算">${[[null, null, '不限'], [null, 50, '50 元以内'], [50, 100, '50–100 元'], [100, 200, '100–200 元'], [200, 500, '200–500 元'], [500, null, '500 元以上']].map(([min, max, label]) => `<button type="button" data-budget-preset data-min="${min == null ? '' : min}" data-max="${max == null ? '' : max}" aria-pressed="false">${label}</button>`).join('')}</div>
+            <p class="filter-help">按人民币比较，美元按站点汇率换算。按量 API 不受月预算限制。</p>
+            <div class="filter-picker-tools budget-footer"><button type="button" data-budget-action="clear">取消限制</button><button type="button" data-budget-action="done">完成</button></div>
+          </div>
+        </details>
       </div>
       <details class="filter-more"><summary>更多筛选与口径</summary><div class="filter-more-grid">
         <label class="filter-inline"><span>模型匹配</span><select data-filter-field="modelMatch"><option value="any">任意一个</option><option value="all">全部所选</option></select></label>
@@ -127,6 +141,11 @@
       else if (selected.length === allItems.length) el.textContent = `${label}全部`;
       else el.textContent = `${label}${selected.length}项`;
     }
+
+    const budgetScaleBase = Math.max(1000, Math.ceil(Math.max(0, ...plans.map(plan => Filters.toCny(plan.monthlyPrice, plan.currency, root.appConfig.usdToCnyRate) || 0)) / 100) * 100);
+    let budgetScaleMax = budgetScaleBase;
+    const budgetPosition = value => Math.sqrt(Math.max(0, Math.min(budgetScaleMax, value)) / budgetScaleMax) * 1000;
+    const budgetAmount = position => Math.round((Number(position) / 1000) ** 2 * budgetScaleMax);
 
     function render() {
       summary('platformSlugs', '平台', platforms);
@@ -180,6 +199,26 @@
       const budgetMax = mountPoint.querySelector('[data-budget-part="max"]');
       if (budgetMin) budgetMin.value = budget && budget.min != null ? budget.min : '';
       if (budgetMax) budgetMax.value = budget && budget.max != null ? budget.max : '';
+      budgetScaleMax = Math.max(budgetScaleMax, budget && budget.min || 0, budget && budget.max || 0);
+      const low = budgetPosition(budget && budget.min || 0);
+      const high = budget && budget.max != null ? budgetPosition(budget.max) : 1000;
+      const lowerSlider = mountPoint.querySelector('[data-budget-slider="min"]');
+      const upperSlider = mountPoint.querySelector('[data-budget-slider="max"]');
+      lowerSlider.value = low;
+      upperSlider.value = high;
+      lowerSlider.setAttribute('aria-valuetext', `最低 ${budget && budget.min || 0} 元`);
+      upperSlider.setAttribute('aria-valuetext', budget && budget.max != null ? `最高 ${budget.max} 元` : '最高不限');
+      lowerSlider.style.zIndex = low >= 1000 ? '4' : '2';
+      upperSlider.style.zIndex = high <= 0 ? '4' : '2';
+      const track = mountPoint.querySelector('[data-budget-track]');
+      track.style.left = `${low / 10}%`;
+      track.style.width = `${Math.max(0, high - low) / 10}%`;
+      mountPoint.querySelector('[data-budget-scale]').textContent = `¥${budgetScaleMax.toLocaleString('zh-CN')} / 不限`;
+      mountPoint.querySelectorAll('[data-budget-preset]').forEach(button => {
+        const min = button.dataset.min === '' ? null : Number(button.dataset.min);
+        const max = button.dataset.max === '' ? null : Number(button.dataset.max);
+        button.setAttribute('aria-pressed', String((budget && budget.min != null ? budget.min : null) === min && (budget && budget.max != null ? budget.max : null) === max));
+      });
       mountPoint.querySelector('[data-filter-field="modelMatch"]').value = state.modelMatch;
       mountPoint.querySelector('[data-filter-field="platformStatusMax"]').value = state.platformStatusMax;
       mountPoint.querySelector('[data-filter-field="multimodal"]').value = state.multimodal;
@@ -230,10 +269,18 @@
         target.closest('.filter-picker-menu').querySelectorAll('[data-filter-option]').forEach(option => { option.hidden = query && !option.dataset.searchText.toLowerCase().includes(query); });
         return;
       }
+      if (target.matches('[data-budget-slider]')) {
+        let min = Number(mountPoint.querySelector('[data-budget-slider="min"]').value);
+        let max = Number(mountPoint.querySelector('[data-budget-slider="max"]').value);
+        if (min > max) { if (target.dataset.budgetSlider === 'min') min = max; else max = min; }
+        state.budgetCny = min === 0 && max === 1000 ? null : { min: min === 0 ? null : budgetAmount(min), max: max === 1000 ? null : budgetAmount(max) };
+        publish();
+        return;
+      }
       if (target.matches('[data-budget-part]')) {
         const min = mountPoint.querySelector('[data-budget-part="min"]').value;
         const max = mountPoint.querySelector('[data-budget-part="max"]').value;
-        state.budgetCny = min === '' && max === '' ? null : { min: min === '' ? null : Number(min), max: max === '' ? null : Number(max) };
+        state.budgetCny = min === '' && max === '' ? null : { min: min === '' ? null : Math.max(0, Number(min)), max: max === '' ? null : Math.max(0, Number(max)) };
         publish();
         return;
       }
@@ -298,6 +345,20 @@
         if (actionName === 'all') setSelection(key, null);
         if (actionName === 'default') setSelection(key, state.__defaults[key]);
         event.preventDefault();
+        return;
+      }
+      const preset = event.target.closest('[data-budget-preset]');
+      if (preset) {
+        const min = preset.dataset.min === '' ? null : Number(preset.dataset.min);
+        const max = preset.dataset.max === '' ? null : Number(preset.dataset.max);
+        state.budgetCny = min === null && max === null ? null : { min, max };
+        publish();
+        return;
+      }
+      if (event.target.closest('[data-budget-action="done"]')) {
+        const picker = mountPoint.querySelector('#homeBudgetPicker');
+        picker.open = false;
+        picker.querySelector('summary').focus();
         return;
       }
       if (event.target.closest('[data-budget-action="clear"]')) {
