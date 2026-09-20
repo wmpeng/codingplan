@@ -85,7 +85,7 @@ test('模型任意/全部匹配与实体跨维度交集', () => {
   assert.deepEqual(Filters.filterPlans(plans, any).map(plan => plan.slug), ['p-a']);
   const all = unrestricted({ platformSlugs: ['a'], modelSlugs: ['m1', 'm2'], modelMatch: 'all' });
   assert.deepEqual(Filters.filterPlans(plans, all).map(plan => plan.slug), ['p-a']);
-  assert.deepEqual(Filters.filterPlans(plans, unrestricted({ platformSlugs: [], planSlugs: [] })), []);
+  assert.deepEqual(Filters.filterPlans(plans, unrestricted({ platformSlugs: [], planSlugs: [], modelSlugs: [], modelMatch: 'all' })), plans);
   assert.deepEqual(Filters.filterPlans(plans, unrestricted({ platformSlugs: ['a'], planSlugs: plans.map(plan => plan.slug) })).map(plan => plan.slug), ['p-a', 'p-b']);
 });
 
@@ -119,7 +119,7 @@ test('平台模型筛选、状态和清空/全选语义', () => {
   const context = { platformBySlug: new Map(platforms.map(item => [item.slug, item])) };
   const entityData = { platformModels: (_context, slug) => slug === 'a' ? [{ slug: 'm1' }, { slug: 'm2' }] : [{ slug: 'm1' }] };
   assert.deepEqual(Filters.filterPlatforms(platforms, unrestricted({ platformSlugs: null, modelSlugs: ['m1', 'm2'], modelMatch: 'all', platformStatusMax: 'paused' }), { context, entityData }).map(item => item.slug), ['a']);
-  assert.deepEqual(Filters.filterPlatforms(platforms, unrestricted({ platformSlugs: [] }), { context, entityData }), []);
+  assert.deepEqual(Filters.filterPlatforms(platforms, unrestricted({ platformSlugs: [] }), { context, entityData }), platforms);
   assert.deepEqual(Filters.filterPlatforms(platforms, unrestricted({ platformSlugs: platforms.map(item => item.slug) }), { context, entityData }).map(item => item.slug), ['a', 'b', 'c']);
 });
 
@@ -161,4 +161,11 @@ test('全部模型匹配不把已下架或隐藏的模型算入当前可见套�
   const state = unrestricted({ modelSlugs: ['m1', 'm2'], modelMatch: 'all', includeDiscontinued: false });
   assert.deepEqual(Filters.filterPoints(points, state), []);
   assert.deepEqual(Filters.filterPoints(points, { ...state, includeDiscontinued: true }).map(point => point.slug), ['active', 'discontinued']);
+});
+
+test('清空单个实体维度不取消其他条件，全部模型模式下空选择也不限', () => {
+  const plans = [{ slug: 'a', platformSlug: 'p', monthlyPrice: 50 }, { slug: 'b', platformSlug: 'q', monthlyPrice: 50 }, { slug: 'c', platformSlug: 'p', monthlyPrice: 100 }];
+  const state = unrestricted({ platformSlugs: ['p'], planSlugs: [], modelSlugs: [], modelMatch: 'all', budgetCny: { max: 60 } });
+  assert.deepEqual(Filters.filterPlans(plans, state).map(p => p.slug), ['a']);
+  assert.equal(Filters.modelMatch([], [], 'all'), true);
 });

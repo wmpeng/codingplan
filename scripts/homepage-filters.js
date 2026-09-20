@@ -110,7 +110,7 @@
         <div class="filter-subgroup"><strong>套餐标签</strong><div data-tag-options="planTags"></div></div>
         <div class="filter-subgroup filter-ranges"><strong>价格范围（折合人民币）</strong>${buildRange('priceRanges', 'firstMonthPrice', state)}${buildRange('priceRanges', 'monthlyPrice', state)}${buildRange('priceRanges', 'quarterlyPrice', state)}${buildRange('priceRanges', 'yearlyPrice', state)}</div>
         <div class="filter-subgroup filter-ranges"><strong>请求数范围</strong>${buildRange('requestRanges', 'fiveHoursRequests', state)}${buildRange('requestRanges', 'weeklyRequests', state)}${buildRange('requestRanges', 'monthlyRequests', state)}</div>
-      </div><p class="filter-help">平台、套餐和模型的筛选会在适用的 Tab 中联动；监控只使用平台和模型条件。清空实体选择会得到空结果，全选表示该维度不缩小范围。</p></details>
+      </div><p class="filter-help">平台、套餐和模型的筛选会在适用的 Tab 中联动；监控只使用平台和模型条件。不勾选或全选均表示该项不限；其他筛选条件继续生效。</p></details>
     </section>`;
 
     // Keep the main row compact; detailed conditions remain available in More.
@@ -137,7 +137,7 @@
       const el = mountPoint.querySelector(`[data-summary="${key}"]`);
       if (!el) return;
       if (selected === null) el.textContent = `${label}全部`;
-      else if (!selected.length) el.textContent = `${label}已清空`;
+      else if (!selected.length) el.textContent = `${label}不限`;
       else if (selected.length === allItems.length) el.textContent = `${label}全部`;
       else el.textContent = `${label}${selected.length}项`;
     }
@@ -176,7 +176,7 @@
         : '更多筛选未启用；无结果时可取消下方限制，或恢复默认。';
       const limits = [];
       for (const [key, label] of [['platformSlugs', '平台'], ['planSlugs', '套餐'], ['modelSlugs', '模型']]) {
-        if (state[key] !== null) limits.push([key, '', `${label}选择`]);
+        if (state[key] !== null && state[key].length) limits.push([key, '', `${label}选择`]);
       }
       if (budget) limits.push(['budgetCny', '', '月预算']);
       if (state.platformStatusMax !== 'delisted') limits.push(['platformStatusMax', '', '平台状态']);
@@ -228,7 +228,7 @@
       for (const [key, items] of [['platformSlugs', platforms], ['planSlugs', plans], ['modelSlugs', models]]) {
         const selected = state[key] === null ? items.map(item => item.slug) : (state[key] || []);
         const details = mountPoint.querySelector(`[data-picker="${key}"]`);
-        details.querySelector('[data-picker-count]').textContent = selected.length === items.length ? '全部' : `${selected.length} 项`;
+        details.querySelector('[data-picker-count]').textContent = !selected.length ? '不限' : selected.length === items.length ? '全部' : `${selected.length} 项`;
         details.querySelectorAll('input[type="checkbox"]').forEach(input => { input.checked = selected.includes(input.value); });
       }
       mountPoint.querySelectorAll('[data-tag-options]').forEach(host => {

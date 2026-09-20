@@ -54,6 +54,11 @@
     return Number.isFinite(number) ? number : fallback;
   }
 
+  function entitySelection(value) {
+    const selection = arrayOrNull(value);
+    return selection && selection.length ? selection : null;
+  }
+
   function normalizeState(raw, options) {
     const input = raw || {};
     const opts = options || {};
@@ -66,9 +71,9 @@
       includeDiscontinued: true
     } : DEFAULTS;
     return {
-      platformSlugs: input.platformSlugs === undefined ? arrayOrNull(base.platformSlugs) : arrayOrNull(input.platformSlugs),
-      planSlugs: input.planSlugs === undefined ? arrayOrNull(base.planSlugs) : arrayOrNull(input.planSlugs),
-      modelSlugs: input.modelSlugs === undefined ? arrayOrNull(base.modelSlugs) : arrayOrNull(input.modelSlugs),
+      platformSlugs: entitySelection(input.platformSlugs === undefined ? base.platformSlugs : input.platformSlugs),
+      planSlugs: entitySelection(input.planSlugs === undefined ? base.planSlugs : input.planSlugs),
+      modelSlugs: entitySelection(input.modelSlugs === undefined ? base.modelSlugs : input.modelSlugs),
       modelMatch: input.modelMatch === 'all' ? 'all' : 'any',
       budgetCny: cloneRange(input.budgetCny === undefined ? base.budgetCny : input.budgetCny),
       platformStatusMax: STATUS_RANK[input.platformStatusMax] === undefined ? base.platformStatusMax : input.platformStatusMax,
@@ -120,13 +125,12 @@
   }
 
   function selectedMatch(value, selected) {
-    if (selected === null) return true;
+    if (selected === null || !selected.length) return true;
     return selected.includes(String(value || ''));
   }
 
   function modelMatch(models, selected, mode) {
-    if (selected === null) return true;
-    if (!selected.length) return false;
+    if (selected === null || !selected.length) return true;
     const available = new Set((models || []).map(model => typeof model === 'string' ? model : model.slug));
     return mode === 'all'
       ? selected.every(slug => available.has(slug))
@@ -278,7 +282,7 @@
 
   function selectionLabel(selected, all, label) {
     if (selected === null) return `${label}不限`;
-    if (!selected.length) return `${label}已清空`;
+    if (!selected.length) return `${label}不限`;
     if (all && selected.length === all.length) return `${label}全部`;
     return `${label}${selected.length}项`;
   }

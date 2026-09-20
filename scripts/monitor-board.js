@@ -381,10 +381,10 @@
       }
 
       const external = state.externalFilter;
-      const allowedPlatforms = external && external.platformSlugs !== null
+      const allowedPlatforms = external && external.platformSlugs && external.platformSlugs.length
         ? new Set(external.platformSlugs || [])
         : null;
-      const allowedModels = external && external.modelSlugs !== null
+      const allowedModels = external && external.modelSlugs && external.modelSlugs.length
         ? new Set(external.modelSlugs || [])
         : null;
       const allPlatforms = state.boardData.platforms

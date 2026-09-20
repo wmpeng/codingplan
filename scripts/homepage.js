@@ -2436,7 +2436,7 @@
                 document.head.appendChild(link);
             }
             if (typeof window.mountMonitorBoard !== 'function') {
-                await loadScriptOnce('scripts/monitor-board.js?v=260918a');
+                await loadScriptOnce('scripts/monitor-board.js?v=260920e');
             }
             if (typeof window.mountMonitorBoard === 'function') {
                 const platform = new URLSearchParams(location.search).get('platform') || '';
