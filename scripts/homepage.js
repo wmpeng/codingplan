@@ -25,7 +25,6 @@
         // 已确认的选择
         let selectedVendors = new Set();
         let selectedModels = new Set();
-        let selectedTags = new Set();
         let priceFilters = {
             firstMonth: { min: null, max: null },
             monthly: { min: null, max: null },
@@ -68,7 +67,6 @@
         const modelCheckboxes = document.getElementById('modelCheckboxes');
         const vendorCount = document.getElementById('vendorCount');
         const modelCount = document.getElementById('modelCount');
-        const presetTagButtons = Array.from(document.querySelectorAll('[data-tag-filter]'));
         
         // 首月价格
         const firstMonthPriceBtn = document.getElementById('firstMonthPriceBtn');
@@ -176,38 +174,6 @@
             });
             rest.sort((a, b) => entityContext.modelBySlug.get(a).name.localeCompare(entityContext.modelBySlug.get(b).name, 'zh-CN'));
             return priority.concat(rest);
-        }
-
-        function getPlanTags(plan) {
-            return Array.isArray(plan.tags) ? plan.tags : [];
-        }
-
-        function getTagClass(tag) {
-            if (tag === '模型强') return 'plan-tag--model-strong';
-            if (tag === '性价比高') return 'plan-tag--value-rich';
-            return '';
-        }
-
-        function renderPlanTags(plan) {
-            const tags = getPlanTags(plan);
-            if (tags.length === 0) return '';
-            return `<div class="plan-tags">${tags.map(tag => `<span class="plan-tag ${getTagClass(tag)}">${escapeHtml(tag)}</span>`).join('')}</div>`;
-        }
-
-        function updatePresetTagButtons() {
-            presetTagButtons.forEach(button => {
-                button.classList.toggle('active', selectedTags.has(button.dataset.tagFilter));
-            });
-        }
-
-        function togglePresetTag(tag) {
-            if (selectedTags.has(tag)) {
-                selectedTags.delete(tag);
-            } else {
-                selectedTags.add(tag);
-            }
-            updatePresetTagButtons();
-            applyFilters();
         }
 
         // 初始化筛选器
@@ -370,13 +336,6 @@
             bindToggle(monthlyRequestBtn, monthlyRequestDropdown, 'monthly');
             bindToggle(modelBtn, modelDropdown, 'model');
 
-            if (presetTagButtons && presetTagButtons.length) {
-                presetTagButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        togglePresetTag(button.dataset.tagFilter);
-                    });
-                });
-            }
 
             document.addEventListener('click', () => {
                 closeDropdownWithoutFilter();
@@ -609,11 +568,6 @@
                     if (!hasAllModels) return false;
                 }
 
-                if (selectedTags.size > 0) {
-                    const planTags = getPlanTags(plan);
-                    const hasAllTags = [...selectedTags].every(tag => planTags.includes(tag));
-                    if (!hasAllTags) return false;
-                }
 
                 // 首月价格筛选
                 if (isPriceFilterApplied('firstMonth')) {
@@ -1181,12 +1135,10 @@
             resetVendorFilter();
             resetModelFilter();
 
-            selectedTags.clear();
             selectedVendors.clear();
             updateVendorCount();
             selectedModels.clear();
             updateModelCount();
-            updatePresetTagButtons();
             updateFirstMonthPriceCount();
             updateMonthlyPriceCount();
             updateQuarterlyPriceCount();
@@ -1347,7 +1299,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">${plan.rating > 0 ? '★'.repeat(plan.rating) + '☆'.repeat(5 - plan.rating) : '待评定'}</td>
-                    <td class="plan-tags-cell">${renderPlanTags(plan)}</td>
+                    <td class="monthly-token-cell" title="所选模型各档位的月 Token 参考范围，不相加；详细口径见额度/价格对比">${escapeHtml(CodingPlanFilters.formatMonthlyTokens(plan, window.__codingplanUnifiedFiltersState || CodingPlanFilters.createDefaultState(appConfig)))}</td>
                     <td><span class="price">${formatPlanPriceDisplay(plan, plan.firstMonthPrice)} <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">${formatPlanPriceDisplay(plan, plan.monthlyPrice)} <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">${formatPlanPriceDisplay(plan, plan.quarterlyPrice)} ${typeof plan.quarterlyPrice === 'number' ? `<span class="price-original">${formatPlanPriceDisplay(plan, plan.monthlyPrice * 3)}</span>` : ''} <span class="unit">/ 季</span></span></td>
@@ -1892,7 +1844,6 @@
 
             return {
                 ...item,
-                tags: Array.isArray(item.tags) ? item.tags.filter(tag => typeof tag === 'string') : [],
                 firstMonthPrice,
                 monthlyPrice,
                 quarterlyPrice,
@@ -2415,7 +2366,7 @@
                 document.head.appendChild(link);
             }
             if (typeof window.mountModelComparisonView !== 'function') {
-                await loadScriptOnce('scripts/model-comparison.js?v=260920f');
+                await loadScriptOnce('scripts/model-comparison.js?v=260920g');
             }
             if (typeof window.mountModelComparisonView === 'function') {
                 await window.mountModelComparisonView(root, {
@@ -2684,7 +2635,6 @@
                 initFilters();
                 initPriceSliders();
                 initRequestSliders();
-                updatePresetTagButtons();
                 applyFilters();
 
                 // 数据加载后重新渲染推荐卡片（此时 allPlans 已有数据，可匹配链接）

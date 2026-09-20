@@ -4,11 +4,45 @@ const Filters = require('./filter-state.js');
 
 const unrestricted = (overrides = {}) => Filters.normalizeState({
   platformSlugs: null,
-  planSlugs: null,
   modelSlugs: null,
   platformStatusMax: 'delisted',
   includeDiscontinued: true,
   ...overrides
+});
+
+test('月 Token 按同一模型关系匹配，不相加；未知与按量 API 仅在范围启用时排除', () => {
+  const plan = { slug: 'p', supportedModels: ['a', 'b'], monthlyTokenOptions: [
+    { modelSlug: 'a', value: 100 }, { modelSlug: 'b', value: 300 }, { modelSlug: 'b', value: null }
+  ] };
+  const state = unrestricted({ monthlyTokenRange: { min: 200 }, modelSlugs: ['a'] });
+  assert.deepEqual(Filters.filterPlans([plan], state), []);
+  state.modelSlugs = ['b'];
+  assert.deepEqual(Filters.filterPlans([plan], state), [plan]);
+  state.modelSlugs = ['a', 'b']; state.modelMatch = 'all';
+  assert.deepEqual(Filters.filterPlans([plan], state), []);
+  assert.equal(Filters.formatMonthlyTokens(plan, unrestricted({ tokenUnit: 'yi' })), '1–3 亿（部分未知）');
+  assert.equal(Filters.formatMonthlyTokens(plan, unrestricted({ tokenUnit: 'M', modelSlugs: ['a'] })), '100 M');
+  const points = [
+    { slug: 'a', planSlug: 'p', modelSlug: 'a', billingMode: 'subscription', monthlyTokenInM: 100 },
+    { slug: 'b', planSlug: 'p', modelSlug: 'b', billingMode: 'subscription', monthlyTokenInM: 300 },
+    { slug: 'unknown', billingMode: 'subscription', monthlyTokenInM: null },
+    { slug: 'api', billingMode: 'payg' }
+  ];
+  assert.deepEqual(Filters.filterPoints(points, unrestricted()), points);
+  assert.deepEqual(Filters.filterPoints(points, unrestricted({ monthlyTokenRange: { min: 200 } })).map(p => p.slug), ['b']);
+  assert.deepEqual(Filters.filterPoints(points, state), []);
+  assert.equal(Filters.tokenInRange('unlimited', { min: 200, max: null }), true);
+  assert.equal(Filters.tokenInRange('unlimited', { min: null, max: 200 }), false);
+  assert.deepEqual(Filters.cloneState(state).monthlyTokenRange, { min: 200, max: null });
+});
+
+test('公开套餐不保留标签字段，默认筛选不再限制套餐名单', () => {
+  const plans = require('../plans.json').plans;
+  assert.ok(plans.every(plan => !Object.hasOwn(plan, 'tags')));
+  const config = require('../config.json');
+  const state = Filters.createDefaultState(config);
+  assert.equal(Object.hasOwn(state, 'planSlugs'), false);
+  assert.equal(Object.hasOwn(state, 'planTags'), false);
 });
 
 test('单侧范围在多次规范化后仍保持开放，未知值不转换成零', () => {
@@ -34,7 +68,7 @@ test('评分阈值为零仍排除未知评分；平台视图忽略套餐与预�
   const points = [null, { scoreExact: null }, { scoreExact: 0 }].map((score, i) => ({ slug: String(i), scores: { artificialAnalysis: score } }));
   assert.deepEqual(Filters.filterPoints(points, unrestricted({ aaScoreMin: 0 })).map(p => p.slug), ['2']);
   const platforms = [{ slug: 'a' }];
-  assert.deepEqual(Filters.filterPlatforms(platforms, unrestricted({ planSlugs: [], budgetCny: { max: 0 } })), platforms);
+  assert.deepEqual(Filters.filterPlatforms(platforms, unrestricted({ budgetCny: { max: 0 } })), platforms);
 });
 
 test('订阅价格点按关联套餐筛选季价，按量 API 不受套餐价格和请求条件影响', () => {
@@ -56,7 +90,6 @@ test('默认精选配置可读取并校验稳定 slug', () => {
     homepageFilters: {
       defaults: {
         platformSlugs: ['p1'],
-        planSlugs: ['plan1'],
         modelSlugs: ['m1'],
         modelMatch: 'all',
         budgetCny: null
@@ -77,32 +110,32 @@ test('默认精选配置可读取并校验稳定 slug', () => {
 
 test('模型任意/全部匹配与实体跨维度交集', () => {
   const plans = [
-    { slug: 'p-a', platformSlug: 'a', supportedModels: ['m1', 'm2'], tags: ['个人', '多模态'], monthlyPrice: 10, currency: '¥' },
-    { slug: 'p-b', platformSlug: 'a', supportedModels: ['m1'], tags: ['个人'], monthlyPrice: 20, currency: '¥' },
-    { slug: 'p-c', platformSlug: 'b', supportedModels: ['m2'], tags: ['个人', '多模态'], monthlyPrice: 30, currency: '¥' }
+    { slug: 'p-a', platformSlug: 'a', supportedModels: ['m1', 'm2'], monthlyPrice: 10, currency: '¥' },
+    { slug: 'p-b', platformSlug: 'a', supportedModels: ['m1'], monthlyPrice: 20, currency: '¥' },
+    { slug: 'p-c', platformSlug: 'b', supportedModels: ['m2'], monthlyPrice: 30, currency: '¥' }
   ];
-  const any = unrestricted({ platformSlugs: ['a'], modelSlugs: ['m2'], modelMatch: 'any', planTags: ['个人', '多模态'] });
+  const any = unrestricted({ platformSlugs: ['a'], modelSlugs: ['m2'], modelMatch: 'any' });
   assert.deepEqual(Filters.filterPlans(plans, any).map(plan => plan.slug), ['p-a']);
   const all = unrestricted({ platformSlugs: ['a'], modelSlugs: ['m1', 'm2'], modelMatch: 'all' });
   assert.deepEqual(Filters.filterPlans(plans, all).map(plan => plan.slug), ['p-a']);
-  assert.deepEqual(Filters.filterPlans(plans, unrestricted({ platformSlugs: [], planSlugs: [], modelSlugs: [], modelMatch: 'all' })), plans);
-  assert.deepEqual(Filters.filterPlans(plans, unrestricted({ platformSlugs: ['a'], planSlugs: plans.map(plan => plan.slug) })).map(plan => plan.slug), ['p-a', 'p-b']);
+  assert.deepEqual(Filters.filterPlans(plans, unrestricted({ platformSlugs: [], modelSlugs: [], modelMatch: 'all' })), plans);
+  assert.deepEqual(Filters.filterPlans(plans, unrestricted({ platformSlugs: ['a'], })).map(plan => plan.slug), ['p-a', 'p-b']);
 });
 
-test('套餐视图同时应用平台标签和套餐标签', () => {
+test('套餐视图应用平台标签', () => {
   const plans = [
-    { slug: 'good', platformSlug: 'a', supportedModels: [], tags: ['个人'] },
-    { slug: 'other-platform', platformSlug: 'b', supportedModels: [], tags: ['个人'] },
-    { slug: 'other-plan-tag', platformSlug: 'a', supportedModels: [], tags: ['团队'] }
+    { slug: 'good', platformSlug: 'a', supportedModels: [] },
+    { slug: 'other-platform', platformSlug: 'b', supportedModels: [] },
+    { slug: 'another-plan', platformSlug: 'a', supportedModels: [] }
   ];
   const context = {
     platformBySlug: new Map([
       ['a', { slug: 'a', platformStatus: 'open', tags: ['可支付宝'] }],
-      ['b', { slug: 'b', platformStatus: 'open', tags: [] }]
+      ['b', { slug: 'b', platformStatus: 'open' }]
     ])
   };
-  const state = unrestricted({ platformSlugs: null, planSlugs: null, platformTags: ['可支付宝'], planTags: ['个人'] });
-  assert.deepEqual(Filters.filterPlans(plans, state, { context }).map(plan => plan.slug), ['good']);
+  const state = unrestricted({ platformSlugs: null, platformTags: ['可支付宝'] });
+  assert.deepEqual(Filters.filterPlans(plans, state, { context }).map(plan => plan.slug), ['good', 'another-plan']);
   const derived = unrestricted({ platformTags: ['性价比高'] });
   assert.deepEqual(Filters.filterPlans(plans, derived, {
     context,
@@ -165,7 +198,7 @@ test('全部模型匹配不把已下架或隐藏的模型算入当前可见套�
 
 test('清空单个实体维度不取消其他条件，全部模型模式下空选择也不限', () => {
   const plans = [{ slug: 'a', platformSlug: 'p', monthlyPrice: 50 }, { slug: 'b', platformSlug: 'q', monthlyPrice: 50 }, { slug: 'c', platformSlug: 'p', monthlyPrice: 100 }];
-  const state = unrestricted({ platformSlugs: ['p'], planSlugs: [], modelSlugs: [], modelMatch: 'all', budgetCny: { max: 60 } });
+  const state = unrestricted({ platformSlugs: ['p'], modelSlugs: [], modelMatch: 'all', budgetCny: { max: 60 } });
   assert.deepEqual(Filters.filterPlans(plans, state).map(p => p.slug), ['a']);
   assert.equal(Filters.modelMatch([], [], 'all'), true);
 });

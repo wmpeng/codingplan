@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/platform-cards.css?v=260920f">
     <link rel="stylesheet" href="styles/platform-comparison.css?v=260903a">
     <link rel="stylesheet" href="styles/tool-page.css?v=260920f">
-    <link rel="stylesheet" href="styles/homepage-filters.css?v=260920f">
+    <link rel="stylesheet" href="styles/homepage-filters.css?v=260920g">
     <style>
         html,
         body {
@@ -40,52 +40,6 @@
 
         .filter-dropdown {
             position: relative;
-        }
-
-        .preset-tag-filters {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            padding: 6px 4px;
-        }
-
-        .preset-tag-label {
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--text-tertiary);
-        }
-
-        .preset-tag-chip {
-            appearance: none;
-            border: 1px solid rgba(23, 32, 51, 0.12);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(244, 236, 223, 0.92));
-            color: var(--text-secondary);
-            border-radius: 999px;
-            min-height: 40px;
-            padding: 0 16px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
-            box-shadow: 0 10px 20px rgba(23, 32, 51, 0.06);
-            white-space: nowrap;
-        }
-
-        .preset-tag-chip:hover {
-            transform: translateY(-1px);
-            border-color: rgba(198, 107, 26, 0.28);
-            color: var(--text-primary);
-            box-shadow: 0 14px 24px rgba(23, 32, 51, 0.08);
-        }
-
-        .preset-tag-chip.active {
-            background: linear-gradient(135deg, #173753, #0f766e);
-            border-color: transparent;
-            color: white;
-            box-shadow: 0 14px 24px rgba(23, 55, 83, 0.18);
         }
 
         .filter-btn {
@@ -811,45 +765,6 @@
             margin-bottom: 6px;
             font-weight: 400;
             border: 1px solid var(--border-color);
-        }
-
-        .plan-tags-cell {
-            min-width: 180px;
-            white-space: nowrap;
-        }
-
-        .plan-tags {
-            display: inline-flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .plan-tag {
-            display: inline-flex;
-            flex-shrink: 0;
-            align-items: center;
-            min-height: 24px;
-            padding: 0 10px;
-            border-radius: 999px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            border: 1px solid transparent;
-            white-space: nowrap;
-        }
-
-        .plan-tag--model-strong {
-            background: rgba(23, 55, 83, 0.12);
-            border-color: rgba(23, 55, 83, 0.2);
-            color: #173753;
-        }
-
-        .plan-tag--value-rich {
-            background: rgba(15, 118, 110, 0.12);
-            border-color: rgba(15, 118, 110, 0.2);
-            color: #0f766e;
         }
 
         /* 请求数 */
@@ -2754,17 +2669,6 @@
                 padding: 16px;
             }
 
-            .preset-tag-filters {
-                width: 100%;
-                padding: 0;
-            }
-
-            .preset-tag-chip {
-                min-height: 36px;
-                padding: 0 14px;
-                font-size: 12px;
-            }
-
             .hero-summary {
                 grid-template-columns: 1fr;
             }
@@ -2952,8 +2856,6 @@
             background: rgba(255, 255, 255, 0.96);
             box-shadow: 0 10px 24px rgba(16, 23, 37, 0.08);
         }
-
-        .preset-tag-chip,
         .platform-tag-chip,
         .plans-table-toggle,
         .filter-btn,
@@ -3007,7 +2909,6 @@
         .reset-btn,
         .checkbox-label,
         .platform-tag-chip,
-        .preset-tag-chip,
         .monitor-control {
             min-height: 36px;
             padding: 0 12px;
@@ -3129,8 +3030,6 @@
         .main-view-tabs {
             margin-bottom: 18px;
         }
-
-        .preset-tag-chip:hover,
         .platform-tag-chip:hover,
         .platform-tag-chip--operational:hover,
         .platform-status-seg:hover,
@@ -3151,8 +3050,6 @@
             color: var(--text-primary);
             box-shadow: none;
         }
-
-        .preset-tag-chip.active,
         .platform-tag-chip.is-active,
         .platform-tag-chip.active,
         .platform-tag-chip--operational.is-active,
@@ -3176,8 +3073,6 @@
         .main-view-tabs [role="tab"].is-active::after {
             background: #0b68d1;
         }
-
-        .preset-tag-chip.active:hover,
         .platform-tag-chip.is-active:hover,
         .platform-tag-chip.active:hover,
         .platform-tag-chip--operational.is-active:hover,
@@ -3238,7 +3133,6 @@
         }
 
         .platform-tags .platform-tag,
-        .plan-tag--value-rich,
         .platform-rush,
         .platform-detail-rush {
             border-radius: 6px;
@@ -3253,8 +3147,6 @@
             border-color: rgba(16, 23, 37, 0.12);
             color: #39465a;
         }
-
-        .plan-tag,
         .status-offline,
         .benefit {
             border-radius: 6px;
@@ -4023,11 +3915,6 @@
                 </div>
             </div>
 
-            <div class="preset-tag-filters" id="tagPresetFilters" aria-label="标签筛选">
-                <button type="button" class="preset-tag-chip" data-tag-filter="模型强">模型强</button>
-                <button type="button" class="preset-tag-chip" data-tag-filter="性价比高">性价比高</button>
-            </div>
-
             <!-- 显示已下线套餐 -->
             <div class="filter-checkbox">
                 <label class="checkbox-label">
@@ -4059,7 +3946,7 @@
                             <th class="sticky-second">套餐</th>
                             <th>跳转链接</th>
                             <th class="sortable" data-column="rating">评分</th>
-                            <th>标签</th>
+                            <th title="所选模型各档位的月 Token 参考范围，不相加">月 Token 参考</th>
                             <th class="sortable" data-column="firstMonthPrice">首月价格</th>
                             <th class="sortable" data-column="monthlyPrice">连续包月</th>
                             <th class="sortable" data-column="quarterlyPrice">连续包季</th>
@@ -4084,7 +3971,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">1.932–11.7 亿（部分未知）</td>
                     <td><span class="price">$16.20 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$18 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$43.20 <span class="price-original">$54</span> <span class="unit">/ 季</span></span></td>
@@ -4092,10 +3979,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">13M Tokens</span></td>
-                    <td><span class="request-count">65M Tokens</span></td>
-                    <td><span class="request-count">260M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5-Turbo</span></td>
                     <td></td>
                     <td></td>
@@ -4110,7 +3993,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">11.593–70.2 亿（部分未知）</td>
                     <td><span class="price">$72 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$80 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$192 <span class="price-original">$240</span> <span class="unit">/ 季</span></span></td>
@@ -4118,10 +4001,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">79M Tokens</span></td>
-                    <td><span class="request-count">395M Tokens</span></td>
-                    <td><span class="request-count">1,580M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5-Turbo</span><span class="model-tag">GLM-5</span><span class="model-tag">GLM-5.3-Flash</span></td>
                     <td></td>
                     <td></td>
@@ -4136,7 +4015,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">27.051–163.799 亿（部分未知）</td>
                     <td><span class="price">$151.20 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$168 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$403.20 <span class="price-original">$504</span> <span class="unit">/ 季</span></span></td>
@@ -4144,10 +4023,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">184M Tokens</span></td>
-                    <td><span class="request-count">920M Tokens</span></td>
-                    <td><span class="request-count">3,680M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5-Turbo</span><span class="model-tag">GLM-5</span><span class="model-tag">GLM-5.3-Flash</span></td>
                     <td></td>
                     <td></td>
@@ -4162,7 +4037,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★★</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">1.932–11.7 亿（部分未知）</td>
                     <td><span class="price">¥118 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥118 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥283.20 <span class="price-original">¥354</span> <span class="unit">/ 季</span></span></td>
@@ -4170,10 +4045,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">13M Tokens</span></td>
-                    <td><span class="request-count">65M Tokens</span></td>
-                    <td><span class="request-count">260M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5-Turbo</span></td>
                     <td></td>
                     <td></td>
@@ -4188,7 +4059,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★★</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">11.593–70.2 亿（部分未知）</td>
                     <td><span class="price">¥538 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥538 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥1291.20 <span class="price-original">¥1614</span> <span class="unit">/ 季</span></span></td>
@@ -4196,10 +4067,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">79M Tokens</span></td>
-                    <td><span class="request-count">395M Tokens</span></td>
-                    <td><span class="request-count">1,580M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5-Turbo</span><span class="model-tag">GLM-5</span><span class="model-tag">GLM-5.3-Flash</span></td>
                     <td></td>
                     <td></td>
@@ -4214,7 +4081,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★★</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">27.051–163.799 亿（部分未知）</td>
                     <td><span class="price">¥1078 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥1078 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥2587.20 <span class="price-original">¥3234</span> <span class="unit">/ 季</span></span></td>
@@ -4222,10 +4089,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">184M Tokens</span></td>
-                    <td><span class="request-count">920M Tokens</span></td>
-                    <td><span class="request-count">3,680M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5-Turbo</span><span class="model-tag">GLM-5</span><span class="model-tag">GLM-5.3-Flash</span></td>
                     <td></td>
                     <td></td>
@@ -4240,7 +4103,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★★</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">16.8 亿（部分未知）</td>
                     <td><span class="price">¥44.10 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥49 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥147 <span class="price-original">¥147</span> <span class="unit">/ 季</span></span></td>
@@ -4248,10 +4111,6 @@
                     <td><span class="request-count">1,500 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">15,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">60,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">600M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span></td>
                     <td></td>
                     <td></td>
@@ -4266,7 +4125,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★★</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">50.4 亿（部分未知）</td>
                     <td><span class="price">¥107.10 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥119 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥357 <span class="price-original">¥357</span> <span class="unit">/ 季</span></span></td>
@@ -4274,10 +4133,6 @@
                     <td><span class="request-count">4,500 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">45,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">180,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">1,800M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span></td>
                     <td></td>
                     <td></td>
@@ -4292,7 +4147,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★★</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">198.8 亿（部分未知）</td>
                     <td><span class="price">¥422.10 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥469 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥1407 <span class="price-original">¥1407</span> <span class="unit">/ 季</span></span></td>
@@ -4300,10 +4155,6 @@
                     <td><span class="request-count">15,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">150,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">600,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">7,100M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span></td>
                     <td></td>
                     <td></td>
@@ -4318,7 +4169,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★★</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">0.125–76.282 亿</td>
                     <td><span class="price">$5 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$10 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$30 <span class="price-original">$30</span> <span class="unit">/ 季</span></span></td>
@@ -4326,10 +4177,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">146M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">LongCat-2.0</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Muse-Spark-1.3</span><span class="model-tag">Muse-Spark-1.2</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Hy3</span><span class="model-tag">Grok-4.6</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Hy4-preview</span></td>
                     <td></td>
                     <td></td>
@@ -4344,7 +4191,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★★</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">0.545–12 亿（部分未知）</td>
                     <td><span class="price">¥9.40 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥40 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥120 <span class="price-original">¥120</span> <span class="unit">/ 季</span></span></td>
@@ -4352,10 +4199,6 @@
                     <td><span class="request-count">1,200 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">9,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">18,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">17M Tokens</span></td>
-                    <td><span class="request-count">125M Tokens</span></td>
-                    <td><span class="request-count">250M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Auto</span><span class="model-tag">Doubao-Seed-Evolving</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V3.2</span></td>
                     <td></td>
                     <td></td>
@@ -4370,7 +4213,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★★</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">2.727–60 亿（部分未知）</td>
                     <td><span class="price">¥47.40 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥200 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥600 <span class="price-original">¥600</span> <span class="unit">/ 季</span></span></td>
@@ -4378,10 +4221,6 @@
                     <td><span class="request-count">6,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">45,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">90,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">83M Tokens</span></td>
-                    <td><span class="request-count">624M Tokens</span></td>
-                    <td><span class="request-count">1,249M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Auto</span><span class="model-tag">Doubao-Seed-Evolving</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span></td>
                     <td></td>
                     <td></td>
@@ -4396,7 +4235,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">0.364–8 亿（部分未知）</td>
                     <td><span class="price">¥9.90 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥40 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥120 <span class="price-original">¥120</span> <span class="unit">/ 季</span></span></td>
@@ -4404,10 +4243,6 @@
                     <td><span class="request-count">200 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">700 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">2,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">22M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Doubao-Seed-2.0-Mini</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Evolving</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Doubao-Seedream-5.0-lite</span></td>
                     <td></td>
                     <td></td>
@@ -4422,7 +4257,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">1–40 亿（部分未知）</td>
                     <td><span class="price">¥49.90 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥200 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥600 <span class="price-original">¥600</span> <span class="unit">/ 季</span></span></td>
@@ -4430,10 +4265,6 @@
                     <td><span class="request-count">1,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">3,500 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">10,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">111M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Doubao-Seed-2.0-Mini</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Evolving</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Doubao-Seedream-5.0-lite</span><span class="model-tag">Doubao-Seedance-2.0</span></td>
                     <td></td>
                     <td></td>
@@ -4448,7 +4279,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">2.5–100 亿（部分未知）</td>
                     <td><span class="price">¥500 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥500 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥1500 <span class="price-original">¥1500</span> <span class="unit">/ 季</span></span></td>
@@ -4456,10 +4287,6 @@
                     <td><span class="request-count">2,500 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">8,750 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">25,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">278M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Doubao-Seedream-5.0-lite</span><span class="model-tag">Doubao-Seedance-2.0</span><span class="model-tag">Doubao-Seed-2.0-Mini</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Evolving</span></td>
                     <td></td>
                     <td></td>
@@ -4474,7 +4301,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">5–200 亿（部分未知）</td>
                     <td><span class="price">¥1000 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥1000 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥3000 <span class="price-original">¥3000</span> <span class="unit">/ 季</span></span></td>
@@ -4482,10 +4309,6 @@
                     <td><span class="request-count">5,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">17,500 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">50,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">556M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Doubao-Seedream-5.0-lite</span><span class="model-tag">Doubao-Seedance-2.0</span><span class="model-tag">Doubao-Seed-2.0-Mini</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Evolving</span></td>
                     <td></td>
                     <td></td>
@@ -4500,7 +4323,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥49 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥49 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥147 <span class="price-original">¥147</span> <span class="unit">/ 季</span></span></td>
@@ -4508,10 +4331,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">5M Tokens</span></td>
-                    <td><span class="request-count">7M Tokens</span></td>
-                    <td><span class="request-count">28M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Kimi-K2</span></td>
                     <td></td>
                     <td></td>
@@ -4526,7 +4345,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">0.84 亿（部分未知）</td>
                     <td><span class="price">¥99 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥99 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥297 <span class="price-original">¥297</span> <span class="unit">/ 季</span></span></td>
@@ -4534,10 +4353,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">6M Tokens</span></td>
-                    <td><span class="request-count">27M Tokens</span></td>
-                    <td><span class="request-count">108M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Kimi-K2</span></td>
                     <td></td>
                     <td></td>
@@ -4552,7 +4367,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">6–9 亿（部分未知）</td>
                     <td><span class="price">¥199 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥199 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥597 <span class="price-original">¥597</span> <span class="unit">/ 季</span></span></td>
@@ -4560,10 +4375,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">27M Tokens</span></td>
-                    <td><span class="request-count">135M Tokens</span></td>
-                    <td><span class="request-count">540M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Kimi-K2</span></td>
                     <td><span class="benefit">免费Kimi-Claw</span></td>
                     <td></td>
@@ -4578,7 +4389,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">16–24 亿（部分未知）</td>
                     <td><span class="price">¥699 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥699 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥2097 <span class="price-original">¥2097</span> <span class="unit">/ 季</span></span></td>
@@ -4586,10 +4397,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">80M Tokens</span></td>
-                    <td><span class="request-count">400M Tokens</span></td>
-                    <td><span class="request-count">1,600M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Kimi-K2</span></td>
                     <td><span class="benefit">免费Kimi-Claw</span></td>
                     <td></td>
@@ -4604,7 +4411,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">0.38–4.56 亿（部分未知）</td>
                     <td><span class="price">¥49 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥49 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥147 <span class="price-original">¥147</span> <span class="unit">/ 季</span></span></td>
@@ -4612,10 +4419,6 @@
                     <td><span class="request-count">300 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">750 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">1,900 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">10M Tokens</span></td>
-                    <td><span class="request-count">25M Tokens</span></td>
-                    <td><span class="request-count">65M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Qwen-3.8-27B</span><span class="model-tag">DeepSeek-V3.2</span></td>
                     <td></td>
                     <td></td>
@@ -4630,7 +4433,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">0.76–9.12 亿（部分未知）</td>
                     <td><span class="price">¥99 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥99 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥297 <span class="price-original">¥297</span> <span class="unit">/ 季</span></span></td>
@@ -4638,10 +4441,6 @@
                     <td><span class="request-count">600 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">1,500 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">3,800 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">20M Tokens</span></td>
-                    <td><span class="request-count">50M Tokens</span></td>
-                    <td><span class="request-count">130M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Qwen-3.8-27B</span></td>
                     <td></td>
                     <td></td>
@@ -4656,7 +4455,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">1.52–18.24 亿（部分未知）</td>
                     <td><span class="price">¥199 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥199 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥597 <span class="price-original">¥597</span> <span class="unit">/ 季</span></span></td>
@@ -4664,10 +4463,6 @@
                     <td><span class="request-count">1,200 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">3,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">7,600 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">40M Tokens</span></td>
-                    <td><span class="request-count">100M Tokens</span></td>
-                    <td><span class="request-count">260M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Qwen-3.8-27B</span></td>
                     <td></td>
                     <td></td>
@@ -4682,7 +4477,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">3.8–45.6 亿（部分未知）</td>
                     <td><span class="price">¥499 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥499 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥1497 <span class="price-original">¥1497</span> <span class="unit">/ 季</span></span></td>
@@ -4690,10 +4485,6 @@
                     <td><span class="request-count">3,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">7,500 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">19,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">100M Tokens</span></td>
-                    <td><span class="request-count">250M Tokens</span></td>
-                    <td><span class="request-count">650M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Qwen-3.8-27B</span></td>
                     <td></td>
                     <td></td>
@@ -4708,7 +4499,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">6.2–74.4 亿（部分未知）</td>
                     <td><span class="price">¥799 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥799 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥2397 <span class="price-original">¥2397</span> <span class="unit">/ 季</span></span></td>
@@ -4716,10 +4507,6 @@
                     <td><span class="request-count">4,800 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">12,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">31,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">160M Tokens</span></td>
-                    <td><span class="request-count">400M Tokens</span></td>
-                    <td><span class="request-count">1,040M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Qwen-3.8-27B</span></td>
                     <td></td>
                     <td></td>
@@ -4734,7 +4521,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">7.8–93.6 亿（部分未知）</td>
                     <td><span class="price">¥999 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥999 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥2997 <span class="price-original">¥2997</span> <span class="unit">/ 季</span></span></td>
@@ -4742,10 +4529,6 @@
                     <td><span class="request-count">6,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">15,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">39,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">200M Tokens</span></td>
-                    <td><span class="request-count">500M Tokens</span></td>
-                    <td><span class="request-count">1,300M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Qwen-3.8-27B</span></td>
                     <td></td>
                     <td></td>
@@ -4760,7 +4543,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★★</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">1.6–48 亿（部分未知）</td>
                     <td><span class="price">$20 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$20 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$60 <span class="price-original">$60</span> <span class="unit">/ 季</span></span></td>
@@ -4768,10 +4551,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">120M Tokens</span></td>
-                    <td><span class="request-count">120M Tokens</span></td>
-                    <td><span class="request-count">480M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GPT-6-Astra</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">GPT-5.6</span><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">GPT-5.2</span><span class="model-tag">GPT-5.4-mini</span><span class="model-tag">GPT-Image-2.0</span></td>
                     <td></td>
                     <td></td>
@@ -4786,7 +4565,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★★</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">8–240 亿（部分未知）</td>
                     <td><span class="price">$100 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$100 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$300 <span class="price-original">$300</span> <span class="unit">/ 季</span></span></td>
@@ -4794,10 +4573,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">600M Tokens</span></td>
-                    <td><span class="request-count">600M Tokens</span></td>
-                    <td><span class="request-count">2,400M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GPT-6-Astra</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">GPT-5.6</span><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">GPT-5.2</span><span class="model-tag">GPT-5.4-mini</span><span class="model-tag">GPT-Image-2.0</span></td>
                     <td></td>
                     <td></td>
@@ -4812,7 +4587,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★★</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">32–960 亿（部分未知）</td>
                     <td><span class="price">$200 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$200 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$600 <span class="price-original">$600</span> <span class="unit">/ 季</span></span></td>
@@ -4820,10 +4595,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">2,400M Tokens</span></td>
-                    <td><span class="request-count">2,400M Tokens</span></td>
-                    <td><span class="request-count">9,600M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GPT-6-Astra</span><span class="model-tag">GPT-5.6</span><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">GPT-5.2</span><span class="model-tag">GPT-5.4-mini</span><span class="model-tag">GPT-Image-2.0</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Luna</span></td>
                     <td></td>
                     <td></td>
@@ -4838,7 +4609,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">4.013–6.689 亿（部分未知）</td>
                     <td><span class="price">$20 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$20 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$60 <span class="price-original">$60</span> <span class="unit">/ 季</span></span></td>
@@ -4846,10 +4617,6 @@
                     <td><span class="request-count">Pro 基准 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">Pro 基准 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">23M Tokens</span></td>
-                    <td><span class="request-count">104M Tokens</span></td>
-                    <td><span class="request-count">416M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Claude Fable 5.1</span><span class="model-tag">Claude Fable 5</span><span class="model-tag">Claude Opus 5</span><span class="model-tag">Claude Sonnet 5</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Claude Sonnet 4.5</span><span class="model-tag">Claude Opus 4.7</span><span class="model-tag">Claude Opus 4.6</span><span class="model-tag">Claude Opus 4.5</span><span class="model-tag">Claude Haiku 4.5</span></td>
                     <td><span class="benefit">原生 Claude 体验</span></td>
                     <td></td>
@@ -4864,7 +4631,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">8.361–55.741 亿（部分未知）</td>
                     <td><span class="price">$100 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$100 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$300 <span class="price-original">$300</span> <span class="unit">/ 季</span></span></td>
@@ -4872,10 +4639,6 @@
                     <td><span class="request-count">Pro 的 5 倍 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">Pro 的 5 倍 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">115M Tokens</span></td>
-                    <td><span class="request-count">520M Tokens</span></td>
-                    <td><span class="request-count">2,080M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Claude Fable 5.1</span><span class="model-tag">Claude Fable 5</span><span class="model-tag">Claude Opus 5</span><span class="model-tag">Claude Sonnet 5</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Claude Sonnet 4.5</span><span class="model-tag">Claude Opus 4.7</span><span class="model-tag">Claude Opus 4.6</span><span class="model-tag">Claude Opus 4.5</span><span class="model-tag">Claude Haiku 4.5</span></td>
                     <td><span class="benefit">原生 Claude 体验</span></td>
                     <td></td>
@@ -4890,7 +4653,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">16.722–111.483 亿（部分未知）</td>
                     <td><span class="price">$200 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$200 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$600 <span class="price-original">$600</span> <span class="unit">/ 季</span></span></td>
@@ -4898,10 +4661,6 @@
                     <td><span class="request-count">Pro 的 20 倍 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">Pro 的 20 倍 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">460M Tokens</span></td>
-                    <td><span class="request-count">2,080M Tokens</span></td>
-                    <td><span class="request-count">8,320M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Claude Fable 5.1</span><span class="model-tag">Claude Fable 5</span><span class="model-tag">Claude Opus 5</span><span class="model-tag">Claude Sonnet 5</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Claude Sonnet 4.5</span><span class="model-tag">Claude Opus 4.7</span><span class="model-tag">Claude Opus 4.6</span><span class="model-tag">Claude Opus 4.5</span><span class="model-tag">Claude Haiku 4.5</span></td>
                     <td><span class="benefit">原生 Claude 体验</span></td>
                     <td></td>
@@ -4916,7 +4675,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">$20 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$20 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$60 <span class="price-original">$60</span> <span class="unit">/ 季</span></span></td>
@@ -4924,10 +4683,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">125M Tokens</span></td>
-                    <td><span class="request-count">500M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.5</span><span class="model-tag">Gemini-3-Flash-Preview</span></td>
                     <td><span class="benefit">3 个并发任务</span></td>
                     <td></td>
@@ -4942,7 +4697,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">$100 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$100 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$300 <span class="price-original">$300</span> <span class="unit">/ 季</span></span></td>
@@ -4950,10 +4705,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">625M Tokens</span></td>
-                    <td><span class="request-count">2,500M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.5</span><span class="model-tag">Gemini-3-Flash-Preview</span></td>
                     <td><span class="benefit">10 个并发任务</span></td>
                     <td></td>
@@ -4968,7 +4719,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥200 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥200 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥600 <span class="price-original">¥600</span> <span class="unit">/ 季</span></span></td>
@@ -4976,10 +4727,6 @@
                     <td><span class="request-count">6,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">45,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">90,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">200M Tokens</span></td>
-                    <td><span class="request-count">1,500M Tokens</span></td>
-                    <td><span class="request-count">3,000M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">Qwen-3.5-Plus</span><span class="model-tag">Qwen-3-Max-2026-01-23</span><span class="model-tag">Qwen-3-Coder-Next</span><span class="model-tag">Qwen-3-Coder-Plus</span><span class="model-tag">GLM-4.7</span></td>
                     <td></td>
                     <td></td>
@@ -4994,7 +4741,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">0.328–4.889 亿（部分未知）</td>
                     <td><span class="price">¥198 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥198 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥594 <span class="price-original">¥594</span> <span class="unit">/ 季</span></span></td>
@@ -5002,10 +4749,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">375M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.5-Plus</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span></td>
                     <td></td>
                     <td></td>
@@ -5020,7 +4763,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">1.313–19.556 亿（部分未知）</td>
                     <td><span class="price">¥698 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥698 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥2094 <span class="price-original">¥2094</span> <span class="unit">/ 季</span></span></td>
@@ -5028,10 +4771,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">1,500M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">Qwen-3.5-Plus</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span></td>
                     <td></td>
                     <td></td>
@@ -5046,7 +4785,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">5.253–78.224 亿（部分未知）</td>
                     <td><span class="price">¥1398 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥1398 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥4194 <span class="price-original">¥4194</span> <span class="unit">/ 季</span></span></td>
@@ -5054,10 +4793,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">3,750M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">Qwen-3.5-Plus</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span></td>
                     <td></td>
                     <td></td>
@@ -5072,7 +4807,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">2.021–5.213 亿（部分未知）</td>
                     <td><span class="price">¥34.32 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥39 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥117 <span class="price-original">¥117</span> <span class="unit">/ 季</span></span></td>
@@ -5080,10 +4815,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">108M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-TTS</span><span class="model-tag">MiMo-V2-Pro</span><span class="model-tag">MiMo-V2-Omni</span></td>
                     <td><span class="benefit">TTS限时免费</span></td>
                     <td></td>
@@ -5098,7 +4829,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">5.422–13.985 亿（部分未知）</td>
                     <td><span class="price">¥87.12 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥99 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥297 <span class="price-original">¥297</span> <span class="unit">/ 季</span></span></td>
@@ -5106,10 +4837,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">290M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-TTS</span><span class="model-tag">MiMo-V2-Pro</span><span class="model-tag">MiMo-V2-Omni</span></td>
                     <td><span class="benefit">TTS限时免费</span></td>
                     <td></td>
@@ -5124,7 +4851,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">18.73–48.312 亿（部分未知）</td>
                     <td><span class="price">¥289.52 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥329 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥987 <span class="price-original">¥987</span> <span class="unit">/ 季</span></span></td>
@@ -5132,10 +4859,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">1,002M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-TTS</span><span class="model-tag">MiMo-V2-Pro</span><span class="model-tag">MiMo-V2-Omni</span></td>
                     <td><span class="benefit">TTS限时免费</span></td>
                     <td></td>
@@ -5150,7 +4873,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">40.418–104.253 亿（部分未知）</td>
                     <td><span class="price">¥579.92 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥659 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥1977 <span class="price-original">¥1977</span> <span class="unit">/ 季</span></span></td>
@@ -5158,10 +4881,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">2,162M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-TTS</span><span class="model-tag">MiMo-V2-Pro</span><span class="model-tag">MiMo-V2-Omni</span></td>
                     <td><span class="benefit">TTS限时免费</span></td>
                     <td></td>
@@ -5176,7 +4895,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★★</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">0.149–无限制 亿（部分未知）</td>
                     <td><span class="price">$1 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$1 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$3 <span class="price-original">$3</span> <span class="unit">/ 季</span></span></td>
@@ -5184,10 +4903,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Laguna-S-2.1</span><span class="model-tag">LongCat-2.0</span><span class="model-tag">Ling-3.0-Flash-Sante</span><span class="model-tag">Hy4-preview</span><span class="model-tag">Hy3</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.7-Code-HighSpeed</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.2-Fast</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">DeepSeek-V4-Flash-Fast</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">Qwen-3.8-Max-0902</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-27B</span><span class="model-tag">Qwen-3.6-Max-Preview</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Flash</span><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">Nemotron-3-Ultra</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">Muse-Spark-1.3</span><span class="model-tag">Muse-Spark-1.2</span><span class="model-tag">Grok-4.5</span><span class="model-tag">Inkling</span><span class="model-tag">Inkling-Small</span></td>
                     <td><span class="benefit">每月 $10 模型 Credits</span><span class="benefit">5 小时 / 周额度为 $3 / $6</span><span class="benefit">支持开源模型及部分闭源模型</span><span class="benefit">支持 44 个模型</span></td>
                     <td></td>
@@ -5202,7 +4917,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★★</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">0.297–无限制 亿（部分未知）</td>
                     <td><span class="price">$10 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$10 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$30 <span class="price-original">$30</span> <span class="unit">/ 季</span></span></td>
@@ -5210,10 +4925,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Laguna-S-2.1</span><span class="model-tag">LongCat-2.0</span><span class="model-tag">Ling-3.0-Flash-Sante</span><span class="model-tag">Hy4-preview</span><span class="model-tag">Hy3</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.7-Code-HighSpeed</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.2-Fast</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">DeepSeek-V4-Flash-Fast</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">Qwen-3.8-Max-0902</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-27B</span><span class="model-tag">Qwen-3.6-Max-Preview</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Flash</span><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">Nemotron-3-Ultra</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">Gemini-3.8-Flash</span><span class="model-tag">Gemini-3.7-Flash</span><span class="model-tag">Muse-Spark-1.3</span><span class="model-tag">Muse-Spark-1.2</span><span class="model-tag">Grok-4.6</span><span class="model-tag">Grok-4.5</span><span class="model-tag">Inkling</span><span class="model-tag">Inkling-Small</span></td>
                     <td><span class="benefit">最高每月 $70 模型 Credits</span><span class="benefit">5 小时 / 周额度为 $14 / $35</span><span class="benefit">支持 50 个模型</span></td>
                     <td></td>
@@ -5228,7 +4939,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">0.23–无限制 亿（部分未知）</td>
                     <td><span class="price">$20 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$20 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$60 <span class="price-original">$60</span> <span class="unit">/ 季</span></span></td>
@@ -5236,10 +4947,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Laguna-S-2.1</span><span class="model-tag">LongCat-2.0</span><span class="model-tag">Ling-3.0-Flash-Sante</span><span class="model-tag">Hy4-preview</span><span class="model-tag">Hy3</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.7-Code-HighSpeed</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.2-Fast</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">DeepSeek-V4-Flash-Fast</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">Qwen-3.8-Max-0902</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-27B</span><span class="model-tag">Qwen-3.6-Max-Preview</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Flash</span><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">Nemotron-3-Ultra</span><span class="model-tag">Claude Sonnet 5</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Claude Haiku 4.5</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Terra</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.4-mini</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">Gemini-3.8-Flash</span><span class="model-tag">Gemini-3.7-Flash</span><span class="model-tag">Gemini-3.6-Flash</span><span class="model-tag">Gemini-3.5-Flash</span><span class="model-tag">Gemini-3.5-Flash-Lite</span><span class="model-tag">Gemini-3.1-Flash-Lite</span><span class="model-tag">Muse-Spark-1.3</span><span class="model-tag">Muse-Spark-1.2</span><span class="model-tag">Muse-Spark-1.1</span><span class="model-tag">Grok-4.6</span><span class="model-tag">Grok-4.5</span><span class="model-tag">Inkling</span><span class="model-tag">Inkling-Small</span></td>
                     <td><span class="benefit">最高每月 $80 模型 Credits</span><span class="benefit">5 小时 / 周额度为 $16 / $40</span><span class="benefit">支持 63 个模型</span></td>
                     <td></td>
@@ -5254,7 +4961,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥4.90 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥9.90 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥29.70 <span class="price-original">¥29.70</span> <span class="unit">/ 季</span></span></td>
@@ -5262,10 +4969,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">10M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">ERNIE-5.1</span></td>
                     <td></td>
                     <td></td>
@@ -5280,7 +4983,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥19.90 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥40 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥120 <span class="price-original">¥120</span> <span class="unit">/ 季</span></span></td>
@@ -5288,10 +4991,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">42M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">ERNIE-5.1</span></td>
                     <td></td>
                     <td></td>
@@ -5306,7 +5005,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥99.90 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥200 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥600 <span class="price-original">¥600</span> <span class="unit">/ 季</span></span></td>
@@ -5314,10 +5013,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">230M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">ERNIE-5.1</span></td>
                     <td></td>
                     <td></td>
@@ -5332,7 +5027,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥299.90 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥600 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥1800 <span class="price-original">¥1800</span> <span class="unit">/ 季</span></span></td>
@@ -5340,10 +5035,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">700M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">ERNIE-5.1</span></td>
                     <td></td>
                     <td></td>
@@ -5358,7 +5049,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥59 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥59 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥177 <span class="price-original">¥177</span> <span class="unit">/ 季</span></span></td>
@@ -5366,10 +5057,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">50M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span></td>
                     <td></td>
                     <td></td>
@@ -5384,7 +5071,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥149 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥149 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥447 <span class="price-original">¥447</span> <span class="unit">/ 季</span></span></td>
@@ -5392,10 +5079,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">130M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span></td>
                     <td></td>
                     <td></td>
@@ -5410,7 +5093,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥399 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥399 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥1197 <span class="price-original">¥1197</span> <span class="unit">/ 季</span></span></td>
@@ -5418,10 +5101,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">380M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span></td>
                     <td></td>
                     <td></td>
@@ -5436,7 +5115,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥799 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥799 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥2397 <span class="price-original">¥2397</span> <span class="unit">/ 季</span></span></td>
@@ -5444,10 +5123,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">880M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span></td>
                     <td></td>
                     <td></td>
@@ -5462,7 +5137,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★☆☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥39 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥39 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥117 <span class="price-original">¥117</span> <span class="unit">/ 季</span></span></td>
@@ -5470,10 +5145,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">35M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">HY-2.0</span><span class="model-tag">GLM-5.1</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span></td>
                     <td></td>
                     <td></td>
@@ -5488,7 +5159,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★☆☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥99 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥99 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥297 <span class="price-original">¥297</span> <span class="unit">/ 季</span></span></td>
@@ -5496,10 +5167,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">100M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">HY-2.0</span><span class="model-tag">GLM-5.1</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span></td>
                     <td></td>
                     <td></td>
@@ -5514,7 +5181,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★☆☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥299 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥299 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥897 <span class="price-original">¥897</span> <span class="unit">/ 季</span></span></td>
@@ -5522,10 +5189,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">320M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">HY-2.0</span><span class="model-tag">GLM-5.1</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span></td>
                     <td></td>
                     <td></td>
@@ -5540,7 +5203,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★☆☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥599 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥599 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥1797 <span class="price-original">¥1797</span> <span class="unit">/ 季</span></span></td>
@@ -5548,10 +5211,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">650M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">HY-2.0</span><span class="model-tag">GLM-5.1</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span></td>
                     <td></td>
                     <td></td>
@@ -5566,7 +5225,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥19.90 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥40 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥120 <span class="price-original">¥120</span> <span class="unit">/ 季</span></span></td>
@@ -5574,10 +5233,6 @@
                     <td><span class="request-count">1,200 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">9,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">18,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">Qwen-3-Coder</span></td>
                     <td></td>
                     <td></td>
@@ -5592,7 +5247,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥99.90 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥200 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥600 <span class="price-original">¥600</span> <span class="unit">/ 季</span></span></td>
@@ -5600,10 +5255,6 @@
                     <td><span class="request-count">6,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">45,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">90,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">Qwen-3-Coder</span></td>
                     <td></td>
                     <td></td>
@@ -5618,7 +5269,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★★★</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">$0 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$0 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$0 <span class="price-original">$0</span> <span class="unit">/ 季</span></span></td>
@@ -5626,10 +5277,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GPT-4o</span><span class="model-tag">GPT-4.1</span><span class="model-tag">GPT-5-mini</span><span class="model-tag">GPT-5.2-Codex</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Claude Haiku 4.5</span><span class="model-tag">Grok Code Fast 1</span></td>
                     <td><span class="benefit">学生认证免费</span></td>
                     <td></td>
@@ -5644,7 +5291,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">$10 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$10 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$30 <span class="price-original">$30</span> <span class="unit">/ 季</span></span></td>
@@ -5652,10 +5299,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">GPT-5.4</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Grok Code Fast 1</span></td>
                     <td><span class="benefit">1000 积分</span></td>
                     <td></td>
@@ -5670,7 +5313,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">$39 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$39 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$117 <span class="price-original">$117</span> <span class="unit">/ 季</span></span></td>
@@ -5678,10 +5321,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">Claude Opus 4.7</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Gemini 3.1 Pro</span></td>
                     <td><span class="benefit">3900 积分</span></td>
                     <td></td>
@@ -5696,7 +5335,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥59 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥59 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥未公开  <span class="unit">/ 季</span></span></td>
@@ -5704,10 +5343,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M2.7</span></td>
                     <td><span class="benefit">2,000 Credits/月</span><span class="benefit">覆盖 Qoder CN 全家桶</span></td>
                     <td></td>
@@ -5722,7 +5357,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥169 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥169 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥未公开  <span class="unit">/ 季</span></span></td>
@@ -5730,10 +5365,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M2.7</span></td>
                     <td><span class="benefit">6,000 Credits/月</span><span class="benefit">覆盖 Qoder CN 全家桶</span></td>
                     <td></td>
@@ -5748,7 +5379,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥559 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥559 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥未公开  <span class="unit">/ 季</span></span></td>
@@ -5756,10 +5387,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M2.7</span></td>
                     <td><span class="benefit">20,000 Credits/月</span><span class="benefit">覆盖 Qoder CN 全家桶</span></td>
                     <td></td>
@@ -5774,7 +5401,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">$20 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$20 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$未公开  <span class="unit">/ 季</span></span></td>
@@ -5782,10 +5409,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M3</span></td>
                     <td><span class="benefit">2,000 Credits/月</span><span class="benefit">Quest、Repo Wiki、知识卡片</span></td>
                     <td></td>
@@ -5800,7 +5423,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">$60 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$60 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$未公开  <span class="unit">/ 季</span></span></td>
@@ -5808,10 +5431,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M3</span></td>
                     <td><span class="benefit">6,000 Credits/月</span><span class="benefit">Quest、Repo Wiki、知识卡片</span></td>
                     <td></td>
@@ -5826,7 +5445,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">$200 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$200 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$未公开  <span class="unit">/ 季</span></span></td>
@@ -5834,10 +5453,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M3</span></td>
                     <td><span class="benefit">20,000 Credits/月</span><span class="benefit">Quest、Repo Wiki、知识卡片</span></td>
                     <td></td>
@@ -5852,7 +5467,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥70 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥70 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥未公开  <span class="unit">/ 季</span></span></td>
@@ -5860,10 +5475,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Auto</span><span class="model-tag">Hy3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5v-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span></td>
                     <td><span class="benefit">2000 基础积分/月</span><span class="benefit">WorkBuddy / CodeBuddy 积分共享</span><span class="benefit">全模型可选、无限代码补全</span></td>
                     <td></td>
@@ -5878,7 +5489,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥140 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥140 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥未公开  <span class="unit">/ 季</span></span></td>
@@ -5886,10 +5497,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Auto</span><span class="model-tag">Hy3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5v-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span></td>
                     <td><span class="benefit">4000 基础积分/月</span><span class="benefit">WorkBuddy / CodeBuddy 积分共享</span><span class="benefit">全模型可选、无限代码补全</span></td>
                     <td></td>
@@ -5904,7 +5511,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥700 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥700 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥未公开  <span class="unit">/ 季</span></span></td>
@@ -5912,10 +5519,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Auto</span><span class="model-tag">Hy3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5v-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span></td>
                     <td><span class="benefit">20000 基础积分/月</span><span class="benefit">WorkBuddy / CodeBuddy 积分共享</span><span class="benefit">全模型可选、无限代码补全</span></td>
                     <td></td>
@@ -5930,7 +5533,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥29.90 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥45 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥未公开  <span class="unit">/ 季</span></span></td>
@@ -5938,10 +5541,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Doubao-Seed-2.1-Pro</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Plus</span></td>
                     <td><span class="benefit">2000 Work 专属积分/周期</span><span class="benefit">仅适用于 TraeWork</span><span class="benefit">云端任务最多 2 个并行</span></td>
                     <td></td>
@@ -5956,7 +5555,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥69 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥89 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥未公开  <span class="unit">/ 季</span></span></td>
@@ -5964,10 +5563,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Doubao-Seed-2.1-Pro</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Doubao-Seed-Evolving</span></td>
                     <td><span class="benefit">4000 通用积分/周期</span><span class="benefit">适用于 TraeCode 与 TraeWork</span><span class="benefit">云端任务最多 10 个并行</span></td>
                     <td></td>
@@ -5982,7 +5577,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥219 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥219 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥未公开  <span class="unit">/ 季</span></span></td>
@@ -5990,10 +5585,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Doubao-Seed-2.1-Pro</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Doubao-Seed-Evolving</span></td>
                     <td><span class="benefit">12000 通用积分/周期</span><span class="benefit">适用于 TraeCode 与 TraeWork</span><span class="benefit">云端任务最多 10 个并行</span></td>
                     <td></td>
@@ -6008,7 +5599,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥629 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥629 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥未公开  <span class="unit">/ 季</span></span></td>
@@ -6016,10 +5607,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">Doubao-Seed-2.1-Pro</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Doubao-Seed-Evolving</span></td>
                     <td><span class="benefit">40000 通用积分/周期</span><span class="benefit">适用于 TraeCode 与 TraeWork</span><span class="benefit">云端任务最多 20 个并行</span></td>
                     <td></td>
@@ -6034,7 +5621,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">$3 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$3 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$未公开  <span class="unit">/ 季</span></span></td>
@@ -6042,10 +5629,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.2</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Gemini-3-Flash-Preview</span></td>
                     <td><span class="benefit">$5 基础使用额度/月</span><span class="benefit">无限代码补全、TraeCode SOLO</span><span class="benefit">TraeWork 云端任务最多 2 个并行</span></td>
                     <td></td>
@@ -6060,7 +5643,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">$10 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$10 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$未公开  <span class="unit">/ 季</span></span></td>
@@ -6068,10 +5651,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.2</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Gemini-3-Flash-Preview</span></td>
                     <td><span class="benefit">$20 基础使用额度/月</span><span class="benefit">无限代码补全、TraeCode SOLO</span><span class="benefit">TraeWork 云端任务最多 10 个并行</span></td>
                     <td></td>
@@ -6086,7 +5665,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">$30 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$30 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$未公开  <span class="unit">/ 季</span></span></td>
@@ -6094,10 +5673,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.2</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Gemini-3-Flash-Preview</span></td>
                     <td><span class="benefit">$90 基础使用额度/月</span><span class="benefit">无限代码补全、TraeCode SOLO</span><span class="benefit">TraeWork 云端任务最多 15 个并行</span></td>
                     <td></td>
@@ -6112,7 +5687,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">待评定</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">$100 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">$100 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">$未公开  <span class="unit">/ 季</span></span></td>
@@ -6120,10 +5695,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.2</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Gemini-3-Flash-Preview</span></td>
                     <td><span class="benefit">$400 基础使用额度/月</span><span class="benefit">无限代码补全、TraeCode SOLO</span><span class="benefit">TraeWork 云端任务最多 20 个并行</span></td>
                     <td></td>
@@ -6138,7 +5709,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥199 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥199 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥597 <span class="price-original">¥597</span> <span class="unit">/ 季</span></span></td>
@@ -6146,10 +5717,6 @@
                     <td><span class="request-count">6,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">45,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">90,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Qwen3.6-35B-A3B</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">DeepSeek-V3.2</span></td>
                     <td></td>
                     <td></td>
@@ -6164,7 +5731,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥699 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥699 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥2097 <span class="price-original">¥2097</span> <span class="unit">/ 季</span></span></td>
@@ -6172,10 +5739,6 @@
                     <td><span class="request-count">- <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">- <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">- <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.2</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">Kimi-K2.7-Code</span></td>
                     <td></td>
                     <td></td>
@@ -6190,7 +5753,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★☆☆☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥15 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥15 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥45 <span class="price-original">¥45</span> <span class="unit">/ 季</span></span></td>
@@ -6198,10 +5761,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">6M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">MiniMax-M2.5</span></td>
                     <td></td>
                     <td></td>
@@ -6216,7 +5775,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★☆☆☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥30 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥30 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥90 <span class="price-original">¥90</span> <span class="unit">/ 季</span></span></td>
@@ -6224,10 +5783,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">12M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">MiniMax-M2.5</span></td>
                     <td></td>
                     <td></td>
@@ -6242,7 +5797,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★☆☆☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥45 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥45 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥135 <span class="price-original">¥135</span> <span class="unit">/ 季</span></span></td>
@@ -6250,10 +5805,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">18M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">MiniMax-M2.5</span></td>
                     <td></td>
                     <td></td>
@@ -6268,7 +5819,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥198 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥198 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥594 <span class="price-original">¥594</span> <span class="unit">/ 季</span></span></td>
@@ -6276,10 +5827,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">200M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">MiniMax-M2.5</span></td>
                     <td></td>
                     <td></td>
@@ -6294,7 +5841,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥698 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥698 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥2094 <span class="price-original">¥2094</span> <span class="unit">/ 季</span></span></td>
@@ -6302,10 +5849,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">800M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">MiniMax-M2.5</span></td>
                     <td></td>
                     <td></td>
@@ -6320,7 +5863,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-strong">模型强</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥1398 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥1398 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥4194 <span class="price-original">¥4194</span> <span class="unit">/ 季</span></span></td>
@@ -6328,10 +5871,6 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">2,000M Tokens</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">MiniMax-M2.5</span></td>
                     <td></td>
                     <td></td>
@@ -6346,7 +5885,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥7.90 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥40 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥120 <span class="price-original">¥120</span> <span class="unit">/ 季</span></span></td>
@@ -6354,10 +5893,6 @@
                     <td><span class="request-count">1,200 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">9,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">18,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">MiniMax-M2.5</span></td>
                     <td></td>
                     <td></td>
@@ -6372,7 +5907,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥39.90 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥200 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥600 <span class="price-original">¥600</span> <span class="unit">/ 季</span></span></td>
@@ -6380,10 +5915,6 @@
                     <td><span class="request-count">6,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">45,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">90,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">MiniMax-M2.5</span></td>
                     <td></td>
                     <td></td>
@@ -6398,7 +5929,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★☆☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥49 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥49 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥147 <span class="price-original">¥147</span> <span class="unit">/ 季</span></span></td>
@@ -6406,10 +5937,6 @@
                     <td><span class="request-count">1,500 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">6,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">24,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash-2603</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">step-router-v1</span></td>
                     <td></td>
                     <td></td>
@@ -6424,7 +5951,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★☆☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥99 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥99 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥297 <span class="price-original">¥297</span> <span class="unit">/ 季</span></span></td>
@@ -6432,10 +5959,6 @@
                     <td><span class="request-count">6,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">24,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">96,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash-2603</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">step-router-v1</span></td>
                     <td></td>
                     <td></td>
@@ -6450,7 +5973,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★☆☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥199 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥199 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥597 <span class="price-original">¥597</span> <span class="unit">/ 季</span></span></td>
@@ -6458,10 +5981,6 @@
                     <td><span class="request-count">22,500 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">90,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">360,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash-2603</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">step-router-v1</span></td>
                     <td></td>
                     <td></td>
@@ -6476,7 +5995,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★☆☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥699 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥699 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥2097 <span class="price-original">¥2097</span> <span class="unit">/ 季</span></span></td>
@@ -6484,10 +6003,6 @@
                     <td><span class="request-count">75,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">300,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">1,200,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash-2603</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">step-router-v1</span></td>
                     <td></td>
                     <td></td>
@@ -6502,7 +6017,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥149 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥149 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥447 <span class="price-original">¥447</span> <span class="unit">/ 季</span></span></td>
@@ -6510,10 +6025,6 @@
                     <td><span class="request-count">2,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">15,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">- <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.2</span></td>
                     <td></td>
                     <td></td>
@@ -6528,7 +6039,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥388 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥388 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥1164 <span class="price-original">¥1164</span> <span class="unit">/ 季</span></span></td>
@@ -6536,10 +6047,6 @@
                     <td><span class="request-count">6,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">35,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">- <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-5.2</span></td>
                     <td></td>
                     <td></td>
@@ -6554,7 +6061,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★☆☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥20 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥20 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥60 <span class="price-original">¥60</span> <span class="unit">/ 季</span></span></td>
@@ -6562,10 +6069,6 @@
                     <td><span class="request-count">1,200 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">9,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">18,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">Qwen-3-235B-A22B</span></td>
                     <td></td>
                     <td></td>
@@ -6580,7 +6083,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★☆☆☆</td>
-                    <td class="plan-tags-cell"></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥100 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥100 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥300 <span class="price-original">¥300</span> <span class="unit">/ 季</span></span></td>
@@ -6588,10 +6091,6 @@
                     <td><span class="request-count">6,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">45,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">90,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">Qwen-3-235B-A22B</span></td>
                     <td></td>
                     <td></td>
@@ -6606,7 +6105,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥0 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥0 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥0 <span class="price-original">¥0</span> <span class="unit">/ 季</span></span></td>
@@ -6614,10 +6113,6 @@
                     <td><span class="request-count">1,500 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">SenseNova 6.7 Flash-Lite</span><span class="model-tag">SenseNova U1 Fast</span><span class="model-tag">DeepSeek-V4-Flash-0731</span></td>
                     <td><span class="benefit">256K 上下文</span></td>
                     <td></td>
@@ -6632,7 +6127,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">★★★☆☆</td>
-                    <td class="plan-tags-cell"><div class="plan-tags"><span class="plan-tag tag-value">性价比高</span></div></td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">未知</td>
                     <td><span class="price">¥0 <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">¥0 <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">¥0 <span class="price-original">¥0</span> <span class="unit">/ 季</span></span></td>
@@ -6640,10 +6135,6 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">-</span></td>
-                    <td><span class="request-count">无限制</span></td>
                     <td><span class="model-tag">GLM-4.7</span></td>
                     <td></td>
                     <td></td>
@@ -6907,8 +6398,8 @@
 
     <script src="monitor/monitor-config.js"></script>
     <script src="monitor/monitor-config.local.js"></script>
-    <script src="scripts/entity-data.js?v=260918a"></script>
-    <script src="scripts/filter-state.js?v=260920e"></script>
+    <script src="scripts/entity-data.js?v=260920g"></script>
+    <script src="scripts/filter-state.js?v=260920g"></script>
     <script src="scripts/platform-pages.js?v=b5b0ec3644"></script>
     <script src="scripts/platform-catalog.js?v=260915a"></script>
     <script src="scripts/platform-detail.js?v=260915a"></script>
@@ -6916,7 +6407,7 @@
     <script src="scripts/platform-comparison.js?v=260918a"></script>
     <script src="scripts/main-views.js?v=260915a"></script>
     <script src="scripts/plan-composite-price-chart.js?v=260904a"></script>
-    <script src="scripts/homepage.js?v=260920f"></script>
-    <script src="scripts/homepage-filters.js?v=260920f"></script>
+    <script src="scripts/homepage.js?v=260920g"></script>
+    <script src="scripts/homepage-filters.js?v=260920g"></script>
 </body>
 </html>

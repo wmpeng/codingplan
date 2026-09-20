@@ -69,7 +69,11 @@
           ...plan,
           platformName: (platform && platform.name) || plan.platformSlug,
           supportedModels: models,
-          modelLabels: models.map(model => model.name)
+          modelLabels: models.map(model => model.name),
+          monthlyTokenOptions: (context.relationsByPlanSlug.get(plan.slug) || []).map(relation => ({
+            modelSlug: relation.modelSlug,
+            value: relation.usage && relation.usage.monthlyTokenInM
+          }))
         };
       });
   }

@@ -27,8 +27,12 @@
       const count = host.querySelector('[data-plan-count]');
 
       function apply() {
-        const filtered = Filters.filterPlans(allPlans, state, { usdToCnyRate: config.usdToCnyRate, context });
+        const filtered = Filters.filterPlans(allPlans, state, { usdToCnyRate: config.usdToCnyRate, context, platformCatalog: config.platformCatalog });
         const valueForSort = plan => {
+          if (sort.key === 'monthlyToken') {
+            const values = (plan.monthlyTokenOptions || []).filter(row => !state.modelSlugs || state.modelSlugs.includes(row.modelSlug)).map(row => row.value === 'unlimited' ? Infinity : row.value).filter(value => typeof value === 'number');
+            return values.length ? Math.min(...values) : null;
+          }
           const value = plan[sort.key];
           if (sort.key.endsWith('Price')) return Filters.toCny(value, plan.currency, config.usdToCnyRate);
           if (sort.key.endsWith('Requests')) return value === '无限制' ? Infinity : typeof value === 'number' ? value : null;
@@ -53,7 +57,7 @@
           ${['firstMonthPrice', 'monthlyPrice', 'quarterlyPrice', 'yearlyPrice'].map(key => `<td>${esc(money(plan, key))}</td>`).join('')}
           ${['fiveHoursRequests', 'weeklyRequests', 'monthlyRequests'].map(key => `<td>${esc(plan[key] == null ? '未公开' : plan[key])}</td>`).join('')}
           <td>${chips(plan.modelLabels)}</td>
-          <td>${(plan.tags || []).map(tag => `<span class="tool-tag">${esc(tag)}</span>`).join('')}</td>
+          <td class="monthly-token-cell" title="所选模型各档位的月 Token 参考范围，不相加；详细口径见额度/价格对比">${esc(Filters.formatMonthlyTokens(plan, state))}</td>
           <td>${plan.rating > 0 ? esc(plan.rating) + ' / 5' : '待评定'}</td>
           <td>${chips(plan.benefits)}</td>
           <td class="plan-note">${esc(plan.note || '')}</td>

@@ -9,7 +9,6 @@
   }
 
   function optionLabel(item, kind) {
-    if (kind === 'planSlugs') return `${item.platformName || item.platformSlug} · ${item.name}`;
     return item.name || item.slug;
   }
 
@@ -69,7 +68,6 @@
     // 深链只预选当前平台，选择器的“恢复默认”仍回到配置中的精选名单。
     const configuredDefaults = {
       platformSlugs: state.platformSlugs === null ? null : [...state.platformSlugs],
-      planSlugs: state.planSlugs === null ? null : [...state.planSlugs],
       modelSlugs: state.modelSlugs === null ? null : [...state.modelSlugs]
     };
     const params = new URLSearchParams(root.location && root.location.search || '');
@@ -80,12 +78,18 @@
     state.__defaults = configuredDefaults;
 
     mountPoint.innerHTML = `<section class="filter-state-bar surface-panel" aria-label="统一筛选">
-      <div class="filter-state-summary"><span class="filter-state-label">当前筛选</span><span class="filter-state-chip" data-summary="platformSlugs"></span><span class="filter-state-chip" data-summary="planSlugs"></span><span class="filter-state-chip" data-summary="modelSlugs"></span><span class="filter-state-chip" data-summary="budgetCny" hidden></span><div class="filter-state-actions"><button type="button" class="filter-state-btn" data-filter-action="clear-all">清空全部</button><button type="button" class="filter-state-btn primary" data-filter-action="restore-all">恢复默认</button></div></div>
+      <div class="filter-state-summary"><span class="filter-state-label">当前筛选</span><span class="filter-state-chip" data-summary="platformSlugs"></span><span class="filter-state-chip" data-summary="modelSlugs"></span><span class="filter-state-chip" data-summary="budgetCny" hidden></span><div class="filter-state-actions"><button type="button" class="filter-state-btn" data-filter-action="clear-all">清空全部</button><button type="button" class="filter-state-btn primary" data-filter-action="restore-all">恢复默认</button></div></div>
       <p class="filter-state-hint" data-filter-hint></p><div class="filter-active-limits" data-active-limits aria-label="逐项取消筛选限制"></div>
       <div class="filter-state-grid">
         ${buildPicker({ id: 'homePlatformPicker', label: '平台', key: 'platformSlugs', items: platforms, state })}
-        ${buildPicker({ id: 'homePlanPicker', label: '套餐', key: 'planSlugs', items: plans, state })}
         ${buildPicker({ id: 'homeModelPicker', label: '模型', key: 'modelSlugs', items: models, state })}
+        <details class="filter-picker" data-picker="monthlyTokenRange" id="homeTokenPicker"><summary><span>月 Token 数</span><span class="filter-picker-count" data-token-label>不限</span></summary>
+          <div class="filter-picker-menu budget-menu">
+            <div class="budget-values"><label>最低 <span data-token-unit-label></span><div><input type="number" min="0" step="any" data-token-part="min" aria-label="最低月 Token 数" placeholder="不限"></div></label><span>—</span><label>最高 <span data-token-unit-label></span><div><input type="number" min="0" step="any" data-token-part="max" aria-label="最高月 Token 数" placeholder="不限"></div></label></div>
+            <p class="filter-help">按所选模型的月 Token 参考量筛选；各模型额度不相加。启用后排除未知额度和按量 API。</p>
+            <div class="filter-picker-tools"><button type="button" data-token-clear>取消限制</button><button type="button" data-token-done>完成</button></div>
+          </div>
+        </details>
         <details class="filter-picker" data-picker="budgetCny" id="homeBudgetPicker"><summary><span>月预算（¥）</span><span class="filter-picker-count" data-budget-label>不限</span></summary>
           <div class="filter-picker-menu budget-menu">
             <div class="budget-heading">月预算<span>拖动滑块或点击金额输入</span></div>
@@ -102,6 +106,7 @@
           </div>
         </details>
       </div>
+      <div class="global-token-unit" role="group" aria-label="Token 单位"><span>Token 单位</span><button type="button" data-global-token-unit="M">M</button><button type="button" data-global-token-unit="yi">亿</button></div>
       <details class="filter-more"><summary>更多筛选与口径</summary><div class="filter-more-grid">
         <label class="filter-inline"><span>模型匹配</span><select data-filter-field="modelMatch"><option value="any">任意一个</option><option value="all">全部所选</option></select></label>
         <label class="filter-inline"><span>平台状态</span><select data-filter-field="platformStatusMax"><option value="open">开放购买</option><option value="limited">含定时放量</option><option value="paused">含暂停售</option><option value="delisted">全部状态</option></select></label>
@@ -110,14 +115,14 @@
         <label class="filter-inline"><span>DeepSWE 最低分</span><input type="number" min="0" max="100" data-filter-field="deepSWEScoreMin" placeholder="不限"></label>
         <label class="filter-inline"><input type="checkbox" data-filter-field="includeDiscontinued"><span>包含下架套餐</span></label>
         <div class="filter-subgroup"><strong>平台标签</strong><div data-tag-options="platformTags"></div></div>
-        <div class="filter-subgroup"><strong>套餐标签</strong><div data-tag-options="planTags"></div></div>
         <div class="filter-subgroup filter-ranges"><strong>价格范围（折合人民币）</strong>${buildRange('priceRanges', 'firstMonthPrice', state)}${buildRange('priceRanges', 'monthlyPrice', state)}${buildRange('priceRanges', 'quarterlyPrice', state)}${buildRange('priceRanges', 'yearlyPrice', state)}</div>
         <div class="filter-subgroup filter-ranges"><strong>请求数范围</strong>${buildRange('requestRanges', 'fiveHoursRequests', state)}${buildRange('requestRanges', 'weeklyRequests', state)}${buildRange('requestRanges', 'monthlyRequests', state)}</div>
-      </div><p class="filter-help">平台、套餐和模型的筛选会在适用的 Tab 中联动；监控只使用平台和模型条件。不勾选或全选均表示该项不限；其他筛选条件继续生效。</p></details>
+      </div><p class="filter-help">平台和模型的筛选会在适用的 Tab 中联动；监控只使用平台和模型条件。不勾选或全选均表示该项不限；其他筛选条件继续生效。</p></details>
     </section>`;
 
     // Keep the main row compact; detailed conditions remain available in More.
     const filterRow = mountPoint.querySelector('.filter-state-grid');
+    filterRow.appendChild(mountPoint.querySelector('.global-token-unit'));
     filterRow.appendChild(mountPoint.querySelector('.filter-state-actions'));
     const more = mountPoint.querySelector('.filter-more');
     more.querySelector('summary').textContent = '更多筛选';
@@ -130,7 +135,7 @@
         ? '只筛选已监控的平台和模型，未监控项目没有统计结果。不勾选表示不限。'
         : '不勾选或全选均表示该项不限；不同筛选条件同时生效。';
       const hide = selector => mountPoint.querySelectorAll(selector).forEach(el => { el.hidden = true; });
-      if (opts.view !== 'plans' && opts.view !== 'pricing') hide('[data-picker="planSlugs"], [data-picker="budgetCny"]');
+      if (opts.view !== 'plans' && opts.view !== 'pricing') hide('[data-picker="monthlyTokenRange"], [data-picker="budgetCny"], .global-token-unit');
       const allowed = {
         platforms: ['modelMatch', 'platformStatusMax'],
         plans: ['modelMatch', 'platformStatusMax', 'includeDiscontinued'],
@@ -148,14 +153,12 @@
 
     const tagValues = [...new Set(platforms.flatMap(item => Array.isArray(item.tags) ? item.tags : []))];
     const derived = (catalog.derivedTags || []).map(item => item.label).filter(Boolean);
-    const planTags = [...new Set(plans.flatMap(item => Array.isArray(item.tags) ? item.tags : []))];
     const renderTags = (key, values) => {
       const host = mountPoint.querySelector(`[data-tag-options="${key}"]`);
       if (!host) return;
       host.innerHTML = [...new Set(values)].map(value => `<label><input type="checkbox" value="${escapeHtml(value)}"><span>${escapeHtml(value)}</span></label>`).join('');
     };
     renderTags('platformTags', [...derived, ...tagValues]);
-    renderTags('planTags', planTags);
 
     function summary(key, label, allItems) {
       const selected = state[key];
@@ -173,8 +176,15 @@
     const budgetAmount = position => Math.round((Number(position) / 1000) ** 2 * budgetScaleMax);
 
     function render() {
+      const tokenRange = state.monthlyTokenRange;
+      const factor = state.tokenUnit === 'M' ? 1 : 100;
+      const tokenUnitLabel = state.tokenUnit === 'M' ? 'M' : '亿';
+      const tokenValue = value => value == null ? '' : Number((value / factor).toPrecision(12));
+      mountPoint.querySelectorAll('[data-token-part]').forEach(input => { input.value = tokenValue(tokenRange && tokenRange[input.dataset.tokenPart]); });
+      mountPoint.querySelectorAll('[data-token-unit-label]').forEach(el => { el.textContent = tokenUnitLabel; });
+      mountPoint.querySelectorAll('[data-global-token-unit]').forEach(button => { button.setAttribute('aria-pressed', String(button.dataset.globalTokenUnit === state.tokenUnit)); });
+      mountPoint.querySelector('[data-token-label]').textContent = tokenRange ? `${tokenValue(tokenRange.min) || 0}–${tokenRange.max == null ? '不限' : tokenValue(tokenRange.max)} ${tokenUnitLabel}` : '不限';
       summary('platformSlugs', '平台', platforms);
-      summary('planSlugs', '套餐', plans);
       summary('modelSlugs', '模型', models);
       const budgetChip = mountPoint.querySelector('[data-summary="budgetCny"]');
       const budgetLabel = mountPoint.querySelector('[data-budget-label]');
@@ -190,7 +200,6 @@
       if (state.multimodal !== 'all') active.push(state.multimodal === 'multimodal' ? '仅多模态' : '仅纯文本');
       if (!state.includeDiscontinued) active.push('排除下架套餐');
       if (state.platformTags.length) active.push(`平台标签 ${state.platformTags.length} 项`);
-      if (state.planTags.length) active.push(`套餐标签 ${state.planTags.length} 项`);
       if (Object.keys(state.priceRanges).length) active.push(`价格范围 ${Object.keys(state.priceRanges).length} 项`);
       if (Object.keys(state.requestRanges).length) active.push(`请求范围 ${Object.keys(state.requestRanges).length} 项`);
       if (state.aaScoreMin != null) active.push(`AA ≥ ${state.aaScoreMin}`);
@@ -200,9 +209,10 @@
         ? `当前条件（各视图仅使用适用项）：${active.join('、')}。无结果时可取消下方限制，或恢复默认。`
         : '更多筛选未启用；无结果时可取消下方限制，或恢复默认。';
       const limits = [];
-      for (const [key, label] of [['platformSlugs', '平台'], ['planSlugs', '套餐'], ['modelSlugs', '模型']]) {
+      for (const [key, label] of [['platformSlugs', '平台'], ['modelSlugs', '模型']]) {
         if (state[key] !== null && state[key].length) limits.push([key, '', `${label}选择`]);
       }
+      if (state.monthlyTokenRange) limits.push(['monthlyTokenRange', '', '月 Token 数']);
       if (budget) limits.push(['budgetCny', '', '月预算']);
       if (state.platformStatusMax !== 'delisted') limits.push(['platformStatusMax', '', '平台状态']);
       if (!state.includeDiscontinued) limits.push(['includeDiscontinued', '', '排除下架套餐']);
@@ -211,7 +221,7 @@
       for (const key of ['aaScoreMin', 'deepSWEScoreMin']) {
         if (state[key] != null) limits.push([key, '', key === 'aaScoreMin' ? 'AA 分数' : 'DeepSWE 分数']);
       }
-      for (const key of ['platformTags', 'planTags']) {
+      for (const key of ['platformTags']) {
         for (const tag of state[key]) limits.push([key, tag, tag]);
       }
       for (const key of ['priceRanges', 'requestRanges']) {
@@ -250,7 +260,7 @@
       mountPoint.querySelector('[data-filter-field="aaScoreMin"]').value = state.aaScoreMin == null ? '' : state.aaScoreMin;
       mountPoint.querySelector('[data-filter-field="deepSWEScoreMin"]').value = state.deepSWEScoreMin == null ? '' : state.deepSWEScoreMin;
       mountPoint.querySelector('[data-filter-field="includeDiscontinued"]').checked = state.includeDiscontinued;
-      for (const [key, items] of [['platformSlugs', platforms], ['planSlugs', plans], ['modelSlugs', models]]) {
+      for (const [key, items] of [['platformSlugs', platforms], ['modelSlugs', models]]) {
         const selected = state[key] === null ? items.map(item => item.slug) : (state[key] || []);
         const details = mountPoint.querySelector(`[data-picker="${key}"]`);
         details.querySelector('[data-picker-count]').textContent = !selected.length ? '不限' : selected.length === items.length ? '全部' : `${selected.length} 项`;
@@ -293,6 +303,14 @@
       if (target.matches('[data-picker-search]')) {
         const query = target.value.trim().toLowerCase();
         target.closest('.filter-picker-menu').querySelectorAll('[data-filter-option]').forEach(option => { option.hidden = query && !option.dataset.searchText.toLowerCase().includes(query); });
+        return;
+      }
+      if (target.matches('[data-token-part]')) {
+        const factor = state.tokenUnit === 'M' ? 1 : 100;
+        const read = part => { const value = mountPoint.querySelector(`[data-token-part="${part}"]`).value; return value === '' ? null : Number((Math.max(0, Number(value)) * factor).toPrecision(12)); };
+        const min = read('min'), max = read('max');
+        state.monthlyTokenRange = min === null && max === null ? null : { min, max };
+        publish();
         return;
       }
       if (target.matches('[data-budget-slider]')) {
@@ -351,11 +369,15 @@
     });
 
     mountPoint.addEventListener('click', event => {
+      const unit = event.target.closest('[data-global-token-unit]');
+      if (unit) { state.tokenUnit = unit.dataset.globalTokenUnit; publish(); return; }
+      if (event.target.closest('[data-token-clear]')) { state.monthlyTokenRange = null; publish(); return; }
+      if (event.target.closest('[data-token-done]')) { const picker = mountPoint.querySelector('#homeTokenPicker'); picker.open = false; picker.querySelector('summary').focus(); return; }
       const remove = event.target.closest('[data-remove-filter]');
       if (remove) {
         const key = remove.dataset.removeFilter;
         const item = remove.dataset.removeItem;
-        if (key === 'platformTags' || key === 'planTags') state[key] = state[key].filter(value => value !== item);
+        if (key === 'platformTags') state[key] = state[key].filter(value => value !== item);
         else if (key === 'priceRanges' || key === 'requestRanges') delete state[key][item];
         else state[key] = Filters.createDefaultState({}, { mode: 'full' })[key];
         publish();
@@ -365,7 +387,7 @@
       if (action) {
         const picker = action.closest('[data-picker]');
         const key = picker.getAttribute('data-picker');
-        const items = key === 'platformSlugs' ? platforms : key === 'planSlugs' ? plans : models;
+        const items = key === 'platformSlugs' ? platforms : models;
         const actionName = action.getAttribute('data-picker-action');
         if (actionName === 'clear') setSelection(key, []);
         if (actionName === 'all') setSelection(key, null);
@@ -400,13 +422,12 @@
           for (const key of Object.keys(restored)) state[key] = restored[key];
         } else {
           state.platformSlugs = [];
-          state.planSlugs = [];
           state.modelSlugs = [];
           state.budgetCny = null;
+          state.monthlyTokenRange = null;
           state.modelMatch = 'any';
           state.platformStatusMax = 'delisted';
           state.platformTags = [];
-          state.planTags = [];
           state.includeDiscontinued = true;
           state.priceRanges = {};
           state.requestRanges = {};

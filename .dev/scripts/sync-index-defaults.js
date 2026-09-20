@@ -9,6 +9,7 @@ const modelsPath = path.join(rootDir, 'models.json');
 const planModelsPath = path.join(rootDir, 'plan-models.json');
 const indexPath = path.join(rootDir, 'index.html');
 const EntityData = require(path.join(rootDir, 'scripts/entity-data.js'));
+const Filters = require(path.join(rootDir, 'scripts/filter-state.js'));
 
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const entityContext = EntityData.buildContext(
@@ -140,7 +141,6 @@ function processPrices(item, index) {
 
     return {
         ...item,
-        tags: Array.isArray(item.tags) ? item.tags.filter(tag => typeof tag === 'string') : [],
         firstMonthPrice,
         monthlyPrice,
         quarterlyPrice,
@@ -165,18 +165,6 @@ function formatMeasuredToken(value) {
     return `${value.toLocaleString('en-US')}M Tokens`;
 }
 
-function getTagClass(tag) {
-    if (tag === '模型强') return 'tag-strong';
-    if (tag === '性价比高') return 'tag-value';
-    return '';
-}
-
-function renderPlanTags(plan) {
-    const tags = Array.isArray(plan.tags) ? plan.tags : [];
-    if (!tags.length) return '';
-    return `<div class="plan-tags">${tags.map(tag => `<span class="plan-tag ${getTagClass(tag)}">${escapeHtml(tag)}</span>`).join('')}</div>`;
-}
-
 function generateTableRowsHtml(plans) {
     return plans.map(plan => {
         const currency = plan.currency || '¥';
@@ -194,7 +182,7 @@ function generateTableRowsHtml(plans) {
                         </a>
                     </td>
                     <td class="rating-stars">${plan.rating > 0 ? '★'.repeat(plan.rating) + '☆'.repeat(5 - plan.rating) : '待评定'}</td>
-                    <td class="plan-tags-cell">${renderPlanTags(plan)}</td>
+                    <td class="monthly-token-cell" title="各模型月 Token 参考范围，不相加">${escapeHtml(Filters.formatMonthlyTokens(plan, Filters.normalizeState({}, { mode: 'full' })))}</td>
                     <td><span class="price">${currency}${formatPrice(plan.firstMonthPrice)} <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">${currency}${formatPrice(plan.monthlyPrice)} <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">${currency}${formatPrice(plan.quarterlyPrice)} ${typeof plan.quarterlyPrice === 'number' ? `<span class="price-original">${currency}${formatPrice(plan.monthlyPrice * 3)}</span>` : ''} <span class="unit">/ 季</span></span></td>
@@ -202,10 +190,6 @@ function generateTableRowsHtml(plans) {
                     <td><span class="request-count">${formatRequestCount(plan.fiveHoursRequests)} <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.weeklyRequests)} <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.monthlyRequests)} <span class="unit">/ 月</span></span></td>
-                    <td><span class="request-count">${formatMeasuredToken(plan.measuredFiveHoursTokenLimit)}</span></td>
-                    <td><span class="request-count">${formatMeasuredToken(plan.measuredWeeklyTokenLimit)}</span></td>
-                    <td><span class="request-count">${formatMeasuredToken(plan.measuredMonthlyTokenLimit)}</span></td>
-                    <td><span class="request-count">${tokenLimitHtml}</span></td>
                     <td>${(plan.modelLabels || []).map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}</td>
                     <td>${(plan.benefits || []).map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}</td>
                     <td>${plan.discontinued ? '<span class="status-offline">已下线</span>' : ''}</td>

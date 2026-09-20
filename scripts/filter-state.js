@@ -7,13 +7,13 @@
 
   const DEFAULTS = Object.freeze({
     platformSlugs: ['zhipu', 'minimax', 'opencode', 'bytedance-ark', 'deepseek-official', 'codex'],
-    planSlugs: ['zhipu-token-lite', 'minimax-tp-plus', 'opencode-go', 'volcengine-coding-lite', 'codex-plus'],
     modelSlugs: ['claude-fable-5-1', 'gpt-6-astra', 'glm-5-3', 'deepseek-v4-1-flash', 'kimi-k3', 'minimax-m3'],
     modelMatch: 'any',
     budgetCny: null,
+    monthlyTokenRange: null,
+    tokenUnit: 'yi',
     platformStatusMax: 'paused',
     platformTags: [],
-    planTags: [],
     includeDiscontinued: false,
     priceRanges: {},
     requestRanges: {},
@@ -65,20 +65,19 @@
     const base = opts.mode === 'full' ? {
       ...DEFAULTS,
       platformSlugs: null,
-      planSlugs: null,
       modelSlugs: null,
       platformStatusMax: 'delisted',
       includeDiscontinued: true
     } : DEFAULTS;
     return {
       platformSlugs: entitySelection(input.platformSlugs === undefined ? base.platformSlugs : input.platformSlugs),
-      planSlugs: entitySelection(input.planSlugs === undefined ? base.planSlugs : input.planSlugs),
       modelSlugs: entitySelection(input.modelSlugs === undefined ? base.modelSlugs : input.modelSlugs),
       modelMatch: input.modelMatch === 'all' ? 'all' : 'any',
+      monthlyTokenRange: cloneRange(input.monthlyTokenRange),
+      tokenUnit: input.tokenUnit === 'M' ? 'M' : 'yi',
       budgetCny: cloneRange(input.budgetCny === undefined ? base.budgetCny : input.budgetCny),
       platformStatusMax: STATUS_RANK[input.platformStatusMax] === undefined ? base.platformStatusMax : input.platformStatusMax,
       platformTags: arrayOrNull(input.platformTags) || [],
-      planTags: arrayOrNull(input.planTags) || [],
       includeDiscontinued: input.includeDiscontinued === undefined ? base.includeDiscontinued : input.includeDiscontinued === true,
       priceRanges: normalizeRangeMap(input.priceRanges === undefined ? base.priceRanges : input.priceRanges),
       requestRanges: normalizeRangeMap(input.requestRanges === undefined ? base.requestRanges : input.requestRanges),
@@ -137,8 +136,39 @@
       : selected.some(slug => available.has(slug));
   }
 
-  function planTags(plan) {
-    return Array.isArray(plan && plan.tags) ? plan.tags : [];
+  // Store Token ranges in M; unit changes never alter the underlying requirement.
+  function tokenInRange(value, range) {
+    if (!range) return true;
+    if (value === 'unlimited') return range.max === null;
+    return inRange(value, range);
+  }
+
+  function monthlyOptions(plan, state, context) {
+    const rows = plan.monthlyTokenOptions || ((context && context.relationsByPlanSlug && context.relationsByPlanSlug.get(plan.slug)) || [])
+      .map(row => ({ modelSlug: row.modelSlug, value: row.usage && row.usage.monthlyTokenInM }));
+    return rows.filter(row => selectedMatch(row.modelSlug, state.modelSlugs));
+  }
+
+  function monthlyPlanMatches(plan, state, context) {
+    if (!state.monthlyTokenRange) return true;
+    const rows = monthlyOptions(plan, state, context);
+    const matches = row => tokenInRange(row.value, state.monthlyTokenRange);
+    return state.modelMatch === 'all' && state.modelSlugs
+      ? state.modelSlugs.every(slug => rows.some(row => row.modelSlug === slug && matches(row)))
+      : rows.some(matches);
+  }
+
+  function formatMonthlyTokens(plan, state) {
+    const rows = monthlyOptions(plan, state);
+    const values = rows.map(row => row.value).filter(value => typeof value === 'number' && Number.isFinite(value));
+    const unlimited = rows.some(row => row.value === 'unlimited');
+    if (!values.length && !unlimited) return '未知';
+    const factor = state.tokenUnit === 'M' ? 1 : 100;
+    const unit = state.tokenUnit === 'M' ? 'M' : '亿';
+    const format = value => (value / factor).toLocaleString('zh-CN', { maximumFractionDigits: 4 });
+    const min = Math.min(...values), max = Math.max(...values);
+    const text = values.length ? `${format(min)}${unlimited ? '–无限制' : min === max ? '' : '–' + format(max)} ${unit}` : '无限制';
+    return text + (values.length + rows.filter(row => row.value === 'unlimited').length < rows.length ? '（部分未知）' : '');
   }
 
   function filterPlans(plans, state, options) {
@@ -149,14 +179,13 @@
       if (plan.planTableVisible === false) return false;
       if (!current.includeDiscontinued && plan.discontinued) return false;
       if (!selectedMatch(plan.platformSlug, current.platformSlugs)) return false;
-      if (!selectedMatch(plan.slug, current.planSlugs)) return false;
       if (!modelMatch(plan.supportedModels || plan.modelSlugs, current.modelSlugs, current.modelMatch)) return false;
       const platform = opts.context && opts.context.platformBySlug
         ? opts.context.platformBySlug.get(plan.platformSlug)
         : null;
       if (platform && STATUS_RANK[platform.platformStatus || 'open'] > STATUS_RANK[current.platformStatusMax]) return false;
       if (current.platformTags.length && (!platform || !current.platformTags.every(tag => platformTagMatches(platform, tag, opts.platformCatalog || {})))) return false;
-      if (current.planTags.length && !current.planTags.every(tag => planTags(plan).includes(tag))) return false;
+      if (!monthlyPlanMatches(plan, current, opts.context)) return false;
       const monthly = toCny(plan.monthlyPrice, plan.currency, rate);
       if (!inRange(monthly, current.budgetCny)) return false;
       for (const [key, range] of Object.entries(current.priceRanges)) {
@@ -217,6 +246,7 @@
       (points || []).forEach(point => {
         if (point.platformVisible === false || (point.planTableVisible === false && point.billingMode !== 'payg')) return;
         if (!current.includeDiscontinued && point.discontinued) return;
+        if (current.monthlyTokenRange && (point.billingMode !== 'subscription' || !tokenInRange(point.monthlyTokenInM, current.monthlyTokenRange))) return;
         const key = `${point.platformSlug || ''}::${point.billingMode || ''}::${point.planSlug || ''}`;
         if (!modelGroups.has(key)) modelGroups.set(key, new Set());
         modelGroups.get(key).add(point.modelSlug);
@@ -227,8 +257,8 @@
       if (point.planTableVisible === false && point.billingMode !== 'payg') return false;
       if (!current.includeDiscontinued && point.discontinued) return false;
       if (!selectedMatch(point.platformSlug, current.platformSlugs)) return false;
-      if (!selectedMatch(point.planSlug, current.planSlugs) && point.billingMode === 'subscription') return false;
       if (!selectedMatch(point.modelSlug, current.modelSlugs)) return false;
+      if (current.monthlyTokenRange && (point.billingMode !== 'subscription' || !tokenInRange(point.monthlyTokenInM, current.monthlyTokenRange))) return false;
       if (current.modelMatch === 'all' && current.modelSlugs !== null) {
         const key = `${point.platformSlug || ''}::${point.billingMode || ''}::${point.planSlug || ''}`;
         const available = modelGroups.get(key) || new Set();
@@ -267,16 +297,7 @@
     };
     if (!context) return { ok: true, errors, state };
     check('平台', state.platformSlugs, context.platformBySlug || new Map(), item => item.catalogVisible === false);
-    check('套餐', state.planSlugs, context.planBySlug || new Map(), item => item.planTableVisible === false);
     check('模型', state.modelSlugs, context.modelBySlug || new Map(), item => item.catalogVisible === false);
-    for (const slug of state.planSlugs || []) {
-      const plan = context.planBySlug && context.planBySlug.get(slug);
-      if (plan && state.platformSlugs && !state.platformSlugs.includes(plan.platformSlug)) errors.push(`套餐未覆盖精选平台: ${slug}`);
-      if (plan && state.modelSlugs && context.relationsByPlanSlug) {
-        const supported = (context.relationsByPlanSlug.get(slug) || []).map(relation => relation.modelSlug);
-        if (!modelMatch(supported, state.modelSlugs, state.modelMatch)) errors.push(`套餐未覆盖精选模型: ${slug}`);
-      }
-    }
     return { ok: errors.length === 0, errors, state };
   }
 
@@ -298,6 +319,8 @@
     toCny,
     inRange,
     modelMatch,
+    formatMonthlyTokens,
+    tokenInRange,
     filterPlans,
     filterPlatforms,
     filterPoints,

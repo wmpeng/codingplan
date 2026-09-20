@@ -90,8 +90,6 @@
         models: new Set((full ? [...availableModels] : defaultModels).filter((slug) => availableModels.has(slug))),
         platformsSpecified: true,
             modelsSpecified: true,
-            planSlugs: null,
-            planSlugsSpecified: false,
             modelMatch: 'any',
             includeDiscontinued: full ? true : !!(configured && configured.includeDiscontinued),
         multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', monthlyPriceMin: null,
@@ -131,13 +129,13 @@
         return shared.filterPoints(points, shared.normalizeState({
             platformSlugs: selected(platforms, state.platformsSpecified),
             modelSlugs: selected(models, state.modelsSpecified),
-            planSlugs: state.planSlugsSpecified ? [...(state.planSlugs || [])] : null,
             modelMatch: state.modelMatch === 'all' && state.modelsSpecified ? 'all' : 'any',
             includeDiscontinued: state.includeDiscontinued !== false,
             multimodal: state.multimodal,
             aaScoreMin: state.aaScoreMin,
             deepSWEScoreMin: state.deepSWEScoreMin,
             budgetCny: { min: state.monthlyPriceMin, max: state.monthlyPriceMax },
+            monthlyTokenRange: state.monthlyTokenRange,
             priceRanges: state.priceRanges
         }, { mode: 'full' }), { context: state.filterContext, usdToCnyRate: root.appConfig && root.appConfig.usdToCnyRate });
     }
@@ -690,7 +688,6 @@
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>AA 最低分</span><input data-filter="aaScoreMin" aria-label="AA 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>DeepSWE 最低分</span><input data-filter="deepSWEScoreMin" aria-label="DeepSWE 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <div class="usage-color-control" aria-label="颜色区分方式"><span>颜色</span><div class="usage-segments"><button type="button" data-color-mode="vendor" class="is-active">按平台</button><button type="button" data-color-mode="model">按模型</button></div></div>
-                    <div class="usage-unit-control" aria-label="Token 单位"><span>单位</span><div class="usage-segments"><button type="button" data-token-unit="M">M</button><button type="button" data-token-unit="yi" class="is-active">亿</button></div></div>
                     <div class="filter-trailing"><button type="button" class="reset-btn" data-action="restore-defaults">恢复默认</button><div class="stats-bar usage-counts" data-counts aria-live="polite"></div></div>
                 </div>
                 <div class="usage-color-legend"><strong data-color-legend-title>平台颜色</strong><div data-color-legend></div></div>
@@ -883,13 +880,13 @@
                     : new Set(external.modelSlugs || []);
                 state.platformsSpecified = true;
                 state.modelsSpecified = true;
-                state.planSlugs = external.planSlugs === null ? null : new Set(external.planSlugs || []);
-                state.planSlugsSpecified = external.planSlugs !== null && external.planSlugs !== undefined;
                 state.modelMatch = external.modelSlugs !== null && external.modelMatch === 'all' ? 'all' : 'any';
                 state.includeDiscontinued = external.includeDiscontinued === true;
                 state.multimodal = external.multimodal || 'all';
                 state.aaScoreMin = external.aaScoreMin == null ? '' : external.aaScoreMin;
                 state.deepSWEScoreMin = external.deepSWEScoreMin == null ? '' : external.deepSWEScoreMin;
+                state.monthlyTokenRange = external.monthlyTokenRange;
+                state.tokenUnit = normalizeTokenUnit(external.tokenUnit);
                 const budget = external.budgetCny;
                 state.priceRanges = external.priceRanges || {};
                 state.filterContext = context;
@@ -1011,7 +1008,6 @@
                 container.querySelector('[data-filter="multimodal"]').value = state.multimodal;
                 container.querySelector('[data-filter="aaScoreMin"]').value = state.aaScoreMin;
                 container.querySelector('[data-filter="deepSWEScoreMin"]').value = state.deepSWEScoreMin;
-                container.querySelectorAll('[data-token-unit]').forEach((button) => button.classList.toggle('is-active', button.dataset.tokenUnit === state.tokenUnit));
                 syncPriceSliderFromState();
                 syncPriceFilterControl();
                 updatePickerCount('vendors', state.platforms);
@@ -1080,8 +1076,8 @@
                     aaScoreMin: state.aaScoreMin, deepSWEScoreMin: state.deepSWEScoreMin,
                     monthlyPriceMin: state.monthlyPriceMin, monthlyPriceMax: state.monthlyPriceMax,
                     platformsSpecified: state.platformsSpecified, modelsSpecified: state.modelsSpecified,
-                    planSlugs: state.planSlugs, planSlugsSpecified: state.planSlugsSpecified,
                     modelMatch: state.modelMatch, includeDiscontinued: state.includeDiscontinued,
+                    monthlyTokenRange: state.monthlyTokenRange,
                     priceRanges: state.priceRanges, filterContext: state.filterContext
                 });
                 const visibleFiltered = filterBySoloColorKey(filtered, state.colorMode, state.soloColorKey);
@@ -1305,13 +1301,6 @@
                     state.colorMode = colorModeButton.dataset.colorMode;
                     state.soloColorKey = null;
                     container.querySelectorAll('[data-color-mode]').forEach((button) => button.classList.toggle('is-active', button === colorModeButton));
-                    render();
-                    return;
-                }
-                const tokenUnitButton = event.target.closest('[data-token-unit]');
-                if (tokenUnitButton) {
-                    state.tokenUnit = normalizeTokenUnit(tokenUnitButton.dataset.tokenUnit);
-                    container.querySelectorAll('[data-token-unit]').forEach((button) => button.classList.toggle('is-active', button === tokenUnitButton));
                     render();
                     return;
                 }

@@ -45,13 +45,13 @@
   "homepageFilters": {
     "defaults": {
       "platformSlugs": ["zhipu", "minimax", "opencode", "bytedance-ark", "deepseek-official", "codex"],
-      "planSlugs": ["zhipu-token-lite", "minimax-tp-plus", "opencode-go", "volcengine-coding-lite", "codex-plus"],
       "modelSlugs": ["claude-fable-5-1", "gpt-6-astra", "glm-5-3", "deepseek-v4-1-flash", "kimi-k3", "minimax-m3"],
       "modelMatch": "any",
       "budgetCny": null,
+      "monthlyTokenRange": null,
+      "tokenUnit": "yi",
       "platformStatusMax": "paused",
       "platformTags": [],
-      "planTags": [],
       "includeDiscontinued": false,
       "priceRanges": {},
       "requestRanges": {},

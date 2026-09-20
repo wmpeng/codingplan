@@ -221,3 +221,10 @@
 :is(.homepage-unified-active, .tool-unified-active) .usage-filters > .filter-dropdown,
 :is(.homepage-unified-active, .tool-unified-active) .usage-filters > .usage-inline-filter,
 :is(.homepage-unified-active, .tool-unified-active) .usage-filters [data-action="restore-defaults"] { display: none; }
+
+/* Unit selection belongs to the shared filter state, including lazy-loaded tabs. */
+.global-token-unit { display: flex; align-items: center; gap: 4px; color: #64748b; font-size: 12px; white-space: nowrap; }
+.global-token-unit[hidden] { display: none; }
+.global-token-unit button { border: 1px solid #cbd5e1; background: white; color: #334155; border-radius: 6px; padding: 7px 10px; cursor: pointer; }
+.global-token-unit button[aria-pressed="true"] { background: #173753; border-color: #173753; color: white; }
+.monthly-token-cell { min-width: 145px; font-variant-numeric: tabular-nums; }

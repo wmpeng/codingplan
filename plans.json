@@ -8,9 +8,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzai",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 16.2,
       "monthlyPrice": 18,
       "quarterlyPrice": 43.2,
@@ -32,9 +29,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzai",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 72,
       "monthlyPrice": 80,
       "quarterlyPrice": 192,
@@ -56,9 +50,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzai",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 151.2,
       "monthlyPrice": 168,
       "quarterlyPrice": 403.2,
@@ -80,9 +71,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzai",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 16.2,
       "monthlyPrice": 18,
       "quarterlyPrice": 48.6,
@@ -107,9 +95,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzai",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 64.8,
       "monthlyPrice": 72,
       "quarterlyPrice": 194.4,
@@ -134,9 +119,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzai",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 144,
       "monthlyPrice": 160,
       "quarterlyPrice": 432,
@@ -162,10 +144,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 118,
       "quarterlyPrice": 283.2,
@@ -187,10 +165,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 538,
       "quarterlyPrice": 1291.2,
@@ -212,10 +186,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 1078,
       "quarterlyPrice": 2587.2,
@@ -236,10 +206,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 49,
       "quarterlyPrice": 132.3,
@@ -263,10 +229,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 149,
       "quarterlyPrice": 402.3,
@@ -290,10 +252,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 469,
       "quarterlyPrice": 1266.3,
@@ -317,10 +275,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 44.1,
       "monthlyPrice": 49,
       "quarterlyPrice": "-",
@@ -339,10 +293,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 107.1,
       "monthlyPrice": 119,
       "quarterlyPrice": "-",
@@ -361,10 +311,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 422.1,
       "monthlyPrice": 469,
       "quarterlyPrice": "-",
@@ -383,10 +329,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 26.1,
       "monthlyPrice": 29,
       "quarterlyPrice": "-",
@@ -408,10 +350,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 44.1,
       "monthlyPrice": 49,
       "quarterlyPrice": "-",
@@ -433,10 +371,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 107.1,
       "monthlyPrice": 119,
       "quarterlyPrice": "-",
@@ -458,10 +392,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 88.2,
       "monthlyPrice": 98,
       "quarterlyPrice": "-",
@@ -483,10 +413,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 179.1,
       "monthlyPrice": 199,
       "quarterlyPrice": "-",
@@ -508,10 +434,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqopencode",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 5,
       "monthlyPrice": 10,
       "quarterlyPrice": "-",
@@ -531,9 +453,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhou",
       "rating": 5,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 9.4,
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -555,9 +474,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhou",
       "rating": 5,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 47.4,
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -579,9 +495,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 9.9,
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -600,9 +513,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 49.9,
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -621,9 +531,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 500,
       "quarterlyPrice": "-",
@@ -642,9 +549,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 1000,
       "quarterlyPrice": "-",
@@ -663,9 +567,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqkimi",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 49,
       "quarterlyPrice": "-",
@@ -687,9 +588,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqkimi",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 99,
       "quarterlyPrice": "-",
@@ -711,10 +609,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqkimi",
       "rating": 4,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 199,
       "quarterlyPrice": "-",
@@ -738,10 +632,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqkimi",
       "rating": 4,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 699,
       "quarterlyPrice": "-",
@@ -765,9 +655,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqyyzs",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 49,
       "quarterlyPrice": "-",
@@ -789,9 +676,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqyyzs",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 99,
       "quarterlyPrice": "-",
@@ -813,9 +697,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqyyzs",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 199,
       "quarterlyPrice": "-",
@@ -837,9 +718,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqyyzs",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 499,
       "quarterlyPrice": "-",
@@ -861,9 +739,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqyyzs",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 799,
       "quarterlyPrice": "-",
@@ -885,9 +760,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqyyzs",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 999,
       "quarterlyPrice": "-",
@@ -909,10 +781,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 20,
       "quarterlyPrice": "-",
@@ -934,10 +802,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 100,
       "quarterlyPrice": "-",
@@ -959,10 +823,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -984,9 +844,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqclaudeup",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 20,
       "quarterlyPrice": "-",
@@ -1010,9 +867,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqclaudeup",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 100,
       "quarterlyPrice": "-",
@@ -1036,9 +890,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqclaudeup",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -1062,9 +913,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqollama",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 20,
       "quarterlyPrice": "-",
@@ -1088,9 +936,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqollama",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 100,
       "quarterlyPrice": "-",
@@ -1114,10 +959,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqbailianc",
       "rating": 4,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -1139,10 +980,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqbailianc",
       "rating": 4,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -1165,9 +1002,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 198,
       "quarterlyPrice": "-",
@@ -1188,9 +1022,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 698,
       "quarterlyPrice": "-",
@@ -1211,9 +1042,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 1398,
       "quarterlyPrice": "-",
@@ -1232,9 +1060,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqmimo",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 34.32,
       "monthlyPrice": 39,
       "quarterlyPrice": "-",
@@ -1255,9 +1080,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqmimo",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 87.12,
       "monthlyPrice": 99,
       "quarterlyPrice": "-",
@@ -1278,9 +1100,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqmimo",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 289.52,
       "monthlyPrice": 329,
       "quarterlyPrice": "-",
@@ -1301,9 +1120,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqmimo",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 579.92,
       "monthlyPrice": 659,
       "quarterlyPrice": "-",
@@ -1324,9 +1140,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpcommandcode",
       "rating": 5,
-      "tags": [
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 1,
       "quarterlyPrice": "-",
@@ -1350,10 +1163,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpcommandcode",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 10,
       "quarterlyPrice": "-",
@@ -1376,9 +1185,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpcommandcode",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 20,
       "quarterlyPrice": "-",
@@ -1401,7 +1207,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -1420,7 +1225,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -1439,7 +1243,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 4.9,
       "monthlyPrice": 9.9,
       "quarterlyPrice": "-",
@@ -1458,7 +1261,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 19.9,
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -1477,7 +1279,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 99.9,
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -1496,7 +1297,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 299.9,
       "monthlyPrice": 600,
       "quarterlyPrice": "-",
@@ -1515,7 +1315,6 @@
       "billingMode": "subscription",
       "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 59,
       "quarterlyPrice": "-",
@@ -1534,7 +1333,6 @@
       "billingMode": "subscription",
       "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 149,
       "quarterlyPrice": "-",
@@ -1553,7 +1351,6 @@
       "billingMode": "subscription",
       "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 399,
       "quarterlyPrice": "-",
@@ -1572,7 +1369,6 @@
       "billingMode": "subscription",
       "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 799,
       "quarterlyPrice": "-",
@@ -1591,9 +1387,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqtengxunc",
       "rating": 3,
-      "tags": [
-        "性价比高"
-      ],
       "firstMonthPrice": 7.9,
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -1612,9 +1405,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqtengxunc",
       "rating": 3,
-      "tags": [
-        "性价比高"
-      ],
       "firstMonthPrice": 39.9,
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -1633,9 +1423,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
       "rating": 2,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 39,
       "quarterlyPrice": "-",
@@ -1654,9 +1441,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
       "rating": 2,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 99,
       "quarterlyPrice": "-",
@@ -1675,9 +1459,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
       "rating": 2,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 299,
       "quarterlyPrice": "-",
@@ -1696,9 +1477,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
       "rating": 2,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 599,
       "quarterlyPrice": "-",
@@ -1717,7 +1495,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 19.9,
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -1735,7 +1512,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 99.9,
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -1753,10 +1529,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqghstudent",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 0,
       "monthlyPrice": 0,
       "quarterlyPrice": "-",
@@ -1777,9 +1549,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqghcopilot",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 10,
       "quarterlyPrice": "-",
@@ -1800,9 +1569,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqghcopilotp",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 39,
       "quarterlyPrice": "-",
@@ -1823,7 +1589,6 @@
       "billingMode": "subscription",
       "action": "https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 59,
       "currency": "¥",
       "benefits": [
@@ -1845,7 +1610,6 @@
       "billingMode": "subscription",
       "action": "https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 169,
       "currency": "¥",
       "benefits": [
@@ -1867,7 +1631,6 @@
       "billingMode": "subscription",
       "action": "https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 559,
       "currency": "¥",
       "benefits": [
@@ -1889,7 +1652,6 @@
       "billingMode": "subscription",
       "action": "https://qoder.com/pricing",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 20,
       "currency": "$",
       "benefits": [
@@ -1911,7 +1673,6 @@
       "billingMode": "subscription",
       "action": "https://qoder.com/pricing",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 60,
       "currency": "$",
       "benefits": [
@@ -1933,7 +1694,6 @@
       "billingMode": "subscription",
       "action": "https://qoder.com/pricing",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 200,
       "currency": "$",
       "benefits": [
@@ -1955,7 +1715,6 @@
       "billingMode": "subscription",
       "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 70,
       "currency": "¥",
       "benefits": [
@@ -1979,7 +1738,6 @@
       "billingMode": "subscription",
       "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 140,
       "currency": "¥",
       "benefits": [
@@ -2003,7 +1761,6 @@
       "billingMode": "subscription",
       "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 700,
       "currency": "¥",
       "benefits": [
@@ -2027,7 +1784,6 @@
       "billingMode": "subscription",
       "action": "https://www.trae.cn",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 45,
       "currency": "¥",
       "benefits": [
@@ -2051,7 +1807,6 @@
       "billingMode": "subscription",
       "action": "https://www.trae.cn",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 89,
       "currency": "¥",
       "benefits": [
@@ -2075,7 +1830,6 @@
       "billingMode": "subscription",
       "action": "https://www.trae.cn",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 219,
       "currency": "¥",
       "benefits": [
@@ -2099,7 +1853,6 @@
       "billingMode": "subscription",
       "action": "https://www.trae.cn",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 629,
       "currency": "¥",
       "benefits": [
@@ -2123,7 +1876,6 @@
       "billingMode": "subscription",
       "action": "https://www.trae.ai/pricing",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 3,
       "currency": "$",
       "benefits": [
@@ -2146,7 +1898,6 @@
       "billingMode": "subscription",
       "action": "https://www.trae.ai/pricing",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 10,
       "currency": "$",
       "benefits": [
@@ -2169,7 +1920,6 @@
       "billingMode": "subscription",
       "action": "https://www.trae.ai/pricing",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 30,
       "currency": "$",
       "benefits": [
@@ -2192,7 +1942,6 @@
       "billingMode": "subscription",
       "action": "https://www.trae.ai/pricing",
       "rating": 0,
-      "tags": [],
       "monthlyPrice": 100,
       "currency": "$",
       "benefits": [
@@ -2215,10 +1964,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 39,
       "quarterlyPrice": "-",
@@ -2237,9 +1982,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 199,
       "quarterlyPrice": "-",
@@ -2257,9 +1999,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 699,
       "quarterlyPrice": "-",
@@ -2277,9 +2016,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomcp",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -2298,9 +2034,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomcp",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -2319,7 +2052,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomtp",
       "rating": 1,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 15,
       "quarterlyPrice": "-",
@@ -2338,7 +2070,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomtp",
       "rating": 1,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 30,
       "quarterlyPrice": "-",
@@ -2357,7 +2088,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomtp",
       "rating": 1,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 45,
       "quarterlyPrice": "-",
@@ -2376,9 +2106,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomtp",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 198,
       "quarterlyPrice": "-",
@@ -2397,9 +2124,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomtp",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 698,
       "quarterlyPrice": "-",
@@ -2418,9 +2142,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomtp",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 1398,
       "quarterlyPrice": "-",
@@ -2439,7 +2160,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqmobilecp",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 7.9,
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -2457,7 +2177,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqmobilecp",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 39.9,
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -2475,7 +2194,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqstepfun",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 49,
       "quarterlyPrice": "-",
@@ -2493,7 +2211,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqstepfun",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 99,
       "quarterlyPrice": "-",
@@ -2511,7 +2228,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqstepfun",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 199,
       "quarterlyPrice": "-",
@@ -2529,7 +2245,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqstepfun",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 699,
       "quarterlyPrice": "-",
@@ -2599,7 +2314,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqscnetcp",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 20,
       "quarterlyPrice": "-",
@@ -2617,7 +2331,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqscnetcp",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 100,
       "quarterlyPrice": "-",
@@ -2635,9 +2348,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqsensenova",
       "rating": 3,
-      "tags": [
-        "性价比高"
-      ],
       "firstMonthPrice": 0,
       "monthlyPrice": 0,
       "quarterlyPrice": "-",
@@ -2657,9 +2367,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqmoorefree",
       "rating": 3,
-      "tags": [
-        "性价比高"
-      ],
       "firstMonthPrice": 0,
       "monthlyPrice": 0,
       "quarterlyPrice": "-",
@@ -2677,7 +2384,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqjdmeta",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": "-",
       "quarterlyPrice": 120,
@@ -2696,7 +2402,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqjdmeta",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": "-",
       "quarterlyPrice": 600,
@@ -2715,7 +2420,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqjdmeta",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": "-",
       "quarterlyPrice": 1200,
@@ -2734,9 +2438,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqctyun",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 49,
       "quarterlyPrice": "-",
@@ -2755,10 +2456,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqctyun",
       "rating": 4,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 149,
       "quarterlyPrice": "-",
@@ -2777,10 +2474,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqctyun",
       "rating": 4,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 469,
       "quarterlyPrice": "-",
@@ -2799,9 +2492,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqinfini",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -2820,9 +2510,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqinfini",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -2841,7 +2528,6 @@
       "billingMode": "payg",
       "action": "https://platform.deepseek.com/",
       "rating": 0,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": "-",
       "quarterlyPrice": "-",
@@ -2857,7 +2543,6 @@
       "billingMode": "payg",
       "action": "https://api.dreamfree.space/c/s/cpyqgongji",
       "rating": 0,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": "-",
       "quarterlyPrice": "-",
