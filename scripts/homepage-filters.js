@@ -93,7 +93,7 @@
             </div>
             <div class="budget-slider"><div class="budget-track"></div><div class="budget-selected" data-budget-track></div><input type="range" min="0" max="1000" step="1" value="0" data-budget-slider="min" aria-label="拖动最低月预算"><input type="range" min="0" max="1000" step="1" value="1000" data-budget-slider="max" aria-label="拖动最高月预算"></div>
             <div class="budget-scale"><span>¥0</span><span data-budget-scale></span></div>
-            <div class="budget-presets" aria-label="常用月预算">${[[null, null, '不限'], [null, 50, '50 元以内'], [50, 100, '50–100 元'], [100, 200, '100–200 元'], [200, 500, '200–500 元'], [500, null, '500 元以上']].map(([min, max, label]) => `<button type="button" data-budget-preset data-min="${min == null ? '' : min}" data-max="${max == null ? '' : max}" aria-pressed="false">${label}</button>`).join('')}</div>
+            <div class="budget-presets" aria-label="常用月预算">${[[null, null, '不限'], [null, 50, '50 元以内'], [50, 100, '50–100 元'], [100, 200, '100–200 元'], [200, 700, '200–700 元'], [700, null, '700 元以上']].map(([min, max, label]) => `<button type="button" data-budget-preset data-min="${min == null ? '' : min}" data-max="${max == null ? '' : max}" aria-pressed="false">${label}</button>`).join('')}</div>
             <p class="filter-help">按人民币比较，美元按站点汇率换算。按量 API 不受月预算限制。</p>
             <div class="filter-picker-tools budget-footer"><button type="button" data-budget-action="clear">取消限制</button><button type="button" data-budget-action="done">完成</button></div>
           </div>
