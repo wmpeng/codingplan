@@ -10,6 +10,7 @@ const planModelsPath = path.join(rootDir, 'plan-models.json');
 const indexPath = path.join(rootDir, 'index.html');
 const EntityData = require(path.join(rootDir, 'scripts/entity-data.js'));
 const Filters = require(path.join(rootDir, 'scripts/filter-state.js'));
+const PlatformCatalog = require(path.join(rootDir, 'scripts/platform-catalog.js'));
 
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const entityContext = EntityData.buildContext(
@@ -190,7 +191,7 @@ function generateTableRowsHtml(plans) {
                     <td><span class="request-count">${formatRequestCount(plan.fiveHoursRequests)} <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.weeklyRequests)} <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.monthlyRequests)} <span class="unit">/ 月</span></span></td>
-                    <td>${(plan.modelLabels || []).map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}</td>
+                    <td>${PlatformCatalog.buildPlanModelListHtml(plan.modelLabels)}</td>
                     <td>${(plan.benefits || []).map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}</td>
                     <td>${plan.discontinued ? '<span class="status-offline">已下线</span>' : ''}</td>
                     <td><span class="note">${noteHtml}</span></td>
@@ -225,6 +226,7 @@ function replaceElementInnerHtml(html, id, innerHtml) {
 }
 
 const header = config.header || {};
+indexHtml = replaceElementText(indexHtml, 'catalogSummary', escapeHtml(EntityData.headerSubtitle(entityContext, '').split('<br>')[0]));
 const activePlans = allPlans
     .map((item, index) => processPrices(item, index))
     .filter(plan => !plan.discontinued);
@@ -255,8 +257,8 @@ if (header.entry) {
 
 indexHtml = replaceSection(
     indexHtml,
-    /(<div class="recommendation-groups" id="recommendationGroups">)[\s\S]*?(<\/div>\r?\n\r?\n        <div class="main-view-shell")/,
-    generateRecommendationGroupsHtml(config.recommendationGroups)
+    /(<!-- EDITORIAL_RECOMMENDATIONS_START -->)[\s\S]*?(<!-- EDITORIAL_RECOMMENDATIONS_END -->)/,
+    '<div class="recommendation-groups" id="recommendationGroups">' + generateRecommendationGroupsHtml(config.recommendationGroups) + '</div>\n        '
 );
 
 indexHtml = replaceSection(

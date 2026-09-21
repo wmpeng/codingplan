@@ -188,6 +188,7 @@
       }</div>
       <div class="filter-state-actions"><button type="button" data-filter-action="clear-all">清空全部</button><button type="button" data-filter-action="restore-all">${full ? "恢复全量" : "恢复默认"}</button></div>
       <p class="filter-state-hint" data-filter-hint>${monitor ? "监控只使用平台、模型条件；未监控项目没有统计。" : "条件同时生效；网络、支付要求未确认的方案不通过对应限制。"}</p>
+      ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型与模型匹配条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
       <div data-active-limits class="filter-active-limits" aria-live="polite"></div>
       </section>`;
     const controller = {

@@ -1308,7 +1308,7 @@
                     <td><span class="request-count">${formatRequestCount(plan.weeklyRequests)} <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.monthlyRequests)} <span class="unit">/ 月</span></span></td>
                     <td>
-                        ${plan.modelLabels.map(model => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}
+                        ${PlatformCatalog.buildPlanModelListHtml(plan.modelLabels)}
                     </td>
                     <td>
                         ${plan.benefits.map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}
@@ -1482,6 +1482,7 @@
                 const h = appConfig.header;
                 document.title = `${h.title} - Coding Plan 对比工具`;
                 document.getElementById('pageTitle').textContent = h.title;
+                if (entityContext) document.getElementById('catalogSummary').textContent = EntityData.headerSubtitle(entityContext, '').split('<br>')[0];
                 document.getElementById('updateDate').textContent = h.updateDate;
                 document.getElementById('subtitle').innerHTML = EntityData.headerSubtitle(entityContext, h.subtitle).replace(/\n/g, '<br>');
                 document.getElementById('models').innerHTML = formatRecommendationText(h.models || '').replace(/\n/g, '<br>');
@@ -1897,6 +1898,7 @@
                 allPlans = EntityData.buildPlanCatalog(entityContext).map((item, index) => processPrices(item, index));
                 window.codingplanEntityContext = entityContext;
                 document.getElementById('subtitle').innerHTML = EntityData.headerSubtitle(entityContext, appConfig.header?.subtitle).replace(/\n/g, '<br>');
+                document.getElementById('catalogSummary').textContent = EntityData.headerSubtitle(entityContext, '').split('<br>')[0];
                 return entityContext;
             });
             return entityDataPromise;
@@ -2123,6 +2125,7 @@
                 ? EntityData.buildApiPricingGroups(entityContext, platform.slug)
                 : [];
             return PlatformCatalog.buildPlatformCardHtml(platform, allPlans, {
+                compact: true,
                 sanitizeUrl: typeof sanitizeHttpUrl === 'function' ? sanitizeHttpUrl : (u) => u,
                 hasApiPlan: apiGroups.length > 0,
                 supportedModels: EntityData.platformModels(entityContext, platform.slug),
@@ -2240,6 +2243,8 @@
                 if (grid) grid.innerHTML = orderedUnified.map(buildPlatformCardHtml).join('');
                 if (empty) empty.hidden = orderedUnified.length > 0;
                 if (showingEl) showingEl.textContent = String(orderedUnified.length);
+                const homeCount = document.getElementById('homePlatformCount');
+                if (homeCount) homeCount.textContent = `${orderedUnified.length} 个平台符合当前条件`;
                 if (totalEl) totalEl.textContent = String(allPlatforms.length);
                 if (typeof PlatformDetail !== 'undefined' && PlatformDetail.isOpen()) {
                     const openId = PlatformDetail.getOpenPlatformId();
@@ -2366,13 +2371,14 @@
                 document.head.appendChild(link);
             }
             if (typeof window.mountModelComparisonView !== 'function') {
-                await loadScriptOnce('scripts/model-comparison.js?v=260921a');
+                await loadScriptOnce('scripts/model-comparison.js?v=260922a');
             }
             if (typeof window.mountModelComparisonView === 'function') {
                 await window.mountModelComparisonView(root, {
                     mode: 'home',
                     filterState: window.__codingplanUnifiedFiltersState || null
                 });
+                window.CodingPlanHomepageUI?.enhanceUsage(root);
             }
         }
 
@@ -2402,6 +2408,7 @@
 
         let linkedPlanPlatform = null;
         async function onMainViewChange(view) {
+            document.body.dataset.homeView = view;
             if (view === 'plans' && typeof MainViews.readPlanPlatform === 'function') {
                 const platform = MainViews.readPlanPlatform(location.search, allPlatforms);
                 if (platform && linkedPlanPlatform !== platform.slug) {

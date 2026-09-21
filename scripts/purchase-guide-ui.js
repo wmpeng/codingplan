@@ -228,7 +228,9 @@
   function render() {
     const ready = !!controller,
       s = ready ? controller.getState() : {};
-    host.innerHTML = `<section class="purchase-guide-panel"><header class="guide-header"><div><span class="guide-eyebrow">选购助手</span><h2>${collapsed ? "需要帮忙选？" : "找到适合你的 AI 使用方案"}</h2>${collapsed ? "" : "<p>说说用途、用量和预算，看看哪些方案值得考虑。</p>"}</div><div class="guide-header-actions"><button type="button" data-guide-action="${collapsed ? "expand" : "collapse"}">${collapsed ? "展开选购助手" : "收起"}</button></div></header>
+    host.dataset.active = String(active);
+    host.dataset.collapsed = String(collapsed);
+    host.innerHTML = `<section class="purchase-guide-panel"><header class="guide-header"><div><span class="guide-eyebrow">选购助手</span><h2>${collapsed ? "需要帮忙选？" : active ? "一步步，缩小选择范围" : "从你的需求出发"}</h2>${collapsed ? "" : "<p>回答几个简单问题，获得具体方案、推荐理由与取舍。</p>"}</div><div class="guide-header-actions"><button type="button" data-guide-action="${collapsed ? "expand" : "collapse"}">${collapsed ? "展开选购助手" : "收起"}</button></div></header>
       ${collapsed ? "" : active && G.directAdvice(answers) ? "" : !active ? `<div class="guide-intro-actions"><button class="guide-primary" type="button" data-guide-action="start" ${ready ? "" : "disabled"}>${ready ? "帮我选" : "正在加载目录…"}</button><a href="#mainViewTabs">直接看对比 ↓</a></div>` : `<nav class="guide-progress" aria-label="选购步骤">${questions.map(([label], i) => `<button type="button" data-step="${i}" aria-current="${i === step ? "step" : "false"}">${i + 1} ${label}</button>`).join("")}</nav><div class="guide-question"><h3 tabindex="-1" id="guideQuestionTitle">${questions[step][1]}</h3><p>${questions[step][2]}</p>${content(s)}</div><footer class="guide-step-actions"><button type="button" data-guide-action="prev" ${step === 0 ? "disabled" : ""}>上一步</button><button type="button" data-guide-action="skip">不确定 / 跳过</button><button type="button" class="guide-primary" data-guide-action="next">${step === 5 ? "查看推荐 ↓" : "下一步"}</button></footer>`}
       ${active ? `<div class="guide-summary" data-guide-summary>${G.directAdvice(answers) ? "当前显示直接使用建议；原有筛选保持不变。" : esc(summary(s))}</div>` : ""}</section><div id="purchaseGuideResults" ${active && !collapsed ? "" : "hidden"}>${active && !collapsed ? results(s) : ""}</div>`;
   }
@@ -423,8 +425,12 @@
     if (pendingStart) begin();
     else render();
   });
-  document.querySelector("[data-open-guide]")?.addEventListener("click", () => {
-    begin();
+  document.querySelectorAll("[data-open-guide]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      begin();
+      host.querySelector("#guideQuestionTitle")?.focus({ preventScroll: true });
+    });
   });
   controller = root.CodingPlanHomeFilters;
   render();

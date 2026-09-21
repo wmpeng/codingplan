@@ -70,6 +70,11 @@
         const active = key === view;
         btn.classList.toggle('is-active', active);
         btn.setAttribute('aria-selected', active ? 'true' : 'false');
+        btn.setAttribute('tabindex', active ? '0' : '-1');
+        btn.setAttribute('id', `tab-${key}`);
+        if (panels[key] && typeof panels[key].setAttribute === 'function') {
+          panels[key].setAttribute('aria-labelledby', `tab-${key}`);
+        }
       });
     }
     return view;
@@ -139,6 +144,18 @@
     apply(current, { reason: 'init', scroll: false });
 
     if (tabsRoot) {
+      tabsRoot.addEventListener('keydown', (e) => {
+        if (e.altKey || e.ctrlKey || e.metaKey) return;
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
+        const tabs = Array.from(tabsRoot.querySelectorAll('[data-main-view]'));
+        const index = tabs.indexOf(e.target);
+        if (index < 0) return;
+        e.preventDefault();
+        const next = e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1
+          : (index + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+        tabs[next].focus();
+        setView(tabs[next].getAttribute('data-main-view'), { reason: 'keyboard', scroll: false });
+      });
       tabsRoot.addEventListener('click', (e) => {
         const btn = e.target.closest('[data-main-view]');
         if (!btn || !tabsRoot.contains(btn)) return;

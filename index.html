@@ -3358,283 +3358,44 @@
         }
     </style>
     <link rel="stylesheet" href="styles/purchase-guide.css?v=260921a">
+    <link rel="stylesheet" href="styles/homepage-design.css?v=260922a">
 </head>
-<body>
+<body class="home-page">
+    <a class="skip-link" href="#mainViewShell">跳到方案对比</a>
     <div class="container">
-        <div class="header">
-            <div class="header-actions">
-                <a class="header-entry-link" href="#purchaseGuide" data-open-guide>帮我选方案 ↓</a>
-                <a href="https://github.com/wmpeng/codingplan/issues" class="github-link" id="headerEntryLink" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
-                        <path d="M12 2C6.5 2 2 6.58 2 12.2c0 4.5 2.9 8.32 6.9 9.67.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.8.62-3.39-1.38-3.39-1.38-.45-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.93.86.09-.67.35-1.12.64-1.38-2.23-.26-4.58-1.14-4.58-5.05 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05A9.36 9.36 0 0 1 12 6.84c.85 0 1.7.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.92-2.35 4.79-4.6 5.04.36.32.68.95.68 1.92 0 1.39-.01 2.5-.01 2.84 0 .27.18.59.69.49A10.24 10.24 0 0 0 22 12.2C22 6.58 17.5 2 12 2z"></path>
-                    </svg>
-                    <span id="headerEntryText">Github 反馈</span>
-                </a>
-                <div id="settingsMount"></div>
-            </div>
-            <h1 id="pageTitle">AI Coding Plan 平台评测与对比</h1>
+        <header class="home-topbar">
+            <a class="home-brand" href="/" aria-label="Coding Plan 首页"><span class="home-brand-mark" aria-hidden="true">cp<span>.</span></span><span>Coding Plan</span></a>
+            <nav class="home-nav" aria-label="完整工具"><a href="/platforms/">平台</a><a href="/pricing/">价格</a><a href="/plans/">套餐</a><a href="/monitor/">可用性</a></nav>
+            <div class="home-utilities"><a href="#purchaseGuide" data-open-guide>帮我选 <span aria-hidden="true">↗</span></a><div id="settingsMount"></div></div>
+        </header>
+        <main id="homeMain">
+        <section class="home-hero" aria-labelledby="homeHeading">
+        <div class="header home-hero-copy">
+            <p class="home-eyebrow" id="pageTitle">AI Coding Plan 平台评测与对比</p>
+            <h1 id="homeHeading">选对 AI，<br>让每一分预算都值得。</h1>
+            <p class="home-lede">从模型能力到实际用量，找到适合你的编程方案。<br>先明确需求，再比较价格和取舍。</p>
+            <div class="home-hero-actions"><a class="home-button home-button--primary" href="#purchaseGuide" data-open-guide>找到我的方案 <span aria-hidden="true">→</span></a><a class="home-button" href="#mainViewShell">自己比较 <span aria-hidden="true">↓</span></a></div>
+            <p class="home-catalog-summary" id="catalogSummary">37 大平台 · 99 个在售套餐 · 119 个模型</p>
+        </div>
+        <aside class="home-shortcuts" aria-label="按问题查找"><p class="home-eyebrow">已有方向？直接查看</p><a href="/platforms/"><span><strong>哪个平台适合我</strong><small>能力、特点与使用限制</small></span><span aria-hidden="true">↗</span></a><a href="/pricing/"><span><strong>同一模型，哪里便宜</strong><small>比较额度与单位成本</small></span><span aria-hidden="true">↗</span></a><a href="/plans/"><span><strong>预算能买到什么套餐</strong><small>月费、用量与订阅权益</small></span><span aria-hidden="true">↗</span></a><a href="/monitor/"><span><strong>正在用的平台还稳定吗</strong><small>查看近期可用性记录</small></span><span class="home-status-dot" aria-hidden="true"></span></a></aside>
+        </section>
+        <details class="home-coverage"><summary>收录范围与最近更新</summary><div class="home-coverage-body">
             <div class="update-date" id="updateDate">更新日期 2026.9.12 | Command Code 新增 DeepSeek V4.1 Flash 与 Ling 3.0 Flash Sante</div>
             <div class="subtitle" id="subtitle">37 大平台 · 99 个在售套餐 · 119 个模型<br>智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Qoder、WorkBuddy、TRAE 等平台，订阅套餐与按量 API 全面对比。<br>涵盖Claude Fable 5.1，GPT-6-Astra，DeepSeek-V4.1-Flash，DeepSeek-V4-Flash-0731，GLM-5.3，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型</div>
             <div class="models" id="models">快速选出当下最适合的平台和使用方式。<a href="https://api.dreamfree.space/c/s/cpfeishulink" target="_blank" rel="noopener noreferrer">加群</a>参与讨论和获取最新消息</div>
         </div>
+        </details>
 
-        <!-- PLATFORM_GUIDES_START -->
-        <nav class="platform-guide-entry" aria-label="平台介绍"><span>平台介绍</span><a href="/platforms/command-code/">Command Code →</a><a href="/platforms/minimax/">MiniMax Token Plan →</a><a href="/platforms/opencode/">OpenCode Go →</a><a href="/platforms/zhipu/">智谱 GLM Coding Plan →</a><a href="/platforms/">全部介绍</a></nav>
-        <!-- PLATFORM_GUIDES_END -->
-
-        <div id="purchaseGuide"></div>
-        <div class="hero-summary hero-summary--lede">
-            <!-- ARTICLES_MODEL_FEATURE_START -->
-            <article class="hero-summary-card hero-summary-card--reading">
-                <div class="hero-summary-lede-inner">
-                    <div class="hero-summary-lede-media">
-                        <a href="articles/model_comparisons/20260907/index.html" aria-label="阅读全文：2026年9月主流大模型能力对比：Fable 5.1 综合领先，GPT-6 Astra 编码突出，GLM Flash 与 Luna 如何选">
-                            <img src="articles/model_comparisons/20260907/assets/aa-intelligence.svg" alt="AA Intelligence Index v4.2，2026-09-07，本期18款有分数模型，按公开页面整数值重绘" loading="lazy" decoding="async" />
-                        </a>
-                    </div>
-                    <div class="hero-summary-lede-copy">
-                        <div class="hero-summary-kicker">Benchmark</div>
-                        <h2 class="hero-summary-title">2026年9月主流大模型能力对比：Fable 5.1 综合领先，GPT-6 Astra 编码突出，GLM Flash 与 Luna 如何选</h2>
-                        <p class="hero-summary-body">过去一个月，Fable 5.1、GPT-6 Astra、GLM-5.3 Flash 等模型陆续进入选型名单。综合能力、网页开发和仓库工程的榜首并不完全相同，日常大量调用时，还要考虑完成任务的成本。</p>
-                        <a class="hero-summary-readmore" href="articles/model_comparisons/20260907/index.html">查看模型基准 →</a>
-                    </div>
-                </div>
-            </article>
-            <!-- ARTICLES_MODEL_FEATURE_END -->
-            <!-- ARTICLES_PLAN_FEATURE_START -->
-            <article class="hero-summary-card hero-summary-card--reading hero-summary-card--guide">
-                <div>
-                    <div class="hero-summary-kicker">Market Scan</div>
-                    <h2 class="hero-summary-title">2026年8月24日 AI Coding Plan 与 API 平台对比：智谱 GLM-5.3、MiniMax、DeepSeek 视觉版和 OpenCode 调整后怎么选</h2>
-                    <p class="hero-summary-body">8 月下旬这轮变化，不只是某个平台又加了一个模型。智谱把 GLM-5.3 纳入新套餐，DeepSeek 同时调整了峰谷价格并推出视觉实验版，OpenCode 的模型池和套餐展示也发生变化。</p>
-                    <p class="hero-summary-guide-note">先建立全局判断，再用下方平台目录与套餐对比把候选压缩到可执行清单。</p>
-                </div>
-                <a class="hero-summary-readmore" href="articles/plan_comparisons/20260824/index.html">查看对比详情 →</a>
-            </article>
-            <!-- ARTICLES_PLAN_FEATURE_END -->
-            <article class="hero-summary-card hero-summary-card--reading hero-summary-card--news">
-                <div class="hero-summary-kicker">News</div>
-                <h2 class="hero-summary-title">近期快讯</h2>
-                <ul class="hero-summary-news-list">
-                    <!-- ARTICLES_NEWS_LIST_START -->
-                    <li><a href="articles/news/20260818_glm_5_3_aa/index.html" title="GLM-5.3 在 AA 14 模型对比中综合第 5，Agentic 第 2：双榜成绩出炉">GLM-5.3 在 AA 14 模型对比中综合第 5，Agentic 第 2：双榜成绩出炉</a></li>
-                    <li><a href="articles/news/20260814_glm_5_3/index.html" title="GLM-5.3 发布：专注编程，极致后训练，用一半尺寸超越DeepSeek V4 Pro 0813 正式版">GLM-5.3 发布：专注编程，极致后训练，用一半尺寸超越DeepSeek V4 Pro 0813 正式版</a></li>
-                    <li><a href="articles/news/20260813_deepseek_v4_pro_0813/index.html" title="DeepSeek V4 Pro 正式版全平台上线：Agent 与 Coding 能力接近顶级模型，8 月 17 日起调价">DeepSeek V4 Pro 正式版全平台上线：Agent 与 Coding 能力接近顶级模型，8 月 17 日起调价</a></li>
-                    <!-- ARTICLES_NEWS_LIST_END -->
-                </ul>
-                <a class="hero-summary-readmore" href="articles/index.html">全部文章 →</a>
-            </article>
-            <!-- <article class="hero-summary-card hero-summary-card--accent">
-                <div class="hero-summary-kicker">How To Choose</div>
-                <h2 class="hero-summary-title">先看推荐，再用筛选器缩小范围</h2>
-                <p class="hero-summary-body">这页最适合做第一轮排除。先看平台推荐和趋势判断，再按价格、请求数、Token 上限和模型把候选压到 2 到 3 个。</p>
-            </article>
-            <article class="hero-summary-card">
-                <div class="hero-summary-kicker">What Matters</div>
-                <h2 class="hero-summary-title">别只盯月费，额度口径更关键</h2>
-                <p class="hero-summary-body">不同平台会把价值藏在请求数、Token 上限、模型独占和附加权益里。真正影响体感的是你常用工作流能跑多久。</p>
-            </article>
-            <article class="hero-summary-card hero-summary-card--warm">
-                <div class="hero-summary-kicker">Market Signal</div>
-                <h2 class="hero-summary-title">Coding Plan 正在收缩，替代方案要提前看</h2>
-                <p class="hero-summary-body">如果目标平台已经开始转向 Token Plan，就要顺手评估它的长期成本和补位平台，避免后面只能被动切换。</p>
-            </article> -->
-        </div>
-
-        <!-- 平台推荐：由 config.json 运行时渲染 -->
-        <div class="recommendation-groups" id="recommendationGroups">
-            <section class="recommendation-group">
-                <header class="recommendation-group-header">
-                    <h3 class="recommendation-group-title">综合推荐</h3>
-                    <p class="recommendation-group-subtitle">各维度综合评估，最值得入手的几家。智谱和Kimi暂时不开放了，暂时不推荐了</p>
-                </header>
-                <div class="recommendations">
-                    <div class="recommendation-card">
-                        <div class="card-watermark">www.codingplan.fyi</div>
-                        <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqminimax" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">MiniMax</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                        </div>
-                        <ul class="recommendation-reasons">
-                            <li>性价比依然是所有平台最高</li><li>支持MiniMax-M3模型，支持多模态</li><li>适合自动化、Agent、酒馆、高强度Coding等高强度场景</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-card">
-                        <div class="card-watermark">www.codingplan.fyi</div>
-                        <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqzai" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">智谱国际版</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                        </div>
-                        <ul class="recommendation-reasons">
-                            <li>无需抢购</li><li>支持GLM-5.2，国内最强的代码模型之一</li><li>用量与国内版完全一致，价格大约为国内版两倍左右。使用<a href="https://api.dreamfree.space/c/s/cpyqzai" target="_blank" rel="noopener noreferrer">邀请链接</a>可享额外9折。有成品号出售，加入<a href="https://api.dreamfree.space/c/s/cpfeishulink" target="_blank" rel="noopener noreferrer">飞书群</a>查看群公告了解详情。</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-card">
-                        <div class="card-watermark">www.codingplan.fyi</div>
-                        <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqopencode" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">OpenCode</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                        </div>
-                        <ul class="recommendation-reasons">
-                            <li>支持 DeepSeek-V4.1-Flash、Kimi-K3、GLM-5.3、GPT-5.6-Luna 等 27 个模型</li><li>首月半价$5。但只有go这一种套餐，不够重度使用</li><li>无需抢购，可支付宝付款</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-card">
-                        <div class="card-watermark">www.codingplan.fyi</div>
-                        <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">字节·方舟 Coding Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                        </div>
-                        <ul class="recommendation-reasons">
-                            <li>已解除限购，开放购买，无需抢购</li><li>支持GLM-5.3、DeepSeek-V4，MiniMax-M3，Kimi-K3</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="recommendation-group">
-                <header class="recommendation-group-header">
-                    <h3 class="recommendation-group-title">包含 GLM-5.3</h3>
-                </header>
-                <div class="recommendations">
-                    <div class="recommendation-card">
-                        <div class="card-watermark">www.codingplan.fyi</div>
-                        <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqzhipu" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">智谱AI</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                        </div>
-                        <ul class="recommendation-reasons">
-                            <li>在售新套餐支持 GLM-5.3，国内领先的代码模型之一</li><li>新套餐无需抢购</li><li>官方服务，模型与套餐信息透明</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-card">
-                        <div class="card-watermark">www.codingplan.fyi</div>
-                        <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqopencode" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">OpenCode</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                        </div>
-                        <ul class="recommendation-reasons">
-                            <li>支持 GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash、DeepSeek-V4-Pro 等最新模型</li><li>Go 套餐首月半价 $5，无需抢购</li><li>可支付宝付款，调用抵扣透明</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-card">
-                        <div class="card-watermark">www.codingplan.fyi</div>
-                        <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">字节·方舟 Coding Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                        </div>
-                        <ul class="recommendation-reasons">
-                            <li>Coding Plan 支持 GLM-5.3</li><li>同时支持 DeepSeek-V4、MiniMax-M3、Kimi-K3 等模型</li><li>已解除限购，开放购买</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-card">
-                        <div class="card-watermark">www.codingplan.fyi</div>
-                        <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqgongji" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">共绩算力</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                        </div>
-                        <ul class="recommendation-reasons">
-                            <li>按量调用，支持 GLM-5.3、DeepSeek-V4-Pro、Kimi-K3</li><li>平台不拥挤，稳定性高</li><li>通过<strong><a href="https://api.dreamfree.space/c/s/cpyqgongji" target="_blank" rel="noopener noreferrer">邀请链接</a></strong>进入注册，可以锁定专属8折折扣与额外￥20额度</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="recommendation-group">
-                <header class="recommendation-group-header">
-                    <h3 class="recommendation-group-title">包含 DeepSeek 最新模型</h3>
-                </header>
-                <div class="recommendations">
-                    <div class="recommendation-card">
-                        <div class="card-watermark">www.codingplan.fyi</div>
-                        <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://platform.deepseek.com/" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">DeepSeek</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                        </div>
-                        <ul class="recommendation-reasons">
-                            <li>官方 DeepSeek-V4.1-Flash，推理、代码与多模态能力处于国产第一梯队</li><li>空闲时段 ¥1/¥0.02/¥4 每百万 tokens，按量标价透明，适合不想抢套餐的用户</li><li>高峰时段价格为空闲的两倍，错峰使用成本优势更明显</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-card">
-                        <div class="card-watermark">www.codingplan.fyi</div>
-                        <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqopencode" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">OpenCode</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                        </div>
-                        <ul class="recommendation-reasons">
-                            <li>支持 DeepSeek-V4.1-Flash（限时 4 倍额度）、DeepSeek-V4-Pro、Kimi-K3 等最新模型</li><li>首月半价$5。但只有go这一种套餐，够尝鲜，不够重度使用</li><li>无需抢购，可支付宝付款</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="recommendation-group">
-                <header class="recommendation-group-header">
-                    <h3 class="recommendation-group-title">包含 Kimi-3</h3>
-                    <p class="recommendation-group-subtitle">Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。官方需要抢购</p>
-                </header>
-                <div class="recommendations">
-                    <div class="recommendation-card">
-                        <div class="card-watermark">www.codingplan.fyi</div>
-                        <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqkimi" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">Kimi</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                        </div>
-                        <ul class="recommendation-reasons">
-                            <li>官方原生平台，模型体验最稳定，老会员推荐使用。需要抢购，目前无法新购买了</li><li>发布 Kimi-K3 之后，会员停售了，之后应该会启用新的Coding套餐</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-card">
-                        <div class="card-watermark">www.codingplan.fyi</div>
-                        <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqopencode" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">OpenCode</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                        </div>
-                        <ul class="recommendation-reasons">
-                            <li>支持Kimi-K3、GLM-5.2、DeepSeek-V4-Pro等最新模型</li><li>首月半价$5。但只有go这一种套餐，够尝鲜，不够重度使用</li><li>无需抢购，可支付宝付款</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-card">
-                        <div class="card-watermark">www.codingplan.fyi</div>
-                        <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqgongji" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">共绩算力</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                        </div>
-                        <ul class="recommendation-reasons">
-                            <li>按量调用，支持 Kimi-K3、GLM-5.2、DeepSeek-V4-Pro</li><li>平台不拥挤，稳定性高</li><li>通过<strong><a href="https://api.dreamfree.space/c/s/cpyqgongji" target="_blank" rel="noopener noreferrer">邀请链接</a></strong>进入注册，可以锁定专属8折折扣与额外￥20额度</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-card">
-                        <div class="card-watermark">www.codingplan.fyi</div>
-                        <div class="recommendation-header">
-                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhout" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">字节·方舟 Agent Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
-                        </div>
-                        <ul class="recommendation-reasons">
-                            <li>Agent Plan 全档位支持 Kimi-K3</li><li>同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。</li><li>现货开放购买。</li>
-                        </ul>
-                    </div>
-                </div>
-            </section></div>
-
+        <div id="purchaseGuide"><p class="home-loading">正在准备选购助手… <a href="#mainViewShell">先看方案对比</a></p></div>
+        <section class="home-section-heading" aria-labelledby="compareHeading"><div><p class="home-eyebrow">COMPARE & DECIDE</p><h2 id="compareHeading">把选择放在一起看</h2><p>同一组需求，切换四个角度比较。默认从精选平台和模型开始。</p></div><a href="#purchaseGuide" data-open-guide>还没想好？帮我选 →</a></section>
         <div class="main-view-shell" id="mainViewShell">
-        <div id="homepageUnifiedFiltersMount"></div>
         <nav class="main-view-tabs" id="mainViewTabs" role="tablist" aria-label="主内容切换">
             <a href="index.html" role="tab" data-main-view="platforms" aria-controls="view-platforms" aria-selected="true" class="is-active">平台对比</a>
             <a href="index.html?view=usage" role="tab" data-main-view="usage" aria-controls="view-usage" aria-selected="false">额度/价格对比</a>
             <a href="index.html?view=plans" role="tab" data-main-view="plans" aria-controls="view-plans" aria-selected="false">套餐对比</a>
             <a href="index.html?view=monitor" role="tab" data-main-view="monitor" aria-controls="view-monitor" aria-selected="false">可用性监控</a>
         </nav>
+        <div id="homepageUnifiedFiltersMount"></div>
         <div class="main-view-panels">
             <div id="view-platforms" role="tabpanel" data-main-view-panel="platforms">
                 <div class="platform-catalog-intro-row">
@@ -3656,6 +3417,7 @@
                     <div class="stats-bar">显示 <strong id="platformShowingCount">0</strong> / <strong id="platformTotalCount">0</strong> 个平台</div>
                 </div>
             </div>
+            <div class="home-results-heading"><span id="homePlatformCount" role="status"></span><span>评分与用量口径见详情</span></div>
             <div class="platform-card-grid" id="platformCardGrid"></div>
             <p class="platform-catalog-empty" id="platformCatalogEmpty" hidden>无匹配平台；请查看上方生效限制，在对应选择器逐项清空或恢复默认。</p>
         </section>
@@ -3665,6 +3427,7 @@
                 <p class="main-view-intro">横向对比套餐价格、请求次数与模型支持，辅助选型与预算评估。 <a class="main-view-full-link" href="/plans/">查看完整套餐表 →</a></p>
 
         <section class="plans-table-section" id="plansTableSection">
+        <div class="home-table-toolbar"><span>先看月费、用量与支持模型；更多购买周期和权益可展开。</span><label><input type="checkbox" id="homePlanColumns">显示全部字段</label></div>
         <!-- 顶部筛选栏 -->
         <div class="filter-bar surface-panel">
             <!-- 平台筛选下拉 -->
@@ -3982,7 +3745,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5-Turbo</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.3、GLM-5.3-Flash 等 5 个模型</summary><div><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5-Turbo</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 中值约 0.65 亿 Token/周（官方区间 0.43～0.87 亿），Quarterly -20%，Yearly -30%</span></td>
@@ -4004,7 +3767,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5-Turbo</span><span class="model-tag">GLM-5</span><span class="model-tag">GLM-5.3-Flash</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.1、GLM-5.2 等 6 个模型</summary><div><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5-Turbo</span><span class="model-tag">GLM-5</span><span class="model-tag">GLM-5.3-Flash</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 6 倍 Lite 用量，中值约 3.95 亿 Token/周，Quarterly -20%，Yearly -30%</span></td>
@@ -4026,7 +3789,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5-Turbo</span><span class="model-tag">GLM-5</span><span class="model-tag">GLM-5.3-Flash</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.1、GLM-5.2 等 6 个模型</summary><div><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5-Turbo</span><span class="model-tag">GLM-5</span><span class="model-tag">GLM-5.3-Flash</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 14 倍 Lite 用量，中值约 9.20 亿 Token/周，Quarterly -20%，Yearly -30%</span></td>
@@ -4048,7 +3811,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5-Turbo</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.3、GLM-5.3-Flash 等 5 个模型</summary><div><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5-Turbo</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 中值约 0.65 亿 Token/周（官方区间 0.43～0.87 亿），连续包月 8 折，连续包年 7 折</span></td>
@@ -4070,7 +3833,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5-Turbo</span><span class="model-tag">GLM-5</span><span class="model-tag">GLM-5.3-Flash</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.1、GLM-5.2 等 6 个模型</summary><div><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5-Turbo</span><span class="model-tag">GLM-5</span><span class="model-tag">GLM-5.3-Flash</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 6 倍 Lite 用量，中值约 3.95 亿 Token/周，连续包月 8 折，连续包年 7 折</span></td>
@@ -4092,7 +3855,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5-Turbo</span><span class="model-tag">GLM-5</span><span class="model-tag">GLM-5.3-Flash</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.1、GLM-5.2 等 6 个模型</summary><div><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5-Turbo</span><span class="model-tag">GLM-5</span><span class="model-tag">GLM-5.3-Flash</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 14 倍 Lite 用量，中值约 9.20 亿 Token/周，连续包月 8 折，连续包年 7 折</span></td>
@@ -4180,7 +3943,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">LongCat-2.0</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Muse-Spark-1.3</span><span class="model-tag">Muse-Spark-1.2</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Hy3</span><span class="model-tag">Grok-4.6</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Hy4-preview</span></td>
+                    <td><details class="home-plan-models"><summary>GPT-5.6-Luna、GLM-5.3 等 27 个模型</summary><div><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">LongCat-2.0</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Muse-Spark-1.3</span><span class="model-tag">Muse-Spark-1.2</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Hy3</span><span class="model-tag">Grok-4.6</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Hy4-preview</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 套餐额度按美元 Credits 计：5 小时 12 美元、周额度 30 美元、月额度 60 美元<br>• 各模型另有独立的 5 小时/周/月额度；DeepSeek V4.1 Flash 当前限时 4 倍，官方未公布活动起止日期<br>• 排序用月 Token 估算按 GLM-5.2、90% 缓存命中率计算</span></td>
@@ -4202,7 +3965,7 @@
                     <td><span class="request-count">1,200 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">9,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">18,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Auto</span><span class="model-tag">Doubao-Seed-Evolving</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V3.2</span></td>
+                    <td><details class="home-plan-models"><summary>DeepSeek-V4-Flash-0731、Doubao-Seed-2.0-Lite 等 17 个模型</summary><div><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Auto</span><span class="model-tag">Doubao-Seed-Evolving</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V3.2</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）<br>• DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍，GLM-5.2限时4倍用量</span></td>
@@ -4224,7 +3987,7 @@
                     <td><span class="request-count">6,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">45,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">90,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Auto</span><span class="model-tag">Doubao-Seed-Evolving</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span></td>
+                    <td><details class="home-plan-models"><summary>Doubao-Seed-2.0系列、Doubao-Seed-Code 等 17 个模型</summary><div><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Auto</span><span class="model-tag">Doubao-Seed-Evolving</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）<br>• DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍，GLM-5.2限时4倍用量</span></td>
@@ -4246,7 +4009,7 @@
                     <td><span class="request-count">200 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">700 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">2,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Doubao-Seed-2.0-Mini</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Evolving</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Doubao-Seedream-5.0-lite</span></td>
+                    <td><details class="home-plan-models"><summary>Doubao-Seed-2.0-Mini、Doubao-Seed-2.0-Lite 等 18 个模型</summary><div><span class="model-tag">Doubao-Seed-2.0-Mini</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Evolving</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Doubao-Seedream-5.0-lite</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。<br>• 按照最优模型9倍系数计算，1AFP=1111Token。<br>• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。</span></td>
@@ -4268,7 +4031,7 @@
                     <td><span class="request-count">1,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">3,500 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">10,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Doubao-Seed-2.0-Mini</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Evolving</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Doubao-Seedream-5.0-lite</span><span class="model-tag">Doubao-Seedance-2.0</span></td>
+                    <td><details class="home-plan-models"><summary>Doubao-Seed-2.0-Mini、Doubao-Seed-2.0-Lite 等 19 个模型</summary><div><span class="model-tag">Doubao-Seed-2.0-Mini</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Evolving</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Doubao-Seedream-5.0-lite</span><span class="model-tag">Doubao-Seedance-2.0</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。<br>• 按照最优模型9倍系数计算，1AFP=1111Token。<br>• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。</span></td>
@@ -4290,7 +4053,7 @@
                     <td><span class="request-count">2,500 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">8,750 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">25,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Doubao-Seedream-5.0-lite</span><span class="model-tag">Doubao-Seedance-2.0</span><span class="model-tag">Doubao-Seed-2.0-Mini</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Evolving</span></td>
+                    <td><details class="home-plan-models"><summary>Doubao-Seed-2.0系列、DeepSeek-V4-Pro-0813 等 19 个模型</summary><div><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Doubao-Seedream-5.0-lite</span><span class="model-tag">Doubao-Seedance-2.0</span><span class="model-tag">Doubao-Seed-2.0-Mini</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Evolving</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。<br>• 按照最优模型9倍系数计算，1AFP=1111Token。<br>• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。</span></td>
@@ -4312,7 +4075,7 @@
                     <td><span class="request-count">5,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">17,500 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">50,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Doubao-Seedream-5.0-lite</span><span class="model-tag">Doubao-Seedance-2.0</span><span class="model-tag">Doubao-Seed-2.0-Mini</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Evolving</span></td>
+                    <td><details class="home-plan-models"><summary>Doubao-Seed-2.0系列、DeepSeek-V4-Pro-0813 等 19 个模型</summary><div><span class="model-tag">Doubao-Seed-2.0系列</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Doubao-Seedream-5.0-lite</span><span class="model-tag">Doubao-Seedance-2.0</span><span class="model-tag">Doubao-Seed-2.0-Mini</span><span class="model-tag">Doubao-Seed-2.0-Lite</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Evolving</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。<br>• 按照最优模型9倍系数计算，1AFP=1111Token。<br>• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。</span></td>
@@ -4334,7 +4097,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Kimi-K2</span></td>
+                    <td><details class="home-plan-models"><summary>Kimi-K3、Kimi-K2.7-Code 等 5 个模型</summary><div><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Kimi-K2</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">Agent 4 倍速</span></td>
@@ -4356,7 +4119,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Kimi-K2</span></td>
+                    <td><details class="home-plan-models"><summary>Kimi-K3、Kimi-K2.7-Code 等 5 个模型</summary><div><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Kimi-K2</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">4 倍额度, Agent 多任务并行</span></td>
@@ -4378,7 +4141,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Kimi-K2</span></td>
+                    <td><details class="home-plan-models"><summary>Kimi-K3、Kimi-K2.7-Code 等 5 个模型</summary><div><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Kimi-K2</span></div></details></td>
                     <td><span class="benefit">免费Kimi-Claw</span></td>
                     <td></td>
                     <td><span class="note">20 倍额度</span></td>
@@ -4400,7 +4163,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Kimi-K2</span></td>
+                    <td><details class="home-plan-models"><summary>Kimi-K3、Kimi-K2.7-Code 等 5 个模型</summary><div><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Kimi-K2</span></div></details></td>
                     <td><span class="benefit">免费Kimi-Claw</span></td>
                     <td></td>
                     <td><span class="note">60 倍额度</span></td>
@@ -4422,7 +4185,7 @@
                     <td><span class="request-count">300 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">750 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">1,900 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Qwen-3.8-27B</span><span class="model-tag">DeepSeek-V3.2</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.1、GLM-5.2 等 8 个模型</summary><div><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Qwen-3.8-27B</span><span class="model-tag">DeepSeek-V3.2</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6<br>• 限流：3 并发<br>• 价格较贵，但费率明确，无隐藏倍率</span></td>
@@ -4444,7 +4207,7 @@
                     <td><span class="request-count">600 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">1,500 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">3,800 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Qwen-3.8-27B</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.2、GLM-5.1 等 8 个模型</summary><div><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Qwen-3.8-27B</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6<br>• 限流：5 并发<br>• 价格较贵，但费率明确，无隐藏倍率</span></td>
@@ -4466,7 +4229,7 @@
                     <td><span class="request-count">1,200 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">3,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">7,600 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Qwen-3.8-27B</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.2、GLM-5.1 等 8 个模型</summary><div><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Qwen-3.8-27B</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6<br>• 限流：10 并发<br>• 价格较贵，但费率明确，无隐藏倍率</span></td>
@@ -4488,7 +4251,7 @@
                     <td><span class="request-count">3,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">7,500 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">19,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Qwen-3.8-27B</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.2、GLM-5.1 等 8 个模型</summary><div><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Qwen-3.8-27B</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6<br>• 限流：10 并发<br>• 价格较贵，但费率明确，无隐藏倍率</span></td>
@@ -4510,7 +4273,7 @@
                     <td><span class="request-count">4,800 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">12,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">31,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Qwen-3.8-27B</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.2、GLM-5.1 等 8 个模型</summary><div><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Qwen-3.8-27B</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6<br>• 限流：10 并发<br>• 价格较贵，但费率明确，无隐藏倍率</span></td>
@@ -4532,7 +4295,7 @@
                     <td><span class="request-count">6,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">15,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">39,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Qwen-3.8-27B</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.2、GLM-5.1 等 8 个模型</summary><div><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">Qwen-3.8-27B</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6<br>• 限流：10 并发<br>• 价格较贵但费率明确，无隐藏倍率</span></td>
@@ -4554,7 +4317,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GPT-6-Astra</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">GPT-5.6</span><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">GPT-5.2</span><span class="model-tag">GPT-5.4-mini</span><span class="model-tag">GPT-Image-2.0</span></td>
+                    <td><details class="home-plan-models"><summary>GPT-6-Astra、GPT-5.6-Sol 等 10 个模型</summary><div><span class="model-tag">GPT-6-Astra</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">GPT-5.6</span><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">GPT-5.2</span><span class="model-tag">GPT-5.4-mini</span><span class="model-tag">GPT-Image-2.0</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 无5h限制，只有周限制</span></td>
@@ -4576,7 +4339,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GPT-6-Astra</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">GPT-5.6</span><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">GPT-5.2</span><span class="model-tag">GPT-5.4-mini</span><span class="model-tag">GPT-Image-2.0</span></td>
+                    <td><details class="home-plan-models"><summary>GPT-6-Astra、GPT-5.6-Sol 等 10 个模型</summary><div><span class="model-tag">GPT-6-Astra</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">GPT-5.6</span><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">GPT-5.2</span><span class="model-tag">GPT-5.4-mini</span><span class="model-tag">GPT-Image-2.0</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 无5h限制，只有周限制</span></td>
@@ -4598,7 +4361,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GPT-6-Astra</span><span class="model-tag">GPT-5.6</span><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">GPT-5.2</span><span class="model-tag">GPT-5.4-mini</span><span class="model-tag">GPT-Image-2.0</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Luna</span></td>
+                    <td><details class="home-plan-models"><summary>GPT-6-Astra、GPT-5.6 等 10 个模型</summary><div><span class="model-tag">GPT-6-Astra</span><span class="model-tag">GPT-5.6</span><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">GPT-5.2</span><span class="model-tag">GPT-5.4-mini</span><span class="model-tag">GPT-Image-2.0</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Luna</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 无5h限制，只有周限制</span></td>
@@ -4620,7 +4383,7 @@
                     <td><span class="request-count">Pro 基准 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">Pro 基准 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Claude Fable 5.1</span><span class="model-tag">Claude Fable 5</span><span class="model-tag">Claude Opus 5</span><span class="model-tag">Claude Sonnet 5</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Claude Sonnet 4.5</span><span class="model-tag">Claude Opus 4.7</span><span class="model-tag">Claude Opus 4.6</span><span class="model-tag">Claude Opus 4.5</span><span class="model-tag">Claude Haiku 4.5</span></td>
+                    <td><details class="home-plan-models"><summary>Claude Fable 5.1、Claude Fable 5 等 10 个模型</summary><div><span class="model-tag">Claude Fable 5.1</span><span class="model-tag">Claude Fable 5</span><span class="model-tag">Claude Opus 5</span><span class="model-tag">Claude Sonnet 5</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Claude Sonnet 4.5</span><span class="model-tag">Claude Opus 4.7</span><span class="model-tag">Claude Opus 4.6</span><span class="model-tag">Claude Opus 4.5</span><span class="model-tag">Claude Haiku 4.5</span></div></details></td>
                     <td><span class="benefit">原生 Claude 体验</span></td>
                     <td></td>
                     <td><span class="note">• 部分用户订阅时可能被要求实名认证<br>• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent</span></td>
@@ -4642,7 +4405,7 @@
                     <td><span class="request-count">Pro 的 5 倍 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">Pro 的 5 倍 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Claude Fable 5.1</span><span class="model-tag">Claude Fable 5</span><span class="model-tag">Claude Opus 5</span><span class="model-tag">Claude Sonnet 5</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Claude Sonnet 4.5</span><span class="model-tag">Claude Opus 4.7</span><span class="model-tag">Claude Opus 4.6</span><span class="model-tag">Claude Opus 4.5</span><span class="model-tag">Claude Haiku 4.5</span></td>
+                    <td><details class="home-plan-models"><summary>Claude Fable 5.1、Claude Fable 5 等 10 个模型</summary><div><span class="model-tag">Claude Fable 5.1</span><span class="model-tag">Claude Fable 5</span><span class="model-tag">Claude Opus 5</span><span class="model-tag">Claude Sonnet 5</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Claude Sonnet 4.5</span><span class="model-tag">Claude Opus 4.7</span><span class="model-tag">Claude Opus 4.6</span><span class="model-tag">Claude Opus 4.5</span><span class="model-tag">Claude Haiku 4.5</span></div></details></td>
                     <td><span class="benefit">原生 Claude 体验</span></td>
                     <td></td>
                     <td><span class="note">• 部分用户订阅时可能被要求实名认证<br>• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent</span></td>
@@ -4664,7 +4427,7 @@
                     <td><span class="request-count">Pro 的 20 倍 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">Pro 的 20 倍 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Claude Fable 5.1</span><span class="model-tag">Claude Fable 5</span><span class="model-tag">Claude Opus 5</span><span class="model-tag">Claude Sonnet 5</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Claude Sonnet 4.5</span><span class="model-tag">Claude Opus 4.7</span><span class="model-tag">Claude Opus 4.6</span><span class="model-tag">Claude Opus 4.5</span><span class="model-tag">Claude Haiku 4.5</span></td>
+                    <td><details class="home-plan-models"><summary>Claude Fable 5.1、Claude Fable 5 等 10 个模型</summary><div><span class="model-tag">Claude Fable 5.1</span><span class="model-tag">Claude Fable 5</span><span class="model-tag">Claude Opus 5</span><span class="model-tag">Claude Sonnet 5</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Claude Sonnet 4.5</span><span class="model-tag">Claude Opus 4.7</span><span class="model-tag">Claude Opus 4.6</span><span class="model-tag">Claude Opus 4.5</span><span class="model-tag">Claude Haiku 4.5</span></div></details></td>
                     <td><span class="benefit">原生 Claude 体验</span></td>
                     <td></td>
                     <td><span class="note">• 部分用户订阅时可能被要求实名认证<br>• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent</span></td>
@@ -4686,7 +4449,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.5</span><span class="model-tag">Gemini-3-Flash-Preview</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.2、GLM-5.1 等 9 个模型</summary><div><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.5</span><span class="model-tag">Gemini-3-Flash-Preview</span></div></details></td>
                     <td><span class="benefit">3 个并发任务</span></td>
                     <td></td>
                     <td><span class="note">• 支持 GLM-5.2、Kimi-K2.6、MiniMax-M3、DeepSeek-V4-Pro，模型丰富<br>• 倍率大约x10，用量按照GLM-5.2估计，</span></td>
@@ -4708,7 +4471,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.5</span><span class="model-tag">Gemini-3-Flash-Preview</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.2、GLM-5.1 等 9 个模型</summary><div><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.5</span><span class="model-tag">Gemini-3-Flash-Preview</span></div></details></td>
                     <td><span class="benefit">10 个并发任务</span></td>
                     <td></td>
                     <td><span class="note">• 暂时停售 • 支持 GLM-5.2、Kimi-K2.6、MiniMax-M3、DeepSeek-V4-Pro，模型丰富<br>• 用量按照GLM-5.2估计</span></td>
@@ -4730,7 +4493,7 @@
                     <td><span class="request-count">6,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">45,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">90,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">Qwen-3.5-Plus</span><span class="model-tag">Qwen-3-Max-2026-01-23</span><span class="model-tag">Qwen-3-Coder-Next</span><span class="model-tag">Qwen-3-Coder-Plus</span><span class="model-tag">GLM-4.7</span></td>
+                    <td><details class="home-plan-models"><summary>Qwen-3.7-Plus、Qwen-3.6-Plus 等 10 个模型</summary><div><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">Qwen-3.5-Plus</span><span class="model-tag">Qwen-3-Max-2026-01-23</span><span class="model-tag">Qwen-3-Coder-Next</span><span class="model-tag">Qwen-3-Coder-Plus</span><span class="model-tag">GLM-4.7</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">开始限量购买了，不确定每天放不放，放多少</span></td>
@@ -4752,7 +4515,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.5-Plus</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span></td>
+                    <td><details class="home-plan-models"><summary>Qwen-3.8-Max、Qwen-3.8-Flash-Next 等 15 个模型</summary><div><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.5-Plus</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit。合输入¥1.58/MToken，缓存¥0.32/MToken，输出¥9.54/MToken<br>• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%/5000 + 99×90%/25000 + 1/830 = 0.00675 Credit，即 1 Credit≈14.82K Token。表格按15K Token/Credit算</span></td>
@@ -4774,7 +4537,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">Qwen-3.5-Plus</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span></td>
+                    <td><details class="home-plan-models"><summary>Qwen-3.8-Max、Qwen-3.7-Max 等 15 个模型</summary><div><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">Qwen-3.5-Plus</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit。合输入¥1.40/MToken，缓存¥0.28/MToken，输出¥8.41/MToken<br>• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%/5000 + 99×90%/25000 + 1/830 = 0.00675 Credit，即 1 Credit≈14.82K Token。表格按15K Token/Credit算</span></td>
@@ -4796,7 +4559,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">Qwen-3.5-Plus</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span></td>
+                    <td><details class="home-plan-models"><summary>Qwen-3.8-Max、Qwen-3.7-Max 等 15 个模型</summary><div><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">Qwen-3.5-Plus</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit。合输入¥1.12/MToken，缓存¥0.22/MToken，输出¥6.74/MToken<br>• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%/5000 + 99×90%/25000 + 1/830 = 0.00675 Credit，即 1 Credit≈14.82K Token。表格按15K Token/Credit算</span></td>
@@ -4818,7 +4581,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-TTS</span><span class="model-tag">MiMo-V2-Pro</span><span class="model-tag">MiMo-V2-Omni</span></td>
+                    <td><details class="home-plan-models"><summary>MiMo-V2.5-Pro、MiMo-V2.5 等 5 个模型</summary><div><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-TTS</span><span class="model-tag">MiMo-V2-Pro</span><span class="model-tag">MiMo-V2-Omni</span></div></details></td>
                     <td><span class="benefit">TTS限时免费</span></td>
                     <td></td>
                     <td><span class="note">• 4.1B Credits，无5小时限额，支持集中消耗<br>• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token<br>• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高</span></td>
@@ -4840,7 +4603,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-TTS</span><span class="model-tag">MiMo-V2-Pro</span><span class="model-tag">MiMo-V2-Omni</span></td>
+                    <td><details class="home-plan-models"><summary>MiMo-V2.5-Pro、MiMo-V2.5 等 5 个模型</summary><div><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-TTS</span><span class="model-tag">MiMo-V2-Pro</span><span class="model-tag">MiMo-V2-Omni</span></div></details></td>
                     <td><span class="benefit">TTS限时免费</span></td>
                     <td></td>
                     <td><span class="note">• 11B Credits，无5小时限额，支持集中消耗<br>• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token<br>• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高</span></td>
@@ -4862,7 +4625,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-TTS</span><span class="model-tag">MiMo-V2-Pro</span><span class="model-tag">MiMo-V2-Omni</span></td>
+                    <td><details class="home-plan-models"><summary>MiMo-V2.5-Pro、MiMo-V2.5 等 5 个模型</summary><div><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-TTS</span><span class="model-tag">MiMo-V2-Pro</span><span class="model-tag">MiMo-V2-Omni</span></div></details></td>
                     <td><span class="benefit">TTS限时免费</span></td>
                     <td></td>
                     <td><span class="note">• 38B Credits，无5小时限额，支持集中消耗<br>• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token<br>• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高</span></td>
@@ -4884,7 +4647,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-TTS</span><span class="model-tag">MiMo-V2-Pro</span><span class="model-tag">MiMo-V2-Omni</span></td>
+                    <td><details class="home-plan-models"><summary>MiMo-V2.5-Pro、MiMo-V2.5 等 5 个模型</summary><div><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">MiMo-V2.5-TTS</span><span class="model-tag">MiMo-V2-Pro</span><span class="model-tag">MiMo-V2-Omni</span></div></details></td>
                     <td><span class="benefit">TTS限时免费</span></td>
                     <td></td>
                     <td><span class="note">• 82B Credits，无5小时限额，支持集中消耗<br>• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token<br>• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高</span></td>
@@ -4906,7 +4669,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Laguna-S-2.1</span><span class="model-tag">LongCat-2.0</span><span class="model-tag">Ling-3.0-Flash-Sante</span><span class="model-tag">Hy4-preview</span><span class="model-tag">Hy3</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.7-Code-HighSpeed</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.2-Fast</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">DeepSeek-V4-Flash-Fast</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">Qwen-3.8-Max-0902</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-27B</span><span class="model-tag">Qwen-3.6-Max-Preview</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Flash</span><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">Nemotron-3-Ultra</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">Muse-Spark-1.3</span><span class="model-tag">Muse-Spark-1.2</span><span class="model-tag">Grok-4.5</span><span class="model-tag">Inkling</span><span class="model-tag">Inkling-Small</span></td>
+                    <td><details class="home-plan-models"><summary>Laguna-S-2.1、LongCat-2.0 等 44 个模型</summary><div><span class="model-tag">Laguna-S-2.1</span><span class="model-tag">LongCat-2.0</span><span class="model-tag">Ling-3.0-Flash-Sante</span><span class="model-tag">Hy4-preview</span><span class="model-tag">Hy3</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.7-Code-HighSpeed</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.2-Fast</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">DeepSeek-V4-Flash-Fast</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">Qwen-3.8-Max-0902</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-27B</span><span class="model-tag">Qwen-3.6-Max-Preview</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Flash</span><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">Nemotron-3-Ultra</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">Muse-Spark-1.3</span><span class="model-tag">Muse-Spark-1.2</span><span class="model-tag">Grok-4.5</span><span class="model-tag">Inkling</span><span class="model-tag">Inkling-Small</span></div></details></td>
                     <td><span class="benefit">每月 $10 模型 Credits</span><span class="benefit">5 小时 / 周额度为 $3 / $6</span><span class="benefit">支持开源模型及部分闭源模型</span><span class="benefit">支持 44 个模型</span></td>
                     <td></td>
                     <td><span class="note">按模型实际 Token 价格扣减 Credits；只能在 Command Code 客户端内使用，目前稳定性较弱。</span></td>
@@ -4928,7 +4691,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Laguna-S-2.1</span><span class="model-tag">LongCat-2.0</span><span class="model-tag">Ling-3.0-Flash-Sante</span><span class="model-tag">Hy4-preview</span><span class="model-tag">Hy3</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.7-Code-HighSpeed</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.2-Fast</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">DeepSeek-V4-Flash-Fast</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">Qwen-3.8-Max-0902</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-27B</span><span class="model-tag">Qwen-3.6-Max-Preview</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Flash</span><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">Nemotron-3-Ultra</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">Gemini-3.8-Flash</span><span class="model-tag">Gemini-3.7-Flash</span><span class="model-tag">Muse-Spark-1.3</span><span class="model-tag">Muse-Spark-1.2</span><span class="model-tag">Grok-4.6</span><span class="model-tag">Grok-4.5</span><span class="model-tag">Inkling</span><span class="model-tag">Inkling-Small</span></td>
+                    <td><details class="home-plan-models"><summary>Laguna-S-2.1、LongCat-2.0 等 48 个模型</summary><div><span class="model-tag">Laguna-S-2.1</span><span class="model-tag">LongCat-2.0</span><span class="model-tag">Ling-3.0-Flash-Sante</span><span class="model-tag">Hy4-preview</span><span class="model-tag">Hy3</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.7-Code-HighSpeed</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.2-Fast</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">DeepSeek-V4-Flash-Fast</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">Qwen-3.8-Max-0902</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-27B</span><span class="model-tag">Qwen-3.6-Max-Preview</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Flash</span><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">Nemotron-3-Ultra</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">Gemini-3.8-Flash</span><span class="model-tag">Gemini-3.7-Flash</span><span class="model-tag">Muse-Spark-1.3</span><span class="model-tag">Muse-Spark-1.2</span><span class="model-tag">Grok-4.6</span><span class="model-tag">Grok-4.5</span><span class="model-tag">Inkling</span><span class="model-tag">Inkling-Small</span></div></details></td>
                     <td><span class="benefit">最高每月 $70 模型 Credits</span><span class="benefit">5 小时 / 周额度为 $14 / $35</span><span class="benefit">支持 50 个模型</span></td>
                     <td></td>
                     <td><span class="note">不同模型拥有独立月额度，范围为 $20–$70；DeepSeek V4.1 Flash 当前限时月额度为 $60，至 2026-09-17 后恢复 $40（官网未公布具体截止时刻）；所有额度共享套餐池。</span></td>
@@ -4950,7 +4713,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Laguna-S-2.1</span><span class="model-tag">LongCat-2.0</span><span class="model-tag">Ling-3.0-Flash-Sante</span><span class="model-tag">Hy4-preview</span><span class="model-tag">Hy3</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.7-Code-HighSpeed</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.2-Fast</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">DeepSeek-V4-Flash-Fast</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">Qwen-3.8-Max-0902</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-27B</span><span class="model-tag">Qwen-3.6-Max-Preview</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Flash</span><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">Nemotron-3-Ultra</span><span class="model-tag">Claude Sonnet 5</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Claude Haiku 4.5</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Terra</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.4-mini</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">Gemini-3.8-Flash</span><span class="model-tag">Gemini-3.7-Flash</span><span class="model-tag">Gemini-3.6-Flash</span><span class="model-tag">Gemini-3.5-Flash</span><span class="model-tag">Gemini-3.5-Flash-Lite</span><span class="model-tag">Gemini-3.1-Flash-Lite</span><span class="model-tag">Muse-Spark-1.3</span><span class="model-tag">Muse-Spark-1.2</span><span class="model-tag">Muse-Spark-1.1</span><span class="model-tag">Grok-4.6</span><span class="model-tag">Grok-4.5</span><span class="model-tag">Inkling</span><span class="model-tag">Inkling-Small</span></td>
+                    <td><details class="home-plan-models"><summary>Laguna-S-2.1、LongCat-2.0 等 61 个模型</summary><div><span class="model-tag">Laguna-S-2.1</span><span class="model-tag">LongCat-2.0</span><span class="model-tag">Ling-3.0-Flash-Sante</span><span class="model-tag">Hy4-preview</span><span class="model-tag">Hy3</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.7-Code-HighSpeed</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.2-Fast</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag">DeepSeek-V4-Flash-Fast</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">Qwen-3.8-Max-0902</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-27B</span><span class="model-tag">Qwen-3.6-Max-Preview</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Flash</span><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span><span class="model-tag">Nemotron-3-Ultra</span><span class="model-tag">Claude Sonnet 5</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Claude Haiku 4.5</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Terra</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.4-mini</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">Gemini-3.8-Flash</span><span class="model-tag">Gemini-3.7-Flash</span><span class="model-tag">Gemini-3.6-Flash</span><span class="model-tag">Gemini-3.5-Flash</span><span class="model-tag">Gemini-3.5-Flash-Lite</span><span class="model-tag">Gemini-3.1-Flash-Lite</span><span class="model-tag">Muse-Spark-1.3</span><span class="model-tag">Muse-Spark-1.2</span><span class="model-tag">Muse-Spark-1.1</span><span class="model-tag">Grok-4.6</span><span class="model-tag">Grok-4.5</span><span class="model-tag">Inkling</span><span class="model-tag">Inkling-Small</span></div></details></td>
                     <td><span class="benefit">最高每月 $80 模型 Credits</span><span class="benefit">5 小时 / 周额度为 $16 / $40</span><span class="benefit">支持 63 个模型</span></td>
                     <td></td>
                     <td><span class="note">不同模型拥有独立月额度，范围为 $20–$80；DeepSeek V4.1 Flash 当前限时月额度为 $70，至 2026-09-17 后恢复 $50（官网未公布具体截止时刻）；所有额度共享套餐池。</span></td>
@@ -4972,7 +4735,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">ERNIE-5.1</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.2、GLM-5.1 等 6 个模型</summary><div><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">ERNIE-5.1</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 限时首购 5 折（每日限量）<br>• 1000 万 Token 额度，统一抵扣不区分模型倍率与输入/输出<br></span></td>
@@ -4994,7 +4757,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">ERNIE-5.1</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.2、GLM-5.1 等 6 个模型</summary><div><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">ERNIE-5.1</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 限时首购 5 折（每日限量）<br>• 4200 万 Token 额度，统一抵扣不区分模型倍率与输入/输出<br></span></td>
@@ -5016,7 +4779,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">ERNIE-5.1</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.2、GLM-5.1 等 6 个模型</summary><div><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">ERNIE-5.1</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 限时首购 5 折（每日限量）<br>• 2.3 亿 Token 额度，统一抵扣不区分模型倍率与输入/输出<br></span></td>
@@ -5038,7 +4801,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">ERNIE-5.1</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.2、GLM-5.1 等 6 个模型</summary><div><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">ERNIE-5.1</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 限时首购 5 折（每日限量）<br>• 7 亿 Token 额度，统一抵扣不区分模型倍率与输入/输出<br></span></td>
@@ -5060,7 +4823,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.1、GLM-5 等 4 个模型</summary><div><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 限个人用户购买，每个用户限购 1 套<br>• 订阅后不支持退订<br>• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务<br>• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止</span></td>
@@ -5082,7 +4845,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.1、GLM-5 等 4 个模型</summary><div><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 限个人用户购买，每个用户限购 1 套<br>• 订阅后不支持退订<br>• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务<br>• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止<br>• 页面标&quot;最受欢迎&quot;档</span></td>
@@ -5104,7 +4867,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.1、GLM-5 等 4 个模型</summary><div><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 限个人用户购买，每个用户限购 1 套<br>• 订阅后不支持退订<br>• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务<br>• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止</span></td>
@@ -5126,7 +4889,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span></td>
+                    <td><details class="home-plan-models"><summary>GLM-5.1、GLM-5 等 4 个模型</summary><div><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 限个人用户购买，每个用户限购 1 套<br>• 订阅后不支持退订<br>• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务<br>• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止</span></td>
@@ -5148,7 +4911,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">HY-2.0</span><span class="model-tag">GLM-5.1</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span></td>
+                    <td><details class="home-plan-models"><summary>HY-2.0、GLM-5.1 等 4 个模型</summary><div><span class="model-tag">HY-2.0</span><span class="model-tag">GLM-5.1</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">注意此为TokenPlan，而非CodingPlan。35M(3500万) Tokens 额度，约 70 轮问答</span></td>
@@ -5170,7 +4933,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">HY-2.0</span><span class="model-tag">GLM-5.1</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span></td>
+                    <td><details class="home-plan-models"><summary>HY-2.0、GLM-5.1 等 4 个模型</summary><div><span class="model-tag">HY-2.0</span><span class="model-tag">GLM-5.1</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">注意此为TokenPlan，而非CodingPlan。100M(1亿) Tokens 额度，可执行约 200 轮问答</span></td>
@@ -5192,7 +4955,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">HY-2.0</span><span class="model-tag">GLM-5.1</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span></td>
+                    <td><details class="home-plan-models"><summary>HY-2.0、GLM-5.1 等 4 个模型</summary><div><span class="model-tag">HY-2.0</span><span class="model-tag">GLM-5.1</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">注意此为TokenPlan，而非CodingPlan。320M(3.2亿) Tokens 额度</span></td>
@@ -5214,7 +4977,7 @@
                     <td><span class="request-count">无限制 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">无限制 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">HY-2.0</span><span class="model-tag">GLM-5.1</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span></td>
+                    <td><details class="home-plan-models"><summary>HY-2.0、GLM-5.1 等 4 个模型</summary><div><span class="model-tag">HY-2.0</span><span class="model-tag">GLM-5.1</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">注意此为TokenPlan，而非CodingPlan。650M(6.5亿) Tokens 额度</span></td>
@@ -5236,7 +4999,7 @@
                     <td><span class="request-count">1,200 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">9,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">18,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">Qwen-3-Coder</span></td>
+                    <td><details class="home-plan-models"><summary>Kimi-K2.5、GLM-5 等 5 个模型</summary><div><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">Qwen-3-Coder</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note"></span></td>
@@ -5258,7 +5021,7 @@
                     <td><span class="request-count">6,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">45,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">90,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">Qwen-3-Coder</span></td>
+                    <td><details class="home-plan-models"><summary>Kimi-K2.5、GLM-5 等 5 个模型</summary><div><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">Qwen-3-Coder</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note"></span></td>
@@ -5280,7 +5043,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GPT-4o</span><span class="model-tag">GPT-4.1</span><span class="model-tag">GPT-5-mini</span><span class="model-tag">GPT-5.2-Codex</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Claude Haiku 4.5</span><span class="model-tag">Grok Code Fast 1</span></td>
+                    <td><details class="home-plan-models"><summary>GPT-4o、GPT-4.1 等 7 个模型</summary><div><span class="model-tag">GPT-4o</span><span class="model-tag">GPT-4.1</span><span class="model-tag">GPT-5-mini</span><span class="model-tag">GPT-5.2-Codex</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Claude Haiku 4.5</span><span class="model-tag">Grok Code Fast 1</span></div></details></td>
                     <td><span class="benefit">学生认证免费</span></td>
                     <td></td>
                     <td><span class="note">• 学生认证免费，高级模型可对话 300 次<br>• 存在周限额和 session 限额，不同模型有不同扣减倍率<br>• 学生版可通过 Auto 模式路由至 GPT-5.3-Codex</span></td>
@@ -5302,7 +5065,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">GPT-5.4</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Grok Code Fast 1</span></td>
+                    <td><details class="home-plan-models"><summary>GPT-5.3-Codex、GPT-5.4 等 5 个模型</summary><div><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">GPT-5.4</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Grok Code Fast 1</span></div></details></td>
                     <td><span class="benefit">1000 积分</span></td>
                     <td></td>
                     <td><span class="note">• 存在周限额和 session 限额；不同模型有不同高级模型扣减倍率<br>• 已改为用 token 计费模式</span></td>
@@ -5324,7 +5087,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">Claude Opus 4.7</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Gemini 3.1 Pro</span></td>
+                    <td><details class="home-plan-models"><summary>GPT-5.5、GPT-5.4 等 6 个模型</summary><div><span class="model-tag">GPT-5.5</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">Claude Opus 4.7</span><span class="model-tag">Claude Sonnet 4.6</span><span class="model-tag">Gemini 3.1 Pro</span></div></details></td>
                     <td><span class="benefit">3900 积分</span></td>
                     <td></td>
                     <td><span class="note">• 存在周限额和 session 限额；不同模型有不同高级模型扣减倍率<br>• 已改为用 token 计费模式</span></td>
@@ -5346,7 +5109,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M2.7</span></td>
+                    <td><details class="home-plan-models"><summary>Auto、Qwen-3.8-Max 等 10 个模型</summary><div><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M2.7</span></div></details></td>
                     <td><span class="benefit">2,000 Credits/月</span><span class="benefit">覆盖 Qoder CN 全家桶</span></td>
                     <td></td>
                     <td><span class="note">Credits 不等于 Token；用量尚未确认。年付为月付总价的 9 折。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次付费 Pro 加赠 2000 Credits；续费、升级或过期重开加赠 1000 Credits。加赠仅限 Qwen，会员卡不适用；到账后 30 天有效。</span></td>
@@ -5368,7 +5131,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M2.7</span></td>
+                    <td><details class="home-plan-models"><summary>Auto、Qwen-3.8-Max 等 10 个模型</summary><div><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M2.7</span></div></details></td>
                     <td><span class="benefit">6,000 Credits/月</span><span class="benefit">覆盖 Qoder CN 全家桶</span></td>
                     <td></td>
                     <td><span class="note">Credits 不等于 Token；用量尚未确认。年付为月付总价的 9 折。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次付费 Pro+ 加赠 6000 Credits；续费、升级或过期重开加赠 1000 Credits。加赠仅限 Qwen，会员卡不适用；到账后 30 天有效。</span></td>
@@ -5390,7 +5153,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M2.7</span></td>
+                    <td><details class="home-plan-models"><summary>Auto、Qwen-3.8-Max 等 10 个模型</summary><div><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M2.7</span></div></details></td>
                     <td><span class="benefit">20,000 Credits/月</span><span class="benefit">覆盖 Qoder CN 全家桶</span></td>
                     <td></td>
                     <td><span class="note">Credits 不等于 Token；用量尚未确认。年付为月付总价的 9 折。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次开通 Ultra 不享等额加赠；续费、升级或过期重开加赠 1000 Credits。加赠仅限 Qwen，会员卡不适用；到账后 30 天有效。</span></td>
@@ -5412,7 +5175,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M3</span></td>
+                    <td><details class="home-plan-models"><summary>Auto、Qwen-3.8-Max 等 12 个模型</summary><div><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M3</span></div></details></td>
                     <td><span class="benefit">2,000 Credits/月</span><span class="benefit">Quest、Repo Wiki、知识卡片</span></td>
                     <td></td>
                     <td><span class="note">Credits 在当前订阅周期内有效，到期清零；耗尽后可使用受限基础模型或购买加量包。价格未含适用税费；Token 用量尚未确认。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次付费 Pro 加赠 2000 Credits；续费、升级或过期重开加赠 1000 Credits。加赠为通用 Credits；到账后 30 天有效。</span></td>
@@ -5434,7 +5197,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M3</span></td>
+                    <td><details class="home-plan-models"><summary>Auto、Qwen-3.8-Max 等 12 个模型</summary><div><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M3</span></div></details></td>
                     <td><span class="benefit">6,000 Credits/月</span><span class="benefit">Quest、Repo Wiki、知识卡片</span></td>
                     <td></td>
                     <td><span class="note">Credits 在当前订阅周期内有效，到期清零；耗尽后可使用受限基础模型或购买加量包。价格未含适用税费；Token 用量尚未确认。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次付费 Pro+ 加赠 6000 Credits；续费、升级或过期重开加赠 1000 Credits。加赠为通用 Credits；到账后 30 天有效。</span></td>
@@ -5456,7 +5219,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M3</span></td>
+                    <td><details class="home-plan-models"><summary>Auto、Qwen-3.8-Max 等 12 个模型</summary><div><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">MiniMax-M3</span></div></details></td>
                     <td><span class="benefit">20,000 Credits/月</span><span class="benefit">Quest、Repo Wiki、知识卡片</span></td>
                     <td></td>
                     <td><span class="note">Credits 在当前订阅周期内有效，到期清零；耗尽后可使用受限基础模型或购买加量包。价格未含适用税费；Token 用量尚未确认。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次开通 Ultra 不享等额加赠；续费、升级或过期重开加赠 1000 Credits。加赠为通用 Credits；到账后 30 天有效。</span></td>
@@ -5478,7 +5241,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Auto</span><span class="model-tag">Hy3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5v-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span></td>
+                    <td><details class="home-plan-models"><summary>Auto、Hy3 等 12 个模型</summary><div><span class="model-tag">Auto</span><span class="model-tag">Hy3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5v-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span></div></details></td>
                     <td><span class="benefit">2000 基础积分/月</span><span class="benefit">WorkBuddy / CodeBuddy 积分共享</span><span class="benefit">全模型可选、无限代码补全</span></td>
                     <td></td>
                     <td><span class="note">单次购买 ¥99/期。普通年付 ¥840/年。连续包月 ¥70/月；连续包年 ¥672/年。当前加赠后共 4000 积分/月，官方未公布个人版加赠活动起止日期；赠送积分到账后 1 个月有效。Token 用量尚未确认。</span></td>
@@ -5500,7 +5263,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Auto</span><span class="model-tag">Hy3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5v-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span></td>
+                    <td><details class="home-plan-models"><summary>Auto、Hy3 等 12 个模型</summary><div><span class="model-tag">Auto</span><span class="model-tag">Hy3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5v-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span></div></details></td>
                     <td><span class="benefit">4000 基础积分/月</span><span class="benefit">WorkBuddy / CodeBuddy 积分共享</span><span class="benefit">全模型可选、无限代码补全</span></td>
                     <td></td>
                     <td><span class="note">单次购买 ¥199/期。普通年付 ¥1680/年。连续包月 ¥140/月；连续包年 ¥1344/年。当前加赠后共 9000 积分/月，官方未公布个人版加赠活动起止日期；赠送积分到账后 1 个月有效。Token 用量尚未确认。</span></td>
@@ -5522,7 +5285,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Auto</span><span class="model-tag">Hy3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5v-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span></td>
+                    <td><details class="home-plan-models"><summary>Auto、Hy3 等 12 个模型</summary><div><span class="model-tag">Auto</span><span class="model-tag">Hy3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5v-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span></div></details></td>
                     <td><span class="benefit">20000 基础积分/月</span><span class="benefit">WorkBuddy / CodeBuddy 积分共享</span><span class="benefit">全模型可选、无限代码补全</span></td>
                     <td></td>
                     <td><span class="note">单次购买 ¥999/期。普通年付 ¥8400/年。连续包月 ¥700/月；连续包年 ¥6720/年。当前加赠后共 50000 积分/月，官方未公布个人版加赠活动起止日期；赠送积分到账后 1 个月有效。Token 用量尚未确认。</span></td>
@@ -5544,7 +5307,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Doubao-Seed-2.1-Pro</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Plus</span></td>
+                    <td><details class="home-plan-models"><summary>Doubao-Seed-2.1-Pro、Doubao-Seed-2.1-Turbo 等 15 个模型</summary><div><span class="model-tag">Doubao-Seed-2.1-Pro</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Plus</span></div></details></td>
                     <td><span class="benefit">2000 Work 专属积分/周期</span><span class="benefit">仅适用于 TraeWork</span><span class="benefit">云端任务最多 2 个并行</span></td>
                     <td></td>
                     <td><span class="note">单次购买 ¥49/期。套餐有效期为 31 个自然日。连续包月 ¥45/周期。付费新用户连续包月首期 ¥29.9，第二期恢复 ¥45；官方未公布该首期优惠活动起止日期。登录、签到等奖励不计入基础套餐积分。Token 用量尚未确认。</span></td>
@@ -5566,7 +5329,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Doubao-Seed-2.1-Pro</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Doubao-Seed-Evolving</span></td>
+                    <td><details class="home-plan-models"><summary>Doubao-Seed-2.1-Pro、Doubao-Seed-2.1-Turbo 等 18 个模型</summary><div><span class="model-tag">Doubao-Seed-2.1-Pro</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Doubao-Seed-Evolving</span></div></details></td>
                     <td><span class="benefit">4000 通用积分/周期</span><span class="benefit">适用于 TraeCode 与 TraeWork</span><span class="benefit">云端任务最多 10 个并行</span></td>
                     <td></td>
                     <td><span class="note">单次购买 ¥99/期。套餐有效期为 31 个自然日。连续包月 ¥89/周期。付费新用户连续包月首期 ¥69，第二期恢复 ¥89；官方未公布该首期优惠活动起止日期。登录、签到等奖励不计入基础套餐积分。Token 用量尚未确认。</span></td>
@@ -5588,7 +5351,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Doubao-Seed-2.1-Pro</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Doubao-Seed-Evolving</span></td>
+                    <td><details class="home-plan-models"><summary>Doubao-Seed-2.1-Pro、Doubao-Seed-2.1-Turbo 等 18 个模型</summary><div><span class="model-tag">Doubao-Seed-2.1-Pro</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Doubao-Seed-Evolving</span></div></details></td>
                     <td><span class="benefit">12000 通用积分/周期</span><span class="benefit">适用于 TraeCode 与 TraeWork</span><span class="benefit">云端任务最多 10 个并行</span></td>
                     <td></td>
                     <td><span class="note">单次购买 ¥239/期。套餐有效期为 31 个自然日。连续包月 ¥219/周期。登录、签到等奖励不计入基础套餐积分。Token 用量尚未确认。</span></td>
@@ -5610,7 +5373,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">Doubao-Seed-2.1-Pro</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Doubao-Seed-Evolving</span></td>
+                    <td><details class="home-plan-models"><summary>Doubao-Seed-2.1-Pro、Doubao-Seed-2.1-Turbo 等 18 个模型</summary><div><span class="model-tag">Doubao-Seed-2.1-Pro</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Doubao-Seed-Evolving</span></div></details></td>
                     <td><span class="benefit">40000 通用积分/周期</span><span class="benefit">适用于 TraeCode 与 TraeWork</span><span class="benefit">云端任务最多 20 个并行</span></td>
                     <td></td>
                     <td><span class="note">单次购买 ¥699/期。套餐有效期为 31 个自然日。连续包月 ¥629/周期。登录、签到等奖励不计入基础套餐积分。Token 用量尚未确认。</span></td>
@@ -5632,7 +5395,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.2</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Gemini-3-Flash-Preview</span></td>
+                    <td><details class="home-plan-models"><summary>GPT-5.4、GPT-5.2 等 8 个模型</summary><div><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.2</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Gemini-3-Flash-Preview</span></div></details></td>
                     <td><span class="benefit">$5 基础使用额度/月</span><span class="benefit">无限代码补全、TraeCode SOLO</span><span class="benefit">TraeWork 云端任务最多 2 个并行</span></td>
                     <td></td>
                     <td><span class="note">基础使用额度不是固定 Token 数。Token 用量尚未确认。</span></td>
@@ -5654,7 +5417,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.2</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Gemini-3-Flash-Preview</span></td>
+                    <td><details class="home-plan-models"><summary>GPT-5.4、GPT-5.2 等 8 个模型</summary><div><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.2</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Gemini-3-Flash-Preview</span></div></details></td>
                     <td><span class="benefit">$20 基础使用额度/月</span><span class="benefit">无限代码补全、TraeCode SOLO</span><span class="benefit">TraeWork 云端任务最多 10 个并行</span></td>
                     <td></td>
                     <td><span class="note">基础使用额度不是固定 Token 数。新用户限时可试用 7 天，之后 $10/月；官方未公布试用活动起止日期。Token 用量尚未确认。</span></td>
@@ -5676,7 +5439,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.2</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Gemini-3-Flash-Preview</span></td>
+                    <td><details class="home-plan-models"><summary>GPT-5.4、GPT-5.2 等 8 个模型</summary><div><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.2</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Gemini-3-Flash-Preview</span></div></details></td>
                     <td><span class="benefit">$90 基础使用额度/月</span><span class="benefit">无限代码补全、TraeCode SOLO</span><span class="benefit">TraeWork 云端任务最多 15 个并行</span></td>
                     <td></td>
                     <td><span class="note">基础使用额度不是固定 Token 数。Token 用量尚未确认。</span></td>
@@ -5698,7 +5461,7 @@
                     <td><span class="request-count">未公开 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">未公开 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.2</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Gemini-3-Flash-Preview</span></td>
+                    <td><details class="home-plan-models"><summary>GPT-5.4、GPT-5.2 等 8 个模型</summary><div><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.2</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">MiniMax-M3</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Gemini-3-Flash-Preview</span></div></details></td>
                     <td><span class="benefit">$400 基础使用额度/月</span><span class="benefit">无限代码补全、TraeCode SOLO</span><span class="benefit">TraeWork 云端任务最多 20 个并行</span></td>
                     <td></td>
                     <td><span class="note">基础使用额度不是固定 Token 数。可优先体验新模型。Token 用量尚未确认。</span></td>
@@ -5720,7 +5483,7 @@
                     <td><span class="request-count">6,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">45,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">90,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Qwen3.6-35B-A3B</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">DeepSeek-V3.2</span></td>
+                    <td><details class="home-plan-models"><summary>DeepSeek-V4-Pro-0813、DeepSeek-V4-Flash-0731 等 10 个模型</summary><div><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">Qwen3.6-35B-A3B</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">DeepSeek-V3.2</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 高效版已支持 GLM-5.2<br>• 讯飞实际可用量比较多，按调用量计数，明示调用量</span></td>
@@ -5940,7 +5703,7 @@
                     <td><span class="request-count">1,500 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">6,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">24,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash-2603</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">step-router-v1</span></td>
+                    <td><details class="home-plan-models"><summary>step-3.7-flash、step-3.5-flash-2603 等 4 个模型</summary><div><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash-2603</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">step-router-v1</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 当前主打 Step 自有模型，模型较弱<br>• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算<br>• 官方只有周限量无月限量，这里按照 1 月=4 周计算</span></td>
@@ -5962,7 +5725,7 @@
                     <td><span class="request-count">6,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">24,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">96,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash-2603</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">step-router-v1</span></td>
+                    <td><details class="home-plan-models"><summary>step-3.7-flash、step-3.5-flash-2603 等 4 个模型</summary><div><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash-2603</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">step-router-v1</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 当前主打 Step 自有模型，模型较弱<br>• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算<br>• 官方只有周限量无月限量，这里按照 1 月=4 周计算</span></td>
@@ -5984,7 +5747,7 @@
                     <td><span class="request-count">22,500 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">90,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">360,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash-2603</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">step-router-v1</span></td>
+                    <td><details class="home-plan-models"><summary>step-3.7-flash、step-3.5-flash-2603 等 4 个模型</summary><div><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash-2603</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">step-router-v1</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 当前主打 Step 自有模型，模型较弱<br>• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算<br>• 官方只有周限量无月限量，这里按照 1 月=4 周计算</span></td>
@@ -6006,7 +5769,7 @@
                     <td><span class="request-count">75,000 <span class="unit">/ 5小时</span></span></td>
                     <td><span class="request-count">300,000 <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">1,200,000 <span class="unit">/ 月</span></span></td>
-                    <td><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash-2603</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">step-router-v1</span></td>
+                    <td><details class="home-plan-models"><summary>step-3.7-flash、step-3.5-flash-2603 等 4 个模型</summary><div><span class="model-tag">step-3.7-flash</span><span class="model-tag">step-3.5-flash-2603</span><span class="model-tag">step-3.5-flash</span><span class="model-tag">step-router-v1</span></div></details></td>
                     <td></td>
                     <td></td>
                     <td><span class="note">• 当前主打 Step 自有模型，模型较弱<br>• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算<br>• 官方只有周限量无月限量，这里按照 1 月=4 周计算</span></td>
@@ -6163,6 +5926,259 @@
             <div id="view-monitor" role="tabpanel" data-main-view-panel="monitor" hidden></div>
         </div>
         </div>
+
+        <section class="home-knowledge" id="homeKnowledge" aria-labelledby="knowledgeHeading">
+            <div class="home-section-heading"><div><p class="home-eyebrow">READ & UNDERSTAND</p><h2 id="knowledgeHeading">多了解一点，选择更有把握</h2><p>平台使用说明、模型评测和市场变化。</p></div><a href="/articles/">全部文章 ↗</a></div>
+        <!-- PLATFORM_GUIDES_START -->
+        <nav class="platform-guide-entry" aria-label="平台介绍"><span>平台介绍</span><a href="/platforms/command-code/">Command Code →</a><a href="/platforms/minimax/">MiniMax Token Plan →</a><a href="/platforms/opencode/">OpenCode Go →</a><a href="/platforms/zhipu/">智谱 GLM Coding Plan →</a><a href="/platforms/">全部介绍</a></nav>
+        <!-- PLATFORM_GUIDES_END -->
+
+        <div class="hero-summary hero-summary--lede">
+            <!-- ARTICLES_MODEL_FEATURE_START -->
+            <article class="hero-summary-card hero-summary-card--reading">
+                <div class="hero-summary-lede-inner">
+                    <div class="hero-summary-lede-media">
+                        <a href="articles/model_comparisons/20260907/index.html" aria-label="阅读全文：2026年9月主流大模型能力对比：Fable 5.1 综合领先，GPT-6 Astra 编码突出，GLM Flash 与 Luna 如何选">
+                            <img src="articles/model_comparisons/20260907/assets/aa-intelligence.svg" alt="AA Intelligence Index v4.2，2026-09-07，本期18款有分数模型，按公开页面整数值重绘" loading="lazy" decoding="async" />
+                        </a>
+                    </div>
+                    <div class="hero-summary-lede-copy">
+                        <div class="hero-summary-kicker">Benchmark</div>
+                        <h2 class="hero-summary-title">2026年9月主流大模型能力对比：Fable 5.1 综合领先，GPT-6 Astra 编码突出，GLM Flash 与 Luna 如何选</h2>
+                        <p class="hero-summary-body">过去一个月，Fable 5.1、GPT-6 Astra、GLM-5.3 Flash 等模型陆续进入选型名单。综合能力、网页开发和仓库工程的榜首并不完全相同，日常大量调用时，还要考虑完成任务的成本。</p>
+                        <a class="hero-summary-readmore" href="articles/model_comparisons/20260907/index.html">查看模型基准 →</a>
+                    </div>
+                </div>
+            </article>
+            <!-- ARTICLES_MODEL_FEATURE_END -->
+            <!-- ARTICLES_PLAN_FEATURE_START -->
+            <article class="hero-summary-card hero-summary-card--reading hero-summary-card--guide">
+                <div>
+                    <div class="hero-summary-kicker">Market Scan</div>
+                    <h2 class="hero-summary-title">2026年8月24日 AI Coding Plan 与 API 平台对比：智谱 GLM-5.3、MiniMax、DeepSeek 视觉版和 OpenCode 调整后怎么选</h2>
+                    <p class="hero-summary-body">8 月下旬这轮变化，不只是某个平台又加了一个模型。智谱把 GLM-5.3 纳入新套餐，DeepSeek 同时调整了峰谷价格并推出视觉实验版，OpenCode 的模型池和套餐展示也发生变化。</p>
+                    <p class="hero-summary-guide-note">先建立全局判断，再用下方平台目录与套餐对比把候选压缩到可执行清单。</p>
+                </div>
+                <a class="hero-summary-readmore" href="articles/plan_comparisons/20260824/index.html">查看对比详情 →</a>
+            </article>
+            <!-- ARTICLES_PLAN_FEATURE_END -->
+            <article class="hero-summary-card hero-summary-card--reading hero-summary-card--news">
+                <div class="hero-summary-kicker">News</div>
+                <h2 class="hero-summary-title">近期快讯</h2>
+                <ul class="hero-summary-news-list">
+                    <!-- ARTICLES_NEWS_LIST_START -->
+                    <li><a href="articles/news/20260818_glm_5_3_aa/index.html" title="GLM-5.3 在 AA 14 模型对比中综合第 5，Agentic 第 2：双榜成绩出炉">GLM-5.3 在 AA 14 模型对比中综合第 5，Agentic 第 2：双榜成绩出炉</a></li>
+                    <li><a href="articles/news/20260814_glm_5_3/index.html" title="GLM-5.3 发布：专注编程，极致后训练，用一半尺寸超越DeepSeek V4 Pro 0813 正式版">GLM-5.3 发布：专注编程，极致后训练，用一半尺寸超越DeepSeek V4 Pro 0813 正式版</a></li>
+                    <li><a href="articles/news/20260813_deepseek_v4_pro_0813/index.html" title="DeepSeek V4 Pro 正式版全平台上线：Agent 与 Coding 能力接近顶级模型，8 月 17 日起调价">DeepSeek V4 Pro 正式版全平台上线：Agent 与 Coding 能力接近顶级模型，8 月 17 日起调价</a></li>
+                    <!-- ARTICLES_NEWS_LIST_END -->
+                </ul>
+                <a class="hero-summary-readmore" href="articles/index.html">全部文章 →</a>
+            </article>
+            <!-- <article class="hero-summary-card hero-summary-card--accent">
+                <div class="hero-summary-kicker">How To Choose</div>
+                <h2 class="hero-summary-title">先看推荐，再用筛选器缩小范围</h2>
+                <p class="hero-summary-body">这页最适合做第一轮排除。先看平台推荐和趋势判断，再按价格、请求数、Token 上限和模型把候选压到 2 到 3 个。</p>
+            </article>
+            <article class="hero-summary-card">
+                <div class="hero-summary-kicker">What Matters</div>
+                <h2 class="hero-summary-title">别只盯月费，额度口径更关键</h2>
+                <p class="hero-summary-body">不同平台会把价值藏在请求数、Token 上限、模型独占和附加权益里。真正影响体感的是你常用工作流能跑多久。</p>
+            </article>
+            <article class="hero-summary-card hero-summary-card--warm">
+                <div class="hero-summary-kicker">Market Signal</div>
+                <h2 class="hero-summary-title">Coding Plan 正在收缩，替代方案要提前看</h2>
+                <p class="hero-summary-body">如果目标平台已经开始转向 Token Plan，就要顺手评估它的长期成本和补位平台，避免后面只能被动切换。</p>
+            </article> -->
+        </div>
+
+        </section>
+        <details class="home-editorial"><summary><span><strong>编辑推荐与专题参考</strong><small>按主题整理，供进一步了解；不随上方条件变化</small></span></summary>
+        <!-- EDITORIAL_RECOMMENDATIONS_START --><div class="recommendation-groups" id="recommendationGroups">
+            <section class="recommendation-group">
+                <header class="recommendation-group-header">
+                    <h3 class="recommendation-group-title">综合推荐</h3>
+                    <p class="recommendation-group-subtitle">各维度综合评估，最值得入手的几家。智谱和Kimi暂时不开放了，暂时不推荐了</p>
+                </header>
+                <div class="recommendations">
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqminimax" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">MiniMax</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>性价比依然是所有平台最高</li><li>支持MiniMax-M3模型，支持多模态</li><li>适合自动化、Agent、酒馆、高强度Coding等高强度场景</li>
+                        </ul>
+                    </div>
+
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqzai" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">智谱国际版</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>无需抢购</li><li>支持GLM-5.2，国内最强的代码模型之一</li><li>用量与国内版完全一致，价格大约为国内版两倍左右。使用<a href="https://api.dreamfree.space/c/s/cpyqzai" target="_blank" rel="noopener noreferrer">邀请链接</a>可享额外9折。有成品号出售，加入<a href="https://api.dreamfree.space/c/s/cpfeishulink" target="_blank" rel="noopener noreferrer">飞书群</a>查看群公告了解详情。</li>
+                        </ul>
+                    </div>
+
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqopencode" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">OpenCode</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>支持 DeepSeek-V4.1-Flash、Kimi-K3、GLM-5.3、GPT-5.6-Luna 等 27 个模型</li><li>首月半价$5。但只有go这一种套餐，不够重度使用</li><li>无需抢购，可支付宝付款</li>
+                        </ul>
+                    </div>
+
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">字节·方舟 Coding Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>已解除限购，开放购买，无需抢购</li><li>支持GLM-5.3、DeepSeek-V4，MiniMax-M3，Kimi-K3</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="recommendation-group">
+                <header class="recommendation-group-header">
+                    <h3 class="recommendation-group-title">包含 GLM-5.3</h3>
+                </header>
+                <div class="recommendations">
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqzhipu" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">智谱AI</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>在售新套餐支持 GLM-5.3，国内领先的代码模型之一</li><li>新套餐无需抢购</li><li>官方服务，模型与套餐信息透明</li>
+                        </ul>
+                    </div>
+
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqopencode" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">OpenCode</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>支持 GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash、DeepSeek-V4-Pro 等最新模型</li><li>Go 套餐首月半价 $5，无需抢购</li><li>可支付宝付款，调用抵扣透明</li>
+                        </ul>
+                    </div>
+
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">字节·方舟 Coding Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>Coding Plan 支持 GLM-5.3</li><li>同时支持 DeepSeek-V4、MiniMax-M3、Kimi-K3 等模型</li><li>已解除限购，开放购买</li>
+                        </ul>
+                    </div>
+
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqgongji" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">共绩算力</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>按量调用，支持 GLM-5.3、DeepSeek-V4-Pro、Kimi-K3</li><li>平台不拥挤，稳定性高</li><li>通过<strong><a href="https://api.dreamfree.space/c/s/cpyqgongji" target="_blank" rel="noopener noreferrer">邀请链接</a></strong>进入注册，可以锁定专属8折折扣与额外￥20额度</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="recommendation-group">
+                <header class="recommendation-group-header">
+                    <h3 class="recommendation-group-title">包含 DeepSeek 最新模型</h3>
+                </header>
+                <div class="recommendations">
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://platform.deepseek.com/" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">DeepSeek</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>官方 DeepSeek-V4.1-Flash，推理、代码与多模态能力处于国产第一梯队</li><li>空闲时段 ¥1/¥0.02/¥4 每百万 tokens，按量标价透明，适合不想抢套餐的用户</li><li>高峰时段价格为空闲的两倍，错峰使用成本优势更明显</li>
+                        </ul>
+                    </div>
+
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqopencode" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">OpenCode</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>支持 DeepSeek-V4.1-Flash（限时 4 倍额度）、DeepSeek-V4-Pro、Kimi-K3 等最新模型</li><li>首月半价$5。但只有go这一种套餐，够尝鲜，不够重度使用</li><li>无需抢购，可支付宝付款</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="recommendation-group">
+                <header class="recommendation-group-header">
+                    <h3 class="recommendation-group-title">包含 Kimi-3</h3>
+                    <p class="recommendation-group-subtitle">Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。官方需要抢购</p>
+                </header>
+                <div class="recommendations">
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqkimi" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">Kimi</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>官方原生平台，模型体验最稳定，老会员推荐使用。需要抢购，目前无法新购买了</li><li>发布 Kimi-K3 之后，会员停售了，之后应该会启用新的Coding套餐</li>
+                        </ul>
+                    </div>
+
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqopencode" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">OpenCode</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>支持Kimi-K3、GLM-5.2、DeepSeek-V4-Pro等最新模型</li><li>首月半价$5。但只有go这一种套餐，够尝鲜，不够重度使用</li><li>无需抢购，可支付宝付款</li>
+                        </ul>
+                    </div>
+
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqgongji" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">共绩算力</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>按量调用，支持 Kimi-K3、GLM-5.2、DeepSeek-V4-Pro</li><li>平台不拥挤，稳定性高</li><li>通过<strong><a href="https://api.dreamfree.space/c/s/cpyqgongji" target="_blank" rel="noopener noreferrer">邀请链接</a></strong>进入注册，可以锁定专属8折折扣与额外￥20额度</li>
+                        </ul>
+                    </div>
+
+                    <div class="recommendation-card">
+                        <div class="card-watermark">www.codingplan.fyi</div>
+                        <div class="recommendation-header">
+                            <a class="recommendation-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhout" target="_blank" rel="noopener noreferrer"><span class="recommendation-name">字节·方舟 Agent Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="recommendation-rating">⭐️⭐️⭐️⭐️⭐️</span>
+                        </div>
+                        <ul class="recommendation-reasons">
+                            <li>Agent Plan 全档位支持 Kimi-K3</li><li>同时支持 GLM-5.2、DeepSeek-V4-Pro/Flash、MiniMax-M3，是国内模型最全的全家桶平台。</li><li>现货开放购买。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section></div>
+        <!-- EDITORIAL_RECOMMENDATIONS_END -->
+        </details>
 
         <!-- 更新日志：由 config.json 运行时渲染 -->
         <div class="updates-section" id="updatesSection">
@@ -6364,10 +6380,17 @@
 
         <!-- 账号出售区域：内容完全由 JS 根据 config.json 渲染；accounts 为空时整块隐藏 -->
         <div class="account-sale-section surface-panel" id="accountSaleSection" style="display: none;"></div>
+        </main>
+        <footer class="home-footer"><div><a class="home-brand" href="/">Coding Plan<span class="home-brand-period">.</span></a><p>让 AI 编程方案更容易选。</p></div><div class="home-footer-links"><a href="/platforms/">平台中心</a><a href="/articles/">文章与评测</a><a href="https://github.com/wmpeng/codingplan/issues" class="github-link" id="headerEntryLink" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+                        <path d="M12 2C6.5 2 2 6.58 2 12.2c0 4.5 2.9 8.32 6.9 9.67.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.8.62-3.39-1.38-3.39-1.38-.45-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.93.86.09-.67.35-1.12.64-1.38-2.23-.26-4.58-1.14-4.58-5.05 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05A9.36 9.36 0 0 1 12 6.84c.85 0 1.7.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.92-2.35 4.79-4.6 5.04.36.32.68.95.68 1.92 0 1.39-.01 2.5-.01 2.84 0 .27.18.59.69.49A10.24 10.24 0 0 0 22 12.2C22 6.58 17.5 2 12 2z"></path>
+                    </svg>
+                    <span id="headerEntryText">Github 反馈</span>
+                </a></div><p class="home-footer-note">价格、额度与服务规则以平台官方信息为准。参考用量不等于实际使用保证。</p></footer>
     </div>
 
     <div class="feedback-float" id="feedbackFloat">
-        <button type="button" class="feedback-float-trigger" id="feedbackFloatTrigger" aria-expanded="false" aria-controls="feedbackFloatPanel">
+        <button type="button" class="feedback-float-trigger" aria-label="联系与反馈" id="feedbackFloatTrigger" aria-expanded="false" aria-controls="feedbackFloatPanel">
             <span class="feedback-float-trigger-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
@@ -6404,15 +6427,16 @@
     <script src="scripts/entity-data.js?v=260921a"></script>
     <script src="scripts/filter-state.js?v=260921a"></script>
     <script src="scripts/platform-pages.js?v=b5b0ec3644"></script>
-    <script src="scripts/platform-catalog.js?v=260915a"></script>
+    <script src="scripts/platform-catalog.js?v=260922a"></script>
     <script src="scripts/platform-detail.js?v=260915a"></script>
     <script src="scripts/shared.js?v=260918a"></script>
     <script src="scripts/platform-comparison.js?v=260918a"></script>
-    <script src="scripts/main-views.js?v=260915a"></script>
+    <script src="scripts/main-views.js?v=260922a"></script>
     <script src="scripts/plan-composite-price-chart.js?v=260904a"></script>
-    <script src="scripts/homepage.js?v=260921a"></script>
+    <script src="scripts/homepage.js?v=260922a"></script>
     <script src="scripts/purchase-guide.js?v=260921a"></script>
-    <script src="scripts/homepage-filters.js?v=260921a"></script>
-    <script src="scripts/purchase-guide-ui.js?v=260921a"></script>
+    <script src="scripts/homepage-filters.js?v=260922a"></script>
+    <script src="scripts/purchase-guide-ui.js?v=260922a"></script>
+    <script src="scripts/homepage-ui.js?v=260922a"></script>
 </body>
 </html>
