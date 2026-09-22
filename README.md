@@ -198,8 +198,8 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | WorkBuddy | 开放购买 | ⭐️⭐️⭐️ | - | 腾讯 AI 办公工作台，与 CodeBuddy 同账号共享订阅积分。 |
 | TRAE 国内版 | 开放购买 | ⭐️⭐️⭐️ | - | 字节旗下 AI 编程与办公工具，采用积分制个人订阅。 |
 | TRAE 国际版 | 开放购买 | ⭐️⭐️⭐️ | - | 提供 TraeCode 与 TraeWork，个人订阅采用美元计价。 |
-| 京东云 | 定时放量 | ⭐️⭐️ | - | 已经很久不更新，模型较差 |
 | GitHub | 开放购买 | ⭐️⭐️⭐️ | - | GitHub 官方会员，支持多模型，但性价比低，不推荐。 |
+| 京东云 | 定时放量 | ⭐️⭐️ | - | 已经很久不更新，模型较差 |
 | 讯飞·星火 | 开放购买 | ⭐️⭐️⭐️ | - | 曾经的高性价比平台，现已陨落。 仅剩高效版（199元）和速通版（699元）套餐，199元套餐限购且高峰期拥挤，699元套餐性价比低。 |
 | 联通云 | 开放购买 | ⭐️⭐️ | - | Coding Plan已经下线。仅剩TokenPlan，模型差。 |
 | 移动云 | 开放购买 | ⭐️⭐️ | - | - |
@@ -244,8 +244,8 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | WorkBuddy | 3 | ¥70–¥700/月 | DeepSeek-V4-Flash-0731、Kimi-K3、Auto、DeepSeek-V4-Pro-0813、等 12 个 |
 | TRAE 国内版 | 4 | ¥45–¥629/月 | DeepSeek-V4-Flash-0731、GLM-5.3、GLM-5.3-Flash、Kimi-K3、等 18 个 |
 | TRAE 国际版 | 4 | $3–$100/月 | Doubao-Seed-2.1-Turbo、Gemini 3.1 Pro、Gemini-3-Flash-Preview、GPT-5.2、等 8 个 |
-| 京东云 | 2 | ¥40–¥200/月 | DeepSeek-V3.2、GLM-5、Kimi-K2.5、MiniMax-M2.5、等 5 个 |
 | GitHub | 3 | $0–$39/月 | Claude Haiku 4.5、Claude Opus 4.7、Claude Sonnet 4.6、Gemini 3.1 Pro、等 12 个 |
+| 京东云 | 2 | ¥40–¥200/月 | DeepSeek-V3.2、GLM-5、Kimi-K2.5、MiniMax-M2.5、等 5 个 |
 | 讯飞·星火 | 2 | ¥199–¥699/月 | DeepSeek-V4-Flash-0731、DeepSeek-V3.2、DeepSeek-V4-Pro-0813、GLM-5、等 11 个 |
 | 联通云 | 6 | ¥15–¥1,398/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、MiniMax-M2.5 |
 | 移动云 | 2 | ¥40–¥200/月 | MiniMax-M2.5 |
@@ -279,6 +279,7 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 ### 2026.9.22
 
 - 小米 MiMo 上线 V2.6 系列：Token Plan 四档套餐新增 MiMo-V2.6-Pro 与 MiMo-V2.6-Flash，Credits 折算与 V2.5 价格一致，套餐价格与月度额度均未变；V2.5-Pro / V2.5 将于 10.21 下线，全系支持多模态输入
+- 京东云套餐移动至 GitHub 之后展示
 
 ### 2026.9.22
 

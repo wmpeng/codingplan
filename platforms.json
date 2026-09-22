@@ -634,28 +634,6 @@
       }
     },
     {
-      "slug": "jd-cloud",
-      "name": "京东云",
-      "rating": 2,
-      "summary": "已经很久不更新，模型较差",
-      "dimensions": {
-        "value": {
-          "score": 3,
-          "reason": "有首月优惠，但是用量证据不足，不予评价。"
-        },
-        "models": {
-          "score": 2,
-          "reason": "模型更新明显较慢，应该基本没更新过，覆盖 Kimi、GLM、MiniMax、DeepSeek、Qwen 等"
-        },
-        "stability": {
-          "score": 4,
-          "reason": "京东云官方运营，证据不足，但推测稳定性尚可。"
-        }
-      },
-      "tags": [],
-      "platformStatus": "limited"
-    },
-    {
       "slug": "github",
       "name": "GitHub",
       "rating": 3,
@@ -676,6 +654,28 @@
       },
       "tags": [],
       "platformStatus": "open"
+    },
+    {
+      "slug": "jd-cloud",
+      "name": "京东云",
+      "rating": 2,
+      "summary": "已经很久不更新，模型较差",
+      "dimensions": {
+        "value": {
+          "score": 3,
+          "reason": "有首月优惠，但是用量证据不足，不予评价。"
+        },
+        "models": {
+          "score": 2,
+          "reason": "模型更新明显较慢，应该基本没更新过，覆盖 Kimi、GLM、MiniMax、DeepSeek、Qwen 等"
+        },
+        "stability": {
+          "score": 4,
+          "reason": "京东云官方运营，证据不足，但推测稳定性尚可。"
+        }
+      },
+      "tags": [],
+      "platformStatus": "limited"
     },
     {
       "slug": "iflytek",
