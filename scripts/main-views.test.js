@@ -14,6 +14,22 @@ test('normalizeMainView', () => {
   assert.equal(normalizeMainView(''), 'platforms');
 });
 
+test('normalizeMainView falls back when monitorView feature disabled', () => {
+  const prev = globalThis.__CODINGPLAN_FEATURES;
+  try {
+    globalThis.__CODINGPLAN_FEATURES = { monitorView: false };
+    assert.equal(normalizeMainView('monitor'), 'platforms');
+    assert.equal(readMainViewFromSearch('?view=monitor'), 'platforms');
+    assert.equal(normalizeMainView('usage'), 'usage');
+
+    globalThis.__CODINGPLAN_FEATURES = { monitorView: true };
+    assert.equal(normalizeMainView('monitor'), 'monitor');
+  } finally {
+    if (prev === undefined) delete globalThis.__CODINGPLAN_FEATURES;
+    else globalThis.__CODINGPLAN_FEATURES = prev;
+  }
+});
+
 test('isPlainPrimaryClick', () => {
   assert.equal(isPlainPrimaryClick({ button: 0 }), true);
   assert.equal(isPlainPrimaryClick({ button: 1 }), false);

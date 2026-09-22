@@ -40,6 +40,12 @@
     return typeof fn === 'function' ? fn(text) : String(text == null ? '' : text);
   }
 
+  // 功能开关（index.html 内联定义）：monitorView=false 时不渲染监控相关区块、不请求 board 接口
+  function isMonitorEnabled() {
+    const g = typeof globalThis !== 'undefined' ? globalThis : null;
+    return !(g && g.__CODINGPLAN_FEATURES && g.__CODINGPLAN_FEATURES.monitorView === false);
+  }
+
   function dimensionMeta() {
     return PlatformCatalog.PLATFORM_DIMENSION_META || [
       { key: 'value', label: '性价比' },
@@ -293,6 +299,7 @@
   }
 
   async function ensureBoard(apiBase) {
+    if (!isMonitorEnabled()) return null;
     if (boardCache) return boardCache;
     if (boardCache === false) return null;
     if (boardPromise) return boardPromise;

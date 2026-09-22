@@ -15,8 +15,21 @@
     monitor: '可用性监控'
   };
 
+  // 功能开关（index.html 内联定义）：monitorView=false 时 monitor 视图回落到 platforms
+  function disabledMainViewKeys() {
+    const g = typeof globalThis !== 'undefined' ? globalThis : null;
+    const features = g && g.__CODINGPLAN_FEATURES;
+    if (features && features.monitorView === false) {
+      return ['monitor'];
+    }
+    return [];
+  }
+
   function normalizeMainView(raw) {
     const key = String(raw || '').trim();
+    if (MAIN_VIEW_KEYS.includes(key) && disabledMainViewKeys().includes(key)) {
+      return 'platforms';
+    }
     return MAIN_VIEW_KEYS.includes(key) ? key : 'platforms';
   }
 

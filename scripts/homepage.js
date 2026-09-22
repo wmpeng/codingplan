@@ -2389,6 +2389,11 @@
             }
         }
 
+        // 功能开关（index.html 内联定义）：monitorView=false 时不挂载监控视图
+        function isMonitorViewEnabled() {
+            return !(window.__CODINGPLAN_FEATURES && window.__CODINGPLAN_FEATURES.monitorView === false);
+        }
+
         async function onMainViewChange(view) {
             if (typeof PlatformDetail !== 'undefined' && PlatformDetail.isOpen && PlatformDetail.isOpen()) {
                 PlatformDetail.close();
@@ -2421,6 +2426,7 @@
                 });
             }
             if (view === 'monitor') {
+                if (!isMonitorViewEnabled()) return;
                 try {
                     await ensureMonitorViewMounted();
                 } catch (err) {
@@ -2472,7 +2478,7 @@
                 if (!url.searchParams.has('view') && !url.searchParams.has('platform')) return;
                 const view = url.searchParams.has('view')
                     ? MainViews.normalizeMainView(url.searchParams.get('view'))
-                    : 'monitor';
+                    : (isMonitorViewEnabled() ? 'monitor' : 'platforms');
                 e.preventDefault();
                 const next = new URL(location.href);
                 if (view === 'platforms') next.searchParams.delete('view');
