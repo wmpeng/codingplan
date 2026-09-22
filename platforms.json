@@ -387,16 +387,16 @@
       "slug": "xiaomi-mimo",
       "name": "小米·MiMo",
       "rating": 4,
-      "summary": "定价、模型定位、模型能力都和DeepSeek相似。价格比DeepSeek略低一些，能力也略低一点。",
-      "detail": "各方面可以参考 DeepSeek，定价、模型定位、模型能力都和DeepSeek相似。有TokenPlan套餐，比直接调用模型略便宜一些，模型能力比DeepSeek略低一点。",
+      "summary": "定价与 DeepSeek 相近，价格略低。MiMo-V2.6-Pro 榜单表现突出，全系支持多模态输入。",
+      "detail": "定价、模型定位与 DeepSeek 相近，价格略低。MiMo-V2.6-Pro 在 Artificial Analysis 榜单中位列开源模型第一，全系支持图像、音视频等多模态输入。TokenPlan 套餐比按量调用更便宜，夜间另有 0.8 倍消耗优惠。",
       "dimensions": {
         "value": {
           "score": 5,
           "reason": "购买TokenPlan套餐，价格比DeepSeek直接调用的价格还要便宜一些，性价比高。"
         },
         "models": {
-          "score": 4,
-          "reason": "Mimo-V2.5-Pro/Mimo-V2.5对比DeepSeek-V4-Pro/Flash，Coding能力基本相当，Agent能力略低一些。"
+          "score": 5,
+          "reason": "MiMo-V2.6-Pro 榜单分 46，开源模型第一，超过 DeepSeek、Kimi、Qwen 等开源系；全系支持多模态输入，Coding 能力强。"
         },
         "stability": {
           "score": 5,

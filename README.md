@@ -2,9 +2,9 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.9.22 | Qoder / WorkBuddy / TRAE 评定为三星
+> 更新日期 2026.9.22 | 小米 MiMo 上线 V2.6 系列模型
 
-当前展示 **37 个平台、99 个在售订阅套餐、2 个按量 API、118 个模型和 1090 条套餐模型关系**。
+当前展示 **37 个平台、99 个在售订阅套餐、2 个按量 API、120 个模型和 1085 条套餐模型关系**。
 
 [在线平台对比](https://www.codingplan.fyi) · [额度/价格对比](https://www.codingplan.fyi/?view=usage) · [套餐对比](https://www.codingplan.fyi/?view=plans)
 
@@ -66,23 +66,22 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 | 口径 |
 |---|---|---|---:|---:|---:|---:|---|
-| [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | [谷] | $1/月 | 143.8M | 287.61M | 479.3M | ¥0.0143/M | 计算 |
-| [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | [谷] | $10/月 | 575.22M | 1,438.04M | 2,876.1M | ¥0.0238/M | 计算 |
-| [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | [峰] | $1/月 | 71.9M | 143.8M | 239.7M | ¥0.0286/M | 计算 |
-| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | [谷] | $10/月 | 451.19M | 1,127.97M | 2,255.9M | ¥0.0299/M | 计算 |
-| [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | [谷] | $20/月 | 671.08M | 1,677.71M | 3,355.4M | ¥0.0408/M | 计算 |
-| [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | [峰] | $10/月 | 287.61M | 719.02M | 1,438M | ¥0.0476/M | 计算 |
-| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | [峰] | $10/月 | 225.59M | 563.98M | 1,128M | ¥0.0605/M | 计算 |
+| [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | - | $1/月 | 143.8M | 287.61M | 479.3M | ¥0.0143/M | 计算 |
+| [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | - | $10/月 | 575.22M | 1,438.04M | 2,876.1M | ¥0.0238/M | 计算 |
+| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | - | $10/月 | 451.19M | 1,127.97M | 2,255.9M | ¥0.0299/M | 计算 |
+| [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | - | $20/月 | 671.08M | 1,677.71M | 3,355.4M | ¥0.0408/M | 计算 |
 | [字节·方舟 Coding Plan · Lite](https://api.dreamfree.space/c/s/cpyqfangzhou) | - | ¥40/月 | 40M | 300M | 600M | ¥0.0667/M | 实测 |
+| [字节·方舟 Coding Plan · Pro](https://api.dreamfree.space/c/s/cpyqfangzhou) | - | ¥200/月 | 200M | 1,500M | 3,000M | ¥0.0667/M | 倍率换算 |
+| [字节·方舟 Agent Plan · Small](https://api.dreamfree.space/c/s/cpyqfangzhout) | - | ¥40/月 | 40M | 140M | 400M | ¥0.1/M | 计算 |
+| [字节·方舟 Agent Plan · Medium](https://api.dreamfree.space/c/s/cpyqfangzhout) | - | ¥200/月 | 200M | 700M | 2,000M | ¥0.1/M | 计算 |
 
-还有 18 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/?view=usage)。
+还有 14 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/?view=usage)。
 
 ### DeepSeek-V4.1-Flash
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 | 口径 |
 |---|---|---|---:|---:|---:|---:|---|
-| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | [谷] | $10/月 | 902.37M | 2,255.94M | 4,511.9M | ¥0.015/M | 计算 |
-| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | [峰] | $10/月 | 451.19M | 1,127.97M | 2,255.9M | ¥0.0299/M | 计算 |
+| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | - | $10/月 | 902.37M | 2,255.94M | 4,511.9M | ¥0.015/M | 计算 |
 | [DeepSeek · 按量 API](https://platform.deepseek.com/) | [谷] | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M | 计算 |
 | [DeepSeek · 按量 API](https://platform.deepseek.com/) | [峰] | 入¥2 / 缓存¥0.04 / 出¥8 | - | - | - | ¥0.1773/M | 计算 |
 
@@ -189,7 +188,7 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | Ollama | 开放购买 | ⭐️⭐️⭐️⭐️ | 外币支付 | Ollama 官方推出的云端模型会员，支持模型全，性价比很高。但需要外币信用卡或者Paypal，不能直接支付宝/微信付款。 |
 | 阿里·百炼 Token Plan | 开放购买 | ⭐️⭐️⭐️⭐️ | - | 开放购买，支持 Qwen-3.8-Max 等模型，夜间抵扣成本更低。 |
 | 阿里·百炼 Coding Plan | 定时放量 | ⭐️⭐️⭐️⭐️ | - | Pro 套餐性价比高，但供应有限。 |
-| 小米·MiMo | 开放购买 | ⭐️⭐️⭐️⭐️ | - | 定价、模型定位、模型能力都和DeepSeek相似。价格比DeepSeek略低一些，能力也略低一点。 |
+| 小米·MiMo | 开放购买 | ⭐️⭐️⭐️⭐️ | - | 定价与 DeepSeek 相近，价格略低。MiMo-V2.6-Pro 榜单表现突出，全系支持多模态输入。 |
 | Command Code | 开放购买 | ⭐️⭐️⭐️⭐️⭐️ | 性价比高 / 模型强 / 无需抢购 | $1/月起，按模型实际 Token 价格扣减美元 Credits，模型覆盖广且额度规则透明。 |
 | 百度·千帆 | 开放购买 | ⭐️⭐️⭐️ | - | Coding Plan 下线，Token Plan 个人版新上线，首月半价活动中。搬家入手勉强还行，但是有其他更好的选择 |
 | 华为云 | 定时放量 | ⭐️⭐️⭐️ | - | - |
@@ -235,14 +234,14 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | Ollama | 2 | $20–$100/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、Gemini-3-Flash-Preview、GLM-5.1、等 9 个 |
 | 阿里·百炼 Token Plan | 3 | ¥198–¥1,398/月 | DeepSeek-V4-Flash-0731、DeepSeek-V3.2、DeepSeek-V4-Pro-0813、DeepSeek-V4-Pro-Preview、等 15 个 |
 | 阿里·百炼 Coding Plan | 1 | ¥200/月 | GLM-4.7、GLM-5、Kimi-K2.5、MiniMax-M2.5、等 10 个 |
-| 小米·MiMo | 4 | ¥39–¥659/月 | MiMo-V2-Omni、MiMo-V2-Pro、MiMo-V2.5、MiMo-V2.5-Pro、等 5 个 |
+| 小米·MiMo | 4 | ¥39–¥659/月 | MiMo-V2-Omni、MiMo-V2-Pro、MiMo-V2.5、MiMo-V2.5-Pro、等 7 个 |
 | Command Code | 3 | $1–$20/月 | DeepSeek-V4-Flash-0731、GLM-5.3、GLM-5.3-Flash、GPT-5.6-Luna、等 59 个 |
 | 百度·千帆 | 4 | ¥9.9–¥600/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、ERNIE-5.1、GLM-5.1、等 6 个 |
 | 华为云 | 4 | ¥59–¥799/月 | DeepSeek-V4-Flash-0731、GLM-5、GLM-5.1、Kimi-K2.6 |
 | 腾讯云 | 4 | ¥39–¥599/月 | GLM-5.1、HY-2.0、Kimi-K2.5、MiniMax-M2.7 |
 | Qoder 国内版 | 3 | ¥59–¥559/月 | DeepSeek-V4-Flash-0731、Auto、DeepSeek-V4-Pro-0813、GLM-5.2、等 10 个 |
 | Qoder 国际版 | 3 | $20–$200/月 | DeepSeek-V4-Flash-0731、GLM-5.3、GLM-5.3-Flash、Kimi-K3、等 12 个 |
-| WorkBuddy | 3 | ¥70–¥700/月 | DeepSeek-V4.1-Flash、Kimi-K3、Auto、DeepSeek-V4-Pro-0813、等 12 个 |
+| WorkBuddy | 3 | ¥70–¥700/月 | DeepSeek-V4-Flash-0731、Kimi-K3、Auto、DeepSeek-V4-Pro-0813、等 12 个 |
 | TRAE 国内版 | 4 | ¥45–¥629/月 | DeepSeek-V4-Flash-0731、GLM-5.3、GLM-5.3-Flash、Kimi-K3、等 18 个 |
 | TRAE 国际版 | 4 | $3–$100/月 | Doubao-Seed-2.1-Turbo、Gemini 3.1 Pro、Gemini-3-Flash-Preview、GPT-5.2、等 8 个 |
 | 京东云 | 2 | ¥40–¥200/月 | DeepSeek-V3.2、GLM-5、Kimi-K2.5、MiniMax-M2.5、等 5 个 |
@@ -260,7 +259,7 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 
 ## 数据口径
 
-实测 14 · 计算 324 · 请求估算 42 · 倍率换算 29 · 未知 681
+实测 14 · 计算 319 · 请求估算 42 · 倍率换算 29 · 未知 681
 
 | 标记 | 含义 |
 |---|---|
@@ -276,6 +275,10 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 - 本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议
 
 ## 最近更新
+
+### 2026.9.22
+
+- 小米 MiMo 上线 V2.6 系列：Token Plan 四档套餐新增 MiMo-V2.6-Pro 与 MiMo-V2.6-Flash，Credits 折算与 V2.5 价格一致，套餐价格与月度额度均未变；V2.5-Pro / V2.5 将于 10.21 下线，全系支持多模态输入
 
 ### 2026.9.22
 
@@ -311,11 +314,6 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 
 - 平台按实际产品线独立展示，套餐计费结构统一为订阅与按量，筛选和对比更简洁
 - 共绩算力重新核对模型广场：收录 10 个当前可用模型，并按邀请资格的标价 8 折更新按量价格
-
-### 2026.8.16
-
-- DeepSeek-V4-Flash-0731 正式版同步更新 DeepSeek、OpenCode、字节·方舟、优云智算支持
-- 智谱国内&国际版、OpenCode、字节·方舟在售套餐追加支持 GLM-5.3
 
 ## 延伸阅读
 

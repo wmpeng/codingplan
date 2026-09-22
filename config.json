@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.9.22 | Qoder / WorkBuddy / TRAE 评定为三星",
+    "updateDate": "更新日期 2026.9.22 | 小米 MiMo 上线 V2.6 系列模型",
     "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Qoder、WorkBuddy、TRAE 等平台，订阅套餐与按量 API 全面对比。<br>涵盖Claude Fable 5.1，GPT-6-Astra，DeepSeek-V4.1-Flash，DeepSeek-V4-Flash-0731，GLM-5.3，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
@@ -287,6 +287,12 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.9.22",
+      "items": [
+        "小米 MiMo 上线 V2.6 系列：Token Plan 四档套餐新增 MiMo-V2.6-Pro 与 MiMo-V2.6-Flash，Credits 折算与 V2.5 价格一致，套餐价格与月度额度均未变；V2.5-Pro / V2.5 将于 10.21 下线，全系支持多模态输入"
+      ]
+    },
     {
       "date": "2026.9.22",
       "items": [

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T00:00:00Z",
+  "generatedAt": "2026-09-22T00:00:00Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -1072,9 +1072,9 @@
       "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
     },
     {
-      "slug": "workbuddy-standard--deepseek-v4-1-flash",
+      "slug": "workbuddy-standard--deepseek-v4-flash-0731",
       "planSlug": "workbuddy-standard",
-      "modelSlug": "deepseek-v4-1-flash",
+      "modelSlug": "deepseek-v4-flash-0731",
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
@@ -1083,7 +1083,7 @@
         "monthlyTokenInM": "unknown"
       },
       "pricing": null,
-      "note": "官方模型列表入口仍显示 DeepSeek-V4-Flash；DeepSeek 官方 2026-09-10 公告 WorkBuddy（含 CodeBuddy）已全量接入 DeepSeek V4.1 Flash，该条目由 V4.1 Flash 提供服务；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
     },
     {
       "slug": "workbuddy-standard--deepseek-v4-pro-0813",
@@ -1240,9 +1240,9 @@
       "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
     },
     {
-      "slug": "workbuddy-advanced--deepseek-v4-1-flash",
+      "slug": "workbuddy-advanced--deepseek-v4-flash-0731",
       "planSlug": "workbuddy-advanced",
-      "modelSlug": "deepseek-v4-1-flash",
+      "modelSlug": "deepseek-v4-flash-0731",
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
@@ -1251,7 +1251,7 @@
         "monthlyTokenInM": "unknown"
       },
       "pricing": null,
-      "note": "官方模型列表入口仍显示 DeepSeek-V4-Flash；DeepSeek 官方 2026-09-10 公告 WorkBuddy（含 CodeBuddy）已全量接入 DeepSeek V4.1 Flash，该条目由 V4.1 Flash 提供服务；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
     },
     {
       "slug": "workbuddy-advanced--deepseek-v4-pro-0813",
@@ -1408,9 +1408,9 @@
       "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
     },
     {
-      "slug": "workbuddy-flagship--deepseek-v4-1-flash",
+      "slug": "workbuddy-flagship--deepseek-v4-flash-0731",
       "planSlug": "workbuddy-flagship",
-      "modelSlug": "deepseek-v4-1-flash",
+      "modelSlug": "deepseek-v4-flash-0731",
       "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
@@ -1419,7 +1419,7 @@
         "monthlyTokenInM": "unknown"
       },
       "pricing": null,
-      "note": "官方模型列表入口仍显示 DeepSeek-V4-Flash；DeepSeek 官方 2026-09-10 公告 WorkBuddy（含 CodeBuddy）已全量接入 DeepSeek V4.1 Flash，该条目由 V4.1 Flash 提供服务；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
+      "note": "移动端官方支持列表；不同客户端及账号可用性以选择器为准。积分消耗不换算 Token。"
     },
     {
       "slug": "workbuddy-flagship--deepseek-v4-pro-0813",
@@ -4252,6 +4252,56 @@
       "note": null
     },
     {
+      "slug": "mimo-lite--mimo-v2-6-pro",
+      "planSlug": "mimo-lite",
+      "modelSlug": "mimo-v2-6-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": "unlimited",
+        "monthlyTokenInM": 202.1,
+        "unitPriceCnyPerM": 0.193
+      },
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 300000000.0,
+        "cachePerM": 2500000.0,
+        "outputPerM": 600000000.0,
+        "inputCnyPerM": 300000000.0,
+        "cacheCnyPerM": 2500000.0,
+        "outputCnyPerM": 600000000.0
+      },
+      "note": "按官方文档价格与额度计算得出，输入 300 Credits/Token、缓存命中 2.5 Credits/Token、输出 600 Credits/Token"
+    },
+    {
+      "slug": "mimo-lite--mimo-v2-6-flash",
+      "planSlug": "mimo-lite",
+      "modelSlug": "mimo-v2-6-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": "unlimited",
+        "monthlyTokenInM": 521.3,
+        "unitPriceCnyPerM": 0.0748
+      },
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 100000000.0,
+        "cachePerM": 2000000.0,
+        "outputPerM": 200000000.0,
+        "inputCnyPerM": 100000000.0,
+        "cacheCnyPerM": 2000000.0,
+        "outputCnyPerM": 200000000.0
+      },
+      "note": "按官方文档价格与额度计算得出，输入 100 Credits/Token、缓存命中 2 Credits/Token、输出 200 Credits/Token"
+    },
+    {
       "slug": "mimo-lite--mimo-v2-5-pro",
       "planSlug": "mimo-lite",
       "modelSlug": "mimo-v2-5-pro",
@@ -4274,7 +4324,7 @@
         "cacheCnyPerM": 2500000.0,
         "outputCnyPerM": 600000000.0
       },
-      "note": "按官方文档价格与额度计算得出，输入 300 Credits/Token、缓存命中 2.5 Credits/Token、输出 600 Credits/Token"
+      "note": "官方宣布 2026-10-21 10:00 下线，暂保留至实际下线；按官方文档价格与额度计算得出，输入 300 Credits/Token、缓存命中 2.5 Credits/Token、输出 600 Credits/Token"
     },
     {
       "slug": "mimo-lite--mimo-v2-5",
@@ -4299,7 +4349,7 @@
         "cacheCnyPerM": 2000000.0,
         "outputCnyPerM": 200000000.0
       },
-      "note": "按官方文档价格与额度计算得出，输入 100 Credits/Token、缓存命中 2 Credits/Token、输出 200 Credits/Token"
+      "note": "官方宣布 2026-10-21 10:00 下线，暂保留至实际下线；按官方文档价格与额度计算得出，输入 100 Credits/Token、缓存命中 2 Credits/Token、输出 200 Credits/Token"
     },
     {
       "slug": "mimo-lite--mimo-v2-5-tts",
@@ -4344,6 +4394,56 @@
       "note": null
     },
     {
+      "slug": "mimo-standard--mimo-v2-6-pro",
+      "planSlug": "mimo-standard",
+      "modelSlug": "mimo-v2-6-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": "unlimited",
+        "monthlyTokenInM": 542.2,
+        "unitPriceCnyPerM": 0.1826
+      },
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 300000000.0,
+        "cachePerM": 2500000.0,
+        "outputPerM": 600000000.0,
+        "inputCnyPerM": 300000000.0,
+        "cacheCnyPerM": 2500000.0,
+        "outputCnyPerM": 600000000.0
+      },
+      "note": null
+    },
+    {
+      "slug": "mimo-standard--mimo-v2-6-flash",
+      "planSlug": "mimo-standard",
+      "modelSlug": "mimo-v2-6-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": "unlimited",
+        "monthlyTokenInM": 1398.5,
+        "unitPriceCnyPerM": 0.0708
+      },
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 100000000.0,
+        "cachePerM": 2000000.0,
+        "outputPerM": 200000000.0,
+        "inputCnyPerM": 100000000.0,
+        "cacheCnyPerM": 2000000.0,
+        "outputCnyPerM": 200000000.0
+      },
+      "note": null
+    },
+    {
       "slug": "mimo-standard--mimo-v2-5-pro",
       "planSlug": "mimo-standard",
       "modelSlug": "mimo-v2-5-pro",
@@ -4366,7 +4466,7 @@
         "cacheCnyPerM": 2500000.0,
         "outputCnyPerM": 600000000.0
       },
-      "note": null
+      "note": "官方宣布 2026-10-21 10:00 下线，暂保留至实际下线"
     },
     {
       "slug": "mimo-standard--mimo-v2-5",
@@ -4391,7 +4491,7 @@
         "cacheCnyPerM": 2000000.0,
         "outputCnyPerM": 200000000.0
       },
-      "note": null
+      "note": "官方宣布 2026-10-21 10:00 下线，暂保留至实际下线"
     },
     {
       "slug": "mimo-standard--mimo-v2-5-tts",
@@ -4436,6 +4536,56 @@
       "note": null
     },
     {
+      "slug": "mimo-pro--mimo-v2-6-pro",
+      "planSlug": "mimo-pro",
+      "modelSlug": "mimo-v2-6-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": "unlimited",
+        "monthlyTokenInM": 1873.0,
+        "unitPriceCnyPerM": 0.1757
+      },
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 300000000.0,
+        "cachePerM": 2500000.0,
+        "outputPerM": 600000000.0,
+        "inputCnyPerM": 300000000.0,
+        "cacheCnyPerM": 2500000.0,
+        "outputCnyPerM": 600000000.0
+      },
+      "note": null
+    },
+    {
+      "slug": "mimo-pro--mimo-v2-6-flash",
+      "planSlug": "mimo-pro",
+      "modelSlug": "mimo-v2-6-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": "unlimited",
+        "monthlyTokenInM": 4831.2,
+        "unitPriceCnyPerM": 0.0681
+      },
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 100000000.0,
+        "cachePerM": 2000000.0,
+        "outputPerM": 200000000.0,
+        "inputCnyPerM": 100000000.0,
+        "cacheCnyPerM": 2000000.0,
+        "outputCnyPerM": 200000000.0
+      },
+      "note": null
+    },
+    {
       "slug": "mimo-pro--mimo-v2-5-pro",
       "planSlug": "mimo-pro",
       "modelSlug": "mimo-v2-5-pro",
@@ -4458,7 +4608,7 @@
         "cacheCnyPerM": 2500000.0,
         "outputCnyPerM": 600000000.0
       },
-      "note": null
+      "note": "官方宣布 2026-10-21 10:00 下线，暂保留至实际下线"
     },
     {
       "slug": "mimo-pro--mimo-v2-5",
@@ -4483,7 +4633,7 @@
         "cacheCnyPerM": 2000000.0,
         "outputCnyPerM": 200000000.0
       },
-      "note": null
+      "note": "官方宣布 2026-10-21 10:00 下线，暂保留至实际下线"
     },
     {
       "slug": "mimo-pro--mimo-v2-5-tts",
@@ -4528,6 +4678,56 @@
       "note": null
     },
     {
+      "slug": "mimo-max--mimo-v2-6-pro",
+      "planSlug": "mimo-max",
+      "modelSlug": "mimo-v2-6-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": "unlimited",
+        "monthlyTokenInM": 4041.8,
+        "unitPriceCnyPerM": 0.163
+      },
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 300000000.0,
+        "cachePerM": 2500000.0,
+        "outputPerM": 600000000.0,
+        "inputCnyPerM": 300000000.0,
+        "cacheCnyPerM": 2500000.0,
+        "outputCnyPerM": 600000000.0
+      },
+      "note": null
+    },
+    {
+      "slug": "mimo-max--mimo-v2-6-flash",
+      "planSlug": "mimo-max",
+      "modelSlug": "mimo-v2-6-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "calculated",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": "unlimited",
+        "monthlyTokenInM": 10425.3,
+        "unitPriceCnyPerM": 0.0632
+      },
+      "pricing": {
+        "currency": "¥",
+        "inputPerM": 100000000.0,
+        "cachePerM": 2000000.0,
+        "outputPerM": 200000000.0,
+        "inputCnyPerM": 100000000.0,
+        "cacheCnyPerM": 2000000.0,
+        "outputCnyPerM": 200000000.0
+      },
+      "note": null
+    },
+    {
       "slug": "mimo-max--mimo-v2-5-pro",
       "planSlug": "mimo-max",
       "modelSlug": "mimo-v2-5-pro",
@@ -4550,7 +4750,7 @@
         "cacheCnyPerM": 2500000.0,
         "outputCnyPerM": 600000000.0
       },
-      "note": null
+      "note": "官方宣布 2026-10-21 10:00 下线，暂保留至实际下线"
     },
     {
       "slug": "mimo-max--mimo-v2-5",
@@ -4575,7 +4775,7 @@
         "cacheCnyPerM": 2000000.0,
         "outputCnyPerM": 200000000.0
       },
-      "note": null
+      "note": "官方宣布 2026-10-21 10:00 下线，暂保留至实际下线"
     },
     {
       "slug": "mimo-max--mimo-v2-5-tts",
@@ -5068,10 +5268,10 @@
       "note": "价格：输入 $0.3/M Token、缓存读取 $0.03/M Token、输出 $1.2/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 200K"
     },
     {
-      "slug": "commandcode-go--deepseek-v4-pro-0813--gu",
+      "slug": "commandcode-go--deepseek-v4-pro-0813",
       "planSlug": "commandcode-go",
       "modelSlug": "deepseek-v4-pro-0813",
-      "timeTier": "谷",
+      "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -5090,38 +5290,13 @@
         "cacheCnyPerM": 0.1496,
         "outputCnyPerM": 13.464
       },
-      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
+      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $1.32/$3.96 每 M Token，官方未另列 Peak 缓存读取价"
     },
     {
-      "slug": "commandcode-go--deepseek-v4-pro-0813--feng",
-      "planSlug": "commandcode-go",
-      "modelSlug": "deepseek-v4-pro-0813",
-      "timeTier": "峰",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "fiveHourTokenInM": 23.6107066685,
-        "weeklyTokenInM": 47.2214133369,
-        "monthlyTokenInM": 78.7,
-        "unitPriceCnyPerM": 0.08636
-      },
-      "pricing": {
-        "currency": "$",
-        "inputPerM": 1.32,
-        "cachePerM": 0.044,
-        "outputPerM": 3.96,
-        "inputCnyPerM": 8.976,
-        "cacheCnyPerM": 0.2992,
-        "outputCnyPerM": 26.928
-      },
-      "note": "价格：输入 $1.32/M Token、缓存读取 $0.044/M Token、输出 $3.96/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
-    },
-    {
-      "slug": "commandcode-go--deepseek-v4-flash-0731--gu",
+      "slug": "commandcode-go--deepseek-v4-flash-0731",
       "planSlug": "commandcode-go",
       "modelSlug": "deepseek-v4-flash-0731",
-      "timeTier": "谷",
+      "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -5140,38 +5315,13 @@
         "cacheCnyPerM": 0.0476,
         "outputCnyPerM": 4.488
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
+      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $0.44/$1.32 每 M Token，官方未另列 Peak 缓存读取价"
     },
     {
-      "slug": "commandcode-go--deepseek-v4-flash-0731--feng",
-      "planSlug": "commandcode-go",
-      "modelSlug": "deepseek-v4-flash-0731",
-      "timeTier": "峰",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "fiveHourTokenInM": 71.9019257732,
-        "weeklyTokenInM": 143.8038515465,
-        "monthlyTokenInM": 239.7,
-        "unitPriceCnyPerM": 0.02856
-      },
-      "pricing": {
-        "currency": "$",
-        "inputPerM": 0.44,
-        "cachePerM": 0.014,
-        "outputPerM": 1.32,
-        "inputCnyPerM": 2.992,
-        "cacheCnyPerM": 0.0952,
-        "outputCnyPerM": 8.976
-      },
-      "note": "价格：输入 $0.44/M Token、缓存读取 $0.014/M Token、输出 $1.32/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
-    },
-    {
-      "slug": "commandcode-go--deepseek-v4-flash-vision-exp--gu",
+      "slug": "commandcode-go--deepseek-v4-flash-vision-exp",
       "planSlug": "commandcode-go",
       "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": "谷",
+      "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -5190,32 +5340,7 @@
         "cacheCnyPerM": 0.0476,
         "outputCnyPerM": 4.488
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
-    },
-    {
-      "slug": "commandcode-go--deepseek-v4-flash-vision-exp--feng",
-      "planSlug": "commandcode-go",
-      "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": "峰",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "fiveHourTokenInM": 71.9019257732,
-        "weeklyTokenInM": 143.8038515465,
-        "monthlyTokenInM": 239.7,
-        "unitPriceCnyPerM": 0.02856
-      },
-      "pricing": {
-        "currency": "$",
-        "inputPerM": 0.44,
-        "cachePerM": 0.014,
-        "outputPerM": 1.32,
-        "inputCnyPerM": 2.992,
-        "cacheCnyPerM": 0.0952,
-        "outputCnyPerM": 8.976
-      },
-      "note": "价格：输入 $0.44/M Token、缓存读取 $0.014/M Token、输出 $1.32/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
+      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $3、每周 $6、每月 $10；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；Go 只能在 Command Code 客户端内使用，目前稳定性较弱；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $0.44/$1.32 每 M Token，官方未另列 Peak 缓存读取价"
     },
     {
       "slug": "commandcode-go--deepseek-v4-flash-fast",
@@ -6191,10 +6316,10 @@
       "note": "价格：输入 $0.3/M Token、缓存读取 $0.03/M Token、输出 $1.2/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 200K"
     },
     {
-      "slug": "commandcode-goat--deepseek-v4-pro-0813--gu",
+      "slug": "commandcode-goat--deepseek-v4-pro-0813",
       "planSlug": "commandcode-goat",
       "modelSlug": "deepseek-v4-pro-0813",
-      "timeTier": "谷",
+      "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -6213,38 +6338,13 @@
         "cacheCnyPerM": 0.1496,
         "outputCnyPerM": 13.464
       },
-      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
+      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $1.32/$3.96 每 M Token，官方未另列 Peak 缓存读取价"
     },
     {
-      "slug": "commandcode-goat--deepseek-v4-pro-0813--feng",
-      "planSlug": "commandcode-goat",
-      "modelSlug": "deepseek-v4-pro-0813",
-      "timeTier": "峰",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "fiveHourTokenInM": 31.4809422246,
-        "weeklyTokenInM": 78.7023555615,
-        "monthlyTokenInM": 157.4,
-        "unitPriceCnyPerM": 0.4318
-      },
-      "pricing": {
-        "currency": "$",
-        "inputPerM": 1.32,
-        "cachePerM": 0.044,
-        "outputPerM": 3.96,
-        "inputCnyPerM": 8.976,
-        "cacheCnyPerM": 0.2992,
-        "outputCnyPerM": 26.928
-      },
-      "note": "价格：输入 $1.32/M Token、缓存读取 $0.044/M Token、输出 $3.96/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
-    },
-    {
-      "slug": "commandcode-goat--deepseek-v4-flash-0731--gu",
+      "slug": "commandcode-goat--deepseek-v4-flash-0731",
       "planSlug": "commandcode-goat",
       "modelSlug": "deepseek-v4-flash-0731",
-      "timeTier": "谷",
+      "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -6263,38 +6363,13 @@
         "cacheCnyPerM": 0.0476,
         "outputCnyPerM": 4.488
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $12、每周 $30、每月 $60；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
+      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $12、每周 $30、每月 $60；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $0.44/$1.32 每 M Token，官方未另列 Peak 缓存读取价"
     },
     {
-      "slug": "commandcode-goat--deepseek-v4-flash-0731--feng",
-      "planSlug": "commandcode-goat",
-      "modelSlug": "deepseek-v4-flash-0731",
-      "timeTier": "峰",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "fiveHourTokenInM": 287.607703093,
-        "weeklyTokenInM": 719.0192577325,
-        "monthlyTokenInM": 1438.0,
-        "unitPriceCnyPerM": 0.0476
-      },
-      "pricing": {
-        "currency": "$",
-        "inputPerM": 0.44,
-        "cachePerM": 0.014,
-        "outputPerM": 1.32,
-        "inputCnyPerM": 2.992,
-        "cacheCnyPerM": 0.0952,
-        "outputCnyPerM": 8.976
-      },
-      "note": "价格：输入 $0.44/M Token、缓存读取 $0.014/M Token、输出 $1.32/M Token；模型额度：5小时 $12、每周 $30、每月 $60；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
-    },
-    {
-      "slug": "commandcode-goat--deepseek-v4-flash-vision-exp--gu",
+      "slug": "commandcode-goat--deepseek-v4-flash-vision-exp",
       "planSlug": "commandcode-goat",
       "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": "谷",
+      "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -6313,32 +6388,7 @@
         "cacheCnyPerM": 0.0476,
         "outputCnyPerM": 4.488
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
-    },
-    {
-      "slug": "commandcode-goat--deepseek-v4-flash-vision-exp--feng",
-      "planSlug": "commandcode-goat",
-      "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": "峰",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "fiveHourTokenInM": 95.8692343643,
-        "weeklyTokenInM": 239.6730859108,
-        "monthlyTokenInM": 479.3,
-        "unitPriceCnyPerM": 0.14212
-      },
-      "pricing": {
-        "currency": "$",
-        "inputPerM": 0.44,
-        "cachePerM": 0.014,
-        "outputPerM": 1.32,
-        "inputCnyPerM": 2.992,
-        "cacheCnyPerM": 0.0952,
-        "outputCnyPerM": 8.976
-      },
-      "note": "价格：输入 $0.44/M Token、缓存读取 $0.014/M Token、输出 $1.32/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
+      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $4、每周 $10、每月 $20；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $0.44/$1.32 每 M Token，官方未另列 Peak 缓存读取价"
     },
     {
       "slug": "commandcode-goat--deepseek-v4-flash-fast",
@@ -7464,10 +7514,10 @@
       "note": "价格：输入 $0.3/M Token、缓存读取 $0.03/M Token、输出 $1.2/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 200K"
     },
     {
-      "slug": "commandcode-pro--deepseek-v4-pro-0813--gu",
+      "slug": "commandcode-pro--deepseek-v4-pro-0813",
       "planSlug": "commandcode-pro",
       "modelSlug": "deepseek-v4-pro-0813",
-      "timeTier": "谷",
+      "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -7486,38 +7536,13 @@
         "cacheCnyPerM": 0.1496,
         "outputCnyPerM": 13.464
       },
-      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
+      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $1.32/$3.96 每 M Token，官方未另列 Peak 缓存读取价"
     },
     {
-      "slug": "commandcode-pro--deepseek-v4-pro-0813--feng",
-      "planSlug": "commandcode-pro",
-      "modelSlug": "deepseek-v4-pro-0813",
-      "timeTier": "峰",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "fiveHourTokenInM": 47.2214133369,
-        "weeklyTokenInM": 118.0535333423,
-        "monthlyTokenInM": 236.1,
-        "unitPriceCnyPerM": 0.57596
-      },
-      "pricing": {
-        "currency": "$",
-        "inputPerM": 1.32,
-        "cachePerM": 0.044,
-        "outputPerM": 3.96,
-        "inputCnyPerM": 8.976,
-        "cacheCnyPerM": 0.2992,
-        "outputCnyPerM": 26.928
-      },
-      "note": "价格：输入 $1.32/M Token、缓存读取 $0.044/M Token、输出 $3.96/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
-    },
-    {
-      "slug": "commandcode-pro--deepseek-v4-flash-0731--gu",
+      "slug": "commandcode-pro--deepseek-v4-flash-0731",
       "planSlug": "commandcode-pro",
       "modelSlug": "deepseek-v4-flash-0731",
-      "timeTier": "谷",
+      "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -7536,38 +7561,13 @@
         "cacheCnyPerM": 0.0476,
         "outputCnyPerM": 4.488
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $14、每周 $35、每月 $70；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
+      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $14、每周 $35、每月 $70；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $0.44/$1.32 每 M Token，官方未另列 Peak 缓存读取价"
     },
     {
-      "slug": "commandcode-pro--deepseek-v4-flash-0731--feng",
-      "planSlug": "commandcode-pro",
-      "modelSlug": "deepseek-v4-flash-0731",
-      "timeTier": "峰",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "fiveHourTokenInM": 335.5423202751,
-        "weeklyTokenInM": 838.8558006879,
-        "monthlyTokenInM": 1677.7,
-        "unitPriceCnyPerM": 0.08092
-      },
-      "pricing": {
-        "currency": "$",
-        "inputPerM": 0.44,
-        "cachePerM": 0.014,
-        "outputPerM": 1.32,
-        "inputCnyPerM": 2.992,
-        "cacheCnyPerM": 0.0952,
-        "outputCnyPerM": 8.976
-      },
-      "note": "价格：输入 $0.44/M Token、缓存读取 $0.014/M Token、输出 $1.32/M Token；模型额度：5小时 $14、每周 $35、每月 $70；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
-    },
-    {
-      "slug": "commandcode-pro--deepseek-v4-flash-vision-exp--gu",
+      "slug": "commandcode-pro--deepseek-v4-flash-vision-exp",
       "planSlug": "commandcode-pro",
       "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": "谷",
+      "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -7586,32 +7586,7 @@
         "cacheCnyPerM": 0.0476,
         "outputCnyPerM": 4.488
       },
-      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；官方表格展示 Off-Peak 价格（每日 17 小时）"
-    },
-    {
-      "slug": "commandcode-pro--deepseek-v4-flash-vision-exp--feng",
-      "planSlug": "commandcode-pro",
-      "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": "峰",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "fiveHourTokenInM": 143.8038515465,
-        "weeklyTokenInM": 359.5096288662,
-        "monthlyTokenInM": 719.0,
-        "unitPriceCnyPerM": 0.18904
-      },
-      "pricing": {
-        "currency": "$",
-        "inputPerM": 0.44,
-        "cachePerM": 0.014,
-        "outputPerM": 1.32,
-        "inputCnyPerM": 2.992,
-        "cacheCnyPerM": 0.0952,
-        "outputCnyPerM": 8.976
-      },
-      "note": "价格：输入 $0.44/M Token、缓存读取 $0.014/M Token、输出 $1.32/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；Peak 为 UTC 01:00-04:00、06:00-10:00（北京时间 09:00-12:00、14:00-18:00）；官方公布 Peak 输入/输出价，未公布 Peak 缓存读取价，此处按 Off-Peak 缓存读取价 ×2 推断，待官方补充"
+      "note": "价格：输入 $0.22/M Token、缓存读取 $0.007/M Token、输出 $0.66/M Token；模型额度：5小时 $6、每周 $15、每月 $30；用量根据官方输入、缓存读取、输出价格与模型 Credits 额度，按缓存命中率 95%、输出占比 0.5% 的统一工作负载计算；缓存写入未纳入当前工作负载；这不是官方公布的 Token 上限；官方上下文上限 1M；当前表格展示 Off-Peak 价格（每日 17 小时）；Peak 为 UTC 01:00–04:00、06:00–10:00，输入/输出价格 $0.44/$1.32 每 M Token，官方未另列 Peak 缓存读取价"
     },
     {
       "slug": "commandcode-pro--deepseek-v4-flash-fast",
@@ -11064,10 +11039,10 @@
       "note": "价格：输入 $0.5/M Token、缓存读取 $0.05/M Token、输出 $3/M Token；模型额度：5小时 $12、每周 $30、每月 $60；上下文不超过 256K token 的低价档"
     },
     {
-      "slug": "opencode-go--deepseek-v4-1-flash--gu",
+      "slug": "opencode-go--deepseek-v4-1-flash",
       "planSlug": "opencode-go",
       "modelSlug": "deepseek-v4-1-flash",
-      "timeTier": "谷",
+      "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -11086,38 +11061,13 @@
         "cacheCnyPerM": 0.0204,
         "outputCnyPerM": 4.08
       },
-      "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 $12、每周 $30、每月 $60；官方 Off-Peak（每日非高峰时段，含周末）价格；当前限时 4 倍用量，官方未公布活动起止日期；活动结束后常规模型额度为 5小时 $3、每周 $7.5、每月 $15。"
+      "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 $12、每周 $30、每月 $60；Off-Peak 价格；Peak 为周一至周五 09:00-12:00、14:00-18:00（UTC+8），输入/缓存读取/输出为 $0.30/$0.006/$1.20 每 M Token；当前限时 4 倍用量，官方未公布活动起止日期；活动结束后常规模型额度为 5小时 $3、每周 $7.5、每月 $15。"
     },
     {
-      "slug": "opencode-go--deepseek-v4-1-flash--feng",
-      "planSlug": "opencode-go",
-      "modelSlug": "deepseek-v4-1-flash",
-      "timeTier": "峰",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "fiveHourTokenInM": 451.1871862839,
-        "weeklyTokenInM": 1127.9679657098,
-        "monthlyTokenInM": 2255.9,
-        "unitPriceCnyPerM": 0.02992
-      },
-      "pricing": {
-        "currency": "$",
-        "inputPerM": 0.3,
-        "cachePerM": 0.006,
-        "outputPerM": 1.2,
-        "inputCnyPerM": 2.04,
-        "cacheCnyPerM": 0.0408,
-        "outputCnyPerM": 8.16
-      },
-      "note": "价格：输入 $0.3/M Token、缓存读取 $0.006/M Token、输出 $1.2/M Token；模型额度：5小时 $12、每周 $30、每月 $60；官方 Peak 价格；周一至周五 09:00-12:00、14:00-18:00（UTC+8）；当前限时 4 倍用量，官方未公布活动起止日期；活动结束后常规模型额度为 5小时 $3、每周 $7.5、每月 $15。"
-    },
-    {
-      "slug": "opencode-go--deepseek-v4-pro-0813--gu",
+      "slug": "opencode-go--deepseek-v4-pro-0813",
       "planSlug": "opencode-go",
       "modelSlug": "deepseek-v4-pro-0813",
-      "timeTier": "谷",
+      "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -11136,38 +11086,13 @@
         "cacheCnyPerM": 0.1496,
         "outputCnyPerM": 13.464
       },
-      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；官方 Off-Peak（每日非高峰时段，含周末）价格"
+      "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；Off-Peak 价格；Peak 为周一至周五 09:00-12:00、14:00-18:00（UTC+8），输入/缓存读取/输出为 $1.32/$0.044/$3.96 每 M Token"
     },
     {
-      "slug": "opencode-go--deepseek-v4-pro-0813--feng",
-      "planSlug": "opencode-go",
-      "modelSlug": "deepseek-v4-pro-0813",
-      "timeTier": "峰",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "fiveHourTokenInM": 23.6107066685,
-        "weeklyTokenInM": 59.0267666711,
-        "monthlyTokenInM": 118.1,
-        "unitPriceCnyPerM": 0.57596
-      },
-      "pricing": {
-        "currency": "$",
-        "inputPerM": 1.32,
-        "cachePerM": 0.044,
-        "outputPerM": 3.96,
-        "inputCnyPerM": 8.976,
-        "cacheCnyPerM": 0.2992,
-        "outputCnyPerM": 26.928
-      },
-      "note": "价格：输入 $1.32/M Token、缓存读取 $0.044/M Token、输出 $3.96/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；官方 Peak 价格；周一至周五 09:00-12:00、14:00-18:00（UTC+8）"
-    },
-    {
-      "slug": "opencode-go--deepseek-v4-flash-0731--gu",
+      "slug": "opencode-go--deepseek-v4-flash-0731",
       "planSlug": "opencode-go",
       "modelSlug": "deepseek-v4-flash-0731",
-      "timeTier": "谷",
+      "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -11186,38 +11111,13 @@
         "cacheCnyPerM": 0.0204,
         "outputCnyPerM": 4.08
       },
-      "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 $6、每周 $15、每月 $30；官方 Off-Peak（每日非高峰时段，含周末）价格"
+      "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 $6、每周 $15、每月 $30；Off-Peak 价格；Peak 为周一至周五 09:00-12:00、14:00-18:00（UTC+8），输入/缓存读取/输出为 $0.30/$0.006/$1.20 每 M Token"
     },
     {
-      "slug": "opencode-go--deepseek-v4-flash-0731--feng",
-      "planSlug": "opencode-go",
-      "modelSlug": "deepseek-v4-flash-0731",
-      "timeTier": "峰",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "fiveHourTokenInM": 225.593593142,
-        "weeklyTokenInM": 563.9839828549,
-        "monthlyTokenInM": 1128.0,
-        "unitPriceCnyPerM": 0.06052
-      },
-      "pricing": {
-        "currency": "$",
-        "inputPerM": 0.3,
-        "cachePerM": 0.006,
-        "outputPerM": 1.2,
-        "inputCnyPerM": 2.04,
-        "cacheCnyPerM": 0.0408,
-        "outputCnyPerM": 8.16
-      },
-      "note": "价格：输入 $0.3/M Token、缓存读取 $0.006/M Token、输出 $1.2/M Token；模型额度：5小时 $6、每周 $15、每月 $30；官方 Peak 价格；周一至周五 09:00-12:00、14:00-18:00（UTC+8）"
-    },
-    {
-      "slug": "opencode-go--deepseek-v4-flash-vision-exp--gu",
+      "slug": "opencode-go--deepseek-v4-flash-vision-exp",
       "planSlug": "opencode-go",
       "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": "谷",
+      "timeTier": null,
       "contextTier": null,
       "serviceTier": null,
       "method": "calculated",
@@ -11236,32 +11136,7 @@
         "cacheCnyPerM": 0.0204,
         "outputCnyPerM": 4.08
       },
-      "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；官方 Off-Peak（每日非高峰时段，含周末）价格"
-    },
-    {
-      "slug": "opencode-go--deepseek-v4-flash-vision-exp--feng",
-      "planSlug": "opencode-go",
-      "modelSlug": "deepseek-v4-flash-vision-exp",
-      "timeTier": "峰",
-      "contextTier": null,
-      "serviceTier": null,
-      "method": "calculated",
-      "usage": {
-        "fiveHourTokenInM": 112.796796571,
-        "weeklyTokenInM": 281.9919914274,
-        "monthlyTokenInM": 564.0,
-        "unitPriceCnyPerM": 0.12036
-      },
-      "pricing": {
-        "currency": "$",
-        "inputPerM": 0.3,
-        "cachePerM": 0.006,
-        "outputPerM": 1.2,
-        "inputCnyPerM": 2.04,
-        "cacheCnyPerM": 0.0408,
-        "outputCnyPerM": 8.16
-      },
-      "note": "价格：输入 $0.3/M Token、缓存读取 $0.006/M Token、输出 $1.2/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；官方 Peak 价格；周一至周五 09:00-12:00、14:00-18:00（UTC+8）"
+      "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 $3、每周 $7.5、每月 $15；Off-Peak 价格；Peak 为周一至周五 09:00-12:00、14:00-18:00（UTC+8），输入/缓存读取/输出为 $0.30/$0.006/$1.20 每 M Token"
     },
     {
       "slug": "opencode-go--hy3",

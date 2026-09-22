@@ -1245,7 +1245,7 @@
       "benefits": [
         "TTS限时免费"
       ],
-      "note": "• 4.1B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
+      "note": "• 4.1B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.6-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.6-Pro 口径算，MiMo-V2.6-Flash 与 MiMo-V2.5 实际更高",
       "measuredMonthlyTokenLimit": 108
     },
     {
@@ -1268,7 +1268,7 @@
       "benefits": [
         "TTS限时免费"
       ],
-      "note": "• 11B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
+      "note": "• 11B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.6-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.6-Pro 口径算，MiMo-V2.6-Flash 与 MiMo-V2.5 实际更高",
       "measuredMonthlyTokenLimit": 290
     },
     {
@@ -1291,7 +1291,7 @@
       "benefits": [
         "TTS限时免费"
       ],
-      "note": "• 38B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
+      "note": "• 38B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.6-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.6-Pro 口径算，MiMo-V2.6-Flash 与 MiMo-V2.5 实际更高",
       "measuredMonthlyTokenLimit": 1002
     },
     {
@@ -1314,7 +1314,7 @@
       "benefits": [
         "TTS限时免费"
       ],
-      "note": "• 82B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.5-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.5-Pro 口径算，MiMo-V2.5 实际更高",
+      "note": "• 82B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.6-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.6-Pro 口径算，MiMo-V2.6-Flash 与 MiMo-V2.5 实际更高",
       "measuredMonthlyTokenLimit": 2162
     },
     {
