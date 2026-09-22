@@ -2,7 +2,7 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.9.11 | WorkBuddy 的 DeepSeek Flash 更新为 DeepSeek V4.1 Flash
+> 更新日期 2026.9.22 | Qoder / WorkBuddy / TRAE 评定为三星
 
 当前展示 **37 个平台、99 个在售订阅套餐、2 个按量 API、118 个模型和 1090 条套餐模型关系**。
 
@@ -194,13 +194,13 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | 百度·千帆 | 开放购买 | ⭐️⭐️⭐️ | - | Coding Plan 下线，Token Plan 个人版新上线，首月半价活动中。搬家入手勉强还行，但是有其他更好的选择 |
 | 华为云 | 定时放量 | ⭐️⭐️⭐️ | - | - |
 | 腾讯云 | 开放购买 | ⭐️⭐️⭐️ | - | 中规中矩，如果不是要使用混元模型，不推荐。 |
+| Qoder 国内版 | 开放购买 | ⭐️⭐️⭐️ | - | 阿里旗下 AI 编程与办公工具，个人订阅覆盖 Qoder CN 全家桶。 |
+| Qoder 国际版 | 开放购买 | ⭐️⭐️⭐️ | - | AI 编程平台，提供 Pro、Pro+、Ultra 个人订阅。 |
+| WorkBuddy | 开放购买 | ⭐️⭐️⭐️ | - | 腾讯 AI 办公工作台，与 CodeBuddy 同账号共享订阅积分。 |
+| TRAE 国内版 | 开放购买 | ⭐️⭐️⭐️ | - | 字节旗下 AI 编程与办公工具，采用积分制个人订阅。 |
+| TRAE 国际版 | 开放购买 | ⭐️⭐️⭐️ | - | 提供 TraeCode 与 TraeWork，个人订阅采用美元计价。 |
 | 京东云 | 定时放量 | ⭐️⭐️ | - | 已经很久不更新，模型较差 |
 | GitHub | 开放购买 | ⭐️⭐️⭐️ | - | GitHub 官方会员，支持多模型，但性价比低，不推荐。 |
-| Qoder 国内版 | 开放购买 | - | - | 阿里旗下 AI 编程与办公工具，个人订阅覆盖 Qoder CN 全家桶。 |
-| Qoder 国际版 | 开放购买 | - | - | AI 编程平台，提供 Pro、Pro+、Ultra 个人订阅。 |
-| WorkBuddy | 开放购买 | - | - | 腾讯 AI 办公工作台，与 CodeBuddy 同账号共享订阅积分。 |
-| TRAE 国内版 | 开放购买 | - | - | 字节旗下 AI 编程与办公工具，采用积分制个人订阅。 |
-| TRAE 国际版 | 开放购买 | - | - | 提供 TraeCode 与 TraeWork，个人订阅采用美元计价。 |
 | 讯飞·星火 | 开放购买 | ⭐️⭐️⭐️ | - | 曾经的高性价比平台，现已陨落。 仅剩高效版（199元）和速通版（699元）套餐，199元套餐限购且高峰期拥挤，699元套餐性价比低。 |
 | 联通云 | 开放购买 | ⭐️⭐️ | - | Coding Plan已经下线。仅剩TokenPlan，模型差。 |
 | 移动云 | 开放购买 | ⭐️⭐️ | - | - |
@@ -240,13 +240,13 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | 百度·千帆 | 4 | ¥9.9–¥600/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、ERNIE-5.1、GLM-5.1、等 6 个 |
 | 华为云 | 4 | ¥59–¥799/月 | DeepSeek-V4-Flash-0731、GLM-5、GLM-5.1、Kimi-K2.6 |
 | 腾讯云 | 4 | ¥39–¥599/月 | GLM-5.1、HY-2.0、Kimi-K2.5、MiniMax-M2.7 |
-| 京东云 | 2 | ¥40–¥200/月 | DeepSeek-V3.2、GLM-5、Kimi-K2.5、MiniMax-M2.5、等 5 个 |
-| GitHub | 3 | $0–$39/月 | Claude Haiku 4.5、Claude Opus 4.7、Claude Sonnet 4.6、Gemini 3.1 Pro、等 12 个 |
 | Qoder 国内版 | 3 | ¥59–¥559/月 | DeepSeek-V4-Flash-0731、Auto、DeepSeek-V4-Pro-0813、GLM-5.2、等 10 个 |
 | Qoder 国际版 | 3 | $20–$200/月 | DeepSeek-V4-Flash-0731、GLM-5.3、GLM-5.3-Flash、Kimi-K3、等 12 个 |
 | WorkBuddy | 3 | ¥70–¥700/月 | DeepSeek-V4.1-Flash、Kimi-K3、Auto、DeepSeek-V4-Pro-0813、等 12 个 |
 | TRAE 国内版 | 4 | ¥45–¥629/月 | DeepSeek-V4-Flash-0731、GLM-5.3、GLM-5.3-Flash、Kimi-K3、等 18 个 |
 | TRAE 国际版 | 4 | $3–$100/月 | Doubao-Seed-2.1-Turbo、Gemini 3.1 Pro、Gemini-3-Flash-Preview、GPT-5.2、等 8 个 |
+| 京东云 | 2 | ¥40–¥200/月 | DeepSeek-V3.2、GLM-5、Kimi-K2.5、MiniMax-M2.5、等 5 个 |
+| GitHub | 3 | $0–$39/月 | Claude Haiku 4.5、Claude Opus 4.7、Claude Sonnet 4.6、Gemini 3.1 Pro、等 12 个 |
 | 讯飞·星火 | 2 | ¥199–¥699/月 | DeepSeek-V4-Flash-0731、DeepSeek-V3.2、DeepSeek-V4-Pro-0813、GLM-5、等 11 个 |
 | 联通云 | 6 | ¥15–¥1,398/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、MiniMax-M2.5 |
 | 移动云 | 2 | ¥40–¥200/月 | MiniMax-M2.5 |
@@ -276,6 +276,10 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 - 本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议
 
 ## 最近更新
+
+### 2026.9.22
+
+- Qoder（国内 / 国际版）、WorkBuddy、TRAE（国内 / 国际版）完成初步体验评定，星级由「待评定」更新为三星，套餐大表与平台目录同步将其移至京东云之前
 
 ### 2026.9.11
 
@@ -312,10 +316,6 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 
 - DeepSeek-V4-Flash-0731 正式版同步更新 DeepSeek、OpenCode、字节·方舟、优云智算支持
 - 智谱国内&国际版、OpenCode、字节·方舟在售套餐追加支持 GLM-5.3
-
-### 2026.8.6
-
-- 阿里发布Qwen-3.8-Max
 
 ## 延伸阅读
 
