@@ -127,7 +127,7 @@ body.tool-page { background: var(--bg-primary); color: var(--text-primary); font
 .tool-page-main { max-width: 1440px; padding: 0 28px 40px; }
 .tool-topbar { min-height: 72px; margin-bottom: 18px; border-bottom: 1px solid var(--border-color); }
 .tool-brand { font-size: 19px; color: var(--text-primary); letter-spacing: -.03em; }
-.tool-brand::before { content: 'C'; display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: var(--accent-primary); color: white; margin-right: 9px; font-size: 19px; }
+.tool-brand::before { content: ""; display: inline-block; vertical-align: middle; width: 35px; height: 35px; background: url("/assets/brand-mark.svg?v=260924a") center / contain no-repeat; margin-right: 11px; }
 .tool-nav a { font-size: 14px; font-weight: 500; padding: 8px 12px; }
 .tool-breadcrumb { margin-bottom: 12px; font-size: 12px; }
 .tool-page a { text-decoration: none; }

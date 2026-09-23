@@ -18,8 +18,8 @@ body.home-page {
 .skip-link:focus { top: 10px; }
 .home-topbar { min-height: 76px; display: flex; align-items: center; gap: 44px; border-bottom: 1px solid var(--border-color); background: transparent; position: relative; z-index: 80; }
 .home-brand { display: inline-flex; align-items: center; gap: 11px; font-size: 19px; font-weight: 750; letter-spacing: -.6px; text-decoration: none; color: #101725; white-space: nowrap; }
-.home-brand-mark { display: inline-flex; align-items: center; justify-content: center; width: 35px; height: 35px; background: #101725; border-radius: 9px; color: white; font-size: 22px; letter-spacing: -2px; padding-right: 3px; }
-.home-brand-mark span, .home-brand-period { color: #8ec5ff; }
+.home-brand-mark { display: block; flex: none; width: 35px; height: 35px; }
+.home-brand-period { color: #8ec5ff; }
 .home-nav { display: flex; align-items: center; gap: 6px; }
 .home-nav a { padding: 9px 14px; text-decoration: none; color: #4c616e; font-size: 14px; border-radius: 6px; }
 .home-nav a:hover { background: #eaf1fb; color: #0b68d1; }
@@ -236,7 +236,7 @@ body.home-page {
   body.home-page { padding: 0 18px; }
   .home-topbar { min-height: 68px; gap: 12px; flex-wrap: wrap; padding: 15px 0 10px; }
   .home-brand { font-size: 17px; }
-  .home-brand-mark { width: 30px; height: 30px; font-size: 20px; border-radius: 7px; }
+  .home-brand-mark { width: 30px; height: 30px; }
   .home-nav { order: 3; width: 100%; justify-content: space-between; gap: 0; }
   .home-nav a { font-size: 12px; padding: 7px 10px; }
   .home-utilities { gap: 12px; }
