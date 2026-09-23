@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-22T00:00:00Z",
+  "generatedAt": "2026-09-24T00:00:00Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -3035,6 +3035,40 @@
       "note": "按 Pro *5 用户实测周额度 200M 的五分之一折算；测试以中等思考强度为主，缓存命中率约 96.8%，输出占比约 0.24%；Plus 五小时按周额度的 1/6 换算"
     },
     {
+      "slug": "codex-plus--gpt-6-sol",
+      "planSlug": "codex-plus",
+      "modelSlug": "gpt-6-sol",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "multiplied",
+      "usage": {
+        "fiveHourTokenInM": 40.0,
+        "weeklyTokenInM": 240,
+        "monthlyTokenInM": 960,
+        "unitPriceCnyPerM": 0.14144
+      },
+      "pricing": null,
+      "note": "暂按同套餐 GPT-5.6-Sol 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准"
+    },
+    {
+      "slug": "codex-plus--gpt-6-luna",
+      "planSlug": "codex-plus",
+      "modelSlug": "gpt-6-luna",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "multiplied",
+      "usage": {
+        "fiveHourTokenInM": 400.0,
+        "weeklyTokenInM": 2400,
+        "monthlyTokenInM": 9600,
+        "unitPriceCnyPerM": 0.01428
+      },
+      "pricing": null,
+      "note": "暂按同套餐 GPT-5.6-Luna 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准"
+    },
+    {
       "slug": "codex-plus--gpt-5-6-sol",
       "planSlug": "codex-plus",
       "modelSlug": "gpt-5-6-sol",
@@ -3184,6 +3218,40 @@
       "note": "用户实测周额度 200M；测试以中等思考强度为主，缓存命中率约 96.8%，输出占比约 0.24%"
     },
     {
+      "slug": "codex-pro5--gpt-6-sol",
+      "planSlug": "codex-pro5",
+      "modelSlug": "gpt-6-sol",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "multiplied",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": 1200,
+        "monthlyTokenInM": 4800,
+        "unitPriceCnyPerM": 0.14144
+      },
+      "pricing": null,
+      "note": "暂按同套餐 GPT-5.6-Sol 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准"
+    },
+    {
+      "slug": "codex-pro5--gpt-6-luna",
+      "planSlug": "codex-pro5",
+      "modelSlug": "gpt-6-luna",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "multiplied",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": 12000,
+        "monthlyTokenInM": 48000,
+        "unitPriceCnyPerM": 0.01428
+      },
+      "pricing": null,
+      "note": "暂按同套餐 GPT-5.6-Luna 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准"
+    },
+    {
       "slug": "codex-pro5--gpt-5-6-sol",
       "planSlug": "codex-pro5",
       "modelSlug": "gpt-5-6-sol",
@@ -3331,6 +3399,40 @@
       },
       "pricing": null,
       "note": "按 Pro *5 用户实测周额度 200M 的 4 倍计算；测试以中等思考强度为主，缓存命中率约 96.8%，输出占比约 0.24%"
+    },
+    {
+      "slug": "codex-pro20--gpt-6-sol",
+      "planSlug": "codex-pro20",
+      "modelSlug": "gpt-6-sol",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "multiplied",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": 4800,
+        "monthlyTokenInM": 19200,
+        "unitPriceCnyPerM": 0.07072
+      },
+      "pricing": null,
+      "note": "暂按同套餐 GPT-5.6-Sol 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准"
+    },
+    {
+      "slug": "codex-pro20--gpt-6-luna",
+      "planSlug": "codex-pro20",
+      "modelSlug": "gpt-6-luna",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "multiplied",
+      "usage": {
+        "fiveHourTokenInM": "unlimited",
+        "weeklyTokenInM": 48000,
+        "monthlyTokenInM": 192000,
+        "unitPriceCnyPerM": 0.0068
+      },
+      "pricing": null,
+      "note": "暂按同套餐 GPT-5.6-Luna 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准"
     },
     {
       "slug": "codex-pro20--gpt-5-6",

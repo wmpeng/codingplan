@@ -21,7 +21,7 @@
   "coverage": {
     "artificialAnalysisScores": 84,
     "deepSWEScores": 28,
-    "multimodalKnown": 86
+    "multimodalKnown": 88
   },
   "models": [
     {
@@ -1167,6 +1167,26 @@
           "modelName": "gpt-6-astra",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         }
+      }
+    },
+    {
+      "slug": "gpt-6-sol",
+      "name": "GPT-6-Sol",
+      "multimodal": true,
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "gpt-6-luna",
+      "name": "GPT-6-Luna",
+      "multimodal": true,
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
       }
     },
     {

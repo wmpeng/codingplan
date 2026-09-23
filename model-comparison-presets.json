@@ -31,6 +31,24 @@
       ]
     },
     {
+      "id": "gpt-6-sol",
+      "title": "GPT 6 Sol",
+      "kind": "single",
+      "enabled": true,
+      "modelSlugs": [
+        "gpt-6-sol"
+      ]
+    },
+    {
+      "id": "gpt-6-luna",
+      "title": "GPT 6 Luna",
+      "kind": "single",
+      "enabled": true,
+      "modelSlugs": [
+        "gpt-6-luna"
+      ]
+    },
+    {
       "id": "gpt-5-6-luna",
       "title": "GPT 5.6 Luna",
       "kind": "single",
@@ -48,7 +66,8 @@
         "deepseek-v4-1-flash",
         "deepseek-v4-flash-0731",
         "glm-5-3-flash",
-        "gpt-5-6-luna"
+        "gpt-5-6-luna",
+        "gpt-6-luna"
       ]
     },
     {
@@ -58,6 +77,7 @@
       "enabled": true,
       "modelSlugs": [
         "gpt-6-astra",
+        "gpt-6-sol",
         "claude-opus-5",
         "gpt-5-6-sol",
         "glm-5-3",

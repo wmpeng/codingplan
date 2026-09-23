@@ -276,7 +276,7 @@
         },
         "models": {
           "score": 5,
-          "reason": "GPT-5.6-Sol，模型顶尖。"
+          "reason": "支持 GPT-6-Astra、GPT-6-Sol 和 GPT-6-Luna，可按任务复杂度选择模型；实际可用性以账号与客户端为准。"
         },
         "stability": {
           "score": 5,
