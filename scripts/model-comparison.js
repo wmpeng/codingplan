@@ -492,9 +492,9 @@
 
     function comparisonTableRowHtml(point, tokenUnit) {
         const subscription = point.billingMode === 'subscription';
-        const price = subscription && finitePositive(point.monthlyFeeCny) !== null
-            ? formatSubscriptionMonthlyPrice(point) : '按量';
-        const unitPrice = formatUnitPrice(point.unitPriceCnyPerM, tokenUnit);
+        const price = subscription ? (point.monthlyFeeCny === 0 ? '¥0 / 月' : finitePositive(point.monthlyFeeCny) !== null
+            ? formatSubscriptionMonthlyPrice(point) : '未公开') : '按量';
+        const unitPrice = point.unitPriceCnyPerM === 0 ? `¥0 / ${normalizeTokenUnit(tokenUnit) === 'yi' ? '亿' : 'M'}` : formatUnitPrice(point.unitPriceCnyPerM, tokenUnit);
         const aaScore = point.scores && point.scores.artificialAnalysis;
         const deepSWEScore = point.scores && point.scores.deepSWE;
         const deepSWEInterval = deepSWEScore && Number.isFinite(Number(deepSWEScore.confidenceInterval))
@@ -839,7 +839,7 @@
             const context = root.EntityData.buildContext(...documents);
             context.modelGroups = presetConfig.groups || [];
             const rate = root.appConfig && root.appConfig.usdToCnyRate || 6.8;
-            const points = root.EntityData.buildComparisonPoints(context, rate);
+            const points = root.EntityData.buildComparisonPoints(context, rate, { includeUnknown: options?.mode === 'home' });
             const platformMap = new Map();
             points.forEach((point) => {
                 platformMap.set(getPointPlatformKey(point), point.platformName);
@@ -1074,7 +1074,7 @@
                     renderPresetComparisons(container.querySelector('[data-presets]'), presetConfig, points, state.tokenUnit, state.presetPlatformScope);
                     renderedPresetKey = presetRenderKey;
                 }
-                const filtered = filterPoints(points, {
+                let filtered = filterPoints(points, {
                     platforms: state.platforms, models: state.models, multimodal: state.multimodal,
                     aaScoreMin: state.aaScoreMin, deepSWEScoreMin: state.deepSWEScoreMin,
                     monthlyPriceMin: state.monthlyPriceMin, monthlyPriceMax: state.monthlyPriceMax,
@@ -1083,6 +1083,7 @@
                     monthlyTokenRange: state.monthlyTokenRange,
                     priceRanges: state.priceRanges, filterContext: state.filterContext, sharedFilters: state.sharedFilters
                 });
+                if (mountOptions.mode === 'home' && root.CodingPlanOfferWorkspace) filtered = root.CodingPlanOfferWorkspace.filter(filtered, 'points');
                 const visibleFiltered = filterBySoloColorKey(filtered, state.colorMode, state.soloColorKey);
                 const usagePoints = buildUsageChartPoints(visibleFiltered);
                 const intelligencePoints = buildIntelligenceChartPoints(visibleFiltered, state.benchmark);
@@ -1148,6 +1149,7 @@
                     series: unitPriceBar.series
                 }, true);
                 renderDataTable('comparison', visibleFiltered);
+                if (mountOptions.mode === 'home') root.CodingPlanOfferWorkspace?.decorate();
                 container.querySelector('[data-empty="usage"]').hidden = usagePoints.length > 0;
                 container.querySelector('[data-empty="intelligence"]').hidden = intelligencePoints.length > 0;
                 container.querySelector('[data-empty="unit-price"]').hidden = unitPriceBarPoints.length > 0;
@@ -1173,7 +1175,9 @@
                 render();
             }
             root.addEventListener('codingplan:filters-changed', onSharedFilterChange);
-            container.__usageCleanup = () => root.removeEventListener('codingplan:filters-changed', onSharedFilterChange);
+            const onComparisonChange = () => { state.soloColorKey = null; render(); };
+            if (mountOptions.mode === 'home') root.addEventListener('codingplan:comparison-changed', onComparisonChange);
+            container.__usageCleanup = () => { root.removeEventListener('codingplan:filters-changed', onSharedFilterChange); root.removeEventListener('codingplan:comparison-changed', onComparisonChange); };
             container.querySelector('[data-model-search]').addEventListener('input', (event) => {
                 const query = event.target.value.trim().toLocaleLowerCase('zh-CN');
                 container.querySelectorAll('[data-picker="models"] [data-options] label').forEach((label) => {

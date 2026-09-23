@@ -23,9 +23,6 @@
     collapsed = false,
     applied = false,
     pendingStart = false;
-  try {
-    collapsed = localStorage.getItem("purchase-guide-collapsed") === "1";
-  } catch (_) {}
   const questions = [
     [
       "用途",
@@ -197,43 +194,19 @@
     if (s.modelSlugs?.length) parts.push(`指定 ${s.modelSlugs.length} 个模型`);
     return parts.join(" · ") || "尚未限定需求，可先看看推荐再调整";
   }
-  function safeUrl(value) {
-    try {
-      const u = new URL(value, location.origin);
-      return ["https:", "http:"].includes(u.protocol) ? u.href : null;
-    } catch (_) {
-      return null;
-    }
-  }
-  function card(item) {
-    const url = safeUrl(item.plan.action || item.platform.action),
-      guide = root.PlatformPages?.getUrl(item.platform.slug);
-    const modelText =
-      item.models
-        .slice(0, 3)
-        .map((x) => x.name)
-        .join("、") +
-      (item.models.length > 3 ? ` 等 ${item.models.length} 个模型` : "");
-    return `<article class="guide-result-card"><span class="guide-eyebrow">${esc(item.platform.name)} · ${item.plan.billingMode === "payg" ? "按量 API" : "订阅"}</span><h4>${esc(item.plan.name)}</h4><p class="guide-price">${item.cost === null ? "月支出待估算" : `¥${item.cost.toLocaleString("zh-CN", { maximumFractionDigits: 2 })}<small> / 月${item.plan.billingMode === "payg" ? "（估算）" : ""}</small>`}</p><p>${esc(modelText)}${item.plan.billingMode === "payg" && item.tier ? ` · ${esc(item.tier)}` : ""}</p><ul>${item.reasons.map((t) => `<li>${esc(t)}</li>`).join("")}</ul><details><summary>取舍与注意事项</summary><ul>${item.cautions.map((t) => `<li>${esc(t)}</li>`).join("")}${item.plan.billingMode === "payg" && item.rows[0].note ? `<li>${esc(item.rows[0].note)}</li>` : ""}</ul></details><div class="guide-card-links">${guide ? `<a href="${guide}">平台介绍</a>` : ""}<a href="/${item.plan.billingMode === "payg" ? "pricing" : "plans"}/?platform=${encodeURIComponent(item.platform.slug)}">查看完整${item.plan.billingMode === "payg" ? "价格" : "套餐"}</a>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">前往官网 ↗</a>` : ""}</div></article>`;
-  }
-  function results(s) {
-    const advice = G.directAdvice(answers);
-    if (advice)
-      return `<div class="guide-advice"><h3>先直接使用，无需选购套餐</h3><p>${esc(advice)}</p><a href="https://www.doubao.com/" target="_blank" rel="noopener noreferrer">打开豆包 ↗</a><button type="button" data-guide-action="restart">我需要接入工具或 API</button></div>`;
-    const result = G.recommend(controller.context, s, controller.config);
-    if (!result.candidates.length)
-      return `<div class="guide-advice"><h3>暂时没有同时满足条件的购买方案</h3><p>当前条件可能冲突，或所需额度、网络、支付资料尚未确认。条件没有被自动放宽。</p>${result.conflicts.length ? "<p>只调整下面一项，可以找到候选：</p>" : ""}<div class="guide-options">${result.conflicts.map((x) => `<button type="button" data-relax="${x.key}">取消${x.label}（${x.count} 个方案）</button>`).join("")}</div><button type="button" data-guide-action="filters">查看并调整全部条件</button></div>`;
-    return `<div class="guide-result-heading"><h3>按当前需求，先考虑这些方案</h3><span>${result.candidates.length} 个候选 · 展示不同选择</span></div>${result.groups.map(([title, items]) => `<section class="guide-result-group"><h3>${title}</h3><div class="guide-result-grid">${items.map(card).join("")}</div></section>`).join("")}<p class="guide-note">AA 分数用于模型能力参考；多模型额度不相加。API 费用沿用价格页的工作负载假设，峰谷与上下文档位分别计算。完整结果可在下方四个视图继续比较。</p>`;
-  }
   function render() {
     const ready = !!controller,
       s = ready ? controller.getState() : {};
     host.dataset.active = String(active);
-    host.dataset.collapsed = String(collapsed);
-    host.innerHTML = `<section class="purchase-guide-panel"><header class="guide-header"><div><span class="guide-eyebrow">选购助手</span><h2>${collapsed ? "需要帮忙选？" : active ? "一步步，缩小选择范围" : "从你的需求出发"}</h2>${collapsed ? "" : "<p>回答几个简单问题，获得具体方案、推荐理由与取舍。</p>"}</div><div class="guide-header-actions"><button type="button" data-guide-action="${collapsed ? "expand" : "collapse"}">${collapsed ? "展开选购助手" : "收起"}</button></div></header>
-      ${collapsed ? "" : active && G.directAdvice(answers) ? "" : !active ? `<div class="guide-intro-actions"><button class="guide-primary" type="button" data-guide-action="start" ${ready ? "" : "disabled"}>${ready ? "帮我选" : "正在加载目录…"}</button><a href="#mainViewTabs">直接看对比 ↓</a></div>` : `<nav class="guide-progress" aria-label="选购步骤">${questions.map(([label], i) => `<button type="button" data-step="${i}" aria-current="${i === step ? "step" : "false"}">${i + 1} ${label}</button>`).join("")}</nav><div class="guide-question"><h3 tabindex="-1" id="guideQuestionTitle">${questions[step][1]}</h3><p>${questions[step][2]}</p>${content(s)}</div><footer class="guide-step-actions"><button type="button" data-guide-action="prev" ${step === 0 ? "disabled" : ""}>上一步</button><button type="button" data-guide-action="skip">不确定 / 跳过</button><button type="button" class="guide-primary" data-guide-action="next">${step === 5 ? "查看推荐 ↓" : "下一步"}</button></footer>`}
-      ${active ? `<div class="guide-summary" data-guide-summary>${G.directAdvice(answers) ? "当前显示直接使用建议；原有筛选保持不变。" : esc(summary(s))}</div>` : ""}</section><div id="purchaseGuideResults" ${active && !collapsed ? "" : "hidden"}>${active && !collapsed ? results(s) : ""}</div>`;
+    host.hidden = !active || collapsed;
+    const advice = G.directAdvice(answers);
+    root.dispatchEvent(new CustomEvent('codingplan:guide-advice', {detail: advice}));
+    if (host.hidden) { host.innerHTML = ''; return; }
+    host.innerHTML = `<section class="purchase-guide-panel"><header class="guide-header"><div><span class="guide-eyebrow">一起整理你的需求</span><h2>不确定怎么填？一步步来</h2><p>回答会直接更新下方“我的需求”，也可以随时手动调整。</p></div><div class="guide-header-actions"><button type="button" data-guide-action="collapse">完成 / 收起</button></div></header>
+      ${advice ? '<button type="button" data-guide-action="restart">改为工具接入或 API</button>' : `<nav class="guide-progress" aria-label="选购步骤">${questions.map(([label], i) => `<button type="button" data-step="${i}" aria-current="${i === step ? 'step' : 'false'}">${i + 1} ${label}</button>`).join('')}</nav><div class="guide-question"><h3 tabindex="-1" id="guideQuestionTitle">${questions[step][1]}</h3><p>${questions[step][2]}</p>${content(s)}</div><footer class="guide-step-actions"><button type="button" data-guide-action="prev" ${step === 0 ? 'disabled' : ''}>上一步</button><button type="button" data-guide-action="skip">不确定 / 跳过</button><button type="button" class="guide-primary" data-guide-action="next">${step === 5 ? '完成，查看方案 ↓' : '下一步'}</button></footer>`}
+      <div class="guide-summary" data-guide-summary>${advice ? '下方已给出直接使用建议；购买需求保持不变。' : esc(summary(s))}</div></section>`;
   }
+
   function set(patch) {
     if (!applied) {
       applied = true;
@@ -254,6 +227,11 @@
       return;
     }
     pendingStart = false;
+    const current = controller.getState();
+    if (!G.directAdvice(answers) && G.scenarioPatch(answers).useCase !== current.useCase) {
+      answers.scenario = current.useCase === 'coding' ? 'coding' : current.useCase === 'api' ? 'api' : current.useCase === 'general' ? 'professional' : null;
+      answers.writingMode = null;
+    }
     active = true;
     collapsed = false;
     // Drop editorial default picks, while retaining constraints explicitly changed by the user.
@@ -315,9 +293,6 @@
     const action = el.dataset.guideAction;
     if (action === "collapse" || action === "expand") {
       collapsed = action === "collapse";
-      try {
-        localStorage.setItem("purchase-guide-collapsed", collapsed ? "1" : "0");
-      } catch (_) {}
       render();
     }
     if (action === "start") begin();
@@ -349,8 +324,10 @@
           });
       }
       if (step === 5 && action !== "prev") {
-        host
-          .querySelector("#purchaseGuideResults")
+        collapsed = true;
+        render();
+        document
+          .getElementById("purchaseGuideResults")
           .scrollIntoView({ behavior: "smooth" });
         return;
       }
@@ -413,9 +390,6 @@
       host.contains(document.activeElement) &&
       document.activeElement.matches("[data-guide-number]")
     ) {
-      host.querySelector("#purchaseGuideResults").innerHTML = active
-        ? results(controller.getState())
-        : "";
       const summaryEl = host.querySelector("[data-guide-summary]");
       if (summaryEl) summaryEl.textContent = summary(controller.getState());
     } else render();
@@ -428,9 +402,14 @@
   document.querySelectorAll("[data-open-guide]").forEach((link) => {
     link.addEventListener("click", (event) => {
       if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
       begin();
+      host.scrollIntoView({behavior: "smooth", block: "start"});
       host.querySelector("#guideQuestionTitle")?.focus({ preventScroll: true });
     });
+  });
+  root.addEventListener('codingplan:guide-restart', () => {
+    answers = {}; step = 0; begin(); host.scrollIntoView({behavior: 'smooth'});
   });
   controller = root.CodingPlanHomeFilters;
   render();

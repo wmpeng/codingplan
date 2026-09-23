@@ -29,7 +29,7 @@ body.home-page {
 .home-page #settingsMount { flex: 0 0 auto; }
 .home-page #settingsMount .settings-btn-label { display: none; }
 .home-page #settingsMount button { box-shadow: none; background: transparent; border-color: var(--border-color); font-size: 12px; }
-.home-hero { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(300px, 1fr); gap: 80px; padding: 58px 0 32px; align-items: center; }
+.home-hero { display: block; max-width: 900px; padding: 42px 0 18px; }
 .home-page .home-hero-copy { padding: 0; margin: 0; text-align: left; border: 0; background: none; box-shadow: none; }
 .home-page .home-eyebrow { font-size: 11px; letter-spacing: .1em; font-weight: 650; color: #0b68d1; margin: 0 0 14px; line-height: 1.5; }
 .home-page .home-hero h1 { max-width: none; font-size: clamp(34px, 3.5vw, 49px); line-height: 1.3; letter-spacing: -.045em; font-weight: 750; margin: 0 0 20px; color: #101725; background: none; -webkit-text-fill-color: currentColor; }
@@ -294,3 +294,70 @@ body.home-page {
 @media (prefers-reduced-motion: reduce) {
   .home-page *, .home-page *::before, .home-page *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
 }
+
+/* 一个需求工作区：问答辅助填写，具体方案贯穿三个比较视图。 */
+.home-page #selectionWorkspace { scroll-margin-top: 24px; margin-bottom: 36px; }
+.home-page #purchaseGuide { margin-bottom: 20px; scroll-margin-top: 20px; }
+.home-page #purchaseGuide[hidden] { display: none; }
+.home-page #purchaseGuideResults { margin: 32px 0; scroll-margin-top: 24px; }
+.home-page .guide-result-heading { align-items: end; margin-bottom: 18px; gap: 16px; }
+.home-page .guide-result-heading .home-eyebrow { margin-bottom: 6px; }
+.home-page .guide-result-heading h2 { font-size: 23px; line-height: 1.5; }
+.home-page .guide-result-heading > span { font-size: 12px; color: var(--text-tertiary); }
+.home-page .guide-result-card { display: flex; flex-direction: column; min-width: 0; padding: 22px; }
+.home-page .guide-result-card.is-focused { border-color: var(--accent-primary); }
+.home-page .offer-card-top { display: flex; gap: 10px; justify-content: space-between; color: var(--text-secondary); font-size: 12px; }
+.home-page .offer-card-top > span:first-child { color: var(--accent-primary); font-weight: 650; }
+.home-page .guide-result-card h3 { font-size: 23px; margin: 12px 0; }
+.home-page .offer-model-label { display: grid; gap: 7px; font-size: 11px; color: var(--text-tertiary); }
+.home-page :is(.offer-model-label, [data-offer-add-fields]) select { width: 100%; min-width: 0; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; font: inherit; font-size: 13px; color: var(--text-primary); background: #f7faff; }
+.home-page .guide-result-card .guide-price { margin: 16px 0 4px; }
+.home-page .offer-quota { color: #315d8d; font-size: 13px; margin: 0 0 8px; }
+.home-page .offer-rationale { color: var(--text-secondary); margin: 0; }
+.home-page .guide-result-card details { margin: 14px 0 18px; }
+.home-page .offer-card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.home-page :is(#purchaseGuideResults, #offerComparison, #offerFocusContext) button { border: 1px solid #ccdaeb; border-radius: 8px; padding: 9px 12px; min-height: 36px; background: white; color: #235c99; cursor: pointer; font: inherit; font-size: 12px; }
+.home-page :is(#purchaseGuideResults, #offerComparison, #offerFocusContext) button:hover { border-color: #0b68d1; background: #edf4ff; }
+.home-page .offer-card-actions [data-offer-focus] { background: #0b68d1 !important; color: white !important; border-color: #0b68d1 !important; }
+.home-page .offer-card-actions [aria-pressed=true] { background: #eef5ff !important; }
+.home-page .offer-alternatives { margin-top: 16px; }
+.home-page .offer-alternatives > summary { cursor: pointer; font-size: 13px; color: #466987; padding: 10px 0; }
+.home-page .offer-alternatives > .guide-result-grid { margin-top: 10px; }
+.home-page #offerComparison { background: #fff; border: 1px solid var(--border-color); border-radius: 18px; padding: 22px; margin: 0 0 18px; }
+.home-page .offer-comparison-heading { display: flex; align-items: start; justify-content: space-between; gap: 20px; }
+.home-page .offer-comparison-heading h3 { font-size: 20px; margin: 0; }
+.home-page .offer-comparison-heading p { color: var(--text-tertiary); font-size: 12px; line-height: 1.7; margin: 6px 0 12px; }
+.home-page .offer-only { font-size: 13px; display: flex; align-items: center; gap: 8px; padding-top: 4px; flex-shrink: 0; cursor: pointer; }
+.home-page .offer-only input { accent-color: #0b68d1; width: 16px; height: 16px; }
+.home-page .offer-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.home-page .offer-chip { display: flex; max-width: 100%; align-items: stretch; border: 1px solid #d9e4f1; border-radius: 8px; background: #f5f8fd; }
+.home-page #offerComparison .offer-chip button { border: 0; background: transparent; text-align: left; overflow-wrap: anywhere; }
+.home-page #offerComparison .offer-chip button:last-child { flex-shrink: 0; font-size: 16px; }
+.home-page .offer-chip.is-focused { border-color: #0b68d1; background: #eaf3ff; }
+.home-page .offer-add { font-size: 12px; margin-top: 16px; }
+.home-page .offer-add > summary { cursor: pointer; color: #466987; width: fit-content; }
+.home-page [data-offer-add-fields] { display: grid; grid-template-columns: 1fr 1fr 1.4fr auto; gap: 12px; margin-top: 16px; align-items: end; }
+.home-page [data-offer-add-fields] label { display: grid; gap: 7px; min-width: 0; color: #526d8c; }
+.home-page .offer-focus-status:not(:empty) { border-top: 1px solid #e2eaf5; margin-top: 16px; padding-top: 16px; font-size: 13px; line-height: 1.7; }
+.home-page .offer-focus-status p { color: #526d8c; margin: 4px 0 10px; }
+.home-page .offer-focus-status button + button { margin-left: 8px; }
+.home-page .offer-highlight { outline: 2px solid #0b68d1; outline-offset: -2px; background: #f0f6ff; scroll-margin-top: 90px; }
+.home-page .offer-evidence { color: #0b68d1; font-size: 11px; font-weight: 500; line-height: 1.6; white-space: normal; overflow-wrap: anywhere; padding: 10px 0 0; max-width: 440px; }
+.home-page tr .offer-evidence { max-width: 220px; min-width: 100px; }
+@media (max-width: 760px) {
+  .home-page .offer-comparison-heading { display: block; }
+  .home-page .offer-only { margin-bottom: 16px; }
+  .home-page #offerComparison { padding: 18px; }
+  .home-page [data-offer-add-fields] { grid-template-columns: 1fr; }
+  .home-page .guide-result-heading { display: block; }
+  .home-page .guide-result-heading > span { display: block; margin-top: 8px; }
+}
+
+@media (min-width: 761px) {
+  .home-page .home-hero h1 br { display: none; }
+  .home-page .home-hero h1 { font-size: clamp(32px, 3.1vw, 44px); }
+}
+
+.home-page #offerFocusContext .offer-focus-status:not(:empty) { margin: 0 0 18px; padding: 16px 20px; border: 1px solid #bcd4f1; border-radius: 12px; background: #f0f6ff; }
+
+.home-page tr.offer-highlight > td { background: #eaf3ff !important; box-shadow: inset 0 2px #0b68d1, inset 0 -2px #0b68d1; }

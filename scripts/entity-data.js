@@ -144,8 +144,9 @@
       .filter((group) => group.rows.length > 0);
   }
 
-  function buildComparisonPoints(context, usdToCnyRate) {
+  function buildComparisonPoints(context, usdToCnyRate, options) {
     const points = [];
+    const displayNumber = value => options?.includeUnknown && value === 0 ? 0 : positiveNumber(value);
     for (const relation of context.planModels) {
       const plan = context.planBySlug.get(relation.planSlug);
       const model = context.modelBySlug.get(relation.modelSlug);
@@ -153,14 +154,19 @@
       const platform = context.platformBySlug.get(plan.platformSlug);
       if (!platform) continue;
       const usage = relation.usage || {};
-      const unit = positiveNumber(usage.unitPriceCnyPerM);
+      const unit = displayNumber(usage.unitPriceCnyPerM);
       const windows = displayWindows(usage);
+      if (options?.includeUnknown) {
+        if (usage.monthlyTokenInM === 0) windows.monthly = 0;
+        if (usage.weeklyTokenInM === 0) windows.weekly = 0;
+        if (usage.fiveHourTokenInM === 0) windows.fiveHours = 0;
+      }
       const billingMode = plan.billingMode;
-      const fee = positiveNumber(plan.comparisonMonthlyPrice ?? plan.monthlyPrice);
+      const fee = displayNumber(plan.comparisonMonthlyPrice ?? plan.monthlyPrice);
       const displayCurrency = plan.currency || '¥';
       const rate = currencyRate(displayCurrency, usdToCnyRate);
-      const monthlyFeeCny = fee && rate ? Math.round(fee * rate * 1e6) / 1e6 : null;
-      if (billingMode === 'payg' ? !unit : !((monthlyFeeCny && windows.monthly) || unit)) continue;
+      const monthlyFeeCny = fee !== null && rate ? Math.round(fee * rate * 1e6) / 1e6 : null;
+      if (!options?.includeUnknown && (billingMode === 'payg' ? !unit : !((monthlyFeeCny && windows.monthly) || unit))) continue;
       points.push({
         slug: relation.slug,
         platformSlug: platform.slug,

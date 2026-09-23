@@ -3360,7 +3360,7 @@
         }
     </style>
     <link rel="stylesheet" href="styles/purchase-guide.css?v=260921a">
-    <link rel="stylesheet" href="styles/homepage-design.css?v=260923b">
+    <link rel="stylesheet" href="styles/homepage-design.css?v=260923c">
 </head>
 <body class="home-page">
     <a class="skip-link" href="#mainViewShell">跳到方案对比</a>
@@ -3368,7 +3368,7 @@
         <header class="home-topbar">
             <a class="home-brand" href="/" aria-label="Coding Plan 首页"><span class="home-brand-mark" aria-hidden="true">cp<span>.</span></span><span>Coding Plan</span></a>
             <nav class="home-nav" aria-label="完整工具"><a href="/platforms/">平台</a><a href="/pricing/">价格</a><a href="/plans/">套餐</a><a href="/monitor/">可用性</a></nav>
-            <div class="home-utilities"><a href="#purchaseGuide" data-open-guide>帮我选 <span aria-hidden="true">↗</span></a><div id="settingsMount"></div></div>
+            <div class="home-utilities"><div id="settingsMount"></div></div>
         </header>
         <main id="homeMain">
         <section class="home-hero" aria-labelledby="homeHeading">
@@ -3376,10 +3376,10 @@
             <p class="home-eyebrow" id="pageTitle">AI Coding Plan 平台评测与对比</p>
             <h1 id="homeHeading">选对 AI，<br>让每一分预算都值得。</h1>
             <p class="home-lede">从模型能力到实际用量，找到适合你的编程方案。<br>先明确需求，再比较价格和取舍。</p>
-            <div class="home-hero-actions"><a class="home-button home-button--primary" href="#purchaseGuide" data-open-guide>找到我的方案 <span aria-hidden="true">→</span></a><a class="home-button" href="#mainViewShell">自己比较 <span aria-hidden="true">↓</span></a></div>
+            <div class="home-hero-actions"><a class="home-button home-button--primary" href="#purchaseGuide" data-open-guide>找到我的方案 <span aria-hidden="true">→</span></a><a class="home-button" href="#selectionWorkspace">自己调整需求 <span aria-hidden="true">↓</span></a></div>
             <p class="home-catalog-summary" id="catalogSummary">37 大平台 · 99 个在售套餐 · 121 个模型</p>
         </div>
-        <aside class="home-shortcuts" aria-label="按问题查找"><p class="home-eyebrow">已有方向？直接查看</p><a href="/platforms/"><span><strong>哪个平台适合我</strong><small>能力、特点与使用限制</small></span><span aria-hidden="true">↗</span></a><a href="/pricing/"><span><strong>同一模型，哪里便宜</strong><small>比较额度与单位成本</small></span><span aria-hidden="true">↗</span></a><a href="/plans/"><span><strong>预算能买到什么套餐</strong><small>月费、用量与订阅权益</small></span><span aria-hidden="true">↗</span></a><a href="/monitor/"><span><strong>正在用的平台还稳定吗</strong><small>查看近期可用性记录</small></span><span class="home-status-dot" aria-hidden="true"></span></a></aside>
+
         </section>
         <details class="home-coverage"><summary>收录范围与最近更新</summary><div class="home-coverage-body">
             <div class="update-date" id="updateDate">更新日期 2026.9.22 | 小米 MiMo 上线 V2.6 系列模型</div>
@@ -3388,16 +3388,21 @@
         </div>
         </details>
 
-        <div id="purchaseGuide"><p class="home-loading">正在准备选购助手… <a href="#mainViewShell">先看方案对比</a></p></div>
-        <section class="home-section-heading" aria-labelledby="compareHeading"><div><p class="home-eyebrow">COMPARE & DECIDE</p><h2 id="compareHeading">把选择放在一起看</h2><p>同一组需求，<span data-monitor-enabled>切换四个角度比较。</span><span data-monitor-disabled>切换三个角度比较。</span>默认从精选平台和模型开始。</p></div><a href="#purchaseGuide" data-open-guide>还没想好？帮我选 →</a></section>
+        <section id="selectionWorkspace" aria-labelledby="needsHeading">
+          <div class="home-section-heading"><div><p class="home-eyebrow">YOUR NEEDS</p><h2 id="needsHeading">我的需求</h2><p>一份需求，同步推荐与对比。先从精选范围开始，也可以自由调整。</p></div><a href="#purchaseGuide" data-open-guide>引导填写 →</a></div>
+          <div id="purchaseGuide" hidden></div>
+          <div id="homepageUnifiedFiltersMount"></div>
+          <section id="purchaseGuideResults" aria-label="当前需求的推荐方案"><p class="home-loading">正在整理符合需求的方案…</p></section>
+        </section>
         <div class="main-view-shell" id="mainViewShell">
+        <section id="offerComparison" aria-label="方案比较"></section>
         <nav class="main-view-tabs" id="mainViewTabs" role="tablist" aria-label="主内容切换">
             <a href="index.html" role="tab" data-main-view="platforms" aria-controls="view-platforms" aria-selected="true" class="is-active">平台对比</a>
             <a href="index.html?view=usage" role="tab" data-main-view="usage" aria-controls="view-usage" aria-selected="false">额度/价格对比</a>
             <a href="index.html?view=plans" role="tab" data-main-view="plans" aria-controls="view-plans" aria-selected="false">套餐对比</a>
             <a href="index.html?view=monitor" role="tab" data-main-view="monitor" aria-controls="view-monitor" aria-selected="false">可用性监控</a>
         </nav>
-        <div id="homepageUnifiedFiltersMount"></div>
+        <div id="offerFocusContext"></div>
         <div class="main-view-panels">
             <div id="view-platforms" role="tabpanel" data-main-view-panel="platforms">
                 <div class="platform-catalog-intro-row">
@@ -6434,7 +6439,7 @@
 
     <script src="monitor/monitor-config.js"></script>
     <script src="monitor/monitor-config.local.js"></script>
-    <script src="scripts/entity-data.js?v=260921a"></script>
+    <script src="scripts/entity-data.js?v=260923c"></script>
     <script src="scripts/filter-state.js?v=260921a"></script>
     <script src="scripts/platform-pages.js?v=b5b0ec3644"></script>
     <script src="scripts/platform-catalog.js?v=260922a"></script>
@@ -6443,10 +6448,12 @@
     <script src="scripts/platform-comparison.js?v=260918a"></script>
     <script src="scripts/main-views.js?v=260923a"></script>
     <script src="scripts/plan-composite-price-chart.js?v=260904a"></script>
-    <script src="scripts/homepage.js?v=260923a"></script>
+    <script src="scripts/homepage.js?v=260923c"></script>
     <script src="scripts/purchase-guide.js?v=260921a"></script>
+    <script src="scripts/offer-workspace.js?v=260923c"></script>
+    <script src="scripts/offer-workspace-ui.js?v=260923c"></script>
     <script src="scripts/homepage-filters.js?v=260922a"></script>
-    <script src="scripts/purchase-guide-ui.js?v=260922a"></script>
+    <script src="scripts/purchase-guide-ui.js?v=260923c"></script>
     <script src="scripts/homepage-ui.js?v=260922a"></script>
 </body>
 </html>

@@ -537,6 +537,7 @@
                     context: entityContext,
                     platformCatalog: getPlatformCatalogConfig()
                 });
+                filteredPlans = window.CodingPlanOfferWorkspace?.filter(filteredPlans, 'plans') || filteredPlans;
                 showingCount.textContent = filteredPlans.length;
                 totalCount.textContent = allPlans.length;
                 if (currentSort.column) {
@@ -1286,11 +1287,12 @@
             }
 
             tableBody.innerHTML = filteredPlans.map(plan => {
+                const displayPlan = window.CodingPlanOfferWorkspace?.planDisplay(plan) || plan;
                 const pinId = PlatformCatalog.getPlanRowPinId(plan);
                 const pinned = PlatformCatalog.isPlatformPinned(pinId, planPinnedIds);
                 const pinHtml = PlatformCatalog.buildRowPinButtonHtml({ pinId, pinned });
                 return `
-                <tr class="plan-row${plan.discontinued ? ' discontinued' : ''}${pinned ? ' is-pinned' : ''}">
+                <tr data-plan-slug="${escapeHtml(plan.slug)}" class="plan-row${plan.discontinued ? ' discontinued' : ''}${pinned ? ' is-pinned' : ''}">
                     <td class="sticky-first"><span class="table-pin-cell">${pinHtml}<span class="vendor-name">${escapeHtml(plan.platformName)}</span></span></td>
                     <td class="sticky-second"><span class="plan-name">${escapeHtml(plan.name)}</span></td>
                     <td>
@@ -1299,7 +1301,7 @@
                         </a>
                     </td>
                     <td class="rating-stars">${plan.rating > 0 ? '★'.repeat(plan.rating) + '☆'.repeat(5 - plan.rating) : '待评定'}</td>
-                    <td class="monthly-token-cell" title="所选模型各档位的月 Token 参考范围，不相加；详细口径见额度/价格对比">${escapeHtml(CodingPlanFilters.formatMonthlyTokens(plan, window.__codingplanUnifiedFiltersState || CodingPlanFilters.createDefaultState(appConfig)))}</td>
+                    <td class="monthly-token-cell" title="所选模型各档位的月 Token 参考范围，不相加；详细口径见额度/价格对比">${escapeHtml(CodingPlanFilters.formatMonthlyTokens(displayPlan, window.__codingplanUnifiedFiltersState || CodingPlanFilters.createDefaultState(appConfig)))}</td>
                     <td><span class="price">${formatPlanPriceDisplay(plan, plan.firstMonthPrice)} <span class="unit">/ 首月</span></span></td>
                     <td><span class="price-monthly">${formatPlanPriceDisplay(plan, plan.monthlyPrice)} <span class="unit">/ 月</span></span></td>
                     <td><span class="price-normal">${formatPlanPriceDisplay(plan, plan.quarterlyPrice)} ${typeof plan.quarterlyPrice === 'number' ? `<span class="price-original">${formatPlanPriceDisplay(plan, plan.monthlyPrice * 3)}</span>` : ''} <span class="unit">/ 季</span></span></td>
@@ -1308,7 +1310,7 @@
                     <td><span class="request-count">${formatRequestCount(plan.weeklyRequests)} <span class="unit">/ 周</span></span></td>
                     <td><span class="request-count">${formatRequestCount(plan.monthlyRequests)} <span class="unit">/ 月</span></span></td>
                     <td>
-                        ${PlatformCatalog.buildPlanModelListHtml(plan.modelLabels)}
+                        ${PlatformCatalog.buildPlanModelListHtml(displayPlan.modelLabels)}
                     </td>
                     <td>
                         ${plan.benefits.map(benefit => `<span class="benefit">${escapeHtml(benefit)}</span>`).join('')}
@@ -1319,6 +1321,7 @@
             `;
             }).join('');
 
+            window.CodingPlanOfferWorkspace?.decorate();
             setTimeout(updateStickyColumns, 0);
         }
 
@@ -2228,11 +2231,12 @@
             }
 
             if (window.__codingplanUnifiedFiltersState && typeof CodingPlanFilters !== 'undefined') {
-                const filteredUnified = CodingPlanFilters.filterPlatforms(allPlatforms, window.__codingplanUnifiedFiltersState, {
+                let filteredUnified = CodingPlanFilters.filterPlatforms(allPlatforms, window.__codingplanUnifiedFiltersState, {
                     platformCatalog: cat,
                     context: entityContext,
                     usdToCnyRate: appConfig.usdToCnyRate, entityData: EntityData
                 });
+                filteredUnified = window.CodingPlanOfferWorkspace?.filter(filteredUnified, 'platforms') || filteredUnified;
                 const orderedUnified = PlatformCatalog.sortPlatformsByPinned
                     ? PlatformCatalog.sortPlatformsByPinned(filteredUnified, platformPinnedIds)
                     : filteredUnified;
@@ -2241,6 +2245,7 @@
                 const showingEl = document.getElementById('platformShowingCount');
                 const totalEl = document.getElementById('platformTotalCount');
                 if (grid) grid.innerHTML = orderedUnified.map(buildPlatformCardHtml).join('');
+                window.CodingPlanOfferWorkspace?.decorate();
                 if (empty) empty.hidden = orderedUnified.length > 0;
                 if (showingEl) showingEl.textContent = String(orderedUnified.length);
                 const homeCount = document.getElementById('homePlatformCount');
@@ -2371,7 +2376,7 @@
                 document.head.appendChild(link);
             }
             if (typeof window.mountModelComparisonView !== 'function') {
-                await loadScriptOnce('scripts/model-comparison.js?v=260922a');
+                await loadScriptOnce('scripts/model-comparison.js?v=260923c');
             }
             if (typeof window.mountModelComparisonView === 'function') {
                 await window.mountModelComparisonView(root, {
@@ -2466,6 +2471,7 @@
                     console.error('可用性监控视图加载失败:', err);
                 }
             }
+            window.dispatchEvent(new Event('codingplan:view-ready'));
         }
 
         function initMainViewsShell() {
