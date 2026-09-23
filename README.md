@@ -116,19 +116,6 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | [Codex · Plus](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $20/月 | 400M | 2,400M | 9,600M | ¥0.0143/M | 倍率换算 |
 | [Codex · Pro *5](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $100/月 | 12,000M | 12,000M | 48,000M | ¥0.0143/M | 倍率换算 |
 
-### GPT-5.6-Luna
-
-| 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 | 口径 |
-|---|---|---|---:|---:|---:|---:|---|
-| [Codex · Pro *20](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $200/月 | 24,000M | 24,000M | 96,000M | ¥0.0143/M | 倍率换算 |
-| [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | - | $1/月 | 86.07M | 172.14M | 286.9M | ¥0.0238/M | 计算 |
-| [Codex · Plus](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $20/月 | 200M | 1,200M | 4,800M | ¥0.0286/M | 倍率换算 |
-| [Codex · Pro *5](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $100/月 | 6,000M | 6,000M | 24,000M | ¥0.0286/M | 倍率换算 |
-| [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | - | $10/月 | 114.76M | 286.9M | 573.8M | ¥0.1183/M | 计算 |
-| [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | - | $20/月 | 172.14M | 430.35M | 860.7M | ¥0.1578/M | 计算 |
-| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | [272K] | $10/月 | 86.07M | 215.18M | 430.4M | ¥0.1578/M | 计算 |
-| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | - | $10/月 | 44.97M | 112.43M | 224.9M | ¥0.3026/M | 计算 |
-
 ### GPT-6-Astra
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 | 口径 |
@@ -144,16 +131,6 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | [Claude · Max *5](https://api.dreamfree.space/c/s/cpyqclaudeup) | - | $100/月 | 132.4M | 836.1M | 3,344.5M | ¥0.2033/M | 实测 |
 | [Claude · Max *20](https://api.dreamfree.space/c/s/cpyqclaudeup) | - | $200/月 | 441.5M | 1,672.2M | 6,689M | ¥0.2033/M | 实测 |
 | [Claude · Pro](https://api.dreamfree.space/c/s/cpyqclaudeup) | - | $20/月 | 22.1M | 100.3M | 401.3M | ¥0.3386/M | 实测 |
-
-### GPT-5.6-Sol
-
-| 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 | 口径 |
-|---|---|---|---:|---:|---:|---:|---|
-| [Codex · Pro *20](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $200/月 | 2,400M | 2,400M | 9,600M | ¥0.1414/M | 倍率换算 |
-| [Codex · Plus](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $20/月 | 20M | 120M | 480M | ¥0.2836/M | 实测 |
-| [Codex · Pro *5](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $100/月 | 600M | 600M | 2,400M | ¥0.2836/M | 实测 |
-| [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | - | $10/月 | 16.07M | 40.17M | 80.3M | ¥0.8466/M | 计算 |
-| [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | - | $20/月 | 18.36M | 45.9M | 91.8M | ¥1.481/M | 计算 |
 
 ### GLM-5.3
 
@@ -245,13 +222,13 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 | DeepSeek | 1 | 按量 API | DeepSeek-V4.1-Flash、DeepSeek-V4-Pro-0813 |
 | 共绩算力 | 1 | 按量 API | GLM-5.3、GLM-5.3-Flash、Kimi-K3、DeepSeek-V4-Preview、等 10 个 |
 | 优云智算 | 6 | ¥49–¥999/月 | DeepSeek-V4-Flash-0731、DeepSeek-V3.2、DeepSeek-V4-Flash-Vision-Exp、GLM-5.1、等 8 个 |
-| Codex | 3 | $20–$200/月 | GPT-5.6-Luna、GPT-5.6-Sol、GPT-6-Astra、GPT-6-Luna、等 12 个 |
+| Codex | 3 | $20–$200/月 | GPT-6-Astra、GPT-6-Luna、GPT-6-Sol、GPT-5.2、等 12 个 |
 | Claude | 3 | $20–$200/月 | Claude Opus 5、Claude Fable 5、Claude Fable 5.1、Claude Haiku 4.5、等 10 个 |
 | Ollama | 2 | $20–$100/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、Gemini-3-Flash-Preview、GLM-5.1、等 9 个 |
 | 阿里·百炼 Token Plan | 3 | ¥198–¥1,398/月 | DeepSeek-V4-Flash-0731、DeepSeek-V3.2、DeepSeek-V4-Pro-0813、DeepSeek-V4-Pro-Preview、等 15 个 |
 | 阿里·百炼 Coding Plan | 1 | ¥200/月 | GLM-4.7、GLM-5、Kimi-K2.5、MiniMax-M2.5、等 10 个 |
 | 小米·MiMo | 4 | ¥39–¥659/月 | MiMo-V2-Omni、MiMo-V2-Pro、MiMo-V2.5、MiMo-V2.5-Pro、等 7 个 |
-| Command Code | 3 | $1–$20/月 | DeepSeek-V4-Flash-0731、GLM-5.3、GLM-5.3-Flash、GPT-5.6-Luna、等 59 个 |
+| Command Code | 3 | $1–$20/月 | DeepSeek-V4-Flash-0731、GLM-5.3、GLM-5.3-Flash、Kimi-K3、等 59 个 |
 | 百度·千帆 | 4 | ¥9.9–¥600/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、ERNIE-5.1、GLM-5.1、等 6 个 |
 | 华为云 | 4 | ¥59–¥799/月 | DeepSeek-V4-Flash-0731、GLM-5、GLM-5.1、Kimi-K2.6 |
 | 腾讯云 | 4 | ¥39–¥599/月 | GLM-5.1、HY-2.0、Kimi-K2.5、MiniMax-M2.7 |
@@ -296,6 +273,7 @@ Kimi-K3，7.16日发布的目前最强模型，但费用较贵，按需使用。
 
 - Codex Plus、Pro *5、Pro *20 新增 GPT-6-Sol 与 GPT-6-Luna，均支持文本和图片输入
 - 两款模型 Token 额度暂按同套餐 GPT-5.6-Sol、GPT-5.6-Luna 的 2 倍估算，非官方额度或独立实测
+- 额度/价格默认筛选和精选比较改用 GPT-6-Sol / Luna，旧型号仍可手动选择
 
 ### 2026.9.22
 

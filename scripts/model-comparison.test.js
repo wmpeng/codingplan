@@ -76,6 +76,8 @@ test('default filters use the curated available platforms and models', () => {
   assert.equal(DEFAULT_PLATFORM_SLUGS.length, 9);
   assert.equal(DEFAULT_MODEL_SLUGS.length, 14);
   assert.equal(DEFAULT_MODEL_SLUGS.includes('gpt-6-astra'), true);
+  const generationDefaults = createDefaultFilterState(['gpt-6-sol', 'gpt-6-luna', 'gpt-5-6-sol', 'gpt-5-6-luna'].map(modelSlug => ({ platformSlug: 'codex', modelSlug })));
+  assert.deepEqual(generationDefaults.models, new Set(['gpt-6-sol', 'gpt-6-luna']));
   assert.equal(DEFAULT_MODEL_SLUGS.includes('grok-4-6'), false);
   assert.equal(DEFAULT_MODEL_SLUGS.includes('muse-spark-1-2'), true);
   assert.equal(DEFAULT_MODEL_SLUGS.includes('minimax-m3'), true);
@@ -261,17 +263,17 @@ test('unit price sorting uses package price ascending as the tie breaker', () =>
 test('preset comparisons are configured outside the renderer', () => {
   const source = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'model-comparison-presets.json'), 'utf8'));
   const config = normalizePresetConfig(source);
-  assert.equal(config.groups.length, 8);
-  assert.deepEqual(config.groups.map((group) => group.kind), ['single', 'single', 'single', 'single', 'single', 'single', 'multi', 'multi']);
+  assert.equal(config.groups.length, 7);
+  assert.deepEqual(config.groups.map((group) => group.kind), ['single', 'single', 'single', 'single', 'single', 'multi', 'multi']);
   assert.deepEqual(config.groups[0].modelSlugs, ['deepseek-v4-flash-0731']);
   assert.equal(config.groups[1].title, 'DeepSeek V4.1 Flash');
   assert.deepEqual(config.groups[1].modelSlugs, ['deepseek-v4-1-flash']);
   assert.deepEqual(config.groups[3].modelSlugs, ['gpt-6-sol']);
   assert.deepEqual(config.groups[4].modelSlugs, ['gpt-6-luna']);
-  assert.equal(config.groups[6].title, '甜品级模型对比');
-  assert.deepEqual(config.groups[6].modelSlugs, ['deepseek-v4-1-flash', 'deepseek-v4-flash-0731', 'glm-5-3-flash', 'gpt-5-6-luna', 'gpt-6-luna']);
-  assert.equal(config.groups[7].title, 'SOTA模型对比');
-  assert.deepEqual(config.groups[7].modelSlugs, ['gpt-6-astra', 'gpt-6-sol', 'claude-opus-5', 'gpt-5-6-sol', 'glm-5-3', 'kimi-k3']);
+  assert.equal(config.groups[5].title, '甜品级模型对比');
+  assert.deepEqual(config.groups[5].modelSlugs, ['deepseek-v4-1-flash', 'deepseek-v4-flash-0731', 'glm-5-3-flash', 'gpt-6-luna']);
+  assert.equal(config.groups[6].title, 'SOTA模型对比');
+  assert.deepEqual(config.groups[6].modelSlugs, ['gpt-6-astra', 'gpt-6-sol', 'claude-opus-5', 'glm-5-3', 'kimi-k3']);
 });
 
 test('preset rows include subscriptions and API while sorting by unit and package price', () => {
