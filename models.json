@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-22T06:45:07Z",
+  "generatedAt": "2026-09-23T17:45:25Z",
   "benchmarks": {
     "artificialAnalysis": {
       "name": "Artificial Analysis Intelligence Index",
       "version": "v4.3.2",
       "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-6-sol",
-      "fetchedAt": "2026-09-22T06:45:07Z",
-      "availableConfigurations": 656
+      "fetchedAt": "2026-09-23T17:45:25Z",
+      "availableConfigurations": 673
     },
     "deepSWE": {
       "name": "DeepSWE",
@@ -19,9 +19,9 @@
     }
   },
   "coverage": {
-    "artificialAnalysisScores": 84,
+    "artificialAnalysisScores": 86,
     "deepSWEScores": 28,
-    "multimodalKnown": 86
+    "multimodalKnown": 88
   },
   "models": [
     {
@@ -1167,6 +1167,54 @@
           "modelName": "gpt-6-astra",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         }
+      }
+    },
+    {
+      "slug": "gpt-6-sol",
+      "name": "GPT-6-Sol",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 48,
+          "scoreExact": 47.5276426437724,
+          "configuration": "GPT-6 Sol (max)",
+          "modelSlug": "gpt-6-sol",
+          "sourceUrl": "https://artificialanalysis.ai/models/gpt-6-sol"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "gpt-6-luna",
+      "name": "GPT-6-Luna",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 37,
+          "scoreExact": 37.2559686869738,
+          "configuration": "GPT-6 Luna (max)",
+          "modelSlug": "gpt-6-luna",
+          "sourceUrl": "https://artificialanalysis.ai/models/gpt-6-luna"
+        },
+        "deepSWE": null
       }
     },
     {
