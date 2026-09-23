@@ -2,7 +2,7 @@
 .usage-heading { display: flex; align-items: end; justify-content: space-between; gap: 28px; padding: 8px 4px 0; }
 .usage-heading h2 { margin: 2px 0 0; font-size: clamp(1.45rem, 2.5vw, 2rem); letter-spacing: -.03em; }
 .usage-heading > p { max-width: 660px; margin: 0; color: #596579; line-height: 1.7; }
-.usage-eyebrow { margin: 0; color: #1677ff; font-size: 12px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+.usage-eyebrow { margin: 0; color: #1677ff; font-size: 12px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
 .usage-method-note { padding: 13px 16px; border: 1px solid #cfe2ff; border-radius: 12px; background: #f3f8ff; color: #43536a; font-size: 13px; line-height: 1.65; }
 .usage-method-note strong { color: #1f4f91; }
 .usage-filters.filter-bar { margin: 0; }
@@ -19,7 +19,7 @@
 .usage-inline-filter select { width: 72px; cursor: pointer; }
 .usage-score-filter input { width: 54px; }
 .usage-score-filter input::placeholder { color: var(--text-tertiary); opacity: 1; }
-.usage-color-control { display: inline-flex; align-items: center; gap: 9px; min-height: 42px; padding: 4px 6px 4px 14px; border: 1px solid rgba(23,32,51,.08); border-radius: 999px; background: rgba(255,255,255,.72); color: var(--text-secondary); font-size: 13px; font-weight: 500; box-shadow: 0 10px 20px rgba(23,32,51,.05); }
+.usage-color-control { display: inline-flex; align-items: center; gap: 9px; min-height: 42px; padding: 4px 6px 4px 14px; border: 1px solid rgba(23,32,51,.08); border-radius: 7px; background: #fff; color: var(--text-secondary); font-size: 13px; font-weight: 500; box-shadow: none; }
 .usage-color-control .usage-segments { border: 0; background: rgba(23,32,51,.06); }
 .usage-counts { color: var(--text-tertiary); font-size: 12px; white-space: nowrap; }
 .usage-color-legend { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 7px 12px; padding: 1px 5px; color: #657187; font-size: 12px; }
@@ -32,13 +32,13 @@
 .usage-legend-item.is-muted { opacity: .42; }
 .usage-legend-item.is-muted:hover, .usage-legend-item.is-muted.is-hovered { opacity: 1; }
 .usage-color-legend i { width: 9px; height: 9px; border-radius: 50%; }
-.usage-presets { padding: 20px; border: 1px solid #dbe4ee; border-radius: 20px; background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(244,249,248,.94)); box-shadow: 0 14px 34px rgba(30,48,73,.07); }
+.usage-presets { padding: 20px; border: 1px solid #dbe4ee; border-radius: 12px; background: #fff; box-shadow: var(--shadow-sm); }
 .usage-presets[hidden] { display: none; }
 .usage-preset-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 22px; margin-bottom: 16px; }
 .usage-preset-heading h3, .usage-explorer-heading h3 { margin: 2px 0 0; color: #172033; font-size: 20px; }
 .usage-preset-heading > div > p:last-child, .usage-explorer-heading p { margin: 5px 0 0; color: #657187; font-size: 13px; line-height: 1.55; }
 .usage-preset-heading-actions { display: flex; flex: 0 0 auto; align-items: center; gap: 10px; }
-.usage-preset-note { padding: 6px 10px; border: 1px solid rgba(15,118,110,.16); border-radius: 999px; background: rgba(236,253,245,.82); color: #0f766e; font-size: 11px; font-weight: 750; white-space: nowrap; }
+.usage-preset-note { padding: 6px 10px; border: 1px solid rgba(15,118,110,.16); border-radius: 999px; background: rgba(236,253,245,.82); color: #0f766e; font-size: 11px; font-weight: 650; white-space: nowrap; }
 .usage-preset-scope-control { flex: 0 0 auto; }
 .usage-preset-scope-control button { font-size: 11px; white-space: nowrap; }
 .usage-preset-grid { display: grid; gap: 14px; }
@@ -52,7 +52,7 @@
 .usage-preset-card > header > span { padding: 3px 7px; border-radius: 999px; background: #edf2f7; color: #667489; font-size: 10px; white-space: nowrap; }
 .usage-preset-table-scroll { width: 100%; overflow-x: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
 .usage-preset-table { width: 100%; min-width: 0; table-layout: fixed; border-collapse: separate; border-spacing: 0; }
-.usage-preset-table th { padding: 9px 10px; border-bottom: 1px solid #dfe6ed; background: #f3f6f9; color: #6c788a; font-size: 11px; font-weight: 800; text-align: left; white-space: nowrap; }
+.usage-preset-table th { padding: 9px 10px; border-bottom: 1px solid #dfe6ed; background: #f3f6f9; color: #6c788a; font-size: 11px; font-weight: 600; text-align: left; white-space: nowrap; }
 .usage-preset-table th:first-child { width: 68%; }
 .usage-preset-table th:last-child { width: 32%; text-align: right; }
 .usage-preset-table td { padding: 10px; border-bottom: 1px solid #edf1f4; color: #344258; font-size: 12px; line-height: 1.35; vertical-align: top; }
@@ -68,13 +68,13 @@
 .usage-preset-price { flex: 0 0 auto; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .usage-preset-secondary-line { margin-top: 4px; color: #7a8698; font-size: 10px; flex-wrap: wrap; }
 .usage-preset-separator { color: #b0b9c5; }
-.usage-preset-qualifier { display: inline; margin-left: -2px; color: #8a5a00; font-size: 9px; font-weight: 750; }
+.usage-preset-qualifier { display: inline; margin-left: -2px; color: #8a5a00; font-size: 9px; font-weight: 650; }
 .usage-preset-metrics { font-variant-numeric: tabular-nums; text-align: right; }
-.usage-preset-metric-primary { color: #243349; font-size: 12px; font-weight: 750; white-space: nowrap; }
+.usage-preset-metric-primary { color: #243349; font-size: 12px; font-weight: 650; white-space: nowrap; }
 .usage-preset-metric-secondary { justify-content: flex-end; white-space: nowrap; }
 .usage-preset-table .usage-table-empty { padding: 22px 10px; color: #7a8699; text-align: center; }
 .usage-explorer-heading { padding: 6px 4px 0; }
-.usage-chart-card { position: relative; padding: 20px 22px 14px; border: 1px solid #dfe5ed; border-radius: 18px; background: #fff; box-shadow: 0 12px 32px rgba(30,48,73,.07); }
+.usage-chart-card { position: relative; padding: 20px 22px 14px; border: 1px solid #dfe5ed; border-radius: 12px; background: #fff; box-shadow: var(--shadow-sm); }
 .usage-chart-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
 .usage-chart-head h3 { margin: 0; color: #172033; font-size: 19px; }
 .usage-chart-head p { margin: 6px 0 0; color: #6a7689; font-size: 13px; }
@@ -83,7 +83,7 @@
 .usage-chart-controls { display: flex; align-items: center; gap: 12px; }
 .usage-segments { display: flex; padding: 2px; border: 1px solid #d8dee8; border-radius: 9px; background: #f4f6f9; }
 .usage-segments button { padding: 6px 10px; border: 0; border-radius: 6px; background: transparent; color: #596579; cursor: pointer; }
-.usage-segments button.is-active { background: #172033; color: #fff; }
+.usage-segments button.is-active { background: #fff; color: var(--accent-primary); box-shadow: 0 1px 3px #17203318; }
 .usage-chart-stage { position: relative; }
 .usage-chart { width: 100%; height: 470px; margin-top: 4px; }
 .usage-bar-chart-stage { margin-top: 8px; }
@@ -95,7 +95,7 @@
 .usage-table-section { margin: 18px -4px 0; padding-top: 18px; border-top: 1px solid #e7ebf1; }
 .usage-table-scroll { overflow-x: auto; overflow-y: visible; border: 1px solid #e1e6ed; border-radius: 12px; background: #fff; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
 .usage-data-table { width: 100%; min-width: 2140px; border-collapse: separate; border-spacing: 0; }
-.usage-data-table th { position: sticky; top: 0; z-index: 3; padding: 12px 14px; border-bottom: 1px solid #dfe5ed; background: #f5f7fb; color: #667287; font-size: 12px; font-weight: 800; letter-spacing: .02em; text-align: left; white-space: nowrap; user-select: none; }
+.usage-data-table th { position: sticky; top: 0; z-index: 3; padding: 12px 14px; border-bottom: 1px solid #dfe5ed; background: #f5f7fb; color: #667287; font-size: 12px; font-weight: 600; letter-spacing: .02em; text-align: left; white-space: nowrap; user-select: none; }
 .usage-data-table th.sortable { cursor: pointer; transition: background .15s ease, color .15s ease; }
 .usage-data-table th.sortable:hover, .usage-data-table th.sortable:focus-visible { background: #edf2f8; color: #253247; outline: none; }
 .usage-data-table th.sortable::after { content: ''; display: inline-block; width: 0; height: 0; margin-left: 7px; vertical-align: middle; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid #9aa5b5; opacity: .5; }
@@ -119,7 +119,7 @@
 .usage-data-table tbody tr:hover td.sticky-first { background: #eef6ff; }
 .usage-data-table .numeric { font-variant-numeric: tabular-nums; }
 .usage-table-model { color: #253247; font-weight: 650; }
-.usage-table-unit-price { color: #0f766e; font-weight: 750; }
+.usage-table-unit-price { color: #0f766e; font-weight: 650; }
 .usage-table-api-pricing { min-width: 280px; color: #475569; white-space: normal !important; }
 .usage-table-note { min-width: 700px; white-space: normal !important; }
 .usage-data-table .usage-table-empty { padding: 30px 14px; color: #7a8699; text-align: center; }
@@ -158,4 +158,26 @@
   .usage-table-scroll { border-radius: 10px; }
   .usage-data-table { min-width: 2040px; }
   .usage-data-table th, .usage-data-table td { padding: 10px 12px; }
+}
+
+/* 图表标题、控制区和图例各占一层，窄屏可完整操作。 */
+.usage-chart-head { padding-bottom: 16px; border-bottom: 1px solid var(--border-light); align-items: center; }
+.usage-chart-head h3 { font-size: 16px; font-weight: 650; letter-spacing: -.01em; }
+.usage-chart-head p { font-size: 12px; line-height: 1.65; }
+.usage-chart-controls { flex-wrap: wrap; gap: 8px; }
+.usage-chart-head select { font: inherit; font-size: 12px; min-height: 36px; }
+.usage-segments button { min-height: 30px; font: inherit; font-size: 12px; }
+.usage-color-control { min-height: 38px; }
+.usage-color-legend { padding: 4px 0; }
+.usage-color-legend > div { max-height: 84px; }
+.usage-view .usage-data-table .numeric { text-align: right; }
+.usage-chart-head .usage-table-count { white-space: normal; text-align: right; }
+.usage-segments button:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+@media (max-width: 760px) {
+  .usage-chart-head { display: block; }
+  .usage-chart-controls { justify-content: flex-start; margin-top: 12px; }
+  .usage-chart-head label { flex-wrap: wrap; white-space: normal; }
+  .usage-chart-head select { max-width: 100%; }
+  .usage-empty { width: calc(100% - 32px); text-align: center; line-height: 1.8; }
+  .usage-chart-head .usage-table-count { display: block; margin-top: 8px; text-align: left; }
 }

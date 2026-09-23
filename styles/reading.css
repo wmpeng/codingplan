@@ -1,0 +1,40 @@
+/* 站点阅读层：覆盖同步文章自己的装饰，不改变正文、图表与内容结构。 */
+body.article-page { padding: 24px 28px 64px; font-size: 16px; line-height: 1.85; }
+.article-page .doc-wrap { max-width: 1100px; }
+.article-page .back-nav { display: flex; align-items: center; gap: 10px; padding-bottom: 20px; margin-bottom: 28px; border-bottom: 1px solid var(--border-color); }
+.article-page .back-home-btn { min-height: 40px; margin: 0; padding: 8px 13px; border: 1px solid var(--border-color); border-radius: 7px; background: #fff; color: var(--text-secondary); font-size: 13px; font-weight: 500; text-decoration: none; }
+.article-page .back-home-btn:hover { background: var(--accent-soft); color: var(--accent-primary); transform: none; opacity: 1; }
+.article-page .back-home-btn:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
+.article-page .doc-wrap > .back-home-btn { margin-bottom: 24px; }
+.article-page :is(article.doc, .articles-page) { background: #fff; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); border-radius: 12px; padding: clamp(24px, 4vw, 48px); }
+.article-page :is(article.doc, .articles-page)::before { display: none; }
+.article-page :is(.doc-kicker, .articles-kicker-top) { color: var(--accent-primary); font-size: 12px; letter-spacing: .05em; }
+.article-page :is(article.doc, .articles-page) h1 { font-size: clamp(25px, 3vw, 36px); font-weight: 650; line-height: 1.45; letter-spacing: -.025em; color: var(--text-primary); }
+.article-page article.doc h2 { font-size: 23px; font-weight: 650; line-height: 1.5; margin-top: 40px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
+.article-page article.doc h3 { font-size: 18px; font-weight: 650; line-height: 1.6; }
+.article-page article.doc p { line-height: 1.85; }
+.article-page article.doc a { color: var(--accent-primary); text-underline-offset: 4px; }
+.article-page article.doc blockquote { background: #f4f7fc; border-left-color: #8aaed8; box-shadow: none; border-radius: 0 7px 7px 0; }
+.article-page article.doc table { font-size: 13px; font-variant-numeric: tabular-nums; }
+.article-page article.doc th { background: #f3f6fa; font-weight: 600; }
+.article-page article.doc :is(.doc-toc, .doc-toc--inline) { border: 1px solid var(--border-color); border-radius: 8px; background: #f8fafc; box-shadow: none; }
+.article-page .articles-page { max-width: 900px; margin: 0 auto; }
+.article-page .articles-lead { font-size: 14px; color: var(--text-secondary); margin-bottom: 32px; }
+.article-page .articles-section { margin-bottom: 32px; }
+.article-page .articles-section h2 { font-size: 18px; font-weight: 650; border-color: var(--border-color); }
+.article-page .articles-list { gap: 0; }
+.article-page .articles-list li { padding: 16px 0; border-bottom: 1px solid var(--border-light); grid-template-columns: 90px minmax(0, 1fr); gap: 16px; }
+.article-page .articles-list li:last-child { border-bottom: 0; }
+.article-page .articles-list time { font-size: 12px; color: var(--text-tertiary); }
+.article-page .articles-item-main a { font-size: 15px; font-weight: 550; line-height: 1.65; }
+.article-page .articles-kicker { color: var(--text-tertiary); font-size: 11px; }
+@media (max-width: 600px) {
+  body.article-page { padding: 18px 14px 40px; font-size: 15px; }
+  .article-page :is(article.doc, .articles-page) { padding: 24px 20px; }
+  .article-page .back-nav { padding-bottom: 16px; margin-bottom: 20px; }
+  .article-page .articles-list li { grid-template-columns: 1fr; gap: 4px; }
+  .article-page article.doc h2 { font-size: 21px; margin-top: 32px; }
+}
+
+.article-page .doc-wrap:has(> .articles-page) { max-width: 900px; }
+.article-page .doc-toc { background: #f8fafc; border-color: var(--border-color); box-shadow: none; border-radius: 8px; }

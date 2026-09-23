@@ -36,9 +36,9 @@
 }
 
 .platform-card:hover {
-    transform: translateY(-2px);
+    transform: none;
     box-shadow: var(--shadow-lg);
-    border-color: rgba(15, 118, 110, 0.22);
+    border-color: #a5b9d1;
 }
 
 .platform-card.is-discontinued {
@@ -80,7 +80,7 @@
 .platform-name,
 .platform-name-link {
     font-size: 18px;
-    font-weight: 800;
+    font-weight: 650;
     color: var(--text-primary);
     text-decoration: none;
 }
@@ -162,8 +162,8 @@
 }
 
 .platform-card.is-pinned {
-    border-color: rgba(15, 118, 110, 0.22);
-    box-shadow: 0 12px 28px rgba(15, 118, 110, 0.08);
+    border-color: #a5b9d1;
+    box-shadow: var(--shadow-sm);
 }
 
 .platform-detail-pin-btn {
@@ -269,7 +269,7 @@
 
 .platform-dimensions .dim-score {
     font-size: 18px;
-    font-weight: 800;
+    font-weight: 650;
     line-height: 1;
     color: var(--accent-primary);
     letter-spacing: -0.02em;
@@ -444,7 +444,7 @@
 .platform-detail-title {
     margin: 0;
     font-size: 22px;
-    font-weight: 800;
+    font-weight: 650;
     line-height: 1.25;
     color: var(--text-primary);
 }
@@ -521,7 +521,7 @@
 .platform-detail-section-title {
     margin: 0 0 12px;
     font-size: 14px;
-    font-weight: 800;
+    font-weight: 650;
     letter-spacing: 0.04em;
     color: var(--text-secondary);
 }
@@ -583,7 +583,7 @@
 
 .platform-detail-api-table thead th {
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 650;
     color: var(--text-secondary);
     background: rgba(244, 236, 223, 0.7);
     border-bottom: 1px solid rgba(23, 32, 51, 0.08);
@@ -648,13 +648,13 @@
     align-items: center;
     padding: 14px 14px 13px;
     border-radius: 14px;
-    background: rgba(244, 236, 223, 0.55);
+    background: #f6f8fb;
     border: 1px solid rgba(23, 32, 51, 0.05);
 }
 
 .platform-detail-dim-score {
     font-size: 22px;
-    font-weight: 800;
+    font-weight: 650;
     line-height: 1;
     color: var(--accent-primary, #0f766e);
     text-align: left;
@@ -673,7 +673,7 @@
 .platform-detail-dim-label {
     display: block;
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 650;
     color: var(--text-primary);
     margin-bottom: 4px;
 }
@@ -736,7 +736,7 @@
 
 .platform-detail-plan-name {
     font-size: 15px;
-    font-weight: 800;
+    font-weight: 650;
     color: var(--text-primary);
     line-height: 1.3;
     min-width: 0;
@@ -783,7 +783,7 @@
 .platform-detail-price-main {
     color: var(--text-primary);
     font-size: 15px;
-    font-weight: 800;
+    font-weight: 650;
     font-variant-numeric: tabular-nums;
     line-height: 1.3;
     white-space: nowrap;
@@ -942,3 +942,27 @@
 }
 
 @media (max-width: 800px) { .platform-card-grid { grid-template-columns: 1fr; } .platform-detail-dialog { width: calc(100vw - 24px); max-height: calc(100dvh - 24px); padding: 20px; } .platform-detail-dim-grid { grid-template-columns: 1fr; } }
+
+/* 快速详情与目录使用同一套表面和文本颜色。 */
+.platform-card .platform-rating { color: #3f5d80; background: #f0f4f9; padding: 3px 6px; border-radius: 5px; font-size: 12px; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.platform-card .platform-pin-btn { width: 32px; height: 32px; }
+.platform-card .platform-card-links { border-top: 1px solid var(--border-light); padding-top: 12px; }
+.platform-card .platform-card-links .platform-guide-link { padding: 0; }
+.platform-card .platform-models .model-tag { overflow-wrap: anywhere; }
+.platform-detail-dialog { background: #fff; border-radius: 12px; padding: 28px; overscroll-behavior: contain; }
+.platform-detail-title { font-weight: 650; letter-spacing: -.02em; }
+.platform-detail-close { border: 1px solid var(--border-color); border-radius: 7px; background: white; }
+.platform-detail-close:hover { background: #f0f4f9; }
+.platform-detail-section-title { font-size: 14px; font-weight: 650; }
+.platform-detail-dim { border-radius: 8px; border-color: var(--border-light); }
+.platform-detail-action, .platform-detail-jump-plans { border-radius: 7px; }
+.platform-catalog-empty { background: #fff; border-style: solid; color: var(--text-secondary); padding: 48px 24px; line-height: 1.8; }
+@media (max-width: 480px) {
+  .platform-detail-dialog { padding: 20px; }
+  .platform-card > header { align-items: flex-start; }
+  .platform-card-aside { gap: 2px; }
+}
+
+.platform-detail-rating, .platform-detail-plan-rating { color: #526c8c; font-size: 12px; letter-spacing: 0; font-weight: 550; font-variant-numeric: tabular-nums; }
+.platform-detail-rating { padding: 3px 7px; background: #f0f4f9; border-radius: 5px; }
+.platform-detail-plan-quota { color: var(--accent-primary); }

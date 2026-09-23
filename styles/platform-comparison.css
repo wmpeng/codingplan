@@ -22,7 +22,7 @@
     padding: 0 16px;
     font: inherit;
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 600;
     cursor: pointer;
     text-decoration: none;
     transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
@@ -37,14 +37,14 @@
     gap: 8px;
     color: #fff;
     background: #101725;
-    box-shadow: 0 10px 22px rgba(16, 23, 37, 0.16);
+    box-shadow: none;
 }
 
 .platform-compare-launcher:hover,
 .platform-comparison-primary-btn:hover,
 .platform-comparison-primary-link:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 14px 28px rgba(16, 23, 37, 0.2);
+    transform: none;
+    box-shadow: var(--shadow-sm);
 }
 
 .platform-compare-launcher-count {
@@ -69,7 +69,7 @@
 }
 
 .platform-comparison-secondary-btn:hover {
-    transform: translateY(-1px);
+    transform: none;
     border-color: rgba(11, 104, 209, 0.28);
     box-shadow: var(--shadow-sm);
 }
@@ -210,7 +210,7 @@
 }
 
 .platform-compare-picker-option:hover {
-    transform: translateY(-1px);
+    transform: none;
     border-color: rgba(11, 104, 209, 0.28);
 }
 
@@ -241,7 +241,7 @@
     margin-bottom: 5px;
     color: var(--text-primary);
     font-size: 14px;
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .platform-compare-picker-option-summary {
@@ -257,7 +257,7 @@
 .platform-compare-picker-pin {
     color: #b46a15;
     font-size: 11px;
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .platform-compare-picker-empty {
@@ -330,7 +330,7 @@ body.has-platform-compare-picker {
     margin: 0 0 9px;
     color: var(--accent-primary);
     font-size: 11px;
-    font-weight: 900;
+    font-weight: 650;
     letter-spacing: 0.12em;
 }
 
@@ -401,13 +401,13 @@ body.has-platform-compare-picker {
 .platform-comparison-select-card-label {
     color: var(--text-tertiary);
     font-size: 11px;
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .platform-comparison-select-card-rating {
     color: #b46a15;
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .platform-comparison-select-card select {
@@ -420,7 +420,7 @@ body.has-platform-compare-picker {
     color: var(--text-primary);
     background: #f8fafc;
     font: inherit;
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .platform-comparison-select-card select:focus {
@@ -476,7 +476,7 @@ body.has-platform-compare-picker {
     overflow: hidden;
     border: 1px solid rgba(16,23,37,.1);
     border-radius: 12px;
-    background: linear-gradient(145deg, #fff, #f4f7fa);
+    background: #fff;
 }
 
 .platform-comparison-summary-card::after {
@@ -495,7 +495,7 @@ body.has-platform-compare-picker {
     margin-bottom: 14px;
     color: var(--text-tertiary);
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .platform-comparison-summary-winner {
@@ -503,7 +503,7 @@ body.has-platform-compare-picker {
     margin-bottom: 8px;
     color: var(--text-primary);
     font-size: 20px;
-    font-weight: 900;
+    font-weight: 650;
     line-height: 1.25;
 }
 
@@ -523,7 +523,7 @@ body.has-platform-compare-picker {
     flex: 0 0 auto;
     color: var(--text-secondary);
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 600;
     cursor: pointer;
 }
 
@@ -592,7 +592,7 @@ body.has-platform-compare-picker {
     color: #263349;
     background: #eef2f7;
     font-size: 12px;
-    font-weight: 900;
+    font-weight: 650;
     letter-spacing: .06em;
 }
 
@@ -628,7 +628,7 @@ body.has-platform-compare-picker {
     color: var(--text-primary);
     background: #fbfcfe;
     font-size: 13px;
-    font-weight: 900;
+    font-weight: 650;
 }
 
 .platform-comparison-row-label-copy {
@@ -682,7 +682,7 @@ body.has-platform-compare-picker {
 .platform-comparison-score {
     color: var(--text-primary);
     font-size: 18px;
-    font-weight: 900;
+    font-weight: 650;
 }
 
 .platform-comparison-lead-badge {
@@ -694,7 +694,7 @@ body.has-platform-compare-picker {
     color: #08746b;
     background: rgba(15,118,110,.1);
     font-size: 10px;
-    font-weight: 900;
+    font-weight: 650;
 }
 
 .platform-comparison-status {
@@ -704,7 +704,7 @@ body.has-platform-compare-picker {
     padding: 0 9px;
     border-radius: 7px;
     font-size: 11px;
-    font-weight: 900;
+    font-weight: 650;
 }
 
 .platform-comparison-status--open { color: #08746b; background: rgba(15,118,110,.1); }
@@ -841,3 +841,15 @@ body.has-platform-compare-picker {
         align-self: flex-start;
     }
 }
+
+.platform-comparison-summary-card::after { display: none; }
+.platform-comparison-page { padding-top: 0; }
+.platform-comparison-page .tool-topbar { margin-bottom: 26px; }
+.platform-comparison-hero h1 { font-weight: 650; letter-spacing: -.025em; }
+.platform-comparison-primary-btn, .platform-comparison-primary-link, .platform-compare-launcher { border: 1px solid var(--accent-primary); background: var(--accent-primary); border-radius: 7px; }
+.platform-comparison-primary-btn:hover, .platform-compare-launcher:hover { background: #095ab7; }
+.platform-comparison-secondary-btn { border-radius: 7px; }
+.platform-compare-picker-backdrop { backdrop-filter: blur(3px); }
+.platform-compare-picker-dialog { background: #fff; border-radius: 12px; }
+.platform-comparison-matrix-wrap { scrollbar-width: thin; }
+.platform-comparison-section-heading h2, .platform-comparison-toolbar h2 { font-size: 21px; }

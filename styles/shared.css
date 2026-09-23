@@ -22,22 +22,22 @@ html {
 }
 
 :root {
-    --bg-primary: #eef2f7;
-    --bg-secondary: rgba(255, 255, 255, 0.94);
-    --bg-tertiary: #e5ebf3;
+    --bg-primary: #f7f9fc;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f0f4f8;
     --text-primary: #101725;
-    --text-secondary: #455266;
-    --text-tertiary: #778297;
-    --border-color: rgba(16, 23, 37, 0.12);
-    --border-light: rgba(16, 23, 37, 0.07);
+    --text-secondary: #526174;
+    --text-tertiary: #65758a;
+    --border-color: #dce3ec;
+    --border-light: #edf0f5;
     --accent-primary: #0b68d1;
     --accent-secondary: #00857a;
     --accent-success: #10b981;
     --accent-warning: #f59e0b;
     --accent-error: #ef4444;
-    --shadow-sm: 0 4px 14px rgba(16, 23, 37, 0.05);
-    --shadow-md: 0 12px 30px rgba(16, 23, 37, 0.08);
-    --shadow-lg: 0 18px 44px rgba(16, 23, 37, 0.12);
+    --shadow-sm: 0 1px 2px rgba(16, 23, 37, 0.03);
+    --shadow-md: 0 2px 8px rgba(16, 23, 37, 0.035);
+    --shadow-lg: 0 6px 20px rgba(16, 23, 37, 0.07);
     --shadow-xl: 0 28px 64px rgba(16, 23, 37, 0.18);
     --radius-sm: 6px;
     --radius-md: 8px;
@@ -48,17 +48,48 @@ html {
 body {
     min-height: 100vh;
     font-family: "Avenir Next", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    background:
-        linear-gradient(90deg, rgba(16, 23, 37, 0.045) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(16, 23, 37, 0.045) 1px, transparent 1px),
-        radial-gradient(circle at 82% 0%, rgba(11, 104, 209, 0.13), transparent 30%),
-        linear-gradient(180deg, #f7f9fc 0%, #eef2f7 48%, #f8fafc 100%);
-    background-size: 44px 44px, 44px 44px, auto, auto;
+    background: var(--bg-primary);
+    position: relative;
+    isolation: isolate;
+    -webkit-font-smoothing: antialiased;
     color: var(--text-primary);
     line-height: 1.4;
     padding: 28px 34px 64px;
     font-size: 14px;
     overflow-x: hidden;
+}
+
+/* 网格仅在页首轻微露出；内容区以稳定的浅底承托数据。 */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 680px;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgb(35 71 112 / 3%) 1px, transparent 1px),
+        linear-gradient(180deg, rgb(35 71 112 / 3%) 1px, transparent 1px),
+        radial-gradient(ellipse at 85% 0, #e8f1fc, transparent 70%);
+    background-size: 48px 48px, 48px 48px, auto;
+    mask-image: linear-gradient(#000, transparent);
+}
+:root {
+    --font-ui: "Avenir Next", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    --accent-soft: #edf4fd;
+    --control-height: 40px;
+}
+button, input, select, textarea { font-family: inherit; }
+button, select, summary, a { -webkit-tap-highlight-color: transparent; }
+input[type="checkbox"], input[type="radio"] { accent-color: var(--accent-primary); }
+button:disabled { cursor: not-allowed; }
+:is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 3px;
+}
+::selection { background: #d9eaff; color: #101725; }
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
 .container {

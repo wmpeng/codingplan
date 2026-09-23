@@ -81,6 +81,7 @@
       ${other.length ? `<details class="offer-alternatives"><summary>其他推荐 · 更省钱或换一种选择（${other.reduce((n, [, items]) => n + items.length, 0)}）</summary><div class="guide-result-grid">${other.flatMap(([group, items]) => items.map(x => card(x, group))).join('')}</div></details>` : ''}`;
   }
   function renderBar() {
+    const addOpen = bar.querySelector('.offer-add')?.open || false;
     const current = pool.find(x => x.key === focus);
     const view = document.body.dataset.homeView || 'platforms';
     const relevant = current && (view !== 'plans' || current.item.plan.billingMode !== 'payg');
@@ -92,6 +93,7 @@
       `;
     focusHost.innerHTML = `<div class="offer-focus-status" role="status">${notice ? `<p>${esc(notice)}</p>` : ''}${current ? `<strong>正在查看：${esc(label(current))}</strong><p>${esc(quota(current))}${view === 'plans' && !relevant ? '。这是按量方案，没有订阅套餐；请到额度 / 价格查看具体计费。' : view === 'platforms' ? '。平台卡片下方标出了对应的具体方案。' : view === 'plans' ? '。套餐行标出了对应模型；套餐的其他权益可展开查看。' : '。对应模型与档位已在明细中标出；未知额度或单价保留空值，不能参与对应图表。'}</p>${relevant ? '<button type="button" data-offer-locate>定位对应内容 ↓</button>' : '<button type="button" data-offer-price>查看额度 / 价格 →</button>'}<button type="button" data-offer-unfocus>取消定位</button>` : ''}</div>`;
     renderAdd();
+    bar.querySelector('.offer-add').open = addOpen;
   }
   function renderAdd() {
     const platforms = [...new Map(pool.map(x => [x.item.platform.slug, x.item.platform])).values()];
@@ -170,6 +172,12 @@
       custom.push(key); notice = '已加入比较，需求条件保持不变。';
     }
     rebuild(); render(); refresh();
+    // Replacing a card or the comparison bar must not strand keyboard focus on body.
+    const restored = [...el.querySelectorAll('button')].find(next =>
+      d.offerToggle ? next.dataset.offerToggle === d.offerToggle :
+      'offerAdd' in d ? next.hasAttribute('data-offer-add') :
+      'offerUnfocus' in d ? next.hasAttribute('data-offer-unfocus') : false);
+    (restored || bar.querySelector('.offer-add > summary'))?.focus({preventScroll: true});
   }));
   host.addEventListener('change', event => {
     const id = event.target.dataset.offerModel;
@@ -187,8 +195,8 @@
       if (only && !chosen.some(x => x.key === focus)) focus = null;
       renderBar(); refresh(); bar.querySelector('[data-offer-only]').focus({preventScroll: true});
     }
-    if (event.target.hasAttribute('data-add-platform')) { addPlatform = event.target.value; renderAdd(); }
-    if (event.target.hasAttribute('data-add-plan')) { addPlan = event.target.value; renderAdd(); }
+    if (event.target.hasAttribute('data-add-platform')) { addPlatform = event.target.value; renderAdd(); bar.querySelector('[data-add-platform]')?.focus({preventScroll: true}); }
+    if (event.target.hasAttribute('data-add-plan')) { addPlan = event.target.value; renderAdd(); bar.querySelector('[data-add-plan]')?.focus({preventScroll: true}); }
   });
   root.CodingPlanOfferWorkspace = {
     filter: (values, kind) => W.project(values, chosen, kind, only), decorate,

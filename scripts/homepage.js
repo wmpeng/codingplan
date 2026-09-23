@@ -2128,7 +2128,6 @@
                 ? EntityData.buildApiPricingGroups(entityContext, platform.slug)
                 : [];
             return PlatformCatalog.buildPlatformCardHtml(platform, allPlans, {
-                compact: true,
                 sanitizeUrl: typeof sanitizeHttpUrl === 'function' ? sanitizeHttpUrl : (u) => u,
                 hasApiPlan: apiGroups.length > 0,
                 supportedModels: EntityData.platformModels(entityContext, platform.slug),
@@ -2371,12 +2370,12 @@
             if (!document.querySelector('link[data-usage-css="1"]')) {
                 const link = document.createElement('link');
                 link.rel = 'stylesheet';
-                link.href = 'styles/model-comparison.css?v=260903a';
+                link.href = 'styles/model-comparison.css?v=260924c';
                 link.dataset.usageCss = '1';
                 document.head.appendChild(link);
             }
             if (typeof window.mountModelComparisonView !== 'function') {
-                await loadScriptOnce('scripts/model-comparison.js?v=260924b');
+                await loadScriptOnce('scripts/model-comparison.js?v=260924c');
             }
             if (typeof window.mountModelComparisonView === 'function') {
                 await window.mountModelComparisonView(root, {

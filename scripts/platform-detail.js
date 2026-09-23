@@ -174,7 +174,7 @@
       .map(plan => {
         const planName = esc(plan && plan.name);
         const rating = Math.max(0, Math.min(5, Number(plan && plan.rating) || 0));
-        const stars = rating > 0 ? '⭐️'.repeat(rating) : '';
+        const stars = rating > 0 ? `★ ${rating.toFixed(1)}` : '';
         const ratingHtml = stars
           ? `<span class="platform-detail-plan-rating" aria-label="${rating} 星">${stars}</span>`
           : '';
@@ -329,7 +329,7 @@
 
     const name = esc(platform && platform.name);
     const rating = Math.max(0, Math.min(5, Number(platform && platform.rating) || 0));
-    const stars = '⭐️'.repeat(rating);
+    const stars = `★ ${rating.toFixed(1)}`;
     const status =
       typeof PlatformCatalog.normalizePlatformStatus === 'function'
         ? PlatformCatalog.normalizePlatformStatus(platform && platform.platformStatus)

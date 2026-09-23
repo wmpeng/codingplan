@@ -122,17 +122,17 @@ body.tool-page {
 #plansPage .plan-note { min-width: 240px; white-space: pre-line; }
 
 /* Complete tools share the site's compact navigation and working surface. */
-body.tool-page { background: var(--bg-primary); color: var(--text-primary); font-size: 14px; line-height: 1.6; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+body.tool-page { background: var(--bg-primary); color: var(--text-primary); font-size: 14px; line-height: 1.6; font-family: var(--font-ui); }
 .tool-page { --tool-accent: var(--accent-primary); --tool-ink: var(--text-primary); --tool-muted: var(--text-secondary); --tool-line: var(--border-color); }
-.tool-page-main { max-width: 1440px; padding: 0 28px 40px; }
-.tool-topbar { min-height: 72px; margin-bottom: 18px; border-bottom: 1px solid var(--border-color); }
-.tool-brand { font-size: 19px; color: var(--text-primary); letter-spacing: -.03em; }
-.tool-brand::before { content: ""; display: inline-block; vertical-align: middle; width: 35px; height: 35px; background: url("/assets/brand-mark.svg?v=260924a") center / contain no-repeat; margin-right: 11px; }
-.tool-nav a { font-size: 14px; font-weight: 500; padding: 8px 12px; }
+.tool-page-main { max-width: 1320px; padding: 0 40px 48px; }
+.tool-topbar { min-height: 76px; margin-bottom: 24px; justify-content: flex-start; gap: 44px; border-bottom: 1px solid var(--border-color); }
+.tool-brand { display: inline-flex; align-items: center; flex-shrink: 0; gap: 11px; font-size: 19px; color: var(--text-primary); letter-spacing: -.03em; }
+.tool-brand::before { content: ""; display: inline-block; vertical-align: middle; width: 35px; height: 35px; background: url("/assets/brand-mark.svg?v=260924a") center / contain no-repeat; margin-right: 0; flex-shrink: 0; }
+.tool-nav a { font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 6px; }
 .tool-breadcrumb { margin-bottom: 12px; font-size: 12px; }
 .tool-page a { text-decoration: none; }
 .tool-page a:hover { text-decoration: underline; text-underline-offset: 3px; }
-.tool-hero { margin-bottom: 22px; align-items: center; }
+.tool-hero { margin: 26px 0 28px; align-items: center; }
 .tool-hero h1 { font-size: clamp(24px, 3vw, 30px); line-height: 1.3; font-weight: 700; letter-spacing: -.02em; margin-bottom: 8px; }
 .tool-hero p { font-size: 14px; line-height: 1.65; }
 .tool-panel { border-radius: 12px; box-shadow: var(--shadow-sm); }
@@ -142,9 +142,9 @@ body.tool-page { background: var(--bg-primary); color: var(--text-primary); font
 .tool-result-bar .tool-count { margin-right: auto; }
 .tool-result-bar label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
 .tool-page input[type="checkbox"] { accent-color: var(--accent-primary); }
-.tool-page .platform-card { border-radius: 12px; padding: 18px; box-shadow: var(--shadow-sm); }
+.tool-page .platform-card { border-radius: 12px; padding: 20px; box-shadow: var(--shadow-sm); }
 .tool-page .platform-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: 16px; }
-.tool-page .platform-dimensions li { background: #f4f7fb; border-radius: 8px; }
+.tool-page .platform-dimensions li { background: #f7f9fc; border-radius: 8px; }
 .tool-page .platform-name-link { font-size: 16px; }
 .tool-page .platform-rating { font-size: 12px; }
 .tool-page .platform-summary { min-height: 40px; }
@@ -208,3 +208,37 @@ body.tool-page { padding: 0; }
 .tool-legend > summary { color: var(--text-secondary); font-size: 12px; cursor: pointer; margin: 8px 0; }
 .tool-page .filter-picker > summary > span:first-child { white-space: nowrap; }
 @media (max-width: 800px) { .tool-hero { align-items: flex-start; } }
+
+/* 可比较的数据用等宽数字；导航、按钮保留一致的命中区。 */
+.tool-page :is(th, td, .tool-count, .platform-rating) { font-variant-numeric: tabular-nums; }
+.tool-page .tool-brand:hover, .tool-page .tool-nav a:hover, .tool-page .tool-button:hover { text-decoration: none; }
+.tool-page .tool-button { min-height: 40px; border-radius: 7px; gap: 6px; transition: background .15s, border-color .15s; }
+.tool-page .tool-button:hover { background: #f3f7fc; }
+.tool-page .tool-button.primary:hover { background: #095ab7; color: white; }
+.tool-page .tool-nav a[aria-current="page"] { background: #e7effa; color: #075dbd; }
+.tool-page .tool-table-wrap { border-radius: 10px; scrollbar-width: thin; }
+.tool-page .tool-table th { font-weight: 600; }
+.tool-page .tool-table tbody tr:last-child td { border-bottom: 0; }
+.tool-page .table-sort-button { min-height: 30px; }
+.tool-page th .table-sort-button::after { content: " ↕"; opacity: .45; font-weight: 400; }
+.tool-page th[aria-sort="ascending"] .table-sort-button::after { content: " ↑"; opacity: 1; }
+.tool-page th[aria-sort="descending"] .table-sort-button::after { content: " ↓"; opacity: 1; }
+.tool-result-bar input[type="search"] { min-height: 40px; }
+.hub-guide-card { transition: border-color .15s; }
+.hub-guide-card:hover { border-color: #a5b9d1; }
+.tool-page .hub-guide-card:hover { text-decoration: none; }
+@media (max-width: 800px) {
+  .tool-page-main { padding: 0 18px 36px; }
+  .tool-topbar { align-items: flex-start; gap: 10px; }
+  .tool-brand { font-size: 17px; }
+  .tool-brand::before { width: 30px; height: 30px; }
+  .tool-hero { margin: 20px 0; }
+  .tool-page .tool-nav a { min-height: 38px; }
+}
+
+#plansPage .tool-table :is(th, td):is(:nth-child(3), :nth-child(4), :nth-child(5), :nth-child(6), :nth-child(7), :nth-child(8), :nth-child(9), :nth-child(11), :nth-child(12)) { text-align: right; }
+#plansPage .tool-table th:not(:first-child):not(:nth-child(2)):not(:nth-child(10)):not(:nth-child(13)):not(:nth-child(14)) .table-sort-button { text-align: right; }
+#plansPage td .table-sort-button { min-width: 26px; color: #75859a; }
+#plansPage .tool-table td:first-child strong { font-weight: 600; }
+
+.tool-loading { min-height: 280px; display: grid; place-items: center; color: var(--text-secondary); font-size: 13px; }

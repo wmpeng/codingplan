@@ -10,13 +10,13 @@
     <title>Coding Plan 对比：AI 编程平台、价格、套餐与可用性</title>
     <link rel="canonical" href="https://vibecoding.dreamfree.space/">
     <link rel="icon" href="/favicon.ico?v=260924a" type="image/x-icon">
-    <link rel="stylesheet" href="styles/shared.css?v=260923a">
+    <link rel="stylesheet" href="styles/shared.css?v=260924c">
     <link rel="stylesheet" href="styles/plan-usage.css?v=260725k">
     <link rel="stylesheet" href="styles/comparison-table.css?v=260902a">
-    <link rel="stylesheet" href="styles/platform-cards.css?v=260920f">
-    <link rel="stylesheet" href="styles/platform-comparison.css?v=260903a">
-    <link rel="stylesheet" href="styles/tool-page.css?v=260924a">
-    <link rel="stylesheet" href="styles/homepage-filters.css?v=260921c">
+    <link rel="stylesheet" href="styles/platform-cards.css?v=260924c">
+    <link rel="stylesheet" href="styles/platform-comparison.css?v=260924c">
+    <link rel="stylesheet" href="styles/tool-page.css?v=260924c">
+    <link rel="stylesheet" href="styles/homepage-filters.css?v=260924c">
     <style>
         html,
         body {
@@ -3360,7 +3360,7 @@
         }
     </style>
     <link rel="stylesheet" href="styles/purchase-guide.css?v=260921a">
-    <link rel="stylesheet" href="styles/homepage-design.css?v=260924a">
+    <link rel="stylesheet" href="styles/homepage-design.css?v=260924c">
 </head>
 <body class="home-page">
     <a class="skip-link" href="#mainViewShell">跳到方案对比</a>
@@ -3375,11 +3375,17 @@
         <div class="header home-hero-copy">
             <p class="home-eyebrow" id="pageTitle">AI Coding Plan 平台评测与对比</p>
             <h1 id="homeHeading">选对 AI，<br>让每一分预算都值得。</h1>
-            <p class="home-lede">从模型能力到实际用量，找到适合你的编程方案。<br>先明确需求，再比较价格和取舍。</p>
+            <p class="home-lede">比较模型能力、实际用量与价格，<br>找到适合你的 AI 编程方案。</p>
             <div class="home-hero-actions"><a class="home-button home-button--primary" href="#purchaseGuide" data-open-guide>找到我的方案 <span aria-hidden="true">→</span></a><a class="home-button" href="#selectionWorkspace">自己调整需求 <span aria-hidden="true">↓</span></a></div>
-            <p class="home-catalog-summary" id="catalogSummary">37 大平台 · 99 个在售套餐 · 123 个模型</p>
+
         </div>
 
+        <aside class="home-overview" aria-label="收录概况">
+            <p class="home-overview-label">收录概况</p>
+            <p class="home-catalog-summary" id="catalogSummary">37 大平台 · 99 个在售套餐 · 123 个模型</p>
+            <p>涵盖订阅套餐与按量 API。<br>按模型、预算和实际用量筛选。</p>
+            <a href="/platforms/">浏览全部平台 <span aria-hidden="true">↗</span></a>
+        </aside>
         </section>
         <details class="home-coverage"><summary>收录范围与最近更新</summary><div class="home-coverage-body">
             <div class="update-date" id="updateDate">更新日期 2026.9.24 | Codex 新增 GPT-6 Sol / Luna</div>
@@ -3389,7 +3395,7 @@
         </details>
 
         <section id="selectionWorkspace" aria-labelledby="needsHeading">
-          <div class="home-section-heading"><div><p class="home-eyebrow">YOUR NEEDS</p><h2 id="needsHeading">我的需求</h2><p>一份需求，同步推荐与对比。先从精选范围开始，也可以自由调整。</p></div><a href="#purchaseGuide" data-open-guide>引导填写 →</a></div>
+          <div class="home-section-heading"><div><p class="home-eyebrow">YOUR NEEDS</p><h2 id="needsHeading">我的需求</h2><p>从精选范围开始，按你的预算和使用习惯调整。</p></div><a href="#purchaseGuide" data-open-guide>引导填写 →</a></div>
           <div id="purchaseGuide" hidden></div>
           <div id="homepageUnifiedFiltersMount"></div>
           <section id="purchaseGuideResults" aria-label="当前需求的推荐方案"><p class="home-loading">正在整理符合需求的方案…</p></section>
@@ -3406,7 +3412,7 @@
         <div class="main-view-panels">
             <div id="view-platforms" role="tabpanel" data-main-view-panel="platforms">
                 <div class="platform-catalog-intro-row">
-                    <p class="main-view-intro">按标签与购买状态快速筛选平台，建立第一轮候选池。</p>
+                    <p class="main-view-intro">比较平台评分与模型覆盖，点击卡片查看详情。</p>
                     <a class="main-view-full-link" href="/platforms/">查看完整平台中心 →</a>
                     <button type="button" class="platform-compare-launcher" id="platformCompareLauncher" hidden>
                         <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M8 4v16M16 4v16M4 8h16M4 16h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
@@ -6446,17 +6452,17 @@
     <script src="scripts/entity-data.js?v=260923c"></script>
     <script src="scripts/filter-state.js?v=260921a"></script>
     <script src="scripts/platform-pages.js?v=b5b0ec3644"></script>
-    <script src="scripts/platform-catalog.js?v=260922a"></script>
-    <script src="scripts/platform-detail.js?v=260923a"></script>
+    <script src="scripts/platform-catalog.js?v=260924c"></script>
+    <script src="scripts/platform-detail.js?v=260924c"></script>
     <script src="scripts/shared.js?v=260923a"></script>
     <script src="scripts/platform-comparison.js?v=260918a"></script>
     <script src="scripts/main-views.js?v=260923a"></script>
     <script src="scripts/plan-composite-price-chart.js?v=260904a"></script>
-    <script src="scripts/homepage.js?v=260924b"></script>
+    <script src="scripts/homepage.js?v=260924c"></script>
     <script src="scripts/purchase-guide.js?v=260921a"></script>
     <script src="scripts/offer-workspace.js?v=260923c"></script>
-    <script src="scripts/offer-workspace-ui.js?v=260923c"></script>
-    <script src="scripts/homepage-filters.js?v=260922a"></script>
+    <script src="scripts/offer-workspace-ui.js?v=260924c"></script>
+    <script src="scripts/homepage-filters.js?v=260924c"></script>
     <script src="scripts/purchase-guide-ui.js?v=260923c"></script>
     <script src="scripts/homepage-ui.js?v=260922a"></script>
 </body>

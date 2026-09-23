@@ -252,17 +252,16 @@
         return {
             id: 'usage-attractive-zone', type: 'custom', coordinateSystem: 'cartesian2d',
             silent: true, clip: true, z: 0, data: [0],
-            renderItem: function (_params, api) {
+            renderItem: function (params, api) {
                 const children = [];
                 const polygonPoints = zone.polygon.map((point) => api.coord(point));
                 if (polygonPoints.length >= 3) {
-                    children.push({ type: 'polygon', shape: { points: polygonPoints }, style: { fill: 'rgba(34, 197, 94, 0.11)' } });
+                    children.push({ type: 'polygon', shape: { points: polygonPoints }, style: { fill: 'rgba(34, 197, 94, 0.07)' } });
                 }
                 const boundaryPoints = zone.boundary.map((point) => api.coord(point));
                 if (boundaryPoints.length === 2) {
                     children.push({ type: 'polyline', shape: { points: boundaryPoints }, style: { stroke: '#22a447', lineWidth: 1.5, lineDash: [6, 4] } });
-                    const midpoint = [(boundaryPoints[0][0] + boundaryPoints[1][0]) / 2, (boundaryPoints[0][1] + boundaryPoints[1][1]) / 2];
-                    children.push({ type: 'text', style: { x: midpoint[0] + 8, y: midpoint[1] - 10, text: attractiveZoneLabel(), fill: '#15803d', font: '600 11px sans-serif', backgroundColor: 'rgba(240, 253, 244, 0.9)', padding: [3, 5], borderRadius: 4 } });
+                    children.push({ type: 'text', style: { x: params.coordSys.x + params.coordSys.width / 2, y: params.coordSys.y + 12, textAlign: 'center', text: attractiveZoneLabel(), fill: '#15803d', font: '600 11px sans-serif', backgroundColor: 'rgba(240, 253, 244, 0.9)', padding: [3, 5], borderRadius: 4 } });
                 }
                 return { type: 'group', children };
             }
@@ -280,11 +279,11 @@
                 const boundaryX = Math.max(left, Math.min(right, coord[0]));
                 const children = [];
                 if (boundaryX > left) {
-                    children.push({ type: 'rect', shape: { x: left, y: params.coordSys.y, width: boundaryX - left, height: params.coordSys.height }, style: { fill: 'rgba(34, 197, 94, 0.11)' } });
+                    children.push({ type: 'rect', shape: { x: left, y: params.coordSys.y, width: boundaryX - left, height: params.coordSys.height }, style: { fill: 'rgba(34, 197, 94, 0.07)' } });
                 }
                 if (boundaryX > left && boundaryX < right) {
                     children.push({ type: 'line', shape: { x1: boundaryX, y1: params.coordSys.y, x2: boundaryX, y2: params.coordSys.y + params.coordSys.height }, style: { stroke: '#22a447', lineWidth: 1.5, lineDash: [6, 4] } });
-                    children.push({ type: 'text', style: { x: boundaryX - 8, y: params.coordSys.y + 14, text: attractiveZoneLabel(), textAlign: 'right', fill: '#15803d', font: '600 11px sans-serif', backgroundColor: 'rgba(240, 253, 244, 0.9)', padding: [3, 5], borderRadius: 4 } });
+                    children.push({ type: 'text', style: { x: Math.max(left + 70, Math.min(right - 70, boundaryX - 70)), y: params.coordSys.y + 14, text: attractiveZoneLabel(), textAlign: 'center', fill: '#15803d', font: '600 11px sans-serif', backgroundColor: 'rgba(240, 253, 244, 0.9)', padding: [3, 5], borderRadius: 4 } });
                 }
                 return { type: 'group', children };
             }
@@ -713,10 +712,11 @@
 
     function chartBase(tooltipFormatter) {
         return {
-            animationDuration: 350,
+            animation: !(root.matchMedia && root.matchMedia("(prefers-reduced-motion: reduce)").matches),
+            animationDuration: 250,
             grid: { left: 76, right: 28, top: 28, bottom: 58, containLabel: false },
             tooltip: { trigger: 'item', confine: true, appendToBody: false, formatter: tooltipFormatter },
-            textStyle: { fontFamily: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }
+            textStyle: { fontFamily: '"Avenir Next", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif' }
         };
     }
 
@@ -1068,6 +1068,15 @@
                 });
             }
 
+            function fitScatterLayout(chart, usage) {
+                const compact = chart.getWidth() < 480;
+                chart.setOption({
+                    grid: { left: compact ? 62 : 76, right: compact ? 16 : 28, top: 28, bottom: 58 },
+                    xAxis: { axisLabel: { hideOverlap: true, fontSize: compact ? 10 : 12 } },
+                    yAxis: { nameGap: compact ? 44 : usage ? 55 : 45, axisLabel: { hideOverlap: true, fontSize: compact ? 10 : 12 } }
+                });
+            }
+
             function render() {
                 const presetRenderKey = `${state.tokenUnit}:${state.presetPlatformScope}`;
                 if (renderedPresetKey !== presetRenderKey) {
@@ -1131,10 +1140,11 @@
                 sizeUnitPriceBarChart(unitPriceBarElement, unitPriceBarPoints.length);
                 unitPriceBarChart.resize();
                 unitPriceBarChart.setOption({
-                    animationDuration: 420,
+                    animation: !(root.matchMedia && root.matchMedia("(prefers-reduced-motion: reduce)").matches),
+                    animationDuration: 250,
                     grid: { left: 62, right: 20, top: 42, bottom: 205 },
                     tooltip: { trigger: 'item', confine: true, appendToBody: false, formatter: (params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit) },
-                    textStyle: { fontFamily: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' },
+                    textStyle: { fontFamily: '"Avenir Next", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif' },
                     xAxis: {
                         type: 'category', data: unitPriceBar.categories,
                         axisTick: { alignWithLabel: true },
@@ -1148,6 +1158,8 @@
                     },
                     series: unitPriceBar.series
                 }, true);
+                fitScatterLayout(usageChart, true);
+                fitScatterLayout(intelligenceChart, false);
                 renderDataTable('comparison', visibleFiltered);
                 if (mountOptions.mode === 'home') root.CodingPlanOfferWorkspace?.decorate();
                 container.querySelector('[data-empty="usage"]').hidden = usagePoints.length > 0;
@@ -1342,6 +1354,8 @@
             const resize = () => {
                 usageChart.resize();
                 intelligenceChart.resize();
+                fitScatterLayout(usageChart, true);
+                fitScatterLayout(intelligenceChart, false);
                 sizeUnitPriceBarChart(unitPriceBarElement, buildUnitPriceBarChartPoints(filterBySoloColorKey(filterPoints(points, state), state.colorMode, state.soloColorKey)).length);
                 unitPriceBarChart.resize();
             };

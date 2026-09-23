@@ -595,7 +595,6 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     : `<span class="platform-name">${name}</span>`;
 
   const rating = Math.max(0, Math.min(5, Number(platform.rating) || 0));
-  const stars = '⭐️'.repeat(rating);
   const summaryText =
     typeof platform.summary === 'string' && platform.summary.trim()
       ? platform.summary.trim()
@@ -656,7 +655,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
                         </div>
                         <div class="platform-card-aside">
                             ${pinHtml}
-                            <span class="platform-rating" aria-label="${rating > 0 ? `${rating} 星` : '待评定'}">${rating > 0 ? (options.compact ? `★ ${rating.toFixed(1)}` : stars) : '待评定'}</span>
+                            <span class="platform-rating" aria-label="${rating > 0 ? `${rating} 星` : '待评定'}">${rating > 0 ? `★ ${rating.toFixed(1)}` : '待评定'}</span>
                         </div>
                     </header>
                     ${summary}
