@@ -335,41 +335,6 @@ body {
     margin-bottom: 12px;
 }
 
-.settings-edition-row {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.settings-edition-label {
-    flex: 1;
-    font-size: 13px;
-}
-
-.settings-edition-actions {
-    display: inline-flex;
-    gap: 4px;
-}
-
-.settings-edition-btn {
-    appearance: none;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    background: transparent;
-    color: var(--text-secondary, #666);
-    font-size: 12px;
-    line-height: 1;
-    padding: 6px 8px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.settings-edition-btn.is-active {
-    border-color: rgba(0, 0, 0, 0.28);
-    background: rgba(0, 0, 0, 0.06);
-    color: var(--text-primary, #222);
-    font-weight: 600;
-}
-
 .settings-toggle-row {
     display: flex;
     align-items: center;

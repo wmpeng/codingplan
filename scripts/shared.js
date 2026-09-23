@@ -151,13 +151,6 @@ function renderSettingsControls(settings = {}) {
                 </button>
                 <div class="settings-panel" id="settingsPanel" hidden>
                     <div class="settings-panel-title"${settings.panelTitleId ? ` id="${escapeHtml(settings.panelTitleId)}"` : ''}>${escapeHtml(settings.panelTitle || '')}</div>
-                    <div class="settings-toggle-row settings-edition-row">
-                        <span class="settings-edition-label">站点版本</span>
-                        <div class="settings-edition-actions" role="group" aria-label="站点版本">
-                            <button type="button" class="settings-edition-btn" id="siteEditionV2Btn" data-edition="v2">新版</button>
-                            <button type="button" class="settings-edition-btn" id="siteEditionClassicBtn" data-edition="classic">旧版</button>
-                        </div>
-                    </div>
                     <div class="settings-toggle-row">
                         <label for="ultraWideToggle"${settings.ultraWideLabelId ? ` id="${escapeHtml(settings.ultraWideLabelId)}"` : ''}>${escapeHtml(settings.ultraWideLabel || '')}</label>
                         <label class="toggle-switch">
@@ -223,83 +216,12 @@ function renderPageNav(target, options = {}) {
     return true;
 }
 
-// 站点版本 + 超宽屏设置
+// 超宽屏设置
 (function () {
-    const SITE_EDITION_KEY = 'codingplanSiteEdition';
-
-    function getSiteEdition() {
-        try {
-            return localStorage.getItem(SITE_EDITION_KEY) === 'classic' ? 'classic' : 'v2';
-        } catch (e) {
-            return 'v2';
-        }
-    }
-
-    function setSiteEdition(edition) {
-        try {
-            localStorage.setItem(SITE_EDITION_KEY, edition === 'classic' ? 'classic' : 'v2');
-        } catch (e) {}
-    }
-
-    function resolveEditionHome(edition) {
-        const path = (location.pathname || '').replace(/\\/g, '/');
-        const inClassic = /\/v1(?:\/|$)/.test(path);
-        if (edition === 'classic') {
-            return inClassic ? 'index.html' : 'v1/index.html';
-        }
-        return inClassic ? '../index.html' : 'index.html';
-    }
-
-    function initSiteEditionSettings() {
-        const v2Btn = document.getElementById('siteEditionV2Btn');
-        const classicBtn = document.getElementById('siteEditionClassicBtn');
-        if (!v2Btn || !classicBtn) {
-            return false;
-        }
-        if (v2Btn.dataset.editionBound === '1') {
-            return true;
-        }
-        v2Btn.dataset.editionBound = '1';
-
-        const current = getSiteEdition();
-        v2Btn.classList.toggle('is-active', current === 'v2');
-        classicBtn.classList.toggle('is-active', current === 'classic');
-        v2Btn.setAttribute('aria-pressed', current === 'v2' ? 'true' : 'false');
-        classicBtn.setAttribute('aria-pressed', current === 'classic' ? 'true' : 'false');
-
-        function switchEdition(edition) {
-            const next = edition === 'classic' ? 'classic' : 'v2';
-            setSiteEdition(next);
-            const path = (location.pathname || '').replace(/\\/g, '/');
-            const inClassic = /\/v1(?:\/|$)/.test(path);
-            if ((next === 'v2' && !inClassic) || (next === 'classic' && inClassic)) {
-                v2Btn.classList.toggle('is-active', next === 'v2');
-                classicBtn.classList.toggle('is-active', next === 'classic');
-                v2Btn.setAttribute('aria-pressed', next === 'v2' ? 'true' : 'false');
-                classicBtn.setAttribute('aria-pressed', next === 'classic' ? 'true' : 'false');
-                return true;
-            }
-            location.assign(resolveEditionHome(next));
-            return true;
-        }
-
-        v2Btn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            switchEdition('v2');
-        });
-        classicBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            switchEdition('classic');
-        });
-        return true;
-    }
-
     function initUltraWideSettings() {
         const btn = document.getElementById('settingsBtn');
         const panel = document.getElementById('settingsPanel');
         const toggle = document.getElementById('ultraWideToggle');
-
-        initSiteEditionSettings();
 
         if (!btn || !panel || !toggle) {
             return false;
