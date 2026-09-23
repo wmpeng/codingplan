@@ -15,6 +15,21 @@ test('normalizeMainView', () => {
   assert.equal(normalizeMainView(''), 'platforms');
 });
 
+test('monitor feature switch falls back and can be restored', () => {
+  const previous = globalThis.__CODINGPLAN_FEATURES;
+  try {
+    globalThis.__CODINGPLAN_FEATURES = { monitorView: false };
+    assert.equal(normalizeMainView('monitor'), 'platforms');
+    assert.equal(readMainViewFromSearch('?view=monitor'), 'platforms');
+    assert.equal(normalizeMainView('usage'), 'usage');
+    globalThis.__CODINGPLAN_FEATURES.monitorView = true;
+    assert.equal(normalizeMainView('monitor'), 'monitor');
+  } finally {
+    if (previous === undefined) delete globalThis.__CODINGPLAN_FEATURES;
+    else globalThis.__CODINGPLAN_FEATURES = previous;
+  }
+});
+
 test('平台套餐深链按 slug 筛选，忽略错误视图、名称与隐藏平台', () => {
   const platforms = [{ slug: 'zhipu', name: '智谱AI' }, { slug: 'hidden', catalogVisible: false }];
   assert.equal(readPlanPlatform('?view=plans&platform=zhipu', platforms), platforms[0]);

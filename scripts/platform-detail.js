@@ -257,6 +257,7 @@
   }
 
   function buildAvailabilitySectionHtml(platform, monitorRow) {
+    if (typeof globalThis !== 'undefined' && globalThis.__CODINGPLAN_FEATURES?.monitorView === false) return '';
     if (!monitorRow) return '';
 
     // 弹层宽度有限：条带与百分比都按最近 48 小时
@@ -293,6 +294,7 @@
   }
 
   async function ensureBoard(apiBase) {
+    if (typeof globalThis !== 'undefined' && globalThis.__CODINGPLAN_FEATURES?.monitorView === false) return null;
     if (boardCache) return boardCache;
     if (boardCache === false) return null;
     if (boardPromise) return boardPromise;

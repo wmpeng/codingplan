@@ -1,0 +1,2 @@
+html.feature-monitor-disabled :is([data-main-view="monitor"], a[href^="/monitor/"], [data-monitor-enabled]) { display: none !important; }
+html:not(.feature-monitor-disabled) [data-monitor-disabled] { display: none !important; }

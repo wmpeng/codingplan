@@ -2383,6 +2383,7 @@
         }
 
         async function ensureMonitorViewMounted() {
+            if (window.__CODINGPLAN_FEATURES?.monitorView === false) return;
             const root = document.getElementById('view-monitor');
             if (!root) return;
             if (!document.querySelector('link[data-monitor-css="1"]')) {
@@ -2510,7 +2511,7 @@
                 if (!url.searchParams.has('view') && !url.searchParams.has('platform')) return;
                 const view = url.searchParams.has('view')
                     ? MainViews.normalizeMainView(url.searchParams.get('view'))
-                    : 'monitor';
+                    : MainViews.normalizeMainView('monitor');
                 e.preventDefault();
                 const next = new URL(location.href);
                 if (view === 'platforms') next.searchParams.delete('view');

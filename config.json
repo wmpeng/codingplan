@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.9.12 | Command Code 新增 DeepSeek V4.1 Flash 与 Ling 3.0 Flash Sante",
+    "updateDate": "更新日期 2026.9.22 | 小米 MiMo 上线 V2.6 系列模型",
     "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Qoder、WorkBuddy、TRAE 等平台，订阅套餐与按量 API 全面对比。<br>涵盖Claude Fable 5.1，GPT-6-Astra，DeepSeek-V4.1-Flash，DeepSeek-V4-Flash-0731，GLM-5.3，Qwen-3.8-Max，Kimi-K3，MiniMax-M3，Doubao-Seed-2.0，MiMo-V2.5-Pro，GPT-5.6等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
@@ -44,8 +44,22 @@
   },
   "homepageFilters": {
     "defaults": {
-      "platformSlugs": ["zhipu", "minimax", "opencode", "bytedance-ark", "deepseek-official", "codex"],
-      "modelSlugs": ["claude-fable-5-1", "gpt-6-astra", "glm-5-3", "deepseek-v4-1-flash", "kimi-k3", "minimax-m3"],
+      "platformSlugs": [
+        "zhipu",
+        "minimax",
+        "opencode",
+        "bytedance-ark",
+        "deepseek-official",
+        "codex"
+      ],
+      "modelSlugs": [
+        "claude-fable-5-1",
+        "gpt-6-astra",
+        "glm-5-3",
+        "deepseek-v4-1-flash",
+        "kimi-k3",
+        "minimax-m3"
+      ],
       "modelMatch": "any",
       "budgetCny": null,
       "monthlyTokenRange": null,
@@ -306,6 +320,19 @@
   },
   "updates": [
     {
+      "date": "2026.9.22",
+      "items": [
+        "小米 MiMo 上线 V2.6 系列：Token Plan 四档套餐新增 MiMo-V2.6-Pro 与 MiMo-V2.6-Flash，Credits 折算与 V2.5 价格一致，套餐价格与月度额度均未变；V2.5-Pro / V2.5 将于 10.21 下线，全系支持多模态输入",
+        "京东云套餐移动至 GitHub 之后展示"
+      ]
+    },
+    {
+      "date": "2026.9.22",
+      "items": [
+        "Qoder（国内 / 国际版）、WorkBuddy、TRAE（国内 / 国际版）完成初步体验评定，星级由「待评定」更新为三星，套餐大表与平台目录同步将其移至京东云之前"
+      ]
+    },
+    {
       "date": "2026.9.12",
       "items": [
         "Command Code 更新至 73 个模型：Go、GOAT、Pro 分别支持 44、50、63 个模型；新增 DeepSeek-V4.1-Flash 与免费 Ling-3.0-Flash-Sante（每日最多 100 次请求）。",
@@ -329,7 +356,9 @@
     },
     {
       "date": "2026.9.9",
-      "items": ["新增 Qoder 国内/国际版、WorkBuddy、TRAE 国内/国际版，共 17 档个人套餐；补齐支持模型、公开价格与倍率、地区和模式限制及活动说明，Token 用量暂未收录。"]
+      "items": [
+        "新增 Qoder 国内/国际版、WorkBuddy、TRAE 国内/国际版，共 17 档个人套餐；补齐支持模型、公开价格与倍率、地区和模式限制及活动说明，Token 用量暂未收录。"
+      ]
     },
     {
       "date": "2026.9.8",

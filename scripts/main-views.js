@@ -17,6 +17,7 @@
 
   function normalizeMainView(raw) {
     const key = String(raw || '').trim();
+    if (key === 'monitor' && typeof globalThis !== 'undefined' && globalThis.__CODINGPLAN_FEATURES?.monitorView === false) return 'platforms';
     return MAIN_VIEW_KEYS.includes(key) ? key : 'platforms';
   }
 
@@ -147,7 +148,7 @@
       tabsRoot.addEventListener('keydown', (e) => {
         if (e.altKey || e.ctrlKey || e.metaKey) return;
         if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
-        const tabs = Array.from(tabsRoot.querySelectorAll('[data-main-view]'));
+        const tabs = Array.from(tabsRoot.querySelectorAll('[data-main-view]')).filter(tab => normalizeMainView(tab.getAttribute('data-main-view')) === tab.getAttribute('data-main-view'));
         const index = tabs.indexOf(e.target);
         if (index < 0) return;
         e.preventDefault();

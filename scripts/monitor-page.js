@@ -1,6 +1,10 @@
 (function (root) {
   'use strict';
   async function boot() {
+    if (root.__CODINGPLAN_FEATURES?.monitorView === false) {
+      location.replace('/platforms/' + location.search);
+      return;
+    }
     const host = document.getElementById('monitorPage');
     try {
       const data = await root.CodingPlanToolPage.load();
