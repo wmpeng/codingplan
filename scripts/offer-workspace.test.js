@@ -45,7 +45,8 @@ test('首页明细保留未知关系和真实零值，未知数据不伪造为�
   assert.ok(unknown);
   const M = require('./model-comparison.js');
   assert.equal(M.buildUsageChartPoints([unknown]).length, 0);
-  assert.equal(M.buildUnitPriceBarChartPoints([unknown]).length, 0);
+  assert.deepEqual(M.buildUnitPriceVisualScale([unknown]), {min:null, max:null});
+  assert.equal(M.getUnitPriceVisualPercent(unknown.unitPriceCnyPerM, {min:null, max:null}), null);
   assert.match(M.comparisonTableRowHtml(unknown, 'yi'), /data-point-id/);
   const relation = c.planModels.find(x => c.planBySlug.get(x.planSlug).billingMode === 'subscription');
   c.planBySlug.get(relation.planSlug).monthlyPrice = 0;

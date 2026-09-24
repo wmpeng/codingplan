@@ -16,9 +16,8 @@ const {
   filterPoints,
   buildUsageChartPoints,
   buildIntelligenceChartPoints,
-  buildUnitPriceBarChartPoints,
-  buildUnitPriceBarSeries,
-  getUnitPriceBarAxisLabel,
+  buildUnitPriceVisualScale,
+  getUnitPriceVisualPercent,
   getAttractiveUnitPriceThreshold,
   getChartAxisBounds,
   clipRectangleAboveUnitPriceLine,
@@ -41,6 +40,7 @@ const {
   formatUnitPrice,
   formatApiPricing,
   platformCellHtml,
+  unitPriceVisualHtml,
   comparisonTableRowHtml,
   tooltipHtml
 } = require('./model-comparison.js');
@@ -146,19 +146,21 @@ test('chart builders exclude invalid coordinates and benchmark gaps', () => {
   assert.equal(getPointScore(points[0], 'artificialAnalysis'), 60);
 });
 
-test('unit price bar chart keeps valid prices and sorts them low to high', () => {
-  const invalid = { platformName: 'C', modelSlug: 'm4', unitPriceCnyPerM: 'unknown' };
-  const sorted = buildUnitPriceBarChartPoints([points[1], invalid, points[2], points[0]]);
-  assert.deepEqual(sorted, [points[0], points[2], points[1]]);
-  assert.equal(getUnitPriceBarAxisLabel({ platformName: 'A', billingMode: 'subscription', planName: 'Pro', relationLabel: 'Model [峰]' }), 'A · Pro · Model [峰]');
-  assert.equal(getUnitPriceBarAxisLabel({ platformName: 'B', billingMode: 'payg', relationLabel: 'Model API' }), 'B · 按量 API · Model API');
+test('inline unit price bars share a logarithmic scale without inventing unknown values', () => {
+  const scale = buildUnitPriceVisualScale([...points, { unitPriceCnyPerM: 'unknown' }]);
+  assert.deepEqual(scale, { min: 0.2, max: 1.2 });
+  assert.equal(getUnitPriceVisualPercent(0, scale), 0);
+  assert.equal(getUnitPriceVisualPercent(0, { min: null, max: null }), 0);
+  assert.equal(getUnitPriceVisualPercent(1.2, scale), 100);
+  assert.ok(getUnitPriceVisualPercent(0.5, scale) > getUnitPriceVisualPercent(0.2, scale));
+  assert.equal(getUnitPriceVisualPercent(null, scale), null);
+  assert.equal(getUnitPriceVisualPercent('unknown', scale), null);
 
-  const colors = buildVendorColorMap(sorted.map(getPointPlatformKey));
-  const result = buildUnitPriceBarSeries(sorted, 'vendor', colors, 'M');
-  assert.equal(result.categories.length, 3);
-  assert.equal(result.series.length, 3);
-  assert.equal(result.series.every((series) => series.type === 'bar'), true);
-  assert.deepEqual(result.series.flatMap((series) => series.data).filter(Boolean).map((item) => item.value).sort((a, b) => a - b), [0.2, 0.5, 1.2]);
+  const html = unitPriceVisualHtml(points[0], 'yi', { scale, color: '#2563eb' });
+  assert.match(html, /usage-price-bar-fill/);
+  assert.match(html, /--usage-price-bar-color:#2563eb/);
+  assert.match(html, /综合单价 ¥20 \/ 亿 Token/);
+  assert.equal(unitPriceVisualHtml({ unitPriceCnyPerM: 'unknown' }, 'M', { scale }), '<span class="usage-price-bar-empty">—</span>');
 });
 
 test('15 yuan per yi attractive zones keep the unit-price boundary consistent', () => {
@@ -438,8 +440,11 @@ test('token unit conversion keeps amount and unit price mathematically aligned',
 test('unit price column appears before all three usage columns', () => {
   const keys = COMPARISON_TABLE_COLUMNS.map((column) => column.key);
   const unitPriceIndex = keys.indexOf('unitPriceCnyPerM');
+  const unitPriceVisualIndex = keys.indexOf('unitPriceVisual');
   const apiPricingIndex = keys.indexOf('apiPricing');
-  assert.equal(apiPricingIndex, unitPriceIndex + 1);
+  assert.equal(unitPriceVisualIndex, unitPriceIndex + 1);
+  assert.equal(apiPricingIndex, unitPriceVisualIndex + 1);
+  assert.equal(COMPARISON_TABLE_COLUMNS[unitPriceVisualIndex].sortable, false);
   assert.ok(unitPriceIndex < keys.indexOf('fiveHourTokenInM'));
   assert.ok(unitPriceIndex < keys.indexOf('weeklyTokenInM'));
   assert.ok(unitPriceIndex < keys.indexOf('monthlyTokenInM'));
