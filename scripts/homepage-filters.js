@@ -82,7 +82,7 @@
       "模型档次",
       [
         ["any", "不限"],
-        ["sota-models", "SOTA"],
+        ["sota-models", "顶尖与前沿"],
         ["high-volume-models", "甜品级"],
       ],
     ],
@@ -103,7 +103,7 @@
       ],
     ],
     preference: [
-      "推荐排序",
+      "方案排序",
       [
         ["balanced", "均衡：平台评分"],
         ["quality", "效果：最高 AA 分"],
@@ -157,6 +157,8 @@
     if (platform && platforms.some((x) => x.slug === platform))
       state.platformSlugs = [platform];
     const monitor = full && opts.view === "monitor";
+    const model = params.get("model");
+    if (model && models.some(x => x.slug === model)) state.modelSlugs = [model];
     host.innerHTML = `<section class="filter-state-bar surface-panel" aria-label="统一筛选">
       <div class="filter-state-grid">
       ${buildPicker({ id: "homePlatformPicker", label: "平台", key: "platformSlugs", items: platforms, state })}

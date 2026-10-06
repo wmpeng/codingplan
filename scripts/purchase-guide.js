@@ -46,7 +46,7 @@
   }
   const finite = (value) =>
     typeof value === "number" && Number.isFinite(value) ? value : null;
-  function recommend(context, state, config) {
+  function recommend(context, state, config, options = {}) {
     const s = F.normalizeState(state),
       opts = {
         usdToCnyRate: config.usdToCnyRate,
@@ -57,8 +57,8 @@
       context,
       {
         ...s,
-        includeDiscontinued: false,
-        platformStatusMax: s.platformStatusMax === "open" ? "open" : "limited",
+        includeDiscontinued: options.allMatching ? s.includeDiscontinued : false,
+        platformStatusMax: options.allMatching ? s.platformStatusMax : s.platformStatusMax === "open" ? "open" : "limited",
       },
       opts,
     );
@@ -242,8 +242,8 @@
           {
             ...s,
             [key]: value,
-            includeDiscontinued: false,
-            platformStatusMax: s.platformStatusMax === "open" ? "open" : "limited",
+            includeDiscontinued: options.allMatching ? s.includeDiscontinued : false,
+            platformStatusMax: options.allMatching ? s.platformStatusMax : s.platformStatusMax === "open" ? "open" : "limited",
           },
           opts,
         );

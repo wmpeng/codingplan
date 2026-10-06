@@ -1,56 +1,11 @@
 {
   "version": 1,
-  "title": "快速对比",
-  "description": "固定精选常用模型与套餐，帮助快速找到值得进一步比较的选项。",
+  "title": "精选模型价格与用量",
+  "description": "订阅套餐与按量 API 使用同一口径比较综合单价；用量为参考值，各模型额度不相加。",
   "groups": [
     {
-      "id": "deepseek-v4-flash-0731",
-      "title": "DeepSeek V4 Flash 0731",
-      "kind": "single",
-      "enabled": true,
-      "modelSlugs": [
-        "deepseek-v4-flash-0731"
-      ]
-    },
-    {
-      "id": "deepseek-v4-1-flash",
-      "title": "DeepSeek V4.1 Flash",
-      "kind": "single",
-      "enabled": true,
-      "modelSlugs": [
-        "deepseek-v4-1-flash"
-      ]
-    },
-    {
-      "id": "glm-5-3-flash",
-      "title": "GLM 5.3 Flash",
-      "kind": "single",
-      "enabled": true,
-      "modelSlugs": [
-        "glm-5-3-flash"
-      ]
-    },
-    {
-      "id": "gpt-6-sol",
-      "title": "GPT 6 Sol",
-      "kind": "single",
-      "enabled": true,
-      "modelSlugs": [
-        "gpt-6-sol"
-      ]
-    },
-    {
-      "id": "gpt-6-luna",
-      "title": "GPT 6 Luna",
-      "kind": "single",
-      "enabled": true,
-      "modelSlugs": [
-        "gpt-6-luna"
-      ]
-    },
-    {
       "id": "high-volume-models",
-      "title": "甜品级模型对比",
+      "title": "甜品级模型",
       "kind": "multi",
       "enabled": true,
       "modelSlugs": [
@@ -62,7 +17,7 @@
     },
     {
       "id": "sota-models",
-      "title": "SOTA模型对比",
+      "title": "顶尖与前沿模型",
       "kind": "multi",
       "enabled": true,
       "modelSlugs": [
@@ -73,5 +28,13 @@
         "kimi-k3"
       ]
     }
+  ],
+  "platformSlugs": [
+    "zhipu",
+    "minimax",
+    "opencode",
+    "bytedance-ark",
+    "deepseek-official",
+    "codex"
   ]
 }

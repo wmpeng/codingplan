@@ -48,7 +48,7 @@
     [
       "偏好",
       "有什么使用条件和偏好？",
-      "回答立即更新推荐；不确定的条件可以保持不限。",
+      "回答立即更新方案；不确定的条件可以保持不限。",
     ],
   ];
   function buttons(key, items, current) {
@@ -144,8 +144,8 @@
         buttons(
           "modelGroup",
           [
-            ["any", "不限，按用途推荐"],
-            ["sota-models", "SOTA：优先模型能力"],
+            ["any", "不限，查看全部方案"],
+            ["sota-models", "顶尖与前沿：优先模型能力"],
             ["high-volume-models", "甜品级：轻快实惠"],
           ],
           s.modelGroup,
@@ -187,12 +187,12 @@
     if (s.monthlyTokenRange)
       parts.push(`≥ ${F.targetTokens(s) / 100} 亿 Token/月`);
     if (s.modelGroup !== "any")
-      parts.push(s.modelGroup === "sota-models" ? "SOTA" : "甜品级");
+      parts.push(s.modelGroup === "sota-models" ? "顶尖与前沿" : "甜品级");
     if (s.imageRequired) parts.push("图片输入");
     if (s.platformSlugs?.length)
       parts.push(`指定 ${s.platformSlugs.length} 家平台`);
     if (s.modelSlugs?.length) parts.push(`指定 ${s.modelSlugs.length} 个模型`);
-    return parts.join(" · ") || "尚未限定需求，可先看看推荐再调整";
+    return parts.join(" · ") || "尚未限定需求，可先看看全部方案再调整";
   }
   function render() {
     const ready = !!controller,

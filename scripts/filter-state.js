@@ -6,13 +6,13 @@
   'use strict';
 
   const DEFAULTS = Object.freeze({
-    platformSlugs: ['zhipu', 'minimax', 'opencode', 'bytedance-ark', 'deepseek-official', 'codex'],
-    modelSlugs: ['claude-fable-5-1', 'gpt-6-astra', 'glm-5-3', 'deepseek-v4-1-flash', 'kimi-k3', 'minimax-m3'],
+    platformSlugs: null,
+    modelSlugs: null,
     modelMatch: 'any',
     budgetCny: null,
     monthlyTokenRange: null,
     tokenUnit: 'yi',
-    platformStatusMax: 'paused',
+    platformStatusMax: 'limited',
     platformTags: [],
     includeDiscontinued: false,
     priceRanges: {},

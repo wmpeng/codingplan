@@ -17,16 +17,9 @@
         '#db2777', '#4f46e5', '#65a30d', '#9333ea', '#ea580c', '#0f766e',
         '#475569', '#a16207', '#be123c', '#0369a1'
     ];
-    const DEFAULT_PLATFORM_SLUGS = [
-        'aliyun-bailian', 'zhipu', 'bytedance-ark', 'codex', 'claude',
-        'deepseek-official', 'kimi', 'minimax', 'opencode'
-    ];
-    const DEFAULT_MODEL_SLUGS = [
-        'deepseek-v4-pro-0813', 'deepseek-v4-flash-0731', 'qwen-3-8-max',
-        'glm-5-3', 'glm-5-3-flash', 'kimi-k3', 'gpt-6-astra', 'gpt-6-sol', 'gpt-6-luna',
-        'claude-opus-5', 'claude-sonnet-5', 'muse-spark-1-2',
-        'minimax-m3', 'deepseek-v4-flash-vision-exp'
-    ];
+    // Featured entities come only from model-comparison-presets.json.
+    const DEFAULT_PLATFORM_SLUGS = [];
+    const DEFAULT_MODEL_SLUGS = [];
     const COMPARISON_TABLE_COLUMNS = [
         { key: 'vendor', label: '平台' },
         { key: 'plan', label: '套餐' },
@@ -58,6 +51,12 @@
         return Number.isFinite(number) && number > 0 ? number : null;
     }
 
+    function finiteNonnegative(value) {
+        if (value == null || value === '' || typeof value === 'boolean') return null;
+        const number = Number(value);
+        return Number.isFinite(number) && number >= 0 ? number : null;
+    }
+
     function getPointScore(point, benchmark) {
         const score = point && point.scores && point.scores[benchmark];
         const exact = score && Number(score.scoreExact);
@@ -68,8 +67,8 @@
         return String(point.platformSlug || point.platformName || '');
     }
 
-    function getDefaultPlatformSelectionKeys() {
-        return new Set(DEFAULT_PLATFORM_SLUGS);
+    function getDefaultPlatformSelectionKeys(slugs) {
+        return new Set(slugs || []);
     }
 
     function createDefaultFilterState(points, options) {
@@ -81,10 +80,10 @@
             : null;
         const defaultPlatforms = configured && configured.platformSlugs !== null
             ? configured.platformSlugs
-            : DEFAULT_PLATFORM_SLUGS;
+            : [...availablePlatforms];
         const defaultModels = configured && configured.modelSlugs !== null
             ? configured.modelSlugs
-            : DEFAULT_MODEL_SLUGS;
+            : [...availableModels];
         return {
             platforms: new Set((full ? [...availablePlatforms] : defaultPlatforms)
                 .filter((key) => availablePlatforms.has(key))),
@@ -393,12 +392,14 @@
     }
 
     function tokenAmountInUnit(value, unit) {
+        if (value == null || value === '' || typeof value === 'boolean') return null;
         const number = Number(value);
         if (!Number.isFinite(number)) return null;
         return normalizeTokenUnit(unit) === 'yi' ? number / 100 : number;
     }
 
     function unitPriceInTokenUnit(value, unit) {
+        if (value == null || value === '' || typeof value === 'boolean') return null;
         const number = Number(value);
         if (!Number.isFinite(number)) return null;
         return normalizeTokenUnit(unit) === 'yi' ? number * 100 : number;
@@ -416,7 +417,7 @@
     function formatUnitPrice(value, unit) {
         const normalized = normalizeTokenUnit(unit);
         const number = unitPriceInTokenUnit(value, normalized);
-        if (!Number.isFinite(number) || number <= 0) return '—';
+        if (!Number.isFinite(number) || number < 0) return '—';
         return `¥${formatNumber(number, 4)} / ${normalized === 'yi' ? '亿' : 'M'}`;
     }
 
@@ -438,8 +439,8 @@
     }
 
     function formatSubscriptionMonthlyPrice(point) {
-        const original = finitePositive(point && point.originalMonthlyFee);
-        const cny = finitePositive(point && point.monthlyFeeCny);
+        const original = finiteNonnegative(point && point.originalMonthlyFee);
+        const cny = finiteNonnegative(point && point.monthlyFeeCny);
         if (original === null && cny === null) return '未公开';
         const originalCurrency = currencySymbol(point && point.originalCurrency);
         const originalText = original === null
@@ -451,13 +452,13 @@
     }
 
     function comparisonSortValue(point, key) {
-        if (key === 'price') return finitePositive(point.monthlyFeeCny);
+        if (key === 'price') return finiteNonnegative(point.monthlyFeeCny);
         if (key === 'artificialAnalysis' || key === 'deepSWE') return getPointScore(point, key);
         if (key === 'vendor') return point.platformName || '';
         if (key === 'plan') return point.planName || '';
         if (key === 'note') return point[key] || '';
         if (key === 'model') return point.relationLabel || point.modelName || '';
-        return finitePositive(point[key]);
+        return finiteNonnegative(point[key]);
     }
 
     function sortComparisonRows(points, key, direction) {
@@ -502,7 +503,7 @@
     }
 
     function unitPriceVisualHtml(point, tokenUnit, visualOptions) {
-        const value = Number(point && point.unitPriceCnyPerM);
+        const value = point && point.unitPriceCnyPerM;
         const percent = getUnitPriceVisualPercent(value, visualOptions && visualOptions.scale);
         if (percent === null) return '<span class="usage-price-bar-empty">—</span>';
         const color = visualOptions && /^#[0-9a-f]{6}$/i.test(visualOptions.color || '')
@@ -557,6 +558,7 @@
             return [{ id, title, kind, modelSlugs }];
         });
         return {
+            platformSlugs: [...new Set(source.platformSlugs || [])],
             title: String(source.title || '').trim() || '常见对比',
             description: String(source.description || '').trim(),
             groups
@@ -567,19 +569,14 @@
         return value === 'all' ? 'all' : 'featured';
     }
 
-    function buildPresetComparisonRows(points, group, platformScope) {
+    function buildPresetComparisonRows(points, group, platformScope, platformSlugs) {
         const modelSlugs = new Set(group && Array.isArray(group.modelSlugs) ? group.modelSlugs : []);
-        const defaultPlatformKeys = getDefaultPlatformSelectionKeys();
+        const defaultPlatformKeys = getDefaultPlatformSelectionKeys(platformSlugs);
         const scope = normalizePresetPlatformScope(platformScope);
         return sortComparisonRows((points || []).filter((point) =>
             (point.billingMode === 'subscription' || point.billingMode === 'payg') &&
             (scope === 'all' || defaultPlatformKeys.has(getPointPlatformKey(point))) &&
-            modelSlugs.has(point.modelSlug) &&
-            finitePositive(point.unitPriceCnyPerM) !== null &&
-            (point.billingMode === 'payg' || (
-                finitePositive(point.monthlyFeeCny) !== null &&
-                finitePositive(point.monthlyTokenInM) !== null
-            ))
+            modelSlugs.has(point.modelSlug) && point.platformVisible !== false && !point.discontinued && point.available !== false
         ), 'unitPriceCnyPerM', 'asc');
     }
 
@@ -587,17 +584,18 @@
         return String(point && point.tierLabel || '').trim();
     }
 
-    function presetComparisonTableHtml(group, points, tokenUnit, platformScope) {
+    function presetComparisonTableHtml(group, points, tokenUnit, platformScope, options = {}) {
         const kind = group && group.kind === 'multi' ? 'multi' : 'single';
         const columns = PRESET_TABLE_COLUMNS[kind];
-        const rows = buildPresetComparisonRows(points, group, platformScope);
+        const rows = buildPresetComparisonRows(points, group, platformScope, options.platformSlugs);
         const modelNamesBySlug = new Map((points || []).map((point) => [point.modelSlug, point.modelName]));
         const includedModels = kind === 'multi'
             ? group.modelSlugs.map((slug) => modelNamesBySlug.get(slug) || slug).join('、')
             : '';
         const subtitle = includedModels ? `<p>包含：${escapeHtml(includedModels)}</p>` : '';
         const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
-        const body = rows.length ? rows.map((point) => {
+        const limit = options.limit || rows.length;
+        const body = rows.length ? rows.map((point, index) => {
             const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
             const planName = point.planName || (point.billingMode === 'payg' ? '按量 API' : '订阅');
             const plan = `<span>${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
@@ -610,18 +608,19 @@
                 identity: `<div class="usage-preset-primary-line">${platformCellHtml(point)}${primaryDetail}</div>` +
                     `<div class="usage-preset-secondary-line">${plan}${secondaryDetail}</div>`,
                 metrics: `<div class="usage-preset-metric-primary">${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)}</div>` +
-                    `<div class="usage-preset-secondary-line usage-preset-metric-secondary"><span>月用量</span><span>${formatTokenAmount(point.monthlyTokenInM, tokenUnit)}</span></div>`
+                    `<div class="usage-preset-secondary-line usage-preset-metric-secondary"><span>月用量</span><span>${point.billingMode === 'payg' ? '—' : point.monthlyTokenInM == null ? '未知' : formatTokenAmount(point.monthlyTokenInM, tokenUnit)}</span></div>`
             };
-            return `<tr data-point-id="${escapeHtml(point.slug)}">${columns.map((column) => {
+            return `<tr data-point-id="${escapeHtml(point.slug)}"${index >= limit ? ' hidden data-preset-extra' : ''}>${columns.map((column) => {
                 return `<td class="${column.key === 'metrics' ? 'usage-preset-metrics' : 'usage-preset-identity'}">${values[column.key]}</td>`;
             }).join('')}</tr>`;
         }).join('') : `<tr><td class="usage-table-empty" colspan="${columns.length}">当前暂无可比较的套餐。</td></tr>`;
         return `<article class="usage-preset-card usage-preset-card--${kind}" data-preset-id="${escapeHtml(group.id)}">` +
             `<header><div><h4>${escapeHtml(group.title)}</h4>${subtitle}</div><span>${rows.length} 条</span></header>` +
-            `<div class="usage-preset-table-scroll"><table class="usage-preset-table"><thead>${head}</thead><tbody>${body}</tbody></table></div></article>`;
+            `<div class="usage-preset-table-scroll" tabindex="0" role="region" aria-label="${escapeHtml(group.title)}价格与用量"><table class="usage-preset-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>` +
+            (rows.length > limit ? `<button type="button" class="tool-button preset-expand" data-preset-expand aria-expanded="false">展开全部 ${rows.length} 条</button>` : '') + '</article>';
     }
 
-    function renderPresetComparisons(host, config, points, tokenUnit, platformScope) {
+    function renderPresetComparisons(host, config, points, tokenUnit, platformScope, options = {}) {
         if (!host) return [];
         const normalized = normalizePresetConfig(config);
         const scope = normalizePresetPlatformScope(platformScope);
@@ -634,8 +633,8 @@
         }
         host.hidden = false;
         host.innerHTML = `<div class="usage-preset-heading"><div><h3>${escapeHtml(normalized.title)}</h3>${normalized.description ? `<p>${escapeHtml(normalized.description)}</p>` : ''}</div><div class="usage-preset-heading-actions"><span class="usage-preset-note">固定对比 · 不随当前筛选变化</span><div class="usage-segments usage-preset-scope-control" role="group" aria-label="预置对比平台范围"><button type="button" data-preset-platform-scope="featured" class="${scope === 'featured' ? 'is-active' : ''}" aria-pressed="${scope === 'featured'}">仅显示精选平台</button><button type="button" data-preset-platform-scope="all" class="${scope === 'all' ? 'is-active' : ''}" aria-pressed="${scope === 'all'}">显示所有平台</button></div></div></div>` +
-            (singles.length ? `<div class="usage-preset-grid usage-preset-grid--single">${singles.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope)).join('')}</div>` : '') +
-            (multis.length ? `<div class="usage-preset-grid usage-preset-grid--multi">${multis.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope)).join('')}</div>` : '');
+            (singles.length ? `<div class="usage-preset-grid usage-preset-grid--single">${singles.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope, {...options, platformSlugs: normalized.platformSlugs})).join('')}</div>` : '') +
+            (multis.length ? `<div class="usage-preset-grid usage-preset-grid--multi">${multis.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope, {...options, platformSlugs: normalized.platformSlugs})).join('')}</div>` : '');
         return normalized.groups;
     }
 
@@ -814,7 +813,7 @@
             const context = root.EntityData.buildContext(...documents);
             context.modelGroups = presetConfig.groups || [];
             const rate = root.appConfig && root.appConfig.usdToCnyRate || 6.8;
-            const points = root.EntityData.buildComparisonPoints(context, rate, { includeUnknown: options?.mode === 'home' });
+            const points = root.EntityData.buildComparisonPoints(context, rate, { includeUnknown: true });
             const platformMap = new Map();
             points.forEach((point) => {
                 platformMap.set(getPointPlatformKey(point), point.platformName);
@@ -1057,7 +1056,7 @@
             function render() {
                 const presetRenderKey = `${state.tokenUnit}:${state.presetPlatformScope}`;
                 if (renderedPresetKey !== presetRenderKey) {
-                    renderPresetComparisons(container.querySelector('[data-presets]'), presetConfig, points, state.tokenUnit, state.presetPlatformScope);
+                    if (!mountOptions.hidePresets) renderPresetComparisons(container.querySelector('[data-presets]'), presetConfig, points, state.tokenUnit, state.presetPlatformScope);
                     renderedPresetKey = presetRenderKey;
                 }
                 let filtered = filterPoints(points, {
@@ -1069,7 +1068,6 @@
                     monthlyTokenRange: state.monthlyTokenRange,
                     priceRanges: state.priceRanges, filterContext: state.filterContext, sharedFilters: state.sharedFilters
                 });
-                if (mountOptions.mode === 'home' && root.CodingPlanOfferWorkspace) filtered = root.CodingPlanOfferWorkspace.filter(filtered, 'points');
                 const visibleFiltered = filterBySoloColorKey(filtered, state.colorMode, state.soloColorKey);
                 const usagePoints = buildUsageChartPoints(visibleFiltered);
                 const intelligencePoints = buildIntelligenceChartPoints(visibleFiltered, state.benchmark);
@@ -1114,7 +1112,6 @@
                 fitScatterLayout(usageChart, true);
                 fitScatterLayout(intelligenceChart, false);
                 renderDataTable('comparison', visibleFiltered);
-                if (mountOptions.mode === 'home') root.CodingPlanOfferWorkspace?.decorate();
                 container.querySelector('[data-empty="usage"]').hidden = usagePoints.length > 0;
                 container.querySelector('[data-empty="intelligence"]').hidden = intelligencePoints.length > 0;
             }
@@ -1139,9 +1136,7 @@
                 render();
             }
             root.addEventListener('codingplan:filters-changed', onSharedFilterChange);
-            const onComparisonChange = () => { state.soloColorKey = null; render(); };
-            if (mountOptions.mode === 'home') root.addEventListener('codingplan:comparison-changed', onComparisonChange);
-            container.__usageCleanup = () => { root.removeEventListener('codingplan:filters-changed', onSharedFilterChange); root.removeEventListener('codingplan:comparison-changed', onComparisonChange); };
+            container.__usageCleanup = () => root.removeEventListener('codingplan:filters-changed', onSharedFilterChange);
             container.querySelector('[data-model-search]').addEventListener('input', (event) => {
                 const query = event.target.value.trim().toLocaleLowerCase('zh-CN');
                 container.querySelectorAll('[data-picker="models"] [data-options] label').forEach((label) => {

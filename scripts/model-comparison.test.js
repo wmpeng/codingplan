@@ -51,44 +51,13 @@ const points = [
   { platformSlug: 'a-coding', platformName: 'A Coding', modelSlug: 'm3', multimodal: 'unknown', billingMode: 'subscription', monthlyFeeCny: 50, monthlyTokenInM: 'unknown', unitPriceCnyPerM: .5, scores: { artificialAnalysis: null, deepSWE: { scoreExact: 55 } } }
 ];
 
-test('default filters use the curated available platforms and models', () => {
-  const defaultPoints = [
-    { platformSlug: 'aliyun-bailian', platformName: '阿里·百炼 Token Plan', modelSlug: 'deepseek-v4-pro-0813' },
-    { platformSlug: 'aliyun-bailian-coding', platformName: '阿里·百炼 Coding Plan', modelSlug: 'not-default' },
-    { platformSlug: 'claude', platformName: 'Claude', modelSlug: 'claude-opus-5' },
-    { platformSlug: 'opencode', platformName: 'OpenCode', modelSlug: 'grok-4-6' },
-    { platformSlug: 'opencode', platformName: 'OpenCode', modelSlug: 'muse-spark-1-2' },
-    { platformSlug: 'minimax', platformName: 'MiniMax', modelSlug: 'minimax-m3' },
-    { platformSlug: 'deepseek-official', platformName: 'DeepSeek', modelSlug: 'deepseek-v4-flash-vision-exp' }
-  ];
-  const defaults = createDefaultFilterState(defaultPoints);
-  assert.deepEqual(defaults.platforms, new Set([
-    getPointPlatformKey(defaultPoints[0]),
-    getPointPlatformKey(defaultPoints[2]),
-    getPointPlatformKey(defaultPoints[6]),
-    getPointPlatformKey(defaultPoints[5]),
-    getPointPlatformKey(defaultPoints[3])
-  ]));
-  assert.deepEqual(defaults.models, new Set([
-    'deepseek-v4-pro-0813', 'claude-opus-5', 'muse-spark-1-2',
-    'minimax-m3', 'deepseek-v4-flash-vision-exp'
-  ]));
-  assert.equal(DEFAULT_PLATFORM_SLUGS.length, 9);
-  assert.equal(DEFAULT_MODEL_SLUGS.length, 14);
-  assert.equal(DEFAULT_MODEL_SLUGS.includes('gpt-6-astra'), true);
-  const generationDefaults = createDefaultFilterState(['gpt-6-sol', 'gpt-6-luna', 'gpt-5-6-sol', 'gpt-5-6-luna'].map(modelSlug => ({ platformSlug: 'codex', modelSlug })));
-  assert.deepEqual(generationDefaults.models, new Set(['gpt-6-sol', 'gpt-6-luna']));
-  assert.equal(DEFAULT_MODEL_SLUGS.includes('grok-4-6'), false);
-  assert.equal(DEFAULT_MODEL_SLUGS.includes('muse-spark-1-2'), true);
-  assert.equal(DEFAULT_MODEL_SLUGS.includes('minimax-m3'), true);
-  assert.equal(DEFAULT_MODEL_SLUGS.includes('deepseek-v4-flash-vision-exp'), true);
-  assert.equal(defaults.multimodal, 'all');
-  assert.equal(defaults.aaScoreMin, '');
-  assert.equal(defaults.deepSWEScoreMin, '');
-  assert.equal(defaults.soloColorKey, null);
+test('default explorer includes all entities and does not maintain a second curated list', () => {
+  const defaults = createDefaultFilterState(points);
+  assert.deepEqual(defaults.platforms, new Set(points.map(getPointPlatformKey)));
+  assert.deepEqual(defaults.models, new Set(points.map(p=>p.modelSlug)));
+  assert.equal(DEFAULT_PLATFORM_SLUGS.length, 0);
+  assert.equal(DEFAULT_MODEL_SLUGS.length, 0);
   assert.equal(defaults.tokenUnit, 'yi');
-  assert.equal(defaults.monthlyPriceMin, null);
-  assert.equal(defaults.monthlyPriceMax, null);
 });
 
 test('shared filters apply vendor, model, modality and exact score', () => {
@@ -286,20 +255,13 @@ test('unit price sorting uses package price ascending as the tie breaker', () =>
   ]);
 });
 
-test('preset comparisons are configured outside the renderer', () => {
+test('one source defines the featured platforms and exactly two model groups', () => {
   const source = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'model-comparison-presets.json'), 'utf8'));
   const config = normalizePresetConfig(source);
-  assert.equal(config.groups.length, 7);
-  assert.deepEqual(config.groups.map((group) => group.kind), ['single', 'single', 'single', 'single', 'single', 'multi', 'multi']);
-  assert.deepEqual(config.groups[0].modelSlugs, ['deepseek-v4-flash-0731']);
-  assert.equal(config.groups[1].title, 'DeepSeek V4.1 Flash');
-  assert.deepEqual(config.groups[1].modelSlugs, ['deepseek-v4-1-flash']);
-  assert.deepEqual(config.groups[3].modelSlugs, ['gpt-6-sol']);
-  assert.deepEqual(config.groups[4].modelSlugs, ['gpt-6-luna']);
-  assert.equal(config.groups[5].title, '甜品级模型对比');
-  assert.deepEqual(config.groups[5].modelSlugs, ['deepseek-v4-1-flash', 'deepseek-v4-flash-0731', 'glm-5-3-flash', 'gpt-6-luna']);
-  assert.equal(config.groups[6].title, 'SOTA模型对比');
-  assert.deepEqual(config.groups[6].modelSlugs, ['gpt-6-astra', 'gpt-6-sol', 'claude-opus-5', 'glm-5-3', 'kimi-k3']);
+  assert.deepEqual(config.groups.map(g=>g.id), ['high-volume-models','sota-models']);
+  assert.equal(config.platformSlugs.length,6);
+  assert.ok(config.groups[0].modelSlugs.includes('gpt-6-luna'));
+  assert.ok(config.groups[1].modelSlugs.includes('gpt-6-sol'));
 });
 
 test('preset rows include subscriptions and API while sorting by unit and package price', () => {
@@ -313,8 +275,8 @@ test('preset rows include subscriptions and API while sorting by unit and packag
     { ...defaultPlatform, slug: 'other', billingMode: 'subscription', modelSlug: 'm2', monthlyFeeCny: 10, monthlyTokenInM: 100, unitPriceCnyPerM: 0.1 },
     { platformSlug: 'zhipu-coding-legacy', platformName: '智谱AI Coding Plan（已下架）', slug: 'not-default-platform', billingMode: 'subscription', modelSlug: 'm1', monthlyFeeCny: 10, monthlyTokenInM: 100, unitPriceCnyPerM: 0.1 }
   ];
-  assert.deepEqual(buildPresetComparisonRows(rows, group).map((row) => row.slug), ['api', 'cheap', 'expensive']);
-  assert.deepEqual(buildPresetComparisonRows(rows, group, 'all').map((row) => row.slug), ['not-default-platform', 'api', 'cheap', 'expensive']);
+  assert.deepEqual(buildPresetComparisonRows(rows, group, 'featured', ['zhipu','deepseek-official']).map((row) => row.slug), ['api', 'unknown', 'cheap', 'expensive']);
+  assert.deepEqual(buildPresetComparisonRows(rows, group, 'all').map((row) => row.slug), ['not-default-platform', 'api', 'unknown', 'cheap', 'expensive']);
 });
 
 test('preset tables add model only for multi groups and preserve single-model qualifiers', () => {
@@ -324,8 +286,8 @@ test('preset tables add model only for multi groups and preserve single-model qu
     monthlyFeeCny: 100, monthlyTokenInM: 1000, unitPriceCnyPerM: 0.1
   };
   assert.equal(getPresetModelQualifier(point), '[谷]');
-  const single = presetComparisonTableHtml({ id: 'single', title: '单模型', kind: 'single', modelSlugs: ['glm-5-3-flash'] }, [point], 'M');
-  const multi = presetComparisonTableHtml({ id: 'multi', title: '多模型', kind: 'multi', modelSlugs: ['glm-5-3-flash'] }, [point], 'yi');
+  const single = presetComparisonTableHtml({ id: 'single', title: '单模型', kind: 'single', modelSlugs: ['glm-5-3-flash'] }, [point], 'M', 'all');
+  const multi = presetComparisonTableHtml({ id: 'multi', title: '多模型', kind: 'multi', modelSlugs: ['glm-5-3-flash'] }, [point], 'yi', 'all');
   assert.match(single, /平台 \/ 套餐/);
   assert.equal(single.includes('平台 / 模型 / 套餐'), false);
   assert.equal(single.includes('按综合单价从低到高'), false);
@@ -348,7 +310,7 @@ test('preset tables show API rows with explicit unavailable subscription fields'
   };
   const html = presetComparisonTableHtml({
     id: 'api', title: 'API', kind: 'single', modelSlugs: ['deepseek-v4-flash-0731']
-  }, [apiPoint], 'yi');
+  }, [apiPoint], 'yi', 'all');
   assert.match(html, /usage-preset-price">按量<\/span>/);
   assert.match(html, /¥10 \/ 亿/);
   assert.match(html, /usage-preset-metric-secondary"><span>月用量<\/span><span>—<\/span>/);
