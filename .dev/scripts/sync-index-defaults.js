@@ -19,7 +19,6 @@ function replace(html,id,body){
 function write(file,html){html=html.replace(/\r\n/g,'\n').replace(/[ \t]+$/gm,'');const target=path.join(root,file);if(fs.readFileSync(target,'utf8')===html)return;if(check)throw new Error(file+' 需要重新生成');fs.writeFileSync(target,html,'utf8');}
 const plans=E.buildPlanCatalog(ctx);
 let home=fs.readFileSync(path.join(root,'index.html'),'utf8');
-home=home.replace(/(<p id="catalogSummary">)[\s\S]*?(<\/p>)/,(_,a,b)=>a+esc(E.headerSubtitle(ctx,'').split('<br>')[0])+b);
 home=replace(home,'FEATURED_PLATFORMS',preset.platformSlugs.map(slug=>P.buildPlatformCardHtml(ctx.platformBySlug.get(slug),plans,{supportedModels:E.platformModels(ctx,slug),hasApiPlan:E.buildApiPricingGroups(ctx,slug).length>0,sanitizeUrl:C.url})).join('\n'));
 home=replace(home,'FEATURED_MODELS',C.modelGroups(preset,ctx));
 home=replace(home,'FEATURED_TABLES','<div class="usage-preset-grid usage-preset-grid--multi">'+preset.groups.map(group=>M.presetComparisonTableHtml(group,C.points(ctx,config),'yi','featured',{platformSlugs:preset.platformSlugs,limit:6})).join('')+'</div>');
