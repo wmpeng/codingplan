@@ -440,3 +440,48 @@ body .site-header .toggle-switch:has(input:focus-visible) { outline:2px solid va
 @media (max-width:600px) {
   body .site-header .tool-nav a { font-size:15px; padding:10px 12px; }
 }
+
+/* 文章目录与更新记录共用基础外壳，内容仍保留各自的分类与记录结构。 */
+body.content-list-view { padding: 0 28px 64px; font-size: 14px; line-height: 1.7; }
+body.content-list-view :is(.doc-wrap, .tool-page-main) { max-width: 900px; margin: 0 auto; padding: 0; }
+body.content-list-view .content-list-page {
+  max-width: 900px; margin: 0 auto; padding: 48px;
+  background: var(--bg-secondary); border: 1px solid var(--border-color);
+  border-radius: 12px; box-shadow: none;
+}
+body .content-list-page .content-list-header { margin: 0 0 32px; }
+body .content-list-page .content-list-kicker {
+  margin: 0 0 8px; color: var(--text-secondary); font-size: 12px;
+  font-weight: 400; line-height: 1.7; letter-spacing: .04em; text-transform: uppercase;
+}
+body .content-list-page .content-list-header h1 {
+  margin: 0 0 12px; color: var(--text-primary); font-size: clamp(26px, 3vw, 32px);
+  font-weight: 600; line-height: 1.45; letter-spacing: -.025em;
+}
+body .content-list-page .content-list-lead {
+  margin: 0; color: var(--text-secondary); font-size: 14px; line-height: 1.7;
+}
+body .content-list-page :is(.articles-list li, .update-entry) {
+  display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 16px;
+  align-items: start; padding: 20px 0; border-top: 0; border-bottom: 1px solid var(--border-light);
+}
+body .content-list-page :is(.articles-list li, .update-entry):last-child { border-bottom: 0; padding-bottom: 0; }
+body .content-list-page :is(.articles-list time, .update-entry h2) {
+  margin: 0; padding: 2px 0 0; color: var(--text-secondary); font-size: 12px;
+  font-weight: 400; line-height: 1.7; font-variant-numeric: tabular-nums;
+}
+body .content-list-page .articles-section { margin: 0 0 32px; }
+body .content-list-page .articles-section:last-child { margin-bottom: 0; }
+body .content-list-page .articles-section h2 {
+  margin: 0; padding-bottom: 12px; color: var(--text-primary); font-size: 18px;
+  font-weight: 600; line-height: 1.5; border-bottom: 1px solid var(--border-color);
+}
+body .content-list-page .updates-list { border-top: 1px solid var(--border-color); }
+body .content-list-page .update-entry ul { margin: 0; padding-left: 20px; color: var(--text-primary); font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+body .content-list-page .update-entry li + li { margin-top: 8px; }
+body .content-list-page .articles-item-main a:is(:hover, :focus-visible) { color: var(--accent-primary); text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width:600px) {
+  body.content-list-view { padding: 0 14px 40px; }
+  body.content-list-view .content-list-page { padding: 24px 20px; }
+  body .content-list-page :is(.articles-list li, .update-entry) { grid-template-columns: 1fr; gap: 8px; }
+}
