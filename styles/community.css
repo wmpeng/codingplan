@@ -1,8 +1,10 @@
 /* Homepage community entry points share the site's blue-gray visual language. */
-.community-invite { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 18px; margin-top: 22px; max-width: 560px; border: 1px solid #d9e5f5; border-radius: 12px; background: #edf3fb; }
-.discovery-page .community-invite h2 { font-size: 16px; font-weight: 600; line-height: 1.5; margin: 0; letter-spacing: 0; }
-.discovery-page .community-invite p { color: var(--text-secondary); font-size: 13px; line-height: 1.7; margin: 6px 0 12px; }
-.community-invite img { flex: 0 0 auto; width: 96px; height: 96px; border: 5px solid white; border-radius: 6px; }
+.community-invite { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 14px; margin-top: 16px; max-width: 520px; border: 1px solid #dfe8f4; border-radius: 8px; background: #f0f5fc; }
+.community-invite > div { min-width: 0; }
+.discovery-page .community-invite h2 { font-size: 14px; font-weight: 600; line-height: 1.5; margin: 0; letter-spacing: 0; }
+.discovery-page .community-invite p { color: var(--text-secondary); font-size: 12px; line-height: 1.6; margin: 4px 0 0; }
+.community-invite-link { display: inline-flex; align-items: center; flex-shrink: 0; min-height: 40px; font-size: 13px; font-weight: 600; color: var(--accent-primary); text-decoration: none; }
+.community-invite-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 body .community-join { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 14px; border: 1px solid var(--accent-primary); border-radius: 8px; color: white; background: var(--accent-primary); font-size: 13px; font-weight: 600; line-height: 1.5; text-decoration: none; }
 body .community-join:hover { color: white; background: var(--accent-hover); text-decoration: none; }
 .community-float { position: fixed; bottom: 24px; right: 24px; z-index: 80; display: flex; align-items: stretch; border: 1px solid #c9d8ec; border-radius: 12px; background: var(--bg-secondary); box-shadow: 0 4px 18px #182b4514; }
@@ -27,8 +29,8 @@ body .community-join:hover { color: white; background: var(--accent-hover); text
 .community-dialog .community-qr-hint { text-align: center; font-size: 12px; margin: 8px 0 18px; }
 .community-dialog .community-join { display: flex; width: 100%; }
 @media (max-width: 600px) {
-  .community-invite { padding: 16px; }
-  .community-invite img { display: none; }
+  .community-invite { gap: 12px; }
+  .community-invite-link { min-height: 44px; }
   .community-float { right: 12px; bottom: max(16px, env(safe-area-inset-bottom)); border-radius: 10px; }
   .community-float-trigger { min-height: 44px; padding: 10px 12px; gap: 8px; }
   .community-float-trigger small { display: none; }

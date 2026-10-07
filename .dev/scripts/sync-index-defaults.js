@@ -30,7 +30,7 @@ const groupQr=esc(C.url(qrPath.startsWith('assets/') ? '/'+qrPath : qrPath));
 const groupAlt=esc(group.qrAlt || community.qrAlt || '飞书群二维码');
 const groupTitle=esc(group.title || '飞书讨论群');
 const inviteDescription=esc((community.highlights || []).join('，')+'，交流实测体验。');
-home=replace(home,'HOME_COMMUNITY',`<aside class="community-invite" aria-label="加入选型交流群"><div><h2>一起选好模型、好套餐</h2><p>${inviteDescription}</p><a class="community-join" href="${groupUrl}" target="_blank" rel="noopener noreferrer">加入飞书群 ↗</a></div><img src="${groupQr}" alt="${groupAlt}" width="96" height="96"></aside>`);
+home=replace(home,'HOME_COMMUNITY',`<aside class="community-invite" aria-label="加入选型交流群"><div><h2>一起选好模型、好套餐</h2><p>${esc((community.highlights || []).join(' · '))}</p></div><a class="community-invite-link" href="${groupUrl}" target="_blank" rel="noopener noreferrer">加入飞书群 ↗</a></aside>`);
 const closeIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>';
 home=replace(home,'COMMUNITY_FLOAT',`<div class="community-float" id="communityFloat" hidden>
   <button type="button" class="community-float-trigger" data-community-open aria-expanded="false" aria-controls="communityDialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 14a4 4 0 0 1-4 4H9l-6 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 8h8M8 12h5"/></svg><span><strong><span class="community-float-desktop">选型交流</span><span class="community-float-mobile">加群交流</span></strong><small>加入飞书群</small></span></button>
