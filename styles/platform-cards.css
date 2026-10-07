@@ -313,8 +313,19 @@
     letter-spacing: 0.02em;
 }
 
-.platform-card:hover .platform-card-hint {
+/* 卡片底部两个入口共享直接悬停与键盘焦点反馈。 */
+body .platform-card .platform-card-links :is(.platform-card-hint, .platform-guide-link) {
+    padding: 4px 0;
     opacity: 1;
+    text-decoration: none;
+    text-underline-offset: 4px;
+}
+
+body .platform-card .platform-card-links :is(.platform-card-hint, .platform-guide-link):hover,
+body .platform-card .platform-card-links .platform-guide-link:focus-visible,
+body .platform-card:focus-visible .platform-card-hint {
+    color: var(--accent-primary, #0f766e);
+    text-decoration: underline;
 }
 
 /* 平台详情浮层 */
