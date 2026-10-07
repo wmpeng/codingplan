@@ -294,8 +294,40 @@
 
 .filter-search-empty { color: var(--text-secondary); padding: 22px 8px; text-align: center; font-size: 13px; line-height: 1.7; }
 .filter-search-empty[hidden] { display: none; }
+body .filter-picker-menu .filter-picker-tools {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  margin: 2px 0 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f3f4f6;
+}
+body .filter-picker-menu .filter-picker-tools button {
+  min-width: 0;
+  min-height: 36px;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: #4b5563;
+  font: inherit;
+  font-size: 13px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+body .filter-picker-menu .filter-picker-tools button:hover {
+  background: #fff;
+  border-color: #d1d5db;
+  color: #111827;
+}
+body .filter-picker-menu .filter-picker-tools button:active { background: #e5e7eb; }
+body .filter-picker-menu .filter-picker-tools button:focus-visible { outline: 2px solid #6b7280; outline-offset: 1px; }
 @media (max-width: 800px) {
   :is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu { top: auto; bottom: 18px; max-height: min(520px, 70dvh); border-color: #bccde1; }
+  body .filter-picker-menu .filter-picker-tools button { min-height: 44px; }
 }
 
 @media (min-width: 1101px) { .tool-unified-active .guide-filter-fields { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
