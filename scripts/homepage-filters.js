@@ -28,10 +28,6 @@
         : [];
   }
 
-  function pickerHeading(label) {
-    return `<div class="filter-menu-heading" role="group" aria-label="${escapeHtml(label)}"><button type="button" data-picker-close>完成</button></div>`;
-  }
-
   function buildPicker({ id, label, key, items, state }) {
     const rawSelected = valuesFor(state, key);
     const selected =
@@ -49,8 +45,7 @@
       .join("");
     return `<details class="filter-picker" data-picker="${escapeHtml(key)}" id="${escapeHtml(id)}">
       <summary><span>${escapeHtml(label)}</span><span class="filter-picker-count" data-picker-count>${escapeHtml(countText)}</span></summary>
-      <div class="filter-picker-menu">
-        ${pickerHeading("选择" + label)}
+      <div class="filter-picker-menu" role="group" aria-label="选择${escapeHtml(label)}">
         <input type="search" data-picker-search placeholder="搜索${escapeHtml(label)}" aria-label="搜索${escapeHtml(label)}">
         <div class="filter-picker-tools"><button type="button" data-picker-action="clear">清空</button><button type="button" data-picker-action="all">全选</button><button type="button" data-picker-action="default">恢复默认</button></div>
         <div data-picker-options>${options}</div><p class="filter-search-empty" role="status" hidden>没有匹配结果，试试其他关键词。</p>
@@ -167,11 +162,11 @@
       ${
         monitor
           ? ""
-          : `<details class="filter-picker" id="homeBudgetPicker"><summary>月预算 <span data-budget-label></span></summary><div class="filter-picker-menu budget-menu">${pickerHeading("每月预算")}
+          : `<details class="filter-picker" id="homeBudgetPicker"><summary>月预算 <span data-budget-label></span></summary><div class="filter-picker-menu budget-menu" role="group" aria-label="每月预算">
         <label class="filter-inline">不超过 ¥<input type="number" min="0" step="any" data-budget-part="max" aria-label="最高月预算（人民币）" placeholder="不限"></label>
         <div class="budget-presets">${[50, 100, 200, 500].map((n) => `<button type="button" data-budget-preset="${n}">${n} 元以内</button>`).join("")}<button type="button" data-budget-action="clear">不限</button></div>
         <p class="filter-help">按量 API 在填写月用量后估算月支出；未填写时不判断其月预算。</p></div></details>
-      <details class="filter-picker" id="homeTokenPicker"><summary>月 Token 数 <span data-token-label></span></summary><div class="filter-picker-menu budget-menu">${pickerHeading("每月 Token 用量")}
+      <details class="filter-picker" id="homeTokenPicker"><summary>月 Token 数 <span data-token-label></span></summary><div class="filter-picker-menu budget-menu" role="group" aria-label="每月 Token 用量">
         <label class="filter-inline">至少<input type="number" min="0" step="any" data-token-part="min" aria-label="最低月 Token 数" placeholder="不限"><span data-token-unit-label></span></label>
         <button type="button" data-token-clear>不限</button>
         <p class="filter-help">订阅按所选模型额度判断，不相加；未知额度排除。按量 API 按此用量估算费用。</p></div></details><div class="global-token-unit" aria-label="Token 显示单位"><button type="button" data-global-token-unit="yi">亿</button><button type="button" data-global-token-unit="M">M</button></div>`
@@ -347,12 +342,6 @@
     host.addEventListener("click", (event) => {
       const el = event.target.closest("button");
       if (!el) return;
-      if (el.hasAttribute("data-picker-close")) {
-        const picker = el.closest("details");
-        picker.open = false;
-        picker.querySelector("summary").focus();
-        return;
-      }
       if (el.dataset.pickerAction) {
         const key = el.closest("[data-picker]").dataset.picker;
         state[key] =

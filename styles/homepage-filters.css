@@ -292,16 +292,10 @@
   .tool-unified-active .filter-state-actions { float: none; margin: 0 0 8px; }
 }
 
-.filter-menu-heading { display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-bottom: 10px; color: var(--text-primary); font-size: 13px; }
-.filter-menu-heading button { min-height: 32px; padding: 4px 10px; border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-secondary); background: var(--bg-tertiary); font: inherit; font-size: 12px; cursor: pointer; }
-.filter-menu-heading button:hover { color: var(--text-primary); background: #e9edf2; border-color: var(--border-strong); }
-body .filter-menu-heading button:focus-visible { outline: 2px solid var(--text-secondary); outline-offset: 2px; }
 .filter-search-empty { color: var(--text-secondary); padding: 22px 8px; text-align: center; font-size: 13px; line-height: 1.7; }
 .filter-search-empty[hidden] { display: none; }
 @media (max-width: 800px) {
   :is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu { top: auto; bottom: 18px; max-height: min(520px, 70dvh); border-color: #bccde1; }
-  .filter-menu-heading { margin-bottom: 12px; }
-  .filter-menu-heading button { min-height: 38px; padding: 5px 14px; }
 }
 
 @media (min-width: 1101px) { .tool-unified-active .guide-filter-fields { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
