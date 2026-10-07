@@ -29,7 +29,7 @@
   }
 
   function pickerHeading(label) {
-    return `<div class="filter-menu-heading"><strong>${escapeHtml(label)}</strong><button type="button" data-picker-close>完成</button></div>`;
+    return `<div class="filter-menu-heading" role="group" aria-label="${escapeHtml(label)}"><button type="button" data-picker-close>完成</button></div>`;
   }
 
   function buildPicker({ id, label, key, items, state }) {
@@ -150,6 +150,7 @@
       models = context.models;
     let state = Filters.createDefaultState(config, {
       mode: full ? "full" : "home",
+      featuredPreset: opts.featuredPreset,
     });
     const defaults = Filters.cloneState(state);
     const params = new URLSearchParams(location.search),

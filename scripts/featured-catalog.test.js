@@ -7,19 +7,20 @@ const read=n=>JSON.parse(fs.readFileSync(path.join(__dirname,'..',n+'.json'),'ut
 const config=read('config'),preset=read('model-comparison-presets');
 const ctx=E.buildContext(read('platforms'),read('plans'),read('models'),read('plan-models'));ctx.modelGroups=preset.groups;
 
-test('精选来源完整、唯一，需求默认全量且不依赖精选名单',()=>{
+test('精选来源完整、唯一，首页默认选择直接取同一名单',()=>{
   C.validate(preset,ctx);
   assert.equal(preset.groups.length,2);
-  const state=F.createDefaultState(config);
-  assert.equal(state.platformSlugs,null);assert.equal(state.modelSlugs,null);
+  const state=F.createDefaultState(config,{featuredPreset:preset});
+  assert.deepEqual(state.platformSlugs,preset.platformSlugs);
+  assert.deepEqual(state.modelSlugs,[...new Set(preset.groups.flatMap(g=>g.modelSlugs))]);
   assert.equal(config.recommendationGroups,undefined);
   assert.throws(()=>C.validate({...preset,platformSlugs:['missing']},ctx),/无效平台/);
   assert.throws(()=>C.validate({...preset,groups:[preset.groups[0],{...preset.groups[1],modelSlugs:preset.groups[0].modelSlugs}]},ctx),/重复分组/);
 });
 
 test('所有符合条件的套餐和API关系都保留，筛选不能跨套餐拼接',()=>{
-  for(const patch of [{},{modelSlugs:['gpt-6-sol']},{budgetCny:{max:100,min:null},monthlyTokenRange:{min:100,max:null}},{platformStatusMax:'delisted',includeDiscontinued:true}]){
-    const state=F.normalizeState({...F.createDefaultState(config),...patch});
+  for(const patch of [{},{platformSlugs:null,modelSlugs:null},{modelSlugs:['gpt-6-sol']},{budgetCny:{max:100,min:null},monthlyTokenRange:{min:100,max:null}},{platformStatusMax:'delisted',includeDiscontinued:true}]){
+    const state=F.normalizeState({...F.createDefaultState(config,{featuredPreset:preset}),...patch});
     const offers=F.matchingOffers(ctx,state,{usdToCnyRate:config.usdToCnyRate,platformCatalog:config.platformCatalog});
     const result=G.recommend(ctx,state,config,{allMatching:true});
     const expected=offers.flatMap(o=>o.plan.billingMode==='payg'?o.rows.map(r=>o.plan.slug+':'+r.slug):[o.plan.slug]);

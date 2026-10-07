@@ -106,7 +106,13 @@
   function createDefaultState(config, options) {
     const mode = options && options.mode;
     if (mode === 'full') return normalizeState({}, { mode: 'full' });
-    return readDefaults(config);
+    const state = readDefaults(config);
+    const preset = options && options.featuredPreset;
+    if (preset) {
+      state.platformSlugs = arrayOrNull(preset.platformSlugs);
+      state.modelSlugs = arrayOrNull((preset.groups || []).flatMap(group => group.modelSlugs || []));
+    }
+    return state;
   }
 
   function toCny(value, currency, rate) {

@@ -17,7 +17,7 @@
       document.getElementById('featuredModels').innerHTML=C.modelGroups(preset,context);
       C.mountTables(document.getElementById('featuredComparisons'),preset,context,config,6);
       OfferResults.mount(document.getElementById('purchaseGuideResults'),context,config);
-      CodingPlanFilterUI.mount({context,config});
+      CodingPlanFilterUI.mount({context,config,featuredPreset:preset});
       document.getElementById('homeLoading')?.remove();
       window.dispatchEvent(new Event('codingplan:home-ready'));
     } catch(e) {

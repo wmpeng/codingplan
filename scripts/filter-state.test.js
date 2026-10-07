@@ -108,6 +108,28 @@ test('默认精选配置可读取并校验稳定 slug', () => {
   assert.equal(Filters.validateDefaults({ ...config.homepageFilters.defaults, modelSlugs: ['missing'] }, context).ok, false);
 });
 
+test('首页默认取精选平台与两组模型并集，保留其他条件且完整页仍为全量', () => {
+  const config = { homepageFilters: { defaults: { platformSlugs: ['old'], modelSlugs: ['old'], budgetCny: { max: 200 } } } };
+  const featuredPreset = { platformSlugs: ['p1', 'p2'], groups: [
+    { modelSlugs: ['m1', 'm2'] }, { modelSlugs: ['m2', 'm3'] }
+  ] };
+  const state = Filters.createDefaultState(config, { mode: 'home', featuredPreset });
+  assert.deepEqual(state.platformSlugs, ['p1', 'p2']);
+  assert.deepEqual(state.modelSlugs, ['m1', 'm2', 'm3']);
+  assert.deepEqual(state.budgetCny, { min: null, max: 200 });
+  assert.equal(state.platformStatusMax, 'limited');
+  assert.equal(state.modelMatch, 'any');
+  state.platformSlugs.push('extra');
+  state.modelSlugs.pop();
+  const restored = Filters.createDefaultState(config, { featuredPreset });
+  assert.deepEqual(restored.platformSlugs, ['p1', 'p2']);
+  assert.deepEqual(restored.modelSlugs, ['m1', 'm2', 'm3']);
+  const full = Filters.createDefaultState(config, { mode: 'full', featuredPreset });
+  assert.equal(full.platformSlugs, null);
+  assert.equal(full.modelSlugs, null);
+  assert.equal(full.budgetCny, null);
+});
+
 test('模型任意/全部匹配与实体跨维度交集', () => {
   const plans = [
     { slug: 'p-a', platformSlug: 'a', supportedModels: ['m1', 'm2'], monthlyPrice: 10, currency: '¥' },
