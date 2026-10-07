@@ -607,7 +607,7 @@
             const values = {
                 identity: `<div class="usage-preset-primary-line">${platformCellHtml(point)}${primaryDetail}</div>` +
                     `<div class="usage-preset-secondary-line">${plan}${secondaryDetail}</div>`,
-                metrics: `<div class="usage-preset-metric-primary">${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)}</div>` +
+                metrics: `<div class="usage-preset-metric-primary${point.unitPriceCnyPerM == null ? ' is-unknown' : ''}">${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)}</div>` +
                     `<div class="usage-preset-secondary-line usage-preset-metric-secondary"><span>月用量</span><span>${point.billingMode === 'payg' ? '—' : point.monthlyTokenInM == null ? '未知' : formatTokenAmount(point.monthlyTokenInM, tokenUnit)}</span></div>`
             };
             return `<tr data-point-id="${escapeHtml(point.slug)}"${index >= limit ? ' hidden data-preset-extra' : ''}>${columns.map((column) => {
