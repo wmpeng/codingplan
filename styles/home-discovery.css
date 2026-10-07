@@ -83,7 +83,7 @@
 .offer-reasons ul { color:#64748b;font-size:12px;line-height:1.8;padding-left:20px; }
 .home-knowledge { margin-top:48px; }
 .home-eyebrow { display:none; }
-.hero-summary { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px; }
+.hero-summary { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px; }
 .hero-summary-card { border:1px solid #dce5f0;border-radius:12px;padding:20px;background:#fff;min-width:0; }
 .hero-summary-card img { width:100%;max-height:160px;object-fit:contain;background:#f8fafc; }
 .hero-summary-title { font-size:17px!important;line-height:1.6!important;margin:12px 0;overflow-wrap:anywhere; }
@@ -119,22 +119,3 @@
 .hero-article-readmore { font-size: 13px; color: var(--accent-primary); }
 @media (min-width: 601px) and (max-width: 800px) { .hero-articles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .discovery-page .hero-article { padding: 16px; } }
-
-/* 首屏下方的轻量信息流，无缩略图或摘要段落。 */
-.home-activity { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; border-block: 1px solid var(--border-color); padding: 18px 0; }
-.activity-column { min-width: 0; }
-.activity-column + .activity-column { border-left: 1px solid var(--border-color); padding-left: 28px; }
-.activity-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
-.discovery-page .activity-heading h2 { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.5; letter-spacing: 0; }
-.activity-heading > a { font-size: 12px; white-space: nowrap; text-decoration: none; }
-.activity-list { list-style: none; padding: 0; margin: 0; }
-.activity-list li + li { border-top: 1px solid var(--border-color); }
-.discovery-page .activity-link { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 12px; align-items: baseline; padding: 9px 0; color: var(--text-primary); font-size: 13px; line-height: 1.65; text-decoration: none; }
-.activity-link time { color: var(--text-secondary); font-size: 12px; font-variant-numeric: tabular-nums; }
-.activity-link span { overflow-wrap: anywhere; }
-.discovery-page .activity-link:hover span { color: var(--accent-primary); text-decoration: underline; text-underline-offset: 3px; }
-@media (max-width: 800px) {
-  .home-activity { grid-template-columns: 1fr; gap: 16px; }
-  .activity-column + .activity-column { border-left: 0; border-top: 1px solid var(--border-color); padding: 16px 0 0; }
-  .discovery-page .activity-link { padding: 11px 0; }
-}
