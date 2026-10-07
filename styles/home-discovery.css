@@ -63,6 +63,8 @@
 .offer-price { color:#16365c;font-size:22px;font-weight:700;white-space:nowrap; }
 .offer-price small { display:block;font-weight:400;color:#64748b;font-size:11px;text-align:right; }
 .offer-model-summary { color:#60728a;font-size:12px;line-height:1.8;margin:6px 0 10px; }
+.offer-result .offer-model-summary { gap:6px; margin:0 0 12px; }
+.offer-result .offer-model-summary .model-tag { min-width:0; max-width:100%; font-size:12px; overflow-wrap:anywhere; }
 .offer-original-price { font-size:11px;color:#64748b;margin:6px 0; }
 .offer-quota-summary { font-size:13px;color:#355778;margin:8px 0; }
 .price-focus-row td { background:#eaf3ff!important; }
