@@ -297,20 +297,20 @@
 body .filter-picker-menu .filter-picker-tools {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 4px;
-  padding: 4px;
+  gap: 8px;
+  padding: 0;
   margin: 2px 0 8px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  background: #f3f4f6;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 body .filter-picker-menu .filter-picker-tools button {
   min-width: 0;
   min-height: 36px;
   padding: 6px 8px;
-  border: 1px solid transparent;
-  border-radius: 5px;
-  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #f3f4f6;
   color: #4b5563;
   font: inherit;
   font-size: 13px;
