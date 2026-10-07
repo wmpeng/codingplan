@@ -1,5 +1,5 @@
-/* Homepage community entry points share the site's blue-gray visual language. */
-.community-invite { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 14px; margin-top: 16px; max-width: 520px; border: 1px solid #dfe8f4; border-radius: 8px; background: #f0f5fc; }
+/* 首屏社群入口沿用公共文字与分隔线，保持次级操作的视觉层级。 */
+.community-invite { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0 0; margin-top: 20px; max-width: 520px; border: 0; border-top: 1px solid var(--border-color); border-radius: 0; background: transparent; }
 .community-invite > div { min-width: 0; }
 .discovery-page .community-invite h2 { font-size: 14px; font-weight: 600; line-height: 1.5; margin: 0; letter-spacing: 0; }
 .discovery-page .community-invite p { color: var(--text-secondary); font-size: 12px; line-height: 1.6; margin: 4px 0 0; }
@@ -9,7 +9,7 @@
   .hero-entry-actions { display: flex; align-items: center; gap: 12px; margin-top: 24px; }
   .hero-entry-actions .hero-actions { flex: 0 1 auto; min-width: 0; margin: 0; }
   body .hero-entry-actions .hero-actions .tool-button { min-height: 44px; padding: 10px 12px; font-size: 13px; }
-  .hero-entry-actions .community-invite { flex: 0 1 auto; min-width: 0; gap: 12px; margin: 0; padding: 4px 10px; }
+  .hero-entry-actions .community-invite { flex: 0 1 auto; min-width: 0; gap: 12px; margin: 0; padding: 0 0 0 14px; border-top: 0; border-left: 1px solid var(--border-color); }
   .hero-entry-actions .community-invite h2 { font-size: 12px; }
   .hero-entry-actions .community-invite p { display: none; }
   .hero-entry-actions .community-invite-link { flex-shrink: 1; min-height: 36px; font-size: 12px; }
@@ -39,7 +39,7 @@ body .community-join:hover { color: white; background: var(--accent-hover); text
 .community-dialog .community-join { display: flex; width: 100%; }
 @media (max-width: 600px) {
   .hero-entry-actions .community-invite > div { display: none; }
-  .hero-entry-actions .community-invite { padding: 0 10px; }
+  .hero-entry-actions .community-invite { padding: 0 0 0 12px; }
   .hero-entry-actions .community-invite-link { min-height: 44px; }
   .community-invite { gap: 12px; }
   .community-invite-link { min-height: 44px; }
