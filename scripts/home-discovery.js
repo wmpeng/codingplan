@@ -20,6 +20,7 @@
       CodingPlanFilterUI.mount({context,config});
       if(typeof renderSettingsOnly==='function'){renderSettingsOnly('settingsMount',{settings:{buttonTitle:'显示设置',panelTitle:'显示设置',ultraWideLabel:'超宽屏'}});window.initUltraWideSettings?.();}
       document.getElementById('homeLoading')?.remove();
+      window.dispatchEvent(new Event('codingplan:home-ready'));
     } catch(e) {
       const host=document.getElementById('purchaseGuideResults');CodingPlanToolPage.error(host,e.message);
       document.getElementById('homeLoading').textContent='动态内容暂时无法加载，精选摘要仍可浏览。请刷新重试。';
