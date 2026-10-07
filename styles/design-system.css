@@ -375,7 +375,10 @@ body .site-sidebar :is(.tool-nav, .site-nav-footer, .site-section-nav) a {
   font-size: 14px; line-height: 1.5; font-weight: 400; text-decoration: none;
 }
 body .site-sidebar :is(.tool-nav, .site-nav-footer, .site-section-nav) a:hover { background: var(--bg-tertiary); color: var(--text-primary); text-decoration: none; }
+body .site-sidebar .tool-nav a { min-height: 48px; color: var(--text-primary); font-size: 16px; font-weight: 600; }
+body .site-sidebar .tool-nav a:hover { color: var(--accent-primary); background: var(--accent-soft); }
 body .site-sidebar :is(.tool-nav, .site-nav-footer) a:is([aria-current="page"], [aria-current="location"]) { background: var(--accent-soft); color: var(--accent-primary); font-weight: 600; box-shadow: none; }
+body .site-sidebar .tool-nav a[aria-current="page"] { box-shadow: inset 3px 0 0 var(--accent-primary); }
 body .site-sidebar .site-section-nav { display: grid; gap: 2px; padding-top: 12px; border-top: 1px solid var(--border-light); }
 body .site-sidebar .site-section-nav a { min-height: 36px; font-size: 13px; }
 body .site-sidebar .site-nav-footer { display: grid; gap: 4px; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border-light); }
