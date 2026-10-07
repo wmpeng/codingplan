@@ -28,6 +28,42 @@
         : [];
   }
 
+  const rangeKnots = {
+    budget: [0, 50, 100, 200, 500, 1000, 2000],
+    token: [0, 100, 500, 1000, 4000, 10000],
+  };
+  function rangeValue(key, position) {
+    const knots = rangeKnots[key];
+    const part = Math.min(knots.length - 2, Math.floor(position / 100));
+    return Math.round(knots[part] + (knots[part + 1] - knots[part]) * (position / 100 - part));
+  }
+  function rangePosition(key, value) {
+    const knots = rangeKnots[key];
+    if (value == null || value <= 0) return 0;
+    const part = knots.findIndex((n, i) => i < knots.length - 1 && value <= knots[i + 1]);
+    if (part < 0) return (knots.length - 1) * 100;
+    return Math.round((part + (value - knots[part]) / (knots[part + 1] - knots[part])) * 100);
+  }
+  function syncNumberInput(input, value) {
+    if (document.activeElement === input && input.value !== "" && Number(input.value) === value) return;
+    input.value = value ?? "";
+  }
+  function buildRangePicker(key, state) {
+    const budget = key === "budget";
+    const id = budget ? "homeBudgetPicker" : "homeTokenPicker";
+    const title = budget ? "月预算" : "月 Token 数";
+    const factor = !budget && state.tokenUnit !== "M" ? 100 : 1;
+    const unit = budget ? "元" : state.tokenUnit === "M" ? "M" : "亿";
+    return `<details class="filter-picker" id="${id}"><summary>${title} <span ${budget ? "data-budget-label" : "data-token-label"}></span></summary>
+      <div class="filter-picker-menu budget-menu" role="group" aria-label="${budget ? "每月预算" : "每月 Token 用量"}">
+        <div class="range-picker-value"><label class="filter-inline">${budget ? "不超过 ¥" : "至少"}<input type="number" min="0" step="any" ${budget ? 'data-budget-part="max"' : 'data-token-part="min"'} aria-label="${budget ? "最高月预算（人民币）" : "最低月 Token 数"}" placeholder="不限">${budget ? "" : `<span data-token-unit-label>${unit}</span>`}</label><button type="button" data-range-clear="${key}">不限</button></div>
+        <div class="range-picker-slider"><input type="range" min="0" max="${(rangeKnots[key].length - 1) * 100}" step="1" data-range-picker="${key}" aria-label="${title}滑块" aria-describedby="${id}Help">
+          <div class="range-picker-ticks">${rangeKnots[key].map((n, i, knots) => `<button type="button" data-range-knot="${key}" data-knot-value="${n}" style="--tick-position:${i / (knots.length - 1) * 100}%" aria-label="${budget ? "预算上限" : "最低月用量"} ${n / factor} ${unit}">${n / factor}</button>`).join("")}</div></div>
+        <p class="range-picker-hint">拖动或点击刻度，也可直接输入其他数值。</p>
+        <p class="filter-help" id="${id}Help">${budget ? "按量 API 在填写月用量后估算月支出；未填写时不判断其月预算。" : "订阅按所选模型额度判断，不相加；未知额度排除。按量 API 按此用量估算费用。"}</p>
+      </div></details>`;
+  }
+
   function buildPicker({ id, label, key, items, state }) {
     const rawSelected = valuesFor(state, key);
     const selected =
@@ -162,14 +198,7 @@
       ${
         monitor
           ? ""
-          : `<details class="filter-picker" id="homeBudgetPicker"><summary>月预算 <span data-budget-label></span></summary><div class="filter-picker-menu budget-menu" role="group" aria-label="每月预算">
-        <label class="filter-inline">不超过 ¥<input type="number" min="0" step="any" data-budget-part="max" aria-label="最高月预算（人民币）" placeholder="不限"></label>
-        <div class="budget-presets">${[50, 100, 200, 500].map((n) => `<button type="button" data-budget-preset="${n}">${n} 元以内</button>`).join("")}<button type="button" data-budget-action="clear">不限</button></div>
-        <p class="filter-help">按量 API 在填写月用量后估算月支出；未填写时不判断其月预算。</p></div></details>
-      <details class="filter-picker" id="homeTokenPicker"><summary>月 Token 数 <span data-token-label></span></summary><div class="filter-picker-menu budget-menu" role="group" aria-label="每月 Token 用量">
-        <label class="filter-inline">至少<input type="number" min="0" step="any" data-token-part="min" aria-label="最低月 Token 数" placeholder="不限"><span data-token-unit-label></span></label>
-        <button type="button" data-token-clear>不限</button>
-        <p class="filter-help">订阅按所选模型额度判断，不相加；未知额度排除。按量 API 按此用量估算费用。</p></div></details><div class="global-token-unit" aria-label="Token 显示单位"><button type="button" data-global-token-unit="yi">亿</button><button type="button" data-global-token-unit="M">M</button></div>`
+          : `${buildRangePicker("budget", state)}${buildRangePicker("token", state)}<div class="global-token-unit" aria-label="Token 显示单位"><button type="button" data-global-token-unit="yi">亿</button><button type="button" data-global-token-unit="M">M</button></div>`
       }
       </div>
       <div class="guide-filter-fields">${Object.entries(choices)
@@ -235,15 +264,12 @@
       const budget = host.querySelector("[data-budget-part]"),
         tokens = host.querySelector("[data-token-part]");
       if (budget) {
-        budget.value = state.budgetCny?.max ?? "";
+        syncNumberInput(budget, state.budgetCny?.max);
         host.querySelector("[data-budget-label]").textContent =
           state.budgetCny?.max != null ? `≤ ¥${state.budgetCny.max}` : "不限";
       }
       if (tokens) {
-        tokens.value =
-          state.monthlyTokenRange?.min == null
-            ? ""
-            : state.monthlyTokenRange.min / factor;
+        syncNumberInput(tokens, state.monthlyTokenRange?.min == null ? null : state.monthlyTokenRange.min / factor);
         host.querySelector("[data-token-unit-label]").textContent =
           state.tokenUnit === "M" ? "M" : "亿";
         host.querySelector("[data-token-label]").textContent =
@@ -251,6 +277,21 @@
             ? `≥ ${Filters.targetTokens(state) / factor} ${state.tokenUnit === "M" ? "M" : "亿"}`
             : "不限";
       }
+      host.querySelectorAll("[data-range-picker]").forEach((slider) => {
+        const key = slider.dataset.rangePicker;
+        const value = key === "budget" ? state.budgetCny?.max : state.monthlyTokenRange?.min;
+        const unit = key === "budget" ? "元" : state.tokenUnit === "M" ? "M" : "亿";
+        const displayFactor = key === "token" ? factor : 1;
+        slider.value = rangePosition(key, value);
+        slider.style.setProperty("--range-fill", `${Number(slider.value) / Number(slider.max) * 100}%`);
+        slider.setAttribute("aria-valuetext", value == null ? "不限" : `${key === "budget" ? "不超过" : "至少"} ${value / displayFactor} ${unit}`);
+        host.querySelectorAll(`[data-range-knot="${key}"]`).forEach((button) => {
+          const n = Number(button.dataset.knotValue);
+          button.textContent = n / displayFactor;
+          button.setAttribute("aria-label", `${key === "budget" ? "预算上限" : "最低月用量"} ${n / displayFactor} ${unit}`);
+          button.setAttribute("aria-pressed", String(value === n));
+        });
+      });
       host
         .querySelectorAll("[data-global-token-unit]")
         .forEach((el) =>
@@ -294,6 +335,14 @@
     }
     host.addEventListener("input", (event) => {
       const el = event.target;
+      if (el.matches("[data-range-picker]")) {
+        const key = el.dataset.rangePicker;
+        const value = rangeValue(key, Number(el.value));
+        if (key === "budget") state.budgetCny = { min: null, max: value };
+        else state.monthlyTokenRange = { min: value, max: null };
+        publish();
+        return;
+      }
       if (el.matches("[data-picker-search]")) {
         const q = el.value.trim().toLowerCase();
         el.closest(".filter-picker-menu")
@@ -306,6 +355,7 @@
         return;
       }
       if (el.matches("[data-budget-part]")) {
+        if (el.validity.badInput) return;
         state.budgetCny =
           el.value === ""
             ? null
@@ -313,6 +363,7 @@
         publish();
       }
       if (el.matches("[data-token-part]")) {
+        if (el.validity.badInput) return;
         state.monthlyTokenRange =
           el.value === ""
             ? null
@@ -324,6 +375,11 @@
               };
         publish();
       }
+    });
+    host.addEventListener("focusout", (event) => {
+      const el = event.target;
+      if (el.matches("[data-budget-part]")) el.value = state.budgetCny?.max ?? "";
+      if (el.matches("[data-token-part]")) el.value = state.monthlyTokenRange?.min == null ? "" : state.monthlyTokenRange.min / (state.tokenUnit === "M" ? 1 : 100);
     });
     host.addEventListener("change", (event) => {
       const el = event.target;
@@ -350,11 +406,12 @@
             : el.dataset.pickerAction === "all"
               ? null
               : defaults[key];
-      } else if (el.hasAttribute("data-budget-preset"))
-        state.budgetCny = { min: null, max: Number(el.dataset.budgetPreset) };
-      else if (el.hasAttribute("data-budget-action")) state.budgetCny = null;
-      else if (el.hasAttribute("data-token-clear"))
-        state.monthlyTokenRange = null;
+      } else if (el.dataset.rangeKnot || el.dataset.rangeClear) {
+        const key = el.dataset.rangeKnot || el.dataset.rangeClear;
+        const value = el.dataset.rangeClear ? null : Number(el.dataset.knotValue);
+        if (key === "budget") state.budgetCny = value == null ? null : { min: null, max: value };
+        else state.monthlyTokenRange = value == null ? null : { min: value, max: null };
+      }
       else if (el.dataset.globalTokenUnit)
         state.tokenUnit = el.dataset.globalTokenUnit;
       else if (el.dataset.removeFilter)
