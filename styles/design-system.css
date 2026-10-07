@@ -1,0 +1,356 @@
+/* 全站视觉规范，最后加载。变量在 shared.css；组件布局仍由各功能样式负责。 */
+
+/* 基础与层级 */
+body { font-family: var(--font-ui); color: var(--text-primary); line-height: 1.65; }
+body::before { background: radial-gradient(ellipse at 80% 0, #edf3fb, transparent 72%); height: 460px; opacity: .6; }
+body :is(h1, h2, h3, h4) { color: var(--text-primary); font-weight: 600; letter-spacing: -.02em; }
+body :is(h1, h2) { line-height: 1.35; }
+body :is(button, input, select, textarea) { font-family: inherit; }
+body :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent-primary); outline-offset: 3px;
+}
+body a { color: var(--accent-primary); text-underline-offset: 4px; }
+body a:hover { color: var(--accent-hover); }
+body :is(th, td, .offer-price, .model-score, .dim-score, .platform-rating) { font-variant-numeric: tabular-nums; }
+body :is(.tool-muted, .tool-count, .comparison-method, .filter-help, .guide-note) { color: var(--text-secondary); font-size: 13px; }
+.tool-page-main, .guide-shell, .platform-comparison-container { width: 100%; }
+
+/* 导航：品牌、页面导航与页内导航各有固定位置，不继承正文链接的蓝色。 */
+body .tool-topbar { min-height: 80px; gap: 32px; margin-bottom: 24px; padding-block: 16px; border-bottom: 1px solid var(--border-color); }
+body .tool-brand { color: var(--text-primary); font-size: 18px; font-weight: 600; letter-spacing: -.02em; text-decoration: none; }
+body .tool-brand:hover { color: var(--text-primary); text-decoration: none; }
+body .tool-brand::before { width: 32px; height: 32px; }
+body .tool-nav { display: flex; align-items: center; gap: 4px; width: auto; max-width: 100%; padding: 4px; background: var(--bg-tertiary); border: 1px solid var(--border-light); border-radius: 10px; }
+body .tool-nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 6px 16px; border-radius: 6px; color: var(--text-secondary); font-size: 14px; font-weight: 400; line-height: 1.5; white-space: nowrap; text-decoration: none; }
+body .tool-nav a:hover { background: var(--bg-secondary); color: var(--text-primary); text-decoration: none; }
+body .tool-topbar .tool-nav a[aria-current="page"] { background: var(--bg-secondary); color: var(--accent-primary); font-weight: 600; box-shadow: var(--shadow-sm); }
+body .tool-breadcrumb, body .guide-breadcrumb { font-size: 13px; color: var(--text-secondary); }
+body :is(.tool-breadcrumb, .guide-breadcrumb) a { color: inherit; }
+body .discovery-jumps { gap: 8px 24px; padding: 12px 0; border-block: 1px solid var(--border-color); }
+body .discovery-jumps a { padding: 6px 0; color: var(--text-secondary); font-size: 14px; }
+body .discovery-jumps a:hover { color: var(--accent-primary); }
+
+/* 控件：一种基础样式，主操作和选中状态是明确的变体。 */
+body :is(.tool-button, .filter-state-btn, .updates-toggle, .guide-button, .back-home-btn,
+  .platform-comparison-secondary-btn, .platform-comparison-primary-btn, .platform-detail-action,
+  .platform-detail-jump-plans, .guide-options > button) {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: var(--control-height); padding: 8px 14px; border: 1px solid var(--border-color);
+  border-radius: var(--radius-md); background: var(--bg-secondary); color: var(--text-primary);
+  font-size: 14px; line-height: 1.5; font-weight: 400; text-decoration: none;
+  box-shadow: none; cursor: pointer; transition: background .15s, border-color .15s;
+}
+body :is(.tool-button, .filter-state-btn, .updates-toggle, .guide-button, .back-home-btn,
+  .platform-comparison-secondary-btn, .platform-comparison-primary-btn, .platform-detail-action,
+  .platform-detail-jump-plans, .guide-options > button):hover {
+  background: var(--bg-tertiary); border-color: var(--border-strong); color: var(--text-primary); text-decoration: none; transform: none; box-shadow: none;
+}
+body :is(.tool-button.primary, .filter-state-btn.primary, .guide-button:not(.secondary), .platform-comparison-primary-btn) {
+  color: white; background: var(--accent-primary); border-color: var(--accent-primary); font-weight: 600;
+}
+body :is(.tool-button.primary, .filter-state-btn.primary, .guide-button:not(.secondary), .platform-comparison-primary-btn):hover {
+  color: white; background: var(--accent-hover); border-color: var(--accent-hover);
+}
+body :is(button, .tool-button):disabled { opacity: .5; cursor: not-allowed; }
+body :is(input[type="search"], input[type="text"], input[type="number"], select, textarea) {
+  min-height: var(--control-height); padding: 8px 12px; border: 1px solid var(--border-color);
+  border-radius: var(--radius-md); background-color: var(--bg-secondary); color: var(--text-primary);
+  font-size: 14px; line-height: 1.5; box-shadow: none;
+}
+body select, body :is(.model-browser-controls, .platform-hub-tools, .filter-inline, .platform-comparison-select-card) select,
+body:is(.homepage-unified-active, .tool-unified-active) .filter-choice select {
+  appearance: none; padding-right: 32px; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23596678' stroke-width='1.5' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 10px center; background-size: 16px;
+  min-height: var(--control-height); border-radius: var(--radius-md); font-size: 14px;
+}
+body :is(input, textarea)::placeholder { color: var(--text-secondary); opacity: .8; }
+body :is(input[type="checkbox"], input[type="radio"]) { accent-color: var(--accent-primary); width: 16px; height: 16px; flex: 0 0 auto; }
+body .toggle-switch input { width: 1px; height: 1px; }
+.toggle-switch:has(input:focus-visible) { outline: 2px solid var(--accent-primary); outline-offset: 4px; border-radius: 12px; }
+body .usage-segments { padding: 3px; gap: 2px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-tertiary); }
+body .usage-segments button { min-height: 32px; padding: 5px 12px; border: 0; border-radius: 5px; font-size: 13px; font-weight: 400; color: var(--text-secondary); background: transparent; box-shadow: none; }
+body .usage-segments button:hover { background: var(--bg-secondary); color: var(--text-primary); }
+body .usage-segments :is(.is-active, [aria-pressed="true"]) { background: var(--bg-secondary); color: var(--accent-primary); font-weight: 600; box-shadow: var(--shadow-sm); }
+
+/* 折叠行：只在支持区显示一个 chevron，保留原生语义和键盘行为。 */
+body :is(.offer-models, .offer-reasons, .home-meta details, .tool-secondary, .tool-legend,
+  .filter-more, .plan-cell-more, .usage-note-disclosure) > summary {
+  display: flex; align-items: center; gap: 8px; min-height: 36px; padding: 8px 0;
+  color: var(--text-secondary); font-size: 13px; font-weight: 400; line-height: 1.5; list-style: none; cursor: pointer;
+}
+body :is(.offer-models, .offer-reasons, .home-meta details, .tool-secondary, .tool-legend,
+  .filter-more, .plan-cell-more, .usage-note-disclosure) > summary::-webkit-details-marker { display: none; }
+body :is(.offer-models, .offer-reasons, .home-meta details, .tool-secondary, .tool-legend,
+  .filter-more, .plan-cell-more, .usage-note-disclosure) > summary::before {
+  content: ""; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg); flex: 0 0 auto; margin-right: 2px; transition: transform .15s;
+}
+body :is(.offer-models, .offer-reasons, .home-meta details, .tool-secondary, .tool-legend,
+  .filter-more, .plan-cell-more, .usage-note-disclosure)[open] > summary::before { transform: rotate(45deg); }
+body summary:hover { color: var(--text-primary); }
+
+/* 通用表面：无渐变、无普通卡片阴影；只有浮层使用投影。 */
+body :is(.tool-panel, .platform-card, .model-card, .offer-result, .usage-preset-card, .usage-chart-card,
+  .usage-explorer, .usage-presets, .platform-comparison-summary-card, .hub-guide-card, .guide-plan,
+  .guide-related-card, .hero-summary-card, .notes-section, .updates-section, .guide-advice) {
+  border: 1px solid var(--border-color); border-radius: var(--radius-lg); background: var(--bg-secondary); box-shadow: none;
+}
+body :is(.platform-card, .model-card, .offer-result, .hub-guide-card, .hero-summary-card) { padding: 20px; }
+body :is(.platform-card, .hub-guide-card, .guide-related-card):hover { border-color: var(--border-strong); box-shadow: none; transform: none; }
+body :is(.settings-panel, .filter-picker-menu, .platform-detail-dialog, .platform-compare-picker-dialog) {
+  background: var(--bg-secondary); border-color: var(--border-color); border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); backdrop-filter: none;
+}
+body .settings-btn { border-radius: 8px; color: var(--text-secondary); }
+body .settings-btn:hover { background: var(--bg-tertiary); }
+body .settings-panel-title { font-size: 13px; color: var(--text-primary); letter-spacing: 0; font-weight: 600; }
+
+/* 首页与方案：让平台、价格成为固定阅读锚点，其余信息服从这条顺序。 */
+body.discovery-page { background: var(--bg-primary); }
+body .discovery-hero { padding: 32px 0; gap: 40px; }
+body .discovery-hero h1 { font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; line-height: 1.2; }
+body .discovery-eyebrow { color: var(--text-secondary); font-size: 13px; font-weight: 400; }
+body .catalog-summary { padding: 24px; border: 0; border-left: 1px solid var(--border-color); border-radius: 0; background: transparent; }
+body .catalog-summary strong { font-size: 18px; font-weight: 600; }
+body :is(.section-heading, .home-section-heading) h2 { font-size: 24px; font-weight: 600; }
+body :is(.section-heading, .home-section-heading) p { color: var(--text-secondary); font-size: 14px; }
+body .discovery-section { margin: 48px 0; }
+body .selection-workspace { border-top: 1px solid var(--border-color); padding-top: 40px; }
+body .offer-results-grid { gap: 16px; align-items: stretch; }
+body .offer-result { display: flex; flex-direction: column; gap: 0; }
+body .offer-result-heading { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: start; gap: 16px; margin-bottom: 12px; }
+body .offer-platform { display: block; margin: 0; font-size: 18px; font-weight: 600; color: var(--text-primary); line-height: 1.5; overflow-wrap: anywhere; }
+body .offer-result h3 { font-size: 14px; font-weight: 400; color: var(--text-secondary); margin: 4px 0 0; line-height: 1.5; }
+body .offer-plan-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+body .offer-status { display: inline-block; background: transparent; padding: 0; margin: 0; color: var(--text-secondary); font-size: 12px; font-weight: 400; }
+body .offer-price { font-size: 22px; font-weight: 600; line-height: 1.4; color: var(--text-primary); text-align: right; }
+body .offer-price small { font-size: 12px; font-weight: 400; color: var(--text-secondary); margin-top: 4px; text-align: right; }
+body :is(.offer-model-summary, .offer-original-price, .offer-quota-summary) { color: var(--text-secondary); font-size: 13px; font-weight: 400; line-height: 1.7; margin: 0 0 8px; }
+body .offer-quota-summary { color: var(--text-primary); }
+body .offer-models { margin-bottom: 12px; }
+body .offer-result-actions { margin-top: auto; gap: 8px 16px; padding-top: 16px; border-color: var(--border-light); }
+body .offer-result-actions > a { color: var(--text-secondary); font-size: 13px; }
+body .offer-result-actions > a:hover { color: var(--accent-primary); }
+body .offer-result-actions > .tool-button { color: var(--text-primary); background: var(--bg-tertiary); border-color: transparent; font-weight: 600; min-height: 36px; }
+body .offer-result-actions > .tool-button:hover { color: var(--accent-primary); background: var(--accent-soft); }
+body .offer-reasons > summary { padding-bottom: 0; }
+body .offer-reasons ul { color: var(--text-secondary); font-size: 13px; }
+body .offer-model-table :is(th, td) { font-size: 13px; border-color: var(--border-light); }
+body .offer-model-table :is(th, td):not(:first-child) { text-align: right; }
+body .offer-model-table thead th { font-weight: 400; color: var(--text-secondary); }
+body .model-grid { gap: 16px; }
+body .model-card { display: flex; flex-direction: column; }
+body .model-card h3 { font-size: 16px; font-weight: 600; }
+body .model-modality { font-size: 13px; color: var(--text-secondary); margin: 8px 0 16px; }
+body .model-scores { gap: 20px; color: var(--text-secondary); font-size: 12px; margin-bottom: 16px; }
+body .model-score strong { display: inline-block; font-size: 16px; color: var(--text-primary); font-weight: 600; }
+body .model-score .score-unknown { font-size: 13px; color: var(--text-secondary); font-weight: 400; }
+body :is(.model-offers-link, .model-price-link) { color: var(--text-secondary); font-size: 13px; padding-top: 4px; }
+body .model-offers-link { border-top: 1px solid var(--border-light); margin-top: auto; padding-top: 12px; }
+body :is(.model-offers-link, .model-price-link):hover { color: var(--accent-primary); }
+body .model-browser-controls { border-radius: 12px; background: var(--bg-secondary); border-color: var(--border-color); }
+body .hero-summary-title { font-weight: 600; }
+body .hero-summary-label { font-size: 12px; color: var(--text-secondary); letter-spacing: .04em; }
+body .hero-summary-card::after { display: none; }
+body :is(.home-meta, .community-inline) { border-color: var(--border-color); }
+
+/* 平台卡片与详情 */
+body :is(.platform-name, .platform-name-link) { color: var(--text-primary); font-size: 18px; font-weight: 600; }
+body .platform-name-link:hover { color: var(--accent-primary); }
+body :is(.platform-summary, .platform-score-desc, .dim-reason, .platform-detail-desc) { color: var(--text-secondary); font-size: 13px; line-height: 1.7; }
+body .platform-card .platform-rating { background: transparent; padding: 0; color: var(--text-secondary); font-size: 13px; font-weight: 400; }
+body .platform-rush { border: 0; background: var(--bg-tertiary); color: var(--text-secondary); font-size: 12px; font-weight: 400; border-radius: 4px; }
+body .platform-dimensions .dim-score { color: var(--text-primary); font-size: 18px; font-weight: 600; }
+body .platform-dimensions .dim-score-unit { color: var(--text-secondary); font-size: 12px; }
+body .platform-dimensions .dim-label { color: var(--text-secondary); font-size: 12px; }
+body .platform-dimensions li { background: var(--bg-tertiary); border-radius: 8px; border-color: var(--border-light); }
+body #featuredPlatforms .platform-dimensions { background: var(--bg-tertiary); border-radius: 8px; }
+body #featuredPlatforms .platform-dimensions li + li { border-color: var(--border-color); }
+body :is(.platform-card-hint, .platform-guide-link) { color: var(--text-secondary); font-size: 13px; font-weight: 400; }
+body .platform-card-links { padding-top: 12px; border-top: 1px solid var(--border-light); }
+body .platform-card-hint::after { content: none; }
+body .platform-name-link .link-icon { opacity: .5; width: 12px; height: 12px; }
+body .platform-detail-title-row h2 { font-size: 24px; font-weight: 600; }
+body .platform-detail-dim { background: var(--bg-tertiary); border-color: var(--border-light); }
+body .platform-detail-dim-score { color: var(--text-primary); font-weight: 600; }
+body .platform-detail-dialog { border-radius: 16px; }
+body .platform-detail-plan-quota { color: var(--text-secondary); font-weight: 400; }
+body :is(.platform-detail-rating, .platform-detail-plan-rating) { color: var(--text-secondary); background: transparent; padding: 0; font-size: 13px; font-weight: 400; }
+
+/* 筛选：统一表单外观，并保持菜单的定位、滚动与完成操作。 */
+body .filter-state-bar { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; box-shadow: none; }
+body .filter-state-label { color: var(--text-primary); font-size: 14px; font-weight: 600; }
+body .filter-state-chip { border: 0; border-radius: 4px; background: var(--bg-tertiary); color: var(--text-secondary); font-size: 12px; padding: 4px 8px; }
+body .filter-picker > summary { background: var(--bg-secondary); border-color: var(--border-color); min-height: 44px; border-radius: 8px; font-size: 14px; }
+body .filter-picker[open] > summary { border-color: var(--accent-primary); background: var(--accent-soft); }
+body .filter-picker-menu { padding: 12px; }
+body .filter-picker-menu label { border-radius: 6px; padding: 8px; font-size: 14px; line-height: 1.5; }
+body .filter-picker-menu label:has(input:checked) { background: var(--accent-soft); }
+body .filter-picker-menu label:hover { background: var(--bg-tertiary); }
+body .filter-picker-tools { gap: 8px; }
+body .filter-picker-tools button { min-height: 32px; border-radius: 6px; padding: 4px 8px; font-size: 13px; }
+body .filter-picker-tools button:hover { background: var(--bg-tertiary); }
+body :is(.filter-state-hint, .filter-help, .filter-subgroup, .filter-inline) { color: var(--text-secondary); font-size: 13px; }
+body :is(.filter-more, .filter-subgroup) { border-color: var(--border-light); }
+body .filter-state-actions button { border-color: var(--border-color); border-radius: 8px; font-size: 13px; }
+body .filter-active-limits button { border-radius: 6px; font-size: 12px; padding: 5px 8px; }
+body .filter-inline input[type="checkbox"] { width: 16px; }
+body .purchase-guide-panel { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; }
+body #purchaseGuide { color: var(--text-primary); }
+body #purchaseGuide .guide-header h2 { font-size: 24px; }
+body #purchaseGuide .guide-question h3 { font-size: 18px; }
+body #purchaseGuide button { min-height: 40px; border-color: var(--border-color); border-radius: 8px; font-size: 14px; color: var(--text-primary); }
+body #purchaseGuide button:hover { background: var(--bg-tertiary); border-color: var(--border-strong); }
+body #purchaseGuide :is(.guide-primary, button[aria-pressed="true"]) { color: var(--accent-primary); background: var(--accent-soft); border-color: var(--accent-primary); }
+body #purchaseGuide button.guide-primary { color: white; background: var(--accent-primary); }
+body #purchaseGuide button.guide-primary:hover { color: white; background: var(--accent-hover); }
+body #purchaseGuide .guide-step-actions { justify-content: flex-end; }
+body #purchaseGuide [data-guide-action="prev"] { margin-right: auto; }
+body #purchaseGuide .guide-summary { border-color: var(--border-light); color: var(--text-secondary); font-size: 13px; }
+body #purchaseGuide .guide-progress button { border: 0; font-size: 13px; }
+body #purchaseGuide .guide-progress [aria-current="step"] { color: var(--accent-primary); background: var(--accent-soft); font-weight: 600; }
+body #purchaseGuide .guide-eyebrow { color: var(--text-secondary); font-weight: 400; }
+
+/* 数据展示：颜色留给数据系列，表面和表格使用同一中性色。 */
+body :is(.usage-preset-card, .usage-chart-card, .usage-explorer) { box-shadow: none; }
+body .usage-preset-card > header { background: var(--bg-secondary); padding: 16px; border-color: var(--border-light); }
+body .usage-preset-card > header h4 { font-size: 16px; font-weight: 600; }
+body .usage-preset-card > header p { font-size: 12px; color: var(--text-secondary); margin-top: 6px; line-height: 1.6; }
+body .usage-preset-card > header > span { font-size: 12px; color: var(--text-secondary); background: transparent; padding: 0; }
+body :is(.usage-preset-table, .usage-data-table, .tool-table) :is(th, td) { font-size: 13px; line-height: 1.6; border-color: var(--border-light); }
+body :is(.usage-preset-table, .usage-data-table, .tool-table) th { color: var(--text-secondary); background: var(--bg-tertiary); font-weight: 400; }
+body :is(.usage-preset-table, .usage-data-table, .tool-table) td { color: var(--text-primary); background: var(--bg-secondary); }
+body :is(.usage-preset-table, .usage-data-table, .tool-table) tbody tr:nth-child(even) td { background: var(--bg-secondary); }
+body :is(.usage-preset-table, .usage-data-table, .tool-table) tbody tr:hover td { background: var(--bg-tertiary); }
+body .usage-data-table .usage-table-note { min-width: 320px; width: 360px; }
+body .usage-note-disclosure > summary { min-height: 20px; padding: 0; }
+body .usage-note-disclosure > div { width: 320px; max-width: 100%; margin-top: 12px; color: var(--text-secondary); line-height: 1.7; }
+body .usage-data-table .usage-table-model { font-weight: 400; }
+body .usage-preset-table td { padding: 12px 16px; }
+body .usage-preset-table th { padding: 10px 16px; }
+body :is(.usage-platform-link, .usage-preset-table .usage-platform-link) { color: var(--text-primary); }
+body .usage-platform-link:hover { color: var(--accent-primary); }
+body .usage-preset-table .usage-platform-link strong { font-size: 13px; font-weight: 600; }
+body .usage-preset-primary-line { color: var(--text-primary); font-weight: 600; gap: 10px; }
+body .usage-preset-primary-line .usage-table-model { font-weight: 400; }
+body .usage-preset-secondary-line { color: var(--text-secondary); font-size: 12px; gap: 4px; }
+body .usage-preset-metric-primary { color: var(--text-primary); font-size: 14px; font-weight: 600; }
+body .usage-preset-table .usage-platform-link > span[aria-hidden] { display: none; }
+body .usage-method-note { background: var(--bg-tertiary); color: var(--text-secondary); border-color: var(--border-color); border-radius: 8px; }
+body .usage-method-note strong { color: var(--text-primary); font-weight: 600; }
+body .usage-chart-head :is(h3, h4), body .usage-explorer-heading h3 { font-size: 18px; font-weight: 600; color: var(--text-primary); }
+body .usage-chart-head p { color: var(--text-secondary); font-size: 13px; }
+body .usage-legend-item { border-radius: 6px; box-shadow: none; }
+body .usage-legend-item:hover, body .usage-legend-item.is-solo { background: var(--bg-tertiary); border-color: var(--border-color); box-shadow: none; }
+body .usage-color-control { border-color: var(--border-color); }
+body .tool-table a { color: var(--text-primary); }
+body .tool-table a:hover { color: var(--accent-primary); }
+body .tool-tag { background: var(--bg-tertiary); border-radius: 4px; color: var(--text-secondary); font-size: 12px; }
+
+/* 平台横向比较沿用相同表面，差异通过结构和实际评分表达。 */
+body.platform-comparison-page { padding: 0; }
+body .platform-comparison-container { max-width: 1320px; padding: 0 40px 48px; margin: 0 auto; }
+body :is(.platform-comparison-hero, .platform-comparison-summary, .platform-comparison-details) {
+  background: var(--bg-secondary); border-color: var(--border-color); border-radius: 12px; box-shadow: none;
+}
+body .platform-comparison-hero { padding: 24px; }
+body .platform-comparison-hero p:last-child { font-size: 14px; }
+body .platform-comparison-selection-wrap { background: var(--bg-tertiary); border-color: var(--border-color); border-radius: 12px; box-shadow: var(--shadow-sm); backdrop-filter: none; }
+body .platform-comparison-summary-card::after { display: none; }
+body .platform-comparison-summary-winner { font-size: 18px; font-weight: 600; }
+body .platform-comparison-select-card-rating { color: var(--text-secondary); font-weight: 400; }
+body .platform-comparison-breadcrumb a { color: var(--text-secondary); font-weight: 400; }
+body .platform-compare-picker-option { border-radius: 8px; border-color: var(--border-color); }
+body .platform-compare-picker-option.is-selected { background: var(--accent-soft); border-color: var(--accent-primary); }
+body .platform-compare-picker-option-name { font-weight: 600; }
+body .platform-compare-picker-option-summary { color: var(--text-secondary); font-size: 13px; }
+body .platform-comparison-diff-toggle:has(input:focus-visible) { outline: 2px solid var(--accent-primary); outline-offset: 4px; }
+body .platform-comparison-metric-pin.is-pinned { color: var(--accent-primary); background: var(--accent-soft); border-color: var(--accent-primary); }
+body .platform-comparison-group--focus .platform-comparison-group-title { color: var(--accent-primary); background: var(--accent-soft); }
+body .platform-comparison-status--open { color: var(--text-secondary); background: var(--bg-tertiary); }
+body .platform-comparison-status { font-size: 12px; font-weight: 400; }
+body .platform-comparison-footer { background: var(--bg-secondary); color: var(--text-primary); box-shadow: none; border-radius: 12px; }
+body .platform-comparison-footer p { color: var(--text-secondary); font-size: 14px; }
+body .platform-comparison-footer .platform-comparison-primary-link { background: var(--accent-primary); color: white; border-radius: 8px; }
+
+/* 完整介绍和文章：统一外壳，正文专用图表不受影响。 */
+body .guide-monogram { border-radius: 12px; background: var(--bg-tertiary); color: var(--text-primary); border-color: var(--border-color); font-weight: 600; }
+body.platform-guide h1, body .platform-comparison-hero h1 { font-size: clamp(26px, 3vw, 32px); }
+body :is(.guide-content, .guide-related-card, .platform-comparison-panel) { background: var(--bg-secondary); border-color: var(--border-color); box-shadow: none; }
+body :is(.guide-eyebrow, .platform-comparison-kicker, .platform-comparison-eyebrow) { color: var(--text-secondary); font-size: 12px; font-weight: 400; }
+body .guide-section h2 { font-size: 24px; }
+body .guide-section h3 { font-size: 18px; }
+body .guide-plan .guide-price { font-size: 24px; font-weight: 600; color: var(--text-primary); }
+body .guide-related-card strong { font-size: 16px; color: var(--text-primary); }
+body .guide-related-card span:last-child { color: var(--accent-primary); }
+body .guide-toc a:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+body .guide-section :is(th, caption) { background: var(--bg-tertiary); color: var(--text-secondary); }
+body.article-page :is(.back-home-btn, .articles-item-main a) { color: var(--text-primary); }
+body.article-page :is(.doc-kicker, .articles-kicker-top) { color: var(--text-secondary); letter-spacing: .04em; }
+body.article-page :is(article.doc, .articles-page) { box-shadow: none; }
+body.article-page :is(article.doc, .articles-page) h1 { font-size: clamp(26px, 3vw, 32px); font-weight: 600; }
+body.article-page article.doc :is(h2, h3) { color: var(--text-primary); font-weight: 600; }
+body.article-page article.doc h2 { font-size: 24px; }
+body.article-page article.doc h3 { font-size: 18px; }
+body.article-page article.doc :is(p, li) { color: var(--text-primary); }
+body.article-page article.doc blockquote { background: var(--bg-tertiary); border-left: 2px solid var(--border-strong); }
+body.article-page .articles-item-main a { color: var(--text-primary); font-size: 16px; font-weight: 400; }
+body.article-page .articles-item-main a:hover { color: var(--accent-primary); }
+
+@media (min-width: 1200px) {
+  body .featured-model-group .model-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+}
+
+@media (max-width: 800px) {
+  body .platform-comparison-container { padding: 0 14px 32px; }
+  body .tool-topbar { flex-wrap: wrap; flex-direction: row; gap: 12px; padding: 16px 0; }
+  body .tool-nav { order: 3; width: 100%; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: thin; }
+  body .tool-nav a { flex: 1 0 auto; padding: 6px 12px; min-height: 40px; font-size: 14px; }
+  body .tool-nav a:focus-visible { outline-offset: -2px; }
+  body .tool-brand { font-size: 18px; }
+  body .discovery-section { margin: 36px 0; }
+  body .discovery-hero { padding: 20px 0 28px; }
+  body .offer-results-grid { align-items: start; }
+  body .filter-state-bar { padding: 16px; }
+  body .filter-picker-menu { border-radius: 12px; }
+  body :is(.tool-button, .filter-state-btn, .back-home-btn) { min-height: 44px; }
+  body .offer-result-actions > .tool-button { min-height: 40px; }
+  body :is(.section-heading, .home-section-heading) { align-items: start; }
+  body :is(.section-heading, .home-section-heading) h2 { font-size: 22px; }
+  body .model-grid { gap: 12px; }
+}
+@media (max-width: 480px) {
+  body :is(.offer-result, .platform-card, .hero-summary-card) { padding: 16px; }
+  body .model-grid { grid-template-columns: 1fr; }
+  body .model-card { padding: 16px; }
+  body .model-modality { margin-bottom: 12px; }
+  body .model-scores { margin-bottom: 12px; }
+  body .offer-platform { font-size: 16px; }
+  body .offer-price { font-size: 20px; }
+  body .offer-result-heading { gap: 12px; }
+  body .usage-preset-table th { white-space: normal; padding: 10px; font-size: 12px; }
+  body .usage-preset-table td { padding: 10px; font-size: 12px; }
+  body .usage-preset-primary-line { flex-direction: column; gap: 2px; }
+  body .usage-preset-primary-line .usage-table-model { text-align: left; }
+  body .usage-preset-secondary-line { font-size: 12px; }
+  body .usage-preset-metric-primary { font-size: 13px; }
+  body .usage-preset-table th:first-child { width: 60%; }
+  body .usage-preset-table th:last-child { width: 40%; }
+  body #purchaseGuide .purchase-guide-panel { padding: 16px; }
+  body #purchaseGuide .guide-header { flex-direction: column; align-items: stretch; gap: 0; }
+  body #purchaseGuide .guide-header-actions { align-self: flex-end; }
+  body #purchaseGuide .guide-step-actions { flex-wrap: wrap; }
+  body #purchaseGuide .guide-progress { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  body #purchaseGuide .guide-options { display: grid; grid-template-columns: 1fr; }
+  body #purchaseGuide .guide-options button { text-align: left; justify-content: flex-start; }
+}
+@media (max-width: 650px) {
+  /* 窄屏留出完整阅读宽度，固定首列会盖住最右侧的备注操作。 */
+  body .usage-data-table th.sticky-first { left: auto; }
+  body .usage-data-table td.sticky-first,
+  body #plansPage .tool-table :is(th, td):nth-child(1) { position: static; }
+}
+@media (forced-colors: active) {
+  body :is(a, button, input, select, summary):focus-visible { outline: 2px solid Highlight; }
+  body .tool-nav a[aria-current="page"] { outline: 1px solid Highlight; }
+}

@@ -539,7 +539,7 @@
             `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${aaScore ? formatNumber(aaScore.score, 0) : '—'}</td>` +
             `<td class="numeric">${deepSWEScore ? `${formatNumber(deepSWEScore.score, 0)}${deepSWEInterval}` : '—'}</td>` +
-            `<td class="usage-table-note">${escapeHtml(point.note || '—')}</td></tr>`;
+            `<td class="usage-table-note">${point.note ? `<details class="usage-note-disclosure"><summary>用量口径与限制</summary><div>${escapeHtml(point.note)}</div></details>` : '—'}</td></tr>`;
     }
 
     function normalizePresetConfig(config) {

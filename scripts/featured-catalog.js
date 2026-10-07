@@ -36,7 +36,7 @@
   }
   function scoreHtml(model, key, label) {
     const n = score(model, key), record = model.scores?.[key];
-    return `<span class="model-score">${label} <strong>${n == null ? '未评定' : n.toFixed(1)}</strong>${n != null && record.sourceUrl ? ` <a href="${esc(url(record.sourceUrl))}" target="_blank" rel="noopener noreferrer" aria-label="${esc(model.name)} ${label}评分来源" title="${esc(record.configuration || '评分来源')}">↗</a>` : ''}</span>`;
+    return `<span class="model-score">${label} <strong${n == null ? ' class="score-unknown"' : ''}>${n == null ? '未评定' : n.toFixed(1)}</strong>${n != null && record.sourceUrl ? ` <a href="${esc(url(record.sourceUrl))}" target="_blank" rel="noopener noreferrer" aria-label="${esc(model.name)} ${label}评分来源" title="${esc(record.configuration || '评分来源')}">↗</a>` : ''}</span>`;
   }
   function modalities(model) {
     const names = {text:'文本',image:'图片',audio:'音频',video:'视频'};
