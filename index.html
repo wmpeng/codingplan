@@ -16,10 +16,10 @@
 <link rel="stylesheet" href="/styles/purchase-guide.css?v=261007ui">
 <link rel="stylesheet" href="/styles/model-comparison.css?v=261006a">
 <link rel="stylesheet" href="/styles/home-discovery.css?v=261007header">
-<link rel="stylesheet" href="/styles/community.css?v=261007b">
+<link rel="stylesheet" href="/styles/community.css?v=261007compact">
 <noscript><style>.usage-preset-table tr[hidden]{display:table-row}.preset-expand,#homeLoading{display:none}</style></noscript>
-<link rel="stylesheet" href="/styles/design-system.css?v=261007lists">
-<script src="/scripts/site-navigation.js?v=261007header" defer></script>
+<link rel="stylesheet" href="/styles/design-system.css?v=261007tocmenu">
+<script src="/scripts/site-navigation.js?v=261007tocmenu" defer></script>
 </head>
 <body class="tool-page home-page discovery-page">
 <a class="skip-link" href="#selectionWorkspace">跳到需求筛选</a>
@@ -60,13 +60,16 @@
 </header>
 <!-- SITE_NAV_END -->
 <div class="tool-page-main">
-<nav class="site-section-nav" aria-label="首页目录"><a href="#featuredPlatformSection">精选平台</a><a href="#featuredModelSection">精选模型</a><a href="#featuredPricingSection">价格与用量</a><a href="#selectionWorkspace">按需求筛选</a><a href="#homeKnowledge">延伸阅读</a></nav>
+<div class="section-navigation">
+<button class="section-nav-toggle" type="button" aria-label="展开首页目录" aria-controls="homeSectionNav" aria-expanded="false" title="首页目录" hidden disabled><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6h.01M4 12h.01M4 18h.01" stroke-width="3"/></svg></button>
+<nav id="homeSectionNav" class="site-section-nav" aria-label="首页目录"><a href="#featuredPlatformSection">精选平台</a><a href="#featuredModelSection">精选模型</a><a href="#featuredPricingSection">价格与用量</a><a href="#selectionWorkspace">按需求筛选</a><a href="#homeKnowledge">延伸阅读</a></nav>
+</div>
 <main>
-<section class="discovery-hero"><div><p class="discovery-eyebrow">AI 编程，从了解选择到找到方案</p><h1>好模型，好价格，<br>找到适合你的方案。</h1><p>先看精选平台和模型，再按预算与用量比较所有选择。</p><div class="hero-actions"><a class="tool-button primary" href="#selectionWorkspace">按需求找方案 ↓</a></div>
+<section class="discovery-hero"><div><p class="discovery-eyebrow">AI 编程，从了解选择到找到方案</p><h1>好模型，好价格，<br>找到适合你的方案。</h1><p>先看精选平台和模型，再按预算与用量比较所有选择。</p><div class="hero-entry-actions"><div class="hero-actions"><a class="tool-button primary" href="#selectionWorkspace">按需求找方案 ↓</a></div>
 <!-- HOME_COMMUNITY_START -->
 <aside class="community-invite" aria-label="加入选型交流群"><div><h2>一起选好模型、好套餐</h2><p>价格/限购提醒 · 选型与使用反馈</p></div><a class="community-invite-link" href="https://api.dreamfree.space/c/s/cpfeishulink" target="_blank" rel="noopener noreferrer">加入飞书群 ↗</a></aside>
 <!-- HOME_COMMUNITY_END -->
-</div><aside class="hero-articles" aria-label="最新对比文章">
+</div></div><aside class="hero-articles" aria-label="最新对比文章">
 <!-- HERO_ARTICLES_START -->
 <a class="hero-article" href="articles/model_comparisons/20260907/index.html">
   <div class="hero-article-meta"><span>模型对比</span><time datetime="2026-09-07">2026-09-07</time></div>

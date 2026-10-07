@@ -5,6 +5,15 @@
 .discovery-page .community-invite p { color: var(--text-secondary); font-size: 12px; line-height: 1.6; margin: 4px 0 0; }
 .community-invite-link { display: inline-flex; align-items: center; flex-shrink: 0; min-height: 40px; font-size: 13px; font-weight: 600; color: var(--accent-primary); text-decoration: none; }
 .community-invite-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 1100px) {
+  .hero-entry-actions { display: flex; align-items: center; gap: 12px; margin-top: 24px; }
+  .hero-entry-actions .hero-actions { flex: 0 1 auto; min-width: 0; margin: 0; }
+  body .hero-entry-actions .hero-actions .tool-button { min-height: 44px; padding: 10px 12px; font-size: 13px; }
+  .hero-entry-actions .community-invite { flex: 0 1 auto; min-width: 0; gap: 12px; margin: 0; padding: 4px 10px; }
+  .hero-entry-actions .community-invite h2 { font-size: 12px; }
+  .hero-entry-actions .community-invite p { display: none; }
+  .hero-entry-actions .community-invite-link { flex-shrink: 1; min-height: 36px; font-size: 12px; }
+}
 body .community-join { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 14px; border: 1px solid var(--accent-primary); border-radius: 8px; color: white; background: var(--accent-primary); font-size: 13px; font-weight: 600; line-height: 1.5; text-decoration: none; }
 body .community-join:hover { color: white; background: var(--accent-hover); text-decoration: none; }
 .community-float { position: fixed; bottom: 24px; right: 24px; z-index: 80; display: flex; align-items: stretch; border: 1px solid #c9d8ec; border-radius: 12px; background: var(--bg-secondary); box-shadow: 0 4px 18px #182b4514; }
@@ -29,6 +38,9 @@ body .community-join:hover { color: white; background: var(--accent-hover); text
 .community-dialog .community-qr-hint { text-align: center; font-size: 12px; margin: 8px 0 18px; }
 .community-dialog .community-join { display: flex; width: 100%; }
 @media (max-width: 600px) {
+  .hero-entry-actions .community-invite > div { display: none; }
+  .hero-entry-actions .community-invite { padding: 0 10px; }
+  .hero-entry-actions .community-invite-link { min-height: 44px; }
   .community-invite { gap: 12px; }
   .community-invite-link { min-height: 44px; }
   .community-float { right: 12px; bottom: max(16px, env(safe-area-inset-bottom)); border-radius: 10px; }

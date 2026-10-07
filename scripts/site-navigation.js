@@ -42,6 +42,69 @@
       nav.scrollLeft += item.left - bar.left - (bar.width - item.width) / 2;
     }
     initSettings();
+    const sectionNavigation = document.querySelector('.section-navigation');
+    const sectionButton = sectionNavigation?.querySelector('.section-nav-toggle');
+    const sectionPanel = sectionNavigation?.querySelector('.site-section-nav');
+    if (sectionButton && sectionPanel) {
+      const narrow = matchMedia('(max-width: 1100px)');
+      function layoutSectionPanel() {
+        if (!narrow.matches) {
+          sectionPanel.style.removeProperty('max-height');
+          delete sectionPanel.dataset.side;
+          return;
+        }
+        const rect = sectionButton.getBoundingClientRect();
+        const below = innerHeight - rect.bottom - 20;
+        const above = rect.top - 20;
+        const up = below < 240 && above > below;
+        sectionPanel.dataset.side = up ? 'above' : 'below';
+        sectionPanel.style.maxHeight = `${Math.max(44, Math.min(320, up ? above : below))}px`;
+      }
+      function setSectionOpen(open, restoreFocus = false) {
+        if (open || !narrow.matches) layoutSectionPanel();
+        sectionButton.setAttribute('aria-expanded', String(open));
+        sectionButton.setAttribute('aria-label', open ? '收起首页目录' : '展开首页目录');
+        if (restoreFocus) sectionButton.focus({preventScroll: true});
+      }
+      sectionButton.hidden = false;
+      sectionButton.disabled = false;
+      sectionNavigation.classList.add('is-collapsible');
+      sectionButton.addEventListener('click', () => setSectionOpen(sectionButton.getAttribute('aria-expanded') !== 'true'));
+      sectionPanel.addEventListener('click', event => {
+        const link = event.target.closest('a[href^="#"]');
+        if (!link || !narrow.matches) return;
+        setSectionOpen(false);
+        // 关闭面板后，将键盘焦点交给所选章节，避免焦点留在隐藏链接上。
+        const target = document.getElementById(link.hash.slice(1));
+        if (target) {
+          if (!target.hasAttribute('tabindex')) {
+            target.setAttribute('tabindex', '-1');
+            target.addEventListener('blur', () => target.removeAttribute('tabindex'), {once: true});
+          }
+          target.focus({preventScroll: true});
+        }
+      });
+      document.addEventListener('click', event => {
+        if (!sectionNavigation.contains(event.target)) setSectionOpen(false);
+      });
+      document.addEventListener('keydown', event => {
+        if (narrow.matches && event.key === 'Escape' && sectionButton.getAttribute('aria-expanded') === 'true') {
+          setSectionOpen(false, true);
+        }
+      });
+      sectionNavigation.addEventListener('focusout', event => {
+        if (event.relatedTarget && !sectionNavigation.contains(event.relatedTarget)) setSectionOpen(false);
+      });
+      narrow.addEventListener('change', () => {
+        const wasInside = sectionPanel.contains(document.activeElement);
+        setSectionOpen(false, narrow.matches && wasInside);
+      });
+      const layoutOpenPanel = () => {
+        if (sectionButton.getAttribute('aria-expanded') === 'true') layoutSectionPanel();
+      };
+      addEventListener('resize', layoutOpenPanel);
+      addEventListener('scroll', layoutOpenPanel, {passive: true});
+    }
     const links = [...document.querySelectorAll('.site-section-nav a[href^="#"]')];
     const sections = links.map(link => document.getElementById(link.hash.slice(1)));
     let pending = false;
