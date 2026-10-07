@@ -18,7 +18,6 @@
       C.mountTables(document.getElementById('featuredComparisons'),preset,context,config,6);
       OfferResults.mount(document.getElementById('purchaseGuideResults'),context,config);
       CodingPlanFilterUI.mount({context,config});
-      if(typeof renderSettingsOnly==='function'){renderSettingsOnly('settingsMount',{settings:{buttonTitle:'显示设置',panelTitle:'显示设置',ultraWideLabel:'超宽屏'}});window.initUltraWideSettings?.();}
       document.getElementById('homeLoading')?.remove();
       window.dispatchEvent(new Event('codingplan:home-ready'));
     } catch(e) {
