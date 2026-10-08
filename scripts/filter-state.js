@@ -10,6 +10,7 @@
     modelSlugs: null,
     modelMatch: 'any',
     budgetCny: null,
+    apiOnly: false,
     monthlyTokenRange: null,
     tokenUnit: 'yi',
     platformStatusMax: 'limited',
@@ -73,7 +74,7 @@
       platformSlugs: entitySelection(input.platformSlugs === undefined ? base.platformSlugs : input.platformSlugs),
       modelSlugs: entitySelection(input.modelSlugs === undefined ? base.modelSlugs : input.modelSlugs),
       modelMatch: input.modelMatch === 'all' ? 'all' : 'any',
-      useCase: ['coding', 'general', 'api'].includes(input.useCase) ? input.useCase : 'any',
+      apiOnly: input.apiOnly === true,
       tool: ['codex', 'claude', 'github', 'other'].includes(input.tool) ? input.tool : 'any',
       modelGroup: ['sota-models', 'high-volume-models'].includes(input.modelGroup) ? input.modelGroup : 'any',
       imageRequired: input.imageRequired === true,
@@ -193,6 +194,7 @@
       return (plans || []).filter(plan => plan.planTableVisible !== false && ids.has(plan.slug));
     }
     return (plans || []).filter(plan => {
+      if (current.apiOnly && plan.billingMode !== 'payg') return false;
       if (plan.planTableVisible === false) return false;
       if (!current.includeDiscontinued && plan.discontinued) return false;
       if (!selectedMatch(plan.platformSlug, current.platformSlugs)) return false;
@@ -278,6 +280,7 @@
       });
     }
     return (points || []).filter(point => {
+      if (current.apiOnly && point.billingMode !== 'payg') return false;
       if (point.platformVisible === false) return false;
       if (point.planTableVisible === false && point.billingMode !== 'payg') return false;
       if (!current.includeDiscontinued && point.discontinued) return false;
@@ -337,8 +340,7 @@
       if (s.domesticNetworkOnly && platform.requiresOverseasNetwork !== false) continue;
       if (s.domesticPaymentOnly && platform.requiresOverseasPayment !== false) continue;
       if (s.tool !== 'any' && platform.externalUsage !== true && platform.slug !== s.tool) continue;
-      if (s.useCase === 'api' && plan.billingMode !== 'payg') continue;
-      if (s.useCase === 'general' && platform.usageScope !== 'general' && plan.billingMode !== 'payg') continue;
+      if (s.apiOnly && plan.billingMode !== 'payg') continue;
       const monthlyCost = toCny(plan.monthlyPrice, plan.currency, opts.usdToCnyRate);
       if (plan.billingMode !== 'payg' && !inRange(monthlyCost, s.budgetCny)) continue;
       if (plan.billingMode !== 'payg' && Object.entries(s.priceRanges).some(([key, range]) => !inRange(toCny(plan[key], plan.currency, opts.usdToCnyRate), range))) continue;

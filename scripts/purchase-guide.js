@@ -21,15 +21,11 @@
     return null;
   }
   function scenarioPatch(answers) {
+    const apiOnly = answers.scenario === "api" ||
+      (answers.scenario === "writing" && answers.writingMode === "automation");
     return {
-      useCase:
-        answers.scenario === "api"
-          ? "api"
-          : ["writing", "professional"].includes(answers.scenario)
-            ? "general"
-            : answers.scenario === "coding"
-              ? "coding"
-              : "any",
+      apiOnly,
+      ...(apiOnly ? { budgetCny: null, tool: "any" } : {}),
     };
   }
   function usagePatch(answers) {
@@ -230,7 +226,7 @@
         ["budgetCny", null, "月预算"],
         ["monthlyTokenRange", null, "月用量"],
         ["tool", "any", "使用工具"],
-        ["useCase", "any", "用途"],
+        ["apiOnly", false, "仅按量 API"],
         ["imageRequired", false, "图片能力"],
         ["domesticNetworkOnly", false, "网络要求"],
         ["domesticPaymentOnly", false, "支付要求"],

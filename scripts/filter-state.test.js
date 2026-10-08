@@ -10,6 +10,22 @@ const unrestricted = (overrides = {}) => Filters.normalizeState({
   ...overrides
 });
 
+test('API 类型限制独立于零预算，价格点和订阅表同步过滤', () => {
+  const points = [
+    { slug: 'sub', billingMode: 'subscription', monthlyFeeCny: 0 },
+    { slug: 'api', billingMode: 'payg', unitPriceCnyPerM: 2 },
+    { slug: 'unknown', billingMode: 'payg', unitPriceCnyPerM: null }
+  ];
+  const onlyApi = unrestricted({ apiOnly: true });
+  assert.deepEqual(Filters.filterPoints(points, onlyApi).map(x => x.slug), ['api', 'unknown']);
+  assert.equal(Filters.cloneState(onlyApi).apiOnly, true);
+  const zeroBudget = unrestricted({ budgetCny: { max: 0 } });
+  assert.equal(zeroBudget.apiOnly, false);
+  assert.deepEqual(Filters.filterPoints(points, zeroBudget), points);
+  assert.deepEqual(Filters.filterPoints(points, unrestricted({ apiOnly: true, budgetCny: { max: 0 }, monthlyTokenRange: { min: 1 } })), []);
+  assert.deepEqual(Filters.filterPlans([{ slug: 'sub', billingMode: 'subscription', monthlyPrice: 0 }], onlyApi), []);
+});
+
 test('月 Token 按同一模型关系匹配，不相加；未知订阅在范围启用时排除，按量 API 保留', () => {
   const plan = { slug: 'p', supportedModels: ['a', 'b'], monthlyTokenOptions: [
     { modelSlug: 'a', value: 100 }, { modelSlug: 'b', value: 300 }, { modelSlug: 'b', value: null }

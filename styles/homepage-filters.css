@@ -286,10 +286,19 @@ body .range-picker-ticks button:first-child { transform: none; left: -9px; }
 body .range-picker-ticks button:last-child { transform: translateX(-100%); left: calc(100% + 9px); }
 body .range-picker-ticks button:hover, body .range-picker-ticks button[aria-pressed="true"] { color: #111827; font-weight: 600; }
 body .range-picker-hint { margin: 0 0 10px; color: var(--text-secondary); font-size: 12px; line-height: 1.5; }
+body .range-picker-title { flex-shrink: 0; white-space: nowrap; }
+body [data-budget-label], body [data-token-label] { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
+body #homeBudgetPicker .range-picker-ticks button:first-child { left: var(--tick-position); transform: translateX(-50%); }
+body .range-picker-modes { display: flex; justify-content: space-between; gap: 12px; margin: -4px 0 8px; }
+body .range-picker-modes button { min-height: 34px; padding: 4px 8px; border: 1px solid #d1d5db; border-radius: 6px; background: #fff; color: #4b5563; font: inherit; font-size: 12px; cursor: pointer; }
+body .range-picker-modes button:hover, body .range-picker-modes button[aria-pressed="true"] { background: #f3f4f6; border-color: #9ca3af; color: #111827; }
+body .range-picker-modes button[aria-pressed="true"] { font-weight: 600; }
+body .range-picker-modes button:focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
 body .range-picker-slider input:focus-visible, body .range-picker-ticks button:focus-visible, body .range-picker-value > button:focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
 @media (max-width: 800px) {
   body .filter-picker-menu .range-picker-number { width: 138px; min-height: 44px; }
   body .range-picker-value > button { min-height: 44px; }
+  body .range-picker-modes button { min-height: 44px; }
   body .range-picker-slider input[type="range"] { height: 44px; }
   body .range-picker-ticks button { min-height: 36px; }
   body .range-picker-slider .range-picker-ticks { height: 40px; }
@@ -381,4 +390,7 @@ body .filter-picker-menu .range-picker-value > button:focus-visible { outline: 2
   body .filter-picker-menu .range-picker-value > button { min-height: 44px; }
 }
 
-@media (min-width: 1101px) { .tool-unified-active .guide-filter-fields { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (min-width: 1101px) {
+  .homepage-unified-active .guide-filter-fields { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .tool-unified-active .guide-filter-fields { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}

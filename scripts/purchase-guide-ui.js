@@ -68,7 +68,7 @@
             ["coding", "项目编程 / Agent"],
             ["writing", "小说 / 文章写作"],
             ["professional", "专业工具协作"],
-            ["api", "自己的应用 / API"],
+            ["api", "自己的系统 / 服务 / 自动化"],
           ],
           answers.scenario,
         ) +
@@ -77,15 +77,16 @@
               "writingMode",
               [
                 ["web", "直接用网页 / App"],
-                ["tools", "工具接入 / 大量生成"],
+                ["tools", "个人在工具中交互写作"],
+                ["automation", "程序批量生成 / 自动化"],
               ],
               answers.writingMode,
             )
           : "")
       );
     if (step === 1)
-      return answers.scenario === "api"
-        ? "<p>自己的应用或服务使用按量 API，不推荐订阅套餐。</p>"
+      return s.apiOnly
+        ? "<p>系统、服务或自动化调用仅推荐按量 API；订阅套餐按个人交互使用考虑。</p>"
         : buttons(
             "tool",
             [
@@ -128,16 +129,18 @@
             ["100", "100 元以内"],
             ["200", "200 元以内"],
             ["500", "500 元以内"],
-            ["any", "不限"],
+            ["api", "仅按量 API"],
+            ["any", s.apiOnly ? "金额不限（仅 API）" : "不限"],
           ],
           answers.free
             ? "free"
             : s.budgetCny?.max != null
               ? String(s.budgetCny.max)
-              : s.preference === "cost"
+              : s.apiOnly ? "api" : s.preference === "cost"
                 ? "cheap"
                 : "any",
-        ) + input("budget", "每月不超过", s.budgetCny?.max ?? "", "元")
+        ) + input("budget", "每月不超过", s.budgetCny?.max ?? "", "元") +
+        (s.apiOnly ? '<p class="guide-note">当前仅推荐按量 API。此处填写预算保留 API 限制；手动预算滑块的中间金额会同时包含订阅和 API。</p>' : "")
       );
     if (step === 4)
       return (
@@ -168,12 +171,7 @@
   }
   function summary(s) {
     const parts = [];
-    if (s.useCase !== "any")
-      parts.push(
-        { coding: "编程", general: "写作 / 通用任务", api: "自建应用 API" }[
-          s.useCase
-        ],
-      );
+    if (s.apiOnly) parts.push("仅按量 API");
     if (s.tool !== "any")
       parts.push(
         {
@@ -228,8 +226,8 @@
     }
     pendingStart = false;
     const current = controller.getState();
-    if (!G.directAdvice(answers) && G.scenarioPatch(answers).useCase !== current.useCase) {
-      answers.scenario = current.useCase === 'coding' ? 'coding' : current.useCase === 'api' ? 'api' : current.useCase === 'general' ? 'professional' : null;
+    if (!G.directAdvice(answers) && G.scenarioPatch(answers).apiOnly !== current.apiOnly) {
+      answers.scenario = current.apiOnly ? 'api' : null;
       answers.writingMode = null;
     }
     active = true;
@@ -242,7 +240,7 @@
     if (key === "scenario") {
       answers.scenario = value;
       answers.writingMode = null;
-      if (!G.directAdvice(answers)) {
+      if (value !== "writing" && !G.directAdvice(answers)) {
         set({
           ...G.scenarioPatch(answers),
           ...(answers.intensity ? G.usagePatch(answers) : {}),
@@ -262,7 +260,8 @@
       answers.free = value === "free";
       if (!answers.free)
         set(
-          value === "cheap"
+          value === "api" ? { apiOnly: true, budgetCny: null, tool: "any" }
+          : value === "cheap"
             ? { budgetCny: null, preference: "cost" }
             : {
                 budgetCny:
@@ -307,7 +306,7 @@
       if (action === "skip") {
         if (step === 0) {
           answers.scenario = null;
-          set({ useCase: "any" });
+          set({ apiOnly: false });
         } else if (step === 1) set({ tool: "any" });
         else if (step === 2) {
           answers.intensity = null;
@@ -374,15 +373,9 @@
       controller.userChanged = true;
       answers.intensity = null;
       answers.free = false;
-      if (active) {
-        answers.scenario =
-          event.detail.state.useCase === "api"
-            ? "api"
-            : event.detail.state.useCase === "coding"
-              ? "coding"
-              : event.detail.state.useCase === "general"
-                ? "professional"
-                : null;
+      if (active && G.scenarioPatch(answers).apiOnly !== event.detail.state.apiOnly) {
+        answers.scenario = event.detail.state.apiOnly ? "api" : null;
+        answers.writingMode = null;
       }
     }
     if (event.detail.source === "display") {

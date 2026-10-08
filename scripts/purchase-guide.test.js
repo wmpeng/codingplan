@@ -19,7 +19,6 @@ function fixture() {
       externalUsage: true,
       requiresOverseasNetwork: false,
       requiresOverseasPayment: false,
-      usageScope: "general",
     },
     {
       slug: "codex",
@@ -28,7 +27,6 @@ function fixture() {
       externalUsage: false,
       requiresOverseasNetwork: null,
       requiresOverseasPayment: true,
-      usageScope: "coding",
     },
   ];
   const plans = [
@@ -122,6 +120,28 @@ function fixture() {
   c.modelGroups = [{ id: "sota-models", modelSlugs: ["strong"] }];
   return c;
 }
+
+test("引导只按使用方式分流；API 限制与金额独立，未知 API 费用不当作零", () => {
+  const c = fixture();
+  const api = state(G.scenarioPatch({ scenario: "api" }));
+  assert.equal(api.apiOnly, true);
+  assert.equal(api.budgetCny, null);
+  assert.equal(api.tool, "any");
+  assert.deepEqual(G.scenarioPatch({ scenario: "writing", writingMode: "automation" }), G.scenarioPatch({ scenario: "api" }));
+  for (const scenario of ["coding", "professional", "writing"])
+    assert.equal(G.scenarioPatch({ scenario, writingMode: "tools" }).apiOnly, false);
+  const offers = F.matchingOffers(c, api, options);
+  assert.deepEqual(offers.map(x => x.plan.slug), ["api"]);
+  assert.deepEqual(F.filterPlans(c.plans, api, { ...options, context: c }), []);
+  assert.deepEqual(F.filterPlatforms(c.platforms, api, { ...options, context: c }).map(x => x.slug), ["p"]);
+  const budget = state({ ...api, budgetCny: { max: 0 } });
+  assert.equal(F.matchingOffers(c, budget, options).length, 1);
+  const knownCost = F.matchingOffers(c, state({ ...budget, monthlyTokenRange: { min: 100 } }), options);
+  assert.deepEqual(knownCost[0].rows.map(x => x.modelSlug), ["small"]);
+  assert.ok(F.matchingOffers(c, state({ apiOnly: false }), options).some(x => x.plan.billingMode === "subscription"));
+  assert.ok(G.directAdvice({ scenario: "writing", writingMode: "web" }));
+  assert.equal(G.directAdvice({ scenario: "writing", writingMode: "automation" }), null);
+});
 const options = { usdToCnyRate: 7 };
 test("预算、模型与额度不能跨套餐拼接，三个视图使用同一批关系", () => {
   const c = fixture(),
@@ -168,13 +188,13 @@ test("月Token保留按量、排除未知订阅；组合预算按实际目标估
   assert.equal(
     F.matchingOffers(
       c,
-      state({ useCase: "api", budgetCny: { max: 1 } }),
+      state({ apiOnly: true, budgetCny: { max: 1 } }),
       options,
     ).length,
     1,
   );
 });
-test("外部工具、用途、网络支付、图片与模型分组分别生效", () => {
+test("外部工具、API 类型、网络支付、图片与模型分组分别生效", () => {
   const c = fixture();
   assert.ok(
     F.matchingOffers(c, state({ tool: "other" }), options).every(
@@ -187,7 +207,7 @@ test("外部工具、用途、网络支付、图片与模型分组分别生效",
     ),
   );
   assert.deepEqual(
-    F.matchingOffers(c, state({ useCase: "api" }), options).map(
+    F.matchingOffers(c, state({ apiOnly: true }), options).map(
       (x) => x.plan.slug,
     ),
     ["api"],

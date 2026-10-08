@@ -44,6 +44,12 @@
     if (part < 0) return (knots.length - 1) * 100;
     return Math.round((part + (value - knots[part]) / (knots[part + 1] - knots[part])) * 100);
   }
+  // Budget endpoints are modes. Positions 1..601 retain the numeric range,
+  // including real zero and values beyond the last visible numeric tick.
+  const budgetSliderMax = (rangeKnots.budget.length - 1) * 100 + 2;
+  function setBudget(value, apiOnly = false) {
+    return { apiOnly, budgetCny: value == null ? null : { min: null, max: value } };
+  }
   function syncNumberInput(input, value) {
     if (document.activeElement === input && input.value !== "" && Number(input.value) === value) return;
     input.value = value ?? "";
@@ -54,12 +60,13 @@
     const title = budget ? "月预算" : "月 Token 数";
     const factor = budget ? 1 : state.tokenUnit === "B" ? 1000 : state.tokenUnit === "M" ? 1 : 100;
     const unit = budget ? "元" : state.tokenUnit === "B" ? "B" : state.tokenUnit === "M" ? "M" : "亿";
-    return `<details class="filter-picker" id="${id}"><summary>${title} <span ${budget ? "data-budget-label" : "data-token-label"}></span></summary>
+    return `<details class="filter-picker" id="${id}"><summary><span class="range-picker-title">${title}</span><span ${budget ? "data-budget-label" : "data-token-label"}></span></summary>
       <div class="filter-picker-menu budget-menu" role="group" aria-label="${budget ? "每月预算" : "每月 Token 用量"}">
         <div class="range-picker-value"><label class="filter-inline"><span>${budget ? "不超过" : "至少"}</span><span class="range-picker-number">${budget ? '<span class="range-picker-unit" aria-hidden="true">¥</span>' : ""}<input type="number" inputmode="decimal" min="0" step="any" ${budget ? 'data-budget-part="max"' : 'data-token-part="min"'} aria-label="${budget ? "最高月预算（人民币）" : `最低月 Token 数（${unit}）`}" placeholder="不限">${budget ? "" : `<span class="range-picker-unit" data-token-unit-label aria-hidden="true">${unit}</span>`}</span></label><button type="button" data-range-clear="${key}">不限</button></div>
-        <div class="range-picker-slider"><input type="range" min="0" max="${(rangeKnots[key].length - 1) * 100}" step="1" data-range-picker="${key}" aria-label="${title}滑块" aria-describedby="${id}Help">
-          <div class="range-picker-ticks">${rangeKnots[key].map((n, i, knots) => `<button type="button" data-range-knot="${key}" data-knot-value="${n}" style="--tick-position:${i / (knots.length - 1) * 100}%" aria-label="${budget ? "预算上限" : "最低月用量"} ${n / factor} ${unit}">${n / factor}</button>`).join("")}</div></div>
-        <p class="range-picker-hint">拖动或点击刻度，也可直接输入其他数值。</p>
+        <div class="range-picker-slider"><input type="range" min="0" max="${budget ? budgetSliderMax : (rangeKnots[key].length - 1) * 100}" step="1" data-range-picker="${key}" aria-label="${title}滑块" aria-describedby="${id}Help">
+          <div class="range-picker-ticks">${rangeKnots[key].map((n, i, knots) => budget && n === 0 ? "" : `<button type="button" data-range-knot="${key}" data-knot-value="${n}" style="--tick-position:${budget ? (i * 100 + 1) / budgetSliderMax * 100 : i / (knots.length - 1) * 100}%" aria-label="${budget ? "预算上限" : "最低月用量"} ${n / factor} ${unit}">${n / factor}</button>`).join("")}</div>
+          ${budget ? '<div class="range-picker-modes"><button type="button" data-budget-mode="api">仅按量 API</button><button type="button" data-budget-mode="any">不限</button></div>' : ""}</div>
+        <p class="range-picker-hint">${budget ? "左端仅按量 API；中间按金额筛选订阅和 API；右端不限。" : "拖动或点击刻度，也可直接输入其他数值。"}</p>
         <p class="filter-help" id="${id}Help">${budget ? "按量 API 在填写月用量后估算月支出；未填写时不判断其月预算。" : "订阅按所选模型额度判断，不相加；未知额度排除。按量 API 按此用量估算费用。"}</p>
       </div></details>`;
   }
@@ -90,15 +97,6 @@
   }
 
   const choices = {
-    useCase: [
-      "用途",
-      [
-        ["any", "不限"],
-        ["coding", "编程"],
-        ["general", "写作 / 通用任务"],
-        ["api", "自建应用 API"],
-      ],
-    ],
     tool: [
       "使用工具",
       [
@@ -192,6 +190,7 @@
     const monitor = full && opts.view === "monitor";
     const model = params.get("model");
     if (model && models.some(x => x.slug === model)) state.modelSlugs = [model];
+    if (params.get("billing") === "payg") state.apiOnly = true;
     host.innerHTML = `<section class="filter-state-bar surface-panel" aria-label="统一筛选">
       <div class="filter-state-grid">
       ${buildPicker({ id: "homePlatformPicker", label: "平台", key: "platformSlugs", items: platforms, state })}
@@ -267,7 +266,8 @@
       if (budget) {
         syncNumberInput(budget, state.budgetCny?.max);
         host.querySelector("[data-budget-label]").textContent =
-          state.budgetCny?.max != null ? `≤ ¥${state.budgetCny.max}` : "不限";
+          state.apiOnly ? `仅 API${state.budgetCny?.max != null ? ` · ≤¥${state.budgetCny.max}` : ""}` : state.budgetCny?.max != null ? `≤ ¥${state.budgetCny.max}` : "不限";
+        budget.placeholder = state.apiOnly ? "金额不限" : "不限";
       }
       if (tokens) {
         syncNumberInput(tokens, state.monthlyTokenRange?.min == null ? null : state.monthlyTokenRange.min / factor);
@@ -284,21 +284,29 @@
         const value = key === "budget" ? state.budgetCny?.max : state.monthlyTokenRange?.min;
         const unit = key === "budget" ? "元" : state.tokenUnit === "B" ? "B" : state.tokenUnit === "M" ? "M" : "亿";
         const displayFactor = key === "token" ? factor : 1;
-        slider.value = rangePosition(key, value);
+        slider.value = key === "budget"
+          ? state.apiOnly ? 0 : value == null ? budgetSliderMax : rangePosition(key, value) + 1
+          : rangePosition(key, value);
         slider.style.setProperty("--range-fill", `${Number(slider.value) / Number(slider.max) * 100}%`);
-        slider.setAttribute("aria-valuetext", value == null ? "不限" : `${key === "budget" ? "不超过" : "至少"} ${value / displayFactor} ${unit}`);
+        slider.setAttribute("aria-valuetext", key === "budget" && state.apiOnly
+          ? `仅按量 API，${value == null ? "金额不限" : `不超过 ${value} 元`}`
+          : value == null ? "不限" : `${key === "budget" ? "不超过" : "至少"} ${value / displayFactor} ${unit}`);
         host.querySelectorAll(`[data-range-knot="${key}"]`).forEach((button) => {
           const n = Number(button.dataset.knotValue);
           button.textContent = n / displayFactor;
           button.setAttribute("aria-label", `${key === "budget" ? "预算上限" : "最低月用量"} ${n / displayFactor} ${unit}`);
-          button.setAttribute("aria-pressed", String(value === n));
+          button.setAttribute("aria-pressed", String(value === n && !(key === "budget" && state.apiOnly)));
         });
+      });
+      host.querySelectorAll("[data-budget-mode]").forEach(button => {
+        button.setAttribute("aria-pressed", String(button.dataset.budgetMode === "api" ? state.apiOnly : !state.apiOnly && !state.budgetCny));
       });
       const tags = [];
       for (const key of ["platformSlugs", "modelSlugs"])
         if (state[key]?.length)
           tags.push([key, key === "platformSlugs" ? "已选平台" : "已选模型"]);
       if (state.budgetCny) tags.push(["budgetCny", "预算上限"]);
+      if (state.apiOnly) tags.push(["apiOnly", "仅按量 API"]);
       if (state.monthlyTokenRange) tags.push(["monthlyTokenRange", "月用量"]);
       for (const [key, [label]] of Object.entries(choices))
         if (!["any", "balanced", "delisted"].includes(state[key]))
@@ -332,9 +340,10 @@
       const el = event.target;
       if (el.matches("[data-range-picker]")) {
         const key = el.dataset.rangePicker;
-        const value = rangeValue(key, Number(el.value));
-        if (key === "budget") state.budgetCny = { min: null, max: value };
-        else state.monthlyTokenRange = { min: value, max: null };
+        const position = Number(el.value);
+        if (key === "budget") Object.assign(state, position === 0 ? setBudget(null, true)
+          : position === budgetSliderMax ? setBudget(null) : setBudget(rangeValue(key, position - 1)));
+        else state.monthlyTokenRange = { min: rangeValue(key, position), max: null };
         publish();
         return;
       }
@@ -351,6 +360,7 @@
       }
       if (el.matches("[data-budget-part]")) {
         if (el.validity.badInput) return;
+        state.apiOnly = false;
         state.budgetCny =
           el.value === ""
             ? null
@@ -401,10 +411,12 @@
             : el.dataset.pickerAction === "all"
               ? null
               : defaults[key];
+      } else if (el.dataset.budgetMode) {
+        Object.assign(state, setBudget(null, el.dataset.budgetMode === "api"));
       } else if (el.dataset.rangeKnot || el.dataset.rangeClear) {
         const key = el.dataset.rangeKnot || el.dataset.rangeClear;
         const value = el.dataset.rangeClear ? null : Number(el.dataset.knotValue);
-        if (key === "budget") state.budgetCny = value == null ? null : { min: null, max: value };
+        if (key === "budget") Object.assign(state, setBudget(value));
         else state.monthlyTokenRange = value == null ? null : { min: value, max: null };
       }
       else if (el.dataset.removeFilter)

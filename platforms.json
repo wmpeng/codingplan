@@ -24,8 +24,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "zhipu-coding-legacy",
@@ -38,8 +37,7 @@
       "catalogVisible": false,
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "opencode",
@@ -65,8 +63,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": false,
-      "usageScope": "general"
+      "requiresOverseasPayment": false
     },
     {
       "slug": "bytedance-ark",
@@ -92,8 +89,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
-      "usageScope": "coding"
+      "requiresOverseasPayment": false
     },
     {
       "slug": "bytedance-ark-agent",
@@ -119,8 +115,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "minimax",
@@ -147,8 +142,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": null,
-      "usageScope": "general"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "minimax-coding-legacy",
@@ -161,8 +155,7 @@
       "catalogVisible": false,
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "zhipu-intl",
@@ -189,8 +182,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "zhipu-intl-coding-legacy",
@@ -203,8 +195,7 @@
       "catalogVisible": false,
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "kimi",
@@ -229,8 +220,7 @@
       "platformStatus": "paused",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "deepseek-official",
@@ -257,8 +247,7 @@
       "action": "https://platform.deepseek.com/",
       "externalUsage": true,
       "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": null,
-      "usageScope": "general"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "gongji",
@@ -285,8 +274,7 @@
       "action": "https://api.dreamfree.space/c/s/cpyqgongji",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "general"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "youyun",
@@ -312,8 +300,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "codex",
@@ -341,8 +328,7 @@
       "platformStatus": "open",
       "externalUsage": false,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "coding"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "claude",
@@ -370,8 +356,7 @@
       "platformStatus": "open",
       "externalUsage": false,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "coding"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "ollama",
@@ -398,8 +383,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "aliyun-bailian",
@@ -425,8 +409,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "aliyun-bailian-coding",
@@ -452,8 +435,7 @@
       "platformStatus": "limited",
       "externalUsage": true,
       "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": null,
-      "usageScope": "coding"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "xiaomi-mimo",
@@ -479,8 +461,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "command-code",
@@ -510,8 +491,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "baidu-qianfan",
@@ -536,8 +516,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "baidu-qianfan-coding-legacy",
@@ -550,8 +529,7 @@
       "catalogVisible": false,
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "huawei-cloud",
@@ -575,8 +553,7 @@
       "platformStatus": "limited",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "tencent-cloud",
@@ -601,8 +578,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "tencent-cloud-coding-legacy",
@@ -615,8 +591,7 @@
       "catalogVisible": false,
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "qoder-cn",
@@ -642,8 +617,7 @@
       },
       "externalUsage": false,
       "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": null,
-      "usageScope": "coding"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "qoder-intl",
@@ -669,8 +643,7 @@
       },
       "externalUsage": false,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "coding"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "workbuddy",
@@ -696,8 +669,7 @@
       },
       "externalUsage": false,
       "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "trae-cn",
@@ -723,8 +695,7 @@
       },
       "externalUsage": false,
       "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": null,
-      "usageScope": "coding"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "trae-intl",
@@ -750,8 +721,7 @@
       },
       "externalUsage": false,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "coding"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "github",
@@ -776,8 +746,7 @@
       "platformStatus": "open",
       "externalUsage": false,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "coding"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "jd-cloud",
@@ -802,8 +771,7 @@
       "platformStatus": "limited",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "iflytek",
@@ -828,8 +796,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "unicom-cloud",
@@ -854,8 +821,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "unicom-cloud-coding-legacy",
@@ -868,8 +834,7 @@
       "catalogVisible": false,
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "cmcc-cloud",
@@ -893,8 +858,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "stepfun",
@@ -918,8 +882,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "taotoken",
@@ -944,8 +907,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "chaosuan",
@@ -970,8 +932,7 @@
       "platformStatus": "paused",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "sensetime",
@@ -995,8 +956,7 @@
       "platformStatus": "open",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "moorethreads",
@@ -1020,8 +980,7 @@
       "platformStatus": "limited",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "infrafun",
@@ -1045,8 +1004,7 @@
       "platformStatus": "delisted",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     },
     {
       "slug": "ctyun",
@@ -1070,8 +1028,7 @@
       "platformStatus": "delisted",
       "externalUsage": true,
       "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "usageScope": "unknown"
+      "requiresOverseasPayment": null
     }
   ]
 }
