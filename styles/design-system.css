@@ -389,7 +389,7 @@ body .update-entry ul { margin: 0; padding-left: 20px; }
 body .update-entry li + li { margin-top: 8px; }
 @media (max-width: 1100px) {
   body.home-page .site-section-nav { position: static; width: 100%; max-height: none; padding: 0 0 16px; }
-  body.home-page .section-navigation.is-collapsible { display: block; position: fixed; top: clamp(12px, calc(100dvh - 360px), 168px); left: 14px; width: 44px; height: 44px; z-index: 30; }
+  body.home-page .section-navigation.is-collapsible { display: block; position: fixed; top: clamp(12px, calc(100dvh - 304px), 112px); left: 14px; width: 44px; height: 44px; z-index: 30; }
   body.home-page .tool-page-main:has(> .section-navigation.is-collapsible) { padding-top: 60px; }
   body.home-page .is-collapsible .section-nav-toggle {
     display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px;
@@ -462,9 +462,11 @@ body .site-header .toggle-switch:has(input:focus-visible) { outline:2px solid va
 @media (max-width:1100px) {
   body > .site-header {
     width:calc(100vw - 28px); min-height:0; padding:16px 0; gap:12px;
-    flex-wrap:wrap; margin-bottom:24px;
+    flex-wrap:nowrap; margin-bottom:24px;
   }
-  body .site-header .tool-nav { order:3; width:100%; overflow-x:auto; scrollbar-width:thin; }
+  body .site-header .tool-brand-name { display:none; }
+  body .site-header .tool-brand { min-height:44px; }
+  body .site-header .tool-nav { order:initial; flex:1; width:auto; overflow-x:auto; scrollbar-width:thin; }
   body .site-header .tool-nav a { padding:10px 14px; }
 }
 @media (max-width:600px) {
