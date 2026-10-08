@@ -280,8 +280,7 @@ body .filter-picker-menu .range-picker-number input { appearance: textfield; -mo
 body .filter-picker-menu .range-picker-number input::-webkit-inner-spin-button, body .filter-picker-menu .range-picker-number input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 body .filter-picker-menu .range-picker-number input:focus-visible { outline: none; box-shadow: none; }
 body .filter-picker-menu .range-picker-unit { flex-shrink: 0; color: #6b7280; font-size: 13px; font-weight: 400; }
-body .range-picker-value > button { flex-shrink: 0; min-height: 36px; padding: 6px 10px; border: 1px solid #d1d5db; border-radius: 6px; color: #4b5563; background: #f3f4f6; font: inherit; font-size: 12px; cursor: pointer; }
-body .range-picker-value > button:hover { background: #e5e7eb; color: #111827; }
+body .range-picker-value > button { flex-shrink: 0; }
 body .range-picker-slider { margin: 12px 0 0; }
 body .range-picker-slider input[type="range"] { appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 28px; margin: 0; padding: 0; border: 0; border-radius: 6px; background: transparent; cursor: pointer; }
 body .range-picker-slider input::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: linear-gradient(to right, #4b5563 var(--range-fill, 0%), #e5e7eb var(--range-fill, 0%)); }
@@ -325,6 +324,8 @@ body .range-picker-slider input:focus-visible, body .range-picker-ticks button:f
 body .filter-picker-menu .filter-picker-tools {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: fit-content;
+  max-width: 100%;
   gap: 8px;
   padding: 0;
   margin: 2px 0 8px;
@@ -332,30 +333,37 @@ body .filter-picker-menu .filter-picker-tools {
   border-radius: 0;
   background: transparent;
 }
-body .filter-picker-menu .filter-picker-tools button {
+body .filter-picker-menu .filter-picker-tools button,
+body .filter-picker-menu .range-picker-value > button {
   min-width: 0;
-  min-height: 36px;
-  padding: 6px 8px;
+  min-height: 34px;
+  padding: 5px 12px;
   border: 1px solid #d1d5db;
   border-radius: 6px;
   background: #f3f4f6;
-  color: #4b5563;
+  color: #374151;
   font: inherit;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
   white-space: nowrap;
   cursor: pointer;
   transition: background .15s, border-color .15s, color .15s;
 }
-body .filter-picker-menu .filter-picker-tools button:hover {
+body .filter-picker-menu .filter-picker-tools button:hover,
+body .filter-picker-menu .range-picker-value > button:hover {
   background: #fff;
-  border-color: #d1d5db;
+  border-color: #9ca3af;
   color: #111827;
 }
-body .filter-picker-menu .filter-picker-tools button:active { background: #e5e7eb; }
-body .filter-picker-menu .filter-picker-tools button:focus-visible { outline: 2px solid #6b7280; outline-offset: 1px; }
+body .filter-picker-menu .filter-picker-tools button:active,
+body .filter-picker-menu .range-picker-value > button:active { background: #e5e7eb; }
+body .filter-picker-menu .filter-picker-tools button:focus-visible,
+body .filter-picker-menu .range-picker-value > button:focus-visible { outline: 2px solid #6b7280; outline-offset: 1px; }
 @media (max-width: 800px) {
   :is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu { top: auto; bottom: 18px; max-height: min(520px, 70dvh); border-color: #bccde1; }
-  body .filter-picker-menu .filter-picker-tools button { min-height: 44px; }
+  body .filter-picker-menu .filter-picker-tools button,
+  body .filter-picker-menu .range-picker-value > button { min-height: 44px; }
 }
 
 @media (min-width: 1101px) { .tool-unified-active .guide-filter-fields { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
