@@ -459,21 +459,20 @@ body .site-header .settings-btn {
   border-radius:8px; box-shadow:none; color:var(--text-secondary);
 }
 body .site-header .settings-panel {
-  top:calc(100% + 8px); right:0; width:360px; max-width:calc(100vw - 28px);
-  display:grid; grid-template-columns:minmax(0,1fr) 56px; gap:16px; align-items:start;
+  top:calc(100% + 8px); right:0; width:280px; max-width:calc(100vw - 28px);
+  display:grid; grid-template-columns:minmax(0,1fr); gap:20px; align-items:start;
   margin:0; padding:16px; border-radius:12px; background:var(--bg-secondary);
   color:var(--text-primary); backdrop-filter:none; box-shadow:var(--shadow-md); z-index:2000;
 }
-body .site-header .settings-toggle-row { display:flex; flex-direction:column; align-items:center; gap:8px; font-size:14px; }
+body .site-header .settings-toggle-row { display:flex; align-items:center; justify-content:space-between; min-height:36px; gap:16px; font-size:14px; }
 body .site-header .settings-toggle-row > label:first-child { flex:initial; font-weight:600; white-space:nowrap; }
-body .site-header .settings-toggle-row > .toggle-switch { margin-top:12px; }
 body .site-header .settings-unit-section { min-width:0; }
 body .site-header .settings-unit-heading { margin-bottom:8px; font-size:14px; font-weight:600; }
 body .site-header .settings-unit-options { display:flex; gap:4px; padding:4px; border:1px solid var(--border-color); border-radius:8px; background:var(--bg-tertiary); }
 body .site-header .settings-unit-options button { flex:1; min-width:0; min-height:36px; padding:6px; border:0; border-radius:6px; background:transparent; color:var(--text-secondary); font:inherit; font-size:13px; white-space:nowrap; cursor:pointer; }
 body .site-header .settings-unit-options button[aria-pressed="true"] { background:var(--bg-secondary); color:var(--accent-primary); font-weight:600; }
 body .site-header .settings-unit-options button:hover { color:var(--accent-primary); }
-@media(max-width:600px){body .site-header .settings-unit-options button{min-height:44px;}body .site-header .settings-toggle-row > .toggle-switch{margin-top:16px;}}
+@media(max-width:600px){body .site-header .settings-unit-options button{min-height:44px;}body .site-header .settings-toggle-row{min-height:44px;}}
 body .site-header [hidden] { display:none !important; }
 body .site-header .toggle-switch:has(input:focus-visible) { outline:2px solid var(--accent-primary); outline-offset:4px; border-radius:20px; }
 @media (max-width:1100px) {
