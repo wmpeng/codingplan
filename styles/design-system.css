@@ -389,7 +389,8 @@ body .update-entry ul { margin: 0; padding-left: 20px; }
 body .update-entry li + li { margin-top: 8px; }
 @media (max-width: 1100px) {
   body.home-page .site-section-nav { position: static; width: 100%; max-height: none; padding: 0 0 16px; }
-  body.home-page .section-navigation.is-collapsible { display: block; position: sticky; top: 12px; width: 44px; height: 44px; margin-bottom: 16px; z-index: 30; }
+  body.home-page .section-navigation.is-collapsible { display: block; position: fixed; top: clamp(12px, calc(100dvh - 360px), 168px); left: 14px; width: 44px; height: 44px; z-index: 30; }
+  body.home-page .tool-page-main:has(> .section-navigation.is-collapsible) { padding-top: 60px; }
   body.home-page .is-collapsible .section-nav-toggle {
     display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px;
     padding: 0; border: 1px solid var(--border-color); border-radius: 8px;
