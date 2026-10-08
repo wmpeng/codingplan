@@ -145,8 +145,8 @@ body .model-grid { gap: 16px; }
 body .model-card { display: flex; flex-direction: column; }
 body .model-card h3 { font-size:17px; font-weight:600; color:var(--text-primary); line-height:1.5; }
 body .model-modality { min-height:calc(1.65em * 2); font-size: 13px; color: var(--text-secondary); margin: 8px 0 16px; }
-body .model-scores { gap: 8px; flex-wrap:wrap; align-items:stretch; color: var(--text-secondary); font-size: 12px; margin-bottom: 16px; }
-body .model-score strong { display: inline-block; font-size:18px; color:var(--text-primary); font-weight:600; }
+body .model-scores { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; align-items:stretch; padding:12px 0; border-radius:8px; background:var(--bg-tertiary); color:var(--text-secondary); font-size:12px; margin-bottom:16px; }
+body .model-score strong { display: inline-block; font-size:20px; color:var(--text-primary); font-weight:600; }
 body .model-score .score-unknown { font-size: 13px; color: var(--text-secondary); font-weight: 400; }
 body :is(.model-offers-link, .model-price-link) { color: var(--text-secondary); font-size: 13px; padding-top: 4px; }
 body .model-offers-link { border-top: 1px solid var(--border-light); margin-top: auto; padding-top: 12px; }
@@ -159,7 +159,10 @@ body :is(.home-meta, .community-inline) { border-color: var(--border-color); }
 
 /* 模型分组和指标面板：统一尺寸与留白，未知值降低字号与字重。 */
 body .featured-model-group > .section-heading h3 { color:var(--text-primary); font-size:15px; padding:6px 10px; border-radius:6px; background:var(--bg-tertiary); }
-body .model-score { display:inline-flex; align-items:baseline; gap:4px; padding:7px 9px; border-radius:8px; color:var(--text-secondary); background:var(--bg-tertiary); line-height:1.4; }
+body .model-score { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; min-width:0; padding:0 4px; color:var(--text-secondary); line-height:1.4; }
+body .model-score + .model-score { border-left:1px solid var(--border-color); }
+body .model-score-value { display:flex; align-items:baseline; justify-content:center; gap:4px; min-height:28px; white-space:nowrap; }
+body .model-score-label { font-size:12px; font-weight:600; }
 body .model-score a { color:var(--accent-primary); font-size:12px; padding:0 2px; }
 
 /* 平台卡片与详情 */
