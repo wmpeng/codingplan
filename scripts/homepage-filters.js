@@ -52,8 +52,8 @@
     const budget = key === "budget";
     const id = budget ? "homeBudgetPicker" : "homeTokenPicker";
     const title = budget ? "月预算" : "月 Token 数";
-    const factor = !budget && state.tokenUnit !== "M" ? 100 : 1;
-    const unit = budget ? "元" : state.tokenUnit === "M" ? "M" : "亿";
+    const factor = budget ? 1 : state.tokenUnit === "B" ? 1000 : state.tokenUnit === "M" ? 1 : 100;
+    const unit = budget ? "元" : state.tokenUnit === "B" ? "B" : state.tokenUnit === "M" ? "M" : "亿";
     return `<details class="filter-picker" id="${id}"><summary>${title} <span ${budget ? "data-budget-label" : "data-token-label"}></span></summary>
       <div class="filter-picker-menu budget-menu" role="group" aria-label="${budget ? "每月预算" : "每月 Token 用量"}">
         <div class="range-picker-value"><label class="filter-inline"><span>${budget ? "不超过" : "至少"}</span><span class="range-picker-number">${budget ? '<span class="range-picker-unit" aria-hidden="true">¥</span>' : ""}<input type="number" inputmode="decimal" min="0" step="any" ${budget ? 'data-budget-part="max"' : 'data-token-part="min"'} aria-label="${budget ? "最高月预算（人民币）" : `最低月 Token 数（${unit}）`}" placeholder="不限">${budget ? "" : `<span class="range-picker-unit" data-token-unit-label aria-hidden="true">${unit}</span>`}</span></label><button type="button" data-range-clear="${key}">不限</button></div>
@@ -261,7 +261,7 @@
         if (el.type === "checkbox") el.checked = !!v;
         else el.value = v;
       });
-      const factor = state.tokenUnit === "M" ? 1 : 100;
+      const factor = state.tokenUnit === "B" ? 1000 : state.tokenUnit === "M" ? 1 : 100;
       const budget = host.querySelector("[data-budget-part]"),
         tokens = host.querySelector("[data-token-part]");
       if (budget) {
@@ -272,17 +272,17 @@
       if (tokens) {
         syncNumberInput(tokens, state.monthlyTokenRange?.min == null ? null : state.monthlyTokenRange.min / factor);
         host.querySelector("[data-token-unit-label]").textContent =
-          state.tokenUnit === "M" ? "M" : "亿";
-        tokens.setAttribute("aria-label", `最低月 Token 数（${state.tokenUnit === "M" ? "M" : "亿"}）`);
+          state.tokenUnit === "B" ? "B" : state.tokenUnit === "M" ? "M" : "亿";
+        tokens.setAttribute("aria-label", `最低月 Token 数（${state.tokenUnit === "B" ? "B" : state.tokenUnit === "M" ? "M" : "亿"}）`);
         host.querySelector("[data-token-label]").textContent =
           state.monthlyTokenRange
-            ? `≥ ${Filters.targetTokens(state) / factor} ${state.tokenUnit === "M" ? "M" : "亿"}`
+            ? `≥ ${Filters.targetTokens(state) / factor} ${state.tokenUnit === "B" ? "B" : state.tokenUnit === "M" ? "M" : "亿"}`
             : "不限";
       }
       host.querySelectorAll("[data-range-picker]").forEach((slider) => {
         const key = slider.dataset.rangePicker;
         const value = key === "budget" ? state.budgetCny?.max : state.monthlyTokenRange?.min;
-        const unit = key === "budget" ? "元" : state.tokenUnit === "M" ? "M" : "亿";
+        const unit = key === "budget" ? "元" : state.tokenUnit === "B" ? "B" : state.tokenUnit === "M" ? "M" : "亿";
         const displayFactor = key === "token" ? factor : 1;
         slider.value = rangePosition(key, value);
         slider.style.setProperty("--range-fill", `${Number(slider.value) / Number(slider.max) * 100}%`);
@@ -365,7 +365,7 @@
             : {
                 min:
                   Math.max(0, Number(el.value)) *
-                  (state.tokenUnit === "M" ? 1 : 100),
+                  (state.tokenUnit === "B" ? 1000 : state.tokenUnit === "M" ? 1 : 100),
                 max: null,
               };
         publish();
@@ -374,7 +374,7 @@
     host.addEventListener("focusout", (event) => {
       const el = event.target;
       if (el.matches("[data-budget-part]")) el.value = state.budgetCny?.max ?? "";
-      if (el.matches("[data-token-part]")) el.value = state.monthlyTokenRange?.min == null ? "" : state.monthlyTokenRange.min / (state.tokenUnit === "M" ? 1 : 100);
+      if (el.matches("[data-token-part]")) el.value = state.monthlyTokenRange?.min == null ? "" : state.monthlyTokenRange.min / (state.tokenUnit === "B" ? 1000 : state.tokenUnit === "M" ? 1 : 100);
     });
     host.addEventListener("change", (event) => {
       const el = event.target;

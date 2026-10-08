@@ -421,3 +421,21 @@ test('comparison tables sort both benchmark scores by exact value', () => {
   assert.deepEqual(sortComparisonRows(rows, 'artificialAnalysis', 'desc').map((row) => row.slug), ['b', 'a', 'c']);
   assert.deepEqual(sortComparisonRows(rows, 'deepSWE', 'asc').map((row) => row.slug), ['a', 'b', 'c']);
 });
+
+
+test('B 表示十亿 Token，用量与单价反向换算且未知和零保持语义',()=>{
+  const M=require('./model-comparison.js');
+  assert.equal(M.normalizeTokenUnit('B'),'B');
+  assert.equal(M.tokenAmountInUnit(1000,'B'),1);
+  assert.equal(M.unitPriceInTokenUnit(0.15,'B'),150);
+  assert.equal(M.formatTokenAmount(125,'B'),'0.125B');
+  assert.equal(M.formatTokenAmount(0.1,'B'),'0.0001B');
+  assert.equal(M.formatUnitPrice(0.15,'B'),'¥150 / B');
+  assert.equal(M.formatUnitPrice(0,'B'),'¥0 / B');
+  assert.equal(M.tokenAmountInUnit(null,'B'),null);
+  assert.equal(M.formatTokenAmount('unknown','B'),'—');
+  assert.equal(M.getAttractiveUnitPriceThreshold('B'),150);
+  const F=require('./filter-state.js'),R=require('./offer-results.js');
+  assert.equal(F.normalizeState({tokenUnit:'B',monthlyTokenRange:{min:125}}).tokenUnit,'B');
+  assert.equal(R.quota(125,'B'),'0.125 B Token');
+});

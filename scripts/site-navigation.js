@@ -4,14 +4,14 @@
   // 单位是全站显示偏好，不属于方案筛选；内部用量始终以 M 保存。
   const unitKey = 'codingplanTokenUnit';
   let tokenUnit = 'yi';
-  try { tokenUnit = localStorage.getItem(unitKey) === 'M' ? 'M' : 'yi'; } catch (_) {}
+  try { const stored = localStorage.getItem(unitKey); tokenUnit = ['M', 'B'].includes(stored) ? stored : 'yi'; } catch (_) {}
   function syncUnitControls() {
     document.querySelectorAll('[data-settings-token-unit]').forEach(control => {
       control.setAttribute('aria-pressed', String(control.dataset.settingsTokenUnit === tokenUnit));
     });
   }
   function applyTokenUnit(value, persist = true) {
-    const next = value === 'M' ? 'M' : 'yi', changed = next !== tokenUnit;
+    const next = ['M', 'B'].includes(value) ? value : 'yi', changed = next !== tokenUnit;
     tokenUnit = next;
     if (persist) { try { localStorage.setItem(unitKey, next); } catch (_) {} }
     syncUnitControls();

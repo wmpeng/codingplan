@@ -456,7 +456,7 @@ body .site-header .settings-btn {
   border-radius:8px; box-shadow:none; color:var(--text-secondary);
 }
 body .site-header .settings-panel {
-  top:calc(100% + 8px); right:0; width:230px; max-width:calc(100vw - 28px);
+  top:calc(100% + 8px); right:0; width:260px; max-width:calc(100vw - 28px);
   margin:0; padding:16px; border-radius:12px; background:var(--bg-secondary);
   color:var(--text-primary); backdrop-filter:none; box-shadow:var(--shadow-md); z-index:2000;
 }

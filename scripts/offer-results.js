@@ -8,7 +8,7 @@
   const money = n => typeof n === 'number' && Number.isFinite(n) ? `¥${n.toLocaleString('zh-CN',{maximumFractionDigits:2})}` : '待确认';
   function quota(value,unit) {
     if(value==='unlimited')return '不限量';
-    return typeof value==='number' ? `${(value/(unit==='M'?1:100)).toLocaleString('zh-CN',{maximumFractionDigits:3})} ${unit==='M'?'M':'亿'} Token` : '额度未知';
+    return typeof value==='number' ? `${(value/(unit==='B'?1000:unit==='M'?1:100)).toLocaleString('zh-CN',{maximumFractionDigits:unit==='B'?9:3})} ${unit==='B'?'B':unit==='M'?'M':'亿'} Token` : '额度未知';
   }
   function card(item,state) {
     const api=item.plan.billingMode==='payg', unit=state.tokenUnit;
@@ -17,7 +17,7 @@
     const rows=item.rows.map(row=>{
       const model=item.models.find(m=>m.slug===row.modelSlug), tiers=[row.serviceTier,row.contextTier,row.timeTier].filter(Boolean).join(' / ');
       const price=row.usage?.unitPriceCnyPerM;
-      return `<tr><th scope="row">${esc(model?.name || row.modelSlug)}${tiers?`<small>${esc(tiers)}</small>`:''}</th><td>${api?'按量，无固定额度':esc(quota(row.usage?.monthlyTokenInM,unit))}</td><td>${typeof price==='number'?money(price*(unit==='M'?1:100))+'/'+(unit==='M'?'M':'亿')+' Token':'单价未知'}</td></tr>`;
+      return `<tr><th scope="row">${esc(model?.name || row.modelSlug)}${tiers?`<small>${esc(tiers)}</small>`:''}</th><td>${api?'按量，无固定额度':esc(quota(row.usage?.monthlyTokenInM,unit))}</td><td>${typeof price==='number'?money(price*(unit==='B'?1000:unit==='M'?1:100))+'/'+(unit==='B'?'B':unit==='M'?'M':'亿')+' Token':'单价未知'}</td></tr>`;
     }).join('');
     const table=`<div class="offer-model-table-wrap" tabindex="0" role="region" aria-label="${esc(item.platform.name+' '+item.plan.name)}模型额度"><table class="offer-model-table"><thead><tr><th>模型 / 档位</th><th>月 Token 参考</th><th>综合单价</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     const models=item.models.map(m=>m.name), modelTags=models.slice(0,3).map(name=>`<span class="model-tag">${esc(name)}</span>`).join('')+(models.length>3?`<span class="model-tag model-tag-more" aria-label="另有 ${models.length-3} 个模型">+${models.length-3}</span>`:'');

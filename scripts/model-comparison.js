@@ -389,21 +389,21 @@
     }
 
     function normalizeTokenUnit(unit) {
-        return unit === 'yi' ? 'yi' : 'M';
+        return unit === 'B' ? 'B' : unit === 'yi' ? 'yi' : 'M';
     }
 
     function tokenAmountInUnit(value, unit) {
         if (value == null || value === '' || typeof value === 'boolean') return null;
         const number = Number(value);
         if (!Number.isFinite(number)) return null;
-        return normalizeTokenUnit(unit) === 'yi' ? number / 100 : number;
+        return number / (normalizeTokenUnit(unit) === 'B' ? 1000 : normalizeTokenUnit(unit) === 'yi' ? 100 : 1);
     }
 
     function unitPriceInTokenUnit(value, unit) {
         if (value == null || value === '' || typeof value === 'boolean') return null;
         const number = Number(value);
         if (!Number.isFinite(number)) return null;
-        return normalizeTokenUnit(unit) === 'yi' ? number * 100 : number;
+        return number * (normalizeTokenUnit(unit) === 'B' ? 1000 : normalizeTokenUnit(unit) === 'yi' ? 100 : 1);
     }
 
     function formatTokenAmount(value, unit) {
@@ -411,15 +411,15 @@
         const normalized = normalizeTokenUnit(unit);
         const number = tokenAmountInUnit(value, normalized);
         if (!Number.isFinite(number)) return '—';
-        const digits = number < 1 ? 3 : number < 10 ? 2 : 1;
-        return `${formatNumber(number, digits)}${normalized === 'yi' ? '亿' : 'M'}`;
+        const digits = number < 1 ? (normalized === "B" ? 9 : 3) : number < 10 ? 2 : 1;
+        return `${formatNumber(number, digits)}${normalized === 'B' ? 'B' : normalized === 'yi' ? '亿' : 'M'}`;
     }
 
     function formatUnitPrice(value, unit) {
         const normalized = normalizeTokenUnit(unit);
         const number = unitPriceInTokenUnit(value, normalized);
         if (!Number.isFinite(number) || number < 0) return '—';
-        return `¥${formatNumber(number, 4)} / ${normalized === 'yi' ? '亿' : 'M'}`;
+        return `¥${formatNumber(number, 4)} / ${normalized === 'B' ? 'B' : normalized === 'yi' ? '亿' : 'M'}`;
     }
 
     function formatApiPricing(pricing) {
@@ -511,7 +511,7 @@
             ? visualOptions.color
             : '#2563eb';
         const label = value === 0
-            ? `综合单价为 ¥0 / ${normalizeTokenUnit(tokenUnit) === 'yi' ? '亿' : 'M'} Token`
+            ? `综合单价为 ¥0 / ${normalizeTokenUnit(tokenUnit) === 'B' ? 'B' : normalizeTokenUnit(tokenUnit) === 'yi' ? '亿' : 'M'} Token`
             : `综合单价 ${formatUnitPrice(value, tokenUnit)} Token；当前筛选结果中的相对条长采用对数尺度`;
         return `<span class="usage-price-bar" role="img" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">` +
             `<span class="usage-price-bar-track"><span class="usage-price-bar-fill" style="--usage-price-bar-width:${formatNumber(percent, 2)}%;--usage-price-bar-color:${color}"></span></span>` +
@@ -522,7 +522,7 @@
         const subscription = point.billingMode === 'subscription';
         const price = subscription ? (point.monthlyFeeCny === 0 ? '¥0 / 月' : finitePositive(point.monthlyFeeCny) !== null
             ? formatSubscriptionMonthlyPrice(point) : '未公开') : '按量';
-        const unitPrice = point.unitPriceCnyPerM === 0 ? `¥0 / ${normalizeTokenUnit(tokenUnit) === 'yi' ? '亿' : 'M'}` : formatUnitPrice(point.unitPriceCnyPerM, tokenUnit);
+        const unitPrice = point.unitPriceCnyPerM === 0 ? `¥0 / ${normalizeTokenUnit(tokenUnit) === 'B' ? 'B' : normalizeTokenUnit(tokenUnit) === 'yi' ? '亿' : 'M'}` : formatUnitPrice(point.unitPriceCnyPerM, tokenUnit);
         const aaScore = point.scores && point.scores.artificialAnalysis;
         const deepSWEScore = point.scores && point.scores.deepSWE;
         const deepSWEInterval = deepSWEScore && Number.isFinite(Number(deepSWEScore.confidenceInterval))
@@ -1080,7 +1080,7 @@
                 const totalIntelligence = buildIntelligenceChartPoints(points, state.benchmark).length;
                 container.querySelector('[data-counts]').textContent = `额度图 ${usagePoints.length}/${totalUsage} · 智力图 ${intelligencePoints.length}/${totalIntelligence} · 明细 ${visibleFiltered.length}/${points.length}`;
 
-                const tokenUnitLabel = state.tokenUnit === 'yi' ? '亿' : 'M';
+                const tokenUnitLabel = state.tokenUnit === 'B' ? 'B' : state.tokenUnit === 'yi' ? '亿' : 'M';
                 const usageZone = buildUsageAttractiveZone(usagePoints, state.tokenUnit, state.tokensScale);
                 usageChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
                     xAxis: { type: state.tokensScale, name: '月费（人民币）', nameLocation: 'middle', nameGap: 38, min: usageZone.xBounds.min, max: usageZone.xBounds.max, logBase: 10, axisLabel: { formatter: (v) => `¥${formatNumber(v, 0)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },

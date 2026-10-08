@@ -81,7 +81,7 @@
       domesticPaymentOnly: input.domesticPaymentOnly === true,
       preference: ['cost', 'quality', 'variety'].includes(input.preference) ? input.preference : 'balanced',
       monthlyTokenRange: cloneRange(input.monthlyTokenRange),
-      tokenUnit: input.tokenUnit === 'M' ? 'M' : 'yi',
+      tokenUnit: ['M','B'].includes(input.tokenUnit) ? input.tokenUnit : 'yi',
       budgetCny: cloneRange(input.budgetCny === undefined ? base.budgetCny : input.budgetCny),
       platformStatusMax: STATUS_RANK[input.platformStatusMax] === undefined ? base.platformStatusMax : input.platformStatusMax,
       platformTags: arrayOrNull(input.platformTags) || [],
@@ -176,9 +176,9 @@
     const values = rows.map(row => row.value).filter(value => typeof value === 'number' && Number.isFinite(value));
     const unlimited = rows.some(row => row.value === 'unlimited');
     if (!values.length && !unlimited) return '未知';
-    const factor = state.tokenUnit === 'M' ? 1 : 100;
-    const unit = state.tokenUnit === 'M' ? 'M' : '亿';
-    const format = value => (value / factor).toLocaleString('zh-CN', { maximumFractionDigits: 4 });
+    const factor = state.tokenUnit === 'B' ? 1000 : state.tokenUnit === 'M' ? 1 : 100;
+    const unit = state.tokenUnit === 'B' ? 'B' : state.tokenUnit === 'M' ? 'M' : '亿';
+    const format = value => (value / factor).toLocaleString('zh-CN', { maximumFractionDigits: state.tokenUnit === "B" ? 9 : 4 });
     const min = Math.min(...values), max = Math.max(...values);
     const text = values.length ? `${format(min)}${unlimited ? '–无限制' : min === max ? '' : '–' + format(max)} ${unit}` : '无限制';
     return text + (values.length + rows.filter(row => row.value === 'unlimited').length < rows.length ? '（部分未知）' : '');
