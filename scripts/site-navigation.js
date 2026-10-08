@@ -1,6 +1,26 @@
 /* Page contents navigation; the primary site links remain in the header. */
 (() => {
   'use strict';
+  // 单位是全站显示偏好，不属于方案筛选；内部用量始终以 M 保存。
+  const unitKey = 'codingplanTokenUnit';
+  let tokenUnit = 'yi';
+  try { tokenUnit = localStorage.getItem(unitKey) === 'M' ? 'M' : 'yi'; } catch (_) {}
+  function syncUnitControls() {
+    document.querySelectorAll('[data-settings-token-unit]').forEach(control => {
+      control.setAttribute('aria-pressed', String(control.dataset.settingsTokenUnit === tokenUnit));
+    });
+  }
+  function applyTokenUnit(value, persist = true) {
+    const next = value === 'M' ? 'M' : 'yi', changed = next !== tokenUnit;
+    tokenUnit = next;
+    if (persist) { try { localStorage.setItem(unitKey, next); } catch (_) {} }
+    syncUnitControls();
+    if (changed) window.dispatchEvent(new CustomEvent('codingplan:token-unit-changed', {detail: {tokenUnit}}));
+  }
+  window.CodingPlanDisplaySettings = {getTokenUnit: () => tokenUnit, setTokenUnit: applyTokenUnit};
+  window.addEventListener('storage', event => {
+    if (event.key === unitKey || event.key === null) applyTokenUnit(event.key === null ? 'yi' : event.newValue, false);
+  });
   function initSettings() {
     const button = document.getElementById('settingsBtn');
     const panel = document.getElementById('settingsPanel');
@@ -8,6 +28,11 @@
     if (!button || !panel || !toggle || button.dataset.ultraWideBound) return;
     button.dataset.ultraWideBound = '1';
     button.disabled = false;
+    syncUnitControls();
+    panel.addEventListener('click', event => {
+      const control = event.target.closest('[data-settings-token-unit]');
+      if (control) applyTokenUnit(control.dataset.settingsTokenUnit);
+    });
     function apply(on) {
       document.body.classList.toggle('ultra-wide', on);
       toggle.checked = on;

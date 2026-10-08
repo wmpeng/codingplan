@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/styles/platform-comparison.css?v=260924c">
   <link rel="stylesheet" href="/styles/tool-page.css?v=260924c"><link rel="stylesheet" href="/styles/homepage-filters.css?v=261009actions">
 <link rel="stylesheet" href="/styles/design-system.css?v=261009scores">
-<script src="/scripts/site-navigation.js?v=261008righttoc" defer></script>
+<script src="/scripts/site-navigation.js?v=261008units" defer></script>
 </head>
 <body class="tool-page">
 
@@ -42,6 +42,14 @@
       </button>
       <div class="settings-panel" id="settingsPanel" hidden aria-labelledby="settingsPanelTitle">
         <div class="settings-panel-title" id="settingsPanelTitle">显示设置</div>
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+          </div>
+          <p class="settings-unit-note">全站用量与单价统一显示，1 亿 = 100 M。</p>
+        </div>
         <div class="settings-toggle-row">
           <label for="ultraWideToggle">超宽屏</label>
           <label class="toggle-switch">
@@ -71,7 +79,7 @@
   </main>
   <div id="platformDetailOverlay" class="platform-detail-overlay" hidden><div class="platform-detail-backdrop" data-platform-detail-close="1"></div><div class="platform-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="platformDetailTitle" tabindex="-1"><button type="button" class="platform-detail-close" id="platformDetailClose" aria-label="关闭">×</button><div id="platformDetailBody"></div></div></div>
   <script src="/monitor/monitor-config.js"></script>
-  <script src="/scripts/entity-data.js?v=260921a"></script><script src="/scripts/filter-state.js?v=261007filters"></script><script src="/scripts/homepage-filters.js?v=261008number"></script><script src="/scripts/tool-page.js?v=260920f"></script>
+  <script src="/scripts/entity-data.js?v=260921a"></script><script src="/scripts/filter-state.js?v=261007filters"></script><script src="/scripts/homepage-filters.js?v=261008units"></script><script src="/scripts/tool-page.js?v=260920f"></script>
 
   <script src="/scripts/platform-pages.js"></script>
   <script src="/scripts/platform-catalog.js?v=260924c"></script>

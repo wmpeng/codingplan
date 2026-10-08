@@ -112,8 +112,8 @@
         input(
           "tokens",
           "每月至少",
-          s.monthlyTokenRange?.min == null ? "" : s.monthlyTokenRange.min / 100,
-          "亿 Token",
+          s.monthlyTokenRange?.min == null ? "" : s.monthlyTokenRange.min / (s.tokenUnit === "M" ? 1 : 100),
+          s.tokenUnit === "M" ? "M Token" : "亿 Token",
         ) +
         '<p class="guide-note">估算基准：偶尔 1 亿、每天间歇 10 亿、高强度 40 亿；写作按一半估算。自填数量优先。不是官方用量保证。</p>'
       );
@@ -185,7 +185,7 @@
       );
     if (s.budgetCny?.max != null) parts.push(`≤ ¥${s.budgetCny.max}/月`);
     if (s.monthlyTokenRange)
-      parts.push(`≥ ${F.targetTokens(s) / 100} 亿 Token/月`);
+      parts.push(`≥ ${F.targetTokens(s) / (s.tokenUnit === "M" ? 1 : 100)} ${s.tokenUnit === "M" ? "M" : "亿"} Token/月`);
     if (s.modelGroup !== "any")
       parts.push(s.modelGroup === "sota-models" ? "顶尖与前沿" : "甜品级");
     if (s.imageRequired) parts.push("图片输入");
@@ -363,7 +363,7 @@
         monthlyTokenRange:
           el.value === ""
             ? null
-            : { min: Math.max(0, Number(el.value)) * 100, max: null },
+            : { min: Math.max(0, Number(el.value)) * (controller.getState().tokenUnit === "M" ? 1 : 100), max: null },
       });
     }
   });
@@ -384,6 +384,12 @@
                 ? "professional"
                 : null;
       }
+    }
+    if (event.detail.source === "display") {
+      const field = host.contains(document.activeElement) ? document.activeElement.dataset.guideNumber : null;
+      render();
+      if (field) host.querySelector(`[data-guide-number="${field}"]`)?.focus({preventScroll: true});
+      return;
     }
     // Updating numbers must not replace the focused input on each keystroke.
     if (

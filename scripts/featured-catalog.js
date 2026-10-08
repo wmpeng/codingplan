@@ -54,11 +54,11 @@
     return globalThis.EntityData.buildComparisonPoints(context, config.usdToCnyRate, {includeUnknown:true}).map(p => ({...p, available: ['open','limited'].includes(context.platformBySlug.get(p.platformSlug)?.platformStatus || 'open')}));
   }
   function mountTables(host, preset, context, config, limit) {
-    let unit = 'yi';
+    let unit = globalThis.CodingPlanDisplaySettings?.getTokenUnit() || 'yi';
     const data = points(context,config), expanded = new Set();
     const render = () => {
       globalThis.ModelComparison.renderPresetComparisons(host,preset,data,unit,'featured',{limit});
-      host.insertAdjacentHTML('afterbegin', `<div class="featured-table-controls"><span>默认按综合单价从低到高</span><div class="usage-segments" role="group" aria-label="精选表 Token 单位"><button type="button" data-featured-unit="yi" aria-pressed="${unit==='yi'}">亿 Token</button><button type="button" data-featured-unit="M" aria-pressed="${unit==='M'}">M Token</button></div></div>`);
+      host.insertAdjacentHTML('afterbegin', `<div class="featured-table-controls"><span>默认按综合单价从低到高</span></div>`);
       host.insertAdjacentHTML('beforeend','<p class="comparison-method">订阅综合单价按参考月额度用满计算；按量 API 没有固定月额度。实际成本受用量、输入输出和缓存比例影响，不同模型能力也有差异。未知不等于零，各模型额度不相加。<a href="/pricing/#pricingMethod">查看计算口径 →</a></p>');
       for (const id of expanded) { const card = [...host.querySelectorAll('[data-preset-id]')].find(x=>x.dataset.presetId===id); if(card) toggle(card,true); }
     };
@@ -70,10 +70,9 @@
     host.addEventListener('click', event => {
       const b=event.target.closest('button'); if(!b)return;
       if(b.hasAttribute('data-preset-expand')) {const card=b.closest('[data-preset-id]'),open=b.getAttribute('aria-expanded')!=='true';open?expanded.add(card.dataset.presetId):expanded.delete(card.dataset.presetId);toggle(card,open);return;}
-      let selector;
-      if(b.dataset.featuredUnit){unit=b.dataset.featuredUnit;selector=`[data-featured-unit="${unit}"]`;}
-      if(selector){render();host.querySelector(selector)?.focus({preventScroll:true});}
+
     });
+    globalThis.addEventListener('codingplan:token-unit-changed', event => { unit=event.detail.tokenUnit; render(); });
     render();
   }
   return {esc,url,validate,score,scoreHtml,modalities,modelCard,modelGroups,points,mountTables};

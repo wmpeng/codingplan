@@ -454,7 +454,7 @@
   </style>
 <script src="/scripts/site-features.js?v=260923a"></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=260923a">
-<script src="/scripts/site-navigation.js?v=261008righttoc" defer></script>
+<script src="/scripts/site-navigation.js?v=261008units" defer></script>
   <link rel="stylesheet" href="/styles/reading.css?v=260924c" />
   <link rel="stylesheet" href="/styles/design-system.css?v=261009scores" />
 </head>
@@ -481,6 +481,14 @@
       </button>
       <div class="settings-panel" id="settingsPanel" hidden aria-labelledby="settingsPanelTitle">
         <div class="settings-panel-title" id="settingsPanelTitle">显示设置</div>
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+          </div>
+          <p class="settings-unit-note">全站用量与单价统一显示，1 亿 = 100 M。</p>
+        </div>
         <div class="settings-toggle-row">
           <label for="ultraWideToggle">超宽屏</label>
           <label class="toggle-switch">

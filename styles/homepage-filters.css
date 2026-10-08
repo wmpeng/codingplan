@@ -218,13 +218,6 @@
 :is(.homepage-unified-active, .tool-unified-active) .usage-filters > .usage-inline-filter,
 :is(.homepage-unified-active, .tool-unified-active) .usage-filters [data-action="restore-defaults"] { display: none; }
 
-/* Unit selection belongs to the shared filter state, including lazy-loaded tabs. */
-.global-token-unit { display: inline-flex; align-items: center; align-self: center; justify-self: start; flex: 0 0 auto; width: max-content; height: 36px; box-sizing: border-box; gap: 2px; padding: 3px; border: 1px solid #e2e8f0; border-radius: 9px; background: #f1f5f9; white-space: nowrap; }
-.global-token-unit[hidden] { display: none; }
-.global-token-unit button { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; min-width: 34px; height: 28px; margin: 0; padding: 0 10px; border: 1px solid transparent; border-radius: 6px; background: transparent; color: #64748b; font: inherit; font-size: 13px; font-weight: 600; line-height: 1; cursor: pointer; transition: color .15s, background .15s; }
-.global-token-unit button:hover { background: #e2e8f0; color: #334155; }
-.global-token-unit button[aria-pressed="true"] { background: #fff; border-color: #dbe4ee; color: #0668ce; box-shadow: 0 1px 3px rgb(15 23 42 / 8%); }
-.global-token-unit button:focus-visible { outline: 2px solid #2584e4; outline-offset: 2px; }
 .monthly-token-cell { min-width: 145px; font-variant-numeric: tabular-nums; }
 
 
@@ -268,8 +261,6 @@ body .filter-picker-menu label[data-filter-option]:has(input:checked):hover { ba
 .filter-state-actions button, .filter-active-limits button { font: inherit; font-size: 12px; border: 1px solid var(--border-color); border-radius: 6px; background: #fff; padding: 6px 10px; color: var(--text-secondary); cursor: pointer; }
 .filter-state-actions button:hover, .filter-active-limits button:hover { color: var(--accent-primary); border-color: #a5b9d1; }
 .filter-state-grid > .filter-picker { min-width: 130px; }
-.global-token-unit { height: 40px; padding: 4px; align-self: center; }
-.global-token-unit button { height: 30px; }
 .budget-menu .filter-inline { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 body .filter-picker-menu .range-picker-value { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 body .filter-picker-menu .range-picker-value label { padding: 0; gap: 10px; min-width: 0; flex-wrap: nowrap; background: transparent; white-space: nowrap; }

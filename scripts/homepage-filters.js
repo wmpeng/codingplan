@@ -183,6 +183,7 @@
       mode: full ? "full" : "home",
       featuredPreset: opts.featuredPreset,
     });
+    state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || "yi";
     const defaults = Filters.cloneState(state);
     const params = new URLSearchParams(location.search),
       platform = params.get("platform");
@@ -198,7 +199,7 @@
       ${
         monitor
           ? ""
-          : `${buildRangePicker("budget", state)}${buildRangePicker("token", state)}<div class="global-token-unit" aria-label="Token 显示单位"><button type="button" data-global-token-unit="yi">亿</button><button type="button" data-global-token-unit="M">M</button></div>`
+          : `${buildRangePicker("budget", state)}${buildRangePicker("token", state)}`
       }
       </div>
       <div class="guide-filter-fields">${Object.entries(choices)
@@ -293,14 +294,6 @@
           button.setAttribute("aria-pressed", String(value === n));
         });
       });
-      host
-        .querySelectorAll("[data-global-token-unit]")
-        .forEach((el) =>
-          el.setAttribute(
-            "aria-pressed",
-            String(el.dataset.globalTokenUnit === state.tokenUnit),
-          ),
-        );
       const tags = [];
       for (const key of ["platformSlugs", "modelSlugs"])
         if (state[key]?.length)
@@ -321,6 +314,7 @@
         .join("");
     }
     function publish(source = "manual") {
+      state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || state.tokenUnit;
       const clean = Filters.cloneState(state);
       if (!full) {
         root.__codingplanUnifiedFiltersState = clean;
@@ -413,8 +407,6 @@
         if (key === "budget") state.budgetCny = value == null ? null : { min: null, max: value };
         else state.monthlyTokenRange = value == null ? null : { min: value, max: null };
       }
-      else if (el.dataset.globalTokenUnit)
-        state.tokenUnit = el.dataset.globalTokenUnit;
       else if (el.dataset.removeFilter)
         state[el.dataset.removeFilter] = Filters.createDefaultState(
           {},
@@ -445,6 +437,7 @@
         if (!d.contains(event.target)) d.open = false;
       });
     });
+    root.addEventListener("codingplan:token-unit-changed", () => publish("display"));
     host.dataset.mounted = "1";
     document.body.classList.add(
       full ? "tool-unified-active" : "homepage-unified-active",

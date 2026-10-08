@@ -245,6 +245,7 @@
         const yBounds = getChartAxisBounds((points || []).map((point) => tokenAmountInUnit(point.monthlyTokenInM, tokenUnit)), scale);
         return {
             threshold,
+            tokenUnit,
             xBounds,
             yBounds,
             polygon: clipRectangleAboveUnitPriceLine(xBounds, yBounds, threshold),
@@ -252,8 +253,8 @@
         };
     }
 
-    function attractiveZoneLabel() {
-        return `≤ ¥${ATTRACTIVE_UNIT_PRICE_CNY_PER_YI} / 亿 Token`;
+    function attractiveZoneLabel(unit) {
+        return `≤ ${formatUnitPrice(ATTRACTIVE_UNIT_PRICE_CNY_PER_M, unit)} Token`;
     }
 
     function buildUsageAttractiveZoneSeries(zone) {
@@ -269,14 +270,14 @@
                 const boundaryPoints = zone.boundary.map((point) => api.coord(point));
                 if (boundaryPoints.length === 2) {
                     children.push({ type: 'polyline', shape: { points: boundaryPoints }, style: { stroke: '#22a447', lineWidth: 1.5, lineDash: [6, 4] } });
-                    children.push({ type: 'text', style: { x: params.coordSys.x + params.coordSys.width / 2, y: params.coordSys.y + 12, textAlign: 'center', text: attractiveZoneLabel(), fill: '#15803d', font: '600 11px sans-serif', backgroundColor: 'rgba(240, 253, 244, 0.9)', padding: [3, 5], borderRadius: 4 } });
+                    children.push({ type: 'text', style: { x: params.coordSys.x + params.coordSys.width / 2, y: params.coordSys.y + 12, textAlign: 'center', text: attractiveZoneLabel(zone.tokenUnit), fill: '#15803d', font: '600 11px sans-serif', backgroundColor: 'rgba(240, 253, 244, 0.9)', padding: [3, 5], borderRadius: 4 } });
                 }
                 return { type: 'group', children };
             }
         };
     }
 
-    function buildIntelligenceAttractiveZoneSeries(threshold, scoreReference) {
+    function buildIntelligenceAttractiveZoneSeries(threshold, scoreReference, tokenUnit = 'yi') {
         return {
             id: 'intelligence-attractive-zone', type: 'custom', coordinateSystem: 'cartesian2d',
             silent: true, clip: true, z: 0, data: [[threshold, scoreReference]],
@@ -291,7 +292,7 @@
                 }
                 if (boundaryX > left && boundaryX < right) {
                     children.push({ type: 'line', shape: { x1: boundaryX, y1: params.coordSys.y, x2: boundaryX, y2: params.coordSys.y + params.coordSys.height }, style: { stroke: '#22a447', lineWidth: 1.5, lineDash: [6, 4] } });
-                    children.push({ type: 'text', style: { x: Math.max(left + 70, Math.min(right - 70, boundaryX - 70)), y: params.coordSys.y + 14, text: attractiveZoneLabel(), textAlign: 'center', fill: '#15803d', font: '600 11px sans-serif', backgroundColor: 'rgba(240, 253, 244, 0.9)', padding: [3, 5], borderRadius: 4 } });
+                    children.push({ type: 'text', style: { x: Math.max(left + 70, Math.min(right - 70, boundaryX - 70)), y: params.coordSys.y + 14, text: attractiveZoneLabel(tokenUnit), textAlign: 'center', fill: '#15803d', font: '600 11px sans-serif', backgroundColor: 'rgba(240, 253, 244, 0.9)', padding: [3, 5], borderRadius: 4 } });
                 }
                 return { type: 'group', children };
             }
@@ -828,7 +829,8 @@
             container.classList.toggle('is-full-tool', mountOptions.mode === 'full');
             const state = Object.assign(createDefaultFilterState(points, mountOptions), {
                 benchmark: 'artificialAnalysis', colorMode: 'vendor',
-                tokensScale: 'log', priceScale: 'log', presetPlatformScope: 'featured'
+                tokensScale: 'log', priceScale: 'log', presetPlatformScope: 'featured',
+                tokenUnit: root.CodingPlanDisplaySettings?.getTokenUnit() || 'yi'
             });
             const usageChart = echarts.init(container.querySelector('[data-chart="usage"]'));
             const intelligenceChart = echarts.init(container.querySelector('[data-chart="intelligence"]'));
@@ -1104,7 +1106,8 @@
                     series: [
                         buildIntelligenceAttractiveZoneSeries(
                             getAttractiveUnitPriceThreshold(state.tokenUnit),
-                            intelligenceScoreReference
+                            intelligenceScoreReference,
+                            state.tokenUnit
                         ),
                         ...intelligenceSeries
                     ]
@@ -1136,7 +1139,12 @@
                 render();
             }
             root.addEventListener('codingplan:filters-changed', onSharedFilterChange);
-            container.__usageCleanup = () => root.removeEventListener('codingplan:filters-changed', onSharedFilterChange);
+            const onTokenUnitChange = event => { if(state.tokenUnit === event.detail.tokenUnit)return; state.tokenUnit = event.detail.tokenUnit; render(); };
+            root.addEventListener('codingplan:token-unit-changed', onTokenUnitChange);
+            container.__usageCleanup = () => {
+                root.removeEventListener('codingplan:filters-changed', onSharedFilterChange);
+                root.removeEventListener('codingplan:token-unit-changed', onTokenUnitChange);
+            };
             container.querySelector('[data-model-search]').addEventListener('input', (event) => {
                 const query = event.target.value.trim().toLocaleLowerCase('zh-CN');
                 container.querySelectorAll('[data-picker="models"] [data-options] label').forEach((label) => {

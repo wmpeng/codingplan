@@ -95,8 +95,8 @@
         if (s.monthlyTokenRange)
           reasons.push(
             offer.plan.billingMode === "payg"
-              ? `按每月 ${F.targetTokens(s) / 100} 亿 Token 估算`
-              : `所选模型的参考额度达到每月 ${F.targetTokens(s) / 100} 亿 Token`,
+              ? `按每月 ${F.targetTokens(s) / (s.tokenUnit === "M" ? 1 : 100)} ${s.tokenUnit === "M" ? "M" : "亿"} Token 估算`
+              : `所选模型的参考额度达到每月 ${F.targetTokens(s) / (s.tokenUnit === "M" ? 1 : 100)} ${s.tokenUnit === "M" ? "M" : "亿"} Token`,
           );
         if (scored.length)
           reasons.push(
