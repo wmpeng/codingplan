@@ -56,7 +56,7 @@
     const unit = budget ? "元" : state.tokenUnit === "M" ? "M" : "亿";
     return `<details class="filter-picker" id="${id}"><summary>${title} <span ${budget ? "data-budget-label" : "data-token-label"}></span></summary>
       <div class="filter-picker-menu budget-menu" role="group" aria-label="${budget ? "每月预算" : "每月 Token 用量"}">
-        <div class="range-picker-value"><label class="filter-inline">${budget ? "不超过 ¥" : "至少"}<input type="number" min="0" step="any" ${budget ? 'data-budget-part="max"' : 'data-token-part="min"'} aria-label="${budget ? "最高月预算（人民币）" : "最低月 Token 数"}" placeholder="不限">${budget ? "" : `<span data-token-unit-label>${unit}</span>`}</label><button type="button" data-range-clear="${key}">不限</button></div>
+        <div class="range-picker-value"><label class="filter-inline"><span>${budget ? "不超过" : "至少"}</span><span class="range-picker-number">${budget ? '<span class="range-picker-unit" aria-hidden="true">¥</span>' : ""}<input type="number" inputmode="decimal" min="0" step="any" ${budget ? 'data-budget-part="max"' : 'data-token-part="min"'} aria-label="${budget ? "最高月预算（人民币）" : `最低月 Token 数（${unit}）`}" placeholder="不限">${budget ? "" : `<span class="range-picker-unit" data-token-unit-label aria-hidden="true">${unit}</span>`}</span></label><button type="button" data-range-clear="${key}">不限</button></div>
         <div class="range-picker-slider"><input type="range" min="0" max="${(rangeKnots[key].length - 1) * 100}" step="1" data-range-picker="${key}" aria-label="${title}滑块" aria-describedby="${id}Help">
           <div class="range-picker-ticks">${rangeKnots[key].map((n, i, knots) => `<button type="button" data-range-knot="${key}" data-knot-value="${n}" style="--tick-position:${i / (knots.length - 1) * 100}%" aria-label="${budget ? "预算上限" : "最低月用量"} ${n / factor} ${unit}">${n / factor}</button>`).join("")}</div></div>
         <p class="range-picker-hint">拖动或点击刻度，也可直接输入其他数值。</p>
@@ -272,6 +272,7 @@
         syncNumberInput(tokens, state.monthlyTokenRange?.min == null ? null : state.monthlyTokenRange.min / factor);
         host.querySelector("[data-token-unit-label]").textContent =
           state.tokenUnit === "M" ? "M" : "亿";
+        tokens.setAttribute("aria-label", `最低月 Token 数（${state.tokenUnit === "M" ? "M" : "亿"}）`);
         host.querySelector("[data-token-label]").textContent =
           state.monthlyTokenRange
             ? `≥ ${Filters.targetTokens(state) / factor} ${state.tokenUnit === "M" ? "M" : "亿"}`
