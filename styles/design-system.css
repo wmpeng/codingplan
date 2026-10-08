@@ -447,7 +447,10 @@ body .site-header .tool-nav a {
   flex:none; min-height:44px; margin:0; padding:10px 16px;
   font-size:16px; font-weight:600; line-height:1.4; color:var(--text-primary);
   border:0; border-radius:8px; text-decoration:none; white-space:nowrap;
+  background:transparent;
+  transition:background-color 180ms ease-out, color 180ms ease-out;
 }
+body .site-header .tool-nav a:not([aria-current="page"]):is(:hover, :focus-visible) { background:rgb(255 255 255 / 80%); color:#111827; }
 body .site-header .tool-nav a[aria-current="page"] { color:var(--accent-primary); background:var(--bg-secondary); box-shadow:none; }
 body .site-header #settingsMount { flex:none; margin-left:auto; }
 body .site-header .settings-wrapper { position:relative; top:auto; right:auto; margin:0; }
