@@ -55,7 +55,8 @@
         }
         const rect = sectionButton.getBoundingClientRect();
         const below = innerHeight - rect.bottom - 20;
-        const above = rect.top - 20;
+        const headerBottom = document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0;
+        const above = Math.max(0, rect.top - headerBottom - 20);
         const up = below < 240 && above > below;
         sectionPanel.dataset.side = up ? 'above' : 'below';
         sectionPanel.style.maxHeight = `${Math.max(44, Math.min(320, up ? above : below))}px`;
@@ -111,7 +112,8 @@
     function updateSection() {
       pending = false;
       let current = -1;
-      sections.forEach((section, i) => { if (section && section.getBoundingClientRect().top <= 120) current = i; });
+      const sectionTop = (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0) + 48;
+      sections.forEach((section, i) => { if (section && section.getBoundingClientRect().top <= sectionTop) current = i; });
       // 最后一节较短时无法滚到顶部；到达页底仍应正确标记当前目录。
       if (sections.length && scrollY + innerHeight >= document.documentElement.scrollHeight - 2) current = sections.length - 1;
       links.forEach((link, i) => {
