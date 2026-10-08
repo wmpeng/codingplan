@@ -321,6 +321,30 @@ body .range-picker-slider input:focus-visible, body .range-picker-ticks button:f
 
 .filter-search-empty { color: var(--text-secondary); padding: 22px 8px; text-align: center; font-size: 13px; line-height: 1.7; }
 .filter-search-empty[hidden] { display: none; }
+body .filter-state-actions > button[data-filter-action] {
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #f3f4f6;
+  color: #374151;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+body .filter-state-actions > button[data-filter-action]:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+  color: #111827;
+}
+body .filter-state-actions > button[data-filter-action]:active { background: #d1d5db; }
+body .filter-state-actions > button[data-filter-action]:focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
+@media (max-width: 800px) {
+  body .filter-state-actions > button[data-filter-action] { min-height: 44px; }
+}
 body .filter-picker-menu .filter-picker-tools {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
