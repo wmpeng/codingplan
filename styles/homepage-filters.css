@@ -263,13 +263,16 @@ body .filter-picker-menu label[data-filter-option]:has(input:checked):hover { ba
 .filter-state-grid > .filter-picker { min-width: 130px; }
 .budget-menu .filter-inline { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 body .filter-picker-menu .range-picker-value { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-body .filter-picker-menu .range-picker-value label { padding: 0; gap: 10px; min-width: 0; flex-wrap: nowrap; background: transparent; white-space: nowrap; }
+body .filter-picker-menu .range-picker-value label,
+body .filter-picker-menu .range-picker-value label:hover { padding: 0; gap: 10px; min-width: 0; flex-wrap: nowrap; background: transparent; white-space: nowrap; }
 body .filter-picker-menu .range-picker-number { display: flex; align-items: center; gap: 8px; width: 144px; min-width: 0; min-height: 40px; padding: 0 12px; border: 1px solid #d1d5db; border-radius: 8px; background: #f9fafb; transition: background .15s, border-color .15s, box-shadow .15s; }
-body #homeTokenPicker .range-picker-value label { flex: 1; }
-body #homeTokenPicker .range-picker-number { flex: 1; width: auto; }
+body #homeTokenPicker .range-picker-value label { flex: 0 1 auto; }
+body #homeTokenPicker .range-picker-number { flex: 0 1 200px; width: 200px; }
 body .filter-picker-menu .range-picker-number:hover { border-color: #9ca3af; background: #fff; }
 body .filter-picker-menu .range-picker-number:focus-within { border-color: #6b7280; background: #fff; box-shadow: 0 0 0 2px rgb(107 114 128 / 12%); }
 body .filter-picker-menu .range-picker-number input { appearance: textfield; -moz-appearance: textfield; flex: 1; width: 100%; min-width: 0; min-height: 0; height: 36px; margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; color: #111827; font: inherit; font-size: 16px; font-weight: 600; line-height: 1.5; font-variant-numeric: tabular-nums; }
+body #homeTokenPicker .range-picker-number:focus-within { border-color: #9ca3af; box-shadow: 0 0 0 2px rgb(156 163 175 / 8%); }
+body #homeTokenPicker .range-picker-number input { flex: 0 1 auto; width: calc(var(--token-digits, 4) * 1ch); max-width: calc(100% - 24px); font-size: 15px; font-weight: 500; }
 body .filter-picker-menu .range-picker-number input::-webkit-inner-spin-button, body .filter-picker-menu .range-picker-number input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 body .filter-picker-menu .range-picker-number input:focus-visible { outline: none; box-shadow: none; }
 body .filter-picker-menu .range-picker-unit { flex-shrink: 0; color: #6b7280; font-size: 13px; font-weight: 400; }

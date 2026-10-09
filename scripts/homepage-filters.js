@@ -272,6 +272,7 @@
       }
       if (tokens) {
         syncNumberInput(tokens, state.monthlyTokenRange?.min == null ? null : state.monthlyTokenRange.min / factor);
+        tokens.style.setProperty("--token-digits", String(Math.max(4, tokens.value.length)));
         host.querySelector("[data-token-unit-label]").textContent =
           state.tokenUnit === "B" ? "B" : state.tokenUnit === "M" ? "M" : "亿";
         tokens.setAttribute("aria-label", `最低月 Token 数（${state.tokenUnit === "B" ? "B" : state.tokenUnit === "M" ? "M" : "亿"}）`);
