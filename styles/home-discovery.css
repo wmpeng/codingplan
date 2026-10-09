@@ -60,6 +60,7 @@
 .offer-result h3 { font-size:17px;margin:7px 0;line-height:1.5;overflow-wrap:anywhere; }
 .offer-platform { display:flex;align-items:center;flex-wrap:wrap;gap:6px 8px;font-size:18px;font-weight:700;line-height:1.4;color:#0b63ce; }
 .offer-status { display:inline-block;background:#f1f5f9;border-radius:4px;padding:2px 5px;font-size:11px;font-weight:400;color:#64748b; }
+body .offer-capabilities > :is(.offer-status, .harness-api-badge) { display:inline-flex;align-items:center;margin:0;padding:2px 8px;min-height:24px;border:1px solid var(--border-color);border-radius:6px;background:var(--bg-tertiary);color:var(--text-secondary);font-size:12px;font-weight:400;line-height:1.5; }
 .offer-price { color:#16365c;font-size:22px;font-weight:700;white-space:nowrap; }
 .offer-price small { display:block;font-weight:400;color:#64748b;font-size:11px;text-align:right; }
 .offer-model-summary { color:#60728a;font-size:12px;line-height:1.8;margin:6px 0 10px; }

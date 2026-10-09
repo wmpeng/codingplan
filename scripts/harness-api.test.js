@@ -84,6 +84,24 @@ test('标签区分待确认和不支持，平台例外与套餐最终值展示�
   assert.doesNotMatch(Offers.card(offer,all({})),/data-harness-api="true"/);
 });
 
+test('方案卡片只显示非开放状态和明确不支持的能力，不渲染空标签行', () => {
+  const base=G.recommend(context(),all({}),{}, {allMatching:true}).candidates.find(x=>x.plan.slug==='inherit');
+  for(const [platformStatus,capability,discontinued,expectedStatus] of [
+    ['open',true,false,null],['open',null,false,null],['open',false,false,null],
+    ['limited',true,false,'定时放量'],['paused',false,false,'暂时停售'],
+    ['delisted',null,false,'已下架'],['open',true,true,'已下架']
+  ]) {
+    const item={...base,platform:{...base.platform,platformStatus,supportsHarnessApi:capability},plan:{...base.plan,discontinued}};
+    const html=Offers.card(item,all({}));
+    assert.doesNotMatch(html,/>开放购买</);
+    assert.doesNotMatch(html,/data-harness-api="(?:true|unknown)"/);
+    assert.equal(html.includes('class="offer-capabilities"'),!!expectedStatus||capability===false);
+    assert.equal(html.includes('class="offer-status"'),!!expectedStatus);
+    if(expectedStatus)assert.ok(html.includes(`>${expectedStatus}</span>`));
+    assert.equal(html.includes('data-harness-api="false"'),capability===false);
+  }
+});
+
 test('当前目录按用户确认完整分类，Command Go 为唯一覆盖', () => {
   const read=file=>JSON.parse(fs.readFileSync(path.join(__dirname,'..',file),'utf8'));
   const platforms=read('platforms.json').platforms, plans=read('plans.json').plans;
