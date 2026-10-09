@@ -242,6 +242,7 @@
         monitor
           ? ""
           : Object.entries(checks)
+              .filter(([key]) => full || key !== "includeDiscontinued")
               .map(
                 ([key, label]) =>
                   `<label class="filter-inline"><input type="checkbox" data-filter-field="${key}">${label}</label>`,
@@ -400,6 +401,7 @@
       positionModelPanel();
     }
     function publish(source = "manual") {
+      if (!full) state.includeDiscontinued = false;
       pendingAll = false;
       state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || state.tokenUnit;
       const clean = Filters.cloneState(state);
