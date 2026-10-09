@@ -48,6 +48,8 @@
   // Numeric positions retain real zero and over-range direct input.
   const budgetNumericMax = (rangeKnots.budget.length - 1) * 100 + 1;
   const budgetSliderMax = budgetNumericMax + 100;
+  // Token position 0 clears the threshold; position 1 retains a real zero.
+  const tokenSliderMax = (rangeKnots.token.length - 1) * 100 + 1;
   function setBudget(value, apiOnly = false) {
     return { apiOnly, budgetCny: value == null ? null : { min: null, max: value } };
   }
@@ -63,10 +65,10 @@
     const unit = budget ? "元" : state.tokenUnit === "B" ? "B" : state.tokenUnit === "M" ? "M" : "亿";
     return `<details class="filter-picker" id="${id}"><summary><span class="range-picker-title">${title}</span><span ${budget ? "data-budget-label" : "data-token-label"}></span></summary>
       <div class="filter-picker-menu budget-menu" role="group" aria-label="${budget ? "每月预算" : "每月 Token 用量"}">
-        <div class="range-picker-value"><label class="filter-inline"><span>${budget ? "不超过" : "至少"}</span><span class="range-picker-number">${budget ? '<span class="range-picker-unit" aria-hidden="true">¥</span>' : ""}<input type="number" inputmode="decimal" min="0" step="any" ${budget ? 'data-budget-part="max"' : 'data-token-part="min"'} aria-label="${budget ? "最高月预算（人民币）" : `最低月 Token 数（${unit}）`}" placeholder="不限">${budget ? "" : `<span class="range-picker-unit" data-token-unit-label aria-hidden="true">${unit}</span>`}</span></label>${budget ? "" : `<button type="button" data-range-clear="${key}">不限</button>`}</div>
-        <div class="range-picker-slider"><input type="range" min="0" max="${budget ? budgetSliderMax : (rangeKnots[key].length - 1) * 100}" step="1" data-range-picker="${key}" aria-label="${title}滑块" aria-describedby="${id}Help">
-          <div class="range-picker-ticks">${budget ? '<button type="button" class="range-picker-mode" data-budget-mode="api" style="--tick-position:0%" aria-label="仅按量 API"><span>仅 API</span></button>' : ""}${rangeKnots[key].map((n, i, knots) => budget && n === 0 ? "" : `<button type="button" data-range-knot="${key}" data-knot-value="${n}" style="--tick-position:${budget ? (i * 100 + 1) / budgetSliderMax * 100 : i / (knots.length - 1) * 100}%" aria-label="${budget ? "预算上限" : "最低月用量"} ${n / factor} ${unit}"><span>${n / factor}</span></button>`).join("")}${budget ? '<button type="button" class="range-picker-mode" data-budget-mode="any" data-range-clear="budget" style="--tick-position:100%"><span>不限</span></button>' : ""}</div></div>
-        <p class="filter-help" id="${id}Help">${budget ? "两端为仅按量 API / 不限，中间按金额筛选。按量 API 按月用量估算支出，未填用量时不判断预算。" : "可拖动、点刻度或直接输入。订阅额度不相加，未知额度排除；按量 API 按此用量估算费用。"}</p>
+        <div class="range-picker-value"><label class="filter-inline"><span>${budget ? "不超过" : "至少"}</span><span class="range-picker-number">${budget ? '<span class="range-picker-unit" aria-hidden="true">¥</span>' : ""}<input type="number" inputmode="decimal" min="0" step="any" ${budget ? 'data-budget-part="max"' : 'data-token-part="min"'} aria-label="${budget ? "最高月预算（人民币）" : `最低月 Token 数（${unit}）`}" placeholder="不限">${budget ? "" : `<span class="range-picker-unit" data-token-unit-label aria-hidden="true">${unit}</span>`}</span></label></div>
+        <div class="range-picker-slider"><input type="range" min="0" max="${budget ? budgetSliderMax : tokenSliderMax}" step="1" data-range-picker="${key}" aria-label="${title}滑块" aria-describedby="${id}Help">
+          <div class="range-picker-ticks">${budget ? '<button type="button" class="range-picker-mode" data-budget-mode="api" style="--tick-position:0%" aria-label="仅按量 API"><span>仅 API</span></button>' : '<button type="button" class="range-picker-mode" data-range-clear="token" style="--tick-position:0%"><span>不限</span></button>'}${rangeKnots[key].map((n, i) => n === 0 ? "" : `<button type="button" data-range-knot="${key}" data-knot-value="${n}" style="--tick-position:${(i * 100 + 1) / (budget ? budgetSliderMax : tokenSliderMax) * 100}%" aria-label="${budget ? "预算上限" : "最低月用量"} ${n / factor} ${unit}"><span>${n / factor}</span></button>`).join("")}${budget ? '<button type="button" class="range-picker-mode" data-budget-mode="any" data-range-clear="budget" style="--tick-position:100%"><span>不限</span></button>' : ""}</div></div>
+        <p class="filter-help" id="${id}Help">${budget ? "两端为仅按量 API / 不限，中间按金额筛选。按量 API 按月用量估算支出，未填用量时不判断预算。" : "按所选模型的月额度筛选，额度不相加；额度未明确的订阅不参与匹配。按量 API 按填写用量估算费用。"}</p>
       </div></details>`;
   }
 
@@ -285,7 +287,7 @@
         const displayFactor = key === "token" ? factor : 1;
         slider.value = key === "budget"
           ? state.apiOnly ? 0 : value == null ? budgetSliderMax : rangePosition(key, value) + 1
-          : rangePosition(key, value);
+          : value == null ? 0 : rangePosition(key, value) + 1;
         slider.style.setProperty("--range-fill", `${Number(slider.value) / Number(slider.max) * 100}%`);
         slider.setAttribute("aria-valuetext", key === "budget" && state.apiOnly
           ? `仅按量 API，${value == null ? "金额不限" : `不超过 ${value} 元`}`
@@ -300,6 +302,7 @@
       host.querySelectorAll("[data-budget-mode]").forEach(button => {
         button.setAttribute("aria-pressed", String(button.dataset.budgetMode === "api" ? state.apiOnly : !state.apiOnly && !state.budgetCny));
       });
+      host.querySelector('[data-range-clear="token"]').setAttribute("aria-pressed", String(!state.monthlyTokenRange));
       const tags = [];
       for (const key of ["platformSlugs", "modelSlugs"])
         if (state[key]?.length)
@@ -343,7 +346,7 @@
         if (key === "budget") Object.assign(state, position === 0 ? setBudget(null, true)
           : position >= budgetNumericMax + 50 ? setBudget(null)
           : setBudget(rangeValue(key, Math.min(position, budgetNumericMax) - 1)));
-        else state.monthlyTokenRange = { min: rangeValue(key, position), max: null };
+        else state.monthlyTokenRange = position === 0 ? null : { min: rangeValue(key, position - 1), max: null };
         publish();
         return;
       }

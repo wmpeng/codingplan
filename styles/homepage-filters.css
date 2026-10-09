@@ -265,13 +265,14 @@ body .filter-picker-menu label[data-filter-option]:has(input:checked):hover { ba
 body .filter-picker-menu .range-picker-value { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 body .filter-picker-menu .range-picker-value label { padding: 0; gap: 10px; min-width: 0; flex-wrap: nowrap; background: transparent; white-space: nowrap; }
 body .filter-picker-menu .range-picker-number { display: flex; align-items: center; gap: 8px; width: 144px; min-width: 0; min-height: 40px; padding: 0 12px; border: 1px solid #d1d5db; border-radius: 8px; background: #f9fafb; transition: background .15s, border-color .15s, box-shadow .15s; }
+body #homeTokenPicker .range-picker-value label { flex: 1; }
+body #homeTokenPicker .range-picker-number { flex: 1; width: auto; }
 body .filter-picker-menu .range-picker-number:hover { border-color: #9ca3af; background: #fff; }
 body .filter-picker-menu .range-picker-number:focus-within { border-color: #6b7280; background: #fff; box-shadow: 0 0 0 2px rgb(107 114 128 / 12%); }
 body .filter-picker-menu .range-picker-number input { appearance: textfield; -moz-appearance: textfield; flex: 1; width: 100%; min-width: 0; min-height: 0; height: 36px; margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; color: #111827; font: inherit; font-size: 16px; font-weight: 600; line-height: 1.5; font-variant-numeric: tabular-nums; }
 body .filter-picker-menu .range-picker-number input::-webkit-inner-spin-button, body .filter-picker-menu .range-picker-number input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 body .filter-picker-menu .range-picker-number input:focus-visible { outline: none; box-shadow: none; }
 body .filter-picker-menu .range-picker-unit { flex-shrink: 0; color: #6b7280; font-size: 13px; font-weight: 400; }
-body .range-picker-value > button { flex-shrink: 0; }
 body .filter-picker-menu.budget-menu { gap: 8px; padding: 14px; }
 body .range-picker-slider { margin: 0 24px; }
 body .range-picker-slider input[type="range"] { appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 24px; margin: 0; padding: 0; border: 0; border-radius: 6px; background: transparent; cursor: pointer; }
@@ -290,10 +291,9 @@ body .range-picker-ticks button:focus-visible > span { outline: 2px solid #6b728
 body .filter-picker-menu.budget-menu .filter-help { margin: 0; color: #6b7280; font-size: 12px; line-height: 1.6; }
 body .range-picker-title { flex-shrink: 0; white-space: nowrap; }
 body [data-budget-label], body [data-token-label] { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
-body .range-picker-slider input:focus-visible, body .range-picker-value > button:focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
+body .range-picker-slider input:focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
 @media (max-width: 800px) {
   body .filter-picker-menu .range-picker-number { width: 138px; min-height: 44px; }
-  body .range-picker-value > button { min-height: 44px; }
   body .range-picker-slider input[type="range"] { height: 44px; }
   body .range-picker-ticks button { min-height: 44px; }
   body .range-picker-slider .range-picker-ticks { height: 44px; }
@@ -352,8 +352,7 @@ body .filter-picker-menu .filter-picker-tools {
   border-radius: 0;
   background: transparent;
 }
-body .filter-picker-menu .filter-picker-tools button,
-body .filter-picker-menu .range-picker-value > button {
+body .filter-picker-menu .filter-picker-tools button {
   min-width: 0;
   min-height: 34px;
   padding: 5px 12px;
@@ -369,20 +368,16 @@ body .filter-picker-menu .range-picker-value > button {
   cursor: pointer;
   transition: background .15s, border-color .15s, color .15s;
 }
-body .filter-picker-menu .filter-picker-tools button:hover,
-body .filter-picker-menu .range-picker-value > button:hover {
+body .filter-picker-menu .filter-picker-tools button:hover {
   background: #fff;
   border-color: #9ca3af;
   color: #111827;
 }
-body .filter-picker-menu .filter-picker-tools button:active,
-body .filter-picker-menu .range-picker-value > button:active { background: #e5e7eb; }
-body .filter-picker-menu .filter-picker-tools button:focus-visible,
-body .filter-picker-menu .range-picker-value > button:focus-visible { outline: 2px solid #6b7280; outline-offset: 1px; }
+body .filter-picker-menu .filter-picker-tools button:active { background: #e5e7eb; }
+body .filter-picker-menu .filter-picker-tools button:focus-visible { outline: 2px solid #6b7280; outline-offset: 1px; }
 @media (max-width: 800px) {
   :is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu { top: auto; bottom: 18px; max-height: min(520px, 70dvh); border-color: #bccde1; }
-  body .filter-picker-menu .filter-picker-tools button,
-  body .filter-picker-menu .range-picker-value > button { min-height: 44px; }
+  body .filter-picker-menu .filter-picker-tools button { min-height: 44px; }
 }
 
 @media (min-width: 1101px) {
