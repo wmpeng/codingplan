@@ -89,13 +89,13 @@
       })
       .join("");
     return `<details class="filter-picker" data-picker="${escapeHtml(key)}" id="${escapeHtml(id)}">
-      <summary><span>${escapeHtml(label)}</span><span class="filter-picker-count" data-picker-count>${escapeHtml(countText)}</span>${model ? '<span class="model-match-warning" data-model-match-warning hidden>需包含全部</span>' : ""}</summary>
+      <summary><span>${escapeHtml(label)}</span><span class="filter-picker-count" data-picker-count>${escapeHtml(countText)}</span>${model ? '<span class="model-match-warning" data-model-match-warning hidden>需同时支持所选模型</span>' : ""}</summary>
       <div class="filter-picker-menu" role="group" aria-label="选择${escapeHtml(label)}">
         <input type="search" data-picker-search placeholder="搜索${escapeHtml(label)}" aria-label="搜索${escapeHtml(label)}">
-        <div class="filter-picker-tools"><button type="button" data-picker-action="clear">清空</button><button type="button" data-picker-action="all">全选</button><button type="button" data-picker-action="default">恢复默认</button></div>
-        ${model ? '<div class="model-preset-options" aria-label="模型快捷选择"><button type="button" data-model-preset="high-volume-models" aria-pressed="false" disabled>甜品级精选</button><button type="button" data-model-preset="sota-models" aria-pressed="false" disabled>顶尖与前沿精选</button></div><div class="model-selection-status" role="status"><span>当前：</span><span data-model-selection-label></span></div><p class="model-preset-error" data-model-preset-error hidden>精选名单暂时无法加载。<button type="button" data-retry-model-presets>重试</button></p>' : ""}
+        <div class="filter-picker-tools"><button type="button" data-picker-action="clear">清空</button><button type="button" data-picker-action="all">全选</button>${model ? "" : '<button type="button" data-picker-action="default">恢复默认</button>'}</div>
+        ${model ? '<div class="model-preset-options" aria-label="模型快捷选择"><button type="button" data-model-preset="featured" data-picker-action="default" aria-pressed="false" disabled>精选模型</button><button type="button" data-model-preset="high-volume-models" aria-pressed="false" disabled>精选甜品级模型</button><button type="button" data-model-preset="sota-models" aria-pressed="false" disabled>精选头部级模型</button></div><p class="model-preset-error" data-model-preset-error hidden>精选名单暂时无法加载。<button type="button" data-retry-model-presets>重试</button></p>' : ""}
         <div data-picker-options>${options}</div><p class="filter-search-empty" role="status" hidden>没有匹配结果，试试其他关键词。</p>
-        ${model ? `<div class="model-match-setting" data-model-match-setting hidden><label class="model-match-check"><input type="checkbox" data-model-require-all aria-describedby="${id}MatchHelp" aria-controls="${id}MatchConfirm" aria-expanded="false"><span>需包含全部模型</span></label><p id="${id}MatchHelp">同一个套餐须包含全部所选模型，且每个模型都满足用量等条件，可能大幅减少匹配方案。</p><div class="model-match-confirm" id="${id}MatchConfirm" data-model-match-confirm hidden><p data-model-match-impact role="status" aria-live="polite"></p><div><button type="button" data-model-match-action="confirm">确认开启</button><button type="button" data-model-match-action="cancel">取消</button></div></div></div>` : ""}
+        ${model ? `<div class="model-match-setting" data-model-match-setting hidden><label class="model-match-check"><input type="checkbox" data-model-require-all aria-describedby="${id}MatchHelp" aria-controls="${id}MatchConfirm" aria-expanded="false"><span>需同时支持所选模型</span></label><p id="${id}MatchHelp">同一套餐需同时支持全部所选模型，且每个模型都满足用量等条件，可能大幅减少匹配方案。</p><div class="model-match-confirm" id="${id}MatchConfirm" data-model-match-confirm hidden><p data-model-match-impact role="status" aria-live="polite"></p><div><button type="button" data-model-match-action="confirm">确认开启</button><button type="button" data-model-match-action="cancel">取消</button></div></div></div>` : ""}
       </div>
     </details>`;
   }
@@ -332,7 +332,6 @@
       modelPicker.querySelector('[data-model-match-warning]').hidden = !strict;
       modelPicker.querySelector('[data-model-match-confirm]').hidden = !pendingAll;
       const preset = selectionPreset();
-      modelPicker.querySelector('[data-model-selection-label]').textContent = ({featured:"所有精选",all:"全部模型",clear:"未勾选 · 模型不限",custom:"自定义","high-volume-models":"甜品级精选","sota-models":"顶尖与前沿精选"})[preset] || "自定义";
       modelPicker.querySelectorAll('[data-model-preset]').forEach(button => {
         button.disabled = !groupsReady;
         button.setAttribute('aria-pressed', String(button.dataset.modelPreset === preset));
@@ -397,7 +396,7 @@
       for (const key of ["platformSlugs", "modelSlugs"])
         if (state[key]?.length)
           tags.push([key, key === "platformSlugs" ? "已选平台" : "已选模型"]);
-      if (state.modelMatch === "all") tags.push(["modelMatch", "需包含全部模型"]);
+      if (state.modelMatch === "all") tags.push(["modelMatch", "需同时支持所选模型"]);
       if (state.budgetCny) tags.push(["budgetCny", "预算上限"]);
       if (state.apiOnly) tags.push(["apiOnly", "仅按量 API"]);
       if (state.monthlyTokenRange) tags.push(["monthlyTokenRange", "月用量"]);
