@@ -72,7 +72,8 @@
     } : DEFAULTS;
     return {
       platformSlugs: entitySelection(input.platformSlugs === undefined ? base.platformSlugs : input.platformSlugs),
-      modelSlugs: entitySelection(input.modelSlugs === undefined ? base.modelSlugs : input.modelSlugs),
+      // Empty model picks mean unrestricted, while preserving the cleared checklist.
+      modelSlugs: arrayOrNull(input.modelSlugs === undefined ? base.modelSlugs : input.modelSlugs),
       modelMatch: input.modelMatch === 'all' ? 'all' : 'any',
       apiOnly: input.apiOnly === true,
       tool: ['codex', 'claude', 'github', 'other'].includes(input.tool) ? input.tool : 'any',
@@ -167,7 +168,7 @@
     if (!state.monthlyTokenRange) return true;
     const rows = monthlyOptions(plan, state, context);
     const matches = row => tokenInRange(row.value, state.monthlyTokenRange);
-    return state.modelMatch === 'all' && state.modelSlugs
+    return state.modelMatch === 'all' && state.modelSlugs?.length
       ? state.modelSlugs.every(slug => rows.some(row => row.modelSlug === slug && matches(row)))
       : rows.some(matches);
   }
@@ -269,7 +270,7 @@
       return (points || []).filter(point => ids.has(point.slug));
     }
     const modelGroups = new Map();
-    if (current.modelSlugs !== null && current.modelMatch === 'all') {
+    if (current.modelSlugs?.length && current.modelMatch === 'all') {
       (points || []).forEach(point => {
         if (point.platformVisible === false || (point.planTableVisible === false && point.billingMode !== 'payg')) return;
         if (!current.includeDiscontinued && point.discontinued) return;
@@ -288,7 +289,7 @@
       if (!selectedMatch(point.modelSlug, current.modelSlugs)) return false;
       if (current.monthlyTokenRange && point.billingMode !== 'payg' && !tokenInRange(point.monthlyTokenInM, current.monthlyTokenRange)) return false;
       if (point.billingMode === 'payg' && current.monthlyTokenRange && current.budgetCny && !inRange(apiCost(point, current), current.budgetCny)) return false;
-      if (current.modelMatch === 'all' && current.modelSlugs !== null) {
+      if (current.modelMatch === 'all' && current.modelSlugs?.length) {
         const key = `${point.platformSlug || ''}::${point.billingMode || ''}::${point.planSlug || ''}`;
         const available = modelGroups.get(key) || new Set();
         if (!current.modelSlugs.length || !current.modelSlugs.every(slug => available.has(slug))) return false;
@@ -356,7 +357,7 @@
         if (plan.billingMode === 'payg') return !(s.monthlyTokenRange && s.budgetCny) || inRange(apiCost(row, s), s.budgetCny);
         return !s.monthlyTokenRange || tokenInRange(row.usage && row.usage.monthlyTokenInM, s.monthlyTokenRange);
       });
-      if (!rows.length || (s.modelMatch === 'all' && s.modelSlugs && !s.modelSlugs.every(slug => rows.some(row => row.modelSlug === slug)))) continue;
+      if (!rows.length || (s.modelMatch === 'all' && s.modelSlugs?.length && !s.modelSlugs.every(slug => rows.some(row => row.modelSlug === slug)))) continue;
       offers.push({ plan, platform, rows, monthlyCost });
     }
     return offers;

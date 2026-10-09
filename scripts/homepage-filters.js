@@ -73,6 +73,7 @@
   }
 
   function buildPicker({ id, label, key, items, state }) {
+    const model = key === "modelSlugs";
     const rawSelected = valuesFor(state, key);
     const selected =
       rawSelected === null ? items.map((item) => item.slug) : rawSelected || [];
@@ -88,11 +89,13 @@
       })
       .join("");
     return `<details class="filter-picker" data-picker="${escapeHtml(key)}" id="${escapeHtml(id)}">
-      <summary><span>${escapeHtml(label)}</span><span class="filter-picker-count" data-picker-count>${escapeHtml(countText)}</span></summary>
+      <summary><span>${escapeHtml(label)}</span><span class="filter-picker-count" data-picker-count>${escapeHtml(countText)}</span>${model ? '<span class="model-match-warning" data-model-match-warning hidden>需包含全部</span>' : ""}</summary>
       <div class="filter-picker-menu" role="group" aria-label="选择${escapeHtml(label)}">
         <input type="search" data-picker-search placeholder="搜索${escapeHtml(label)}" aria-label="搜索${escapeHtml(label)}">
         <div class="filter-picker-tools"><button type="button" data-picker-action="clear">清空</button><button type="button" data-picker-action="all">全选</button><button type="button" data-picker-action="default">恢复默认</button></div>
+        ${model ? '<div class="model-preset-options" aria-label="模型快捷选择"><button type="button" data-model-preset="high-volume-models" aria-pressed="false" disabled>甜品级精选</button><button type="button" data-model-preset="sota-models" aria-pressed="false" disabled>顶尖与前沿精选</button><span data-model-selection-label></span></div><p class="model-preset-error" data-model-preset-error hidden>精选名单暂时无法加载。<button type="button" data-retry-model-presets>重试</button></p>' : ""}
         <div data-picker-options>${options}</div><p class="filter-search-empty" role="status" hidden>没有匹配结果，试试其他关键词。</p>
+        ${model ? `<div class="model-match-setting" data-model-match-setting hidden><label class="model-match-check"><input type="checkbox" data-model-require-all aria-describedby="${id}MatchHelp" aria-controls="${id}MatchConfirm" aria-expanded="false"><span>需包含全部模型</span></label><p id="${id}MatchHelp">同一个套餐须包含全部所选模型，且每个模型都满足用量等条件，可能大幅减少匹配方案。</p><div class="model-match-confirm" id="${id}MatchConfirm" data-model-match-confirm hidden><p data-model-match-impact role="status" aria-live="polite"></p><div><button type="button" data-model-match-action="confirm">确认开启</button><button type="button" data-model-match-action="cancel">取消</button></div></div></div>` : ""}
       </div>
     </details>`;
   }
@@ -106,21 +109,6 @@
         ["claude", "Claude Code"],
         ["github", "GitHub Copilot"],
         ["other", "其他工具"],
-      ],
-    ],
-    modelGroup: [
-      "模型档次",
-      [
-        ["any", "不限"],
-        ["sota-models", "顶尖与前沿"],
-        ["high-volume-models", "甜品级"],
-      ],
-    ],
-    modelMatch: [
-      "模型匹配",
-      [
-        ["any", "任意所选"],
-        ["all", "同时支持全部"],
       ],
     ],
     platformStatusMax: [
@@ -183,7 +171,48 @@
       featuredPreset: opts.featuredPreset,
     });
     state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || "yi";
+    state.modelGroup = "any";
+    state.modelMatch = "any";
     const defaults = Filters.cloneState(state);
+    if (opts.featuredPreset) context.modelGroups = opts.featuredPreset.groups || [];
+    let groupsReady = Array.isArray(context.modelGroups), pendingAll = false;
+    const presetSlugs = id => [...new Set((context.modelGroups || [])
+      .filter(group => group.enabled !== false && (id === "featured" || group.id === id))
+      .flatMap(group => group.modelSlugs || []))].filter(slug => models.some(m => m.slug === slug));
+    const sameSelection = slugs => Array.isArray(state.modelSlugs) && slugs.length === state.modelSlugs.length && slugs.every(slug => state.modelSlugs.includes(slug));
+    function selectionPreset() {
+      if (state.modelSlugs === null) return "all";
+      if (!state.modelSlugs.length) return "clear";
+      if (groupsReady && sameSelection(presetSlugs("featured"))) return "featured";
+      return (context.modelGroups || []).find(group => sameSelection(presetSlugs(group.id)))?.id || "custom";
+    }
+    function resetModelList() {
+      const picker = host.querySelector('[data-picker="modelSlugs"]');
+      picker.querySelector('[data-picker-search]').value = "";
+      picker.querySelectorAll('[data-filter-option]').forEach(option => { option.hidden = false; });
+      picker.querySelector('.filter-search-empty').hidden = true;
+      const list = picker.querySelector('[data-picker-options]');
+      list.scrollTop = 0;
+      const selected = state.modelSlugs;
+      const options = [...list.children];
+      options.sort((a, b) => {
+        const av = a.querySelector('input').value, bv = b.querySelector('input').value;
+        const rank = value => selected === null ? models.findIndex(m => m.slug === value)
+          : selected.includes(value) ? selected.indexOf(value) - models.length : models.findIndex(m => m.slug === value);
+        return rank(av) - rank(bv);
+      }).forEach(option => list.append(option));
+    }
+    function selectModelPreset(id, source = "manual") {
+      if (id !== "all" && !groupsReady) return false;
+      const slugs = id === "all" ? null : presetSlugs(id);
+      if (slugs && !slugs.length) return false;
+      state.modelSlugs = slugs;
+      state.modelGroup = "any";
+      state.modelMatch = "any";
+      resetModelList();
+      publish(source);
+      return true;
+    }
     const params = new URLSearchParams(location.search),
       platform = params.get("platform");
     if (platform && platforms.some((x) => x.slug === platform))
@@ -203,7 +232,7 @@
       }
       </div>
       <div class="guide-filter-fields">${Object.entries(choices)
-        .filter(([k]) => (!monitor || k === "modelMatch") && (!full || k !== "preference"))
+        .filter(([k]) => !monitor && (!full || k !== "preference"))
         .map(
           ([key, [label, items]]) =>
             `<label class="filter-inline filter-choice"><span>${label}</span><select data-filter-field="${key}">${items.map(([v, t]) => `<option value="${v}">${t}</option>`).join("")}</select></label>`,
@@ -221,24 +250,53 @@
       }</div></div>
       <div class="filter-state-actions"><button type="button" data-filter-action="clear-all">清空全部</button><button type="button" data-filter-action="restore-all">${full ? "恢复全量" : "恢复默认"}</button></div>
       <p class="filter-state-hint" data-filter-hint>${monitor ? "监控只使用平台、模型条件；未监控项目没有统计。" : "条件同时生效；网络、支付要求未确认的方案不通过对应限制。"}</p>
-      ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型与模型匹配条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
+      ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
       <div data-active-limits class="filter-active-limits" aria-live="polite"></div>
       </section>`;
     const controller = {
       getState: () => Filters.cloneState(state),
       context,
       config,
+      selectModelPreset,
+      getModelPreset: selectionPreset,
       setState: (patch, source = "guide") => {
-        state = Filters.normalizeState({ ...state, ...patch });
+        // Old guide calls map groups to actual picks; no hidden intersection remains.
+        if (patch.modelGroup && patch.modelGroup !== "any") {
+          if (!groupsReady) return;
+          const slugs = presetSlugs(patch.modelGroup);
+          if (!slugs.length) return;
+          patch = {...patch, modelSlugs:slugs, modelMatch:"any", modelGroup:"any"};
+        }
+        state = Filters.normalizeState({ ...state, ...patch, modelGroup: "any" });
+        if (!state.modelSlugs || state.modelSlugs.length < 2) state.modelMatch = "any";
+        if (Object.hasOwn(patch, "modelSlugs")) resetModelList();
         publish(source);
       },
       reset: () => {
         state = Filters.cloneState(defaults);
+        resetModelList();
         publish("manual");
       },
     };
     host.filterController = controller;
     if (!full) root.CodingPlanHomeFilters = controller;
+    function positionModelPanel() {
+      const picker = host.querySelector('[data-picker="modelSlugs"]');
+      if (!picker.open) return;
+      const menu = picker.querySelector('.filter-picker-menu');
+      const viewport = root.visualViewport;
+      const width = viewport?.width || root.innerWidth;
+      const height = viewport?.height || root.innerHeight;
+      const left = viewport?.offsetLeft || 0, top = viewport?.offsetTop || 0;
+      const mobile = root.innerWidth <= 800;
+      const panelWidth = mobile ? width - 28 : Math.min(380, width - 28);
+      const minTop = Math.max(top + 14, Math.min(top + height - 100, (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0) + 8));
+      Object.assign(menu.style, {position:"fixed", width:`${panelWidth}px`, maxHeight:`${Math.min(620, top + height - minTop - 14)}px`, right:"auto", bottom:"auto"});
+      const anchor = picker.querySelector('summary').getBoundingClientRect();
+      const panelHeight = menu.getBoundingClientRect().height;
+      menu.style.left = `${mobile ? left + 14 : Math.max(left + 14, Math.min(anchor.left, left + width - panelWidth - 14))}px`;
+      menu.style.top = `${Math.max(minTop, Math.min(mobile ? top + height - panelHeight - 18 : anchor.bottom + 8, top + height - panelHeight - 14))}px`;
+    }
     function render() {
       for (const [key, items] of [
         ["platformSlugs", platforms],
@@ -252,10 +310,25 @@
             : selected.length
               ? `${selected.length} 项`
               : "不限";
-        picker.querySelectorAll('input[type="checkbox"]').forEach((el) => {
+        picker.querySelectorAll('[data-filter-option] input').forEach((el) => {
           el.checked = selected === null || selected.includes(el.value);
         });
       }
+      const modelPicker = host.querySelector('[data-picker="modelSlugs"]');
+      const modelCount = state.modelSlugs === null ? models.length : state.modelSlugs.length;
+      const strict = state.modelMatch === "all" && modelCount > 1;
+      modelPicker.querySelector('[data-model-match-setting]').hidden = modelCount < 2;
+      modelPicker.querySelector('[data-model-require-all]').checked = strict || pendingAll;
+      modelPicker.querySelector('[data-model-require-all]').setAttribute('aria-expanded', String(pendingAll));
+      modelPicker.querySelector('[data-model-match-warning]').hidden = !strict;
+      modelPicker.querySelector('[data-model-match-confirm]').hidden = !pendingAll;
+      const preset = selectionPreset();
+      modelPicker.querySelector('[data-model-selection-label]').textContent = ({featured:"所有精选",all:"全部模型",clear:"未勾选 · 模型不限",custom:"自定义"})[preset] || "";
+      modelPicker.querySelectorAll('[data-model-preset]').forEach(button => {
+        button.disabled = !groupsReady;
+        button.setAttribute('aria-pressed', String(button.dataset.modelPreset === preset));
+      });
+      modelPicker.querySelector('[data-picker-action="default"]').disabled = !groupsReady;
       host.querySelectorAll("[data-filter-field]").forEach((el) => {
         const v = state[el.dataset.filterField];
         if (el.type === "checkbox") el.checked = !!v;
@@ -303,11 +376,12 @@
       host.querySelectorAll("[data-budget-mode]").forEach(button => {
         button.setAttribute("aria-pressed", String(button.dataset.budgetMode === "api" ? state.apiOnly : !state.apiOnly && !state.budgetCny));
       });
-      host.querySelector('[data-range-clear="token"]').setAttribute("aria-pressed", String(!state.monthlyTokenRange));
+      host.querySelector('[data-range-clear="token"]')?.setAttribute("aria-pressed", String(!state.monthlyTokenRange));
       const tags = [];
       for (const key of ["platformSlugs", "modelSlugs"])
         if (state[key]?.length)
           tags.push([key, key === "platformSlugs" ? "已选平台" : "已选模型"]);
+      if (state.modelMatch === "all") tags.push(["modelMatch", "需包含全部模型"]);
       if (state.budgetCny) tags.push(["budgetCny", "预算上限"]);
       if (state.apiOnly) tags.push(["apiOnly", "仅按量 API"]);
       if (state.monthlyTokenRange) tags.push(["monthlyTokenRange", "月用量"]);
@@ -320,11 +394,13 @@
       host.querySelector("[data-active-limits]").innerHTML = tags
         .map(
           ([k, t]) =>
-            `<button type="button" data-remove-filter="${k}" aria-label="取消${t}限制">${t} ×</button>`,
+            `<button type="button" ${k === "modelMatch" ? 'class="model-match-warning"' : ""} data-remove-filter="${k}" aria-label="取消${t}限制">${t} ×</button>`,
         )
         .join("");
+      positionModelPanel();
     }
     function publish(source = "manual") {
+      pendingAll = false;
       state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || state.tokenUnit;
       const clean = Filters.cloneState(state);
       if (!full) {
@@ -360,6 +436,7 @@
           );
         const menu = el.closest(".filter-picker-menu");
         menu.querySelector('.filter-search-empty').hidden = [...menu.querySelectorAll('[data-filter-option]')].some(x => !x.hidden);
+        positionModelPanel();
         return;
       }
       if (el.matches("[data-budget-part]")) {
@@ -392,29 +469,62 @@
     });
     host.addEventListener("change", (event) => {
       const el = event.target;
-      if (el.matches("[data-filter-field]")) {
+      if (el.matches("[data-model-require-all]")) {
+        if (!el.checked) { state.modelMatch = "any"; publish(); return; }
+        pendingAll = true;
+        const selected = state.modelSlugs === null ? models.map(m => m.slug) : state.modelSlugs;
+        const count = match => {
+          const offers = Filters.matchingOffers(context, {...state, modelSlugs:selected, modelMatch:match}, {usdToCnyRate:config.usdToCnyRate,platformCatalog:config.platformCatalog});
+          if (full) return new Set(offers.filter(offer => opts.view !== "plans" || offer.plan.billingMode !== "payg").map(offer => offer.plan.slug)).size;
+          return offers.reduce((n, offer) => n + (offer.plan.billingMode === "payg" ? offer.rows.length : 1), 0);
+        };
+        const before = count("any"), after = count("all");
+        host.querySelector('[data-model-match-impact]').textContent = `开启后，${full ? "符合条件的套餐" : "匹配方案"}从 ${before} 个变为 ${after} 个。${after === 0 ? "当前没有同时满足条件的套餐。" : ""}确认后生效。`;
+        render();
+        host.querySelector('[data-model-match-action="confirm"]').focus({preventScroll:true});
+      } else if (el.matches("[data-filter-field]")) {
         state[el.dataset.filterField] =
           el.type === "checkbox" ? el.checked : el.value;
         publish();
       } else if (el.matches("[data-filter-option] input")) {
         const picker = el.closest("[data-picker]");
         state[picker.dataset.picker] = [
-          ...picker.querySelectorAll('input[type="checkbox"]:checked'),
+          ...picker.querySelectorAll('[data-filter-option] input:checked'),
         ].map((x) => x.value);
+        if (picker.dataset.picker === "modelSlugs") {
+          state.modelGroup = "any";
+          if (state.modelSlugs.length < 2) state.modelMatch = "any";
+        }
         publish();
       }
     });
     host.addEventListener("click", (event) => {
       const el = event.target.closest("button");
       if (!el) return;
+      if (el.hasAttribute('data-retry-model-presets')) { refreshGroups(); return; }
+      if (el.dataset.modelPreset) { selectModelPreset(el.dataset.modelPreset); return; }
+      if (el.dataset.modelMatchAction) {
+        const confirm = el.dataset.modelMatchAction === "confirm" && pendingAll;
+        pendingAll = false;
+        if (confirm) {
+          if (state.modelSlugs === null) state.modelSlugs = models.map(m => m.slug);
+          state.modelMatch = "all";
+          publish();
+        } else render();
+        host.querySelector('[data-model-require-all]').focus({preventScroll:true});
+        return;
+      }
       if (el.dataset.pickerAction) {
         const key = el.closest("[data-picker]").dataset.picker;
+        if (key === "modelSlugs" && el.dataset.pickerAction === "default") { selectModelPreset("featured"); return; }
+        if (key === "modelSlugs") { state.modelMatch = "any"; state.modelGroup = "any"; }
         state[key] =
           el.dataset.pickerAction === "clear"
             ? []
             : el.dataset.pickerAction === "all"
               ? null
               : defaults[key];
+        if (key === "modelSlugs") resetModelList();
       } else if (el.dataset.budgetMode) {
         Object.assign(state, setBudget(null, el.dataset.budgetMode === "api"));
       } else if (el.dataset.rangeKnot || el.dataset.rangeClear) {
@@ -423,12 +533,13 @@
         if (key === "budget") Object.assign(state, setBudget(value));
         else state.monthlyTokenRange = value == null ? null : { min: value, max: null };
       }
-      else if (el.dataset.removeFilter)
+      else if (el.dataset.removeFilter) {
+        if (el.dataset.removeFilter === "modelSlugs") state.modelMatch = "any";
         state[el.dataset.removeFilter] = Filters.createDefaultState(
           {},
           { mode: "full" },
         )[el.dataset.removeFilter];
-      else if (el.dataset.filterAction)
+      } else if (el.dataset.filterAction)
         state =
           el.dataset.filterAction === "restore-all"
             ? Filters.cloneState(defaults)
@@ -437,6 +548,7 @@
                 tokenUnit: state.tokenUnit,
               };
       else return;
+      if (el.dataset.filterAction || el.dataset.removeFilter === "modelSlugs") resetModelList();
       publish();
     });
     host.addEventListener("keydown", (event) => {
@@ -454,6 +566,7 @@
       if (event.key === "Escape") {
         const d = event.target.closest("details[open]");
         if (d) {
+          pendingAll = false; render();
           d.open = false;
           d.querySelector("summary").focus();
         }
@@ -461,24 +574,38 @@
     });
     document.addEventListener("click", (event) => {
       host.querySelectorAll("details[open]").forEach((d) => {
-        if (!d.contains(event.target)) d.open = false;
+        if (!d.contains(event.target)) { d.open = false; if (pendingAll) { pendingAll = false; render(); } }
       });
     });
+    host.querySelector('[data-picker="modelSlugs"]').addEventListener('toggle', event => {
+      if (!event.target.open) {
+        resetModelList();
+        if (pendingAll) { pendingAll = false; render(); }
+      }
+      positionModelPanel();
+    });
+    root.addEventListener('resize', positionModelPanel);
+    root.addEventListener('scroll', positionModelPanel, {passive:true});
+    root.visualViewport?.addEventListener('resize', positionModelPanel);
     root.addEventListener("codingplan:token-unit-changed", () => publish("display"));
     host.dataset.mounted = "1";
     document.body.classList.add(
       full ? "tool-unified-active" : "homepage-unified-active",
     );
+    resetModelList();
     publish("init");
-    loadGroups(context)
-      .then(() => {
+    function refreshGroups() {
+      host.querySelector('[data-retry-model-presets]').disabled = true;
+      loadGroups(context).then(() => {
+        groupsReady = true;
+        host.querySelector('[data-model-preset-error]').hidden = true;
         publish("catalog");
         root.dispatchEvent(new Event("codingplan:filters-ready"));
-      })
-      .catch(() => {
-        host.querySelector("[data-filter-hint]").textContent =
-          "模型分组加载失败，请刷新重试；未选择分组的筛选仍可使用。";
-      });
+      }).catch(() => {
+        host.querySelector('[data-model-preset-error]').hidden = false;
+      }).finally(() => { host.querySelector('[data-retry-model-presets]').disabled = false; });
+    }
+    refreshGroups();
     return true;
   }
   root.CodingPlanFilterUI = { mount, loadGroups };

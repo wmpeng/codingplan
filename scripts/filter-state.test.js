@@ -240,3 +240,13 @@ test('清空单个实体维度不取消其他条件，全部模型模式下空�
   assert.deepEqual(Filters.filterPlans(plans, state).map(p => p.slug), ['a']);
   assert.equal(Filters.modelMatch([], [], 'all'), true);
 });
+
+
+test('空模型清单保留勾选状态但不限制业务，不能令未知额度通过用量要求',()=>{
+  const cleared=Filters.normalizeState({modelSlugs:[],modelMatch:'all',monthlyTokenRange:{min:100}});
+  assert.deepEqual(Filters.cloneState(cleared).modelSlugs,[]);
+  const plans=[{slug:'known',monthlyTokenOptions:[{modelSlug:'m',value:100}]},{slug:'unknown',monthlyTokenOptions:[{modelSlug:'m',value:null}]}];
+  assert.deepEqual(Filters.filterPlans(plans,cleared).map(p=>p.slug),['known']);
+  const points=[{slug:'known',modelSlug:'m',billingMode:'subscription',monthlyTokenInM:100},{slug:'unknown',modelSlug:'m',billingMode:'subscription',monthlyTokenInM:null}];
+  assert.deepEqual(Filters.filterPoints(points,cleared).map(p=>p.slug),['known']);
+});

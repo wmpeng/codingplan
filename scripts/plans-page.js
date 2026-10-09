@@ -30,7 +30,7 @@
         const filtered = Filters.filterPlans(allPlans, state, { usdToCnyRate: config.usdToCnyRate, context, platformCatalog: config.platformCatalog });
         const valueForSort = plan => {
           if (sort.key === 'monthlyToken') {
-            const values = (plan.monthlyTokenOptions || []).filter(row => !state.modelSlugs || state.modelSlugs.includes(row.modelSlug)).map(row => row.value === 'unlimited' ? Infinity : row.value).filter(value => typeof value === 'number');
+            const values = (plan.monthlyTokenOptions || []).filter(row => !state.modelSlugs?.length || state.modelSlugs.includes(row.modelSlug)).map(row => row.value === 'unlimited' ? Infinity : row.value).filter(value => typeof value === 'number');
             return values.length ? Math.min(...values) : null;
           }
           const value = plan[sort.key];

@@ -317,3 +317,19 @@ test("真实目录的推荐引用完整，AA无分数不冒充零，分组模型
     }
   }
 });
+
+
+test('严格模型无结果可单独放宽，说明缺额度或跨套餐冲突且不修改条件',()=>{
+  const context=fixture();
+  const config={usdToCnyRate:6.8};
+  const s=state({modelSlugs:['small','strong'],modelMatch:'all',monthlyTokenRange:{min:100},budgetCny:{max:50}});
+  const before=JSON.stringify(s);
+  const result=G.recommend(context,s,config,{allMatching:true});
+  assert.equal(result.candidates.length,0);
+  assert.match(result.modelConflict,/Strong.*没有匹配方案/);
+  assert.ok(result.conflicts.some(c=>c.key==='modelMatch' && c.value==='any'));
+  assert.equal(JSON.stringify(s),before);
+  const split=G.recommend({...context,plans:context.plans.filter(p=>p.billingMode!=='payg')},state({modelSlugs:['small','strong'],modelMatch:'all',monthlyTokenRange:{min:100}}),config,{allMatching:true});
+  assert.equal(split.candidates.length,0);
+  assert.match(split.modelConflict,/没有同一个套餐/);
+});

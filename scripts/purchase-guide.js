@@ -222,7 +222,7 @@
       const changes = [
         ["platformSlugs", null, "平台范围"],
         ["modelSlugs", null, "指定模型"],
-        ["modelGroup", "any", "模型档次"],
+        ["modelMatch", "any", "全部模型要求"],
         ["budgetCny", null, "月预算"],
         ["monthlyTokenRange", null, "月用量"],
         ["tool", "any", "使用工具"],
@@ -247,7 +247,15 @@
           conflicts.push({ key, value, label, count: relaxed.length });
       }
     }
-    return { candidates, groups, conflicts };
+    let modelConflict = "";
+    if (!candidates.length && s.modelMatch === "all" && s.modelSlugs?.length > 1) {
+      const missing = s.modelSlugs.filter(slug => !F.matchingOffers(context,
+        {...s, modelSlugs:[slug], modelMatch:"any"}, opts).length);
+      modelConflict = missing.length
+        ? `在当前其他条件下，${missing.map(slug => context.modelBySlug.get(slug)?.name || slug).join("、")}没有匹配方案，因此无法包含全部所选模型。`
+        : "所选模型各自有匹配方案，但没有同一个套餐同时满足全部模型的要求。";
+    }
+    return { candidates, groups, conflicts, modelConflict };
   }
   return {
     levels,

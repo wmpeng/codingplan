@@ -43,7 +43,7 @@
     [
       "模型",
       "对模型有什么要求？",
-      "可以选择模型档次，具体模型在下方筛选中选择。",
+      "先选一组精选模型，再到下方模型面板自由增减；快捷选择会替换当前名单。",
     ],
     [
       "偏好",
@@ -145,13 +145,14 @@
     if (step === 4)
       return (
         buttons(
-          "modelGroup",
+          "modelPreset",
           [
-            ["any", "不限，查看全部方案"],
+            ["all", "不限，查看全部模型"],
+            ["featured", "所有精选模型"],
             ["sota-models", "顶尖与前沿：优先模型能力"],
             ["high-volume-models", "甜品级：轻快实惠"],
           ],
-          s.modelGroup,
+          controller.getModelPreset(),
         ) +
         `<label class="guide-check"><input type="checkbox" data-guide-check="imageRequired" ${s.imageRequired ? "checked" : ""}>需要理解图片 / 截图</label>`
       );
@@ -184,8 +185,7 @@
     if (s.budgetCny?.max != null) parts.push(`≤ ¥${s.budgetCny.max}/月`);
     if (s.monthlyTokenRange)
       parts.push(`≥ ${F.targetTokens(s) / (s.tokenUnit === "B" ? 1000 : s.tokenUnit === "M" ? 1 : 100)} ${s.tokenUnit === "B" ? "B" : s.tokenUnit === "M" ? "M" : "亿"} Token/月`);
-    if (s.modelGroup !== "any")
-      parts.push(s.modelGroup === "sota-models" ? "顶尖与前沿" : "甜品级");
+
     if (s.imageRequired) parts.push("图片输入");
     if (s.platformSlugs?.length)
       parts.push(`指定 ${s.platformSlugs.length} 家平台`);
@@ -202,7 +202,7 @@
     if (host.hidden) { host.innerHTML = ''; return; }
     host.innerHTML = `<section class="purchase-guide-panel"><header class="guide-header"><div><span class="guide-eyebrow">一起整理你的需求</span><h2>不确定怎么填？一步步来</h2><p>回答会直接更新下方“我的需求”，也可以随时手动调整。</p></div><div class="guide-header-actions"><button type="button" data-guide-action="collapse">完成 / 收起</button></div></header>
       ${advice ? '<button type="button" data-guide-action="restart">改为工具接入或 API</button>' : `<nav class="guide-progress" aria-label="选购步骤">${questions.map(([label], i) => `<button type="button" data-step="${i}" aria-current="${i === step ? 'step' : 'false'}">${i + 1} ${label}</button>`).join('')}</nav><div class="guide-question"><h3 tabindex="-1" id="guideQuestionTitle">${questions[step][1]}</h3><p>${questions[step][2]}</p>${content(s)}</div><footer class="guide-step-actions"><button type="button" data-guide-action="prev" ${step === 0 ? 'disabled' : ''}>上一步</button><button type="button" data-guide-action="skip">不确定 / 跳过</button><button type="button" class="guide-primary" data-guide-action="next">${step === 5 ? '完成，查看方案 ↓' : '下一步'}</button></footer>`}
-      <div class="guide-summary" data-guide-summary>${advice ? '下方已给出直接使用建议；购买需求保持不变。' : esc(summary(s))}</div></section>`;
+      <div class="guide-summary" data-guide-summary>${advice ? '下方已给出直接使用建议；购买需求保持不变。' : esc(summary(s))}${!advice && s.modelMatch === 'all' ? '<span class="model-match-warning">需包含全部模型</span>' : ''}</div></section>`;
   }
 
   function set(patch) {
@@ -268,6 +268,8 @@
                   value === "any" ? null : { min: null, max: Number(value) },
               },
         );
+    } else if (key === "modelPreset" && !G.directAdvice(answers)) {
+      controller.selectModelPreset(value, "guide");
     } else if (!G.directAdvice(answers)) set({ [key]: value });
     render();
   }
@@ -314,7 +316,7 @@
         } else if (step === 3) {
           answers.free = false;
           set({ budgetCny: null });
-        } else if (step === 4) set({ modelGroup: "any", imageRequired: false });
+        } else if (step === 4) set({ modelGroup: "any", modelSlugs: null, modelMatch: "any", imageRequired: false });
         else
           set({
             domesticNetworkOnly: false,
