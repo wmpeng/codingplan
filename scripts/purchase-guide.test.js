@@ -121,6 +121,18 @@ function fixture() {
   return c;
 }
 
+test('首页全量推荐保留购买状态排除，空结果可以单独解除排除', () => {
+  const context = fixture();
+  context.platformBySlug.get('p').platformStatus = 'paused';
+  const current = state({platformSlugs:['p'],platformStatusMax:'paused',excludedPlatformStatuses:['paused']});
+  const result = G.recommend(context,current,{}, {allMatching:true});
+  assert.equal(result.candidates.length,0);
+  const conflict = result.conflicts.find(c=>c.key==='excludedPlatformStatuses');
+  assert.ok(conflict && conflict.count>0);
+  assert.deepEqual(conflict.value,[]);
+  assert.ok(G.recommend(context,{...current,excludedPlatformStatuses:[]},{},{allMatching:true}).candidates.length>0);
+});
+
 test("引导只按使用方式分流；API 限制与金额独立，未知 API 费用不当作零", () => {
   const c = fixture();
   const api = state(G.scenarioPatch({ scenario: "api" }));

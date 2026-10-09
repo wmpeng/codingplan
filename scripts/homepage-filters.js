@@ -136,6 +136,13 @@
     domesticPaymentOnly: "无需境外支付",
     includeDiscontinued: "包含下架套餐",
   };
+  const statusExclusions = { paused: "排除暂时停售", limited: "排除定时放量" };
+  function buildStatusPicker() {
+    return `<div class="filter-choice"><span>购买状态</span><details class="filter-picker status-picker" id="homeStatusPicker">
+      <summary aria-label="购买状态"><span data-status-label>不限</span></summary>
+      <div class="filter-picker-menu" role="group" aria-label="排除购买状态">${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}</span></label>`).join("")}</div>
+    </details></div>`;
+  }
   let presetPromise;
   function loadGroups(context) {
     if (!presetPromise)
@@ -235,7 +242,7 @@
         .filter(([k]) => !monitor && (!full || k !== "preference"))
         .map(
           ([key, [label, items]]) =>
-            `<label class="filter-inline filter-choice"><span>${label}</span><select data-filter-field="${key}">${items.map(([v, t]) => `<option value="${v}">${t}</option>`).join("")}</select></label>`,
+            key === "platformStatusMax" && !full ? buildStatusPicker() : `<label class="filter-inline filter-choice"><span>${label}</span><select data-filter-field="${key}">${items.map(([v, t]) => `<option value="${v}">${t}</option>`).join("")}</select></label>`,
         )
         .join("")}
       <div class="filter-checks">${
@@ -336,6 +343,13 @@
         if (el.type === "checkbox") el.checked = !!v;
         else el.value = v;
       });
+      const statusPicker = host.querySelector('#homeStatusPicker');
+      if (statusPicker) {
+        const excluded = state.excludedPlatformStatuses;
+        statusPicker.querySelector('[data-status-label]').textContent = excluded.length > 1 ? "已排除 2 项" : excluded.length ? statusExclusions[excluded[0]] : "不限";
+        statusPicker.querySelector('summary').setAttribute('aria-label', `购买状态：${excluded.map(status => statusExclusions[status]).join('、') || '不限'}`);
+        statusPicker.querySelectorAll('[data-status-exclude]').forEach(el => { el.checked = excluded.includes(el.dataset.statusExclude); });
+      }
       const factor = state.tokenUnit === "B" ? 1000 : state.tokenUnit === "M" ? 1 : 100;
       const budget = host.querySelector("[data-budget-part]"),
         tokens = host.querySelector("[data-token-part]");
@@ -388,8 +402,10 @@
       if (state.apiOnly) tags.push(["apiOnly", "仅按量 API"]);
       if (state.monthlyTokenRange) tags.push(["monthlyTokenRange", "月用量"]);
       for (const [key, [label]] of Object.entries(choices))
-        if (!["any", "balanced", "delisted"].includes(state[key]))
+        if ((full || key !== "platformStatusMax") && !["any", "balanced", "delisted"].includes(state[key]))
           tags.push([key, label]);
+      for (const status of state.excludedPlatformStatuses)
+        tags.push([`status:${status}`, statusExclusions[status]]);
       for (const [key, label] of Object.entries(checks))
         if (state[key] && key !== "includeDiscontinued")
           tags.push([key, label]);
@@ -402,7 +418,10 @@
       positionModelPanel();
     }
     function publish(source = "manual") {
-      if (!full) state.includeDiscontinued = false;
+      if (!full) {
+        state.includeDiscontinued = false;
+        state.platformStatusMax = "paused";
+      }
       pendingAll = false;
       state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || state.tokenUnit;
       const clean = Filters.cloneState(state);
@@ -472,7 +491,10 @@
     });
     host.addEventListener("change", (event) => {
       const el = event.target;
-      if (el.matches("[data-model-require-all]")) {
+      if (el.matches("[data-status-exclude]")) {
+        state.excludedPlatformStatuses = [...host.querySelectorAll('[data-status-exclude]:checked')].map(input => input.dataset.statusExclude);
+        publish();
+      } else if (el.matches("[data-model-require-all]")) {
         if (!el.checked) { state.modelMatch = "any"; publish(); return; }
         pendingAll = true;
         const selected = state.modelSlugs === null ? models.map(m => m.slug) : state.modelSlugs;
@@ -537,6 +559,11 @@
         else state.monthlyTokenRange = value == null ? null : { min: value, max: null };
       }
       else if (el.dataset.removeFilter) {
+        if (el.dataset.removeFilter.startsWith("status:")) {
+          state.excludedPlatformStatuses = state.excludedPlatformStatuses.filter(status => status !== el.dataset.removeFilter.slice(7));
+          publish();
+          return;
+        }
         if (el.dataset.removeFilter === "modelSlugs") state.modelMatch = "any";
         state[el.dataset.removeFilter] = Filters.createDefaultState(
           {},

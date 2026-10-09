@@ -13,7 +13,8 @@
     apiOnly: false,
     monthlyTokenRange: null,
     tokenUnit: 'yi',
-    platformStatusMax: 'limited',
+    platformStatusMax: 'paused',
+    excludedPlatformStatuses: [],
     platformTags: [],
     includeDiscontinued: false,
     priceRanges: {},
@@ -86,6 +87,7 @@
       tokenUnit: ['M','B'].includes(input.tokenUnit) ? input.tokenUnit : 'yi',
       budgetCny: cloneRange(input.budgetCny === undefined ? base.budgetCny : input.budgetCny),
       platformStatusMax: STATUS_RANK[input.platformStatusMax] === undefined ? base.platformStatusMax : input.platformStatusMax,
+      excludedPlatformStatuses: (arrayOrNull(input.excludedPlatformStatuses) || []).filter(status => ['limited', 'paused'].includes(status)),
       platformTags: arrayOrNull(input.platformTags) || [],
       includeDiscontinued: input.includeDiscontinued === undefined ? base.includeDiscontinued : input.includeDiscontinued === true,
       priceRanges: normalizeRangeMap(input.priceRanges === undefined ? base.priceRanges : input.priceRanges),
@@ -141,6 +143,12 @@
   function selectedMatch(value, selected) {
     if (selected === null || !selected.length) return true;
     return selected.includes(String(value || ''));
+  }
+
+  function platformStatusMatches(platform, state) {
+    const status = platform.platformStatus || 'open';
+    return (STATUS_RANK[status] || 0) <= STATUS_RANK[state.platformStatusMax]
+      && !state.excludedPlatformStatuses.includes(status);
   }
 
   function modelMatch(models, selected, mode) {
@@ -203,7 +211,7 @@
       const platform = opts.context && opts.context.platformBySlug
         ? opts.context.platformBySlug.get(plan.platformSlug)
         : null;
-      if (platform && STATUS_RANK[platform.platformStatus || 'open'] > STATUS_RANK[current.platformStatusMax]) return false;
+      if (platform && !platformStatusMatches(platform, current)) return false;
       if (current.platformTags.length && (!platform || !current.platformTags.every(tag => platformTagMatches(platform, tag, opts.platformCatalog || {})))) return false;
       if (!monthlyPlanMatches(plan, current, opts.context)) return false;
       const monthly = toCny(plan.monthlyPrice, plan.currency, rate);
@@ -242,7 +250,7 @@
     return (platforms || []).filter(platform => {
       if (platform.catalogVisible === false) return false;
       if (!selectedMatch(platform.slug, current.platformSlugs)) return false;
-      if (STATUS_RANK[platform.platformStatus || 'open'] > STATUS_RANK[current.platformStatusMax]) return false;
+      if (!platformStatusMatches(platform, current)) return false;
       if (current.platformTags.length && !current.platformTags.every(tag => platformTagMatches(platform, tag, config))) return false;
       if (opts.context && opts.entityData && current.modelSlugs !== null) {
         const models = typeof opts.entityData.platformModels === 'function'
@@ -286,6 +294,8 @@
       if (point.planTableVisible === false && point.billingMode !== 'payg') return false;
       if (!current.includeDiscontinued && point.discontinued) return false;
       if (!selectedMatch(point.platformSlug, current.platformSlugs)) return false;
+      const platform = opts.context?.platformBySlug?.get(point.platformSlug) || point;
+      if (!platformStatusMatches(platform, current)) return false;
       if (!selectedMatch(point.modelSlug, current.modelSlugs)) return false;
       if (current.monthlyTokenRange && point.billingMode !== 'payg' && !tokenInRange(point.monthlyTokenInM, current.monthlyTokenRange)) return false;
       if (point.billingMode === 'payg' && current.monthlyTokenRange && current.budgetCny && !inRange(apiCost(point, current), current.budgetCny)) return false;
@@ -336,7 +346,7 @@
       if (!platform || platform.catalogVisible === false || (plan.planTableVisible === false && plan.billingMode !== 'payg')) continue;
       if (!s.includeDiscontinued && plan.discontinued) continue;
       if (!selectedMatch(platform.slug, s.platformSlugs)) continue;
-      if ((STATUS_RANK[platform.platformStatus || 'open'] || 0) > STATUS_RANK[s.platformStatusMax]) continue;
+      if (!platformStatusMatches(platform, s)) continue;
       if (s.platformTags.length && !s.platformTags.every(tag => platformTagMatches(platform, tag, opts.platformCatalog || {}))) continue;
       if (s.domesticNetworkOnly && platform.requiresOverseasNetwork !== false) continue;
       if (s.domesticPaymentOnly && platform.requiresOverseasPayment !== false) continue;

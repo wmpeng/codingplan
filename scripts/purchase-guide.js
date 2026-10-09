@@ -230,6 +230,7 @@
         ["imageRequired", false, "图片能力"],
         ["domesticNetworkOnly", false, "网络要求"],
         ["domesticPaymentOnly", false, "支付要求"],
+        ["excludedPlatformStatuses", [], "购买状态排除"],
       ];
       for (const [key, value, label] of changes) {
         if (JSON.stringify(s[key]) === JSON.stringify(value)) continue;

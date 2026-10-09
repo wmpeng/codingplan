@@ -10,6 +10,26 @@ const unrestricted = (overrides = {}) => Filters.normalizeState({
   ...overrides
 });
 
+test('购买状态排除独立组合，并保留完整页的累积状态筛选', () => {
+  const platforms = ['open', 'limited', 'paused', 'delisted'].map(status => ({slug:status,platformStatus:status}));
+  const plans = platforms.map(p => ({slug:p.slug,platformSlug:p.slug,billingMode:'subscription',monthlyPrice:10}));
+  const context = {platforms,plans,platformBySlug:new Map(platforms.map(p=>[p.slug,p])),
+    relationsByPlanSlug:new Map(plans.map(p=>[p.slug,[{slug:p.slug,modelSlug:'m'}]])),modelBySlug:new Map([['m',{slug:'m'}]])};
+  const cases = [ [[],['open','limited','paused']], [['paused'],['open','limited']], [['limited'],['open','paused']], [['paused','limited'],['open']] ];
+  for (const [excluded,expected] of cases) {
+    const state = Filters.normalizeState({excludedPlatformStatuses:excluded});
+    assert.deepEqual(Filters.matchingOffers(context,state).map(o=>o.platform.slug),expected);
+    assert.deepEqual(Filters.filterPlatforms(platforms,state).map(p=>p.slug),expected);
+    // Also exercise adapter paths without the offer-level context.
+    assert.deepEqual(Filters.filterPlans(plans,state,{context:{platformBySlug:context.platformBySlug}}).map(p=>p.slug),expected);
+    assert.deepEqual(Filters.filterPoints(platforms.map(p=>({...p,billingMode:'payg'})),state).map(p=>p.slug),expected);
+  }
+  const full = Filters.createDefaultState({}, {mode:'full'});
+  assert.deepEqual(Filters.matchingOffers(context,full).map(o=>o.platform.slug),platforms.map(p=>p.slug));
+  assert.deepEqual(Filters.matchingOffers(context,{...full,platformStatusMax:'limited'}).map(o=>o.platform.slug),['open','limited']);
+  assert.deepEqual(Filters.normalizeState({excludedPlatformStatuses:['paused','paused','unknown','delisted']}).excludedPlatformStatuses,['paused']);
+});
+
 test('API 类型限制独立于零预算，价格点和订阅表同步过滤', () => {
   const points = [
     { slug: 'sub', billingMode: 'subscription', monthlyFeeCny: 0 },
@@ -133,7 +153,7 @@ test('首页默认取精选平台与两组模型并集，保留其他条件且�
   assert.deepEqual(state.platformSlugs, ['p1', 'p2']);
   assert.deepEqual(state.modelSlugs, ['m1', 'm2', 'm3']);
   assert.deepEqual(state.budgetCny, { min: null, max: 200 });
-  assert.equal(state.platformStatusMax, 'limited');
+  assert.equal(state.platformStatusMax, 'paused');
   assert.equal(state.modelMatch, 'any');
   state.platformSlugs.push('extra');
   state.modelSlugs.pop();

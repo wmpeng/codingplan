@@ -212,7 +212,7 @@
         patch = {
           platformSlugs: null,
           modelSlugs: null,
-          platformStatusMax: "limited",
+          platformStatusMax: "paused",
           includeDiscontinued: false,
           ...patch,
         };

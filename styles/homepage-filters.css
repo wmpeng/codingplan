@@ -253,6 +253,19 @@ body .filter-picker-menu label[data-filter-option]:has(input:checked):hover { ba
 :is(.homepage-unified-active, .tool-unified-active) .filter-choice select:hover { border-color: #a5b9d1; }
 .filter-checks { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 22px; border-top: 1px solid var(--border-light); padding-top: 12px; }
 .filter-checks:empty { display: none; }
+body #homeStatusPicker { min-width: 0; }
+body #homeStatusPicker > summary { display: flex; width: 100%; min-height: 40px; font-weight: 400; color: var(--text-primary); }
+body #homeStatusPicker > summary::after { flex-shrink: 0; margin-left: auto; }
+body #homeStatusPicker [data-status-label] { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
+body #homeStatusPicker .filter-picker-menu { width: 240px; padding: 8px; gap: 2px; }
+body #homeStatusPicker .filter-picker-menu label { display: flex; min-height: 40px; color: var(--text-primary); font-weight: 400; cursor: pointer; }
+body #homeStatusPicker .filter-picker-menu label:has(input:checked) { background: #f3f4f6; }
+body #homeStatusPicker .filter-picker-menu label:hover, body #homeStatusPicker .filter-picker-menu label:focus-within { background: #e5e7eb; }
+body #homeStatusPicker input:focus-visible { outline: 2px solid #6b7280; outline-offset: 3px; }
+@media (max-width: 800px) {
+  body #homeStatusPicker > summary, body #homeStatusPicker .filter-picker-menu label { min-height: 44px; }
+  body #homeStatusPicker .filter-picker-menu { width: auto; }
+}
 .filter-checks .filter-inline { font-size: 12px; cursor: pointer; min-height: 30px; }
 .filter-checks input[type="checkbox"] { width: 15px; height: 15px; margin: 0; }
 .filter-state-actions { display: flex !important; gap: 8px; flex-wrap: wrap; }
