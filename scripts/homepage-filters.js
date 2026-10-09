@@ -110,15 +110,6 @@
         ["delisted", "全部状态"],
       ],
     ],
-    preference: [
-      "方案排序",
-      [
-        ["balanced", "均衡：平台评分"],
-        ["quality", "效果：最高 AA 分"],
-        ["cost", "省钱：月支出"],
-        ["variety", "多模型：模型数量"],
-      ],
-    ],
   };
   const checks = {
     imageRequired: "需要图片理解",
@@ -128,10 +119,10 @@
   };
   const statusExclusions = { paused: "排除暂时停售", limited: "排除定时放量" };
   function buildStatusPicker() {
-    return `<div class="filter-choice"><span>购买状态</span><details class="filter-picker status-picker" id="homeStatusPicker">
-      <summary aria-label="购买状态"><span data-status-label>不限</span></summary>
+    return `<details class="filter-picker status-picker" id="homeStatusPicker">
+      <summary aria-label="购买状态"><span class="status-picker-title">购买状态</span><span data-status-label>不限</span></summary>
       <div class="filter-picker-menu" role="group" aria-label="排除购买状态"><div class="filter-picker-tools"><button type="button" data-remove-filter="excludedPlatformStatuses" aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}</span></label>`).join("")}</div>
-    </details></div>`;
+    </details>`;
   }
   let presetPromise;
   function loadGroups(context) {
@@ -218,7 +209,7 @@
     const model = params.get("model");
     if (model && models.some(x => x.slug === model)) state.modelSlugs = [model];
     if (params.get("billing") === "payg") state.apiOnly = true;
-    host.innerHTML = `<section class="filter-state-bar surface-panel" aria-label="统一筛选">
+    host.innerHTML = `<section class="filter-state-bar surface-panel${full ? "" : " home-filter-panel"}" aria-label="统一筛选">
       <div class="filter-state-grid">
       ${buildPicker({ id: "homePlatformPicker", label: "平台", key: "platformSlugs", items: platforms, state })}
       ${buildPicker({ id: "homeModelPicker", label: "模型", key: "modelSlugs", items: models, state })}
@@ -227,12 +218,12 @@
           ? ""
           : `${buildRangePicker("budget", state)}${buildRangePicker("token", state)}`
       }
-      </div>
-      <div class="guide-filter-fields">${Object.entries(choices)
-        .filter(([k]) => !monitor && (!full || k !== "preference"))
+      ${full ? "" : buildStatusPicker()}</div>
+      ${full ? "" : '<div class="filter-state-footer">'}<div class="guide-filter-fields">${Object.entries(choices)
+        .filter(() => !monitor && full)
         .map(
           ([key, [label, items]]) =>
-            key === "platformStatusMax" && !full ? buildStatusPicker() : `<label class="filter-inline filter-choice"><span>${label}</span><select data-filter-field="${key}">${items.map(([v, t]) => `<option value="${v}">${t}</option>`).join("")}</select></label>`,
+            `<label class="filter-inline filter-choice"><span>${label}</span><select data-filter-field="${key}">${items.map(([v, t]) => `<option value="${v}">${t}</option>`).join("")}</select></label>`,
         )
         .join("")}
       <div class="filter-checks">${
@@ -246,10 +237,11 @@
               )
               .join("")
       }</div></div>
-      <div class="filter-state-actions"><button type="button" data-filter-action="clear-all">清空全部</button><button type="button" data-filter-action="restore-all">${full ? "恢复全量" : "恢复默认"}</button></div>
+      ${full ? "" : `<div class="filter-state-controls"><label class="offer-sort"><span>排序</span><select data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></label><span class="offer-sort-help" id="offerSortHelp"></span>`}
+      <div class="filter-state-actions"><button type="button" data-filter-action="clear-all">${full ? "清空全部" : "清空条件"}</button><button type="button" data-filter-action="restore-all">${full ? "恢复全量" : "恢复默认"}</button></div>${full ? "" : "</div></div>"}
       <p class="filter-state-hint" data-filter-hint>${monitor ? "监控只使用平台、模型条件；未监控项目没有统计。" : "条件同时生效；网络、支付要求未确认的方案不通过对应限制。"}</p>
       ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
-      <div data-active-limits class="filter-active-limits" aria-live="polite"></div>
+      ${full ? '<div data-active-limits class="filter-active-limits" aria-live="polite"></div>' : ""}
       </section>`;
     const controller = {
       getState: () => Filters.cloneState(state),
@@ -288,9 +280,14 @@
       const panelWidth = 240;
       const minTop = (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0) + 8;
       Object.assign(menu.style, {position:'fixed', width:`${panelWidth}px`, right:'auto', bottom:'auto', maxHeight:`${Math.max(100, root.innerHeight - minTop - 14)}px`});
-      // Keep the clear/reset controls reachable while the status picker is open.
-      menu.style.left = `${Math.max(14, Math.min(Math.max(anchor.right - panelWidth, actions.right + 8), root.innerWidth - panelWidth - 14))}px`;
+      menu.style.left = `${Math.max(14, Math.min(anchor.left, root.innerWidth - panelWidth - 14))}px`;
       menu.style.top = `${Math.max(minTop, Math.min(anchor.bottom + 8, root.innerHeight - menu.getBoundingClientRect().height - 14))}px`;
+      // Keep the footer actions reachable when the menu extends over their row.
+      const bounds = menu.getBoundingClientRect();
+      if (bounds.left < actions.right && bounds.right > actions.left && bounds.top < actions.bottom && bounds.bottom > actions.top) {
+        if (actions.left - panelWidth - 8 >= 14) menu.style.left = `${actions.left - panelWidth - 8}px`;
+        else if (anchor.top - bounds.height - 8 >= minTop) menu.style.top = `${anchor.top - bounds.height - 8}px`;
+      }
     }
     function positionModelPanel() {
       positionStatusPanel();
@@ -347,6 +344,12 @@
         if (el.type === "checkbox") el.checked = !!v;
         else el.value = v;
       });
+      const sort = host.querySelector('[data-offer-sort]');
+      if (sort) {
+        const option = root.PurchaseGuide.sortOptions.find(option => option.value === state.preference);
+        sort.title = option.help;
+        host.querySelector('#offerSortHelp').textContent = option.help;
+      }
       const statusPicker = host.querySelector('#homeStatusPicker');
       if (statusPicker) {
         const excluded = state.excludedPlatformStatuses;
@@ -413,7 +416,8 @@
       for (const [key, label] of Object.entries(checks))
         if (state[key] && key !== "includeDiscontinued")
           tags.push([key, label]);
-      host.querySelector("[data-active-limits]").innerHTML = tags
+      const activeLimits = host.querySelector("[data-active-limits]");
+      if (activeLimits) activeLimits.innerHTML = tags
         .map(
           ([k, t]) =>
             `<button type="button" ${k === "modelMatch" ? 'class="model-match-warning"' : ""} data-remove-filter="${k}" aria-label="取消${t}限制">${t} ×</button>`,
@@ -514,7 +518,7 @@
       } else if (el.matches("[data-filter-field]")) {
         state[el.dataset.filterField] =
           el.type === "checkbox" ? el.checked : el.value;
-        publish();
+        publish(el.dataset.filterField === "preference" ? "sort" : "manual");
       } else if (el.matches("[data-filter-option] input")) {
         const picker = el.closest("[data-picker]");
         state[picker.dataset.picker] = [
@@ -579,6 +583,7 @@
             ? Filters.cloneState(defaults)
             : {
                 ...Filters.createDefaultState({}, { mode: "full" }),
+                ...(!full ? { preference: state.preference } : {}),
                 tokenUnit: state.tokenUnit,
               };
       else return;

@@ -145,12 +145,7 @@
       `<div class="guide-conditions"><label class="guide-check"><input type="checkbox" data-guide-check="domesticNetworkOnly" ${s.domesticNetworkOnly ? "checked" : ""}>只考虑无需境外网络的方案</label><label class="guide-check"><input type="checkbox" data-guide-check="domesticPaymentOnly" ${s.domesticPaymentOnly ? "checked" : ""}>只考虑无需境外支付的方案</label></div>` +
       buttons(
         "preference",
-        [
-          ["balanced", "均衡"],
-          ["cost", "月费更低"],
-          ["quality", "模型效果更好"],
-          ["variety", "尝试更多模型"],
-        ],
+        G.sortOptions.map(option => [option.value, option.label]),
         s.preference,
       )
     );

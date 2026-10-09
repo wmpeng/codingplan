@@ -461,3 +461,37 @@ body #homeModelPicker [hidden] { display: none !important; }
 @media (pointer: coarse) {
   body .model-preset-options button, body #homeModelPicker .filter-picker-tools button { min-height: 44px; }
 }
+
+/* Home conditions and list utilities share one compact panel. */
+body .home-filter-panel .guide-filter-fields { display: block; flex: 1 1 320px; margin: 0; padding: 0; border: 0; }
+body .home-filter-panel #homeStatusPicker { min-width: 160px; max-width: min(100%, 280px); }
+body .home-filter-panel #homeStatusPicker > summary { min-height: 40px; }
+body .home-filter-panel .status-picker-title { flex-shrink: 0; white-space: nowrap; color: var(--text-secondary); }
+body .home-filter-panel .filter-state-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 24px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color); }
+body .home-filter-panel .filter-checks { border: 0; padding: 0; }
+body .home-filter-panel .filter-state-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 20px; max-width: 100%; margin-left: auto; }
+body .home-filter-panel .filter-state-footer .filter-state-actions { flex: 0 0 auto; width: auto; margin: 0; }
+body .home-filter-panel .filter-state-hint { margin: 12px 0 0; }
+body .offer-results-heading { align-items: flex-start; flex-wrap: wrap; gap: 12px 24px; }
+body .offer-results-heading > div:first-child { flex: 1 1 300px; min-width: 0; }
+body .offer-results-title { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; }
+body .offer-results-title #offerCount { color: var(--text-secondary); font-size: 13px; font-weight: 400; white-space: nowrap; }
+body .offer-sort { display: flex; align-items: center; gap: 8px; max-width: 100%; color: var(--text-secondary); font-size: 13px; }
+body .offer-sort > span { flex-shrink: 0; }
+body .offer-sort select { width: 15em; max-width: 100%; min-width: 0; min-height: 40px; color: var(--text-primary); font-size: 13px; }
+body .offer-sort-help { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 800px) {
+  body .offer-sort select, body .home-filter-panel #homeStatusPicker > summary { min-height: 44px; }
+  body .home-filter-panel #homeStatusPicker { max-width: none; }
+}
+@media (max-width: 650px) {
+  body .home-filter-panel #homeStatusPicker { grid-column: 1 / -1; width: fit-content; }
+  body .home-filter-panel .filter-state-controls { width: 100%; margin-left: 0; gap: 12px; }
+  body .home-filter-panel .offer-sort { flex: 1 1 100%; }
+  body .home-filter-panel .offer-sort select { flex: 1; width: auto; }
+  body .offer-results-heading > div:first-child { flex-basis: 100%; }
+}
+
+@media (max-width: 380px) {
+  body .home-filter-panel #homeBudgetPicker, body .home-filter-panel #homeTokenPicker { grid-column: 1 / -1; }
+}

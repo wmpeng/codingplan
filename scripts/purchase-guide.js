@@ -10,6 +10,12 @@
   const levels = { trial: null, occasional: 100, daily: 1000, heavy: 4000 };
   const coefficients = { writing: 0.5, coding: 1, professional: 1, api: 1 };
   const directScenarios = ["everyday", "image"];
+  const sortOptions = [
+    { value: "balanced", label: "平台评分优先", help: "按平台评分从高到低排列。" },
+    { value: "quality", label: "模型评分优先", help: "按方案内匹配模型的最高 Artificial Analysis 分从高到低排列。" },
+    { value: "cost", label: "月支出从低到高", help: "按订阅月费或按量 API 的预计月支出排列，未估算的支出放在最后。" },
+    { value: "variety", label: "匹配模型最多", help: "按方案内符合条件的模型数量从多到少排列，同一模型的计费档位不重复计数。" },
+  ];
   function directAdvice(answers) {
     if (answers.free)
       return "暂时不想花钱，可以先使用豆包网页版或桌面版，无需在这里选购套餐。";
@@ -83,7 +89,7 @@
             ? F.apiCost(rows[0], s)
             : offer.monthlyCost;
         const reasons = [];
-        if (s.preference === "balanced" && finite(offer.platform.rating) !== null) reasons.push(`平台评分 ${offer.platform.rating}，按均衡偏好排序`);
+        if (s.preference === "balanced" && finite(offer.platform.rating) !== null) reasons.push(`平台评分 ${offer.platform.rating}，按平台评分优先排序`);
         if (s.budgetCny?.max != null && cost !== null)
           reasons.push(
             `月支出 ${cost.toFixed(2)} 元，在 ${s.budgetCny.max} 元预算内`,
@@ -254,6 +260,7 @@
   return {
     levels,
     coefficients,
+    sortOptions,
     directAdvice,
     scenarioPatch,
     usagePatch,
