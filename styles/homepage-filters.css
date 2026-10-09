@@ -272,36 +272,31 @@ body .filter-picker-menu .range-picker-number input::-webkit-inner-spin-button, 
 body .filter-picker-menu .range-picker-number input:focus-visible { outline: none; box-shadow: none; }
 body .filter-picker-menu .range-picker-unit { flex-shrink: 0; color: #6b7280; font-size: 13px; font-weight: 400; }
 body .range-picker-value > button { flex-shrink: 0; }
-body .range-picker-slider { margin: 12px 0 0; }
-body .range-picker-slider input[type="range"] { appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 28px; margin: 0; padding: 0; border: 0; border-radius: 6px; background: transparent; cursor: pointer; }
+body .filter-picker-menu.budget-menu { gap: 8px; padding: 14px; }
+body .range-picker-slider { margin: 0 24px; }
+body .range-picker-slider input[type="range"] { appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 24px; margin: 0; padding: 0; border: 0; border-radius: 6px; background: transparent; cursor: pointer; }
 body .range-picker-slider input::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: linear-gradient(to right, #4b5563 var(--range-fill, 0%), #e5e7eb var(--range-fill, 0%)); }
 body .range-picker-slider input::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 18px; height: 18px; margin-top: -7px; border: 2px solid #4b5563; border-radius: 50%; background: #fff; }
 body .range-picker-slider input::-moz-range-track { height: 4px; border-radius: 4px; background: #e5e7eb; }
 body .range-picker-slider input::-moz-range-progress { height: 4px; border-radius: 4px; background: #4b5563; }
 body .range-picker-slider input::-moz-range-thumb { width: 14px; height: 14px; border: 2px solid #4b5563; border-radius: 50%; background: #fff; }
-body .range-picker-slider .range-picker-ticks { position: relative; height: 36px; margin: 0 9px; }
-body .range-picker-ticks button { position: absolute; left: var(--tick-position); transform: translateX(-50%); min-width: 28px; min-height: 32px; padding: 5px 1px; border: 0; background: transparent; color: #6b7280; font: inherit; font-size: 11px; cursor: pointer; }
+body .range-picker-slider .range-picker-ticks { position: relative; height: 32px; margin: 0 9px; }
+body .range-picker-ticks button { position: absolute; left: var(--tick-position); transform: translateX(-50%); display: inline-flex; align-items: center; justify-content: center; min-width: 28px; min-height: 32px; padding: 0; border: 0; background: transparent; color: #4b5563; font: inherit; font-size: 12px; font-weight: 500; line-height: 1.5; white-space: nowrap; cursor: pointer; }
+body .range-picker-ticks button > span { padding: 4px; border-radius: 6px; transition: background .15s, color .15s; }
 body .range-picker-ticks button::before { content: ""; position: absolute; top: 0; left: 50%; width: 1px; height: 4px; background: #d1d5db; }
-body .range-picker-ticks button:first-child { transform: none; left: -9px; }
-body .range-picker-ticks button:last-child { transform: translateX(-100%); left: calc(100% + 9px); }
-body .range-picker-ticks button:hover, body .range-picker-ticks button[aria-pressed="true"] { color: #111827; font-weight: 600; }
-body .range-picker-hint { margin: 0 0 10px; color: var(--text-secondary); font-size: 12px; line-height: 1.5; }
+body .range-picker-ticks button:hover > span, body .range-picker-ticks button[aria-pressed="true"] > span { color: #111827; background: #f3f4f6; }
+body .range-picker-ticks button:focus-visible { outline: none; }
+body .range-picker-ticks button:focus-visible > span { outline: 2px solid #6b7280; outline-offset: 1px; }
+body .filter-picker-menu.budget-menu .filter-help { margin: 0; color: #6b7280; font-size: 12px; line-height: 1.6; }
 body .range-picker-title { flex-shrink: 0; white-space: nowrap; }
 body [data-budget-label], body [data-token-label] { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
-body #homeBudgetPicker .range-picker-ticks button:first-child { left: var(--tick-position); transform: translateX(-50%); }
-body .range-picker-modes { display: flex; justify-content: space-between; gap: 12px; margin: -4px 0 8px; }
-body .range-picker-modes button { min-height: 34px; padding: 4px 8px; border: 1px solid #d1d5db; border-radius: 6px; background: #fff; color: #4b5563; font: inherit; font-size: 12px; cursor: pointer; }
-body .range-picker-modes button:hover, body .range-picker-modes button[aria-pressed="true"] { background: #f3f4f6; border-color: #9ca3af; color: #111827; }
-body .range-picker-modes button[aria-pressed="true"] { font-weight: 600; }
-body .range-picker-modes button:focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
-body .range-picker-slider input:focus-visible, body .range-picker-ticks button:focus-visible, body .range-picker-value > button:focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
+body .range-picker-slider input:focus-visible, body .range-picker-value > button:focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
 @media (max-width: 800px) {
   body .filter-picker-menu .range-picker-number { width: 138px; min-height: 44px; }
   body .range-picker-value > button { min-height: 44px; }
-  body .range-picker-modes button { min-height: 44px; }
   body .range-picker-slider input[type="range"] { height: 44px; }
-  body .range-picker-ticks button { min-height: 36px; }
-  body .range-picker-slider .range-picker-ticks { height: 40px; }
+  body .range-picker-ticks button { min-height: 44px; }
+  body .range-picker-slider .range-picker-ticks { height: 44px; }
 }
 .tool-unified-active .filter-state-actions { float: right; margin: 0 0 0 16px; }
 .tool-unified-active .filter-state-hint { margin-top: 8px; min-height: 32px; display: flex; align-items: center; }

@@ -44,9 +44,10 @@
     if (part < 0) return (knots.length - 1) * 100;
     return Math.round((part + (value - knots[part]) / (knots[part + 1] - knots[part])) * 100);
   }
-  // Budget endpoints are modes. Positions 1..601 retain the numeric range,
-  // including real zero and values beyond the last visible numeric tick.
-  const budgetSliderMax = (rangeKnots.budget.length - 1) * 100 + 2;
+  // Keep a full interval between the last amount and the unlimited endpoint.
+  // Numeric positions retain real zero and over-range direct input.
+  const budgetNumericMax = (rangeKnots.budget.length - 1) * 100 + 1;
+  const budgetSliderMax = budgetNumericMax + 100;
   function setBudget(value, apiOnly = false) {
     return { apiOnly, budgetCny: value == null ? null : { min: null, max: value } };
   }
@@ -62,12 +63,10 @@
     const unit = budget ? "元" : state.tokenUnit === "B" ? "B" : state.tokenUnit === "M" ? "M" : "亿";
     return `<details class="filter-picker" id="${id}"><summary><span class="range-picker-title">${title}</span><span ${budget ? "data-budget-label" : "data-token-label"}></span></summary>
       <div class="filter-picker-menu budget-menu" role="group" aria-label="${budget ? "每月预算" : "每月 Token 用量"}">
-        <div class="range-picker-value"><label class="filter-inline"><span>${budget ? "不超过" : "至少"}</span><span class="range-picker-number">${budget ? '<span class="range-picker-unit" aria-hidden="true">¥</span>' : ""}<input type="number" inputmode="decimal" min="0" step="any" ${budget ? 'data-budget-part="max"' : 'data-token-part="min"'} aria-label="${budget ? "最高月预算（人民币）" : `最低月 Token 数（${unit}）`}" placeholder="不限">${budget ? "" : `<span class="range-picker-unit" data-token-unit-label aria-hidden="true">${unit}</span>`}</span></label><button type="button" data-range-clear="${key}">不限</button></div>
+        <div class="range-picker-value"><label class="filter-inline"><span>${budget ? "不超过" : "至少"}</span><span class="range-picker-number">${budget ? '<span class="range-picker-unit" aria-hidden="true">¥</span>' : ""}<input type="number" inputmode="decimal" min="0" step="any" ${budget ? 'data-budget-part="max"' : 'data-token-part="min"'} aria-label="${budget ? "最高月预算（人民币）" : `最低月 Token 数（${unit}）`}" placeholder="不限">${budget ? "" : `<span class="range-picker-unit" data-token-unit-label aria-hidden="true">${unit}</span>`}</span></label>${budget ? "" : `<button type="button" data-range-clear="${key}">不限</button>`}</div>
         <div class="range-picker-slider"><input type="range" min="0" max="${budget ? budgetSliderMax : (rangeKnots[key].length - 1) * 100}" step="1" data-range-picker="${key}" aria-label="${title}滑块" aria-describedby="${id}Help">
-          <div class="range-picker-ticks">${rangeKnots[key].map((n, i, knots) => budget && n === 0 ? "" : `<button type="button" data-range-knot="${key}" data-knot-value="${n}" style="--tick-position:${budget ? (i * 100 + 1) / budgetSliderMax * 100 : i / (knots.length - 1) * 100}%" aria-label="${budget ? "预算上限" : "最低月用量"} ${n / factor} ${unit}">${n / factor}</button>`).join("")}</div>
-          ${budget ? '<div class="range-picker-modes"><button type="button" data-budget-mode="api">仅按量 API</button><button type="button" data-budget-mode="any">不限</button></div>' : ""}</div>
-        <p class="range-picker-hint">${budget ? "左端仅按量 API；中间按金额筛选订阅和 API；右端不限。" : "拖动或点击刻度，也可直接输入其他数值。"}</p>
-        <p class="filter-help" id="${id}Help">${budget ? "按量 API 在填写月用量后估算月支出；未填写时不判断其月预算。" : "订阅按所选模型额度判断，不相加；未知额度排除。按量 API 按此用量估算费用。"}</p>
+          <div class="range-picker-ticks">${budget ? '<button type="button" class="range-picker-mode" data-budget-mode="api" style="--tick-position:0%" aria-label="仅按量 API"><span>仅 API</span></button>' : ""}${rangeKnots[key].map((n, i, knots) => budget && n === 0 ? "" : `<button type="button" data-range-knot="${key}" data-knot-value="${n}" style="--tick-position:${budget ? (i * 100 + 1) / budgetSliderMax * 100 : i / (knots.length - 1) * 100}%" aria-label="${budget ? "预算上限" : "最低月用量"} ${n / factor} ${unit}"><span>${n / factor}</span></button>`).join("")}${budget ? '<button type="button" class="range-picker-mode" data-budget-mode="any" data-range-clear="budget" style="--tick-position:100%"><span>不限</span></button>' : ""}</div></div>
+        <p class="filter-help" id="${id}Help">${budget ? "两端为仅按量 API / 不限，中间按金额筛选。按量 API 按月用量估算支出，未填用量时不判断预算。" : "可拖动、点刻度或直接输入。订阅额度不相加，未知额度排除；按量 API 按此用量估算费用。"}</p>
       </div></details>`;
   }
 
@@ -293,7 +292,7 @@
           : value == null ? "不限" : `${key === "budget" ? "不超过" : "至少"} ${value / displayFactor} ${unit}`);
         host.querySelectorAll(`[data-range-knot="${key}"]`).forEach((button) => {
           const n = Number(button.dataset.knotValue);
-          button.textContent = n / displayFactor;
+          button.querySelector("span").textContent = n / displayFactor;
           button.setAttribute("aria-label", `${key === "budget" ? "预算上限" : "最低月用量"} ${n / displayFactor} ${unit}`);
           button.setAttribute("aria-pressed", String(value === n && !(key === "budget" && state.apiOnly)));
         });
@@ -342,7 +341,8 @@
         const key = el.dataset.rangePicker;
         const position = Number(el.value);
         if (key === "budget") Object.assign(state, position === 0 ? setBudget(null, true)
-          : position === budgetSliderMax ? setBudget(null) : setBudget(rangeValue(key, position - 1)));
+          : position >= budgetNumericMax + 50 ? setBudget(null)
+          : setBudget(rangeValue(key, Math.min(position, budgetNumericMax) - 1)));
         else state.monthlyTokenRange = { min: rangeValue(key, position), max: null };
         publish();
         return;
@@ -436,6 +436,17 @@
       publish();
     });
     host.addEventListener("keydown", (event) => {
+      if (event.target.matches('[data-range-picker="budget"]')) {
+        const position = Number(event.target.value);
+        const next = ["ArrowRight", "ArrowUp"].includes(event.key) && position === budgetNumericMax;
+        const previous = ["ArrowLeft", "ArrowDown"].includes(event.key) && position === budgetSliderMax;
+        if (next || previous) {
+          event.preventDefault();
+          Object.assign(state, setBudget(next ? null : rangeKnots.budget.at(-1)));
+          publish();
+          return;
+        }
+      }
       if (event.key === "Escape") {
         const d = event.target.closest("details[open]");
         if (d) {
