@@ -99,7 +99,6 @@
             `最高 AA 分 ${scored[0].score.toFixed(1)}：${scored[0].model.name}`,
           );
         reasons.push(`${models.length} 个符合条件的模型`);
-        if (s.harnessApiOnly) reasons.push("支持个人 Harness API 接入");
         if (s.domesticNetworkOnly) reasons.push("无需境外网络");
         if (s.domesticPaymentOnly) reasons.push("无需境外支付方式");
         if (s.imageRequired) reasons.push("符合条件的模型支持图片输入");
@@ -220,7 +219,6 @@
         ["modelMatch", "any", "全部模型要求"],
         ["budgetCny", null, "月预算"],
         ["monthlyTokenRange", null, "月用量"],
-        ["harnessApiOnly", false, "Harness API 接入要求"],
         ["apiOnly", false, "仅按量 API"],
         ["imageRequired", false, "图片能力"],
         ["domesticNetworkOnly", false, "网络要求"],

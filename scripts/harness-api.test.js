@@ -41,28 +41,34 @@ test('三态平台默认与 boolean 套餐覆盖，false 不回落，不改源�
   assert.equal(JSON.stringify(c.plans),before);
 });
 
-test('能力筛选沿同套餐判断，订阅与按量共同生效，全部视图投影一致', () => {
-  const c=context(), state=all({harnessApiOnly:true}), opts={context:c};
-  const expected=['inherit','opt-in','api'];
-  assert.deepEqual(F.matchingOffers(c,state).map(x=>x.plan.slug),expected);
+test('能力仅用于展示，旧筛选状态不影响资格、视图投影或排序', () => {
+  const c=context(), plain=all({}), state={...plain,harnessApiOnly:true}, opts={context:c};
+  const expected=['inherit','go','opt-in','closed','unknown','api'];
+  const offers=F.matchingOffers(c,state);
+  assert.deepEqual(offers.map(x=>x.plan.slug),expected);
+  assert.deepEqual(offers.map(x=>x.supportsHarnessApi),[true,false,true,false,null,true]);
+  assert.deepEqual(offers,F.matchingOffers(c,plain));
+  assert.equal(Object.hasOwn(F.normalizeState(state),'harnessApiOnly'),false);
   const points=E.buildComparisonPoints(c,7,{includeUnknown:true});
-  assert.deepEqual(F.filterPoints(points,state,opts).map(x=>x.planSlug),expected);
-  assert.deepEqual(F.filterPoints(points,state).map(x=>x.planSlug),expected);
+  assert.deepEqual(F.filterPoints(points,state,opts).map(x=>x.planSlug),[...expected,'go']);
+  assert.deepEqual(F.filterPoints(points,state).map(x=>x.planSlug),[...expected,'go']);
   const plans=E.buildPlanCatalog(c,{includeHidden:true});
   assert.deepEqual(F.filterPlans(plans,state,opts).map(x=>x.slug),expected);
   assert.deepEqual(F.filterPlans(plans,state).map(x=>x.slug),expected);
-  assert.deepEqual(F.filterPlatforms(c.platforms,state,opts).map(x=>x.slug),['yes','no']);
+  assert.deepEqual(F.filterPlatforms(c.platforms,state,opts).map(x=>x.slug),['yes','no','unknown']);
+  assert.deepEqual(F.filterPlatforms(c.platforms,state).map(x=>x.slug),['yes','no','unknown']);
   assert.deepEqual(F.matchingOffers(c,all({harnessApiOnly:true,apiOnly:true})).map(x=>x.plan.slug),['api']);
-  assert.equal(F.matchingOffers(c,all({harnessApiOnly:true,platformSlugs:['yes'],modelSlugs:['a','b'],modelMatch:'all'})).length,0);
-  assert.ok(G.recommend(c,state,{}, {allMatching:true}).candidates.every(x=>x.supportsHarnessApi===true));
+  assert.deepEqual(F.matchingOffers(c,all({harnessApiOnly:true,platformSlugs:['yes'],modelSlugs:['a','b'],modelMatch:'all'})).map(x=>x.plan.slug),['go']);
+  assert.deepEqual(G.recommend(c,state,{}, {allMatching:true}),G.recommend(c,plain,{}, {allMatching:true}));
   const result=G.recommend(c,all({platformSlugs:['unknown'],harnessApiOnly:true}),{}, {allMatching:true});
-  assert.ok(result.conflicts.some(x=>x.key==='harnessApiOnly' && x.count===1));
+  assert.equal(result.candidates[0].plan.slug,'unknown');
+  assert.ok(!result.conflicts.some(x=>x.key==='harnessApiOnly'));
 });
 
 test('旧工具条件不再限制或排序，默认/清空不要求 API 接入', () => {
   const c=context(), legacy=all({tool:'other'}), plain=all({});
   assert.equal(Object.hasOwn(legacy,'tool'),false);
-  assert.equal(F.createDefaultState({}).harnessApiOnly,false);
+  assert.equal(Object.hasOwn(F.createDefaultState({}),'harnessApiOnly'),false);
   assert.deepEqual(G.recommend(c,legacy,{}, {allMatching:true}),G.recommend(c,plain,{}, {allMatching:true}));
 });
 

@@ -206,12 +206,11 @@ test("月Token保留按量、排除未知订阅；组合预算按实际目标估
     1,
   );
 });
-test("Harness API、计费类型、网络支付、图片与模型分组分别生效", () => {
+test("Harness API 不影响资格，计费类型、网络支付、图片与模型分组分别生效", () => {
   const c = fixture();
-  assert.ok(
-    F.matchingOffers(c, state({ harnessApiOnly: true }), options).every(
-      (x) => x.platform.slug === "p",
-    ),
+  assert.deepEqual(
+    F.matchingOffers(c, state({ harnessApiOnly: true }), options),
+    F.matchingOffers(c, state({}), options),
   );
   assert.ok(
     F.matchingOffers(c, state({ tool: "other" }), options).some(

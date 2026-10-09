@@ -142,7 +142,7 @@
         `<label class="guide-check"><input type="checkbox" data-guide-check="imageRequired" ${s.imageRequired ? "checked" : ""}>需要理解图片 / 截图</label>`
       );
     return (
-      `<div class="guide-conditions"><label class="guide-check"><input type="checkbox" data-guide-check="harnessApiOnly" ${s.harnessApiOnly ? "checked" : ""}>需要个人 Harness API 接入</label><label class="guide-check"><input type="checkbox" data-guide-check="domesticNetworkOnly" ${s.domesticNetworkOnly ? "checked" : ""}>只考虑无需境外网络的方案</label><label class="guide-check"><input type="checkbox" data-guide-check="domesticPaymentOnly" ${s.domesticPaymentOnly ? "checked" : ""}>只考虑无需境外支付的方案</label></div>` +
+      `<div class="guide-conditions"><label class="guide-check"><input type="checkbox" data-guide-check="domesticNetworkOnly" ${s.domesticNetworkOnly ? "checked" : ""}>只考虑无需境外网络的方案</label><label class="guide-check"><input type="checkbox" data-guide-check="domesticPaymentOnly" ${s.domesticPaymentOnly ? "checked" : ""}>只考虑无需境外支付的方案</label></div>` +
       buttons(
         "preference",
         [
@@ -158,7 +158,6 @@
   function summary(s) {
     const parts = [];
     if (s.apiOnly) parts.push("仅按量 API");
-    if (s.harnessApiOnly) parts.push("支持 Harness API");
     if (s.budgetCny?.max != null) parts.push(`≤ ¥${s.budgetCny.max}/月`);
     if (s.monthlyTokenRange)
       parts.push(`≥ ${F.targetTokens(s) / (s.tokenUnit === "B" ? 1000 : s.tokenUnit === "M" ? 1 : 100)} ${s.tokenUnit === "B" ? "B" : s.tokenUnit === "M" ? "M" : "亿"} Token/月`);
@@ -295,7 +294,6 @@
         } else if (step === 3) set({ modelGroup: "any", modelSlugs: null, modelMatch: "any", imageRequired: false });
         else
           set({
-            harnessApiOnly: false,
             domesticNetworkOnly: false,
             domesticPaymentOnly: false,
             preference: "balanced",
