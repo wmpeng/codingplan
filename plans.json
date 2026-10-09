@@ -1135,6 +1135,7 @@
     },
     {
       "slug": "commandcode-go",
+      "supportsHarnessApi": false,
       "platformSlug": "command-code",
       "name": "Go",
       "billingMode": "subscription",

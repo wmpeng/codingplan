@@ -1,8 +1,8 @@
 (function (root, factory) {
-  const api = factory();
+  const api = factory(root.EntityData || (typeof require === 'function' ? require('./entity-data.js') : null));
   if (typeof module === 'object' && module.exports) module.exports = api;
   root.CodingPlanFilters = api;
-})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (EntityData) {
   'use strict';
 
   const DEFAULTS = Object.freeze({
@@ -11,6 +11,7 @@
     modelMatch: 'any',
     budgetCny: null,
     apiOnly: false,
+    harnessApiOnly: false,
     monthlyTokenRange: null,
     tokenUnit: 'yi',
     platformStatusMax: 'paused',
@@ -77,7 +78,7 @@
       modelSlugs: arrayOrNull(input.modelSlugs === undefined ? base.modelSlugs : input.modelSlugs),
       modelMatch: input.modelMatch === 'all' ? 'all' : 'any',
       apiOnly: input.apiOnly === true,
-      tool: ['codex', 'claude', 'github', 'other'].includes(input.tool) ? input.tool : 'any',
+      harnessApiOnly: input.harnessApiOnly === true,
       modelGroup: ['sota-models', 'high-volume-models'].includes(input.modelGroup) ? input.modelGroup : 'any',
       imageRequired: input.imageRequired === true,
       domesticNetworkOnly: input.domesticNetworkOnly === true,
@@ -203,6 +204,7 @@
       return (plans || []).filter(plan => plan.planTableVisible !== false && ids.has(plan.slug));
     }
     return (plans || []).filter(plan => {
+      if (current.harnessApiOnly && EntityData.resolveHarnessApi(opts.context?.platformBySlug?.get(plan.platformSlug), plan) !== true) return false;
       if (current.apiOnly && plan.billingMode !== 'payg') return false;
       if (plan.planTableVisible === false) return false;
       if (!current.includeDiscontinued && plan.discontinued) return false;
@@ -248,6 +250,7 @@
       return (platforms || []).filter(platform => ids.has(platform.slug));
     }
     return (platforms || []).filter(platform => {
+      if (current.harnessApiOnly && EntityData.resolveHarnessApi(platform) !== true) return false;
       if (platform.catalogVisible === false) return false;
       if (!selectedMatch(platform.slug, current.platformSlugs)) return false;
       if (!platformStatusMatches(platform, current)) return false;
@@ -289,6 +292,7 @@
       });
     }
     return (points || []).filter(point => {
+      if (current.harnessApiOnly && point.supportsHarnessApi !== true) return false;
       if (current.apiOnly && point.billingMode !== 'payg') return false;
       if (point.platformVisible === false) return false;
       if (point.planTableVisible === false && point.billingMode !== 'payg') return false;
@@ -350,7 +354,8 @@
       if (s.platformTags.length && !s.platformTags.every(tag => platformTagMatches(platform, tag, opts.platformCatalog || {}))) continue;
       if (s.domesticNetworkOnly && platform.requiresOverseasNetwork !== false) continue;
       if (s.domesticPaymentOnly && platform.requiresOverseasPayment !== false) continue;
-      if (s.tool !== 'any' && platform.externalUsage !== true && platform.slug !== s.tool) continue;
+      const supportsHarnessApi = EntityData.resolveHarnessApi(platform, plan);
+      if (s.harnessApiOnly && supportsHarnessApi !== true) continue;
       if (s.apiOnly && plan.billingMode !== 'payg') continue;
       const monthlyCost = toCny(plan.monthlyPrice, plan.currency, opts.usdToCnyRate);
       if (plan.billingMode !== 'payg' && !inRange(monthlyCost, s.budgetCny)) continue;
@@ -368,7 +373,7 @@
         return !s.monthlyTokenRange || tokenInRange(row.usage && row.usage.monthlyTokenInM, s.monthlyTokenRange);
       });
       if (!rows.length || (s.modelMatch === 'all' && s.modelSlugs?.length && !s.modelSlugs.every(slug => rows.some(row => row.modelSlug === slug)))) continue;
-      offers.push({ plan, platform, rows, monthlyCost });
+      offers.push({ plan, platform, rows, monthlyCost, supportsHarnessApi });
     }
     return offers;
   }

@@ -16,7 +16,7 @@ function fixture() {
       slug: "p",
       rating: 5,
       platformStatus: "open",
-      externalUsage: true,
+      supportsHarnessApi: true,
       requiresOverseasNetwork: false,
       requiresOverseasPayment: false,
     },
@@ -24,7 +24,7 @@ function fixture() {
       slug: "codex",
       rating: 4,
       platformStatus: "open",
-      externalUsage: false,
+      supportsHarnessApi: false,
       requiresOverseasNetwork: null,
       requiresOverseasPayment: true,
     },
@@ -138,7 +138,7 @@ test("引导只按使用方式分流；API 限制与金额独立，未知 API �
   const api = state(G.scenarioPatch({ scenario: "api" }));
   assert.equal(api.apiOnly, true);
   assert.equal(api.budgetCny, null);
-  assert.equal(api.tool, "any");
+  assert.equal(Object.hasOwn(api, "tool"), false);
   assert.deepEqual(G.scenarioPatch({ scenario: "writing", writingMode: "automation" }), G.scenarioPatch({ scenario: "api" }));
   for (const scenario of ["coding", "professional", "writing"])
     assert.equal(G.scenarioPatch({ scenario, writingMode: "tools" }).apiOnly, false);
@@ -206,15 +206,15 @@ test("月Token保留按量、排除未知订阅；组合预算按实际目标估
     1,
   );
 });
-test("外部工具、API 类型、网络支付、图片与模型分组分别生效", () => {
+test("Harness API、计费类型、网络支付、图片与模型分组分别生效", () => {
   const c = fixture();
   assert.ok(
-    F.matchingOffers(c, state({ tool: "other" }), options).every(
+    F.matchingOffers(c, state({ harnessApiOnly: true }), options).every(
       (x) => x.platform.slug === "p",
     ),
   );
   assert.ok(
-    F.matchingOffers(c, state({ tool: "codex" }), options).some(
+    F.matchingOffers(c, state({ tool: "other" }), options).some(
       (x) => x.plan.slug === "closed",
     ),
   );

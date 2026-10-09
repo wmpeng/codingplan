@@ -237,7 +237,7 @@ body .filter-picker-menu label[data-filter-option]:has(input:checked):hover { ba
 :is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu label:hover { background: #f3f4f6; }
 :is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu label { min-height: 36px; }
 :is(.homepage-unified-active, .tool-unified-active) .guide-filter-fields {
-  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px 16px;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 16px;
   padding: 18px 0 12px; margin: 0; width: 100%;
 }
 :is(.homepage-unified-active, .tool-unified-active) .filter-choice {
@@ -318,7 +318,7 @@ body .range-picker-slider input:focus-visible { outline: 2px solid #6b7280; outl
 .tool-unified-active .filter-state-actions { float: right; margin: 0 0 0 16px; }
 .tool-unified-active .filter-state-hint { margin-top: 8px; min-height: 32px; display: flex; align-items: center; }
 @media (max-width: 1100px) {
-  :is(.homepage-unified-active, .tool-unified-active) .guide-filter-fields { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  :is(.homepage-unified-active, .tool-unified-active) .guide-filter-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 650px) {
   :is(.homepage-unified-active, .tool-unified-active) .filter-state-bar { padding: 16px; }
@@ -398,8 +398,8 @@ body .filter-picker-menu .filter-picker-tools button:focus-visible { outline: 2p
 }
 
 @media (min-width: 1101px) {
-  .homepage-unified-active .guide-filter-fields { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .tool-unified-active .guide-filter-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .homepage-unified-active .guide-filter-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tool-unified-active .guide-filter-fields { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* Model picks, preset shortcuts and the optional strict requirement share one panel. */

@@ -19,6 +19,26 @@
     return { modelName, tierLabel, relationLabel: [modelName, tierLabel].filter(Boolean).join(' ') };
   }
 
+  // A missing plan override inherits; false must never fall through to the platform.
+  function resolveHarnessApi(platform, plan) {
+    if (typeof plan?.supportsHarnessApi === 'boolean') return plan.supportsHarnessApi;
+    return typeof platform?.supportsHarnessApi === 'boolean' ? platform.supportsHarnessApi : null;
+  }
+
+  function harnessApiBadge(value, options) {
+    const partial = !!options?.partial;
+    const label = partial ? '部分套餐支持 Harness API' : value === true ? '支持 Harness API' : value === false ? '不支持 Harness API' : 'Harness API 待确认';
+    const status = partial ? 'partial' : value === true ? 'true' : value === false ? 'false' : 'unknown';
+    return `<span class="harness-api-badge" data-harness-api="${status}" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">${label}</span>`;
+  }
+
+  function platformHarnessApiBadge(platform, plans) {
+    const value = resolveHarnessApi(platform);
+    const values = [value, ...(plans || []).filter(plan => plan.platformSlug === platform.slug && !plan.discontinued).map(plan => resolveHarnessApi(platform, plan))];
+    const partial = values.includes(true) && values.some(value => value !== true);
+    return harnessApiBadge(value, { partial });
+  }
+
   // Inventory is a set of model identities, never a selection of billing rows.
   function supportedModels(context, plans) {
     const models = new Map();
@@ -67,6 +87,7 @@
         const models = supportedModels(context, [plan]);
         return {
           ...plan,
+          supportsHarnessApi: resolveHarnessApi(platform, plan),
           platformName: (platform && platform.name) || plan.platformSlug,
           supportedModels: models,
           modelLabels: models.map(model => model.name),
@@ -136,6 +157,7 @@
         return {
           planSlug: plan.slug,
           planName: plan.name,
+          supportsHarnessApi: resolveHarnessApi(context.platformBySlug.get(plan.platformSlug), plan),
           planNote: plan.note || null,
           actionUrl: plan.action || null,
           rows
@@ -179,6 +201,7 @@
         multimodal: model.multimodal,
         scores: comparisonScores(model.scores),
         billingMode,
+        supportsHarnessApi: resolveHarnessApi(platform, plan),
         discontinued: !!plan.discontinued,
         planTableVisible: plan.planTableVisible !== false,
         actionUrl: plan.action || platform.action || null,
@@ -223,6 +246,9 @@
   }
 
   return {
+    resolveHarnessApi,
+    harnessApiBadge,
+    platformHarnessApiBadge,
     catalogCounts,
     headerSubtitle,
     collection,

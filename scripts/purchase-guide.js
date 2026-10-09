@@ -25,7 +25,7 @@
       (answers.scenario === "writing" && answers.writingMode === "automation");
     return {
       apiOnly,
-      ...(apiOnly ? { budgetCny: null, tool: "any" } : {}),
+      ...(apiOnly ? { budgetCny: null } : {}),
     };
   }
   function usagePatch(answers) {
@@ -99,12 +99,7 @@
             `最高 AA 分 ${scored[0].score.toFixed(1)}：${scored[0].model.name}`,
           );
         reasons.push(`${models.length} 个符合条件的模型`);
-        if (s.tool !== "any")
-          reasons.push(
-            offer.platform.slug === s.tool
-              ? "可在所选自家产品中使用"
-              : "提供外部工具接入额度",
-          );
+        if (s.harnessApiOnly) reasons.push("支持个人 Harness API 接入");
         if (s.domesticNetworkOnly) reasons.push("无需境外网络");
         if (s.domesticPaymentOnly) reasons.push("无需境外支付方式");
         if (s.imageRequired) reasons.push("符合条件的模型支持图片输入");
@@ -135,7 +130,7 @@
           cautions.push(
             "额度按单个模型参考量展示，不代表多模型额度可相加或连续任务一定够用",
           );
-        if (s.tool !== "any" && offer.platform.slug !== s.tool)
+        if (offer.supportsHarnessApi === true)
           cautions.push("具体工具配置及用途限制请查看平台说明");
         return {
           ...offer,
@@ -225,7 +220,7 @@
         ["modelMatch", "any", "全部模型要求"],
         ["budgetCny", null, "月预算"],
         ["monthlyTokenRange", null, "月用量"],
-        ["tool", "any", "使用工具"],
+        ["harnessApiOnly", false, "Harness API 接入要求"],
         ["apiOnly", false, "仅按量 API"],
         ["imageRequired", false, "图片能力"],
         ["domesticNetworkOnly", false, "网络要求"],

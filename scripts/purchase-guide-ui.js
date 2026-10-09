@@ -29,7 +29,6 @@
       "主要想用 AI 做什么？",
       "先选主要用途；不需要买套餐的需求，我们会直接给使用建议。",
     ],
-    ["工具", "准备在哪里使用？", "已有工具就选对应入口，没有要求可以跳过。"],
     [
       "用量",
       "大概会用多少？",
@@ -85,20 +84,6 @@
           : "")
       );
     if (step === 1)
-      return s.apiOnly
-        ? "<p>系统、服务或自动化调用仅推荐按量 API；订阅套餐按个人交互使用考虑。</p>"
-        : buttons(
-            "tool",
-            [
-              ["any", "没有要求"],
-              ["codex", "Codex"],
-              ["claude", "Claude Code"],
-              ["github", "GitHub Copilot"],
-              ["other", "OpenCode / 其他工具"],
-            ],
-            s.tool,
-          );
-    if (step === 2)
       return (
         buttons(
           "intensity",
@@ -118,7 +103,7 @@
         ) +
         '<p class="guide-note">估算基准：偶尔 1 亿、每天间歇 10 亿、高强度 40 亿；写作按一半估算。自填数量优先。不是官方用量保证。</p>'
       );
-    if (step === 3)
+    if (step === 2)
       return (
         buttons(
           "budget",
@@ -142,7 +127,7 @@
         ) + input("budget", "每月不超过", s.budgetCny?.max ?? "", "元") +
         (s.apiOnly ? '<p class="guide-note">当前仅推荐按量 API。此处填写预算保留 API 限制；手动预算滑块的中间金额会同时包含订阅和 API。</p>' : "")
       );
-    if (step === 4)
+    if (step === 3)
       return (
         buttons(
           "modelPreset",
@@ -157,7 +142,7 @@
         `<label class="guide-check"><input type="checkbox" data-guide-check="imageRequired" ${s.imageRequired ? "checked" : ""}>需要理解图片 / 截图</label>`
       );
     return (
-      `<div class="guide-conditions"><label class="guide-check"><input type="checkbox" data-guide-check="domesticNetworkOnly" ${s.domesticNetworkOnly ? "checked" : ""}>只考虑无需境外网络的方案</label><label class="guide-check"><input type="checkbox" data-guide-check="domesticPaymentOnly" ${s.domesticPaymentOnly ? "checked" : ""}>只考虑无需境外支付的方案</label></div>` +
+      `<div class="guide-conditions"><label class="guide-check"><input type="checkbox" data-guide-check="harnessApiOnly" ${s.harnessApiOnly ? "checked" : ""}>需要个人 Harness API 接入</label><label class="guide-check"><input type="checkbox" data-guide-check="domesticNetworkOnly" ${s.domesticNetworkOnly ? "checked" : ""}>只考虑无需境外网络的方案</label><label class="guide-check"><input type="checkbox" data-guide-check="domesticPaymentOnly" ${s.domesticPaymentOnly ? "checked" : ""}>只考虑无需境外支付的方案</label></div>` +
       buttons(
         "preference",
         [
@@ -173,15 +158,7 @@
   function summary(s) {
     const parts = [];
     if (s.apiOnly) parts.push("仅按量 API");
-    if (s.tool !== "any")
-      parts.push(
-        {
-          codex: "Codex",
-          claude: "Claude Code",
-          github: "Copilot",
-          other: "其他工具",
-        }[s.tool],
-      );
+    if (s.harnessApiOnly) parts.push("支持 Harness API");
     if (s.budgetCny?.max != null) parts.push(`≤ ¥${s.budgetCny.max}/月`);
     if (s.monthlyTokenRange)
       parts.push(`≥ ${F.targetTokens(s) / (s.tokenUnit === "B" ? 1000 : s.tokenUnit === "M" ? 1 : 100)} ${s.tokenUnit === "B" ? "B" : s.tokenUnit === "M" ? "M" : "亿"} Token/月`);
@@ -201,7 +178,7 @@
     root.dispatchEvent(new CustomEvent('codingplan:guide-advice', {detail: advice}));
     if (host.hidden) { host.innerHTML = ''; return; }
     host.innerHTML = `<section class="purchase-guide-panel"><header class="guide-header"><div><span class="guide-eyebrow">一起整理你的需求</span><h2>不确定怎么填？一步步来</h2><p>回答会直接更新下方“我的需求”，也可以随时手动调整。</p></div><div class="guide-header-actions"><button type="button" data-guide-action="collapse">完成 / 收起</button></div></header>
-      ${advice ? '<button type="button" data-guide-action="restart">改为工具接入或 API</button>' : `<nav class="guide-progress" aria-label="选购步骤">${questions.map(([label], i) => `<button type="button" data-step="${i}" aria-current="${i === step ? 'step' : 'false'}">${i + 1} ${label}</button>`).join('')}</nav><div class="guide-question"><h3 tabindex="-1" id="guideQuestionTitle">${questions[step][1]}</h3><p>${questions[step][2]}</p>${content(s)}</div><footer class="guide-step-actions"><button type="button" data-guide-action="prev" ${step === 0 ? 'disabled' : ''}>上一步</button><button type="button" data-guide-action="skip">不确定 / 跳过</button><button type="button" class="guide-primary" data-guide-action="next">${step === 5 ? '完成，查看方案 ↓' : '下一步'}</button></footer>`}
+      ${advice ? '<button type="button" data-guide-action="restart">改为工具接入或 API</button>' : `<nav class="guide-progress" aria-label="选购步骤">${questions.map(([label], i) => `<button type="button" data-step="${i}" aria-current="${i === step ? 'step' : 'false'}">${i + 1} ${label}</button>`).join('')}</nav><div class="guide-question"><h3 tabindex="-1" id="guideQuestionTitle">${questions[step][1]}</h3><p>${questions[step][2]}</p>${content(s)}</div><footer class="guide-step-actions"><button type="button" data-guide-action="prev" ${step === 0 ? 'disabled' : ''}>上一步</button><button type="button" data-guide-action="skip">不确定 / 跳过</button><button type="button" class="guide-primary" data-guide-action="next">${step === questions.length - 1 ? '完成，查看方案 ↓' : '下一步'}</button></footer>`}
       <div class="guide-summary" data-guide-summary>${advice ? '下方已给出直接使用建议；购买需求保持不变。' : esc(summary(s))}${!advice && s.modelMatch === 'all' ? '<span class="model-match-warning">需同时支持所选模型</span>' : ''}</div></section>`;
   }
 
@@ -260,7 +237,7 @@
       answers.free = value === "free";
       if (!answers.free)
         set(
-          value === "api" ? { apiOnly: true, budgetCny: null, tool: "any" }
+          value === "api" ? { apiOnly: true, budgetCny: null }
           : value === "cheap"
             ? { budgetCny: null, preference: "cost" }
             : {
@@ -309,22 +286,22 @@
         if (step === 0) {
           answers.scenario = null;
           set({ apiOnly: false });
-        } else if (step === 1) set({ tool: "any" });
-        else if (step === 2) {
+        } else if (step === 1) {
           answers.intensity = null;
           set({ monthlyTokenRange: null });
-        } else if (step === 3) {
+        } else if (step === 2) {
           answers.free = false;
           set({ budgetCny: null });
-        } else if (step === 4) set({ modelGroup: "any", modelSlugs: null, modelMatch: "any", imageRequired: false });
+        } else if (step === 3) set({ modelGroup: "any", modelSlugs: null, modelMatch: "any", imageRequired: false });
         else
           set({
+            harnessApiOnly: false,
             domesticNetworkOnly: false,
             domesticPaymentOnly: false,
             preference: "balanced",
           });
       }
-      if (step === 5 && action !== "prev") {
+      if (step === questions.length - 1 && action !== "prev") {
         collapsed = true;
         render();
         document
@@ -332,7 +309,7 @@
           .scrollIntoView({ behavior: "smooth" });
         return;
       }
-      step = Math.max(0, Math.min(5, step + (action === "prev" ? -1 : 1)));
+      step = Math.max(0, Math.min(questions.length - 1, step + (action === "prev" ? -1 : 1)));
       render();
       host.querySelector("#guideQuestionTitle")?.focus({ preventScroll: true });
     }

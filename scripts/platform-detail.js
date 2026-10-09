@@ -95,6 +95,7 @@
       return (
         `<div class="platform-detail-api-group">` +
         (validGroups.length > 1 ? `<h4>${esc(group.planName)}</h4>` : '') +
+        EntityData.harnessApiBadge(group.supportsHarnessApi) +
         `<div class="platform-detail-api-table-wrap">` +
         `<table class="platform-detail-api-table">` +
         `<thead><tr><th scope="col">模型</th><th scope="col">输入</th><th scope="col">缓存</th><th scope="col">输出</th><th scope="col">综合</th></tr></thead>` +
@@ -166,7 +167,7 @@
     return plans.filter(plan => plan && !plan.discontinued);
   }
 
-  function buildPlansSectionHtml(plans) {
+  function buildPlansSectionHtml(plans, platform) {
     const active = activePlansOnly(plans);
     if (active.length === 0) return '';
 
@@ -183,6 +184,7 @@
         const summaryHtml = summary
           ? `<p class="platform-detail-plan-summary">${esc(summary)}</p>`
           : '';
+        const harnessHtml = EntityData.harnessApiBadge(EntityData.resolveHarnessApi(platform, plan));
         const quota = formatPlanQuota(plan);
         const quotaHtml = quota
           ? `<div class="platform-detail-plan-quota">${esc(quota)}</div>`
@@ -195,7 +197,7 @@
           `<span class="platform-detail-plan-name">${planName}</span>` +
           ratingHtml +
           `</div>` +
-          summaryHtml +
+          harnessHtml + summaryHtml +
           `</div>` +
           `<div class="platform-detail-plan-side">` +
           `<div class="platform-detail-plan-price">${priceHtml}</div>` +
@@ -430,6 +432,7 @@
       `<div class="platform-detail-meta">` +
       `<span class="platform-detail-rating" aria-label="${rating > 0 ? `${rating} 星` : '待评定'}">${rating > 0 ? stars : '待评定'}</span>` +
       statusHtml +
+      EntityData.platformHarnessApiBadge(platform, rawPlans) +
       (discontinued ? `<span class="platform-detail-status">已停售</span>` : '') +
       `</div>` +
       `</header>` +
@@ -439,7 +442,7 @@
       `<ul class="platform-detail-dimensions">${dims}</ul>` +
       `</section>` +
       buildApiPricingSectionHtml(context.apiPricingGroups) +
-      buildPlansSectionHtml(vendorPlans) +
+      buildPlansSectionHtml(vendorPlans, platform) +
       buildAvailabilitySectionHtml(platform, monitorRow)
     );
   }

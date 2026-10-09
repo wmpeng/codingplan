@@ -101,16 +101,6 @@
   }
 
   const choices = {
-    tool: [
-      "使用工具",
-      [
-        ["any", "不限"],
-        ["codex", "Codex"],
-        ["claude", "Claude Code"],
-        ["github", "GitHub Copilot"],
-        ["other", "其他工具"],
-      ],
-    ],
     platformStatusMax: [
       "购买状态",
       [
@@ -131,6 +121,7 @@
     ],
   };
   const checks = {
+    harnessApiOnly: "支持 Harness API",
     imageRequired: "需要图片理解",
     domesticNetworkOnly: "无需境外网络",
     domesticPaymentOnly: "无需境外支付",
@@ -257,7 +248,7 @@
               .join("")
       }</div></div>
       <div class="filter-state-actions"><button type="button" data-filter-action="clear-all">清空全部</button><button type="button" data-filter-action="restore-all">${full ? "恢复全量" : "恢复默认"}</button></div>
-      <p class="filter-state-hint" data-filter-hint>${monitor ? "监控只使用平台、模型条件；未监控项目没有统计。" : "条件同时生效；网络、支付要求未确认的方案不通过对应限制。"}</p>
+      <p class="filter-state-hint" data-filter-hint>${monitor ? "监控只使用平台、模型条件；未监控项目没有统计。" : "条件同时生效；接入能力、网络、支付未确认的方案不通过对应限制。"}</p>
       ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
       <div data-active-limits class="filter-active-limits" aria-live="polite"></div>
       </section>`;
@@ -288,7 +279,22 @@
     };
     host.filterController = controller;
     if (!full) root.CodingPlanHomeFilters = controller;
+    function positionStatusPanel() {
+      const picker = host.querySelector('#homeStatusPicker');
+      if (!picker?.open) return;
+      const menu = picker.querySelector('.filter-picker-menu');
+      if (root.innerWidth <= 800) { menu.removeAttribute('style'); return; }
+      const anchor = picker.querySelector('summary').getBoundingClientRect();
+      const actions = host.querySelector('[data-filter-action="restore-all"]').getBoundingClientRect();
+      const panelWidth = 240;
+      const minTop = (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0) + 8;
+      Object.assign(menu.style, {position:'fixed', width:`${panelWidth}px`, right:'auto', bottom:'auto', maxHeight:`${Math.max(100, root.innerHeight - minTop - 14)}px`});
+      // Keep the clear/reset controls reachable while the status picker is open.
+      menu.style.left = `${Math.max(14, Math.min(Math.max(anchor.right - panelWidth, actions.right + 8), root.innerWidth - panelWidth - 14))}px`;
+      menu.style.top = `${Math.max(minTop, Math.min(anchor.bottom + 8, root.innerHeight - menu.getBoundingClientRect().height - 14))}px`;
+    }
     function positionModelPanel() {
+      positionStatusPanel();
       const picker = host.querySelector('[data-picker="modelSlugs"]');
       if (!picker.open) return;
       const menu = picker.querySelector('.filter-picker-menu');
@@ -613,6 +619,7 @@
       }
       positionModelPanel();
     });
+    host.querySelector('#homeStatusPicker')?.addEventListener('toggle', positionStatusPanel);
     root.addEventListener('resize', positionModelPanel);
     root.addEventListener('scroll', positionModelPanel, {passive:true});
     root.visualViewport?.addEventListener('resize', positionModelPanel);

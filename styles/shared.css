@@ -955,3 +955,22 @@ button:disabled { cursor: not-allowed; }
         padding-top: 0;
     }
 }
+/* One neutral capability label across platform cards, plans and offer results. */
+.harness-api-badge {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 3px 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.harness-api-badge[data-harness-api="unknown"] { background: #f9fafb; color: #6b7280; }
+.offer-capabilities { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; margin-top: 6px; }
+.platform-capabilities, .plan-capabilities { margin-top: 6px; }
+.platform-detail-plan-main > .harness-api-badge { margin-top: 6px; }

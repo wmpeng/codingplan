@@ -5,6 +5,7 @@
     root.mountModelComparisonView = api.mountModelComparisonView;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
     'use strict';
+    const EntityData = root.EntityData || (typeof require === 'function' ? require('./entity-data.js') : null);
 
     const BENCHMARKS = {
         artificialAnalysis: { label: 'AA 智力', short: 'AA' },
@@ -529,7 +530,7 @@
             ? ` ±${formatNumber(deepSWEScore.confidenceInterval, 0)}` : '';
         return `<tr data-point-id="${escapeHtml(point.slug)}">` +
             `<td class="sticky-first">${platformCellHtml(point)}</td>` +
-            `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}</td>` +
+            `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}<div class="plan-capabilities">${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></td>` +
             `<td class="numeric">${price}</td>` +
             `<td class="usage-table-model">${escapeHtml(point.relationLabel || point.modelName)}</td>` +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
