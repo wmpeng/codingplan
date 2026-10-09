@@ -258,6 +258,7 @@ body #homeStatusPicker > summary { display: flex; width: 100%; min-height: 40px;
 body #homeStatusPicker > summary::after { flex-shrink: 0; margin-left: auto; }
 body #homeStatusPicker [data-status-label] { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
 body #homeStatusPicker .filter-picker-menu { width: 240px; padding: 8px; gap: 2px; }
+body #homeStatusPicker .filter-picker-tools { grid-template-columns: minmax(0, 1fr); margin: 0 0 4px; }
 body #homeStatusPicker .filter-picker-menu label { display: flex; min-height: 40px; color: var(--text-primary); font-weight: 400; cursor: pointer; }
 body #homeStatusPicker .filter-picker-menu label:has(input:checked) { background: #f3f4f6; }
 body #homeStatusPicker .filter-picker-menu label:hover, body #homeStatusPicker .filter-picker-menu label:focus-within { background: #e5e7eb; }

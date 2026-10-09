@@ -140,7 +140,7 @@
   function buildStatusPicker() {
     return `<div class="filter-choice"><span>购买状态</span><details class="filter-picker status-picker" id="homeStatusPicker">
       <summary aria-label="购买状态"><span data-status-label>不限</span></summary>
-      <div class="filter-picker-menu" role="group" aria-label="排除购买状态">${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}</span></label>`).join("")}</div>
+      <div class="filter-picker-menu" role="group" aria-label="排除购买状态"><div class="filter-picker-tools"><button type="button" data-remove-filter="excludedPlatformStatuses" aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}</span></label>`).join("")}</div>
     </details></div>`;
   }
   let presetPromise;
