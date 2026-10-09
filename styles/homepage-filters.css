@@ -391,16 +391,33 @@ body .filter-picker-menu .filter-picker-tools button:focus-visible { outline: 2p
 /* Model picks, preset shortcuts and the optional strict requirement share one panel. */
 body #homeModelPicker .filter-picker-menu { width: 380px; max-height: min(620px, 75dvh); overflow-y: auto; }
 body #homeModelPicker [data-picker-options] { flex: 1 1 auto; min-height: 100px; max-height: 260px; }
-body .model-preset-options { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; }
-body .model-preset-options button { min-height: 34px; padding: 6px 10px; border: 1px solid #d1d5db; border-radius: 6px; background: #fff; color: #4b5563; font: inherit; font-size: 12px; cursor: pointer; }
+body #homeModelPicker .filter-picker-tools { display: flex; gap: 4px; margin: 2px 0 8px; }
+body #homeModelPicker .filter-picker-tools button { min-height: 34px; padding: 5px 10px; border-color: transparent; background: transparent; color: var(--text-secondary); font-size: 12px; font-weight: 400; }
+body #homeModelPicker .filter-picker-tools button:hover { background: #f3f4f6; border-color: transparent; color: var(--text-primary); }
+body #homeModelPicker .filter-picker-tools button:active { background: #e5e7eb; }
+body #homeModelPicker [data-picker-options] { scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; padding-right: 4px; }
+body #homeModelPicker [data-picker-options]::-webkit-scrollbar { width: 6px; }
+body #homeModelPicker [data-picker-options]::-webkit-scrollbar-thumb { border-radius: 6px; background: #cbd5e1; }
+body #homeModelPicker label[data-filter-option] { min-height: 40px; padding: 9px 10px; gap: 10px; align-items: center; font-weight: 400; }
+body #homeModelPicker label[data-filter-option]:has(input:checked) { background: transparent; color: var(--text-primary); font-weight: 500; }
+body #homeModelPicker label[data-filter-option]:hover,
+body #homeModelPicker label[data-filter-option]:has(input:checked):hover,
+body #homeModelPicker label[data-filter-option]:focus-within { background: #f3f4f6; }
+body #homeModelPicker label[data-filter-option] span { min-width: 0; overflow-wrap: anywhere; }
+body #homeModelPicker input[type="checkbox"] { width: 16px; height: 16px; margin: 0; accent-color: var(--accent-primary); }
+body #homeModelPicker input[type="checkbox"]:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
+body .model-preset-options { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 0; }
+body .model-preset-options button { min-height: 36px; padding: 6px 10px; border: 1px solid #d1d5db; border-radius: 6px; background: #fff; color: #4b5563; font: inherit; font-size: 12px; cursor: pointer; }
 body .model-preset-options button:hover, body .model-preset-options button[aria-pressed="true"] { border-color: #9ca3af; background: #f3f4f6; color: #111827; }
-body [data-model-selection-label] { color: var(--text-tertiary); font-size: 12px; }
+body .model-selection-status { display: flex; justify-content: flex-end; flex-wrap: wrap; margin: 8px 4px 6px; color: var(--text-secondary); font-size: 12px; line-height: 1.5; }
 body .model-preset-error { margin: 0 0 8px; font-size: 12px; color: var(--text-secondary); }
 body .model-preset-error button { border: 0; background: transparent; color: var(--accent-primary); font: inherit; padding: 6px; cursor: pointer; }
-body .model-match-setting { margin-top: 10px; }
-body .filter-picker-menu .model-match-check { display: flex; padding: 6px 0; margin: 0; min-height: 36px; font-weight: 600; color: var(--text-primary); cursor: pointer; }
+body .model-match-setting { margin-top: 12px; padding-top: 8px; border-top: 1px solid var(--border-light); }
+body .filter-picker-menu .model-match-check { display: flex; padding: 6px 0; margin: 0; min-height: 36px; font-weight: 400; color: var(--text-primary); cursor: pointer; }
 body .filter-picker-menu .model-match-check:hover { background: transparent; }
-body .filter-picker-menu .model-match-check:has(input:checked) { background: transparent; color: #92400e; }
+body .filter-picker-menu .model-match-check:has(input:checked) { background: transparent; }
+body .model-match-setting[data-active="true"] .model-match-check { color: #92400e; font-weight: 500; }
+body #homeModelPicker .model-match-setting[data-active="true"] input { accent-color: #92400e; }
 body .model-match-setting > p { margin: 0; color: var(--text-secondary); font-size: 12px; line-height: 1.65; }
 body .model-match-confirm { padding: 12px; margin-top: 10px; border: 1px solid #f3d7af; border-radius: 8px; background: #fffaf2; color: #92400e; }
 body .model-match-confirm p { margin: 0 0 10px; font-size: 13px; line-height: 1.65; }
@@ -418,6 +435,7 @@ body .model-preset-options button:disabled, body .filter-picker-tools button:dis
 body #homeModelPicker [hidden] { display: none !important; }
 @media (max-width: 800px) {
   body #homeModelPicker .filter-picker-menu { width: auto; }
+  body #homeModelPicker .filter-picker-tools button, body #homeModelPicker label[data-filter-option] { min-height: 44px; }
   body .model-preset-options button, body .model-match-confirm button, body .filter-picker-menu .model-match-check { min-height: 44px; }
   body #homeModelPicker > summary [data-model-match-warning] { order: 4; flex-basis: auto; }
 }
