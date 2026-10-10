@@ -21,9 +21,13 @@
       const label = document.createElement('summary'); label.textContent = '价格、汇率与用量口径';
       method.append(label, note); host.append(method);
       if (location.hash === '#pricingMethod') method.scrollIntoView({block:'start'});
-      const relation = new URLSearchParams(location.search).get('relation');
-      const row = relation && [...host.querySelectorAll('[data-point-id]')].find(el => el.dataset.pointId === relation);
-      if (row) { row.classList.add('price-focus-row'); row.tabIndex = -1; row.focus({preventScroll:true}); row.scrollIntoView({block:'center'}); }
+      const params = new URLSearchParams(location.search);
+      const relation = params.get('relation');
+      const plan = data.context.planBySlug.get(params.get('plan'));
+      const planRelations = new Set((data.context.relationsByPlanSlug.get(plan?.slug) || []).map(row => row.slug));
+      const rows = [...host.querySelectorAll('[data-point-id]')].filter(el => relation ? el.dataset.pointId === relation : planRelations.has(el.dataset.pointId));
+      rows.forEach(row => row.classList.add('price-focus-row'));
+      if (rows[0]) { rows[0].tabIndex = -1; rows[0].focus({preventScroll:true}); rows[0].scrollIntoView({block:'center'}); }
     } catch (error) { root.CodingPlanToolPage.error(host, error.message); }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();

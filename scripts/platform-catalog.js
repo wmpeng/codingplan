@@ -678,6 +678,7 @@ function buildPlanModelListHtml(labels) {
 }
 
 const PlatformCatalog = {
+  EXTERNAL_LINK_ICON,
   buildPlanModelListHtml,
   getPlatformGuideUrl,
   DIMENSION_KEYS,
