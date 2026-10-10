@@ -39,7 +39,7 @@
     const range=rangeText!==null ? `${rangeText} ${unitLabel(unit)}`+(unlimited?'～不限量':'') : unlimited?'不限量':'额度未知';
     const priceRange=Numbers.range(item.rows.map(r=>r.usage?.unitPriceCnyPerM),v=>Numbers.tokenPrice(v,unit),v=>Numbers.unitPrice(v*Numbers.tokenFactor(unit),''));
     const originalPrice=!api && !['¥','CNY','RMB','￥'].includes(item.plan.currency || '¥') && typeof item.plan.monthlyPrice==='number' ? `<div class="offer-original-price" title="人民币金额按站内汇率折算，仅供参考。">${esc(Numbers.monthlyFee(item.plan.monthlyPrice,item.plan.currency))} / 月</div>` : '';
-    const quotaSummary=`<summary class="offer-quota-summary is-compact${range==='额度未知'?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota">月额度 ${esc(range)}</span>${priceRange!==null?`<span class="offer-summary-price" aria-hidden="true">单价 ${esc(priceRange)}/${unitLabel(unit)}</span>`:''}</span></summary>`;
+    const quotaSummary=`<summary class="offer-quota-summary is-compact${range==='额度未知'?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota"><span class="offer-summary-label">月额度 </span><span class="offer-summary-value">${esc(range)}</span></span>${priceRange!==null?`<span class="offer-summary-price" aria-hidden="true"><span class="offer-summary-label">单价 </span><span class="offer-summary-value">${esc(priceRange)} /${unitLabel(unit)}</span></span>`:''}</span></summary>`;
     const guide=globalThis.PlatformPages?.getUrl(item.platform.slug);
     const badges=(status==='开放购买'?'':`<span class="offer-status">${status}</span>`)+(E.resolveHarnessApi(item.platform,item.plan)===false?E.harnessApiBadge(false):'');
     const capabilities=badges?`<div class="offer-capabilities">${badges}</div>`:'';
@@ -54,12 +54,22 @@
     let advice=null, renderedAdvice, lastResult, lastFilterKey, lastPreference;
     const fitSummary = summary => {
       const price=summary.querySelector('.offer-summary-price');if(!price)return;
+      // Always measure from the original size so a previous shrink never traps
+      // the summary at 12px or causes it to alternate sizes on observer callbacks.
+      summary.classList.remove('is-compact','has-small-values');
       const style=getComputedStyle(summary);
       const available=summary.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
       const metricsStyle=getComputedStyle(summary.querySelector('.offer-summary-metrics'));
       const arrowStyle=getComputedStyle(summary,'::after');
-      const required=summary.querySelector('.offer-summary-quota').getBoundingClientRect().width+price.getBoundingClientRect().width+parseFloat(metricsStyle.columnGap)+parseFloat(style.columnGap)+parseFloat(arrowStyle.width)+parseFloat(arrowStyle.marginLeft)+parseFloat(arrowStyle.marginRight);
-      const compact=required>available;
+      const spacing=parseFloat(metricsStyle.columnGap)+parseFloat(style.columnGap)+parseFloat(arrowStyle.width)+parseFloat(arrowStyle.marginLeft)+parseFloat(arrowStyle.marginRight);
+      const required=()=>[...summary.querySelectorAll('.offer-summary-label,.offer-summary-value')].reduce((width,el)=>width+el.getBoundingClientRect().width,spacing);
+      let compact=false;
+      if(required()>available) {
+        summary.classList.add('has-small-values');
+        compact=required()>available;
+        // When even 12px does not fit, keep the visible quota at its original size.
+        if(compact)summary.classList.remove('has-small-values');
+      }
       summary.classList.toggle('is-compact',compact);
       price.setAttribute('aria-hidden',String(compact));
     };
