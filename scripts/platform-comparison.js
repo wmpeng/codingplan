@@ -1,8 +1,8 @@
 (function (root, factory) {
-  const api = factory();
+  const api = factory(root.NumberDisplay || (typeof require === 'function' ? require('./number-display.js') : null));
   if (typeof module === 'object' && module.exports) module.exports = api;
   root.PlatformComparison = api;
-})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (Numbers) {
   'use strict';
 
   const MAX_COMPARISON_ITEMS = 4;
@@ -282,11 +282,7 @@
     }
     if (!byCurrency.size) return '暂无可直接比较的月付价格';
     return Array.from(byCurrency.entries()).map(([currency, values]) => {
-      const min = Math.min(...values);
-      const max = Math.max(...values);
-      return min === max
-        ? `${currency}${formatNumber(min)}/月`
-        : `${currency}${formatNumber(min)}–${formatNumber(max)}/月`;
+      return `${Numbers.range(values, value => Numbers.monthlyFee(value, currency))}/月`;
     }).join('；');
   }
 

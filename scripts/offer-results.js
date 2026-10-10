@@ -1,13 +1,13 @@
 (function (root, factory) {
-  const api = factory(root.FeaturedCatalog || (typeof require === 'function' ? require('./featured-catalog.js') : null), root.EntityData || (typeof require === 'function' ? require('./entity-data.js') : null), root.PlatformCatalog || (typeof require === 'function' ? require('./platform-catalog.js') : null));
+  const api = factory(root.FeaturedCatalog || (typeof require === 'function' ? require('./featured-catalog.js') : null), root.EntityData || (typeof require === 'function' ? require('./entity-data.js') : null), root.PlatformCatalog || (typeof require === 'function' ? require('./platform-catalog.js') : null), root.NumberDisplay || (typeof require === 'function' ? require('./number-display.js') : null));
   if (typeof module === 'object' && module.exports) module.exports = api;
   root.OfferResults = api;
-})(globalThis, function (C, E, P) {
+})(globalThis, function (C, E, P, Numbers) {
   'use strict';
   const {esc,url} = C;
-  const money = n => typeof n === 'number' && Number.isFinite(n) ? `¥${n.toLocaleString('zh-CN',{maximumFractionDigits:2})}` : '待确认';
-  const unitLabel = unit => unit==='B'?'B':unit==='M'?'M':'亿';
-  const tokenAmount = (value,unit) => (value/(unit==='B'?1000:unit==='M'?1:100)).toLocaleString('zh-CN',{maximumFractionDigits:unit==='B'?9:3});
+  const money = n => Numbers.monthlyFee(n, '¥', '待确认');
+  const unitLabel = Numbers.tokenUnit;
+  const tokenAmount = Numbers.tokenAmount;
   function quota(value,unit,withToken=true) {
     if(value==='unlimited')return '不限量';
     return typeof value==='number' ? `${tokenAmount(value,unit)} ${unitLabel(unit)}${withToken?' Token':''}` : '额度未知';
@@ -29,15 +29,17 @@
       const label=inlineTimeTier?`<span class="offer-model-with-time"><span>${name}</span>${tier}</span>`:name+tier;
       const price=row.usage?.unitPriceCnyPerM;
       const amount=row.usage?.monthlyTokenInM;
-      return `<tr><th scope="row">${label}</th><td>${api?'无固定额度':typeof amount==='number'?esc(tokenAmount(amount,unit)):esc(quota(amount,unit,false))}</td><td>${typeof price==='number'?money(price*(unit==='B'?1000:unit==='M'?1:100)):'单价未知'}</td></tr>`;
+      return `<tr><th scope="row">${label}</th><td>${api?'无固定额度':typeof amount==='number'?esc(tokenAmount(amount,unit)):esc(quota(amount,unit,false))}</td><td>${esc(Numbers.tokenPrice(price,unit,'单价未知'))}</td></tr>`;
     }).join('');
     const table=`<div class="offer-model-table-wrap" role="region" aria-label="${esc(item.platform.name+' '+item.plan.name)}模型额度"><table class="offer-model-table"><thead><tr><th scope="col">模型 / 档位</th><th scope="col">月额度 / ${unitLabel(unit)}</th><th scope="col">单价 / ${unitLabel(unit)}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     const modelsId='offer-model-tags-'+encodeURIComponent(item.id);
     const models=item.models.map(m=>m.name), modelTags=models.map((name,index)=>`<span class="model-tag"${index>2?' data-extra-model hidden':''}>${esc(name)}</span>`).join('')+(models.length>3?`<button type="button" class="model-tag model-tag-more" data-toggle-models data-extra-count="${models.length-3}" aria-expanded="false" aria-controls="${esc(modelsId)}" aria-label="展开其余 ${models.length-3} 个模型">+${models.length-3}</button>`:'');
-    const values=item.rows.map(r=>r.usage?.monthlyTokenInM).filter(v=>typeof v==='number');
-    const range=values.length ? quota(Math.min(...values),unit,false)+(Math.max(...values)!==Math.min(...values)?' ～ '+quota(Math.max(...values),unit,false):'') : item.rows.some(r=>r.usage?.monthlyTokenInM==='unlimited')?'不限量':'额度未知';
-    const originalPrice=!api && !['¥','CNY','RMB','￥'].includes(item.plan.currency || '¥') && typeof item.plan.monthlyPrice==='number' ? `<div class="offer-original-price" title="人民币金额按站内汇率折算，仅供参考。">${esc(item.plan.currency)}${esc(item.plan.monthlyPrice)} / 月</div>` : '';
-    const quotaSummary=`<summary class="offer-quota-summary${range==='额度未知'?' is-unknown':''}"><span>月额度：${esc(range)}</span></summary>`;
+    const rangeText=Numbers.range(item.rows.map(r=>r.usage?.monthlyTokenInM),v=>tokenAmount(v,unit));
+    const unlimited=item.rows.some(r=>r.usage?.monthlyTokenInM==='unlimited');
+    const range=rangeText!==null ? `${rangeText} ${unitLabel(unit)}`+(unlimited?'～不限量':'') : unlimited?'不限量':'额度未知';
+    const priceRange=Numbers.range(item.rows.map(r=>r.usage?.unitPriceCnyPerM),v=>Numbers.tokenPrice(v,unit));
+    const originalPrice=!api && !['¥','CNY','RMB','￥'].includes(item.plan.currency || '¥') && typeof item.plan.monthlyPrice==='number' ? `<div class="offer-original-price" title="人民币金额按站内汇率折算，仅供参考。">${esc(Numbers.monthlyFee(item.plan.monthlyPrice,item.plan.currency))} / 月</div>` : '';
+    const quotaSummary=`<summary class="offer-quota-summary is-compact${range==='额度未知'?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota">月额度 ${esc(range)}</span>${priceRange!==null?`<span class="offer-summary-price" aria-hidden="true">单价 ${esc(priceRange)} / ${unitLabel(unit)}</span>`:''}</span></summary>`;
     const guide=globalThis.PlatformPages?.getUrl(item.platform.slug);
     const badges=(status==='开放购买'?'':`<span class="offer-status">${status}</span>`)+(E.resolveHarnessApi(item.platform,item.plan)===false?E.harnessApiBadge(false):'');
     const capabilities=badges?`<div class="offer-capabilities">${badges}</div>`:'';
@@ -50,6 +52,18 @@
   }
   function mount(host,context,config) {
     let advice=null, renderedAdvice, lastResult, lastFilterKey, lastPreference;
+    const fitSummary = summary => {
+      const price=summary.querySelector('.offer-summary-price');if(!price)return;
+      const style=getComputedStyle(summary);
+      const available=summary.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
+      const metricsStyle=getComputedStyle(summary.querySelector('.offer-summary-metrics'));
+      const arrowStyle=getComputedStyle(summary,'::after');
+      const required=summary.querySelector('.offer-summary-quota').getBoundingClientRect().width+price.getBoundingClientRect().width+parseFloat(metricsStyle.columnGap)+parseFloat(style.columnGap)+parseFloat(arrowStyle.width)+parseFloat(arrowStyle.marginLeft)+parseFloat(arrowStyle.marginRight);
+      const compact=required>available;
+      summary.classList.toggle('is-compact',compact);
+      price.setAttribute('aria-hidden',String(compact));
+    };
+    const summaryObserver=new ResizeObserver(entries=>entries.forEach(entry=>fitSummary(entry.target)));
     host.innerHTML = `<aside class="guide-advice" data-offer-advice hidden></aside><div class="section-heading offer-results-heading"><div><div class="offer-results-title"><h2>符合需求的方案</h2><span id="offerCount" role="status"></span></div><p>全部条件在同一个套餐内成立；按量方案按模型和计费档位展示。</p></div></div><div data-offer-content></div>`;
     const render=()=>{
       const controller=globalThis.CodingPlanHomeFilters;if(!controller)return;
@@ -81,6 +95,8 @@
           grid.append(el);
         }
       } else content.innerHTML=result.candidates.length?`<div class="offer-results-grid">${result.candidates.map(x=>card(x,state)).join('')}</div>`:`<div class="tool-empty"><h3>暂无同时符合条件的方案</h3><p>${result.modelConflict?esc(result.modelConflict):"试着放宽一项条件；筛选不会自动改变。"}</p><div class="guide-options">${result.conflicts.map(x=>`<button type="button" data-relax="${esc(x.key)}">取消${esc(x.label)}（${x.count} 个套餐）</button>`).join('')}</div><button type="button" class="tool-button" data-reset-results>恢复默认条件</button></div>`;
+      summaryObserver.disconnect();
+      host.querySelectorAll('.offer-quota-summary').forEach(summary=>{fitSummary(summary);summaryObserver.observe(summary);});
       for(const [id,cls] of open){const el=[...host.querySelectorAll('[data-offer-id]')].find(x=>x.dataset.offerId===id);const d=el?.querySelector('details.'+cls);if(d)d.open=true;}
       for(const id of expandedModels){const el=[...host.querySelectorAll('[data-offer-id]')].find(x=>x.dataset.offerId===id);const button=el?.querySelector('[data-toggle-models]');if(button)setModelsExpanded(button,true);}
       if(sortOnly) {

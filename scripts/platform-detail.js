@@ -7,13 +7,13 @@
     typeof require === 'function'
       ? require('./entity-data.js')
       : root.EntityData;
-  const api = factory(catalog || {}, entityData || {});
+  const api = factory(catalog || {}, entityData || {}, root.NumberDisplay || (typeof require === 'function' ? require('./number-display.js') : null));
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = api;
   } else {
     root.PlatformDetail = api;
   }
-})(typeof globalThis !== 'undefined' ? globalThis : this, function (PlatformCatalog, EntityData) {
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (PlatformCatalog, EntityData, Numbers) {
   const DEFAULT_MONITOR_API_BASE = 'https://api.dreamfree.space/vc';
 
   let options = {
@@ -59,16 +59,11 @@
   }
 
   function formatMoney(amount, currency) {
-    if (amount == null || amount === '' || Number.isNaN(Number(amount))) return null;
-    const cur = currency || '¥';
-    const num = Number(amount);
-    const text = Number.isInteger(num) ? String(num) : String(num);
-    return `${cur}${text}`;
+    return Numbers.monthlyFee(amount, currency || '¥', null);
   }
 
   function formatApiPrice(value, currency) {
-    if (typeof value !== 'number' || !Number.isFinite(value)) return '—';
-    return `${currency || '¥'}${value.toLocaleString('zh-CN', { maximumFractionDigits: 6 })}`;
+    return Numbers.unitPrice(value, currency || '¥');
   }
 
   function buildApiPricingSectionHtml(groups) {
@@ -131,10 +126,10 @@
     if (!Number.isFinite(num) || num <= 0) return null;
     if (num >= 10000) {
       const wan = num / 10000;
-      const text = Number.isInteger(wan) ? String(wan) : wan.toFixed(1).replace(/\.0$/, '');
+      const text = Numbers.tokens(wan);
       return `${text}万`;
     }
-    return num.toLocaleString('zh-CN');
+    return Numbers.tokens(num);
   }
 
   function formatPlanQuota(plan) {
@@ -145,7 +140,7 @@
       Number.isFinite(plan.measuredMonthlyTokenLimit) &&
       plan.measuredMonthlyTokenLimit > 0
     ) {
-      return `${plan.measuredMonthlyTokenLimit}M Token`;
+      return `${Numbers.tokens(plan.measuredMonthlyTokenLimit)}M Token`;
     }
     if (typeof plan.monthlyRequests === 'number' && Number.isFinite(plan.monthlyRequests)) {
       const short = formatCountShort(plan.monthlyRequests);

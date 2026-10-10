@@ -1,13 +1,13 @@
 (function (root, factory) {
   'use strict';
-  const api = factory();
+  const api = factory(root.NumberDisplay || (typeof require === 'function' ? require('./number-display.js') : null));
   if (typeof module === 'object' && module.exports) {
     module.exports = api;
   }
   if (typeof root !== 'undefined') {
     root.PlanCompositePriceChart = api;
   }
-})(typeof window !== 'undefined' ? window : globalThis, function () {
+})(typeof window !== 'undefined' ? window : globalThis, function (Numbers) {
   'use strict';
 
   const DEFAULT_USD_TO_CNY_RATE = 6.8;
@@ -78,7 +78,7 @@
 
   function formatCompositePriceLabel(value) {
     if (typeof value !== 'number' || !Number.isFinite(value)) return '-';
-    return `￥${value.toFixed(2)}`;
+    return Numbers.unitPrice(value, '￥', '-');
   }
 
   function buildAxisLabel(plan) {
@@ -342,7 +342,7 @@
           color: '#64748b',
           fontSize: 11,
           formatter(value) {
-            return Number(value).toFixed(2);
+            return Numbers.unitPrice(value, '');
           }
         },
         splitLine: { lineStyle: { color: 'rgba(23, 32, 51, 0.08)' } }

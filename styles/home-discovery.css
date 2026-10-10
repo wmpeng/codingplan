@@ -106,6 +106,12 @@ body .offer-card-refined .offer-models > .offer-quota-summary::after { content:"
 body .offer-card-refined .offer-models[open] > .offer-quota-summary::after { transform:rotate(225deg);margin-bottom:0; }
 body .offer-card-refined .offer-models > .offer-quota-summary:hover { background:color-mix(in srgb, var(--bg-tertiary), var(--border-color) 35%); }
 body .offer-card-refined .offer-models > .offer-quota-summary.is-unknown { color:var(--text-secondary); }
+.offer-summary-metrics { display:flex;align-items:baseline;gap:12px;min-width:0;max-width:calc(100% - 24px); }
+.offer-summary-quota, .offer-summary-price { flex-shrink:0;white-space:nowrap; }
+.offer-summary-quota { max-width:100%;white-space:normal;overflow-wrap:anywhere; }
+.offer-quota-summary { position:relative; }
+.offer-quota-summary.is-compact { overflow:hidden; }
+.offer-quota-summary.is-compact .offer-summary-price { position:absolute;visibility:hidden;pointer-events:none; }
 body .offer-card-refined .offer-model-details { padding-top:14px; }
 body .offer-card-refined .offer-model-table { table-layout:fixed; }
 body .offer-card-refined .offer-model-table th:first-child { width:43%; }

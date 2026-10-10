@@ -1,8 +1,8 @@
 (function (root, factory) {
-  const api = factory(root.EntityData || (typeof require === 'function' ? require('./entity-data.js') : null));
+  const api = factory(root.EntityData || (typeof require === 'function' ? require('./entity-data.js') : null), root.NumberDisplay || (typeof require === 'function' ? require('./number-display.js') : null));
   if (typeof module === 'object' && module.exports) module.exports = api;
   root.CodingPlanFilters = api;
-})(typeof globalThis !== 'undefined' ? globalThis : this, function (EntityData) {
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (EntityData, Numbers) {
   'use strict';
 
   const DEFAULTS = Object.freeze({
@@ -185,9 +185,8 @@
     const values = rows.map(row => row.value).filter(value => typeof value === 'number' && Number.isFinite(value));
     const unlimited = rows.some(row => row.value === 'unlimited');
     if (!values.length && !unlimited) return '未知';
-    const factor = state.tokenUnit === 'B' ? 1000 : state.tokenUnit === 'M' ? 1 : 100;
-    const unit = state.tokenUnit === 'B' ? 'B' : state.tokenUnit === 'M' ? 'M' : '亿';
-    const format = value => (value / factor).toLocaleString('zh-CN', { maximumFractionDigits: state.tokenUnit === "B" ? 9 : 4 });
+    const unit = Numbers.tokenUnit(state.tokenUnit);
+    const format = value => Numbers.tokenAmount(value, state.tokenUnit);
     const min = Math.min(...values), max = Math.max(...values);
     const text = values.length ? `${format(min)}${unlimited ? '–无限制' : min === max ? '' : '–' + format(max)} ${unit}` : '无限制';
     return text + (values.length + rows.filter(row => row.value === 'unlimited').length < rows.length ? '（部分未知）' : '');

@@ -2,10 +2,11 @@
   const api = factory(
     root.CodingPlanFilters ||
       (typeof require === "function" ? require("./filter-state.js") : null),
+    root.NumberDisplay || (typeof require === "function" ? require("./number-display.js") : null),
   );
   if (typeof module === "object" && module.exports) module.exports = api;
   root.PurchaseGuide = api;
-})(typeof globalThis !== "undefined" ? globalThis : this, function (F) {
+})(typeof globalThis !== "undefined" ? globalThis : this, function (F, Numbers) {
   "use strict";
   const levels = { trial: null, occasional: 100, daily: 1000, heavy: 4000 };
   const coefficients = { writing: 0.5, coding: 1, professional: 1, api: 1 };
@@ -92,7 +93,7 @@
         if (s.preference === "balanced" && finite(offer.platform.rating) !== null) reasons.push(`平台评分 ${offer.platform.rating}，按平台评分优先排序`);
         if (s.budgetCny?.max != null && cost !== null)
           reasons.push(
-            `月支出 ${cost.toFixed(2)} 元，在 ${s.budgetCny.max} 元预算内`,
+            `月支出 ${Numbers.monthlyFee(cost, "")} 元，在 ${s.budgetCny.max} 元预算内`,
           );
         if (s.monthlyTokenRange)
           reasons.push(

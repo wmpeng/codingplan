@@ -6,6 +6,7 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
     'use strict';
     const EntityData = root.EntityData || (typeof require === 'function' ? require('./entity-data.js') : null);
+    const Numbers = root.NumberDisplay || (typeof require === 'function' ? require('./number-display.js') : null);
 
     const BENCHMARKS = {
         artificialAnalysis: { label: 'AA 智力', short: 'AA' },
@@ -408,27 +409,26 @@
     }
 
     function formatTokenAmount(value, unit) {
+        if (value === 'unlimited') return '不限量';
         if (value === null || value === undefined || value === '') return '—';
         const normalized = normalizeTokenUnit(unit);
         const number = tokenAmountInUnit(value, normalized);
         if (!Number.isFinite(number)) return '—';
-        const digits = number < 1 ? (normalized === "B" ? 9 : 3) : number < 10 ? 2 : 1;
-        return `${formatNumber(number, digits)}${normalized === 'B' ? 'B' : normalized === 'yi' ? '亿' : 'M'}`;
+        return `${Numbers.tokens(number)}${Numbers.tokenUnit(normalized)}`;
     }
 
     function formatUnitPrice(value, unit) {
         const normalized = normalizeTokenUnit(unit);
         const number = unitPriceInTokenUnit(value, normalized);
         if (!Number.isFinite(number) || number < 0) return '—';
-        return `¥${formatNumber(number, 4)} / ${normalized === 'B' ? 'B' : normalized === 'yi' ? '亿' : 'M'}`;
+        return `${Numbers.unitPrice(number)} / ${Numbers.tokenUnit(normalized)}`;
     }
 
     function formatApiPricing(pricing) {
         if (!pricing || typeof pricing !== 'object') return '—';
         const currency = String(pricing.currency || '¥');
         const format = (value) => {
-            const number = Number(value);
-            return Number.isFinite(number) ? `${currency}${formatNumber(number, 6)}` : '—';
+            return Numbers.unitPrice(value, currency);
         };
         return `输入 ${format(pricing.inputPerM)} · 缓存 ${format(pricing.cachePerM)} · 输出 ${format(pricing.outputPerM)} / M`;
     }
@@ -446,10 +446,10 @@
         if (original === null && cny === null) return '未公开';
         const originalCurrency = currencySymbol(point && point.originalCurrency);
         const originalText = original === null
-            ? `¥${formatNumber(cny, 2)}`
-            : `${originalCurrency}${formatNumber(original, 2)}`;
+            ? Numbers.monthlyFee(cny)
+            : Numbers.monthlyFee(original, originalCurrency);
         const isCny = originalCurrency === '¥';
-        const converted = !isCny && cny !== null ? `（约 ¥${formatNumber(cny, 2)}）` : '';
+        const converted = !isCny && cny !== null ? `（约 ${Numbers.monthlyFee(cny)}）` : '';
         return `${originalText}${converted} / 月`;
     }
 
@@ -523,7 +523,7 @@
         const subscription = point.billingMode === 'subscription';
         const price = subscription ? (point.monthlyFeeCny === 0 ? '¥0 / 月' : finitePositive(point.monthlyFeeCny) !== null
             ? formatSubscriptionMonthlyPrice(point) : '未公开') : '按量';
-        const unitPrice = point.unitPriceCnyPerM === 0 ? `¥0 / ${normalizeTokenUnit(tokenUnit) === 'B' ? 'B' : normalizeTokenUnit(tokenUnit) === 'yi' ? '亿' : 'M'}` : formatUnitPrice(point.unitPriceCnyPerM, tokenUnit);
+        const unitPrice = formatUnitPrice(point.unitPriceCnyPerM, tokenUnit);
         const aaScore = point.scores && point.scores.artificialAnalysis;
         const deepSWEScore = point.scores && point.scores.deepSWE;
         const deepSWEInterval = deepSWEScore && Number.isFinite(Number(deepSWEScore.confidenceInterval))
@@ -1084,8 +1084,8 @@
                 const tokenUnitLabel = state.tokenUnit === 'B' ? 'B' : state.tokenUnit === 'yi' ? '亿' : 'M';
                 const usageZone = buildUsageAttractiveZone(usagePoints, state.tokenUnit, state.tokensScale);
                 usageChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
-                    xAxis: { type: state.tokensScale, name: '月费（人民币）', nameLocation: 'middle', nameGap: 38, min: usageZone.xBounds.min, max: usageZone.xBounds.max, logBase: 10, axisLabel: { formatter: (v) => `¥${formatNumber(v, 0)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
-                    yAxis: { type: state.tokensScale, name: `月 Token（${tokenUnitLabel}）`, nameLocation: 'middle', nameGap: 55, min: usageZone.yBounds.min, max: usageZone.yBounds.max, logBase: 10, axisLabel: { formatter: (v) => formatNumber(v, v < 1 ? 3 : v < 10 ? 2 : 1) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
+                    xAxis: { type: state.tokensScale, name: '月费（人民币）', nameLocation: 'middle', nameGap: 38, min: usageZone.xBounds.min, max: usageZone.xBounds.max, logBase: 10, axisLabel: { formatter: (v) => Numbers.monthlyFee(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
+                    yAxis: { type: state.tokensScale, name: `月 Token（${tokenUnitLabel}）`, nameLocation: 'middle', nameGap: 55, min: usageZone.yBounds.min, max: usageZone.yBounds.max, logBase: 10, axisLabel: { formatter: (v) => Numbers.tokens(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     series: [buildUsageAttractiveZoneSeries(usageZone), ...seriesByColor(usagePoints, state.colorMode, color.colors, (point) => ({ value: [point.monthlyFeeCny, tokenAmountInUnit(point.monthlyTokenInM, state.tokenUnit)], meta: point }), 'usage', pointLabelField)]
                 }), true);
 
@@ -1102,7 +1102,7 @@
                     .filter((value) => value !== null);
                 const intelligenceScoreReference = intelligenceScores.length ? Math.min(...intelligenceScores) : 0;
                 intelligenceChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
-                    xAxis: { type: state.priceScale, name: `人民币 / ${tokenUnitLabel} Token`, nameLocation: 'middle', nameGap: 38, min: state.priceScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => `¥${formatNumber(v, v < 1 ? 2 : 1)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
+                    xAxis: { type: state.priceScale, name: `人民币 / ${tokenUnitLabel} Token`, nameLocation: 'middle', nameGap: 38, min: state.priceScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => Numbers.unitPrice(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     yAxis: { type: 'value', name: `${BENCHMARKS[state.benchmark].short} 评分`, nameLocation: 'middle', nameGap: 45, scale: true, axisLabel: { formatter: (v) => formatNumber(v, 0) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     series: [
                         buildIntelligenceAttractiveZoneSeries(

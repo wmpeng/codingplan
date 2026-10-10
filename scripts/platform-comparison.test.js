@@ -77,7 +77,7 @@ describe('comparison presentation helpers', () => {
       { billingMode: 'subscription', monthlyPrice: 119, currency: '¥' },
       { billingMode: 'subscription', monthlyPrice: 10, currency: '$' },
       { billingMode: 'payg', monthlyPrice: 1, currency: '¥' }
-    ]), '¥29–119/月；$10/月');
+    ]), '¥29～¥119/月；$10/月');
   });
 
   it('marks ties and calculates a single leader margin', () => {

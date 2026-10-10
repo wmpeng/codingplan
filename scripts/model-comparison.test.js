@@ -128,7 +128,7 @@ test('inline unit price bars share a logarithmic scale without inventing unknown
   const html = unitPriceVisualHtml(points[0], 'yi', { scale, color: '#2563eb' });
   assert.match(html, /usage-price-bar-fill/);
   assert.match(html, /--usage-price-bar-color:#2563eb/);
-  assert.match(html, /综合单价 ¥20 \/ 亿 Token/);
+  assert.match(html, /综合单价 ¥20\.00 \/ 亿 Token/);
   assert.equal(unitPriceVisualHtml({ unitPriceCnyPerM: 'unknown' }, 'M', { scale }), '<span class="usage-price-bar-empty">—</span>');
 });
 
@@ -293,12 +293,12 @@ test('preset tables add model only for multi groups and preserve single-model qu
   assert.equal(single.includes('按综合单价从低到高'), false);
   assert.equal(single.includes('包含：'), false);
   assert.match(single, /usage-preset-qualifier">\[谷\]/);
-  assert.match(single, /¥0\.1 \/ M/);
+  assert.match(single, /¥0\.10 \/ M/);
   assert.match(multi, /平台 \/ 模型 \/ 套餐/);
   assert.equal(multi.includes('<th scope="col">模型</th>'), false);
   assert.match(multi, /包含：GLM-5\.3-Flash/);
   assert.match(multi, /GLM-5\.3-Flash \[谷\]/);
-  assert.match(multi, /¥10 \/ 亿/);
+  assert.match(multi, /¥10\.00 \/ 亿/);
   assert.match(multi, /10亿/);
 });
 
@@ -312,7 +312,7 @@ test('preset tables show API rows with explicit unavailable subscription fields'
     id: 'api', title: 'API', kind: 'single', modelSlugs: ['deepseek-v4-flash-0731']
   }, [apiPoint], 'yi', 'all');
   assert.match(html, /usage-preset-price">按量<\/span>/);
-  assert.match(html, /¥10 \/ 亿/);
+  assert.match(html, /¥10\.00 \/ 亿/);
   assert.match(html, /usage-preset-metric-secondary"><span>月用量<\/span><span>—<\/span>/);
 });
 
@@ -333,7 +333,7 @@ test('comparison table rows format subscription and API semantics', () => {
   assert.match(subscription, /12\.5M/);
   assert.match(subscription, /50M/);
   assert.match(subscription, /100M/);
-  assert.match(subscription, /¥0\.7 \/ M/);
+  assert.match(subscription, /¥0\.70 \/ M/);
   assert.match(subscription, />52</);
   assert.match(subscription, /41 ±3/);
   assert.match(subscription, /按官方额度推算/);
@@ -351,8 +351,8 @@ test('comparison table rows format subscription and API semantics', () => {
     apiPricing: { currency: '¥', inputPerM: 1.5, cachePerM: 0.05, outputPerM: 4.5 }
   });
   assert.match(api, /按量/);
-  assert.match(api, /¥0\.1444 \/ M/);
-  assert.match(api, /输入 ¥1\.5 · 缓存 ¥0\.05 · 输出 ¥4\.5 \/ M/);
+  assert.match(api, /¥0\.14 \/ M/);
+  assert.match(api, /输入 ¥1\.50 · 缓存 ¥0\.05 · 输出 ¥4\.50 \/ M/);
   assert.equal(api.includes('0M'), false);
   assert.equal(api.includes('undefined'), false);
 });
@@ -360,7 +360,7 @@ test('comparison table rows format subscription and API semantics', () => {
 test('API pricing formatter preserves raw price components and unknowns', () => {
   assert.equal(
     formatApiPricing({ currency: '$', inputPerM: 2, cachePerM: 0.2, outputPerM: 8 }),
-    '输入 $2 · 缓存 $0.2 · 输出 $8 / M'
+    '输入 $2.00 · 缓存 $0.20 · 输出 $8.00 / M'
   );
   assert.equal(formatApiPricing(null), '—');
 });
@@ -385,15 +385,15 @@ test('token unit conversion keeps amount and unit price mathematically aligned',
   assert.equal(unitPriceInTokenUnit(0.2, 'yi'), 20);
   assert.equal(formatTokenAmount(250, 'M'), '250M');
   assert.equal(formatTokenAmount(250, 'yi'), '2.5亿');
-  assert.equal(formatUnitPrice(0.2, 'M'), '¥0.2 / M');
-  assert.equal(formatUnitPrice(0.2, 'yi'), '¥20 / 亿');
+  assert.equal(formatUnitPrice(0.2, 'M'), '¥0.20 / M');
+  assert.equal(formatUnitPrice(0.2, 'yi'), '¥20.00 / 亿');
 
   const yiRow = comparisonTableRowHtml({
     slug: 'sub-yi', billingMode: 'subscription', platformName: '平台A', planName: 'Pro',
     relationLabel: 'Model A', monthlyFeeCny: 70, fiveHourTokenInM: 250,
     weeklyTokenInM: 500, monthlyTokenInM: 1000, unitPriceCnyPerM: 0.2
   }, 'yi');
-  assert.match(yiRow, /¥20 \/ 亿/);
+  assert.match(yiRow, /¥20\.00 \/ 亿/);
   assert.match(yiRow, /2\.5亿/);
   assert.match(yiRow, /5亿/);
   assert.match(yiRow, /10亿/);
@@ -430,8 +430,8 @@ test('B 表示十亿 Token，用量与单价反向换算且未知和零保持语
   assert.equal(M.unitPriceInTokenUnit(0.15,'B'),150);
   assert.equal(M.formatTokenAmount(125,'B'),'0.125B');
   assert.equal(M.formatTokenAmount(0.1,'B'),'0.0001B');
-  assert.equal(M.formatUnitPrice(0.15,'B'),'¥150 / B');
-  assert.equal(M.formatUnitPrice(0,'B'),'¥0 / B');
+  assert.equal(M.formatUnitPrice(0.15,'B'),'¥150.00 / B');
+  assert.equal(M.formatUnitPrice(0,'B'),'¥0.00 / B');
   assert.equal(M.tokenAmountInUnit(null,'B'),null);
   assert.equal(M.formatTokenAmount('unknown','B'),'—');
   assert.equal(M.getAttractiveUnitPriceThreshold('B'),150);
