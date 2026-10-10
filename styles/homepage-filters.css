@@ -406,24 +406,28 @@ body .filter-picker-menu .filter-picker-tools button:focus-visible { outline: 2p
 body.discovery-page .filter-state-bar:has(.filter-picker[open]) { z-index: 35; }
 
 /* Model picks, preset shortcuts and the optional strict requirement share one panel. */
-body #homeModelPicker .filter-picker-menu { width: 380px; max-height: min(620px, 75dvh); overflow-y: auto; }
-body #homeModelPicker [data-picker-options] { flex: 1 1 auto; min-height: 100px; max-height: 260px; padding-top: 6px; border-top: 1px solid var(--border-light); }
-body #homeModelPicker .filter-picker-tools { display: flex; gap: 8px; padding: 0; border-bottom: 0; margin: 2px 0 12px; }
-body #homeModelPicker .filter-picker-tools button { min-height: 32px; padding: 4px 14px; border-color: var(--border-color); background: var(--bg-tertiary); color: var(--text-secondary); font-size: 13px; font-weight: 500; }
-body #homeModelPicker .filter-picker-tools button:hover { background: var(--bg-secondary); border-color: var(--border-strong); color: var(--text-primary); }
-body #homeModelPicker .filter-picker-tools button:active { background: var(--bg-tertiary); }
-body #homeModelPicker [data-picker-options] { scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; padding-right: 4px; }
-body #homeModelPicker [data-picker-options]::-webkit-scrollbar { width: 6px; }
-body #homeModelPicker [data-picker-options]::-webkit-scrollbar-thumb { border-radius: 6px; background: #cbd5e1; }
-body #homeModelPicker label[data-filter-option] { min-height: 40px; padding: 9px 10px; gap: 10px; align-items: center; font-weight: 400; }
-body #homeModelPicker label[data-filter-option]:has(input:checked) { background: #f3f4f6; color: #111827; font-weight: 600; }
-body #homeModelPicker label[data-filter-option]:hover,
-body #homeModelPicker label[data-filter-option]:focus-within { background: #f3f4f6; }
-body #homeModelPicker label[data-filter-option]:has(input:checked):hover,
-body #homeModelPicker label[data-filter-option]:has(input:checked):focus-within { background: #e5e7eb; }
-body #homeModelPicker label[data-filter-option] input[type="checkbox"] { width: 14px; height: 14px; accent-color: #374151; }
-body #homeModelPicker label[data-filter-option] input:focus-visible { outline-color: #6b7280; }
-body #homeModelPicker label[data-filter-option] span { min-width: 0; overflow-wrap: anywhere; }
+body :is(#homePlatformPicker, #homeModelPicker) .filter-picker-menu { width: 380px; max-height: min(620px, 75dvh); overflow-y: auto; }
+body :is(#homePlatformPicker, #homeModelPicker) [data-picker-options] { flex: 1 1 auto; min-height: 100px; max-height: 260px; padding-top: 6px; border-top: 1px solid var(--border-light); }
+body :is(#homePlatformPicker, #homeModelPicker) .filter-picker-tools { display: flex; gap: 8px; padding: 0; border-bottom: 0; margin: 2px 0 12px; }
+body :is(#homePlatformPicker, #homeModelPicker) .filter-picker-tools { align-items: center; flex-wrap: wrap; width: 100%; }
+body .picker-selection-count { margin-left: auto; color: var(--text-secondary); font-size: 12px; line-height: 1.5; font-variant-numeric: tabular-nums; white-space: nowrap; }
+body .picker-selection-count strong { color: var(--text-primary); font-size: inherit; font-weight: 600; }
+body .picker-count-divider { padding: 0 2px; color: var(--text-muted); }
+body :is(#homePlatformPicker, #homeModelPicker) .filter-picker-tools button { min-height: 32px; padding: 4px 14px; border-color: var(--border-color); background: var(--bg-tertiary); color: var(--text-secondary); font-size: 13px; font-weight: 500; }
+body :is(#homePlatformPicker, #homeModelPicker) .filter-picker-tools button:hover { background: var(--bg-secondary); border-color: var(--border-strong); color: var(--text-primary); }
+body :is(#homePlatformPicker, #homeModelPicker) .filter-picker-tools button:active { background: var(--bg-tertiary); }
+body :is(#homePlatformPicker, #homeModelPicker) [data-picker-options] { scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; padding-right: 4px; }
+body :is(#homePlatformPicker, #homeModelPicker) [data-picker-options]::-webkit-scrollbar { width: 6px; }
+body :is(#homePlatformPicker, #homeModelPicker) [data-picker-options]::-webkit-scrollbar-thumb { border-radius: 6px; background: #cbd5e1; }
+body :is(#homePlatformPicker, #homeModelPicker) label[data-filter-option] { min-height: 40px; padding: 9px 10px; gap: 10px; align-items: center; font-weight: 400; }
+body :is(#homePlatformPicker, #homeModelPicker) label[data-filter-option]:has(input:checked) { background: #f3f4f6; color: #111827; font-weight: 600; }
+body :is(#homePlatformPicker, #homeModelPicker) label[data-filter-option]:hover,
+body :is(#homePlatformPicker, #homeModelPicker) label[data-filter-option]:focus-within { background: #f3f4f6; }
+body :is(#homePlatformPicker, #homeModelPicker) label[data-filter-option]:has(input:checked):hover,
+body :is(#homePlatformPicker, #homeModelPicker) label[data-filter-option]:has(input:checked):focus-within { background: #e5e7eb; }
+body :is(#homePlatformPicker, #homeModelPicker) label[data-filter-option] input[type="checkbox"] { width: 14px; height: 14px; accent-color: #374151; }
+body :is(#homePlatformPicker, #homeModelPicker) label[data-filter-option] input:focus-visible { outline-color: #6b7280; }
+body :is(#homePlatformPicker, #homeModelPicker) label[data-filter-option] span { min-width: 0; overflow-wrap: anywhere; }
 body #homeModelPicker input[type="checkbox"] { width: 16px; height: 16px; margin: 0; accent-color: var(--accent-primary); }
 body #homeModelPicker input[type="checkbox"]:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
 body .model-preset-options { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin: 0 0 12px; }
@@ -449,8 +453,16 @@ body .model-multimodal-select:focus-visible, body .model-multimodal-info:focus-v
 body .model-multimodal-tooltip { position: absolute; left: 0; top: calc(100% + 6px); z-index: 2; width: min(300px, 100%); box-sizing: border-box; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-secondary); box-shadow: var(--shadow-md); color: var(--text-secondary); font-size: 12px; line-height: 1.65; }
 body .model-multimodal-notice { margin: 0 0 10px; color: var(--text-secondary); font-size: 12px; line-height: 1.65; }
 body .model-multimodal-tooltip[hidden], body .model-multimodal-notice[hidden] { display: none !important; }
+/* Platform shortcuts change the checklist; they do not stay active as filters. */
+body .platform-shortcut-tools { position: relative; margin: 0 0 12px; }
+body .platform-shortcut-caption { display: flex; align-items: center; gap: 2px; margin-bottom: 4px; color: var(--text-secondary); font-size: 12px; }
+body .platform-shortcut-help { display: inline-flex; align-items: center; }
+body .platform-shortcut-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+body .platform-shortcut-actions button { flex: 1 1 148px; min-width: 0; min-height: 34px; padding: 5px 8px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--bg-secondary); color: var(--text-secondary); font: inherit; font-size: 13px; line-height: 1.5; white-space: normal; cursor: pointer; }
+body .platform-shortcut-actions button:hover { background: var(--bg-tertiary); color: var(--text-primary); border-color: var(--border-strong); }
+body .platform-shortcut-actions button:focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
 @media (max-width: 800px), (pointer: coarse) {
-  body .model-multimodal-select, body .model-multimodal-info { min-height: 44px; }
+  body .model-multimodal-select, body .model-multimodal-info, body .platform-shortcut-actions button { min-height: 44px; }
   body .model-multimodal-info { width: 44px; }
 }
 body .model-match-setting { margin-top: 12px; padding-top: 8px; border-top: 1px solid var(--border-light); }
@@ -474,15 +486,15 @@ body .guide-summary .model-match-warning { margin-left: 8px; }
 body #homeModelPicker > summary { flex-wrap: wrap; }
 body #homeModelPicker > summary::after { margin-left: auto; }
 body .model-preset-options button:disabled, body .filter-picker-tools button:disabled { opacity: .5; cursor: wait; }
-body #homeModelPicker [hidden] { display: none !important; }
+body :is(#homePlatformPicker, #homeModelPicker) [hidden] { display: none !important; }
 @media (max-width: 800px) {
-  body #homeModelPicker .filter-picker-menu { width: auto; }
-  body #homeModelPicker .filter-picker-tools button, body #homeModelPicker label[data-filter-option] { min-height: 44px; }
+  body :is(#homePlatformPicker, #homeModelPicker) .filter-picker-menu { width: auto; }
+  body :is(#homePlatformPicker, #homeModelPicker) .filter-picker-tools button, body :is(#homePlatformPicker, #homeModelPicker) label[data-filter-option] { min-height: 44px; }
   body .model-preset-options button, body .model-match-confirm button, body .filter-picker-menu .model-match-check { min-height: 44px; }
   body #homeModelPicker > summary [data-model-match-warning] { order: 4; flex-basis: auto; }
 }
 @media (pointer: coarse) {
-  body .model-preset-options button, body #homeModelPicker .filter-picker-tools button { min-height: 44px; }
+  body .model-preset-options button, body :is(#homePlatformPicker, #homeModelPicker) .filter-picker-tools button { min-height: 44px; }
 }
 
 /* Home conditions and list utilities share one compact panel. */

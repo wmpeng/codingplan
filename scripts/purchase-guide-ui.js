@@ -142,7 +142,7 @@
         root.CodingPlanFilterUI.multimodalControls("guideMultimodal", controller.getMultimodalActionLabel(), controller.getMultimodalNotice())
       );
     return (
-      `<div class="guide-conditions"><label class="guide-check"><input type="checkbox" data-guide-check="domesticNetworkOnly" ${s.domesticNetworkOnly ? "checked" : ""}>只考虑无需境外网络的方案</label><label class="guide-check"><input type="checkbox" data-guide-check="domesticPaymentOnly" ${s.domesticPaymentOnly ? "checked" : ""}>只考虑无需境外支付的方案</label></div>` +
+      root.CodingPlanFilterUI.platformShortcutControls("guidePlatform", controller.getPlatformShortcutLabels(), controller.getPlatformShortcutNotice()) +
       buttons(
         "preference",
         G.sortOptions.map(option => [option.value, option.label]),
@@ -243,10 +243,16 @@
     } else if (!G.directAdvice(answers)) set({ [key]: value });
     render();
   }
-  root.CodingPlanFilterUI.bindMultimodalHelp(host);
+  root.CodingPlanFilterUI.bindSelectionHelp(host);
   host.addEventListener("click", (event) => {
     const el = event.target.closest("button");
     if (!el) return;
+    if (el.dataset.platformShortcut) {
+      if (controller.selectPlatformShortcut(el.dataset.platformShortcut, "guide")) applied = true;
+      render();
+      host.querySelector(`[data-platform-shortcut="${el.dataset.platformShortcut}"]`)?.focus({preventScroll:true});
+      return;
+    }
     if (el.hasAttribute("data-select-multimodal")) {
       if (controller.selectMultimodalModels("guide")) applied = true;
       render();
@@ -294,11 +300,7 @@
           set({ budgetCny: null });
         } else if (step === 3) set({ modelGroup: "any", modelSlugs: null, modelMatch: "any", imageRequired: false });
         else
-          set({
-            domesticNetworkOnly: false,
-            domesticPaymentOnly: false,
-            preference: "balanced",
-          });
+          set({ preference: "balanced" });
       }
       if (step === questions.length - 1 && action !== "prev") {
         collapsed = true;
@@ -316,11 +318,6 @@
       document
         .getElementById("homepageUnifiedFiltersMount")
         .scrollIntoView({ behavior: "smooth" });
-  });
-  host.addEventListener("change", (event) => {
-    const el = event.target;
-    if (el.dataset.guideCheck && !G.directAdvice(answers))
-      set({ [el.dataset.guideCheck]: el.checked });
   });
   host.addEventListener("input", (event) => {
     const el = event.target,
