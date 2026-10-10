@@ -24,18 +24,20 @@
     const canBuy=!item.plan.discontinued && ['open','limited'].includes(item.platform.platformStatus || 'open');
     const rows=item.rows.map(row=>{
       const model=item.models.find(m=>m.slug===row.modelSlug), tiers=[row.serviceTier,row.contextTier,row.timeTier].filter(Boolean).join(' / ');
+      const inlineTimeTier=row.timeTier && !row.serviceTier && !row.contextTier;
+      const name=esc(model?.name || row.modelSlug), tier=tiers?`<small${inlineTimeTier?' class="offer-time-tier"':''}>${esc(tiers)}</small>`:'';
+      const label=inlineTimeTier?`<span class="offer-model-with-time"><span>${name}</span>${tier}</span>`:name+tier;
       const price=row.usage?.unitPriceCnyPerM;
       const amount=row.usage?.monthlyTokenInM;
-      return `<tr><th scope="row">${esc(model?.name || row.modelSlug)}${tiers?`<small>${esc(tiers)}</small>`:''}</th><td>${api?'无固定额度':typeof amount==='number'?esc(tokenAmount(amount,unit)):esc(quota(amount,unit,false))}</td><td>${typeof price==='number'?money(price*(unit==='B'?1000:unit==='M'?1:100)):'单价未知'}</td></tr>`;
+      return `<tr><th scope="row">${label}</th><td>${api?'无固定额度':typeof amount==='number'?esc(tokenAmount(amount,unit)):esc(quota(amount,unit,false))}</td><td>${typeof price==='number'?money(price*(unit==='B'?1000:unit==='M'?1:100)):'单价未知'}</td></tr>`;
     }).join('');
     const table=`<div class="offer-model-table-wrap" role="region" aria-label="${esc(item.platform.name+' '+item.plan.name)}模型额度"><table class="offer-model-table"><thead><tr><th scope="col">模型 / 档位</th><th scope="col">月额度 / ${unitLabel(unit)}</th><th scope="col">单价 / ${unitLabel(unit)}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     const modelsId='offer-model-tags-'+encodeURIComponent(item.id);
     const models=item.models.map(m=>m.name), modelTags=models.map((name,index)=>`<span class="model-tag"${index>2?' data-extra-model hidden':''}>${esc(name)}</span>`).join('')+(models.length>3?`<button type="button" class="model-tag model-tag-more" data-toggle-models data-extra-count="${models.length-3}" aria-expanded="false" aria-controls="${esc(modelsId)}" aria-label="展开其余 ${models.length-3} 个模型">+${models.length-3}</button>`:'');
     const values=item.rows.map(r=>r.usage?.monthlyTokenInM).filter(v=>typeof v==='number');
-    const unknown=item.rows.some(r=>r.usage?.monthlyTokenInM==null || r.usage?.monthlyTokenInM==='unknown');
     const range=values.length ? quota(Math.min(...values),unit,false)+(Math.max(...values)!==Math.min(...values)?' ～ '+quota(Math.max(...values),unit,false):'') : item.rows.some(r=>r.usage?.monthlyTokenInM==='unlimited')?'不限量':'额度未知';
     const originalPrice=!api && !['¥','CNY','RMB','￥'].includes(item.plan.currency || '¥') && typeof item.plan.monthlyPrice==='number' ? `<div class="offer-original-price" title="人民币金额按站内汇率折算，仅供参考。">${esc(item.plan.currency)}${esc(item.plan.monthlyPrice)} / 月</div>` : '';
-    const quotaSummary=`<summary class="offer-quota-summary${range==='额度未知'?' is-unknown':''}"><span>月额度参考：${esc(range)}${values.length&&unknown?' · 部分模型未知':''}</span></summary>`;
+    const quotaSummary=`<summary class="offer-quota-summary${range==='额度未知'?' is-unknown':''}"><span>月额度：${esc(range)}</span></summary>`;
     const guide=globalThis.PlatformPages?.getUrl(item.platform.slug);
     const badges=(status==='开放购买'?'':`<span class="offer-status">${status}</span>`)+(E.resolveHarnessApi(item.platform,item.plan)===false?E.harnessApiBadge(false):'');
     const capabilities=badges?`<div class="offer-capabilities">${badges}</div>`:'';

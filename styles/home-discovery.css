@@ -75,6 +75,9 @@ body .offer-capabilities > :is(.offer-status, .harness-api-badge) { display:inli
 .offer-model-table td,.offer-model-table th { padding:8px 6px;border-bottom:1px solid #edf1f6;vertical-align:top;text-align:left; }
 .offer-model-table th { font-weight:500;color:#52657d; }
 .offer-model-table th small { display:block; }
+.offer-model-with-time { display:inline-flex; align-items:baseline; gap:6px; max-width:100%; }
+.offer-model-with-time > span { min-width:0; }
+.offer-model-table th small.offer-time-tier { display:inline; flex-shrink:0; white-space:nowrap; }
 .offer-model-table td { font-variant-numeric:tabular-nums;min-width:90px; }
 .offer-result-actions { display:flex;gap:10px 14px;align-items:center;flex-wrap:wrap;margin-top:14px;border-top:1px solid #edf1f6;padding-top:12px; }
 .offer-result-actions>a { font-size:12px;text-decoration:none; }
