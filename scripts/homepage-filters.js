@@ -72,6 +72,73 @@
       </div></details>`;
   }
 
+  const multimodalExplanation = "可以通俗理解为：你可以把图片或截图发给模型，让它看图理解、分析和回答。音频、视频和生图能力因模型而异。";
+  function multimodalControls(id, label = "全部多模态模型", notice = "") {
+    return `<div class="model-multimodal-tools"><button type="button" class="model-multimodal-select" data-select-multimodal>${escapeHtml(label)}</button><span class="model-multimodal-help"><button type="button" class="model-multimodal-info" data-multimodal-help aria-label="什么是多模态模型" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>${multimodalExplanation}</span></span></div><p class="model-multimodal-notice" data-multimodal-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
+  }
+  function bindMultimodalHelp(host) {
+    const triggers = () => [...host.querySelectorAll('[data-multimodal-help]')];
+    const show = (button, visible) => {
+      button.setAttribute('aria-expanded', String(visible));
+      const tooltip = document.getElementById(button.getAttribute('aria-controls'));
+      tooltip.hidden = !visible;
+      if (visible) {
+        tooltip.style.top = ''; tooltip.style.bottom = '';
+        const viewport = root.visualViewport;
+        const viewportBottom = (viewport?.offsetTop || 0) + (viewport?.height || root.innerHeight);
+        const panel = button.closest('.filter-picker-menu');
+        const bottom = Math.min(viewportBottom - 8, panel ? panel.getBoundingClientRect().bottom - 8 : viewportBottom);
+        if (tooltip.getBoundingClientRect().bottom > bottom) {
+          tooltip.style.top = 'auto'; tooltip.style.bottom = 'calc(100% + 6px)';
+        }
+      }
+    };
+    const close = button => { delete button.dataset.pinned; show(button, false); };
+    const reposition = () => triggers().filter(button => button.getAttribute('aria-expanded') === 'true').forEach(button => show(button, true));
+    host.addEventListener('scroll', reposition, true);
+    root.addEventListener('resize', () => root.requestAnimationFrame(reposition));
+    root.visualViewport?.addEventListener('resize', () => root.requestAnimationFrame(reposition));
+    let restoringFocus = false;
+    host.addEventListener('pointerover', event => {
+      if (event.pointerType !== 'mouse') return;
+      const wrap = event.target.closest('.model-multimodal-help');
+      if (wrap) show(wrap.querySelector('button'), true);
+    });
+    host.addEventListener('pointerout', event => {
+      if (event.pointerType !== 'mouse') return;
+      const wrap = event.target.closest('.model-multimodal-help');
+      if (!wrap || wrap.contains(event.relatedTarget)) return;
+      const button = wrap.querySelector('button');
+      if (!button.dataset.pinned && !wrap.contains(document.activeElement)) show(button, false);
+    });
+    host.addEventListener('focusin', event => {
+      if (!restoringFocus && event.target.matches('[data-multimodal-help]')) show(event.target, true);
+    });
+    host.addEventListener('focusout', event => {
+      const wrap = event.target.closest('.model-multimodal-help');
+      if (wrap && !wrap.contains(event.relatedTarget) && !wrap.querySelector('button').dataset.pinned) close(wrap.querySelector('button'));
+    });
+    host.addEventListener('click', event => {
+      const button = event.target.closest('[data-multimodal-help]');
+      if (!button) return;
+      if (button.dataset.pinned) close(button);
+      else { button.dataset.pinned = 'true'; show(button, true); }
+    });
+    host.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      const button = triggers().find(button => button.getAttribute('aria-expanded') === 'true');
+      if (!button) return;
+      event.preventDefault(); event.stopImmediatePropagation(); close(button);
+      restoringFocus = true; button.focus({preventScroll:true}); restoringFocus = false;
+    });
+    document.addEventListener('click', event => {
+      for (const button of triggers()) if (!button.closest('.model-multimodal-help').contains(event.target)) close(button);
+    });
+    host.addEventListener('toggle', event => {
+      if (event.target.matches('[data-picker="modelSlugs"]') && !event.target.open) triggers().forEach(close);
+    }, true);
+  }
+
   function buildPicker({ id, label, key, items, state }) {
     const model = key === "modelSlugs";
     const rawSelected = valuesFor(state, key);
@@ -94,6 +161,7 @@
         <input type="search" data-picker-search placeholder="搜索${escapeHtml(label)}" aria-label="搜索${escapeHtml(label)}">
         <div class="filter-picker-tools"><button type="button" data-picker-action="clear">清空</button><button type="button" data-picker-action="all">全选</button>${model ? "" : '<button type="button" data-picker-action="default">精选平台</button>'}</div>
         ${model ? `<div class="model-preset-options" role="group" aria-labelledby="${id}PresetsLabel"><span class="model-preset-label" id="${id}PresetsLabel">精选模型</span><div class="model-preset-segments"><button type="button" data-model-preset="featured" data-picker-action="default" aria-label="全部精选模型，包含甜品级和头部级" aria-pressed="false" disabled>全部</button><span class="model-preset-divider" aria-hidden="true"></span><button type="button" data-model-preset="high-volume-models" aria-label="精选甜品级模型" aria-pressed="false" disabled>甜品级</button><button type="button" data-model-preset="sota-models" aria-label="精选头部级模型" aria-pressed="false" disabled>头部级</button></div></div><p class="model-preset-error" data-model-preset-error hidden>精选名单暂时无法加载。<button type="button" data-retry-model-presets>重试</button></p>` : ""}
+        ${model ? multimodalControls(id) : ""}
         <div data-picker-options>${options}</div><p class="filter-search-empty" role="status" hidden>没有匹配结果，试试其他关键词。</p>
         ${model ? `<div class="model-match-setting" data-model-match-setting hidden><label class="model-match-check"><input type="checkbox" data-model-require-all aria-describedby="${id}MatchHelp" aria-controls="${id}MatchConfirm" aria-expanded="false"><span>需同时支持所选模型</span></label><p id="${id}MatchHelp">同一套餐需同时支持全部所选模型，且每个模型都满足用量等条件，可能大幅减少匹配方案。</p><div class="model-match-confirm" id="${id}MatchConfirm" data-model-match-confirm hidden><p data-model-match-impact role="status" aria-live="polite"></p><div><button type="button" data-model-match-action="confirm">确认开启</button><button type="button" data-model-match-action="cancel">取消</button></div></div></div>` : ""}
       </div>
@@ -112,7 +180,6 @@
     ],
   };
   const checks = {
-    imageRequired: "需要图片理解",
     domesticNetworkOnly: "无需境外网络",
     domesticPaymentOnly: "无需境外支付",
     includeDiscontinued: "包含下架套餐",
@@ -163,7 +230,23 @@
     state.modelMatch = "any";
     const defaults = Filters.cloneState(state);
     if (opts.featuredPreset) context.modelGroups = opts.featuredPreset.groups || [];
-    let groupsReady = Array.isArray(context.modelGroups), pendingAll = false;
+    let groupsReady = Array.isArray(context.modelGroups), pendingAll = false, multimodalNotice = "";
+    const multimodalSlugs = models.filter(model => model.modalities?.input?.includes('image')).map(model => model.slug);
+    const multimodalSet = new Set(multimodalSlugs);
+    function multimodalAction() {
+      const selected = state.modelSlugs === null ? models.map(model => model.slug) : state.modelSlugs;
+      const retain = selected.some(slug => !multimodalSet.has(slug));
+      return { label: retain ? "仅保留多模态模型" : "全部多模态模型", slugs: retain ? selected.filter(slug => multimodalSet.has(slug)) : [...multimodalSlugs] };
+    }
+    function selectMultimodalModels(source = "manual") {
+      const {slugs} = multimodalAction();
+      if (!slugs.length) {
+        multimodalNotice = multimodalSlugs.length ? "当前所选模型中没有多模态模型，请先选择支持图片的模型。" : "目前没有确认支持图片的模型。";
+        pendingAll = false; render(); return false;
+      }
+      state.modelSlugs = slugs; state.modelGroup = "any"; state.modelMatch = "any";
+      publish(source); return true;
+    }
     const presetSlugs = id => [...new Set((context.modelGroups || [])
       .filter(group => group.enabled !== false && (id === "featured" || group.id === id))
       .flatMap(group => group.modelSlugs || []))].filter(slug => models.some(m => m.slug === slug));
@@ -243,12 +326,16 @@
       ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
       ${full ? '<div data-active-limits class="filter-active-limits" aria-live="polite"></div>' : ""}
       </section>`;
+    bindMultimodalHelp(host);
     const controller = {
       getState: () => Filters.cloneState(state),
       context,
       config,
       selectModelPreset,
       getModelPreset: selectionPreset,
+      selectMultimodalModels,
+      getMultimodalActionLabel: () => multimodalAction().label,
+      getMultimodalNotice: () => multimodalNotice,
       setState: (patch, source = "guide") => {
         // Old guide calls map groups to actual picks; no hidden intersection remains.
         if (patch.modelGroup && patch.modelGroup !== "any") {
@@ -257,10 +344,19 @@
           if (!slugs.length) return;
           patch = {...patch, modelSlugs:slugs, modelMatch:"any", modelGroup:"any"};
         }
-        state = Filters.normalizeState({ ...state, ...patch, modelGroup: "any" });
+        state = Filters.normalizeState({ ...state, ...patch, modelGroup: "any", imageRequired: false });
+        // Convert old image-only requests into visible model picks rather than a hidden constraint.
+        let imageNotice = "";
+        if (patch.imageRequired === true) {
+          const selected = state.modelSlugs?.length ? state.modelSlugs : models.map(model => model.slug);
+          const slugs = selected.filter(slug => multimodalSet.has(slug));
+          if (slugs.length) { state.modelSlugs = slugs; state.modelMatch = "any"; }
+          else imageNotice = "当前所选模型中没有多模态模型，请先选择支持图片的模型。";
+        }
         if (!state.modelSlugs || state.modelSlugs.length < 2) state.modelMatch = "any";
-        if (Object.hasOwn(patch, "modelSlugs")) resetModelList();
+        if (Object.hasOwn(patch, "modelSlugs") || patch.imageRequired === true) resetModelList();
         publish(source);
+        if (imageNotice) { multimodalNotice = imageNotice; render(); }
       },
       reset: () => {
         state = Filters.cloneState(defaults);
@@ -325,6 +421,9 @@
         });
       }
       const modelPicker = host.querySelector('[data-picker="modelSlugs"]');
+      modelPicker.querySelector('[data-select-multimodal]').textContent = multimodalAction().label;
+      const notice = modelPicker.querySelector('[data-multimodal-notice]');
+      notice.hidden = !multimodalNotice; notice.textContent = multimodalNotice;
       const modelCount = state.modelSlugs === null ? models.length : state.modelSlugs.length;
       const strict = state.modelMatch === "all" && modelCount > 1;
       modelPicker.querySelector('[data-model-match-setting]').hidden = modelCount < 2;
@@ -426,6 +525,8 @@
       positionModelPanel();
     }
     function publish(source = "manual") {
+      state.imageRequired = false;
+      multimodalNotice = "";
       if (!full) {
         state.includeDiscontinued = false;
         state.platformStatusMax = "paused";
@@ -534,6 +635,7 @@
     host.addEventListener("click", (event) => {
       const el = event.target.closest("button");
       if (!el) return;
+      if (el.hasAttribute('data-select-multimodal')) { selectMultimodalModels(); return; }
       if (el.hasAttribute('data-retry-model-presets')) { refreshGroups(); return; }
       if (el.dataset.modelPreset) { selectModelPreset(el.dataset.modelPreset); return; }
       if (el.dataset.modelMatchAction) {
@@ -648,7 +750,7 @@
     refreshGroups();
     return true;
   }
-  root.CodingPlanFilterUI = { mount, loadGroups };
+  root.CodingPlanFilterUI = { mount, loadGroups, multimodalControls, bindMultimodalHelp };
   if (!document.getElementById("homepageUnifiedFiltersMount")) return;
   function start() {
     if (!mount()) root.setTimeout(start, 250);

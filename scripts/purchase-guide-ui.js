@@ -139,7 +139,7 @@
           ],
           controller.getModelPreset(),
         ) +
-        `<label class="guide-check"><input type="checkbox" data-guide-check="imageRequired" ${s.imageRequired ? "checked" : ""}>需要理解图片 / 截图</label>`
+        root.CodingPlanFilterUI.multimodalControls("guideMultimodal", controller.getMultimodalActionLabel(), controller.getMultimodalNotice())
       );
     return (
       `<div class="guide-conditions"><label class="guide-check"><input type="checkbox" data-guide-check="domesticNetworkOnly" ${s.domesticNetworkOnly ? "checked" : ""}>只考虑无需境外网络的方案</label><label class="guide-check"><input type="checkbox" data-guide-check="domesticPaymentOnly" ${s.domesticPaymentOnly ? "checked" : ""}>只考虑无需境外支付的方案</label></div>` +
@@ -157,7 +157,6 @@
     if (s.monthlyTokenRange)
       parts.push(`≥ ${F.targetTokens(s) / (s.tokenUnit === "B" ? 1000 : s.tokenUnit === "M" ? 1 : 100)} ${s.tokenUnit === "B" ? "B" : s.tokenUnit === "M" ? "M" : "亿"} Token/月`);
 
-    if (s.imageRequired) parts.push("图片输入");
     if (s.platformSlugs?.length)
       parts.push(`指定 ${s.platformSlugs.length} 家平台`);
     if (s.modelSlugs?.length) parts.push(`指定 ${s.modelSlugs.length} 个模型`);
@@ -240,13 +239,20 @@
               },
         );
     } else if (key === "modelPreset" && !G.directAdvice(answers)) {
-      controller.selectModelPreset(value, "guide");
+      if (controller.selectModelPreset(value, "guide")) applied = true;
     } else if (!G.directAdvice(answers)) set({ [key]: value });
     render();
   }
+  root.CodingPlanFilterUI.bindMultimodalHelp(host);
   host.addEventListener("click", (event) => {
     const el = event.target.closest("button");
     if (!el) return;
+    if (el.hasAttribute("data-select-multimodal")) {
+      if (controller.selectMultimodalModels("guide")) applied = true;
+      render();
+      host.querySelector("[data-select-multimodal]")?.focus({preventScroll:true});
+      return;
+    }
     if (el.dataset.answer) {
       applyAnswer(el.dataset.answer, el.dataset.value);
       return;

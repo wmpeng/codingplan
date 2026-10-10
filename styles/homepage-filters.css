@@ -402,6 +402,9 @@ body .filter-picker-menu .filter-picker-tools button:focus-visible { outline: 2p
   .tool-unified-active .guide-filter-fields { grid-template-columns: minmax(0, 1fr); }
 }
 
+/* Keep open home pickers above the fixed section-directory launcher. */
+body.discovery-page .filter-state-bar:has(.filter-picker[open]) { z-index: 35; }
+
 /* Model picks, preset shortcuts and the optional strict requirement share one panel. */
 body #homeModelPicker .filter-picker-menu { width: 380px; max-height: min(620px, 75dvh); overflow-y: auto; }
 body #homeModelPicker [data-picker-options] { flex: 1 1 auto; min-height: 100px; max-height: 260px; padding-top: 6px; border-top: 1px solid var(--border-light); }
@@ -433,6 +436,23 @@ body .model-preset-options button[aria-pressed="true"] { border-color: var(--bor
 body .model-preset-divider { flex: 0 0 1px; height: 14px; margin: 0 3px; background: var(--border-color); }
 body .model-preset-error { margin: 0 0 8px; font-size: 12px; color: var(--text-secondary); }
 body .model-preset-error button { border: 0; background: transparent; color: var(--accent-primary); font: inherit; padding: 6px; cursor: pointer; }
+/* Multimodal is a visible selection shortcut, not an additional condition. */
+body .model-multimodal-tools { position: relative; display: flex; align-items: center; gap: 6px; margin: 0 0 10px; }
+body .model-multimodal-select { min-height: 32px; padding: 4px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--bg-tertiary); color: var(--text-secondary); font: inherit; font-size: 13px; line-height: 1.5; cursor: pointer; }
+body .model-multimodal-select:hover { background: var(--bg-secondary); border-color: var(--border-strong); color: var(--text-primary); }
+body .model-multimodal-select:active { background: var(--bg-tertiary); }
+body .model-multimodal-help { display: inline-flex; align-items: center; }
+body .model-multimodal-info { display: inline-flex; align-items: center; justify-content: center; width: 32px; min-height: 32px; padding: 0; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--text-secondary); cursor: pointer; }
+body .model-multimodal-info > span { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border: 1px solid currentColor; border-radius: 50%; font-size: 11px; line-height: 1; font-weight: 500; }
+body .model-multimodal-info:hover, body .model-multimodal-info[aria-expanded="true"] { color: var(--text-primary); background: var(--bg-tertiary); }
+body .model-multimodal-select:focus-visible, body .model-multimodal-info:focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
+body .model-multimodal-tooltip { position: absolute; left: 0; top: calc(100% + 6px); z-index: 2; width: min(300px, 100%); box-sizing: border-box; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-secondary); box-shadow: var(--shadow-md); color: var(--text-secondary); font-size: 12px; line-height: 1.65; }
+body .model-multimodal-notice { margin: 0 0 10px; color: var(--text-secondary); font-size: 12px; line-height: 1.65; }
+body .model-multimodal-tooltip[hidden], body .model-multimodal-notice[hidden] { display: none !important; }
+@media (max-width: 800px), (pointer: coarse) {
+  body .model-multimodal-select, body .model-multimodal-info { min-height: 44px; }
+  body .model-multimodal-info { width: 44px; }
+}
 body .model-match-setting { margin-top: 12px; padding-top: 8px; border-top: 1px solid var(--border-light); }
 body .filter-picker-menu .model-match-check { display: flex; padding: 6px 0; margin: 0; min-height: 36px; font-weight: 400; color: var(--text-primary); cursor: pointer; }
 body .filter-picker-menu .model-match-check:hover { background: transparent; }
