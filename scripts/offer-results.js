@@ -37,9 +37,9 @@
     const rangeText=Numbers.range(item.rows.map(r=>r.usage?.monthlyTokenInM),v=>tokenAmount(v,unit));
     const unlimited=item.rows.some(r=>r.usage?.monthlyTokenInM==='unlimited');
     const range=rangeText!==null ? `${rangeText} ${unitLabel(unit)}`+(unlimited?'～不限量':'') : unlimited?'不限量':'额度未知';
-    const priceRange=Numbers.range(item.rows.map(r=>r.usage?.unitPriceCnyPerM),v=>Numbers.tokenPrice(v,unit));
+    const priceRange=Numbers.range(item.rows.map(r=>r.usage?.unitPriceCnyPerM),v=>Numbers.tokenPrice(v,unit),v=>Numbers.unitPrice(v*Numbers.tokenFactor(unit),''));
     const originalPrice=!api && !['¥','CNY','RMB','￥'].includes(item.plan.currency || '¥') && typeof item.plan.monthlyPrice==='number' ? `<div class="offer-original-price" title="人民币金额按站内汇率折算，仅供参考。">${esc(Numbers.monthlyFee(item.plan.monthlyPrice,item.plan.currency))} / 月</div>` : '';
-    const quotaSummary=`<summary class="offer-quota-summary is-compact${range==='额度未知'?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota">月额度 ${esc(range)}</span>${priceRange!==null?`<span class="offer-summary-price" aria-hidden="true">单价 ${esc(priceRange)} / ${unitLabel(unit)}</span>`:''}</span></summary>`;
+    const quotaSummary=`<summary class="offer-quota-summary is-compact${range==='额度未知'?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota">月额度 ${esc(range)}</span>${priceRange!==null?`<span class="offer-summary-price" aria-hidden="true">单价 ${esc(priceRange)}/${unitLabel(unit)}</span>`:''}</span></summary>`;
     const guide=globalThis.PlatformPages?.getUrl(item.platform.slug);
     const badges=(status==='开放购买'?'':`<span class="offer-status">${status}</span>`)+(E.resolveHarnessApi(item.platform,item.plan)===false?E.harnessApiBadge(false):'');
     const capabilities=badges?`<div class="offer-capabilities">${badges}</div>`:'';

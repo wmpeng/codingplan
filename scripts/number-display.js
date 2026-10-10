@@ -40,11 +40,11 @@
     const number = finite(value);
     return unitPrice(number === null ? null : number * tokenFactor(unit), '¥', unknown);
   }
-  function range(values, formatter) {
+  function range(values, formatter, endFormatter = formatter) {
     const known = values.map(finite).filter(value => value !== null && value >= 0);
     if (!known.length) return null;
     const min = formatter(Math.min(...known)), max = formatter(Math.max(...known));
-    return min === max ? min : `${min}～${max}`;
+    return min === max ? min : `${min}～${endFormatter(Math.max(...known))}`;
   }
   return { finite, tokens, count, amount, unitPrice, monthlyFee, tokenFactor, tokenUnit, tokenAmount, tokenPrice, range };
 });

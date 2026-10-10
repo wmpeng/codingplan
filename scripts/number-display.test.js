@@ -34,6 +34,10 @@ test('范围使用当前关系的有效端点；转换后才格式化，保留�
   assert.deepEqual(values, [0.10094, 0.6107, null, 'unknown']);
   assert.equal(N.range([1.931,1.932],N.tokens), '1.93');
   assert.equal(N.range([null,'unknown'],N.tokens), null);
+  const priceEnd = value => N.unitPrice(value, '');
+  assert.equal(N.range([10.09,61.07],N.unitPrice,priceEnd),'¥10.09～61.07');
+  assert.equal(N.range([10.091,10.092],N.unitPrice,priceEnd),'¥10.09');
+  assert.equal(N.range([0,0.001],N.unitPrice,priceEnd),'¥0.00～<0.01');
   assert.equal(M.formatTokenAmount(12345,'M'),'12,300M');
   assert.equal(M.formatUnitPrice(0,'M'),'¥0.00 / M');
   assert.equal(M.formatUnitPrice(0.0001,'M'),'<¥0.01 / M');

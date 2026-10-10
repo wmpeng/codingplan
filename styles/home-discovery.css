@@ -100,13 +100,13 @@ body .offer-card-refined .offer-model-summary .model-tag { display:inline-flex;a
 body .offer-card-refined [hidden] { display:none!important; }
 body .offer-card-refined .model-tag-more { transition:background .16s,color .16s; }
 body .offer-card-refined .model-tag-more:hover { background:color-mix(in srgb, var(--bg-tertiary), var(--border-color) 35%);color:var(--text-primary); }
-body .offer-card-refined .offer-models > .offer-quota-summary { display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;margin:0;background:var(--bg-tertiary);border-radius:8px;color:var(--text-primary);font-size:13px;line-height:1.7;transition:background .16s; }
+body .offer-card-refined .offer-models > .offer-quota-summary { display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px;min-height:44px;box-sizing:border-box;margin:0;background:var(--bg-tertiary);border-radius:8px;color:var(--text-primary);font-size:12px;line-height:1.6;transition:background .16s; }
 body .offer-card-refined .offer-models > .offer-quota-summary::before { content:none; }
 body .offer-card-refined .offer-models > .offer-quota-summary::after { content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);flex-shrink:0;margin:0 3px 3px;color:var(--text-secondary);transition:transform .16s; }
 body .offer-card-refined .offer-models[open] > .offer-quota-summary::after { transform:rotate(225deg);margin-bottom:0; }
 body .offer-card-refined .offer-models > .offer-quota-summary:hover { background:color-mix(in srgb, var(--bg-tertiary), var(--border-color) 35%); }
 body .offer-card-refined .offer-models > .offer-quota-summary.is-unknown { color:var(--text-secondary); }
-.offer-summary-metrics { display:flex;align-items:baseline;gap:12px;min-width:0;max-width:calc(100% - 24px); }
+.offer-summary-metrics { display:flex;align-items:baseline;gap:8px;min-width:0;max-width:calc(100% - 20px); }
 .offer-summary-quota, .offer-summary-price { flex-shrink:0;white-space:nowrap; }
 .offer-summary-quota { max-width:100%;white-space:normal;overflow-wrap:anywhere; }
 .offer-quota-summary { position:relative; }
