@@ -665,7 +665,7 @@
         const count = match => {
           const offers = Filters.matchingOffers(context, {...state, modelSlugs:selected, modelMatch:match}, {usdToCnyRate:config.usdToCnyRate,platformCatalog:config.platformCatalog});
           if (full) return new Set(offers.filter(offer => opts.view !== "plans" || offer.plan.billingMode !== "payg").map(offer => offer.plan.slug)).size;
-          return offers.reduce((n, offer) => n + (offer.plan.billingMode === "payg" ? offer.rows.length : 1), 0);
+          return offers.length;
         };
         const before = count("any"), after = count("all");
         host.querySelector('[data-model-match-impact]').textContent = `开启后，${full ? "符合条件的套餐" : "匹配方案"}从 ${before} 个变为 ${after} 个。${after === 0 ? "当前没有同时满足条件的套餐。" : ""}确认后生效。`;
