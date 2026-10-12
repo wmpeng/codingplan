@@ -349,7 +349,7 @@
               .join("")
       }</div>${full ? "</div>" : ""}
       ${full ? "" : `<div class="filter-state-controls"><label class="offer-sort"><span>排序</span><select data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></label><span class="offer-sort-help" id="offerSortHelp"></span>`}
-      <div class="filter-state-actions"><button type="button" data-filter-action="clear-all">${full ? "清空全部" : "清空条件"}</button><button type="button" data-filter-action="restore-all">${full ? "恢复全量" : "恢复默认"}</button></div>${full ? "" : "</div></div>"}
+      <div class="filter-state-actions">${full ? '<button type="button" data-filter-action="clear-all">清空全部</button>' : ""}<button type="button" data-filter-action="restore-all">${full ? "恢复全量" : "恢复默认"}</button></div>${full ? "" : "</div></div>"}
       <p class="filter-state-hint" data-filter-hint>${monitor ? "监控只使用平台、模型条件；未监控项目没有统计。" : "快捷选择直接更新勾选；方案按当前条件匹配。"}</p>
       ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
       ${full ? '<div data-active-limits class="filter-active-limits" aria-live="polite"></div>' : ""}
