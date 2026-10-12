@@ -1,11 +1,10 @@
 /* 站点阅读层：覆盖同步文章自己的装饰，不改变正文、图表与内容结构。 */
 body.article-page { padding: 24px 28px 64px; font-size: 16px; line-height: 1.85; }
 .article-page .doc-wrap { max-width: 1100px; }
-.article-page .back-nav { display: flex; align-items: center; gap: 10px; padding-bottom: 20px; margin-bottom: 28px; border-bottom: 1px solid var(--border-color); }
-.article-page .back-home-btn { min-height: 40px; margin: 0; padding: 8px 13px; border: 1px solid var(--border-color); border-radius: 7px; background: #fff; color: var(--text-secondary); font-size: 13px; font-weight: 500; text-decoration: none; }
-.article-page .back-home-btn:hover { background: var(--accent-soft); color: var(--accent-primary); transform: none; opacity: 1; }
-.article-page .back-home-btn:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
-.article-page .doc-wrap > .back-home-btn { margin-bottom: 24px; }
+.article-page .guide-breadcrumb { display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:6px 0 22px;color:var(--text-secondary);font-size:13px;font-weight:400;line-height:1.5; }
+.article-page .guide-breadcrumb a { color:inherit;text-decoration:none;white-space:nowrap; }
+.article-page .guide-breadcrumb a:hover { color:var(--text-primary);text-decoration:underline;text-underline-offset:3px; }
+.article-page .guide-breadcrumb [aria-current="page"] { flex:1 1 180px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
 .article-page :is(article.doc, .articles-page) { background: #fff; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); border-radius: 12px; padding: clamp(24px, 4vw, 48px); }
 .article-page :is(article.doc, .articles-page)::before { display: none; }
 .article-page :is(.doc-kicker, .articles-kicker-top) { color: var(--accent-primary); font-size: 12px; letter-spacing: .05em; }
@@ -31,7 +30,6 @@ body.article-page { padding: 24px 28px 64px; font-size: 16px; line-height: 1.85;
 @media (max-width: 600px) {
   body.article-page { padding: 18px 14px 40px; font-size: 15px; }
   .article-page :is(article.doc, .articles-page) { padding: 24px 20px; }
-  .article-page .back-nav { padding-bottom: 16px; margin-bottom: 20px; }
   .article-page .articles-list li { grid-template-columns: 1fr; gap: 4px; }
   .article-page article.doc h2 { font-size: 21px; margin-top: 32px; }
 }
