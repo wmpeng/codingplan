@@ -528,7 +528,7 @@
         const deepSWEScore = point.scores && point.scores.deepSWE;
         const deepSWEInterval = deepSWEScore && Number.isFinite(Number(deepSWEScore.confidenceInterval))
             ? ` ±${formatNumber(deepSWEScore.confidenceInterval, 0)}` : '';
-        return `<tr data-point-id="${escapeHtml(point.slug)}">` +
+        return `<tr data-point-id="${escapeHtml(point.slug)}"${visualOptions && visualOptions.focused ? ' class="price-focus-row"' : ''}>` +
             `<td class="sticky-first">${platformCellHtml(point)}</td>` +
             `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}<div class="plan-capabilities">${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></td>` +
             `<td class="numeric">${price}</td>` +
@@ -589,12 +589,17 @@
     function presetComparisonTableHtml(group, points, tokenUnit, platformScope, options = {}) {
         const kind = group && group.kind === 'multi' ? 'multi' : 'single';
         const columns = PRESET_TABLE_COLUMNS[kind];
-        const rows = buildPresetComparisonRows(points, group, platformScope, options.platformSlugs);
+        const selectedModel = options.modelFilter && group.modelSlugs.includes(options.selectedModelSlug) ? options.selectedModelSlug : null;
+        const rows = buildPresetComparisonRows(points, group, platformScope, options.platformSlugs)
+            .filter(point => !selectedModel || point.modelSlug === selectedModel);
         const modelNamesBySlug = new Map((points || []).map((point) => [point.modelSlug, point.modelName]));
         const includedModels = kind === 'multi'
             ? group.modelSlugs.map((slug) => modelNamesBySlug.get(slug) || slug).join('、')
             : '';
-        const subtitle = includedModels ? `<p>包含：${escapeHtml(includedModels)}</p>` : '';
+        const modelOption = (slug, label) => `<button type="button" data-preset-model="${escapeHtml(slug)}" aria-pressed="${(slug || null) === selectedModel}">${escapeHtml(label)}</button>`;
+        const subtitle = includedModels ? options.modelFilter
+            ? `<div class="preset-model-filters" role="group" aria-label="${escapeHtml(group.title)}表格的模型筛选"><span>包含：</span>${modelOption('', '全部')}${group.modelSlugs.map(slug => modelOption(slug, modelNamesBySlug.get(slug) || slug)).join('')}</div>`
+            : `<p>包含：${escapeHtml(includedModels)}</p>` : '';
         const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
         const limit = options.limit || rows.length;
         const body = rows.length ? rows.map((point, index) => {
@@ -617,7 +622,7 @@
             }).join('')}</tr>`;
         }).join('') : `<tr><td class="usage-table-empty" colspan="${columns.length}">当前暂无可比较的套餐。</td></tr>`;
         return `<article class="usage-preset-card usage-preset-card--${kind}" data-preset-id="${escapeHtml(group.id)}">` +
-            `<header><div><h4>${escapeHtml(group.title)}</h4>${subtitle}</div><span>${rows.length} 条</span></header>` +
+            `<header><div><h4>${escapeHtml(group.title)}</h4>${subtitle}</div><span${options.modelFilter?' data-preset-count aria-live="polite" aria-atomic="true"':''}>${rows.length} 条</span></header>` +
             `<div class="usage-preset-table-scroll" tabindex="0" role="region" aria-label="${escapeHtml(group.title)}价格与用量"><table class="usage-preset-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>` +
             (rows.length > limit ? `<button type="button" class="preset-expand" data-preset-expand aria-expanded="false"><span>展开全部</span></button>` : '') + '</article>';
     }
@@ -636,7 +641,7 @@
         host.hidden = false;
         host.innerHTML = (options.hideHeading ? '' : `<div class="usage-preset-heading"><div><h3>${escapeHtml(normalized.title)}</h3>${normalized.description ? `<p>${escapeHtml(normalized.description)}</p>` : ''}</div></div>`) +
             (singles.length ? `<div class="usage-preset-grid usage-preset-grid--single">${singles.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope, {...options, platformSlugs: normalized.platformSlugs})).join('')}</div>` : '') +
-            (multis.length ? `<div class="usage-preset-grid usage-preset-grid--multi">${multis.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope, {...options, platformSlugs: normalized.platformSlugs})).join('')}</div>` : '');
+            (multis.length ? `<div class="usage-preset-grid usage-preset-grid--multi">${multis.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope, {...options, selectedModelSlug: options.selectedModels?.[group.id], platformSlugs: normalized.platformSlugs})).join('')}</div>` : '');
         return normalized.groups;
     }
 
@@ -827,6 +832,7 @@
             const platformColors = buildVendorColorMap(platforms.map(([key]) => key));
             const modelColors = buildModelColorMap(models.map(([id]) => id));
             const mountOptions = options || {};
+            const focusRelationSlugs = new Set(mountOptions.focusRelationSlugs || []);
             container.classList.toggle('is-full-tool', mountOptions.mode === 'full');
             const state = Object.assign(createDefaultFilterState(points, mountOptions), {
                 benchmark: 'artificialAnalysis', colorMode: 'vendor',
@@ -1035,6 +1041,7 @@
                 body.innerHTML = sorted.length
                     ? sorted.map((point) => comparisonTableRowHtml(point, state.tokenUnit, {
                         scale,
+                        focused: focusRelationSlugs.has(point.slug),
                         color: colors[getPointColorKey(point, state.colorMode)]
                     })).join('')
                     : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length}">当前筛选下没有可展示的数据；请查看上方生效限制并逐项清空，或恢复默认。</td></tr>`;
@@ -1071,6 +1078,7 @@
                     monthlyTokenRange: state.monthlyTokenRange,
                     priceRanges: state.priceRanges, filterContext: state.filterContext, sharedFilters: state.sharedFilters
                 });
+                if (state.soloColorKey && !filtered.some(point => getPointColorKey(point, state.colorMode) === state.soloColorKey)) state.soloColorKey = null;
                 const visibleFiltered = filterBySoloColorKey(filtered, state.colorMode, state.soloColorKey);
                 const usagePoints = buildUsageChartPoints(visibleFiltered);
                 const intelligencePoints = buildIntelligenceChartPoints(visibleFiltered, state.benchmark);
@@ -1136,6 +1144,8 @@
                 render();
             });
             function onSharedFilterChange(event) {
+                // Business filters supersede the temporary legend restriction; display units do not.
+                if (!event || !event.detail || event.detail.source !== 'display') state.soloColorKey = null;
                 applyExternalFilter(event && event.detail && event.detail.state);
                 render();
             }

@@ -55,13 +55,23 @@
   }
   function mountTables(host, preset, context, config, limit, options = {}) {
     let unit = globalThis.CodingPlanDisplaySettings?.getTokenUnit() || 'yi';
-    const data = points(context,config), expanded = new Set();
+    const data = points(context,config), expanded = new Set(), selectedModels = Object.create(null);
+    const tableOptions = {limit,hideHeading:options.hideHeading===true,modelFilter:options.modelFilter===true,selectedModels};
     const render = () => {
-      globalThis.ModelComparison.renderPresetComparisons(host,preset,data,unit,'featured',{limit,hideHeading:options.hideHeading===true});
+      const focused = document.activeElement;
+      const selectedButton = focused?.closest?.('[data-preset-model]');
+      const focus = selectedButton && host.contains(selectedButton) ? {group:selectedButton.closest('[data-preset-id]').dataset.presetId,model:selectedButton.dataset.presetModel} : null;
+      globalThis.ModelComparison.renderPresetComparisons(host,preset,data,unit,'featured',tableOptions);
       host.insertAdjacentHTML('afterbegin', `<div class="featured-table-controls"><span>各模型的综合单价，具体计算方法详情参考价格与额度页</span></div>`);
       host.insertAdjacentHTML('beforeend','<p class="comparison-method">订阅综合单价按参考月额度用满计算；按量 API 没有固定月额度。实际成本受用量、输入输出和缓存比例影响，不同模型能力也有差异。未知不等于零，各模型额度不相加。<a href="/pricing/#pricingMethod">查看计算口径 →</a></p>');
       for (const id of expanded) { const card = [...host.querySelectorAll('[data-preset-id]')].find(x=>x.dataset.presetId===id); if(card) toggle(card,true); }
+      if(focus) focusModelButton(focus.group,focus.model);
     };
+    function findCard(id) { return [...host.querySelectorAll('[data-preset-id]')].find(card=>card.dataset.presetId===id); }
+    function focusModelButton(id,model) {
+      const button = [...(findCard(id)?.querySelectorAll('[data-preset-model]') || [])].find(button=>button.dataset.presetModel===model);
+      button?.focus({preventScroll:true});
+    }
     function toggle(card,open) {
       card.querySelectorAll('[data-preset-extra]').forEach(row=>row.hidden=!open);
       const button=card.querySelector('[data-preset-expand]');
@@ -70,7 +80,19 @@
     host.addEventListener('click', event => {
       const b=event.target.closest('button'); if(!b)return;
       if(b.hasAttribute('data-preset-expand')) {const card=b.closest('[data-preset-id]'),open=b.getAttribute('aria-expanded')!=='true';open?expanded.add(card.dataset.presetId):expanded.delete(card.dataset.presetId);toggle(card,open);return;}
-
+      if(b.hasAttribute('data-preset-model') && tableOptions.modelFilter) {
+        const card=b.closest('[data-preset-id]'),id=card.dataset.presetId,model=b.dataset.presetModel;
+        const group=preset.groups.find(group=>group.id===id);
+        if(!group || (model && !group.modelSlugs.includes(model)) || (selectedModels[id] || '')===model)return;
+        const restoreFocus=document.activeElement===b,top=card.getBoundingClientRect().top;
+        model?selectedModels[id]=model:delete selectedModels[id];
+        card.outerHTML=globalThis.ModelComparison.presetComparisonTableHtml(group,data,unit,'featured',{...tableOptions,selectedModelSlug:model,platformSlugs:preset.platformSlugs});
+        const next=findCard(id);
+        if(expanded.has(id))toggle(next,true);
+        const shift=next.getBoundingClientRect().top-top;
+        if(Math.abs(shift)>1)globalThis.scrollBy({top:shift,behavior:'instant'});
+        if(restoreFocus)focusModelButton(id,model);
+      }
     });
     globalThis.addEventListener('codingplan:token-unit-changed', event => { unit=event.detail.tokenUnit; render(); });
     render();

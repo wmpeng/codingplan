@@ -302,6 +302,27 @@ test('preset tables add model only for multi groups and preserve single-model qu
   assert.match(multi, /10亿/);
 });
 
+test('preset model selection limits only table rows and preserves choices, tiers and empty states', () => {
+  const group={id:'local',title:'本表',kind:'multi',modelSlugs:['a','b','empty']};
+  const points=[
+    {slug:'a-low',billingMode:'payg',platformSlug:'p',modelSlug:'a',modelName:'模型 A',planName:'套餐 A',unitPriceCnyPerM:0,monthlyFeeCny:10,relationLabel:'模型 A [谷]'},
+    {slug:'a-high',billingMode:'payg',platformSlug:'p',modelSlug:'a',modelName:'模型 A',planName:'套餐 B',unitPriceCnyPerM:2,monthlyFeeCny:20,relationLabel:'模型 A [峰]'},
+    {slug:'b',billingMode:'subscription',platformSlug:'p',modelSlug:'b',modelName:'模型 B',planName:'套餐 C',unitPriceCnyPerM:null,monthlyFeeCny:30},
+  ];
+  const options={modelFilter:true,selectedModelSlug:'a'};
+  const selected=presetComparisonTableHtml(group,points,'B','all',options);
+  assert.match(selected,/data-preset-model="a" aria-pressed="true"/);
+  assert.match(selected,/data-preset-model="b" aria-pressed="false"/);
+  assert.match(selected,/data-point-id="a-low"/);assert.match(selected,/data-point-id="a-high"/);
+  assert.doesNotMatch(selected,/data-point-id="b"/);assert.match(selected,/>2 条<\/span>/);
+  assert.match(selected,/模型 A \[谷\]/);assert.match(selected,/模型 A \[峰\]/);
+  const all=presetComparisonTableHtml(group,points,'B','all',{modelFilter:true,selectedModelSlug:'not-in-group'});
+  assert.match(all,/data-preset-model="" aria-pressed="true"/);assert.match(all,/data-point-id="b"/);
+  const empty=presetComparisonTableHtml(group,points,'yi','all',{modelFilter:true,selectedModelSlug:'empty'});
+  assert.match(empty,/>0 条<\/span>/);assert.match(empty,/当前暂无可比较的套餐/);
+  assert.match(empty,/data-preset-model=""/);
+});
+
 test('preset tables show API rows with explicit unavailable subscription fields', () => {
   const apiPoint = {
     slug: 'api', billingMode: 'payg', platformSlug: 'deepseek-official', platformName: 'DeepSeek', planName: '按量 API',
