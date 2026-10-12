@@ -32,14 +32,29 @@ test('模型标签为纯展示，额外模型默认隐藏并提供真实按钮',
   assert.match(html,/<button[^>]+data-toggle-models[^>]+aria-expanded="false"[^>]*>\+2<\/button>/);
   assert.doesNotMatch(html,/<a[^>]*class="model-tag/);
 });
-test('按量卡片保留具体关系和估算语义，零、未知与单位转换不混淆',()=>{
+test('按量卡片汇总模型档位，价格链接打开整个 API，零与未知保持语义',()=>{
   const item=offer(),api={...item,plan:{...item.plan,billingMode:'payg'}};
   const html=Offers.card(api,{tokenUnit:'B'});
-  assert.match(html,/offer-price-note">估算/);assert.match(html,/&relation=one-tier/);
+  assert.match(html,/offer-price-note">估算/);assert.doesNotMatch(html,/&relation=|&model=/);
   assert.match(html,/无固定额度/);assert.doesNotMatch(html,/class="offer-models"|offer-original-price/);
   const unknown=Offers.card({...api,cost:null},{tokenUnit:'yi'});
   assert.match(unknown,/按量计费/);assert.doesNotMatch(unknown,/offer-price-note/);
   assert.equal(Offers.quota(125,'B',false),'0.125 B');
   assert.equal(Offers.quota(0,'M',false),'0 M');
   assert.equal(Offers.quota('unlimited','yi',false),'不限量');
+});
+
+test('按量多档位显示独立月支出和已知范围，不相加或掩盖未知费用',()=>{
+  const api=offer({plan:{slug:'api',name:'按量 API',billingMode:'payg'},cost:0,
+    apiEstimates:[{relationSlug:'one-tier',cost:0},{relationSlug:'two-tier',cost:250}],
+    costRange:{min:0,max:250,hasUnknown:false}});
+  const s={tokenUnit:'B',monthlyTokenRange:{min:1000}};
+  const html=Offers.card(api,s);
+  assert.match(html,/¥0<wbr>～250/);assert.match(html,/估算范围/);
+  assert.match(html,/月支出估算/);assert.match(html,/<td>¥0<\/td>/);assert.match(html,/<td>¥250<\/td>/);
+  assert.match(html,/独立估算，费用不相加/);
+  const partial=Offers.card({...api,apiEstimates:[{relationSlug:'one-tier',cost:0},{relationSlug:'two-tier',cost:null}],costRange:{min:0,max:0,hasUnknown:true}},s);
+  assert.match(partial,/已知费用估算/);assert.match(partial,/费用未知/);
+  const unknown=Offers.card({...api,cost:null,costRange:null,apiEstimates:api.apiEstimates.map(x=>({...x,cost:null}))},s);
+  assert.match(unknown,/按量计费/);assert.match(unknown,/费用未知/);assert.doesNotMatch(unknown,/offer-price-note/);
 });

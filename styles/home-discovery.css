@@ -96,6 +96,9 @@ body .offer-card-refined .offer-title > a:hover > span { text-decoration-color:v
 body .offer-card-refined .offer-title .link-icon { width:13px;height:13px;flex-shrink:0;color:var(--text-secondary);opacity:.65; }
 body .offer-card-refined .offer-price-line { display:flex;justify-content:flex-end;align-items:baseline;gap:5px; }
 body .offer-card-refined .offer-price-line small { display:inline;margin:0;white-space:nowrap; }
+body .offer-card-refined.offer-api .offer-price { max-width:170px;white-space:normal; }
+body .offer-card-refined.offer-api .offer-price-line > span { min-width:0;overflow-wrap:anywhere; }
+body .offer-card-refined .offer-api-estimate-note { margin:10px 0;color:var(--text-secondary);font-size:12px; }
 body .offer-card-refined :is(.offer-original-price,.offer-price-note) { font-size:12px;font-weight:400;line-height:1.5;margin:4px 0 0;color:var(--text-secondary); }
 body .offer-card-refined .offer-capabilities { margin-top:6px; }
 body .offer-card-refined .offer-model-summary { display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:18px; }

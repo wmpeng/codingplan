@@ -14,7 +14,7 @@
   const sortOptions = [
     { value: "balanced", label: "平台评分优先", help: "按平台评分从高到低排列。" },
     { value: "quality", label: "模型评分优先", help: "按方案内匹配模型的最高 Artificial Analysis 分从高到低排列。" },
-    { value: "cost", label: "月支出从低到高", help: "按订阅月费或按量 API 的预计月支出排列，未估算的支出放在最后。" },
+    { value: "cost", label: "月支出从低到高", help: "按订阅月费或按量 API 的最低已知估算月支出排列，未估算的支出放在最后。" },
     { value: "variety", label: "匹配模型最多", help: "按方案内符合条件的模型数量从多到少排列，同一模型的计费档位不重复计数。" },
   ];
   function directAdvice(answers) {
@@ -65,95 +65,104 @@
       },
       opts,
     );
-    const candidates = offers.flatMap((offer) => {
-      const rowSets =
-        offer.plan.billingMode === "payg"
-          ? offer.rows.map((row) => [row])
-          : [offer.rows];
-      // Multi-model API costs cannot be added without knowing the traffic split.
-      return rowSets.map((rows) => {
-        const models = [...new Set(rows.map((row) => row.modelSlug))].map(
-          (slug) => context.modelBySlug.get(slug),
+    const candidates = offers.map((offer) => {
+      const rows = offer.rows;
+      const api = offer.plan.billingMode === "payg";
+      // Each estimate applies the entire target workload to one relation;
+      // alternative models and billing tiers must never be added together.
+      const apiEstimates = api ? rows.map(row => ({ relationSlug: row.slug, cost: F.apiCost(row, s) })) : null;
+      const knownCosts = (apiEstimates || []).map(item => item.cost).filter(value => value !== null);
+      const costRange = knownCosts.length ? {
+        min: Math.min(...knownCosts), max: Math.max(...knownCosts),
+        hasUnknown: apiEstimates.some(item => item.cost === null),
+      } : null;
+      const models = [...new Set(rows.map((row) => row.modelSlug))].map(
+        (slug) => context.modelBySlug.get(slug),
+      );
+      const scored = models
+        .map((model) => ({
+          model,
+          score: finite(
+            model.scores?.artificialAnalysis?.scoreExact ??
+              model.scores?.artificialAnalysis?.score,
+          ),
+        }))
+        .filter((x) => x.score !== null)
+        .sort((a, b) => b.score - a.score);
+      const cost =
+        api
+          ? costRange?.min ?? null
+          : offer.monthlyCost;
+      const reasons = [];
+      if (s.preference === "balanced" && finite(offer.platform.rating) !== null) reasons.push(`平台评分 ${offer.platform.rating}，按平台评分优先排序`);
+      if (s.budgetCny?.max != null && cost !== null)
+        reasons.push(
+          api
+            ? `各匹配档位的月支出估算在 ${s.budgetCny.max} 元预算内`
+            : `月支出 ${Numbers.monthlyFee(cost, "")} 元，在 ${s.budgetCny.max} 元预算内`,
         );
-        const scored = models
-          .map((model) => ({
-            model,
-            score: finite(
-              model.scores?.artificialAnalysis?.scoreExact ??
-                model.scores?.artificialAnalysis?.score,
-            ),
-          }))
-          .filter((x) => x.score !== null)
-          .sort((a, b) => b.score - a.score);
-        const cost =
+      if (s.monthlyTokenRange)
+        reasons.push(
           offer.plan.billingMode === "payg"
-            ? F.apiCost(rows[0], s)
-            : offer.monthlyCost;
-        const reasons = [];
-        if (s.preference === "balanced" && finite(offer.platform.rating) !== null) reasons.push(`平台评分 ${offer.platform.rating}，按平台评分优先排序`);
-        if (s.budgetCny?.max != null && cost !== null)
-          reasons.push(
-            `月支出 ${Numbers.monthlyFee(cost, "")} 元，在 ${s.budgetCny.max} 元预算内`,
-          );
-        if (s.monthlyTokenRange)
-          reasons.push(
-            offer.plan.billingMode === "payg"
-              ? `按每月 ${F.targetTokens(s) / (s.tokenUnit === "B" ? 1000 : s.tokenUnit === "M" ? 1 : 100)} ${s.tokenUnit === "B" ? "B" : s.tokenUnit === "M" ? "M" : "亿"} Token 估算`
-              : `所选模型的参考额度达到每月 ${F.targetTokens(s) / (s.tokenUnit === "B" ? 1000 : s.tokenUnit === "M" ? 1 : 100)} ${s.tokenUnit === "B" ? "B" : s.tokenUnit === "M" ? "M" : "亿"} Token`,
-          );
-        if (scored.length)
-          reasons.push(
-            `最高 AA 分 ${scored[0].score.toFixed(1)}：${scored[0].model.name}`,
-          );
-        reasons.push(`${models.length} 个符合条件的模型`);
-        if (s.domesticNetworkOnly) reasons.push("无需境外网络");
-        if (s.domesticPaymentOnly) reasons.push("无需境外支付方式");
-        if (s.imageRequired) reasons.push("符合条件的模型支持图片输入");
-        const cautions = [];
-        if (offer.plan.billingMode === "payg" && context.workload) {
-          const w = context.workload;
-          if (finite(w.outputRatio) !== null && finite(w.cacheHitRate) !== null)
-            cautions.push(`费用假设：输出占比 ${w.outputRatio * 100}%，输入缓存命中 ${w.cacheHitRate * 100}%；沿用价格页折算汇率`);
-        }
-        if (!scored.length) cautions.push("AA 能力分未评定");
-        if (offer.platform.platformStatus === "limited")
-          cautions.push("定时放量，购买前确认名额");
-        if (offer.platform.requiresOverseasNetwork === true)
-          cautions.push("需要境外网络条件");
-        else if (offer.platform.requiresOverseasNetwork == null)
-          cautions.push("网络要求待确认");
-        if (offer.platform.requiresOverseasPayment === true)
-          cautions.push("需要境外支付方式");
-        else if (offer.platform.requiresOverseasPayment == null)
-          cautions.push("支付要求待确认");
-        if (offer.plan.billingMode === "payg")
-          cautions.push(
-            F.targetTokens(s) == null
-              ? "填写月用量后才能估算月支出"
-              : "费用按本站输入、输出与缓存假设估算，实际账单随用法变化",
-          );
-        else
-          cautions.push(
-            "额度按单个模型参考量展示，不代表多模型额度可相加或连续任务一定够用",
-          );
-        if (offer.supportsHarnessApi === true)
-          cautions.push("具体工具配置及用途限制请查看平台说明");
-        return {
-          ...offer,
-          rows,
-          models,
-          cost,
-          score: scored[0]?.score ?? null,
-          reasons,
-          cautions,
-          id:
-            offer.plan.slug +
-            (offer.plan.billingMode === "payg" ? ":" + rows[0].slug : ""),
-          tier: [rows[0].serviceTier, rows[0].contextTier, rows[0].timeTier]
-            .filter(Boolean)
-            .join(" / "),
-        };
-      });
+            ? `按每月 ${F.targetTokens(s) / (s.tokenUnit === "B" ? 1000 : s.tokenUnit === "M" ? 1 : 100)} ${s.tokenUnit === "B" ? "B" : s.tokenUnit === "M" ? "M" : "亿"} Token 估算`
+            : `所选模型的参考额度达到每月 ${F.targetTokens(s) / (s.tokenUnit === "B" ? 1000 : s.tokenUnit === "M" ? 1 : 100)} ${s.tokenUnit === "B" ? "B" : s.tokenUnit === "M" ? "M" : "亿"} Token`,
+        );
+      if (scored.length)
+        reasons.push(
+          `最高 AA 分 ${scored[0].score.toFixed(1)}：${scored[0].model.name}`,
+        );
+      reasons.push(`${models.length} 个符合条件的模型`);
+      if (s.domesticNetworkOnly) reasons.push("无需境外网络");
+      if (s.domesticPaymentOnly) reasons.push("无需境外支付方式");
+      if (s.imageRequired) reasons.push("符合条件的模型支持图片输入");
+      const cautions = [];
+      if (offer.plan.billingMode === "payg" && context.workload) {
+        const w = context.workload;
+        if (finite(w.outputRatio) !== null && finite(w.cacheHitRate) !== null)
+          cautions.push(`费用假设：输出占比 ${w.outputRatio * 100}%，输入缓存命中 ${w.cacheHitRate * 100}%；沿用价格页折算汇率`);
+      }
+      if (!scored.length) cautions.push("AA 能力分未评定");
+      if (offer.platform.platformStatus === "limited")
+        cautions.push("定时放量，购买前确认名额");
+      if (offer.platform.requiresOverseasNetwork === true)
+        cautions.push("需要境外网络条件");
+      else if (offer.platform.requiresOverseasNetwork == null)
+        cautions.push("网络要求待确认");
+      if (offer.platform.requiresOverseasPayment === true)
+        cautions.push("需要境外支付方式");
+      else if (offer.platform.requiresOverseasPayment == null)
+        cautions.push("支付要求待确认");
+      if (offer.plan.billingMode === "payg")
+        cautions.push(
+          F.targetTokens(s) == null
+            ? "填写月用量后才能估算月支出"
+            : "费用按本站输入、输出与缓存假设估算，实际账单随用法变化",
+        );
+      else
+        cautions.push(
+          "额度按单个模型参考量展示，不代表多模型额度可相加或连续任务一定够用",
+        );
+      if (offer.supportsHarnessApi === true)
+        cautions.push("具体工具配置及用途限制请查看平台说明");
+      if (api && F.targetTokens(s) !== null) {
+        cautions.push("每个模型/档位按全部月用量独立估算，费用不相加；省钱排序按最低已知估算月支出");
+        if (costRange?.hasUnknown) cautions.push("部分档位费用未知，估算范围仅包含已知费用");
+      }
+      return {
+        ...offer,
+        rows,
+        models,
+        cost,
+        costRange,
+        apiEstimates,
+        score: scored[0]?.score ?? null,
+        reasons,
+        cautions,
+        id: offer.plan.slug,
+        tier: [rows[0].serviceTier, rows[0].contextTier, rows[0].timeTier]
+          .filter(Boolean)
+          .join(" / "),
+      };
     });
     function compare(key, descending) {
       return (a, b) => {

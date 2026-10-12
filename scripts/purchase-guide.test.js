@@ -344,3 +344,42 @@ test('严格模型无结果可单独放宽，说明缺额度或跨套餐冲突�
   assert.equal(split.candidates.length,0);
   assert.match(split.modelConflict,/没有同一个套餐/);
 });
+
+test('API 同产品合成一个候选，保留峰谷档位、去重模型和独立估算范围',()=>{
+  const c=fixture();
+  const valley=c.planModels.find(row=>row.slug==='api-strong');
+  valley.timeTier='谷';
+  c.planModels.push({...valley,slug:'api-strong-peak',timeTier:'峰',usage:{unitPriceCnyPerM:4}});
+  c.relationsByPlanSlug.set('api',c.planModels.filter(row=>row.planSlug==='api'));
+  const s=state({apiOnly:true,monthlyTokenRange:{min:100},preference:'cost'});
+  const r=G.recommend(c,s,options,{allMatching:true});
+  assert.equal(r.candidates.length,1);
+  const api=r.candidates[0];
+  assert.equal(api.id,'api');assert.equal(api.rows.length,3);assert.equal(api.models.length,2);
+  assert.equal(api.cost,0);assert.deepEqual(api.costRange,{min:0,max:400,hasUnknown:false});
+  assert.deepEqual(api.apiEstimates.map(x=>x.cost),[200,0,400]);
+  assert.equal(api.score,80);
+  assert.equal(api.rows.find(x=>x.timeTier==='谷').usage.unitPriceCnyPerM,2);
+  assert.equal(api.rows.find(x=>x.timeTier==='峰').usage.unitPriceCnyPerM,4);
+  const budget=G.recommend(c,{...s,budgetCny:{max:250}},options,{allMatching:true}).candidates[0];
+  assert.deepEqual(budget.rows.map(x=>x.slug),['api-strong','api-small']);
+  assert.deepEqual(budget.costRange,{min:0,max:200,hasUnknown:false});
+  const strict=G.recommend(c,{...s,budgetCny:{max:100},modelSlugs:['small','strong'],modelMatch:'all'},options,{allMatching:true});
+  assert.equal(strict.candidates.length,0);
+});
+
+test('API 合并不把未知费用变成零，也不跨产品拼接严格模型要求',()=>{
+  const c=fixture(),s=state({apiOnly:true,monthlyTokenRange:{min:100}});
+  c.planModels.find(x=>x.slug==='api-strong').usage.unitPriceCnyPerM=null;
+  let api=G.recommend(c,s,options,{allMatching:true}).candidates[0];
+  assert.deepEqual(api.costRange,{min:0,max:0,hasUnknown:true});
+  assert.deepEqual(api.apiEstimates.map(x=>x.cost),[null,0]);
+  c.planModels.find(x=>x.slug==='api-small').usage.unitPriceCnyPerM=null;
+  api=G.recommend(c,s,options,{allMatching:true}).candidates[0];
+  assert.equal(api.cost,null);assert.equal(api.costRange,null);
+  c.plans.push({...c.plans.find(p=>p.slug==='api'),slug:'api-second'});
+  c.planModels.find(x=>x.slug==='api-small').planSlug='api-second';
+  for (const slug of ['api','api-second']) c.relationsByPlanSlug.set(slug,c.planModels.filter(row=>row.planSlug===slug));
+  const separate=G.recommend(c,{...s,modelSlugs:['small','strong'],modelMatch:'all'},options,{allMatching:true});
+  assert.equal(separate.candidates.length,0);
+});

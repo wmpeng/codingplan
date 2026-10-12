@@ -20,6 +20,9 @@
   }
   function card(item,state) {
     const api=item.plan.billingMode==='payg', unit=state.tokenUnit;
+    const estimateColumn=api && state.monthlyTokenRange != null;
+    const estimates=new Map((item.apiEstimates || []).map(value=>[value.relationSlug,value.cost]));
+    const estimatedRange=api ? Numbers.range((item.apiEstimates || [{cost:item.cost}]).map(value=>value.cost),money,value=>Numbers.monthlyFee(value,'')) : null;
     const status=item.plan.discontinued?'已下架':({open:'开放购买',limited:'定时放量',paused:'暂时停售',delisted:'已下架'}[item.platform.platformStatus] || '状态待确认');
     const canBuy=!item.plan.discontinued && ['open','limited'].includes(item.platform.platformStatus || 'open');
     const rows=item.rows.map(row=>{
@@ -29,9 +32,9 @@
       const label=inlineTimeTier?`<span class="offer-model-with-time"><span>${name}</span>${tier}</span>`:name+tier;
       const price=row.usage?.unitPriceCnyPerM;
       const amount=row.usage?.monthlyTokenInM;
-      return `<tr><th scope="row">${label}</th><td>${api?'无固定额度':typeof amount==='number'?esc(tokenAmount(amount,unit)):esc(quota(amount,unit,false))}</td><td>${esc(Numbers.tokenPrice(price,unit,'单价未知'))}</td></tr>`;
+      return `<tr><th scope="row">${label}</th><td>${estimateColumn?esc(Numbers.monthlyFee(estimates.get(row.slug),'¥','费用未知')):api?'无固定额度':typeof amount==='number'?esc(tokenAmount(amount,unit)):esc(quota(amount,unit,false))}</td><td>${esc(Numbers.tokenPrice(price,unit,'单价未知'))}</td></tr>`;
     }).join('');
-    const table=`<div class="offer-model-table-wrap" role="region" aria-label="${esc(item.platform.name+' '+item.plan.name)}模型额度"><table class="offer-model-table"><thead><tr><th scope="col">模型 / 档位</th><th scope="col">月额度 / ${unitLabel(unit)}</th><th scope="col">单价 / ${unitLabel(unit)}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    const table=`<div class="offer-model-table-wrap" role="region" aria-label="${esc(item.platform.name+' '+item.plan.name)}${estimateColumn?'费用估算':'模型额度'}"><table class="offer-model-table"><thead><tr><th scope="col">模型 / 档位</th><th scope="col">${estimateColumn?'月支出估算':'月额度 / '+unitLabel(unit)}</th><th scope="col">单价 / ${unitLabel(unit)}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     const modelsId='offer-model-tags-'+encodeURIComponent(item.id);
     const models=item.models.map(m=>m.name), modelTags=models.map((name,index)=>`<span class="model-tag"${index>2?' data-extra-model hidden':''}>${esc(name)}</span>`).join('')+(models.length>3?`<button type="button" class="model-tag model-tag-more" data-toggle-models data-extra-count="${models.length-3}" aria-expanded="false" aria-controls="${esc(modelsId)}" aria-label="展开其余 ${models.length-3} 个模型">+${models.length-3}</button>`:'');
     const rangeText=Numbers.range(item.rows.map(r=>r.usage?.monthlyTokenInM),v=>tokenAmount(v,unit));
@@ -45,9 +48,12 @@
     const action=url(item.plan.action || item.platform.action);
     const name=esc(item.platform.name+' '+item.plan.name);
     const title=canBuy && action!=='#'?`<a class="offer-open-link" href="${esc(action)}" target="_blank" rel="noopener noreferrer" aria-label="前往开通 ${name}"><span>${name}</span>${P.EXTERNAL_LINK_ICON}</a>`:`<span class="offer-name">${name}</span>`;
-    const fullPrice=`<a class="offer-full-price" href="/pricing/?platform=${encodeURIComponent(item.platform.slug)}&plan=${encodeURIComponent(item.plan.slug)}${api?'&relation='+encodeURIComponent(item.rows[0]?.slug || ''):''}">完整价格与额度 <span aria-hidden="true">→</span></a>`;
-    const details=api?`${table}${fullPrice}`:`<details class="offer-models">${quotaSummary}<div class="offer-model-details">${table}<p class="comparison-method">各模型额度不相加，参考额度不代表连续任务保证。</p>${fullPrice}</div></details>`;
-    return `<article class="offer-result offer-card-refined" data-offer-id="${esc(item.id)}" data-plan-slug="${esc(item.plan.slug)}"><div class="offer-result-heading"><div><h3 class="offer-title">${title}</h3>${capabilities}</div><div class="offer-price${item.cost==null?' is-unknown':''}"><div class="offer-price-line"><span>${api && item.cost==null?'按量计费':money(item.cost)}</span>${item.cost!=null?'<small>/ 月</small>':''}</div>${api&&item.cost!=null?'<div class="offer-price-note">估算</div>':''}${originalPrice}</div></div><div id="${esc(modelsId)}" class="offer-model-summary platform-models" aria-label="匹配模型">${modelTags}</div>${details}<div class="offer-result-actions"><details class="offer-reasons"><summary>匹配说明与限制</summary><ul>${[...item.reasons,...item.cautions].map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details></div></article>`;
+    const fullPrice=`<a class="offer-full-price" href="/pricing/?platform=${encodeURIComponent(item.platform.slug)}&plan=${encodeURIComponent(item.plan.slug)}">完整价格与额度 <span aria-hidden="true">→</span></a>`;
+    const estimateNote=estimateColumn?'<p class="comparison-method offer-api-estimate-note">各模型/档位独立估算，费用不相加。</p>':'';
+    const details=api?`${table}${estimateNote}${fullPrice}`:`<details class="offer-models">${quotaSummary}<div class="offer-model-details">${table}<p class="comparison-method">各模型额度不相加，参考额度不代表连续任务保证。</p>${fullPrice}</div></details>`;
+    const priceText=api ? estimatedRange ?? '按量计费' : money(item.cost);
+    const estimateLabel=item.costRange?.hasUnknown?'已知费用估算':item.costRange && item.costRange.min!==item.costRange.max?'估算范围':'估算';
+    return `<article class="offer-result offer-card-refined${api?' offer-api':''}" data-offer-id="${esc(item.id)}" data-plan-slug="${esc(item.plan.slug)}"><div class="offer-result-heading"><div><h3 class="offer-title">${title}</h3>${capabilities}</div><div class="offer-price${item.cost==null?' is-unknown':''}"><div class="offer-price-line"><span>${esc(priceText).replace('～','<wbr>～')}</span>${item.cost!=null?'<small>/ 月</small>':''}</div>${api&&item.cost!=null?`<div class="offer-price-note">${estimateLabel}</div>`:''}${originalPrice}</div></div><div id="${esc(modelsId)}" class="offer-model-summary platform-models" aria-label="匹配模型">${modelTags}</div>${details}<div class="offer-result-actions"><details class="offer-reasons"><summary>匹配说明与限制</summary><ul>${[...item.reasons,...item.cautions].map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details></div></article>`;
   }
   function mount(host,context,config) {
     let advice=null, renderedAdvice, lastResult, lastFilterKey, lastPreference;
@@ -73,7 +79,7 @@
       price.setAttribute('aria-hidden',String(compact));
     };
     const summaryObserver=new ResizeObserver(entries=>entries.forEach(entry=>fitSummary(entry.target)));
-    host.innerHTML = `<aside class="guide-advice" data-offer-advice hidden></aside><div class="section-heading offer-results-heading"><div><div class="offer-results-title"><h2>符合需求的方案</h2><span id="offerCount" role="status"></span></div><p>全部条件在同一个套餐内成立；按量方案按模型和计费档位展示。</p></div></div><div data-offer-content></div>`;
+    host.innerHTML = `<aside class="guide-advice" data-offer-advice hidden></aside><div class="section-heading offer-results-heading"><div><div class="offer-results-title"><h2>符合需求的方案</h2><span id="offerCount" role="status"></span></div><p>全部条件在同一个套餐内成立；按量 API 在卡片内列出匹配模型和计费档位。</p></div></div><div data-offer-content></div>`;
     const render=()=>{
       const controller=globalThis.CodingPlanHomeFilters;if(!controller)return;
       const state=controller.getState();
