@@ -52,7 +52,7 @@
     const action=url(item.plan.action || item.platform.action);
     const name=esc(item.platform.name+' '+item.plan.name);
     const title=canBuy && action!=='#'?`<a class="offer-open-link" href="${esc(action)}" target="_blank" rel="noopener noreferrer" aria-label="前往开通 ${name}"><span>${name}</span>${P.EXTERNAL_LINK_ICON}</a>`:`<span class="offer-name">${name}</span>`;
-    const fullPrice=`<a class="offer-full-price" href="/pricing/?platform=${encodeURIComponent(item.platform.slug)}&plan=${encodeURIComponent(item.plan.slug)}">完整价格与额度 <span aria-hidden="true">→</span></a>`;
+    const fullPrice=`<a class="offer-full-price" href="/pricing/?platform=${encodeURIComponent(item.platform.slug)}&plan=${encodeURIComponent(item.plan.slug)}"><span class="offer-full-price-text">完整价格与额度<span aria-hidden="true">→</span></span></a>`;
     const detailNote=api ? estimateColumn?'各模型/档位独立估算，费用不相加。':'无固定月额度，按实际用量计费。' : '各模型额度不相加，参考额度不代表连续任务保证。';
     const details=`<details class="offer-models">${api?apiSummary:quotaSummary}<div class="offer-model-details">${table}<p class="comparison-method${api?' offer-api-estimate-note':''}">${detailNote}</p>${fullPrice}</div></details>`;
     const priceText=api ? estimatedRange ?? '按量计费' : money(item.cost);
