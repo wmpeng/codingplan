@@ -31,7 +31,7 @@
   padding: 14px;
   margin-bottom: 12px;
   position: relative;
-  z-index: 60;
+  z-index: 20;
 }
 
 :is(.homepage-unified-active, .tool-unified-active) .filter-picker[open] { z-index: 31; }
@@ -402,8 +402,8 @@ body .filter-picker-menu .filter-picker-tools button:focus-visible { outline: 2p
   .tool-unified-active .guide-filter-fields { grid-template-columns: minmax(0, 1fr); }
 }
 
-/* Keep open home pickers above the fixed section-directory launcher. */
-body.discovery-page .filter-state-bar:has(.filter-picker[open]) { z-index: 35; }
+/* Shared pickers sit above page content and the directory, below the site header. */
+body:is(.homepage-unified-active, .tool-unified-active) .filter-state-bar:has(.filter-picker[open]) { z-index: 35; }
 
 /* Model picks, preset shortcuts and the optional strict requirement share one panel. */
 body :is(#homePlatformPicker, #homeModelPicker) .filter-picker-menu { width: 380px; max-height: min(620px, 75dvh); overflow-y: auto; }
