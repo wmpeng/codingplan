@@ -36,12 +36,27 @@ test('按量卡片汇总模型档位，价格链接打开整个 API，零与未�
   const item=offer(),api={...item,plan:{...item.plan,billingMode:'payg'}};
   const html=Offers.card(api,{tokenUnit:'B'});
   assert.match(html,/offer-price-note">估算/);assert.doesNotMatch(html,/&relation=|&model=/);
-  assert.match(html,/无固定额度/);assert.doesNotMatch(html,/class="offer-models"|offer-original-price/);
+  assert.match(html,/无固定月额度/);assert.doesNotMatch(html,/offer-original-price/);
+  assert.match(html,/class="offer-models"><summary class="offer-quota-summary offer-api-summary/);
+  assert.doesNotMatch(html,/<details class="offer-models" open/);
+  assert.match(html,/offer-summary-label">已知单价/);
+  assert.doesNotMatch(html,/>月额度 \/ B<\/th>/);
   const unknown=Offers.card({...api,cost:null},{tokenUnit:'yi'});
   assert.match(unknown,/按量计费/);assert.doesNotMatch(unknown,/offer-price-note/);
   assert.equal(Offers.quota(125,'B',false),'0.125 B');
   assert.equal(Offers.quota(0,'M',false),'0 M');
   assert.equal(Offers.quota('unlimited','yi',false),'不限量');
+});
+
+test('API 单价摘要保留零价、范围和未知，亿/M/B 仅转换展示',()=>{
+  const api=offer({plan:{slug:'api',name:'按量 API',billingMode:'payg'},cost:null,
+    rows:[{slug:'low',modelSlug:'one',usage:{unitPriceCnyPerM:0}},{slug:'high',modelSlug:'two',usage:{unitPriceCnyPerM:2}}]});
+  for(const [unit,value] of [['yi','¥0.00～200.00 /亿'],['M','¥0.00～2.00 /M'],['B','¥0.00～2,000.00 /B']]) {
+    const html=Offers.card(api,{tokenUnit:unit});
+    assert.ok(html.includes(value));assert.match(html,/offer-summary-label">单价/);
+  }
+  const unknown=Offers.card({...api,rows:api.rows.map(row=>({...row,usage:{unitPriceCnyPerM:null}}))},{tokenUnit:'yi'});
+  assert.match(unknown,/offer-api-summary is-unknown/);assert.match(unknown,/offer-summary-value">待确认/);
 });
 
 test('按量多档位显示独立月支出和已知范围，不相加或掩盖未知费用',()=>{

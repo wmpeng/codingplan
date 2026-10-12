@@ -117,6 +117,8 @@ body .offer-card-refined .offer-models > .offer-quota-summary.is-unknown { color
 .offer-summary-quota { max-width:100%; }
 .offer-summary-label { font-size:12px;white-space:nowrap; }
 .offer-summary-value { font-size:inherit;white-space:nowrap; }
+.offer-api-summary .offer-summary-quota { min-width:0;flex-shrink:1;white-space:normal; }
+.offer-api-summary .offer-summary-value { white-space:normal;overflow-wrap:anywhere; }
 .offer-quota-summary.has-small-values .offer-summary-value { font-size:12px; }
 .offer-quota-summary { position:relative; }
 .offer-quota-summary.is-compact { overflow:hidden; }
