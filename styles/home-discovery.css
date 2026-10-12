@@ -89,7 +89,6 @@ body .offer-card-refined .offer-title > :is(a,span) { font:inherit;color:inherit
 body .offer-card-refined .offer-title > a { display:inline-flex;align-items:center;gap:4px;text-decoration:none; }
 body .offer-card-refined .offer-title > a > span { min-width:0;overflow-wrap:anywhere;text-decoration:underline;text-decoration-color:var(--text-secondary);text-decoration-thickness:1px;text-underline-offset:4px;transition:text-decoration-color .16s; }
 body .offer-card-refined .offer-title > a:hover > span { text-decoration-color:var(--text-primary); }
-body .offer-card-refined .offer-title .offer-title-divider { color:var(--border-strong);font-weight:400; }
 body .offer-card-refined .offer-title .link-icon { width:13px;height:13px;flex-shrink:0;color:var(--text-secondary);opacity:.65; }
 body .offer-card-refined .offer-price-line { display:flex;justify-content:flex-end;align-items:baseline;gap:5px; }
 body .offer-card-refined .offer-price-line small { display:inline;margin:0;white-space:nowrap; }
@@ -123,8 +122,8 @@ body .offer-card-refined .offer-model-table :is(th,td) { min-width:0;padding:10p
 body .offer-card-refined .offer-model-table :is(th,td):first-child { padding-right:8px;text-align:left;font-weight:400; }
 body .offer-card-refined .offer-model-table :is(th,td):not(:first-child) { text-align:right; }
 body .offer-card-refined .offer-model-table th small { color:var(--text-secondary);font-size:11px;font-weight:400; }
-body .offer-card-refined .offer-full-price { display:inline-flex;align-items:center;gap:5px;min-height:30px;margin:0 0 6px;color:var(--text-secondary);font-size:12px;text-decoration:none; }
-body .offer-card-refined .offer-full-price:hover { color:var(--text-primary);text-decoration:underline;text-underline-offset:3px; }
+body .offer-card-refined .offer-full-price { display:inline-flex;align-items:center;gap:6px;min-height:32px;margin:0 0 6px;color:var(--accent-primary);font-size:13px;font-weight:500;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;transition:color .16s; }
+body .offer-card-refined .offer-full-price:hover { color:var(--accent-hover); }
 body .offer-card-refined .offer-model-details .comparison-method { margin-top:10px; }
 @media(pointer:coarse){body .offer-card-refined .offer-title a,body .offer-card-refined .offer-full-price,body .offer-card-refined .offer-model-summary .model-tag { min-height:44px; }body .offer-card-refined .model-tag-more { min-width:44px; }body .offer-card-refined .offer-models > summary { min-height:44px; }}
 .home-knowledge { margin-top:48px; }

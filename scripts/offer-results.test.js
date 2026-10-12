@@ -8,10 +8,10 @@ function offer(overrides={}){
 test('套餐导航遵守购买状态和安全地址，复用平台外链图标',()=>{
   const item=offer(),html=Offers.card(item,{tokenUnit:'yi'});
   assert.ok(html.includes(Cards.EXTERNAL_LINK_ICON));
-  assert.match(html,/class="offer-plan" href="https:\/\/example.com\/plan"/);
-  for(const plan of [{...item.plan,discontinued:true},{...item.plan,action:'javascript:alert(1)'}])assert.doesNotMatch(Offers.card({...item,plan},{tokenUnit:'yi'}),/class="offer-plan" href=/);
-  assert.doesNotMatch(Offers.card({...item,platform:{...item.platform,platformStatus:'paused'}},{tokenUnit:'yi'}),/class="offer-plan" href=/);
-  assert.match(Offers.card({...item,plan:{...item.plan,action:null}},{tokenUnit:'yi'}),/class="offer-plan" href="https:\/\/example.com\/platform"/);
+  assert.match(html,/class="offer-open-link" href="https:\/\/example.com\/plan"/);
+  for(const plan of [{...item.plan,discontinued:true},{...item.plan,action:'javascript:alert(1)'}])assert.doesNotMatch(Offers.card({...item,plan},{tokenUnit:'yi'}),/class="offer-open-link" href=/);
+  assert.doesNotMatch(Offers.card({...item,platform:{...item.platform,platformStatus:'paused'}},{tokenUnit:'yi'}),/class="offer-open-link" href=/);
+  assert.match(Offers.card({...item,plan:{...item.plan,action:null}},{tokenUnit:'yi'}),/class="offer-open-link" href="https:\/\/example.com\/platform"/);
 });
 test('订阅价格与额度摘要收敛，套餐链接不限定第一个模型',()=>{
   const html=Offers.card(offer(),{tokenUnit:'yi'});
