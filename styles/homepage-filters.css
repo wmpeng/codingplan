@@ -315,7 +315,7 @@ body .range-picker-slider input:focus-visible { outline: 2px solid #6b7280; outl
   body .range-picker-ticks button { min-height: 44px; }
   body .range-picker-slider .range-picker-ticks { height: 44px; }
 }
-.tool-unified-active .filter-state-actions { float: right; margin: 0 0 0 16px; }
+.tool-unified-active .filter-state-actions { justify-content: flex-end; margin: 0; }
 .tool-unified-active .filter-state-hint { margin-top: 8px; min-height: 32px; display: flex; align-items: center; }
 @media (max-width: 1100px) {
   :is(.homepage-unified-active, .tool-unified-active) .guide-filter-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -328,7 +328,7 @@ body .range-picker-slider input:focus-visible { outline: 2px solid #6b7280; outl
   .filter-checks { gap: 6px 14px; }
   .filter-checks .filter-inline { font-size: 12px; }
   :is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary { padding: 8px 9px; gap: 6px; }
-  .tool-unified-active .filter-state-actions { float: none; margin: 0 0 8px; }
+  .tool-unified-active .filter-state-actions { justify-content: flex-start; margin: 0 0 8px; }
 }
 
 .filter-search-empty { color: var(--text-secondary); padding: 22px 8px; text-align: center; font-size: 13px; line-height: 1.7; }
