@@ -484,7 +484,8 @@
 <script src="/scripts/site-features.js?v=260923a"></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=260923a">
 <script src="/scripts/site-navigation.js?v=261009bunit" defer></script>
-  <link rel="stylesheet" href="/styles/reading.css?v=261012breadcrumb" />
+  <script src="/scripts/article-toc.js?v=261012toc" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=261012toc" />
   <link rel="stylesheet" href="/styles/design-system.css?v=261009stacksettings" />
 </head>
 <body class="article-page">
@@ -537,7 +538,7 @@
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop">
         <nav class="doc-toc" aria-label="文章目录">
-          <p class="doc-toc-title">目录</p>
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-billing">一、三种常见计费方式</a>
               <ol>
@@ -584,8 +585,8 @@
         <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;">本次核心更新：MiniMax 上线 MiniMax-M3，并切换到 Plus、Max、Ultra 三档公开订阅；明确 M3 只有标准版，想要极速响应仍看 M2.7-highspeed；补充 Starter / Plus-极速 老用户保留档与 Max-极速 停售迁移说明；校正 GitHub Copilot、DeepSeek 等时效性表述。</div>
         <p class="lead">2026年6月初，AI编程订阅市场继续快速洗牌：阿里、字节、腾讯等头部厂商仍在用 Token Plan 替代传统 Coding Plan，MiniMax 也已把主力模型升级到 M3，并同步调整订阅套餐结构。对个人开发者来说，<strong>现在很多所谓 Coding Plan 和 Token Plan 的边界其实已经越来越模糊</strong>，不少套餐虽然名字不同，实际也都是按 token 消耗在记录和限制用量。与其只看它叫 Coding Plan 还是 Token Plan，不如直接进入平台，看套餐真实用量 ➡️<a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a>。对照本文整理的<strong>实测可用量、价格和限制规则</strong>一起看，判断哪个套餐更适合自己的使用频率和预算。本文梳理 25 大主流平台的核心差异，帮助你更快看清哪些套餐真正划算、哪些更适合日常开发。</p>
 
-        <nav class="doc-toc doc-toc--inline" aria-label="文章目录">
-          <p class="doc-toc-title">目录</p>
+        <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="文章目录">
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-billing">一、三种常见计费方式</a>
               <ol>
@@ -600,7 +601,7 @@
             <li><a href="#sec-selection">六、选型建议</a></li>
             <li><a href="#sec-summary">七、总结</a></li>
           </ol>
-        </nav>
+        </nav></details>
 
         <h2 id="sec-billing">一、三种常见计费方式</h2>
         <p>现在平台上的 AI 编程产品，最常见的其实已经不是简单的“二选一”，而是三种方式并存：</p>

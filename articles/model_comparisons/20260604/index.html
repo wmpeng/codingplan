@@ -455,7 +455,8 @@
 <script src="/scripts/site-features.js?v=260923a"></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=260923a">
 <script src="/scripts/site-navigation.js?v=261009bunit" defer></script>
-  <link rel="stylesheet" href="/styles/reading.css?v=261012breadcrumb" />
+  <script src="/scripts/article-toc.js?v=261012toc" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=261012toc" />
   <link rel="stylesheet" href="/styles/design-system.css?v=261009stacksettings" />
 </head>
 <body class="article-page">
@@ -508,7 +509,7 @@
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop">
         <nav class="doc-toc" aria-label="文章目录">
-          <p class="doc-toc-title">目录</p>
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-overview">一、快速对比总览</a></li>
             <li><a href="#sec-landscape">二、整体格局</a>
@@ -553,8 +554,8 @@
         </ul>
         <p>从测试数据来看，国产头部大模型已全面跻身全球第一梯队，与 OpenAI、Anthropic 等海外厂商的顶尖产品差距进一步缩小，且在性价比、国内生态适配性方面具备独特优势。同时 6 月榜单迎来重大变化：<strong>GPT-5.5 稳居 Coding 指数榜首</strong>，<strong>Claude Opus 4.8 加冕 Agentic 智能指数新王</strong>，Qwen3.7 Max、DeepSeek V4 Pro、Kimi K2.6、MiMo-V2.5-Pro 等国产旗舰共同跻身两大榜单全球前十。</p>
 
-        <nav class="doc-toc doc-toc--inline" aria-label="文章目录">
-          <p class="doc-toc-title">目录</p>
+        <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="文章目录">
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-overview">一、快速对比总览</a></li>
             <li><a href="#sec-landscape">二、整体格局：GPT-5.5 稳居 Coding 王座，国产头部跻身全球前十</a>
@@ -574,7 +575,7 @@
             <li><a href="#sec-selection">五、个人使用选型参考指南</a></li>
             <li><a href="#sec-summary">六、2026年6月榜单重大变化总结</a></li>
           </ol>
-        </nav>
+        </nav></details>
 
         <h2 id="sec-overview">一、快速对比总览</h2>
         <p>下表汇总了 6 月榜单中 19 款主流模型的四大关键指标，便于快速横向比较（上下文长度数据来源：<a href="https://llm-stats.com/models?category=llm" rel="noopener noreferrer">llm-stats.com</a>）：</p>

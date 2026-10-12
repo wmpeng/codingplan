@@ -510,7 +510,8 @@
 <script src="/scripts/site-features.js?v=260923a"></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=260923a">
 <script src="/scripts/site-navigation.js?v=261009bunit" defer></script>
-  <link rel="stylesheet" href="/styles/reading.css?v=261012breadcrumb" />
+  <script src="/scripts/article-toc.js?v=261012toc" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=261012toc" />
   <link rel="stylesheet" href="/styles/design-system.css?v=261009stacksettings" />
 </head>
 <body class="article-page">
@@ -563,7 +564,7 @@
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="文章目录">
         <nav class="doc-toc" aria-label="目录">
-          <p class="doc-toc-title">目录</p>
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-core">一、相同基座与后训练</a></li>
             <li><a href="#sec-bench">二、官方跑分</a>
@@ -605,8 +606,8 @@
 
         <p class="lead">8 月 14 日，智谱发布 <a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-5.3" rel="noopener noreferrer"><strong>GLM-5.3</strong></a>。它没有换成更大的基础模型，沿用 GLM-5.2 的基座，把资源继续投到后训练、任务环境和长程 Agent 训练上。</p>
 
-        <nav class="doc-toc doc-toc--inline" aria-label="目录">
-          <p class="doc-toc-title">目录</p>
+        <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="目录">
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-core">一、相同基座与后训练</a></li>
             <li><a href="#sec-bench">二、官方跑分</a>
@@ -628,7 +629,7 @@
             <li><a href="#sec-open">五、开放情况</a></li>
             <li><a href="#sec-summary">六、总结</a></li>
           </ol>
-        </nav>
+        </nav></details>
 
         <p><a href="https://z.ai/blog/glm-5.3" rel="noopener noreferrer">官方公开数据</a>里，GLM-5.3 的整体能力已经进入第一梯队：国产里强于 DeepSeek V4 Pro、Qwen3.8-Max，和 Kimi K3 接近；海外里整体强于 Claude Opus 4.8，接近 Fable 5 和 GPT-5.6 Sol。编程上，长程终端、持续改代码和自动化已经打到开源前列，Agents' Last Exam 与 GPT-5.6 Sol 基本持平；更难的终端任务、高难编程仍落后于 Fable 5 和 GPT-5.6 Sol。社区实测里，3D 场景、复杂 UI 和长提示词项目的完成质量也跟着上去了。</p>
 

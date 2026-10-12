@@ -521,7 +521,8 @@
 <script src="/scripts/site-features.js?v=260923a"></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=260923a">
 <script src="/scripts/site-navigation.js?v=261009bunit" defer></script>
-  <link rel="stylesheet" href="/styles/reading.css?v=261012breadcrumb" />
+  <script src="/scripts/article-toc.js?v=261012toc" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=261012toc" />
   <link rel="stylesheet" href="/styles/design-system.css?v=261009stacksettings" />
 </head>
 <body class="article-page">
@@ -574,7 +575,7 @@
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="文章目录">
         <nav class="doc-toc" aria-label="目录">
-          <p class="doc-toc-title">目录</p>
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-release">一、正式版更新了什么</a></li>
             <li><a href="#sec-benchmark">二、官方评测表</a>
@@ -612,8 +613,8 @@
 
         <p class="lead">8 月 13 日，DeepSeek 在官网确认 V4 Pro 正式版上线。APP、网页端和 API 同步更新，网页和 APP 可在「专家模式」中调用，API 模型名仍为 <code>deepseek-v4-pro</code>。发布公告和定价页同时带来了两个变化：正式版的 Agent / Coding 评测成绩公开了，API 峰谷定价也定了下来。当前 3 元的未命中输入价格只保留到 8 月 16 日。</p>
 
-        <nav class="doc-toc doc-toc--inline" aria-label="目录">
-          <p class="doc-toc-title">目录</p>
+        <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="目录">
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-release">一、正式版更新了什么</a></li>
             <li><a href="#sec-benchmark">二、官方评测表</a>
@@ -630,7 +631,7 @@
             <li><a href="#sec-use">六、要不要用</a></li>
             <li><a href="#sec-summary">七、总结</a></li>
           </ol>
-        </nav>
+        </nav></details>
 
         <figure><img src="assets/deepseek-v4-pro-0813-homepage-announcement.jpeg" alt="DeepSeek 官网首页正式版公告" loading="lazy" /></figure>
         <p class="img-source">图片来源：<a href="https://www.deepseek.com" rel="noopener noreferrer">DeepSeek官网</a></p>

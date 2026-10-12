@@ -16,7 +16,6 @@ body.article-page { padding: 24px 28px 64px; font-size: 16px; line-height: 1.85;
 .article-page article.doc blockquote { background: #f4f7fc; border-left-color: #8aaed8; box-shadow: none; border-radius: 0 7px 7px 0; }
 .article-page article.doc table { font-size: 13px; font-variant-numeric: tabular-nums; }
 .article-page article.doc th { background: #f3f6fa; font-weight: 600; }
-.article-page article.doc :is(.doc-toc, .doc-toc--inline) { border: 1px solid var(--border-color); border-radius: 8px; background: #f8fafc; box-shadow: none; }
 .article-page .articles-page { max-width: 900px; margin: 0 auto; }
 .article-page .articles-lead { font-size: 14px; color: var(--text-secondary); margin-bottom: 32px; }
 .article-page .articles-section { margin-bottom: 32px; }
@@ -35,4 +34,26 @@ body.article-page { padding: 24px 28px 64px; font-size: 16px; line-height: 1.85;
 }
 
 .article-page .doc-wrap:has(> .articles-page) { max-width: 900px; }
-.article-page .doc-toc { background: #f8fafc; border-color: var(--border-color); box-shadow: none; border-radius: 8px; }
+/* 阅读目录沿用平台页的透明侧栏和细竖线，完整保留嵌套章节与链接。 */
+body.article-page .doc-wrap .doc-toc { margin:0;padding:0 0 0 10px;border:0;border-left:1px solid var(--border-color);border-radius:0;background:transparent;box-shadow:none;font-size:13px;line-height:1.6; }
+body.article-page .doc-wrap .doc-toc .doc-toc-title { margin:0;padding:0 12px 12px;color:var(--text-secondary);font-size:13px;font-weight:400;letter-spacing:0;line-height:1.6; }
+body.article-page .doc-wrap .doc-toc :is(ol,ul) { margin:0;padding:0;list-style:none;border:0; }
+body.article-page .doc-wrap .doc-toc li { margin:0;padding:0; }
+body.article-page .doc-wrap .doc-toc a { display:block;padding:8px 12px;border:0;border-radius:7px;color:var(--text-primary);font-size:13px;font-weight:400;line-height:1.6;text-decoration:none;overflow-wrap:anywhere;transition:background .16s,color .16s; }
+body.article-page .doc-wrap .doc-toc :is(ol,ul) :is(ol,ul) { margin:0 0 5px;padding-left:12px;list-style:none;border:0; }
+body.article-page .doc-wrap .doc-toc :is(ol,ul) :is(ol,ul) a { padding:6px 12px;color:var(--text-secondary);font-size:12px;font-weight:400; }
+body.article-page .doc-wrap .doc-toc a:hover,body.article-page .doc-wrap .doc-toc a:focus-visible { background:var(--bg-tertiary);color:var(--text-primary); }
+body.article-page .doc-wrap .doc-toc a[aria-current="location"] { background:var(--bg-tertiary);color:var(--text-primary);font-weight:500; }
+body.article-page .doc-wrap .doc-toc-aside--desktop { top:104px;max-height:calc(100vh - 128px);scrollbar-color:var(--border-strong) transparent; }
+body.article-page .article-toc-disclosure { margin:20px 0 28px;padding:0;border:0;border-block:1px solid var(--border-light);background:transparent; }
+body.article-page .article-toc-disclosure > summary { display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:10px 0;list-style:none;color:var(--text-secondary);font-size:13px;font-weight:400;line-height:1.6;cursor:pointer; }
+body.article-page .article-toc-disclosure > summary::-webkit-details-marker { display:none; }
+body.article-page .article-toc-disclosure > summary::after { content:"";width:6px;height:6px;flex-shrink:0;margin:0 4px 3px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .16s; }
+body.article-page .article-toc-disclosure[open] > summary::after { transform:rotate(225deg);margin-bottom:0; }
+body.article-page .article-toc-disclosure .doc-toc--inline { padding:0 0 10px;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none; }
+body.article-page .article-toc-disclosure .doc-toc-title { display:none; }
+@media(min-width:1024px){body.article-page .article-toc-disclosure { display:none; }}
+@media(pointer:coarse){body.article-page .doc-wrap .doc-toc a { min-height:44px; }}
+
+/* 全站 scroll-padding-top 已预留96px；章节再补16px，避免重复留白。 */
+body.article-page article.doc :is(h2[id],h3[id]) { scroll-margin-top:16px; }

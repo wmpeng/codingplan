@@ -455,7 +455,8 @@
 <script src="/scripts/site-features.js?v=260923a"></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=260923a">
 <script src="/scripts/site-navigation.js?v=261009bunit" defer></script>
-  <link rel="stylesheet" href="/styles/reading.css?v=261012breadcrumb" />
+  <script src="/scripts/article-toc.js?v=261012toc" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=261012toc" />
   <link rel="stylesheet" href="/styles/design-system.css?v=261009stacksettings" />
 </head>
 <body class="article-page">
@@ -508,7 +509,7 @@
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop">
         <nav class="doc-toc" aria-label="文章目录">
-          <p class="doc-toc-title">目录</p>
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-overview">一、快速对比总览</a></li>
             <li><a href="#sec-intelligence">二、整体格局：先看 Intelligence 指数</a></li>
@@ -543,8 +544,8 @@
           <li><strong>模型名单更新</strong>：纳入 Claude Fable 5、MiniMax-M2.7 等，替换部分 6 月初旧型号。</li>
         </ol>
 
-        <nav class="doc-toc doc-toc--inline" aria-label="文章目录">
-          <p class="doc-toc-title">目录</p>
+        <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="文章目录">
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-overview">一、快速对比总览</a></li>
             <li><a href="#sec-intelligence">二、整体格局：先看 Intelligence 指数</a></li>
@@ -562,7 +563,7 @@
             <li><a href="#sec-selection">六、选型建议</a></li>
             <li><a href="#sec-summary">七、榜单变化总结</a></li>
           </ol>
-        </nav>
+        </nav></details>
 
         <h2 id="sec-overview">一、快速对比总览</h2>
         <p>下表汇总 19 款主流模型的上下文、多模态与三项核心指数，便于横向比较（统计时间：2026 年 6 月 17 日）：</p>

@@ -472,7 +472,8 @@
 <script src="/scripts/site-features.js?v=260923a"></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=260923a">
 <script src="/scripts/site-navigation.js?v=261009bunit" defer></script>
-  <link rel="stylesheet" href="/styles/reading.css?v=261012breadcrumb" />
+  <script src="/scripts/article-toc.js?v=261012toc" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=261012toc" />
   <link rel="stylesheet" href="/styles/design-system.css?v=261009stacksettings" />
 </head>
 <body class="article-page">
@@ -525,7 +526,7 @@
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop">
         <nav class="doc-toc" aria-label="文章目录">
-          <p class="doc-toc-title">目录</p>
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-m3-core">一、M3 核心升级</a>
               <ol>
@@ -565,8 +566,8 @@
       <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;">本次核心更新：MiniMax-M3 全量上线公开订阅（MiniMax 侧为 Token Plan，站内对比仍按 Coding Plan 展示）；原生多模态；<strong>现行公开档 M3 无 highspeed</strong>；新增 Ultra（官方月 Token 上限 7100M ≈ 71 亿）；Starter / Plus-极速 / Max-极速 停售、老用户可续订；Max-极速 可迁移至新版 Max（199→119 并补发差价积分）；M2.7-highspeed 全档通用可调。</div>
       <p class="lead">2026 年 6 月，国产大模型迭代节奏持续加快。<strong>MiniMax</strong> 正式推出 <strong>MiniMax-M3</strong>（以下简称 M3）旗舰模型，定位为"原生多模态 + 极致性价比"的代际跃迁之作。在智谱AI、字节·方舟、阿里·百炼等头部平台持续限购、Coding Plan 愈发稀缺的当下，M3 的发布为个人开发者提供了一个<strong>不限购、零抢购、模型顶尖</strong>的稳定选择。本文围绕 M3 模型能力升级、MiniMax 套餐体系调整、选型建议展开。</p>
 
-      <nav class="doc-toc doc-toc--inline" aria-label="文章目录">
-        <p class="doc-toc-title">目录</p>
+      <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="文章目录">
+        <p class="doc-toc-title">本页内容</p>
         <ol>
           <li><a href="#sec-m3-core">一、M3 核心升级：模型能力跃迁</a>
             <ol>
@@ -597,7 +598,7 @@
           <li><a href="#sec-domestic">四、与国产第一梯队对比</a></li>
           <li><a href="#sec-summary">五、总结</a></li>
         </ol>
-      </nav>
+      </nav></details>
 
       <h2 id="sec-m3-core">一、M3 核心升级：模型能力跃迁</h2>
 

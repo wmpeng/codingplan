@@ -510,7 +510,8 @@
 <script src="/scripts/site-features.js?v=260923a"></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=260923a">
 <script src="/scripts/site-navigation.js?v=261009bunit" defer></script>
-  <link rel="stylesheet" href="/styles/reading.css?v=261012breadcrumb" />
+  <script src="/scripts/article-toc.js?v=261012toc" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=261012toc" />
   <link rel="stylesheet" href="/styles/design-system.css?v=261009stacksettings" />
 </head>
 <body class="article-page">
@@ -563,7 +564,7 @@
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="文章目录">
         <nav class="doc-toc" aria-label="目录">
-          <p class="doc-toc-title">目录</p>
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-deepswe">一、先回看 DeepSWE</a></li>
             <li><a href="#sec-intelligence">二、综合智能榜</a></li>
@@ -592,8 +593,8 @@
 
         <p class="lead">8 月 14 日智谱发布 GLM-5.3 后，独立评测机构 Artificial Analysis（下称 AA）在 8 月 18 日收录了 GLM-5.3（max）的评测结果。这是第三方视角的独立评测补充，不是模型再次发布。AA 把各家模型放进同一套任务里跑分，用 Intelligence Index 给出综合分数，再单独加权出更接近工具调用和长程任务表现的 Agentic Index。当前版本 v4.1.1 下，GLM-5.3 综合智能 60 分、Agentic 59 分，在 8 月 22 日截图的这份 14 模型对比集内分别排第 5 和第 2。</p>
 
-                <nav class="doc-toc doc-toc--inline" aria-label="目录">
-          <p class="doc-toc-title">目录</p>
+                <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="目录">
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-deepswe">一、先回看 DeepSWE</a></li>
             <li><a href="#sec-intelligence">二、综合智能榜</a></li>
@@ -601,7 +602,7 @@
             <li><a href="#sec-tiers">四、三榜都在第一梯队</a></li>
             <li><a href="#sec-summary">五、总结</a></li>
           </ol>
-        </nav>
+        </nav></details>
 
 <h2 id="sec-deepswe">一、先回看 DeepSWE：第三方榜 69%±3%，并列第一梯队</h2>
 <p>在上一篇 <a href="https://vibecoding.dreamfree.space/articles/news/20260814_glm_5_3/" rel="noopener noreferrer">《GLM-5.3 发布》</a> 里已经梳理过官方跑分：提升几乎全部来自后训练，最突出的是长程软件工程任务。官方口径里，DeepSWE v1.1 从 GLM-5.2 的 46.2 提升到 66.9，Terminal Bench 3.0 从 4.6 提升到 28.3，Agents' Last Exam（CLI）从 23.8 提升到 28.5。</p>

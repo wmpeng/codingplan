@@ -488,7 +488,8 @@
 <script src="/scripts/site-features.js?v=260923a"></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=260923a">
 <script src="/scripts/site-navigation.js?v=261009bunit" defer></script>
-  <link rel="stylesheet" href="/styles/reading.css?v=261012breadcrumb" />
+  <script src="/scripts/article-toc.js?v=261012toc" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=261012toc" />
   <link rel="stylesheet" href="/styles/design-system.css?v=261009stacksettings" />
 </head>
 <body class="article-page">
@@ -541,7 +542,7 @@
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop">
         <nav class="doc-toc" aria-label="文章目录">
-          <p class="doc-toc-title">目录</p>
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-what">一、K2.7 Code 是什么</a><ol>
               <li><a href="#sec-arch">架构与定位</a></li>
@@ -580,8 +581,8 @@
       <p class="doc-updates">更新日期：<time datetime="2026-06-15">2026.6.15</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
       <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;">本次核心更新：<strong>6 月 12 日</strong>月之暗面发布并开源 <strong>Kimi K2.7 Code</strong>（Modified MIT）；<strong>Kimi Code Plan</strong> 默认模型同步升级；开放平台 API <strong>不涨按量价</strong>；<strong>6 月 15 日</strong> <strong>高速版</strong> <code>kimi-k2.7-code-highspeed</code> 上线（约 <strong>5–6×</strong> 输出速度、<strong>2×</strong> 价格）；相对 K2.6 官方称长程编程与指令遵循提升，思考 token 平均 <strong>-30%</strong>；非编程任务仍推荐 <strong>K2.6</strong>。</div>
       <p class="lead">2026 年 6 月中旬，国产大模型在 <strong>Coding</strong> 赛道继续加速。<strong>月之暗面 Kimi</strong> 于 <strong>6 月 12 日</strong>发布并开源编程专用模型 <strong>Kimi K2.7 Code</strong>，<strong>6 月 15 日</strong>又上线同权重的高速推理版本。与一周前 <strong>GLM-5.2</strong> 全量开放 Coding Plan 形成呼应，Kimi 这次走的是另一条路：名字里就写着 <strong>Code</strong>，官方明确建议「纯对话、办公用 K2.6，编程用 K2.7」——在人人都想讲 AGI 的语境里，这种主动划边界、集中力量做编程的做法相当克制。下面从能力、定价、社区实测和怎么接入手把手说清楚。</p>
-      <nav class="doc-toc doc-toc--inline" aria-label="文章目录">
-        <p class="doc-toc-title">目录</p>
+      <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="文章目录">
+        <p class="doc-toc-title">本页内容</p>
         <ol>
           <li><a href="#sec-what">一、K2.7 Code 是什么：编程专项后训练</a><ol>
             <li><a href="#sec-arch">架构与定位</a></li>
@@ -612,7 +613,7 @@
           <li><a href="#sec-advice">八、选型建议</a></li>
           <li><a href="#sec-summary">九、总结</a></li>
         </ol>
-      </nav>
+      </nav></details>
 
       <h2 id="sec-what">一、K2.7 Code 是什么：不是大改版，而是「编程专项后训练」</h2>
       <h3 id="sec-arch">1. 架构与定位</h3>

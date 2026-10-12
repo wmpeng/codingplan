@@ -455,7 +455,8 @@
 <script src="/scripts/site-features.js?v=260923a"></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=260923a">
 <script src="/scripts/site-navigation.js?v=261009bunit" defer></script>
-  <link rel="stylesheet" href="/styles/reading.css?v=261012breadcrumb" />
+  <script src="/scripts/article-toc.js?v=261012toc" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=261012toc" />
   <link rel="stylesheet" href="/styles/design-system.css?v=261009stacksettings" />
 </head>
 <body class="article-page">
@@ -508,7 +509,7 @@
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop">
         <nav class="doc-toc" aria-label="文章目录">
-          <p class="doc-toc-title">目录</p>
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-billing">一、三种常见计费方式</a>
               <ol>
@@ -547,7 +548,7 @@
         <p class="doc-updates">更新日期：<time datetime="2026-06-28">2026.6.28</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
         <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;"><ul><li>数据统计截至 2026.6.28，重点关注 6 月下半场模型与套餐变化。</li><li>智谱 Coding Plan 已切换到 GLM-5.2 主力口径，仍需抢购，热门时段库存紧张。</li><li>Kimi 全线升级 Kimi-K2.7-Code，基础档位可买但实测月用量依旧偏保守。</li><li>字节·方舟延续 6.8-8.8 首两月 2.5 折，且部分模型出现 2.5~4 倍用量活动。</li><li>字节·方舟 Coding Plan 在 6 月下旬重新限购，Lite/Pro 抢购属性回归。</li><li>优云智算新增 GLM-5.2，当前为限时 x2 倍率。</li><li>联通云 Coding Plan 已下线，对比表已不再收录该平台套餐。</li></ul></div>
         <p class="lead">6 月底这轮更新，最大的变化不是“又多了几个新模型”，而是平台分层进一步清晰：高质量代码模型继续向 GLM-5.2 与 Kimi-K2.7-Code 靠拢，头部平台在促销和限购之间反复拉扯，真正稳定可买、长期可用的套餐反而更容易筛选。与其纠结名字叫 Coding Plan 还是 Token Plan，不如直接看三件事：<strong>同价位可用量、是否要抢购、模型池是否覆盖你的实际开发场景</strong>。本文按这个逻辑，把当期主流平台一次讲透。</p>
-        <nav class="doc-toc doc-toc--inline" aria-label="文章目录"><p class="doc-toc-title">目录</p>
+        <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="文章目录"><p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-billing">一、三种常见计费方式</a>
               <ol>
@@ -577,7 +578,7 @@
             <li><a href="#sec-free">五、免费平台推荐</a></li>
             <li><a href="#sec-selection">六、分场景选型建议</a></li>
             <li><a href="#sec-summary">七、总结</a></li>
-          </ol></nav>
+          </ol></nav></details>
         <h2 id="sec-billing">一、三种常见计费方式</h2>
         <ul><li><strong>Coding Plan</strong>：多数平台表面按请求次数计量，实际都在内部按模型倍率折算 token。优点是上手直观，缺点是高峰期倍率和限购风险更高。</li><li><strong>Token Plan</strong>：定价和上限更透明，适合能明确估算月用量的人群。不同平台对长上下文、工具调用和高阶模型的扣减速度差异很大。</li><li><strong>API 按量计费</strong>：不绑月套餐，按实际消耗结算，低频或波动型开发最灵活。关键是要看缓存命中价格和输出价格，不只看输入单价。</li></ul>
         <h3 id="sec-dynamics">1）6月下半场动态</h3>

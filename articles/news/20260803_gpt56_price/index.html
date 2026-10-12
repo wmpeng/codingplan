@@ -534,7 +534,8 @@
 <script src="/scripts/site-features.js?v=260923a"></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=260923a">
 <script src="/scripts/site-navigation.js?v=261009bunit" defer></script>
-  <link rel="stylesheet" href="/styles/reading.css?v=261012breadcrumb" />
+  <script src="/scripts/article-toc.js?v=261012toc" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=261012toc" />
   <link rel="stylesheet" href="/styles/design-system.css?v=261009stacksettings" />
 </head>
 <body class="article-page">
@@ -586,7 +587,7 @@
     </nav>
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="侧栏目录">
-        <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、这次降了多少</a></li><li><a href="#sec-h2-2">二、为什么降价，谁最受益</a></li><li><a href="#sec-h2-3">三、怎么选模型和思考深度</a><ol><li><a href="#sec-h3-3">如果你更关心成本或者额度</a></li><li><a href="#sec-h3-3-2">如果你更关心速度</a></li><li><a href="#sec-h3-3-3">实际用法</a></li></ol></li><li><a href="#sec-h2-4">总结</a></li></ol></nav>
+        <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">本页内容</p><ol><li><a href="#sec-h2-1">一、这次降了多少</a></li><li><a href="#sec-h2-2">二、为什么降价，谁最受益</a></li><li><a href="#sec-h2-3">三、怎么选模型和思考深度</a><ol><li><a href="#sec-h3-3">如果你更关心成本或者额度</a></li><li><a href="#sec-h3-3-2">如果你更关心速度</a></li><li><a href="#sec-h3-3-3">实际用法</a></li></ol></li><li><a href="#sec-h2-4">总结</a></li></ol></nav>
       </aside>
       <article class="doc">
         <p class="doc-kicker">AI 行业快讯</p>
@@ -599,7 +600,7 @@
 * Sol 标准价不变；新增 Fast mode，最高 2.5 倍速度，定价为标准模式 2 倍
 * ChatGPT Work / Codex 订阅价与月度额度不变，Terra / Luna 的 credit 消耗同步减少
 * Luna 降价后更适合带工具调用、多步 Agent 的高频工作流</p>
-        <nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、这次降了多少</a></li><li><a href="#sec-h2-2">二、为什么降价，谁最受益</a></li><li><a href="#sec-h2-3">三、怎么选模型和思考深度</a><ol><li><a href="#sec-h3-3">如果你更关心成本或者额度</a></li><li><a href="#sec-h3-3-2">如果你更关心速度</a></li><li><a href="#sec-h3-3-3">实际用法</a></li></ol></li><li><a href="#sec-h2-4">总结</a></li></ol></nav>
+        <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">本页内容</p><ol><li><a href="#sec-h2-1">一、这次降了多少</a></li><li><a href="#sec-h2-2">二、为什么降价，谁最受益</a></li><li><a href="#sec-h2-3">三、怎么选模型和思考深度</a><ol><li><a href="#sec-h3-3">如果你更关心成本或者额度</a></li><li><a href="#sec-h3-3-2">如果你更关心速度</a></li><li><a href="#sec-h3-3-3">实际用法</a></li></ol></li><li><a href="#sec-h2-4">总结</a></li></ol></nav></details>
         <p>2026 年 7 月 30 日，OpenAI 下调了 GPT-5.6 Luna 和 Terra 的 API 价格。Luna 输入/输出降到原来的 20%，Terra 降到原来的 80%；Sol 标准价没有变动，但同日引入了 Fast mode。下文按降幅、受益场景、成本和耗时选型三部分展开。</p>
 <h2 id="sec-h2-1">一、这次降了多少</h2>
 <p>降价前后对比（每百万 tokens，标准模式）：</p>

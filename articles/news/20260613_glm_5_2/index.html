@@ -496,7 +496,8 @@
 <script src="/scripts/site-features.js?v=260923a"></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=260923a">
 <script src="/scripts/site-navigation.js?v=261009bunit" defer></script>
-  <link rel="stylesheet" href="/styles/reading.css?v=261012breadcrumb" />
+  <script src="/scripts/article-toc.js?v=261012toc" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=261012toc" />
   <link rel="stylesheet" href="/styles/design-system.css?v=261009stacksettings" />
 </head>
 <body class="article-page">
@@ -549,7 +550,7 @@
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop">
         <nav class="doc-toc" aria-label="文章目录">
-          <p class="doc-toc-title">目录</p>
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-core">一、核心升级</a><ol>
               <li><a href="#sec-1m">1M 上下文</a></li>
@@ -582,8 +583,8 @@
       <p class="doc-updates">更新日期：<time datetime="2026-06-13">2026.6.13</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
       <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;">本次核心更新：6 月 13 日 17:21 起 <strong>GLM-5.2</strong> 面向 <strong>GLM Coding Plan 全量用户</strong>开放；官方称 <strong>1M 可用上下文</strong>；<strong>API 与 MIT 开源</strong>计划下周上线；智谱<strong>尚未公布</strong> SWE-bench 等官方榜单；<strong>LLM Benchmark Code V3</strong> 中 <strong>GLM-5.2(max)</strong> 综合第 <strong>3</strong>，公开 5 工程中获 <strong>3 个 A 档</strong>，维护者称可用性<strong>持平 Opus 4.8</strong>、<strong>大幅领先其他国产模型</strong>。</div>
       <p class="lead">2026 年 6 月 13 日，<strong>智谱</strong>正式发布 <strong>GLM-5.2</strong>，并向 <strong>GLM Coding Plan</strong> 存量用户全量开放。官方 benchmark 尚空，但 Code V3 榜单维护者 <strong>toyama nao</strong>（知乎 llm2014 /「玩具匠」）在同日发布的解读中给出判断：<strong>GLM-5.2 把 Coding 能力推到世界一流模型的门口，并在国产模型中首次拉开代差</strong>。本文结合其解读与公开 CSV 数据，说明 GLM-5.2 相对 GLM-5.1 与同梯队模型意味着什么。</p>
-      <nav class="doc-toc doc-toc--inline" aria-label="文章目录">
-        <p class="doc-toc-title">目录</p>
+      <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="文章目录">
+        <p class="doc-toc-title">本页内容</p>
         <ol>
           <li><a href="#sec-core">一、GLM-5.2 核心升级：从 200K 到 1M</a><ol>
             <li><a href="#sec-1m">真正可用的 1M 上下文</a></li>
@@ -609,7 +610,7 @@
           <li><a href="#sec-advice">七、选型建议</a></li>
           <li><a href="#sec-summary">八、总结</a></li>
         </ol>
-      </nav>
+      </nav></details>
       <h2 id="sec-core">一、GLM-5.2 核心升级：从 200K 到 1M</h2>
       <h3 id="sec-1m">1. 真正可用的 1M 上下文</h3>
       <p>GLM-5.2 将可用上下文从 GLM-5.1 的约 <strong>200K</strong> 提升到 <strong>1,000,000 tokens</strong>（开发者侧常见标识 <strong><code>glm-5.2[1m]</code></strong>）。Code V3 维护者指出，GLM-5.1 在超过 <strong>100K</strong> 后注意力快速散失，是此前「榜单不差、实战却拉胯」的主因之一；1M 窗口的目标，正是让 Agent <strong>少压缩、少遗忘</strong>。</p>
