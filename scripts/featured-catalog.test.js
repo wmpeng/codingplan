@@ -23,10 +23,10 @@ test('所有符合条件的套餐和API关系都保留，筛选不能跨套餐�
     const state=F.normalizeState({...F.createDefaultState(config,{featuredPreset:preset}),...patch});
     const offers=F.matchingOffers(ctx,state,{usdToCnyRate:config.usdToCnyRate,platformCatalog:config.platformCatalog});
     const result=G.recommend(ctx,state,config,{allMatching:true});
-    const expected=offers.flatMap(o=>o.plan.billingMode==='payg'?o.rows.map(r=>o.plan.slug+':'+r.slug):[o.plan.slug]);
+    const expected=offers.map(o=>o.plan.slug);
     assert.deepEqual(new Set(result.candidates.map(c=>c.id)),new Set(expected));
     assert.equal(result.candidates.length,new Set(expected).size);
-    for(const item of result.candidates){assert.ok(item.rows.every(r=>r.planSlug===item.plan.slug));assert.match(R.card(item,state),/data-offer-id/);}
+    for(const item of result.candidates){const offer=offers.find(o=>o.plan.slug===item.plan.slug);assert.deepEqual(new Set(item.rows.map(r=>r.slug)),new Set(offer.rows.map(r=>r.slug)));assert.ok(item.rows.every(r=>r.planSlug===item.plan.slug));assert.match(R.card(item,state),/data-offer-id/);}
   }
 });
 

@@ -261,7 +261,7 @@ test('one source defines the featured platforms and exactly two model groups', (
   assert.deepEqual(config.groups.map(g=>g.id), ['high-volume-models','sota-models']);
   assert.equal(config.platformSlugs.length,6);
   assert.ok(config.groups[0].modelSlugs.includes('gpt-6-luna'));
-  assert.ok(config.groups[1].modelSlugs.includes('gpt-6-sol'));
+  assert.ok(config.groups[1].modelSlugs.includes('gpt-6-1-sol'));
 });
 
 test('preset rows include subscriptions and API while sorting by unit and package price', () => {

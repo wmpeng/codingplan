@@ -6,11 +6,11 @@
     "url": "/platforms/command-code/"
   },
   "minimax": {
-    "title": "MiniMax Token Plan",
+    "title": "MiniMax M Plan",
     "url": "/platforms/minimax/"
   },
   "opencode": {
-    "title": "OpenCode Go",
+    "title": "OpenCode Go / Go Plus",
     "url": "/platforms/opencode/"
   },
   "zhipu": {

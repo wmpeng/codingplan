@@ -11,7 +11,7 @@ test('new platforms have ordered plans, descriptions and model coverage',()=>{
   // Catalog ordering changes with later editorial updates; identity coverage does not.
   for (const slug of ids) assert.equal(platforms.filter(p=>p.slug===slug).length,1,slug);
   const selected=plans.filter(p=>ids.includes(p.platformSlug));
-  assert.equal(selected.length,17);
+  assert.equal(selected.length,24);
   assert.deepEqual([...new Set(selected.map(p=>p.platformSlug))],ids);
   assert.ok(validatePlatformRecords(platforms.filter(p=>ids.includes(p.slug)),selected).ok);
   for(const p of selected){
