@@ -600,7 +600,7 @@
         const body = rows.length ? rows.map((point, index) => {
             const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
             const planName = point.planName || (point.billingMode === 'payg' ? '按量 API' : '订阅');
-            const plan = `<span>${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
+            const plan = `<span class="usage-preset-plan">${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
             const price = point.billingMode === 'payg' ? '按量' : formatSubscriptionMonthlyPrice(point);
             const model = `<span class="usage-table-model">${escapeHtml(point.relationLabel || point.modelName || '—')}</span>`;
             const separator = '<span class="usage-preset-separator">·</span>';

@@ -73,6 +73,14 @@
 .usage-preset-metric-primary { color: #243349; font-size: 12px; font-weight: 650; white-space: nowrap; }
 .usage-preset-metric-secondary { justify-content: flex-end; white-space: nowrap; }
 .usage-preset-table .usage-table-empty { padding: 22px 10px; color: #7a8699; text-align: center; }
+/* Keep compact preset geometry together, including the shared visual overrides. */
+.usage-preset-card .usage-preset-table td { padding: 8px 16px; line-height: 1.4; }
+.usage-preset-card .usage-preset-secondary-line { margin-top: 2px; }
+.usage-preset-card .usage-preset-plan { color: var(--text-primary); font-size: 13px; font-weight: 600; }
+.usage-preset-card .usage-preset-primary-line .usage-table-model { font-weight: 600; }
+@media (max-width: 768px) {
+  .usage-preset-card .usage-preset-table td { padding: 8px 10px; }
+}
 .usage-explorer-heading { padding: 6px 4px 0; }
 .usage-chart-card { position: relative; padding: 20px 22px 14px; border: 1px solid #dfe5ed; border-radius: 12px; background: #fff; box-shadow: var(--shadow-sm); }
 .usage-chart-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
