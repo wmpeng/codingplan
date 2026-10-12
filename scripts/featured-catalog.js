@@ -53,11 +53,11 @@
   function points(context, config) {
     return globalThis.EntityData.buildComparisonPoints(context, config.usdToCnyRate, {includeUnknown:true}).map(p => ({...p, available: ['open','limited'].includes(context.platformBySlug.get(p.platformSlug)?.platformStatus || 'open')}));
   }
-  function mountTables(host, preset, context, config, limit) {
+  function mountTables(host, preset, context, config, limit, options = {}) {
     let unit = globalThis.CodingPlanDisplaySettings?.getTokenUnit() || 'yi';
     const data = points(context,config), expanded = new Set();
     const render = () => {
-      globalThis.ModelComparison.renderPresetComparisons(host,preset,data,unit,'featured',{limit});
+      globalThis.ModelComparison.renderPresetComparisons(host,preset,data,unit,'featured',{limit,hideHeading:options.hideHeading===true});
       host.insertAdjacentHTML('afterbegin', `<div class="featured-table-controls"><span>各模型的综合单价，具体计算方法详情参考价格与额度页</span></div>`);
       host.insertAdjacentHTML('beforeend','<p class="comparison-method">订阅综合单价按参考月额度用满计算；按量 API 没有固定月额度。实际成本受用量、输入输出和缓存比例影响，不同模型能力也有差异。未知不等于零，各模型额度不相加。<a href="/pricing/#pricingMethod">查看计算口径 →</a></p>');
       for (const id of expanded) { const card = [...host.querySelectorAll('[data-preset-id]')].find(x=>x.dataset.presetId===id); if(card) toggle(card,true); }
