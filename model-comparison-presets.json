@@ -17,7 +17,7 @@
     },
     {
       "id": "sota-models",
-      "title": "顶尖与前沿模型",
+      "title": "前沿模型",
       "kind": "multi",
       "enabled": true,
       "modelSlugs": [
