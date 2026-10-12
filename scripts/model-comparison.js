@@ -619,7 +619,7 @@
         return `<article class="usage-preset-card usage-preset-card--${kind}" data-preset-id="${escapeHtml(group.id)}">` +
             `<header><div><h4>${escapeHtml(group.title)}</h4>${subtitle}</div><span>${rows.length} 条</span></header>` +
             `<div class="usage-preset-table-scroll" tabindex="0" role="region" aria-label="${escapeHtml(group.title)}价格与用量"><table class="usage-preset-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>` +
-            (rows.length > limit ? `<button type="button" class="tool-button preset-expand" data-preset-expand aria-expanded="false">展开全部 ${rows.length} 条</button>` : '') + '</article>';
+            (rows.length > limit ? `<button type="button" class="preset-expand" data-preset-expand aria-expanded="false"><span>展开全部</span></button>` : '') + '</article>';
     }
 
     function renderPresetComparisons(host, config, points, tokenUnit, platformScope, options = {}) {

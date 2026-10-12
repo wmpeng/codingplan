@@ -65,7 +65,7 @@
     function toggle(card,open) {
       card.querySelectorAll('[data-preset-extra]').forEach(row=>row.hidden=!open);
       const button=card.querySelector('[data-preset-expand]');
-      if(button){button.setAttribute('aria-expanded',String(open));button.textContent=open?'收起列表':`展开全部 ${card.querySelectorAll('tbody tr').length} 条`;}
+      if(button){button.setAttribute('aria-expanded',String(open));button.querySelector('span').textContent=open?'收起':'展开全部';}
     }
     host.addEventListener('click', event => {
       const b=event.target.closest('button'); if(!b)return;
