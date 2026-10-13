@@ -179,7 +179,7 @@
   const checks = {
     includeDiscontinued: "包含下架套餐",
   };
-  const statusExclusions = { paused: "排除暂时停售", limited: "排除定时放量" };
+  const statusExclusions = { paused: "排除暂时停售平台", limited: "排除定时放量平台" };
   function buildStatusPicker(includeHistory = false) {
     return `<details class="filter-picker status-picker" id="homeStatusPicker">
       <summary aria-label="购买状态"><span class="status-picker-title">购买状态</span><span data-status-label>不限</span></summary>
