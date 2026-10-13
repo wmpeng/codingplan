@@ -21,7 +21,7 @@ const plans=E.buildPlanCatalog(ctx);
 let home=fs.readFileSync(path.join(root,'index.html'),'utf8');
 home=replace(home,'FEATURED_PLATFORMS',preset.platformSlugs.map(slug=>P.buildPlatformCardHtml(ctx.platformBySlug.get(slug),plans,{supportedModels:E.platformModels(ctx,slug),hasApiPlan:E.buildApiPricingGroups(ctx,slug).length>0,sanitizeUrl:C.url})).join('\n'));
 home=replace(home,'FEATURED_MODELS',C.modelGroups(preset,ctx));
-home=replace(home,'FEATURED_TABLES','<div class="usage-preset-grid usage-preset-grid--multi">'+preset.groups.map(group=>M.presetComparisonTableHtml(group,C.points(ctx,config),'yi','featured',{platformSlugs:preset.platformSlugs,limit:6})).join('')+'</div>');
+home=replace(home,'FEATURED_TABLES','<div class="usage-preset-grid usage-preset-grid--multi">'+preset.groups.map(group=>M.presetComparisonTableHtml(group,C.points(ctx,config),'yi','featured',C.presetTableOptions({platformSlugs:preset.platformSlugs,modelFilter:false}))).join('')+'</div>');
 const feedback=config.feedback || {}, community=config.community || {};
 const group=feedback.group || {};
 const groupUrl=esc(C.url(feedback.feedbackEntry?.url));

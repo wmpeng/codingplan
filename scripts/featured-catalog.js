@@ -53,10 +53,13 @@
   function points(context, config) {
     return globalThis.EntityData.buildComparisonPoints(context, config.usdToCnyRate, {includeUnknown:true}).map(p => ({...p, available: ['open','limited'].includes(context.platformBySlug.get(p.platformSlug)?.platformStatus || 'open')}));
   }
-  function mountTables(host, preset, context, config, limit, options = {}) {
+  function presetTableOptions(options = {}) {
+    return {limit:6, modelFilter:true, ...options};
+  }
+  function mountTables(host, preset, context, config, options = {}) {
     let unit = globalThis.CodingPlanDisplaySettings?.getTokenUnit() || 'yi';
     const data = points(context,config), expanded = new Set(), selectedModels = Object.create(null);
-    const tableOptions = {limit,hideHeading:options.hideHeading===true,modelFilter:options.modelFilter===true,selectedModels};
+    const tableOptions = {...presetTableOptions(options), selectedModels};
     const render = () => {
       const focused = document.activeElement;
       const selectedButton = focused?.closest?.('[data-preset-model]');
@@ -97,5 +100,5 @@
     globalThis.addEventListener('codingplan:token-unit-changed', event => { unit=event.detail.tokenUnit; render(); });
     render();
   }
-  return {esc,url,validate,score,scoreHtml,modalities,modelCard,modelGroups,points,mountTables};
+  return {esc,url,validate,score,scoreHtml,modalities,modelCard,modelGroups,points,presetTableOptions,mountTables};
 });

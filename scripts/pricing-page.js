@@ -6,7 +6,7 @@
       const data = await root.CodingPlanToolPage.load();
       const preset = await root.CodingPlanToolPage.loadPreset();
       root.FeaturedCatalog.validate(preset, data.context);
-      root.FeaturedCatalog.mountTables(document.getElementById('pricingPresets'), preset, data.context, data.config, undefined, {modelFilter:true});
+      root.FeaturedCatalog.mountTables(document.getElementById('pricingPresets'), preset, data.context, data.config);
       root.CodingPlanToolPage.filters(data, 'pricing');
       const params = new URLSearchParams(location.search);
       const relation = params.get('relation');
