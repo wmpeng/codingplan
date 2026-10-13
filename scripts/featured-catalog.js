@@ -86,10 +86,13 @@
       if(b.hasAttribute('data-preset-model') && tableOptions.modelFilter) {
         const card=b.closest('[data-preset-id]'),id=card.dataset.presetId,model=b.dataset.presetModel;
         const group=preset.groups.find(group=>group.id===id);
-        if(!group || (model && !group.modelSlugs.includes(model)) || (selectedModels[id] || '')===model)return;
+        if(!group || (model && !group.modelSlugs.includes(model)))return;
+        const previous=selectedModels[id] || [];
+        if(!model && !previous.length)return;
         const restoreFocus=document.activeElement===b,top=card.getBoundingClientRect().top;
-        model?selectedModels[id]=model:delete selectedModels[id];
-        card.outerHTML=globalThis.ModelComparison.presetComparisonTableHtml(group,data,unit,'featured',{...tableOptions,selectedModelSlug:model,platformSlugs:preset.platformSlugs});
+        const selection=!model ? [] : previous.includes(model) ? previous.filter(slug=>slug!==model) : [...previous,model];
+        selection.length ? selectedModels[id]=selection : delete selectedModels[id];
+        card.outerHTML=globalThis.ModelComparison.presetComparisonTableHtml(group,data,unit,'featured',{...tableOptions,selectedModelSlugs:selectedModels[id],platformSlugs:preset.platformSlugs});
         const next=findCard(id);
         if(expanded.has(id))toggle(next,true);
         const shift=next.getBoundingClientRect().top-top;

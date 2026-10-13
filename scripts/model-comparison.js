@@ -586,16 +586,17 @@
     function presetComparisonTableHtml(group, points, tokenUnit, platformScope, options = {}) {
         const kind = group && group.kind === 'multi' ? 'multi' : 'single';
         const columns = PRESET_TABLE_COLUMNS[kind];
-        const selectedModel = options.modelFilter && group.modelSlugs.includes(options.selectedModelSlug) ? options.selectedModelSlug : null;
+        const selectedModels = new Set(options.modelFilter && Array.isArray(options.selectedModelSlugs)
+            ? options.selectedModelSlugs.filter(slug => group.modelSlugs.includes(slug)) : []);
         const rows = buildPresetComparisonRows(points, group, platformScope, options.platformSlugs)
-            .filter(point => !selectedModel || point.modelSlug === selectedModel);
+            .filter(point => !selectedModels.size || selectedModels.has(point.modelSlug));
         const modelNamesBySlug = new Map((points || []).map((point) => [point.modelSlug, point.modelName]));
         const includedModels = kind === 'multi'
             ? group.modelSlugs.map((slug) => modelNamesBySlug.get(slug) || slug).join('、')
             : '';
-        const modelOption = (slug, label) => `<button type="button" data-preset-model="${escapeHtml(slug)}" aria-pressed="${(slug || null) === selectedModel}">${escapeHtml(label)}</button>`;
+        const modelOption = (slug, label) => `<button type="button" data-preset-model="${escapeHtml(slug)}" aria-pressed="${slug ? selectedModels.has(slug) : !selectedModels.size}">${escapeHtml(label)}</button>`;
         const subtitle = includedModels ? options.modelFilter
-            ? `<div class="preset-model-filters" role="group" aria-label="${escapeHtml(group.title)}表格的模型筛选"><span>包含：</span>${modelOption('', '全部')}${group.modelSlugs.map(slug => modelOption(slug, modelNamesBySlug.get(slug) || slug)).join('')}</div>`
+            ? `<div class="preset-model-filters" role="group" aria-label="${escapeHtml(group.title)}表格的模型筛选，可多选"><span>包含：</span>${modelOption('', '全部')}${group.modelSlugs.map(slug => modelOption(slug, modelNamesBySlug.get(slug) || slug)).join('')}</div>`
             : `<p>包含：${escapeHtml(includedModels)}</p>` : '';
         const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
         const limit = options.limit || rows.length;
@@ -638,7 +639,7 @@
         host.hidden = false;
         host.innerHTML = (options.hideHeading ? '' : `<div class="usage-preset-heading"><div><h3>${escapeHtml(normalized.title)}</h3>${normalized.description ? `<p>${escapeHtml(normalized.description)}</p>` : ''}</div></div>`) +
             (singles.length ? `<div class="usage-preset-grid usage-preset-grid--single">${singles.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope, {...options, platformSlugs: normalized.platformSlugs})).join('')}</div>` : '') +
-            (multis.length ? `<div class="usage-preset-grid usage-preset-grid--multi">${multis.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope, {...options, selectedModelSlug: options.selectedModels?.[group.id], platformSlugs: normalized.platformSlugs})).join('')}</div>` : '');
+            (multis.length ? `<div class="usage-preset-grid usage-preset-grid--multi">${multis.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope, {...options, selectedModelSlugs: options.selectedModels?.[group.id], platformSlugs: normalized.platformSlugs})).join('')}</div>` : '');
         return normalized.groups;
     }
 
