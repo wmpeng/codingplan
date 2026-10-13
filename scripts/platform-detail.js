@@ -162,6 +162,23 @@
     return plans.filter(plan => plan && !plan.discontinued);
   }
 
+  function buildModelTagsHtml(labels, ariaLabel) {
+    const models = Array.isArray(labels) ? labels.filter(name => typeof name === 'string' && name.trim()) : [];
+    if (!models.length) return '';
+    return `<div class="platform-detail-models" aria-label="${esc(ariaLabel)}">${models.map(name => `<span class="model-tag">${esc(name)}</span>`).join('')}</div>`;
+  }
+
+  function buildModelsSectionHtml(labels) {
+    const tags = buildModelTagsHtml(labels, '平台支持模型');
+    if (!tags) return '';
+    return (
+      `<section class="platform-detail-section" data-section="models" aria-labelledby="platformDetailModelsHeading">` +
+      `<h3 id="platformDetailModelsHeading" class="platform-detail-section-title">支持模型</h3>` +
+      tags +
+      `</section>`
+    );
+  }
+
   function buildPlansSectionHtml(plans, platform) {
     const active = activePlansOnly(plans);
     if (active.length === 0) return '';
@@ -180,6 +197,7 @@
           ? `<p class="platform-detail-plan-summary">${esc(summary)}</p>`
           : '';
         const harnessHtml = EntityData.harnessApiBadge(EntityData.resolveHarnessApi(platform, plan));
+        const modelsHtml = buildModelTagsHtml(plan.modelLabels, `${plan.name} 支持模型`);
         const quota = formatPlanQuota(plan);
         const quotaHtml = quota
           ? `<div class="platform-detail-plan-quota">${esc(quota)}</div>`
@@ -192,7 +210,7 @@
           `<span class="platform-detail-plan-name">${planName}</span>` +
           ratingHtml +
           `</div>` +
-          harnessHtml + summaryHtml +
+          harnessHtml + summaryHtml + modelsHtml +
           `</div>` +
           `<div class="platform-detail-plan-side">` +
           `<div class="platform-detail-plan-price">${priceHtml}</div>` +
@@ -369,6 +387,9 @@
       typeof PlatformCatalog.collectPlansForVendor === 'function'
         ? PlatformCatalog.collectPlansForVendor(rawPlans, platform && platform.slug)
         : rawPlans.filter(p => p && p.platformSlug === (platform && platform.slug));
+    const modelLabels = context.entityContext
+      ? EntityData.platformModels(context.entityContext, platformId).map(model => model.name)
+      : PlatformCatalog.collectModelsForVendor(vendorPlans, platformId);
 
     const dims = dimensionMeta()
       .map(({ key, label }) => {
@@ -436,6 +457,7 @@
       `<h3 id="platformDetailDimsHeading" class="platform-detail-section-title">评价详解</h3>` +
       `<ul class="platform-detail-dimensions">${dims}</ul>` +
       `</section>` +
+      buildModelsSectionHtml(modelLabels) +
       buildApiPricingSectionHtml(context.apiPricingGroups) +
       buildPlansSectionHtml(vendorPlans, platform) +
       buildAvailabilitySectionHtml(platform, monitorRow)
@@ -602,6 +624,7 @@
         : [];
     const html = buildDetailBodyHtml(platform, {
       plans,
+      entityContext,
       monitorRow: null,
       apiPricingGroups,
       isPinned:
@@ -645,6 +668,7 @@
 
     body.innerHTML = buildDetailBodyHtml(platform, {
       plans,
+      entityContext,
       monitorRow,
       apiPricingGroups,
       isPinned:

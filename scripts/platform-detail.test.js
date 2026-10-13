@@ -1,6 +1,7 @@
 const { describe, it } = require('node:test');
 const assert = require('node:assert/strict');
 const { buildDetailBodyHtml } = require('./platform-detail.js');
+const EntityData = require('./entity-data.js');
 
 function samplePlatform(overrides = {}) {
   return {
@@ -20,6 +21,47 @@ function samplePlatform(overrides = {}) {
 }
 
 describe('buildDetailBodyHtml', () => {
+  it('shows the complete model inventory including API-only models, deduplicates tiers and excludes discontinued plans', () => {
+    const platform = samplePlatform();
+    const models = Array.from({ length: 7 }, (_, index) => ({ slug: `m${index}`, name: `Model ${index}` }));
+    const entityContext = EntityData.buildContext({ schemaVersion: 1, platforms: [platform] }, { schemaVersion: 1, plans: [
+      { slug: 'lite', platformSlug: 'demo', name: 'Lite', billingMode: 'subscription' },
+      { slug: 'pro', platformSlug: 'demo', name: 'Pro', billingMode: 'subscription' },
+      { slug: 'api', platformSlug: 'demo', name: 'API', billingMode: 'payg', planTableVisible: false },
+      { slug: 'old', platformSlug: 'demo', name: 'Old', discontinued: true }
+    ] }, { schemaVersion: 1, models }, { schemaVersion: 1, planModels: [
+      { planSlug: 'lite', modelSlug: 'm0' },
+      { planSlug: 'lite', modelSlug: 'm0', timeTier: '谷时' },
+      ...models.slice(0, 5).map(model => ({ planSlug: 'pro', modelSlug: model.slug })),
+      { planSlug: 'api', modelSlug: 'm5' },
+      { planSlug: 'old', modelSlug: 'm6' }
+    ] });
+    const html = buildDetailBodyHtml(platform, { entityContext, plans: EntityData.buildPlanCatalog(entityContext) });
+    const inventory = html.match(/<section[^>]*data-section="models"[\s\S]*?<\/section>/)[0];
+    for (const model of models.slice(0, 6)) assert.ok(inventory.includes(model.name));
+    assert.equal((inventory.match(/>Model 0<\/span>/g) || []).length, 1);
+    assert.ok(!inventory.includes('Model 6'));
+    assert.ok(!inventory.includes('hidden'));
+    const liteModels = html.match(/<div class="platform-detail-models" aria-label="Lite 支持模型">(.*?)<\/div>/)[1];
+    assert.ok(liteModels.includes('Model 0'));
+    assert.ok(!liteModels.includes('Model 1'));
+    const proModels = html.match(/<div class="platform-detail-models" aria-label="Pro 支持模型">(.*?)<\/div>/)[1];
+    assert.ok(proModels.includes('Model 4'));
+    assert.ok(!proModels.includes('Model 5'));
+  });
+
+  it('renders model labels safely without entity context and omits empty inventories', () => {
+    const html = buildDetailBodyHtml(samplePlatform(), { plans: [
+      { platformSlug: 'demo', name: 'Lite', modelLabels: ['<Model & One>'], monthlyPrice: 10 },
+      { platformSlug: 'other', name: 'Other', modelLabels: ['Other model'] }
+    ] });
+    assert.ok(html.includes('data-section="models"'));
+    assert.ok(html.includes('&lt;Model &amp; One&gt;'));
+    assert.ok(!html.includes('<Model & One>'));
+    assert.ok(!html.includes('Other model'));
+    assert.ok(!buildDetailBodyHtml(samplePlatform(), { plans: [] }).includes('data-section="models"'));
+  });
+
   it('detail section uses dimensionCopy', () => {
     const platform = samplePlatform();
     const html = buildDetailBodyHtml(platform, { plans: [], monitorRow: null });

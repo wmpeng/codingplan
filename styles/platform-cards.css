@@ -697,6 +697,7 @@ body .platform-card:focus-visible .platform-card-hint {
     overflow-wrap: anywhere;
 }
 
+.platform-detail-section[data-section="models"],
 .platform-detail-section[data-section="plans"],
 .platform-detail-section[data-section="availability"] {
     margin-top: 22px;
@@ -984,3 +985,7 @@ body .platform-card:focus-visible .platform-card-hint {
 .platform-card .platform-models button.model-tag-more:hover { background: color-mix(in srgb, var(--bg-tertiary), var(--border-color) 35%); color: var(--text-primary); }
 .platform-card .platform-models button.model-tag-more:focus-visible { outline: 2px solid var(--text-secondary); outline-offset: 2px; }
 @media (pointer: coarse) { .platform-card .platform-models button.model-tag-more { min-width: 44px; min-height: 44px; } }
+
+/* 快速详情完整展示模型名单，长名称在标签内换行。 */
+.platform-detail-models { display: flex; flex-wrap: wrap; gap: 5px; min-width: 0; max-width: 100%; }
+.platform-detail-models .model-tag { display: inline-flex; max-width: 100%; box-sizing: border-box; padding: 2px 6px; border: 1px solid var(--border-light); border-radius: 5px; background: var(--bg-tertiary); color: var(--text-secondary); font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
