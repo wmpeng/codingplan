@@ -4,9 +4,7 @@
     const host = document.getElementById('pricingPage');
     try {
       const data = await root.CodingPlanToolPage.load();
-      const presetResponse = await fetch('/model-comparison-presets.json');
-      if (!presetResponse.ok) throw new Error('精选配置加载失败');
-      const preset = await presetResponse.json();
+      const preset = await root.CodingPlanToolPage.loadPreset();
       root.FeaturedCatalog.validate(preset, data.context);
       root.FeaturedCatalog.mountTables(document.getElementById('pricingPresets'), preset, data.context, data.config, undefined, {modelFilter:true});
       root.CodingPlanToolPage.filters(data, 'pricing');
@@ -14,7 +12,7 @@
       const relation = params.get('relation');
       const plan = data.context.planBySlug.get(params.get('plan'));
       const focusRelationSlugs = relation ? [relation] : (data.context.relationsByPlanSlug.get(plan?.slug) || []).map(row => row.slug);
-      await root.ModelComparison.mountModelComparisonView(host, { mode: 'full', hidePresets: true, focusRelationSlugs });
+      await root.ModelComparison.mountModelComparisonView(host, { mode: 'full', hidePresets: true, data, preset, focusRelationSlugs });
       const legend = host.querySelector('.usage-color-legend');
       const legendDetails = document.createElement('details'); legendDetails.className = 'tool-legend';
       legendDetails.open = !matchMedia('(max-width: 800px)').matches;

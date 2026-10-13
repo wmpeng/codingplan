@@ -6,6 +6,7 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
     'use strict';
     const EntityData = root.EntityData || (typeof require === 'function' ? require('./entity-data.js') : null);
+    const UI = root.CodingPlanUI || (typeof require === 'function' ? require('./ui-core.js') : null);
     const Numbers = root.NumberDisplay || (typeof require === 'function' ? require('./number-display.js') : null);
 
     const BENCHMARKS = {
@@ -371,17 +372,13 @@
         return '';
     }
 
-    function escapeHtml(value) {
-        return String(value == null ? '' : value)
-            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-    }
+    const escapeHtml = UI.escapeHtml;
 
     function platformCellHtml(point) {
         const vendor = escapeHtml(point.platformName);
         const actionUrl = String(point.actionUrl || '').trim();
         if (!/^https?:\/\//i.test(actionUrl)) return `<strong>${vendor}</strong>`;
-        return `<a class="usage-platform-link" href="${escapeHtml(actionUrl)}" target="_blank" rel="noopener noreferrer"><strong>${vendor}</strong><span aria-hidden="true">↗</span></a>`;
+        return `<a class="usage-platform-link" href="${escapeHtml(UI.sanitizeUrl(actionUrl))}" target="_blank" rel="noopener noreferrer"><strong>${vendor}</strong>${UI.externalLinkIcon}</a>`;
     }
 
     function formatNumber(value, maximumFractionDigits) {
@@ -398,14 +395,14 @@
         if (value == null || value === '' || typeof value === 'boolean') return null;
         const number = Number(value);
         if (!Number.isFinite(number)) return null;
-        return number / (normalizeTokenUnit(unit) === 'B' ? 1000 : normalizeTokenUnit(unit) === 'yi' ? 100 : 1);
+        return number / Numbers.tokenFactor(normalizeTokenUnit(unit));
     }
 
     function unitPriceInTokenUnit(value, unit) {
         if (value == null || value === '' || typeof value === 'boolean') return null;
         const number = Number(value);
         if (!Number.isFinite(number)) return null;
-        return number * (normalizeTokenUnit(unit) === 'B' ? 1000 : normalizeTokenUnit(unit) === 'yi' ? 100 : 1);
+        return number * Numbers.tokenFactor(normalizeTokenUnit(unit));
     }
 
     function formatTokenAmount(value, unit) {
@@ -647,9 +644,7 @@
 
     async function loadPresetConfig() {
         try {
-            const response = await fetch('/model-comparison-presets.json', { cache: 'no-store' });
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            return await response.json();
+            return await root.CodingPlanToolPage.loadPreset();
         } catch (error) {
             console.warn('常见对比配置加载失败:', error);
             return { groups: [] };
@@ -801,23 +796,15 @@
             return;
         }
         if (container.__usageMountPromise) return container.__usageMountPromise;
+        const mountOptions = options || {};
         container.__usageMountPromise = (async () => {
             renderShell(container);
-            const [echarts, platformResponse, planResponse, modelResponse, relationResponse, presetConfig] = await Promise.all([
+            const [echarts, data, presetConfig] = await Promise.all([
                 loadEcharts(),
-                fetch('/platforms.json', { cache: 'no-store' }),
-                fetch('/plans.json', { cache: 'no-store' }),
-                fetch('/models.json', { cache: 'no-store' }),
-                fetch('/plan-models.json', { cache: 'no-store' }),
-                loadPresetConfig()
+                mountOptions.data || root.CodingPlanToolPage.load(),
+                mountOptions.preset || loadPresetConfig()
             ]);
-            const responses = [platformResponse, planResponse, modelResponse, relationResponse];
-            const labels = ['platforms.json', 'plans.json', 'models.json', 'plan-models.json'];
-            responses.forEach((response, index) => {
-                if (!response.ok) throw new Error(`${labels[index]} 加载失败：HTTP ${response.status}`);
-            });
-            const documents = await Promise.all(responses.map(response => response.json()));
-            const context = root.EntityData.buildContext(...documents);
+            const context = data.context;
             context.modelGroups = presetConfig.groups || [];
             const rate = root.appConfig && root.appConfig.usdToCnyRate || 6.8;
             const points = root.EntityData.buildComparisonPoints(context, rate, { includeUnknown: true });
@@ -831,7 +818,6 @@
             const models = [...modelMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
             const platformColors = buildVendorColorMap(platforms.map(([key]) => key));
             const modelColors = buildModelColorMap(models.map(([id]) => id));
-            const mountOptions = options || {};
             const focusRelationSlugs = new Set(mountOptions.focusRelationSlugs || []);
             container.classList.toggle('is-full-tool', mountOptions.mode === 'full');
             const state = Object.assign(createDefaultFilterState(points, mountOptions), {
@@ -1089,7 +1075,7 @@
                 const totalIntelligence = buildIntelligenceChartPoints(points, state.benchmark).length;
                 container.querySelector('[data-counts]').textContent = `额度图 ${usagePoints.length}/${totalUsage} · 智力图 ${intelligencePoints.length}/${totalIntelligence} · 明细 ${visibleFiltered.length}/${points.length}`;
 
-                const tokenUnitLabel = state.tokenUnit === 'B' ? 'B' : state.tokenUnit === 'yi' ? '亿' : 'M';
+                const tokenUnitLabel = Numbers.tokenUnit(state.tokenUnit);
                 const usageZone = buildUsageAttractiveZone(usagePoints, state.tokenUnit, state.tokensScale);
                 usageChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
                     xAxis: { type: state.tokensScale, name: '月费（人民币）', nameLocation: 'middle', nameGap: 38, min: usageZone.xBounds.min, max: usageZone.xBounds.max, logBase: 10, axisLabel: { formatter: (v) => Numbers.monthlyFee(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },

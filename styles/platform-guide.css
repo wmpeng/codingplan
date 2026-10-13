@@ -44,8 +44,7 @@
 .guide-plan dt { color: #5c6a7b; }
 .guide-plan dd { font-weight: 600; }
 .guide-plan .guide-plan-advice { border-top: 1px solid #e3eaf0; padding-top: 12px; font-size: 13px; line-height: 1.8; margin-bottom: 0; }
-.guide-plan-models { display: flex; flex-wrap: wrap; gap: 5px; margin: 0 0 12px; }
-.guide-plan-models span { max-width: 100%; padding: 2px 6px; border: 1px solid var(--border-light); border-radius: 5px; background: var(--bg-tertiary); color: var(--text-secondary); font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+.guide-plan-models { margin: 0 0 12px; }
 .guide-plan .guide-plan-quota { background: var(--bg-tertiary); border-radius: 7px; padding: 4px 9px; margin: 0 0 12px; }
 .guide-plan .guide-plan-quota div { border-top: 0; gap: 8px; }
 .guide-plan dd { margin: 0; text-align: right; }

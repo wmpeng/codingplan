@@ -3,7 +3,7 @@
   async function boot(){
     const host=document.getElementById('modelDirectory'),C=FeaturedCatalog;
     try{
-      const [{context},preset]=await Promise.all([CodingPlanToolPage.load(),fetch('/model-comparison-presets.json').then(r=>{if(!r.ok)throw new Error('精选模型加载失败');return r.json();})]);
+      const [{context},preset]=await Promise.all([CodingPlanToolPage.load(),CodingPlanToolPage.loadPreset()]);
       C.validate(preset,context);
       document.getElementById('modelHighlights').innerHTML=C.modelGroups(preset,context);
       const search=document.getElementById('modelSearch'),group=document.getElementById('modelGroup'),sort=document.getElementById('modelSort'),image=document.getElementById('modelImage');

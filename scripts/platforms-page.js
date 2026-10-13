@@ -3,12 +3,15 @@
   function boot() {
     const host = document.getElementById('platformHubApp');
     if (!host || !root.EntityData || !root.PlatformCatalog) return;
+    host.addEventListener('click', event => root.PlatformCatalog.togglePlatformModels(event));
+    host.setAttribute('aria-busy', 'true');
     root.CodingPlanToolPage.load().then(({ context, config: appConfig }) => {
       const platforms = root.EntityData.listPlatforms(context);
       const plans = root.EntityData.buildPlanCatalog(context);
       const config = appConfig && appConfig.platformCatalog || {};
       let state = root.CodingPlanFilters.createDefaultState(appConfig, { mode: 'full' });
       const search = host.querySelector('[data-hub-search]');
+      search.disabled = false;
       const grid = host.querySelector('[data-hub-grid]');
       const empty = host.querySelector('[data-hub-empty]');
       const showing = host.querySelector('[data-hub-showing]');
@@ -28,9 +31,10 @@
             hasApiPlan: apiGroups.length > 0,
             supportedModels: root.EntityData.platformModels(context, platform.slug),
             pinnedIds,
-            sanitizeUrl: url => url
+            sanitizeUrl: root.CodingPlanUI.sanitizeUrl
           });
         }).join('');
+        host.setAttribute('aria-busy','false');
         empty.hidden = filtered.length > 0;
         showing.textContent = `${filtered.length} / ${platforms.length} 个平台`;
         if (root.PlatformDetail && root.PlatformDetail.syncPinUi) root.PlatformDetail.syncPinUi();
@@ -38,7 +42,7 @@
 
       search.addEventListener('input', render);
       grid.addEventListener('click', event => {
-        if (root.PlatformCatalog.togglePlatformModels(event)) return;
+        if (event.target.closest('[data-platform-toggle-models]')) return;
         const pinButton = event.target.closest('[data-platform-pin="1"]');
         if (pinButton) {
           event.preventDefault();
@@ -67,7 +71,7 @@
         getPlans: () => plans,
         getEntityContext: () => context,
         monitorApiBase: (root.MONITOR_CONFIG && root.MONITOR_CONFIG.apiBase) || 'https://api.dreamfree.space/vc',
-        onJumpPlansTable: platformName => { window.location.href = `/plans/?platform=${encodeURIComponent(platforms.find(item => item.name === platformName)?.slug || '')}`; },
+        onJumpPlansTable: platformName => { window.location.href = root.CodingPlanUI.route('plans',{platform:platforms.find(item=>item.name===platformName)?.slug}); },
         isPlatformPinned: id => pinnedIds.includes(id),
         onTogglePlatformPin: id => {
           pinnedIds = root.PlatformCatalog.sanitizePinnedIds(root.PlatformCatalog.togglePinnedId(pinnedIds, id), platforms);
@@ -76,10 +80,15 @@
         }
       });
       if (root.PlatformComparison && root.PlatformComparison.mountLauncher) {
+        document.querySelector('[data-hub-compare]').disabled = false;
         root.PlatformComparison.mountLauncher({ button: document.querySelector('[data-hub-compare]'), count: document.querySelector('[data-hub-compare-count]'), platforms, getPinnedIds: () => pinnedIds });
       }
       root.CodingPlanToolPage.filters({ context, config: appConfig }, 'platforms', next => { state = next; render(); });
-    }).catch(error => root.CodingPlanToolPage.error(host, error.message));
+    }).catch(error => {
+      const loading = document.querySelector('#toolFilters .tool-filter-loading');
+      if (loading) loading.textContent = '筛选条件暂时无法加载，仍可浏览下方平台信息';
+      root.CodingPlanToolPage.error(host, error.message, { preserveContent: true });
+    });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })(typeof globalThis !== 'undefined' ? globalThis : this);

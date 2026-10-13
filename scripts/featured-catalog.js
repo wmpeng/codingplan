@@ -4,8 +4,8 @@
   root.FeaturedCatalog = api;
 })(globalThis, function () {
   'use strict';
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const url = value => /^(https?:\/\/|\/(?!\/))/.test(value || '') ? value : '#';
+  const UI = globalThis.CodingPlanUI || require('./ui-core.js');
+  const esc = UI.escapeHtml, url = value => UI.sanitizeUrl(value, '#');
   function validate(config, context) {
     const errors = [];
     if (!Array.isArray(config.platformSlugs) || !config.platformSlugs.length) errors.push('精选平台不能为空');
@@ -45,7 +45,7 @@
   }
   function modelCard(model, context) {
     const supported = new Set(context.planModels.filter(r => r.modelSlug === model.slug).map(r => context.planBySlug.get(r.planSlug)).filter(p => p && !p.discontinued && context.platformBySlug.get(p.platformSlug)?.catalogVisible !== false).map(p => p.platformSlug));
-    return `<article class="model-card" data-model-slug="${esc(model.slug)}"><h3>${esc(model.name)}</h3><p class="model-modality">${esc(modalities(model))}</p><div class="model-scores">${scoreHtml(model,'artificialAnalysis','AA')}${scoreHtml(model,'deepSWE','DeepSWE')}</div><a class="model-offers-link" href="/plans/?model=${encodeURIComponent(model.slug)}">${supported.size} 个平台收录 · 查看套餐 →</a><a class="model-price-link" href="/pricing/?model=${encodeURIComponent(model.slug)}">比较价格与按量 API →</a></article>`;
+    return `<article class="model-card" data-model-slug="${esc(model.slug)}"><h3>${esc(model.name)}</h3><p class="model-modality">${esc(modalities(model))}</p><div class="model-scores">${scoreHtml(model,'artificialAnalysis','AA')}${scoreHtml(model,'deepSWE','DeepSWE')}</div><a class="model-offers-link" href="${esc(UI.route('plans',{model:model.slug}))}">${supported.size} 个平台收录 · 查看套餐 →</a><a class="model-price-link" href="${esc(UI.route('pricing',{model:model.slug}))}">比较价格与按量 API →</a></article>`;
   }
   function modelGroups(config, context) {
     return config.groups.map(g => `<section class="featured-model-group"><div class="section-heading"><h3>${esc(g.title)}</h3><span>${g.modelSlugs.length} 个模型</span></div><div class="model-grid">${g.modelSlugs.map(s => modelCard(context.modelBySlug.get(s),context)).join('')}</div></section>`).join('');

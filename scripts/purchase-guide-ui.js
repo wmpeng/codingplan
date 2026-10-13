@@ -4,18 +4,7 @@
   if (!host) return;
   const G = root.PurchaseGuide,
     F = root.CodingPlanFilters;
-  const esc = (v) =>
-    String(v ?? "").replace(
-      /[&<>"']/g,
-      (c) =>
-        ({
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;",
-        })[c],
-    );
+  const esc = root.CodingPlanUI.escapeHtml;
   let controller,
     active = false,
     step = 0,

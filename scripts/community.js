@@ -9,13 +9,14 @@
     if (!launcher || !dialog || !hero || !footer) return;
     const trigger = launcher.querySelector('[data-community-open]');
     const storageKey = 'codingplanCommunityDismissed';
-    let dismissed = false, pending = false;
+    let dismissed = false, pending = false, releaseModal;
     try { dismissed = sessionStorage.getItem(storageKey) === '1'; } catch (_) {}
     const mobile = () => matchMedia('(max-width: 600px)').matches;
     const visible = node => node && node.getClientRects().length > 0;
     function closePanel(restoreFocus = true) {
       if (!dialog.open) return;
       dialog.close();
+      releaseModal?.(restoreFocus); releaseModal = null;
       trigger.setAttribute('aria-expanded', 'false');
       if (restoreFocus && !launcher.hidden) trigger.focus({ preventScroll: true });
     }
@@ -34,7 +35,10 @@
     }
     trigger.addEventListener('click', () => {
       if (dialog.open) { closePanel(); return; }
-      if (mobile()) dialog.showModal(); else dialog.show();
+      if (mobile()) {
+        dialog.showModal();
+        releaseModal = CodingPlanDialogs.activate(dialog,{dialog,trigger,onClose:closePanel});
+      } else dialog.show();
       trigger.setAttribute('aria-expanded', 'true');
       dialog.querySelector('[data-community-close]').focus({ preventScroll: true });
     });

@@ -1,3 +1,44 @@
+/* 筛选组件的基础外观、布局与状态统一在本文件维护。 */
+.tool-page .filter-state-bar { position: sticky; top: 8px; z-index: 20; padding: 14px; margin-bottom: 20px; }
+.filter-state-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.filter-state-label { color: var(--tool-muted); font-size: 13px; font-weight: 650; margin-right: 4px; }
+.filter-state-chip { border: 1px solid #bfdbfe; background: var(--tool-accent-soft); border-radius: 999px; color: #1d4ed8; padding: 6px 10px; font-size: 12px; }
+.filter-state-actions { display: flex; gap: 8px; margin-left: auto; }
+.filter-state-btn { border: 1px solid var(--tool-line); border-radius: 9px; background: #fff; color: var(--tool-ink); cursor: pointer; padding: 8px 12px; font: inherit; font-size: 13px; }
+.filter-state-btn.primary { color: #fff; border-color: var(--tool-accent); background: var(--tool-accent); }
+.filter-state-btn:hover { border-color: #93c5fd; }
+.filter-state-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+.filter-picker { position: relative; }
+.filter-picker > summary, .filter-picker-trigger { display: flex; justify-content: space-between; align-items: center; width: 100%; box-sizing: border-box; border: 1px solid var(--tool-line); background: var(--tool-soft); color: var(--tool-ink); border-radius: 10px; padding: 10px 12px; cursor: pointer; list-style: none; }
+.filter-picker > summary::-webkit-details-marker { display: none; }
+.filter-picker[open] > summary { border-color: #93c5fd; background: #fff; }
+.filter-picker-menu { position: absolute; left: 0; right: 0; top: calc(100% + 6px); min-width: 250px; max-height: min(420px, 60vh); overflow: auto; padding: 10px; background: #fff; border: 1px solid var(--tool-line); border-radius: 12px; box-shadow: 0 16px 40px rgba(15, 23, 42, .15); }
+.filter-picker-menu label { display: flex; gap: 8px; padding: 7px 5px; align-items: flex-start; font-size: 13px; line-height: 1.35; }
+.filter-picker-menu label:hover { background: var(--tool-soft); }
+.filter-picker-menu input[type="search"] { width: 100%; box-sizing: border-box; border: 1px solid var(--tool-line); border-radius: 8px; padding: 8px; margin-bottom: 7px; }
+.filter-picker-tools { display: flex; gap: 6px; padding: 4px 0 8px; border-bottom: 1px solid var(--tool-line); margin-bottom: 5px; }
+.filter-picker-tools button { border: 0; background: transparent; color: var(--tool-accent); cursor: pointer; padding: 4px 5px; font-size: 12px; }
+.filter-more { margin-top: 10px; border-top: 1px solid var(--tool-line); padding-top: 10px; }
+.filter-more > summary { cursor: pointer; color: var(--tool-muted); font-size: 13px; }
+.filter-more-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; padding-top: 10px; }
+.filter-inline { display: flex; align-items: center; gap: 7px; min-height: 38px; color: var(--tool-muted); font-size: 12px; }
+.filter-inline select, .filter-inline input { width: 100%; min-width: 0; border: 1px solid var(--tool-line); border-radius: 8px; padding: 8px; background: #fff; color: var(--tool-ink); }
+.filter-help { color: var(--tool-muted); font-size: 12px; line-height: 1.5; margin: 10px 2px 0; }
+
+@media (max-width: 800px) {
+  .tool-page .filter-state-bar { top: 4px; }
+  .filter-state-actions { width: 100%; margin-left: 0; }
+  .filter-state-actions button { flex: 1; }
+  .filter-state-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .filter-more-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .filter-picker-menu { position: fixed; left: 12px; right: 12px; top: 92px; max-height: 65vh; }
+}
+@media (max-width: 460px) {
+  .filter-state-grid, .filter-more-grid { grid-template-columns: 1fr; }
+  .filter-state-summary { align-items: flex-start; }
+  .filter-state-chip { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}
+
 :is(.homepage-unified-active, .tool-unified-active) #platformTagBar,
 :is(.homepage-unified-active, .tool-unified-active) #plansTableSection > .filter-bar {
   display: none;
@@ -532,3 +573,22 @@ body .offer-sort-help { position: absolute; width: 1px; height: 1px; padding: 0;
   body .model-preset-options { column-gap: 8px; }
   body .home-filter-panel #homeBudgetPicker, body .home-filter-panel #homeTokenPicker { grid-column: 1 / -1; }
 }
+
+/* 筛选：统一表单外观，并保持菜单的定位、滚动与完成操作。 */
+body .filter-state-bar { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; box-shadow: none; }
+body .filter-state-label { color: var(--text-primary); font-size: 14px; font-weight: 600; }
+body .filter-state-chip { border: 0; border-radius: 4px; background: var(--bg-tertiary); color: var(--text-secondary); font-size: 12px; padding: 4px 8px; }
+body .filter-picker > summary { background: var(--bg-secondary); border-color: var(--border-color); min-height: 44px; border-radius: 8px; font-size: 14px; }
+body .filter-picker[open] > summary { border-color: var(--accent-primary); background: var(--accent-soft); }
+body .filter-picker-menu { padding: 12px; }
+body .filter-picker-menu label { border-radius: 6px; padding: 8px; font-size: 14px; line-height: 1.5; }
+body .filter-picker-menu label:has(input:checked) { background: var(--accent-soft); }
+body .filter-picker-menu label:hover { background: var(--bg-tertiary); }
+body .filter-picker-tools { gap: 8px; }
+body .filter-picker-tools button { min-height: 32px; border-radius: 6px; padding: 4px 8px; font-size: 13px; }
+body .filter-picker-tools button:hover { background: var(--bg-tertiary); }
+body :is(.filter-state-hint, .filter-help, .filter-subgroup, .filter-inline) { color: var(--text-secondary); font-size: 13px; }
+body :is(.filter-more, .filter-subgroup) { border-color: var(--border-light); }
+body .filter-state-actions button { border-color: var(--border-color); border-radius: 8px; font-size: 13px; }
+body .filter-active-limits button { border-radius: 6px; font-size: 12px; padding: 5px 8px; }
+body .filter-inline input[type="checkbox"] { width: 16px; }

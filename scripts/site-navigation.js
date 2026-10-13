@@ -131,27 +131,8 @@
       addEventListener('resize', layoutOpenPanel);
       addEventListener('scroll', layoutOpenPanel, {passive: true});
     }
-    const links = [...document.querySelectorAll('.site-section-nav a[href^="#"]')];
-    const sections = links.map(link => document.getElementById(link.hash.slice(1)));
-    let pending = false;
-    function updateSection() {
-      pending = false;
-      let current = -1;
-      const sectionTop = (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0) + 48;
-      sections.forEach((section, i) => { if (section && section.getBoundingClientRect().top <= sectionTop) current = i; });
-      // 最后一节较短时无法滚到顶部；到达页底仍应正确标记当前目录。
-      if (sections.length && scrollY + innerHeight >= document.documentElement.scrollHeight - 2) current = sections.length - 1;
-      links.forEach((link, i) => {
-        if (i === current) link.setAttribute('aria-current', 'location');
-        else link.removeAttribute('aria-current');
-      });
-    }
-    if (links.length) {
-      addEventListener('scroll', () => {
-        if (!pending) { pending = true; requestAnimationFrame(updateSection); }
-      }, {passive: true});
-      addEventListener('resize', updateSection);
-    }
+    const sectionTracker = CodingPlanSectionNavigation.mount({links:'.site-section-nav a[href^="#"]'});
+    CodingPlanSectionNavigation.mount({links:'.guide-toc a[href^="#"]'});
     function updateLocation() {
       // Existing home links still open the same published history records.
       const history = document.getElementById('updateHistory');
@@ -159,7 +140,7 @@
         history.open = true;
         requestAnimationFrame(() => history.scrollIntoView({block: 'start'}));
       }
-      updateSection();
+      sectionTracker.update();
     }
     addEventListener('hashchange', updateLocation);
     addEventListener('codingplan:home-ready', updateLocation);

@@ -1,33 +1,8 @@
 /* ── codingplan 公共工具函数 ── */
 
-function escapeHtml(text) {
-    if (text === null || text === undefined) return '';
-    const div = document.createElement('div');
-    div.textContent = String(text);
-    return div.innerHTML;
-}
-
-function escapeHtmlPreserveBreaks(raw) {
-    const normalized = String(raw ?? '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
-    return escapeHtml(normalized).replace(/\n/g, '<br>');
-}
-
-function sanitizeHttpUrl(url, fallback = null) {
-    if (typeof url !== 'string' || !url.trim()) {
-        return fallback;
-    }
-
-    try {
-        const parsedUrl = new URL(url, window.location.origin);
-        if (parsedUrl.protocol === 'http:' || parsedUrl.protocol === 'https:') {
-            return parsedUrl.href;
-        }
-    } catch (error) {
-        return fallback;
-    }
-
-    return fallback;
-}
+function escapeHtml(text) { return CodingPlanUI.escapeHtml(text); }
+function escapeHtmlPreserveBreaks(text) { return CodingPlanUI.escapeHtmlPreserveBreaks(text); }
+function sanitizeHttpUrl(url, fallback = null) { return CodingPlanUI.sanitizeUrl(url, fallback); }
 
 function renderNotesSection(target, options = {}) {
     const container = typeof target === 'string' ? document.getElementById(target) : target;

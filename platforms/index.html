@@ -2,23 +2,26 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <script src="/scripts/site-features.js?v=260923a"></script>
-  <link rel="stylesheet" href="/styles/site-features.css?v=260923a">
+<script src="/scripts/ui-core.js?v=57904152bf"></script>
+<script src="/scripts/site-features.js?v=7315befffc"></script>
+<script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AI 编程平台大全与对比 - Coding Plan</title>
-  <meta name="description" content="查看全部 AI 编程平台的购买状态、模型支持、性价比与可用性，并进入平台详情、套餐和横向对比。">
+<meta name="description" content="查看全部 AI 编程平台的购买状态、模型支持、性价比与可用性，并进入平台详情、套餐和横向对比。">
   <link rel="canonical" href="https://vibecoding.dreamfree.space/platforms/">
   <link rel="icon" href="/favicon.ico?v=260924a">
-  <link rel="stylesheet" href="/styles/shared.css?v=261009harness">
-  <link rel="stylesheet" href="/styles/platform-cards.css?v=261013detailmodels">
-  <link rel="stylesheet" href="/styles/platform-comparison.css?v=260924c">
-  <link rel="stylesheet" href="/styles/tool-page.css?v=260924c"><link rel="stylesheet" href="/styles/homepage-filters.css?v=261012nohint">
-<link rel="stylesheet" href="/styles/design-system.css?v=261009stacksettings">
-<script src="/scripts/site-navigation.js?v=261009bunit" defer></script>
+  <link rel="stylesheet" href="/styles/shared.css?v=6a65ea99b6">
+  <link rel="stylesheet" href="/styles/platform-cards.css?v=690348970d">
+  <link rel="stylesheet" href="/styles/platform-comparison.css?v=fe5318acba">
+  <link rel="stylesheet" href="/styles/tool-page.css?v=7e0315c226"><link rel="stylesheet" href="/styles/homepage-filters.css?v=9549e074cc">
+<link rel="stylesheet" href="/styles/design-system.css?v=337bb16e05">
+<script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=9aef3f4bd4">
+<link rel="stylesheet" href="/styles/ui-components.css?v=e5133e2fe2">
 </head>
 <body class="tool-page">
-
 <!-- SITE_NAV_START -->
 <header class="tool-topbar site-header">
   <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
@@ -64,12 +67,933 @@
 <main class="tool-page-main">
     <header class="tool-hero">
       <div><h1>平台中心</h1><p>查看平台支持的模型、购买状态和套餐；点击卡片了解详情，也可以选择平台横向比较。</p></div>
-      <button type="button" class="tool-button primary" data-hub-compare>开始横向对比 <span data-hub-compare-count></span></button>
+      <button type="button" class="tool-button primary" data-hub-compare disabled>开始横向对比 <span data-hub-compare-count></span></button>
     </header>
-    <div id="toolFilters" aria-label="筛选条件"></div>
-    <section id="platformHubApp">
-      <div class="tool-result-bar"><input type="search" data-hub-search placeholder="搜索平台名称" aria-label="搜索平台"><span class="tool-count" data-hub-showing aria-live="polite">加载中…</span></div>
-      <div class="platform-card-grid" data-hub-grid></div>
+    <div id="toolFilters" aria-label="筛选条件"><p class="tool-filter-loading" role="status">正在加载筛选条件…</p></div>
+    <noscript><style>.tool-filter-loading{display:none}body .ui-model-tags [data-extra-model][hidden]{display:inline-flex}.ui-model-tags .model-tag-more{display:none}</style><p class="tool-muted">当前显示静态平台信息；开启 JavaScript 可使用筛选与对比。</p></noscript>
+    <section id="platformHubApp" aria-busy="false">
+      <div class="tool-result-bar"><input type="search" data-hub-search disabled placeholder="搜索平台名称" aria-label="搜索平台"><span class="tool-count" data-hub-showing aria-live="polite">46 / 46 个平台</span></div>
+      <div class="platform-card-grid" data-hub-grid>
+                <article class="platform-card" data-platform-id="zhipu" tabindex="0" role="button" aria-label="智谱AI 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqzhipu" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">智谱AI</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="zhipu" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="5 星">★ 5.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">涨价后新套餐无需抢购。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">新套餐价格翻倍，性价比有所下降，<a href="/plans/?platform=zhipu" target="_blank" rel="noopener noreferrer">查看套餐用量</a>。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">GLM-5.3 代码能力 <strong>T0 级别</strong>，尤其适合编程场景，是 Opus 平替优选。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">官方服务，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span><a class="platform-guide-link" href="/platforms/zhipu/">平台介绍 →</a></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="opencode" tabindex="0" role="button" aria-label="OpenCode 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqopencode" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">OpenCode</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="opencode" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="5 星">★ 5.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">Go与Go Plus的多模型订阅，各模型独立额度；当前32个LLM。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">Go $10/月、Go Plus $40/月，各模型有独立月额度与短窗口；当前额度和活动依模型不同，不统一按四倍计算。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">各模型的Go Plus额度增幅不同，不能统一按四倍算。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">各模型基本都是官方通道，稳定性强，较少出现不可用。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag" data-extra-model hidden>Kimi-K2.6</span><span class="model-tag" data-extra-model hidden>LongCat-2.0</span><span class="model-tag" data-extra-model hidden>LongCat-2.5-Preview</span><span class="model-tag" data-extra-model hidden>Step-5-Preview</span><span class="model-tag" data-extra-model hidden>MiMo-V2.6-Flash</span><span class="model-tag" data-extra-model hidden>MiMo-V2.6-Pro</span><span class="model-tag" data-extra-model hidden>MiMo-V2.5</span><span class="model-tag" data-extra-model hidden>MiMo-V2.5-Pro</span><span class="model-tag" data-extra-model hidden>MiniMax-M3</span><span class="model-tag" data-extra-model hidden>MiniMax-M2.7</span><span class="model-tag" data-extra-model hidden>Muse-Spark-1.3</span><span class="model-tag" data-extra-model hidden>Muse-Spark-1.2</span><span class="model-tag" data-extra-model hidden>Qwen-3.8-Max</span><span class="model-tag" data-extra-model hidden>Qwen-3.8-Flash-Next</span><span class="model-tag" data-extra-model hidden>Qwen-3.7-Plus</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4.1-Flash</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Pro-0813</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Flash-0731</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag" data-extra-model hidden>Hy4-preview</span><span class="model-tag" data-extra-model hidden>Hy3</span><span class="model-tag" data-extra-model hidden>Space Bunny</span><span class="model-tag" data-extra-model hidden>Grok-4.7</span><span class="model-tag" data-extra-model hidden>Grok-4.6</span><span class="model-tag" data-extra-model hidden>GPT-6-Luna</span><span class="model-tag" data-extra-model hidden>GPT-5.6-Luna</span><span class="model-tag" data-extra-model hidden>Claude Haiku 5.5</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="27" aria-expanded="false" aria-label="展开其余 27 个模型">+27</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span><a class="platform-guide-link" href="/platforms/opencode/">平台介绍 →</a></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="bytedance-ark" tabindex="0" role="button" aria-label="字节·方舟 Coding Plan 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhou" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">字节·方舟 Coding Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="bytedance-ark" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="5 星">★ 5.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">方舟Coding Plan当前多模型与Auto接入；保留历史测量基准，其他倍率明确为推测。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">开放购买，无需抢购；具体套餐活动以官方公告为准。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">Coding与Agent活动日期和系数不同，不能互套。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">火山引擎官方服务，整体稳定。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">Auto</span><span class="model-tag">Doubao-Seed-2.1-Pro</span><span class="model-tag">Doubao-Seed-2.1-Lite</span><span class="model-tag">Doubao-Seed-2.0-Mini</span><span class="model-tag" data-extra-model hidden>Doubao-Seed-Evolving</span><span class="model-tag" data-extra-model hidden>MiniMax-M3</span><span class="model-tag" data-extra-model hidden>Kimi-K2.7-Code</span><span class="model-tag" data-extra-model hidden>Kimi-K2.8-Preview</span><span class="model-tag" data-extra-model hidden>Kimi-K3</span><span class="model-tag" data-extra-model hidden>GLM-5.3</span><span class="model-tag" data-extra-model hidden>GLM-5.3-Flash</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Pro-0813</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4.1-Flash</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="9" aria-expanded="false" aria-label="展开其余 9 个模型">+9</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="bytedance-ark-agent" tabindex="0" role="button" aria-label="字节·方舟 Agent Plan 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqfangzhout" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">字节·方舟 Agent Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="bytedance-ark-agent" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="5 星">★ 5.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">四档AFP订阅，当前文本统一按模型系数扣减；Small不含Kimi K3。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">开放购买，额度与模型抵扣规则明确。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">当前不再沿用输入长度阶梯；按各模型活动日期与常规系数拆档。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">火山引擎官方服务，整体稳定。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Auto</span><span class="model-tag">Doubao-Seed-2.1-Pro</span><span class="model-tag">Doubao-Seed-2.1-Lite</span><span class="model-tag">Doubao-Seed-2.0-Mini</span><span class="model-tag">Doubao-Seed-Evolving</span><span class="model-tag" data-extra-model hidden>MiniMax-M3</span><span class="model-tag" data-extra-model hidden>Kimi-K2.7-Code</span><span class="model-tag" data-extra-model hidden>Kimi-K2.8-Preview</span><span class="model-tag" data-extra-model hidden>GLM-5.3</span><span class="model-tag" data-extra-model hidden>GLM-5.3-Flash</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Flash-0731</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Pro-0813</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4.1-Flash</span><span class="model-tag" data-extra-model hidden>Kimi-K3</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="9" aria-expanded="false" aria-label="展开其余 9 个模型">+9</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="minimax" tabindex="0" role="button" aria-label="MiniMax 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqminimax" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">MiniMax</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="minimax" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="5 星">★ 5.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">基础月费较低，原Token Plan历史额度较充足；新M3.1精确用量未公开。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">M3.1 Flash Preview精确Token额度未公开，按五小时与七天窗口选择档位。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">官方服务，稳定性强。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="partial" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">部分套餐支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">MiniMax-M3.1-Flash-Preview</span></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span><a class="platform-guide-link" href="/platforms/minimax/">平台介绍 →</a></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="zhipu-intl" tabindex="0" role="button" aria-label="智谱国际版 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqzai" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">智谱国际版</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="zhipu-intl" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="5 星">★ 5.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">国内版的替代，无需抢购。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">用量与国内版一致，新套餐价格也基本一致。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">GLM-5.3 代码能力 <strong>T0 级别</strong>，尤其适合编程场景，是 Opus 平替优选。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">官方服务，稳定性强。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="kimi" tabindex="0" role="button" aria-label="Kimi 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqkimi" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Kimi</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="kimi" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="4 星">★ 4.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">当前Go/Plus/Pro/Max订阅；Plus起支持Coding，旧四档仅老用户续费。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">当前Go/Plus/Pro/Max月费49/99/199/699元，Plus起支持Coding；老套餐仅存量续费，不能按新用户价格比较旧实测。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">Coding支持Kimi K3与K2.8 Preview，Go不提供Coding API，不能混用客户端与API权益。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">官方服务，稳定性强。Kimi-K3发布后高峰时段可能会有繁忙，整体可用性尚可。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="partial" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">部分套餐支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Kimi-K2.8-Preview</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code-HighSpeed</span></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="deepseek-official" tabindex="0" role="button" aria-label="DeepSeek 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://platform.deepseek.com/" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">DeepSeek</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+                            <span class="platform-rush platform-rush--api">按量</span>
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="deepseek-official" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="5 星">★ 5.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">第一梯队模型中，最便宜的之一；空闲时段价格再降一半；按量标价透明，高峰翻倍后成本优势会收窄。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">当前V4.1 Flash与V4 Pro按峰谷价格分别展示；原计划V4 Pro停服安排已撤销，继续提供服务。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">官方通道，稳定性强。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="gongji" tabindex="0" role="button" aria-label="共绩算力 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqgongji" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">共绩算力</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+                            <span class="platform-rush platform-rush--api">按量</span>
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="gongji" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="5 星">★ 5.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">GLM、Kimi、Qwen、DeepSeek按量API；邀请8折仅适用于资格仍有效的用户。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">有有效邀请资格时按标价8折；本次未做扣费验证。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">支持 Kimi-K3、GLM-5.3、Qwen-3.7-Max 与 DeepSeek-V4 预览版等模型。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">当前用户规模不大，实测稳定性较强。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">DeepSeek-V4-Preview</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">GLM-5.3</span><span class="model-tag">Kimi-K3</span><span class="model-tag" data-extra-model hidden>GLM-5.1</span><span class="model-tag" data-extra-model hidden>GLM-5.2</span><span class="model-tag" data-extra-model hidden>Kimi-K2.6</span><span class="model-tag" data-extra-model hidden>Qwen-3.7-Max</span><span class="model-tag" data-extra-model hidden>GLM-5</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4.1-Flash</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="6" aria-expanded="false" aria-label="展开其余 6 个模型">+6</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="youyun" tabindex="0" role="button" aria-label="优云智算 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqyyzs" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">优云智算</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="youyun" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="4 星">★ 4.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">六档请求制Coding Plan，当前九个LLM各按明确次数扣减。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">六档按真实模型请求扣减；每型号倍率、并发和三窗口额度见明细，Token量按统一请求负载估算。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">登录控制台核对的扣减与并发已更新；Token量是统一请求负载估计。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">新兴平台，算力充足，很少遇到拥挤。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag" data-extra-model hidden>MiniMax-M2.7</span><span class="model-tag" data-extra-model hidden>GLM-5.3-Flash</span><span class="model-tag" data-extra-model hidden>Qwen-3.8-27B</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="4" aria-expanded="false" aria-label="展开其余 4 个模型">+4</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="codex" tabindex="0" role="button" aria-label="Codex 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqchatgpt" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Codex</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="codex" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="5 星">★ 5.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">Codex官方订阅，支持GPT-6.1 Sol及6系列；Pro $500另支持Ultrafast。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">Plus与Pro $100/$200/$500价格和权限分别记录；Pro取消五小时窗口，Plus仍有五小时限制。当前新型号没有固定官方Token额度，旧测量仅作参考。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">速度档按实际订阅系数分别记录；新型号与新套餐额度未独立测量。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">OpenAI 官方基础设施，稳定性行业标杆。</span></li></ul>
+                    <div class="platform-tags" aria-label="标签"><span class="platform-tag">外币支付</span></div>
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">不支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">GPT-6.1-Sol</span><span class="model-tag">GPT-6-Astra</span><span class="model-tag">GPT-6-Sol</span><span class="model-tag">GPT-6-Luna</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag" data-extra-model hidden>GPT-5.6-Luna</span><span class="model-tag" data-extra-model hidden>GPT-5.6-Terra</span><span class="model-tag" data-extra-model hidden>GPT-5.5</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="3" aria-expanded="false" aria-label="展开其余 3 个模型">+3</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="claude" tabindex="0" role="button" aria-label="Claude 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqclaudeup" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Claude</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="claude" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="4 星">★ 4.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">Claude Code官方订阅，已支持Opus、Sonnet、Haiku 5.5；新型号精确Token额度未知。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">用量很大</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">5.5系列与旧型号分开记录，不将API价格或旧逆向数据当新订阅额度。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">Anthropic 官方 API，本身稳定性没问题。但需要境外网络环境，从中国大陆访问限制比较多。</span></li></ul>
+                    <div class="platform-tags" aria-label="标签"><span class="platform-tag">外币支付</span></div>
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">不支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Claude Opus 5.5</span><span class="model-tag">Claude Sonnet 5.5</span><span class="model-tag">Claude Haiku 5.5</span><span class="model-tag">Claude Fable 5.1</span><span class="model-tag">Claude Fable 5</span><span class="model-tag" data-extra-model hidden>Claude Opus 5</span><span class="model-tag" data-extra-model hidden>Claude Sonnet 5</span><span class="model-tag" data-extra-model hidden>Claude Sonnet 4.6</span><span class="model-tag" data-extra-model hidden>Claude Sonnet 4.5</span><span class="model-tag" data-extra-model hidden>Claude Opus 4.7</span><span class="model-tag" data-extra-model hidden>Claude Opus 4.6</span><span class="model-tag" data-extra-model hidden>Claude Opus 4.5</span><span class="model-tag" data-extra-model hidden>Claude Haiku 4.5</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="8" aria-expanded="false" aria-label="展开其余 8 个模型">+8</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="ollama" tabindex="0" role="button" aria-label="Ollama 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqollama" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Ollama</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="ollama" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="4 星">★ 4.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">当前18个云端LLM的美元Credits订阅，月池可集中使用；部分缓存价格未知。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">性价比很高，<a href="/plans/?platform=ollama" target="_blank" rel="noopener noreferrer">查看模型用量对比</a></span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">Pro/Max月池独立于本地免费模型；只按公开云端名单与价格计算。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">稳定性尚可。高峰时段可能略拥挤，整体可用性尚可。</span></li></ul>
+                    <div class="platform-tags" aria-label="标签"><span class="platform-tag">外币支付</span></div>
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">Gemma-4-31B</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag" data-extra-model hidden>GLM-5.2</span><span class="model-tag" data-extra-model hidden>GPT-OSS-120B</span><span class="model-tag" data-extra-model hidden>GPT-OSS-20B</span><span class="model-tag" data-extra-model hidden>Kimi-K3</span><span class="model-tag" data-extra-model hidden>Kimi-K2.7-Code</span><span class="model-tag" data-extra-model hidden>Kimi-K2.6</span><span class="model-tag" data-extra-model hidden>MiniMax-M3</span><span class="model-tag" data-extra-model hidden>MiniMax-M2.7</span><span class="model-tag" data-extra-model hidden>Mistral-Large-4</span><span class="model-tag" data-extra-model hidden>Mistral-Large-3</span><span class="model-tag" data-extra-model hidden>Nemotron-3-Nano</span><span class="model-tag" data-extra-model hidden>Nemotron-3-Super</span><span class="model-tag" data-extra-model hidden>Nemotron-3-Ultra</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="13" aria-expanded="false" aria-label="展开其余 13 个模型">+13</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="aliyun-bailian" tabindex="0" role="button" aria-label="阿里·百炼 Token Plan 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqbailiant" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">阿里·百炼 Token Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="aliyun-bailian" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="4 星">★ 4.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">百炼Token Plan现为四档Credits订阅，与旧Coding Plan产品分开。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">开放购买，夜间抵扣成本更低；具体活动以官方公告为准。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">精确模型积分抵扣未全部公开，不能用按量API人民币价替代。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">阿里云官方服务，稳定性强。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag" data-extra-model hidden>Qwen-3.6-Flash</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4.1-Flash</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Pro-0813</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Flash-0731</span><span class="model-tag" data-extra-model hidden>GLM-5.3</span><span class="model-tag" data-extra-model hidden>GLM-5.2</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="6" aria-expanded="false" aria-label="展开其余 6 个模型">+6</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="aliyun-bailian-coding" tabindex="0" role="button" aria-label="阿里·百炼 Coding Plan 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqbailianc" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">阿里·百炼 Coding Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="platform-rush" data-platform-status="limited">定时放量</span>
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="aliyun-bailian-coding" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="4 星">★ 4.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">Pro 套餐性价比高，但供应有限。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">套餐性价比较高，但供应有限。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">支持 Qwen 系列编程模型。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">阿里云官方服务，稳定性强。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Plus</span><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag" data-extra-model hidden>Qwen-3.5-Plus</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="1" aria-expanded="false" aria-label="展开其余 1 个模型">+1</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="xiaomi-mimo" tabindex="0" role="button" aria-label="小米·MiMo 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqmimo" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">小米·MiMo</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="xiaomi-mimo" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="4 星">★ 4.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">MiMo文本Credits订阅，当前4个LLM，夜间00–08点UTC+8享0.8消耗。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">购买TokenPlan套餐，价格比DeepSeek直接调用的价格还要便宜一些，性价比高。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">V2.5系列10月14日转发、10月21日下线；年池和月池分开理解。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">官方服务，稳定性强。用户量没那么大，高峰期稳定性好。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">MiMo-V2.6-Pro</span><span class="model-tag">MiMo-V2.6-Flash</span><span class="model-tag">MiMo-V2.5-Pro</span><span class="model-tag">MiMo-V2.5</span></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="command-code" tabindex="0" role="button" aria-label="Command Code 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpcommandcode" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Command Code</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="command-code" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="5 星">★ 5.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">Go、GOAT、Pro与两档Max多模型订阅，按实际模型价格与上下文档扣减Credits。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">Go 仅 $1/月并含 $10 Credits；各档套餐包含额度高于订阅价格，优惠模型还能进一步放大可用量。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">不同套餐支持名单独立；上下文阶梯、免费请求限制与地区条件需逐项比较。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">实际价格和可用性可能随上游变化；Go 套餐只能在 Command Code 客户端内使用，稳定性较弱。</span></li></ul>
+                    <div class="platform-tags" aria-label="标签"><span class="platform-tag">性价比高</span><span class="platform-tag">模型强</span><span class="platform-tag">无需抢购</span></div>
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="partial" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">部分套餐支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Hy3</span><span class="model-tag">Qwen-3.8-27B</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag" data-extra-model hidden>Qwen-3.7-Plus</span><span class="model-tag" data-extra-model hidden>Qwen-3.6-Plus</span><span class="model-tag" data-extra-model hidden>GLM-5.3-Flash</span><span class="model-tag" data-extra-model hidden>Mistral-Large-4</span><span class="model-tag" data-extra-model hidden>LongCat-2.0</span><span class="model-tag" data-extra-model hidden>GLM-5.3</span><span class="model-tag" data-extra-model hidden>Kimi-K2.7-Code</span><span class="model-tag" data-extra-model hidden>GLM-5.2-Fast</span><span class="model-tag" data-extra-model hidden>MiniMax-M3</span><span class="model-tag" data-extra-model hidden>Kimi-K3</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Flash-Fast</span><span class="model-tag" data-extra-model hidden>Qwen-3.8-Max</span><span class="model-tag" data-extra-model hidden>Qwen-3.8-Max-0902</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Flash-0731</span><span class="model-tag" data-extra-model hidden>GPT-5.6-Luna</span><span class="model-tag" data-extra-model hidden>MiMo-V2.5</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Pro-0813</span><span class="model-tag" data-extra-model hidden>MiMo-V2.5-Pro</span><span class="model-tag" data-extra-model hidden>GPT-6-Luna</span><span class="model-tag" data-extra-model hidden>Qwen 3.8 Omni Flash</span><span class="model-tag" data-extra-model hidden>Hy4-preview</span><span class="model-tag" data-extra-model hidden>Qwen-3.8-Flash-Next</span><span class="model-tag" data-extra-model hidden>GLM-5.3-FlashX</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Flash-Vision-Exp</span><span class="model-tag" data-extra-model hidden>Muse-Spark-1.3</span><span class="model-tag" data-extra-model hidden>Muse-Spark-1.2</span><span class="model-tag" data-extra-model hidden>Kimi-K2.7-Code-HighSpeed</span><span class="model-tag" data-extra-model hidden>Grok-4.5</span><span class="model-tag" data-extra-model hidden>Inkling</span><span class="model-tag" data-extra-model hidden>Inkling-Small</span><span class="model-tag" data-extra-model hidden>MiMo-V2.6-Pro</span><span class="model-tag" data-extra-model hidden>MiMo-V2.6-Flash</span><span class="model-tag" data-extra-model hidden>Step-5-Preview</span><span class="model-tag" data-extra-model hidden>step-3.7-flash</span><span class="model-tag" data-extra-model hidden>step-3.5-flash</span><span class="model-tag" data-extra-model hidden>Nemotron-3-Ultra</span><span class="model-tag" data-extra-model hidden>Kimi-K2.6</span><span class="model-tag" data-extra-model hidden>Kimi-K2.5</span><span class="model-tag" data-extra-model hidden>GLM-5.1</span><span class="model-tag" data-extra-model hidden>GLM-5</span><span class="model-tag" data-extra-model hidden>Qwen-3.7-Flash</span><span class="model-tag" data-extra-model hidden>Qwen-3.6-Max-Preview</span><span class="model-tag" data-extra-model hidden>MiniMax-M2.7</span><span class="model-tag" data-extra-model hidden>MiniMax-M2.5</span><span class="model-tag" data-extra-model hidden>Glyph Cluster</span><span class="model-tag" data-extra-model hidden>Ling 3.1 Flash</span><span class="model-tag" data-extra-model hidden>Ling-3.0-Flash-Sante</span><span class="model-tag" data-extra-model hidden>Laguna-S-2.1</span><span class="model-tag" data-extra-model hidden>GPT-5.6-Sol</span><span class="model-tag" data-extra-model hidden>Gemini-3.8-Flash</span><span class="model-tag" data-extra-model hidden>Claude Sonnet 5.5</span><span class="model-tag" data-extra-model hidden>Claude Haiku 5.5</span><span class="model-tag" data-extra-model hidden>Grok-4.6</span><span class="model-tag" data-extra-model hidden>Grok-4.7</span><span class="model-tag" data-extra-model hidden>Gemini-3.7-Flash</span><span class="model-tag" data-extra-model hidden>Claude Sonnet 5</span><span class="model-tag" data-extra-model hidden>Claude Sonnet 4.6</span><span class="model-tag" data-extra-model hidden>Claude Haiku 4.5</span><span class="model-tag" data-extra-model hidden>GPT-6-Sol</span><span class="model-tag" data-extra-model hidden>GPT-5.6-Terra</span><span class="model-tag" data-extra-model hidden>GPT-5.5</span><span class="model-tag" data-extra-model hidden>GPT-5.4</span><span class="model-tag" data-extra-model hidden>GPT-5.4-mini</span><span class="model-tag" data-extra-model hidden>GPT-5.3-Codex</span><span class="model-tag" data-extra-model hidden>Gemini-3.6-Flash</span><span class="model-tag" data-extra-model hidden>Gemini-3.5-Flash</span><span class="model-tag" data-extra-model hidden>Gemini-3.5-Flash-Lite</span><span class="model-tag" data-extra-model hidden>Gemini-3.1-Flash-Lite</span><span class="model-tag" data-extra-model hidden>Muse-Spark-1.1</span><span class="model-tag" data-extra-model hidden>Claude Fable 5.1</span><span class="model-tag" data-extra-model hidden>Claude Fable 5</span><span class="model-tag" data-extra-model hidden>Claude Opus 5.5</span><span class="model-tag" data-extra-model hidden>Claude Opus 5</span><span class="model-tag" data-extra-model hidden>Claude Opus 4.8</span><span class="model-tag" data-extra-model hidden>Claude Opus 4.7</span><span class="model-tag" data-extra-model hidden>Claude Opus 4.6</span><span class="model-tag" data-extra-model hidden>GPT-6-Astra</span><span class="model-tag" data-extra-model hidden>GPT-6.1-Sol</span><span class="model-tag" data-extra-model hidden>Fugu-Ultra</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="79" aria-expanded="false" aria-label="展开其余 79 个模型">+79</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span><a class="platform-guide-link" href="/platforms/command-code/">平台介绍 →</a></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="baidu-qianfan" tabindex="0" role="button" aria-label="百度·千帆 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqqianfan" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">百度·千帆</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="baidu-qianfan" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="3 星">★ 3.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">Token计量与积分计量产品并存，统一品牌下按独立计费套餐比较。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">Token Plan 个人版首购 4.9 元起，额度统一抵扣且取消原 Coding Plan 三层限流，性价比更突出。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">Token总量按官方口径；积分制逐模型动态抵扣不能用固定Token量替代。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">百度智能云官方通道，稳定性符合大厂预期。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3</span><span class="model-tag" data-extra-model hidden>GLM-5.3-Flash</span><span class="model-tag" data-extra-model hidden>GLM-5.2</span><span class="model-tag" data-extra-model hidden>GLM-5.1</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="3" aria-expanded="false" aria-label="展开其余 3 个模型">+3</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="huawei-cloud" tabindex="0" role="button" aria-label="华为云 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">华为云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="platform-rush" data-platform-status="limited">定时放量</span>
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="huawei-cloud" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="3 星">★ 3.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">华为云个人Token Plan，当前五个LLM，按官方月Token总量。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">性价比较低。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">仅西南贵阳一，每日限量发售；官方Token总量与请求次数、TPM分开。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">华为云基础设施成熟，企业级稳定性有保障。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Flash-0731</span></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="tencent-cloud" tabindex="0" role="button" aria-label="腾讯云 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqtengxunt" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">腾讯云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="tencent-cloud" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="3 星">★ 3.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">通用Token Plan与Hy专属产品线分开；模型与套餐抵扣系数需逐项比较。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">Coding Plan 已下线，Token Plan性价比中等甚至较差。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">当前通用套餐支持Auto及DeepSeek、GLM、Kimi、MiniMax、Hy、MiMo等模型；旧GLM5/5.1已下线。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">腾讯云基础设施成熟，企业级稳定性有保障。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Auto</span><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">MiniMax-M2.7</span><span class="model-tag" data-extra-model hidden>MiniMax-M3</span><span class="model-tag" data-extra-model hidden>GLM-5.2</span><span class="model-tag" data-extra-model hidden>GLM-5.3</span><span class="model-tag" data-extra-model hidden>GLM-5.3-Flash</span><span class="model-tag" data-extra-model hidden>Kimi-K2.7-Code</span><span class="model-tag" data-extra-model hidden>Kimi-K3</span><span class="model-tag" data-extra-model hidden>Hy4-preview</span><span class="model-tag" data-extra-model hidden>MiMo-V2.6-Flash</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="8" aria-expanded="false" aria-label="展开其余 8 个模型">+8</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="qoder-cn" tabindex="0" role="button" aria-label="Qoder 国内版 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://qoder.com.cn/pricing?tab=qoderwork-cli&amp;type=subscription" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Qoder 国内版</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="qoder-cn" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="3 星">★ 3.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">Qoder国内套餐，当前CLI支持名单与国际版不同。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">¥59 起，按积分使用；实际 Token 性价比尚未实测。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">内置型号按官方名单核对，不能把BYOK全目录当套餐支持。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">阿里旗下官方产品；尚未完成本站稳定性实测。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">不支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag">Qwen-3.6-Flash</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Pro-0813</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Flash-0731</span><span class="model-tag" data-extra-model hidden>GLM-5.2</span><span class="model-tag" data-extra-model hidden>Kimi-K2.7-Code</span><span class="model-tag" data-extra-model hidden>MiniMax-M2.7</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="5" aria-expanded="false" aria-label="展开其余 5 个模型">+5</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="qoder-intl" tabindex="0" role="button" aria-label="Qoder 国际版 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://qoder.com/pricing" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Qoder 国际版</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="qoder-intl" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="3 星">★ 3.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">Qoder国际套餐，当前支持K3、K2.8、GLM5.3及Qwen3.8等；具体Token额度未知。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">$20 起，按 Credits 使用；不能与国内版积分等值比较。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">CLI内置和自定义API模型分开，按真实产品线比较。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">官方客户端服务；尚未完成本站稳定性实测。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">不支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Auto</span><span class="model-tag">Qwen-3.8-Max</span><span class="model-tag">Qwen-3.8-Flash-Next</span><span class="model-tag">Qwen-3.7-Max</span><span class="model-tag">Qwen-3.7-Plus</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Pro-0813</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4.1-Flash</span><span class="model-tag" data-extra-model hidden>GLM-5.3</span><span class="model-tag" data-extra-model hidden>GLM-5.3-Flash</span><span class="model-tag" data-extra-model hidden>Kimi-K3</span><span class="model-tag" data-extra-model hidden>Kimi-K2.8-Preview</span><span class="model-tag" data-extra-model hidden>MiniMax-M3</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="7" aria-expanded="false" aria-label="展开其余 7 个模型">+7</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="workbuddy" tabindex="0" role="button" aria-label="WorkBuddy 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://www.workbuddy.cn/docs/workbuddy/Pricing" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">WorkBuddy</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="workbuddy" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="3 星">★ 3.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">体验版与三档付费个人订阅，WorkBuddy与CodeBuddy共享积分。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">¥99 单月起，可与 CodeBuddy 共享积分；连续包月另有优惠。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">当前14个内置LLM；体验版限免全模型，付费档含CLI；老用户保价另列。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">腾讯官方产品；尚未完成本站稳定性实测。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">不支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Hy4-preview</span><span class="model-tag">Hy3</span><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">GLM-5.2</span><span class="model-tag" data-extra-model hidden>GLM-5.1</span><span class="model-tag" data-extra-model hidden>GLM-5v-Turbo</span><span class="model-tag" data-extra-model hidden>MiniMax-M3</span><span class="model-tag" data-extra-model hidden>MiniMax-M2.7</span><span class="model-tag" data-extra-model hidden>Kimi-K3</span><span class="model-tag" data-extra-model hidden>Kimi-K2.7-Code</span><span class="model-tag" data-extra-model hidden>Kimi-K2.6</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4.1-Flash</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Pro-0813</span><span class="model-tag" data-extra-model hidden>Auto</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="10" aria-expanded="false" aria-label="展开其余 10 个模型">+10</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="trae-cn" tabindex="0" role="button" aria-label="TRAE 国内版 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://www.trae.cn" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">TRAE 国内版</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="trae-cn" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="3 星">★ 3.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">TRAE国内订阅，以积分计费；当前内置型号已换代，支持范围按档位区分。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">Lite/Pro/Pro+/Ultra连续月付45/89/219/629元；模型权限与积分倍率依档位不同，当前Token额度未知。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">Seed Evolving仅Pro/Pro+/Ultra及历史Express可用；BYOK不等于内置支持。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">字节官方产品；高峰优先为套餐权益，不代表稳定性实测结果。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">不支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Doubao-Seed-2.1-Pro-0915</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">Doubao-Seed-Code</span><span class="model-tag">MiMo-V2.6-Flash</span><span class="model-tag">MiMo-V2.6-Pro</span><span class="model-tag" data-extra-model hidden>Step-5-Preview</span><span class="model-tag" data-extra-model hidden>GLM-5.3-FlashX</span><span class="model-tag" data-extra-model hidden>GLM-5.3-Flash</span><span class="model-tag" data-extra-model hidden>GLM-5.3</span><span class="model-tag" data-extra-model hidden>GLM-5.2</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4.1-Flash</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Flash-0731</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Pro-0813</span><span class="model-tag" data-extra-model hidden>Kimi-K3</span><span class="model-tag" data-extra-model hidden>Kimi-K2.8-Preview</span><span class="model-tag" data-extra-model hidden>MiniMax-M3</span><span class="model-tag" data-extra-model hidden>Qwen-3.8-Flash-Next</span><span class="model-tag" data-extra-model hidden>Qwen-3.8-Max</span><span class="model-tag" data-extra-model hidden>Qwen-3.7-Plus</span><span class="model-tag" data-extra-model hidden>Doubao-Seed-Evolving</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="15" aria-expanded="false" aria-label="展开其余 15 个模型">+15</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="trae-intl" tabindex="0" role="button" aria-label="TRAE 国际版 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://www.trae.ai/pricing" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">TRAE 国际版</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="trae-intl" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="3 星">★ 3.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">Free仅Auto；新Lite/Pro/Pro+/Ultra与老套餐并存，按模型Token价扣减月Usage。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">新版月费$8/$20/$60/$200，老连续订阅保价另列；新套餐已按完整模型价估算月Token，免费版具体额度未知。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">新Lite有地区限制，旧档停止新购但按各用户周期迁移；不混用新旧额度。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">字节官方产品；存在地区限制，尚未完成本站稳定性实测。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">不支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Auto</span><span class="model-tag">Doubao-Seed-2.1-Turbo</span><span class="model-tag">GPT-6-Astra</span><span class="model-tag">GPT-6-Sol</span><span class="model-tag">GPT-6-Luna</span><span class="model-tag" data-extra-model hidden>GPT-5.6-Sol</span><span class="model-tag" data-extra-model hidden>GPT-5.6-Terra</span><span class="model-tag" data-extra-model hidden>GPT-5.6-Luna</span><span class="model-tag" data-extra-model hidden>GPT-5.5</span><span class="model-tag" data-extra-model hidden>GPT-5.4</span><span class="model-tag" data-extra-model hidden>GPT-5.2</span><span class="model-tag" data-extra-model hidden>GLM-5.2</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Flash-0731</span><span class="model-tag" data-extra-model hidden>Kimi-K3</span><span class="model-tag" data-extra-model hidden>Kimi-K2.7-Code</span><span class="model-tag" data-extra-model hidden>Kimi-K2.5</span><span class="model-tag" data-extra-model hidden>Gemini 3.1 Pro</span><span class="model-tag" data-extra-model hidden>Gemini-3-Flash-Preview</span><span class="model-tag" data-extra-model hidden>MiniMax-M3</span><span class="model-tag" data-extra-model hidden>MiniMax-M2.7</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="15" aria-expanded="false" aria-label="展开其余 15 个模型">+15</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="github" tabindex="0" role="button" aria-label="GitHub 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqghstudent" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">GitHub</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="github" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="3 星">★ 3.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">Copilot个人方案现按AI Credits计费，新增Max；免费与学生档仅Auto选择。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">现在按使用量计费，额度非常少，已经完全无性价比。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">用量按模型Token价格与当前基础/Flex积分计算，部分老年付仍有过渡口径。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">GitHub 官方服务，与 IDE 深度集成，稳定性出色。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">不支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Auto</span><span class="model-tag">GPT-5-mini</span><span class="model-tag">GPT-5.3-Codex</span><span class="model-tag">GPT-5.4</span><span class="model-tag">GPT-5.4-mini</span><span class="model-tag" data-extra-model hidden>GPT-5.6-Luna</span><span class="model-tag" data-extra-model hidden>GPT-5.6-Terra</span><span class="model-tag" data-extra-model hidden>GPT-6-Luna</span><span class="model-tag" data-extra-model hidden>Claude Haiku 4.5</span><span class="model-tag" data-extra-model hidden>Claude Haiku 5.5</span><span class="model-tag" data-extra-model hidden>Claude Sonnet 4.6</span><span class="model-tag" data-extra-model hidden>Claude Sonnet 5</span><span class="model-tag" data-extra-model hidden>Claude Sonnet 5.5</span><span class="model-tag" data-extra-model hidden>Gemini-3.7-Flash</span><span class="model-tag" data-extra-model hidden>Gemini-3.8-Flash</span><span class="model-tag" data-extra-model hidden>MAI-Code-1.1-Flash</span><span class="model-tag" data-extra-model hidden>Grok-4.5</span><span class="model-tag" data-extra-model hidden>Grok-4.6</span><span class="model-tag" data-extra-model hidden>Grok-4.7</span><span class="model-tag" data-extra-model hidden>Kimi-K3</span><span class="model-tag" data-extra-model hidden>GPT-5.4-nano</span><span class="model-tag" data-extra-model hidden>GPT-5.5</span><span class="model-tag" data-extra-model hidden>GPT-5.6-Sol</span><span class="model-tag" data-extra-model hidden>GPT-6-Astra</span><span class="model-tag" data-extra-model hidden>GPT-6-Sol</span><span class="model-tag" data-extra-model hidden>GPT-6.1-Sol</span><span class="model-tag" data-extra-model hidden>Claude Opus 4.8</span><span class="model-tag" data-extra-model hidden>Claude Opus 5</span><span class="model-tag" data-extra-model hidden>Claude Opus 5.5</span><span class="model-tag" data-extra-model hidden>Claude Fable 5</span><span class="model-tag" data-extra-model hidden>Claude Fable 5.1</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="26" aria-expanded="false" aria-label="展开其余 26 个模型">+26</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="jd-cloud" tabindex="0" role="button" aria-label="京东云 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqjingdong" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">京东云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="platform-rush" data-platform-status="limited">定时放量</span>
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="jd-cloud" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="2 星">★ 2.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">京东Coding Plan与新的Credits Token Plan并存，使用独立端点与计费。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">有首月优惠，但是用量证据不足，不予评价。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">Coding模型名单与新Token Plan上下文阶梯分别核对。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">京东云官方运营，证据不足，但推测稳定性尚可。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Kimi-K2.5</span><span class="model-tag">GLM-5</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">Qwen-3-Coder</span><span class="model-tag" data-extra-model hidden>GLM-4.7</span><span class="model-tag" data-extra-model hidden>Kimi-K2</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="2" aria-expanded="false" aria-label="展开其余 2 个模型">+2</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="iflytek" tabindex="0" role="button" aria-label="讯飞·星火 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqxunfei" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">讯飞·星火</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="iflytek" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="3 星">★ 3.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">个人版沿用此前高效版与速通版记录；2026-10-12当前价格和完整支持未能公开核实。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">个人版199/699元为此前记录，本轮未确认当前完整订购权益；企业Astron成员积分产品另列。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">保留已知个人版型号关系并移除明确下线型号；完整支持名单本次未确认。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">高效版（199元）拥挤，速通版（699元）套餐高峰期拥挤，整体可用性一般。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag" data-extra-model hidden>Qwen3.6-35B-A3B</span><span class="model-tag" data-extra-model hidden>GLM-5</span><span class="model-tag" data-extra-model hidden>MiniMax-M2.5</span><span class="model-tag" data-extra-model hidden>Kimi-K2.5</span><span class="model-tag" data-extra-model hidden>Kimi-K2.7-Code</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="5" aria-expanded="false" aria-label="展开其余 5 个模型">+5</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="unicom-cloud" tabindex="0" role="button" aria-label="联通云 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqunicomtp" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">联通云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="unicom-cloud" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="2 星">★ 2.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">此前Token Plan资料保留；2026-10-12官方页面无法读取，当前价格、支持和购买状态未重新确认。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">性价比一般</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">此前接入DeepSeek V4 Flash与MiniMax M2.5等；本轮无法确认最新名单。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">证据不足。但运营商云品牌，推测稳定性尚可。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">DeepSeek-V4-Pro-0813</span></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="cmcc-cloud" tabindex="0" role="button" aria-label="移动云 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqmobilecp" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">移动云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="cmcc-cloud" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="2 星">★ 2.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">移动云请求制订阅，当前M2.5；首月与续费券按活动资格区分。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">证据不足</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">首次优惠每账号一次，两档互斥；续费券不是永久自动折扣。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">证据不足。但推测运营商云平台，稳定性应该尚可。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">MiniMax-M2.5</span></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="stepfun" tabindex="0" role="button" aria-label="阶跃星辰 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqstepfun" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">阶跃星辰</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="platform-rush" data-platform-status="paused">暂时停售</span>
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="stepfun" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="2 星">★ 2.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">Step Plan现按月Credits，支持Step5 Preview和Flash系列；本次购买按钮售罄。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">证据不足</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">旧prompt推算不适用当前Credits，精确抵扣未公开；恢复发售时间未知。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">稳定性尚可。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="unknown" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">Harness API 待确认</span></div>
+
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="taotoken" tabindex="0" role="button" aria-label="TaoToken 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqtaotoken" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">TaoToken</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="platform-rush" data-platform-status="limited">定时放量</span>
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="taotoken" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="3 星">★ 3.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">双Flash Coding Plan：GLM5.3 Flash与DeepSeek V4 Flash0731，月付限量抢购。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">证据不足</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">仅双Flash型号；积分制Token Plan另列，模型广场完整名单不等于套餐全支持。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">新平台，证据不足。且看起来像是中专站，并且怀疑有不同供应商，稳定性存疑。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">DeepSeek-V4-Flash-0731</span></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="chaosuan" tabindex="0" role="button" aria-label="超算 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqscnetcp" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">超算</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="platform-rush" data-platform-status="paused">暂时停售</span>
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="chaosuan" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="2 星">★ 2.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">旧Coding Plan公开文档仍列两个模型；新Credits Token Plan单独收录。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">证据不足</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">Coding当前购买状态待确认，不能从新Token Plan文档推断旧套餐恢复销售。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">证据不足</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">MiniMax-M2.5</span><span class="model-tag">Qwen-3-235B-A22B</span></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="sensetime" tabindex="0" role="button" aria-label="商汤·日日新 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqsensenova" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">商汤·日日新</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="platform-rush" data-platform-status="limited">定时放量</span>
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="sensetime" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="2 星">★ 2.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">免费公测，SenseNova6.8 Flash Lite与U1 Fast，五小时60000积分。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">目前只有免费会员</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">付费Lite/Pro尚未开放，特殊模型与精确Token换算待确认。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">商汤官方运营，基础服务稳定但编程社区声量较小。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">SenseNova 6.8 Flash Lite</span><span class="model-tag">SenseNova U1 Fast</span></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="moorethreads" tabindex="0" role="button" aria-label="摩尔线程 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqmoorefree" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">摩尔线程</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="platform-rush" data-platform-status="limited">定时放量</span>
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="moorethreads" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="2 星">★ 2.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">KUAE Coding Plan当前GLM4.7；免费试用30天，付费套餐经官方京东入口销售。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">免费试用每账号一次；官方有付费Lite/Pro/Max，京东当前成交价及库存未确认。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">目前以 GLM-4.7 为主。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">证据不足。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">GLM-4.7</span></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card is-discontinued" data-platform-id="infrafun" tabindex="0" role="button" aria-label="无问芯穹 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqinfini" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">无问芯穹</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="platform-rush" data-platform-status="delisted">已下架</span>
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="infrafun" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="1 星">★ 1.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">已停止向个人用户提供服务，企业体验按官方联系方式办理。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">个人服务已停止，不再作为个人在售方案。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">个人套餐停售，保留历史身份；不将旧权益作为当前可购买方案。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">平台 Coding Plan 已下线，服务不可用。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card is-discontinued" data-platform-id="ctyun" tabindex="0" role="button" aria-label="天翼云 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqctyun" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">天翼云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="platform-rush" data-platform-status="delisted">已下架</span>
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="ctyun" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="1 星">★ 1.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">历史请求制停售；存量Token制仅周期内可续订，新购Credits产品另列。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">旧请求制不可新购；官方另有五档存量Token续订权益，与积分制分开。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">新旧计费方式、支持型号与续费条件分开。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">历史Coding Plan已下线；Token制存量周期内可续订，当前积分制有独立在售产品。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="tencent-cloud-hy" tabindex="0" role="button" aria-label="腾讯云 · Hy 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqtengxunt" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">腾讯云 · Hy</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="tencent-cloud-hy" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="待评定">待评定</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">Hy3、Hy4 preview专属订阅，与通用套餐可并存。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">按当前官方套餐价格及额度评估，具体消耗随模型而异</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">支持范围按当期官方套餐名单维护</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">腾讯云基础设施成熟，企业级稳定性有保障。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Hy4-preview</span><span class="model-tag">Hy3</span></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="baidu-qianfan-credits" tabindex="0" role="button" aria-label="百度千帆 · 积分制 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqqianfan" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">百度千帆 · 积分制</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="baidu-qianfan-credits" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="待评定">待评定</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">按模型与Token类型抵扣积分，可与Token制区分选购。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">按当前官方套餐价格及额度评估，具体消耗随模型而异</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">支持范围按当期官方套餐名单维护</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">百度智能云官方通道，稳定性符合大厂预期。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.3</span><span class="model-tag" data-extra-model hidden>GLM-5.3-Flash</span><span class="model-tag" data-extra-model hidden>GLM-5.2</span><span class="model-tag" data-extra-model hidden>GLM-5.1</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="3" aria-expanded="false" aria-label="展开其余 3 个模型">+3</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="ctyun-token" tabindex="0" role="button" aria-label="天翼云 · 积分制 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqctyun" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">天翼云 · 积分制</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="ctyun-token" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="待评定">待评定</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">2026-09-23启用积分制；旧Token制仅周期内用户可续订。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">按当前官方套餐价格及额度评估，具体消耗随模型而异</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">支持范围按当期官方套餐名单维护</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">天翼云当前积分制在售；本项目未做独立长期稳定性测量。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag" data-extra-model hidden>MiniMax-M3</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="1" aria-expanded="false" aria-label="展开其余 1 个模型">+1</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="jd-cloud-token" tabindex="0" role="button" aria-label="京东云 · Token Plan 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqjingdong" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">京东云 · Token Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="platform-rush" data-platform-status="limited">定时放量</span>
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="jd-cloud-token" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="待评定">待评定</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">个人Credits订阅，按模型和输入长度计费，可与Coding Plan同时订阅。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">当前四档月费69/199/599/999元，积分与完整Token抵扣价可推算用量；新旧产品有不同端点。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">GLM5.1/5.2、Kimi2.6、M3、DeepSeek V4正式/预览版</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">京东云官方运营，证据不足，但推测稳定性尚可。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Auto</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5.2</span><span class="model-tag">Kimi-K2.6</span><span class="model-tag">MiniMax-M3</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Preview</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Pro-Preview</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Flash-0731</span><span class="model-tag" data-extra-model hidden>DeepSeek-V4-Pro-0813</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="4" aria-expanded="false" aria-label="展开其余 4 个模型">+4</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="charm-hyper" tabindex="0" role="button" aria-label="Charm · Hyper 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://hyper.charm.sh/" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Charm · Hyper</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="charm-hyper" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="待评定">待评定</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">面向编程Agent的模型推理服务，免费月额度；付费额度每日刷新。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">订阅20美元，每日250 Hypercredits，实际消耗随模型变化</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">官方公开模型API当前21型号/路由，含KimiK3/GLM5.3/DeepSeek4.1</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">尚无本项目长期稳定性实测</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">Kimi-K3</span><span class="model-tag">Kimi-K2.7-Code</span><span class="model-tag" data-extra-model hidden>Kimi-K2-Thinking</span><span class="model-tag" data-extra-model hidden>GLM-5.3</span><span class="model-tag" data-extra-model hidden>GLM-5.3-Flash</span><span class="model-tag" data-extra-model hidden>GLM-5.2</span><span class="model-tag" data-extra-model hidden>MiniMax-M3</span><span class="model-tag" data-extra-model hidden>MiniMax-M2.7</span><span class="model-tag" data-extra-model hidden>Inkling</span><span class="model-tag" data-extra-model hidden>Qwen-3.8-Max</span><span class="model-tag" data-extra-model hidden>Qwen-3.8-Flash-Next</span><span class="model-tag" data-extra-model hidden>Qwen-3.8-27B</span><span class="model-tag" data-extra-model hidden>Qwen-3.8-2.4T-A95B</span><span class="model-tag" data-extra-model hidden>Qwen-3.7-Max</span><span class="model-tag" data-extra-model hidden>Qwen-3.7-Plus</span><span class="model-tag" data-extra-model hidden>Qwen-3.7-Flash</span><span class="model-tag" data-extra-model hidden>GPT-OSS-120B</span><span class="model-tag" data-extra-model hidden>Gemma-4-26B-A4B</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="16" aria-expanded="false" aria-label="展开其余 16 个模型">+16</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="taotoken-token" tabindex="0" role="button" aria-label="淘Token · Token Plan 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://taotoken.net/token-plan" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">淘Token · Token Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="taotoken-token" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="待评定">待评定</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">多模型Credits月订阅，独立/token入口；与双Flash Coding Plan分开抵扣。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">证据不足</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">官方明确列出GLM5.3/Flash及DeepSeek Flash，完整支持表待进一步核对</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">新平台，证据不足。且看起来像是中专站，并且怀疑有不同供应商，稳定性存疑。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">GLM-5.3</span><span class="model-tag">GLM-5.3-Flash</span><span class="model-tag">DeepSeek-V4.1-Flash</span></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="chaosuan-token" tabindex="0" role="button" aria-label="超算 · Token Plan 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://www.scnet.cn/" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">超算 · Token Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="chaosuan-token" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="待评定">待评定</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">19个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">证据不足</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">当前19个LLM，含DeepSeek-V4.1-Flash、Kimi-K3、GLM-5.3、Qwen3.8及MiniMax。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">证据不足</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Preview</span><span class="model-tag">DeepSeek-V4-Pro-Preview</span><span class="model-tag" data-extra-model hidden>Kimi-K3</span><span class="model-tag" data-extra-model hidden>Kimi-K2.7-Code</span><span class="model-tag" data-extra-model hidden>Kimi-K2.5</span><span class="model-tag" data-extra-model hidden>Kimi-K2.6</span><span class="model-tag" data-extra-model hidden>Qwen-3.8-Max</span><span class="model-tag" data-extra-model hidden>Qwen-3.8-Flash-Next</span><span class="model-tag" data-extra-model hidden>GLM-5.3</span><span class="model-tag" data-extra-model hidden>GLM-5.3-Flash</span><span class="model-tag" data-extra-model hidden>GLM-5.2</span><span class="model-tag" data-extra-model hidden>GLM-5</span><span class="model-tag" data-extra-model hidden>GLM-5.1</span><span class="model-tag" data-extra-model hidden>MiniMax-M3</span><span class="model-tag" data-extra-model hidden>MiniMax-M2.7</span><span class="model-tag" data-extra-model hidden>MiniMax-M2.5</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="14" aria-expanded="false" aria-label="展开其余 14 个模型">+14</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="iflytek-token" tabindex="0" role="button" aria-label="讯飞 · Astron Token Plan 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://maas.xfyun.cn/" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">讯飞 · Astron Token Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="iflytek-token" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="待评定">待评定</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">面向企业/团队的成员积分订阅；当前活动已结束，按常规月价记录。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">常规成员月费200/600/2000元，20k/60k/200k月积分；6–7月限时折扣已结束。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">已确认Spark-X2.5、GLM-5.2、Kimi-K2.6等13个LLM；DeepSeek-Pro具体版本待确认。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">讯飞企业/团队成员订阅；不沿用个人版拥挤程度或旧套餐评分。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Spark-X2.5</span><span class="model-tag">Spark-X2-Flash</span><span class="model-tag">GLM-5.2</span><span class="model-tag">GLM-5.1</span><span class="model-tag">GLM-5</span><span class="model-tag" data-extra-model hidden>Kimi-K2.6</span><span class="model-tag" data-extra-model hidden>Kimi-K2.5</span><span class="model-tag" data-extra-model hidden>MiniMax-M2.5</span><span class="model-tag" data-extra-model hidden>Qwen3.5-397B-A17B</span><span class="model-tag" data-extra-model hidden>Qwen3.6-35B-A3B</span><span class="model-tag" data-extra-model hidden>Qwen3.5-35B-A3B</span><span class="model-tag" data-extra-model hidden>Qwen-3-Coder-Next</span><span class="model-tag" data-extra-model hidden>GLM-4.7-Flash</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="8" aria-expanded="false" aria-label="展开其余 8 个模型">+8</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
+                <article class="platform-card" data-platform-id="qiniu" tabindex="0" role="button" aria-label="七牛云 · 企业Token Plan 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://www.qiniu.com/ai/plan" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">七牛云 · 企业Token Plan</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="qiniu" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="待评定">待评定</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">面向企业与团队的三档积分订阅，按周刷新；16个LLM身份、含M2.5高速档。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">月付2999/4999/9999元，按每周积分及模型系数消耗，当前Token换算未知。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">官方17条订阅模型路由对应16个身份，M2.5高速版是服务档；不使用按量全模型目录代替。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">尚无本项目独立长期稳定性测量。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">支持 Harness API</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">DeepSeek-V4.1-Flash</span><span class="model-tag">DeepSeek-V4-Pro-0813</span><span class="model-tag">DeepSeek-V4-Flash-0731</span><span class="model-tag">DeepSeek-V3.2</span><span class="model-tag">Kimi-K3</span><span class="model-tag" data-extra-model hidden>Kimi-K2.7-Code</span><span class="model-tag" data-extra-model hidden>Kimi-K2.6</span><span class="model-tag" data-extra-model hidden>Kimi-K2.5</span><span class="model-tag" data-extra-model hidden>GLM-5.3-Flash</span><span class="model-tag" data-extra-model hidden>GLM-5.3</span><span class="model-tag" data-extra-model hidden>GLM-5.2</span><span class="model-tag" data-extra-model hidden>GLM-5.1</span><span class="model-tag" data-extra-model hidden>GLM-5</span><span class="model-tag" data-extra-model hidden>MiniMax-M3</span><span class="model-tag" data-extra-model hidden>MiniMax-M2.7</span><span class="model-tag" data-extra-model hidden>MiniMax-M2.5</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="11" aria-expanded="false" aria-label="展开其余 11 个模型">+11</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+            </div>
       <p class="tool-empty" data-hub-empty hidden>当前条件下没有平台。</p>
       <p class="tool-empty" data-hub-error hidden></p>
     </section>
@@ -78,13 +1002,13 @@
   </main>
   <div id="platformDetailOverlay" class="platform-detail-overlay" hidden><div class="platform-detail-backdrop" data-platform-detail-close="1"></div><div class="platform-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="platformDetailTitle" tabindex="-1"><button type="button" class="platform-detail-close" id="platformDetailClose" aria-label="关闭">×</button><div id="platformDetailBody"></div></div></div>
   <script src="/monitor/monitor-config.js"></script>
-  <script src="/scripts/entity-data.js?v=261009harness"></script><script src="/scripts/number-display.js?v=261010numbers"></script>
-<script src="/scripts/filter-state.js?v=261010numbers"></script><script src="/scripts/homepage-filters.js?v=261013plancount"></script><script src="/scripts/tool-page.js?v=260920f"></script>
+<script src="/scripts/entity-data.js?v=eae43d6a36"></script><script src="/scripts/number-display.js?v=6c6a6ccb42"></script>
+<script src="/scripts/filter-state.js?v=433452e9d1"></script><script src="/scripts/homepage-filters.js?v=f614979f52"></script><script src="/scripts/tool-page.js?v=8e43308690"></script>
 
-  <script src="/scripts/platform-pages.js"></script>
-  <script src="/scripts/platform-catalog.js?v=261013models"></script>
-  <script src="/scripts/platform-detail.js?v=261013planpage"></script>
-  <script src="/scripts/platform-comparison.js?v=261010numbers"></script>
-  <script src="/scripts/platforms-page.js?v=261013models"></script>
+<script src="/scripts/platform-pages.js?v=cc37e2c2e6"></script>
+<script src="/scripts/platform-catalog.js?v=3385bc54dd"></script>
+<script src="/scripts/platform-detail.js?v=fc3c2234c4"></script>
+<script src="/scripts/platform-comparison.js?v=ce41552251"></script>
+<script src="/scripts/platforms-page.js?v=afbe30eb9e"></script>
 </body>
 </html>

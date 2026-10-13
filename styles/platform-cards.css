@@ -960,7 +960,6 @@ body .platform-card:focus-visible .platform-card-hint {
 .platform-card .platform-pin-btn { width: 32px; height: 32px; }
 .platform-card .platform-card-links { border-top: 1px solid var(--border-light); padding-top: 12px; }
 .platform-card .platform-card-links .platform-guide-link { padding: 0; }
-.platform-card .platform-models .model-tag { overflow-wrap: anywhere; }
 .platform-detail-dialog { background: #fff; border-radius: 12px; padding: 28px; overscroll-behavior: contain; }
 .platform-detail-title { font-weight: 650; letter-spacing: -.02em; }
 .platform-detail-close { border: 1px solid var(--border-color); border-radius: 7px; background: white; }
@@ -978,14 +977,3 @@ body .platform-card:focus-visible .platform-card-hint {
 .platform-detail-rating, .platform-detail-plan-rating { color: #526c8c; font-size: 12px; letter-spacing: 0; font-weight: 550; font-variant-numeric: tabular-nums; }
 .platform-detail-rating { padding: 3px 7px; background: #f0f4f9; border-radius: 5px; }
 .platform-detail-plan-quota { color: var(--accent-primary); }
-
-/* 模型数量按钮原地展开，沿用模型标签的外观。 */
-.platform-card .platform-models [data-extra-model][hidden] { display: none; }
-.platform-card .platform-models button.model-tag-more { font-family: inherit; font-weight: 400; cursor: pointer; }
-.platform-card .platform-models button.model-tag-more:hover { background: color-mix(in srgb, var(--bg-tertiary), var(--border-color) 35%); color: var(--text-primary); }
-.platform-card .platform-models button.model-tag-more:focus-visible { outline: 2px solid var(--text-secondary); outline-offset: 2px; }
-@media (pointer: coarse) { .platform-card .platform-models button.model-tag-more { min-width: 44px; min-height: 44px; } }
-
-/* 快速详情完整展示模型名单，长名称在标签内换行。 */
-.platform-detail-models { display: flex; flex-wrap: wrap; gap: 5px; min-width: 0; max-width: 100%; }
-.platform-detail-models .model-tag { display: inline-flex; max-width: 100%; box-sizing: border-box; padding: 2px 6px; border: 1px solid var(--border-light); border-radius: 5px; background: var(--bg-tertiary); color: var(--text-secondary); font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }

@@ -3,7 +3,7 @@
   async function boot() {
     const C=FeaturedCatalog;
     try {
-      const [{context,config},preset]=await Promise.all([CodingPlanToolPage.load(),fetch('/model-comparison-presets.json').then(r=>{if(!r.ok)throw new Error('精选配置加载失败');return r.json();})]);
+      const [{context,config},preset]=await Promise.all([CodingPlanToolPage.load(),CodingPlanToolPage.loadPreset()]);
       C.validate(preset,context);context.modelGroups=preset.groups;
       window.codingplanEntityContext=context;
       const plans=EntityData.buildPlanCatalog(context),grid=document.getElementById('featuredPlatforms');
@@ -11,7 +11,7 @@
       function platforms(){grid.innerHTML=preset.platformSlugs.map(slug=>PlatformCatalog.buildPlatformCardHtml(context.platformBySlug.get(slug),plans,{supportedModels:EntityData.platformModels(context,slug),hasApiPlan:EntityData.buildApiPricingGroups(context,slug).length>0,pinnedIds:pinned,sanitizeUrl:C.url})).join('');}
       function pin(slug){pinned=PlatformCatalog.togglePinnedId(pinned,slug);PlatformCatalog.writePinnedIdsToStorage(localStorage,pinned);platforms();PlatformDetail.syncPinUi();}
       platforms();
-      PlatformDetail.init({getPlans:()=>plans,getEntityContext:()=>context,isPlatformPinned:slug=>pinned.includes(slug),onTogglePlatformPin:pin,onJumpPlansTable:name=>{const p=context.platforms.find(x=>x.name===name);location.href='/plans/?platform='+encodeURIComponent(p?.slug || '');}});
+      PlatformDetail.init({getPlans:()=>plans,getEntityContext:()=>context,isPlatformPinned:slug=>pinned.includes(slug),onTogglePlatformPin:pin,onJumpPlansTable:name=>{const p=context.platforms.find(x=>x.name===name);location.href=CodingPlanUI.route('plans',{platform:p?.slug});}});
       grid.addEventListener('click',e=>{if(PlatformCatalog.togglePlatformModels(e))return;const b=e.target.closest('[data-platform-pin]');if(b){pin(b.dataset.platformId);grid.querySelector(`[data-platform-pin][data-platform-id="${b.dataset.platformId}"]`)?.focus({preventScroll:true});return;}if(e.target.closest('a'))return;const card=e.target.closest('[data-platform-id]');if(card)PlatformDetail.open(context.platformBySlug.get(card.dataset.platformId),{triggerEl:card});});
       grid.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('a,button')){const card=e.target.closest('[data-platform-id]');if(card){e.preventDefault();PlatformDetail.open(context.platformBySlug.get(card.dataset.platformId),{triggerEl:card});}}});
       document.getElementById('featuredModels').innerHTML=C.modelGroups(preset,context);

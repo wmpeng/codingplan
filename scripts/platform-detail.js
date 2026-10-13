@@ -29,7 +29,7 @@
   let openPlatformId = null;
   let openPlatformName = null;
   let triggerEl = null;
-  let escBound = false;
+  let releaseModal = null;
   let closeBound = false;
   let openSeq = 0;
   let boardCache = null; // { platforms: [] } | false (failed)
@@ -163,9 +163,7 @@
   }
 
   function buildModelTagsHtml(labels, ariaLabel) {
-    const models = Array.isArray(labels) ? labels.filter(name => typeof name === 'string' && name.trim()) : [];
-    if (!models.length) return '';
-    return `<div class="platform-detail-models" aria-label="${esc(ariaLabel)}">${models.map(name => `<span class="model-tag">${esc(name)}</span>`).join('')}</div>`;
+    return (globalThis.CodingPlanUI || require('./ui-core.js')).modelTags(labels, {className:'platform-detail-models',ariaLabel});
   }
 
   function buildModelsSectionHtml(labels) {
@@ -482,12 +480,6 @@
       : null;
   }
 
-  function onKeydown(event) {
-    if (event.key === 'Escape' && isOpen()) {
-      event.preventDefault();
-      close();
-    }
-  }
 
   function syncPinUi() {
     if (!openPlatformId) return;
@@ -549,10 +541,6 @@
 
   function bindChromeOnce() {
     if (typeof document === 'undefined') return;
-    if (!escBound) {
-      document.addEventListener('keydown', onKeydown);
-      escBound = true;
-    }
     if (!closeBound) {
       const overlay = overlayEl();
       const closeBtn = closeBtnEl();
@@ -590,20 +578,11 @@
       overlay.hidden = true;
       overlay.classList.remove('is-open');
     }
-    if (typeof document !== 'undefined' && document.body) {
-      document.body.style.overflow = '';
-    }
+    releaseModal?.();
+    releaseModal = null;
     openPlatformId = null;
     openPlatformName = null;
-    const returnTo = triggerEl;
     triggerEl = null;
-    if (returnTo && typeof returnTo.focus === 'function') {
-      try {
-        returnTo.focus();
-      } catch (_) {
-        /* ignore */
-      }
-    }
   }
 
   async function open(platform, openOpts) {
@@ -640,21 +619,15 @@
     body.innerHTML = html;
     overlay.hidden = false;
     overlay.classList.add('is-open');
-    if (typeof document !== 'undefined' && document.body) {
-      document.body.style.overflow = 'hidden';
-    }
+
 
     openPlatformId = platform.slug || null;
     openPlatformName = platform.name || null;
     triggerEl = opts.triggerEl || null;
 
-    const closeBtn = closeBtnEl();
-    if (closeBtn && typeof closeBtn.focus === 'function') {
-      closeBtn.focus();
-    } else {
-      const dialog = overlay.querySelector('.platform-detail-dialog');
-      if (dialog && typeof dialog.focus === 'function') dialog.focus();
-    }
+    releaseModal = globalThis.CodingPlanDialogs.activate(overlay, {
+      trigger: triggerEl, initialFocus: closeBtnEl(), onClose: close
+    });
 
     const board = await ensureBoard(options.monitorApiBase);
     if (seq !== openSeq || !isOpen()) return;

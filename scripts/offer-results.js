@@ -4,7 +4,8 @@
   root.OfferResults = api;
 })(globalThis, function (C, E, P, Numbers) {
   'use strict';
-  const {esc,url} = C;
+  const UI = globalThis.CodingPlanUI || require('./ui-core.js');
+  const esc = UI.escapeHtml, url = value => UI.sanitizeUrl(value, '#');
   const money = n => Numbers.monthlyFee(n, '¥', '待确认');
   const unitLabel = Numbers.tokenUnit;
   const tokenAmount = Numbers.tokenAmount;
@@ -12,18 +13,13 @@
     if(value==='unlimited')return '不限量';
     return typeof value==='number' ? `${tokenAmount(value,unit)} ${unitLabel(unit)}${withToken?' Token':''}` : '额度未知';
   }
-  function setModelsExpanded(button,expanded) {
-    button.closest('.offer-model-summary').querySelectorAll('[data-extra-model]').forEach(tag=>tag.hidden=!expanded);
-    button.setAttribute('aria-expanded',String(expanded));
-    button.setAttribute('aria-label',expanded?'收起额外模型':`展开其余 ${button.dataset.extraCount} 个模型`);
-    button.textContent=expanded?'收起':'+'+button.dataset.extraCount;
-  }
+  const setModelsExpanded = UI.setModelsExpanded;
   function card(item,state) {
     const api=item.plan.billingMode==='payg', unit=state.tokenUnit;
     const estimateColumn=api && state.monthlyTokenRange != null;
     const estimates=new Map((item.apiEstimates || []).map(value=>[value.relationSlug,value.cost]));
     const estimatedRange=api ? Numbers.range((item.apiEstimates || [{cost:item.cost}]).map(value=>value.cost),money,value=>Numbers.monthlyFee(value,'')) : null;
-    const status=item.plan.discontinued?'已下架':({open:'开放购买',limited:'定时放量',paused:'暂时停售',delisted:'已下架'}[item.platform.platformStatus] || '状态待确认');
+    const status=item.plan.discontinued?'已下架':(UI.statusLabels[item.platform.platformStatus] || '状态待确认');
     const canBuy=!item.plan.discontinued && ['open','limited'].includes(item.platform.platformStatus || 'open');
     const rows=item.rows.map(row=>{
       const model=item.models.find(m=>m.slug===row.modelSlug), tiers=[row.serviceTier,row.contextTier,row.timeTier].filter(Boolean).join(' / ');
@@ -38,7 +34,7 @@
     const amountHeading=api && !estimateColumn ? '' : `<th scope="col">${estimateColumn?'月支出估算':'月额度 / '+unitLabel(unit)}</th>`;
     const table=`<div class="offer-model-table-wrap" role="region" aria-label="${esc(item.platform.name+' '+item.plan.name)}${api?'价格与估算':'模型额度'}"><table class="offer-model-table"><thead><tr><th scope="col">模型 / 档位</th>${amountHeading}<th scope="col">单价 / ${unitLabel(unit)}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     const modelsId='offer-model-tags-'+encodeURIComponent(item.id);
-    const models=item.models.map(m=>m.name), modelTags=models.map((name,index)=>`<span class="model-tag"${index>2?' data-extra-model hidden':''}>${esc(name)}</span>`).join('')+(models.length>3?`<button type="button" class="model-tag model-tag-more" data-toggle-models data-extra-count="${models.length-3}" aria-expanded="false" aria-controls="${esc(modelsId)}" aria-label="展开其余 ${models.length-3} 个模型">+${models.length-3}</button>`:'');
+    const modelTags=UI.modelTags(item.models.map(m=>m.name),{limit:3,id:modelsId,className:'offer-model-summary platform-models',ariaLabel:'匹配模型'});
     const rangeText=Numbers.range(item.rows.map(r=>r.usage?.monthlyTokenInM),v=>tokenAmount(v,unit));
     const unlimited=item.rows.some(r=>r.usage?.monthlyTokenInM==='unlimited');
     const range=rangeText!==null ? `${rangeText} ${unitLabel(unit)}`+(unlimited?'～不限量':'') : unlimited?'不限量':'额度未知';
@@ -52,12 +48,12 @@
     const action=url(item.plan.action || item.platform.action);
     const name=esc(item.platform.name+' '+item.plan.name);
     const title=canBuy && action!=='#'?`<a class="offer-open-link" href="${esc(action)}" target="_blank" rel="noopener noreferrer" aria-label="前往开通 ${name}"><span>${name}</span>${P.EXTERNAL_LINK_ICON}</a>`:`<span class="offer-name">${name}</span>`;
-    const fullPrice=`<a class="offer-full-price" href="/pricing/?platform=${encodeURIComponent(item.platform.slug)}&plan=${encodeURIComponent(item.plan.slug)}"><span class="offer-full-price-text">完整价格与额度<span aria-hidden="true">→</span></span></a>`;
+    const fullPrice=`<a class="offer-full-price" href="${esc(UI.route('pricing',{platform:item.platform.slug,plan:item.plan.slug}))}"><span class="offer-full-price-text">完整价格与额度<span aria-hidden="true">→</span></span></a>`;
     const detailNote=api ? estimateColumn?'各模型/档位独立估算，费用不相加。':'无固定月额度，按实际用量计费。' : '各模型额度不相加，参考额度不代表连续任务保证。';
     const details=`<details class="offer-models">${api?apiSummary:quotaSummary}<div class="offer-model-details">${table}<p class="comparison-method${api?' offer-api-estimate-note':''}">${detailNote}</p>${fullPrice}</div></details>`;
     const priceText=api ? estimatedRange ?? '按量计费' : money(item.cost);
     const estimateLabel=item.costRange?.hasUnknown?'已知费用估算':item.costRange && item.costRange.min!==item.costRange.max?'估算范围':'估算';
-    return `<article class="offer-result offer-card-refined${api?' offer-api':''}" data-offer-id="${esc(item.id)}" data-plan-slug="${esc(item.plan.slug)}"><div class="offer-result-heading"><div><h3 class="offer-title">${title}</h3>${capabilities}</div><div class="offer-price${item.cost==null?' is-unknown':''}"><div class="offer-price-line"><span>${esc(priceText).replace('～','<wbr>～')}</span>${item.cost!=null?'<small>/ 月</small>':''}</div>${api&&item.cost!=null?`<div class="offer-price-note">${estimateLabel}</div>`:''}${originalPrice}</div></div><div id="${esc(modelsId)}" class="offer-model-summary platform-models" aria-label="匹配模型">${modelTags}</div>${details}<div class="offer-result-actions"><details class="offer-reasons"><summary>匹配说明与限制</summary><ul>${[...item.reasons,...item.cautions].map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details></div></article>`;
+    return `<article class="offer-result offer-card-refined${api?' offer-api':''}" data-offer-id="${esc(item.id)}" data-plan-slug="${esc(item.plan.slug)}"><div class="offer-result-heading"><div><h3 class="offer-title">${title}</h3>${capabilities}</div><div class="offer-price${item.cost==null?' is-unknown':''}"><div class="offer-price-line"><span>${esc(priceText).replace('～','<wbr>～')}</span>${item.cost!=null?'<small>/ 月</small>':''}</div>${api&&item.cost!=null?`<div class="offer-price-note">${estimateLabel}</div>`:''}${originalPrice}</div></div>${modelTags}${details}<div class="offer-result-actions"><details class="offer-reasons"><summary>匹配说明与限制</summary><ul>${[...item.reasons,...item.cautions].map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details></div></article>`;
   }
   function mount(host,context,config) {
     let advice=null, renderedAdvice, lastResult, lastFilterKey, lastPreference;

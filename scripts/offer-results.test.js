@@ -21,7 +21,7 @@ test('订阅价格与额度摘要收敛，套餐链接不限定第一个模型',
   assert.match(html,/offer-summary-label">月额度 <\/span><span class="offer-summary-value">0 亿/);
   assert.doesNotMatch(html,/月额度参考|部分模型未知/);
   assert.match(html,/额度未知/);assert.match(html,/>¥0.00<\/td>/);assert.match(html,/单价未知/);
-  assert.match(html,/\/pricing\/\?platform=test-platform&plan=test-plan/);
+  assert.match(html,/\/pricing\/\?platform=test-platform&amp;plan=test-plan/);
   assert.doesNotMatch(html,/&model=|&relation=/);
   assert.match(html,/class="offer-models"><summary/);
 });

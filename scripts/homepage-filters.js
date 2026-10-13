@@ -2,19 +2,7 @@
   "use strict";
   const Filters = root.CodingPlanFilters;
   if (!Filters) return;
-  function escapeHtml(value) {
-    return String(value == null ? "" : value).replace(
-      /[&<>"']/g,
-      (ch) =>
-        ({
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;",
-        })[ch],
-    );
-  }
+  const escapeHtml = root.CodingPlanUI.escapeHtml;
 
   function optionLabel(item, kind) {
     return item.name || item.slug;
@@ -61,7 +49,7 @@
     const budget = key === "budget";
     const id = budget ? "homeBudgetPicker" : "homeTokenPicker";
     const title = budget ? "月预算" : "月 Token 数";
-    const factor = budget ? 1 : state.tokenUnit === "B" ? 1000 : state.tokenUnit === "M" ? 1 : 100;
+    const factor = budget ? 1 : root.NumberDisplay.tokenFactor(state.tokenUnit);
     const unit = budget ? "元" : state.tokenUnit === "B" ? "B" : state.tokenUnit === "M" ? "M" : "亿";
     return `<details class="filter-picker" id="${id}"><summary><span class="range-picker-title">${title}</span><span ${budget ? "data-budget-label" : "data-token-label"}></span></summary>
       <div class="filter-picker-menu budget-menu" role="group" aria-label="${budget ? "每月预算" : "每月 Token 用量"}">
@@ -200,16 +188,10 @@
   }
   let presetPromise;
   function loadGroups(context) {
-    if (!presetPromise)
-      presetPromise = fetch("/model-comparison-presets.json")
-        .then((r) => {
-          if (!r.ok) throw new Error("模型分组加载失败");
-          return r.json();
-        })
-        .catch((error) => {
-          presetPromise = null;
-          throw error;
-        });
+    if (!presetPromise) presetPromise = root.CodingPlanToolPage.loadPreset().catch(error => {
+      presetPromise = null;
+      throw error;
+    });
     return presetPromise.then((doc) => {
       context.modelGroups = doc.groups || [];
       context.featuredPlatformSlugs = doc.platformSlugs || [];
@@ -508,7 +490,7 @@
         statusPicker.querySelector('summary').setAttribute('aria-label', `购买状态：${excluded.map(status => statusExclusions[status]).join('、') || '不限'}`);
         statusPicker.querySelectorAll('[data-status-exclude]').forEach(el => { el.checked = excluded.includes(el.dataset.statusExclude); });
       }
-      const factor = state.tokenUnit === "B" ? 1000 : state.tokenUnit === "M" ? 1 : 100;
+      const factor = root.NumberDisplay.tokenFactor(state.tokenUnit);
       const budget = host.querySelector("[data-budget-part]"),
         tokens = host.querySelector("[data-token-part]");
       if (budget) {
@@ -642,7 +624,7 @@
             : {
                 min:
                   Math.max(0, Number(el.value)) *
-                  (state.tokenUnit === "B" ? 1000 : state.tokenUnit === "M" ? 1 : 100),
+                  (root.NumberDisplay.tokenFactor(state.tokenUnit)),
                 max: null,
               };
         publish();
@@ -651,7 +633,7 @@
     host.addEventListener("focusout", (event) => {
       const el = event.target;
       if (el.matches("[data-budget-part]")) el.value = state.budgetCny?.max ?? "";
-      if (el.matches("[data-token-part]")) el.value = state.monthlyTokenRange?.min == null ? "" : state.monthlyTokenRange.min / (state.tokenUnit === "B" ? 1000 : state.tokenUnit === "M" ? 1 : 100);
+      if (el.matches("[data-token-part]")) el.value = state.monthlyTokenRange?.min == null ? "" : state.monthlyTokenRange.min / (root.NumberDisplay.tokenFactor(state.tokenUnit));
     });
     host.addEventListener("change", (event) => {
       const el = event.target;

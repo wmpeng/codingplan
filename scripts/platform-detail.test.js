@@ -42,10 +42,10 @@ describe('buildDetailBodyHtml', () => {
     assert.equal((inventory.match(/>Model 0<\/span>/g) || []).length, 1);
     assert.ok(!inventory.includes('Model 6'));
     assert.ok(!inventory.includes('hidden'));
-    const liteModels = html.match(/<div class="platform-detail-models" aria-label="Lite 支持模型">(.*?)<\/div>/)[1];
+    const liteModels = html.match(/<div class="ui-model-tags platform-detail-models" data-model-tags aria-label="Lite 支持模型">(.*?)<\/div>/)[1];
     assert.ok(liteModels.includes('Model 0'));
     assert.ok(!liteModels.includes('Model 1'));
-    const proModels = html.match(/<div class="platform-detail-models" aria-label="Pro 支持模型">(.*?)<\/div>/)[1];
+    const proModels = html.match(/<div class="ui-model-tags platform-detail-models" data-model-tags aria-label="Pro 支持模型">(.*?)<\/div>/)[1];
     assert.ok(proModels.includes('Model 4'));
     assert.ok(!proModels.includes('Model 5'));
   });

@@ -1,3 +1,5 @@
+(function () {
+const CatalogUI = typeof module === 'object' && module.exports ? require('./ui-core.js') : globalThis.CodingPlanUI;
 const PlatformGuideRegistry = typeof module === 'object' && module.exports
   ? require('./platform-pages.js') : (globalThis.PlatformPages || { getUrl: () => null });
 const PlatformEntityData = typeof module === 'object' && module.exports
@@ -14,12 +16,7 @@ const PLATFORM_DIMENSION_META = [
 ];
 
 const PLATFORM_STATUSES = ['open', 'limited', 'paused', 'delisted'];
-const PLATFORM_STATUS_LABELS = {
-  open: '开放购买',
-  limited: '定时放量',
-  paused: '暂时停售',
-  delisted: '已下架'
-};
+const PLATFORM_STATUS_LABELS = CatalogUI.statusLabels;
 /** 筛选滑块中间档位文案（前后另有前缀 /「平台」） */
 const PLATFORM_STATUS_SEGMENT_LABELS = {
   open: '开放购买',
@@ -30,35 +27,10 @@ const PLATFORM_STATUS_SEGMENT_LABELS = {
 const PLATFORM_STATUS_FILTER_SUFFIX = '平台';
 const DEFAULT_PLATFORM_STATUS_MAX = 'paused';
 
-function escapeHtml(text) {
-  if (text === null || text === undefined) return '';
-  return String(text)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
+const escapeHtml = CatalogUI.escapeHtml;
 
-function sanitizeInlineHttpUrl(url) {
-  if (typeof url !== 'string' || !url.trim()) return null;
-  try {
-    const base =
-      typeof globalThis !== 'undefined' &&
-      globalThis.location &&
-      typeof globalThis.location.origin === 'string'
-        ? globalThis.location.origin
-        : 'https://example.invalid';
-    const parsed = new URL(url.trim(), base);
-    if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
-      return parsed.href;
-    }
-  } catch (error) {
-    return null;
-  }
-  return null;
-}
+const sanitizeInlineHttpUrl = CatalogUI.sanitizeUrl;
 
-/** Inline Markdown: `[label](https://...)` links and `**bold**`. */
 function formatInlineMarkdown(text) {
   if (text === null || text === undefined) return '';
 
@@ -580,11 +552,10 @@ function buildPlatformStatusSliderHtml(platformStatusMax) {
   );
 }
 
-const EXTERNAL_LINK_ICON =
-  '<svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>';
+const EXTERNAL_LINK_ICON = CatalogUI.externalLinkIcon;
 
 function buildPlatformCardHtml(platform, plans, options = {}) {
-  const sanitizeUrl = options.sanitizeUrl || (url => url);
+  const sanitizeUrl = options.sanitizeUrl || CatalogUI.sanitizeUrl;
   const supportedModels = Array.isArray(options.supportedModels)
     ? options.supportedModels
     : [];
@@ -630,12 +601,9 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     : '';
 
   const models = supportedModels.length ? supportedModels.map(model => model.name) : collectModelsForVendor(plans, platform.slug);
-  const modelLimit = 5;
-  const shownModels = models.slice(0, modelLimit);
-  const extraModels = models.length - shownModels.length;
-  const modelsHtml = models.length
-    ? `<div class="platform-models" aria-label="模型">${models.map((model, index) => `<span class="model-tag"${index >= modelLimit ? ' data-extra-model hidden' : ''}>${escapeHtml(model)}</span>`).join('')}${extraModels > 0 ? `<button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="${extraModels}" aria-expanded="false" aria-label="展开其余 ${extraModels} 个模型">+${extraModels}</button>` : ''}</div>`
-    : '';
+  const modelsHtml = CatalogUI.modelTags(models, {
+    limit: 5, className: 'platform-models', ariaLabel: '模型', toggleAttribute: 'data-platform-toggle-models'
+  });
 
   const discontinuedClass = status === 'delisted' ? ' is-discontinued' : '';
   const platformId = platform && typeof platform.slug === 'string' ? platform.slug.trim() : '';
@@ -671,16 +639,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
 }
 
 function togglePlatformModels(event) {
-  const button = event.target.closest('[data-platform-toggle-models]');
-  if (!button) return false;
-  event.preventDefault();
-  event.stopPropagation();
-  const expanded = button.getAttribute('aria-expanded') !== 'true';
-  button.closest('.platform-models').querySelectorAll('[data-extra-model]').forEach(tag => { tag.hidden = !expanded; });
-  button.setAttribute('aria-expanded', String(expanded));
-  button.setAttribute('aria-label', expanded ? '收起额外模型' : `展开其余 ${button.dataset.extraCount} 个模型`);
-  button.textContent = expanded ? '收起' : `+${button.dataset.extraCount}`;
-  return true;
+  return CatalogUI.toggleModels(event, '[data-platform-toggle-models]');
 }
 
 function buildPlanModelListHtml(labels) {
@@ -749,3 +708,5 @@ if (typeof module !== 'undefined' && module.exports) {
 } else {
   window.PlatformCatalog = PlatformCatalog;
 }
+
+})();

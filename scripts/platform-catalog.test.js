@@ -239,6 +239,11 @@ describe('formatInlineMarkdown', () => {
     );
   });
 
+  it('keeps internal links valid in browser and static generation', () => {
+    assert.match(formatInlineMarkdown('[套餐](/plans/?platform=zhipu)'), /href="\/plans\/\?platform=zhipu"/);
+    assert.doesNotMatch(formatInlineMarkdown('[套餐](/plans/?platform=zhipu)'), /example\.invalid/);
+  });
+
   it('leaves unsafe urls as plain text and still escapes html', () => {
     assert.equal(
       formatInlineMarkdown('[x](javascript:alert(1))'),

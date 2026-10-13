@@ -1,7 +1,7 @@
 (function (root) {
   'use strict';
   const Filters = root.CodingPlanFilters;
-  const esc = value => String(value == null ? '' : value).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+  const UI = root.CodingPlanUI, esc = UI.escapeHtml;
   const Numbers = root.NumberDisplay;
   const money = (plan, field) => {
     const value = plan && plan[field];
@@ -57,18 +57,19 @@
           <td>${esc(plan.name)}${plan.discontinued ? '<span class="tool-tag">已下架</span>' : ''}<div class="plan-capabilities">${root.EntityData.harnessApiBadge(plan.supportsHarnessApi)}</div></td>
           ${['firstMonthPrice', 'monthlyPrice', 'quarterlyPrice', 'yearlyPrice'].map(key => `<td>${esc(money(plan, key))}</td>`).join('')}
           ${['fiveHoursRequests', 'weeklyRequests', 'monthlyRequests'].map(key => `<td>${esc(typeof plan[key] === 'number' ? (key === 'monthlyRequests' ? Numbers.tokens : Numbers.count)(plan[key]) : plan[key] == null ? '未公开' : plan[key])}</td>`).join('')}
-          <td>${chips(plan.modelLabels)}</td>
+          <td>${UI.modelTags(plan.modelLabels,{limit:4,ariaLabel:plan.name+' 支持模型'})}</td>
           <td class="monthly-token-cell" title="所选模型各档位的月 Token 参考范围，不相加；详细口径见额度/价格对比">${esc(Filters.formatMonthlyTokens(plan, state))}</td>
           <td>${plan.rating > 0 ? esc(plan.rating) + ' / 5' : '待评定'}</td>
           <td>${chips(plan.benefits)}</td>
           <td class="plan-note">${esc(plan.note || '')}</td>
-          <td>${plan.discontinued ? '已下架' : `<a href="${esc(plan.action || '#')}" target="_blank" rel="noopener noreferrer">开通 ↗</a>`}</td>
+          <td>${plan.discontinued ? '已下架' : `<a href="${esc(UI.sanitizeUrl(plan.action, '#'))}" target="_blank" rel="noopener noreferrer">开通 ↗</a>`}</td>
         </tr>`).join('') : `<tr><td colspan="15"><div class="tool-empty">${state.apiOnly
           ? '此页仅展示订阅套餐。当前仅选择按量 API，可前往 <a href="/pricing/?billing=payg">价格与额度查看 API</a>，或将月预算恢复为不限。'
           : '当前条件下没有套餐；可调整上方条件，或恢复全量。'}</div></td></tr>`;
       }
 
       host.addEventListener('click', event => {
+        if (UI.toggleModels(event)) return;
         const pin = event.target.closest('[data-plan-pin]');
         if (pin) {
           const slug = pin.dataset.planPin;
