@@ -977,3 +977,10 @@ body .platform-card:focus-visible .platform-card-hint {
 .platform-detail-rating, .platform-detail-plan-rating { color: #526c8c; font-size: 12px; letter-spacing: 0; font-weight: 550; font-variant-numeric: tabular-nums; }
 .platform-detail-rating { padding: 3px 7px; background: #f0f4f9; border-radius: 5px; }
 .platform-detail-plan-quota { color: var(--accent-primary); }
+
+/* 模型数量按钮原地展开，沿用模型标签的外观。 */
+.platform-card .platform-models [data-extra-model][hidden] { display: none; }
+.platform-card .platform-models button.model-tag-more { font-family: inherit; font-weight: 400; cursor: pointer; }
+.platform-card .platform-models button.model-tag-more:hover { background: color-mix(in srgb, var(--bg-tertiary), var(--border-color) 35%); color: var(--text-primary); }
+.platform-card .platform-models button.model-tag-more:focus-visible { outline: 2px solid var(--text-secondary); outline-offset: 2px; }
+@media (pointer: coarse) { .platform-card .platform-models button.model-tag-more { min-width: 44px; min-height: 44px; } }

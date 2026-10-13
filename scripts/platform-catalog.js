@@ -634,7 +634,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
   const shownModels = models.slice(0, modelLimit);
   const extraModels = models.length - shownModels.length;
   const modelsHtml = models.length
-    ? `<div class="platform-models" aria-label="模型">${shownModels.map((model) => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}${extraModels > 0 ? `<span class="model-tag model-tag-more">+${extraModels}</span>` : ''}</div>`
+    ? `<div class="platform-models" aria-label="模型">${models.map((model, index) => `<span class="model-tag"${index >= modelLimit ? ' data-extra-model hidden' : ''}>${escapeHtml(model)}</span>`).join('')}${extraModels > 0 ? `<button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="${extraModels}" aria-expanded="false" aria-label="展开其余 ${extraModels} 个模型">+${extraModels}</button>` : ''}</div>`
     : '';
 
   const discontinuedClass = status === 'delisted' ? ' is-discontinued' : '';
@@ -668,6 +668,19 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
                     <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span>${getPlatformGuideUrl(platformId) ? `<a class="platform-guide-link" href="${escapeHtml(getPlatformGuideUrl(platformId))}">平台介绍 →</a>` : ''}</div>
                 </article>
             `;
+}
+
+function togglePlatformModels(event) {
+  const button = event.target.closest('[data-platform-toggle-models]');
+  if (!button) return false;
+  event.preventDefault();
+  event.stopPropagation();
+  const expanded = button.getAttribute('aria-expanded') !== 'true';
+  button.closest('.platform-models').querySelectorAll('[data-extra-model]').forEach(tag => { tag.hidden = !expanded; });
+  button.setAttribute('aria-expanded', String(expanded));
+  button.setAttribute('aria-label', expanded ? '收起额外模型' : `展开其余 ${button.dataset.extraCount} 个模型`);
+  button.textContent = expanded ? '收起' : `+${button.dataset.extraCount}`;
+  return true;
 }
 
 function buildPlanModelListHtml(labels) {
@@ -727,7 +740,8 @@ const PlatformCatalog = {
   validatePlatformRecords,
   buildPlatformTagBarHtml,
   buildPlatformStatusSliderHtml,
-  buildPlatformCardHtml
+  buildPlatformCardHtml,
+  togglePlatformModels
 };
 
 if (typeof module !== 'undefined' && module.exports) {

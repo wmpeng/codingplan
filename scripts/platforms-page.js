@@ -38,6 +38,7 @@
 
       search.addEventListener('input', render);
       grid.addEventListener('click', event => {
+        if (root.PlatformCatalog.togglePlatformModels(event)) return;
         const pinButton = event.target.closest('[data-platform-pin="1"]');
         if (pinButton) {
           event.preventDefault();

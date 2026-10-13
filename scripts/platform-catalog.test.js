@@ -329,7 +329,9 @@ describe('buildPlatformCardHtml', () => {
     ]);
     assert.ok(html.includes('M1'));
     assert.ok(html.includes('M5'));
-    assert.ok(!html.includes('>M6<'));
+    assert.match(html, /data-extra-model hidden>M6<\/span>/);
+    assert.match(html, /data-extra-model hidden>M7<\/span>/);
+    assert.match(html, /<button type="button"[^>]*data-platform-toggle-models[^>]*aria-expanded="false"/);
     assert.ok(html.includes('model-tag-more'));
     assert.ok(html.includes('+2'));
   });
