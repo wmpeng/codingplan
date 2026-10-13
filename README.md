@@ -2,9 +2,9 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.10.12 | 多平台套餐、模型与计费资料更新
+> 更新日期 2026.10.13 | 目录收录范围调整
 
-当前展示 **46 个平台、137 个在售订阅套餐、2 个按量 API、158 个模型和 2237 条套餐模型关系**。
+当前展示 **44 个平台、132 个在售订阅套餐、2 个按量 API、155 个模型和 2132 条套餐模型关系**。
 
 [在线平台中心](https://www.codingplan.fyi/platforms/) · [模型目录](https://www.codingplan.fyi/models/) · [额度/价格对比](https://www.codingplan.fyi/pricing/) · [套餐对比](https://www.codingplan.fyi/plans/)
 
@@ -209,11 +209,9 @@
 | 百度千帆 · 积分制 | 开放购买 | - | - | 按模型与Token类型抵扣积分，可与Token制区分选购。 |
 | 天翼云 · 积分制 | 开放购买 | - | - | 2026-09-23启用积分制；旧Token制仅周期内用户可续订。 |
 | 京东云 · Token Plan | 定时放量 | - | - | 个人Credits订阅，按模型和输入长度计费，可与Coding Plan同时订阅。 |
-| Charm · Hyper | 开放购买 | - | - | 面向编程Agent的模型推理服务，免费月额度；付费额度每日刷新。 |
 | 淘Token · Token Plan | 开放购买 | - | - | 多模型Credits月订阅，独立/token入口；与双Flash Coding Plan分开抵扣。 |
 | 超算 · Token Plan | 开放购买 | - | - | 19个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。 |
 | 讯飞 · Astron Token Plan | 开放购买 | - | - | 面向企业/团队的成员积分订阅；当前活动已结束，按常规月价记录。 |
-| 七牛云 · 企业Token Plan | 开放购买 | - | - | 面向企业与团队的三档积分订阅，按周刷新；16个LLM身份、含M2.5高速档。 |
 
 更详细的性价比、模型覆盖、稳定性评价和状态筛选见[在线平台中心](https://www.codingplan.fyi/platforms/)。
 
@@ -261,17 +259,15 @@
 | 百度千帆 · 积分制 | 4 | ¥9.9–¥600/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、等 8 个 |
 | 天翼云 · 积分制 | 5 | ¥29–¥699/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、GLM-5.1、GLM-5.2、等 6 个 |
 | 京东云 · Token Plan | 4 | ¥69–¥999/月 | DeepSeek-V4-Flash-0731、Auto、DeepSeek-V4-Preview、DeepSeek-V4-Pro-0813、等 9 个 |
-| Charm · Hyper | 2 | $0–$20/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、等 21 个 |
 | 淘Token · Token Plan | 2 | ¥59–¥149/月 | DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash |
 | 超算 · Token Plan | 4 | ¥30–¥899/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、等 19 个 |
 | 讯飞 · Astron Token Plan | 3 | ¥200–¥2,000/月 | GLM-4.7-Flash、GLM-5、GLM-5.1、GLM-5.2、等 13 个 |
-| 七牛云 · 企业Token Plan | 3 | ¥2,999–¥9,999/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、等 16 个 |
 
 全部价格、周期优惠、请求数、权益和备注见[在线套餐对比](https://www.codingplan.fyi/plans/)。
 
 ## 数据口径
 
-实测 13 · 计算 1294 · 请求估算 58 · 倍率换算 41 · 未知 831
+实测 13 · 计算 1273 · 请求估算 58 · 倍率换算 41 · 未知 747
 
 | 标记 | 含义 |
 |---|---|
@@ -288,10 +284,14 @@
 
 ## 最近更新
 
+### 2026.10.13
+
+- 调整目录收录范围，暂移除两项新增平台及其套餐、模型支持记录。
+
 ### 2026.10.12
 
 - 更新多平台当前模型及支持关系，新增GPT-6.1 Sol、Claude 5.5系列、MiniMax M3.1 Flash Preview、Kimi K2.8 Preview、Step 5 Preview等；同步AA/DeepSWE榜单，未有对应记录的分数保持未知
-- MiniMax升级M Plan，Kimi和TRAE国际版区分新订阅与老用户续费；新增腾讯Hy、百度积分制、天翼/京东/超算Token Plan、讯飞成员积分制及Charm Hyper；补录七牛云企业Token Plan三档及官方订阅模型。
+- MiniMax升级M Plan，Kimi和TRAE国际版区分新订阅与老用户续费；新增腾讯Hy、百度积分制、天翼/京东/超算Token Plan、讯飞成员积分制。
 - 重新核对积分、请求、美元额度和上下文阶梯；MiMo新增峰谷扣减，优云新增模型并更新并发，共绩取消过期限时五折，邀请折扣资格注明核对条件
 - OpenCode新增Go Plus，Ollama采用当前月Credits池，GitHub个人方案按AI Credits计费；动态扣减或缺乏依据的Token量保持未知
 - 保留停售及续费历史，补齐首月优惠、活动期限、型号转发/下线与使用限制；无法读取的当前购买状态明确列为待确认
@@ -326,10 +326,6 @@
 - DeepSeek 官方旧模型名 deepseek-v4-flash、deepseek-v4-flash-vision-exp 改由 V4.1 Flash 承接并按 Flash 价格计费；V4 Pro 将于 9.14 12:00 后路由到 V4.1 Flash
 - OpenCode Go 对齐官方当前 27 个模型，新增 DeepSeek-V4.1-Flash（限时 4 倍用量，官方未公布活动起止日期）与 Muse-Spark-1.3 Contributor
 - 同步 DeepSeek V4 Flash / Vision Exp 最新价格，以及 GLM-5.3-Flash 月额度 $60、Qwen-3.7-Max 月额度 $30；移除已不在官方当前支持列表的 GLM-5、MiniMax-M2.5
-
-### 2026.9.9
-
-- 新增 Qoder 国内/国际版、WorkBuddy、TRAE 国内/国际版，共 17 档个人套餐；补齐支持模型、公开价格与倍率、地区和模式限制及活动说明，Token 用量暂未收录。
 
 ## 延伸阅读
 

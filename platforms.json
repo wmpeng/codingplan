@@ -1149,31 +1149,6 @@
       "supportsHarnessApi": true
     },
     {
-      "slug": "charm-hyper",
-      "name": "Charm · Hyper",
-      "rating": 0,
-      "summary": "面向编程Agent的模型推理服务，免费月额度；付费额度每日刷新。",
-      "dimensions": {
-        "value": {
-          "score": null,
-          "reason": "订阅20美元，每日250 Hypercredits，实际消耗随模型变化"
-        },
-        "models": {
-          "score": null,
-          "reason": "官方公开模型API当前21型号/路由，含KimiK3/GLM5.3/DeepSeek4.1"
-        },
-        "stability": {
-          "score": null,
-          "reason": "尚无本项目长期稳定性实测"
-        }
-      },
-      "tags": [],
-      "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "supportsHarnessApi": true
-    },
-    {
       "slug": "taotoken-token",
       "name": "淘Token · Token Plan",
       "rating": 0,
@@ -1247,32 +1222,6 @@
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
       "supportsHarnessApi": true
-    },
-    {
-      "slug": "qiniu",
-      "name": "七牛云 · 企业Token Plan",
-      "rating": 0,
-      "summary": "面向企业与团队的三档积分订阅，按周刷新；16个LLM身份、含M2.5高速档。",
-      "detail": "月、季、年订阅分别计价，额外抵扣系数需在订阅页核对，Token额度未知。",
-      "tags": [],
-      "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "supportsHarnessApi": true,
-      "dimensions": {
-        "value": {
-          "score": null,
-          "reason": "月付2999/4999/9999元，按每周积分及模型系数消耗，当前Token换算未知。"
-        },
-        "models": {
-          "score": null,
-          "reason": "官方17条订阅模型路由对应16个身份，M2.5高速版是服务档；不使用按量全模型目录代替。"
-        },
-        "stability": {
-          "score": null,
-          "reason": "尚无本项目独立长期稳定性测量。"
-        }
-      }
     }
   ]
 }

@@ -3137,46 +3137,6 @@
       "firstMonthPrice": "-"
     },
     {
-      "slug": "charm-hyper-free",
-      "platformSlug": "charm-hyper",
-      "name": "Free",
-      "billingMode": "subscription",
-      "action": "https://hyper.charm.sh/",
-      "rating": 0,
-      "firstMonthPrice": "-",
-      "monthlyPrice": 0,
-      "quarterlyPrice": "-",
-      "yearlyPrice": "-",
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
-      "currency": "$",
-      "benefits": [
-        "100 Hypercredits/月"
-      ],
-      "note": "1 Hypercredit=$0.05；预付加购Credits永不过期。免费额度每月刷新。"
-    },
-    {
-      "slug": "charm-hyper-subscription",
-      "platformSlug": "charm-hyper",
-      "name": "Subscription",
-      "billingMode": "subscription",
-      "action": "https://hyper.charm.sh/",
-      "rating": 0,
-      "firstMonthPrice": "-",
-      "monthlyPrice": 20,
-      "quarterlyPrice": "-",
-      "yearlyPrice": "-",
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
-      "currency": "$",
-      "benefits": [
-        "250 Hypercredits/日，每日刷新"
-      ],
-      "note": "1 Hypercredit=$0.05；预付加购Credits永不过期。每日额度不能集中月初使用，月Token量未换算。"
-    },
-    {
       "slug": "taotoken-token-lite",
       "platformSlug": "taotoken-token",
       "name": "Lite",
@@ -3575,69 +3535,6 @@
       "note": "官方未公布有限额度具体数值；不能从付费模型名单推断可手选模型。",
       "summary": "仅Auto模式，有限Dollar Usage/月；有限代码补全，2个云端任务并行；不含SOLO模式",
       "quarterlyPrice": "未公开"
-    },
-    {
-      "slug": "qiniu-enterprise-s",
-      "platformSlug": "qiniu",
-      "name": "Enterprise S",
-      "billingMode": "subscription",
-      "monthlyPrice": 2999,
-      "quarterlyPrice": 8354,
-      "yearlyPrice": 30845,
-      "firstMonthPrice": "-",
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
-      "action": "https://www.qiniu.com/ai/plan",
-      "rating": 0,
-      "benefits": [
-        "约1070M积分/月，约247.17M积分/周",
-        "按周补充额度，所有模型共享，未用不结转",
-        "统一订阅Key，兼容Completions/Responses/Messages"
-      ],
-      "note": "面向企业与团队；当前月价¥2999，常规原价¥4284；月季年优惠及闲时活动起止日期未公布。仅DeepSeek V4 Flash/Pro、V4.1 Flash及GLM5.3在18:00至次日08:00 UTC+8按0.3倍、其余时段1倍；完整额外价格系数未确认，Token未知。订阅周期30/90/365天，单团队同时仅一个订阅，超额或套餐外请求拒绝；未用积分不结转。"
-    },
-    {
-      "slug": "qiniu-enterprise-m",
-      "platformSlug": "qiniu",
-      "name": "Enterprise M",
-      "billingMode": "subscription",
-      "monthlyPrice": 4999,
-      "quarterlyPrice": 13748,
-      "yearlyPrice": 49992,
-      "firstMonthPrice": "-",
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
-      "action": "https://www.qiniu.com/ai/plan",
-      "rating": 0,
-      "benefits": [
-        "约2080M积分/月，约480.67M积分/周",
-        "按周补充额度，所有模型共享，未用不结转",
-        "统一订阅Key，兼容Completions/Responses/Messages"
-      ],
-      "note": "面向企业与团队；当前月价¥4999，常规原价¥8332；月季年优惠及闲时活动起止日期未公布。仅DeepSeek V4 Flash/Pro、V4.1 Flash及GLM5.3在18:00至次日08:00 UTC+8按0.3倍、其余时段1倍；完整额外价格系数未确认，Token未知。订阅周期30/90/365天，单团队同时仅一个订阅，超额或套餐外请求拒绝；未用积分不结转。"
-    },
-    {
-      "slug": "qiniu-enterprise-b",
-      "platformSlug": "qiniu",
-      "name": "Enterprise B",
-      "billingMode": "subscription",
-      "monthlyPrice": 9999,
-      "quarterlyPrice": 26997,
-      "yearlyPrice": 95990,
-      "firstMonthPrice": "-",
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
-      "action": "https://www.qiniu.com/ai/plan",
-      "rating": 0,
-      "benefits": [
-        "约5000M积分/月，约1153.73M积分/周",
-        "按周补充额度，所有模型共享，未用不结转",
-        "统一订阅Key，兼容Completions/Responses/Messages"
-      ],
-      "note": "面向企业与团队；当前月价¥9999，常规原价¥19998；月季年优惠及闲时活动起止日期未公布。仅DeepSeek V4 Flash/Pro、V4.1 Flash及GLM5.3在18:00至次日08:00 UTC+8按0.3倍、其余时段1倍；完整额外价格系数未确认，Token未知。订阅周期30/90/365天，单团队同时仅一个订阅，超额或套餐外请求拒绝；未用积分不结转。"
     }
   ]
 }

@@ -19,9 +19,9 @@
     }
   },
   "coverage": {
-    "artificialAnalysisScores": 105,
+    "artificialAnalysisScores": 102,
     "deepSWEScores": 28,
-    "multimodalKnown": 114
+    "multimodalKnown": 111
   },
   "models": [
     {
@@ -3129,77 +3129,6 @@
       "modalities": null,
       "scores": {
         "artificialAnalysis": null,
-        "deepSWE": null
-      }
-    },
-    {
-      "slug": "gemma-4-26b-a4b",
-      "name": "Gemma-4-26B-A4B",
-      "multimodal": true,
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "video"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "scores": {
-        "artificialAnalysis": {
-          "score": 17,
-          "scoreExact": 16.671930040086,
-          "configuration": "Gemma 4 26B A4B (Reasoning)",
-          "modelSlug": "gemma-4-26b-a4b",
-          "sourceUrl": "https://artificialanalysis.ai/models/gemma-4-26b-a4b"
-        },
-        "deepSWE": null
-      }
-    },
-    {
-      "slug": "qwen-3-8-2-4t-a95b",
-      "name": "Qwen-3.8-2.4T-A95B",
-      "multimodal": false,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "scores": {
-        "artificialAnalysis": {
-          "score": 40,
-          "scoreExact": 39.8861723105325,
-          "configuration": "Qwen3.8 2.4T A95B",
-          "modelSlug": "qwen3-8-2-4t-a95b",
-          "sourceUrl": "https://artificialanalysis.ai/models/qwen3-8-2-4t-a95b"
-        },
-        "deepSWE": null
-      }
-    },
-    {
-      "slug": "kimi-k2-thinking",
-      "name": "Kimi-K2-Thinking",
-      "multimodal": false,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "scores": {
-        "artificialAnalysis": {
-          "score": 22,
-          "scoreExact": 22.0200270318461,
-          "configuration": "Kimi K2 Thinking",
-          "modelSlug": "kimi-k2-thinking",
-          "sourceUrl": "https://artificialanalysis.ai/models/kimi-k2-thinking"
-        },
         "deepSWE": null
       }
     },

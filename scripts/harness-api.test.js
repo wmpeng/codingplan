@@ -105,8 +105,8 @@ test('方案卡片只显示非开放状态和明确不支持的能力，不渲�
 test('当前目录完整分类与免费/入门套餐覆盖保持独立', () => {
   const read=file=>JSON.parse(fs.readFileSync(path.join(__dirname,'..',file),'utf8'));
   const platforms=read('platforms.json').platforms, plans=read('plans.json').plans;
-  assert.equal(platforms.length,52);
-  assert.equal(platforms.filter(p=>p.supportsHarnessApi===true).length,37);
+  assert.equal(platforms.length,50);
+  assert.equal(platforms.filter(p=>p.supportsHarnessApi===true).length,35);
   assert.deepEqual(platforms.filter(p=>p.supportsHarnessApi===false).map(p=>p.slug).sort(),['claude','codex','github','qoder-cn','qoder-intl','trae-cn','trae-intl','workbuddy']);
   assert.deepEqual(platforms.filter(p=>p.supportsHarnessApi===null).map(p=>p.slug).sort(),['baidu-qianfan-coding-legacy','minimax-coding-legacy','stepfun','tencent-cloud-coding-legacy','unicom-cloud-coding-legacy','zhipu-coding-legacy','zhipu-intl-coding-legacy']);
   assert.deepEqual(plans.filter(p=>Object.hasOwn(p,'supportsHarnessApi')).map(p=>[p.slug,p.supportsHarnessApi]).sort((a,b)=>a[0].localeCompare(b[0])),[['commandcode-go',false],['kimi-go-2026',false],['kimi-max-2026',true],['kimi-plus-2026',true],['kimi-pro-2026',true],['minimax-code-free',false],['trae-intl-free',false]]);
