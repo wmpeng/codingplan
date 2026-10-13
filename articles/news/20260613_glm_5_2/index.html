@@ -497,6 +497,7 @@
     }
 
   </style>
+<link rel="canonical" href="https://codingplan.fyi/articles/news/20260613_glm_5_2/">
 <script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
   <link rel="stylesheet" href="/styles/reading.css?v=7c1640cfed" />
   <link rel="stylesheet" href="/styles/design-system.css?v=337bb16e05" />
@@ -586,7 +587,7 @@
       <article class="doc">
       <p class="doc-kicker">产品更新 · Coding Plan</p>
       <h1>GLM-5.2 全量开放 Coding Plan：1M 上下文登场，Code V3 私有评测跃居第三</h1>
-      <p class="doc-updates">更新日期：<time datetime="2026-06-13">2026.6.13</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
+      <p class="doc-updates">更新日期：<time datetime="2026-06-13">2026.6.13</time> · 数据来源 <a href="/" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
       <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;">本次核心更新：6 月 13 日 17:21 起 <strong>GLM-5.2</strong> 面向 <strong>GLM Coding Plan 全量用户</strong>开放；官方称 <strong>1M 可用上下文</strong>；<strong>API 与 MIT 开源</strong>计划下周上线；智谱<strong>尚未公布</strong> SWE-bench 等官方榜单；<strong>LLM Benchmark Code V3</strong> 中 <strong>GLM-5.2(max)</strong> 综合第 <strong>3</strong>，公开 5 工程中获 <strong>3 个 A 档</strong>，维护者称可用性<strong>持平 Opus 4.8</strong>、<strong>大幅领先其他国产模型</strong>。</div>
       <p class="lead">2026 年 6 月 13 日，<strong>智谱</strong>正式发布 <strong>GLM-5.2</strong>，并向 <strong>GLM Coding Plan</strong> 存量用户全量开放。官方 benchmark 尚空，但 Code V3 榜单维护者 <strong>toyama nao</strong>（知乎 llm2014 /「玩具匠」）在同日发布的解读中给出判断：<strong>GLM-5.2 把 Coding 能力推到世界一流模型的门口，并在国产模型中首次拉开代差</strong>。本文结合其解读与公开 CSV 数据，说明 GLM-5.2 相对 GLM-5.1 与同梯队模型意味着什么。</p>
       <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="文章目录">
@@ -676,7 +677,7 @@
       <h3 id="sec-openclaw">OpenClaw</h3>
       <p>在 <code>models.providers.zai.models</code> 中配置 <code>contextWindow: 1000000</code>、<code>maxTokens: 131072</code>（以官方文档为准），<code>agents.defaults.model.primary</code> 设为 <code>zai/glm-5.2</code> 后重启 Gateway。</p>
       <h2 id="sec-compare">六、与国产同梯队对比（综合 Code V3 + 订阅体验）</h2>
-      <ul><li><strong>智谱 GLM-5.2</strong>：Code V3 本轮<strong>综合第三</strong>；Coding Plan <strong>限购</strong>，但模型升级<strong>不额外加价</strong>；1M + 下周 MIT 权重预期。</li><li><strong><a href="https://vibecoding.dreamfree.space/articles/news/20260602_minimax_m3/" rel="noopener noreferrer">MiniMax-M3</a></strong>：<strong>不限购</strong>，多模态 + 1M；Code V3 本轮 Web <strong>51/D+</strong>，与 GLM-5.2 差距较大（部分场景 Skip）。</li><li><strong>DeepSeek V4 Pro</strong>：按量灵活；Code V3 (max) 弱于 GLM-5.2，Rust 仍 Failed。</li><li><strong>字节·方舟</strong>：多模型聚合 + 活动价；GLM-5.2 需等智谱 API 或 Coding Plan 直连。</li></ul>
+      <ul><li><strong>智谱 GLM-5.2</strong>：Code V3 本轮<strong>综合第三</strong>；Coding Plan <strong>限购</strong>，但模型升级<strong>不额外加价</strong>；1M + 下周 MIT 权重预期。</li><li><strong><a href="/articles/news/20260602_minimax_m3/" rel="noopener noreferrer">MiniMax-M3</a></strong>：<strong>不限购</strong>，多模态 + 1M；Code V3 本轮 Web <strong>51/D+</strong>，与 GLM-5.2 差距较大（部分场景 Skip）。</li><li><strong>DeepSeek V4 Pro</strong>：按量灵活；Code V3 (max) 弱于 GLM-5.2，Rust 仍 Failed。</li><li><strong>字节·方舟</strong>：多模型聚合 + 活动价；GLM-5.2 需等智谱 API 或 Coding Plan 直连。</li></ul>
       <h2 id="sec-advice">七、选型建议</h2>
       <h3 id="sec-subscribed">已订阅 GLM Coding Plan</h3>
       <ul><li><strong>立刻切换</strong> GLM-5.2(max) 跑真实仓库；优先在之前 GLM-5.1 吃力的 <strong>Game / Rust / 大 Web 项目</strong> 上验证。</li><li>对照 <a href="https://llm2014.github.io/llm_benchmark/#category=code_v3&amp;dataset=code_v3%7C2026-06%7C0" rel="noopener noreferrer">Code V3 榜单</a> 关注后续月份是否维持领先。</li></ul>
@@ -685,7 +686,7 @@
       <h2 id="sec-summary">八、总结</h2>
       <p>GLM-5.2 发布在<strong>官方 benchmark 空白期</strong>，但 Code V3 给出了迄今最可跟进的一条线：<strong>CSV 上综合第三、五场景全面碾压 GLM-5.1、公开工程 3 个 A 档</strong>；维护者 toyama nao 进一步判断其<strong>可用性接近 Opus 4.8、国产 Coding 首次拉开代差</strong>——后者含隐藏题与消耗统计等<strong>维护者自述</strong>，需与 CSV 分层看待。</p>
       <p>对<strong>已持有 Coding Plan</strong> 的开发者：值得立即以 <strong>max effort</strong> 切换 GLM-5.2，并在 Game / Rust / 大 Web 仓库上复验。对<strong>观望者</strong>：等 MIT 权重与官方 SWE-bench 双落地；在此之前，Code V3 + 维护者解读已是判断 GLM-5.2 是否「能干活」的最佳公开材料之一。</p>
-      <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>原文链接 <a href="https://vibecoding.dreamfree.space/articles/news/20260613_glm_5_2/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260613_glm_5_2/</a></div>
+      <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>原文链接 <a href="/articles/news/20260613_glm_5_2/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260613_glm_5_2/</a></div>
     </article>
     </div>
   </div>

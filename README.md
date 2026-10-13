@@ -6,11 +6,11 @@
 
 当前展示 **45 个平台、137 个在售订阅套餐、2 个按量 API、155 个模型和 2281 条套餐模型关系**。
 
-[在线平台中心](https://www.codingplan.fyi/platforms/) · [模型目录](https://www.codingplan.fyi/models/) · [额度/价格对比](https://www.codingplan.fyi/pricing/) · [套餐对比](https://www.codingplan.fyi/plans/)
+[在线平台中心](https://codingplan.fyi/platforms/) · [模型目录](https://codingplan.fyi/models/) · [额度/价格对比](https://codingplan.fyi/pricing/) · [套餐对比](https://codingplan.fyi/plans/)
 
 ## 平台介绍
 
-[Command Code](https://vibecoding.dreamfree.space/platforms/command-code/) · [Cursor](https://vibecoding.dreamfree.space/platforms/cursor/) · [MiniMax M Plan](https://vibecoding.dreamfree.space/platforms/minimax/) · [OpenCode Go / Go Plus](https://vibecoding.dreamfree.space/platforms/opencode/) · [智谱 GLM Coding Plan](https://vibecoding.dreamfree.space/platforms/zhipu/) · [全部介绍](https://vibecoding.dreamfree.space/platforms/)
+[Command Code](https://codingplan.fyi/platforms/command-code/) · [Cursor](https://codingplan.fyi/platforms/cursor/) · [MiniMax M Plan](https://codingplan.fyi/platforms/minimax/) · [OpenCode Go / Go Plus](https://codingplan.fyi/platforms/opencode/) · [智谱 GLM Coding Plan](https://codingplan.fyi/platforms/zhipu/) · [全部介绍](https://codingplan.fyi/platforms/)
 
 ## 目录
 
@@ -33,7 +33,7 @@
 | [DeepSeek](https://platform.deepseek.com/) | 开放购买 | 5 | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
 | [Codex](https://api.dreamfree.space/c/s/cpyqchatgpt) | 开放购买 | 5 | Codex官方订阅，支持GPT-6.1 Sol及6系列；Pro $500另支持Ultrafast。 |
 
-[浏览全部模型](https://www.codingplan.fyi/models/) · [按需求筛选所有方案](https://www.codingplan.fyi/#selectionWorkspace)
+[浏览全部模型](https://codingplan.fyi/models/) · [按需求筛选所有方案](https://codingplan.fyi/#selectionWorkspace)
 
 ## 热门模型额度与价格对比
 
@@ -52,7 +52,7 @@
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥0.8 / 缓存¥0.02 / 出¥3.2 | - | - | - | ¥0.0709/M | 计算 |
 | [DeepSeek · 按量 API](https://platform.deepseek.com/) | [谷] | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M | 计算 |
 
-还有 47 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/pricing/)。
+还有 47 个可比较选项，见[在线额度/价格对比](https://codingplan.fyi/pricing/)。
 
 ### DeepSeek-V4-Flash-0731
 
@@ -67,7 +67,7 @@
 | [OpenCode · Go Plus](https://api.dreamfree.space/c/s/cpyqopencode) | [谷] | $40/月 | 1,804.75M | 4,511.87M | 9,023.7M | ¥0.0299/M | 计算 |
 | [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | [峰] | $20/月 | 526.39M | 1,315.96M | 2,631.9M | ¥0.0517/M | 计算 |
 
-还有 56 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/pricing/)。
+还有 56 个可比较选项，见[在线额度/价格对比](https://codingplan.fyi/pricing/)。
 
 ### GLM-5.3-Flash
 
@@ -82,7 +82,7 @@
 | [字节·方舟 Coding Plan · Pro](https://api.dreamfree.space/c/s/cpyqfangzhou) | - | ¥200/月 | 200M | 1,500M | 3,000M | ¥0.0667/M | 倍率换算 |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥0.64 / 缓存¥0.18 / 出¥2.24 | - | - | - | ¥0.217/M | 计算 |
 
-还有 34 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/pricing/)。
+还有 34 个可比较选项，见[在线额度/价格对比](https://codingplan.fyi/pricing/)。
 
 ### GPT-6-Luna
 
@@ -97,7 +97,7 @@
 | [GitHub · Max](https://github.com/features/copilot/plans) | [≤272K] | $100/月 | - | - | 11,815.1M | ¥0.0578/M | 计算 |
 | [GitHub · Pro+](https://api.dreamfree.space/c/s/cpyqghcopilotp) | [≤272K] | $39/月 | - | - | 4,135.3M | ¥0.0639/M | 计算 |
 
-还有 23 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/pricing/)。
+还有 23 个可比较选项，见[在线额度/价格对比](https://codingplan.fyi/pricing/)。
 
 ### GPT-6-Astra
 
@@ -112,7 +112,7 @@
 | [Command Code · Max 10×](https://api.dreamfree.space/c/s/cpcommandcode) | - | $100/月 | 17.72M | 35.45M | 59.1M | ¥11.511/M | 计算 |
 | [Command Code · Max 20×](https://api.dreamfree.space/c/s/cpcommandcode) | - | $200/月 | 35.45M | 70.89M | 118.2M | ¥11.511/M | 计算 |
 
-还有 9 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/pricing/)。
+还有 9 个可比较选项，见[在线额度/价格对比](https://codingplan.fyi/pricing/)。
 
 ### GPT-6.1-Sol
 
@@ -147,7 +147,7 @@
 | [智谱国际版 · 新Lite](https://api.dreamfree.space/c/s/cpyqzai) | [谷] | $18/月 | 19.32M | 96.61M | 386.4M | ¥0.3169/M | 计算 |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥6.4 / 缓存¥1.6 / 出¥22.4 | - | - | - | ¥1.9428/M | 计算 |
 
-还有 32 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/pricing/)。
+还有 32 个可比较选项，见[在线额度/价格对比](https://codingplan.fyi/pricing/)。
 
 ### Kimi-K3
 
@@ -162,7 +162,7 @@
 | [字节·方舟 Coding Plan · Pro](https://api.dreamfree.space/c/s/cpyqfangzhou) | - | ¥200/月 | 20M | 150M | 300M | ¥0.6667/M | 倍率换算 |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥16 / 缓存¥1.6 / 出¥80 | - | - | - | ¥2.7084/M | 计算 |
 
-还有 23 个可比较选项，见[在线额度/价格对比](https://www.codingplan.fyi/pricing/)。
+还有 23 个可比较选项，见[在线额度/价格对比](https://codingplan.fyi/pricing/)。
 
 ## 平台对比
 
@@ -214,7 +214,7 @@
 | 超算 · Token Plan | 开放购买 | - | 19个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。 |
 | 讯飞 · Astron Token Plan | 开放购买 | - | 面向企业/团队的成员积分订阅；当前活动已结束，按常规月价记录。 |
 
-更详细的性价比、模型覆盖、稳定性评价和状态筛选见[在线平台中心](https://www.codingplan.fyi/platforms/)。
+更详细的性价比、模型覆盖、稳定性评价和状态筛选见[在线平台中心](https://codingplan.fyi/platforms/)。
 
 ## 套餐概览
 
@@ -265,7 +265,7 @@
 | 超算 · Token Plan | 4 | ¥30–¥899/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、等 19 个 |
 | 讯飞 · Astron Token Plan | 3 | ¥200–¥2,000/月 | GLM-4.7-Flash、GLM-5、GLM-5.1、GLM-5.2、等 13 个 |
 
-全部价格、周期优惠、请求数、权益和备注见[在线套餐对比](https://www.codingplan.fyi/plans/)。
+全部价格、周期优惠、请求数、权益和备注见[在线套餐对比](https://codingplan.fyi/plans/)。
 
 ## 数据口径
 

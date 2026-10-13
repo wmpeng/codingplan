@@ -489,6 +489,7 @@
     }
 
   </style>
+<link rel="canonical" href="https://codingplan.fyi/articles/news/20260615_kimi_k27_code/">
 <script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
   <link rel="stylesheet" href="/styles/reading.css?v=7c1640cfed" />
   <link rel="stylesheet" href="/styles/design-system.css?v=337bb16e05" />
@@ -584,7 +585,7 @@
       <article class="doc">
       <p class="doc-kicker">产品更新 · Kimi Code</p>
       <h1>Kimi K2.7 Code 发布并开源：编程专项大升级，高速版今日上线</h1>
-      <p class="doc-updates">更新日期：<time datetime="2026-06-15">2026.6.15</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
+      <p class="doc-updates">更新日期：<time datetime="2026-06-15">2026.6.15</time> · 数据来源 <a href="/" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
       <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;">本次核心更新：<strong>6 月 12 日</strong>月之暗面发布并开源 <strong>Kimi K2.7 Code</strong>（Modified MIT）；<strong>Kimi Code Plan</strong> 默认模型同步升级；开放平台 API <strong>不涨按量价</strong>；<strong>6 月 15 日</strong> <strong>高速版</strong> <code>kimi-k2.7-code-highspeed</code> 上线（约 <strong>5–6×</strong> 输出速度、<strong>2×</strong> 价格）；相对 K2.6 官方称长程编程与指令遵循提升，思考 token 平均 <strong>-30%</strong>；非编程任务仍推荐 <strong>K2.6</strong>。</div>
       <p class="lead">2026 年 6 月中旬，国产大模型在 <strong>Coding</strong> 赛道继续加速。<strong>月之暗面 Kimi</strong> 于 <strong>6 月 12 日</strong>发布并开源编程专用模型 <strong>Kimi K2.7 Code</strong>，<strong>6 月 15 日</strong>又上线同权重的高速推理版本。与一周前 <strong>GLM-5.2</strong> 全量开放 Coding Plan 形成呼应，Kimi 这次走的是另一条路：名字里就写着 <strong>Code</strong>，官方明确建议「纯对话、办公用 K2.6，编程用 K2.7」——在人人都想讲 AGI 的语境里，这种主动划边界、集中力量做编程的做法相当克制。下面从能力、定价、社区实测和怎么接入手把手说清楚。</p>
       <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="文章目录">
@@ -744,7 +745,7 @@
       <h3 id="sec-vs26">1. 相对 K2.6：代际跃迁，而非小修小补</h3>
       <p>官方 benchmark 上，K2.7 Code 相对 K2.6 是<strong>全面抬升</strong>；token 效率还有 <strong>-30%</strong> 的额外红利。对 <strong>已订阅 Kimi Code</strong> 的用户，这是<strong>默认免费升舱</strong>，无需改套餐。</p>
       <h3 id="sec-codev3">2. 相对 Code V3 上的 K2.6（历史参照）</h3>
-      <p>在 <a href="https://vibecoding.dreamfree.space/articles/news/20260613_glm_5_2/" rel="noopener noreferrer">GLM-5.2 解读</a> 所引用的 <strong>Code V3（2026-05）</strong> 中，<strong>Kimi-K2.6 (Think)</strong> 表现为 Mac <strong>49/D</strong>、Flutter <strong>17/C</strong>、Web <strong>33/C</strong>、Game / Rust <strong>Failed</strong>——明显弱于同期 <strong>GLM-5.1</strong>，更遑论 <strong>GLM-5.2</strong>。K2.7 官方分的大幅跃升说明月之暗面确实在 Coding 上押了重注，但是否能在 Code V3 等新一期榜单上改写国产格局，<strong>仍需等待维护者复测</strong>。</p>
+      <p>在 <a href="/articles/news/20260613_glm_5_2/" rel="noopener noreferrer">GLM-5.2 解读</a> 所引用的 <strong>Code V3（2026-05）</strong> 中，<strong>Kimi-K2.6 (Think)</strong> 表现为 Mac <strong>49/D</strong>、Flutter <strong>17/C</strong>、Web <strong>33/C</strong>、Game / Rust <strong>Failed</strong>——明显弱于同期 <strong>GLM-5.1</strong>，更遑论 <strong>GLM-5.2</strong>。K2.7 官方分的大幅跃升说明月之暗面确实在 Coding 上押了重注，但是否能在 Code V3 等新一期榜单上改写国产格局，<strong>仍需等待维护者复测</strong>。</p>
       <h3 id="sec-vs-glm">3. 与 GLM-5.2：不同叙事，不宜硬比一张表</h3>
       <ul>
         <li><strong>GLM-5.2</strong>：1M 上下文 + Coding Plan 全量开放；Code V3 暂列综合第三。</li>
@@ -779,7 +780,7 @@
       <p>Kimi K2.7 Code 不是「又一个更大的通用模型」，而是月之暗面在 <strong>Coding</strong> 上 <strong>断其一指</strong> 的专项产品：<strong>6 月 12 日</strong>发布并开源权重，<strong>6 月 15 日</strong>高速版补齐速度短板，<strong>存量 Kimi Code 用户默认升舱且 API 不涨价</strong>。官方 benchmark 与社区 C++ 审查小测共同指向一个方向——<strong>更准、更克制、更省 token</strong>。</p>
       <p>对开发者而言，若你关心的是「在国内还能稳定用什么写代码」，K2.7 Code 走的 <strong>API + 会员</strong> 路线，和 GLM-5.2 那条 <strong>1M Coding Plan</strong> 路线，算是 2026 年国产 Coding 的两条主线。<strong>高速版今天已经能用了</strong>（目前主要是 API / Beta 等指定渠道）——建议拿自己的仓库跑一轮，再决定续 <strong>Kimi Code 会员</strong> 还是单独开 <strong>高速版按量</strong>。</p>
 
-      <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>原文链接 <a href="https://vibecoding.dreamfree.space/articles/news/20260615_kimi_k27_code/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260615_kimi_k27_code/</a></div>
+      <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>原文链接 <a href="/articles/news/20260615_kimi_k27_code/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260615_kimi_k27_code/</a></div>
       </article>
     </div>
   </div>
