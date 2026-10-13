@@ -72,13 +72,21 @@ test('旧工具条件不再限制或排序，默认/清空不要求 API 接入',
   assert.deepEqual(G.recommend(c,legacy,{}, {allMatching:true}),G.recommend(c,plain,{}, {allMatching:true}));
 });
 
-test('标签区分待确认和不支持，平台例外与套餐最终值展示一致', () => {
+test('未知能力隐藏，混合套餐平台显示可接入，具体套餐保留覆盖值', () => {
   const c=context(), platform=c.platforms[0];
-  assert.match(E.harnessApiBadge(null),/data-harness-api="unknown".*待确认/);
-  assert.match(Cards.buildPlatformCardHtml(platform,c.plans),/部分套餐支持 Harness API/);
+  for (const unknown of [null,undefined]) assert.equal(E.harnessApiBadge(unknown),'');
+  assert.match(E.harnessApiBadge(true),/>可接入第三方工具<\/span>/);
+  assert.match(E.harnessApiBadge(false),/>不可接入第三方工具<\/span>/);
+  assert.match(Cards.buildPlatformCardHtml(platform,c.plans),/data-harness-api="true"[^>]*>可接入第三方工具/);
   const html=Detail.buildDetailBodyHtml(platform,{plans:c.plans});
-  assert.match(html,/部分套餐支持 Harness API/);
-  assert.match(html,/不支持 Harness API/);
+  assert.match(html,/可接入第三方工具/);
+  assert.match(html,/不可接入第三方工具/);
+  assert.doesNotMatch(html,/Harness API|部分套餐|data-harness-api="(?:partial|unknown)"/);
+  assert.doesNotMatch(Cards.buildPlatformCardHtml(c.platforms[2],c.plans),/data-harness-api/);
+  assert.doesNotMatch(Detail.buildDetailBodyHtml(c.platforms[2],{plans:c.plans}),/data-harness-api/);
+  assert.match(E.platformHarnessApiBadge(c.platforms[1],c.plans),/data-harness-api="true"/);
+  assert.match(E.platformHarnessApiBadge({slug:'pending',supportsHarnessApi:null},[{platformSlug:'pending',supportsHarnessApi:true}]),/data-harness-api="true"/);
+  assert.match(E.platformHarnessApiBadge({slug:'closed',supportsHarnessApi:false},[{platformSlug:'closed',supportsHarnessApi:true,discontinued:true}]),/>不可接入第三方工具/);
   const offer=G.recommend(c,all({platformSlugs:['yes']}),{}, {allMatching:true}).candidates.find(x=>x.plan.slug==='go');
   assert.match(Offers.card(offer,all({})),/data-harness-api="false"/);
   assert.doesNotMatch(Offers.card(offer,all({})),/data-harness-api="true"/);

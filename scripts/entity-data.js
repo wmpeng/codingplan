@@ -27,9 +27,11 @@
 
   function harnessApiBadge(value, options) {
     const partial = !!options?.partial;
-    const label = partial ? '部分套餐支持 Harness API' : value === true ? '支持 Harness API' : value === false ? '不支持 Harness API' : 'Harness API 待确认';
-    const status = partial ? 'partial' : value === true ? 'true' : value === false ? 'false' : 'unknown';
-    return `<span class="harness-api-badge" data-harness-api="${status}" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">${label}</span>`;
+    if (!partial && typeof value !== 'boolean') return '';
+    const supported = partial || value === true;
+    const label = supported ? '可接入第三方工具' : '不可接入第三方工具';
+    const status = supported ? 'true' : 'false';
+    return `<span class="harness-api-badge" data-harness-api="${status}" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">${label}</span>`;
   }
 
   function platformHarnessApiBadge(platform, plans) {

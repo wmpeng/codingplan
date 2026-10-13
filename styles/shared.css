@@ -973,4 +973,5 @@ button:disabled { cursor: not-allowed; }
 .harness-api-badge[data-harness-api="unknown"] { background: #f9fafb; color: #6b7280; }
 .offer-capabilities { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; margin-top: 6px; }
 .platform-capabilities, .plan-capabilities { margin-top: 6px; }
+.platform-capabilities:empty, .plan-capabilities:empty { display: none; }
 .platform-detail-plan-main > .harness-api-badge { margin-top: 6px; }
