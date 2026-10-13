@@ -72,7 +72,7 @@
     <div id="toolFilters" aria-label="筛选条件"><p class="tool-filter-loading" role="status">正在加载筛选条件…</p></div>
     <noscript><style>.tool-filter-loading{display:none}body .ui-model-tags [data-extra-model][hidden]{display:inline-flex}.ui-model-tags .model-tag-more{display:none}</style><p class="tool-muted">当前显示静态平台信息；开启 JavaScript 可使用筛选与对比。</p></noscript>
     <section id="platformHubApp" aria-busy="false">
-      <div class="tool-result-bar"><input type="search" data-hub-search disabled placeholder="搜索平台名称" aria-label="搜索平台"><span class="tool-count" data-hub-showing aria-live="polite">44 / 44 个平台</span></div>
+      <div class="tool-result-bar"><input type="search" data-hub-search disabled placeholder="搜索平台名称" aria-label="搜索平台"><span class="tool-count" data-hub-showing aria-live="polite">45 / 45 个平台</span></div>
       <div class="platform-card-grid" data-hub-grid>
                 <article class="platform-card" data-platform-id="zhipu" tabindex="0" role="button" aria-label="智谱AI 详情">
                     <header>
@@ -594,6 +594,26 @@
                     <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
                 </article>
 
+                <article class="platform-card" data-platform-id="cursor" tabindex="0" role="button" aria-label="Cursor 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://cursor.com/pricing" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">Cursor</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+
+
+                        </div>
+                        <div class="platform-card-aside">
+                            <button type="button" class="platform-pin-btn" data-platform-pin="1" data-platform-id="cursor" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                            <span class="platform-rating" aria-label="待评定">待评定</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">AI 编程编辑器与 Agent；新 X Subscription 从免费至 $200/月，旧 Pro 系列仅存量保留。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">新套餐已公布价格与额度倍率，未公布固定 Token 总量；第三方模型不包含在订阅额度中。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">支持 Grok、Claude、GPT、Gemini、Muse Spark；Composer 2.5 的旧套餐模型池单独记录。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">官方编辑器与 Agent 服务；尚未完成本站稳定性实测。</span></li></ul>
+
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="unknown" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">Harness API 待确认</span></div>
+                    <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">Auto</span><span class="model-tag">Grok-4.7</span><span class="model-tag">Grok-4.6</span><span class="model-tag">Grok-4.5</span><span class="model-tag">Claude Fable 5.1</span><span class="model-tag" data-extra-model hidden>Claude Haiku 5.5</span><span class="model-tag" data-extra-model hidden>Claude Opus 5.5</span><span class="model-tag" data-extra-model hidden>Claude Sonnet 5.5</span><span class="model-tag" data-extra-model hidden>Gemini 3.1 Pro</span><span class="model-tag" data-extra-model hidden>Gemini-3.8-Flash</span><span class="model-tag" data-extra-model hidden>GPT-5.6-Sol</span><span class="model-tag" data-extra-model hidden>GPT-5.6-Terra</span><span class="model-tag" data-extra-model hidden>GPT-5.6-Luna</span><span class="model-tag" data-extra-model hidden>Muse-Spark-1.3</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="9" aria-expanded="false" aria-label="展开其余 9 个模型">+9</button></div>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span><a class="platform-guide-link" href="/platforms/cursor/">平台介绍 →</a></div>
+                </article>
+
                 <article class="platform-card" data-platform-id="jd-cloud" tabindex="0" role="button" aria-label="京东云 详情">
                     <header>
                         <div class="platform-card-heading">
@@ -957,7 +977,7 @@
       <p class="tool-empty" data-hub-empty hidden>当前条件下没有平台。</p>
       <p class="tool-empty" data-hub-error hidden></p>
     </section>
-    <section class="tool-panel platform-guide-directory"><h2>平台介绍</h2><div class="hub-guide-grid"><a class="hub-guide-card" href="/platforms/command-code/"><strong>Command Code</strong><span>了解 Command Code 的 Go、GOAT、Pro、Max 多档个人订阅，查看支持模型、美元 Credits、模型额度和客户端限制，判断适合自己的多模型编程工作流。</span><span>阅读介绍 →</span></a><a class="hub-guide-card" href="/platforms/minimax/"><strong>MiniMax M Plan</strong><span>了解MiniMax M Plan Go、Explore、Build与旧Token Plan续费安排、M3.1 Flash Preview及用量窗口。</span><span>阅读介绍 →</span></a><a class="hub-guide-card" href="/platforms/opencode/"><strong>OpenCode Go / Go Plus</strong><span>了解 OpenCode Go / Go Plus 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。</span><span>阅读介绍 →</span></a><a class="hub-guide-card" href="/platforms/zhipu/"><strong>智谱 GLM Coding Plan</strong><span>了解智谱 GLM Coding Plan 的 Lite、Pro、Max 套餐，查看价格、支持模型、积分额度和接入边界，按自己的编程工作量选择档位。</span><span>阅读介绍 →</span></a></div></section>
+    <section class="tool-panel platform-guide-directory"><h2>平台介绍</h2><div class="hub-guide-grid"><a class="hub-guide-card" href="/platforms/command-code/"><strong>Command Code</strong><span>了解 Command Code 的 Go、GOAT、Pro、Max 多档个人订阅，查看支持模型、美元 Credits、模型额度和客户端限制，判断适合自己的多模型编程工作流。</span><span>阅读介绍 →</span></a><a class="hub-guide-card" href="/platforms/cursor/"><strong>Cursor</strong><span>了解 Cursor 的 X Subscription 与旧 Pro 系列差异，比较个人套餐、Grok 共享周额度、第三方模型费用和编辑器、CLI、SDK 的使用方式。</span><span>阅读介绍 →</span></a><a class="hub-guide-card" href="/platforms/minimax/"><strong>MiniMax M Plan</strong><span>了解MiniMax M Plan Go、Explore、Build与旧Token Plan续费安排、M3.1 Flash Preview及用量窗口。</span><span>阅读介绍 →</span></a><a class="hub-guide-card" href="/platforms/opencode/"><strong>OpenCode Go / Go Plus</strong><span>了解 OpenCode Go / Go Plus 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。</span><span>阅读介绍 →</span></a><a class="hub-guide-card" href="/platforms/zhipu/"><strong>智谱 GLM Coding Plan</strong><span>了解智谱 GLM Coding Plan 的 Lite、Pro、Max 套餐，查看价格、支持模型、积分额度和接入边界，按自己的编程工作量选择档位。</span><span>阅读介绍 →</span></a></div></section>
     <footer class="tool-footer"><span>价格、活动和可用模型可能变化，购买前请核对官方页面。</span><a href="/">返回首页</a></footer>
   </main>
   <div id="platformDetailOverlay" class="platform-detail-overlay" hidden><div class="platform-detail-backdrop" data-platform-detail-close="1"></div><div class="platform-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="platformDetailTitle" tabindex="-1"><button type="button" class="platform-detail-close" id="platformDetailClose" aria-label="关闭">×</button><div id="platformDetailBody"></div></div></div>
@@ -965,7 +985,7 @@
 <script src="/scripts/entity-data.js?v=eae43d6a36"></script><script src="/scripts/number-display.js?v=6c6a6ccb42"></script>
 <script src="/scripts/filter-state.js?v=433452e9d1"></script><script src="/scripts/homepage-filters.js?v=f614979f52"></script><script src="/scripts/tool-page.js?v=8e43308690"></script>
 
-<script src="/scripts/platform-pages.js?v=cc37e2c2e6"></script>
+<script src="/scripts/platform-pages.js?v=c78996fa40"></script>
 <script src="/scripts/platform-catalog.js?v=3385bc54dd"></script>
 <script src="/scripts/platform-detail.js?v=fc3c2234c4"></script>
 <script src="/scripts/platform-comparison.js?v=28f3124a99"></script>

@@ -754,6 +754,32 @@
       "detail": "用量按模型Token价格与当前基础/Flex积分计算，部分老年付仍有过渡口径。"
     },
     {
+      "slug": "cursor",
+      "name": "Cursor",
+      "rating": 0,
+      "summary": "AI 编程编辑器与 Agent；新 X Subscription 从免费至 $200/月，旧 Pro 系列仅存量保留。",
+      "detail": "新订阅共享 Grok 周额度，Premium 及以上的第三方模型另付费；编辑器、CLI 和 SDK 接入各有边界。",
+      "dimensions": {
+        "value": {
+          "score": null,
+          "reason": "新套餐已公布价格与额度倍率，未公布固定 Token 总量；第三方模型不包含在订阅额度中。"
+        },
+        "models": {
+          "score": null,
+          "reason": "支持 Grok、Claude、GPT、Gemini、Muse Spark；Composer 2.5 的旧套餐模型池单独记录。"
+        },
+        "stability": {
+          "score": null,
+          "reason": "官方编辑器与 Agent 服务；尚未完成本站稳定性实测。"
+        }
+      },
+      "tags": [],
+      "platformStatus": "open",
+      "requiresOverseasNetwork": true,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": null
+    },
+    {
       "slug": "jd-cloud",
       "name": "京东云",
       "rating": 2,

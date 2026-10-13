@@ -5,6 +5,10 @@
     "title": "Command Code",
     "url": "/platforms/command-code/"
   },
+  "cursor": {
+    "title": "Cursor",
+    "url": "/platforms/cursor/"
+  },
   "minimax": {
     "title": "MiniMax M Plan",
     "url": "/platforms/minimax/"

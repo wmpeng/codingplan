@@ -2,15 +2,15 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.10.13 | 境内网络与支付条件补全
+> 更新日期 2026.10.13 | 新增 Cursor 完整资料
 
-当前展示 **44 个平台、132 个在售订阅套餐、2 个按量 API、155 个模型和 2132 条套餐模型关系**。
+当前展示 **45 个平台、137 个在售订阅套餐、2 个按量 API、156 个模型和 2322 条套餐模型关系**。
 
 [在线平台中心](https://www.codingplan.fyi/platforms/) · [模型目录](https://www.codingplan.fyi/models/) · [额度/价格对比](https://www.codingplan.fyi/pricing/) · [套餐对比](https://www.codingplan.fyi/plans/)
 
 ## 平台介绍
 
-[Command Code](https://vibecoding.dreamfree.space/platforms/command-code/) · [MiniMax M Plan](https://vibecoding.dreamfree.space/platforms/minimax/) · [OpenCode Go / Go Plus](https://vibecoding.dreamfree.space/platforms/opencode/) · [智谱 GLM Coding Plan](https://vibecoding.dreamfree.space/platforms/zhipu/) · [全部介绍](https://vibecoding.dreamfree.space/platforms/)
+[Command Code](https://vibecoding.dreamfree.space/platforms/command-code/) · [Cursor](https://vibecoding.dreamfree.space/platforms/cursor/) · [MiniMax M Plan](https://vibecoding.dreamfree.space/platforms/minimax/) · [OpenCode Go / Go Plus](https://vibecoding.dreamfree.space/platforms/opencode/) · [智谱 GLM Coding Plan](https://vibecoding.dreamfree.space/platforms/zhipu/) · [全部介绍](https://vibecoding.dreamfree.space/platforms/)
 
 ## 目录
 
@@ -194,6 +194,7 @@
 | TRAE 国内版 | 开放购买 | ⭐️⭐️⭐️ | - | TRAE国内订阅，以积分计费；当前内置型号已换代，支持范围按档位区分。 |
 | TRAE 国际版 | 开放购买 | ⭐️⭐️⭐️ | - | Free仅Auto；新Lite/Pro/Pro+/Ultra与老套餐并存，按模型Token价扣减月Usage。 |
 | GitHub | 开放购买 | ⭐️⭐️⭐️ | - | Copilot个人方案现按AI Credits计费，新增Max；免费与学生档仅Auto选择。 |
+| Cursor | 开放购买 | - | - | AI 编程编辑器与 Agent；新 X Subscription 从免费至 $200/月，旧 Pro 系列仅存量保留。 |
 | 京东云 | 定时放量 | ⭐️⭐️ | - | 京东Coding Plan与新的Credits Token Plan并存，使用独立端点与计费。 |
 | 讯飞·星火 | 开放购买 | ⭐️⭐️⭐️ | - | 个人版沿用此前高效版与速通版记录；2026-10-12当前价格和完整支持未能公开核实。 |
 | 联通云 | 开放购买 | ⭐️⭐️ | - | 此前Token Plan资料保留；2026-10-12官方页面无法读取，当前价格、支持和购买状态未重新确认。 |
@@ -247,6 +248,7 @@
 | TRAE 国内版 | 4 | ¥45–¥629/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、等 20 个 |
 | TRAE 国际版 | 5 | $0–$200/月 | DeepSeek-V4-Flash-0731、GPT-6-Astra、GPT-6-Luna、Kimi-K3、等 20 个 |
 | GitHub | 5 | $0–$100/月 | Claude Opus 5.5、GPT-6-Astra、GPT-6-Luna、GPT-6.1-Sol、等 31 个 |
+| Cursor | 5 | $0–$200/月 | Claude Opus 5.5、Auto、Claude Fable 5.1、Claude Haiku 5.5、等 14 个 |
 | 京东云 | 2 | ¥40–¥200/月 | DeepSeek-V3.2、GLM-4.7、GLM-5、Kimi-K2、等 7 个 |
 | 讯飞·星火 | 2 | ¥199–¥699/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、GLM-5、GLM-5.1、等 10 个 |
 | 联通云 | 6 | ¥15–¥1,398/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、MiniMax-M2.5 |
@@ -267,7 +269,7 @@
 
 ## 数据口径
 
-实测 13 · 计算 1273 · 请求估算 58 · 倍率换算 41 · 未知 747
+实测 13 · 计算 1273 · 请求估算 58 · 倍率换算 41 · 未知 937
 
 | 标记 | 含义 |
 |---|---|
@@ -288,6 +290,7 @@
 
 - 调整目录收录范围，暂移除两项新增平台及其套餐、模型支持记录。
 - 补齐境内网络与支付条件，境内可用、境内可购买平台名单按当前确认结果筛选。
+- 新增 Cursor 平台与介绍页：收录 X Subscription 五档新套餐及四档存量个人套餐，区分 Grok 共享周额度与第三方模型另行付费；补齐模型价格、上下文和高速档。
 
 ### 2026.10.12
 

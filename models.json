@@ -3232,6 +3232,16 @@
         },
         "deepSWE": null
       }
+    },
+    {
+      "slug": "composer-2-5",
+      "name": "Composer 2.5",
+      "multimodal": "unknown",
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
     }
   ]
 }

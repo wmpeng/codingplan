@@ -1,0 +1,182 @@
+<!-- Generated platform guide; edit scripts/codingplan/platform_pages/content instead. -->
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<script src="/scripts/ui-core.js?v=57904152bf"></script>
+<script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
+<script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cursor：新旧套餐、模型费用与使用条件 - Coding Plan</title>
+<meta name="description" content="了解 Cursor 的 X Subscription 与旧 Pro 系列差异，比较个人套餐、Grok 共享周额度、第三方模型费用和编辑器、CLI、SDK 的使用方式。">
+  <link rel="canonical" href="https://vibecoding.dreamfree.space/platforms/cursor/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="Coding Plan">
+  <meta property="og:title" content="Cursor：新旧套餐、模型费用与使用条件 - Coding Plan">
+  <meta property="og:description" content="了解 Cursor 的 X Subscription 与旧 Pro 系列差异，比较个人套餐、Grok 共享周额度、第三方模型费用和编辑器、CLI、SDK 的使用方式。">
+  <meta property="og:url" content="https://vibecoding.dreamfree.space/platforms/cursor/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Cursor：新旧套餐、模型费用与使用条件 - Coding Plan">
+  <meta name="twitter:description" content="了解 Cursor 的 X Subscription 与旧 Pro 系列差异，比较个人套餐、Grok 共享周额度、第三方模型费用和编辑器、CLI、SDK 的使用方式。">
+  <link rel="icon" href="/favicon.ico?v=260924a">
+  <link rel="stylesheet" href="/styles/shared.css?v=6a65ea99b6">
+  <link rel="stylesheet" href="/styles/tool-page.css?v=7e0315c226">
+  <link rel="stylesheet" href="/styles/platform-guide.css?v=76c73aff4c">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://vibecoding.dreamfree.space/platforms/cursor/","url":"https://vibecoding.dreamfree.space/platforms/cursor/","name":"Cursor：新旧套餐、模型费用与使用条件 - Coding Plan","description":"了解 Cursor 的 X Subscription 与旧 Pro 系列差异，比较个人套餐、Grok 共享周额度、第三方模型费用和编辑器、CLI、SDK 的使用方式。","inLanguage":"zh-CN","datePublished":"2026-10-13","dateModified":"2026-10-13","isPartOf":{"@type":"WebSite","name":"Coding Plan","url":"https://vibecoding.dreamfree.space/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Coding Plan","item":"https://vibecoding.dreamfree.space/"},{"@type":"ListItem","position":2,"name":"平台介绍","item":"https://vibecoding.dreamfree.space/platforms/"},{"@type":"ListItem","position":3,"name":"Cursor","item":"https://vibecoding.dreamfree.space/platforms/cursor/"}]}]}</script>
+<link rel="stylesheet" href="/styles/design-system.css?v=337bb16e05">
+<script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
+<link rel="stylesheet" href="/styles/ui-components.css?v=e5133e2fe2">
+</head>
+<body class="platform-guide">
+  <a class="guide-skip" href="#guide-content">跳到介绍正文</a>
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/" aria-current="page">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/monitor/" hidden data-monitor-nav>可用性监控</a>
+    <a href="/articles/">文章</a>
+    <a href="/updates/">更新历史</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="guide-shell">
+    <nav class="guide-breadcrumb" aria-label="面包屑"><a href="/">Coding Plan</a><span>/</span><a href="/platforms/">平台介绍</a><span>/</span><span aria-current="page">Cursor</span></nav>
+    <header class="guide-hero">
+      <div class="guide-hero-copy">
+        <p class="guide-eyebrow">平台介绍 · 开放购买</p>
+        <h1>Cursor</h1>
+        <p class="guide-lead">Cursor 将编辑器与编程 Agent 放在同一工作流中。选套餐时先区分新 X Subscription 和旧 Pro 系列，再看常用模型是否包含额度，避免把模型可用误认为月费全包。</p>
+        <div class="guide-actions"><a class="guide-button" href="/plans/?platform=cursor">查看套餐对比 →</a><a class="guide-button secondary" href="https://cursor.com/pricing">查看官网</a></div>
+        <p class="guide-dates">介绍更新 <time datetime="2026-10-13">2026-10-13</time><span>·</span>套餐与模型记录 <time datetime="2026-10-13">2026-10-13</time></p>
+      </div>
+      <div class="guide-monogram" aria-hidden="true">Cu</div>
+    </header>
+    <div class="guide-layout">
+      <nav class="guide-toc" aria-label="本页目录"><p>本页内容</p><a href="#overview"><span>01</span>适合什么人</a><a href="#plans"><span>02</span>新旧套餐怎么选</a><a href="#models"><span>03</span>模型可用与额度包含分开看</a><a href="#usage"><span>04</span>为什么没有固定 Token 额度</a><a href="#tools"><span>05</span>编辑器、CLI 与 SDK</a><a href="#access"><span>06</span>网络与支付条件</a><a href="#related"><span>07</span>继续比较</a><a href="#sources"><span>08</span>官方资料</a></nav>
+      <main id="guide-content" class="guide-content"><section id="overview" class="guide-section"><h2>适合什么人</h2><p>Cursor 提供 AI 编程编辑器、本地与云端 Agent，以及 CLI 和 SDK。它适合希望在编辑器中完成理解代码、规划、修改与验证的开发者，也支持将部分任务交给云端执行。</p>
+<p>如果主要使用 Grok，可以比较新的共享订阅。如果主要使用 Claude、GPT、Gemini 等第三方模型，先核算额外模型费用，再决定是否值得购买更高订阅档。希望把订阅直接作为其他编程工具的模型接口时，应另行确认兼容接入能力。</p>
+</section>
+<section id="plans" class="guide-section"><h2>新旧套餐怎么选</h2><div class="guide-plan-grid"><article class="guide-plan">
+    <h3>Free（X Subscription）</h3><span class="harness-api-badge" data-harness-api="unknown" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">Harness API 待确认</span><p class="guide-price">$0<small>/ 月</small></p>
+    <div class="ui-model-tags guide-plan-models" data-model-tags aria-label="Free（X Subscription） 支持模型"><span class="model-tag">Auto</span></div>
+    <dl><div><dt>首月优惠</dt><dd>未单列</dd></div><div><dt>按季支付</dt><dd>未单列</dd></div><div><dt>按年支付</dt><dd>未单列</dd></div></dl>
+    <ul><li>有限 Agent 与 Chat 使用</li><li>Cursor 编程 Agent 入门额度</li></ul>
+    <p class="guide-plan-advice">先用小任务确认编辑器与 Agent 是否适合自己；免费额度和型号不按付费档推断。</p>
+  </article><article class="guide-plan">
+    <h3>Plus（X Subscription）</h3><span class="harness-api-badge" data-harness-api="unknown" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">Harness API 待确认</span><p class="guide-price">$8<small>/ 月</small></p>
+    <div class="ui-model-tags guide-plan-models" data-model-tags aria-label="Plus（X Subscription） 支持模型"><span class="model-tag">Auto</span></div>
+    <dl><div><dt>首月优惠</dt><dd>未单列</dd></div><div><dt>按季支付</dt><dd>未单列</dd></div><div><dt>按年支付</dt><dd>未单列</dd></div></dl>
+    <ul><li>Grok 共享基础使用池，每周刷新</li><li>Cursor、Grok 与 X 组合权益</li></ul>
+    <p class="guide-plan-advice">适合以 Grok 为主的入门使用；不能在这档默认使用 Claude、GPT 等第三方模型。</p>
+  </article><article class="guide-plan">
+    <h3>Premium（X Subscription）</h3><span class="harness-api-badge" data-harness-api="unknown" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">Harness API 待确认</span><p class="guide-price">$30<small>/ 月</small></p>
+    <div class="ui-model-tags guide-plan-models" data-model-tags aria-label="Premium（X Subscription） 支持模型"><span class="model-tag">Grok-4.7</span><span class="model-tag">Grok-4.6</span><span class="model-tag">Grok-4.5</span><span class="model-tag">Claude Fable 5.1</span><span class="model-tag">Claude Haiku 5.5</span><span class="model-tag">Claude Opus 5.5</span><span class="model-tag">Claude Sonnet 5.5</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Gemini-3.8-Flash</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Terra</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">Muse-Spark-1.3</span></div>
+    <dl><div><dt>首月优惠</dt><dd>未单列</dd></div><div><dt>按季支付</dt><dd>未单列</dd></div><div><dt>按年支付</dt><dd>未单列</dd></div></dl>
+    <ul><li>Grok 共享额度为 Plus 的 4 倍，每周刷新</li><li>云端 Agent、自动化与代码审查</li><li>第三方模型可用，按 API 标价另付费</li></ul>
+    <p class="guide-plan-advice">希望使用云端 Agent 与更高 Grok 额度时比较此档；常用第三方模型的费用另算。</p>
+  </article><article class="guide-plan">
+    <h3>Super（X Subscription）</h3><span class="harness-api-badge" data-harness-api="unknown" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">Harness API 待确认</span><p class="guide-price">$100<small>/ 月</small></p>
+    <div class="ui-model-tags guide-plan-models" data-model-tags aria-label="Super（X Subscription） 支持模型"><span class="model-tag">Grok-4.7</span><span class="model-tag">Grok-4.6</span><span class="model-tag">Grok-4.5</span><span class="model-tag">Claude Fable 5.1</span><span class="model-tag">Claude Haiku 5.5</span><span class="model-tag">Claude Opus 5.5</span><span class="model-tag">Claude Sonnet 5.5</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Gemini-3.8-Flash</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Terra</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">Muse-Spark-1.3</span></div>
+    <dl><div><dt>首月优惠</dt><dd>未单列</dd></div><div><dt>按季支付</dt><dd>未单列</dd></div><div><dt>按年支付</dt><dd>未单列</dd></div></dl>
+    <ul><li>Grok 共享额度为 Plus 的 15 倍，每周刷新</li><li>云端 Agent、自动化与代码审查</li><li>第三方模型可用，按 API 标价另付费</li><li>高峰期优先模型接入</li></ul>
+    <p class="guide-plan-advice">先观察实际每周共享池消耗，再决定是否需要更高档位。</p>
+  </article><article class="guide-plan">
+    <h3>Ultra（X Subscription）</h3><span class="harness-api-badge" data-harness-api="unknown" title="个人 Harness 的模型接口接入；具体工具及用途限制以平台说明为准">Harness API 待确认</span><p class="guide-price">$200<small>/ 月</small></p>
+    <div class="ui-model-tags guide-plan-models" data-model-tags aria-label="Ultra（X Subscription） 支持模型"><span class="model-tag">Grok-4.7</span><span class="model-tag">Grok-4.6</span><span class="model-tag">Grok-4.5</span><span class="model-tag">Claude Fable 5.1</span><span class="model-tag">Claude Haiku 5.5</span><span class="model-tag">Claude Opus 5.5</span><span class="model-tag">Claude Sonnet 5.5</span><span class="model-tag">Gemini 3.1 Pro</span><span class="model-tag">Gemini-3.8-Flash</span><span class="model-tag">GPT-5.6-Sol</span><span class="model-tag">GPT-5.6-Terra</span><span class="model-tag">GPT-5.6-Luna</span><span class="model-tag">Muse-Spark-1.3</span></div>
+    <dl><div><dt>首月优惠</dt><dd>未单列</dd></div><div><dt>按季支付</dt><dd>未单列</dd></div><div><dt>按年支付</dt><dd>未单列</dd></div></dl>
+    <ul><li>Grok 共享额度为 Plus 的 50 倍，每周刷新</li><li>云端 Agent、自动化与代码审查</li><li>第三方模型可用，按 API 标价另付费</li><li>更早获得产品与模型</li></ul>
+    <p class="guide-plan-advice">适合已确认需要更高共享额度的用户；与旧 Cursor Ultra 的第三方月度额度分开比较。</p>
+  </article></div><p class="guide-muted">各模型共用套餐积分；每 5 小时和每周限制同时生效。季付与年付展示整个周期的金额，购买价格以订购页面为准。</p><p>2026-10-12 发布的 X Subscription 将 Cursor、Grok、Grok Bot 与 X 权益组合在一起。新订阅的 Grok 使用量按周刷新并在相关产品间共享；不同产品会消耗同一池，不能将各产品权益相加当成独立额度。</p>
+<p><strong>Premium 及以上能使用第三方模型，但其调用费用从首个请求起另付，月费不包含这部分额度。</strong> Plus 只提供 Grok。Free 的精确模型与请求额度没有完整公开清单，不套用付费档支持范围。</p>
+<p>旧 Pro、Pro+、Ultra 和印度 Start 已停止新购，符合条件的现有账户可保留原价格与权益。老用户不切换时继续按旧规则使用；官方尚未公布最终迁移时间。存量年付的剩余有效期和迁移退款应在账户中确认。</p>
+<p>印度 Start 的原月费以印度卢比文本保留；没有美元报价，不参与人民币预算换算。它限制地区、速度、effort 与功能，不是面向所有地区的低价 Pro。</p>
+<h3>老用户保留方案</h3>
+<p>以下仅供现有账户参考，不是当前新购选项；记录核对日期为 2026-10-13。</p>
+<div class="guide-table-wrap" tabindex="0" role="region" aria-label="补充资料表"><table>
+<thead>
+<tr>
+<th>存量方案</th>
+<th>原月费</th>
+<th>使用池与主要限制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pro</td>
+<td>$20</td>
+<td>Cursor Models 与 Other Models 两个月度池</td>
+</tr>
+<tr>
+<td>Pro+</td>
+<td>$60</td>
+<td>两个月度池，固定金额以当前账户为准</td>
+</tr>
+<tr>
+<td>Ultra</td>
+<td>$200</td>
+<td>旧第三方月度额度保留至迁移，与新 Ultra 不同</td>
+</tr>
+<tr>
+<td>Start（印度）</td>
+<td>₹649，含税</td>
+<td>仅 Cursor Models；标准速度、Grok 固定 medium effort；不含第三方模型、Auto、按量加购或 SDK</td>
+</tr>
+</tbody></table>
+</div><p>存量方案的完整模型与档位记录可在<a href="/plans/?platform=cursor">Cursor 套餐目录</a>查看。旧池的具体 Token 总量保持未知，不承诺固定调用次数。</p>
+</section>
+<section id="models" class="guide-section"><h2>模型可用与额度包含分开看</h2><p>本站收录 14 个支持模型；同一模型的不同计费档位合并展示。</p><div class="guide-table-wrap" tabindex="0" role="region" aria-label="套餐支持模型"><table><caption>套餐支持模型</caption><thead><tr><th scope="col">模型</th><th scope="col">支持套餐</th></tr></thead><tbody><tr><th scope="row">Auto</th><td>Free（X Subscription）、Plus（X Subscription）</td></tr><tr><th scope="row">Grok-4.7</th><td>Premium（X Subscription）、Super（X Subscription）、Ultra（X Subscription）</td></tr><tr><th scope="row">Grok-4.6</th><td>Premium（X Subscription）、Super（X Subscription）、Ultra（X Subscription）</td></tr><tr><th scope="row">Grok-4.5</th><td>Premium（X Subscription）、Super（X Subscription）、Ultra（X Subscription）</td></tr><tr><th scope="row">Claude Fable 5.1</th><td>Premium（X Subscription）、Super（X Subscription）、Ultra（X Subscription）</td></tr><tr><th scope="row">Claude Haiku 5.5</th><td>Premium（X Subscription）、Super（X Subscription）、Ultra（X Subscription）</td></tr><tr><th scope="row">Claude Opus 5.5</th><td>Premium（X Subscription）、Super（X Subscription）、Ultra（X Subscription）</td></tr><tr><th scope="row">Claude Sonnet 5.5</th><td>Premium（X Subscription）、Super（X Subscription）、Ultra（X Subscription）</td></tr><tr><th scope="row">Gemini 3.1 Pro</th><td>Premium（X Subscription）、Super（X Subscription）、Ultra（X Subscription）</td></tr><tr><th scope="row">Gemini-3.8-Flash</th><td>Premium（X Subscription）、Super（X Subscription）、Ultra（X Subscription）</td></tr><tr><th scope="row">GPT-5.6-Sol</th><td>Premium（X Subscription）、Super（X Subscription）、Ultra（X Subscription）</td></tr><tr><th scope="row">GPT-5.6-Terra</th><td>Premium（X Subscription）、Super（X Subscription）、Ultra（X Subscription）</td></tr><tr><th scope="row">GPT-5.6-Luna</th><td>Premium（X Subscription）、Super（X Subscription）、Ultra（X Subscription）</td></tr><tr><th scope="row">Muse-Spark-1.3</th><td>Premium（X Subscription）、Super（X Subscription）、Ultra（X Subscription）</td></tr></tbody></table></div><p class="guide-muted">模型记录日期：2026-10-13。可选名称与实际服务版本可能不同，使用前请核对官方说明。</p><p>这里汇总平台新旧个人方案的已确认模型，<strong>不表示每个套餐都支持全部型号，也不表示全部调用包含在月费中</strong>。具体套餐以支持关系及费用说明为准。</p>
+<p>新 Premium、Super、Ultra 的 Grok 额度来自共享周池，第三方模型按实际输入、缓存与输出另付费。旧 Pro 系列则有 Cursor Models 与 Other Models 两个月度池；Composer 2.5 在旧 Cursor Models 池确认可用，其新订阅权限与池归属仍待明确。</p>
+<p>同一模型的高速和长上下文费用不同。Grok 4.7、GPT-5.6 系列及 Haiku 5.5 的输入长度阈值是计费条件；默认上下文和最大上下文另看说明。高速档属于同一模型的服务方式，不是新的模型身份。</p>
+<p>Fable 5.1 在启用隐私模式时需要先同意其数据保留政策，部分请求可能自动回退到 Claude Opus。购买前应确认自己账户是否已开放该模型。</p>
+</section>
+<section id="usage" class="guide-section"><h2>为什么没有固定 Token 额度</h2><p>官方的新订阅公布了共享额度倍率，未公布可稳定换算的固定美元或 Token 基础池。本站保留未知，不用月费、倍率、宣传示例或旧500次请求推导 Token 总量。旧两池的当前固定额度也需要按实际账户确认。</p>
+<p>模型价格已公开的输入、缓存读取、缓存写入与输出费用均保留；有费率不代表知道总额度。代码、会话长度、缓存命中和输出量会改变实际消耗，模型支持名单也不能相加为月额度。</p>
+</section>
+<section id="tools" class="guide-section"><h2>编辑器、CLI 与 SDK</h2><p>编辑器适合交互式开发；CLI 可在终端中工作，官方还提供无界面与 CI 使用方式。SDK 用于驱动 Cursor Agent，它管理的是 Agent 会话及工具，不应直接理解为任何第三方 Harness 都能调用的兼容模型接口。</p>
+<p>BYOK 使用的是自己在模型提供方的账户与费用，不能把自己的 Key 当成 Cursor 订阅额外赠送的额度。自动路由与子 Agent 可能选择其他模型，判断费用时应查看实际请求明细。</p>
+</section>
+<section id="access" class="guide-section"><h2>网络与支付条件</h2><p>本站当前条件记录：境内网络不可用，支持境内支付。支付方式的实际显示、账户和订阅资格以官方结算页为准。印度 Start 有独立地区与付款渠道要求。</p>
+</section>
+<section id="related" class="guide-section"><h2>继续比较</h2><p>如果更看重在多个编程工具之间选择模型接口，可以继续比较 OpenCode 与 Command Code；同时核对各自模型额度与套餐接入限制。它们与 Cursor 的编辑器工作流、周共享池和第三方费用构成不同。</p>
+<div class="guide-related"><a class="guide-related-card" href="/platforms/opencode/"><strong>OpenCode Go / Go Plus</strong><span>了解 OpenCode Go / Go Plus 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。</span><span>阅读平台介绍 →</span></a><a class="guide-related-card" href="/platforms/command-code/"><strong>Command Code</strong><span>了解 Command Code 的 Go、GOAT、Pro、Max 多档个人订阅，查看支持模型、美元 Credits、模型额度和客户端限制，判断适合自己的多模型编程工作流。</span><span>阅读平台介绍 →</span></a></div></section>
+<section id="sources" class="guide-section"><h2>官方资料</h2><ul class="guide-sources"><li><a href="https://cursor.com/pricing">Cursor 官网与当前价格</a><span>查看新个人订阅和开通入口。</span></li><li><a href="https://x.ai/news/x-subscription">X Subscription 发布与存量规则</a><span>区分新周共享池、第三方另付费和旧订阅保留。</span></li><li><a href="https://cursor.com/docs/models-and-pricing">Cursor 模型及逐档价格</a><span>模型费率与旧套餐表须结合新公告理解。</span></li><li><a href="https://cursor.com/help/account-and-billing/pricing">旧套餐价格与地区方案</a><span>Pro 系列与印度 Start 的存量参考。</span></li><li><a href="https://cursor.com/docs/cli/overview">Cursor CLI</a><span>查看终端与无界面任务方式。</span></li><li><a href="https://cursor.com/docs/sdk/typescript">Cursor SDK</a><span>官方 Agent SDK 的权限与使用说明。</span></li></ul><p>套餐价格与权益以官方当前页面和账户通知为准。本站把新订阅、存量订阅以及未知额度分开记录，方便按自己的常用模型与使用方式比较。</p>
+</section></main>
+    </div>
+    <footer class="guide-footer"><p>价格、活动与可用模型可能变化，购买和接入前请核对官方页面。本站的选择建议不代表服务承诺。</p><div><a href="/platforms/">全部平台</a><a href="/plans/">套餐对比</a><a href="/">返回首页</a><a href="https://github.com/wmpeng/codingplan/issues">反馈资料问题</a></div></footer>
+  </div>
+</body>
+</html>

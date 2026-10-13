@@ -44250,6 +44250,4146 @@
         "outputCnyPerM": 120.0
       },
       "note": "峰谷系数0.8；思考Token按输出同价计入输出负载；最大上下文128K"
+    },
+    {
+      "slug": "cursor-x-free--auto",
+      "planSlug": "cursor-x-free",
+      "modelSlug": "auto",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "免费入门 Agent；具体底层型号及 Token 额度未公开，不继承付费完整模型名单。"
+    },
+    {
+      "slug": "cursor-x-plus--auto",
+      "planSlug": "cursor-x-plus",
+      "modelSlug": "auto",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "此档只支持 Grok 模型，具体型号和高速权限待账户确认；不表示支持第三方模型。基础池每周刷新，固定 Token 总量未知。"
+    },
+    {
+      "slug": "cursor-x-premium--grok-4-7--ctx-up-to-256k",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": "≤256K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。按输入长度计费：≤256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-premium--grok-4-7--ctx-up-to-256k--fast",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": "≤256K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。按输入长度计费：≤256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-premium--grok-4-7--ctx-over-256k",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": ">256K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。按输入长度计费：>256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-premium--grok-4-7--ctx-over-256k--fast",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": ">256K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 6.0,
+        "cachePerM": 1.5,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 40.8,
+        "cacheCnyPerM": 10.2,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $6、缓存读取 $1.5、输出 $18。缓存写入未单独报价。按输入长度计费：>256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-premium--grok-4-6",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "grok-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。官方默认/最大上下文：256K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-premium--grok-4-6--fast",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "grok-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。官方默认/最大上下文：256K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-premium--grok-4-5",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "grok-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。官方默认/最大上下文：256K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-premium--grok-4-5--fast",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "grok-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $18。缓存写入未单独报价。官方默认/最大上下文：256K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-premium--claude-fable-5-1",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "claude-fable-5-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 10.0,
+        "cachePerM": 0.25,
+        "outputPerM": 50.0,
+        "inputCnyPerM": 68.0,
+        "cacheCnyPerM": 1.7,
+        "outputCnyPerM": 340.0
+      },
+      "note": "每百万 Token 输入 $10、缓存读取 $0.25、输出 $50。缓存写入 $12.5/M Token，另计。官方默认/最大上下文：300K / 1M。开启隐私模式时须先同意该模型的数据保留政策；部分请求可能自动回退 Claude Opus。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--claude-haiku-5-5--ctx-up-to-100k",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "claude-haiku-5-5",
+      "timeTier": null,
+      "contextTier": "≤100K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.01,
+        "outputPerM": 0.5,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.068,
+        "outputCnyPerM": 3.4
+      },
+      "note": "每百万 Token 输入 $0.1、缓存读取 $0.01、输出 $0.5。缓存写入 $0.125/M Token，另计。按输入长度计费：≤100K；不能将阈值视为最大上下文。官方默认/最大上下文：300K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--claude-haiku-5-5--ctx-over-100k",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "claude-haiku-5-5",
+      "timeTier": null,
+      "contextTier": ">100K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.5,
+        "cachePerM": 0.05,
+        "outputPerM": 2.5,
+        "inputCnyPerM": 3.4,
+        "cacheCnyPerM": 0.34,
+        "outputCnyPerM": 17.0
+      },
+      "note": "每百万 Token 输入 $0.5、缓存读取 $0.05、输出 $2.5。缓存写入 $0.625/M Token，另计。按输入长度计费：>100K；不能将阈值视为最大上下文。官方默认/最大上下文：300K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--claude-opus-5-5",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "claude-opus-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.2,
+        "outputPerM": 20.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 136.0
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.2、输出 $20。缓存写入 $5/M Token，另计。官方默认/最大上下文：300K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--claude-opus-5-5--fast",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "claude-opus-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.4,
+        "outputPerM": 40.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 272.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.4、输出 $40。缓存写入 $10/M Token，另计。官方默认/最大上下文：300K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--claude-sonnet-5-5",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "claude-sonnet-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.1,
+        "outputPerM": 10.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 0.68,
+        "outputCnyPerM": 68.0
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.1、输出 $10。缓存写入 $2.5/M Token，另计。官方默认/最大上下文：200K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--gemini-3-1-pro",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "gemini-3-1-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.2,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.2、输出 $12。缓存写入未单独报价。官方默认/最大上下文：200K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--gemini-3-8-flash",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "gemini-3-8-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.75,
+        "cachePerM": 0.075,
+        "outputPerM": 3.5,
+        "inputCnyPerM": 5.1,
+        "cacheCnyPerM": 0.51,
+        "outputCnyPerM": 23.8
+      },
+      "note": "每百万 Token 输入 $0.75、缓存读取 $0.075、输出 $3.5。缓存写入未单独报价。官方默认/最大上下文：200K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--gpt-5-6-sol--ctx-up-to-272k",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 20.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 136.0
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $20。缓存写入 $5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--gpt-5-6-sol--ctx-up-to-272k--fast",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 40.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 272.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $40。缓存写入 $10/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--gpt-5-6-sol--ctx-over-272k",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 30.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 204.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $30。缓存写入 $10/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--gpt-5-6-sol--ctx-over-272k--fast",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 16.0,
+        "cachePerM": 1.6,
+        "outputPerM": 60.0,
+        "inputCnyPerM": 108.8,
+        "cacheCnyPerM": 10.88,
+        "outputCnyPerM": 408.0
+      },
+      "note": "每百万 Token 输入 $16、缓存读取 $1.6、输出 $60。缓存写入 $20/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--gpt-5-6-terra--ctx-up-to-272k",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.2,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.2、输出 $12。缓存写入 $2.5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--gpt-5-6-terra--ctx-up-to-272k--fast",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 24.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 163.2
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $24。缓存写入 $5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--gpt-5-6-terra--ctx-over-272k",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $18。缓存写入 $5/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--gpt-5-6-terra--ctx-over-272k--fast",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 36.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 244.8
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $36。缓存写入 $10/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--gpt-5-6-luna--ctx-up-to-272k",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.2,
+        "cachePerM": 0.02,
+        "outputPerM": 1.2,
+        "inputCnyPerM": 1.36,
+        "cacheCnyPerM": 0.136,
+        "outputCnyPerM": 8.16
+      },
+      "note": "每百万 Token 输入 $0.2、缓存读取 $0.02、输出 $1.2。缓存写入 $0.25/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--gpt-5-6-luna--ctx-up-to-272k--fast",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.4,
+        "cachePerM": 0.04,
+        "outputPerM": 2.4,
+        "inputCnyPerM": 2.72,
+        "cacheCnyPerM": 0.272,
+        "outputCnyPerM": 16.32
+      },
+      "note": "每百万 Token 输入 $0.4、缓存读取 $0.04、输出 $2.4。缓存写入 $0.5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--gpt-5-6-luna--ctx-over-272k",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.4,
+        "cachePerM": 0.04,
+        "outputPerM": 1.8,
+        "inputCnyPerM": 2.72,
+        "cacheCnyPerM": 0.272,
+        "outputCnyPerM": 12.24
+      },
+      "note": "每百万 Token 输入 $0.4、缓存读取 $0.04、输出 $1.8。缓存写入 $0.5/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--gpt-5-6-luna--ctx-over-272k--fast",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.8,
+        "cachePerM": 0.08,
+        "outputPerM": 3.6,
+        "inputCnyPerM": 5.44,
+        "cacheCnyPerM": 0.544,
+        "outputCnyPerM": 24.48
+      },
+      "note": "每百万 Token 输入 $0.8、缓存读取 $0.08、输出 $3.6。缓存写入 $1/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-premium--muse-spark-1-3",
+      "planSlug": "cursor-x-premium",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.25,
+        "cachePerM": 0.15,
+        "outputPerM": 4.25,
+        "inputCnyPerM": 8.5,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 28.9
+      },
+      "note": "每百万 Token 输入 $1.25、缓存读取 $0.15、输出 $4.25。缓存写入未单独报价。官方默认/最大上下文：300K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--grok-4-7--ctx-up-to-256k",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": "≤256K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。按输入长度计费：≤256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-super--grok-4-7--ctx-up-to-256k--fast",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": "≤256K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。按输入长度计费：≤256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-super--grok-4-7--ctx-over-256k",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": ">256K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。按输入长度计费：>256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-super--grok-4-7--ctx-over-256k--fast",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": ">256K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 6.0,
+        "cachePerM": 1.5,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 40.8,
+        "cacheCnyPerM": 10.2,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $6、缓存读取 $1.5、输出 $18。缓存写入未单独报价。按输入长度计费：>256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-super--grok-4-6",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "grok-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。官方默认/最大上下文：256K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-super--grok-4-6--fast",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "grok-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。官方默认/最大上下文：256K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-super--grok-4-5",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "grok-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。官方默认/最大上下文：256K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-super--grok-4-5--fast",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "grok-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $18。缓存写入未单独报价。官方默认/最大上下文：256K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-super--claude-fable-5-1",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "claude-fable-5-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 10.0,
+        "cachePerM": 0.25,
+        "outputPerM": 50.0,
+        "inputCnyPerM": 68.0,
+        "cacheCnyPerM": 1.7,
+        "outputCnyPerM": 340.0
+      },
+      "note": "每百万 Token 输入 $10、缓存读取 $0.25、输出 $50。缓存写入 $12.5/M Token，另计。官方默认/最大上下文：300K / 1M。开启隐私模式时须先同意该模型的数据保留政策；部分请求可能自动回退 Claude Opus。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--claude-haiku-5-5--ctx-up-to-100k",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "claude-haiku-5-5",
+      "timeTier": null,
+      "contextTier": "≤100K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.01,
+        "outputPerM": 0.5,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.068,
+        "outputCnyPerM": 3.4
+      },
+      "note": "每百万 Token 输入 $0.1、缓存读取 $0.01、输出 $0.5。缓存写入 $0.125/M Token，另计。按输入长度计费：≤100K；不能将阈值视为最大上下文。官方默认/最大上下文：300K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--claude-haiku-5-5--ctx-over-100k",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "claude-haiku-5-5",
+      "timeTier": null,
+      "contextTier": ">100K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.5,
+        "cachePerM": 0.05,
+        "outputPerM": 2.5,
+        "inputCnyPerM": 3.4,
+        "cacheCnyPerM": 0.34,
+        "outputCnyPerM": 17.0
+      },
+      "note": "每百万 Token 输入 $0.5、缓存读取 $0.05、输出 $2.5。缓存写入 $0.625/M Token，另计。按输入长度计费：>100K；不能将阈值视为最大上下文。官方默认/最大上下文：300K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--claude-opus-5-5",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "claude-opus-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.2,
+        "outputPerM": 20.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 136.0
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.2、输出 $20。缓存写入 $5/M Token，另计。官方默认/最大上下文：300K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--claude-opus-5-5--fast",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "claude-opus-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.4,
+        "outputPerM": 40.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 272.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.4、输出 $40。缓存写入 $10/M Token，另计。官方默认/最大上下文：300K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--claude-sonnet-5-5",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "claude-sonnet-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.1,
+        "outputPerM": 10.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 0.68,
+        "outputCnyPerM": 68.0
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.1、输出 $10。缓存写入 $2.5/M Token，另计。官方默认/最大上下文：200K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--gemini-3-1-pro",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "gemini-3-1-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.2,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.2、输出 $12。缓存写入未单独报价。官方默认/最大上下文：200K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--gemini-3-8-flash",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "gemini-3-8-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.75,
+        "cachePerM": 0.075,
+        "outputPerM": 3.5,
+        "inputCnyPerM": 5.1,
+        "cacheCnyPerM": 0.51,
+        "outputCnyPerM": 23.8
+      },
+      "note": "每百万 Token 输入 $0.75、缓存读取 $0.075、输出 $3.5。缓存写入未单独报价。官方默认/最大上下文：200K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--gpt-5-6-sol--ctx-up-to-272k",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 20.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 136.0
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $20。缓存写入 $5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--gpt-5-6-sol--ctx-up-to-272k--fast",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 40.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 272.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $40。缓存写入 $10/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--gpt-5-6-sol--ctx-over-272k",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 30.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 204.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $30。缓存写入 $10/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--gpt-5-6-sol--ctx-over-272k--fast",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 16.0,
+        "cachePerM": 1.6,
+        "outputPerM": 60.0,
+        "inputCnyPerM": 108.8,
+        "cacheCnyPerM": 10.88,
+        "outputCnyPerM": 408.0
+      },
+      "note": "每百万 Token 输入 $16、缓存读取 $1.6、输出 $60。缓存写入 $20/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--gpt-5-6-terra--ctx-up-to-272k",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.2,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.2、输出 $12。缓存写入 $2.5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--gpt-5-6-terra--ctx-up-to-272k--fast",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 24.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 163.2
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $24。缓存写入 $5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--gpt-5-6-terra--ctx-over-272k",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $18。缓存写入 $5/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--gpt-5-6-terra--ctx-over-272k--fast",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 36.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 244.8
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $36。缓存写入 $10/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--gpt-5-6-luna--ctx-up-to-272k",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.2,
+        "cachePerM": 0.02,
+        "outputPerM": 1.2,
+        "inputCnyPerM": 1.36,
+        "cacheCnyPerM": 0.136,
+        "outputCnyPerM": 8.16
+      },
+      "note": "每百万 Token 输入 $0.2、缓存读取 $0.02、输出 $1.2。缓存写入 $0.25/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--gpt-5-6-luna--ctx-up-to-272k--fast",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.4,
+        "cachePerM": 0.04,
+        "outputPerM": 2.4,
+        "inputCnyPerM": 2.72,
+        "cacheCnyPerM": 0.272,
+        "outputCnyPerM": 16.32
+      },
+      "note": "每百万 Token 输入 $0.4、缓存读取 $0.04、输出 $2.4。缓存写入 $0.5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--gpt-5-6-luna--ctx-over-272k",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.4,
+        "cachePerM": 0.04,
+        "outputPerM": 1.8,
+        "inputCnyPerM": 2.72,
+        "cacheCnyPerM": 0.272,
+        "outputCnyPerM": 12.24
+      },
+      "note": "每百万 Token 输入 $0.4、缓存读取 $0.04、输出 $1.8。缓存写入 $0.5/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--gpt-5-6-luna--ctx-over-272k--fast",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.8,
+        "cachePerM": 0.08,
+        "outputPerM": 3.6,
+        "inputCnyPerM": 5.44,
+        "cacheCnyPerM": 0.544,
+        "outputCnyPerM": 24.48
+      },
+      "note": "每百万 Token 输入 $0.8、缓存读取 $0.08、输出 $3.6。缓存写入 $1/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-super--muse-spark-1-3",
+      "planSlug": "cursor-x-super",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.25,
+        "cachePerM": 0.15,
+        "outputPerM": 4.25,
+        "inputCnyPerM": 8.5,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 28.9
+      },
+      "note": "每百万 Token 输入 $1.25、缓存读取 $0.15、输出 $4.25。缓存写入未单独报价。官方默认/最大上下文：300K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--grok-4-7--ctx-up-to-256k",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": "≤256K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。按输入长度计费：≤256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-ultra--grok-4-7--ctx-up-to-256k--fast",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": "≤256K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。按输入长度计费：≤256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-ultra--grok-4-7--ctx-over-256k",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": ">256K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。按输入长度计费：>256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-ultra--grok-4-7--ctx-over-256k--fast",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": ">256K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 6.0,
+        "cachePerM": 1.5,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 40.8,
+        "cacheCnyPerM": 10.2,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $6、缓存读取 $1.5、输出 $18。缓存写入未单独报价。按输入长度计费：>256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-ultra--grok-4-6",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "grok-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。官方默认/最大上下文：256K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-ultra--grok-4-6--fast",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "grok-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。官方默认/最大上下文：256K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-ultra--grok-4-5",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "grok-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。官方默认/最大上下文：256K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-ultra--grok-4-5--fast",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "grok-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $18。缓存写入未单独报价。官方默认/最大上下文：256K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
+    },
+    {
+      "slug": "cursor-x-ultra--claude-fable-5-1",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "claude-fable-5-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 10.0,
+        "cachePerM": 0.25,
+        "outputPerM": 50.0,
+        "inputCnyPerM": 68.0,
+        "cacheCnyPerM": 1.7,
+        "outputCnyPerM": 340.0
+      },
+      "note": "每百万 Token 输入 $10、缓存读取 $0.25、输出 $50。缓存写入 $12.5/M Token，另计。官方默认/最大上下文：300K / 1M。开启隐私模式时须先同意该模型的数据保留政策；部分请求可能自动回退 Claude Opus。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--claude-haiku-5-5--ctx-up-to-100k",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "claude-haiku-5-5",
+      "timeTier": null,
+      "contextTier": "≤100K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.01,
+        "outputPerM": 0.5,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.068,
+        "outputCnyPerM": 3.4
+      },
+      "note": "每百万 Token 输入 $0.1、缓存读取 $0.01、输出 $0.5。缓存写入 $0.125/M Token，另计。按输入长度计费：≤100K；不能将阈值视为最大上下文。官方默认/最大上下文：300K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--claude-haiku-5-5--ctx-over-100k",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "claude-haiku-5-5",
+      "timeTier": null,
+      "contextTier": ">100K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.5,
+        "cachePerM": 0.05,
+        "outputPerM": 2.5,
+        "inputCnyPerM": 3.4,
+        "cacheCnyPerM": 0.34,
+        "outputCnyPerM": 17.0
+      },
+      "note": "每百万 Token 输入 $0.5、缓存读取 $0.05、输出 $2.5。缓存写入 $0.625/M Token，另计。按输入长度计费：>100K；不能将阈值视为最大上下文。官方默认/最大上下文：300K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--claude-opus-5-5",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "claude-opus-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.2,
+        "outputPerM": 20.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 136.0
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.2、输出 $20。缓存写入 $5/M Token，另计。官方默认/最大上下文：300K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--claude-opus-5-5--fast",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "claude-opus-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.4,
+        "outputPerM": 40.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 272.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.4、输出 $40。缓存写入 $10/M Token，另计。官方默认/最大上下文：300K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--claude-sonnet-5-5",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "claude-sonnet-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.1,
+        "outputPerM": 10.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 0.68,
+        "outputCnyPerM": 68.0
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.1、输出 $10。缓存写入 $2.5/M Token，另计。官方默认/最大上下文：200K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--gemini-3-1-pro",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "gemini-3-1-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.2,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.2、输出 $12。缓存写入未单独报价。官方默认/最大上下文：200K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--gemini-3-8-flash",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "gemini-3-8-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.75,
+        "cachePerM": 0.075,
+        "outputPerM": 3.5,
+        "inputCnyPerM": 5.1,
+        "cacheCnyPerM": 0.51,
+        "outputCnyPerM": 23.8
+      },
+      "note": "每百万 Token 输入 $0.75、缓存读取 $0.075、输出 $3.5。缓存写入未单独报价。官方默认/最大上下文：200K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--gpt-5-6-sol--ctx-up-to-272k",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 20.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 136.0
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $20。缓存写入 $5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--gpt-5-6-sol--ctx-up-to-272k--fast",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 40.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 272.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $40。缓存写入 $10/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--gpt-5-6-sol--ctx-over-272k",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 30.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 204.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $30。缓存写入 $10/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--gpt-5-6-sol--ctx-over-272k--fast",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 16.0,
+        "cachePerM": 1.6,
+        "outputPerM": 60.0,
+        "inputCnyPerM": 108.8,
+        "cacheCnyPerM": 10.88,
+        "outputCnyPerM": 408.0
+      },
+      "note": "每百万 Token 输入 $16、缓存读取 $1.6、输出 $60。缓存写入 $20/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--gpt-5-6-terra--ctx-up-to-272k",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.2,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.2、输出 $12。缓存写入 $2.5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--gpt-5-6-terra--ctx-up-to-272k--fast",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 24.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 163.2
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $24。缓存写入 $5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--gpt-5-6-terra--ctx-over-272k",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $18。缓存写入 $5/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--gpt-5-6-terra--ctx-over-272k--fast",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 36.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 244.8
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $36。缓存写入 $10/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--gpt-5-6-luna--ctx-up-to-272k",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.2,
+        "cachePerM": 0.02,
+        "outputPerM": 1.2,
+        "inputCnyPerM": 1.36,
+        "cacheCnyPerM": 0.136,
+        "outputCnyPerM": 8.16
+      },
+      "note": "每百万 Token 输入 $0.2、缓存读取 $0.02、输出 $1.2。缓存写入 $0.25/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--gpt-5-6-luna--ctx-up-to-272k--fast",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.4,
+        "cachePerM": 0.04,
+        "outputPerM": 2.4,
+        "inputCnyPerM": 2.72,
+        "cacheCnyPerM": 0.272,
+        "outputCnyPerM": 16.32
+      },
+      "note": "每百万 Token 输入 $0.4、缓存读取 $0.04、输出 $2.4。缓存写入 $0.5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--gpt-5-6-luna--ctx-over-272k",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.4,
+        "cachePerM": 0.04,
+        "outputPerM": 1.8,
+        "inputCnyPerM": 2.72,
+        "cacheCnyPerM": 0.272,
+        "outputCnyPerM": 12.24
+      },
+      "note": "每百万 Token 输入 $0.4、缓存读取 $0.04、输出 $1.8。缓存写入 $0.5/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--gpt-5-6-luna--ctx-over-272k--fast",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.8,
+        "cachePerM": 0.08,
+        "outputPerM": 3.6,
+        "inputCnyPerM": 5.44,
+        "cacheCnyPerM": 0.544,
+        "outputCnyPerM": 24.48
+      },
+      "note": "每百万 Token 输入 $0.8、缓存读取 $0.08、输出 $3.6。缓存写入 $1/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-x-ultra--muse-spark-1-3",
+      "planSlug": "cursor-x-ultra",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.25,
+        "cachePerM": 0.15,
+        "outputPerM": 4.25,
+        "inputCnyPerM": 8.5,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 28.9
+      },
+      "note": "每百万 Token 输入 $1.25、缓存读取 $0.15、输出 $4.25。缓存写入未单独报价。官方默认/最大上下文：300K / 1M。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+    },
+    {
+      "slug": "cursor-pro-legacy--grok-4-7--ctx-up-to-256k",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": "≤256K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。按输入长度计费：≤256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--grok-4-7--ctx-up-to-256k--fast",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": "≤256K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。按输入长度计费：≤256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--grok-4-7--ctx-over-256k",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": ">256K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。按输入长度计费：>256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--grok-4-7--ctx-over-256k--fast",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": ">256K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 6.0,
+        "cachePerM": 1.5,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 40.8,
+        "cacheCnyPerM": 10.2,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $6、缓存读取 $1.5、输出 $18。缓存写入未单独报价。按输入长度计费：>256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--grok-4-6",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "grok-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。官方默认/最大上下文：256K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--grok-4-6--fast",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "grok-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。官方默认/最大上下文：256K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--grok-4-5",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "grok-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。官方默认/最大上下文：256K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--grok-4-5--fast",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "grok-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $18。缓存写入未单独报价。官方默认/最大上下文：256K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--composer-2-5",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "composer-2-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.5,
+        "cachePerM": 0.2,
+        "outputPerM": 2.5,
+        "inputCnyPerM": 3.4,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 17.0
+      },
+      "note": "每百万 Token 输入 $0.5、缓存读取 $0.2、输出 $2.5。缓存写入未单独报价。官方默认/最大上下文：200K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--composer-2-5--fast",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "composer-2-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 3.0,
+        "cachePerM": 0.5,
+        "outputPerM": 15.0,
+        "inputCnyPerM": 20.4,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 102.0
+      },
+      "note": "每百万 Token 输入 $3、缓存读取 $0.5、输出 $15。缓存写入未单独报价。官方默认/最大上下文：200K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--claude-fable-5-1",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "claude-fable-5-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 10.0,
+        "cachePerM": 0.25,
+        "outputPerM": 50.0,
+        "inputCnyPerM": 68.0,
+        "cacheCnyPerM": 1.7,
+        "outputCnyPerM": 340.0
+      },
+      "note": "每百万 Token 输入 $10、缓存读取 $0.25、输出 $50。缓存写入 $12.5/M Token，另计。官方默认/最大上下文：300K / 1M。开启隐私模式时须先同意该模型的数据保留政策；部分请求可能自动回退 Claude Opus。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--claude-haiku-5-5--ctx-up-to-100k",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "claude-haiku-5-5",
+      "timeTier": null,
+      "contextTier": "≤100K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.01,
+        "outputPerM": 0.5,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.068,
+        "outputCnyPerM": 3.4
+      },
+      "note": "每百万 Token 输入 $0.1、缓存读取 $0.01、输出 $0.5。缓存写入 $0.125/M Token，另计。按输入长度计费：≤100K；不能将阈值视为最大上下文。官方默认/最大上下文：300K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--claude-haiku-5-5--ctx-over-100k",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "claude-haiku-5-5",
+      "timeTier": null,
+      "contextTier": ">100K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.5,
+        "cachePerM": 0.05,
+        "outputPerM": 2.5,
+        "inputCnyPerM": 3.4,
+        "cacheCnyPerM": 0.34,
+        "outputCnyPerM": 17.0
+      },
+      "note": "每百万 Token 输入 $0.5、缓存读取 $0.05、输出 $2.5。缓存写入 $0.625/M Token，另计。按输入长度计费：>100K；不能将阈值视为最大上下文。官方默认/最大上下文：300K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--claude-opus-5-5",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "claude-opus-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.2,
+        "outputPerM": 20.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 136.0
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.2、输出 $20。缓存写入 $5/M Token，另计。官方默认/最大上下文：300K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--claude-opus-5-5--fast",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "claude-opus-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.4,
+        "outputPerM": 40.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 272.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.4、输出 $40。缓存写入 $10/M Token，另计。官方默认/最大上下文：300K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--claude-sonnet-5-5",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "claude-sonnet-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.1,
+        "outputPerM": 10.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 0.68,
+        "outputCnyPerM": 68.0
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.1、输出 $10。缓存写入 $2.5/M Token，另计。官方默认/最大上下文：200K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--gemini-3-1-pro",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "gemini-3-1-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.2,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.2、输出 $12。缓存写入未单独报价。官方默认/最大上下文：200K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--gemini-3-8-flash",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "gemini-3-8-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.75,
+        "cachePerM": 0.075,
+        "outputPerM": 3.5,
+        "inputCnyPerM": 5.1,
+        "cacheCnyPerM": 0.51,
+        "outputCnyPerM": 23.8
+      },
+      "note": "每百万 Token 输入 $0.75、缓存读取 $0.075、输出 $3.5。缓存写入未单独报价。官方默认/最大上下文：200K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--gpt-5-6-sol--ctx-up-to-272k",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 20.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 136.0
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $20。缓存写入 $5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--gpt-5-6-sol--ctx-up-to-272k--fast",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 40.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 272.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $40。缓存写入 $10/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--gpt-5-6-sol--ctx-over-272k",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 30.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 204.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $30。缓存写入 $10/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--gpt-5-6-sol--ctx-over-272k--fast",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 16.0,
+        "cachePerM": 1.6,
+        "outputPerM": 60.0,
+        "inputCnyPerM": 108.8,
+        "cacheCnyPerM": 10.88,
+        "outputCnyPerM": 408.0
+      },
+      "note": "每百万 Token 输入 $16、缓存读取 $1.6、输出 $60。缓存写入 $20/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--gpt-5-6-terra--ctx-up-to-272k",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.2,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.2、输出 $12。缓存写入 $2.5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--gpt-5-6-terra--ctx-up-to-272k--fast",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 24.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 163.2
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $24。缓存写入 $5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--gpt-5-6-terra--ctx-over-272k",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $18。缓存写入 $5/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--gpt-5-6-terra--ctx-over-272k--fast",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 36.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 244.8
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $36。缓存写入 $10/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--gpt-5-6-luna--ctx-up-to-272k",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.2,
+        "cachePerM": 0.02,
+        "outputPerM": 1.2,
+        "inputCnyPerM": 1.36,
+        "cacheCnyPerM": 0.136,
+        "outputCnyPerM": 8.16
+      },
+      "note": "每百万 Token 输入 $0.2、缓存读取 $0.02、输出 $1.2。缓存写入 $0.25/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--gpt-5-6-luna--ctx-up-to-272k--fast",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.4,
+        "cachePerM": 0.04,
+        "outputPerM": 2.4,
+        "inputCnyPerM": 2.72,
+        "cacheCnyPerM": 0.272,
+        "outputCnyPerM": 16.32
+      },
+      "note": "每百万 Token 输入 $0.4、缓存读取 $0.04、输出 $2.4。缓存写入 $0.5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--gpt-5-6-luna--ctx-over-272k",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.4,
+        "cachePerM": 0.04,
+        "outputPerM": 1.8,
+        "inputCnyPerM": 2.72,
+        "cacheCnyPerM": 0.272,
+        "outputCnyPerM": 12.24
+      },
+      "note": "每百万 Token 输入 $0.4、缓存读取 $0.04、输出 $1.8。缓存写入 $0.5/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--gpt-5-6-luna--ctx-over-272k--fast",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.8,
+        "cachePerM": 0.08,
+        "outputPerM": 3.6,
+        "inputCnyPerM": 5.44,
+        "cacheCnyPerM": 0.544,
+        "outputCnyPerM": 24.48
+      },
+      "note": "每百万 Token 输入 $0.8、缓存读取 $0.08、输出 $3.6。缓存写入 $1/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--muse-spark-1-3",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.25,
+        "cachePerM": 0.15,
+        "outputPerM": 4.25,
+        "inputCnyPerM": 8.5,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 28.9
+      },
+      "note": "每百万 Token 输入 $1.25、缓存读取 $0.15、输出 $4.25。缓存写入未单独报价。官方默认/最大上下文：300K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-legacy--auto",
+      "planSlug": "cursor-pro-legacy",
+      "modelSlug": "auto",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "旧订阅的自动路由按实际模型计费，可能同时消耗两个独立月池；不假定固定模型或免费无限 Auto。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--grok-4-7--ctx-up-to-256k",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": "≤256K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。按输入长度计费：≤256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--grok-4-7--ctx-up-to-256k--fast",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": "≤256K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。按输入长度计费：≤256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--grok-4-7--ctx-over-256k",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": ">256K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。按输入长度计费：>256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--grok-4-7--ctx-over-256k--fast",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": ">256K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 6.0,
+        "cachePerM": 1.5,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 40.8,
+        "cacheCnyPerM": 10.2,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $6、缓存读取 $1.5、输出 $18。缓存写入未单独报价。按输入长度计费：>256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--grok-4-6",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "grok-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。官方默认/最大上下文：256K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--grok-4-6--fast",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "grok-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。官方默认/最大上下文：256K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--grok-4-5",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "grok-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。官方默认/最大上下文：256K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--grok-4-5--fast",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "grok-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $18。缓存写入未单独报价。官方默认/最大上下文：256K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--composer-2-5",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "composer-2-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.5,
+        "cachePerM": 0.2,
+        "outputPerM": 2.5,
+        "inputCnyPerM": 3.4,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 17.0
+      },
+      "note": "每百万 Token 输入 $0.5、缓存读取 $0.2、输出 $2.5。缓存写入未单独报价。官方默认/最大上下文：200K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--composer-2-5--fast",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "composer-2-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 3.0,
+        "cachePerM": 0.5,
+        "outputPerM": 15.0,
+        "inputCnyPerM": 20.4,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 102.0
+      },
+      "note": "每百万 Token 输入 $3、缓存读取 $0.5、输出 $15。缓存写入未单独报价。官方默认/最大上下文：200K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--claude-fable-5-1",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "claude-fable-5-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 10.0,
+        "cachePerM": 0.25,
+        "outputPerM": 50.0,
+        "inputCnyPerM": 68.0,
+        "cacheCnyPerM": 1.7,
+        "outputCnyPerM": 340.0
+      },
+      "note": "每百万 Token 输入 $10、缓存读取 $0.25、输出 $50。缓存写入 $12.5/M Token，另计。官方默认/最大上下文：300K / 1M。开启隐私模式时须先同意该模型的数据保留政策；部分请求可能自动回退 Claude Opus。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--claude-haiku-5-5--ctx-up-to-100k",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "claude-haiku-5-5",
+      "timeTier": null,
+      "contextTier": "≤100K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.01,
+        "outputPerM": 0.5,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.068,
+        "outputCnyPerM": 3.4
+      },
+      "note": "每百万 Token 输入 $0.1、缓存读取 $0.01、输出 $0.5。缓存写入 $0.125/M Token，另计。按输入长度计费：≤100K；不能将阈值视为最大上下文。官方默认/最大上下文：300K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--claude-haiku-5-5--ctx-over-100k",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "claude-haiku-5-5",
+      "timeTier": null,
+      "contextTier": ">100K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.5,
+        "cachePerM": 0.05,
+        "outputPerM": 2.5,
+        "inputCnyPerM": 3.4,
+        "cacheCnyPerM": 0.34,
+        "outputCnyPerM": 17.0
+      },
+      "note": "每百万 Token 输入 $0.5、缓存读取 $0.05、输出 $2.5。缓存写入 $0.625/M Token，另计。按输入长度计费：>100K；不能将阈值视为最大上下文。官方默认/最大上下文：300K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--claude-opus-5-5",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "claude-opus-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.2,
+        "outputPerM": 20.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 136.0
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.2、输出 $20。缓存写入 $5/M Token，另计。官方默认/最大上下文：300K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--claude-opus-5-5--fast",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "claude-opus-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.4,
+        "outputPerM": 40.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 272.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.4、输出 $40。缓存写入 $10/M Token，另计。官方默认/最大上下文：300K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--claude-sonnet-5-5",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "claude-sonnet-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.1,
+        "outputPerM": 10.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 0.68,
+        "outputCnyPerM": 68.0
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.1、输出 $10。缓存写入 $2.5/M Token，另计。官方默认/最大上下文：200K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--gemini-3-1-pro",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "gemini-3-1-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.2,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.2、输出 $12。缓存写入未单独报价。官方默认/最大上下文：200K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--gemini-3-8-flash",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "gemini-3-8-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.75,
+        "cachePerM": 0.075,
+        "outputPerM": 3.5,
+        "inputCnyPerM": 5.1,
+        "cacheCnyPerM": 0.51,
+        "outputCnyPerM": 23.8
+      },
+      "note": "每百万 Token 输入 $0.75、缓存读取 $0.075、输出 $3.5。缓存写入未单独报价。官方默认/最大上下文：200K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--gpt-5-6-sol--ctx-up-to-272k",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 20.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 136.0
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $20。缓存写入 $5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--gpt-5-6-sol--ctx-up-to-272k--fast",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 40.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 272.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $40。缓存写入 $10/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--gpt-5-6-sol--ctx-over-272k",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 30.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 204.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $30。缓存写入 $10/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--gpt-5-6-sol--ctx-over-272k--fast",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 16.0,
+        "cachePerM": 1.6,
+        "outputPerM": 60.0,
+        "inputCnyPerM": 108.8,
+        "cacheCnyPerM": 10.88,
+        "outputCnyPerM": 408.0
+      },
+      "note": "每百万 Token 输入 $16、缓存读取 $1.6、输出 $60。缓存写入 $20/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--gpt-5-6-terra--ctx-up-to-272k",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.2,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.2、输出 $12。缓存写入 $2.5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--gpt-5-6-terra--ctx-up-to-272k--fast",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 24.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 163.2
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $24。缓存写入 $5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--gpt-5-6-terra--ctx-over-272k",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $18。缓存写入 $5/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--gpt-5-6-terra--ctx-over-272k--fast",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 36.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 244.8
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $36。缓存写入 $10/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--gpt-5-6-luna--ctx-up-to-272k",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.2,
+        "cachePerM": 0.02,
+        "outputPerM": 1.2,
+        "inputCnyPerM": 1.36,
+        "cacheCnyPerM": 0.136,
+        "outputCnyPerM": 8.16
+      },
+      "note": "每百万 Token 输入 $0.2、缓存读取 $0.02、输出 $1.2。缓存写入 $0.25/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--gpt-5-6-luna--ctx-up-to-272k--fast",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.4,
+        "cachePerM": 0.04,
+        "outputPerM": 2.4,
+        "inputCnyPerM": 2.72,
+        "cacheCnyPerM": 0.272,
+        "outputCnyPerM": 16.32
+      },
+      "note": "每百万 Token 输入 $0.4、缓存读取 $0.04、输出 $2.4。缓存写入 $0.5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--gpt-5-6-luna--ctx-over-272k",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.4,
+        "cachePerM": 0.04,
+        "outputPerM": 1.8,
+        "inputCnyPerM": 2.72,
+        "cacheCnyPerM": 0.272,
+        "outputCnyPerM": 12.24
+      },
+      "note": "每百万 Token 输入 $0.4、缓存读取 $0.04、输出 $1.8。缓存写入 $0.5/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--gpt-5-6-luna--ctx-over-272k--fast",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.8,
+        "cachePerM": 0.08,
+        "outputPerM": 3.6,
+        "inputCnyPerM": 5.44,
+        "cacheCnyPerM": 0.544,
+        "outputCnyPerM": 24.48
+      },
+      "note": "每百万 Token 输入 $0.8、缓存读取 $0.08、输出 $3.6。缓存写入 $1/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--muse-spark-1-3",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.25,
+        "cachePerM": 0.15,
+        "outputPerM": 4.25,
+        "inputCnyPerM": 8.5,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 28.9
+      },
+      "note": "每百万 Token 输入 $1.25、缓存读取 $0.15、输出 $4.25。缓存写入未单独报价。官方默认/最大上下文：300K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-pro-plus-legacy--auto",
+      "planSlug": "cursor-pro-plus-legacy",
+      "modelSlug": "auto",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "旧订阅的自动路由按实际模型计费，可能同时消耗两个独立月池；不假定固定模型或免费无限 Auto。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--grok-4-7--ctx-up-to-256k",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": "≤256K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。按输入长度计费：≤256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--grok-4-7--ctx-up-to-256k--fast",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": "≤256K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。按输入长度计费：≤256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--grok-4-7--ctx-over-256k",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": ">256K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。按输入长度计费：>256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--grok-4-7--ctx-over-256k--fast",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": ">256K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 6.0,
+        "cachePerM": 1.5,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 40.8,
+        "cacheCnyPerM": 10.2,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $6、缓存读取 $1.5、输出 $18。缓存写入未单独报价。按输入长度计费：>256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--grok-4-6",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "grok-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。官方默认/最大上下文：256K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--grok-4-6--fast",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "grok-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。官方默认/最大上下文：256K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--grok-4-5",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "grok-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。官方默认/最大上下文：256K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--grok-4-5--fast",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "grok-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $18。缓存写入未单独报价。官方默认/最大上下文：256K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--composer-2-5",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "composer-2-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.5,
+        "cachePerM": 0.2,
+        "outputPerM": 2.5,
+        "inputCnyPerM": 3.4,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 17.0
+      },
+      "note": "每百万 Token 输入 $0.5、缓存读取 $0.2、输出 $2.5。缓存写入未单独报价。官方默认/最大上下文：200K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--composer-2-5--fast",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "composer-2-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 3.0,
+        "cachePerM": 0.5,
+        "outputPerM": 15.0,
+        "inputCnyPerM": 20.4,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 102.0
+      },
+      "note": "每百万 Token 输入 $3、缓存读取 $0.5、输出 $15。缓存写入未单独报价。官方默认/最大上下文：200K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--claude-fable-5-1",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "claude-fable-5-1",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 10.0,
+        "cachePerM": 0.25,
+        "outputPerM": 50.0,
+        "inputCnyPerM": 68.0,
+        "cacheCnyPerM": 1.7,
+        "outputCnyPerM": 340.0
+      },
+      "note": "每百万 Token 输入 $10、缓存读取 $0.25、输出 $50。缓存写入 $12.5/M Token，另计。官方默认/最大上下文：300K / 1M。开启隐私模式时须先同意该模型的数据保留政策；部分请求可能自动回退 Claude Opus。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--claude-haiku-5-5--ctx-up-to-100k",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "claude-haiku-5-5",
+      "timeTier": null,
+      "contextTier": "≤100K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.1,
+        "cachePerM": 0.01,
+        "outputPerM": 0.5,
+        "inputCnyPerM": 0.68,
+        "cacheCnyPerM": 0.068,
+        "outputCnyPerM": 3.4
+      },
+      "note": "每百万 Token 输入 $0.1、缓存读取 $0.01、输出 $0.5。缓存写入 $0.125/M Token，另计。按输入长度计费：≤100K；不能将阈值视为最大上下文。官方默认/最大上下文：300K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--claude-haiku-5-5--ctx-over-100k",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "claude-haiku-5-5",
+      "timeTier": null,
+      "contextTier": ">100K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.5,
+        "cachePerM": 0.05,
+        "outputPerM": 2.5,
+        "inputCnyPerM": 3.4,
+        "cacheCnyPerM": 0.34,
+        "outputCnyPerM": 17.0
+      },
+      "note": "每百万 Token 输入 $0.5、缓存读取 $0.05、输出 $2.5。缓存写入 $0.625/M Token，另计。按输入长度计费：>100K；不能将阈值视为最大上下文。官方默认/最大上下文：300K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--claude-opus-5-5",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "claude-opus-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.2,
+        "outputPerM": 20.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 136.0
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.2、输出 $20。缓存写入 $5/M Token，另计。官方默认/最大上下文：300K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--claude-opus-5-5--fast",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "claude-opus-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.4,
+        "outputPerM": 40.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 272.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.4、输出 $40。缓存写入 $10/M Token，另计。官方默认/最大上下文：300K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--claude-sonnet-5-5",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "claude-sonnet-5-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.1,
+        "outputPerM": 10.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 0.68,
+        "outputCnyPerM": 68.0
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.1、输出 $10。缓存写入 $2.5/M Token，另计。官方默认/最大上下文：200K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--gemini-3-1-pro",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "gemini-3-1-pro",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.2,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.2、输出 $12。缓存写入未单独报价。官方默认/最大上下文：200K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--gemini-3-8-flash",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "gemini-3-8-flash",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.75,
+        "cachePerM": 0.075,
+        "outputPerM": 3.5,
+        "inputCnyPerM": 5.1,
+        "cacheCnyPerM": 0.51,
+        "outputCnyPerM": 23.8
+      },
+      "note": "每百万 Token 输入 $0.75、缓存读取 $0.075、输出 $3.5。缓存写入未单独报价。官方默认/最大上下文：200K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--gpt-5-6-sol--ctx-up-to-272k",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 20.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 136.0
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $20。缓存写入 $5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--gpt-5-6-sol--ctx-up-to-272k--fast",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 40.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 272.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $40。缓存写入 $10/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--gpt-5-6-sol--ctx-over-272k",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 30.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 204.0
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $30。缓存写入 $10/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--gpt-5-6-sol--ctx-over-272k--fast",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "gpt-5-6-sol",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 16.0,
+        "cachePerM": 1.6,
+        "outputPerM": 60.0,
+        "inputCnyPerM": 108.8,
+        "cacheCnyPerM": 10.88,
+        "outputCnyPerM": 408.0
+      },
+      "note": "每百万 Token 输入 $16、缓存读取 $1.6、输出 $60。缓存写入 $20/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--gpt-5-6-terra--ctx-up-to-272k",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.2,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.2、输出 $12。缓存写入 $2.5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--gpt-5-6-terra--ctx-up-to-272k--fast",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 24.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 163.2
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $24。缓存写入 $5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--gpt-5-6-terra--ctx-over-272k",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 0.4,
+        "outputPerM": 18.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 2.72,
+        "outputCnyPerM": 122.4
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $0.4、输出 $18。缓存写入 $5/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--gpt-5-6-terra--ctx-over-272k--fast",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "gpt-5-6-terra",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 8.0,
+        "cachePerM": 0.8,
+        "outputPerM": 36.0,
+        "inputCnyPerM": 54.4,
+        "cacheCnyPerM": 5.44,
+        "outputCnyPerM": 244.8
+      },
+      "note": "每百万 Token 输入 $8、缓存读取 $0.8、输出 $36。缓存写入 $10/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--gpt-5-6-luna--ctx-up-to-272k",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.2,
+        "cachePerM": 0.02,
+        "outputPerM": 1.2,
+        "inputCnyPerM": 1.36,
+        "cacheCnyPerM": 0.136,
+        "outputCnyPerM": 8.16
+      },
+      "note": "每百万 Token 输入 $0.2、缓存读取 $0.02、输出 $1.2。缓存写入 $0.25/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--gpt-5-6-luna--ctx-up-to-272k--fast",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": "≤272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.4,
+        "cachePerM": 0.04,
+        "outputPerM": 2.4,
+        "inputCnyPerM": 2.72,
+        "cacheCnyPerM": 0.272,
+        "outputCnyPerM": 16.32
+      },
+      "note": "每百万 Token 输入 $0.4、缓存读取 $0.04、输出 $2.4。缓存写入 $0.5/M Token，另计。按输入长度计费：≤272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--gpt-5-6-luna--ctx-over-272k",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.4,
+        "cachePerM": 0.04,
+        "outputPerM": 1.8,
+        "inputCnyPerM": 2.72,
+        "cacheCnyPerM": 0.272,
+        "outputCnyPerM": 12.24
+      },
+      "note": "每百万 Token 输入 $0.4、缓存读取 $0.04、输出 $1.8。缓存写入 $0.5/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--gpt-5-6-luna--ctx-over-272k--fast",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "gpt-5-6-luna",
+      "timeTier": null,
+      "contextTier": ">272K",
+      "serviceTier": "高速",
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.8,
+        "cachePerM": 0.08,
+        "outputPerM": 3.6,
+        "inputCnyPerM": 5.44,
+        "cacheCnyPerM": 0.544,
+        "outputCnyPerM": 24.48
+      },
+      "note": "每百万 Token 输入 $0.8、缓存读取 $0.08、输出 $3.6。缓存写入 $1/M Token，另计。按输入长度计费：>272K；不能将阈值视为最大上下文。官方默认/最大上下文：272K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--muse-spark-1-3",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "muse-spark-1-3",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 1.25,
+        "cachePerM": 0.15,
+        "outputPerM": 4.25,
+        "inputCnyPerM": 8.5,
+        "cacheCnyPerM": 1.02,
+        "outputCnyPerM": 28.9
+      },
+      "note": "每百万 Token 输入 $1.25、缓存读取 $0.15、输出 $4.25。缓存写入未单独报价。官方默认/最大上下文：300K / 1M。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+    },
+    {
+      "slug": "cursor-ultra-legacy--auto",
+      "planSlug": "cursor-ultra-legacy",
+      "modelSlug": "auto",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": null,
+      "note": "旧订阅的自动路由按实际模型计费，可能同时消耗两个独立月池；不假定固定模型或免费无限 Auto。"
+    },
+    {
+      "slug": "cursor-start-india-legacy--grok-4-7--ctx-up-to-256k",
+      "planSlug": "cursor-start-india-legacy",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": "≤256K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。按输入长度计费：≤256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；印度限定旧 Start，仅标准速度；Grok 固定 medium effort。Cursor Models 池固定额度未知，不含第三方模型、Auto 或按量加购。"
+    },
+    {
+      "slug": "cursor-start-india-legacy--grok-4-7--ctx-over-256k",
+      "planSlug": "cursor-start-india-legacy",
+      "modelSlug": "grok-4-7",
+      "timeTier": null,
+      "contextTier": ">256K",
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 4.0,
+        "cachePerM": 1.0,
+        "outputPerM": 12.0,
+        "inputCnyPerM": 27.2,
+        "cacheCnyPerM": 6.8,
+        "outputCnyPerM": 81.6
+      },
+      "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $12。缓存写入未单独报价。按输入长度计费：>256K；不能将阈值视为最大上下文。官方默认/最大上下文：256K / 500K。；印度限定旧 Start，仅标准速度；Grok 固定 medium effort。Cursor Models 池固定额度未知，不含第三方模型、Auto 或按量加购。"
+    },
+    {
+      "slug": "cursor-start-india-legacy--grok-4-6",
+      "planSlug": "cursor-start-india-legacy",
+      "modelSlug": "grok-4-6",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。官方默认/最大上下文：256K。；印度限定旧 Start，仅标准速度；Grok 固定 medium effort。Cursor Models 池固定额度未知，不含第三方模型、Auto 或按量加购。"
+    },
+    {
+      "slug": "cursor-start-india-legacy--grok-4-5",
+      "planSlug": "cursor-start-india-legacy",
+      "modelSlug": "grok-4-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 2.0,
+        "cachePerM": 0.5,
+        "outputPerM": 6.0,
+        "inputCnyPerM": 13.6,
+        "cacheCnyPerM": 3.4,
+        "outputCnyPerM": 40.8
+      },
+      "note": "每百万 Token 输入 $2、缓存读取 $0.5、输出 $6。缓存写入未单独报价。官方默认/最大上下文：256K。；印度限定旧 Start，仅标准速度；Grok 固定 medium effort。Cursor Models 池固定额度未知，不含第三方模型、Auto 或按量加购。"
+    },
+    {
+      "slug": "cursor-start-india-legacy--composer-2-5",
+      "planSlug": "cursor-start-india-legacy",
+      "modelSlug": "composer-2-5",
+      "timeTier": null,
+      "contextTier": null,
+      "serviceTier": null,
+      "method": "unknown",
+      "usage": {
+        "monthlyTokenInM": "unknown"
+      },
+      "pricing": {
+        "currency": "$",
+        "inputPerM": 0.5,
+        "cachePerM": 0.2,
+        "outputPerM": 2.5,
+        "inputCnyPerM": 3.4,
+        "cacheCnyPerM": 1.36,
+        "outputCnyPerM": 17.0
+      },
+      "note": "每百万 Token 输入 $0.5、缓存读取 $0.2、输出 $2.5。缓存写入未单独报价。官方默认/最大上下文：200K。；印度限定旧 Start，仅标准速度；Grok 固定 medium effort。Cursor Models 池固定额度未知，不含第三方模型、Auto 或按量加购。"
     }
   ]
 }
