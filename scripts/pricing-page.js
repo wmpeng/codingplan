@@ -12,7 +12,8 @@
       const relation = params.get('relation');
       const plan = data.context.planBySlug.get(params.get('plan'));
       const focusRelationSlugs = relation ? [relation] : (data.context.relationsByPlanSlug.get(plan?.slug) || []).map(row => row.slug);
-      await root.ModelComparison.mountModelComparisonView(host, { mode: 'full', hidePresets: true, data, preset, focusRelationSlugs });
+      const filterState = document.getElementById('toolFilters').filterController.getState();
+      await root.ModelComparison.mountModelComparisonView(host, { mode: 'full', hidePresets: true, data, preset, filterState, focusRelationSlugs });
       const legend = host.querySelector('.usage-color-legend');
       const legendDetails = document.createElement('details'); legendDetails.className = 'tool-legend';
       legendDetails.open = !matchMedia('(max-width: 800px)').matches;

@@ -180,10 +180,10 @@
     includeDiscontinued: "包含下架套餐",
   };
   const statusExclusions = { paused: "排除暂时停售", limited: "排除定时放量" };
-  function buildStatusPicker() {
+  function buildStatusPicker(includeHistory = false) {
     return `<details class="filter-picker status-picker" id="homeStatusPicker">
       <summary aria-label="购买状态"><span class="status-picker-title">购买状态</span><span data-status-label>不限</span></summary>
-      <div class="filter-picker-menu" role="group" aria-label="排除购买状态"><div class="filter-picker-tools"><button type="button" data-clear-status aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}</span></label>`).join("")}</div>
+      <div class="filter-picker-menu" role="group" aria-label="${includeHistory ? "购买状态筛选" : "排除购买状态"}"><div class="filter-picker-tools"><button type="button" data-clear-status aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}</span></label>`).join("")}${includeHistory ? '<div class="status-picker-history"><label><input type="checkbox" data-include-delisted><span>包含下架平台</span></label><label><input type="checkbox" data-filter-field="includeDiscontinued"><span>包含下架套餐</span></label></div>' : ""}</div>
     </details>`;
   }
   let presetPromise;
@@ -200,7 +200,8 @@
   }
   function mount(options) {
     const opts = options || {},
-      full = opts.mode === "full";
+      full = opts.mode === "full",
+      pricing = full && opts.view === "pricing";
     const host =
       opts.element || document.getElementById("homepageUnifiedFiltersMount");
     const context = opts.context || root.codingplanEntityContext;
@@ -218,6 +219,10 @@
     state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || "yi";
     state.modelGroup = "any";
     state.modelMatch = "any";
+    if (pricing) {
+      state.platformStatusMax = "paused";
+      state.includeDiscontinued = false;
+    }
     const defaults = Filters.cloneState(state);
     if (opts.featuredPreset) {
       context.modelGroups = opts.featuredPreset.groups || [];
@@ -324,17 +329,17 @@
           ? ""
           : `${buildRangePicker("budget", state)}${buildRangePicker("token", state)}`
       }
-      ${full ? "" : buildStatusPicker()}</div>
-      ${full ? '<div class="guide-filter-fields">' : '<div class="filter-state-footer">'}${Object.entries(choices)
-        .filter(() => !monitor && full)
+      ${!full || pricing ? buildStatusPicker(pricing) : ""}</div>
+      ${full && !pricing ? '<div class="guide-filter-fields">' : '<div class="filter-state-footer">'}${Object.entries(choices)
+        .filter(() => !monitor && full && !pricing)
         .map(
           ([key, [label, items]]) =>
             `<label class="filter-inline filter-choice"><span>${label}</span><select data-filter-field="${key}">${items.map(([v, t]) => `<option value="${v}">${t}</option>`).join("")}</select></label>`,
         )
         .join("")}
-      ${full ? '</div><div class="filter-state-footer">' : ""}
+      ${full && !pricing ? '</div><div class="filter-state-footer">' : ""}
       <div class="filter-checks">${
-        monitor
+        monitor || pricing
           ? ""
           : Object.entries(checks)
               .filter(([key]) => full || key !== "includeDiscontinued")
@@ -345,7 +350,7 @@
               .join("")
       }</div>
       ${full ? "" : `<div class="filter-state-controls"><label class="offer-sort"><span>排序</span><select data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></label><span class="offer-sort-help" id="offerSortHelp"></span>`}
-      <div class="filter-state-actions"><button type="button" data-filter-action="reset">${full ? "显示全部" : "恢复默认"}</button>${full ? '<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，其他条件恢复不限">恢复默认</button>' : ""}</div>${full ? "</div>" : "</div></div>"}
+      <div class="filter-state-actions"><button type="button" data-filter-action="reset"${pricing ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${full ? "显示全部" : "恢复默认"}</button>${full ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${pricing ? "已下架内容需单独勾选" : "其他条件恢复不限"}">恢复默认</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
       ${monitor ? '<p class="filter-state-hint" data-filter-hint>监控只使用平台、模型条件；未监控项目没有统计。</p>' : ""}
       ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
       </section>`;
@@ -489,6 +494,8 @@
         if (el.type === "checkbox") el.checked = !!v;
         else el.value = v;
       });
+      const includeDelisted = host.querySelector('[data-include-delisted]');
+      if (includeDelisted) includeDelisted.checked = state.platformStatusMax === "delisted";
       const sort = host.querySelector('[data-offer-sort]');
       if (sort) {
         const option = root.PurchaseGuide.sortOptions.find(option => option.value === state.preference);
@@ -628,6 +635,9 @@
       const el = event.target;
       if (el.matches("[data-status-exclude]")) {
         state.excludedPlatformStatuses = [...host.querySelectorAll('[data-status-exclude]:checked')].map(input => input.dataset.statusExclude);
+        publish();
+      } else if (el.matches("[data-include-delisted]")) {
+        state.platformStatusMax = el.checked ? "delisted" : "paused";
         publish();
       } else if (el.matches("[data-model-require-all]")) {
         if (!el.checked) { state.modelMatch = "any"; publish(); return; }
