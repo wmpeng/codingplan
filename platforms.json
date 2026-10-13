@@ -916,7 +916,7 @@
       "platformStatus": "paused",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": null,
+      "supportsHarnessApi": true,
       "summary": "Step Plan现按月Credits，支持Step5 Preview和Flash系列；本次购买按钮售罄。",
       "detail": "旧prompt推算不适用当前Credits，精确抵扣未公开；恢复发售时间未知。"
     },
