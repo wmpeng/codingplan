@@ -217,6 +217,9 @@
   function mountLauncher(options) {
     const button = options && options.button;
     if (!button) return false;
+    button.setAttribute('data-platform-comparison-entry', '');
+    button.hidden = globalThis.__CODINGPLAN_FEATURES?.platformComparison !== true;
+    if (button.hidden) return false;
     launcherState = {
       button,
       count: options.count || null,

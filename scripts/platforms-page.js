@@ -79,7 +79,7 @@
           render();
         }
       });
-      if (root.PlatformComparison && root.PlatformComparison.mountLauncher) {
+      if (root.__CODINGPLAN_FEATURES?.platformComparison === true && root.PlatformComparison && root.PlatformComparison.mountLauncher) {
         document.querySelector('[data-hub-compare]').disabled = false;
         root.PlatformComparison.mountLauncher({ button: document.querySelector('[data-hub-compare]'), count: document.querySelector('[data-hub-compare-count]'), platforms, getPinnedIds: () => pinnedIds });
       }
