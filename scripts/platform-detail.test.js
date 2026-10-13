@@ -199,7 +199,7 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('platform-detail-price-sep'));
     assert.ok(html.includes('platform-detail-plan-rating'));
     assert.ok(html.includes('额度充足，适合主力日常'));
-    assert.ok(html.includes('在套餐对比中查看'));
+    assert.ok(html.includes('在套餐页面查看'));
   });
 
   it('omits empty summary and keeps price on one line without first-month when absent', () => {
