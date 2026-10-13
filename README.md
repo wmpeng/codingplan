@@ -1,4 +1,4 @@
-<!-- 本文件由 scripts/codingplan/generate-readme.js 生成，请勿手工修改。 -->
+<!-- 本文件由 data/generate-readme.js 生成，请勿手工修改。 -->
 
 # AI Coding Plan 平台评测与对比
 

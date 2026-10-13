@@ -51,7 +51,7 @@ models=replace(models,'MODEL_HIGHLIGHTS',C.modelGroups(preset,ctx));
 const sorted=[...ctx.models].sort((a,b)=>(C.score(b,'artificialAnalysis')??-Infinity)-(C.score(a,'artificialAnalysis')??-Infinity)||a.name.localeCompare(b.name));
 models=replace(models,'MODEL_DIRECTORY',sorted.map(m=>C.modelCard(m,ctx)).join('\n'));
 write('models/index.html',models);
-const generator=path.resolve(root,'../scripts/codingplan/platform_pages/generate.js');
+const generator=path.resolve(root,'../data/platforms/pages/generate.js');
 if(fs.existsSync(generator))require(generator).generate({check});
 else throw new Error('请在维护仓库执行完整生成与检查');
 console.log('首页精选与模型目录生成'+(check?'检查通过':'完成'));
