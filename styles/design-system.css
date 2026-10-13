@@ -66,6 +66,16 @@ body .settings-panel-title { font-size: 13px; color: var(--text-primary); letter
 body.discovery-page { background: var(--bg-primary); }
 body .discovery-hero { padding: 32px 0; gap: 40px; }
 body .discovery-hero h1 { font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; line-height: 1.2; }
+/* 首屏操作：蓝色主按钮与轻量社群邀请组成一组。 */
+body .hero-actions .hero-find-button { display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:52px;padding:14px 20px;border-radius:10px;font-size:14px;font-weight:600;line-height:1.5;white-space:nowrap;text-decoration:none;transition:background .18s,border-color .18s; }
+.hero-find-button svg { width:18px;height:18px;flex-shrink:0; }
+body .community-invite { border:0;background:transparent; }
+body .community-invite-icon { border-radius:10px;background:var(--accent-soft);color:var(--accent-primary); }
+body .community-invite h2 { margin:0;font-size:14px;font-weight:600;line-height:1.5;letter-spacing:0; }
+body .community-invite p { margin:4px 0 0;font-size:12px;line-height:1.6;color:var(--text-secondary); }
+body .community-invite-link { min-height:44px;padding:9px 12px;border:1px solid var(--border-color);border-radius:8px;background:var(--bg-secondary);color:var(--text-primary);font-size:13px;font-weight:500;line-height:1.5;white-space:nowrap;text-decoration:none;transition:background .18s,border-color .18s,color .18s; }
+body .community-invite-link:hover { border-color:var(--border-strong);background:var(--accent-soft);color:var(--accent-primary);text-decoration:none; }
+@media(prefers-reduced-motion:reduce){body .hero-actions .hero-find-button,body .community-invite-link{transition:none;}}
 body .discovery-eyebrow { color: var(--text-secondary); font-size: 13px; font-weight: 400; }
 body .catalog-summary { padding: 24px; border: 0; border-left: 1px solid var(--border-color); border-radius: 0; background: transparent; }
 body .catalog-summary strong { font-size: 18px; font-weight: 600; }
