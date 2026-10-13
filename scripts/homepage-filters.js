@@ -228,7 +228,7 @@
       context.modelGroups = opts.featuredPreset.groups || [];
       context.featuredPlatformSlugs = opts.featuredPreset.platformSlugs || [];
     }
-    let groupsReady = Array.isArray(context.modelGroups), pendingAll = false, multimodalNotice = "", platformShortcutNotice = "";
+    let groupsReady = Array.isArray(context.modelGroups), initialPresetPending = full, pendingAll = false, multimodalNotice = "", platformShortcutNotice = "";
     const platformCandidates = kind => platforms.filter(platform => platform[platformShortcutKinds[kind].field] === false).map(platform => platform.slug);
     function platformShortcutAction(kind) {
       const eligible = platformCandidates(kind);
@@ -314,11 +314,25 @@
     }
     const params = new URLSearchParams(location.search),
       platform = params.get("platform");
-    if (platform && platforms.some((x) => x.slug === platform))
+    const model = params.get("model");
+    const validPlatform = platforms.some(x => x.slug === platform);
+    const validModel = models.some(x => x.slug === model);
+    const explicitSelection = validPlatform || validModel || (pricing && (
+      context.planBySlug.has(params.get("plan")) || context.planModels.some(row => row.slug === params.get("relation"))
+    ));
+    function applyInitialPreset() {
+      if (!initialPresetPending || !canRestoreDefaults()) return false;
+      state.platformSlugs = featuredPlatforms();
+      state.modelSlugs = presetSlugs("featured");
+      initialPresetPending = false;
+      return true;
+    }
+    if (explicitSelection) initialPresetPending = false;
+    else applyInitialPreset();
+    if (validPlatform)
       state.platformSlugs = [platform];
     const monitor = full && opts.view === "monitor";
-    const model = params.get("model");
-    if (model && models.some(x => x.slug === model)) state.modelSlugs = [model];
+    if (validModel) state.modelSlugs = [model];
     if (params.get("billing") === "payg") state.apiOnly = true;
     host.innerHTML = `<section class="filter-state-bar surface-panel${full ? "" : " home-filter-panel"}" aria-label="统一筛选">
       <div class="filter-state-grid">
@@ -555,6 +569,7 @@
       positionSelectionPanels();
     }
     function publish(source = "manual") {
+      if (!["init", "catalog", "display"].includes(source)) initialPresetPending = false;
       state.imageRequired = false;
       state.domesticNetworkOnly = false;
       state.domesticPaymentOnly = false;
@@ -771,6 +786,7 @@
       host.querySelectorAll('[data-retry-model-presets]').forEach(button => { button.disabled = true; });
       loadGroups(context).then(() => {
         groupsReady = true;
+        if (applyInitialPreset()) resetModelList();
         host.querySelector('[data-model-preset-error]').hidden = true;
         host.querySelector('[data-platform-preset-error]').hidden = true;
         publish("catalog");

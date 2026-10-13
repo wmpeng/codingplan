@@ -11,9 +11,17 @@
   }
   function loadPreset() { return loadJson('model-comparison-presets.json'); }
   function load() {
-    if (!pending) pending = Promise.all(['platforms.json', 'plans.json', 'models.json', 'plan-models.json', 'config.json'].map(loadJson)).then(([platforms, plans, models, relations, config]) => {
+    if (!pending) pending = Promise.all([
+      ...['platforms.json', 'plans.json', 'models.json', 'plan-models.json', 'config.json'].map(loadJson),
+      loadPreset().catch(() => null)
+    ]).then(([platforms, plans, models, relations, config, preset]) => {
       root.appConfig = config;
-      return { context: root.EntityData.buildContext(platforms, plans, models, relations), config };
+      const context = root.EntityData.buildContext(platforms, plans, models, relations);
+      if (preset) {
+        context.modelGroups = preset.groups || [];
+        context.featuredPlatformSlugs = preset.platformSlugs || [];
+      }
+      return { context, config };
     }).catch(error => { pending = null; throw error; });
     return pending;
   }
