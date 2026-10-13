@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.10.13 | 目录收录范围调整",
+    "updateDate": "更新日期 2026.10.13 | 境内网络与支付条件补全",
     "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.1-Sol、Claude 5.5系列、MiniMax-M3.1-Flash-Preview、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3与Qwen-3.8等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
@@ -159,7 +159,8 @@
     {
       "date": "2026.10.13",
       "items": [
-        "调整目录收录范围，暂移除两项新增平台及其套餐、模型支持记录。"
+        "调整目录收录范围，暂移除两项新增平台及其套餐、模型支持记录。",
+        "补齐境内网络与支付条件，境内可用、境内可购买平台名单按当前确认结果筛选。"
       ]
     },
     {

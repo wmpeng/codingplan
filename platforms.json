@@ -23,7 +23,7 @@
       "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": null,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -61,7 +61,7 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
+      "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
@@ -113,8 +113,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -140,7 +140,7 @@
       "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": null,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -179,8 +179,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": true,
       "supportsHarnessApi": true
     },
     {
@@ -217,8 +217,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "detail": "Coding支持Kimi K3与K2.8 Preview，Go不提供Coding API，不能混用客户端与API权益。"
     },
@@ -246,7 +246,7 @@
       "platformStatus": "open",
       "action": "https://platform.deepseek.com/",
       "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": null,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -272,8 +272,8 @@
       "tags": [],
       "platformStatus": "open",
       "action": "https://api.dreamfree.space/c/s/cpyqgongji",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -298,8 +298,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -326,8 +326,8 @@
         "外币支付"
       ],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": true,
+      "requiresOverseasPayment": true,
       "supportsHarnessApi": false
     },
     {
@@ -354,8 +354,8 @@
         "外币支付"
       ],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": true,
+      "requiresOverseasPayment": true,
       "supportsHarnessApi": false
     },
     {
@@ -381,8 +381,8 @@
         "外币支付"
       ],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "detail": "Pro/Max月池独立于本地免费模型；只按公开云端名单与价格计算。"
     },
@@ -408,8 +408,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -435,7 +435,7 @@
       "tags": [],
       "platformStatus": "limited",
       "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": null,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -460,8 +460,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -490,8 +490,8 @@
         "无需抢购"
       ],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -515,8 +515,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "detail": "Token总量按官方口径；积分制逐模型动态抵扣不能用固定Token量替代。"
     },
@@ -553,8 +553,8 @@
       },
       "tags": [],
       "platformStatus": "limited",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "summary": "华为云个人Token Plan，当前五个LLM，按官方月Token总量。",
       "detail": "仅西南贵阳一，每日限量发售；官方Token总量与请求次数、TPM分开。"
@@ -580,8 +580,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -620,7 +620,7 @@
         }
       },
       "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": null,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": false
     },
     {
@@ -645,8 +645,8 @@
           "reason": "官方客户端服务；尚未完成本站稳定性实测。"
         }
       },
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": false
     },
     {
@@ -672,7 +672,7 @@
         }
       },
       "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": null,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": false
     },
     {
@@ -698,7 +698,7 @@
         }
       },
       "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": null,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": false
     },
     {
@@ -723,8 +723,8 @@
           "reason": "字节官方产品；存在地区限制，尚未完成本站稳定性实测。"
         }
       },
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": true,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": false
     },
     {
@@ -748,8 +748,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": true,
+      "requiresOverseasPayment": true,
       "supportsHarnessApi": false,
       "detail": "用量按模型Token价格与当前基础/Flex积分计算，部分老年付仍有过渡口径。"
     },
@@ -774,8 +774,8 @@
       },
       "tags": [],
       "platformStatus": "limited",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "detail": "Coding模型名单与新Token Plan上下文阶梯分别核对。"
     },
@@ -800,8 +800,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -825,8 +825,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -862,8 +862,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "summary": "移动云请求制订阅，当前M2.5；首月与续费券按活动资格区分。",
       "detail": "首次优惠每账号一次，两档互斥；续费券不是永久自动折扣。"
@@ -888,8 +888,8 @@
       },
       "tags": [],
       "platformStatus": "paused",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": null,
       "summary": "Step Plan现按月Credits，支持Step5 Preview和Flash系列；本次购买按钮售罄。",
       "detail": "旧prompt推算不适用当前Credits，精确抵扣未公开；恢复发售时间未知。"
@@ -915,8 +915,8 @@
       },
       "tags": [],
       "platformStatus": "limited",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -940,8 +940,8 @@
       },
       "tags": [],
       "platformStatus": "paused",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "detail": "Coding当前购买状态待确认，不能从新Token Plan文档推断旧套餐恢复销售。"
     },
@@ -965,8 +965,8 @@
       },
       "tags": [],
       "platformStatus": "limited",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "summary": "免费公测，SenseNova6.8 Flash Lite与U1 Fast，五小时60000积分。",
       "detail": "付费Lite/Pro尚未开放，特殊模型与精确Token换算待确认。"
@@ -991,8 +991,8 @@
       },
       "tags": [],
       "platformStatus": "limited",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "summary": "KUAE Coding Plan当前GLM4.7；免费试用30天，付费套餐经官方京东入口销售。"
     },
@@ -1069,8 +1069,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -1094,8 +1094,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -1118,8 +1118,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "summary": "2026-09-23启用积分制；旧Token制仅周期内用户可续订。"
     },
@@ -1144,8 +1144,8 @@
       },
       "tags": [],
       "platformStatus": "limited",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -1169,8 +1169,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -1194,8 +1194,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     },
     {
@@ -1219,8 +1219,8 @@
       },
       "tags": [],
       "platformStatus": "open",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
       "supportsHarnessApi": true
     }
   ]
