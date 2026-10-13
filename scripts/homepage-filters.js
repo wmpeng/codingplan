@@ -260,6 +260,19 @@
     const presetSlugs = id => [...new Set((context.modelGroups || [])
       .filter(group => group.enabled !== false && (id === "featured" || group.id === id))
       .flatMap(group => group.modelSlugs || []))].filter(slug => models.some(m => m.slug === slug));
+    const featuredPlatforms = () => (context.featuredPlatformSlugs || []).filter(slug => platforms.some(platform => platform.slug === slug));
+    const canRestoreDefaults = () => groupsReady && featuredPlatforms().length > 0 && presetSlugs("featured").length > 0;
+    function resetFilters(featured = false) {
+      if (featured && !canRestoreDefaults()) return false;
+      state = Filters.cloneState(defaults);
+      if (featured) {
+        state.platformSlugs = featuredPlatforms();
+        state.modelSlugs = presetSlugs("featured");
+      }
+      resetModelList();
+      publish("manual");
+      return true;
+    }
     const sameSelection = slugs => Array.isArray(state.modelSlugs) && slugs.length === state.modelSlugs.length && slugs.every(slug => state.modelSlugs.includes(slug));
     function selectionPreset() {
       if (state.modelSlugs === null) return "all";
@@ -332,7 +345,7 @@
               .join("")
       }</div>
       ${full ? "" : `<div class="filter-state-controls"><label class="offer-sort"><span>排序</span><select data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></label><span class="offer-sort-help" id="offerSortHelp"></span>`}
-      <div class="filter-state-actions"><button type="button" data-filter-action="reset">${full ? "重置筛选" : "恢复默认"}</button></div>${full ? "</div>" : "</div></div>"}
+      <div class="filter-state-actions"><button type="button" data-filter-action="reset">${full ? "显示全部" : "恢复默认"}</button>${full ? '<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，其他条件恢复不限">恢复默认</button>' : ""}</div>${full ? "</div>" : "</div></div>"}
       ${monitor ? '<p class="filter-state-hint" data-filter-hint>监控只使用平台、模型条件；未监控项目没有统计。</p>' : ""}
       ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
       ${full ? '<div data-active-limits class="filter-active-limits" aria-live="polite"></div>' : ""}
@@ -385,11 +398,8 @@
         if (imageNotice) { multimodalNotice = imageNotice; render(); }
         if (platformNotice) { platformShortcutNotice = platformNotice; render(); }
       },
-      reset: () => {
-        state = Filters.cloneState(defaults);
-        resetModelList();
-        publish("manual");
-      },
+      reset: () => resetFilters(),
+      restoreDefaults: () => resetFilters(full),
     };
     host.filterController = controller;
     if (!full) root.CodingPlanHomeFilters = controller;
@@ -431,6 +441,8 @@
       });
     }
     function render() {
+      const restoreDefaults = host.querySelector('[data-filter-action="restore-defaults"]');
+      if (restoreDefaults) restoreDefaults.disabled = !canRestoreDefaults();
       for (const [key, items] of [
         ["platformSlugs", platforms],
         ["modelSlugs", models],
@@ -692,7 +704,7 @@
         const key = el.closest("[data-picker]").dataset.picker;
         if (key === "modelSlugs" && el.dataset.pickerAction === "default") { selectModelPreset("featured"); return; }
         if (key === "platformSlugs" && el.dataset.pickerAction === "default") {
-          const slugs = (context.featuredPlatformSlugs || []).filter(slug => platforms.some(platform => platform.slug === slug));
+          const slugs = featuredPlatforms();
           if (!slugs.length) return;
           state.platformSlugs = slugs; publish(); return;
         }
@@ -725,6 +737,9 @@
         )[el.dataset.removeFilter];
       } else if (el.dataset.filterAction === "reset") {
         controller.reset();
+        return;
+      } else if (el.dataset.filterAction === "restore-defaults") {
+        controller.restoreDefaults();
         return;
       }
       else return;

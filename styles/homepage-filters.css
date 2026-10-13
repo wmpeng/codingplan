@@ -358,7 +358,7 @@ body .range-picker-slider input:focus-visible { outline: 2px solid #6b7280; outl
 }
 body.tool-unified-active .filter-state-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 24px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border-color); }
 body.tool-unified-active .filter-state-footer .filter-checks { border: 0; padding: 0; }
-body.tool-unified-active .filter-state-footer .filter-state-actions { flex: 0 0 auto; width: auto; margin: 0 0 0 auto; }
+body.tool-unified-active .filter-state-footer .filter-state-actions { flex: 0 0 auto; width: auto; max-width: 100%; justify-content: flex-end; margin: 0 0 0 auto; }
 body.tool-unified-active .filter-state-actions > button { flex: none; white-space: nowrap; }
 .tool-unified-active .filter-state-hint { margin-top: 8px; min-height: 32px; display: flex; align-items: center; }
 @media (max-width: 1100px) {
@@ -390,12 +390,13 @@ body .filter-state-actions > button[data-filter-action] {
   cursor: pointer;
   transition: background .15s, border-color .15s, color .15s;
 }
-body .filter-state-actions > button[data-filter-action]:hover {
+body .filter-state-actions > button[data-filter-action]:hover:not(:disabled) {
   background: #e5e7eb;
   border-color: #9ca3af;
   color: #111827;
 }
-body .filter-state-actions > button[data-filter-action]:active { background: #d1d5db; }
+body .filter-state-actions > button[data-filter-action]:active:not(:disabled) { background: #d1d5db; }
+body .filter-state-actions > button[data-filter-action]:disabled { background: #f3f4f6; border-color: #d1d5db; color: #374151; opacity: .5; cursor: not-allowed; }
 body .filter-state-actions > button[data-filter-action]:focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
 @media (max-width: 800px) {
   body .filter-state-actions > button[data-filter-action] { min-height: 44px; }
