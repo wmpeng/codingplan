@@ -129,7 +129,6 @@
   :is(.homepage-unified-active, .tool-unified-active) .filter-subgroup { grid-column: span 1; }
 }
 
-.filter-active-limits { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
 .filter-picker-menu label[hidden] { display: none; }
 
 /* Match the original Tab filter bar: compact controls and restrained borders. */
@@ -215,7 +214,6 @@
 :is(.homepage-unified-active, .tool-unified-active) .filter-more { border: 0; margin-top: 8px; padding-top: 0; }
 :is(.homepage-unified-active, .tool-unified-active) .filter-more > summary { width: fit-content; font-size: 12px; color: var(--text-tertiary); padding: 3px 0; }
 :is(.homepage-unified-active, .tool-unified-active) .filter-more[open] { border-top: 1px solid var(--border-light); padding-top: 8px; }
-:is(.homepage-unified-active, .tool-unified-active) .filter-active-limits .filter-state-btn { font-size: 12px; padding: 4px 8px; background: #f8fafc; }
 :is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary:focus-visible,
 :is(.homepage-unified-active, .tool-unified-active) .filter-state-btn:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
 @media (max-width: 800px) {
@@ -311,10 +309,8 @@ body #homeStatusPicker input:focus-visible { outline: 2px solid #6b7280; outline
 .filter-checks .filter-inline { font-size: 12px; cursor: pointer; min-height: 30px; }
 .filter-checks input[type="checkbox"] { width: 15px; height: 15px; margin: 0; }
 .filter-state-actions { display: flex !important; gap: 8px; flex-wrap: wrap; }
-.filter-active-limits { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0 0; }
-.filter-active-limits:empty { display: none; }
-.filter-state-actions button, .filter-active-limits button { font: inherit; font-size: 12px; border: 1px solid var(--border-color); border-radius: 6px; background: #fff; padding: 6px 10px; color: var(--text-secondary); cursor: pointer; }
-.filter-state-actions button:hover, .filter-active-limits button:hover { color: var(--accent-primary); border-color: #a5b9d1; }
+.filter-state-actions button { font: inherit; font-size: 12px; border: 1px solid var(--border-color); border-radius: 6px; background: #fff; padding: 6px 10px; color: var(--text-secondary); cursor: pointer; }
+.filter-state-actions button:hover { color: var(--accent-primary); border-color: #a5b9d1; }
 .filter-state-grid > .filter-picker { min-width: 130px; }
 .budget-menu .filter-inline { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 body .filter-picker-menu .range-picker-value { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
@@ -524,8 +520,7 @@ body .model-match-confirm button[data-model-match-action="confirm"] { border-col
 body .model-match-confirm button:hover { border-color: #9ca3af; }
 body .model-preset-options button:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
 body .model-match-confirm button:focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
-body .model-match-warning, body .filter-active-limits button.model-match-warning { display: inline-flex; align-items: center; gap: 4px; padding: 2px 6px; border: 1px solid #f0d4ac; border-radius: 5px; background: #fff7ea; color: #92400e; font-size: 11px; font-weight: 500; line-height: 1.5; white-space: nowrap; }
-body .filter-active-limits button.model-match-warning { padding: 6px 10px; font-size: 12px; }
+body .model-match-warning { display: inline-flex; align-items: center; gap: 4px; padding: 2px 6px; border: 1px solid #f0d4ac; border-radius: 5px; background: #fff7ea; color: #92400e; font-size: 11px; font-weight: 500; line-height: 1.5; white-space: nowrap; }
 body .guide-summary .model-match-warning { margin-left: 8px; }
 body #homeModelPicker > summary { flex-wrap: wrap; }
 body #homeModelPicker > summary::after { margin-left: auto; }
@@ -593,5 +588,4 @@ body .filter-picker-tools button:hover { background: var(--bg-tertiary); }
 body :is(.filter-state-hint, .filter-help, .filter-subgroup, .filter-inline) { color: var(--text-secondary); font-size: 13px; }
 body :is(.filter-more, .filter-subgroup) { border-color: var(--border-light); }
 body .filter-state-actions button { border-color: var(--border-color); border-radius: 8px; font-size: 13px; }
-body .filter-active-limits button { border-radius: 6px; font-size: 12px; padding: 5px 8px; }
 body .filter-inline input[type="checkbox"] { width: 16px; }

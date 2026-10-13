@@ -33,8 +33,7 @@
 }
 #purchaseGuide button,
 .guide-filter-fields select,
-.filter-state-actions button,
-.filter-active-limits button {
+.filter-state-actions button {
   cursor: pointer;
   font: inherit;
   border: 1px solid #b8cbe3;

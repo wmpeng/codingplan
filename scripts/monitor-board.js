@@ -408,7 +408,7 @@
       if (!totalCount) {
         state.boardRoot.className = 'monitor-board-panel monitor-empty';
         state.boardRoot.textContent = external
-          ? '当前筛选下没有可用性数据；请查看上方生效限制并清空平台或模型选择。'
+          ? '当前筛选下没有可用性数据；请在上方平台或模型下拉框调整选择。'
           : (state.config.emptyLabel || '暂无数据');
         state.updateStatsBar(0, 0);
         return;

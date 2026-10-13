@@ -183,7 +183,7 @@
   function buildStatusPicker() {
     return `<details class="filter-picker status-picker" id="homeStatusPicker">
       <summary aria-label="购买状态"><span class="status-picker-title">购买状态</span><span data-status-label>不限</span></summary>
-      <div class="filter-picker-menu" role="group" aria-label="排除购买状态"><div class="filter-picker-tools"><button type="button" data-remove-filter="excludedPlatformStatuses" aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}</span></label>`).join("")}</div>
+      <div class="filter-picker-menu" role="group" aria-label="排除购买状态"><div class="filter-picker-tools"><button type="button" data-clear-status aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}</span></label>`).join("")}</div>
     </details>`;
   }
   let presetPromise;
@@ -348,7 +348,6 @@
       <div class="filter-state-actions"><button type="button" data-filter-action="reset">${full ? "显示全部" : "恢复默认"}</button>${full ? '<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，其他条件恢复不限">恢复默认</button>' : ""}</div>${full ? "</div>" : "</div></div>"}
       ${monitor ? '<p class="filter-state-hint" data-filter-hint>监控只使用平台、模型条件；未监控项目没有统计。</p>' : ""}
       ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
-      ${full ? '<div data-active-limits class="filter-active-limits" aria-live="polite"></div>' : ""}
       </section>`;
     bindSelectionHelp(host);
     const controller = {
@@ -546,29 +545,6 @@
         button.setAttribute("aria-pressed", String(button.dataset.budgetMode === "api" ? state.apiOnly : !state.apiOnly && !state.budgetCny));
       });
       host.querySelector('[data-range-clear="token"]')?.setAttribute("aria-pressed", String(!state.monthlyTokenRange));
-      const tags = [];
-      for (const key of ["platformSlugs", "modelSlugs"])
-        if (state[key]?.length)
-          tags.push([key, key === "platformSlugs" ? "已选平台" : "已选模型"]);
-      if (state.modelMatch === "all") tags.push(["modelMatch", "需同时支持所选模型"]);
-      if (state.budgetCny) tags.push(["budgetCny", "预算上限"]);
-      if (state.apiOnly) tags.push(["apiOnly", "仅按量 API"]);
-      if (state.monthlyTokenRange) tags.push(["monthlyTokenRange", "月用量"]);
-      for (const [key, [label]] of Object.entries(choices))
-        if ((full || key !== "platformStatusMax") && !["any", "balanced", "delisted"].includes(state[key]))
-          tags.push([key, label]);
-      for (const status of state.excludedPlatformStatuses)
-        tags.push([`status:${status}`, statusExclusions[status]]);
-      for (const [key, label] of Object.entries(checks))
-        if (state[key] && key !== "includeDiscontinued")
-          tags.push([key, label]);
-      const activeLimits = host.querySelector("[data-active-limits]");
-      if (activeLimits) activeLimits.innerHTML = tags
-        .map(
-          ([k, t]) =>
-            `<button type="button" ${k === "modelMatch" ? 'class="model-match-warning"' : ""} data-remove-filter="${k}" aria-label="取消${t}限制">${t} ×</button>`,
-        )
-        .join("");
       positionSelectionPanels();
     }
     function publish(source = "manual") {
@@ -724,17 +700,8 @@
         if (key === "budget") Object.assign(state, setBudget(value));
         else state.monthlyTokenRange = value == null ? null : { min: value, max: null };
       }
-      else if (el.dataset.removeFilter) {
-        if (el.dataset.removeFilter.startsWith("status:")) {
-          state.excludedPlatformStatuses = state.excludedPlatformStatuses.filter(status => status !== el.dataset.removeFilter.slice(7));
-          publish();
-          return;
-        }
-        if (el.dataset.removeFilter === "modelSlugs") state.modelMatch = "any";
-        state[el.dataset.removeFilter] = Filters.createDefaultState(
-          {},
-          { mode: "full" },
-        )[el.dataset.removeFilter];
+      else if (el.hasAttribute("data-clear-status")) {
+        state.excludedPlatformStatuses = [];
       } else if (el.dataset.filterAction === "reset") {
         controller.reset();
         return;
@@ -743,7 +710,6 @@
         return;
       }
       else return;
-      if (el.dataset.removeFilter === "modelSlugs") resetModelList();
       publish();
     });
     host.addEventListener("keydown", (event) => {
