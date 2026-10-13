@@ -319,6 +319,7 @@
             `<label class="filter-inline filter-choice"><span>${label}</span><select data-filter-field="${key}">${items.map(([v, t]) => `<option value="${v}">${t}</option>`).join("")}</select></label>`,
         )
         .join("")}
+      ${full ? '</div><div class="filter-state-footer">' : ""}
       <div class="filter-checks">${
         monitor
           ? ""
@@ -329,9 +330,9 @@
                   `<label class="filter-inline"><input type="checkbox" data-filter-field="${key}">${label}</label>`,
               )
               .join("")
-      }</div>${full ? "</div>" : ""}
+      }</div>
       ${full ? "" : `<div class="filter-state-controls"><label class="offer-sort"><span>排序</span><select data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></label><span class="offer-sort-help" id="offerSortHelp"></span>`}
-      <div class="filter-state-actions">${full ? '<button type="button" data-filter-action="clear-all">清空全部</button>' : ""}<button type="button" data-filter-action="restore-all">${full ? "恢复全量" : "恢复默认"}</button></div>${full ? "" : "</div></div>"}
+      <div class="filter-state-actions"><button type="button" data-filter-action="reset">${full ? "重置筛选" : "恢复默认"}</button></div>${full ? "</div>" : "</div></div>"}
       ${monitor ? '<p class="filter-state-hint" data-filter-hint>监控只使用平台、模型条件；未监控项目没有统计。</p>' : ""}
       ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
       ${full ? '<div data-active-limits class="filter-active-limits" aria-live="polite"></div>' : ""}
@@ -398,7 +399,7 @@
       const menu = picker.querySelector('.filter-picker-menu');
       if (root.innerWidth <= 800) { menu.removeAttribute('style'); return; }
       const anchor = picker.querySelector('summary').getBoundingClientRect();
-      const actions = host.querySelector('[data-filter-action="restore-all"]').getBoundingClientRect();
+      const actions = host.querySelector('[data-filter-action="reset"]').getBoundingClientRect();
       const panelWidth = 240;
       const minTop = (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0) + 8;
       Object.assign(menu.style, {position:'fixed', width:`${panelWidth}px`, right:'auto', bottom:'auto', maxHeight:`${Math.max(100, root.innerHeight - minTop - 14)}px`});
@@ -722,17 +723,12 @@
           {},
           { mode: "full" },
         )[el.dataset.removeFilter];
-      } else if (el.dataset.filterAction)
-        state =
-          el.dataset.filterAction === "restore-all"
-            ? Filters.cloneState(defaults)
-            : {
-                ...Filters.createDefaultState({}, { mode: "full" }),
-                ...(!full ? { preference: state.preference } : {}),
-                tokenUnit: state.tokenUnit,
-              };
+      } else if (el.dataset.filterAction === "reset") {
+        controller.reset();
+        return;
+      }
       else return;
-      if (el.dataset.filterAction || el.dataset.removeFilter === "modelSlugs") resetModelList();
+      if (el.dataset.removeFilter === "modelSlugs") resetModelList();
       publish();
     });
     host.addEventListener("keydown", (event) => {

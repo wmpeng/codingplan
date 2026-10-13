@@ -65,7 +65,7 @@
           <td>${plan.discontinued ? '已下架' : `<a href="${esc(UI.sanitizeUrl(plan.action, '#'))}" target="_blank" rel="noopener noreferrer">开通 ↗</a>`}</td>
         </tr>`).join('') : `<tr><td colspan="15"><div class="tool-empty">${state.apiOnly
           ? '此页仅展示订阅套餐。当前仅选择按量 API，可前往 <a href="/pricing/?billing=payg">价格与额度查看 API</a>，或将月预算恢复为不限。'
-          : '当前条件下没有套餐；可调整上方条件，或恢复全量。'}</div></td></tr>`;
+          : '当前条件下没有套餐；可调整上方条件，或重置筛选。'}</div></td></tr>`;
       }
 
       host.addEventListener('click', event => {
