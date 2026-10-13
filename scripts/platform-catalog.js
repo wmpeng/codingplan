@@ -109,66 +109,10 @@ function platformStatusFilterPhrase(maxStatus) {
   return `${platformStatusFilterPrefix(max)}${labels.join('和')}${PLATFORM_STATUS_FILTER_SUFFIX}`;
 }
 
-function matchesDerivedTag(platform, rule) {
-  if (rule.platformStatus !== undefined) {
-    if (normalizePlatformStatus(platform.platformStatus) !== rule.platformStatus) {
-      return false;
-    }
-  }
-  if (rule.dimension !== undefined && rule.minScore !== undefined) {
-    const dim = platform.dimensions?.[rule.dimension];
-    if (!dim || !Number.isFinite(dim.score) || dim.score < rule.minScore) {
-      return false;
-    }
-  }
-  return true;
-}
-
-function matchesOperationalTag(platform, label) {
-  return Array.isArray(platform.tags) && platform.tags.includes(label);
-}
-
-function filterPlatforms(platforms, {
-  selectedLabels,
-  platformStatusMax,
-  derivedTags,
-  operationalTags,
-  pinnedIds
-}) {
+function filterPlatforms(platforms, { platformStatusMax, pinnedIds } = {}) {
   const pinnedSet = new Set(normalizePinnedIds(pinnedIds));
-  function isPinnedPlatform(platform) {
-    const id = platform && typeof platform.slug === 'string' ? platform.slug.trim() : '';
-    return !!(id && pinnedSet.has(id));
-  }
-
-  let result = platforms;
   const maxRank = platformStatusRank(platformStatusMax ?? DEFAULT_PLATFORM_STATUS_MAX);
-  result = result.filter(
-    (p) => isPinnedPlatform(p) || platformStatusRank(p.platformStatus) <= maxRank
-  );
-
-  if (!selectedLabels || selectedLabels.length === 0) {
-    return result;
-  }
-
-  const derivedByLabel = new Map((derivedTags || []).map(t => [t.label, t]));
-
-  return result.filter(platform => {
-    if (isPinnedPlatform(platform)) return true;
-    for (const label of selectedLabels) {
-      const derived = derivedByLabel.get(label);
-      if (derived) {
-        if (!matchesDerivedTag(platform, derived.rule)) {
-          return false;
-        }
-      } else {
-        if (!matchesOperationalTag(platform, label)) {
-          return false;
-        }
-      }
-    }
-    return true;
-  });
+  return platforms.filter(platform => pinnedSet.has(platform.slug) || platformStatusRank(platform.platformStatus) <= maxRank);
 }
 
 const PLATFORM_PIN_STORAGE_KEY = 'platformCatalogPinnedIds';
@@ -441,9 +385,6 @@ function validatePlatformRecords(platforms, plans) {
       errors.push(`${prefix}: platformStatus must be one of ${PLATFORM_STATUSES.join(', ')}`);
     }
 
-    if (platform.tags !== undefined && !Array.isArray(platform.tags)) {
-      errors.push(`${prefix}: tags must be an array`);
-    }
 
     if (Object.prototype.hasOwnProperty.call(platform, 'summary')) {
       if (typeof platform.summary !== 'string' || platform.summary.trim() === '') {
@@ -479,44 +420,6 @@ function validatePlatformRecords(platforms, plans) {
   }
 
   return { ok: errors.length === 0, errors };
-}
-
-function buildPlatformTagBarHtml(catalogConfig, selectedLabels, platformStatusMax) {
-  const cat = catalogConfig || {};
-  const selected = selectedLabels || [];
-  const mainParts = [];
-
-  const derivedChips = [];
-  for (const tag of cat.derivedTags || []) {
-    const label = tag.label;
-    const active = selected.includes(label);
-    derivedChips.push(
-      `<button type="button" class="platform-tag-chip platform-tag-chip--derived${active ? ' is-active' : ''}" data-platform-tag="${escapeHtml(label)}" aria-pressed="${active ? 'true' : 'false'}">${escapeHtml(label)}</button>`
-    );
-  }
-  if (derivedChips.length) {
-    mainParts.push(`<div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选">${derivedChips.join('')}</div>`);
-  }
-
-  const operationalChips = [];
-  for (const label of cat.operationalTags || []) {
-    const active = selected.includes(label);
-    operationalChips.push(
-      `<button type="button" class="platform-tag-chip platform-tag-chip--operational${active ? ' is-active' : ''}" data-platform-tag="${escapeHtml(label)}" aria-pressed="${active ? 'true' : 'false'}">${escapeHtml(label)}</button>`
-    );
-  }
-  if (operationalChips.length) {
-    if (derivedChips.length) {
-      mainParts.push('<span class="platform-tag-sep" aria-hidden="true"></span>');
-    }
-    mainParts.push(`<div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签">${operationalChips.join('')}</div>`);
-  }
-
-  const mainHtml = mainParts.length
-    ? `<div class="platform-tag-bar-main">${mainParts.join('')}</div>`
-    : '';
-
-  return `${mainHtml}${buildPlatformStatusSliderHtml(platformStatusMax)}`;
 }
 
 function buildPlatformStatusSliderHtml(platformStatusMax) {
@@ -595,11 +498,6 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     return `<li data-dim="${escapeHtml(key)}"><div class="dim-meta">${scoreHtml}<span class="dim-label">${escapeHtml(label)}</span></div><span class="dim-reason">${formatInlineMarkdownPreserveBreaks(dim.reason || '')}</span></li>`;
   }).join('');
 
-  const tags = Array.isArray(platform.tags) ? platform.tags : [];
-  const tagsHtml = tags.length
-    ? `<div class="platform-tags" aria-label="标签">${tags.map((tag) => `<span class="platform-tag">${escapeHtml(tag)}</span>`).join('')}</div>`
-    : '';
-
   const models = supportedModels.length ? supportedModels.map(model => model.name) : collectModelsForVendor(plans, platform.slug);
   const modelsHtml = CatalogUI.modelTags(models, {
     limit: 5, className: 'platform-models', ariaLabel: '模型', toggleAttribute: 'data-platform-toggle-models'
@@ -630,7 +528,6 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
                     </header>
                     ${summary}
                     <ul class="platform-dimensions">${dimsHtml}</ul>
-                    ${tagsHtml}
                     <div class="platform-capabilities">${PlatformEntityData.platformHarnessApiBadge(platform, plans)}</div>
                     ${modelsHtml}
                     <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span>${getPlatformGuideUrl(platformId) ? `<a class="platform-guide-link" href="${escapeHtml(getPlatformGuideUrl(platformId))}">平台介绍 →</a>` : ''}</div>
@@ -671,8 +568,6 @@ const PlatformCatalog = {
   platformStatusFilterLabel,
   isPlatformStatusSegmentActive,
   platformStatusFilterPhrase,
-  matchesDerivedTag,
-  matchesOperationalTag,
   filterPlatforms,
   PLATFORM_PIN_STORAGE_KEY,
   PLATFORM_PIN_MAX,
@@ -697,7 +592,6 @@ const PlatformCatalog = {
   matchMonitorPlatform,
   resolvePlatformAction,
   validatePlatformRecords,
-  buildPlatformTagBarHtml,
   buildPlatformStatusSliderHtml,
   buildPlatformCardHtml,
   togglePlatformModels

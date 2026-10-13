@@ -180,25 +180,11 @@ test('模型任意/全部匹配与实体跨维度交集', () => {
   assert.deepEqual(Filters.filterPlans(plans, unrestricted({ platformSlugs: ['a'], })).map(plan => plan.slug), ['p-a', 'p-b']);
 });
 
-test('套餐视图应用平台标签', () => {
-  const plans = [
-    { slug: 'good', platformSlug: 'a', supportedModels: [] },
-    { slug: 'other-platform', platformSlug: 'b', supportedModels: [] },
-    { slug: 'another-plan', platformSlug: 'a', supportedModels: [] }
-  ];
-  const context = {
-    platformBySlug: new Map([
-      ['a', { slug: 'a', platformStatus: 'open', tags: ['可支付宝'] }],
-      ['b', { slug: 'b', platformStatus: 'open' }]
-    ])
-  };
-  const state = unrestricted({ platformSlugs: null, platformTags: ['可支付宝'] });
-  assert.deepEqual(Filters.filterPlans(plans, state, { context }).map(plan => plan.slug), ['good', 'another-plan']);
-  const derived = unrestricted({ platformTags: ['性价比高'] });
-  assert.deepEqual(Filters.filterPlans(plans, derived, {
-    context,
-    platformCatalog: { derivedTags: [{ label: '性价比高', rule: { dimension: 'value', minScore: 4 } }] }
-  }).map(plan => plan.slug), []);
+test('removed platform label state cannot silently restrict results', () => {
+  const plans = [{ slug: 'a', platformSlug: 'a', supportedModels: [] }];
+  const state = unrestricted({ platformTags: ['old-label'] });
+  assert.equal(Object.hasOwn(state, 'platformTags'), false);
+  assert.deepEqual(Filters.filterPlans(plans, state), plans);
 });
 
 test('平台模型筛选、状态和清空/全选语义', () => {

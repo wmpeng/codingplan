@@ -15,7 +15,6 @@
     tokenUnit: 'yi',
     platformStatusMax: 'paused',
     excludedPlatformStatuses: [],
-    platformTags: [],
     includeDiscontinued: false,
     priceRanges: {},
     requestRanges: {},
@@ -87,7 +86,6 @@
       budgetCny: cloneRange(input.budgetCny === undefined ? base.budgetCny : input.budgetCny),
       platformStatusMax: STATUS_RANK[input.platformStatusMax] === undefined ? base.platformStatusMax : input.platformStatusMax,
       excludedPlatformStatuses: (arrayOrNull(input.excludedPlatformStatuses) || []).filter(status => ['limited', 'paused'].includes(status)),
-      platformTags: arrayOrNull(input.platformTags) || [],
       includeDiscontinued: input.includeDiscontinued === undefined ? base.includeDiscontinued : input.includeDiscontinued === true,
       priceRanges: normalizeRangeMap(input.priceRanges === undefined ? base.priceRanges : input.priceRanges),
       requestRanges: normalizeRangeMap(input.requestRanges === undefined ? base.requestRanges : input.requestRanges),
@@ -210,7 +208,6 @@
         ? opts.context.platformBySlug.get(plan.platformSlug)
         : null;
       if (platform && !platformStatusMatches(platform, current)) return false;
-      if (current.platformTags.length && (!platform || !current.platformTags.every(tag => platformTagMatches(platform, tag, opts.platformCatalog || {})))) return false;
       if (!monthlyPlanMatches(plan, current, opts.context)) return false;
       const monthly = toCny(plan.monthlyPrice, plan.currency, rate);
       if (!inRange(monthly, current.budgetCny)) return false;
@@ -228,19 +225,9 @@
     });
   }
 
-  function platformTagMatches(platform, label, config) {
-    if (Array.isArray(platform.tags) && platform.tags.includes(label)) return true;
-    const derived = (config && config.derivedTags) || [];
-    const entry = derived.find(item => item && item.label === label);
-    if (!entry || !entry.rule) return false;
-    const dimension = platform.dimensions && platform.dimensions[entry.rule.dimension];
-    return dimension && typeof dimension.score === 'number' && dimension.score >= entry.rule.minScore;
-  }
-
   function filterPlatforms(platforms, state, options) {
     const current = normalizeState(state);
     const opts = options || {};
-    const config = opts.platformCatalog || {};
     if (opts.context && Array.isArray(opts.context.plans)) {
       const ids = new Set(matchingOffers(opts.context, current, opts).map(offer => offer.platform.slug));
       return (platforms || []).filter(platform => ids.has(platform.slug));
@@ -249,7 +236,6 @@
       if (platform.catalogVisible === false) return false;
       if (!selectedMatch(platform.slug, current.platformSlugs)) return false;
       if (!platformStatusMatches(platform, current)) return false;
-      if (current.platformTags.length && !current.platformTags.every(tag => platformTagMatches(platform, tag, config))) return false;
       if (opts.context && opts.entityData && current.modelSlugs !== null) {
         const models = typeof opts.entityData.platformModels === 'function'
           ? opts.entityData.platformModels(opts.context, platform.slug)
@@ -345,7 +331,6 @@
       if (!s.includeDiscontinued && plan.discontinued) continue;
       if (!selectedMatch(platform.slug, s.platformSlugs)) continue;
       if (!platformStatusMatches(platform, s)) continue;
-      if (s.platformTags.length && !s.platformTags.every(tag => platformTagMatches(platform, tag, opts.platformCatalog || {}))) continue;
       if (s.domesticNetworkOnly && platform.requiresOverseasNetwork !== false) continue;
       if (s.domesticPaymentOnly && platform.requiresOverseasPayment !== false) continue;
       const supportsHarnessApi = EntityData.resolveHarnessApi(platform, plan);

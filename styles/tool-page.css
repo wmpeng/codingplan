@@ -162,8 +162,7 @@ body.tool-page { background: var(--bg-primary); color: var(--text-primary); font
   .tool-page .tool-footer { font-size: 12px; }
 }
 
-.tool-page .platform-models, .tool-page .platform-tags { display: flex; gap: 5px; flex-wrap: wrap; }
-.tool-page .platform-tags .platform-tag { display: inline-flex; padding: 2px 6px; border: 1px solid var(--border-light); border-radius: 5px; background: #f4f7fb; color: var(--text-secondary); font-size: 11px; line-height: 1.6; }
+.tool-page .platform-models { display: flex; gap: 5px; flex-wrap: wrap; }
 .tool-page .platform-card-links { margin-top: auto; }
 .plan-cell-more > summary { font-size: 12px; color: var(--accent-primary); cursor: pointer; margin-top: 3px; }
 .plan-cell-more[open] > summary { margin-bottom: 5px; }

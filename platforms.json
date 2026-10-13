@@ -20,7 +20,6 @@
           "reason": "官方服务，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -32,7 +31,6 @@
       "rating": 5,
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
-      "tags": [],
       "platformStatus": "delisted",
       "catalogVisible": false,
       "requiresOverseasNetwork": null,
@@ -59,7 +57,6 @@
           "reason": "各模型基本都是官方通道，稳定性强，较少出现不可用。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -85,7 +82,6 @@
           "reason": "火山引擎官方服务，整体稳定。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -111,7 +107,6 @@
           "reason": "火山引擎官方服务，整体稳定。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -137,7 +132,6 @@
           "reason": "官方服务，稳定性强。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -149,7 +143,6 @@
       "rating": 5,
       "summary": "历史Token Plan老权益产品线，仅存量用户自动续费；支持最新型号但用量不直接套旧测量。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
-      "tags": [],
       "platformStatus": "delisted",
       "catalogVisible": false,
       "requiresOverseasNetwork": null,
@@ -177,7 +170,6 @@
           "reason": "官方服务，稳定性强。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": true,
@@ -189,7 +181,6 @@
       "rating": 5,
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
-      "tags": [],
       "platformStatus": "delisted",
       "catalogVisible": false,
       "requiresOverseasNetwork": null,
@@ -215,7 +206,6 @@
           "reason": "官方服务，稳定性强。Kimi-K3发布后高峰时段可能会有繁忙，整体可用性尚可。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -242,7 +232,6 @@
           "reason": "官方通道，稳定性强。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "action": "https://platform.deepseek.com/",
       "requiresOverseasNetwork": false,
@@ -269,7 +258,6 @@
           "reason": "当前用户规模不大，实测稳定性较强。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "action": "https://api.dreamfree.space/c/s/cpyqgongji",
       "requiresOverseasNetwork": false,
@@ -296,7 +284,6 @@
           "reason": "新兴平台，算力充足，很少遇到拥挤。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -322,9 +309,6 @@
           "reason": "OpenAI 官方基础设施，稳定性行业标杆。"
         }
       },
-      "tags": [
-        "外币支付"
-      ],
       "platformStatus": "open",
       "requiresOverseasNetwork": true,
       "requiresOverseasPayment": true,
@@ -350,9 +334,6 @@
           "reason": "Anthropic 官方 API，本身稳定性没问题。但需要境外网络环境，从中国大陆访问限制比较多。"
         }
       },
-      "tags": [
-        "外币支付"
-      ],
       "platformStatus": "open",
       "requiresOverseasNetwork": true,
       "requiresOverseasPayment": true,
@@ -377,9 +358,6 @@
           "reason": "稳定性尚可。高峰时段可能略拥挤，整体可用性尚可。"
         }
       },
-      "tags": [
-        "外币支付"
-      ],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -406,7 +384,6 @@
           "reason": "阿里云官方服务，稳定性强。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -432,7 +409,6 @@
           "reason": "阿里云官方服务，稳定性强。"
         }
       },
-      "tags": [],
       "platformStatus": "limited",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -458,7 +434,6 @@
           "reason": "官方服务，稳定性强。用户量没那么大，高峰期稳定性好。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -484,11 +459,6 @@
           "reason": "实际价格和可用性可能随上游变化；Go 套餐只能在 Command Code 客户端内使用，稳定性较弱。"
         }
       },
-      "tags": [
-        "性价比高",
-        "模型强",
-        "无需抢购"
-      ],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -513,7 +483,6 @@
           "reason": "百度智能云官方通道，稳定性符合大厂预期。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -526,7 +495,6 @@
       "rating": 3,
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
-      "tags": [],
       "platformStatus": "delisted",
       "catalogVisible": false,
       "requiresOverseasNetwork": null,
@@ -551,7 +519,6 @@
           "reason": "华为云基础设施成熟，企业级稳定性有保障。"
         }
       },
-      "tags": [],
       "platformStatus": "limited",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -578,7 +545,6 @@
           "reason": "腾讯云基础设施成熟，企业级稳定性有保障。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -590,7 +556,6 @@
       "rating": 3,
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
-      "tags": [],
       "platformStatus": "delisted",
       "catalogVisible": false,
       "requiresOverseasNetwork": null,
@@ -603,7 +568,6 @@
       "rating": 3,
       "summary": "Qoder国内套餐，当前CLI支持名单与国际版不同。",
       "detail": "内置型号按官方名单核对，不能把BYOK全目录当套餐支持。",
-      "tags": [],
       "platformStatus": "open",
       "dimensions": {
         "value": {
@@ -629,7 +593,6 @@
       "rating": 3,
       "summary": "Qoder国际套餐，当前支持K3、K2.8、GLM5.3及Qwen3.8等；具体Token额度未知。",
       "detail": "CLI内置和自定义API模型分开，按真实产品线比较。",
-      "tags": [],
       "platformStatus": "open",
       "dimensions": {
         "value": {
@@ -655,7 +618,6 @@
       "rating": 3,
       "summary": "体验版与三档付费个人订阅，WorkBuddy与CodeBuddy共享积分。",
       "detail": "当前14个内置LLM；体验版限免全模型，付费档含CLI；老用户保价另列。",
-      "tags": [],
       "platformStatus": "open",
       "dimensions": {
         "value": {
@@ -681,7 +643,6 @@
       "rating": 3,
       "summary": "TRAE国内订阅，以积分计费；当前内置型号已换代，支持范围按档位区分。",
       "detail": "Seed Evolving仅Pro/Pro+/Ultra及历史Express可用；BYOK不等于内置支持。",
-      "tags": [],
       "platformStatus": "open",
       "dimensions": {
         "value": {
@@ -707,7 +668,6 @@
       "rating": 3,
       "summary": "Free仅Auto；新Lite/Pro/Pro+/Ultra与老套餐并存，按模型Token价扣减月Usage。",
       "detail": "新Lite有地区限制，旧档停止新购但按各用户周期迁移；不混用新旧额度。",
-      "tags": [],
       "platformStatus": "open",
       "dimensions": {
         "value": {
@@ -746,7 +706,6 @@
           "reason": "GitHub 官方服务，与 IDE 深度集成，稳定性出色。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": true,
       "requiresOverseasPayment": true,
@@ -773,7 +732,6 @@
           "reason": "官方编辑器与 Agent 服务；尚未完成本站稳定性实测。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": true,
       "requiresOverseasPayment": false,
@@ -798,7 +756,6 @@
           "reason": "京东云官方运营，证据不足，但推测稳定性尚可。"
         }
       },
-      "tags": [],
       "platformStatus": "limited",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -824,7 +781,6 @@
           "reason": "高效版（199元）拥挤，速通版（699元）套餐高峰期拥挤，整体可用性一般。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -849,7 +805,6 @@
           "reason": "证据不足。但运营商云品牌，推测稳定性尚可。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -861,7 +816,6 @@
       "rating": 2,
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
-      "tags": [],
       "platformStatus": "delisted",
       "catalogVisible": false,
       "requiresOverseasNetwork": null,
@@ -886,7 +840,6 @@
           "reason": "证据不足。但推测运营商云平台，稳定性应该尚可。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -912,7 +865,6 @@
           "reason": "稳定性尚可。"
         }
       },
-      "tags": [],
       "platformStatus": "paused",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -939,7 +891,6 @@
           "reason": "新平台，证据不足。且看起来像是中专站，并且怀疑有不同供应商，稳定性存疑。"
         }
       },
-      "tags": [],
       "platformStatus": "limited",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -964,7 +915,6 @@
           "reason": "证据不足"
         }
       },
-      "tags": [],
       "platformStatus": "paused",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -989,7 +939,6 @@
           "reason": "商汤官方运营，基础服务稳定但编程社区声量较小。"
         }
       },
-      "tags": [],
       "platformStatus": "limited",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -1015,7 +964,6 @@
           "reason": "证据不足。"
         }
       },
-      "tags": [],
       "platformStatus": "limited",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -1040,7 +988,6 @@
           "reason": "平台 Coding Plan 已下线，服务不可用。"
         }
       },
-      "tags": [],
       "platformStatus": "delisted",
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
@@ -1066,7 +1013,6 @@
           "reason": "历史Coding Plan已下线；Token制存量周期内可续订，当前积分制有独立在售产品。"
         }
       },
-      "tags": [],
       "platformStatus": "delisted",
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
@@ -1093,7 +1039,6 @@
           "reason": "腾讯云基础设施成熟，企业级稳定性有保障。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -1118,7 +1063,6 @@
           "reason": "百度智能云官方通道，稳定性符合大厂预期。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -1142,7 +1086,6 @@
           "reason": "天翼云当前积分制在售；本项目未做独立长期稳定性测量。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -1168,7 +1111,6 @@
           "reason": "京东云官方运营，证据不足，但推测稳定性尚可。"
         }
       },
-      "tags": [],
       "platformStatus": "limited",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -1193,7 +1135,6 @@
           "reason": "新平台，证据不足。且看起来像是中专站，并且怀疑有不同供应商，稳定性存疑。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -1218,7 +1159,6 @@
           "reason": "证据不足"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
@@ -1243,7 +1183,6 @@
           "reason": "讯飞企业/团队成员订阅；不沿用个人版拥挤程度或旧套餐评分。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,

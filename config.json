@@ -12,35 +12,7 @@
   },
   "usdToCnyRate": 6.8,
   "platformCatalog": {
-    "defaultSelectedTags": [],
-    "operationalTags": [],
-    "defaultPlatformStatusMax": "paused",
-    "derivedTags": [
-      {
-        "id": "high-value",
-        "label": "性价比高",
-        "rule": {
-          "dimension": "value",
-          "minScore": 4
-        }
-      },
-      {
-        "id": "broad-models",
-        "label": "模型强",
-        "rule": {
-          "dimension": "models",
-          "minScore": 4
-        }
-      },
-      {
-        "id": "stable",
-        "label": "可用性好",
-        "rule": {
-          "dimension": "stability",
-          "minScore": 4
-        }
-      }
-    ]
+    "defaultPlatformStatusMax": "paused"
   },
   "homepageFilters": {
     "defaults": {
@@ -52,7 +24,6 @@
       "tokenUnit": "yi",
       "platformStatusMax": "paused",
       "excludedPlatformStatuses": [],
-      "platformTags": [],
       "includeDiscontinued": false,
       "priceRanges": {},
       "requestRanges": {},

@@ -25,16 +25,6 @@
   },
   "models": [
     {
-      "slug": "auto",
-      "name": "Auto",
-      "multimodal": "unknown",
-      "modalities": null,
-      "scores": {
-        "artificialAnalysis": null,
-        "deepSWE": null
-      }
-    },
-    {
       "slug": "claude-fable-5",
       "name": "Claude Fable 5",
       "multimodal": true,

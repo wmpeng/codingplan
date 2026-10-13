@@ -9,7 +9,6 @@ const {
   formatInlineMarkdown,
   formatInlineMarkdownPreserveBreaks,
   buildPlatformCardHtml,
-  buildPlatformTagBarHtml,
   buildPlatformStatusSliderHtml,
   normalizePinnedIds,
   sanitizePinnedIds,
@@ -33,10 +32,6 @@ const {
   DEFAULT_PLATFORM_STATUS_MAX
 } = require('./platform-catalog.js');
 
-const derivedTags = [
-  { id: 'high-value', label: '性价比高', rule: { dimension: 'value', minScore: 4 } }
-];
-
 function samplePlatform(overrides = {}) {
   return {
     slug: 'x',
@@ -49,122 +44,20 @@ function samplePlatform(overrides = {}) {
       stability: { score: 3, reason: 'b' },
       models: { score: 4, reason: 'c' }
 },
-    tags: ['适合养龙虾'],
     ...overrides
   };
 }
 
 describe('filterPlatforms', () => {
-  it('AND matches derived + operational tags', () => {
-    const platforms = [
-      samplePlatform({ slug: 'a', name: 'A', tags: ['适合养龙虾'] }),
-      samplePlatform({
-        slug: 'b',
-        name: 'B',
-        platformStatus: 'limited',
-        tags: ['适合养龙虾'],
-        dimensions: {
-          value: { score: 5, reason: 'a' },
-          stability: { score: 3, reason: 'b' },
-          models: { score: 4, reason: 'c' }
-}
-      }),
-      samplePlatform({ slug: 'c', name: 'C', tags: [] })
-    ];
-    const result = filterPlatforms(platforms, {
-      selectedLabels: ['性价比高', '适合养龙虾'],
-      platformStatusMax: 'limited',
-      derivedTags,
-      operationalTags: ['适合养龙虾']
-    });
-    assert.deepEqual(result.map(p => p.slug), ['a', 'b']);
+  it('filters purchase status cumulatively and defaults to paused', () => {
+    const platforms = ['open', 'limited', 'paused', 'delisted'].map(status => samplePlatform({ slug: status, platformStatus: status }));
+    assert.deepEqual(filterPlatforms(platforms).map(p => p.slug), ['open', 'limited', 'paused']);
+    assert.deepEqual(filterPlatforms(platforms, { platformStatusMax: 'limited' }).map(p => p.slug), ['open', 'limited']);
+    assert.deepEqual(filterPlatforms(platforms, { platformStatusMax: 'delisted' }).map(p => p.slug), ['open', 'limited', 'paused', 'delisted']);
   });
-
-  it('filters by platformStatusMax inclusive rank', () => {
-    const platforms = [
-      samplePlatform({ slug: 'open', platformStatus: 'open' }),
-      samplePlatform({ slug: 'limited', platformStatus: 'limited' }),
-      samplePlatform({ slug: 'paused', platformStatus: 'paused' }),
-      samplePlatform({ slug: 'delisted', platformStatus: 'delisted' })
-    ];
-
-    assert.deepEqual(
-      filterPlatforms(platforms, {
-        selectedLabels: [],
-        platformStatusMax: 'open',
-        derivedTags,
-        operationalTags: []
-      }).map(p => p.slug),
-      ['open']
-    );
-
-    assert.deepEqual(
-      filterPlatforms(platforms, {
-        selectedLabels: [],
-        platformStatusMax: 'limited',
-        derivedTags,
-        operationalTags: []
-      }).map(p => p.slug),
-      ['open', 'limited']
-    );
-
-    assert.deepEqual(
-      filterPlatforms(platforms, {
-        selectedLabels: [],
-        platformStatusMax: 'delisted',
-        derivedTags,
-        operationalTags: []
-      }).map(p => p.slug),
-      ['open', 'limited', 'paused', 'delisted']
-    );
-  });
-
-  it('defaults platformStatusMax to paused', () => {
-    assert.equal(DEFAULT_PLATFORM_STATUS_MAX, 'paused');
-    const platforms = [
-      samplePlatform({ slug: '1' }),
-      samplePlatform({ slug: '2', platformStatus: 'limited' }),
-      samplePlatform({ slug: '3', platformStatus: 'paused' }),
-      samplePlatform({ slug: '4', platformStatus: 'delisted' })
-    ];
-    const result = filterPlatforms(platforms, {
-      selectedLabels: [],
-      derivedTags,
-      operationalTags: []
-    });
-    assert.deepEqual(result.map(p => p.slug), ['1', '2', '3']);
-  });
-
-  it('keeps pinned platforms even when filters would hide them', () => {
-    const platforms = [
-      samplePlatform({ slug: 'match', tags: ['适合养龙虾'] }),
-      samplePlatform({
-        slug: 'pinned-tag-miss',
-        tags: [],
-        dimensions: {
-          value: { score: 1, reason: 'a' },
-          stability: { score: 1, reason: 'b' },
-          models: { score: 1, reason: 'c' }
-        }
-      }),
-      samplePlatform({
-        slug: 'pinned-delisted',
-        platformStatus: 'delisted',
-        tags: ['适合养龙虾']
-      })
-    ];
-    const result = filterPlatforms(platforms, {
-      selectedLabels: ['适合养龙虾', '性价比高'],
-      platformStatusMax: 'limited',
-      derivedTags,
-      operationalTags: ['适合养龙虾'],
-      pinnedIds: ['pinned-tag-miss', 'pinned-delisted']
-    });
-    assert.deepEqual(result.map((p) => p.slug), [
-      'match',
-      'pinned-tag-miss',
-      'pinned-delisted'
-    ]);
+  it('keeps pinned platforms across status filtering', () => {
+    const platforms = ['open', 'delisted'].map(status => samplePlatform({ slug: status, platformStatus: status }));
+    assert.deepEqual(filterPlatforms(platforms, { platformStatusMax: 'open', pinnedIds: ['delisted'] }).map(p => p.slug), ['open', 'delisted']);
   });
 });
 
@@ -372,27 +265,6 @@ describe('buildPlatformCardHtml', () => {
     assert.match(html, /platform-summary[\s\S]*href="https:\/\/example\.com\/s"/);
     assert.match(html, /dim-reason[\s\S]*href="https:\/\/example\.com\/r"/);
     assert.match(html, /dim-reason[\s\S]*<strong>重点<\/strong>/);
-  });
-});
-
-describe('buildPlatformTagBarHtml', () => {
-  it('groups derived/operational chips and right-side status slider', () => {
-    const cat = {
-      derivedTags: [{ id: 'high-value', label: '性价比高', rule: { dimension: 'value', minScore: 4 } }],
-      operationalTags: ['热门模型']
-    };
-    const html = buildPlatformTagBarHtml(cat, ['性价比高'], 'limited');
-    assert.match(html, /platform-tag-bar-main/);
-    assert.match(html, /platform-tag-group--derived/);
-    assert.match(html, /platform-tag-chip--derived is-active" data-platform-tag="性价比高"/);
-    assert.match(html, /platform-tag-sep/);
-    assert.match(html, /platform-tag-group--operational/);
-    assert.match(html, /platform-status-slider/);
-    assert.match(html, /platform-status-prefix">显示</);
-    assert.match(html, /platform-status-suffix">平台/);
-    assert.match(html, />开放购买</);
-    assert.match(html, />所有</);
-    assert.doesNotMatch(html, /显示至|显示停售|显示需抢购|platform-tag-chip--toggle/);
   });
 });
 
