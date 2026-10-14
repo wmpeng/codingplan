@@ -474,6 +474,10 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     limit: 5, className: 'platform-models', ariaLabel: '模型', toggleAttribute: 'data-platform-toggle-models'
   });
 
+  const capabilitiesHtml = `<div class="platform-capabilities">${PlatformEntityData.platformHarnessApiBadge(platform, plans)}</div>`;
+  const dimensionsHtml = `<ul class="platform-dimensions">${dimsHtml}</ul>`;
+  const detailSections = options.capabilitiesBeforeScores
+    ? [capabilitiesHtml, dimensionsHtml] : [dimensionsHtml, capabilitiesHtml];
   const discontinuedClass = status === 'delisted' ? ' is-discontinued' : '';
   const platformId = platform && typeof platform.slug === 'string' ? platform.slug.trim() : '';
   const pinned = isPlatformPinned(platformId, options.pinnedIds);
@@ -498,8 +502,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
                         </div>
                     </header>
                     ${summary}
-                    <ul class="platform-dimensions">${dimsHtml}</ul>
-                    <div class="platform-capabilities">${PlatformEntityData.platformHarnessApiBadge(platform, plans)}</div>
+                    ${detailSections.join('\n                    ')}
                     ${modelsHtml}
                     <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span>${getPlatformGuideUrl(platformId) ? `<a class="platform-guide-link" href="${escapeHtml(getPlatformGuideUrl(platformId))}">平台介绍 →</a>` : ''}</div>
                 </article>
