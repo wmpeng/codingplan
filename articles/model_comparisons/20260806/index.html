@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<script src="/scripts/ui-core.js?v=57904152bf"></script>
+<script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
+<script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>2026年8月主流大模型能力对比：Kimi K3 综合国产第一，Qwen3.8 Max Agentic 全球第一，DeepSeek V4 Flash 正式版越级打Pro，国产阵营全面突破</title>
-  <meta name="description" content="基于独立评测机构 Artificial Analysis 发布的最新 AI 模型基准测试结果（数据统计时间：2026 年 8 月 5 日），本文围绕 Intelligence Index（v4.1）和 Agentic Index（GDPval-AA v2 + τ³-Banking）两大核心指标，对 21 款主流大模型进" />
-  <link rel="icon" href="../../../favicon.ico?v=20260806" type="image/x-icon" />
-  <link rel="stylesheet" href="../../../styles/shared.css?v=20260806" />
+<meta name="description" content="基于独立评测机构 Artificial Analysis 发布的最新 AI 模型基准测试结果（数据统计时间：2026 年 8 月 5 日），本文围绕 Intelligence Index（v4.1）和 Agentic Index（GDPval-AA v2 + τ³-Banking）两大核心指标，对 21 款主流大模型进" />
+  <link rel="icon" href="../../../favicon.ico?v=260924a" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=482edb170c" />
   <style>
 
     body.article-page {
@@ -454,24 +458,74 @@
     }
 
   </style>
+<link rel="canonical" href="https://codingplan.fyi/articles/model_comparisons/20260806/">
+<script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=7c1640cfed" />
+  <link rel="stylesheet" href="/styles/design-system.css?v=47a0b29cda" />
+<script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
+<link rel="stylesheet" href="/styles/ui-components.css?v=e5133e2fe2">
 </head>
 <body class="article-page">
-  <div class="doc-wrap">
-    <nav class="back-nav" aria-label="返回">
-      <a href="../../../" class="back-home-btn">← 返回主页</a>
-      <a href="../../" class="back-home-btn">文章列表</a>
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/monitor/" hidden data-monitor-nav>可用性监控</a>
+    <a href="/articles/" aria-current="page">文章</a>
+    <a href="/updates/">更新历史</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="doc-wrap">
+    <nav class="guide-breadcrumb article-breadcrumb" aria-label="面包屑">
+      <a href="/">Coding Plan</a><span aria-hidden="true">/</span>
+      <a href="/articles/">文章列表</a><span aria-hidden="true">/</span>
+      <span aria-current="page" title="2026年8月主流大模型能力对比：Kimi K3 综合国产第一，Qwen3.8 Max Agentic 全球第一，DeepSeek V4 Flash 正式版越级打Pro，国产阵营全面突破">2026年8月主流大模型能力对比：Kimi K3 综合国产第一，Qwen3.8 Max Agentic 全球第一，DeepSeek V4 Flash 正式版越级打Pro，国产阵营全面突破</span>
     </nav>
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="侧栏目录">
-        <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、快速对比总览</a></li><li><a href="#sec-二-intelligence-index-opus-5-登顶-gpt-5-6-全线升级">二、Intelligence Index：Opus 5 登顶，GPT-5.6 全线升级</a></li><li><a href="#sec-三-agentic-index-qwen3-8-max-夺冠-国产创下历史高点">三、Agentic Index：Qwen3.8 Max 夺冠，国产创下历史高点</a></li><li><a href="#sec-四-成本对比-flash-0731-性价比最高-fable-opus-成本最高">四、成本对比：Flash 0731 性价比最高，Fable/Opus 成本最高</a></li><li><a href="#sec-h2-5">五、国产深度解析</a><ol><li><a href="#sec-qwen3-8-max-阿里-agentic-全球登顶-但注意纯文本限制">Qwen3.8 Max（阿里）：Agentic 全球登顶，但注意纯文本限制</a></li><li><a href="#sec-kimi-k3-月之暗面-国产-intelligence-最高-但新购受限">Kimi K3（月之暗面）：国产 Intelligence 最高，但新购受限</a></li><li><a href="#sec-deepseek-v4-flash-0731-vs-0420-升级明显">DeepSeek V4 Flash 0731 vs 0420：升级明显</a></li><li><a href="#sec-glm-5-2-智谱-ai-均衡国产旗舰-代码场景稳定">GLM-5.2（智谱 AI）：均衡国产旗舰，代码场景稳定</a></li></ol></li><li><a href="#sec-h2-6">六、选型建议</a><ol><li><a href="#sec-h3-6">最高综合智能</a></li><li><a href="#sec-agent-自动化为主">Agent 自动化为主</a></li><li><a href="#sec-h3-6-2">成本优先 / 高频调用</a></li><li><a href="#sec-h3-6-3">国产均衡优先</a></li><li><a href="#sec-h3-6-4">多模态需求</a></li></ol></li><li><a href="#sec-h2-7">七、本期变化总结</a></li></ol></nav>
+        <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">本页内容</p><ol><li><a href="#sec-h2-1">一、快速对比总览</a></li><li><a href="#sec-二-intelligence-index-opus-5-登顶-gpt-5-6-全线升级">二、Intelligence Index：Opus 5 登顶，GPT-5.6 全线升级</a></li><li><a href="#sec-三-agentic-index-qwen3-8-max-夺冠-国产创下历史高点">三、Agentic Index：Qwen3.8 Max 夺冠，国产创下历史高点</a></li><li><a href="#sec-四-成本对比-flash-0731-性价比最高-fable-opus-成本最高">四、成本对比：Flash 0731 性价比最高，Fable/Opus 成本最高</a></li><li><a href="#sec-h2-5">五、国产深度解析</a><ol><li><a href="#sec-qwen3-8-max-阿里-agentic-全球登顶-但注意纯文本限制">Qwen3.8 Max（阿里）：Agentic 全球登顶，但注意纯文本限制</a></li><li><a href="#sec-kimi-k3-月之暗面-国产-intelligence-最高-但新购受限">Kimi K3（月之暗面）：国产 Intelligence 最高，但新购受限</a></li><li><a href="#sec-deepseek-v4-flash-0731-vs-0420-升级明显">DeepSeek V4 Flash 0731 vs 0420：升级明显</a></li><li><a href="#sec-glm-5-2-智谱-ai-均衡国产旗舰-代码场景稳定">GLM-5.2（智谱 AI）：均衡国产旗舰，代码场景稳定</a></li></ol></li><li><a href="#sec-h2-6">六、选型建议</a><ol><li><a href="#sec-h3-6">最高综合智能</a></li><li><a href="#sec-agent-自动化为主">Agent 自动化为主</a></li><li><a href="#sec-h3-6-2">成本优先 / 高频调用</a></li><li><a href="#sec-h3-6-3">国产均衡优先</a></li><li><a href="#sec-h3-6-4">多模态需求</a></li></ol></li><li><a href="#sec-h2-7">七、本期变化总结</a></li></ol></nav>
       </aside>
       <article class="doc">
         <p class="doc-kicker">模型评测 · Coding Plan</p>
         <h1>2026年8月主流大模型能力对比：Kimi K3 综合国产第一，Qwen3.8 Max Agentic 全球第一，DeepSeek V4 Flash 正式版越级打Pro，国产阵营全面突破</h1>
-        <p class="doc-updates"><time datetime="2026-08-06">更新日期 2026.8.6</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
+        <p class="doc-updates"><time datetime="2026-08-06">更新日期 2026.8.6</time> · 数据来源 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
         
         <p class="lead">基于独立评测机构 Artificial Analysis 发布的最新 AI 模型基准测试结果（数据统计时间：2026 年 8 月 5 日），本文围绕 <strong>Intelligence Index</strong>（v4.1）和 <strong>Agentic Index</strong>（GDPval-AA v2 + τ³-Banking）两大核心指标，对 21 款主流大模型进行横向评测，并附成本参考。</p>
-        <nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、快速对比总览</a></li><li><a href="#sec-二-intelligence-index-opus-5-登顶-gpt-5-6-全线升级">二、Intelligence Index：Opus 5 登顶，GPT-5.6 全线升级</a></li><li><a href="#sec-三-agentic-index-qwen3-8-max-夺冠-国产创下历史高点">三、Agentic Index：Qwen3.8 Max 夺冠，国产创下历史高点</a></li><li><a href="#sec-四-成本对比-flash-0731-性价比最高-fable-opus-成本最高">四、成本对比：Flash 0731 性价比最高，Fable/Opus 成本最高</a></li><li><a href="#sec-h2-5">五、国产深度解析</a><ol><li><a href="#sec-qwen3-8-max-阿里-agentic-全球登顶-但注意纯文本限制">Qwen3.8 Max（阿里）：Agentic 全球登顶，但注意纯文本限制</a></li><li><a href="#sec-kimi-k3-月之暗面-国产-intelligence-最高-但新购受限">Kimi K3（月之暗面）：国产 Intelligence 最高，但新购受限</a></li><li><a href="#sec-deepseek-v4-flash-0731-vs-0420-升级明显">DeepSeek V4 Flash 0731 vs 0420：升级明显</a></li><li><a href="#sec-glm-5-2-智谱-ai-均衡国产旗舰-代码场景稳定">GLM-5.2（智谱 AI）：均衡国产旗舰，代码场景稳定</a></li></ol></li><li><a href="#sec-h2-6">六、选型建议</a><ol><li><a href="#sec-h3-6">最高综合智能</a></li><li><a href="#sec-agent-自动化为主">Agent 自动化为主</a></li><li><a href="#sec-h3-6-2">成本优先 / 高频调用</a></li><li><a href="#sec-h3-6-3">国产均衡优先</a></li><li><a href="#sec-h3-6-4">多模态需求</a></li></ol></li><li><a href="#sec-h2-7">七、本期变化总结</a></li></ol></nav>
+        <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">本页内容</p><ol><li><a href="#sec-h2-1">一、快速对比总览</a></li><li><a href="#sec-二-intelligence-index-opus-5-登顶-gpt-5-6-全线升级">二、Intelligence Index：Opus 5 登顶，GPT-5.6 全线升级</a></li><li><a href="#sec-三-agentic-index-qwen3-8-max-夺冠-国产创下历史高点">三、Agentic Index：Qwen3.8 Max 夺冠，国产创下历史高点</a></li><li><a href="#sec-四-成本对比-flash-0731-性价比最高-fable-opus-成本最高">四、成本对比：Flash 0731 性价比最高，Fable/Opus 成本最高</a></li><li><a href="#sec-h2-5">五、国产深度解析</a><ol><li><a href="#sec-qwen3-8-max-阿里-agentic-全球登顶-但注意纯文本限制">Qwen3.8 Max（阿里）：Agentic 全球登顶，但注意纯文本限制</a></li><li><a href="#sec-kimi-k3-月之暗面-国产-intelligence-最高-但新购受限">Kimi K3（月之暗面）：国产 Intelligence 最高，但新购受限</a></li><li><a href="#sec-deepseek-v4-flash-0731-vs-0420-升级明显">DeepSeek V4 Flash 0731 vs 0420：升级明显</a></li><li><a href="#sec-glm-5-2-智谱-ai-均衡国产旗舰-代码场景稳定">GLM-5.2（智谱 AI）：均衡国产旗舰，代码场景稳定</a></li></ol></li><li><a href="#sec-h2-6">六、选型建议</a><ol><li><a href="#sec-h3-6">最高综合智能</a></li><li><a href="#sec-agent-自动化为主">Agent 自动化为主</a></li><li><a href="#sec-h3-6-2">成本优先 / 高频调用</a></li><li><a href="#sec-h3-6-3">国产均衡优先</a></li><li><a href="#sec-h3-6-4">多模态需求</a></li></ol></li><li><a href="#sec-h2-7">七、本期变化总结</a></li></ol></nav></details>
         <p>本期不单独列出 Coding Index，因 Artificial Analysis 主对比页当前未为本期模型名单提供独立 Coding 横比视图。</p>
 <p><strong>本期关键变化（相较 2026 年 6 月榜单）：</strong></p>
 <ol>
@@ -739,8 +793,8 @@
 2. 本期不列 Coding Index；Intelligence Index 已综合含 Terminal-Bench v2.1（代码相关能力）在内的 9 项评测</p>
 </blockquote>
 
-<p>原文：<a href="https://vibecoding.dreamfree.space/articles/model_comparisons/20260806/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
-        <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>原文链接 <a href="https://vibecoding.dreamfree.space/articles/model_comparisons/20260806/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/model_comparisons/20260806/</a></div>
+<p>原文：<a href="/articles/model_comparisons/20260806/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
+        <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>原文链接 <a href="/articles/model_comparisons/20260806/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/model_comparisons/20260806/</a></div>
       </article>
     </div>
   </div>

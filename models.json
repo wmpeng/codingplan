@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-23T17:45:25Z",
+  "generatedAt": "2026-10-13T12:09:41Z",
   "benchmarks": {
     "artificialAnalysis": {
       "name": "Artificial Analysis Intelligence Index",
       "version": "v4.3.2",
       "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-6-sol",
-      "fetchedAt": "2026-09-23T17:45:25Z",
-      "availableConfigurations": 673
+      "fetchedAt": "2026-10-13T12:09:41Z",
+      "availableConfigurations": 699
     },
     "deepSWE": {
       "name": "DeepSWE",
@@ -19,21 +19,11 @@
     }
   },
   "coverage": {
-    "artificialAnalysisScores": 86,
+    "artificialAnalysisScores": 107,
     "deepSWEScores": 28,
-    "multimodalKnown": 88
+    "multimodalKnown": 136
   },
   "models": [
-    {
-      "slug": "auto",
-      "name": "Auto",
-      "multimodal": "unknown",
-      "modalities": null,
-      "scores": {
-        "artificialAnalysis": null,
-        "deepSWE": null
-      }
-    },
     {
       "slug": "claude-fable-5",
       "name": "Claude Fable 5",
@@ -51,7 +41,7 @@
         "artificialAnalysis": {
           "score": 50,
           "scoreExact": 49.6258202733378,
-          "configuration": "Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback)",
+          "configuration": "Claude Fable 5 (Max, Opus 4.8 Fallback)",
           "modelSlug": "claude-fable-5",
           "sourceUrl": "https://artificialanalysis.ai/models/claude-fable-5"
         },
@@ -83,7 +73,7 @@
         "artificialAnalysis": {
           "score": 53,
           "scoreExact": 53.3549259623252,
-          "configuration": "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
+          "configuration": "Claude Fable 5.1 (Max, Default Fallback)",
           "modelSlug": "claude-fable-5-1",
           "sourceUrl": "https://artificialanalysis.ai/models/claude-fable-5-1"
         },
@@ -129,11 +119,11 @@
       },
       "scores": {
         "artificialAnalysis": {
-          "score": 24,
-          "scoreExact": 23.6788975349785,
-          "configuration": "Claude Opus 4.5 (Non-reasoning)",
-          "modelSlug": "claude-opus-4-5",
-          "sourceUrl": "https://artificialanalysis.ai/models/claude-opus-4-5"
+          "score": 29,
+          "scoreExact": 29.0955143334264,
+          "configuration": "Claude Opus 4.5 (Reasoning)",
+          "modelSlug": "claude-opus-4-5-thinking",
+          "sourceUrl": "https://artificialanalysis.ai/models/claude-opus-4-5-thinking"
         },
         "deepSWE": null
       }
@@ -153,11 +143,11 @@
       },
       "scores": {
         "artificialAnalysis": {
-          "score": 26,
-          "scoreExact": 26.3534088054787,
-          "configuration": "Claude Opus 4.6 (Non-reasoning, High Effort)",
-          "modelSlug": "claude-opus-4-6",
-          "sourceUrl": "https://artificialanalysis.ai/models/claude-opus-4-6"
+          "score": 32,
+          "scoreExact": 31.9457397504366,
+          "configuration": "Claude Opus 4.6 (Max)",
+          "modelSlug": "claude-opus-4-6-adaptive",
+          "sourceUrl": "https://artificialanalysis.ai/models/claude-opus-4-6-adaptive"
         },
         "deepSWE": null
       }
@@ -179,7 +169,7 @@
         "artificialAnalysis": {
           "score": 41,
           "scoreExact": 40.6897928205908,
-          "configuration": "Claude Opus 4.7 (Adaptive Reasoning, Max Effort)",
+          "configuration": "Claude Opus 4.7 (Max)",
           "modelSlug": "claude-opus-4-7",
           "sourceUrl": "https://artificialanalysis.ai/models/claude-opus-4-7"
         },
@@ -203,7 +193,7 @@
         "artificialAnalysis": {
           "score": 42,
           "scoreExact": 41.7899103794639,
-          "configuration": "Claude Opus 4.8 (Adaptive Reasoning, Max Effort)",
+          "configuration": "Claude Opus 4.8 (Max)",
           "modelSlug": "claude-opus-4-8",
           "sourceUrl": "https://artificialanalysis.ai/models/claude-opus-4-8"
         },
@@ -235,7 +225,7 @@
         "artificialAnalysis": {
           "score": 51,
           "scoreExact": 50.7771115797629,
-          "configuration": "Claude Opus 5 (Adaptive Reasoning, Max Effort)",
+          "configuration": "Claude Opus 5 (Max)",
           "modelSlug": "claude-opus-5",
           "sourceUrl": "https://artificialanalysis.ai/models/claude-opus-5"
         },
@@ -289,11 +279,11 @@
       },
       "scores": {
         "artificialAnalysis": {
-          "score": 25,
-          "scoreExact": 24.6869297210126,
-          "configuration": "Claude Sonnet 4.6 (Non-reasoning, High Effort)",
-          "modelSlug": "claude-sonnet-4-6",
-          "sourceUrl": "https://artificialanalysis.ai/models/claude-sonnet-4-6"
+          "score": 30,
+          "scoreExact": 30.0575611117644,
+          "configuration": "Claude Sonnet 4.6 (Max)",
+          "modelSlug": "claude-sonnet-4-6-adaptive",
+          "sourceUrl": "https://artificialanalysis.ai/models/claude-sonnet-4-6-adaptive"
         },
         "deepSWE": {
           "score": 30,
@@ -323,7 +313,7 @@
         "artificialAnalysis": {
           "score": 38,
           "scoreExact": 38.1638712882576,
-          "configuration": "Claude Sonnet 5 (Adaptive Reasoning, Max Effort)",
+          "configuration": "Claude Sonnet 5 (Max)",
           "modelSlug": "claude-sonnet-5",
           "sourceUrl": "https://artificialanalysis.ai/models/claude-sonnet-5"
         },
@@ -352,11 +342,11 @@
       },
       "scores": {
         "artificialAnalysis": {
-          "score": 16,
-          "scoreExact": 16.043537719683,
-          "configuration": "DeepSeek V3.2 (Non-reasoning)",
-          "modelSlug": "deepseek-v3-2",
-          "sourceUrl": "https://artificialanalysis.ai/models/deepseek-v3-2"
+          "score": 21,
+          "scoreExact": 21.4867901704834,
+          "configuration": "DeepSeek V3.2 (Reasoning)",
+          "modelSlug": "deepseek-v3-2-reasoning",
+          "sourceUrl": "https://artificialanalysis.ai/models/deepseek-v3-2-reasoning"
         },
         "deepSWE": null
       }
@@ -365,12 +355,20 @@
       "slug": "deepseek-v4-1-flash",
       "name": "DeepSeek-V4.1-Flash",
       "multimodal": true,
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": {
           "score": 39,
           "scoreExact": 39.456167472527,
-          "configuration": "DeepSeek V4.1 Flash (Reasoning, Max Effort)",
+          "configuration": "DeepSeek V4.1 Flash (Max)",
           "modelSlug": "deepseek-v4-1-flash",
           "sourceUrl": "https://artificialanalysis.ai/models/deepseek-v4-1-flash"
         },
@@ -393,7 +391,7 @@
         "artificialAnalysis": {
           "score": 34,
           "scoreExact": 34.3305129347816,
-          "configuration": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)",
+          "configuration": "DeepSeek V4 Flash 0731 (Max)",
           "modelSlug": "deepseek-v4-flash",
           "sourceUrl": "https://artificialanalysis.ai/models/deepseek-v4-flash"
         },
@@ -435,7 +433,7 @@
         "artificialAnalysis": {
           "score": 35,
           "scoreExact": 34.8390628035969,
-          "configuration": "DeepSeek V4 Flash Vision (Reasoning, Max Effort)",
+          "configuration": "DeepSeek V4 Flash Vision (Max)",
           "modelSlug": "deepseek-v4-flash-vision",
           "sourceUrl": "https://artificialanalysis.ai/models/deepseek-v4-flash-vision"
         },
@@ -468,7 +466,7 @@
         "artificialAnalysis": {
           "score": 36,
           "scoreExact": 35.9967791278402,
-          "configuration": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)",
+          "configuration": "DeepSeek V4 Pro 0813 (Max)",
           "modelSlug": "deepseek-v4-pro",
           "sourceUrl": "https://artificialanalysis.ai/models/deepseek-v4-pro"
         },
@@ -499,7 +497,7 @@
         "artificialAnalysis": {
           "score": 30,
           "scoreExact": 30.4496601315524,
-          "configuration": "DeepSeek V4 Pro 0424 (Reasoning, Max Effort)",
+          "configuration": "DeepSeek V4 Pro 0424 (Max)",
           "modelSlug": "deepseek-v4-pro-0424",
           "sourceUrl": "https://artificialanalysis.ai/models/deepseek-v4-pro-0424"
         },
@@ -509,8 +507,17 @@
     {
       "slug": "doubao-seed-2-0-lite",
       "name": "Doubao-Seed-2.0-Lite",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -519,8 +526,17 @@
     {
       "slug": "doubao-seed-2-0-mini",
       "name": "Doubao-Seed-2.0-Mini",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -539,8 +555,17 @@
     {
       "slug": "doubao-seed-2-1-turbo",
       "name": "Doubao-Seed-2.1-Turbo",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -549,8 +574,17 @@
     {
       "slug": "doubao-seed-2-1-pro",
       "name": "Doubao-Seed-2.1-Pro",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -583,8 +617,17 @@
     {
       "slug": "doubao-seed-evolving",
       "name": "Doubao-Seed-Evolving",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -593,8 +636,19 @@
     {
       "slug": "doubao-seedance-2-0",
       "name": "Doubao-Seedance-2.0",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "speech",
+          "video"
+        ],
+        "output": [
+          "speech",
+          "video"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -603,8 +657,16 @@
     {
       "slug": "doubao-seedream-5-0-lite",
       "name": "Doubao-Seedream-5.0-lite",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -623,8 +685,16 @@
     {
       "slug": "fugu-ultra",
       "name": "Fugu-Ultra",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -733,11 +803,11 @@
       },
       "scores": {
         "artificialAnalysis": {
-          "score": 33,
-          "scoreExact": 32.5983283695905,
-          "configuration": "Gemini 3.5 Flash (high)",
-          "modelSlug": "gemini-3-5-flash",
-          "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-5-flash"
+          "score": 34,
+          "scoreExact": 33.6325871590289,
+          "configuration": "Gemini 3.5 Flash (Medium)",
+          "modelSlug": "gemini-3-5-flash-medium",
+          "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-5-flash-medium"
         },
         "deepSWE": {
           "score": 36,
@@ -795,7 +865,7 @@
         "artificialAnalysis": {
           "score": 34,
           "scoreExact": 33.9785928920714,
-          "configuration": "Gemini 3.6 Flash (high)",
+          "configuration": "Gemini 3.6 Flash (High)",
           "modelSlug": "gemini-3-6-flash",
           "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-6-flash"
         },
@@ -827,11 +897,11 @@
       },
       "scores": {
         "artificialAnalysis": {
-          "score": 39,
-          "scoreExact": 39.0594566404896,
-          "configuration": "Gemini 3.7 Flash (high)",
-          "modelSlug": "gemini-3-7-flash",
-          "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-7-flash"
+          "score": 40,
+          "scoreExact": 39.617751842555,
+          "configuration": "Gemini 3.7 Flash (Medium)",
+          "modelSlug": "gemini-3-7-flash-medium",
+          "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-7-flash-medium"
         },
         "deepSWE": {
           "score": 65,
@@ -848,12 +918,22 @@
       "slug": "gemini-3-8-flash",
       "name": "Gemini-3.8-Flash",
       "multimodal": true,
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "speech",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": {
           "score": 41,
           "scoreExact": 40.9262321765904,
-          "configuration": "Gemini 3.8 Flash (high)",
+          "configuration": "Gemini 3.8 Flash (High)",
           "modelSlug": "gemini-3-8-flash",
           "sourceUrl": "https://artificialanalysis.ai/models/gemini-3-8-flash"
         },
@@ -976,7 +1056,7 @@
         "artificialAnalysis": {
           "score": 34,
           "scoreExact": 33.7054572377545,
-          "configuration": "GLM-5.2 (max)",
+          "configuration": "GLM-5.2 (Max)",
           "modelSlug": "glm-5-2",
           "sourceUrl": "https://artificialanalysis.ai/models/glm-5-2"
         },
@@ -1017,7 +1097,7 @@
         "artificialAnalysis": {
           "score": 45,
           "scoreExact": 44.777392385614,
-          "configuration": "GLM-5.3 (max)",
+          "configuration": "GLM-5.3 (Max)",
           "modelSlug": "glm-5-3",
           "sourceUrl": "https://artificialanalysis.ai/models/glm-5-3"
         },
@@ -1049,7 +1129,7 @@
         "artificialAnalysis": {
           "score": 42,
           "scoreExact": 41.807466113455,
-          "configuration": "GLM 5.3 Flash",
+          "configuration": "GLM-5.3-Flash",
           "modelSlug": "glm-5-3-flash",
           "sourceUrl": "https://artificialanalysis.ai/models/glm-5-3-flash"
         },
@@ -1154,7 +1234,7 @@
         "artificialAnalysis": {
           "score": 53,
           "scoreExact": 52.673669395513,
-          "configuration": "GPT-6 Astra (max)",
+          "configuration": "GPT-6 Astra (Max)",
           "modelSlug": "gpt-6-astra",
           "sourceUrl": "https://artificialanalysis.ai/models/gpt-6-astra"
         },
@@ -1185,8 +1265,8 @@
       "scores": {
         "artificialAnalysis": {
           "score": 48,
-          "scoreExact": 47.5276426437724,
-          "configuration": "GPT-6 Sol (max)",
+          "scoreExact": 47.6305176437724,
+          "configuration": "GPT-6 Sol (Max)",
           "modelSlug": "gpt-6-sol",
           "sourceUrl": "https://artificialanalysis.ai/models/gpt-6-sol"
         },
@@ -1208,9 +1288,9 @@
       },
       "scores": {
         "artificialAnalysis": {
-          "score": 37,
-          "scoreExact": 37.2559686869738,
-          "configuration": "GPT-6 Luna (max)",
+          "score": 38,
+          "scoreExact": 38.1245186869738,
+          "configuration": "GPT-6 Luna (Max)",
           "modelSlug": "gpt-6-luna",
           "sourceUrl": "https://artificialanalysis.ai/models/gpt-6-luna"
         },
@@ -1232,11 +1312,11 @@
       },
       "scores": {
         "artificialAnalysis": {
-          "score": 17,
-          "scoreExact": 16.7730881042515,
-          "configuration": "GPT-5 mini (high)",
-          "modelSlug": "gpt-5-mini",
-          "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-mini"
+          "score": 21,
+          "scoreExact": 20.5991778305353,
+          "configuration": "GPT-5 mini (Medium)",
+          "modelSlug": "gpt-5-mini-medium",
+          "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-mini-medium"
         },
         "deepSWE": null
       }
@@ -1258,7 +1338,7 @@
         "artificialAnalysis": {
           "score": 30,
           "scoreExact": 30.448181916806,
-          "configuration": "GPT-5.2 (xhigh)",
+          "configuration": "GPT-5.2 (Xhigh)",
           "modelSlug": "gpt-5-2",
           "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-2"
         },
@@ -1282,7 +1362,7 @@
         "artificialAnalysis": {
           "score": 29,
           "scoreExact": 28.5016971971953,
-          "configuration": "GPT-5.2 Codex (xhigh)",
+          "configuration": "GPT-5.2 Codex (Xhigh)",
           "modelSlug": "gpt-5-2-codex",
           "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-2-codex"
         },
@@ -1306,7 +1386,7 @@
         "artificialAnalysis": {
           "score": 33,
           "scoreExact": 32.5028174368983,
-          "configuration": "GPT-5.3 Codex (xhigh)",
+          "configuration": "GPT-5.3 Codex (Xhigh)",
           "modelSlug": "gpt-5-3-codex",
           "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-3-codex"
         },
@@ -1330,7 +1410,7 @@
         "artificialAnalysis": {
           "score": 39,
           "scoreExact": 38.9755886799637,
-          "configuration": "GPT-5.4 (xhigh)",
+          "configuration": "GPT-5.4 (Xhigh)",
           "modelSlug": "gpt-5-4",
           "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-4"
         },
@@ -1362,7 +1442,7 @@
         "artificialAnalysis": {
           "score": 24,
           "scoreExact": 24.0682169231964,
-          "configuration": "GPT-5.4 mini (xhigh)",
+          "configuration": "GPT-5.4 mini (Xhigh)",
           "modelSlug": "gpt-5-4-mini",
           "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-4-mini"
         },
@@ -1386,7 +1466,7 @@
         "artificialAnalysis": {
           "score": 38,
           "scoreExact": 38.3556437590607,
-          "configuration": "GPT-5.5 (xhigh)",
+          "configuration": "GPT-5.5 (Xhigh)",
           "modelSlug": "gpt-5-5",
           "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-5"
         },
@@ -1428,7 +1508,7 @@
         "artificialAnalysis": {
           "score": 37,
           "scoreExact": 37.3244239690841,
-          "configuration": "GPT-5.6 Luna (max)",
+          "configuration": "GPT-5.6 Luna (Max)",
           "modelSlug": "gpt-5-6-luna",
           "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-6-luna"
         },
@@ -1460,7 +1540,7 @@
         "artificialAnalysis": {
           "score": 47,
           "scoreExact": 46.9727068915036,
-          "configuration": "GPT-5.6 Sol (max)",
+          "configuration": "GPT-5.6 Sol (Max)",
           "modelSlug": "gpt-5-6-sol",
           "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-6-sol"
         },
@@ -1492,7 +1572,7 @@
         "artificialAnalysis": {
           "score": 42,
           "scoreExact": 42.0829248239494,
-          "configuration": "GPT-5.6 Terra (max)",
+          "configuration": "GPT-5.6 Terra (Max)",
           "modelSlug": "gpt-5-6-terra",
           "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-6-terra"
         },
@@ -1510,8 +1590,16 @@
     {
       "slug": "gpt-image-2-0",
       "name": "GPT-Image-2.0",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -1557,7 +1645,7 @@
         "artificialAnalysis": {
           "score": 39,
           "scoreExact": 38.8121153240657,
-          "configuration": "Grok 4.5 (high)",
+          "configuration": "Grok 4.5 (High)",
           "modelSlug": "grok-4-5",
           "sourceUrl": "https://artificialanalysis.ai/models/grok-4-5"
         },
@@ -1589,7 +1677,7 @@
         "artificialAnalysis": {
           "score": 44,
           "scoreExact": 44.3113073012592,
-          "configuration": "Grok 4.6 (high)",
+          "configuration": "Grok 4.6 (High)",
           "modelSlug": "grok-4-6",
           "sourceUrl": "https://artificialanalysis.ai/models/grok-4-6"
         },
@@ -1640,8 +1728,15 @@
     {
       "slug": "hy4-preview",
       "name": "Hy4-preview",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": false,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -1665,7 +1760,7 @@
         "artificialAnalysis": {
           "score": 25,
           "scoreExact": 24.9847810999384,
-          "configuration": "Inkling (xhigh)",
+          "configuration": "Inkling (Xhigh)",
           "modelSlug": "inkling",
           "sourceUrl": "https://artificialanalysis.ai/models/inkling"
         },
@@ -1688,8 +1783,8 @@
       },
       "scores": {
         "artificialAnalysis": {
-          "score": 28,
-          "scoreExact": 27.7806153423596,
+          "score": 26,
+          "scoreExact": 25.6582584411942,
           "configuration": "Inkling Small",
           "modelSlug": "inkling-small",
           "sourceUrl": "https://artificialanalysis.ai/models/inkling-small"
@@ -1763,7 +1858,7 @@
         "artificialAnalysis": {
           "score": 27,
           "scoreExact": 26.9791999742844,
-          "configuration": "Kimi K2.6",
+          "configuration": "Kimi K2.6 (Reasoning)",
           "modelSlug": "kimi-k2-6",
           "sourceUrl": "https://artificialanalysis.ai/models/kimi-k2-6"
         },
@@ -1816,8 +1911,17 @@
     {
       "slug": "kimi-k2-7-code-highspeed",
       "name": "Kimi-K2.7-Code-HighSpeed",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -1840,7 +1944,7 @@
         "artificialAnalysis": {
           "score": 44,
           "scoreExact": 43.5938229518782,
-          "configuration": "Kimi K3 (max)",
+          "configuration": "Kimi K3 (Max)",
           "modelSlug": "kimi-k3",
           "sourceUrl": "https://artificialanalysis.ai/models/kimi-k3"
         },
@@ -1858,8 +1962,15 @@
     {
       "slug": "laguna-s-2-1",
       "name": "Laguna-S-2.1",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": false,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -1869,15 +1980,39 @@
       "slug": "ling-3-0-flash",
       "name": "Ling-3.0-Flash",
       "multimodal": false,
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": {
-          "score": 25,
-          "scoreExact": 24.9392319530441,
+          "score": 20,
+          "scoreExact": 20.1332521865481,
           "configuration": "Ling 3.0 Flash",
           "modelSlug": "ling-3-0-flash",
           "sourceUrl": "https://artificialanalysis.ai/models/ling-3-0-flash"
         },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "ling-3-0-flash-sante",
+      "name": "Ling-3.0-Flash-Sante",
+      "multimodal": false,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": null,
         "deepSWE": null
       }
     },
@@ -1955,9 +2090,23 @@
       "slug": "mimo-v2-6-flash",
       "name": "MiMo-V2.6-Flash",
       "multimodal": true,
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
-        "artificialAnalysis": null,
+        "artificialAnalysis": {
+          "score": 38,
+          "scoreExact": 37.8843590141754,
+          "configuration": "MiMo-V2.6-Flash",
+          "modelSlug": "mimo-v2-6-flash",
+          "sourceUrl": "https://artificialanalysis.ai/models/mimo-v2-6-flash"
+        },
         "deepSWE": null
       }
     },
@@ -1965,7 +2114,17 @@
       "slug": "mimo-v2-6-pro",
       "name": "MiMo-V2.6-Pro",
       "multimodal": true,
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "speech",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": {
           "score": 46,
@@ -2017,7 +2176,7 @@
         "artificialAnalysis": {
           "score": 26,
           "scoreExact": 25.9868888896511,
-          "configuration": "MiMo-V2.5-Pro",
+          "configuration": "MiMo-V2.5-Pro (Reasoning)",
           "modelSlug": "mimo-v2-5-pro",
           "sourceUrl": "https://artificialanalysis.ai/models/mimo-v2-5-pro"
         },
@@ -2027,8 +2186,15 @@
     {
       "slug": "mimo-v2-5-tts",
       "name": "MiMo-V2.5-TTS",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "speech"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -2124,7 +2290,7 @@
         "artificialAnalysis": {
           "score": 34,
           "scoreExact": 33.7298425919846,
-          "configuration": "Muse Spark 1.1 (xhigh)",
+          "configuration": "Muse Spark 1.1 (Xhigh)",
           "modelSlug": "muse-spark-1-1",
           "sourceUrl": "https://artificialanalysis.ai/models/muse-spark-1-1"
         },
@@ -2158,7 +2324,7 @@
         "artificialAnalysis": {
           "score": 40,
           "scoreExact": 39.5758607970943,
-          "configuration": "Muse Spark 1.2 (xhigh)",
+          "configuration": "Muse Spark 1.2 (Xhigh)",
           "modelSlug": "muse-spark-1-2",
           "sourceUrl": "https://artificialanalysis.ai/models/muse-spark-1-2"
         },
@@ -2177,12 +2343,21 @@
       "slug": "muse-spark-1-3",
       "name": "Muse-Spark-1.3",
       "multimodal": true,
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": {
           "score": 48,
           "scoreExact": 48.0923107719685,
-          "configuration": "Muse Spark 1.3 (max)",
+          "configuration": "Muse Spark 1.3 (Max)",
           "modelSlug": "muse-spark-1-3",
           "sourceUrl": "https://artificialanalysis.ai/models/muse-spark-1-3"
         },
@@ -2192,10 +2367,23 @@
     {
       "slug": "nemotron-3-ultra",
       "name": "Nemotron-3-Ultra",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": false,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
-        "artificialAnalysis": null,
+        "artificialAnalysis": {
+          "score": 23,
+          "scoreExact": 22.9279123422858,
+          "configuration": "Nemotron 3 Ultra 550B A55B (Reasoning)",
+          "modelSlug": "nvidia-nemotron-3-ultra-550b-a55b",
+          "sourceUrl": "https://artificialanalysis.ai/models/nvidia-nemotron-3-ultra-550b-a55b"
+        },
         "deepSWE": null
       }
     },
@@ -2213,11 +2401,11 @@
       },
       "scores": {
         "artificialAnalysis": {
-          "score": 8,
-          "scoreExact": 8.29469219577047,
-          "configuration": "Qwen3 235B A22B (Non-reasoning)",
-          "modelSlug": "qwen3-235b-a22b-instruct",
-          "sourceUrl": "https://artificialanalysis.ai/models/qwen3-235b-a22b-instruct"
+          "score": 9,
+          "scoreExact": 9.49970850374162,
+          "configuration": "Qwen3 235B A22B (Reasoning)",
+          "modelSlug": "qwen3-235b-a22b-instruct-reasoning",
+          "sourceUrl": "https://artificialanalysis.ai/models/qwen3-235b-a22b-instruct-reasoning"
         },
         "deepSWE": null
       }
@@ -2288,8 +2476,17 @@
     {
       "slug": "qwen-3-5-plus",
       "name": "Qwen-3.5-Plus",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -2298,8 +2495,17 @@
     {
       "slug": "qwen-3-6-flash",
       "name": "Qwen-3.6-Flash",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -2356,8 +2562,17 @@
     {
       "slug": "qwen-3-7-flash",
       "name": "Qwen-3.7-Flash",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -2429,7 +2644,7 @@
         "artificialAnalysis": {
           "score": 34,
           "scoreExact": 33.6962858057476,
-          "configuration": "Qwen3.8 27B (xhigh)",
+          "configuration": "Qwen3.8 27B (Xhigh)",
           "modelSlug": "qwen3-8-27b",
           "sourceUrl": "https://artificialanalysis.ai/models/qwen3-8-27b"
         },
@@ -2498,7 +2713,15 @@
       "slug": "qwen-3-8-max-0902",
       "name": "Qwen-3.8-Max-0902",
       "multimodal": true,
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "scores": {
         "artificialAnalysis": {
           "score": 45,
@@ -2517,7 +2740,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "video"
         ],
         "output": [
           "text"
@@ -2547,8 +2771,15 @@
     {
       "slug": "sensenova-u1-fast",
       "name": "SenseNova U1 Fast",
-      "multimodal": "unknown",
-      "modalities": null,
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "scores": {
         "artificialAnalysis": null,
         "deepSWE": null
@@ -2624,6 +2855,686 @@
     {
       "slug": "hy-t1",
       "name": "HY-T1",
+      "multimodal": "unknown",
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "gpt-6-1-sol",
+      "name": "GPT-6.1-Sol",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 51.8332597011541,
+          "configuration": "GPT-6.1 Sol (Max)",
+          "modelSlug": "gpt-6-1-sol",
+          "sourceUrl": "https://artificialanalysis.ai/models/gpt-6-1-sol"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "claude-opus-5-5",
+      "name": "Claude Opus 5.5",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 58,
+          "scoreExact": 57.6223698102963,
+          "configuration": "Claude Opus 5.5 (Max, Default Fallback)",
+          "modelSlug": "claude-opus-5-5",
+          "sourceUrl": "https://artificialanalysis.ai/models/claude-opus-5-5"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "claude-sonnet-5-5",
+      "name": "Claude Sonnet 5.5",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 56,
+          "scoreExact": 56.0001286580794,
+          "configuration": "Claude Sonnet 5.5 (Max, Default Fallback)",
+          "modelSlug": "claude-sonnet-5-5",
+          "sourceUrl": "https://artificialanalysis.ai/models/claude-sonnet-5-5"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "claude-haiku-5-5",
+      "name": "Claude Haiku 5.5",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 43,
+          "scoreExact": 43.3950199670746,
+          "configuration": "Claude Haiku 5.5 (Max)",
+          "modelSlug": "claude-haiku-5-5",
+          "sourceUrl": "https://artificialanalysis.ai/models/claude-haiku-5-5"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "kimi-k2-8-preview",
+      "name": "Kimi-K2.8-Preview",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "step-5-preview",
+      "name": "Step-5-Preview",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 44,
+          "scoreExact": 43.7343049141614,
+          "configuration": "Step 5 Preview",
+          "modelSlug": "step-5",
+          "sourceUrl": "https://artificialanalysis.ai/models/step-5"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "longcat-2-5-preview",
+      "name": "LongCat-2.5-Preview",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "grok-4-7",
+      "name": "Grok-4.7",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 46,
+          "scoreExact": 46.4465506302286,
+          "configuration": "Grok 4.7 (Xhigh)",
+          "modelSlug": "grok-4-7",
+          "sourceUrl": "https://artificialanalysis.ai/models/grok-4-7"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "mistral-large-4",
+      "name": "Mistral-Large-4",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 38,
+          "scoreExact": 38.3770408917494,
+          "configuration": "Mistral Large 4 Preview",
+          "modelSlug": "mistral-large-4",
+          "sourceUrl": "https://artificialanalysis.ai/models/mistral-large-4"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "space-bunny",
+      "name": "Space Bunny",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "gemma-4-31b",
+      "name": "Gemma-4-31B",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 15,
+          "scoreExact": 14.6689500745828,
+          "configuration": "Gemma 4 31B (Reasoning)",
+          "modelSlug": "gemma-4-31b",
+          "sourceUrl": "https://artificialanalysis.ai/models/gemma-4-31b"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "name": "GPT-OSS-120B",
+      "multimodal": false,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 12,
+          "scoreExact": 11.6028431512592,
+          "configuration": "gpt-oss-120b (High)",
+          "modelSlug": "gpt-oss-120b",
+          "sourceUrl": "https://artificialanalysis.ai/models/gpt-oss-120b"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "gpt-oss-20b",
+      "name": "GPT-OSS-20B",
+      "multimodal": false,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 10,
+          "scoreExact": 9.95295342568922,
+          "configuration": "gpt-oss-20b (Low)",
+          "modelSlug": "gpt-oss-20b-low",
+          "sourceUrl": "https://artificialanalysis.ai/models/gpt-oss-20b-low"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "mistral-large-3",
+      "name": "Mistral-Large-3",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 9,
+          "scoreExact": 9.26608812860467,
+          "configuration": "Mistral Large 3",
+          "modelSlug": "mistral-large-3",
+          "sourceUrl": "https://artificialanalysis.ai/models/mistral-large-3"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "nemotron-3-nano",
+      "name": "Nemotron-3-Nano",
+      "multimodal": false,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 9,
+          "scoreExact": 8.8961440122188,
+          "configuration": "NVIDIA Nemotron 3 Nano 30B A3B (Reasoning)",
+          "modelSlug": "nvidia-nemotron-3-nano-30b-a3b-reasoning",
+          "sourceUrl": "https://artificialanalysis.ai/models/nvidia-nemotron-3-nano-30b-a3b-reasoning"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "nemotron-3-super",
+      "name": "Nemotron-3-Super",
+      "multimodal": false,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 13,
+          "scoreExact": 12.8287575290979,
+          "configuration": "Nemotron 3 Super 120B A12B (Reasoning)",
+          "modelSlug": "nvidia-nemotron-3-super-120b-a12b",
+          "sourceUrl": "https://artificialanalysis.ai/models/nvidia-nemotron-3-super-120b-a12b"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "gemini-4-argon",
+      "name": "Gemini 4 Argon",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 53,
+          "scoreExact": 52.5605655745982,
+          "configuration": "Gemini 4 Argon (High)",
+          "modelSlug": "gemini-4-argon",
+          "sourceUrl": "https://artificialanalysis.ai/models/gemini-4-argon"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "doubao-seed-2-1-pro-0915",
+      "name": "Doubao-Seed-2.1-Pro-0915",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "glm-5-3-flashx",
+      "name": "GLM-5.3-FlashX",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "doubao-seed-2-1-lite",
+      "name": "Doubao-Seed-2.1-Lite",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "speech",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "ling-3-1-flash",
+      "name": "Ling 3.1 Flash",
+      "multimodal": false,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 41,
+          "scoreExact": 41.0906200397391,
+          "configuration": "Ling 3.1 Flash",
+          "modelSlug": "ling-3-1-flash",
+          "sourceUrl": "https://artificialanalysis.ai/models/ling-3-1-flash"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "glyph-cluster",
+      "name": "Glyph Cluster",
+      "multimodal": "unknown",
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "qwen-3-8-omni-flash",
+      "name": "Qwen 3.8 Omni Flash",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "speech",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "gpt-5-4-nano",
+      "name": "GPT-5.4-nano",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 21,
+          "scoreExact": 20.7197352504557,
+          "configuration": "GPT-5.4 nano (Xhigh)",
+          "modelSlug": "gpt-5-4-nano",
+          "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-4-nano"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "mai-code-1-1-flash",
+      "name": "MAI-Code-1.1-Flash",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "sensenova-6-8-flash-lite",
+      "name": "SenseNova 6.8 Flash Lite",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "minimax-m3-1-flash-preview",
+      "name": "MiniMax-M3.1-Flash-Preview",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "spark-x2-5",
+      "name": "Spark-X2.5",
+      "multimodal": "unknown",
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "spark-x2-flash",
+      "name": "Spark-X2-Flash",
+      "multimodal": "unknown",
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "qwen-3-5-397b-a17b",
+      "name": "Qwen3.5-397B-A17B",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 21,
+          "scoreExact": 21.4366547759392,
+          "configuration": "Qwen3.5 397B A17B (Non-reasoning)",
+          "modelSlug": "qwen3-5-397b-a17b-non-reasoning",
+          "sourceUrl": "https://artificialanalysis.ai/models/qwen3-5-397b-a17b-non-reasoning"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "qwen-3-5-35b-a3b",
+      "name": "Qwen3.5-35B-A3B",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 19,
+          "scoreExact": 19.3295292724173,
+          "configuration": "Qwen3.5 35B A3B (Reasoning)",
+          "modelSlug": "qwen3-5-35b-a3b",
+          "sourceUrl": "https://artificialanalysis.ai/models/qwen3-5-35b-a3b"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "glm-4-7-flash",
+      "name": "GLM-4.7-Flash",
+      "multimodal": false,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 15,
+          "scoreExact": 14.8719733920138,
+          "configuration": "GLM-4.7-Flash (Reasoning)",
+          "modelSlug": "glm-4-7-flash",
+          "sourceUrl": "https://artificialanalysis.ai/models/glm-4-7-flash"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "composer-2-5",
+      "name": "Composer 2.5",
       "multimodal": "unknown",
       "modalities": null,
       "scores": {

@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<script src="/scripts/ui-core.js?v=57904152bf"></script>
+<script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
+<script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kimi K2.7 Code 发布并开源：编程专项大升级，高速版今日上线</title>
-  <meta name="description" content="月之暗面发布开源 Kimi K2.7 Code，Kimi Code 默认升舱，6 月 15 日高速版上线；相对 K2.6 token 消耗约减 30%，API 不涨价。" />
-  <link rel="icon" href="../../../favicon.ico?v=20260615" type="image/x-icon" />
-  <link rel="stylesheet" href="../../../styles/shared.css?v=20260615" />
+<meta name="description" content="月之暗面发布开源 Kimi K2.7 Code，Kimi Code 默认升舱，6 月 15 日高速版上线；相对 K2.6 token 消耗约减 30%，API 不涨价。" />
+  <link rel="icon" href="../../../favicon.ico?v=260924a" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=482edb170c" />
   <style>
     body.article-page {
       font-size: 17px;
@@ -485,17 +489,67 @@
     }
 
   </style>
+<link rel="canonical" href="https://codingplan.fyi/articles/news/20260615_kimi_k27_code/">
+<script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=7c1640cfed" />
+  <link rel="stylesheet" href="/styles/design-system.css?v=47a0b29cda" />
+<script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
+<link rel="stylesheet" href="/styles/ui-components.css?v=e5133e2fe2">
 </head>
 <body class="article-page">
-  <div class="doc-wrap">
-    <nav class="back-nav" aria-label="返回">
-      <a href="../../../" class="back-home-btn">← 返回主页</a>
-      <a href="../../" class="back-home-btn">文章列表</a>
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/monitor/" hidden data-monitor-nav>可用性监控</a>
+    <a href="/articles/" aria-current="page">文章</a>
+    <a href="/updates/">更新历史</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="doc-wrap">
+    <nav class="guide-breadcrumb article-breadcrumb" aria-label="面包屑">
+      <a href="/">Coding Plan</a><span aria-hidden="true">/</span>
+      <a href="/articles/">文章列表</a><span aria-hidden="true">/</span>
+      <span aria-current="page" title="Kimi K2.7 Code 发布并开源：编程专项大升级，高速版今日上线">Kimi K2.7 Code 发布并开源：编程专项大升级，高速版今日上线</span>
     </nav>
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop">
         <nav class="doc-toc" aria-label="文章目录">
-          <p class="doc-toc-title">目录</p>
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-what">一、K2.7 Code 是什么</a><ol>
               <li><a href="#sec-arch">架构与定位</a></li>
@@ -531,11 +585,11 @@
       <article class="doc">
       <p class="doc-kicker">产品更新 · Kimi Code</p>
       <h1>Kimi K2.7 Code 发布并开源：编程专项大升级，高速版今日上线</h1>
-      <p class="doc-updates">更新日期：<time datetime="2026-06-15">2026.6.15</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
+      <p class="doc-updates">更新日期：<time datetime="2026-06-15">2026.6.15</time> · 数据来源 <a href="/" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
       <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;">本次核心更新：<strong>6 月 12 日</strong>月之暗面发布并开源 <strong>Kimi K2.7 Code</strong>（Modified MIT）；<strong>Kimi Code Plan</strong> 默认模型同步升级；开放平台 API <strong>不涨按量价</strong>；<strong>6 月 15 日</strong> <strong>高速版</strong> <code>kimi-k2.7-code-highspeed</code> 上线（约 <strong>5–6×</strong> 输出速度、<strong>2×</strong> 价格）；相对 K2.6 官方称长程编程与指令遵循提升，思考 token 平均 <strong>-30%</strong>；非编程任务仍推荐 <strong>K2.6</strong>。</div>
       <p class="lead">2026 年 6 月中旬，国产大模型在 <strong>Coding</strong> 赛道继续加速。<strong>月之暗面 Kimi</strong> 于 <strong>6 月 12 日</strong>发布并开源编程专用模型 <strong>Kimi K2.7 Code</strong>，<strong>6 月 15 日</strong>又上线同权重的高速推理版本。与一周前 <strong>GLM-5.2</strong> 全量开放 Coding Plan 形成呼应，Kimi 这次走的是另一条路：名字里就写着 <strong>Code</strong>，官方明确建议「纯对话、办公用 K2.6，编程用 K2.7」——在人人都想讲 AGI 的语境里，这种主动划边界、集中力量做编程的做法相当克制。下面从能力、定价、社区实测和怎么接入手把手说清楚。</p>
-      <nav class="doc-toc doc-toc--inline" aria-label="文章目录">
-        <p class="doc-toc-title">目录</p>
+      <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="文章目录">
+        <p class="doc-toc-title">本页内容</p>
         <ol>
           <li><a href="#sec-what">一、K2.7 Code 是什么：编程专项后训练</a><ol>
             <li><a href="#sec-arch">架构与定位</a></li>
@@ -566,7 +620,7 @@
           <li><a href="#sec-advice">八、选型建议</a></li>
           <li><a href="#sec-summary">九、总结</a></li>
         </ol>
-      </nav>
+      </nav></details>
 
       <h2 id="sec-what">一、K2.7 Code 是什么：不是大改版，而是「编程专项后训练」</h2>
       <h3 id="sec-arch">1. 架构与定位</h3>
@@ -691,7 +745,7 @@
       <h3 id="sec-vs26">1. 相对 K2.6：代际跃迁，而非小修小补</h3>
       <p>官方 benchmark 上，K2.7 Code 相对 K2.6 是<strong>全面抬升</strong>；token 效率还有 <strong>-30%</strong> 的额外红利。对 <strong>已订阅 Kimi Code</strong> 的用户，这是<strong>默认免费升舱</strong>，无需改套餐。</p>
       <h3 id="sec-codev3">2. 相对 Code V3 上的 K2.6（历史参照）</h3>
-      <p>在 <a href="https://vibecoding.dreamfree.space/articles/news/20260613_glm_5_2/" rel="noopener noreferrer">GLM-5.2 解读</a> 所引用的 <strong>Code V3（2026-05）</strong> 中，<strong>Kimi-K2.6 (Think)</strong> 表现为 Mac <strong>49/D</strong>、Flutter <strong>17/C</strong>、Web <strong>33/C</strong>、Game / Rust <strong>Failed</strong>——明显弱于同期 <strong>GLM-5.1</strong>，更遑论 <strong>GLM-5.2</strong>。K2.7 官方分的大幅跃升说明月之暗面确实在 Coding 上押了重注，但是否能在 Code V3 等新一期榜单上改写国产格局，<strong>仍需等待维护者复测</strong>。</p>
+      <p>在 <a href="/articles/news/20260613_glm_5_2/" rel="noopener noreferrer">GLM-5.2 解读</a> 所引用的 <strong>Code V3（2026-05）</strong> 中，<strong>Kimi-K2.6 (Think)</strong> 表现为 Mac <strong>49/D</strong>、Flutter <strong>17/C</strong>、Web <strong>33/C</strong>、Game / Rust <strong>Failed</strong>——明显弱于同期 <strong>GLM-5.1</strong>，更遑论 <strong>GLM-5.2</strong>。K2.7 官方分的大幅跃升说明月之暗面确实在 Coding 上押了重注，但是否能在 Code V3 等新一期榜单上改写国产格局，<strong>仍需等待维护者复测</strong>。</p>
       <h3 id="sec-vs-glm">3. 与 GLM-5.2：不同叙事，不宜硬比一张表</h3>
       <ul>
         <li><strong>GLM-5.2</strong>：1M 上下文 + Coding Plan 全量开放；Code V3 暂列综合第三。</li>
@@ -726,7 +780,7 @@
       <p>Kimi K2.7 Code 不是「又一个更大的通用模型」，而是月之暗面在 <strong>Coding</strong> 上 <strong>断其一指</strong> 的专项产品：<strong>6 月 12 日</strong>发布并开源权重，<strong>6 月 15 日</strong>高速版补齐速度短板，<strong>存量 Kimi Code 用户默认升舱且 API 不涨价</strong>。官方 benchmark 与社区 C++ 审查小测共同指向一个方向——<strong>更准、更克制、更省 token</strong>。</p>
       <p>对开发者而言，若你关心的是「在国内还能稳定用什么写代码」，K2.7 Code 走的 <strong>API + 会员</strong> 路线，和 GLM-5.2 那条 <strong>1M Coding Plan</strong> 路线，算是 2026 年国产 Coding 的两条主线。<strong>高速版今天已经能用了</strong>（目前主要是 API / Beta 等指定渠道）——建议拿自己的仓库跑一轮，再决定续 <strong>Kimi Code 会员</strong> 还是单独开 <strong>高速版按量</strong>。</p>
 
-      <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>原文链接 <a href="https://vibecoding.dreamfree.space/articles/news/20260615_kimi_k27_code/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260615_kimi_k27_code/</a></div>
+      <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>原文链接 <a href="/articles/news/20260615_kimi_k27_code/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260615_kimi_k27_code/</a></div>
       </article>
     </div>
   </div>

@@ -57,7 +57,9 @@
       rootEl: rootEl,
       options: options,
       config: {},
+      catalogContext: options.catalogContext || null,
       boardData: null,
+      externalFilter: null,
       expandedPlatforms: {},
       selectedModelValue: '',
       tooltipEl: null,
@@ -378,12 +380,43 @@
         return;
       }
 
-      const allPlatforms = state.boardData.platforms;
+      const external = state.externalFilter;
+      const allowedPlatforms = external && external.platformSlugs && external.platformSlugs.length
+        ? new Set(external.platformSlugs || [])
+        : null;
+      const allowedModels = external && external.modelSlugs && external.modelSlugs.length
+        ? new Set(external.modelSlugs || [])
+        : null;
+      const allPlatforms = state.boardData.platforms
+        .filter(platform => !allowedPlatforms || allowedPlatforms.has(platform.platform_slug))
+        .filter(platform => {
+          if (!allowedModels) return true;
+          if (!allowedModels.size) return false;
+          const available = new Set((platform.models || []).map(model => model.model_slug));
+          return external.modelMatch === 'all'
+            ? [...allowedModels].every(slug => available.has(slug))
+            : [...allowedModels].some(slug => available.has(slug));
+        })
+        .map(platform => {
+          if (!allowedModels) return platform;
+          return Object.assign({}, platform, {
+            models: (platform.models || []).filter(model => allowedModels.has(model.model_slug))
+          });
+        })
+        .filter(platform => !allowedModels || platform.models.length > 0);
       const totalCount = allPlatforms.length;
+      if (!totalCount) {
+        state.boardRoot.className = 'monitor-board-panel monitor-empty';
+        state.boardRoot.textContent = external
+          ? '当前筛选下没有可用性数据；请在上方平台或模型下拉框调整选择。'
+          : (state.config.emptyLabel || '暂无数据');
+        state.updateStatsBar(0, 0);
+        return;
+      }
       const selectedModel = state.selectedModelValue;
       const sortByAvailability = state.sortCheckbox.checked;
 
-      if (selectedModel) {
+      if (selectedModel && !external) {
         const rows = [];
         sortedPlatforms(allPlatforms, sortByAvailability).forEach(function (platform) {
           (platform.models || []).forEach(function (model) {
@@ -421,7 +454,7 @@
       state.updateStatsBar(platforms.length, totalCount);
       state.boardRoot.appendChild(renderSectionHead('平台', platforms.length + ' 个'));
       platforms.forEach(function (platform) {
-        state.boardRoot.appendChild(renderPlatformBlock(platform));
+          state.boardRoot.appendChild(renderPlatformBlock(platform));
       });
     };
 
@@ -511,10 +544,11 @@
       state.boardRoot.textContent = state.config.loadingLabel || '加载中...';
       state.updateStatsBar(0, 0);
 
-      return fetch(getApiBase() + '/monitor/board?days=7')
-        .then(function (r) { return r.json(); })
+      return fetch(getApiBase() + '/monitor/board?days=7', { signal: AbortSignal.timeout(15000) })
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
         .then(function (resp) {
           state.boardData = (resp && resp.data) || resp;
+          state.boardData = applyCatalogContext(state.boardData, state.catalogContext);
           populateModelFilter(state.boardData.platforms || []);
           state.renderBoard();
           applyInitialPlatform(state);
@@ -523,8 +557,37 @@
           state.boardRoot.className = 'monitor-board-panel monitor-empty';
           state.boardRoot.textContent = state.config.errorLabel || '数据加载失败，请稍后重试';
           state.updateStatsBar(0, 0);
+          const retry = document.createElement('button');
+          retry.type = 'button'; retry.className = 'tool-button monitor-retry'; retry.textContent = '重新加载';
+          retry.addEventListener('click', state.fetchBoard);
+          state.boardRoot.appendChild(retry);
         });
     };
+
+    function applyCatalogContext(boardData, context) {
+      if (!boardData || !context || !context.platformBySlug) return boardData;
+      const resolvePlatform = function (row) {
+        const slug = row && row.platform_slug;
+        if (slug && context.platformBySlug.has(slug)) return context.platformBySlug.get(slug);
+        const name = String(row && row.platform_display_name || '').trim();
+        if (!name) return null;
+        return context.platforms.find(platform => platform.name === name || platform.monitorSlug === slug) || null;
+      };
+      const platforms = (boardData.platforms || []).map(row => {
+        const platform = resolvePlatform(row);
+        if (!platform || platform.catalogVisible === false) return null;
+        const models = (row.models || []).filter(model => {
+          const identity = context.modelBySlug && context.modelBySlug.get(model.model_slug);
+          return !identity || identity.catalogVisible !== false;
+        });
+        return Object.assign({}, row, {
+          platform_slug: platform.slug || row.platform_slug,
+          platform_display_name: platform.name || row.platform_display_name,
+          models
+        });
+      }).filter(Boolean);
+      return Object.assign({}, boardData, { platforms });
+    }
 
     state.buildDom = function buildDom() {
       rootEl.innerHTML = '';
@@ -534,6 +597,10 @@
       intro.setAttribute('data-monitor-intro', '1');
       intro.textContent =
         '查看各平台近几日可用性与稳定性，降低选型踩坑风险。';
+      const fullLink = document.createElement('a');
+      fullLink.className = 'main-view-full-link';
+      fullLink.href = '/monitor/';
+      fullLink.textContent = '查看完整可用性页 →';
 
       const toolbar = document.createElement('div');
       toolbar.className = 'monitor-toolbar';
@@ -614,7 +681,10 @@
       state.boardRoot.className = 'monitor-board-panel monitor-loading';
       state.boardRoot.textContent = '加载中...';
 
-      rootEl.appendChild(intro);
+      if (state.options.mode !== 'full') {
+        rootEl.appendChild(intro);
+        rootEl.appendChild(fullLink);
+      }
       rootEl.appendChild(toolbar);
       rootEl.appendChild(state.boardRoot);
 
@@ -630,6 +700,20 @@
         state.sortCheckbox.checked = false;
         setModelFilter('');
       });
+
+      state.applyExternalFilter = function applyExternalFilter(filter) {
+        state.externalFilter = filter || null;
+        if (state.externalFilter) state.selectedModelValue = '';
+        state.updateModelFilterLabel();
+        state.renderBoard();
+      };
+      state.sharedFilterHandler = function (event) {
+        state.applyExternalFilter(event && event.detail && event.detail.state);
+      };
+      if (typeof window !== 'undefined') {
+        window.addEventListener('codingplan:filters-changed', state.sharedFilterHandler);
+        state.externalFilter = window.__codingplanUnifiedFiltersState || null;
+      }
 
       state.modelFilterTrigger.addEventListener('click', function (e) {
         e.stopPropagation();
@@ -676,6 +760,7 @@
         if (options.initialPlatform) {
           applyInitialPlatform(existing);
         }
+        if (options.filterState && existing.applyExternalFilter) existing.applyExternalFilter(options.filterState);
       }
       return existing ? existing.config : undefined;
     }
@@ -688,6 +773,7 @@
         existing.options = Object.assign({}, existing.options, options);
         applyInitialPlatform(existing);
       }
+      if (existing && options.filterState && existing.applyExternalFilter) existing.applyExternalFilter(options.filterState);
       return existing ? existing.config : undefined;
     }
 

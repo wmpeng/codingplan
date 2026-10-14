@@ -5,6 +5,9 @@
     root.mountModelComparisonView = api.mountModelComparisonView;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
     'use strict';
+    const EntityData = root.EntityData || (typeof require === 'function' ? require('./entity-data.js') : null);
+    const UI = root.CodingPlanUI || (typeof require === 'function' ? require('./ui-core.js') : null);
+    const Numbers = root.NumberDisplay || (typeof require === 'function' ? require('./number-display.js') : null);
 
     const BENCHMARKS = {
         artificialAnalysis: { label: 'AA 智力', short: 'AA' },
@@ -17,22 +20,16 @@
         '#db2777', '#4f46e5', '#65a30d', '#9333ea', '#ea580c', '#0f766e',
         '#475569', '#a16207', '#be123c', '#0369a1'
     ];
-    const DEFAULT_PLATFORM_SLUGS = [
-        'aliyun-bailian', 'zhipu', 'bytedance-ark', 'codex', 'claude',
-        'deepseek-official', 'kimi', 'minimax', 'opencode'
-    ];
-    const DEFAULT_MODEL_SLUGS = [
-        'deepseek-v4-pro-0813', 'deepseek-v4-flash-0731', 'qwen-3-8-max',
-        'glm-5-3', 'glm-5-3-flash', 'kimi-k3', 'gpt-6-astra', 'gpt-6-sol', 'gpt-6-luna',
-        'claude-opus-5', 'claude-sonnet-5', 'muse-spark-1-2',
-        'minimax-m3', 'deepseek-v4-flash-vision-exp'
-    ];
+    // Featured entities come only from model-comparison-presets.json.
+    const DEFAULT_PLATFORM_SLUGS = [];
+    const DEFAULT_MODEL_SLUGS = [];
     const COMPARISON_TABLE_COLUMNS = [
         { key: 'vendor', label: '平台' },
         { key: 'plan', label: '套餐' },
         { key: 'price', label: '套餐价格' },
         { key: 'model', label: '模型' },
         { key: 'unitPriceCnyPerM', label: '综合单价' },
+        { key: 'unitPriceVisual', label: '单价对比', hint: '低 → 高 · 对数', sortable: false },
         { key: 'apiPricing', label: 'API 单价（输入 / 缓存 / 输出）', sortable: false },
         { key: 'fiveHourTokenInM', label: '5h用量' },
         { key: 'weeklyTokenInM', label: '周用量' },
@@ -57,6 +54,12 @@
         return Number.isFinite(number) && number > 0 ? number : null;
     }
 
+    function finiteNonnegative(value) {
+        if (value == null || value === '' || typeof value === 'boolean') return null;
+        const number = Number(value);
+        return Number.isFinite(number) && number >= 0 ? number : null;
+    }
+
     function getPointScore(point, benchmark) {
         const score = point && point.scores && point.scores[benchmark];
         const exact = score && Number(score.scoreExact);
@@ -67,18 +70,32 @@
         return String(point.platformSlug || point.platformName || '');
     }
 
-    function getDefaultPlatformSelectionKeys() {
-        return new Set(DEFAULT_PLATFORM_SLUGS);
+    function getDefaultPlatformSelectionKeys(slugs) {
+        return new Set(slugs || []);
     }
 
-    function createDefaultFilterState(points) {
+    function createDefaultFilterState(points, options) {
         const availablePlatforms = new Set((points || []).map(getPointPlatformKey));
         const availableModels = new Set((points || []).map((point) => point.modelSlug));
+        const full = options && options.mode === 'full';
+        const configured = !full && root.CodingPlanFilters && typeof root.CodingPlanFilters.createDefaultState === 'function'
+            ? root.CodingPlanFilters.createDefaultState(root.appConfig || {})
+            : null;
+        const defaultPlatforms = configured && configured.platformSlugs !== null
+            ? configured.platformSlugs
+            : [...availablePlatforms];
+        const defaultModels = configured && configured.modelSlugs !== null
+            ? configured.modelSlugs
+            : [...availableModels];
         return {
-            platforms: new Set([...getDefaultPlatformSelectionKeys()]
+            platforms: new Set((full ? [...availablePlatforms] : defaultPlatforms)
                 .filter((key) => availablePlatforms.has(key))),
-            models: new Set(DEFAULT_MODEL_SLUGS.filter((slug) => availableModels.has(slug))),
-            multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', monthlyPriceMin: null,
+        models: new Set((full ? [...availableModels] : defaultModels).filter((slug) => availableModels.has(slug))),
+        platformsSpecified: true,
+            modelsSpecified: true,
+            modelMatch: 'any',
+            includeDiscontinued: full ? true : !!(configured && configured.includeDiscontinued),
+        multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', monthlyPriceMin: null,
             monthlyPriceMax: null, soloColorKey: null, tokenUnit: 'yi'
         };
     }
@@ -109,26 +126,22 @@
         const state = filters || {};
         const platforms = state.platforms instanceof Set ? state.platforms : new Set(state.platforms || []);
         const models = state.models instanceof Set ? state.models : new Set(state.models || []);
-        const aaScoreMin = Number(state.aaScoreMin);
-        const deepSWEScoreMin = Number(state.deepSWEScoreMin);
-        const hasAaScoreMin = state.aaScoreMin !== '' && state.aaScoreMin !== null && Number.isFinite(aaScoreMin);
-        const hasDeepSWEScoreMin = state.deepSWEScoreMin !== '' && state.deepSWEScoreMin !== null && Number.isFinite(deepSWEScoreMin);
-        const hasMonthlyPriceFilter = finitePositive(state.monthlyPriceMin) !== null && finitePositive(state.monthlyPriceMax) !== null;
-        return (points || []).filter((point) => {
-            if (platforms.size && !platforms.has(getPointPlatformKey(point))) return false;
-            if (models.size && !models.has(point.modelSlug)) return false;
-            if (state.multimodal === 'multimodal' && point.multimodal !== true) return false;
-            if (state.multimodal === 'text' && point.multimodal !== false) return false;
-            const aaScore = getPointScore(point, 'artificialAnalysis');
-            const deepSWEScore = getPointScore(point, 'deepSWE');
-            if (hasAaScoreMin && (aaScore === null || aaScore < aaScoreMin)) return false;
-            if (hasDeepSWEScoreMin && (deepSWEScore === null || deepSWEScore < deepSWEScoreMin)) return false;
-            if (hasMonthlyPriceFilter) {
-                const monthlyFee = finitePositive(point.monthlyFeeCny);
-                if (monthlyFee === null || monthlyFee < state.monthlyPriceMin || monthlyFee > state.monthlyPriceMax) return false;
-            }
-            return true;
-        });
+        // Share the same filtering rules with the homepage and standalone tools.
+        const shared = root.CodingPlanFilters || (typeof require === 'function' ? require('./filter-state.js') : null);
+        const selected = (values, specified) => specified || values.size ? [...values] : null;
+        return shared.filterPoints(points, shared.normalizeState({
+            ...(state.sharedFilters || {}),
+            platformSlugs: state.sharedFilters ? state.sharedFilters.platformSlugs : selected(platforms, state.platformsSpecified),
+            modelSlugs: state.sharedFilters ? state.sharedFilters.modelSlugs : selected(models, state.modelsSpecified),
+            modelMatch: state.modelMatch === 'all' && state.modelsSpecified ? 'all' : 'any',
+            includeDiscontinued: state.includeDiscontinued !== false,
+            multimodal: state.multimodal,
+            aaScoreMin: state.aaScoreMin,
+            deepSWEScoreMin: state.deepSWEScoreMin,
+            budgetCny: { min: state.monthlyPriceMin, max: state.monthlyPriceMax },
+            monthlyTokenRange: state.monthlyTokenRange,
+            priceRanges: state.priceRanges
+        }, { mode: 'full' }), { context: state.filterContext, usdToCnyRate: root.appConfig && root.appConfig.usdToCnyRate });
     }
 
     function buildUsageChartPoints(points) {
@@ -146,18 +159,26 @@
         );
     }
 
-    function buildUnitPriceBarChartPoints(points) {
-        return (points || []).filter((point) =>
-            finitePositive(point.unitPriceCnyPerM) !== null
-        ).slice().sort((a, b) => {
-            const byPrice = Number(a.unitPriceCnyPerM) - Number(b.unitPriceCnyPerM);
-            if (byPrice !== 0) return byPrice;
-            const byVendor = String(a.platformName || '').localeCompare(String(b.platformName || ''), 'zh-CN');
-            if (byVendor !== 0) return byVendor;
-            const byPlan = String(a.planName || '').localeCompare(String(b.planName || ''), 'zh-CN');
-            if (byPlan !== 0) return byPlan;
-            return String(a.relationLabel || a.modelName || '').localeCompare(String(b.relationLabel || b.modelName || ''), 'zh-CN');
-        });
+    function buildUnitPriceVisualScale(points) {
+        const values = (points || [])
+            .map((point) => finitePositive(point && point.unitPriceCnyPerM))
+            .filter((value) => value !== null);
+        return values.length
+            ? { min: Math.min(...values), max: Math.max(...values) }
+            : { min: null, max: null };
+    }
+
+    function getUnitPriceVisualPercent(value, scale) {
+        if (value === null || value === undefined || value === '') return null;
+        const price = Number(value);
+        if (!Number.isFinite(price) || price < 0) return null;
+        if (price === 0) return 0;
+        const min = scale && Number(scale.min);
+        const max = scale && Number(scale.max);
+        if (!Number.isFinite(min) || min <= 0 || !Number.isFinite(max) || max <= 0) return null;
+        if (max <= min) return 100;
+        const percent = Math.log1p(price / min) / Math.log1p(max / min) * 100;
+        return Math.max(0, Math.min(100, percent));
     }
 
     function getAttractiveUnitPriceThreshold(tokenUnit) {
@@ -227,6 +248,7 @@
         const yBounds = getChartAxisBounds((points || []).map((point) => tokenAmountInUnit(point.monthlyTokenInM, tokenUnit)), scale);
         return {
             threshold,
+            tokenUnit,
             xBounds,
             yBounds,
             polygon: clipRectangleAboveUnitPriceLine(xBounds, yBounds, threshold),
@@ -234,32 +256,31 @@
         };
     }
 
-    function attractiveZoneLabel() {
-        return `≤ ¥${ATTRACTIVE_UNIT_PRICE_CNY_PER_YI} / 亿 Token`;
+    function attractiveZoneLabel(unit) {
+        return `≤ ${formatUnitPrice(ATTRACTIVE_UNIT_PRICE_CNY_PER_M, unit)} Token`;
     }
 
     function buildUsageAttractiveZoneSeries(zone) {
         return {
             id: 'usage-attractive-zone', type: 'custom', coordinateSystem: 'cartesian2d',
             silent: true, clip: true, z: 0, data: [0],
-            renderItem: function (_params, api) {
+            renderItem: function (params, api) {
                 const children = [];
                 const polygonPoints = zone.polygon.map((point) => api.coord(point));
                 if (polygonPoints.length >= 3) {
-                    children.push({ type: 'polygon', shape: { points: polygonPoints }, style: { fill: 'rgba(34, 197, 94, 0.11)' } });
+                    children.push({ type: 'polygon', shape: { points: polygonPoints }, style: { fill: 'rgba(34, 197, 94, 0.07)' } });
                 }
                 const boundaryPoints = zone.boundary.map((point) => api.coord(point));
                 if (boundaryPoints.length === 2) {
                     children.push({ type: 'polyline', shape: { points: boundaryPoints }, style: { stroke: '#22a447', lineWidth: 1.5, lineDash: [6, 4] } });
-                    const midpoint = [(boundaryPoints[0][0] + boundaryPoints[1][0]) / 2, (boundaryPoints[0][1] + boundaryPoints[1][1]) / 2];
-                    children.push({ type: 'text', style: { x: midpoint[0] + 8, y: midpoint[1] - 10, text: attractiveZoneLabel(), fill: '#15803d', font: '600 11px sans-serif', backgroundColor: 'rgba(240, 253, 244, 0.9)', padding: [3, 5], borderRadius: 4 } });
+                    children.push({ type: 'text', style: { x: params.coordSys.x + params.coordSys.width / 2, y: params.coordSys.y + 12, textAlign: 'center', text: attractiveZoneLabel(zone.tokenUnit), fill: '#15803d', font: '600 11px sans-serif', backgroundColor: 'rgba(240, 253, 244, 0.9)', padding: [3, 5], borderRadius: 4 } });
                 }
                 return { type: 'group', children };
             }
         };
     }
 
-    function buildIntelligenceAttractiveZoneSeries(threshold, scoreReference) {
+    function buildIntelligenceAttractiveZoneSeries(threshold, scoreReference, tokenUnit = 'yi') {
         return {
             id: 'intelligence-attractive-zone', type: 'custom', coordinateSystem: 'cartesian2d',
             silent: true, clip: true, z: 0, data: [[threshold, scoreReference]],
@@ -270,11 +291,11 @@
                 const boundaryX = Math.max(left, Math.min(right, coord[0]));
                 const children = [];
                 if (boundaryX > left) {
-                    children.push({ type: 'rect', shape: { x: left, y: params.coordSys.y, width: boundaryX - left, height: params.coordSys.height }, style: { fill: 'rgba(34, 197, 94, 0.11)' } });
+                    children.push({ type: 'rect', shape: { x: left, y: params.coordSys.y, width: boundaryX - left, height: params.coordSys.height }, style: { fill: 'rgba(34, 197, 94, 0.07)' } });
                 }
                 if (boundaryX > left && boundaryX < right) {
                     children.push({ type: 'line', shape: { x1: boundaryX, y1: params.coordSys.y, x2: boundaryX, y2: params.coordSys.y + params.coordSys.height }, style: { stroke: '#22a447', lineWidth: 1.5, lineDash: [6, 4] } });
-                    children.push({ type: 'text', style: { x: boundaryX - 8, y: params.coordSys.y + 14, text: attractiveZoneLabel(), textAlign: 'right', fill: '#15803d', font: '600 11px sans-serif', backgroundColor: 'rgba(240, 253, 244, 0.9)', padding: [3, 5], borderRadius: 4 } });
+                    children.push({ type: 'text', style: { x: Math.max(left + 70, Math.min(right - 70, boundaryX - 70)), y: params.coordSys.y + 14, text: attractiveZoneLabel(tokenUnit), textAlign: 'center', fill: '#15803d', font: '600 11px sans-serif', backgroundColor: 'rgba(240, 253, 244, 0.9)', padding: [3, 5], borderRadius: 4 } });
                 }
                 return { type: 'group', children };
             }
@@ -351,17 +372,13 @@
         return '';
     }
 
-    function escapeHtml(value) {
-        return String(value == null ? '' : value)
-            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-    }
+    const escapeHtml = UI.escapeHtml;
 
     function platformCellHtml(point) {
         const vendor = escapeHtml(point.platformName);
         const actionUrl = String(point.actionUrl || '').trim();
         if (!/^https?:\/\//i.test(actionUrl)) return `<strong>${vendor}</strong>`;
-        return `<a class="usage-platform-link" href="${escapeHtml(actionUrl)}" target="_blank" rel="noopener noreferrer"><strong>${vendor}</strong><span aria-hidden="true">↗</span></a>`;
+        return `<a class="usage-platform-link" href="${escapeHtml(UI.sanitizeUrl(actionUrl))}" target="_blank" rel="noopener noreferrer"><strong>${vendor}</strong>${UI.externalLinkIcon}</a>`;
     }
 
     function formatNumber(value, maximumFractionDigits) {
@@ -371,55 +388,76 @@
     }
 
     function normalizeTokenUnit(unit) {
-        return unit === 'yi' ? 'yi' : 'M';
+        return unit === 'B' ? 'B' : unit === 'yi' ? 'yi' : 'M';
     }
 
     function tokenAmountInUnit(value, unit) {
+        if (value == null || value === '' || typeof value === 'boolean') return null;
         const number = Number(value);
         if (!Number.isFinite(number)) return null;
-        return normalizeTokenUnit(unit) === 'yi' ? number / 100 : number;
+        return number / Numbers.tokenFactor(normalizeTokenUnit(unit));
     }
 
     function unitPriceInTokenUnit(value, unit) {
+        if (value == null || value === '' || typeof value === 'boolean') return null;
         const number = Number(value);
         if (!Number.isFinite(number)) return null;
-        return normalizeTokenUnit(unit) === 'yi' ? number * 100 : number;
+        return number * Numbers.tokenFactor(normalizeTokenUnit(unit));
     }
 
     function formatTokenAmount(value, unit) {
+        if (value === 'unlimited') return '不限量';
         if (value === null || value === undefined || value === '') return '—';
         const normalized = normalizeTokenUnit(unit);
         const number = tokenAmountInUnit(value, normalized);
         if (!Number.isFinite(number)) return '—';
-        const digits = number < 1 ? 3 : number < 10 ? 2 : 1;
-        return `${formatNumber(number, digits)}${normalized === 'yi' ? '亿' : 'M'}`;
+        return `${Numbers.tokens(number)}${Numbers.tokenUnit(normalized)}`;
     }
 
     function formatUnitPrice(value, unit) {
         const normalized = normalizeTokenUnit(unit);
         const number = unitPriceInTokenUnit(value, normalized);
-        if (!Number.isFinite(number) || number <= 0) return '—';
-        return `¥${formatNumber(number, 4)} / ${normalized === 'yi' ? '亿' : 'M'}`;
+        if (!Number.isFinite(number) || number < 0) return '—';
+        return `${Numbers.unitPrice(number)} / ${Numbers.tokenUnit(normalized)}`;
     }
 
     function formatApiPricing(pricing) {
         if (!pricing || typeof pricing !== 'object') return '—';
         const currency = String(pricing.currency || '¥');
         const format = (value) => {
-            const number = Number(value);
-            return Number.isFinite(number) ? `${currency}${formatNumber(number, 6)}` : '—';
+            return Numbers.unitPrice(value, currency);
         };
         return `输入 ${format(pricing.inputPerM)} · 缓存 ${format(pricing.cachePerM)} · 输出 ${format(pricing.outputPerM)} / M`;
     }
 
+    function currencySymbol(currency) {
+        const normalized = String(currency || '').trim().toUpperCase();
+        if (['$', 'USD', 'US$'].includes(normalized)) return '$';
+        if (['¥', '￥', 'CNY', 'RMB'].includes(normalized)) return '¥';
+        return String(currency || '¥');
+    }
+
+    function formatSubscriptionMonthlyPrice(point) {
+        const original = finiteNonnegative(point && point.originalMonthlyFee);
+        const cny = finiteNonnegative(point && point.monthlyFeeCny);
+        if (original === null && cny === null) return '未公开';
+        const originalCurrency = currencySymbol(point && point.originalCurrency);
+        const originalText = original === null
+            ? Numbers.monthlyFee(cny)
+            : Numbers.monthlyFee(original, originalCurrency);
+        const isCny = originalCurrency === '¥';
+        const converted = !isCny && cny !== null ? `（约 ${Numbers.monthlyFee(cny)}）` : '';
+        return `${originalText}${converted} / 月`;
+    }
+
     function comparisonSortValue(point, key) {
-        if (key === 'price') return finitePositive(point.monthlyFeeCny);
+        if (key === 'price') return finiteNonnegative(point.monthlyFeeCny);
         if (key === 'artificialAnalysis' || key === 'deepSWE') return getPointScore(point, key);
         if (key === 'vendor') return point.platformName || '';
         if (key === 'plan') return point.planName || '';
         if (key === 'note') return point[key] || '';
         if (key === 'model') return point.relationLabel || point.modelName || '';
-        return finitePositive(point[key]);
+        return finiteNonnegative(point[key]);
     }
 
     function sortComparisonRows(points, key, direction) {
@@ -456,32 +494,51 @@
             const sorting = sortable
                 ? ` tabindex="0" aria-sort="none" data-table-sort="${tableName}" data-sort-key="${column.key}"`
                 : '';
-            return `<th scope="col"${classes ? ` class="${classes}"` : ''}${sorting}>${column.label}</th>`;
+            const label = column.hint
+                ? `<span class="usage-table-heading"><span>${column.label}</span><small>${column.hint}</small></span>`
+                : column.label;
+            return `<th scope="col"${classes ? ` class="${classes}"` : ''}${sorting}>${label}</th>`;
         }).join('')}</tr>`;
     }
 
-    function comparisonTableRowHtml(point, tokenUnit) {
+    function unitPriceVisualHtml(point, tokenUnit, visualOptions) {
+        const value = point && point.unitPriceCnyPerM;
+        const percent = getUnitPriceVisualPercent(value, visualOptions && visualOptions.scale);
+        if (percent === null) return '<span class="usage-price-bar-empty">—</span>';
+        const color = visualOptions && /^#[0-9a-f]{6}$/i.test(visualOptions.color || '')
+            ? visualOptions.color
+            : '#2563eb';
+        const label = value === 0
+            ? `综合单价为 ¥0 / ${normalizeTokenUnit(tokenUnit) === 'B' ? 'B' : normalizeTokenUnit(tokenUnit) === 'yi' ? '亿' : 'M'} Token`
+            : `综合单价 ${formatUnitPrice(value, tokenUnit)} Token；当前筛选结果中的相对条长采用对数尺度`;
+        return `<span class="usage-price-bar" role="img" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">` +
+            `<span class="usage-price-bar-track"><span class="usage-price-bar-fill" style="--usage-price-bar-width:${formatNumber(percent, 2)}%;--usage-price-bar-color:${color}"></span></span>` +
+            `</span>`;
+    }
+
+    function comparisonTableRowHtml(point, tokenUnit, visualOptions) {
         const subscription = point.billingMode === 'subscription';
-        const price = subscription && finitePositive(point.monthlyFeeCny) !== null
-            ? `¥${formatNumber(point.monthlyFeeCny, 2)} / 月` : '按量';
+        const price = subscription ? (point.monthlyFeeCny === 0 ? '¥0 / 月' : finitePositive(point.monthlyFeeCny) !== null
+            ? formatSubscriptionMonthlyPrice(point) : '未公开') : '按量';
         const unitPrice = formatUnitPrice(point.unitPriceCnyPerM, tokenUnit);
         const aaScore = point.scores && point.scores.artificialAnalysis;
         const deepSWEScore = point.scores && point.scores.deepSWE;
         const deepSWEInterval = deepSWEScore && Number.isFinite(Number(deepSWEScore.confidenceInterval))
             ? ` ±${formatNumber(deepSWEScore.confidenceInterval, 0)}` : '';
-        return `<tr data-point-id="${escapeHtml(point.slug)}">` +
+        return `<tr data-point-id="${escapeHtml(point.slug)}"${visualOptions && visualOptions.focused ? ' class="price-focus-row"' : ''}>` +
             `<td class="sticky-first">${platformCellHtml(point)}</td>` +
-            `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}</td>` +
+            `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}<div class="plan-capabilities">${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></td>` +
             `<td class="numeric">${price}</td>` +
             `<td class="usage-table-model">${escapeHtml(point.relationLabel || point.modelName)}</td>` +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
+            `<td class="usage-table-price-visual">${unitPriceVisualHtml(point, tokenUnit, visualOptions)}</td>` +
             `<td class="usage-table-api-pricing">${subscription ? '—' : escapeHtml(formatApiPricing(point.apiPricing))}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.weeklyTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${aaScore ? formatNumber(aaScore.score, 0) : '—'}</td>` +
             `<td class="numeric">${deepSWEScore ? `${formatNumber(deepSWEScore.score, 0)}${deepSWEInterval}` : '—'}</td>` +
-            `<td class="usage-table-note">${escapeHtml(point.note || '—')}</td></tr>`;
+            `<td class="usage-table-note">${point.note ? `<details class="usage-note-disclosure"><summary>用量口径与限制</summary><div>${escapeHtml(point.note)}</div></details>` : '—'}</td></tr>`;
     }
 
     function normalizePresetConfig(config) {
@@ -500,6 +557,7 @@
             return [{ id, title, kind, modelSlugs }];
         });
         return {
+            platformSlugs: [...new Set(source.platformSlugs || [])],
             title: String(source.title || '').trim() || '常见对比',
             description: String(source.description || '').trim(),
             groups
@@ -510,19 +568,14 @@
         return value === 'all' ? 'all' : 'featured';
     }
 
-    function buildPresetComparisonRows(points, group, platformScope) {
+    function buildPresetComparisonRows(points, group, platformScope, platformSlugs) {
         const modelSlugs = new Set(group && Array.isArray(group.modelSlugs) ? group.modelSlugs : []);
-        const defaultPlatformKeys = getDefaultPlatformSelectionKeys();
+        const defaultPlatformKeys = getDefaultPlatformSelectionKeys(platformSlugs);
         const scope = normalizePresetPlatformScope(platformScope);
         return sortComparisonRows((points || []).filter((point) =>
             (point.billingMode === 'subscription' || point.billingMode === 'payg') &&
             (scope === 'all' || defaultPlatformKeys.has(getPointPlatformKey(point))) &&
-            modelSlugs.has(point.modelSlug) &&
-            finitePositive(point.unitPriceCnyPerM) !== null &&
-            (point.billingMode === 'payg' || (
-                finitePositive(point.monthlyFeeCny) !== null &&
-                finitePositive(point.monthlyTokenInM) !== null
-            ))
+            modelSlugs.has(point.modelSlug) && point.platformVisible !== false && !point.discontinued && point.available !== false
         ), 'unitPriceCnyPerM', 'asc');
     }
 
@@ -530,21 +583,28 @@
         return String(point && point.tierLabel || '').trim();
     }
 
-    function presetComparisonTableHtml(group, points, tokenUnit, platformScope) {
+    function presetComparisonTableHtml(group, points, tokenUnit, platformScope, options = {}) {
         const kind = group && group.kind === 'multi' ? 'multi' : 'single';
         const columns = PRESET_TABLE_COLUMNS[kind];
-        const rows = buildPresetComparisonRows(points, group, platformScope);
+        const selectedModels = new Set(options.modelFilter && Array.isArray(options.selectedModelSlugs)
+            ? options.selectedModelSlugs.filter(slug => group.modelSlugs.includes(slug)) : []);
+        const rows = buildPresetComparisonRows(points, group, platformScope, options.platformSlugs)
+            .filter(point => !selectedModels.size || selectedModels.has(point.modelSlug));
         const modelNamesBySlug = new Map((points || []).map((point) => [point.modelSlug, point.modelName]));
         const includedModels = kind === 'multi'
             ? group.modelSlugs.map((slug) => modelNamesBySlug.get(slug) || slug).join('、')
             : '';
-        const subtitle = includedModels ? `<p>包含：${escapeHtml(includedModels)}</p>` : '';
+        const modelOption = (slug, label) => `<button type="button" data-preset-model="${escapeHtml(slug)}" aria-pressed="${slug ? selectedModels.has(slug) : !selectedModels.size}">${escapeHtml(label)}</button>`;
+        const subtitle = includedModels ? options.modelFilter
+            ? `<div class="preset-model-filters" role="group" aria-label="${escapeHtml(group.title)}表格的模型筛选，可多选"><span>包含：</span>${modelOption('', '全部')}${group.modelSlugs.map(slug => modelOption(slug, modelNamesBySlug.get(slug) || slug)).join('')}</div>`
+            : `<p>包含：${escapeHtml(includedModels)}</p>` : '';
         const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
-        const body = rows.length ? rows.map((point) => {
+        const limit = options.limit || rows.length;
+        const body = rows.length ? rows.map((point, index) => {
             const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
             const planName = point.planName || (point.billingMode === 'payg' ? '按量 API' : '订阅');
-            const plan = `<span>${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
-            const price = point.billingMode === 'payg' ? '按量' : `¥${formatNumber(point.monthlyFeeCny, 2)} / 月`;
+            const plan = `<span class="usage-preset-plan">${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
+            const price = point.billingMode === 'payg' ? '按量' : formatSubscriptionMonthlyPrice(point);
             const model = `<span class="usage-table-model">${escapeHtml(point.relationLabel || point.modelName || '—')}</span>`;
             const separator = '<span class="usage-preset-separator">·</span>';
             const primaryDetail = kind === 'multi' ? model : `<span class="usage-preset-price">${price}</span>`;
@@ -552,19 +612,20 @@
             const values = {
                 identity: `<div class="usage-preset-primary-line">${platformCellHtml(point)}${primaryDetail}</div>` +
                     `<div class="usage-preset-secondary-line">${plan}${secondaryDetail}</div>`,
-                metrics: `<div class="usage-preset-metric-primary">${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)}</div>` +
-                    `<div class="usage-preset-secondary-line usage-preset-metric-secondary"><span>月用量</span><span>${formatTokenAmount(point.monthlyTokenInM, tokenUnit)}</span></div>`
+                metrics: `<div class="usage-preset-metric-primary${point.unitPriceCnyPerM == null ? ' is-unknown' : ''}">${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)}</div>` +
+                    `<div class="usage-preset-secondary-line usage-preset-metric-secondary"><span>月用量</span><span>${point.billingMode === 'payg' ? '—' : point.monthlyTokenInM == null ? '未知' : formatTokenAmount(point.monthlyTokenInM, tokenUnit)}</span></div>`
             };
-            return `<tr data-point-id="${escapeHtml(point.slug)}">${columns.map((column) => {
+            return `<tr data-point-id="${escapeHtml(point.slug)}"${index >= limit ? ' hidden data-preset-extra' : ''}>${columns.map((column) => {
                 return `<td class="${column.key === 'metrics' ? 'usage-preset-metrics' : 'usage-preset-identity'}">${values[column.key]}</td>`;
             }).join('')}</tr>`;
         }).join('') : `<tr><td class="usage-table-empty" colspan="${columns.length}">当前暂无可比较的套餐。</td></tr>`;
         return `<article class="usage-preset-card usage-preset-card--${kind}" data-preset-id="${escapeHtml(group.id)}">` +
-            `<header><div><h4>${escapeHtml(group.title)}</h4>${subtitle}</div><span>${rows.length} 条</span></header>` +
-            `<div class="usage-preset-table-scroll"><table class="usage-preset-table"><thead>${head}</thead><tbody>${body}</tbody></table></div></article>`;
+            `<header><div><h4>${escapeHtml(group.title)}</h4>${subtitle}</div><span${options.modelFilter?' data-preset-count aria-live="polite" aria-atomic="true"':''}>${rows.length} 条</span></header>` +
+            `<div class="usage-preset-table-scroll" tabindex="0" role="region" aria-label="${escapeHtml(group.title)}价格与用量"><table class="usage-preset-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>` +
+            (rows.length > limit ? `<button type="button" class="preset-expand" data-preset-expand aria-expanded="false"><span>展开全部</span></button>` : '') + '</article>';
     }
 
-    function renderPresetComparisons(host, config, points, tokenUnit, platformScope) {
+    function renderPresetComparisons(host, config, points, tokenUnit, platformScope, options = {}) {
         if (!host) return [];
         const normalized = normalizePresetConfig(config);
         const scope = normalizePresetPlatformScope(platformScope);
@@ -576,17 +637,15 @@
             return [];
         }
         host.hidden = false;
-        host.innerHTML = `<div class="usage-preset-heading"><div><h3>${escapeHtml(normalized.title)}</h3>${normalized.description ? `<p>${escapeHtml(normalized.description)}</p>` : ''}</div><div class="usage-preset-heading-actions"><span class="usage-preset-note">固定对比 · 不受下方筛选影响</span><div class="usage-segments usage-preset-scope-control" role="group" aria-label="预置对比平台范围"><button type="button" data-preset-platform-scope="featured" class="${scope === 'featured' ? 'is-active' : ''}" aria-pressed="${scope === 'featured'}">仅显示精选平台</button><button type="button" data-preset-platform-scope="all" class="${scope === 'all' ? 'is-active' : ''}" aria-pressed="${scope === 'all'}">显示所有平台</button></div></div></div>` +
-            (singles.length ? `<div class="usage-preset-grid usage-preset-grid--single">${singles.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope)).join('')}</div>` : '') +
-            (multis.length ? `<div class="usage-preset-grid usage-preset-grid--multi">${multis.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope)).join('')}</div>` : '');
+        host.innerHTML = (options.hideHeading ? '' : `<div class="usage-preset-heading"><div><h3>${escapeHtml(normalized.title)}</h3>${normalized.description ? `<p>${escapeHtml(normalized.description)}</p>` : ''}</div></div>`) +
+            (singles.length ? `<div class="usage-preset-grid usage-preset-grid--single">${singles.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope, {...options, platformSlugs: normalized.platformSlugs})).join('')}</div>` : '') +
+            (multis.length ? `<div class="usage-preset-grid usage-preset-grid--multi">${multis.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope, {...options, selectedModelSlugs: options.selectedModels?.[group.id], platformSlugs: normalized.platformSlugs})).join('')}</div>` : '');
         return normalized.groups;
     }
 
     async function loadPresetConfig() {
         try {
-            const response = await fetch('model-comparison-presets.json', { cache: 'no-store' });
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            return await response.json();
+            return await root.CodingPlanToolPage.loadPreset();
         } catch (error) {
             console.warn('常见对比配置加载失败:', error);
             return { groups: [] };
@@ -608,7 +667,7 @@
         const platformLine = `${escapeHtml(point.platformName)} · ${billing}`;
         const modelLine = escapeHtml(point.relationLabel);
         const fee = point.billingMode === 'subscription'
-            ? `<div>月费：¥${formatNumber(point.monthlyFeeCny, 2)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
+            ? `<div>月费：${formatSubscriptionMonthlyPrice(point)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
             : '';
         const apiPricing = point.billingMode === 'payg'
             ? `<div>API 单价：${escapeHtml(formatApiPricing(point.apiPricing))}</div>`
@@ -632,7 +691,7 @@
                 return;
             }
             const script = document.createElement('script');
-            script.src = 'vendor/echarts.min.js';
+            script.src = '/vendor/echarts.min.js';
             script.dataset.usageEcharts = '1';
             script.onload = () => resolve(root.echarts);
             script.onerror = () => reject(new Error('ECharts 加载失败'));
@@ -646,9 +705,9 @@
             <section class="usage-view" aria-labelledby="usageViewTitle">
                 <header class="usage-heading">
                     <div><p class="usage-eyebrow">模型购买决策</p><h2 id="usageViewTitle">额度 / 价格对比</h2></div>
-                    <p>把同一套餐下的不同模型拆成独立点，比较钱花在哪里、实际能换来多少额度和模型能力。</p>
+                    <p>把同一套餐下的不同模型拆成独立点，比较钱花在哪里、实际能换来多少额度和模型能力。 <a class="main-view-full-link" href="/pricing/">查看完整价格页 →</a></p>
                 </header>
-                <div class="usage-method-note"><strong>统一口径：</strong>有具体输入、输出、缓存价格的为计算得出，其余的除了Kimi套餐没有购买到之外，均为实测数据，实测尽量构造95%缓存命中率和0.5%的输出占比。</div>
+                <div class="usage-method-note"><strong>统一口径：</strong>价格筛选和坐标统一按折合人民币计算，美元按当前站点汇率 USD 1 ≈ ¥${formatNumber(Number(root.appConfig && root.appConfig.usdToCnyRate) || 6.8, 2)}；表格保留原始币种。具体输入、输出、缓存价格的为计算得出，其余的除了Kimi套餐没有购买到之外，均为实测数据，实测尽量构造95%缓存命中率和0.5%的输出占比。</div>
                 <section class="usage-presets" data-presets aria-label="常见模型对比" hidden></section>
                 <div class="usage-explorer-heading"><h3>完整对比</h3><p>使用筛选、图表与数据明细继续探索全部套餐和模型。</p></div>
                 <div class="filter-bar surface-panel usage-filters" aria-label="图表筛选">
@@ -659,24 +718,19 @@
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>AA 最低分</span><input data-filter="aaScoreMin" aria-label="AA 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>DeepSWE 最低分</span><input data-filter="deepSWEScoreMin" aria-label="DeepSWE 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <div class="usage-color-control" aria-label="颜色区分方式"><span>颜色</span><div class="usage-segments"><button type="button" data-color-mode="vendor" class="is-active">按平台</button><button type="button" data-color-mode="model">按模型</button></div></div>
-                    <div class="usage-unit-control" aria-label="Token 单位"><span>单位</span><div class="usage-segments"><button type="button" data-token-unit="M">M</button><button type="button" data-token-unit="yi" class="is-active">亿</button></div></div>
                     <div class="filter-trailing"><button type="button" class="reset-btn" data-action="restore-defaults">恢复默认</button><div class="stats-bar usage-counts" data-counts aria-live="polite"></div></div>
                 </div>
                 <div class="usage-color-legend"><strong data-color-legend-title>平台颜色</strong><div data-color-legend></div></div>
                 <article class="usage-chart-card">
                     <div class="usage-chart-head"><div><h3>月费 vs 月 Token</h3><p>一个点代表一个平台 × 套餐 × 模型；越靠左上越有吸引力。</p></div><label>坐标轴<select data-scale="tokens"><option value="log">对数</option><option value="value">线性</option></select></label></div>
-                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="月费和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的月费与月额度数据。</div></div>
+                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="月费和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的月费与月额度数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
                 </article>
                 <article class="usage-chart-card">
                     <div class="usage-chart-head"><div><h3>单位价格 vs 智力</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标"><button type="button" data-benchmark="artificialAnalysis" class="is-active">AA</button><button type="button" data-benchmark="deepSWE">DeepSWE</button></div><label>价格轴<select data-scale="price"><option value="log">对数</option><option value="value">线性</option></select></label></div></div>
-                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和智力评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据。</div></div>
-                </article>
-                <article class="usage-chart-card">
-                    <div class="usage-chart-head"><div><h3>综合单价</h3><p>按当前筛选结果从低到高排列；横向滚动查看全部平台 × 套餐 × 模型。</p></div></div>
-                    <div class="usage-chart-stage usage-bar-chart-stage"><div class="usage-unit-price-scroll"><div class="usage-unit-price-chart" data-chart="unit-price" role="img" aria-label="各平台套餐模型综合单价柱状图"></div></div><div class="usage-empty" data-empty="unit-price" hidden>当前筛选下没有可绘制的综合单价数据。</div></div>
+                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和智力评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
                 </article>
                 <article class="usage-chart-card usage-data-card">
-                    <div class="usage-chart-head"><div><h3>数据明细</h3><p>汇总当前筛选下的平台 × 套餐 × 模型；按量 API 没有周期额度时显示“—”。</p></div><span class="usage-table-count" data-table-count="comparison"></span></div>
+                    <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3><p>精确单价旁的横条按当前结果统一比较，采用对数尺度兼顾低价与高价；条越短，综合单价越低。按量 API 没有周期额度时显示“—”。</p></div><span class="usage-table-count" data-table-count="comparison"></span></div>
                     <section class="usage-table-section" aria-label="额度和价格数据明细"><div class="usage-table-scroll"><table class="usage-data-table" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison')}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
                 </article>
             </section>`;
@@ -684,10 +738,11 @@
 
     function chartBase(tooltipFormatter) {
         return {
-            animationDuration: 350,
+            animation: !(root.matchMedia && root.matchMedia("(prefers-reduced-motion: reduce)").matches),
+            animationDuration: 250,
             grid: { left: 76, right: 28, top: 28, bottom: 58, containLabel: false },
             tooltip: { trigger: 'item', confine: true, appendToBody: false, formatter: tooltipFormatter },
-            textStyle: { fontFamily: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }
+            textStyle: { fontFamily: '"Avenir Next", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif' }
         };
     }
 
@@ -716,55 +771,6 @@
         }));
     }
 
-    function getUnitPriceBarAxisLabel(point) {
-        const plan = point.billingMode === 'subscription' ? (point.planName || '订阅') : '按量 API';
-        return `${point.platformName || '未知平台'} · ${plan} · ${point.relationLabel || point.modelName || '未知模型'}`;
-    }
-
-    function buildUnitPriceBarSeries(points, colorMode, colors, tokenUnit) {
-        const categories = points.map(getUnitPriceBarAxisLabel);
-        const grouped = new Map();
-        points.forEach((point, index) => {
-            const key = getPointColorKey(point, colorMode);
-            const label = colorMode === 'model' ? point.modelName : getPointLabelText(point, 'vendor');
-            if (!grouped.has(key)) grouped.set(key, { label, data: Array(points.length).fill(null) });
-            grouped.get(key).data[index] = {
-                value: unitPriceInTokenUnit(point.unitPriceCnyPerM, tokenUnit),
-                meta: point
-            };
-        });
-        return {
-            categories,
-            series: [...grouped.entries()].map(([key, group]) => ({
-                id: `unit-price:${key}`,
-                name: group.label,
-                type: 'bar',
-                data: group.data,
-                barMaxWidth: 24,
-                barGap: '-100%',
-                itemStyle: { color: colors[key], borderRadius: [4, 4, 0, 0] },
-                emphasis: { focus: 'series', blurScope: 'coordinateSystem', itemStyle: { opacity: 1 } },
-                blur: { itemStyle: { opacity: 0.1 } },
-                label: {
-                    show: true,
-                    position: 'top',
-                    distance: 4,
-                    color: '#475569',
-                    fontSize: 9,
-                    fontWeight: 600,
-                    formatter: (params) => `¥${formatNumber(params.value, params.value < 0.1 ? 3 : 2)}`
-                }
-            }))
-        };
-    }
-
-    function sizeUnitPriceBarChart(chartElement, itemCount) {
-        if (!chartElement) return;
-        const scrollHost = chartElement.parentElement;
-        const hostWidth = scrollHost && scrollHost.clientWidth ? scrollHost.clientWidth : 0;
-        chartElement.style.width = `${Math.max(hostWidth, itemCount * 46 + 90)}px`;
-    }
-
     function enableClickPinnedTooltip(chart) {
         chart.on('click', (params) => {
             if (params.componentType !== 'series') return;
@@ -782,7 +788,7 @@
         });
     }
 
-    async function mountModelComparisonView(container) {
+    async function mountModelComparisonView(container, options) {
         if (!container) return;
         if (container.__usageMounted) {
             requestAnimationFrame(() => {
@@ -791,25 +797,18 @@
             return;
         }
         if (container.__usageMountPromise) return container.__usageMountPromise;
+        const mountOptions = options || {};
         container.__usageMountPromise = (async () => {
             renderShell(container);
-            const [echarts, platformResponse, planResponse, modelResponse, relationResponse, presetConfig] = await Promise.all([
+            const [echarts, data, presetConfig] = await Promise.all([
                 loadEcharts(),
-                fetch('platforms.json', { cache: 'no-store' }),
-                fetch('plans.json', { cache: 'no-store' }),
-                fetch('models.json', { cache: 'no-store' }),
-                fetch('plan-models.json', { cache: 'no-store' }),
-                loadPresetConfig()
+                mountOptions.data || root.CodingPlanToolPage.load(),
+                mountOptions.preset || loadPresetConfig()
             ]);
-            const responses = [platformResponse, planResponse, modelResponse, relationResponse];
-            const labels = ['platforms.json', 'plans.json', 'models.json', 'plan-models.json'];
-            responses.forEach((response, index) => {
-                if (!response.ok) throw new Error(`${labels[index]} 加载失败：HTTP ${response.status}`);
-            });
-            const documents = await Promise.all(responses.map(response => response.json()));
-            const context = root.EntityData.buildContext(...documents);
+            const context = data.context;
+            context.modelGroups = presetConfig.groups || [];
             const rate = root.appConfig && root.appConfig.usdToCnyRate || 6.8;
-            const points = root.EntityData.buildComparisonPoints(context, rate);
+            const points = root.EntityData.buildComparisonPoints(context, rate, { includeUnknown: true });
             const platformMap = new Map();
             points.forEach((point) => {
                 platformMap.set(getPointPlatformKey(point), point.platformName);
@@ -820,18 +819,18 @@
             const models = [...modelMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
             const platformColors = buildVendorColorMap(platforms.map(([key]) => key));
             const modelColors = buildModelColorMap(models.map(([id]) => id));
-            const state = Object.assign(createDefaultFilterState(points), {
+            const focusRelationSlugs = new Set(mountOptions.focusRelationSlugs || []);
+            container.classList.toggle('is-full-tool', mountOptions.mode === 'full');
+            const state = Object.assign(createDefaultFilterState(points, mountOptions), {
                 benchmark: 'artificialAnalysis', colorMode: 'vendor',
-                tokensScale: 'log', priceScale: 'log', presetPlatformScope: 'featured'
+                tokensScale: 'log', priceScale: 'log', presetPlatformScope: 'featured',
+                tokenUnit: root.CodingPlanDisplaySettings?.getTokenUnit() || 'yi'
             });
             const usageChart = echarts.init(container.querySelector('[data-chart="usage"]'));
             const intelligenceChart = echarts.init(container.querySelector('[data-chart="intelligence"]'));
-            const unitPriceBarElement = container.querySelector('[data-chart="unit-price"]');
-            const unitPriceBarChart = echarts.init(unitPriceBarElement);
             enableClickPinnedTooltip(usageChart);
             enableClickPinnedTooltip(intelligenceChart);
-            enableClickPinnedTooltip(unitPriceBarChart);
-            container.__usageCharts = [usageChart, intelligenceChart, unitPriceBarChart];
+            container.__usageCharts = [usageChart, intelligenceChart];
             const tableSortState = {
                 comparison: { key: 'unitPriceCnyPerM', direction: 'asc' }
             };
@@ -839,6 +838,40 @@
             const priceBounds = getMonthlyPriceBounds(points);
             const priceSlider = { min: priceBounds.min, max: priceBounds.max };
             let renderedPresetKey = null;
+
+            function applyExternalFilter(external) {
+                if (!external) return;
+                state.platforms = external.platformSlugs === null
+                    ? new Set(platforms.map(([key]) => key))
+                    : new Set(external.platformSlugs || []);
+                state.models = external.modelSlugs === null
+                    ? new Set(models.map(([key]) => key))
+                    : new Set(external.modelSlugs || []);
+                state.platformsSpecified = true;
+                state.modelsSpecified = true;
+                state.modelMatch = external.modelSlugs !== null && external.modelMatch === 'all' ? 'all' : 'any';
+                state.includeDiscontinued = external.includeDiscontinued === true;
+                state.multimodal = external.multimodal || 'all';
+                state.aaScoreMin = external.aaScoreMin == null ? '' : external.aaScoreMin;
+                state.deepSWEScoreMin = external.deepSWEScoreMin == null ? '' : external.deepSWEScoreMin;
+                state.monthlyTokenRange = external.monthlyTokenRange;
+                state.tokenUnit = normalizeTokenUnit(external.tokenUnit);
+                const budget = external.budgetCny;
+                state.priceRanges = external.priceRanges || {};
+                state.filterContext = context;
+                state.sharedFilters = external;
+                const monthlyRange = external.priceRanges && external.priceRanges.monthlyPrice;
+                const numericBounds = values => values
+                    .filter(value => value !== null && value !== undefined && value !== '')
+                    .map(value => Number(value)).filter(Number.isFinite);
+                const minimums = numericBounds([budget && budget.min, monthlyRange && monthlyRange.min]);
+                const maximums = numericBounds([budget && budget.max, monthlyRange && monthlyRange.max]);
+                state.monthlyPriceMin = minimums.length ? Math.max(...minimums) : null;
+                state.monthlyPriceMax = maximums.length ? Math.min(...maximums) : null;
+                syncFilterControls();
+            }
+
+            applyExternalFilter(mountOptions.filterState || root.__codingplanUnifiedFiltersState);
 
             function updatePriceSliderVisuals(minValue, maxValue) {
                 const first = Math.max(priceBounds.min, Math.min(priceBounds.max, Math.round(minValue)));
@@ -945,7 +978,6 @@
                 container.querySelector('[data-filter="multimodal"]').value = state.multimodal;
                 container.querySelector('[data-filter="aaScoreMin"]').value = state.aaScoreMin;
                 container.querySelector('[data-filter="deepSWEScoreMin"]').value = state.deepSWEScoreMin;
-                container.querySelectorAll('[data-token-unit]').forEach((button) => button.classList.toggle('is-active', button.dataset.tokenUnit === state.tokenUnit));
                 syncPriceSliderFromState();
                 syncPriceFilterControl();
                 updatePickerCount('vendors', state.platforms);
@@ -990,10 +1022,16 @@
                 latestTableRows[tableName] = rows || [];
                 const sort = tableSortState[tableName];
                 const sorted = sortComparisonRows(rows, sort.key, sort.direction);
+                const scale = buildUnitPriceVisualScale(rows);
+                const colors = state.colorMode === 'model' ? modelColors : platformColors;
                 const body = container.querySelector(`[data-table-body="${tableName}"]`);
                 body.innerHTML = sorted.length
-                    ? sorted.map((point) => comparisonTableRowHtml(point, state.tokenUnit)).join('')
-                    : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length}">当前筛选下没有可展示的数据。</td></tr>`;
+                    ? sorted.map((point) => comparisonTableRowHtml(point, state.tokenUnit, {
+                        scale,
+                        focused: focusRelationSlugs.has(point.slug),
+                        color: colors[getPointColorKey(point, state.colorMode)]
+                    })).join('')
+                    : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length}">当前筛选下没有可展示的数据；请在上方下拉框调整条件，或点击“显示全部”。</td></tr>`;
                 container.querySelector(`[data-table-count="${tableName}"]`).textContent = `${sorted.length} 条`;
                 container.querySelectorAll(`[data-table="${tableName}"] th[data-sort-key]`).forEach((header) => {
                     const active = header.dataset.sortKey === sort.key;
@@ -1003,34 +1041,46 @@
                 });
             }
 
+            function fitScatterLayout(chart, usage) {
+                const compact = chart.getWidth() < 480;
+                chart.setOption({
+                    grid: { left: compact ? 62 : 76, right: compact ? 16 : 28, top: 28, bottom: 58 },
+                    xAxis: { axisLabel: { hideOverlap: true, fontSize: compact ? 10 : 12 } },
+                    yAxis: { nameGap: compact ? 44 : usage ? 55 : 45, axisLabel: { hideOverlap: true, fontSize: compact ? 10 : 12 } }
+                });
+            }
+
             function render() {
                 const presetRenderKey = `${state.tokenUnit}:${state.presetPlatformScope}`;
                 if (renderedPresetKey !== presetRenderKey) {
-                    renderPresetComparisons(container.querySelector('[data-presets]'), presetConfig, points, state.tokenUnit, state.presetPlatformScope);
+                    if (!mountOptions.hidePresets) renderPresetComparisons(container.querySelector('[data-presets]'), presetConfig, points, state.tokenUnit, state.presetPlatformScope);
                     renderedPresetKey = presetRenderKey;
                 }
-                const filtered = filterPoints(points, {
+                let filtered = filterPoints(points, {
                     platforms: state.platforms, models: state.models, multimodal: state.multimodal,
                     aaScoreMin: state.aaScoreMin, deepSWEScoreMin: state.deepSWEScoreMin,
-                    monthlyPriceMin: state.monthlyPriceMin, monthlyPriceMax: state.monthlyPriceMax
+                    monthlyPriceMin: state.monthlyPriceMin, monthlyPriceMax: state.monthlyPriceMax,
+                    platformsSpecified: state.platformsSpecified, modelsSpecified: state.modelsSpecified,
+                    modelMatch: state.modelMatch, includeDiscontinued: state.includeDiscontinued,
+                    monthlyTokenRange: state.monthlyTokenRange,
+                    priceRanges: state.priceRanges, filterContext: state.filterContext, sharedFilters: state.sharedFilters
                 });
+                if (state.soloColorKey && !filtered.some(point => getPointColorKey(point, state.colorMode) === state.soloColorKey)) state.soloColorKey = null;
                 const visibleFiltered = filterBySoloColorKey(filtered, state.colorMode, state.soloColorKey);
                 const usagePoints = buildUsageChartPoints(visibleFiltered);
                 const intelligencePoints = buildIntelligenceChartPoints(visibleFiltered, state.benchmark);
-                const unitPriceBarPoints = buildUnitPriceBarChartPoints(visibleFiltered);
                 const pointLabelField = getSoloPointLabelField(visibleFiltered);
                 const color = colorContext(filtered);
                 renderColorLegend(color);
                 const totalUsage = buildUsageChartPoints(points).length;
                 const totalIntelligence = buildIntelligenceChartPoints(points, state.benchmark).length;
-                const totalUnitPrice = buildUnitPriceBarChartPoints(points).length;
-                container.querySelector('[data-counts]').textContent = `额度图 ${usagePoints.length}/${totalUsage} · 智力图 ${intelligencePoints.length}/${totalIntelligence} · 单价图 ${unitPriceBarPoints.length}/${totalUnitPrice}`;
+                container.querySelector('[data-counts]').textContent = `额度图 ${usagePoints.length}/${totalUsage} · 智力图 ${intelligencePoints.length}/${totalIntelligence} · 明细 ${visibleFiltered.length}/${points.length}`;
 
-                const tokenUnitLabel = state.tokenUnit === 'yi' ? '亿' : 'M';
+                const tokenUnitLabel = Numbers.tokenUnit(state.tokenUnit);
                 const usageZone = buildUsageAttractiveZone(usagePoints, state.tokenUnit, state.tokensScale);
                 usageChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
-                    xAxis: { type: state.tokensScale, name: '月费（人民币）', nameLocation: 'middle', nameGap: 38, min: usageZone.xBounds.min, max: usageZone.xBounds.max, logBase: 10, axisLabel: { formatter: (v) => `¥${formatNumber(v, 0)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
-                    yAxis: { type: state.tokensScale, name: `月 Token（${tokenUnitLabel}）`, nameLocation: 'middle', nameGap: 55, min: usageZone.yBounds.min, max: usageZone.yBounds.max, logBase: 10, axisLabel: { formatter: (v) => formatNumber(v, v < 1 ? 3 : v < 10 ? 2 : 1) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
+                    xAxis: { type: state.tokensScale, name: '月费（人民币）', nameLocation: 'middle', nameGap: 38, min: usageZone.xBounds.min, max: usageZone.xBounds.max, logBase: 10, axisLabel: { formatter: (v) => Numbers.monthlyFee(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
+                    yAxis: { type: state.tokensScale, name: `月 Token（${tokenUnitLabel}）`, nameLocation: 'middle', nameGap: 55, min: usageZone.yBounds.min, max: usageZone.yBounds.max, logBase: 10, axisLabel: { formatter: (v) => Numbers.tokens(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     series: [buildUsageAttractiveZoneSeries(usageZone), ...seriesByColor(usagePoints, state.colorMode, color.colors, (point) => ({ value: [point.monthlyFeeCny, tokenAmountInUnit(point.monthlyTokenInM, state.tokenUnit)], meta: point }), 'usage', pointLabelField)]
                 }), true);
 
@@ -1047,41 +1097,22 @@
                     .filter((value) => value !== null);
                 const intelligenceScoreReference = intelligenceScores.length ? Math.min(...intelligenceScores) : 0;
                 intelligenceChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
-                    xAxis: { type: state.priceScale, name: `人民币 / ${tokenUnitLabel} Token`, nameLocation: 'middle', nameGap: 38, min: state.priceScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => `¥${formatNumber(v, v < 1 ? 2 : 1)}` }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
+                    xAxis: { type: state.priceScale, name: `人民币 / ${tokenUnitLabel} Token`, nameLocation: 'middle', nameGap: 38, min: state.priceScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => Numbers.unitPrice(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     yAxis: { type: 'value', name: `${BENCHMARKS[state.benchmark].short} 评分`, nameLocation: 'middle', nameGap: 45, scale: true, axisLabel: { formatter: (v) => formatNumber(v, 0) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     series: [
                         buildIntelligenceAttractiveZoneSeries(
                             getAttractiveUnitPriceThreshold(state.tokenUnit),
-                            intelligenceScoreReference
+                            intelligenceScoreReference,
+                            state.tokenUnit
                         ),
                         ...intelligenceSeries
                     ]
                 }), true);
-                const unitPriceBar = buildUnitPriceBarSeries(unitPriceBarPoints, state.colorMode, color.colors, state.tokenUnit);
-                sizeUnitPriceBarChart(unitPriceBarElement, unitPriceBarPoints.length);
-                unitPriceBarChart.resize();
-                unitPriceBarChart.setOption({
-                    animationDuration: 420,
-                    grid: { left: 62, right: 20, top: 42, bottom: 205 },
-                    tooltip: { trigger: 'item', confine: true, appendToBody: false, formatter: (params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit) },
-                    textStyle: { fontFamily: 'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' },
-                    xAxis: {
-                        type: 'category', data: unitPriceBar.categories,
-                        axisTick: { alignWithLabel: true },
-                        axisLabel: { interval: 0, rotate: 58, hideOverlap: false, color: '#64748b', fontSize: 10 },
-                        axisLine: { lineStyle: { color: '#cbd5e1' } }
-                    },
-                    yAxis: {
-                        type: 'value', name: `人民币 / ${tokenUnitLabel} Token`, nameLocation: 'end', nameGap: 10,
-                        axisLabel: { color: '#64748b', formatter: (value) => `¥${formatNumber(value, value < 1 ? 2 : 1)}` },
-                        splitLine: { lineStyle: { color: '#e5e7eb' } }
-                    },
-                    series: unitPriceBar.series
-                }, true);
+                fitScatterLayout(usageChart, true);
+                fitScatterLayout(intelligenceChart, false);
                 renderDataTable('comparison', visibleFiltered);
                 container.querySelector('[data-empty="usage"]').hidden = usagePoints.length > 0;
                 container.querySelector('[data-empty="intelligence"]').hidden = intelligencePoints.length > 0;
-                container.querySelector('[data-empty="unit-price"]').hidden = unitPriceBarPoints.length > 0;
             }
 
             container.addEventListener('change', (event) => {
@@ -1099,6 +1130,19 @@
                 else if (target.matches('[data-scale="price"]')) state.priceScale = target.value;
                 render();
             });
+            function onSharedFilterChange(event) {
+                // Business filters supersede the temporary legend restriction; display units do not.
+                if (!event || !event.detail || event.detail.source !== 'display') state.soloColorKey = null;
+                applyExternalFilter(event && event.detail && event.detail.state);
+                render();
+            }
+            root.addEventListener('codingplan:filters-changed', onSharedFilterChange);
+            const onTokenUnitChange = event => { if(state.tokenUnit === event.detail.tokenUnit)return; state.tokenUnit = event.detail.tokenUnit; render(); };
+            root.addEventListener('codingplan:token-unit-changed', onTokenUnitChange);
+            container.__usageCleanup = () => {
+                root.removeEventListener('codingplan:filters-changed', onSharedFilterChange);
+                root.removeEventListener('codingplan:token-unit-changed', onTokenUnitChange);
+            };
             container.querySelector('[data-model-search]').addEventListener('input', (event) => {
                 const query = event.target.value.trim().toLocaleLowerCase('zh-CN');
                 container.querySelectorAll('[data-picker="models"] [data-options] label').forEach((label) => {
@@ -1131,9 +1175,8 @@
             function setColorHighlight(key, active) {
                 setChartSeriesHighlight(usageChart, [`usage:${key}`], active);
                 setChartSeriesHighlight(intelligenceChart, [`intelligence:${key}`], active);
-                setChartSeriesHighlight(unitPriceBarChart, [`unit-price:${key}`], active);
             }
-            [usageChart, intelligenceChart, unitPriceBarChart].forEach((chart) => {
+            [usageChart, intelligenceChart].forEach((chart) => {
                 chart.on('mouseover', (params) => {
                     if (params.componentType !== 'series' || !params.data || !params.data.meta) return;
                     setColorHighlight(getPointColorKey(params.data.meta, state.colorMode), true);
@@ -1232,13 +1275,6 @@
                     render();
                     return;
                 }
-                const tokenUnitButton = event.target.closest('[data-token-unit]');
-                if (tokenUnitButton) {
-                    state.tokenUnit = normalizeTokenUnit(tokenUnitButton.dataset.tokenUnit);
-                    container.querySelectorAll('[data-token-unit]').forEach((button) => button.classList.toggle('is-active', button === tokenUnitButton));
-                    render();
-                    return;
-                }
                 const presetPlatformScopeButton = event.target.closest('[data-preset-platform-scope]');
                 if (presetPlatformScopeButton) {
                     state.presetPlatformScope = normalizePresetPlatformScope(presetPlatformScopeButton.dataset.presetPlatformScope);
@@ -1246,7 +1282,13 @@
                     return;
                 }
                 if (event.target.closest('[data-action="restore-defaults"]')) {
-                    Object.assign(state, createDefaultFilterState(points));
+                    if (mountOptions.mode !== 'full' && root.__codingplanHomeApi && root.CodingPlanFilters) {
+                        const sharedDefaults = root.CodingPlanFilters.createDefaultState(root.appConfig || {});
+                        root.__codingplanHomeApi.setUnifiedFilters(sharedDefaults);
+                        root.dispatchEvent(new CustomEvent('codingplan:filters-changed', { detail: { state: sharedDefaults } }));
+                        return;
+                    }
+                    Object.assign(state, createDefaultFilterState(points, mountOptions));
                     syncFilterControls();
                     container.querySelector('[data-model-search]').value = '';
                     container.querySelectorAll('[data-picker="models"] [data-options] label').forEach((label) => { label.hidden = false; });
@@ -1264,8 +1306,8 @@
             const resize = () => {
                 usageChart.resize();
                 intelligenceChart.resize();
-                sizeUnitPriceBarChart(unitPriceBarElement, buildUnitPriceBarChartPoints(filterBySoloColorKey(filterPoints(points, state), state.colorMode, state.soloColorKey)).length);
-                unitPriceBarChart.resize();
+                fitScatterLayout(usageChart, true);
+                fitScatterLayout(intelligenceChart, false);
             };
             root.addEventListener('resize', resize);
             if (root.ResizeObserver) new root.ResizeObserver(resize).observe(container);
@@ -1279,5 +1321,5 @@
         return container.__usageMountPromise;
     }
 
-    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SLUGS, DEFAULT_MODEL_SLUGS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceBarChartPoints, buildUnitPriceBarSeries, getUnitPriceBarAxisLabel, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, formatApiPricing, platformCellHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SLUGS, DEFAULT_MODEL_SLUGS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceVisualScale, getUnitPriceVisualPercent, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, formatApiPricing, platformCellHtml, unitPriceVisualHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });

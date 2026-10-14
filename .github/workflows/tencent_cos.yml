@@ -29,4 +29,4 @@ jobs:
         rm -rf dev
     
     - name: Upload
-      run: coscmd upload -rs -f ./ / --ignore "./.*"
+      run: coscmd upload -rs -f ./ / --ignore "./.*" --delete

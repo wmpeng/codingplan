@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<script src="/scripts/ui-core.js?v=57904152bf"></script>
+<script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
+<script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GLM-5.3 在 AA 14 模型对比中综合第 5，Agentic 第 2：双榜成绩出炉</title>
-  <meta name="description" content="Artificial Analysis 于 8 月 18 日收录 GLM-5.3（max）评测：综合智能 60 分、在这份 14 模型对比集内第 5，Agentic 59 分第 2；第三方 DeepSWE 榜单 69%±3% 并列第一梯队；API 已开放，输入 ¥8、输出 ¥28（每百万 tokens）。" />
-  <link rel="icon" href="../../../favicon.ico?v=20260818" type="image/x-icon" />
-  <link rel="stylesheet" href="../../../styles/shared.css?v=20260818" />
+<meta name="description" content="Artificial Analysis 于 8 月 18 日收录 GLM-5.3（max）评测：综合智能 60 分、在这份 14 模型对比集内第 5，Agentic 59 分第 2；第三方 DeepSWE 榜单 69%±3% 并列第一梯队；API 已开放，输入 ¥8、输出 ¥28（每百万 tokens）。" />
+  <link rel="icon" href="../../../favicon.ico?v=260924a" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=482edb170c" />
 <style>
     body.article-page {
       font-size: 17px;
@@ -507,17 +511,67 @@
     }
 
   </style>
+<link rel="canonical" href="https://codingplan.fyi/articles/news/20260818_glm_5_3_aa/">
+<script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=7c1640cfed" />
+  <link rel="stylesheet" href="/styles/design-system.css?v=47a0b29cda" />
+<script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
+<link rel="stylesheet" href="/styles/ui-components.css?v=e5133e2fe2">
 </head>
 <body class="article-page">
-  <div class="doc-wrap">
-    <nav class="back-nav" aria-label="返回">
-      <a href="../../../" class="back-home-btn">← 返回主页</a>
-      <a href="../../" class="back-home-btn">文章列表</a>
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/monitor/" hidden data-monitor-nav>可用性监控</a>
+    <a href="/articles/" aria-current="page">文章</a>
+    <a href="/updates/">更新历史</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="doc-wrap">
+    <nav class="guide-breadcrumb article-breadcrumb" aria-label="面包屑">
+      <a href="/">Coding Plan</a><span aria-hidden="true">/</span>
+      <a href="/articles/">文章列表</a><span aria-hidden="true">/</span>
+      <span aria-current="page" title="GLM-5.3 在 AA 14 模型对比中综合第 5，Agentic 第 2：双榜成绩出炉">GLM-5.3 在 AA 14 模型对比中综合第 5，Agentic 第 2：双榜成绩出炉</span>
     </nav>
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="文章目录">
         <nav class="doc-toc" aria-label="目录">
-          <p class="doc-toc-title">目录</p>
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-deepswe">一、先回看 DeepSWE</a></li>
             <li><a href="#sec-intelligence">二、综合智能榜</a></li>
@@ -531,7 +585,7 @@
       <article class="doc">
         <p class="doc-kicker">产品更新 · GLM-5.3</p>
         <h1>GLM-5.3 在 AA 14 模型对比中综合第 5，Agentic 第 2：双榜成绩出炉</h1>
-        <p class="doc-updates">更新日期：<time datetime="2026-08-23">2026.8.23</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
+        <p class="doc-updates">更新日期：<time datetime="2026-08-23">2026.8.23</time> · 数据来源 <a href="/" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
 
         <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;">
           <p>本次核心更新：</p>
@@ -546,8 +600,8 @@
 
         <p class="lead">8 月 14 日智谱发布 GLM-5.3 后，独立评测机构 Artificial Analysis（下称 AA）在 8 月 18 日收录了 GLM-5.3（max）的评测结果。这是第三方视角的独立评测补充，不是模型再次发布。AA 把各家模型放进同一套任务里跑分，用 Intelligence Index 给出综合分数，再单独加权出更接近工具调用和长程任务表现的 Agentic Index。当前版本 v4.1.1 下，GLM-5.3 综合智能 60 分、Agentic 59 分，在 8 月 22 日截图的这份 14 模型对比集内分别排第 5 和第 2。</p>
 
-                <nav class="doc-toc doc-toc--inline" aria-label="目录">
-          <p class="doc-toc-title">目录</p>
+                <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="目录">
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-deepswe">一、先回看 DeepSWE</a></li>
             <li><a href="#sec-intelligence">二、综合智能榜</a></li>
@@ -555,10 +609,10 @@
             <li><a href="#sec-tiers">四、三榜都在第一梯队</a></li>
             <li><a href="#sec-summary">五、总结</a></li>
           </ol>
-        </nav>
+        </nav></details>
 
 <h2 id="sec-deepswe">一、先回看 DeepSWE：第三方榜 69%±3%，并列第一梯队</h2>
-<p>在上一篇 <a href="https://vibecoding.dreamfree.space/articles/news/20260814_glm_5_3/" rel="noopener noreferrer">《GLM-5.3 发布》</a> 里已经梳理过官方跑分：提升几乎全部来自后训练，最突出的是长程软件工程任务。官方口径里，DeepSWE v1.1 从 GLM-5.2 的 46.2 提升到 66.9，Terminal Bench 3.0 从 4.6 提升到 28.3，Agents' Last Exam（CLI）从 23.8 提升到 28.5。</p>
+<p>在上一篇 <a href="/articles/news/20260814_glm_5_3/" rel="noopener noreferrer">《GLM-5.3 发布》</a> 里已经梳理过官方跑分：提升几乎全部来自后训练，最突出的是长程软件工程任务。官方口径里，DeepSWE v1.1 从 GLM-5.2 的 46.2 提升到 66.9，Terminal Bench 3.0 从 4.6 提升到 28.3，Agents' Last Exam（CLI）从 23.8 提升到 28.5。</p>
 <p>第三方榜单 DeepSWE（<a href="https://deepswe.datacurve.ai/" rel="noopener noreferrer">deepswe.datacurve.ai</a>）用统一环境重新跑了一遍：113 个任务、覆盖 91 个仓库、5 种语言，所有模型都跑在 mini-swe-agent 上，保证执行环境一致。榜单收录 25 个模型配置，截图展示其中 18 个；下面列出与本文相关的 11 个配置。对应 v1.1，更新于 8 月 20 日：</p>
 <figure class="doc-figure"><img src="assets/deepswe-leaderboard-1.jpeg" alt="DeepSWE 实时榜单：GLM-5.3 与 Kimi K3 同处 69% 第一梯队" loading="lazy" /></figure>
 <p class="img-source">图片来源：<a href="https://deepswe.datacurve.ai/" rel="noopener noreferrer">DeepSWE 实时榜单</a></p>
@@ -652,8 +706,8 @@
 <p>接下来值得关注的是权重开放后的第三方复测、AA 榜单版本更新，以及实际使用中的 Token 消耗和长期稳定性。</p>
 
                 <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">
-          数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br />
-          原文链接 <a href="https://vibecoding.dreamfree.space/articles/news/20260818_glm_5_3_aa/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260818_glm_5_3_aa/</a>
+          数据来源 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br />
+          原文链接 <a href="/articles/news/20260818_glm_5_3_aa/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260818_glm_5_3_aa/</a>
         </div>
       </article>
     </div>

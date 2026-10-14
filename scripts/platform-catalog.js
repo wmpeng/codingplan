@@ -1,3 +1,12 @@
+(function () {
+const CatalogUI = typeof module === 'object' && module.exports ? require('./ui-core.js') : globalThis.CodingPlanUI;
+const PlatformGuideRegistry = typeof module === 'object' && module.exports
+  ? require('./platform-pages.js') : (globalThis.PlatformPages || { getUrl: () => null });
+const PlatformEntityData = typeof module === 'object' && module.exports
+  ? require('./entity-data.js') : globalThis.EntityData;
+
+function getPlatformGuideUrl(slug) { return PlatformGuideRegistry.getUrl(slug); }
+
 const DIMENSION_KEYS = ['value', 'models', 'stability'];
 
 const PLATFORM_DIMENSION_META = [
@@ -7,12 +16,7 @@ const PLATFORM_DIMENSION_META = [
 ];
 
 const PLATFORM_STATUSES = ['open', 'limited', 'paused', 'delisted'];
-const PLATFORM_STATUS_LABELS = {
-  open: '开放购买',
-  limited: '定时放量',
-  paused: '暂时停售',
-  delisted: '已下架'
-};
+const PLATFORM_STATUS_LABELS = CatalogUI.statusLabels;
 /** 筛选滑块中间档位文案（前后另有前缀 /「平台」） */
 const PLATFORM_STATUS_SEGMENT_LABELS = {
   open: '开放购买',
@@ -23,35 +27,10 @@ const PLATFORM_STATUS_SEGMENT_LABELS = {
 const PLATFORM_STATUS_FILTER_SUFFIX = '平台';
 const DEFAULT_PLATFORM_STATUS_MAX = 'paused';
 
-function escapeHtml(text) {
-  if (text === null || text === undefined) return '';
-  return String(text)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
+const escapeHtml = CatalogUI.escapeHtml;
 
-function sanitizeInlineHttpUrl(url) {
-  if (typeof url !== 'string' || !url.trim()) return null;
-  try {
-    const base =
-      typeof globalThis !== 'undefined' &&
-      globalThis.location &&
-      typeof globalThis.location.origin === 'string'
-        ? globalThis.location.origin
-        : 'https://example.invalid';
-    const parsed = new URL(url.trim(), base);
-    if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
-      return parsed.href;
-    }
-  } catch (error) {
-    return null;
-  }
-  return null;
-}
+const sanitizeInlineHttpUrl = CatalogUI.sanitizeUrl;
 
-/** Inline Markdown: `[label](https://...)` links and `**bold**`. */
 function formatInlineMarkdown(text) {
   if (text === null || text === undefined) return '';
 
@@ -130,66 +109,10 @@ function platformStatusFilterPhrase(maxStatus) {
   return `${platformStatusFilterPrefix(max)}${labels.join('和')}${PLATFORM_STATUS_FILTER_SUFFIX}`;
 }
 
-function matchesDerivedTag(platform, rule) {
-  if (rule.platformStatus !== undefined) {
-    if (normalizePlatformStatus(platform.platformStatus) !== rule.platformStatus) {
-      return false;
-    }
-  }
-  if (rule.dimension !== undefined && rule.minScore !== undefined) {
-    const dim = platform.dimensions?.[rule.dimension];
-    if (!dim || !Number.isFinite(dim.score) || dim.score < rule.minScore) {
-      return false;
-    }
-  }
-  return true;
-}
-
-function matchesOperationalTag(platform, label) {
-  return Array.isArray(platform.tags) && platform.tags.includes(label);
-}
-
-function filterPlatforms(platforms, {
-  selectedLabels,
-  platformStatusMax,
-  derivedTags,
-  operationalTags,
-  pinnedIds
-}) {
+function filterPlatforms(platforms, { platformStatusMax, pinnedIds } = {}) {
   const pinnedSet = new Set(normalizePinnedIds(pinnedIds));
-  function isPinnedPlatform(platform) {
-    const id = platform && typeof platform.slug === 'string' ? platform.slug.trim() : '';
-    return !!(id && pinnedSet.has(id));
-  }
-
-  let result = platforms;
   const maxRank = platformStatusRank(platformStatusMax ?? DEFAULT_PLATFORM_STATUS_MAX);
-  result = result.filter(
-    (p) => isPinnedPlatform(p) || platformStatusRank(p.platformStatus) <= maxRank
-  );
-
-  if (!selectedLabels || selectedLabels.length === 0) {
-    return result;
-  }
-
-  const derivedByLabel = new Map((derivedTags || []).map(t => [t.label, t]));
-
-  return result.filter(platform => {
-    if (isPinnedPlatform(platform)) return true;
-    for (const label of selectedLabels) {
-      const derived = derivedByLabel.get(label);
-      if (derived) {
-        if (!matchesDerivedTag(platform, derived.rule)) {
-          return false;
-        }
-      } else {
-        if (!matchesOperationalTag(platform, label)) {
-          return false;
-        }
-      }
-    }
-    return true;
-  });
+  return platforms.filter(platform => pinnedSet.has(platform.slug) || platformStatusRank(platform.platformStatus) <= maxRank);
 }
 
 const PLATFORM_PIN_STORAGE_KEY = 'platformCatalogPinnedIds';
@@ -462,9 +385,6 @@ function validatePlatformRecords(platforms, plans) {
       errors.push(`${prefix}: platformStatus must be one of ${PLATFORM_STATUSES.join(', ')}`);
     }
 
-    if (platform.tags !== undefined && !Array.isArray(platform.tags)) {
-      errors.push(`${prefix}: tags must be an array`);
-    }
 
     if (Object.prototype.hasOwnProperty.call(platform, 'summary')) {
       if (typeof platform.summary !== 'string' || platform.summary.trim() === '') {
@@ -502,44 +422,6 @@ function validatePlatformRecords(platforms, plans) {
   return { ok: errors.length === 0, errors };
 }
 
-function buildPlatformTagBarHtml(catalogConfig, selectedLabels, platformStatusMax) {
-  const cat = catalogConfig || {};
-  const selected = selectedLabels || [];
-  const mainParts = [];
-
-  const derivedChips = [];
-  for (const tag of cat.derivedTags || []) {
-    const label = tag.label;
-    const active = selected.includes(label);
-    derivedChips.push(
-      `<button type="button" class="platform-tag-chip platform-tag-chip--derived${active ? ' is-active' : ''}" data-platform-tag="${escapeHtml(label)}" aria-pressed="${active ? 'true' : 'false'}">${escapeHtml(label)}</button>`
-    );
-  }
-  if (derivedChips.length) {
-    mainParts.push(`<div class="platform-tag-group platform-tag-group--derived" role="group" aria-label="预设筛选">${derivedChips.join('')}</div>`);
-  }
-
-  const operationalChips = [];
-  for (const label of cat.operationalTags || []) {
-    const active = selected.includes(label);
-    operationalChips.push(
-      `<button type="button" class="platform-tag-chip platform-tag-chip--operational${active ? ' is-active' : ''}" data-platform-tag="${escapeHtml(label)}" aria-pressed="${active ? 'true' : 'false'}">${escapeHtml(label)}</button>`
-    );
-  }
-  if (operationalChips.length) {
-    if (derivedChips.length) {
-      mainParts.push('<span class="platform-tag-sep" aria-hidden="true"></span>');
-    }
-    mainParts.push(`<div class="platform-tag-group platform-tag-group--operational" role="group" aria-label="平台标签">${operationalChips.join('')}</div>`);
-  }
-
-  const mainHtml = mainParts.length
-    ? `<div class="platform-tag-bar-main">${mainParts.join('')}</div>`
-    : '';
-
-  return `${mainHtml}${buildPlatformStatusSliderHtml(platformStatusMax)}`;
-}
-
 function buildPlatformStatusSliderHtml(platformStatusMax) {
   const max = normalizePlatformStatus(platformStatusMax ?? DEFAULT_PLATFORM_STATUS_MAX);
   const parts = [];
@@ -573,11 +455,10 @@ function buildPlatformStatusSliderHtml(platformStatusMax) {
   );
 }
 
-const EXTERNAL_LINK_ICON =
-  '<svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>';
+const EXTERNAL_LINK_ICON = CatalogUI.externalLinkIcon;
 
 function buildPlatformCardHtml(platform, plans, options = {}) {
-  const sanitizeUrl = options.sanitizeUrl || (url => url);
+  const sanitizeUrl = options.sanitizeUrl || CatalogUI.sanitizeUrl;
   const supportedModels = Array.isArray(options.supportedModels)
     ? options.supportedModels
     : [];
@@ -590,7 +471,6 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     : `<span class="platform-name">${name}</span>`;
 
   const rating = Math.max(0, Math.min(5, Number(platform.rating) || 0));
-  const stars = '⭐️'.repeat(rating);
   const summaryText =
     typeof platform.summary === 'string' && platform.summary.trim()
       ? platform.summary.trim()
@@ -618,18 +498,10 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     return `<li data-dim="${escapeHtml(key)}"><div class="dim-meta">${scoreHtml}<span class="dim-label">${escapeHtml(label)}</span></div><span class="dim-reason">${formatInlineMarkdownPreserveBreaks(dim.reason || '')}</span></li>`;
   }).join('');
 
-  const tags = Array.isArray(platform.tags) ? platform.tags : [];
-  const tagsHtml = tags.length
-    ? `<div class="platform-tags" aria-label="标签">${tags.map((tag) => `<span class="platform-tag">${escapeHtml(tag)}</span>`).join('')}</div>`
-    : '';
-
   const models = supportedModels.length ? supportedModels.map(model => model.name) : collectModelsForVendor(plans, platform.slug);
-  const modelLimit = 5;
-  const shownModels = models.slice(0, modelLimit);
-  const extraModels = models.length - shownModels.length;
-  const modelsHtml = models.length
-    ? `<div class="platform-models" aria-label="模型">${shownModels.map((model) => `<span class="model-tag">${escapeHtml(model)}</span>`).join('')}${extraModels > 0 ? `<span class="model-tag model-tag-more">+${extraModels}</span>` : ''}</div>`
-    : '';
+  const modelsHtml = CatalogUI.modelTags(models, {
+    limit: 5, className: 'platform-models', ariaLabel: '模型', toggleAttribute: 'data-platform-toggle-models'
+  });
 
   const discontinuedClass = status === 'delisted' ? ' is-discontinued' : '';
   const platformId = platform && typeof platform.slug === 'string' ? platform.slug.trim() : '';
@@ -651,19 +523,33 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
                         </div>
                         <div class="platform-card-aside">
                             ${pinHtml}
-                            <span class="platform-rating" aria-label="${rating > 0 ? `${rating} 星` : '待评定'}">${rating > 0 ? stars : '待评定'}</span>
+                            <span class="platform-rating" aria-label="${rating > 0 ? `${rating} 星` : '待评定'}">${rating > 0 ? `★ ${rating.toFixed(1)}` : '待评定'}</span>
                         </div>
                     </header>
                     ${summary}
                     <ul class="platform-dimensions">${dimsHtml}</ul>
-                    ${tagsHtml}
+                    <div class="platform-capabilities">${PlatformEntityData.platformHarnessApiBadge(platform, plans)}</div>
                     ${modelsHtml}
-                    <span class="platform-card-hint">查看详情 <span aria-hidden="true">→</span></span>
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span>${getPlatformGuideUrl(platformId) ? `<a class="platform-guide-link" href="${escapeHtml(getPlatformGuideUrl(platformId))}">平台介绍 →</a>` : ''}</div>
                 </article>
             `;
 }
 
+function togglePlatformModels(event) {
+  return CatalogUI.toggleModels(event, '[data-platform-toggle-models]');
+}
+
+function buildPlanModelListHtml(labels) {
+  const models = Array.isArray(labels) ? labels : [];
+  const tags = models.map(name => `<span class="model-tag">${escapeHtml(name)}</span>`).join('');
+  if (models.length <= 3) return tags;
+  return `<details class="home-plan-models"><summary>${escapeHtml(models.slice(0, 2).join('、'))} 等 ${models.length} 个模型</summary><div>${tags}</div></details>`;
+}
+
 const PlatformCatalog = {
+  EXTERNAL_LINK_ICON,
+  buildPlanModelListHtml,
+  getPlatformGuideUrl,
   DIMENSION_KEYS,
   PLATFORM_DIMENSION_META,
   PLATFORM_STATUSES,
@@ -682,8 +568,6 @@ const PlatformCatalog = {
   platformStatusFilterLabel,
   isPlatformStatusSegmentActive,
   platformStatusFilterPhrase,
-  matchesDerivedTag,
-  matchesOperationalTag,
   filterPlatforms,
   PLATFORM_PIN_STORAGE_KEY,
   PLATFORM_PIN_MAX,
@@ -708,9 +592,9 @@ const PlatformCatalog = {
   matchMonitorPlatform,
   resolvePlatformAction,
   validatePlatformRecords,
-  buildPlatformTagBarHtml,
   buildPlatformStatusSliderHtml,
-  buildPlatformCardHtml
+  buildPlatformCardHtml,
+  togglePlatformModels
 };
 
 if (typeof module !== 'undefined' && module.exports) {
@@ -718,3 +602,5 @@ if (typeof module !== 'undefined' && module.exports) {
 } else {
   window.PlatformCatalog = PlatformCatalog;
 }
+
+})();

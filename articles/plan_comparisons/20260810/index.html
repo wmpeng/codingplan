@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<script src="/scripts/ui-core.js?v=57904152bf"></script>
+<script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
+<script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>2026年8月10日 Coding Plan平台全面对比｜智谱新套餐涨价、Kimi限购、DeepSeek新模型、字节方舟2.5折持续</title>
-  <meta name="description" content="8 月这轮更新，主线是「定价再平衡」：智谱把旗舰模型的购买门槛从抢购改成直接购买，代价是价格翻倍；Kimi 发布 Kimi-K3 后反而收紧供应；字节·方舟活动退潮，只剩 2.5 折在延续。对个人开发者来说，选平台的判断标准没有变：同价位可用量、是否要抢购、模型池是否覆盖你的实际开发场景。本文按这个逻辑，把本期主流平台" />
-  <link rel="icon" href="../../../favicon.ico?v=20260810" type="image/x-icon" />
-  <link rel="stylesheet" href="../../../styles/shared.css?v=20260810" />
+<meta name="description" content="8 月这轮更新，主线是「定价再平衡」：智谱把旗舰模型的购买门槛从抢购改成直接购买，代价是价格翻倍；Kimi 发布 Kimi-K3 后反而收紧供应；字节·方舟活动退潮，只剩 2.5 折在延续。对个人开发者来说，选平台的判断标准没有变：同价位可用量、是否要抢购、模型池是否覆盖你的实际开发场景。本文按这个逻辑，把本期主流平台" />
+  <link rel="icon" href="../../../favicon.ico?v=260924a" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=482edb170c" />
   <style>
 
     body.article-page {
@@ -454,24 +458,74 @@
     }
 
   </style>
+<link rel="canonical" href="https://codingplan.fyi/articles/plan_comparisons/20260810/">
+<script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=7c1640cfed" />
+  <link rel="stylesheet" href="/styles/design-system.css?v=47a0b29cda" />
+<script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
+<link rel="stylesheet" href="/styles/ui-components.css?v=e5133e2fe2">
 </head>
 <body class="article-page">
-  <div class="doc-wrap">
-    <nav class="back-nav" aria-label="返回">
-      <a href="../../../" class="back-home-btn">← 返回主页</a>
-      <a href="../../" class="back-home-btn">文章列表</a>
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/monitor/" hidden data-monitor-nav>可用性监控</a>
+    <a href="/articles/" aria-current="page">文章</a>
+    <a href="/updates/">更新历史</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="doc-wrap">
+    <nav class="guide-breadcrumb article-breadcrumb" aria-label="面包屑">
+      <a href="/">Coding Plan</a><span aria-hidden="true">/</span>
+      <a href="/articles/">文章列表</a><span aria-hidden="true">/</span>
+      <span aria-current="page" title="2026年8月10日 Coding Plan平台全面对比｜智谱新套餐涨价、Kimi限购、DeepSeek新模型、字节方舟2.5折持续">2026年8月10日 Coding Plan平台全面对比｜智谱新套餐涨价、Kimi限购、DeepSeek新模型、字节方舟2.5折持续</span>
     </nav>
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="侧栏目录">
-        <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、三种常见计费方式</a><ol><li><a href="#sec-1-8-月初动态">1）8 月初动态</a></li><li><a href="#sec-2-实际用量与价格对比">2）实际用量与价格对比</a></li></ol></li><li><a href="#sec-h2-2">二、前沿模型官方平台</a><ol><li><a href="#sec-1-智谱ai-新套餐开放购买-价格翻倍">1. 智谱AI：新套餐开放购买，价格翻倍</a></li><li><a href="#sec-2-minimax-token-大池稳定-m3-体系适合长期高频">2. MiniMax：Token 大池稳定，M3 体系适合长期高频</a></li><li><a href="#sec-3-字节-方舟-模型池最全-2-5-折延续-已解除限购">3. 字节·方舟：模型池最全，2.5 折延续，已解除限购</a></li><li><a href="#sec-4-kimi-kimi-k3-旗舰模型上线-会员需预约">4. Kimi：Kimi-K3 旗舰模型上线，会员需预约</a></li><li><a href="#sec-5-deepseek-纯-api-按量-适合成本精算与弹性负载">5. DeepSeek：纯 API 按量，适合成本精算与弹性负载</a></li><li><a href="#sec-6-阿里-百炼-qwen-3-8-max-上线-token-体系更完整">6. 阿里·百炼：Qwen-3.8-Max 上线，Token 体系更完整</a></li></ol></li><li><a href="#sec-h2-3">三、其他主流平台</a><ol><li><a href="#sec-1-共绩算力-deepseek-官方约-8-折的按量通道">1. 共绩算力：DeepSeek 官方约 8 折的按量通道</a></li><li><a href="#sec-2-优云智算-glm-5-2-与-flash-正式版全档支持-按调用量计费">2. 优云智算：GLM-5.2 与 Flash 正式版全档支持，按调用量计费</a></li><li><a href="#sec-3-小米-mimo-经历一轮降价-量大管饱">3. 小米 MiMo：经历一轮降价，量大管饱</a></li></ol></li><li><a href="#sec-h2-4">四、推荐国际平台</a><ol><li><a href="#sec-1-opencode-go-多模型聚合-首月半价">1. OpenCode Go：多模型聚合，首月半价</a></li><li><a href="#sec-2-codex-openai-原生编程代理-token-计费更清晰">2. Codex：OpenAI 原生编程代理，Token 计费更清晰</a></li><li><a href="#sec-3-claude-code-原生体验最佳">3. Claude Code：原生体验最佳</a></li><li><a href="#sec-4-ollama-开源模型聚合-覆盖广">4. Ollama：开源模型聚合，覆盖广</a></li></ol></li><li><a href="#sec-h2-5">五、分场景选型建议</a><ol><li><a href="#sec-1-综合推荐">1）综合推荐</a></li><li><a href="#sec-2-包含-deepseek-v4-flash-0731-正式版">2）包含 DeepSeek-V4-Flash-0731 正式版</a></li><li><a href="#sec-3-包含-kimi-k3">3）包含 Kimi-K3</a></li><li><a href="#sec-4-包含-glm-5-2">4）包含 GLM-5.2</a></li><li><a href="#sec-5-不抢购-稳定大用量">5）不抢购 / 稳定大用量</a></li></ol></li><li><a href="#sec-h2-6">六、总结</a></li></ol></nav>
+        <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">本页内容</p><ol><li><a href="#sec-h2-1">一、三种常见计费方式</a><ol><li><a href="#sec-1-8-月初动态">1）8 月初动态</a></li><li><a href="#sec-2-实际用量与价格对比">2）实际用量与价格对比</a></li></ol></li><li><a href="#sec-h2-2">二、前沿模型官方平台</a><ol><li><a href="#sec-1-智谱ai-新套餐开放购买-价格翻倍">1. 智谱AI：新套餐开放购买，价格翻倍</a></li><li><a href="#sec-2-minimax-token-大池稳定-m3-体系适合长期高频">2. MiniMax：Token 大池稳定，M3 体系适合长期高频</a></li><li><a href="#sec-3-字节-方舟-模型池最全-2-5-折延续-已解除限购">3. 字节·方舟：模型池最全，2.5 折延续，已解除限购</a></li><li><a href="#sec-4-kimi-kimi-k3-旗舰模型上线-会员需预约">4. Kimi：Kimi-K3 旗舰模型上线，会员需预约</a></li><li><a href="#sec-5-deepseek-纯-api-按量-适合成本精算与弹性负载">5. DeepSeek：纯 API 按量，适合成本精算与弹性负载</a></li><li><a href="#sec-6-阿里-百炼-qwen-3-8-max-上线-token-体系更完整">6. 阿里·百炼：Qwen-3.8-Max 上线，Token 体系更完整</a></li></ol></li><li><a href="#sec-h2-3">三、其他主流平台</a><ol><li><a href="#sec-1-共绩算力-deepseek-官方约-8-折的按量通道">1. 共绩算力：DeepSeek 官方约 8 折的按量通道</a></li><li><a href="#sec-2-优云智算-glm-5-2-与-flash-正式版全档支持-按调用量计费">2. 优云智算：GLM-5.2 与 Flash 正式版全档支持，按调用量计费</a></li><li><a href="#sec-3-小米-mimo-经历一轮降价-量大管饱">3. 小米 MiMo：经历一轮降价，量大管饱</a></li></ol></li><li><a href="#sec-h2-4">四、推荐国际平台</a><ol><li><a href="#sec-1-opencode-go-多模型聚合-首月半价">1. OpenCode Go：多模型聚合，首月半价</a></li><li><a href="#sec-2-codex-openai-原生编程代理-token-计费更清晰">2. Codex：OpenAI 原生编程代理，Token 计费更清晰</a></li><li><a href="#sec-3-claude-code-原生体验最佳">3. Claude Code：原生体验最佳</a></li><li><a href="#sec-4-ollama-开源模型聚合-覆盖广">4. Ollama：开源模型聚合，覆盖广</a></li></ol></li><li><a href="#sec-h2-5">五、分场景选型建议</a><ol><li><a href="#sec-1-综合推荐">1）综合推荐</a></li><li><a href="#sec-2-包含-deepseek-v4-flash-0731-正式版">2）包含 DeepSeek-V4-Flash-0731 正式版</a></li><li><a href="#sec-3-包含-kimi-k3">3）包含 Kimi-K3</a></li><li><a href="#sec-4-包含-glm-5-2">4）包含 GLM-5.2</a></li><li><a href="#sec-5-不抢购-稳定大用量">5）不抢购 / 稳定大用量</a></li></ol></li><li><a href="#sec-h2-6">六、总结</a></li></ol></nav>
       </aside>
       <article class="doc">
         <p class="doc-kicker">平台对比 · Coding Plan</p>
         <h1>2026年8月10日 Coding Plan平台全面对比｜智谱新套餐涨价、Kimi限购、DeepSeek新模型、字节方舟2.5折持续</h1>
-        <p class="doc-updates"><time datetime="2026-08-10">更新日期 2026.8.10</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
+        <p class="doc-updates"><time datetime="2026-08-10">更新日期 2026.8.10</time> · 数据来源 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
         <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;"><p>本期关键更新：</p><ul><li>数据统计截至 2026.8.10，重点关注 8 月初的模型与套餐变化。</li><li>智谱国内与国际版上线新套餐，国内版价格较此前档位翻倍级上涨，购买方式从抢购转为开放购买。</li><li>Kimi-K3 已覆盖 Kimi 全档位，会员购买收紧为「需预约，近期长期不放量」。</li><li>字节·方舟模型倍率活动已结束，6.8–11.8 首两月 2.5 折继续，已解除限购、开放购买。</li><li>阿里发布 Qwen-3.8-Max，Token Plan 全档可调用，有限时折扣活动。</li><li>讯飞·星火 39 元专业版已下架，已明显下滑，当前不推荐。</li></ul></div>
         <p class="lead">8 月这轮更新，主线是「定价再平衡」：智谱把旗舰模型的购买门槛从抢购改成直接购买，代价是价格翻倍；Kimi 发布 Kimi-K3 后反而收紧供应；字节·方舟活动退潮，只剩 2.5 折在延续。对个人开发者来说，选平台的判断标准没有变：<strong>同价位可用量、是否要抢购、模型池是否覆盖你的实际开发场景</strong>。本文按这个逻辑，把本期主流平台逐一过一遍。</p>
-        <nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、三种常见计费方式</a><ol><li><a href="#sec-1-8-月初动态">1）8 月初动态</a></li><li><a href="#sec-2-实际用量与价格对比">2）实际用量与价格对比</a></li></ol></li><li><a href="#sec-h2-2">二、前沿模型官方平台</a><ol><li><a href="#sec-1-智谱ai-新套餐开放购买-价格翻倍">1. 智谱AI：新套餐开放购买，价格翻倍</a></li><li><a href="#sec-2-minimax-token-大池稳定-m3-体系适合长期高频">2. MiniMax：Token 大池稳定，M3 体系适合长期高频</a></li><li><a href="#sec-3-字节-方舟-模型池最全-2-5-折延续-已解除限购">3. 字节·方舟：模型池最全，2.5 折延续，已解除限购</a></li><li><a href="#sec-4-kimi-kimi-k3-旗舰模型上线-会员需预约">4. Kimi：Kimi-K3 旗舰模型上线，会员需预约</a></li><li><a href="#sec-5-deepseek-纯-api-按量-适合成本精算与弹性负载">5. DeepSeek：纯 API 按量，适合成本精算与弹性负载</a></li><li><a href="#sec-6-阿里-百炼-qwen-3-8-max-上线-token-体系更完整">6. 阿里·百炼：Qwen-3.8-Max 上线，Token 体系更完整</a></li></ol></li><li><a href="#sec-h2-3">三、其他主流平台</a><ol><li><a href="#sec-1-共绩算力-deepseek-官方约-8-折的按量通道">1. 共绩算力：DeepSeek 官方约 8 折的按量通道</a></li><li><a href="#sec-2-优云智算-glm-5-2-与-flash-正式版全档支持-按调用量计费">2. 优云智算：GLM-5.2 与 Flash 正式版全档支持，按调用量计费</a></li><li><a href="#sec-3-小米-mimo-经历一轮降价-量大管饱">3. 小米 MiMo：经历一轮降价，量大管饱</a></li></ol></li><li><a href="#sec-h2-4">四、推荐国际平台</a><ol><li><a href="#sec-1-opencode-go-多模型聚合-首月半价">1. OpenCode Go：多模型聚合，首月半价</a></li><li><a href="#sec-2-codex-openai-原生编程代理-token-计费更清晰">2. Codex：OpenAI 原生编程代理，Token 计费更清晰</a></li><li><a href="#sec-3-claude-code-原生体验最佳">3. Claude Code：原生体验最佳</a></li><li><a href="#sec-4-ollama-开源模型聚合-覆盖广">4. Ollama：开源模型聚合，覆盖广</a></li></ol></li><li><a href="#sec-h2-5">五、分场景选型建议</a><ol><li><a href="#sec-1-综合推荐">1）综合推荐</a></li><li><a href="#sec-2-包含-deepseek-v4-flash-0731-正式版">2）包含 DeepSeek-V4-Flash-0731 正式版</a></li><li><a href="#sec-3-包含-kimi-k3">3）包含 Kimi-K3</a></li><li><a href="#sec-4-包含-glm-5-2">4）包含 GLM-5.2</a></li><li><a href="#sec-5-不抢购-稳定大用量">5）不抢购 / 稳定大用量</a></li></ol></li><li><a href="#sec-h2-6">六、总结</a></li></ol></nav>
+        <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">本页内容</p><ol><li><a href="#sec-h2-1">一、三种常见计费方式</a><ol><li><a href="#sec-1-8-月初动态">1）8 月初动态</a></li><li><a href="#sec-2-实际用量与价格对比">2）实际用量与价格对比</a></li></ol></li><li><a href="#sec-h2-2">二、前沿模型官方平台</a><ol><li><a href="#sec-1-智谱ai-新套餐开放购买-价格翻倍">1. 智谱AI：新套餐开放购买，价格翻倍</a></li><li><a href="#sec-2-minimax-token-大池稳定-m3-体系适合长期高频">2. MiniMax：Token 大池稳定，M3 体系适合长期高频</a></li><li><a href="#sec-3-字节-方舟-模型池最全-2-5-折延续-已解除限购">3. 字节·方舟：模型池最全，2.5 折延续，已解除限购</a></li><li><a href="#sec-4-kimi-kimi-k3-旗舰模型上线-会员需预约">4. Kimi：Kimi-K3 旗舰模型上线，会员需预约</a></li><li><a href="#sec-5-deepseek-纯-api-按量-适合成本精算与弹性负载">5. DeepSeek：纯 API 按量，适合成本精算与弹性负载</a></li><li><a href="#sec-6-阿里-百炼-qwen-3-8-max-上线-token-体系更完整">6. 阿里·百炼：Qwen-3.8-Max 上线，Token 体系更完整</a></li></ol></li><li><a href="#sec-h2-3">三、其他主流平台</a><ol><li><a href="#sec-1-共绩算力-deepseek-官方约-8-折的按量通道">1. 共绩算力：DeepSeek 官方约 8 折的按量通道</a></li><li><a href="#sec-2-优云智算-glm-5-2-与-flash-正式版全档支持-按调用量计费">2. 优云智算：GLM-5.2 与 Flash 正式版全档支持，按调用量计费</a></li><li><a href="#sec-3-小米-mimo-经历一轮降价-量大管饱">3. 小米 MiMo：经历一轮降价，量大管饱</a></li></ol></li><li><a href="#sec-h2-4">四、推荐国际平台</a><ol><li><a href="#sec-1-opencode-go-多模型聚合-首月半价">1. OpenCode Go：多模型聚合，首月半价</a></li><li><a href="#sec-2-codex-openai-原生编程代理-token-计费更清晰">2. Codex：OpenAI 原生编程代理，Token 计费更清晰</a></li><li><a href="#sec-3-claude-code-原生体验最佳">3. Claude Code：原生体验最佳</a></li><li><a href="#sec-4-ollama-开源模型聚合-覆盖广">4. Ollama：开源模型聚合，覆盖广</a></li></ol></li><li><a href="#sec-h2-5">五、分场景选型建议</a><ol><li><a href="#sec-1-综合推荐">1）综合推荐</a></li><li><a href="#sec-2-包含-deepseek-v4-flash-0731-正式版">2）包含 DeepSeek-V4-Flash-0731 正式版</a></li><li><a href="#sec-3-包含-kimi-k3">3）包含 Kimi-K3</a></li><li><a href="#sec-4-包含-glm-5-2">4）包含 GLM-5.2</a></li><li><a href="#sec-5-不抢购-稳定大用量">5）不抢购 / 稳定大用量</a></li></ol></li><li><a href="#sec-h2-6">六、总结</a></li></ol></nav></details>
         <h2 id="sec-h2-1">一、三种常见计费方式</h2>
 <ul>
 <li><strong>Coding Plan</strong>：本质是包月套餐，表面按请求次数计量，实际内部按模型倍率折算 token 消耗。这类平台的问题是高峰期倍率和限购风险更高，用着用着容易撞上额度上限。</li>
@@ -490,7 +544,7 @@
 <h3 id="sec-2-实际用量与价格对比">2）实际用量与价格对比</h3>
 <figure class="doc-figure"><img src="./assets/unit-price.jpg" alt="各平台套餐综合单价对比" loading="lazy" /></figure>
 <blockquote>
-<p>访问 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a> 可查看完整的价格 vs Token 上限对比图表、每元 Token 性价比密度图等可视化数据。</p>
+<p>访问 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a> 可查看完整的价格 vs Token 上限对比图表、每元 Token 性价比密度图等可视化数据。</p>
 </blockquote>
 <p>说明：月 Token 上限与综合价格综合了实测、官网说明与社区反馈。</p>
 <table>
@@ -790,7 +844,7 @@
 <h2 id="sec-h2-2">二、前沿模型官方平台</h2>
 <figure class="doc-figure"><img src="./assets/platforms.jpg" alt="平台对比一览" loading="lazy" /></figure>
 <blockquote>
-<p>访问 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a> 可查看各平台推荐评分、限购状态与模型覆盖详情，支持按性价比、可用性等标签筛选，并进入套餐对比与可用性监控页面。</p>
+<p>访问 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a> 可查看各平台推荐评分、限购状态与模型覆盖详情，支持按性价比、可用性等标签筛选，并进入套餐对比与可用性监控页面。</p>
 </blockquote>
 <h3 id="sec-1-智谱ai-新套餐开放购买-价格翻倍"><a href="https://api.dreamfree.space/c/s/cpyqzhipu" rel="noopener noreferrer">1. 智谱AI：新套餐开放购买，价格翻倍</a></h3>
 <p>跳转官网➡️ <a href="https://api.dreamfree.space/c/s/cpyqzhipu" rel="noopener noreferrer">智谱AI：新套餐开放购买，价格翻倍</a></p>
@@ -1106,8 +1160,8 @@
 <h2 id="sec-h2-6">六、总结</h2>
 <p>8 月初这轮调整，大方向是：模型在涨、价格在涨、最好的仍然抢不到。</p>
 <p>想长期稳定用、不操心抢购，<a href="https://api.dreamfree.space/c/s/cpyqminimax" rel="noopener noreferrer">MiniMax</a> 和 <a href="https://api.dreamfree.space/c/s/cpyqdeepseek" rel="noopener noreferrer">DeepSeek</a> 是最省心的选择，<a href="https://api.dreamfree.space/c/s/cpyqopencode" rel="noopener noreferrer">OpenCode Go</a> 的 DeepSeek V4 Flash 用量也相当大。想多模型混着用，<a href="https://api.dreamfree.space/c/s/cpyqfangzhou" rel="noopener noreferrer">字节·方舟</a>头两个月 2.5 折且已经开放购买，<a href="https://api.dreamfree.space/c/s/cpyqopencode" rel="noopener noreferrer">OpenCode</a> 首月 $5 也是低门槛试水的方式。有特定模型需求就先看官方原版，买不到再考虑 <a href="https://api.dreamfree.space/c/s/cpyqopencode" rel="noopener noreferrer">OpenCode</a> 和 <a href="https://api.dreamfree.space/c/s/cpyqfangzhou" rel="noopener noreferrer">字节·方舟</a>。只盯成本的话，<a href="https://api.dreamfree.space/c/s/cpyqdeepseek" rel="noopener noreferrer">DeepSeek</a> 按量和 <a href="https://api.dreamfree.space/c/s/cpyqgongji" rel="noopener noreferrer">共绩算力</a> 8 折通道，缓存命中率高的场景下能把价格压得相当低。</p>
-        <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>
-原文链接 <a href="https://www.codingplan.fyi" rel="noopener noreferrer">https://www.codingplan.fyi</a></div>
+        <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>
+原文链接 <a href="/" rel="noopener noreferrer">https://www.codingplan.fyi</a></div>
       </article>
     </div>
   </div>

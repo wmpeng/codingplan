@@ -1,8 +1,8 @@
 (function (root, factory) {
-  const api = factory();
+  const api = factory(root.NumberDisplay || (typeof require === 'function' ? require('./number-display.js') : null));
   if (typeof module === 'object' && module.exports) module.exports = api;
   root.PlatformComparison = api;
-})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (Numbers) {
   'use strict';
 
   const MAX_COMPARISON_ITEMS = 4;
@@ -25,15 +25,7 @@
     return typeof PlatformCatalog !== 'undefined' ? PlatformCatalog : null;
   }
 
-  function escapeHtml(value) {
-    const catalog = getCatalog();
-    if (catalog && catalog.escapeHtml) return catalog.escapeHtml(value);
-    return String(value == null ? '' : value)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
+  const escapeHtml = (globalThis.CodingPlanUI || require('./ui-core.js')).escapeHtml;
 
   function formatMarkdown(value) {
     const catalog = getCatalog();
@@ -147,11 +139,12 @@
     const confirm = overlay.querySelector('.platform-comparison-primary-btn');
     const closeButtons = overlay.querySelectorAll('.platform-compare-picker-close, .platform-compare-picker-backdrop');
 
+    let releaseModal;
     function close(reason) {
-      document.removeEventListener('keydown', onKeydown);
+      releaseModal?.();
       overlay.remove();
       document.body.classList.remove('has-platform-compare-picker');
-      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+
       if (reason === 'cancel' && typeof options.onCancel === 'function') options.onCancel();
     }
 
@@ -184,9 +177,6 @@
         : '<p class="platform-compare-picker-empty">没有匹配的平台</p>';
     }
 
-    function onKeydown(event) {
-      if (event.key === 'Escape') close('cancel');
-    }
 
     list.addEventListener('change', (event) => {
       const input = event.target.closest('input[type="checkbox"]');
@@ -206,9 +196,8 @@
       if (typeof options.onConfirm === 'function') options.onConfirm(result);
     });
     closeButtons.forEach((button) => button.addEventListener('click', () => close('cancel')));
-    document.addEventListener('keydown', onKeydown);
     render();
-    window.setTimeout(() => search.focus(), 0);
+    releaseModal = globalThis.CodingPlanDialogs.activate(overlay, {trigger:lastFocused, initialFocus:search, onClose:()=>close('cancel')});
     return { close, getSelection: () => selectedIds.slice() };
   }
 
@@ -228,6 +217,9 @@
   function mountLauncher(options) {
     const button = options && options.button;
     if (!button) return false;
+    button.setAttribute('data-platform-comparison-entry', '');
+    button.hidden = globalThis.__CODINGPLAN_FEATURES?.platformComparison !== true;
+    if (button.hidden) return false;
     launcherState = {
       button,
       count: options.count || null,
@@ -282,11 +274,7 @@
     }
     if (!byCurrency.size) return '暂无可直接比较的月付价格';
     return Array.from(byCurrency.entries()).map(([currency, values]) => {
-      const min = Math.min(...values);
-      const max = Math.max(...values);
-      return min === max
-        ? `${currency}${formatNumber(min)}/月`
-        : `${currency}${formatNumber(min)}–${formatNumber(max)}/月`;
+      return `${Numbers.range(values, value => Numbers.monthlyFee(value, currency))}/月`;
     }).join('；');
   }
 
@@ -511,19 +499,7 @@
     const app = document.getElementById('platformComparisonApp');
     if (!loading || !app) return false;
     try {
-      const responses = await Promise.all([
-        fetch('platforms.json', { cache: 'no-store' }),
-        fetch('plans.json', { cache: 'no-store' }),
-        fetch('models.json', { cache: 'no-store' }),
-        fetch('plan-models.json', { cache: 'no-store' })
-      ]);
-      const labels = ['platforms.json', 'plans.json', 'models.json', 'plan-models.json'];
-      responses.forEach((response, index) => {
-        if (!response.ok) throw new Error(`${labels[index]} 加载失败（HTTP ${response.status}）`);
-      });
-      const documents = await Promise.all(responses.map((response) => response.json()));
-      if (typeof EntityData === 'undefined') throw new Error('数据模块未加载');
-      const context = EntityData.buildContext(...documents);
+      const { context } = await globalThis.CodingPlanToolPage.load();
       const platforms = EntityData.listPlatforms(context);
       let selectedIds = readSelectionFromSearch(window.location.search, platforms);
       let metricPins = readMetricPins(window.localStorage);
@@ -624,7 +600,7 @@
           selectedIds: initial,
           capacity,
           onConfirm: setSelection,
-          onCancel: required ? () => { window.location.href = 'index.html?view=platforms'; } : null
+          onCancel: required ? () => { window.location.href = '/platforms/'; } : null
         });
       }
 

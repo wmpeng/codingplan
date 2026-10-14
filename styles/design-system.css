@@ -1,0 +1,485 @@
+/* 全站视觉规范，最后加载。变量在 shared.css；组件布局仍由各功能样式负责。 */
+
+/* 基础与层级 */
+body { font-family: var(--font-ui); color: var(--text-primary); line-height: 1.65; }
+body::before { background: radial-gradient(ellipse at 80% 0, #edf3fb, transparent 72%); height: 460px; opacity: .6; }
+body :is(h1, h2, h3, h4) { color: var(--text-primary); font-weight: 600; letter-spacing: -.02em; }
+body :is(h1, h2) { line-height: 1.35; }
+body :is(button, input, select, textarea) { font-family: inherit; }
+body :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent-primary); outline-offset: 3px;
+}
+body a { color: var(--accent-primary); text-underline-offset: 4px; }
+body a:hover { color: var(--accent-hover); }
+body :is(th, td, .offer-price, .model-score, .dim-score, .platform-rating) { font-variant-numeric: tabular-nums; }
+body :is(.tool-muted, .tool-count, .comparison-method, .filter-help, .guide-note) { color: var(--text-secondary); font-size: 13px; }
+.tool-page-main, .guide-shell, .platform-comparison-container { width: 100%; }
+
+/* 导航：品牌、页面导航与页内导航各有固定位置，不继承正文链接的蓝色。 */
+body .tool-topbar { min-height: 80px; gap: 32px; margin-bottom: 24px; padding-block: 16px; border-bottom: 1px solid var(--border-color); }
+body .tool-brand { color: var(--text-primary); font-size: 18px; font-weight: 600; letter-spacing: -.02em; text-decoration: none; }
+body .tool-brand:hover { color: var(--text-primary); text-decoration: none; }
+body .tool-brand::before { width: 32px; height: 32px; }
+body .tool-nav { display: flex; align-items: center; gap: 4px; width: auto; max-width: 100%; padding: 4px; background: var(--bg-tertiary); border: 1px solid var(--border-light); border-radius: 10px; }
+body .tool-nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 6px 16px; border-radius: 6px; color: var(--text-secondary); font-size: 14px; font-weight: 400; line-height: 1.5; white-space: nowrap; text-decoration: none; }
+body .tool-nav a:hover { background: var(--bg-secondary); color: var(--text-primary); text-decoration: none; }
+body .tool-topbar .tool-nav a[aria-current="page"] { background: var(--bg-secondary); color: var(--accent-primary); font-weight: 600; box-shadow: none; }
+body .tool-breadcrumb, body .guide-breadcrumb { font-size: 13px; color: var(--text-secondary); }
+body :is(.tool-breadcrumb, .guide-breadcrumb) a { color: inherit; }
+body .discovery-jumps { gap: 8px 24px; padding: 12px 0; border-block: 1px solid var(--border-color); }
+body .discovery-jumps a { padding: 6px 0; color: var(--text-secondary); font-size: 14px; }
+body .discovery-jumps a:hover { color: var(--accent-primary); }
+
+/* 折叠行：只在支持区显示一个 chevron，保留原生语义和键盘行为。 */
+body :is(.offer-models, .offer-reasons, .home-meta details, .tool-secondary, .tool-legend,
+  .filter-more, .plan-cell-more, .usage-note-disclosure) > summary {
+  display: flex; align-items: center; gap: 8px; min-height: 36px; padding: 8px 0;
+  color: var(--text-secondary); font-size: 13px; font-weight: 400; line-height: 1.5; list-style: none; cursor: pointer;
+}
+body :is(.offer-models, .offer-reasons, .home-meta details, .tool-secondary, .tool-legend,
+  .filter-more, .plan-cell-more, .usage-note-disclosure) > summary::-webkit-details-marker { display: none; }
+body :is(.offer-models, .offer-reasons, .home-meta details, .tool-secondary, .tool-legend,
+  .filter-more, .plan-cell-more, .usage-note-disclosure) > summary::before {
+  content: ""; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg); flex: 0 0 auto; margin-right: 2px; transition: transform .15s;
+}
+body :is(.offer-models, .offer-reasons, .home-meta details, .tool-secondary, .tool-legend,
+  .filter-more, .plan-cell-more, .usage-note-disclosure)[open] > summary::before { transform: rotate(45deg); }
+body summary:hover { color: var(--text-primary); }
+
+/* 通用表面：统一边框与留白，重点信息使用浅色面板；浮层使用投影。 */
+body :is(.tool-panel, .platform-card, .model-card, .offer-result, .usage-preset-card, .usage-chart-card,
+  .usage-explorer, .usage-presets, .platform-comparison-summary-card, .hub-guide-card, .guide-plan,
+  .guide-related-card, .hero-summary-card, .notes-section, .updates-section, .guide-advice) {
+  border: 1px solid var(--border-color); border-radius: var(--radius-lg); background: var(--bg-secondary); box-shadow: none;
+}
+body :is(.platform-card, .model-card, .offer-result, .hub-guide-card, .hero-summary-card) { padding: 20px; }
+body :is(.platform-card, .hub-guide-card, .guide-related-card):hover { border-color: var(--border-strong); box-shadow: none; transform: none; }
+body :is(.settings-panel, .filter-picker-menu, .platform-detail-dialog, .platform-compare-picker-dialog) {
+  background: var(--bg-secondary); border-color: var(--border-color); border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); backdrop-filter: none;
+}
+body .settings-btn { border-radius: 8px; color: var(--text-secondary); }
+body .settings-btn:hover { background: var(--bg-tertiary); }
+body .settings-panel-title { font-size: 13px; color: var(--text-primary); letter-spacing: 0; font-weight: 600; }
+
+/* 首页与方案：让平台、价格成为固定阅读锚点，其余信息服从这条顺序。 */
+body.discovery-page { background: var(--bg-primary); }
+body .discovery-hero { padding: 32px 0; gap: 40px; }
+body .discovery-hero h1 { font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; line-height: 1.2; }
+/* 首屏操作：蓝色主按钮与轻量社群邀请组成一组。 */
+body .hero-actions .hero-find-button { display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:52px;padding:14px 20px;border-radius:10px;font-size:14px;font-weight:600;line-height:1.5;white-space:nowrap;text-decoration:none;transition:background .18s,border-color .18s; }
+.hero-find-button svg { width:18px;height:18px;flex-shrink:0; }
+body .community-invite { border:0;background:transparent; }
+body .community-invite-icon { border-radius:10px;background:var(--accent-soft);color:var(--accent-primary); }
+body .community-invite h2 { margin:0;font-size:14px;font-weight:600;line-height:1.5;letter-spacing:0; }
+body .community-invite p { margin:4px 0 0;font-size:12px;line-height:1.6;color:var(--text-secondary); }
+body .community-invite-link { min-height:44px;padding:9px 12px;border:1px solid var(--border-color);border-radius:8px;background:var(--bg-secondary);color:var(--text-primary);font-size:13px;font-weight:500;line-height:1.5;white-space:nowrap;text-decoration:none;transition:background .18s,border-color .18s,color .18s; }
+body .community-invite-link:hover { border-color:var(--border-strong);background:var(--accent-soft);color:var(--accent-primary);text-decoration:none; }
+@media(prefers-reduced-motion:reduce){body .hero-actions .hero-find-button,body .community-invite-link{transition:none;}}
+body .discovery-eyebrow { color: var(--text-secondary); font-size: 13px; font-weight: 400; }
+body .catalog-summary { padding: 24px; border: 0; border-left: 1px solid var(--border-color); border-radius: 0; background: transparent; }
+body .catalog-summary strong { font-size: 18px; font-weight: 600; }
+body :is(.section-heading, .home-section-heading) h2 { font-size: 24px; font-weight: 600; }
+body :is(.section-heading, .home-section-heading) p { color: var(--text-secondary); font-size: 14px; }
+body .discovery-section { margin: 48px 0; }
+body .selection-workspace { border-top: 1px solid var(--border-color); padding-top: 40px; }
+body .offer-results-grid { gap: 16px; align-items: stretch; }
+body .offer-result { --offer-inset:20px; display: flex; flex-direction: column; gap: 0; }
+body .offer-result-heading { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: start; gap: 16px; margin:calc(-1 * var(--offer-inset)) calc(-1 * var(--offer-inset)) 16px; padding:16px var(--offer-inset); background:var(--bg-secondary); border-bottom:1px solid var(--border-light); border-radius:11px 11px 0 0; }
+body .offer-platform { display: block; margin: 0; font-size: 18px; font-weight: 600; color: var(--text-primary); line-height: 1.5; overflow-wrap: anywhere; }
+body .offer-result h3 { font-size: 18px; font-weight: 600; color: var(--text-primary); margin: 0; line-height: 1.5; }
+body .offer-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
+body .offer-title > span { font: inherit; color: inherit; overflow-wrap: anywhere; }
+body .offer-status { display: inline-flex; align-items: center; background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 6px; padding: 2px 8px; margin: 6px 0 0; color: var(--text-secondary); font-size: 12px; font-weight: 400; line-height: 1.5; }
+body .offer-price { font-size: 24px; font-weight: 600; line-height: 1.3; color: var(--text-primary); text-align: right; }
+body .offer-price.is-unknown { font-size:16px; font-weight:400; color:var(--text-secondary); }
+body .offer-quota-summary.is-unknown { color:var(--text-secondary); background:var(--bg-tertiary); }
+body .offer-price small { font-size: 12px; font-weight: 400; color: var(--text-secondary); margin-top: 4px; text-align: right; }
+body :is(.offer-model-summary, .offer-original-price, .offer-quota-summary) { color: var(--text-secondary); font-size: 13px; font-weight: 400; line-height: 1.7; margin: 0 0 8px; }
+body .offer-quota-summary { color:var(--text-primary); padding:10px 12px; margin:4px 0 12px; background:var(--bg-tertiary); border-radius:8px; line-height:1.8; }
+body .offer-models { margin-bottom: 12px; }
+body .offer-result-actions { margin-top: auto; gap: 8px 16px; padding-top: 16px; border-color: var(--border-light); }
+body .offer-result-actions > a { color: var(--text-secondary); font-size: 13px; }
+body .offer-result-actions > a:hover { color: var(--accent-primary); }
+body .offer-result-actions > .tool-button { color: var(--text-primary); background: var(--bg-tertiary); border-color: transparent; font-weight: 600; min-height: 36px; }
+body .offer-result-actions > .tool-button:hover { color: var(--accent-primary); background: var(--accent-soft); }
+body .offer-reasons > summary { padding-bottom: 0; }
+body .offer-reasons ul { color: var(--text-secondary); font-size: 13px; }
+body .offer-model-table :is(th, td) { font-size: 13px; border-color: var(--border-light); }
+body .offer-model-table :is(th, td):not(:first-child) { text-align: right; }
+body .offer-model-table thead th { font-weight: 400; color: var(--text-secondary); }
+body .model-grid { gap: 16px; }
+body .model-card { display: flex; flex-direction: column; }
+body .model-card h3 { font-size:17px; font-weight:600; color:var(--text-primary); line-height:1.5; }
+body .model-modality { min-height:calc(1.65em * 2); font-size: 13px; color: var(--text-secondary); margin: 8px 0 16px; }
+body .model-scores { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; align-items:stretch; padding:12px 0; border-radius:8px; background:var(--bg-tertiary); color:var(--text-secondary); font-size:12px; margin-bottom:16px; }
+body .model-score strong { display: inline-block; font-size:20px; color:var(--text-primary); font-weight:600; }
+body .model-score .score-unknown { font-size: 13px; color: var(--text-secondary); font-weight: 400; }
+body :is(.model-offers-link, .model-price-link) { color: var(--text-secondary); font-size: 13px; padding-top: 4px; }
+body .model-offers-link { border-top: 1px solid var(--border-light); margin-top: auto; padding-top: 12px; }
+body :is(.model-offers-link, .model-price-link):hover { color: var(--accent-primary); }
+body .model-browser-controls { border-radius: 12px; background: var(--bg-secondary); border-color: var(--border-color); }
+body .hero-summary-title { font-weight: 600; }
+body .hero-summary-label { font-size: 12px; color: var(--text-secondary); letter-spacing: .04em; }
+body .hero-summary-card::after { display: none; }
+body :is(.home-meta, .community-inline) { border-color: var(--border-color); }
+
+/* 模型分组和指标面板：统一尺寸与留白，未知值降低字号与字重。 */
+body .featured-model-group > .section-heading h3 { color:var(--text-primary); font-size:15px; padding:6px 10px; border-radius:6px; background:var(--bg-tertiary); }
+body .model-score { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; min-width:0; padding:0 4px; color:var(--text-secondary); line-height:1.4; }
+body .model-score + .model-score { border-left:1px solid var(--border-color); }
+body .model-score-value { display:flex; align-items:baseline; justify-content:center; gap:4px; min-height:28px; white-space:nowrap; }
+body .model-score-label { font-size:12px; font-weight:600; }
+body .model-score a { color:var(--accent-primary); font-size:12px; padding:0 2px; }
+
+/* 平台卡片与详情 */
+body :is(.platform-name, .platform-name-link) { color: var(--text-primary); font-size: 18px; font-weight: 600; }
+body .platform-name-link:hover { color: var(--accent-primary); }
+body :is(.platform-summary, .platform-score-desc, .dim-reason, .platform-detail-desc) { color: var(--text-secondary); font-size: 13px; line-height: 1.7; }
+body .platform-card .platform-rating { background:var(--bg-tertiary); padding:4px 8px; border-radius:6px; color:var(--text-secondary); font-size:12px; font-weight:600; letter-spacing:0; }
+body #featuredPlatforms .platform-summary { min-height:calc(1.7em * 2); }
+body .platform-card .platform-rating[aria-label="待评定"] { color:var(--text-secondary); background:var(--bg-tertiary); font-weight:400; }
+body .platform-rush { border: 0; background: var(--bg-tertiary); color: var(--text-secondary); font-size: 12px; font-weight: 400; border-radius: 4px; }
+body .platform-dimensions .dim-score { color: var(--text-primary); font-size: 20px; font-weight: 600; }
+body .platform-dimensions .dim-score-unit { color: var(--text-secondary); font-size: 12px; }
+body .platform-dimensions .dim-label { color: var(--text-secondary); font-size: 12px; }
+body .platform-dimensions li { background: var(--bg-tertiary); border-radius: 8px; border-color: var(--border-light); }
+body #featuredPlatforms .platform-dimensions { background: var(--bg-tertiary); border-radius: 8px; }
+body #featuredPlatforms .platform-dimensions li + li { border-color: var(--border-color); }
+body :is(.platform-card-hint, .platform-guide-link) { color: var(--text-secondary); font-size: 13px; font-weight: 400; }
+body .platform-card-links { padding-top: 12px; border-top: 1px solid var(--border-light); }
+body .platform-card-hint::after { content: none; }
+body .platform-name-link .link-icon { opacity: .5; width: 12px; height: 12px; }
+body .platform-detail-title-row h2 { font-size: 24px; font-weight: 600; }
+body .platform-detail-dim { background: var(--bg-tertiary); border-color: var(--border-light); }
+body .platform-detail-dim-score { color: var(--text-primary); font-weight: 600; }
+body .platform-detail-dialog { border-radius: 16px; }
+body .platform-detail-plan-quota { color: var(--text-secondary); font-weight: 400; }
+body :is(.platform-detail-rating, .platform-detail-plan-rating) { color: var(--text-secondary); background: transparent; padding: 0; font-size: 13px; font-weight: 400; }
+
+body .purchase-guide-panel { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; }
+body #purchaseGuide { color: var(--text-primary); }
+body #purchaseGuide .guide-header h2 { font-size: 24px; }
+body #purchaseGuide .guide-question h3 { font-size: 18px; }
+body #purchaseGuide button { min-height: 40px; border-color: var(--border-color); border-radius: 8px; font-size: 14px; color: var(--text-primary); }
+body #purchaseGuide button:hover { background: var(--bg-tertiary); border-color: var(--border-strong); }
+body #purchaseGuide :is(.guide-primary, button[aria-pressed="true"]) { color: var(--accent-primary); background: var(--accent-soft); border-color: var(--accent-primary); }
+body #purchaseGuide button.guide-primary { color: white; background: var(--accent-primary); }
+body #purchaseGuide button.guide-primary:hover { color: white; background: var(--accent-hover); }
+body #purchaseGuide .guide-step-actions { justify-content: flex-end; }
+body #purchaseGuide [data-guide-action="prev"] { margin-right: auto; }
+body #purchaseGuide .guide-summary { border-color: var(--border-light); color: var(--text-secondary); font-size: 13px; }
+body #purchaseGuide .guide-progress button { border: 0; font-size: 13px; }
+body #purchaseGuide .guide-progress [aria-current="step"] { color: var(--accent-primary); background: var(--accent-soft); font-weight: 600; }
+body #purchaseGuide .guide-eyebrow { color: var(--text-secondary); font-weight: 400; }
+
+/* 数据展示：表头和数值区分字号与字重，沿用原有中性色。 */
+body :is(.usage-preset-card, .usage-chart-card, .usage-explorer) { box-shadow: none; }
+body .usage-preset-card > header { background: var(--bg-secondary); padding: 16px; border-color: var(--border-light); }
+body .usage-preset-card > header h4 { color:var(--text-primary); font-size:17px; font-weight: 600; }
+body .usage-preset-card > header p { font-size: 12px; color: var(--text-secondary); margin-top: 6px; line-height: 1.6; }
+body .usage-preset-card > header > span { font-size:12px; color:var(--text-secondary); background:var(--bg-tertiary); padding:4px 8px; border-radius:6px; }
+body :is(.usage-preset-table, .usage-data-table, .tool-table) :is(th, td) { font-size: 13px; line-height: 1.6; border-color: var(--border-light); }
+body :is(.usage-preset-table, .usage-data-table, .tool-table) th { color: var(--text-secondary); background: var(--bg-tertiary); font-weight: 400; }
+body :is(.usage-preset-table, .usage-data-table, .tool-table) td { color: var(--text-primary); background: var(--bg-secondary); }
+body :is(.usage-preset-table, .usage-data-table, .tool-table) tbody tr:nth-child(even) td { background: var(--bg-secondary); }
+body :is(.usage-preset-table, .usage-data-table, .tool-table) tbody tr:hover td { background: var(--bg-tertiary); }
+body .usage-data-table .usage-table-note { min-width: 320px; width: 360px; }
+body .usage-note-disclosure > summary { min-height: 20px; padding: 0; }
+body .usage-note-disclosure > div { width: 320px; max-width: 100%; margin-top: 12px; color: var(--text-secondary); line-height: 1.7; }
+body .usage-data-table .usage-table-model { font-weight: 400; }
+body .usage-preset-table td { padding: 12px 16px; }
+body .usage-preset-table th { padding: 10px 16px; }
+body :is(.usage-platform-link, .usage-preset-table .usage-platform-link) { color: var(--text-primary); }
+body .usage-platform-link:hover { color: var(--accent-primary); }
+body .usage-preset-table .usage-platform-link strong { font-size: 13px; font-weight: 600; }
+body .usage-preset-primary-line { color: var(--text-primary); font-weight: 600; gap: 10px; }
+body .usage-preset-primary-line .usage-table-model { font-weight: 400; }
+body .usage-preset-secondary-line { color: var(--text-secondary); font-size: 12px; gap: 4px; }
+body .usage-preset-metric-primary { color: var(--text-primary); font-size:16px; font-weight: 600; }
+body .usage-preset-metric-primary.is-unknown { color:var(--text-secondary); font-size:13px; font-weight:400; }
+body .usage-preset-table .usage-platform-link > span[aria-hidden] { display: none; }
+body .usage-method-note { background: var(--bg-tertiary); color: var(--text-secondary); border-color: var(--border-color); border-radius: 8px; }
+body .usage-method-note strong { color: var(--text-primary); font-weight: 600; }
+body .usage-chart-head :is(h3, h4), body .usage-explorer-heading h3 { font-size: 18px; font-weight: 600; color: var(--text-primary); }
+body .usage-chart-head p { color: var(--text-secondary); font-size: 13px; }
+body .usage-legend-item { border-radius: 6px; box-shadow: none; }
+body .usage-legend-item:hover, body .usage-legend-item.is-solo { background: var(--bg-tertiary); border-color: var(--border-color); box-shadow: none; }
+body .usage-color-control { border-color: var(--border-color); }
+body .tool-table a { color: var(--text-primary); }
+body .tool-table a:hover { color: var(--accent-primary); }
+body .tool-tag { background: var(--bg-tertiary); border-radius: 4px; color: var(--text-secondary); font-size: 12px; }
+
+/* 平台横向比较沿用相同表面，差异通过结构和实际评分表达。 */
+body.platform-comparison-page { padding: 0; }
+body .platform-comparison-container { max-width: 1320px; padding: 0 40px 48px; margin: 0 auto; }
+body :is(.platform-comparison-hero, .platform-comparison-summary, .platform-comparison-details) {
+  background: var(--bg-secondary); border-color: var(--border-color); border-radius: 12px; box-shadow: none;
+}
+body .platform-comparison-hero { padding: 24px; }
+body .platform-comparison-hero p:last-child { font-size: 14px; }
+body .platform-comparison-selection-wrap { background: var(--bg-tertiary); border-color: var(--border-color); border-radius: 12px; box-shadow: var(--shadow-sm); backdrop-filter: none; }
+body .platform-comparison-summary-card::after { display: none; }
+body .platform-comparison-summary-winner { font-size: 18px; font-weight: 600; }
+body .platform-comparison-select-card-rating { color: var(--text-secondary); font-weight: 400; }
+body .platform-comparison-breadcrumb a { color: var(--text-secondary); font-weight: 400; }
+body .platform-compare-picker-option { border-radius: 8px; border-color: var(--border-color); }
+body .platform-compare-picker-option.is-selected { background: var(--accent-soft); border-color: var(--accent-primary); }
+body .platform-compare-picker-option-name { font-weight: 600; }
+body .platform-compare-picker-option-summary { color: var(--text-secondary); font-size: 13px; }
+body .platform-comparison-diff-toggle:has(input:focus-visible) { outline: 2px solid var(--accent-primary); outline-offset: 4px; }
+body .platform-comparison-metric-pin.is-pinned { color: var(--accent-primary); background: var(--accent-soft); border-color: var(--accent-primary); }
+body .platform-comparison-group--focus .platform-comparison-group-title { color: var(--accent-primary); background: var(--accent-soft); }
+body .platform-comparison-status--open { color: var(--text-secondary); background: var(--bg-tertiary); }
+body .platform-comparison-status { font-size: 12px; font-weight: 400; }
+body .platform-comparison-footer { background: var(--bg-secondary); color: var(--text-primary); box-shadow: none; border-radius: 12px; }
+body .platform-comparison-footer p { color: var(--text-secondary); font-size: 14px; }
+body .platform-comparison-footer .platform-comparison-primary-link { background: var(--accent-primary); color: white; border-radius: 8px; }
+
+/* 完整介绍和文章：统一外壳，正文专用图表不受影响。 */
+body .guide-monogram { border-radius: 12px; background: var(--bg-tertiary); color: var(--text-primary); border-color: var(--border-color); font-weight: 600; }
+body.platform-guide h1, body .platform-comparison-hero h1 { font-size: clamp(26px, 3vw, 32px); }
+body :is(.guide-content, .guide-related-card, .platform-comparison-panel) { background: var(--bg-secondary); border-color: var(--border-color); box-shadow: none; }
+body :is(.guide-eyebrow, .platform-comparison-kicker, .platform-comparison-eyebrow) { color: var(--text-secondary); font-size: 12px; font-weight: 400; }
+body .guide-section h2 { font-size: 24px; }
+body .guide-section h3 { font-size: 18px; }
+body .guide-plan .guide-price { font-size: 24px; font-weight: 600; color: var(--text-primary); }
+body .guide-related-card strong { font-size: 16px; color: var(--text-primary); }
+body .guide-related-card span:last-child { color: var(--accent-primary); }
+body .guide-toc a:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+body .guide-section :is(th, caption) { background: var(--bg-tertiary); color: var(--text-secondary); }
+body.article-page :is(.back-home-btn, .articles-item-main a) { color: var(--text-primary); }
+body.article-page :is(.doc-kicker, .articles-kicker-top) { color: var(--text-secondary); letter-spacing: .04em; }
+body.article-page :is(article.doc, .articles-page) { box-shadow: none; }
+body.article-page :is(article.doc, .articles-page) h1 { font-size: clamp(26px, 3vw, 32px); font-weight: 600; }
+body.article-page article.doc :is(h2, h3) { color: var(--text-primary); font-weight: 600; }
+body.article-page article.doc h2 { font-size: 24px; }
+body.article-page article.doc h3 { font-size: 18px; }
+body.article-page article.doc :is(p, li) { color: var(--text-primary); }
+body.article-page article.doc blockquote { background: var(--bg-tertiary); border-left: 2px solid var(--border-strong); }
+body.article-page .articles-item-main a { color: var(--text-primary); font-size: 16px; font-weight: 400; }
+body.article-page .articles-item-main a:hover { color: var(--accent-primary); }
+
+@media (min-width: 1200px) {
+  body .featured-model-group .model-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+}
+
+@media (max-width: 800px) {
+  body .platform-comparison-container { padding: 0 14px 32px; }
+  body .tool-topbar { flex-wrap: wrap; flex-direction: row; gap: 12px; padding: 16px 0; }
+  body .tool-nav { order: 3; width: 100%; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: thin; }
+  body .tool-nav a { flex: 1 0 auto; padding: 6px 12px; min-height: 40px; font-size: 14px; }
+  body .tool-nav a:focus-visible { outline-offset: -2px; }
+  body .tool-brand { font-size: 18px; }
+  body .discovery-section { margin: 36px 0; }
+  body .discovery-hero { padding: 20px 0 28px; }
+  body .offer-results-grid { align-items: start; }
+  body .filter-state-bar { padding: 16px; }
+  body .filter-picker-menu { border-radius: 12px; }
+  body :is(.tool-button, .filter-state-btn, .back-home-btn) { min-height: 44px; }
+  body .offer-result-actions > .tool-button { min-height: 40px; }
+  body :is(.section-heading, .home-section-heading) { align-items: start; }
+  body :is(.section-heading, .home-section-heading) h2 { font-size: 22px; }
+  body .model-grid { gap: 12px; }
+}
+@media (max-width: 480px) {
+  body :is(.offer-result, .platform-card, .hero-summary-card) { padding: 16px; }
+  body .model-grid { grid-template-columns: 1fr; }
+  body .model-card { padding: 16px; }
+  body .model-modality { margin-bottom: 12px; }
+  body .model-scores { margin-bottom: 12px; }
+  body .offer-result h3, body .offer-platform { font-size: 16px; }
+  body .offer-price { font-size: 20px; }
+  body .offer-result { --offer-inset:16px; }
+  body .offer-result-heading { gap: 12px; }
+  body .usage-preset-table th { white-space: normal; padding: 10px; font-size: 12px; }
+  body .usage-preset-table td { padding: 10px; font-size: 12px; }
+  body .usage-preset-primary-line { flex-direction: column; gap: 2px; }
+  body .usage-preset-primary-line .usage-table-model { text-align: left; }
+  body .usage-preset-secondary-line { font-size: 12px; }
+  body .usage-preset-metric-primary { font-size: 13px; }
+  body .usage-preset-table th:first-child { width: 60%; }
+  body .usage-preset-table th:last-child { width: 40%; }
+  body #purchaseGuide .purchase-guide-panel { padding: 16px; }
+  body #purchaseGuide .guide-header { flex-direction: column; align-items: stretch; gap: 0; }
+  body #purchaseGuide .guide-header-actions { align-self: flex-end; }
+  body #purchaseGuide .guide-step-actions { flex-wrap: wrap; }
+  body #purchaseGuide .guide-progress { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  body #purchaseGuide .guide-options { display: grid; grid-template-columns: 1fr; }
+  body #purchaseGuide .guide-options button { text-align: left; justify-content: flex-start; }
+}
+@media (max-width: 650px) {
+  /* 窄屏留出完整阅读宽度，固定首列会盖住最右侧的备注操作。 */
+  body .usage-data-table th.sticky-first { left: auto; }
+  body .usage-data-table td.sticky-first,
+  body #plansPage .tool-table :is(th, td):nth-child(1) { position: static; }
+}
+@media (forced-colors: active) {
+  body :is(a, button, input, select, summary):focus-visible { outline: 2px solid Highlight; }
+  body .tool-nav a[aria-current="page"] { outline: 1px solid Highlight; }
+}
+
+/* 全站主导航在顶部；左侧只展示当前页面的目录。 */
+body .tool-topbar { display: flex; align-items: center; justify-content: space-between; }
+body .tool-brand { display: inline-flex; align-items: center; gap: 11px; flex-shrink: 0; }
+body .tool-brand::before { content: ''; display: inline-block; width: 32px; height: 32px; flex: 0 0 32px; background: url('/assets/brand-mark.svg?v=260924a') center / contain no-repeat; }
+body .tool-nav a { min-height: 44px; color: var(--text-primary); font-size: 16px; font-weight: 600; }
+body .tool-nav a:hover { color: var(--accent-primary); background: var(--accent-soft); }
+body.home-page { --home-layout-width: 1400px; }
+body.home-page.ultra-wide { --home-layout-width: 1920px; }
+body.home-page .site-section-nav { position: fixed; top: 128px; left: max(40px, calc((100vw - var(--home-layout-width)) / 2 + 40px)); width: 160px; max-height: calc(100dvh - 152px); overflow-y: auto; display: grid; gap: 6px; padding: 16px 0; z-index: 10; }
+body.home-page .site-section-nav a { display: block; padding: 10px 14px; color: var(--text-secondary); font-size: 14px; line-height: 1.5; text-decoration: none; border-left: 2px solid var(--border-light); }
+body.home-page .site-section-nav a:hover, body.home-page .site-section-nav a[aria-current="location"] { color: var(--accent-primary); border-left-color: var(--accent-primary); background: var(--accent-soft); }
+body.home-page .section-navigation { display: contents; }
+body.home-page .section-nav-toggle { display: none; }
+body.home-page .tool-page-main > :is(main, footer) { margin-left: 192px; }
+body #updateHistory { scroll-margin-top: 24px; }
+body .updates-main { max-width: 960px; margin: 0 auto; }
+body .update-entry { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 24px; padding: 28px 0; border-top: 1px solid var(--border-color); }
+body .update-entry h2 { margin: 2px 0; font-size: 16px; }
+body .update-entry ul { margin: 0; padding-left: 20px; }
+body .update-entry li + li { margin-top: 8px; }
+@media (max-width: 1100px) {
+  body.home-page .site-section-nav { position: static; width: 100%; max-height: none; padding: 0 0 16px; }
+  body.home-page .section-navigation.is-collapsible { display: block; position: fixed; top: 104px; right: 14px; width: 44px; height: 44px; z-index: 30; }
+  body.home-page .is-collapsible .section-nav-toggle {
+    display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px;
+    padding: 0; border: 1px solid var(--border-color); border-radius: 8px;
+    color: var(--text-secondary); background: var(--bg-secondary); cursor: pointer;
+  }
+  body.home-page .section-nav-toggle:is(:hover, [aria-expanded="true"]) { color: var(--accent-primary); background: var(--accent-soft); }
+  body.home-page .section-nav-toggle:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
+  body.home-page .is-collapsible .site-section-nav {
+    position: absolute; top: 52px; left: auto; right: 0; width: 220px; max-width: calc(100vw - 28px);
+    max-height: min(320px, calc(100dvh - 84px)); overflow-y: auto; overscroll-behavior: contain;
+    padding: 8px; border: 1px solid var(--border-color); border-radius: 10px;
+    background: var(--bg-secondary); box-shadow: var(--shadow-md); scrollbar-width: thin;
+  }
+  body.home-page .is-collapsible .section-nav-toggle[aria-expanded="false"] + .site-section-nav { display: none; }
+  body.home-page .is-collapsible .site-section-nav[data-side="above"] { top: auto; bottom: 52px; }
+  body.home-page .is-collapsible .site-section-nav a { min-height: 44px; padding: 12px; }
+  body.home-page .tool-page-main > :is(main, footer) { margin-left: 0; }
+  body .tool-topbar { flex-wrap: wrap; gap: 12px; }
+  body .tool-topbar .tool-nav { order: 3; width: 100%; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: thin; }
+  body .tool-nav a { flex: 1 0 auto; padding-inline: 14px; }
+}
+@media (max-width: 600px) {
+  body .tool-nav a { font-size: 15px; }
+  body .update-entry { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
+}
+
+/* 公共顶栏独立于正文宽度，所有页面复用同一静态结构。 */
+html:has(body > .site-header) { overflow-x:clip; scroll-padding-top:96px; }
+body:has(> .site-header) { padding-top:0; overflow-x:clip; }
+body > .site-header {
+  --site-header-max-width:1320px; --site-header-gutter:80px;
+  position:sticky; top:0; left:auto; transform:none; z-index:40;
+  width:calc(100vw - 80px); max-width:1320px; min-height:92px;
+  margin:0 calc((100% - min(var(--site-header-max-width), calc(100vw - var(--site-header-gutter)))) / 2) 24px; padding:16px 0; box-sizing:border-box;
+  display:flex; align-items:center; justify-content:flex-start; gap:32px;
+  font-family:var(--font-ui); font-size:14px; line-height:1.4;
+  border-bottom:1px solid var(--border-color);
+  background:var(--bg-primary);
+}
+body.ultra-wide > .site-header { --site-header-max-width:1840px; max-width:1840px; }
+body .site-header .tool-brand {
+  display:inline-flex; align-items:center; gap:11px; flex:none;
+  margin:0; padding:0; color:var(--text-primary); font-size:18px; font-weight:600;
+  line-height:1.4; white-space:nowrap; text-decoration:none;
+}
+body .site-header .tool-nav {
+  display:flex; align-items:center; flex-wrap:nowrap; gap:4px;
+  order:initial; width:auto; max-width:100%; min-width:0; margin:0; padding:4px;
+  background:var(--bg-tertiary); border:1px solid var(--border-light); border-radius:10px;
+}
+body .site-header .tool-nav a {
+  flex:none; min-height:44px; margin:0; padding:10px 16px;
+  font-size:16px; font-weight:600; line-height:1.4; color:var(--text-primary);
+  border:0; border-radius:8px; text-decoration:none; white-space:nowrap;
+  background:transparent;
+  transition:background-color 180ms ease-out, color 180ms ease-out;
+}
+body .site-header .tool-nav a:not([aria-current="page"]):is(:hover, :focus-visible) { background:rgb(255 255 255 / 80%); color:#111827; }
+body .site-header .tool-nav a[aria-current="page"] { color:var(--accent-primary); background:var(--bg-secondary); box-shadow:none; }
+body .site-header #settingsMount { flex:none; margin-left:auto; }
+body .site-header .settings-wrapper { position:relative; top:auto; right:auto; margin:0; }
+body .site-header .settings-btn {
+  width:44px; height:44px; min-height:44px; padding:10px;
+  border-radius:8px; box-shadow:none; color:var(--text-secondary);
+}
+body .site-header .settings-panel {
+  top:calc(100% + 8px); right:0; width:280px; max-width:calc(100vw - 28px);
+  display:grid; grid-template-columns:minmax(0,1fr); gap:20px; align-items:start;
+  margin:0; padding:16px; border-radius:12px; background:var(--bg-secondary);
+  color:var(--text-primary); backdrop-filter:none; box-shadow:var(--shadow-md); z-index:2000;
+}
+body .site-header .settings-toggle-row { display:flex; align-items:center; justify-content:space-between; min-height:36px; gap:16px; font-size:14px; }
+body .site-header .settings-toggle-row > label:first-child { flex:initial; font-weight:600; white-space:nowrap; }
+body .site-header .settings-unit-section { min-width:0; }
+body .site-header .settings-unit-heading { margin-bottom:8px; font-size:14px; font-weight:600; }
+body .site-header .settings-unit-options { display:flex; gap:4px; padding:4px; border:1px solid var(--border-color); border-radius:8px; background:var(--bg-tertiary); }
+body .site-header .settings-unit-options button { flex:1; min-width:0; min-height:36px; padding:6px; border:0; border-radius:6px; background:transparent; color:var(--text-secondary); font:inherit; font-size:13px; white-space:nowrap; cursor:pointer; }
+body .site-header .settings-unit-options button[aria-pressed="true"] { background:var(--bg-secondary); color:var(--accent-primary); font-weight:600; }
+body .site-header .settings-unit-options button:hover { color:var(--accent-primary); }
+@media(max-width:600px){body .site-header .settings-unit-options button{min-height:44px;}body .site-header .settings-toggle-row{min-height:44px;}}
+body .site-header [hidden] { display:none !important; }
+body .site-header .toggle-switch:has(input:focus-visible) { outline:2px solid var(--accent-primary); outline-offset:4px; border-radius:20px; }
+@media (max-width:1100px) {
+  body > .site-header {
+    --site-header-gutter:28px;
+    width:calc(100vw - 28px); min-height:0; padding:16px 0; gap:12px;
+    flex-wrap:nowrap; margin-bottom:24px;
+  }
+  body .site-header .tool-brand-name { display:none; }
+  body .site-header .tool-brand { min-height:44px; }
+  body .site-header .tool-nav { order:initial; flex:1; width:auto; overflow-x:auto; scrollbar-width:thin; }
+  body .site-header .tool-nav a { padding:10px 14px; }
+}
+@media (max-width:600px) {
+  body .site-header .tool-nav a { font-size:15px; padding:10px 12px; }
+}
+
+/* 文章目录与更新记录共用基础外壳，内容仍保留各自的分类与记录结构。 */
+body.content-list-view { padding: 0 28px 64px; font-size: 14px; line-height: 1.7; }
+body.content-list-view :is(.doc-wrap, .tool-page-main) { max-width: 900px; margin: 0 auto; padding: 0; }
+body.content-list-view .content-list-page {
+  max-width: 900px; margin: 0 auto; padding: 48px;
+  background: var(--bg-secondary); border: 1px solid var(--border-color);
+  border-radius: 12px; box-shadow: none;
+}
+body .content-list-page .content-list-header { margin: 0 0 32px; }
+body .content-list-page .content-list-kicker {
+  margin: 0 0 8px; color: var(--text-secondary); font-size: 12px;
+  font-weight: 400; line-height: 1.7; letter-spacing: .04em; text-transform: uppercase;
+}
+body .content-list-page .content-list-header h1 {
+  margin: 0 0 12px; color: var(--text-primary); font-size: clamp(26px, 3vw, 32px);
+  font-weight: 600; line-height: 1.45; letter-spacing: -.025em;
+}
+body .content-list-page .content-list-lead {
+  margin: 0; color: var(--text-secondary); font-size: 14px; line-height: 1.7;
+}
+body .content-list-page :is(.articles-list li, .update-entry) {
+  display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 16px;
+  align-items: start; padding: 20px 0; border-top: 0; border-bottom: 1px solid var(--border-light);
+}
+body .content-list-page :is(.articles-list li, .update-entry):last-child { border-bottom: 0; padding-bottom: 0; }
+body .content-list-page :is(.articles-list time, .update-entry h2) {
+  margin: 0; padding: 2px 0 0; color: var(--text-secondary); font-size: 12px;
+  font-weight: 400; line-height: 1.7; font-variant-numeric: tabular-nums;
+}
+body .content-list-page .articles-section { margin: 0 0 32px; }
+body .content-list-page .articles-section:last-child { margin-bottom: 0; }
+body .content-list-page .articles-section h2 {
+  margin: 0; padding-bottom: 12px; color: var(--text-primary); font-size: 18px;
+  font-weight: 600; line-height: 1.5; border-bottom: 1px solid var(--border-color);
+}
+body .content-list-page .updates-list { border-top: 1px solid var(--border-color); }
+body .content-list-page .update-entry ul { margin: 0; padding-left: 20px; color: var(--text-primary); font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+body .content-list-page .update-entry li + li { margin-top: 8px; }
+body .content-list-page .articles-item-main a:is(:hover, :focus-visible) { color: var(--accent-primary); text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width:600px) {
+  body.content-list-view { padding: 0 14px 40px; }
+  body.content-list-view .content-list-page { padding: 24px 20px; }
+  body .content-list-page :is(.articles-list li, .update-entry) { grid-template-columns: 1fr; gap: 8px; }
+}

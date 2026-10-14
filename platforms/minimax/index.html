@@ -1,0 +1,135 @@
+<!-- Generated platform guide; edit data/platforms/pages/content instead. -->
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<script src="/scripts/ui-core.js?v=57904152bf"></script>
+<script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
+<script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MiniMax M Plan：套餐价格、模型额度与接入指南 - Coding Plan</title>
+<meta name="description" content="了解MiniMax M Plan Go、Explore、Build与旧Token Plan续费安排、M3.1 Flash Preview及用量窗口。">
+  <link rel="canonical" href="https://codingplan.fyi/platforms/minimax/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="Coding Plan">
+  <meta property="og:title" content="MiniMax M Plan：套餐价格、模型额度与接入指南 - Coding Plan">
+  <meta property="og:description" content="了解MiniMax M Plan Go、Explore、Build与旧Token Plan续费安排、M3.1 Flash Preview及用量窗口。">
+  <meta property="og:url" content="https://codingplan.fyi/platforms/minimax/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MiniMax M Plan：套餐价格、模型额度与接入指南 - Coding Plan">
+  <meta name="twitter:description" content="了解MiniMax M Plan Go、Explore、Build与旧Token Plan续费安排、M3.1 Flash Preview及用量窗口。">
+  <link rel="icon" href="/favicon.ico?v=260924a">
+  <link rel="stylesheet" href="/styles/shared.css?v=482edb170c">
+  <link rel="stylesheet" href="/styles/tool-page.css?v=d431372f4f">
+  <link rel="stylesheet" href="/styles/platform-guide.css?v=76c73aff4c">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://codingplan.fyi/platforms/minimax/","url":"https://codingplan.fyi/platforms/minimax/","name":"MiniMax M Plan：套餐价格、模型额度与接入指南 - Coding Plan","description":"了解MiniMax M Plan Go、Explore、Build与旧Token Plan续费安排、M3.1 Flash Preview及用量窗口。","inLanguage":"zh-CN","datePublished":"2026-09-17","dateModified":"2026-10-12","isPartOf":{"@type":"WebSite","name":"Coding Plan","url":"https://codingplan.fyi/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Coding Plan","item":"https://codingplan.fyi/"},{"@type":"ListItem","position":2,"name":"平台介绍","item":"https://codingplan.fyi/platforms/"},{"@type":"ListItem","position":3,"name":"MiniMax M Plan","item":"https://codingplan.fyi/platforms/minimax/"}]}]}</script>
+<link rel="stylesheet" href="/styles/design-system.css?v=47a0b29cda">
+<script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
+<link rel="stylesheet" href="/styles/ui-components.css?v=e5133e2fe2">
+</head>
+<body class="platform-guide">
+  <a class="guide-skip" href="#guide-content">跳到介绍正文</a>
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/" aria-current="page">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/monitor/" hidden data-monitor-nav>可用性监控</a>
+    <a href="/articles/">文章</a>
+    <a href="/updates/">更新历史</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="guide-shell">
+    <nav class="guide-breadcrumb" aria-label="面包屑"><a href="/">Coding Plan</a><span>/</span><a href="/platforms/">平台介绍</a><span>/</span><span aria-current="page">MiniMax M Plan</span></nav>
+    <header class="guide-hero">
+      <div class="guide-hero-copy">
+        <p class="guide-eyebrow">平台介绍 · 开放购买</p>
+        <h1>MiniMax M Plan</h1>
+        <p class="guide-lead">以MiniMax模型为主的个人订阅，包含MiniMax Code和订阅API Key；新M3.1精确Token额度未知，选购时结合五小时与七天窗口。</p>
+        <div class="guide-actions"><a class="guide-button" href="/plans/?platform=minimax">查看套餐对比 →</a><a class="guide-button secondary" href="https://www.minimax.cn/m-plan">查看官网</a></div>
+        <p class="guide-dates">介绍更新 <time datetime="2026-10-12">2026-10-12</time><span>·</span>套餐与模型记录 <time datetime="2026-10-12">2026-10-12</time></p>
+      </div>
+      <div class="guide-monogram" aria-hidden="true">M3.1</div>
+    </header>
+    <div class="guide-layout">
+      <nav class="guide-toc" aria-label="本页目录"><p>本页内容</p><a href="#overview"><span>01</span>先看是否适合自己</a><a href="#plans"><span>02</span>套餐与价格</a><a href="#models"><span>03</span>支持哪些模型</a><a href="#credits"><span>04</span>用量和额度怎么理解</a><a href="#tools"><span>05</span>接入工具与使用边界</a><a href="#before-buying"><span>06</span>MiniMax 选购时容易混淆的地方</a><a href="#related"><span>07</span>继续比较</a><a href="#sources"><span>08</span>官方资料与记录说明</a></nav>
+      <main id="guide-content" class="guide-content"><section id="overview" class="guide-section"><h2>先看是否适合自己</h2><p>MiniMax 当前面向新用户提供 M Plan Go、Explore、Build，包含 MiniMax Code 和可接入其他编程工具的订阅 API Key。MiniMax Code Free 可以有限使用新型号，但没有订阅 API Key。</p>
+<p>适合主要使用 MiniMax 模型、希望按月管理预算的个人用户。若经常切换多家模型，或需要为自建应用购买通用 API，应另外比较对应产品。</p>
+</section>
+<section id="plans" class="guide-section"><h2>套餐与价格</h2><div class="guide-plan-grid"><article class="guide-plan">
+    <h3>M Plan Go</h3><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span><p class="guide-price">¥49<small>/ 月</small></p>
+    <dl><div><dt>首月优惠</dt><dd>¥25</dd></div><div><dt>按季支付</dt><dd>未单列</dd></div><div><dt>按年支付</dt><dd>¥490</dd></div></dl>
+    <ul><li>包含MiniMax Code及订阅API Key</li></ul>
+    <p class="guide-plan-advice">适合先观察日常任务的实际消耗。</p>
+  </article><article class="guide-plan">
+    <h3>M Plan Explore</h3><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span><p class="guide-price">¥119<small>/ 月</small></p>
+    <dl><div><dt>首月优惠</dt><dd>¥60</dd></div><div><dt>按季支付</dt><dd>未单列</dd></div><div><dt>按年支付</dt><dd>¥1,190</dd></div></dl>
+    <ul><li>包含MiniMax Code及订阅API Key</li></ul>
+    <p class="guide-plan-advice">相对Go三倍用量，适合持续办公与开发。</p>
+  </article><article class="guide-plan">
+    <h3>M Plan Build</h3><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span><p class="guide-price">¥469<small>/ 月</small></p>
+    <dl><div><dt>首月优惠</dt><dd>¥235</dd></div><div><dt>按季支付</dt><dd>未单列</dd></div><div><dt>按年支付</dt><dd>¥4,690</dd></div></dl>
+    <ul><li>包含MiniMax Code及订阅API Key</li></ul>
+    <p class="guide-plan-advice">相对Go十二倍用量，适合高强度使用；先核对自己的实际窗口消耗。</p>
+  </article><article class="guide-plan">
+    <h3>MiniMax Code Free</h3><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span><p class="guide-price">¥0<small>/ 月</small></p>
+    <dl><div><dt>首月优惠</dt><dd>未单列</dd></div><div><dt>按季支付</dt><dd>未单列</dd></div><div><dt>按年支付</dt><dd>未单列</dd></div></dl>
+    <ul><li>MiniMax Code网页/桌面/CLI/移动端有限使用</li></ul>
+
+  </article></div><p class="guide-muted">首月、季付与年付只展示已收录价格；“未单列”不表示免费。购买资格、优惠和续费金额以订购页面为准。</p><p>新 M Plan 三档额度相对 Go 为 1、3、12 倍。升级前先观察自己的五小时和周用量；额度倍数不代表速度倍数。首月优惠的期限和续费价见套餐说明。</p>
+<p>旧 Token Plan 已停售。已开启自动续费的老用户可以保留原价格与历史权益；关闭后无法恢复。升级 M Plan 后不再保留旧套餐的额外权益，iOS 购买的旧订阅另有到期安排。</p>
+</section>
+<section id="models" class="guide-section"><h2>支持哪些模型</h2><p>本站收录 1 个支持模型；同一模型的不同计费档位合并展示。</p><div class="guide-table-wrap" tabindex="0" role="region" aria-label="套餐支持模型"><table><caption>套餐支持模型</caption><thead><tr><th scope="col">模型</th><th scope="col">支持套餐</th></tr></thead><tbody><tr><th scope="row">MiniMax-M3.1-Flash-Preview</th><td>M Plan Go、M Plan Explore、M Plan Build、MiniMax Code Free</td></tr></tbody></table></div><p class="guide-muted">模型记录日期：2026-10-12。可选名称与实际服务版本可能不同，使用前请核对官方说明。</p><p>当前新订阅的文本模型是 M3.1 Flash Preview。旧 Token Plan 同样支持新型号；M2.5/M2.7 系列请求将于 2026-10-19 统一路由至 M3.1，原模型名保留作为兼容入口。按量 API 的正式下线日期不同，不能混用。</p>
+</section>
+<section id="credits" class="guide-section"><h2>用量和额度怎么理解</h2><p>文本等非视频模型受五小时和七天窗口控制，两者都需有剩余额度。各模态共享套餐额度；视频只受周窗口控制。未用完的额度不结转，五小时刷新不会恢复本周已用额度。</p>
+<p>M3.1 的精确 Token 配额尚未公开。本站旧 M3 实测对应当时的模型、缓存命中率和套餐条件，不用来推算 M3.1 的当前额度。</p>
+</section>
+<section id="tools" class="guide-section"><h2>接入工具与使用边界</h2><p>订阅 M Plan 后可直接登录 MiniMax Code 使用；接入 Claude Code、Codex、Cursor、OpenCode 等工具时使用订阅 Key。它与按量 API Key 不通用。</p>
+<p>订阅额度耗尽后，如有积分包则继续消耗积分包；不会自动扣开放平台账户余额。自建应用和生产服务应核对按量 API 的适用规则。</p>
+</section>
+<section id="before-buying" class="guide-section"><h2>MiniMax 选购时容易混淆的地方</h2><p>旧 Token Plan 续费与新 M Plan 订购有不同权益；型号替换也不等于可以把旧测量当成新型号的保证。长期预算应看续费价、窗口和自己真实的任务消耗。</p>
+</section>
+<section id="related" class="guide-section"><h2>继续比较</h2><p>如果希望一个订阅里轮换多家模型，可以比较 OpenCode Go 与 Go Plus 中常用模型的额度。</p>
+<div class="guide-related"><a class="guide-related-card" href="/platforms/opencode/"><strong>OpenCode Go / Go Plus</strong><span>了解 OpenCode Go / Go Plus 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。</span><span>阅读平台介绍 →</span></a></div><ul class="guide-article-links"><li><a href="/articles/plan_comparisons/20260824/index.html">AI Coding Plan 与 API 平台对比：智谱、MiniMax、DeepSeek 视觉版和 OpenCode 怎么选</a></li><li><a href="/articles/model_comparisons/20260907/index.html">主流大模型能力对比：综合能力与编程表现</a></li><li><a href="/articles/news/20260602_minimax_m3/index.html">MiniMax M3：前沿 Coding 能力与原生多模态</a></li></ul></section>
+<section id="sources" class="guide-section"><h2>官方资料与记录说明</h2><ul class="guide-sources"><li><a href="https://www.minimax.cn/m-plan">MiniMax M Plan官方订阅</a><span>当前价格、首月优惠和模型权益。</span></li><li><a href="https://platform.minimax.cn/docs/m-plan/token-plan-notice">Token Plan老用户安排</a><span>停售、续费、升级及历史权益。</span></li><li><a href="https://platform.minimax.cn/docs/m-plan/usage-rules">M Plan窗口规则</a><span>五小时与七天窗口及超额积分。</span></li><li><a href="https://platform.minimax.cn/docs/guides/models-intro">模型与迁移通知</a><span>M2.5/M2.7兼容入口和下线日期。</span></li></ul><p>介绍和数据日期分别标在页首。历史文章按各自发布日期理解，当前订购与迁移以官方说明为准。</p>
+</section></main>
+    </div>
+    <footer class="guide-footer"><p>价格、活动与可用模型可能变化，购买和接入前请核对官方页面。本站的选择建议不代表服务承诺。</p><div><a href="/platforms/">全部平台</a><a href="/plans/">套餐对比</a><a href="/">返回首页</a><a href="https://github.com/wmpeng/codingplan/issues">反馈资料问题</a></div></footer>
+  </div>
+</body>
+</html>

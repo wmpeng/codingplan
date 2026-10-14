@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<script src="/scripts/ui-core.js?v=57904152bf"></script>
+<script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
+<script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>2026年8月24日 AI Coding Plan 与 API 平台对比：智谱 GLM-5.3、MiniMax、DeepSeek 视觉版和 OpenCode 调整后怎么选</title>
-  <meta name="description" content="8 月下旬这轮变化，不只是某个平台又加了一个模型。智谱把 GLM-5.3 纳入新套餐，DeepSeek 同时调整了峰谷价格并推出视觉实验版，OpenCode 的模型池和套餐展示也发生变化。与此同时，Kimi 仍无法新订阅、Ollama Max 仍停售，阿里百炼的 Coding Plan 仍然很难抢。 如果只想先看结论：国内用户优先从智谱、MiniMax和字节方舟里选稳定可买的订" />
-  <link rel="icon" href="../../../favicon.ico?v=20260824" type="image/x-icon" />
-  <link rel="stylesheet" href="../../../styles/shared.css?v=20260824" />
+<meta name="description" content="8 月下旬这轮变化，不只是某个平台又加了一个模型。智谱把 GLM-5.3 纳入新套餐，DeepSeek 同时调整了峰谷价格并推出视觉实验版，OpenCode 的模型池和套餐展示也发生变化。与此同时，Kimi 仍无法新订阅、Ollama Max 仍停售，阿里百炼的 Coding Plan 仍然很难抢。 如果只想先看结论：国内用户优先从智谱、MiniMax和字节方舟里选稳定可买的订" />
+  <link rel="icon" href="../../../favicon.ico?v=260924a" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=482edb170c" />
   <style>
 
     body.article-page {
@@ -455,23 +459,73 @@
     }
 
   </style>
+<link rel="canonical" href="https://codingplan.fyi/articles/plan_comparisons/20260824/">
+<script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=7c1640cfed" />
+  <link rel="stylesheet" href="/styles/design-system.css?v=47a0b29cda" />
+<script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
+<link rel="stylesheet" href="/styles/ui-components.css?v=e5133e2fe2">
 </head>
 <body class="article-page">
-  <div class="doc-wrap">
-    <nav class="back-nav" aria-label="返回">
-      <a href="../../../" class="back-home-btn">← 返回主页</a>
-      <a href="../../" class="back-home-btn">文章列表</a>
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/monitor/" hidden data-monitor-nav>可用性监控</a>
+    <a href="/articles/" aria-current="page">文章</a>
+    <a href="/updates/">更新历史</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="doc-wrap">
+    <nav class="guide-breadcrumb article-breadcrumb" aria-label="面包屑">
+      <a href="/">Coding Plan</a><span aria-hidden="true">/</span>
+      <a href="/articles/">文章列表</a><span aria-hidden="true">/</span>
+      <span aria-current="page" title="2026年8月24日 AI Coding Plan 与 API 平台对比：智谱 GLM-5.3、MiniMax、DeepSeek 视觉版和 OpenCode 调整后怎么选">2026年8月24日 AI Coding Plan 与 API 平台对比：智谱 GLM-5.3、MiniMax、DeepSeek 视觉版和 OpenCode 调整后怎么选</span>
     </nav>
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="侧栏目录">
-        <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、先分清两种计费方式</a><ol><li><a href="#sec-主要平台与套餐总表">主要平台与套餐总表</a></li></ol></li><li><a href="#sec-h2-2">二、平台与套餐逐一对比</a><ol><li><a href="#sec-1-智谱-ai-glm-5-3-新套餐已经落地">1. 智谱 AI：GLM-5.3 新套餐已经落地</a></li><li><a href="#sec-2-opencode-一个订阅覆盖多家模型">2. OpenCode：一个订阅覆盖多家模型</a></li><li><a href="#sec-3-minimax-低门槛-高额度仍然突出">3. MiniMax：低门槛、高额度仍然突出</a></li><li><a href="#sec-4-kimi-k3-有吸引力-但仍不能新订阅">4. Kimi：K3 有吸引力，但仍不能新订阅</a></li><li><a href="#sec-5-字节方舟-coding-plan-与-token-plan-都已不限购">5. 字节方舟：Coding Plan 与 Token Plan 都已不限购</a></li><li><a href="#sec-6-优云智算-档位完整-倍率相对透明">6. 优云智算：档位完整，倍率相对透明</a></li><li><a href="#sec-7-deepseek-峰谷价格与视觉实验版是本期重点">7. DeepSeek：峰谷价格与视觉实验版是本期重点</a></li><li><a href="#sec-8-codex-能力强-但使用门槛不只在价格">8. Codex：能力强，但使用门槛不只在价格</a></li><li><a href="#sec-9-claude-code-成熟的代码-agent-账号风险需计入成本">9. Claude Code：成熟的代码 Agent，账号风险需计入成本</a></li><li><a href="#sec-10-ollama-pro-可买-max-仍停售">10. Ollama：Pro 可买，Max 仍停售</a></li><li><a href="#sec-11-阿里百炼-coding-plan-难抢-token-plan-更现实">11. 阿里百炼：Coding Plan 难抢，Token Plan 更现实</a></li><li><a href="#sec-补充一-共绩算力-按量付费-但旧价表已经失效">补充一：共绩算力——按量付费，但旧价表已经失效</a></li><li><a href="#sec-补充二-小米-mimo-额度高-但先确认当期购买页">补充二：小米 MiMo——额度高，但先确认当期购买页</a></li></ol></li><li><a href="#sec-h2-3">三、价格与用量横向看</a></li><li><a href="#sec-h2-4">四、按使用场景给出选择顺序</a><ol><li><a href="#sec-想要一个省心的国产主力套餐">想要一个省心的国产主力套餐</a></li><li><a href="#sec-想用一个入口切换多家模型">想用一个入口切换多家模型</a></li><li><a href="#sec-只想按量调用-成本越透明越好">只想按量调用，成本越透明越好</a></li><li><a href="#sec-有境外支付方式和网络条件">有境外支付方式和网络条件</a></li></ol></li><li><a href="#sec-h2-5">五、结论</a></li></ol></nav>
+        <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">本页内容</p><ol><li><a href="#sec-h2-1">一、先分清两种计费方式</a><ol><li><a href="#sec-主要平台与套餐总表">主要平台与套餐总表</a></li></ol></li><li><a href="#sec-h2-2">二、平台与套餐逐一对比</a><ol><li><a href="#sec-1-智谱-ai-glm-5-3-新套餐已经落地">1. 智谱 AI：GLM-5.3 新套餐已经落地</a></li><li><a href="#sec-2-opencode-一个订阅覆盖多家模型">2. OpenCode：一个订阅覆盖多家模型</a></li><li><a href="#sec-3-minimax-低门槛-高额度仍然突出">3. MiniMax：低门槛、高额度仍然突出</a></li><li><a href="#sec-4-kimi-k3-有吸引力-但仍不能新订阅">4. Kimi：K3 有吸引力，但仍不能新订阅</a></li><li><a href="#sec-5-字节方舟-coding-plan-与-token-plan-都已不限购">5. 字节方舟：Coding Plan 与 Token Plan 都已不限购</a></li><li><a href="#sec-6-优云智算-档位完整-倍率相对透明">6. 优云智算：档位完整，倍率相对透明</a></li><li><a href="#sec-7-deepseek-峰谷价格与视觉实验版是本期重点">7. DeepSeek：峰谷价格与视觉实验版是本期重点</a></li><li><a href="#sec-8-codex-能力强-但使用门槛不只在价格">8. Codex：能力强，但使用门槛不只在价格</a></li><li><a href="#sec-9-claude-code-成熟的代码-agent-账号风险需计入成本">9. Claude Code：成熟的代码 Agent，账号风险需计入成本</a></li><li><a href="#sec-10-ollama-pro-可买-max-仍停售">10. Ollama：Pro 可买，Max 仍停售</a></li><li><a href="#sec-11-阿里百炼-coding-plan-难抢-token-plan-更现实">11. 阿里百炼：Coding Plan 难抢，Token Plan 更现实</a></li><li><a href="#sec-补充一-共绩算力-按量付费-但旧价表已经失效">补充一：共绩算力——按量付费，但旧价表已经失效</a></li><li><a href="#sec-补充二-小米-mimo-额度高-但先确认当期购买页">补充二：小米 MiMo——额度高，但先确认当期购买页</a></li></ol></li><li><a href="#sec-h2-3">三、价格与用量横向看</a></li><li><a href="#sec-h2-4">四、按使用场景给出选择顺序</a><ol><li><a href="#sec-想要一个省心的国产主力套餐">想要一个省心的国产主力套餐</a></li><li><a href="#sec-想用一个入口切换多家模型">想用一个入口切换多家模型</a></li><li><a href="#sec-只想按量调用-成本越透明越好">只想按量调用，成本越透明越好</a></li><li><a href="#sec-有境外支付方式和网络条件">有境外支付方式和网络条件</a></li></ol></li><li><a href="#sec-h2-5">五、结论</a></li></ol></nav>
       </aside>
       <article class="doc">
         <p class="doc-kicker">平台对比 · Coding Plan</p>
         <h1>2026年8月24日 AI Coding Plan 与 API 平台对比：智谱 GLM-5.3、MiniMax、DeepSeek 视觉版和 OpenCode 调整后怎么选</h1>
-        <p class="doc-updates"><time datetime="2026-08-24">更新时间 2026年8月24日</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
+        <p class="doc-updates"><time datetime="2026-08-24">更新时间 2026年8月24日</time> · 数据来源 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
         <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;"><p>本文比较面向 AI 编程的订阅套餐与按量 API。价格、在售状态和模型阵容变化很快，下单前仍应以平台结算页为准。</p></div>
-        <nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、先分清两种计费方式</a><ol><li><a href="#sec-主要平台与套餐总表">主要平台与套餐总表</a></li></ol></li><li><a href="#sec-h2-2">二、平台与套餐逐一对比</a><ol><li><a href="#sec-1-智谱-ai-glm-5-3-新套餐已经落地">1. 智谱 AI：GLM-5.3 新套餐已经落地</a></li><li><a href="#sec-2-opencode-一个订阅覆盖多家模型">2. OpenCode：一个订阅覆盖多家模型</a></li><li><a href="#sec-3-minimax-低门槛-高额度仍然突出">3. MiniMax：低门槛、高额度仍然突出</a></li><li><a href="#sec-4-kimi-k3-有吸引力-但仍不能新订阅">4. Kimi：K3 有吸引力，但仍不能新订阅</a></li><li><a href="#sec-5-字节方舟-coding-plan-与-token-plan-都已不限购">5. 字节方舟：Coding Plan 与 Token Plan 都已不限购</a></li><li><a href="#sec-6-优云智算-档位完整-倍率相对透明">6. 优云智算：档位完整，倍率相对透明</a></li><li><a href="#sec-7-deepseek-峰谷价格与视觉实验版是本期重点">7. DeepSeek：峰谷价格与视觉实验版是本期重点</a></li><li><a href="#sec-8-codex-能力强-但使用门槛不只在价格">8. Codex：能力强，但使用门槛不只在价格</a></li><li><a href="#sec-9-claude-code-成熟的代码-agent-账号风险需计入成本">9. Claude Code：成熟的代码 Agent，账号风险需计入成本</a></li><li><a href="#sec-10-ollama-pro-可买-max-仍停售">10. Ollama：Pro 可买，Max 仍停售</a></li><li><a href="#sec-11-阿里百炼-coding-plan-难抢-token-plan-更现实">11. 阿里百炼：Coding Plan 难抢，Token Plan 更现实</a></li><li><a href="#sec-补充一-共绩算力-按量付费-但旧价表已经失效">补充一：共绩算力——按量付费，但旧价表已经失效</a></li><li><a href="#sec-补充二-小米-mimo-额度高-但先确认当期购买页">补充二：小米 MiMo——额度高，但先确认当期购买页</a></li></ol></li><li><a href="#sec-h2-3">三、价格与用量横向看</a></li><li><a href="#sec-h2-4">四、按使用场景给出选择顺序</a><ol><li><a href="#sec-想要一个省心的国产主力套餐">想要一个省心的国产主力套餐</a></li><li><a href="#sec-想用一个入口切换多家模型">想用一个入口切换多家模型</a></li><li><a href="#sec-只想按量调用-成本越透明越好">只想按量调用，成本越透明越好</a></li><li><a href="#sec-有境外支付方式和网络条件">有境外支付方式和网络条件</a></li></ol></li><li><a href="#sec-h2-5">五、结论</a></li></ol></nav>
+        <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">本页内容</p><ol><li><a href="#sec-h2-1">一、先分清两种计费方式</a><ol><li><a href="#sec-主要平台与套餐总表">主要平台与套餐总表</a></li></ol></li><li><a href="#sec-h2-2">二、平台与套餐逐一对比</a><ol><li><a href="#sec-1-智谱-ai-glm-5-3-新套餐已经落地">1. 智谱 AI：GLM-5.3 新套餐已经落地</a></li><li><a href="#sec-2-opencode-一个订阅覆盖多家模型">2. OpenCode：一个订阅覆盖多家模型</a></li><li><a href="#sec-3-minimax-低门槛-高额度仍然突出">3. MiniMax：低门槛、高额度仍然突出</a></li><li><a href="#sec-4-kimi-k3-有吸引力-但仍不能新订阅">4. Kimi：K3 有吸引力，但仍不能新订阅</a></li><li><a href="#sec-5-字节方舟-coding-plan-与-token-plan-都已不限购">5. 字节方舟：Coding Plan 与 Token Plan 都已不限购</a></li><li><a href="#sec-6-优云智算-档位完整-倍率相对透明">6. 优云智算：档位完整，倍率相对透明</a></li><li><a href="#sec-7-deepseek-峰谷价格与视觉实验版是本期重点">7. DeepSeek：峰谷价格与视觉实验版是本期重点</a></li><li><a href="#sec-8-codex-能力强-但使用门槛不只在价格">8. Codex：能力强，但使用门槛不只在价格</a></li><li><a href="#sec-9-claude-code-成熟的代码-agent-账号风险需计入成本">9. Claude Code：成熟的代码 Agent，账号风险需计入成本</a></li><li><a href="#sec-10-ollama-pro-可买-max-仍停售">10. Ollama：Pro 可买，Max 仍停售</a></li><li><a href="#sec-11-阿里百炼-coding-plan-难抢-token-plan-更现实">11. 阿里百炼：Coding Plan 难抢，Token Plan 更现实</a></li><li><a href="#sec-补充一-共绩算力-按量付费-但旧价表已经失效">补充一：共绩算力——按量付费，但旧价表已经失效</a></li><li><a href="#sec-补充二-小米-mimo-额度高-但先确认当期购买页">补充二：小米 MiMo——额度高，但先确认当期购买页</a></li></ol></li><li><a href="#sec-h2-3">三、价格与用量横向看</a></li><li><a href="#sec-h2-4">四、按使用场景给出选择顺序</a><ol><li><a href="#sec-想要一个省心的国产主力套餐">想要一个省心的国产主力套餐</a></li><li><a href="#sec-想用一个入口切换多家模型">想用一个入口切换多家模型</a></li><li><a href="#sec-只想按量调用-成本越透明越好">只想按量调用，成本越透明越好</a></li><li><a href="#sec-有境外支付方式和网络条件">有境外支付方式和网络条件</a></li></ol></li><li><a href="#sec-h2-5">五、结论</a></li></ol></nav></details>
         <p class="lead">8 月下旬这轮变化，不只是某个平台又加了一个模型。智谱把 GLM-5.3 纳入新套餐，DeepSeek 同时调整了峰谷价格并推出视觉实验版，OpenCode 的模型池和套餐展示也发生变化。与此同时，Kimi 仍无法新订阅、Ollama Max 仍停售，阿里百炼的 Coding Plan 仍然很难抢。</p>
 <p>如果只想先看结论：国内用户优先从智谱、MiniMax和字节方舟里选稳定可买的订阅，重视透明倍率时再补看优云智算；想用多家模型，可重点看 OpenCode；只在业务程序里调用模型，则直接比较 DeepSeek 等 API 的输入、输出价格；有境外支付方式和相应网络条件，再考虑 Codex、Claude Code 与 Ollama。</p>
 <p>单看模型能力，GLM-5.3、Kimi-K3、Codex 使用的 GPT-5.6，以及 Claude Code 对应的 Claude 系列，都属于当前代码与 Agent 能力最强的一批模型。它们之间更实际的差异，主要落在可购买状态、额度、支付与网络门槛上。</p>
@@ -768,7 +822,7 @@
 <figure class="doc-figure"><img src="./assets/platforms.jpg" alt="AI 编程平台对比总览" loading="lazy" /></figure>
 <div class="doc-blockquote">
 <p>平台格局与主要特点可通过图片快速浏览；图中平台卡片不作为当前价格、模型和购买状态的依据，相关信息以本文表格及平台结算页为准。</p>
-<p>图片来源：<a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">Vibe Coding 套餐对比</a></p>
+<p>图片来源：<a href="/" rel="noopener noreferrer">Vibe Coding 套餐对比</a></p>
 </div>
 <div class="doc-blockquote">
 <p><strong>综合价格口径</strong>：订阅套餐按“月费 ÷ 参考月 Token”计算；美元套餐按本期结算页汇率 <code>1 USD = 6.9916 CNY</code> 换算。API 按总 Token 中输出占 0.5%、输入占 99.5%计算，输入部分再按 95%缓存命中、5%未命中加权，即：<code>99.5% ×（95% × 缓存命中输入价 + 5% × 未命中输入价）+ 0.5% × 输出价</code>。结果统一为元/M Tokens，四舍五入保留两位小数。</p>
@@ -1456,7 +1510,7 @@
 <figure class="doc-figure"><img src="./assets/unit-price.jpg" alt="AI 编程套餐单价与用量对比" loading="lazy" /></figure>
 <div class="doc-blockquote">
 <p>这张图用于快速理解价格与用量的比较方式；图内单价采用图片中标注的计算假设，本文表格则统一按 95% 缓存命中率、0.5% 输出占比重新计算，具体套餐、价格和购买状态以本文表格及平台结算页为准。</p>
-<p>图片来源：<a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">Vibe Coding 套餐对比</a></p>
+<p>图片来源：<a href="/" rel="noopener noreferrer">Vibe Coding 套餐对比</a></p>
 </div>
 <p>把常见入门档放在一起，最便宜不一定最适合：</p>
 <table>
@@ -1513,8 +1567,8 @@
 <p>对大多数国内个人开发者，推荐顺序是：先从智谱、OpenCode、MiniMax 中找主方案，再根据 Kimi 的购买状态、字节方舟的多模型能力和 DeepSeek 的按量价格补足需求；优云智算更适合作为重视透明倍率时的补充选择。具备境外条件后，再把 Codex、Claude Code、Ollama 纳入比较；阿里百炼则优先看不限购的 Token Plan。</p>
 <p>最稳妥的购买方法不是直接上最高档，而是先用最低可用档跑一周真实项目，记录模型、请求次数、上下文长度和限额触发情况，再决定升级或分流。这样比只看宣传页上的 Token 总量更接近真实成本。</p>
 
-        <div class="doc-blockquote doc-source">数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br />
-原文链接 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></div>
+        <div class="doc-blockquote doc-source">数据来源 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br />
+原文链接 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></div>
       </article>
     </div>
   </div>

@@ -1,0 +1,53 @@
+/* 首屏社群入口布局；图标与主次操作的视觉变体由 design-system.css 管理。 */
+.community-invite { position: relative; display: flex; align-items: center; gap: 12px; width: 100%; padding: 16px 0 0; margin-top: 16px; }
+.community-invite::before { content: ""; position: absolute; inset: 0 0 auto; height: 1px; background: var(--border-color); }
+.community-invite > div { flex: 0 1 auto; min-width: 0; }
+.community-invite-icon { display: grid; place-items: center; flex-shrink: 0; width: 36px; height: 36px; }
+.community-invite-icon svg { width: 20px; height: 20px; }
+.community-invite-link { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; gap: 6px; }
+.community-invite-link svg { width: 15px; height: 15px; }
+/* 按左栏实际宽度切换，单栏平板与宽屏都可节省操作区高度。 */
+@container hero-intro (min-width: 36rem) {
+  .hero-entry-actions { display: flex; align-items: stretch; gap: 20px; }
+  .hero-entry-actions .hero-actions { flex-shrink: 0; }
+  .hero-entry-actions .community-invite { flex: 1; min-width: 0; width: auto; margin: 0; padding: 0 0 0 20px; }
+  .hero-entry-actions .community-invite::before { inset: 8px auto 8px 0; width: 1px; height: auto; }
+}
+body .community-join { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 14px; border: 1px solid var(--accent-primary); border-radius: 8px; color: white; background: var(--accent-primary); font-size: 13px; font-weight: 600; line-height: 1.5; text-decoration: none; }
+body .community-join:hover { color: white; background: var(--accent-hover); text-decoration: none; }
+.community-float { position: fixed; bottom: 24px; right: 24px; z-index: 80; display: flex; align-items: stretch; border: 1px solid #c9d8ec; border-radius: 12px; background: var(--bg-secondary); box-shadow: 0 4px 18px #182b4514; }
+.community-float[hidden] { display: none; }
+.community-float-trigger { display: flex; align-items: center; gap: 10px; border: 0; background: transparent; padding: 12px 14px; color: var(--text-primary); cursor: pointer; text-align: left; border-radius: 12px 0 0 12px; }
+.community-float-trigger svg { width: 22px; height: 22px; color: var(--accent-primary); flex-shrink: 0; }
+.community-float-trigger strong { display: block; font-size: 14px; font-weight: 600; line-height: 1.4; }
+.community-float-trigger small { display: block; margin-top: 2px; font-size: 12px; color: var(--text-secondary); }
+.community-float-mobile { display: none; }
+.community-float-trigger:hover { background: #edf3fb; }
+.community-float-dismiss, .community-dialog-close { border: 0; background: transparent; color: var(--text-secondary); cursor: pointer; display: grid; place-items: center; padding: 8px; min-width: 36px; }
+.community-float-dismiss { border-left: 1px solid var(--border-color); border-radius: 0 12px 12px 0; }
+.community-float-dismiss svg, .community-dialog-close svg { width: 16px; height: 16px; }
+.community-float-dismiss:hover, .community-dialog-close:hover { color: var(--accent-primary); background: var(--bg-tertiary); }
+.community-dialog { position: fixed; inset: auto 24px 108px auto; width: 300px; max-width: calc(100vw - 32px); max-height: calc(100dvh - 140px); margin: 0; padding: 22px; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-secondary); color: var(--text-primary); box-shadow: 0 8px 32px #182b4521; overflow-y: auto; z-index: 90; }
+.community-dialog::backdrop { background: #182b4540; }
+.community-dialog header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.discovery-page .community-dialog h2 { font-size: 18px; font-weight: 600; line-height: 1.5; margin: 0; }
+.community-dialog-close { min-height: 36px; border-radius: 8px; margin: -6px -8px -6px 0; }
+.community-dialog p { font-size: 13px; line-height: 1.7; color: var(--text-secondary); margin: 10px 0 16px; }
+.community-dialog img { display: block; width: 180px; height: 180px; margin: 0 auto; }
+.community-dialog .community-qr-hint { text-align: center; font-size: 12px; margin: 8px 0 18px; }
+.community-dialog .community-join { display: flex; width: 100%; }
+@media (max-width: 600px) {
+  .hero-entry-actions .community-invite p { display: none; }
+  .community-invite { gap: 12px; }
+  .community-invite-link { min-height: 44px; }
+  .community-float { right: 12px; bottom: max(16px, env(safe-area-inset-bottom)); border-radius: 10px; }
+  .community-float-trigger { min-height: 44px; padding: 10px 12px; gap: 8px; }
+  .community-float-trigger small { display: none; }
+  .community-float-desktop { display: none; }
+  .community-float-mobile { display: inline; }
+  .community-float-trigger strong { font-size: 13px; }
+  .community-float-trigger svg { width: 18px; height: 18px; }
+  .community-float-dismiss { min-width: 36px; }
+  .community-dialog { inset: auto 0 0; width: 100%; max-width: 100%; max-height: 85dvh; border-radius: 16px 16px 0 0; padding: 22px 24px calc(24px + env(safe-area-inset-bottom)); }
+  .community-dialog .community-join { min-height: 44px; }
+}

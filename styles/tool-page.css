@@ -1,0 +1,208 @@
+:root {
+  --tool-ink: #172033;
+  --tool-muted: #64748b;
+  --tool-line: #e2e8f0;
+  --tool-soft: #f8fafc;
+  --tool-accent: #2563eb;
+  --tool-accent-soft: #eff6ff;
+}
+
+body.tool-page {
+  margin: 0;
+  color: var(--tool-ink);
+  background: #f8fafc;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.tool-page-main { max-width: 1440px; margin: 0 auto; padding: 22px 28px 64px; }
+.tool-topbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 24px; }
+.tool-brand { color: var(--tool-ink); font-weight: 760; text-decoration: none; letter-spacing: -.02em; }
+.tool-nav { display: flex; gap: 6px; flex-wrap: wrap; }
+.tool-nav a { color: var(--tool-muted); padding: 8px 11px; border-radius: 9px; text-decoration: none; font-size: 14px; }
+.tool-nav a:hover, .tool-nav a[aria-current="page"] { color: var(--tool-accent); background: var(--tool-accent-soft); }
+.tool-breadcrumb { display: flex; gap: 9px; color: var(--tool-muted); font-size: 13px; margin: 4px 0 18px; }
+.tool-breadcrumb a { color: inherit; }
+.tool-hero { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 24px; }
+.tool-hero h1 { margin: 4px 0 8px; font-size: clamp(28px, 4vw, 44px); line-height: 1.08; letter-spacing: -.04em; }
+.tool-hero p { max-width: 720px; margin: 0; color: var(--tool-muted); line-height: 1.7; }
+.tool-eyebrow { margin: 0; color: var(--tool-accent); font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.tool-panel { background: #fff; border: 1px solid var(--tool-line); border-radius: 16px; box-shadow: 0 8px 32px rgba(15, 23, 42, .04); }
+.tool-count { color: var(--tool-muted); font-size: 13px; }
+.tool-table-wrap { overflow-x: auto; }
+.tool-table { width: 100%; min-width: 860px; border-collapse: collapse; font-size: 13px; }
+.tool-table th, .tool-table td { padding: 12px 10px; border-bottom: 1px solid var(--tool-line); text-align: left; vertical-align: top; }
+.tool-table th { color: var(--tool-muted); background: var(--tool-soft); font-weight: 700; white-space: nowrap; }
+.tool-table tr:hover td { background: #fbfdff; }
+.tool-table a { color: var(--tool-accent); }
+.tool-tag { display: inline-block; margin: 0 4px 4px 0; padding: 3px 7px; border-radius: 999px; background: var(--tool-soft); color: var(--tool-muted); font-size: 11px; }
+.tool-empty { padding: 52px 20px; text-align: center; color: var(--tool-muted); }
+.tool-footer { display: flex; justify-content: space-between; gap: 16px; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--tool-line); color: var(--tool-muted); font-size: 13px; }
+.tool-page .usage-explorer, .tool-page .plan-usage-panel { margin-top: 0; }
+.tool-page .platform-catalog { margin-top: 0; }
+.tool-page .platform-card-grid { margin-top: 14px; }
+.tool-page .monitor-toolbar { position: static; }
+.platform-hub-tools { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+.platform-hub-tools input { flex: 1 1 260px; border: 1px solid var(--tool-line); border-radius: 10px; padding: 11px 12px; font: inherit; }
+.platform-hub-tools select { border: 1px solid var(--tool-line); border-radius: 10px; padding: 11px 12px; background: #fff; }
+.platform-hub-panel { padding: 14px; }
+.hub-tag { border: 1px solid #cbd5e1; border-radius: 999px; background: #fff; color: #475569; padding: 6px 10px; cursor: pointer; margin: 0 5px 5px 0; }
+.hub-tag.is-active { background: var(--tool-accent-soft); border-color: #93c5fd; color: #1d4ed8; }
+.platform-guide-directory { padding: 18px; margin-top: 28px; }
+.hub-guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.hub-guide-card { display: flex; flex-direction: column; gap: 7px; padding: 16px; background: #fff; border: 1px solid var(--tool-line); border-radius: 12px; color: var(--tool-ink); text-decoration: none; }
+.hub-guide-card span { color: var(--tool-muted); font-size: 13px; line-height: 1.5; }
+.hub-guide-card span:last-child { color: var(--tool-accent); }
+.plan-filter-panel { padding: 14px; margin-bottom: 12px; }
+.plan-filter-columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.plan-filter-columns details { border: 1px solid var(--tool-line); border-radius: 10px; padding: 9px; }
+.plan-filter-columns summary { cursor: pointer; color: var(--tool-muted); font-size: 13px; font-weight: 700; }
+.plan-checks { max-height: 190px; overflow: auto; margin-top: 7px; }
+.plan-checks-tall { max-height: 240px; }
+.plan-checks label { display: flex; gap: 7px; padding: 5px 2px; font-size: 12px; line-height: 1.35; }
+.plan-filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--tool-line); font-size: 13px; }
+.plan-filter-row label { display: inline-flex; align-items: center; gap: 5px; color: var(--tool-muted); }
+.plan-filter-row select, .plan-filter-row input { max-width: 120px; border: 1px solid var(--tool-line); border-radius: 7px; padding: 7px; background: #fff; }
+.plan-range-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--tool-line); color: var(--tool-muted); font-size: 12px; }
+.plan-range-row { display: flex; align-items: center; gap: 6px; margin-top: 7px; }
+.plan-range-row input { width: 76px; border: 1px solid var(--tool-line); border-radius: 7px; padding: 6px; }
+.plan-count { margin: 10px 0; }
+.table-sort-button { border: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; font-weight: inherit; padding: 0; }
+.tool-muted { color: var(--tool-muted); font-size: 11px; }
+
+@media (max-width: 800px) {
+  .tool-page-main { padding: 16px 14px 44px; }
+  .tool-topbar, .tool-hero { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .tool-nav { width: 100%; overflow-x: auto; flex-wrap: nowrap; }
+  .tool-nav a { white-space: nowrap; }
+  .tool-footer { flex-direction: column; }
+  .plan-filter-columns, .plan-range-grid { grid-template-columns: 1fr; }
+}
+
+
+
+.plan-selection-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.plan-selection-tools input { width: 100%; min-width: 0; box-sizing: border-box; padding: 6px; }
+.plan-checks label[hidden] { display: none; }
+#plansPage .tool-table { min-width: 1800px; }
+#plansPage .plan-note { min-width: 240px; white-space: pre-line; }
+
+/* Complete tools share the site's compact navigation and working surface. */
+body.tool-page { background: var(--bg-primary); color: var(--text-primary); font-size: 14px; line-height: 1.6; font-family: var(--font-ui); }
+.tool-page { --tool-accent: var(--accent-primary); --tool-ink: var(--text-primary); --tool-muted: var(--text-secondary); --tool-line: var(--border-color); }
+.tool-page-main { max-width: 1320px; padding: 0 40px 48px; }
+.tool-topbar { min-height: 76px; margin-bottom: 24px; justify-content: flex-start; gap: 44px; border-bottom: 1px solid var(--border-color); }
+.tool-brand { display: inline-flex; align-items: center; flex-shrink: 0; gap: 11px; font-size: 19px; color: var(--text-primary); letter-spacing: -.03em; }
+.tool-brand::before { content: ""; display: inline-block; vertical-align: middle; width: 35px; height: 35px; background: url("/assets/brand-mark.svg?v=260924a") center / contain no-repeat; margin-right: 0; flex-shrink: 0; }
+.tool-nav a { font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: 6px; }
+.tool-breadcrumb { margin-bottom: 12px; font-size: 12px; }
+.tool-page a { text-decoration: none; }
+.tool-page a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.tool-hero { margin: 26px 0 28px; align-items: center; }
+.tool-hero h1 { font-size: clamp(24px, 3vw, 30px); line-height: 1.3; font-weight: 700; letter-spacing: -.02em; margin-bottom: 8px; }
+.tool-hero p { font-size: 14px; line-height: 1.65; }
+.tool-panel { border-radius: 12px; box-shadow: var(--shadow-sm); }
+.tool-button { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; font: inherit; font-size: 13px; white-space: nowrap; }
+.tool-result-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 16px 0 12px; font-size: 13px; }
+.tool-result-bar input[type="search"] { width: min(320px, 100%); padding: 8px 12px; border: 1px solid var(--border-color); background: white; border-radius: 8px; font: inherit; }
+.tool-result-bar .tool-count { margin-right: auto; }
+.tool-result-bar label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.tool-page input[type="checkbox"] { accent-color: var(--accent-primary); }
+.tool-page .platform-card { border-radius: 12px; padding: 20px; box-shadow: var(--shadow-sm); }
+.tool-page .platform-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: 16px; }
+.tool-page .platform-dimensions li { background: #f7f9fc; border-radius: 8px; }
+.tool-page .platform-name-link { font-size: 16px; }
+.tool-page .platform-rating { font-size: 12px; }
+.tool-page .platform-summary { min-height: 40px; }
+.platform-guide-directory h2 { font-size: 20px; margin-bottom: 14px; }
+.tool-page .platform-detail-dialog { background: #fff; border-radius: 14px; }
+.tool-page .tool-table { table-layout: fixed; font-size: 13px; }
+#plansPage .tool-table { min-width: 1260px; }
+#plansPage.show-all-columns .tool-table { min-width: 2400px; }
+#plansPage .tool-table th, #plansPage .tool-table td { overflow-wrap: anywhere; padding: 12px; }
+#plansPage .tool-table :is(th,td):nth-child(1) { width: 150px; position: sticky; left: 0; z-index: 2; background: #fff; border-right: 1px solid var(--border-light); }
+#plansPage .tool-table :is(th,td):nth-child(2) { width: 120px; }
+#plansPage .tool-table :is(th,td):nth-child(10) { width: 230px; }
+#plansPage .tool-table :is(th,td):last-child { width: 76px; }
+#plansPage .tool-table th { font-size: 12px; color: var(--text-secondary); background: #f4f7fb; }
+#plansPage .tool-table th:first-child { background: #f4f7fb; }
+#plansPage:not(.show-all-columns) .tool-table :is(th,td):is(:nth-child(3),:nth-child(5),:nth-child(6),:nth-child(12),:nth-child(13),:nth-child(14)):not([colspan]) { display: none; }
+#plansPage .tool-table td:nth-child(4) { color: var(--accent-primary); font-weight: 600; font-variant-numeric: tabular-nums; }
+#plansPage .table-sort-button[aria-pressed="true"] { color: var(--accent-primary); }
+.tool-page .tool-tag { border-radius: 5px; background: #edf2f8; color: var(--text-secondary); font-size: 12px; padding: 2px 5px; }
+.tool-page .table-sort-button { text-align: left; }
+.tool-page th[aria-sort="ascending"] button, .tool-page th[aria-sort="descending"] button { color: var(--accent-primary); }
+.tool-page .is-full-tool .usage-heading, .tool-page .is-full-tool .usage-explorer-heading { display: none; }
+.tool-page .usage-chart-card, .tool-page .usage-presets { border-radius: 12px; box-shadow: var(--shadow-sm); }
+.tool-page .usage-chart-head h3 { font-size: 16px; }
+.tool-page .usage-chart-head p { font-size: 12px; }
+.tool-secondary { margin-top: 16px; padding: 14px 16px; background: #fff; border: 1px solid var(--border-color); border-radius: 12px; }
+.tool-secondary > summary { cursor: pointer; font-size: 13px; color: var(--text-secondary); }
+.tool-secondary[open] > summary { margin-bottom: 14px; }
+.tool-page .monitor-toolbar { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; font-size: 13px; padding: 10px 14px; box-shadow: none; border-radius: 10px; }
+.tool-page .monitor-toolbar .filter-trailing { margin-left: auto; }
+.tool-unified-active .monitor-toolbar .monitor-control, .tool-unified-active #monitorClearFilters { display: none; }
+.tool-page .monitor-toolbar .checkbox-label { display: inline-flex; align-items: center; gap: 7px; }
+.tool-page .monitor-board-panel { border-radius: 12px; box-shadow: var(--shadow-sm); }
+.monitor-retry { display: block; margin: 14px auto 0; }
+.tool-page .tool-empty p { margin-bottom: 14px; }
+.tool-page :is(button, a, input, select, summary):focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
+@media (max-width: 1100px) { .tool-page .platform-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 800px) {
+  .tool-page-main { padding: 0 14px 32px; }
+  .tool-topbar { gap: 10px; padding: 16px 0 10px; margin-bottom: 14px; }
+  .tool-nav { gap: 2px; }
+  .tool-nav a { font-size: 13px; padding: 7px 9px; }
+  .tool-hero { gap: 12px; margin-bottom: 16px; }
+  .tool-hero h1 { font-size: 24px; }
+  .tool-hero p { font-size: 13px; }
+  .tool-page .platform-card-grid { grid-template-columns: 1fr; }
+  .tool-page .platform-card { padding: 16px; }
+  .tool-page .filter-state-grid { gap: 8px; }
+  .tool-page .usage-chart-head { flex-wrap: wrap; }
+  .tool-page .tool-footer { font-size: 12px; }
+}
+
+.tool-page .platform-models { display: flex; gap: 5px; flex-wrap: wrap; }
+.tool-page .platform-card-links { margin-top: auto; }
+.plan-cell-more > summary { font-size: 12px; color: var(--accent-primary); cursor: pointer; margin-top: 3px; }
+.plan-cell-more[open] > summary { margin-bottom: 5px; }
+
+body.tool-page { padding: 0; }
+.tool-page .platform-detail-dim { background: #f4f7fb; border-color: var(--border-light); }
+.tool-legend > summary { color: var(--text-secondary); font-size: 12px; cursor: pointer; margin: 8px 0; }
+.tool-page .filter-picker > summary > span:first-child { white-space: nowrap; }
+@media (max-width: 800px) { .tool-hero { align-items: flex-start; } }
+
+/* 可比较的数据用等宽数字；导航、按钮保留一致的命中区。 */
+.tool-page :is(th, td, .tool-count, .platform-rating) { font-variant-numeric: tabular-nums; }
+.tool-page .tool-brand:hover, .tool-page .tool-nav a:hover, .tool-page .tool-button:hover { text-decoration: none; }
+.tool-page .tool-button { min-height: 40px; border-radius: 7px; gap: 6px; transition: background .15s, border-color .15s; }
+.tool-page .tool-button:hover { background: #f3f7fc; }
+.tool-page .tool-button.primary:hover { background: #095ab7; color: white; }
+.tool-page .tool-nav a[aria-current="page"] { background: #e7effa; color: #075dbd; }
+.tool-page .tool-table-wrap { border-radius: 10px; scrollbar-width: thin; }
+.tool-page .tool-table th { font-weight: 600; }
+.tool-page .tool-table tbody tr:last-child td { border-bottom: 0; }
+.tool-page .table-sort-button { min-height: 30px; }
+.tool-page th .table-sort-button::after { content: " ↕"; opacity: .45; font-weight: 400; }
+.tool-page th[aria-sort="ascending"] .table-sort-button::after { content: " ↑"; opacity: 1; }
+.tool-page th[aria-sort="descending"] .table-sort-button::after { content: " ↓"; opacity: 1; }
+.tool-result-bar input[type="search"] { min-height: 40px; }
+.hub-guide-card { transition: border-color .15s; }
+.hub-guide-card:hover { border-color: #a5b9d1; }
+.tool-page .hub-guide-card:hover { text-decoration: none; }
+@media (max-width: 800px) {
+  .tool-page-main { padding: 0 18px 36px; }
+  .tool-topbar { align-items: flex-start; gap: 10px; }
+  .tool-brand { font-size: 17px; }
+  .tool-brand::before { width: 30px; height: 30px; }
+  .tool-hero { margin: 20px 0; }
+  .tool-page .tool-nav a { min-height: 38px; }
+}
+
+#plansPage .tool-table :is(th, td):is(:nth-child(3), :nth-child(4), :nth-child(5), :nth-child(6), :nth-child(7), :nth-child(8), :nth-child(9), :nth-child(11), :nth-child(12)) { text-align: right; }
+#plansPage .tool-table th:not(:first-child):not(:nth-child(2)):not(:nth-child(10)):not(:nth-child(13)):not(:nth-child(14)) .table-sort-button { text-align: right; }
+#plansPage td .table-sort-button { min-width: 26px; color: #75859a; }
+#plansPage .tool-table td:first-child strong { font-weight: 600; }
+
+.tool-loading { min-height: 280px; display: grid; place-items: center; color: var(--text-secondary); font-size: 13px; }

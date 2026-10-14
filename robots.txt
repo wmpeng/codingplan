@@ -6,4 +6,4 @@ Disallow: /.git/
 Disallow: /dev/
 Disallow: /node_modules/
 
-Sitemap: https://vibecoding.dreamfree.space/sitemap.xml
+Sitemap: https://codingplan.fyi/sitemap.xml

@@ -7,13 +7,13 @@
     typeof require === 'function'
       ? require('./entity-data.js')
       : root.EntityData;
-  const api = factory(catalog || {}, entityData || {});
+  const api = factory(catalog || {}, entityData || {}, root.NumberDisplay || (typeof require === 'function' ? require('./number-display.js') : null));
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = api;
   } else {
     root.PlatformDetail = api;
   }
-})(typeof globalThis !== 'undefined' ? globalThis : this, function (PlatformCatalog, EntityData) {
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (PlatformCatalog, EntityData, Numbers) {
   const DEFAULT_MONITOR_API_BASE = 'https://api.dreamfree.space/vc';
 
   let options = {
@@ -29,7 +29,7 @@
   let openPlatformId = null;
   let openPlatformName = null;
   let triggerEl = null;
-  let escBound = false;
+  let releaseModal = null;
   let closeBound = false;
   let openSeq = 0;
   let boardCache = null; // { platforms: [] } | false (failed)
@@ -38,12 +38,6 @@
   function esc(text) {
     const fn = options.escapeHtml || PlatformCatalog.escapeHtml;
     return typeof fn === 'function' ? fn(text) : String(text == null ? '' : text);
-  }
-
-  // 功能开关（index.html 内联定义）：monitorView=false 时不渲染监控相关区块、不请求 board 接口
-  function isMonitorEnabled() {
-    const g = typeof globalThis !== 'undefined' ? globalThis : null;
-    return !(g && g.__CODINGPLAN_FEATURES && g.__CODINGPLAN_FEATURES.monitorView === false);
   }
 
   function dimensionMeta() {
@@ -65,16 +59,11 @@
   }
 
   function formatMoney(amount, currency) {
-    if (amount == null || amount === '' || Number.isNaN(Number(amount))) return null;
-    const cur = currency || '¥';
-    const num = Number(amount);
-    const text = Number.isInteger(num) ? String(num) : String(num);
-    return `${cur}${text}`;
+    return Numbers.monthlyFee(amount, currency || '¥', null);
   }
 
   function formatApiPrice(value, currency) {
-    if (typeof value !== 'number' || !Number.isFinite(value)) return '—';
-    return `${currency || '¥'}${value.toLocaleString('zh-CN', { maximumFractionDigits: 6 })}`;
+    return Numbers.unitPrice(value, currency || '¥');
   }
 
   function buildApiPricingSectionHtml(groups) {
@@ -101,6 +90,7 @@
       return (
         `<div class="platform-detail-api-group">` +
         (validGroups.length > 1 ? `<h4>${esc(group.planName)}</h4>` : '') +
+        EntityData.harnessApiBadge(group.supportsHarnessApi) +
         `<div class="platform-detail-api-table-wrap">` +
         `<table class="platform-detail-api-table">` +
         `<thead><tr><th scope="col">模型</th><th scope="col">输入</th><th scope="col">缓存</th><th scope="col">输出</th><th scope="col">综合</th></tr></thead>` +
@@ -112,7 +102,7 @@
       `<h3 id="platformDetailApiPricingHeading" class="platform-detail-section-title">按量 API 定价</h3>` +
       `<p class="platform-detail-api-unit">单位：每百万 Token；综合价按站点统一工作负载计算</p>` +
       content +
-      `<a class="platform-detail-avail-link" href="index.html?view=usage">在额度/价格对比中查看 →</a>` +
+      `<a class="platform-detail-avail-link" href="/pricing/">在额度/价格对比中查看 →</a>` +
       `</section>`
     );
   }
@@ -136,10 +126,10 @@
     if (!Number.isFinite(num) || num <= 0) return null;
     if (num >= 10000) {
       const wan = num / 10000;
-      const text = Number.isInteger(wan) ? String(wan) : wan.toFixed(1).replace(/\.0$/, '');
+      const text = Numbers.tokens(wan);
       return `${text}万`;
     }
-    return num.toLocaleString('zh-CN');
+    return Numbers.tokens(num);
   }
 
   function formatPlanQuota(plan) {
@@ -150,7 +140,7 @@
       Number.isFinite(plan.measuredMonthlyTokenLimit) &&
       plan.measuredMonthlyTokenLimit > 0
     ) {
-      return `${plan.measuredMonthlyTokenLimit}M Token`;
+      return `${Numbers.tokens(plan.measuredMonthlyTokenLimit)}M Token`;
     }
     if (typeof plan.monthlyRequests === 'number' && Number.isFinite(plan.monthlyRequests)) {
       const short = formatCountShort(plan.monthlyRequests);
@@ -172,7 +162,22 @@
     return plans.filter(plan => plan && !plan.discontinued);
   }
 
-  function buildPlansSectionHtml(plans) {
+  function buildModelTagsHtml(labels, ariaLabel) {
+    return (globalThis.CodingPlanUI || require('./ui-core.js')).modelTags(labels, {className:'platform-detail-models',ariaLabel});
+  }
+
+  function buildModelsSectionHtml(labels) {
+    const tags = buildModelTagsHtml(labels, '平台支持模型');
+    if (!tags) return '';
+    return (
+      `<section class="platform-detail-section" data-section="models" aria-labelledby="platformDetailModelsHeading">` +
+      `<h3 id="platformDetailModelsHeading" class="platform-detail-section-title">支持模型</h3>` +
+      tags +
+      `</section>`
+    );
+  }
+
+  function buildPlansSectionHtml(plans, platform) {
     const active = activePlansOnly(plans);
     if (active.length === 0) return '';
 
@@ -180,7 +185,7 @@
       .map(plan => {
         const planName = esc(plan && plan.name);
         const rating = Math.max(0, Math.min(5, Number(plan && plan.rating) || 0));
-        const stars = rating > 0 ? '⭐️'.repeat(rating) : '';
+        const stars = rating > 0 ? `★ ${rating.toFixed(1)}` : '';
         const ratingHtml = stars
           ? `<span class="platform-detail-plan-rating" aria-label="${rating} 星">${stars}</span>`
           : '';
@@ -189,6 +194,8 @@
         const summaryHtml = summary
           ? `<p class="platform-detail-plan-summary">${esc(summary)}</p>`
           : '';
+        const harnessHtml = EntityData.harnessApiBadge(EntityData.resolveHarnessApi(platform, plan));
+        const modelsHtml = buildModelTagsHtml(plan.modelLabels, `${plan.name} 支持模型`);
         const quota = formatPlanQuota(plan);
         const quotaHtml = quota
           ? `<div class="platform-detail-plan-quota">${esc(quota)}</div>`
@@ -201,7 +208,7 @@
           `<span class="platform-detail-plan-name">${planName}</span>` +
           ratingHtml +
           `</div>` +
-          summaryHtml +
+          harnessHtml + summaryHtml + modelsHtml +
           `</div>` +
           `<div class="platform-detail-plan-side">` +
           `<div class="platform-detail-plan-price">${priceHtml}</div>` +
@@ -218,7 +225,7 @@
       `<div class="platform-detail-plans-list" aria-label="在售套餐">` +
       rows +
       `</div>` +
-      `<button type="button" class="platform-detail-jump-plans" data-jump-plans="1">在套餐对比中查看 →</button>` +
+      `<button type="button" class="platform-detail-jump-plans" data-jump-plans="1">在套餐页面查看 →</button>` +
       `</section>`
     );
   }
@@ -263,6 +270,7 @@
   }
 
   function buildAvailabilitySectionHtml(platform, monitorRow) {
+    if (typeof globalThis !== 'undefined' && globalThis.__CODINGPLAN_FEATURES?.monitorView === false) return '';
     if (!monitorRow) return '';
 
     // 弹层宽度有限：条带与百分比都按最近 48 小时
@@ -273,7 +281,7 @@
       (platform && platform.monitorSlug && String(platform.monitorSlug).trim()) ||
       (platform && platform.name) ||
       '';
-    const href = `index.html?view=monitor&platform=${encodeURIComponent(slug)}`;
+    const href = `/monitor/?platform=${encodeURIComponent(slug)}`;
 
     return (
       `<section class="platform-detail-section" data-section="availability" aria-labelledby="platformDetailAvailHeading">` +
@@ -299,7 +307,7 @@
   }
 
   async function ensureBoard(apiBase) {
-    if (!isMonitorEnabled()) return null;
+    if (typeof globalThis !== 'undefined' && globalThis.__CODINGPLAN_FEATURES?.monitorView === false) return null;
     if (boardCache) return boardCache;
     if (boardCache === false) return null;
     if (boardPromise) return boardPromise;
@@ -334,7 +342,7 @@
 
     const name = esc(platform && platform.name);
     const rating = Math.max(0, Math.min(5, Number(platform && platform.rating) || 0));
-    const stars = '⭐️'.repeat(rating);
+    const stars = `★ ${rating.toFixed(1)}`;
     const status =
       typeof PlatformCatalog.normalizePlatformStatus === 'function'
         ? PlatformCatalog.normalizePlatformStatus(platform && platform.platformStatus)
@@ -377,6 +385,9 @@
       typeof PlatformCatalog.collectPlansForVendor === 'function'
         ? PlatformCatalog.collectPlansForVendor(rawPlans, platform && platform.slug)
         : rawPlans.filter(p => p && p.platformSlug === (platform && platform.slug));
+    const modelLabels = context.entityContext
+      ? EntityData.platformModels(context.entityContext, platformId).map(model => model.name)
+      : PlatformCatalog.collectModelsForVendor(vendorPlans, platformId);
 
     const dims = dimensionMeta()
       .map(({ key, label }) => {
@@ -430,10 +441,12 @@
       `<h2 id="platformDetailTitle" class="platform-detail-title">${name}</h2>` +
       pinHtml +
       actionLink +
+      (PlatformCatalog.getPlatformGuideUrl(platformId) ? `<a class="platform-guide-link" href="${esc(PlatformCatalog.getPlatformGuideUrl(platformId))}">查看完整介绍 →</a>` : '') +
       `</div>` +
       `<div class="platform-detail-meta">` +
       `<span class="platform-detail-rating" aria-label="${rating > 0 ? `${rating} 星` : '待评定'}">${rating > 0 ? stars : '待评定'}</span>` +
       statusHtml +
+      EntityData.platformHarnessApiBadge(platform, rawPlans) +
       (discontinued ? `<span class="platform-detail-status">已停售</span>` : '') +
       `</div>` +
       `</header>` +
@@ -442,8 +455,9 @@
       `<h3 id="platformDetailDimsHeading" class="platform-detail-section-title">评价详解</h3>` +
       `<ul class="platform-detail-dimensions">${dims}</ul>` +
       `</section>` +
+      buildModelsSectionHtml(modelLabels) +
       buildApiPricingSectionHtml(context.apiPricingGroups) +
-      buildPlansSectionHtml(vendorPlans) +
+      buildPlansSectionHtml(vendorPlans, platform) +
       buildAvailabilitySectionHtml(platform, monitorRow)
     );
   }
@@ -466,12 +480,6 @@
       : null;
   }
 
-  function onKeydown(event) {
-    if (event.key === 'Escape' && isOpen()) {
-      event.preventDefault();
-      close();
-    }
-  }
 
   function syncPinUi() {
     if (!openPlatformId) return;
@@ -533,10 +541,6 @@
 
   function bindChromeOnce() {
     if (typeof document === 'undefined') return;
-    if (!escBound) {
-      document.addEventListener('keydown', onKeydown);
-      escBound = true;
-    }
     if (!closeBound) {
       const overlay = overlayEl();
       const closeBtn = closeBtnEl();
@@ -574,20 +578,11 @@
       overlay.hidden = true;
       overlay.classList.remove('is-open');
     }
-    if (typeof document !== 'undefined' && document.body) {
-      document.body.style.overflow = '';
-    }
+    releaseModal?.();
+    releaseModal = null;
     openPlatformId = null;
     openPlatformName = null;
-    const returnTo = triggerEl;
     triggerEl = null;
-    if (returnTo && typeof returnTo.focus === 'function') {
-      try {
-        returnTo.focus();
-      } catch (_) {
-        /* ignore */
-      }
-    }
   }
 
   async function open(platform, openOpts) {
@@ -608,6 +603,7 @@
         : [];
     const html = buildDetailBodyHtml(platform, {
       plans,
+      entityContext,
       monitorRow: null,
       apiPricingGroups,
       isPinned:
@@ -623,21 +619,15 @@
     body.innerHTML = html;
     overlay.hidden = false;
     overlay.classList.add('is-open');
-    if (typeof document !== 'undefined' && document.body) {
-      document.body.style.overflow = 'hidden';
-    }
+
 
     openPlatformId = platform.slug || null;
     openPlatformName = platform.name || null;
     triggerEl = opts.triggerEl || null;
 
-    const closeBtn = closeBtnEl();
-    if (closeBtn && typeof closeBtn.focus === 'function') {
-      closeBtn.focus();
-    } else {
-      const dialog = overlay.querySelector('.platform-detail-dialog');
-      if (dialog && typeof dialog.focus === 'function') dialog.focus();
-    }
+    releaseModal = globalThis.CodingPlanDialogs.activate(overlay, {
+      trigger: triggerEl, initialFocus: closeBtnEl(), onClose: close
+    });
 
     const board = await ensureBoard(options.monitorApiBase);
     if (seq !== openSeq || !isOpen()) return;
@@ -651,6 +641,7 @@
 
     body.innerHTML = buildDetailBodyHtml(platform, {
       plans,
+      entityContext,
       monitorRow,
       apiPricingGroups,
       isPinned:

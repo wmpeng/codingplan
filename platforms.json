@@ -9,7 +9,7 @@
       "dimensions": {
         "value": {
           "score": 4,
-          "reason": "新套餐价格翻倍，性价比有所下降，[查看套餐用量](index.html?view=plans)。"
+          "reason": "新套餐价格翻倍，性价比有所下降，[查看套餐用量](/plans/?platform=zhipu)。"
         },
         "models": {
           "score": 5,
@@ -20,8 +20,10 @@
           "reason": "官方服务，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "zhipu-coding-legacy",
@@ -29,39 +31,43 @@
       "rating": 5,
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
-      "tags": [],
       "platformStatus": "delisted",
-      "catalogVisible": false
+      "catalogVisible": false,
+      "requiresOverseasNetwork": null,
+      "requiresOverseasPayment": null,
+      "supportsHarnessApi": null
     },
     {
       "slug": "opencode",
       "name": "OpenCode",
       "rating": 5,
-      "summary": "模型支持全，调用抵扣透明，性价比高，可直接支付宝付款，无需抢购。",
-      "detail": "模型支持全，调用抵扣透明，性价比高，可直接支付宝付款，无需抢购。提供 Go 套餐付费代邀请服务，加[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)了解详情。",
+      "summary": "Go与Go Plus的多模型订阅，各模型独立额度；当前32个LLM。",
+      "detail": "各模型的Go Plus额度增幅不同，不能统一按四倍算。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "Go 套餐 $10/月（首月 $5），模型额度为 $15~$60。DeepSeek-V4.1-Flash 当前限时 4 倍用量，官方未公布活动起止日期，细节可见[官方文档](https://opencode.ai/docs/zh-cn/go/)。"
+          "reason": "Go $10/月、Go Plus $40/月，各模型有独立月额度与短窗口；当前额度和活动依模型不同，不统一按四倍计算。"
         },
         "models": {
           "score": 5,
-          "reason": "聚合 Kimi-K3、GLM-5.3、MiniMax-M3、Qwen-3.8-Max、DeepSeek-V4.1-Flash、Muse-Spark-1.3 等 27 个模型，新模型上线及时。"
+          "reason": "各模型的Go Plus额度增幅不同，不能统一按四倍算。"
         },
         "stability": {
           "score": 5,
           "reason": "各模型基本都是官方通道，稳定性强，较少出现不可用。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "bytedance-ark",
       "name": "字节·方舟 Coding Plan",
       "rating": 5,
-      "summary": "开放购买，模型覆盖全面。",
-      "detail": "Coding Plan 开放购买，支持 GLM-5.3、DeepSeek-V4、MiniMax-M3 等模型。",
+      "summary": "方舟Coding Plan当前多模型与Auto接入；保留历史测量基准，其他倍率明确为推测。",
+      "detail": "Coding与Agent活动日期和系数不同，不能互套。",
       "dimensions": {
         "value": {
           "score": 5,
@@ -69,22 +75,24 @@
         },
         "models": {
           "score": 5,
-          "reason": "支持 GLM-5.3、DeepSeek-V4、MiniMax-M3 等模型。"
+          "reason": "Coding与Agent活动日期和系数不同，不能互套。"
         },
         "stability": {
           "score": 4,
           "reason": "火山引擎官方服务，整体稳定。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "bytedance-ark-agent",
       "name": "字节·方舟 Agent Plan",
       "rating": 5,
-      "summary": "开放购买，按 AFP 抵扣，模型覆盖全面。",
-      "detail": "Agent Plan 开放购买，按 AFP 抵扣，支持 GLM-5.3、DeepSeek-V4、MiniMax-M3、Kimi-K3 等模型。",
+      "summary": "四档AFP订阅，当前文本统一按模型系数扣减；Small不含Kimi K3。",
+      "detail": "当前不再沿用输入长度阶梯；按各模型活动日期与常规系数拆档。",
       "dimensions": {
         "value": {
           "score": 5,
@@ -92,49 +100,54 @@
         },
         "models": {
           "score": 5,
-          "reason": "支持 GLM-5.3、DeepSeek-V4、MiniMax-M3、Kimi-K3 等模型。"
+          "reason": "当前不再沿用输入长度阶梯；按各模型活动日期与常规系数拆档。"
         },
         "stability": {
           "score": 4,
           "reason": "火山引擎官方服务，整体稳定。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "minimax",
       "name": "MiniMax",
       "rating": 5,
-      "summary": "额度高、随时可买，支持多模态，日常编程助手与轻量任务性价比突出。",
-      "detail": "额度高、随时可买，支持多模态，日常编程助手与轻量任务性价比突出。适合日常编程助手、Agent任务、酒馆、Subagent使用。",
+      "summary": "新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。",
+      "detail": "M3.1 Flash Preview精确Token额度未公开，按五小时与七天窗口选择档位。",
       "dimensions": {
         "value": {
-          "score": 5,
-          "reason": "所有平台额度最慷慨的，日常低难度任务和日常编程助手场景性价比突出。"
+          "score": 4,
+          "reason": "基础月费较低，原Token Plan历史额度较充足；新M3.1精确用量未公开。"
         },
         "models": {
           "score": 4,
-          "reason": "最新 MiniMax-M3，支持多模态图像输入。",
-          "detail": "最新 MiniMax-M3，支持多模态图像输入。对比非多模态模型，使用起来即使是编程场景也更加方便。基本是多模态模型中最强的。"
+          "reason": "M3.1 Flash Preview精确Token额度未公开，按五小时与七天窗口选择档位。"
         },
         "stability": {
           "score": 5,
           "reason": "官方服务，稳定性强。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "minimax-coding-legacy",
       "name": "MiniMax Coding Plan（已下架）",
       "rating": 5,
-      "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
+      "summary": "历史Token Plan老权益产品线，仅存量用户自动续费；支持最新型号但用量不直接套旧测量。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
-      "tags": [],
       "platformStatus": "delisted",
-      "catalogVisible": false
+      "catalogVisible": false,
+      "requiresOverseasNetwork": null,
+      "requiresOverseasPayment": null,
+      "supportsHarnessApi": null
     },
     {
       "slug": "zhipu-intl",
@@ -157,8 +170,10 @@
           "reason": "官方服务，稳定性强。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": true,
+      "supportsHarnessApi": true
     },
     {
       "slug": "zhipu-intl-coding-legacy",
@@ -166,31 +181,36 @@
       "rating": 5,
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
-      "tags": [],
       "platformStatus": "delisted",
-      "catalogVisible": false
+      "catalogVisible": false,
+      "requiresOverseasNetwork": null,
+      "requiresOverseasPayment": null,
+      "supportsHarnessApi": null
     },
     {
       "slug": "kimi",
       "name": "Kimi",
       "rating": 4,
-      "summary": "拥有 Kimi-K3 国产最强模型。已暂停新用户套餐购买。发布后 Kimi-K3 后，变得比较拥挤且用量有所下降。新会员体系上天一天后又撤回，估计后续要调价。",
+      "summary": "当前Go/Plus/Pro/Max订阅；Plus起支持Coding，旧四档仅老用户续费。",
       "dimensions": {
         "value": {
           "score": 3,
-          "reason": "Kimi-K3 发布后，用量有所下降，Allegretto和Allegro套餐性价相对较高，入门Andante套餐性价比低。新Coding会员体系上天一天后又撤回，估计后续要调价，性价比进一步降低。"
+          "reason": "当前Go/Plus/Pro/Max月费49/99/199/699元，Plus起支持Coding；老套餐仅存量续费，不能按新用户价格比较旧实测。"
         },
         "models": {
           "score": 5,
-          "reason": "支持 Kimi-K3 国产最强模型，适合编程场景。"
+          "reason": "Coding支持Kimi K3与K2.8 Preview，Go不提供Coding API，不能混用客户端与API权益。"
         },
         "stability": {
           "score": 4,
           "reason": "官方服务，稳定性强。Kimi-K3发布后高峰时段可能会有繁忙，整体可用性尚可。"
         }
       },
-      "tags": [],
-      "platformStatus": "paused"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true,
+      "detail": "Coding支持Kimi K3与K2.8 Preview，Go不提供Coding API，不能混用客户端与API权益。"
     },
     {
       "slug": "deepseek-official",
@@ -205,27 +225,29 @@
         },
         "models": {
           "score": 5,
-          "reason": "DeepSeek-V4.1-Flash 支持原生多模态，推理与代码能力处于国产第一梯队；V4 Pro 计划有序下线。"
+          "reason": "当前V4.1 Flash与V4 Pro按峰谷价格分别展示；原计划V4 Pro停服安排已撤销，继续提供服务。"
         },
         "stability": {
           "score": 5,
           "reason": "官方通道，稳定性强。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
-      "action": "https://platform.deepseek.com/"
+      "action": "https://platform.deepseek.com/",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "gongji",
       "name": "共绩算力",
       "rating": 5,
-      "summary": "GLM、Kimi、Qwen、DeepSeek 等模型标价 8 折按量，人少时更稳，适合灵活充值调用。",
-      "detail": "共绩算力以 API 按量为主，当前收录 GLM-5.3、GLM-5.3-Flash、Kimi-K3、Qwen-3.7-Max、DeepSeek-V4 预览版等 10 个可用模型，邀请资格按模型广场标价 8 折计费。务必通过邀请链接进入以锁定折扣与额外额度；平台体量相对较小，人数不多时稳定性体感较好，但仍建议关注公告与限流。不提供传统 Coding Plan / Token Plan 档位，按充值用量消费。",
+      "summary": "GLM、Kimi、Qwen、DeepSeek按量API；邀请8折仅适用于资格仍有效的用户。",
+      "detail": "当前收录11个LLM；V4正式版此前维护，未有恢复调用的新依据。折扣资格沿用2026-09-04确认，本次标价已核对，资格有效性需账户确认。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "模型广场标价 8 折，适合按量调用。"
+          "reason": "有有效邀请资格时按标价8折；本次未做扣费验证。"
         },
         "models": {
           "score": 5,
@@ -236,64 +258,68 @@
           "reason": "当前用户规模不大，实测稳定性较强。"
         }
       },
-      "tags": [],
       "platformStatus": "open",
-      "action": "https://api.dreamfree.space/c/s/cpyqgongji"
+      "action": "https://api.dreamfree.space/c/s/cpyqgongji",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "youyun",
       "name": "优云智算",
       "rating": 4,
-      "summary": "支持GLM-5.2和DeepSeek-V4-Flash-0731正式版。按照真实接口调用量计费，且模型倍率透明，但包含的调用量较少。",
-      "detail": "所有套餐（￥49-￥999）均支持GLM-5.2和DeepSeek-V4-Flash-0731正式版。当前适合作为使用GLM-5.2、DeepSeek-V4-Flash-0731的平台购买。优点是按照真实接口调用量计费，且模型倍率透明，同时GLM-5.2限时优惠倍率；缺点是套餐包含的调用量较少。",
+      "summary": "六档请求制Coding Plan，当前九个LLM各按明确次数扣减。",
+      "detail": "登录控制台核对的扣减与并发已更新；Token量是统一请求负载估计。",
       "dimensions": {
         "value": {
           "score": 4,
-          "reason": "按照真实接口调用量计费。GLM-5.2限时优惠倍率。但各个套餐的包含的调用量都较少。"
+          "reason": "六档按真实模型请求扣减；每型号倍率、并发和三窗口额度见明细，Token量按统一请求负载估算。"
         },
         "models": {
           "score": 4,
-          "reason": "全档位支持 GLM-5.2 和 DeepSeek-V4-Flash-0731 正式版，支持的 Kimi、MiniMax 模型较老。"
+          "reason": "登录控制台核对的扣减与并发已更新；Token量是统一请求负载估计。"
         },
         "stability": {
           "score": 5,
           "reason": "新兴平台，算力充足，很少遇到拥挤。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "codex",
       "name": "Codex",
       "rating": 5,
-      "summary": "OpenAI 官方会员，性价比很高，用量很大。美中不足是需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
-      "detail": "OpenAI 官方会员，性价比很高，用量很大。官方取消了5小时限制，只有周限制，使用更加灵活。并且还经常重置额度和给充值机会。\n需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
+      "summary": "Codex官方订阅，支持GPT-6.1 Sol及6系列；Pro $500另支持Ultrafast。",
+      "detail": "速度档按实际订阅系数分别记录；新型号与新套餐额度未独立测量。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "性价比很高，尤其Pro x20夯爆了。并且取消了5小时限制，只有周限制，使用更加灵活。并且还经常重置额度和给充值机会。如使用GPT-5.6-Terra更有x2的额度。"
+          "reason": "Plus与Pro $100/$200/$500价格和权限分别记录；Pro取消五小时窗口，Plus仍有五小时限制。当前新型号没有固定官方Token额度，旧测量仅作参考。"
         },
         "models": {
           "score": 5,
-          "reason": "支持 GPT-6-Astra、GPT-6-Sol 和 GPT-6-Luna，可按任务复杂度选择模型；实际可用性以账号与客户端为准。"
+          "reason": "速度档按实际订阅系数分别记录；新型号与新套餐额度未独立测量。"
         },
         "stability": {
           "score": 5,
           "reason": "OpenAI 官方基础设施，稳定性行业标杆。"
         }
       },
-      "tags": [
-        "外币支付"
-      ],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": true,
+      "requiresOverseasPayment": true,
+      "supportsHarnessApi": false
     },
     {
       "slug": "claude",
       "name": "Claude",
       "rating": 4,
-      "summary": "Anthropic 官方会员，性价比高，支持多模型。国内使用限时比较多，除需要外币信用卡或者Paypal外，还需要境外手机号，和境外网络环境。",
-      "detail": "Anthropic 官方会员，性价比高，支持多模型。国内使用限时比较多，除需要外币信用卡或者Paypal外，还需要境外手机号，和境外网络环境。中国大陆使用难度很高。",
+      "summary": "Claude Code官方订阅，已支持Opus、Sonnet、Haiku 5.5；新型号精确Token额度未知。",
+      "detail": "5.5系列与旧型号分开记录，不将API价格或旧逆向数据当新订阅额度。",
       "dimensions": {
         "value": {
           "score": 5,
@@ -301,48 +327,49 @@
         },
         "models": {
           "score": 5,
-          "reason": "Fable 5.1、Fable 5、Opus 5、Sonnet 5 等 Claude 系列模型，模型顶尖。"
+          "reason": "5.5系列与旧型号分开记录，不将API价格或旧逆向数据当新订阅额度。"
         },
         "stability": {
           "score": 3,
           "reason": "Anthropic 官方 API，本身稳定性没问题。但需要境外网络环境，从中国大陆访问限制比较多。"
         }
       },
-      "tags": [
-        "外币支付"
-      ],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": true,
+      "requiresOverseasPayment": true,
+      "supportsHarnessApi": false
     },
     {
       "slug": "ollama",
       "name": "Ollama",
       "rating": 4,
-      "summary": "Ollama 官方推出的云端模型会员，支持模型全，性价比很高。但需要外币信用卡或者Paypal，不能直接支付宝/微信付款。",
+      "summary": "当前18个云端LLM的美元Credits订阅，月池可集中使用；部分缓存价格未知。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "性价比很高，[查看模型用量对比](index.html?view=plans)"
+          "reason": "性价比很高，[查看模型用量对比](/plans/?platform=ollama)"
         },
         "models": {
           "score": 5,
-          "reason": "模型强覆盖广，支持 Kimi、GLM、DeepSeek、Qwen、Gemini 等各家开源模型，即将支持Kimi-K3。"
+          "reason": "Pro/Max月池独立于本地免费模型；只按公开云端名单与价格计算。"
         },
         "stability": {
           "score": 4,
           "reason": "稳定性尚可。高峰时段可能略拥挤，整体可用性尚可。"
         }
       },
-      "tags": [
-        "外币支付"
-      ],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true,
+      "detail": "Pro/Max月池独立于本地免费模型；只按公开云端名单与价格计算。"
     },
     {
       "slug": "aliyun-bailian",
       "name": "阿里·百炼 Token Plan",
       "rating": 4,
-      "summary": "开放购买，支持 Qwen-3.8-Max 等模型，夜间抵扣成本更低。",
-      "detail": "Token Plan 开放购买，按 Credits 抵扣；支持 Qwen-3.8-Max 等模型，夜间有额外优惠。",
+      "summary": "百炼Token Plan现为四档Credits订阅，与旧Coding Plan产品分开。",
+      "detail": "精确模型积分抵扣未全部公开，不能用按量API人民币价替代。",
       "dimensions": {
         "value": {
           "score": 4,
@@ -350,15 +377,17 @@
         },
         "models": {
           "score": 4,
-          "reason": "支持 Qwen-3.8-Max、Qwen-3.7-Max/Plus 等模型。"
+          "reason": "精确模型积分抵扣未全部公开，不能用按量API人民币价替代。"
         },
         "stability": {
           "score": 5,
           "reason": "阿里云官方服务，稳定性强。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "aliyun-bailian-coding",
@@ -380,15 +409,17 @@
           "reason": "阿里云官方服务，稳定性强。"
         }
       },
-      "tags": [],
-      "platformStatus": "limited"
+      "platformStatus": "limited",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "xiaomi-mimo",
       "name": "小米·MiMo",
       "rating": 4,
-      "summary": "定价与 DeepSeek 相近，价格略低。MiMo-V2.6-Pro 榜单表现突出，全系支持多模态输入。",
-      "detail": "定价、模型定位与 DeepSeek 相近，价格略低。MiMo-V2.6-Pro 在 Artificial Analysis 榜单中位列开源模型第一，全系支持图像、音视频等多模态输入。TokenPlan 套餐比按量调用更便宜，夜间另有 0.8 倍消耗优惠。",
+      "summary": "MiMo文本Credits订阅，当前4个LLM，夜间00–08点UTC+8享0.8消耗。",
+      "detail": "V2.5系列10月14日转发、10月21日下线；年池和月池分开理解。",
       "dimensions": {
         "value": {
           "score": 5,
@@ -396,22 +427,24 @@
         },
         "models": {
           "score": 5,
-          "reason": "MiMo-V2.6-Pro 榜单分 46，开源模型第一，超过 DeepSeek、Kimi、Qwen 等开源系；全系支持多模态输入，Coding 能力强。"
+          "reason": "V2.5系列10月14日转发、10月21日下线；年池和月池分开理解。"
         },
         "stability": {
           "score": 5,
           "reason": "官方服务，稳定性强。用户量没那么大，高峰期稳定性好。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "command-code",
       "name": "Command Code",
       "rating": 5,
-      "summary": "$1/月起，按模型实际 Token 价格扣减美元 Credits，模型覆盖广且额度规则透明。",
-      "detail": "当前收录 Go、GOAT 与 Pro 三档个人订阅。额度按模型实际 Token 价格扣减，支持 5 小时、周和月窗口；其中 Go 只能在 Command Code 客户端内使用，实际使用稳定性较弱。",
+      "summary": "Go、GOAT、Pro与两档Max多模型订阅，按实际模型价格与上下文档扣减Credits。",
+      "detail": "不同套餐支持名单独立；上下文阶梯、免费请求限制与地区条件需逐项比较。",
       "dimensions": {
         "value": {
           "score": 5,
@@ -419,25 +452,23 @@
         },
         "models": {
           "score": 5,
-          "reason": "覆盖 Claude、GPT、Gemini、Kimi、GLM、DeepSeek、MiniMax、Qwen 等大量闭源与开源模型，新模型更新较快。"
+          "reason": "不同套餐支持名单独立；上下文阶梯、免费请求限制与地区条件需逐项比较。"
         },
         "stability": {
           "score": 3,
           "reason": "实际价格和可用性可能随上游变化；Go 套餐只能在 Command Code 客户端内使用，稳定性较弱。"
         }
       },
-      "tags": [
-        "性价比高",
-        "模型强",
-        "无需抢购"
-      ],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "baidu-qianfan",
       "name": "百度·千帆",
       "rating": 3,
-      "summary": "Coding Plan 下线，Token Plan 个人版新上线，首月半价活动中。搬家入手勉强还行，但是有其他更好的选择",
+      "summary": "Token计量与积分计量产品并存，统一品牌下按独立计费套餐比较。",
       "dimensions": {
         "value": {
           "score": 3,
@@ -445,15 +476,18 @@
         },
         "models": {
           "score": 5,
-          "reason": "接入 GLM-5.2、DeepSeek-V4、Kimi-K2.6、ERNIE-5.1 等主流模型。"
+          "reason": "Token总量按官方口径；积分制逐模型动态抵扣不能用固定Token量替代。"
         },
         "stability": {
           "score": 4,
           "reason": "百度智能云官方通道，稳定性符合大厂预期。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true,
+      "detail": "Token总量按官方口径；积分制逐模型动态抵扣不能用固定Token量替代。"
     },
     {
       "slug": "baidu-qianfan-coding-legacy",
@@ -461,9 +495,11 @@
       "rating": 3,
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
-      "tags": [],
       "platformStatus": "delisted",
-      "catalogVisible": false
+      "catalogVisible": false,
+      "requiresOverseasNetwork": null,
+      "requiresOverseasPayment": null,
+      "supportsHarnessApi": null
     },
     {
       "slug": "huawei-cloud",
@@ -476,21 +512,25 @@
         },
         "models": {
           "score": 3,
-          "reason": "覆盖 GLM、Kimi、DeepSeek 系列，但模型更新节奏略慢于头部 Coding Plan。"
+          "reason": "仅西南贵阳一，每日限量发售；官方Token总量与请求次数、TPM分开。"
         },
         "stability": {
           "score": 5,
           "reason": "华为云基础设施成熟，企业级稳定性有保障。"
         }
       },
-      "tags": [],
-      "platformStatus": "limited"
+      "platformStatus": "limited",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true,
+      "summary": "华为云个人Token Plan，当前五个LLM，按官方月Token总量。",
+      "detail": "仅西南贵阳一，每日限量发售；官方Token总量与请求次数、TPM分开。"
     },
     {
       "slug": "tencent-cloud",
       "name": "腾讯云",
       "rating": 3,
-      "summary": "中规中矩，如果不是要使用混元模型，不推荐。",
+      "summary": "通用Token Plan与Hy专属产品线分开；模型与套餐抵扣系数需逐项比较。",
       "dimensions": {
         "value": {
           "score": 3,
@@ -498,15 +538,17 @@
         },
         "models": {
           "score": 2,
-          "reason": "HY 系列加 GLM、Kimi、MiniMax 接入，不跟踪最新模型。如使用混元模型，可以选择腾讯平台。"
+          "reason": "当前通用套餐支持Auto及DeepSeek、GLM、Kimi、MiniMax、Hy、MiMo等模型；旧GLM5/5.1已下线。"
         },
         "stability": {
           "score": 5,
           "reason": "腾讯云基础设施成熟，企业级稳定性有保障。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "tencent-cloud-coding-legacy",
@@ -514,17 +556,18 @@
       "rating": 3,
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
-      "tags": [],
       "platformStatus": "delisted",
-      "catalogVisible": false
+      "catalogVisible": false,
+      "requiresOverseasNetwork": null,
+      "requiresOverseasPayment": null,
+      "supportsHarnessApi": null
     },
     {
       "slug": "qoder-cn",
       "name": "Qoder 国内版",
       "rating": 3,
-      "summary": "阿里旗下 AI 编程与办公工具，个人订阅覆盖 Qoder CN 全家桶。",
-      "detail": "个人套餐覆盖 IDE、JetBrains 插件、QoderWork、CLI 和 Mobile；与国际版分别订阅。",
-      "tags": [],
+      "summary": "Qoder国内套餐，当前CLI支持名单与国际版不同。",
+      "detail": "内置型号按官方名单核对，不能把BYOK全目录当套餐支持。",
       "platformStatus": "open",
       "dimensions": {
         "value": {
@@ -533,21 +576,23 @@
         },
         "models": {
           "score": null,
-          "reason": "支持千问、DeepSeek、GLM、Kimi、MiniMax；客户端模型列表可能不同。"
+          "reason": "内置型号按官方名单核对，不能把BYOK全目录当套餐支持。"
         },
         "stability": {
           "score": null,
           "reason": "阿里旗下官方产品；尚未完成本站稳定性实测。"
         }
-      }
+      },
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": false
     },
     {
       "slug": "qoder-intl",
       "name": "Qoder 国际版",
       "rating": 3,
-      "summary": "AI 编程平台，提供 Pro、Pro+、Ultra 个人订阅。",
-      "detail": "支持 Quest、Repo Wiki 等功能，按 Credits 消耗；与国内版价格和订阅分开。",
-      "tags": [],
+      "summary": "Qoder国际套餐，当前支持K3、K2.8、GLM5.3及Qwen3.8等；具体Token额度未知。",
+      "detail": "CLI内置和自定义API模型分开，按真实产品线比较。",
       "platformStatus": "open",
       "dimensions": {
         "value": {
@@ -556,21 +601,23 @@
         },
         "models": {
           "score": null,
-          "reason": "提供自动路由与多厂商模型，支持列表随客户端更新。"
+          "reason": "CLI内置和自定义API模型分开，按真实产品线比较。"
         },
         "stability": {
           "score": null,
           "reason": "官方客户端服务；尚未完成本站稳定性实测。"
         }
-      }
+      },
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": false
     },
     {
       "slug": "workbuddy",
       "name": "WorkBuddy",
       "rating": 3,
-      "summary": "腾讯 AI 办公工作台，与 CodeBuddy 同账号共享订阅积分。",
-      "detail": "覆盖办公任务与编程辅助；无需为 WorkBuddy 和 CodeBuddy 分别购买个人订阅。",
-      "tags": [],
+      "summary": "体验版与三档付费个人订阅，WorkBuddy与CodeBuddy共享积分。",
+      "detail": "当前14个内置LLM；体验版限免全模型，付费档含CLI；老用户保价另列。",
       "platformStatus": "open",
       "dimensions": {
         "value": {
@@ -579,65 +626,72 @@
         },
         "models": {
           "score": null,
-          "reason": "支持混元、GLM、Kimi、MiniMax、DeepSeek，按客户端开放情况使用。"
+          "reason": "当前14个内置LLM；体验版限免全模型，付费档含CLI；老用户保价另列。"
         },
         "stability": {
           "score": null,
           "reason": "腾讯官方产品；尚未完成本站稳定性实测。"
         }
-      }
+      },
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": false
     },
     {
       "slug": "trae-cn",
       "name": "TRAE 国内版",
       "rating": 3,
-      "summary": "字节旗下 AI 编程与办公工具，采用积分制个人订阅。",
-      "detail": "Lite 仅含 TraeWork 专属积分；Pro、Pro+、Ultra 的通用积分可在 TraeCode 与 TraeWork 使用。",
-      "tags": [],
+      "summary": "TRAE国内订阅，以积分计费；当前内置型号已换代，支持范围按档位区分。",
+      "detail": "Seed Evolving仅Pro/Pro+/Ultra及历史Express可用；BYOK不等于内置支持。",
       "platformStatus": "open",
       "dimensions": {
         "value": {
           "score": null,
-          "reason": "¥49 单月起；Lite 仅限 Work，编程用户注意套餐适用范围。"
+          "reason": "Lite/Pro/Pro+/Ultra连续月付45/89/219/629元；模型权限与积分倍率依档位不同，当前Token额度未知。"
         },
         "models": {
           "score": null,
-          "reason": "支持 Seed、GLM、Kimi、MiniMax、Qwen、DeepSeek；不同模式和套餐有差异。"
+          "reason": "Seed Evolving仅Pro/Pro+/Ultra及历史Express可用；BYOK不等于内置支持。"
         },
         "stability": {
           "score": null,
           "reason": "字节官方产品；高峰优先为套餐权益，不代表稳定性实测结果。"
         }
-      }
+      },
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": false
     },
     {
       "slug": "trae-intl",
       "name": "TRAE 国际版",
       "rating": 3,
-      "summary": "提供 TraeCode 与 TraeWork，个人订阅采用美元计价。",
-      "detail": "包含基础使用额度、无限代码补全与 SOLO 模式；与国内版订阅和计费体系分开。",
-      "tags": [],
+      "summary": "Free仅Auto；新Lite/Pro/Pro+/Ultra与老套餐并存，按模型Token价扣减月Usage。",
+      "detail": "新Lite有地区限制，旧档停止新购但按各用户周期迁移；不混用新旧额度。",
       "platformStatus": "open",
       "dimensions": {
         "value": {
           "score": null,
-          "reason": "$3/月起，包含美元基础使用额度；尚未测算 Token 用量。"
+          "reason": "新版月费$8/$20/$60/$200，老连续订阅保价另列；新套餐已按完整模型价估算月Token，免费版具体额度未知。"
         },
         "models": {
           "score": null,
-          "reason": "内置 GPT、Gemini、Seed、Kimi、MiniMax；美国地区不提供 GPT、MiniMax。"
+          "reason": "新Lite有地区限制，旧档停止新购但按各用户周期迁移；不混用新旧额度。"
         },
         "stability": {
           "score": null,
           "reason": "字节官方产品；存在地区限制，尚未完成本站稳定性实测。"
         }
-      }
+      },
+      "requiresOverseasNetwork": true,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": false
     },
     {
       "slug": "github",
       "name": "GitHub",
       "rating": 3,
-      "summary": "GitHub 官方会员，支持多模型，但性价比低，不推荐。",
+      "summary": "Copilot个人方案现按AI Credits计费，新增Max；免费与学生档仅Auto选择。",
       "dimensions": {
         "value": {
           "score": 2,
@@ -645,21 +699,49 @@
         },
         "models": {
           "score": 5,
-          "reason": "聚合 GPT、Claude、Grok、Gemini 等多厂商模型，模型更新及时，涵盖广。"
+          "reason": "用量按模型Token价格与当前基础/Flex积分计算，部分老年付仍有过渡口径。"
         },
         "stability": {
           "score": 5,
           "reason": "GitHub 官方服务，与 IDE 深度集成，稳定性出色。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": true,
+      "requiresOverseasPayment": true,
+      "supportsHarnessApi": false,
+      "detail": "用量按模型Token价格与当前基础/Flex积分计算，部分老年付仍有过渡口径。"
+    },
+    {
+      "slug": "cursor",
+      "name": "Cursor",
+      "rating": 0,
+      "summary": "AI 编程编辑器与 Agent；新 X Subscription 从免费至 $200/月，旧 Pro 系列仅存量保留。",
+      "detail": "新订阅共享 Grok 周额度，Premium 及以上的第三方模型另付费；编辑器、CLI 和 SDK 接入各有边界。",
+      "dimensions": {
+        "value": {
+          "score": null,
+          "reason": "新套餐已公布价格与额度倍率，未公布固定 Token 总量；第三方模型不包含在订阅额度中。"
+        },
+        "models": {
+          "score": null,
+          "reason": "支持 Grok、Claude、GPT、Gemini、Muse Spark；Composer 2.5 的旧套餐模型池单独记录。"
+        },
+        "stability": {
+          "score": null,
+          "reason": "官方编辑器与 Agent 服务；尚未完成本站稳定性实测。"
+        }
+      },
+      "platformStatus": "open",
+      "requiresOverseasNetwork": true,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": null
     },
     {
       "slug": "jd-cloud",
       "name": "京东云",
       "rating": 2,
-      "summary": "已经很久不更新，模型较差",
+      "summary": "京东Coding Plan与新的Credits Token Plan并存，使用独立端点与计费。",
       "dimensions": {
         "value": {
           "score": 3,
@@ -667,43 +749,48 @@
         },
         "models": {
           "score": 2,
-          "reason": "模型更新明显较慢，应该基本没更新过，覆盖 Kimi、GLM、MiniMax、DeepSeek、Qwen 等"
+          "reason": "Coding模型名单与新Token Plan上下文阶梯分别核对。"
         },
         "stability": {
           "score": 4,
           "reason": "京东云官方运营，证据不足，但推测稳定性尚可。"
         }
       },
-      "tags": [],
-      "platformStatus": "limited"
+      "platformStatus": "limited",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true,
+      "detail": "Coding模型名单与新Token Plan上下文阶梯分别核对。"
     },
     {
       "slug": "iflytek",
       "name": "讯飞·星火",
       "rating": 3,
-      "summary": "曾经的高性价比平台，现已陨落。\n仅剩高效版（199元）和速通版（699元）套餐，199元套餐限购且高峰期拥挤，699元套餐性价比低。",
+      "summary": "个人版沿用此前高效版与速通版记录；2026-10-12当前价格和完整支持未能公开核实。",
       "dimensions": {
         "value": {
           "score": 3,
-          "reason": "已下架低价套餐，只剩下高效版（199元）和速通版（699元），199比较有性价比但限购，699元套餐性价比低。"
+          "reason": "个人版199/699元为此前记录，本轮未确认当前完整订购权益；企业Astron成员积分产品另列。"
         },
         "models": {
           "score": 4,
-          "reason": "GLM-5.2(500K上下文)、 DeepSeek-V4-Pro等旗舰模型。"
+          "reason": "保留已知个人版型号关系并移除明确下线型号；完整支持名单本次未确认。"
         },
         "stability": {
           "score": 3,
           "reason": "高效版（199元）拥挤，速通版（699元）套餐高峰期拥挤，整体可用性一般。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "unicom-cloud",
       "name": "联通云",
       "rating": 2,
-      "summary": "Coding Plan已经下线。仅剩TokenPlan，模型差。",
+      "summary": "此前Token Plan资料保留；2026-10-12官方页面无法读取，当前价格、支持和购买状态未重新确认。",
       "dimensions": {
         "value": {
           "score": 3,
@@ -711,15 +798,17 @@
         },
         "models": {
           "score": 1,
-          "reason": "接入 DeepSeek-V4-Flash、MiniMax-M2.5 模型。"
+          "reason": "此前接入DeepSeek V4 Flash与MiniMax M2.5等；本轮无法确认最新名单。"
         },
         "stability": {
           "score": 4,
           "reason": "证据不足。但运营商云品牌，推测稳定性尚可。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "unicom-cloud-coding-legacy",
@@ -727,9 +816,11 @@
       "rating": 2,
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
-      "tags": [],
       "platformStatus": "delisted",
-      "catalogVisible": false
+      "catalogVisible": false,
+      "requiresOverseasNetwork": null,
+      "requiresOverseasPayment": null,
+      "supportsHarnessApi": null
     },
     {
       "slug": "cmcc-cloud",
@@ -742,15 +833,19 @@
         },
         "models": {
           "score": 1,
-          "reason": "目前以 MiniMax-M2.5 为主，旗舰模型覆盖明显不足。"
+          "reason": "首次优惠每账号一次，两档互斥；续费券不是永久自动折扣。"
         },
         "stability": {
           "score": 4,
           "reason": "证据不足。但推测运营商云平台，稳定性应该尚可。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true,
+      "summary": "移动云请求制订阅，当前M2.5；首月与续费券按活动资格区分。",
+      "detail": "首次优惠每账号一次，两档互斥；续费券不是永久自动折扣。"
     },
     {
       "slug": "stepfun",
@@ -763,21 +858,25 @@
         },
         "models": {
           "score": 1,
-          "reason": "step-3.7-flash 等自研模型有特色，但第三方 SOTA 覆盖有限。"
+          "reason": "旧prompt推算不适用当前Credits，精确抵扣未公开；恢复发售时间未知。"
         },
         "stability": {
           "score": 4,
           "reason": "稳定性尚可。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "paused",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true,
+      "summary": "Step Plan现按月Credits，支持Step5 Preview和Flash系列；本次购买按钮售罄。",
+      "detail": "旧prompt推算不适用当前Credits，精确抵扣未公开；恢复发售时间未知。"
     },
     {
       "slug": "taotoken",
       "name": "TaoToken",
       "rating": 3,
-      "summary": "CSDN推出的平台，专注 GLM-5.2，定价合理但当前套餐已售罄。",
+      "summary": "双Flash Coding Plan：GLM5.3 Flash与DeepSeek V4 Flash0731，月付限量抢购。",
       "dimensions": {
         "value": {
           "score": 3,
@@ -785,21 +884,23 @@
         },
         "models": {
           "score": 4,
-          "reason": "专注 GLM-5.2 单一模型，深度够用但广度不足。但怀疑有不同供应商，不排除存在模型性能差异。"
+          "reason": "仅双Flash型号；积分制Token Plan另列，模型广场完整名单不等于套餐全支持。"
         },
         "stability": {
           "score": 2,
           "reason": "新平台，证据不足。且看起来像是中专站，并且怀疑有不同供应商，稳定性存疑。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "limited",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     },
     {
       "slug": "chaosuan",
       "name": "超算",
       "rating": 2,
-      "summary": "已停售，证据不足。",
+      "summary": "旧Coding Plan公开文档仍列两个模型；新Credits Token Plan单独收录。",
       "dimensions": {
         "value": {
           "score": 3,
@@ -807,15 +908,18 @@
         },
         "models": {
           "score": 1,
-          "reason": "仅 MiniMax-M2.5 与 Qwen-3-235B 等少量模型，选择面窄。"
+          "reason": "Coding当前购买状态待确认，不能从新Token Plan文档推断旧套餐恢复销售。"
         },
         "stability": {
           "score": 3,
           "reason": "证据不足"
         }
       },
-      "tags": [],
-      "platformStatus": "paused"
+      "platformStatus": "paused",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true,
+      "detail": "Coding当前购买状态待确认，不能从新Token Plan文档推断旧套餐恢复销售。"
     },
     {
       "slug": "sensetime",
@@ -828,15 +932,19 @@
         },
         "models": {
           "score": 2,
-          "reason": "以 SenseNova 自研系列加 DeepSeek-V4-Flash 为主，编程向模型选择少。"
+          "reason": "付费Lite/Pro尚未开放，特殊模型与精确Token换算待确认。"
         },
         "stability": {
           "score": 3,
           "reason": "商汤官方运营，基础服务稳定但编程社区声量较小。"
         }
       },
-      "tags": [],
-      "platformStatus": "open"
+      "platformStatus": "limited",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true,
+      "summary": "免费公测，SenseNova6.8 Flash Lite与U1 Fast，五小时60000积分。",
+      "detail": "付费Lite/Pro尚未开放，特殊模型与精确Token换算待确认。"
     },
     {
       "slug": "moorethreads",
@@ -845,7 +953,7 @@
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "目前只有免费会员，不定时放量"
+          "reason": "免费试用每账号一次；官方有付费Lite/Pro/Max，京东当前成交价及库存未确认。"
         },
         "models": {
           "score": 1,
@@ -856,8 +964,11 @@
           "reason": "证据不足。"
         }
       },
-      "tags": [],
-      "platformStatus": "limited"
+      "platformStatus": "limited",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true,
+      "summary": "KUAE Coding Plan当前GLM4.7；免费试用30天，付费套餐经官方京东入口销售。"
     },
     {
       "slug": "infrafun",
@@ -866,19 +977,23 @@
       "dimensions": {
         "value": {
           "score": 2,
-          "reason": "全部套餐已停售，性价比数据仅供历史存档。"
+          "reason": "个人服务已停止，不再作为个人在售方案。"
         },
         "models": {
           "score": 2,
-          "reason": "曾聚合 DeepSeek、Kimi、MiniMax、GLM 等，但已无活跃套餐。"
+          "reason": "个人套餐停售，保留历史身份；不将旧权益作为当前可购买方案。"
         },
         "stability": {
           "score": 1,
           "reason": "平台 Coding Plan 已下线，服务不可用。"
         }
       },
-      "tags": [],
-      "platformStatus": "delisted"
+      "platformStatus": "delisted",
+      "requiresOverseasNetwork": null,
+      "requiresOverseasPayment": null,
+      "supportsHarnessApi": true,
+      "summary": "已停止向个人用户提供服务，企业体验按官方联系方式办理。",
+      "detail": "个人套餐停售，保留历史身份；不将旧权益作为当前可购买方案。"
     },
     {
       "slug": "ctyun",
@@ -887,19 +1002,191 @@
       "dimensions": {
         "value": {
           "score": 2,
-          "reason": "套餐已全部停售，仅作历史对比参考，无法新购。"
+          "reason": "旧请求制不可新购；官方另有五档存量Token续订权益，与积分制分开。"
         },
         "models": {
           "score": 2,
-          "reason": "曾支持 GLM-5 系列，但停售后模型接入无更新。"
+          "reason": "新旧计费方式、支持型号与续费条件分开。"
         },
         "stability": {
           "score": 1,
-          "reason": "Coding Plan 已全面下线，存量用户亦无法续费。"
+          "reason": "历史Coding Plan已下线；Token制存量周期内可续订，当前积分制有独立在售产品。"
         }
       },
-      "tags": [],
-      "platformStatus": "delisted"
+      "platformStatus": "delisted",
+      "requiresOverseasNetwork": null,
+      "requiresOverseasPayment": null,
+      "supportsHarnessApi": true,
+      "summary": "历史请求制停售；存量Token制仅周期内可续订，新购Credits产品另列。",
+      "detail": "新旧计费方式、支持型号与续费条件分开。"
+    },
+    {
+      "slug": "tencent-cloud-hy",
+      "name": "腾讯云 · Hy",
+      "rating": 0,
+      "summary": "Hy3、Hy4 preview专属订阅，与通用套餐可并存。",
+      "dimensions": {
+        "value": {
+          "score": null,
+          "reason": "按当前官方套餐价格及额度评估，具体消耗随模型而异"
+        },
+        "models": {
+          "score": null,
+          "reason": "支持范围按当期官方套餐名单维护"
+        },
+        "stability": {
+          "score": null,
+          "reason": "腾讯云基础设施成熟，企业级稳定性有保障。"
+        }
+      },
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
+    },
+    {
+      "slug": "baidu-qianfan-credits",
+      "name": "百度千帆 · 积分制",
+      "rating": 0,
+      "summary": "按模型与Token类型抵扣积分，可与Token制区分选购。",
+      "dimensions": {
+        "value": {
+          "score": null,
+          "reason": "按当前官方套餐价格及额度评估，具体消耗随模型而异"
+        },
+        "models": {
+          "score": null,
+          "reason": "支持范围按当期官方套餐名单维护"
+        },
+        "stability": {
+          "score": null,
+          "reason": "百度智能云官方通道，稳定性符合大厂预期。"
+        }
+      },
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
+    },
+    {
+      "slug": "ctyun-token",
+      "name": "天翼云 · 积分制",
+      "rating": 0,
+      "dimensions": {
+        "value": {
+          "score": null,
+          "reason": "按当前官方套餐价格及额度评估，具体消耗随模型而异"
+        },
+        "models": {
+          "score": null,
+          "reason": "支持范围按当期官方套餐名单维护"
+        },
+        "stability": {
+          "score": null,
+          "reason": "天翼云当前积分制在售；本项目未做独立长期稳定性测量。"
+        }
+      },
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true,
+      "summary": "2026-09-23启用积分制；旧Token制仅周期内用户可续订。"
+    },
+    {
+      "slug": "jd-cloud-token",
+      "name": "京东云 · Token Plan",
+      "rating": 0,
+      "summary": "个人Credits订阅，按模型和输入长度计费，可与Coding Plan同时订阅。",
+      "dimensions": {
+        "value": {
+          "score": null,
+          "reason": "当前四档月费69/199/599/999元，积分与完整Token抵扣价可推算用量；新旧产品有不同端点。"
+        },
+        "models": {
+          "score": null,
+          "reason": "GLM5.1/5.2、Kimi2.6、M3、DeepSeek V4正式/预览版"
+        },
+        "stability": {
+          "score": null,
+          "reason": "京东云官方运营，证据不足，但推测稳定性尚可。"
+        }
+      },
+      "platformStatus": "limited",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
+    },
+    {
+      "slug": "taotoken-token",
+      "name": "淘Token · Token Plan",
+      "rating": 0,
+      "summary": "多模型Credits月订阅，独立/token入口；与双Flash Coding Plan分开抵扣。",
+      "dimensions": {
+        "value": {
+          "score": null,
+          "reason": "证据不足"
+        },
+        "models": {
+          "score": null,
+          "reason": "官方明确列出GLM5.3/Flash及DeepSeek Flash，完整支持表待进一步核对"
+        },
+        "stability": {
+          "score": null,
+          "reason": "新平台，证据不足。且看起来像是中专站，并且怀疑有不同供应商，稳定性存疑。"
+        }
+      },
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
+    },
+    {
+      "slug": "chaosuan-token",
+      "name": "超算 · Token Plan",
+      "rating": 0,
+      "summary": "19个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。",
+      "dimensions": {
+        "value": {
+          "score": null,
+          "reason": "证据不足"
+        },
+        "models": {
+          "score": null,
+          "reason": "当前19个LLM，含DeepSeek-V4.1-Flash、Kimi-K3、GLM-5.3、Qwen3.8及MiniMax。"
+        },
+        "stability": {
+          "score": null,
+          "reason": "证据不足"
+        }
+      },
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
+    },
+    {
+      "slug": "iflytek-token",
+      "name": "讯飞 · Astron Token Plan",
+      "rating": 0,
+      "summary": "面向企业/团队的成员积分订阅；当前活动已结束，按常规月价记录。",
+      "dimensions": {
+        "value": {
+          "score": null,
+          "reason": "常规成员月费200/600/2000元，20k/60k/200k月积分；6–7月限时折扣已结束。"
+        },
+        "models": {
+          "score": null,
+          "reason": "已确认Spark-X2.5、GLM-5.2、Kimi-K2.6等13个LLM；DeepSeek-Pro具体版本待确认。"
+        },
+        "stability": {
+          "score": null,
+          "reason": "讯飞企业/团队成员订阅；不沿用个人版拥挤程度或旧套餐评分。"
+        }
+      },
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true
     }
   ]
 }

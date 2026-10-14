@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<script src="/scripts/ui-core.js?v=57904152bf"></script>
+<script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
+<script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GPT-5.6 Luna 降价 80%、Terra 降价 20%：选 Luna 还是 DeepSeek V4 Flash？</title>
-  <meta name="description" content="本次核心更新：
+<meta name="description" content="本次核心更新：
 * Luna API 标准价降 80%，输入 $0.20 / 输出 $1.20（约 ¥1.4 / ¥8.4，每百万 tokens）
 * Terra API 标准价降 20%，输入 $2.00 / 输出 $12.00（约 ¥14 / ¥84）
 * Sol 标准价不变；新增 Fast mode，最高 2.5" />
-  <link rel="icon" href="../../../favicon.ico?v=20260803" type="image/x-icon" />
-  <link rel="stylesheet" href="../../../styles/shared.css?v=20260803" />
+  <link rel="icon" href="../../../favicon.ico?v=260924a" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=482edb170c" />
   <style>
 
 
@@ -531,21 +535,71 @@
     }
 
   </style>
+<link rel="canonical" href="https://codingplan.fyi/articles/news/20260803_gpt56_price/">
+<script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=7c1640cfed" />
+  <link rel="stylesheet" href="/styles/design-system.css?v=47a0b29cda" />
+<script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
+<link rel="stylesheet" href="/styles/ui-components.css?v=e5133e2fe2">
 </head>
 <body class="article-page">
-  <div class="doc-wrap">
-    <nav class="back-nav" aria-label="返回">
-      <a href="../../../" class="back-home-btn">← 返回主页</a>
-      <a href="../../" class="back-home-btn">文章列表</a>
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/monitor/" hidden data-monitor-nav>可用性监控</a>
+    <a href="/articles/" aria-current="page">文章</a>
+    <a href="/updates/">更新历史</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="doc-wrap">
+    <nav class="guide-breadcrumb article-breadcrumb" aria-label="面包屑">
+      <a href="/">Coding Plan</a><span aria-hidden="true">/</span>
+      <a href="/articles/">文章列表</a><span aria-hidden="true">/</span>
+      <span aria-current="page" title="GPT-5.6 Luna 降价 80%、Terra 降价 20%：选 Luna 还是 DeepSeek V4 Flash？">GPT-5.6 Luna 降价 80%、Terra 降价 20%：选 Luna 还是 DeepSeek V4 Flash？</span>
     </nav>
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="侧栏目录">
-        <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、这次降了多少</a></li><li><a href="#sec-h2-2">二、为什么降价，谁最受益</a></li><li><a href="#sec-h2-3">三、怎么选模型和思考深度</a><ol><li><a href="#sec-h3-3">如果你更关心成本或者额度</a></li><li><a href="#sec-h3-3-2">如果你更关心速度</a></li><li><a href="#sec-h3-3-3">实际用法</a></li></ol></li><li><a href="#sec-h2-4">总结</a></li></ol></nav>
+        <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">本页内容</p><ol><li><a href="#sec-h2-1">一、这次降了多少</a></li><li><a href="#sec-h2-2">二、为什么降价，谁最受益</a></li><li><a href="#sec-h2-3">三、怎么选模型和思考深度</a><ol><li><a href="#sec-h3-3">如果你更关心成本或者额度</a></li><li><a href="#sec-h3-3-2">如果你更关心速度</a></li><li><a href="#sec-h3-3-3">实际用法</a></li></ol></li><li><a href="#sec-h2-4">总结</a></li></ol></nav>
       </aside>
       <article class="doc">
         <p class="doc-kicker">AI 行业快讯</p>
         <h1>GPT-5.6 Luna 降价 80%、Terra 降价 20%：选 Luna 还是 DeepSeek V4 Flash？</h1>
-        <p class="doc-updates"><time datetime="2026-07-30">更新日期 2026.7.30</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
+        <p class="doc-updates"><time datetime="2026-07-30">更新日期 2026.7.30</time> · 数据来源 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
         
         <p class="lead">本次核心更新：
 * Luna API 标准价降 80%，输入 $0.20 / 输出 $1.20（约 ¥1.4 / ¥8.4，每百万 tokens）
@@ -553,7 +607,7 @@
 * Sol 标准价不变；新增 Fast mode，最高 2.5 倍速度，定价为标准模式 2 倍
 * ChatGPT Work / Codex 订阅价与月度额度不变，Terra / Luna 的 credit 消耗同步减少
 * Luna 降价后更适合带工具调用、多步 Agent 的高频工作流</p>
-        <nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、这次降了多少</a></li><li><a href="#sec-h2-2">二、为什么降价，谁最受益</a></li><li><a href="#sec-h2-3">三、怎么选模型和思考深度</a><ol><li><a href="#sec-h3-3">如果你更关心成本或者额度</a></li><li><a href="#sec-h3-3-2">如果你更关心速度</a></li><li><a href="#sec-h3-3-3">实际用法</a></li></ol></li><li><a href="#sec-h2-4">总结</a></li></ol></nav>
+        <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">本页内容</p><ol><li><a href="#sec-h2-1">一、这次降了多少</a></li><li><a href="#sec-h2-2">二、为什么降价，谁最受益</a></li><li><a href="#sec-h2-3">三、怎么选模型和思考深度</a><ol><li><a href="#sec-h3-3">如果你更关心成本或者额度</a></li><li><a href="#sec-h3-3-2">如果你更关心速度</a></li><li><a href="#sec-h3-3-3">实际用法</a></li></ol></li><li><a href="#sec-h2-4">总结</a></li></ol></nav></details>
         <p>2026 年 7 月 30 日，OpenAI 下调了 GPT-5.6 Luna 和 Terra 的 API 价格。Luna 输入/输出降到原来的 20%，Terra 降到原来的 80%；Sol 标准价没有变动，但同日引入了 Fast mode。下文按降幅、受益场景、成本和耗时选型三部分展开。</p>
 <h2 id="sec-h2-1">一、这次降了多少</h2>
 <p>降价前后对比（每百万 tokens，标准模式）：</p>
@@ -660,8 +714,8 @@
 <p>这轮最该盯的是 Luna 降了 80%。价格已经很低，同时还能调工具、跑多步流程。以前算不过账的常驻 Agent 任务，现在可以重新算一遍。</p>
 <p>看成本：Luna 往上用，再看 Terra 高思考深度，最后才是 Sol。看速度：顺序基本反过来，优先更强模型配更浅思考深度。三档各自怎么用，比降价前清楚不少。</p>
 <p>Luna 适合高频、量大、预算敏感的任务；Terra 更像日常主力；Sol 留给更复杂、更贵但也更值的任务。ChatGPT Work / Codex 用户月费没变，Terra / Luna 更省 credit，同样的钱能多跑几轮工作流。</p>
-        <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>
-原文链接 <a href="https://vibecoding.dreamfree.space/articles/news/20260803_gpt56_price/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260803_gpt56_price/</a><br>
+        <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>
+原文链接 <a href="/articles/news/20260803_gpt56_price/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260803_gpt56_price/</a><br>
 ChatGPT <a href="https://api.dreamfree.space/c/s/cpyqchatgpt" rel="noopener noreferrer">https://chatgpt.com/#pricing</a></div>
       </article>
     </div>

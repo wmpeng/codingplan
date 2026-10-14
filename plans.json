@@ -8,10 +8,7 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzai",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
-      "firstMonthPrice": 16.2,
+      "firstMonthPrice": "-",
       "monthlyPrice": 18,
       "quarterlyPrice": 43.2,
       "yearlyPrice": 151.2,
@@ -20,10 +17,7 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
-      "note": "• 中值约 0.65 亿 Token/周（官方区间 0.43～0.87 亿），Quarterly -20%，Yearly -30%",
-      "measuredFiveHoursTokenLimit": 13,
-      "measuredWeeklyTokenLimit": 65,
-      "measuredMonthlyTokenLimit": 260
+      "note": "连续月付$18/$80/$168；季付8折、年付7折，已收录整季/整年金额。旧首购9折本次未确认，不作为当前优惠；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。"
     },
     {
       "slug": "zai-new-pro",
@@ -32,10 +26,7 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzai",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
-      "firstMonthPrice": 72,
+      "firstMonthPrice": "-",
       "monthlyPrice": 80,
       "quarterlyPrice": 192,
       "yearlyPrice": 672,
@@ -44,10 +35,7 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
-      "note": "• 6 倍 Lite 用量，中值约 3.95 亿 Token/周，Quarterly -20%，Yearly -30%",
-      "measuredFiveHoursTokenLimit": 79,
-      "measuredWeeklyTokenLimit": 395,
-      "measuredMonthlyTokenLimit": 1580
+      "note": "连续月付$18/$80/$168；季付8折、年付7折，已收录整季/整年金额。旧首购9折本次未确认，不作为当前优惠；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。"
     },
     {
       "slug": "zai-new-max",
@@ -56,10 +44,7 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzai",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
-      "firstMonthPrice": 151.2,
+      "firstMonthPrice": "-",
       "monthlyPrice": 168,
       "quarterlyPrice": 403.2,
       "yearlyPrice": 1411.2,
@@ -68,10 +53,7 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
-      "note": "• 14 倍 Lite 用量，中值约 9.20 亿 Token/周，Quarterly -20%，Yearly -30%",
-      "measuredFiveHoursTokenLimit": 184,
-      "measuredWeeklyTokenLimit": 920,
-      "measuredMonthlyTokenLimit": 3680
+      "note": "连续月付$18/$80/$168；季付8折、年付7折，已收录整季/整年金额。旧首购9折本次未确认，不作为当前优惠；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。"
     },
     {
       "slug": "zhipu-intl-coding-plan-lite",
@@ -80,9 +62,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzai",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 16.2,
       "monthlyPrice": 18,
       "quarterlyPrice": 48.6,
@@ -107,9 +86,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzai",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 64.8,
       "monthlyPrice": 72,
       "quarterlyPrice": 194.4,
@@ -134,9 +110,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzai",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 144,
       "monthlyPrice": 160,
       "quarterlyPrice": 432,
@@ -158,14 +131,9 @@
       "slug": "zhipu-token-lite",
       "platformSlug": "zhipu",
       "name": "新Lite",
-      "comparisonName": "Lite",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 118,
       "quarterlyPrice": 283.2,
@@ -174,23 +142,15 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "• 中值约 0.65 亿 Token/周（官方区间 0.43～0.87 亿），连续包月 8 折，连续包年 7 折",
-      "measuredFiveHoursTokenLimit": 13,
-      "measuredWeeklyTokenLimit": 65,
-      "measuredMonthlyTokenLimit": 260
+      "note": "连续包月为常规月价；连续包季8折、连续包年7折，已收录对应整季/整年金额，不把折算月价当成月付价。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。"
     },
     {
       "slug": "zhipu-token-pro",
       "platformSlug": "zhipu",
       "name": "新Pro",
-      "comparisonName": "Pro",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 538,
       "quarterlyPrice": 1291.2,
@@ -199,23 +159,15 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "• 6 倍 Lite 用量，中值约 3.95 亿 Token/周，连续包月 8 折，连续包年 7 折",
-      "measuredFiveHoursTokenLimit": 79,
-      "measuredWeeklyTokenLimit": 395,
-      "measuredMonthlyTokenLimit": 1580
+      "note": "连续包月为常规月价；连续包季8折、连续包年7折，已收录对应整季/整年金额，不把折算月价当成月付价。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。"
     },
     {
       "slug": "zhipu-token-max",
       "platformSlug": "zhipu",
       "name": "新Max",
-      "comparisonName": "Max",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 1078,
       "quarterlyPrice": 2587.2,
@@ -224,10 +176,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "• 14 倍 Lite 用量，中值约 9.20 亿 Token/周，连续包月 8 折，连续包年 7 折",
-      "measuredFiveHoursTokenLimit": 184,
-      "measuredWeeklyTokenLimit": 920,
-      "measuredMonthlyTokenLimit": 3680
+      "note": "连续包月为常规月价；连续包季8折、连续包年7折，已收录对应整季/整年金额，不把折算月价当成月付价。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。"
     },
     {
       "slug": "zhipu-coding-plan-lite",
@@ -236,10 +185,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 49,
       "quarterlyPrice": 132.3,
@@ -263,10 +208,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 149,
       "quarterlyPrice": 402.3,
@@ -290,10 +231,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 469,
       "quarterlyPrice": 1266.3,
@@ -313,68 +250,47 @@
     {
       "slug": "minimax-tp-plus",
       "platformSlug": "minimax",
-      "name": "新Plus",
+      "name": "老Token Plan Plus",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
-      "firstMonthPrice": 44.1,
+      "firstMonthPrice": "-",
       "monthlyPrice": 49,
       "quarterlyPrice": "-",
       "yearlyPrice": 490,
-      "fiveHoursRequests": 1500,
-      "weeklyRequests": 15000,
-      "monthlyRequests": 60000,
       "benefits": [],
-      "note": "",
-      "measuredMonthlyTokenLimit": 600
+      "note": "Token Plan已停售；自动续费开启时按原价及权益续费，关闭后不能恢复；2026-10-19起M2.5/M2.7请求路由至M3.1 Flash Preview。旧M3实测不代表新型号额度。",
+      "discontinued": true
     },
     {
       "slug": "minimax-tp-max",
       "platformSlug": "minimax",
-      "name": "新Max",
+      "name": "老Token Plan Max",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
-      "firstMonthPrice": 107.1,
+      "firstMonthPrice": "-",
       "monthlyPrice": 119,
       "quarterlyPrice": "-",
       "yearlyPrice": 1190,
-      "fiveHoursRequests": 4500,
-      "weeklyRequests": 45000,
-      "monthlyRequests": 180000,
       "benefits": [],
-      "note": "",
-      "measuredMonthlyTokenLimit": 1800
+      "note": "Token Plan已停售；自动续费开启时按原价及权益续费，关闭后不能恢复；2026-10-19起M2.5/M2.7请求路由至M3.1 Flash Preview。旧M3实测不代表新型号额度。",
+      "discontinued": true
     },
     {
       "slug": "minimax-tp-ultra",
       "platformSlug": "minimax",
-      "name": "新Ultra",
+      "name": "老Token Plan Ultra",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
-      "firstMonthPrice": 422.1,
+      "firstMonthPrice": "-",
       "monthlyPrice": 469,
       "quarterlyPrice": "-",
       "yearlyPrice": 4690,
-      "fiveHoursRequests": 15000,
-      "weeklyRequests": 150000,
-      "monthlyRequests": 600000,
       "benefits": [],
-      "note": "",
-      "measuredMonthlyTokenLimit": 7100
+      "note": "Token Plan已停售；自动续费开启时按原价及权益续费，关闭后不能恢复；2026-10-19起M2.5/M2.7请求路由至M3.1 Flash Preview。旧M3实测不代表新型号额度。",
+      "discontinued": true
     },
     {
       "slug": "minimax-coding-plan-starter",
@@ -383,10 +299,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 26.1,
       "monthlyPrice": 29,
       "quarterlyPrice": "-",
@@ -408,10 +320,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 44.1,
       "monthlyPrice": 49,
       "quarterlyPrice": "-",
@@ -433,10 +341,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 107.1,
       "monthlyPrice": 119,
       "quarterlyPrice": "-",
@@ -458,10 +362,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 88.2,
       "monthlyPrice": 98,
       "quarterlyPrice": "-",
@@ -483,10 +383,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 179.1,
       "monthlyPrice": 199,
       "quarterlyPrice": "-",
@@ -508,11 +404,7 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqopencode",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
-      "firstMonthPrice": 5,
+      "firstMonthPrice": "-",
       "monthlyPrice": 10,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
@@ -521,8 +413,7 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
-      "note": "• 套餐额度按美元 Credits 计：5 小时 12 美元、周额度 30 美元、月额度 60 美元\n• 各模型另有独立的 5 小时/周/月额度；DeepSeek V4.1 Flash 当前限时 4 倍，官方未公布活动起止日期\n• 排序用月 Token 估算按 GLM-5.2、90% 缓存命中率计算",
-      "measuredMonthlyTokenLimit": 146
+      "note": "各模型月美元额度不同，五小时/周窗口分别为该模型月额度的20%/50%；模型额度不相加。Token 用量按统一工作负载估算，非官方Token上限。"
     },
     {
       "slug": "volcengine-coding-lite",
@@ -531,22 +422,16 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhou",
       "rating": 5,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 9.4,
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
-      "fiveHoursRequests": 1200,
-      "weeklyRequests": 9000,
-      "monthlyRequests": 18000,
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）\n• DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍，GLM-5.2限时4倍用量",
-      "discontinued": false,
-      "measuredFiveHoursTokenLimit": 17,
-      "measuredWeeklyTokenLimit": 125,
-      "measuredMonthlyTokenLimit": 250
+      "note": "2026-06-08至2026-11-08普惠活动，Lite/Pro前两个月分别¥9.9/¥49.9，第三个月恢复¥40/¥200；限量，新购、续费、升配共用两个月资格，首购次日起可买第二个月。2026-05-19至2026-11-19受邀首次订阅可再享9.5折，首月价按叠加优惠约¥9.4/¥47.4展示，以结算金额为准；活动具体时刻及时区未公布。精确调用次数未公开；Token参考沿用带日期历史测量和推测系数。当前模型活动见明细。",
+      "discontinued": false
     },
     {
       "slug": "volcengine-coding-pro",
@@ -555,22 +440,16 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhou",
       "rating": 5,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 47.4,
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
-      "fiveHoursRequests": 6000,
-      "weeklyRequests": 45000,
-      "monthlyRequests": 90000,
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "• 官方6.8-8.8期间2.5折活动（首两个月），可与9.5折邀请活动叠加（5.19-11.19）\n• DeepSeek-V4-Pro、GLM-5.1，Kimi-K2.6限时用量2.5倍，GLM-5.2限时4倍用量",
-      "discontinued": false,
-      "measuredFiveHoursTokenLimit": 83,
-      "measuredWeeklyTokenLimit": 624,
-      "measuredMonthlyTokenLimit": 1249
+      "note": "2026-06-08至2026-11-08普惠活动，Lite/Pro前两个月分别¥9.9/¥49.9，第三个月恢复¥40/¥200；限量，新购、续费、升配共用两个月资格，首购次日起可买第二个月。2026-05-19至2026-11-19受邀首次订阅可再享9.5折，首月价按叠加优惠约¥9.4/¥47.4展示，以结算金额为准；活动具体时刻及时区未公布。精确调用次数未公开；Token参考沿用带日期历史测量和推测系数。当前模型活动见明细。",
+      "discontinued": false
     },
     {
       "slug": "volcengine-agent-small",
@@ -579,19 +458,15 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
-      "firstMonthPrice": 9.9,
+      "firstMonthPrice": "-",
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
-      "fiveHoursRequests": 200,
-      "weeklyRequests": 700,
-      "monthlyRequests": 2000,
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
-      "measuredMonthlyTokenLimit": 22
+      "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠未重新确认，不沿用旧首月价；当前模型活动见关系明细。"
     },
     {
       "slug": "volcengine-agent-medium",
@@ -600,19 +475,15 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
-      "firstMonthPrice": 49.9,
+      "firstMonthPrice": "-",
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
-      "fiveHoursRequests": 1000,
-      "weeklyRequests": 3500,
-      "monthlyRequests": 10000,
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
-      "measuredMonthlyTokenLimit": 111
+      "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠未重新确认，不沿用旧首月价；当前模型活动见关系明细。"
     },
     {
       "slug": "volcengine-agent-large",
@@ -621,19 +492,15 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 500,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
-      "fiveHoursRequests": 2500,
-      "weeklyRequests": 8750,
-      "monthlyRequests": 25000,
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
-      "measuredMonthlyTokenLimit": 278
+      "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠未重新确认，不沿用旧首月价；当前模型活动见关系明细。"
     },
     {
       "slug": "volcengine-agent-max",
@@ -642,30 +509,23 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 1000,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
-      "fiveHoursRequests": 5000,
-      "weeklyRequests": 17500,
-      "monthlyRequests": 50000,
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "• 积分制 AFP 计费，见https://www.volcengine.com/docs/82379/2366394。\n• 按照最优模型9倍系数计算，1AFP=1111Token。\n• 有5小时、周、月的Token限制，没有请求次数限制，表格里按照最优模型，每次请求11KToken计算。",
-      "measuredMonthlyTokenLimit": 556
+      "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠未重新确认，不沿用旧首月价；当前模型活动见关系明细。"
     },
     {
       "slug": "kimi-coding-plan-andante",
       "platformSlug": "kimi",
-      "name": "Andante",
+      "name": "Andante（老套餐）",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqkimi",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 49,
       "quarterlyPrice": "-",
@@ -675,21 +535,19 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "summary": "入门档，Agent 约 4 倍速",
-      "note": "Agent 4 倍速",
+      "note": "新版上线前购买的老套餐可继续使用及续订；保留五小时、周窗口和月总额度。原社区 Token 数仅供老套餐参考。",
       "measuredFiveHoursTokenLimit": 5,
       "measuredWeeklyTokenLimit": 7,
-      "measuredMonthlyTokenLimit": 28
+      "measuredMonthlyTokenLimit": 28,
+      "discontinued": true
     },
     {
       "slug": "kimi-moderato",
       "platformSlug": "kimi",
-      "name": "Moderato",
+      "name": "Moderato（老套餐）",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqkimi",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 99,
       "quarterlyPrice": "-",
@@ -699,22 +557,19 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "summary": "约 4 倍额度，支持 Agent 多任务并行",
-      "note": "4 倍额度, Agent 多任务并行",
+      "note": "新版上线前购买的老套餐可继续使用及续订；保留五小时、周窗口和月总额度。原社区 Token 数仅供老套餐参考。",
       "measuredFiveHoursTokenLimit": 6,
       "measuredWeeklyTokenLimit": 27,
-      "measuredMonthlyTokenLimit": 108
+      "measuredMonthlyTokenLimit": 108,
+      "discontinued": true
     },
     {
       "slug": "kimi-allegretto",
       "platformSlug": "kimi",
-      "name": "Allegretto",
+      "name": "Allegretto（老套餐）",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqkimi",
       "rating": 4,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 199,
       "quarterlyPrice": "-",
@@ -726,22 +581,19 @@
         "免费Kimi-Claw"
       ],
       "summary": "约 20 倍额度，含免费 Kimi-Claw",
-      "note": "20 倍额度",
+      "note": "新版上线前购买的老套餐可继续使用及续订；保留五小时、周窗口和月总额度。原社区 Token 数仅供老套餐参考。",
       "measuredFiveHoursTokenLimit": 27,
       "measuredWeeklyTokenLimit": 135,
-      "measuredMonthlyTokenLimit": 540
+      "measuredMonthlyTokenLimit": 540,
+      "discontinued": true
     },
     {
       "slug": "kimi-allegro",
       "platformSlug": "kimi",
-      "name": "Allegro",
+      "name": "Allegro（老套餐）",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqkimi",
       "rating": 4,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 699,
       "quarterlyPrice": "-",
@@ -753,10 +605,11 @@
         "免费Kimi-Claw"
       ],
       "summary": "约 60 倍额度，含免费 Kimi-Claw",
-      "note": "60 倍额度",
+      "note": "新版上线前购买的老套餐可继续使用及续订；保留五小时、周窗口和月总额度。原社区 Token 数仅供老套餐参考。",
       "measuredFiveHoursTokenLimit": 80,
       "measuredWeeklyTokenLimit": 400,
-      "measuredMonthlyTokenLimit": 1600
+      "measuredMonthlyTokenLimit": 1600,
+      "discontinued": true
     },
     {
       "slug": "youyun-mini",
@@ -765,9 +618,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqyyzs",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 49,
       "quarterlyPrice": "-",
@@ -776,11 +626,8 @@
       "weeklyRequests": 750,
       "monthlyRequests": 1900,
       "benefits": [],
-      "note": "• 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：3 并发\n• 价格较贵，但费率明确，无隐藏倍率",
-      "discontinued": false,
-      "measuredFiveHoursTokenLimit": 10,
-      "measuredWeeklyTokenLimit": 25,
-      "measuredMonthlyTokenLimit": 65
+      "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：3 并发\n• Token量按请求负载估算，非官方Token配额；团队分配购买从Basic起",
+      "discontinued": false
     },
     {
       "slug": "youyun-lite",
@@ -789,9 +636,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqyyzs",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 99,
       "quarterlyPrice": "-",
@@ -800,11 +644,8 @@
       "weeklyRequests": 1500,
       "monthlyRequests": 3800,
       "benefits": [],
-      "note": "• 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：5 并发\n• 价格较贵，但费率明确，无隐藏倍率",
-      "discontinued": false,
-      "measuredFiveHoursTokenLimit": 20,
-      "measuredWeeklyTokenLimit": 50,
-      "measuredMonthlyTokenLimit": 130
+      "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：5 并发\n• Token量按请求负载估算，非官方Token配额；团队分配购买从Basic起",
+      "discontinued": false
     },
     {
       "slug": "youyun-basic",
@@ -813,9 +654,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqyyzs",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 199,
       "quarterlyPrice": "-",
@@ -824,11 +662,8 @@
       "weeklyRequests": 3000,
       "monthlyRequests": 7600,
       "benefits": [],
-      "note": "• 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：10 并发\n• 价格较贵，但费率明确，无隐藏倍率",
-      "discontinued": false,
-      "measuredFiveHoursTokenLimit": 40,
-      "measuredWeeklyTokenLimit": 100,
-      "measuredMonthlyTokenLimit": 260
+      "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：10 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
+      "discontinued": false
     },
     {
       "slug": "youyun-pro",
@@ -837,9 +672,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqyyzs",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 499,
       "quarterlyPrice": "-",
@@ -848,11 +680,8 @@
       "weeklyRequests": 7500,
       "monthlyRequests": 19000,
       "benefits": [],
-      "note": "• 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：10 并发\n• 价格较贵，但费率明确，无隐藏倍率",
-      "discontinued": false,
-      "measuredFiveHoursTokenLimit": 100,
-      "measuredWeeklyTokenLimit": 250,
-      "measuredMonthlyTokenLimit": 650
+      "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：20 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
+      "discontinued": false
     },
     {
       "slug": "youyun-max",
@@ -861,9 +690,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqyyzs",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 799,
       "quarterlyPrice": "-",
@@ -872,11 +698,8 @@
       "weeklyRequests": 12000,
       "monthlyRequests": 31000,
       "benefits": [],
-      "note": "• 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：10 并发\n• 价格较贵，但费率明确，无隐藏倍率",
-      "discontinued": false,
-      "measuredFiveHoursTokenLimit": 160,
-      "measuredWeeklyTokenLimit": 400,
-      "measuredMonthlyTokenLimit": 1040
+      "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：20 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
+      "discontinued": false
     },
     {
       "slug": "youyun-ultra",
@@ -885,9 +708,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqyyzs",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 999,
       "quarterlyPrice": "-",
@@ -896,11 +716,8 @@
       "weeklyRequests": 15000,
       "monthlyRequests": 39000,
       "benefits": [],
-      "note": "• 倍率：DeepSeek-V4-Flash-0731 x1，MiniMax-M2.7 x2，Kimi-K2.6 x5，GLM-5.2 x2（限时），GLM-5.1 x6\n• 限流：10 并发\n• 价格较贵但费率明确，无隐藏倍率",
-      "discontinued": false,
-      "measuredFiveHoursTokenLimit": 200,
-      "measuredWeeklyTokenLimit": 500,
-      "measuredMonthlyTokenLimit": 1300
+      "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：20 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
+      "discontinued": false
     },
     {
       "slug": "codex-plus",
@@ -909,73 +726,52 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 20,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
-      "note": "• 无5h限制，只有周限制",
-      "measuredFiveHoursTokenLimit": 120,
-      "measuredWeeklyTokenLimit": 120,
-      "measuredMonthlyTokenLimit": 480
+      "note": "Plus有五小时及周用量窗口，ChatGPT与Codex共享使用量；消耗随模型、速度档及负载变化，官方没有固定Token配额，旧测量仅供参考。"
     },
     {
       "slug": "codex-pro5",
       "platformSlug": "codex",
-      "name": "Pro *5",
+      "name": "Pro $100",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 100,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
-      "note": "• 无5h限制，只有周限制",
-      "measuredFiveHoursTokenLimit": 600,
-      "measuredWeeklyTokenLimit": 600,
-      "measuredMonthlyTokenLimit": 2400
+      "note": "• 无5h限制，只有周限制\nChatGPT与Codex共享使用量；窗口消耗随模型、速度档及负载变化，官方没有固定Token配额，旧测量仅供参考。"
     },
     {
       "slug": "codex-pro20",
       "platformSlug": "codex",
-      "name": "Pro *20",
+      "name": "Pro $200",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
-      "note": "• 无5h限制，只有周限制",
-      "measuredFiveHoursTokenLimit": 2400,
-      "measuredWeeklyTokenLimit": 2400,
-      "measuredMonthlyTokenLimit": 9600
+      "note": "• 无5h限制，只有周限制\nChatGPT与Codex共享使用量；窗口消耗随模型、速度档及负载变化，官方没有固定Token配额，旧测量仅供参考。"
     },
     {
       "slug": "claude-pro",
@@ -984,9 +780,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqclaudeup",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 20,
       "quarterlyPrice": "-",
@@ -998,10 +791,7 @@
       "benefits": [
         "原生 Claude 体验"
       ],
-      "note": "• 部分用户订阅时可能被要求实名认证\n• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent",
-      "measuredFiveHoursTokenLimit": 23,
-      "measuredWeeklyTokenLimit": 104,
-      "measuredMonthlyTokenLimit": 416
+      "note": "• 部分用户订阅时可能被要求实名认证\n• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent"
     },
     {
       "slug": "claude-max5",
@@ -1010,9 +800,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqclaudeup",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 100,
       "quarterlyPrice": "-",
@@ -1022,12 +809,10 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
-        "原生 Claude 体验"
+        "原生 Claude 体验",
+        "Claude Platform 每月赠送 API Credits：$100（2026-10-07 公告；与订阅额度分开）"
       ],
-      "note": "• 部分用户订阅时可能被要求实名认证\n• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent",
-      "measuredFiveHoursTokenLimit": 115,
-      "measuredWeeklyTokenLimit": 520,
-      "measuredMonthlyTokenLimit": 2080
+      "note": "• 部分用户订阅时可能被要求实名认证\n• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent"
     },
     {
       "slug": "claude-max20",
@@ -1036,9 +821,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqclaudeup",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -1048,12 +830,10 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
-        "原生 Claude 体验"
+        "原生 Claude 体验",
+        "Claude Platform 每月赠送 API Credits：$200（2026-10-07 公告；与订阅额度分开）"
       ],
-      "note": "• 部分用户订阅时可能被要求实名认证\n• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent",
-      "measuredFiveHoursTokenLimit": 460,
-      "measuredWeeklyTokenLimit": 2080,
-      "measuredMonthlyTokenLimit": 8320
+      "note": "• 部分用户订阅时可能被要求实名认证\n• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent"
     },
     {
       "slug": "ollama-coding-plan-pro",
@@ -1062,9 +842,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqollama",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 20,
       "quarterlyPrice": "-",
@@ -1076,10 +853,7 @@
       "benefits": [
         "3 个并发任务"
       ],
-      "note": "• 支持 GLM-5.2、Kimi-K2.6、MiniMax-M3、DeepSeek-V4-Pro，模型丰富\n• 倍率大约x10，用量按照GLM-5.2估计，",
-      "measuredFiveHoursTokenLimit": "-",
-      "measuredWeeklyTokenLimit": 125,
-      "measuredMonthlyTokenLimit": 500
+      "note": "每月包含 $60 模型使用 Credits，按输入/缓存/输出 Token 扣减；无旧会话和周限额，未用额度不结转；可充值继续使用。"
     },
     {
       "slug": "ollama-coding-plan-max",
@@ -1088,9 +862,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqollama",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 100,
       "quarterlyPrice": "-",
@@ -1102,10 +873,7 @@
       "benefits": [
         "10 个并发任务"
       ],
-      "note": "• 暂时停售 • 支持 GLM-5.2、Kimi-K2.6、MiniMax-M3、DeepSeek-V4-Pro，模型丰富\n• 用量按照GLM-5.2估计",
-      "measuredFiveHoursTokenLimit": "-",
-      "measuredWeeklyTokenLimit": 625,
-      "measuredMonthlyTokenLimit": 2500
+      "note": "每月包含 $300 模型使用 Credits，按输入/缓存/输出 Token 扣减；无旧会话和周限额，未用额度不结转；可充值继续使用。"
     },
     {
       "slug": "aliyun-bailian-coding-plan-lite",
@@ -1114,10 +882,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqbailianc",
       "rating": 4,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -1139,11 +903,7 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqbailianc",
       "rating": 4,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
-      "firstMonthPrice": "-",
+      "firstMonthPrice": 39.9,
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
@@ -1151,79 +911,62 @@
       "weeklyRequests": 45000,
       "monthlyRequests": 90000,
       "benefits": [],
-      "note": "开始限量购买了，不确定每天放不放，放多少",
-      "measuredFiveHoursTokenLimit": 200,
-      "measuredWeeklyTokenLimit": 1500,
-      "measuredMonthlyTokenLimit": 3000
+      "note": "新客首次订阅Pro首月¥39.90，续费¥200/月；优惠起止日期及具体时刻未公布。每日09:30:00（UTC+8）限量补充。按实际模型调用次数扣除额度，单次提问可能含多次模型调用；请求配额不等于固定Token总量。"
     },
     {
       "slug": "aliyun-token-personal-lite",
       "platformSlug": "aliyun-bailian",
-      "name": "标准",
-      "comparisonName": "Lite",
-      "comparisonMonthlyPrice": 39,
+      "name": "Lite",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
-      "monthlyPrice": 198,
+      "monthlyPrice": 39,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
       "fiveHoursRequests": "无限制",
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit。合输入¥1.58/MToken，缓存¥0.32/MToken，输出¥9.54/MToken\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%/5000 + 99×90%/25000 + 1/830 = 0.00675 Credit，即 1 Credit≈14.82K Token。表格按15K Token/Credit算",
-      "measuredMonthlyTokenLimit": 375
+      "note": "每订阅月 11,500 Credits；自 2026-09-22 取消周限额。当前 ¥39/月限时优惠，常规 ¥60/月，官方未公布活动起止日期。逐模型精确 Credits 扣减未公开，Token 用量未知。"
     },
     {
       "slug": "aliyun-token-personal-standard",
       "platformSlug": "aliyun-bailian",
-      "name": "高级",
-      "comparisonName": "Standard",
-      "comparisonMonthlyPrice": 139,
+      "name": "Standard",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
-      "monthlyPrice": 698,
+      "monthlyPrice": 139,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
       "fiveHoursRequests": "无限制",
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
-      "benefits": [],
-      "note": "• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit。合输入¥1.40/MToken，缓存¥0.28/MToken，输出¥8.41/MToken\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%/5000 + 99×90%/25000 + 1/830 = 0.00675 Credit，即 1 Credit≈14.82K Token。表格按15K Token/Credit算",
-      "measuredMonthlyTokenLimit": 1500
+      "benefits": [
+        "AgentStudio Harness 权益独立于 Credits"
+      ],
+      "note": "每订阅月 45,000 Credits；自 2026-09-22 取消周限额。当前 ¥139/月限时优惠，常规 ¥180/月，官方未公布活动起止日期。逐模型精确 Credits 扣减未公开，Token 用量未知。"
     },
     {
       "slug": "aliyun-token-personal-pro",
       "platformSlug": "aliyun-bailian",
-      "name": "尊享",
-      "comparisonName": "Pro",
-      "comparisonMonthlyPrice": 499,
+      "name": "Pro",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
-      "monthlyPrice": 1398,
+      "monthlyPrice": 499,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
       "fiveHoursRequests": "无限制",
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
-      "benefits": [],
-      "note": "• Qwen-3.6-Plus，输入5K Token/Credit，输入命中25K Token/Credit，输出0.83K Token/Credit。合输入¥1.12/MToken，缓存¥0.22/MToken，输出¥6.74/MToken\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%/5000 + 99×90%/25000 + 1/830 = 0.00675 Credit，即 1 Credit≈14.82K Token。表格按15K Token/Credit算",
-      "measuredMonthlyTokenLimit": 3750
+      "benefits": [
+        "AgentStudio Harness 权益独立于 Credits"
+      ],
+      "note": "每订阅月 180,000 Credits；自 2026-09-22 取消周限额。当前 ¥499/月限时优惠，常规 ¥600/月，官方未公布活动起止日期。逐模型精确 Credits 扣减未公开，Token 用量未知。"
     },
     {
       "slug": "mimo-lite",
@@ -1232,9 +975,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqmimo",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 34.32,
       "monthlyPrice": 39,
       "quarterlyPrice": "-",
@@ -1243,10 +983,9 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [
-        "TTS限时免费"
+        "TTS限时免费，活动起止日期未公布"
       ],
-      "note": "• 4.1B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.6-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.6-Pro 口径算，MiMo-V2.6-Flash 与 MiMo-V2.5 实际更高",
-      "measuredMonthlyTokenLimit": 108
+      "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。首购88折每账号一次，活动起止日期未公布；年付价格含88折，全年池不等于单月可用量。V2.5系列10月14日18:00转发至V2.6、10月21日10:00原模型名失效，均为UTC+8。Token按统一负载与官方系数推算，非实测。"
     },
     {
       "slug": "mimo-standard",
@@ -1255,9 +994,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqmimo",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 87.12,
       "monthlyPrice": 99,
       "quarterlyPrice": "-",
@@ -1266,10 +1002,9 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [
-        "TTS限时免费"
+        "TTS限时免费，活动起止日期未公布"
       ],
-      "note": "• 11B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.6-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.6-Pro 口径算，MiMo-V2.6-Flash 与 MiMo-V2.5 实际更高",
-      "measuredMonthlyTokenLimit": 290
+      "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。首购88折每账号一次，活动起止日期未公布；年付价格含88折，全年池不等于单月可用量。V2.5系列10月14日18:00转发至V2.6、10月21日10:00原模型名失效，均为UTC+8。Token按统一负载与官方系数推算，非实测。"
     },
     {
       "slug": "mimo-pro",
@@ -1278,9 +1013,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqmimo",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 289.52,
       "monthlyPrice": 329,
       "quarterlyPrice": "-",
@@ -1289,10 +1021,9 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [
-        "TTS限时免费"
+        "TTS限时免费，活动起止日期未公布"
       ],
-      "note": "• 38B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.6-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.6-Pro 口径算，MiMo-V2.6-Flash 与 MiMo-V2.5 实际更高",
-      "measuredMonthlyTokenLimit": 1002
+      "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。首购88折每账号一次，活动起止日期未公布；年付价格含88折，全年池不等于单月可用量。V2.5系列10月14日18:00转发至V2.6、10月21日10:00原模型名失效，均为UTC+8。Token按统一负载与官方系数推算，非实测。"
     },
     {
       "slug": "mimo-max",
@@ -1301,9 +1032,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqmimo",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": 579.92,
       "monthlyPrice": 659,
       "quarterlyPrice": "-",
@@ -1312,21 +1040,18 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [
-        "TTS限时免费"
+        "TTS限时免费，活动起止日期未公布"
       ],
-      "note": "• 82B Credits，无5小时限额，支持集中消耗\n• MiMo-V2.6-Pro：缓存 2.5 Credits/Token，输入 300 Credits/Token，输出 600 Credits/Token\n• 按缓存命中率90%、输入输出99:1算：100 Token 约消耗 99×10%×300 + 99×90%×2.5 + 1×600 = 3792.75 Credits，即 1B Credits≈26.37M Token。表格按 MiMo-V2.6-Pro 口径算，MiMo-V2.6-Flash 与 MiMo-V2.5 实际更高",
-      "measuredMonthlyTokenLimit": 2162
+      "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。首购88折每账号一次，活动起止日期未公布；年付价格含88折，全年池不等于单月可用量。V2.5系列10月14日18:00转发至V2.6、10月21日10:00原模型名失效，均为UTC+8。Token按统一负载与官方系数推算，非实测。"
     },
     {
       "slug": "commandcode-go",
+      "supportsHarnessApi": false,
       "platformSlug": "command-code",
       "name": "Go",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpcommandcode",
       "rating": 5,
-      "tags": [
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 1,
       "quarterlyPrice": "-",
@@ -1337,10 +1062,11 @@
       "currency": "$",
       "benefits": [
         "每月 $10 模型 Credits",
-        "5 小时 / 周额度为 $3 / $6",
-        "支持开源模型及部分闭源模型"
+        "5 小时 / 周额度为 $2 / $5",
+        "支持开源模型及部分闭源模型",
+        "支持 53 个模型"
       ],
-      "note": "按模型实际 Token 价格扣减 Credits；只能在 Command Code 客户端内使用，目前稳定性较弱。"
+      "note": "各模型月额度共享套餐池，不能相加；DeepSeek V4.1 Flash额度加成无结束日期。集中价格页短窗口$2/$5，Go专页仍写$3/$6，官方页面存在冲突。仅可在Command Code客户端使用。"
     },
     {
       "slug": "commandcode-goat",
@@ -1349,10 +1075,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpcommandcode",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 10,
       "quarterlyPrice": "-",
@@ -1364,9 +1086,9 @@
       "benefits": [
         "最高每月 $70 模型 Credits",
         "5 小时 / 周额度为 $14 / $35",
-        "支持 48 个模型"
+        "支持 60 个模型"
       ],
-      "note": "不同模型拥有独立月额度，范围为 $20–$70；所有额度共享套餐池。"
+      "note": "各模型月额度共享套餐池，不能相加；DeepSeek V4.1 Flash额度加成无结束日期。支持Provider API与客户端共用额度。"
     },
     {
       "slug": "commandcode-pro",
@@ -1375,9 +1097,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpcommandcode",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 20,
       "quarterlyPrice": "-",
@@ -1389,9 +1108,9 @@
       "benefits": [
         "最高每月 $80 模型 Credits",
         "5 小时 / 周额度为 $16 / $40",
-        "支持 61 个模型"
+        "支持 74 个模型"
       ],
-      "note": "不同模型拥有独立月额度，范围为 $20–$80；所有额度共享套餐池。"
+      "note": "各模型月额度共享套餐池，不能相加；DeepSeek V4.1 Flash额度加成无结束日期。支持Provider API与客户端共用额度。"
     },
     {
       "slug": "baidu-qianfan-coding-plan-lite",
@@ -1400,7 +1119,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -1419,7 +1137,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -1438,7 +1155,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 4.9,
       "monthlyPrice": 9.9,
       "quarterlyPrice": "-",
@@ -1447,8 +1163,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 限时首购 5 折（每日限量）\n• 1000 万 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
-      "measuredMonthlyTokenLimit": 10
+      "note": "Token制，输入/输出/缓存统一1:1抵扣；首购5折活动起止日期未公布。"
     },
     {
       "slug": "baidu-qianfan-token-plan-lite",
@@ -1457,7 +1172,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 19.9,
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -1466,8 +1180,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 限时首购 5 折（每日限量）\n• 4200 万 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
-      "measuredMonthlyTokenLimit": 42
+      "note": "Token制，输入/输出/缓存统一1:1抵扣；首购5折活动起止日期未公布。"
     },
     {
       "slug": "baidu-qianfan-token-plan-pro",
@@ -1476,7 +1189,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 99.9,
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -1485,8 +1197,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 限时首购 5 折（每日限量）\n• 2.3 亿 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
-      "measuredMonthlyTokenLimit": 230
+      "note": "Token制，输入/输出/缓存统一1:1抵扣；首购5折活动起止日期未公布。"
     },
     {
       "slug": "baidu-qianfan-token-plan-max",
@@ -1495,7 +1206,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 299.9,
       "monthlyPrice": 600,
       "quarterlyPrice": "-",
@@ -1504,8 +1214,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 限时首购 5 折（每日限量）\n• 7 亿 Token 额度，统一抵扣不区分模型倍率与输入/输出\n",
-      "measuredMonthlyTokenLimit": 700
+      "note": "Token制，输入/输出/缓存统一1:1抵扣；首购5折活动起止日期未公布。"
     },
     {
       "slug": "huawei-cloud-token-plan-lite",
@@ -1514,7 +1223,6 @@
       "billingMode": "subscription",
       "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 59,
       "quarterlyPrice": "-",
@@ -1523,8 +1231,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止",
-      "measuredMonthlyTokenLimit": 50
+      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。"
     },
     {
       "slug": "huawei-cloud-token-plan-standard",
@@ -1533,7 +1240,6 @@
       "billingMode": "subscription",
       "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 149,
       "quarterlyPrice": "-",
@@ -1542,8 +1248,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n• 页面标\"最受欢迎\"档",
-      "measuredMonthlyTokenLimit": 130
+      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n• 页面标\"最受欢迎\"档\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。"
     },
     {
       "slug": "huawei-cloud-token-plan-pro",
@@ -1552,7 +1257,6 @@
       "billingMode": "subscription",
       "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 399,
       "quarterlyPrice": "-",
@@ -1561,8 +1265,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止",
-      "measuredMonthlyTokenLimit": 380
+      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。"
     },
     {
       "slug": "huawei-cloud-token-plan-max",
@@ -1571,7 +1274,6 @@
       "billingMode": "subscription",
       "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 799,
       "quarterlyPrice": "-",
@@ -1580,8 +1282,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止",
-      "measuredMonthlyTokenLimit": 880
+      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。"
     },
     {
       "slug": "tencent-cloud-coding-plan-lite",
@@ -1590,9 +1291,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqtengxunc",
       "rating": 3,
-      "tags": [
-        "性价比高"
-      ],
       "firstMonthPrice": 7.9,
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -1611,9 +1309,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqtengxunc",
       "rating": 3,
-      "tags": [
-        "性价比高"
-      ],
       "firstMonthPrice": 39.9,
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -1632,9 +1327,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
       "rating": 2,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 39,
       "quarterlyPrice": "-",
@@ -1642,9 +1334,11 @@
       "fiveHoursRequests": "无限制",
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
-      "benefits": [],
-      "note": "注意此为TokenPlan，而非CodingPlan。35M(3500万) Tokens 额度，约 70 轮问答",
-      "measuredMonthlyTokenLimit": 35
+      "benefits": [
+        "780积分/订阅月",
+        "当前13个模型/路由（含Auto）"
+      ],
+      "note": "通用Token Plan，月额度按积分抵扣；GLM5/5.1已于2026-10-09下线。"
     },
     {
       "slug": "tencent-cloud-token-plan-standard",
@@ -1653,9 +1347,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
       "rating": 2,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 99,
       "quarterlyPrice": "-",
@@ -1663,9 +1354,11 @@
       "fiveHoursRequests": "无限制",
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
-      "benefits": [],
-      "note": "注意此为TokenPlan，而非CodingPlan。100M(1亿) Tokens 额度，可执行约 200 轮问答",
-      "measuredMonthlyTokenLimit": 100
+      "benefits": [
+        "1980积分/订阅月",
+        "当前13个模型/路由（含Auto）"
+      ],
+      "note": "通用Token Plan，月额度按积分抵扣；GLM5/5.1已于2026-10-09下线。"
     },
     {
       "slug": "tencent-cloud-token-plan-pro",
@@ -1674,9 +1367,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
       "rating": 2,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 299,
       "quarterlyPrice": "-",
@@ -1684,9 +1374,11 @@
       "fiveHoursRequests": "无限制",
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
-      "benefits": [],
-      "note": "注意此为TokenPlan，而非CodingPlan。320M(3.2亿) Tokens 额度",
-      "measuredMonthlyTokenLimit": 320
+      "benefits": [
+        "5980积分/订阅月",
+        "当前13个模型/路由（含Auto）"
+      ],
+      "note": "通用Token Plan，月额度按积分抵扣；GLM5/5.1已于2026-10-09下线。"
     },
     {
       "slug": "tencent-cloud-token-plan-max",
@@ -1695,9 +1387,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
       "rating": 2,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 599,
       "quarterlyPrice": "-",
@@ -1705,9 +1394,11 @@
       "fiveHoursRequests": "无限制",
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
-      "benefits": [],
-      "note": "注意此为TokenPlan，而非CodingPlan。650M(6.5亿) Tokens 额度",
-      "measuredMonthlyTokenLimit": 650
+      "benefits": [
+        "11980积分/订阅月",
+        "当前13个模型/路由（含Auto）"
+      ],
+      "note": "通用Token Plan，月额度按积分抵扣；GLM5/5.1已于2026-10-09下线。"
     },
     {
       "slug": "qoder-cn-pro",
@@ -1716,14 +1407,13 @@
       "billingMode": "subscription",
       "action": "https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 59,
       "currency": "¥",
       "benefits": [
         "2,000 Credits/月",
         "覆盖 Qoder CN 全家桶"
       ],
-      "note": "Credits 不等于 Token；用量尚未确认。年付为月付总价的 9 折。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次付费 Pro 加赠 2000 Credits；续费、升级或过期重开加赠 1000 Credits。加赠仅限 Qwen，会员卡不适用；到账后 30 天有效。",
+      "note": "Credits 不等于 Token；用量尚未确认。年付为月付总价的 9 折。 2026-09-01至09-30月付优惠已结束，不计入当前首购价格。",
       "yearlyPrice": 637.2,
       "summary": "2,000 Credits/月；覆盖 Qoder CN 全家桶",
       "monthlyRequests": "未公开",
@@ -1738,14 +1428,13 @@
       "billingMode": "subscription",
       "action": "https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 169,
       "currency": "¥",
       "benefits": [
         "6,000 Credits/月",
         "覆盖 Qoder CN 全家桶"
       ],
-      "note": "Credits 不等于 Token；用量尚未确认。年付为月付总价的 9 折。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次付费 Pro+ 加赠 6000 Credits；续费、升级或过期重开加赠 1000 Credits。加赠仅限 Qwen，会员卡不适用；到账后 30 天有效。",
+      "note": "Credits 不等于 Token；用量尚未确认。年付为月付总价的 9 折。 2026-09-01至09-30月付优惠已结束，不计入当前首购价格。",
       "yearlyPrice": 1825.2,
       "summary": "6,000 Credits/月；覆盖 Qoder CN 全家桶",
       "monthlyRequests": "未公开",
@@ -1760,14 +1449,13 @@
       "billingMode": "subscription",
       "action": "https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 559,
       "currency": "¥",
       "benefits": [
         "20,000 Credits/月",
         "覆盖 Qoder CN 全家桶"
       ],
-      "note": "Credits 不等于 Token；用量尚未确认。年付为月付总价的 9 折。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次开通 Ultra 不享等额加赠；续费、升级或过期重开加赠 1000 Credits。加赠仅限 Qwen，会员卡不适用；到账后 30 天有效。",
+      "note": "Credits 不等于 Token；用量尚未确认。年付为月付总价的 9 折。 2026-09-01至09-30月付优惠已结束，不计入当前首购价格。",
       "yearlyPrice": 6037.2,
       "summary": "20,000 Credits/月；覆盖 Qoder CN 全家桶",
       "monthlyRequests": "未公开",
@@ -1782,14 +1470,13 @@
       "billingMode": "subscription",
       "action": "https://qoder.com/pricing",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 20,
       "currency": "$",
       "benefits": [
         "2,000 Credits/月",
         "Quest、Repo Wiki、知识卡片"
       ],
-      "note": "Credits 在当前订阅周期内有效，到期清零；耗尽后可使用受限基础模型或购买加量包。价格未含适用税费；Token 用量尚未确认。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次付费 Pro 加赠 2000 Credits；续费、升级或过期重开加赠 1000 Credits。加赠为通用 Credits；到账后 30 天有效。",
+      "note": "Credits 在当前订阅周期内有效，到期清零；耗尽后可使用受限基础模型或购买加量包。价格未含适用税费；Token 用量尚未确认。 2026-09-01至09-30月付优惠已结束，不计入当前首购价格。",
       "summary": "2,000 Credits/月；Quest、Repo Wiki、知识卡片",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -1804,14 +1491,13 @@
       "billingMode": "subscription",
       "action": "https://qoder.com/pricing",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 60,
       "currency": "$",
       "benefits": [
         "6,000 Credits/月",
         "Quest、Repo Wiki、知识卡片"
       ],
-      "note": "Credits 在当前订阅周期内有效，到期清零；耗尽后可使用受限基础模型或购买加量包。价格未含适用税费；Token 用量尚未确认。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次付费 Pro+ 加赠 6000 Credits；续费、升级或过期重开加赠 1000 Credits。加赠为通用 Credits；到账后 30 天有效。",
+      "note": "Credits 在当前订阅周期内有效，到期清零；耗尽后可使用受限基础模型或购买加量包。价格未含适用税费；Token 用量尚未确认。 2026-09-01至09-30月付优惠已结束，不计入当前首购价格。",
       "summary": "6,000 Credits/月；Quest、Repo Wiki、知识卡片",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -1826,14 +1512,13 @@
       "billingMode": "subscription",
       "action": "https://qoder.com/pricing",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 200,
       "currency": "$",
       "benefits": [
         "20,000 Credits/月",
         "Quest、Repo Wiki、知识卡片"
       ],
-      "note": "Credits 在当前订阅周期内有效，到期清零；耗尽后可使用受限基础模型或购买加量包。价格未含适用税费；Token 用量尚未确认。 2026-09-01 10:00 至 2026-09-30 24:00（UTC+8）个人月付活动：首次开通 Ultra 不享等额加赠；续费、升级或过期重开加赠 1000 Credits。加赠为通用 Credits；到账后 30 天有效。",
+      "note": "Credits 在当前订阅周期内有效，到期清零；耗尽后可使用受限基础模型或购买加量包。价格未含适用税费；Token 用量尚未确认。 2026-09-01至09-30月付优惠已结束，不计入当前首购价格。",
       "summary": "20,000 Credits/月；Quest、Repo Wiki、知识卡片",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -1848,17 +1533,16 @@
       "billingMode": "subscription",
       "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 70,
       "currency": "¥",
       "benefits": [
-        "2000 基础积分/月",
-        "WorkBuddy / CodeBuddy 积分共享",
-        "全模型可选、无限代码补全"
+        "4000积分/月（含加赠，起止日期未公布）",
+        "全模型可选",
+        "CLI访问支持"
       ],
-      "note": "单次购买 ¥99/期。普通年付 ¥840/年。连续包月 ¥70/月；连续包年 ¥672/年。当前加赠后共 4000 积分/月，官方未公布个人版加赠活动起止日期；赠送积分到账后 1 个月有效。Token 用量尚未确认。",
+      "note": "连续包月7折，单次月付99元；当前加赠积分活动起止日期未公布，常规2000积分/月，活动实得4000积分/月。",
       "yearlyPrice": 672,
-      "summary": "2000 基础积分/月；WorkBuddy / CodeBuddy 积分共享；全模型可选、无限代码补全",
+      "summary": "WorkBuddy / CodeBuddy积分共享；当前赠送额度已计入，活动起止日期未公布",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -1872,17 +1556,16 @@
       "billingMode": "subscription",
       "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 140,
       "currency": "¥",
       "benefits": [
-        "4000 基础积分/月",
-        "WorkBuddy / CodeBuddy 积分共享",
-        "全模型可选、无限代码补全"
+        "9000积分/月（含加赠，起止日期未公布）",
+        "全模型可选",
+        "CLI访问支持"
       ],
-      "note": "单次购买 ¥199/期。普通年付 ¥1680/年。连续包月 ¥140/月；连续包年 ¥1344/年。当前加赠后共 9000 积分/月，官方未公布个人版加赠活动起止日期；赠送积分到账后 1 个月有效。Token 用量尚未确认。",
+      "note": "连续包月7折，单次月付199元；当前加赠积分活动起止日期未公布，常规4000积分/月，活动实得9000积分/月。",
       "yearlyPrice": 1344,
-      "summary": "4000 基础积分/月；WorkBuddy / CodeBuddy 积分共享；全模型可选、无限代码补全",
+      "summary": "WorkBuddy / CodeBuddy积分共享；当前赠送额度已计入，活动起止日期未公布",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -1896,17 +1579,16 @@
       "billingMode": "subscription",
       "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 700,
       "currency": "¥",
       "benefits": [
-        "20000 基础积分/月",
-        "WorkBuddy / CodeBuddy 积分共享",
-        "全模型可选、无限代码补全"
+        "50000积分/月（含加赠，起止日期未公布）",
+        "全模型可选",
+        "CLI访问支持"
       ],
-      "note": "单次购买 ¥999/期。普通年付 ¥8400/年。连续包月 ¥700/月；连续包年 ¥6720/年。当前加赠后共 50000 积分/月，官方未公布个人版加赠活动起止日期；赠送积分到账后 1 个月有效。Token 用量尚未确认。",
+      "note": "连续包月7折，单次月付999元；当前加赠积分活动起止日期未公布，常规20000积分/月，活动实得50000积分/月。",
       "yearlyPrice": 6720,
-      "summary": "20000 基础积分/月；WorkBuddy / CodeBuddy 积分共享；全模型可选、无限代码补全",
+      "summary": "WorkBuddy / CodeBuddy积分共享；当前赠送额度已计入，活动起止日期未公布",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -1920,7 +1602,6 @@
       "billingMode": "subscription",
       "action": "https://www.trae.cn",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 45,
       "currency": "¥",
       "benefits": [
@@ -1928,7 +1609,7 @@
         "仅适用于 TraeWork",
         "云端任务最多 2 个并行"
       ],
-      "note": "单次购买 ¥49/期。套餐有效期为 31 个自然日。连续包月 ¥45/周期。付费新用户连续包月首期 ¥29.9，第二期恢复 ¥45；官方未公布该首期优惠活动起止日期。登录、签到等奖励不计入基础套餐积分。Token 用量尚未确认。",
+      "note": "连续包月价格；模型按积分扣减，具体Token用量未公开。Seed Evolving仅Pro/Pro+/Ultra和历史Express可用。首月价格限新用户；优惠起止日期、具体时刻及截止时区未公布，续费按常规连续包月价。",
       "summary": "2000 Work 专属积分/周期；仅适用于 TraeWork；云端任务最多 2 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -1944,7 +1625,6 @@
       "billingMode": "subscription",
       "action": "https://www.trae.cn",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 89,
       "currency": "¥",
       "benefits": [
@@ -1952,7 +1632,7 @@
         "适用于 TraeCode 与 TraeWork",
         "云端任务最多 10 个并行"
       ],
-      "note": "单次购买 ¥99/期。套餐有效期为 31 个自然日。连续包月 ¥89/周期。付费新用户连续包月首期 ¥69，第二期恢复 ¥89；官方未公布该首期优惠活动起止日期。登录、签到等奖励不计入基础套餐积分。Token 用量尚未确认。",
+      "note": "连续包月价格；模型按积分扣减，具体Token用量未公开。Seed Evolving仅Pro/Pro+/Ultra和历史Express可用。首月价格限新用户；优惠起止日期、具体时刻及截止时区未公布，续费按常规连续包月价。",
       "summary": "4000 通用积分/周期；适用于 TraeCode 与 TraeWork；云端任务最多 10 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -1968,7 +1648,6 @@
       "billingMode": "subscription",
       "action": "https://www.trae.cn",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 219,
       "currency": "¥",
       "benefits": [
@@ -1976,7 +1655,7 @@
         "适用于 TraeCode 与 TraeWork",
         "云端任务最多 10 个并行"
       ],
-      "note": "单次购买 ¥239/期。套餐有效期为 31 个自然日。连续包月 ¥219/周期。登录、签到等奖励不计入基础套餐积分。Token 用量尚未确认。",
+      "note": "连续包月价格；模型按积分扣减，具体Token用量未公开。Seed Evolving仅Pro/Pro+/Ultra和历史Express可用。",
       "summary": "12000 通用积分/周期；适用于 TraeCode 与 TraeWork；云端任务最多 10 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -1992,7 +1671,6 @@
       "billingMode": "subscription",
       "action": "https://www.trae.cn",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 629,
       "currency": "¥",
       "benefits": [
@@ -2000,7 +1678,7 @@
         "适用于 TraeCode 与 TraeWork",
         "云端任务最多 20 个并行"
       ],
-      "note": "单次购买 ¥699/期。套餐有效期为 31 个自然日。连续包月 ¥629/周期。登录、签到等奖励不计入基础套餐积分。Token 用量尚未确认。",
+      "note": "连续包月价格；模型按积分扣减，具体Token用量未公开。Seed Evolving仅Pro/Pro+/Ultra和历史Express可用。",
       "summary": "40000 通用积分/周期；适用于 TraeCode 与 TraeWork；云端任务最多 20 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -2012,11 +1690,10 @@
     {
       "slug": "trae-intl-lite",
       "platformSlug": "trae-intl",
-      "name": "Lite",
+      "name": "Lite（老套餐）",
       "billingMode": "subscription",
       "action": "https://www.trae.ai/pricing",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 3,
       "currency": "$",
       "benefits": [
@@ -2024,22 +1701,22 @@
         "无限代码补全、TraeCode SOLO",
         "TraeWork 云端任务最多 2 个并行"
       ],
-      "note": "基础使用额度不是固定 Token 数。Token 用量尚未确认。",
+      "note": "旧价仅符合连续订阅保价的老用户适用；新版权益按通知、主动升级或续费日迁移，当前存量未升级权益保持到期。新版不能按此价格新购。",
       "summary": "$5 基础使用额度/月；无限代码补全、TraeCode SOLO；TraeWork 云端任务最多 2 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
-      "yearlyPrice": "未公开"
+      "yearlyPrice": "未公开",
+      "discontinued": true
     },
     {
       "slug": "trae-intl-pro",
       "platformSlug": "trae-intl",
-      "name": "Pro",
+      "name": "Pro（老套餐）",
       "billingMode": "subscription",
       "action": "https://www.trae.ai/pricing",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 10,
       "currency": "$",
       "benefits": [
@@ -2047,22 +1724,22 @@
         "无限代码补全、TraeCode SOLO",
         "TraeWork 云端任务最多 10 个并行"
       ],
-      "note": "基础使用额度不是固定 Token 数。新用户限时可试用 7 天，之后 $10/月；官方未公布试用活动起止日期。Token 用量尚未确认。",
+      "note": "旧价仅符合连续订阅保价的老用户适用；新版权益按通知、主动升级或续费日迁移，当前存量未升级权益保持到期。新版不能按此价格新购。",
       "summary": "$20 基础使用额度/月；无限代码补全、TraeCode SOLO；TraeWork 云端任务最多 10 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
-      "yearlyPrice": "未公开"
+      "yearlyPrice": "未公开",
+      "discontinued": true
     },
     {
       "slug": "trae-intl-pro-plus",
       "platformSlug": "trae-intl",
-      "name": "Pro+",
+      "name": "Pro+（老套餐）",
       "billingMode": "subscription",
       "action": "https://www.trae.ai/pricing",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 30,
       "currency": "$",
       "benefits": [
@@ -2070,22 +1747,22 @@
         "无限代码补全、TraeCode SOLO",
         "TraeWork 云端任务最多 15 个并行"
       ],
-      "note": "基础使用额度不是固定 Token 数。Token 用量尚未确认。",
+      "note": "旧价仅符合连续订阅保价的老用户适用；新版权益按通知、主动升级或续费日迁移，当前存量未升级权益保持到期。新版不能按此价格新购。",
       "summary": "$90 基础使用额度/月；无限代码补全、TraeCode SOLO；TraeWork 云端任务最多 15 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
-      "yearlyPrice": "未公开"
+      "yearlyPrice": "未公开",
+      "discontinued": true
     },
     {
       "slug": "trae-intl-ultra",
       "platformSlug": "trae-intl",
-      "name": "Ultra",
+      "name": "Ultra（老套餐）",
       "billingMode": "subscription",
       "action": "https://www.trae.ai/pricing",
       "rating": 3,
-      "tags": [],
       "monthlyPrice": 100,
       "currency": "$",
       "benefits": [
@@ -2093,13 +1770,14 @@
         "无限代码补全、TraeCode SOLO",
         "TraeWork 云端任务最多 20 个并行"
       ],
-      "note": "基础使用额度不是固定 Token 数。可优先体验新模型。Token 用量尚未确认。",
+      "note": "旧价仅符合连续订阅保价的老用户适用；新版权益按通知、主动升级或续费日迁移，当前存量未升级权益保持到期。新版不能按此价格新购。",
       "summary": "$400 基础使用额度/月；无限代码补全、TraeCode SOLO；TraeWork 云端任务最多 20 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
-      "yearlyPrice": "未公开"
+      "yearlyPrice": "未公开",
+      "discontinued": true
     },
     {
       "slug": "github-token-plan-plan-75",
@@ -2108,10 +1786,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqghstudent",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": 0,
       "monthlyPrice": 0,
       "quarterlyPrice": "-",
@@ -2121,9 +1795,10 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
-        "学生认证免费"
+        "学生认证免费",
+        "代码补全无限"
       ],
-      "note": "• 学生认证免费，高级模型可对话 300 次\n• 存在周限额和 session 限额，不同模型有不同扣减倍率\n• 学生版可通过 Auto 模式路由至 GPT-5.3-Codex"
+      "note": "学生认证免费，仅Auto模型选择；AI Credits额度未公开。"
     },
     {
       "slug": "github-token-plan-pro",
@@ -2132,9 +1807,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqghcopilot",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 10,
       "quarterlyPrice": "-",
@@ -2144,9 +1816,11 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
-        "1000 积分"
+        "1000基础AI Credits/月",
+        "500当前Flex AI Credits/月",
+        "代码补全无限"
       ],
-      "note": "• 存在周限额和 session 限额；不同模型有不同高级模型扣减倍率\n• 已改为用 token 计费模式"
+      "note": "当前AI Credits制，1 Credit=$0.01；Flex可能变化；短窗口未知。部分现有年付用户仍适用旧请求制。"
     },
     {
       "slug": "github-token-plan-pro-2",
@@ -2155,9 +1829,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqghcopilotp",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 39,
       "quarterlyPrice": "-",
@@ -2167,9 +1838,11 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
-        "3900 积分"
+        "3900基础AI Credits/月",
+        "3100当前Flex AI Credits/月",
+        "代码补全无限"
       ],
-      "note": "• 存在周限额和 session 限额；不同模型有不同高级模型扣减倍率\n• 已改为用 token 计费模式"
+      "note": "当前AI Credits制，1 Credit=$0.01；Flex可能变化；短窗口未知。部分现有年付用户仍适用旧请求制。"
     },
     {
       "slug": "jd-cloud-coding-plan-lite",
@@ -2178,7 +1851,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 19.9,
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -2187,7 +1859,7 @@
       "weeklyRequests": 9000,
       "monthlyRequests": 18000,
       "benefits": [],
-      "note": ""
+      "note": "首月优惠资格及活动起止日期、具体时刻和时区未公布；常规月价Lite40/Pro200元，以订购页面为准。旧Coding Plan与Token Plan使用不同端点和额度。"
     },
     {
       "slug": "jd-cloud-coding-plan-pro",
@@ -2196,7 +1868,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 99.9,
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -2205,7 +1876,7 @@
       "weeklyRequests": 45000,
       "monthlyRequests": 90000,
       "benefits": [],
-      "note": ""
+      "note": "首月优惠资格及活动起止日期、具体时刻和时区未公布；常规月价Lite40/Pro200元，以订购页面为准。旧Coding Plan与Token Plan使用不同端点和额度。"
     },
     {
       "slug": "iflytek-coding-plan-plan-78",
@@ -2214,10 +1885,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
       "rating": 5,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 39,
       "quarterlyPrice": "-",
@@ -2236,9 +1903,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 199,
       "quarterlyPrice": "-",
@@ -2247,7 +1911,7 @@
       "weeklyRequests": 45000,
       "monthlyRequests": 90000,
       "benefits": [],
-      "note": "• 高效版已支持 GLM-5.2\n• 讯飞实际可用量比较多，按调用量计数，明示调用量"
+      "note": "• 高效版已支持 GLM-5.2\n• 讯飞实际可用量比较多，按调用量计数，明示调用量；2026-10-12未能公开核实个人版当前订购价格和完整支持名单，沿用此前记录，不代表本次已确认在售权益。"
     },
     {
       "slug": "iflytek-coding-plan-plan-80",
@@ -2256,9 +1920,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 699,
       "quarterlyPrice": "-",
@@ -2267,7 +1928,7 @@
       "weeklyRequests": "-",
       "monthlyRequests": "-",
       "benefits": [],
-      "note": "• 价格比较贵，据宣传无需等待"
+      "note": "• 价格比较贵，据宣传无需等待；2026-10-12未能公开核实个人版当前订购价格和完整支持名单，沿用此前记录，不代表本次已确认在售权益。"
     },
     {
       "slug": "unicom-cloud-coding-plan-lite",
@@ -2276,9 +1937,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomcp",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -2297,9 +1955,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomcp",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -2318,7 +1973,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomtp",
       "rating": 1,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 15,
       "quarterlyPrice": "-",
@@ -2327,8 +1981,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n",
-      "measuredMonthlyTokenLimit": 6
+      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。"
     },
     {
       "slug": "unicom-cloud-token-plan-pro",
@@ -2337,7 +1990,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomtp",
       "rating": 1,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 30,
       "quarterlyPrice": "-",
@@ -2346,8 +1998,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n",
-      "measuredMonthlyTokenLimit": 12
+      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。"
     },
     {
       "slug": "unicom-cloud-token-plan-max",
@@ -2356,7 +2007,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomtp",
       "rating": 1,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 45,
       "quarterlyPrice": "-",
@@ -2365,8 +2015,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n",
-      "measuredMonthlyTokenLimit": 18
+      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。"
     },
     {
       "slug": "unicom-cloud-token-plan-lite-2",
@@ -2375,9 +2024,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomtp",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 198,
       "quarterlyPrice": "-",
@@ -2386,8 +2032,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens",
-      "measuredMonthlyTokenLimit": 200
+      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。"
     },
     {
       "slug": "unicom-cloud-token-plan-pro-2",
@@ -2396,9 +2041,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomtp",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 698,
       "quarterlyPrice": "-",
@@ -2407,8 +2049,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens",
-      "measuredMonthlyTokenLimit": 800
+      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。"
     },
     {
       "slug": "unicom-cloud-token-plan-max-2",
@@ -2417,9 +2058,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqunicomtp",
       "rating": 3,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 1398,
       "quarterlyPrice": "-",
@@ -2428,8 +2066,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens",
-      "measuredMonthlyTokenLimit": 2000
+      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。"
     },
     {
       "slug": "cmcc-cloud-coding-plan-lite",
@@ -2438,7 +2075,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqmobilecp",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 7.9,
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -2447,7 +2083,7 @@
       "weeklyRequests": 9000,
       "monthlyRequests": 18000,
       "benefits": [],
-      "note": "• 模型较弱\n• 活动价首月 7.9 元，标准价 40 元/月，仅购买一个月时建议购买，不建议长期使用"
+      "note": "2026-03-16至2026-12-31活动（国内页面，北京时间）：领券仅一次首购7.9元，常规40元/月；每账号Lite/Pro二选一。互联网用户另可手动领券5折续订1个月（20.0元），自动续订不能自动使用券；领券30天有效。"
     },
     {
       "slug": "cmcc-cloud-coding-plan-pro",
@@ -2456,7 +2092,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqmobilecp",
       "rating": 3,
-      "tags": [],
       "firstMonthPrice": 39.9,
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -2465,79 +2100,91 @@
       "weeklyRequests": 45000,
       "monthlyRequests": 90000,
       "benefits": [],
-      "note": "• 模型较弱\n• 活动价首月 7.9 元，标准价 40 元/月，仅购买一个月时建议购买，不建议长期使用"
+      "note": "2026-03-16至2026-12-31活动（国内页面，北京时间）：领券仅一次首购39.9元，常规200元/月；每账号Lite/Pro二选一。互联网用户另可手动领券5折续订1个月（100.0元），自动续订不能自动使用券；领券30天有效。"
     },
     {
       "slug": "stepfun-coding-plan-flash-mini",
       "platformSlug": "stepfun",
-      "name": "Flash Mini",
+      "name": "Mini",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqstepfun",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 49,
-      "quarterlyPrice": "-",
-      "yearlyPrice": "-",
-      "fiveHoursRequests": 1500,
-      "weeklyRequests": 6000,
-      "monthlyRequests": 24000,
-      "benefits": [],
-      "note": "• 当前主打 Step 自有模型，模型较弱\n• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算\n• 官方只有周限量无月限量，这里按照 1 月=4 周计算"
+      "quarterlyPrice": 129,
+      "yearlyPrice": 456,
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "400M Credits/月",
+        "Studio另有40%专属创作额度"
+      ],
+      "note": "2026-10-12官方购买按钮显示售罄；当前按月Credits，旧prompt换算及周×4口径不再适用；恢复发售日期未公布。",
+      "discontinued": true
     },
     {
       "slug": "stepfun-coding-plan-flash-plus",
       "platformSlug": "stepfun",
-      "name": "Flash Plus",
+      "name": "Plus",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqstepfun",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 99,
-      "quarterlyPrice": "-",
-      "yearlyPrice": "-",
-      "fiveHoursRequests": 6000,
-      "weeklyRequests": 24000,
-      "monthlyRequests": 96000,
-      "benefits": [],
-      "note": "• 当前主打 Step 自有模型，模型较弱\n• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算\n• 官方只有周限量无月限量，这里按照 1 月=4 周计算"
+      "quarterlyPrice": 269,
+      "yearlyPrice": 936,
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "1600M Credits/月",
+        "Studio另有40%专属创作额度"
+      ],
+      "note": "2026-10-12官方购买按钮显示售罄；当前按月Credits，旧prompt换算及周×4口径不再适用；恢复发售日期未公布。",
+      "discontinued": true
     },
     {
       "slug": "stepfun-coding-plan-flash-pro",
       "platformSlug": "stepfun",
-      "name": "Flash Pro",
+      "name": "Pro",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqstepfun",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 199,
-      "quarterlyPrice": "-",
-      "yearlyPrice": "-",
-      "fiveHoursRequests": 22500,
-      "weeklyRequests": 90000,
-      "monthlyRequests": 360000,
-      "benefits": [],
-      "note": "• 当前主打 Step 自有模型，模型较弱\n• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算\n• 官方只有周限量无月限量，这里按照 1 月=4 周计算"
+      "quarterlyPrice": 539,
+      "yearlyPrice": 1860,
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "8000M Credits/月",
+        "Studio另有40%专属创作额度"
+      ],
+      "note": "2026-10-12官方购买按钮显示售罄；当前按月Credits，旧prompt换算及周×4口径不再适用；恢复发售日期未公布。",
+      "discontinued": true
     },
     {
       "slug": "stepfun-coding-plan-flash-max",
       "platformSlug": "stepfun",
-      "name": "Flash Max",
+      "name": "Max",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqstepfun",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 699,
-      "quarterlyPrice": "-",
-      "yearlyPrice": "-",
-      "fiveHoursRequests": 75000,
-      "weeklyRequests": 300000,
-      "monthlyRequests": 1200000,
-      "benefits": [],
-      "note": "• 当前主打 Step 自有模型，模型较弱\n• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算\n• 官方只有周限量无月限量，这里按照 1 月=4 周计算"
+      "quarterlyPrice": 1889,
+      "yearlyPrice": 6666,
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "40000M Credits/月",
+        "Studio另有40%专属创作额度"
+      ],
+      "note": "2026-10-12官方购买按钮显示售罄；当前按月Credits，旧prompt换算及周×4口径不再适用；恢复发售日期未公布。",
+      "discontinued": true
     },
     {
       "slug": "taotoken-coding-plan-lite",
@@ -2548,14 +2195,16 @@
       "rating": 3,
       "firstMonthPrice": "-",
       "monthlyPrice": 39,
-      "quarterlyPrice": "-",
+      "quarterlyPrice": 117,
       "yearlyPrice": "-",
       "fiveHoursRequests": 600,
       "weeklyRequests": 4200,
-      "monthlyRequests": "-",
-      "benefits": [],
-      "note": "已下线",
-      "discontinued": true
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "GLM5.3Flash + DeepSeekV4Flash",
+        "1M上下文上限"
+      ],
+      "note": "双Flash套餐；季付实付117元（活动起止日期未公布）；只限个人在编程辅助工具内使用，禁止Hermes/OpenClaw和额度共享/转售。自然月额外限制未公布。"
     },
     {
       "slug": "taotoken-coding-plan-pro",
@@ -2565,14 +2214,17 @@
       "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
       "rating": 3,
       "firstMonthPrice": "-",
-      "monthlyPrice": 149,
-      "quarterlyPrice": "-",
+      "monthlyPrice": 129,
+      "quarterlyPrice": 297,
       "yearlyPrice": "-",
       "fiveHoursRequests": 2000,
       "weeklyRequests": 15000,
-      "monthlyRequests": "-",
-      "benefits": [],
-      "note": ""
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "GLM5.3Flash + DeepSeekV4Flash",
+        "1M上下文上限"
+      ],
+      "note": "双Flash套餐；季付实付297元（活动起止日期未公布）；只限个人在编程辅助工具内使用，禁止Hermes/OpenClaw和额度共享/转售。自然月额外限制未公布。"
     },
     {
       "slug": "taotoken-coding-plan-max",
@@ -2582,14 +2234,17 @@
       "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
       "rating": 3,
       "firstMonthPrice": "-",
-      "monthlyPrice": 388,
-      "quarterlyPrice": "-",
+      "monthlyPrice": 338,
+      "quarterlyPrice": 897,
       "yearlyPrice": "-",
       "fiveHoursRequests": 6000,
       "weeklyRequests": 35000,
-      "monthlyRequests": "-",
-      "benefits": [],
-      "note": ""
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "GLM5.3Flash + DeepSeekV4Flash",
+        "1M上下文上限"
+      ],
+      "note": "双Flash套餐；季付实付897元（活动起止日期未公布）；只限个人在编程辅助工具内使用，禁止Hermes/OpenClaw和额度共享/转售。自然月额外限制未公布。"
     },
     {
       "slug": "chaosuan-coding-plan-lite",
@@ -2598,7 +2253,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqscnetcp",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 20,
       "quarterlyPrice": "-",
@@ -2607,7 +2261,7 @@
       "weeklyRequests": 9000,
       "monthlyRequests": 18000,
       "benefits": [],
-      "note": "• 模型较弱"
+      "note": "2026-10-12官方文档仍列20/100元及两个模型，赠OpenClaw 2核4G实例；购买状态未重新确认，保留此前停售标记。"
     },
     {
       "slug": "chaosuan-coding-plan-pro",
@@ -2616,7 +2270,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqscnetcp",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": 100,
       "quarterlyPrice": "-",
@@ -2625,7 +2278,7 @@
       "weeklyRequests": 45000,
       "monthlyRequests": 90000,
       "benefits": [],
-      "note": "• 模型较弱"
+      "note": "2026-10-12官方文档仍列20/100元及两个模型，赠OpenClaw 2核4G实例；购买状态未重新确认，保留此前停售标记。"
     },
     {
       "slug": "sensetime-coding-plan-free",
@@ -2634,20 +2287,18 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqsensenova",
       "rating": 3,
-      "tags": [
-        "性价比高"
-      ],
       "firstMonthPrice": 0,
       "monthlyPrice": 0,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
-      "fiveHoursRequests": 1500,
+      "fiveHoursRequests": "未公开",
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [
-        "256K 上下文"
+        "60000积分/5小时（特殊模型除外）",
+        "最多20个API Key"
       ],
-      "note": "• 模型较弱\n• 免费公测，Lite / Pro 未上线\n• 日额度：SenseNova 6.7 Flash-Lite 1500 次、SenseNova U1 Fast 1500 次、DeepSeek-V4-Flash 150 次"
+      "note": "免费公测，起止日期未公布；Lite/Pro尚未上线；支持SenseNova6.8 Flash Lite与U1 Fast，Token扣减未知。"
     },
     {
       "slug": "moorethreads-coding-plan-free-trial",
@@ -2656,9 +2307,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqmoorefree",
       "rating": 3,
-      "tags": [
-        "性价比高"
-      ],
       "firstMonthPrice": 0,
       "monthlyPrice": 0,
       "quarterlyPrice": "-",
@@ -2667,7 +2315,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "• 模型较弱\n• Free Trial 每天上午 10:00 发放，限量 100 名，30 天有效\n• 京东购买兑换码后需到卡券兑换页面兑换"
+      "note": "2026-10-12官方公开文档：5小时约40 prompts，每prompt可能含15–20次模型调用，取决于任务，不是固定请求或Token配额。免费领取后30天有效，每账号一次，活动起止日期及当前库存待确认。"
     },
     {
       "slug": "moorethreads-coding-plan-lite-plan",
@@ -2676,7 +2324,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqjdmeta",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": "-",
       "quarterlyPrice": 120,
@@ -2685,7 +2332,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "• 仅支持 GLM-4.7，不覆盖这批较新的热门模型\n• 按季度订阅，约 120 prompts，当前售罄\n• 京东购买兑换码后需到卡券兑换页面兑换",
+      "note": "2026-10-12官方公开文档：5小时约120 prompts，每prompt可能含15–20次模型调用，取决于任务，不是固定请求或Token配额。付费购买指向京东，当前SKU价格/库存待确认，保留此前停售标记。",
       "discontinued": true
     },
     {
@@ -2695,7 +2342,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqjdmeta",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": "-",
       "quarterlyPrice": 600,
@@ -2704,7 +2350,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "• 仅支持 GLM-4.7，不覆盖这批较新的热门模型\n• 按季度订阅，约 600 prompts，当前售罄\n• 京东购买兑换码后需到卡券兑换页面兑换",
+      "note": "2026-10-12官方公开文档：5小时约600 prompts，每prompt可能含15–20次模型调用，取决于任务，不是固定请求或Token配额。付费购买指向京东，当前SKU价格/库存待确认，保留此前停售标记。",
       "discontinued": true
     },
     {
@@ -2714,7 +2360,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqjdmeta",
       "rating": 2,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": "-",
       "quarterlyPrice": 1200,
@@ -2723,7 +2368,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "• 仅支持 GLM-4.7，不覆盖这批较新的热门模型\n• 按季度订阅，约 2400 prompts，当前售罄\n• 京东购买兑换码后需到卡券兑换页面兑换",
+      "note": "2026-10-12官方公开文档：5小时约2400 prompts，每prompt可能含15–20次模型调用，取决于任务，不是固定请求或Token配额。付费购买指向京东，当前SKU价格/库存待确认，保留此前停售标记。",
       "discontinued": true
     },
     {
@@ -2733,9 +2378,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqctyun",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 49,
       "quarterlyPrice": "-",
@@ -2754,10 +2396,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqctyun",
       "rating": 4,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 149,
       "quarterlyPrice": "-",
@@ -2776,10 +2414,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqctyun",
       "rating": 4,
-      "tags": [
-        "模型强",
-        "性价比高"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 469,
       "quarterlyPrice": "-",
@@ -2798,9 +2432,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqinfini",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
@@ -2809,7 +2440,7 @@
       "weeklyRequests": 6000,
       "monthlyRequests": 12000,
       "benefits": [],
-      "note": "• 当前售罄\n• 支持 GLM-5.1、MiniMax-M2.7，在新增平台里模型覆盖还可以，但没有 Kimi-K2.6、DeepSeek-V4-Pro、Qwen-3.6-Plus",
+      "note": "2026-10-12平台页面明确停止向个人用户提供服务；旧套餐保留历史参考。",
       "discontinued": true
     },
     {
@@ -2819,9 +2450,6 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqinfini",
       "rating": 4,
-      "tags": [
-        "模型强"
-      ],
       "firstMonthPrice": "-",
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
@@ -2830,7 +2458,7 @@
       "weeklyRequests": 30000,
       "monthlyRequests": 60000,
       "benefits": [],
-      "note": "• 当前售罄\n• 支持 GLM-5.1、MiniMax-M2.7，在新增平台里模型覆盖还可以，但没有 Kimi-K2.6、DeepSeek-V4-Pro、Qwen-3.6-Plus",
+      "note": "2026-10-12平台页面明确停止向个人用户提供服务；旧套餐保留历史参考。",
       "discontinued": true
     },
     {
@@ -2840,7 +2468,6 @@
       "billingMode": "payg",
       "action": "https://platform.deepseek.com/",
       "rating": 0,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": "-",
       "quarterlyPrice": "-",
@@ -2856,14 +2483,1256 @@
       "billingMode": "payg",
       "action": "https://api.dreamfree.space/c/s/cpyqgongji",
       "rating": 0,
-      "tags": [],
       "firstMonthPrice": "-",
       "monthlyPrice": "-",
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
       "benefits": [],
-      "note": "须通过邀请链接进入，方可锁定 8 折调用资格与额外额度。",
+      "note": "邀请8折仅适用于资格仍有效的用户，资格依据2026-09-04确认；本次已核对标价，但未重新验证账号折扣。",
       "planTableVisible": false
+    },
+    {
+      "slug": "kimi-go-2026",
+      "platformSlug": "kimi",
+      "name": "Go",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqkimi",
+      "rating": 4,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 49,
+      "quarterlyPrice": "-",
+      "yearlyPrice": 468,
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [],
+      "summary": "新会员方案；不含 Kimi Code",
+      "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。Go 不含编程额度。",
+      "discontinued": false,
+      "supportsHarnessApi": false
+    },
+    {
+      "slug": "kimi-plus-2026",
+      "platformSlug": "kimi",
+      "name": "Plus",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqkimi",
+      "rating": 4,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 99,
+      "quarterlyPrice": "-",
+      "yearlyPrice": 948,
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [],
+      "summary": "新会员方案；Kimi Code 与 Kimi 会员共享月总额度",
+      "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。月总额度耗尽后可使用加油包；Token 配额未公布。",
+      "discontinued": false,
+      "supportsHarnessApi": true
+    },
+    {
+      "slug": "kimi-pro-2026",
+      "platformSlug": "kimi",
+      "name": "Pro",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqkimi",
+      "rating": 4,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 199,
+      "quarterlyPrice": "-",
+      "yearlyPrice": 1908,
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [],
+      "summary": "新会员方案；Kimi Code 与 Kimi 会员共享月总额度",
+      "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。月总额度耗尽后可使用加油包；Token 配额未公布。",
+      "discontinued": false,
+      "supportsHarnessApi": true
+    },
+    {
+      "slug": "kimi-max-2026",
+      "platformSlug": "kimi",
+      "name": "Max",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqkimi",
+      "rating": 4,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 699,
+      "quarterlyPrice": "-",
+      "yearlyPrice": 6708,
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [],
+      "summary": "新会员方案；Kimi Code 与 Kimi 会员共享月总额度",
+      "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。月总额度耗尽后可使用加油包；Token 配额未公布。",
+      "discontinued": false,
+      "supportsHarnessApi": true
+    },
+    {
+      "slug": "codex-pro500",
+      "platformSlug": "codex",
+      "name": "Pro $500",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
+      "rating": 5,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 500,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "currency": "$",
+      "benefits": [
+        "Ultrafast 资格（依账号与客户端开放情况）"
+      ],
+      "note": "含 GPT-6 Astra / GPT-6.1 Sol Ultrafast；订阅用量消耗为标准速度的 8 倍，购买 Credits 为 6 倍。Token 配额未知。\nChatGPT与Codex共享使用量；窗口消耗随模型、速度档及负载变化，官方没有固定Token配额，旧测量仅供参考。"
+    },
+    {
+      "slug": "aliyun-token-personal-essential",
+      "platformSlug": "aliyun-bailian",
+      "name": "Essential",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
+      "rating": 3,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 79,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "无限制",
+      "weeklyRequests": "无限制",
+      "monthlyRequests": "无限制",
+      "benefits": [],
+      "note": "每订阅月 25,500 Credits；自 2026-09-22 取消周限额。当前 ¥79/月限时优惠，常规 ¥120/月，官方未公布活动起止日期。逐模型精确 Credits 扣减未公开，Token 用量未知。"
+    },
+    {
+      "slug": "opencode-go-plus",
+      "platformSlug": "opencode",
+      "name": "Go Plus",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqopencode",
+      "rating": 5,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 40,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "currency": "$",
+      "benefits": [],
+      "note": "各模型月美元额度不同，五小时/周窗口分别为该模型月额度的20%/50%；模型额度不相加。Token 用量按统一工作负载估算，非官方Token上限。"
+    },
+    {
+      "slug": "commandcode-max10",
+      "platformSlug": "command-code",
+      "name": "Max 10×",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpcommandcode",
+      "rating": 4,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 100,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "currency": "$",
+      "benefits": [
+        "高级模型池$100/月",
+        "标准模型池$150.0/月",
+        "API与客户端共用额度"
+      ],
+      "note": "高级/标准模型分别共享$100/$150.0月额度池；美元Credits计费"
+    },
+    {
+      "slug": "commandcode-max20",
+      "platformSlug": "command-code",
+      "name": "Max 20×",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpcommandcode",
+      "rating": 4,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 200,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "currency": "$",
+      "benefits": [
+        "高级模型池$200/月",
+        "标准模型池$300.0/月",
+        "API与客户端共用额度"
+      ],
+      "note": "高级/标准模型分别共享$200/$300.0月额度池；美元Credits计费"
+    },
+    {
+      "slug": "tencent-cloud-hy-lite",
+      "platformSlug": "tencent-cloud-hy",
+      "name": "Lite",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 28,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "无限制",
+      "weeklyRequests": "无限制",
+      "monthlyRequests": "无限制",
+      "benefits": [
+        "560积分/月"
+      ],
+      "note": "Hy3/Hy4 preview专属积分套餐，与通用套餐可同时持有，各自抵扣"
+    },
+    {
+      "slug": "tencent-cloud-hy-standard",
+      "platformSlug": "tencent-cloud-hy",
+      "name": "Standard",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 78,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "无限制",
+      "weeklyRequests": "无限制",
+      "monthlyRequests": "无限制",
+      "benefits": [
+        "1560积分/月"
+      ],
+      "note": "Hy3/Hy4 preview专属积分套餐，与通用套餐可同时持有，各自抵扣"
+    },
+    {
+      "slug": "tencent-cloud-hy-pro",
+      "platformSlug": "tencent-cloud-hy",
+      "name": "Pro",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 238,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "无限制",
+      "weeklyRequests": "无限制",
+      "monthlyRequests": "无限制",
+      "benefits": [
+        "4760积分/月"
+      ],
+      "note": "Hy3/Hy4 preview专属积分套餐，与通用套餐可同时持有，各自抵扣"
+    },
+    {
+      "slug": "tencent-cloud-hy-max",
+      "platformSlug": "tencent-cloud-hy",
+      "name": "Max",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 468,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "无限制",
+      "weeklyRequests": "无限制",
+      "monthlyRequests": "无限制",
+      "benefits": [
+        "9360积分/月"
+      ],
+      "note": "Hy3/Hy4 preview专属积分套餐，与通用套餐可同时持有，各自抵扣"
+    },
+    {
+      "slug": "baidu-qianfan-credits-plan-mini",
+      "platformSlug": "baidu-qianfan-credits",
+      "name": "Mini",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 9.9,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "无限制",
+      "weeklyRequests": "无限制",
+      "monthlyRequests": "无限制",
+      "benefits": [
+        "1400积分/月"
+      ],
+      "note": "积分制，模型抵扣由Token类型/思考/工具动态决定，Token换算未知；5小时和7天限制当前取消，恢复日期未公布。"
+    },
+    {
+      "slug": "baidu-qianfan-credits-plan-lite",
+      "platformSlug": "baidu-qianfan-credits",
+      "name": "Lite",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 40,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "无限制",
+      "weeklyRequests": "无限制",
+      "monthlyRequests": "无限制",
+      "benefits": [
+        "6600积分/月"
+      ],
+      "note": "积分制，模型抵扣由Token类型/思考/工具动态决定，Token换算未知；5小时和7天限制当前取消，恢复日期未公布。"
+    },
+    {
+      "slug": "baidu-qianfan-credits-plan-pro",
+      "platformSlug": "baidu-qianfan-credits",
+      "name": "Pro",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 200,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "无限制",
+      "weeklyRequests": "无限制",
+      "monthlyRequests": "无限制",
+      "benefits": [
+        "45000积分/月"
+      ],
+      "note": "积分制，模型抵扣由Token类型/思考/工具动态决定，Token换算未知；5小时和7天限制当前取消，恢复日期未公布。"
+    },
+    {
+      "slug": "baidu-qianfan-credits-plan-max",
+      "platformSlug": "baidu-qianfan-credits",
+      "name": "Max",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 600,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "无限制",
+      "weeklyRequests": "无限制",
+      "monthlyRequests": "无限制",
+      "benefits": [
+        "165000积分/月"
+      ],
+      "note": "积分制，模型抵扣由Token类型/思考/工具动态决定，Token换算未知；5小时和7天限制当前取消，恢复日期未公布。"
+    },
+    {
+      "slug": "ctyun-token-3000",
+      "platformSlug": "ctyun-token",
+      "name": "3000积分",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqctyun",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 29,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "3000积分/月"
+      ],
+      "note": "新版积分制套餐；输入（含缓存）与输出按对应模型及上下文区间抵扣。 当前精确请求总数和短窗Token上限未公开，不能沿用旧请求制1200/6000/24000。"
+    },
+    {
+      "slug": "ctyun-token-10000",
+      "platformSlug": "ctyun-token",
+      "name": "10000积分",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqctyun",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 89,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "10000积分/月"
+      ],
+      "note": "新版积分制套餐；输入（含缓存）与输出按对应模型及上下文区间抵扣。 当前精确请求总数和短窗Token上限未公开，不能沿用旧请求制1200/6000/24000。"
+    },
+    {
+      "slug": "ctyun-token-25000",
+      "platformSlug": "ctyun-token",
+      "name": "25000积分",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqctyun",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 199,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "25000积分/月"
+      ],
+      "note": "新版积分制套餐；输入（含缓存）与输出按对应模型及上下文区间抵扣。 当前精确请求总数和短窗Token上限未公开，不能沿用旧请求制1200/6000/24000。"
+    },
+    {
+      "slug": "ctyun-token-50000",
+      "platformSlug": "ctyun-token",
+      "name": "50000积分",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqctyun",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 399,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "50000积分/月"
+      ],
+      "note": "新版积分制套餐；输入（含缓存）与输出按对应模型及上下文区间抵扣。 当前精确请求总数和短窗Token上限未公开，不能沿用旧请求制1200/6000/24000。"
+    },
+    {
+      "slug": "ctyun-token-100000",
+      "platformSlug": "ctyun-token",
+      "name": "100000积分",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqctyun",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 699,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "100000积分/月"
+      ],
+      "note": "新版积分制套餐；输入（含缓存）与输出按对应模型及上下文区间抵扣。 当前精确请求总数和短窗Token上限未公开，不能沿用旧请求制1200/6000/24000。"
+    },
+    {
+      "slug": "github-token-plan-max",
+      "platformSlug": "github",
+      "name": "Max",
+      "billingMode": "subscription",
+      "action": "https://github.com/features/copilot/plans",
+      "rating": 3,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 100,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "currency": "$",
+      "benefits": [
+        "10000基础AI Credits/月",
+        "10000当前Flex AI Credits/月",
+        "代码补全无限"
+      ],
+      "note": "当前AI Credits制，1 Credit=$0.01；Flex可能变化；短窗口未知。部分现有年付用户仍适用旧请求制。"
+    },
+    {
+      "slug": "github-token-plan-free",
+      "platformSlug": "github",
+      "name": "Free",
+      "billingMode": "subscription",
+      "action": "https://github.com/features/copilot/plans",
+      "rating": 3,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 0,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "currency": "$",
+      "benefits": [
+        "2000次补全/月",
+        "Chat与Agent有限用量"
+      ],
+      "note": "免费，2000次代码补全/月；Chat与Agent额度有限，仅Auto模型选择。"
+    },
+    {
+      "slug": "cursor-x-free",
+      "platformSlug": "cursor",
+      "name": "Free（X Subscription）",
+      "billingMode": "subscription",
+      "action": "https://cursor.com/pricing",
+      "rating": 0,
+      "monthlyPrice": 0,
+      "currency": "$",
+      "benefits": [
+        "有限 Agent 与 Chat 使用",
+        "Cursor 编程 Agent 入门额度"
+      ],
+      "summary": "有限 Agent 与 Chat 使用；Cursor 编程 Agent 入门额度",
+      "note": "免费入门档；具体可选模型、请求与 Token 额度未公开。不能把付费档完整模型名单套用于免费档。",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开"
+    },
+    {
+      "slug": "cursor-x-plus",
+      "platformSlug": "cursor",
+      "name": "Plus（X Subscription）",
+      "billingMode": "subscription",
+      "action": "https://cursor.com/pricing",
+      "rating": 0,
+      "monthlyPrice": 8,
+      "currency": "$",
+      "benefits": [
+        "Grok 共享基础使用池，每周刷新",
+        "Cursor、Grok 与 X 组合权益"
+      ],
+      "summary": "Grok 共享基础使用池，每周刷新；Cursor、Grok 与 X 组合权益",
+      "note": "2026-10-12 发布的新 X Subscription；额度在 Cursor、Grok 与 X 的相关 AI 产品间共享，每周刷新。官方未公布固定 Token 或请求总量，不按倍率推算。价格未含适用税费；迁移优惠由账户显示，具体起止日期未公开。 Plus 在 Cursor 中仅提供 Grok 模型；具体型号及高速权限以账户可用列表为准，不含第三方模型。",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开"
+    },
+    {
+      "slug": "cursor-x-premium",
+      "platformSlug": "cursor",
+      "name": "Premium（X Subscription）",
+      "billingMode": "subscription",
+      "action": "https://cursor.com/pricing",
+      "rating": 0,
+      "monthlyPrice": 30,
+      "currency": "$",
+      "benefits": [
+        "Grok 共享额度为 Plus 的 4 倍，每周刷新",
+        "云端 Agent、自动化与代码审查",
+        "第三方模型可用，按 API 标价另付费"
+      ],
+      "summary": "Grok 共享额度为 Plus 的 4 倍，每周刷新；云端 Agent、自动化与代码审查；第三方模型可用，按 API 标价另付费",
+      "note": "2026-10-12 发布的新 X Subscription；额度在 Cursor、Grok 与 X 的相关 AI 产品间共享，每周刷新。官方未公布固定 Token 或请求总量，不按倍率推算。价格未含适用税费；迁移优惠由账户显示，具体起止日期未公开。 Claude、GPT、Gemini、Muse Spark 等第三方模型从首个请求起另行购买使用量，不包含在月费中；可以设置支出上限。新 Ultra 与旧 Cursor Ultra 的额度不是同一产品。",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开"
+    },
+    {
+      "slug": "cursor-x-super",
+      "platformSlug": "cursor",
+      "name": "Super（X Subscription）",
+      "billingMode": "subscription",
+      "action": "https://cursor.com/pricing",
+      "rating": 0,
+      "monthlyPrice": 100,
+      "currency": "$",
+      "benefits": [
+        "Grok 共享额度为 Plus 的 15 倍，每周刷新",
+        "云端 Agent、自动化与代码审查",
+        "第三方模型可用，按 API 标价另付费",
+        "高峰期优先模型接入"
+      ],
+      "summary": "Grok 共享额度为 Plus 的 15 倍，每周刷新；云端 Agent、自动化与代码审查；第三方模型可用，按 API 标价另付费；高峰期优先模型接入",
+      "note": "2026-10-12 发布的新 X Subscription；额度在 Cursor、Grok 与 X 的相关 AI 产品间共享，每周刷新。官方未公布固定 Token 或请求总量，不按倍率推算。价格未含适用税费；迁移优惠由账户显示，具体起止日期未公开。 Claude、GPT、Gemini、Muse Spark 等第三方模型从首个请求起另行购买使用量，不包含在月费中；可以设置支出上限。新 Ultra 与旧 Cursor Ultra 的额度不是同一产品。",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开"
+    },
+    {
+      "slug": "cursor-x-ultra",
+      "platformSlug": "cursor",
+      "name": "Ultra（X Subscription）",
+      "billingMode": "subscription",
+      "action": "https://cursor.com/pricing",
+      "rating": 0,
+      "monthlyPrice": 200,
+      "currency": "$",
+      "benefits": [
+        "Grok 共享额度为 Plus 的 50 倍，每周刷新",
+        "云端 Agent、自动化与代码审查",
+        "第三方模型可用，按 API 标价另付费",
+        "更早获得产品与模型"
+      ],
+      "summary": "Grok 共享额度为 Plus 的 50 倍，每周刷新；云端 Agent、自动化与代码审查；第三方模型可用，按 API 标价另付费；更早获得产品与模型",
+      "note": "2026-10-12 发布的新 X Subscription；额度在 Cursor、Grok 与 X 的相关 AI 产品间共享，每周刷新。官方未公布固定 Token 或请求总量，不按倍率推算。价格未含适用税费；迁移优惠由账户显示，具体起止日期未公开。 Claude、GPT、Gemini、Muse Spark 等第三方模型从首个请求起另行购买使用量，不包含在月费中；可以设置支出上限。新 Ultra 与旧 Cursor Ultra 的额度不是同一产品。",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开"
+    },
+    {
+      "slug": "cursor-pro-legacy",
+      "platformSlug": "cursor",
+      "name": "Pro（老套餐）",
+      "billingMode": "subscription",
+      "action": "https://cursor.com/dashboard/billing",
+      "rating": 0,
+      "monthlyPrice": 20,
+      "currency": "$",
+      "benefits": [
+        "Cursor Models 与第三方 Other Models 独立月度池",
+        "无限 Tab 补全、Agent、Bugbot 与云端 Agent"
+      ],
+      "summary": "Cursor Models 与第三方 Other Models 独立月度池；无限 Tab 补全、Agent、Bugbot 与云端 Agent",
+      "note": "2026-10-12 起停止新用户订购，已有订阅可保留当前价格与权益，直至主动迁移或官方另行通知；最终迁移时间尚未公布。旧 Cursor Models 与 Other Models 两个月度池分别记录，未消费额度不结转；不能套用新 X Subscription 的周额度或倍率。当前固定美元池及 Token 总量待确认。按请求计费的更早存量账号还有独立规则，不统一写成 500 次或无限。",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开",
+      "discontinued": true
+    },
+    {
+      "slug": "cursor-pro-plus-legacy",
+      "platformSlug": "cursor",
+      "name": "Pro+（老套餐）",
+      "billingMode": "subscription",
+      "action": "https://cursor.com/dashboard/billing",
+      "rating": 0,
+      "monthlyPrice": 60,
+      "currency": "$",
+      "benefits": [
+        "Cursor Models 与第三方 Other Models 独立月度池",
+        "无限 Tab 补全、Agent、Bugbot 与云端 Agent"
+      ],
+      "summary": "Cursor Models 与第三方 Other Models 独立月度池；无限 Tab 补全、Agent、Bugbot 与云端 Agent",
+      "note": "2026-10-12 起停止新用户订购，已有订阅可保留当前价格与权益，直至主动迁移或官方另行通知；最终迁移时间尚未公布。旧 Cursor Models 与 Other Models 两个月度池分别记录，未消费额度不结转；不能套用新 X Subscription 的周额度或倍率。当前固定美元池及 Token 总量待确认。按请求计费的更早存量账号还有独立规则，不统一写成 500 次或无限。",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开",
+      "discontinued": true
+    },
+    {
+      "slug": "cursor-ultra-legacy",
+      "platformSlug": "cursor",
+      "name": "Ultra（老套餐）",
+      "billingMode": "subscription",
+      "action": "https://cursor.com/dashboard/billing",
+      "rating": 0,
+      "monthlyPrice": 200,
+      "currency": "$",
+      "benefits": [
+        "Cursor Models 与第三方 Other Models 独立月度池",
+        "无限 Tab 补全、Agent、Bugbot 与云端 Agent"
+      ],
+      "summary": "Cursor Models 与第三方 Other Models 独立月度池；无限 Tab 补全、Agent、Bugbot 与云端 Agent",
+      "note": "2026-10-12 起停止新用户订购，已有订阅可保留当前价格与权益，直至主动迁移或官方另行通知；最终迁移时间尚未公布。旧 Cursor Models 与 Other Models 两个月度池分别记录，未消费额度不结转；不能套用新 X Subscription 的周额度或倍率。当前固定美元池及 Token 总量待确认。按请求计费的更早存量账号还有独立规则，不统一写成 500 次或无限。",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开",
+      "discontinued": true
+    },
+    {
+      "slug": "cursor-start-india-legacy",
+      "platformSlug": "cursor",
+      "name": "Start（印度老套餐）",
+      "billingMode": "subscription",
+      "action": "https://cursor.com/dashboard/billing",
+      "rating": 0,
+      "monthlyPrice": "₹649/月（含税）",
+      "currency": "₹",
+      "benefits": [
+        "仅限印度开发者；原价 ₹649/月（含税）",
+        "仅 Cursor Models 池；标准速度、Grok 固定 medium effort"
+      ],
+      "summary": "仅限印度开发者；原价 ₹649/月（含税）；仅 Cursor Models 池；标准速度、Grok 固定 medium effort",
+      "note": "旧地区限定套餐，按新订阅公告记录为停止新购；既有账户价格与权益按官方通知保留。原币种 INR，不以美元或人民币数值参加价格换算。支持 Grok 4.7/4.6/4.5 与 Composer 2.5；不含 Other Models、按量加购、Bugbot、Auto、自动化或 Cursor SDK。付款限官方印度渠道；该套餐不继承平台的支付宝结论。",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开",
+      "discontinued": true
+    },
+    {
+      "slug": "jd-cloud-token-lite",
+      "platformSlug": "jd-cloud-token",
+      "name": "Lite",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 69,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "17250Credits/月",
+        "月/周/5小时三级窗口",
+        "60 RPM"
+      ],
+      "note": "个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。不支持缓存命中。"
+    },
+    {
+      "slug": "jd-cloud-token-standard",
+      "platformSlug": "jd-cloud-token",
+      "name": "Standard",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 199,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "49750Credits/月",
+        "月/周/5小时三级窗口",
+        "60 RPM"
+      ],
+      "note": "个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。不支持缓存命中。"
+    },
+    {
+      "slug": "jd-cloud-token-pro",
+      "platformSlug": "jd-cloud-token",
+      "name": "Pro",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 599,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "149750Credits/月",
+        "月/周/5小时三级窗口",
+        "60 RPM"
+      ],
+      "note": "个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。不支持缓存命中。"
+    },
+    {
+      "slug": "jd-cloud-token-max",
+      "platformSlug": "jd-cloud-token",
+      "name": "Max",
+      "billingMode": "subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 999,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "249750Credits/月",
+        "月/周/5小时三级窗口",
+        "60 RPM"
+      ],
+      "note": "个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。不支持缓存命中。"
+    },
+    {
+      "slug": "trae-intl-lite-2026",
+      "platformSlug": "trae-intl",
+      "name": "Lite",
+      "billingMode": "subscription",
+      "action": "https://www.trae.ai/pricing",
+      "rating": 3,
+      "monthlyPrice": 8,
+      "currency": "$",
+      "benefits": [
+        "$8 Dollar Usage/月",
+        "可手选模型",
+        "代码补全无限"
+      ],
+      "note": "新版套餐；美国地区Seed/MiniMax/GLM不可用；Lite仅在官方指定12个国家开放，包含中国港澳的付费地区不等于Lite可购。缓存写入另计，Token估算不含该费用。老用户连续月付保价；老用户年订阅5折资格以官方规则为准，起止日期、具体时刻和时区未公布。",
+      "summary": "$8 Dollar Usage/月；可手选模型；代码补全无限",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": 80,
+      "firstMonthPrice": "-"
+    },
+    {
+      "slug": "trae-intl-pro-2026",
+      "platformSlug": "trae-intl",
+      "name": "Pro",
+      "billingMode": "subscription",
+      "action": "https://www.trae.ai/pricing",
+      "rating": 3,
+      "monthlyPrice": 20,
+      "currency": "$",
+      "benefits": [
+        "$20 Dollar Usage/月",
+        "可手选模型",
+        "代码补全无限"
+      ],
+      "note": "新版套餐；美国地区Seed/MiniMax/GLM不可用；Lite仅在官方指定12个国家开放，包含中国港澳的付费地区不等于Lite可购。缓存写入另计，Token估算不含该费用。老用户连续月付保价；老用户年订阅5折资格以官方规则为准，起止日期、具体时刻和时区未公布。",
+      "summary": "$20 Dollar Usage/月；可手选模型；代码补全无限",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": 200,
+      "firstMonthPrice": "-"
+    },
+    {
+      "slug": "trae-intl-pro-plus-2026",
+      "platformSlug": "trae-intl",
+      "name": "Pro+",
+      "billingMode": "subscription",
+      "action": "https://www.trae.ai/pricing",
+      "rating": 3,
+      "monthlyPrice": 60,
+      "currency": "$",
+      "benefits": [
+        "$60 Dollar Usage/月",
+        "可手选模型",
+        "代码补全无限"
+      ],
+      "note": "新版套餐；美国地区Seed/MiniMax/GLM不可用；Lite仅在官方指定12个国家开放，包含中国港澳的付费地区不等于Lite可购。缓存写入另计，Token估算不含该费用。老用户连续月付保价；老用户年订阅5折资格以官方规则为准，起止日期、具体时刻和时区未公布。",
+      "summary": "$60 Dollar Usage/月；可手选模型；代码补全无限",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": 600,
+      "firstMonthPrice": "-"
+    },
+    {
+      "slug": "trae-intl-ultra-2026",
+      "platformSlug": "trae-intl",
+      "name": "Ultra",
+      "billingMode": "subscription",
+      "action": "https://www.trae.ai/pricing",
+      "rating": 3,
+      "monthlyPrice": 200,
+      "currency": "$",
+      "benefits": [
+        "$200 Dollar Usage/月",
+        "可手选模型",
+        "代码补全无限"
+      ],
+      "note": "新版套餐；美国地区Seed/MiniMax/GLM不可用；Lite仅在官方指定12个国家开放，包含中国港澳的付费地区不等于Lite可购。缓存写入另计，Token估算不含该费用。老用户连续月付保价；老用户年订阅5折资格以官方规则为准，起止日期、具体时刻和时区未公布。",
+      "summary": "$200 Dollar Usage/月；可手选模型；代码补全无限",
+      "monthlyRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "fiveHoursRequests": "未公开",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": 2000,
+      "firstMonthPrice": "-"
+    },
+    {
+      "slug": "taotoken-token-lite",
+      "platformSlug": "taotoken-token",
+      "name": "Lite",
+      "billingMode": "subscription",
+      "action": "https://taotoken.net/token-plan",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 59,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "5000Credits/月"
+      ],
+      "note": "当前活动59元/月，常规75元/月，活动起止日期未公布。只使用/token入口抵扣；不支持的模型或Credits耗尽会从账户余额扣费，Token换算未知。 Credits耗尽或调用未覆盖的模型时会扣账户余额；需用/token入口，/coding和/api不扣此套餐。"
+    },
+    {
+      "slug": "taotoken-token-pro",
+      "platformSlug": "taotoken-token",
+      "name": "Pro",
+      "billingMode": "subscription",
+      "action": "https://taotoken.net/token-plan",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 149,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "benefits": [
+        "14000Credits/月"
+      ],
+      "note": "当前活动149元/月，常规200元/月，活动起止日期未公布。只使用/token入口抵扣；不支持的模型或Credits耗尽会从账户余额扣费，Token换算未知。 Credits耗尽或调用未覆盖的模型时会扣账户余额；需用/token入口，/coding和/api不扣此套餐。"
+    },
+    {
+      "slug": "minimax-mplan-go",
+      "platformSlug": "minimax",
+      "name": "M Plan Go",
+      "billingMode": "subscription",
+      "action": "https://www.minimax.cn/m-plan",
+      "rating": 5,
+      "firstMonthPrice": 24.5,
+      "monthlyPrice": 49,
+      "quarterlyPrice": "-",
+      "yearlyPrice": 490,
+      "benefits": [
+        "包含MiniMax Code及订阅API Key"
+      ],
+      "note": "相对Go用量1倍；文本与其他模态共享额度，受5小时及7天窗口控制，具体Token数未公布。首月五折截至2026-10-14，起始时刻及截止时区未公布，之后按月价¥49续费。",
+      "discontinued": false
+    },
+    {
+      "slug": "minimax-mplan-explore",
+      "platformSlug": "minimax",
+      "name": "M Plan Explore",
+      "billingMode": "subscription",
+      "action": "https://www.minimax.cn/m-plan",
+      "rating": 5,
+      "firstMonthPrice": 59.5,
+      "monthlyPrice": 119,
+      "quarterlyPrice": "-",
+      "yearlyPrice": 1190,
+      "benefits": [
+        "包含MiniMax Code及订阅API Key"
+      ],
+      "note": "相对Go用量3倍；文本与其他模态共享额度，受5小时及7天窗口控制，具体Token数未公布。首月五折截至2026-10-14，起始时刻及截止时区未公布，之后按月价¥119续费。",
+      "discontinued": false
+    },
+    {
+      "slug": "minimax-mplan-build",
+      "platformSlug": "minimax",
+      "name": "M Plan Build",
+      "billingMode": "subscription",
+      "action": "https://www.minimax.cn/m-plan",
+      "rating": 5,
+      "firstMonthPrice": 234.5,
+      "monthlyPrice": 469,
+      "quarterlyPrice": "-",
+      "yearlyPrice": 4690,
+      "benefits": [
+        "包含MiniMax Code及订阅API Key"
+      ],
+      "note": "相对Go用量12倍；文本与其他模态共享额度，受5小时及7天窗口控制，具体Token数未公布。首月五折截至2026-10-14，起始时刻及截止时区未公布，之后按月价¥469续费。",
+      "discontinued": false
+    },
+    {
+      "slug": "minimax-code-free",
+      "platformSlug": "minimax",
+      "name": "MiniMax Code Free",
+      "billingMode": "subscription",
+      "action": "https://agent.minimax.cn/",
+      "rating": 4,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 0,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "benefits": [
+        "MiniMax Code网页/桌面/CLI/移动端有限使用"
+      ],
+      "note": "M3.1 Flash Preview有限可用；不支持订阅API Key，具体额度未公布",
+      "supportsHarnessApi": false,
+      "discontinued": false
+    },
+    {
+      "slug": "chaosuan-token-basic",
+      "platformSlug": "chaosuan-token",
+      "name": "基础版",
+      "billingMode": "subscription",
+      "action": "https://www.scnet.cn/",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 30,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "benefits": [
+        "月度60000 Credits"
+      ],
+      "note": "当前用户手册活动价¥30/月，常规价¥50/月；活动起止日期未公布，旧API文档价格不同，购买前核对控制台。综合抵扣倍率随缓存/输入/输出与每周定价变化；准确Token量未知。禁止共享、后端和非交互批量调用。",
+      "discontinued": false
+    },
+    {
+      "slug": "chaosuan-token-standard",
+      "platformSlug": "chaosuan-token",
+      "name": "标准版",
+      "billingMode": "subscription",
+      "action": "https://www.scnet.cn/",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 130,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "benefits": [
+        "月度240000 Credits"
+      ],
+      "note": "当前用户手册活动价¥130/月，常规价¥185/月；活动起止日期未公布，旧API文档价格不同，购买前核对控制台。综合抵扣倍率随缓存/输入/输出与每周定价变化；准确Token量未知。禁止共享、后端和非交互批量调用。",
+      "discontinued": false
+    },
+    {
+      "slug": "chaosuan-token-advanced",
+      "platformSlug": "chaosuan-token",
+      "name": "高级版",
+      "billingMode": "subscription",
+      "action": "https://www.scnet.cn/",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 310,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "benefits": [
+        "月度600000 Credits"
+      ],
+      "note": "当前用户手册活动价¥310/月，常规价¥440/月；活动起止日期未公布，旧API文档价格不同，购买前核对控制台。综合抵扣倍率随缓存/输入/输出与每周定价变化；准确Token量未知。禁止共享、后端和非交互批量调用。",
+      "discontinued": false
+    },
+    {
+      "slug": "chaosuan-token-flagship",
+      "platformSlug": "chaosuan-token",
+      "name": "旗舰版",
+      "billingMode": "subscription",
+      "action": "https://www.scnet.cn/",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 899,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "benefits": [
+        "月度1800000 Credits",
+        "OpenClaw 2核4G实例"
+      ],
+      "note": "当前用户手册活动价¥899/月，常规价¥1274/月；活动起止日期未公布，旧API文档价格不同，购买前核对控制台。综合抵扣倍率随缓存/输入/输出与每周定价变化；准确Token量未知。禁止共享、后端和非交互批量调用。",
+      "discontinued": false
+    },
+    {
+      "slug": "iflytek-token-standard",
+      "platformSlug": "iflytek-token",
+      "name": "标准成员",
+      "billingMode": "subscription",
+      "action": "https://maas.xfyun.cn/",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 200,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "benefits": [
+        "20000积分/成员",
+        "TPM 2000000",
+        "AstronClaw基础会员及赠送Skills"
+      ],
+      "note": "以成员为单位，购买后31天有效；6月2日至7月2日活动已结束，当前记录常规价。工作日08:00–22:00系数1，其余工作日时段及周末系数0.8，按国内平台时区推定UTC+8（官网未明确）。短窗Token上限未公开，速率TPM不等于窗口额度。",
+      "discontinued": false
+    },
+    {
+      "slug": "iflytek-token-advanced",
+      "platformSlug": "iflytek-token",
+      "name": "高级成员",
+      "billingMode": "subscription",
+      "action": "https://maas.xfyun.cn/",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 600,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "benefits": [
+        "60000积分/成员",
+        "TPM 3000000",
+        "AstronClaw基础会员及赠送Skills"
+      ],
+      "note": "以成员为单位，购买后31天有效；6月2日至7月2日活动已结束，当前记录常规价。工作日08:00–22:00系数1，其余工作日时段及周末系数0.8，按国内平台时区推定UTC+8（官网未明确）。短窗Token上限未公开，速率TPM不等于窗口额度。",
+      "discontinued": false
+    },
+    {
+      "slug": "iflytek-token-premium",
+      "platformSlug": "iflytek-token",
+      "name": "尊享成员",
+      "billingMode": "subscription",
+      "action": "https://maas.xfyun.cn/",
+      "rating": 0,
+      "firstMonthPrice": "-",
+      "monthlyPrice": 2000,
+      "quarterlyPrice": "-",
+      "yearlyPrice": "-",
+      "benefits": [
+        "200000积分/成员",
+        "TPM 5000000",
+        "AstronClaw基础会员及赠送Skills"
+      ],
+      "note": "以成员为单位，购买后31天有效；6月2日至7月2日活动已结束，当前记录常规价。工作日08:00–22:00系数1，其余工作日时段及周末系数0.8，按国内平台时区推定UTC+8（官网未明确）。短窗Token上限未公开，速率TPM不等于窗口额度。",
+      "discontinued": false
+    },
+    {
+      "slug": "workbuddy-free",
+      "platformSlug": "workbuddy",
+      "name": "体验版",
+      "billingMode": "subscription",
+      "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
+      "rating": 3,
+      "monthlyPrice": 0,
+      "currency": "¥",
+      "firstMonthPrice": "-",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "-",
+      "benefits": [
+        "500积分/月"
+      ],
+      "note": "常规Auto调度，当前限免全模型可选，活动起止日期未公布；不含CLI访问；积分与CodeBuddy共享",
+      "discontinued": false,
+      "summary": "500积分/月",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开"
+    },
+    {
+      "slug": "workbuddy-standard-renew-2026",
+      "platformSlug": "workbuddy",
+      "name": "标准版老用户保价",
+      "billingMode": "subscription",
+      "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
+      "rating": 3,
+      "monthlyPrice": 58,
+      "currency": "¥",
+      "firstMonthPrice": "-",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "-",
+      "benefits": [
+        "4000积分/月"
+      ],
+      "note": "2026-07-01前已开启自动续费的用户，保价至2026-12-31；2027-01-01起¥70/月，按国内平台推定UTC+8，官网未明确时区；取消后再购按现价",
+      "discontinued": true,
+      "summary": "4000积分/月",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开"
+    },
+    {
+      "slug": "ctyun-token-renew-25m",
+      "platformSlug": "ctyun",
+      "name": "Token 25M（存量续订）",
+      "billingMode": "subscription",
+      "action": "https://www.ctyun.cn/products/maas",
+      "rating": 4,
+      "monthlyPrice": 29,
+      "firstMonthPrice": "-",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "discontinued": true,
+      "benefits": [
+        "25M Token/月"
+      ],
+      "note": "仅订购周期未结束的老用户可续订Token制套餐；周期结束不可恢复，新用户购买积分制。官方月Token额度，独立五小时/周窗口未确认；模型库动态调整，不保证永久提供指定模型。"
+    },
+    {
+      "slug": "ctyun-token-renew-80m",
+      "platformSlug": "ctyun",
+      "name": "Token 80M（存量续订）",
+      "billingMode": "subscription",
+      "action": "https://www.ctyun.cn/products/maas",
+      "rating": 4,
+      "monthlyPrice": 89,
+      "firstMonthPrice": "-",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "discontinued": true,
+      "benefits": [
+        "80M Token/月"
+      ],
+      "note": "仅订购周期未结束的老用户可续订Token制套餐；周期结束不可恢复，新用户购买积分制。官方月Token额度，独立五小时/周窗口未确认；模型库动态调整，不保证永久提供指定模型。"
+    },
+    {
+      "slug": "ctyun-token-renew-180m",
+      "platformSlug": "ctyun",
+      "name": "Token 180M（存量续订）",
+      "billingMode": "subscription",
+      "action": "https://www.ctyun.cn/products/maas",
+      "rating": 4,
+      "monthlyPrice": 199,
+      "firstMonthPrice": "-",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "discontinued": true,
+      "benefits": [
+        "180M Token/月"
+      ],
+      "note": "仅订购周期未结束的老用户可续订Token制套餐；周期结束不可恢复，新用户购买积分制。官方月Token额度，独立五小时/周窗口未确认；模型库动态调整，不保证永久提供指定模型。"
+    },
+    {
+      "slug": "ctyun-token-renew-380m",
+      "platformSlug": "ctyun",
+      "name": "Token 380M（存量续订）",
+      "billingMode": "subscription",
+      "action": "https://www.ctyun.cn/products/maas",
+      "rating": 4,
+      "monthlyPrice": 399,
+      "firstMonthPrice": "-",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "discontinued": true,
+      "benefits": [
+        "380M Token/月"
+      ],
+      "note": "仅订购周期未结束的老用户可续订Token制套餐；周期结束不可恢复，新用户购买积分制。官方月Token额度，独立五小时/周窗口未确认；模型库动态调整，不保证永久提供指定模型。"
+    },
+    {
+      "slug": "ctyun-token-renew-680m",
+      "platformSlug": "ctyun",
+      "name": "Token 680M（存量续订）",
+      "billingMode": "subscription",
+      "action": "https://www.ctyun.cn/products/maas",
+      "rating": 4,
+      "monthlyPrice": 699,
+      "firstMonthPrice": "-",
+      "quarterlyPrice": "未公开",
+      "yearlyPrice": "未公开",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "discontinued": true,
+      "benefits": [
+        "680M Token/月"
+      ],
+      "note": "仅订购周期未结束的老用户可续订Token制套餐；周期结束不可恢复，新用户购买积分制。官方月Token额度，独立五小时/周窗口未确认；模型库动态调整，不保证永久提供指定模型。"
+    },
+    {
+      "slug": "trae-intl-free",
+      "platformSlug": "trae-intl",
+      "name": "Free",
+      "billingMode": "subscription",
+      "action": "https://www.trae.ai/pricing",
+      "rating": 3,
+      "monthlyPrice": 0,
+      "yearlyPrice": 0,
+      "currency": "$",
+      "fiveHoursRequests": "未公开",
+      "weeklyRequests": "未公开",
+      "monthlyRequests": "未公开",
+      "supportsHarnessApi": false,
+      "benefits": [
+        "仅Auto模式，有限Dollar Usage/月",
+        "有限代码补全，2个云端任务并行",
+        "不含SOLO模式"
+      ],
+      "note": "官方未公布有限额度具体数值；不能从付费模型名单推断可手选模型。",
+      "summary": "仅Auto模式，有限Dollar Usage/月；有限代码补全，2个云端任务并行；不含SOLO模式",
+      "quarterlyPrice": "未公开"
     }
   ]
 }

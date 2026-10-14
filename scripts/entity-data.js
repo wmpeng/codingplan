@@ -19,6 +19,28 @@
     return { modelName, tierLabel, relationLabel: [modelName, tierLabel].filter(Boolean).join(' ') };
   }
 
+  // A missing plan override inherits; false must never fall through to the platform.
+  function resolveHarnessApi(platform, plan) {
+    if (typeof plan?.supportsHarnessApi === 'boolean') return plan.supportsHarnessApi;
+    return typeof platform?.supportsHarnessApi === 'boolean' ? platform.supportsHarnessApi : null;
+  }
+
+  function harnessApiBadge(value, options) {
+    const partial = !!options?.partial;
+    if (!partial && typeof value !== 'boolean') return '';
+    const supported = partial || value === true;
+    const label = supported ? '可接入第三方工具' : '不可接入第三方工具';
+    const status = supported ? 'true' : 'false';
+    return `<span class="harness-api-badge" data-harness-api="${status}" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">${label}</span>`;
+  }
+
+  function platformHarnessApiBadge(platform, plans) {
+    const value = resolveHarnessApi(platform);
+    const values = [value, ...(plans || []).filter(plan => plan.platformSlug === platform.slug && !plan.discontinued).map(plan => resolveHarnessApi(platform, plan))];
+    const partial = values.includes(true) && values.some(value => value !== true);
+    return harnessApiBadge(value, { partial });
+  }
+
   // Inventory is a set of model identities, never a selection of billing rows.
   function supportedModels(context, plans) {
     const models = new Map();
@@ -32,6 +54,7 @@
   }
 
   function platformModels(context, platformSlug) {
+    // 平台卡片与平台模型筛选也要覆盖按量 API；planTableVisible 只控制套餐表展示。
     return supportedModels(context, context.plans.filter(plan => plan.platformSlug === platformSlug && !plan.discontinued));
   }
 
@@ -48,7 +71,7 @@
       if (!relationsByPlanSlug.has(relation.planSlug)) relationsByPlanSlug.set(relation.planSlug, []);
       relationsByPlanSlug.get(relation.planSlug).push(relation);
     });
-    return { platforms, plans, models, planModels, platformBySlug, planBySlug, modelBySlug, relationsByPlanSlug };
+    return { workload: planModelDoc.workload, platforms, plans, models, planModels, platformBySlug, planBySlug, modelBySlug, relationsByPlanSlug };
   }
 
   function listPlatforms(context, options) {
@@ -66,9 +89,14 @@
         const models = supportedModels(context, [plan]);
         return {
           ...plan,
+          supportsHarnessApi: resolveHarnessApi(platform, plan),
           platformName: (platform && platform.name) || plan.platformSlug,
           supportedModels: models,
-          modelLabels: models.map(model => model.name)
+          modelLabels: models.map(model => model.name),
+          monthlyTokenOptions: (context.relationsByPlanSlug.get(plan.slug) || []).map(relation => ({
+            modelSlug: relation.modelSlug,
+            value: relation.usage && relation.usage.monthlyTokenInM
+          }))
         };
       });
   }
@@ -131,6 +159,7 @@
         return {
           planSlug: plan.slug,
           planName: plan.name,
+          supportsHarnessApi: resolveHarnessApi(context.platformBySlug.get(plan.platformSlug), plan),
           planNote: plan.note || null,
           actionUrl: plan.action || null,
           rows
@@ -139,8 +168,9 @@
       .filter((group) => group.rows.length > 0);
   }
 
-  function buildComparisonPoints(context, usdToCnyRate) {
+  function buildComparisonPoints(context, usdToCnyRate, options) {
     const points = [];
+    const displayNumber = value => options?.includeUnknown && value === 0 ? 0 : positiveNumber(value);
     for (const relation of context.planModels) {
       const plan = context.planBySlug.get(relation.planSlug);
       const model = context.modelBySlug.get(relation.modelSlug);
@@ -148,25 +178,34 @@
       const platform = context.platformBySlug.get(plan.platformSlug);
       if (!platform) continue;
       const usage = relation.usage || {};
-      const unit = positiveNumber(usage.unitPriceCnyPerM);
+      const unit = displayNumber(usage.unitPriceCnyPerM);
       const windows = displayWindows(usage);
+      if (options?.includeUnknown) {
+        if (usage.monthlyTokenInM === 0) windows.monthly = 0;
+        if (usage.weeklyTokenInM === 0) windows.weekly = 0;
+        if (usage.fiveHourTokenInM === 0) windows.fiveHours = 0;
+      }
       const billingMode = plan.billingMode;
-      const fee = positiveNumber(plan.comparisonMonthlyPrice ?? plan.monthlyPrice);
+      const fee = displayNumber(plan.comparisonMonthlyPrice ?? plan.monthlyPrice);
       const displayCurrency = plan.currency || '¥';
       const rate = currencyRate(displayCurrency, usdToCnyRate);
-      const monthlyFeeCny = fee && rate ? Math.round(fee * rate * 1e6) / 1e6 : null;
-      if (billingMode === 'payg' ? !unit : !((monthlyFeeCny && windows.monthly) || unit)) continue;
+      const monthlyFeeCny = fee !== null && rate ? Math.round(fee * rate * 1e6) / 1e6 : null;
+      if (!options?.includeUnknown && (billingMode === 'payg' ? !unit : !((monthlyFeeCny && windows.monthly) || unit))) continue;
       points.push({
         slug: relation.slug,
         platformSlug: platform.slug,
         planSlug: plan.slug,
         modelSlug: model.slug,
         platformName: platform.name,
+        platformVisible: platform.catalogVisible !== false,
         planName: plan.comparisonName || plan.name,
         ...billingPresentation(model, relation),
         multimodal: model.multimodal,
         scores: comparisonScores(model.scores),
         billingMode,
+        supportsHarnessApi: resolveHarnessApi(platform, plan),
+        discontinued: !!plan.discontinued,
+        planTableVisible: plan.planTableVisible !== false,
         actionUrl: plan.action || platform.action || null,
         originalMonthlyFee: billingMode === 'subscription' ? fee : undefined,
         originalCurrency: billingMode === 'subscription'
@@ -209,6 +248,9 @@
   }
 
   return {
+    resolveHarnessApi,
+    harnessApiBadge,
+    platformHarnessApiBadge,
     catalogCounts,
     headerSubtitle,
     collection,

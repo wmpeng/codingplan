@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<script src="/scripts/ui-core.js?v=57904152bf"></script>
+<script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
+<script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>2026年9月主流大模型能力对比：Fable 5.1 综合领先，GPT-6 Astra 编码突出，GLM Flash 与 Luna 如何选</title>
-  <meta name="description" content="过去一个月，Fable 5.1、GPT-6 Astra、GLM-5.3 Flash 等模型陆续进入选型名单。综合能力、网页开发和仓库工程的榜首并不完全相同，日常大量调用时，还要考虑完成任务的成本。" />
-  <link rel="icon" href="../../../favicon.ico?v=20260907" type="image/x-icon" />
-  <link rel="stylesheet" href="../../../styles/shared.css?v=20260907" />
+<meta name="description" content="过去一个月，Fable 5.1、GPT-6 Astra、GLM-5.3 Flash 等模型陆续进入选型名单。综合能力、网页开发和仓库工程的榜首并不完全相同，日常大量调用时，还要考虑完成任务的成本。" />
+  <link rel="icon" href="../../../favicon.ico?v=260924a" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=482edb170c" />
   <style>
 
 
@@ -463,24 +467,74 @@
     }
 
   </style>
+<link rel="canonical" href="https://codingplan.fyi/articles/model_comparisons/20260907/">
+<script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=7c1640cfed" />
+  <link rel="stylesheet" href="/styles/design-system.css?v=47a0b29cda" />
+<script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
+<link rel="stylesheet" href="/styles/ui-components.css?v=e5133e2fe2">
 </head>
 <body class="article-page">
-  <div class="doc-wrap">
-    <nav class="back-nav" aria-label="返回">
-      <a href="../../../" class="back-home-btn">← 返回主页</a>
-      <a href="../../" class="back-home-btn">文章列表</a>
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/monitor/" hidden data-monitor-nav>可用性监控</a>
+    <a href="/articles/" aria-current="page">文章</a>
+    <a href="/updates/">更新历史</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="doc-wrap">
+    <nav class="guide-breadcrumb article-breadcrumb" aria-label="面包屑">
+      <a href="/">Coding Plan</a><span aria-hidden="true">/</span>
+      <a href="/articles/">文章列表</a><span aria-hidden="true">/</span>
+      <span aria-current="page" title="2026年9月主流大模型能力对比：Fable 5.1 综合领先，GPT-6 Astra 编码突出，GLM Flash 与 Luna 如何选">2026年9月主流大模型能力对比：Fable 5.1 综合领先，GPT-6 Astra 编码突出，GLM Flash 与 Luna 如何选</span>
     </nav>
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop" aria-label="侧栏目录">
-        <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、快速对比</a></li><li><a href="#sec-二-aa-intelligence-index-fable-5-1-与-gpt-6-as">二、AA Intelligence Index：Fable 5.1 与 GPT-6 Astra 领先</a></li><li><a href="#sec-三-coding-对比">三、Coding 对比</a><ol><li><a href="#sec-1-arena-webdev-看网页开发成品-也看投票的不确定性">1. Arena WebDev：看网页开发成品，也看投票的不确定性</a></li><li><a href="#sec-2-deepswe-真实仓库里的长程工程任务">2. DeepSWE：真实仓库里的长程工程任务</a></li></ol></li><li><a href="#sec-h2-4">四、重点模型解析</a><ol><li><a href="#sec-1-claude-fable-5-1-追求综合上限-值得为难题付溢价">1. Claude Fable 5.1：追求综合上限，值得为难题付溢价</a></li><li><a href="#sec-2-gpt-6-astra-兼顾网页开发与仓库工程的高端主力">2. GPT-6 Astra：兼顾网页开发与仓库工程的高端主力</a></li><li><a href="#sec-3-kimi-k3-国产综合首选-优势在覆盖面">3. Kimi K3：国产综合首选，优势在覆盖面</a></li><li><a href="#sec-4-qwen3-8-max-更值得用于前端-27b-的价值在自部署">4. Qwen3.8：Max 更值得用于前端，27B 的价值在自部署</a></li><li><a href="#sec-5-glm-5-3-没有多模态要求-国产-coding-优先它">5. GLM-5.3：没有多模态要求，国产 Coding 优先它</a></li><li><a href="#sec-6-glm-5-3-flash-日常页面开发的低成本首选">6. GLM-5.3 Flash：日常页面开发的低成本首选</a></li><li><a href="#sec-7-gpt-5-6-luna-适合高频仓库任务-网页开发稍弱">7. GPT-5.6 Luna：适合高频仓库任务，网页开发稍弱</a></li></ol></li><li><a href="#sec-h2-5">五、选择建议</a><ol><li><a href="#sec-最高智能-综合上限选-fable-5-1-coding-主力选-astra">最高智能：综合上限选 Fable 5.1，Coding 主力选 Astra</a></li><li><a href="#sec-国产最高智能-kimi-k3-综合领先-纯文本-coding-选-glm-5-3">国产最高智能：Kimi K3 综合领先，纯文本 Coding 选 GLM-5.3</a></li><li><a href="#sec-最高性价比-日常页面选-flash-仓库任务试-luna">最高性价比：日常页面选 Flash，仓库任务试 Luna</a></li><li><a href="#sec-h3-5">多模态：看截图与看视频，分开选</a></li></ol></li><li><a href="#sec-h2-6">六、总结</a></li></ol></nav>
+        <nav class="doc-toc" aria-label="目录"><p class="doc-toc-title">本页内容</p><ol><li><a href="#sec-h2-1">一、快速对比</a></li><li><a href="#sec-二-aa-intelligence-index-fable-5-1-与-gpt-6-as">二、AA Intelligence Index：Fable 5.1 与 GPT-6 Astra 领先</a></li><li><a href="#sec-三-coding-对比">三、Coding 对比</a><ol><li><a href="#sec-1-arena-webdev-看网页开发成品-也看投票的不确定性">1. Arena WebDev：看网页开发成品，也看投票的不确定性</a></li><li><a href="#sec-2-deepswe-真实仓库里的长程工程任务">2. DeepSWE：真实仓库里的长程工程任务</a></li></ol></li><li><a href="#sec-h2-4">四、重点模型解析</a><ol><li><a href="#sec-1-claude-fable-5-1-追求综合上限-值得为难题付溢价">1. Claude Fable 5.1：追求综合上限，值得为难题付溢价</a></li><li><a href="#sec-2-gpt-6-astra-兼顾网页开发与仓库工程的高端主力">2. GPT-6 Astra：兼顾网页开发与仓库工程的高端主力</a></li><li><a href="#sec-3-kimi-k3-国产综合首选-优势在覆盖面">3. Kimi K3：国产综合首选，优势在覆盖面</a></li><li><a href="#sec-4-qwen3-8-max-更值得用于前端-27b-的价值在自部署">4. Qwen3.8：Max 更值得用于前端，27B 的价值在自部署</a></li><li><a href="#sec-5-glm-5-3-没有多模态要求-国产-coding-优先它">5. GLM-5.3：没有多模态要求，国产 Coding 优先它</a></li><li><a href="#sec-6-glm-5-3-flash-日常页面开发的低成本首选">6. GLM-5.3 Flash：日常页面开发的低成本首选</a></li><li><a href="#sec-7-gpt-5-6-luna-适合高频仓库任务-网页开发稍弱">7. GPT-5.6 Luna：适合高频仓库任务，网页开发稍弱</a></li></ol></li><li><a href="#sec-h2-5">五、选择建议</a><ol><li><a href="#sec-最高智能-综合上限选-fable-5-1-coding-主力选-astra">最高智能：综合上限选 Fable 5.1，Coding 主力选 Astra</a></li><li><a href="#sec-国产最高智能-kimi-k3-综合领先-纯文本-coding-选-glm-5-3">国产最高智能：Kimi K3 综合领先，纯文本 Coding 选 GLM-5.3</a></li><li><a href="#sec-最高性价比-日常页面选-flash-仓库任务试-luna">最高性价比：日常页面选 Flash，仓库任务试 Luna</a></li><li><a href="#sec-h3-5">多模态：看截图与看视频，分开选</a></li></ol></li><li><a href="#sec-h2-6">六、总结</a></li></ol></nav>
       </aside>
       <article class="doc">
         <p class="doc-kicker">模型评测 · Coding Plan</p>
         <h1>2026年9月主流大模型能力对比：Fable 5.1 综合领先，GPT-6 Astra 编码突出，GLM Flash 与 Luna 如何选</h1>
-        <p class="doc-updates"><time datetime="2026-09-07">更新日期 2026.9.7</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
+        <p class="doc-updates"><time datetime="2026-09-07">更新日期 2026.9.7</time> · 数据来源 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a></p>
         
         <p class="lead">过去一个月，Fable 5.1、GPT-6 Astra、GLM-5.3 Flash 等模型陆续进入选型名单。综合能力、网页开发和仓库工程的榜首并不完全相同，日常大量调用时，还要考虑完成任务的成本。</p>
-        <nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">目录</p><ol><li><a href="#sec-h2-1">一、快速对比</a></li><li><a href="#sec-二-aa-intelligence-index-fable-5-1-与-gpt-6-as">二、AA Intelligence Index：Fable 5.1 与 GPT-6 Astra 领先</a></li><li><a href="#sec-三-coding-对比">三、Coding 对比</a><ol><li><a href="#sec-1-arena-webdev-看网页开发成品-也看投票的不确定性">1. Arena WebDev：看网页开发成品，也看投票的不确定性</a></li><li><a href="#sec-2-deepswe-真实仓库里的长程工程任务">2. DeepSWE：真实仓库里的长程工程任务</a></li></ol></li><li><a href="#sec-h2-4">四、重点模型解析</a><ol><li><a href="#sec-1-claude-fable-5-1-追求综合上限-值得为难题付溢价">1. Claude Fable 5.1：追求综合上限，值得为难题付溢价</a></li><li><a href="#sec-2-gpt-6-astra-兼顾网页开发与仓库工程的高端主力">2. GPT-6 Astra：兼顾网页开发与仓库工程的高端主力</a></li><li><a href="#sec-3-kimi-k3-国产综合首选-优势在覆盖面">3. Kimi K3：国产综合首选，优势在覆盖面</a></li><li><a href="#sec-4-qwen3-8-max-更值得用于前端-27b-的价值在自部署">4. Qwen3.8：Max 更值得用于前端，27B 的价值在自部署</a></li><li><a href="#sec-5-glm-5-3-没有多模态要求-国产-coding-优先它">5. GLM-5.3：没有多模态要求，国产 Coding 优先它</a></li><li><a href="#sec-6-glm-5-3-flash-日常页面开发的低成本首选">6. GLM-5.3 Flash：日常页面开发的低成本首选</a></li><li><a href="#sec-7-gpt-5-6-luna-适合高频仓库任务-网页开发稍弱">7. GPT-5.6 Luna：适合高频仓库任务，网页开发稍弱</a></li></ol></li><li><a href="#sec-h2-5">五、选择建议</a><ol><li><a href="#sec-最高智能-综合上限选-fable-5-1-coding-主力选-astra">最高智能：综合上限选 Fable 5.1，Coding 主力选 Astra</a></li><li><a href="#sec-国产最高智能-kimi-k3-综合领先-纯文本-coding-选-glm-5-3">国产最高智能：Kimi K3 综合领先，纯文本 Coding 选 GLM-5.3</a></li><li><a href="#sec-最高性价比-日常页面选-flash-仓库任务试-luna">最高性价比：日常页面选 Flash，仓库任务试 Luna</a></li><li><a href="#sec-h3-5">多模态：看截图与看视频，分开选</a></li></ol></li><li><a href="#sec-h2-6">六、总结</a></li></ol></nav>
+        <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="目录"><p class="doc-toc-title">本页内容</p><ol><li><a href="#sec-h2-1">一、快速对比</a></li><li><a href="#sec-二-aa-intelligence-index-fable-5-1-与-gpt-6-as">二、AA Intelligence Index：Fable 5.1 与 GPT-6 Astra 领先</a></li><li><a href="#sec-三-coding-对比">三、Coding 对比</a><ol><li><a href="#sec-1-arena-webdev-看网页开发成品-也看投票的不确定性">1. Arena WebDev：看网页开发成品，也看投票的不确定性</a></li><li><a href="#sec-2-deepswe-真实仓库里的长程工程任务">2. DeepSWE：真实仓库里的长程工程任务</a></li></ol></li><li><a href="#sec-h2-4">四、重点模型解析</a><ol><li><a href="#sec-1-claude-fable-5-1-追求综合上限-值得为难题付溢价">1. Claude Fable 5.1：追求综合上限，值得为难题付溢价</a></li><li><a href="#sec-2-gpt-6-astra-兼顾网页开发与仓库工程的高端主力">2. GPT-6 Astra：兼顾网页开发与仓库工程的高端主力</a></li><li><a href="#sec-3-kimi-k3-国产综合首选-优势在覆盖面">3. Kimi K3：国产综合首选，优势在覆盖面</a></li><li><a href="#sec-4-qwen3-8-max-更值得用于前端-27b-的价值在自部署">4. Qwen3.8：Max 更值得用于前端，27B 的价值在自部署</a></li><li><a href="#sec-5-glm-5-3-没有多模态要求-国产-coding-优先它">5. GLM-5.3：没有多模态要求，国产 Coding 优先它</a></li><li><a href="#sec-6-glm-5-3-flash-日常页面开发的低成本首选">6. GLM-5.3 Flash：日常页面开发的低成本首选</a></li><li><a href="#sec-7-gpt-5-6-luna-适合高频仓库任务-网页开发稍弱">7. GPT-5.6 Luna：适合高频仓库任务，网页开发稍弱</a></li></ol></li><li><a href="#sec-h2-5">五、选择建议</a><ol><li><a href="#sec-最高智能-综合上限选-fable-5-1-coding-主力选-astra">最高智能：综合上限选 Fable 5.1，Coding 主力选 Astra</a></li><li><a href="#sec-国产最高智能-kimi-k3-综合领先-纯文本-coding-选-glm-5-3">国产最高智能：Kimi K3 综合领先，纯文本 Coding 选 GLM-5.3</a></li><li><a href="#sec-最高性价比-日常页面选-flash-仓库任务试-luna">最高性价比：日常页面选 Flash，仓库任务试 Luna</a></li><li><a href="#sec-h3-5">多模态：看截图与看视频，分开选</a></li></ol></li><li><a href="#sec-h2-6">六、总结</a></li></ol></nav></details>
         <p>本期比较 19 款模型。AA 采用截至 9 月 7 日的 <strong>Intelligence Index v4.2</strong>；Arena 页面更新于 9 月 5 日；DeepSWE v1.1 页面更新于 9 月 3 日。三类成绩分别反映综合能力、网页开发偏好和长程工程任务表现，不能相加为一个总分。AA 已更换评测口径，本期分数也不与 8 月旧稿直接计算涨跌。</p>
 <p><strong>本期关键变化（相较 2026 年 8 月）：</strong></p>
 <ol>
@@ -936,7 +990,7 @@
 <h3 id="sec-最高智能-综合上限选-fable-5-1-coding-主力选-astra">最高智能：综合上限选 Fable 5.1，Coding 主力选 Astra</h3>
 <p>预算充足、追求综合能力上限，优先 <strong>Fable 5.1</strong>；主要用途是编程，需要兼顾网页开发和复杂工程，优先 <strong>GPT-6 Astra</strong>。已有 Sol 的用户，如果工作主要是仓库修改，可以继续用，遇到更难任务再升级。</p>
 <h3 id="sec-国产最高智能-kimi-k3-综合领先-纯文本-coding-选-glm-5-3">国产最高智能：Kimi K3 综合领先，纯文本 Coding 选 GLM-5.3</h3>
-<p><strong>国产综合能力优先考虑 Kimi K3，但要留意订阅渠道。</strong> 截至 9 月 7 日，Dreamfree 渠道对比页仍标注其官方订阅新购受限，另列有第三方服务入口。该限制不代表 Kimi API 或所有渠道均不可用，购买前请核对对应平台的实时状态。<a href="https://vibecoding.dreamfree.space/?view=usage" rel="noopener noreferrer">查看 Kimi 与其他模型的渠道对比</a>。</p>
+<p><strong>国产综合能力优先考虑 Kimi K3，但要留意订阅渠道。</strong> 截至 9 月 7 日，Dreamfree 渠道对比页仍标注其官方订阅新购受限，另列有第三方服务入口。该限制不代表 Kimi API 或所有渠道均不可用，购买前请核对对应平台的实时状态。<a href="/?view=usage" rel="noopener noreferrer">查看 Kimi 与其他模型的渠道对比</a>。</p>
 <p>如果 Coding 场景没有多模态要求，<strong>优先 GLM-5.3</strong>：工程成绩接近 Kimi，任务成本更低。有截图输入、又希望国产综合能力尽量高，选 Kimi；更偏网页成品与视频材料，可考虑 Qwen3.8 Max。</p>
 <h3 id="sec-最高性价比-日常页面选-flash-仓库任务试-luna">最高性价比：日常页面选 Flash，仓库任务试 Luna</h3>
 <p><strong>日常页面开发先用 GLM-5.3 Flash，高频仓库任务先试 GPT-5.6 Luna。</strong> 已经接好 DeepSeek、文本任务完成得稳定，可以继续用 V4 Flash 0731；需要给这套流程加图像输入，再考虑 Flash Vision。Flash Vision 尚缺少本期两项 Coding 榜单成绩，编程表现需要进一步试用。</p>
@@ -972,14 +1026,14 @@
 </tbody>
 </table>
 <p>来源：<a href="https://artificialanalysis.ai/?models=glm-5-3-flash%2Cminimax-m3%2Cgpt-6-astra%2Cclaude-fable-5-1%2Cgpt-5-6-luna%2Cmuse-spark-1-3%2Cdeepseek-v4-pro%2Cgemini-3-8-flash%2Cqwen3-8-27b%2Cclaude-opus-5%2Cgrok-4-6%2Cclaude-fable-5%2Cglm-5-3%2Cgpt-5-6-sol%2Ckimi-k3%2Cqwen3-8-max%2Cdeepseek-v4-flash%2Cdeepseek-v4-flash-vision&amp;intelligence-category=country-analysis" rel="noopener noreferrer">AA 模型成本对比</a>，2026-09-07 所选配置。这里是评测任务成本，不是每百万 token 报价；DeepSWE 的工程任务成本另见前表。</p>
-<p><strong>每天用量较大且稳定时，Coding Plan / Token Plan 订阅可能更省钱。</strong> 同一个模型，在不同平台和套餐下的额度、折算单价可能差很多。选好模型后，建议再打开 <a href="https://vibecoding.dreamfree.space/?view=usage" rel="noopener noreferrer">AI Coding Plan 额度／价格对比</a>，直接看 DeepSeek Flash、GLM Flash 和 Luna 的三个快速对比列表，按自己的月预算和用量挑套餐。</p>
+<p><strong>每天用量较大且稳定时，Coding Plan / Token Plan 订阅可能更省钱。</strong> 同一个模型，在不同平台和套餐下的额度、折算单价可能差很多。选好模型后，建议再打开 <a href="/?view=usage" rel="noopener noreferrer">AI Coding Plan 额度／价格对比</a>，直接看 DeepSeek Flash、GLM Flash 和 Luna 的三个快速对比列表，按自己的月预算和用量挑套餐。</p>
 <p><strong>DeepSeek V4 Flash 0731 订阅对比</strong></p>
 <figure class="doc-figure doc-figure--compact"><img src="./assets/subscription-deepseek-flash.png" alt="DeepSeek V4 Flash 0731 订阅额度与价格对比，截图于2026-09-07" loading="lazy" /></figure>
 <p><strong>GLM 5.3 Flash 订阅对比</strong></p>
 <figure class="doc-figure doc-figure--compact"><img src="./assets/subscription-glm-flash.png" alt="GLM 5.3 Flash 订阅额度与价格对比，截图于2026-09-07" loading="lazy" /></figure>
 <p><strong>GPT 5.6 Luna 订阅对比</strong></p>
 <figure class="doc-figure doc-figure--compact"><img src="./assets/subscription-luna.png" alt="GPT 5.6 Luna 订阅额度与价格对比，截图于2026-09-07" loading="lazy" /></figure>
-<p>截图来源：<a href="https://vibecoding.dreamfree.space/?view=usage" rel="noopener noreferrer">Dreamfree Coding Plan 额度／价格对比</a>。</p>
+<p>截图来源：<a href="/?view=usage" rel="noopener noreferrer">Dreamfree Coding Plan 额度／价格对比</a>。</p>
 <p>综合单价按网站的工作负载与额度口径折算，包含约 95% 缓存命中率、0.5% 输出占比及部分估算数据，不是平台承诺的通用 token 单价；部分优惠有期限。用不满额度的人，订阅未必比按量便宜，购买时也要看五小时、周额度和所选模型的抵扣倍率。</p>
 <h3 id="sec-h3-5">多模态：看截图与看视频，分开选</h3>
 <p>需要看截图做日常开发，优先 <strong>GLM-5.3 Flash</strong>；希望获得更高的综合能力，选 <strong>Astra、Fable 5.1 或 Kimi K3</strong>。需要直接输入视频，则先从明确列有视频能力的 <strong>Qwen3.8 Max、Qwen3.8 27B、Gemini 3.8 Flash、Muse Spark 1.3</strong> 中筛选；音频输入可优先看 Gemini 3.8 Flash 的具体接口。</p>
@@ -987,7 +1041,7 @@
 <h2 id="sec-h2-6">六、总结</h2>
 <p><strong>综合能力优先选 Fable 5.1，高端编程主力选 Astra；国产模型中，兼顾图像输入选 Kimi K3，纯文本工程选 GLM-5.3；低成本日常开发则按任务在 GLM Flash 与 Luna 之间选择。</strong></p>
 <p>选定模型后，再按实际用量比较订阅和按量付费。常规任务用低成本模型，遇到反复解决不了的问题再升级。判断是否划算时，除了调用费，也要算上重试和人工检查花费的时间。</p>
-        <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>原文链接 <a href="https://vibecoding.dreamfree.space/articles/model_comparisons/20260907/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/model_comparisons/20260907/</a></div>
+        <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">数据来源 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>原文链接 <a href="/articles/model_comparisons/20260907/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/model_comparisons/20260907/</a></div>
       </article>
     </div>
   </div>

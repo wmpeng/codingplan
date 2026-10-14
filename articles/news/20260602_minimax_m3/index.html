@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<script src="/scripts/ui-core.js?v=57904152bf"></script>
+<script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
+<script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MiniMax-M3 重磅升级：原生多模态、Ultra 套餐登场、性价比再封王</title>
-  <meta name="description" content="MiniMax-M3 全面上线：原生多模态、Ultra 官方月 Token 上限约 71 亿（7100M）、Plus/Max 官方池约 6 亿/18 亿、M2.7-highspeed 全档可调。公开订阅已升级 Token Plan，站内仍按 Coding Plan 对比展示。" />
-  <link rel="icon" href="../../../favicon.ico?v=260515" type="image/x-icon" />
-  <link rel="stylesheet" href="../../../styles/shared.css?v=260515" />
+<meta name="description" content="MiniMax-M3 全面上线：原生多模态、Ultra 官方月 Token 上限约 71 亿（7100M）、Plus/Max 官方池约 6 亿/18 亿、M2.7-highspeed 全档可调。公开订阅已升级 Token Plan，站内仍按 Coding Plan 对比展示。" />
+  <link rel="icon" href="../../../favicon.ico?v=260924a" type="image/x-icon" />
+  <link rel="stylesheet" href="../../../styles/shared.css?v=482edb170c" />
   <style>
     body.article-page {
       font-size: 17px;
@@ -469,17 +473,67 @@
     }
 
   </style>
+<link rel="canonical" href="https://codingplan.fyi/articles/news/20260602_minimax_m3/">
+<script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
+  <link rel="stylesheet" href="/styles/reading.css?v=7c1640cfed" />
+  <link rel="stylesheet" href="/styles/design-system.css?v=47a0b29cda" />
+<script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
+<link rel="stylesheet" href="/styles/ui-components.css?v=e5133e2fe2">
 </head>
 <body class="article-page">
-  <div class="doc-wrap">
-    <nav class="back-nav" aria-label="返回">
-      <a href="../../../" class="back-home-btn">← 返回主页</a>
-      <a href="../../" class="back-home-btn">文章列表</a>
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/monitor/" hidden data-monitor-nav>可用性监控</a>
+    <a href="/articles/" aria-current="page">文章</a>
+    <a href="/updates/">更新历史</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="doc-wrap">
+    <nav class="guide-breadcrumb article-breadcrumb" aria-label="面包屑">
+      <a href="/">Coding Plan</a><span aria-hidden="true">/</span>
+      <a href="/articles/">文章列表</a><span aria-hidden="true">/</span>
+      <span aria-current="page" title="MiniMax-M3 重磅升级：原生多模态、Ultra 套餐登场、性价比再封王">MiniMax-M3 重磅升级：原生多模态、Ultra 套餐登场、性价比再封王</span>
     </nav>
     <div class="doc-layout">
       <aside class="doc-toc-aside doc-toc-aside--desktop">
         <nav class="doc-toc" aria-label="文章目录">
-          <p class="doc-toc-title">目录</p>
+          <p class="doc-toc-title">本页内容</p>
           <ol>
             <li><a href="#sec-m3-core">一、M3 核心升级</a>
               <ol>
@@ -515,12 +569,12 @@
       <article class="doc">
       <p class="doc-kicker">产品更新 · Coding Plan</p>
       <h1>MiniMax-M3 重磅升级：原生多模态、Ultra 套餐登场、性价比再封王</h1>
-      <p class="doc-updates">更新日期：<time datetime="2026-06-02">2026.6.2</time> · 数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
+      <p class="doc-updates">更新日期：<time datetime="2026-06-02">2026.6.2</time> · 数据来源 <a href="/" rel="noopener noreferrer">vibecoding.dreamfree.space</a></p>
       <div class="doc-blockquote" style="margin-top:0;margin-bottom:1.25rem;">本次核心更新：MiniMax-M3 全量上线公开订阅（MiniMax 侧为 Token Plan，站内对比仍按 Coding Plan 展示）；原生多模态；<strong>现行公开档 M3 无 highspeed</strong>；新增 Ultra（官方月 Token 上限 7100M ≈ 71 亿）；Starter / Plus-极速 / Max-极速 停售、老用户可续订；Max-极速 可迁移至新版 Max（199→119 并补发差价积分）；M2.7-highspeed 全档通用可调。</div>
       <p class="lead">2026 年 6 月，国产大模型迭代节奏持续加快。<strong>MiniMax</strong> 正式推出 <strong>MiniMax-M3</strong>（以下简称 M3）旗舰模型，定位为"原生多模态 + 极致性价比"的代际跃迁之作。在智谱AI、字节·方舟、阿里·百炼等头部平台持续限购、Coding Plan 愈发稀缺的当下，M3 的发布为个人开发者提供了一个<strong>不限购、零抢购、模型顶尖</strong>的稳定选择。本文围绕 M3 模型能力升级、MiniMax 套餐体系调整、选型建议展开。</p>
 
-      <nav class="doc-toc doc-toc--inline" aria-label="文章目录">
-        <p class="doc-toc-title">目录</p>
+      <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="文章目录">
+        <p class="doc-toc-title">本页内容</p>
         <ol>
           <li><a href="#sec-m3-core">一、M3 核心升级：模型能力跃迁</a>
             <ol>
@@ -551,7 +605,7 @@
           <li><a href="#sec-domestic">四、与国产第一梯队对比</a></li>
           <li><a href="#sec-summary">五、总结</a></li>
         </ol>
-      </nav>
+      </nav></details>
 
       <h2 id="sec-m3-core">一、M3 核心升级：模型能力跃迁</h2>
 
@@ -726,8 +780,8 @@
       <p>对绝大多数<strong>个人开发者</strong>而言，<strong>Plus（¥49）</strong> 仍是入门首选（官方池约 6 亿 Token/月），<strong>Max（¥119）</strong> 是高强度日常开发主力（约 18 亿）；<strong>Ultra（¥469）</strong> 则面向团队级、高强度 Agent（官方上限约 71 亿 Token/月）。需要 TPS 100 极速响应的用户，每次请求时选择 M2.7-highspeed 端点即可，无需保留已停售的极速版老档。Max-极速 老用户可选择保留订阅防断档，或迁移至新版 Max（同等请求次数、更低价、M2.7-highspeed 仍可调）。建议结合自身使用频率、多模态需求与官方 Token 上限，合理选择套餐档位。</p>
 
       <div class="doc-blockquote doc-source" style="margin-top:2.25rem;padding-top:1.15rem;border-top:1px solid var(--border-color);border-left:none;background:transparent;">
-        数据来源 <a href="https://vibecoding.dreamfree.space" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>
-        原文链接 <a href="https://vibecoding.dreamfree.space/articles/news/20260602_minimax_m3/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260602_minimax_m3/</a>
+        数据来源 <a href="/" rel="noopener noreferrer">https://vibecoding.dreamfree.space</a><br>
+        原文链接 <a href="/articles/news/20260602_minimax_m3/" rel="noopener noreferrer">https://vibecoding.dreamfree.space/articles/news/20260602_minimax_m3/</a>
       </div>
     </article>
     </div>
