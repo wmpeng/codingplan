@@ -109,7 +109,7 @@
           el.querySelector('.offer-reasons ul').innerHTML=[...item.reasons,...item.cautions].map(text=>`<li>${esc(text)}</li>`).join('');
           grid.append(el);
         }
-      } else content.innerHTML=result.candidates.length?`<div class="offer-results-grid">${result.candidates.map(x=>card(x,state)).join('')}</div>`:`<div class="tool-empty"><h3>暂无同时符合条件的方案</h3><p>${result.modelConflict?esc(result.modelConflict):"试着放宽一项条件；筛选不会自动改变。"}</p><div class="guide-options">${result.conflicts.map(x=>`<button type="button" data-relax="${esc(x.key)}">取消${esc(x.label)}（${x.count} 个套餐）</button>`).join('')}</div><button type="button" class="tool-button" data-reset-results>恢复默认条件</button></div>`;
+      } else content.innerHTML=result.candidates.length?`<div class="offer-results-grid">${result.candidates.map(x=>card(x,state)).join('')}</div>`:`<div class="tool-empty"><h3>暂无同时符合条件的方案</h3><p>${result.modelConflict?esc(result.modelConflict):"试着放宽一项条件；筛选不会自动改变。"}</p><div class="guide-options">${result.conflicts.map(x=>`<button type="button" data-relax="${esc(x.key)}">取消${esc(x.label)}（${x.count} 个套餐）</button>`).join('')}</div><button type="button" class="tool-button" data-reset-results>显示精选</button></div>`;
       summaryObserver.disconnect();
       host.querySelectorAll('.offer-quota-summary').forEach(summary=>{fitSummary(summary);summaryObserver.observe(summary);});
       for(const [id,cls] of open){const el=[...host.querySelectorAll('[data-offer-id]')].find(x=>x.dataset.offerId===id);const d=el?.querySelector('details.'+cls);if(d)d.open=true;}

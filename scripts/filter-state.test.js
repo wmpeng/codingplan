@@ -144,7 +144,7 @@ test('默认精选配置可读取并校验稳定 slug', () => {
   assert.equal(Filters.validateDefaults({ ...config.homepageFilters.defaults, modelSlugs: ['missing'] }, context).ok, false);
 });
 
-test('首页默认取精选平台与两组模型并集，完整页的全量基础状态供显示全部使用', () => {
+test('显式精选参数取平台与两组模型并集，完整页基础状态为全量', () => {
   const config = { homepageFilters: { defaults: { platformSlugs: ['old'], modelSlugs: ['old'], budgetCny: { max: 200 } } } };
   const featuredPreset = { platformSlugs: ['p1', 'p2'], groups: [
     { modelSlugs: ['m1', 'm2'] }, { modelSlugs: ['m2', 'm3'] }

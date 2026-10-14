@@ -214,8 +214,9 @@
       models = context.models;
     let state = Filters.createDefaultState(config, {
       mode: full ? "full" : "home",
-      featuredPreset: opts.featuredPreset,
     });
+    state.platformSlugs = null;
+    state.modelSlugs = null;
     state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || "yi";
     state.modelGroup = "any";
     state.modelMatch = "any";
@@ -228,7 +229,7 @@
       context.modelGroups = opts.featuredPreset.groups || [];
       context.featuredPlatformSlugs = opts.featuredPreset.platformSlugs || [];
     }
-    let groupsReady = Array.isArray(context.modelGroups), initialPresetPending = full, pendingAll = false, multimodalNotice = "", platformShortcutNotice = "";
+    let groupsReady = Array.isArray(context.modelGroups), initialPresetPending = pricing, pendingAll = false, multimodalNotice = "", platformShortcutNotice = "";
     const platformCandidates = kind => platforms.filter(platform => platform[platformShortcutKinds[kind].field] === false).map(platform => platform.slug);
     function platformShortcutAction(kind) {
       const eligible = platformCandidates(kind);
@@ -364,7 +365,7 @@
               .join("")
       }</div>
       ${full ? "" : `<div class="filter-state-controls"><label class="offer-sort"><span>排序</span><select data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></label><span class="offer-sort-help" id="offerSortHelp"></span>`}
-      <div class="filter-state-actions"><button type="button" data-filter-action="reset"${pricing ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${full ? "显示全部" : "恢复默认"}</button>${full ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${pricing ? "已下架内容需单独勾选" : "其他条件恢复不限"}">恢复默认</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
+      <div class="filter-state-actions"><button type="button" data-filter-action="reset"${pricing ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${full ? "显示全部" : "显示精选"}</button>${full ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${pricing ? "已下架内容需单独勾选" : "其他条件恢复不限"}">显示精选</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
       ${monitor ? '<p class="filter-state-hint" data-filter-hint>监控只使用平台、模型条件；未监控项目没有统计。</p>' : ""}
       ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
       </section>`;
@@ -416,8 +417,8 @@
         if (imageNotice) { multimodalNotice = imageNotice; render(); }
         if (platformNotice) { platformShortcutNotice = platformNotice; render(); }
       },
-      reset: () => resetFilters(),
-      restoreDefaults: () => resetFilters(full),
+      reset: () => resetFilters(!full),
+      restoreDefaults: () => resetFilters(true),
     };
     host.filterController = controller;
     if (!full) root.CodingPlanHomeFilters = controller;
@@ -459,7 +460,7 @@
       });
     }
     function render() {
-      const restoreDefaults = host.querySelector('[data-filter-action="restore-defaults"]');
+      const restoreDefaults = host.querySelector(full ? '[data-filter-action="restore-defaults"]' : '[data-filter-action="reset"]');
       if (restoreDefaults) restoreDefaults.disabled = !canRestoreDefaults();
       for (const [key, items] of [
         ["platformSlugs", platforms],
