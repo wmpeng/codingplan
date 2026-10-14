@@ -13,6 +13,8 @@ body.article-page { padding: 24px 28px 64px; font-size: 16px; line-height: 1.85;
 .article-page article.doc h3 { font-size: 18px; font-weight: 650; line-height: 1.6; }
 .article-page article.doc p { line-height: 1.85; }
 .article-page article.doc a { color: var(--accent-primary); text-underline-offset: 4px; }
+body.article-page article.doc a { border-bottom-color: var(--accent-primary); }
+body.article-page article.doc a:hover { color: var(--accent-hover); border-bottom-color: var(--accent-hover); }
 .article-page article.doc blockquote { background: #f4f7fc; border-left-color: #8aaed8; box-shadow: none; border-radius: 0 7px 7px 0; }
 .article-page article.doc table { font-size: 13px; font-variant-numeric: tabular-nums; }
 .article-page article.doc th { background: #f3f6fa; font-weight: 600; }

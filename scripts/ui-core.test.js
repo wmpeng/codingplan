@@ -17,3 +17,12 @@ test('模型名单完整保留但按配置收起，标签和可访问名称均�
   assert.doesNotMatch(UI.modelTags(['A'], { limit: 5 }), /<button/);
   assert.doesNotMatch(UI.modelTags(['A', 'B'], { limit: 1, expanded: true }), / hidden/);
 });
+test('置顶按钮保留实体属性和可访问状态，不将名称解释成 HTML', () => {
+  const html = UI.pinButton({pinned:true,label:'取消置顶 <套餐>',attributes:{'data-plan-pin':'a" & b'}});
+  assert.match(html, /aria-pressed="true"/);
+  assert.match(html, /aria-label="取消置顶 &lt;套餐&gt;"/);
+  assert.match(html, /data-plan-pin="a&quot; &amp; b"/);
+  assert.match(html, /fill="currentColor"/);
+  assert.doesNotMatch(html, /[☆★]/);
+  assert.throws(() => UI.pinButton({attributes:{onclick:'alert(1)'}}), /不支持/);
+});

@@ -253,20 +253,7 @@ function partitionPinnedItems(items, pinnedIds, getId) {
 function buildRowPinButtonHtml({ pinId, pinned } = {}) {
   const id = typeof pinId === 'string' ? pinId.trim() : '';
   if (!id) return '';
-  const isPinned = !!pinned;
-  const label = isPinned ? '取消置顶' : '置顶';
-  const classes = ['platform-pin-btn', 'table-row-pin-btn', isPinned ? 'is-pinned' : '']
-    .filter(Boolean)
-    .join(' ');
-  const icon = isPinned
-    ? '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>'
-    : '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>';
-  return (
-    `<button type="button" class="${classes}" data-table-pin="1" data-pin-id="${escapeHtml(id)}" ` +
-    `aria-pressed="${isPinned ? 'true' : 'false'}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">` +
-    icon +
-    `</button>`
-  );
+  return CatalogUI.pinButton({pinned:!!pinned, className:'platform-pin-btn table-row-pin-btn', attributes:{'data-table-pin':'1','data-pin-id':id}});
 }
 
 function readPinnedIdsFromStorage(storage, key) {
@@ -295,24 +282,8 @@ function writePinnedIdsToStorage(storage, pinnedIds, key) {
 function buildPlatformPinButtonHtml({ platformId, pinned, variant } = {}) {
   const id = typeof platformId === 'string' ? platformId.trim() : '';
   if (!id) return '';
-  const isPinned = !!pinned;
   const kind = variant === 'detail' ? 'detail' : 'card';
-  const label = isPinned ? '取消置顶' : '置顶';
-  const classes = [
-    kind === 'detail' ? 'platform-detail-pin-btn' : 'platform-pin-btn',
-    isPinned ? 'is-pinned' : ''
-  ]
-    .filter(Boolean)
-    .join(' ');
-  const icon = isPinned
-    ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>'
-    : '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>';
-  return (
-    `<button type="button" class="${classes}" data-platform-pin="1" data-platform-id="${escapeHtml(id)}" ` +
-    `aria-pressed="${isPinned ? 'true' : 'false'}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">` +
-    icon +
-    `</button>`
-  );
+  return CatalogUI.pinButton({pinned:!!pinned, className:kind === 'detail' ? 'platform-detail-pin-btn' : 'platform-pin-btn', attributes:{'data-platform-pin':'1','data-platform-id':id}});
 }
 
 function collectModelsForVendor(plans, platformSlug) {

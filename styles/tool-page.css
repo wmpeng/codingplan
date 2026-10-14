@@ -66,7 +66,7 @@ body.tool-page {
 .plan-range-row { display: flex; align-items: center; gap: 6px; margin-top: 7px; }
 .plan-range-row input { width: 76px; border: 1px solid var(--tool-line); border-radius: 7px; padding: 6px; }
 .plan-count { margin: 10px 0; }
-.table-sort-button { border: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; font-weight: inherit; padding: 0; }
+.table-sort-button { border: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; font-weight: inherit; min-height: 32px; padding: 0; }
 .tool-muted { color: var(--tool-muted); font-size: 11px; }
 
 @media (max-width: 800px) {
@@ -176,14 +176,10 @@ body.tool-page { padding: 0; }
 /* 可比较的数据用等宽数字；导航、按钮保留一致的命中区。 */
 .tool-page :is(th, td, .tool-count, .platform-rating) { font-variant-numeric: tabular-nums; }
 .tool-page .tool-brand:hover, .tool-page .tool-nav a:hover, .tool-page .tool-button:hover { text-decoration: none; }
-.tool-page .tool-button { min-height: 40px; border-radius: 7px; gap: 6px; transition: background .15s, border-color .15s; }
-.tool-page .tool-button:hover { background: #f3f7fc; }
-.tool-page .tool-button.primary:hover { background: #095ab7; color: white; }
 .tool-page .tool-nav a[aria-current="page"] { background: #e7effa; color: #075dbd; }
 .tool-page .tool-table-wrap { border-radius: 10px; scrollbar-width: thin; }
 .tool-page .tool-table th { font-weight: 600; }
 .tool-page .tool-table tbody tr:last-child td { border-bottom: 0; }
-.tool-page .table-sort-button { min-height: 30px; }
 .tool-page th .table-sort-button::after { content: " ↕"; opacity: .45; font-weight: 400; }
 .tool-page th[aria-sort="ascending"] .table-sort-button::after { content: " ↑"; opacity: 1; }
 .tool-page th[aria-sort="descending"] .table-sort-button::after { content: " ↓"; opacity: 1; }
@@ -202,7 +198,6 @@ body.tool-page { padding: 0; }
 
 #plansPage .tool-table :is(th, td):is(:nth-child(3), :nth-child(4), :nth-child(5), :nth-child(6), :nth-child(7), :nth-child(8), :nth-child(9), :nth-child(11), :nth-child(12)) { text-align: right; }
 #plansPage .tool-table th:not(:first-child):not(:nth-child(2)):not(:nth-child(10)):not(:nth-child(13)):not(:nth-child(14)) .table-sort-button { text-align: right; }
-#plansPage td .table-sort-button { min-width: 26px; color: #75859a; }
 #plansPage .tool-table td:first-child strong { font-weight: 600; }
 
 .tool-loading { min-height: 280px; display: grid; place-items: center; color: var(--text-secondary); font-size: 13px; }

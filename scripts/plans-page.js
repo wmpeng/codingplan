@@ -53,7 +53,7 @@
         });
         count.textContent = `${filtered.length} / ${allPlans.length} 个套餐`;
         tableBody.innerHTML = filtered.length ? filtered.map(plan => `<tr>
-          <td><button type="button" class="table-sort-button" data-plan-pin="${esc(plan.slug)}" aria-pressed="${pinned.has(plan.slug)}" aria-label="${pinned.has(plan.slug) ? '取消置顶' : '置顶'} ${esc(plan.name)}">${pinned.has(plan.slug) ? '★' : '☆'}</button> <strong>${esc(plan.platformName)}</strong></td>
+          <td>${UI.pinButton({pinned:pinned.has(plan.slug),label:`${pinned.has(plan.slug) ? '取消置顶' : '置顶'} ${plan.name}`,attributes:{'data-plan-pin':plan.slug}})} <strong>${esc(plan.platformName)}</strong></td>
           <td>${esc(plan.name)}${plan.discontinued ? '<span class="tool-tag">已下架</span>' : ''}<div class="plan-capabilities">${root.EntityData.harnessApiBadge(plan.supportsHarnessApi)}</div></td>
           ${['firstMonthPrice', 'monthlyPrice', 'quarterlyPrice', 'yearlyPrice'].map(key => `<td>${esc(money(plan, key))}</td>`).join('')}
           ${['fiveHoursRequests', 'weeklyRequests', 'monthlyRequests'].map(key => `<td>${esc(typeof plan[key] === 'number' ? (key === 'monthlyRequests' ? Numbers.tokens : Numbers.count)(plan[key]) : plan[key] == null ? '未公开' : plan[key])}</td>`).join('')}
@@ -62,7 +62,7 @@
           <td>${plan.rating > 0 ? esc(plan.rating) + ' / 5' : '待评定'}</td>
           <td>${chips(plan.benefits)}</td>
           <td class="plan-note">${esc(plan.note || '')}</td>
-          <td>${plan.discontinued ? '已下架' : `<a href="${esc(UI.sanitizeUrl(plan.action, '#'))}" target="_blank" rel="noopener noreferrer">开通 ↗</a>`}</td>
+          <td>${plan.discontinued ? '已下架' : `<a class="plan-open-link" href="${esc(UI.sanitizeUrl(plan.action, '#'))}" target="_blank" rel="noopener noreferrer">开通 ${UI.externalLinkIcon}</a>`}</td>
         </tr>`).join('') : `<tr><td colspan="15"><div class="tool-empty">${state.apiOnly
           ? '此页仅展示订阅套餐。当前仅选择按量 API，可前往 <a href="/pricing/?billing=payg">价格与额度查看 API</a>，或将月预算恢复为不限。'
           : '当前条件下没有套餐；可调整上方条件，或显示全部。'}</div></td></tr>`;
@@ -75,6 +75,8 @@
           const slug = pin.dataset.planPin;
           if (pinned.has(slug)) pinned.delete(slug); else pinned.add(slug);
           apply();
+          // 排序重建表格后，键盘操作仍停留在刚置顶的套餐上。
+          [...host.querySelectorAll('[data-plan-pin]')].find(button => button.dataset.planPin === slug)?.focus({preventScroll:true});
           return;
         }
         const header = event.target.closest('[data-plan-sort]');

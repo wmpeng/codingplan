@@ -125,50 +125,12 @@
     flex-shrink: 0;
 }
 
-.platform-pin-btn,
-.platform-detail-pin-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    padding: 0;
-    border: 0;
-    border-radius: 8px;
-    background: transparent;
-    color: #a0a8b5;
-    cursor: pointer;
-    transition: background 0.15s ease, color 0.15s ease;
-    position: relative;
-    z-index: 2;
-}
-
-.platform-pin-btn:hover,
-.platform-detail-pin-btn:hover {
-    color: var(--accent-primary, #0f766e);
-    background: rgba(15, 118, 110, 0.06);
-}
-
-.platform-pin-btn.is-pinned,
-.platform-detail-pin-btn.is-pinned {
-    color: var(--accent-primary, #0f766e);
-    background: transparent;
-}
-
-.platform-pin-btn:focus-visible,
-.platform-detail-pin-btn:focus-visible {
-    outline: 2px solid var(--accent-primary, #0f766e);
-    outline-offset: 2px;
-}
-
 .platform-card.is-pinned {
     border-color: #a5b9d1;
     box-shadow: var(--shadow-sm);
 }
 
 .platform-detail-pin-btn {
-    width: 30px;
-    height: 30px;
     align-self: center;
 }
 
@@ -417,26 +379,6 @@ body .platform-card:focus-visible .platform-card-hint {
     position: absolute;
     top: 14px;
     right: 14px;
-    width: 36px;
-    height: 36px;
-    border: none;
-    border-radius: 12px;
-    background: rgba(23, 32, 51, 0.06);
-    color: var(--text-secondary);
-    font-size: 22px;
-    line-height: 1;
-    cursor: pointer;
-    transition: background 0.15s ease, color 0.15s ease;
-}
-
-.platform-detail-close:hover {
-    background: rgba(23, 32, 51, 0.1);
-    color: var(--text-primary);
-}
-
-.platform-detail-close:focus-visible {
-    outline: 2px solid var(--accent-primary, #0f766e);
-    outline-offset: 2px;
 }
 
 .platform-detail-header {
@@ -957,13 +899,10 @@ body .platform-card:focus-visible .platform-card-hint {
 
 /* 快速详情与目录使用同一套表面和文本颜色。 */
 .platform-card .platform-rating { color: #3f5d80; background: #f0f4f9; padding: 3px 6px; border-radius: 5px; font-size: 12px; letter-spacing: 0; font-variant-numeric: tabular-nums; }
-.platform-card .platform-pin-btn { width: 32px; height: 32px; }
 .platform-card .platform-card-links { border-top: 1px solid var(--border-light); padding-top: 12px; }
 .platform-card .platform-card-links .platform-guide-link { padding: 0; }
 .platform-detail-dialog { background: #fff; border-radius: 12px; padding: 28px; overscroll-behavior: contain; }
 .platform-detail-title { font-weight: 650; letter-spacing: -.02em; }
-.platform-detail-close { border: 1px solid var(--border-color); border-radius: 7px; background: white; }
-.platform-detail-close:hover { background: #f0f4f9; }
 .platform-detail-section-title { font-size: 14px; font-weight: 650; }
 .platform-detail-dim { border-radius: 8px; border-color: var(--border-light); }
 .platform-detail-action, .platform-detail-jump-plans { border-radius: 7px; }

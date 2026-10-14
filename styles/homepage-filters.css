@@ -264,7 +264,7 @@
 :is(.homepage-unified-active, .tool-unified-active) .filter-state-bar { padding: 20px 22px 16px; backdrop-filter: none; }
 :is(.homepage-unified-active, .tool-unified-active) .filter-state-grid { gap: 8px; }
 :is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary {
-  min-height: 40px; padding: 8px 12px; border-radius: 7px; background: #fff; gap: 12px;
+  min-height: 40px; padding: 8px 12px; border-radius: var(--radius-md); background: #fff; gap: 12px;
   font-size: 13px; transition: border-color .15s, background .15s;
 }
 :is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary:hover { border-color: #a5b9d1; background: #fafcff; }
@@ -344,7 +344,7 @@ body .range-picker-ticks button:hover > span, body .range-picker-ticks button[ar
 body .range-picker-ticks button:focus-visible { outline: none; }
 body .range-picker-ticks button:focus-visible > span { outline: 2px solid #6b7280; outline-offset: 1px; }
 body .filter-picker-menu.budget-menu .filter-help { margin: 0; color: #6b7280; font-size: 12px; line-height: 1.6; }
-body .range-picker-title { flex-shrink: 0; white-space: nowrap; }
+body .range-picker-title { min-width: 0; flex-shrink: 1; white-space: normal; overflow-wrap: anywhere; }
 body [data-budget-label], body [data-token-label] { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
 body .range-picker-slider input:focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
 @media (max-width: 800px) {
@@ -364,8 +364,12 @@ body.tool-unified-active .filter-state-actions > button { flex: none; white-spac
 @media (max-width: 650px) {
   :is(.homepage-unified-active, .tool-unified-active) .filter-state-bar { padding: 16px; }
   :is(.homepage-unified-active, .tool-unified-active) .guide-filter-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding-top: 16px; }
-  .filter-state-grid { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .filter-state-grid > .filter-picker { min-width: 0; }
+  .filter-state-grid { display: flex !important; }
+  .filter-state-grid > .filter-picker { flex: 1 1 max-content; min-width: calc(50% - 4px); max-width: 100%; }
+  /* 普通文字保持双列；内容的自然宽度增加时自动独占一行。 */
+  :is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary { flex-wrap: wrap; }
+  :is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary > span:first-child { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
+  :is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary::after { flex-shrink: 0; margin-left: auto; }
   .filter-checks { gap: 6px 14px; }
   .filter-checks .filter-inline { font-size: 12px; }
   :is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary { padding: 8px 9px; gap: 6px; }
@@ -561,6 +565,7 @@ body .offer-sort-help { position: absolute; width: 1px; height: 1px; padding: 0;
 }
 @media (max-width: 650px) {
   body .home-filter-panel #homeStatusPicker { grid-column: 1 / -1; width: fit-content; }
+  body .home-filter-panel #homeStatusPicker { flex: 0 1 auto; }
   body .home-filter-panel .filter-state-controls { width: 100%; margin-left: 0; gap: 12px; }
   body .home-filter-panel .offer-sort { flex: 1 1 100%; }
   body .home-filter-panel .offer-sort select { flex: 1; width: auto; }
@@ -571,6 +576,7 @@ body .offer-sort-help { position: absolute; width: 1px; height: 1px; padding: 0;
   body .model-preset-label { padding-left: 4px; }
   body .model-preset-options { column-gap: 8px; }
   body .home-filter-panel #homeBudgetPicker, body .home-filter-panel #homeTokenPicker { grid-column: 1 / -1; }
+  body .home-filter-panel #homeBudgetPicker, body .home-filter-panel #homeTokenPicker { flex-basis: 100%; }
 }
 
 /* 筛选：统一表单外观，并保持菜单的定位、滚动与完成操作。 */
@@ -590,3 +596,9 @@ body :is(.filter-state-hint, .filter-help, .filter-subgroup, .filter-inline) { c
 body :is(.filter-more, .filter-subgroup) { border-color: var(--border-light); }
 body .filter-state-actions button { border-color: var(--border-color); border-radius: 8px; font-size: 13px; }
 body .filter-inline input[type="checkbox"] { width: 16px; }
+
+@media (max-width: 800px), (pointer: coarse) {
+  :is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary,
+  :is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu input[type="search"] { min-height: 44px; }
+  body .filter-checks .filter-inline { min-height: 44px; }
+}

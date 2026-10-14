@@ -361,7 +361,7 @@
         ? PlatformCatalog.resolvePlatformAction(platform, Array.isArray(context.plans) ? context.plans : [])
         : null;
     const actionLink = actionUrl
-      ? `<a class="platform-detail-action" href="${esc(actionUrl)}" target="_blank" rel="noopener noreferrer">去官网 →</a>`
+      ? `<a class="platform-detail-action" href="${esc(actionUrl)}" target="_blank" rel="noopener noreferrer">去官网 ${PlatformCatalog.EXTERNAL_LINK_ICON}</a>`
       : '';
     const platformId =
       platform && typeof platform.slug === 'string' ? platform.slug.trim() : '';
@@ -545,7 +545,11 @@
       const overlay = overlayEl();
       const closeBtn = closeBtnEl();
       if (overlay) overlay.addEventListener('click', onOverlayClick);
-      if (closeBtn) closeBtn.addEventListener('click', () => close());
+      if (closeBtn) {
+        closeBtn.innerHTML = globalThis.CodingPlanUI.closeIcon;
+        closeBtn.classList.add('ui-icon-button', 'ui-icon-button--outlined');
+        closeBtn.addEventListener('click', () => close());
+      }
       closeBound = true;
     }
   }

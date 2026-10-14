@@ -17,6 +17,18 @@
   }
   const statusLabels = Object.freeze({ open: '开放购买', limited: '定时放量', paused: '暂时停售', delisted: '已下架' });
   const externalLinkIcon = '<svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>';
+  const closeIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"></path></svg>';
+  function pinIcon(pinned = false) {
+    return `<svg viewBox="0 0 24 24" fill="${pinned ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>`;
+  }
+  function pinButton({ pinned = false, label, className = '', attributes = {} } = {}) {
+    const action = pinned ? '取消置顶' : '置顶';
+    const data = Object.entries(attributes).map(([key, value]) => {
+      if (!/^data-[a-z][a-z0-9-]*$/.test(key)) throw new Error(`不支持的置顶按钮属性: ${key}`);
+      return ` ${key}="${escapeHtml(value)}"`;
+    }).join('');
+    return `<button type="button" class="ui-icon-button ui-pin-button ${escapeHtml(className)}${pinned ? ' is-pinned' : ''}"${data} aria-pressed="${!!pinned}" aria-label="${escapeHtml(label || action)}" title="${action}">${pinIcon(pinned)}</button>`;
+  }
   function modelTags(labels, options = {}) {
     const models = Array.isArray(labels) ? labels.filter(name => typeof name === 'string' && name.trim()) : [];
     if (!models.length) return '';
@@ -40,5 +52,5 @@
     setModelsExpanded(button, button.getAttribute('aria-expanded') !== 'true');
     return true;
   }
-  return { escapeHtml, escapeHtmlPreserveBreaks, sanitizeUrl, route, statusLabels, externalLinkIcon, modelTags, setModelsExpanded, toggleModels };
+  return { escapeHtml, escapeHtmlPreserveBreaks, sanitizeUrl, route, statusLabels, externalLinkIcon, closeIcon, pinIcon, pinButton, modelTags, setModelsExpanded, toggleModels };
 });
