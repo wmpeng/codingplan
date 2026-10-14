@@ -50,9 +50,6 @@ body .ui-model-tags button.model-tag-more { cursor: pointer; transition: backgro
 body .ui-model-tags button.model-tag-more:hover { background: color-mix(in srgb, var(--bg-tertiary), var(--border-color) 35%); color: var(--text-primary); }
 body .ui-model-tags button.model-tag-more:focus-visible { outline: 2px solid var(--text-secondary); outline-offset: 2px; }
 body .section-toc a[aria-current="location"] { background: var(--bg-tertiary); color: var(--text-primary); }
-@media (max-width: 800px), (pointer: coarse) {
-  body .ui-model-tags button.model-tag-more { min-width: 44px; min-height: 44px; }
-}
 
 body .link-icon { width: 12px; height: 12px; flex-shrink: 0; vertical-align: middle; }
 
@@ -77,7 +74,7 @@ body :is(.platform-guide-link, .platform-card-hint) { display: inline-flex; alig
     .community-dialog-close, .community-float-dismiss, .table-sort-button, .usage-segments button,
     .platform-guide-link, .platform-card-hint, .plan-open-link, .offer-reasons > summary) { min-height: 44px; }
   body :is(.community-dialog-close, .community-float-dismiss) { min-width: 44px; }
-  body :is(.model-offers-link, .model-price-link) { display: flex; align-items: center; min-height: 44px; }
+  body :is(.model-offers-link, .model-price-link) { display: flex; align-items: center; box-sizing: border-box; min-height: 32px; padding-block: 4px; }
   body :is(.model-browser-controls, .tool-result-bar) label { min-height: 44px; }
   body #purchaseGuide button { min-height: 44px; }
   body .site-header .settings-unit-options button { min-height: 44px; }
