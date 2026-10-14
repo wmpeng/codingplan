@@ -13,7 +13,8 @@
         "deepseek-v4-flash-0731",
         "glm-5-3-flash",
         "gpt-6-luna",
-        "kimi-k2-8-preview"
+        "kimi-k2-8-preview",
+        "minimax-m3-1-flash-preview"
       ]
     },
     {
@@ -26,8 +27,7 @@
         "gpt-6-1-sol",
         "claude-opus-5-5",
         "glm-5-3",
-        "kimi-k3",
-        "minimax-m3-1-flash-preview"
+        "kimi-k3"
       ]
     }
   ],
