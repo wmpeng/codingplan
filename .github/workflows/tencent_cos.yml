@@ -2,31 +2,55 @@ name: Upload to Tencent COS
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
-  build:
-
+  verify:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Install coscmd
-      run: sudo pip install coscmd
-    - name: Configure coscmd
-      env:
-        SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
-        SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
-        BUCKET: ${{ vars.TENCENT_COS_BUCKET }}
-        REGION: ${{ vars.TENCENT_COS_REGION }}
-      run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
-    
-    - name: remove non-dist folders and files
-      run: |
-        rm -rf ./.*
-        rm -rf dev
-    
-    - name: Upload
-      run: coscmd upload -rs -f ./ / --ignore "./.*"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check public scripts and deployment safety
+        run: |
+          node --test scripts/*.test.js
+          python -m unittest discover -s .github/scripts -p 'test_*.py'
+          python .github/scripts/deploy_cos.py --check
+
+  deploy:
+    needs: verify
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: codingplan-cos-production
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install coscmd
+        run: python -m pip install coscmd==1.9.0.6
+      - name: Configure coscmd
+        env:
+          SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
+          SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
+          BUCKET: ${{ vars.TENCENT_COS_BUCKET }}
+          REGION: ${{ vars.TENCENT_COS_REGION }}
+        run: coscmd config -a "$SECRET_ID" -s "$SECRET_KEY" -b "$BUCKET" -r "$REGION"
+      - name: Stage public files
+        run: python .github/scripts/deploy_cos.py --stage "$RUNNER_TEMP/codingplan-dist"
+      - name: Upload
+        run: coscmd upload -r -f "$RUNNER_TEMP/codingplan-dist/" / -H '{"Cache-Control":"public, max-age=0, must-revalidate"}'
+      - name: Remove retired public objects after successful upload
+        run: python .github/scripts/deploy_cos.py --apply

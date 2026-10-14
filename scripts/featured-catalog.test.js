@@ -60,4 +60,8 @@ test('精选与完整范围可复用同一固定表，保留具体模型档位�
   }
   const model={slug:'test',name:'<script>oops</script>',scores:{artificialAnalysis:{score:0}},modalities:null};
   const html=C.modelCard(model,ctx);assert.doesNotMatch(html,/<script>/);assert.match(html,/0\.0/);assert.match(html,/待确认/);
+  const speechModel=ctx.models.find(m=>m.modalities?.input?.includes('speech'));
+  assert.ok(speechModel);
+  const speechCard=C.modelCard(speechModel,ctx);
+  assert.match(speechCard,/音频/);assert.doesNotMatch(speechCard,/\bspeech\b/);
 });

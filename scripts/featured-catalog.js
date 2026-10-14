@@ -39,7 +39,7 @@
     return `<span class="model-score"><span class="model-score-value"><strong${n == null ? ' class="score-unknown"' : ''}>${n == null ? '未评定' : n.toFixed(1)}</strong>${n != null && record.sourceUrl ? ` <a href="${esc(url(record.sourceUrl))}" target="_blank" rel="noopener noreferrer" aria-label="${esc(model.name)} ${label}评分来源" title="${esc(record.configuration || '评分来源')}">↗</a>` : ''}</span><span class="model-score-label">${label}</span></span>`;
   }
   function modalities(model) {
-    const names = {text:'文本',image:'图片',audio:'音频',video:'视频'};
+    const names = {text:'文本',image:'图片',speech:'音频',video:'视频'};
     if (!model.modalities?.input) return model.multimodal === true ? '支持多模态 · 具体模态待确认' : model.multimodal === false ? '文本输入' : '输入模态待确认';
     return model.modalities.input.map(x => names[x] || x).join(' / ') + '输入';
   }
