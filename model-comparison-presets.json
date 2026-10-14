@@ -12,7 +12,8 @@
         "deepseek-v4-1-flash",
         "deepseek-v4-flash-0731",
         "glm-5-3-flash",
-        "gpt-6-luna"
+        "gpt-6-luna",
+        "kimi-k2-8-preview"
       ]
     },
     {
@@ -25,13 +26,15 @@
         "gpt-6-1-sol",
         "claude-opus-5-5",
         "glm-5-3",
-        "kimi-k3"
+        "kimi-k3",
+        "minimax-m3-1-flash-preview"
       ]
     }
   ],
   "platformSlugs": [
     "zhipu",
     "minimax",
+    "kimi",
     "opencode",
     "bytedance-ark",
     "deepseek-official",

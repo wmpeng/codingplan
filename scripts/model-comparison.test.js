@@ -259,7 +259,7 @@ test('one source defines the featured platforms and exactly two model groups', (
   const source = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'model-comparison-presets.json'), 'utf8'));
   const config = normalizePresetConfig(source);
   assert.deepEqual(config.groups.map(g=>g.id), ['high-volume-models','sota-models']);
-  assert.equal(config.platformSlugs.length,6);
+  assert.equal(config.platformSlugs.length,7);
   assert.ok(config.groups[0].modelSlugs.includes('gpt-6-luna'));
   assert.ok(config.groups[1].modelSlugs.includes('gpt-6-1-sol'));
 });
