@@ -42,6 +42,7 @@
 .discovery-page #featuredPlatforms .dim-meta { display:flex;flex-direction:column;gap:3px;min-width:0;align-items:center; }
 .discovery-page #featuredPlatforms .dim-reason { display:none; }
 .discovery-page #featuredPlatforms .platform-card { box-shadow:none; }
+@media (min-width: 1280px) { .discovery-page #featuredPlatforms.platform-card-grid { grid-template-columns:repeat(4,minmax(0,1fr)); } }
 .discovery-page #featuredPlatforms .platform-summary { display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
 .featured-table-controls { display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px;font-size:13px;color:#64748b; }
 .featured-table-controls [aria-pressed="true"] { background:#eaf2ff;color:#1d4ed8; }
