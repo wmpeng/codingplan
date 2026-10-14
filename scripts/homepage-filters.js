@@ -229,7 +229,7 @@
       context.modelGroups = opts.featuredPreset.groups || [];
       context.featuredPlatformSlugs = opts.featuredPreset.platformSlugs || [];
     }
-    let groupsReady = Array.isArray(context.modelGroups), initialPresetPending = pricing, pendingAll = false, multimodalNotice = "", platformShortcutNotice = "";
+    let groupsReady = Array.isArray(context.modelGroups), initialPresetPending = !full || pricing, pendingAll = false, multimodalNotice = "", platformShortcutNotice = "";
     const platformCandidates = kind => platforms.filter(platform => platform[platformShortcutKinds[kind].field] === false).map(platform => platform.slug);
     function platformShortcutAction(kind) {
       const eligible = platformCandidates(kind);
