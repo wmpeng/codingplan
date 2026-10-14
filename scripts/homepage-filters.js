@@ -165,20 +165,6 @@
     </details>`;
   }
 
-  const choices = {
-    platformStatusMax: [
-      "购买状态",
-      [
-        ["open", "开放购买"],
-        ["limited", "含定时放量"],
-        ["paused", "含暂停售"],
-        ["delisted", "全部状态"],
-      ],
-    ],
-  };
-  const checks = {
-    includeDiscontinued: "包含下架套餐",
-  };
   const statusExclusions = { paused: "排除暂时停售平台", limited: "排除定时放量平台" };
   function buildStatusPicker(includeHistory = false) {
     return `<details class="filter-picker status-picker" id="homeStatusPicker">
@@ -201,7 +187,9 @@
   function mount(options) {
     const opts = options || {},
       full = opts.mode === "full",
-      pricing = full && opts.view === "pricing";
+      pricing = full && opts.view === "pricing",
+      monitor = full && opts.view === "monitor",
+      purchaseTool = full && !monitor;
     const host =
       opts.element || document.getElementById("homepageUnifiedFiltersMount");
     const context = opts.context || root.codingplanEntityContext;
@@ -220,7 +208,7 @@
     state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || "yi";
     state.modelGroup = "any";
     state.modelMatch = "any";
-    if (pricing) {
+    if (purchaseTool) {
       state.platformStatusMax = "paused";
       state.includeDiscontinued = false;
     }
@@ -332,7 +320,6 @@
     else applyInitialPreset();
     if (validPlatform)
       state.platformSlugs = [platform];
-    const monitor = full && opts.view === "monitor";
     if (validModel) state.modelSlugs = [model];
     if (params.get("billing") === "payg") state.apiOnly = true;
     host.innerHTML = `<section class="filter-state-bar surface-panel${full ? "" : " home-filter-panel"}" aria-label="统一筛选">
@@ -344,28 +331,10 @@
           ? ""
           : `${buildRangePicker("budget", state)}${buildRangePicker("token", state)}`
       }
-      ${!full || pricing ? buildStatusPicker(pricing) : ""}</div>
-      ${full && !pricing ? '<div class="guide-filter-fields">' : '<div class="filter-state-footer">'}${Object.entries(choices)
-        .filter(() => !monitor && full && !pricing)
-        .map(
-          ([key, [label, items]]) =>
-            `<label class="filter-inline filter-choice"><span>${label}</span><select data-filter-field="${key}">${items.map(([v, t]) => `<option value="${v}">${t}</option>`).join("")}</select></label>`,
-        )
-        .join("")}
-      ${full && !pricing ? '</div><div class="filter-state-footer">' : ""}
-      <div class="filter-checks">${
-        monitor || pricing
-          ? ""
-          : Object.entries(checks)
-              .filter(([key]) => full || key !== "includeDiscontinued")
-              .map(
-                ([key, label]) =>
-                  `<label class="filter-inline"><input type="checkbox" data-filter-field="${key}">${label}</label>`,
-              )
-              .join("")
-      }</div>
+      ${!monitor ? buildStatusPicker(purchaseTool) : ""}</div>
+      <div class="filter-state-footer">
       ${full ? "" : `<div class="filter-state-controls"><label class="offer-sort"><span>排序</span><select data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></label><span class="offer-sort-help" id="offerSortHelp"></span>`}
-      <div class="filter-state-actions"><button type="button" data-filter-action="reset"${pricing ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${full ? "显示全部" : "显示精选"}</button>${full ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${pricing ? "已下架内容需单独勾选" : "其他条件恢复不限"}">显示精选</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
+      <div class="filter-state-actions"><button type="button" data-filter-action="reset"${purchaseTool ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${full ? "显示全部" : "显示精选"}</button>${full ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">显示精选</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
       ${monitor ? '<p class="filter-state-hint" data-filter-hint>监控只使用平台、模型条件；未监控项目没有统计。</p>' : ""}
       ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
       </section>`;

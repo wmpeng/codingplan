@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<script src="/scripts/ui-core.js?v=ee0eccbde4"></script>
+<script src="/scripts/ui-core.js?v=e5298a01f2"></script>
 <script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
 <script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
 <script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
@@ -13,13 +13,13 @@
   <link rel="canonical" href="https://codingplan.fyi/platforms/">
   <link rel="icon" href="/favicon.ico?v=260924a">
   <link rel="stylesheet" href="/styles/shared.css?v=482edb170c">
-  <link rel="stylesheet" href="/styles/platform-cards.css?v=f1c5d3207e">
+  <link rel="stylesheet" href="/styles/platform-cards.css?v=a2f7c0e5bb">
   <link rel="stylesheet" href="/styles/platform-comparison.css?v=fe5318acba">
-  <link rel="stylesheet" href="/styles/tool-page.css?v=374de008f6"><link rel="stylesheet" href="/styles/homepage-filters.css?v=bfe48d3489">
+  <link rel="stylesheet" href="/styles/tool-page.css?v=2f9479cbc2"><link rel="stylesheet" href="/styles/homepage-filters.css?v=0746b5120f">
 <link rel="stylesheet" href="/styles/design-system.css?v=47a0b29cda">
 <script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
-<link rel="stylesheet" href="/styles/ui-components.css?v=4839ae1fc0">
+<link rel="stylesheet" href="/styles/ui-components.css?v=bf5f1551fa">
 </head>
 <body class="tool-page">
 <!-- SITE_NAV_START -->
@@ -72,7 +72,7 @@
     <div id="toolFilters" aria-label="筛选条件"><p class="tool-filter-loading" role="status">正在加载筛选条件…</p></div>
     <noscript><style>.tool-filter-loading{display:none}body .ui-model-tags [data-extra-model][hidden]{display:inline-flex}.ui-model-tags .model-tag-more{display:none}</style><p class="tool-muted">当前显示静态平台信息；开启 JavaScript 可使用筛选与对比。</p></noscript>
     <section id="platformHubApp" aria-busy="false">
-      <div class="tool-result-bar"><input type="search" data-hub-search disabled placeholder="搜索平台名称" aria-label="搜索平台"><span class="tool-count" data-hub-showing aria-live="polite">45 / 45 个平台</span></div>
+      <div class="tool-result-bar"><input type="search" data-hub-search disabled placeholder="搜索平台名称" aria-label="搜索平台"><span class="tool-count" data-hub-showing aria-live="polite">42 / 45 个平台</span></div>
       <div class="platform-card-grid" data-hub-grid>
                 <article class="platform-card" data-platform-id="zhipu" tabindex="0" role="button" aria-label="智谱AI 详情">
                     <header>
@@ -663,25 +663,6 @@
                     <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
                 </article>
 
-                <article class="platform-card" data-platform-id="stepfun" tabindex="0" role="button" aria-label="阶跃星辰 详情">
-                    <header>
-                        <div class="platform-card-heading">
-                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqstepfun" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">阶跃星辰</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="platform-rush" data-platform-status="paused">暂时停售</span>
-
-                        </div>
-                        <div class="platform-card-aside">
-                            <button type="button" class="ui-icon-button ui-pin-button platform-pin-btn" data-platform-pin="1" data-platform-id="stepfun" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button>
-                            <span class="platform-rating" aria-label="2 星">★ 2.0</span>
-                        </div>
-                    </header>
-                    <p class="platform-summary">Step Plan现按月Credits，支持Step5 Preview和Flash系列；本次购买按钮售罄。</p>
-                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">证据不足</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">旧prompt推算不适用当前Credits，精确抵扣未公开；恢复发售时间未知。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">稳定性尚可。</span></li></ul>
-                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
-
-                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
-                </article>
-
                 <article class="platform-card" data-platform-id="taotoken" tabindex="0" role="button" aria-label="TaoToken 详情">
                     <header>
                         <div class="platform-card-heading">
@@ -755,44 +736,6 @@
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">免费试用每账号一次；官方有付费Lite/Pro/Max，京东当前成交价及库存未确认。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">目前以 GLM-4.7 为主。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">证据不足。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
                     <div class="ui-model-tags platform-models" data-model-tags aria-label="模型"><span class="model-tag">GLM-4.7</span></div>
-                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
-                </article>
-
-                <article class="platform-card is-discontinued" data-platform-id="infrafun" tabindex="0" role="button" aria-label="无问芯穹 详情">
-                    <header>
-                        <div class="platform-card-heading">
-                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqinfini" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">无问芯穹</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="platform-rush" data-platform-status="delisted">已下架</span>
-
-                        </div>
-                        <div class="platform-card-aside">
-                            <button type="button" class="ui-icon-button ui-pin-button platform-pin-btn" data-platform-pin="1" data-platform-id="infrafun" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button>
-                            <span class="platform-rating" aria-label="1 星">★ 1.0</span>
-                        </div>
-                    </header>
-                    <p class="platform-summary">已停止向个人用户提供服务，企业体验按官方联系方式办理。</p>
-                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">个人服务已停止，不再作为个人在售方案。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">个人套餐停售，保留历史身份；不将旧权益作为当前可购买方案。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">平台 Coding Plan 已下线，服务不可用。</span></li></ul>
-                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
-
-                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
-                </article>
-
-                <article class="platform-card is-discontinued" data-platform-id="ctyun" tabindex="0" role="button" aria-label="天翼云 详情">
-                    <header>
-                        <div class="platform-card-heading">
-                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqctyun" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">天翼云</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                            <span class="platform-rush" data-platform-status="delisted">已下架</span>
-
-                        </div>
-                        <div class="platform-card-aside">
-                            <button type="button" class="ui-icon-button ui-pin-button platform-pin-btn" data-platform-pin="1" data-platform-id="ctyun" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button>
-                            <span class="platform-rating" aria-label="1 星">★ 1.0</span>
-                        </div>
-                    </header>
-                    <p class="platform-summary">历史请求制停售；存量Token制仅周期内可续订，新购Credits产品另列。</p>
-                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">旧请求制不可新购；官方另有五档存量Token续订权益，与积分制分开。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">新旧计费方式、支持型号与续费条件分开。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">历史Coding Plan已下线；Token制存量周期内可续订，当前积分制有独立在售产品。</span></li></ul>
-                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
-
                     <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
                 </article>
 
@@ -938,11 +881,11 @@
   <div id="platformDetailOverlay" class="platform-detail-overlay" hidden><div class="platform-detail-backdrop" data-platform-detail-close="1"></div><div class="platform-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="platformDetailTitle" tabindex="-1"><button type="button" class="platform-detail-close" id="platformDetailClose" aria-label="关闭">×</button><div id="platformDetailBody"></div></div></div>
   <script src="/monitor/monitor-config.js"></script>
 <script src="/scripts/entity-data.js?v=aa3a74e430"></script><script src="/scripts/number-display.js?v=6c6a6ccb42"></script>
-<script src="/scripts/filter-state.js?v=7781ba975b"></script><script src="/scripts/homepage-filters.js?v=d33d73917f"></script><script src="/scripts/tool-page.js?v=57f29c8dac"></script>
+<script src="/scripts/filter-state.js?v=7781ba975b"></script><script src="/scripts/homepage-filters.js?v=c658ade6a6"></script><script src="/scripts/tool-page.js?v=57f29c8dac"></script>
 
 <script src="/scripts/platform-pages.js?v=601d13bd7b"></script>
-<script src="/scripts/platform-catalog.js?v=e183372b13"></script>
-<script src="/scripts/platform-detail.js?v=43192e9468"></script>
+<script src="/scripts/platform-catalog.js?v=66c8e1f31e"></script>
+<script src="/scripts/platform-detail.js?v=6db0959274"></script>
 <script src="/scripts/platform-comparison.js?v=28f3124a99"></script>
 <script src="/scripts/platforms-page.js?v=09841cc535"></script>
 </body>
