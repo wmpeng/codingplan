@@ -23,10 +23,8 @@ jobs:
         REGION: ${{ vars.TENCENT_COS_REGION }}
       run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
     
-    - name: remove non-dist folders and files
-      run: |
-        rm -rf ./.*
-        rm -rf dev
+    - name: Prepare public website artifacts
+      run: python .github/scripts/prepare_site.py . "$RUNNER_TEMP/codingplan-public"
     
     - name: Upload
-      run: coscmd upload -rs -f ./ / --ignore "./.*" --delete
+      run: coscmd upload -rs -f "$RUNNER_TEMP/codingplan-public/" / --delete
