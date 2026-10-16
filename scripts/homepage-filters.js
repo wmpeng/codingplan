@@ -324,7 +324,7 @@
     if (validModel) state.modelSlugs = [model];
     if (params.get("billing") === "payg") state.apiOnly = true;
     host.innerHTML = `<section class="filter-state-bar surface-panel${full ? "" : " home-filter-panel"}${platformHub ? " platform-hub-filters" : ""}" aria-label="统一筛选">
-      ${platformHub ? `<div class="platform-featured-control"><label class="platform-featured-switch"><input type="checkbox" role="switch" data-platform-featured><span>显示精选平台</span></label><span class="platform-featured-help" data-platform-featured-help role="status">精选平台优先展示，置顶平台始终保留。</span><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div><fieldset class="platform-filter-fields" data-platform-filter-fields><legend class="sr-only">平台筛选条件</legend>` : ""}
+      ${platformHub ? `<div class="platform-featured-control"><button type="button" class="platform-featured-button" data-platform-featured aria-pressed="false">显示精选平台</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div><fieldset class="platform-filter-fields" data-platform-filter-fields><legend class="sr-only">平台筛选条件</legend>` : ""}
       <div class="filter-state-grid">
       ${platformHub ? "" : buildPicker({ id: "homePlatformPicker", label: "平台", key: "platformSlugs", items: platforms, state })}
       ${buildPicker({ id: "homeModelPicker", label: "模型", key: "modelSlugs", items: models, state })}
@@ -334,10 +334,10 @@
           : `${buildRangePicker("budget", state)}${buildRangePicker("token", state)}`
       }
       ${!monitor ? buildStatusPicker(purchaseTool) : ""}
-      ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-filter-field="domesticNetworkOnly">境内可用</label><label class="platform-access-filter"><input type="checkbox" data-filter-field="domesticPaymentOnly">境内可购买</label><span class="platform-access-help">按已确认的网络与支付条件筛选；未知不计入。</span>' : ""}</div>
+      ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-filter-field="domesticNetworkOnly">境内可用</label><label class="platform-access-filter"><input type="checkbox" data-filter-field="domesticPaymentOnly">境内可购买</label>' : ""}</div>
       <div class="filter-state-footer">
       ${full ? "" : `<div class="filter-state-controls"><label class="offer-sort"><span>排序</span><select data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></label><span class="offer-sort-help" id="offerSortHelp"></span>`}
-      <div class="filter-state-actions"><button type="button" data-filter-action="reset"${purchaseTool ? ` title="${platformHub ? "重置条件与搜索，保留置顶平台" : "显示全部平台与模型，已下架内容需单独勾选"}"` : ""}>${platformHub ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>${full && !platformHub ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">显示精选</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
+      <div class="filter-state-actions"><button type="button" data-filter-action="reset"${purchaseTool && !platformHub ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>${full && !platformHub ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">显示精选</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
       ${platformHub ? "</fieldset>" : ""}
       ${monitor ? '<p class="filter-state-hint" data-filter-hint>监控只使用平台、模型条件；未监控项目没有统计。</p>' : ""}
       ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
@@ -467,13 +467,12 @@
         const available = featuredPlatforms().length > 0;
         const toggle = host.querySelector('[data-platform-featured]');
         toggle.disabled = !available;
-        toggle.checked = featuredOnly;
+        toggle.setAttribute('aria-pressed', String(featuredOnly));
         const fields = host.querySelector('[data-platform-filter-fields]');
         fields.disabled = featuredOnly;
         fields.inert = featuredOnly;
         fields.setAttribute('aria-disabled', String(featuredOnly));
         host.querySelector('.platform-hub-filters').classList.toggle('is-featured-mode', featuredOnly);
-        host.querySelector('[data-platform-featured-help]').textContent = !available ? '精选名单暂不可用，可继续使用筛选。' : featuredOnly ? '正在显示全部精选平台；其他筛选与搜索已暂停，关闭后恢复。' : '精选平台优先展示，置顶平台始终保留。';
         host.querySelector('[data-hub-retry-featured]').hidden = available;
       }
       const modelPicker = host.querySelector('[data-picker="modelSlugs"]');
@@ -641,11 +640,7 @@
     });
     host.addEventListener("change", (event) => {
       const el = event.target;
-      if (el.matches('[data-platform-featured]')) {
-        featuredOnly = el.checked;
-        host.querySelectorAll('details[open]').forEach(picker => { picker.open = false; });
-        publish('featured-mode');
-      } else if (el.matches("[data-status-exclude]")) {
+      if (el.matches("[data-status-exclude]")) {
         state.excludedPlatformStatuses = [...host.querySelectorAll('[data-status-exclude]:checked')].map(input => input.dataset.statusExclude);
         publish();
       } else if (el.matches("[data-include-delisted]")) {
@@ -683,6 +678,12 @@
     host.addEventListener("click", (event) => {
       const el = event.target.closest("button");
       if (!el) return;
+      if (el.hasAttribute('data-platform-featured')) {
+        featuredOnly = !featuredOnly;
+        host.querySelectorAll('details[open]').forEach(picker => { picker.open = false; });
+        publish('featured-mode');
+        return;
+      }
       if (el.hasAttribute('data-select-multimodal')) { selectMultimodalModels(); return; }
       if (el.dataset.platformShortcut) { selectPlatformShortcut(el.dataset.platformShortcut); return; }
       if (el.hasAttribute('data-retry-model-presets') || el.hasAttribute('data-hub-retry-featured')) { refreshGroups(); return; }

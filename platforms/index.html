@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/styles/shared.css?v=482edb170c">
   <link rel="stylesheet" href="/styles/platform-cards.css?v=03bf2559d9">
   <link rel="stylesheet" href="/styles/platform-comparison.css?v=25c31365bb">
-  <link rel="stylesheet" href="/styles/tool-page.css?v=48a0c1cb33"><link rel="stylesheet" href="/styles/homepage-filters.css?v=027128ec29">
+  <link rel="stylesheet" href="/styles/tool-page.css?v=e6cfc74002"><link rel="stylesheet" href="/styles/homepage-filters.css?v=027128ec29">
 <link rel="stylesheet" href="/styles/design-system.css?v=4811c3e369">
 <script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
@@ -73,9 +73,6 @@
     <noscript><style>.tool-filter-loading{display:none}body .ui-model-tags [data-extra-model][hidden]{display:inline-flex}.ui-model-tags .model-tag-more{display:none}</style><p class="tool-muted">当前显示静态平台信息；开启 JavaScript 可使用筛选与对比。</p></noscript>
     <section id="platformHubApp" aria-busy="false">
       <div class="tool-result-bar"><input type="search" data-hub-search disabled placeholder="搜索平台名称" aria-label="搜索平台"><span class="tool-count" data-hub-showing aria-live="polite">符合条件 42 个</span></div>
-      <p class="platform-search-help" id="platformFeaturedSearchHelp" data-hub-search-help hidden>精选展示期间搜索已暂停，关闭后恢复原搜索词。</p>
-      <section class="platform-pinned-section" data-hub-pinned hidden aria-labelledby="platformPinnedTitle"><div class="platform-result-heading"><h2 id="platformPinnedTitle">已置顶 <span data-hub-pinned-count></span></h2><p>始终保留；不符合当前条件时会单独提示。</p></div><div class="platform-card-grid" data-hub-pinned-grid></div></section>
-      <h2 class="platform-result-title" data-hub-results-title hidden>符合条件的平台</h2>
       <div class="platform-card-grid" data-hub-grid>
                 <article class="platform-card" data-platform-id="zhipu" tabindex="0" role="button" aria-label="智谱AI 详情">
                     <header>
@@ -90,7 +87,6 @@
                             <span class="platform-rating" aria-label="5 星">★ 5.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">涨价后新套餐无需抢购。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">新套餐价格翻倍，性价比有所下降，<a href="/plans/?platform=zhipu" target="_blank" rel="noopener noreferrer">查看套餐用量</a>。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">GLM-5.3 代码能力 <strong>T0 级别</strong>，尤其适合编程场景，是 Opus 平替优选。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">官方服务，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -111,7 +107,6 @@
                             <span class="platform-rating" aria-label="5 星">★ 5.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">Go与Go Plus的多模型订阅，各模型独立额度；当前32个LLM。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">Go $10/月、Go Plus $40/月，各模型有独立月额度与短窗口；当前额度和活动依模型不同，不统一按四倍计算。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">各模型的Go Plus额度增幅不同，不能统一按四倍算。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">各模型基本都是官方通道，稳定性强，较少出现不可用。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -132,7 +127,6 @@
                             <span class="platform-rating" aria-label="5 星">★ 5.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">方舟Coding Plan当前多模型与Auto接入；保留历史测量基准，其他倍率明确为推测。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">开放购买，无需抢购；具体套餐活动以官方公告为准。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">Coding与Agent活动日期和系数不同，不能互套。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">火山引擎官方服务，整体稳定。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -153,7 +147,6 @@
                             <span class="platform-rating" aria-label="5 星">★ 5.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">基础月费较低，原Token Plan历史额度较充足；新M3.1精确用量未公开。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">M3.1 Flash Preview精确Token额度未公开，按五小时与七天窗口选择档位。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">官方服务，稳定性强。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -174,7 +167,6 @@
                             <span class="platform-rating" aria-label="4 星">★ 4.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">当前Go/Plus/Pro/Max订阅；Plus起支持Coding，旧四档仅老用户续费。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">当前Go/Plus/Pro/Max月费49/99/199/699元，Plus起支持Coding；老套餐仅存量续费，不能按新用户价格比较旧实测。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">Coding支持Kimi K3与K2.8 Preview，Go不提供Coding API，不能混用客户端与API权益。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">官方服务，稳定性强。Kimi-K3发布后高峰时段可能会有繁忙，整体可用性尚可。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -195,7 +187,6 @@
                             <span class="platform-rating" aria-label="5 星">★ 5.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">第一梯队模型中，最便宜的之一；空闲时段价格再降一半；按量标价透明，高峰翻倍后成本优势会收窄。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">当前V4.1 Flash与V4 Pro按峰谷价格分别展示；原计划V4 Pro停服安排已撤销，继续提供服务。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">官方通道，稳定性强。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -216,7 +207,6 @@
                             <span class="platform-rating" aria-label="5 星">★ 5.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">Codex官方订阅，支持GPT-6.1 Sol及6系列；Pro $500另支持Ultrafast。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">Plus与Pro $100/$200/$500价格和权限分别记录；Pro取消五小时窗口，Plus仍有五小时限制。当前新型号没有固定官方Token额度，旧测量仅作参考。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">速度档按实际订阅系数分别记录；新型号与新套餐额度未独立测量。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">OpenAI 官方基础设施，稳定性行业标杆。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span></div>
@@ -237,7 +227,6 @@
                             <span class="platform-rating" aria-label="5 星">★ 5.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">四档AFP订阅，当前文本统一按模型系数扣减；Small不含Kimi K3。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">开放购买，额度与模型抵扣规则明确。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">当前不再沿用输入长度阶梯；按各模型活动日期与常规系数拆档。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">火山引擎官方服务，整体稳定。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -258,7 +247,6 @@
                             <span class="platform-rating" aria-label="5 星">★ 5.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">国内版的替代，无需抢购。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">用量与国内版一致，新套餐价格也基本一致。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">GLM-5.3 代码能力 <strong>T0 级别</strong>，尤其适合编程场景，是 Opus 平替优选。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">官方服务，稳定性强。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -279,7 +267,6 @@
                             <span class="platform-rating" aria-label="5 星">★ 5.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">GLM、Kimi、Qwen、DeepSeek按量API；邀请8折仅适用于资格仍有效的用户。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">有有效邀请资格时按标价8折；本次未做扣费验证。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">支持 Kimi-K3、GLM-5.3、Qwen-3.7-Max 与 DeepSeek-V4 预览版等模型。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">当前用户规模不大，实测稳定性较强。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -300,7 +287,6 @@
                             <span class="platform-rating" aria-label="4 星">★ 4.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">六档请求制Coding Plan，当前九个LLM各按明确次数扣减。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">六档按真实模型请求扣减；每型号倍率、并发和三窗口额度见明细，Token量按统一请求负载估算。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">登录控制台核对的扣减与并发已更新；Token量是统一请求负载估计。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">新兴平台，算力充足，很少遇到拥挤。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -321,7 +307,6 @@
                             <span class="platform-rating" aria-label="4 星">★ 4.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">Claude Code官方订阅，已支持Opus、Sonnet、Haiku 5.5；新型号精确Token额度未知。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">用量很大</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">5.5系列与旧型号分开记录，不将API价格或旧逆向数据当新订阅额度。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">Anthropic 官方 API，本身稳定性没问题。但需要境外网络环境，从中国大陆访问限制比较多。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span></div>
@@ -342,7 +327,6 @@
                             <span class="platform-rating" aria-label="4 星">★ 4.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">当前18个云端LLM的美元Credits订阅，月池可集中使用；部分缓存价格未知。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">性价比很高，<a href="/plans/?platform=ollama" target="_blank" rel="noopener noreferrer">查看模型用量对比</a></span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">Pro/Max月池独立于本地免费模型；只按公开云端名单与价格计算。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">稳定性尚可。高峰时段可能略拥挤，整体可用性尚可。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -363,7 +347,6 @@
                             <span class="platform-rating" aria-label="4 星">★ 4.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">百炼Token Plan现为四档Credits订阅，与旧Coding Plan产品分开。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">开放购买，夜间抵扣成本更低；具体活动以官方公告为准。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">精确模型积分抵扣未全部公开，不能用按量API人民币价替代。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">阿里云官方服务，稳定性强。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -384,7 +367,6 @@
                             <span class="platform-rating" aria-label="4 星">★ 4.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">Pro 套餐性价比高，但供应有限。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">套餐性价比较高，但供应有限。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">支持 Qwen 系列编程模型。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">阿里云官方服务，稳定性强。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -405,7 +387,6 @@
                             <span class="platform-rating" aria-label="4 星">★ 4.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">MiMo文本Credits订阅，当前4个LLM，夜间00–08点UTC+8享0.8消耗。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">购买TokenPlan套餐，价格比DeepSeek直接调用的价格还要便宜一些，性价比高。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">V2.5系列10月14日转发、10月21日下线；年池和月池分开理解。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">官方服务，稳定性强。用户量没那么大，高峰期稳定性好。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -426,7 +407,6 @@
                             <span class="platform-rating" aria-label="5 星">★ 5.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">Go、GOAT、Pro与两档Max多模型订阅，按实际模型价格与上下文档扣减Credits。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">Go 仅 $1/月并含 $10 Credits；各档套餐包含额度高于订阅价格，优惠模型还能进一步放大可用量。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">不同套餐支持名单独立；上下文阶梯、免费请求限制与地区条件需逐项比较。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">实际价格和可用性可能随上游变化；Go 套餐只能在 Command Code 客户端内使用，稳定性较弱。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -447,7 +427,6 @@
                             <span class="platform-rating" aria-label="3 星">★ 3.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">Token计量与积分计量产品并存，统一品牌下按独立计费套餐比较。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">Token Plan 个人版首购 4.9 元起，额度统一抵扣且取消原 Coding Plan 三层限流，性价比更突出。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">Token总量按官方口径；积分制逐模型动态抵扣不能用固定Token量替代。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">百度智能云官方通道，稳定性符合大厂预期。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -468,7 +447,6 @@
                             <span class="platform-rating" aria-label="3 星">★ 3.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">华为云个人Token Plan，当前五个LLM，按官方月Token总量。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">性价比较低。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">仅西南贵阳一，每日限量发售；官方Token总量与请求次数、TPM分开。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">华为云基础设施成熟，企业级稳定性有保障。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -489,7 +467,6 @@
                             <span class="platform-rating" aria-label="3 星">★ 3.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">通用Token Plan与Hy专属产品线分开；模型与套餐抵扣系数需逐项比较。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">Coding Plan 已下线，Token Plan性价比中等甚至较差。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">当前通用套餐支持Auto及DeepSeek、GLM、Kimi、MiniMax、Hy、MiMo等模型；旧GLM5/5.1已下线。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">腾讯云基础设施成熟，企业级稳定性有保障。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -510,7 +487,6 @@
                             <span class="platform-rating" aria-label="3 星">★ 3.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">Qoder国内套餐，当前CLI支持名单与国际版不同。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">¥59 起，按积分使用；实际 Token 性价比尚未实测。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">内置型号按官方名单核对，不能把BYOK全目录当套餐支持。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">阿里旗下官方产品；尚未完成本站稳定性实测。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span></div>
@@ -531,7 +507,6 @@
                             <span class="platform-rating" aria-label="3 星">★ 3.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">Qoder国际套餐，当前支持K3、K2.8、GLM5.3及Qwen3.8等；具体Token额度未知。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">$20 起，按 Credits 使用；不能与国内版积分等值比较。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">CLI内置和自定义API模型分开，按真实产品线比较。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">官方客户端服务；尚未完成本站稳定性实测。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span></div>
@@ -552,7 +527,6 @@
                             <span class="platform-rating" aria-label="3 星">★ 3.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">体验版与三档付费个人订阅，WorkBuddy与CodeBuddy共享积分。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">¥99 单月起，可与 CodeBuddy 共享积分；连续包月另有优惠。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">当前14个内置LLM；体验版限免全模型，付费档含CLI；老用户保价另列。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">腾讯官方产品；尚未完成本站稳定性实测。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span></div>
@@ -573,7 +547,6 @@
                             <span class="platform-rating" aria-label="3 星">★ 3.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">TRAE国内订阅，以积分计费；当前内置型号已换代，支持范围按档位区分。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">Lite/Pro/Pro+/Ultra连续月付45/89/219/629元；模型权限与积分倍率依档位不同，当前Token额度未知。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">Seed Evolving仅Pro/Pro+/Ultra及历史Express可用；BYOK不等于内置支持。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">字节官方产品；高峰优先为套餐权益，不代表稳定性实测结果。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span></div>
@@ -594,7 +567,6 @@
                             <span class="platform-rating" aria-label="3 星">★ 3.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">Free仅Auto；新Lite/Pro/Pro+/Ultra与老套餐并存，按模型Token价扣减月Usage。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">新版月费$8/$20/$60/$200，老连续订阅保价另列；新套餐已按完整模型价估算月Token，免费版具体额度未知。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">新Lite有地区限制，旧档停止新购但按各用户周期迁移；不混用新旧额度。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">字节官方产品；存在地区限制，尚未完成本站稳定性实测。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span></div>
@@ -615,7 +587,6 @@
                             <span class="platform-rating" aria-label="3 星">★ 3.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">Copilot个人方案现按AI Credits计费，新增Max；免费与学生档仅Auto选择。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">现在按使用量计费，额度非常少，已经完全无性价比。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">用量按模型Token价格与当前基础/Flex积分计算，部分老年付仍有过渡口径。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">GitHub 官方服务，与 IDE 深度集成，稳定性出色。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span></div>
@@ -636,7 +607,6 @@
                             <span class="platform-rating" aria-label="待评定">待评定</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">AI 编程编辑器与 Agent；新 X Subscription 从免费至 $200/月，旧 Pro 系列仅存量保留。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">新套餐已公布价格与额度倍率，未公布固定 Token 总量；第三方模型不包含在订阅额度中。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">支持 Grok、Claude、GPT、Gemini、Muse Spark；Composer 2.5 的旧套餐模型池单独记录。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">官方编辑器与 Agent 服务；尚未完成本站稳定性实测。</span></li></ul>
                     <div class="platform-capabilities"></div>
@@ -657,7 +627,6 @@
                             <span class="platform-rating" aria-label="2 星">★ 2.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">京东Coding Plan与新的Credits Token Plan并存，使用独立端点与计费。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">有首月优惠，但是用量证据不足，不予评价。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">Coding模型名单与新Token Plan上下文阶梯分别核对。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">京东云官方运营，证据不足，但推测稳定性尚可。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -678,7 +647,6 @@
                             <span class="platform-rating" aria-label="3 星">★ 3.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">个人版沿用此前高效版与速通版记录；2026-10-12当前价格和完整支持未能公开核实。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">个人版199/699元为此前记录，本轮未确认当前完整订购权益；企业Astron成员积分产品另列。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">保留已知个人版型号关系并移除明确下线型号；完整支持名单本次未确认。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">高效版（199元）拥挤，速通版（699元）套餐高峰期拥挤，整体可用性一般。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -699,7 +667,6 @@
                             <span class="platform-rating" aria-label="2 星">★ 2.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">此前Token Plan资料保留；2026-10-12官方页面无法读取，当前价格、支持和购买状态未重新确认。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">性价比一般</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">此前接入DeepSeek V4 Flash与MiniMax M2.5等；本轮无法确认最新名单。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">证据不足。但运营商云品牌，推测稳定性尚可。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -720,7 +687,6 @@
                             <span class="platform-rating" aria-label="2 星">★ 2.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">移动云请求制订阅，当前M2.5；首月与续费券按活动资格区分。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">证据不足</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">首次优惠每账号一次，两档互斥；续费券不是永久自动折扣。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">证据不足。但推测运营商云平台，稳定性应该尚可。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -741,7 +707,6 @@
                             <span class="platform-rating" aria-label="3 星">★ 3.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">双Flash Coding Plan：GLM5.3 Flash与DeepSeek V4 Flash0731，月付限量抢购。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">证据不足</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">仅双Flash型号；积分制Token Plan另列，模型广场完整名单不等于套餐全支持。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">新平台，证据不足。且看起来像是中专站，并且怀疑有不同供应商，稳定性存疑。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -762,7 +727,6 @@
                             <span class="platform-rating" aria-label="2 星">★ 2.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">旧Coding Plan公开文档仍列两个模型；新Credits Token Plan单独收录。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">证据不足</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">Coding当前购买状态待确认，不能从新Token Plan文档推断旧套餐恢复销售。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">证据不足</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -783,7 +747,6 @@
                             <span class="platform-rating" aria-label="2 星">★ 2.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">免费公测，SenseNova6.8 Flash Lite与U1 Fast，五小时60000积分。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">目前只有免费会员</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">2<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">付费Lite/Pro尚未开放，特殊模型与精确Token换算待确认。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">商汤官方运营，基础服务稳定但编程社区声量较小。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -804,7 +767,6 @@
                             <span class="platform-rating" aria-label="2 星">★ 2.0</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">KUAE Coding Plan当前GLM4.7；免费试用30天，付费套餐经官方京东入口销售。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">免费试用每账号一次；官方有付费Lite/Pro/Max，京东当前成交价及库存未确认。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">目前以 GLM-4.7 为主。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">证据不足。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -825,7 +787,6 @@
                             <span class="platform-rating" aria-label="待评定">待评定</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">Hy3、Hy4 preview专属订阅，与通用套餐可并存。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">按当前官方套餐价格及额度评估，具体消耗随模型而异</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">支持范围按当期官方套餐名单维护</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">腾讯云基础设施成熟，企业级稳定性有保障。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -846,7 +807,6 @@
                             <span class="platform-rating" aria-label="待评定">待评定</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">按模型与Token类型抵扣积分，可与Token制区分选购。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">按当前官方套餐价格及额度评估，具体消耗随模型而异</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">支持范围按当期官方套餐名单维护</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">百度智能云官方通道，稳定性符合大厂预期。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -867,7 +827,6 @@
                             <span class="platform-rating" aria-label="待评定">待评定</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">2026-09-23启用积分制；旧Token制仅周期内用户可续订。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">按当前官方套餐价格及额度评估，具体消耗随模型而异</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">支持范围按当期官方套餐名单维护</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">天翼云当前积分制在售；本项目未做独立长期稳定性测量。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -888,7 +847,6 @@
                             <span class="platform-rating" aria-label="待评定">待评定</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">个人Credits订阅，按模型和输入长度计费，可与Coding Plan同时订阅。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">当前四档月费69/199/599/999元，积分与完整Token抵扣价可推算用量；新旧产品有不同端点。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">GLM5.1/5.2、Kimi2.6、M3、DeepSeek V4正式/预览版</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">京东云官方运营，证据不足，但推测稳定性尚可。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -909,7 +867,6 @@
                             <span class="platform-rating" aria-label="待评定">待评定</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">多模型Credits月订阅，独立/token入口；与双Flash Coding Plan分开抵扣。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">证据不足</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">官方明确列出GLM5.3/Flash及DeepSeek Flash，完整支持表待进一步核对</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">新平台，证据不足。且看起来像是中专站，并且怀疑有不同供应商，稳定性存疑。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -930,7 +887,6 @@
                             <span class="platform-rating" aria-label="待评定">待评定</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">19个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">证据不足</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">当前19个LLM，含DeepSeek-V4.1-Flash、Kimi-K3、GLM-5.3、Qwen3.8及MiniMax。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">证据不足</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -951,7 +907,6 @@
                             <span class="platform-rating" aria-label="待评定">待评定</span>
                         </div>
                     </header>
-
                     <p class="platform-summary">面向企业/团队的成员积分订阅；当前活动已结束，按常规月价记录。</p>
                     <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">性价比</span></div><span class="dim-reason">常规成员月费200/600/2000元，20k/60k/200k月积分；6–7月限时折扣已结束。</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">模型</span></div><span class="dim-reason">已确认Spark-X2.5、GLM-5.2、Kimi-K2.6等13个LLM；DeepSeek-Pro具体版本待确认。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">—</span><span class="dim-label">可用性</span></div><span class="dim-reason">讯飞企业/团队成员订阅；不沿用个人版拥挤程度或旧套餐评分。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
@@ -968,13 +923,13 @@
   <div id="platformDetailOverlay" class="platform-detail-overlay" hidden><div class="platform-detail-backdrop" data-platform-detail-close="1"></div><div class="platform-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="platformDetailTitle" tabindex="-1"><button type="button" class="platform-detail-close" id="platformDetailClose" aria-label="关闭">×</button><div id="platformDetailBody"></div></div></div>
   <script src="/monitor/monitor-config.js"></script>
 <script src="/scripts/entity-data.js?v=058802c902"></script><script src="/scripts/number-display.js?v=6c6a6ccb42"></script>
-<script src="/scripts/filter-state.js?v=1e12960339"></script><script src="/scripts/homepage-filters.js?v=06246d5bce"></script><script src="/scripts/tool-page.js?v=fbb793f0db"></script>
+<script src="/scripts/filter-state.js?v=1e12960339"></script><script src="/scripts/homepage-filters.js?v=6d0c585632"></script><script src="/scripts/tool-page.js?v=fbb793f0db"></script>
 
 <script src="/scripts/platform-pages.js?v=601d13bd7b"></script>
-<script src="/scripts/platform-catalog.js?v=4fbc2e9766"></script>
+<script src="/scripts/platform-catalog.js?v=b4eb8ad50d"></script>
 <script src="/scripts/platform-detail.js?v=3981ddc2cb"></script>
 <script src="/scripts/platform-comparison.js?v=c08805e61e"></script>
-<script src="/scripts/platform-hub.js?v=3e48e05d8a"></script>
-<script src="/scripts/platforms-page.js?v=b2a04fde38"></script>
+<script src="/scripts/platform-hub.js?v=769714d937"></script>
+<script src="/scripts/platforms-page.js?v=5c958e5ceb"></script>
 </body>
 </html>

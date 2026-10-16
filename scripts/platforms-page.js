@@ -18,9 +18,6 @@
       const grid = host.querySelector('[data-hub-grid]');
       const empty = host.querySelector('[data-hub-empty]');
       const showing = host.querySelector('[data-hub-showing]');
-      const pinnedSection = host.querySelector('[data-hub-pinned]');
-      const pinnedGrid = host.querySelector('[data-hub-pinned-grid]');
-      const resultsTitle = host.querySelector('[data-hub-results-title]');
       const pinned = root.PlatformCatalog.readPinnedIdsFromStorage(root.localStorage);
       let pinnedIds = root.PlatformCatalog.sanitizePinnedIds(pinned, platforms);
 
@@ -34,24 +31,15 @@
             hasApiPlan: apiGroups.length > 0,
             supportedModels: root.EntityData.platformModels(context, platform.slug),
             featured: featuredSlugs.includes(platform.slug),
-            filterNotice: selection.notices.get(platform.slug),
             pinnedIds,
             sanitizeUrl: root.CodingPlanUI.sanitizeUrl
           });
         };
-        grid.innerHTML = selection.results.map(cardHtml).join('');
-        pinnedGrid.innerHTML = selection.pinned.map(cardHtml).join('');
-        pinnedSection.hidden = selection.pinned.length === 0;
-        host.querySelector('[data-hub-pinned-count]').textContent = selection.pinned.length;
-        resultsTitle.hidden = selection.pinned.length === 0;
-        resultsTitle.textContent = featuredOnly ? '精选平台' : '符合条件的平台';
+        grid.innerHTML = selection.visible.map(cardHtml).join('');
         search.disabled = featuredOnly;
-        search.setAttribute('aria-describedby', featuredOnly ? 'platformFeaturedSearchHelp' : '');
         search.closest('.tool-result-bar').classList.toggle('is-search-paused', featuredOnly);
-        host.querySelector('[data-hub-search-help]').hidden = !featuredOnly;
         host.setAttribute('aria-busy','false');
-        empty.hidden = selection.results.length > 0;
-        empty.textContent = featuredOnly ? '精选平台已全部显示在置顶区域。' : selection.pinned.length ? '没有更多符合条件的平台，可调整或重置筛选。' : '当前条件下没有平台，可调整或重置筛选。';
+        empty.hidden = selection.visible.length > 0;
         showing.textContent = root.PlatformHub.countLabel(selection, featuredOnly);
         if (root.PlatformDetail && root.PlatformDetail.syncPinUi) root.PlatformDetail.syncPinUi();
       }

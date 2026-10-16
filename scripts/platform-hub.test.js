@@ -23,8 +23,7 @@ test('被搜索与模型条件排除的置顶平台仍保留，不计入匹配�
   assert.deepEqual(result.pinned.map(p=>p.slug), pinnedIds);
   assert.equal(result.matchedCount, 0);
   assert.equal(result.results.length, 0);
-  assert.match(result.notices.get(pinnedIds[0]), /名称不匹配搜索词/);
-  assert.match(result.notices.get(pinnedIds[0]), /模型/);
+  assert.deepEqual(result.visible.map(p=>p.slug),pinnedIds);
 });
 test('精选模式忽略所有条件，补回非精选置顶、去重且不改原状态', () => {
   const pinnedIds = [featuredSlugs[0], platforms.find(p=>!featuredSlugs.includes(p.slug)).slug];
@@ -36,7 +35,7 @@ test('精选模式忽略所有条件，补回非精选置顶、去重且不改�
   const visible = [...result.pinned, ...result.results].map(p=>p.slug);
   assert.equal(new Set(visible).size, visible.length);
   assert.deepEqual(new Set(visible), new Set([...featuredSlugs,...pinnedIds]));
-  assert.equal(result.notices.size, 0);
+  assert.deepEqual(result.visible.map(p=>p.slug),visible);
   assert.equal(JSON.stringify(input), before);
   assert.equal(Hub.countLabel(result,true), `精选 ${featuredSlugs.length} 个 · 置顶 1 个`);
   assert.equal(Hub.select(platforms,input,{...options,pinnedIds,query:'__missing'}).matchedCount,0);

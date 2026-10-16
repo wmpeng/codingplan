@@ -19,24 +19,7 @@
     const results = matched.filter(p => !pinnedSet.has(p.slug));
     // Stable partition: preserve the source order inside featured and ordinary groups.
     results.sort((a, b) => Number(featured.has(b.slug)) - Number(featured.has(a.slug)));
-    const notices = new Map();
-    if (!options.featuredOnly) for (const platform of pinned) {
-      if (matchedIds.has(platform.slug)) continue;
-      const reasons = [];
-      if (query && !matchesName(platform, query)) reasons.push('名称不匹配搜索词');
-      if (state.domesticNetworkOnly && platform.requiresOverseasNetwork !== false) reasons.push(platform.requiresOverseasNetwork == null ? '境内可用情况待确认' : '不符合境内可用条件');
-      if (state.domesticPaymentOnly && platform.requiresOverseasPayment !== false) reasons.push(platform.requiresOverseasPayment == null ? '境内购买情况待确认' : '不符合境内可购买条件');
-      const baseline = {...Filters.createDefaultState({}, {mode:'full'}), platformSlugs:null, modelSlugs:null, platformStatusMax:'delisted', includeDiscontinued:true};
-      const fails = patch => Filters.filterPlatforms([platform], {...baseline, ...patch}, filterOptions).length === 0;
-      if (platform.platformStatus === 'delisted' && state.platformStatusMax !== 'delisted') reasons.push('平台已下架');
-      else if ((state.excludedPlatformStatuses || []).includes(platform.platformStatus)) reasons.push('平台购买受限');
-      if (state.modelSlugs?.length && fails({modelSlugs:state.modelSlugs, modelMatch:state.modelMatch})) reasons.push('不符合所选模型要求');
-      if (state.budgetCny && fails({budgetCny:state.budgetCny, monthlyTokenRange:state.monthlyTokenRange})) reasons.push('不符合当前预算或费用待确认');
-      if (state.monthlyTokenRange && fails({monthlyTokenRange:state.monthlyTokenRange})) reasons.push('不符合当前月用量或额度待确认');
-      if (state.apiOnly && fails({apiOnly:true})) reasons.push('没有匹配的按量 API');
-      notices.set(platform.slug, reasons.length ? reasons.join('；') : '当前条件下没有匹配的套餐');
-    }
-    return {pinned, results, matchedCount:matched.length, notices,
+    return {pinned, results, visible:[...pinned,...results], matchedCount:matched.length,
       extraPinnedCount:pinned.filter(p => !matchedIds.has(p.slug)).length};
   }
   function countLabel(selection, featuredOnly) {
