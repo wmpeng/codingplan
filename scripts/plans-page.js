@@ -22,7 +22,8 @@
       const allPlans = root.EntityData.buildPlanCatalog(context).filter(plan => plan.billingMode === 'subscription');
       let state = Filters.createDefaultState(config, { mode: 'full' });
       const pinned = new Set();
-      let sort = { key: 'monthlyPrice', direction: 'asc' };
+      const platformOrder = new Map(context.platforms.map((platform, index) => [platform.slug, index]));
+      let sort = { key: 'platformOrder', direction: 'asc' };
 
       const tableBody = host.querySelector('[data-plan-body]');
       const count = host.querySelector('[data-plan-count]');
@@ -34,14 +35,19 @@
             const values = (plan.monthlyTokenOptions || []).filter(row => !state.modelSlugs?.length || state.modelSlugs.includes(row.modelSlug)).map(row => row.value === 'unlimited' ? Infinity : row.value).filter(value => typeof value === 'number');
             return values.length ? Math.min(...values) : null;
           }
-          const value = plan[sort.key];
-          if (sort.key.endsWith('Price')) return Filters.toCny(value, plan.currency, config.usdToCnyRate);
+          const key = sort.key === 'platformOrder' ? 'monthlyPrice' : sort.key;
+          const value = plan[key];
+          if (key.endsWith('Price')) return Filters.toCny(value, plan.currency, config.usdToCnyRate);
           if (sort.key.endsWith('Requests')) return value === '无限制' ? Infinity : typeof value === 'number' ? value : null;
           if (sort.key === 'rating') return value > 0 ? value : null;
           return Array.isArray(value) ? value.join('、') : value;
         };
         filtered.sort((a, b) => {
           if (pinned.has(a.slug) !== pinned.has(b.slug)) return pinned.has(a.slug) ? -1 : 1;
+          if (sort.key === 'platformOrder') {
+            const order = (platformOrder.get(a.platformSlug) ?? platformOrder.size) - (platformOrder.get(b.platformSlug) ?? platformOrder.size);
+            if (order) return order;
+          }
           const left = valueForSort(a); const right = valueForSort(b);
           if (left == null || right == null) return left == null ? (right == null ? 0 : 1) : -1;
           const result = left === right ? 0 : typeof left === 'number' && typeof right === 'number'
