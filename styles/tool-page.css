@@ -216,7 +216,10 @@ body .platform-hub-filters .platform-featured-button:focus-visible { outline: 2p
 .platform-hub-page .platform-card > header { flex-wrap: wrap; }
 .platform-hub-page .platform-card-heading { flex-basis: 140px; }
 .platform-hub-page .platform-card-aside { margin-left: auto; }
-.platform-featured-badge { display: inline-flex; align-items: center; padding: 3px 7px; border: 1px solid #cbdcf5; border-radius: 5px; background: #eff6ff; color: #245c9f; font-size: 12px; line-height: 1.5; white-space: nowrap; }
+.platform-hub-page { --platform-featured-color: #946c35; }
+body.platform-hub-page .platform-card.is-featured:not(.is-pinned) { border-color: var(--platform-featured-color); }
+body.platform-hub-page .platform-card.is-pinned { border-color: #a5b9d1; }
+.platform-featured-badge { display: inline-flex; align-items: center; padding: 3px 7px; border: 1px solid #e4d1b2; border-radius: 5px; background: #fff8ec; color: var(--platform-featured-color, #946c35); font-size: 12px; line-height: 1.5; white-space: nowrap; }
 @media (max-width: 650px), (pointer: coarse) {
   .platform-hub-page .platform-featured-button, .platform-access-filter { min-height: 44px; }
 }

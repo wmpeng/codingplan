@@ -489,7 +489,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
   });
 
   return `
-                <article class="platform-card${discontinuedClass}${pinnedClass}" data-platform-id="${escapeHtml(platformId)}" tabindex="0" role="button" aria-label="${name} 详情">
+                <article class="platform-card${discontinuedClass}${pinnedClass}${options.featured ? ' is-featured' : ''}" data-platform-id="${escapeHtml(platformId)}" tabindex="0" role="button" aria-label="${name} 详情">
                     <header>
                         <div class="platform-card-heading">
                             ${nameHtml}
