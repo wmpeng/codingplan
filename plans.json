@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-16T07:39:30Z",
+  "generatedAt": "2026-10-16T10:06:17Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -25596,7 +25596,6 @@
       "yearlyPrice": "-",
       "benefits": [],
       "note": "",
-      "planTableVisible": false,
       "planModels": [
         {
           "slug": "deepseek-official-api--deepseek-v4-1-flash--gu",
@@ -25697,7 +25696,6 @@
       "yearlyPrice": "-",
       "benefits": [],
       "note": "邀请8折仅适用于资格仍有效的用户，资格依据2026-09-04确认；本次已核对标价，但未重新验证账号折扣。",
-      "planTableVisible": false,
       "planModels": [
         {
           "slug": "gongji-api--glm-5-3-flash",

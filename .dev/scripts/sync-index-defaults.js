@@ -17,7 +17,7 @@ function replace(html,id,body){
  return html.replace(re,(_,start,end)=>start+'\n'+body+'\n'+end);
 }
 function write(file,html){html=html.replace(/\r\n/g,'\n').replace(/[ \t]+$/gm,'');const target=path.join(root,file);if(fs.readFileSync(target,'utf8')===html)return;if(check)throw new Error(file+' 需要重新生成');fs.writeFileSync(target,html,'utf8');}
-const plans=E.buildPlanCatalog(ctx);
+const plans=E.buildPlanCatalog(ctx).filter(plan=>plan.billingMode==='subscription');
 let home=fs.readFileSync(path.join(root,'index.html'),'utf8');
 home=replace(home,'FEATURED_PLATFORMS',preset.platformSlugs.map(slug=>P.buildPlatformCardHtml(ctx.platformBySlug.get(slug),plans,{capabilitiesBeforeScores:true,supportedModels:E.platformModels(ctx,slug),hasApiPlan:E.buildApiPricingGroups(ctx,slug).length>0,sanitizeUrl:C.url})).join('\n'));
 home=replace(home,'FEATURED_MODELS',C.modelGroups(preset,ctx));

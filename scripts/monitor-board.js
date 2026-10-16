@@ -575,7 +575,7 @@
       };
       const platforms = (boardData.platforms || []).map(row => {
         const platform = resolvePlatform(row);
-        if (!platform || platform.catalogVisible === false) return null;
+        if (!platform) return null;
         return Object.assign({}, row, {
           platform_slug: platform.slug || row.platform_slug,
           platform_display_name: platform.name || row.platform_display_name,

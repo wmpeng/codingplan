@@ -13,7 +13,7 @@
     for (const slug of config.platformSlugs || []) {
       if (seen.has(slug)) errors.push('重复平台 ' + slug);
       seen.add(slug);
-      if (!context.platformBySlug.has(slug) || context.platformBySlug.get(slug).catalogVisible === false) errors.push('无效平台 ' + slug);
+      if (!context.platformBySlug.has(slug)) errors.push('无效平台 ' + slug);
     }
     const models = new Set();
     const ids = (config.groups || []).map(g => g.id);
@@ -44,7 +44,7 @@
     return model.modalities.input.map(x => names[x] || x).join(' / ') + '输入';
   }
   function modelCard(model, context) {
-    const supported = new Set(context.planModels.filter(r => r.modelSlug === model.slug).map(r => context.planBySlug.get(r.planSlug)).filter(p => p && !p.discontinued && context.platformBySlug.get(p.platformSlug)?.catalogVisible !== false).map(p => p.platformSlug));
+    const supported = new Set(context.planModels.filter(r => r.modelSlug === model.slug).map(r => context.planBySlug.get(r.planSlug)).filter(p => p && !p.discontinued && context.platformBySlug.get(p.platformSlug)?.platformStatus !== 'delisted').map(p => p.platformSlug));
     return `<article class="model-card" data-model-slug="${esc(model.slug)}"><h3>${esc(model.name)}</h3><p class="model-modality">${esc(modalities(model))}</p><div class="model-scores">${scoreHtml(model,'artificialAnalysis','AA')}${scoreHtml(model,'deepSWE','DeepSWE')}</div><a class="model-offers-link" href="${esc(UI.route('plans',{model:model.slug}))}">${supported.size} 个平台收录 · 查看套餐 →</a><a class="model-price-link" href="${esc(UI.route('pricing',{model:model.slug}))}">比较价格与按量 API →</a></article>`;
   }
   function modelGroups(config, context) {

@@ -575,7 +575,7 @@
         return sortComparisonRows((points || []).filter((point) =>
             (point.billingMode === 'subscription' || point.billingMode === 'payg') &&
             (scope === 'all' || defaultPlatformKeys.has(getPointPlatformKey(point))) &&
-            modelSlugs.has(point.modelSlug) && point.platformVisible !== false && !point.discontinued && point.available !== false
+            modelSlugs.has(point.modelSlug) && !point.discontinued && point.available !== false
         ), 'unitPriceCnyPerM', 'asc');
     }
 

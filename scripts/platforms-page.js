@@ -7,7 +7,7 @@
     host.setAttribute('aria-busy', 'true');
     root.CodingPlanToolPage.load().then(({ context, config: appConfig }) => {
       const platforms = root.EntityData.listPlatforms(context);
-      const plans = root.EntityData.buildPlanCatalog(context);
+      const plans = root.EntityData.buildPlanCatalog(context).filter(plan => plan.billingMode === 'subscription');
       const config = appConfig && appConfig.platformCatalog || {};
       let state = root.CodingPlanFilters.createDefaultState(appConfig, { mode: 'full' });
       const search = host.querySelector('[data-hub-search]');

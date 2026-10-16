@@ -54,7 +54,7 @@
   }
 
   function platformModels(context, platformSlug) {
-    // 平台卡片与平台模型筛选也要覆盖按量 API；planTableVisible 只控制套餐表展示。
+    // 平台卡片与平台模型筛选覆盖在售订阅和按量 API。
     return supportedModels(context, context.plans.filter(plan => plan.platformSlug === platformSlug && !plan.discontinued));
   }
 
@@ -82,16 +82,12 @@
     return { workload: planDoc.workload, platforms, plans, models, planModels, platformBySlug, planBySlug, modelBySlug, relationsByPlanSlug };
   }
 
-  function listPlatforms(context, options) {
-    const includeHidden = !!(options && options.includeHidden);
-    return context.platforms
-      .filter((platform) => includeHidden || platform.catalogVisible !== false);
+  function listPlatforms(context) {
+    return context.platforms.slice();
   }
 
-  function buildPlanCatalog(context, options) {
-    const includeHidden = !!(options && options.includeHidden);
+  function buildPlanCatalog(context) {
     return context.plans
-      .filter((plan) => includeHidden || (plan.planTableVisible !== false && plan.billingMode !== 'payg'))
       .map((plan) => {
         const platform = context.platformBySlug.get(plan.platformSlug);
         const models = supportedModels(context, [plan]);
@@ -205,7 +201,6 @@
         planSlug: plan.slug,
         modelSlug: model.slug,
         platformName: platform.name,
-        platformVisible: platform.catalogVisible !== false,
         planName: plan.comparisonName || plan.name,
         ...billingPresentation(model, relation),
         multimodal: model.multimodal,
@@ -213,7 +208,6 @@
         billingMode,
         supportsHarnessApi: resolveHarnessApi(platform, plan),
         discontinued: !!plan.discontinued,
-        planTableVisible: plan.planTableVisible !== false,
         actionUrl: plan.action || platform.action || null,
         originalMonthlyFee: billingMode === 'subscription' ? fee : undefined,
         originalCurrency: billingMode === 'subscription'
@@ -242,8 +236,8 @@
 
   function catalogCounts(context) {
     return {
-      platforms: listPlatforms(context).length,
-      plans: buildPlanCatalog(context).filter(plan => !plan.discontinued).length,
+      platforms: context.platforms.filter(platform => platform.platformStatus !== 'delisted').length,
+      plans: context.plans.filter(plan => plan.billingMode === 'subscription' && !plan.discontinued).length,
       models: context.models.length
     };
   }

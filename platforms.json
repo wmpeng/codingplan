@@ -32,7 +32,6 @@
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
       "platformStatus": "delisted",
-      "catalogVisible": false,
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
       "supportsHarnessApi": null
@@ -144,7 +143,6 @@
       "summary": "历史Token Plan老权益产品线，仅存量用户自动续费；支持最新型号但用量不直接套旧测量。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
       "platformStatus": "delisted",
-      "catalogVisible": false,
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
       "supportsHarnessApi": null
@@ -182,7 +180,6 @@
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
       "platformStatus": "delisted",
-      "catalogVisible": false,
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
       "supportsHarnessApi": null
@@ -496,7 +493,6 @@
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
       "platformStatus": "delisted",
-      "catalogVisible": false,
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
       "supportsHarnessApi": null
@@ -557,7 +553,6 @@
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
       "platformStatus": "delisted",
-      "catalogVisible": false,
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
       "supportsHarnessApi": null
@@ -817,7 +812,6 @@
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
       "platformStatus": "delisted",
-      "catalogVisible": false,
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
       "supportsHarnessApi": null

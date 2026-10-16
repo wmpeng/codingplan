@@ -196,11 +196,10 @@
     const rate = opts.usdToCnyRate;
     if (opts.context && Array.isArray(opts.context.plans)) {
       const ids = new Set(matchingOffers(opts.context, current, opts).map(offer => offer.plan.slug));
-      return (plans || []).filter(plan => plan.planTableVisible !== false && ids.has(plan.slug));
+      return (plans || []).filter(plan => ids.has(plan.slug));
     }
     return (plans || []).filter(plan => {
       if (current.apiOnly && plan.billingMode !== 'payg') return false;
-      if (plan.planTableVisible === false) return false;
       if (!current.includeDiscontinued && plan.discontinued) return false;
       if (!selectedMatch(plan.platformSlug, current.platformSlugs)) return false;
       if (!modelMatch(plan.supportedModels || plan.modelSlugs, current.modelSlugs, current.modelMatch)) return false;
@@ -233,7 +232,6 @@
       return (platforms || []).filter(platform => ids.has(platform.slug));
     }
     return (platforms || []).filter(platform => {
-      if (platform.catalogVisible === false) return false;
       if (!selectedMatch(platform.slug, current.platformSlugs)) return false;
       if (!platformStatusMatches(platform, current)) return false;
       if (opts.context && opts.entityData && current.modelSlugs !== null) {
@@ -264,7 +262,6 @@
     const modelGroups = new Map();
     if (current.modelSlugs?.length && current.modelMatch === 'all') {
       (points || []).forEach(point => {
-        if (point.platformVisible === false || (point.planTableVisible === false && point.billingMode !== 'payg')) return;
         if (!current.includeDiscontinued && point.discontinued) return;
         if (current.monthlyTokenRange && point.billingMode !== 'payg' && !tokenInRange(point.monthlyTokenInM, current.monthlyTokenRange)) return;
         const key = `${point.platformSlug || ''}::${point.billingMode || ''}::${point.planSlug || ''}`;
@@ -274,8 +271,6 @@
     }
     return (points || []).filter(point => {
       if (current.apiOnly && point.billingMode !== 'payg') return false;
-      if (point.platformVisible === false) return false;
-      if (point.planTableVisible === false && point.billingMode !== 'payg') return false;
       if (!current.includeDiscontinued && point.discontinued) return false;
       if (!selectedMatch(point.platformSlug, current.platformSlugs)) return false;
       const platform = opts.context?.platformBySlug?.get(point.platformSlug) || point;
@@ -327,7 +322,7 @@
     const offers = [];
     for (const plan of context.plans) {
       const platform = context.platformBySlug.get(plan.platformSlug);
-      if (!platform || platform.catalogVisible === false || (plan.planTableVisible === false && plan.billingMode !== 'payg')) continue;
+      if (!platform) continue;
       if (!s.includeDiscontinued && plan.discontinued) continue;
       if (!selectedMatch(platform.slug, s.platformSlugs)) continue;
       if (!platformStatusMatches(platform, s)) continue;
@@ -359,15 +354,14 @@
   function validateDefaults(raw, context) {
     const state = normalizeState(raw);
     const errors = [];
-    const check = (name, values, map, hiddenCheck) => {
+    const check = (name, values, map) => {
       if (values === null) return;
       for (const value of values) {
         if (!map.has(value)) errors.push(`${name} 不存在: ${value}`);
-        else if (hiddenCheck && hiddenCheck(map.get(value))) errors.push(`${name} 不可见: ${value}`);
       }
     };
     if (!context) return { ok: true, errors, state };
-    check('平台', state.platformSlugs, context.platformBySlug || new Map(), item => item.catalogVisible === false);
+    check('平台', state.platformSlugs, context.platformBySlug || new Map());
     check('模型', state.modelSlugs, context.modelBySlug || new Map());
     return { ok: errors.length === 0, errors, state };
   }

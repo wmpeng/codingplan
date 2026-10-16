@@ -196,9 +196,7 @@
     if (!host || !context || !root.EntityData) return false;
     if (host.filterController) return true;
     const config = opts.config || root.appConfig || {};
-    const platforms = context.platforms.filter(
-        (x) => x.catalogVisible !== false,
-      ),
+    const platforms = context.platforms,
       models = context.models;
     let state = Filters.createDefaultState(config, {
       mode: full ? "full" : "home",

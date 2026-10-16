@@ -28,7 +28,7 @@ describe('buildDetailBodyHtml', () => {
     const entityContext = fixtureContext({ schemaVersion: 1, platforms: [platform] }, { schemaVersion: 1, plans: [
       { slug: 'lite', platformSlug: 'demo', name: 'Lite', billingMode: 'subscription' },
       { slug: 'pro', platformSlug: 'demo', name: 'Pro', billingMode: 'subscription' },
-      { slug: 'api', platformSlug: 'demo', name: 'API', billingMode: 'payg', planTableVisible: false },
+      { slug: 'api', platformSlug: 'demo', name: 'API', billingMode: 'payg' },
       { slug: 'old', platformSlug: 'demo', name: 'Old', discontinued: true }
     ] }, { schemaVersion: 1, models }, { schemaVersion: 1, planModels: [
       { planSlug: 'lite', modelSlug: 'm0' },

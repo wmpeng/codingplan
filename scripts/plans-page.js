@@ -19,7 +19,7 @@
     const host = document.getElementById('plansPage');
     if (!host || !Filters || !root.EntityData) return;
     root.CodingPlanToolPage.load().then(({ context, config }) => {
-      const allPlans = root.EntityData.buildPlanCatalog(context, { includeHidden: true }).filter(plan => plan.billingMode === 'subscription' && plan.planTableVisible !== false);
+      const allPlans = root.EntityData.buildPlanCatalog(context).filter(plan => plan.billingMode === 'subscription');
       let state = Filters.createDefaultState(config, { mode: 'full' });
       const pinned = new Set();
       let sort = { key: 'monthlyPrice', direction: 'asc' };

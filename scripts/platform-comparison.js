@@ -285,7 +285,6 @@
 
   function buildPlatformView(platform, context) {
     const activePlans = context.plans.filter((plan) => plan.platformSlug === platform.slug && !plan.discontinued);
-    const visiblePlans = activePlans.filter((plan) => plan.planTableVisible !== false);
     const planSlugs = new Set(activePlans.map((plan) => plan.slug));
     const modelNames = [];
     const modelSeen = new Set();
@@ -314,7 +313,6 @@
       status,
       statusLabel,
       activePlans,
-      visiblePlans,
       modelNames,
       monthlyPrice: formatPriceRange(activePlans),
       notice: noticeDimension

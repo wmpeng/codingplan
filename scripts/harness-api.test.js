@@ -35,7 +35,7 @@ test('三态平台默认与 boolean 套餐覆盖，false 不回落，不改源�
   }
   assert.equal(E.resolveHarnessApi(null,{}),null);
   const c=context(), before=JSON.stringify(c.plans);
-  const catalog=E.buildPlanCatalog(c,{includeHidden:true});
+  const catalog=E.buildPlanCatalog(c);
   assert.equal(catalog.find(p=>p.slug==='go').supportsHarnessApi,false);
   assert.equal(catalog.find(p=>p.slug==='inherit').supportsHarnessApi,true);
   assert.equal(catalog.find(p=>p.slug==='unknown').supportsHarnessApi,null);
@@ -53,7 +53,7 @@ test('能力仅用于展示，旧筛选状态不影响资格、视图投影或�
   const points=E.buildComparisonPoints(c,7,{includeUnknown:true});
   assert.deepEqual(F.filterPoints(points,state,opts).map(x=>x.planSlug),['inherit','go','go','opt-in','closed','unknown','api']);
   assert.deepEqual(F.filterPoints(points,state).map(x=>x.planSlug),['inherit','go','go','opt-in','closed','unknown','api']);
-  const plans=E.buildPlanCatalog(c,{includeHidden:true});
+  const plans=E.buildPlanCatalog(c);
   assert.deepEqual(F.filterPlans(plans,state,opts).map(x=>x.slug),expected);
   assert.deepEqual(F.filterPlans(plans,state).map(x=>x.slug),expected);
   assert.deepEqual(F.filterPlatforms(c.platforms,state,opts).map(x=>x.slug),['yes','no','unknown']);

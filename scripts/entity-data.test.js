@@ -43,7 +43,7 @@ test('inventory ignores every billing tier while detailed rows retain all varian
   context.planModels = relations;
   context.relationsByPlanSlug.set(plan.slug, relations);
   assert.deepEqual(EntityData.platformModels(context, plan.platformSlug), [{slug:'model-a',name:'Model A'}]);
-  assert.deepEqual(EntityData.buildPlanCatalog(context, {includeHidden:true})[0].modelLabels, ['Model A']);
+  assert.deepEqual(EntityData.buildPlanCatalog(context)[0].modelLabels, ['Model A']);
   const rows = EntityData.buildApiPricingGroups(context, plan.platformSlug)[0].rows;
   assert.equal(rows.length, 2);
   assert.equal(rows[0].modelName, 'Model A');
@@ -71,19 +71,27 @@ test('real catalogs keep bare identities and API platform cards do not duplicate
   assert.ok(EntityData.buildApiPricingGroups(context, 'deepseek-official').flatMap(group => group.rows).some(row => row.tierLabel.includes('[峰]')));
 });
 
-test('header counts use public platforms, active subscriptions and model identities', () => {
+test('header counts use non-delisted platforms, active subscriptions and model identities', () => {
   const context = fixture();
-  context.platforms.push({slug:'hidden', catalogVisible:false});
+  context.platforms.push({slug:'retired',platformStatus:'delisted'});
   context.plans.push(
     {slug:'old',platformSlug:'platform-a',billingMode:'subscription',discontinued:true},
     {slug:'api',platformSlug:'platform-a',billingMode:'payg'},
-    {slug:'hidden-plan',platformSlug:'platform-a',billingMode:'subscription',planTableVisible:false}
+    {slug:'extra',platformSlug:'platform-a',billingMode:'subscription'}
   );
-  assert.deepEqual(EntityData.catalogCounts(context), {platforms:1,plans:1,models:2});
-  assert.equal(EntityData.headerSubtitle(context, '31 大平台 介绍'), '1 大平台 · 1 个在售套餐 · 2 个模型<br>介绍');
+  assert.deepEqual(EntityData.catalogCounts(context), {platforms:1,plans:2,models:2});
+  assert.equal(EntityData.headerSubtitle(context, '31 大平台 介绍'), '1 大平台 · 2 个在售套餐 · 2 个模型<br>介绍');
   assert.equal(EntityData.headerSubtitle(null, '介绍'), '介绍');
   context.models.push({slug:'model-c'});
   assert.equal(EntityData.catalogCounts(context).models, 3);
+});
+
+test('catalogues retain historical platforms and both billing modes for callers to filter', () => {
+  const context = fixture();
+  context.platforms.push({slug:'retired',platformStatus:'delisted'});
+  context.plans.push({slug:'api',platformSlug:'platform-a',billingMode:'payg'});
+  assert.deepEqual(EntityData.listPlatforms(context).map(p=>p.slug),['platform-a','retired']);
+  assert.deepEqual(EntityData.buildPlanCatalog(context).map(p=>p.slug),['plan-a','api']);
 });
 
 function fixture() {

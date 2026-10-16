@@ -49,7 +49,6 @@ function fixture() {
       slug: "api",
       platformSlug: "p",
       billingMode: "payg",
-      planTableVisible: false,
     },
     {
       slug: "closed",
@@ -145,7 +144,8 @@ test("引导只按使用方式分流；API 限制与金额独立，未知 API �
     assert.equal(G.scenarioPatch({ scenario, writingMode: "tools" }).apiOnly, false);
   const offers = F.matchingOffers(c, api, options);
   assert.deepEqual(offers.map(x => x.plan.slug), ["api"]);
-  assert.deepEqual(F.filterPlans(c.plans, api, { ...options, context: c }), []);
+  const subscriptions = c.plans.filter(plan => plan.billingMode === 'subscription');
+  assert.deepEqual(F.filterPlans(subscriptions, api, { ...options, context: c }), []);
   assert.deepEqual(F.filterPlatforms(c.platforms, api, { ...options, context: c }).map(x => x.slug), ["p"]);
   const budget = state({ ...api, budgetCny: { max: 0 } });
   assert.equal(F.matchingOffers(c, budget, options).length, 1);

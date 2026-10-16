@@ -6,7 +6,7 @@
       const [{context,config},preset]=await Promise.all([CodingPlanToolPage.load(),CodingPlanToolPage.loadPreset()]);
       C.validate(preset,context);context.modelGroups=preset.groups;
       window.codingplanEntityContext=context;
-      const plans=EntityData.buildPlanCatalog(context),grid=document.getElementById('featuredPlatforms');
+      const plans=EntityData.buildPlanCatalog(context).filter(plan=>plan.billingMode==='subscription'),grid=document.getElementById('featuredPlatforms');
       let pinned=PlatformCatalog.readPinnedIdsFromStorage(localStorage);
       function platforms(){grid.innerHTML=preset.platformSlugs.map(slug=>PlatformCatalog.buildPlatformCardHtml(context.platformBySlug.get(slug),plans,{capabilitiesBeforeScores:true,supportedModels:EntityData.platformModels(context,slug),hasApiPlan:EntityData.buildApiPricingGroups(context,slug).length>0,pinnedIds:pinned,sanitizeUrl:C.url})).join('');}
       function pin(slug){pinned=PlatformCatalog.togglePinnedId(pinned,slug);PlatformCatalog.writePinnedIdsToStorage(localStorage,pinned);platforms();PlatformDetail.syncPinUi();}
