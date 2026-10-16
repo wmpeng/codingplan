@@ -36,7 +36,7 @@
 
   function platformHarnessApiBadge(platform, plans) {
     const value = resolveHarnessApi(platform);
-    const values = [value, ...(plans || []).filter(plan => plan.platformSlug === platform.slug && !plan.discontinued).map(plan => resolveHarnessApi(platform, plan))];
+    const values = [value, ...(plans || []).filter(plan => plan.platformSlug === platform.slug && plan.planStatus !== 'delisted').map(plan => resolveHarnessApi(platform, plan))];
     const partial = values.includes(true) && values.some(value => value !== true);
     return harnessApiBadge(value, { partial });
   }
@@ -55,12 +55,12 @@
 
   function platformModels(context, platformSlug) {
     // 平台卡片与平台模型筛选覆盖在售订阅和按量 API。
-    return supportedModels(context, context.plans.filter(plan => plan.platformSlug === platformSlug && !plan.discontinued));
+    return supportedModels(context, context.plans.filter(plan => plan.platformSlug === platformSlug && plan.planStatus !== 'delisted'));
   }
 
   function buildContext(platformDoc, planDoc, modelDoc) {
     const platforms = collection(platformDoc, 'platforms');
-    const catalogue = collection(planDoc, 'plans', 2);
+    const catalogue = collection(planDoc, 'plans', 3);
     const plans = [], planModels = [];
     for (const {planModels: relations, ...plan} of catalogue) {
       if (!Array.isArray(relations)) throw new Error(`plan ${plan.slug} must contain planModels[]`);
@@ -141,7 +141,7 @@
 
   function buildApiPricingGroups(context, platformSlug) {
     return context.plans
-      .filter((plan) => plan.billingMode === 'payg' && plan.platformSlug === platformSlug && !plan.discontinued)
+      .filter((plan) => plan.billingMode === 'payg' && plan.platformSlug === platformSlug && plan.planStatus !== 'delisted')
       .map((plan) => {
         const rows = (context.relationsByPlanSlug.get(plan.slug) || [])
           .map((relation) => {
@@ -207,7 +207,7 @@
         scores: comparisonScores(model.scores),
         billingMode,
         supportsHarnessApi: resolveHarnessApi(platform, plan),
-        discontinued: !!plan.discontinued,
+        planStatus: plan.planStatus,
         actionUrl: plan.action || platform.action || null,
         originalMonthlyFee: billingMode === 'subscription' ? fee : undefined,
         originalCurrency: billingMode === 'subscription'
@@ -237,7 +237,7 @@
   function catalogCounts(context) {
     return {
       platforms: context.platforms.filter(platform => platform.platformStatus !== 'delisted').length,
-      plans: context.plans.filter(plan => plan.billingMode === 'subscription' && !plan.discontinued).length,
+      plans: context.plans.filter(plan => plan.billingMode === 'subscription' && plan.planStatus !== 'delisted').length,
       models: context.models.length
     };
   }

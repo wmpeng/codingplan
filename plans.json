@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 2,
-  "generatedAt": "2026-10-16T10:06:17Z",
+  "schemaVersion": 3,
+  "generatedAt": "2026-10-16T12:07:56Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -24,6 +24,7 @@
       "currency": "$",
       "benefits": [],
       "note": "连续月付$18/$80/$168；季付8折、年付7折，已收录整季/整年金额。旧首购9折本次未确认，不作为当前优惠；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "zai-new-lite--glm-5-3--gu",
@@ -145,6 +146,7 @@
       "currency": "$",
       "benefits": [],
       "note": "连续月付$18/$80/$168；季付8折、年付7折，已收录整季/整年金额。旧首购9折本次未确认，不作为当前优惠；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "zai-new-pro--glm-5-3",
@@ -266,6 +268,7 @@
       "currency": "$",
       "benefits": [],
       "note": "连续月付$18/$80/$168；季付8折、年付7折，已收录整季/整年金额。旧首购9折本次未确认，不作为当前优惠；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "zai-new-max--glm-5-3",
@@ -389,7 +392,7 @@
         "免费MCP次数"
       ],
       "note": "• 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算\n• 实测用量参考国内版同档",
-      "discontinued": true,
+      "planStatus": "delisted",
       "measuredFiveHoursTokenLimit": 6,
       "measuredWeeklyTokenLimit": 30,
       "measuredMonthlyTokenLimit": 120,
@@ -454,7 +457,7 @@
         "免费MCP次数"
       ],
       "note": "• 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算\n• 实测用量参考国内版同档",
-      "discontinued": true,
+      "planStatus": "delisted",
       "measuredFiveHoursTokenLimit": 30,
       "measuredWeeklyTokenLimit": 150,
       "measuredMonthlyTokenLimit": 600,
@@ -532,7 +535,7 @@
         "免费MCP次数"
       ],
       "note": "• 4倍Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算\n• 实测用量参考国内版同档",
-      "discontinued": true,
+      "planStatus": "delisted",
       "measuredFiveHoursTokenLimit": 120,
       "measuredWeeklyTokenLimit": 600,
       "measuredMonthlyTokenLimit": 2400,
@@ -607,6 +610,7 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "连续包月为常规月价；连续包季8折、连续包年7折，已收录对应整季/整年金额，不把折算月价当成月付价。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "zhipu-token-lite--glm-5-3--gu",
@@ -727,6 +731,7 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "连续包月为常规月价；连续包季8折、连续包年7折，已收录对应整季/整年金额，不把折算月价当成月付价。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "zhipu-token-pro--glm-5-3",
@@ -847,6 +852,7 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "连续包月为常规月价；连续包季8折、连续包年7折，已收录对应整季/整年金额，不把折算月价当成月付价。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "zhipu-token-max--glm-5-3",
@@ -969,7 +975,7 @@
         "免费MCP次数"
       ],
       "note": "• 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
-      "discontinued": true,
+      "planStatus": "delisted",
       "measuredFiveHoursTokenLimit": 6,
       "measuredWeeklyTokenLimit": 30,
       "measuredMonthlyTokenLimit": 120,
@@ -1033,7 +1039,7 @@
         "免费MCP次数"
       ],
       "note": "• 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
-      "discontinued": true,
+      "planStatus": "delisted",
       "measuredFiveHoursTokenLimit": 30,
       "measuredWeeklyTokenLimit": 150,
       "measuredMonthlyTokenLimit": 600,
@@ -1110,7 +1116,7 @@
         "免费MCP次数"
       ],
       "note": "• 20倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
-      "discontinued": true,
+      "planStatus": "delisted",
       "measuredFiveHoursTokenLimit": 120,
       "measuredWeeklyTokenLimit": 600,
       "measuredMonthlyTokenLimit": 2400,
@@ -1182,7 +1188,7 @@
       "yearlyPrice": 490,
       "benefits": [],
       "note": "Token Plan已停售；自动续费开启时按原价及权益续费，关闭后不能恢复；2026-10-19起M2.5/M2.7请求路由至M3.1 Flash Preview。旧M3实测不代表新型号额度。",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "minimax-tp-plus--minimax-m3-1-flash-preview",
@@ -1238,7 +1244,7 @@
       "yearlyPrice": 1190,
       "benefits": [],
       "note": "Token Plan已停售；自动续费开启时按原价及权益续费，关闭后不能恢复；2026-10-19起M2.5/M2.7请求路由至M3.1 Flash Preview。旧M3实测不代表新型号额度。",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "minimax-tp-max--minimax-m3-1-flash-preview",
@@ -1294,7 +1300,7 @@
       "yearlyPrice": 4690,
       "benefits": [],
       "note": "Token Plan已停售；自动续费开启时按原价及权益续费，关闭后不能恢复；2026-10-19起M2.5/M2.7请求路由至M3.1 Flash Preview。旧M3实测不代表新型号额度。",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "minimax-tp-ultra--minimax-m3-1-flash-preview",
@@ -1353,7 +1359,7 @@
       "monthlyRequests": 24000,
       "benefits": [],
       "note": "• Token Plan 升级后保留档，仅老用户可续订\n• 支持 M3 与多模态，和 M2.7 共享额度池\n• 若中途断订，后续不可再次订阅同档",
-      "discontinued": true,
+      "planStatus": "delisted",
       "measuredFiveHoursTokenLimit": 24,
       "measuredWeeklyTokenLimit": 240,
       "measuredMonthlyTokenLimit": 960,
@@ -1428,7 +1434,7 @@
       "monthlyRequests": 60000,
       "benefits": [],
       "note": "• 当前公开订阅档位\n• 支持 M3 与多模态，和 M2.7 共享额度池\n• 套餐额度受 5 小时窗口与周窗口控制",
-      "discontinued": true,
+      "planStatus": "delisted",
       "measuredMonthlyTokenLimit": 2400,
       "measuredFiveHoursTokenLimit": 60,
       "measuredWeeklyTokenLimit": 600,
@@ -1503,7 +1509,7 @@
       "monthlyRequests": 180000,
       "benefits": [],
       "note": "• 约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算",
-      "discontinued": true,
+      "planStatus": "delisted",
       "measuredMonthlyTokenLimit": 7200,
       "measuredFiveHoursTokenLimit": 180,
       "measuredWeeklyTokenLimit": 1800,
@@ -1578,7 +1584,7 @@
       "monthlyRequests": 60000,
       "benefits": [],
       "note": "• 约100TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算",
-      "discontinued": true,
+      "planStatus": "delisted",
       "measuredFiveHoursTokenLimit": 60,
       "measuredWeeklyTokenLimit": 600,
       "measuredMonthlyTokenLimit": 2400,
@@ -1653,7 +1659,7 @@
       "monthlyRequests": 180000,
       "benefits": [],
       "note": "• 官方已停售并迁移至新版 Max\n• 迁移后月费 199→119，并补发差价积分\n• 新方案支持 M3 与多模态",
-      "discontinued": true,
+      "planStatus": "delisted",
       "measuredFiveHoursTokenLimit": 180,
       "measuredWeeklyTokenLimit": 1800,
       "measuredMonthlyTokenLimit": 7200,
@@ -1729,6 +1735,7 @@
       "currency": "$",
       "benefits": [],
       "note": "各模型月美元额度不同，五小时/周窗口分别为该模型月额度的20%/50%；模型额度不相加。Token 用量按统一工作负载估算，非官方Token上限。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "opencode-go--glm-5-3-flash",
@@ -2754,7 +2761,7 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "2026-06-08至2026-11-08普惠活动，Lite/Pro前两个月分别¥9.9/¥49.9，第三个月恢复¥40/¥200；限量，新购、续费、升配共用两个月资格，首购次日起可买第二个月。2026-05-19至2026-11-19受邀首次订阅可再享9.5折，首月价按叠加优惠约¥9.4/¥47.4展示，以结算金额为准；活动具体时刻及时区未公布。精确调用次数未公开；Token参考沿用带日期历史测量和推测系数。当前模型活动见明细。",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "volcengine-coding-lite--deepseek-v4-flash-0731",
@@ -2982,7 +2989,7 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "2026-06-08至2026-11-08普惠活动，Lite/Pro前两个月分别¥9.9/¥49.9，第三个月恢复¥40/¥200；限量，新购、续费、升配共用两个月资格，首购次日起可买第二个月。2026-05-19至2026-11-19受邀首次订阅可再享9.5折，首月价按叠加优惠约¥9.4/¥47.4展示，以结算金额为准；活动具体时刻及时区未公布。精确调用次数未公开；Token参考沿用带日期历史测量和推测系数。当前模型活动见明细。",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "volcengine-coding-pro--deepseek-v4-flash-0731",
@@ -3210,6 +3217,7 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠未重新确认，不沿用旧首月价；当前模型活动见关系明细。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "volcengine-agent-small--doubao-seed-2-1-pro",
@@ -3493,6 +3501,7 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠未重新确认，不沿用旧首月价；当前模型活动见关系明细。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "volcengine-agent-medium--doubao-seed-2-1-pro",
@@ -3798,6 +3807,7 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠未重新确认，不沿用旧首月价；当前模型活动见关系明细。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "volcengine-agent-large--doubao-seed-2-1-pro",
@@ -4103,6 +4113,7 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠未重新确认，不沿用旧首月价；当前模型活动见关系明细。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "volcengine-agent-max--doubao-seed-2-1-pro",
@@ -4412,7 +4423,7 @@
       "measuredFiveHoursTokenLimit": 5,
       "measuredWeeklyTokenLimit": 7,
       "measuredMonthlyTokenLimit": 28,
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "kimi-coding-plan-andante--kimi-k3",
@@ -4462,7 +4473,7 @@
       "measuredFiveHoursTokenLimit": 6,
       "measuredWeeklyTokenLimit": 27,
       "measuredMonthlyTokenLimit": 108,
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "kimi-moderato--kimi-k3--ctx-256k",
@@ -4517,7 +4528,7 @@
       "measuredFiveHoursTokenLimit": 27,
       "measuredWeeklyTokenLimit": 135,
       "measuredMonthlyTokenLimit": 540,
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "kimi-allegretto--kimi-k3",
@@ -4601,7 +4612,7 @@
       "measuredFiveHoursTokenLimit": 80,
       "measuredWeeklyTokenLimit": 400,
       "measuredMonthlyTokenLimit": 1600,
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "kimi-allegro--kimi-k3",
@@ -4679,7 +4690,7 @@
       "monthlyRequests": 1900,
       "benefits": [],
       "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：3 并发\n• Token量按请求负载估算，非官方Token配额；团队分配购买从Basic起",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "youyun-mini--glm-5-1",
@@ -4843,7 +4854,7 @@
       "monthlyRequests": 3800,
       "benefits": [],
       "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：5 并发\n• Token量按请求负载估算，非官方Token配额；团队分配购买从Basic起",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "youyun-lite--glm-5-1",
@@ -5007,7 +5018,7 @@
       "monthlyRequests": 7600,
       "benefits": [],
       "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：10 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "youyun-basic--glm-5-1",
@@ -5171,7 +5182,7 @@
       "monthlyRequests": 19000,
       "benefits": [],
       "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：20 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "youyun-pro--glm-5-1",
@@ -5335,7 +5346,7 @@
       "monthlyRequests": 31000,
       "benefits": [],
       "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：20 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "youyun-max--glm-5-1",
@@ -5499,7 +5510,7 @@
       "monthlyRequests": 39000,
       "benefits": [],
       "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：20 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "youyun-ultra--glm-5-1",
@@ -5664,6 +5675,7 @@
       "currency": "$",
       "benefits": [],
       "note": "Plus有五小时及周用量窗口，ChatGPT与Codex共享使用量；消耗随模型、速度档及负载变化，官方没有固定Token配额，旧测量仅供参考。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "codex-plus--gpt-6-1-sol",
@@ -5907,6 +5919,7 @@
       "currency": "$",
       "benefits": [],
       "note": "• 无5h限制，只有周限制\nChatGPT与Codex共享使用量；窗口消耗随模型、速度档及负载变化，官方没有固定Token配额，旧测量仅供参考。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "codex-pro5--gpt-6-1-sol",
@@ -6150,6 +6163,7 @@
       "currency": "$",
       "benefits": [],
       "note": "• 无5h限制，只有周限制\nChatGPT与Codex共享使用量；窗口消耗随模型、速度档及负载变化，官方没有固定Token配额，旧测量仅供参考。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "codex-pro20--gpt-6-1-sol",
@@ -6395,6 +6409,7 @@
         "原生 Claude 体验"
       ],
       "note": "• 部分用户订阅时可能被要求实名认证\n• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "claude-pro--claude-opus-5-5",
@@ -6593,6 +6608,7 @@
         "Claude Platform 每月赠送 API Credits：$100（2026-10-07 公告；与订阅额度分开）"
       ],
       "note": "• 部分用户订阅时可能被要求实名认证\n• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "claude-max5--claude-opus-5-5",
@@ -6797,6 +6813,7 @@
         "Claude Platform 每月赠送 API Credits：$200（2026-10-07 公告；与订阅额度分开）"
       ],
       "note": "• 部分用户订阅时可能被要求实名认证\n• 套餐额度不可用于 OpenClaw、Hermes 等第三方编程 Agent",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "claude-max20--claude-opus-5-5",
@@ -7000,6 +7017,7 @@
         "3 个并发任务"
       ],
       "note": "每月包含 $60 模型使用 Credits，按输入/缓存/输出 Token 扣减；无旧会话和周限额，未用额度不结转；可充值继续使用。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "ollama-coding-plan-pro--deepseek-v4-1-flash--time-peak",
@@ -7494,6 +7512,7 @@
         "10 个并发任务"
       ],
       "note": "每月包含 $300 模型使用 Credits，按输入/缓存/输出 Token 扣减；无旧会话和周限额，未用额度不结转；可充值继续使用。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "ollama-coding-plan-max--deepseek-v4-1-flash--time-peak",
@@ -7985,7 +8004,7 @@
       "monthlyRequests": 18000,
       "benefits": [],
       "note": "",
-      "discontinued": true,
+      "planStatus": "delisted",
       "measuredFiveHoursTokenLimit": 40,
       "measuredWeeklyTokenLimit": 300,
       "measuredMonthlyTokenLimit": 600,
@@ -8086,6 +8105,7 @@
       "monthlyRequests": 90000,
       "benefits": [],
       "note": "新客首次订阅Pro首月¥39.90，续费¥200/月；优惠起止日期及具体时刻未公布。每日09:30:00（UTC+8）限量补充。按实际模型调用次数扣除额度，单次提问可能含多次模型调用；请求配额不等于固定Token总量。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "aliyun-coding-pro--qwen-3-7-plus",
@@ -8183,6 +8203,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "每订阅月 11,500 Credits；自 2026-09-22 取消周限额。当前 ¥39/月限时优惠，常规 ¥60/月，官方未公布活动起止日期。逐模型精确 Credits 扣减未公开，Token 用量未知。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "aliyun-token-personal-lite--qwen-3-8-max",
@@ -8334,6 +8355,7 @@
         "AgentStudio Harness 权益独立于 Credits"
       ],
       "note": "每订阅月 45,000 Credits；自 2026-09-22 取消周限额。当前 ¥139/月限时优惠，常规 ¥180/月，官方未公布活动起止日期。逐模型精确 Credits 扣减未公开，Token 用量未知。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "aliyun-token-personal-standard--qwen-3-8-max",
@@ -8485,6 +8507,7 @@
         "AgentStudio Harness 权益独立于 Credits"
       ],
       "note": "每订阅月 180,000 Credits；自 2026-09-22 取消周限额。当前 ¥499/月限时优惠，常规 ¥600/月，官方未公布活动起止日期。逐模型精确 Credits 扣减未公开，Token 用量未知。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "aliyun-token-personal-pro--qwen-3-8-max",
@@ -8636,6 +8659,7 @@
         "TTS限时免费，活动起止日期未公布"
       ],
       "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。首购88折每账号一次，活动起止日期未公布；年付价格含88折，全年池不等于单月可用量。V2.5系列10月14日18:00转发至V2.6、10月21日10:00原模型名失效，均为UTC+8。Token按统一负载与官方系数推算，非实测。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "mimo-lite--mimo-v2-6-pro",
@@ -8833,6 +8857,7 @@
         "TTS限时免费，活动起止日期未公布"
       ],
       "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。首购88折每账号一次，活动起止日期未公布；年付价格含88折，全年池不等于单月可用量。V2.5系列10月14日18:00转发至V2.6、10月21日10:00原模型名失效，均为UTC+8。Token按统一负载与官方系数推算，非实测。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "mimo-standard--mimo-v2-6-pro",
@@ -9030,6 +9055,7 @@
         "TTS限时免费，活动起止日期未公布"
       ],
       "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。首购88折每账号一次，活动起止日期未公布；年付价格含88折，全年池不等于单月可用量。V2.5系列10月14日18:00转发至V2.6、10月21日10:00原模型名失效，均为UTC+8。Token按统一负载与官方系数推算，非实测。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "mimo-pro--mimo-v2-6-pro",
@@ -9227,6 +9253,7 @@
         "TTS限时免费，活动起止日期未公布"
       ],
       "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。首购88折每账号一次，活动起止日期未公布；年付价格含88折，全年池不等于单月可用量。V2.5系列10月14日18:00转发至V2.6、10月21日10:00原模型名失效，均为UTC+8。Token按统一负载与官方系数推算，非实测。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "mimo-max--mimo-v2-6-pro",
@@ -9429,6 +9456,7 @@
         "支持 53 个模型"
       ],
       "note": "各模型月额度共享套餐池，不能相加；DeepSeek V4.1 Flash额度加成无结束日期。集中价格页短窗口$2/$5，Go专页仍写$3/$6，官方页面存在冲突。仅可在Command Code客户端使用。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "commandcode-go--deepseek-v4-1-flash--gu",
@@ -11029,6 +11057,7 @@
         "支持 60 个模型"
       ],
       "note": "各模型月额度共享套餐池，不能相加；DeepSeek V4.1 Flash额度加成无结束日期。支持Provider API与客户端共用额度。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "commandcode-goat--gpt-5-6-sol--contexttier-272k",
@@ -12965,6 +12994,7 @@
         "支持 74 个模型"
       ],
       "note": "各模型月额度共享套餐池，不能相加；DeepSeek V4.1 Flash额度加成无结束日期。支持Provider API与客户端共用额度。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "commandcode-pro--gpt-5-6-sol--contexttier-272k",
@@ -15280,7 +15310,7 @@
       "monthlyRequests": 18000,
       "benefits": [],
       "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "baidu-qianfan-coding-plan-lite--glm-5",
@@ -15391,7 +15421,7 @@
       "monthlyRequests": 90000,
       "benefits": [],
       "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "baidu-qianfan-coding-plan-pro--glm-5",
@@ -15502,6 +15532,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "Token制，输入/输出/缓存统一1:1抵扣；首购5折活动起止日期未公布。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "baidu-qianfan-token-plan-mini--deepseek-v4-1-flash",
@@ -15697,6 +15728,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "Token制，输入/输出/缓存统一1:1抵扣；首购5折活动起止日期未公布。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "baidu-qianfan-token-plan-lite--deepseek-v4-1-flash",
@@ -15892,6 +15924,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "Token制，输入/输出/缓存统一1:1抵扣；首购5折活动起止日期未公布。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "baidu-qianfan-token-plan-pro--deepseek-v4-1-flash",
@@ -16087,6 +16120,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "Token制，输入/输出/缓存统一1:1抵扣；首购5折活动起止日期未公布。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "baidu-qianfan-token-plan-max--deepseek-v4-1-flash",
@@ -16282,6 +16316,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "huawei-cloud-token-plan-lite--glm-5-3",
@@ -16411,6 +16446,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n• 页面标\"最受欢迎\"档\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "huawei-cloud-token-plan-standard--glm-5-3",
@@ -16540,6 +16576,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "huawei-cloud-token-plan-pro--glm-5-3",
@@ -16669,6 +16706,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "huawei-cloud-token-plan-max--glm-5-3",
@@ -16798,7 +16836,7 @@
       "monthlyRequests": 18000,
       "benefits": [],
       "note": "",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "tencent-cloud-coding-plan-lite--hy-2-0",
@@ -16883,7 +16921,7 @@
       "monthlyRequests": 90000,
       "benefits": [],
       "note": "",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "tencent-cloud-coding-plan-pro--hy-2-0",
@@ -16971,6 +17009,7 @@
         "当前13个模型/路由（含Auto）"
       ],
       "note": "通用Token Plan，月额度按积分抵扣；GLM5/5.1已于2026-10-09下线。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "tencent-cloud-token-plan-lite--deepseek-v4-1-flash",
@@ -17279,6 +17318,7 @@
         "当前13个模型/路由（含Auto）"
       ],
       "note": "通用Token Plan，月额度按积分抵扣；GLM5/5.1已于2026-10-09下线。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "tencent-cloud-token-plan-standard--deepseek-v4-1-flash",
@@ -17587,6 +17627,7 @@
         "当前13个模型/路由（含Auto）"
       ],
       "note": "通用Token Plan，月额度按积分抵扣；GLM5/5.1已于2026-10-09下线。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "tencent-cloud-token-plan-pro--deepseek-v4-1-flash",
@@ -17895,6 +17936,7 @@
         "当前13个模型/路由（含Auto）"
       ],
       "note": "通用Token Plan，月额度按积分抵扣；GLM5/5.1已于2026-10-09下线。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "tencent-cloud-token-plan-max--deepseek-v4-1-flash",
@@ -18204,6 +18246,7 @@
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "qoder-cn-pro--qwen-3-8-max",
@@ -18344,6 +18387,7 @@
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "qoder-cn-pro-plus--qwen-3-8-max",
@@ -18484,6 +18528,7 @@
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "qoder-cn-ultra--qwen-3-8-max",
@@ -18624,6 +18669,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "qoder-intl-pro--qwen-3-8-max",
@@ -18790,6 +18836,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "qoder-intl-pro-plus--qwen-3-8-max",
@@ -18956,6 +19003,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "qoder-intl-ultra--qwen-3-8-max",
@@ -19124,6 +19172,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "firstMonthPrice": 70,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "workbuddy-standard--hy4-preview",
@@ -19331,6 +19380,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "firstMonthPrice": 140,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "workbuddy-advanced--hy4-preview",
@@ -19538,6 +19588,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "firstMonthPrice": 700,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "workbuddy-flagship--hy4-preview",
@@ -19745,6 +19796,7 @@
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
       "firstMonthPrice": 29.9,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "trae-cn-lite--doubao-seed-2-1-pro-0915",
@@ -20017,6 +20069,7 @@
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
       "firstMonthPrice": 69,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "trae-cn-pro--doubao-seed-evolving",
@@ -20302,6 +20355,7 @@
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
       "firstMonthPrice": 219,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "trae-cn-pro-plus--doubao-seed-evolving",
@@ -20587,6 +20641,7 @@
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
       "firstMonthPrice": 629,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "trae-cn-ultra--doubao-seed-evolving",
@@ -20871,7 +20926,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "trae-intl-lite--gpt-5-4--ctx-272k",
@@ -21079,7 +21134,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "trae-intl-pro--gpt-5-4--ctx-272k",
@@ -21287,7 +21342,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "trae-intl-pro-plus--gpt-5-4--ctx-272k",
@@ -21495,7 +21550,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "trae-intl-ultra--gpt-5-4--ctx-272k",
@@ -21702,6 +21757,7 @@
         "代码补全无限"
       ],
       "note": "学生认证免费，仅Auto模型选择；AI Credits额度未公开。",
+      "planStatus": "open",
       "planModels": []
     },
     {
@@ -21725,6 +21781,7 @@
         "代码补全无限"
       ],
       "note": "当前AI Credits制，1 Credit=$0.01；Flex可能变化；短窗口未知。部分现有年付用户仍适用旧请求制。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "github-token-plan-pro--gpt-5-mini",
@@ -22397,6 +22454,7 @@
         "代码补全无限"
       ],
       "note": "当前AI Credits制，1 Credit=$0.01；Flex可能变化；短窗口未知。部分现有年付用户仍适用旧请求制。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "github-token-plan-pro-2--gpt-5-mini",
@@ -23472,6 +23530,7 @@
       "monthlyRequests": 18000,
       "benefits": [],
       "note": "首月优惠资格及活动起止日期、具体时刻和时区未公布；常规月价Lite40/Pro200元，以订购页面为准。旧Coding Plan与Token Plan使用不同端点和额度。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "jd-cloud-coding-plan-lite--kimi-k2-5",
@@ -23582,6 +23641,7 @@
       "monthlyRequests": 90000,
       "benefits": [],
       "note": "首月优惠资格及活动起止日期、具体时刻和时区未公布；常规月价Lite40/Pro200元，以订购页面为准。旧Coding Plan与Token Plan使用不同端点和额度。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "jd-cloud-coding-plan-pro--kimi-k2-5",
@@ -23692,7 +23752,7 @@
       "monthlyRequests": 18000,
       "benefits": [],
       "note": "• 已下架\n• 历史方案，可作为参考",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "iflytek-coding-plan-plan-78--glm-5-1",
@@ -23790,6 +23850,7 @@
       "monthlyRequests": 90000,
       "benefits": [],
       "note": "• 高效版已支持 GLM-5.2\n• 讯飞实际可用量比较多，按调用量计数，明示调用量；2026-10-12未能公开核实个人版当前订购价格和完整支持名单，沿用此前记录，不代表本次已确认在售权益。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "iflytek-coding-plan-plan-79--deepseek-v4-pro-0813",
@@ -23926,6 +23987,7 @@
       "monthlyRequests": "-",
       "benefits": [],
       "note": "• 价格比较贵，据宣传无需等待；2026-10-12未能公开核实个人版当前订购价格和完整支持名单，沿用此前记录，不代表本次已确认在售权益。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "iflytek-coding-plan-plan-80--glm-5-2",
@@ -23984,7 +24046,7 @@
       "monthlyRequests": 18000,
       "benefits": [],
       "note": "• 不同云区域可用模型不同\n• 参考文档 https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7015",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "unicom-cloud-coding-plan-lite--deepseek-v4-flash-0731",
@@ -24082,7 +24144,7 @@
       "monthlyRequests": 90000,
       "benefits": [],
       "note": "• 不同云区域可用模型不同\n• 参考文档 https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7015",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "unicom-cloud-coding-plan-pro--deepseek-v4-flash-0731",
@@ -24180,6 +24242,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "unicom-cloud-token-plan-lite--deepseek-v4-flash-0731",
@@ -24225,6 +24288,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "unicom-cloud-token-plan-pro--deepseek-v4-flash-0731",
@@ -24270,6 +24334,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "unicom-cloud-token-plan-max--deepseek-v4-flash-0731",
@@ -24315,6 +24380,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "unicom-cloud-token-plan-lite-2--deepseek-v4-pro-0813",
@@ -24373,6 +24439,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "unicom-cloud-token-plan-pro-2--deepseek-v4-pro-0813",
@@ -24431,6 +24498,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "unicom-cloud-token-plan-max-2--deepseek-v4-pro-0813",
@@ -24489,6 +24557,7 @@
       "monthlyRequests": 18000,
       "benefits": [],
       "note": "2026-03-16至2026-12-31活动（国内页面，北京时间）：领券仅一次首购7.9元，常规40元/月；每账号Lite/Pro二选一。互联网用户另可手动领券5折续订1个月（20.0元），自动续订不能自动使用券；领券30天有效。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "cmcc-cloud-coding-plan-lite--minimax-m2-5",
@@ -24521,6 +24590,7 @@
       "monthlyRequests": 90000,
       "benefits": [],
       "note": "2026-03-16至2026-12-31活动（国内页面，北京时间）：领券仅一次首购39.9元，常规200元/月；每账号Lite/Pro二选一。互联网用户另可手动领券5折续订1个月（100.0元），自动续订不能自动使用券；领券30天有效。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "cmcc-cloud-coding-plan-pro--minimax-m2-5",
@@ -24556,7 +24626,7 @@
         "Studio另有40%专属创作额度"
       ],
       "note": "2026-10-12官方购买按钮显示售罄；当前按月Credits，旧prompt换算及周×4口径不再适用；恢复发售日期未公布。",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "stepfun-coding-plan-flash-mini--step-5-preview",
@@ -24618,7 +24688,7 @@
         "Studio另有40%专属创作额度"
       ],
       "note": "2026-10-12官方购买按钮显示售罄；当前按月Credits，旧prompt换算及周×4口径不再适用；恢复发售日期未公布。",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "stepfun-coding-plan-flash-plus--step-5-preview",
@@ -24680,7 +24750,7 @@
         "Studio另有40%专属创作额度"
       ],
       "note": "2026-10-12官方购买按钮显示售罄；当前按月Credits，旧prompt换算及周×4口径不再适用；恢复发售日期未公布。",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "stepfun-coding-plan-flash-pro--step-5-preview",
@@ -24742,7 +24812,7 @@
         "Studio另有40%专属创作额度"
       ],
       "note": "2026-10-12官方购买按钮显示售罄；当前按月Credits，旧prompt换算及周×4口径不再适用；恢复发售日期未公布。",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "stepfun-coding-plan-flash-max--step-5-preview",
@@ -24804,6 +24874,7 @@
         "1M上下文上限"
       ],
       "note": "双Flash套餐；季付实付117元（活动起止日期未公布）；只限个人在编程辅助工具内使用，禁止Hermes/OpenClaw和额度共享/转售。自然月额外限制未公布。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "taotoken-coding-plan-lite--glm-5-3-flash",
@@ -24852,6 +24923,7 @@
         "1M上下文上限"
       ],
       "note": "双Flash套餐；季付实付297元（活动起止日期未公布）；只限个人在编程辅助工具内使用，禁止Hermes/OpenClaw和额度共享/转售。自然月额外限制未公布。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "taotoken-coding-plan-pro--glm-5-3-flash",
@@ -24900,6 +24972,7 @@
         "1M上下文上限"
       ],
       "note": "双Flash套餐；季付实付897元（活动起止日期未公布）；只限个人在编程辅助工具内使用，禁止Hermes/OpenClaw和额度共享/转售。自然月额外限制未公布。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "taotoken-coding-plan-max--glm-5-3-flash",
@@ -24945,6 +25018,7 @@
       "monthlyRequests": 18000,
       "benefits": [],
       "note": "2026-10-12官方文档仍列20/100元及两个模型，赠OpenClaw 2核4G实例；购买状态未重新确认，保留此前停售标记。",
+      "planStatus": "paused",
       "planModels": [
         {
           "slug": "chaosuan-coding-plan-lite--minimax-m2-5",
@@ -24996,6 +25070,7 @@
       "monthlyRequests": 90000,
       "benefits": [],
       "note": "2026-10-12官方文档仍列20/100元及两个模型，赠OpenClaw 2核4G实例；购买状态未重新确认，保留此前停售标记。",
+      "planStatus": "paused",
       "planModels": [
         {
           "slug": "chaosuan-coding-plan-pro--minimax-m2-5",
@@ -25050,6 +25125,7 @@
         "最多20个API Key"
       ],
       "note": "免费公测，起止日期未公布；Lite/Pro尚未上线；支持SenseNova6.8 Flash Lite与U1 Fast，Token扣减未知。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "sensetime-coding-plan-free--sensenova-6-8-flash-lite",
@@ -25095,6 +25171,7 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "2026-10-12官方公开文档：5小时约40 prompts，每prompt可能含15–20次模型调用，取决于任务，不是固定请求或Token配额。免费领取后30天有效，每账号一次，活动起止日期及当前库存待确认。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "moorethreads-coding-plan-free-trial--glm-4-7",
@@ -25127,7 +25204,7 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "2026-10-12官方公开文档：5小时约120 prompts，每prompt可能含15–20次模型调用，取决于任务，不是固定请求或Token配额。付费购买指向京东，当前SKU价格/库存待确认，保留此前停售标记。",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "moorethreads-coding-plan-lite-plan--glm-4-7",
@@ -25160,7 +25237,7 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "2026-10-12官方公开文档：5小时约600 prompts，每prompt可能含15–20次模型调用，取决于任务，不是固定请求或Token配额。付费购买指向京东，当前SKU价格/库存待确认，保留此前停售标记。",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "moorethreads-coding-plan-pro-plan--glm-4-7",
@@ -25193,7 +25270,7 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "2026-10-12官方公开文档：5小时约2400 prompts，每prompt可能含15–20次模型调用，取决于任务，不是固定请求或Token配额。付费购买指向京东，当前SKU价格/库存待确认，保留此前停售标记。",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "moorethreads-coding-plan-max-plan--glm-4-7",
@@ -25226,7 +25303,7 @@
       "monthlyRequests": 24000,
       "benefits": [],
       "note": "• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "ctyun-coding-plan-glm-lite--glm-5-1",
@@ -25285,7 +25362,7 @@
       "monthlyRequests": 120000,
       "benefits": [],
       "note": "• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "ctyun-coding-plan-glm-pro--glm-5-1",
@@ -25344,7 +25421,7 @@
       "monthlyRequests": 480000,
       "benefits": [],
       "note": "• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "ctyun-coding-plan-glm-max--glm-5-1",
@@ -25403,7 +25480,7 @@
       "monthlyRequests": 12000,
       "benefits": [],
       "note": "2026-10-12平台页面明确停止向个人用户提供服务；旧套餐保留历史参考。",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "infrafun-coding-plan-lite--deepseek-v3-2",
@@ -25501,7 +25578,7 @@
       "monthlyRequests": 60000,
       "benefits": [],
       "note": "2026-10-12平台页面明确停止向个人用户提供服务；旧套餐保留历史参考。",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "infrafun-coding-plan-pro--deepseek-v3-2",
@@ -25596,6 +25673,7 @@
       "yearlyPrice": "-",
       "benefits": [],
       "note": "",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "deepseek-official-api--deepseek-v4-1-flash--gu",
@@ -25696,6 +25774,7 @@
       "yearlyPrice": "-",
       "benefits": [],
       "note": "邀请8折仅适用于资格仍有效的用户，资格依据2026-09-04确认；本次已核对标价，但未重新验证账号折扣。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "gongji-api--glm-5-3-flash",
@@ -25947,7 +26026,7 @@
       "benefits": [],
       "summary": "新会员方案；不含 Kimi Code",
       "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。Go 不含编程额度。",
-      "discontinued": false,
+      "planStatus": "open",
       "supportsHarnessApi": false,
       "planModels": []
     },
@@ -25968,7 +26047,7 @@
       "benefits": [],
       "summary": "新会员方案；Kimi Code 与 Kimi 会员共享月总额度",
       "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。月总额度耗尽后可使用加油包；Token 配额未公布。",
-      "discontinued": false,
+      "planStatus": "open",
       "supportsHarnessApi": true,
       "planModels": [
         {
@@ -26016,7 +26095,7 @@
       "benefits": [],
       "summary": "新会员方案；Kimi Code 与 Kimi 会员共享月总额度",
       "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。月总额度耗尽后可使用加油包；Token 配额未公布。",
-      "discontinued": false,
+      "planStatus": "open",
       "supportsHarnessApi": true,
       "planModels": [
         {
@@ -26090,7 +26169,7 @@
       "benefits": [],
       "summary": "新会员方案；Kimi Code 与 Kimi 会员共享月总额度",
       "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。月总额度耗尽后可使用加油包；Token 配额未公布。",
-      "discontinued": false,
+      "planStatus": "open",
       "supportsHarnessApi": true,
       "planModels": [
         {
@@ -26166,6 +26245,7 @@
         "Ultrafast 资格（依账号与客户端开放情况）"
       ],
       "note": "含 GPT-6 Astra / GPT-6.1 Sol Ultrafast；订阅用量消耗为标准速度的 8 倍，购买 Credits 为 6 倍。Token 配额未知。\nChatGPT与Codex共享使用量；窗口消耗随模型、速度档及负载变化，官方没有固定Token配额，旧测量仅供参考。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "codex-pro500--gpt-6-1-sol",
@@ -26419,6 +26499,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "每订阅月 25,500 Credits；自 2026-09-22 取消周限额。当前 ¥79/月限时优惠，常规 ¥120/月，官方未公布活动起止日期。逐模型精确 Credits 扣减未公开，Token 用量未知。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "aliyun-token-personal-essential--qwen-3-8-max",
@@ -26569,6 +26650,7 @@
       "currency": "$",
       "benefits": [],
       "note": "各模型月美元额度不同，五小时/周窗口分别为该模型月额度的20%/50%；模型额度不相加。Token 用量按统一工作负载估算，非官方Token上限。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "opencode-go-plus--glm-5-3-flash",
@@ -27599,6 +27681,7 @@
         "API与客户端共用额度"
       ],
       "note": "高级/标准模型分别共享$100/$150.0月额度池；美元Credits计费",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "commandcode-max10--laguna-s-2-1",
@@ -30159,6 +30242,7 @@
         "API与客户端共用额度"
       ],
       "note": "高级/标准模型分别共享$200/$300.0月额度池；美元Credits计费",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "commandcode-max20--laguna-s-2-1",
@@ -32716,6 +32800,7 @@
         "560积分/月"
       ],
       "note": "Hy3/Hy4 preview专属积分套餐，与通用套餐可同时持有，各自抵扣",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "tencent-cloud-hy-lite--hy4-preview",
@@ -32803,6 +32888,7 @@
         "1560积分/月"
       ],
       "note": "Hy3/Hy4 preview专属积分套餐，与通用套餐可同时持有，各自抵扣",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "tencent-cloud-hy-standard--hy4-preview",
@@ -32890,6 +32976,7 @@
         "4760积分/月"
       ],
       "note": "Hy3/Hy4 preview专属积分套餐，与通用套餐可同时持有，各自抵扣",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "tencent-cloud-hy-pro--hy4-preview",
@@ -32977,6 +33064,7 @@
         "9360积分/月"
       ],
       "note": "Hy3/Hy4 preview专属积分套餐，与通用套餐可同时持有，各自抵扣",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "tencent-cloud-hy-max--hy4-preview",
@@ -33064,6 +33152,7 @@
         "1400积分/月"
       ],
       "note": "积分制，模型抵扣由Token类型/思考/工具动态决定，Token换算未知；5小时和7天限制当前取消，恢复日期未公布。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "baidu-qianfan-credits-plan-mini--deepseek-v4-1-flash",
@@ -33189,6 +33278,7 @@
         "6600积分/月"
       ],
       "note": "积分制，模型抵扣由Token类型/思考/工具动态决定，Token换算未知；5小时和7天限制当前取消，恢复日期未公布。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "baidu-qianfan-credits-plan-lite--deepseek-v4-1-flash",
@@ -33314,6 +33404,7 @@
         "45000积分/月"
       ],
       "note": "积分制，模型抵扣由Token类型/思考/工具动态决定，Token换算未知；5小时和7天限制当前取消，恢复日期未公布。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "baidu-qianfan-credits-plan-pro--deepseek-v4-1-flash",
@@ -33439,6 +33530,7 @@
         "165000积分/月"
       ],
       "note": "积分制，模型抵扣由Token类型/思考/工具动态决定，Token换算未知；5小时和7天限制当前取消，恢复日期未公布。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "baidu-qianfan-credits-plan-max--deepseek-v4-1-flash",
@@ -33564,6 +33656,7 @@
         "3000积分/月"
       ],
       "note": "新版积分制套餐；输入（含缓存）与输出按对应模型及上下文区间抵扣。 当前精确请求总数和短窗Token上限未公开，不能沿用旧请求制1200/6000/24000。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "ctyun-token-3000--deepseek-v4-pro-0813",
@@ -33761,6 +33854,7 @@
         "10000积分/月"
       ],
       "note": "新版积分制套餐；输入（含缓存）与输出按对应模型及上下文区间抵扣。 当前精确请求总数和短窗Token上限未公开，不能沿用旧请求制1200/6000/24000。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "ctyun-token-10000--deepseek-v4-pro-0813",
@@ -33958,6 +34052,7 @@
         "25000积分/月"
       ],
       "note": "新版积分制套餐；输入（含缓存）与输出按对应模型及上下文区间抵扣。 当前精确请求总数和短窗Token上限未公开，不能沿用旧请求制1200/6000/24000。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "ctyun-token-25000--deepseek-v4-pro-0813",
@@ -34155,6 +34250,7 @@
         "50000积分/月"
       ],
       "note": "新版积分制套餐；输入（含缓存）与输出按对应模型及上下文区间抵扣。 当前精确请求总数和短窗Token上限未公开，不能沿用旧请求制1200/6000/24000。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "ctyun-token-50000--deepseek-v4-pro-0813",
@@ -34352,6 +34448,7 @@
         "100000积分/月"
       ],
       "note": "新版积分制套餐；输入（含缓存）与输出按对应模型及上下文区间抵扣。 当前精确请求总数和短窗Token上限未公开，不能沿用旧请求制1200/6000/24000。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "ctyun-token-100000--deepseek-v4-pro-0813",
@@ -34552,6 +34649,7 @@
         "代码补全无限"
       ],
       "note": "当前AI Credits制，1 Credit=$0.01；Flex可能变化；短窗口未知。部分现有年付用户仍适用旧请求制。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "github-token-plan-max--gpt-5-mini",
@@ -35607,6 +35705,7 @@
         "Chat与Agent有限用量"
       ],
       "note": "免费，2000次代码补全/月；Chat与Agent额度有限，仅Auto模型选择。",
+      "planStatus": "open",
       "planModels": []
     },
     {
@@ -35629,6 +35728,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
+      "planStatus": "open",
       "planModels": []
     },
     {
@@ -35651,6 +35751,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
+      "planStatus": "open",
       "planModels": []
     },
     {
@@ -35674,6 +35775,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "cursor-x-premium--grok-4-7--ctx-up-to-256k",
@@ -36308,6 +36410,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "cursor-x-super--grok-4-7--ctx-up-to-256k",
@@ -36942,6 +37045,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "cursor-x-ultra--grok-4-7--ctx-up-to-256k",
@@ -37574,7 +37678,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "cursor-pro-legacy--grok-4-7--ctx-up-to-256k",
@@ -38249,7 +38353,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "cursor-pro-plus-legacy--grok-4-7--ctx-up-to-256k",
@@ -38924,7 +39028,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "cursor-ultra-legacy--grok-4-7--ctx-up-to-256k",
@@ -39599,7 +39703,7 @@
       "fiveHoursRequests": "未公开",
       "quarterlyPrice": "未公开",
       "yearlyPrice": "未公开",
-      "discontinued": true,
+      "planStatus": "delisted",
       "planModels": [
         {
           "slug": "cursor-start-india-legacy--grok-4-7--ctx-up-to-256k",
@@ -39728,6 +39832,7 @@
         "60 RPM"
       ],
       "note": "个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。不支持缓存命中。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "jd-cloud-token-lite--glm-5-1--ctx-32k",
@@ -40279,6 +40384,7 @@
         "60 RPM"
       ],
       "note": "个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。不支持缓存命中。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "jd-cloud-token-standard--glm-5-1--ctx-32k",
@@ -40830,6 +40936,7 @@
         "60 RPM"
       ],
       "note": "个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。不支持缓存命中。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "jd-cloud-token-pro--glm-5-1--ctx-32k",
@@ -41381,6 +41488,7 @@
         "60 RPM"
       ],
       "note": "个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。不支持缓存命中。",
+      "planStatus": "limited",
       "planModels": [
         {
           "slug": "jd-cloud-token-max--glm-5-1--ctx-32k",
@@ -41934,6 +42042,7 @@
       "quarterlyPrice": "未公开",
       "yearlyPrice": 80,
       "firstMonthPrice": "-",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "trae-intl-lite-2026--doubao-seed-2-1-turbo",
@@ -42655,6 +42764,7 @@
       "quarterlyPrice": "未公开",
       "yearlyPrice": 200,
       "firstMonthPrice": "-",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "trae-intl-pro-2026--doubao-seed-2-1-turbo",
@@ -43376,6 +43486,7 @@
       "quarterlyPrice": "未公开",
       "yearlyPrice": 600,
       "firstMonthPrice": "-",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "trae-intl-pro-plus-2026--doubao-seed-2-1-turbo",
@@ -44097,6 +44208,7 @@
       "quarterlyPrice": "未公开",
       "yearlyPrice": 2000,
       "firstMonthPrice": "-",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "trae-intl-ultra-2026--doubao-seed-2-1-turbo",
@@ -44814,6 +44926,7 @@
         "5000Credits/月"
       ],
       "note": "当前活动59元/月，常规75元/月，活动起止日期未公布。只使用/token入口抵扣；不支持的模型或Credits耗尽会从账户余额扣费，Token换算未知。 Credits耗尽或调用未覆盖的模型时会扣账户余额；需用/token入口，/coding和/api不扣此套餐。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "taotoken-token-lite--glm-5-3",
@@ -44874,6 +44987,7 @@
         "14000Credits/月"
       ],
       "note": "当前活动149元/月，常规200元/月，活动起止日期未公布。只使用/token入口抵扣；不支持的模型或Credits耗尽会从账户余额扣费，Token换算未知。 Credits耗尽或调用未覆盖的模型时会扣账户余额；需用/token入口，/coding和/api不扣此套餐。",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "taotoken-token-pro--glm-5-3",
@@ -44931,7 +45045,7 @@
         "包含MiniMax Code及订阅API Key"
       ],
       "note": "相对Go用量1倍；文本与其他模态共享额度，受5小时及7天窗口控制，具体Token数未公布。首月五折截至2026-10-14，起始时刻及截止时区未公布，之后按月价¥49续费。",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "minimax-mplan-go--minimax-m3-1-flash-preview",
@@ -44963,7 +45077,7 @@
         "包含MiniMax Code及订阅API Key"
       ],
       "note": "相对Go用量3倍；文本与其他模态共享额度，受5小时及7天窗口控制，具体Token数未公布。首月五折截至2026-10-14，起始时刻及截止时区未公布，之后按月价¥119续费。",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "minimax-mplan-explore--minimax-m3-1-flash-preview",
@@ -44995,7 +45109,7 @@
         "包含MiniMax Code及订阅API Key"
       ],
       "note": "相对Go用量12倍；文本与其他模态共享额度，受5小时及7天窗口控制，具体Token数未公布。首月五折截至2026-10-14，起始时刻及截止时区未公布，之后按月价¥469续费。",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "minimax-mplan-build--minimax-m3-1-flash-preview",
@@ -45028,7 +45142,7 @@
       ],
       "note": "M3.1 Flash Preview有限可用；不支持订阅API Key，具体额度未公布",
       "supportsHarnessApi": false,
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "minimax-code-free--minimax-m3-1-flash-preview",
@@ -45060,7 +45174,7 @@
         "月度60000 Credits"
       ],
       "note": "当前用户手册活动价¥30/月，常规价¥50/月；活动起止日期未公布，旧API文档价格不同，购买前核对控制台。综合抵扣倍率随缓存/输入/输出与每周定价变化；准确Token量未知。禁止共享、后端和非交互批量调用。",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "chaosuan-token-basic--deepseek-v4-1-flash",
@@ -45326,7 +45440,7 @@
         "月度240000 Credits"
       ],
       "note": "当前用户手册活动价¥130/月，常规价¥185/月；活动起止日期未公布，旧API文档价格不同，购买前核对控制台。综合抵扣倍率随缓存/输入/输出与每周定价变化；准确Token量未知。禁止共享、后端和非交互批量调用。",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "chaosuan-token-standard--deepseek-v4-1-flash",
@@ -45592,7 +45706,7 @@
         "月度600000 Credits"
       ],
       "note": "当前用户手册活动价¥310/月，常规价¥440/月；活动起止日期未公布，旧API文档价格不同，购买前核对控制台。综合抵扣倍率随缓存/输入/输出与每周定价变化；准确Token量未知。禁止共享、后端和非交互批量调用。",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "chaosuan-token-advanced--deepseek-v4-1-flash",
@@ -45859,7 +45973,7 @@
         "OpenClaw 2核4G实例"
       ],
       "note": "当前用户手册活动价¥899/月，常规价¥1274/月；活动起止日期未公布，旧API文档价格不同，购买前核对控制台。综合抵扣倍率随缓存/输入/输出与每周定价变化；准确Token量未知。禁止共享、后端和非交互批量调用。",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "chaosuan-token-flagship--deepseek-v4-1-flash",
@@ -46127,7 +46241,7 @@
         "AstronClaw基础会员及赠送Skills"
       ],
       "note": "以成员为单位，购买后31天有效；6月2日至7月2日活动已结束，当前记录常规价。工作日08:00–22:00系数1，其余工作日时段及周末系数0.8，按国内平台时区推定UTC+8（官网未明确）。短窗Token上限未公开，速率TPM不等于窗口额度。",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "iflytek-token-standard--spark-x2-5--peak",
@@ -46720,7 +46834,7 @@
         "AstronClaw基础会员及赠送Skills"
       ],
       "note": "以成员为单位，购买后31天有效；6月2日至7月2日活动已结束，当前记录常规价。工作日08:00–22:00系数1，其余工作日时段及周末系数0.8，按国内平台时区推定UTC+8（官网未明确）。短窗Token上限未公开，速率TPM不等于窗口额度。",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "iflytek-token-advanced--spark-x2-5--peak",
@@ -47313,7 +47427,7 @@
         "AstronClaw基础会员及赠送Skills"
       ],
       "note": "以成员为单位，购买后31天有效；6月2日至7月2日活动已结束，当前记录常规价。工作日08:00–22:00系数1，其余工作日时段及周末系数0.8，按国内平台时区推定UTC+8（官网未明确）。短窗Token上限未公开，速率TPM不等于窗口额度。",
-      "discontinued": false,
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "iflytek-token-premium--spark-x2-5--peak",
@@ -47905,7 +48019,7 @@
         "500积分/月"
       ],
       "note": "常规Auto调度，当前限免全模型可选，活动起止日期未公布；不含CLI访问；积分与CodeBuddy共享",
-      "discontinued": false,
+      "planStatus": "open",
       "summary": "500积分/月",
       "fiveHoursRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -48111,7 +48225,7 @@
         "4000积分/月"
       ],
       "note": "2026-07-01前已开启自动续费的用户，保价至2026-12-31；2027-01-01起¥70/月，按国内平台推定UTC+8，官网未明确时区；取消后再购按现价",
-      "discontinued": true,
+      "planStatus": "delisted",
       "summary": "4000积分/月",
       "fiveHoursRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -48315,7 +48429,7 @@
       "fiveHoursRequests": "未公开",
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
-      "discontinued": true,
+      "planStatus": "delisted",
       "benefits": [
         "25M Token/月"
       ],
@@ -48385,7 +48499,7 @@
       "fiveHoursRequests": "未公开",
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
-      "discontinued": true,
+      "planStatus": "delisted",
       "benefits": [
         "80M Token/月"
       ],
@@ -48455,7 +48569,7 @@
       "fiveHoursRequests": "未公开",
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
-      "discontinued": true,
+      "planStatus": "delisted",
       "benefits": [
         "180M Token/月"
       ],
@@ -48525,7 +48639,7 @@
       "fiveHoursRequests": "未公开",
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
-      "discontinued": true,
+      "planStatus": "delisted",
       "benefits": [
         "380M Token/月"
       ],
@@ -48595,7 +48709,7 @@
       "fiveHoursRequests": "未公开",
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
-      "discontinued": true,
+      "planStatus": "delisted",
       "benefits": [
         "680M Token/月"
       ],
@@ -48673,6 +48787,7 @@
       "note": "官方未公布有限额度具体数值；不能从付费模型名单推断可手选模型。",
       "summary": "仅Auto模式，有限Dollar Usage/月；有限代码补全，2个云端任务并行；不含SOLO模式",
       "quarterlyPrice": "未公开",
+      "planStatus": "open",
       "planModels": []
     }
   ]

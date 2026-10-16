@@ -200,7 +200,7 @@
     }
     return (plans || []).filter(plan => {
       if (current.apiOnly && plan.billingMode !== 'payg') return false;
-      if (!current.includeDiscontinued && plan.discontinued) return false;
+      if (!current.includeDiscontinued && plan.planStatus === 'delisted') return false;
       if (!selectedMatch(plan.platformSlug, current.platformSlugs)) return false;
       if (!modelMatch(plan.supportedModels || plan.modelSlugs, current.modelSlugs, current.modelMatch)) return false;
       const platform = opts.context && opts.context.platformBySlug
@@ -262,7 +262,7 @@
     const modelGroups = new Map();
     if (current.modelSlugs?.length && current.modelMatch === 'all') {
       (points || []).forEach(point => {
-        if (!current.includeDiscontinued && point.discontinued) return;
+        if (!current.includeDiscontinued && point.planStatus === 'delisted') return;
         if (current.monthlyTokenRange && point.billingMode !== 'payg' && !tokenInRange(point.monthlyTokenInM, current.monthlyTokenRange)) return;
         const key = `${point.platformSlug || ''}::${point.billingMode || ''}::${point.planSlug || ''}`;
         if (!modelGroups.has(key)) modelGroups.set(key, new Set());
@@ -271,7 +271,7 @@
     }
     return (points || []).filter(point => {
       if (current.apiOnly && point.billingMode !== 'payg') return false;
-      if (!current.includeDiscontinued && point.discontinued) return false;
+      if (!current.includeDiscontinued && point.planStatus === 'delisted') return false;
       if (!selectedMatch(point.platformSlug, current.platformSlugs)) return false;
       const platform = opts.context?.platformBySlug?.get(point.platformSlug) || point;
       if (!platformStatusMatches(platform, current)) return false;
@@ -323,7 +323,7 @@
     for (const plan of context.plans) {
       const platform = context.platformBySlug.get(plan.platformSlug);
       if (!platform) continue;
-      if (!s.includeDiscontinued && plan.discontinued) continue;
+      if (!s.includeDiscontinued && plan.planStatus === 'delisted') continue;
       if (!selectedMatch(platform.slug, s.platformSlugs)) continue;
       if (!platformStatusMatches(platform, s)) continue;
       if (s.domesticNetworkOnly && platform.requiresOverseasNetwork !== false) continue;

@@ -159,7 +159,7 @@
 
   function activePlansOnly(plans) {
     if (!Array.isArray(plans)) return [];
-    return plans.filter(plan => plan && !plan.discontinued);
+    return plans.filter(plan => plan && plan.planStatus !== 'delisted');
   }
 
   function buildModelTagsHtml(labels, ariaLabel) {

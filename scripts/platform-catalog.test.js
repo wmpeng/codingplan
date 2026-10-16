@@ -64,9 +64,9 @@ describe('filterPlatforms', () => {
 describe('collectModelsForVendor', () => {
   it('unions active plan models only', () => {
     const plans = [
-      { platformSlug: 'minimax', modelLabels: ['M3', 'M2.7'], discontinued: false },
-      { platformSlug: 'minimax', modelLabels: ['M2.5'], discontinued: true },
-      { platformSlug: 'kimi', modelLabels: ['K2.6'], discontinued: false }
+      { platformSlug: 'minimax', modelLabels: ['M3', 'M2.7'], planStatus: 'open' },
+      { platformSlug: 'minimax', modelLabels: ['M2.5'], planStatus: 'delisted' },
+      { platformSlug: 'kimi', modelLabels: ['K2.6'], planStatus: 'open' }
     ];
     assert.deepEqual(collectModelsForVendor(plans, 'minimax'), ['M3', 'M2.7']);
   });
@@ -117,7 +117,7 @@ describe('escapeHtml', () => {
         stability: { score: 3, reason: 'ok' },
         models: { score: 3, reason: 'ok' }
 }
-    }), [{ platformSlug: 'x', modelLabels: [], discontinued: false }]);
+    }), [{ platformSlug: 'x', modelLabels: [], planStatus: 'open' }]);
     assert.doesNotMatch(html, /<script>/);
     assert.match(html, /&lt;script&gt;/);
   });
@@ -158,14 +158,14 @@ describe('formatInlineMarkdown', () => {
 
 describe('buildPlatformCardHtml', () => {
   it('includes key classes and discontinued marker', () => {
-    const active = buildPlatformCardHtml(samplePlatform(), [{ platformSlug: 'x', modelLabels: ['M1'], discontinued: false }]);
+    const active = buildPlatformCardHtml(samplePlatform(), [{ platformSlug: 'x', modelLabels: ['M1'], planStatus: 'open' }]);
     assert.match(active, /class="platform-card"/);
     assert.match(active, /class="platform-dimensions"/);
     assert.doesNotMatch(active, /is-discontinued/);
 
     const dead = buildPlatformCardHtml(
       samplePlatform({ platformStatus: 'delisted' }),
-      [{ platformSlug: 'x', modelLabels: [], discontinued: false }]
+      [{ platformSlug: 'x', modelLabels: [], planStatus: 'open' }]
     );
     assert.match(dead, /platform-card is-discontinued/);
   });
@@ -173,7 +173,7 @@ describe('buildPlatformCardHtml', () => {
   it('adds external link icon on titled action links', () => {
     const withLink = buildPlatformCardHtml(
       samplePlatform({ action: 'https://example.com' }),
-      [{ platformSlug: 'x', modelLabels: ['M1'], discontinued: false }]
+      [{ platformSlug: 'x', modelLabels: ['M1'], planStatus: 'open' }]
     );
     assert.match(withLink, /platform-name-link/);
     assert.match(withLink, /class="link-icon"/);
@@ -187,7 +187,7 @@ describe('buildPlatformCardHtml', () => {
   it('omits badge for open; shows limited/paused/delisted beside title', () => {
     const open = buildPlatformCardHtml(
       samplePlatform({ action: 'https://example.com', platformStatus: 'open' }),
-      [{ platformSlug: 'x', modelLabels: ['M1'], discontinued: false }]
+      [{ platformSlug: 'x', modelLabels: ['M1'], planStatus: 'open' }]
     );
     assert.doesNotMatch(open, /platform-rush/);
 
@@ -223,7 +223,7 @@ describe('buildPlatformCardHtml', () => {
   it('limits model tags on card face with +N overflow', () => {
     const models = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7'];
     const html = buildPlatformCardHtml(samplePlatform({ name: 'X' }), [
-      { platformSlug: 'x', modelLabels: models, discontinued: false }
+      { platformSlug: 'x', modelLabels: models, planStatus: 'open' }
     ]);
     assert.ok(html.includes('M1'));
     assert.ok(html.includes('M5'));
@@ -336,9 +336,9 @@ describe('dimensionCopy', () => {
 describe('collectPlansForVendor', () => {
   it('returns all plans for vendor including discontinued, in order', () => {
     const plans = [
-      { platformSlug: 'a', name: '1', discontinued: false },
+      { platformSlug: 'a', name: '1', planStatus: 'open' },
       { platformSlug: 'b', name: 'x' },
-      { platformSlug: 'a', name: '2', discontinued: true }
+      { platformSlug: 'a', name: '2', planStatus: 'delisted' }
     ];
     const rows = collectPlansForVendor(plans, 'a');
     assert.equal(rows.length, 2);

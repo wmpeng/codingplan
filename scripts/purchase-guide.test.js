@@ -276,7 +276,7 @@ test("推荐排序使用符合条件的模型最高分、去重数量、平台�
       .size,
     r.groups.flatMap(([, items]) => items).length,
   );
-  c.plans[1].discontinued = true;
+  c.plans[1].planStatus = 'delisted';
   assert.ok(
     !G.recommend(
       c,

@@ -284,7 +284,7 @@
   }
 
   function buildPlatformView(platform, context) {
-    const activePlans = context.plans.filter((plan) => plan.platformSlug === platform.slug && !plan.discontinued);
+    const activePlans = context.plans.filter((plan) => plan.platformSlug === platform.slug && plan.planStatus !== 'delisted');
     const planSlugs = new Set(activePlans.map((plan) => plan.slug));
     const modelNames = [];
     const modelSeen = new Set();

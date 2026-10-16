@@ -291,7 +291,7 @@ function collectModelsForVendor(plans, platformSlug) {
   const models = [];
 
   for (const plan of plans) {
-    if (plan.platformSlug !== platformSlug || plan.discontinued) {
+    if (plan.platformSlug !== platformSlug || plan.planStatus === 'delisted') {
       continue;
     }
     for (const model of plan.modelLabels || []) {

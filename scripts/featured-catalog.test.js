@@ -36,7 +36,7 @@ test('未知、零与按量费用分开显示，固定表不吞未知额度或�
     {slug:'unknown',platformSlug:'p',modelSlug:'m',billingMode:'subscription',unitPriceCnyPerM:null,monthlyTokenInM:null},
     {slug:'zero',platformSlug:'p',modelSlug:'m',billingMode:'subscription',unitPriceCnyPerM:0,monthlyTokenInM:0,monthlyFeeCny:0},
     {slug:'api',platformSlug:'p',modelSlug:'m',billingMode:'payg',unitPriceCnyPerM:1},
-    {slug:'old',platformSlug:'p',modelSlug:'m',billingMode:'subscription',discontinued:true},
+    {slug:'old',platformSlug:'p',modelSlug:'m',billingMode:'subscription',planStatus: 'delisted'},
     {slug:'paused',platformSlug:'p',modelSlug:'m',billingMode:'subscription',available:false}
   ];
   assert.equal(M.buildPresetComparisonRows(points,group,'all').length,3);
@@ -56,7 +56,7 @@ test('精选与完整范围可复用同一固定表，保留具体模型档位�
     const all=M.buildPresetComparisonRows(points,group,'all',preset.platformSlugs);
     assert.ok(all.length>=featured.length);
     assert.ok(featured.every(p=>preset.platformSlugs.includes(p.platformSlug)&&group.modelSlugs.includes(p.modelSlug)));
-    assert.ok(all.every(p=>!p.discontinued&&p.available!==false));
+    assert.ok(all.every(p=>p.planStatus !== 'delisted'&&p.available!==false));
   }
   const model={slug:'test',name:'<script>oops</script>',scores:{artificialAnalysis:{score:0}},modalities:null};
   const html=C.modelCard(model,ctx);assert.doesNotMatch(html,/<script>/);assert.match(html,/0\.0/);assert.match(html,/待确认/);

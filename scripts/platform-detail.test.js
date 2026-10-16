@@ -29,7 +29,7 @@ describe('buildDetailBodyHtml', () => {
       { slug: 'lite', platformSlug: 'demo', name: 'Lite', billingMode: 'subscription' },
       { slug: 'pro', platformSlug: 'demo', name: 'Pro', billingMode: 'subscription' },
       { slug: 'api', platformSlug: 'demo', name: 'API', billingMode: 'payg' },
-      { slug: 'old', platformSlug: 'demo', name: 'Old', discontinued: true }
+      { slug: 'old', platformSlug: 'demo', name: 'Old', planStatus: 'delisted' }
     ] }, { schemaVersion: 1, models }, { schemaVersion: 1, planModels: [
       { planSlug: 'lite', modelSlug: 'm0' },
       { planSlug: 'lite', modelSlug: 'm0', timeTier: '谷时' },
@@ -184,9 +184,9 @@ describe('buildDetailBodyHtml', () => {
         rating: 4,
         measuredMonthlyTokenLimit: 600,
         summary: '额度充足，适合主力日常',
-        discontinued: false
+        planStatus: 'open'
       },
-      { platformSlug: 'x', name: 'Old', billingMode: 'subscription', monthlyPrice: 50, discontinued: true }
+      { platformSlug: 'x', name: 'Old', billingMode: 'subscription', monthlyPrice: 50, planStatus: 'delisted' }
     ];
     const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
     assert.ok(html.includes('data-section="plans"'));
@@ -214,7 +214,7 @@ describe('buildDetailBodyHtml', () => {
         rating: 3,
         monthlyRequests: 1900,
         summary: '   ',
-        discontinued: false
+        planStatus: 'open'
       }
     ];
     const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
@@ -233,7 +233,7 @@ describe('buildDetailBodyHtml', () => {
         billingMode: 'subscription',
         monthlyPrice: 49,
         monthlyRequests: 24000,
-        discontinued: false
+        planStatus: 'open'
       }
     ];
     const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
@@ -242,7 +242,7 @@ describe('buildDetailBodyHtml', () => {
 
   it('hides plans section when only discontinued plans exist', () => {
     const plans = [
-      { platformSlug: 'x', name: 'Old', billingMode: 'subscription', monthlyPrice: 50, discontinued: true }
+      { platformSlug: 'x', name: 'Old', billingMode: 'subscription', monthlyPrice: 50, planStatus: 'delisted' }
     ];
     const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
     assert.ok(!html.includes('data-section="plans"'));
@@ -257,7 +257,7 @@ describe('buildDetailBodyHtml', () => {
         monthlyPrice: 10,
         firstMonthPrice: 5,
         currency: '$',
-        discontinued: false
+        planStatus: 'open'
       }
     ];
     const html = buildDetailBodyHtml(samplePlatform({ slug: 'opencode', name: 'OpenCode' }), { plans, monitorRow: null });
@@ -280,14 +280,14 @@ describe('buildDetailBodyHtml', () => {
         weeklyRequests: '未公开',
         monthlyRequests: '未公开',
         measuredMonthlyTokenLimit: 84,
-        discontinued: false
+        planStatus: 'open'
       },
       {
         platformSlug: 'kimi',
         name: 'Zero',
         billingMode: 'subscription',
         monthlyPrice: 1,
-        discontinued: false
+        planStatus: 'open'
       }
     ];
     const html = buildDetailBodyHtml(samplePlatform({ slug: 'kimi', name: 'Kimi' }), { plans, monitorRow: null });

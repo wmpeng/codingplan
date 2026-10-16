@@ -55,12 +55,12 @@ describe('buildCompositePriceChartItems', () => {
     const items = buildCompositePriceChartItems(
       [
         { platformName: 'A', name: '在售', monthlyPrice: 40, measuredMonthlyTokenLimit: 100 },
-        { platformName: 'B', name: '下线', monthlyPrice: 10, measuredMonthlyTokenLimit: 100, discontinued: true }
+        { platformName: 'B', name: '下线', monthlyPrice: 10, measuredMonthlyTokenLimit: 100, planStatus: 'delisted' }
       ],
       { usdToCnyRate: 6.8 }
     );
     assert.deepEqual(items.map((x) => x.planName), ['下线', '在售']);
-    assert.equal(items[0].discontinued, true);
+    assert.equal(items[0].planStatus, 'delisted');
   });
 
   it('marks pinned without changing price sort order', () => {

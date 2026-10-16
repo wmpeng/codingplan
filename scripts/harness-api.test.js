@@ -87,7 +87,7 @@ test('未知能力隐藏，混合套餐平台显示可接入，具体套餐保�
   assert.doesNotMatch(Detail.buildDetailBodyHtml(c.platforms[2],{plans:c.plans}),/data-harness-api/);
   assert.match(E.platformHarnessApiBadge(c.platforms[1],c.plans),/data-harness-api="true"/);
   assert.match(E.platformHarnessApiBadge({slug:'pending',supportsHarnessApi:null},[{platformSlug:'pending',supportsHarnessApi:true}]),/data-harness-api="true"/);
-  assert.match(E.platformHarnessApiBadge({slug:'closed',supportsHarnessApi:false},[{platformSlug:'closed',supportsHarnessApi:true,discontinued:true}]),/>不可接入第三方工具/);
+  assert.match(E.platformHarnessApiBadge({slug:'closed',supportsHarnessApi:false},[{platformSlug:'closed',supportsHarnessApi:true,planStatus: 'delisted'}]),/>不可接入第三方工具/);
   const offer=G.recommend(c,all({platformSlugs:['yes']}),{}, {allMatching:true}).candidates.find(x=>x.plan.slug==='go');
   assert.match(Offers.card(offer,all({})),/data-harness-api="false"/);
   assert.doesNotMatch(Offers.card(offer,all({})),/data-harness-api="true"/);
@@ -95,12 +95,12 @@ test('未知能力隐藏，混合套餐平台显示可接入，具体套餐保�
 
 test('方案卡片只显示非开放状态和明确不支持的能力，不渲染空标签行', () => {
   const base=G.recommend(context(),all({}),{}, {allMatching:true}).candidates.find(x=>x.plan.slug==='inherit');
-  for(const [platformStatus,capability,discontinued,expectedStatus] of [
+  for(const [platformStatus,capability,isDelisted,expectedStatus] of [
     ['open',true,false,null],['open',null,false,null],['open',false,false,null],
     ['limited',true,false,'定时放量'],['paused',false,false,'暂时停售'],
     ['delisted',null,false,'已下架'],['open',true,true,'已下架']
   ]) {
-    const item={...base,platform:{...base.platform,platformStatus,supportsHarnessApi:capability},plan:{...base.plan,discontinued}};
+    const item={...base,platform:{...base.platform,platformStatus,supportsHarnessApi:capability},plan:{...base.plan,planStatus:isDelisted?'delisted':platformStatus}};
     const html=Offers.card(item,all({}));
     assert.doesNotMatch(html,/>开放购买</);
     assert.doesNotMatch(html,/data-harness-api="(?:true|unknown)"/);

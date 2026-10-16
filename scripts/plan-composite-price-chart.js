@@ -113,7 +113,7 @@
       prepared.push({
         platformName: String((plan && plan.platformName) || '').trim() || '未知平台',
         planName: String((plan && plan.name) || '').trim() || '未知套餐',
-        discontinued: !!(plan && plan.discontinued),
+        planStatus: plan && plan.planStatus,
         pinned: !!isPinned(plan),
         price,
         originalIndex: Number.isFinite(plan && plan.originalIndex)
@@ -256,7 +256,7 @@
       value: item.price,
       platformName: item.platformName,
       planName: item.planName,
-      discontinued: item.discontinued,
+      planStatus: item.planStatus,
       pinned: item.pinned,
       itemStyle: {
         color: item.color,
@@ -279,7 +279,7 @@
         textStyle: { color: '#172033' },
         formatter(params) {
           const data = (params && params.data) || {};
-          const offline = data.discontinued
+          const offline = data.planStatus === 'delisted'
             ? '<div style="margin-top:4px;color:#9f1239;">已下线</div>'
             : '';
           const pinned = data.pinned

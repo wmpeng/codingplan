@@ -6,7 +6,7 @@ const EntityData = require('./entity-data.js');
 test('nested public plans unfold parent identities without changing the document', () => {
   const platforms = {schemaVersion:1,platforms:[{slug:'platform-a'}]};
   const models = {schemaVersion:1,models:[{slug:'model-a'}]};
-  const doc = {schemaVersion:2,workload:{tokensPerRequest:120000},plans:[
+  const doc = {schemaVersion:3,workload:{tokensPerRequest:120000},plans:[
     {slug:'empty',platformSlug:'platform-a',planModels:[]},
     {slug:'plan-a',platformSlug:'platform-a',planModels:[
       {slug:'stable',modelSlug:'model-a',timeTier:'峰',usage:{monthlyTokenInM:0}},
@@ -26,6 +26,7 @@ test('nested public plans unfold parent identities without changing the document
   conflict.plans[1].planModels[0].planSlug = 'wrong';
   assert.throws(()=>EntityData.buildContext(platforms,conflict,models),/planSlug/);
   assert.throws(()=>EntityData.buildContext(platforms,{...doc,schemaVersion:1},models),/schemaVersion/);
+  assert.throws(()=>EntityData.buildContext(platforms,{...doc,schemaVersion:2},models),/schemaVersion/);
   const missing = structuredClone(doc);
   delete missing.plans[0].planModels;
   assert.throws(()=>EntityData.buildContext(platforms,missing,models),/planModels/);
@@ -50,7 +51,7 @@ test('inventory ignores every billing tier while detailed rows retain all varian
   assert.equal(rows[0].tierLabel, '[高速] [256K] [谷]');
   assert.equal(rows[1].relationLabel, 'Model A [高速] [256K] [峰]');
   assert.equal(EntityData.buildComparisonPoints(context, 7).length, 2);
-  plan.discontinued = true;
+  plan.planStatus = 'delisted';
   assert.deepEqual(EntityData.platformModels(context, plan.platformSlug), []);
 });
 
@@ -75,7 +76,7 @@ test('header counts use non-delisted platforms, active subscriptions and model i
   const context = fixture();
   context.platforms.push({slug:'retired',platformStatus:'delisted'});
   context.plans.push(
-    {slug:'old',platformSlug:'platform-a',billingMode:'subscription',discontinued:true},
+    {slug:'old',platformSlug:'platform-a',billingMode:'subscription',planStatus: 'delisted'},
     {slug:'api',platformSlug:'platform-a',billingMode:'payg'},
     {slug:'extra',platformSlug:'platform-a',billingMode:'subscription'}
   );

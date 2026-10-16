@@ -19,8 +19,8 @@
     const estimateColumn=api && state.monthlyTokenRange != null;
     const estimates=new Map((item.apiEstimates || []).map(value=>[value.relationSlug,value.cost]));
     const estimatedRange=api ? Numbers.range((item.apiEstimates || [{cost:item.cost}]).map(value=>value.cost),money,value=>Numbers.monthlyFee(value,'')) : null;
-    const status=item.plan.discontinued?'已下架':(UI.statusLabels[item.platform.platformStatus] || '状态待确认');
-    const canBuy=!item.plan.discontinued && ['open','limited'].includes(item.platform.platformStatus || 'open');
+    const status=item.plan.planStatus === 'delisted'?'已下架':(UI.statusLabels[item.platform.platformStatus] || '状态待确认');
+    const canBuy=item.plan.planStatus !== 'delisted' && ['open','limited'].includes(item.platform.platformStatus || 'open');
     const rows=item.rows.map(row=>{
       const model=item.models.find(m=>m.slug===row.modelSlug), tiers=[row.serviceTier,row.contextTier,row.timeTier].filter(Boolean).join(' / ');
       const inlineTimeTier=row.timeTier && !row.serviceTier && !row.contextTier;
