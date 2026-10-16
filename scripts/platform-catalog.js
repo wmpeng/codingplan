@@ -497,10 +497,12 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
                             ${apiBadge}
                         </div>
                         <div class="platform-card-aside">
+                            ${options.featured ? '<span class="platform-featured-badge">精选</span>' : ''}
                             ${pinHtml}
                             <span class="platform-rating" aria-label="${rating > 0 ? `${rating} 星` : '待评定'}">${rating > 0 ? `★ ${rating.toFixed(1)}` : '待评定'}</span>
                         </div>
                     </header>
+                    ${options.filterNotice ? `<p class="platform-filter-notice">已置顶 · ${escapeHtml(options.filterNotice)}</p>` : ''}
                     ${summary}
                     ${detailSections.join('\n                    ')}
                     ${modelsHtml}

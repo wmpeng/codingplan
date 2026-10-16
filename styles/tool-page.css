@@ -201,3 +201,38 @@ body.tool-page { padding: 0; }
 #plansPage .tool-table td:first-child strong { font-weight: 600; }
 
 .tool-loading { min-height: 280px; display: grid; place-items: center; color: var(--text-secondary); font-size: 13px; }
+/* 平台中心：精选浏览、独立网络/支付条件与始终保留的置顶区域。 */
+.platform-hub-page .platform-filter-fields { min-width: 0; padding: 0; margin: 0; border: 0; }
+.platform-filter-fields legend { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.platform-featured-control { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 16px; }
+.platform-featured-switch { display: inline-flex; align-items: center; gap: 9px; min-height: 40px; font-size: 14px; font-weight: 600; color: var(--text-primary); cursor: pointer; }
+body .platform-hub-filters .platform-featured-switch input { appearance: none; width: 34px; height: 20px; border-radius: 12px; border: 1px solid #94a3b8; background: #e2e8f0; position: relative; margin: 0; cursor: pointer; flex-shrink: 0; }
+body .platform-hub-filters .platform-featured-switch input::after { content: ''; position: absolute; left: 2px; top: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px #17203333; }
+body .platform-hub-filters .platform-featured-switch input:checked { background: var(--accent-primary); border-color: var(--accent-primary); }
+body .platform-hub-filters .platform-featured-switch input:checked::after { left: 16px; }
+body .platform-hub-filters .platform-featured-switch input:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
+body .platform-hub-filters .platform-featured-switch input:disabled { opacity: .5; cursor: not-allowed; }
+.platform-featured-help, .platform-access-help, .platform-search-help { font-size: 12px; line-height: 1.6; color: var(--text-secondary); }
+.platform-hub-page .is-featured-mode .platform-filter-fields { opacity: .6; filter: grayscale(1); pointer-events: none; }
+.platform-hub-page .is-featured-mode .platform-featured-control { padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
+.platform-hub-page .is-featured-mode .platform-featured-help { color: var(--accent-primary); font-weight: 500; }
+.platform-access-filter { display: inline-flex; gap: 8px; align-items: center; min-height: 40px; padding: 0 10px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 13px; cursor: pointer; }
+.platform-access-filter input { accent-color: var(--accent-primary); margin: 0; }
+.platform-hub-page .platform-access-help { flex-basis: 100%; }
+.platform-hub-page .is-search-paused input { opacity: .6; background: var(--bg-tertiary); cursor: not-allowed; }
+.platform-search-help { margin: -4px 0 16px; }
+.platform-pinned-section { margin-bottom: 28px; }
+.platform-result-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 14px; }
+.platform-result-heading h2, .platform-result-title { font-size: 17px; font-weight: 600; margin: 0; }
+.platform-result-heading h2 span { font-size: 13px; color: var(--text-secondary); font-weight: 400; }
+.platform-result-heading p { font-size: 12px; color: var(--text-secondary); margin: 0; }
+.platform-hub-page .platform-result-title { margin-bottom: 14px; }
+.platform-hub-page .platform-card > header { flex-wrap: wrap; }
+.platform-hub-page .platform-card-heading { flex-basis: 140px; }
+.platform-hub-page .platform-card-aside { margin-left: auto; }
+.platform-featured-badge { display: inline-flex; align-items: center; padding: 3px 7px; border: 1px solid #cbdcf5; border-radius: 5px; background: #eff6ff; color: #245c9f; font-size: 12px; line-height: 1.5; white-space: nowrap; }
+.platform-filter-notice { margin: 0; padding: 7px 10px; background: #fff8eb; color: #855410; border: 1px solid #ecd7b1; border-radius: 6px; font-size: 12px; line-height: 1.6; }
+@media (max-width: 650px), (pointer: coarse) {
+  .platform-featured-switch, .platform-access-filter { min-height: 44px; }
+  .platform-featured-help { flex-basis: 100%; }
+}
