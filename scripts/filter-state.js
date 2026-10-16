@@ -368,7 +368,7 @@
     };
     if (!context) return { ok: true, errors, state };
     check('平台', state.platformSlugs, context.platformBySlug || new Map(), item => item.catalogVisible === false);
-    check('模型', state.modelSlugs, context.modelBySlug || new Map(), item => item.catalogVisible === false);
+    check('模型', state.modelSlugs, context.modelBySlug || new Map());
     return { ok: errors.length === 0, errors, state };
   }
 

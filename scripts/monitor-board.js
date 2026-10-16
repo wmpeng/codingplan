@@ -576,14 +576,10 @@
       const platforms = (boardData.platforms || []).map(row => {
         const platform = resolvePlatform(row);
         if (!platform || platform.catalogVisible === false) return null;
-        const models = (row.models || []).filter(model => {
-          const identity = context.modelBySlug && context.modelBySlug.get(model.model_slug);
-          return !identity || identity.catalogVisible !== false;
-        });
         return Object.assign({}, row, {
           platform_slug: platform.slug || row.platform_slug,
           platform_display_name: platform.name || row.platform_display_name,
-          models
+          models: row.models || []
         });
       }).filter(Boolean);
       return Object.assign({}, boardData, { platforms });
