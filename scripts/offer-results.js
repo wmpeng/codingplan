@@ -19,8 +19,9 @@
     const estimateColumn=api && state.monthlyTokenRange != null;
     const estimates=new Map((item.apiEstimates || []).map(value=>[value.relationSlug,value.cost]));
     const estimatedRange=api ? Numbers.range((item.apiEstimates || [{cost:item.cost}]).map(value=>value.cost),money,value=>Numbers.monthlyFee(value,'')) : null;
-    const status=item.plan.planStatus === 'delisted'?'已下架':(UI.statusLabels[item.platform.platformStatus] || '状态待确认');
-    const canBuy=item.plan.planStatus !== 'delisted' && ['open','limited'].includes(item.platform.platformStatus || 'open');
+    const statuses=[item.platform.platformStatus || 'open',item.plan.planStatus || 'open'];
+    const statusKey=statuses.includes('delisted')?'delisted':statuses.includes('restricted')?'restricted':'open';
+    const status=UI.statusLabels[statusKey], canBuy=statusKey==='open';
     const rows=item.rows.map(row=>{
       const model=item.models.find(m=>m.slug===row.modelSlug), tiers=[row.serviceTier,row.contextTier,row.timeTier].filter(Boolean).join(' / ');
       const inlineTimeTier=row.timeTier && !row.serviceTier && !row.contextTier;
@@ -43,7 +44,7 @@
     const quotaSummary=`<summary class="offer-quota-summary is-compact${range==='额度未知'?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota"><span class="offer-summary-label">月额度 </span><span class="offer-summary-value">${esc(range)}</span></span>${priceRange!==null?`<span class="offer-summary-price" aria-hidden="true"><span class="offer-summary-label">单价 </span><span class="offer-summary-value">${esc(priceRange)} /${unitLabel(unit)}</span></span>`:''}</span></summary>`;
     const unknownPrices=item.rows.some(row=>Numbers.finite(row.usage?.unitPriceCnyPerM)===null);
     const apiSummary=`<summary class="offer-quota-summary offer-api-summary${priceRange===null?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota"><span class="offer-summary-label">${priceRange!==null && unknownPrices?'已知单价':'单价'} </span><span class="offer-summary-value">${priceRange!==null?`${esc(priceRange)} /${unitLabel(unit)}`:'待确认'}</span></span></span></summary>`;
-    const badges=(status==='开放购买'?'':`<span class="offer-status">${status}</span>`)+(E.resolveHarnessApi(item.platform,item.plan)===false?E.harnessApiBadge(false):'');
+    const badges=(statusKey==='open'?'':`<span class="offer-status">${status}</span>`)+(E.resolveHarnessApi(item.platform,item.plan)===false?E.harnessApiBadge(false):'');
     const capabilities=badges?`<div class="offer-capabilities">${badges}</div>`:'';
     const action=url(item.plan.action || item.platform.action);
     const name=esc(item.platform.name+' '+item.plan.name);

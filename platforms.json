@@ -406,7 +406,7 @@
           "reason": "阿里云官方服务，稳定性强。"
         }
       },
-      "platformStatus": "limited",
+      "platformStatus": "restricted",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true
@@ -515,7 +515,7 @@
           "reason": "华为云基础设施成熟，企业级稳定性有保障。"
         }
       },
-      "platformStatus": "limited",
+      "platformStatus": "restricted",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
@@ -751,7 +751,7 @@
           "reason": "京东云官方运营，证据不足，但推测稳定性尚可。"
         }
       },
-      "platformStatus": "limited",
+      "platformStatus": "restricted",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
@@ -859,7 +859,7 @@
           "reason": "稳定性尚可。"
         }
       },
-      "platformStatus": "paused",
+      "platformStatus": "restricted",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
@@ -885,7 +885,7 @@
           "reason": "新平台，证据不足。且看起来像是中专站，并且怀疑有不同供应商，稳定性存疑。"
         }
       },
-      "platformStatus": "limited",
+      "platformStatus": "restricted",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true
@@ -909,7 +909,7 @@
           "reason": "证据不足"
         }
       },
-      "platformStatus": "paused",
+      "platformStatus": "restricted",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
@@ -933,7 +933,7 @@
           "reason": "商汤官方运营，基础服务稳定但编程社区声量较小。"
         }
       },
-      "platformStatus": "limited",
+      "platformStatus": "restricted",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
@@ -958,7 +958,7 @@
           "reason": "证据不足。"
         }
       },
-      "platformStatus": "limited",
+      "platformStatus": "restricted",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
@@ -1105,7 +1105,7 @@
           "reason": "京东云官方运营，证据不足，但推测稳定性尚可。"
         }
       },
-      "platformStatus": "limited",
+      "platformStatus": "restricted",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true

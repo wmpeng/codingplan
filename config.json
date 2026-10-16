@@ -12,7 +12,7 @@
   },
   "usdToCnyRate": 6.8,
   "platformCatalog": {
-    "defaultPlatformStatusMax": "paused"
+    "defaultPlatformStatusMax": "restricted"
   },
   "homepageFilters": {
     "defaults": {
@@ -22,7 +22,7 @@
       "budgetCny": null,
       "monthlyTokenRange": null,
       "tokenUnit": "yi",
-      "platformStatusMax": "paused",
+      "platformStatusMax": "restricted",
       "excludedPlatformStatuses": [],
       "includeDiscontinued": false,
       "priceRanges": {},

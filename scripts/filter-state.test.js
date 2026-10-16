@@ -10,10 +10,10 @@ const unrestricted = (overrides = {}) => Filters.normalizeState({
   ...overrides
 });
 
-test('four plan statuses retain the original independent platform and delisted-plan gates', () => {
+test('three plan statuses retain independent platform and delisted-plan gates', () => {
   const {fixtureContext}=require('./test-fixtures.cjs');
   const E=require('./entity-data.js');
-  const statuses=['open','limited','paused','delisted'];
+  const statuses=['open','restricted','delisted'];
   const platforms=statuses.map(platformStatus=>({slug:platformStatus,platformStatus}));
   const plans=platforms.flatMap(p=>statuses.map(planStatus=>({
     slug:`${p.slug}-${planStatus}`,platformSlug:p.slug,planStatus,billingMode:'subscription',monthlyPrice:10
@@ -21,22 +21,22 @@ test('four plan statuses retain the original independent platform and delisted-p
   const c=fixtureContext({schemaVersion:1,platforms},{plans},{schemaVersion:1,models:[{slug:'m'}]},
     {planModels:plans.map(p=>({slug:p.slug,planSlug:p.slug,modelSlug:'m',usage:{monthlyTokenInM:100}}))});
   const opts={context:c};
-  for(const includeDiscontinued of [false,true])for(const platformStatusMax of ['paused','delisted']) {
+  for(const includeDiscontinued of [false,true])for(const platformStatusMax of ['restricted','delisted']) {
     const state=Filters.normalizeState({includeDiscontinued,platformStatusMax});
     const expected=plans.filter(p=>(platformStatusMax==='delisted'||p.platformSlug!=='delisted')&&(includeDiscontinued||p.planStatus!=='delisted')).map(p=>p.slug);
     assert.deepEqual(Filters.matchingOffers(c,state).map(o=>o.plan.slug),expected);
     assert.deepEqual(Filters.filterPlans(E.buildPlanCatalog(c),state,opts).map(p=>p.slug),expected);
   }
-  const pausedPlatformOpenPlan=Filters.normalizeState({platformSlugs:['paused'],platformStatusMax:'limited'});
-  assert.deepEqual(Filters.matchingOffers(c,pausedPlatformOpenPlan),[]);
+  const restrictedPlatformOpenPlan=Filters.normalizeState({platformSlugs:['restricted'],platformStatusMax:'open'});
+  assert.deepEqual(Filters.matchingOffers(c,restrictedPlatformOpenPlan),[]);
 });
 
-test('购买状态排除独立组合，并保留完整页的累积状态筛选', () => {
-  const platforms = ['open', 'limited', 'paused', 'delisted'].map(status => ({slug:status,platformStatus:status}));
+test('购买状态排除受限平台，并保留完整页的累积状态筛选', () => {
+  const platforms = ['open', 'restricted', 'delisted'].map(status => ({slug:status,platformStatus:status}));
   const plans = platforms.map(p => ({slug:p.slug,platformSlug:p.slug,billingMode:'subscription',monthlyPrice:10}));
   const context = {platforms,plans,platformBySlug:new Map(platforms.map(p=>[p.slug,p])),
     relationsByPlanSlug:new Map(plans.map(p=>[p.slug,[{slug:p.slug,modelSlug:'m'}]])),modelBySlug:new Map([['m',{slug:'m'}]])};
-  const cases = [ [[],['open','limited','paused']], [['paused'],['open','limited']], [['limited'],['open','paused']], [['paused','limited'],['open']] ];
+  const cases = [ [[],['open','restricted']], [['restricted'],['open']] ];
   for (const [excluded,expected] of cases) {
     const state = Filters.normalizeState({excludedPlatformStatuses:excluded});
     assert.deepEqual(Filters.matchingOffers(context,state).map(o=>o.platform.slug),expected);
@@ -47,8 +47,13 @@ test('购买状态排除独立组合，并保留完整页的累积状态筛选',
   }
   const full = Filters.createDefaultState({}, {mode:'full'});
   assert.deepEqual(Filters.matchingOffers(context,full).map(o=>o.platform.slug),platforms.map(p=>p.slug));
-  assert.deepEqual(Filters.matchingOffers(context,{...full,platformStatusMax:'limited'}).map(o=>o.platform.slug),['open','limited']);
-  assert.deepEqual(Filters.normalizeState({excludedPlatformStatuses:['paused','paused','unknown','delisted']}).excludedPlatformStatuses,['paused']);
+  assert.deepEqual(Filters.matchingOffers(context,{...full,platformStatusMax:'restricted'}).map(o=>o.platform.slug),['open','restricted']);
+  assert.deepEqual(Filters.normalizeState({excludedPlatformStatuses:['restricted','restricted','unknown','delisted']}).excludedPlatformStatuses,['restricted']);
+  for(const previous of ['limited','paused']) {
+    const migrated=Filters.normalizeState({platformStatusMax:previous,excludedPlatformStatuses:['limited','paused']});
+    assert.equal(migrated.platformStatusMax,'restricted');
+    assert.deepEqual(migrated.excludedPlatformStatuses,['restricted']);
+  }
 });
 
 test('API 类型限制独立于零预算，价格点和订阅表同步过滤', () => {
@@ -174,7 +179,7 @@ test('显式精选参数取平台与两组模型并集，完整页基础状态�
   assert.deepEqual(state.platformSlugs, ['p1', 'p2']);
   assert.deepEqual(state.modelSlugs, ['m1', 'm2', 'm3']);
   assert.deepEqual(state.budgetCny, { min: null, max: 200 });
-  assert.equal(state.platformStatusMax, 'paused');
+  assert.equal(state.platformStatusMax, 'restricted');
   assert.equal(state.modelMatch, 'any');
   state.platformSlugs.push('extra');
   state.modelSlugs.pop();
@@ -211,12 +216,12 @@ test('removed platform label state cannot silently restrict results', () => {
 test('平台模型筛选、状态和清空/全选语义', () => {
   const platforms = [
     { slug: 'a', platformStatus: 'open' },
-    { slug: 'b', platformStatus: 'paused' },
+    { slug: 'b', platformStatus: 'restricted' },
     { slug: 'c', platformStatus: 'delisted' }
   ];
   const context = { platformBySlug: new Map(platforms.map(item => [item.slug, item])) };
   const entityData = { platformModels: (_context, slug) => slug === 'a' ? [{ slug: 'm1' }, { slug: 'm2' }] : [{ slug: 'm1' }] };
-  assert.deepEqual(Filters.filterPlatforms(platforms, unrestricted({ platformSlugs: null, modelSlugs: ['m1', 'm2'], modelMatch: 'all', platformStatusMax: 'paused' }), { context, entityData }).map(item => item.slug), ['a']);
+  assert.deepEqual(Filters.filterPlatforms(platforms, unrestricted({ platformSlugs: null, modelSlugs: ['m1', 'm2'], modelMatch: 'all', platformStatusMax: 'restricted' }), { context, entityData }).map(item => item.slug), ['a']);
   assert.deepEqual(Filters.filterPlatforms(platforms, unrestricted({ platformSlugs: [] }), { context, entityData }), platforms);
   assert.deepEqual(Filters.filterPlatforms(platforms, unrestricted({ platformSlugs: platforms.map(item => item.slug) }), { context, entityData }).map(item => item.slug), ['a', 'b', 'c']);
 });

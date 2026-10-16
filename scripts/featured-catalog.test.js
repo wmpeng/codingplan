@@ -37,7 +37,7 @@ test('未知、零与按量费用分开显示，固定表不吞未知额度或�
     {slug:'zero',platformSlug:'p',modelSlug:'m',billingMode:'subscription',unitPriceCnyPerM:0,monthlyTokenInM:0,monthlyFeeCny:0},
     {slug:'api',platformSlug:'p',modelSlug:'m',billingMode:'payg',unitPriceCnyPerM:1},
     {slug:'old',platformSlug:'p',modelSlug:'m',billingMode:'subscription',planStatus: 'delisted'},
-    {slug:'paused',platformSlug:'p',modelSlug:'m',billingMode:'subscription',available:false}
+    {slug:'restricted',platformSlug:'p',modelSlug:'m',billingMode:'subscription',available:false}
   ];
   assert.equal(M.buildPresetComparisonRows(points,group,'all').length,3);
   const html=M.presetComparisonTableHtml(group,points,'yi','all');

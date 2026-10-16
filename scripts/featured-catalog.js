@@ -51,7 +51,7 @@
     return config.groups.map(g => `<section class="featured-model-group"><div class="section-heading"><h3>${esc(g.title)}</h3><span>${g.modelSlugs.length} 个模型</span></div><div class="model-grid">${g.modelSlugs.map(s => modelCard(context.modelBySlug.get(s),context)).join('')}</div></section>`).join('');
   }
   function points(context, config) {
-    return globalThis.EntityData.buildComparisonPoints(context, config.usdToCnyRate, {includeUnknown:true}).map(p => ({...p, available: ['open','limited'].includes(context.platformBySlug.get(p.platformSlug)?.platformStatus || 'open')}));
+    return globalThis.EntityData.buildComparisonPoints(context, config.usdToCnyRate, {includeUnknown:true}).map(p => ({...p, available: (p.planStatus || 'open') === 'open' && (context.platformBySlug.get(p.platformSlug)?.platformStatus || 'open') === 'open'}));
   }
   function presetTableOptions(options = {}) {
     return {limit:6, modelFilter:true, ...options};

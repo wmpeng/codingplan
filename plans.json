@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-16T12:07:56Z",
+  "generatedAt": "2026-10-16T12:58:48Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -8105,7 +8105,7 @@
       "monthlyRequests": 90000,
       "benefits": [],
       "note": "新客首次订阅Pro首月¥39.90，续费¥200/月；优惠起止日期及具体时刻未公布。每日09:30:00（UTC+8）限量补充。按实际模型调用次数扣除额度，单次提问可能含多次模型调用；请求配额不等于固定Token总量。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "aliyun-coding-pro--qwen-3-7-plus",
@@ -16316,7 +16316,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "huawei-cloud-token-plan-lite--glm-5-3",
@@ -16446,7 +16446,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n• 页面标\"最受欢迎\"档\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "huawei-cloud-token-plan-standard--glm-5-3",
@@ -16576,7 +16576,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "huawei-cloud-token-plan-pro--glm-5-3",
@@ -16706,7 +16706,7 @@
       "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "huawei-cloud-token-plan-max--glm-5-3",
@@ -23530,7 +23530,7 @@
       "monthlyRequests": 18000,
       "benefits": [],
       "note": "首月优惠资格及活动起止日期、具体时刻和时区未公布；常规月价Lite40/Pro200元，以订购页面为准。旧Coding Plan与Token Plan使用不同端点和额度。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "jd-cloud-coding-plan-lite--kimi-k2-5",
@@ -23641,7 +23641,7 @@
       "monthlyRequests": 90000,
       "benefits": [],
       "note": "首月优惠资格及活动起止日期、具体时刻和时区未公布；常规月价Lite40/Pro200元，以订购页面为准。旧Coding Plan与Token Plan使用不同端点和额度。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "jd-cloud-coding-plan-pro--kimi-k2-5",
@@ -24874,7 +24874,7 @@
         "1M上下文上限"
       ],
       "note": "双Flash套餐；季付实付117元（活动起止日期未公布）；只限个人在编程辅助工具内使用，禁止Hermes/OpenClaw和额度共享/转售。自然月额外限制未公布。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "taotoken-coding-plan-lite--glm-5-3-flash",
@@ -24923,7 +24923,7 @@
         "1M上下文上限"
       ],
       "note": "双Flash套餐；季付实付297元（活动起止日期未公布）；只限个人在编程辅助工具内使用，禁止Hermes/OpenClaw和额度共享/转售。自然月额外限制未公布。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "taotoken-coding-plan-pro--glm-5-3-flash",
@@ -24972,7 +24972,7 @@
         "1M上下文上限"
       ],
       "note": "双Flash套餐；季付实付897元（活动起止日期未公布）；只限个人在编程辅助工具内使用，禁止Hermes/OpenClaw和额度共享/转售。自然月额外限制未公布。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "taotoken-coding-plan-max--glm-5-3-flash",
@@ -25018,7 +25018,7 @@
       "monthlyRequests": 18000,
       "benefits": [],
       "note": "2026-10-12官方文档仍列20/100元及两个模型，赠OpenClaw 2核4G实例；购买状态未重新确认，保留此前停售标记。",
-      "planStatus": "paused",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "chaosuan-coding-plan-lite--minimax-m2-5",
@@ -25070,7 +25070,7 @@
       "monthlyRequests": 90000,
       "benefits": [],
       "note": "2026-10-12官方文档仍列20/100元及两个模型，赠OpenClaw 2核4G实例；购买状态未重新确认，保留此前停售标记。",
-      "planStatus": "paused",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "chaosuan-coding-plan-pro--minimax-m2-5",
@@ -25125,7 +25125,7 @@
         "最多20个API Key"
       ],
       "note": "免费公测，起止日期未公布；Lite/Pro尚未上线；支持SenseNova6.8 Flash Lite与U1 Fast，Token扣减未知。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "sensetime-coding-plan-free--sensenova-6-8-flash-lite",
@@ -25171,7 +25171,7 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "2026-10-12官方公开文档：5小时约40 prompts，每prompt可能含15–20次模型调用，取决于任务，不是固定请求或Token配额。免费领取后30天有效，每账号一次，活动起止日期及当前库存待确认。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "moorethreads-coding-plan-free-trial--glm-4-7",
@@ -39832,7 +39832,7 @@
         "60 RPM"
       ],
       "note": "个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。不支持缓存命中。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "jd-cloud-token-lite--glm-5-1--ctx-32k",
@@ -40384,7 +40384,7 @@
         "60 RPM"
       ],
       "note": "个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。不支持缓存命中。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "jd-cloud-token-standard--glm-5-1--ctx-32k",
@@ -40936,7 +40936,7 @@
         "60 RPM"
       ],
       "note": "个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。不支持缓存命中。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "jd-cloud-token-pro--glm-5-1--ctx-32k",
@@ -41488,7 +41488,7 @@
         "60 RPM"
       ],
       "note": "个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。不支持缓存命中。",
-      "planStatus": "limited",
+      "planStatus": "restricted",
       "planModels": [
         {
           "slug": "jd-cloud-token-max--glm-5-1--ctx-32k",

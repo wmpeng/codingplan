@@ -182,14 +182,9 @@
     white-space: nowrap;
 }
 
-.platform-rush[data-platform-status="limited"] {
-    background: rgba(37, 99, 235, 0.1);
-    color: #2563eb;
-}
-
-.platform-rush[data-platform-status="paused"] {
-    background: rgba(100, 116, 139, 0.14);
-    color: #475569;
+.platform-rush[data-platform-status="restricted"] {
+    background: rgba(245, 158, 11, 0.13);
+    color: #a45f0c;
 }
 
 .platform-rush[data-platform-status="delisted"] {
@@ -440,14 +435,9 @@ body .platform-card:focus-visible .platform-card-hint {
     color: #0f766e;
 }
 
-.platform-detail-rush[data-platform-status="limited"] {
-    background: rgba(37, 99, 235, 0.1);
-    color: #2563eb;
-}
-
-.platform-detail-rush[data-platform-status="paused"] {
-    background: rgba(100, 116, 139, 0.14);
-    color: #475569;
+.platform-detail-rush[data-platform-status="restricted"] {
+    background: rgba(245, 158, 11, 0.13);
+    color: #a45f0c;
 }
 
 .platform-detail-rush[data-platform-status="delisted"] {

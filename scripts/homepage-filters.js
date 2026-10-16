@@ -165,7 +165,7 @@
     </details>`;
   }
 
-  const statusExclusions = { paused: "排除暂时停售平台", limited: "排除定时放量平台" };
+  const statusExclusions = { restricted: "排除购买受限平台" };
   function buildStatusPicker(includeHistory = false) {
     return `<details class="filter-picker status-picker" id="homeStatusPicker">
       <summary aria-label="购买状态"><span class="status-picker-title">购买状态</span><span data-status-label>不限</span></summary>
@@ -207,7 +207,7 @@
     state.modelGroup = "any";
     state.modelMatch = "any";
     if (purchaseTool) {
-      state.platformStatusMax = "paused";
+      state.platformStatusMax = "restricted";
       state.includeDiscontinued = false;
     }
     const defaults = Filters.cloneState(state);
@@ -487,7 +487,7 @@
       const statusPicker = host.querySelector('#homeStatusPicker');
       if (statusPicker) {
         const excluded = state.excludedPlatformStatuses;
-        statusPicker.querySelector('[data-status-label]').textContent = excluded.length > 1 ? "已排除 2 项" : excluded.length ? statusExclusions[excluded[0]] : "不限";
+        statusPicker.querySelector('[data-status-label]').textContent = excluded.length ? statusExclusions[excluded[0]] : "不限";
         statusPicker.querySelector('summary').setAttribute('aria-label', `购买状态：${excluded.map(status => statusExclusions[status]).join('、') || '不限'}`);
         statusPicker.querySelectorAll('[data-status-exclude]').forEach(el => { el.checked = excluded.includes(el.dataset.statusExclude); });
       }
@@ -545,7 +545,7 @@
       platformShortcutNotice = "";
       if (!full) {
         state.includeDiscontinued = false;
-        state.platformStatusMax = "paused";
+        state.platformStatusMax = "restricted";
       }
       pendingAll = false;
       state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || state.tokenUnit;
@@ -620,7 +620,7 @@
         state.excludedPlatformStatuses = [...host.querySelectorAll('[data-status-exclude]:checked')].map(input => input.dataset.statusExclude);
         publish();
       } else if (el.matches("[data-include-delisted]")) {
-        state.platformStatusMax = el.checked ? "delisted" : "paused";
+        state.platformStatusMax = el.checked ? "delisted" : "restricted";
         publish();
       } else if (el.matches("[data-model-require-all]")) {
         if (!el.checked) { state.modelMatch = "any"; publish(); return; }

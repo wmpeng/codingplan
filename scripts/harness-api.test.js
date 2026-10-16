@@ -97,12 +97,12 @@ test('方案卡片只显示非开放状态和明确不支持的能力，不渲�
   const base=G.recommend(context(),all({}),{}, {allMatching:true}).candidates.find(x=>x.plan.slug==='inherit');
   for(const [platformStatus,capability,isDelisted,expectedStatus] of [
     ['open',true,false,null],['open',null,false,null],['open',false,false,null],
-    ['limited',true,false,'定时放量'],['paused',false,false,'暂时停售'],
+    ['restricted',true,false,'购买受限'],['restricted',false,false,'购买受限'],
     ['delisted',null,false,'已下架'],['open',true,true,'已下架']
   ]) {
     const item={...base,platform:{...base.platform,platformStatus,supportsHarnessApi:capability},plan:{...base.plan,planStatus:isDelisted?'delisted':platformStatus}};
     const html=Offers.card(item,all({}));
-    assert.doesNotMatch(html,/>开放购买</);
+    assert.doesNotMatch(html,/>可以购买</);
     assert.doesNotMatch(html,/data-harness-api="(?:true|unknown)"/);
     assert.equal(html.includes('class="offer-capabilities"'),!!expectedStatus||capability===false);
     assert.equal(html.includes('class="offer-status"'),!!expectedStatus);

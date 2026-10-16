@@ -15,17 +15,16 @@ const PLATFORM_DIMENSION_META = [
   { key: 'stability', label: '可用性' }
 ];
 
-const PLATFORM_STATUSES = ['open', 'limited', 'paused', 'delisted'];
+const PLATFORM_STATUSES = ['open', 'restricted', 'delisted'];
 const PLATFORM_STATUS_LABELS = CatalogUI.statusLabels;
 /** 筛选滑块中间档位文案（前后另有前缀 /「平台」） */
 const PLATFORM_STATUS_SEGMENT_LABELS = {
-  open: '开放购买',
-  limited: '定时放量',
-  paused: '暂时停售',
+  open: '可以购买',
+  restricted: '购买受限',
   delisted: '所有'
 };
 const PLATFORM_STATUS_FILTER_SUFFIX = '平台';
-const DEFAULT_PLATFORM_STATUS_MAX = 'paused';
+const DEFAULT_PLATFORM_STATUS_MAX = 'restricted';
 
 const escapeHtml = CatalogUI.escapeHtml;
 
@@ -62,6 +61,7 @@ function formatInlineMarkdownPreserveBreaks(text) {
 }
 
 function normalizePlatformStatus(value) {
+  if (value === 'limited' || value === 'paused') return 'restricted';
   if (PLATFORM_STATUSES.includes(value)) return value;
   return 'open';
 }
@@ -97,7 +97,7 @@ function isPlatformStatusSegmentActive(status, maxStatus) {
   return platformStatusRank(current) <= platformStatusRank(max);
 }
 
-/** 读出当前筛选：如「显示开放购买和定时放量平台」 */
+/** 读出当前筛选：如「显示可以购买和购买受限平台」 */
 function platformStatusFilterPhrase(maxStatus) {
   const max = normalizePlatformStatus(maxStatus);
   if (max === 'delisted') {

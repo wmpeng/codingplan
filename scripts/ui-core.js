@@ -15,7 +15,7 @@
     for (const [key, value] of Object.entries(params)) if (value != null && value !== '') query.set(key, value);
     return `/${page}/${query.size ? '?' + query : ''}`;
   }
-  const statusLabels = Object.freeze({ open: '开放购买', limited: '定时放量', paused: '暂时停售', delisted: '已下架' });
+  const statusLabels = Object.freeze({ open: '可以购买', restricted: '购买受限', delisted: '已下架' });
   const externalLinkIcon = '<svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>';
   const closeIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"></path></svg>';
   function pinIcon(pinned = false) {

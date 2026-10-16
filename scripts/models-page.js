@@ -7,7 +7,7 @@
       C.validate(preset,context);
       document.getElementById('modelHighlights').innerHTML=C.modelGroups(preset,context);
       const search=document.getElementById('modelSearch'),group=document.getElementById('modelGroup'),sort=document.getElementById('modelSort'),image=document.getElementById('modelImage');
-      const available=new Set(context.planModels.filter(r=>{const p=context.planBySlug.get(r.planSlug),platform=context.platformBySlug.get(p?.platformSlug);return p&&p.planStatus !== 'delisted'&&['open','limited'].includes(platform?.platformStatus || 'open');}).map(r=>r.modelSlug));
+      const available=new Set(context.planModels.filter(r=>{const p=context.planBySlug.get(r.planSlug),platform=context.platformBySlug.get(p?.platformSlug);return p&&(p.planStatus || 'open') === 'open'&&(platform?.platformStatus || 'open') === 'open';}).map(r=>r.modelSlug));
       const listed=document.getElementById('modelAvailable');
       function render(){
         const q=search.value.trim().toLocaleLowerCase(),selected=preset.groups.find(g=>g.id===group.value);

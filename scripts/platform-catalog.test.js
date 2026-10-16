@@ -49,11 +49,11 @@ function samplePlatform(overrides = {}) {
 }
 
 describe('filterPlatforms', () => {
-  it('filters purchase status cumulatively and defaults to paused', () => {
-    const platforms = ['open', 'limited', 'paused', 'delisted'].map(status => samplePlatform({ slug: status, platformStatus: status }));
-    assert.deepEqual(filterPlatforms(platforms).map(p => p.slug), ['open', 'limited', 'paused']);
-    assert.deepEqual(filterPlatforms(platforms, { platformStatusMax: 'limited' }).map(p => p.slug), ['open', 'limited']);
-    assert.deepEqual(filterPlatforms(platforms, { platformStatusMax: 'delisted' }).map(p => p.slug), ['open', 'limited', 'paused', 'delisted']);
+  it('filters purchase status cumulatively and defaults to restricted', () => {
+    const platforms = ['open', 'restricted', 'delisted'].map(status => samplePlatform({ slug: status, platformStatus: status }));
+    assert.deepEqual(filterPlatforms(platforms).map(p => p.slug), ['open', 'restricted']);
+    assert.deepEqual(filterPlatforms(platforms, { platformStatusMax: 'open' }).map(p => p.slug), ['open']);
+    assert.deepEqual(filterPlatforms(platforms, { platformStatusMax: 'delisted' }).map(p => p.slug), ['open', 'restricted', 'delisted']);
   });
   it('keeps pinned platforms across status filtering', () => {
     const platforms = ['open', 'delisted'].map(status => samplePlatform({ slug: status, platformStatus: status }));
@@ -184,19 +184,16 @@ describe('buildPlatformCardHtml', () => {
     assert.match(noLink, /class="platform-name"/);
   });
 
-  it('omits badge for open; shows limited/paused/delisted beside title', () => {
+  it('omits badge for open; shows restricted/delisted beside title', () => {
     const open = buildPlatformCardHtml(
       samplePlatform({ action: 'https://example.com', platformStatus: 'open' }),
       [{ platformSlug: 'x', modelLabels: ['M1'], planStatus: 'open' }]
     );
     assert.doesNotMatch(open, /platform-rush/);
 
-    const limited = buildPlatformCardHtml(samplePlatform({ platformStatus: 'limited' }), []);
-    assert.match(limited, /data-platform-status="limited"/);
-    assert.match(limited, /定时放量/);
-
-    const paused = buildPlatformCardHtml(samplePlatform({ platformStatus: 'paused' }), []);
-    assert.match(paused, /暂时停售/);
+    const restricted = buildPlatformCardHtml(samplePlatform({ platformStatus: 'restricted' }), []);
+    assert.match(restricted, /data-platform-status="restricted"/);
+    assert.match(restricted, /购买受限/);
   });
 
   it('renders score with 分 unit and groups meta for vertical centering', () => {
@@ -270,55 +267,49 @@ describe('buildPlatformCardHtml', () => {
 
 describe('buildPlatformStatusSliderHtml', () => {
   it('renders filter labels and highlights selected max', () => {
-    const html = buildPlatformStatusSliderHtml('limited');
+    const html = buildPlatformStatusSliderHtml('restricted');
     assert.match(html, /platform-status-slider/);
-    assert.match(html, /data-platform-status-max="limited"/);
+    assert.match(html, /data-platform-status-max="restricted"/);
     assert.match(html, /platform-status-seg/);
     assert.match(html, /platform-status-prefix">显示</);
     assert.match(html, /platform-status-suffix">平台/);
-    assert.match(html, />开放购买</);
-    assert.match(html, />定时放量</);
-    assert.match(html, />暂时停售</);
+    assert.match(html, />可以购买</);
+    assert.match(html, />购买受限</);
     assert.match(html, />所有</);
     assert.match(html, /platform-status-seg is-active" data-platform-status="open"/);
-    assert.match(html, /platform-status-seg is-active" data-platform-status="limited"/);
+    assert.match(html, /platform-status-seg is-active" data-platform-status="restricted"/);
     assert.match(html, /platform-status-and is-on" aria-hidden="true">和</);
-    assert.equal((html.match(/platform-status-and/g) || []).length, 2);
+    assert.equal((html.match(/platform-status-and/g) || []).length, 1);
     assert.equal((html.match(/platform-status-and is-on/g) || []).length, 1);
-    assert.doesNotMatch(html, /platform-status-seg is-active" data-platform-status="paused"/);
     assert.doesNotMatch(html, /platform-status-seg is-active" data-platform-status="delisted"/);
   });
 
   it('uses 仅显示 prefix only when open is selected', () => {
     const openHtml = buildPlatformStatusSliderHtml('open');
     assert.match(openHtml, /platform-status-prefix">仅显示</);
-    assert.match(openHtml, /title="仅显示开放购买平台"/);
-    assert.match(openHtml, /title="显示定时放量平台"/);
+    assert.match(openHtml, /title="仅显示可以购买平台"/);
+    assert.match(openHtml, /title="显示购买受限平台"/);
     assert.match(openHtml, /platform-status-seg is-active" data-platform-status="open"/);
-    assert.equal((openHtml.match(/platform-status-and/g) || []).length, 2);
+    assert.equal((openHtml.match(/platform-status-and/g) || []).length, 1);
     assert.doesNotMatch(openHtml, /platform-status-and is-on/);
-    assert.doesNotMatch(openHtml, /platform-status-seg is-active" data-platform-status="limited"/);
+    assert.doesNotMatch(openHtml, /platform-status-seg is-active" data-platform-status="restricted"/);
 
     const allHtml = buildPlatformStatusSliderHtml('delisted');
     assert.match(allHtml, /platform-status-prefix">显示</);
     assert.match(allHtml, /title="显示所有平台"/);
     assert.match(allHtml, /platform-status-seg is-active" data-platform-status="delisted"/);
     assert.doesNotMatch(allHtml, /platform-status-seg is-active" data-platform-status="open"/);
-    assert.equal((allHtml.match(/platform-status-and/g) || []).length, 2);
+    assert.equal((allHtml.match(/platform-status-and/g) || []).length, 1);
     assert.doesNotMatch(allHtml, /platform-status-and is-on/);
   });
 
-  it('highlights cumulative statuses with 和 until paused; 所有 is exclusive', () => {
-    const pausedHtml = buildPlatformStatusSliderHtml('paused');
-    assert.match(pausedHtml, /platform-status-seg is-active" data-platform-status="open"/);
-    assert.match(pausedHtml, /platform-status-seg is-active" data-platform-status="limited"/);
-    assert.match(pausedHtml, /platform-status-seg is-active" data-platform-status="paused"/);
-    assert.equal((pausedHtml.match(/platform-status-and/g) || []).length, 2);
-    assert.equal((pausedHtml.match(/platform-status-and is-on/g) || []).length, 2);
-    assert.match(pausedHtml, /aria-label="显示开放购买和定时放量和暂时停售平台"/);
-
-    const limitedHtml = buildPlatformStatusSliderHtml('limited');
-    assert.match(limitedHtml, /aria-label="显示开放购买和定时放量平台"/);
+  it('highlights cumulative statuses with 和 until restricted; 所有 is exclusive', () => {
+    const restrictedHtml = buildPlatformStatusSliderHtml('restricted');
+    assert.match(restrictedHtml, /platform-status-seg is-active" data-platform-status="open"/);
+    assert.match(restrictedHtml, /platform-status-seg is-active" data-platform-status="restricted"/);
+    assert.equal((restrictedHtml.match(/platform-status-and/g) || []).length, 1);
+    assert.equal((restrictedHtml.match(/platform-status-and is-on/g) || []).length, 1);
+    assert.match(restrictedHtml, /aria-label="显示可以购买和购买受限平台"/);
   });
 });
 

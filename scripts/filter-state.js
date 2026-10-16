@@ -13,7 +13,7 @@
     apiOnly: false,
     monthlyTokenRange: null,
     tokenUnit: 'yi',
-    platformStatusMax: 'paused',
+    platformStatusMax: 'restricted',
     excludedPlatformStatuses: [],
     includeDiscontinued: false,
     priceRanges: {},
@@ -23,7 +23,9 @@
     deepSWEScoreMin: null
   });
 
-  const STATUS_RANK = { open: 0, limited: 1, paused: 2, delisted: 3 };
+  const STATUS_RANK = { open: 0, restricted: 1, delisted: 2 };
+  // Keep existing in-session filters usable after the two middle states merge.
+  const normalizeStatus = status => status === 'limited' || status === 'paused' ? 'restricted' : status;
 
   function arrayOrNull(value) {
     if (value === null) return null;
@@ -70,6 +72,7 @@
       platformStatusMax: 'delisted',
       includeDiscontinued: true
     } : DEFAULTS;
+    const platformStatusMax = normalizeStatus(input.platformStatusMax);
     return {
       platformSlugs: entitySelection(input.platformSlugs === undefined ? base.platformSlugs : input.platformSlugs),
       // Empty model picks mean unrestricted, while preserving the cleared checklist.
@@ -84,8 +87,8 @@
       monthlyTokenRange: cloneRange(input.monthlyTokenRange),
       tokenUnit: ['M','B'].includes(input.tokenUnit) ? input.tokenUnit : 'yi',
       budgetCny: cloneRange(input.budgetCny === undefined ? base.budgetCny : input.budgetCny),
-      platformStatusMax: STATUS_RANK[input.platformStatusMax] === undefined ? base.platformStatusMax : input.platformStatusMax,
-      excludedPlatformStatuses: (arrayOrNull(input.excludedPlatformStatuses) || []).filter(status => ['limited', 'paused'].includes(status)),
+      platformStatusMax: STATUS_RANK[platformStatusMax] === undefined ? base.platformStatusMax : platformStatusMax,
+      excludedPlatformStatuses: [...new Set((arrayOrNull(input.excludedPlatformStatuses) || []).map(normalizeStatus).filter(status => status === 'restricted'))],
       includeDiscontinued: input.includeDiscontinued === undefined ? base.includeDiscontinued : input.includeDiscontinued === true,
       priceRanges: normalizeRangeMap(input.priceRanges === undefined ? base.priceRanges : input.priceRanges),
       requestRanges: normalizeRangeMap(input.requestRanges === undefined ? base.requestRanges : input.requestRanges),
