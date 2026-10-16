@@ -25,6 +25,24 @@ test('被搜索与模型条件排除的置顶平台仍保留，不计入匹配�
   assert.equal(result.results.length, 0);
   assert.deepEqual(result.visible.map(p=>p.slug),pinnedIds);
 });
+test('平台中心固定忽略下架套餐，其他视图的历史开关与用户置顶仍保持原语义', () => {
+  const source = context.plans.find(plan => (context.relationsByPlanSlug.get(plan.slug) || []).some(row => context.modelBySlug.has(row.modelSlug)));
+  const platform = context.platformBySlug.get(source.platformSlug);
+  const historyContext = {...context, plans:[{...source, planStatus:'delisted'}]};
+  const filterOptions = {...options.filterOptions, context:historyContext};
+  const historical = {...state, platformStatusMax:'delisted', includeDiscontinued:true};
+  assert.equal(Filters.filterPlatforms([platform], historical, filterOptions).length,1);
+  const result = Hub.select([platform],historical,{...options,filterOptions,pinnedIds:[platform.slug]});
+  assert.equal(result.matchedCount,0);
+  assert.deepEqual(result.visible.map(p=>p.slug),[platform.slug]);
+  assert.equal(historical.includeDiscontinued,true);
+  const retiredPlatform = {...platform, platformStatus:'delisted'};
+  const activeContext = {...historyContext, plans:[{...source,planStatus:'open'}],
+    platformBySlug:new Map(context.platformBySlug).set(platform.slug,retiredPlatform)};
+  const activeOptions = {...options,filterOptions:{...filterOptions,context:activeContext}};
+  assert.equal(Hub.select([retiredPlatform],state,activeOptions).matchedCount,0);
+  assert.equal(Hub.select([retiredPlatform],historical,activeOptions).matchedCount,1);
+});
 test('精选模式忽略所有条件，补回非精选置顶、去重且不改原状态', () => {
   const pinnedIds = [featuredSlugs[0], platforms.find(p=>!featuredSlugs.includes(p.slug)).slug];
   const input = {...state, modelSlugs:['__missing'], budgetCny:{min:null,max:0}, domesticNetworkOnly:true};

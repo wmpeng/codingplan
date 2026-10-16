@@ -13,7 +13,7 @@
     const query = String(options.query || '').trim().toLocaleLowerCase('zh-CN');
     const filterOptions = options.filterOptions || {};
     const matched = options.featuredOnly ? platforms.filter(p => featured.has(p.slug))
-      : Filters.filterPlatforms(platforms, {...state, platformSlugs:null}, filterOptions).filter(p => matchesName(p, query));
+      : Filters.filterPlatforms(platforms, {...state, platformSlugs:null, includeDiscontinued:false}, filterOptions).filter(p => matchesName(p, query));
     const matchedIds = new Set(matched.map(p => p.slug));
     const pinned = Catalog.sortPlatformsByPinned(platforms.filter(p => pinnedSet.has(p.slug)), pinnedIds);
     const results = matched.filter(p => !pinnedSet.has(p.slug));

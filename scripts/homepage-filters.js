@@ -166,10 +166,10 @@
   }
 
   const statusExclusions = { restricted: "排除购买受限平台" };
-  function buildStatusPicker(includeHistory = false) {
+  function buildStatusPicker(includeHistory = false, includePlanHistory = includeHistory) {
     return `<details class="filter-picker status-picker" id="homeStatusPicker">
       <summary aria-label="购买状态"><span class="status-picker-title">购买状态</span><span data-status-label>不限</span></summary>
-      <div class="filter-picker-menu" role="group" aria-label="${includeHistory ? "购买状态筛选" : "排除购买状态"}"><div class="filter-picker-tools"><button type="button" data-clear-status aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}</span></label>`).join("")}${includeHistory ? '<div class="status-picker-history"><label><input type="checkbox" data-include-delisted><span>包含下架平台</span></label><label><input type="checkbox" data-filter-field="includeDiscontinued"><span>包含下架套餐</span></label></div>' : ""}</div>
+      <div class="filter-picker-menu" role="group" aria-label="${includeHistory ? "购买状态筛选" : "排除购买状态"}"><div class="filter-picker-tools"><button type="button" data-clear-status aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}</span></label>`).join("")}${includeHistory ? `<div class="status-picker-history"><label><input type="checkbox" data-include-delisted><span>包含下架平台</span></label>${includePlanHistory ? '<label><input type="checkbox" data-filter-field="includeDiscontinued"><span>包含下架套餐</span></label>' : ''}</div>` : ""}</div>
     </details>`;
   }
   let presetPromise;
@@ -333,7 +333,7 @@
           ? ""
           : `${buildRangePicker("budget", state)}${buildRangePicker("token", state)}`
       }
-      ${!monitor ? buildStatusPicker(purchaseTool) : ""}
+      ${!monitor ? buildStatusPicker(purchaseTool, purchaseTool && !platformHub) : ""}
       ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-filter-field="domesticNetworkOnly">境内可用</label><label class="platform-access-filter"><input type="checkbox" data-filter-field="domesticPaymentOnly">境内可购买</label>' : ""}</div>
       <div class="filter-state-footer">
       ${full ? "" : `<div class="filter-state-controls"><label class="offer-sort"><span>排序</span><select data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></label><span class="offer-sort-help" id="offerSortHelp"></span>`}
@@ -564,7 +564,10 @@
       if (!platformHub) {
         state.domesticNetworkOnly = false;
         state.domesticPaymentOnly = false;
-      } else state.platformSlugs = null;
+      } else {
+        state.platformSlugs = null;
+        state.includeDiscontinued = false;
+      }
       multimodalNotice = "";
       platformShortcutNotice = "";
       if (!full) {
