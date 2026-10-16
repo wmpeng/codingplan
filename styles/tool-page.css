@@ -202,9 +202,10 @@ body.tool-page { padding: 0; }
 
 .tool-loading { min-height: 280px; display: grid; place-items: center; color: var(--text-secondary); font-size: 13px; }
 /* 平台中心：精选按钮、暂停筛选与统一卡片网格。 */
-.platform-hub-page .platform-filter-fields { min-width: 0; padding: 0; margin: 0; border: 0; }
+.platform-hub-page .platform-filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.platform-hub-page .platform-filter-fields { flex: 0 1 auto; min-width: 0; max-width: 100%; padding: 0; margin: 0; border: 0; }
 .platform-filter-fields legend { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.platform-featured-control { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+.platform-featured-control { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
 body .platform-hub-filters .platform-featured-button { min-height: 38px; padding: 8px 14px; border: 1px solid var(--border-color); border-radius: 8px; background: #fff; color: var(--text-secondary); font-size: 13px; font-weight: 500; text-decoration: none; cursor: pointer; }
 body .platform-hub-filters .platform-featured-button:hover:not(:disabled) { border-color: #a5b9d1; background: #f8fafc; }
 body .platform-hub-filters .platform-featured-button[aria-pressed="true"], body .platform-hub-filters .platform-featured-button[aria-pressed="true"]:hover { border-color: #78a2e5; background: #e8f0ff; color: #174e99; font-weight: 600; box-shadow: inset 0 0 0 1px #cbdcf5; }
