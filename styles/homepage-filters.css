@@ -335,6 +335,9 @@ body .range-picker-slider input::-webkit-slider-runnable-track { height: 4px; bo
 body .range-picker-slider input::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 18px; height: 18px; margin-top: -7px; border: 2px solid #4b5563; border-radius: 50%; background: #fff; }
 body .range-picker-slider input::-moz-range-track { height: 4px; border-radius: 4px; background: #e5e7eb; }
 body .range-picker-slider input::-moz-range-progress { height: 4px; border-radius: 4px; background: #4b5563; }
+body .range-picker-slider input[data-range-picker="token"]::-webkit-slider-runnable-track { background: linear-gradient(to right, #e5e7eb var(--range-fill, 0%), #4b5563 var(--range-fill, 0%)); }
+body .range-picker-slider input[data-range-picker="token"]::-moz-range-track { background: linear-gradient(to right, #e5e7eb var(--range-fill, 0%), #4b5563 var(--range-fill, 0%)); }
+body .range-picker-slider input[data-range-picker="token"]::-moz-range-progress { background: transparent; }
 body .range-picker-slider input::-moz-range-thumb { width: 14px; height: 14px; border: 2px solid #4b5563; border-radius: 50%; background: #fff; }
 body .range-picker-slider .range-picker-ticks { position: relative; height: 32px; margin: 0 9px; }
 body .range-picker-ticks button { position: absolute; left: var(--tick-position); transform: translateX(-50%); display: inline-flex; align-items: center; justify-content: center; min-width: 28px; min-height: 32px; padding: 0; border: 0; background: transparent; color: #4b5563; font: inherit; font-size: 12px; font-weight: 500; line-height: 1.5; white-space: nowrap; cursor: pointer; }
