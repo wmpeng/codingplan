@@ -7,7 +7,7 @@ const C = require(path.join(root,'scripts/featured-catalog.js'));
 const M = require(path.join(root,'scripts/model-comparison.js'));
 const P = require(path.join(root,'scripts/platform-catalog.js'));
 const config = read('config'), preset = read('model-comparison-presets');
-const ctx = E.buildContext(read('platforms'),read('plans'),read('models'),read('plan-models'));
+const ctx = E.buildContext(read('platforms'),read('plans'),read('models'));
 C.validate(preset,ctx);
 const esc = C.esc;
 const check = process.argv.includes('--check');

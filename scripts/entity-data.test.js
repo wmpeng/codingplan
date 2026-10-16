@@ -1,6 +1,35 @@
+const {fixtureContext} = require('./test-fixtures.cjs');
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const EntityData = require('./entity-data.js');
+
+test('nested public plans unfold parent identities without changing the document', () => {
+  const platforms = {schemaVersion:1,platforms:[{slug:'platform-a'}]};
+  const models = {schemaVersion:1,models:[{slug:'model-a'}]};
+  const doc = {schemaVersion:2,workload:{tokensPerRequest:120000},plans:[
+    {slug:'empty',platformSlug:'platform-a',planModels:[]},
+    {slug:'plan-a',platformSlug:'platform-a',planModels:[
+      {slug:'stable',modelSlug:'model-a',timeTier:'峰',usage:{monthlyTokenInM:0}},
+      {slug:'unknown',modelSlug:'model-a',timeTier:'谷',usage:{monthlyTokenInM:'unknown'}}
+    ]}
+  ]};
+  const before = JSON.stringify(doc);
+  const c = EntityData.buildContext(platforms,doc,models);
+  assert.deepEqual(c.plans.map(p=>p.slug),['empty','plan-a']);
+  assert.deepEqual(c.relationsByPlanSlug.get('empty') || [],[]);
+  assert.deepEqual(c.relationsByPlanSlug.get('plan-a').map(r=>r.slug),['stable','unknown']);
+  assert.ok(c.planModels.every(r=>r.planSlug==='plan-a'));
+  assert.ok(c.plans.every(p=>!Object.hasOwn(p,'planModels')));
+  assert.deepEqual(c.workload,doc.workload);
+  assert.equal(JSON.stringify(doc),before);
+  const conflict = structuredClone(doc);
+  conflict.plans[1].planModels[0].planSlug = 'wrong';
+  assert.throws(()=>EntityData.buildContext(platforms,conflict,models),/planSlug/);
+  assert.throws(()=>EntityData.buildContext(platforms,{...doc,schemaVersion:1},models),/schemaVersion/);
+  const missing = structuredClone(doc);
+  delete missing.plans[0].planModels;
+  assert.throws(()=>EntityData.buildContext(platforms,missing,models),/planModels/);
+});
 
 test('inventory ignores every billing tier while detailed rows retain all variants', () => {
   const context = fixture();
@@ -28,7 +57,7 @@ test('inventory ignores every billing tier while detailed rows retain all varian
 test('real catalogs keep bare identities and API platform cards do not duplicate peak rows', () => {
   const fs = require('node:fs');
   const path = require('node:path');
-  const docs = ['platforms','plans','models','plan-models'].map(name => JSON.parse(fs.readFileSync(path.join(__dirname, '..', `${name}.json`), 'utf8')));
+  const docs = ['platforms','plans','models'].map(name => JSON.parse(fs.readFileSync(path.join(__dirname, '..', `${name}.json`), 'utf8')));
   const context = EntityData.buildContext(...docs);
   for (const plan of EntityData.buildPlanCatalog(context)) {
     assert.deepEqual(plan.modelLabels, plan.supportedModels.map(model => context.modelBySlug.get(model.slug).name));
@@ -58,7 +87,7 @@ test('header counts use public platforms, active subscriptions and model identit
 });
 
 function fixture() {
-  return EntityData.buildContext(
+  return fixtureContext(
     { schemaVersion: 1, platforms: [{ slug: 'platform-a', name: '平台A' }] },
     { schemaVersion: 1, plans: [{ slug: 'plan-a', platformSlug: 'platform-a', name: 'Pro', billingMode: 'subscription', monthlyPrice: 10, currency: '$' }] },
     { schemaVersion: 1, models: [
@@ -94,7 +123,7 @@ test('builds comparison points without name-based joins', () => {
 });
 
 test('builds API pricing groups and keeps raw input cache output prices', () => {
-  const context = EntityData.buildContext(
+  const context = fixtureContext(
     { schemaVersion: 1, platforms: [{ slug: 'platform-a', name: '平台A' }] },
     { schemaVersion: 1, plans: [{ slug: 'platform-a-api', platformSlug: 'platform-a', name: '按量 API', billingMode: 'payg', note: '活动说明' }] },
     { schemaVersion: 1, models: [{ slug: 'model-a', name: 'Model A', multimodal: false }] },

@@ -1,3 +1,4 @@
+const {fixtureContext} = require('./test-fixtures.cjs');
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -19,7 +20,7 @@ function context() {
   const models = [{slug:'a',name:'A'},{slug:'b',name:'B'}];
   const planModels = plans.map(p=>({slug:p.slug+'-a',planSlug:p.slug,modelSlug:'a',usage:{monthlyTokenInM:100,unitPriceCnyPerM:1}}));
   planModels.push({slug:'go-b',planSlug:'go',modelSlug:'b',usage:{monthlyTokenInM:100}});
-  return E.buildContext(...[platforms,plans,models,planModels].map((items,i)=>({schemaVersion:1,[['platforms','plans','models','planModels'][i]]:items})));
+  return fixtureContext(...[platforms,plans,models,planModels].map((items,i)=>({schemaVersion:1,[['platforms','plans','models','planModels'][i]]:items})));
 }
 const all = patch => F.normalizeState({platformStatusMax:'delisted',includeDiscontinued:true,...patch});
 
@@ -50,8 +51,8 @@ test('能力仅用于展示，旧筛选状态不影响资格、视图投影或�
   assert.deepEqual(offers,F.matchingOffers(c,plain));
   assert.equal(Object.hasOwn(F.normalizeState(state),'harnessApiOnly'),false);
   const points=E.buildComparisonPoints(c,7,{includeUnknown:true});
-  assert.deepEqual(F.filterPoints(points,state,opts).map(x=>x.planSlug),[...expected,'go']);
-  assert.deepEqual(F.filterPoints(points,state).map(x=>x.planSlug),[...expected,'go']);
+  assert.deepEqual(F.filterPoints(points,state,opts).map(x=>x.planSlug),['inherit','go','go','opt-in','closed','unknown','api']);
+  assert.deepEqual(F.filterPoints(points,state).map(x=>x.planSlug),['inherit','go','go','opt-in','closed','unknown','api']);
   const plans=E.buildPlanCatalog(c,{includeHidden:true});
   assert.deepEqual(F.filterPlans(plans,state,opts).map(x=>x.slug),expected);
   assert.deepEqual(F.filterPlans(plans,state).map(x=>x.slug),expected);

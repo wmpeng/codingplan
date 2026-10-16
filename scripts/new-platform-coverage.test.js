@@ -7,7 +7,7 @@ const load = name => JSON.parse(fs.readFileSync(path.join(__dirname,'..',name),'
 const ids=['qoder-cn','qoder-intl','workbuddy','trae-cn','trae-intl'];
 test('new platforms have ordered plans, descriptions and model coverage',()=>{
   const platforms=load('platforms.json').platforms, plans=load('plans.json').plans;
-  const relations=load('plan-models.json').planModels;
+  const relations=plans.flatMap(p=>p.planModels.map(r=>({...r,planSlug:p.slug})));
   // Catalog ordering changes with later editorial updates; identity coverage does not.
   for (const slug of ids) assert.equal(platforms.filter(p=>p.slug===slug).length,1,slug);
   const selected=plans.filter(p=>ids.includes(p.platformSlug));

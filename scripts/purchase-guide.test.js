@@ -1,3 +1,4 @@
+const {fixtureContext} = require('./test-fixtures.cjs');
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const F = require("./filter-state.js"),
@@ -111,7 +112,7 @@ function fixture() {
     },
   ];
   const doc = (key, list) => ({ schemaVersion: 1, [key]: list });
-  const c = E.buildContext(
+  const c = fixtureContext(
     doc("platforms", platforms),
     doc("plans", plans),
     doc("models", models),
@@ -312,7 +313,6 @@ test("真实目录的推荐引用完整，AA无分数不冒充零，分组模型
     require("../platforms.json"),
     require("../plans.json"),
     require("../models.json"),
-    require("../plan-models.json"),
   );
   c.modelGroups = require("../model-comparison-presets.json").groups;
   for (const group of c.modelGroups.filter((x) =>

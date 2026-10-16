@@ -1,3 +1,4 @@
+const {fixtureContext} = require('./test-fixtures.cjs');
 const { describe, it } = require('node:test');
 const assert = require('node:assert/strict');
 const { buildDetailBodyHtml } = require('./platform-detail.js');
@@ -24,7 +25,7 @@ describe('buildDetailBodyHtml', () => {
   it('shows the complete model inventory including API-only models, deduplicates tiers and excludes discontinued plans', () => {
     const platform = samplePlatform();
     const models = Array.from({ length: 7 }, (_, index) => ({ slug: `m${index}`, name: `Model ${index}` }));
-    const entityContext = EntityData.buildContext({ schemaVersion: 1, platforms: [platform] }, { schemaVersion: 1, plans: [
+    const entityContext = fixtureContext({ schemaVersion: 1, platforms: [platform] }, { schemaVersion: 1, plans: [
       { slug: 'lite', platformSlug: 'demo', name: 'Lite', billingMode: 'subscription' },
       { slug: 'pro', platformSlug: 'demo', name: 'Pro', billingMode: 'subscription' },
       { slug: 'api', platformSlug: 'demo', name: 'API', billingMode: 'payg', planTableVisible: false },

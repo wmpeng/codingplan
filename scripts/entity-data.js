@@ -5,9 +5,9 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
 
-  function collection(documentValue, key) {
-    if (!documentValue || documentValue.schemaVersion !== 1 || !Array.isArray(documentValue[key])) {
-      throw new Error(`${key}.json must contain schemaVersion=1 and ${key}[]`);
+  function collection(documentValue, key, version = 1) {
+    if (!documentValue || documentValue.schemaVersion !== version || !Array.isArray(documentValue[key])) {
+      throw new Error(`${key}.json must contain schemaVersion=${version} and ${key}[]`);
     }
     return documentValue[key];
   }
@@ -58,11 +58,19 @@
     return supportedModels(context, context.plans.filter(plan => plan.platformSlug === platformSlug && !plan.discontinued));
   }
 
-  function buildContext(platformDoc, planDoc, modelDoc, planModelDoc) {
+  function buildContext(platformDoc, planDoc, modelDoc) {
     const platforms = collection(platformDoc, 'platforms');
-    const plans = collection(planDoc, 'plans');
+    const catalogue = collection(planDoc, 'plans', 2);
+    const plans = [], planModels = [];
+    for (const {planModels: relations, ...plan} of catalogue) {
+      if (!Array.isArray(relations)) throw new Error(`plan ${plan.slug} must contain planModels[]`);
+      plans.push(plan);
+      for (const relation of relations) {
+        if (Object.hasOwn(relation, 'planSlug')) throw new Error(`nested relation ${relation.slug} must not contain planSlug; inherit the parent plan`);
+        planModels.push({...relation, planSlug: plan.slug});
+      }
+    }
     const models = collection(modelDoc, 'models');
-    const planModels = collection(planModelDoc, 'planModels');
     const platformBySlug = new Map(platforms.map((item) => [item.slug, item]));
     const planBySlug = new Map(plans.map((item) => [item.slug, item]));
     const modelBySlug = new Map(models.map((item) => [item.slug, item]));
@@ -71,7 +79,7 @@
       if (!relationsByPlanSlug.has(relation.planSlug)) relationsByPlanSlug.set(relation.planSlug, []);
       relationsByPlanSlug.get(relation.planSlug).push(relation);
     });
-    return { workload: planModelDoc.workload, platforms, plans, models, planModels, platformBySlug, planBySlug, modelBySlug, relationsByPlanSlug };
+    return { workload: planDoc.workload, platforms, plans, models, planModels, platformBySlug, planBySlug, modelBySlug, relationsByPlanSlug };
   }
 
   function listPlatforms(context, options) {
