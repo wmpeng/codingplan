@@ -301,6 +301,7 @@ body #homeStatusPicker .filter-picker-tools { grid-template-columns: minmax(0, 1
 body #homeStatusPicker .filter-picker-menu label { display: flex; min-height: 40px; color: var(--text-primary); font-weight: 400; cursor: pointer; }
 body #homeStatusPicker .filter-picker-menu label:has(input:checked) { background: #f3f4f6; }
 body #homeStatusPicker .status-picker-history { display: grid; gap: 2px; border-top: 1px solid var(--border-color); margin-top: 6px; padding-top: 6px; }
+body .platform-hub-filters #homeStatusPicker .status-picker-history { border-top: 0; margin-top: 0; padding-top: 0; }
 body #homeStatusPicker .filter-picker-menu label:hover, body #homeStatusPicker .filter-picker-menu label:focus-within { background: #e5e7eb; }
 body #homeStatusPicker input:focus-visible { outline: 2px solid #6b7280; outline-offset: 3px; }
 @media (max-width: 800px) {
