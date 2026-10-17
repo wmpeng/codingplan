@@ -28,7 +28,7 @@ test('套餐状态筛选仅使用套餐字段，平台状态和旧参数不能�
   }
 });
 
-test('套餐状态与预算、用量、模型、平台名单共同匹配，其他页面仍保留原有两层状态', () => {
+test('套餐状态与预算、用量、模型、平台名单共同匹配，未启用套餐范围时仍保留两层状态', () => {
   const context=fixture(),plans=Entity.buildPlanCatalog(context);
   const state={planStatusOnly:true,includeDiscontinued:true,platformSlugs:['delisted'],modelSlugs:['m'],
     budgetCny:{max:10},monthlyTokenRange:{min:100},excludedPlanStatuses:['restricted']};
@@ -48,6 +48,26 @@ test('套餐状态字段规范化、克隆和默认值不污染平台状态条�
   assert.deepEqual(Filters.createDefaultState({}).excludedPlanStatuses,[]);
   state.excludedPlanStatuses.push('delisted');
   assert.equal(input.excludedPlanStatuses.length,4);
+});
+
+test('价格点按最终套餐状态筛选，订阅与按量 API 在完整上下文和独立点模式结果一致', () => {
+  const context=fixture();
+  for(const plan of context.plans) {
+    if(plan.platformSlug==='restricted') plan.billingMode='payg';
+    for(const row of context.relationsByPlanSlug.get(plan.slug)) row.usage.unitPriceCnyPerM=2;
+  }
+  const points=Entity.buildComparisonPoints(context,7,{includeUnknown:true}).map(point=>({
+    ...point,platformStatus:context.platformBySlug.get(point.platformSlug).platformStatus
+  }));
+  assert.ok(points.some(p=>p.billingMode==='payg'));
+  for(const includeDiscontinued of [false,true]) for(const excludedPlanStatuses of [[],['restricted']]) {
+    const state={planStatusOnly:true,includeDiscontinued,excludedPlanStatuses,
+      platformStatusMax:'open',excludedPlatformStatuses:['restricted']};
+    const expected=points.filter(p=>(includeDiscontinued||p.planStatus!=='delisted')&&!excludedPlanStatuses.includes(p.planStatus)).map(p=>p.slug);
+    for(const options of [{context},{}]) {
+      assert.deepEqual(Filters.filterPoints(points,state,options).map(p=>p.slug),expected);
+    }
+  }
 });
 
 test('浏览完整套餐目录保留没有模型明细的套餐，模型全选与清空均不产生隐藏门槛', () => {

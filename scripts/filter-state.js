@@ -290,7 +290,7 @@
     const modelGroups = new Map();
     if (current.modelSlugs?.length && current.modelMatch === 'all') {
       (points || []).forEach(point => {
-        if (!current.includeDiscontinued && point.planStatus === 'delisted') return;
+        if (!planStatusMatches(point, current)) return;
         if (current.monthlyTokenRange && point.billingMode !== 'payg' && !tokenInRange(point.monthlyTokenInM, current.monthlyTokenRange)) return;
         const key = `${point.platformSlug || ''}::${point.billingMode || ''}::${point.planSlug || ''}`;
         if (!modelGroups.has(key)) modelGroups.set(key, new Set());
@@ -300,10 +300,10 @@
     return (points || []).filter(point => {
       if (current.apiOnly && point.billingMode !== 'payg') return false;
       if (current.harnessApiRequired && point.supportsHarnessApi !== true) return false;
-      if (!current.includeDiscontinued && point.planStatus === 'delisted') return false;
+      if (!planStatusMatches(point, current)) return false;
       if (!selectedMatch(point.platformSlug, current.platformSlugs)) return false;
       const platform = opts.context?.platformBySlug?.get(point.platformSlug) || point;
-      if (!platformStatusMatches(platform, current)) return false;
+      if (!current.planStatusOnly && !platformStatusMatches(platform, current)) return false;
       if (!selectedMatch(point.modelSlug, current.modelSlugs)) return false;
       if (current.monthlyTokenRange && point.billingMode !== 'payg' && !tokenInRange(point.monthlyTokenInM, current.monthlyTokenRange)) return false;
       if (point.billingMode === 'payg' && current.monthlyTokenRange && current.budgetCny && !inRange(apiCost(point, current), current.budgetCny)) return false;
