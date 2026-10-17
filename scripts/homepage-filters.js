@@ -521,8 +521,11 @@
       const statusPicker = host.querySelector('#homeStatusPicker');
       if (statusPicker) {
         const excluded = state.excludedPlatformStatuses;
-        statusPicker.querySelector('[data-status-label]').textContent = excluded.length ? statusExclusions[excluded[0]] : "不限";
-        statusPicker.querySelector('summary').setAttribute('aria-label', `购买状态：${excluded.map(status => statusExclusions[status]).join('、') || '不限'}`);
+        const labels = excluded.map(status => statusExclusions[status]);
+        if (platformHub && state.platformStatusMax === "delisted") labels.push("含已下架");
+        const label = labels.join('、') || "不限";
+        statusPicker.querySelector('[data-status-label]').textContent = label;
+        statusPicker.querySelector('summary').setAttribute('aria-label', `购买状态：${label}`);
         statusPicker.querySelectorAll('[data-status-exclude]').forEach(el => { el.checked = excluded.includes(el.dataset.statusExclude); });
       }
       const factor = root.NumberDisplay.tokenFactor(state.tokenUnit);
