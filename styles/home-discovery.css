@@ -36,6 +36,11 @@ body.models-page .model-card.is-pinned { border-color: #a5b9d1; }
 .models-page #modelControls { position: relative; top: auto; margin-bottom: 16px; }
 .models-page #modelControls:has(details[open]) { z-index: 35; }
 .models-page .model-result-bar { margin-top: 0; }
+.models-page .model-filter-fields { margin: 0; padding: 0; border: 0; min-width: 0; }
+.models-page .model-filter-fields.is-paused { opacity: .6; filter: grayscale(1); pointer-events: none; }
+.models-page .model-featured-controls { display: flex; flex-wrap: wrap; gap: 8px; max-width: 100%; }
+.models-page .model-footer-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-left: auto; max-width: 100%; }
+.models-page #modelSearch:disabled { background: var(--bg-tertiary); color: var(--text-secondary); opacity: .6; cursor: not-allowed; }
 .model-modality { color:#64748b;font-size:12px;margin:10px 0 16px; }
 .model-scores { display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:#64748b;margin-bottom:16px; }
 .model-score strong { color:#1c3659;font-size:17px; }

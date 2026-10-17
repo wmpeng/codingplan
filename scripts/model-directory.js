@@ -16,10 +16,12 @@
   function select(models, groups, state = {}, pins = []) {
     const pinned = new Set(sanitizePins(pins, models));
     const featured = new Set(groups.filter(group => group.enabled !== false).flatMap(group => group.modelSlugs || []));
-    const group = groups.find(group => group.id === state.group);
+    const enabledGroups = groups.filter(group => group.enabled !== false);
+    const group = enabledGroups.find(group => group.id === state.featuredMode);
+    const modeSlugs = state.featuredMode === 'all' ? featured : group ? new Set(group.modelSlugs) : null;
     const query = String(state.query || '').trim().toLocaleLowerCase();
-    const matched = models.filter(model => (!query || `${model.name} ${model.slug}`.toLocaleLowerCase().includes(query))
-      && (!group || group.modelSlugs.includes(model.slug)) && (!state.image || model.modalities?.input?.includes('image')));
+    const matched = models.filter(model => modeSlugs ? modeSlugs.has(model.slug)
+      : (!query || `${model.name} ${model.slug}`.toLocaleLowerCase().includes(query)) && (!state.multimodal || model.multimodal === true));
     const matchedIds = new Set(matched.map(model => model.slug));
     const order = new Map(models.map((model, index) => [model.slug, index]));
     const rank = model => pinned.has(model.slug) ? 0 : featured.has(model.slug) ? 1 : 2;
@@ -35,8 +37,12 @@
       }
       return order.get(a.slug) - order.get(b.slug);
     });
-    return {visible, featured, pinned, matchedCount: matched.length};
+    return {visible, featured, pinned, matchedCount: matched.length, featuredMode: !!modeSlugs,
+      extraPinnedCount: [...pinned].filter(slug => !matchedIds.has(slug)).length};
   }
-  function countLabel(selection) { return `符合条件 ${selection.matchedCount} 个` + (selection.pinned.size ? ` · 置顶 ${selection.pinned.size} 个` : ''); }
+  function countLabel(selection) {
+    const pins = selection.featuredMode ? selection.extraPinnedCount : selection.pinned.size;
+    return `${selection.featuredMode ? '精选' : '符合条件'} ${selection.matchedCount} 个` + (pins ? ` · 置顶 ${pins} 个` : '');
+  }
   return {select, countLabel, sanitizePins, readPins, writePins, pinKey};
 });

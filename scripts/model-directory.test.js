@@ -5,8 +5,8 @@ const Catalog = require('./featured-catalog');
 const models = [
   {slug:'ordinary',name:'A',scores:{artificialAnalysis:{score:100},deepSWE:{score:50}}},
   {slug:'featured-b',name:'C',scores:{artificialAnalysis:{score:5},deepSWE:{score:20}}},
-  {slug:'pinned',name:'Z',scores:{artificialAnalysis:{score:1}},modalities:{input:['text']}},
-  {slug:'featured-a',name:'B',scores:{artificialAnalysis:{score:10},deepSWE:{score:30}},modalities:{input:['image']}},
+  {slug:'pinned',name:'Z',scores:{artificialAnalysis:{score:1}},multimodal:false,modalities:{input:['text']}},
+  {slug:'featured-a',name:'B',scores:{artificialAnalysis:{score:10},deepSWE:{score:30}},multimodal:true,modalities:{input:['image']}},
   {slug:'unknown',name:'D',scores:{}}
 ];
 const groups = [{id:'featured',enabled:true,modelSlugs:['featured-a','featured-b']},{id:'disabled',enabled:false,modelSlugs:['ordinary']}];
@@ -16,11 +16,33 @@ test('所有排序始终置顶、精选、普通优先，默认保留目录顺�
   for(const sort of ['name','artificialAnalysis','deepSWE']) assert.deepEqual(ids(sort),['pinned','featured-a','featured-b','ordinary','unknown']);
   assert.deepEqual(models.map(model=>model.slug),['ordinary','featured-b','pinned','featured-a','unknown']);
 });
-test('置顶绕过搜索分组和图片条件，不计入匹配数，重复和失效置顶去除', () => {
-  const empty=Directory.select(models,groups,{query:'missing',group:'featured',image:true},['pinned','pinned','missing']);
+test('置顶绕过搜索和多模态条件，不计入匹配数，重复和失效置顶去除', () => {
+  const empty=Directory.select(models,groups,{query:'missing',multimodal:true},['pinned','pinned','missing']);
   assert.deepEqual(empty.visible.map(model=>model.slug),['pinned']);
   assert.equal(empty.matchedCount,0);assert.equal(Directory.countLabel(empty),'符合条件 0 个 · 置顶 1 个');
-  assert.deepEqual(Directory.select(models,groups,{group:'featured',image:true},['pinned']).visible.map(model=>model.slug),['pinned','featured-a']);
+  assert.deepEqual(Directory.select(models,groups,{multimodal:true},['pinned']).visible.map(model=>model.slug),['pinned','featured-a']);
+});
+
+test('精选模式互斥且忽略搜索与多模态，保留置顶、去重并仅统计额外置顶', () => {
+  const grouped=[{id:'high-volume-models',modelSlugs:['featured-a']},{id:'sota-models',modelSlugs:['featured-b']},groups[1]];
+  const all=Directory.select(models,grouped,{featuredMode:'all',query:'missing',multimodal:true},['pinned','featured-a']);
+  assert.deepEqual(all.visible.map(model=>model.slug),['pinned','featured-a','featured-b']);
+  assert.equal(Directory.countLabel(all),'精选 2 个 · 置顶 1 个');
+  for(const [mode,slug] of [['high-volume-models','featured-a'],['sota-models','featured-b']]) {
+    const selection=Directory.select(models,grouped,{featuredMode:mode,query:'missing',multimodal:true},['ordinary']);
+    assert.deepEqual(selection.visible.map(model=>model.slug),['ordinary',slug]);
+    assert.equal(Directory.countLabel(selection),'精选 1 个 · 置顶 1 个');
+  }
+  assert.equal(Directory.select(models,grouped,{featuredMode:'disabled'}).featuredMode,false);
+  assert.equal(Directory.select(models,grouped,{featuredMode:''}).visible.length,models.length);
+});
+
+test('多模态沿用实体布尔字段，包含非图片的音频或输出能力，未知不计入', () => {
+  const modes=[{slug:'audio',name:'音频',multimodal:true,modalities:{input:['text','audio']}},
+    {slug:'output',name:'输出',multimodal:true,modalities:{input:['text'],output:['text','audio']}},
+    {slug:'legacy',name:'已确认',multimodal:true,modalities:null},
+    {slug:'text',name:'文本',multimodal:false},{slug:'unknown',name:'未知',multimodal:'unknown'}];
+  assert.deepEqual(Directory.select(modes,[],{multimodal:true}).visible.map(model=>model.slug),['audio','output','legacy']);
 });
 test('模型置顶独立持久化，失效值和存储失败不会破坏目录', () => {
   const values=new Map(),storage={getItem:key=>values.get(key),setItem:(key,value)=>values.set(key,value)};

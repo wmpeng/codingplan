@@ -5,12 +5,18 @@
     try {
       const [{context}, preset] = await Promise.all([root.CodingPlanToolPage.load(), root.CodingPlanToolPage.loadPreset()]);
       Catalog.validate(preset, context);
-      const search = document.getElementById('modelSearch'), group = document.getElementById('modelGroup');
-      const sort = document.getElementById('modelSort'), image = document.getElementById('modelImage');
-      const pickers = [root.CodingPlanSingleSelect.mount(group, '分组'), root.CodingPlanSingleSelect.mount(sort, '排序')];
+      const search = document.getElementById('modelSearch'), sort = document.getElementById('modelSort');
+      const multimodal = document.getElementById('modelMultimodal'), fields = document.getElementById('modelFilterFields');
+      const reset = document.getElementById('modelReset'), buttons = [...document.querySelectorAll('[data-model-featured]')];
+      const picker = root.CodingPlanSingleSelect.mount(sort, '排序');
+      let featuredMode = '';
       let pins = Directory.readPins(root.localStorage, context.models);
       function render() {
-        const selection = Directory.select(context.models, preset.groups, {query:search.value, group:group.value, sort:sort.value, image:image.checked}, pins);
+        const selection = Directory.select(context.models, preset.groups, {query:search.value, featuredMode, sort:sort.value, multimodal:multimodal.checked}, pins);
+        fields.disabled = selection.featuredMode; fields.inert = selection.featuredMode;
+        fields.classList.toggle('is-paused', selection.featuredMode);
+        search.disabled = selection.featuredMode; reset.disabled = selection.featuredMode;
+        buttons.forEach(button => { button.disabled = false; button.setAttribute('aria-pressed', String(button.dataset.modelFeatured === featuredMode)); });
         host.innerHTML = selection.visible.length ? selection.visible.map(model => Catalog.modelCard(model, context, {
           directory:true, featured:selection.featured.has(model.slug), pinned:selection.pinned.has(model.slug)
         })).join('') : '<p class="tool-empty">没有匹配模型，试着清空搜索或减少条件。</p>';
@@ -19,9 +25,12 @@
       }
       document.getElementById('modelControls').addEventListener('input', render);
       search.addEventListener('input', render);
-      document.getElementById('modelReset').addEventListener('click', () => {
-        search.value = ''; group.value = 'all'; sort.value = 'default'; image.checked = false;
-        pickers.forEach(picker => { picker.sync(); picker.close(); }); render();
+      buttons.forEach(button => button.addEventListener('click', () => {
+        featuredMode = featuredMode === button.dataset.modelFeatured ? '' : button.dataset.modelFeatured; render();
+      }));
+      reset.addEventListener('click', () => {
+        search.value = ''; featuredMode = ''; sort.value = 'default'; multimodal.checked = false;
+        picker.sync(); picker.close(); render();
       });
       host.addEventListener('click', event => {
         const button = event.target.closest('[data-model-pin]'); if (!button) return;

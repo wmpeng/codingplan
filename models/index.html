@@ -9,7 +9,7 @@
 <meta name="description" content="浏览 AI 模型目录，比较 AA 与 DeepSWE 评分、输入模态，查找支持平台、套餐与按量 API 价格。">
 <link rel="canonical" href="https://codingplan.fyi/models/">
 <link rel="icon" href="/favicon.ico?v=260924a">
-<link rel="stylesheet" href="/styles/shared.css?v=482edb170c"><link rel="stylesheet" href="/styles/tool-page.css?v=65d0127e93"><link rel="stylesheet" href="/styles/home-discovery.css?v=ea9a00968d"><link rel="stylesheet" href="/styles/design-system.css?v=b1b4d6c8fe"><link rel="stylesheet" href="/styles/homepage-filters.css?v=770e506ff4">
+<link rel="stylesheet" href="/styles/shared.css?v=482edb170c"><link rel="stylesheet" href="/styles/tool-page.css?v=65d0127e93"><link rel="stylesheet" href="/styles/home-discovery.css?v=c5989466f8"><link rel="stylesheet" href="/styles/design-system.css?v=b1b4d6c8fe"><link rel="stylesheet" href="/styles/homepage-filters.css?v=529fcaac23">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"AI 模型目录与能力对比","url":"https://codingplan.fyi/models/","inLanguage":"zh-CN"}</script>
 <script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
@@ -62,11 +62,17 @@
 <section id="allModels" aria-label="模型目录">
 <section id="modelControls" class="filter-state-bar surface-panel" aria-label="模型筛选">
   <div class="filter-state-grid">
-    <label data-select-fallback>分组<select id="modelGroup" aria-label="分组"><option value="all">全部模型</option><option value="high-volume-models">甜品级</option><option value="sota-models">顶尖与前沿</option></select></label>
-    <label data-select-fallback>排序<select id="modelSort" aria-label="排序"><option value="default">默认</option><option value="name">名称</option><option value="artificialAnalysis">AA</option><option value="deepSWE">DeepSWE</option></select></label>
-    <label class="model-image-filter"><input id="modelImage" type="checkbox">支持图片输入</label>
+    <fieldset id="modelFilterFields" class="model-filter-fields" aria-label="模型条件"><label class="model-multimodal-filter"><input id="modelMultimodal" type="checkbox">支持多模态</label></fieldset>
+    <div class="model-featured-controls" role="group" aria-label="精选模型">
+      <button type="button" class="model-featured-button" data-model-featured="all" aria-pressed="false" disabled>全部精选</button>
+      <button type="button" class="model-featured-button" data-model-featured="high-volume-models" aria-pressed="false" disabled>仅甜品级</button>
+      <button type="button" class="model-featured-button" data-model-featured="sota-models" aria-pressed="false" disabled>仅头部级</button>
+    </div>
   </div>
-  <div class="filter-state-footer"><div class="filter-state-actions"><button type="button" id="modelReset" data-filter-action="reset">重置筛选</button></div></div>
+  <div class="filter-state-footer"><div class="model-footer-controls">
+    <label data-select-fallback>排序<select id="modelSort" aria-label="排序"><option value="default">默认</option><option value="name">名称</option><option value="artificialAnalysis">AA</option><option value="deepSWE">DeepSWE</option></select></label>
+    <div class="filter-state-actions"><button type="button" id="modelReset" data-filter-action="reset">重置筛选</button></div>
+  </div></div>
 </section>
 <div class="tool-result-bar model-result-bar"><input type="search" id="modelSearch" placeholder="搜索模型名称" aria-label="搜索模型"><span id="modelCount" class="tool-count" role="status">符合条件 155 个</span></div>
 <div id="modelDirectory" class="model-grid"><!-- MODEL_DIRECTORY_START -->
@@ -228,5 +234,5 @@
 <!-- MODEL_DIRECTORY_END --></div>
 </section>
 <footer class="tool-footer"><span>评分配置与来源见分数旁的链接；套餐支持情况与模型能力分开判断。</span><a href="/">返回首页</a></footer></main>
-<script src="/scripts/entity-data.js?v=058802c902"></script><script src="/scripts/tool-page.js?v=fbb793f0db"></script><script src="/scripts/featured-catalog.js?v=20d59f0c6b"></script><script src="/scripts/model-directory.js?v=99a6ac5d18"></script><script src="/scripts/ui-single-select.js?v=3d1b7eb76d"></script><script src="/scripts/models-page.js?v=77926e508a"></script>
+<script src="/scripts/entity-data.js?v=058802c902"></script><script src="/scripts/tool-page.js?v=fbb793f0db"></script><script src="/scripts/featured-catalog.js?v=20d59f0c6b"></script><script src="/scripts/model-directory.js?v=f02e568662"></script><script src="/scripts/ui-single-select.js?v=b5ae21dd75"></script><script src="/scripts/models-page.js?v=8ca37421fb"></script>
 </body></html>

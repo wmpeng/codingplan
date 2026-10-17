@@ -27,6 +27,9 @@
       if (!picker.open) return;
       document.querySelectorAll('.single-select-picker[open]').forEach(other => { if (other !== picker) other.open = false; }); position();
     });
+    summary.addEventListener('click', event => {
+      event.preventDefault(); picker.open = !picker.open; if (picker.open) position();
+    });
     summary.addEventListener('keydown', event => {
       if (!['ArrowDown','ArrowUp'].includes(event.key)) return;
       event.preventDefault(); picker.open = true; position();
