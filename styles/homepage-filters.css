@@ -583,6 +583,18 @@ body .offer-sort-help { position: absolute; width: 1px; height: 1px; padding: 0;
 }
 
 /* 筛选：统一表单外观，并保持菜单的定位、滚动与完成操作。 */
+body .platform-hub-filters .platform-featured-button {
+  display: inline-flex; align-items: center; justify-content: center; min-height: var(--control-height);
+  padding: 8px 12px; border: 1px solid #e4d1b2; border-radius: var(--radius-md);
+  background: #fffaf2; color: #946c35; font: inherit; font-size: 13px; font-weight: 500; line-height: 1.6;
+  white-space: nowrap; text-decoration: none; cursor: pointer;
+  transition: border-color .15s, background .15s, color .15s;
+}
+body .platform-hub-filters .platform-featured-button:hover:not(:disabled) { border-color: #d3bd98; background: #fff5e5; color: #805c2e; }
+body .platform-hub-filters .platform-featured-button[aria-pressed="true"], body .platform-hub-filters .platform-featured-button[aria-pressed="true"]:hover { border-color: #c7a06a; background: #ffefd5; color: #765022; box-shadow: inset 0 0 0 1px #e9cfa7; }
+body .platform-hub-filters .platform-featured-button:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
+body .platform-hub-filters .platform-access-filter { display: inline-flex; gap: 8px; align-items: center; min-height: var(--control-height); padding: 0 10px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 13px; cursor: pointer; }
+body .platform-hub-filters .platform-access-filter input { accent-color: var(--accent-primary); margin: 0; }
 body .filter-state-bar { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; box-shadow: none; }
 body .filter-state-label { color: var(--text-primary); font-size: 14px; font-weight: 600; }
 body .filter-state-chip { border: 0; border-radius: 4px; background: var(--bg-tertiary); color: var(--text-secondary); font-size: 12px; padding: 4px 8px; }
@@ -601,6 +613,7 @@ body .filter-state-actions button { border-color: var(--border-color); border-ra
 body .filter-inline input[type="checkbox"] { width: 16px; }
 
 @media (max-width: 800px), (pointer: coarse) {
+  body .platform-hub-filters :is(.platform-featured-button, .platform-access-filter) { min-height: 44px; }
   :is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary,
   :is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu input[type="search"] { min-height: 44px; }
   body .filter-checks .filter-inline { min-height: 44px; }
