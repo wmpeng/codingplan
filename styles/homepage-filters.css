@@ -479,7 +479,6 @@ body :is(#homePlatformPicker, #homeModelPicker) label[data-filter-option] span {
 body #homeModelPicker input[type="checkbox"] { width: 16px; height: 16px; margin: 0; accent-color: var(--accent-primary); }
 body #homeModelPicker input[type="checkbox"]:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
 body .model-preset-options { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin: 0 0 12px; }
-body .model-preset-label { padding-left: 8px; color: var(--text-secondary); font-size: 13px; white-space: nowrap; }
 body .model-preset-segments { display: flex; align-items: center; gap: 2px; max-width: 100%; padding: 3px; border-radius: var(--radius-md); background: var(--bg-tertiary); }
 body .model-preset-options button { min-width: 0; min-height: 32px; padding: 4px 12px; border: 1px solid transparent; border-radius: var(--radius-sm); background: transparent; color: var(--text-secondary); font: inherit; font-size: 13px; line-height: 1.5; cursor: pointer; }
 body .model-preset-options button:hover { background: var(--accent-soft); color: var(--text-primary); }
@@ -576,7 +575,6 @@ body .offer-sort-help { position: absolute; width: 1px; height: 1px; padding: 0;
 }
 
 @media (max-width: 380px) {
-  body .model-preset-label { padding-left: 4px; }
   body .model-preset-options { column-gap: 8px; }
   body .home-filter-panel #homeBudgetPicker, body .home-filter-panel #homeTokenPicker { grid-column: 1 / -1; }
   body .home-filter-panel #homeBudgetPicker, body .home-filter-panel #homeTokenPicker { flex-basis: 100%; }
