@@ -166,10 +166,11 @@
   }
 
   const statusExclusions = { restricted: "排除购买受限平台" };
-  function buildStatusPicker(includeHistory = false, includePlanHistory = includeHistory) {
+  const planStatusExclusions = { restricted: "排除购买受限套餐" };
+  function buildStatusPicker(includeHistory = false, includePlanHistory = includeHistory, planStatusOnly = false) {
     return `<details class="filter-picker status-picker" id="homeStatusPicker">
       <summary aria-label="购买状态"><span class="status-picker-title">购买状态</span><span data-status-label>不限</span></summary>
-      <div class="filter-picker-menu" role="group" aria-label="${includeHistory ? "购买状态筛选" : "排除购买状态"}"><div class="filter-picker-tools"><button type="button" data-clear-status aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}</span></label>`).join("")}${includeHistory ? `<div class="status-picker-history"><label><input type="checkbox" data-include-delisted><span>包含已下架平台</span></label>${includePlanHistory ? '<label><input type="checkbox" data-filter-field="includeDiscontinued"><span>包含已下架套餐</span></label>' : ''}</div>` : ""}</div>
+      <div class="filter-picker-menu" role="group" aria-label="${includeHistory ? "购买状态筛选" : "排除购买状态"}"><div class="filter-picker-tools"><button type="button" data-clear-status aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(planStatusOnly ? planStatusExclusions : statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}</span></label>`).join("")}${includeHistory ? `<div class="status-picker-history">${planStatusOnly ? '' : '<label><input type="checkbox" data-include-delisted><span>包含已下架平台</span></label>'}${includePlanHistory ? '<label><input type="checkbox" data-filter-field="includeDiscontinued"><span>包含已下架套餐</span></label>' : ''}</div>` : ""}</div>
     </details>`;
   }
   let presetPromise;
@@ -188,6 +189,7 @@
     const opts = options || {},
       full = opts.mode === "full",
       pricing = full && opts.view === "pricing",
+      plansPage = full && opts.view === "plans",
       platformHub = full && opts.view === "platforms",
       monitor = full && opts.view === "monitor",
       purchaseTool = full && !monitor;
@@ -210,6 +212,11 @@
     if (purchaseTool) {
       state.platformStatusMax = "restricted";
       state.includeDiscontinued = false;
+    }
+    if (plansPage) {
+      state.planStatusOnly = true;
+      state.platformStatusMax = "delisted";
+      state.excludedPlatformStatuses = [];
     }
     const defaults = Filters.cloneState(state);
     let featuredOnly = false;
@@ -333,7 +340,7 @@
           ? ""
           : `${buildRangePicker("budget", state)}${buildRangePicker("token", state)}`
       }
-      ${!monitor ? buildStatusPicker(purchaseTool, purchaseTool && !platformHub) : ""}
+      ${!monitor ? buildStatusPicker(purchaseTool, purchaseTool && !platformHub, plansPage) : ""}
       ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-platform-domestic>支持中国大陆</label>' : ""}</div>
       ${platformHub ? '<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-platform-featured aria-pressed="false">显示精选平台</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>' : ""}
       <div class="filter-state-footer">
@@ -520,9 +527,13 @@
       }
       const statusPicker = host.querySelector('#homeStatusPicker');
       if (statusPicker) {
-        const excluded = state.excludedPlatformStatuses;
-        const labels = excluded.map(status => statusExclusions[status]);
-        if (platformHub && state.platformStatusMax === "delisted") labels.push("含已下架");
+        const excluded = plansPage ? state.excludedPlanStatuses : state.excludedPlatformStatuses;
+        const labels = excluded.map(status => (plansPage ? planStatusExclusions : statusExclusions)[status]);
+        const hasPlatforms = !!includeDelisted && state.platformStatusMax === "delisted";
+        const hasPlans = !!statusPicker.querySelector('[data-filter-field="includeDiscontinued"]') && state.includeDiscontinued;
+        if (hasPlatforms && hasPlans) labels.push("含下架平台及套餐");
+        else if (hasPlatforms) labels.push(platformHub ? "含已下架" : "含下架平台");
+        else if (hasPlans) labels.push("含下架套餐");
         const label = labels.join('、') || "不限";
         statusPicker.querySelector('[data-status-label]').textContent = label;
         statusPicker.querySelector('summary').setAttribute('aria-label', `购买状态：${label}`);
@@ -574,6 +585,11 @@
       positionSelectionPanels();
     }
     function publish(source = "manual") {
+      state.planStatusOnly = plansPage;
+      if (plansPage) {
+        state.platformStatusMax = "delisted";
+        state.excludedPlatformStatuses = [];
+      } else state.excludedPlanStatuses = [];
       if (!["init", "catalog", "display"].includes(source)) initialPresetPending = false;
       state.imageRequired = false;
       if (!platformHub) {
@@ -663,7 +679,7 @@
         state.domesticNetworkOnly = state.domesticPaymentOnly = el.checked;
         publish();
       } else if (el.matches("[data-status-exclude]")) {
-        state.excludedPlatformStatuses = [...host.querySelectorAll('[data-status-exclude]:checked')].map(input => input.dataset.statusExclude);
+        state[plansPage ? 'excludedPlanStatuses' : 'excludedPlatformStatuses'] = [...host.querySelectorAll('[data-status-exclude]:checked')].map(input => input.dataset.statusExclude);
         publish();
       } else if (el.matches("[data-include-delisted]")) {
         state.platformStatusMax = el.checked ? "delisted" : "restricted";
@@ -746,7 +762,7 @@
         else state.monthlyTokenRange = value == null ? null : { min: value, max: null };
       }
       else if (el.hasAttribute("data-clear-status")) {
-        state.excludedPlatformStatuses = [];
+        state[plansPage ? 'excludedPlanStatuses' : 'excludedPlatformStatuses'] = [];
       } else if (el.dataset.filterAction === "reset") {
         controller.reset();
         return;

@@ -15,6 +15,8 @@
     tokenUnit: 'yi',
     platformStatusMax: 'restricted',
     excludedPlatformStatuses: [],
+    excludedPlanStatuses: [],
+    planStatusOnly: false,
     includeDiscontinued: false,
     priceRanges: {},
     requestRanges: {},
@@ -89,6 +91,8 @@
       budgetCny: cloneRange(input.budgetCny === undefined ? base.budgetCny : input.budgetCny),
       platformStatusMax: STATUS_RANK[platformStatusMax] === undefined ? base.platformStatusMax : platformStatusMax,
       excludedPlatformStatuses: [...new Set((arrayOrNull(input.excludedPlatformStatuses) || []).map(normalizeStatus).filter(status => status === 'restricted'))],
+      excludedPlanStatuses: [...new Set((arrayOrNull(input.excludedPlanStatuses) || []).map(normalizeStatus).filter(status => status === 'restricted'))],
+      planStatusOnly: input.planStatusOnly === true,
       includeDiscontinued: input.includeDiscontinued === undefined ? base.includeDiscontinued : input.includeDiscontinued === true,
       priceRanges: normalizeRangeMap(input.priceRanges === undefined ? base.priceRanges : input.priceRanges),
       requestRanges: normalizeRangeMap(input.requestRanges === undefined ? base.requestRanges : input.requestRanges),
@@ -151,6 +155,12 @@
       && !state.excludedPlatformStatuses.includes(status);
   }
 
+  function planStatusMatches(plan, state) {
+    const status = plan.planStatus || 'open';
+    return (state.includeDiscontinued || status !== 'delisted')
+      && (!state.planStatusOnly || !state.excludedPlanStatuses.includes(status));
+  }
+
   function modelMatch(models, selected, mode) {
     if (selected === null || !selected.length) return true;
     const available = new Set((models || []).map(model => typeof model === 'string' ? model : model.slug));
@@ -203,13 +213,13 @@
     }
     return (plans || []).filter(plan => {
       if (current.apiOnly && plan.billingMode !== 'payg') return false;
-      if (!current.includeDiscontinued && plan.planStatus === 'delisted') return false;
+      if (!planStatusMatches(plan, current)) return false;
       if (!selectedMatch(plan.platformSlug, current.platformSlugs)) return false;
       if (!modelMatch(plan.supportedModels || plan.modelSlugs, current.modelSlugs, current.modelMatch)) return false;
       const platform = opts.context && opts.context.platformBySlug
         ? opts.context.platformBySlug.get(plan.platformSlug)
         : null;
-      if (platform && !platformStatusMatches(platform, current)) return false;
+      if (!current.planStatusOnly && platform && !platformStatusMatches(platform, current)) return false;
       if (!monthlyPlanMatches(plan, current, opts.context)) return false;
       const monthly = toCny(plan.monthlyPrice, plan.currency, rate);
       if (!inRange(monthly, current.budgetCny)) return false;
@@ -329,9 +339,9 @@
     for (const plan of context.plans) {
       const platform = context.platformBySlug.get(plan.platformSlug);
       if (!platform) continue;
-      if (!s.includeDiscontinued && plan.planStatus === 'delisted') continue;
+      if (!planStatusMatches(plan, s)) continue;
       if (!selectedMatch(platform.slug, s.platformSlugs)) continue;
-      if (!platformStatusMatches(platform, s)) continue;
+      if (!s.planStatusOnly && !platformStatusMatches(platform, s)) continue;
       if (s.domesticNetworkOnly && platform.requiresOverseasNetwork !== false) continue;
       if (s.domesticPaymentOnly && platform.requiresOverseasPayment !== false) continue;
       const supportsHarnessApi = EntityData.resolveHarnessApi(platform, plan);
