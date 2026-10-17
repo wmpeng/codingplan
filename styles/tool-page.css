@@ -216,9 +216,8 @@ body .platform-hub-filters .platform-featured-button:focus-visible { outline: 2p
 .platform-access-filter { display: inline-flex; gap: 8px; align-items: center; min-height: 40px; padding: 0 10px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 13px; cursor: pointer; }
 .platform-access-filter input { accent-color: var(--accent-primary); margin: 0; }
 .platform-hub-page .is-search-paused input { opacity: .6; background: var(--bg-tertiary); cursor: not-allowed; }
-.platform-hub-page .platform-card > header { flex-wrap: wrap; }
-.platform-hub-page .platform-card-heading { flex-basis: 140px; }
-.platform-hub-page .platform-card-aside { margin-left: auto; }
+.platform-hub-page .platform-card > header { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+.platform-hub-page .platform-card-heading { overflow-wrap: anywhere; }
 .platform-hub-page { --platform-featured-color: #946c35; --platform-featured-border: #d3bd98; }
 body.platform-hub-page .platform-card.is-featured:not(.is-pinned) { border-color: var(--platform-featured-border); }
 body.platform-hub-page .platform-card.is-pinned { border-color: #a5b9d1; }
