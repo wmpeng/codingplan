@@ -261,7 +261,8 @@ body.article-page .articles-item-main a { color: var(--text-primary); font-size:
 body.article-page .articles-item-main a:hover { color: var(--accent-primary); }
 
 @media (min-width: 1200px) {
-  body .featured-model-group .model-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  body .featured-model-group .model-grid,
+  body.models-page #modelDirectory { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 }
 
 @media (max-width: 800px) {
