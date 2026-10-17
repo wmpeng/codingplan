@@ -3,6 +3,7 @@
 <html lang="zh-CN">
 <head>
 <script src="/scripts/ui-core.js?v=00a7eba403"></script>
+<script src="/scripts/ui-help.js?v=343d388a1a"></script>
 <script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
 <script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
 <script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
@@ -23,12 +24,13 @@
   <link rel="icon" href="/favicon.ico?v=260924a">
   <link rel="stylesheet" href="/styles/shared.css?v=482edb170c">
   <link rel="stylesheet" href="/styles/tool-page.css?v=2fbdd6501f">
-  <link rel="stylesheet" href="/styles/platform-guide.css?v=6ee31eb37a">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://codingplan.fyi/platforms/opencode/","url":"https://codingplan.fyi/platforms/opencode/","name":"OpenCode Go / Go Plus：订阅价格、模型额度与接入指南 - Coding Plan","description":"了解 OpenCode Go / Go Plus 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。","inLanguage":"zh-CN","datePublished":"2026-09-15","dateModified":"2026-10-12","isPartOf":{"@type":"WebSite","name":"Coding Plan","url":"https://codingplan.fyi/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Coding Plan","item":"https://codingplan.fyi/"},{"@type":"ListItem","position":2,"name":"平台介绍","item":"https://codingplan.fyi/platforms/"},{"@type":"ListItem","position":3,"name":"OpenCode Go / Go Plus","item":"https://codingplan.fyi/platforms/opencode/"}]}]}</script>
+  <link rel="stylesheet" href="/styles/platform-guide.css?v=cf1c74f518">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://codingplan.fyi/platforms/opencode/","url":"https://codingplan.fyi/platforms/opencode/","name":"OpenCode Go / Go Plus：订阅价格、模型额度与接入指南 - Coding Plan","description":"了解 OpenCode Go / Go Plus 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。","inLanguage":"zh-CN","datePublished":"2026-09-15","dateModified":"2026-10-17","isPartOf":{"@type":"WebSite","name":"Coding Plan","url":"https://codingplan.fyi/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Coding Plan","item":"https://codingplan.fyi/"},{"@type":"ListItem","position":2,"name":"平台介绍","item":"https://codingplan.fyi/platforms/"},{"@type":"ListItem","position":3,"name":"OpenCode Go / Go Plus","item":"https://codingplan.fyi/platforms/opencode/"}]}]}</script>
 <link rel="stylesheet" href="/styles/design-system.css?v=a87ff3bd25">
 <script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
-<link rel="stylesheet" href="/styles/ui-components.css?v=bf5f1551fa">
+<link rel="stylesheet" href="/styles/ui-components.css?v=4839ae1fc0">
+<link rel="stylesheet" href="/styles/ui-help.css?v=1fa99848ee">
 </head>
 <body class="platform-guide">
   <a class="guide-skip" href="#guide-content">跳到介绍正文</a>
@@ -82,12 +84,12 @@
         <h1>OpenCode Go / Go Plus</h1>
         <p class="guide-lead">在一个编程订阅中使用多家模型。选购时除了看月费，更要看常用模型的独立额度，以及自己的客户端是否能正确接入。</p>
         <div class="guide-actions"><a class="guide-button" href="/plans/?platform=opencode">查看套餐对比 →</a><a class="guide-button secondary" href="https://opencode.ai/zh/go">查看官网 <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></div>
-        <p class="guide-dates">介绍更新 <time datetime="2026-10-12">2026-10-12</time><span>·</span>套餐与模型记录 <time datetime="2026-10-12">2026-10-12</time></p>
+        <p class="guide-dates">介绍更新 <time datetime="2026-10-17">2026-10-17</time><span>·</span>套餐与模型记录 <time datetime="2026-10-12">2026-10-12</time></p>
       </div>
       <div class="guide-monogram" aria-hidden="true">Go</div>
     </header>
     <div class="guide-layout">
-      <nav class="guide-toc" aria-label="本页目录"><p>本页内容</p><a href="#overview"><span>01</span>先看是否适合自己</a><a href="#products"><span>02</span>OpenCode、Go 与 Zen 是什么关系</a><a href="#plans"><span>03</span>订阅价格</a><a href="#models"><span>04</span>套餐支持模型</a><a href="#credits"><span>05</span>每个模型能用多少</a><a href="#tools"><span>06</span>客户端接入要点</a><a href="#workflow"><span>07</span>怎么安排自己的模型组合</a><a href="#related"><span>08</span>继续比较</a><a href="#sources"><span>09</span>官方资料与记录说明</a></nav>
+      <nav class="guide-toc" aria-label="本页目录"><p>本页内容</p><a href="#overview"><span>01</span>先看是否适合自己</a><a href="#products"><span>02</span>OpenCode、Go 与 Zen 是什么关系</a><a href="#plans"><span>03</span>订阅价格</a><a href="#models"><span>04</span>套餐支持模型</a><a href="#credits"><span>05</span>每个模型能用多少</a><a href="#tools"><span>06</span>客户端接入要点</a><a href="#workflow"><span>07</span>怎么安排自己的模型组合</a><a href="#related"><span>08</span>继续比较</a><a href="#sources"><span>09</span>官方资料</a></nav>
       <main id="guide-content" class="guide-content"><section id="overview" class="guide-section"><h2>先看是否适合自己</h2><p>OpenCode Go 和 Go Plus 提供多模型订阅，适合经常根据任务切换模型的编程用户。选择它之前，先列出自己最常用的两三种模型，再查看这些模型在套餐中的限制。</p>
 <ul>
 <li><strong>可以优先考虑</strong>：想在同一个接入方式下尝试不同模型，并希望先控制订阅支出。</li>
@@ -132,7 +134,7 @@
 </section>
 <section id="related" class="guide-section"><h2>继续比较</h2><p>如果主要使用 GLM，可以与智谱直接订阅比较；若需要轮换多家模型，则重点比较 Go 中自己常用模型的实际额度与接入体验。</p>
 <div class="guide-related"><a class="guide-related-card" href="/platforms/zhipu/"><strong>智谱 GLM Coding Plan</strong><span>了解智谱 GLM Coding Plan 的 Lite、Pro、Max 套餐，查看价格、支持模型、积分额度和接入边界，按自己的编程工作量选择档位。</span><span>阅读平台介绍 →</span></a></div><ul class="guide-article-links"><li><a href="/articles/plan_comparisons/20260824/index.html">主流 AI 平台怎么选：套餐与按量 API 对比</a></li></ul></section>
-<section id="sources" class="guide-section"><h2>官方资料与记录说明</h2><ul class="guide-sources"><li><a href="https://opencode.ai/zh/go">OpenCode Go 官方页面</a><span>查看当前订阅价格和活动入口。</span></li><li><a href="https://opencode.ai/docs/zh-cn/go/">Go 文档：模型、额度与客户端支持</a><span>查看模型成本、使用限制、接入端点和超额使用设置。</span></li><li><a href="https://opencode.ai/zen/go/v1/models">OpenCode Go 模型接口</a><span>接口模型 ID 与可用性需结合当前订阅文档核对。</span></li></ul><p>价格和模型额度采用本站已收录资料，记录日期见页首；模型调整与活动更新可能早于本站记录。选择建议由 Coding Plan 整理，购买和接入前请核对官方页面。</p>
+<section id="sources" class="guide-section"><h2>官方资料</h2><ul class="guide-sources"><li><a href="https://opencode.ai/zh/go">OpenCode Go 官方页面</a><span>查看当前订阅价格和活动入口。</span></li><li><a href="https://opencode.ai/docs/zh-cn/go/">Go 文档：模型、额度与客户端支持</a><span>查看模型成本、使用限制、接入端点和超额使用设置。</span></li><li><a href="https://opencode.ai/zen/go/v1/models">OpenCode Go 模型接口</a><span>接口模型 ID 与可用性需结合当前订阅文档核对。</span></li></ul><p>价格、模型额度和活动可能变化，购买和接入前请确认官方页面中的适用条件。</p>
 </section></main>
     </div>
     <footer class="guide-footer"><p>价格、活动与可用模型可能变化，购买和接入前请核对官方页面。本站的选择建议不代表服务承诺。</p><div><a href="/platforms/">全部平台</a><a href="/plans/">套餐对比</a><a href="/">返回首页</a><a href="https://github.com/wmpeng/codingplan/issues">反馈资料问题</a></div></footer>

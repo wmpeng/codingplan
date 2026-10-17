@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-16T12:58:48Z",
+  "generatedAt": "2026-10-17T10:14:08Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -23,7 +23,7 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
-      "note": "连续月付$18/$80/$168；季付8折、年付7折，已收录整季/整年金额。旧首购9折本次未确认，不作为当前优惠；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。",
+      "note": "连续月付$18/$80/$168；季付8折、年付7折，按整季或整年付款。首购 9 折优惠是否有效待确认；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。",
       "planStatus": "open",
       "planModels": [
         {
@@ -145,7 +145,7 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
-      "note": "连续月付$18/$80/$168；季付8折、年付7折，已收录整季/整年金额。旧首购9折本次未确认，不作为当前优惠；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。",
+      "note": "连续月付$18/$80/$168；季付8折、年付7折，按整季或整年付款。首购 9 折优惠是否有效待确认；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。",
       "planStatus": "open",
       "planModels": [
         {
@@ -267,7 +267,7 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
-      "note": "连续月付$18/$80/$168；季付8折、年付7折，已收录整季/整年金额。旧首购9折本次未确认，不作为当前优惠；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。",
+      "note": "连续月付$18/$80/$168；季付8折、年付7折，按整季或整年付款。首购 9 折优惠是否有效待确认；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。",
       "planStatus": "open",
       "planModels": [
         {
@@ -609,7 +609,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "连续包月为常规月价；连续包季8折、连续包年7折，已收录对应整季/整年金额，不把折算月价当成月付价。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。",
+      "note": "连续包月为常规月价；连续包季8折、连续包年7折，按整季或整年付款，折算月价不代表可按月付款。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。",
       "planStatus": "open",
       "planModels": [
         {
@@ -730,7 +730,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "连续包月为常规月价；连续包季8折、连续包年7折，已收录对应整季/整年金额，不把折算月价当成月付价。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。",
+      "note": "连续包月为常规月价；连续包季8折、连续包年7折，按整季或整年付款，折算月价不代表可按月付款。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。",
       "planStatus": "open",
       "planModels": [
         {
@@ -851,7 +851,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "连续包月为常规月价；连续包季8折、连续包年7折，已收录对应整季/整年金额，不把折算月价当成月付价。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。",
+      "note": "连续包月为常规月价；连续包季8折、连续包年7折，按整季或整年付款，折算月价不代表可按月付款。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。",
       "planStatus": "open",
       "planModels": [
         {
@@ -3216,7 +3216,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠未重新确认，不沿用旧首月价；当前模型活动见关系明细。",
+      "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠是否有效待确认；当前模型活动见关系明细。",
       "planStatus": "open",
       "planModels": [
         {
@@ -3500,7 +3500,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠未重新确认，不沿用旧首月价；当前模型活动见关系明细。",
+      "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠是否有效待确认；当前模型活动见关系明细。",
       "planStatus": "open",
       "planModels": [
         {
@@ -3806,7 +3806,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠未重新确认，不沿用旧首月价；当前模型活动见关系明细。",
+      "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠是否有效待确认；当前模型活动见关系明细。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4112,7 +4112,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠未重新确认，不沿用旧首月价；当前模型活动见关系明细。",
+      "note": "AFP积分按输入/输出及模型当前系数扣减，缓存与普通输入同系数；不是固定请求次数。短窗/周/月AFP同时约束，Small不支持KimiK3。首购优惠是否有效待确认；当前模型活动见关系明细。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4706,7 +4706,7 @@
             "unitPriceCnyPerM": 1.2895
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 6 次扣减计算"
         },
         {
           "slug": "youyun-mini--glm-5-2",
@@ -4722,7 +4722,7 @@
             "unitPriceCnyPerM": 1.2895
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 6 次扣减计算"
         },
         {
           "slug": "youyun-mini--kimi-k2-6",
@@ -4738,7 +4738,7 @@
             "unitPriceCnyPerM": 1.0746
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 5 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 5 次扣减计算"
         },
         {
           "slug": "youyun-mini--deepseek-v4-flash-0731",
@@ -4754,7 +4754,7 @@
             "unitPriceCnyPerM": 0.6447
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-mini--deepseek-v4-1-flash",
@@ -4770,7 +4770,7 @@
             "unitPriceCnyPerM": 0.6447
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-mini--deepseek-v4-flash-vision-exp",
@@ -4786,7 +4786,7 @@
             "unitPriceCnyPerM": 0.6447
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-mini--minimax-m2-7",
@@ -4802,7 +4802,7 @@
             "unitPriceCnyPerM": 0.4298
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 2 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 2 次扣减计算"
         },
         {
           "slug": "youyun-mini--glm-5-3-flash",
@@ -4818,7 +4818,7 @@
             "unitPriceCnyPerM": 0.4298
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 2 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 2 次扣减计算"
         },
         {
           "slug": "youyun-mini--qwen-3-8-27b",
@@ -4834,7 +4834,7 @@
             "unitPriceCnyPerM": 0.1075
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 0.5 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 0.5 次扣减计算"
         }
       ]
     },
@@ -4870,7 +4870,7 @@
             "unitPriceCnyPerM": 1.3026
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 6 次扣减计算"
         },
         {
           "slug": "youyun-lite--glm-5-2",
@@ -4886,7 +4886,7 @@
             "unitPriceCnyPerM": 1.3026
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 6 次扣减计算"
         },
         {
           "slug": "youyun-lite--kimi-k2-6",
@@ -4902,7 +4902,7 @@
             "unitPriceCnyPerM": 1.0855
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 5 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 5 次扣减计算"
         },
         {
           "slug": "youyun-lite--deepseek-v4-flash-0731",
@@ -4918,7 +4918,7 @@
             "unitPriceCnyPerM": 0.6513
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-lite--deepseek-v4-1-flash",
@@ -4934,7 +4934,7 @@
             "unitPriceCnyPerM": 0.6513
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-lite--deepseek-v4-flash-vision-exp",
@@ -4950,7 +4950,7 @@
             "unitPriceCnyPerM": 0.6513
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-lite--minimax-m2-7",
@@ -4966,7 +4966,7 @@
             "unitPriceCnyPerM": 0.4342
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 2 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 2 次扣减计算"
         },
         {
           "slug": "youyun-lite--glm-5-3-flash",
@@ -4982,7 +4982,7 @@
             "unitPriceCnyPerM": 0.4342
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 2 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 2 次扣减计算"
         },
         {
           "slug": "youyun-lite--qwen-3-8-27b",
@@ -4998,7 +4998,7 @@
             "unitPriceCnyPerM": 0.1086
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 0.5 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 0.5 次扣减计算"
         }
       ]
     },
@@ -5034,7 +5034,7 @@
             "unitPriceCnyPerM": 1.3092
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 6 次扣减计算"
         },
         {
           "slug": "youyun-basic--glm-5-2",
@@ -5050,7 +5050,7 @@
             "unitPriceCnyPerM": 1.3092
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 6 次扣减计算"
         },
         {
           "slug": "youyun-basic--kimi-k2-6",
@@ -5066,7 +5066,7 @@
             "unitPriceCnyPerM": 1.091
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 5 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 5 次扣减计算"
         },
         {
           "slug": "youyun-basic--deepseek-v4-flash-0731",
@@ -5082,7 +5082,7 @@
             "unitPriceCnyPerM": 0.6546
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-basic--deepseek-v4-1-flash",
@@ -5098,7 +5098,7 @@
             "unitPriceCnyPerM": 0.6546
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-basic--deepseek-v4-flash-vision-exp",
@@ -5114,7 +5114,7 @@
             "unitPriceCnyPerM": 0.6546
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-basic--minimax-m2-7",
@@ -5130,7 +5130,7 @@
             "unitPriceCnyPerM": 0.4364
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 2 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 2 次扣减计算"
         },
         {
           "slug": "youyun-basic--glm-5-3-flash",
@@ -5146,7 +5146,7 @@
             "unitPriceCnyPerM": 0.4364
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 2 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 2 次扣减计算"
         },
         {
           "slug": "youyun-basic--qwen-3-8-27b",
@@ -5162,7 +5162,7 @@
             "unitPriceCnyPerM": 0.1091
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 0.5 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 0.5 次扣减计算"
         }
       ]
     },
@@ -5198,7 +5198,7 @@
             "unitPriceCnyPerM": 1.3132
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 6 次扣减计算"
         },
         {
           "slug": "youyun-pro--glm-5-2",
@@ -5214,7 +5214,7 @@
             "unitPriceCnyPerM": 1.3132
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 6 次扣减计算"
         },
         {
           "slug": "youyun-pro--kimi-k2-6",
@@ -5230,7 +5230,7 @@
             "unitPriceCnyPerM": 1.0943
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 5 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 5 次扣减计算"
         },
         {
           "slug": "youyun-pro--deepseek-v4-flash-0731",
@@ -5246,7 +5246,7 @@
             "unitPriceCnyPerM": 0.6566
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-pro--deepseek-v4-1-flash",
@@ -5262,7 +5262,7 @@
             "unitPriceCnyPerM": 0.6566
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-pro--deepseek-v4-flash-vision-exp",
@@ -5278,7 +5278,7 @@
             "unitPriceCnyPerM": 0.6566
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-pro--minimax-m2-7",
@@ -5294,7 +5294,7 @@
             "unitPriceCnyPerM": 0.4377
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 2 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 2 次扣减计算"
         },
         {
           "slug": "youyun-pro--glm-5-3-flash",
@@ -5310,7 +5310,7 @@
             "unitPriceCnyPerM": 0.4377
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 2 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 2 次扣减计算"
         },
         {
           "slug": "youyun-pro--qwen-3-8-27b",
@@ -5326,7 +5326,7 @@
             "unitPriceCnyPerM": 0.1094
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 0.5 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 0.5 次扣减计算"
         }
       ]
     },
@@ -5362,7 +5362,7 @@
             "unitPriceCnyPerM": 1.2887
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 6 次扣减计算"
         },
         {
           "slug": "youyun-max--glm-5-2",
@@ -5378,7 +5378,7 @@
             "unitPriceCnyPerM": 1.2887
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 6 次扣减计算"
         },
         {
           "slug": "youyun-max--kimi-k2-6",
@@ -5394,7 +5394,7 @@
             "unitPriceCnyPerM": 1.0739
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 5 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 5 次扣减计算"
         },
         {
           "slug": "youyun-max--deepseek-v4-flash-0731",
@@ -5410,7 +5410,7 @@
             "unitPriceCnyPerM": 0.6444
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-max--deepseek-v4-1-flash",
@@ -5426,7 +5426,7 @@
             "unitPriceCnyPerM": 0.6444
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-max--deepseek-v4-flash-vision-exp",
@@ -5442,7 +5442,7 @@
             "unitPriceCnyPerM": 0.6444
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-max--minimax-m2-7",
@@ -5458,7 +5458,7 @@
             "unitPriceCnyPerM": 0.4296
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 2 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 2 次扣减计算"
         },
         {
           "slug": "youyun-max--glm-5-3-flash",
@@ -5474,7 +5474,7 @@
             "unitPriceCnyPerM": 0.4296
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 2 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 2 次扣减计算"
         },
         {
           "slug": "youyun-max--qwen-3-8-27b",
@@ -5490,7 +5490,7 @@
             "unitPriceCnyPerM": 0.1074
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 0.5 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 0.5 次扣减计算"
         }
       ]
     },
@@ -5526,7 +5526,7 @@
             "unitPriceCnyPerM": 1.2808
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 6 次扣减计算"
         },
         {
           "slug": "youyun-ultra--glm-5-2",
@@ -5542,7 +5542,7 @@
             "unitPriceCnyPerM": 1.2808
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 6 次扣减计算"
         },
         {
           "slug": "youyun-ultra--kimi-k2-6",
@@ -5558,7 +5558,7 @@
             "unitPriceCnyPerM": 1.0673
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 5 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 5 次扣减计算"
         },
         {
           "slug": "youyun-ultra--deepseek-v4-flash-0731",
@@ -5574,7 +5574,7 @@
             "unitPriceCnyPerM": 0.6404
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-ultra--deepseek-v4-1-flash",
@@ -5590,7 +5590,7 @@
             "unitPriceCnyPerM": 0.6404
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-ultra--deepseek-v4-flash-vision-exp",
@@ -5606,7 +5606,7 @@
             "unitPriceCnyPerM": 0.6404
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-ultra--minimax-m2-7",
@@ -5622,7 +5622,7 @@
             "unitPriceCnyPerM": 0.4269
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 2 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 2 次扣减计算"
         },
         {
           "slug": "youyun-ultra--glm-5-3-flash",
@@ -5638,7 +5638,7 @@
             "unitPriceCnyPerM": 0.4269
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 2 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 2 次扣减计算"
         },
         {
           "slug": "youyun-ultra--qwen-3-8-27b",
@@ -5654,7 +5654,7 @@
             "unitPriceCnyPerM": 0.1067
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 0.5 次扣减计算；2026-10-12 登录控制台核对"
+          "note": "按套餐请求额度和模型单次 0.5 次扣减计算"
         }
       ]
     },
@@ -6422,7 +6422,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；Token 额度尚无本轮独立实测。"
+          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
         },
         {
           "slug": "claude-pro--claude-sonnet-5-5",
@@ -6435,7 +6435,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；Token 额度尚无本轮独立实测。"
+          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
         },
         {
           "slug": "claude-pro--claude-haiku-5-5",
@@ -6448,7 +6448,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；Token 额度尚无本轮独立实测。"
+          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
         },
         {
           "slug": "claude-pro--claude-fable-5-1",
@@ -6621,7 +6621,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；Token 额度尚无本轮独立实测。"
+          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
         },
         {
           "slug": "claude-max5--claude-sonnet-5-5",
@@ -6634,7 +6634,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；Token 额度尚无本轮独立实测。"
+          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
         },
         {
           "slug": "claude-max5--claude-haiku-5-5",
@@ -6647,7 +6647,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；Token 额度尚无本轮独立实测。"
+          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
         },
         {
           "slug": "claude-max5--claude-fable-5-1",
@@ -6826,7 +6826,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；Token 额度尚无本轮独立实测。"
+          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
         },
         {
           "slug": "claude-max20--claude-sonnet-5-5",
@@ -6839,7 +6839,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；Token 额度尚无本轮独立实测。"
+          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
         },
         {
           "slug": "claude-max20--claude-haiku-5-5",
@@ -6852,7 +6852,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；Token 额度尚无本轮独立实测。"
+          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
         },
         {
           "slug": "claude-max20--claude-fable-5-1",
@@ -16315,7 +16315,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
+      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n月 Token 总量为官方额度；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
       "planStatus": "restricted",
       "planModels": [
         {
@@ -16445,7 +16445,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n• 页面标\"最受欢迎\"档\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
+      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n• 页面标\"最受欢迎\"档\n月 Token 总量为官方额度；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
       "planStatus": "restricted",
       "planModels": [
         {
@@ -16575,7 +16575,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
+      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n月 Token 总量为官方额度；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
       "planStatus": "restricted",
       "planModels": [
         {
@@ -16705,7 +16705,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n按官方月Token总量记录，不是个人实测；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
+      "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n月 Token 总量为官方额度；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
       "planStatus": "restricted",
       "planModels": [
         {
@@ -23849,7 +23849,7 @@
       "weeklyRequests": 45000,
       "monthlyRequests": 90000,
       "benefits": [],
-      "note": "• 高效版已支持 GLM-5.2\n• 讯飞实际可用量比较多，按调用量计数，明示调用量；2026-10-12未能公开核实个人版当前订购价格和完整支持名单，沿用此前记录，不代表本次已确认在售权益。",
+      "note": "• 高效版已支持 GLM-5.2\n• 讯飞实际可用量比较多，按调用量计数，明示调用量；所列价格与支持型号为历史信息，当前订购价格和完整模型支持范围待确认。",
       "planStatus": "open",
       "planModels": [
         {
@@ -23986,7 +23986,7 @@
       "weeklyRequests": "-",
       "monthlyRequests": "-",
       "benefits": [],
-      "note": "• 价格比较贵，据宣传无需等待；2026-10-12未能公开核实个人版当前订购价格和完整支持名单，沿用此前记录，不代表本次已确认在售权益。",
+      "note": "• 价格比较贵，据宣传无需等待；所列价格与支持型号为历史信息，当前订购价格和完整模型支持范围待确认。",
       "planStatus": "open",
       "planModels": [
         {
@@ -24241,7 +24241,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。",
+      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n\n以上金额与模型为历史信息，当前价格、购买状态和完整模型支持范围待确认。",
       "planStatus": "open",
       "planModels": [
         {
@@ -24287,7 +24287,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。",
+      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n\n以上金额与模型为历史信息，当前价格、购买状态和完整模型支持范围待确认。",
       "planStatus": "open",
       "planModels": [
         {
@@ -24333,7 +24333,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。",
+      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n\n以上金额与模型为历史信息，当前价格、购买状态和完整模型支持范围待确认。",
       "planStatus": "open",
       "planModels": [
         {
@@ -24379,7 +24379,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。",
+      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens\n以上金额与模型为历史信息，当前价格、购买状态和完整模型支持范围待确认。",
       "planStatus": "open",
       "planModels": [
         {
@@ -24438,7 +24438,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。",
+      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens\n以上金额与模型为历史信息，当前价格、购买状态和完整模型支持范围待确认。",
       "planStatus": "open",
       "planModels": [
         {
@@ -24497,7 +24497,7 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "无限制",
       "benefits": [],
-      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens\n2026-10-12未能读取最新完整套餐页，以上金额/模型沿用此前记录，当前购买与完整支持范围待确认。",
+      "note": "• 参考文档https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7080\n• 上下文窗口目前仅支持 200K\n• 以 DeepSeek-V4-Pro 为例 25,000 credits约为 2亿tokens\n以上金额与模型为历史信息，当前价格、购买状态和完整模型支持范围待确认。",
       "planStatus": "open",
       "planModels": [
         {
@@ -25017,7 +25017,7 @@
       "weeklyRequests": 9000,
       "monthlyRequests": 18000,
       "benefits": [],
-      "note": "2026-10-12官方文档仍列20/100元及两个模型，赠OpenClaw 2核4G实例；购买状态未重新确认，保留此前停售标记。",
+      "note": "历史套餐为 20/100 元、支持两个模型，赠 OpenClaw 2核4G 实例；此前已停售，是否恢复购买待确认。",
       "planStatus": "restricted",
       "planModels": [
         {
@@ -25069,7 +25069,7 @@
       "weeklyRequests": 45000,
       "monthlyRequests": 90000,
       "benefits": [],
-      "note": "2026-10-12官方文档仍列20/100元及两个模型，赠OpenClaw 2核4G实例；购买状态未重新确认，保留此前停售标记。",
+      "note": "历史套餐为 20/100 元、支持两个模型，赠 OpenClaw 2核4G 实例；此前已停售，是否恢复购买待确认。",
       "planStatus": "restricted",
       "planModels": [
         {
@@ -25479,7 +25479,7 @@
       "weeklyRequests": 6000,
       "monthlyRequests": 12000,
       "benefits": [],
-      "note": "2026-10-12平台页面明确停止向个人用户提供服务；旧套餐保留历史参考。",
+      "note": "已停止向个人用户提供服务，旧套餐仅供历史查询。",
       "planStatus": "delisted",
       "planModels": [
         {
@@ -25577,7 +25577,7 @@
       "weeklyRequests": 30000,
       "monthlyRequests": 60000,
       "benefits": [],
-      "note": "2026-10-12平台页面明确停止向个人用户提供服务；旧套餐保留历史参考。",
+      "note": "已停止向个人用户提供服务，旧套餐仅供历史查询。",
       "planStatus": "delisted",
       "planModels": [
         {
@@ -25773,7 +25773,7 @@
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
       "benefits": [],
-      "note": "邀请8折仅适用于资格仍有效的用户，资格依据2026-09-04确认；本次已核对标价，但未重新验证账号折扣。",
+      "note": "邀请 8 折仅适用于资格仍有效的用户，实际折扣以账户结算为准。",
       "planStatus": "open",
       "planModels": [
         {
@@ -25816,7 +25816,7 @@
             "cacheCnyPerM": 0.016,
             "outputCnyPerM": 1.6
           },
-          "note": "按页面当前标价的 8 折计算；正式版资源自 2026-08-19 00:00 起维护，官方未公布结束时间；8折仅适用于仍有效的邀请资格，资格依据为2026-09-04用户确认，本次未作扣费验证"
+          "note": "按页面当前标价的 8 折计算；正式版资源自 2026-08-19 00:00 起维护，官方未公布结束时间；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
         },
         {
           "slug": "gongji-api--deepseek-v4-pro-preview",
@@ -25837,7 +25837,7 @@
             "cacheCnyPerM": 0.02,
             "outputCnyPerM": 4.8
           },
-          "note": "按页面当前标价的 8 折计算；正式版资源自 2026-08-19 00:00 起维护，官方未公布结束时间；8折仅适用于仍有效的邀请资格，资格依据为2026-09-04用户确认，本次未作扣费验证"
+          "note": "按页面当前标价的 8 折计算；正式版资源自 2026-08-19 00:00 起维护，官方未公布结束时间；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
         },
         {
           "slug": "gongji-api--glm-5-3",
@@ -25858,7 +25858,7 @@
             "cacheCnyPerM": 1.6,
             "outputCnyPerM": 22.4
           },
-          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，资格依据为2026-09-04用户确认，本次未作扣费验证"
+          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
         },
         {
           "slug": "gongji-api--kimi-k3",
@@ -25879,7 +25879,7 @@
             "cacheCnyPerM": 1.6,
             "outputCnyPerM": 80.0
           },
-          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，资格依据为2026-09-04用户确认，本次未作扣费验证"
+          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
         },
         {
           "slug": "gongji-api--glm-5-1",
@@ -25900,7 +25900,7 @@
             "cacheCnyPerM": 1.6,
             "outputCnyPerM": 22.4
           },
-          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，资格依据为2026-09-04用户确认，本次未作扣费验证"
+          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
         },
         {
           "slug": "gongji-api--glm-5-2",
@@ -25921,7 +25921,7 @@
             "cacheCnyPerM": 1.6,
             "outputCnyPerM": 22.4
           },
-          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，资格依据为2026-09-04用户确认，本次未作扣费验证"
+          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
         },
         {
           "slug": "gongji-api--kimi-k2-6",
@@ -25942,7 +25942,7 @@
             "cacheCnyPerM": 0.88,
             "outputCnyPerM": 21.6
           },
-          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，资格依据为2026-09-04用户确认，本次未作扣费验证"
+          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
         },
         {
           "slug": "gongji-api--qwen-3-7-max",
@@ -25963,7 +25963,7 @@
             "cacheCnyPerM": 0.96,
             "outputCnyPerM": 28.8
           },
-          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，资格依据为2026-09-04用户确认，本次未作扣费验证"
+          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
         },
         {
           "slug": "gongji-api--glm-5",
@@ -25984,7 +25984,7 @@
             "cacheCnyPerM": 1.2,
             "outputCnyPerM": 17.6
           },
-          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，资格依据为2026-09-04用户确认，本次未作扣费验证"
+          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
         },
         {
           "slug": "gongji-api--deepseek-v4-1-flash",
@@ -37672,7 +37672,7 @@
         "无限 Tab 补全、Agent、Bugbot 与云端 Agent"
       ],
       "summary": "Cursor Models 与第三方 Other Models 独立月度池；无限 Tab 补全、Agent、Bugbot 与云端 Agent",
-      "note": "2026-10-12 起停止新用户订购，已有订阅可保留当前价格与权益，直至主动迁移或官方另行通知；最终迁移时间尚未公布。旧 Cursor Models 与 Other Models 两个月度池分别记录，未消费额度不结转；不能套用新 X Subscription 的周额度或倍率。当前固定美元池及 Token 总量待确认。按请求计费的更早存量账号还有独立规则，不统一写成 500 次或无限。",
+      "note": "2026-10-12 起停止新用户订购，已有订阅可保留当前价格与权益，直至主动迁移或官方另行通知；最终迁移时间尚未公布。旧 Cursor Models 与 Other Models 为两个独立月度池，未消费额度不结转；不能套用新 X Subscription 的周额度或倍率。当前固定美元池及 Token 总量待确认。按请求计费的更早存量账号还有独立规则，不适用统一的 500 次或无限用量规则。",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -38347,7 +38347,7 @@
         "无限 Tab 补全、Agent、Bugbot 与云端 Agent"
       ],
       "summary": "Cursor Models 与第三方 Other Models 独立月度池；无限 Tab 补全、Agent、Bugbot 与云端 Agent",
-      "note": "2026-10-12 起停止新用户订购，已有订阅可保留当前价格与权益，直至主动迁移或官方另行通知；最终迁移时间尚未公布。旧 Cursor Models 与 Other Models 两个月度池分别记录，未消费额度不结转；不能套用新 X Subscription 的周额度或倍率。当前固定美元池及 Token 总量待确认。按请求计费的更早存量账号还有独立规则，不统一写成 500 次或无限。",
+      "note": "2026-10-12 起停止新用户订购，已有订阅可保留当前价格与权益，直至主动迁移或官方另行通知；最终迁移时间尚未公布。旧 Cursor Models 与 Other Models 为两个独立月度池，未消费额度不结转；不能套用新 X Subscription 的周额度或倍率。当前固定美元池及 Token 总量待确认。按请求计费的更早存量账号还有独立规则，不适用统一的 500 次或无限用量规则。",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -39022,7 +39022,7 @@
         "无限 Tab 补全、Agent、Bugbot 与云端 Agent"
       ],
       "summary": "Cursor Models 与第三方 Other Models 独立月度池；无限 Tab 补全、Agent、Bugbot 与云端 Agent",
-      "note": "2026-10-12 起停止新用户订购，已有订阅可保留当前价格与权益，直至主动迁移或官方另行通知；最终迁移时间尚未公布。旧 Cursor Models 与 Other Models 两个月度池分别记录，未消费额度不结转；不能套用新 X Subscription 的周额度或倍率。当前固定美元池及 Token 总量待确认。按请求计费的更早存量账号还有独立规则，不统一写成 500 次或无限。",
+      "note": "2026-10-12 起停止新用户订购，已有订阅可保留当前价格与权益，直至主动迁移或官方另行通知；最终迁移时间尚未公布。旧 Cursor Models 与 Other Models 为两个独立月度池，未消费额度不结转；不能套用新 X Subscription 的周额度或倍率。当前固定美元池及 Token 总量待确认。按请求计费的更早存量账号还有独立规则，不适用统一的 500 次或无限用量规则。",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -39697,7 +39697,7 @@
         "仅 Cursor Models 池；标准速度、Grok 固定 medium effort"
       ],
       "summary": "仅限印度开发者；原价 ₹649/月（含税）；仅 Cursor Models 池；标准速度、Grok 固定 medium effort",
-      "note": "旧地区限定套餐，按新订阅公告记录为停止新购；既有账户价格与权益按官方通知保留。原币种 INR，不以美元或人民币数值参加价格换算。支持 Grok 4.7/4.6/4.5 与 Composer 2.5；不含 Other Models、按量加购、Bugbot、Auto、自动化或 Cursor SDK。付款限官方印度渠道；该套餐不继承平台的支付宝结论。",
+      "note": "旧地区限定套餐已停止新购；既有账户价格与权益按官方通知保留。原币种 INR，不以美元或人民币数值参加价格换算。支持 Grok 4.7/4.6/4.5 与 Composer 2.5；不含 Other Models、按量加购、Bugbot、Auto、自动化或 Cursor SDK。付款限官方印度渠道；该套餐不继承平台的支付宝结论。",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -46240,7 +46240,7 @@
         "TPM 2000000",
         "AstronClaw基础会员及赠送Skills"
       ],
-      "note": "以成员为单位，购买后31天有效；6月2日至7月2日活动已结束，当前记录常规价。工作日08:00–22:00系数1，其余工作日时段及周末系数0.8，按国内平台时区推定UTC+8（官网未明确）。短窗Token上限未公开，速率TPM不等于窗口额度。",
+      "note": "以成员为单位，购买后31天有效；6月2日至7月2日活动已结束，现按常规价购买。工作日08:00–22:00系数1，其余工作日时段及周末系数0.8，按国内平台时区推定UTC+8（官网未明确）。短窗Token上限未公开，速率TPM不等于窗口额度。",
       "planStatus": "open",
       "planModels": [
         {
@@ -46833,7 +46833,7 @@
         "TPM 3000000",
         "AstronClaw基础会员及赠送Skills"
       ],
-      "note": "以成员为单位，购买后31天有效；6月2日至7月2日活动已结束，当前记录常规价。工作日08:00–22:00系数1，其余工作日时段及周末系数0.8，按国内平台时区推定UTC+8（官网未明确）。短窗Token上限未公开，速率TPM不等于窗口额度。",
+      "note": "以成员为单位，购买后31天有效；6月2日至7月2日活动已结束，现按常规价购买。工作日08:00–22:00系数1，其余工作日时段及周末系数0.8，按国内平台时区推定UTC+8（官网未明确）。短窗Token上限未公开，速率TPM不等于窗口额度。",
       "planStatus": "open",
       "planModels": [
         {
@@ -47426,7 +47426,7 @@
         "TPM 5000000",
         "AstronClaw基础会员及赠送Skills"
       ],
-      "note": "以成员为单位，购买后31天有效；6月2日至7月2日活动已结束，当前记录常规价。工作日08:00–22:00系数1，其余工作日时段及周末系数0.8，按国内平台时区推定UTC+8（官网未明确）。短窗Token上限未公开，速率TPM不等于窗口额度。",
+      "note": "以成员为单位，购买后31天有效；6月2日至7月2日活动已结束，现按常规价购买。工作日08:00–22:00系数1，其余工作日时段及周末系数0.8，按国内平台时区推定UTC+8（官网未明确）。短窗Token上限未公开，速率TPM不等于窗口额度。",
       "planStatus": "open",
       "planModels": [
         {

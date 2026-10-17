@@ -1,0 +1,7 @@
+.ui-help { display: inline-flex; vertical-align: middle; font-weight: 400; }
+.ui-help-button { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: var(--text-secondary, #52627a); cursor: pointer; }
+.ui-help-button > span { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border: 1px solid currentColor; border-radius: 50%; font: 12px/1 sans-serif; }
+.ui-help-button:hover { background: var(--bg-secondary, #f2f5f9); }
+.ui-help-button:focus-visible { outline: 2px solid #68788f; outline-offset: 2px; }
+.ui-help-content { position: fixed; inset: auto; margin: 0; box-sizing: border-box; width: 320px; max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px); overflow: auto; padding: 12px 14px; border: 1px solid #dce3ec; border-radius: 8px; background: #fff; color: #334155; box-shadow: 0 4px 16px #172b4d1a; font: 400 13px/1.65 var(--font-family, sans-serif); text-align: left; white-space: normal; overflow-wrap: anywhere; }
+@media (max-width: 640px), (pointer: coarse) { .ui-help-button { width: 44px; height: 44px; } }

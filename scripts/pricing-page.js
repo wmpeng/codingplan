@@ -23,7 +23,12 @@
       const method = document.createElement('details'); method.className = 'tool-secondary'; method.id = 'pricingMethod'; if (location.hash === '#pricingMethod') method.open = true;
       const label = document.createElement('summary'); label.textContent = '价格、汇率与用量口径';
       method.append(label, note); host.append(method);
-      if (location.hash === '#pricingMethod') method.scrollIntoView({block:'start'});
+      const openMethod = () => { if (location.hash === '#pricingMethod') { method.open = true; method.scrollIntoView({block:'start'}); } };
+      root.addEventListener('hashchange', openMethod);
+      document.getElementById('pricingPresets').addEventListener('click', event => {
+        if (event.target.closest('a[href="/pricing/#pricingMethod"]')) method.open = true;
+      });
+      openMethod();
       const rows = [...host.querySelectorAll('.price-focus-row')];
       if (rows[0]) { rows[0].tabIndex = -1; rows[0].focus({preventScroll:true}); rows[0].scrollIntoView({block:'center'}); }
     } catch (error) { root.CodingPlanToolPage.error(host, error.message); }

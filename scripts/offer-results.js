@@ -5,6 +5,7 @@
 })(globalThis, function (C, E, P, Numbers) {
   'use strict';
   const UI = globalThis.CodingPlanUI || require('./ui-core.js');
+  const Help = globalThis.CodingPlanHelp || require('./ui-help.js');
   const esc = UI.escapeHtml, url = value => UI.sanitizeUrl(value, '#');
   const money = n => Numbers.monthlyFee(n, '¥', '待确认');
   const unitLabel = Numbers.tokenUnit;
@@ -81,7 +82,7 @@
     };
     const modelRows=UI.observeModelTagRows(host);
     const summaryObserver=new ResizeObserver(entries=>entries.forEach(entry=>fitSummary(entry.target)));
-    host.innerHTML = `<aside class="guide-advice" data-offer-advice hidden></aside><div class="section-heading offer-results-heading"><div><div class="offer-results-title"><h2>符合需求的方案</h2><span id="offerCount" role="status"></span></div><p>全部条件在同一个套餐内成立；按量 API 在卡片内列出匹配模型和计费档位。</p></div></div><div data-offer-content></div>`;
+    host.innerHTML = `<aside class="guide-advice" data-offer-advice hidden></aside><div class="section-heading offer-results-heading"><div><div class="offer-results-title"><h2>符合需求的方案</h2>${Help.html('offerMatchHelp','方案匹配说明','所有筛选条件须在同一个套餐内满足，不能组合不同套餐的权益来匹配。')}<span id="offerCount" role="status"></span></div></div></div><div data-offer-content></div>`;
     const render=()=>{
       const controller=globalThis.CodingPlanHomeFilters;if(!controller)return;
       const state=controller.getState();

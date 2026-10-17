@@ -30,7 +30,7 @@
 | [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) | 可以购买 | 5 | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
 | [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) | 可以购买 | 4 | 当前Go/Plus/Pro/Max订阅；Plus起支持Coding，旧四档仅老用户续费。 |
 | [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) | 可以购买 | 5 | Go与Go Plus的多模型订阅，各模型独立额度；当前32个LLM。 |
-| [字节·方舟 Coding Plan](https://api.dreamfree.space/c/s/cpyqfangzhou) | 可以购买 | 5 | 方舟Coding Plan当前多模型与Auto接入；保留历史测量基准，其他倍率明确为推测。 |
+| [字节·方舟 Coding Plan](https://api.dreamfree.space/c/s/cpyqfangzhou) | 可以购买 | 5 | 支持多模型与 Auto 接入；部分模型额度为估算值。 |
 | [DeepSeek](https://platform.deepseek.com/) | 可以购买 | 5 | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
 | [Codex](https://api.dreamfree.space/c/s/cpyqchatgpt) | 可以购买 | 5 | Codex官方订阅，支持GPT-6.1 Sol及6系列；Pro $500另支持Ultrafast。 |
 
@@ -182,7 +182,7 @@
 |---|---|---:|---|
 | 智谱AI | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 涨价后新套餐无需抢购。 |
 | OpenCode | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | Go与Go Plus的多模型订阅，各模型独立额度；当前32个LLM。 |
-| 字节·方舟 Coding Plan | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 方舟Coding Plan当前多模型与Auto接入；保留历史测量基准，其他倍率明确为推测。 |
+| 字节·方舟 Coding Plan | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 支持多模型与 Auto 接入；部分模型额度为估算值。 |
 | 字节·方舟 Agent Plan | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 四档AFP订阅，当前文本统一按模型系数扣减；Small不含Kimi K3。 |
 | MiniMax | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
 | 智谱国际版 | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 国内版的替代，无需抢购。 |
@@ -208,12 +208,12 @@
 | GitHub | 可以购买 | ⭐️⭐️⭐️ | Copilot个人方案现按AI Credits计费，新增Max；免费与学生档仅Auto选择。 |
 | Cursor | 可以购买 | - | AI 编程编辑器与 Agent；新 X Subscription 从免费至 $200/月，旧 Pro 系列仅存量保留。 |
 | 京东云 | 购买受限 | ⭐️⭐️ | 京东Coding Plan与新的Credits Token Plan并存，使用独立端点与计费。 |
-| 讯飞·星火 | 可以购买 | ⭐️⭐️⭐️ | 个人版沿用此前高效版与速通版记录；2026-10-12当前价格和完整支持未能公开核实。 |
-| 联通云 | 可以购买 | ⭐️⭐️ | 此前Token Plan资料保留；2026-10-12官方页面无法读取，当前价格、支持和购买状态未重新确认。 |
+| 讯飞·星火 | 可以购买 | ⭐️⭐️⭐️ | 个人版分高效版与速通版；当前价格和完整模型支持范围待确认。 |
+| 联通云 | 可以购买 | ⭐️⭐️ | Token Plan 当前价格、模型支持范围和购买状态待确认。 |
 | 移动云 | 可以购买 | ⭐️⭐️ | 移动云请求制订阅，当前M2.5；首月与续费券按活动资格区分。 |
-| 阶跃星辰 | 购买受限 | ⭐️⭐️ | Step Plan现按月Credits，支持Step5 Preview和Flash系列；本次购买按钮售罄。 |
+| 阶跃星辰 | 购买受限 | ⭐️⭐️ | Step Plan现按月Credits，支持Step5 Preview和Flash系列；目前售罄，恢复发售时间未知。 |
 | TaoToken | 购买受限 | ⭐️⭐️⭐️ | 双Flash Coding Plan：GLM5.3 Flash与DeepSeek V4 Flash0731，月付限量抢购。 |
-| 超算 | 购买受限 | ⭐️⭐️ | 旧Coding Plan公开文档仍列两个模型；新Credits Token Plan单独收录。 |
+| 超算 | 购买受限 | ⭐️⭐️ | 旧 Coding Plan 支持两个模型，与新 Credits Token Plan 为独立产品。 |
 | 商汤·日日新 | 购买受限 | ⭐️⭐️ | 免费公测，SenseNova6.8 Flash Lite与U1 Fast，五小时60000积分。 |
 | 摩尔线程 | 购买受限 | ⭐️⭐️ | KUAE Coding Plan当前GLM4.7；免费试用30天，付费套餐经官方京东入口销售。 |
 | 腾讯云 · Hy | 可以购买 | - | Hy3、Hy4 preview专属订阅，与通用套餐可并存。 |
@@ -222,7 +222,7 @@
 | 京东云 · Token Plan | 购买受限 | - | 个人Credits订阅，按模型和输入长度计费，可与Coding Plan同时订阅。 |
 | 淘Token · Token Plan | 可以购买 | - | 多模型Credits月订阅，独立/token入口；与双Flash Coding Plan分开抵扣。 |
 | 超算 · Token Plan | 可以购买 | - | 19个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。 |
-| 讯飞 · Astron Token Plan | 可以购买 | - | 面向企业/团队的成员积分订阅；当前活动已结束，按常规月价记录。 |
+| 讯飞 · Astron Token Plan | 可以购买 | - | 面向企业/团队的成员积分订阅；活动已结束，现按常规月价购买。 |
 
 更详细的性价比、模型覆盖、稳定性评价和状态筛选见[在线平台中心](https://codingplan.fyi/platforms/)。
 

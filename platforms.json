@@ -65,7 +65,7 @@
       "slug": "bytedance-ark",
       "name": "字节·方舟 Coding Plan",
       "rating": 5,
-      "summary": "方舟Coding Plan当前多模型与Auto接入；保留历史测量基准，其他倍率明确为推测。",
+      "summary": "支持多模型与 Auto 接入；部分模型额度为估算值。",
       "detail": "Coding与Agent活动日期和系数不同，不能互套。",
       "dimensions": {
         "value": {
@@ -140,7 +140,7 @@
       "slug": "minimax-coding-legacy",
       "name": "MiniMax Coding Plan（已下架）",
       "rating": 5,
-      "summary": "历史Token Plan老权益产品线，仅存量用户自动续费；支持最新型号但用量不直接套旧测量。",
+      "summary": "旧 Token Plan 仅存量用户可自动续费；新型号的精确 Token 额度未知。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
       "platformStatus": "delisted",
       "requiresOverseasNetwork": null,
@@ -240,11 +240,11 @@
       "name": "共绩算力",
       "rating": 5,
       "summary": "GLM、Kimi、Qwen、DeepSeek按量API；邀请8折仅适用于资格仍有效的用户。",
-      "detail": "当前收录11个LLM；V4正式版此前维护，未有恢复调用的新依据。折扣资格沿用2026-09-04确认，本次标价已核对，资格有效性需账户确认。",
+      "detail": "支持 11 个大语言模型；DeepSeek V4 正式版能否恢复调用待确认。邀请折扣需有效资格，购买前请在账户中确认。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "有有效邀请资格时按标价8折；本次未做扣费验证。"
+          "reason": "有效邀请资格可享标价 8 折，实际折扣以账户结算为准。"
         },
         "models": {
           "score": 5,
@@ -266,7 +266,7 @@
       "name": "优云智算",
       "rating": 4,
       "summary": "六档请求制Coding Plan，当前九个LLM各按明确次数扣减。",
-      "detail": "登录控制台核对的扣减与并发已更新；Token量是统一请求负载估计。",
+      "detail": "模型的请求扣减倍率与并发上限不同；Token 量按统一请求负载估算。",
       "dimensions": {
         "value": {
           "score": 4,
@@ -274,7 +274,7 @@
         },
         "models": {
           "score": 4,
-          "reason": "登录控制台核对的扣减与并发已更新；Token量是统一请求负载估计。"
+          "reason": "模型的请求扣减倍率与并发上限不同；Token 量按统一请求负载估算。"
         },
         "stability": {
           "score": 5,
@@ -291,15 +291,15 @@
       "name": "Codex",
       "rating": 5,
       "summary": "Codex官方订阅，支持GPT-6.1 Sol及6系列；Pro $500另支持Ultrafast。",
-      "detail": "速度档按实际订阅系数分别记录；新型号与新套餐额度未独立测量。",
+      "detail": "速度档影响额度消耗；新型号与新套餐的精确 Token 额度未知。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "Plus与Pro $100/$200/$500价格和权限分别记录；Pro取消五小时窗口，Plus仍有五小时限制。当前新型号没有固定官方Token额度，旧测量仅作参考。"
+          "reason": "Plus 与 Pro $100/$200/$500 的价格和权限不同；Pro取消五小时窗口，Plus仍有五小时限制。当前新型号没有固定官方Token额度，旧测量仅作参考。"
         },
         "models": {
           "score": 5,
-          "reason": "速度档按实际订阅系数分别记录；新型号与新套餐额度未独立测量。"
+          "reason": "速度档影响额度消耗；新型号与新套餐的精确 Token 额度未知。"
         },
         "stability": {
           "score": 5,
@@ -316,7 +316,7 @@
       "name": "Claude",
       "rating": 4,
       "summary": "Claude Code官方订阅，已支持Opus、Sonnet、Haiku 5.5；新型号精确Token额度未知。",
-      "detail": "5.5系列与旧型号分开记录，不将API价格或旧逆向数据当新订阅额度。",
+      "detail": "支持 Claude 5.5 系列；精确订阅 Token 额度未知，不能按 API 价格推算。",
       "dimensions": {
         "value": {
           "score": 5,
@@ -324,7 +324,7 @@
         },
         "models": {
           "score": 5,
-          "reason": "5.5系列与旧型号分开记录，不将API价格或旧逆向数据当新订阅额度。"
+          "reason": "支持 Claude 5.5 系列；精确订阅 Token 额度未知，不能按 API 价格推算。"
         },
         "stability": {
           "score": 3,
@@ -348,7 +348,7 @@
         },
         "models": {
           "score": 5,
-          "reason": "Pro/Max月池独立于本地免费模型；只按公开云端名单与价格计算。"
+          "reason": "Pro/Max 云端月额度与本地免费模型相互独立。"
         },
         "stability": {
           "score": 4,
@@ -359,7 +359,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "detail": "Pro/Max月池独立于本地免费模型；只按公开云端名单与价格计算。"
+      "detail": "Pro/Max 云端月额度与本地免费模型相互独立。"
     },
     {
       "slug": "aliyun-bailian",
@@ -575,7 +575,7 @@
         },
         "stability": {
           "score": null,
-          "reason": "阿里旗下官方产品；尚未完成本站稳定性实测。"
+          "reason": "阿里旗下官方产品；稳定性待确认。"
         }
       },
       "requiresOverseasNetwork": false,
@@ -600,7 +600,7 @@
         },
         "stability": {
           "score": null,
-          "reason": "官方客户端服务；尚未完成本站稳定性实测。"
+          "reason": "官方客户端服务；稳定性待确认。"
         }
       },
       "requiresOverseasNetwork": false,
@@ -625,7 +625,7 @@
         },
         "stability": {
           "score": null,
-          "reason": "腾讯官方产品；尚未完成本站稳定性实测。"
+          "reason": "腾讯官方产品；稳定性待确认。"
         }
       },
       "requiresOverseasNetwork": false,
@@ -662,20 +662,20 @@
       "name": "TRAE 国际版",
       "rating": 3,
       "summary": "Free仅Auto；新Lite/Pro/Pro+/Ultra与老套餐并存，按模型Token价扣减月Usage。",
-      "detail": "新Lite有地区限制，旧档停止新购但按各用户周期迁移；不混用新旧额度。",
+      "detail": "新Lite有地区限制，旧档停止新购，按各用户周期迁移；新旧套餐额度不同。",
       "platformStatus": "open",
       "dimensions": {
         "value": {
           "score": null,
-          "reason": "新版月费$8/$20/$60/$200，老连续订阅保价另列；新套餐已按完整模型价估算月Token，免费版具体额度未知。"
+          "reason": "新版月费$8/$20/$60/$200，老连续订阅可保价；新套餐月 Token 量按模型价格估算，免费版具体额度未知。"
         },
         "models": {
           "score": null,
-          "reason": "新Lite有地区限制，旧档停止新购但按各用户周期迁移；不混用新旧额度。"
+          "reason": "新Lite有地区限制，旧档停止新购，按各用户周期迁移；新旧套餐额度不同。"
         },
         "stability": {
           "score": null,
-          "reason": "字节官方产品；存在地区限制，尚未完成本站稳定性实测。"
+          "reason": "字节官方产品；存在地区限制，稳定性待确认。"
         }
       },
       "requiresOverseasNetwork": true,
@@ -720,11 +720,11 @@
         },
         "models": {
           "score": null,
-          "reason": "支持 Grok、Claude、GPT、Gemini、Muse Spark；Composer 2.5 的旧套餐模型池单独记录。"
+          "reason": "支持 Grok、Claude、GPT、Gemini、Muse Spark；Composer 2.5 使用旧套餐模型池。"
         },
         "stability": {
           "score": null,
-          "reason": "官方编辑器与 Agent 服务；尚未完成本站稳定性实测。"
+          "reason": "官方编辑器与 Agent 服务；稳定性待确认。"
         }
       },
       "platformStatus": "open",
@@ -744,7 +744,7 @@
         },
         "models": {
           "score": 2,
-          "reason": "Coding模型名单与新Token Plan上下文阶梯分别核对。"
+          "reason": "Coding Plan 与新 Token Plan 的模型范围和上下文计费规则不同。"
         },
         "stability": {
           "score": 4,
@@ -755,21 +755,21 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "detail": "Coding模型名单与新Token Plan上下文阶梯分别核对。"
+      "detail": "Coding Plan 与新 Token Plan 的模型范围和上下文计费规则不同。"
     },
     {
       "slug": "iflytek",
       "name": "讯飞·星火",
       "rating": 3,
-      "summary": "个人版沿用此前高效版与速通版记录；2026-10-12当前价格和完整支持未能公开核实。",
+      "summary": "个人版分高效版与速通版；当前价格和完整模型支持范围待确认。",
       "dimensions": {
         "value": {
           "score": 3,
-          "reason": "个人版199/699元为此前记录，本轮未确认当前完整订购权益；企业Astron成员积分产品另列。"
+          "reason": "个人版历史月价为 199/699 元，当前价格与完整权益待确认；企业 Astron 为成员积分订阅。"
         },
         "models": {
           "score": 4,
-          "reason": "保留已知个人版型号关系并移除明确下线型号；完整支持名单本次未确认。"
+          "reason": "个人版当前完整模型支持范围待确认。"
         },
         "stability": {
           "score": 3,
@@ -785,7 +785,7 @@
       "slug": "unicom-cloud",
       "name": "联通云",
       "rating": 2,
-      "summary": "此前Token Plan资料保留；2026-10-12官方页面无法读取，当前价格、支持和购买状态未重新确认。",
+      "summary": "Token Plan 当前价格、模型支持范围和购买状态待确认。",
       "dimensions": {
         "value": {
           "score": 3,
@@ -793,7 +793,7 @@
         },
         "models": {
           "score": 1,
-          "reason": "此前接入DeepSeek V4 Flash与MiniMax M2.5等；本轮无法确认最新名单。"
+          "reason": "曾支持 DeepSeek V4 Flash 与 MiniMax M2.5 等；当前完整模型名单待确认。"
         },
         "stability": {
           "score": 4,
@@ -863,7 +863,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "summary": "Step Plan现按月Credits，支持Step5 Preview和Flash系列；本次购买按钮售罄。",
+      "summary": "Step Plan现按月Credits，支持Step5 Preview和Flash系列；目前售罄，恢复发售时间未知。",
       "detail": "旧prompt推算不适用当前Credits，精确抵扣未公开；恢复发售时间未知。"
     },
     {
@@ -894,7 +894,7 @@
       "slug": "chaosuan",
       "name": "超算",
       "rating": 2,
-      "summary": "旧Coding Plan公开文档仍列两个模型；新Credits Token Plan单独收录。",
+      "summary": "旧 Coding Plan 支持两个模型，与新 Credits Token Plan 为独立产品。",
       "dimensions": {
         "value": {
           "score": 3,
@@ -975,7 +975,7 @@
         },
         "models": {
           "score": 2,
-          "reason": "个人套餐停售，保留历史身份；不将旧权益作为当前可购买方案。"
+          "reason": "个人套餐已停售，不再提供个人服务。"
         },
         "stability": {
           "score": 1,
@@ -987,7 +987,7 @@
       "requiresOverseasPayment": null,
       "supportsHarnessApi": true,
       "summary": "已停止向个人用户提供服务，企业体验按官方联系方式办理。",
-      "detail": "个人套餐停售，保留历史身份；不将旧权益作为当前可购买方案。"
+      "detail": "个人套餐已停售，不再提供个人服务。"
     },
     {
       "slug": "ctyun",
@@ -1162,7 +1162,7 @@
       "slug": "iflytek-token",
       "name": "讯飞 · Astron Token Plan",
       "rating": 0,
-      "summary": "面向企业/团队的成员积分订阅；当前活动已结束，按常规月价记录。",
+      "summary": "面向企业/团队的成员积分订阅；活动已结束，现按常规月价购买。",
       "dimensions": {
         "value": {
           "score": null,

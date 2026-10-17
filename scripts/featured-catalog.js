@@ -5,6 +5,7 @@
 })(globalThis, function () {
   'use strict';
   const UI = globalThis.CodingPlanUI || require('./ui-core.js');
+  const Help = globalThis.CodingPlanHelp || require('./ui-help.js');
   const esc = UI.escapeHtml, url = value => UI.sanitizeUrl(value, '#');
   function validate(config, context) {
     const errors = [];
@@ -64,14 +65,13 @@
   function mountTables(host, preset, context, config, options = {}) {
     let unit = globalThis.CodingPlanDisplaySettings?.getTokenUnit() || 'yi';
     const data = points(context,config), expanded = new Set(), selectedModels = Object.create(null);
-    const tableOptions = {...presetTableOptions(options), selectedModels};
+    const tableOptions = {...presetTableOptions(options), selectedModels, hideDescription:true};
     const render = () => {
       const focused = document.activeElement;
       const selectedButton = focused?.closest?.('[data-preset-model]');
       const focus = selectedButton && host.contains(selectedButton) ? {group:selectedButton.closest('[data-preset-id]').dataset.presetId,model:selectedButton.dataset.presetModel} : null;
       globalThis.ModelComparison.renderPresetComparisons(host,preset,data,unit,'featured',tableOptions);
-      host.insertAdjacentHTML('afterbegin', `<div class="featured-table-controls"><span>各模型的综合单价，具体计算方法详情参考价格与额度页</span></div>`);
-      host.insertAdjacentHTML('beforeend','<p class="comparison-method">订阅综合单价按参考月额度用满计算；按量 API 没有固定月额度。实际成本受用量、输入输出和缓存比例影响，不同模型能力也有差异。未知不等于零，各模型额度不相加。<a href="/pricing/#pricingMethod">查看计算口径 →</a></p>');
+      host.insertAdjacentHTML('beforeend', `<p class="comparison-method">订阅单价按参考月额度用满计算；各模型额度不相加。${Help.html(host.id + '-priceHelp','综合单价说明','订阅综合单价是用满参考月额度时的单价。按量 API 按实际用量计费，没有固定月额度。实际成本受输入、输出和缓存比例影响；不同模型能力不同，未知额度不等于零。')}<a href="/pricing/#pricingMethod">计算口径 →</a></p>`);
       for (const id of expanded) { const card = [...host.querySelectorAll('[data-preset-id]')].find(x=>x.dataset.presetId===id); if(card) toggle(card,true); }
       if(focus) focusModelButton(focus.group,focus.model);
     };

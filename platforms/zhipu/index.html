@@ -3,6 +3,7 @@
 <html lang="zh-CN">
 <head>
 <script src="/scripts/ui-core.js?v=00a7eba403"></script>
+<script src="/scripts/ui-help.js?v=343d388a1a"></script>
 <script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
 <script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
 <script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
@@ -23,14 +24,15 @@
   <link rel="icon" href="/favicon.ico?v=260924a">
   <link rel="stylesheet" href="/styles/shared.css?v=482edb170c">
   <link rel="stylesheet" href="/styles/tool-page.css?v=2fbdd6501f">
-  <link rel="stylesheet" href="/styles/platform-guide.css?v=6ee31eb37a">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://codingplan.fyi/platforms/zhipu/","url":"https://codingplan.fyi/platforms/zhipu/","name":"智谱 GLM Coding Plan：套餐价格、积分额度与使用指南 - Coding Plan","description":"了解智谱 GLM Coding Plan 的 Lite、Pro、Max 套餐，查看价格、支持模型、积分额度和接入边界，按自己的编程工作量选择档位。","inLanguage":"zh-CN","datePublished":"2026-09-15","dateModified":"2026-10-13","isPartOf":{"@type":"WebSite","name":"Coding Plan","url":"https://codingplan.fyi/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Coding Plan","item":"https://codingplan.fyi/"},{"@type":"ListItem","position":2,"name":"平台介绍","item":"https://codingplan.fyi/platforms/"},{"@type":"ListItem","position":3,"name":"智谱 GLM Coding Plan","item":"https://codingplan.fyi/platforms/zhipu/"}]}]}</script>
+  <link rel="stylesheet" href="/styles/platform-guide.css?v=cf1c74f518">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://codingplan.fyi/platforms/zhipu/","url":"https://codingplan.fyi/platforms/zhipu/","name":"智谱 GLM Coding Plan：套餐价格、积分额度与使用指南 - Coding Plan","description":"了解智谱 GLM Coding Plan 的 Lite、Pro、Max 套餐，查看价格、支持模型、积分额度和接入边界，按自己的编程工作量选择档位。","inLanguage":"zh-CN","datePublished":"2026-09-15","dateModified":"2026-10-17","isPartOf":{"@type":"WebSite","name":"Coding Plan","url":"https://codingplan.fyi/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Coding Plan","item":"https://codingplan.fyi/"},{"@type":"ListItem","position":2,"name":"平台介绍","item":"https://codingplan.fyi/platforms/"},{"@type":"ListItem","position":3,"name":"智谱 GLM Coding Plan","item":"https://codingplan.fyi/platforms/zhipu/"}]}]}</script>
 <link rel="stylesheet" href="/styles/design-system.css?v=a87ff3bd25">
 <script src="/scripts/number-display.js?v=6c6a6ccb42" defer></script>
 <script src="/scripts/platform-guide.js?v=eb39249fa5" defer></script>
 <script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
-<link rel="stylesheet" href="/styles/ui-components.css?v=bf5f1551fa">
+<link rel="stylesheet" href="/styles/ui-components.css?v=4839ae1fc0">
+<link rel="stylesheet" href="/styles/ui-help.css?v=1fa99848ee">
 </head>
 <body class="platform-guide">
   <a class="guide-skip" href="#guide-content">跳到介绍正文</a>
@@ -84,12 +86,12 @@
         <h1>智谱 GLM Coding Plan</h1>
         <p class="guide-lead">以 GLM 模型为主的编程订阅服务。先选适合自己工作量的额度档位，再确认常用工具能否使用套餐，避免把编程订阅与通用 API 余额混在一起。</p>
         <div class="guide-actions"><a class="guide-button" href="/plans/?platform=zhipu">查看套餐对比 →</a><a class="guide-button secondary" href="https://bigmodel.cn/glm-coding">查看官网 <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></div>
-        <p class="guide-dates">介绍更新 <time datetime="2026-10-13">2026-10-13</time><span>·</span>套餐与模型记录 <time datetime="2026-10-12">2026-10-12</time></p>
+        <p class="guide-dates">介绍更新 <time datetime="2026-10-17">2026-10-17</time><span>·</span>套餐与模型记录 <time datetime="2026-10-12">2026-10-12</time></p>
       </div>
       <div class="guide-monogram" aria-hidden="true">GLM</div>
     </header>
     <div class="guide-layout">
-      <nav class="guide-toc" aria-label="本页目录"><p>本页内容</p><a href="#overview"><span>01</span>先看是否适合自己</a><a href="#plans"><span>02</span>套餐与价格</a><a href="#models"><span>03</span>支持哪些模型</a><a href="#credits"><span>04</span>积分额度怎么理解</a><a href="#usage"><span>05</span>按模型看 Token 用量参考</a><a href="#tools"><span>06</span>接入工具与使用边界</a><a href="#before-buying"><span>07</span>智谱选购时容易混淆的地方</a><a href="#related"><span>08</span>继续比较</a><a href="#sources"><span>09</span>官方资料与记录说明</a></nav>
+      <nav class="guide-toc" aria-label="本页目录"><p>本页内容</p><a href="#overview"><span>01</span>先看是否适合自己</a><a href="#plans"><span>02</span>套餐与价格</a><a href="#models"><span>03</span>支持哪些模型</a><a href="#credits"><span>04</span>积分额度怎么理解</a><a href="#usage"><span>05</span>按模型看 Token 用量参考</a><a href="#tools"><span>06</span>接入工具与使用边界</a><a href="#before-buying"><span>07</span>智谱选购时容易混淆的地方</a><a href="#related"><span>08</span>继续比较</a><a href="#sources"><span>09</span>官方资料</a></nav>
       <main id="guide-content" class="guide-content"><section id="overview" class="guide-section"><h2>先看是否适合自己</h2><p>智谱 GLM Coding Plan 把模型使用额度打包为订阅，主要用于代码生成、修改、调试和代码库问答。它适合已经习惯 GLM，或希望在现有编程工具中接入 GLM 的个人开发者。</p>
 <ul>
 <li><strong>可以优先考虑</strong>：主要围绕 GLM 工作，希望按固定周期管理预算，并愿意根据实际消耗选择套餐档位。</li>
@@ -97,7 +99,7 @@
 <li><strong>购买前先确认</strong>：工具是否在支持范围、使用哪个接入端点，以及自己的工作量会先触及哪个额度窗口。</li>
 </ul>
 <blockquote>
-<p>本页展示个人套餐。介绍更新时间与套餐、模型记录日期分别标注；价格和支持列表应结合记录日期阅读。</p>
+<p>本页介绍国内个人套餐；国际版与旧套餐的价格和权益可能不同。</p>
 </blockquote>
 </section>
 <section id="plans" class="guide-section"><h2>套餐与价格</h2><div class="guide-plan-grid"><article class="guide-plan">
@@ -120,7 +122,7 @@
     <p class="guide-plan-advice">适合有持续高用量需求的用户。购买前先评估实际消耗和并发要求，避免为用不完的额度付费。</p>
   </article></div><p class="guide-muted">各模型共用套餐积分；每 5 小时和每周限制同时生效。季付与年付展示整个周期的金额，购买价格以订购页面为准。</p><p>三档的选择重点是工作量。先用自己的代码库完成几轮完整任务，观察修改质量和消耗，再决定是否需要更高额度。官方对并发资源的安排可能随档位和负载变化，不能把额度倍数直接当作速度倍数。</p>
 </section>
-<section id="models" class="guide-section"><h2>支持哪些模型</h2><p>本站收录 2 个支持模型；同一模型的不同计费档位合并展示。</p><div class="guide-table-wrap" tabindex="0" role="region" aria-label="套餐支持模型"><table><caption>套餐支持模型</caption><thead><tr><th scope="col">模型</th><th scope="col">支持套餐</th></tr></thead><tbody><tr><th scope="row">GLM-5.3</th><td>新Lite、新Pro、新Max</td></tr><tr><th scope="row">GLM-5.3-Flash</th><td>新Lite、新Pro、新Max</td></tr></tbody></table></div><p class="guide-muted">模型记录日期：2026-10-12。可选名称与实际服务版本可能不同，使用前请核对官方说明。</p><p>列表回答的是“本站记录了哪些可选模型”。模型名称、历史别名和实际服务版本并不总是一一对应，接入时还应查看<a href="https://docs.bigmodel.cn/cn/coding-plan/overview">官方可用模型说明</a>。不要只凭客户端中显示的旧名称判断底层模型。</p>
+<section id="models" class="guide-section"><h2>支持哪些模型</h2><p>本站收录 2 个支持模型；同一模型的不同计费档位合并展示。</p><div class="guide-table-wrap" tabindex="0" role="region" aria-label="套餐支持模型"><table><caption>套餐支持模型</caption><thead><tr><th scope="col">模型</th><th scope="col">支持套餐</th></tr></thead><tbody><tr><th scope="row">GLM-5.3</th><td>新Lite、新Pro、新Max</td></tr><tr><th scope="row">GLM-5.3-Flash</th><td>新Lite、新Pro、新Max</td></tr></tbody></table></div><p class="guide-muted">模型记录日期：2026-10-12。可选名称与实际服务版本可能不同，使用前请核对官方说明。</p><p>模型名称、历史别名和实际服务版本并不总是一一对应，接入时还应查看<a href="https://docs.bigmodel.cn/cn/coding-plan/overview">官方可用模型说明</a>。不要只凭客户端中显示的旧名称判断底层模型。</p>
 </section>
 <section id="credits" class="guide-section"><h2>积分额度怎么理解</h2><div class="guide-table-wrap" tabindex="0" role="region" aria-label="套餐积分额度"><table><caption>套餐积分额度</caption><thead><tr><th scope="col">套餐</th><th scope="col">每 5 小时</th><th scope="col">每周</th></tr></thead><tbody><tr><th scope="row">新Lite</th><td>2,000 积分</td><td>10,000 积分</td></tr><tr><th scope="row">新Pro</th><td>12,000 积分</td><td>60,000 积分</td></tr><tr><th scope="row">新Max</th><td>28,000 积分</td><td>140,000 积分</td></tr></tbody></table></div><p><strong>积分不是固定数量的请求，也不是固定数量的 Token</strong>。同一次任务包含多少输入、缓存和输出，以及所用模型与时段，都会影响抵扣。长对话和多轮 Agent 工作也可能产生多次请求。</p>
 <p>这两个窗口需要同时满足：短时间集中执行任务可能先碰到 5 小时上限，持续多天使用则可能先碰到周上限。额度刷新方式和余额请在官方用量页确认。</p>
@@ -130,7 +132,7 @@
 <div class="guide-usage-comparison" data-guide-usage><div class="guide-table-wrap" tabindex="0" role="region" aria-label="月 Token 参考量"><table><caption>月 Token 参考量（<span data-guide-token-unit>亿</span> Token）</caption><thead><tr><th scope="col">模型</th><th scope="col">时段 / 档位</th><th scope="col">新Lite</th><th scope="col">新Pro</th><th scope="col">新Max</th></tr></thead><tbody><tr><th scope="row">GLM-5.3</th><td>非高峰</td><td><span data-guide-token-m="386.4">3.86</span></td><td><span data-guide-token-m="2318.6">23.2</span></td><td><span data-guide-token-m="5410.1">54.1</span></td></tr><tr><th scope="row">GLM-5.3</th><td>高峰</td><td><span data-guide-token-m="193.2">1.93</span></td><td><span data-guide-token-m="1159.3">11.6</span></td><td><span data-guide-token-m="2705.1">27.1</span></td></tr><tr><th scope="row">GLM-5.3-Flash</th><td>非高峰</td><td><span data-guide-token-m="1170">11.7</span></td><td><span data-guide-token-m="7020">70.2</span></td><td><span data-guide-token-m="16379.9">164</span></td></tr><tr><th scope="row">GLM-5.3-Flash</th><td>高峰</td><td><span data-guide-token-m="585">5.85</span></td><td><span data-guide-token-m="3510">35.1</span></td><td><span data-guide-token-m="8189.9">81.9</span></td></tr></tbody></table></div><details class="guide-usage-details"><summary>查看每 5 小时与每周参考量</summary><div class="guide-table-wrap" tabindex="0" role="region" aria-label="每 5 小时 Token 参考量"><table><caption>每 5 小时 Token 参考量（<span data-guide-token-unit>亿</span> Token）</caption><thead><tr><th scope="col">模型</th><th scope="col">时段 / 档位</th><th scope="col">新Lite</th><th scope="col">新Pro</th><th scope="col">新Max</th></tr></thead><tbody><tr><th scope="row">GLM-5.3</th><td>非高峰</td><td><span data-guide-token-m="19.3218046566">0.193</span></td><td><span data-guide-token-m="115.9308279393">1.16</span></td><td><span data-guide-token-m="270.5052651918">2.71</span></td></tr><tr><th scope="row">GLM-5.3</th><td>高峰</td><td><span data-guide-token-m="9.6609023283">0.0966</span></td><td><span data-guide-token-m="57.9654139697">0.58</span></td><td><span data-guide-token-m="135.2526325959">1.35</span></td></tr><tr><th scope="row">GLM-5.3-Flash</th><td>非高峰</td><td><span data-guide-token-m="58.4996307211">0.585</span></td><td><span data-guide-token-m="350.9977843265">3.51</span></td><td><span data-guide-token-m="818.9948300951">8.19</span></td></tr><tr><th scope="row">GLM-5.3-Flash</th><td>高峰</td><td><span data-guide-token-m="29.2498153605">0.292</span></td><td><span data-guide-token-m="175.4988921632">1.75</span></td><td><span data-guide-token-m="409.4974150476">4.09</span></td></tr></tbody></table></div><div class="guide-table-wrap" tabindex="0" role="region" aria-label="每周 Token 参考量"><table><caption>每周 Token 参考量（<span data-guide-token-unit>亿</span> Token）</caption><thead><tr><th scope="col">模型</th><th scope="col">时段 / 档位</th><th scope="col">新Lite</th><th scope="col">新Pro</th><th scope="col">新Max</th></tr></thead><tbody><tr><th scope="row">GLM-5.3</th><td>非高峰</td><td><span data-guide-token-m="96.6090232828">0.966</span></td><td><span data-guide-token-m="579.6541396966">5.8</span></td><td><span data-guide-token-m="1352.5263259588">13.5</span></td></tr><tr><th scope="row">GLM-5.3</th><td>高峰</td><td><span data-guide-token-m="48.3045116414">0.483</span></td><td><span data-guide-token-m="289.8270698483">2.9</span></td><td><span data-guide-token-m="676.2631629794">6.76</span></td></tr><tr><th scope="row">GLM-5.3-Flash</th><td>非高峰</td><td><span data-guide-token-m="292.4981536054">2.92</span></td><td><span data-guide-token-m="1754.9889216324">17.5</span></td><td><span data-guide-token-m="4094.9741504757">40.9</span></td></tr><tr><th scope="row">GLM-5.3-Flash</th><td>高峰</td><td><span data-guide-token-m="146.2490768027">1.46</span></td><td><span data-guide-token-m="877.4944608162">8.77</span></td><td><span data-guide-token-m="2047.4870752378">20.5</span></td></tr></tbody></table></div></details></div><p><strong>这里是本站按积分扣减系数计算的参考量，不是官方承诺的 Token 包，也不是实测额度。</strong> 计算采用输入占比 99.5%、输出占比 0.5%、输入缓存命中率 95% 的统一工作负载。输出更多、缓存命中更少时，实际可用的总 Token 会下降。</p>
 <ul>
 <li><strong>月参考量按每周额度 ×4 换算</strong>，不表示存在独立的官方月额度；仍需同时满足每 5 小时和每周限制。短窗口参考量可以展开查看。</li>
-<li>当前收录的高峰时段为周一至周五 9:00–12:00、14:00–18:00；其他时段按非高峰系数计算。实际时段与扣减规则请核对官方说明。</li>
+<li>高峰时段为周一至周五 9:00–12:00、14:00–18:00；其他时段按非高峰系数计算。实际时段与扣减规则请核对官方说明。</li>
 <li><strong>各行不能相加</strong>：两个模型共用套餐积分，峰与非峰也是同一份额度在不同条件下的换算。混合使用时应看实际积分消耗。</li>
 </ul>
 <p>表格默认以亿 Token 展示，可在顶部“显示设置”切换 M / B。需要查看价格与额度的完整明细，可打开<a href="/pricing/?platform=zhipu">智谱的价格与额度对比</a>。</p>
@@ -146,7 +148,7 @@
 <p>如果是为自己开发的网站、应用或其他 API 服务选购模型，需要另行确认其适用计费方式；不要把编程订阅当成适用于所有调用场景的余额。</p>
 </section>
 <section id="before-buying" class="guide-section"><h2>智谱选购时容易混淆的地方</h2><h3>国内版、国际版与旧套餐</h3>
-<p>本页对应智谱国内平台的个人套餐。国际版在站内单独收录；旧套餐的文章、截图或账号权益也可能不同。比较时应同时看地区、产品线和记录时间，不能只比较 Lite、Pro、Max 这些档位名称。</p>
+<p>本页对应智谱国内平台的个人套餐。国际版的价格与权益不同；旧套餐的文章、截图或账号权益也可能不同。比较时应同时看地区、产品线和记录时间，不能只比较 Lite、Pro、Max 这些档位名称。</p>
 <h3>官方工具的额外权益</h3>
 <p>某些权益与指定工具、模型或活动时间有关。若你主要为了某项加成购买，请打开<a href="https://docs.bigmodel.cn/cn/coding-plan/overview">当前套餐说明</a>核对条件，并确认自己使用的客户端也适用。限时权益不应直接当作长期基础额度。</p>
 <h3>先分清为什么要升级</h3>
@@ -154,7 +156,7 @@
 </section>
 <section id="related" class="guide-section"><h2>继续比较</h2><p>如果希望在一个订阅中切换多家模型，可以继续了解 OpenCode Go；如果已经确定以 GLM 为主，则回到套餐表比较自己需要的档位。</p>
 <div class="guide-related"><a class="guide-related-card" href="/platforms/opencode/"><strong>OpenCode Go / Go Plus</strong><span>了解 OpenCode Go / Go Plus 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。</span><span>阅读平台介绍 →</span></a></div><ul class="guide-article-links"><li><a href="/articles/plan_comparisons/20260824/index.html">主流 AI 平台怎么选：套餐与按量 API 对比</a></li><li><a href="/articles/model_comparisons/20260907/index.html">主流大模型能力对比：综合能力与编程表现</a></li></ul></section>
-<section id="sources" class="guide-section"><h2>官方资料与记录说明</h2><ul class="guide-sources"><li><a href="https://bigmodel.cn/glm-coding">智谱官方订购页</a><span>查看当前售价、续费周期与可购买状态。</span></li><li><a href="https://docs.bigmodel.cn/cn/coding-plan/overview">套餐概览与积分说明</a><span>核对可用模型、额度窗口与实际抵扣规则。</span></li><li><a href="https://docs.bigmodel.cn/cn/coding-plan/tool/others">官方支持的工具与接入方式</a></li><li><a href="https://docs.bigmodel.cn/cn/coding-plan/usage-notes">使用须知</a><span>核对账号、并发、续订和退款规则。</span></li></ul><p>套餐价格、模型支持和积分表采用本站当前收录资料，记录日期见页首。介绍中的选购建议由 Coding Plan 整理，不代表官方保证；历史文章保留各自日期下的比较结论。</p>
+<section id="sources" class="guide-section"><h2>官方资料</h2><ul class="guide-sources"><li><a href="https://bigmodel.cn/glm-coding">智谱官方订购页</a><span>查看当前售价、续费周期与可购买状态。</span></li><li><a href="https://docs.bigmodel.cn/cn/coding-plan/overview">套餐概览与积分说明</a><span>核对可用模型、额度窗口与实际抵扣规则。</span></li><li><a href="https://docs.bigmodel.cn/cn/coding-plan/tool/others">官方支持的工具与接入方式</a></li><li><a href="https://docs.bigmodel.cn/cn/coding-plan/usage-notes">使用须知</a><span>核对账号、并发、续订和退款规则。</span></li></ul><p>价格、模型支持与积分规则可能变化，购买前请确认官方说明；历史文章的比较结论以发表日期为准。</p>
 </section></main>
     </div>
     <footer class="guide-footer"><p>价格、活动与可用模型可能变化，购买和接入前请核对官方页面。本站的选择建议不代表服务承诺。</p><div><a href="/platforms/">全部平台</a><a href="/plans/">套餐对比</a><a href="/">返回首页</a><a href="https://github.com/wmpeng/codingplan/issues">反馈资料问题</a></div></footer>

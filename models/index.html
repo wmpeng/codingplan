@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="zh-CN"><head>
 <script src="/scripts/ui-core.js?v=00a7eba403"></script>
+<script src="/scripts/ui-help.js?v=343d388a1a"></script>
 <script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
 <script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
 <script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
@@ -13,7 +14,8 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"AI 模型目录与能力对比","url":"https://codingplan.fyi/models/","inLanguage":"zh-CN"}</script>
 <script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
-<link rel="stylesheet" href="/styles/ui-components.css?v=bf5f1551fa">
+<link rel="stylesheet" href="/styles/ui-components.css?v=4839ae1fc0">
+<link rel="stylesheet" href="/styles/ui-help.css?v=1fa99848ee">
 </head><body class="tool-page discovery-page models-page tool-unified-active">
 <!-- SITE_NAV_START -->
 <header class="tool-topbar site-header">
@@ -58,7 +60,7 @@
 </header>
 <!-- SITE_NAV_END -->
 <main class="tool-page-main">
-<header class="tool-hero"><div><h1>先看模型，再选购买方案</h1><p>了解能力、输入模态和购买渠道。AA 与 DeepSWE 使用不同量尺，各自排序，不合成总分；缺少分数不代表能力为零。</p></div><a class="tool-button" href="/pricing/">比较价格与额度 →</a></header>
+<header class="tool-hero"><div><h1>先看模型，再选购买方案</h1></div><a class="tool-button" href="/pricing/">比较价格与额度 →</a></header>
 <section id="allModels" aria-label="模型目录">
 <section id="modelControls" class="filter-state-bar surface-panel" aria-label="模型筛选">
   <div class="filter-state-grid">
@@ -77,7 +79,7 @@
     <div class="filter-state-actions"><button type="button" id="modelReset" data-filter-action="reset">重置筛选</button></div>
   </div></div>
 </section>
-<div class="tool-result-bar model-result-bar"><input type="search" id="modelSearch" placeholder="搜索模型名称" aria-label="搜索模型"><span id="modelCount" class="tool-count" role="status">符合条件 155 个</span></div>
+<div class="tool-result-bar model-result-bar"><input type="search" id="modelSearch" placeholder="搜索模型名称" aria-label="搜索模型"><span id="modelCount" class="tool-count" role="status">符合条件 155 个</span><span>评分说明 <span class="ui-help"><button type="button" class="ui-help-button" popovertarget="modelScoreHelp" aria-label="模型评分说明" aria-expanded="false" aria-controls="modelScoreHelp"><span aria-hidden="true">?</span></button><span class="ui-help-content" id="modelScoreHelp" popover="auto" role="tooltip">AA 与 DeepSWE 使用不同量尺，各自排序，不合成总分。缺少分数表示暂无评测，不代表能力为零；分数旁的链接提供评分来源。</span></span></span></div>
 <div id="modelDirectory" class="model-grid"><!-- MODEL_DIRECTORY_START -->
 <article class="model-card is-featured" data-model-slug="deepseek-v4-1-flash"><header class="model-card-header"><h3>DeepSeek-V4.1-Flash</h3><div class="model-card-aside"><span class="model-featured-badge">精选</span><button type="button" class="ui-icon-button ui-pin-button " data-model-pin="deepseek-v4-1-flash" aria-pressed="false" aria-label="置顶 DeepSeek-V4.1-Flash" title="置顶"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></header><p class="model-modality">文本 / 图片输入</p><div class="model-scores"><span class="model-score"><span class="model-score-value"><strong>39.5</strong> <a href="https://artificialanalysis.ai/models/deepseek-v4-1-flash" target="_blank" rel="noopener noreferrer" aria-label="DeepSeek-V4.1-Flash AA评分来源" title="DeepSeek V4.1 Flash (Max)">↗</a></span><span class="model-score-label">AA</span></span><span class="model-score"><span class="model-score-value"><strong class="score-unknown">暂无评分</strong></span><span class="model-score-label">DeepSWE</span></span></div><a class="model-offers-link" href="/plans/?model=deepseek-v4-1-flash">18 个平台收录 · 查看套餐 →</a><a class="model-price-link" href="/pricing/?model=deepseek-v4-1-flash">比较价格与按量 API →</a></article>
 <article class="model-card is-featured" data-model-slug="deepseek-v4-flash-0731"><header class="model-card-header"><h3>DeepSeek-V4-Flash-0731</h3><div class="model-card-aside"><span class="model-featured-badge">精选</span><button type="button" class="ui-icon-button ui-pin-button " data-model-pin="deepseek-v4-flash-0731" aria-pressed="false" aria-label="置顶 DeepSeek-V4-Flash-0731" title="置顶"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button></div></header><p class="model-modality">文本输入</p><div class="model-scores"><span class="model-score"><span class="model-score-value"><strong>34.3</strong> <a href="https://artificialanalysis.ai/models/deepseek-v4-flash" target="_blank" rel="noopener noreferrer" aria-label="DeepSeek-V4-Flash-0731 AA评分来源" title="DeepSeek V4 Flash 0731 (Max)">↗</a></span><span class="model-score-label">AA</span></span><span class="model-score"><span class="model-score-value"><strong>53.3</strong> <a href="https://deepswe.datacurve.ai/" target="_blank" rel="noopener noreferrer" aria-label="DeepSeek-V4-Flash-0731 DeepSWE评分来源" title="max">↗</a></span><span class="model-score-label">DeepSWE</span></span></div><a class="model-offers-link" href="/plans/?model=deepseek-v4-flash-0731">19 个平台收录 · 查看套餐 →</a><a class="model-price-link" href="/pricing/?model=deepseek-v4-flash-0731">比较价格与按量 API →</a></article>
@@ -237,5 +239,5 @@
 <!-- MODEL_DIRECTORY_END --></div>
 </section>
 <footer class="tool-footer"><span>评分配置与来源见分数旁的链接；套餐支持情况与模型能力分开判断。</span><a href="/">返回首页</a></footer></main>
-<script src="/scripts/entity-data.js?v=252de7b6a1"></script><script src="/scripts/tool-page.js?v=fbb793f0db"></script><script src="/scripts/featured-catalog.js?v=cd636196d3"></script><script src="/scripts/model-directory.js?v=390910a9e8"></script><script src="/scripts/ui-single-select.js?v=09370d929b"></script><script src="/scripts/models-page.js?v=bf1328d40d"></script>
+<script src="/scripts/entity-data.js?v=edd10e5bb2"></script><script src="/scripts/tool-page.js?v=fab51bfcaf"></script><script src="/scripts/featured-catalog.js?v=424eca4cb6"></script><script src="/scripts/model-directory.js?v=390910a9e8"></script><script src="/scripts/ui-single-select.js?v=09370d929b"></script><script src="/scripts/models-page.js?v=abc449707e"></script>
 </body></html>

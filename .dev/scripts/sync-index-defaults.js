@@ -8,6 +8,7 @@ const M = require(path.join(root,'scripts/model-comparison.js'));
 const P = require(path.join(root,'scripts/platform-catalog.js'));
 const Directory = require(path.join(root,'scripts/model-directory.js'));
 const UI = require(path.join(root,'scripts/ui-core.js'));
+const Help = require(path.join(root,'scripts/ui-help.js'));
 const {applySiteHeader} = require(path.resolve(root,'../scripts/codingplan/site-header.js'));
 const config = read('config'), preset = read('model-comparison-presets');
 const ctx = E.buildContext(read('platforms'),read('plans'),read('models'));
@@ -54,6 +55,7 @@ let models=fs.readFileSync(path.resolve(root,'../scripts/codingplan/models-templ
 const selection=Directory.select(ctx.models,preset.groups);
 models=replace(models,'MODEL_DIRECTORY',selection.visible.map(m=>C.modelCard(m,ctx,{directory:true,featured:selection.featured.has(m.slug)})).join('\n'));
 models=models.replace('{{modelCount}}',Directory.countLabel(selection));
+models=models.replace('{{modelScoreHelp}}',Help.html('modelScoreHelp','模型评分说明','AA 与 DeepSWE 使用不同量尺，各自排序，不合成总分。缺少分数表示暂无评测，不代表能力为零；分数旁的链接提供评分来源。'));
 models=models.replace('{{highVolumeLabel}}',esc(UI.modelGroupLabel(preset.groups,'high-volume-models'))).replace('{{sotaLabel}}',esc(UI.modelGroupLabel(preset.groups,'sota-models')));
 write('models/index.html',applySiteHeader(models,'models','/models/'));
 const generator=path.resolve(root,'../data/platforms/pages/generate.js');
