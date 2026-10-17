@@ -23,11 +23,11 @@
     const results = matched.filter(p => !pinnedSet.has(p.slug));
     // Stable partition: preserve the source order inside featured and ordinary groups.
     results.sort((a, b) => Number(featured.has(b.slug)) - Number(featured.has(a.slug)));
-    return {pinned, results, visible:[...pinned,...results], matchedCount:matched.length,
+    return {pinned, results, visible:[...pinned,...results], matchedCount:matched.length, totalCount:platforms.length,
       extraPinnedCount:pinned.filter(p => !matchedIds.has(p.slug)).length};
   }
   function countLabel(selection, featuredOnly) {
-    const count = featuredOnly ? `精选 ${selection.matchedCount} 个` : `符合条件 ${selection.matchedCount} 个`;
+    const count = featuredOnly ? `精选 ${selection.matchedCount} 个` : `${selection.matchedCount} 个 / ${selection.totalCount}`;
     const pins = featuredOnly ? selection.extraPinnedCount : selection.pinned.length;
     return count + (pins ? ` · 置顶 ${pins} 个` : '');
   }

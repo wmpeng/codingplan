@@ -13,6 +13,7 @@ const options = {featuredSlugs, filterOptions:{context, entityData:Entity, usdTo
 test('平台中心在匹配范围内精选优先，组内保留目录顺序', () => {
   const matches = Filters.filterPlatforms(platforms, state, options.filterOptions);
   const result = Hub.select(platforms, state, options);
+  assert.equal(Hub.countLabel(result,false), `${matches.length} 个 / ${platforms.length}`);
   assert.deepEqual(result.results.map(p=>p.slug), [
     ...matches.filter(p=>featuredSlugs.includes(p.slug)), ...matches.filter(p=>!featuredSlugs.includes(p.slug))
   ].map(p=>p.slug));
@@ -22,6 +23,7 @@ test('被搜索与模型条件排除的置顶平台仍保留，不计入匹配�
   const result = Hub.select(platforms, {...state, modelSlugs:['__missing']}, {...options, pinnedIds, query:'__missing'});
   assert.deepEqual(result.pinned.map(p=>p.slug), pinnedIds);
   assert.equal(result.matchedCount, 0);
+  assert.equal(Hub.countLabel(result,false), `0 个 / ${platforms.length} · 置顶 2 个`);
   assert.equal(result.results.length, 0);
   assert.deepEqual(result.visible.map(p=>p.slug),pinnedIds);
 });
