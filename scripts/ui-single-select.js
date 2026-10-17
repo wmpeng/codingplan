@@ -1,15 +1,17 @@
 (function (root) {
   'use strict';
-  function mount(select, label) {
+  function mount(select, label, {showLabel = true} = {}) {
     const UI = root.CodingPlanUI, picker = document.createElement('details');
     picker.className = 'filter-picker single-select-picker'; picker.id = select.id + 'Picker';
-    picker.innerHTML = `<summary aria-label="${UI.escapeHtml(label)}" aria-haspopup="listbox" aria-controls="${select.id}Options"><span>${UI.escapeHtml(label)}</span><span data-select-value></span></summary><div id="${select.id}Options" class="filter-picker-menu" role="listbox" aria-label="${UI.escapeHtml(label)}">${[...select.options].map(option => `<button type="button" role="option" aria-label="${UI.escapeHtml(option.text)}" data-select-value="${UI.escapeHtml(option.value)}" tabindex="-1">${UI.escapeHtml(option.text)}</button>`).join('')}</div>`;
+    picker.innerHTML = `<summary aria-label="${UI.escapeHtml(label)}" aria-haspopup="listbox" aria-controls="${select.id}Options">${showLabel ? `<span>${UI.escapeHtml(label)}</span>` : ''}<span data-select-value></span></summary><div id="${select.id}Options" class="filter-picker-menu" role="listbox" aria-label="${UI.escapeHtml(label)}">${[...select.options].map(option => `<button type="button" role="option" aria-label="${UI.escapeHtml(option.text)}" data-select-value="${UI.escapeHtml(option.value)}" tabindex="-1">${UI.escapeHtml(option.text)}</button>`).join('')}</div>`;
     const fallback = select.closest('[data-select-fallback]') || select;
     fallback.before(picker); fallback.hidden = true;
     const summary = picker.querySelector('summary'), menu = picker.querySelector('[role="listbox"]');
     const options = [...menu.querySelectorAll('[role="option"]')];
     function close(focus = false) { picker.open = false; if (focus) summary.focus({preventScroll:true}); }
     function sync() {
+      summary.title = select.title;
+      if (select.hasAttribute('aria-describedby')) summary.setAttribute('aria-describedby', select.getAttribute('aria-describedby'));
       summary.querySelector('[data-select-value]').textContent = select.selectedOptions[0]?.text || '';
       options.forEach(option => { const selected = option.dataset.selectValue === select.value; option.setAttribute('aria-selected', String(selected)); option.tabIndex = selected ? 0 : -1; });
     }
@@ -37,7 +39,9 @@
     });
     menu.addEventListener('click', event => {
       const option = event.target.closest('[role="option"]'); if (!option) return;
-      select.value = option.dataset.selectValue; sync(); close(true); select.dispatchEvent(new Event('input', {bubbles:true}));
+      select.value = option.dataset.selectValue; sync(); close(true);
+      select.dispatchEvent(new Event('input', {bubbles:true}));
+      select.dispatchEvent(new Event('change', {bubbles:true}));
     });
     menu.addEventListener('keydown', event => {
       const index = options.indexOf(document.activeElement); let next;

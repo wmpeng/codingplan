@@ -337,12 +337,14 @@
       ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-platform-domestic>支持中国大陆</label>' : ""}</div>
       ${platformHub ? '<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-platform-featured aria-pressed="false">显示精选平台</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>' : ""}
       <div class="filter-state-footer">
-      ${full ? "" : `<div class="filter-state-controls"><label class="offer-sort"><span>排序</span><select data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></label><span class="offer-sort-help" id="offerSortHelp"></span>`}
+      ${full ? "" : `<div class="filter-state-controls"><div class="offer-sort"><span aria-hidden="true">排序</span><span data-select-fallback><select id="homeOfferSort" data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></span></div><span class="offer-sort-help" id="offerSortHelp"></span>`}
       <div class="filter-state-actions"><button type="button" data-filter-action="reset"${purchaseTool && !platformHub ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>${full && !platformHub ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">显示精选</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
       ${monitor ? '<p class="filter-state-hint" data-filter-hint>监控只使用平台、模型条件；未监控项目没有统计。</p>' : ""}
       ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
       </section>`;
     bindSelectionHelp(host);
+    const offerSortSelect = host.querySelector('[data-offer-sort]');
+    const offerSortPicker = offerSortSelect && root.CodingPlanSingleSelect?.mount(offerSortSelect, '方案排序', {showLabel:false});
     const controller = {
       getState: () => Filters.cloneState(state),
       context,
@@ -514,6 +516,7 @@
         const option = root.PurchaseGuide.sortOptions.find(option => option.value === state.preference);
         sort.title = option.help;
         host.querySelector('#offerSortHelp').textContent = option.help;
+        offerSortPicker?.sync();
       }
       const statusPicker = host.querySelector('#homeStatusPicker');
       if (statusPicker) {
