@@ -49,3 +49,33 @@ test('套餐状态字段规范化、克隆和默认值不污染平台状态条�
   state.excludedPlanStatuses.push('delisted');
   assert.equal(input.excludedPlanStatuses.length,4);
 });
+
+test('浏览完整套餐目录保留没有模型明细的套餐，模型全选与清空均不产生隐藏门槛', () => {
+  const context=Entity.buildContext(require('../platforms.json'),require('../plans.json'),require('../models.json'));
+  const plans=Entity.buildPlanCatalog(context).filter(plan=>plan.billingMode==='subscription');
+  const incomplete=plans.filter(plan=>!(context.relationsByPlanSlug.get(plan.slug)||[]).length);
+  assert.ok(incomplete.length>0);
+  for(const modelSlugs of [null,[],context.models.map(model=>model.slug)]) {
+    const input={planStatusOnly:true,includeDiscontinued:true,modelSlugs};
+    const before=JSON.stringify(input);
+    assert.deepEqual(Filters.filterPlans(plans,input,{context}).map(plan=>plan.slug),plans.map(plan=>plan.slug));
+    assert.equal(JSON.stringify(input),before);
+  }
+  const active=Filters.filterPlans(plans,{planStatusOnly:true},{context});
+  assert.ok(incomplete.filter(plan=>plan.planStatus!=='delisted').every(plan=>active.some(p=>p.slug===plan.slug)));
+  assert.equal(Filters.matchingOffers(context,{planStatusOnly:true,includeDiscontinued:true}).some(offer=>incomplete.some(plan=>plan.slug===offer.plan.slug)),false);
+});
+
+test('无模型明细的套餐仍可按套餐价格筛选，模型或用量条件则必须有对应明细', () => {
+  const context=fixture();
+  context.models.push({slug:'n'});
+  context.modelBySlug.set('n',context.models[1]);
+  context.plans=[{slug:'empty',platformSlug:'open',planStatus:'open',billingMode:'subscription',monthlyPrice:20,currency:'CNY'}];
+  const plans=Entity.buildPlanCatalog(context),state={planStatusOnly:true,includeDiscontinued:true};
+  assert.equal(Filters.filterPlans(plans,{...state,budgetCny:{max:20}},{context}).length,1);
+  assert.equal(Filters.filterPlans(plans,{...state,budgetCny:{max:19}},{context}).length,0);
+  for(const condition of [{modelSlugs:['m']},{monthlyTokenRange:{min:0}},{aaScoreMin:0},{modelSlugs:context.models.map(m=>m.slug),modelMatch:'all'}]) {
+    assert.deepEqual(Filters.filterPlans(plans,{...state,...condition},{context}),[]);
+  }
+  assert.deepEqual(Filters.filterPlans(plans,{...state,planStatusOnly:false},{context}),[]);
+});

@@ -209,7 +209,16 @@
     const current = normalizeState(state);
     const opts = options || {};
     const rate = opts.usdToCnyRate;
-    if (opts.context && Array.isArray(opts.context.plans)) {
+    const models = opts.context?.models;
+    if (current.planStatusOnly && current.modelMatch === 'any' && current.modelSlugs?.length && models?.length) {
+      const selected = new Set(current.modelSlugs);
+      if (models.every(model => selected.has(model.slug))) current.modelSlugs = null;
+    }
+    const requiresModelRows = !!(current.modelSlugs?.length || current.monthlyTokenRange
+      || current.modelGroup !== 'any' || current.imageRequired || current.multimodal !== 'all'
+      || current.aaScoreMin !== null || current.deepSWEScoreMin !== null);
+    // Catalog browsing and plan-level conditions do not require model details.
+    if (opts.context && Array.isArray(opts.context.plans) && (!current.planStatusOnly || requiresModelRows)) {
       const ids = new Set(matchingOffers(opts.context, current, opts).map(offer => offer.plan.slug));
       return (plans || []).filter(plan => ids.has(plan.slug));
     }
