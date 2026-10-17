@@ -334,7 +334,7 @@
           : `${buildRangePicker("budget", state)}${buildRangePicker("token", state)}`
       }
       ${!monitor ? buildStatusPicker(purchaseTool, purchaseTool && !platformHub) : ""}
-      ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-filter-field="domesticNetworkOnly">境内可用</label><label class="platform-access-filter"><input type="checkbox" data-filter-field="domesticPaymentOnly">境内可购买</label>' : ""}</div>
+      ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-platform-domestic>境内可用且可购买</label>' : ""}</div>
       ${platformHub ? '<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-platform-featured aria-pressed="false">显示精选平台</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>' : ""}
       <div class="filter-state-footer">
       ${full ? "" : `<div class="filter-state-controls"><label class="offer-sort"><span>排序</span><select data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></label><span class="offer-sort-help" id="offerSortHelp"></span>`}
@@ -365,6 +365,9 @@
           patch = {...patch, modelSlugs:slugs, modelMatch:"any", modelGroup:"any"};
         }
         const merged = { ...state, ...patch, modelGroup: "any", imageRequired: false, ...(!platformHub ? {domesticNetworkOnly:false, domesticPaymentOnly:false} : {platformSlugs:null}) };
+        if (platformHub && (patch.domesticNetworkOnly !== undefined || patch.domesticPaymentOnly !== undefined)) {
+          merged.domesticNetworkOnly = merged.domesticPaymentOnly = patch.domesticNetworkOnly === true || patch.domesticPaymentOnly === true;
+        }
         state = Filters.normalizeState(merged);
         // Retain the cleared checklist; its existing business meaning remains unrestricted.
         if (Array.isArray(merged.platformSlugs) && !merged.platformSlugs.length) state.platformSlugs = [];
@@ -464,6 +467,7 @@
         platformNotice.hidden = !platformShortcutNotice; platformNotice.textContent = platformShortcutNotice;
       }
       if (platformHub) {
+        host.querySelector('[data-platform-domestic]').checked = state.domesticNetworkOnly && state.domesticPaymentOnly;
         const available = featuredPlatforms().length > 0;
         const toggle = host.querySelector('[data-platform-featured]');
         toggle.disabled = !available;
@@ -568,6 +572,7 @@
       } else {
         state.platformSlugs = null;
         state.includeDiscontinued = false;
+        state.domesticNetworkOnly = state.domesticPaymentOnly = state.domesticNetworkOnly || state.domesticPaymentOnly;
       }
       multimodalNotice = "";
       platformShortcutNotice = "";
@@ -644,7 +649,10 @@
     });
     host.addEventListener("change", (event) => {
       const el = event.target;
-      if (el.matches("[data-status-exclude]")) {
+      if (platformHub && el.matches("[data-platform-domestic]")) {
+        state.domesticNetworkOnly = state.domesticPaymentOnly = el.checked;
+        publish();
+      } else if (el.matches("[data-status-exclude]")) {
         state.excludedPlatformStatuses = [...host.querySelectorAll('[data-status-exclude]:checked')].map(input => input.dataset.statusExclude);
         publish();
       } else if (el.matches("[data-include-delisted]")) {
