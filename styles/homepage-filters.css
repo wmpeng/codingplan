@@ -591,7 +591,6 @@ body .single-select-picker [role="option"]:hover { background: var(--bg-tertiary
 body .single-select-picker [role="option"]:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: -2px; }
 body.models-page .model-multimodal-filter { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 10px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 13px; cursor: pointer; }
 body.models-page [data-select-fallback] { display: inline-flex; align-items: center; gap: 8px; }
-body.models-page .model-featured-controls .model-preset-label { padding-left: 0; color: #946c35; }
 body.models-page .model-featured-controls .model-preset-segments { min-height: var(--control-height); padding: 3px; border: 1px solid #e4d1b2; background: #fffaf2; }
 body.models-page .model-featured-controls button { min-height: 32px; padding: 4px 12px; color: #946c35; font-size: 13px; font-weight: 500; line-height: 1.6; }
 body.models-page .model-featured-controls button:hover:not(:disabled) { border-color: #e4d1b2; background: #fff5e5; color: #805c2e; }
