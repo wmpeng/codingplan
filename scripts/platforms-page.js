@@ -29,7 +29,7 @@
           const apiGroups = root.EntityData.buildApiPricingGroups(context, platform.slug);
           return root.PlatformCatalog.buildPlatformCardHtml(platform, plans, {
             hasApiPlan: apiGroups.length > 0,
-            supportedModels: root.EntityData.platformModels(context, platform.slug),
+            supportedModels: root.PlatformHub.prioritizeFeaturedModels(root.EntityData.platformModels(context, platform.slug), context.modelGroups),
             featured: featuredSlugs.includes(platform.slug),
             pinnedIds,
             sanitizeUrl: root.CodingPlanUI.sanitizeUrl

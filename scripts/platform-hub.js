@@ -6,6 +6,10 @@
 })(globalThis, function (Filters, Catalog) {
   'use strict';
   const matchesName = (platform, query) => `${platform.name} ${platform.slug}`.toLocaleLowerCase('zh-CN').includes(query);
+  function prioritizeFeaturedModels(models, groups = []) {
+    const featured = new Set(groups.filter(group => group.enabled !== false).flatMap(group => group.modelSlugs || []));
+    return [...models.filter(model => featured.has(model.slug)), ...models.filter(model => !featured.has(model.slug))];
+  }
   function select(platforms, state, options = {}) {
     const featured = new Set(options.featuredSlugs || []);
     const pinnedIds = Catalog.sanitizePinnedIds(options.pinnedIds, platforms);
@@ -27,5 +31,5 @@
     const pins = featuredOnly ? selection.extraPinnedCount : selection.pinned.length;
     return count + (pins ? ` · 置顶 ${pins} 个` : '');
   }
-  return {select, countLabel};
+  return {select, countLabel, prioritizeFeaturedModels};
 });
