@@ -334,7 +334,7 @@
           : `${buildRangePicker("budget", state)}${buildRangePicker("token", state)}`
       }
       ${!monitor ? buildStatusPicker(purchaseTool, purchaseTool && !platformHub) : ""}
-      ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-platform-domestic>境内可用且可购买</label>' : ""}</div>
+      ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-platform-domestic>支持中国大陆</label>' : ""}</div>
       ${platformHub ? '<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-platform-featured aria-pressed="false">显示精选平台</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>' : ""}
       <div class="filter-state-footer">
       ${full ? "" : `<div class="filter-state-controls"><label class="offer-sort"><span>排序</span><select data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></label><span class="offer-sort-help" id="offerSortHelp"></span>`}
