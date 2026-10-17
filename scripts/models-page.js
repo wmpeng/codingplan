@@ -8,6 +8,7 @@
       const search = document.getElementById('modelSearch'), sort = document.getElementById('modelSort');
       const multimodal = document.getElementById('modelMultimodal'), fields = document.getElementById('modelFilterFields');
       const reset = document.getElementById('modelReset'), buttons = [...document.querySelectorAll('[data-model-featured]')];
+      buttons.forEach(button => { if (button.dataset.modelFeatured !== 'all') button.textContent = root.CodingPlanUI.modelGroupLabel(preset.groups, button.dataset.modelFeatured); });
       const picker = root.CodingPlanSingleSelect.mount(sort, '排序');
       let featuredMode = '';
       let pins = Directory.readPins(root.localStorage, context.models);

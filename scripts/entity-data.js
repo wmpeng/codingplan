@@ -4,6 +4,8 @@
   root.EntityData = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
+  // Model metadata owns modality facts; unknown never implies support.
+  function isMultimodal(model) { return model?.multimodal === true; }
 
   function collection(documentValue, key, version = 1) {
     if (!documentValue || documentValue.schemaVersion !== version || !Array.isArray(documentValue[key])) {
@@ -250,6 +252,7 @@
   }
 
   return {
+    isMultimodal,
     resolveHarnessApi,
     harnessApiBadge,
     platformHarnessApiBadge,

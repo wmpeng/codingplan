@@ -60,7 +60,7 @@
       </div></details>`;
   }
 
-  const multimodalExplanation = "可以通俗理解为：你可以把图片或截图发给模型，让它看图理解、分析和回答。音频、视频和生图能力因模型而异。";
+  const multimodalExplanation = "支持多模态，表示模型除文本外，还支持至少一种非文本输入或输出，例如图片、音频或视频。具体支持哪些能力以模型说明为准；未确认的模型不计入。";
   function multimodalControls(id, label = "全部多模态模型", notice = "") {
     return `<div class="model-multimodal-tools"><button type="button" class="model-multimodal-select" data-select-multimodal>${escapeHtml(label)}</button><span class="model-multimodal-help"><button type="button" class="model-multimodal-info" data-multimodal-help aria-label="什么是多模态模型" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>${multimodalExplanation}</span></span></div><p class="model-multimodal-notice" data-multimodal-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
   }
@@ -136,7 +136,7 @@
     }, true);
   }
 
-  function buildPicker({ id, label, key, items, state }) {
+  function buildPicker({ id, label, key, items, state, groups }) {
     const model = key === "modelSlugs";
     const rawSelected = valuesFor(state, key);
     const selected =
@@ -157,7 +157,7 @@
       <div class="filter-picker-menu" role="group" aria-label="选择${escapeHtml(label)}">
         <input type="search" data-picker-search placeholder="搜索${escapeHtml(label)}" aria-label="搜索${escapeHtml(label)}">
         <div class="filter-picker-tools"><button type="button" data-picker-action="clear">清空</button><button type="button" data-picker-action="all">全选</button>${model ? "" : '<button type="button" data-picker-action="default" disabled>精选平台</button>'}<span class="picker-selection-count" role="status" aria-live="polite" aria-atomic="true">已选 <strong ${model ? "data-model-selected-count" : "data-platform-selected-count"}>${selected.length}</strong><span class="picker-count-divider"> / </span>共 ${items.length}</span></div>
-        ${model ? `<div class="model-preset-options" role="group" aria-label="精选模型"><div class="model-preset-segments"><button type="button" data-model-preset="featured" data-picker-action="default" aria-label="全部精选模型，包含甜品级和头部级" aria-pressed="false" disabled>全部精选模型</button><span class="model-preset-divider" aria-hidden="true"></span><button type="button" data-model-preset="high-volume-models" aria-label="精选甜品级模型" aria-pressed="false" disabled>甜品级</button><button type="button" data-model-preset="sota-models" aria-label="精选头部级模型" aria-pressed="false" disabled>头部级</button></div></div><p class="model-preset-error" data-model-preset-error hidden>精选名单暂时无法加载。<button type="button" data-retry-model-presets>重试</button></p>` : ""}
+        ${model ? `<div class="model-preset-options" role="group" aria-label="精选模型"><div class="model-preset-segments"><button type="button" data-model-preset="featured" data-picker-action="default" aria-label="全部精选模型" aria-pressed="false" disabled>全部精选模型</button><span class="model-preset-divider" aria-hidden="true"></span><button type="button" data-model-preset="high-volume-models" aria-label="${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'high-volume-models'))}" aria-pressed="false" disabled>${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'high-volume-models'))}</button><button type="button" data-model-preset="sota-models" aria-label="${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'sota-models'))}" aria-pressed="false" disabled>${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'sota-models'))}</button></div></div><p class="model-preset-error" data-model-preset-error hidden>精选名单暂时无法加载。<button type="button" data-retry-model-presets>重试</button></p>` : ""}
         ${model ? multimodalControls(id) : `${platformShortcutControls(id)}<p class="model-preset-error" data-platform-preset-error hidden>精选名单暂时无法加载。<button type="button" data-retry-model-presets>重试</button></p>`}
         <div data-picker-options>${options}</div><p class="filter-search-empty" role="status" hidden>没有匹配结果，试试其他关键词。</p>
         ${model ? `<div class="model-match-setting" data-model-match-setting hidden><label class="model-match-check"><input type="checkbox" data-model-require-all aria-describedby="${id}MatchHelp" aria-controls="${id}MatchConfirm" aria-expanded="false"><span>需同时支持所选模型</span></label><p id="${id}MatchHelp">同一套餐需同时支持全部所选模型，且每个模型都满足用量等条件，可能大幅减少匹配方案。</p><div class="model-match-confirm" id="${id}MatchConfirm" data-model-match-confirm hidden><p data-model-match-impact role="status" aria-live="polite"></p><div><button type="button" data-model-match-action="confirm">确认开启</button><button type="button" data-model-match-action="cancel">取消</button></div></div></div>` : ""}
@@ -235,7 +235,7 @@
       state.platformSlugs = slugs;
       publish(source); return true;
     }
-    const multimodalSlugs = models.filter(model => model.modalities?.input?.includes('image')).map(model => model.slug);
+    const multimodalSlugs = models.filter(root.EntityData.isMultimodal).map(model => model.slug);
     const multimodalSet = new Set(multimodalSlugs);
     function multimodalAction() {
       const selected = state.modelSlugs === null ? models.map(model => model.slug) : state.modelSlugs;
@@ -245,7 +245,7 @@
     function selectMultimodalModels(source = "manual") {
       const {slugs} = multimodalAction();
       if (!slugs.length) {
-        multimodalNotice = multimodalSlugs.length ? "当前所选模型中没有多模态模型，请先选择支持图片的模型。" : "目前没有确认支持图片的模型。";
+        multimodalNotice = multimodalSlugs.length ? "当前所选模型中没有多模态模型，请先选择支持多模态的模型。" : "目前没有确认支持多模态的模型。";
         pendingAll = false; render(); return false;
       }
       state.modelSlugs = slugs; state.modelGroup = "any"; state.modelMatch = "any";
@@ -327,7 +327,7 @@
       ${platformHub ? '<div class="platform-filter-row"><fieldset class="platform-filter-fields" data-platform-filter-fields><legend class="sr-only">平台筛选条件</legend>' : ""}
       <div class="filter-state-grid">
       ${platformHub ? "" : buildPicker({ id: "homePlatformPicker", label: "平台", key: "platformSlugs", items: platforms, state })}
-      ${buildPicker({ id: "homeModelPicker", label: "模型", key: "modelSlugs", items: models, state })}
+      ${buildPicker({ id: "homeModelPicker", label: "模型", key: "modelSlugs", items: models, state, groups: context.modelGroups })}
       ${
         monitor
           ? ""
@@ -380,13 +380,13 @@
           if (slugs.length) state.platformSlugs = slugs;
           else platformNotice = "当前勾选没有符合项，已保留原选择。";
         }
-        // Convert old image-only requests into visible model picks rather than a hidden constraint.
+        // The legacy imageRequired field now selects the same multimodal inventory.
         let imageNotice = "";
         if (patch.imageRequired === true) {
           const selected = state.modelSlugs?.length ? state.modelSlugs : models.map(model => model.slug);
           const slugs = selected.filter(slug => multimodalSet.has(slug));
           if (slugs.length) { state.modelSlugs = slugs; state.modelMatch = "any"; }
-          else imageNotice = "当前所选模型中没有多模态模型，请先选择支持图片的模型。";
+          else imageNotice = "当前所选模型中没有多模态模型，请先选择支持多模态的模型。";
         }
         if (!state.modelSlugs || state.modelSlugs.length < 2) state.modelMatch = "any";
         if (Object.hasOwn(patch, "modelSlugs") || patch.imageRequired === true) resetModelList();
@@ -495,6 +495,10 @@
       const preset = selectionPreset();
       modelPicker.querySelectorAll('[data-model-preset]').forEach(button => {
         button.disabled = !groupsReady;
+        if (button.dataset.modelPreset !== 'featured') {
+          const label = root.CodingPlanUI.modelGroupLabel(context.modelGroups, button.dataset.modelPreset);
+          button.textContent = label; button.setAttribute('aria-label', label);
+        }
         button.setAttribute('aria-pressed', String(button.dataset.modelPreset === preset));
       });
       modelPicker.querySelector('[data-picker-action="default"]').disabled = !groupsReady;

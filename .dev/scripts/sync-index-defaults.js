@@ -7,6 +7,7 @@ const C = require(path.join(root,'scripts/featured-catalog.js'));
 const M = require(path.join(root,'scripts/model-comparison.js'));
 const P = require(path.join(root,'scripts/platform-catalog.js'));
 const Directory = require(path.join(root,'scripts/model-directory.js'));
+const UI = require(path.join(root,'scripts/ui-core.js'));
 const {applySiteHeader} = require(path.resolve(root,'../scripts/codingplan/site-header.js'));
 const config = read('config'), preset = read('model-comparison-presets');
 const ctx = E.buildContext(read('platforms'),read('plans'),read('models'));
@@ -23,6 +24,7 @@ const plans=E.buildPlanCatalog(ctx).filter(plan=>plan.billingMode==='subscriptio
 let home=fs.readFileSync(path.join(root,'index.html'),'utf8');
 home=replace(home,'FEATURED_PLATFORMS',preset.platformSlugs.map(slug=>P.buildPlatformCardHtml(ctx.platformBySlug.get(slug),plans,{capabilitiesBeforeScores:true,supportedModels:E.platformModels(ctx,slug),hasApiPlan:E.buildApiPricingGroups(ctx,slug).length>0,sanitizeUrl:C.url})).join('\n'));
 home=replace(home,'FEATURED_MODELS',C.modelGroups(preset,ctx));
+home=replace(home,'FEATURED_MODEL_INTRO',`<p>${esc(preset.groups.find(group=>group.id==='high-volume-models').title)} - 日常及大批量任务中优先考虑，性价比高；${esc(preset.groups.find(group=>group.id==='sota-models').title)} - 在复杂任务中优先考虑，能力强</p>`);
 home=replace(home,'FEATURED_TABLES','<div class="usage-preset-grid usage-preset-grid--multi">'+preset.groups.map(group=>M.presetComparisonTableHtml(group,C.points(ctx,config),'yi','featured',C.presetTableOptions({platformSlugs:preset.platformSlugs,modelFilter:false}))).join('')+'</div>');
 const feedback=config.feedback || {}, community=config.community || {};
 const group=feedback.group || {};
@@ -52,6 +54,7 @@ let models=fs.readFileSync(path.resolve(root,'../scripts/codingplan/models-templ
 const selection=Directory.select(ctx.models,preset.groups);
 models=replace(models,'MODEL_DIRECTORY',selection.visible.map(m=>C.modelCard(m,ctx,{directory:true,featured:selection.featured.has(m.slug)})).join('\n'));
 models=models.replace('{{modelCount}}',Directory.countLabel(selection));
+models=models.replace('{{highVolumeLabel}}',esc(UI.modelGroupLabel(preset.groups,'high-volume-models'))).replace('{{sotaLabel}}',esc(UI.modelGroupLabel(preset.groups,'sota-models')));
 write('models/index.html',applySiteHeader(models,'models','/models/'));
 const generator=path.resolve(root,'../data/platforms/pages/generate.js');
 if(fs.existsSync(generator))require(generator).generate({check});

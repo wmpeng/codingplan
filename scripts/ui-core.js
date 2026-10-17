@@ -16,6 +16,10 @@
     return `/${page}/${query.size ? '?' + query : ''}`;
   }
   const statusLabels = Object.freeze({ open: '可以购买', restricted: '购买受限', delisted: '已下架' });
+  function modelGroupLabel(groups, id) {
+    const group = (groups || []).find(group => group.id === id);
+    return group?.label || group?.title || '精选分组';
+  }
   const externalLinkIcon = '<svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>';
   const closeIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"></path></svg>';
   function pinIcon(pinned = false) {
@@ -94,5 +98,5 @@
     setModelsExpanded(button, button.getAttribute('aria-expanded') !== 'true');
     return true;
   }
-  return { escapeHtml, escapeHtmlPreserveBreaks, sanitizeUrl, route, statusLabels, externalLinkIcon, closeIcon, pinIcon, pinButton, modelTags, setModelsExpanded, toggleModels, observeModelTagRows };
+  return { escapeHtml, escapeHtmlPreserveBreaks, sanitizeUrl, route, statusLabels, modelGroupLabel, externalLinkIcon, closeIcon, pinIcon, pinButton, modelTags, setModelsExpanded, toggleModels, observeModelTagRows };
 });

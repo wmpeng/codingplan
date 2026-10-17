@@ -22,6 +22,11 @@ function samplePlatform(overrides = {}) {
 }
 
 describe('buildDetailBodyHtml', () => {
+  it('uses one canonical delisted status without a duplicate discontinued badge', () => {
+    const html = buildDetailBodyHtml(samplePlatform({platformStatus:'delisted'}), {plans:[],monitorRow:null});
+    assert.equal((html.match(/>已下架</g) || []).length,1);
+    assert.doesNotMatch(html,/已停售/);
+  });
   it('shows the complete model inventory including API-only models, deduplicates tiers and excludes discontinued plans', () => {
     const platform = samplePlatform();
     const models = Array.from({ length: 7 }, (_, index) => ({ slug: `m${index}`, name: `Model ${index}` }));
@@ -153,7 +158,7 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('¥0.02'));
     assert.ok(html.includes('¥4.8'));
     assert.ok(html.includes('官方价格的 8 折'));
-    assert.ok(html.includes('在额度/价格对比中查看'));
+    assert.ok(html.includes('在价格与额度中查看'));
     assert.ok(html.includes('href="/pricing/"'));
     assert.ok(!html.includes('view=usage'));
     assert.ok(!html.includes('data-section="plans"'));

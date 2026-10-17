@@ -286,7 +286,7 @@
         const available = modelGroups.get(key) || new Set();
         if (!current.modelSlugs.length || !current.modelSlugs.every(slug => available.has(slug))) return false;
       }
-      if (current.multimodal === 'multimodal' && point.multimodal !== true) return false;
+      if ((current.imageRequired || current.multimodal === 'multimodal') && !EntityData.isMultimodal(point)) return false;
       if (current.multimodal === 'text' && point.multimodal !== false) return false;
       if (!scoreAtLeast(point, 'artificialAnalysis', current.aaScoreMin)) return false;
       if (!scoreAtLeast(point, 'deepSWE', current.deepSWEScoreMin)) return false;
@@ -341,8 +341,7 @@
         const model = context.modelBySlug.get(row.modelSlug);
         if (!model || !selectedMatch(model.slug, s.modelSlugs)) return false;
         if (s.modelGroup !== 'any' && (!selectedGroup || !selectedGroup.modelSlugs.includes(model.slug))) return false;
-        if (s.imageRequired && !(model.modalities && model.modalities.input && model.modalities.input.includes('image'))) return false;
-        if (s.multimodal === 'multimodal' && model.multimodal !== true) return false;
+        if ((s.imageRequired || s.multimodal === 'multimodal') && !EntityData.isMultimodal(model)) return false;
         if (s.multimodal === 'text' && model.multimodal !== false) return false;
         if (!scoreAtLeast(model, 'artificialAnalysis', s.aaScoreMin) || !scoreAtLeast(model, 'deepSWE', s.deepSWEScoreMin)) return false;
         if (plan.billingMode === 'payg') return !(s.monthlyTokenRange && s.budgetCny) || inRange(apiCost(row, s), s.budgetCny);

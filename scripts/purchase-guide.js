@@ -114,7 +114,7 @@
       reasons.push(`${models.length} 个符合条件的模型`);
       if (s.domesticNetworkOnly) reasons.push("无需境外网络");
       if (s.domesticPaymentOnly) reasons.push("无需境外支付方式");
-      if (s.imageRequired) reasons.push("符合条件的模型支持图片输入");
+      if (s.imageRequired) reasons.push("符合条件的模型支持多模态");
       const cautions = [];
       if (offer.platform.platformStatus === 'restricted' || offer.plan.planStatus === 'restricted')
         cautions.push('购买受限，请在平台页面核实当前开放情况');
@@ -123,7 +123,7 @@
         if (finite(w.outputRatio) !== null && finite(w.cacheHitRate) !== null)
           cautions.push(`费用假设：输出占比 ${w.outputRatio * 100}%，输入缓存命中 ${w.cacheHitRate * 100}%；沿用价格页折算汇率`);
       }
-      if (!scored.length) cautions.push("AA 能力分未评定");
+      if (!scored.length) cautions.push("暂无 AA 评分");
       if (offer.platform.requiresOverseasNetwork === true)
         cautions.push("需要境外网络条件");
       else if (offer.platform.requiresOverseasNetwork == null)
@@ -236,7 +236,7 @@
         ["budgetCny", null, "月预算"],
         ["monthlyTokenRange", null, "月用量"],
         ["apiOnly", false, "仅按量 API"],
-        ["imageRequired", false, "图片能力"],
+        ["imageRequired", false, "多模态能力"],
         ["domesticNetworkOnly", false, "网络要求"],
         ["domesticPaymentOnly", false, "支付要求"],
         ["excludedPlatformStatuses", [], "购买状态排除"],

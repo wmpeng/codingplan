@@ -71,6 +71,12 @@ describe('comparison URL state', () => {
 });
 
 describe('comparison presentation helpers', () => {
+  it('does not convert pending null scores into zero or mark them as leaders', () => {
+    const pending=[{platform:{slug:'pending',dimensions:{models:{score:null}}}}];
+    assert.deepEqual([...computeLeadInfo(pending,'models').leaders],[]);
+    const known={platform:{slug:'known',dimensions:{models:{score:4}}}};
+    assert.deepEqual([...computeLeadInfo([...pending,known],'models').leaders],['known']);
+  });
   it('does not combine prices across currencies', () => {
     assert.equal(formatPriceRange([
       { billingMode: 'subscription', monthlyPrice: 29, currency: '¥' },

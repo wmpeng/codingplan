@@ -17,8 +17,9 @@
     }
     const models = new Set();
     const ids = (config.groups || []).map(g => g.id);
-    if (ids.length !== 2 || !ids.includes('high-volume-models') || !ids.includes('sota-models')) errors.push('需要甜品和顶尖两个分组');
+    if (ids.length !== 2 || !ids.includes('high-volume-models') || !ids.includes('sota-models')) errors.push('精选模型必须包含 high-volume-models 和 sota-models 两个分组');
     for (const group of config.groups || []) {
+      if (![group.title, group.label].every(value => typeof value === 'string' && value.trim())) errors.push('精选分组缺少 title 或 label: ' + group.id);
       if (!group.modelSlugs?.length) errors.push('空模型组 ' + group.id);
       for (const slug of group.modelSlugs || []) {
         if (models.has(slug)) errors.push('模型重复分组 ' + slug);
@@ -36,7 +37,7 @@
   }
   function scoreHtml(model, key, label) {
     const n = score(model, key), record = model.scores?.[key];
-    return `<span class="model-score"><span class="model-score-value"><strong${n == null ? ' class="score-unknown"' : ''}>${n == null ? '未评定' : n.toFixed(1)}</strong>${n != null && record.sourceUrl ? ` <a href="${esc(url(record.sourceUrl))}" target="_blank" rel="noopener noreferrer" aria-label="${esc(model.name)} ${label}评分来源" title="${esc(record.configuration || '评分来源')}">↗</a>` : ''}</span><span class="model-score-label">${label}</span></span>`;
+    return `<span class="model-score"><span class="model-score-value"><strong${n == null ? ' class="score-unknown"' : ''}>${n == null ? '暂无评分' : n.toFixed(1)}</strong>${n != null && record.sourceUrl ? ` <a href="${esc(url(record.sourceUrl))}" target="_blank" rel="noopener noreferrer" aria-label="${esc(model.name)} ${label}评分来源" title="${esc(record.configuration || '评分来源')}">↗</a>` : ''}</span><span class="model-score-label">${label}</span></span>`;
   }
   function modalities(model) {
     const names = {text:'文本',image:'图片',speech:'音频',video:'视频'};

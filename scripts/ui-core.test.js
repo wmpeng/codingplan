@@ -1,6 +1,13 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const UI = require('./ui-core');
+
+test('模型分组入口读取配置短名称，未加载时不复制旧分组名', () => {
+  const groups = [{id:'sota-models',title:'能力模型',label:'能力级'}];
+  assert.equal(UI.modelGroupLabel(groups,'sota-models'),'能力级');
+  assert.equal(UI.modelGroupLabel([{id:'sota-models',title:'能力模型'}],'sota-models'),'能力模型');
+  assert.equal(UI.modelGroupLabel(undefined,'sota-models'),'精选分组');
+});
 test('公共链接保留参数并阻止脚本及协议相对地址', () => {
   assert.equal(UI.route('pricing', { platform: '中文 & x', plan: 'a/b', model: null }), '/pricing/?platform=%E4%B8%AD%E6%96%87+%26+x&plan=a%2Fb');
   for (const input of ['javascript:alert(1)', '//outside.example', 'data:text/html,x', '', null]) assert.equal(UI.sanitizeUrl(input), null);

@@ -116,7 +116,7 @@
         <header class="platform-compare-picker-header">
           <div>
             <h2 id="platformComparePickerTitle">${escapeHtml(options.title || '选择要对比的平台')}</h2>
-            <p>本屏最多并排对比 ${capacity} 个平台；Pin 项会优先预选，但这里的选择不会改变 Pin。</p>
+            <p>本屏最多并排对比 ${capacity} 个平台；置顶平台会优先预选，这里的选择不会改变置顶状态。</p>
           </div>
           <button type="button" class="platform-compare-picker-close" aria-label="关闭">×</button>
         </header>
@@ -126,7 +126,7 @@
         </div>
         <div class="platform-compare-picker-list"></div>
         <footer class="platform-compare-picker-footer">
-          <p class="platform-compare-picker-note">至少选择 2 个。靠前的 Pin 项会作为默认候选。</p>
+          <p class="platform-compare-picker-note">至少选择 2 个。靠前的置顶平台会作为默认候选。</p>
           <button type="button" class="platform-comparison-primary-btn" disabled>开始对比</button>
         </footer>
       </div>`;
@@ -171,7 +171,7 @@
                   <span class="platform-compare-picker-option-name">${escapeHtml(platform.name)}</span>
                   <span class="platform-compare-picker-option-summary">${escapeHtml(platform.summary || '暂无简介')}</span>
                 </span>
-                ${pinnedSet.has(platform.slug) ? '<span class="platform-compare-picker-pin">已 Pin</span>' : ''}
+                ${pinnedSet.has(platform.slug) ? '<span class="platform-compare-picker-pin">已置顶</span>' : ''}
               </label>`;
           }).join('')
         : '<p class="platform-compare-picker-empty">没有匹配的平台</p>';
@@ -280,7 +280,7 @@
 
   function scoreOf(platform, key) {
     const dimension = platform && platform.dimensions && platform.dimensions[key];
-    return dimension && Number.isFinite(Number(dimension.score)) ? Number(dimension.score) : null;
+    return typeof dimension?.score === 'number' && Number.isFinite(dimension.score) ? dimension.score : null;
   }
 
   function buildPlatformView(platform, context) {
@@ -331,14 +331,14 @@
 
   function dimensionCell(view, key, leadInfo) {
     const dimension = view.platform.dimensions && view.platform.dimensions[key];
-    if (!dimension) return '暂无评分';
-    const score = Number(dimension.score);
+    if (!dimension) return '待评定';
+    const score = scoreOf(view.platform, key);
     const badge = leadInfo && leadInfo.leaders.has(view.platform.slug)
       ? `<span class="platform-comparison-lead-badge">${escapeHtml(leadInfo.badge)}</span>`
       : '';
     return `
       <div class="platform-comparison-score-line">
-        <span class="platform-comparison-score">${Number.isFinite(score) ? `${score}/5` : '未评分'}</span>
+        <span class="platform-comparison-score">${Number.isFinite(score) ? `${score}/5` : '待评定'}</span>
         ${badge}
       </div>
       <div>${formatMarkdown(dimension.reason || '')}</div>`;
@@ -484,7 +484,7 @@
         <div class="platform-comparison-select-card">
           <div class="platform-comparison-select-card-top">
             <span class="platform-comparison-select-card-label">候选 ${index + 1}</span>
-            <span class="platform-comparison-select-card-rating">${platform && platform.rating ? `${platform.rating}/5` : '未评分'}</span>
+            <span class="platform-comparison-select-card-rating">${platform && platform.rating ? `${platform.rating}/5` : '待评定'}</span>
           </div>
           <select data-comparison-slot="${index}" aria-label="替换候选 ${index + 1}">${options}</select>
         </div>`;

@@ -4,6 +4,7 @@
   else root.ModelDirectory = api;
 })(globalThis, function (Catalog) {
   'use strict';
+  const EntityData = globalThis.EntityData || require('./entity-data.js');
   const pinKey = 'codingplanPinnedModels';
   function sanitizePins(ids, models) {
     const valid = new Set(models.map(model => model.slug));
@@ -21,7 +22,7 @@
     const modeSlugs = state.featuredMode === 'all' ? featured : group ? new Set(group.modelSlugs) : null;
     const query = String(state.query || '').trim().toLocaleLowerCase();
     const matched = models.filter(model => modeSlugs ? modeSlugs.has(model.slug)
-      : (!query || `${model.name} ${model.slug}`.toLocaleLowerCase().includes(query)) && (!state.multimodal || model.multimodal === true));
+      : (!query || `${model.name} ${model.slug}`.toLocaleLowerCase().includes(query)) && (!state.multimodal || EntityData.isMultimodal(model)));
     const matchedIds = new Set(matched.map(model => model.slug));
     const order = new Map(models.map((model, index) => [model.slug, index]));
     const rank = model => pinned.has(model.slug) ? 0 : featured.has(model.slug) ? 1 : 2;

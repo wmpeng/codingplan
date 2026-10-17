@@ -102,7 +102,7 @@
       `<h3 id="platformDetailApiPricingHeading" class="platform-detail-section-title">按量 API 定价</h3>` +
       `<p class="platform-detail-api-unit">单位：每百万 Token；综合价按站点统一工作负载计算</p>` +
       content +
-      `<a class="platform-detail-avail-link" href="/pricing/">在额度/价格对比中查看 →</a>` +
+      `<a class="platform-detail-avail-link" href="/pricing/">在价格与额度中查看 →</a>` +
       `</section>`
     );
   }
@@ -447,7 +447,6 @@
       `<span class="platform-detail-rating" aria-label="${rating > 0 ? `${rating} 星` : '待评定'}">${rating > 0 ? stars : '待评定'}</span>` +
       statusHtml +
       EntityData.platformHarnessApiBadge(platform, rawPlans) +
-      (discontinued ? `<span class="platform-detail-status">已停售</span>` : '') +
       `</div>` +
       `</header>` +
       overviewHtml +

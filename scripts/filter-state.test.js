@@ -2,6 +2,27 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const Filters = require('./filter-state.js');
 
+test('多模态筛选及旧字段包含纯非文本输出，未知与纯文本不纳入', () => {
+  const {fixtureContext}=require('./test-fixtures.cjs');
+  const E=require('./entity-data.js');
+  const models=[{slug:'speech',multimodal:true,modalities:{input:['text'],output:['speech']}},
+    {slug:'image-output',multimodal:true,modalities:{input:['text'],output:['image']}},
+    {slug:'image-input',multimodal:true,modalities:{input:['text','image']}},
+    {slug:'text',multimodal:false},{slug:'unknown',multimodal:'unknown'}];
+  const context=fixtureContext({schemaVersion:1,platforms:[{slug:'p',platformStatus:'open'}]},
+    {plans:[{slug:'plan',platformSlug:'p',billingMode:'subscription'}]}, {schemaVersion:1,models},
+    {planModels:models.map(model=>({slug:model.slug,planSlug:'plan',modelSlug:model.slug}))});
+  const expected=['speech','image-output','image-input'];
+  for(const patch of [{multimodal:'multimodal'},{imageRequired:true}]) {
+    assert.deepEqual(Filters.matchingOffers(context,patch)[0].rows.map(row=>row.modelSlug),expected);
+  }
+  const points=models.map(model=>({...model,modelSlug:model.slug,platformSlug:'p',billingMode:'subscription'}));
+  assert.deepEqual(Filters.filterPoints(points,{multimodal:'multimodal'}).map(point=>point.slug),expected);
+  assert.deepEqual(Filters.filterPoints(points,{imageRequired:true}).map(point=>point.slug),expected);
+  for(const model of models) assert.equal(E.isMultimodal(model),expected.includes(model.slug));
+  assert.equal(E.isMultimodal(null),false);
+});
+
 const unrestricted = (overrides = {}) => Filters.normalizeState({
   platformSlugs: null,
   modelSlugs: null,

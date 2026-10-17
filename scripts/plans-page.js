@@ -64,7 +64,7 @@
           ${['firstMonthPrice', 'monthlyPrice', 'quarterlyPrice', 'yearlyPrice'].map(key => `<td>${esc(money(plan, key))}</td>`).join('')}
           ${['fiveHoursRequests', 'weeklyRequests', 'monthlyRequests'].map(key => `<td>${esc(typeof plan[key] === 'number' ? (key === 'monthlyRequests' ? Numbers.tokens : Numbers.count)(plan[key]) : plan[key] == null ? '未公开' : plan[key])}</td>`).join('')}
           <td>${UI.modelTags(plan.modelLabels,{limit:4,ariaLabel:plan.name+' 支持模型'})}</td>
-          <td class="monthly-token-cell" title="所选模型各档位的月 Token 参考范围，不相加；详细口径见额度/价格对比">${esc(Filters.formatMonthlyTokens(plan, state))}</td>
+          <td class="monthly-token-cell" title="所选模型各档位的月 Token 参考范围，不相加；详细口径见价格与额度">${esc(Filters.formatMonthlyTokens(plan, state))}</td>
           <td>${plan.rating > 0 ? esc(plan.rating) + ' / 5' : '待评定'}</td>
           <td>${chips(plan.benefits)}</td>
           <td class="plan-note">${esc(plan.note || '')}</td>
