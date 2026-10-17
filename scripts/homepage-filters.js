@@ -166,10 +166,10 @@
   }
 
   const statusExclusions = { restricted: "排除购买受限平台" };
-  function buildStatusPicker(includeHistory = false, includePlanHistory = includeHistory, platformHub = false) {
+  function buildStatusPicker(includeHistory = false, includePlanHistory = includeHistory) {
     return `<details class="filter-picker status-picker" id="homeStatusPicker">
       <summary aria-label="购买状态"><span class="status-picker-title">购买状态</span><span data-status-label>不限</span></summary>
-      <div class="filter-picker-menu" role="group" aria-label="${includeHistory ? "购买状态筛选" : "排除购买状态"}"><div class="filter-picker-tools"><button type="button" data-clear-status aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}</span></label>`).join("")}${includeHistory ? `<div class="status-picker-history"><label><input type="checkbox" data-include-delisted><span>${platformHub ? "包含已下架平台" : "包含下架平台"}</span></label>${includePlanHistory ? '<label><input type="checkbox" data-filter-field="includeDiscontinued"><span>包含下架套餐</span></label>' : ''}</div>` : ""}</div>
+      <div class="filter-picker-menu" role="group" aria-label="${includeHistory ? "购买状态筛选" : "排除购买状态"}"><div class="filter-picker-tools"><button type="button" data-clear-status aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}</span></label>`).join("")}${includeHistory ? `<div class="status-picker-history"><label><input type="checkbox" data-include-delisted><span>包含已下架平台</span></label>${includePlanHistory ? '<label><input type="checkbox" data-filter-field="includeDiscontinued"><span>包含已下架套餐</span></label>' : ''}</div>` : ""}</div>
     </details>`;
   }
   let presetPromise;
@@ -333,7 +333,7 @@
           ? ""
           : `${buildRangePicker("budget", state)}${buildRangePicker("token", state)}`
       }
-      ${!monitor ? buildStatusPicker(purchaseTool, purchaseTool && !platformHub, platformHub) : ""}
+      ${!monitor ? buildStatusPicker(purchaseTool, purchaseTool && !platformHub) : ""}
       ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-platform-domestic>支持中国大陆</label>' : ""}</div>
       ${platformHub ? '<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-platform-featured aria-pressed="false">显示精选平台</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>' : ""}
       <div class="filter-state-footer">
