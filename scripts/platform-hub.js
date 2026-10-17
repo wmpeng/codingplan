@@ -38,7 +38,7 @@
   function countHtml(selection, featuredOnly) {
     const [current, total, pins] = countParts(selection, featuredOnly);
     if (featuredOnly) return current + pins;
-    return `<span class="platform-count-main"><strong class="platform-count-value">${current}</strong><span class="platform-count-total">${total}</span></span>${pins}`;
+    return `<span class="platform-count-main">${current}${total}</span>${pins}`;
   }
   return {select, countLabel, countHtml, prioritizeFeaturedModels};
 });
