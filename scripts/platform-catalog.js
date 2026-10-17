@@ -471,7 +471,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
 
   const models = supportedModels.length ? supportedModels.map(model => model.name) : collectModelsForVendor(plans, platform.slug);
   const modelsHtml = CatalogUI.modelTags(models, {
-    limit: 5, maxRows: options.modelMaxRows, className: 'platform-models', ariaLabel: '模型', toggleAttribute: 'data-platform-toggle-models'
+    limit: options.modelMaxRows ? undefined : 5, maxRows: options.modelMaxRows, className: 'platform-models', ariaLabel: '模型', toggleAttribute: 'data-platform-toggle-models'
   });
 
   const capabilitiesHtml = `<div class="platform-capabilities">${PlatformEntityData.platformHarnessApiBadge(platform, plans)}</div>`;

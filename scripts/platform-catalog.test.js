@@ -231,6 +231,16 @@ describe('buildPlatformCardHtml', () => {
     assert.ok(html.includes('+2'));
   });
 
+  it('uses the full model list for row-limited cards instead of a fixed five-model cap', () => {
+    const models = Array.from({length: 12}, (_, index) => `M${index + 1}`);
+    const html = buildPlatformCardHtml(samplePlatform(), [
+      { platformSlug: 'x', modelLabels: models, planStatus: 'open' }
+    ], { modelMaxRows: 3 });
+    assert.match(html, /data-model-max-rows="3" data-model-limit="12"/);
+    assert.equal((html.match(/class="model-tag"/g) || []).length, 12);
+    assert.match(html, /data-platform-toggle-models/);
+  });
+
   it('renders platform summary on card when present', () => {
     const withSummary = buildPlatformCardHtml(
       samplePlatform({ summary: '一句话总述' }),
