@@ -77,7 +77,15 @@
     while (shown > 0 && rowCount() > maxRows) { shown--; apply(); }
   }
   function observeModelTagRows(host) {
-    const refresh = () => host.querySelectorAll('[data-model-max-rows]').forEach(fitModelTagRows);
+    const observed = new Set();
+    const refresh = () => {
+      const groups = new Set(host.querySelectorAll('[data-model-max-rows]'));
+      if (observer) {
+        for (const group of observed) if (!groups.has(group)) { observer.unobserve(group); observed.delete(group); }
+        for (const group of groups) if (!observed.has(group)) { observer.observe(group); observed.add(group); }
+      }
+      groups.forEach(fitModelTagRows);
+    };
     const observer = globalThis.ResizeObserver ? new ResizeObserver(refresh) : null;
     if (observer) observer.observe(host);
     else globalThis.addEventListener('resize', refresh);

@@ -35,7 +35,7 @@
     const amountHeading=api && !estimateColumn ? '' : `<th scope="col">${estimateColumn?'月支出估算':'月额度 / '+unitLabel(unit)}</th>`;
     const table=`<div class="offer-model-table-wrap" role="region" aria-label="${esc(item.platform.name+' '+item.plan.name)}${api?'价格与估算':'模型额度'}"><table class="offer-model-table"><thead><tr><th scope="col">模型 / 档位</th>${amountHeading}<th scope="col">单价 / ${unitLabel(unit)}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     const modelsId='offer-model-tags-'+encodeURIComponent(item.id);
-    const modelTags=UI.modelTags(item.models.map(m=>m.name),{limit:3,id:modelsId,className:'offer-model-summary platform-models',ariaLabel:'匹配模型'});
+    const modelTags=UI.modelTags(item.models.map(m=>m.name),{maxRows:1,id:modelsId,className:'offer-model-summary platform-models',ariaLabel:'匹配模型'});
     const rangeText=Numbers.range(item.rows.map(r=>r.usage?.monthlyTokenInM),v=>tokenAmount(v,unit));
     const unlimited=item.rows.some(r=>r.usage?.monthlyTokenInM==='unlimited');
     const range=rangeText!==null ? `${rangeText} ${unitLabel(unit)}`+(unlimited?'～不限量':'') : unlimited?'不限量':'额度未知';
@@ -79,6 +79,7 @@
       summary.classList.toggle('is-compact',compact);
       price.setAttribute('aria-hidden',String(compact));
     };
+    const modelRows=UI.observeModelTagRows(host);
     const summaryObserver=new ResizeObserver(entries=>entries.forEach(entry=>fitSummary(entry.target)));
     host.innerHTML = `<aside class="guide-advice" data-offer-advice hidden></aside><div class="section-heading offer-results-heading"><div><div class="offer-results-title"><h2>符合需求的方案</h2><span id="offerCount" role="status"></span></div><p>全部条件在同一个套餐内成立；按量 API 在卡片内列出匹配模型和计费档位。</p></div></div><div data-offer-content></div>`;
     const render=()=>{
@@ -115,6 +116,7 @@
       host.querySelectorAll('.offer-quota-summary').forEach(summary=>{fitSummary(summary);summaryObserver.observe(summary);});
       for(const [id,cls] of open){const el=[...host.querySelectorAll('[data-offer-id]')].find(x=>x.dataset.offerId===id);const d=el?.querySelector('details.'+cls);if(d)d.open=true;}
       for(const id of expandedModels){const el=[...host.querySelectorAll('[data-offer-id]')].find(x=>x.dataset.offerId===id);const button=el?.querySelector('[data-toggle-models]');if(button)setModelsExpanded(button,true);}
+      modelRows.refresh();
       if(sortOnly) {
         if(host.contains(focused) && focused!==document.activeElement)focused.focus({preventScroll:true});
         globalThis.scrollTo({...scroll,behavior:'instant'});

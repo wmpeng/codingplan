@@ -7,8 +7,9 @@
       C.validate(preset,context);context.modelGroups=preset.groups;
       window.codingplanEntityContext=context;
       const plans=EntityData.buildPlanCatalog(context).filter(plan=>plan.billingMode==='subscription'),grid=document.getElementById('featuredPlatforms');
+      const modelRows=CodingPlanUI.observeModelTagRows(grid);
       let pinned=PlatformCatalog.readPinnedIdsFromStorage(localStorage);
-      function platforms(){grid.innerHTML=preset.platformSlugs.map(slug=>PlatformCatalog.buildPlatformCardHtml(context.platformBySlug.get(slug),plans,{capabilitiesBeforeScores:true,supportedModels:EntityData.platformModels(context,slug),hasApiPlan:EntityData.buildApiPricingGroups(context,slug).length>0,pinnedIds:pinned,sanitizeUrl:C.url})).join('');}
+      function platforms(){grid.innerHTML=preset.platformSlugs.map(slug=>PlatformCatalog.buildPlatformCardHtml(context.platformBySlug.get(slug),plans,{capabilitiesBeforeScores:true,supportedModels:EntityData.platformModels(context,slug),hasApiPlan:EntityData.buildApiPricingGroups(context,slug).length>0,pinnedIds:pinned,sanitizeUrl:C.url})).join('');modelRows.refresh();}
       function pin(slug){pinned=PlatformCatalog.togglePinnedId(pinned,slug);PlatformCatalog.writePinnedIdsToStorage(localStorage,pinned);platforms();PlatformDetail.syncPinUi();}
       platforms();
       PlatformDetail.init({getPlans:()=>plans,getEntityContext:()=>context,isPlatformPinned:slug=>pinned.includes(slug),onTogglePlatformPin:pin,onJumpPlansTable:name=>{const p=context.platforms.find(x=>x.name===name);location.href=CodingPlanUI.route('plans',{platform:p?.slug});}});

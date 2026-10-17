@@ -29,8 +29,9 @@ test('订阅价格与额度摘要收敛，套餐链接不限定第一个模型',
 test('模型标签为纯展示，额外模型默认隐藏并提供真实按钮',()=>{
   const item=offer({models:Array.from({length:5},(_,i)=>({slug:'m'+i,name:'模型'+i}))});
   const html=Offers.card(item,{tokenUnit:'yi'});
-  assert.equal((html.match(/data-extra-model hidden/g)||[]).length,2);
-  assert.match(html,/<button[^>]+data-toggle-models[^>]+aria-expanded="false"[^>]*>\+2<\/button>/);
+  assert.match(html,/data-model-max-rows="1" data-model-limit="5"/);
+  assert.equal((html.match(/data-extra-model hidden/g)||[]).length,5);
+  assert.match(html,/<button[^>]+data-toggle-models[^>]+aria-expanded="false"[^>]*>\+5<\/button>/);
   assert.doesNotMatch(html,/<a[^>]*class="model-tag/);
 });
 test('按量卡片汇总模型档位，价格链接打开整个 API，零与未知保持语义',()=>{

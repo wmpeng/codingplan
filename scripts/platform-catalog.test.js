@@ -217,7 +217,7 @@ describe('buildPlatformCardHtml', () => {
     assert.ok(html.includes('platform-card-hint') || html.includes('查看详情'));
   });
 
-  it('limits model tags on card face with +N overflow', () => {
+  it('uses a two-row layout budget on card faces with +N overflow', () => {
     const models = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7'];
     const html = buildPlatformCardHtml(samplePlatform({ name: 'X' }), [
       { platformSlug: 'x', modelLabels: models, planStatus: 'open' }
@@ -228,15 +228,16 @@ describe('buildPlatformCardHtml', () => {
     assert.match(html, /data-extra-model hidden>M7<\/span>/);
     assert.match(html, /<button type="button"[^>]*data-platform-toggle-models[^>]*aria-expanded="false"/);
     assert.ok(html.includes('model-tag-more'));
-    assert.ok(html.includes('+2'));
+    assert.match(html, /data-model-max-rows="2" data-model-limit="7"/);
+    assert.ok(html.includes('+6'));
   });
 
   it('uses the full model list for row-limited cards instead of a fixed five-model cap', () => {
     const models = Array.from({length: 12}, (_, index) => `M${index + 1}`);
     const html = buildPlatformCardHtml(samplePlatform(), [
       { platformSlug: 'x', modelLabels: models, planStatus: 'open' }
-    ], { modelMaxRows: 3 });
-    assert.match(html, /data-model-max-rows="3" data-model-limit="12"/);
+    ], { modelMaxRows: 2 });
+    assert.match(html, /data-model-max-rows="2" data-model-limit="12"/);
     assert.equal((html.match(/class="model-tag"/g) || []).length, 12);
     assert.match(html, /data-platform-toggle-models/);
   });

@@ -32,7 +32,7 @@
             hasApiPlan: apiGroups.length > 0,
             supportedModels: root.PlatformHub.prioritizeFeaturedModels(root.EntityData.platformModels(context, platform.slug), context.modelGroups),
             featured: featuredSlugs.includes(platform.slug),
-            modelMaxRows: 3,
+            modelMaxRows: 2,
             pinnedIds,
             sanitizeUrl: root.CodingPlanUI.sanitizeUrl
           });

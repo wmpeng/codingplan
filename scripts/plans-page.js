@@ -18,6 +18,7 @@
   function boot() {
     const host = document.getElementById('plansPage');
     if (!host || !Filters || !root.EntityData) return;
+    const modelRows = UI.observeModelTagRows(host);
     root.CodingPlanToolPage.load().then(({ context, config }) => {
       const allPlans = root.EntityData.buildPlanCatalog(context).filter(plan => plan.billingMode === 'subscription');
       let state = Filters.createDefaultState(config, { mode: 'full' });
@@ -63,7 +64,7 @@
           <td>${esc(plan.name)}${plan.planStatus === 'delisted' ? '<span class="tool-tag">已下架</span>' : ''}<div class="plan-capabilities">${root.EntityData.harnessApiBadge(plan.supportsHarnessApi)}</div></td>
           ${['firstMonthPrice', 'monthlyPrice', 'quarterlyPrice', 'yearlyPrice'].map(key => `<td>${esc(money(plan, key))}</td>`).join('')}
           ${['fiveHoursRequests', 'weeklyRequests', 'monthlyRequests'].map(key => `<td>${esc(typeof plan[key] === 'number' ? (key === 'monthlyRequests' ? Numbers.tokens : Numbers.count)(plan[key]) : plan[key] == null ? '未公开' : plan[key])}</td>`).join('')}
-          <td>${UI.modelTags(plan.modelLabels,{limit:4,ariaLabel:plan.name+' 支持模型'})}</td>
+          <td>${UI.modelTags(plan.modelLabels,{maxRows:2,ariaLabel:plan.name+' 支持模型'})}</td>
           <td class="monthly-token-cell" title="所选模型各档位的月 Token 参考范围，不相加；详细口径见价格与额度">${esc(Filters.formatMonthlyTokens(plan, state))}</td>
           <td>${plan.rating > 0 ? esc(plan.rating) + ' / 5' : '待评定'}</td>
           <td>${chips(plan.benefits)}</td>
@@ -72,6 +73,7 @@
         </tr>`).join('') : `<tr><td colspan="15"><div class="tool-empty">${state.apiOnly
           ? '此页仅展示订阅套餐。当前仅选择按量 API，可前往 <a href="/pricing/?billing=payg">价格与额度查看 API</a>，或将月预算恢复为不限。'
           : '当前条件下没有套餐；可调整上方条件，或显示全部。'}</div></td></tr>`;
+        modelRows.refresh(); host.dataset.mounted = '1';
       }
 
       host.addEventListener('click', event => {
@@ -92,7 +94,7 @@
           apply();
         }
       });
-      host.querySelector('[data-plan-columns]').addEventListener('change', event => host.classList.toggle('show-all-columns', event.target.checked));
+      host.querySelector('[data-plan-columns]').addEventListener('change', event => { host.classList.toggle('show-all-columns', event.target.checked); modelRows.refresh(); });
       root.CodingPlanToolPage.filters({ context, config }, 'plans', next => { state = next; apply(); });
     }).catch(error => root.CodingPlanToolPage.error(host, error.message));
   }
