@@ -32,18 +32,60 @@
   function modelTags(labels, options = {}) {
     const models = Array.isArray(labels) ? labels.filter(name => typeof name === 'string' && name.trim()) : [];
     if (!models.length) return '';
-    const limit = options.limit == null ? models.length : Math.max(0, options.limit);
+    const modelLimit = options.limit == null ? models.length : Math.max(0, options.limit);
+    const maxRows = Number.isInteger(options.maxRows) && options.maxRows > 0 ? options.maxRows : null;
+    // Reserve a row for the toggle in the static fallback; layout restores fitting tags.
+    const limit = maxRows && models.length > maxRows ? Math.min(modelLimit, Math.max(0, maxRows - 1)) : modelLimit;
     const extra = Math.max(0, models.length - limit), expanded = !!options.expanded;
     const toggle = options.toggleAttribute || 'data-toggle-models';
     const tags = models.map((name, index) => `<span class="model-tag"${index >= limit ? ` data-extra-model${expanded ? '' : ' hidden'}` : ''}>${escapeHtml(name)}</span>`).join('');
     const button = extra ? `<button type="button" class="model-tag model-tag-more" ${toggle} data-extra-count="${extra}" aria-expanded="${expanded}"${options.id ? ` aria-controls="${escapeHtml(options.id)}"` : ''} aria-label="${expanded ? '收起额外模型' : `展开其余 ${extra} 个模型`}">${expanded ? '收起' : '+' + extra}</button>` : '';
-    return `<div${options.id ? ` id="${escapeHtml(options.id)}"` : ''} class="ui-model-tags ${escapeHtml(options.className || '')}" data-model-tags aria-label="${escapeHtml(options.ariaLabel || '支持模型')}">${tags}${button}</div>`;
+    return `<div${options.id ? ` id="${escapeHtml(options.id)}"` : ''} class="ui-model-tags ${escapeHtml(options.className || '')}" data-model-tags${maxRows ? ` data-model-max-rows="${maxRows}" data-model-limit="${modelLimit}"` : ''} aria-label="${escapeHtml(options.ariaLabel || '支持模型')}">${tags}${button}</div>`;
+  }
+  function fitModelTagRows(group) {
+    const maxRows = Number(group.dataset.modelMaxRows);
+    if (!maxRows || !group.clientWidth) return;
+    const tags = [...group.querySelectorAll('span.model-tag')], button = group.querySelector('.model-tag-more');
+    if (!button) return;
+    if (button.getAttribute('aria-expanded') === 'true') {
+      tags.forEach(tag => { tag.hidden = false; });
+      return;
+    }
+    let shown = Math.min(tags.length, Number(group.dataset.modelLimit));
+    function apply() {
+      tags.forEach((tag, index) => { tag.hidden = index >= shown; tag.toggleAttribute('data-extra-model', index >= shown); });
+      const extra = tags.length - shown;
+      button.hidden = !extra;
+      button.dataset.extraCount = extra;
+      button.textContent = '+' + extra;
+      button.setAttribute('aria-label', `展开其余 ${extra} 个模型`);
+    }
+    function rowCount() {
+      let rows = 0, bottom = -Infinity;
+      for (const item of [...tags, button].filter(item => !item.hidden)) {
+        const box = item.getBoundingClientRect();
+        if (box.top >= bottom - 1) rows++;
+        bottom = Math.max(bottom, box.bottom);
+      }
+      return rows;
+    }
+    apply();
+    while (shown > 0 && rowCount() > maxRows) { shown--; apply(); }
+  }
+  function observeModelTagRows(host) {
+    const refresh = () => host.querySelectorAll('[data-model-max-rows]').forEach(fitModelTagRows);
+    const observer = globalThis.ResizeObserver ? new ResizeObserver(refresh) : null;
+    if (observer) observer.observe(host);
+    else globalThis.addEventListener('resize', refresh);
+    refresh();
+    return {refresh, disconnect: () => observer ? observer.disconnect() : globalThis.removeEventListener('resize', refresh)};
   }
   function setModelsExpanded(button, expanded) {
     button.closest('[data-model-tags]').querySelectorAll('[data-extra-model]').forEach(tag => { tag.hidden = !expanded; });
     button.setAttribute('aria-expanded', String(expanded));
     button.setAttribute('aria-label', expanded ? '收起额外模型' : `展开其余 ${button.dataset.extraCount} 个模型`);
     button.textContent = expanded ? '收起' : '+' + button.dataset.extraCount;
+    fitModelTagRows(button.closest('[data-model-tags]'));
   }
   function toggleModels(event, selector = '[data-toggle-models]') {
     const button = event.target.closest(selector);
@@ -52,5 +94,5 @@
     setModelsExpanded(button, button.getAttribute('aria-expanded') !== 'true');
     return true;
   }
-  return { escapeHtml, escapeHtmlPreserveBreaks, sanitizeUrl, route, statusLabels, externalLinkIcon, closeIcon, pinIcon, pinButton, modelTags, setModelsExpanded, toggleModels };
+  return { escapeHtml, escapeHtmlPreserveBreaks, sanitizeUrl, route, statusLabels, externalLinkIcon, closeIcon, pinIcon, pinButton, modelTags, setModelsExpanded, toggleModels, observeModelTagRows };
 });

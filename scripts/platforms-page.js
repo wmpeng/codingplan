@@ -3,6 +3,7 @@
   function boot() {
     const host = document.getElementById('platformHubApp');
     if (!host || !root.EntityData || !root.PlatformCatalog) return;
+    const modelRows = root.CodingPlanUI.observeModelTagRows(host);
     host.addEventListener('click', event => root.PlatformCatalog.togglePlatformModels(event));
     host.setAttribute('aria-busy', 'true');
     root.CodingPlanToolPage.load().then(({ context, config: appConfig }) => {
@@ -31,11 +32,13 @@
             hasApiPlan: apiGroups.length > 0,
             supportedModels: root.PlatformHub.prioritizeFeaturedModels(root.EntityData.platformModels(context, platform.slug), context.modelGroups),
             featured: featuredSlugs.includes(platform.slug),
+            modelMaxRows: 3,
             pinnedIds,
             sanitizeUrl: root.CodingPlanUI.sanitizeUrl
           });
         };
         grid.innerHTML = selection.visible.map(cardHtml).join('');
+        modelRows.refresh();
         search.disabled = featuredOnly;
         search.closest('.tool-result-bar').classList.toggle('is-search-paused', featuredOnly);
         host.setAttribute('aria-busy','false');
