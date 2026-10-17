@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<script src="/scripts/ui-core.js?v=00a7eba403"></script>
+<script src="/scripts/ui-core.js?v=101203ea10"></script>
 <script src="/scripts/ui-help.js?v=343d388a1a"></script>
 <script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
 <script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
@@ -10,14 +10,14 @@
   <title>各平台套餐 - Coding Plan</title>
 <meta name="description" content="完整对比 AI Coding Plan 套餐的月费、首月、季付、年付、请求额度、支持模型和购买状态。">
   <link rel="canonical" href="https://codingplan.fyi/plans/">
-  <link rel="icon" href="/favicon.ico?v=260924a"><link rel="stylesheet" href="/styles/shared.css?v=482edb170c"><link rel="stylesheet" href="/styles/tool-page.css?v=2fbdd6501f"><link rel="stylesheet" href="/styles/homepage-filters.css?v=ac0b21e085">
-<link rel="stylesheet" href="/styles/design-system.css?v=a87ff3bd25">
+  <link rel="icon" href="/favicon.ico?v=260924a"><link rel="stylesheet" href="/styles/shared.css?v=482edb170c"><link rel="stylesheet" href="/styles/tool-page.css?v=de82de7632"><link rel="stylesheet" href="/styles/homepage-filters.css?v=7501fe9b7f">
+<link rel="stylesheet" href="/styles/design-system.css?v=8b40812952">
 <script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
-<link rel="stylesheet" href="/styles/ui-components.css?v=4839ae1fc0">
+<link rel="stylesheet" href="/styles/ui-components.css?v=bf5f1551fa">
 <link rel="stylesheet" href="/styles/ui-help.css?v=1fa99848ee">
 </head>
-<body class="tool-page">
+<body class="tool-page plans-page">
 <!-- SITE_NAV_START -->
 <header class="tool-topbar site-header">
   <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
@@ -61,16 +61,16 @@
 </header>
 <!-- SITE_NAV_END -->
 <main class="tool-page-main">
-    <header class="tool-hero"><div><h1>各平台套餐</h1></div><a class="tool-button" href="/pricing/">查看价格与用量图 →</a></header>
+    <header class="tool-hero"><div><h1>各平台套餐</h1></div><a class="tool-button" href="/pricing/">价格与额度 →</a></header>
     <div id="toolFilters" aria-label="筛选条件"><p class="tool-filter-loading" role="status">正在加载筛选条件…</p></div>
     <section id="plansPage">
-      <div class="tool-result-bar"><span class="tool-count" data-plan-count aria-live="polite">加载中…</span><label><input type="checkbox" data-plan-columns> 显示全部字段</label></div>
-      <div class="tool-panel tool-table-wrap" tabindex="0" role="region" aria-label="套餐对比表，可横向滚动"><table class="tool-table"><thead><tr><th><button type="button" class="table-sort-button" data-plan-sort="platformName">平台</button></th><th><button type="button" class="table-sort-button" data-plan-sort="name">套餐</button></th><th><button type="button" class="table-sort-button" data-plan-sort="firstMonthPrice">首月</button></th><th><button type="button" class="table-sort-button" data-plan-sort="monthlyPrice">包月</button><span class="ui-help"><button type="button" class="ui-help-button" popovertarget="planPriceHelp" aria-label="价格与排序说明" aria-expanded="false" aria-controls="planPriceHelp"><span aria-hidden="true">?</span></button><span class="ui-help-content" id="planPriceHelp" popover="auto" role="tooltip">价格显示原币种；排序按站内汇率折合人民币比较。包季、包年显示整周期价格。</span></span></th><th><button type="button" class="table-sort-button" data-plan-sort="quarterlyPrice">包季</button></th><th><button type="button" class="table-sort-button" data-plan-sort="yearlyPrice">包年</button></th><th><button type="button" class="table-sort-button" data-plan-sort="fiveHoursRequests">5 小时请求</button></th><th><button type="button" class="table-sort-button" data-plan-sort="weeklyRequests">每周请求</button></th><th><button type="button" class="table-sort-button" data-plan-sort="monthlyRequests">每月请求</button></th><th><button type="button" class="table-sort-button" data-plan-sort="modelLabels">支持模型</button></th><th><button type="button" class="table-sort-button" data-plan-sort="monthlyToken">月 Token 参考</button></th><th><button type="button" class="table-sort-button" data-plan-sort="rating">评分</button></th><th><button type="button" class="table-sort-button" data-plan-sort="benefits">权益</button></th><th><button type="button" class="table-sort-button" data-plan-sort="note">备注</button></th><th>操作</th></tr></thead><tbody data-plan-body></tbody></table></div>
+      <div class="tool-result-bar"><input type="search" data-plan-search disabled placeholder="搜索平台或套餐名称" aria-label="搜索平台或套餐名称"><span class="tool-count" data-plan-count aria-live="polite">加载中…</span><label><input type="checkbox" data-plan-columns> 更多字段</label></div>
+      <div class="tool-panel tool-table-wrap" tabindex="0" role="region" aria-label="套餐对比表，可横向滚动"><table class="tool-table"><thead><tr><th scope="col" data-plan-col="identity"><div class="plan-identity-heading"><button type="button" class="table-sort-button" data-plan-sort="platformName">平台</button><span>/</span><button type="button" class="table-sort-button" data-plan-sort="name">套餐</button></div></th><th scope="col" data-plan-col="rating"><button type="button" class="table-sort-button" data-plan-sort="rating">评分</button></th><th scope="col" data-plan-col="firstMonthPrice"><button type="button" class="table-sort-button" data-plan-sort="firstMonthPrice">首月价格</button><span class="ui-help"><button type="button" class="ui-help-button" popovertarget="planPriceHelp" aria-label="价格与排序说明" aria-expanded="false" aria-controls="planPriceHelp"><span aria-hidden="true">?</span></button><span class="ui-help-content" id="planPriceHelp" popover="auto" role="tooltip">价格显示原币种；排序按站内汇率折合人民币比较。包季、包年显示整周期价格。</span></span></th><th scope="col" data-plan-col="monthlyPrice" data-plan-extra><button type="button" class="table-sort-button" data-plan-sort="monthlyPrice">每月价格</button></th><th scope="col" data-plan-col="quarterlyPrice" data-plan-extra><button type="button" class="table-sort-button" data-plan-sort="quarterlyPrice">包季价格</button></th><th scope="col" data-plan-col="yearlyPrice" data-plan-extra><button type="button" class="table-sort-button" data-plan-sort="yearlyPrice">包年价格</button></th><th scope="col" data-plan-col="models"><button type="button" class="table-sort-button" data-plan-sort="modelLabels">支持模型</button></th><th scope="col" data-plan-col="monthlyToken"><button type="button" class="table-sort-button" data-plan-sort="monthlyToken" title="按所选模型的最大月 Token 参考排序">月 Token 参考</button></th><th scope="col" data-plan-col="fiveHoursRequests" data-plan-extra><button type="button" class="table-sort-button" data-plan-sort="fiveHoursRequests">5 小时请求</button></th><th scope="col" data-plan-col="weeklyRequests" data-plan-extra><button type="button" class="table-sort-button" data-plan-sort="weeklyRequests">每周请求</button></th><th scope="col" data-plan-col="monthlyRequests" data-plan-extra><button type="button" class="table-sort-button" data-plan-sort="monthlyRequests">每月请求</button></th><th scope="col" data-plan-col="benefits" data-plan-extra><button type="button" class="table-sort-button" data-plan-sort="benefits">其他权益</button></th><th scope="col" data-plan-col="note"><button type="button" class="table-sort-button" data-plan-sort="note">备注</button></th></tr></thead><tbody data-plan-body></tbody></table></div>
     </section>
     <footer class="tool-footer"><span>价格和额度可能变化；未知值表示官方或公开资料未给出。</span><a href="/">返回首页</a></footer>
   </main>
-<script src="/scripts/entity-data.js?v=edd10e5bb2"></script><script src="/scripts/number-display.js?v=6c6a6ccb42"></script>
-<script src="/scripts/filter-state.js?v=73e664b6a2"></script><script src="/scripts/ui-single-select.js?v=09370d929b"></script>
-<script src="/scripts/homepage-filters.js?v=6b7671390e"></script><script src="/scripts/tool-page.js?v=fab51bfcaf"></script><script src="/scripts/plans-page.js?v=d661109619"></script>
+<script src="/scripts/entity-data.js?v=252de7b6a1"></script><script src="/scripts/number-display.js?v=6c6a6ccb42"></script>
+<script src="/scripts/filter-state.js?v=55ab637422"></script><script src="/scripts/ui-single-select.js?v=09370d929b"></script>
+<script src="/scripts/homepage-filters.js?v=bd9566db1c"></script><script src="/scripts/tool-page.js?v=fbb793f0db"></script><script src="/scripts/plan-directory.js?v=835a9c8d0a"></script><script src="/scripts/plans-page.js?v=950cb72295"></script>
 </body>
 </html>

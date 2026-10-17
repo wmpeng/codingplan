@@ -45,8 +45,9 @@
     if (document.activeElement === input && input.value !== "" && Number(input.value) === value) return;
     input.value = value ?? "";
   }
-  function buildRangePicker(key, state) {
+  function buildRangePicker(key, state, subscriptionOnly = false) {
     const budget = key === "budget";
+    const sliderMin = budget && subscriptionOnly ? 1 : 0;
     const id = budget ? "homeBudgetPicker" : "homeTokenPicker";
     const title = budget ? "月预算" : "月 Token 数";
     const factor = budget ? 1 : root.NumberDisplay.tokenFactor(state.tokenUnit);
@@ -54,9 +55,9 @@
     return `<details class="filter-picker" id="${id}"><summary><span class="range-picker-title">${title}</span><span ${budget ? "data-budget-label" : "data-token-label"}></span></summary>
       <div class="filter-picker-menu budget-menu" role="group" aria-label="${budget ? "每月预算" : "每月 Token 用量"}">
         <div class="range-picker-value"><label class="filter-inline"><span>${budget ? "不超过" : "至少"}</span><span class="range-picker-number">${budget ? '<span class="range-picker-unit" aria-hidden="true">¥</span>' : ""}<input type="number" inputmode="decimal" min="0" step="any" ${budget ? 'data-budget-part="max"' : 'data-token-part="min"'} aria-label="${budget ? "最高月预算（人民币）" : `最低月 Token 数（${unit}）`}" placeholder="不限">${budget ? "" : `<span class="range-picker-unit" data-token-unit-label aria-hidden="true">${unit}</span>`}</span></label></div>
-        <div class="range-picker-slider"><input type="range" min="0" max="${budget ? budgetSliderMax : tokenSliderMax}" step="1" data-range-picker="${key}" aria-label="${title}滑块" aria-describedby="${id}Help">
-          <div class="range-picker-ticks">${budget ? '<button type="button" class="range-picker-mode" data-budget-mode="api" style="--tick-position:0%" aria-label="仅按量 API"><span>仅按量</span></button>' : '<button type="button" class="range-picker-mode" data-range-clear="token" style="--tick-position:0%"><span>不限</span></button>'}${rangeKnots[key].map((n, i) => n === 0 ? "" : `<button type="button" data-range-knot="${key}" data-knot-value="${n}" style="--tick-position:${(i * 100 + 1) / (budget ? budgetSliderMax : tokenSliderMax) * 100}%" aria-label="${budget ? "预算上限" : "最低月用量"} ${n / factor} ${unit}"><span>${n / factor}</span></button>`).join("")}${budget ? '<button type="button" class="range-picker-mode" data-budget-mode="any" data-range-clear="budget" style="--tick-position:100%"><span>不限</span></button>' : ""}</div></div>
-        <p class="filter-help" id="${id}Help">${budget ? "两端为仅按量 API / 不限，中间按金额筛选。按量 API 按月用量估算支出，未填用量时不判断预算。" : "按所选模型的月额度筛选，额度不相加；额度未明确的订阅不参与匹配。按量 API 按填写用量估算费用。"}</p>
+        <div class="range-picker-slider"><input type="range" min="${sliderMin}" max="${budget ? budgetSliderMax : tokenSliderMax}" step="1" data-range-picker="${key}" aria-label="${title}滑块" aria-describedby="${id}Help">
+          <div class="range-picker-ticks">${budget ? subscriptionOnly ? "" : '<button type="button" class="range-picker-mode" data-budget-mode="api" style="--tick-position:0%" aria-label="仅按量 API"><span>仅按量</span></button>' : '<button type="button" class="range-picker-mode" data-range-clear="token" style="--tick-position:0%"><span>不限</span></button>'}${rangeKnots[key].map((n, i) => n === 0 && !(budget && subscriptionOnly) ? "" : `<button type="button" data-range-knot="${key}" data-knot-value="${n}" style="--tick-position:${(i * 100 + 1 - sliderMin) / ((budget ? budgetSliderMax : tokenSliderMax) - sliderMin) * 100}%" aria-label="${budget ? "预算上限" : "最低月用量"} ${n / factor} ${unit}"><span>${n / factor}</span></button>`).join("")}${budget ? '<button type="button" class="range-picker-mode" data-budget-mode="any" data-range-clear="budget" style="--tick-position:100%"><span>不限</span></button>' : ""}</div></div>
+        <p class="filter-help" id="${id}Help">${budget ? subscriptionOnly ? "按套餐月费折合人民币筛选。" : "两端为仅按量 API / 不限，中间按金额筛选。按量 API 按月用量估算支出，未填用量时不判断预算。" : subscriptionOnly ? "按所选模型的月额度筛选，额度不相加；额度未明确的套餐不参与匹配。" : "按所选模型的月额度筛选，额度不相加；额度未明确的订阅不参与匹配。按量 API 按填写用量估算费用。"}</p>
       </div></details>`;
   }
 
@@ -272,7 +273,7 @@
         state.modelSlugs = presetSlugs("featured");
       }
       resetModelList();
-      publish(platformHub ? "reset" : "manual");
+      publish(platformHub || plansPage ? "reset" : "manual");
       return true;
     }
     const sameSelection = slugs => Array.isArray(state.modelSlugs) && slugs.length === state.modelSlugs.length && slugs.every(slug => state.modelSlugs.includes(slug));
@@ -329,7 +330,7 @@
     if (validPlatform && !platformHub)
       state.platformSlugs = [platform];
     if (validModel) state.modelSlugs = [model];
-    if (params.get("billing") === "payg") state.apiOnly = true;
+    if (params.get("billing") === "payg" && !plansPage) state.apiOnly = true;
     host.innerHTML = `<section class="filter-state-bar surface-panel${full ? "" : " home-filter-panel"}${platformHub ? " platform-hub-filters" : ""}" aria-label="统一筛选">
       ${platformHub ? '<div class="platform-filter-row"><fieldset class="platform-filter-fields" data-platform-filter-fields><legend class="sr-only">平台筛选条件</legend>' : ""}
       <div class="filter-state-grid">
@@ -338,14 +339,14 @@
       ${
         monitor
           ? ""
-          : `${buildRangePicker("budget", state)}${buildRangePicker("token", state)}`
+          : `${buildRangePicker("budget", state, plansPage)}${buildRangePicker("token", state, plansPage)}`
       }
       ${!monitor ? buildStatusPicker(purchaseTool, purchaseTool && !platformHub, plansPage) : ""}
-      ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-platform-domestic>支持中国大陆</label>' : ""}</div>
+      ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-platform-domestic>支持中国大陆</label>' : ""}${plansPage ? '<label class="plan-harness-filter"><input type="checkbox" data-filter-field="harnessApiRequired">需支持第三方工具</label>' : ""}</div>
       ${platformHub ? '<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-platform-featured aria-pressed="false">显示精选平台</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>' : ""}
       <div class="filter-state-footer">
       ${full ? "" : `<div class="filter-state-controls"><div class="offer-sort"><span aria-hidden="true">排序</span><span data-select-fallback><select id="homeOfferSort" data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></span></div><span class="offer-sort-help" id="offerSortHelp"></span>`}
-      <div class="filter-state-actions"><button type="button" data-filter-action="reset"${purchaseTool && !platformHub ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>${full && !platformHub ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">显示精选</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
+      <div class="filter-state-actions"><button type="button" data-filter-action="reset"${purchaseTool && !platformHub && !plansPage ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub || plansPage ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>${full && !platformHub && !plansPage ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">显示精选</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
       ${monitor ? '<p class="filter-state-hint" data-filter-hint>监控只使用平台、模型条件；未监控项目没有统计。</p>' : ""}
       ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
       </section>`;
@@ -567,7 +568,7 @@
         slider.value = key === "budget"
           ? state.apiOnly ? 0 : value == null ? budgetSliderMax : rangePosition(key, value) + 1
           : value == null ? 0 : rangePosition(key, value) + 1;
-        slider.style.setProperty("--range-fill", `${Number(slider.value) / Number(slider.max) * 100}%`);
+        slider.style.setProperty("--range-fill", `${(Number(slider.value) - Number(slider.min)) / (Number(slider.max) - Number(slider.min)) * 100}%`);
         slider.setAttribute("aria-valuetext", key === "budget" && state.apiOnly
           ? `仅按量 API，${value == null ? "金额不限" : `不超过 ${value} 元`}`
           : value == null ? "不限" : `${key === "budget" ? "不超过" : "至少"} ${value / displayFactor} ${unit}`);
@@ -592,6 +593,8 @@
       } else state.excludedPlanStatuses = [];
       if (!["init", "catalog", "display"].includes(source)) initialPresetPending = false;
       state.imageRequired = false;
+      if (plansPage) state.apiOnly = false;
+      else state.harnessApiRequired = false;
       if (!platformHub) {
         state.domesticNetworkOnly = false;
         state.domesticPaymentOnly = false;

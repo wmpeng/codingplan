@@ -1,15 +1,13 @@
 (function (root, factory) {
   const api = factory(root.CodingPlanFilters || (typeof require === 'function' ? require('./filter-state.js') : null),
-    root.PlatformCatalog || (typeof require === 'function' ? require('./platform-catalog.js') : null));
+    root.PlatformCatalog || (typeof require === 'function' ? require('./platform-catalog.js') : null),
+    root.CodingPlanUI || (typeof require === 'function' ? require('./ui-core.js') : null));
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.PlatformHub = api;
-})(globalThis, function (Filters, Catalog) {
+})(globalThis, function (Filters, Catalog, UI) {
   'use strict';
   const matchesName = (platform, query) => `${platform.name} ${platform.slug}`.toLocaleLowerCase('zh-CN').includes(query);
-  function prioritizeFeaturedModels(models, groups = []) {
-    const featured = new Set(groups.filter(group => group.enabled !== false).flatMap(group => group.modelSlugs || []));
-    return [...models.filter(model => featured.has(model.slug)), ...models.filter(model => !featured.has(model.slug))];
-  }
+  const prioritizeFeaturedModels = UI.prioritizeFeaturedModels;
   function select(platforms, state, options = {}) {
     const featured = new Set(options.featuredSlugs || []);
     const pinnedIds = Catalog.sanitizePinnedIds(options.pinnedIds, platforms);

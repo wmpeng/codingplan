@@ -11,6 +11,7 @@
     modelMatch: 'any',
     budgetCny: null,
     apiOnly: false,
+    harnessApiRequired: false,
     monthlyTokenRange: null,
     tokenUnit: 'yi',
     platformStatusMax: 'restricted',
@@ -81,6 +82,7 @@
       modelSlugs: arrayOrNull(input.modelSlugs === undefined ? base.modelSlugs : input.modelSlugs),
       modelMatch: input.modelMatch === 'all' ? 'all' : 'any',
       apiOnly: input.apiOnly === true,
+      harnessApiRequired: input.harnessApiRequired === true,
       modelGroup: ['sota-models', 'high-volume-models'].includes(input.modelGroup) ? input.modelGroup : 'any',
       imageRequired: input.imageRequired === true,
       domesticNetworkOnly: input.domesticNetworkOnly === true,
@@ -220,6 +222,7 @@
         ? opts.context.platformBySlug.get(plan.platformSlug)
         : null;
       if (!current.planStatusOnly && platform && !platformStatusMatches(platform, current)) return false;
+      if (current.harnessApiRequired && EntityData.resolveHarnessApi(platform, plan) !== true) return false;
       if (!monthlyPlanMatches(plan, current, opts.context)) return false;
       const monthly = toCny(plan.monthlyPrice, plan.currency, rate);
       if (!inRange(monthly, current.budgetCny)) return false;
@@ -287,6 +290,7 @@
     }
     return (points || []).filter(point => {
       if (current.apiOnly && point.billingMode !== 'payg') return false;
+      if (current.harnessApiRequired && point.supportsHarnessApi !== true) return false;
       if (!current.includeDiscontinued && point.planStatus === 'delisted') return false;
       if (!selectedMatch(point.platformSlug, current.platformSlugs)) return false;
       const platform = opts.context?.platformBySlug?.get(point.platformSlug) || point;
@@ -345,6 +349,7 @@
       if (s.domesticNetworkOnly && platform.requiresOverseasNetwork !== false) continue;
       if (s.domesticPaymentOnly && platform.requiresOverseasPayment !== false) continue;
       const supportsHarnessApi = EntityData.resolveHarnessApi(platform, plan);
+      if (s.harnessApiRequired && supportsHarnessApi !== true) continue;
       if (s.apiOnly && plan.billingMode !== 'payg') continue;
       const monthlyCost = toCny(plan.monthlyPrice, plan.currency, opts.usdToCnyRate);
       if (plan.billingMode !== 'payg' && !inRange(monthlyCost, s.budgetCny)) continue;

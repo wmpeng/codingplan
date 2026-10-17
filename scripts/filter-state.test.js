@@ -2,6 +2,23 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const Filters = require('./filter-state.js');
 
+test('第三方工具条件采用套餐覆盖与平台默认，未确认不匹配，所有资格入口保持一致', () => {
+  const {fixtureContext}=require('./test-fixtures.cjs'), E=require('./entity-data.js');
+  const platforms=[{slug:'yes',platformStatus:'open',supportsHarnessApi:true},{slug:'no',platformStatus:'open',supportsHarnessApi:false},{slug:'unknown',platformStatus:'open'}];
+  const plans=[{slug:'inherited',platformSlug:'yes'},{slug:'override-no',platformSlug:'yes',supportsHarnessApi:false},
+    {slug:'override-yes',platformSlug:'no',supportsHarnessApi:true},{slug:'no',platformSlug:'no'},{slug:'unknown',platformSlug:'unknown'}]
+    .map(plan=>({...plan,billingMode:'subscription',monthlyPrice:10}));
+  const c=fixtureContext({schemaVersion:1,platforms},{plans},{schemaVersion:1,models:[{slug:'m'}]},
+    {planModels:plans.map(plan=>({slug:plan.slug,planSlug:plan.slug,modelSlug:'m'}))});
+  const state={harnessApiRequired:true},expected=['inherited','override-yes'];
+  assert.deepEqual(Filters.matchingOffers(c,state).map(offer=>offer.plan.slug),expected);
+  assert.deepEqual(Filters.filterPlans(E.buildPlanCatalog(c),state,{context:c}).map(plan=>plan.slug),expected);
+  assert.deepEqual(Filters.filterPlans(plans,state,{context:{platformBySlug:c.platformBySlug}}).map(plan=>plan.slug),expected);
+  const points=plans.map(plan=>({...plan,platformSlug:plan.platformSlug,supportsHarnessApi:E.resolveHarnessApi(c.platformBySlug.get(plan.platformSlug),plan)}));
+  assert.deepEqual(Filters.filterPoints(points,state).map(point=>point.slug),expected);
+  assert.equal(Filters.matchingOffers(c,{}).length,plans.length);
+});
+
 test('多模态筛选及旧字段包含纯非文本输出，未知与纯文本不纳入', () => {
   const {fixtureContext}=require('./test-fixtures.cjs');
   const E=require('./entity-data.js');

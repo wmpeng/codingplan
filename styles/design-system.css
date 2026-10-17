@@ -312,8 +312,7 @@ body.article-page .articles-item-main a:hover { color: var(--accent-primary); }
 @media (max-width: 650px) {
   /* 窄屏留出完整阅读宽度，固定首列会盖住最右侧的备注操作。 */
   body .usage-data-table th.sticky-first { left: auto; }
-  body .usage-data-table td.sticky-first,
-  body #plansPage .tool-table :is(th, td):nth-child(1) { position: static; }
+  body .usage-data-table td.sticky-first { position: static; }
 }
 @media (forced-colors: active) {
   body :is(a, button, input, select, summary):focus-visible { outline: 2px solid Highlight; }
