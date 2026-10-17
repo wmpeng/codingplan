@@ -117,11 +117,11 @@ body.tool-page.ultra-wide { --tool-page-width: 1920px; }
 .platform-guide-directory h2 { font-size: 20px; margin-bottom: 14px; }
 .tool-page .platform-detail-dialog { background: #fff; border-radius: 14px; }
 .tool-page .tool-table { table-layout: fixed; font-size: 13px; }
-#plansPage .tool-table { min-width: 1540px; }
-#plansPage.show-all-columns .tool-table { min-width: 2400px; }
+#plansPage .tool-table { min-width: 1600px; }
+#plansPage.show-all-columns .tool-table { min-width: 2460px; }
 #plansPage .tool-table :is(th,td) { overflow-wrap: anywhere; padding: 8px 10px; }
 #plansPage .tool-table [data-plan-col="identity"] { width: 260px; position: sticky; left: 0; z-index: 2; background: var(--plan-row-bg, #fff); border-right: 1px solid var(--border-light); }
-#plansPage .tool-table [data-plan-col="models"] { width: 280px; }
+#plansPage .tool-table [data-plan-col="models"] { width: 340px; }
 #plansPage .tool-table [data-plan-col="monthlyToken"] { width: 170px; }
 #plansPage .tool-table [data-plan-col="note"] { width: 640px; }
 #plansPage .tool-table [data-plan-col="firstMonthPrice"] { width: 112px; }

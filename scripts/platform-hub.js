@@ -38,7 +38,7 @@
   }
   function countParts(selection, featuredOnly) {
     const current = featuredOnly ? `精选 ${selection.matchedCount} 个` : String(selection.matchedCount);
-    const total = featuredOnly ? '' : ` / 共 ${selection.totalCount}`;
+    const total = featuredOnly ? '' : ` / ${selection.totalCount} 个平台`;
     const pins = featuredOnly ? selection.extraPinnedCount : selection.pinned.length;
     return [current, total, pins ? ` · 置顶 ${pins} 个` : ''];
   }
