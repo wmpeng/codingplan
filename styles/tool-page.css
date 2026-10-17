@@ -210,6 +210,9 @@ body.tool-page { padding: 0; }
 .platform-featured-control { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
 .platform-hub-page .is-featured-mode .platform-filter-fields { opacity: .6; filter: grayscale(1); pointer-events: none; }
 .platform-hub-page .is-search-paused input { opacity: .6; background: var(--bg-tertiary); cursor: not-allowed; }
+.platform-hub-page .platform-count-main { white-space: nowrap; }
+.platform-hub-page .platform-count-value { color: var(--text-primary); font-weight: 600; }
+.platform-hub-page .platform-count-total { color: var(--text-tertiary); }
 .platform-hub-page .platform-card > header { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
 .platform-hub-page .platform-card-heading { overflow-wrap: anywhere; }
 .platform-hub-page { --platform-featured-color: #946c35; --platform-featured-border: #d3bd98; }

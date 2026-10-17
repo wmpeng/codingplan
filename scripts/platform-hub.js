@@ -26,10 +26,19 @@
     return {pinned, results, visible:[...pinned,...results], matchedCount:matched.length, totalCount:platforms.length,
       extraPinnedCount:pinned.filter(p => !matchedIds.has(p.slug)).length};
   }
-  function countLabel(selection, featuredOnly) {
-    const count = featuredOnly ? `精选 ${selection.matchedCount} 个` : `${selection.matchedCount} 个 / ${selection.totalCount}`;
+  function countParts(selection, featuredOnly) {
+    const current = featuredOnly ? `精选 ${selection.matchedCount} 个` : String(selection.matchedCount);
+    const total = featuredOnly ? '' : ` / 共 ${selection.totalCount}`;
     const pins = featuredOnly ? selection.extraPinnedCount : selection.pinned.length;
-    return count + (pins ? ` · 置顶 ${pins} 个` : '');
+    return [current, total, pins ? ` · 置顶 ${pins} 个` : ''];
   }
-  return {select, countLabel, prioritizeFeaturedModels};
+  function countLabel(selection, featuredOnly) {
+    return countParts(selection, featuredOnly).join('');
+  }
+  function countHtml(selection, featuredOnly) {
+    const [current, total, pins] = countParts(selection, featuredOnly);
+    if (featuredOnly) return current + pins;
+    return `<span class="platform-count-main"><strong class="platform-count-value">${current}</strong><span class="platform-count-total">${total}</span></span>${pins}`;
+  }
+  return {select, countLabel, countHtml, prioritizeFeaturedModels};
 });

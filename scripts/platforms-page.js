@@ -43,7 +43,7 @@
         search.closest('.tool-result-bar').classList.toggle('is-search-paused', featuredOnly);
         host.setAttribute('aria-busy','false');
         empty.hidden = selection.visible.length > 0;
-        showing.textContent = root.PlatformHub.countLabel(selection, featuredOnly);
+        showing.innerHTML = root.PlatformHub.countHtml(selection, featuredOnly);
         if (root.PlatformDetail && root.PlatformDetail.syncPinUi) root.PlatformDetail.syncPinUi();
       }
 
