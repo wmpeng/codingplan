@@ -9,7 +9,7 @@
 <meta name="description" content="浏览 AI 模型目录，比较 AA 与 DeepSWE 评分、输入模态，查找支持平台、套餐与按量 API 价格。">
 <link rel="canonical" href="https://codingplan.fyi/models/">
 <link rel="icon" href="/favicon.ico?v=260924a">
-<link rel="stylesheet" href="/styles/shared.css?v=482edb170c"><link rel="stylesheet" href="/styles/tool-page.css?v=65d0127e93"><link rel="stylesheet" href="/styles/home-discovery.css?v=c5989466f8"><link rel="stylesheet" href="/styles/design-system.css?v=b1b4d6c8fe"><link rel="stylesheet" href="/styles/homepage-filters.css?v=529fcaac23">
+<link rel="stylesheet" href="/styles/shared.css?v=482edb170c"><link rel="stylesheet" href="/styles/tool-page.css?v=65d0127e93"><link rel="stylesheet" href="/styles/home-discovery.css?v=a1f57ba7bb"><link rel="stylesheet" href="/styles/design-system.css?v=b1b4d6c8fe"><link rel="stylesheet" href="/styles/homepage-filters.css?v=517e90b168">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"AI 模型目录与能力对比","url":"https://codingplan.fyi/models/","inLanguage":"zh-CN"}</script>
 <script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
@@ -63,10 +63,14 @@
 <section id="modelControls" class="filter-state-bar surface-panel" aria-label="模型筛选">
   <div class="filter-state-grid">
     <fieldset id="modelFilterFields" class="model-filter-fields" aria-label="模型条件"><label class="model-multimodal-filter"><input id="modelMultimodal" type="checkbox">支持多模态</label></fieldset>
-    <div class="model-featured-controls" role="group" aria-label="精选模型">
-      <button type="button" class="model-featured-button" data-model-featured="all" aria-pressed="false" disabled>全部精选</button>
-      <button type="button" class="model-featured-button" data-model-featured="high-volume-models" aria-pressed="false" disabled>仅甜品级</button>
-      <button type="button" class="model-featured-button" data-model-featured="sota-models" aria-pressed="false" disabled>仅头部级</button>
+    <div class="model-preset-options model-featured-controls" role="group" aria-labelledby="modelFeaturedLabel">
+      <span class="model-preset-label" id="modelFeaturedLabel">精选模型</span>
+      <div class="model-preset-segments">
+        <button type="button" data-model-featured="all" aria-pressed="false" disabled>全部</button>
+        <span class="model-preset-divider" aria-hidden="true"></span>
+        <button type="button" data-model-featured="high-volume-models" aria-pressed="false" disabled>甜品级</button>
+        <button type="button" data-model-featured="sota-models" aria-pressed="false" disabled>头部级</button>
+      </div>
     </div>
   </div>
   <div class="filter-state-footer"><div class="model-footer-controls">

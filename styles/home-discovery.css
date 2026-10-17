@@ -38,7 +38,8 @@ body.models-page .model-card.is-pinned { border-color: #a5b9d1; }
 .models-page .model-result-bar { margin-top: 0; }
 .models-page .model-filter-fields { margin: 0; padding: 0; border: 0; min-width: 0; }
 .models-page .model-filter-fields.is-paused { opacity: .6; filter: grayscale(1); pointer-events: none; }
-.models-page .model-featured-controls { display: flex; flex-wrap: wrap; gap: 8px; max-width: 100%; }
+.models-page .model-featured-controls { margin: 0; max-width: 100%; }
+.models-page .model-featured-controls button { flex: 1 1 auto; overflow-wrap: anywhere; }
 .models-page .model-footer-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-left: auto; max-width: 100%; }
 .models-page #modelSearch:disabled { background: var(--bg-tertiary); color: var(--text-secondary); opacity: .6; cursor: not-allowed; }
 .model-modality { color:#64748b;font-size:12px;margin:10px 0 16px; }
