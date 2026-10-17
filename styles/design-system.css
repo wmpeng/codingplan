@@ -367,18 +367,23 @@ body .update-entry li + li { margin-top: 8px; }
   body .update-entry { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
 }
 
-/* 公共顶栏独立于正文宽度，所有页面复用同一静态结构。 */
+/* 导航内容对齐工具页，顶栏背景覆盖整个视口，避免滚动内容从两侧露出。 */
 html:has(body > .site-header) { overflow-x:clip; scroll-padding-top:96px; }
 body:has(> .site-header) { padding-top:0; overflow-x:clip; }
 body > .site-header {
-  --site-header-max-width:1320px; --site-header-gutter:80px;
+  --site-header-max-width:1380px; --site-header-gutter:80px;
   position:sticky; top:0; left:auto; transform:none; z-index:40;
-  width:calc(100vw - 80px); max-width:1320px; min-height:92px;
+  width:calc(100vw - 80px); max-width:1380px; min-height:92px;
   margin:0 calc((100% - min(var(--site-header-max-width), calc(100vw - var(--site-header-gutter)))) / 2) 24px; padding:16px 0; box-sizing:border-box;
   display:flex; align-items:center; justify-content:flex-start; gap:32px;
   font-family:var(--font-ui); font-size:14px; line-height:1.4;
   border-bottom:1px solid var(--border-color);
   background:var(--bg-primary);
+}
+body > .site-header::before {
+  content:""; position:absolute; inset:0 auto -1px 50%; width:100vw;
+  transform:translateX(-50%); z-index:-1;
+  background:var(--bg-primary); border-bottom:1px solid var(--border-color);
 }
 body.ultra-wide > .site-header { --site-header-max-width:1840px; max-width:1840px; }
 body .site-header .tool-brand {
