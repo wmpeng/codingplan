@@ -43,9 +43,13 @@
     if (!model.modalities?.input) return model.multimodal === true ? '支持多模态 · 具体模态待确认' : model.multimodal === false ? '文本输入' : '输入模态待确认';
     return model.modalities.input.map(x => names[x] || x).join(' / ') + '输入';
   }
-  function modelCard(model, context) {
-    const supported = new Set(context.planModels.filter(r => r.modelSlug === model.slug).map(r => context.planBySlug.get(r.planSlug)).filter(p => p && p.planStatus !== 'delisted' && context.platformBySlug.get(p.platformSlug)?.platformStatus !== 'delisted').map(p => p.platformSlug));
-    return `<article class="model-card" data-model-slug="${esc(model.slug)}"><h3>${esc(model.name)}</h3><p class="model-modality">${esc(modalities(model))}</p><div class="model-scores">${scoreHtml(model,'artificialAnalysis','AA')}${scoreHtml(model,'deepSWE','DeepSWE')}</div><a class="model-offers-link" href="${esc(UI.route('plans',{model:model.slug}))}">${supported.size} 个平台收录 · 查看套餐 →</a><a class="model-price-link" href="${esc(UI.route('pricing',{model:model.slug}))}">比较价格与按量 API →</a></article>`;
+  function modelCard(model, context, options = {}) {
+    const supported = new Set(context.planModels.filter(r => r.modelSlug === model.slug).map(r => context.planBySlug.get(r.planSlug)).filter(p => {
+      const platform = p && context.platformBySlug.get(p.platformSlug);
+      return p && p.planStatus !== 'delisted' && platform && platform.platformStatus !== 'delisted';
+    }).map(p => p.platformSlug));
+    const title = options.directory ? `<header class="model-card-header"><h3>${esc(model.name)}</h3><div class="model-card-aside">${options.featured ? '<span class="model-featured-badge">精选</span>' : ''}${UI.pinButton({pinned:options.pinned,label:`${options.pinned ? '取消置顶' : '置顶'} ${model.name}`,attributes:{'data-model-pin':model.slug}})}</div></header>` : `<h3>${esc(model.name)}</h3>`;
+    return `<article class="model-card${options.featured ? ' is-featured' : ''}${options.pinned ? ' is-pinned' : ''}" data-model-slug="${esc(model.slug)}">${title}<p class="model-modality">${esc(modalities(model))}</p><div class="model-scores">${scoreHtml(model,'artificialAnalysis','AA')}${scoreHtml(model,'deepSWE','DeepSWE')}</div><a class="model-offers-link" href="${esc(UI.route('plans',{model:model.slug}))}">${supported.size} 个平台收录 · 查看套餐 →</a><a class="model-price-link" href="${esc(UI.route('pricing',{model:model.slug}))}">比较价格与按量 API →</a></article>`;
   }
   function modelGroups(config, context) {
     return config.groups.map(g => `<section class="featured-model-group"><div class="section-heading"><h3>${esc(g.title)}</h3><span>${g.modelSlugs.length} 个模型</span></div><div class="model-grid">${g.modelSlugs.map(s => modelCard(context.modelBySlug.get(s),context)).join('')}</div></section>`).join('');

@@ -1,25 +1,40 @@
-(function(){
+(function (root) {
   'use strict';
-  async function boot(){
-    const host=document.getElementById('modelDirectory'),C=FeaturedCatalog;
-    try{
-      const [{context},preset]=await Promise.all([CodingPlanToolPage.load(),CodingPlanToolPage.loadPreset()]);
-      C.validate(preset,context);
-      document.getElementById('modelHighlights').innerHTML=C.modelGroups(preset,context);
-      const search=document.getElementById('modelSearch'),group=document.getElementById('modelGroup'),sort=document.getElementById('modelSort'),image=document.getElementById('modelImage');
-      const available=new Set(context.planModels.filter(r=>{const p=context.planBySlug.get(r.planSlug),platform=context.platformBySlug.get(p?.platformSlug);return p&&(p.planStatus || 'open') === 'open'&&(platform?.platformStatus || 'open') === 'open';}).map(r=>r.modelSlug));
-      const listed=document.getElementById('modelAvailable');
-      function render(){
-        const q=search.value.trim().toLocaleLowerCase(),selected=preset.groups.find(g=>g.id===group.value);
-        const models=context.models.filter(m=>(!q||`${m.name} ${m.slug}`.toLocaleLowerCase().includes(q))&&(!selected||selected.modelSlugs.includes(m.slug))&&(!image.checked||m.modalities?.input?.includes('image'))&&(!listed.checked||available.has(m.slug)));
-        models.sort((a,b)=>{if(sort.value==='name')return a.name.localeCompare(b.name,'zh-CN');const x=C.score(a,sort.value),y=C.score(b,sort.value);return x==null?(y==null?a.name.localeCompare(b.name):1):y==null?-1:y-x||a.name.localeCompare(b.name);});
-        host.innerHTML=models.length?models.map(m=>C.modelCard(m,context)).join(''):'<p class="tool-empty">没有匹配模型，试着清空搜索或减少条件。</p>';
-        document.getElementById('modelCount').textContent=`${models.length} / ${context.models.length} 个模型`;
+  async function boot() {
+    const host = document.getElementById('modelDirectory'), Catalog = root.FeaturedCatalog, Directory = root.ModelDirectory;
+    try {
+      const [{context}, preset] = await Promise.all([root.CodingPlanToolPage.load(), root.CodingPlanToolPage.loadPreset()]);
+      Catalog.validate(preset, context);
+      const search = document.getElementById('modelSearch'), group = document.getElementById('modelGroup');
+      const sort = document.getElementById('modelSort'), image = document.getElementById('modelImage');
+      const pickers = [root.CodingPlanSingleSelect.mount(group, '分组'), root.CodingPlanSingleSelect.mount(sort, '排序')];
+      let pins = Directory.readPins(root.localStorage, context.models);
+      function render() {
+        const selection = Directory.select(context.models, preset.groups, {query:search.value, group:group.value, sort:sort.value, image:image.checked}, pins);
+        host.innerHTML = selection.visible.length ? selection.visible.map(model => Catalog.modelCard(model, context, {
+          directory:true, featured:selection.featured.has(model.slug), pinned:selection.pinned.has(model.slug)
+        })).join('') : '<p class="tool-empty">没有匹配模型，试着清空搜索或减少条件。</p>';
+        document.getElementById('modelCount').textContent = Directory.countLabel(selection);
+        host.dataset.mounted = '1';
       }
-      document.getElementById('modelControls').addEventListener('input',render);
-      document.getElementById('modelReset').addEventListener('click',()=>{search.value='';group.value='all';sort.value='artificialAnalysis';image.checked=false;listed.checked=false;render();});
+      document.getElementById('modelControls').addEventListener('input', render);
+      search.addEventListener('input', render);
+      document.getElementById('modelReset').addEventListener('click', () => {
+        search.value = ''; group.value = 'all'; sort.value = 'default'; image.checked = false;
+        pickers.forEach(picker => { picker.sync(); picker.close(); }); render();
+      });
+      host.addEventListener('click', event => {
+        const button = event.target.closest('[data-model-pin]'); if (!button) return;
+        const slug = button.dataset.modelPin;
+        pins = pins.includes(slug) ? pins.filter(id => id !== slug) : [slug, ...pins];
+        Directory.writePins(root.localStorage, pins); render();
+        [...host.querySelectorAll('[data-model-pin]')].find(item => item.dataset.modelPin === slug)?.focus({preventScroll:true});
+      });
+      root.addEventListener('storage', event => {
+        if (event.key === Directory.pinKey || event.key === null) { pins = Directory.readPins(root.localStorage, context.models); render(); }
+      });
       render();
-    }catch(error){CodingPlanToolPage.error(host,error.message);}
+    } catch (error) { root.CodingPlanToolPage.error(host, error.message, {preserveContent:true}); }
   }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
-})();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
+})(globalThis);
