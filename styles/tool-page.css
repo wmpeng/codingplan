@@ -87,9 +87,10 @@ body.tool-page {
 #plansPage .plan-note { min-width: 240px; white-space: pre-line; }
 
 /* Complete tools share the site's compact navigation and working surface. */
-body.tool-page { background: var(--bg-primary); color: var(--text-primary); font-size: 14px; line-height: 1.6; font-family: var(--font-ui); }
+body.tool-page { --tool-page-width: 1460px; background: var(--bg-primary); color: var(--text-primary); font-size: 14px; line-height: 1.6; font-family: var(--font-ui); }
+body.tool-page.ultra-wide { --tool-page-width: 1920px; }
 .tool-page { --tool-accent: var(--accent-primary); --tool-ink: var(--text-primary); --tool-muted: var(--text-secondary); --tool-line: var(--border-color); }
-.tool-page-main { max-width: 1320px; padding: 0 40px 48px; }
+.tool-page-main { max-width: var(--tool-page-width, 1460px); padding: 0 40px 48px; }
 .tool-topbar { min-height: 76px; margin-bottom: 24px; justify-content: flex-start; gap: 44px; border-bottom: 1px solid var(--border-color); }
 .tool-brand { display: inline-flex; align-items: center; flex-shrink: 0; gap: 11px; font-size: 19px; color: var(--text-primary); letter-spacing: -.03em; }
 .tool-brand::before { content: ""; display: inline-block; vertical-align: middle; width: 35px; height: 35px; background: url("/assets/brand-mark.svg?v=260924a") center / contain no-repeat; margin-right: 0; flex-shrink: 0; }
@@ -146,6 +147,7 @@ body.tool-page { background: var(--bg-primary); color: var(--text-primary); font
 .monitor-retry { display: block; margin: 14px auto 0; }
 .tool-page .tool-empty p { margin-bottom: 14px; }
 .tool-page :is(button, a, input, select, summary):focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
+@media (min-width: 1340px) { .platform-hub-page .platform-card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (max-width: 1100px) { .tool-page .platform-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 800px) {
   .tool-page-main { padding: 0 14px 32px; }

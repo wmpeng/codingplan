@@ -1,7 +1,5 @@
 /* 首页精选、方案结果与模型目录；沿用全站蓝灰色与平台卡片。 */
 .discovery-page { background: #f5f8fc; }
-.discovery-page .tool-page-main { max-width: 1460px; }
-.discovery-page.ultra-wide .tool-page-main { max-width: 1920px; }
 .discovery-page h1,.discovery-page h2,.discovery-page h3 { color:#182b45; letter-spacing:-.025em; }
 .discovery-page h2 { font-size:26px; line-height:1.3; }
 .discovery-page a { text-underline-offset:3px; }
