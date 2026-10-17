@@ -16,8 +16,20 @@
     const pinnedSet = new Set(pinnedIds);
     const query = String(options.query || '').trim().toLocaleLowerCase('zh-CN');
     const filterOptions = options.filterOptions || {};
+    const current = Filters.normalizeState({...state, platformSlugs:null, includeDiscontinued:false});
+    const models = filterOptions.context?.models;
+    if (current.modelMatch === 'any' && models?.length && current.modelSlugs?.length) {
+      const selected = new Set(current.modelSlugs);
+      if (models.every(model => selected.has(model.slug))) current.modelSlugs = null;
+    }
+    // Only offer-specific conditions require an active plan; catalog browsing does not.
+    const requireMatchingOffer = !!(current.budgetCny || current.monthlyTokenRange || current.apiOnly
+      || (current.modelMatch === 'all' && current.modelSlugs?.length)
+      || Object.keys(current.priceRanges).length || Object.keys(current.requestRanges).length
+      || current.modelGroup !== 'any' || current.imageRequired || current.multimodal !== 'all'
+      || current.aaScoreMin !== null || current.deepSWEScoreMin !== null);
     const matched = options.featuredOnly ? platforms.filter(p => featured.has(p.slug))
-      : Filters.filterPlatforms(platforms, {...state, platformSlugs:null, includeDiscontinued:false}, filterOptions).filter(p => matchesName(p, query));
+      : Filters.filterPlatforms(platforms, current, {...filterOptions, requireMatchingOffer}).filter(p => matchesName(p, query));
     const matchedIds = new Set(matched.map(p => p.slug));
     const pinned = Catalog.sortPlatformsByPinned(platforms.filter(p => pinnedSet.has(p.slug)), pinnedIds);
     const results = matched.filter(p => !pinnedSet.has(p.slug));

@@ -72,7 +72,7 @@
     <div id="toolFilters" aria-label="筛选条件"><p class="tool-filter-loading" role="status">正在加载筛选条件…</p></div>
     <noscript><style>.tool-filter-loading{display:none}body .ui-model-tags [data-extra-model][hidden]{display:inline-flex}.ui-model-tags .model-tag-more{display:none}</style><p class="tool-muted">当前显示静态平台信息；开启 JavaScript 可使用筛选与对比。</p></noscript>
     <section id="platformHubApp" aria-busy="false">
-      <div class="tool-result-bar"><input type="search" data-hub-search disabled placeholder="搜索平台名称" aria-label="搜索平台"><span class="tool-count" data-hub-showing aria-live="polite"><span class="platform-count-main">42 / 共 51</span></span></div>
+      <div class="tool-result-bar"><input type="search" data-hub-search disabled placeholder="搜索平台名称" aria-label="搜索平台"><span class="tool-count" data-hub-showing aria-live="polite"><span class="platform-count-main">43 / 共 51</span></span></div>
       <div class="platform-card-grid" data-hub-grid>
                 <article class="platform-card is-featured" data-platform-id="zhipu" tabindex="0" role="button" aria-label="智谱AI 详情">
                     <header>
@@ -694,6 +694,26 @@
                     <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
                 </article>
 
+                <article class="platform-card" data-platform-id="stepfun" tabindex="0" role="button" aria-label="阶跃星辰 详情">
+                    <header>
+                        <div class="platform-card-heading">
+                            <a class="platform-name-link" href="https://api.dreamfree.space/c/s/cpyqstepfun" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">阶跃星辰</span><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            <span class="platform-rush" data-platform-status="restricted">购买受限</span>
+
+                        </div>
+                        <div class="platform-card-aside">
+
+                            <button type="button" class="ui-icon-button ui-pin-button platform-pin-btn" data-platform-pin="1" data-platform-id="stepfun" aria-pressed="false" aria-label="置顶" title="置顶"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></button>
+                            <span class="platform-rating" aria-label="2 星">★ 2.0</span>
+                        </div>
+                    </header>
+                    <p class="platform-summary">Step Plan现按月Credits，支持Step5 Preview和Flash系列；本次购买按钮售罄。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">证据不足</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">1<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">旧prompt推算不适用当前Credits，精确抵扣未公开；恢复发售时间未知。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">4<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">稳定性尚可。</span></li></ul>
+                    <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span></div>
+
+                    <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
+                </article>
+
                 <article class="platform-card" data-platform-id="taotoken" tabindex="0" role="button" aria-label="TaoToken 详情">
                     <header>
                         <div class="platform-card-heading">
@@ -923,14 +943,14 @@
   <div id="platformDetailOverlay" class="platform-detail-overlay" hidden><div class="platform-detail-backdrop" data-platform-detail-close="1"></div><div class="platform-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="platformDetailTitle" tabindex="-1"><button type="button" class="platform-detail-close" id="platformDetailClose" aria-label="关闭">×</button><div id="platformDetailBody"></div></div></div>
   <script src="/monitor/monitor-config.js"></script>
 <script src="/scripts/entity-data.js?v=252de7b6a1"></script><script src="/scripts/number-display.js?v=6c6a6ccb42"></script>
-<script src="/scripts/filter-state.js?v=1f3f528c81"></script><script src="/scripts/ui-single-select.js?v=09370d929b"></script>
+<script src="/scripts/filter-state.js?v=e0270ff459"></script><script src="/scripts/ui-single-select.js?v=09370d929b"></script>
 <script src="/scripts/homepage-filters.js?v=7b5f4e5f1c"></script><script src="/scripts/tool-page.js?v=fbb793f0db"></script>
 
 <script src="/scripts/platform-pages.js?v=601d13bd7b"></script>
 <script src="/scripts/platform-catalog.js?v=9680c84028"></script>
 <script src="/scripts/platform-detail.js?v=940eabd241"></script>
 <script src="/scripts/platform-comparison.js?v=76d4b49835"></script>
-<script src="/scripts/platform-hub.js?v=aede506599"></script>
+<script src="/scripts/platform-hub.js?v=2eab76f2b7"></script>
 <script src="/scripts/platforms-page.js?v=7457d6ea96"></script>
 </body>
 </html>

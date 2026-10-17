@@ -230,13 +230,16 @@
   function filterPlatforms(platforms, state, options) {
     const current = normalizeState(state);
     const opts = options || {};
-    if (opts.context && Array.isArray(opts.context.plans)) {
+    // Platform browsing can match catalog facts without requiring a live offer.
+    if (opts.requireMatchingOffer !== false && opts.context && Array.isArray(opts.context.plans)) {
       const ids = new Set(matchingOffers(opts.context, current, opts).map(offer => offer.platform.slug));
       return (platforms || []).filter(platform => ids.has(platform.slug));
     }
     return (platforms || []).filter(platform => {
       if (!selectedMatch(platform.slug, current.platformSlugs)) return false;
       if (!platformStatusMatches(platform, current)) return false;
+      if (current.domesticNetworkOnly && platform.requiresOverseasNetwork !== false) return false;
+      if (current.domesticPaymentOnly && platform.requiresOverseasPayment !== false) return false;
       if (opts.context && opts.entityData && current.modelSlugs !== null) {
         const models = typeof opts.entityData.platformModels === 'function'
           ? opts.entityData.platformModels(opts.context, platform.slug)
