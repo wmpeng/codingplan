@@ -272,6 +272,9 @@
       if (featured) {
         state.platformSlugs = featuredPlatforms();
         state.modelSlugs = presetSlugs("featured");
+      } else if (platformHub || plansPage) {
+        state.modelSlugs = [];
+        if (plansPage) state.platformSlugs = [];
       }
       resetModelList();
       publish(platformHub || plansPage ? "reset" : "manual");
