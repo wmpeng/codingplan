@@ -208,3 +208,53 @@
   .usage-empty { width: calc(100% - 32px); text-align: center; line-height: 1.8; }
   .usage-chart-head .usage-table-count { display: block; margin-top: 8px; text-align: left; }
 }
+
+/* 完整价格页：固定列宽避免全量明细随窗口宽度逐格重新测量。 */
+.pricing-directory .usage-data-table { table-layout: fixed; width: 2455px; min-width: 100%; }
+.pricing-directory .usage-chart-card { min-width: 0; }
+.pricing-directory .usage-chart { min-width: 0; overflow: hidden; }
+.pricing-directory .usage-chart-head { flex-wrap: wrap; min-width: 0; }
+.pricing-directory .usage-chart-head > div:first-child { flex: 1 1 440px; min-width: 0; }
+.pricing-directory .usage-data-card { scroll-margin-top: 110px; }
+.pricing-directory .usage-data-table :is(th,td) { box-sizing: border-box; padding: 8px 10px; }
+.pricing-directory [data-comparison-col="vendor"] { width: 260px; white-space: normal; }
+.pricing-directory th[data-comparison-col="price"] { width: 160px; }
+.pricing-directory th[data-comparison-col="model"] { width: 235px; }
+.pricing-directory th[data-comparison-col="unitPriceCnyPerM"] { width: 130px; }
+.pricing-directory th[data-comparison-col="unitPriceVisual"] { width: 200px; }
+.pricing-directory th[data-comparison-col="apiPricing"] { width: 280px; }
+.pricing-directory th:is([data-comparison-col="fiveHourTokenInM"],[data-comparison-col="weeklyTokenInM"]) { width: 110px; }
+.pricing-directory th[data-comparison-col="monthlyTokenInM"] { width: 120px; }
+.pricing-directory th[data-comparison-col="artificialAnalysis"] { width: 90px; }
+.pricing-directory th[data-comparison-col="deepSWE"] { width: 120px; }
+.pricing-directory th[data-comparison-col="note"] { width: 640px; }
+.pricing-directory .usage-table-model { white-space: normal; overflow-wrap: anywhere; }
+.pricing-directory .usage-table-note { min-width: 0; }
+.price-identity { display: flex; align-items: flex-start; gap: 7px; }
+.price-identity > div { min-width: 0; }
+.price-identity .ui-icon-button { flex-shrink: 0; }
+.price-identity-title { display: flex; align-items: baseline; flex-wrap: wrap; gap: 3px 7px; overflow-wrap: anywhere; }
+.price-identity-title > span { color: var(--text-secondary); }
+.price-identity-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-top: 4px; }
+.price-identity-meta:empty { display: none; }
+.price-identity-meta .tool-tag, .price-identity-meta .harness-api-badge { margin: 0; }
+.pricing-directory .usage-data-table tr.is-pinned td { background: #f1f6fd; }
+.pricing-directory .usage-data-table tr.is-pinned td.sticky-first { box-shadow: inset 2px 0 #9bb9df; }
+.usage-detail-tools { display: flex; gap: 6px; align-items: center; margin-left: auto; }
+.usage-detail-tools .single-select-picker > summary { min-height: 36px; font-size: 12px; }
+.usage-detail-tools .price-sort-direction { min-width: 36px; min-height: 36px; padding: 0 10px; }
+.pricing-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: flex-end; }
+.pricing-basis { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; color: var(--text-secondary); font-size: 12px; }
+.pricing-basis .usage-segments button[aria-pressed="true"] { color: var(--accent-primary); background: #fff; box-shadow: 0 1px 3px #17203318; }
+.pricing-directory .usage-chart-head .single-select-picker > summary { min-height: 36px; font-size: 12px; }
+.price-pagination { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 14px; color: var(--text-secondary); font-size: 12px; }
+.price-pagination[hidden] { display: none; }
+.usage-chart-head .price-pagination { flex-basis: 100%; justify-content: flex-end; margin-top: 0; }
+.price-pagination button { min-height: 36px; font-size: 12px; }
+@media (max-width: 760px) {
+  .pricing-hero-actions { justify-content: flex-start; }
+  .pricing-directory .usage-chart-head { display: flex; flex-wrap: wrap; }
+  .usage-detail-tools { margin-left: 0; }
+  .pricing-directory .usage-chart-head .usage-table-count { margin-top: 0; }
+  .pricing-basis .usage-segments button, .usage-detail-tools .price-sort-direction { min-height: 44px; }
+}

@@ -64,7 +64,8 @@
   }
   function mountTables(host, preset, context, config, options = {}) {
     let unit = globalThis.CodingPlanDisplaySettings?.getTokenUnit() || 'yi';
-    const data = points(context,config), expanded = new Set(), selectedModels = Object.create(null);
+    let data = points(context,config);
+    const expanded = new Set(), selectedModels = Object.create(null);
     const tableOptions = {...presetTableOptions(options), selectedModels, hideDescription:true};
     const render = () => {
       const focused = document.activeElement;
@@ -107,6 +108,7 @@
     });
     globalThis.addEventListener('codingplan:token-unit-changed', event => { unit=event.detail.tokenUnit; render(); });
     render();
+    return {setPoints(next) { data=next; render(); }};
   }
   return {esc,url,validate,score,scoreHtml,modalities,modelCard,modelGroups,points,presetTableOptions,mountTables};
 });
