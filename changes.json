@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "changes": [
+    {
+      "slug": "workbuddy-legacy-renewal-price-2027",
+      "title": "WorkBuddy 老用户保价结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2027-01-01"
+      },
+      "changes": [
+        {
+          "type": "price",
+          "label": "自动续费月价",
+          "before": "¥58/月",
+          "after": "¥70/月"
+        }
+      ],
+      "audience": "2026-07-01 前已开启自动续费且持续保留资格的用户",
+      "summary": "符合条件的老用户保价至 2026-12-31，2027-01-01 起续费 ¥70/月；取消后再购按现价。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "workbuddy",
+          "planSlug": "workbuddy-standard-renew-2026",
+          "label": "WorkBuddy · 标准版老用户保价"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.workbuddy.cn/docs/workbuddy/Pricing"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "minimax-token-plan-model-routing-20261019",
+      "title": "MiniMax 老 Token Plan 模型路由调整",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-19"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "M2.5 / M2.7 请求",
+          "before": "原型号入口",
+          "after": "路由至 M3.1 Flash Preview，原名称保留为兼容入口"
+        }
+      ],
+      "audience": "仍在自动续费的老 Token Plan 用户",
+      "summary": "公告安排 2026-10-19 起，M2.5/M2.7 请求统一路由至 M3.1 Flash Preview；旧型号实测不代表新型号额度。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-tp-plus",
+          "label": "MiniMax · 老Token Plan Plus"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-tp-max",
+          "label": "MiniMax · 老Token Plan Max"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-tp-ultra",
+          "label": "MiniMax · 老Token Plan Ultra"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://platform.minimax.cn/docs/m-plan/token-plan-notice"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "codex-gpt-5-5-retirement-20261014",
+      "title": "Codex 的 GPT-5.5 支持调整",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-14"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "ChatGPT 登录的 Codex",
+          "before": "可选 GPT-5.5",
+          "after": "公告将移除 GPT-5.5；API 可用性不受此调整影响"
+        }
+      ],
+      "summary": "原公告安排 2026-10-14 从 ChatGPT 登录的 Codex 中移除 GPT-5.5；不涉及 API 可用性。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "codex",
+          "planSlug": "codex-plus",
+          "planModelSlug": "codex-plus--gpt-5-5",
+          "label": "Codex · Plus · GPT-5.5"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "codex",
+          "planSlug": "codex-pro5",
+          "planModelSlug": "codex-pro5--gpt-5-5",
+          "label": "Codex · Pro $100 · GPT-5.5"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "codex",
+          "planSlug": "codex-pro20",
+          "planModelSlug": "codex-pro20--gpt-5-5",
+          "label": "Codex · Pro $200 · GPT-5.5"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://learn.chatgpt.com/docs/models"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "command-code-mistral-bonus-end-20261021",
+      "title": "Command Code 的 Mistral Large 4 额度加成结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-21"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "Mistral Large 4 月额度",
+          "before": "Go / GOAT / Pro 分别 $10 / $40 / $50",
+          "after": "分别恢复 $6 / $20 / $30"
+        }
+      ],
+      "summary": "2026-10-06 至 10-20 的 Mistral Large 4 额度加成结束后，10-21 起 Go / GOAT / Pro 月额度分别恢复 $6 / $20 / $30；这些额度属于共享套餐池，不能相加。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "command-code",
+          "planSlug": "commandcode-go",
+          "label": "Command Code · Go"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "command-code",
+          "planSlug": "commandcode-goat",
+          "label": "Command Code · GOAT"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "command-code",
+          "planSlug": "commandcode-pro",
+          "label": "Command Code · Pro"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://commandcode.ai/docs/resources/pricing-limits"
+        }
+      ],
+      "relatedChanges": []
+    }
+  ]
+}

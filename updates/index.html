@@ -8,13 +8,15 @@
 <script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>更新历史 - Coding Plan</title>
-<meta name="description" content="查看 Coding Plan 收录的平台、模型、套餐价格与用量资料更新记录。">
+  <title>变更预告与更新历史 - Coding Plan</title>
+<meta name="description" content="查看平台、套餐与模型的变更预告、生效条件及 Coding Plan 资料更新历史。">
   <link rel="canonical" href="https://codingplan.fyi/updates/">
   <link rel="icon" href="/favicon.ico?v=260924a">
   <link rel="stylesheet" href="/styles/shared.css?v=482edb170c">
   <link rel="stylesheet" href="/styles/tool-page.css?v=1688597461">
   <link rel="stylesheet" href="/styles/design-system.css?v=8b40812952">
+  <link rel="stylesheet" href="/styles/changes-page.css?v=07141e11a3">
+<script src="/scripts/changes-page.js?v=02ada7f47c" defer></script>
 <script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
 <link rel="stylesheet" href="/styles/ui-components.css?v=bf5f1551fa">
@@ -32,7 +34,7 @@
     <a href="/models/">模型</a>
     <a href="/monitor/" hidden data-monitor-nav>可用性监控</a>
     <a href="/articles/">文章</a>
-    <a href="/updates/" aria-current="page">更新历史</a>
+    <a href="/updates/" aria-current="page">预告与更新</a>
   </nav>
   <div id="settingsMount">
     <div class="settings-wrapper">
@@ -67,10 +69,44 @@
   <main class="updates-main content-list-page">
     <header class="content-list-header">
       <p class="content-list-kicker">Coding Plan</p>
-      <h1>更新历史</h1>
-      <p class="content-list-lead">平台、模型与套餐资料的更新记录。</p>
+      <h1>变更预告与更新历史</h1>
+      <p class="content-list-lead">关注即将影响价格、额度与模型支持的变化，回看资料更新。</p>
+      <nav class="updates-jumps" aria-label="本页内容"><a href="#upcoming">变更预告</a><a href="#history">更新历史</a></nav>
     </header>
-    <div class="updates-list"><section class="update-entry"><h2>2026.10.13</h2><ul><li>调整目录收录范围，暂移除两项新增平台及其套餐、模型支持记录。</li><li>补齐境内网络与支付条件，境内可用、境内可购买平台名单按当前确认结果筛选。</li><li>新增 Cursor 平台与介绍页：收录 X Subscription 五档新套餐及四档存量个人套餐，区分 Grok 共享周额度与第三方模型另行付费；补齐模型价格、上下文和高速档。</li><li>复核 AA 与 DeepSWE 评测资料，补齐模型具体输入、输出模态，并确认阶跃星辰支持个人 Harness API。</li></ul></section>
+    <section id="upcoming" class="changes-section" aria-labelledby="upcoming-heading"><div class="changes-heading"><h2 id="upcoming-heading">变更预告</h2><span>4 项</span></div><div class="changes-upcoming"><article class="change-record" id="change-codex-gpt-5-5-retirement-20261014" data-change-status="announced" data-effective-date="2026-10-14" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-10-14</span></div>
+  <h3><a href="#change-codex-gpt-5-5-retirement-20261014">Codex 的 GPT-5.5 支持调整</a></h3>
+  <p class="change-summary">原公告安排 2026-10-14 从 ChatGPT 登录的 Codex 中移除 GPT-5.5；不涉及 API 可用性。</p>
+
+  <dl class="change-values"><div><dt>ChatGPT 登录的 Codex</dt><dd><span class="change-before">可选 GPT-5.5</span><span class="change-arrow" aria-label="变为">→</span><strong>公告将移除 GPT-5.5；API 可用性不受此调整影响</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>Codex · Plus · GPT-5.5</li><li>Codex · Pro $100 · GPT-5.5</li><li>Codex · Pro $200 · GPT-5.5</li></ul><p class="change-sources"><a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-minimax-token-plan-model-routing-20261019" data-change-status="announced" data-effective-date="2026-10-19" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-10-19</span></div>
+  <h3><a href="#change-minimax-token-plan-model-routing-20261019">MiniMax 老 Token Plan 模型路由调整</a></h3>
+  <p class="change-summary">公告安排 2026-10-19 起，M2.5/M2.7 请求统一路由至 M3.1 Flash Preview；旧型号实测不代表新型号额度。</p>
+  <p class="change-audience"><span>适用条件</span>仍在自动续费的老 Token Plan 用户</p>
+  <dl class="change-values"><div><dt>M2.5 / M2.7 请求</dt><dd><span class="change-before">原型号入口</span><span class="change-arrow" aria-label="变为">→</span><strong>路由至 M3.1 Flash Preview，原名称保留为兼容入口</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>MiniMax · 老Token Plan Plus</li><li>MiniMax · 老Token Plan Max</li><li>MiniMax · 老Token Plan Ultra</li></ul><p class="change-sources"><a href="https://platform.minimax.cn/docs/m-plan/token-plan-notice" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-command-code-mistral-bonus-end-20261021" data-change-status="announced" data-effective-date="2026-10-21" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-10-21</span></div>
+  <h3><a href="#change-command-code-mistral-bonus-end-20261021">Command Code 的 Mistral Large 4 额度加成结束</a></h3>
+  <p class="change-summary">2026-10-06 至 10-20 的 Mistral Large 4 额度加成结束后，10-21 起 Go / GOAT / Pro 月额度分别恢复 $6 / $20 / $30；这些额度属于共享套餐池，不能相加。</p>
+
+  <dl class="change-values"><div><dt>Mistral Large 4 月额度</dt><dd><span class="change-before">Go / GOAT / Pro 分别 $10 / $40 / $50</span><span class="change-arrow" aria-label="变为">→</span><strong>分别恢复 $6 / $20 / $30</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>Command Code · Go</li><li>Command Code · GOAT</li><li>Command Code · Pro</li></ul><p class="change-sources"><a href="https://commandcode.ai/docs/resources/pricing-limits" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-workbuddy-legacy-renewal-price-2027" data-change-status="announced" data-effective-date="2027-01-01" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2027-01-01</span></div>
+  <h3><a href="#change-workbuddy-legacy-renewal-price-2027">WorkBuddy 老用户保价结束</a></h3>
+  <p class="change-summary">符合条件的老用户保价至 2026-12-31，2027-01-01 起续费 ¥70/月；取消后再购按现价。</p>
+  <p class="change-audience"><span>适用条件</span>2026-07-01 前已开启自动续费且持续保留资格的用户</p>
+  <dl class="change-values"><div><dt>自动续费月价</dt><dd><span class="change-before">¥58/月</span><span class="change-arrow" aria-label="变为">→</span><strong>¥70/月</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>WorkBuddy · 标准版老用户保价</li></ul><p class="change-sources"><a href="https://www.workbuddy.cn/docs/workbuddy/Pricing" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article></div></section>
+  <details class="changes-ended"><summary>已结束的变更 <span>0 项</span></summary><div><p class="changes-empty">暂无已结束的变更。</p></div></details>
+    <section id="history" class="updates-history" aria-labelledby="history-heading"><h2 id="history-heading">更新历史</h2><div class="updates-list"><section class="update-entry"><h2>2026.10.13</h2><ul><li>调整目录收录范围，暂移除两项新增平台及其套餐、模型支持记录。</li><li>补齐境内网络与支付条件，境内可用、境内可购买平台名单按当前确认结果筛选。</li><li>新增 Cursor 平台与介绍页：收录 X Subscription 五档新套餐及四档存量个人套餐，区分 Grok 共享周额度与第三方模型另行付费；补齐模型价格、上下文和高速档。</li><li>复核 AA 与 DeepSWE 评测资料，补齐模型具体输入、输出模态，并确认阶跃星辰支持个人 Harness API。</li></ul></section>
 <section class="update-entry"><h2>2026.10.12</h2><ul><li>更新多平台当前模型及支持关系，新增GPT-6.1 Sol、Claude 5.5系列、MiniMax M3.1 Flash Preview、Kimi K2.8 Preview、Step 5 Preview等；同步AA/DeepSWE榜单，未有对应记录的分数保持未知</li><li>MiniMax升级M Plan，Kimi和TRAE国际版区分新订阅与老用户续费；新增腾讯Hy、百度积分制、天翼/京东/超算Token Plan、讯飞成员积分制。</li><li>重新核对积分、请求、美元额度和上下文阶梯；MiMo新增峰谷扣减，优云新增模型并更新并发，共绩取消过期限时五折，邀请折扣资格注明核对条件</li><li>OpenCode新增Go Plus，Ollama采用当前月Credits池，GitHub个人方案按AI Credits计费；动态扣减或缺乏依据的Token量保持未知</li><li>保留停售及续费历史，补齐首月优惠、活动期限、型号转发/下线与使用限制；无法读取的当前购买状态明确列为待确认</li></ul></section>
 <section class="update-entry"><h2>2026.9.24</h2><ul><li>Codex Plus、Pro *5、Pro *20 新增 GPT-6-Sol 与 GPT-6-Luna，均支持文本和图片输入</li><li>两款模型 Token 额度暂按同套餐 GPT-5.6-Sol、GPT-5.6-Luna 的 2 倍估算，非官方额度或独立实测</li><li>额度/价格默认筛选和精选比较改用 GPT-6-Sol / Luna，旧型号仍可手动选择</li></ul></section>
 <section class="update-entry"><h2>2026.9.22</h2><ul><li>小米 MiMo 上线 V2.6 系列：Token Plan 四档套餐新增 MiMo-V2.6-Pro 与 MiMo-V2.6-Flash，Credits 折算与 V2.5 价格一致，套餐价格与月度额度均未变；V2.5-Pro / V2.5 将于 10.21 下线，全系支持多模态输入</li><li>京东云套餐移动至 GitHub 之后展示</li></ul></section>
@@ -122,7 +158,7 @@
 <section class="update-entry"><h2>2026.4.10</h2><ul><li>添加Qwen-3.6-Plus</li></ul></section>
 <section class="update-entry"><h2>2026.4.4</h2><ul><li>添加腾讯TokenPlan（非CodingPlan）</li></ul></section>
 <section class="update-entry"><h2>2026.4.3</h2><ul><li>添加小米·MiMo 及 京东·JoyBuilder</li></ul></section>
-<section class="update-entry"><h2>2026.3.28</h2><ul><li>更新智谱AI GLM-5.1 模型信息</li></ul></section></div>
+<section class="update-entry"><h2>2026.3.28</h2><ul><li>更新智谱AI GLM-5.1 模型信息</li></ul></section></div></section>
   </main>
 </div>
 </body>
