@@ -175,14 +175,17 @@
   color: var(--accent-primary);
   background: #f3f8ff;
 }
-:is(.homepage-unified-active, .tool-unified-active) .filter-picker-count {
+:is(.homepage-unified-active, .tool-unified-active) .filter-picker-value {
+  min-width: 0;
+  max-width: 100%;
   padding: 1px 6px;
   border-radius: 5px;
   background: #edf3fb;
   color: var(--accent-primary);
   font-size: 11px;
   font-weight: 600;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 :is(.homepage-unified-active, .tool-unified-active) .filter-state-actions { width: auto; margin-left: auto; gap: 8px; }
 :is(.homepage-unified-active, .tool-unified-active) .filter-state-actions .filter-state-btn {

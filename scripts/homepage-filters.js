@@ -52,7 +52,7 @@
     const title = budget ? "月预算" : "月 Token 数";
     const factor = budget ? 1 : root.NumberDisplay.tokenFactor(state.tokenUnit);
     const unit = budget ? "元" : state.tokenUnit === "B" ? "B" : state.tokenUnit === "M" ? "M" : "亿";
-    return `<details class="filter-picker" id="${id}"><summary><span class="range-picker-title">${title}</span><span ${budget ? "data-budget-label" : "data-token-label"}></span></summary>
+    return `<details class="filter-picker" id="${id}"><summary><span class="range-picker-title">${title}</span><span class="filter-picker-value" ${budget ? "data-budget-label" : "data-token-label"}></span></summary>
       <div class="filter-picker-menu budget-menu" role="group" aria-label="${budget ? "每月预算" : "每月 Token 用量"}">
         <div class="range-picker-value"><label class="filter-inline"><span>${budget ? "不超过" : "至少"}</span><span class="range-picker-number">${budget ? '<span class="range-picker-unit" aria-hidden="true">¥</span>' : ""}<input type="number" inputmode="decimal" min="0" step="any" ${budget ? 'data-budget-part="max"' : 'data-token-part="min"'} aria-label="${budget ? "最高月预算（人民币）" : `最低月 Token 数（${unit}）`}" placeholder="不限">${budget ? "" : `<span class="range-picker-unit" data-token-unit-label aria-hidden="true">${unit}</span>`}</span></label></div>
         <div class="range-picker-slider"><input type="range" min="${sliderMin}" max="${budget ? budgetSliderMax : tokenSliderMax}" step="1" data-range-picker="${key}" aria-label="${title}滑块" aria-describedby="${id}Help">
@@ -154,7 +154,7 @@
       })
       .join("");
     return `<details class="filter-picker" data-picker="${escapeHtml(key)}" id="${escapeHtml(id)}">
-      <summary><span>${escapeHtml(label)}</span><span class="filter-picker-count" data-picker-count>${escapeHtml(countText)}</span>${model ? '<span class="model-match-warning" data-model-match-warning hidden>需同时支持所选模型</span>' : ""}</summary>
+      <summary><span>${escapeHtml(label)}</span><span class="filter-picker-count filter-picker-value" data-picker-count>${escapeHtml(countText)}</span>${model ? '<span class="model-match-warning" data-model-match-warning hidden>需同时支持所选模型</span>' : ""}</summary>
       <div class="filter-picker-menu" role="group" aria-label="选择${escapeHtml(label)}">
         <input type="search" data-picker-search placeholder="搜索${escapeHtml(label)}" aria-label="搜索${escapeHtml(label)}">
         <div class="filter-picker-tools"><button type="button" data-picker-action="clear">清空</button><button type="button" data-picker-action="all">全选</button>${model ? "" : '<button type="button" data-picker-action="default" disabled>精选平台</button>'}<span class="picker-selection-count" role="status" aria-live="polite" aria-atomic="true">已选 <strong ${model ? "data-model-selected-count" : "data-platform-selected-count"}>${selected.length}</strong><span class="picker-count-divider"> / </span>共 ${items.length}</span></div>
@@ -170,7 +170,7 @@
   function buildStatusPicker(includeHistory = false, planStatusOnly = false) {
     const subject = planStatusOnly ? "套餐" : "平台";
     return `<details class="filter-picker status-picker" id="homeStatusPicker">
-      <summary aria-label="购买状态"><span class="status-picker-title">购买状态</span><span data-status-label>不限</span></summary>
+      <summary aria-label="购买状态"><span class="status-picker-title">购买状态</span><span class="filter-picker-value" data-status-label>不限</span></summary>
       <div class="filter-picker-menu" role="group" aria-label="${includeHistory ? "购买状态筛选" : "排除购买状态"}"><div class="filter-picker-tools"><button type="button" data-clear-status aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}${subject}</span></label>`).join("")}${includeHistory ? `<div class="status-picker-history"><label><input type="checkbox" ${planStatusOnly ? 'data-filter-field="includeDiscontinued"' : 'data-include-delisted'}><span>包含已下架${subject}</span></label></div>` : ""}</div>
     </details>`;
   }
