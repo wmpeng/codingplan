@@ -206,8 +206,8 @@
     let state = Filters.createDefaultState(config, {
       mode: full ? "full" : "home",
     });
-    state.platformSlugs = null;
-    state.modelSlugs = null;
+    state.platformSlugs = plansPage ? [] : null;
+    state.modelSlugs = platformHub || plansPage ? [] : null;
     state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || "yi";
     state.modelGroup = "any";
     state.modelMatch = "any";
@@ -220,7 +220,7 @@
       state.platformStatusMax = "delisted";
       state.excludedPlatformStatuses = [];
     }
-    const defaults = Filters.cloneState(state);
+    const defaults = {...Filters.cloneState(state), platformSlugs:state.platformSlugs?.slice() ?? null};
     let featuredOnly = false;
     if (opts.featuredPreset) {
       context.modelGroups = opts.featuredPreset.groups || [];
@@ -267,14 +267,11 @@
     const canRestoreDefaults = () => groupsReady && featuredPlatforms().length > 0 && presetSlugs("featured").length > 0;
     function resetFilters(featured = false) {
       if (featured && !canRestoreDefaults()) return false;
-      state = Filters.cloneState(defaults);
+      state = {...Filters.cloneState(defaults), platformSlugs:defaults.platformSlugs?.slice() ?? null};
       if (platformHub) featuredOnly = false;
       if (featured) {
         state.platformSlugs = featuredPlatforms();
         state.modelSlugs = presetSlugs("featured");
-      } else if (platformHub || plansPage) {
-        state.modelSlugs = [];
-        if (plansPage) state.platformSlugs = [];
       }
       resetModelList();
       publish(platformHub || plansPage ? "reset" : "manual");
