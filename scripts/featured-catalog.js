@@ -72,7 +72,7 @@
       const selectedButton = focused?.closest?.('[data-preset-model]');
       const focus = selectedButton && host.contains(selectedButton) ? {group:selectedButton.closest('[data-preset-id]').dataset.presetId,model:selectedButton.dataset.presetModel} : null;
       globalThis.ModelComparison.renderPresetComparisons(host,preset,data,unit,'featured',tableOptions);
-      host.insertAdjacentHTML('beforeend', `<p class="comparison-method">订阅单价按参考月额度用满计算；各模型额度不相加。${Help.html(host.id + '-priceHelp','综合单价说明','订阅综合单价按显示设置中的首月或每月价格及参考月额度计算，首月价缺失时沿用每月价格。按量 API 按实际用量计费，没有固定月额度。实际成本受输入、输出和缓存比例影响；不同模型能力不同，未知额度不等于零。')}<a href="/pricing/#pricingMethod">计算口径 →</a></p>`);
+      host.insertAdjacentHTML('beforeend', `<p class="comparison-method">订阅单价按参考月额度用满计算；各模型额度不相加。${Help.html(host.id + '-priceHelp','综合单价说明','订阅综合单价＝首月或每月价格 ÷ 参考月额度，假设额度用满。右上角可切换首月或每月价格，首月价格未知时使用每月价格。按量 API 按实际用量计费；实际成本还受输入、输出及缓存比例影响。未知额度不等于零。')}<a href="/pricing/#pricingMethod">计算口径 →</a></p>`);
       for (const id of expanded) { const card = [...host.querySelectorAll('[data-preset-id]')].find(x=>x.dataset.presetId===id); if(card) toggle(card,true); }
       if(focus) focusModelButton(focus.group,focus.model);
     };

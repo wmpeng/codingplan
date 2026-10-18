@@ -61,7 +61,7 @@
       </div></details>`;
   }
 
-  const multimodalExplanation = "支持多模态，表示模型除文本外，还支持至少一种非文本输入或输出，例如图片、音频或视频。具体支持哪些能力以模型说明为准；未确认的模型不计入。";
+  const multimodalExplanation = "支持多模态：除文本外，还支持图片、音频或视频等非文本输入或输出。具体能力以模型说明为准；未确认的模型不计入。";
   function multimodalControls(id, label = "全部多模态模型", notice = "") {
     return `<div class="model-multimodal-tools"><button type="button" class="model-multimodal-select" data-select-multimodal>${escapeHtml(label)}</button><span class="model-multimodal-help"><button type="button" class="model-multimodal-info" data-multimodal-help aria-label="什么是多模态模型" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>${multimodalExplanation}</span></span></div><p class="model-multimodal-notice" data-multimodal-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
   }
@@ -72,15 +72,18 @@
     payment: { field: "requiresOverseasPayment", label: "境内可购买平台", legacy: "domesticPaymentOnly" },
   };
   function platformShortcutControls(id, labels = {}, notice = "") {
-    return `<div class="platform-shortcut-tools model-multimodal-tools"><button type="button" class="model-multimodal-select" data-platform-shortcut="mainland">${escapeHtml(labels.mainland || platformShortcutKinds.mainland.label)}</button><span class="platform-shortcut-help"><button type="button" class="model-multimodal-info" data-platform-help aria-label="支持中国大陆说明" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>同时确认平台服务无需境外网络且有境内支付途径；未确认项不计入。不保证工具账号和安装也无境外网络要求，也不表示当前一定开放购买。<br>有不符合项时，仅保留已选中的符合平台；否则（包括未勾选时）选择全部符合平台。只改变勾选，不持续筛选。</span></span></div><p class="model-multimodal-notice" data-platform-shortcut-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
+    return `<div class="platform-shortcut-tools model-multimodal-tools"><button type="button" class="model-multimodal-select" data-platform-shortcut="mainland">${escapeHtml(labels.mainland || platformShortcutKinds.mainland.label)}</button><span class="platform-shortcut-help"><button type="button" class="model-multimodal-info" data-platform-help aria-label="支持中国大陆说明" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>选择已确认无需境外网络、且有境内支付途径的平台；未确认的不计入。工具账号与安装可能另有要求，购买状态请另行查看。<br>已选中不符合的平台时，仅保留其中符合的；否则选择全部符合的平台。之后仍可手动增减。</span></span></div><p class="model-multimodal-notice" data-platform-shortcut-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
   }
   function bindSelectionHelp(host) {
     const helpSelector = '[data-multimodal-help], [data-platform-help]';
     const wrapSelector = '.model-multimodal-help, .platform-shortcut-help';
     const triggers = () => [...host.querySelectorAll(helpSelector)];
+    let closeTimer = null;
+    const cancelClose = () => { root.clearTimeout(closeTimer); closeTimer = null; };
     const show = (button, visible) => {
       button.setAttribute('aria-expanded', String(visible));
       const tooltip = document.getElementById(button.getAttribute('aria-controls'));
+      if (!tooltip) return;
       tooltip.hidden = !visible;
       if (visible) {
         tooltip.style.top = ''; tooltip.style.bottom = '';
@@ -93,7 +96,7 @@
         }
       }
     };
-    const close = button => { delete button.dataset.pinned; show(button, false); };
+    const close = button => { cancelClose(); delete button.dataset.pinned; show(button, false); };
     const reposition = () => triggers().filter(button => button.getAttribute('aria-expanded') === 'true').forEach(button => show(button, true));
     host.addEventListener('scroll', reposition, true);
     root.addEventListener('resize', () => root.requestAnimationFrame(reposition));
@@ -102,17 +105,19 @@
     host.addEventListener('pointerover', event => {
       if (event.pointerType !== 'mouse') return;
       const wrap = event.target.closest(wrapSelector);
-      if (wrap) show(wrap.querySelector('button'), true);
+      if (wrap) { cancelClose(); show(wrap.querySelector('button'), true); }
     });
     host.addEventListener('pointerout', event => {
       if (event.pointerType !== 'mouse') return;
       const wrap = event.target.closest(wrapSelector);
       if (!wrap || wrap.contains(event.relatedTarget)) return;
       const button = wrap.querySelector('button');
-      if (!button.dataset.pinned && !wrap.contains(document.activeElement)) show(button, false);
+      if (!button.dataset.pinned && !wrap.contains(document.activeElement)) {
+        cancelClose(); closeTimer = root.setTimeout(() => show(button, false), 150);
+      }
     });
     host.addEventListener('focusin', event => {
-      if (!restoringFocus && event.target.matches(helpSelector)) show(event.target, true);
+      if (!restoringFocus && event.target.matches(helpSelector)) { cancelClose(); show(event.target, true); }
     });
     host.addEventListener('focusout', event => {
       const wrap = event.target.closest(wrapSelector);
@@ -121,6 +126,7 @@
     host.addEventListener('click', event => {
       const button = event.target.closest(helpSelector);
       if (!button) return;
+      cancelClose();
       if (button.dataset.pinned) close(button);
       else { button.dataset.pinned = 'true'; show(button, true); }
     });

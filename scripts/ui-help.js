@@ -7,10 +7,11 @@
   'use strict';
   function html(id, label, text) {
     const esc = UI.escapeHtml;
-    return `<span class="ui-help"><button type="button" class="ui-help-button" popovertarget="${esc(id)}" aria-label="${esc(label)}" aria-expanded="false" aria-controls="${esc(id)}"><span aria-hidden="true">?</span></button><span class="ui-help-content" id="${esc(id)}" popover="auto" role="tooltip">${esc(text)}</span></span>`;
+    return `<span class="ui-help"><button type="button" class="ui-help-button" popovertarget="${esc(id)}" aria-label="${esc(label)}" aria-expanded="false" aria-controls="${esc(id)}" aria-describedby="${esc(id)}"><span aria-hidden="true">?</span></button><span class="ui-help-content" id="${esc(id)}" popover="auto" role="tooltip">${esc(text)}</span></span>`;
   }
   function bind(doc) {
-    let active = null, pinned = false;
+    let active = null, pinned = false, closeTimer = null;
+    const cancelClose = () => { clearTimeout(closeTimer); closeTimer = null; };
     const buttonFor = target => target?.closest?.('.ui-help-button');
     const content = button => doc.getElementById(button.getAttribute('aria-controls'));
     const place = () => {
@@ -27,21 +28,31 @@
       tip.style.top = `${Math.max(top + 12, box.bottom + size.height + 8 < top + height - 12 ? box.bottom + 8 : box.top - size.height - 8)}px`;
     };
     const close = () => {
+      cancelClose();
       if (active) { const tip = content(active); if (tip?.matches(':popover-open')) tip.hidePopover(); active.setAttribute('aria-expanded', 'false'); }
       active = null; pinned = false;
     };
     const show = button => {
+      cancelClose();
       if (active !== button) close();
       active = button;
       const tip = content(button);
       if (!tip.matches(':popover-open')) tip.showPopover();
       button.setAttribute('aria-expanded', 'true'); place();
     };
-    doc.addEventListener('pointerover', event => { const b = buttonFor(event.target); if (b && event.pointerType === 'mouse') show(b); });
+    doc.addEventListener('pointerover', event => {
+      if (event.pointerType !== 'mouse') return;
+      const b = buttonFor(event.target);
+      if (b) show(b);
+      else if (active?.closest('.ui-help').contains(event.target)) cancelClose();
+    });
     doc.addEventListener('pointerout', event => {
       if (!active || pinned || event.pointerType !== 'mouse') return;
       const wrap = active.closest('.ui-help');
-      if (wrap.contains(event.target) && !wrap.contains(event.relatedTarget) && !wrap.contains(doc.activeElement)) close();
+      if (wrap.contains(event.target) && !wrap.contains(event.relatedTarget) && !wrap.contains(doc.activeElement)) {
+        cancelClose();
+        closeTimer = setTimeout(close, 150);
+      }
     });
     doc.addEventListener('focusin', event => { const b = buttonFor(event.target); if (b) show(b); });
     doc.addEventListener('focusout', event => { if (active && !pinned && active.closest('.ui-help').contains(event.target) && !active.closest('.ui-help').contains(event.relatedTarget)) close(); });
