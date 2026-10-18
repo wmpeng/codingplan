@@ -5,23 +5,6 @@
 })(globalThis, function () {
   'use strict';
   const pinKey = 'codingplanPinnedPriceRows';
-  const known = value => typeof value === 'number' && Number.isFinite(value) && value >= 0;
-  // Generated unit prices use the regular monthly fee. Scale that cost only;
-  // quotas, API quotes, budget matching and the source objects stay unchanged.
-  function withPriceBasis(points, context, basis) {
-    if (basis !== 'firstMonth') return points;
-    return points.map(point => {
-      if (point.billingMode !== 'subscription') return point;
-      const plan = context.planBySlug.get(point.planSlug);
-      if (!known(plan?.firstMonthPrice)) return point;
-      const unit = point.unitPriceCnyPerM;
-      const value = known(unit) && known(plan.monthlyPrice)
-        ? plan.monthlyPrice > 0 ? unit * plan.firstMonthPrice / plan.monthlyPrice
-          : plan.firstMonthPrice === 0 ? unit : null
-        : null;
-      return {...point, unitPriceCnyPerM:value, unitPriceBasis:'firstMonth', firstMonthPrice:plan.firstMonthPrice};
-    });
-  }
   function cycleSort(sort, key) {
     if (sort.key !== key) return {key, direction:'asc'};
     return sort.direction === 'asc' ? {key, direction:'desc'} : {key:'unitPriceCnyPerM', direction:'asc'};
@@ -50,5 +33,5 @@
     const page = Math.max(0, Math.min(pages - 1, index));
     return {page, pages, rows:[...fixed, ...normal.slice(page * size, (page + 1) * size)]};
   }
-  return {pinKey, withPriceBasis, cycleSort, sanitizePins, readPins, writePins, search, tableRows, paginate};
+  return {pinKey, cycleSort, sanitizePins, readPins, writePins, search, tableRows, paginate};
 });

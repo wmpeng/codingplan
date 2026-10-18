@@ -17,6 +17,7 @@
   const setModelsExpanded = UI.setModelsExpanded;
   function card(item,state) {
     const api=item.plan.billingMode==='payg', unit=state.tokenUnit;
+    const unitPrice = row => E.comparisonUnitPrice(row.usage?.unitPriceCnyPerM,item.plan,E.displayPriceBasis());
     const estimateColumn=api && state.monthlyTokenRange != null;
     const estimates=new Map((item.apiEstimates || []).map(value=>[value.relationSlug,value.cost]));
     const estimatedRange=api ? Numbers.range((item.apiEstimates || [{cost:item.cost}]).map(value=>value.cost),money,value=>Numbers.monthlyFee(value,'')) : null;
@@ -28,7 +29,7 @@
       const inlineTimeTier=row.timeTier && !row.serviceTier && !row.contextTier;
       const name=esc(model?.name || row.modelSlug), tier=tiers?`<small${inlineTimeTier?' class="offer-time-tier"':''}>${esc(tiers)}</small>`:'';
       const label=inlineTimeTier?`<span class="offer-model-with-time"><span>${name}</span>${tier}</span>`:name+tier;
-      const price=row.usage?.unitPriceCnyPerM;
+      const price=unitPrice(row);
       const amount=row.usage?.monthlyTokenInM;
       const amountCell=api && !estimateColumn ? '' : `<td>${estimateColumn?esc(Numbers.monthlyFee(estimates.get(row.slug),'¥','费用未知')):typeof amount==='number'?esc(tokenAmount(amount,unit)):esc(quota(amount,unit,false))}</td>`;
       return `<tr><th scope="row">${label}</th>${amountCell}<td>${esc(Numbers.tokenPrice(price,unit,'单价未知'))}</td></tr>`;
@@ -40,7 +41,7 @@
     const rangeText=Numbers.range(item.rows.map(r=>r.usage?.monthlyTokenInM),v=>tokenAmount(v,unit));
     const unlimited=item.rows.some(r=>r.usage?.monthlyTokenInM==='unlimited');
     const range=rangeText!==null ? `${rangeText} ${unitLabel(unit)}`+(unlimited?'～不限量':'') : unlimited?'不限量':'额度未知';
-    const priceRange=Numbers.range(item.rows.map(r=>r.usage?.unitPriceCnyPerM),v=>Numbers.tokenPrice(v,unit),v=>Numbers.unitPrice(v*Numbers.tokenFactor(unit),''));
+    const priceRange=Numbers.range(item.rows.map(unitPrice),v=>Numbers.tokenPrice(v,unit),v=>Numbers.unitPrice(v*Numbers.tokenFactor(unit),''));
     const originalPrice=!api && !['¥','CNY','RMB','￥'].includes(item.plan.currency || '¥') && typeof item.plan.monthlyPrice==='number' ? `<div class="offer-original-price" title="人民币金额按站内汇率折算，仅供参考。">${esc(Numbers.monthlyFee(item.plan.monthlyPrice,item.plan.currency))} / 月</div>` : '';
     const quotaSummary=`<summary class="offer-quota-summary is-compact${range==='额度未知'?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota"><span class="offer-summary-label">月额度 </span><span class="offer-summary-value">${esc(range)}</span></span>${priceRange!==null?`<span class="offer-summary-price" aria-hidden="true"><span class="offer-summary-label">单价 </span><span class="offer-summary-value">${esc(priceRange)} /${unitLabel(unit)}</span></span>`:''}</span></summary>`;
     const unknownPrices=item.rows.some(row=>Numbers.finite(row.usage?.unitPriceCnyPerM)===null);
@@ -132,6 +133,7 @@
       setModelsExpanded(button,expanded);
     });
     globalThis.addEventListener('codingplan:filters-changed',e=>{if(!e.detail.full)render();});
+    globalThis.addEventListener('codingplan:price-basis-changed',render);
     globalThis.addEventListener('codingplan:guide-advice',e=>{if(advice!==e.detail){advice=e.detail;render();}});
     render();
   }

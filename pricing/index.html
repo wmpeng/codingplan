@@ -10,9 +10,9 @@
   <title>AI 模型价格与额度对比 - Coding Plan</title>
 <meta name="description" content="完整对比 AI 编程模型在不同平台套餐和按量 API 下的价格、额度、综合单价与能力评分。">
   <link rel="canonical" href="https://codingplan.fyi/pricing/">
-  <link rel="icon" href="/favicon.ico?v=260924a"><link rel="stylesheet" href="/styles/shared.css?v=482edb170c"><link rel="stylesheet" href="/styles/tool-page.css?v=1688597461"><link rel="stylesheet" href="/styles/homepage-filters.css?v=5ad71c5479"><link rel="stylesheet" href="/styles/model-comparison.css?v=ca581da716">
+  <link rel="icon" href="/favicon.ico?v=260924a"><link rel="stylesheet" href="/styles/shared.css?v=482edb170c"><link rel="stylesheet" href="/styles/tool-page.css?v=1688597461"><link rel="stylesheet" href="/styles/homepage-filters.css?v=5ad71c5479"><link rel="stylesheet" href="/styles/model-comparison.css?v=4ce3f29f93">
 <link rel="stylesheet" href="/styles/home-discovery.css?v=a1f57ba7bb"><link rel="stylesheet" href="/styles/design-system.css?v=8b40812952">
-<script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
+<script src="/scripts/site-navigation.js?v=58bc3a8bab" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
 <link rel="stylesheet" href="/styles/ui-components.css?v=bf5f1551fa">
 <link rel="stylesheet" href="/styles/ui-help.css?v=bbe06c6ef7">
@@ -48,6 +48,13 @@
             <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
           </div>
         </div>
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="priceBasisLabel">综合单价口径</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="priceBasisLabel" title="首月价缺失时使用每月价格；按量 API 报价和 Token 额度不变。">
+            <button type="button" data-settings-price-basis="firstMonth" aria-pressed="true">首月价格</button>
+            <button type="button" data-settings-price-basis="monthly" aria-pressed="false">每月价格</button>
+          </div>
+        </div>
         <div class="settings-toggle-row">
           <label for="ultraWideToggle">超宽屏</label>
           <label class="toggle-switch">
@@ -61,15 +68,15 @@
 </header>
 <!-- SITE_NAV_END -->
 <main class="tool-page-main">
-    <header class="tool-hero"><div><h1>模型价格与额度对比</h1><p>按平台、套餐和模型筛选，对比人民币价格、Token 额度与模型评分。</p></div><div class="pricing-hero-actions"><div class="pricing-basis"><span>综合单价口径</span><div class="usage-segments" role="group" aria-label="综合单价计算价格" title="首月价缺失时使用每月价格；按量 API 报价和 Token 额度不变。"><button type="button" data-price-basis="monthly" aria-pressed="true" disabled>每月价格</button><button type="button" data-price-basis="firstMonth" aria-pressed="false" disabled>首月价格</button></div></div><a class="tool-button" href="/plans/">查看套餐表 →</a></div></header>
+    <header class="tool-hero"><div><h1>模型价格与额度对比</h1><p>按平台、套餐和模型筛选，对比人民币价格、Token 额度与模型评分。</p></div><a class="tool-button" href="/plans/">查看套餐表 →</a></header>
     <section id="featuredPricing" class="discovery-section" aria-label="精选模型价格与用量"><div id="pricingPresets"></div></section>
     <h2 id="priceExplorerHeading">按条件探索全部价格</h2><p class="comparison-method">以下筛选仅影响图表与数据明细，上方精选对比独立展示。</p>
     <div id="toolFilters" aria-label="筛选条件"><p class="tool-filter-loading" role="status">正在加载筛选条件…</p></div>
     <section id="pricingPage"><div class="tool-loading" role="status">正在加载价格与额度…</div></section>
     <footer class="tool-footer"><span>综合单价和 Token 用量是横向参考，未知信息不会被补成估算值。</span><a href="/">返回首页</a></footer>
   </main>
-<script src="/scripts/entity-data.js?v=252de7b6a1"></script><script src="/scripts/number-display.js?v=6c6a6ccb42"></script>
+<script src="/scripts/entity-data.js?v=ad29152ae8"></script><script src="/scripts/number-display.js?v=6c6a6ccb42"></script>
 <script src="/scripts/filter-state.js?v=a55349a381"></script><script src="/scripts/ui-single-select.js?v=09370d929b"></script>
-<script src="/scripts/homepage-filters.js?v=1acc7b65c0"></script><script src="/scripts/tool-page.js?v=fbb793f0db"></script><script src="/scripts/model-comparison.js?v=4b86156223"></script><script src="/scripts/featured-catalog.js?v=045285bd17"></script><script src="/scripts/pricing-directory.js?v=5339a3e971"></script><script src="/scripts/pricing-page.js?v=922a724997"></script>
+<script src="/scripts/homepage-filters.js?v=1acc7b65c0"></script><script src="/scripts/tool-page.js?v=fbb793f0db"></script><script src="/scripts/model-comparison.js?v=dd5cbb95a6"></script><script src="/scripts/featured-catalog.js?v=1e46ddc42f"></script><script src="/scripts/pricing-directory.js?v=6035e15c7e"></script><script src="/scripts/pricing-page.js?v=68b810c671"></script>
 </body>
 </html>

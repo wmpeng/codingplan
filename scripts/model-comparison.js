@@ -818,7 +818,8 @@
             context.modelGroups = presetConfig.groups || [];
             const rate = root.appConfig && root.appConfig.usdToCnyRate || 6.8;
             const originalPoints = root.EntityData.buildComparisonPoints(context, rate, { includeUnknown: true });
-            let points = originalPoints, priceBasis = 'monthly';
+            let priceBasis = root.EntityData.displayPriceBasis();
+            let points = root.EntityData.withComparisonPriceBasis(originalPoints,context,priceBasis);
             let pins = Directory ? Directory.readPins(root.localStorage, points) : [];
             let tableRenderKey = '', selectionKey = '', pageIndex = 0;
             const search = mountOptions.search;
@@ -845,11 +846,6 @@
             enableClickPinnedTooltip(usageChart);
             enableClickPinnedTooltip(intelligenceChart);
             container.__usageCharts = [usageChart, intelligenceChart];
-            container.__usageSetPriceBasis = basis => {
-                priceBasis = basis === 'firstMonth' ? 'firstMonth' : 'monthly';
-                points = Directory.withPriceBasis(originalPoints, context, priceBasis);
-                render();
-            };
             const tableSortState = {
                 comparison: { key: 'unitPriceCnyPerM', direction: 'asc' }
             };
@@ -1222,9 +1218,12 @@
             root.addEventListener('codingplan:filters-changed', onSharedFilterChange);
             const onTokenUnitChange = event => { if(state.tokenUnit === event.detail.tokenUnit)return; state.tokenUnit = event.detail.tokenUnit; render(); };
             root.addEventListener('codingplan:token-unit-changed', onTokenUnitChange);
+            const onPriceBasisChange = () => { priceBasis=root.EntityData.displayPriceBasis(); points=root.EntityData.withComparisonPriceBasis(originalPoints,context,priceBasis); render(); };
+            root.addEventListener('codingplan:price-basis-changed',onPriceBasisChange);
             container.__usageCleanup = () => {
                 root.removeEventListener('codingplan:filters-changed', onSharedFilterChange);
                 root.removeEventListener('codingplan:token-unit-changed', onTokenUnitChange);
+                root.removeEventListener('codingplan:price-basis-changed',onPriceBasisChange);
             };
             container.querySelector('[data-model-search]').addEventListener('input', (event) => {
                 const query = event.target.value.trim().toLocaleLowerCase('zh-CN');

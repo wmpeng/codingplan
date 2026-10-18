@@ -1,15 +1,16 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const D = require('./pricing-directory.js');
+const E = require('./entity-data.js');
 const M = require('./model-comparison.js');
 
 test('首月综合单价按售价比例换算，原始精度、常规月费与额度不变', () => {
   const context={planBySlug:new Map([['p',{monthlyPrice:100,firstMonthPrice:25}]])};
   const points=[{slug:'r',planSlug:'p',billingMode:'subscription',monthlyFeeCny:680,unitPriceCnyPerM:.234567,monthlyTokenInM:2900}];
-  const before=structuredClone(points),first=D.withPriceBasis(points,context,'firstMonth');
+  const before=structuredClone(points),first=E.withComparisonPriceBasis(points,context,'firstMonth');
   assert.ok(Math.abs(first[0].unitPriceCnyPerM-.234567/4)<1e-14);
   assert.equal(first[0].monthlyFeeCny,680);assert.equal(first[0].monthlyTokenInM,2900);
-  assert.deepEqual(points,before);assert.equal(D.withPriceBasis(points,context,'monthly'),points);
+  assert.deepEqual(points,before);assert.equal(E.withComparisonPriceBasis(points,context,'monthly'),points);
 });
 
 test('首月缺省回退、真实零、未知月价及 API 不相互混淆', () => {
@@ -18,7 +19,7 @@ test('首月缺省回退、真实零、未知月价及 API 不相互混淆', () 
   const points=plans.map(([slug])=>({slug,planSlug:slug,billingMode:'subscription',unitPriceCnyPerM:slug==='zero'?0:1}));
   points.push({slug:'api',billingMode:'payg',unitPriceCnyPerM:5,apiPricing:{inputPerM:6}});
   points.push({slug:'unknownUsage',planSlug:'free',billingMode:'subscription',unitPriceCnyPerM:null});
-  const first=D.withPriceBasis(points,context,'firstMonth');
+  const first=E.withComparisonPriceBasis(points,context,'firstMonth');
   assert.equal(first[0],points[0]);assert.equal(first[1].unitPriceCnyPerM,0);
   assert.equal(first[2].unitPriceCnyPerM,null);assert.equal(first[3].unitPriceCnyPerM,0);
   assert.equal(first[4],points[4]);assert.equal(first[5].unitPriceCnyPerM,null);

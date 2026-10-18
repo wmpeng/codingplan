@@ -3,6 +3,23 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const EntityData = require('./entity-data.js');
 
+test('display price basis defaults to first month without changing the regular source points', () => {
+  const E=require('./entity-data.js'),saved=globalThis.CodingPlanDisplaySettings;
+  try {
+    delete globalThis.CodingPlanDisplaySettings;
+    assert.equal(E.displayPriceBasis(),'firstMonth');
+    globalThis.CodingPlanDisplaySettings={getPriceBasis:()=> 'monthly'};
+    assert.equal(E.displayPriceBasis(),'monthly');
+    const plan={billingMode:'subscription',monthlyPrice:100,firstMonthPrice:25};
+    assert.equal(E.comparisonUnitPrice(2,plan,'firstMonth'),.5);
+    assert.equal(E.comparisonUnitPrice(2,plan,'monthly'),2);
+    assert.equal(E.comparisonUnitPrice(2,{...plan,billingMode:'payg'},'firstMonth'),2);
+    assert.equal(plan.monthlyPrice,100);
+  } finally {
+    if(saved===undefined)delete globalThis.CodingPlanDisplaySettings;else globalThis.CodingPlanDisplaySettings=saved;
+  }
+});
+
 test('nested public plans unfold parent identities without changing the document', () => {
   const platforms = {schemaVersion:1,platforms:[{slug:'platform-a'}]};
   const models = {schemaVersion:1,models:[{slug:'model-a'}]};

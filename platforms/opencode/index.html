@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="/styles/platform-guide.css?v=6ee31eb37a">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://codingplan.fyi/platforms/opencode/","url":"https://codingplan.fyi/platforms/opencode/","name":"OpenCode Go / Go Plus：订阅价格、模型额度与接入指南 - Coding Plan","description":"了解 OpenCode Go / Go Plus 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。","inLanguage":"zh-CN","datePublished":"2026-09-15","dateModified":"2026-10-17","isPartOf":{"@type":"WebSite","name":"Coding Plan","url":"https://codingplan.fyi/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Coding Plan","item":"https://codingplan.fyi/"},{"@type":"ListItem","position":2,"name":"平台介绍","item":"https://codingplan.fyi/platforms/"},{"@type":"ListItem","position":3,"name":"OpenCode Go / Go Plus","item":"https://codingplan.fyi/platforms/opencode/"}]}]}</script>
 <link rel="stylesheet" href="/styles/design-system.css?v=8b40812952">
-<script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
+<script src="/scripts/site-navigation.js?v=58bc3a8bab" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
 <link rel="stylesheet" href="/styles/ui-components.css?v=bf5f1551fa">
 <link rel="stylesheet" href="/styles/ui-help.css?v=bbe06c6ef7">
@@ -62,6 +62,13 @@
             <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
             <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
             <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="priceBasisLabel">综合单价口径</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="priceBasisLabel" title="首月价缺失时使用每月价格；按量 API 报价和 Token 额度不变。">
+            <button type="button" data-settings-price-basis="firstMonth" aria-pressed="true">首月价格</button>
+            <button type="button" data-settings-price-basis="monthly" aria-pressed="false">每月价格</button>
           </div>
         </div>
         <div class="settings-toggle-row">

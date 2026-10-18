@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/styles/platform-comparison.css?v=25c31365bb">
   <link rel="stylesheet" href="/styles/tool-page.css?v=1688597461"><link rel="stylesheet" href="/styles/homepage-filters.css?v=5ad71c5479">
 <link rel="stylesheet" href="/styles/design-system.css?v=8b40812952">
-<script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
+<script src="/scripts/site-navigation.js?v=58bc3a8bab" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
 <link rel="stylesheet" href="/styles/ui-components.css?v=bf5f1551fa">
 <link rel="stylesheet" href="/styles/ui-help.css?v=bbe06c6ef7">
@@ -52,6 +52,13 @@
             <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
             <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
             <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="priceBasisLabel">综合单价口径</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="priceBasisLabel" title="首月价缺失时使用每月价格；按量 API 报价和 Token 额度不变。">
+            <button type="button" data-settings-price-basis="firstMonth" aria-pressed="true">首月价格</button>
+            <button type="button" data-settings-price-basis="monthly" aria-pressed="false">每月价格</button>
           </div>
         </div>
         <div class="settings-toggle-row">
@@ -944,7 +951,7 @@
   </main>
   <div id="platformDetailOverlay" class="platform-detail-overlay" hidden><div class="platform-detail-backdrop" data-platform-detail-close="1"></div><div class="platform-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="platformDetailTitle" tabindex="-1"><button type="button" class="platform-detail-close" id="platformDetailClose" aria-label="关闭">×</button><div id="platformDetailBody"></div></div></div>
   <script src="/monitor/monitor-config.js"></script>
-<script src="/scripts/entity-data.js?v=252de7b6a1"></script><script src="/scripts/number-display.js?v=6c6a6ccb42"></script>
+<script src="/scripts/entity-data.js?v=ad29152ae8"></script><script src="/scripts/number-display.js?v=6c6a6ccb42"></script>
 <script src="/scripts/filter-state.js?v=a55349a381"></script><script src="/scripts/ui-single-select.js?v=09370d929b"></script>
 <script src="/scripts/homepage-filters.js?v=1acc7b65c0"></script><script src="/scripts/tool-page.js?v=fbb793f0db"></script>
 

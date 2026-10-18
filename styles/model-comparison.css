@@ -243,18 +243,14 @@
 .usage-detail-tools { display: flex; gap: 6px; align-items: center; margin-left: auto; }
 .usage-detail-tools .single-select-picker > summary { min-height: 36px; font-size: 12px; }
 .usage-detail-tools .price-sort-direction { min-width: 36px; min-height: 36px; padding: 0 10px; }
-.pricing-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: flex-end; }
-.pricing-basis { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; color: var(--text-secondary); font-size: 12px; }
-.pricing-basis .usage-segments button[aria-pressed="true"] { color: var(--accent-primary); background: #fff; box-shadow: 0 1px 3px #17203318; }
 .pricing-directory .usage-chart-head .single-select-picker > summary { min-height: 36px; font-size: 12px; }
 .price-pagination { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 14px; color: var(--text-secondary); font-size: 12px; }
 .price-pagination[hidden] { display: none; }
 .usage-chart-head .price-pagination { flex-basis: 100%; justify-content: flex-end; margin-top: 0; }
 .price-pagination button { min-height: 36px; font-size: 12px; }
 @media (max-width: 760px) {
-  .pricing-hero-actions { justify-content: flex-start; }
   .pricing-directory .usage-chart-head { display: flex; flex-wrap: wrap; }
   .usage-detail-tools { margin-left: 0; }
+  .usage-detail-tools .price-sort-direction { min-height: 44px; }
   .pricing-directory .usage-chart-head .usage-table-count { margin-top: 0; }
-  .pricing-basis .usage-segments button, .usage-detail-tools .price-sort-direction { min-height: 44px; }
 }

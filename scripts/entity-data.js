@@ -174,6 +174,29 @@
       .filter((group) => group.rows.length > 0);
   }
 
+  function displayPriceBasis() {
+    return globalThis.CodingPlanDisplaySettings?.getPriceBasis?.() === 'monthly' ? 'monthly' : 'firstMonth';
+  }
+
+  function comparisonUnitPrice(value, plan, basis = 'monthly') {
+    const known = value => typeof value === 'number' && Number.isFinite(value) && value >= 0;
+    if (basis !== 'firstMonth' || plan?.billingMode === 'payg' || !known(plan?.firstMonthPrice)) return value;
+    if (!known(value) || !known(plan.monthlyPrice)) return null;
+    if (plan.monthlyPrice > 0) return value * plan.firstMonthPrice / plan.monthlyPrice;
+    return plan.firstMonthPrice === 0 ? value : null;
+  }
+
+  // Start from regular-price source points on every conversion; never compound
+  // discounts or mutate quotas, budget prices, API quotes or entity records.
+  function withComparisonPriceBasis(points, context, basis) {
+    if (basis !== 'firstMonth') return points;
+    return points.map(point => {
+      const plan = context.planBySlug.get(point.planSlug);
+      if (point.billingMode !== 'subscription' || typeof plan?.firstMonthPrice !== 'number' || !Number.isFinite(plan.firstMonthPrice) || plan.firstMonthPrice < 0) return point;
+      return {...point, unitPriceCnyPerM:comparisonUnitPrice(point.unitPriceCnyPerM,plan,basis), unitPriceBasis:'firstMonth',firstMonthPrice:plan.firstMonthPrice};
+    });
+  }
+
   function buildComparisonPoints(context, usdToCnyRate, options) {
     const points = [];
     const displayNumber = value => options?.includeUnknown && value === 0 ? 0 : positiveNumber(value);
@@ -233,7 +256,7 @@
         note: relation.note
       });
     }
-    return points;
+    return withComparisonPriceBasis(points, context, options?.priceBasis);
   }
 
   function catalogCounts(context) {
@@ -266,6 +289,9 @@
     listPlatforms,
     buildPlanCatalog,
     buildApiPricingGroups,
-    buildComparisonPoints
+    buildComparisonPoints,
+    displayPriceBasis,
+    comparisonUnitPrice,
+    withComparisonPriceBasis
   };
 });
