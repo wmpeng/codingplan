@@ -15,11 +15,7 @@
     const query = String(options.query || '').trim().toLocaleLowerCase('zh-CN');
     const filterOptions = options.filterOptions || {};
     const current = Filters.normalizeState({...state, platformSlugs:null, includeDiscontinued:false});
-    const models = filterOptions.context?.models;
-    if (current.modelMatch === 'any' && models?.length && current.modelSlugs?.length) {
-      const selected = new Set(current.modelSlugs);
-      if (models.every(model => selected.has(model.slug))) current.modelSlugs = null;
-    }
+    current.modelSlugs = Filters.catalogModelSelection(current.modelSlugs, current.modelMatch, filterOptions.context?.models);
     // Only offer-specific conditions require an active plan; catalog browsing does not.
     const requireMatchingOffer = !!(current.budgetCny || current.monthlyTokenRange || current.apiOnly
       || (current.modelMatch === 'all' && current.modelSlugs?.length)

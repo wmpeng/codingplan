@@ -108,6 +108,14 @@
     return normalizeState(JSON.parse(JSON.stringify(state || {})));
   }
 
+  // Controls distinguish a cleared checklist from select-all. Published business
+  // state keeps its existing normalization: either platform selection is unrestricted.
+  function cloneControlState(state) {
+    const copy = normalizeState(state);
+    if (Array.isArray(state?.platformSlugs) && !state.platformSlugs.length) copy.platformSlugs = [];
+    return copy;
+  }
+
   function readDefaults(config) {
     const configured = config && config.homepageFilters && config.homepageFilters.defaults;
     return normalizeState(configured || DEFAULTS);
@@ -123,6 +131,55 @@
       state.modelSlugs = arrayOrNull((preset.groups || []).flatMap(group => group.modelSlugs || []));
     }
     return state;
+  }
+
+  // One policy owns page defaults and the constraints reapplied after every edit.
+  // constrain mutates the caller-owned control state; it does not change eligibility.
+  function createViewPolicy(options = {}) {
+    const full = options.mode === 'full';
+    const pricing = full && options.view === 'pricing';
+    const plansPage = full && options.view === 'plans';
+    const platformHub = full && options.view === 'platforms';
+    const monitor = full && options.view === 'monitor';
+    const planStatusOnly = plansPage || pricing;
+    const purchaseTool = full && !monitor;
+    function constrain(state) {
+      state.planStatusOnly = planStatusOnly;
+      if (planStatusOnly) {
+        state.platformStatusMax = 'delisted';
+        state.excludedPlatformStatuses = [];
+      } else state.excludedPlanStatuses = [];
+      state.imageRequired = false;
+      if (plansPage) state.apiOnly = false;
+      else state.harnessApiRequired = false;
+      if (platformHub) {
+        state.platformSlugs = null;
+        state.includeDiscontinued = false;
+        state.domesticNetworkOnly = state.domesticPaymentOnly = state.domesticNetworkOnly || state.domesticPaymentOnly;
+      } else {
+        state.domesticNetworkOnly = false;
+        state.domesticPaymentOnly = false;
+      }
+      if (!full) {
+        state.includeDiscontinued = false;
+        state.platformStatusMax = 'restricted';
+      }
+      return state;
+    }
+    function createDefaults(config, tokenUnit = 'yi') {
+      const state = createDefaultState(config, {mode:full ? 'full' : 'home'});
+      state.platformSlugs = plansPage ? [] : null;
+      state.modelSlugs = platformHub || plansPage ? [] : null;
+      state.tokenUnit = tokenUnit;
+      state.modelGroup = 'any';
+      state.modelMatch = 'any';
+      if (purchaseTool) {
+        state.platformStatusMax = 'restricted';
+        state.includeDiscontinued = false;
+      }
+      return constrain(state);
+    }
+    return {full, pricing, plansPage, platformHub, monitor, planStatusOnly, purchaseTool, createDefaults, constrain};
   }
 
   function toCny(value, currency, rate) {
@@ -149,6 +206,14 @@
   function selectedMatch(value, selected) {
     if (selected === null || !selected.length) return true;
     return selected.includes(String(value || ''));
+  }
+
+  // Browsing a catalog with every model selected must not require model details.
+  // Explicit "all models in one plan" matching remains a real requirement.
+  function catalogModelSelection(selected, match, models) {
+    if (match === 'all' || !selected?.length || !models?.length) return selected;
+    const slugs = new Set(selected);
+    return models.every(model => slugs.has(model.slug)) ? null : selected;
   }
 
   function platformStatusMatches(platform, state) {
@@ -209,11 +274,7 @@
     const current = normalizeState(state);
     const opts = options || {};
     const rate = opts.usdToCnyRate;
-    const models = opts.context?.models;
-    if (current.planStatusOnly && current.modelMatch === 'any' && current.modelSlugs?.length && models?.length) {
-      const selected = new Set(current.modelSlugs);
-      if (models.every(model => selected.has(model.slug))) current.modelSlugs = null;
-    }
+    if (current.planStatusOnly) current.modelSlugs = catalogModelSelection(current.modelSlugs, current.modelMatch, opts.context?.models);
     const requiresModelRows = !!(current.modelSlugs?.length || current.monthlyTokenRange
       || current.modelGroup !== 'any' || current.imageRequired || current.multimodal !== 'all'
       || current.aaScoreMin !== null || current.deepSWEScoreMin !== null);
@@ -408,8 +469,11 @@
     arrayOrNull,
     normalizeState,
     cloneState,
+    cloneControlState,
     readDefaults,
     createDefaultState,
+    createViewPolicy,
+    catalogModelSelection,
     toCny,
     inRange,
     modelMatch,

@@ -187,14 +187,8 @@
     });
   }
   function mount(options) {
-    const opts = options || {},
-      full = opts.mode === "full",
-      pricing = full && opts.view === "pricing",
-      plansPage = full && opts.view === "plans",
-      planStatusOnly = plansPage || pricing,
-      platformHub = full && opts.view === "platforms",
-      monitor = full && opts.view === "monitor",
-      purchaseTool = full && !monitor;
+    const opts = options || {}, policy = Filters.createViewPolicy(opts);
+    const {full, pricing, plansPage, planStatusOnly, platformHub, monitor, purchaseTool} = policy;
     const host =
       opts.element || document.getElementById("homepageUnifiedFiltersMount");
     const context = opts.context || root.codingplanEntityContext;
@@ -203,24 +197,8 @@
     const config = opts.config || root.appConfig || {};
     const platforms = context.platforms,
       models = context.models;
-    let state = Filters.createDefaultState(config, {
-      mode: full ? "full" : "home",
-    });
-    state.platformSlugs = plansPage ? [] : null;
-    state.modelSlugs = platformHub || plansPage ? [] : null;
-    state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || "yi";
-    state.modelGroup = "any";
-    state.modelMatch = "any";
-    if (purchaseTool) {
-      state.platformStatusMax = "restricted";
-      state.includeDiscontinued = false;
-    }
-    if (planStatusOnly) {
-      state.planStatusOnly = true;
-      state.platformStatusMax = "delisted";
-      state.excludedPlatformStatuses = [];
-    }
-    const defaults = {...Filters.cloneState(state), platformSlugs:state.platformSlugs?.slice() ?? null};
+    let state = policy.createDefaults(config, root.CodingPlanDisplaySettings?.getTokenUnit() || "yi");
+    const defaults = Filters.cloneControlState(state);
     let featuredOnly = false;
     if (opts.featuredPreset) {
       context.modelGroups = opts.featuredPreset.groups || [];
@@ -267,7 +245,7 @@
     const canRestoreDefaults = () => groupsReady && featuredPlatforms().length > 0 && presetSlugs("featured").length > 0;
     function resetFilters(featured = false) {
       if (featured && !canRestoreDefaults()) return false;
-      state = {...Filters.cloneState(defaults), platformSlugs:defaults.platformSlugs?.slice() ?? null};
+      state = Filters.cloneControlState(defaults);
       if (platformHub) featuredOnly = false;
       if (featured) {
         state.platformSlugs = featuredPlatforms();
@@ -375,13 +353,11 @@
           if (!slugs.length) return;
           patch = {...patch, modelSlugs:slugs, modelMatch:"any", modelGroup:"any"};
         }
-        const merged = { ...state, ...patch, modelGroup: "any", imageRequired: false, ...(!platformHub ? {domesticNetworkOnly:false, domesticPaymentOnly:false} : {platformSlugs:null}) };
+        const merged = { ...state, ...patch, modelGroup: "any", imageRequired: false };
         if (platformHub && (patch.domesticNetworkOnly !== undefined || patch.domesticPaymentOnly !== undefined)) {
           merged.domesticNetworkOnly = merged.domesticPaymentOnly = patch.domesticNetworkOnly === true || patch.domesticPaymentOnly === true;
         }
-        state = Filters.normalizeState(merged);
-        // Retain the cleared checklist; its existing business meaning remains unrestricted.
-        if (Array.isArray(merged.platformSlugs) && !merged.platformSlugs.length) state.platformSlugs = [];
+        state = Filters.cloneControlState(merged);
         // Translate legacy network/payment requests into visible picks, never hidden flags.
         const legacyKinds = Object.keys(platformShortcutKinds).filter(kind => patch[platformShortcutKinds[kind].legacy] === true);
         let platformNotice = "";
@@ -585,29 +561,10 @@
       positionSelectionPanels();
     }
     function publish(source = "manual") {
-      state.planStatusOnly = planStatusOnly;
-      if (planStatusOnly) {
-        state.platformStatusMax = "delisted";
-        state.excludedPlatformStatuses = [];
-      } else state.excludedPlanStatuses = [];
+      policy.constrain(state);
       if (!["init", "catalog", "display"].includes(source)) initialPresetPending = false;
-      state.imageRequired = false;
-      if (plansPage) state.apiOnly = false;
-      else state.harnessApiRequired = false;
-      if (!platformHub) {
-        state.domesticNetworkOnly = false;
-        state.domesticPaymentOnly = false;
-      } else {
-        state.platformSlugs = null;
-        state.includeDiscontinued = false;
-        state.domesticNetworkOnly = state.domesticPaymentOnly = state.domesticNetworkOnly || state.domesticPaymentOnly;
-      }
       multimodalNotice = "";
       platformShortcutNotice = "";
-      if (!full) {
-        state.includeDiscontinued = false;
-        state.platformStatusMax = "restricted";
-      }
       pendingAll = false;
       state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || state.tokenUnit;
       const clean = Filters.cloneState(state);
