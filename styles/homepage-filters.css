@@ -421,7 +421,7 @@ body .filter-picker-menu .filter-picker-tools {
 }
 /* 所有筛选弹层的文字操作共用一个基础样式；刻度、说明图标和单选列表保留各自语义。 */
 body :is(.filter-picker-menu .filter-picker-tools button,
-  .model-multimodal-select, .platform-shortcut-actions button, .filter-picker-menu .model-preset-error button,
+  .model-multimodal-select, .filter-picker-menu .model-preset-error button,
   .filter-picker-menu .model-match-confirm button) {
   display: inline-flex;
   align-items: center;
@@ -442,24 +442,24 @@ body :is(.filter-picker-menu .filter-picker-tools button,
   transition: background .15s, border-color .15s, color .15s;
 }
 body :is(.filter-picker-menu .filter-picker-tools button,
-  .model-multimodal-select, .platform-shortcut-actions button, .filter-picker-menu .model-preset-error button,
+  .model-multimodal-select, .filter-picker-menu .model-preset-error button,
   .filter-picker-menu .model-match-confirm button):hover:not(:disabled) {
   background: var(--bg-secondary);
   border-color: var(--border-strong);
   color: var(--text-primary);
 }
 body :is(.filter-picker-menu .filter-picker-tools button,
-  .model-multimodal-select, .platform-shortcut-actions button, .filter-picker-menu .model-preset-error button,
+  .model-multimodal-select, .filter-picker-menu .model-preset-error button,
   .filter-picker-menu .model-match-confirm button):active:not(:disabled) { background: var(--bg-tertiary); }
 body :is(.filter-picker-menu .filter-picker-tools button,
-  .model-multimodal-select, .platform-shortcut-actions button, .filter-picker-menu .model-preset-error button,
+  .model-multimodal-select, .filter-picker-menu .model-preset-error button,
   .filter-picker-menu .model-match-confirm button):focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
 body :is(.filter-picker-menu .filter-picker-tools button,
-  .model-multimodal-select, .platform-shortcut-actions button, .filter-picker-menu .model-preset-error button,
+  .model-multimodal-select, .filter-picker-menu .model-preset-error button,
   .filter-picker-menu .model-match-confirm button):disabled { opacity: .5; cursor: not-allowed; }
 @media (max-width: 800px), (pointer: coarse) {
   body :is(.filter-picker-menu .filter-picker-tools button,
-    .model-multimodal-select, .platform-shortcut-actions button, .filter-picker-menu .model-preset-error button,
+    .model-multimodal-select, .filter-picker-menu .model-preset-error button,
     .filter-picker-menu .model-match-confirm button) { min-height: 44px; }
 }
 @media (max-width: 800px) {
@@ -517,13 +517,9 @@ body .model-multimodal-tooltip { position: absolute; left: 0; top: calc(100% + 6
 body .model-multimodal-notice { margin: 0 0 10px; color: var(--text-secondary); font-size: 12px; line-height: 1.65; }
 body .model-multimodal-tooltip[hidden], body .model-multimodal-notice[hidden] { display: none !important; }
 /* Platform shortcuts change the checklist; they do not stay active as filters. */
-body .platform-shortcut-tools { position: relative; margin: 0 0 12px; }
-body .platform-shortcut-caption { display: flex; align-items: center; gap: 2px; margin-bottom: 4px; color: var(--text-secondary); font-size: 12px; }
 body .platform-shortcut-help { display: inline-flex; align-items: center; }
-body .platform-shortcut-actions { display: flex; flex-wrap: wrap; gap: 6px; }
-body .platform-shortcut-actions button { flex: 1 1 148px; white-space: normal; }
 @media (max-width: 800px), (pointer: coarse) {
-  body .model-multimodal-select, body .model-multimodal-info, body .platform-shortcut-actions button { min-height: 44px; }
+  body .model-multimodal-select, body .model-multimodal-info { min-height: 44px; }
   body .model-multimodal-info { width: 44px; }
 }
 body .model-match-setting { margin-top: 12px; padding-top: 8px; border-top: 1px solid var(--border-light); }

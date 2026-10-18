@@ -66,11 +66,13 @@
     return `<div class="model-multimodal-tools"><button type="button" class="model-multimodal-select" data-select-multimodal>${escapeHtml(label)}</button><span class="model-multimodal-help"><button type="button" class="model-multimodal-info" data-multimodal-help aria-label="什么是多模态模型" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>${multimodalExplanation}</span></span></div><p class="model-multimodal-notice" data-multimodal-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
   }
   const platformShortcutKinds = {
+    mainland: { fields: ["requiresOverseasNetwork", "requiresOverseasPayment"], label: "支持中国大陆" },
+    // Keep old controller calls translatable; only mainland is rendered.
     network: { field: "requiresOverseasNetwork", label: "境内可用平台", legacy: "domesticNetworkOnly" },
     payment: { field: "requiresOverseasPayment", label: "境内可购买平台", legacy: "domesticPaymentOnly" },
   };
   function platformShortcutControls(id, labels = {}, notice = "") {
-    return `<div class="platform-shortcut-tools"><div class="platform-shortcut-caption"><span>快捷选择</span><span class="platform-shortcut-help"><button type="button" class="model-multimodal-info" data-platform-help aria-label="平台快捷选择说明" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>境内可用：平台服务无需境外网络，不保证工具账号和安装也无此要求。境内可购买：有境内支付途径，不表示当前一定开放购买。<br>有不符合项时，仅保留已选中的符合平台；否则（包括未勾选时）选择全部符合平台。未确认项不算符合。<br>两个操作独立判断，点击“全部”可能重新加入另一操作排除的平台；只改变勾选，不持续筛选。</span></span></div><div class="platform-shortcut-actions" role="group" aria-label="平台快捷选择">${Object.entries(platformShortcutKinds).map(([kind, {label}]) => `<button type="button" data-platform-shortcut="${kind}">${escapeHtml(labels[kind] || `全部${label}`)}</button>`).join("")}</div></div><p class="model-multimodal-notice" data-platform-shortcut-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
+    return `<div class="platform-shortcut-tools model-multimodal-tools"><button type="button" class="model-multimodal-select" data-platform-shortcut="mainland">${escapeHtml(labels.mainland || platformShortcutKinds.mainland.label)}</button><span class="platform-shortcut-help"><button type="button" class="model-multimodal-info" data-platform-help aria-label="支持中国大陆说明" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>同时确认平台服务无需境外网络且有境内支付途径；未确认项不计入。不保证工具账号和安装也无境外网络要求，也不表示当前一定开放购买。<br>有不符合项时，仅保留已选中的符合平台；否则（包括未勾选时）选择全部符合平台。只改变勾选，不持续筛选。</span></span></div><p class="model-multimodal-notice" data-platform-shortcut-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
   }
   function bindSelectionHelp(host) {
     const helpSelector = '[data-multimodal-help], [data-platform-help]';
@@ -205,12 +207,12 @@
       context.featuredPlatformSlugs = opts.featuredPreset.platformSlugs || [];
     }
     let groupsReady = Array.isArray(context.modelGroups), initialPresetPending = !full || pricing, pendingAll = false, multimodalNotice = "", platformShortcutNotice = "";
-    const platformCandidates = kind => platforms.filter(platform => platform[platformShortcutKinds[kind].field] === false).map(platform => platform.slug);
+    const platformCandidates = kind => platforms.filter(platform => (platformShortcutKinds[kind].fields || [platformShortcutKinds[kind].field]).every(field => platform[field] === false)).map(platform => platform.slug);
     function platformShortcutAction(kind) {
       const eligible = platformCandidates(kind);
       const selected = state.platformSlugs === null ? platforms.map(platform => platform.slug) : state.platformSlugs;
       const retain = selected.some(slug => !eligible.includes(slug));
-      return { label: `${retain ? "仅保留" : "全部"}${platformShortcutKinds[kind].label}`, slugs: retain ? selected.filter(slug => eligible.includes(slug)) : eligible };
+      return { label: kind === "mainland" ? platformShortcutKinds.mainland.label : `${retain ? "仅保留" : "全部"}${platformShortcutKinds[kind].label}`, slugs: retain ? selected.filter(slug => eligible.includes(slug)) : eligible };
     }
     function selectPlatformShortcut(kind, source = "manual") {
       if (!Object.hasOwn(platformShortcutKinds, kind)) return false;
@@ -359,7 +361,7 @@
         }
         state = Filters.cloneControlState(merged);
         // Translate legacy network/payment requests into visible picks, never hidden flags.
-        const legacyKinds = Object.keys(platformShortcutKinds).filter(kind => patch[platformShortcutKinds[kind].legacy] === true);
+        const legacyKinds = Object.keys(platformShortcutKinds).filter(kind => platformShortcutKinds[kind].legacy && patch[platformShortcutKinds[kind].legacy] === true);
         let platformNotice = "";
         if (!platformHub && legacyKinds.length) {
           const selected = state.platformSlugs?.length ? state.platformSlugs : platforms.map(platform => platform.slug);
