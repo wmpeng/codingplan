@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-19T11:13:23Z",
+  "generatedAt": "2026-10-19T11:16:28Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -112,19 +112,6 @@
             "unit": "积分"
           },
           "note": "高峰时段按基础系数 1 倍；基础 2.3/0.56/8（每万 token 积分）折 per K"
-        },
-        {
-          "slug": "zhipu-token-lite--glm-5-3",
-          "modelSlug": "glm-5-3",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "unknown",
-          "usage": {
-            "monthlyTokenInM": "unknown"
-          },
-          "pricing": null,
-          "note": null
         }
       ]
     },
@@ -146,19 +133,6 @@
       "note": "连续包月为常规月价；连续包季8折、连续包年7折，按整季或整年付款，折算月价不代表可按月付款。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。",
       "planStatus": "open",
       "planModels": [
-        {
-          "slug": "zhipu-token-pro--glm-5-3",
-          "modelSlug": "glm-5-3",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "unknown",
-          "usage": {
-            "monthlyTokenInM": "unknown"
-          },
-          "pricing": null,
-          "note": null
-        },
         {
           "slug": "zhipu-token-pro--glm-5-3--gu",
           "modelSlug": "glm-5-3",
@@ -267,19 +241,6 @@
       "note": "连续包月为常规月价；连续包季8折、连续包年7折，按整季或整年付款，折算月价不代表可按月付款。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。",
       "planStatus": "open",
       "planModels": [
-        {
-          "slug": "zhipu-token-max--glm-5-3",
-          "modelSlug": "glm-5-3",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "unknown",
-          "usage": {
-            "monthlyTokenInM": "unknown"
-          },
-          "pricing": null,
-          "note": null
-        },
         {
           "slug": "zhipu-token-max--glm-5-3--gu",
           "modelSlug": "glm-5-3",
