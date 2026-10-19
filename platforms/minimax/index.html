@@ -7,6 +7,8 @@
 <script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
 <script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
 <script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
+<script src="/scripts/change-notices.js?v=cccc8696fe"></script>
+<link rel="stylesheet" href="/styles/change-notices.css?v=fa0f4eba0b">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MiniMax M Plan：套餐价格、模型额度与接入指南 - Coding Plan</title>
@@ -96,10 +98,11 @@
       <div class="guide-monogram" aria-hidden="true">M3.1</div>
     </header>
     <div class="guide-layout">
-      <nav class="guide-toc" aria-label="本页目录"><p>本页内容</p><a href="#overview"><span>01</span>先看是否适合自己</a><a href="#plans"><span>02</span>套餐与价格</a><a href="#models"><span>03</span>支持哪些模型</a><a href="#credits"><span>04</span>用量和额度怎么理解</a><a href="#tools"><span>05</span>接入工具与使用边界</a><a href="#before-buying"><span>06</span>MiniMax 选购时容易混淆的地方</a><a href="#related"><span>07</span>继续比较</a><a href="#sources"><span>08</span>官方资料与记录说明</a></nav>
+      <nav class="guide-toc" aria-label="本页目录"><p>本页内容</p><a href="#overview"><span>01</span>先看是否适合自己</a><a href="#changes"><span>02</span>变更预告</a><a href="#plans"><span>03</span>套餐与价格</a><a href="#models"><span>04</span>支持哪些模型</a><a href="#credits"><span>05</span>用量和额度怎么理解</a><a href="#tools"><span>06</span>接入工具与使用边界</a><a href="#before-buying"><span>07</span>MiniMax 选购时容易混淆的地方</a><a href="#related"><span>08</span>继续比较</a><a href="#sources"><span>09</span>官方资料与记录说明</a></nav>
       <main id="guide-content" class="guide-content"><section id="overview" class="guide-section"><h2>先看是否适合自己</h2><p>MiniMax 当前面向新用户提供 M Plan Go、Explore、Build，包含 MiniMax Code 和可接入其他编程工具的订阅 API Key。MiniMax Code Free 可以有限使用新型号，但没有订阅 API Key。</p>
 <p>适合主要使用 MiniMax 模型、希望按月管理预算的个人用户。若经常切换多家模型，或需要为自建应用购买通用 API，应另外比较对应产品。</p>
 </section>
+<section id="changes" class="guide-section"><h2>变更预告</h2><div class="change-notices" data-change-notices><div class="change-notice is-due" data-change-notice="minimax-token-plan-model-routing-20261019" data-change-date="2026-10-19"><strong>MiniMax 老 Token Plan 模型路由调整</strong><span class="change-notice-time">2026-10-19 · 生效情况待确认</span><span>M2.5 / M2.7 请求：原型号入口 → 路由至 M3.1 Flash Preview，原名称保留为兼容入口</span><span class="change-notice-audience">适用：仍在自动续费的老 Token Plan 用户</span><span class="change-notice-scope">涉及：MiniMax · 老Token Plan Plus、MiniMax · 老Token Plan Max、MiniMax · 老Token Plan Ultra</span><a href="/updates/#change-minimax-token-plan-model-routing-20261019">查看详情 →</a></div></div></section>
 <section id="plans" class="guide-section"><h2>套餐与价格</h2><div class="guide-plan-grid"><article class="guide-plan">
     <h3>M Plan Go</h3><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span><p class="guide-price">¥49<small>/ 月</small></p>
     <dl><div><dt>首月优惠</dt><dd>¥25</dd></div><div><dt>按季支付</dt><dd>未单列</dd></div><div><dt>按年支付</dt><dd>¥490</dd></div></dl>

@@ -15,6 +15,7 @@
   }
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (PlatformCatalog, EntityData, Numbers) {
   const DEFAULT_MONITOR_API_BASE = 'https://api.dreamfree.space/vc';
+  const Notices = globalThis.ChangeNotices || (typeof require==='function' ? require('./change-notices.js') : null);
 
   let options = {
     getPlans: () => [],
@@ -450,6 +451,7 @@
       `</div>` +
       `</header>` +
       overviewHtml +
+      (Notices?.section(context.entityContext?.changes,platformId) ? `<section class="platform-detail-section" data-section="changes"><h3 class="platform-detail-section-title">变更预告</h3>${Notices.section(context.entityContext?.changes,platformId)}</section>` : '') +
       `<section class="platform-detail-section" data-section="dimensions" aria-labelledby="platformDetailDimsHeading">` +
       `<h3 id="platformDetailDimsHeading" class="platform-detail-section-title">评价详解</h3>` +
       `<ul class="platform-detail-dimensions">${dims}</ul>` +

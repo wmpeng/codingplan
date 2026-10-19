@@ -8,6 +8,7 @@
     const EntityData = root.EntityData || (typeof require === 'function' ? require('./entity-data.js') : null);
     const UI = root.CodingPlanUI || (typeof require === 'function' ? require('./ui-core.js') : null);
     const Numbers = root.NumberDisplay || (typeof require === 'function' ? require('./number-display.js') : null);
+    const Notices = root.ChangeNotices || (typeof require === 'function' ? require('./change-notices.js') : null);
 
     const BENCHMARKS = {
         artificialAnalysis: { label: 'AA 智力', short: 'AA' },
@@ -517,6 +518,7 @@
     }
 
     function comparisonTableRowHtml(point, tokenUnit, visualOptions) {
+        const notice = key => Notices.forField(visualOptions?.changes,{...point,type:'point'},key,{seen:visualOptions?.noticeSeen});
         const subscription = point.billingMode === 'subscription';
         const price = subscription ? (point.monthlyFeeCny === 0 ? '¥0 / 月' : finitePositive(point.monthlyFeeCny) !== null
             ? formatSubscriptionMonthlyPrice(point) : '未公开') : '按量';
@@ -531,16 +533,16 @@
         const deepSWEInterval = deepSWEScore && Number.isFinite(Number(deepSWEScore.confidenceInterval))
             ? ` ±${formatNumber(deepSWEScore.confidenceInterval, 0)}` : '';
         return `<tr data-point-id="${escapeHtml(point.slug)}"${[visualOptions?.focused ? 'price-focus-row' : '', visualOptions?.pinned ? 'is-pinned' : ''].filter(Boolean).length ? ` class="${[visualOptions?.focused ? 'price-focus-row' : '', visualOptions?.pinned ? 'is-pinned' : ''].filter(Boolean).join(' ')}"` : ''}>` +
-            `<td class="sticky-first" data-comparison-col="vendor">${identity}</td>` +
+            `<td class="sticky-first" data-comparison-col="vendor">${identity}${notice('general')}</td>` +
             (compact ? '' : `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}<div class="plan-capabilities">${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></td>`) +
-            `<td class="numeric">${price}</td>` +
-            `<td class="usage-table-model">${escapeHtml(point.relationLabel || point.modelName)}</td>` +
+            `<td class="numeric">${price}${notice('price')}</td>` +
+            `<td class="usage-table-model">${escapeHtml(point.relationLabel || point.modelName)}${notice('models')}</td>` +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
             `<td class="usage-table-price-visual">${unitPriceVisualHtml(point, tokenUnit, visualOptions)}</td>` +
             `<td class="usage-table-api-pricing">${subscription ? '—' : escapeHtml(formatApiPricing(point.apiPricing))}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.weeklyTokenInM, tokenUnit) : '—'}</td>` +
-            `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}</td>` +
+            `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}${notice('quota')}</td>` +
             `<td class="numeric">${aaScore ? formatNumber(aaScore.score, 0) : '—'}</td>` +
             `<td class="numeric">${deepSWEScore ? `${formatNumber(deepSWEScore.score, 0)}${deepSWEInterval}` : '—'}</td>` +
             `<td class="usage-table-note">${point.note ? `<details class="usage-note-disclosure"><summary>用量口径与限制</summary><div>${escapeHtml(point.note)}</div></details>` : '—'}</td></tr>`;
@@ -605,7 +607,10 @@
             : `<p>包含：${escapeHtml(includedModels)}</p>` : '';
         const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
         const limit = options.limit || rows.length;
+        const noticeSeen = new Set();
         const body = rows.length ? rows.map((point, index) => {
+            const records = Notices.select(options.changes,{...point,type:'point'}).filter(record=>!noticeSeen.has(point.planSlug+':'+record.slug));
+            records.forEach(record=>noticeSeen.add(point.planSlug+':'+record.slug));
             const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
             const planName = point.planName || (point.billingMode === 'payg' ? '按量 API' : '订阅');
             const plan = `<span class="usage-preset-plan">${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
@@ -616,7 +621,7 @@
             const secondaryDetail = kind === 'multi' ? `${separator}<span class="usage-preset-price">${price}</span>` : '';
             const values = {
                 identity: `<div class="usage-preset-primary-line">${platformCellHtml(point)}${primaryDetail}</div>` +
-                    `<div class="usage-preset-secondary-line">${plan}${secondaryDetail}</div>`,
+                    `<div class="usage-preset-secondary-line">${plan}${secondaryDetail}</div>${Notices.brief(records)}`,
                 metrics: `<div class="usage-preset-metric-primary${point.unitPriceCnyPerM == null ? ' is-unknown' : ''}">${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)}</div>` +
                     `<div class="usage-preset-secondary-line usage-preset-metric-secondary"><span>月用量</span><span>${point.billingMode === 'payg' ? '—' : point.monthlyTokenInM == null ? '未知' : formatTokenAmount(point.monthlyTokenInM, tokenUnit)}</span></div>`
             };
@@ -1065,9 +1070,11 @@
                 }
                 const colors = state.colorMode === 'model' ? modelColors : platformColors;
                 const body = container.querySelector(`[data-table-body="${tableName}"]`);
+                const noticeSeen = new Set();
                 body.innerHTML = sorted.length
                     ? sorted.map((point) => comparisonTableRowHtml(point, state.tokenUnit, {
                         scale,
+                        changes:context.changes, noticeSeen,
                         focused: focusRelationSlugs.has(point.slug),
                         compactIdentity:Boolean(Directory), pinned:pins.includes(point.slug),
                         color: colors[getPointColorKey(point, state.colorMode)]
