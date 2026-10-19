@@ -6,7 +6,7 @@
 
 当前展示 **43 个平台、137 个在售订阅套餐、2 个按量 API、155 个模型和 2278 条套餐模型关系**。
 
-[在线平台中心](https://codingplan.fyi/platforms/) · [模型目录](https://codingplan.fyi/models/) · [价格与额度](https://codingplan.fyi/pricing/) · [套餐对比](https://codingplan.fyi/plans/)
+[在线平台中心](https://codingplan.fyi/platforms/) · [模型目录](https://codingplan.fyi/models/) · [价格与额度](https://codingplan.fyi/pricing/) · [套餐对比](https://codingplan.fyi/plans/) · [预告与更新](https://codingplan.fyi/updates/)
 
 ## 平台介绍
 
