@@ -209,6 +209,20 @@
       }
     },
     {
+      "series": "news",
+      "slug": "20261017_deepseek_v4_1_flash_1017",
+      "title": "DeepSeek V4.1 Flash 1017 更新：编程与 Agent 提升，搜索 API 正式开放",
+      "publishedAt": "2026-10-18",
+      "updatedAt": "2026-10-18",
+      "description": "DeepSeek V4.1 Flash 1017 加强编程与 Agent 能力，token 单价保持不变。结合官方基准、LiveBench 和社区实测，了解性能与任务成本的变化，以及 Search、Fetch 搜索接口的收费和接入边界。",
+      "kicker": "AI 行业快讯",
+      "url": "/articles/news/20261017_deepseek_v4_1_flash_1017/",
+      "cover": {
+        "src": "/articles/news/20261017_deepseek_v4_1_flash_1017/assets/deepseek-v41-flash-1017-benchmarks-cn.png",
+        "alt": "DeepSeek V4.1 Flash 1017 官方基准成绩对照"
+      }
+    },
+    {
       "series": "plan_comparisons",
       "slug": "20260519",
       "title": "2026年5月主流AI Coding Plan平台全解析：能力、价格与选型指南",
