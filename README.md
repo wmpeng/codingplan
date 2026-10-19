@@ -6,7 +6,7 @@
 
 当前展示 **42 个平台、142 个在售订阅套餐、2 个按量 API、162 个模型和 2310 条套餐模型关系**。
 
-[在线平台中心](https://codingplan.fyi/platforms/) · [模型目录](https://codingplan.fyi/models/) · [价格与额度](https://codingplan.fyi/pricing/) · [套餐对比](https://codingplan.fyi/plans/)
+[在线平台中心](https://codingplan.fyi/platforms/) · [模型目录](https://codingplan.fyi/models/) · [价格与额度](https://codingplan.fyi/pricing/) · [套餐对比](https://codingplan.fyi/plans/) · [预告与更新](https://codingplan.fyi/updates/)
 
 ## 平台介绍
 
@@ -32,7 +32,7 @@
 | [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) | 可以购买 | 5 | Go 与 Go Plus 多模型订阅，各型号额度不同；免费与 Contributor 型号有额外条件。 |
 | [字节·方舟 Coding Plan](https://api.dreamfree.space/c/s/cpyqfangzhou) | 可以购买 | 5 | 支持多模型与 Auto 接入；部分模型额度为估算值。 |
 | [DeepSeek](https://platform.deepseek.com/) | 可以购买 | 5 | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
-| [Codex](https://api.dreamfree.space/c/s/cpyqchatgpt) | 可以购买 | 5 | Codex官方订阅，支持GPT-6.1 Sol及6系列；Pro $500另支持Ultrafast。 |
+| [Codex](https://learn.chatgpt.com/docs/pricing) | 可以购买 | 5 | Codex官方订阅，支持GPT-6.1 Sol及6系列；Pro $500另支持Ultrafast。 |
 
 [浏览全部模型](https://codingplan.fyi/models/) · [按需求筛选所有方案](https://codingplan.fyi/#selectionWorkspace)
 
@@ -278,19 +278,20 @@
 
 ## 数据口径
 
-实测 13 · 计算 1268 · 请求估算 58 · 倍率换算 39 · 未知 932
+实测 7 · 官方 Token 额度 15 · 计算 1255 · 请求估算 58 · 倍率换算 43 · 未知 932
 
 | 标记 | 含义 |
 |---|---|
 | 实测 | 根据真实使用记录得到 |
-| 计算 | 根据官方额度和模型价格，在统一工作负载下换算 |
+| 官方 Token 额度 | 平台直接公布的 Token 额度 |
+| 计算 | 根据额度和模型扣减价格，在统一工作负载下换算；估算依据见备注 |
 | 请求估算 | 请求次数乘以统一的单次 Token 假设 |
 | 倍率换算 | 从同平台基准模型或基准套餐按倍率计算 |
 | 未知 | 已确认支持该模型，但没有足够可靠的额度数据 |
 | 无独立限制 | 该时间窗口没有单独上限，不代表整个套餐无限使用 |
 
 - 使用表格邀请链接，部分平台可享优惠
-- 综合单价 = 连续包月价（美元按汇率折算人民币）÷ 实测月 Token，单位为 ￥/M Token；缺数时显示「-」，仅供横向对比。
+- 综合单价 = 连续包月价（美元按汇率折算人民币）÷ 参考月 Token 额度，单位为 ￥/M Token；额度可能来自实测、官方额度或估算，缺数时显示「-」，仅供横向对比。
 - 本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议
 
 ## 最近更新
