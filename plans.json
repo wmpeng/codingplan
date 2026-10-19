@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-19T15:21:40Z",
+  "generatedAt": "2026-10-19T17:14:46Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -22,7 +22,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "连续包月为常规月价；连续包季8折、连续包年7折，按整季或整年付款，折算月价不代表可按月付款。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。",
+      "note": "连续包月为常规月价；连续包季8折、连续包年7折，按整季或整年付款，折算月价不代表可按月付款。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。ZCode、AutoClaw限时提供约1.5倍用量，仅限对应客户端登录使用；AutoClaw需1.17.1及以上。活动起止时间及与峰谷优惠的叠加细则未公布，通用额度和峰谷参考不包含该客户端活动。",
       "planStatus": "open",
       "planModels": [
         {
@@ -130,7 +130,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "连续包月为常规月价；连续包季8折、连续包年7折，按整季或整年付款，折算月价不代表可按月付款。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。",
+      "note": "连续包月为常规月价；连续包季8折、连续包年7折，按整季或整年付款，折算月价不代表可按月付款。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。ZCode、AutoClaw限时提供约1.5倍用量，仅限对应客户端登录使用；AutoClaw需1.17.1及以上。活动起止时间及与峰谷优惠的叠加细则未公布，通用额度和峰谷参考不包含该客户端活动。",
       "planStatus": "open",
       "planModels": [
         {
@@ -238,7 +238,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "连续包月为常规月价；连续包季8折、连续包年7折，按整季或整年付款，折算月价不代表可按月付款。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。",
+      "note": "连续包月为常规月价；连续包季8折、连续包年7折，按整季或整年付款，折算月价不代表可按月付款。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。ZCode、AutoClaw限时提供约1.5倍用量，仅限对应客户端登录使用；AutoClaw需1.17.1及以上。活动起止时间及与峰谷优惠的叠加细则未公布，通用额度和峰谷参考不包含该客户端活动。",
       "planStatus": "open",
       "planModels": [
         {
@@ -1406,6 +1406,52 @@
             "outputCnyPerM": 136.0
           },
           "note": "价格：输入 $4/M Token、缓存读取 $0.2/M Token、输出 $20/M Token；模型额度：5小时 $12、每周 $30、每月 $60；Contributor 参与数据使用，非零数据留存；两倍额度活动起止日期未公布。；当前两倍额度：Go / Go Plus 常规月额度 $30 / $120，活动为 $60 / $240，起止日期未公布；非 ZDR，需接受 Contributor 数据使用条件。"
+        },
+        {
+          "slug": "opencode-go--minimax-m3-1-flash--free",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Free",
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；限时免费，未公布结束日期；仍受平台速率与可用性限制。不使用请求训练，零数据保留。"
+        },
+        {
+          "slug": "opencode-go--beam-1-0--free",
+          "modelSlug": "beam-1-0",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Free",
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；限时免费，未公布结束日期；仍受平台速率与可用性限制。不使用请求训练，保留30天；中国大陆、香港、澳门等地区不可用。"
         }
       ]
     },
@@ -2266,6 +2312,52 @@
             "outputCnyPerM": 136.0
           },
           "note": "价格：输入 $4/M Token、缓存读取 $0.2/M Token、输出 $20/M Token；模型额度：5小时 $48、每周 $120、每月 $240；Contributor 参与数据使用，非零数据留存；两倍额度活动起止日期未公布。；当前两倍额度：Go / Go Plus 常规月额度 $30 / $120，活动为 $60 / $240，起止日期未公布；非 ZDR，需接受 Contributor 数据使用条件。"
+        },
+        {
+          "slug": "opencode-go-plus--minimax-m3-1-flash--free",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Free",
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；限时免费，未公布结束日期；仍受平台速率与可用性限制。不使用请求训练，零数据保留。"
+        },
+        {
+          "slug": "opencode-go-plus--beam-1-0--free",
+          "modelSlug": "beam-1-0",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Free",
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；限时免费，未公布结束日期；仍受平台速率与可用性限制。不使用请求训练，保留30天；中国大陆、香港、澳门等地区不可用。"
         }
       ]
     },
@@ -2276,7 +2368,7 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhou",
       "rating": 5,
-      "firstMonthPrice": 9.4,
+      "firstMonthPrice": 9.9,
       "monthlyPrice": 40,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
@@ -2284,7 +2376,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "2026-06-08至2026-11-08普惠活动，Lite/Pro前两个月分别¥9.9/¥49.9，第三个月恢复¥40/¥200；限量，新购、续费、升配共用两个月资格，首购次日起可买第二个月。2026-05-19至2026-11-19受邀首次订阅可再享9.5折，首月价按叠加优惠约¥9.4/¥47.4展示，以结算金额为准；活动具体时刻及时区未公布。精确调用次数未公开；Token参考沿用带日期历史测量和推测系数。当前模型活动见明细。",
+      "note": "2026-06-08至2026-11-08普惠活动，Lite/Pro前两个月分别¥9.9/¥49.9，第三个月恢复¥40/¥200；限量，新购、续费、升配共用两个月资格，首购次日起可买第二个月。2026-05-19至2026-11-19受邀首次订阅可再享9.5折，合资格受邀首单叠加后参考约¥9.4/¥47.4，以结算金额为准；活动具体时刻及时区未公布。精确调用次数未公开；Token参考沿用带日期历史测量和推测系数。当前模型活动见明细。",
       "planStatus": "open",
       "planModels": [
         {
@@ -2504,7 +2596,7 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhou",
       "rating": 5,
-      "firstMonthPrice": 47.4,
+      "firstMonthPrice": 49.9,
       "monthlyPrice": 200,
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
@@ -2512,7 +2604,7 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "note": "2026-06-08至2026-11-08普惠活动，Lite/Pro前两个月分别¥9.9/¥49.9，第三个月恢复¥40/¥200；限量，新购、续费、升配共用两个月资格，首购次日起可买第二个月。2026-05-19至2026-11-19受邀首次订阅可再享9.5折，首月价按叠加优惠约¥9.4/¥47.4展示，以结算金额为准；活动具体时刻及时区未公布。精确调用次数未公开；Token参考沿用带日期历史测量和推测系数。当前模型活动见明细。",
+      "note": "2026-06-08至2026-11-08普惠活动，Lite/Pro前两个月分别¥9.9/¥49.9，第三个月恢复¥40/¥200；限量，新购、续费、升配共用两个月资格，首购次日起可买第二个月。2026-05-19至2026-11-19受邀首次订阅可再享9.5折，合资格受邀首单叠加后参考约¥9.4/¥47.4，以结算金额为准；活动具体时刻及时区未公布。精确调用次数未公开；Token参考沿用带日期历史测量和推测系数。当前模型活动见明细。",
       "planStatus": "open",
       "planModels": [
         {
@@ -2732,7 +2824,7 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
       "rating": 3,
-      "firstMonthPrice": 9.4,
+      "firstMonthPrice": 9.9,
       "monthlyPrice": 40,
       "quarterlyPrice": 116.4,
       "yearlyPrice": 456,
@@ -2744,7 +2836,7 @@
         "Agent记忆及应用开发底座",
         "Agent进化前50个文件免费"
       ],
-      "note": "AFP积分按输入、输出及当前模型系数扣减，缓存与普通输入同系数；非固定请求数。文本受5小时、周、月AFP共同约束，Small不支持KimiK3。2026-05-19 00:00至2028-05-19 23:59连续季97折、年95折，为活动期开通首周期价；后续续费以扣款日有效价为准，官方未在该页注明时区。当前模型折扣见明细。可自行开启部分模型超额后付费，额度触顶后产生额外按量费用；M3、GLM5.3、K3、K2.8不支持该超额模式。 2026-06-08至2026-11-08普惠活动首两个月分别9.9/49.9元，第三月恢复40/200元；限量，新购/续费/升配共享两个月资格。2026-07-24至2026-12-31受邀首次Small/Medium订单再95折，首月参考约9.4/47.4元，以结算为准；仅买过Large/Max不排除资格，创建过邀请码者不能再受邀。活动具体起止时刻和时区未公布。",
+      "note": "AFP积分按输入、输出及当前模型系数扣减，缓存与普通输入同系数；非固定请求数。文本受5小时、周、月AFP共同约束，Small不支持KimiK3。2026-05-19 00:00至2028-05-19 23:59连续季97折、年95折，为活动期开通首周期价；后续续费以扣款日有效价为准，官方未在该页注明时区。当前模型折扣见明细。可自行开启部分模型超额后付费，额度触顶后产生额外按量费用；M3、GLM5.3、K3、K2.8不支持该超额模式。 2026-06-08至2026-11-08普惠活动首两个月分别9.9/49.9元，第三月恢复40/200元；限量，新购/续费/升配共享两个月资格。2026-07-24至2026-12-31受邀首次Small/Medium订单再95折，合资格受邀首单参考约9.4/47.4元，以结算为准；仅买过Large/Max不排除资格，创建过邀请码者不能再受邀。活动具体起止时刻和时区未公布。",
       "planStatus": "open",
       "planModels": [
         {
@@ -3020,7 +3112,7 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
       "rating": 3,
-      "firstMonthPrice": 47.4,
+      "firstMonthPrice": 49.9,
       "monthlyPrice": 200,
       "quarterlyPrice": 582,
       "yearlyPrice": 2280,
@@ -3033,7 +3125,7 @@
         "Agent进化前50个文件免费",
         "Computer Use Agent"
       ],
-      "note": "AFP积分按输入、输出及当前模型系数扣减，缓存与普通输入同系数；非固定请求数。文本受5小时、周、月AFP共同约束，Small不支持KimiK3。2026-05-19 00:00至2028-05-19 23:59连续季97折、年95折，为活动期开通首周期价；后续续费以扣款日有效价为准，官方未在该页注明时区。当前模型折扣见明细。可自行开启部分模型超额后付费，额度触顶后产生额外按量费用；M3、GLM5.3、K3、K2.8不支持该超额模式。 2026-06-08至2026-11-08普惠活动首两个月分别9.9/49.9元，第三月恢复40/200元；限量，新购/续费/升配共享两个月资格。2026-07-24至2026-12-31受邀首次Small/Medium订单再95折，首月参考约9.4/47.4元，以结算为准；仅买过Large/Max不排除资格，创建过邀请码者不能再受邀。活动具体起止时刻和时区未公布。",
+      "note": "AFP积分按输入、输出及当前模型系数扣减，缓存与普通输入同系数；非固定请求数。文本受5小时、周、月AFP共同约束，Small不支持KimiK3。2026-05-19 00:00至2028-05-19 23:59连续季97折、年95折，为活动期开通首周期价；后续续费以扣款日有效价为准，官方未在该页注明时区。当前模型折扣见明细。可自行开启部分模型超额后付费，额度触顶后产生额外按量费用；M3、GLM5.3、K3、K2.8不支持该超额模式。 2026-06-08至2026-11-08普惠活动首两个月分别9.9/49.9元，第三月恢复40/200元；限量，新购/续费/升配共享两个月资格。2026-07-24至2026-12-31受邀首次Small/Medium订单再95折，合资格受邀首单参考约9.4/47.4元，以结算为准；仅买过Large/Max不排除资格，创建过邀请码者不能再受邀。活动具体起止时刻和时区未公布。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4132,8 +4224,8 @@
       "planStatus": "open",
       "planModels": [
         {
-          "slug": "minimax-mplan-go--minimax-m3-1-flash-preview",
-          "modelSlug": "minimax-m3-1-flash-preview",
+          "slug": "minimax-mplan-go--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -4164,8 +4256,8 @@
       "planStatus": "open",
       "planModels": [
         {
-          "slug": "minimax-mplan-explore--minimax-m3-1-flash-preview",
-          "modelSlug": "minimax-m3-1-flash-preview",
+          "slug": "minimax-mplan-explore--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -4196,8 +4288,8 @@
       "planStatus": "open",
       "planModels": [
         {
-          "slug": "minimax-mplan-build--minimax-m3-1-flash-preview",
-          "modelSlug": "minimax-m3-1-flash-preview",
+          "slug": "minimax-mplan-build--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -4224,13 +4316,13 @@
       "benefits": [
         "MiniMax Code网页/桌面/CLI/移动端有限使用"
       ],
-      "note": "M3.1 Flash Preview有限可用；不支持订阅API Key，具体额度未公布",
+      "note": "M3.1 Flash有限可用；不支持订阅API Key，具体额度未公布",
       "supportsHarnessApi": false,
       "planStatus": "open",
       "planModels": [
         {
-          "slug": "minimax-code-free--minimax-m3-1-flash-preview",
-          "modelSlug": "minimax-m3-1-flash-preview",
+          "slug": "minimax-code-free--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -4625,7 +4717,7 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzai",
       "rating": 4,
-      "firstMonthPrice": 16.2,
+      "firstMonthPrice": 18,
       "monthlyPrice": 18,
       "quarterlyPrice": 43.2,
       "yearlyPrice": 151.2,
@@ -4634,7 +4726,7 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
-      "note": "连续月付$18/$80/$168；季付8折、年付7折，按整季或整年付款。合资格受邀且从未付费订阅的用户，首次订阅订单享9折，后续续费和升级不享；不可叠加同类首单优惠。邀请活动未公布固定截止日；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。",
+      "note": "连续月付$18/$80/$168；季付8折、年付7折，按整季或整年付款。合资格受邀且从未付费订阅的用户，首次订阅订单享9折，后续续费和升级不享；不可叠加同类首单优惠。邀请活动未公布固定截止日；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。通用首次月付为$18；仅符合邀请资格时首单月付参考$16.2，Stripe最终实付不得低于$0.50。ZCode、AutoClaw限时提供约1.5倍用量，仅限对应客户端登录使用；AutoClaw需1.17.1及以上。活动起止时间及与峰谷优惠的叠加细则未公布，通用额度和峰谷参考不包含该客户端活动。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4734,7 +4826,7 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzai",
       "rating": 4,
-      "firstMonthPrice": 72,
+      "firstMonthPrice": 80,
       "monthlyPrice": 80,
       "quarterlyPrice": 192,
       "yearlyPrice": 672,
@@ -4743,7 +4835,7 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
-      "note": "连续月付$18/$80/$168；季付8折、年付7折，按整季或整年付款。合资格受邀且从未付费订阅的用户，首次订阅订单享9折，后续续费和升级不享；不可叠加同类首单优惠。邀请活动未公布固定截止日；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。",
+      "note": "连续月付$18/$80/$168；季付8折、年付7折，按整季或整年付款。合资格受邀且从未付费订阅的用户，首次订阅订单享9折，后续续费和升级不享；不可叠加同类首单优惠。邀请活动未公布固定截止日；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。通用首次月付为$80；仅符合邀请资格时首单月付参考$72，Stripe最终实付不得低于$0.50。ZCode、AutoClaw限时提供约1.5倍用量，仅限对应客户端登录使用；AutoClaw需1.17.1及以上。活动起止时间及与峰谷优惠的叠加细则未公布，通用额度和峰谷参考不包含该客户端活动。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4843,7 +4935,7 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqzai",
       "rating": 4,
-      "firstMonthPrice": 151.2,
+      "firstMonthPrice": 168,
       "monthlyPrice": 168,
       "quarterlyPrice": 403.2,
       "yearlyPrice": 1411.2,
@@ -4852,7 +4944,7 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
-      "note": "连续月付$18/$80/$168；季付8折、年付7折，按整季或整年付款。合资格受邀且从未付费订阅的用户，首次订阅订单享9折，后续续费和升级不享；不可叠加同类首单优惠。邀请活动未公布固定截止日；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。",
+      "note": "连续月付$18/$80/$168；季付8折、年付7折，按整季或整年付款。合资格受邀且从未付费订阅的用户，首次订阅订单享9折，后续续费和升级不享；不可叠加同类首单优惠。邀请活动未公布固定截止日；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。通用首次月付为$168；仅符合邀请资格时首单月付参考$151.2，Stripe最终实付不得低于$0.50。ZCode、AutoClaw限时提供约1.5倍用量，仅限对应客户端登录使用；AutoClaw需1.17.1及以上。活动起止时间及与峰谷优惠的叠加细则未公布，通用额度和峰谷参考不包含该客户端活动。",
       "planStatus": "open",
       "planModels": [
         {
@@ -5489,7 +5581,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Plus 的 K3 最高 256K；不继承老 Moderato 周 Token 实测。"
+          "note": "Plus的K3最高256K：k3支持图片和视频，k3-256k仅支持图片、不支持视频。Token配额未公布。"
         }
       ]
     },
@@ -5539,7 +5631,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "最高 1M 上下文；Token 配额未公布。"
+          "note": "k3最高1M上下文，支持图片和视频；Token配额未公布。"
         },
         {
           "slug": "kimi-pro-2026--kimi-k3--ctx-256k",
@@ -5552,7 +5644,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "官方说明消耗约为 K3 1M 的一半；无官方固定 Token 配额。"
+          "note": "k3-256k仅支持图片、不支持视频；含视频的会话切换前需先压缩上下文。官方说明消耗约为K3 1M的一半；无官方固定Token配额。"
         },
         {
           "slug": "kimi-pro-2026--kimi-k2-7-code-highspeed",
@@ -5615,7 +5707,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "最高 1M 上下文；Token 配额未公布。"
+          "note": "k3最高1M上下文，支持图片和视频；Token配额未公布。"
         },
         {
           "slug": "kimi-max-2026--kimi-k3--ctx-256k",
@@ -5628,7 +5720,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "官方说明消耗约为 K3 1M 的一半；无官方固定 Token 配额。"
+          "note": "k3-256k仅支持图片、不支持视频；含视频的会话切换前需先压缩上下文。官方说明消耗约为K3 1M的一半；无官方固定Token配额。"
         },
         {
           "slug": "kimi-max-2026--kimi-k2-7-code-highspeed",
@@ -5691,7 +5783,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "最高 1M 上下文；Token 配额未公布。"
+          "note": "k3最高1M上下文，支持图片和视频；Token配额未公布。"
         },
         {
           "slug": "kimi-ultra-2026--kimi-k3--ctx-256k",
@@ -5704,7 +5796,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "官方说明消耗约为 K3 1M 的一半；无官方固定 Token 配额。"
+          "note": "k3-256k仅支持图片、不支持视频；含视频的会话切换前需先压缩上下文。官方说明消耗约为K3 1M的一半；无官方固定Token配额。"
         },
         {
           "slug": "kimi-ultra-2026--kimi-k2-7-code-highspeed",
@@ -5834,7 +5926,7 @@
       "quarterlyPrice": "-",
       "yearlyPrice": "-",
       "benefits": [],
-      "note": "邀请 8 折仅适用于资格仍有效的用户，实际折扣以账户结算为准。",
+      "note": "按实际Token用量计费。邀请8折仅适用于资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。",
       "planStatus": "open",
       "planModels": [
         {
@@ -5845,18 +5937,18 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "unitPriceCnyPerM": 0.217
+            "unitPriceCnyPerM": 0.2712
           },
           "pricing": {
             "currency": "¥",
-            "inputPerM": 0.64,
-            "cachePerM": 0.184,
-            "outputPerM": 2.24,
-            "inputCnyPerM": 0.64,
-            "cacheCnyPerM": 0.184,
-            "outputCnyPerM": 2.24
+            "inputPerM": 0.8,
+            "cachePerM": 0.23,
+            "outputPerM": 2.8,
+            "inputCnyPerM": 0.8,
+            "cacheCnyPerM": 0.23,
+            "outputCnyPerM": 2.8
           },
-          "note": "限时五折标记已取消；按当前标价与此前确认的有效邀请8折资格计算，资格当前是否有效须账户确认"
+          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
         },
         {
           "slug": "gongji-api--deepseek-v4-preview",
@@ -5866,18 +5958,18 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "unitPriceCnyPerM": 0.0629
+            "unitPriceCnyPerM": 0.0887
           },
           "pricing": {
             "currency": "¥",
-            "inputPerM": 0.8,
-            "cachePerM": 0.016,
-            "outputPerM": 1.6,
-            "inputCnyPerM": 0.8,
-            "cacheCnyPerM": 0.016,
-            "outputCnyPerM": 1.6
+            "inputPerM": 1.0,
+            "cachePerM": 0.02,
+            "outputPerM": 4.0,
+            "inputCnyPerM": 1.0,
+            "cacheCnyPerM": 0.02,
+            "outputCnyPerM": 4.0
           },
-          "note": "按页面当前标价的 8 折计算；正式版资源自 2026-08-19 00:00 起维护，官方未公布结束时间；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
+          "note": "官方公告2026-10-20中午12:00下架预览资源，此后原预览ID转向正式服务；未公布时区及目标正式版本。邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
         },
         {
           "slug": "gongji-api--deepseek-v4-pro-preview",
@@ -5887,18 +5979,18 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "unitPriceCnyPerM": 0.1623
+            "unitPriceCnyPerM": 0.4332
           },
           "pricing": {
             "currency": "¥",
-            "inputPerM": 2.4,
-            "cachePerM": 0.02,
-            "outputPerM": 4.8,
-            "inputCnyPerM": 2.4,
-            "cacheCnyPerM": 0.02,
-            "outputCnyPerM": 4.8
+            "inputPerM": 4.5,
+            "cachePerM": 0.15,
+            "outputPerM": 13.5,
+            "inputCnyPerM": 4.5,
+            "cacheCnyPerM": 0.15,
+            "outputCnyPerM": 13.5
           },
-          "note": "按页面当前标价的 8 折计算；正式版资源自 2026-08-19 00:00 起维护，官方未公布结束时间；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
+          "note": "官方公告2026-10-20中午12:00下架预览资源，此后原预览ID转向正式服务；未公布时区及目标正式版本。邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
         },
         {
           "slug": "gongji-api--glm-5-3",
@@ -5908,18 +6000,18 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "unitPriceCnyPerM": 1.9428
+            "unitPriceCnyPerM": 2.4285
           },
           "pricing": {
             "currency": "¥",
-            "inputPerM": 6.4,
-            "cachePerM": 1.6,
-            "outputPerM": 22.4,
-            "inputCnyPerM": 6.4,
-            "cacheCnyPerM": 1.6,
-            "outputCnyPerM": 22.4
+            "inputPerM": 8.0,
+            "cachePerM": 2.0,
+            "outputPerM": 28.0,
+            "inputCnyPerM": 8.0,
+            "cacheCnyPerM": 2.0,
+            "outputCnyPerM": 28.0
           },
-          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
+          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
         },
         {
           "slug": "gongji-api--kimi-k3",
@@ -5929,18 +6021,18 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "unitPriceCnyPerM": 2.7084
+            "unitPriceCnyPerM": 3.3855
           },
           "pricing": {
             "currency": "¥",
-            "inputPerM": 16.0,
-            "cachePerM": 1.6,
-            "outputPerM": 80.0,
-            "inputCnyPerM": 16.0,
-            "cacheCnyPerM": 1.6,
-            "outputCnyPerM": 80.0
+            "inputPerM": 20.0,
+            "cachePerM": 2.0,
+            "outputPerM": 100.0,
+            "inputCnyPerM": 20.0,
+            "cacheCnyPerM": 2.0,
+            "outputCnyPerM": 100.0
           },
-          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
+          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
         },
         {
           "slug": "gongji-api--glm-5-1",
@@ -5950,18 +6042,18 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "unitPriceCnyPerM": 1.9428
+            "unitPriceCnyPerM": 2.4285
           },
           "pricing": {
             "currency": "¥",
-            "inputPerM": 6.4,
-            "cachePerM": 1.6,
-            "outputPerM": 22.4,
-            "inputCnyPerM": 6.4,
-            "cacheCnyPerM": 1.6,
-            "outputCnyPerM": 22.4
+            "inputPerM": 8.0,
+            "cachePerM": 2.0,
+            "outputPerM": 28.0,
+            "inputCnyPerM": 8.0,
+            "cacheCnyPerM": 2.0,
+            "outputCnyPerM": 28.0
           },
-          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
+          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
         },
         {
           "slug": "gongji-api--glm-5-2",
@@ -5971,18 +6063,18 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "unitPriceCnyPerM": 1.9428
+            "unitPriceCnyPerM": 2.4285
           },
           "pricing": {
             "currency": "¥",
-            "inputPerM": 6.4,
-            "cachePerM": 1.6,
-            "outputPerM": 22.4,
-            "inputCnyPerM": 6.4,
-            "cacheCnyPerM": 1.6,
-            "outputCnyPerM": 22.4
+            "inputPerM": 8.0,
+            "cachePerM": 2.0,
+            "outputPerM": 28.0,
+            "inputCnyPerM": 8.0,
+            "cacheCnyPerM": 2.0,
+            "outputCnyPerM": 28.0
           },
-          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
+          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
         },
         {
           "slug": "gongji-api--kimi-k2-6",
@@ -5992,18 +6084,18 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "unitPriceCnyPerM": 1.1985
+            "unitPriceCnyPerM": 1.4982
           },
           "pricing": {
             "currency": "¥",
-            "inputPerM": 5.2,
-            "cachePerM": 0.88,
-            "outputPerM": 21.6,
-            "inputCnyPerM": 5.2,
-            "cacheCnyPerM": 0.88,
-            "outputCnyPerM": 21.6
+            "inputPerM": 6.5,
+            "cachePerM": 1.1,
+            "outputPerM": 27.0,
+            "inputCnyPerM": 6.5,
+            "cacheCnyPerM": 1.1,
+            "outputCnyPerM": 27.0
           },
-          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
+          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
         },
         {
           "slug": "gongji-api--qwen-3-7-max",
@@ -6013,18 +6105,18 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "unitPriceCnyPerM": 1.529
+            "unitPriceCnyPerM": 1.9113
           },
           "pricing": {
             "currency": "¥",
-            "inputPerM": 9.6,
-            "cachePerM": 0.96,
-            "outputPerM": 28.8,
-            "inputCnyPerM": 9.6,
-            "cacheCnyPerM": 0.96,
-            "outputCnyPerM": 28.8
+            "inputPerM": 12.0,
+            "cachePerM": 1.2,
+            "outputPerM": 36.0,
+            "inputCnyPerM": 12.0,
+            "cacheCnyPerM": 1.2,
+            "outputCnyPerM": 36.0
           },
-          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
+          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
         },
         {
           "slug": "gongji-api--glm-5",
@@ -6034,18 +6126,60 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "unitPriceCnyPerM": 1.4611
+            "unitPriceCnyPerM": 1.8264
           },
           "pricing": {
             "currency": "¥",
-            "inputPerM": 4.8,
-            "cachePerM": 1.2,
-            "outputPerM": 17.6,
-            "inputCnyPerM": 4.8,
-            "cacheCnyPerM": 1.2,
-            "outputCnyPerM": 17.6
+            "inputPerM": 6.0,
+            "cachePerM": 1.5,
+            "outputPerM": 22.0,
+            "inputCnyPerM": 6.0,
+            "cacheCnyPerM": 1.5,
+            "outputCnyPerM": 22.0
           },
-          "note": "按页面当前标价的 8 折计算；8折仅适用于仍有效的邀请资格，实际折扣以账户结算为准"
+          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
+        },
+        {
+          "slug": "gongji-api--deepseek-v4-flash-0731",
+          "modelSlug": "deepseek-v4-flash-0731",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.1444
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 1.5,
+            "cachePerM": 0.05,
+            "outputPerM": 4.5,
+            "inputCnyPerM": 1.5,
+            "cacheCnyPerM": 0.05,
+            "outputCnyPerM": 4.5
+          },
+          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
+        },
+        {
+          "slug": "gongji-api--deepseek-v4-pro-0813",
+          "modelSlug": "deepseek-v4-pro-0813",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.4332
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 4.5,
+            "cachePerM": 0.15,
+            "outputPerM": 13.5,
+            "inputCnyPerM": 4.5,
+            "cacheCnyPerM": 0.15,
+            "outputCnyPerM": 13.5
+          },
+          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
         },
         {
           "slug": "gongji-api--deepseek-v4-1-flash",
@@ -6055,18 +6189,39 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "unitPriceCnyPerM": 0.0709
+            "unitPriceCnyPerM": 0.0887
           },
           "pricing": {
             "currency": "¥",
-            "inputPerM": 0.8,
-            "cachePerM": 0.016,
-            "outputPerM": 3.2,
-            "inputCnyPerM": 0.8,
-            "cacheCnyPerM": 0.016,
-            "outputCnyPerM": 3.2
+            "inputPerM": 1.0,
+            "cachePerM": 0.02,
+            "outputPerM": 4.0,
+            "inputCnyPerM": 1.0,
+            "cacheCnyPerM": 0.02,
+            "outputCnyPerM": 4.0
           },
-          "note": "2026-10-12模型广场及详情已列出；按当前标价与此前确认的邀请8折资格计算，资格有效性及实时调用未作扣费验证"
+          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
+        },
+        {
+          "slug": "gongji-api--hy3",
+          "modelSlug": "hy3",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.4578
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 1.2,
+            "cachePerM": 0.4,
+            "outputPerM": 4.0,
+            "inputCnyPerM": 1.2,
+            "cacheCnyPerM": 0.4,
+            "outputCnyPerM": 4.0
+          },
+          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
         }
       ]
     },
@@ -9210,6 +9365,30 @@
             "outputCnyPerM": 28.9
           },
           "note": "从套餐月美元 Credits 池扣减；未消费额度不结转。"
+        },
+        {
+          "slug": "ollama-coding-plan-pro--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 2434.9,
+            "unitPriceCnyPerM": 0.05576
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.15,
+            "cachePerM": 0.015,
+            "outputPerM": 0.6,
+            "inputCnyPerM": 1.02,
+            "cacheCnyPerM": 0.102,
+            "outputCnyPerM": 4.08
+          },
+          "note": "按输入、缓存读取与输出Token价格扣减月美元Credits；与其他云模型共享月额度。"
         }
       ]
     },
@@ -9729,6 +9908,30 @@
             "outputCnyPerM": 28.9
           },
           "note": "从套餐月美元 Credits 池扣减；未消费额度不结转。"
+        },
+        {
+          "slug": "ollama-coding-plan-max--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 12174.7,
+            "unitPriceCnyPerM": 0.05576
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.15,
+            "cachePerM": 0.015,
+            "outputPerM": 0.6,
+            "inputCnyPerM": 1.02,
+            "cacheCnyPerM": 0.102,
+            "outputCnyPerM": 4.08
+          },
+          "note": "按输入、缓存读取与输出Token价格扣减月美元Credits；与其他云模型共享月额度。"
         }
       ]
     },
@@ -10556,7 +10759,7 @@
       "benefits": [
         "TTS限时免费，活动起止日期未公布"
       ],
-      "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。首购88折每账号一次，活动起止日期未公布；年付价格含88折，全年池不等于单月可用量。V2.5系列已于2026-10-14 18:00转发至V2.6，原模型名将于2026-10-21 10:00失效（UTC+8）。合资格受邀用户可再享首次订单9折并与首购折扣叠加；需注册3天内绑定、绑定30天内完成首单，曾获至少1个月免费Token Plan者不适用；邀请活动长期开放，无固定截止日。Token按统一负载与官方系数推算，非实测。",
+      "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。所列首次月付价仅含通用首购88折，每账号一次，未含邀请优惠，活动起止日期未公布；年付价格含周期88折，不再叠加通用首购88折，全年池不等于单月可用量。V2.5系列已于2026-10-14 18:00转发至V2.6，原模型名将于2026-10-21 10:00失效（UTC+8）。合资格受邀用户可再享首次订单9折并与首购折扣叠加；需注册3天内绑定、绑定30天内完成首单，曾获至少1个月免费Token Plan者不适用；邀请活动长期开放，无固定截止日；邀请叠加后的金额以订单结算为准。Token按统一负载与官方系数推算，非实测。",
       "planStatus": "open",
       "planModels": [
         {
@@ -10666,7 +10869,7 @@
       "benefits": [
         "TTS限时免费，活动起止日期未公布"
       ],
-      "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。首购88折每账号一次，活动起止日期未公布；年付价格含88折，全年池不等于单月可用量。V2.5系列已于2026-10-14 18:00转发至V2.6，原模型名将于2026-10-21 10:00失效（UTC+8）。合资格受邀用户可再享首次订单9折并与首购折扣叠加；需注册3天内绑定、绑定30天内完成首单，曾获至少1个月免费Token Plan者不适用；邀请活动长期开放，无固定截止日。Token按统一负载与官方系数推算，非实测。",
+      "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。所列首次月付价仅含通用首购88折，每账号一次，未含邀请优惠，活动起止日期未公布；年付价格含周期88折，不再叠加通用首购88折，全年池不等于单月可用量。V2.5系列已于2026-10-14 18:00转发至V2.6，原模型名将于2026-10-21 10:00失效（UTC+8）。合资格受邀用户可再享首次订单9折并与首购折扣叠加；需注册3天内绑定、绑定30天内完成首单，曾获至少1个月免费Token Plan者不适用；邀请活动长期开放，无固定截止日；邀请叠加后的金额以订单结算为准。Token按统一负载与官方系数推算，非实测。",
       "planStatus": "open",
       "planModels": [
         {
@@ -10776,7 +10979,7 @@
       "benefits": [
         "TTS限时免费，活动起止日期未公布"
       ],
-      "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。首购88折每账号一次，活动起止日期未公布；年付价格含88折，全年池不等于单月可用量。V2.5系列已于2026-10-14 18:00转发至V2.6，原模型名将于2026-10-21 10:00失效（UTC+8）。合资格受邀用户可再享首次订单9折并与首购折扣叠加；需注册3天内绑定、绑定30天内完成首单，曾获至少1个月免费Token Plan者不适用；邀请活动长期开放，无固定截止日。Token按统一负载与官方系数推算，非实测。",
+      "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。所列首次月付价仅含通用首购88折，每账号一次，未含邀请优惠，活动起止日期未公布；年付价格含周期88折，不再叠加通用首购88折，全年池不等于单月可用量。V2.5系列已于2026-10-14 18:00转发至V2.6，原模型名将于2026-10-21 10:00失效（UTC+8）。合资格受邀用户可再享首次订单9折并与首购折扣叠加；需注册3天内绑定、绑定30天内完成首单，曾获至少1个月免费Token Plan者不适用；邀请活动长期开放，无固定截止日；邀请叠加后的金额以订单结算为准。Token按统一负载与官方系数推算，非实测。",
       "planStatus": "open",
       "planModels": [
         {
@@ -10886,7 +11089,7 @@
       "benefits": [
         "TTS限时免费，活动起止日期未公布"
       ],
-      "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。首购88折每账号一次，活动起止日期未公布；年付价格含88折，全年池不等于单月可用量。V2.5系列已于2026-10-14 18:00转发至V2.6，原模型名将于2026-10-21 10:00失效（UTC+8）。合资格受邀用户可再享首次订单9折并与首购折扣叠加；需注册3天内绑定、绑定30天内完成首单，曾获至少1个月免费Token Plan者不适用；邀请活动长期开放，无固定截止日。Token按统一负载与官方系数推算，非实测。",
+      "note": "月度Credits池可集中消耗，无5小时及周总量限额；夜间00:00–08:00 UTC+8按0.8系数，其余时间1。所列首次月付价仅含通用首购88折，每账号一次，未含邀请优惠，活动起止日期未公布；年付价格含周期88折，不再叠加通用首购88折，全年池不等于单月可用量。V2.5系列已于2026-10-14 18:00转发至V2.6，原模型名将于2026-10-21 10:00失效（UTC+8）。合资格受邀用户可再享首次订单9折并与首购折扣叠加；需注册3天内绑定、绑定30天内完成首单，曾获至少1个月免费Token Plan者不适用；邀请活动长期开放，无固定截止日；邀请叠加后的金额以订单结算为准。Token按统一负载与官方系数推算，非实测。",
       "planStatus": "open",
       "planModels": [
         {
@@ -10997,11 +11200,12 @@
       "currency": "$",
       "benefits": [
         "每月 $10 模型 Credits",
-        "5 小时 / 周额度为 $2 / $5",
+        "5 小时 / 周额度存在 $2 / $5 与 $3 / $6 两种官方口径",
         "支持开源模型及部分闭源模型",
-        "支持 56 个模型"
+        "支持 57 个模型"
       ],
-      "note": "各模型月额度共享套餐池，不能相加；DeepSeek V4.1 Flash额度加成无结束日期。集中价格页短窗口$2/$5，Go专页仍写$3/$6，官方页面存在冲突。仅可在Command Code客户端使用。",
+      "note": "各型号共享一个月度套餐池：逐型号月额度表示整池只用于该型号时的使用价值；混用时按各型号月额度的消耗比例合并计量，不能相加。DeepSeek V4.1 Flash 额度加成无结束日期。5 小时 / 周窗口的官方表格为 $2 / $5，专页和用量说明正文为 $3 / $6，实际短窗口额度待确认。仅可在 Command Code 客户端使用。",
+      "summary": "每月 $10 模型 Credits；5 小时 / 周额度存在 $2 / $5 与 $3 / $6 两种官方口径；支持开源模型及部分闭源模型；支持 56 个模型",
       "planStatus": "open",
       "planModels": [
         {
@@ -11012,8 +11216,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 150.3957287613,
-            "weeklyTokenInM": 375.9893219033,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 752.0,
             "unitPriceCnyPerM": 0.00884
           },
@@ -11026,7 +11230,7 @@
             "cacheCnyPerM": 0.0204,
             "outputCnyPerM": 4.08
           },
-          "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 $2、每周 $5、每月 $10；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 unknown、每周 unknown、每月 $10；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--deepseek-v4-1-flash--feng",
@@ -11036,8 +11240,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 75.1978643807,
-            "weeklyTokenInM": 187.9946609516,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 376.0,
             "unitPriceCnyPerM": 0.01836
           },
@@ -11050,7 +11254,7 @@
             "cacheCnyPerM": 0.0408,
             "outputCnyPerM": 8.16
           },
-          "note": "价格：输入 $0.3/M Token、缓存读取 $0.006/M Token、输出 $1.2/M Token；模型额度：5小时 $2、每周 $5、每月 $10；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.3/M Token、缓存读取 $0.006/M Token、输出 $1.2/M Token；模型额度：5小时 unknown、每周 unknown、每月 $10；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--glm-5-2",
@@ -11060,8 +11264,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 5.9274187573,
-            "weeklyTokenInM": 14.8185468933,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 29.6,
             "unitPriceCnyPerM": 0.22916
           },
@@ -11074,7 +11278,7 @@
             "cacheCnyPerM": 1.768,
             "outputCnyPerM": 29.92
           },
-          "note": "价格：输入 $1.4/M Token、缓存读取 $0.26/M Token、输出 $4.4/M Token；模型额度：5小时 $2、每周 $5、每月 $10；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $1.4/M Token、缓存读取 $0.26/M Token、输出 $4.4/M Token；模型额度：5小时 unknown、每周 unknown、每月 $10；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--hy3",
@@ -11084,8 +11288,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 46.5671294275,
-            "weeklyTokenInM": 116.4178235688,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 232.8,
             "unitPriceCnyPerM": 0.02924
           },
@@ -11098,7 +11302,7 @@
             "cacheCnyPerM": 0.238,
             "outputCnyPerM": 3.944
           },
-          "note": "价格：输入 $0.14/M Token、缓存读取 $0.035/M Token、输出 $0.58/M Token；模型额度：5小时 $2、每周 $5、每月 $10；平台上下文上限 262K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.14/M Token、缓存读取 $0.035/M Token、输出 $0.58/M Token；模型额度：5小时 unknown、每周 unknown、每月 $10；平台上下文上限 262K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--qwen-3-8-27b",
@@ -11108,8 +11312,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 27.5065328015,
-            "weeklyTokenInM": 68.7663320039,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 137.5,
             "unitPriceCnyPerM": 0.04964
           },
@@ -11122,7 +11326,7 @@
             "cacheCnyPerM": 0.272,
             "outputCnyPerM": 20.4
           },
-          "note": "价格：输入 $0.4/M Token、缓存读取 $0.04/M Token、输出 $3/M Token；模型额度：5小时 $2、每周 $5、每月 $10；平台上下文上限 262K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.4/M Token、缓存读取 $0.04/M Token、输出 $3/M Token；模型额度：5小时 unknown、每周 unknown、每月 $10；平台上下文上限 262K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--qwen-3-7-max",
@@ -11132,8 +11336,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 3.1520882585,
-            "weeklyTokenInM": 7.8802206462,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 15.8,
             "unitPriceCnyPerM": 0.4318
           },
@@ -11146,7 +11350,7 @@
             "cacheCnyPerM": 3.4,
             "outputCnyPerM": 51.0
           },
-          "note": "价格：输入 $2.5/M Token、缓存读取 $0.5/M Token、输出 $7.5/M Token；模型额度：5小时 $2、每周 $5、每月 $10；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $2.5/M Token、缓存读取 $0.5/M Token、输出 $7.5/M Token；模型额度：5小时 unknown、每周 unknown、每月 $10；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--qwen-3-7-plus--contexttier-256k",
@@ -11156,8 +11360,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 19.3199381762,
-            "weeklyTokenInM": 48.2998454405,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 96.6,
             "unitPriceCnyPerM": 0.07072
           },
@@ -11170,7 +11374,7 @@
             "cacheCnyPerM": 0.544,
             "outputCnyPerM": 10.88
           },
-          "note": "价格：输入 $0.4/M Token、缓存读取 $0.08/M Token、输出 $1.6/M Token；模型额度：5小时 $2、每周 $5、每月 $10；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.4/M Token、缓存读取 $0.08/M Token、输出 $1.6/M Token；模型额度：5小时 unknown、每周 unknown、每月 $10；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--qwen-3-7-plus--contexttier-256k-long",
@@ -11180,8 +11384,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 6.4399793921,
-            "weeklyTokenInM": 16.0999484802,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 32.2,
             "unitPriceCnyPerM": 0.21148
           },
@@ -11194,7 +11398,7 @@
             "cacheCnyPerM": 1.632,
             "outputCnyPerM": 32.64
           },
-          "note": "价格：输入 $1.2/M Token、缓存读取 $0.24/M Token、输出 $4.8/M Token；模型额度：5小时 $2、每周 $5、每月 $10；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $1.2/M Token、缓存读取 $0.24/M Token、输出 $4.8/M Token；模型额度：5小时 unknown、每周 unknown、每月 $10；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--qwen-3-6-plus--contexttier-256k",
@@ -11204,8 +11408,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 14.880952381,
-            "weeklyTokenInM": 37.2023809524,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 74.4,
             "unitPriceCnyPerM": 0.09112
           },
@@ -11218,7 +11422,7 @@
             "cacheCnyPerM": 0.68,
             "outputCnyPerM": 20.4
           },
-          "note": "价格：输入 $0.5/M Token、缓存读取 $0.1/M Token、输出 $3/M Token；模型额度：5小时 $2、每周 $5、每月 $10；平台上下文上限 —；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.5/M Token、缓存读取 $0.1/M Token、输出 $3/M Token；模型额度：5小时 unknown、每周 unknown、每月 $10；平台上下文上限 —；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--qwen-3-6-plus--contexttier-256k-long",
@@ -11228,8 +11432,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 6.278449223,
-            "weeklyTokenInM": 15.6961230576,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 31.4,
             "unitPriceCnyPerM": 0.21692
           },
@@ -11242,7 +11446,7 @@
             "cacheCnyPerM": 1.36,
             "outputCnyPerM": 40.8
           },
-          "note": "价格：输入 $2/M Token、缓存读取 $0.2/M Token、输出 $6/M Token；模型额度：5小时 $2、每周 $5、每月 $10；平台上下文上限 —；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $2/M Token、缓存读取 $0.2/M Token、输出 $6/M Token；模型额度：5小时 unknown、每周 unknown、每月 $10；平台上下文上限 —；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--glm-5-3-flash",
@@ -11252,8 +11456,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 52.1920668058,
-            "weeklyTokenInM": 130.4801670146,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 261.0,
             "unitPriceCnyPerM": 0.02584
           },
@@ -11266,7 +11470,7 @@
             "cacheCnyPerM": 0.204,
             "outputCnyPerM": 3.4
           },
-          "note": "价格：输入 $0.15/M Token、缓存读取 $0.03/M Token、输出 $0.5/M Token；模型额度：5小时 $2、每周 $5、每月 $10；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突；加成持续至容量耗尽，起止日期及常规月额度未公布"
+          "note": "价格：输入 $0.15/M Token、缓存读取 $0.03/M Token、输出 $0.5/M Token；模型额度：5小时 unknown、每周 unknown、每月 $10；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突；加成持续至容量耗尽，起止日期及常规月额度未公布 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--mistral-large-4",
@@ -11276,8 +11480,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 9.0540754657,
-            "weeklyTokenInM": 22.6351886643,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 45.3,
             "unitPriceCnyPerM": 0.15028
           },
@@ -11290,7 +11494,7 @@
             "cacheCnyPerM": 0.952,
             "outputCnyPerM": 28.424
           },
-          "note": "价格：输入 $1.36/M Token、缓存读取 $0.14/M Token、输出 $4.18/M Token；模型额度：5小时 $2、每周 $5、每月 $10；平台上下文上限 524K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突；2026-10-06 至2026-10-20额度加成（官方未公布时区/具体时刻），10-21恢复$6/月"
+          "note": "价格：输入 $1.36/M Token、缓存读取 $0.14/M Token、输出 $4.18/M Token；模型额度：5小时 unknown、每周 unknown、每月 $10；平台上下文上限 524K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突；2026-10-06 至2026-10-20额度加成（官方未公布时区/具体时刻），10-21恢复$6/月 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--longcat-2-0",
@@ -11300,8 +11504,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 75.1978643807,
-            "weeklyTokenInM": 187.9946609516,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 376.0,
             "unitPriceCnyPerM": 0.01836
           },
@@ -11314,7 +11518,7 @@
             "cacheCnyPerM": 0.0408,
             "outputCnyPerM": 8.16
           },
-          "note": "价格：输入 $0.3/M Token、缓存读取 $0.006/M Token、输出 $1.2/M Token；模型额度：5小时 $2、每周 $5、每月 $10；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.3/M Token、缓存读取 $0.006/M Token、输出 $1.2/M Token；模型额度：5小时 unknown、每周 unknown、每月 $10；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--glm-5-3",
@@ -11324,8 +11528,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 5.9274187573,
-            "weeklyTokenInM": 14.8185468933,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 29.6,
             "unitPriceCnyPerM": 0.22916
           },
@@ -11338,7 +11542,7 @@
             "cacheCnyPerM": 1.768,
             "outputCnyPerM": 29.92
           },
-          "note": "价格：输入 $1.4/M Token、缓存读取 $0.26/M Token、输出 $4.4/M Token；模型额度：5小时 $2、每周 $5、每月 $10；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $1.4/M Token、缓存读取 $0.26/M Token、输出 $4.4/M Token；模型额度：5小时 unknown、每周 unknown、每月 $10；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--kimi-k2-7-code",
@@ -11348,8 +11552,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 7.2915822734,
-            "weeklyTokenInM": 18.2289556834,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 36.5,
             "unitPriceCnyPerM": 0.18632
           },
@@ -11362,7 +11566,7 @@
             "cacheCnyPerM": 1.292,
             "outputCnyPerM": 27.2
           },
-          "note": "价格：输入 $0.95/M Token、缓存读取 $0.19/M Token、输出 $4/M Token；模型额度：5小时 $1.8、每周 $4.5、每月 $9；平台上下文上限 256K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.95/M Token、缓存读取 $0.19/M Token、输出 $4/M Token；模型额度：5小时 unknown、每周 unknown、每月 $9；平台上下文上限 256K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--glm-5-2-fast",
@@ -11372,8 +11576,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 2.6740947075,
-            "weeklyTokenInM": 6.6852367688,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 13.4,
             "unitPriceCnyPerM": 0.50864
           },
@@ -11386,7 +11590,7 @@
             "cacheCnyPerM": 3.4,
             "outputCnyPerM": 69.7
           },
-          "note": "价格：输入 $3/M Token、缓存读取 $0.5/M Token、输出 $10.25/M Token；模型额度：5小时 $1.8、每周 $4.5、每月 $9；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $3/M Token、缓存读取 $0.5/M Token、输出 $10.25/M Token；模型额度：5小时 unknown、每周 unknown、每月 $9；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--minimax-m3--contexttier-512k",
@@ -11396,8 +11600,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 20.6079340546,
-            "weeklyTokenInM": 51.5198351365,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 103.0,
             "unitPriceCnyPerM": 0.06596
           },
@@ -11410,7 +11614,7 @@
             "cacheCnyPerM": 0.408,
             "outputCnyPerM": 8.16
           },
-          "note": "价格：输入 $0.3/M Token、缓存读取 $0.06/M Token、输出 $1.2/M Token；模型额度：5小时 $1.6、每周 $4、每月 $8；平台上下文上限 1M；50% 优惠起止日期未公布，常规输入/缓存/输出 $0.6/$0.12/$2.4 每M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.3/M Token、缓存读取 $0.06/M Token、输出 $1.2/M Token；模型额度：5小时 unknown、每周 unknown、每月 $8；平台上下文上限 1M；50% 优惠起止日期未公布，常规输入/缓存/输出 $0.6/$0.12/$2.4 每M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--minimax-m3--contexttier-512k-long",
@@ -11420,8 +11624,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 20.6079340546,
-            "weeklyTokenInM": 51.5198351365,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 103.0,
             "unitPriceCnyPerM": 0.06596
           },
@@ -11434,7 +11638,7 @@
             "cacheCnyPerM": 0.408,
             "outputCnyPerM": 8.16
           },
-          "note": "价格：输入 $0.3/M Token、缓存读取 $0.06/M Token、输出 $1.2/M Token；模型额度：5小时 $1.6、每周 $4、每月 $8；平台上下文上限 1M；50% 优惠起止日期未公布，常规输入/缓存/输出 $0.6/$0.12/$2.4 每M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.3/M Token、缓存读取 $0.06/M Token、输出 $1.2/M Token；模型额度：5小时 unknown、每周 unknown、每月 $8；平台上下文上限 1M；50% 优惠起止日期未公布，常规输入/缓存/输出 $0.6/$0.12/$2.4 每M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--kimi-k3",
@@ -11444,8 +11648,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 3.1506916753,
-            "weeklyTokenInM": 7.8767291882,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 15.8,
             "unitPriceCnyPerM": 0.4318
           },
@@ -11458,7 +11662,7 @@
             "cacheCnyPerM": 2.04,
             "outputCnyPerM": 102.0
           },
-          "note": "价格：输入 $3/M Token、缓存读取 $0.3/M Token、输出 $15/M Token；模型额度：5小时 $1.6、每周 $4、每月 $8；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $3/M Token、缓存读取 $0.3/M Token、输出 $15/M Token；模型额度：5小时 unknown、每周 unknown、每月 $8；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--deepseek-v4-flash-fast",
@@ -11468,8 +11672,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 19.3009439368,
-            "weeklyTokenInM": 48.252359842,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 96.5,
             "unitPriceCnyPerM": 0.07072
           },
@@ -11482,7 +11686,7 @@
             "cacheCnyPerM": 0.476,
             "outputCnyPerM": 3.808
           },
-          "note": "价格：输入 $0.28/M Token、缓存读取 $0.07/M Token、输出 $0.56/M Token；模型额度：5小时 $1.6、每周 $4、每月 $8；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.28/M Token、缓存读取 $0.07/M Token、输出 $0.56/M Token；模型额度：5小时 unknown、每周 unknown、每月 $8；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--qwen-3-8-max",
@@ -11492,8 +11696,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 3.8270972151,
-            "weeklyTokenInM": 9.5677430378,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 19.1,
             "unitPriceCnyPerM": 0.35564
           },
@@ -11506,7 +11710,7 @@
             "cacheCnyPerM": 1.7,
             "outputCnyPerM": 40.8
           },
-          "note": "价格：输入 $2/M Token、缓存读取 $0.25/M Token、输出 $6/M Token；模型额度：5小时 $1.4000000000000001、每周 $3.5、每月 $7；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $2/M Token、缓存读取 $0.25/M Token、输出 $6/M Token；模型额度：5小时 unknown、每周 unknown、每月 $7；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--qwen-3-8-max-0902",
@@ -11516,8 +11720,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 3.8270972151,
-            "weeklyTokenInM": 9.5677430378,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 19.1,
             "unitPriceCnyPerM": 0.35564
           },
@@ -11530,7 +11734,7 @@
             "cacheCnyPerM": 1.7,
             "outputCnyPerM": 40.8
           },
-          "note": "价格：输入 $2/M Token、缓存读取 $0.25/M Token、输出 $6/M Token；模型额度：5小时 $1.4000000000000001、每周 $3.5、每月 $7；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $2/M Token、缓存读取 $0.25/M Token、输出 $6/M Token；模型额度：5小时 unknown、每周 unknown、每月 $7；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--deepseek-v4-flash-0731--gu",
@@ -11540,8 +11744,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 90.2374372568,
-            "weeklyTokenInM": 225.593593142,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 451.2,
             "unitPriceCnyPerM": 0.01496
           },
@@ -11554,7 +11758,7 @@
             "cacheCnyPerM": 0.0204,
             "outputCnyPerM": 4.08
           },
-          "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--deepseek-v4-flash-0731--feng",
@@ -11564,8 +11768,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 45.1187186284,
-            "weeklyTokenInM": 112.796796571,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 225.6,
             "unitPriceCnyPerM": 0.02992
           },
@@ -11578,7 +11782,7 @@
             "cacheCnyPerM": 0.0408,
             "outputCnyPerM": 8.16
           },
-          "note": "价格：输入 $0.3/M Token、缓存读取 $0.006/M Token、输出 $1.2/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.3/M Token、缓存读取 $0.006/M Token、输出 $1.2/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--deepseek-v4-1-flash--timetier--servicetier-fast-offpeak",
@@ -11588,8 +11792,8 @@
           "serviceTier": "Fast",
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 46.1822660099,
-            "weeklyTokenInM": 115.4556650246,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 230.9,
             "unitPriceCnyPerM": 0.02924
           },
@@ -11602,7 +11806,7 @@
             "cacheCnyPerM": 0.1088,
             "outputCnyPerM": 3.944
           },
-          "note": "价格：输入 $0.16/M Token、缓存读取 $0.016/M Token、输出 $0.58/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.16/M Token、缓存读取 $0.016/M Token、输出 $0.58/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--deepseek-v4-1-flash--timetier--servicetier-fast-peak",
@@ -11612,8 +11816,8 @@
           "serviceTier": "Fast",
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 23.0911330049,
-            "weeklyTokenInM": 57.7278325123,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 115.5,
             "unitPriceCnyPerM": 0.05916
           },
@@ -11626,7 +11830,7 @@
             "cacheCnyPerM": 0.2176,
             "outputCnyPerM": 7.888
           },
-          "note": "价格：输入 $0.32/M Token、缓存读取 $0.032/M Token、输出 $1.16/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.32/M Token、缓存读取 $0.032/M Token、输出 $1.16/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--gpt-5-6-luna--contexttier-272k",
@@ -11636,8 +11840,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 34.4283460049,
-            "weeklyTokenInM": 86.0708650122,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 172.1,
             "unitPriceCnyPerM": 0.03944
           },
@@ -11650,7 +11854,7 @@
             "cacheCnyPerM": 0.136,
             "outputCnyPerM": 8.16
           },
-          "note": "价格：输入 $0.2/M Token、缓存读取 $0.02/M Token、输出 $1.2/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1.1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.2/M Token、缓存读取 $0.02/M Token、输出 $1.2/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1.1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--gpt-5-6-luna--contexttier-272k-long",
@@ -11660,8 +11864,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 17.9883076001,
-            "weeklyTokenInM": 44.9707690001,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 89.9,
             "unitPriceCnyPerM": 0.07548
           },
@@ -11674,7 +11878,7 @@
             "cacheCnyPerM": 0.272,
             "outputCnyPerM": 12.24
           },
-          "note": "价格：输入 $0.4/M Token、缓存读取 $0.04/M Token、输出 $1.8/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1.1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.4/M Token、缓存读取 $0.04/M Token、输出 $1.8/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1.1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--mimo-v2-5",
@@ -11684,8 +11888,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 108.9749993189,
-            "weeklyTokenInM": 272.4374982973,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 544.9,
             "unitPriceCnyPerM": 0.01224
           },
@@ -11698,7 +11902,7 @@
             "cacheCnyPerM": 0.01904,
             "outputCnyPerM": 1.904
           },
-          "note": "价格：输入 $0.14/M Token、缓存读取 $0.0028/M Token、输出 $0.28/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；当前优惠起止日期未公布，常规价以官网届时公布为准；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.14/M Token、缓存读取 $0.0028/M Token、输出 $0.28/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；当前优惠起止日期未公布，常规价以官网届时公布为准；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--deepseek-v4-pro-0813--gu",
@@ -11708,8 +11912,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 18.8885653348,
-            "weeklyTokenInM": 47.2214133369,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 94.4,
             "unitPriceCnyPerM": 0.07208
           },
@@ -11722,7 +11926,7 @@
             "cacheCnyPerM": 0.1496,
             "outputCnyPerM": 13.464
           },
-          "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.66/M Token、缓存读取 $0.022/M Token、输出 $1.98/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--deepseek-v4-pro-0813--feng",
@@ -11732,8 +11936,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 9.4442826674,
-            "weeklyTokenInM": 23.6107066685,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 47.2,
             "unitPriceCnyPerM": 0.14416
           },
@@ -11746,7 +11950,7 @@
             "cacheCnyPerM": 0.2992,
             "outputCnyPerM": 26.928
           },
-          "note": "价格：输入 $1.32/M Token、缓存读取 $0.044/M Token、输出 $3.96/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $1.32/M Token、缓存读取 $0.044/M Token、输出 $3.96/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--mimo-v2-5-pro",
@@ -11756,8 +11960,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 40.824449763,
-            "weeklyTokenInM": 102.0611244074,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 204.1,
             "unitPriceCnyPerM": 0.03332
           },
@@ -11770,7 +11974,7 @@
             "cacheCnyPerM": 0.02448,
             "outputCnyPerM": 5.916
           },
-          "note": "价格：输入 $0.435/M Token、缓存读取 $0.0036/M Token、输出 $0.87/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；当前优惠起止日期未公布，常规价以官网届时公布为准；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.435/M Token、缓存读取 $0.0036/M Token、输出 $0.87/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；当前优惠起止日期未公布，常规价以官网届时公布为准；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--gpt-6-luna--contexttier-272k",
@@ -11780,8 +11984,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 70.8905626938,
-            "weeklyTokenInM": 177.2264067346,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 354.5,
             "unitPriceCnyPerM": 0.01904
           },
@@ -11794,7 +11998,7 @@
             "cacheCnyPerM": 0.068,
             "outputCnyPerM": 3.4
           },
-          "note": "价格：输入 $0.1/M Token、缓存读取 $0.01/M Token、输出 $0.5/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1.1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.1/M Token、缓存读取 $0.01/M Token、输出 $0.5/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1.1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--gpt-6-luna--contexttier-272k-long",
@@ -11804,8 +12008,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 36.8041711394,
-            "weeklyTokenInM": 92.0104278485,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 184.0,
             "unitPriceCnyPerM": 0.03672
           },
@@ -11818,7 +12022,7 @@
             "cacheCnyPerM": 0.136,
             "outputCnyPerM": 5.1
           },
-          "note": "价格：输入 $0.2/M Token、缓存读取 $0.02/M Token、输出 $0.75/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1.1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.2/M Token、缓存读取 $0.02/M Token、输出 $0.75/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1.1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--qwen-3-8-omni-flash",
@@ -11828,8 +12032,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 48.1222304654,
-            "weeklyTokenInM": 120.3055761635,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 240.6,
             "unitPriceCnyPerM": 0.02856
           },
@@ -11842,7 +12046,7 @@
             "cacheCnyPerM": 0.1088,
             "outputCnyPerM": 3.196
           },
-          "note": "价格：输入 $0.15/M Token、缓存读取 $0.016/M Token、输出 $0.47/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.15/M Token、缓存读取 $0.016/M Token、输出 $0.47/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--hy4-preview",
@@ -11852,8 +12056,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 12.8072403599,
-            "weeklyTokenInM": 32.0181008997,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 64.0,
             "unitPriceCnyPerM": 0.10608
           },
@@ -11866,7 +12070,7 @@
             "cacheCnyPerM": 0.2856,
             "outputCnyPerM": 17.0068
           },
-          "note": "价格：输入 $0.834/M Token、缓存读取 $0.042/M Token、输出 $2.501/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.834/M Token、缓存读取 $0.042/M Token、输出 $2.501/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--qwen-3-8-flash-next",
@@ -11876,8 +12080,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 47.1809389007,
-            "weeklyTokenInM": 117.9523472517,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 235.9,
             "unitPriceCnyPerM": 0.02856
           },
@@ -11890,7 +12094,7 @@
             "cacheCnyPerM": 0.1088,
             "outputCnyPerM": 3.196
           },
-          "note": "价格：输入 $0.16/M Token、缓存读取 $0.016/M Token、输出 $0.47/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.16/M Token、缓存读取 $0.016/M Token、输出 $0.47/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--glm-5-3-flashx",
@@ -11900,8 +12104,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 12.5587054068,
-            "weeklyTokenInM": 31.396763517,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 62.8,
             "unitPriceCnyPerM": 0.10812
           },
@@ -11914,7 +12118,7 @@
             "cacheCnyPerM": 0.51,
             "outputCnyPerM": 8.5
           },
-          "note": "价格：输入 $0.37/M Token、缓存读取 $0.075/M Token、输出 $1.25/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.37/M Token、缓存读取 $0.075/M Token、输出 $1.25/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--deepseek-v4-flash-vision-exp--gu",
@@ -11924,8 +12128,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 90.2374372568,
-            "weeklyTokenInM": 225.593593142,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 451.2,
             "unitPriceCnyPerM": 0.01496
           },
@@ -11938,7 +12142,7 @@
             "cacheCnyPerM": 0.0204,
             "outputCnyPerM": 4.08
           },
-          "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.15/M Token、缓存读取 $0.003/M Token、输出 $0.6/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--deepseek-v4-flash-vision-exp--feng",
@@ -11948,8 +12152,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 45.1187186284,
-            "weeklyTokenInM": 112.796796571,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 225.6,
             "unitPriceCnyPerM": 0.02992
           },
@@ -11962,7 +12166,7 @@
             "cacheCnyPerM": 0.0408,
             "outputCnyPerM": 8.16
           },
-          "note": "价格：输入 $0.3/M Token、缓存读取 $0.006/M Token、输出 $1.2/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.3/M Token、缓存读取 $0.006/M Token、输出 $1.2/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--muse-spark-1-3--service-contributor",
@@ -11972,8 +12176,8 @@
           "serviceTier": "Contributor",
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 152.5649990465,
-            "weeklyTokenInM": 381.4124976162,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 762.8,
             "unitPriceCnyPerM": 0.00884
           },
@@ -11986,7 +12190,7 @@
             "cacheCnyPerM": 0.0136,
             "outputCnyPerM": 1.36
           },
-          "note": "价格：输入 $0.1/M Token、缓存读取 $0.002/M Token、输出 $0.2/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.1/M Token、缓存读取 $0.002/M Token、输出 $0.2/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--muse-spark-1-2--service-contributor",
@@ -11996,8 +12200,8 @@
           "serviceTier": "Contributor",
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 152.5649990465,
-            "weeklyTokenInM": 381.4124976162,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 762.8,
             "unitPriceCnyPerM": 0.00884
           },
@@ -12010,7 +12214,7 @@
             "cacheCnyPerM": 0.0136,
             "outputCnyPerM": 1.36
           },
-          "note": "价格：输入 $0.1/M Token、缓存读取 $0.002/M Token、输出 $0.2/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.1/M Token、缓存读取 $0.002/M Token、输出 $0.2/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--kimi-k2-7-code-highspeed--service-highspeed",
@@ -12020,8 +12224,8 @@
           "serviceTier": "高速",
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 2.4305274245,
-            "weeklyTokenInM": 6.0763185611,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 12.2,
             "unitPriceCnyPerM": 0.55964
           },
@@ -12034,7 +12238,7 @@
             "cacheCnyPerM": 2.584,
             "outputCnyPerM": 54.4
           },
-          "note": "价格：输入 $1.9/M Token、缓存读取 $0.38/M Token、输出 $8/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 262K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $1.9/M Token、缓存读取 $0.38/M Token、输出 $8/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 262K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--grok-4-5",
@@ -12044,8 +12248,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 1.9929416649,
-            "weeklyTokenInM": 4.9823541623,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 10.0,
             "unitPriceCnyPerM": 0.68272
           },
@@ -12058,7 +12262,7 @@
             "cacheCnyPerM": 3.4,
             "outputCnyPerM": 40.8
           },
-          "note": "价格：输入 $2/M Token、缓存读取 $0.5/M Token、输出 $6/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 500K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $2/M Token、缓存读取 $0.5/M Token、输出 $6/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 500K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--inkling",
@@ -12068,8 +12272,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 5.2017295751,
-            "weeklyTokenInM": 13.0043239377,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 26.0,
             "unitPriceCnyPerM": 0.26112
           },
@@ -12082,7 +12286,7 @@
             "cacheCnyPerM": 1.156,
             "outputCnyPerM": 27.54
           },
-          "note": "价格：输入 $1/M Token、缓存读取 $0.17/M Token、输出 $4.05/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 256K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $1/M Token、缓存读取 $0.17/M Token、输出 $4.05/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 256K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--inkling-small",
@@ -12092,8 +12296,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 9.5693779904,
-            "weeklyTokenInM": 23.9234449761,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 47.8,
             "unitPriceCnyPerM": 0.14212
           },
@@ -12106,7 +12310,7 @@
             "cacheCnyPerM": 0.68,
             "outputCnyPerM": 8.16
           },
-          "note": "价格：输入 $0.5/M Token、缓存读取 $0.1/M Token、输出 $1.2/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.5/M Token、缓存读取 $0.1/M Token、输出 $1.2/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--mimo-v2-6-pro",
@@ -12116,8 +12320,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 40.824449763,
-            "weeklyTokenInM": 102.0611244074,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 204.1,
             "unitPriceCnyPerM": 0.03332
           },
@@ -12130,7 +12334,7 @@
             "cacheCnyPerM": 0.02448,
             "outputCnyPerM": 5.916
           },
-          "note": "价格：输入 $0.435/M Token、缓存读取 $0.0036/M Token、输出 $0.87/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.435/M Token、缓存读取 $0.0036/M Token、输出 $0.87/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--mimo-v2-6-flash",
@@ -12140,8 +12344,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 108.9749993189,
-            "weeklyTokenInM": 272.4374982973,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 544.9,
             "unitPriceCnyPerM": 0.01224
           },
@@ -12154,7 +12358,7 @@
             "cacheCnyPerM": 0.01904,
             "outputCnyPerM": 1.904
           },
-          "note": "价格：输入 $0.14/M Token、缓存读取 $0.0028/M Token、输出 $0.28/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.14/M Token、缓存读取 $0.0028/M Token、输出 $0.28/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--step-5-preview",
@@ -12164,8 +12368,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 10.8585001697,
-            "weeklyTokenInM": 27.1462504242,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 54.3,
             "unitPriceCnyPerM": 0.12512
           },
@@ -12178,7 +12382,7 @@
             "cacheCnyPerM": 0.34,
             "outputCnyPerM": 18.36
           },
-          "note": "价格：输入 $1/M Token、缓存读取 $0.05/M Token、输出 $2.7/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $1/M Token、缓存读取 $0.05/M Token、输出 $2.7/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--step-3-7-flash",
@@ -12188,8 +12392,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 22.4257148197,
-            "weeklyTokenInM": 56.0642870491,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 112.1,
             "unitPriceCnyPerM": 0.06052
           },
@@ -12202,7 +12406,7 @@
             "cacheCnyPerM": 0.272,
             "outputCnyPerM": 7.82
           },
-          "note": "价格：输入 $0.2/M Token、缓存读取 $0.04/M Token、输出 $1.15/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 256K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.2/M Token、缓存读取 $0.04/M Token、输出 $1.15/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 256K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--step-3-5-flash",
@@ -12212,8 +12416,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 48.226665327,
-            "weeklyTokenInM": 120.5666633176,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 241.1,
             "unitPriceCnyPerM": 0.02788
           },
@@ -12226,7 +12430,7 @@
             "cacheCnyPerM": 0.136,
             "outputCnyPerM": 2.04
           },
-          "note": "价格：输入 $0.09/M Token、缓存读取 $0.02/M Token、输出 $0.3/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 262K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.09/M Token、缓存读取 $0.02/M Token、输出 $0.3/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 262K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--nemotron-3-ultra",
@@ -12236,8 +12440,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 7.7279752705,
-            "weeklyTokenInM": 19.3199381762,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 38.6,
             "unitPriceCnyPerM": 0.17612
           },
@@ -12250,7 +12454,7 @@
             "cacheCnyPerM": 0.816,
             "outputCnyPerM": 16.32
           },
-          "note": "价格：输入 $0.6/M Token、缓存读取 $0.12/M Token、输出 $2.4/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.6/M Token、缓存读取 $0.12/M Token、输出 $2.4/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--kimi-k2-6",
@@ -12260,8 +12464,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 5.49192801,
-            "weeklyTokenInM": 13.7298200249,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 27.5,
             "unitPriceCnyPerM": 0.24752
           },
@@ -12274,7 +12478,7 @@
             "cacheCnyPerM": 1.088,
             "outputCnyPerM": 27.2
           },
-          "note": "价格：输入 $0.95/M Token、缓存读取 $0.16/M Token、输出 $4/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 256K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.95/M Token、缓存读取 $0.16/M Token、输出 $4/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 256K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--kimi-k2-5",
@@ -12284,8 +12488,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 8.6098654709,
-            "weeklyTokenInM": 21.5246636771,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 43.0,
             "unitPriceCnyPerM": 0.15776
           },
@@ -12298,7 +12502,7 @@
             "cacheCnyPerM": 0.68,
             "outputCnyPerM": 20.4
           },
-          "note": "价格：输入 $0.6/M Token、缓存读取 $0.1/M Token、输出 $3/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 256K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.6/M Token、缓存读取 $0.1/M Token、输出 $3/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 256K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--glm-5-1",
@@ -12308,8 +12512,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 3.5564512544,
-            "weeklyTokenInM": 8.891128136,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 17.8,
             "unitPriceCnyPerM": 0.38216
           },
@@ -12322,7 +12526,7 @@
             "cacheCnyPerM": 1.768,
             "outputCnyPerM": 29.92
           },
-          "note": "价格：输入 $1.4/M Token、缓存读取 $0.26/M Token、输出 $4.4/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 —；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $1.4/M Token、缓存读取 $0.26/M Token、输出 $4.4/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 —；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--glm-5",
@@ -12332,8 +12536,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 4.7095761381,
-            "weeklyTokenInM": 11.7739403454,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 23.5,
             "unitPriceCnyPerM": 0.289
           },
@@ -12346,7 +12550,7 @@
             "cacheCnyPerM": 1.36,
             "outputCnyPerM": 21.76
           },
-          "note": "价格：输入 $1/M Token、缓存读取 $0.2/M Token、输出 $3.2/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 200K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $1/M Token、缓存读取 $0.2/M Token、输出 $3.2/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 200K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--qwen-3-7-flash--contexttier-32k",
@@ -12356,8 +12560,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 153.5705144612,
-            "weeklyTokenInM": 383.9262861531,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 767.9,
             "unitPriceCnyPerM": 0.00884
           },
@@ -12370,7 +12574,7 @@
             "cacheCnyPerM": 0.0408,
             "outputCnyPerM": 0.884
           },
-          "note": "价格：输入 $0.03/M Token、缓存读取 $0.006/M Token、输出 $0.13/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.03/M Token、缓存读取 $0.006/M Token、输出 $0.13/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--qwen-3-7-flash--contexttier-32k256k",
@@ -12380,8 +12584,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 46.3678516229,
-            "weeklyTokenInM": 115.9196290572,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 231.8,
             "unitPriceCnyPerM": 0.02924
           },
@@ -12394,7 +12598,7 @@
             "cacheCnyPerM": 0.136,
             "outputCnyPerM": 2.72
           },
-          "note": "价格：输入 $0.1/M Token、缓存读取 $0.02/M Token、输出 $0.4/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.1/M Token、缓存读取 $0.02/M Token、输出 $0.4/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--qwen-3-7-flash--contexttier-256k-long",
@@ -12404,8 +12608,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 23.1839258114,
-            "weeklyTokenInM": 57.9598145286,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 115.9,
             "unitPriceCnyPerM": 0.05848
           },
@@ -12418,7 +12622,7 @@
             "cacheCnyPerM": 0.272,
             "outputCnyPerM": 5.44
           },
-          "note": "价格：输入 $0.2/M Token、缓存读取 $0.04/M Token、输出 $0.8/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.2/M Token、缓存读取 $0.04/M Token、输出 $0.8/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--qwen-3-6-max-preview",
@@ -12428,8 +12632,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 3.4340659341,
-            "weeklyTokenInM": 8.5851648352,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 17.2,
             "unitPriceCnyPerM": 0.39576
           },
@@ -12442,7 +12646,7 @@
             "cacheCnyPerM": 1.768,
             "outputCnyPerM": 53.04
           },
-          "note": "价格：输入 $1.3/M Token、缓存读取 $0.26/M Token、输出 $7.8/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 —；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $1.3/M Token、缓存读取 $0.26/M Token、输出 $7.8/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 —；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--minimax-m2-7",
@@ -12452,8 +12656,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 15.455950541,
-            "weeklyTokenInM": 38.6398763524,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 77.3,
             "unitPriceCnyPerM": 0.08772
           },
@@ -12466,7 +12670,7 @@
             "cacheCnyPerM": 0.408,
             "outputCnyPerM": 8.16
           },
-          "note": "价格：输入 $0.3/M Token、缓存读取 $0.06/M Token、输出 $1.2/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 —；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.3/M Token、缓存读取 $0.06/M Token、输出 $1.2/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 —；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--minimax-m2-5",
@@ -12476,8 +12680,8 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 24.3494140922,
-            "weeklyTokenInM": 60.8735352306,
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
             "monthlyTokenInM": 121.7,
             "unitPriceCnyPerM": 0.05576
           },
@@ -12490,7 +12694,7 @@
             "cacheCnyPerM": 0.204,
             "outputCnyPerM": 8.16
           },
-          "note": "价格：输入 $0.3/M Token、缓存读取 $0.03/M Token、输出 $1.2/M Token；模型额度：5小时 $1.2000000000000002、每周 $3、每月 $6；平台上下文上限 200K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突"
+          "note": "价格：输入 $0.3/M Token、缓存读取 $0.03/M Token、输出 $1.2/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；平台上下文上限 200K；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--glyph-cluster",
@@ -12511,7 +12715,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "平台上下文上限 256K；当前免费，每日最多100次请求，UTC零点重置；免费活动起止日期未公布，Token额度未知；账户需保留至少$1余额"
+          "note": "平台上下文上限 256K；隐名预览期免费，每账户每日最多 100 次请求，UTC 零点重置；活动起止日期与 Token 上限未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；隐名预览期免费，每账户每日最多 100 次请求，UTC 零点重置；活动起止日期与 Token 上限未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
         },
         {
           "slug": "commandcode-go--ling-3-1-flash",
@@ -12535,7 +12739,7 @@
             "cacheCnyPerM": 0.408,
             "outputCnyPerM": 6.12
           },
-          "note": "价格：输入 $0.3/M Token、缓存读取 $0.06/M Token、输出 $0.9/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；按模型当前美元价格扣减；GOAT / Pro 有额度加成，官方未公布活动起止日期。各模型从共享套餐池扣减，不能相加； Go 的五小时及周窗口在官方总表与专页存在冲突，这两个窗口用量保持未知。"
+          "note": "价格：输入 $0.3/M Token、缓存读取 $0.06/M Token、输出 $0.9/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；按模型当前美元价格扣减；GOAT / Pro 有额度加成，官方未公布活动起止日期。各模型从共享套餐池扣减，不能相加； Go 的五小时及周窗口在官方总表与专页存在冲突，这两个窗口用量保持未知。 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--laguna-s-2-1",
@@ -12558,7 +12762,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；平台上下文上限 256K；免费活动起止日期未公布；无每日请求限制；账户需保留至少$1余额"
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；平台上下文上限 256K；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。"
         },
         {
           "slug": "commandcode-go--beam-1-0",
@@ -12581,7 +12785,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；当前免费，活动起止日期未公布、无每日请求次数上限。；当前免费，无每日请求次数上限；活动起止日期未公布。"
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
         },
         {
           "slug": "commandcode-go--cat-jam",
@@ -12604,7 +12808,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；当前免费，活动起止日期未公布、无每日请求次数上限。；当前免费，无每日请求次数上限；活动起止日期未公布。"
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；隐名预览期免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；隐名预览期免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
         },
         {
           "slug": "commandcode-go--muse-spark-open",
@@ -12628,7 +12832,7 @@
             "cacheCnyPerM": 1.02,
             "outputCnyPerM": 28.9
           },
-          "note": "价格：输入 $1.25/M Token、缓存读取 $0.15/M Token、输出 $4.25/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；美元 Credits 按模型报价扣减；属于共享套餐池，模型额度不能相加； Go 的五小时及周窗口在官方总表与专页存在冲突，这两个窗口用量保持未知。"
+          "note": "价格：输入 $1.25/M Token、缓存读取 $0.15/M Token、输出 $4.25/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；美元 Credits 按模型报价扣减；属于共享套餐池，模型额度不能相加； Go 的五小时及周窗口在官方总表与专页存在冲突，这两个窗口用量保持未知。 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--nemotron-3-5-super-vl",
@@ -12652,7 +12856,54 @@
             "cacheCnyPerM": 0.272,
             "outputCnyPerM": 3.4
           },
-          "note": "价格：输入 $0.2/M Token、缓存读取 $0.04/M Token、输出 $0.5/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；美元 Credits 按模型报价扣减；属于共享套餐池，模型额度不能相加； Go 的五小时及周窗口在官方总表与专页存在冲突，这两个窗口用量保持未知。"
+          "note": "价格：输入 $0.2/M Token、缓存读取 $0.04/M Token、输出 $0.5/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；美元 Credits 按模型报价扣减；属于共享套餐池，模型额度不能相加； Go 的五小时及周窗口在官方总表与专页存在冲突，这两个窗口用量保持未知。 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
+        },
+        {
+          "slug": "commandcode-go--minimax-m3-1-flash--free",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Free",
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；限时免费，活动起止时间未公布；开始会话时账户需有至少$1 Credits，免费请求不扣Credits；零数据保留。；限时免费，活动起止时间未公布，无每日请求次数上限；开始会话前账户需至少$1 Credits；零数据保留，不消耗套餐模型月额度；活动结束后需切换付费入口。"
+        },
+        {
+          "slug": "commandcode-go--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 243.5,
+            "unitPriceCnyPerM": 0.02788
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.15,
+            "cachePerM": 0.015,
+            "outputPerM": 0.6,
+            "inputCnyPerM": 1.02,
+            "cacheCnyPerM": 0.102,
+            "outputCnyPerM": 4.08
+          },
+          "note": "价格：输入 $0.15/M Token、缓存读取 $0.015/M Token、输出 $0.6/M Token；模型额度：5小时 unknown、每周 unknown、每月 $6；按输入/缓存/输出实际价格扣减Credits，与其他型号共享套餐额度，不能相加。五小时与周精确模型额度未知。"
         }
       ]
     },
@@ -12672,11 +12923,12 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
-        "最高每月 $70 模型 Credits",
+        "共享月池以 70 Credits 为基准；型号加成后单型号使用价值可达 $100",
         "5 小时 / 周额度为 $14 / $35",
-        "支持 64 个模型"
+        "支持 65 个模型"
       ],
-      "note": "各模型月额度共享套餐池，不能相加；DeepSeek V4.1 Flash额度加成无结束日期。支持Provider API与客户端共用额度。",
+      "note": "各型号共享一个月度套餐池，基准为 70 Credits。逐型号月额度表示整池只用于该型号时的使用价值；混用时按各型号月额度的消耗比例合并计量，不能相加。活动型号可对应高于 $70 的单型号使用价值，不代表额外发放独立余额。DeepSeek V4.1 Flash 额度加成无结束日期。Provider API 与客户端共用额度。",
+      "summary": "共享月池以 70 Credits 为基准；型号加成后单型号使用价值可达 $100；5 小时 / 周额度为 $14 / $35；支持 64 个模型",
       "planStatus": "open",
       "planModels": [
         {
@@ -14522,7 +14774,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "平台上下文上限 256K；当前免费，每日最多100次请求，UTC零点重置；免费活动起止日期未公布，Token额度未知；账户需保留至少$1余额"
+          "note": "平台上下文上限 256K；隐名预览期免费，每账户每日最多 100 次请求，UTC 零点重置；活动起止日期与 Token 上限未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；隐名预览期免费，每账户每日最多 100 次请求，UTC 零点重置；活动起止日期与 Token 上限未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
         },
         {
           "slug": "commandcode-goat--ling-3-1-flash",
@@ -14569,7 +14821,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；平台上下文上限 256K；免费活动起止日期未公布；无每日请求限制；账户需保留至少$1余额"
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；平台上下文上限 256K；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。"
         },
         {
           "slug": "commandcode-goat--beam-1-0",
@@ -14592,7 +14844,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；当前免费，活动起止日期未公布、无每日请求次数上限。；当前免费，无每日请求次数上限；活动起止日期未公布。"
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
         },
         {
           "slug": "commandcode-goat--cat-jam",
@@ -14615,7 +14867,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；当前免费，活动起止日期未公布、无每日请求次数上限。；当前免费，无每日请求次数上限；活动起止日期未公布。"
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；隐名预览期免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；隐名预览期免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
         },
         {
           "slug": "commandcode-goat--muse-spark-open",
@@ -14688,6 +14940,53 @@
             "outputCnyPerM": 81.6
           },
           "note": "价格：输入 $4/M Token、缓存读取 $0.5/M Token、输出 $12/M Token；模型额度：5小时 $4、每周 $10、每月 $20；缓存写入另收 $5/M Token。；美元 Credits 按模型报价扣减；属于共享套餐池，模型额度不能相加；短窗口按模型月额度与套餐窗口比例估算。"
+        },
+        {
+          "slug": "commandcode-goat--minimax-m3-1-flash--free",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Free",
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；限时免费，活动起止时间未公布；开始会话时账户需有至少$1 Credits，免费请求不扣Credits；零数据保留。；限时免费，活动起止时间未公布，无每日请求次数上限；开始会话前账户需至少$1 Credits；零数据保留，不消耗套餐模型月额度；活动结束后需切换付费入口。"
+        },
+        {
+          "slug": "commandcode-goat--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 811.6,
+            "unitPriceCnyPerM": 0.08364
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.15,
+            "cachePerM": 0.015,
+            "outputPerM": 0.6,
+            "inputCnyPerM": 1.02,
+            "cacheCnyPerM": 0.102,
+            "outputCnyPerM": 4.08
+          },
+          "note": "价格：输入 $0.15/M Token、缓存读取 $0.015/M Token、输出 $0.6/M Token；模型额度：5小时 unknown、每周 unknown、每月 $20；按输入/缓存/输出实际价格扣减Credits，与其他型号共享套餐额度，不能相加。五小时与周精确模型额度未知。"
         }
       ]
     },
@@ -14707,11 +15006,12 @@
       "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
-        "最高每月 $80 模型 Credits",
+        "共享月池以 80 Credits 为基准；型号加成后单型号使用价值可达 $110",
         "5 小时 / 周额度为 $16 / $40",
-        "支持 79 个模型"
+        "支持 80 个模型"
       ],
-      "note": "各模型月额度共享套餐池，不能相加；DeepSeek V4.1 Flash额度加成无结束日期。支持Provider API与客户端共用额度。",
+      "note": "各型号共享一个月度套餐池，基准为 80 Credits。逐型号月额度表示整池只用于该型号时的使用价值；混用时按各型号月额度的消耗比例合并计量，不能相加。活动型号可对应高于 $80 的单型号使用价值，不代表额外发放独立余额。DeepSeek V4.1 Flash 额度加成无结束日期。Provider API 与客户端共用额度。",
+      "summary": "共享月池以 80 Credits 为基准；型号加成后单型号使用价值可达 $110；5 小时 / 周额度为 $16 / $40；支持 79 个模型",
       "planStatus": "open",
       "planModels": [
         {
@@ -16941,7 +17241,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "平台上下文上限 256K；当前免费，每日最多100次请求，UTC零点重置；免费活动起止日期未公布，Token额度未知；账户需保留至少$1余额"
+          "note": "平台上下文上限 256K；隐名预览期免费，每账户每日最多 100 次请求，UTC 零点重置；活动起止日期与 Token 上限未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；隐名预览期免费，每账户每日最多 100 次请求，UTC 零点重置；活动起止日期与 Token 上限未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
         },
         {
           "slug": "commandcode-pro--ling-3-1-flash",
@@ -16988,7 +17288,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；平台上下文上限 256K；免费活动起止日期未公布；无每日请求限制；账户需保留至少$1余额"
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；平台上下文上限 256K；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。"
         },
         {
           "slug": "commandcode-pro--beam-1-0",
@@ -17011,7 +17311,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；当前免费，活动起止日期未公布、无每日请求次数上限。；当前免费，无每日请求次数上限；活动起止日期未公布。"
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
         },
         {
           "slug": "commandcode-pro--cat-jam",
@@ -17034,7 +17334,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；当前免费，活动起止日期未公布、无每日请求次数上限。；当前免费，无每日请求次数上限；活动起止日期未公布。"
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；隐名预览期免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；隐名预览期免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
         },
         {
           "slug": "commandcode-pro--muse-spark-open",
@@ -17131,6 +17431,53 @@
             "outputCnyPerM": 68.0
           },
           "note": "价格：输入 $2/M Token、缓存读取 $0.1/M Token、输出 $10/M Token；模型额度：5小时 $4、每周 $10、每月 $20；美元 Credits 按模型报价扣减；属于共享套餐池，模型额度不能相加；短窗口按模型月额度与套餐窗口比例估算。"
+        },
+        {
+          "slug": "commandcode-pro--minimax-m3-1-flash--free",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Free",
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；限时免费，活动起止时间未公布；开始会话时账户需有至少$1 Credits，免费请求不扣Credits；零数据保留。；限时免费，活动起止时间未公布，无每日请求次数上限；开始会话前账户需至少$1 Credits；零数据保留，不消耗套餐模型月额度；活动结束后需切换付费入口。"
+        },
+        {
+          "slug": "commandcode-pro--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 1217.5,
+            "unitPriceCnyPerM": 0.11152
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.15,
+            "cachePerM": 0.015,
+            "outputPerM": 0.6,
+            "inputCnyPerM": 1.02,
+            "cacheCnyPerM": 0.102,
+            "outputCnyPerM": 4.08
+          },
+          "note": "价格：输入 $0.15/M Token、缓存读取 $0.015/M Token、输出 $0.6/M Token；模型额度：5小时 unknown、每周 unknown、每月 $30；按输入/缓存/输出实际价格扣减Credits，与其他型号共享套餐额度，不能相加。五小时与周精确模型额度未知。"
         }
       ]
     },
@@ -17178,7 +17525,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；平台上下文上限 256K；免费活动起止日期未公布；无每日请求限制；账户需保留至少$1余额"
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；平台上下文上限 256K；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。"
         },
         {
           "slug": "commandcode-max10--ling-3-1-flash",
@@ -17223,7 +17570,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "平台上下文上限 256K；当前免费，每日最多100次请求，UTC零点重置；免费活动起止日期未公布，Token额度未知；账户需保留至少$1余额"
+          "note": "平台上下文上限 256K；隐名预览期免费，每账户每日最多 100 次请求，UTC 零点重置；活动起止日期与 Token 上限未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；隐名预览期免费，每账户每日最多 100 次请求，UTC 零点重置；活动起止日期与 Token 上限未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
         },
         {
           "slug": "commandcode-max10--hy4-preview",
@@ -19694,7 +20041,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；当前免费，活动起止日期未公布、无每日请求次数上限。；当前免费，无每日请求次数上限；活动起止日期未公布。"
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
         },
         {
           "slug": "commandcode-max10--cat-jam",
@@ -19717,7 +20064,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；当前免费，活动起止日期未公布、无每日请求次数上限。；当前免费，无每日请求次数上限；活动起止日期未公布。"
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；隐名预览期免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；隐名预览期免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
         },
         {
           "slug": "commandcode-max10--muse-spark-open",
@@ -19838,6 +20185,53 @@
             "outputCnyPerM": 136.0
           },
           "note": "价格：输入 $4/M Token、缓存读取 $0.2/M Token、输出 $20/M Token；模型额度：5小时 $30、每周 $60、每月 $100；美元 Credits 按模型报价扣减；属于共享套餐池，模型额度不能相加；短窗口按模型月额度与套餐窗口比例估算。"
+        },
+        {
+          "slug": "commandcode-max10--minimax-m3-1-flash--free",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Free",
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；限时免费，活动起止时间未公布；开始会话时账户需有至少$1 Credits，免费请求不扣Credits；零数据保留。；限时免费，活动起止时间未公布，无每日请求次数上限；开始会话前账户需至少$1 Credits；零数据保留，不消耗套餐模型月额度；活动结束后需切换付费入口。"
+        },
+        {
+          "slug": "commandcode-max10--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 6087.4,
+            "unitPriceCnyPerM": 0.11152
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.15,
+            "cachePerM": 0.015,
+            "outputPerM": 0.6,
+            "inputCnyPerM": 1.02,
+            "cacheCnyPerM": 0.102,
+            "outputCnyPerM": 4.08
+          },
+          "note": "价格：输入 $0.15/M Token、缓存读取 $0.015/M Token、输出 $0.6/M Token；模型额度：5小时 unknown、每周 unknown、每月 $150；按输入/缓存/输出实际价格扣减Credits，与其他型号共享套餐额度，不能相加。五小时与周精确模型额度未知。"
         }
       ]
     },
@@ -19885,7 +20279,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；平台上下文上限 256K；免费活动起止日期未公布；无每日请求限制；账户需保留至少$1余额"
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；平台上下文上限 256K；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。"
         },
         {
           "slug": "commandcode-max20--ling-3-1-flash",
@@ -19930,7 +20324,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "平台上下文上限 256K；当前免费，每日最多100次请求，UTC零点重置；免费活动起止日期未公布，Token额度未知；账户需保留至少$1余额"
+          "note": "平台上下文上限 256K；隐名预览期免费，每账户每日最多 100 次请求，UTC 零点重置；活动起止日期与 Token 上限未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；隐名预览期免费，每账户每日最多 100 次请求，UTC 零点重置；活动起止日期与 Token 上限未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
         },
         {
           "slug": "commandcode-max20--hy4-preview",
@@ -22401,7 +22795,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；当前免费，活动起止日期未公布、无每日请求次数上限。；当前免费，无每日请求次数上限；活动起止日期未公布。"
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
         },
         {
           "slug": "commandcode-max20--cat-jam",
@@ -22424,7 +22818,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；当前免费，活动起止日期未公布、无每日请求次数上限。；当前免费，无每日请求次数上限；活动起止日期未公布。"
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；隐名预览期免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；隐名预览期免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
         },
         {
           "slug": "commandcode-max20--muse-spark-open",
@@ -22545,6 +22939,53 @@
             "outputCnyPerM": 136.0
           },
           "note": "价格：输入 $4/M Token、缓存读取 $0.2/M Token、输出 $20/M Token；模型额度：5小时 $60、每周 $120、每月 $200；美元 Credits 按模型报价扣减；属于共享套餐池，模型额度不能相加；短窗口按模型月额度与套餐窗口比例估算。"
+        },
+        {
+          "slug": "commandcode-max20--minimax-m3-1-flash--free",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Free",
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "价格：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；模型额度：5小时 unlimited、每周 unlimited、每月 unlimited；限时免费，活动起止时间未公布；开始会话时账户需有至少$1 Credits，免费请求不扣Credits；零数据保留。；限时免费，活动起止时间未公布，无每日请求次数上限；开始会话前账户需至少$1 Credits；零数据保留，不消耗套餐模型月额度；活动结束后需切换付费入口。"
+        },
+        {
+          "slug": "commandcode-max20--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 12174.7,
+            "unitPriceCnyPerM": 0.11152
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.15,
+            "cachePerM": 0.015,
+            "outputPerM": 0.6,
+            "inputCnyPerM": 1.02,
+            "cacheCnyPerM": 0.102,
+            "outputCnyPerM": 4.08
+          },
+          "note": "价格：输入 $0.15/M Token、缓存读取 $0.015/M Token、输出 $0.6/M Token；模型额度：5小时 unknown、每周 unknown、每月 $300；按输入/缓存/输出实际价格扣减Credits，与其他型号共享套餐额度，不能相加。五小时与周精确模型额度未知。"
         }
       ]
     },
@@ -25493,7 +25934,7 @@
         "2,000 Credits/月",
         "覆盖 Qoder CN 全家桶"
       ],
-      "note": "Credits不等于Token，具体Token用量未知；年付为月付总价的9折。活动期内首次个人月付Pro另赠2000Qwen专属Credits（仅限Qwen系列）；符合活动条件的个人月付续费或升级另赠1000Qwen专属Credits（仅限Qwen系列），每笔30天有效；参与资格、次数与实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起可在Qoder桌面端每日主动领取100通用Credits，每笔30天有效，结束时间未公布；不是自动发放的月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。",
+      "note": "Credits不等于Token，具体Token用量未知；年付为月付总价的9折。活动期内首次个人月付Pro另赠2000Qwen专属Credits（仅限Qwen系列）；符合活动条件的个人月付续费或升级另赠1000Qwen专属Credits（仅限Qwen系列），每笔30天有效；年付续费或升级不参加续费加赠；年付首购资格和重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。",
       "yearlyPrice": 637.2,
       "summary": "2,000 Credits/月；覆盖 Qoder CN 全家桶",
       "monthlyRequests": "未公开",
@@ -25699,7 +26140,7 @@
         "6,000 Credits/月",
         "覆盖 Qoder CN 全家桶"
       ],
-      "note": "Credits不等于Token，具体Token用量未知；年付为月付总价的9折。活动期内首次个人月付Pro+另赠6000Qwen专属Credits（仅限Qwen系列）；符合活动条件的个人月付续费或升级另赠1000Qwen专属Credits（仅限Qwen系列），每笔30天有效；参与资格、次数与实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起可在Qoder桌面端每日主动领取100通用Credits，每笔30天有效，结束时间未公布；不是自动发放的月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。",
+      "note": "Credits不等于Token，具体Token用量未知；年付为月付总价的9折。活动期内首次个人月付Pro+另赠6000Qwen专属Credits（仅限Qwen系列）；符合活动条件的个人月付续费或升级另赠1000Qwen专属Credits（仅限Qwen系列），每笔30天有效；年付续费或升级不参加续费加赠；年付首购资格和重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。",
       "yearlyPrice": 1825.2,
       "summary": "6,000 Credits/月；覆盖 Qoder CN 全家桶",
       "monthlyRequests": "未公开",
@@ -25905,7 +26346,7 @@
         "20,000 Credits/月",
         "覆盖 Qoder CN 全家桶"
       ],
-      "note": "Credits不等于Token，具体Token用量未知；年付为月付总价的9折。首次购买Ultra不计首购加赠；符合活动条件的个人月付续费或升级另赠1000Qwen专属Credits（仅限Qwen系列），每笔30天有效；参与资格、次数与实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起可在Qoder桌面端每日主动领取100通用Credits，每笔30天有效，结束时间未公布；不是自动发放的月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。",
+      "note": "Credits不等于Token，具体Token用量未知；年付为月付总价的9折。首次购买Ultra不计首购加赠；符合活动条件的个人月付续费或升级另赠1000Qwen专属Credits（仅限Qwen系列），每笔30天有效；年付续费或升级不参加续费加赠；年付首购资格和重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。",
       "yearlyPrice": 6037.2,
       "summary": "20,000 Credits/月；覆盖 Qoder CN 全家桶",
       "monthlyRequests": "未公开",
@@ -26111,7 +26552,7 @@
         "2,000 Credits/月",
         "Quest、Repo Wiki、知识卡片"
       ],
-      "note": "套餐Credits在当前订阅周期内有效，到期不结转；价格未含适用税费，具体Token用量未知。活动期内首次个人月付Pro另赠2000通用Credits；符合活动条件的个人月付续费或升级另赠1000通用Credits，每笔30天有效；参与资格、次数与实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起可在Qoder桌面端每日主动领取100通用Credits，每笔30天有效，结束时间未公布；不是自动发放的月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。Efficient档位自2026-09-03 14:00（UTC+8）起对有效付费个人订阅免Credits，结束时间未公布，常规0.3×；子代理另调具体型号仍按对应规则收费。Ultimate档位2026-10-14 22:00至2026-10-31 08:00（UTC+8）期间，每日22:00至次日08:00参考系数由2×降至0.4×，其余时段2×。",
+      "note": "套餐Credits在当前订阅周期内有效，到期不结转；价格未含适用税费，具体Token用量未知。活动期内首次个人月付Pro另赠2000通用Credits；符合活动条件的个人月付续费或升级另赠1000通用Credits，每笔30天有效；BOGO仅限个人月付，年付不适用；重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。Efficient档位自2026-09-03 14:00（UTC+8）起对有效付费个人订阅免Credits，结束时间未公布，常规0.3×；子代理另调具体型号仍按对应规则收费。Ultimate档位2026-10-14 22:00至2026-10-31 08:00（UTC+8）期间，每日22:00至次日08:00参考系数由2×降至0.4×，其余时段2×。",
       "summary": "2,000 Credits/月；Quest、Repo Wiki、知识卡片",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -26278,7 +26719,7 @@
         "6,000 Credits/月",
         "Quest、Repo Wiki、知识卡片"
       ],
-      "note": "套餐Credits在当前订阅周期内有效，到期不结转；价格未含适用税费，具体Token用量未知。活动期内首次个人月付Pro+另赠6000通用Credits；符合活动条件的个人月付续费或升级另赠1000通用Credits，每笔30天有效；参与资格、次数与实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起可在Qoder桌面端每日主动领取100通用Credits，每笔30天有效，结束时间未公布；不是自动发放的月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。Efficient档位自2026-09-03 14:00（UTC+8）起对有效付费个人订阅免Credits，结束时间未公布，常规0.3×；子代理另调具体型号仍按对应规则收费。Ultimate档位2026-10-14 22:00至2026-10-31 08:00（UTC+8）期间，每日22:00至次日08:00参考系数由2×降至0.4×，其余时段2×。",
+      "note": "套餐Credits在当前订阅周期内有效，到期不结转；价格未含适用税费，具体Token用量未知。活动期内首次个人月付Pro+另赠6000通用Credits；符合活动条件的个人月付续费或升级另赠1000通用Credits，每笔30天有效；BOGO仅限个人月付，年付不适用；重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。Efficient档位自2026-09-03 14:00（UTC+8）起对有效付费个人订阅免Credits，结束时间未公布，常规0.3×；子代理另调具体型号仍按对应规则收费。Ultimate档位2026-10-14 22:00至2026-10-31 08:00（UTC+8）期间，每日22:00至次日08:00参考系数由2×降至0.4×，其余时段2×。",
       "summary": "6,000 Credits/月；Quest、Repo Wiki、知识卡片",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -26445,7 +26886,7 @@
         "20,000 Credits/月",
         "Quest、Repo Wiki、知识卡片"
       ],
-      "note": "套餐Credits在当前订阅周期内有效，到期不结转；价格未含适用税费，具体Token用量未知。首次购买Ultra不计首购加赠；符合活动条件的个人月付续费或升级另赠1000通用Credits，每笔30天有效；参与资格、次数与实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起可在Qoder桌面端每日主动领取100通用Credits，每笔30天有效，结束时间未公布；不是自动发放的月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。Efficient档位自2026-09-03 14:00（UTC+8）起对有效付费个人订阅免Credits，结束时间未公布，常规0.3×；子代理另调具体型号仍按对应规则收费。Ultimate档位2026-10-14 22:00至2026-10-31 08:00（UTC+8）期间，每日22:00至次日08:00参考系数由2×降至0.4×，其余时段2×。",
+      "note": "套餐Credits在当前订阅周期内有效，到期不结转；价格未含适用税费，具体Token用量未知。首次购买Ultra不计首购加赠；符合活动条件的个人月付续费或升级另赠1000通用Credits，每笔30天有效；BOGO仅限个人月付，年付不适用；重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。Efficient档位自2026-09-03 14:00（UTC+8）起对有效付费个人订阅免Credits，结束时间未公布，常规0.3×；子代理另调具体型号仍按对应规则收费。Ultimate档位2026-10-14 22:00至2026-10-31 08:00（UTC+8）期间，每日22:00至次日08:00参考系数由2×降至0.4×，其余时段2×。",
       "summary": "20,000 Credits/月；Quest、Repo Wiki、知识卡片",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",

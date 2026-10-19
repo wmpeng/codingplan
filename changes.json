@@ -37,7 +37,7 @@
     {
       "slug": "minimax-token-plan-model-routing-20261019",
       "title": "MiniMax 老 Token Plan 模型路由调整",
-      "officialStatus": "announced",
+      "officialStatus": "effective",
       "effectiveTime": {
         "type": "date",
         "date": "2026-10-19"
@@ -47,11 +47,11 @@
           "type": "model_support",
           "label": "M2.5 / M2.7 请求",
           "before": "原型号入口",
-          "after": "路由至 M3.1 Flash Preview，原名称保留为兼容入口"
+          "after": "路由至正式M3.1 Flash，原名称为兼容入口；旧模型实测不代表新型号额度"
         }
       ],
       "audience": "仍在自动续费的老 Token Plan 用户",
-      "summary": "公告安排 2026-10-19 起，M2.5/M2.7 请求统一路由至 M3.1 Flash Preview；旧型号实测不代表新型号额度。",
+      "summary": "MiniMax订阅中的M2.5/M2.7旧名称请求由正式M3.1 Flash承接；原型号的Token实测不代表新型号额度。",
       "targets": [
         {
           "type": "plan",
@@ -75,6 +75,9 @@
       "sources": [
         {
           "url": "https://platform.minimax.cn/docs/m-plan/token-plan-notice"
+        },
+        {
+          "url": "https://platform.minimax.cn/docs/faq/models"
         }
       ],
       "relatedChanges": []
@@ -1457,6 +1460,57 @@
       "sources": [
         {
           "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-annual-quarterly?lang=zh"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "minimax-mplan-flash-final-20261020",
+      "title": "MiniMax M Plan 使用正式 M3.1 Flash",
+      "officialStatus": "effective",
+      "effectiveTime": {
+        "type": "unknown",
+        "description": "当前官方已确认Preview下线并由正式Flash承接，未明确该项单独生效的具体时刻。"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "当前文本模型",
+          "before": "MiniMax-M3.1-Flash-Preview",
+          "after": "正式MiniMax-M3.1-Flash；精确Token额度仍未公布"
+        }
+      ],
+      "audience": "新购M Plan Go、Explore、Build或使用MiniMax Code Free的用户",
+      "summary": "M Plan Go、Explore、Build及MiniMax Code Free现使用正式M3.1 Flash，旧Preview名称请求由正式模型承接；具体Token配额未公布。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-mplan-go",
+          "label": "MiniMax · M Plan Go"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-mplan-explore",
+          "label": "MiniMax · M Plan Explore"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-mplan-build",
+          "label": "MiniMax · M Plan Build"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-code-free",
+          "label": "MiniMax · MiniMax Code Free"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://platform.minimax.cn/docs/m-plan/intro"
         }
       ],
       "relatedChanges": []

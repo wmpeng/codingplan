@@ -116,7 +116,7 @@
       "name": "MiniMax",
       "rating": 5,
       "summary": "新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。",
-      "detail": "M3.1 Flash Preview精确Token额度未公开，按五小时与七天窗口选择档位。",
+      "detail": "M3.1 Flash精确Token额度未公开，按五小时与七天窗口选择档位。",
       "dimensions": {
         "value": {
           "score": 4,
@@ -124,7 +124,7 @@
         },
         "models": {
           "score": 4,
-          "reason": "M3.1 Flash Preview精确Token额度未公开，按五小时与七天窗口选择档位。"
+          "reason": "M3.1 Flash精确Token额度未公开，按五小时与七天窗口选择档位。"
         },
         "stability": {
           "score": 5,
@@ -157,7 +157,7 @@
         "value": {
           "score": 4,
           "reason": "用量与国内版一致，新套餐价格也基本一致。",
-          "detail": "用量与国内版完全一致，新套餐价格也基本一致。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享9折。[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)内有成品号出售。"
+          "detail": "用量与国内版一致。通过[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)完成绑定、且此前从未付费订阅的合资格用户，首次订阅订单可享9折；后续续费与升级不适用，不可叠加同类首单优惠。[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)内有成品号出售。"
         },
         "models": {
           "score": 5,
@@ -239,12 +239,12 @@
       "slug": "gongji",
       "name": "共绩算力",
       "rating": 5,
-      "summary": "GLM、Kimi、Qwen、DeepSeek按量API；邀请8折仅适用于资格仍有效的用户。",
-      "detail": "支持 11 个大语言模型；DeepSeek V4 正式版能否恢复调用待确认。邀请折扣需有效资格，购买前请在账户中确认。",
+      "summary": "GLM、Kimi、Qwen、DeepSeek等模型的按量API，邀请优惠需有效资格。",
+      "detail": "提供14个大语言模型入口；DeepSeek V4预览ID将转向正式服务，目标版本未公布。邀请折扣以账户结算为准。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "有效邀请资格可享标价 8 折，实际折扣以账户结算为准。"
+          "reason": "按实际Token用量付费；合资格受邀用户可享标价8折，实际折扣以账户结算为准。"
         },
         "models": {
           "score": 5,
