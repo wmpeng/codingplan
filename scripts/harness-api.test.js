@@ -118,7 +118,7 @@ test('当前目录完整分类与免费/入门套餐覆盖保持独立', () => {
   assert.equal(platforms.filter(p=>p.supportsHarnessApi===true).length,36);
   assert.deepEqual(platforms.filter(p=>p.supportsHarnessApi===false).map(p=>p.slug).sort(),['claude','codex','github','qoder-cn','qoder-intl','trae-cn','trae-intl','workbuddy']);
   assert.deepEqual(platforms.filter(p=>p.supportsHarnessApi===null).map(p=>p.slug).sort(),['baidu-qianfan-coding-legacy','cursor','minimax-coding-legacy','tencent-cloud-coding-legacy','unicom-cloud-coding-legacy','zhipu-coding-legacy','zhipu-intl-coding-legacy']);
-  assert.deepEqual(plans.filter(p=>Object.hasOwn(p,'supportsHarnessApi')).map(p=>[p.slug,p.supportsHarnessApi]).sort((a,b)=>a[0].localeCompare(b[0])),[['commandcode-go',false],['kimi-go-2026',false],['kimi-max-2026',true],['kimi-plus-2026',true],['kimi-pro-2026',true],['minimax-code-free',false],['trae-intl-free',false]]);
+  assert.deepEqual(plans.filter(p=>Object.hasOwn(p,'supportsHarnessApi')).map(p=>[p.slug,p.supportsHarnessApi]).sort((a,b)=>a[0].localeCompare(b[0])),[['commandcode-go',false],['kimi-go-2026',false],['kimi-max-2026',true],['kimi-plus-2026',true],['kimi-pro-2026',true],['kimi-ultra-2026',true],['minimax-code-free',false],['trae-intl-free',false]]);
   const command=platforms.find(p=>p.slug==='command-code');
   for (const p of plans.filter(p=>p.platformSlug===command.slug)) assert.equal(E.resolveHarnessApi(command,p),p.slug!=='commandcode-go');
   assert.ok(platforms.every(p=>!Object.hasOwn(p,'externalUsage')));

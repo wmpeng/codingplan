@@ -40,12 +40,12 @@
       "slug": "opencode",
       "name": "OpenCode",
       "rating": 5,
-      "summary": "Go与Go Plus的多模型订阅，各模型独立额度；当前32个LLM。",
+      "summary": "Go 与 Go Plus 多模型订阅，各型号额度不同；免费与 Contributor 型号有额外条件。",
       "detail": "各模型的Go Plus额度增幅不同，不能统一按四倍算。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "Go $10/月、Go Plus $40/月，各模型有独立月额度与短窗口；当前额度和活动依模型不同，不统一按四倍计算。"
+          "reason": "Go $10/月、Go Plus $40/月，各模型有不同月额度与短窗口；当前额度和活动依模型不同，不统一按四倍计算。"
         },
         "models": {
           "score": 5,
@@ -188,11 +188,11 @@
       "slug": "kimi",
       "name": "Kimi",
       "rating": 4,
-      "summary": "当前Go/Plus/Pro/Max订阅；Plus起支持Coding，旧四档仅老用户续费。",
+      "summary": "当前Go/Plus/Pro/Max/Ultra订阅；Plus起支持Coding，旧四档仅老用户续费。",
       "dimensions": {
         "value": {
           "score": 3,
-          "reason": "当前Go/Plus/Pro/Max月费49/99/199/699元，Plus起支持Coding；老套餐仅存量续费，不能按新用户价格比较旧实测。"
+          "reason": "Go/Plus/Pro/Max/Ultra月费49/99/199/699/1399元，Plus起支持Coding；新旧套餐额度规则不同。"
         },
         "models": {
           "score": 5,
@@ -214,7 +214,7 @@
       "name": "DeepSeek",
       "rating": 5,
       "summary": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。",
-      "detail": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。DeepSeek V4.1 Flash 已上线，原生多模态、1M 上下文，空闲时段价格更低，按量使用更灵活。",
+      "detail": "官方DeepSeek按量通道，当前Flash实际版本为DeepSeek-V4.1-Flash-1017，原生图片理解、1M上下文；V4 Pro继续提供服务，按峰谷价格计费。",
       "dimensions": {
         "value": {
           "score": 4,
@@ -222,7 +222,7 @@
         },
         "models": {
           "score": 5,
-          "reason": "当前V4.1 Flash与V4 Pro按峰谷价格分别展示；原计划V4 Pro停服安排已撤销，继续提供服务。"
+          "reason": "当前V4.1 Flash 1017与V4 Pro按峰谷价格分别展示；V4 Pro继续提供服务。"
         },
         "stability": {
           "score": 5,
@@ -340,7 +340,7 @@
       "slug": "ollama",
       "name": "Ollama",
       "rating": 4,
-      "summary": "当前18个云端LLM的美元Credits订阅，月池可集中使用；部分缓存价格未知。",
+      "summary": "云端 LLM 的美元 Credits 订阅，月池可集中使用；部分缓存价格未知。",
       "dimensions": {
         "value": {
           "score": 5,
@@ -534,7 +534,7 @@
         },
         "models": {
           "score": 2,
-          "reason": "当前通用套餐支持Auto及DeepSeek、GLM、Kimi、MiniMax、Hy、MiMo等模型；旧GLM5/5.1已下线。"
+          "reason": "支持DeepSeek-V4.1-Flash-1017及GLM、Kimi、MiniMax、Hy、MiMo等模型；MiniMax-M2.7将于2026-11-17下线。"
         },
         "stability": {
           "score": 5,
@@ -561,8 +561,8 @@
       "slug": "qoder-cn",
       "name": "Qoder 国内版",
       "rating": 3,
-      "summary": "Qoder国内套餐，当前CLI支持名单与国际版不同。",
-      "detail": "内置型号按官方名单核对，不能把BYOK全目录当套餐支持。",
+      "summary": "Qoder全家桶个人订阅，模型选择因客户端而异；Qwen3.8-Flash当前免Credits。",
+      "detail": "订阅Credits跨全家桶共享；Qwen专属赠额另计，具体Token用量未知。",
       "platformStatus": "open",
       "dimensions": {
         "value": {
@@ -571,7 +571,7 @@
         },
         "models": {
           "score": null,
-          "reason": "内置型号按官方名单核对，不能把BYOK全目录当套餐支持。"
+          "reason": "主客户端与CLI的可选型号有差异；自定义API模型不包含在订阅额度内。"
         },
         "stability": {
           "score": null,
@@ -587,7 +587,7 @@
       "name": "Qoder 国际版",
       "rating": 3,
       "summary": "Qoder国际套餐，当前支持K3、K2.8、GLM5.3及Qwen3.8等；具体Token额度未知。",
-      "detail": "CLI内置和自定义API模型分开，按真实产品线比较。",
+      "detail": "月付首购及续费有Credits加赠；Qwen3.8-Flash当前免Credits，具体Token额度未知。",
       "platformStatus": "open",
       "dimensions": {
         "value": {
@@ -636,13 +636,13 @@
       "slug": "trae-cn",
       "name": "TRAE 国内版",
       "rating": 3,
-      "summary": "TRAE国内订阅，以积分计费；当前内置型号已换代，支持范围按档位区分。",
-      "detail": "Seed Evolving仅Pro/Pro+/Ultra及历史Express可用；BYOK不等于内置支持。",
+      "summary": "TRAE统一积分会员，31天一个周期；Lite首月39元，模型权限按档位区分。",
+      "detail": "Seed Evolving仅Pro/Pro+/Ultra及历史Express可用；四档会员使用Seed-2.1-Turbo和Seed-Code享2.5折。",
       "platformStatus": "open",
       "dimensions": {
         "value": {
           "score": null,
-          "reason": "Lite/Pro/Pro+/Ultra连续月付45/89/219/629元；模型权限与积分倍率依档位不同，当前Token额度未知。"
+          "reason": "Lite/Pro/Pro+/Ultra连续订阅每31天45/89/219/629元；新用户前两档首期39/69元，具体Token用量未知。"
         },
         "models": {
           "score": null,
@@ -712,7 +712,7 @@
       "name": "Cursor",
       "rating": 0,
       "summary": "AI 编程编辑器与 Agent；新 X Subscription 从免费至 $200/月，旧 Pro 系列仅存量保留。",
-      "detail": "新订阅共享 Grok 周额度，Premium 及以上的第三方模型另付费；编辑器、CLI 和 SDK 接入各有边界。",
+      "detail": "新订阅的 Grok 与 Composer 共享周额度，Premium 及以上的第三方模型另付费；编辑器、CLI 和 SDK 接入各有边界。",
       "dimensions": {
         "value": {
           "score": null,
@@ -734,28 +734,28 @@
     },
     {
       "slug": "jd-cloud",
-      "name": "京东云",
+      "name": "京东云 Coding Plan（已下架）",
       "rating": 2,
-      "summary": "京东Coding Plan与新的Credits Token Plan并存，使用独立端点与计费。",
+      "summary": "旧Coding Plan已停售，仅保留历史套餐；当前Credits订阅为独立的京东云Token Plan。",
       "dimensions": {
         "value": {
           "score": 3,
-          "reason": "有首月优惠，但是用量证据不足，不予评价。"
+          "reason": "旧Coding Plan已停止新购、续费和升级，仅保留历史价格与权益。"
         },
         "models": {
           "score": 2,
-          "reason": "Coding Plan 与新 Token Plan 的模型范围和上下文计费规则不同。"
+          "reason": "旧Coding Plan的模型名单仅作历史参考；当前Token Plan使用独立端点、额度与模型权限。"
         },
         "stability": {
           "score": 4,
           "reason": "京东云官方运营，证据不足，但推测稳定性尚可。"
         }
       },
-      "platformStatus": "restricted",
+      "platformStatus": "delisted",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "detail": "Coding Plan 与新 Token Plan 的模型范围和上下文计费规则不同。"
+      "detail": "2026-07-29起停止新购、续费和升级；存量套餐仅可使用至原有效期结束。"
     },
     {
       "slug": "iflytek",
@@ -785,7 +785,7 @@
       "slug": "unicom-cloud",
       "name": "联通云",
       "rating": 2,
-      "summary": "Token Plan 当前价格、模型支持范围和购买状态待确认。",
+      "summary": "个人版按Token额度、团队版按Credits计量；当前成交价、库存及DeepSeek精确版本待确认。",
       "dimensions": {
         "value": {
           "score": 3,
@@ -793,7 +793,7 @@
         },
         "models": {
           "score": 1,
-          "reason": "曾支持 DeepSeek V4 Flash 与 MiniMax M2.5 等；当前完整模型名单待确认。"
+          "reason": "文档列DeepSeek V4 Flash、MiniMax M2.5，团队版另含V4 Pro；DeepSeek具体版本待确认。"
         },
         "stability": {
           "score": 4,
@@ -803,7 +803,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "detail": "个人版标称月额度600万、1200万、1800万Tokens；团队版25000、100000、250000Credits。完整抵扣系数与Token计数细则未公开，实际Token参考用量待确认。"
     },
     {
       "slug": "unicom-cloud-coding-legacy",
@@ -852,7 +853,7 @@
         },
         "models": {
           "score": 1,
-          "reason": "旧prompt推算不适用当前Credits，精确抵扣未公开；恢复发售时间未知。"
+          "reason": "支持Step5 Preview和Flash系列，具体Token抵扣未公开；当前名额售罄。"
         },
         "stability": {
           "score": 4,
@@ -863,14 +864,14 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "summary": "Step Plan现按月Credits，支持Step5 Preview和Flash系列；目前售罄，恢复发售时间未知。",
-      "detail": "旧prompt推算不适用当前Credits，精确抵扣未公开；恢复发售时间未知。"
+      "summary": "Step Plan按月Credits计费，支持Step5 Preview和Flash系列；每日限量，当前售罄。",
+      "detail": "Step-5-Preview高峰时段消耗双倍Credits；具体Token抵扣未公开，后续放量时间未公布。"
     },
     {
       "slug": "taotoken",
       "name": "TaoToken",
       "rating": 3,
-      "summary": "双Flash Coding Plan：GLM5.3 Flash与DeepSeek V4 Flash0731，月付限量抢购。",
+      "summary": "双Flash Coding Plan，支持GLM5.3 Flash与DeepSeek V4 Flash；Lite月付和季付名额售罄。",
       "dimensions": {
         "value": {
           "score": 3,
@@ -902,7 +903,7 @@
         },
         "models": {
           "score": 1,
-          "reason": "Coding当前购买状态待确认，不能从新Token Plan文档推断旧套餐恢复销售。"
+          "reason": "支持两个具体模型；当前购买状态待确认，具体Token量按请求负载估算。"
         },
         "stability": {
           "score": 3,
@@ -913,7 +914,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "detail": "Coding当前购买状态待确认，不能从新Token Plan文档推断旧套餐恢复销售。"
+      "detail": "Coding Plan当前购买状态待确认；仅限本人在AI开发工具内交互使用，额度耗尽不会自动转按量。"
     },
     {
       "slug": "sensetime",
