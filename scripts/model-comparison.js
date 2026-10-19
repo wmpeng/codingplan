@@ -722,23 +722,23 @@
                 <div class="usage-method-note"><strong>统一口径：</strong>价格筛选和坐标统一按折合人民币计算，美元按当前站点汇率 USD 1 ≈ ¥${formatNumber(Number(root.appConfig && root.appConfig.usdToCnyRate) || 6.8, 2)}；表格保留原始币种。参考额度分别来自真实使用记录、官方 Token 额度、按扣减价格计算、请求估算或倍率换算，估算依据见备注。按价格计算时统一假设95%缓存命中率和0.5%的输出占比，未知额度不等于零。</div>
                 <section class="usage-presets" data-presets aria-label="常见模型对比" hidden></section>
                 <div class="usage-explorer-heading"><h3>完整对比</h3><p>使用筛选、图表与数据明细继续探索全部套餐和模型。</p></div>
-                <div class="filter-bar surface-panel usage-filters" aria-label="图表筛选">
+                <div class="filter-bar surface-panel usage-filters" aria-label="图表筛选"${compact ? ' hidden' : ''}>
                     <div class="filter-dropdown" data-picker="vendors"><button type="button" class="filter-btn" data-picker-toggle><span>平台</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-count hidden>0</span></button><div class="dropdown-menu"><div class="dropdown-section"><div class="checkbox-group" data-options></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-picker-reset>重置</button><button type="button" class="dropdown-btn primary" data-picker-done>确定</button></div></div></div>
                     <div class="filter-dropdown" data-picker="models"><button type="button" class="filter-btn" data-picker-toggle><span>模型</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-count hidden>0</span></button><div class="dropdown-menu usage-model-menu"><input class="usage-search" type="search" data-model-search placeholder="搜索模型" aria-label="搜索模型"><div class="dropdown-section"><div class="checkbox-group" data-options></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-picker-reset>重置</button><button type="button" class="dropdown-btn primary" data-picker-done>确定</button></div></div></div>
                     <div class="filter-dropdown" data-picker="monthly-price"><button type="button" class="filter-btn" data-picker-toggle><span>套餐价格</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-price-count hidden>●</span></button><div class="dropdown-menu usage-price-menu"><div class="dropdown-section"><div class="dropdown-title">包月价格区间（人民币）</div><div class="price-slider-container"><div class="price-slider" data-price-slider><div class="slider-track"></div><div class="slider-range" data-price-range></div><div class="slider-thumb" data-price-thumb="min" role="slider" tabindex="0" aria-label="最低套餐价格"></div><div class="slider-thumb" data-price-thumb="max" role="slider" tabindex="0" aria-label="最高套餐价格"></div></div><div class="slider-values"><span class="slider-value" data-price-value="min">¥0</span><span class="slider-value" data-price-value="max">¥0</span></div></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-price-reset>重置</button><button type="button" class="dropdown-btn primary" data-price-apply>确定</button></div></div></div>
                     <label class="filter-btn usage-inline-filter"><span>多模态</span><select data-filter="multimodal" aria-label="多模态"><option value="all">全部</option><option value="multimodal">多模态</option><option value="text">纯文本</option></select></label>
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>AA 最低分</span><input data-filter="aaScoreMin" aria-label="AA 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>DeepSWE 最低分</span><input data-filter="deepSWEScoreMin" aria-label="DeepSWE 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
-                    <div class="usage-color-control" aria-label="颜色区分方式"><span>颜色</span><div class="usage-segments"><button type="button" data-color-mode="vendor" class="is-active">按平台</button><button type="button" data-color-mode="model">按模型</button></div></div>
-                    <div class="filter-trailing"><button type="button" class="reset-btn" data-action="restore-defaults">恢复默认</button><div class="stats-bar usage-counts" data-counts aria-live="polite"></div></div>
+                    <div class="usage-color-control" aria-label="颜色区分方式"><span>颜色</span><div class="usage-segments" role="group" aria-label="颜色区分方式"><button type="button" data-color-mode="vendor" class="is-active" aria-pressed="true">按平台</button><button type="button" data-color-mode="model" aria-pressed="false">按模型</button></div></div>
+                    ${compact ? '' : '<div class="filter-trailing"><button type="button" class="reset-btn" data-action="restore-defaults">恢复默认</button><div class="stats-bar usage-counts" data-counts aria-live="polite"></div></div>'}
                 </div>
                 <div class="usage-color-legend"><strong data-color-legend-title>平台颜色</strong><div data-color-legend></div></div>
                 <article class="usage-chart-card">
-                    <div class="usage-chart-head"><div><h3>月费 vs 月 Token</h3><p>一个点代表一个平台 × 套餐 × 模型；越靠左上越有吸引力。</p></div><label>坐标轴<select data-scale="tokens"><option value="log">对数</option><option value="value">线性</option></select></label></div>
+                    <div class="usage-chart-head"><div><h3>月费 vs 月 Token</h3><p>一个点代表一个平台 × 套餐 × 模型；越靠左上越有吸引力。</p></div><div class="usage-scale-control"><span>坐标轴</span><div class="usage-segments" data-scale="tokens" role="group" aria-label="坐标轴"><button type="button" data-scale-value="log" class="is-active" aria-pressed="true">对数</button><button type="button" data-scale-value="value" aria-pressed="false">线性</button></div></div></div>
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="月费和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的月费与月额度数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
                 </article>
                 <article class="usage-chart-card">
-                    <div class="usage-chart-head"><div><h3>单位价格 vs 模型评分</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标"><button type="button" data-benchmark="artificialAnalysis" class="is-active">AA</button><button type="button" data-benchmark="deepSWE">DeepSWE</button></div><label>价格轴<select data-scale="price"><option value="log">对数</option><option value="value">线性</option></select></label></div></div>
+                    <div class="usage-chart-head"><div><h3>单位价格 vs 模型评分</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标"><button type="button" data-benchmark="artificialAnalysis" class="is-active">AA</button><button type="button" data-benchmark="deepSWE">DeepSWE</button></div><div class="usage-scale-control"><span>价格轴</span><div class="usage-segments" data-scale="price" role="group" aria-label="价格轴"><button type="button" data-scale-value="log" class="is-active" aria-pressed="true">对数</button><button type="button" data-scale-value="value" aria-pressed="false">线性</button></div></div></div></div>
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和模型评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
                 </article>
                 <article class="usage-chart-card usage-data-card">
@@ -846,6 +846,20 @@
                 tokensScale: 'log', priceScale: 'log', presetPlatformScope: 'featured',
                 tokenUnit: root.CodingPlanDisplaySettings?.getTokenUnit() || 'yi'
             });
+            const colorControl = container.querySelector('.usage-color-control');
+            if (mountOptions.colorControlHost) mountOptions.colorControlHost.append(colorControl);
+            function onColorModeClick(event) {
+                const button = event.target.closest('[data-color-mode]');
+                if (!button || state.colorMode === button.dataset.colorMode) return;
+                state.colorMode = button.dataset.colorMode;
+                state.soloColorKey = null;
+                colorControl.querySelectorAll('[data-color-mode]').forEach(item => {
+                    item.classList.toggle('is-active', item === button);
+                    item.setAttribute('aria-pressed', String(item === button));
+                });
+                render();
+            }
+            colorControl.addEventListener('click', onColorModeClick);
             const usageChart = echarts.init(container.querySelector('[data-chart="usage"]'));
             const intelligenceChart = echarts.init(container.querySelector('[data-chart="intelligence"]'));
             enableClickPinnedTooltip(usageChart);
@@ -1103,11 +1117,6 @@
                 directionButton = tools.querySelector('button.price-sort-direction');
                 sortSelect.addEventListener('change', () => { tableSortState.comparison = {key:sortSelect.value,direction:'asc'}; renderDataTable('comparison',latestTableRows.comparison); });
                 directionButton.addEventListener('click', () => { const sort=tableSortState.comparison; sort.direction=sort.direction==='asc'?'desc':'asc'; renderDataTable('comparison',latestTableRows.comparison); });
-                container.querySelectorAll('[data-scale]').forEach(select => {
-                    select.id = 'pricingScale'+select.dataset.scale;
-                    const label=select.closest('label'); label.dataset.selectFallback='';
-                    root.CodingPlanSingleSelect.mount(select, select.dataset.scale==='tokens'?'坐标轴':'价格轴');
-                });
                 search.addEventListener('input', () => { cancelAnimationFrame(renderFrame); renderFrame=requestAnimationFrame(render); });
                 document.getElementById('toolFilters').addEventListener('click', event => {
                     if (event.target.closest('[data-filter-action]')) { search.value=''; tableSortState.comparison={key:'unitPriceCnyPerM',direction:'asc'}; }
@@ -1159,9 +1168,12 @@
                 const pointLabelField = getSoloPointLabelField(visibleFiltered);
                 const color = colorContext(filtered);
                 renderColorLegend(color);
-                const totalUsage = buildUsageChartPoints(points).length;
-                const totalIntelligence = buildIntelligenceChartPoints(points, state.benchmark, state.priceScale).length;
-                container.querySelector('[data-counts]').textContent = `额度图 ${usagePoints.length}/${totalUsage} · 智力图 ${intelligencePoints.length}/${totalIntelligence} · 明细 ${visibleFiltered.length}/${points.length}`;
+                const counts = container.querySelector('[data-counts]');
+                if (counts) {
+                    const totalUsage = buildUsageChartPoints(points).length;
+                    const totalIntelligence = buildIntelligenceChartPoints(points, state.benchmark, state.priceScale).length;
+                    counts.textContent = `额度图 ${usagePoints.length}/${totalUsage} · 智力图 ${intelligencePoints.length}/${totalIntelligence} · 明细 ${visibleFiltered.length}/${points.length}`;
+                }
 
                 const tokenUnitLabel = Numbers.tokenUnit(state.tokenUnit);
                 const usageZone = buildUsageAttractiveZone(usagePoints, state.tokenUnit, state.tokensScale);
@@ -1211,8 +1223,6 @@
                 } else if (target.matches('[data-filter="multimodal"]')) state.multimodal = target.value;
                 else if (target.matches('[data-filter="aaScoreMin"]')) state.aaScoreMin = target.value;
                 else if (target.matches('[data-filter="deepSWEScoreMin"]')) state.deepSWEScoreMin = target.value;
-                else if (target.matches('[data-scale="tokens"]')) state.tokensScale = target.value;
-                else if (target.matches('[data-scale="price"]')) state.priceScale = target.value;
                 else return;
                 render();
             });
@@ -1228,6 +1238,7 @@
             const onPriceBasisChange = () => { priceBasis=root.EntityData.displayPriceBasis(); points=root.EntityData.withComparisonPriceBasis(originalPoints,context,priceBasis); render(); };
             root.addEventListener('codingplan:price-basis-changed',onPriceBasisChange);
             container.__usageCleanup = () => {
+                colorControl.removeEventListener('click', onColorModeClick);
                 root.removeEventListener('codingplan:filters-changed', onSharedFilterChange);
                 root.removeEventListener('codingplan:token-unit-changed', onTokenUnitChange);
                 root.removeEventListener('codingplan:price-basis-changed',onPriceBasisChange);
@@ -1355,6 +1366,20 @@
                     render();
                     return;
                 }
+                const scaleButton = event.target.closest('[data-scale-value]');
+                if (scaleButton) {
+                    const group = scaleButton.closest('[data-scale]');
+                    const key = group.dataset.scale === 'tokens' ? 'tokensScale' : 'priceScale';
+                    if (state[key] === scaleButton.dataset.scaleValue) return;
+                    state[key] = scaleButton.dataset.scaleValue;
+                    group.querySelectorAll('button').forEach(button => {
+                        const selected = button === scaleButton;
+                        button.classList.toggle('is-active', selected);
+                        button.setAttribute('aria-pressed', String(selected));
+                    });
+                    render();
+                    return;
+                }
                 const benchmarkButton = event.target.closest('[data-benchmark]');
                 if (benchmarkButton) {
                     state.benchmark = benchmarkButton.dataset.benchmark;
@@ -1366,14 +1391,6 @@
                 if (colorLegendItem) {
                     const key = colorLegendItem.dataset.colorKey;
                     state.soloColorKey = state.soloColorKey === key ? null : key;
-                    render();
-                    return;
-                }
-                const colorModeButton = event.target.closest('[data-color-mode]');
-                if (colorModeButton) {
-                    state.colorMode = colorModeButton.dataset.colorMode;
-                    state.soloColorKey = null;
-                    container.querySelectorAll('[data-color-mode]').forEach((button) => button.classList.toggle('is-active', button === colorModeButton));
                     render();
                     return;
                 }
