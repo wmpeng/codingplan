@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-19T10:48:01Z",
+  "generatedAt": "2026-10-19T11:13:23Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -7421,8 +7421,8 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": 6.6666666667,
-            "weeklyTokenInM": 40,
-            "monthlyTokenInM": 160,
+            "weeklyTokenInM": 40.0,
+            "monthlyTokenInM": 160.0,
             "unitPriceCnyPerM": 0.85
           },
           "pricing": null,
@@ -8461,15 +8461,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "measured",
+          "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 22.1,
-            "weeklyTokenInM": 100.3,
+            "fiveHourTokenInM": 22.0735785953,
+            "weeklyTokenInM": 100.3344481605,
             "monthlyTokenInM": 401.3,
             "unitPriceCnyPerM": 0.33864
           },
-          "pricing": null,
-          "note": "按社区额度数据、Opus 家族 credits 系数、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 666666.6666666666,
+            "cachePerM": 0.0,
+            "outputPerM": 3333333.3333333335,
+            "unit": "Credits"
+          },
+          "note": "历史社区逆向订阅扣减系数，非官方 API 报价；缓存读取按不扣减处理；按社区额度数据、Opus 家族 credits 系数、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
         },
         {
           "slug": "claude-pro--claude-sonnet-5",
@@ -8477,15 +8483,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "measured",
+          "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 36.8,
-            "weeklyTokenInM": 167.2,
+            "fiveHourTokenInM": 36.7892976589,
+            "weeklyTokenInM": 167.2240802676,
             "monthlyTokenInM": 668.9,
             "unitPriceCnyPerM": 0.20332
           },
-          "pricing": null,
-          "note": "按社区额度数据、Sonnet 家族 credits 系数（新增输入 0.4、输出 2、缓存读取免费）、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；未针对 Sonnet 5 单独实测，数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 400000.0,
+            "cachePerM": 0.0,
+            "outputPerM": 2000000.0,
+            "unit": "Credits"
+          },
+          "note": "历史社区逆向订阅扣减系数，非官方 API 报价；缓存读取按不扣减处理；按社区额度数据、Sonnet 家族 credits 系数（新增输入 0.4、输出 2、缓存读取免费）、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；未针对 Sonnet 5 单独实测，数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
         },
         {
           "slug": "claude-pro--claude-sonnet-4-6",
@@ -8634,10 +8646,10 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 66.2,
-            "weeklyTokenInM": 209,
+            "fiveHourTokenInM": 66.220735786,
+            "weeklyTokenInM": 209.0302675585,
             "monthlyTokenInM": 836.1,
             "unitPriceCnyPerM": 0.81328
           },
@@ -8650,10 +8662,10 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 66.2,
-            "weeklyTokenInM": 209,
+            "fiveHourTokenInM": 66.220735786,
+            "weeklyTokenInM": 209.0302675585,
             "monthlyTokenInM": 836.1,
             "unitPriceCnyPerM": 0.81328
           },
@@ -8666,15 +8678,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "measured",
+          "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 132.4,
-            "weeklyTokenInM": 836.1,
+            "fiveHourTokenInM": 132.4414715719,
+            "weeklyTokenInM": 836.1210702341,
             "monthlyTokenInM": 3344.5,
             "unitPriceCnyPerM": 0.20332
           },
-          "pricing": null,
-          "note": "按社区额度数据、Opus 家族 credits 系数、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 666666.6666666666,
+            "cachePerM": 0.0,
+            "outputPerM": 3333333.3333333335,
+            "unit": "Credits"
+          },
+          "note": "历史社区逆向订阅扣减系数，非官方 API 报价；缓存读取按不扣减处理；按社区额度数据、Opus 家族 credits 系数、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
         },
         {
           "slug": "claude-max5--claude-sonnet-5",
@@ -8682,15 +8700,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "measured",
+          "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 220.7,
-            "weeklyTokenInM": 1393.5,
+            "fiveHourTokenInM": 220.7357859532,
+            "weeklyTokenInM": 1393.5351170569,
             "monthlyTokenInM": 5574.1,
             "unitPriceCnyPerM": 0.12172
           },
-          "pricing": null,
-          "note": "按社区额度数据、Sonnet 家族 credits 系数（新增输入 0.4、输出 2、缓存读取免费）、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；未针对 Sonnet 5 单独实测，数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 400000.0,
+            "cachePerM": 0.0,
+            "outputPerM": 2000000.0,
+            "unit": "Credits"
+          },
+          "note": "历史社区逆向订阅扣减系数，非官方 API 报价；缓存读取按不扣减处理；按社区额度数据、Sonnet 家族 credits 系数（新增输入 0.4、输出 2、缓存读取免费）、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；未针对 Sonnet 5 单独实测，数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
         },
         {
           "slug": "claude-max5--claude-sonnet-4-6",
@@ -8839,10 +8863,10 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 220.8,
-            "weeklyTokenInM": 418.1,
+            "fiveHourTokenInM": 220.7357859532,
+            "weeklyTokenInM": 418.0600334448,
             "monthlyTokenInM": 1672.2,
             "unitPriceCnyPerM": 0.81328
           },
@@ -8855,10 +8879,10 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 220.8,
-            "weeklyTokenInM": 418.1,
+            "fiveHourTokenInM": 220.7357859532,
+            "weeklyTokenInM": 418.0600334448,
             "monthlyTokenInM": 1672.2,
             "unitPriceCnyPerM": 0.81328
           },
@@ -8871,15 +8895,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "measured",
+          "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 441.5,
-            "weeklyTokenInM": 1672.2,
-            "monthlyTokenInM": 6689,
+            "fiveHourTokenInM": 441.4715719064,
+            "weeklyTokenInM": 1672.2401337793,
+            "monthlyTokenInM": 6689.0,
             "unitPriceCnyPerM": 0.20332
           },
-          "pricing": null,
-          "note": "按社区额度数据、Opus 家族 credits 系数、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 666666.6666666666,
+            "cachePerM": 0.0,
+            "outputPerM": 3333333.3333333335,
+            "unit": "Credits"
+          },
+          "note": "历史社区逆向订阅扣减系数，非官方 API 报价；缓存读取按不扣减处理；按社区额度数据、Opus 家族 credits 系数、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
         },
         {
           "slug": "claude-max20--claude-sonnet-5",
@@ -8887,15 +8917,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "measured",
+          "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 735.8,
-            "weeklyTokenInM": 2787.1,
+            "fiveHourTokenInM": 735.7859531773,
+            "weeklyTokenInM": 2787.0668896321,
             "monthlyTokenInM": 11148.3,
             "unitPriceCnyPerM": 0.12172
           },
-          "pricing": null,
-          "note": "按社区额度数据、Sonnet 家族 credits 系数（新增输入 0.4、输出 2、缓存读取免费）、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；未针对 Sonnet 5 单独实测，数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 400000.0,
+            "cachePerM": 0.0,
+            "outputPerM": 2000000.0,
+            "unit": "Credits"
+          },
+          "note": "历史社区逆向订阅扣减系数，非官方 API 报价；缓存读取按不扣减处理；按社区额度数据、Sonnet 家族 credits 系数（新增输入 0.4、输出 2、缓存读取免费）、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；未针对 Sonnet 5 单独实测，数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
         },
         {
           "slug": "claude-max20--claude-sonnet-4-6",
@@ -41446,7 +41482,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "officialQuota",
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
@@ -41462,7 +41498,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "officialQuota",
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
@@ -41478,7 +41514,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "officialQuota",
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
@@ -41516,7 +41552,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "officialQuota",
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
@@ -41532,7 +41568,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "officialQuota",
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
@@ -41548,7 +41584,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "officialQuota",
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
@@ -41586,7 +41622,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "officialQuota",
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
@@ -41602,7 +41638,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "officialQuota",
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
@@ -41618,7 +41654,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "officialQuota",
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
@@ -41656,7 +41692,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "officialQuota",
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
@@ -41672,7 +41708,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "officialQuota",
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
@@ -41688,7 +41724,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "officialQuota",
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
@@ -41726,7 +41762,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "officialQuota",
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
@@ -41742,7 +41778,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "officialQuota",
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
@@ -41758,7 +41794,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "officialQuota",
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
