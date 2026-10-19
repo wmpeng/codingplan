@@ -66,7 +66,7 @@ body.tool-page {
 .plan-range-row { display: flex; align-items: center; gap: 6px; margin-top: 7px; }
 .plan-range-row input { width: 76px; border: 1px solid var(--tool-line); border-radius: 7px; padding: 6px; }
 .plan-count { margin: 10px 0; }
-.table-sort-button { border: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; font-weight: inherit; padding: 0; }
+.table-sort-button { border: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; font-weight: inherit; min-height: 32px; padding: 0; }
 .tool-muted { color: var(--tool-muted); font-size: 11px; }
 
 @media (max-width: 800px) {
@@ -83,13 +83,14 @@ body.tool-page {
 .plan-selection-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .plan-selection-tools input { width: 100%; min-width: 0; box-sizing: border-box; padding: 6px; }
 .plan-checks label[hidden] { display: none; }
-#plansPage .tool-table { min-width: 1800px; }
-#plansPage .plan-note { min-width: 240px; white-space: pre-line; }
+
+#plansPage .plan-note { min-width: 480px; white-space: pre-line; }
 
 /* Complete tools share the site's compact navigation and working surface. */
-body.tool-page { background: var(--bg-primary); color: var(--text-primary); font-size: 14px; line-height: 1.6; font-family: var(--font-ui); }
+body.tool-page { --tool-page-width: 1460px; background: var(--bg-primary); color: var(--text-primary); font-size: 14px; line-height: 1.6; font-family: var(--font-ui); }
+body.tool-page.ultra-wide { --tool-page-width: 1920px; }
 .tool-page { --tool-accent: var(--accent-primary); --tool-ink: var(--text-primary); --tool-muted: var(--text-secondary); --tool-line: var(--border-color); }
-.tool-page-main { max-width: 1320px; padding: 0 40px 48px; }
+.tool-page-main { max-width: var(--tool-page-width, 1460px); padding: 0 40px 48px; }
 .tool-topbar { min-height: 76px; margin-bottom: 24px; justify-content: flex-start; gap: 44px; border-bottom: 1px solid var(--border-color); }
 .tool-brand { display: inline-flex; align-items: center; flex-shrink: 0; gap: 11px; font-size: 19px; color: var(--text-primary); letter-spacing: -.03em; }
 .tool-brand::before { content: ""; display: inline-block; vertical-align: middle; width: 35px; height: 35px; background: url("/assets/brand-mark.svg?v=260924a") center / contain no-repeat; margin-right: 0; flex-shrink: 0; }
@@ -116,17 +117,43 @@ body.tool-page { background: var(--bg-primary); color: var(--text-primary); font
 .platform-guide-directory h2 { font-size: 20px; margin-bottom: 14px; }
 .tool-page .platform-detail-dialog { background: #fff; border-radius: 14px; }
 .tool-page .tool-table { table-layout: fixed; font-size: 13px; }
-#plansPage .tool-table { min-width: 1260px; }
-#plansPage.show-all-columns .tool-table { min-width: 2400px; }
-#plansPage .tool-table th, #plansPage .tool-table td { overflow-wrap: anywhere; padding: 12px; }
-#plansPage .tool-table :is(th,td):nth-child(1) { width: 150px; position: sticky; left: 0; z-index: 2; background: #fff; border-right: 1px solid var(--border-light); }
-#plansPage .tool-table :is(th,td):nth-child(2) { width: 120px; }
-#plansPage .tool-table :is(th,td):nth-child(10) { width: 230px; }
-#plansPage .tool-table :is(th,td):last-child { width: 76px; }
+#plansPage .tool-table { min-width: 1600px; }
+#plansPage.show-all-columns .tool-table { min-width: 2460px; }
+#plansPage .tool-table :is(th,td) { overflow-wrap: anywhere; padding: 8px 10px; }
+#plansPage .tool-table [data-plan-col="identity"] { width: 260px; position: sticky; left: 0; z-index: 2; background: var(--plan-row-bg, #fff); border-right: 1px solid var(--border-light); }
+#plansPage .tool-table [data-plan-col="models"] { width: 340px; }
+#plansPage .tool-table [data-plan-col="monthlyToken"] { width: 170px; }
+#plansPage .tool-table [data-plan-col="note"] { width: 640px; }
+#plansPage .tool-table [data-plan-col="firstMonthPrice"] { width: 112px; }
+#plansPage .tool-table :is([data-plan-col="monthlyPrice"], [data-plan-col="quarterlyPrice"], [data-plan-col="yearlyPrice"], [data-plan-col="fiveHoursRequests"], [data-plan-col="weeklyRequests"], [data-plan-col="monthlyRequests"]) { width: 104px; }
+#plansPage .tool-table [data-plan-col="benefits"] { width: 220px; }
+#plansPage .tool-table [data-plan-col="rating"] { width: 76px; }
+#plansPage .plan-rating { display: inline-flex; white-space: nowrap; background: var(--bg-tertiary); padding: 4px 8px; border-radius: 6px; color: var(--text-secondary); font-size: 12px; font-weight: 600; }
+#plansPage .plan-rating[aria-label="待评定"] { font-weight: 400; }
+#plansPage:not(.show-all-columns) [data-plan-extra] { display: none; }
 #plansPage .tool-table th { font-size: 12px; color: var(--text-secondary); background: #f4f7fb; }
-#plansPage .tool-table th:first-child { background: #f4f7fb; }
-#plansPage:not(.show-all-columns) .tool-table :is(th,td):is(:nth-child(3),:nth-child(5),:nth-child(6),:nth-child(12),:nth-child(13),:nth-child(14)):not([colspan]) { display: none; }
-#plansPage .tool-table td:nth-child(4) { color: var(--accent-primary); font-weight: 600; font-variant-numeric: tabular-nums; }
+#plansPage .tool-table th[data-plan-col="identity"] { background: #f4f7fb; }
+#plansPage .tool-table td[data-plan-col="firstMonthPrice"] { color: var(--accent-primary); font-weight: 600; font-variant-numeric: tabular-nums; }
+#plansPage .plan-identity { display: flex; align-items: flex-start; gap: 6px; }
+#plansPage .plan-identity-copy { min-width: 0; }
+#plansPage .plan-title { color: var(--text-primary); font-weight: 600; line-height: 1.5; }
+#plansPage a.plan-title:hover { color: var(--accent-primary); }
+#plansPage .plan-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; margin-top: 4px; }
+#plansPage .plan-meta:empty { display: none; }
+#plansPage .plan-identity-heading { display: flex; align-items: center; gap: 4px; }
+#plansPage .plan-identity-heading > span { color: var(--text-muted); }
+#plansPage .table-sort-button.is-active-sort { color: var(--accent-primary); }
+#plansPage tr.is-pinned { --plan-row-bg: #f0f5fc; }
+#plansPage tr.is-pinned > td { background: var(--plan-row-bg); }
+#plansPage tr.is-pinned > td:first-child { box-shadow: inset 3px 0 #a5b9d1; }
+#plansPage .plan-status { display: inline-flex; }
+#plansPage [data-plan-status="restricted"] { color: #926332; background: #fff7ed; border-color: #ead2ae; }
+@media(max-width:800px) {
+  #plansPage .tool-table [data-plan-col="identity"], #plansPage:not(.show-all-columns) .tool-table [data-plan-col="identity"] { width: 200px; }
+  #plansPage .tool-table :is(th,td) { padding: 8px; }
+  #plansPage a.plan-title { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; }
+  #plansPage a.plan-title .link-icon { flex-shrink: 0; }
+}
 #plansPage .table-sort-button[aria-pressed="true"] { color: var(--accent-primary); }
 .tool-page .tool-tag { border-radius: 5px; background: #edf2f8; color: var(--text-secondary); font-size: 12px; padding: 2px 5px; }
 .tool-page .table-sort-button { text-align: left; }
@@ -146,6 +173,7 @@ body.tool-page { background: var(--bg-primary); color: var(--text-primary); font
 .monitor-retry { display: block; margin: 14px auto 0; }
 .tool-page .tool-empty p { margin-bottom: 14px; }
 .tool-page :is(button, a, input, select, summary):focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
+@media (min-width: 1340px) { .platform-hub-page .platform-card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (max-width: 1100px) { .tool-page .platform-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 800px) {
   .tool-page-main { padding: 0 14px 32px; }
@@ -176,14 +204,10 @@ body.tool-page { padding: 0; }
 /* 可比较的数据用等宽数字；导航、按钮保留一致的命中区。 */
 .tool-page :is(th, td, .tool-count, .platform-rating) { font-variant-numeric: tabular-nums; }
 .tool-page .tool-brand:hover, .tool-page .tool-nav a:hover, .tool-page .tool-button:hover { text-decoration: none; }
-.tool-page .tool-button { min-height: 40px; border-radius: 7px; gap: 6px; transition: background .15s, border-color .15s; }
-.tool-page .tool-button:hover { background: #f3f7fc; }
-.tool-page .tool-button.primary:hover { background: #095ab7; color: white; }
 .tool-page .tool-nav a[aria-current="page"] { background: #e7effa; color: #075dbd; }
 .tool-page .tool-table-wrap { border-radius: 10px; scrollbar-width: thin; }
 .tool-page .tool-table th { font-weight: 600; }
 .tool-page .tool-table tbody tr:last-child td { border-bottom: 0; }
-.tool-page .table-sort-button { min-height: 30px; }
 .tool-page th .table-sort-button::after { content: " ↕"; opacity: .45; font-weight: 400; }
 .tool-page th[aria-sort="ascending"] .table-sort-button::after { content: " ↑"; opacity: 1; }
 .tool-page th[aria-sort="descending"] .table-sort-button::after { content: " ↓"; opacity: 1; }
@@ -200,9 +224,24 @@ body.tool-page { padding: 0; }
   .tool-page .tool-nav a { min-height: 38px; }
 }
 
-#plansPage .tool-table :is(th, td):is(:nth-child(3), :nth-child(4), :nth-child(5), :nth-child(6), :nth-child(7), :nth-child(8), :nth-child(9), :nth-child(11), :nth-child(12)) { text-align: right; }
-#plansPage .tool-table th:not(:first-child):not(:nth-child(2)):not(:nth-child(10)):not(:nth-child(13)):not(:nth-child(14)) .table-sort-button { text-align: right; }
-#plansPage td .table-sort-button { min-width: 26px; color: #75859a; }
+#plansPage .tool-table :is(th,td)[data-plan-col]:not([data-plan-col="identity"]):not([data-plan-col="models"]):not([data-plan-col="benefits"]):not([data-plan-col="note"]):not([data-plan-col="action"]) { text-align: right; }
+#plansPage .tool-table th[data-plan-col]:not([data-plan-col="identity"]):not([data-plan-col="models"]):not([data-plan-col="benefits"]):not([data-plan-col="note"]) .table-sort-button { text-align: right; }
 #plansPage .tool-table td:first-child strong { font-weight: 600; }
 
 .tool-loading { min-height: 280px; display: grid; place-items: center; color: var(--text-secondary); font-size: 13px; }
+/* 平台中心：精选按钮、暂停筛选与统一卡片网格。 */
+.platform-hub-page .platform-filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.platform-hub-page .platform-filter-fields { flex: 0 1 auto; min-width: 0; max-width: 100%; padding: 0; margin: 0; border: 0; }
+.platform-filter-fields legend { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.platform-featured-control { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.platform-hub-page .is-featured-mode .platform-filter-fields { opacity: .6; filter: grayscale(1); pointer-events: none; }
+.platform-hub-page .is-search-paused input { opacity: .6; background: var(--bg-tertiary); cursor: not-allowed; }
+.platform-hub-page .platform-count-main { white-space: nowrap; }
+.platform-hub-page .platform-card > header { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+.platform-hub-page .platform-card-heading { overflow-wrap: anywhere; }
+.platform-hub-page { --platform-featured-color: #946c35; --platform-featured-border: #d3bd98; }
+body.platform-hub-page .platform-card.is-featured:not(.is-pinned) { border-color: var(--platform-featured-border); }
+body.platform-hub-page .platform-card.is-pinned { border-color: #a5b9d1; }
+.platform-featured-badge { display: inline-flex; align-items: center; padding: 3px 7px; border: 1px solid #e4d1b2; border-radius: 5px; background: #fff8ec; color: var(--platform-featured-color, #946c35); font-size: 12px; line-height: 1.5; white-space: nowrap; }
+
+#plansPage th[aria-sort="ascending"] .table-sort-button:not(.is-active-sort)::after, #plansPage th[aria-sort="descending"] .table-sort-button:not(.is-active-sort)::after { content: " ↕"; opacity: .45; }

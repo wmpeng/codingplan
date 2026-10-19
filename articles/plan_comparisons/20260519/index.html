@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="/scripts/ui-core.js?v=101203ea10"></script>
+<script src="/scripts/ui-help.js?v=065329afe1"></script>
+<script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
+<script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026年5月主流AI Coding Plan平台全解析：能力、价格与选型指南</title>
+<link rel="canonical" href="https://codingplan.fyi/articles/plan_comparisons/20260519/">
+<meta name="description" content="2026年5月AI编程订阅市场全解析：智谱AI、MiniMax、Kimi、字节方舟、阿里百炼等25大平台Coding Plan对比，价格、限购、模型能力一目了然。" />
+  <meta property="article:published_time" content="2026-05-19" />
+  <meta property="article:modified_time" content="2026-05-19" />
+  <link rel="icon" href="/favicon.ico?v=260924a" type="image/x-icon" />
+  <link rel="stylesheet" href="/styles/shared.css?v=482edb170c" />
+  <link rel="stylesheet" href="/styles/reading.css?v=b577d380af" />
+  <link rel="stylesheet" href="/styles/design-system.css?v=8b40812952" />
+<script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
+<script src="/scripts/site-navigation.js?v=58bc3a8bab" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
+<link rel="stylesheet" href="/styles/ui-components.css?v=bf5f1551fa">
+<link rel="stylesheet" href="/styles/ui-help.css?v=f7c4d9118a">
+</head>
+<body class="article-page">
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/monitor/" hidden data-monitor-nav>可用性监控</a>
+    <a href="/articles/" aria-current="page">文章</a>
+    <a href="/updates/">预告与更新</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="priceBasisLabel">综合单价口径</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="priceBasisLabel" title="首月价缺失时使用每月价格；按量 API 报价和 Token 额度不变。">
+            <button type="button" data-settings-price-basis="firstMonth" aria-pressed="true">首月价格</button>
+            <button type="button" data-settings-price-basis="monthly" aria-pressed="false">每月价格</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="doc-wrap">
+    <nav class="guide-breadcrumb article-breadcrumb" aria-label="面包屑">
+      <a href="/">Coding Plan</a><span aria-hidden="true">/</span>
+      <a href="/articles/">文章列表</a><span aria-hidden="true">/</span>
+      <span aria-current="page" title="2026年5月主流AI Coding Plan平台全解析：能力、价格与选型指南">2026年5月主流AI Coding Plan平台全解析：能力、价格与选型指南</span>
+    </nav>
+    <div class="doc-layout">
+      <aside class="doc-toc-aside doc-toc-aside--desktop"><nav class="doc-toc" aria-label="本页内容"><div class="toc">
+<ul>
+<li><a href="#_1">一、两种计费模式核心差异</a></li>
+<li><a href="#_2">二、国内第一梯队平台核心特点</a><ul>
+<li><a href="#aiopus">智谱AI：代码能力天花板，Opus平替首选</a></li>
+<li><a href="#minimax">MiniMax：性价比之王，日常编程首选</a></li>
+<li><a href="#kimiagent">Kimi：多模态与Agent能力突出</a></li>
+<li><a href="#coding-plan">字节·方舟：多模型生态完善，Coding Plan即将退市</a></li>
+<li><a href="#_3">阿里·百炼：通义千问专属，长上下文处理专家</a></li>
+</ul>
+</li>
+<li><a href="#_4">三、其他主流平台亮点</a><ul>
+<li><a href="#_5">讯飞·星火：无需抢购，智谱最佳平替</a></li>
+<li><a href="#_6">联通云：新势力崛起，价格透明</a></li>
+<li><a href="#_7">优云智算：费率透明，无隐藏消费</a></li>
+</ul>
+</li>
+<li><a href="#_8">四、国际平台与特色工具</a><ul>
+<li><a href="#github-copilotide">GitHub Copilot：IDE集成标杆，学生福利丰厚</a></li>
+<li><a href="#claude-codehttpsapidreamfreespacecscpyqclaudeup">[Claude ]Code：原生体验最佳(https://api.dreamfree.space/c/s/cpyqclaudeup)</a></li>
+<li><a href="#opencode-go">OpenCode Go：多模型聚合，首月半价</a></li>
+</ul>
+</li>
+<li><a href="#ai">五、免费平台推荐：零成本体验AI编程</a><ul>
+<li><a href="#github-ide">GitHub 学生认证：IDE集成免费编程助手</a></li>
+<li><a href="#mimo-100t-tokentoken">小米 MiMo 100T Token申请：百万亿级Token免费领</a></li>
+<li><a href="#nvidia-nimapi">NVIDIA NIM：免费高并发模型API</a></li>
+<li><a href="#openrouter">OpenRouter：免费模型聚合平台（有条件限制）</a></li>
+<li><a href="#free-trialai-coding">摩尔线程 Free Trial：国产全栈AI Coding免费体验</a></li>
+<li><a href="#freetoken-plan">商汤·日日新 Free：限时免费Token Plan</a></li>
+</ul>
+</li>
+<li><a href="#_9">六、选型建议：按需选择，性价比优先</a></li>
+<li><a href="#_10">七、总结</a></li>
+</ul>
+</div>
+</nav></aside>
+      <article class="doc">
+        <p class="doc-kicker">选型指南 · Coding Plan</p>
+        <h1>2026年5月主流AI Coding Plan平台全解析：能力、价格与选型指南</h1>
+        <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="本页内容"><div class="toc">
+<ul>
+<li><a href="#_1">一、两种计费模式核心差异</a></li>
+<li><a href="#_2">二、国内第一梯队平台核心特点</a><ul>
+<li><a href="#aiopus">智谱AI：代码能力天花板，Opus平替首选</a></li>
+<li><a href="#minimax">MiniMax：性价比之王，日常编程首选</a></li>
+<li><a href="#kimiagent">Kimi：多模态与Agent能力突出</a></li>
+<li><a href="#coding-plan">字节·方舟：多模型生态完善，Coding Plan即将退市</a></li>
+<li><a href="#_3">阿里·百炼：通义千问专属，长上下文处理专家</a></li>
+</ul>
+</li>
+<li><a href="#_4">三、其他主流平台亮点</a><ul>
+<li><a href="#_5">讯飞·星火：无需抢购，智谱最佳平替</a></li>
+<li><a href="#_6">联通云：新势力崛起，价格透明</a></li>
+<li><a href="#_7">优云智算：费率透明，无隐藏消费</a></li>
+</ul>
+</li>
+<li><a href="#_8">四、国际平台与特色工具</a><ul>
+<li><a href="#github-copilotide">GitHub Copilot：IDE集成标杆，学生福利丰厚</a></li>
+<li><a href="#claude-codehttpsapidreamfreespacecscpyqclaudeup">[Claude ]Code：原生体验最佳(https://api.dreamfree.space/c/s/cpyqclaudeup)</a></li>
+<li><a href="#opencode-go">OpenCode Go：多模型聚合，首月半价</a></li>
+</ul>
+</li>
+<li><a href="#ai">五、免费平台推荐：零成本体验AI编程</a><ul>
+<li><a href="#github-ide">GitHub 学生认证：IDE集成免费编程助手</a></li>
+<li><a href="#mimo-100t-tokentoken">小米 MiMo 100T Token申请：百万亿级Token免费领</a></li>
+<li><a href="#nvidia-nimapi">NVIDIA NIM：免费高并发模型API</a></li>
+<li><a href="#openrouter">OpenRouter：免费模型聚合平台（有条件限制）</a></li>
+<li><a href="#free-trialai-coding">摩尔线程 Free Trial：国产全栈AI Coding免费体验</a></li>
+<li><a href="#freetoken-plan">商汤·日日新 Free：限时免费Token Plan</a></li>
+</ul>
+</li>
+<li><a href="#_9">六、选型建议：按需选择，性价比优先</a></li>
+<li><a href="#_10">七、总结</a></li>
+</ul>
+</div>
+</nav></details>
+        <p>2026年5月，AI编程订阅市场迎来关键变革：阿里、字节、腾讯等头部厂商正逐步用Token Plan替代传统Coding Plan，剩余套餐愈发稀缺。<strong>本文优先推荐Coding Plan，不推荐常规Token Plan订阅</strong>——对绝大多数<strong>个人开发者</strong>而言，<strong>高频日常开发</strong>选Coding Plan按次计费、Token无上限，性价比更高；<strong>低频零散使用</strong>更适合直接调用API按量付费，灵活可控。本文梳理25大主流平台的Coding Plan核心差异，为开发者提供清晰选型指南。</p>
+<h2 id="_1">一、两种计费模式核心差异</h2>
+<p>当前AI编程订阅主要分为两类模式，适配个人开发者不同使用习惯：
+- <strong>Coding Plan</strong>：按请求次数计费，Token无上限，每月几十元即可获得上万次请求，<strong>适合高频、日常稳定开发</strong>。目前智谱AI、字节·方舟、阿里·百炼三大头部平台均已限购，阿里更是仅保留高端Pro套餐。
+- <strong>Token Plan</strong>：按消耗Token量订阅计费，单次长对话、代码分析消耗量大，整体成本偏高；不同模型倍率不透明。<strong>不建议个人开发者购买订阅版Token Plan</strong>，低频使用可直接走平台API按量调用，按需付费更划算。</p>
+<p>近期行业动态显示，字节方舟Coding Plan已于5月8日开始限购，腾讯云已全面下线Coding Plan，GitHub Copilot也宣布6月1日起统一改用Token计费，Coding Plan正逐步成为稀缺资源。</p>
+<h2 id="_2">二、国内第一梯队平台核心特点</h2>
+<h3 id="aiopus"><a href="https://api.dreamfree.space/c/s/cpyqzhipu" rel="noopener noreferrer">智谱AI：代码能力天花板，Opus平替首选</a></h3>
+<p><strong>综合评分</strong>：★★★★★
+<strong>限购状态</strong>：<strong>全面限购</strong>，每日10:00限量发售Lite、Pro、Max套餐，热门时段1分钟内售罄。续订或有效期内升级不受限售影响。</p>
+<p><strong>核心优势</strong>：
+- 模型能力处于T0级别，主打GLM-5.1和GLM-5-Turbo，代码生成、调试与重构能力突出，是国产模型中代码场景的标杆。
+- 提供免费MCP（模型上下文协议）次数，支持与各类开发工具无缝集成。
+- 用量充足，Lite版每月24000次请求，是Claude Pro的3倍；Max版可达480000次/月，满足企业级高频使用需求。</p>
+<p><strong>Coding Plan价格体系</strong>：
+| 套餐 | 首月价格 | 连续包月 | 5小时请求数 | 月请求数 |
+|------|----------|----------|--------------|----------|
+| Lite | ¥46.55   | ¥49      | 1,200        | 24,000   |
+| Pro  | ¥141.55  | ¥149     | 6,000        | 120,000  |
+| Max  | ¥445.55  | ¥469     | 24,000       | 480,000  |</p>
+<p><strong>不足</strong>：需要抢购，热门时段库存紧张；国际版价格近期大幅上涨，性价比有所下降。
+<strong>适用人群</strong>：对代码质量要求高、能接受抢购的专业开发者与团队。</p>
+<h3 id="minimax"><a href="https://api.dreamfree.space/c/s/cpyqminimax" rel="noopener noreferrer">MiniMax：性价比之王，日常编程首选</a></h3>
+<p><strong>综合评分</strong>：★★★★★
+<strong>限购状态</strong>：<strong>不限购</strong>，所有套餐均可随时购买。</p>
+<p><strong>核心优势</strong>：
+- 常规价格全平台最低，Starter版首月仅¥26.1，连续包月¥29，即可获得每月24000次请求。
+- 独占MiniMax-M2.7模型，代码能力均衡，同时适配各类Agentic场景。
+- 极速版稳定性出色，TPS可达100，极少遇到限频问题，适合高并发使用。
+- 额度限制宽松，所有套餐均无Token上限，支持集中消耗。</p>
+<p><strong>Coding Plan价格体系</strong>：
+| 套餐 | 首月价格 | 连续包月 | 5小时请求数 | 月请求数 | TPS |
+|------|----------|----------|--------------|----------|-----|
+| Starter | ¥26.10 | ¥29 | 600 | 24,000 | 50 |
+| Plus | ¥44.10 | ¥49 | 1,500 | 60,000 | 50 |
+| Plus-极速 | ¥88.20 | ¥98 | 1,500 | 60,000 | 100 |</p>
+<p><strong>不足</strong>：顶级模型能力略逊于智谱GLM-5.1。
+<strong>适用人群</strong>：预算有限、日常编程任务繁重的<strong>个人开发者</strong>与学生群体。</p>
+<h3 id="kimiagent"><a href="https://api.dreamfree.space/c/s/cpyqkimi" rel="noopener noreferrer">Kimi：多模态与Agent能力突出</a></h3>
+<p><strong>综合评分</strong>：★★★★☆
+<strong>限购状态</strong>：<strong>不限购</strong>，所有套餐均可随时购买。</p>
+<p><strong>核心优势</strong>：
+- 支持最新Kimi-K2.6模型，代码能力均衡，同时具备强大的多模态能力，支持图像输入解析，可直接根据设计图生成前端代码。
+- 提供实验性专业数据库功能，可直接连接数据库进行代码生成与查询。
+- Agent能力出色，Andante版支持4倍速Agent运行，Allegretto及以上版本提供免费Kimi-Claw。</p>
+<p><strong>Coding Plan价格体系</strong>：
+| 套餐 | 首月价格 | 连续包月 | 5小时请求数 | 核心权益 |
+|------|----------|----------|--------------|----------|
+| Andante | ¥49 | ¥49 | 未公开 | Agent 4倍速 |
+| Moderato | ¥99 | ¥99 | 未公开 | 4倍额度，Agent多任务并行 |
+| Allegretto | ¥199 | ¥199 | 未公开 | 20倍额度，免费Kimi-Claw |
+| Allegro | ¥699 | ¥699 | 未公开 | 60倍额度，免费Kimi-Claw |</p>
+<p><strong>不足</strong>：官方未公开具体用量限制，推测比其他平台少；价格偏高。
+<strong>适用人群</strong>：需要多模态支持、数据库集成或复杂Agent任务的<strong>个人开发者</strong>。</p>
+<h3 id="coding-plan"><a href="https://api.dreamfree.space/c/s/cpyqfangzhou" rel="noopener noreferrer">字节·方舟：多模型生态完善，Coding Plan即将退市</a></h3>
+<p><strong>综合评分</strong>：Coding Plan ★★★★☆
+<strong>限购状态</strong>：<strong>全面限购</strong>，已于5月8日开始限购，Lite和Pro套餐均需抢购，后续可能全面下线。</p>
+<p><strong>核心优势</strong>：
+- 支持模型种类最丰富，包括Doubao‑Seed‑2.0、DeepSeek‑V4‑Pro、GLM‑5.1、Kimi‑K2.6等几乎所有主流模型，可按需切换。
+- Coding Plan Lite版首月¥36，连续包月¥40，每月18000次请求，性价比不错。
+- Pro版及以上提供免费ArkClaw，支持复杂编程Agent任务。</p>
+<p><strong>Coding Plan价格体系</strong>：
+| 套餐 | 首月价格 | 连续包月 | 5小时请求数 | 月请求数 |
+|------|----------|----------|--------------|----------|
+| Lite | ¥36 | ¥40 | 1,200 | 18,000 |
+| Pro | ¥160 | ¥200 | 6,000 | 90,000 |</p>
+<p><strong>注意事项</strong>：Coding Plan库存紧张，建议尽早购买；<strong>不推荐订阅版Token Plan，低频使用可直接调用API按量付费</strong>。
+<strong>适用人群</strong>：需要同时使用多个模型、能赶上限购的<strong>个人开发者</strong>。</p>
+<h3 id="_3"><a href="https://api.dreamfree.space/c/s/cpyqbailianc" rel="noopener noreferrer">阿里·百炼：通义千问专属，长上下文处理专家</a></h3>
+<p><strong>综合评分</strong>：Coding Plan ★★★★☆
+<strong>限购状态</strong>：<strong>仅存Pro套餐且限购</strong>，Lite版已永久停售并停止续费，目前仅保留200元/月的Pro套餐，每日9:30限量抢购。</p>
+<p><strong>核心优势</strong>：
+- 主打最新Qwen‑3.6‑Plus模型，默认支持100万token上下文窗口，代码生成效率高，尤其擅长前端与Python开发，对中文项目的理解能力突出。
+- 在SWE‑bench、Terminal‑Bench 2.0等权威编程基准测试中表现优异，代码修复能力接近Claude Opus 4.5，终端操作能力甚至超越后者。
+- 提供Coding Plan Pro套餐，每月90000次请求，Token无上限，适合大型代码库分析与重构。</p>
+<p><strong>Coding Plan价格体系</strong>：
+| 套餐 | 首月价格 | 连续包月 | 5小时请求数 | 月请求数 |
+|------|----------|----------|--------------|----------|
+| Pro | ¥200 | ¥200 | 6,000 | 90,000 |</p>
+<p><strong>不足</strong>：仅存高端Pro套餐，对轻度用户不友好；支持的第三方模型种类较少；<strong>不推荐订阅版Token Plan，低频使用可直接调用API按量付费</strong>。
+<strong>适用人群</strong>：主要使用通义千问模型、有大量长上下文处理需求的<strong>个人开发者</strong>与团队。</p>
+<h2 id="_4">三、其他主流平台亮点</h2>
+<h3 id="_5"><a href="https://api.dreamfree.space/c/s/cpyqxunfei" rel="noopener noreferrer">讯飞·星火：无需抢购，智谱最佳平替</a></h3>
+<p><strong>综合评分</strong>：★★★★★
+<strong>限购状态</strong>：<strong>不限购</strong>，所有套餐均可随时购买。</p>
+<p><strong>核心优势</strong>：
+- 无需抢购，39元/月即可使用GLM‑5.1模型，且用量比字节方舟更多，是抢不到智谱套餐的最优替代。
+- 支持多模型混合调用，包括Qwen‑3.5‑Plus、MiniMax‑M2.5、Kimi‑K2.5等主流模型，灵活性高。
+- GLM‑5.1已恢复200K上下文窗口，可处理大型代码库与长文档。
+- 实际用量符合官方标注，请求数真实，用量高。</p>
+<p><strong>Coding Plan价格体系</strong>：
+| 套餐 | 首月价格 | 连续包月 | 5小时请求数 | 月请求数 |
+|------|----------|----------|--------------|----------|
+| 专业版 | ¥39 | ¥39 | 1,200 | 18,000 |
+| 高效版 | ¥199 | ¥199 | 6,000 | 90,000 |</p>
+<p><strong>不足</strong>：高效版价格偏高，与智谱Pro相比性价比一般。
+<strong>适用人群</strong>：不想参与抢购、需要稳定使用GLM‑5.1的<strong>个人开发者</strong>。</p>
+<h3 id="_6"><a href="https://api.dreamfree.space/c/s/cpyqunicomcp" rel="noopener noreferrer">联通云：新势力崛起，价格透明</a></h3>
+<p><strong>综合评分</strong>：Coding Plan ★★★★☆
+<strong>限购状态</strong>：<strong>不限购</strong>，所有套餐均可随时购买。</p>
+<p><strong>核心优势</strong>：
+- Coding Plan价格亲民，Lite版¥40/月，Pro版¥200/月，支持DeepSeek‑V4‑Flash、GLM‑5.1等主流模型。
+- 整体稳定性较好，服务响应速度快。</p>
+<p><strong>Coding Plan价格体系</strong>：
+| 套餐 | 首月价格 | 连续包月 | 5小时请求数 | 月请求数 |
+|------|----------|----------|--------------|----------|
+| Lite | ¥40 | ¥40 | 1,200 | 18,000 |
+| Pro | ¥200 | ¥200 | 6,000 | 90,000 |</p>
+<p><strong>不足</strong>：不同云区域可用模型略有差异；<strong>不推荐订阅版Token Plan，低频使用可直接调用API按量付费</strong>。
+<strong>适用人群</strong>：预算有限、对模型多样性要求不高的<strong>个人开发者</strong>。</p>
+<h3 id="_7"><a href="https://api.dreamfree.space/c/s/cpyqyyzs" rel="noopener noreferrer">优云智算：费率透明，无隐藏消费</a></h3>
+<p><strong>综合评分</strong>：★★★★☆
+<strong>限购状态</strong>：<strong>不限购</strong>，所有套餐均可随时购买。</p>
+<p><strong>核心优势</strong>：
+- 明确标注各模型调用倍率（如DeepSeek‑V3.2 x1，GLM‑5.1 x6），无隐藏扣费，消费完全可控。
+- 限流宽松，支持3‑10并发，适合多任务并行处理。
+- 提供从入门到企业级的全档位套餐，可按需选择。</p>
+<p><strong>Coding Plan价格体系</strong>：
+| 套餐 | 首月价格 | 连续包月 | 5小时请求数 | 月请求数 | 并发数 |
+|------|----------|----------|--------------|----------|--------|
+| Mini 迷你版 | ¥49 | ¥49 | 300 | 1,900 | 3 |
+| Lite 入门版 | ¥99 | ¥99 | 600 | 3,800 | 5 |
+| Basic 基础版 | ¥199 | ¥199 | 1,200 | 7,600 | 10 |
+| Pro 增强版 | ¥499 | ¥499 | 3,000 | 19,000 | 10 |</p>
+<p><strong>不足</strong>：相同请求次数下，价格略高于主流平台。
+<strong>适用人群</strong>：对消费透明度要求高、有一定并发需求的<strong>个人开发者</strong>与小团队。</p>
+<h2 id="_8">四、国际平台与特色工具</h2>
+<h3 id="github-copilotide"><a href="https://api.dreamfree.space/c/s/cpyqghcopilot" rel="noopener noreferrer">GitHub Copilot：IDE集成标杆，学生福利丰厚</a></h3>
+<p><strong>综合评分</strong>：学生版 ★★★★★ | Pro版 ★★★★☆
+<strong>限购状态</strong>：<strong>暂时关闭新用户订阅权益激活</strong>，已有用户可正常使用；6月1日起将改为Token计费，届时将不再推荐订阅版。</p>
+<p><strong>核心优势</strong>：
+- 学生认证后<strong>完全免费</strong>，每月可调用高级模型300次，是学生开发者的首选。
+- 与VS Code等IDE深度集成，代码补全与实时建议体验最佳，大幅提升编码效率。
+- Pro+版支持GPT‑5.5、Claude Opus 4.7等顶级模型，代码质量出色。</p>
+<p><strong>Coding Plan价格体系</strong>：
+| 套餐 | 首月价格 | 连续包月 | 5小时请求数 | 月请求数 |
+|------|----------|----------|--------------|----------|
+| 学生版 | $0 | $0 | 未公开 | 300次高级模型 |
+| Pro | $10 | $10 | 未公开 | 300次高级模型 |
+| Pro+ | $39 | $39 | 未公开 | 1500次高级模型 |</p>
+<p><strong>适用人群</strong>：学生开发者、习惯使用IDE集成工具的<strong>个人开发者</strong>。</p>
+<h3 id="claude-codehttpsapidreamfreespacecscpyqclaudeup">[Claude ]Code：原生体验最佳(https://api.dreamfree.space/c/s/cpyqclaudeup)</h3>
+<p><strong>综合评分</strong>：★★★★☆
+<strong>限购状态</strong>：<strong>不限购</strong>，所有套餐均可随时购买。</p>
+<p><strong>核心优势</strong>：
+- 提供最接近原生Claude Code的体验，Claude Opus 4.7的长上下文处理能力突出，可一次性分析整个代码库。
+- 代码逻辑严谨，生成的代码bug率低，适合复杂系统设计与重构。</p>
+<p><strong>Coding Plan价格体系</strong>：
+| 套餐 | 首月价格 | 连续包月 | 5小时请求数 | 核心权益 |
+|------|----------|----------|--------------|----------|
+| Pro | $20 | $20 | 未公开 | 基础额度 |
+| Max <em>5 | $100 | $100 | 未公开 | 5倍Pro额度 |
+| Max </em>20 | $200 | $200 | 未公开 | 20倍Pro额度 |</p>
+<p><strong>不足</strong>：套餐额度不可用于第三方编程Agent；部分用户订阅时可能被要求实名认证。
+<strong>适用人群</strong>：有大型代码库处理需求、追求原生体验的<strong>个人开发者</strong>。</p>
+<h3 id="opencode-go"><a href="https://api.dreamfree.space/c/s/cpyqopencode" rel="noopener noreferrer">OpenCode Go：多模型聚合，首月半价</a></h3>
+<p><strong>综合评分</strong>：★★★★★
+<strong>限购状态</strong>：<strong>不限购</strong>，所有套餐均可随时购买。</p>
+<p><strong>核心优势</strong>：
+- 支持几乎所有国内外主流模型，包括GPT‑5.5、Claude Opus、GLM‑5.1等，一个平台即可满足所有需求。
+- 首月仅$5，连续包月$10，按美元Credits计费，灵活性高。
+- 无隐藏倍率，消费透明。</p>
+<p><strong>Coding Plan价格体系</strong>：
+| 套餐 | 首月价格 | 连续包月 | 5小时请求数 | 月额度 |
+|------|----------|----------|--------------|--------|
+| Go | $5 | $10 | 未公开 | 基础12美元+周30美元+月60美元 |</p>
+<p><strong>不足</strong>：具体请求次数未公开；国内访问速度一般。
+<strong>适用人群</strong>：需要同时使用国内外模型的跨境<strong>个人开发者</strong>。</p>
+<h2 id="ai">五、免费平台推荐：零成本体验AI编程</h2>
+<h3 id="github-ide"><a href="https://api.dreamfree.space/c/s/cpyqghstudent" rel="noopener noreferrer">GitHub 学生认证：IDE集成免费编程助手</a></h3>
+<p><strong>核心特点</strong>：与VS Code等IDE深度集成，提供代码补全、实时建议和高级模型调用权限。
+<strong>免费额度</strong>：学生认证后<strong>完全免费</strong>，每月可调用高级模型300次。
+<strong>申请方式</strong>：通过GitHub学生包页面提交身份认证。
+<strong>适用人群</strong>：学生开发者、教育场景用户。</p>
+<h3 id="mimo-100t-tokentoken"><a href="https://api.dreamfree.space/c/s/cpyqmimo100t" rel="noopener noreferrer">小米 MiMo 100T Token申请：百万亿级Token免费领</a></h3>
+<p><strong>核心特点</strong>：面向AI开发者的百万亿Token创造者激励计划。
+<strong>免费额度</strong>：个人用户最高可领<strong>16亿Credits</strong>，赠完即止。
+<strong>申请方式</strong>：填写项目信息，审核通过后发放权益。
+<strong>适用场景</strong>：大规模模型测试、Agent开发、开源项目贡献。</p>
+<h3 id="nvidia-nimapi"><a href="https://api.dreamfree.space/c/s/cpyqnvidia" rel="noopener noreferrer">NVIDIA NIM：免费高并发模型API</a></h3>
+<p><strong>核心特点</strong>：预打包优化AI模型微服务，兼容OpenAI格式API，国内可直连。
+<strong>免费额度</strong>：每分钟<strong>40次请求</strong>，无Token限制。
+<strong>申请方式</strong>：注册NVIDIA账号，创建API Key即可调用。
+<strong>适用场景</strong>：个人项目开发、AI助手搭建、编程学习。</p>
+<h3 id="openrouter"><a href="https://api.dreamfree.space/c/s/cpyqopenrouter" rel="noopener noreferrer">OpenRouter：免费模型聚合平台（有条件限制）</a></h3>
+<p><strong>核心特点</strong>：一个接口聚合多类模型，<strong>免费使用存在严格限制</strong>。</p>
+<p><strong>免费使用限制详情</strong>：
+- 未充值用户每日仅<strong>50次免费请求</strong>；充值≥10美元后每日额度提升至1000次
+- 统一限速<strong>每分钟20次请求</strong>
+- 部分热门模型无免费版，部分模型限制国内IP访问
+- 付费充值仅支持外币信用卡/加密货币，银联卡不可用</p>
+<p><strong>推荐免费模型</strong>：qwen/qwen3.6‑plus‑preview:free、deepseek/deepseek‑r1‑0528:free、llama‑3.3‑70b‑instruct等
+<strong>适用场景</strong>：多模型对比测试、低成本项目开发，适合有外币支付能力的用户。</p>
+<h3 id="free-trialai-coding"><a href="https://api.dreamfree.space/c/s/cpyqmoorefree" rel="noopener noreferrer">摩尔线程 Free Trial：国产全栈AI Coding免费体验</a></h3>
+<p><strong>核心特点</strong>：首个基于国产全功能GPU算力底座构建的智能开发解决方案，融合硅基流动推理加速引擎，集成GLM‑4.7顶尖代码模型。
+<strong>免费额度</strong>：新用户享<strong>30天免费体验期</strong>，支持轻量级项目试水。
+<strong>申请方式</strong>：访问官网直接注册申请，与主流编程工具即插即用适配。
+<strong>适用场景</strong>：国产AI生态尝鲜、轻量级代码生成与调试。</p>
+<h3 id="freetoken-plan"><a href="https://api.dreamfree.space/c/s/cpyqsensenova" rel="noopener noreferrer">商汤·日日新 Free：限时免费Token Plan</a></h3>
+<p><strong>核心特点</strong>：支持新一代轻量化多模态智能体模型SenseNova 6.7 Flash‑Lite，Token消耗更低。模型能力较弱。
+<strong>免费额度</strong>：公测期每5小时<strong>1500次免费调用配额</strong>，零门槛接入AI能力。
+<strong>申请方式</strong>：登录官网注册即可领取。
+<strong>适用场景</strong>：多模态编程、自动化办公、数据分析等轻量级任务。</p>
+<h2 id="_9">六、选型建议：按需选择，性价比优先</h2>
+<p>本文优先推荐Coding Plan，<strong>不推荐个人开发者购买订阅版Token Plan</strong>，低频零散使用优先选择API按量调用或免费额度。特别提醒：智谱AI、字节·方舟、阿里·百炼三大头部平台均已限购，阿里仅存200元/月的Pro套餐，建议有高频使用需求的开发者尽早购买：
+1.  <strong>追求极致代码质量、高频开发</strong>：优先抢智谱AI，抢不到选讯飞·星火专业版（无需抢购）。
+2.  <strong>预算有限、日常高频使用</strong>：MiniMax Starter/Plus是绝对首选，性价比无出其右且不限购。
+3.  <strong>需要多模型切换、高频开发</strong>：字节·方舟Coding Plan（趁还能买）或OpenCode Go（不限购）。
+5.  <strong>学生开发者</strong>：GitHub Copilot学生版（免费）或，MiniMax Starter（备用）。
+6.  <strong>低频、偶尔使用</strong>：直接调用平台API按量付费，或使用NVIDIA NIM等免费额度，灵活不浪费。
+7.  <strong>企业级大用量</strong>：智谱AI Max或Kimi Allegretto，稳定性及性价比优选。</p>
+<h2 id="_10">七、总结</h2>
+<p>2026年AI Coding Plan市场正快速变革，Coding Plan稀缺性持续提升。智谱AI、字节·方舟、阿里·百炼三大头部平台处限购状态，腾讯已完全下架Coding Plan，Github Copilot也即将调整计费模式，未来或有更多平台跟进下线该模式。</p>
+<p>对个人开发者而言，<strong>高频稳定开发优先选Coding Plan，低频零散使用优先API按量调用或免费额度</strong>，按需选择更贴合自身需求。目前MiniMax和讯飞·星火是综合性价比最高且不限购的首选；智谱AI适合追求代码质量但能接受抢购的用户；阿里·百炼则适合有长上下文处理需求的开发者。建议结合自身使用频率，合理选择订阅、API或免费方案，避免不必要的成本浪费。</p>
+      </article>
+    </div>
+  </div>
+</body>
+</html>

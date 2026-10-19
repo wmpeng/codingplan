@@ -12,7 +12,7 @@
   },
   "usdToCnyRate": 6.8,
   "platformCatalog": {
-    "defaultPlatformStatusMax": "paused"
+    "defaultPlatformStatusMax": "restricted"
   },
   "homepageFilters": {
     "defaults": {
@@ -22,7 +22,7 @@
       "budgetCny": null,
       "monthlyTokenRange": null,
       "tokenUnit": "yi",
-      "platformStatusMax": "paused",
+      "platformStatusMax": "restricted",
       "excludedPlatformStatuses": [],
       "includeDiscontinued": false,
       "priceRanges": {},
@@ -106,7 +106,7 @@
       "measuredWeeklyTokenLimit": "周Token",
       "measuredMonthlyTokenLimit": "月Token",
       "benefits": "其他权益",
-      "discontinued": "状态",
+      "planStatus": "状态",
       "note": "备注"
     }
   },

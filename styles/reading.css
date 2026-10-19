@@ -1,4 +1,32 @@
-/* 站点阅读层：覆盖同步文章自己的装饰，不改变正文、图表与内容结构。 */
+/* 网站文章模板的唯一阅读布局；正文来自维护仓库 Markdown。 */
+.article-page .doc-wrap { margin: 0 auto; }
+.article-page .doc-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: start; }
+.article-page article.doc { min-width: 0; overflow-wrap: anywhere; }
+.article-page .doc-toc-aside--desktop { display: none; position: sticky; overflow-y: auto; }
+.article-page article.doc :is(p, ul, ol, blockquote, pre, figure, .doc-table-wrap) { margin-block: 0 20px; }
+.article-page article.doc :is(ul, ol) { padding-left: 24px; }
+.article-page article.doc li + li { margin-top: 6px; }
+.article-page article.doc h1 { margin-bottom: 22px; }
+.article-page article.doc h2 { margin-bottom: 20px; }
+.article-page article.doc h3 { margin: 30px 0 16px; }
+.article-page article.doc blockquote { padding: 16px 20px; }
+.article-page article.doc blockquote > :last-child { margin-bottom: 0; }
+.article-page .doc-table-wrap { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
+.article-page article.doc table { border-collapse: collapse; width: 100%; min-width: 500px; line-height: 1.65; }
+.article-page article.doc :is(th, td) { padding: 10px 12px; border: 1px solid var(--border-color); text-align: left; vertical-align: top; }
+.article-page .doc-figure { margin-inline: 0; }
+.article-page article.doc img { display: block; width: auto; max-width: 100%; height: auto; margin-inline: auto; }
+.article-page article.doc .img-source { color: var(--text-secondary); font-size: 12px; }
+.article-page article.doc pre { padding: 16px; overflow-x: auto; background: var(--bg-tertiary); border-radius: 8px; }
+.article-page article.doc code { font-size: .88em; }
+.article-page .articles-list { display: flex; flex-direction: column; padding: 0; margin: 0; list-style: none; }
+.article-page .articles-list li { display: grid; }
+.article-page .articles-item-main { display: flex; flex-direction: column; min-width: 0; gap: 4px; }
+.article-page .articles-item-main a { text-decoration: none; }
+@media (min-width: 1024px) {
+  .article-page .doc-layout:has(.doc-toc-aside--desktop) { grid-template-columns: 200px minmax(0, 1fr); }
+  .article-page .doc-toc-aside--desktop { display: block; }
+}
 body.article-page { padding: 24px 28px 64px; font-size: 16px; line-height: 1.85; }
 .article-page .doc-wrap { max-width: 1100px; }
 .article-page .guide-breadcrumb { display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:6px 0 22px;color:var(--text-secondary);font-size:13px;font-weight:400;line-height:1.5; }
@@ -13,6 +41,8 @@ body.article-page { padding: 24px 28px 64px; font-size: 16px; line-height: 1.85;
 .article-page article.doc h3 { font-size: 18px; font-weight: 650; line-height: 1.6; }
 .article-page article.doc p { line-height: 1.85; }
 .article-page article.doc a { color: var(--accent-primary); text-underline-offset: 4px; }
+body.article-page article.doc a { border-bottom-color: var(--accent-primary); }
+body.article-page article.doc a:hover { color: var(--accent-hover); border-bottom-color: var(--accent-hover); }
 .article-page article.doc blockquote { background: #f4f7fc; border-left-color: #8aaed8; box-shadow: none; border-radius: 0 7px 7px 0; }
 .article-page article.doc table { font-size: 13px; font-variant-numeric: tabular-nums; }
 .article-page article.doc th { background: #f3f6fa; font-weight: 600; }

@@ -5,6 +5,7 @@
 })(globalThis, function (C, E, P, Numbers) {
   'use strict';
   const UI = globalThis.CodingPlanUI || require('./ui-core.js');
+  const Help = globalThis.CodingPlanHelp || require('./ui-help.js');
   const esc = UI.escapeHtml, url = value => UI.sanitizeUrl(value, '#');
   const money = n => Numbers.monthlyFee(n, '¥', '待确认');
   const unitLabel = Numbers.tokenUnit;
@@ -16,17 +17,19 @@
   const setModelsExpanded = UI.setModelsExpanded;
   function card(item,state) {
     const api=item.plan.billingMode==='payg', unit=state.tokenUnit;
+    const unitPrice = row => E.comparisonUnitPrice(row.usage?.unitPriceCnyPerM,item.plan,E.displayPriceBasis());
     const estimateColumn=api && state.monthlyTokenRange != null;
     const estimates=new Map((item.apiEstimates || []).map(value=>[value.relationSlug,value.cost]));
     const estimatedRange=api ? Numbers.range((item.apiEstimates || [{cost:item.cost}]).map(value=>value.cost),money,value=>Numbers.monthlyFee(value,'')) : null;
-    const status=item.plan.discontinued?'已下架':(UI.statusLabels[item.platform.platformStatus] || '状态待确认');
-    const canBuy=!item.plan.discontinued && ['open','limited'].includes(item.platform.platformStatus || 'open');
+    const statuses=[item.platform.platformStatus || 'open',item.plan.planStatus || 'open'];
+    const statusKey=statuses.includes('delisted')?'delisted':statuses.includes('restricted')?'restricted':'open';
+    const status=UI.statusLabels[statusKey], canBuy=statusKey==='open';
     const rows=item.rows.map(row=>{
       const model=item.models.find(m=>m.slug===row.modelSlug), tiers=[row.serviceTier,row.contextTier,row.timeTier].filter(Boolean).join(' / ');
       const inlineTimeTier=row.timeTier && !row.serviceTier && !row.contextTier;
       const name=esc(model?.name || row.modelSlug), tier=tiers?`<small${inlineTimeTier?' class="offer-time-tier"':''}>${esc(tiers)}</small>`:'';
       const label=inlineTimeTier?`<span class="offer-model-with-time"><span>${name}</span>${tier}</span>`:name+tier;
-      const price=row.usage?.unitPriceCnyPerM;
+      const price=unitPrice(row);
       const amount=row.usage?.monthlyTokenInM;
       const amountCell=api && !estimateColumn ? '' : `<td>${estimateColumn?esc(Numbers.monthlyFee(estimates.get(row.slug),'¥','费用未知')):typeof amount==='number'?esc(tokenAmount(amount,unit)):esc(quota(amount,unit,false))}</td>`;
       return `<tr><th scope="row">${label}</th>${amountCell}<td>${esc(Numbers.tokenPrice(price,unit,'单价未知'))}</td></tr>`;
@@ -34,16 +37,16 @@
     const amountHeading=api && !estimateColumn ? '' : `<th scope="col">${estimateColumn?'月支出估算':'月额度 / '+unitLabel(unit)}</th>`;
     const table=`<div class="offer-model-table-wrap" role="region" aria-label="${esc(item.platform.name+' '+item.plan.name)}${api?'价格与估算':'模型额度'}"><table class="offer-model-table"><thead><tr><th scope="col">模型 / 档位</th>${amountHeading}<th scope="col">单价 / ${unitLabel(unit)}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     const modelsId='offer-model-tags-'+encodeURIComponent(item.id);
-    const modelTags=UI.modelTags(item.models.map(m=>m.name),{limit:3,id:modelsId,className:'offer-model-summary platform-models',ariaLabel:'匹配模型'});
+    const modelTags=UI.modelTags(item.models.map(m=>m.name),{maxRows:1,id:modelsId,className:'offer-model-summary platform-models',ariaLabel:'匹配模型'});
     const rangeText=Numbers.range(item.rows.map(r=>r.usage?.monthlyTokenInM),v=>tokenAmount(v,unit));
     const unlimited=item.rows.some(r=>r.usage?.monthlyTokenInM==='unlimited');
     const range=rangeText!==null ? `${rangeText} ${unitLabel(unit)}`+(unlimited?'～不限量':'') : unlimited?'不限量':'额度未知';
-    const priceRange=Numbers.range(item.rows.map(r=>r.usage?.unitPriceCnyPerM),v=>Numbers.tokenPrice(v,unit),v=>Numbers.unitPrice(v*Numbers.tokenFactor(unit),''));
+    const priceRange=Numbers.range(item.rows.map(unitPrice),v=>Numbers.tokenPrice(v,unit),v=>Numbers.unitPrice(v*Numbers.tokenFactor(unit),''));
     const originalPrice=!api && !['¥','CNY','RMB','￥'].includes(item.plan.currency || '¥') && typeof item.plan.monthlyPrice==='number' ? `<div class="offer-original-price" title="人民币金额按站内汇率折算，仅供参考。">${esc(Numbers.monthlyFee(item.plan.monthlyPrice,item.plan.currency))} / 月</div>` : '';
     const quotaSummary=`<summary class="offer-quota-summary is-compact${range==='额度未知'?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota"><span class="offer-summary-label">月额度 </span><span class="offer-summary-value">${esc(range)}</span></span>${priceRange!==null?`<span class="offer-summary-price" aria-hidden="true"><span class="offer-summary-label">单价 </span><span class="offer-summary-value">${esc(priceRange)} /${unitLabel(unit)}</span></span>`:''}</span></summary>`;
     const unknownPrices=item.rows.some(row=>Numbers.finite(row.usage?.unitPriceCnyPerM)===null);
     const apiSummary=`<summary class="offer-quota-summary offer-api-summary${priceRange===null?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota"><span class="offer-summary-label">${priceRange!==null && unknownPrices?'已知单价':'单价'} </span><span class="offer-summary-value">${priceRange!==null?`${esc(priceRange)} /${unitLabel(unit)}`:'待确认'}</span></span></span></summary>`;
-    const badges=(status==='开放购买'?'':`<span class="offer-status">${status}</span>`)+(E.resolveHarnessApi(item.platform,item.plan)===false?E.harnessApiBadge(false):'');
+    const badges=(statusKey==='open'?'':`<span class="offer-status">${status}</span>`)+(E.resolveHarnessApi(item.platform,item.plan)===false?E.harnessApiBadge(false):'');
     const capabilities=badges?`<div class="offer-capabilities">${badges}</div>`:'';
     const action=url(item.plan.action || item.platform.action);
     const name=esc(item.platform.name+' '+item.plan.name);
@@ -78,8 +81,9 @@
       summary.classList.toggle('is-compact',compact);
       price.setAttribute('aria-hidden',String(compact));
     };
+    const modelRows=UI.observeModelTagRows(host);
     const summaryObserver=new ResizeObserver(entries=>entries.forEach(entry=>fitSummary(entry.target)));
-    host.innerHTML = `<aside class="guide-advice" data-offer-advice hidden></aside><div class="section-heading offer-results-heading"><div><div class="offer-results-title"><h2>符合需求的方案</h2><span id="offerCount" role="status"></span></div><p>全部条件在同一个套餐内成立；按量 API 在卡片内列出匹配模型和计费档位。</p></div></div><div data-offer-content></div>`;
+    host.innerHTML = `<aside class="guide-advice" data-offer-advice hidden></aside><div class="section-heading offer-results-heading"><div><div class="offer-results-title"><h2>符合需求的方案</h2>${Help.html('offerMatchHelp','方案匹配说明','所有筛选条件须在同一个套餐内满足，不能组合不同套餐的权益来匹配。')}<span id="offerCount" role="status"></span></div></div></div><div data-offer-content></div>`;
     const render=()=>{
       const controller=globalThis.CodingPlanHomeFilters;if(!controller)return;
       const state=controller.getState();
@@ -114,6 +118,7 @@
       host.querySelectorAll('.offer-quota-summary').forEach(summary=>{fitSummary(summary);summaryObserver.observe(summary);});
       for(const [id,cls] of open){const el=[...host.querySelectorAll('[data-offer-id]')].find(x=>x.dataset.offerId===id);const d=el?.querySelector('details.'+cls);if(d)d.open=true;}
       for(const id of expandedModels){const el=[...host.querySelectorAll('[data-offer-id]')].find(x=>x.dataset.offerId===id);const button=el?.querySelector('[data-toggle-models]');if(button)setModelsExpanded(button,true);}
+      modelRows.refresh();
       if(sortOnly) {
         if(host.contains(focused) && focused!==document.activeElement)focused.focus({preventScroll:true});
         globalThis.scrollTo({...scroll,behavior:'instant'});
@@ -128,6 +133,7 @@
       setModelsExpanded(button,expanded);
     });
     globalThis.addEventListener('codingplan:filters-changed',e=>{if(!e.detail.full)render();});
+    globalThis.addEventListener('codingplan:price-basis-changed',render);
     globalThis.addEventListener('codingplan:guide-advice',e=>{if(advice!==e.detail){advice=e.detail;render();}});
     render();
   }

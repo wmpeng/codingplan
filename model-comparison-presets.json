@@ -6,6 +6,7 @@
     {
       "id": "high-volume-models",
       "title": "甜品级模型",
+      "label": "甜品级",
       "kind": "multi",
       "enabled": true,
       "modelSlugs": [
@@ -19,7 +20,8 @@
     },
     {
       "id": "sota-models",
-      "title": "前沿模型",
+      "title": "头部级模型",
+      "label": "头部级",
       "kind": "multi",
       "enabled": true,
       "modelSlugs": [

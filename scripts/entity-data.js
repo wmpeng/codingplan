@@ -4,10 +4,12 @@
   root.EntityData = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
+  // Model metadata owns modality facts; unknown never implies support.
+  function isMultimodal(model) { return model?.multimodal === true; }
 
-  function collection(documentValue, key) {
-    if (!documentValue || documentValue.schemaVersion !== 1 || !Array.isArray(documentValue[key])) {
-      throw new Error(`${key}.json must contain schemaVersion=1 and ${key}[]`);
+  function collection(documentValue, key, version = 1) {
+    if (!documentValue || documentValue.schemaVersion !== version || !Array.isArray(documentValue[key])) {
+      throw new Error(`${key}.json must contain schemaVersion=${version} and ${key}[]`);
     }
     return documentValue[key];
   }
@@ -36,7 +38,7 @@
 
   function platformHarnessApiBadge(platform, plans) {
     const value = resolveHarnessApi(platform);
-    const values = [value, ...(plans || []).filter(plan => plan.platformSlug === platform.slug && !plan.discontinued).map(plan => resolveHarnessApi(platform, plan))];
+    const values = [value, ...(plans || []).filter(plan => plan.platformSlug === platform.slug && plan.planStatus !== 'delisted').map(plan => resolveHarnessApi(platform, plan))];
     const partial = values.includes(true) && values.some(value => value !== true);
     return harnessApiBadge(value, { partial });
   }
@@ -54,15 +56,23 @@
   }
 
   function platformModels(context, platformSlug) {
-    // 平台卡片与平台模型筛选也要覆盖按量 API；planTableVisible 只控制套餐表展示。
-    return supportedModels(context, context.plans.filter(plan => plan.platformSlug === platformSlug && !plan.discontinued));
+    // 平台卡片与平台模型筛选覆盖在售订阅和按量 API。
+    return supportedModels(context, context.plans.filter(plan => plan.platformSlug === platformSlug && plan.planStatus !== 'delisted'));
   }
 
-  function buildContext(platformDoc, planDoc, modelDoc, planModelDoc) {
+  function buildContext(platformDoc, planDoc, modelDoc) {
     const platforms = collection(platformDoc, 'platforms');
-    const plans = collection(planDoc, 'plans');
+    const catalogue = collection(planDoc, 'plans', 3);
+    const plans = [], planModels = [];
+    for (const {planModels: relations, ...plan} of catalogue) {
+      if (!Array.isArray(relations)) throw new Error(`plan ${plan.slug} must contain planModels[]`);
+      plans.push(plan);
+      for (const relation of relations) {
+        if (Object.hasOwn(relation, 'planSlug')) throw new Error(`nested relation ${relation.slug} must not contain planSlug; inherit the parent plan`);
+        planModels.push({...relation, planSlug: plan.slug});
+      }
+    }
     const models = collection(modelDoc, 'models');
-    const planModels = collection(planModelDoc, 'planModels');
     const platformBySlug = new Map(platforms.map((item) => [item.slug, item]));
     const planBySlug = new Map(plans.map((item) => [item.slug, item]));
     const modelBySlug = new Map(models.map((item) => [item.slug, item]));
@@ -71,19 +81,15 @@
       if (!relationsByPlanSlug.has(relation.planSlug)) relationsByPlanSlug.set(relation.planSlug, []);
       relationsByPlanSlug.get(relation.planSlug).push(relation);
     });
-    return { workload: planModelDoc.workload, platforms, plans, models, planModels, platformBySlug, planBySlug, modelBySlug, relationsByPlanSlug };
+    return { workload: planDoc.workload, platforms, plans, models, planModels, platformBySlug, planBySlug, modelBySlug, relationsByPlanSlug };
   }
 
-  function listPlatforms(context, options) {
-    const includeHidden = !!(options && options.includeHidden);
-    return context.platforms
-      .filter((platform) => includeHidden || platform.catalogVisible !== false);
+  function listPlatforms(context) {
+    return context.platforms.slice();
   }
 
-  function buildPlanCatalog(context, options) {
-    const includeHidden = !!(options && options.includeHidden);
+  function buildPlanCatalog(context) {
     return context.plans
-      .filter((plan) => includeHidden || (plan.planTableVisible !== false && plan.billingMode !== 'payg'))
       .map((plan) => {
         const platform = context.platformBySlug.get(plan.platformSlug);
         const models = supportedModels(context, [plan]);
@@ -137,7 +143,7 @@
 
   function buildApiPricingGroups(context, platformSlug) {
     return context.plans
-      .filter((plan) => plan.billingMode === 'payg' && plan.platformSlug === platformSlug && !plan.discontinued)
+      .filter((plan) => plan.billingMode === 'payg' && plan.platformSlug === platformSlug && plan.planStatus !== 'delisted')
       .map((plan) => {
         const rows = (context.relationsByPlanSlug.get(plan.slug) || [])
           .map((relation) => {
@@ -166,6 +172,29 @@
         };
       })
       .filter((group) => group.rows.length > 0);
+  }
+
+  function displayPriceBasis() {
+    return globalThis.CodingPlanDisplaySettings?.getPriceBasis?.() === 'monthly' ? 'monthly' : 'firstMonth';
+  }
+
+  function comparisonUnitPrice(value, plan, basis = 'monthly') {
+    const known = value => typeof value === 'number' && Number.isFinite(value) && value >= 0;
+    if (basis !== 'firstMonth' || plan?.billingMode === 'payg' || !known(plan?.firstMonthPrice)) return value;
+    if (!known(value) || !known(plan.monthlyPrice)) return null;
+    if (plan.monthlyPrice > 0) return value * plan.firstMonthPrice / plan.monthlyPrice;
+    return plan.firstMonthPrice === 0 ? value : null;
+  }
+
+  // Start from regular-price source points on every conversion; never compound
+  // discounts or mutate quotas, budget prices, API quotes or entity records.
+  function withComparisonPriceBasis(points, context, basis) {
+    if (basis !== 'firstMonth') return points;
+    return points.map(point => {
+      const plan = context.planBySlug.get(point.planSlug);
+      if (point.billingMode !== 'subscription' || typeof plan?.firstMonthPrice !== 'number' || !Number.isFinite(plan.firstMonthPrice) || plan.firstMonthPrice < 0) return point;
+      return {...point, unitPriceCnyPerM:comparisonUnitPrice(point.unitPriceCnyPerM,plan,basis), unitPriceBasis:'firstMonth',firstMonthPrice:plan.firstMonthPrice};
+    });
   }
 
   function buildComparisonPoints(context, usdToCnyRate, options) {
@@ -197,15 +226,13 @@
         planSlug: plan.slug,
         modelSlug: model.slug,
         platformName: platform.name,
-        platformVisible: platform.catalogVisible !== false,
         planName: plan.comparisonName || plan.name,
         ...billingPresentation(model, relation),
         multimodal: model.multimodal,
         scores: comparisonScores(model.scores),
         billingMode,
         supportsHarnessApi: resolveHarnessApi(platform, plan),
-        discontinued: !!plan.discontinued,
-        planTableVisible: plan.planTableVisible !== false,
+        planStatus: plan.planStatus,
         actionUrl: plan.action || platform.action || null,
         originalMonthlyFee: billingMode === 'subscription' ? fee : undefined,
         originalCurrency: billingMode === 'subscription'
@@ -229,13 +256,13 @@
         note: relation.note
       });
     }
-    return points;
+    return withComparisonPriceBasis(points, context, options?.priceBasis);
   }
 
   function catalogCounts(context) {
     return {
-      platforms: listPlatforms(context).length,
-      plans: buildPlanCatalog(context).filter(plan => !plan.discontinued).length,
+      platforms: context.platforms.filter(platform => platform.platformStatus !== 'delisted').length,
+      plans: context.plans.filter(plan => plan.billingMode === 'subscription' && plan.planStatus !== 'delisted').length,
       models: context.models.length
     };
   }
@@ -248,6 +275,7 @@
   }
 
   return {
+    isMultimodal,
     resolveHarnessApi,
     harnessApiBadge,
     platformHarnessApiBadge,
@@ -261,6 +289,9 @@
     listPlatforms,
     buildPlanCatalog,
     buildApiPricingGroups,
-    buildComparisonPoints
+    buildComparisonPoints,
+    displayPriceBasis,
+    comparisonUnitPrice,
+    withComparisonPriceBasis
   };
 });

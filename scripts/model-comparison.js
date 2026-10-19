@@ -152,9 +152,9 @@
         );
     }
 
-    function buildIntelligenceChartPoints(points, benchmark) {
+    function buildIntelligenceChartPoints(points, benchmark, scale = 'log') {
         return (points || []).filter((point) =>
-            finitePositive(point.unitPriceCnyPerM) !== null &&
+            (scale === 'value' ? finiteNonnegative(point.unitPriceCnyPerM) : finitePositive(point.unitPriceCnyPerM)) !== null &&
             getPointScore(point, benchmark) !== null
         );
     }
@@ -377,7 +377,7 @@
     function platformCellHtml(point) {
         const vendor = escapeHtml(point.platformName);
         const actionUrl = String(point.actionUrl || '').trim();
-        if (!/^https?:\/\//i.test(actionUrl)) return `<strong>${vendor}</strong>`;
+        if (point.planStatus === 'delisted' || !/^https?:\/\//i.test(actionUrl)) return `<strong>${vendor}</strong>`;
         return `<a class="usage-platform-link" href="${escapeHtml(UI.sanitizeUrl(actionUrl))}" target="_blank" rel="noopener noreferrer"><strong>${vendor}</strong>${UI.externalLinkIcon}</a>`;
     }
 
@@ -487,17 +487,17 @@
         });
     }
 
-    function comparisonTableHeadHtml(tableName) {
-        return `<tr>${COMPARISON_TABLE_COLUMNS.map((column) => {
+    function comparisonTableHeadHtml(tableName, compact) {
+        return `<tr>${COMPARISON_TABLE_COLUMNS.filter(column => !compact || column.key !== 'plan').map((column) => {
             const sortable = column.sortable !== false;
             const classes = `${sortable ? 'sortable' : ''}${column.key === 'vendor' ? ' sticky-first' : ''}`.trim();
             const sorting = sortable
                 ? ` tabindex="0" aria-sort="none" data-table-sort="${tableName}" data-sort-key="${column.key}"`
                 : '';
-            const label = column.hint
+            const label = compact && column.key === 'vendor' ? '平台 / 套餐' : compact && column.key === 'price' ? '每月价格' : column.hint
                 ? `<span class="usage-table-heading"><span>${column.label}</span><small>${column.hint}</small></span>`
                 : column.label;
-            return `<th scope="col"${classes ? ` class="${classes}"` : ''}${sorting}>${label}</th>`;
+            return `<th scope="col" data-comparison-col="${column.key}"${classes ? ` class="${classes}"` : ''}${sorting}>${label}</th>`;
         }).join('')}</tr>`;
     }
 
@@ -523,11 +523,16 @@
         const unitPrice = formatUnitPrice(point.unitPriceCnyPerM, tokenUnit);
         const aaScore = point.scores && point.scores.artificialAnalysis;
         const deepSWEScore = point.scores && point.scores.deepSWE;
+        const compact = visualOptions?.compactIdentity;
+        const status = point.planStatus || 'open';
+        const statusHtml = status === 'open' ? '' : `<span class="tool-tag plan-status" data-price-status="${escapeHtml(status)}">${escapeHtml(UI.statusLabels[status] || status)}</span>`;
+        const pin = compact ? UI.pinButton({pinned:visualOptions.pinned, label:`${visualOptions.pinned ? '取消置顶' : '置顶'} ${point.platformName} ${point.planName} ${point.relationLabel || point.modelName}`, attributes:{'data-price-pin':point.slug}}) : '';
+        const identity = compact ? `<div class="price-identity">${pin}<div><div class="price-identity-title">${platformCellHtml(point)}<span>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}</span></div><div class="price-identity-meta">${statusHtml}${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></div></div>` : platformCellHtml(point);
         const deepSWEInterval = deepSWEScore && Number.isFinite(Number(deepSWEScore.confidenceInterval))
             ? ` ±${formatNumber(deepSWEScore.confidenceInterval, 0)}` : '';
-        return `<tr data-point-id="${escapeHtml(point.slug)}"${visualOptions && visualOptions.focused ? ' class="price-focus-row"' : ''}>` +
-            `<td class="sticky-first">${platformCellHtml(point)}</td>` +
-            `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}<div class="plan-capabilities">${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></td>` +
+        return `<tr data-point-id="${escapeHtml(point.slug)}"${[visualOptions?.focused ? 'price-focus-row' : '', visualOptions?.pinned ? 'is-pinned' : ''].filter(Boolean).length ? ` class="${[visualOptions?.focused ? 'price-focus-row' : '', visualOptions?.pinned ? 'is-pinned' : ''].filter(Boolean).join(' ')}"` : ''}>` +
+            `<td class="sticky-first" data-comparison-col="vendor">${identity}</td>` +
+            (compact ? '' : `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}<div class="plan-capabilities">${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></td>`) +
             `<td class="numeric">${price}</td>` +
             `<td class="usage-table-model">${escapeHtml(point.relationLabel || point.modelName)}</td>` +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
@@ -575,7 +580,7 @@
         return sortComparisonRows((points || []).filter((point) =>
             (point.billingMode === 'subscription' || point.billingMode === 'payg') &&
             (scope === 'all' || defaultPlatformKeys.has(getPointPlatformKey(point))) &&
-            modelSlugs.has(point.modelSlug) && point.platformVisible !== false && !point.discontinued && point.available !== false
+            modelSlugs.has(point.modelSlug) && point.planStatus !== 'delisted' && point.available !== false
         ), 'unitPriceCnyPerM', 'asc');
     }
 
@@ -637,7 +642,7 @@
             return [];
         }
         host.hidden = false;
-        host.innerHTML = (options.hideHeading ? '' : `<div class="usage-preset-heading"><div><h3>${escapeHtml(normalized.title)}</h3>${normalized.description ? `<p>${escapeHtml(normalized.description)}</p>` : ''}</div></div>`) +
+        host.innerHTML = (options.hideHeading ? '' : `<div class="usage-preset-heading"><div><h3>${escapeHtml(normalized.title)}</h3>${normalized.description && !options.hideDescription ? `<p>${escapeHtml(normalized.description)}</p>` : ''}</div></div>`) +
             (singles.length ? `<div class="usage-preset-grid usage-preset-grid--single">${singles.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope, {...options, platformSlugs: normalized.platformSlugs})).join('')}</div>` : '') +
             (multis.length ? `<div class="usage-preset-grid usage-preset-grid--multi">${multis.map((group) => presetComparisonTableHtml(group, points, tokenUnit, scope, {...options, selectedModelSlugs: options.selectedModels?.[group.id], platformSlugs: normalized.platformSlugs})).join('')}</div>` : '');
         return normalized.groups;
@@ -666,6 +671,8 @@
         const billing = point.billingMode === 'subscription' ? escapeHtml(point.planName || '订阅') : '按量 API';
         const platformLine = `${escapeHtml(point.platformName)} · ${billing}`;
         const modelLine = escapeHtml(point.relationLabel);
+        const status = point.planStatus && point.planStatus !== 'open' ? `<div>${escapeHtml(UI.statusLabels[point.planStatus] || point.planStatus)}</div>` : '';
+        const basis = point.unitPriceBasis === 'firstMonth' ? `<div>综合单价按首月价格计算：${Numbers.monthlyFee(point.firstMonthPrice, currencySymbol(point.originalCurrency))}</div>` : '';
         const fee = point.billingMode === 'subscription'
             ? `<div>月费：${formatSubscriptionMonthlyPrice(point)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
             : '';
@@ -675,7 +682,7 @@
         const heading = colorMode === 'model'
             ? `<strong>${modelLine}</strong><div>${platformLine}</div>`
             : `<strong>${platformLine}</strong><div>${modelLine}</div>`;
-        return `<div class="usage-tooltip">${heading}<div>${modality}</div>${fee}${apiPricing}` +
+        return `<div class="usage-tooltip">${heading}${status}<div>${modality}</div>${fee}${apiPricing}${basis}` +
             `<div>单位价格：${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)} Token</div>` +
             `<div>${scoreText(point, benchmark)}</div></div>`;
     }
@@ -700,11 +707,11 @@
         return root.__usageEchartsPromise;
     }
 
-    function renderShell(container) {
+    function renderShell(container, compact) {
         container.innerHTML = `
             <section class="usage-view" aria-labelledby="usageViewTitle">
                 <header class="usage-heading">
-                    <div><p class="usage-eyebrow">模型购买决策</p><h2 id="usageViewTitle">额度 / 价格对比</h2></div>
+                    <div><p class="usage-eyebrow">模型购买决策</p><h2 id="usageViewTitle">价格与额度对比</h2></div>
                     <p>把同一套餐下的不同模型拆成独立点，比较钱花在哪里、实际能换来多少额度和模型能力。 <a class="main-view-full-link" href="/pricing/">查看完整价格页 →</a></p>
                 </header>
                 <div class="usage-method-note"><strong>统一口径：</strong>价格筛选和坐标统一按折合人民币计算，美元按当前站点汇率 USD 1 ≈ ¥${formatNumber(Number(root.appConfig && root.appConfig.usdToCnyRate) || 6.8, 2)}；表格保留原始币种。具体输入、输出、缓存价格的为计算得出，其余的除了Kimi套餐没有购买到之外，均为实测数据，实测尽量构造95%缓存命中率和0.5%的输出占比。</div>
@@ -726,12 +733,12 @@
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="月费和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的月费与月额度数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
                 </article>
                 <article class="usage-chart-card">
-                    <div class="usage-chart-head"><div><h3>单位价格 vs 智力</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标"><button type="button" data-benchmark="artificialAnalysis" class="is-active">AA</button><button type="button" data-benchmark="deepSWE">DeepSWE</button></div><label>价格轴<select data-scale="price"><option value="log">对数</option><option value="value">线性</option></select></label></div></div>
-                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和智力评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
+                    <div class="usage-chart-head"><div><h3>单位价格 vs 模型评分</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标"><button type="button" data-benchmark="artificialAnalysis" class="is-active">AA</button><button type="button" data-benchmark="deepSWE">DeepSWE</button></div><label>价格轴<select data-scale="price"><option value="log">对数</option><option value="value">线性</option></select></label></div></div>
+                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和模型评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
                 </article>
                 <article class="usage-chart-card usage-data-card">
                     <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3><p>精确单价旁的横条按当前结果统一比较，采用对数尺度兼顾低价与高价；条越短，综合单价越低。按量 API 没有周期额度时显示“—”。</p></div><span class="usage-table-count" data-table-count="comparison"></span></div>
-                    <section class="usage-table-section" aria-label="额度和价格数据明细"><div class="usage-table-scroll"><table class="usage-data-table" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison')}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
+                    <section class="usage-table-section" aria-label="额度和价格数据明细"><div class="usage-table-scroll"><table class="usage-data-table" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison', compact)}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
                 </article>
             </section>`;
     }
@@ -799,7 +806,9 @@
         if (container.__usageMountPromise) return container.__usageMountPromise;
         const mountOptions = options || {};
         container.__usageMountPromise = (async () => {
-            renderShell(container);
+            const Directory = mountOptions.directory;
+            renderShell(container, Boolean(Directory));
+            container.classList.toggle('pricing-directory', Boolean(Directory));
             const [echarts, data, presetConfig] = await Promise.all([
                 loadEcharts(),
                 mountOptions.data || root.CodingPlanToolPage.load(),
@@ -808,7 +817,13 @@
             const context = data.context;
             context.modelGroups = presetConfig.groups || [];
             const rate = root.appConfig && root.appConfig.usdToCnyRate || 6.8;
-            const points = root.EntityData.buildComparisonPoints(context, rate, { includeUnknown: true });
+            const originalPoints = root.EntityData.buildComparisonPoints(context, rate, { includeUnknown: true });
+            let priceBasis = root.EntityData.displayPriceBasis();
+            let points = root.EntityData.withComparisonPriceBasis(originalPoints,context,priceBasis);
+            let pins = Directory ? Directory.readPins(root.localStorage, points) : [];
+            let tableRenderKey = '', selectionKey = '', pageIndex = 0;
+            const search = mountOptions.search;
+            let renderFrame = 0;
             const platformMap = new Map();
             points.forEach((point) => {
                 platformMap.set(getPointPlatformKey(point), point.platformName);
@@ -871,7 +886,11 @@
                 syncFilterControls();
             }
 
-            applyExternalFilter(mountOptions.filterState || root.__codingplanUnifiedFiltersState);
+            // Chart loading can outlive a user's first filter change; read the current controller.
+            const currentFilters = mountOptions.mode === 'full'
+                ? document.getElementById('toolFilters')?.filterController?.getState()
+                : root.__codingplanUnifiedFiltersState;
+            applyExternalFilter(currentFilters || mountOptions.filterState);
 
             function updatePriceSliderVisuals(minValue, maxValue) {
                 const first = Math.max(priceBounds.min, Math.min(priceBounds.max, Math.round(minValue)));
@@ -1021,18 +1040,40 @@
             function renderDataTable(tableName, rows) {
                 latestTableRows[tableName] = rows || [];
                 const sort = tableSortState[tableName];
-                const sorted = sortComparisonRows(rows, sort.key, sort.direction);
-                const scale = buildUnitPriceVisualScale(rows);
+                let sorted = Directory ? Directory.tableRows(rows, points, pins, sortComparisonRows, sort) : sortComparisonRows(rows, sort.key, sort.direction);
+                const scale = buildUnitPriceVisualScale(sorted);
+                let renderKey = '';
+                if (Directory) {
+                    const nextSelectionKey=JSON.stringify([sorted.map(point=>point.slug),priceBasis,pins,sort]);
+                    if(selectionKey!==nextSelectionKey){pageIndex=0;selectionKey=nextSelectionKey;}
+                    const pagination=Directory.paginate(sorted,[...pins,...focusRelationSlugs],pageIndex);pageIndex=pagination.page;
+                    sorted=pagination.rows;
+                    container.querySelectorAll('[data-price-pagination]').forEach(pager=>{
+                        pager.hidden=pagination.pages===1;
+                        pager.querySelector('[data-price-page-label]').textContent=`${pageIndex+1} / ${pagination.pages} 页`;
+                        pager.querySelectorAll('[data-price-page]').forEach(button=>button.disabled=button.dataset.pricePage==='next'?pageIndex>=pagination.pages-1:pageIndex===0);
+                    });
+                    renderKey = JSON.stringify([nextSelectionKey,pageIndex,state.tokenUnit,state.colorMode]);
+                    const label = `${rows.length} / ${points.length} 条明细${pins.length ? ' · 置顶 '+pins.length+' 条' : ''}`;
+                    mountOptions.count.textContent = label;
+                    container.querySelector('[data-table-count]').textContent = label;
+                    sortSelect.value = sort.key; sortPicker.sync();
+                    directionButton.textContent = sort.direction === 'asc' ? '↑' : '↓';
+                    directionButton.setAttribute('aria-label', sort.direction === 'asc' ? '改为降序' : '改为升序');
+                    if (tableRenderKey === renderKey) return;
+                    tableRenderKey = renderKey;
+                }
                 const colors = state.colorMode === 'model' ? modelColors : platformColors;
                 const body = container.querySelector(`[data-table-body="${tableName}"]`);
                 body.innerHTML = sorted.length
                     ? sorted.map((point) => comparisonTableRowHtml(point, state.tokenUnit, {
                         scale,
                         focused: focusRelationSlugs.has(point.slug),
+                        compactIdentity:Boolean(Directory), pinned:pins.includes(point.slug),
                         color: colors[getPointColorKey(point, state.colorMode)]
                     })).join('')
-                    : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length}">当前筛选下没有可展示的数据；请在上方下拉框调整条件，或点击“显示全部”。</td></tr>`;
-                container.querySelector(`[data-table-count="${tableName}"]`).textContent = `${sorted.length} 条`;
+                    : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length - (Directory ? 1 : 0)}">当前筛选下没有可展示的数据；请在上方下拉框调整条件，或点击“显示全部”。</td></tr>`;
+                if (!Directory) container.querySelector(`[data-table-count="${tableName}"]`).textContent = `${sorted.length} 条`;
                 container.querySelectorAll(`[data-table="${tableName}"] th[data-sort-key]`).forEach((header) => {
                     const active = header.dataset.sortKey === sort.key;
                     header.classList.toggle('sort-asc', active && sort.direction === 'asc');
@@ -1041,13 +1082,51 @@
                 });
             }
 
+            let sortSelect, sortPicker, directionButton;
+            if (Directory) {
+                const tools = document.createElement('div'); tools.className = 'usage-detail-tools';
+                tools.innerHTML = `<label data-select-fallback>排序 <select id="pricingSort" aria-label="明细排序">${COMPARISON_TABLE_COLUMNS.filter(column => column.sortable !== false).map(column => `<option value="${column.key}">${column.key === 'unitPriceCnyPerM' ? '默认（综合单价）' : column.key === 'price' ? '每月价格' : column.label}</option>`).join('')}</select></label><button class="tool-button price-sort-direction" type="button" aria-label="改为降序">↑</button>`;
+                const count = container.querySelector('[data-table-count]'); count.before(tools);
+                const pagerHtml='<button class="tool-button" type="button" data-price-page="first">第一页</button><button class="tool-button" type="button" data-price-page="previous">上一页</button><span data-price-page-label aria-live="polite"></span><button class="tool-button" type="button" data-price-page="next">下一页</button>';
+                const pager=document.createElement('div');pager.className='price-pagination';pager.dataset.pricePagination='';pager.innerHTML=pagerHtml;
+                const card=container.querySelector('.usage-data-card');card.append(pager);
+                const topPager=pager.cloneNode(true);card.querySelector('.usage-chart-head').append(topPager);
+                sortSelect = tools.querySelector('select'); sortSelect.value = 'unitPriceCnyPerM';
+                sortPicker = root.CodingPlanSingleSelect.mount(sortSelect, '明细排序', {showLabel:false});
+                directionButton = tools.querySelector('button.price-sort-direction');
+                sortSelect.addEventListener('change', () => { tableSortState.comparison = {key:sortSelect.value,direction:'asc'}; renderDataTable('comparison',latestTableRows.comparison); });
+                directionButton.addEventListener('click', () => { const sort=tableSortState.comparison; sort.direction=sort.direction==='asc'?'desc':'asc'; renderDataTable('comparison',latestTableRows.comparison); });
+                container.querySelectorAll('[data-scale]').forEach(select => {
+                    select.id = 'pricingScale'+select.dataset.scale;
+                    const label=select.closest('label'); label.dataset.selectFallback='';
+                    root.CodingPlanSingleSelect.mount(select, select.dataset.scale==='tokens'?'坐标轴':'价格轴');
+                });
+                search.addEventListener('input', () => { cancelAnimationFrame(renderFrame); renderFrame=requestAnimationFrame(render); });
+                document.getElementById('toolFilters').addEventListener('click', event => {
+                    if (event.target.closest('[data-filter-action]')) { search.value=''; tableSortState.comparison={key:'unitPriceCnyPerM',direction:'asc'}; }
+                }, true);
+                root.addEventListener('storage', event => { if(event.key===Directory.pinKey || event.key===null){pins=Directory.readPins(root.localStorage,points);renderDataTable('comparison',latestTableRows.comparison);} });
+            }
+
+            const compactLayouts = new Map();
             function fitScatterLayout(chart, usage) {
                 const compact = chart.getWidth() < 480;
+                if (compactLayouts.get(chart) === compact) return;
+                compactLayouts.set(chart, compact);
                 chart.setOption({
                     grid: { left: compact ? 62 : 76, right: compact ? 16 : 28, top: 28, bottom: 58 },
                     xAxis: { axisLabel: { hideOverlap: true, fontSize: compact ? 10 : 12 } },
                     yAxis: { nameGap: compact ? 44 : usage ? 55 : 45, axisLabel: { hideOverlap: true, fontSize: compact ? 10 : 12 } }
                 });
+            }
+
+            function setScatterOptions(chart, option, usage) {
+                const compact=chart.getWidth()<480; compactLayouts.set(chart,compact);
+                option.grid={left:compact?62:76,right:compact?16:28,top:28,bottom:58};
+                Object.assign(option.xAxis.axisLabel,{hideOverlap:true,fontSize:compact?10:12});
+                Object.assign(option.yAxis.axisLabel,{hideOverlap:true,fontSize:compact?10:12});
+                option.yAxis.nameGap=compact?44:usage?55:45;
+                chart.setOption(option,true);
             }
 
             function render() {
@@ -1065,20 +1144,21 @@
                     monthlyTokenRange: state.monthlyTokenRange,
                     priceRanges: state.priceRanges, filterContext: state.filterContext, sharedFilters: state.sharedFilters
                 });
+                if (Directory) filtered = Directory.search(filtered, search.value);
                 if (state.soloColorKey && !filtered.some(point => getPointColorKey(point, state.colorMode) === state.soloColorKey)) state.soloColorKey = null;
                 const visibleFiltered = filterBySoloColorKey(filtered, state.colorMode, state.soloColorKey);
                 const usagePoints = buildUsageChartPoints(visibleFiltered);
-                const intelligencePoints = buildIntelligenceChartPoints(visibleFiltered, state.benchmark);
+                const intelligencePoints = buildIntelligenceChartPoints(visibleFiltered, state.benchmark, state.priceScale);
                 const pointLabelField = getSoloPointLabelField(visibleFiltered);
                 const color = colorContext(filtered);
                 renderColorLegend(color);
                 const totalUsage = buildUsageChartPoints(points).length;
-                const totalIntelligence = buildIntelligenceChartPoints(points, state.benchmark).length;
+                const totalIntelligence = buildIntelligenceChartPoints(points, state.benchmark, state.priceScale).length;
                 container.querySelector('[data-counts]').textContent = `额度图 ${usagePoints.length}/${totalUsage} · 智力图 ${intelligencePoints.length}/${totalIntelligence} · 明细 ${visibleFiltered.length}/${points.length}`;
 
                 const tokenUnitLabel = Numbers.tokenUnit(state.tokenUnit);
                 const usageZone = buildUsageAttractiveZone(usagePoints, state.tokenUnit, state.tokensScale);
-                usageChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
+                setScatterOptions(usageChart, Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
                     xAxis: { type: state.tokensScale, name: '月费（人民币）', nameLocation: 'middle', nameGap: 38, min: usageZone.xBounds.min, max: usageZone.xBounds.max, logBase: 10, axisLabel: { formatter: (v) => Numbers.monthlyFee(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     yAxis: { type: state.tokensScale, name: `月 Token（${tokenUnitLabel}）`, nameLocation: 'middle', nameGap: 55, min: usageZone.yBounds.min, max: usageZone.yBounds.max, logBase: 10, axisLabel: { formatter: (v) => Numbers.tokens(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     series: [buildUsageAttractiveZoneSeries(usageZone), ...seriesByColor(usagePoints, state.colorMode, color.colors, (point) => ({ value: [point.monthlyFeeCny, tokenAmountInUnit(point.monthlyTokenInM, state.tokenUnit)], meta: point }), 'usage', pointLabelField)]
@@ -1096,7 +1176,7 @@
                     .map((point) => getPointScore(point, state.benchmark))
                     .filter((value) => value !== null);
                 const intelligenceScoreReference = intelligenceScores.length ? Math.min(...intelligenceScores) : 0;
-                intelligenceChart.setOption(Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
+                setScatterOptions(intelligenceChart, Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
                     xAxis: { type: state.priceScale, name: `人民币 / ${tokenUnitLabel} Token`, nameLocation: 'middle', nameGap: 38, min: state.priceScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => Numbers.unitPrice(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     yAxis: { type: 'value', name: `${BENCHMARKS[state.benchmark].short} 评分`, nameLocation: 'middle', nameGap: 45, scale: true, axisLabel: { formatter: (v) => formatNumber(v, 0) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     series: [
@@ -1107,9 +1187,7 @@
                         ),
                         ...intelligenceSeries
                     ]
-                }), true);
-                fitScatterLayout(usageChart, true);
-                fitScatterLayout(intelligenceChart, false);
+                }), false);
                 renderDataTable('comparison', visibleFiltered);
                 container.querySelector('[data-empty="usage"]').hidden = usagePoints.length > 0;
                 container.querySelector('[data-empty="intelligence"]').hidden = intelligencePoints.length > 0;
@@ -1128,6 +1206,7 @@
                 else if (target.matches('[data-filter="deepSWEScoreMin"]')) state.deepSWEScoreMin = target.value;
                 else if (target.matches('[data-scale="tokens"]')) state.tokensScale = target.value;
                 else if (target.matches('[data-scale="price"]')) state.priceScale = target.value;
+                else return;
                 render();
             });
             function onSharedFilterChange(event) {
@@ -1139,9 +1218,12 @@
             root.addEventListener('codingplan:filters-changed', onSharedFilterChange);
             const onTokenUnitChange = event => { if(state.tokenUnit === event.detail.tokenUnit)return; state.tokenUnit = event.detail.tokenUnit; render(); };
             root.addEventListener('codingplan:token-unit-changed', onTokenUnitChange);
+            const onPriceBasisChange = () => { priceBasis=root.EntityData.displayPriceBasis(); points=root.EntityData.withComparisonPriceBasis(originalPoints,context,priceBasis); render(); };
+            root.addEventListener('codingplan:price-basis-changed',onPriceBasisChange);
             container.__usageCleanup = () => {
                 root.removeEventListener('codingplan:filters-changed', onSharedFilterChange);
                 root.removeEventListener('codingplan:token-unit-changed', onTokenUnitChange);
+                root.removeEventListener('codingplan:price-basis-changed',onPriceBasisChange);
             };
             container.querySelector('[data-model-search]').addEventListener('input', (event) => {
                 const query = event.target.value.trim().toLocaleLowerCase('zh-CN');
@@ -1199,13 +1281,26 @@
                 setColorHighlight(item.dataset.colorKey, false);
             });
             container.addEventListener('click', (event) => {
+                const pageButton=event.target.closest('[data-price-page]');
+                if(Directory && pageButton){
+                    pageIndex=pageButton.dataset.pricePage==='first'?0:pageIndex+(pageButton.dataset.pricePage==='next'?1:-1);
+                    renderDataTable('comparison',latestTableRows.comparison);
+                    if(pageButton.parentElement===container.querySelector('.usage-data-card > .price-pagination'))container.querySelector('.usage-data-card').scrollIntoView({block:'start'});
+                    return;
+                }
+                const pin = event.target.closest('[data-price-pin]');
+                if (Directory && pin) {
+                    const slug=pin.dataset.pricePin; pins=pins.includes(slug)?pins.filter(id=>id!==slug):[slug,...pins];
+                    Directory.writePins(root.localStorage,pins); renderDataTable('comparison',latestTableRows.comparison);
+                    [...container.querySelectorAll('[data-price-pin]')].find(button=>button.dataset.pricePin===slug)?.focus({preventScroll:true}); return;
+                }
                 const sortHeader = event.target.closest('[data-table-sort][data-sort-key]');
                 if (sortHeader) {
                     const tableName = sortHeader.dataset.tableSort;
                     const sort = tableSortState[tableName];
                     const key = sortHeader.dataset.sortKey;
-                    sort.direction = sort.key === key && sort.direction === 'asc' ? 'desc' : 'asc';
-                    sort.key = key;
+                    if (Directory) tableSortState[tableName] = Directory.cycleSort(sort,key);
+                    else { sort.direction = sort.key === key && sort.direction === 'asc' ? 'desc' : 'asc'; sort.key = key; }
                     renderDataTable(tableName, latestTableRows[tableName]);
                     return;
                 }
@@ -1303,18 +1398,24 @@
                 }
             });
             document.addEventListener('click', () => closeUsageDropdowns());
+            let resizeFrame=0;
             const resize = () => {
-                usageChart.resize();
-                intelligenceChart.resize();
-                fitScatterLayout(usageChart, true);
-                fitScatterLayout(intelligenceChart, false);
+                if(resizeFrame)return;
+                resizeFrame=requestAnimationFrame(()=>{
+                    resizeFrame=0;
+                    [usageChart,intelligenceChart].forEach((chart,index)=>{
+                        const element=chart.getDom();
+                        if(element.clientWidth===chart.getWidth() && element.clientHeight===chart.getHeight())return;
+                        chart.resize(); fitScatterLayout(chart,index===0);
+                    });
+                });
             };
             root.addEventListener('resize', resize);
-            if (root.ResizeObserver) new root.ResizeObserver(resize).observe(container);
+            if (root.ResizeObserver) { const observer=new root.ResizeObserver(resize); [usageChart,intelligenceChart].forEach(chart=>observer.observe(chart.getDom())); }
             render();
             container.__usageMounted = true;
         })().catch((error) => {
-            container.innerHTML = `<div class="usage-load-error">额度/价格对比加载失败，请稍后刷新重试。<br><small>${escapeHtml(error.message)}</small></div>`;
+            container.innerHTML = `<div class="usage-load-error">价格与额度加载失败，请稍后刷新重试。<br><small>${escapeHtml(error.message)}</small></div>`;
             container.__usageMountPromise = null;
             throw error;
         });

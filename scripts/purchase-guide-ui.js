@@ -122,9 +122,9 @@
           "modelPreset",
           [
             ["all", "不限，查看全部模型"],
-            ["featured", "所有精选模型"],
-            ["sota-models", "顶尖与前沿：优先模型能力"],
-            ["high-volume-models", "甜品级：轻快实惠"],
+            ["featured", "全部精选模型"],
+            ["sota-models", `${esc(root.CodingPlanUI.modelGroupLabel(controller.context.modelGroups, "sota-models"))}：优先模型能力`],
+            ["high-volume-models", `${esc(root.CodingPlanUI.modelGroupLabel(controller.context.modelGroups, "high-volume-models"))}：轻快实惠`],
           ],
           controller.getModelPreset(),
         ) +
@@ -171,7 +171,7 @@
         patch = {
           platformSlugs: null,
           modelSlugs: null,
-          platformStatusMax: "paused",
+          platformStatusMax: "restricted",
           includeDiscontinued: false,
           ...patch,
         };

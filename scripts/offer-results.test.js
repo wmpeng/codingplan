@@ -9,8 +9,9 @@ test('套餐导航遵守购买状态和安全地址，复用平台外链图标',
   const item=offer(),html=Offers.card(item,{tokenUnit:'yi'});
   assert.ok(html.includes(Cards.EXTERNAL_LINK_ICON));
   assert.match(html,/class="offer-open-link" href="https:\/\/example.com\/plan"/);
-  for(const plan of [{...item.plan,discontinued:true},{...item.plan,action:'javascript:alert(1)'}])assert.doesNotMatch(Offers.card({...item,plan},{tokenUnit:'yi'}),/class="offer-open-link" href=/);
-  assert.doesNotMatch(Offers.card({...item,platform:{...item.platform,platformStatus:'paused'}},{tokenUnit:'yi'}),/class="offer-open-link" href=/);
+  for(const plan of [{...item.plan,planStatus: 'delisted'},{...item.plan,planStatus: 'restricted'},{...item.plan,action:'javascript:alert(1)'}])assert.doesNotMatch(Offers.card({...item,plan},{tokenUnit:'yi'}),/class="offer-open-link" href=/);
+  assert.doesNotMatch(Offers.card({...item,platform:{...item.platform,platformStatus:'restricted'}},{tokenUnit:'yi'}),/class="offer-open-link" href=/);
+  assert.match(Offers.card({...item,plan:{...item.plan,planStatus:'restricted'}},{tokenUnit:'yi'}),/>购买受限<\/span>/);
   assert.match(Offers.card({...item,plan:{...item.plan,action:null}},{tokenUnit:'yi'}),/class="offer-open-link" href="https:\/\/example.com\/platform"/);
 });
 test('订阅价格与额度摘要收敛，套餐链接不限定第一个模型',()=>{
@@ -28,8 +29,9 @@ test('订阅价格与额度摘要收敛，套餐链接不限定第一个模型',
 test('模型标签为纯展示，额外模型默认隐藏并提供真实按钮',()=>{
   const item=offer({models:Array.from({length:5},(_,i)=>({slug:'m'+i,name:'模型'+i}))});
   const html=Offers.card(item,{tokenUnit:'yi'});
-  assert.equal((html.match(/data-extra-model hidden/g)||[]).length,2);
-  assert.match(html,/<button[^>]+data-toggle-models[^>]+aria-expanded="false"[^>]*>\+2<\/button>/);
+  assert.match(html,/data-model-max-rows="1" data-model-limit="5"/);
+  assert.equal((html.match(/data-extra-model hidden/g)||[]).length,5);
+  assert.match(html,/<button[^>]+data-toggle-models[^>]+aria-expanded="false"[^>]*>\+5<\/button>/);
   assert.doesNotMatch(html,/<a[^>]*class="model-tag/);
 });
 test('按量卡片汇总模型档位，价格链接打开整个 API，零与未知保持语义',()=>{

@@ -2,6 +2,44 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const Filters = require('./filter-state.js');
 
+test('第三方工具条件采用套餐覆盖与平台默认，未确认不匹配，所有资格入口保持一致', () => {
+  const {fixtureContext}=require('./test-fixtures.cjs'), E=require('./entity-data.js');
+  const platforms=[{slug:'yes',platformStatus:'open',supportsHarnessApi:true},{slug:'no',platformStatus:'open',supportsHarnessApi:false},{slug:'unknown',platformStatus:'open'}];
+  const plans=[{slug:'inherited',platformSlug:'yes'},{slug:'override-no',platformSlug:'yes',supportsHarnessApi:false},
+    {slug:'override-yes',platformSlug:'no',supportsHarnessApi:true},{slug:'no',platformSlug:'no'},{slug:'unknown',platformSlug:'unknown'}]
+    .map(plan=>({...plan,billingMode:'subscription',monthlyPrice:10}));
+  const c=fixtureContext({schemaVersion:1,platforms},{plans},{schemaVersion:1,models:[{slug:'m'}]},
+    {planModels:plans.map(plan=>({slug:plan.slug,planSlug:plan.slug,modelSlug:'m'}))});
+  const state={harnessApiRequired:true},expected=['inherited','override-yes'];
+  assert.deepEqual(Filters.matchingOffers(c,state).map(offer=>offer.plan.slug),expected);
+  assert.deepEqual(Filters.filterPlans(E.buildPlanCatalog(c),state,{context:c}).map(plan=>plan.slug),expected);
+  assert.deepEqual(Filters.filterPlans(plans,state,{context:{platformBySlug:c.platformBySlug}}).map(plan=>plan.slug),expected);
+  const points=plans.map(plan=>({...plan,platformSlug:plan.platformSlug,supportsHarnessApi:E.resolveHarnessApi(c.platformBySlug.get(plan.platformSlug),plan)}));
+  assert.deepEqual(Filters.filterPoints(points,state).map(point=>point.slug),expected);
+  assert.equal(Filters.matchingOffers(c,{}).length,plans.length);
+});
+
+test('多模态筛选及旧字段包含纯非文本输出，未知与纯文本不纳入', () => {
+  const {fixtureContext}=require('./test-fixtures.cjs');
+  const E=require('./entity-data.js');
+  const models=[{slug:'speech',multimodal:true,modalities:{input:['text'],output:['speech']}},
+    {slug:'image-output',multimodal:true,modalities:{input:['text'],output:['image']}},
+    {slug:'image-input',multimodal:true,modalities:{input:['text','image']}},
+    {slug:'text',multimodal:false},{slug:'unknown',multimodal:'unknown'}];
+  const context=fixtureContext({schemaVersion:1,platforms:[{slug:'p',platformStatus:'open'}]},
+    {plans:[{slug:'plan',platformSlug:'p',billingMode:'subscription'}]}, {schemaVersion:1,models},
+    {planModels:models.map(model=>({slug:model.slug,planSlug:'plan',modelSlug:model.slug}))});
+  const expected=['speech','image-output','image-input'];
+  for(const patch of [{multimodal:'multimodal'},{imageRequired:true}]) {
+    assert.deepEqual(Filters.matchingOffers(context,patch)[0].rows.map(row=>row.modelSlug),expected);
+  }
+  const points=models.map(model=>({...model,modelSlug:model.slug,platformSlug:'p',billingMode:'subscription'}));
+  assert.deepEqual(Filters.filterPoints(points,{multimodal:'multimodal'}).map(point=>point.slug),expected);
+  assert.deepEqual(Filters.filterPoints(points,{imageRequired:true}).map(point=>point.slug),expected);
+  for(const model of models) assert.equal(E.isMultimodal(model),expected.includes(model.slug));
+  assert.equal(E.isMultimodal(null),false);
+});
+
 const unrestricted = (overrides = {}) => Filters.normalizeState({
   platformSlugs: null,
   modelSlugs: null,
@@ -10,12 +48,33 @@ const unrestricted = (overrides = {}) => Filters.normalizeState({
   ...overrides
 });
 
-test('购买状态排除独立组合，并保留完整页的累积状态筛选', () => {
-  const platforms = ['open', 'limited', 'paused', 'delisted'].map(status => ({slug:status,platformStatus:status}));
+test('three plan statuses retain independent platform and delisted-plan gates', () => {
+  const {fixtureContext}=require('./test-fixtures.cjs');
+  const E=require('./entity-data.js');
+  const statuses=['open','restricted','delisted'];
+  const platforms=statuses.map(platformStatus=>({slug:platformStatus,platformStatus}));
+  const plans=platforms.flatMap(p=>statuses.map(planStatus=>({
+    slug:`${p.slug}-${planStatus}`,platformSlug:p.slug,planStatus,billingMode:'subscription',monthlyPrice:10
+  })));
+  const c=fixtureContext({schemaVersion:1,platforms},{plans},{schemaVersion:1,models:[{slug:'m'}]},
+    {planModels:plans.map(p=>({slug:p.slug,planSlug:p.slug,modelSlug:'m',usage:{monthlyTokenInM:100}}))});
+  const opts={context:c};
+  for(const includeDiscontinued of [false,true])for(const platformStatusMax of ['restricted','delisted']) {
+    const state=Filters.normalizeState({includeDiscontinued,platformStatusMax});
+    const expected=plans.filter(p=>(platformStatusMax==='delisted'||p.platformSlug!=='delisted')&&(includeDiscontinued||p.planStatus!=='delisted')).map(p=>p.slug);
+    assert.deepEqual(Filters.matchingOffers(c,state).map(o=>o.plan.slug),expected);
+    assert.deepEqual(Filters.filterPlans(E.buildPlanCatalog(c),state,opts).map(p=>p.slug),expected);
+  }
+  const restrictedPlatformOpenPlan=Filters.normalizeState({platformSlugs:['restricted'],platformStatusMax:'open'});
+  assert.deepEqual(Filters.matchingOffers(c,restrictedPlatformOpenPlan),[]);
+});
+
+test('购买状态排除受限平台，并保留完整页的累积状态筛选', () => {
+  const platforms = ['open', 'restricted', 'delisted'].map(status => ({slug:status,platformStatus:status}));
   const plans = platforms.map(p => ({slug:p.slug,platformSlug:p.slug,billingMode:'subscription',monthlyPrice:10}));
   const context = {platforms,plans,platformBySlug:new Map(platforms.map(p=>[p.slug,p])),
     relationsByPlanSlug:new Map(plans.map(p=>[p.slug,[{slug:p.slug,modelSlug:'m'}]])),modelBySlug:new Map([['m',{slug:'m'}]])};
-  const cases = [ [[],['open','limited','paused']], [['paused'],['open','limited']], [['limited'],['open','paused']], [['paused','limited'],['open']] ];
+  const cases = [ [[],['open','restricted']], [['restricted'],['open']] ];
   for (const [excluded,expected] of cases) {
     const state = Filters.normalizeState({excludedPlatformStatuses:excluded});
     assert.deepEqual(Filters.matchingOffers(context,state).map(o=>o.platform.slug),expected);
@@ -26,8 +85,13 @@ test('购买状态排除独立组合，并保留完整页的累积状态筛选',
   }
   const full = Filters.createDefaultState({}, {mode:'full'});
   assert.deepEqual(Filters.matchingOffers(context,full).map(o=>o.platform.slug),platforms.map(p=>p.slug));
-  assert.deepEqual(Filters.matchingOffers(context,{...full,platformStatusMax:'limited'}).map(o=>o.platform.slug),['open','limited']);
-  assert.deepEqual(Filters.normalizeState({excludedPlatformStatuses:['paused','paused','unknown','delisted']}).excludedPlatformStatuses,['paused']);
+  assert.deepEqual(Filters.matchingOffers(context,{...full,platformStatusMax:'restricted'}).map(o=>o.platform.slug),['open','restricted']);
+  assert.deepEqual(Filters.normalizeState({excludedPlatformStatuses:['restricted','restricted','unknown','delisted']}).excludedPlatformStatuses,['restricted']);
+  for(const previous of ['limited','paused']) {
+    const migrated=Filters.normalizeState({platformStatusMax:previous,excludedPlatformStatuses:['limited','paused']});
+    assert.equal(migrated.platformStatusMax,'restricted');
+    assert.deepEqual(migrated.excludedPlatformStatuses,['restricted']);
+  }
 });
 
 test('API 类型限制独立于零预算，价格点和订阅表同步过滤', () => {
@@ -136,8 +200,8 @@ test('默认精选配置可读取并校验稳定 slug', () => {
   assert.deepEqual(state.platformSlugs, ['p1']);
   assert.equal(state.modelMatch, 'all');
   const context = {
-    platformBySlug: new Map([['p1', { slug: 'p1', catalogVisible: true }]]),
-    planBySlug: new Map([['plan1', { slug: 'plan1', platformSlug: 'p1', planTableVisible: true }]]),
+    platformBySlug: new Map([['p1', { slug: 'p1' }]]),
+    planBySlug: new Map([['plan1', { slug: 'plan1', platformSlug: 'p1' }]]),
     modelBySlug: new Map([['m1', { slug: 'm1' }]])
   };
   assert.deepEqual(Filters.validateDefaults(config.homepageFilters.defaults, context).errors, []);
@@ -153,7 +217,7 @@ test('显式精选参数取平台与两组模型并集，完整页基础状态�
   assert.deepEqual(state.platformSlugs, ['p1', 'p2']);
   assert.deepEqual(state.modelSlugs, ['m1', 'm2', 'm3']);
   assert.deepEqual(state.budgetCny, { min: null, max: 200 });
-  assert.equal(state.platformStatusMax, 'paused');
+  assert.equal(state.platformStatusMax, 'restricted');
   assert.equal(state.modelMatch, 'any');
   state.platformSlugs.push('extra');
   state.modelSlugs.pop();
@@ -189,13 +253,13 @@ test('removed platform label state cannot silently restrict results', () => {
 
 test('平台模型筛选、状态和清空/全选语义', () => {
   const platforms = [
-    { slug: 'a', platformStatus: 'open', catalogVisible: true },
-    { slug: 'b', platformStatus: 'paused', catalogVisible: true },
-    { slug: 'c', platformStatus: 'delisted', catalogVisible: true }
+    { slug: 'a', platformStatus: 'open' },
+    { slug: 'b', platformStatus: 'restricted' },
+    { slug: 'c', platformStatus: 'delisted' }
   ];
   const context = { platformBySlug: new Map(platforms.map(item => [item.slug, item])) };
   const entityData = { platformModels: (_context, slug) => slug === 'a' ? [{ slug: 'm1' }, { slug: 'm2' }] : [{ slug: 'm1' }] };
-  assert.deepEqual(Filters.filterPlatforms(platforms, unrestricted({ platformSlugs: null, modelSlugs: ['m1', 'm2'], modelMatch: 'all', platformStatusMax: 'paused' }), { context, entityData }).map(item => item.slug), ['a']);
+  assert.deepEqual(Filters.filterPlatforms(platforms, unrestricted({ platformSlugs: null, modelSlugs: ['m1', 'm2'], modelMatch: 'all', platformStatusMax: 'restricted' }), { context, entityData }).map(item => item.slug), ['a']);
   assert.deepEqual(Filters.filterPlatforms(platforms, unrestricted({ platformSlugs: [] }), { context, entityData }), platforms);
   assert.deepEqual(Filters.filterPlatforms(platforms, unrestricted({ platformSlugs: platforms.map(item => item.slug) }), { context, entityData }).map(item => item.slug), ['a', 'b', 'c']);
 });
@@ -211,29 +275,29 @@ test('人民币换算、未知值和范围筛选', () => {
   const state = unrestricted({ budgetCny: { min: 70, max: 72 }, priceRanges: { monthlyPrice: { min: 70, max: 72 } } });
   assert.deepEqual(Filters.filterPlans(plans, state, { usdToCnyRate: 7.2 }).map(plan => plan.slug), ['cny', 'usd']);
   assert.deepEqual(Filters.filterPlans(plans, unrestricted(), { usdToCnyRate: 7.2 }).map(plan => plan.slug), ['cny', 'usd', 'unknown']);
-  assert.deepEqual(Filters.filterPlans([{ slug: 'hidden', platformSlug: 'p', planTableVisible: false, discontinued: true }], unrestricted()), []);
+  assert.deepEqual(Filters.filterPlans([{ slug: 'retired', platformSlug: 'p', planStatus: 'delisted' }], unrestricted({includeDiscontinued:false})), []);
 });
 
 test('价格点的全部模型匹配按平台与套餐分组，按量 API 不参加月预算', () => {
   const points = [
-    { slug: 'a-1', platformSlug: 'a', planSlug: 'plan-a', billingMode: 'subscription', modelSlug: 'm1', monthlyFeeCny: 50, originalMonthlyFee: 50, originalCurrency: '¥', planTableVisible: true },
-    { slug: 'a-2', platformSlug: 'a', planSlug: 'plan-a', billingMode: 'subscription', modelSlug: 'm2', monthlyFeeCny: 50, originalMonthlyFee: 50, originalCurrency: '¥', planTableVisible: true },
-    { slug: 'b-1', platformSlug: 'b', planSlug: 'plan-b', billingMode: 'subscription', modelSlug: 'm1', monthlyFeeCny: 50, originalMonthlyFee: 50, originalCurrency: '¥', planTableVisible: true },
-    { slug: 'api-1', platformSlug: 'b', planSlug: 'api-b', billingMode: 'payg', modelSlug: 'm1', unitPriceCnyPerM: 1, planTableVisible: false }
+    { slug: 'a-1', platformSlug: 'a', planSlug: 'plan-a', billingMode: 'subscription', modelSlug: 'm1', monthlyFeeCny: 50, originalMonthlyFee: 50, originalCurrency: '¥' },
+    { slug: 'a-2', platformSlug: 'a', planSlug: 'plan-a', billingMode: 'subscription', modelSlug: 'm2', monthlyFeeCny: 50, originalMonthlyFee: 50, originalCurrency: '¥' },
+    { slug: 'b-1', platformSlug: 'b', planSlug: 'plan-b', billingMode: 'subscription', modelSlug: 'm1', monthlyFeeCny: 50, originalMonthlyFee: 50, originalCurrency: '¥' },
+    { slug: 'api-1', platformSlug: 'b', planSlug: 'api-b', billingMode: 'payg', modelSlug: 'm1', unitPriceCnyPerM: 1 }
   ];
   const state = unrestricted({ modelSlugs: ['m1', 'm2'], modelMatch: 'all', budgetCny: { min: 10, max: 60 } });
   assert.deepEqual(Filters.filterPoints(points, state).map(point => point.slug), ['a-1', 'a-2']);
   const budget = unrestricted({ modelSlugs: ['m1'], budgetCny: { min: 10, max: 20 } });
   assert.deepEqual(Filters.filterPoints(points, budget).map(point => point.slug), ['api-1']);
   const withDiscontinued = unrestricted({ modelSlugs: ['m1'], includeDiscontinued: false });
-  points[2].discontinued = true;
+  points[2].planStatus = 'delisted';
   assert.deepEqual(Filters.filterPoints(points, withDiscontinued).map(point => point.slug), ['a-1', 'api-1']);
 });
 
-test('全部模型匹配不把已下架或隐藏的模型算入当前可见套餐', () => {
+test('全部模型匹配不把已下架关系算入当前可用套餐', () => {
   const points = [
-    { slug: 'active', platformSlug: 'p', planSlug: 'plan', billingMode: 'subscription', modelSlug: 'm1', planTableVisible: true },
-    { slug: 'discontinued', platformSlug: 'p', planSlug: 'plan', billingMode: 'subscription', modelSlug: 'm2', planTableVisible: true, discontinued: true }
+    { slug: 'active', platformSlug: 'p', planSlug: 'plan', billingMode: 'subscription', modelSlug: 'm1' },
+    { slug: 'discontinued', platformSlug: 'p', planSlug: 'plan', billingMode: 'subscription', modelSlug: 'm2', planStatus: 'delisted' }
   ];
   const state = unrestricted({ modelSlugs: ['m1', 'm2'], modelMatch: 'all', includeDiscontinued: false });
   assert.deepEqual(Filters.filterPoints(points, state), []);

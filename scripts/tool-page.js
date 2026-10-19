@@ -12,11 +12,11 @@
   function loadPreset() { return loadJson('model-comparison-presets.json'); }
   function load() {
     if (!pending) pending = Promise.all([
-      ...['platforms.json', 'plans.json', 'models.json', 'plan-models.json', 'config.json'].map(loadJson),
+      ...['platforms.json', 'plans.json', 'models.json', 'config.json'].map(loadJson),
       loadPreset().catch(() => null)
-    ]).then(([platforms, plans, models, relations, config, preset]) => {
+    ]).then(([platforms, plans, models, config, preset]) => {
       root.appConfig = config;
-      const context = root.EntityData.buildContext(platforms, plans, models, relations);
+      const context = root.EntityData.buildContext(platforms, plans, models);
       if (preset) {
         context.modelGroups = preset.groups || [];
         context.featuredPlatformSlugs = preset.platformSlugs || [];

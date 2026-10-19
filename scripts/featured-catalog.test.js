@@ -5,11 +5,12 @@ const path=require('node:path');
 const E=require('./entity-data.js'),F=require('./filter-state.js'),G=require('./purchase-guide.js'),C=require('./featured-catalog.js'),M=require('./model-comparison.js'),R=require('./offer-results.js');
 const read=n=>JSON.parse(fs.readFileSync(path.join(__dirname,'..',n+'.json'),'utf8'));
 const config=read('config'),preset=read('model-comparison-presets');
-const ctx=E.buildContext(read('platforms'),read('plans'),read('models'),read('plan-models'));ctx.modelGroups=preset.groups;
+const ctx=E.buildContext(read('platforms'),read('plans'),read('models'));ctx.modelGroups=preset.groups;
 
 test('精选来源完整、唯一，首页默认选择直接取同一名单',()=>{
   C.validate(preset,ctx);
   assert.equal(preset.groups.length,2);
+  assert.deepEqual(preset.groups.map(group=>[group.label,group.title]),[['甜品级','甜品级模型'],['头部级','头部级模型']]);
   const state=F.createDefaultState(config,{featuredPreset:preset});
   assert.deepEqual(state.platformSlugs,preset.platformSlugs);
   assert.deepEqual(state.modelSlugs,[...new Set(preset.groups.flatMap(g=>g.modelSlugs))]);
@@ -36,8 +37,8 @@ test('未知、零与按量费用分开显示，固定表不吞未知额度或�
     {slug:'unknown',platformSlug:'p',modelSlug:'m',billingMode:'subscription',unitPriceCnyPerM:null,monthlyTokenInM:null},
     {slug:'zero',platformSlug:'p',modelSlug:'m',billingMode:'subscription',unitPriceCnyPerM:0,monthlyTokenInM:0,monthlyFeeCny:0},
     {slug:'api',platformSlug:'p',modelSlug:'m',billingMode:'payg',unitPriceCnyPerM:1},
-    {slug:'old',platformSlug:'p',modelSlug:'m',billingMode:'subscription',discontinued:true},
-    {slug:'hidden',platformSlug:'p',modelSlug:'m',billingMode:'subscription',platformVisible:false}
+    {slug:'old',platformSlug:'p',modelSlug:'m',billingMode:'subscription',planStatus: 'delisted'},
+    {slug:'restricted',platformSlug:'p',modelSlug:'m',billingMode:'subscription',available:false}
   ];
   assert.equal(M.buildPresetComparisonRows(points,group,'all').length,3);
   const html=M.presetComparisonTableHtml(group,points,'yi','all');
@@ -56,7 +57,7 @@ test('精选与完整范围可复用同一固定表，保留具体模型档位�
     const all=M.buildPresetComparisonRows(points,group,'all',preset.platformSlugs);
     assert.ok(all.length>=featured.length);
     assert.ok(featured.every(p=>preset.platformSlugs.includes(p.platformSlug)&&group.modelSlugs.includes(p.modelSlug)));
-    assert.ok(all.every(p=>!p.discontinued&&p.available!==false&&p.platformVisible!==false));
+    assert.ok(all.every(p=>p.planStatus !== 'delisted'&&p.available!==false));
   }
   const model={slug:'test',name:'<script>oops</script>',scores:{artificialAnalysis:{score:0}},modalities:null};
   const html=C.modelCard(model,ctx);assert.doesNotMatch(html,/<script>/);assert.match(html,/0\.0/);assert.match(html,/待确认/);

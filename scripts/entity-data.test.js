@@ -1,6 +1,53 @@
+const {fixtureContext} = require('./test-fixtures.cjs');
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const EntityData = require('./entity-data.js');
+
+test('display price basis defaults to first month without changing the regular source points', () => {
+  const E=require('./entity-data.js'),saved=globalThis.CodingPlanDisplaySettings;
+  try {
+    delete globalThis.CodingPlanDisplaySettings;
+    assert.equal(E.displayPriceBasis(),'firstMonth');
+    globalThis.CodingPlanDisplaySettings={getPriceBasis:()=> 'monthly'};
+    assert.equal(E.displayPriceBasis(),'monthly');
+    const plan={billingMode:'subscription',monthlyPrice:100,firstMonthPrice:25};
+    assert.equal(E.comparisonUnitPrice(2,plan,'firstMonth'),.5);
+    assert.equal(E.comparisonUnitPrice(2,plan,'monthly'),2);
+    assert.equal(E.comparisonUnitPrice(2,{...plan,billingMode:'payg'},'firstMonth'),2);
+    assert.equal(plan.monthlyPrice,100);
+  } finally {
+    if(saved===undefined)delete globalThis.CodingPlanDisplaySettings;else globalThis.CodingPlanDisplaySettings=saved;
+  }
+});
+
+test('nested public plans unfold parent identities without changing the document', () => {
+  const platforms = {schemaVersion:1,platforms:[{slug:'platform-a'}]};
+  const models = {schemaVersion:1,models:[{slug:'model-a'}]};
+  const doc = {schemaVersion:3,workload:{tokensPerRequest:120000},plans:[
+    {slug:'empty',platformSlug:'platform-a',planModels:[]},
+    {slug:'plan-a',platformSlug:'platform-a',planModels:[
+      {slug:'stable',modelSlug:'model-a',timeTier:'峰',usage:{monthlyTokenInM:0}},
+      {slug:'unknown',modelSlug:'model-a',timeTier:'谷',usage:{monthlyTokenInM:'unknown'}}
+    ]}
+  ]};
+  const before = JSON.stringify(doc);
+  const c = EntityData.buildContext(platforms,doc,models);
+  assert.deepEqual(c.plans.map(p=>p.slug),['empty','plan-a']);
+  assert.deepEqual(c.relationsByPlanSlug.get('empty') || [],[]);
+  assert.deepEqual(c.relationsByPlanSlug.get('plan-a').map(r=>r.slug),['stable','unknown']);
+  assert.ok(c.planModels.every(r=>r.planSlug==='plan-a'));
+  assert.ok(c.plans.every(p=>!Object.hasOwn(p,'planModels')));
+  assert.deepEqual(c.workload,doc.workload);
+  assert.equal(JSON.stringify(doc),before);
+  const conflict = structuredClone(doc);
+  conflict.plans[1].planModels[0].planSlug = 'wrong';
+  assert.throws(()=>EntityData.buildContext(platforms,conflict,models),/planSlug/);
+  assert.throws(()=>EntityData.buildContext(platforms,{...doc,schemaVersion:1},models),/schemaVersion/);
+  assert.throws(()=>EntityData.buildContext(platforms,{...doc,schemaVersion:2},models),/schemaVersion/);
+  const missing = structuredClone(doc);
+  delete missing.plans[0].planModels;
+  assert.throws(()=>EntityData.buildContext(platforms,missing,models),/planModels/);
+});
 
 test('inventory ignores every billing tier while detailed rows retain all variants', () => {
   const context = fixture();
@@ -14,21 +61,21 @@ test('inventory ignores every billing tier while detailed rows retain all varian
   context.planModels = relations;
   context.relationsByPlanSlug.set(plan.slug, relations);
   assert.deepEqual(EntityData.platformModels(context, plan.platformSlug), [{slug:'model-a',name:'Model A'}]);
-  assert.deepEqual(EntityData.buildPlanCatalog(context, {includeHidden:true})[0].modelLabels, ['Model A']);
+  assert.deepEqual(EntityData.buildPlanCatalog(context)[0].modelLabels, ['Model A']);
   const rows = EntityData.buildApiPricingGroups(context, plan.platformSlug)[0].rows;
   assert.equal(rows.length, 2);
   assert.equal(rows[0].modelName, 'Model A');
   assert.equal(rows[0].tierLabel, '[高速] [256K] [谷]');
   assert.equal(rows[1].relationLabel, 'Model A [高速] [256K] [峰]');
   assert.equal(EntityData.buildComparisonPoints(context, 7).length, 2);
-  plan.discontinued = true;
+  plan.planStatus = 'delisted';
   assert.deepEqual(EntityData.platformModels(context, plan.platformSlug), []);
 });
 
 test('real catalogs keep bare identities and API platform cards do not duplicate peak rows', () => {
   const fs = require('node:fs');
   const path = require('node:path');
-  const docs = ['platforms','plans','models','plan-models'].map(name => JSON.parse(fs.readFileSync(path.join(__dirname, '..', `${name}.json`), 'utf8')));
+  const docs = ['platforms','plans','models'].map(name => JSON.parse(fs.readFileSync(path.join(__dirname, '..', `${name}.json`), 'utf8')));
   const context = EntityData.buildContext(...docs);
   for (const plan of EntityData.buildPlanCatalog(context)) {
     assert.deepEqual(plan.modelLabels, plan.supportedModels.map(model => context.modelBySlug.get(model.slug).name));
@@ -42,23 +89,31 @@ test('real catalogs keep bare identities and API platform cards do not duplicate
   assert.ok(EntityData.buildApiPricingGroups(context, 'deepseek-official').flatMap(group => group.rows).some(row => row.tierLabel.includes('[峰]')));
 });
 
-test('header counts use public platforms, active subscriptions and model identities', () => {
+test('header counts use non-delisted platforms, active subscriptions and model identities', () => {
   const context = fixture();
-  context.platforms.push({slug:'hidden', catalogVisible:false});
+  context.platforms.push({slug:'retired',platformStatus:'delisted'});
   context.plans.push(
-    {slug:'old',platformSlug:'platform-a',billingMode:'subscription',discontinued:true},
+    {slug:'old',platformSlug:'platform-a',billingMode:'subscription',planStatus: 'delisted'},
     {slug:'api',platformSlug:'platform-a',billingMode:'payg'},
-    {slug:'hidden-plan',platformSlug:'platform-a',billingMode:'subscription',planTableVisible:false}
+    {slug:'extra',platformSlug:'platform-a',billingMode:'subscription'}
   );
-  assert.deepEqual(EntityData.catalogCounts(context), {platforms:1,plans:1,models:2});
-  assert.equal(EntityData.headerSubtitle(context, '31 大平台 介绍'), '1 大平台 · 1 个在售套餐 · 2 个模型<br>介绍');
+  assert.deepEqual(EntityData.catalogCounts(context), {platforms:1,plans:2,models:2});
+  assert.equal(EntityData.headerSubtitle(context, '31 大平台 介绍'), '1 大平台 · 2 个在售套餐 · 2 个模型<br>介绍');
   assert.equal(EntityData.headerSubtitle(null, '介绍'), '介绍');
   context.models.push({slug:'model-c'});
   assert.equal(EntityData.catalogCounts(context).models, 3);
 });
 
+test('catalogues retain historical platforms and both billing modes for callers to filter', () => {
+  const context = fixture();
+  context.platforms.push({slug:'retired',platformStatus:'delisted'});
+  context.plans.push({slug:'api',platformSlug:'platform-a',billingMode:'payg'});
+  assert.deepEqual(EntityData.listPlatforms(context).map(p=>p.slug),['platform-a','retired']);
+  assert.deepEqual(EntityData.buildPlanCatalog(context).map(p=>p.slug),['plan-a','api']);
+});
+
 function fixture() {
-  return EntityData.buildContext(
+  return fixtureContext(
     { schemaVersion: 1, platforms: [{ slug: 'platform-a', name: '平台A' }] },
     { schemaVersion: 1, plans: [{ slug: 'plan-a', platformSlug: 'platform-a', name: 'Pro', billingMode: 'subscription', monthlyPrice: 10, currency: '$' }] },
     { schemaVersion: 1, models: [
@@ -94,7 +149,7 @@ test('builds comparison points without name-based joins', () => {
 });
 
 test('builds API pricing groups and keeps raw input cache output prices', () => {
-  const context = EntityData.buildContext(
+  const context = fixtureContext(
     { schemaVersion: 1, platforms: [{ slug: 'platform-a', name: '平台A' }] },
     { schemaVersion: 1, plans: [{ slug: 'platform-a-api', platformSlug: 'platform-a', name: '按量 API', billingMode: 'payg', note: '活动说明' }] },
     { schemaVersion: 1, models: [{ slug: 'model-a', name: 'Model A', multimodal: false }] },

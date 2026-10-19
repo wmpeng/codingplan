@@ -45,39 +45,45 @@
     if (document.activeElement === input && input.value !== "" && Number(input.value) === value) return;
     input.value = value ?? "";
   }
-  function buildRangePicker(key, state) {
+  function buildRangePicker(key, state, subscriptionOnly = false) {
     const budget = key === "budget";
+    const sliderMin = budget && subscriptionOnly ? 1 : 0;
     const id = budget ? "homeBudgetPicker" : "homeTokenPicker";
     const title = budget ? "月预算" : "月 Token 数";
     const factor = budget ? 1 : root.NumberDisplay.tokenFactor(state.tokenUnit);
     const unit = budget ? "元" : state.tokenUnit === "B" ? "B" : state.tokenUnit === "M" ? "M" : "亿";
-    return `<details class="filter-picker" id="${id}"><summary><span class="range-picker-title">${title}</span><span ${budget ? "data-budget-label" : "data-token-label"}></span></summary>
+    return `<details class="filter-picker" id="${id}"><summary><span class="range-picker-title">${title}</span><span class="filter-picker-value" ${budget ? "data-budget-label" : "data-token-label"}></span></summary>
       <div class="filter-picker-menu budget-menu" role="group" aria-label="${budget ? "每月预算" : "每月 Token 用量"}">
         <div class="range-picker-value"><label class="filter-inline"><span>${budget ? "不超过" : "至少"}</span><span class="range-picker-number">${budget ? '<span class="range-picker-unit" aria-hidden="true">¥</span>' : ""}<input type="number" inputmode="decimal" min="0" step="any" ${budget ? 'data-budget-part="max"' : 'data-token-part="min"'} aria-label="${budget ? "最高月预算（人民币）" : `最低月 Token 数（${unit}）`}" placeholder="不限">${budget ? "" : `<span class="range-picker-unit" data-token-unit-label aria-hidden="true">${unit}</span>`}</span></label></div>
-        <div class="range-picker-slider"><input type="range" min="0" max="${budget ? budgetSliderMax : tokenSliderMax}" step="1" data-range-picker="${key}" aria-label="${title}滑块" aria-describedby="${id}Help">
-          <div class="range-picker-ticks">${budget ? '<button type="button" class="range-picker-mode" data-budget-mode="api" style="--tick-position:0%" aria-label="仅按量 API"><span>仅按量</span></button>' : '<button type="button" class="range-picker-mode" data-range-clear="token" style="--tick-position:0%"><span>不限</span></button>'}${rangeKnots[key].map((n, i) => n === 0 ? "" : `<button type="button" data-range-knot="${key}" data-knot-value="${n}" style="--tick-position:${(i * 100 + 1) / (budget ? budgetSliderMax : tokenSliderMax) * 100}%" aria-label="${budget ? "预算上限" : "最低月用量"} ${n / factor} ${unit}"><span>${n / factor}</span></button>`).join("")}${budget ? '<button type="button" class="range-picker-mode" data-budget-mode="any" data-range-clear="budget" style="--tick-position:100%"><span>不限</span></button>' : ""}</div></div>
-        <p class="filter-help" id="${id}Help">${budget ? "两端为仅按量 API / 不限，中间按金额筛选。按量 API 按月用量估算支出，未填用量时不判断预算。" : "按所选模型的月额度筛选，额度不相加；额度未明确的订阅不参与匹配。按量 API 按填写用量估算费用。"}</p>
+        <div class="range-picker-slider"><input type="range" min="${sliderMin}" max="${budget ? budgetSliderMax : tokenSliderMax}" step="1" data-range-picker="${key}" aria-label="${title}滑块" aria-describedby="${id}Help">
+          <div class="range-picker-ticks">${budget ? subscriptionOnly ? "" : '<button type="button" class="range-picker-mode" data-budget-mode="api" style="--tick-position:0%" aria-label="仅按量 API"><span>仅按量</span></button>' : '<button type="button" class="range-picker-mode" data-range-clear="token" style="--tick-position:0%"><span>不限</span></button>'}${rangeKnots[key].map((n, i) => n === 0 && !(budget && subscriptionOnly) ? "" : `<button type="button" data-range-knot="${key}" data-knot-value="${n}" style="--tick-position:${(i * 100 + 1 - sliderMin) / ((budget ? budgetSliderMax : tokenSliderMax) - sliderMin) * 100}%" aria-label="${budget ? "预算上限" : "最低月用量"} ${n / factor} ${unit}"><span>${n / factor}</span></button>`).join("")}${budget ? '<button type="button" class="range-picker-mode" data-budget-mode="any" data-range-clear="budget" style="--tick-position:100%"><span>不限</span></button>' : ""}</div></div>
+        <p class="filter-help" id="${id}Help">${budget ? subscriptionOnly ? "按套餐月费折合人民币筛选。" : "两端为仅按量 API / 不限，中间按金额筛选。按量 API 按月用量估算支出，未填用量时不判断预算。" : subscriptionOnly ? "按所选模型的月额度筛选，额度不相加；额度未明确的套餐不参与匹配。" : "按所选模型的月额度筛选，额度不相加；额度未明确的订阅不参与匹配。按量 API 按填写用量估算费用。"}</p>
       </div></details>`;
   }
 
-  const multimodalExplanation = "可以通俗理解为：你可以把图片或截图发给模型，让它看图理解、分析和回答。音频、视频和生图能力因模型而异。";
+  const multimodalExplanation = "支持多模态：除文本外，还支持图片、音频或视频等非文本输入或输出。具体能力以模型说明为准；未确认的模型不计入。";
   function multimodalControls(id, label = "全部多模态模型", notice = "") {
     return `<div class="model-multimodal-tools"><button type="button" class="model-multimodal-select" data-select-multimodal>${escapeHtml(label)}</button><span class="model-multimodal-help"><button type="button" class="model-multimodal-info" data-multimodal-help aria-label="什么是多模态模型" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>${multimodalExplanation}</span></span></div><p class="model-multimodal-notice" data-multimodal-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
   }
   const platformShortcutKinds = {
+    mainland: { fields: ["requiresOverseasNetwork", "requiresOverseasPayment"], label: "支持中国大陆" },
+    // Keep old controller calls translatable; only mainland is rendered.
     network: { field: "requiresOverseasNetwork", label: "境内可用平台", legacy: "domesticNetworkOnly" },
     payment: { field: "requiresOverseasPayment", label: "境内可购买平台", legacy: "domesticPaymentOnly" },
   };
   function platformShortcutControls(id, labels = {}, notice = "") {
-    return `<div class="platform-shortcut-tools"><div class="platform-shortcut-caption"><span>快捷选择</span><span class="platform-shortcut-help"><button type="button" class="model-multimodal-info" data-platform-help aria-label="平台快捷选择说明" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>境内可用：平台服务无需境外网络，不保证工具账号和安装也无此要求。境内可购买：有境内支付途径，不表示当前一定开放购买。<br>有不符合项时，仅保留已选中的符合平台；否则（包括未勾选时）选择全部符合平台。未确认项不算符合。<br>两个操作独立判断，点击“全部”可能重新加入另一操作排除的平台；只改变勾选，不持续筛选。</span></span></div><div class="platform-shortcut-actions" role="group" aria-label="平台快捷选择">${Object.entries(platformShortcutKinds).map(([kind, {label}]) => `<button type="button" data-platform-shortcut="${kind}">${escapeHtml(labels[kind] || `全部${label}`)}</button>`).join("")}</div></div><p class="model-multimodal-notice" data-platform-shortcut-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
+    return `<div class="platform-shortcut-tools model-multimodal-tools"><button type="button" class="model-multimodal-select" data-platform-shortcut="mainland">${escapeHtml(labels.mainland || platformShortcutKinds.mainland.label)}</button><span class="platform-shortcut-help"><button type="button" class="model-multimodal-info" data-platform-help aria-label="支持中国大陆说明" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>选择已确认无需境外网络、且有境内支付途径的平台；未确认的不计入。工具账号与安装可能另有要求，购买状态请另行查看。<br>已选中不符合的平台时，仅保留其中符合的；否则选择全部符合的平台。之后仍可手动增减。</span></span></div><p class="model-multimodal-notice" data-platform-shortcut-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
   }
   function bindSelectionHelp(host) {
     const helpSelector = '[data-multimodal-help], [data-platform-help]';
     const wrapSelector = '.model-multimodal-help, .platform-shortcut-help';
     const triggers = () => [...host.querySelectorAll(helpSelector)];
+    let closeTimer = null;
+    const cancelClose = () => { root.clearTimeout(closeTimer); closeTimer = null; };
     const show = (button, visible) => {
       button.setAttribute('aria-expanded', String(visible));
       const tooltip = document.getElementById(button.getAttribute('aria-controls'));
+      if (!tooltip) return;
       tooltip.hidden = !visible;
       if (visible) {
         tooltip.style.top = ''; tooltip.style.bottom = '';
@@ -90,7 +96,7 @@
         }
       }
     };
-    const close = button => { delete button.dataset.pinned; show(button, false); };
+    const close = button => { cancelClose(); delete button.dataset.pinned; show(button, false); };
     const reposition = () => triggers().filter(button => button.getAttribute('aria-expanded') === 'true').forEach(button => show(button, true));
     host.addEventListener('scroll', reposition, true);
     root.addEventListener('resize', () => root.requestAnimationFrame(reposition));
@@ -99,17 +105,19 @@
     host.addEventListener('pointerover', event => {
       if (event.pointerType !== 'mouse') return;
       const wrap = event.target.closest(wrapSelector);
-      if (wrap) show(wrap.querySelector('button'), true);
+      if (wrap) { cancelClose(); show(wrap.querySelector('button'), true); }
     });
     host.addEventListener('pointerout', event => {
       if (event.pointerType !== 'mouse') return;
       const wrap = event.target.closest(wrapSelector);
       if (!wrap || wrap.contains(event.relatedTarget)) return;
       const button = wrap.querySelector('button');
-      if (!button.dataset.pinned && !wrap.contains(document.activeElement)) show(button, false);
+      if (!button.dataset.pinned && !wrap.contains(document.activeElement)) {
+        cancelClose(); closeTimer = root.setTimeout(() => show(button, false), 150);
+      }
     });
     host.addEventListener('focusin', event => {
-      if (!restoringFocus && event.target.matches(helpSelector)) show(event.target, true);
+      if (!restoringFocus && event.target.matches(helpSelector)) { cancelClose(); show(event.target, true); }
     });
     host.addEventListener('focusout', event => {
       const wrap = event.target.closest(wrapSelector);
@@ -118,6 +126,7 @@
     host.addEventListener('click', event => {
       const button = event.target.closest(helpSelector);
       if (!button) return;
+      cancelClose();
       if (button.dataset.pinned) close(button);
       else { button.dataset.pinned = 'true'; show(button, true); }
     });
@@ -136,7 +145,7 @@
     }, true);
   }
 
-  function buildPicker({ id, label, key, items, state }) {
+  function buildPicker({ id, label, key, items, state, groups }) {
     const model = key === "modelSlugs";
     const rawSelected = valuesFor(state, key);
     const selected =
@@ -153,11 +162,11 @@
       })
       .join("");
     return `<details class="filter-picker" data-picker="${escapeHtml(key)}" id="${escapeHtml(id)}">
-      <summary><span>${escapeHtml(label)}</span><span class="filter-picker-count" data-picker-count>${escapeHtml(countText)}</span>${model ? '<span class="model-match-warning" data-model-match-warning hidden>需同时支持所选模型</span>' : ""}</summary>
+      <summary><span>${escapeHtml(label)}</span><span class="filter-picker-count filter-picker-value" data-picker-count>${escapeHtml(countText)}</span>${model ? '<span class="model-match-warning" data-model-match-warning hidden>需同时支持所选模型</span>' : ""}</summary>
       <div class="filter-picker-menu" role="group" aria-label="选择${escapeHtml(label)}">
         <input type="search" data-picker-search placeholder="搜索${escapeHtml(label)}" aria-label="搜索${escapeHtml(label)}">
         <div class="filter-picker-tools"><button type="button" data-picker-action="clear">清空</button><button type="button" data-picker-action="all">全选</button>${model ? "" : '<button type="button" data-picker-action="default" disabled>精选平台</button>'}<span class="picker-selection-count" role="status" aria-live="polite" aria-atomic="true">已选 <strong ${model ? "data-model-selected-count" : "data-platform-selected-count"}>${selected.length}</strong><span class="picker-count-divider"> / </span>共 ${items.length}</span></div>
-        ${model ? `<div class="model-preset-options" role="group" aria-labelledby="${id}PresetsLabel"><span class="model-preset-label" id="${id}PresetsLabel">精选模型</span><div class="model-preset-segments"><button type="button" data-model-preset="featured" data-picker-action="default" aria-label="全部精选模型，包含甜品级和头部级" aria-pressed="false" disabled>全部</button><span class="model-preset-divider" aria-hidden="true"></span><button type="button" data-model-preset="high-volume-models" aria-label="精选甜品级模型" aria-pressed="false" disabled>甜品级</button><button type="button" data-model-preset="sota-models" aria-label="精选头部级模型" aria-pressed="false" disabled>头部级</button></div></div><p class="model-preset-error" data-model-preset-error hidden>精选名单暂时无法加载。<button type="button" data-retry-model-presets>重试</button></p>` : ""}
+        ${model ? `<div class="model-preset-options" role="group" aria-label="精选模型"><div class="model-preset-segments"><button type="button" data-model-preset="featured" data-picker-action="default" aria-label="全部精选模型" aria-pressed="false" disabled>全部精选模型</button><span class="model-preset-divider" aria-hidden="true"></span><button type="button" data-model-preset="high-volume-models" aria-label="${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'high-volume-models'))}" aria-pressed="false" disabled>${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'high-volume-models'))}</button><button type="button" data-model-preset="sota-models" aria-label="${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'sota-models'))}" aria-pressed="false" disabled>${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'sota-models'))}</button></div></div><p class="model-preset-error" data-model-preset-error hidden>精选名单暂时无法加载。<button type="button" data-retry-model-presets>重试</button></p>` : ""}
         ${model ? multimodalControls(id) : `${platformShortcutControls(id)}<p class="model-preset-error" data-platform-preset-error hidden>精选名单暂时无法加载。<button type="button" data-retry-model-presets>重试</button></p>`}
         <div data-picker-options>${options}</div><p class="filter-search-empty" role="status" hidden>没有匹配结果，试试其他关键词。</p>
         ${model ? `<div class="model-match-setting" data-model-match-setting hidden><label class="model-match-check"><input type="checkbox" data-model-require-all aria-describedby="${id}MatchHelp" aria-controls="${id}MatchConfirm" aria-expanded="false"><span>需同时支持所选模型</span></label><p id="${id}MatchHelp">同一套餐需同时支持全部所选模型，且每个模型都满足用量等条件，可能大幅减少匹配方案。</p><div class="model-match-confirm" id="${id}MatchConfirm" data-model-match-confirm hidden><p data-model-match-impact role="status" aria-live="polite"></p><div><button type="button" data-model-match-action="confirm">确认开启</button><button type="button" data-model-match-action="cancel">取消</button></div></div></div>` : ""}
@@ -165,25 +174,12 @@
     </details>`;
   }
 
-  const choices = {
-    platformStatusMax: [
-      "购买状态",
-      [
-        ["open", "开放购买"],
-        ["limited", "含定时放量"],
-        ["paused", "含暂停售"],
-        ["delisted", "全部状态"],
-      ],
-    ],
-  };
-  const checks = {
-    includeDiscontinued: "包含下架套餐",
-  };
-  const statusExclusions = { paused: "排除暂时停售平台", limited: "排除定时放量平台" };
-  function buildStatusPicker(includeHistory = false) {
+  const statusExclusions = { restricted: "排除购买受限" };
+  function buildStatusPicker(includeHistory = false, planStatusOnly = false) {
+    const subject = planStatusOnly ? "套餐" : "平台";
     return `<details class="filter-picker status-picker" id="homeStatusPicker">
-      <summary aria-label="购买状态"><span class="status-picker-title">购买状态</span><span data-status-label>不限</span></summary>
-      <div class="filter-picker-menu" role="group" aria-label="${includeHistory ? "购买状态筛选" : "排除购买状态"}"><div class="filter-picker-tools"><button type="button" data-clear-status aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}</span></label>`).join("")}${includeHistory ? '<div class="status-picker-history"><label><input type="checkbox" data-include-delisted><span>包含下架平台</span></label><label><input type="checkbox" data-filter-field="includeDiscontinued"><span>包含下架套餐</span></label></div>' : ""}</div>
+      <summary aria-label="购买状态"><span class="status-picker-title">购买状态</span><span class="filter-picker-value" data-status-label>不限</span></summary>
+      <div class="filter-picker-menu" role="group" aria-label="${includeHistory ? "购买状态筛选" : "排除购买状态"}"><div class="filter-picker-tools"><button type="button" data-clear-status aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}${subject}</span></label>`).join("")}${includeHistory ? `<div class="status-picker-history"><label><input type="checkbox" ${planStatusOnly ? 'data-filter-field="includeDiscontinued"' : 'data-include-delisted'}><span>包含已下架${subject}</span></label></div>` : ""}</div>
     </details>`;
   }
   let presetPromise;
@@ -199,43 +195,30 @@
     });
   }
   function mount(options) {
-    const opts = options || {},
-      full = opts.mode === "full",
-      pricing = full && opts.view === "pricing";
+    const opts = options || {}, policy = Filters.createViewPolicy(opts);
+    const {full, pricing, plansPage, planStatusOnly, platformHub, monitor, purchaseTool} = policy;
     const host =
       opts.element || document.getElementById("homepageUnifiedFiltersMount");
     const context = opts.context || root.codingplanEntityContext;
     if (!host || !context || !root.EntityData) return false;
     if (host.filterController) return true;
     const config = opts.config || root.appConfig || {};
-    const platforms = context.platforms.filter(
-        (x) => x.catalogVisible !== false,
-      ),
+    const platforms = context.platforms,
       models = context.models;
-    let state = Filters.createDefaultState(config, {
-      mode: full ? "full" : "home",
-    });
-    state.platformSlugs = null;
-    state.modelSlugs = null;
-    state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || "yi";
-    state.modelGroup = "any";
-    state.modelMatch = "any";
-    if (pricing) {
-      state.platformStatusMax = "paused";
-      state.includeDiscontinued = false;
-    }
-    const defaults = Filters.cloneState(state);
+    let state = policy.createDefaults(config, root.CodingPlanDisplaySettings?.getTokenUnit() || "yi");
+    const defaults = Filters.cloneControlState(state);
+    let featuredOnly = false;
     if (opts.featuredPreset) {
       context.modelGroups = opts.featuredPreset.groups || [];
       context.featuredPlatformSlugs = opts.featuredPreset.platformSlugs || [];
     }
     let groupsReady = Array.isArray(context.modelGroups), initialPresetPending = !full || pricing, pendingAll = false, multimodalNotice = "", platformShortcutNotice = "";
-    const platformCandidates = kind => platforms.filter(platform => platform[platformShortcutKinds[kind].field] === false).map(platform => platform.slug);
+    const platformCandidates = kind => platforms.filter(platform => (platformShortcutKinds[kind].fields || [platformShortcutKinds[kind].field]).every(field => platform[field] === false)).map(platform => platform.slug);
     function platformShortcutAction(kind) {
       const eligible = platformCandidates(kind);
       const selected = state.platformSlugs === null ? platforms.map(platform => platform.slug) : state.platformSlugs;
       const retain = selected.some(slug => !eligible.includes(slug));
-      return { label: `${retain ? "仅保留" : "全部"}${platformShortcutKinds[kind].label}`, slugs: retain ? selected.filter(slug => eligible.includes(slug)) : eligible };
+      return { label: kind === "mainland" ? platformShortcutKinds.mainland.label : `${retain ? "仅保留" : "全部"}${platformShortcutKinds[kind].label}`, slugs: retain ? selected.filter(slug => eligible.includes(slug)) : eligible };
     }
     function selectPlatformShortcut(kind, source = "manual") {
       if (!Object.hasOwn(platformShortcutKinds, kind)) return false;
@@ -247,7 +230,7 @@
       state.platformSlugs = slugs;
       publish(source); return true;
     }
-    const multimodalSlugs = models.filter(model => model.modalities?.input?.includes('image')).map(model => model.slug);
+    const multimodalSlugs = models.filter(root.EntityData.isMultimodal).map(model => model.slug);
     const multimodalSet = new Set(multimodalSlugs);
     function multimodalAction() {
       const selected = state.modelSlugs === null ? models.map(model => model.slug) : state.modelSlugs;
@@ -257,7 +240,7 @@
     function selectMultimodalModels(source = "manual") {
       const {slugs} = multimodalAction();
       if (!slugs.length) {
-        multimodalNotice = multimodalSlugs.length ? "当前所选模型中没有多模态模型，请先选择支持图片的模型。" : "目前没有确认支持图片的模型。";
+        multimodalNotice = multimodalSlugs.length ? "当前所选模型中没有多模态模型，请先选择支持多模态的模型。" : "目前没有确认支持多模态的模型。";
         pendingAll = false; render(); return false;
       }
       state.modelSlugs = slugs; state.modelGroup = "any"; state.modelMatch = "any";
@@ -270,13 +253,14 @@
     const canRestoreDefaults = () => groupsReady && featuredPlatforms().length > 0 && presetSlugs("featured").length > 0;
     function resetFilters(featured = false) {
       if (featured && !canRestoreDefaults()) return false;
-      state = Filters.cloneState(defaults);
+      state = Filters.cloneControlState(defaults);
+      if (platformHub) featuredOnly = false;
       if (featured) {
         state.platformSlugs = featuredPlatforms();
         state.modelSlugs = presetSlugs("featured");
       }
       resetModelList();
-      publish("manual");
+      publish(platformHub || plansPage ? "reset" : "manual");
       return true;
     }
     const sameSelection = slugs => Array.isArray(state.modelSlugs) && slugs.length === state.modelSlugs.length && slugs.every(slug => state.modelSlugs.includes(slug));
@@ -330,50 +314,37 @@
     }
     if (explicitSelection) initialPresetPending = false;
     else applyInitialPreset();
-    if (validPlatform)
+    if (validPlatform && !platformHub)
       state.platformSlugs = [platform];
-    const monitor = full && opts.view === "monitor";
     if (validModel) state.modelSlugs = [model];
-    if (params.get("billing") === "payg") state.apiOnly = true;
-    host.innerHTML = `<section class="filter-state-bar surface-panel${full ? "" : " home-filter-panel"}" aria-label="统一筛选">
+    if (params.get("billing") === "payg" && !plansPage) state.apiOnly = true;
+    host.innerHTML = `<section class="filter-state-bar surface-panel${full ? "" : " home-filter-panel"}${platformHub ? " platform-hub-filters" : ""}" aria-label="统一筛选">
+      ${platformHub ? '<div class="platform-filter-row"><fieldset class="platform-filter-fields" data-platform-filter-fields><legend class="sr-only">平台筛选条件</legend>' : ""}
       <div class="filter-state-grid">
-      ${buildPicker({ id: "homePlatformPicker", label: "平台", key: "platformSlugs", items: platforms, state })}
-      ${buildPicker({ id: "homeModelPicker", label: "模型", key: "modelSlugs", items: models, state })}
+      ${platformHub ? "" : buildPicker({ id: "homePlatformPicker", label: "平台", key: "platformSlugs", items: platforms, state })}
+      ${buildPicker({ id: "homeModelPicker", label: "模型", key: "modelSlugs", items: models, state, groups: context.modelGroups })}
       ${
         monitor
           ? ""
-          : `${buildRangePicker("budget", state)}${buildRangePicker("token", state)}`
+          : `${buildRangePicker("budget", state, plansPage)}${buildRangePicker("token", state, plansPage)}`
       }
-      ${!full || pricing ? buildStatusPicker(pricing) : ""}</div>
-      ${full && !pricing ? '<div class="guide-filter-fields">' : '<div class="filter-state-footer">'}${Object.entries(choices)
-        .filter(() => !monitor && full && !pricing)
-        .map(
-          ([key, [label, items]]) =>
-            `<label class="filter-inline filter-choice"><span>${label}</span><select data-filter-field="${key}">${items.map(([v, t]) => `<option value="${v}">${t}</option>`).join("")}</select></label>`,
-        )
-        .join("")}
-      ${full && !pricing ? '</div><div class="filter-state-footer">' : ""}
-      <div class="filter-checks">${
-        monitor || pricing
-          ? ""
-          : Object.entries(checks)
-              .filter(([key]) => full || key !== "includeDiscontinued")
-              .map(
-                ([key, label]) =>
-                  `<label class="filter-inline"><input type="checkbox" data-filter-field="${key}">${label}</label>`,
-              )
-              .join("")
-      }</div>
-      ${full ? "" : `<div class="filter-state-controls"><label class="offer-sort"><span>排序</span><select data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></label><span class="offer-sort-help" id="offerSortHelp"></span>`}
-      <div class="filter-state-actions"><button type="button" data-filter-action="reset"${pricing ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${full ? "显示全部" : "显示精选"}</button>${full ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${pricing ? "已下架内容需单独勾选" : "其他条件恢复不限"}">显示精选</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
+      ${!monitor ? buildStatusPicker(purchaseTool, planStatusOnly) : ""}
+      ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-platform-domestic>支持中国大陆</label>' : ""}${plansPage ? '<label class="plan-harness-filter"><input type="checkbox" data-filter-field="harnessApiRequired">需支持第三方工具</label>' : ""}</div>
+      ${platformHub ? '<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-platform-featured aria-pressed="false">显示精选平台</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>' : ""}
+      <div class="filter-state-footer">
+      ${full ? "" : `<div class="filter-state-controls"><div class="offer-sort"><span aria-hidden="true">排序</span><span data-select-fallback><select id="homeOfferSort" data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></span></div><span class="offer-sort-help" id="offerSortHelp"></span>`}
+      <div class="filter-state-actions"><button type="button" data-filter-action="reset"${purchaseTool && !platformHub && !plansPage ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub || plansPage ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>${full && !platformHub && !plansPage ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">显示精选</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
       ${monitor ? '<p class="filter-state-hint" data-filter-hint>监控只使用平台、模型条件；未监控项目没有统计。</p>' : ""}
       ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
       </section>`;
     bindSelectionHelp(host);
+    const offerSortSelect = host.querySelector('[data-offer-sort]');
+    const offerSortPicker = offerSortSelect && root.CodingPlanSingleSelect?.mount(offerSortSelect, '方案排序', {showLabel:false});
     const controller = {
       getState: () => Filters.cloneState(state),
       context,
       config,
+      isFeaturedOnly: () => featuredOnly,
       selectModelPreset,
       getModelPreset: selectionPreset,
       selectMultimodalModels,
@@ -390,26 +361,27 @@
           if (!slugs.length) return;
           patch = {...patch, modelSlugs:slugs, modelMatch:"any", modelGroup:"any"};
         }
-        const merged = { ...state, ...patch, modelGroup: "any", imageRequired: false, domesticNetworkOnly: false, domesticPaymentOnly: false };
-        state = Filters.normalizeState(merged);
-        // Retain the cleared checklist; its existing business meaning remains unrestricted.
-        if (Array.isArray(merged.platformSlugs) && !merged.platformSlugs.length) state.platformSlugs = [];
+        const merged = { ...state, ...patch, modelGroup: "any", imageRequired: false };
+        if (platformHub && (patch.domesticNetworkOnly !== undefined || patch.domesticPaymentOnly !== undefined)) {
+          merged.domesticNetworkOnly = merged.domesticPaymentOnly = patch.domesticNetworkOnly === true || patch.domesticPaymentOnly === true;
+        }
+        state = Filters.cloneControlState(merged);
         // Translate legacy network/payment requests into visible picks, never hidden flags.
-        const legacyKinds = Object.keys(platformShortcutKinds).filter(kind => patch[platformShortcutKinds[kind].legacy] === true);
+        const legacyKinds = Object.keys(platformShortcutKinds).filter(kind => platformShortcutKinds[kind].legacy && patch[platformShortcutKinds[kind].legacy] === true);
         let platformNotice = "";
-        if (legacyKinds.length) {
+        if (!platformHub && legacyKinds.length) {
           const selected = state.platformSlugs?.length ? state.platformSlugs : platforms.map(platform => platform.slug);
           const slugs = selected.filter(slug => legacyKinds.every(kind => platformCandidates(kind).includes(slug)));
           if (slugs.length) state.platformSlugs = slugs;
           else platformNotice = "当前勾选没有符合项，已保留原选择。";
         }
-        // Convert old image-only requests into visible model picks rather than a hidden constraint.
+        // The legacy imageRequired field now selects the same multimodal inventory.
         let imageNotice = "";
         if (patch.imageRequired === true) {
           const selected = state.modelSlugs?.length ? state.modelSlugs : models.map(model => model.slug);
           const slugs = selected.filter(slug => multimodalSet.has(slug));
           if (slugs.length) { state.modelSlugs = slugs; state.modelMatch = "any"; }
-          else imageNotice = "当前所选模型中没有多模态模型，请先选择支持图片的模型。";
+          else imageNotice = "当前所选模型中没有多模态模型，请先选择支持多模态的模型。";
         }
         if (!state.modelSlugs || state.modelSlugs.length < 2) state.modelMatch = "any";
         if (Object.hasOwn(patch, "modelSlugs") || patch.imageRequired === true) resetModelList();
@@ -468,6 +440,7 @@
       ]) {
         const picker = host.querySelector(`[data-picker="${key}"]`),
           selected = state[key];
+        if (!picker) continue;
         picker.querySelector("[data-picker-count]").textContent =
           selected === null
             ? "全部"
@@ -482,10 +455,26 @@
         if (count.textContent !== String(selectedCount)) count.textContent = selectedCount;
       }
       const platformPicker = host.querySelector('[data-picker="platformSlugs"]');
-      platformPicker.querySelector('[data-picker-action="default"]').disabled = !Array.isArray(context.featuredPlatformSlugs);
-      platformPicker.querySelectorAll('[data-platform-shortcut]').forEach(button => { button.textContent = platformShortcutAction(button.dataset.platformShortcut).label; });
-      const platformNotice = platformPicker.querySelector('[data-platform-shortcut-notice]');
-      platformNotice.hidden = !platformShortcutNotice; platformNotice.textContent = platformShortcutNotice;
+      if (platformPicker) {
+        platformPicker.querySelector('[data-picker-action="default"]').disabled = !Array.isArray(context.featuredPlatformSlugs);
+        platformPicker.querySelectorAll('[data-platform-shortcut]').forEach(button => { button.textContent = platformShortcutAction(button.dataset.platformShortcut).label; });
+        const platformNotice = platformPicker.querySelector('[data-platform-shortcut-notice]');
+        platformNotice.hidden = !platformShortcutNotice; platformNotice.textContent = platformShortcutNotice;
+      }
+      if (platformHub) {
+        host.querySelector('[data-platform-domestic]').checked = state.domesticNetworkOnly && state.domesticPaymentOnly;
+        const available = featuredPlatforms().length > 0;
+        const toggle = host.querySelector('[data-platform-featured]');
+        toggle.disabled = !available;
+        toggle.setAttribute('aria-pressed', String(featuredOnly));
+        const fields = host.querySelector('[data-platform-filter-fields]');
+        fields.disabled = featuredOnly;
+        fields.inert = featuredOnly;
+        fields.setAttribute('aria-disabled', String(featuredOnly));
+        host.querySelector('[data-filter-action="reset"]').disabled = featuredOnly;
+        host.querySelector('.platform-hub-filters').classList.toggle('is-featured-mode', featuredOnly);
+        host.querySelector('[data-hub-retry-featured]').hidden = available;
+      }
       const modelPicker = host.querySelector('[data-picker="modelSlugs"]');
       modelPicker.querySelector('[data-select-multimodal]').textContent = multimodalAction().label;
       const notice = modelPicker.querySelector('[data-multimodal-notice]');
@@ -501,6 +490,10 @@
       const preset = selectionPreset();
       modelPicker.querySelectorAll('[data-model-preset]').forEach(button => {
         button.disabled = !groupsReady;
+        if (button.dataset.modelPreset !== 'featured') {
+          const label = root.CodingPlanUI.modelGroupLabel(context.modelGroups, button.dataset.modelPreset);
+          button.textContent = label; button.setAttribute('aria-label', label);
+        }
         button.setAttribute('aria-pressed', String(button.dataset.modelPreset === preset));
       });
       modelPicker.querySelector('[data-picker-action="default"]').disabled = !groupsReady;
@@ -516,12 +509,18 @@
         const option = root.PurchaseGuide.sortOptions.find(option => option.value === state.preference);
         sort.title = option.help;
         host.querySelector('#offerSortHelp').textContent = option.help;
+        offerSortPicker?.sync();
       }
       const statusPicker = host.querySelector('#homeStatusPicker');
       if (statusPicker) {
-        const excluded = state.excludedPlatformStatuses;
-        statusPicker.querySelector('[data-status-label]').textContent = excluded.length > 1 ? "已排除 2 项" : excluded.length ? statusExclusions[excluded[0]] : "不限";
-        statusPicker.querySelector('summary').setAttribute('aria-label', `购买状态：${excluded.map(status => statusExclusions[status]).join('、') || '不限'}`);
+        const excluded = planStatusOnly ? state.excludedPlanStatuses : state.excludedPlatformStatuses;
+        const labels = excluded.map(status => statusExclusions[status]);
+        const hasPlatforms = !!includeDelisted && state.platformStatusMax === "delisted";
+        const hasPlans = !!statusPicker.querySelector('[data-filter-field="includeDiscontinued"]') && state.includeDiscontinued;
+        if (hasPlatforms || hasPlans) labels.push("包含已下架");
+        const label = labels.join('、') || "不限";
+        statusPicker.querySelector('[data-status-label]').textContent = label;
+        statusPicker.querySelector('summary').setAttribute('aria-label', `购买状态：${label}`);
         statusPicker.querySelectorAll('[data-status-exclude]').forEach(el => { el.checked = excluded.includes(el.dataset.statusExclude); });
       }
       const factor = root.NumberDisplay.tokenFactor(state.tokenUnit);
@@ -552,7 +551,7 @@
         slider.value = key === "budget"
           ? state.apiOnly ? 0 : value == null ? budgetSliderMax : rangePosition(key, value) + 1
           : value == null ? 0 : rangePosition(key, value) + 1;
-        slider.style.setProperty("--range-fill", `${Number(slider.value) / Number(slider.max) * 100}%`);
+        slider.style.setProperty("--range-fill", `${(Number(slider.value) - Number(slider.min)) / (Number(slider.max) - Number(slider.min)) * 100}%`);
         slider.setAttribute("aria-valuetext", key === "budget" && state.apiOnly
           ? `仅按量 API，${value == null ? "金额不限" : `不超过 ${value} 元`}`
           : value == null ? "不限" : `${key === "budget" ? "不超过" : "至少"} ${value / displayFactor} ${unit}`);
@@ -570,16 +569,10 @@
       positionSelectionPanels();
     }
     function publish(source = "manual") {
+      policy.constrain(state);
       if (!["init", "catalog", "display"].includes(source)) initialPresetPending = false;
-      state.imageRequired = false;
-      state.domesticNetworkOnly = false;
-      state.domesticPaymentOnly = false;
       multimodalNotice = "";
       platformShortcutNotice = "";
-      if (!full) {
-        state.includeDiscontinued = false;
-        state.platformStatusMax = "paused";
-      }
       pendingAll = false;
       state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || state.tokenUnit;
       const clean = Filters.cloneState(state);
@@ -587,7 +580,7 @@
         root.__codingplanUnifiedFiltersState = clean;
         root.__codingplanHomeApi?.setUnifiedFilters(clean);
       }
-      if (opts.onChange) opts.onChange(clean);
+      if (opts.onChange) opts.onChange(clean, {source, featuredOnly});
       render();
       root.dispatchEvent(
         new CustomEvent("codingplan:filters-changed", {
@@ -649,11 +642,14 @@
     });
     host.addEventListener("change", (event) => {
       const el = event.target;
-      if (el.matches("[data-status-exclude]")) {
-        state.excludedPlatformStatuses = [...host.querySelectorAll('[data-status-exclude]:checked')].map(input => input.dataset.statusExclude);
+      if (platformHub && el.matches("[data-platform-domestic]")) {
+        state.domesticNetworkOnly = state.domesticPaymentOnly = el.checked;
+        publish();
+      } else if (el.matches("[data-status-exclude]")) {
+        state[planStatusOnly ? 'excludedPlanStatuses' : 'excludedPlatformStatuses'] = [...host.querySelectorAll('[data-status-exclude]:checked')].map(input => input.dataset.statusExclude);
         publish();
       } else if (el.matches("[data-include-delisted]")) {
-        state.platformStatusMax = el.checked ? "delisted" : "paused";
+        state.platformStatusMax = el.checked ? "delisted" : "restricted";
         publish();
       } else if (el.matches("[data-model-require-all]")) {
         if (!el.checked) { state.modelMatch = "any"; publish(); return; }
@@ -687,9 +683,15 @@
     host.addEventListener("click", (event) => {
       const el = event.target.closest("button");
       if (!el) return;
+      if (el.hasAttribute('data-platform-featured')) {
+        featuredOnly = !featuredOnly;
+        host.querySelectorAll('details[open]').forEach(picker => { picker.open = false; });
+        publish('featured-mode');
+        return;
+      }
       if (el.hasAttribute('data-select-multimodal')) { selectMultimodalModels(); return; }
       if (el.dataset.platformShortcut) { selectPlatformShortcut(el.dataset.platformShortcut); return; }
-      if (el.hasAttribute('data-retry-model-presets')) { refreshGroups(); return; }
+      if (el.hasAttribute('data-retry-model-presets') || el.hasAttribute('data-hub-retry-featured')) { refreshGroups(); return; }
       if (el.dataset.modelPreset) { selectModelPreset(el.dataset.modelPreset); return; }
       if (el.dataset.modelMatchAction) {
         const confirm = el.dataset.modelMatchAction === "confirm" && pendingAll;
@@ -727,7 +729,7 @@
         else state.monthlyTokenRange = value == null ? null : { min: value, max: null };
       }
       else if (el.hasAttribute("data-clear-status")) {
-        state.excludedPlatformStatuses = [];
+        state[planStatusOnly ? 'excludedPlanStatuses' : 'excludedPlatformStatuses'] = [];
       } else if (el.dataset.filterAction === "reset") {
         controller.reset();
         return;
@@ -772,7 +774,7 @@
       positionSelectionPanels();
     });
     host.querySelector('#homeStatusPicker')?.addEventListener('toggle', positionStatusPanel);
-    host.querySelector('[data-picker="platformSlugs"]').addEventListener('toggle', positionSelectionPanels);
+    host.querySelector('[data-picker="platformSlugs"]')?.addEventListener('toggle', positionSelectionPanels);
     root.addEventListener('resize', positionSelectionPanels);
     root.addEventListener('scroll', positionSelectionPanels, {passive:true});
     root.visualViewport?.addEventListener('resize', positionSelectionPanels);
@@ -789,12 +791,12 @@
         groupsReady = true;
         if (applyInitialPreset()) resetModelList();
         host.querySelector('[data-model-preset-error]').hidden = true;
-        host.querySelector('[data-platform-preset-error]').hidden = true;
+        if (!platformHub) host.querySelector('[data-platform-preset-error]').hidden = true;
         publish("catalog");
         root.dispatchEvent(new Event("codingplan:filters-ready"));
       }).catch(() => {
         host.querySelector('[data-model-preset-error]').hidden = false;
-        host.querySelector('[data-platform-preset-error]').hidden = false;
+        if (!platformHub) host.querySelector('[data-platform-preset-error]').hidden = false;
       }).finally(() => { host.querySelectorAll('[data-retry-model-presets]').forEach(button => { button.disabled = false; }); });
     }
     refreshGroups();

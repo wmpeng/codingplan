@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "articles": [
+    {
+      "series": "model_comparisons",
+      "slug": "20260513",
+      "title": "国产大模型核心能力评测：智谱、DeepSeek、MiniMax、Kimi、千问 Qwen、小米 MiMo",
+      "publishedAt": "2026-05-14",
+      "updatedAt": "2026-05-14",
+      "description": "基于独立评测机构Artificial Analysis发布的最新AI模型基准测试结果，本文围绕Agentic智能指数与Coding Agent指数两大核心维度展开横向对比。这两项指标与日常代码开发需求和OpenClaw、Harness等通用Agent场景高度契合： * Agentic能力直接决定模型自主规划复杂任务、调",
+      "kicker": "评测摘录 · OpenClaw",
+      "url": "/articles/model_comparisons/20260513/",
+      "cover": {
+        "src": "/articles/model_comparisons/20260513/assets/agentic-index.png",
+        "alt": "Artificial Analysis Agentic Index：GDPval-AA 与 τ²-Bench Telecom 等综合表现（分数越高越好）。"
+      }
+    },
+    {
+      "series": "model_comparisons",
+      "slug": "20260604",
+      "title": "2026年6月主流大模型Coding能力深度对比：GPT-5.5 领跑 Coding 指数，Claude Opus 4.8 加冕 Agentic 王座，国产多款跻身全球前十",
+      "publishedAt": "2026-06-04",
+      "updatedAt": "2026-06-04",
+      "description": "基于 Artificial Analysis 2026年6月基准测试，围绕 Coding 指数与 Agentic 智能指数对 GPT-5.5、Claude Opus 4.8、Qwen3.7 Max、DeepSeek V4 Pro、Kimi K2.6 等 19 款主流大模型横向评测，附选型建议。",
+      "kicker": "模型评测 · Coding Plan",
+      "url": "/articles/model_comparisons/20260604/",
+      "cover": {
+        "src": "/articles/model_comparisons/20260604/coding_index_202606.png",
+        "alt": "Artificial Analysis Coding Index：Terminal-Bench Hard + SciCode 综合 pass@1（分数越高越好）"
+      }
+    },
+    {
+      "series": "model_comparisons",
+      "slug": "20260617",
+      "title": "2026年6月主流大模型对比：Claude Fable 5 三项领跑，GLM-5.2 Agentic 反超 GPT-5.5，Kimi K2.7 Code 上线",
+      "publishedAt": "2026-06-17",
+      "updatedAt": "2026-06-17",
+      "description": "基于 Artificial Analysis 2026年6月基准测试，围绕 Coding 指数与 Agentic 智能指数对 GPT-5.5、Claude Opus 4.8、Qwen3.7 Max、DeepSeek V4 Pro、Kimi K2.6 等 19 款主流大模型横向评测，附选型建议。",
+      "kicker": "模型评测 · Coding Plan",
+      "url": "/articles/model_comparisons/20260617/",
+      "cover": {
+        "src": "/articles/model_comparisons/20260617/assets/Artificial Analysis Intelligence Index (17 Jun '26).png",
+        "alt": "Intelligence 指数榜单（分数越高越好）。"
+      }
+    },
+    {
+      "series": "model_comparisons",
+      "slug": "20260806",
+      "title": "2026年8月主流大模型能力对比：Kimi K3 综合国产第一，Qwen3.8 Max Agentic 全球第一，DeepSeek V4 Flash 正式版越级打Pro，国产阵营全面突破",
+      "publishedAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "description": "基于独立评测机构 Artificial Analysis 发布的最新 AI 模型基准测试结果（数据统计时间：2026 年 8 月 5 日），本文围绕 Intelligence Index（v4.1）和 Agentic Index（GDPval-AA v2 + τ³-Banking）两大核心指标，对 21 款主流大模型进",
+      "kicker": "模型评测 · Coding Plan",
+      "url": "/articles/model_comparisons/20260806/",
+      "cover": {
+        "src": "/articles/model_comparisons/20260806/assets/artificial-analysis-intelligence-index-5-aug-26.png",
+        "alt": "Artificial Analysis Intelligence Index（2026 年 8 月 5 日）。"
+      }
+    },
+    {
+      "series": "model_comparisons",
+      "slug": "20260907",
+      "title": "2026年9月主流大模型能力对比：Fable 5.1 综合领先，GPT-6 Astra 编码突出，GLM Flash 与 Luna 如何选",
+      "publishedAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "description": "过去一个月，Fable 5.1、GPT-6 Astra、GLM-5.3 Flash 等模型陆续进入选型名单。综合能力、网页开发和仓库工程的榜首并不完全相同，日常大量调用时，还要考虑完成任务的成本。",
+      "kicker": "模型评测 · Coding Plan",
+      "url": "/articles/model_comparisons/20260907/",
+      "cover": {
+        "src": "/articles/model_comparisons/20260907/assets/aa-intelligence.svg",
+        "alt": "AA Intelligence Index v4.2，2026-09-07，本期18款有分数模型，按公开页面整数值重绘"
+      }
+    },
+    {
+      "series": "news",
+      "slug": "20260602_minimax_m3",
+      "title": "MiniMax-M3 重磅升级：原生多模态、Ultra 套餐登场、性价比再封王",
+      "publishedAt": "2026-06-02",
+      "updatedAt": "2026-06-02",
+      "description": "MiniMax-M3 全面上线：原生多模态、Ultra 官方月 Token 上限约 71 亿（7100M）、Plus/Max 官方池约 6 亿/18 亿、M2.7-highspeed 全档可调。公开订阅已升级 Token Plan，站内仍按 Coding Plan 对比展示。",
+      "kicker": "产品更新 · Coding Plan",
+      "url": "/articles/news/20260602_minimax_m3/",
+      "cover": null
+    },
+    {
+      "series": "news",
+      "slug": "20260613_glm_5_2",
+      "title": "GLM-5.2 全量开放 Coding Plan：1M 上下文登场，Code V3 私有评测跃居第三",
+      "publishedAt": "2026-06-13",
+      "updatedAt": "2026-06-13",
+      "description": "GLM-5.2 面向 GLM Coding Plan 全量开放，1M 上下文，Code V3 私有评测综合第三；下周 MIT 开源与 API。",
+      "kicker": "产品更新 · Coding Plan",
+      "url": "/articles/news/20260613_glm_5_2/",
+      "cover": {
+        "src": "/articles/news/20260613_glm_5_2/assets/2026_165850_llm2014.github.io.jpeg",
+        "alt": "LLM Benchmark Code V3 2026-06 月榜"
+      }
+    },
+    {
+      "series": "news",
+      "slug": "20260615_kimi_k27_code",
+      "title": "Kimi K2.7 Code 发布并开源：编程专项大升级，高速版今日上线",
+      "publishedAt": "2026-06-15",
+      "updatedAt": "2026-06-15",
+      "description": "月之暗面发布开源 Kimi K2.7 Code，Kimi Code 默认升舱，6 月 15 日高速版上线；相对 K2.6 token 消耗约减 30%，API 不涨价。",
+      "kicker": "产品更新 · Kimi Code",
+      "url": "/articles/news/20260615_kimi_k27_code/",
+      "cover": {
+        "src": "/articles/news/20260615_kimi_k27_code/assets/20260615_kimi_k27_code_benchmark.png",
+        "alt": "Kimi K2.7 Code 官方 benchmark 对比（K2.7 Code / K2.6 / GPT-5.5 / Opus 4.8）"
+      }
+    },
+    {
+      "series": "news",
+      "slug": "20260718_kimi_k3",
+      "title": "Kimi K3 来了：2.8 万亿参数旗舰",
+      "publishedAt": "2026-07-18",
+      "updatedAt": "2026-07-18",
+      "description": "月之暗面发布旗舰模型 Kimi K3（约 2.8T、1M 上下文）；AA 智能指数约 57 综合约第三；Arena WebDev 登顶约 1679；API 缓存命中 ¥2 / 未命中 ¥20 / 输出 ¥100；权重计划 7 月 27 日前开放。",
+      "kicker": "产品更新 · Kimi K3",
+      "url": "/articles/news/20260718_kimi_k3/",
+      "cover": {
+        "src": "/articles/news/20260718_kimi_k3/assets/aa_intelligence_index.png",
+        "alt": "Artificial Analysis Intelligence Index：Kimi K3 约 57，综合约第三"
+      }
+    },
+    {
+      "series": "news",
+      "slug": "20260719_gpt_5_6",
+      "title": "GPT-5.6 来了：更强能力、更省Token！Sol、Terra、Luna 三档怎么选？",
+      "publishedAt": "2026-07-19",
+      "updatedAt": "2026-07-19",
+      "description": "OpenAI 于 2026 年 7 月 9 日正式推出 GPT-5.6 系列——旗舰 Sol、均衡 Terra、性价比 Luna；独立评测 Artificial Analysis 智能指数约 59 / 55 / 51，Sol 紧贴 Claude Fable 5；Coding Index 约 77.4 居首，Agenti",
+      "kicker": "AI 行业快讯",
+      "url": "/articles/news/20260719_gpt_5_6/",
+      "cover": {
+        "src": "/articles/news/20260719_gpt_5_6/assets/openai_design_sailing.jpeg",
+        "alt": "OpenAI 发布页：GPT-5.6 设计能力示例（Saltwind 航海小游戏）"
+      }
+    },
+    {
+      "series": "news",
+      "slug": "20260803_gpt56_price",
+      "title": "GPT-5.6 Luna 降价 80%、Terra 降价 20%：选 Luna 还是 DeepSeek V4 Flash？",
+      "publishedAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "description": "本次核心更新： * Luna API 标准价降 80%，输入 $0.20 / 输出 $1.20（约 ¥1.4 / ¥8.4，每百万 tokens） * Terra API 标准价降 20%，输入 $2.00 / 输出 $12.00（约 ¥14 / ¥84） * Sol 标准价不变；新增 Fast mode，最高 2.5",
+      "kicker": "AI 行业快讯",
+      "url": "/articles/news/20260803_gpt56_price/",
+      "cover": {
+        "src": "/articles/news/20260803_gpt56_price/assets/gpt56-price-cost-pareto.png",
+        "alt": "Artificial Analysis：GPT-5.6 Sol / Terra / Luna 各思考深度 Intelligence vs. Cost per Task"
+      }
+    },
+    {
+      "series": "news",
+      "slug": "20260803_deepseek_v4_flash_0731",
+      "title": "DeepSeek-V4-Flash-0731 正式版上线：Agent / Coding 能力大涨，1 元输入 / 2 元输出依然低价",
+      "publishedAt": "2026-08-03",
+      "updatedAt": "2026-08-03",
+      "description": "2026 年 7 月底，DeepSeek 先发布了 V4-Flash 正式版，新版本的 V4-Flash-0731 非常适合 Agent、 Coding以及大批量并发调用，这两个场景本来就是当前大模型最常见的落地方向。价格依旧很低，接口能力更完整，官方强调的重点也明显落在软件工程和工具调用场景上。",
+      "kicker": "AI 行业快讯",
+      "url": "/articles/news/20260803_deepseek_v4_flash_0731/",
+      "cover": {
+        "src": "/articles/news/20260803_deepseek_v4_flash_0731/assets/deepseek-v4-flash-0731-overview.jpg",
+        "alt": "DeepSeek-V4-Flash-0731 官方信息图"
+      }
+    },
+    {
+      "series": "news",
+      "slug": "20260813_deepseek_v4_pro_0813",
+      "title": "DeepSeek V4 Pro 正式版全平台上线：Agent 与 Coding 能力接近顶级模型，8 月 17 日起调价",
+      "publishedAt": "2026-08-13",
+      "updatedAt": "2026-08-13",
+      "description": "DeepSeek V4 Pro 正式版同步上线 APP、网页和 API，Agent 与 Coding 评测明显提升；8 月 17 日起 API 进入峰谷定价。",
+      "kicker": "AI 行业快讯 · DeepSeek V4 Pro",
+      "url": "/articles/news/20260813_deepseek_v4_pro_0813/",
+      "cover": {
+        "src": "/articles/news/20260813_deepseek_v4_pro_0813/assets/deepseek-v4-pro-0813-homepage-announcement.jpeg",
+        "alt": "DeepSeek 官网首页正式版公告"
+      }
+    },
+    {
+      "series": "news",
+      "slug": "20260814_glm_5_3",
+      "title": "GLM-5.3 发布：专注编程，极致后训练，用一半尺寸超越DeepSeek V4 Pro 0813 正式版",
+      "publishedAt": "2026-08-15",
+      "updatedAt": "2026-08-15",
+      "description": "GLM-5.3 沿用 GLM-5.2 基座，依靠后训练强化 Coding、Terminal Agent 与长程任务；总参数约 744B，激活参数约 40B，并已进入 GLM Coding Plan。",
+      "kicker": "产品更新 · Coding Plan",
+      "url": "/articles/news/20260814_glm_5_3/",
+      "cover": {
+        "src": "/articles/news/20260814_glm_5_3/assets/glm-5-3-official-01.png",
+        "alt": "GLM-5.3 官方公开 benchmark 对比图"
+      }
+    },
+    {
+      "series": "news",
+      "slug": "20260818_glm_5_3_aa",
+      "title": "GLM-5.3 在 AA 14 模型对比中综合第 5，Agentic 第 2：双榜成绩出炉",
+      "publishedAt": "2026-08-23",
+      "updatedAt": "2026-08-23",
+      "description": "Artificial Analysis 于 8 月 18 日收录 GLM-5.3（max）评测：综合智能 60 分、在这份 14 模型对比集内第 5，Agentic 59 分第 2；第三方 DeepSWE 榜单 69%±3% 并列第一梯队；API 已开放，输入 ¥8、输出 ¥28（每百万 tokens）。",
+      "kicker": "产品更新 · GLM-5.3",
+      "url": "/articles/news/20260818_glm_5_3_aa/",
+      "cover": {
+        "src": "/articles/news/20260818_glm_5_3_aa/assets/deepswe-leaderboard-1.jpeg",
+        "alt": "DeepSWE 实时榜单：GLM-5.3 与 Kimi K3 同处 69% 第一梯队"
+      }
+    },
+    {
+      "series": "plan_comparisons",
+      "slug": "20260519",
+      "title": "2026年5月主流AI Coding Plan平台全解析：能力、价格与选型指南",
+      "publishedAt": "2026-05-19",
+      "updatedAt": "2026-05-19",
+      "description": "2026年5月AI编程订阅市场全解析：智谱AI、MiniMax、Kimi、字节方舟、阿里百炼等25大平台Coding Plan对比，价格、限购、模型能力一目了然。",
+      "kicker": "选型指南 · Coding Plan",
+      "url": "/articles/plan_comparisons/20260519/",
+      "cover": null
+    },
+    {
+      "series": "plan_comparisons",
+      "slug": "20260603",
+      "title": "2026年6月主流Coding Plan平台全面对比｜MiniMax、Deepseek、Copilot、Mimo更新",
+      "publishedAt": "2026-06-03",
+      "updatedAt": "2026-06-03",
+      "description": "2026年6月主流 AI Coding Plan 与 Token Plan 平台对比，覆盖智谱、MiniMax、Kimi、DeepSeek、字节方舟、阿里百炼、讯飞、MiMo、联通云等 25 大平台的能力、价格、用量与选型建议。",
+      "kicker": "平台对比 · Coding Plan",
+      "url": "/articles/plan_comparisons/20260603/",
+      "cover": {
+        "src": "/articles/plan_comparisons/20260603/image.png",
+        "alt": "各平台套餐性价比对比图表"
+      }
+    },
+    {
+      "series": "plan_comparisons",
+      "slug": "20260628",
+      "title": "2026年6月28日 Coding Plan平台全面对比｜智谱、MiniMax、DeepSeek、GLM-5.2、Kimi-K2.7、字节方舟促销",
+      "publishedAt": "2026-06-28",
+      "updatedAt": "2026-06-28",
+      "description": "2026年6月28日主流 AI Coding Plan 与 Token Plan 全面对比，覆盖智谱 GLM-5.2、MiniMax、Kimi-K2.7-Code、DeepSeek、字节方舟促销、阿里百炼等平台的能力、价格、限购状态与选型建议。",
+      "kicker": "平台对比 · Coding Plan",
+      "url": "/articles/plan_comparisons/20260628/",
+      "cover": {
+        "src": "/articles/plan_comparisons/20260628/assets/image.jpeg",
+        "alt": "各平台套餐性价比对比图表"
+      }
+    },
+    {
+      "series": "plan_comparisons",
+      "slug": "20260810",
+      "title": "2026年8月10日 Coding Plan平台全面对比｜智谱新套餐涨价、Kimi限购、DeepSeek新模型、字节方舟2.5折持续",
+      "publishedAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "description": "8 月这轮更新，主线是「定价再平衡」：智谱把旗舰模型的购买门槛从抢购改成直接购买，代价是价格翻倍；Kimi 发布 Kimi-K3 后反而收紧供应；字节·方舟活动退潮，只剩 2.5 折在延续。对个人开发者来说，选平台的判断标准没有变：同价位可用量、是否要抢购、模型池是否覆盖你的实际开发场景。本文按这个逻辑，把本期主流平台",
+      "kicker": "平台对比 · Coding Plan",
+      "url": "/articles/plan_comparisons/20260810/",
+      "cover": {
+        "src": "/articles/plan_comparisons/20260810/assets/unit-price.jpg",
+        "alt": "各平台套餐综合单价对比"
+      }
+    },
+    {
+      "series": "plan_comparisons",
+      "slug": "20260824",
+      "title": "2026年8月24日 AI Coding Plan 与 API 平台对比：智谱 GLM-5.3、MiniMax、DeepSeek 视觉版和 OpenCode 调整后怎么选",
+      "publishedAt": "2026-08-24",
+      "updatedAt": "2026-08-24",
+      "description": "8 月下旬这轮变化，不只是某个平台又加了一个模型。智谱把 GLM-5.3 纳入新套餐，DeepSeek 同时调整了峰谷价格并推出视觉实验版，OpenCode 的模型池和套餐展示也发生变化。与此同时，Kimi 仍无法新订阅、Ollama Max 仍停售，阿里百炼的 Coding Plan 仍然很难抢。 如果只想先看结论：国内用户优先从智谱、MiniMax和字节方舟里选稳定可买的订",
+      "kicker": "平台对比 · Coding Plan",
+      "url": "/articles/plan_comparisons/20260824/",
+      "cover": {
+        "src": "/articles/plan_comparisons/20260824/assets/platforms.jpg",
+        "alt": "AI 编程平台对比总览"
+      }
+    }
+  ]
+}

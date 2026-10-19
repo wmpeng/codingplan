@@ -1,3 +1,4 @@
+const {fixtureContext} = require('./test-fixtures.cjs');
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const F = require("./filter-state.js"),
@@ -48,7 +49,6 @@ function fixture() {
       slug: "api",
       platformSlug: "p",
       billingMode: "payg",
-      planTableVisible: false,
     },
     {
       slug: "closed",
@@ -111,7 +111,7 @@ function fixture() {
     },
   ];
   const doc = (key, list) => ({ schemaVersion: 1, [key]: list });
-  const c = E.buildContext(
+  const c = fixtureContext(
     doc("platforms", platforms),
     doc("plans", plans),
     doc("models", models),
@@ -123,14 +123,26 @@ function fixture() {
 
 test('首页全量推荐保留购买状态排除，空结果可以单独解除排除', () => {
   const context = fixture();
-  context.platformBySlug.get('p').platformStatus = 'paused';
-  const current = state({platformSlugs:['p'],platformStatusMax:'paused',excludedPlatformStatuses:['paused']});
+  context.platformBySlug.get('p').platformStatus = 'restricted';
+  const current = state({platformSlugs:['p'],platformStatusMax:'restricted',excludedPlatformStatuses:['restricted']});
   const result = G.recommend(context,current,{}, {allMatching:true});
   assert.equal(result.candidates.length,0);
   const conflict = result.conflicts.find(c=>c.key==='excludedPlatformStatuses');
   assert.ok(conflict && conflict.count>0);
   assert.deepEqual(conflict.value,[]);
   assert.ok(G.recommend(context,{...current,excludedPlatformStatuses:[]},{},{allMatching:true}).candidates.length>0);
+});
+
+test('购买推荐要求平台和套餐均可购买，全量浏览保留受限原因', () => {
+  const context=fixture(), current=state({platformSlugs:['p'],platformStatusMax:'restricted'});
+  context.platformBySlug.get('p').platformStatus='restricted';
+  assert.equal(G.recommend(context,current,{}).candidates.length,0);
+  assert.ok(G.recommend(context,current,{},{allMatching:true}).candidates.every(item=>item.cautions.includes('购买受限，请在平台页面核实当前开放情况')));
+  context.platformBySlug.get('p').platformStatus='open';
+  context.planBySlug.get('cheap').planStatus='restricted';
+  assert.ok(!G.recommend(context,current,{}).candidates.some(item=>item.plan.slug==='cheap'));
+  const restricted=G.recommend(context,current,{},{allMatching:true}).candidates.find(item=>item.plan.slug==='cheap');
+  assert.ok(restricted && restricted.cautions.includes('购买受限，请在平台页面核实当前开放情况'));
 });
 
 test("引导只按使用方式分流；API 限制与金额独立，未知 API 费用不当作零", () => {
@@ -144,7 +156,8 @@ test("引导只按使用方式分流；API 限制与金额独立，未知 API �
     assert.equal(G.scenarioPatch({ scenario, writingMode: "tools" }).apiOnly, false);
   const offers = F.matchingOffers(c, api, options);
   assert.deepEqual(offers.map(x => x.plan.slug), ["api"]);
-  assert.deepEqual(F.filterPlans(c.plans, api, { ...options, context: c }), []);
+  const subscriptions = c.plans.filter(plan => plan.billingMode === 'subscription');
+  assert.deepEqual(F.filterPlans(subscriptions, api, { ...options, context: c }), []);
   assert.deepEqual(F.filterPlatforms(c.platforms, api, { ...options, context: c }).map(x => x.slug), ["p"]);
   const budget = state({ ...api, budgetCny: { max: 0 } });
   assert.equal(F.matchingOffers(c, budget, options).length, 1);
@@ -275,7 +288,7 @@ test("推荐排序使用符合条件的模型最高分、去重数量、平台�
       .size,
     r.groups.flatMap(([, items]) => items).length,
   );
-  c.plans[1].discontinued = true;
+  c.plans[1].planStatus = 'delisted';
   assert.ok(
     !G.recommend(
       c,
@@ -312,7 +325,6 @@ test("真实目录的推荐引用完整，AA无分数不冒充零，分组模型
     require("../platforms.json"),
     require("../plans.json"),
     require("../models.json"),
-    require("../plan-models.json"),
   );
   c.modelGroups = require("../model-comparison-presets.json").groups;
   for (const group of c.modelGroups.filter((x) =>

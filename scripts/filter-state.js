@@ -11,10 +11,13 @@
     modelMatch: 'any',
     budgetCny: null,
     apiOnly: false,
+    harnessApiRequired: false,
     monthlyTokenRange: null,
     tokenUnit: 'yi',
-    platformStatusMax: 'paused',
+    platformStatusMax: 'restricted',
     excludedPlatformStatuses: [],
+    excludedPlanStatuses: [],
+    planStatusOnly: false,
     includeDiscontinued: false,
     priceRanges: {},
     requestRanges: {},
@@ -23,7 +26,9 @@
     deepSWEScoreMin: null
   });
 
-  const STATUS_RANK = { open: 0, limited: 1, paused: 2, delisted: 3 };
+  const STATUS_RANK = { open: 0, restricted: 1, delisted: 2 };
+  // Keep existing in-session filters usable after the two middle states merge.
+  const normalizeStatus = status => status === 'limited' || status === 'paused' ? 'restricted' : status;
 
   function arrayOrNull(value) {
     if (value === null) return null;
@@ -70,12 +75,14 @@
       platformStatusMax: 'delisted',
       includeDiscontinued: true
     } : DEFAULTS;
+    const platformStatusMax = normalizeStatus(input.platformStatusMax);
     return {
       platformSlugs: entitySelection(input.platformSlugs === undefined ? base.platformSlugs : input.platformSlugs),
       // Empty model picks mean unrestricted, while preserving the cleared checklist.
       modelSlugs: arrayOrNull(input.modelSlugs === undefined ? base.modelSlugs : input.modelSlugs),
       modelMatch: input.modelMatch === 'all' ? 'all' : 'any',
       apiOnly: input.apiOnly === true,
+      harnessApiRequired: input.harnessApiRequired === true,
       modelGroup: ['sota-models', 'high-volume-models'].includes(input.modelGroup) ? input.modelGroup : 'any',
       imageRequired: input.imageRequired === true,
       domesticNetworkOnly: input.domesticNetworkOnly === true,
@@ -84,8 +91,10 @@
       monthlyTokenRange: cloneRange(input.monthlyTokenRange),
       tokenUnit: ['M','B'].includes(input.tokenUnit) ? input.tokenUnit : 'yi',
       budgetCny: cloneRange(input.budgetCny === undefined ? base.budgetCny : input.budgetCny),
-      platformStatusMax: STATUS_RANK[input.platformStatusMax] === undefined ? base.platformStatusMax : input.platformStatusMax,
-      excludedPlatformStatuses: (arrayOrNull(input.excludedPlatformStatuses) || []).filter(status => ['limited', 'paused'].includes(status)),
+      platformStatusMax: STATUS_RANK[platformStatusMax] === undefined ? base.platformStatusMax : platformStatusMax,
+      excludedPlatformStatuses: [...new Set((arrayOrNull(input.excludedPlatformStatuses) || []).map(normalizeStatus).filter(status => status === 'restricted'))],
+      excludedPlanStatuses: [...new Set((arrayOrNull(input.excludedPlanStatuses) || []).map(normalizeStatus).filter(status => status === 'restricted'))],
+      planStatusOnly: input.planStatusOnly === true,
       includeDiscontinued: input.includeDiscontinued === undefined ? base.includeDiscontinued : input.includeDiscontinued === true,
       priceRanges: normalizeRangeMap(input.priceRanges === undefined ? base.priceRanges : input.priceRanges),
       requestRanges: normalizeRangeMap(input.requestRanges === undefined ? base.requestRanges : input.requestRanges),
@@ -97,6 +106,14 @@
 
   function cloneState(state) {
     return normalizeState(JSON.parse(JSON.stringify(state || {})));
+  }
+
+  // Controls distinguish a cleared checklist from select-all. Published business
+  // state keeps its existing normalization: either platform selection is unrestricted.
+  function cloneControlState(state) {
+    const copy = normalizeState(state);
+    if (Array.isArray(state?.platformSlugs) && !state.platformSlugs.length) copy.platformSlugs = [];
+    return copy;
   }
 
   function readDefaults(config) {
@@ -114,6 +131,55 @@
       state.modelSlugs = arrayOrNull((preset.groups || []).flatMap(group => group.modelSlugs || []));
     }
     return state;
+  }
+
+  // One policy owns page defaults and the constraints reapplied after every edit.
+  // constrain mutates the caller-owned control state; it does not change eligibility.
+  function createViewPolicy(options = {}) {
+    const full = options.mode === 'full';
+    const pricing = full && options.view === 'pricing';
+    const plansPage = full && options.view === 'plans';
+    const platformHub = full && options.view === 'platforms';
+    const monitor = full && options.view === 'monitor';
+    const planStatusOnly = plansPage || pricing;
+    const purchaseTool = full && !monitor;
+    function constrain(state) {
+      state.planStatusOnly = planStatusOnly;
+      if (planStatusOnly) {
+        state.platformStatusMax = 'delisted';
+        state.excludedPlatformStatuses = [];
+      } else state.excludedPlanStatuses = [];
+      state.imageRequired = false;
+      if (plansPage) state.apiOnly = false;
+      else state.harnessApiRequired = false;
+      if (platformHub) {
+        state.platformSlugs = null;
+        state.includeDiscontinued = false;
+        state.domesticNetworkOnly = state.domesticPaymentOnly = state.domesticNetworkOnly || state.domesticPaymentOnly;
+      } else {
+        state.domesticNetworkOnly = false;
+        state.domesticPaymentOnly = false;
+      }
+      if (!full) {
+        state.includeDiscontinued = false;
+        state.platformStatusMax = 'restricted';
+      }
+      return state;
+    }
+    function createDefaults(config, tokenUnit = 'yi') {
+      const state = createDefaultState(config, {mode:full ? 'full' : 'home'});
+      state.platformSlugs = plansPage ? [] : null;
+      state.modelSlugs = platformHub || plansPage ? [] : null;
+      state.tokenUnit = tokenUnit;
+      state.modelGroup = 'any';
+      state.modelMatch = 'any';
+      if (purchaseTool) {
+        state.platformStatusMax = 'restricted';
+        state.includeDiscontinued = false;
+      }
+      return constrain(state);
+    }
+    return {full, pricing, plansPage, platformHub, monitor, planStatusOnly, purchaseTool, createDefaults, constrain};
   }
 
   function toCny(value, currency, rate) {
@@ -142,10 +208,24 @@
     return selected.includes(String(value || ''));
   }
 
+  // Browsing a catalog with every model selected must not require model details.
+  // Explicit "all models in one plan" matching remains a real requirement.
+  function catalogModelSelection(selected, match, models) {
+    if (match === 'all' || !selected?.length || !models?.length) return selected;
+    const slugs = new Set(selected);
+    return models.every(model => slugs.has(model.slug)) ? null : selected;
+  }
+
   function platformStatusMatches(platform, state) {
     const status = platform.platformStatus || 'open';
     return (STATUS_RANK[status] || 0) <= STATUS_RANK[state.platformStatusMax]
       && !state.excludedPlatformStatuses.includes(status);
+  }
+
+  function planStatusMatches(plan, state) {
+    const status = plan.planStatus || 'open';
+    return (state.includeDiscontinued || status !== 'delisted')
+      && (!state.planStatusOnly || !state.excludedPlanStatuses.includes(status));
   }
 
   function modelMatch(models, selected, mode) {
@@ -194,20 +274,25 @@
     const current = normalizeState(state);
     const opts = options || {};
     const rate = opts.usdToCnyRate;
-    if (opts.context && Array.isArray(opts.context.plans)) {
+    if (current.planStatusOnly) current.modelSlugs = catalogModelSelection(current.modelSlugs, current.modelMatch, opts.context?.models);
+    const requiresModelRows = !!(current.modelSlugs?.length || current.monthlyTokenRange
+      || current.modelGroup !== 'any' || current.imageRequired || current.multimodal !== 'all'
+      || current.aaScoreMin !== null || current.deepSWEScoreMin !== null);
+    // Catalog browsing and plan-level conditions do not require model details.
+    if (opts.context && Array.isArray(opts.context.plans) && (!current.planStatusOnly || requiresModelRows)) {
       const ids = new Set(matchingOffers(opts.context, current, opts).map(offer => offer.plan.slug));
-      return (plans || []).filter(plan => plan.planTableVisible !== false && ids.has(plan.slug));
+      return (plans || []).filter(plan => ids.has(plan.slug));
     }
     return (plans || []).filter(plan => {
       if (current.apiOnly && plan.billingMode !== 'payg') return false;
-      if (plan.planTableVisible === false) return false;
-      if (!current.includeDiscontinued && plan.discontinued) return false;
+      if (!planStatusMatches(plan, current)) return false;
       if (!selectedMatch(plan.platformSlug, current.platformSlugs)) return false;
       if (!modelMatch(plan.supportedModels || plan.modelSlugs, current.modelSlugs, current.modelMatch)) return false;
       const platform = opts.context && opts.context.platformBySlug
         ? opts.context.platformBySlug.get(plan.platformSlug)
         : null;
-      if (platform && !platformStatusMatches(platform, current)) return false;
+      if (!current.planStatusOnly && platform && !platformStatusMatches(platform, current)) return false;
+      if (current.harnessApiRequired && EntityData.resolveHarnessApi(platform, plan) !== true) return false;
       if (!monthlyPlanMatches(plan, current, opts.context)) return false;
       const monthly = toCny(plan.monthlyPrice, plan.currency, rate);
       if (!inRange(monthly, current.budgetCny)) return false;
@@ -228,14 +313,16 @@
   function filterPlatforms(platforms, state, options) {
     const current = normalizeState(state);
     const opts = options || {};
-    if (opts.context && Array.isArray(opts.context.plans)) {
+    // Platform browsing can match catalog facts without requiring a live offer.
+    if (opts.requireMatchingOffer !== false && opts.context && Array.isArray(opts.context.plans)) {
       const ids = new Set(matchingOffers(opts.context, current, opts).map(offer => offer.platform.slug));
       return (platforms || []).filter(platform => ids.has(platform.slug));
     }
     return (platforms || []).filter(platform => {
-      if (platform.catalogVisible === false) return false;
       if (!selectedMatch(platform.slug, current.platformSlugs)) return false;
       if (!platformStatusMatches(platform, current)) return false;
+      if (current.domesticNetworkOnly && platform.requiresOverseasNetwork !== false) return false;
+      if (current.domesticPaymentOnly && platform.requiresOverseasPayment !== false) return false;
       if (opts.context && opts.entityData && current.modelSlugs !== null) {
         const models = typeof opts.entityData.platformModels === 'function'
           ? opts.entityData.platformModels(opts.context, platform.slug)
@@ -264,8 +351,7 @@
     const modelGroups = new Map();
     if (current.modelSlugs?.length && current.modelMatch === 'all') {
       (points || []).forEach(point => {
-        if (point.platformVisible === false || (point.planTableVisible === false && point.billingMode !== 'payg')) return;
-        if (!current.includeDiscontinued && point.discontinued) return;
+        if (!planStatusMatches(point, current)) return;
         if (current.monthlyTokenRange && point.billingMode !== 'payg' && !tokenInRange(point.monthlyTokenInM, current.monthlyTokenRange)) return;
         const key = `${point.platformSlug || ''}::${point.billingMode || ''}::${point.planSlug || ''}`;
         if (!modelGroups.has(key)) modelGroups.set(key, new Set());
@@ -274,12 +360,11 @@
     }
     return (points || []).filter(point => {
       if (current.apiOnly && point.billingMode !== 'payg') return false;
-      if (point.platformVisible === false) return false;
-      if (point.planTableVisible === false && point.billingMode !== 'payg') return false;
-      if (!current.includeDiscontinued && point.discontinued) return false;
+      if (current.harnessApiRequired && point.supportsHarnessApi !== true) return false;
+      if (!planStatusMatches(point, current)) return false;
       if (!selectedMatch(point.platformSlug, current.platformSlugs)) return false;
       const platform = opts.context?.platformBySlug?.get(point.platformSlug) || point;
-      if (!platformStatusMatches(platform, current)) return false;
+      if (!current.planStatusOnly && !platformStatusMatches(platform, current)) return false;
       if (!selectedMatch(point.modelSlug, current.modelSlugs)) return false;
       if (current.monthlyTokenRange && point.billingMode !== 'payg' && !tokenInRange(point.monthlyTokenInM, current.monthlyTokenRange)) return false;
       if (point.billingMode === 'payg' && current.monthlyTokenRange && current.budgetCny && !inRange(apiCost(point, current), current.budgetCny)) return false;
@@ -288,7 +373,7 @@
         const available = modelGroups.get(key) || new Set();
         if (!current.modelSlugs.length || !current.modelSlugs.every(slug => available.has(slug))) return false;
       }
-      if (current.multimodal === 'multimodal' && point.multimodal !== true) return false;
+      if ((current.imageRequired || current.multimodal === 'multimodal') && !EntityData.isMultimodal(point)) return false;
       if (current.multimodal === 'text' && point.multimodal !== false) return false;
       if (!scoreAtLeast(point, 'artificialAnalysis', current.aaScoreMin)) return false;
       if (!scoreAtLeast(point, 'deepSWE', current.deepSWEScoreMin)) return false;
@@ -327,13 +412,14 @@
     const offers = [];
     for (const plan of context.plans) {
       const platform = context.platformBySlug.get(plan.platformSlug);
-      if (!platform || platform.catalogVisible === false || (plan.planTableVisible === false && plan.billingMode !== 'payg')) continue;
-      if (!s.includeDiscontinued && plan.discontinued) continue;
+      if (!platform) continue;
+      if (!planStatusMatches(plan, s)) continue;
       if (!selectedMatch(platform.slug, s.platformSlugs)) continue;
-      if (!platformStatusMatches(platform, s)) continue;
+      if (!s.planStatusOnly && !platformStatusMatches(platform, s)) continue;
       if (s.domesticNetworkOnly && platform.requiresOverseasNetwork !== false) continue;
       if (s.domesticPaymentOnly && platform.requiresOverseasPayment !== false) continue;
       const supportsHarnessApi = EntityData.resolveHarnessApi(platform, plan);
+      if (s.harnessApiRequired && supportsHarnessApi !== true) continue;
       if (s.apiOnly && plan.billingMode !== 'payg') continue;
       const monthlyCost = toCny(plan.monthlyPrice, plan.currency, opts.usdToCnyRate);
       if (plan.billingMode !== 'payg' && !inRange(monthlyCost, s.budgetCny)) continue;
@@ -343,8 +429,7 @@
         const model = context.modelBySlug.get(row.modelSlug);
         if (!model || !selectedMatch(model.slug, s.modelSlugs)) return false;
         if (s.modelGroup !== 'any' && (!selectedGroup || !selectedGroup.modelSlugs.includes(model.slug))) return false;
-        if (s.imageRequired && !(model.modalities && model.modalities.input && model.modalities.input.includes('image'))) return false;
-        if (s.multimodal === 'multimodal' && model.multimodal !== true) return false;
+        if ((s.imageRequired || s.multimodal === 'multimodal') && !EntityData.isMultimodal(model)) return false;
         if (s.multimodal === 'text' && model.multimodal !== false) return false;
         if (!scoreAtLeast(model, 'artificialAnalysis', s.aaScoreMin) || !scoreAtLeast(model, 'deepSWE', s.deepSWEScoreMin)) return false;
         if (plan.billingMode === 'payg') return !(s.monthlyTokenRange && s.budgetCny) || inRange(apiCost(row, s), s.budgetCny);
@@ -359,16 +444,15 @@
   function validateDefaults(raw, context) {
     const state = normalizeState(raw);
     const errors = [];
-    const check = (name, values, map, hiddenCheck) => {
+    const check = (name, values, map) => {
       if (values === null) return;
       for (const value of values) {
         if (!map.has(value)) errors.push(`${name} 不存在: ${value}`);
-        else if (hiddenCheck && hiddenCheck(map.get(value))) errors.push(`${name} 不可见: ${value}`);
       }
     };
     if (!context) return { ok: true, errors, state };
-    check('平台', state.platformSlugs, context.platformBySlug || new Map(), item => item.catalogVisible === false);
-    check('模型', state.modelSlugs, context.modelBySlug || new Map(), item => item.catalogVisible === false);
+    check('平台', state.platformSlugs, context.platformBySlug || new Map());
+    check('模型', state.modelSlugs, context.modelBySlug || new Map());
     return { ok: errors.length === 0, errors, state };
   }
 
@@ -385,8 +469,11 @@
     arrayOrNull,
     normalizeState,
     cloneState,
+    cloneControlState,
     readDefaults,
     createDefaultState,
+    createViewPolicy,
+    catalogModelSelection,
     toCny,
     inRange,
     modelMatch,

@@ -4,9 +4,9 @@
 
 > 更新日期 2026.10.13 | 平台与模型资料补全
 
-当前展示 **45 个平台、137 个在售订阅套餐、2 个按量 API、155 个模型和 2281 条套餐模型关系**。
+当前展示 **43 个平台、137 个在售订阅套餐、2 个按量 API、155 个模型和 2281 条套餐模型关系**。
 
-[在线平台中心](https://codingplan.fyi/platforms/) · [模型目录](https://codingplan.fyi/models/) · [额度/价格对比](https://codingplan.fyi/pricing/) · [套餐对比](https://codingplan.fyi/plans/)
+[在线平台中心](https://codingplan.fyi/platforms/) · [模型目录](https://codingplan.fyi/models/) · [价格与额度](https://codingplan.fyi/pricing/) · [套餐对比](https://codingplan.fyi/plans/)
 
 ## 平台介绍
 
@@ -26,13 +26,13 @@
 
 | 平台 | 状态 | 评分 | 简介 |
 |---|---|---:|---|
-| [智谱AI](https://api.dreamfree.space/c/s/cpyqzhipu) | 开放购买 | 5 | 涨价后新套餐无需抢购。 |
-| [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) | 开放购买 | 5 | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
-| [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) | 开放购买 | 4 | 当前Go/Plus/Pro/Max订阅；Plus起支持Coding，旧四档仅老用户续费。 |
-| [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) | 开放购买 | 5 | Go与Go Plus的多模型订阅，各模型独立额度；当前32个LLM。 |
-| [字节·方舟 Coding Plan](https://api.dreamfree.space/c/s/cpyqfangzhou) | 开放购买 | 5 | 方舟Coding Plan当前多模型与Auto接入；保留历史测量基准，其他倍率明确为推测。 |
-| [DeepSeek](https://platform.deepseek.com/) | 开放购买 | 5 | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
-| [Codex](https://api.dreamfree.space/c/s/cpyqchatgpt) | 开放购买 | 5 | Codex官方订阅，支持GPT-6.1 Sol及6系列；Pro $500另支持Ultrafast。 |
+| [智谱AI](https://api.dreamfree.space/c/s/cpyqzhipu) | 可以购买 | 5 | 涨价后新套餐无需抢购。 |
+| [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) | 可以购买 | 5 | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
+| [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) | 可以购买 | 4 | 当前Go/Plus/Pro/Max订阅；Plus起支持Coding，旧四档仅老用户续费。 |
+| [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) | 可以购买 | 5 | Go与Go Plus的多模型订阅，各模型独立额度；当前32个LLM。 |
+| [字节·方舟 Coding Plan](https://api.dreamfree.space/c/s/cpyqfangzhou) | 可以购买 | 5 | 支持多模型与 Auto 接入；部分模型额度为估算值。 |
+| [DeepSeek](https://platform.deepseek.com/) | 可以购买 | 5 | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
+| [Codex](https://api.dreamfree.space/c/s/cpyqchatgpt) | 可以购买 | 5 | Codex官方订阅，支持GPT-6.1 Sol及6系列；Pro $500另支持Ultrafast。 |
 
 [浏览全部模型](https://codingplan.fyi/models/) · [按需求筛选所有方案](https://codingplan.fyi/#selectionWorkspace)
 
@@ -53,7 +53,7 @@
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥0.8 / 缓存¥0.02 / 出¥3.2 | - | - | - | ¥0.0709/M | 计算 |
 | [DeepSeek · 按量 API](https://platform.deepseek.com/) | [谷] | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M | 计算 |
 
-还有 47 个可比较选项，见[在线额度/价格对比](https://codingplan.fyi/pricing/)。
+还有 47 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### DeepSeek-V4-Flash-0731
 
@@ -68,7 +68,7 @@
 | [OpenCode · Go Plus](https://api.dreamfree.space/c/s/cpyqopencode) | [谷] | $40/月 | 1,804.75M | 4,511.87M | 9,023.7M | ¥0.0299/M | 计算 |
 | [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | [峰] | $20/月 | 526.39M | 1,315.96M | 2,631.9M | ¥0.0517/M | 计算 |
 
-还有 56 个可比较选项，见[在线额度/价格对比](https://codingplan.fyi/pricing/)。
+还有 56 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### GLM-5.3-Flash
 
@@ -83,7 +83,7 @@
 | [字节·方舟 Coding Plan · Pro](https://api.dreamfree.space/c/s/cpyqfangzhou) | - | ¥200/月 | 200M | 1,500M | 3,000M | ¥0.0667/M | 倍率换算 |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥0.64 / 缓存¥0.18 / 出¥2.24 | - | - | - | ¥0.217/M | 计算 |
 
-还有 34 个可比较选项，见[在线额度/价格对比](https://codingplan.fyi/pricing/)。
+还有 34 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### GPT-6-Luna
 
@@ -98,7 +98,7 @@
 | [GitHub · Max](https://github.com/features/copilot/plans) | [≤272K] | $100/月 | - | - | 11,815.1M | ¥0.0578/M | 计算 |
 | [GitHub · Pro+](https://api.dreamfree.space/c/s/cpyqghcopilotp) | [≤272K] | $39/月 | - | - | 4,135.3M | ¥0.0639/M | 计算 |
 
-还有 23 个可比较选项，见[在线额度/价格对比](https://codingplan.fyi/pricing/)。
+还有 23 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### Kimi-K2.8-Preview
 
@@ -124,7 +124,7 @@
 | [Command Code · Max 10×](https://api.dreamfree.space/c/s/cpcommandcode) | - | $100/月 | 17.72M | 35.45M | 59.1M | ¥11.511/M | 计算 |
 | [Command Code · Max 20×](https://api.dreamfree.space/c/s/cpcommandcode) | - | $200/月 | 35.45M | 70.89M | 118.2M | ¥11.511/M | 计算 |
 
-还有 9 个可比较选项，见[在线额度/价格对比](https://codingplan.fyi/pricing/)。
+还有 9 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### GPT-6.1-Sol
 
@@ -159,7 +159,7 @@
 | [智谱国际版 · 新Lite](https://api.dreamfree.space/c/s/cpyqzai) | [谷] | $18/月 | 19.32M | 96.61M | 386.4M | ¥0.3169/M | 计算 |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥6.4 / 缓存¥1.6 / 出¥22.4 | - | - | - | ¥1.9428/M | 计算 |
 
-还有 32 个可比较选项，见[在线额度/价格对比](https://codingplan.fyi/pricing/)。
+还有 32 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### Kimi-K3
 
@@ -174,57 +174,55 @@
 | [字节·方舟 Coding Plan · Pro](https://api.dreamfree.space/c/s/cpyqfangzhou) | - | ¥200/月 | 20M | 150M | 300M | ¥0.6667/M | 倍率换算 |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥16 / 缓存¥1.6 / 出¥80 | - | - | - | ¥2.7084/M | 计算 |
 
-还有 23 个可比较选项，见[在线额度/价格对比](https://codingplan.fyi/pricing/)。
+还有 23 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ## 平台对比
 
 | 平台 | 状态 | 综合评分 | 简介 |
 |---|---|---:|---|
-| 智谱AI | 开放购买 | ⭐️⭐️⭐️⭐️⭐️ | 涨价后新套餐无需抢购。 |
-| OpenCode | 开放购买 | ⭐️⭐️⭐️⭐️⭐️ | Go与Go Plus的多模型订阅，各模型独立额度；当前32个LLM。 |
-| 字节·方舟 Coding Plan | 开放购买 | ⭐️⭐️⭐️⭐️⭐️ | 方舟Coding Plan当前多模型与Auto接入；保留历史测量基准，其他倍率明确为推测。 |
-| 字节·方舟 Agent Plan | 开放购买 | ⭐️⭐️⭐️⭐️⭐️ | 四档AFP订阅，当前文本统一按模型系数扣减；Small不含Kimi K3。 |
-| MiniMax | 开放购买 | ⭐️⭐️⭐️⭐️⭐️ | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
-| 智谱国际版 | 开放购买 | ⭐️⭐️⭐️⭐️⭐️ | 国内版的替代，无需抢购。 |
-| Kimi | 开放购买 | ⭐️⭐️⭐️⭐️ | 当前Go/Plus/Pro/Max订阅；Plus起支持Coding，旧四档仅老用户续费。 |
-| [DeepSeek](https://platform.deepseek.com/) | 开放购买 | ⭐️⭐️⭐️⭐️⭐️ | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
-| [共绩算力](https://api.dreamfree.space/c/s/cpyqgongji) | 开放购买 | ⭐️⭐️⭐️⭐️⭐️ | GLM、Kimi、Qwen、DeepSeek按量API；邀请8折仅适用于资格仍有效的用户。 |
-| 优云智算 | 开放购买 | ⭐️⭐️⭐️⭐️ | 六档请求制Coding Plan，当前九个LLM各按明确次数扣减。 |
-| Codex | 开放购买 | ⭐️⭐️⭐️⭐️⭐️ | Codex官方订阅，支持GPT-6.1 Sol及6系列；Pro $500另支持Ultrafast。 |
-| Claude | 开放购买 | ⭐️⭐️⭐️⭐️ | Claude Code官方订阅，已支持Opus、Sonnet、Haiku 5.5；新型号精确Token额度未知。 |
-| Ollama | 开放购买 | ⭐️⭐️⭐️⭐️ | 当前18个云端LLM的美元Credits订阅，月池可集中使用；部分缓存价格未知。 |
-| 阿里·百炼 Token Plan | 开放购买 | ⭐️⭐️⭐️⭐️ | 百炼Token Plan现为四档Credits订阅，与旧Coding Plan产品分开。 |
-| 阿里·百炼 Coding Plan | 定时放量 | ⭐️⭐️⭐️⭐️ | Pro 套餐性价比高，但供应有限。 |
-| 小米·MiMo | 开放购买 | ⭐️⭐️⭐️⭐️ | MiMo文本Credits订阅，当前4个LLM，夜间00–08点UTC+8享0.8消耗。 |
-| Command Code | 开放购买 | ⭐️⭐️⭐️⭐️⭐️ | Go、GOAT、Pro与两档Max多模型订阅，按实际模型价格与上下文档扣减Credits。 |
-| 百度·千帆 | 开放购买 | ⭐️⭐️⭐️ | Token计量与积分计量产品并存，统一品牌下按独立计费套餐比较。 |
-| 华为云 | 定时放量 | ⭐️⭐️⭐️ | 华为云个人Token Plan，当前五个LLM，按官方月Token总量。 |
-| 腾讯云 | 开放购买 | ⭐️⭐️⭐️ | 通用Token Plan与Hy专属产品线分开；模型与套餐抵扣系数需逐项比较。 |
-| Qoder 国内版 | 开放购买 | ⭐️⭐️⭐️ | Qoder国内套餐，当前CLI支持名单与国际版不同。 |
-| Qoder 国际版 | 开放购买 | ⭐️⭐️⭐️ | Qoder国际套餐，当前支持K3、K2.8、GLM5.3及Qwen3.8等；具体Token额度未知。 |
-| WorkBuddy | 开放购买 | ⭐️⭐️⭐️ | 体验版与三档付费个人订阅，WorkBuddy与CodeBuddy共享积分。 |
-| TRAE 国内版 | 开放购买 | ⭐️⭐️⭐️ | TRAE国内订阅，以积分计费；当前内置型号已换代，支持范围按档位区分。 |
-| TRAE 国际版 | 开放购买 | ⭐️⭐️⭐️ | Free仅Auto；新Lite/Pro/Pro+/Ultra与老套餐并存，按模型Token价扣减月Usage。 |
-| GitHub | 开放购买 | ⭐️⭐️⭐️ | Copilot个人方案现按AI Credits计费，新增Max；免费与学生档仅Auto选择。 |
-| Cursor | 开放购买 | - | AI 编程编辑器与 Agent；新 X Subscription 从免费至 $200/月，旧 Pro 系列仅存量保留。 |
-| 京东云 | 定时放量 | ⭐️⭐️ | 京东Coding Plan与新的Credits Token Plan并存，使用独立端点与计费。 |
-| 讯飞·星火 | 开放购买 | ⭐️⭐️⭐️ | 个人版沿用此前高效版与速通版记录；2026-10-12当前价格和完整支持未能公开核实。 |
-| 联通云 | 开放购买 | ⭐️⭐️ | 此前Token Plan资料保留；2026-10-12官方页面无法读取，当前价格、支持和购买状态未重新确认。 |
-| 移动云 | 开放购买 | ⭐️⭐️ | 移动云请求制订阅，当前M2.5；首月与续费券按活动资格区分。 |
-| 阶跃星辰 | 暂停销售 | ⭐️⭐️ | Step Plan现按月Credits，支持Step5 Preview和Flash系列；本次购买按钮售罄。 |
-| TaoToken | 定时放量 | ⭐️⭐️⭐️ | 双Flash Coding Plan：GLM5.3 Flash与DeepSeek V4 Flash0731，月付限量抢购。 |
-| 超算 | 暂停销售 | ⭐️⭐️ | 旧Coding Plan公开文档仍列两个模型；新Credits Token Plan单独收录。 |
-| 商汤·日日新 | 定时放量 | ⭐️⭐️ | 免费公测，SenseNova6.8 Flash Lite与U1 Fast，五小时60000积分。 |
-| 摩尔线程 | 定时放量 | ⭐️⭐️ | KUAE Coding Plan当前GLM4.7；免费试用30天，付费套餐经官方京东入口销售。 |
-| 无问芯穹 | 已下线 | ⭐️ | 已停止向个人用户提供服务，企业体验按官方联系方式办理。 |
-| 天翼云 | 已下线 | ⭐️ | 历史请求制停售；存量Token制仅周期内可续订，新购Credits产品另列。 |
-| 腾讯云 · Hy | 开放购买 | - | Hy3、Hy4 preview专属订阅，与通用套餐可并存。 |
-| 百度千帆 · 积分制 | 开放购买 | - | 按模型与Token类型抵扣积分，可与Token制区分选购。 |
-| 天翼云 · 积分制 | 开放购买 | - | 2026-09-23启用积分制；旧Token制仅周期内用户可续订。 |
-| 京东云 · Token Plan | 定时放量 | - | 个人Credits订阅，按模型和输入长度计费，可与Coding Plan同时订阅。 |
-| 淘Token · Token Plan | 开放购买 | - | 多模型Credits月订阅，独立/token入口；与双Flash Coding Plan分开抵扣。 |
-| 超算 · Token Plan | 开放购买 | - | 19个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。 |
-| 讯飞 · Astron Token Plan | 开放购买 | - | 面向企业/团队的成员积分订阅；当前活动已结束，按常规月价记录。 |
+| 智谱AI | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 涨价后新套餐无需抢购。 |
+| OpenCode | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | Go与Go Plus的多模型订阅，各模型独立额度；当前32个LLM。 |
+| 字节·方舟 Coding Plan | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 支持多模型与 Auto 接入；部分模型额度为估算值。 |
+| 字节·方舟 Agent Plan | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 四档AFP订阅，当前文本统一按模型系数扣减；Small不含Kimi K3。 |
+| MiniMax | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
+| 智谱国际版 | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 国内版的替代，无需抢购。 |
+| Kimi | 可以购买 | ⭐️⭐️⭐️⭐️ | 当前Go/Plus/Pro/Max订阅；Plus起支持Coding，旧四档仅老用户续费。 |
+| [DeepSeek](https://platform.deepseek.com/) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
+| [共绩算力](https://api.dreamfree.space/c/s/cpyqgongji) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | GLM、Kimi、Qwen、DeepSeek按量API；邀请8折仅适用于资格仍有效的用户。 |
+| 优云智算 | 可以购买 | ⭐️⭐️⭐️⭐️ | 六档请求制Coding Plan，当前九个LLM各按明确次数扣减。 |
+| Codex | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | Codex官方订阅，支持GPT-6.1 Sol及6系列；Pro $500另支持Ultrafast。 |
+| Claude | 可以购买 | ⭐️⭐️⭐️⭐️ | Claude Code官方订阅，已支持Opus、Sonnet、Haiku 5.5；新型号精确Token额度未知。 |
+| Ollama | 可以购买 | ⭐️⭐️⭐️⭐️ | 当前18个云端LLM的美元Credits订阅，月池可集中使用；部分缓存价格未知。 |
+| 阿里·百炼 Token Plan | 可以购买 | ⭐️⭐️⭐️⭐️ | 百炼Token Plan现为四档Credits订阅，与旧Coding Plan产品分开。 |
+| 阿里·百炼 Coding Plan | 购买受限 | ⭐️⭐️⭐️⭐️ | Pro 套餐性价比高，但供应有限。 |
+| 小米·MiMo | 可以购买 | ⭐️⭐️⭐️⭐️ | MiMo文本Credits订阅，当前4个LLM，夜间00–08点UTC+8享0.8消耗。 |
+| Command Code | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | Go、GOAT、Pro与两档Max多模型订阅，按实际模型价格与上下文档扣减Credits。 |
+| 百度·千帆 | 可以购买 | ⭐️⭐️⭐️ | Token计量与积分计量产品并存，统一品牌下按独立计费套餐比较。 |
+| 华为云 | 购买受限 | ⭐️⭐️⭐️ | 华为云个人Token Plan，当前五个LLM，按官方月Token总量。 |
+| 腾讯云 | 可以购买 | ⭐️⭐️⭐️ | 通用Token Plan与Hy专属产品线分开；模型与套餐抵扣系数需逐项比较。 |
+| Qoder 国内版 | 可以购买 | ⭐️⭐️⭐️ | Qoder国内套餐，当前CLI支持名单与国际版不同。 |
+| Qoder 国际版 | 可以购买 | ⭐️⭐️⭐️ | Qoder国际套餐，当前支持K3、K2.8、GLM5.3及Qwen3.8等；具体Token额度未知。 |
+| WorkBuddy | 可以购买 | ⭐️⭐️⭐️ | 体验版与三档付费个人订阅，WorkBuddy与CodeBuddy共享积分。 |
+| TRAE 国内版 | 可以购买 | ⭐️⭐️⭐️ | TRAE国内订阅，以积分计费；当前内置型号已换代，支持范围按档位区分。 |
+| TRAE 国际版 | 可以购买 | ⭐️⭐️⭐️ | Free仅Auto；新Lite/Pro/Pro+/Ultra与老套餐并存，按模型Token价扣减月Usage。 |
+| GitHub | 可以购买 | ⭐️⭐️⭐️ | Copilot个人方案现按AI Credits计费，新增Max；免费与学生档仅Auto选择。 |
+| Cursor | 可以购买 | - | AI 编程编辑器与 Agent；新 X Subscription 从免费至 $200/月，旧 Pro 系列仅存量保留。 |
+| 京东云 | 购买受限 | ⭐️⭐️ | 京东Coding Plan与新的Credits Token Plan并存，使用独立端点与计费。 |
+| 讯飞·星火 | 可以购买 | ⭐️⭐️⭐️ | 个人版分高效版与速通版；当前价格和完整模型支持范围待确认。 |
+| 联通云 | 可以购买 | ⭐️⭐️ | Token Plan 当前价格、模型支持范围和购买状态待确认。 |
+| 移动云 | 可以购买 | ⭐️⭐️ | 移动云请求制订阅，当前M2.5；首月与续费券按活动资格区分。 |
+| 阶跃星辰 | 购买受限 | ⭐️⭐️ | Step Plan现按月Credits，支持Step5 Preview和Flash系列；目前售罄，恢复发售时间未知。 |
+| TaoToken | 购买受限 | ⭐️⭐️⭐️ | 双Flash Coding Plan：GLM5.3 Flash与DeepSeek V4 Flash0731，月付限量抢购。 |
+| 超算 | 购买受限 | ⭐️⭐️ | 旧 Coding Plan 支持两个模型，与新 Credits Token Plan 为独立产品。 |
+| 商汤·日日新 | 购买受限 | ⭐️⭐️ | 免费公测，SenseNova6.8 Flash Lite与U1 Fast，五小时60000积分。 |
+| 摩尔线程 | 购买受限 | ⭐️⭐️ | KUAE Coding Plan当前GLM4.7；免费试用30天，付费套餐经官方京东入口销售。 |
+| 腾讯云 · Hy | 可以购买 | - | Hy3、Hy4 preview专属订阅，与通用套餐可并存。 |
+| 百度千帆 · 积分制 | 可以购买 | - | 按模型与Token类型抵扣积分，可与Token制区分选购。 |
+| 天翼云 · 积分制 | 可以购买 | - | 2026-09-23启用积分制；旧Token制仅周期内用户可续订。 |
+| 京东云 · Token Plan | 购买受限 | - | 个人Credits订阅，按模型和输入长度计费，可与Coding Plan同时订阅。 |
+| 淘Token · Token Plan | 可以购买 | - | 多模型Credits月订阅，独立/token入口；与双Flash Coding Plan分开抵扣。 |
+| 超算 · Token Plan | 可以购买 | - | 19个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。 |
+| 讯飞 · Astron Token Plan | 可以购买 | - | 面向企业/团队的成员积分订阅；活动已结束，现按常规月价购买。 |
 
 更详细的性价比、模型覆盖、稳定性评价和状态筛选见[在线平台中心](https://codingplan.fyi/platforms/)。
 
@@ -346,8 +344,8 @@
 
 ## 延伸阅读
 
-- [2026年9月主流大模型能力对比：Fable 5.1 综合领先，GPT-6 Astra 编码突出，GLM Flash 与 Luna 如何选](articles/model_comparisons/20260907/index.html) — 过去一个月，Fable 5.1、GPT-6 Astra、GLM-5.3 Flash 等模型陆续进入选型名单。综合能力、网页开发和仓库工程的榜首并不完全相同，日常大量调用时，还要考虑完成任务的成本。
-- [2026年8月24日 AI Coding Plan 与 API 平台对比：智谱 GLM-5.3、MiniMax、DeepSeek 视觉版和 OpenCode 调整后怎么选](articles/plan_comparisons/20260824/index.html) — 8 月下旬这轮变化，不只是某个平台又加了一个模型。智谱把 GLM-5.3 纳入新套餐，DeepSeek 同时调整了峰谷价格并推出视觉实验版，OpenCode 的模型池和套餐展示也发生变化。
+- [2026年9月主流大模型能力对比：Fable 5.1 综合领先，GPT-6 Astra 编码突出，GLM Flash 与 Luna 如何选](articles/model_comparisons/20260907/) — 过去一个月，Fable 5.1、GPT-6 Astra、GLM-5.3 Flash 等模型陆续进入选型名单。综合能力、网页开发和仓库工程的榜首并不完全相同，日常大量调用时，还要考虑完成任务的成本。
+- [2026年8月24日 AI Coding Plan 与 API 平台对比：智谱 GLM-5.3、MiniMax、DeepSeek 视觉版和 OpenCode 调整后怎么选](articles/plan_comparisons/20260824/) — 8 月下旬这轮变化，不只是某个平台又加了一个模型。智谱把 GLM-5.3 纳入新套餐，DeepSeek 同时调整了峰谷价格并推出视觉实验版，OpenCode 的模型池和套餐展示也发生变化。与此同时，Kimi 仍无法新订阅、Ollama Max 仍停售，阿里百炼的 Coding Plan 仍然很难抢。 如果只想先看结论：国内用户优先从智谱、MiniMax和字节方舟里选稳定可买的订
 - [查看全部文章](articles/index.html)
 
 ## 数据反馈

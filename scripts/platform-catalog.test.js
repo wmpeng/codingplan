@@ -49,11 +49,11 @@ function samplePlatform(overrides = {}) {
 }
 
 describe('filterPlatforms', () => {
-  it('filters purchase status cumulatively and defaults to paused', () => {
-    const platforms = ['open', 'limited', 'paused', 'delisted'].map(status => samplePlatform({ slug: status, platformStatus: status }));
-    assert.deepEqual(filterPlatforms(platforms).map(p => p.slug), ['open', 'limited', 'paused']);
-    assert.deepEqual(filterPlatforms(platforms, { platformStatusMax: 'limited' }).map(p => p.slug), ['open', 'limited']);
-    assert.deepEqual(filterPlatforms(platforms, { platformStatusMax: 'delisted' }).map(p => p.slug), ['open', 'limited', 'paused', 'delisted']);
+  it('filters purchase status cumulatively and defaults to restricted', () => {
+    const platforms = ['open', 'restricted', 'delisted'].map(status => samplePlatform({ slug: status, platformStatus: status }));
+    assert.deepEqual(filterPlatforms(platforms).map(p => p.slug), ['open', 'restricted']);
+    assert.deepEqual(filterPlatforms(platforms, { platformStatusMax: 'open' }).map(p => p.slug), ['open']);
+    assert.deepEqual(filterPlatforms(platforms, { platformStatusMax: 'delisted' }).map(p => p.slug), ['open', 'restricted', 'delisted']);
   });
   it('keeps pinned platforms across status filtering', () => {
     const platforms = ['open', 'delisted'].map(status => samplePlatform({ slug: status, platformStatus: status }));
@@ -64,9 +64,9 @@ describe('filterPlatforms', () => {
 describe('collectModelsForVendor', () => {
   it('unions active plan models only', () => {
     const plans = [
-      { platformSlug: 'minimax', modelLabels: ['M3', 'M2.7'], discontinued: false },
-      { platformSlug: 'minimax', modelLabels: ['M2.5'], discontinued: true },
-      { platformSlug: 'kimi', modelLabels: ['K2.6'], discontinued: false }
+      { platformSlug: 'minimax', modelLabels: ['M3', 'M2.7'], planStatus: 'open' },
+      { platformSlug: 'minimax', modelLabels: ['M2.5'], planStatus: 'delisted' },
+      { platformSlug: 'kimi', modelLabels: ['K2.6'], planStatus: 'open' }
     ];
     assert.deepEqual(collectModelsForVendor(plans, 'minimax'), ['M3', 'M2.7']);
   });
@@ -117,7 +117,7 @@ describe('escapeHtml', () => {
         stability: { score: 3, reason: 'ok' },
         models: { score: 3, reason: 'ok' }
 }
-    }), [{ platformSlug: 'x', modelLabels: [], discontinued: false }]);
+    }), [{ platformSlug: 'x', modelLabels: [], planStatus: 'open' }]);
     assert.doesNotMatch(html, /<script>/);
     assert.match(html, /&lt;script&gt;/);
   });
@@ -158,14 +158,14 @@ describe('formatInlineMarkdown', () => {
 
 describe('buildPlatformCardHtml', () => {
   it('includes key classes and discontinued marker', () => {
-    const active = buildPlatformCardHtml(samplePlatform(), [{ platformSlug: 'x', modelLabels: ['M1'], discontinued: false }]);
+    const active = buildPlatformCardHtml(samplePlatform(), [{ platformSlug: 'x', modelLabels: ['M1'], planStatus: 'open' }]);
     assert.match(active, /class="platform-card"/);
     assert.match(active, /class="platform-dimensions"/);
     assert.doesNotMatch(active, /is-discontinued/);
 
     const dead = buildPlatformCardHtml(
       samplePlatform({ platformStatus: 'delisted' }),
-      [{ platformSlug: 'x', modelLabels: [], discontinued: false }]
+      [{ platformSlug: 'x', modelLabels: [], planStatus: 'open' }]
     );
     assert.match(dead, /platform-card is-discontinued/);
   });
@@ -173,7 +173,7 @@ describe('buildPlatformCardHtml', () => {
   it('adds external link icon on titled action links', () => {
     const withLink = buildPlatformCardHtml(
       samplePlatform({ action: 'https://example.com' }),
-      [{ platformSlug: 'x', modelLabels: ['M1'], discontinued: false }]
+      [{ platformSlug: 'x', modelLabels: ['M1'], planStatus: 'open' }]
     );
     assert.match(withLink, /platform-name-link/);
     assert.match(withLink, /class="link-icon"/);
@@ -184,19 +184,16 @@ describe('buildPlatformCardHtml', () => {
     assert.match(noLink, /class="platform-name"/);
   });
 
-  it('omits badge for open; shows limited/paused/delisted beside title', () => {
+  it('omits badge for open; shows restricted/delisted beside title', () => {
     const open = buildPlatformCardHtml(
       samplePlatform({ action: 'https://example.com', platformStatus: 'open' }),
-      [{ platformSlug: 'x', modelLabels: ['M1'], discontinued: false }]
+      [{ platformSlug: 'x', modelLabels: ['M1'], planStatus: 'open' }]
     );
     assert.doesNotMatch(open, /platform-rush/);
 
-    const limited = buildPlatformCardHtml(samplePlatform({ platformStatus: 'limited' }), []);
-    assert.match(limited, /data-platform-status="limited"/);
-    assert.match(limited, /定时放量/);
-
-    const paused = buildPlatformCardHtml(samplePlatform({ platformStatus: 'paused' }), []);
-    assert.match(paused, /暂时停售/);
+    const restricted = buildPlatformCardHtml(samplePlatform({ platformStatus: 'restricted' }), []);
+    assert.match(restricted, /data-platform-status="restricted"/);
+    assert.match(restricted, /购买受限/);
   });
 
   it('renders score with 分 unit and groups meta for vertical centering', () => {
@@ -220,10 +217,10 @@ describe('buildPlatformCardHtml', () => {
     assert.ok(html.includes('platform-card-hint') || html.includes('查看详情'));
   });
 
-  it('limits model tags on card face with +N overflow', () => {
+  it('uses a two-row layout budget on card faces with +N overflow', () => {
     const models = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7'];
     const html = buildPlatformCardHtml(samplePlatform({ name: 'X' }), [
-      { platformSlug: 'x', modelLabels: models, discontinued: false }
+      { platformSlug: 'x', modelLabels: models, planStatus: 'open' }
     ]);
     assert.ok(html.includes('M1'));
     assert.ok(html.includes('M5'));
@@ -231,7 +228,18 @@ describe('buildPlatformCardHtml', () => {
     assert.match(html, /data-extra-model hidden>M7<\/span>/);
     assert.match(html, /<button type="button"[^>]*data-platform-toggle-models[^>]*aria-expanded="false"/);
     assert.ok(html.includes('model-tag-more'));
-    assert.ok(html.includes('+2'));
+    assert.match(html, /data-model-max-rows="2" data-model-limit="7"/);
+    assert.ok(html.includes('+6'));
+  });
+
+  it('uses the full model list for row-limited cards instead of a fixed five-model cap', () => {
+    const models = Array.from({length: 12}, (_, index) => `M${index + 1}`);
+    const html = buildPlatformCardHtml(samplePlatform(), [
+      { platformSlug: 'x', modelLabels: models, planStatus: 'open' }
+    ], { modelMaxRows: 2 });
+    assert.match(html, /data-model-max-rows="2" data-model-limit="12"/);
+    assert.equal((html.match(/class="model-tag"/g) || []).length, 12);
+    assert.match(html, /data-platform-toggle-models/);
   });
 
   it('renders platform summary on card when present', () => {
@@ -270,55 +278,49 @@ describe('buildPlatformCardHtml', () => {
 
 describe('buildPlatformStatusSliderHtml', () => {
   it('renders filter labels and highlights selected max', () => {
-    const html = buildPlatformStatusSliderHtml('limited');
+    const html = buildPlatformStatusSliderHtml('restricted');
     assert.match(html, /platform-status-slider/);
-    assert.match(html, /data-platform-status-max="limited"/);
+    assert.match(html, /data-platform-status-max="restricted"/);
     assert.match(html, /platform-status-seg/);
     assert.match(html, /platform-status-prefix">显示</);
     assert.match(html, /platform-status-suffix">平台/);
-    assert.match(html, />开放购买</);
-    assert.match(html, />定时放量</);
-    assert.match(html, />暂时停售</);
+    assert.match(html, />可以购买</);
+    assert.match(html, />购买受限</);
     assert.match(html, />所有</);
     assert.match(html, /platform-status-seg is-active" data-platform-status="open"/);
-    assert.match(html, /platform-status-seg is-active" data-platform-status="limited"/);
+    assert.match(html, /platform-status-seg is-active" data-platform-status="restricted"/);
     assert.match(html, /platform-status-and is-on" aria-hidden="true">和</);
-    assert.equal((html.match(/platform-status-and/g) || []).length, 2);
+    assert.equal((html.match(/platform-status-and/g) || []).length, 1);
     assert.equal((html.match(/platform-status-and is-on/g) || []).length, 1);
-    assert.doesNotMatch(html, /platform-status-seg is-active" data-platform-status="paused"/);
     assert.doesNotMatch(html, /platform-status-seg is-active" data-platform-status="delisted"/);
   });
 
   it('uses 仅显示 prefix only when open is selected', () => {
     const openHtml = buildPlatformStatusSliderHtml('open');
     assert.match(openHtml, /platform-status-prefix">仅显示</);
-    assert.match(openHtml, /title="仅显示开放购买平台"/);
-    assert.match(openHtml, /title="显示定时放量平台"/);
+    assert.match(openHtml, /title="仅显示可以购买平台"/);
+    assert.match(openHtml, /title="显示购买受限平台"/);
     assert.match(openHtml, /platform-status-seg is-active" data-platform-status="open"/);
-    assert.equal((openHtml.match(/platform-status-and/g) || []).length, 2);
+    assert.equal((openHtml.match(/platform-status-and/g) || []).length, 1);
     assert.doesNotMatch(openHtml, /platform-status-and is-on/);
-    assert.doesNotMatch(openHtml, /platform-status-seg is-active" data-platform-status="limited"/);
+    assert.doesNotMatch(openHtml, /platform-status-seg is-active" data-platform-status="restricted"/);
 
     const allHtml = buildPlatformStatusSliderHtml('delisted');
     assert.match(allHtml, /platform-status-prefix">显示</);
     assert.match(allHtml, /title="显示所有平台"/);
     assert.match(allHtml, /platform-status-seg is-active" data-platform-status="delisted"/);
     assert.doesNotMatch(allHtml, /platform-status-seg is-active" data-platform-status="open"/);
-    assert.equal((allHtml.match(/platform-status-and/g) || []).length, 2);
+    assert.equal((allHtml.match(/platform-status-and/g) || []).length, 1);
     assert.doesNotMatch(allHtml, /platform-status-and is-on/);
   });
 
-  it('highlights cumulative statuses with 和 until paused; 所有 is exclusive', () => {
-    const pausedHtml = buildPlatformStatusSliderHtml('paused');
-    assert.match(pausedHtml, /platform-status-seg is-active" data-platform-status="open"/);
-    assert.match(pausedHtml, /platform-status-seg is-active" data-platform-status="limited"/);
-    assert.match(pausedHtml, /platform-status-seg is-active" data-platform-status="paused"/);
-    assert.equal((pausedHtml.match(/platform-status-and/g) || []).length, 2);
-    assert.equal((pausedHtml.match(/platform-status-and is-on/g) || []).length, 2);
-    assert.match(pausedHtml, /aria-label="显示开放购买和定时放量和暂时停售平台"/);
-
-    const limitedHtml = buildPlatformStatusSliderHtml('limited');
-    assert.match(limitedHtml, /aria-label="显示开放购买和定时放量平台"/);
+  it('highlights cumulative statuses with 和 until restricted; 所有 is exclusive', () => {
+    const restrictedHtml = buildPlatformStatusSliderHtml('restricted');
+    assert.match(restrictedHtml, /platform-status-seg is-active" data-platform-status="open"/);
+    assert.match(restrictedHtml, /platform-status-seg is-active" data-platform-status="restricted"/);
+    assert.equal((restrictedHtml.match(/platform-status-and/g) || []).length, 1);
+    assert.equal((restrictedHtml.match(/platform-status-and is-on/g) || []).length, 1);
+    assert.match(restrictedHtml, /aria-label="显示可以购买和购买受限平台"/);
   });
 });
 
@@ -336,9 +338,9 @@ describe('dimensionCopy', () => {
 describe('collectPlansForVendor', () => {
   it('returns all plans for vendor including discontinued, in order', () => {
     const plans = [
-      { platformSlug: 'a', name: '1', discontinued: false },
+      { platformSlug: 'a', name: '1', planStatus: 'open' },
       { platformSlug: 'b', name: 'x' },
-      { platformSlug: 'a', name: '2', discontinued: true }
+      { platformSlug: 'a', name: '2', planStatus: 'delisted' }
     ];
     const rows = collectPlansForVendor(plans, 'a');
     assert.equal(rows.length, 2);

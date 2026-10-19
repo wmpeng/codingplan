@@ -43,16 +43,45 @@ body .usage-segments :is(.is-active, [aria-pressed="true"]) { background: var(--
 
 
 /* 公共小组件的视觉归属；页面 CSS 只安排位置和间距。 */
-body .ui-model-tags { display: flex; flex-wrap: wrap; gap: 5px; min-width: 0; max-width: 100%; }
+body .ui-model-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; min-width: 0; max-width: 100%; }
 body .ui-model-tags .model-tag { display: inline-flex; align-items: center; justify-content: center; min-width: 0; max-width: 100%; min-height: 27px; box-sizing: border-box; padding: 3px 6px; margin: 0; border: 1px solid var(--border-light); border-radius: 5px; background: var(--bg-tertiary); color: var(--text-secondary); font: 400 12px/1.6 var(--font-ui); white-space: normal; overflow-wrap: anywhere; }
 body .ui-model-tags [hidden] { display: none; }
 body .ui-model-tags button.model-tag-more { cursor: pointer; transition: background .16s, color .16s; }
 body .ui-model-tags button.model-tag-more:hover { background: color-mix(in srgb, var(--bg-tertiary), var(--border-color) 35%); color: var(--text-primary); }
 body .ui-model-tags button.model-tag-more:focus-visible { outline: 2px solid var(--text-secondary); outline-offset: 2px; }
 body .section-toc a[aria-current="location"] { background: var(--bg-tertiary); color: var(--text-primary); }
-@media (pointer: coarse) { body .ui-model-tags .model-tag { min-height: 44px; } body .ui-model-tags button.model-tag-more { min-width: 44px; } }
 
 body .link-icon { width: 12px; height: 12px; flex-shrink: 0; vertical-align: middle; }
+
+/* 图标按钮与信息标签分开：共用图形、状态和命中区，页面只安排位置。 */
+body .ui-icon-button {
+  display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto;
+  width: 32px; height: 32px; padding: 0; border: 1px solid transparent;
+  border-radius: var(--radius-md); background: transparent; color: var(--text-secondary);
+  cursor: pointer; transition: background .15s, border-color .15s, color .15s;
+}
+body .ui-icon-button svg { width: 16px; height: 16px; pointer-events: none; }
+body .ui-icon-button:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+body .ui-icon-button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent-primary); }
+body .ui-icon-button--outlined { border-color: var(--border-color); background: var(--bg-secondary); }
+body .ui-pin-button { position: relative; z-index: 2; }
+body .plan-open-link { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+body :is(.platform-guide-link, .platform-card-hint) { display: inline-flex; align-items: center; }
+
+@media (max-width: 800px), (pointer: coarse) {
+  body .ui-icon-button { width: 44px; height: 44px; }
+  body :is(.tool-button, .guide-button, .platform-detail-action, .platform-detail-jump-plans,
+    .community-dialog-close, .community-float-dismiss, .table-sort-button, .usage-segments button,
+    .platform-guide-link, .platform-card-hint, .plan-open-link, .offer-reasons > summary) { min-height: 44px; }
+  body :is(.community-dialog-close, .community-float-dismiss) { min-width: 44px; }
+  body :is(.model-offers-link, .model-price-link) { display: flex; align-items: center; box-sizing: border-box; min-height: 32px; padding-block: 4px; }
+  body :is(.model-browser-controls, .tool-result-bar) label { min-height: 44px; }
+  body #purchaseGuide button { min-height: 44px; }
+  body .site-header .settings-unit-options button { min-height: 44px; }
+  body .site-header .settings-toggle-row > label:first-child { display: inline-flex; align-items: center; min-height: 44px; }
+  body .site-header .toggle-switch { width: 44px; height: 44px; }
+  body .site-header .toggle-slider { inset: 12px 4px; }
+}
 
 .tool-filter-loading { min-height: 148px; display: grid; place-items: center; margin-bottom: 20px; color: var(--text-secondary); font-size: 13px; }
 @media(max-width:600px) { .tool-filter-loading { min-height: 220px; } }

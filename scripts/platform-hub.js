@@ -1,0 +1,50 @@
+(function (root, factory) {
+  const api = factory(root.CodingPlanFilters || (typeof require === 'function' ? require('./filter-state.js') : null),
+    root.PlatformCatalog || (typeof require === 'function' ? require('./platform-catalog.js') : null),
+    root.CodingPlanUI || (typeof require === 'function' ? require('./ui-core.js') : null));
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else root.PlatformHub = api;
+})(globalThis, function (Filters, Catalog, UI) {
+  'use strict';
+  const matchesName = (platform, query) => `${platform.name} ${platform.slug}`.toLocaleLowerCase('zh-CN').includes(query);
+  const prioritizeFeaturedModels = UI.prioritizeFeaturedModels;
+  function select(platforms, state, options = {}) {
+    const featured = new Set(options.featuredSlugs || []);
+    const pinnedIds = Catalog.sanitizePinnedIds(options.pinnedIds, platforms);
+    const pinnedSet = new Set(pinnedIds);
+    const query = String(options.query || '').trim().toLocaleLowerCase('zh-CN');
+    const filterOptions = options.filterOptions || {};
+    const current = Filters.normalizeState({...state, platformSlugs:null, includeDiscontinued:false});
+    current.modelSlugs = Filters.catalogModelSelection(current.modelSlugs, current.modelMatch, filterOptions.context?.models);
+    // Only offer-specific conditions require an active plan; catalog browsing does not.
+    const requireMatchingOffer = !!(current.budgetCny || current.monthlyTokenRange || current.apiOnly
+      || (current.modelMatch === 'all' && current.modelSlugs?.length)
+      || Object.keys(current.priceRanges).length || Object.keys(current.requestRanges).length
+      || current.modelGroup !== 'any' || current.imageRequired || current.multimodal !== 'all'
+      || current.aaScoreMin !== null || current.deepSWEScoreMin !== null);
+    const matched = options.featuredOnly ? platforms.filter(p => featured.has(p.slug))
+      : Filters.filterPlatforms(platforms, current, {...filterOptions, requireMatchingOffer}).filter(p => matchesName(p, query));
+    const matchedIds = new Set(matched.map(p => p.slug));
+    const pinned = Catalog.sortPlatformsByPinned(platforms.filter(p => pinnedSet.has(p.slug)), pinnedIds);
+    const results = matched.filter(p => !pinnedSet.has(p.slug));
+    // Stable partition: preserve the source order inside featured and ordinary groups.
+    results.sort((a, b) => Number(featured.has(b.slug)) - Number(featured.has(a.slug)));
+    return {pinned, results, visible:[...pinned,...results], matchedCount:matched.length, totalCount:platforms.length,
+      extraPinnedCount:pinned.filter(p => !matchedIds.has(p.slug)).length};
+  }
+  function countParts(selection, featuredOnly) {
+    const current = featuredOnly ? `精选 ${selection.matchedCount} 个` : String(selection.matchedCount);
+    const total = featuredOnly ? '' : ` / ${selection.totalCount} 个平台`;
+    const pins = featuredOnly ? selection.extraPinnedCount : selection.pinned.length;
+    return [current, total, pins ? ` · 置顶 ${pins} 个` : ''];
+  }
+  function countLabel(selection, featuredOnly) {
+    return countParts(selection, featuredOnly).join('');
+  }
+  function countHtml(selection, featuredOnly) {
+    const [current, total, pins] = countParts(selection, featuredOnly);
+    if (featuredOnly) return current + pins;
+    return `<span class="platform-count-main">${current}${total}</span>${pins}`;
+  }
+  return {select, countLabel, countHtml, prioritizeFeaturedModels};
+});

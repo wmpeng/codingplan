@@ -15,17 +15,16 @@ const PLATFORM_DIMENSION_META = [
   { key: 'stability', label: '可用性' }
 ];
 
-const PLATFORM_STATUSES = ['open', 'limited', 'paused', 'delisted'];
+const PLATFORM_STATUSES = ['open', 'restricted', 'delisted'];
 const PLATFORM_STATUS_LABELS = CatalogUI.statusLabels;
 /** 筛选滑块中间档位文案（前后另有前缀 /「平台」） */
 const PLATFORM_STATUS_SEGMENT_LABELS = {
-  open: '开放购买',
-  limited: '定时放量',
-  paused: '暂时停售',
+  open: '可以购买',
+  restricted: '购买受限',
   delisted: '所有'
 };
 const PLATFORM_STATUS_FILTER_SUFFIX = '平台';
-const DEFAULT_PLATFORM_STATUS_MAX = 'paused';
+const DEFAULT_PLATFORM_STATUS_MAX = 'restricted';
 
 const escapeHtml = CatalogUI.escapeHtml;
 
@@ -62,6 +61,7 @@ function formatInlineMarkdownPreserveBreaks(text) {
 }
 
 function normalizePlatformStatus(value) {
+  if (value === 'limited' || value === 'paused') return 'restricted';
   if (PLATFORM_STATUSES.includes(value)) return value;
   return 'open';
 }
@@ -97,7 +97,7 @@ function isPlatformStatusSegmentActive(status, maxStatus) {
   return platformStatusRank(current) <= platformStatusRank(max);
 }
 
-/** 读出当前筛选：如「显示开放购买和定时放量平台」 */
+/** 读出当前筛选：如「显示可以购买和购买受限平台」 */
 function platformStatusFilterPhrase(maxStatus) {
   const max = normalizePlatformStatus(maxStatus);
   if (max === 'delisted') {
@@ -253,20 +253,7 @@ function partitionPinnedItems(items, pinnedIds, getId) {
 function buildRowPinButtonHtml({ pinId, pinned } = {}) {
   const id = typeof pinId === 'string' ? pinId.trim() : '';
   if (!id) return '';
-  const isPinned = !!pinned;
-  const label = isPinned ? '取消置顶' : '置顶';
-  const classes = ['platform-pin-btn', 'table-row-pin-btn', isPinned ? 'is-pinned' : '']
-    .filter(Boolean)
-    .join(' ');
-  const icon = isPinned
-    ? '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>'
-    : '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>';
-  return (
-    `<button type="button" class="${classes}" data-table-pin="1" data-pin-id="${escapeHtml(id)}" ` +
-    `aria-pressed="${isPinned ? 'true' : 'false'}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">` +
-    icon +
-    `</button>`
-  );
+  return CatalogUI.pinButton({pinned:!!pinned, className:'platform-pin-btn table-row-pin-btn', attributes:{'data-table-pin':'1','data-pin-id':id}});
 }
 
 function readPinnedIdsFromStorage(storage, key) {
@@ -295,24 +282,8 @@ function writePinnedIdsToStorage(storage, pinnedIds, key) {
 function buildPlatformPinButtonHtml({ platformId, pinned, variant } = {}) {
   const id = typeof platformId === 'string' ? platformId.trim() : '';
   if (!id) return '';
-  const isPinned = !!pinned;
   const kind = variant === 'detail' ? 'detail' : 'card';
-  const label = isPinned ? '取消置顶' : '置顶';
-  const classes = [
-    kind === 'detail' ? 'platform-detail-pin-btn' : 'platform-pin-btn',
-    isPinned ? 'is-pinned' : ''
-  ]
-    .filter(Boolean)
-    .join(' ');
-  const icon = isPinned
-    ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>'
-    : '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>';
-  return (
-    `<button type="button" class="${classes}" data-platform-pin="1" data-platform-id="${escapeHtml(id)}" ` +
-    `aria-pressed="${isPinned ? 'true' : 'false'}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">` +
-    icon +
-    `</button>`
-  );
+  return CatalogUI.pinButton({pinned:!!pinned, className:kind === 'detail' ? 'platform-detail-pin-btn' : 'platform-pin-btn', attributes:{'data-platform-pin':'1','data-platform-id':id}});
 }
 
 function collectModelsForVendor(plans, platformSlug) {
@@ -320,7 +291,7 @@ function collectModelsForVendor(plans, platformSlug) {
   const models = [];
 
   for (const plan of plans) {
-    if (plan.platformSlug !== platformSlug || plan.discontinued) {
+    if (plan.platformSlug !== platformSlug || plan.planStatus === 'delisted') {
       continue;
     }
     for (const model of plan.modelLabels || []) {
@@ -500,9 +471,13 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
 
   const models = supportedModels.length ? supportedModels.map(model => model.name) : collectModelsForVendor(plans, platform.slug);
   const modelsHtml = CatalogUI.modelTags(models, {
-    limit: 5, className: 'platform-models', ariaLabel: '模型', toggleAttribute: 'data-platform-toggle-models'
+    maxRows: options.modelMaxRows ?? 2, className: 'platform-models', ariaLabel: '模型', toggleAttribute: 'data-platform-toggle-models'
   });
 
+  const capabilitiesHtml = `<div class="platform-capabilities">${PlatformEntityData.platformHarnessApiBadge(platform, plans)}</div>`;
+  const dimensionsHtml = `<ul class="platform-dimensions">${dimsHtml}</ul>`;
+  const detailSections = options.capabilitiesBeforeScores
+    ? [capabilitiesHtml, dimensionsHtml] : [dimensionsHtml, capabilitiesHtml];
   const discontinuedClass = status === 'delisted' ? ' is-discontinued' : '';
   const platformId = platform && typeof platform.slug === 'string' ? platform.slug.trim() : '';
   const pinned = isPlatformPinned(platformId, options.pinnedIds);
@@ -514,7 +489,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
   });
 
   return `
-                <article class="platform-card${discontinuedClass}${pinnedClass}" data-platform-id="${escapeHtml(platformId)}" tabindex="0" role="button" aria-label="${name} 详情">
+                <article class="platform-card${discontinuedClass}${pinnedClass}${options.featured ? ' is-featured' : ''}" data-platform-id="${escapeHtml(platformId)}" tabindex="0" role="button" aria-label="${name} 详情">
                     <header>
                         <div class="platform-card-heading">
                             ${nameHtml}
@@ -522,13 +497,13 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
                             ${apiBadge}
                         </div>
                         <div class="platform-card-aside">
+                            ${options.featured ? '<span class="platform-featured-badge">精选</span>' : ''}
                             ${pinHtml}
                             <span class="platform-rating" aria-label="${rating > 0 ? `${rating} 星` : '待评定'}">${rating > 0 ? `★ ${rating.toFixed(1)}` : '待评定'}</span>
                         </div>
                     </header>
                     ${summary}
-                    <ul class="platform-dimensions">${dimsHtml}</ul>
-                    <div class="platform-capabilities">${PlatformEntityData.platformHarnessApiBadge(platform, plans)}</div>
+                    ${detailSections.join('\n                    ')}
                     ${modelsHtml}
                     <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span>${getPlatformGuideUrl(platformId) ? `<a class="platform-guide-link" href="${escapeHtml(getPlatformGuideUrl(platformId))}">平台介绍 →</a>` : ''}</div>
                 </article>

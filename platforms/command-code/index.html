@@ -2,7 +2,8 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<script src="/scripts/ui-core.js?v=57904152bf"></script>
+<script src="/scripts/ui-core.js?v=101203ea10"></script>
+<script src="/scripts/ui-help.js?v=065329afe1"></script>
 <script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
 <script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
 <script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
@@ -22,13 +23,14 @@
   <meta name="twitter:description" content="了解 Command Code 的 Go、GOAT、Pro、Max 多档个人订阅，查看支持模型、美元 Credits、模型额度和客户端限制，判断适合自己的多模型编程工作流。">
   <link rel="icon" href="/favicon.ico?v=260924a">
   <link rel="stylesheet" href="/styles/shared.css?v=482edb170c">
-  <link rel="stylesheet" href="/styles/tool-page.css?v=d431372f4f">
-  <link rel="stylesheet" href="/styles/platform-guide.css?v=76c73aff4c">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://codingplan.fyi/platforms/command-code/","url":"https://codingplan.fyi/platforms/command-code/","name":"Command Code：套餐价格、模型 Credits 与使用指南 - Coding Plan","description":"了解 Command Code 的 Go、GOAT、Pro、Max 多档个人订阅，查看支持模型、美元 Credits、模型额度和客户端限制，判断适合自己的多模型编程工作流。","inLanguage":"zh-CN","datePublished":"2026-09-17","dateModified":"2026-10-12","isPartOf":{"@type":"WebSite","name":"Coding Plan","url":"https://codingplan.fyi/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Coding Plan","item":"https://codingplan.fyi/"},{"@type":"ListItem","position":2,"name":"平台介绍","item":"https://codingplan.fyi/platforms/"},{"@type":"ListItem","position":3,"name":"Command Code","item":"https://codingplan.fyi/platforms/command-code/"}]}]}</script>
-<link rel="stylesheet" href="/styles/design-system.css?v=47a0b29cda">
-<script src="/scripts/site-navigation.js?v=38c7a7b13c" defer></script>
+  <link rel="stylesheet" href="/styles/tool-page.css?v=1688597461">
+  <link rel="stylesheet" href="/styles/platform-guide.css?v=6ee31eb37a">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://codingplan.fyi/platforms/command-code/","url":"https://codingplan.fyi/platforms/command-code/","name":"Command Code：套餐价格、模型 Credits 与使用指南 - Coding Plan","description":"了解 Command Code 的 Go、GOAT、Pro、Max 多档个人订阅，查看支持模型、美元 Credits、模型额度和客户端限制，判断适合自己的多模型编程工作流。","inLanguage":"zh-CN","datePublished":"2026-09-17","dateModified":"2026-10-17","isPartOf":{"@type":"WebSite","name":"Coding Plan","url":"https://codingplan.fyi/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Coding Plan","item":"https://codingplan.fyi/"},{"@type":"ListItem","position":2,"name":"平台介绍","item":"https://codingplan.fyi/platforms/"},{"@type":"ListItem","position":3,"name":"Command Code","item":"https://codingplan.fyi/platforms/command-code/"}]}]}</script>
+<link rel="stylesheet" href="/styles/design-system.css?v=8b40812952">
+<script src="/scripts/site-navigation.js?v=58bc3a8bab" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
-<link rel="stylesheet" href="/styles/ui-components.css?v=e5133e2fe2">
+<link rel="stylesheet" href="/styles/ui-components.css?v=bf5f1551fa">
+<link rel="stylesheet" href="/styles/ui-help.css?v=f7c4d9118a">
 </head>
 <body class="platform-guide">
   <a class="guide-skip" href="#guide-content">跳到介绍正文</a>
@@ -43,7 +45,7 @@
     <a href="/models/">模型</a>
     <a href="/monitor/" hidden data-monitor-nav>可用性监控</a>
     <a href="/articles/">文章</a>
-    <a href="/updates/">更新历史</a>
+    <a href="/updates/">预告与更新</a>
   </nav>
   <div id="settingsMount">
     <div class="settings-wrapper">
@@ -62,6 +64,13 @@
             <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
           </div>
         </div>
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="priceBasisLabel">综合单价口径</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="priceBasisLabel" title="首月价缺失时使用每月价格；按量 API 报价和 Token 额度不变。">
+            <button type="button" data-settings-price-basis="firstMonth" aria-pressed="true">首月价格</button>
+            <button type="button" data-settings-price-basis="monthly" aria-pressed="false">每月价格</button>
+          </div>
+        </div>
         <div class="settings-toggle-row">
           <label for="ultraWideToggle">超宽屏</label>
           <label class="toggle-switch">
@@ -78,24 +87,24 @@
     <nav class="guide-breadcrumb" aria-label="面包屑"><a href="/">Coding Plan</a><span>/</span><a href="/platforms/">平台介绍</a><span>/</span><span aria-current="page">Command Code</span></nav>
     <header class="guide-hero">
       <div class="guide-hero-copy">
-        <p class="guide-eyebrow">平台介绍 · 开放购买</p>
+        <p class="guide-eyebrow">平台介绍 · 可以购买</p>
         <h1>Command Code</h1>
         <p class="guide-lead">以美元 Credits 购买多家模型的编程订阅。它按模型实际 Token 价格扣减 Credits，模型覆盖广、档位规则清晰；选择时要同时看常用模型的独立额度、客户端限制和地区可用性。</p>
-        <div class="guide-actions"><a class="guide-button" href="/plans/?platform=command-code">查看套餐对比 →</a><a class="guide-button secondary" href="https://commandcode.ai/docs/resources/pricing-limits">查看官网</a></div>
-        <p class="guide-dates">介绍更新 <time datetime="2026-10-12">2026-10-12</time><span>·</span>套餐与模型记录 <time datetime="2026-10-12">2026-10-12</time></p>
+        <div class="guide-actions"><a class="guide-button" href="/plans/?platform=command-code">查看套餐对比 →</a><a class="guide-button secondary" href="https://commandcode.ai/docs/resources/pricing-limits">查看官网 <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></div>
+        <p class="guide-dates">介绍更新 <time datetime="2026-10-17">2026-10-17</time><span>·</span>套餐与模型记录 <time datetime="2026-10-12">2026-10-12</time></p>
       </div>
       <div class="guide-monogram" aria-hidden="true">CC</div>
     </header>
     <div class="guide-layout">
-      <nav class="guide-toc" aria-label="本页目录"><p>本页内容</p><a href="#overview"><span>01</span>先看是否适合自己</a><a href="#plans"><span>02</span>套餐与价格</a><a href="#models"><span>03</span>支持哪些模型</a><a href="#credits"><span>04</span>Credits 与模型额度怎么理解</a><a href="#tools"><span>05</span>客户端与接入边界</a><a href="#before-buying"><span>06</span>购买前容易混淆的地方</a><a href="#related"><span>07</span>继续比较</a><a href="#sources"><span>08</span>官方资料与记录说明</a></nav>
-      <main id="guide-content" class="guide-content"><section id="overview" class="guide-section"><h2>先看是否适合自己</h2><p>Command Code 是面向个人用户的多模型编程订阅。当前收录 Go、GOAT、Pro 与 Max 两档，月费从 $1 起；使用时按模型实际 Token 价格扣减美元 Credits，适合希望在一个入口中切换多家模型的开发者。</p>
+      <nav class="guide-toc" aria-label="本页目录"><p>本页内容</p><a href="#overview"><span>01</span>先看是否适合自己</a><a href="#plans"><span>02</span>套餐与价格</a><a href="#models"><span>03</span>支持哪些模型</a><a href="#credits"><span>04</span>Credits 与模型额度怎么理解</a><a href="#tools"><span>05</span>客户端与接入边界</a><a href="#before-buying"><span>06</span>购买前容易混淆的地方</a><a href="#related"><span>07</span>继续比较</a><a href="#sources"><span>08</span>官方资料</a></nav>
+      <main id="guide-content" class="guide-content"><section id="overview" class="guide-section"><h2>先看是否适合自己</h2><p>Command Code 是面向个人用户的多模型编程订阅。提供 Go、GOAT、Pro 与 Max 两档，月费从 $1 起；使用时按模型实际 Token 价格扣减美元 Credits，适合希望在一个入口中切换多家模型的开发者。</p>
 <ul>
 <li><strong>可以优先考虑</strong>：想用较低月费尝试多家模型，或需要在 Claude、GPT、Gemini、Kimi、GLM、DeepSeek、MiniMax、Qwen 等模型之间切换。</li>
 <li><strong>先比较再决定</strong>：长期只使用一个模型，或更看重某一家官方平台的原生工具、服务稳定性和独立账户体系。</li>
 <li><strong>购买前先确认</strong>：常用模型的独立月额度、所在地区是否可用，以及所选套餐能否在自己的客户端中使用。</li>
 </ul>
 <blockquote>
-<p>本页沿用本站现有平台、套餐、模型和 PlanModel 记录。介绍更新时间与数据记录日期分开显示；用量表是统一工作负载下的计算参考，不是官方承诺的固定 Token 上限。</p>
+<p>用量表按统一工作负载估算，用于比较，不是官方承诺的固定 Token 上限。</p>
 </blockquote>
 </section>
 <section id="plans" class="guide-section"><h2>套餐与价格</h2><div class="guide-plan-grid"><article class="guide-plan">
@@ -132,19 +141,19 @@
 <p>本站 Token 用量按输入占比、缓存命中率约 95%、输出占比约 0.5% 的统一工作负载计算，适合比较量级，不代表所有任务都能完成同样多的 Token。Ling 的每日请求上限、免费模型活动和模型地区限制无法用这套口径替代。</p>
 <p>Command Code 同时有五小时、每周和每月窗口。GOAT、Pro、Max 的模型月额度与短窗口按现有套餐规则缩放；部分模型还存在有截止日期未公布的限时额度，购买前应查看官方当前总表和账户页面。</p>
 </section>
-<section id="tools" class="guide-section"><h2>客户端与接入边界</h2><p>Go 当前只能在 Command Code 客户端内使用，且现有平台资料记录其稳定性较弱。使用 Go 之前先完成一个小任务，确认登录状态、模型选择和 Credits 扣减都正常；不要因为客户端显示了模型名称，就默认所有套餐都能在任意兼容工具中调用。</p>
+<section id="tools" class="guide-section"><h2>客户端与接入边界</h2><p>Go 当前只能在 Command Code 客户端内使用，稳定性较弱。使用 Go 之前先完成一个小任务，确认登录状态、模型选择和 Credits 扣减都正常；不要因为客户端显示了模型名称，就默认所有套餐都能在任意兼容工具中调用。</p>
 <p>对 GOAT、Pro 和 Max，也应按官方套餐说明确认当前客户端、模型 ID、地区和接入方式。遇到调用失败时，先区分模型不可用、客户端限制、额度耗尽和上游服务波动，再判断是否需要换套餐。</p>
 </section>
 <section id="before-buying" class="guide-section"><h2>购买前容易混淆的地方</h2><h3>套餐价格、Credits 与 Token 不是同一个量</h3>
 <p>月费是订阅价格，Credits 是按模型扣减的使用额度，表中的 Token 是特定工作负载下的换算参考。不能用 <code>$1/月</code>、<code>$10 Credits</code> 或某个模型的请求示例，直接推导所有模型的固定调用次数。</p>
 <h3>免费和限时额度不能当作长期权益</h3>
-<p>当前资料中有免费模型、每日请求上限和限时月额度。它们都可能随官方价格表调整；长期预算应以常规额度和自己实际使用的模型为准，并记录核对日期。</p>
+<p>当前资料中有免费模型、每日请求上限和限时月额度。它们都可能随官方价格表调整；长期预算应以常规额度和自己实际使用的模型为准。</p>
 <h3>不同模型档位不要合并比较</h3>
 <p>同一模型可能有峰谷、上下文或服务档位。比较时先确认自己使用的具体模型 ID 和档位，再看对应的 Credits 扣减与额度；不要只看模型名称或平台支持数量。</p>
 </section>
 <section id="related" class="guide-section"><h2>继续比较</h2><p>如果希望在一个订阅中切换多家模型，可以继续了解 OpenCode Go；如果更看重某一家模型的原生服务，则应回到对应官方平台比较套餐、额度和工具支持。</p>
 <div class="guide-related"><a class="guide-related-card" href="/platforms/opencode/"><strong>OpenCode Go / Go Plus</strong><span>了解 OpenCode Go / Go Plus 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。</span><span>阅读平台介绍 →</span></a></div><ul class="guide-article-links"><li><a href="/articles/plan_comparisons/20260824/index.html">2026年8月24日 AI Coding Plan 与 API 平台对比：智谱 GLM-5.3、MiniMax、DeepSeek 视觉版和 OpenCode 调整后怎么选</a></li><li><a href="/articles/model_comparisons/20260907/index.html">2026年9月主流大模型能力对比：Fable 5.1 综合领先，GPT-6 Astra 编码突出，GLM Flash 与 Luna 如何选</a></li></ul></section>
-<section id="sources" class="guide-section"><h2>官方资料与记录说明</h2><ul class="guide-sources"><li><a href="https://commandcode.ai/docs/resources/pricing-limits">Command Code 官方价格与额度总表</a><span>查看模型价格、套餐支持关系和当前额度说明。</span></li><li><a href="https://commandcode.ai/docs/plans/go">Command Code Go 套餐说明</a><span>核对 Go 的客户端限制、价格和使用范围。</span></li><li><a href="https://commandcode.ai/docs/resources/usage-limits">Command Code Usage Limits</a><span>查看五小时、周、月窗口和模型额度规则。</span></li><li><a href="https://commandcode.ai/docs/reference/cli/models">Command Code 模型目录</a><span>核对当前可选模型和模型 ID。</span></li></ul><p>套餐价格、模型支持和 Credits 用量参考采用本站当前收录资料，数据记录日期见页首。介绍中的选购建议由 Coding Plan 整理，不代表官方保证；限时额度、免费模型和地区可用性购买前请重新核对官方页面。</p>
+<section id="sources" class="guide-section"><h2>官方资料</h2><ul class="guide-sources"><li><a href="https://commandcode.ai/docs/resources/pricing-limits">Command Code 官方价格与额度总表</a><span>查看模型价格、套餐支持关系和当前额度说明。</span></li><li><a href="https://commandcode.ai/docs/plans/go">Command Code Go 套餐说明</a><span>核对 Go 的客户端限制、价格和使用范围。</span></li><li><a href="https://commandcode.ai/docs/resources/usage-limits">Command Code Usage Limits</a><span>查看五小时、周、月窗口和模型额度规则。</span></li><li><a href="https://commandcode.ai/docs/reference/cli/models">Command Code 模型目录</a><span>核对当前可选模型和模型 ID。</span></li></ul><p>限时额度、免费模型和地区可用性可能变化，购买前请确认官方页面中的适用条件。</p>
 </section></main>
     </div>
     <footer class="guide-footer"><p>价格、活动与可用模型可能变化，购买和接入前请核对官方页面。本站的选择建议不代表服务承诺。</p><div><a href="/platforms/">全部平台</a><a href="/plans/">套餐对比</a><a href="/">返回首页</a><a href="https://github.com/wmpeng/codingplan/issues">反馈资料问题</a></div></footer>

@@ -44,7 +44,7 @@
 
 ## 二、整体格局：先看 Intelligence 指数
 
-![Intelligence 指数榜单（分数越高越好）。](./assets/Artificial%20Analysis%20Intelligence%20Index%20(17%20Jun%20'26).png)
+![Intelligence 指数榜单（分数越高越好）。](<./assets/Artificial%20Analysis%20Intelligence%20Index%20(17%20Jun%20'26).png>)
 
 数据来源：[Artificial Analysis - Intelligence Index](https://artificialanalysis.ai/?intelligence=artificial-analysis-intelligence-index&models=gpt-5-5%2Cgpt-5-4-mini%2Cgemini-3-1-pro-preview%2Cgemini-3-5-flash%2Cclaude-fable-5%2Cclaude-4-5-haiku-reasoning%2Cclaude-sonnet-4-6-adaptive%2Cclaude-opus-4-8%2Cdeepseek-v4-pro%2Cdeepseek-v4-flash%2Cminimax-m2-7%2Cminimax-m3%2Ckimi-k2-6%2Ckimi-k2-7-code%2Cmimo-v2-5-pro%2Cglm-5-1%2Cglm-5-2%2Cqwen3-7-max%2Cqwen3-7-plus#intelligence-tabs)
 
@@ -59,7 +59,7 @@ Intelligence 指数反映模型的综合表现——不只看谁更会写代码�
 
 ## 三、Coding 指数：开发者仍用脚投票
 
-![Coding 指数榜单（分数越高越好）。](./assets/Artificial%20Analysis%20Coding%20Index%20(17%20Jun%20'26).png)
+![Coding 指数榜单（分数越高越好）。](<./assets/Artificial%20Analysis%20Coding%20Index%20(17%20Jun%20'26).png>)
 
 数据来源：[Artificial Analysis - Coding Index](https://artificialanalysis.ai/?intelligence=coding-index&models=gpt-5-5%2Cgpt-5-4-mini%2Cgemini-3-1-pro-preview%2Cgemini-3-5-flash%2Cclaude-fable-5%2Cclaude-4-5-haiku-reasoning%2Cclaude-sonnet-4-6-adaptive%2Cclaude-opus-4-8%2Cdeepseek-v4-pro%2Cdeepseek-v4-flash%2Cminimax-m2-7%2Cminimax-m3%2Ckimi-k2-6%2Ckimi-k2-7-code%2Cmimo-v2-5-pro%2Cglm-5-1%2Cglm-5-2%2Cqwen3-7-max%2Cqwen3-7-plus#intelligence-tabs)
 
@@ -76,7 +76,7 @@ Coding 指数衡量模型写代码、改代码、理解代码库的水平，直�
 
 ## 四、Agentic 指数：长流程自动化的分水岭
 
-![Agentic 指数榜单（分数越高越好）。](./assets/Artificial%20Analysis%20Agentic%20Index%20(17%20Jun%20'26).png)
+![Agentic 指数榜单（分数越高越好）。](<./assets/Artificial%20Analysis%20Agentic%20Index%20(17%20Jun%20'26).png>)
 
 数据来源：[Artificial Analysis - Agentic Index](https://artificialanalysis.ai/?intelligence=agentic-index&models=gpt-5-5%2Cgpt-5-4-mini%2Cgemini-3-1-pro-preview%2Cgemini-3-5-flash%2Cclaude-fable-5%2Cclaude-4-5-haiku-reasoning%2Cclaude-sonnet-4-6-adaptive%2Cclaude-opus-4-8%2Cdeepseek-v4-pro%2Cdeepseek-v4-flash%2Cminimax-m2-7%2Cminimax-m3%2Ckimi-k2-6%2Ckimi-k2-7-code%2Cmimo-v2-5-pro%2Cglm-5-1%2Cglm-5-2%2Cqwen3-7-max%2Cqwen3-7-plus#intelligence-tabs)
 

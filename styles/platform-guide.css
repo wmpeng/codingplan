@@ -1,9 +1,7 @@
 /* 平台介绍与共享入口；正文独立于首页脚本，窄屏表格局部滚动。 */
 .platform-guide { padding: 0 40px 48px; }
 .guide-shell, .guide-directory { max-width: 1240px; margin: 0 auto; }
-.platform-guide a { color: #075ca9; text-underline-offset: 4px; }
-.platform-guide a:hover { color: #006b63; }
-.platform-guide a:focus-visible, .guide-table-wrap:focus-visible { outline: 3px solid #0b68d1; outline-offset: 4px; }
+.guide-table-wrap:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
 .guide-breadcrumb { display: flex; flex-wrap: wrap; gap: 12px; color: #667386; font-size: 13px; margin: 6px 0 22px; }
 .guide-breadcrumb a { text-decoration: none; }
 .guide-hero { display: flex; gap: 36px; align-items: center; justify-content: space-between; padding: 26px 0 30px; border: 0; border-bottom: 1px solid var(--border-color); border-radius: 0; background: transparent; box-shadow: none; }
@@ -13,9 +11,6 @@
 .guide-lead { color: var(--text-secondary); font-size: 16px; line-height: 1.85; margin-top: 16px; }
 .guide-monogram { display: grid; place-items: center; flex: 0 0 116px; height: 116px; border-radius: 24px; background: #e8f1f6; border: 1px solid #d1e0e9; color: #173753; font-size: 36px; font-weight: 800; letter-spacing: -.04em; }
 .guide-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0 18px; }
-.platform-guide .guide-button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 11px 18px; border-radius: 9px; color: white; background: var(--accent-primary); text-decoration: none; font-weight: 650; }
-.platform-guide .guide-button:hover { background: #095ab7; color: white; }
-.platform-guide .guide-button.secondary { background: #eef3f7; color: #173753; }
 .guide-dates { display: flex; flex-wrap: wrap; gap: 5px 8px; color: #657184; font-size: 12px; line-height: 1.7; }
 .guide-layout { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 32px; align-items: start; margin-top: 32px; }
 .guide-toc { position: sticky; top: 24px; font-size: 13px; padding: 16px 0; }
@@ -101,7 +96,6 @@
 .platform-guide .tool-topbar a:hover { color: var(--accent-primary); }
 .platform-guide .guide-eyebrow { margin-top: 0; }
 .platform-guide .guide-monogram { width: 88px; height: 88px; flex-basis: 88px; border-radius: 16px; background: #edf3fa; color: #294768; font-weight: 600; font-size: 30px; }
-.platform-guide .guide-button { border-radius: 7px; font-size: 13px; min-height: 40px; }
 .platform-guide .guide-related-card { background: #fafcff; padding: 20px; }
 .platform-guide .guide-related-card:hover { border-color: #a5b9d1; }
 .guide-section h2 { font-weight: 650; font-size: 22px; }

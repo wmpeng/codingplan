@@ -2,24 +2,37 @@
 (() => {
   'use strict';
   // 单位是全站显示偏好，不属于方案筛选；内部用量始终以 M 保存。
-  const unitKey = 'codingplanTokenUnit';
+  const unitKey = 'codingplanTokenUnit', basisKey = 'codingplanPriceBasis';
+  let priceBasis = 'firstMonth';
+  try { if(localStorage.getItem(basisKey)==='monthly')priceBasis='monthly'; } catch (_) {}
   let tokenUnit = 'yi';
   try { const stored = localStorage.getItem(unitKey); tokenUnit = ['M', 'B'].includes(stored) ? stored : 'yi'; } catch (_) {}
-  function syncUnitControls() {
+  function syncDisplayControls() {
     document.querySelectorAll('[data-settings-token-unit]').forEach(control => {
       control.setAttribute('aria-pressed', String(control.dataset.settingsTokenUnit === tokenUnit));
     });
+    document.querySelectorAll('[data-settings-price-basis]').forEach(control => {
+      control.setAttribute('aria-pressed',String(control.dataset.settingsPriceBasis===priceBasis));
+    });
+  }
+  function applyPriceBasis(value, persist = true) {
+    const next=value==='monthly'?'monthly':'firstMonth', changed=next!==priceBasis;
+    priceBasis=next;
+    if(persist){try{localStorage.setItem(basisKey,next);}catch(_){}}
+    syncDisplayControls();
+    if(changed)window.dispatchEvent(new CustomEvent('codingplan:price-basis-changed',{detail:{priceBasis}}));
   }
   function applyTokenUnit(value, persist = true) {
     const next = ['M', 'B'].includes(value) ? value : 'yi', changed = next !== tokenUnit;
     tokenUnit = next;
     if (persist) { try { localStorage.setItem(unitKey, next); } catch (_) {} }
-    syncUnitControls();
+    syncDisplayControls();
     if (changed) window.dispatchEvent(new CustomEvent('codingplan:token-unit-changed', {detail: {tokenUnit}}));
   }
-  window.CodingPlanDisplaySettings = {getTokenUnit: () => tokenUnit, setTokenUnit: applyTokenUnit};
+  window.CodingPlanDisplaySettings = {getTokenUnit: () => tokenUnit, setTokenUnit: applyTokenUnit, getPriceBasis: () => priceBasis, setPriceBasis: applyPriceBasis};
   window.addEventListener('storage', event => {
     if (event.key === unitKey || event.key === null) applyTokenUnit(event.key === null ? 'yi' : event.newValue, false);
+    if (event.key === basisKey || event.key === null) applyPriceBasis(event.key === null ? 'firstMonth' : event.newValue,false);
   });
   function initSettings() {
     const button = document.getElementById('settingsBtn');
@@ -28,10 +41,12 @@
     if (!button || !panel || !toggle || button.dataset.ultraWideBound) return;
     button.dataset.ultraWideBound = '1';
     button.disabled = false;
-    syncUnitControls();
+    syncDisplayControls();
     panel.addEventListener('click', event => {
       const control = event.target.closest('[data-settings-token-unit]');
       if (control) applyTokenUnit(control.dataset.settingsTokenUnit);
+      const basis = event.target.closest('[data-settings-price-basis]');
+      if(basis)applyPriceBasis(basis.dataset.settingsPriceBasis);
     });
     function apply(on) {
       document.body.classList.toggle('ultra-wide', on);

@@ -1,3 +1,4 @@
+const {fixtureContext} = require('./test-fixtures.cjs');
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -19,7 +20,7 @@ function context() {
   const models = [{slug:'a',name:'A'},{slug:'b',name:'B'}];
   const planModels = plans.map(p=>({slug:p.slug+'-a',planSlug:p.slug,modelSlug:'a',usage:{monthlyTokenInM:100,unitPriceCnyPerM:1}}));
   planModels.push({slug:'go-b',planSlug:'go',modelSlug:'b',usage:{monthlyTokenInM:100}});
-  return E.buildContext(...[platforms,plans,models,planModels].map((items,i)=>({schemaVersion:1,[['platforms','plans','models','planModels'][i]]:items})));
+  return fixtureContext(...[platforms,plans,models,planModels].map((items,i)=>({schemaVersion:1,[['platforms','plans','models','planModels'][i]]:items})));
 }
 const all = patch => F.normalizeState({platformStatusMax:'delisted',includeDiscontinued:true,...patch});
 
@@ -34,7 +35,7 @@ test('三态平台默认与 boolean 套餐覆盖，false 不回落，不改源�
   }
   assert.equal(E.resolveHarnessApi(null,{}),null);
   const c=context(), before=JSON.stringify(c.plans);
-  const catalog=E.buildPlanCatalog(c,{includeHidden:true});
+  const catalog=E.buildPlanCatalog(c);
   assert.equal(catalog.find(p=>p.slug==='go').supportsHarnessApi,false);
   assert.equal(catalog.find(p=>p.slug==='inherit').supportsHarnessApi,true);
   assert.equal(catalog.find(p=>p.slug==='unknown').supportsHarnessApi,null);
@@ -50,9 +51,9 @@ test('能力仅用于展示，旧筛选状态不影响资格、视图投影或�
   assert.deepEqual(offers,F.matchingOffers(c,plain));
   assert.equal(Object.hasOwn(F.normalizeState(state),'harnessApiOnly'),false);
   const points=E.buildComparisonPoints(c,7,{includeUnknown:true});
-  assert.deepEqual(F.filterPoints(points,state,opts).map(x=>x.planSlug),[...expected,'go']);
-  assert.deepEqual(F.filterPoints(points,state).map(x=>x.planSlug),[...expected,'go']);
-  const plans=E.buildPlanCatalog(c,{includeHidden:true});
+  assert.deepEqual(F.filterPoints(points,state,opts).map(x=>x.planSlug),['inherit','go','go','opt-in','closed','unknown','api']);
+  assert.deepEqual(F.filterPoints(points,state).map(x=>x.planSlug),['inherit','go','go','opt-in','closed','unknown','api']);
+  const plans=E.buildPlanCatalog(c);
   assert.deepEqual(F.filterPlans(plans,state,opts).map(x=>x.slug),expected);
   assert.deepEqual(F.filterPlans(plans,state).map(x=>x.slug),expected);
   assert.deepEqual(F.filterPlatforms(c.platforms,state,opts).map(x=>x.slug),['yes','no','unknown']);
@@ -86,7 +87,7 @@ test('未知能力隐藏，混合套餐平台显示可接入，具体套餐保�
   assert.doesNotMatch(Detail.buildDetailBodyHtml(c.platforms[2],{plans:c.plans}),/data-harness-api/);
   assert.match(E.platformHarnessApiBadge(c.platforms[1],c.plans),/data-harness-api="true"/);
   assert.match(E.platformHarnessApiBadge({slug:'pending',supportsHarnessApi:null},[{platformSlug:'pending',supportsHarnessApi:true}]),/data-harness-api="true"/);
-  assert.match(E.platformHarnessApiBadge({slug:'closed',supportsHarnessApi:false},[{platformSlug:'closed',supportsHarnessApi:true,discontinued:true}]),/>不可接入第三方工具/);
+  assert.match(E.platformHarnessApiBadge({slug:'closed',supportsHarnessApi:false},[{platformSlug:'closed',supportsHarnessApi:true,planStatus: 'delisted'}]),/>不可接入第三方工具/);
   const offer=G.recommend(c,all({platformSlugs:['yes']}),{}, {allMatching:true}).candidates.find(x=>x.plan.slug==='go');
   assert.match(Offers.card(offer,all({})),/data-harness-api="false"/);
   assert.doesNotMatch(Offers.card(offer,all({})),/data-harness-api="true"/);
@@ -94,14 +95,14 @@ test('未知能力隐藏，混合套餐平台显示可接入，具体套餐保�
 
 test('方案卡片只显示非开放状态和明确不支持的能力，不渲染空标签行', () => {
   const base=G.recommend(context(),all({}),{}, {allMatching:true}).candidates.find(x=>x.plan.slug==='inherit');
-  for(const [platformStatus,capability,discontinued,expectedStatus] of [
+  for(const [platformStatus,capability,isDelisted,expectedStatus] of [
     ['open',true,false,null],['open',null,false,null],['open',false,false,null],
-    ['limited',true,false,'定时放量'],['paused',false,false,'暂时停售'],
+    ['restricted',true,false,'购买受限'],['restricted',false,false,'购买受限'],
     ['delisted',null,false,'已下架'],['open',true,true,'已下架']
   ]) {
-    const item={...base,platform:{...base.platform,platformStatus,supportsHarnessApi:capability},plan:{...base.plan,discontinued}};
+    const item={...base,platform:{...base.platform,platformStatus,supportsHarnessApi:capability},plan:{...base.plan,planStatus:isDelisted?'delisted':platformStatus}};
     const html=Offers.card(item,all({}));
-    assert.doesNotMatch(html,/>开放购买</);
+    assert.doesNotMatch(html,/>可以购买</);
     assert.doesNotMatch(html,/data-harness-api="(?:true|unknown)"/);
     assert.equal(html.includes('class="offer-capabilities"'),!!expectedStatus||capability===false);
     assert.equal(html.includes('class="offer-status"'),!!expectedStatus);
