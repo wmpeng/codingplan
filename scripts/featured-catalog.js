@@ -66,7 +66,7 @@
     let unit = globalThis.CodingPlanDisplaySettings?.getTokenUnit() || 'yi';
     let data = points(context,config);
     const expanded = new Set(), selectedModels = Object.create(null);
-    const tableOptions = {...presetTableOptions(options), selectedModels, hideDescription:true, changes:context.changes};
+    const tableOptions = {...presetTableOptions(options), selectedModels, hideDescription:true};
     const render = () => {
       const focused = document.activeElement;
       const selectedButton = focused?.closest?.('[data-preset-model]');

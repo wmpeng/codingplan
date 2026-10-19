@@ -1,4 +1,5 @@
 .ui-help { display: inline-flex; vertical-align: middle; font-weight: 400; }
+.ui-help--info > .ui-help-button > span { font-family: Georgia, serif; font-weight: 700; }
 body :is(.ui-help-button, .model-multimodal-info) { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--text-secondary, #52627a); cursor: pointer; }
 body .model-multimodal-info { width: 32px; height: 32px; }
 body :is(.ui-help-button, .model-multimodal-info) > span { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; border: 1px solid currentColor; border-radius: 50%; font: 10px/1 sans-serif; }
@@ -6,3 +7,7 @@ body :is(.ui-help-button, .model-multimodal-info):hover, body :is(.ui-help-butto
 body :is(.ui-help-button, .model-multimodal-info):focus-visible { outline: 2px solid #68788f; outline-offset: 2px; }
 .ui-help-content { position: fixed; inset: auto; margin: 0; box-sizing: border-box; width: 320px; max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px); overflow: auto; padding: 12px 14px; border: 1px solid #dce3ec; border-radius: 8px; background: #fff; color: #334155; box-shadow: 0 4px 16px #172b4d1a; font: 400 13px/1.65 var(--font-family, sans-serif); text-align: left; white-space: normal; overflow-wrap: anywhere; }
 @media (max-width: 800px), (pointer: coarse) { body :is(.ui-help-button, .model-multimodal-info) { width: 44px; height: 44px; } }
+.ui-help-close { position: sticky; top: 0; float: right; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; margin: -6px -8px 2px 8px; padding: 0; border: 0; border-radius: 4px; background: #fff; color: var(--text-secondary, #52627a); font: 20px/1 sans-serif; cursor: pointer; }
+.ui-help-close:hover { color: var(--accent-primary, #245fbc); }
+.ui-help-close:focus-visible { outline: 2px solid #68788f; outline-offset: -2px; }
+@media (max-width: 800px), (pointer: coarse) { .ui-help-close { width: 44px; height: 44px; } }

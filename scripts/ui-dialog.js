@@ -38,6 +38,8 @@
     const top = stack.at(-1);
     if (!top) return;
     if (event.key === 'Escape' && top.onClose) {
+      // Close an inner information popover before dismissing its containing dialog.
+      if (top.dialog.querySelector(':popover-open')) return;
       event.preventDefault(); event.stopImmediatePropagation(); top.onClose();
     }
     if (event.key !== 'Tab') return;

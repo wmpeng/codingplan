@@ -440,6 +440,7 @@
       `<header class="platform-detail-header${discontinued ? ' is-discontinued' : ''}">` +
       `<div class="platform-detail-title-row">` +
       `<h2 id="platformDetailTitle" class="platform-detail-title">${name}</h2>` +
+      (Notices?.platformInfo(context.entityContext?.changes,platformId) || '') +
       pinHtml +
       actionLink +
       (PlatformCatalog.getPlatformGuideUrl(platformId) ? `<a class="platform-guide-link" href="${esc(PlatformCatalog.getPlatformGuideUrl(platformId))}">查看完整介绍 →</a>` : '') +
@@ -451,7 +452,6 @@
       `</div>` +
       `</header>` +
       overviewHtml +
-      (Notices?.section(context.entityContext?.changes,platformId) ? `<section class="platform-detail-section" data-section="changes"><h3 class="platform-detail-section-title">变更预告</h3>${Notices.section(context.entityContext?.changes,platformId)}</section>` : '') +
       `<section class="platform-detail-section" data-section="dimensions" aria-labelledby="platformDetailDimsHeading">` +
       `<h3 id="platformDetailDimsHeading" class="platform-detail-section-title">评价详解</h3>` +
       `<ul class="platform-detail-dimensions">${dims}</ul>` +

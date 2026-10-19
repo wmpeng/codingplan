@@ -607,10 +607,7 @@
             : `<p>包含：${escapeHtml(includedModels)}</p>` : '';
         const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
         const limit = options.limit || rows.length;
-        const noticeSeen = new Set();
         const body = rows.length ? rows.map((point, index) => {
-            const records = Notices.select(options.changes,{...point,type:'point'}).filter(record=>!noticeSeen.has(point.planSlug+':'+record.slug));
-            records.forEach(record=>noticeSeen.add(point.planSlug+':'+record.slug));
             const qualifier = kind === 'single' ? getPresetModelQualifier(point) : '';
             const planName = point.planName || (point.billingMode === 'payg' ? '按量 API' : '订阅');
             const plan = `<span class="usage-preset-plan">${escapeHtml(planName)}</span>${qualifier ? `<small class="usage-preset-qualifier">${escapeHtml(qualifier)}</small>` : ''}`;
@@ -621,7 +618,7 @@
             const secondaryDetail = kind === 'multi' ? `${separator}<span class="usage-preset-price">${price}</span>` : '';
             const values = {
                 identity: `<div class="usage-preset-primary-line">${platformCellHtml(point)}${primaryDetail}</div>` +
-                    `<div class="usage-preset-secondary-line">${plan}${secondaryDetail}</div>${Notices.brief(records)}`,
+                    `<div class="usage-preset-secondary-line">${plan}${secondaryDetail}</div>`,
                 metrics: `<div class="usage-preset-metric-primary${point.unitPriceCnyPerM == null ? ' is-unknown' : ''}">${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)}</div>` +
                     `<div class="usage-preset-secondary-line usage-preset-metric-secondary"><span>月用量</span><span>${point.billingMode === 'payg' ? '—' : point.monthlyTokenInM == null ? '未知' : formatTokenAmount(point.monthlyTokenInM, tokenUnit)}</span></div>`
             };
