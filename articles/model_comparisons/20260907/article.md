@@ -197,7 +197,7 @@ Luna 的 DeepSWE 成绩高于 GLM Flash，成本也更高，两者误差区间�
 
 ### 国产最高智能：Kimi K3 综合领先，纯文本 Coding 选 GLM-5.3
 
-**国产综合能力优先考虑 Kimi K3，但要留意订阅渠道。** 截至 9 月 7 日，Dreamfree 渠道对比页仍标注其官方订阅新购受限，另列有第三方服务入口。该限制不代表 Kimi API 或所有渠道均不可用，购买前请核对对应平台的实时状态。[查看 Kimi 与其他模型的渠道对比](https://vibecoding.dreamfree.space/?view=usage)。
+**国产综合能力优先考虑 Kimi K3，但要留意订阅渠道。** 截至 9 月 7 日，Dreamfree 渠道对比页仍标注其官方订阅新购受限，另列有第三方服务入口。该限制不代表 Kimi API 或所有渠道均不可用，购买前请核对对应平台的实时状态。[比较 Kimi 与其他模型的价格与额度](https://vibecoding.dreamfree.space/?view=usage)。
 
 如果 Coding 场景没有多模态要求，**优先 GLM-5.3**：工程成绩接近 Kimi，任务成本更低。有截图输入、又希望国产综合能力尽量高，选 Kimi；更偏网页成品与视频材料，可考虑 Qwen3.8 Max。
 
@@ -214,7 +214,7 @@ Luna 的 DeepSWE 成绩高于 GLM Flash，成本也更高，两者误差区间�
 
 来源：[AA 模型成本对比](https://artificialanalysis.ai/?models=glm-5-3-flash%2Cminimax-m3%2Cgpt-6-astra%2Cclaude-fable-5-1%2Cgpt-5-6-luna%2Cmuse-spark-1-3%2Cdeepseek-v4-pro%2Cgemini-3-8-flash%2Cqwen3-8-27b%2Cclaude-opus-5%2Cgrok-4-6%2Cclaude-fable-5%2Cglm-5-3%2Cgpt-5-6-sol%2Ckimi-k3%2Cqwen3-8-max%2Cdeepseek-v4-flash%2Cdeepseek-v4-flash-vision&intelligence-category=country-analysis)，2026-09-07 所选配置。这里是评测任务成本，不是每百万 token 报价；DeepSWE 的工程任务成本另见前表。
 
-**每天用量较大且稳定时，Coding Plan / Token Plan 订阅可能更省钱。** 同一个模型，在不同平台和套餐下的额度、折算单价可能差很多。选好模型后，建议再打开 [AI Coding Plan 额度／价格对比](https://vibecoding.dreamfree.space/?view=usage)，直接看 DeepSeek Flash、GLM Flash 和 Luna 的三个快速对比列表，按自己的月预算和用量挑套餐。
+**每天用量较大且稳定时，Coding Plan / Token Plan 订阅可能更省钱。** 同一个模型，在不同平台和套餐下的额度、折算单价可能差很多。选好模型后，建议再打开 [AI Coding Plan 价格与额度](https://vibecoding.dreamfree.space/?view=usage)，直接看 DeepSeek Flash、GLM Flash 和 Luna 的三个快速对比列表，按自己的月预算和用量挑套餐。
 
 **DeepSeek V4 Flash 0731 订阅对比**
 
@@ -228,7 +228,7 @@ Luna 的 DeepSWE 成绩高于 GLM Flash，成本也更高，两者误差区间�
 
 ![GPT 5.6 Luna 订阅额度与价格对比，截图于2026-09-07](assets/subscription-luna.png)
 
-截图来源：[Dreamfree Coding Plan 额度／价格对比](https://vibecoding.dreamfree.space/?view=usage)。
+截图来源：[Dreamfree Coding Plan 价格与额度](https://vibecoding.dreamfree.space/?view=usage)。
 
 综合单价按网站的工作负载与额度口径折算，包含约 95% 缓存命中率、0.5% 输出占比及部分估算数据，不是平台承诺的通用 token 单价；部分优惠有期限。用不满额度的人，订阅未必比按量便宜，购买时也要看五小时、周额度和所选模型的抵扣倍率。
 
