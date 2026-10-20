@@ -694,17 +694,6 @@ body .platform-card:focus-visible .platform-card-hint {
     white-space: nowrap;
 }
 
-.platform-detail-plan-summary {
-    margin: 0;
-    max-width: 100%;
-    font-size: 12px;
-    line-height: 1.45;
-    color: var(--text-tertiary);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
 .platform-detail-plan-side {
     display: flex;
     flex-direction: column;

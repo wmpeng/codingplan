@@ -190,11 +190,6 @@
         const ratingHtml = stars
           ? `<span class="platform-detail-plan-rating" aria-label="${rating} 星">${stars}</span>`
           : '';
-        const summary =
-          typeof plan.summary === 'string' && plan.summary.trim() ? plan.summary.trim() : '';
-        const summaryHtml = summary
-          ? `<p class="platform-detail-plan-summary">${esc(summary)}</p>`
-          : '';
         const harnessHtml = EntityData.harnessApiBadge(EntityData.resolveHarnessApi(platform, plan));
         const modelsHtml = buildModelTagsHtml(plan.modelLabels, `${plan.name} 支持模型`);
         const quota = formatPlanQuota(plan);
@@ -209,7 +204,7 @@
           `<span class="platform-detail-plan-name">${planName}</span>` +
           ratingHtml +
           `</div>` +
-          harnessHtml + summaryHtml + modelsHtml +
+          harnessHtml + modelsHtml +
           `</div>` +
           `<div class="platform-detail-plan-side">` +
           `<div class="platform-detail-plan-price">${priceHtml}</div>` +

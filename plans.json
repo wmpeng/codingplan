@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-20T06:31:39Z",
+  "generatedAt": "2026-10-20T07:07:24Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -5273,7 +5273,6 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "summary": "约 4 倍额度，支持 Agent 多任务并行",
       "note": "新版上线前购买的老套餐可继续使用及续订；保留五小时、周窗口和月总额度。原社区 Token 数仅供老套餐参考。",
       "measuredFiveHoursTokenLimit": 6,
       "measuredWeeklyTokenLimit": 27,
@@ -5328,7 +5327,6 @@
       "benefits": [
         "免费Kimi-Claw"
       ],
-      "summary": "约 20 倍额度，含免费 Kimi-Claw",
       "note": "新版上线前购买的老套餐可继续使用及续订；保留五小时、周窗口和月总额度。原社区 Token 数仅供老套餐参考。",
       "measuredFiveHoursTokenLimit": 27,
       "measuredWeeklyTokenLimit": 135,
@@ -5412,7 +5410,6 @@
       "benefits": [
         "免费Kimi-Claw"
       ],
-      "summary": "约 60 倍额度，含免费 Kimi-Claw",
       "note": "新版上线前购买的老套餐可继续使用及续订；保留五小时、周窗口和月总额度。原社区 Token 数仅供老套餐参考。",
       "measuredFiveHoursTokenLimit": 80,
       "measuredWeeklyTokenLimit": 400,
@@ -5494,7 +5491,6 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "summary": "入门档，Agent 约 4 倍速",
       "note": "新版上线前购买的老套餐可继续使用及续订；保留五小时、周窗口和月总额度。原社区 Token 数仅供老套餐参考。",
       "measuredFiveHoursTokenLimit": 5,
       "measuredWeeklyTokenLimit": 7,
@@ -5531,7 +5527,6 @@
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "summary": "新会员方案；不含 Kimi Code",
       "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。Go 不含编程额度。",
       "planStatus": "open",
       "supportsHarnessApi": false,
@@ -5552,7 +5547,6 @@
       "weeklyRequests": "无限制",
       "monthlyRequests": "未公开",
       "benefits": [],
-      "summary": "新会员方案；Kimi Code 与 Kimi 会员共享月总额度",
       "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。月总额度耗尽后可使用加油包；Token 配额未公布。",
       "planStatus": "open",
       "supportsHarnessApi": true,
@@ -5602,7 +5596,6 @@
       "benefits": [
         "专属Kimi Claw"
       ],
-      "summary": "新会员方案；Kimi Code 与 Kimi 会员共享月总额度",
       "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。月总额度耗尽后可使用加油包；Token 配额未公布。",
       "planStatus": "open",
       "supportsHarnessApi": true,
@@ -5678,7 +5671,6 @@
       "benefits": [
         "专属Kimi Claw"
       ],
-      "summary": "新会员方案；Kimi Code 与 Kimi 会员共享月总额度",
       "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。月总额度耗尽后可使用加油包；Token 配额未公布。",
       "planStatus": "open",
       "supportsHarnessApi": true,
@@ -5754,7 +5746,6 @@
       "benefits": [
         "专属Kimi Claw"
       ],
-      "summary": "新会员方案；Kimi Code与Kimi会员共享月总额度，具体Token配额未公布",
       "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。月总额度耗尽后可使用加油包；Token 配额未公布。 官方标示28倍Agent额度，不等于固定Coding Token配额。",
       "planStatus": "open",
       "supportsHarnessApi": true,
@@ -11207,7 +11198,6 @@
         "支持 57 个模型"
       ],
       "note": "各型号共享一个月度套餐池：逐型号月额度表示整池只用于该型号时的使用价值；混用时按各型号月额度的消耗比例合并计量，不能相加。DeepSeek V4.1 Flash 额度加成无结束日期。5 小时 / 周窗口的官方表格为 $2 / $5，专页和用量说明正文为 $3 / $6，实际短窗口额度待确认。仅可在 Command Code 客户端使用。",
-      "summary": "每月 $10 模型 Credits；5 小时 / 周额度存在 $2 / $5 与 $3 / $6 两种官方口径；支持开源模型及部分闭源模型；支持 56 个模型",
       "planStatus": "open",
       "planModels": [
         {
@@ -12930,7 +12920,6 @@
         "支持 65 个模型"
       ],
       "note": "各型号共享一个月度套餐池，基准为 70 Credits。逐型号月额度表示整池只用于该型号时的使用价值；混用时按各型号月额度的消耗比例合并计量，不能相加。活动型号可对应高于 $70 的单型号使用价值，不代表额外发放独立余额。DeepSeek V4.1 Flash 额度加成无结束日期。Provider API 与客户端共用额度。",
-      "summary": "共享月池以 70 Credits 为基准；型号加成后单型号使用价值可达 $100；5 小时 / 周额度为 $14 / $35；支持 64 个模型",
       "planStatus": "open",
       "planModels": [
         {
@@ -15013,7 +15002,6 @@
         "支持 80 个模型"
       ],
       "note": "各型号共享一个月度套餐池，基准为 80 Credits。逐型号月额度表示整池只用于该型号时的使用价值；混用时按各型号月额度的消耗比例合并计量，不能相加。活动型号可对应高于 $80 的单型号使用价值，不代表额外发放独立余额。DeepSeek V4.1 Flash 额度加成无结束日期。Provider API 与客户端共用额度。",
-      "summary": "共享月池以 80 Credits 为基准；型号加成后单型号使用价值可达 $110；5 小时 / 周额度为 $16 / $40；支持 79 个模型",
       "planStatus": "open",
       "planModels": [
         {
@@ -25938,7 +25926,6 @@
       ],
       "note": "Credits不等于Token，具体Token用量未知；年付为月付总价的9折。活动期内首次个人月付Pro另赠2000Qwen专属Credits（仅限Qwen系列）；符合活动条件的个人月付续费或升级另赠1000Qwen专属Credits（仅限Qwen系列），每笔30天有效；年付续费或升级不参加续费加赠；年付首购资格和重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。",
       "yearlyPrice": 637.2,
-      "summary": "2,000 Credits/月；覆盖 Qoder CN 全家桶",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -26145,7 +26132,6 @@
       ],
       "note": "Credits不等于Token，具体Token用量未知；年付为月付总价的9折。活动期内首次个人月付Pro+另赠6000Qwen专属Credits（仅限Qwen系列）；符合活动条件的个人月付续费或升级另赠1000Qwen专属Credits（仅限Qwen系列），每笔30天有效；年付续费或升级不参加续费加赠；年付首购资格和重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。",
       "yearlyPrice": 1825.2,
-      "summary": "6,000 Credits/月；覆盖 Qoder CN 全家桶",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -26352,7 +26338,6 @@
       ],
       "note": "Credits不等于Token，具体Token用量未知；年付为月付总价的9折。首次购买Ultra不计首购加赠；符合活动条件的个人月付续费或升级另赠1000Qwen专属Credits（仅限Qwen系列），每笔30天有效；年付续费或升级不参加续费加赠；年付首购资格和重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。",
       "yearlyPrice": 6037.2,
-      "summary": "20,000 Credits/月；覆盖 Qoder CN 全家桶",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -26558,7 +26543,6 @@
         "Quest、Repo Wiki、知识卡片"
       ],
       "note": "套餐Credits在当前订阅周期内有效，到期不结转；价格未含适用税费，具体Token用量未知。活动期内首次个人月付Pro另赠2000通用Credits；符合活动条件的个人月付续费或升级另赠1000通用Credits，每笔30天有效；BOGO仅限个人月付，年付不适用；重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。Efficient档位自2026-09-03 14:00（UTC+8）起对有效付费个人订阅免Credits，结束时间未公布，常规0.3×；子代理另调具体型号仍按对应规则收费。Ultimate档位2026-10-14 22:00至2026-10-31 08:00（UTC+8）期间，每日22:00至次日08:00参考系数由2×降至0.4×，其余时段2×。",
-      "summary": "2,000 Credits/月；Quest、Repo Wiki、知识卡片",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -26726,7 +26710,6 @@
         "Quest、Repo Wiki、知识卡片"
       ],
       "note": "套餐Credits在当前订阅周期内有效，到期不结转；价格未含适用税费，具体Token用量未知。活动期内首次个人月付Pro+另赠6000通用Credits；符合活动条件的个人月付续费或升级另赠1000通用Credits，每笔30天有效；BOGO仅限个人月付，年付不适用；重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。Efficient档位自2026-09-03 14:00（UTC+8）起对有效付费个人订阅免Credits，结束时间未公布，常规0.3×；子代理另调具体型号仍按对应规则收费。Ultimate档位2026-10-14 22:00至2026-10-31 08:00（UTC+8）期间，每日22:00至次日08:00参考系数由2×降至0.4×，其余时段2×。",
-      "summary": "6,000 Credits/月；Quest、Repo Wiki、知识卡片",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -26894,7 +26877,6 @@
         "Quest、Repo Wiki、知识卡片"
       ],
       "note": "套餐Credits在当前订阅周期内有效，到期不结转；价格未含适用税费，具体Token用量未知。首次购买Ultra不计首购加赠；符合活动条件的个人月付续费或升级另赠1000通用Credits，每笔30天有效；BOGO仅限个人月付，年付不适用；重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。Efficient档位自2026-09-03 14:00（UTC+8）起对有效付费个人订阅免Credits，结束时间未公布，常规0.3×；子代理另调具体型号仍按对应规则收费。Ultimate档位2026-10-14 22:00至2026-10-31 08:00（UTC+8）期间，每日22:00至次日08:00参考系数由2×降至0.4×，其余时段2×。",
-      "summary": "20,000 Credits/月；Quest、Repo Wiki、知识卡片",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -27064,7 +27046,6 @@
       ],
       "note": "连续包月7折，单次月付99元；当前加赠积分活动起止日期未公布，常规2000积分/月，活动实得4000积分/月。",
       "yearlyPrice": 672,
-      "summary": "WorkBuddy / CodeBuddy积分共享；当前赠送额度已计入，活动起止日期未公布",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -27272,7 +27253,6 @@
       ],
       "note": "连续包月7折，单次月付199元；当前加赠积分活动起止日期未公布，常规4000积分/月，活动实得9000积分/月。",
       "yearlyPrice": 1344,
-      "summary": "WorkBuddy / CodeBuddy积分共享；当前赠送额度已计入，活动起止日期未公布",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -27480,7 +27460,6 @@
       ],
       "note": "连续包月7折，单次月付999元；当前加赠积分活动起止日期未公布，常规20000积分/月，活动实得50000积分/月。",
       "yearlyPrice": 6720,
-      "summary": "WorkBuddy / CodeBuddy积分共享；当前赠送额度已计入，活动起止日期未公布",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -27689,7 +27668,6 @@
       ],
       "note": "常规Auto调度，当前限免全模型可选，活动起止日期未公布；不含CLI访问；积分与CodeBuddy共享",
       "planStatus": "open",
-      "summary": "500积分/月",
       "fiveHoursRequests": "未公开",
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
@@ -27895,7 +27873,6 @@
       ],
       "note": "2026-07-01前已开启自动续费的用户，保价至2026-12-31；2027-01-01起¥70/月，按国内平台推定UTC+8，官网未明确时区；取消后再购按现价",
       "planStatus": "delisted",
-      "summary": "4000积分/月",
       "fiveHoursRequests": "未公开",
       "weeklyRequests": "未公开",
       "monthlyRequests": "未公开",
@@ -28100,7 +28077,6 @@
         "Seed-2.1-Turbo与Seed-Code计费2.5折"
       ],
       "note": "连续订阅每31天45元，单次购买49元/31天。付费新用户首期39元，次期恢复连续订阅价；首期优惠起止日期与截止时区未公布。每期31个自然日，自动续费于到期前12小时扣款。会员积分与活动奖励分开；月登录可领500奖励积分，会员每日签到可领200，签到奖励31天有效、月登录奖励当月有效，需主动领取，不计入固定会员额度。会员可按50元/1000积分增购，增购积分31天有效。Seed-2.1-Turbo和Seed-Code会员2.5折福利的活动起止日期未公布。模型按积分扣减，具体Token用量未知；Seed Evolving仅Pro/Pro+/Ultra及历史Express可用。",
-      "summary": "2000会员积分/31天；统一TRAE会员权益；云端任务最多 2 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -28374,7 +28350,6 @@
         "Seed-2.1-Turbo与Seed-Code计费2.5折"
       ],
       "note": "连续订阅每31天89元，单次购买99元/31天。付费新用户首期69元，次期恢复连续订阅价；首期优惠起止日期与截止时区未公布。每期31个自然日，自动续费于到期前12小时扣款。会员积分与活动奖励分开；月登录可领500奖励积分，会员每日签到可领200，签到奖励31天有效、月登录奖励当月有效，需主动领取，不计入固定会员额度。会员可按50元/1000积分增购，增购积分31天有效。Seed-2.1-Turbo和Seed-Code会员2.5折福利的活动起止日期未公布。模型按积分扣减，具体Token用量未知；Seed Evolving仅Pro/Pro+/Ultra及历史Express可用。",
-      "summary": "4000会员积分/31天；统一TRAE会员权益；云端任务最多 10 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -28661,7 +28636,6 @@
         "Seed-2.1-Turbo与Seed-Code计费2.5折"
       ],
       "note": "连续订阅每31天219元，单次购买239元/31天。每期31个自然日，自动续费于到期前12小时扣款。会员积分与活动奖励分开；月登录可领500奖励积分，会员每日签到可领200，签到奖励31天有效、月登录奖励当月有效，需主动领取，不计入固定会员额度。会员可按50元/1000积分增购，增购积分31天有效。Seed-2.1-Turbo和Seed-Code会员2.5折福利的活动起止日期未公布。模型按积分扣减，具体Token用量未知；Seed Evolving仅Pro/Pro+/Ultra及历史Express可用。",
-      "summary": "12000会员积分/31天；统一TRAE会员权益；云端任务最多 10 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -28948,7 +28922,6 @@
         "Seed-2.1-Turbo与Seed-Code计费2.5折"
       ],
       "note": "连续订阅每31天629元，单次购买699元/31天。每期31个自然日，自动续费于到期前12小时扣款。会员积分与活动奖励分开；月登录可领500奖励积分，会员每日签到可领200，签到奖励31天有效、月登录奖励当月有效，需主动领取，不计入固定会员额度。会员可按50元/1000积分增购，增购积分31天有效。Seed-2.1-Turbo和Seed-Code会员2.5折福利的活动起止日期未公布。模型按积分扣减，具体Token用量未知；Seed Evolving仅Pro/Pro+/Ultra及历史Express可用。",
-      "summary": "40000会员积分/31天；统一TRAE会员权益；云端任务最多 20 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -29234,7 +29207,6 @@
         "TraeWork 云端任务最多 2 个并行"
       ],
       "note": "旧价仅符合连续订阅保价的老用户适用；新版权益按通知、主动升级或续费日迁移，当前存量未升级权益保持到期。新版不能按此价格新购。",
-      "summary": "$5 基础使用额度/月；无限代码补全、TraeCode SOLO；TraeWork 云端任务最多 2 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -29443,7 +29415,6 @@
         "TraeWork 云端任务最多 10 个并行"
       ],
       "note": "旧价仅符合连续订阅保价的老用户适用；新版权益按通知、主动升级或续费日迁移，当前存量未升级权益保持到期。新版不能按此价格新购。",
-      "summary": "$20 基础使用额度/月；无限代码补全、TraeCode SOLO；TraeWork 云端任务最多 10 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -29652,7 +29623,6 @@
         "TraeWork 云端任务最多 15 个并行"
       ],
       "note": "旧价仅符合连续订阅保价的老用户适用；新版权益按通知、主动升级或续费日迁移，当前存量未升级权益保持到期。新版不能按此价格新购。",
-      "summary": "$90 基础使用额度/月；无限代码补全、TraeCode SOLO；TraeWork 云端任务最多 15 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -29861,7 +29831,6 @@
         "TraeWork 云端任务最多 20 个并行"
       ],
       "note": "旧价仅符合连续订阅保价的老用户适用；新版权益按通知、主动升级或续费日迁移，当前存量未升级权益保持到期。新版不能按此价格新购。",
-      "summary": "$400 基础使用额度/月；无限代码补全、TraeCode SOLO；TraeWork 云端任务最多 20 个并行",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -30070,7 +30039,6 @@
         "代码补全无限"
       ],
       "note": "新版套餐；美国地区Seed/MiniMax/GLM不可用；Lite仅在官方指定12个国家开放，包含中国港澳的付费地区不等于Lite可购。缓存写入另计，Token估算不含该费用。老用户连续月付保价；老用户年订阅5折资格以官方规则为准，起止日期、具体时刻和时区未公布。",
-      "summary": "$8 Dollar Usage/月；可手选模型；代码补全无限",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -30792,7 +30760,6 @@
         "代码补全无限"
       ],
       "note": "新版套餐；美国地区Seed/MiniMax/GLM不可用；Lite仅在官方指定12个国家开放，包含中国港澳的付费地区不等于Lite可购。缓存写入另计，Token估算不含该费用。老用户连续月付保价；老用户年订阅5折资格以官方规则为准，起止日期、具体时刻和时区未公布。",
-      "summary": "$20 Dollar Usage/月；可手选模型；代码补全无限",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -31514,7 +31481,6 @@
         "代码补全无限"
       ],
       "note": "新版套餐；美国地区Seed/MiniMax/GLM不可用；Lite仅在官方指定12个国家开放，包含中国港澳的付费地区不等于Lite可购。缓存写入另计，Token估算不含该费用。老用户连续月付保价；老用户年订阅5折资格以官方规则为准，起止日期、具体时刻和时区未公布。",
-      "summary": "$60 Dollar Usage/月；可手选模型；代码补全无限",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -32236,7 +32202,6 @@
         "代码补全无限"
       ],
       "note": "新版套餐；美国地区Seed/MiniMax/GLM不可用；Lite仅在官方指定12个国家开放，包含中国港澳的付费地区不等于Lite可购。缓存写入另计，Token估算不含该费用。老用户连续月付保价；老用户年订阅5折资格以官方规则为准，起止日期、具体时刻和时区未公布。",
-      "summary": "$200 Dollar Usage/月；可手选模型；代码补全无限",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
       "fiveHoursRequests": "未公开",
@@ -32963,7 +32928,6 @@
         "不含SOLO模式"
       ],
       "note": "官方未公布有限额度具体数值；不能从付费模型名单推断可手选模型。",
-      "summary": "仅Auto模式，有限Dollar Usage/月；有限代码补全，2个云端任务并行；不含SOLO模式",
       "quarterlyPrice": 0,
       "firstMonthPrice": 0,
       "planStatus": "open",
@@ -35887,7 +35851,6 @@
         "有限 Agent 与 Chat 使用",
         "Cursor 编程 Agent 入门额度"
       ],
-      "summary": "有限 Agent 与 Chat 使用；Cursor 编程 Agent 入门额度",
       "note": "免费入门档；具体可选模型、请求与 Token 额度未公开。不能把付费档完整模型名单套用于免费档。",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -35911,7 +35874,6 @@
         "Grok 共享基础使用池，每周刷新",
         "Cursor、Grok 与 X 组合权益"
       ],
-      "summary": "Grok 共享基础使用池，每周刷新；Cursor、Grok 与 X 组合权益",
       "note": "2026-10-12 发布的新 X Subscription；额度在 Cursor、Grok 与 X 的相关 AI 产品间共享，每周刷新。官方未公布固定 Token 或请求总量，不按倍率推算。价格未含适用税费；迁移优惠由账户显示，具体起止日期未公开。 Plus 支持 Grok 4.7、Grok 4.6、Grok 4.5 与 Composer 2.5；固定标准速度、medium effort，Grok 4.7 使用 256K 上下文。不含第三方模型、Auto、云端 Agent 或 BYOK。 Grok API 单独计费，不从 Cursor 与 Grok 应用共享周池扣减。",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -36021,7 +35983,6 @@
         "云端 Agent、自动化与代码审查",
         "第三方模型可用，按 API 标价另付费"
       ],
-      "summary": "Grok 共享额度为 Plus 的 4 倍，每周刷新；云端 Agent、自动化与代码审查；第三方模型可用，按 API 标价另付费",
       "note": "2026-10-12 发布的新 X Subscription；额度在 Cursor、Grok 与 X 的相关 AI 产品间共享，每周刷新。官方未公布固定 Token 或请求总量，不按倍率推算。价格未含适用税费；迁移优惠由账户显示，具体起止日期未公开。 Claude、GPT、Gemini、Muse Spark 等第三方模型从首个请求起另行购买使用量，不包含在月费中；可以设置支出上限。新 Ultra 与旧 Cursor Ultra 的额度不是同一产品。 Grok API 单独计费，不从 Cursor 与 Grok 应用共享周池扣减。",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -36741,7 +36702,6 @@
         "第三方模型可用，按 API 标价另付费",
         "高峰期优先模型接入"
       ],
-      "summary": "Grok 共享额度为 Plus 的 15 倍，每周刷新；云端 Agent、自动化与代码审查；第三方模型可用，按 API 标价另付费；高峰期优先模型接入",
       "note": "2026-10-12 发布的新 X Subscription；额度在 Cursor、Grok 与 X 的相关 AI 产品间共享，每周刷新。官方未公布固定 Token 或请求总量，不按倍率推算。价格未含适用税费；迁移优惠由账户显示，具体起止日期未公开。 Claude、GPT、Gemini、Muse Spark 等第三方模型从首个请求起另行购买使用量，不包含在月费中；可以设置支出上限。新 Ultra 与旧 Cursor Ultra 的额度不是同一产品。 Grok API 单独计费，不从 Cursor 与 Grok 应用共享周池扣减。",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -37461,7 +37421,6 @@
         "第三方模型可用，按 API 标价另付费",
         "更早获得产品与模型"
       ],
-      "summary": "Grok 共享额度为 Plus 的 50 倍，每周刷新；云端 Agent、自动化与代码审查；第三方模型可用，按 API 标价另付费；更早获得产品与模型",
       "note": "2026-10-12 发布的新 X Subscription；额度在 Cursor、Grok 与 X 的相关 AI 产品间共享，每周刷新。官方未公布固定 Token 或请求总量，不按倍率推算。价格未含适用税费；迁移优惠由账户显示，具体起止日期未公开。 Claude、GPT、Gemini、Muse Spark 等第三方模型从首个请求起另行购买使用量，不包含在月费中；可以设置支出上限。新 Ultra 与旧 Cursor Ultra 的额度不是同一产品。 Grok API 单独计费，不从 Cursor 与 Grok 应用共享周池扣减。",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -38179,7 +38138,6 @@
         "Cursor Models 与第三方 Other Models 独立月度池",
         "无限 Tab 补全、Agent、Bugbot 与云端 Agent"
       ],
-      "summary": "Cursor Models 与第三方 Other Models 独立月度池；无限 Tab 补全、Agent、Bugbot 与云端 Agent",
       "note": "2026-10-12 起停止新用户订购，已有订阅可保留当前价格与权益，迁移为自愿选择且迁移后不可回退；不迁移时继续保留原套餐。旧 Cursor Models 与 Other Models 为两个独立月度池，未消费额度不结转；不能套用新 X Subscription 的周额度或倍率。当前固定美元池及 Token 总量待确认。按请求计费的更早存量账号还有独立规则，不适用统一的 500 次或无限用量规则。",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -38897,7 +38855,6 @@
         "Cursor Models 与第三方 Other Models 独立月度池",
         "无限 Tab 补全、Agent、Bugbot 与云端 Agent"
       ],
-      "summary": "Cursor Models 与第三方 Other Models 独立月度池；无限 Tab 补全、Agent、Bugbot 与云端 Agent",
       "note": "2026-10-12 起停止新用户订购，已有订阅可保留当前价格与权益，迁移为自愿选择且迁移后不可回退；不迁移时继续保留原套餐。旧 Cursor Models 与 Other Models 为两个独立月度池，未消费额度不结转；不能套用新 X Subscription 的周额度或倍率。当前固定美元池及 Token 总量待确认。按请求计费的更早存量账号还有独立规则，不适用统一的 500 次或无限用量规则。",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -39615,7 +39572,6 @@
         "Cursor Models 与第三方 Other Models 独立月度池",
         "无限 Tab 补全、Agent、Bugbot 与云端 Agent"
       ],
-      "summary": "Cursor Models 与第三方 Other Models 独立月度池；无限 Tab 补全、Agent、Bugbot 与云端 Agent",
       "note": "2026-10-12 起停止新用户订购，已有订阅可保留当前价格与权益，迁移为自愿选择且迁移后不可回退；不迁移时继续保留原套餐。旧 Cursor Models 与 Other Models 为两个独立月度池，未消费额度不结转；不能套用新 X Subscription 的周额度或倍率。当前固定美元池及 Token 总量待确认。按请求计费的更早存量账号还有独立规则，不适用统一的 500 次或无限用量规则。",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",
@@ -40333,7 +40289,6 @@
         "仅限印度开发者；原价 ₹649/月（含税）",
         "仅 Cursor Models 池；标准速度、Grok 固定 medium effort"
       ],
-      "summary": "仅限印度开发者；原价 ₹649/月（含税）；仅 Cursor Models 池；标准速度、Grok 固定 medium effort",
       "note": "旧地区限定套餐已停止新购；既有账户价格与权益按官方通知保留。原币种 INR，不以美元或人民币数值参加价格换算。支持 Grok 4.7/4.6/4.5 与 Composer 2.5；不含 Other Models、按量加购、Bugbot、Auto、自动化或 Cursor SDK。付款限官方印度渠道；该套餐不继承平台的支付宝结论。 历史印度套餐售价为 ₹649/月（含税）。",
       "monthlyRequests": "未公开",
       "weeklyRequests": "未公开",

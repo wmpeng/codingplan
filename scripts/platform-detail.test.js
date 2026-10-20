@@ -188,7 +188,6 @@ describe('buildDetailBodyHtml', () => {
         firstMonthPrice: 90,
         rating: 4,
         measuredMonthlyTokenLimit: 600,
-        summary: '额度充足，适合主力日常',
         planStatus: 'open'
       },
       { platformSlug: 'x', name: 'Old', billingMode: 'subscription', monthlyPrice: 50, planStatus: 'delisted' }
@@ -204,11 +203,10 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('首月'));
     assert.ok(html.includes('platform-detail-price-sep'));
     assert.ok(html.includes('platform-detail-plan-rating'));
-    assert.ok(html.includes('额度充足，适合主力日常'));
     assert.ok(html.includes('在套餐页面查看'));
   });
 
-  it('omits empty summary and keeps price on one line without first-month when absent', () => {
+  it('keeps price on one line without first-month when absent', () => {
     const plans = [
       {
         platformSlug: 'x',
@@ -218,14 +216,12 @@ describe('buildDetailBodyHtml', () => {
         firstMonthPrice: '-',
         rating: 3,
         monthlyRequests: 1900,
-        summary: '   ',
         planStatus: 'open'
       }
     ];
     const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
     assert.ok(html.includes('Lite'));
     assert.ok(html.includes('1,900次/月') || html.includes('1900'));
-    assert.ok(!html.includes('platform-detail-plan-summary'));
     assert.ok(!html.includes('platform-detail-price-sep'));
     assert.ok(!html.includes('首月'));
   });
