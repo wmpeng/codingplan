@@ -22,6 +22,12 @@ function samplePlatform(overrides = {}) {
 }
 
 describe('buildDetailBodyHtml', () => {
+  it('uses the explicit platform action even when the first plan has another link', () => {
+    const platform=samplePlatform({action:'https://example.com/platform'});
+    const html=buildDetailBodyHtml(platform,{plans:[{slug:'p',platformSlug:platform.slug,name:'Plan',action:'https://example.com/plan'}],monitorRow:null});
+    assert.match(html,/class="platform-detail-action" href="https:\/\/example\.com\/platform"/);
+  });
+
   it('uses one canonical delisted status without a duplicate discontinued badge', () => {
     const html = buildDetailBodyHtml(samplePlatform({platformStatus:'delisted'}), {plans:[],monitorRow:null});
     assert.equal((html.match(/>已下架</g) || []).length,1);

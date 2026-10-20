@@ -356,10 +356,7 @@
         ? ''
         : `<span class="platform-detail-rush" data-platform-status="${esc(status)}">${esc(statusLabel)}</span>`;
     const discontinued = status === 'delisted';
-    const actionUrl =
-      typeof PlatformCatalog.resolvePlatformAction === 'function'
-        ? PlatformCatalog.resolvePlatformAction(platform, Array.isArray(context.plans) ? context.plans : [])
-        : null;
+    const actionUrl = platform.action;
     const actionLink = actionUrl
       ? `<a class="platform-detail-action" href="${esc(actionUrl)}" target="_blank" rel="noopener noreferrer">去官网 ${PlatformCatalog.EXTERNAL_LINK_ICON}</a>`
       : '';

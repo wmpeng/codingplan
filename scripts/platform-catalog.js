@@ -329,15 +329,6 @@ function matchMonitorPlatform(platform, boardPlatforms) {
   return boardPlatforms.find(b => b && String(b.platform_display_name || '').trim() === name) || null;
 }
 
-function resolvePlatformAction(platform, plans) {
-  if (platform.action) {
-    return platform.action;
-  }
-
-  const plan = plans.find(p => p.platformSlug === platform.slug);
-  return plan?.action ?? null;
-}
-
 function validatePlatformRecords(platforms, plans) {
   const errors = [];
   const platformSlugs = new Set(platforms.map(p => p.slug));
@@ -434,8 +425,7 @@ function buildPlatformCardHtml(platform, plans, options = {}) {
     ? options.supportedModels
     : [];
   const hasApiPlan = !!options.hasApiPlan;
-  const rawAction = resolvePlatformAction(platform, plans);
-  const action = sanitizeUrl(rawAction);
+  const action = sanitizeUrl(platform.action);
   const name = escapeHtml(platform.name || '');
   const nameHtml = action
     ? `<a class="platform-name-link" href="${escapeHtml(action)}" target="_blank" rel="noopener noreferrer"><span class="platform-name-text">${name}</span>${EXTERNAL_LINK_ICON}</a>`
@@ -565,7 +555,6 @@ const PlatformCatalog = {
   dimensionCopy,
   collectPlansForVendor,
   matchMonitorPlatform,
-  resolvePlatformAction,
   validatePlatformRecords,
   buildPlatformStatusSliderHtml,
   buildPlatformCardHtml,
