@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-19T17:14:46Z",
+  "generatedAt": "2026-10-20T04:16:37Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -5826,6 +5826,7 @@
       "yearlyPrice": "-",
       "benefits": [],
       "note": "独立Search与Fetch API分别按每1000次成功请求5元计费，不包含在模型Token费率中；DeepSeek Harness、Claude Code、Codex中的Server端Search/Fetch工具调用当前免费，官方公布2026-11-01 00:00北京时间起按次收费。",
+      "currency": "¥",
       "planStatus": "open",
       "planModels": [
         {
@@ -5927,6 +5928,7 @@
       "yearlyPrice": "-",
       "benefits": [],
       "note": "按实际Token用量计费。邀请8折仅适用于资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。",
+      "currency": "¥",
       "planStatus": "open",
       "planModels": [
         {
