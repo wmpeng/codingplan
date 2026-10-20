@@ -320,3 +320,15 @@ test('空模型清单保留勾选状态但不限制业务，不能令未知额�
   const points=[{slug:'known',modelSlug:'m',billingMode:'subscription',monthlyTokenInM:100},{slug:'unknown',modelSlug:'m',billingMode:'subscription',monthlyTokenInM:null}];
   assert.deepEqual(Filters.filterPoints(points,cleared).map(p=>p.slug),['known']);
 });
+
+
+test('比较点使用首月金额时，月付价格条件仍检查正式月价',()=>{
+  const point={slug:'r',planSlug:'p',billingMode:'subscription',monthlyFeeCny:20};
+  const context={planBySlug:new Map([['p',{monthlyPrice:100,firstMonthPrice:20,currency:'¥'}]])};
+  const filter=priceRanges=>Filters.filterPoints([point],unrestricted({priceRanges}),{context});
+  assert.equal(filter({monthlyPrice:{min:90,max:110}}).length,1);
+  assert.equal(filter({monthlyPrice:{max:30}}).length,0);
+  assert.equal(filter({firstMonthPrice:{max:30}}).length,1);
+  context.planBySlug.get('p').monthlyPrice='不适用';
+  assert.equal(filter({monthlyPrice:{min:0}}).length,0);
+});

@@ -115,7 +115,7 @@ test('catalogues retain historical platforms and both billing modes for callers 
 function fixture() {
   return fixtureContext(
     { schemaVersion: 1, platforms: [{ slug: 'platform-a', name: '平台A' }] },
-    { schemaVersion: 1, plans: [{ slug: 'plan-a', platformSlug: 'platform-a', name: 'Pro', billingMode: 'subscription', monthlyPrice: 10, currency: '$' }] },
+    { schemaVersion: 1, plans: [{ slug: 'plan-a', platformSlug: 'platform-a', name: 'Pro', billingMode: 'subscription', monthlyPrice: 10, firstMonthPrice: 10, currency: '$' }] },
     { schemaVersion: 1, models: [
       { slug: 'model-a', name: 'Model A', multimodal: false, scores: { artificialAnalysis: { score: 10, scoreExact: 10.2, modelSlug: 'internal-source-key', sourceUrl: 'https://example.com' } } },
       { slug: 'model-b', name: 'Model B', multimodal: false, scores: {} }
@@ -172,4 +172,17 @@ test('builds API pricing groups and keeps raw input cache output prices', () => 
   const point = EntityData.buildComparisonPoints(context, 6.8)[0];
   assert.equal(point.billingMode, 'payg');
   assert.deepEqual(point.apiPricing, { currency: '¥', inputPerM: 1, cachePerM: 0.1, outputPerM: 2 });
+});
+
+
+test('comparison fees use generated first-month prices, preserving zero and unavailable prices', () => {
+  const context=fixture(),plan=context.plans[0];
+  for(const [first,expected] of [[5,34],[0,0],['不适用',null]]){
+    plan.firstMonthPrice=first;
+    const point=EntityData.buildComparisonPoints(context,6.8,{includeUnknown:true})[0];
+    assert.equal(point.monthlyFeeCny,expected);
+    assert.equal(point.originalMonthlyFee,first==='不适用'?null:first);
+    assert.equal(point.unitPriceCnyPerM,.68);
+    assert.equal(plan.monthlyPrice,10);
+  }
 });

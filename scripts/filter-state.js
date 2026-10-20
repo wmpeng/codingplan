@@ -383,11 +383,8 @@
       if (point.billingMode === 'subscription' && !inRange(monthly, current.budgetCny)) return false;
       if (point.billingMode === 'subscription') {
         for (const [key, range] of Object.entries(current.priceRanges)) {
-          if (key === 'monthlyPrice' && !inRange(monthly, range)) return false;
-          if (key !== 'monthlyPrice') {
-            const plan = opts.context && opts.context.planBySlug && opts.context.planBySlug.get(point.planSlug);
-            if (!plan || !inRange(toCny(plan[key], plan.currency, rate), range)) return false;
-          }
+          const plan = opts.context?.planBySlug?.get(point.planSlug);
+          if (!plan || !inRange(toCny(plan[key], plan.currency, rate), range)) return false;
         }
       }
       return true;

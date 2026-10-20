@@ -27,7 +27,7 @@
     const COMPARISON_TABLE_COLUMNS = [
         { key: 'vendor', label: '平台' },
         { key: 'plan', label: '套餐' },
-        { key: 'price', label: '套餐价格' },
+        { key: 'price', label: '首月价格' },
         { key: 'model', label: '模型' },
         { key: 'unitPriceCnyPerM', label: '综合单价' },
         { key: 'unitPriceVisual', label: '单价对比', hint: '低 → 高 · 对数', sortable: false },
@@ -448,7 +448,7 @@
             : Numbers.monthlyFee(original, originalCurrency);
         const isCny = originalCurrency === '¥';
         const converted = !isCny && cny !== null ? `（约 ${Numbers.monthlyFee(cny)}）` : '';
-        return `${originalText}${converted} / 月`;
+        return `${originalText}${converted} / 首月`;
     }
 
     function comparisonSortValue(point, key) {
@@ -495,7 +495,7 @@
             const sorting = sortable
                 ? ` tabindex="0" aria-sort="none" data-table-sort="${tableName}" data-sort-key="${column.key}"`
                 : '';
-            const label = compact && column.key === 'vendor' ? '平台 / 套餐' : compact && column.key === 'price' ? '每月价格' : column.hint
+            const label = compact && column.key === 'vendor' ? '平台 / 套餐' : compact && column.key === 'price' ? '首月价格' : column.hint
                 ? `<span class="usage-table-heading"><span>${column.label}</span><small>${column.hint}</small></span>`
                 : column.label;
             return `<th scope="col" data-comparison-col="${column.key}"${classes ? ` class="${classes}"` : ''}${sorting}>${label}</th>`;
@@ -520,7 +520,7 @@
     function comparisonTableRowHtml(point, tokenUnit, visualOptions) {
         const notice = key => Notices.forField(visualOptions?.changes,{...point,type:'point'},key,{seen:visualOptions?.noticeSeen});
         const subscription = point.billingMode === 'subscription';
-        const price = subscription ? (point.monthlyFeeCny === 0 ? '¥0 / 月' : finitePositive(point.monthlyFeeCny) !== null
+        const price = subscription ? (point.monthlyFeeCny === 0 ? '¥0 / 首月' : finitePositive(point.monthlyFeeCny) !== null
             ? formatSubscriptionMonthlyPrice(point) : '未公开') : '按量';
         const unitPrice = formatUnitPrice(point.unitPriceCnyPerM, tokenUnit);
         const aaScore = point.scores && point.scores.artificialAnalysis;
@@ -676,7 +676,7 @@
         const status = point.planStatus && point.planStatus !== 'open' ? `<div>${escapeHtml(UI.statusLabels[point.planStatus] || point.planStatus)}</div>` : '';
         const basis = point.unitPriceBasis === 'firstMonth' ? `<div>综合单价按首月价格计算：${Numbers.monthlyFee(point.firstMonthPrice, currencySymbol(point.originalCurrency))}</div>` : '';
         const fee = point.billingMode === 'subscription'
-            ? `<div>月费：${formatSubscriptionMonthlyPrice(point)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
+            ? `<div>首月价格：${formatSubscriptionMonthlyPrice(point)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
             : '';
         const apiPricing = point.billingMode === 'payg'
             ? `<div>API 单价：${escapeHtml(formatApiPricing(point.apiPricing))}</div>`
@@ -722,7 +722,7 @@
                 <div class="filter-bar surface-panel usage-filters" aria-label="图表筛选"${compact ? ' hidden' : ''}>
                     <div class="filter-dropdown" data-picker="vendors"><button type="button" class="filter-btn" data-picker-toggle><span>平台</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-count hidden>0</span></button><div class="dropdown-menu"><div class="dropdown-section"><div class="checkbox-group" data-options></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-picker-reset>重置</button><button type="button" class="dropdown-btn primary" data-picker-done>确定</button></div></div></div>
                     <div class="filter-dropdown" data-picker="models"><button type="button" class="filter-btn" data-picker-toggle><span>模型</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-count hidden>0</span></button><div class="dropdown-menu usage-model-menu"><input class="usage-search" type="search" data-model-search placeholder="搜索模型" aria-label="搜索模型"><div class="dropdown-section"><div class="checkbox-group" data-options></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-picker-reset>重置</button><button type="button" class="dropdown-btn primary" data-picker-done>确定</button></div></div></div>
-                    <div class="filter-dropdown" data-picker="monthly-price"><button type="button" class="filter-btn" data-picker-toggle><span>套餐价格</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-price-count hidden>●</span></button><div class="dropdown-menu usage-price-menu"><div class="dropdown-section"><div class="dropdown-title">包月价格区间（人民币）</div><div class="price-slider-container"><div class="price-slider" data-price-slider><div class="slider-track"></div><div class="slider-range" data-price-range></div><div class="slider-thumb" data-price-thumb="min" role="slider" tabindex="0" aria-label="最低套餐价格"></div><div class="slider-thumb" data-price-thumb="max" role="slider" tabindex="0" aria-label="最高套餐价格"></div></div><div class="slider-values"><span class="slider-value" data-price-value="min">¥0</span><span class="slider-value" data-price-value="max">¥0</span></div></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-price-reset>重置</button><button type="button" class="dropdown-btn primary" data-price-apply>确定</button></div></div></div>
+                    <div class="filter-dropdown" data-picker="monthly-price"><button type="button" class="filter-btn" data-picker-toggle><span>套餐价格</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-price-count hidden>●</span></button><div class="dropdown-menu usage-price-menu"><div class="dropdown-section"><div class="dropdown-title">首月价格区间（人民币）</div><div class="price-slider-container"><div class="price-slider" data-price-slider><div class="slider-track"></div><div class="slider-range" data-price-range></div><div class="slider-thumb" data-price-thumb="min" role="slider" tabindex="0" aria-label="最低套餐价格"></div><div class="slider-thumb" data-price-thumb="max" role="slider" tabindex="0" aria-label="最高套餐价格"></div></div><div class="slider-values"><span class="slider-value" data-price-value="min">¥0</span><span class="slider-value" data-price-value="max">¥0</span></div></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-price-reset>重置</button><button type="button" class="dropdown-btn primary" data-price-apply>确定</button></div></div></div>
                     <label class="filter-btn usage-inline-filter"><span>多模态</span><select data-filter="multimodal" aria-label="多模态"><option value="all">全部</option><option value="multimodal">多模态</option><option value="text">纯文本</option></select></label>
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>AA 最低分</span><input data-filter="aaScoreMin" aria-label="AA 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>DeepSWE 最低分</span><input data-filter="deepSWEScoreMin" aria-label="DeepSWE 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
@@ -731,8 +731,8 @@
                 </div>
                 <div class="usage-color-legend"><strong data-color-legend-title>平台颜色</strong><div data-color-legend></div></div>
                 <article class="usage-chart-card">
-                    <div class="usage-chart-head"><div><h3>月费 vs 月 Token</h3><p>一个点代表一个平台 × 套餐 × 模型；越靠左上越有吸引力。</p></div><div class="usage-scale-control"><span>坐标轴</span><div class="usage-segments" data-scale="tokens" role="group" aria-label="坐标轴"><button type="button" data-scale-value="log" class="is-active" aria-pressed="true">对数</button><button type="button" data-scale-value="value" aria-pressed="false">线性</button></div></div></div>
-                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="月费和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的月费与月额度数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
+                    <div class="usage-chart-head"><div><h3>首月价格 vs 月 Token</h3><p>一个点代表一个平台 × 套餐 × 模型；越靠左上越有吸引力。</p></div><div class="usage-scale-control"><span>坐标轴</span><div class="usage-segments" data-scale="tokens" role="group" aria-label="坐标轴"><button type="button" data-scale-value="log" class="is-active" aria-pressed="true">对数</button><button type="button" data-scale-value="value" aria-pressed="false">线性</button></div></div></div>
+                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="首月价格和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的首月价格与月额度数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
                 </article>
                 <article class="usage-chart-card">
                     <div class="usage-chart-head"><div><h3>单位价格 vs 模型评分</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标"><button type="button" data-benchmark="artificialAnalysis" class="is-active">AA</button><button type="button" data-benchmark="deepSWE">DeepSWE</button></div><div class="usage-scale-control"><span>价格轴</span><div class="usage-segments" data-scale="price" role="group" aria-label="价格轴"><button type="button" data-scale-value="log" class="is-active" aria-pressed="true">对数</button><button type="button" data-scale-value="value" aria-pressed="false">线性</button></div></div></div></div>
@@ -891,12 +891,12 @@
                 state.priceRanges = external.priceRanges || {};
                 state.filterContext = context;
                 state.sharedFilters = external;
-                const monthlyRange = external.priceRanges && external.priceRanges.monthlyPrice;
+                const firstMonthRange = external.priceRanges && external.priceRanges.firstMonthPrice;
                 const numericBounds = values => values
                     .filter(value => value !== null && value !== undefined && value !== '')
                     .map(value => Number(value)).filter(Number.isFinite);
-                const minimums = numericBounds([budget && budget.min, monthlyRange && monthlyRange.min]);
-                const maximums = numericBounds([budget && budget.max, monthlyRange && monthlyRange.max]);
+                const minimums = numericBounds([budget && budget.min, firstMonthRange && firstMonthRange.min]);
+                const maximums = numericBounds([budget && budget.max, firstMonthRange && firstMonthRange.max]);
                 state.monthlyPriceMin = minimums.length ? Math.max(...minimums) : null;
                 state.monthlyPriceMax = maximums.length ? Math.min(...maximums) : null;
                 syncFilterControls();
@@ -1103,7 +1103,7 @@
             let sortSelect, sortPicker, directionButton;
             if (Directory) {
                 const tools = document.createElement('div'); tools.className = 'usage-detail-tools';
-                tools.innerHTML = `<label data-select-fallback>排序 <select id="pricingSort" aria-label="明细排序">${COMPARISON_TABLE_COLUMNS.filter(column => column.sortable !== false).map(column => `<option value="${column.key}">${column.key === 'unitPriceCnyPerM' ? '默认（综合单价）' : column.key === 'price' ? '每月价格' : column.label}</option>`).join('')}</select></label><button class="tool-button price-sort-direction" type="button" aria-label="改为降序">↑</button>`;
+                tools.innerHTML = `<label data-select-fallback>排序 <select id="pricingSort" aria-label="明细排序">${COMPARISON_TABLE_COLUMNS.filter(column => column.sortable !== false).map(column => `<option value="${column.key}">${column.key === 'unitPriceCnyPerM' ? '默认（综合单价）' : column.key === 'price' ? '首月价格' : column.label}</option>`).join('')}</select></label><button class="tool-button price-sort-direction" type="button" aria-label="改为降序">↑</button>`;
                 const count = container.querySelector('[data-table-count]'); count.before(tools);
                 const pagerHtml='<button class="tool-button" type="button" data-price-page="first">第一页</button><button class="tool-button" type="button" data-price-page="previous">上一页</button><span data-price-page-label aria-live="polite"></span><button class="tool-button" type="button" data-price-page="next">下一页</button>';
                 const pager=document.createElement('div');pager.className='price-pagination';pager.dataset.pricePagination='';pager.innerHTML=pagerHtml;
@@ -1175,7 +1175,7 @@
                 const tokenUnitLabel = Numbers.tokenUnit(state.tokenUnit);
                 const usageZone = buildUsageAttractiveZone(usagePoints, state.tokenUnit, state.tokensScale);
                 setScatterOptions(usageChart, Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
-                    xAxis: { type: state.tokensScale, name: '月费（人民币）', nameLocation: 'middle', nameGap: 38, min: usageZone.xBounds.min, max: usageZone.xBounds.max, logBase: 10, axisLabel: { formatter: (v) => Numbers.monthlyFee(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
+                    xAxis: { type: state.tokensScale, name: '首月价格（人民币）', nameLocation: 'middle', nameGap: 38, min: usageZone.xBounds.min, max: usageZone.xBounds.max, logBase: 10, axisLabel: { formatter: (v) => Numbers.monthlyFee(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     yAxis: { type: state.tokensScale, name: `月 Token（${tokenUnitLabel}）`, nameLocation: 'middle', nameGap: 55, min: usageZone.yBounds.min, max: usageZone.yBounds.max, logBase: 10, axisLabel: { formatter: (v) => Numbers.tokens(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     series: [buildUsageAttractiveZoneSeries(usageZone), ...seriesByColor(usagePoints, state.colorMode, color.colors, (point) => ({ value: [point.monthlyFeeCny, tokenAmountInUnit(point.monthlyTokenInM, state.tokenUnit)], meta: point }), 'usage', pointLabelField)]
                 }), true);

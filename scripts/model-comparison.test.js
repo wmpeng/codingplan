@@ -355,7 +355,7 @@ test('comparison table rows format subscription and API semantics', () => {
     note: '按官方额度推算'
   });
   assert.match(subscription, /平台A/);
-  assert.match(subscription, /¥70 \/ 月/);
+  assert.match(subscription, /¥70 \/ 首月/);
   assert.match(subscription, /Model A \[峰\]/);
   assert.match(subscription, /12\.5M/);
   assert.match(subscription, /50M/);
@@ -370,7 +370,7 @@ test('comparison table rows format subscription and API semantics', () => {
     originalMonthlyFee: 10, originalCurrency: '$', monthlyFeeCny: 68,
     relationLabel: 'Model B', unitPriceCnyPerM: 1
   });
-  assert.match(usdSubscription, /\$10（约 ¥68） \/ 月/);
+  assert.match(usdSubscription, /\$10（约 ¥68） \/ 首月/);
 
   const api = comparisonTableRowHtml({
     slug: 'api', billingMode: 'payg', platformName: 'DeepSeek', planName: '按量 API',
