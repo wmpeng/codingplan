@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-20T07:07:24Z",
+  "generatedAt": "2026-10-20T08:48:45Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -350,9 +350,6 @@
       ],
       "note": "• 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
       "planStatus": "delisted",
-      "measuredFiveHoursTokenLimit": 6,
-      "measuredWeeklyTokenLimit": 30,
-      "measuredMonthlyTokenLimit": 120,
       "planModels": [
         {
           "slug": "zhipu-coding-plan-lite--glm-5-1",
@@ -414,9 +411,6 @@
       ],
       "note": "• 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
       "planStatus": "delisted",
-      "measuredFiveHoursTokenLimit": 30,
-      "measuredWeeklyTokenLimit": 150,
-      "measuredMonthlyTokenLimit": 600,
       "planModels": [
         {
           "slug": "zhipu-coding-plan-pro--glm-5-1",
@@ -491,9 +485,6 @@
       ],
       "note": "• 20倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算",
       "planStatus": "delisted",
-      "measuredFiveHoursTokenLimit": 120,
-      "measuredWeeklyTokenLimit": 600,
-      "measuredMonthlyTokenLimit": 2400,
       "planModels": [
         {
           "slug": "zhipu-coding-plan-max--glm-5-1",
@@ -4352,9 +4343,6 @@
       "benefits": [],
       "note": "• Token Plan 升级后保留档，仅老用户可续订\n• 支持 M3 与多模态，和 M2.7 共享额度池\n• 若中途断订，后续不可再次订阅同档",
       "planStatus": "delisted",
-      "measuredFiveHoursTokenLimit": 24,
-      "measuredWeeklyTokenLimit": 240,
-      "measuredMonthlyTokenLimit": 960,
       "planModels": [
         {
           "slug": "minimax-coding-plan-starter--minimax-m3",
@@ -4427,9 +4415,6 @@
       "benefits": [],
       "note": "• 当前公开订阅档位\n• 支持 M3 与多模态，和 M2.7 共享额度池\n• 套餐额度受 5 小时窗口与周窗口控制",
       "planStatus": "delisted",
-      "measuredMonthlyTokenLimit": 2400,
-      "measuredFiveHoursTokenLimit": 60,
-      "measuredWeeklyTokenLimit": 600,
       "planModels": [
         {
           "slug": "minimax-coding-plan-plus--minimax-m3",
@@ -4502,9 +4487,6 @@
       "benefits": [],
       "note": "• 约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算",
       "planStatus": "delisted",
-      "measuredMonthlyTokenLimit": 7200,
-      "measuredFiveHoursTokenLimit": 180,
-      "measuredWeeklyTokenLimit": 1800,
       "planModels": [
         {
           "slug": "minimax-coding-plan-max--minimax-m3",
@@ -4577,9 +4559,6 @@
       "benefits": [],
       "note": "• 约100TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算",
       "planStatus": "delisted",
-      "measuredFiveHoursTokenLimit": 60,
-      "measuredWeeklyTokenLimit": 600,
-      "measuredMonthlyTokenLimit": 2400,
       "planModels": [
         {
           "slug": "minimax-coding-plan-plus-2--minimax-m3--service-highspeed",
@@ -4652,9 +4631,6 @@
       "benefits": [],
       "note": "• 官方已停售并迁移至新版 Max\n• 迁移后月费 199→119，并补发差价积分\n• 新方案支持 M3 与多模态",
       "planStatus": "delisted",
-      "measuredFiveHoursTokenLimit": 180,
-      "measuredWeeklyTokenLimit": 1800,
-      "measuredMonthlyTokenLimit": 7200,
       "planModels": [
         {
           "slug": "minimax-coding-plan-max-2--minimax-m3--service-highspeed",
@@ -5057,9 +5033,6 @@
       ],
       "note": "• 3倍Claude Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算\n• 实测用量参考国内版同档",
       "planStatus": "delisted",
-      "measuredFiveHoursTokenLimit": 6,
-      "measuredWeeklyTokenLimit": 30,
-      "measuredMonthlyTokenLimit": 120,
       "planModels": [
         {
           "slug": "zhipu-intl-coding-plan-lite--glm-5-1",
@@ -5122,9 +5095,6 @@
       ],
       "note": "• 5倍Lite用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算\n• 实测用量参考国内版同档",
       "planStatus": "delisted",
-      "measuredFiveHoursTokenLimit": 30,
-      "measuredWeeklyTokenLimit": 150,
-      "measuredMonthlyTokenLimit": 600,
       "planModels": [
         {
           "slug": "zhipu-intl-coding-plan-pro--glm-5-1",
@@ -5200,9 +5170,6 @@
       ],
       "note": "• 4倍Pro用量。官方以prompt计数，这里按1 prompt≈15次请求换算\n• 官方只有周限量无月限量，这里按照1月=4周计算\n• 实测用量参考国内版同档",
       "planStatus": "delisted",
-      "measuredFiveHoursTokenLimit": 120,
-      "measuredWeeklyTokenLimit": 600,
-      "measuredMonthlyTokenLimit": 2400,
       "planModels": [
         {
           "slug": "zhipu-intl-coding-plan-max--glm-5-1",
@@ -5274,9 +5241,6 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "新版上线前购买的老套餐可继续使用及续订；保留五小时、周窗口和月总额度。原社区 Token 数仅供老套餐参考。",
-      "measuredFiveHoursTokenLimit": 6,
-      "measuredWeeklyTokenLimit": 27,
-      "measuredMonthlyTokenLimit": 108,
       "planStatus": "delisted",
       "planModels": [
         {
@@ -5328,9 +5292,6 @@
         "免费Kimi-Claw"
       ],
       "note": "新版上线前购买的老套餐可继续使用及续订；保留五小时、周窗口和月总额度。原社区 Token 数仅供老套餐参考。",
-      "measuredFiveHoursTokenLimit": 27,
-      "measuredWeeklyTokenLimit": 135,
-      "measuredMonthlyTokenLimit": 540,
       "planStatus": "delisted",
       "planModels": [
         {
@@ -5411,9 +5372,6 @@
         "免费Kimi-Claw"
       ],
       "note": "新版上线前购买的老套餐可继续使用及续订；保留五小时、周窗口和月总额度。原社区 Token 数仅供老套餐参考。",
-      "measuredFiveHoursTokenLimit": 80,
-      "measuredWeeklyTokenLimit": 400,
-      "measuredMonthlyTokenLimit": 1600,
       "planStatus": "delisted",
       "planModels": [
         {
@@ -5492,9 +5450,6 @@
       "monthlyRequests": "未公开",
       "benefits": [],
       "note": "新版上线前购买的老套餐可继续使用及续订；保留五小时、周窗口和月总额度。原社区 Token 数仅供老套餐参考。",
-      "measuredFiveHoursTokenLimit": 5,
-      "measuredWeeklyTokenLimit": 7,
-      "measuredMonthlyTokenLimit": 28,
       "planStatus": "delisted",
       "planModels": [
         {
@@ -10651,9 +10606,6 @@
       "benefits": [],
       "note": "",
       "planStatus": "delisted",
-      "measuredFiveHoursTokenLimit": 40,
-      "measuredWeeklyTokenLimit": 300,
-      "measuredMonthlyTokenLimit": 600,
       "planModels": [
         {
           "slug": "aliyun-bailian-coding-plan-lite--qwen-3-7-plus",

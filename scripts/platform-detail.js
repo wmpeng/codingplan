@@ -140,13 +140,6 @@
   function formatPlanQuota(plan) {
     if (!plan) return '';
 
-    if (
-      typeof plan.measuredMonthlyTokenLimit === 'number' &&
-      Number.isFinite(plan.measuredMonthlyTokenLimit) &&
-      plan.measuredMonthlyTokenLimit > 0
-    ) {
-      return `${Numbers.tokens(plan.measuredMonthlyTokenLimit)}M Token`;
-    }
     if (typeof plan.monthlyRequests === 'number' && Number.isFinite(plan.monthlyRequests)) {
       const short = formatCountShort(plan.monthlyRequests);
       return short ? `${short}次/月` : '';

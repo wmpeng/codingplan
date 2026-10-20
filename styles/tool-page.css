@@ -37,7 +37,7 @@ body.tool-page {
 .tool-tag { display: inline-block; margin: 0 4px 4px 0; padding: 3px 7px; border-radius: 999px; background: var(--tool-soft); color: var(--tool-muted); font-size: 11px; }
 .tool-empty { padding: 52px 20px; text-align: center; color: var(--tool-muted); }
 .tool-footer { display: flex; justify-content: space-between; gap: 16px; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--tool-line); color: var(--tool-muted); font-size: 13px; }
-.tool-page .usage-explorer, .tool-page .plan-usage-panel { margin-top: 0; }
+.tool-page .usage-explorer { margin-top: 0; }
 .tool-page .platform-catalog { margin-top: 0; }
 .tool-page .platform-card-grid { margin-top: 14px; }
 .tool-page .monitor-toolbar { position: static; }

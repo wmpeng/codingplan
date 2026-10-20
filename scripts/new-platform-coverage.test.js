@@ -20,7 +20,6 @@ test('new platforms have ordered plans, descriptions and model coverage',()=>{
     assert.equal(p.quarterlyPrice, typeof p.monthlyPrice==='number' ? p.monthlyPrice*3 : '不适用');
     if (p.slug === 'trae-intl-free') assert.ok(!relations.some(r=>r.planSlug===p.slug));
     else assert.ok(relations.some(r=>r.planSlug===p.slug),p.slug);
-    assert.equal(p.measuredMonthlyTokenLimit,undefined);
   }
   assert.ok(!relations.some(r=>r.planSlug==='trae-cn-lite' && r.modelSlug==='doubao-seed-evolving'));
 });

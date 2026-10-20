@@ -193,7 +193,7 @@ describe('buildDetailBodyHtml', () => {
         monthlyPrice: 100,
         firstMonthPrice: 90,
         rating: 4,
-        measuredMonthlyTokenLimit: 600,
+        monthlyRequests: 600,
         planStatus: 'open'
       },
       { platformSlug: 'x', name: 'Old', billingMode: 'subscription', monthlyPrice: 50, planStatus: 'delisted' }
@@ -204,7 +204,7 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('platform-detail-plan-title-row'));
     assert.ok(html.includes('Pro'));
     assert.ok(!html.includes('Old'));
-    assert.ok(html.includes('600M Token'));
+    assert.ok(html.includes('600次/月'));
     assert.ok(html.includes('¥100'));
     assert.ok(html.includes('首月'));
     assert.ok(html.includes('platform-detail-price-sep'));
@@ -274,36 +274,6 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('platform-detail-plan-main'));
     assert.ok(!html.includes('未公开'));
     assert.ok(!html.includes('platform-detail-plan-quota'));
-  });
-
-  it('prefers measured monthly token over request counts for quota pill', () => {
-    const plans = [
-      {
-        platformSlug: 'kimi',
-        name: 'Andante',
-        billingMode: 'subscription',
-        monthlyPrice: 49,
-        fiveHoursRequests: '未公开',
-        weeklyRequests: '未公开',
-        monthlyRequests: '未公开',
-        measuredMonthlyTokenLimit: 84,
-        planStatus: 'open'
-      },
-      {
-        platformSlug: 'kimi',
-        name: 'Zero',
-        billingMode: 'subscription',
-        monthlyPrice: 1,
-        planStatus: 'open'
-      }
-    ];
-    const html = buildDetailBodyHtml(samplePlatform({ slug: 'kimi', name: 'Kimi' }), { plans, monitorRow: null });
-    assert.ok(html.includes('Andante'));
-    assert.ok(html.includes('Zero'));
-    assert.ok(html.includes('84M Token'));
-    assert.ok(!html.includes('未公开'));
-    assert.ok(!html.includes('无限制'));
-    assert.ok(!html.includes('0M'));
   });
 
   it('omits plans section when empty', () => {

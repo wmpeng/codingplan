@@ -102,9 +102,6 @@
       "fiveHoursRequests": "5小时请求数",
       "weeklyRequests": "每周请求数",
       "monthlyRequests": "每月请求数",
-      "measuredFiveHoursTokenLimit": "5h Token",
-      "measuredWeeklyTokenLimit": "周Token",
-      "measuredMonthlyTokenLimit": "月Token",
       "benefits": "其他权益",
       "planStatus": "状态",
       "note": "备注"
