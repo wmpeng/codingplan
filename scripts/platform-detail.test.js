@@ -244,7 +244,7 @@ describe('buildDetailBodyHtml', () => {
       }
     ];
     const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
-    assert.ok(html.includes('2.4万次/月') || html.includes('24000'));
+    assert.ok(html.includes('2.40万次/月') || html.includes('24000'));
   });
 
   it('hides plans section when only discontinued plans exist', () => {

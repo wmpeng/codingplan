@@ -4,32 +4,36 @@
   root.NumberDisplay = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
-  const significant = new Intl.NumberFormat('en-US', { maximumSignificantDigits: 3, useGrouping: true });
+  const significant = new Intl.NumberFormat('en-US', { minimumSignificantDigits: 4, maximumSignificantDigits: 4, useGrouping: true });
   const integer = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0, useGrouping: true });
-  const fixedPrice = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true });
-  const general = new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, useGrouping: true });
+  const decimal = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true });
   function finite(value) {
     if (value == null || typeof value === 'boolean' || (typeof value === 'string' && !value.trim())) return null;
     if (typeof value !== 'number' && typeof value !== 'string') return null;
     const number = Number(value);
     return Number.isFinite(number) ? (number === 0 ? 0 : number) : null;
   }
-  function format(value, formatter, unknown = '—') {
+  function format(value, unknown = '—') {
     const number = finite(value);
-    return number === null ? unknown : formatter.format(number);
+    if (number === null) return unknown;
+    const magnitude = Math.abs(number);
+    if (number === 0) return '0';
+    if (magnitude < 0.0001) return number > 0 ? '<0.0001' : '>-0.0001';
+    if (magnitude < 0.01) return significant.format(number);
+    return (magnitude >= 100 || Number.isInteger(number) ? integer : decimal).format(number);
   }
-  const tokens = (value, unknown) => value === 'unlimited' ? '不限量' : format(value, significant, unknown);
-  const count = (value, unknown) => format(value, integer, unknown);
-  const amount = (value, unknown) => format(value, general, unknown);
-  function money(value, currency, formatter, floor, unknown) {
+  const tokens = (value, unknown) => value === 'unlimited' ? '不限量' : format(value, unknown);
+  const count = format;
+  const amount = format;
+  function money(value, currency, unknown) {
     if (value === '不适用') return value;
     const number = finite(value);
     if (number === null || number < 0) return unknown;
-    const prefix = number > 0 && number < floor / 2 ? '<' : '';
-    return `${prefix}${currency}${formatter.format(prefix ? floor : number)}`;
+    const text = format(number);
+    return text.startsWith('<') ? `<${currency}${text.slice(1)}` : `${currency}${text}`;
   }
-  const unitPrice = (value, currency = '¥', unknown = '—') => money(value, currency, fixedPrice, 0.01, unknown);
-  const monthlyFee = (value, currency = '¥', unknown = '—') => money(value, currency, integer, 1, unknown);
+  const unitPrice = (value, currency = '¥', unknown = '—') => money(value, currency, unknown);
+  const monthlyFee = (value, currency = '¥', unknown = '—') => money(value, currency, unknown);
   const tokenFactor = unit => unit === 'B' ? 1000 : unit === 'yi' ? 100 : 1;
   const tokenUnit = unit => unit === 'B' ? 'B' : unit === 'yi' ? '亿' : 'M';
   function tokenAmount(value, unit, unknown) {
