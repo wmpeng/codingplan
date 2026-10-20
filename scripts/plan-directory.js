@@ -30,8 +30,7 @@
     return sort.direction === 'asc' ? {key, direction:'desc'} : {key:'platformOrder', direction:'asc'};
   }
   function priceValue(plan, key) {
-    const value = plan[key];
-    return key === 'firstMonthPrice' && !(typeof value === 'number' && Number.isFinite(value)) ? plan.monthlyPrice : value;
+    return plan[key];
   }
   function select(plans, state, options = {}) {
     const {context, config = {}, query = '', sort = {key:'platformOrder', direction:'asc'}} = options;

@@ -4,6 +4,7 @@
   const UI = root.CodingPlanUI, esc = UI.escapeHtml, Numbers = root.NumberDisplay;
   const money = (plan, field) => {
     const value = Directory.priceValue(plan, field);
+    if (value === '不适用') return value;
     if (field === 'monthlyPrice' || field === 'firstMonthPrice') return Numbers.monthlyFee(value, plan.currency || '¥', '未知');
     return Numbers.finite(value) === null ? '未知' : `${plan.currency || '¥'}${Numbers.amount(value)}`;
   };

@@ -68,23 +68,21 @@ test('表头按升序、降序、默认循环，切换字段从升序开始', ()
   sort=Directory.cycleSort({key:'monthlyPrice',direction:'desc'},'rating');assert.deepEqual(sort,{key:'rating',direction:'asc'});
 });
 
-test('首月价格缺省时沿用每月价格，显示与跨币种排序共用，免费和未知保持区别', () => {
+test('使用生成后首月价格，不适用与真实零元保持区别且不反推月价', () => {
   const rows=[
-    {...plans[0],slug:'monthly',firstMonthPrice:null},
+    {...plans[0],slug:'monthly',firstMonthPrice:10},
     {...plans[4],slug:'offer',firstMonthPrice:20},
     {...plans[4],slug:'free',firstMonthPrice:0},
-    {...plans[2],slug:'unknown',firstMonthPrice:null},
-    {...plans[4],slug:'missing'}
+    {...plans[2],slug:'unknown',firstMonthPrice:'不适用'},
+    {...plans[4],slug:'regular',firstMonthPrice:50}
   ];
   assert.equal(Directory.priceValue(rows[0],'firstMonthPrice'),10);
   assert.equal(Directory.priceValue(rows[1],'firstMonthPrice'),20);
   assert.equal(Directory.priceValue(rows[2],'firstMonthPrice'),0);
-  assert.equal(Directory.priceValue(rows[3],'firstMonthPrice'),null);
-  assert.equal(Directory.priceValue(rows[4],'firstMonthPrice'),50);
-  for(const firstMonthPrice of ['-','未公开','未知']) assert.equal(Directory.priceValue({...rows[0],firstMonthPrice},'firstMonthPrice'),10);
-  assert.equal(Directory.priceValue(rows[1],'monthlyPrice'),50);
-  for(const [direction,expected] of [['asc',['free','offer','missing','monthly','unknown']],['desc',['monthly','missing','offer','free','unknown']]]) {
+  assert.equal(Directory.priceValue(rows[3],'firstMonthPrice'),'不适用');
+  assert.equal(Directory.priceValue({monthlyPrice:'不适用',quarterlyPrice:120},'monthlyPrice'),'不适用');
+  for(const [direction,expected] of [['asc',['free','offer','regular','monthly','unknown']],['desc',['monthly','regular','offer','free','unknown']]]) {
     assert.deepEqual(ids(Directory.select(rows,state,{...options,sort:{key:'firstMonthPrice',direction}})),expected);
   }
-  assert.equal(rows[0].firstMonthPrice,null,'展示回退不得写回源记录');
+  assert.equal(rows[3].firstMonthPrice,'不适用');
 });

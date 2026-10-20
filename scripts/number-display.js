@@ -22,6 +22,7 @@
   const count = (value, unknown) => format(value, integer, unknown);
   const amount = (value, unknown) => format(value, general, unknown);
   function money(value, currency, formatter, floor, unknown) {
+    if (value === '不适用') return value;
     const number = finite(value);
     if (number === null || number < 0) return unknown;
     const prefix = number > 0 && number < floor / 2 ? '<' : '';

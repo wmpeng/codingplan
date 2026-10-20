@@ -112,7 +112,7 @@
     const monthly = formatMoney(plan && plan.monthlyPrice, plan && plan.currency);
     if (!monthly) return '-';
     const first = formatMoney(plan && plan.firstMonthPrice, plan && plan.currency);
-    if (first && Number(plan.firstMonthPrice) !== Number(plan.monthlyPrice)) {
+    if (typeof plan.firstMonthPrice === 'number' && first && plan.firstMonthPrice !== plan.monthlyPrice) {
       return (
         `<span class="platform-detail-price-main">${esc(monthly)}</span>` +
         `<span class="platform-detail-price-sep" aria-hidden="true"> · </span>` +

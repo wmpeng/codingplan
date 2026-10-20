@@ -4,6 +4,13 @@ const N = require('./number-display.js');
 const M = require('./model-comparison.js');
 const F = require('./filter-state.js');
 
+test('不适用价格原样显示，零元仍按数字格式化',()=>{
+  assert.equal(N.monthlyFee('不适用'),'不适用');
+  assert.equal(N.unitPrice('不适用'),'不适用');
+  assert.equal(N.monthlyFee(0),'¥0');
+  assert.equal(N.finite('不适用'),null);
+});
+
 test('额度保留最多三位有效数字，整数补零并分组，不使用科学计数', () => {
   const samples = [[1.932, '1.93'], [11.7, '11.7'], [12345, '12,300'], [9999, '10,000'], [0.00000012345, '0.000000123'], [999.5, '1,000'], [0, '0'], [-0, '0']];
   for (const [value, expected] of samples) assert.equal(N.tokens(value), expected);
