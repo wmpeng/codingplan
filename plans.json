@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-20T11:07:34Z",
+  "generatedAt": "2026-10-20T12:29:02Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -41962,7 +41962,7 @@
     },
     {
       "slug": "ctyun-coding-plan-glm-lite",
-      "platformSlug": "ctyun",
+      "platformSlug": "ctyun-glm",
       "name": "GLM Lite",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqctyun",
@@ -42018,7 +42018,7 @@
     },
     {
       "slug": "ctyun-coding-plan-glm-pro",
-      "platformSlug": "ctyun",
+      "platformSlug": "ctyun-glm",
       "name": "GLM Pro",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqctyun",
@@ -42074,7 +42074,7 @@
     },
     {
       "slug": "ctyun-coding-plan-glm-max",
-      "platformSlug": "ctyun",
+      "platformSlug": "ctyun-glm",
       "name": "GLM Max",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqctyun",

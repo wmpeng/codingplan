@@ -1032,29 +1032,55 @@
       "action": "https://api.dreamfree.space/c/s/cpyqinfini"
     },
     {
-      "slug": "ctyun",
-      "name": "天翼云",
+      "slug": "ctyun-glm",
+      "name": "天翼云 · 旧 GLM 套餐",
       "rating": 1,
       "dimensions": {
         "value": {
           "score": 2,
-          "reason": "旧请求制不可新购；官方另有五档存量Token续订权益，与积分制分开。"
+          "reason": "历史 GLM 请求制套餐已停止新购，保留旧价格与权益供参考。"
         },
         "models": {
           "score": 2,
-          "reason": "新旧计费方式、支持型号与续费条件分开。"
+          "reason": "旧 GLM 套餐的模型支持范围与 Token 制和积分制产品分开。"
         },
         "stability": {
           "score": 1,
-          "reason": "历史Coding Plan已下线；Token制存量周期内可续订，当前积分制有独立在售产品。"
+          "reason": "历史 GLM Coding Plan 已下架，当前可购买产品另列。"
         }
       },
       "platformStatus": "delisted",
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
       "supportsHarnessApi": true,
-      "summary": "历史请求制停售；存量Token制仅周期内可续订，新购Credits产品另列。",
-      "detail": "新旧计费方式、支持型号与续费条件分开。",
+      "summary": "历史 GLM 请求制套餐已下架，仅保留旧套餐信息。",
+      "detail": "GLM Lite、Pro、Max 为历史请求制套餐，官方以 prompt 计数。",
+      "action": "https://api.dreamfree.space/c/s/cpyqctyun"
+    },
+    {
+      "slug": "ctyun",
+      "name": "天翼云 · 旧 Token 套餐",
+      "rating": 1,
+      "dimensions": {
+        "value": {
+          "score": 2,
+          "reason": "官方五档存量 Token 续订权益，与当前积分制分开。"
+        },
+        "models": {
+          "score": 2,
+          "reason": "存量 Token 套餐的模型支持范围与旧 GLM 请求制套餐分开。"
+        },
+        "stability": {
+          "score": 1,
+          "reason": "旧 Token 制仅存量订购周期内可续订；当前积分制为独立在售产品。"
+        }
+      },
+      "platformStatus": "delisted",
+      "requiresOverseasNetwork": null,
+      "requiresOverseasPayment": null,
+      "supportsHarnessApi": true,
+      "summary": "旧 Token 制仅允许存量用户在订购周期内续订，新购 Credits 产品另列。",
+      "detail": "保留五档存量 Token 续订套餐及官方月 Token 额度；GLM 请求制旧套餐另列。",
       "action": "https://api.dreamfree.space/c/s/cpyqctyun"
     },
     {
