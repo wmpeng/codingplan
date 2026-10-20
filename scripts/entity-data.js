@@ -226,7 +226,7 @@
         planSlug: plan.slug,
         modelSlug: model.slug,
         platformName: platform.name,
-        planName: plan.comparisonName || plan.name,
+        planName: plan.name,
         ...billingPresentation(model, relation),
         multimodal: model.multimodal,
         scores: comparisonScores(model.scores),

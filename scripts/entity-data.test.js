@@ -143,6 +143,9 @@ test('builds comparison points without name-based joins', () => {
   assert.equal(point.modelSlug, 'model-a');
   assert.equal(point.platformName, '平台A');
   assert.equal(point.planName, 'Pro');
+  const context=fixture();
+  context.plans[0].name='套餐正式名称';
+  assert.equal(EntityData.buildComparisonPoints(context,6.8)[0].planName,'套餐正式名称');
   assert.equal(point.billingMode, 'subscription');
   assert.equal(point.monthlyFeeCny, 68);
   assert.deepEqual(point.scores, { artificialAnalysis: { score: 10, scoreExact: 10.2 } });
