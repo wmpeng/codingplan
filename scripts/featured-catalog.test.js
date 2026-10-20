@@ -4,7 +4,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const E=require('./entity-data.js'),F=require('./filter-state.js'),G=require('./purchase-guide.js'),C=require('./featured-catalog.js'),M=require('./model-comparison.js'),R=require('./offer-results.js');
 const read=n=>JSON.parse(fs.readFileSync(path.join(__dirname,'..',n+'.json'),'utf8'));
-const config=read('config'),preset=read('model-comparison-presets');
+const config=read('config'),preset=read('featured-catalog');
 const ctx=E.buildContext(read('platforms'),read('plans'),read('models'));ctx.modelGroups=preset.groups;
 
 test('精选来源完整、唯一，首页默认选择直接取同一名单',()=>{

@@ -256,7 +256,7 @@ test('unit price sorting uses package price ascending as the tie breaker', () =>
 });
 
 test('one source defines the featured platforms and exactly two model groups', () => {
-  const source = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'model-comparison-presets.json'), 'utf8'));
+  const source = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'featured-catalog.json'), 'utf8'));
   const config = normalizePresetConfig(source);
   assert.deepEqual(config.groups.map(g=>g.id), ['high-volume-models','sota-models']);
   assert.equal(config.platformSlugs.length,7);

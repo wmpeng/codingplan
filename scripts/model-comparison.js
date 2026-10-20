@@ -21,7 +21,7 @@
         '#db2777', '#4f46e5', '#65a30d', '#9333ea', '#ea580c', '#0f766e',
         '#475569', '#a16207', '#be123c', '#0369a1'
     ];
-    // Featured entities come only from model-comparison-presets.json.
+    // Featured entities come only from featured-catalog.json.
     const DEFAULT_PLATFORM_SLUGS = [];
     const DEFAULT_MODEL_SLUGS = [];
     const COMPARISON_TABLE_COLUMNS = [

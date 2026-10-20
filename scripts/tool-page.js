@@ -9,7 +9,7 @@
     }).catch(error => { requests.delete(file); throw error; }));
     return requests.get(file);
   }
-  function loadPreset() { return loadJson('model-comparison-presets.json'); }
+  function loadPreset() { return loadJson('featured-catalog.json'); }
   function load() {
     if (!pending) pending = Promise.all([
       ...['platforms.json', 'plans.json', 'models.json', 'config.json'].map(loadJson),

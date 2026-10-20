@@ -13,7 +13,7 @@ const {applySiteHeader} = require(path.resolve(root,'../scripts/codingplan/site-
 const check = process.argv.includes('--check');
 const generator=path.resolve(root,'../data/platforms/pages/generate.js');
 if(!fs.existsSync(generator))throw new Error('请在维护仓库执行完整生成与检查');
-const config = read('config'), preset = read('model-comparison-presets');
+const config = read('config'), preset = read('featured-catalog');
 const ctx = E.buildContext(read('platforms'),read('plans'),read('models'));
 C.validate(preset,ctx);
 const esc = C.esc;
