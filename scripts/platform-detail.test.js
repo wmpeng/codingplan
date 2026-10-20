@@ -193,7 +193,7 @@ describe('buildDetailBodyHtml', () => {
         monthlyPrice: 100,
         firstMonthPrice: 90,
         rating: 4,
-        monthlyRequests: 600,
+        requestQuota: {fiveHours: 'unknown', weekly: 'unknown', monthly: 600},
         planStatus: 'open'
       },
       { platformSlug: 'x', name: 'Old', billingMode: 'subscription', monthlyPrice: 50, planStatus: 'delisted' }
@@ -221,7 +221,7 @@ describe('buildDetailBodyHtml', () => {
         monthlyPrice: 49,
         firstMonthPrice: '-',
         rating: 3,
-        monthlyRequests: 1900,
+        requestQuota: {fiveHours: 'unknown', weekly: 'unknown', monthly: 1900},
         planStatus: 'open'
       }
     ];
@@ -239,7 +239,7 @@ describe('buildDetailBodyHtml', () => {
         name: 'Lite',
         billingMode: 'subscription',
         monthlyPrice: 49,
-        monthlyRequests: 24000,
+        requestQuota: {fiveHours: 'unknown', weekly: 'unknown', monthly: 24000},
         planStatus: 'open'
       }
     ];

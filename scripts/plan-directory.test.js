@@ -46,6 +46,20 @@ test('月额度排序保留无限制与未知的区别，API 参数不使订阅�
   assert.deepEqual(ids(Directory.select(plans,{...state,apiOnly:true},options)),ids(Directory.select(plans,state,options)));
 });
 
+test('请求额度排序读取嵌套窗口，零值有效，未知与缺省排后', () => {
+  const rows = [
+    {...plans[0], slug:'known', requestQuota:{weekly:4200}},
+    {...plans[0], slug:'zero', requestQuota:{weekly:0}},
+    {...plans[0], slug:'unlimited', requestQuota:{weekly:'unlimited'}},
+    {...plans[0], slug:'unknown', requestQuota:{weekly:'unknown'}},
+    {...plans[0], slug:'absent'}
+  ];
+  const sorted = direction => ids(Directory.select(rows,state,{...options,sort:{key:'requestQuota.weekly',direction}}));
+  assert.deepEqual(sorted('asc'), ['zero','known','unlimited','unknown','absent']);
+  assert.deepEqual(sorted('desc'), ['unlimited','known','zero','unknown','absent']);
+  assert.deepEqual(ids(Directory.select(rows,{...state,requestRanges:{weekly:{min:0,max:4200}}},options)), ['known','zero']);
+});
+
 test('月 Token 按当前所选模型的最大档位排序，忽略未知并保留零值与无限制', () => {
   const row=(slug, values)=>({...plans[0],slug,modelSlugs:['m1','m2','m3'],monthlyTokenOptions:values.map(([modelSlug,value])=>({modelSlug,value}))});
   const rows=[

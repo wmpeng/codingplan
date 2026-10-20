@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-20T08:48:45Z",
+  "generatedAt": "2026-10-20T10:34:09Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -18,9 +18,6 @@
       "monthlyPrice": 118,
       "quarterlyPrice": 283.2,
       "yearlyPrice": 991.2,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [],
       "note": "连续包月为常规月价；连续包季8折、连续包年7折，按整季或整年付款，折算月价不代表可按月付款。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。ZCode、AutoClaw限时提供约1.5倍用量，仅限对应客户端登录使用；AutoClaw需1.17.1及以上。活动起止时间及与峰谷优惠的叠加细则未公布，通用额度和峰谷参考不包含该客户端活动。",
       "planStatus": "open",
@@ -126,9 +123,6 @@
       "monthlyPrice": 538,
       "quarterlyPrice": 1291.2,
       "yearlyPrice": 4519.2,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [],
       "note": "连续包月为常规月价；连续包季8折、连续包年7折，按整季或整年付款，折算月价不代表可按月付款。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。ZCode、AutoClaw限时提供约1.5倍用量，仅限对应客户端登录使用；AutoClaw需1.17.1及以上。活动起止时间及与峰谷优惠的叠加细则未公布，通用额度和峰谷参考不包含该客户端活动。",
       "planStatus": "open",
@@ -234,9 +228,6 @@
       "monthlyPrice": 1078,
       "quarterlyPrice": 2587.2,
       "yearlyPrice": 9055.2,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [],
       "note": "连续包月为常规月价；连续包季8折、连续包年7折，按整季或整年付款，折算月价不代表可按月付款。周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷积分扣减；月参考按官方周额度×4换算，非官方独立月Token保证。ZCode、AutoClaw限时提供约1.5倍用量，仅限对应客户端登录使用；AutoClaw需1.17.1及以上。活动起止时间及与峰谷优惠的叠加细则未公布，通用额度和峰谷参考不包含该客户端活动。",
       "planStatus": "open",
@@ -342,9 +333,6 @@
       "monthlyPrice": 49,
       "quarterlyPrice": 132.3,
       "yearlyPrice": 470.4,
-      "fiveHoursRequests": 1200,
-      "weeklyRequests": 6000,
-      "monthlyRequests": 24000,
       "benefits": [
         "免费MCP次数"
       ],
@@ -403,9 +391,6 @@
       "monthlyPrice": 149,
       "quarterlyPrice": 402.3,
       "yearlyPrice": 1430.4,
-      "fiveHoursRequests": 6000,
-      "weeklyRequests": 30000,
-      "monthlyRequests": 120000,
       "benefits": [
         "免费MCP次数"
       ],
@@ -477,9 +462,6 @@
       "monthlyPrice": 469,
       "quarterlyPrice": 1266.3,
       "yearlyPrice": 4502.4,
-      "fiveHoursRequests": 24000,
-      "weeklyRequests": 120000,
-      "monthlyRequests": 480000,
       "benefits": [
         "免费MCP次数"
       ],
@@ -551,9 +533,6 @@
       "monthlyPrice": 10,
       "quarterlyPrice": 30,
       "yearlyPrice": 120,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
       "note": "各模型月美元额度不同，五小时/周窗口分别为该模型月额度的20%/50%；模型额度不相加。Token 用量按统一工作负载估算，非官方Token上限。",
@@ -1457,9 +1436,6 @@
       "monthlyPrice": 40,
       "quarterlyPrice": 120,
       "yearlyPrice": 480,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
       "note": "各模型月美元额度不同，五小时/周窗口分别为该模型月额度的20%/50%；模型额度不相加。Token 用量按统一工作负载估算，非官方Token上限。",
@@ -2363,9 +2339,6 @@
       "monthlyPrice": 40,
       "quarterlyPrice": 120,
       "yearlyPrice": 480,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [],
       "note": "2026-06-08至2026-11-08普惠活动，Lite/Pro前两个月分别¥9.9/¥49.9，第三个月恢复¥40/¥200；限量，新购、续费、升配共用两个月资格，首购次日起可买第二个月。2026-05-19至2026-11-19受邀首次订阅可再享9.5折，合资格受邀首单叠加后参考约¥9.4/¥47.4，以结算金额为准；活动具体时刻及时区未公布。精确调用次数未公开；Token参考沿用带日期历史测量和推测系数。当前模型活动见明细。",
       "planStatus": "open",
@@ -2591,9 +2564,6 @@
       "monthlyPrice": 200,
       "quarterlyPrice": 600,
       "yearlyPrice": 2400,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [],
       "note": "2026-06-08至2026-11-08普惠活动，Lite/Pro前两个月分别¥9.9/¥49.9，第三个月恢复¥40/¥200；限量，新购、续费、升配共用两个月资格，首购次日起可买第二个月。2026-05-19至2026-11-19受邀首次订阅可再享9.5折，合资格受邀首单叠加后参考约¥9.4/¥47.4，以结算金额为准；活动具体时刻及时区未公布。精确调用次数未公开；Token参考沿用带日期历史测量和推测系数。当前模型活动见明细。",
       "planStatus": "open",
@@ -2819,9 +2789,6 @@
       "monthlyPrice": 40,
       "quarterlyPrice": 116.4,
       "yearlyPrice": 456,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "豆包搜索每月500次免费额度",
         "Agent记忆及应用开发底座",
@@ -3107,9 +3074,6 @@
       "monthlyPrice": 200,
       "quarterlyPrice": 582,
       "yearlyPrice": 2280,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "豆包搜索每月500次免费额度",
         "Agent记忆及应用开发底座",
@@ -3418,9 +3382,6 @@
       "monthlyPrice": 500,
       "quarterlyPrice": 1455,
       "yearlyPrice": 5700,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "豆包搜索每月500次免费额度",
         "Agent记忆及应用开发底座",
@@ -3729,9 +3690,6 @@
       "monthlyPrice": 1000,
       "quarterlyPrice": 2910,
       "yearlyPrice": 11400,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "豆包搜索每月500次免费额度",
         "Agent记忆及应用开发底座",
@@ -4337,9 +4295,6 @@
       "monthlyPrice": 29,
       "quarterlyPrice": 87,
       "yearlyPrice": 290,
-      "fiveHoursRequests": 600,
-      "weeklyRequests": 6000,
-      "monthlyRequests": 24000,
       "benefits": [],
       "note": "• Token Plan 升级后保留档，仅老用户可续订\n• 支持 M3 与多模态，和 M2.7 共享额度池\n• 若中途断订，后续不可再次订阅同档",
       "planStatus": "delisted",
@@ -4409,9 +4364,6 @@
       "monthlyPrice": 49,
       "quarterlyPrice": 147,
       "yearlyPrice": 490,
-      "fiveHoursRequests": 1500,
-      "weeklyRequests": 15000,
-      "monthlyRequests": 60000,
       "benefits": [],
       "note": "• 当前公开订阅档位\n• 支持 M3 与多模态，和 M2.7 共享额度池\n• 套餐额度受 5 小时窗口与周窗口控制",
       "planStatus": "delisted",
@@ -4481,9 +4433,6 @@
       "monthlyPrice": 119,
       "quarterlyPrice": 357,
       "yearlyPrice": 1190,
-      "fiveHoursRequests": 4500,
-      "weeklyRequests": 45000,
-      "monthlyRequests": 180000,
       "benefits": [],
       "note": "• 约50TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算",
       "planStatus": "delisted",
@@ -4553,9 +4502,6 @@
       "monthlyPrice": 98,
       "quarterlyPrice": 294,
       "yearlyPrice": 980,
-      "fiveHoursRequests": 1500,
-      "weeklyRequests": 15000,
-      "monthlyRequests": 60000,
       "benefits": [],
       "note": "• 约100TPS\n• 官方只有周限量无月限量，这里按照1月=4周计算",
       "planStatus": "delisted",
@@ -4625,9 +4571,6 @@
       "monthlyPrice": 199,
       "quarterlyPrice": 597,
       "yearlyPrice": 1990,
-      "fiveHoursRequests": 4500,
-      "weeklyRequests": 45000,
-      "monthlyRequests": 180000,
       "benefits": [],
       "note": "• 官方已停售并迁移至新版 Max\n• 迁移后月费 199→119，并补发差价积分\n• 新方案支持 M3 与多模态",
       "planStatus": "delisted",
@@ -4697,9 +4640,6 @@
       "monthlyPrice": 18,
       "quarterlyPrice": 43.2,
       "yearlyPrice": 151.2,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
       "note": "连续月付$18/$80/$168；季付8折、年付7折，按整季或整年付款。合资格受邀且从未付费订阅的用户，首次订阅订单享9折，后续续费和升级不享；不可叠加同类首单优惠。邀请活动未公布固定截止日；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。通用首次月付为$18；仅符合邀请资格时首单月付参考$16.2，Stripe最终实付不得低于$0.50。ZCode、AutoClaw限时提供约1.5倍用量，仅限对应客户端登录使用；AutoClaw需1.17.1及以上。活动起止时间及与峰谷优惠的叠加细则未公布，通用额度和峰谷参考不包含该客户端活动。",
@@ -4806,9 +4746,6 @@
       "monthlyPrice": 80,
       "quarterlyPrice": 192,
       "yearlyPrice": 672,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
       "note": "连续月付$18/$80/$168；季付8折、年付7折，按整季或整年付款。合资格受邀且从未付费订阅的用户，首次订阅订单享9折，后续续费和升级不享；不可叠加同类首单优惠。邀请活动未公布固定截止日；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。通用首次月付为$80；仅符合邀请资格时首单月付参考$72，Stripe最终实付不得低于$0.50。ZCode、AutoClaw限时提供约1.5倍用量，仅限对应客户端登录使用；AutoClaw需1.17.1及以上。活动起止时间及与峰谷优惠的叠加细则未公布，通用额度和峰谷参考不包含该客户端活动。",
@@ -4915,9 +4852,6 @@
       "monthlyPrice": 168,
       "quarterlyPrice": 403.2,
       "yearlyPrice": 1411.2,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
       "note": "连续月付$18/$80/$168；季付8折、年付7折，按整季或整年付款。合资格受邀且从未付费订阅的用户，首次订阅订单享9折，后续续费和升级不享；不可叠加同类首单优惠。邀请活动未公布固定截止日；周期优惠起止日期、具体时刻和时区未公布。GLM5.3/Flash按峰谷Credits扣减；月参考由官方周额度×4换算，非官方独立月Token保证。通用首次月付为$168；仅符合邀请资格时首单月付参考$151.2，Stripe最终实付不得低于$0.50。ZCode、AutoClaw限时提供约1.5倍用量，仅限对应客户端登录使用；AutoClaw需1.17.1及以上。活动起止时间及与峰谷优惠的叠加细则未公布，通用额度和峰谷参考不包含该客户端活动。",
@@ -5024,9 +4958,6 @@
       "monthlyPrice": 18,
       "quarterlyPrice": 48.6,
       "yearlyPrice": 172.8,
-      "fiveHoursRequests": 1200,
-      "weeklyRequests": 6000,
-      "monthlyRequests": 24000,
       "currency": "$",
       "benefits": [
         "免费MCP次数"
@@ -5086,9 +5017,6 @@
       "monthlyPrice": 72,
       "quarterlyPrice": 194.4,
       "yearlyPrice": 691.2,
-      "fiveHoursRequests": 6000,
-      "weeklyRequests": 30000,
-      "monthlyRequests": 120000,
       "currency": "$",
       "benefits": [
         "免费MCP次数"
@@ -5161,9 +5089,6 @@
       "monthlyPrice": 160,
       "quarterlyPrice": 432,
       "yearlyPrice": 1536,
-      "fiveHoursRequests": 24000,
-      "weeklyRequests": 120000,
-      "monthlyRequests": 480000,
       "currency": "$",
       "benefits": [
         "免费MCP次数"
@@ -5236,9 +5161,6 @@
       "monthlyPrice": 99,
       "quarterlyPrice": 297,
       "yearlyPrice": 948,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [],
       "note": "新版上线前购买的老套餐可继续使用及续订；保留五小时、周窗口和月总额度。原社区 Token 数仅供老套餐参考。",
       "planStatus": "delisted",
@@ -5285,9 +5207,6 @@
       "monthlyPrice": 199,
       "quarterlyPrice": 597,
       "yearlyPrice": 1908,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "免费Kimi-Claw"
       ],
@@ -5365,9 +5284,6 @@
       "monthlyPrice": 699,
       "quarterlyPrice": 2097,
       "yearlyPrice": 6708,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "免费Kimi-Claw"
       ],
@@ -5445,9 +5361,6 @@
       "monthlyPrice": 49,
       "quarterlyPrice": 147,
       "yearlyPrice": 468,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [],
       "note": "新版上线前购买的老套餐可继续使用及续订；保留五小时、周窗口和月总额度。原社区 Token 数仅供老套餐参考。",
       "planStatus": "delisted",
@@ -5478,9 +5391,6 @@
       "monthlyPrice": 49,
       "quarterlyPrice": 147,
       "yearlyPrice": 468,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [],
       "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。Go 不含编程额度。",
       "planStatus": "open",
@@ -5498,9 +5408,6 @@
       "monthlyPrice": 99,
       "quarterlyPrice": 297,
       "yearlyPrice": 948,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "未公开",
       "benefits": [],
       "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。月总额度耗尽后可使用加油包；Token 配额未公布。",
       "planStatus": "open",
@@ -5545,9 +5452,6 @@
       "monthlyPrice": 199,
       "quarterlyPrice": 597,
       "yearlyPrice": 1908,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "未公开",
       "benefits": [
         "专属Kimi Claw"
       ],
@@ -5620,9 +5524,6 @@
       "monthlyPrice": 699,
       "quarterlyPrice": 2097,
       "yearlyPrice": 6708,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "未公开",
       "benefits": [
         "专属Kimi Claw"
       ],
@@ -5695,9 +5596,6 @@
       "monthlyPrice": 1399,
       "quarterlyPrice": 4197,
       "yearlyPrice": 13428,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "未公开",
       "benefits": [
         "专属Kimi Claw"
       ],
@@ -5770,9 +5668,9 @@
       "monthlyPrice": "不适用",
       "quarterlyPrice": "不适用",
       "yearlyPrice": "不适用",
+      "currency": "¥",
       "benefits": [],
       "note": "独立Search与Fetch API分别按每1000次成功请求5元计费，不包含在模型Token费率中；DeepSeek Harness、Claude Code、Codex中的Server端Search/Fetch工具调用当前免费，官方公布2026-11-01 00:00北京时间起按次收费。",
-      "currency": "¥",
       "planStatus": "open",
       "planModels": [
         {
@@ -5872,9 +5770,9 @@
       "monthlyPrice": "不适用",
       "quarterlyPrice": "不适用",
       "yearlyPrice": "不适用",
+      "currency": "¥",
       "benefits": [],
       "note": "按实际Token用量计费。邀请8折仅适用于资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。",
-      "currency": "¥",
       "planStatus": "open",
       "planModels": [
         {
@@ -6184,12 +6082,14 @@
       "monthlyPrice": 49,
       "quarterlyPrice": 147,
       "yearlyPrice": 588,
-      "fiveHoursRequests": 300,
-      "weeklyRequests": 750,
-      "monthlyRequests": 1900,
       "benefits": [],
       "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：3 并发\n• Token量按请求负载估算，非官方Token配额；团队分配购买从Basic起",
       "planStatus": "open",
+      "requestQuota": {
+        "fiveHours": 300,
+        "weekly": 750,
+        "monthly": 1900
+      },
       "planModels": [
         {
           "slug": "youyun-mini--glm-5-1",
@@ -6348,12 +6248,14 @@
       "monthlyPrice": 99,
       "quarterlyPrice": 297,
       "yearlyPrice": 1188,
-      "fiveHoursRequests": 600,
-      "weeklyRequests": 1500,
-      "monthlyRequests": 3800,
       "benefits": [],
       "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：5 并发\n• Token量按请求负载估算，非官方Token配额；团队分配购买从Basic起",
       "planStatus": "open",
+      "requestQuota": {
+        "fiveHours": 600,
+        "weekly": 1500,
+        "monthly": 3800
+      },
       "planModels": [
         {
           "slug": "youyun-lite--glm-5-1",
@@ -6512,12 +6414,14 @@
       "monthlyPrice": 199,
       "quarterlyPrice": 597,
       "yearlyPrice": 2388,
-      "fiveHoursRequests": 1200,
-      "weeklyRequests": 3000,
-      "monthlyRequests": 7600,
       "benefits": [],
       "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：10 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
       "planStatus": "open",
+      "requestQuota": {
+        "fiveHours": 1200,
+        "weekly": 3000,
+        "monthly": 7600
+      },
       "planModels": [
         {
           "slug": "youyun-basic--glm-5-1",
@@ -6676,12 +6580,14 @@
       "monthlyPrice": 499,
       "quarterlyPrice": 1497,
       "yearlyPrice": 5988,
-      "fiveHoursRequests": 3000,
-      "weeklyRequests": 7500,
-      "monthlyRequests": 19000,
       "benefits": [],
       "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：20 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
       "planStatus": "open",
+      "requestQuota": {
+        "fiveHours": 3000,
+        "weekly": 7500,
+        "monthly": 19000
+      },
       "planModels": [
         {
           "slug": "youyun-pro--glm-5-1",
@@ -6840,12 +6746,14 @@
       "monthlyPrice": 799,
       "quarterlyPrice": 2397,
       "yearlyPrice": 9588,
-      "fiveHoursRequests": 4800,
-      "weeklyRequests": 12000,
-      "monthlyRequests": 31000,
       "benefits": [],
       "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：20 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
       "planStatus": "open",
+      "requestQuota": {
+        "fiveHours": 4800,
+        "weekly": 12000,
+        "monthly": 31000
+      },
       "planModels": [
         {
           "slug": "youyun-max--glm-5-1",
@@ -7004,12 +6912,14 @@
       "monthlyPrice": 999,
       "quarterlyPrice": 2997,
       "yearlyPrice": 11988,
-      "fiveHoursRequests": 6000,
-      "weeklyRequests": 15000,
-      "monthlyRequests": 39000,
       "benefits": [],
       "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：20 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
       "planStatus": "open",
+      "requestQuota": {
+        "fiveHours": 6000,
+        "weekly": 15000,
+        "monthly": 39000
+      },
       "planModels": [
         {
           "slug": "youyun-ultra--glm-5-1",
@@ -7169,9 +7079,6 @@
       "firstMonthPrice": 0,
       "quarterlyPrice": 0,
       "yearlyPrice": 0,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "桌面端 GPT-6 Luna 标准速度，按账号逐步开放"
       ],
@@ -7205,9 +7112,6 @@
       "firstMonthPrice": 8,
       "quarterlyPrice": 24,
       "yearlyPrice": 96,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "桌面端 GPT-6 Luna 标准速度，按账号逐步开放"
       ],
@@ -7240,9 +7144,6 @@
       "monthlyPrice": 20,
       "quarterlyPrice": 60,
       "yearlyPrice": 240,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
       "note": "Plus有五小时及周用量窗口，ChatGPT与Codex共享使用量；消耗随模型、速度档及负载变化，官方没有固定Token配额，旧测量仅供参考。",
@@ -7458,9 +7359,6 @@
       "monthlyPrice": 100,
       "quarterlyPrice": 300,
       "yearlyPrice": 1200,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
       "note": "• 无5h限制，只有周限制\nChatGPT与Codex共享使用量；窗口消耗随模型、速度档及负载变化，官方没有固定Token配额，旧测量仅供参考。",
@@ -7676,9 +7574,6 @@
       "monthlyPrice": 200,
       "quarterlyPrice": 600,
       "yearlyPrice": 2400,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [],
       "note": "• 无5h限制，只有周限制\nChatGPT与Codex共享使用量；窗口消耗随模型、速度档及负载变化，官方没有固定Token配额，旧测量仅供参考。",
@@ -7894,9 +7789,6 @@
       "monthlyPrice": 500,
       "quarterlyPrice": 1500,
       "yearlyPrice": 6000,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "Ultrafast 资格（依账号与客户端开放情况）"
@@ -8125,9 +8017,6 @@
       "monthlyPrice": 20,
       "quarterlyPrice": 60,
       "yearlyPrice": 200,
-      "fiveHoursRequests": "Pro 基准",
-      "weeklyRequests": "Pro 基准",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "原生 Claude 体验"
@@ -8348,9 +8237,6 @@
       "monthlyPrice": 100,
       "quarterlyPrice": 300,
       "yearlyPrice": 1200,
-      "fiveHoursRequests": "Pro 的 5 倍",
-      "weeklyRequests": "Pro 的 5 倍",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "原生 Claude 体验",
@@ -8578,9 +8464,6 @@
       "monthlyPrice": 200,
       "quarterlyPrice": 600,
       "yearlyPrice": 2400,
-      "fiveHoursRequests": "Pro 的 20 倍",
-      "weeklyRequests": "Pro 的 20 倍",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "原生 Claude 体验",
@@ -8808,9 +8691,6 @@
       "monthlyPrice": 20,
       "quarterlyPrice": 60,
       "yearlyPrice": 200,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "3 个并发任务"
@@ -9351,9 +9231,6 @@
       "monthlyPrice": 100,
       "quarterlyPrice": 300,
       "yearlyPrice": 1200,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "10 个并发任务"
@@ -9894,9 +9771,6 @@
       "monthlyPrice": 39,
       "quarterlyPrice": 117,
       "yearlyPrice": 468,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [],
       "note": "每订阅月 11,500 Credits；自 2026-09-22 取消周限额。当前 ¥39/月限时优惠，常规 ¥60/月，官方未公布活动起止日期。逐模型精确 Credits 扣减未公开，Token 用量未知。 有效订阅可另购100元/个/月的用量包，每个20000 Credits，最多同时5个；先用套餐月额度，再用用量包。套餐月额度不结转。",
       "planStatus": "open",
@@ -10044,9 +9918,6 @@
       "monthlyPrice": 79,
       "quarterlyPrice": 237,
       "yearlyPrice": 948,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [],
       "note": "每订阅月 25,500 Credits；自 2026-09-22 取消周限额。当前 ¥79/月限时优惠，常规 ¥120/月，官方未公布活动起止日期。逐模型精确 Credits 扣减未公开，Token 用量未知。 有效订阅可另购100元/个/月的用量包，每个20000 Credits，最多同时5个；先用套餐月额度，再用用量包。套餐月额度不结转。",
       "planStatus": "open",
@@ -10194,9 +10065,6 @@
       "monthlyPrice": 139,
       "quarterlyPrice": 417,
       "yearlyPrice": 1668,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "AgentStudio Harness 权益独立于 Credits",
         "独立Harness月赠搜索100次、网页解析1000次、代码解释器100次",
@@ -10348,9 +10216,6 @@
       "monthlyPrice": 499,
       "quarterlyPrice": 1497,
       "yearlyPrice": 5988,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "AgentStudio Harness 权益独立于 Credits",
         "独立Harness月赠搜索500次、网页解析5000次、代码解释器500次",
@@ -10502,11 +10367,13 @@
       "monthlyPrice": 200,
       "quarterlyPrice": 600,
       "yearlyPrice": 2400,
-      "fiveHoursRequests": 6000,
-      "weeklyRequests": 45000,
-      "monthlyRequests": 90000,
       "benefits": [],
       "note": "新客首次订阅Pro首月¥39.90，续费¥200/月；优惠起止日期及具体时刻未公布。每日09:30:00（UTC+8）限量补充。按实际模型调用次数扣除额度，单次提问可能含多次模型调用；请求配额不等于固定Token总量。 5小时额度按分钟滚动释放，每周一00:00重置周额，每月订阅日00:00重置月额，均为UTC+8。",
+      "requestQuota": {
+        "fiveHours": 6000,
+        "weekly": 45000,
+        "monthly": 90000
+      },
       "planStatus": "restricted",
       "planModels": [
         {
@@ -10600,9 +10467,6 @@
       "monthlyPrice": 40,
       "quarterlyPrice": 120,
       "yearlyPrice": 480,
-      "fiveHoursRequests": 1200,
-      "weeklyRequests": 9000,
-      "monthlyRequests": 18000,
       "benefits": [],
       "note": "",
       "planStatus": "delisted",
@@ -10698,9 +10562,6 @@
       "monthlyPrice": 39,
       "quarterlyPrice": 117,
       "yearlyPrice": 411.84,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "TTS限时免费，活动起止日期未公布"
       ],
@@ -10808,9 +10669,6 @@
       "monthlyPrice": 99,
       "quarterlyPrice": 297,
       "yearlyPrice": 1045.44,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "TTS限时免费，活动起止日期未公布"
       ],
@@ -10918,9 +10776,6 @@
       "monthlyPrice": 329,
       "quarterlyPrice": 987,
       "yearlyPrice": 3474.24,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "TTS限时免费，活动起止日期未公布"
       ],
@@ -11028,9 +10883,6 @@
       "monthlyPrice": 659,
       "quarterlyPrice": 1977,
       "yearlyPrice": 6959.04,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "TTS限时免费，活动起止日期未公布"
       ],
@@ -11139,9 +10991,6 @@
       "monthlyPrice": 1,
       "quarterlyPrice": 3,
       "yearlyPrice": 12,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "每月 $10 模型 Credits",
@@ -12862,9 +12711,6 @@
       "monthlyPrice": 10,
       "quarterlyPrice": 30,
       "yearlyPrice": 120,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "共享月池以 70 Credits 为基准；型号加成后单型号使用价值可达 $100",
@@ -14944,9 +14790,6 @@
       "monthlyPrice": 20,
       "quarterlyPrice": 60,
       "yearlyPrice": 240,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "共享月池以 80 Credits 为基准；型号加成后单型号使用价值可达 $110",
@@ -17434,9 +17277,6 @@
       "monthlyPrice": 100,
       "quarterlyPrice": 300,
       "yearlyPrice": 1200,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "高级模型池$100/月",
@@ -20188,9 +20028,6 @@
       "monthlyPrice": 200,
       "quarterlyPrice": 600,
       "yearlyPrice": 2400,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "高级模型池$200/月",
@@ -22942,9 +22779,6 @@
       "monthlyPrice": 9.9,
       "quarterlyPrice": 29.7,
       "yearlyPrice": 118.8,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [],
       "note": "Token制，输入/输出/缓存统一1:1抵扣；首购5折活动起止日期未公布。 套餐有效期内首次续费享6折，活动起止日期未公布，具体适用条件以订单为准。",
       "planStatus": "open",
@@ -23138,9 +22972,6 @@
       "monthlyPrice": 40,
       "quarterlyPrice": 120,
       "yearlyPrice": 480,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [],
       "note": "Token制，输入/输出/缓存统一1:1抵扣；首购5折活动起止日期未公布。 套餐有效期内首次续费享6折，活动起止日期未公布，具体适用条件以订单为准。",
       "planStatus": "open",
@@ -23334,9 +23165,6 @@
       "monthlyPrice": 200,
       "quarterlyPrice": 600,
       "yearlyPrice": 2400,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [],
       "note": "Token制，输入/输出/缓存统一1:1抵扣；首购5折活动起止日期未公布。 套餐有效期内首次续费享6折，活动起止日期未公布，具体适用条件以订单为准。",
       "planStatus": "open",
@@ -23530,9 +23358,6 @@
       "monthlyPrice": 600,
       "quarterlyPrice": 1800,
       "yearlyPrice": 7200,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [],
       "note": "Token制，输入/输出/缓存统一1:1抵扣；首购5折活动起止日期未公布。 套餐有效期内首次续费享6折，活动起止日期未公布，具体适用条件以订单为准。",
       "planStatus": "open",
@@ -23726,9 +23551,6 @@
       "monthlyPrice": 40,
       "quarterlyPrice": 120,
       "yearlyPrice": 480,
-      "fiveHoursRequests": 1200,
-      "weeklyRequests": 9000,
-      "monthlyRequests": 18000,
       "benefits": [],
       "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill",
       "planStatus": "delisted",
@@ -23837,9 +23659,6 @@
       "monthlyPrice": 200,
       "quarterlyPrice": 600,
       "yearlyPrice": 2400,
-      "fiveHoursRequests": 6000,
-      "weeklyRequests": 45000,
-      "monthlyRequests": 90000,
       "benefits": [],
       "note": "使用 https://console.bce.baidu.com/qianfan/resource/subscribe 链接可以获得百度搜索额度，支持Baidu Search Skill",
       "planStatus": "delisted",
@@ -23948,9 +23767,6 @@
       "monthlyPrice": 59,
       "quarterlyPrice": 177,
       "yearlyPrice": 708,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n月 Token 总量为官方额度；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
       "planStatus": "restricted",
@@ -24078,9 +23894,6 @@
       "monthlyPrice": 149,
       "quarterlyPrice": 447,
       "yearlyPrice": 1788,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n• 页面标\"最受欢迎\"档\n月 Token 总量为官方额度；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
       "planStatus": "restricted",
@@ -24208,9 +24021,6 @@
       "monthlyPrice": 399,
       "quarterlyPrice": 1197,
       "yearlyPrice": 4788,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n月 Token 总量为官方额度；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
       "planStatus": "restricted",
@@ -24338,9 +24148,6 @@
       "monthlyPrice": 799,
       "quarterlyPrice": 2397,
       "yearlyPrice": 9588,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [],
       "note": "• 限个人用户购买，每个用户限购 1 套\n• 订阅后不支持退订\n• 订阅后开通 Token Plan 专属 URL 直接接入 Coding / Agent 工具，无需单独开通模型服务\n• 仅限 AI Coding 与 Agent 工具使用，违规使用可能导致 Plan 被中止\n月 Token 总量为官方额度；仅西南贵阳一、每日限量发售；TPM和调用次数不能等同额度上限。",
       "planStatus": "restricted",
@@ -24468,9 +24275,6 @@
       "monthlyPrice": 39,
       "quarterlyPrice": 117,
       "yearlyPrice": 468,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "780积分/订阅月",
         "当前13个模型/路由（含Auto）"
@@ -24777,9 +24581,6 @@
       "monthlyPrice": 99,
       "quarterlyPrice": 297,
       "yearlyPrice": 1188,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "1980积分/订阅月",
         "当前13个模型/路由（含Auto）"
@@ -25086,9 +24887,6 @@
       "monthlyPrice": 299,
       "quarterlyPrice": 897,
       "yearlyPrice": 3588,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "5980积分/订阅月",
         "当前13个模型/路由（含Auto）"
@@ -25395,9 +25193,6 @@
       "monthlyPrice": 599,
       "quarterlyPrice": 1797,
       "yearlyPrice": 7188,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "11980积分/订阅月",
         "当前13个模型/路由（含Auto）"
@@ -25704,9 +25499,6 @@
       "monthlyPrice": 40,
       "quarterlyPrice": 120,
       "yearlyPrice": 480,
-      "fiveHoursRequests": 1200,
-      "weeklyRequests": 9000,
-      "monthlyRequests": 18000,
       "benefits": [],
       "note": "",
       "planStatus": "delisted",
@@ -25789,9 +25581,6 @@
       "monthlyPrice": 200,
       "quarterlyPrice": 600,
       "yearlyPrice": 2400,
-      "fiveHoursRequests": 6000,
-      "weeklyRequests": 45000,
-      "monthlyRequests": 90000,
       "benefits": [],
       "note": "",
       "planStatus": "delisted",
@@ -25872,17 +25661,14 @@
       "rating": 3,
       "monthlyPrice": 59,
       "currency": "¥",
+      "yearlyPrice": 637.2,
+      "quarterlyPrice": 177,
+      "firstMonthPrice": 59,
       "benefits": [
         "2,000 Credits/月",
         "覆盖 Qoder CN 全家桶"
       ],
       "note": "Credits不等于Token，具体Token用量未知；年付为月付总价的9折。活动期内首次个人月付Pro另赠2000Qwen专属Credits（仅限Qwen系列）；符合活动条件的个人月付续费或升级另赠1000Qwen专属Credits（仅限Qwen系列），每笔30天有效；年付续费或升级不参加续费加赠；年付首购资格和重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。",
-      "yearlyPrice": 637.2,
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 177,
-      "firstMonthPrice": 59,
       "planStatus": "open",
       "planModels": [
         {
@@ -26078,17 +25864,14 @@
       "rating": 3,
       "monthlyPrice": 169,
       "currency": "¥",
+      "yearlyPrice": 1825.2,
+      "quarterlyPrice": 507,
+      "firstMonthPrice": 169,
       "benefits": [
         "6,000 Credits/月",
         "覆盖 Qoder CN 全家桶"
       ],
       "note": "Credits不等于Token，具体Token用量未知；年付为月付总价的9折。活动期内首次个人月付Pro+另赠6000Qwen专属Credits（仅限Qwen系列）；符合活动条件的个人月付续费或升级另赠1000Qwen专属Credits（仅限Qwen系列），每笔30天有效；年付续费或升级不参加续费加赠；年付首购资格和重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。",
-      "yearlyPrice": 1825.2,
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 507,
-      "firstMonthPrice": 169,
       "planStatus": "open",
       "planModels": [
         {
@@ -26284,17 +26067,14 @@
       "rating": 3,
       "monthlyPrice": 559,
       "currency": "¥",
+      "yearlyPrice": 6037.2,
+      "quarterlyPrice": 1677,
+      "firstMonthPrice": 559,
       "benefits": [
         "20,000 Credits/月",
         "覆盖 Qoder CN 全家桶"
       ],
       "note": "Credits不等于Token，具体Token用量未知；年付为月付总价的9折。首次购买Ultra不计首购加赠；符合活动条件的个人月付续费或升级另赠1000Qwen专属Credits（仅限Qwen系列），每笔30天有效；年付续费或升级不参加续费加赠；年付首购资格和重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。",
-      "yearlyPrice": 6037.2,
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 1677,
-      "firstMonthPrice": 559,
       "planStatus": "open",
       "planModels": [
         {
@@ -26490,17 +26270,14 @@
       "rating": 3,
       "monthlyPrice": 20,
       "currency": "$",
+      "quarterlyPrice": 60,
+      "yearlyPrice": 240,
+      "firstMonthPrice": 20,
       "benefits": [
         "2,000 Credits/月",
         "Quest、Repo Wiki、知识卡片"
       ],
       "note": "套餐Credits在当前订阅周期内有效，到期不结转；价格未含适用税费，具体Token用量未知。活动期内首次个人月付Pro另赠2000通用Credits；符合活动条件的个人月付续费或升级另赠1000通用Credits，每笔30天有效；BOGO仅限个人月付，年付不适用；重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。Efficient档位自2026-09-03 14:00（UTC+8）起对有效付费个人订阅免Credits，结束时间未公布，常规0.3×；子代理另调具体型号仍按对应规则收费。Ultimate档位2026-10-14 22:00至2026-10-31 08:00（UTC+8）期间，每日22:00至次日08:00参考系数由2×降至0.4×，其余时段2×。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 60,
-      "yearlyPrice": 240,
-      "firstMonthPrice": 20,
       "planStatus": "open",
       "planModels": [
         {
@@ -26657,17 +26434,14 @@
       "rating": 3,
       "monthlyPrice": 60,
       "currency": "$",
+      "quarterlyPrice": 180,
+      "yearlyPrice": 720,
+      "firstMonthPrice": 60,
       "benefits": [
         "6,000 Credits/月",
         "Quest、Repo Wiki、知识卡片"
       ],
       "note": "套餐Credits在当前订阅周期内有效，到期不结转；价格未含适用税费，具体Token用量未知。活动期内首次个人月付Pro+另赠6000通用Credits；符合活动条件的个人月付续费或升级另赠1000通用Credits，每笔30天有效；BOGO仅限个人月付，年付不适用；重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。Efficient档位自2026-09-03 14:00（UTC+8）起对有效付费个人订阅免Credits，结束时间未公布，常规0.3×；子代理另调具体型号仍按对应规则收费。Ultimate档位2026-10-14 22:00至2026-10-31 08:00（UTC+8）期间，每日22:00至次日08:00参考系数由2×降至0.4×，其余时段2×。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 180,
-      "yearlyPrice": 720,
-      "firstMonthPrice": 60,
       "planStatus": "open",
       "planModels": [
         {
@@ -26824,17 +26598,14 @@
       "rating": 3,
       "monthlyPrice": 200,
       "currency": "$",
+      "quarterlyPrice": 600,
+      "yearlyPrice": 2400,
+      "firstMonthPrice": 200,
       "benefits": [
         "20,000 Credits/月",
         "Quest、Repo Wiki、知识卡片"
       ],
       "note": "套餐Credits在当前订阅周期内有效，到期不结转；价格未含适用税费，具体Token用量未知。首次购买Ultra不计首购加赠；符合活动条件的个人月付续费或升级另赠1000通用Credits，每笔30天有效；BOGO仅限个人月付，年付不适用；重复加赠次数未明确，实际加赠以订单确认为准。活动自2026-09-01 10:00（UTC+8）开始，10月1日起已延长，结束时间未公布。自2026-09-18 10:00（UTC+8）起，免费、试用及付费个人用户可在对应区域Qoder桌面端主动领取100通用Credits；每日10:00至次日10:00前每账号限领一次，错过不补，未领取额度不累计。每笔自领取起30天独立有效，领取后同账号产品族共享；结束时间未公布，不计入固定月额度。各客户端可选型号可能不同；自定义API费用由第三方另计。Efficient档位自2026-09-03 14:00（UTC+8）起对有效付费个人订阅免Credits，结束时间未公布，常规0.3×；子代理另调具体型号仍按对应规则收费。Ultimate档位2026-10-14 22:00至2026-10-31 08:00（UTC+8）期间，每日22:00至次日08:00参考系数由2×降至0.4×，其余时段2×。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 600,
-      "yearlyPrice": 2400,
-      "firstMonthPrice": 200,
       "planStatus": "open",
       "planModels": [
         {
@@ -26991,18 +26762,15 @@
       "rating": 3,
       "monthlyPrice": 70,
       "currency": "¥",
+      "yearlyPrice": 672,
+      "quarterlyPrice": 210,
+      "firstMonthPrice": 70,
       "benefits": [
         "4000积分/月（含加赠，起止日期未公布）",
         "全模型可选",
         "CLI访问支持"
       ],
       "note": "连续包月7折，单次月付99元；当前加赠积分活动起止日期未公布，常规2000积分/月，活动实得4000积分/月。",
-      "yearlyPrice": 672,
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 210,
-      "firstMonthPrice": 70,
       "planStatus": "open",
       "planModels": [
         {
@@ -27198,18 +26966,15 @@
       "rating": 3,
       "monthlyPrice": 140,
       "currency": "¥",
+      "yearlyPrice": 1344,
+      "quarterlyPrice": 420,
+      "firstMonthPrice": 140,
       "benefits": [
         "9000积分/月（含加赠，起止日期未公布）",
         "全模型可选",
         "CLI访问支持"
       ],
       "note": "连续包月7折，单次月付199元；当前加赠积分活动起止日期未公布，常规4000积分/月，活动实得9000积分/月。",
-      "yearlyPrice": 1344,
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 420,
-      "firstMonthPrice": 140,
       "planStatus": "open",
       "planModels": [
         {
@@ -27405,18 +27170,15 @@
       "rating": 3,
       "monthlyPrice": 700,
       "currency": "¥",
+      "yearlyPrice": 6720,
+      "quarterlyPrice": 2100,
+      "firstMonthPrice": 700,
       "benefits": [
         "50000积分/月（含加赠，起止日期未公布）",
         "全模型可选",
         "CLI访问支持"
       ],
       "note": "连续包月7折，单次月付999元；当前加赠积分活动起止日期未公布，常规20000积分/月，活动实得50000积分/月。",
-      "yearlyPrice": 6720,
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 2100,
-      "firstMonthPrice": 700,
       "planStatus": "open",
       "planModels": [
         {
@@ -27620,9 +27382,6 @@
       ],
       "note": "常规Auto调度，当前限免全模型可选，活动起止日期未公布；不含CLI访问；积分与CodeBuddy共享",
       "planStatus": "open",
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "planModels": [
         {
           "slug": "workbuddy-free--hy4-preview",
@@ -27825,9 +27584,6 @@
       ],
       "note": "2026-07-01前已开启自动续费的用户，保价至2026-12-31；2027-01-01起¥70/月，按国内平台推定UTC+8，官网未明确时区；取消后再购按现价",
       "planStatus": "delisted",
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "planModels": [
         {
           "slug": "workbuddy-standard-renew-2026--hy4-preview",
@@ -28022,6 +27778,9 @@
       "rating": 3,
       "monthlyPrice": 45,
       "currency": "¥",
+      "quarterlyPrice": 135,
+      "yearlyPrice": 540,
+      "firstMonthPrice": 39,
       "benefits": [
         "2000会员积分/31天",
         "统一TRAE会员权益",
@@ -28029,12 +27788,6 @@
         "Seed-2.1-Turbo与Seed-Code计费2.5折"
       ],
       "note": "连续订阅每31天45元，单次购买49元/31天。付费新用户首期39元，次期恢复连续订阅价；首期优惠起止日期与截止时区未公布。每期31个自然日，自动续费于到期前12小时扣款。会员积分与活动奖励分开；月登录可领500奖励积分，会员每日签到可领200，签到奖励31天有效、月登录奖励当月有效，需主动领取，不计入固定会员额度。会员可按50元/1000积分增购，增购积分31天有效。Seed-2.1-Turbo和Seed-Code会员2.5折福利的活动起止日期未公布。模型按积分扣减，具体Token用量未知；Seed Evolving仅Pro/Pro+/Ultra及历史Express可用。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 135,
-      "yearlyPrice": 540,
-      "firstMonthPrice": 39,
       "planStatus": "open",
       "planModels": [
         {
@@ -28295,6 +28048,9 @@
       "rating": 3,
       "monthlyPrice": 89,
       "currency": "¥",
+      "quarterlyPrice": 267,
+      "yearlyPrice": 1068,
+      "firstMonthPrice": 69,
       "benefits": [
         "4000会员积分/31天",
         "统一TRAE会员权益",
@@ -28302,12 +28058,6 @@
         "Seed-2.1-Turbo与Seed-Code计费2.5折"
       ],
       "note": "连续订阅每31天89元，单次购买99元/31天。付费新用户首期69元，次期恢复连续订阅价；首期优惠起止日期与截止时区未公布。每期31个自然日，自动续费于到期前12小时扣款。会员积分与活动奖励分开；月登录可领500奖励积分，会员每日签到可领200，签到奖励31天有效、月登录奖励当月有效，需主动领取，不计入固定会员额度。会员可按50元/1000积分增购，增购积分31天有效。Seed-2.1-Turbo和Seed-Code会员2.5折福利的活动起止日期未公布。模型按积分扣减，具体Token用量未知；Seed Evolving仅Pro/Pro+/Ultra及历史Express可用。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 267,
-      "yearlyPrice": 1068,
-      "firstMonthPrice": 69,
       "planStatus": "open",
       "planModels": [
         {
@@ -28581,6 +28331,9 @@
       "rating": 3,
       "monthlyPrice": 219,
       "currency": "¥",
+      "quarterlyPrice": 657,
+      "yearlyPrice": 2628,
+      "firstMonthPrice": 219,
       "benefits": [
         "12000会员积分/31天",
         "统一TRAE会员权益",
@@ -28588,12 +28341,6 @@
         "Seed-2.1-Turbo与Seed-Code计费2.5折"
       ],
       "note": "连续订阅每31天219元，单次购买239元/31天。每期31个自然日，自动续费于到期前12小时扣款。会员积分与活动奖励分开；月登录可领500奖励积分，会员每日签到可领200，签到奖励31天有效、月登录奖励当月有效，需主动领取，不计入固定会员额度。会员可按50元/1000积分增购，增购积分31天有效。Seed-2.1-Turbo和Seed-Code会员2.5折福利的活动起止日期未公布。模型按积分扣减，具体Token用量未知；Seed Evolving仅Pro/Pro+/Ultra及历史Express可用。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 657,
-      "yearlyPrice": 2628,
-      "firstMonthPrice": 219,
       "planStatus": "open",
       "planModels": [
         {
@@ -28867,6 +28614,9 @@
       "rating": 3,
       "monthlyPrice": 629,
       "currency": "¥",
+      "quarterlyPrice": 1887,
+      "yearlyPrice": 7548,
+      "firstMonthPrice": 629,
       "benefits": [
         "40000会员积分/31天",
         "统一TRAE会员权益",
@@ -28874,12 +28624,6 @@
         "Seed-2.1-Turbo与Seed-Code计费2.5折"
       ],
       "note": "连续订阅每31天629元，单次购买699元/31天。每期31个自然日，自动续费于到期前12小时扣款。会员积分与活动奖励分开；月登录可领500奖励积分，会员每日签到可领200，签到奖励31天有效、月登录奖励当月有效，需主动领取，不计入固定会员额度。会员可按50元/1000积分增购，增购积分31天有效。Seed-2.1-Turbo和Seed-Code会员2.5折福利的活动起止日期未公布。模型按积分扣减，具体Token用量未知；Seed Evolving仅Pro/Pro+/Ultra及历史Express可用。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 1887,
-      "yearlyPrice": 7548,
-      "firstMonthPrice": 629,
       "planStatus": "open",
       "planModels": [
         {
@@ -29153,19 +28897,16 @@
       "rating": 3,
       "monthlyPrice": 3,
       "currency": "$",
+      "quarterlyPrice": 9,
+      "yearlyPrice": 36,
+      "firstMonthPrice": 3,
       "benefits": [
         "$5 基础使用额度/月",
         "无限代码补全、TraeCode SOLO",
         "TraeWork 云端任务最多 2 个并行"
       ],
       "note": "旧价仅符合连续订阅保价的老用户适用；新版权益按通知、主动升级或续费日迁移，当前存量未升级权益保持到期。新版不能按此价格新购。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 9,
-      "yearlyPrice": 36,
       "planStatus": "delisted",
-      "firstMonthPrice": 3,
       "planModels": [
         {
           "slug": "trae-intl-lite--gpt-5-4--ctx-272k",
@@ -29361,19 +29102,16 @@
       "rating": 3,
       "monthlyPrice": 10,
       "currency": "$",
+      "quarterlyPrice": 30,
+      "yearlyPrice": 120,
+      "firstMonthPrice": 10,
       "benefits": [
         "$20 基础使用额度/月",
         "无限代码补全、TraeCode SOLO",
         "TraeWork 云端任务最多 10 个并行"
       ],
       "note": "旧价仅符合连续订阅保价的老用户适用；新版权益按通知、主动升级或续费日迁移，当前存量未升级权益保持到期。新版不能按此价格新购。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 30,
-      "yearlyPrice": 120,
       "planStatus": "delisted",
-      "firstMonthPrice": 10,
       "planModels": [
         {
           "slug": "trae-intl-pro--gpt-5-4--ctx-272k",
@@ -29569,19 +29307,16 @@
       "rating": 3,
       "monthlyPrice": 30,
       "currency": "$",
+      "quarterlyPrice": 90,
+      "yearlyPrice": 360,
+      "firstMonthPrice": 30,
       "benefits": [
         "$90 基础使用额度/月",
         "无限代码补全、TraeCode SOLO",
         "TraeWork 云端任务最多 15 个并行"
       ],
       "note": "旧价仅符合连续订阅保价的老用户适用；新版权益按通知、主动升级或续费日迁移，当前存量未升级权益保持到期。新版不能按此价格新购。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 90,
-      "yearlyPrice": 360,
       "planStatus": "delisted",
-      "firstMonthPrice": 30,
       "planModels": [
         {
           "slug": "trae-intl-pro-plus--gpt-5-4--ctx-272k",
@@ -29777,19 +29512,16 @@
       "rating": 3,
       "monthlyPrice": 100,
       "currency": "$",
+      "quarterlyPrice": 300,
+      "yearlyPrice": 1200,
+      "firstMonthPrice": 100,
       "benefits": [
         "$400 基础使用额度/月",
         "无限代码补全、TraeCode SOLO",
         "TraeWork 云端任务最多 20 个并行"
       ],
       "note": "旧价仅符合连续订阅保价的老用户适用；新版权益按通知、主动升级或续费日迁移，当前存量未升级权益保持到期。新版不能按此价格新购。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 300,
-      "yearlyPrice": 1200,
       "planStatus": "delisted",
-      "firstMonthPrice": 100,
       "planModels": [
         {
           "slug": "trae-intl-ultra--gpt-5-4--ctx-272k",
@@ -29985,18 +29717,15 @@
       "rating": 3,
       "monthlyPrice": 8,
       "currency": "$",
+      "quarterlyPrice": 24,
+      "yearlyPrice": 80,
+      "firstMonthPrice": 8,
       "benefits": [
         "$8 Dollar Usage/月",
         "可手选模型",
         "代码补全无限"
       ],
       "note": "新版套餐；美国地区Seed/MiniMax/GLM不可用；Lite仅在官方指定12个国家开放，包含中国港澳的付费地区不等于Lite可购。缓存写入另计，Token估算不含该费用。老用户连续月付保价；老用户年订阅5折资格以官方规则为准，起止日期、具体时刻和时区未公布。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 24,
-      "yearlyPrice": 80,
-      "firstMonthPrice": 8,
       "planStatus": "open",
       "planModels": [
         {
@@ -30706,18 +30435,15 @@
       "rating": 3,
       "monthlyPrice": 20,
       "currency": "$",
+      "quarterlyPrice": 60,
+      "yearlyPrice": 200,
+      "firstMonthPrice": 20,
       "benefits": [
         "$20 Dollar Usage/月",
         "可手选模型",
         "代码补全无限"
       ],
       "note": "新版套餐；美国地区Seed/MiniMax/GLM不可用；Lite仅在官方指定12个国家开放，包含中国港澳的付费地区不等于Lite可购。缓存写入另计，Token估算不含该费用。老用户连续月付保价；老用户年订阅5折资格以官方规则为准，起止日期、具体时刻和时区未公布。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 60,
-      "yearlyPrice": 200,
-      "firstMonthPrice": 20,
       "planStatus": "open",
       "planModels": [
         {
@@ -31427,18 +31153,15 @@
       "rating": 3,
       "monthlyPrice": 60,
       "currency": "$",
+      "quarterlyPrice": 180,
+      "yearlyPrice": 600,
+      "firstMonthPrice": 60,
       "benefits": [
         "$60 Dollar Usage/月",
         "可手选模型",
         "代码补全无限"
       ],
       "note": "新版套餐；美国地区Seed/MiniMax/GLM不可用；Lite仅在官方指定12个国家开放，包含中国港澳的付费地区不等于Lite可购。缓存写入另计，Token估算不含该费用。老用户连续月付保价；老用户年订阅5折资格以官方规则为准，起止日期、具体时刻和时区未公布。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 180,
-      "yearlyPrice": 600,
-      "firstMonthPrice": 60,
       "planStatus": "open",
       "planModels": [
         {
@@ -32148,18 +31871,15 @@
       "rating": 3,
       "monthlyPrice": 200,
       "currency": "$",
+      "quarterlyPrice": 600,
+      "yearlyPrice": 2000,
+      "firstMonthPrice": 200,
       "benefits": [
         "$200 Dollar Usage/月",
         "可手选模型",
         "代码补全无限"
       ],
       "note": "新版套餐；美国地区Seed/MiniMax/GLM不可用；Lite仅在官方指定12个国家开放，包含中国港澳的付费地区不等于Lite可购。缓存写入另计，Token估算不含该费用。老用户连续月付保价；老用户年订阅5折资格以官方规则为准，起止日期、具体时刻和时区未公布。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 600,
-      "yearlyPrice": 2000,
-      "firstMonthPrice": 200,
       "planStatus": "open",
       "planModels": [
         {
@@ -32870,9 +32590,8 @@
       "monthlyPrice": 0,
       "yearlyPrice": 0,
       "currency": "$",
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
+      "quarterlyPrice": 0,
+      "firstMonthPrice": 0,
       "supportsHarnessApi": false,
       "benefits": [
         "仅Auto模式，有限Dollar Usage/月",
@@ -32880,8 +32599,6 @@
         "不含SOLO模式"
       ],
       "note": "官方未公布有限额度具体数值；不能从付费模型名单推断可手选模型。",
-      "quarterlyPrice": 0,
-      "firstMonthPrice": 0,
       "planStatus": "open",
       "planModels": []
     },
@@ -32896,9 +32613,6 @@
       "monthlyPrice": 0,
       "quarterlyPrice": 0,
       "yearlyPrice": 0,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "学生认证免费",
@@ -32919,9 +32633,6 @@
       "monthlyPrice": 10,
       "quarterlyPrice": 30,
       "yearlyPrice": 120,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "1000基础AI Credits/月",
@@ -33592,9 +33303,6 @@
       "monthlyPrice": 39,
       "quarterlyPrice": 117,
       "yearlyPrice": 468,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "3900基础AI Credits/月",
@@ -34697,9 +34405,6 @@
       "monthlyPrice": 100,
       "quarterlyPrice": 300,
       "yearlyPrice": 1200,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "10000基础AI Credits/月",
@@ -35778,9 +35483,6 @@
       "monthlyPrice": 0,
       "quarterlyPrice": 0,
       "yearlyPrice": 0,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "currency": "$",
       "benefits": [
         "2000次补全/月",
@@ -35799,17 +35501,14 @@
       "rating": 0,
       "monthlyPrice": 0,
       "currency": "$",
+      "quarterlyPrice": 0,
+      "yearlyPrice": 0,
+      "firstMonthPrice": 0,
       "benefits": [
         "有限 Agent 与 Chat 使用",
         "Cursor 编程 Agent 入门额度"
       ],
       "note": "免费入门档；具体可选模型、请求与 Token 额度未公开。不能把付费档完整模型名单套用于免费档。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 0,
-      "yearlyPrice": 0,
-      "firstMonthPrice": 0,
       "planStatus": "open",
       "planModels": []
     },
@@ -35822,17 +35521,14 @@
       "rating": 0,
       "monthlyPrice": 8,
       "currency": "$",
+      "quarterlyPrice": 24,
+      "yearlyPrice": 80,
+      "firstMonthPrice": 8,
       "benefits": [
         "Grok 共享基础使用池，每周刷新",
         "Cursor、Grok 与 X 组合权益"
       ],
       "note": "2026-10-12 发布的新 X Subscription；额度在 Cursor、Grok 与 X 的相关 AI 产品间共享，每周刷新。官方未公布固定 Token 或请求总量，不按倍率推算。价格未含适用税费；迁移优惠由账户显示，具体起止日期未公开。 Plus 支持 Grok 4.7、Grok 4.6、Grok 4.5 与 Composer 2.5；固定标准速度、medium effort，Grok 4.7 使用 256K 上下文。不含第三方模型、Auto、云端 Agent 或 BYOK。 Grok API 单独计费，不从 Cursor 与 Grok 应用共享周池扣减。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 24,
-      "yearlyPrice": 80,
-      "firstMonthPrice": 8,
       "planStatus": "open",
       "planModels": [
         {
@@ -35930,18 +35626,15 @@
       "rating": 0,
       "monthlyPrice": 30,
       "currency": "$",
+      "quarterlyPrice": 90,
+      "yearlyPrice": 300,
+      "firstMonthPrice": 30,
       "benefits": [
         "Grok 共享额度为 Plus 的 4 倍，每周刷新",
         "云端 Agent、自动化与代码审查",
         "第三方模型可用，按 API 标价另付费"
       ],
       "note": "2026-10-12 发布的新 X Subscription；额度在 Cursor、Grok 与 X 的相关 AI 产品间共享，每周刷新。官方未公布固定 Token 或请求总量，不按倍率推算。价格未含适用税费；迁移优惠由账户显示，具体起止日期未公开。 Claude、GPT、Gemini、Muse Spark 等第三方模型从首个请求起另行购买使用量，不包含在月费中；可以设置支出上限。新 Ultra 与旧 Cursor Ultra 的额度不是同一产品。 Grok API 单独计费，不从 Cursor 与 Grok 应用共享周池扣减。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 90,
-      "yearlyPrice": 300,
-      "firstMonthPrice": 30,
       "planStatus": "open",
       "planModels": [
         {
@@ -36648,6 +36341,9 @@
       "rating": 0,
       "monthlyPrice": 100,
       "currency": "$",
+      "quarterlyPrice": 300,
+      "yearlyPrice": 1000,
+      "firstMonthPrice": 100,
       "benefits": [
         "Grok 共享额度为 Plus 的 15 倍，每周刷新",
         "云端 Agent、自动化与代码审查",
@@ -36655,12 +36351,6 @@
         "高峰期优先模型接入"
       ],
       "note": "2026-10-12 发布的新 X Subscription；额度在 Cursor、Grok 与 X 的相关 AI 产品间共享，每周刷新。官方未公布固定 Token 或请求总量，不按倍率推算。价格未含适用税费；迁移优惠由账户显示，具体起止日期未公开。 Claude、GPT、Gemini、Muse Spark 等第三方模型从首个请求起另行购买使用量，不包含在月费中；可以设置支出上限。新 Ultra 与旧 Cursor Ultra 的额度不是同一产品。 Grok API 单独计费，不从 Cursor 与 Grok 应用共享周池扣减。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 300,
-      "yearlyPrice": 1000,
-      "firstMonthPrice": 100,
       "planStatus": "open",
       "planModels": [
         {
@@ -37367,6 +37057,9 @@
       "rating": 0,
       "monthlyPrice": 200,
       "currency": "$",
+      "quarterlyPrice": 600,
+      "yearlyPrice": 2000,
+      "firstMonthPrice": 200,
       "benefits": [
         "Grok 共享额度为 Plus 的 50 倍，每周刷新",
         "云端 Agent、自动化与代码审查",
@@ -37374,12 +37067,6 @@
         "更早获得产品与模型"
       ],
       "note": "2026-10-12 发布的新 X Subscription；额度在 Cursor、Grok 与 X 的相关 AI 产品间共享，每周刷新。官方未公布固定 Token 或请求总量，不按倍率推算。价格未含适用税费；迁移优惠由账户显示，具体起止日期未公开。 Claude、GPT、Gemini、Muse Spark 等第三方模型从首个请求起另行购买使用量，不包含在月费中；可以设置支出上限。新 Ultra 与旧 Cursor Ultra 的额度不是同一产品。 Grok API 单独计费，不从 Cursor 与 Grok 应用共享周池扣减。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 600,
-      "yearlyPrice": 2000,
-      "firstMonthPrice": 200,
       "planStatus": "open",
       "planModels": [
         {
@@ -38086,18 +37773,15 @@
       "rating": 0,
       "monthlyPrice": 20,
       "currency": "$",
+      "quarterlyPrice": 60,
+      "yearlyPrice": 240,
+      "firstMonthPrice": 20,
       "benefits": [
         "Cursor Models 与第三方 Other Models 独立月度池",
         "无限 Tab 补全、Agent、Bugbot 与云端 Agent"
       ],
       "note": "2026-10-12 起停止新用户订购，已有订阅可保留当前价格与权益，迁移为自愿选择且迁移后不可回退；不迁移时继续保留原套餐。旧 Cursor Models 与 Other Models 为两个独立月度池，未消费额度不结转；不能套用新 X Subscription 的周额度或倍率。当前固定美元池及 Token 总量待确认。按请求计费的更早存量账号还有独立规则，不适用统一的 500 次或无限用量规则。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 60,
-      "yearlyPrice": 240,
       "planStatus": "delisted",
-      "firstMonthPrice": 20,
       "planModels": [
         {
           "slug": "cursor-pro-legacy--grok-4-7--ctx-up-to-256k",
@@ -38803,18 +38487,15 @@
       "rating": 0,
       "monthlyPrice": 60,
       "currency": "$",
+      "quarterlyPrice": 180,
+      "yearlyPrice": 720,
+      "firstMonthPrice": 60,
       "benefits": [
         "Cursor Models 与第三方 Other Models 独立月度池",
         "无限 Tab 补全、Agent、Bugbot 与云端 Agent"
       ],
       "note": "2026-10-12 起停止新用户订购，已有订阅可保留当前价格与权益，迁移为自愿选择且迁移后不可回退；不迁移时继续保留原套餐。旧 Cursor Models 与 Other Models 为两个独立月度池，未消费额度不结转；不能套用新 X Subscription 的周额度或倍率。当前固定美元池及 Token 总量待确认。按请求计费的更早存量账号还有独立规则，不适用统一的 500 次或无限用量规则。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 180,
-      "yearlyPrice": 720,
       "planStatus": "delisted",
-      "firstMonthPrice": 60,
       "planModels": [
         {
           "slug": "cursor-pro-plus-legacy--grok-4-7--ctx-up-to-256k",
@@ -39520,18 +39201,15 @@
       "rating": 0,
       "monthlyPrice": 200,
       "currency": "$",
+      "quarterlyPrice": 600,
+      "yearlyPrice": 2400,
+      "firstMonthPrice": 200,
       "benefits": [
         "Cursor Models 与第三方 Other Models 独立月度池",
         "无限 Tab 补全、Agent、Bugbot 与云端 Agent"
       ],
       "note": "2026-10-12 起停止新用户订购，已有订阅可保留当前价格与权益，迁移为自愿选择且迁移后不可回退；不迁移时继续保留原套餐。旧 Cursor Models 与 Other Models 为两个独立月度池，未消费额度不结转；不能套用新 X Subscription 的周额度或倍率。当前固定美元池及 Token 总量待确认。按请求计费的更早存量账号还有独立规则，不适用统一的 500 次或无限用量规则。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": 600,
-      "yearlyPrice": 2400,
       "planStatus": "delisted",
-      "firstMonthPrice": 200,
       "planModels": [
         {
           "slug": "cursor-ultra-legacy--grok-4-7--ctx-up-to-256k",
@@ -40237,18 +39915,15 @@
       "rating": 0,
       "monthlyPrice": "不适用",
       "currency": "₹",
+      "quarterlyPrice": "不适用",
+      "yearlyPrice": "不适用",
+      "firstMonthPrice": "不适用",
       "benefits": [
         "仅限印度开发者；原价 ₹649/月（含税）",
         "仅 Cursor Models 池；标准速度、Grok 固定 medium effort"
       ],
       "note": "旧地区限定套餐已停止新购；既有账户价格与权益按官方通知保留。原币种 INR，不以美元或人民币数值参加价格换算。支持 Grok 4.7/4.6/4.5 与 Composer 2.5；不含 Other Models、按量加购、Bugbot、Auto、自动化或 Cursor SDK。付款限官方印度渠道；该套餐不继承平台的支付宝结论。 历史印度套餐售价为 ₹649/月（含税）。",
-      "monthlyRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "fiveHoursRequests": "未公开",
-      "quarterlyPrice": "不适用",
-      "yearlyPrice": "不适用",
       "planStatus": "delisted",
-      "firstMonthPrice": "不适用",
       "planModels": [
         {
           "slug": "cursor-start-india-legacy--grok-4-7--ctx-up-to-256k",
@@ -40368,9 +40043,6 @@
       "monthlyPrice": 40,
       "quarterlyPrice": 120,
       "yearlyPrice": 480,
-      "fiveHoursRequests": 1200,
-      "weeklyRequests": 9000,
-      "monthlyRequests": 18000,
       "benefits": [],
       "note": "2026-07-29起停止新购、续费和升级，存量套餐仅可使用至原有效期结束。所列价格、首月优惠和额度为停售前历史权益；Coding Plan与Token Plan使用独立端点、密钥和额度。",
       "planStatus": "delisted",
@@ -40479,9 +40151,6 @@
       "monthlyPrice": 200,
       "quarterlyPrice": 600,
       "yearlyPrice": 2400,
-      "fiveHoursRequests": 6000,
-      "weeklyRequests": 45000,
-      "monthlyRequests": 90000,
       "benefits": [],
       "note": "2026-07-29起停止新购、续费和升级，存量套餐仅可使用至原有效期结束。所列价格、首月优惠和额度为停售前历史权益；Coding Plan与Token Plan使用独立端点、密钥和额度。",
       "planStatus": "delisted",
@@ -40590,9 +40259,6 @@
       "monthlyPrice": 39,
       "quarterlyPrice": 117,
       "yearlyPrice": 468,
-      "fiveHoursRequests": 1200,
-      "weeklyRequests": 9000,
-      "monthlyRequests": 18000,
       "benefits": [],
       "note": "• 已下架\n• 历史方案，可作为参考",
       "planStatus": "delisted",
@@ -40688,11 +40354,13 @@
       "monthlyPrice": 199,
       "quarterlyPrice": 597,
       "yearlyPrice": 2388,
-      "fiveHoursRequests": 6000,
-      "weeklyRequests": 45000,
-      "monthlyRequests": 90000,
       "benefits": [],
       "note": "• 高效版已支持 GLM-5.2\n• 讯飞实际可用量比较多，按调用量计数，明示调用量；所列价格与支持型号为历史信息，当前订购价格和完整模型支持范围待确认。",
+      "requestQuota": {
+        "fiveHours": 6000,
+        "weekly": 45000,
+        "monthly": 90000
+      },
       "planStatus": "open",
       "planModels": [
         {
@@ -40825,9 +40493,6 @@
       "monthlyPrice": 699,
       "quarterlyPrice": 2097,
       "yearlyPrice": 8388,
-      "fiveHoursRequests": "-",
-      "weeklyRequests": "-",
-      "monthlyRequests": "-",
       "benefits": [],
       "note": "• 价格比较贵，据宣传无需等待；所列价格与支持型号为历史信息，当前订购价格和完整模型支持范围待确认。",
       "planStatus": "open",
@@ -40884,9 +40549,6 @@
       "monthlyPrice": 15,
       "quarterlyPrice": 45,
       "yearlyPrice": 180,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "6M Tokens/月（套餐标称额度）"
       ],
@@ -40932,9 +40594,6 @@
       "monthlyPrice": 30,
       "quarterlyPrice": 90,
       "yearlyPrice": 360,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "12M Tokens/月（套餐标称额度）"
       ],
@@ -40980,9 +40639,6 @@
       "monthlyPrice": 45,
       "quarterlyPrice": 135,
       "yearlyPrice": 540,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "18M Tokens/月（套餐标称额度）"
       ],
@@ -41028,9 +40684,6 @@
       "monthlyPrice": 198,
       "quarterlyPrice": 594,
       "yearlyPrice": 2376,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "25000 Credits/月"
       ],
@@ -41089,9 +40742,6 @@
       "monthlyPrice": 698,
       "quarterlyPrice": 2094,
       "yearlyPrice": 8376,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "100000 Credits/月"
       ],
@@ -41150,9 +40800,6 @@
       "monthlyPrice": 1398,
       "quarterlyPrice": 4194,
       "yearlyPrice": 16776,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "250000 Credits/月"
       ],
@@ -41211,9 +40858,6 @@
       "monthlyPrice": 40,
       "quarterlyPrice": 120,
       "yearlyPrice": 480,
-      "fiveHoursRequests": 1200,
-      "weeklyRequests": 9000,
-      "monthlyRequests": 18000,
       "benefits": [],
       "note": "• 不同云区域可用模型不同\n• 参考文档 https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7015",
       "planStatus": "delisted",
@@ -41309,9 +40953,6 @@
       "monthlyPrice": 200,
       "quarterlyPrice": 600,
       "yearlyPrice": 2400,
-      "fiveHoursRequests": 6000,
-      "weeklyRequests": 45000,
-      "monthlyRequests": 90000,
       "benefits": [],
       "note": "• 不同云区域可用模型不同\n• 参考文档 https://support.cucloud.cn/document/127/591/2357.html?id=2357&arcid=7015",
       "planStatus": "delisted",
@@ -41407,11 +41048,13 @@
       "monthlyPrice": 40,
       "quarterlyPrice": 120,
       "yearlyPrice": 480,
-      "fiveHoursRequests": 1200,
-      "weeklyRequests": 9000,
-      "monthlyRequests": 18000,
       "benefits": [],
       "note": "2026-03-16至2026-12-31活动（国内页面，北京时间）：领券仅一次首购7.9元，常规40元/月；每账号Lite/Pro二选一。互联网用户另可手动领券5折续订1个月（20.0元），自动续订不能自动使用券；领券30天有效。",
+      "requestQuota": {
+        "fiveHours": 1200,
+        "weekly": 9000,
+        "monthly": 18000
+      },
       "planStatus": "open",
       "planModels": [
         {
@@ -41440,11 +41083,13 @@
       "monthlyPrice": 200,
       "quarterlyPrice": 600,
       "yearlyPrice": 2400,
-      "fiveHoursRequests": 6000,
-      "weeklyRequests": 45000,
-      "monthlyRequests": 90000,
       "benefits": [],
       "note": "2026-03-16至2026-12-31活动（国内页面，北京时间）：领券仅一次首购39.9元，常规200元/月；每账号Lite/Pro二选一。互联网用户另可手动领券5折续订1个月（100.0元），自动续订不能自动使用券；领券30天有效。",
+      "requestQuota": {
+        "fiveHours": 6000,
+        "weekly": 45000,
+        "monthly": 90000
+      },
       "planStatus": "open",
       "planModels": [
         {
@@ -41473,9 +41118,6 @@
       "monthlyPrice": 49,
       "quarterlyPrice": 129,
       "yearlyPrice": 456,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "400M Credits/月",
         "Studio另有40%专属创作额度"
@@ -41535,9 +41177,6 @@
       "monthlyPrice": 99,
       "quarterlyPrice": 269,
       "yearlyPrice": 936,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "1600M Credits/月",
         "Studio另有40%专属创作额度"
@@ -41597,9 +41236,6 @@
       "monthlyPrice": 199,
       "quarterlyPrice": 539,
       "yearlyPrice": 1860,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "8000M Credits/月",
         "Studio另有40%专属创作额度"
@@ -41659,9 +41295,6 @@
       "monthlyPrice": 699,
       "quarterlyPrice": 1889,
       "yearlyPrice": 6666,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "40000M Credits/月",
         "Studio另有40%专属创作额度"
@@ -41721,15 +41354,17 @@
       "monthlyPrice": 39,
       "quarterlyPrice": 117,
       "yearlyPrice": 468,
-      "fiveHoursRequests": 600,
-      "weeklyRequests": 4200,
-      "monthlyRequests": "未公开",
       "benefits": [
         "GLM5.3Flash + DeepSeekV4Flash",
         "1M上下文上限"
       ],
       "note": "月付与季付名额均已售罄，恢复放量时间未公布。双Flash套餐；季付实付117元（活动起止日期未公布）；只限个人在编程辅助工具内使用，禁止Hermes/OpenClaw和额度共享/转售。自然月额外限制未公布。",
       "planStatus": "restricted",
+      "requestQuota": {
+        "fiveHours": 600,
+        "weekly": 4200,
+        "monthly": "unknown"
+      },
       "planModels": [
         {
           "slug": "taotoken-coding-plan-lite--glm-5-3-flash",
@@ -41770,14 +41405,16 @@
       "monthlyPrice": 129,
       "quarterlyPrice": 297,
       "yearlyPrice": 1548,
-      "fiveHoursRequests": 2000,
-      "weeklyRequests": 15000,
-      "monthlyRequests": "未公开",
       "benefits": [
         "GLM5.3Flash + DeepSeekV4Flash",
         "1M上下文上限"
       ],
       "note": "双Flash套餐；季付实付297元（活动起止日期未公布）；只限个人在编程辅助工具内使用，禁止Hermes/OpenClaw和额度共享/转售。自然月额外限制未公布。",
+      "requestQuota": {
+        "fiveHours": 2000,
+        "weekly": 15000,
+        "monthly": "unknown"
+      },
       "planStatus": "restricted",
       "planModels": [
         {
@@ -41819,14 +41456,16 @@
       "monthlyPrice": 338,
       "quarterlyPrice": 897,
       "yearlyPrice": 4056,
-      "fiveHoursRequests": 6000,
-      "weeklyRequests": 35000,
-      "monthlyRequests": "未公开",
       "benefits": [
         "GLM5.3Flash + DeepSeekV4Flash",
         "1M上下文上限"
       ],
       "note": "双Flash套餐；季付实付897元（活动起止日期未公布）；只限个人在编程辅助工具内使用，禁止Hermes/OpenClaw和额度共享/转售。自然月额外限制未公布。",
+      "requestQuota": {
+        "fiveHours": 6000,
+        "weekly": 35000,
+        "monthly": "unknown"
+      },
       "planStatus": "restricted",
       "planModels": [
         {
@@ -41868,11 +41507,13 @@
       "monthlyPrice": 20,
       "quarterlyPrice": 60,
       "yearlyPrice": 240,
-      "fiveHoursRequests": 1200,
-      "weeklyRequests": 9000,
-      "monthlyRequests": 18000,
       "benefits": [],
       "note": "历史套餐为 20/100 元、支持两个模型，赠 OpenClaw 2核4G 实例；此前已停售，是否恢复购买待确认。仅限本人在AI开发工具内交互使用，禁止后端、非交互脚本、批量调用及账号共享；须用Coding Plan专属Key，额度耗尽后请求失败、不自动转按量。5小时额度滑动恢复，每周一00:00重置周额度，订阅月到期后的下一秒重置月额度；周期截至次月对应日23:59:59（UTC+8），无对应日则取月末。",
+      "requestQuota": {
+        "fiveHours": 1200,
+        "weekly": 9000,
+        "monthly": 18000
+      },
       "planStatus": "restricted",
       "planModels": [
         {
@@ -41920,11 +41561,13 @@
       "monthlyPrice": 100,
       "quarterlyPrice": 300,
       "yearlyPrice": 1200,
-      "fiveHoursRequests": 6000,
-      "weeklyRequests": 45000,
-      "monthlyRequests": 90000,
       "benefits": [],
       "note": "历史套餐为 20/100 元、支持两个模型，赠 OpenClaw 2核4G 实例；此前已停售，是否恢复购买待确认。仅限本人在AI开发工具内交互使用，禁止后端、非交互脚本、批量调用及账号共享；须用Coding Plan专属Key，额度耗尽后请求失败、不自动转按量。5小时额度滑动恢复，每周一00:00重置周额度，订阅月到期后的下一秒重置月额度；周期截至次月对应日23:59:59（UTC+8），无对应日则取月末。",
+      "requestQuota": {
+        "fiveHours": 6000,
+        "weekly": 45000,
+        "monthly": 90000
+      },
       "planStatus": "restricted",
       "planModels": [
         {
@@ -41972,9 +41615,6 @@
       "monthlyPrice": 0,
       "quarterlyPrice": 0,
       "yearlyPrice": 0,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "60000积分/5小时（特殊模型除外）",
         "最多20个API Key"
@@ -42021,9 +41661,6 @@
       "monthlyPrice": 0,
       "quarterlyPrice": 0,
       "yearlyPrice": 0,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [],
       "note": "2026-10-12官方公开文档：5小时约40 prompts，每prompt可能含15–20次模型调用，取决于任务，不是固定请求或Token配额。免费领取后30天有效，每账号一次，活动起止日期及当前库存待确认。",
       "planStatus": "restricted",
@@ -42054,9 +41691,6 @@
       "monthlyPrice": "不适用",
       "quarterlyPrice": 120,
       "yearlyPrice": 480,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [],
       "note": "2026-10-12官方公开文档：5小时约120 prompts，每prompt可能含15–20次模型调用，取决于任务，不是固定请求或Token配额。付费购买指向京东，当前SKU价格/库存待确认，保留此前停售标记。",
       "planStatus": "delisted",
@@ -42087,9 +41721,6 @@
       "monthlyPrice": "不适用",
       "quarterlyPrice": 600,
       "yearlyPrice": 2400,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [],
       "note": "2026-10-12官方公开文档：5小时约600 prompts，每prompt可能含15–20次模型调用，取决于任务，不是固定请求或Token配额。付费购买指向京东，当前SKU价格/库存待确认，保留此前停售标记。",
       "planStatus": "delisted",
@@ -42120,9 +41751,6 @@
       "monthlyPrice": "不适用",
       "quarterlyPrice": 1200,
       "yearlyPrice": 4800,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [],
       "note": "2026-10-12官方公开文档：5小时约2400 prompts，每prompt可能含15–20次模型调用，取决于任务，不是固定请求或Token配额。付费购买指向京东，当前SKU价格/库存待确认，保留此前停售标记。",
       "planStatus": "delisted",
@@ -42153,9 +41781,6 @@
       "monthlyPrice": 40,
       "quarterlyPrice": 120,
       "yearlyPrice": 480,
-      "fiveHoursRequests": 1000,
-      "weeklyRequests": 6000,
-      "monthlyRequests": 12000,
       "benefits": [],
       "note": "已停止向个人用户提供服务，旧套餐仅供历史查询。",
       "planStatus": "delisted",
@@ -42251,9 +41876,6 @@
       "monthlyPrice": 200,
       "quarterlyPrice": 600,
       "yearlyPrice": 2400,
-      "fiveHoursRequests": 5000,
-      "weeklyRequests": 30000,
-      "monthlyRequests": 60000,
       "benefits": [],
       "note": "已停止向个人用户提供服务，旧套餐仅供历史查询。",
       "planStatus": "delisted",
@@ -42349,9 +41971,6 @@
       "monthlyPrice": 49,
       "quarterlyPrice": 147,
       "yearlyPrice": 588,
-      "fiveHoursRequests": 1200,
-      "weeklyRequests": 6000,
-      "monthlyRequests": 24000,
       "benefits": [],
       "note": "• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
       "planStatus": "delisted",
@@ -42408,9 +42027,6 @@
       "monthlyPrice": 149,
       "quarterlyPrice": 447,
       "yearlyPrice": 1788,
-      "fiveHoursRequests": 6000,
-      "weeklyRequests": 30000,
-      "monthlyRequests": 120000,
       "benefits": [],
       "note": "• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
       "planStatus": "delisted",
@@ -42467,9 +42083,6 @@
       "monthlyPrice": 469,
       "quarterlyPrice": 1407,
       "yearlyPrice": 5628,
-      "fiveHoursRequests": 24000,
-      "weeklyRequests": 120000,
-      "monthlyRequests": 480000,
       "benefits": [],
       "note": "• 官方以 prompt 计数，这里按 1 prompt≈15 次请求换算",
       "planStatus": "delisted",
@@ -42526,9 +42139,6 @@
       "firstMonthPrice": 29,
       "quarterlyPrice": 87,
       "yearlyPrice": 348,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "planStatus": "delisted",
       "benefits": [
         "25M Token/月"
@@ -42596,9 +42206,6 @@
       "firstMonthPrice": 89,
       "quarterlyPrice": 267,
       "yearlyPrice": 1068,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "planStatus": "delisted",
       "benefits": [
         "80M Token/月"
@@ -42666,9 +42273,6 @@
       "firstMonthPrice": 199,
       "quarterlyPrice": 597,
       "yearlyPrice": 2388,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "planStatus": "delisted",
       "benefits": [
         "180M Token/月"
@@ -42736,9 +42340,6 @@
       "firstMonthPrice": 399,
       "quarterlyPrice": 1197,
       "yearlyPrice": 4788,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "planStatus": "delisted",
       "benefits": [
         "380M Token/月"
@@ -42806,9 +42407,6 @@
       "firstMonthPrice": 699,
       "quarterlyPrice": 2097,
       "yearlyPrice": 8388,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "planStatus": "delisted",
       "benefits": [
         "680M Token/月"
@@ -42876,9 +42474,6 @@
       "monthlyPrice": 28,
       "quarterlyPrice": 84,
       "yearlyPrice": 336,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "560积分/月"
       ],
@@ -42964,9 +42559,6 @@
       "monthlyPrice": 78,
       "quarterlyPrice": 234,
       "yearlyPrice": 936,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "1560积分/月"
       ],
@@ -43052,9 +42644,6 @@
       "monthlyPrice": 238,
       "quarterlyPrice": 714,
       "yearlyPrice": 2856,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "4760积分/月"
       ],
@@ -43140,9 +42729,6 @@
       "monthlyPrice": 468,
       "quarterlyPrice": 1404,
       "yearlyPrice": 5616,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "9360积分/月"
       ],
@@ -43228,9 +42814,6 @@
       "monthlyPrice": 9.9,
       "quarterlyPrice": 27.6,
       "yearlyPrice": 105.6,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "1400积分/月"
       ],
@@ -43354,9 +42937,6 @@
       "monthlyPrice": 40,
       "quarterlyPrice": 110.4,
       "yearlyPrice": 422.4,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "6600积分/月"
       ],
@@ -43480,9 +43060,6 @@
       "monthlyPrice": 200,
       "quarterlyPrice": 552,
       "yearlyPrice": 2112,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "45000积分/月"
       ],
@@ -43606,9 +43183,6 @@
       "monthlyPrice": 600,
       "quarterlyPrice": 1656,
       "yearlyPrice": 6336,
-      "fiveHoursRequests": "无限制",
-      "weeklyRequests": "无限制",
-      "monthlyRequests": "无限制",
       "benefits": [
         "165000积分/月"
       ],
@@ -43732,9 +43306,6 @@
       "monthlyPrice": 29,
       "quarterlyPrice": 87,
       "yearlyPrice": 348,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "3000积分/月"
       ],
@@ -43930,9 +43501,6 @@
       "monthlyPrice": 89,
       "quarterlyPrice": 267,
       "yearlyPrice": 1068,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "10000积分/月"
       ],
@@ -44128,9 +43696,6 @@
       "monthlyPrice": 199,
       "quarterlyPrice": 597,
       "yearlyPrice": 2388,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "25000积分/月"
       ],
@@ -44326,9 +43891,6 @@
       "monthlyPrice": 399,
       "quarterlyPrice": 1197,
       "yearlyPrice": 4788,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "50000积分/月"
       ],
@@ -44524,9 +44086,6 @@
       "monthlyPrice": 699,
       "quarterlyPrice": 2097,
       "yearlyPrice": 8388,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "100000积分/月"
       ],
@@ -44722,9 +44281,6 @@
       "monthlyPrice": 69,
       "quarterlyPrice": 207,
       "yearlyPrice": 828,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "17250Credits/月",
         "月/周/5小时三级窗口",
@@ -45274,9 +44830,6 @@
       "monthlyPrice": 199,
       "quarterlyPrice": 597,
       "yearlyPrice": 2388,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "49750Credits/月",
         "月/周/5小时三级窗口",
@@ -45826,9 +45379,6 @@
       "monthlyPrice": 599,
       "quarterlyPrice": 1797,
       "yearlyPrice": 7188,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "149750Credits/月",
         "月/周/5小时三级窗口",
@@ -46378,9 +45928,6 @@
       "monthlyPrice": 999,
       "quarterlyPrice": 2997,
       "yearlyPrice": 11988,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "249750Credits/月",
         "月/周/5小时三级窗口",
@@ -46930,9 +46477,6 @@
       "monthlyPrice": 59,
       "quarterlyPrice": 177,
       "yearlyPrice": 708,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "5000Credits/月"
       ],
@@ -46991,9 +46535,6 @@
       "monthlyPrice": 149,
       "quarterlyPrice": 447,
       "yearlyPrice": 1788,
-      "fiveHoursRequests": "未公开",
-      "weeklyRequests": "未公开",
-      "monthlyRequests": "未公开",
       "benefits": [
         "14000Credits/月"
       ],

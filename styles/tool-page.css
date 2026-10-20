@@ -125,7 +125,7 @@ body.tool-page.ultra-wide { --tool-page-width: 1920px; }
 #plansPage .tool-table [data-plan-col="monthlyToken"] { width: 170px; }
 #plansPage .tool-table [data-plan-col="note"] { width: 640px; }
 #plansPage .tool-table [data-plan-col="firstMonthPrice"] { width: 112px; }
-#plansPage .tool-table :is([data-plan-col="monthlyPrice"], [data-plan-col="quarterlyPrice"], [data-plan-col="yearlyPrice"], [data-plan-col="fiveHoursRequests"], [data-plan-col="weeklyRequests"], [data-plan-col="monthlyRequests"]) { width: 104px; }
+#plansPage .tool-table :is([data-plan-col="monthlyPrice"], [data-plan-col="quarterlyPrice"], [data-plan-col="yearlyPrice"], [data-plan-col="requestQuota.fiveHours"], [data-plan-col="requestQuota.weekly"], [data-plan-col="requestQuota.monthly"]) { width: 104px; }
 #plansPage .tool-table [data-plan-col="benefits"] { width: 220px; }
 #plansPage .tool-table [data-plan-col="rating"] { width: 76px; }
 #plansPage .plan-rating { display: inline-flex; white-space: nowrap; background: var(--bg-tertiary); padding: 4px 8px; border-radius: 6px; color: var(--text-secondary); font-size: 12px; font-weight: 600; }

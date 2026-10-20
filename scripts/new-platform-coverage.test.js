@@ -16,7 +16,6 @@ test('new platforms have ordered plans, descriptions and model coverage',()=>{
   assert.ok(validatePlatformRecords(platforms.filter(p=>ids.includes(p.slug)),selected).ok);
   for(const p of selected){
     assert.ok(p.note && p.benefits.length);
-    for(const key of ['fiveHoursRequests','weeklyRequests','monthlyRequests']) assert.equal(p[key],'未公开');
     assert.equal(p.quarterlyPrice, typeof p.monthlyPrice==='number' ? p.monthlyPrice*3 : '不适用');
     if (p.slug === 'trae-intl-free') assert.ok(!relations.some(r=>r.planSlug===p.slug));
     else assert.ok(relations.some(r=>r.planSlug===p.slug),p.slug);

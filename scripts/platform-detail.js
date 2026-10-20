@@ -140,16 +140,16 @@
   function formatPlanQuota(plan) {
     if (!plan) return '';
 
-    if (typeof plan.monthlyRequests === 'number' && Number.isFinite(plan.monthlyRequests)) {
-      const short = formatCountShort(plan.monthlyRequests);
+    if (typeof plan.requestQuota?.monthly === 'number' && Number.isFinite(plan.requestQuota?.monthly)) {
+      const short = formatCountShort(plan.requestQuota?.monthly);
       return short ? `${short}次/月` : '';
     }
-    if (typeof plan.weeklyRequests === 'number' && Number.isFinite(plan.weeklyRequests)) {
-      const short = formatCountShort(plan.weeklyRequests);
+    if (typeof plan.requestQuota?.weekly === 'number' && Number.isFinite(plan.requestQuota?.weekly)) {
+      const short = formatCountShort(plan.requestQuota?.weekly);
       return short ? `${short}次/周` : '';
     }
-    if (typeof plan.fiveHoursRequests === 'number' && Number.isFinite(plan.fiveHoursRequests)) {
-      const short = formatCountShort(plan.fiveHoursRequests);
+    if (typeof plan.requestQuota?.fiveHours === 'number' && Number.isFinite(plan.requestQuota?.fiveHours)) {
+      const short = formatCountShort(plan.requestQuota?.fiveHours);
       return short ? `${short}次/5h` : '';
     }
     return '';

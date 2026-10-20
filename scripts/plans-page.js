@@ -9,10 +9,10 @@
     return Numbers.finite(value) === null ? '未知' : `${plan.currency || '¥'}${Numbers.amount(value)}`;
   };
   const requests = (plan, field) => {
-    const value = plan[field];
-    if (value === '无限制' || value === 'unlimited') return '无限制';
+    const value = plan.requestQuota?.[field];
+    if (value === 'unlimited') return '无限制';
     if (Numbers.finite(value) === null) return '未知';
-    return (field === 'monthlyRequests' ? Numbers.tokens : Numbers.count)(value);
+    return (field === 'monthly' ? Numbers.tokens : Numbers.count)(value);
   };
   function chips(values) {
     const items = values || [], tag = value => `<span class="tool-tag">${esc(value)}</span>`;
@@ -62,7 +62,7 @@
             ${['firstMonthPrice','monthlyPrice','quarterlyPrice','yearlyPrice'].map(key => `<td data-plan-col="${key}"${key === 'firstMonthPrice' ? '' : ' data-plan-extra'}>${esc(money(plan,key))}${key==='firstMonthPrice'?notice('price'):''}</td>`).join('')}
             <td data-plan-col="models">${modelNotice ? `<div class="plan-models-with-notice">${modelList}${modelNotice}</div>` : modelList}</td>
             <td data-plan-col="monthlyToken" class="monthly-token-cell" title="所选模型各档位的月 Token 参考范围，不相加；按最大值排序，详细口径见价格与额度">${esc(Filters.formatMonthlyTokens(plan,state))}${notice('quota')}</td>
-            ${['fiveHoursRequests','weeklyRequests','monthlyRequests'].map(key => `<td data-plan-col="${key}" data-plan-extra>${esc(requests(plan,key))}</td>`).join('')}
+            ${['fiveHours','weekly','monthly'].map(key => `<td data-plan-col="requestQuota.${key}" data-plan-extra>${esc(requests(plan,key))}</td>`).join('')}
             <td data-plan-col="benefits" data-plan-extra>${chips(plan.benefits)}</td><td class="plan-note" data-plan-col="note">${esc(plan.note || '')}</td>
           </tr>`;
         }).join('') : '<tr><td colspan="13"><div class="tool-empty">没有匹配套餐，试着清空搜索或减少筛选条件。</div></td></tr>';

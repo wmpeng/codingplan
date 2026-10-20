@@ -31,14 +31,14 @@ test('五类页面的默认条件和重置快照保持各自口径，单位和�
 
 test('公开状态规范化保持兼容，控件快照保留空勾选并隔离所有可变字段', () => {
   const raw={platformSlugs:[],modelSlugs:[],excludedPlatformStatuses:['restricted'],excludedPlanStatuses:['restricted'],
-    budgetCny:{max:50},monthlyTokenRange:{min:100},priceRanges:{monthlyPrice:{max:20}},requestRanges:{weeklyRequests:{max:10}}};
+    budgetCny:{max:50},monthlyTokenRange:{min:100},priceRanges:{monthlyPrice:{max:20}},requestRanges:{weekly:{max:10}}};
   const before=JSON.stringify(raw), copy=Filters.cloneControlState(raw);
   assert.equal(Filters.cloneState(raw).platformSlugs,null);
   assert.deepEqual(copy.platformSlugs,[]);assert.deepEqual(copy.modelSlugs,[]);
   copy.platformSlugs.push('platform'); copy.modelSlugs.push('model');
   copy.excludedPlatformStatuses.length=0; copy.excludedPlanStatuses.length=0;
   copy.budgetCny.max=0;copy.monthlyTokenRange.min=0;
-  copy.priceRanges.monthlyPrice.max=0;copy.requestRanges.weeklyRequests.max=0;
+  copy.priceRanges.monthlyPrice.max=0;copy.requestRanges.weekly.max=0;
   assert.equal(JSON.stringify(raw),before);
   for(const platformSlugs of [null,[' a ','a',null]]) {
     const input={platformSlugs};

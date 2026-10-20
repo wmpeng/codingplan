@@ -99,9 +99,9 @@
       "quarterlyPrice": "连续包季",
       "yearlyPrice": "连续包年",
       "models": "支持模型",
-      "fiveHoursRequests": "5小时请求数",
-      "weeklyRequests": "每周请求数",
-      "monthlyRequests": "每月请求数",
+      "requestQuota.fiveHours": "5小时请求数",
+      "requestQuota.weekly": "每周请求数",
+      "requestQuota.monthly": "每月请求数",
       "benefits": "其他权益",
       "planStatus": "状态",
       "note": "备注"

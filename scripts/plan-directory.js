@@ -10,7 +10,7 @@
     ['rating', '评分'], ['firstMonthPrice', '首月价格'], ['monthlyPrice', '每月价格'],
     ['quarterlyPrice', '包季价格'], ['yearlyPrice', '包年价格'],
     ['modelLabels', '支持模型'], ['monthlyToken', '月 Token 参考'],
-    ['fiveHoursRequests', '5 小时请求'], ['weeklyRequests', '每周请求'], ['monthlyRequests', '每月请求'],
+    ['requestQuota.fiveHours', '5 小时请求'], ['requestQuota.weekly', '每周请求'], ['requestQuota.monthly', '每月请求'],
     ['benefits', '其他权益'], ['note', '备注']
   ];
   function sanitizePins(ids, plans) {
@@ -49,9 +49,12 @@
         return values.length ? Math.max(...values) : null;
       }
       const key = sort.key === 'platformOrder' ? 'monthlyPrice' : sort.key;
+      if (key.startsWith('requestQuota.')) {
+        const requests = plan.requestQuota?.[key.slice('requestQuota.'.length)];
+        return requests === 'unlimited' ? Infinity : typeof requests === 'number' ? requests : null;
+      }
       const result = priceValue(plan, key);
       if (key.endsWith('Price')) return Filters.toCny(result, plan.currency, config.usdToCnyRate);
-      if (key.endsWith('Requests')) return result === '无限制' || result === 'unlimited' ? Infinity : typeof result === 'number' ? result : null;
       if (key === 'rating') return result > 0 ? result : null;
       return Array.isArray(result) ? result.join('、') : result;
     };
