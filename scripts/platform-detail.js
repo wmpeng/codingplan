@@ -72,17 +72,22 @@
     if (!validGroups.length) return '';
     const content = validGroups.map((group) => {
       const rows = group.rows.map((row) => {
-        const note = row.note
-          ? `<div class="platform-detail-api-model-note">${esc(row.note)}</div>`
-          : '';
+        const prices = [
+          ['输入', row.inputPerM, row.currency],
+          ['缓存', row.cachePerM, row.currency],
+          ['输出', row.outputPerM, row.currency],
+          ['综合', row.unitPriceCnyPerM, '¥']
+        ].map(([label, value, currency]) =>
+          `<div class="platform-detail-api-price"><dt>${label}</dt><dd>${esc(formatApiPrice(value, currency))}</dd></div>`
+        ).join('');
         return (
-          `<tr>` +
-          `<td><span class="platform-detail-api-model-name">${esc(row.modelName)}</span>${row.tierLabel ? `<div>${esc(row.tierLabel)}</div>` : ''}${note}</td>` +
-          `<td>${esc(formatApiPrice(row.inputPerM, row.currency))}</td>` +
-          `<td>${esc(formatApiPrice(row.cachePerM, row.currency))}</td>` +
-          `<td>${esc(formatApiPrice(row.outputPerM, row.currency))}</td>` +
-          `<td>${esc(formatApiPrice(row.unitPriceCnyPerM, '¥'))}</td>` +
-          `</tr>`
+          `<li class="platform-detail-api-item">` +
+          `<div class="platform-detail-api-model">` +
+          `<span class="platform-detail-api-model-name">${esc(row.modelName)}</span>` +
+          (row.tierLabel ? `<span class="platform-detail-api-tier">${esc(row.tierLabel)}</span>` : '') +
+          `</div><dl class="platform-detail-api-prices">${prices}</dl>` +
+          (row.note ? `<p class="platform-detail-api-model-note">${esc(row.note)}</p>` : '') +
+          `</li>`
         );
       }).join('');
       const note = group.planNote
@@ -92,10 +97,7 @@
         `<div class="platform-detail-api-group">` +
         (validGroups.length > 1 ? `<h4>${esc(group.planName)}</h4>` : '') +
         EntityData.harnessApiBadge(group.supportsHarnessApi) +
-        `<div class="platform-detail-api-table-wrap">` +
-        `<table class="platform-detail-api-table">` +
-        `<thead><tr><th scope="col">模型</th><th scope="col">输入</th><th scope="col">缓存</th><th scope="col">输出</th><th scope="col">综合</th></tr></thead>` +
-        `<tbody>${rows}</tbody></table></div>${note}</div>`
+        `<ul class="platform-detail-api-list" role="list" aria-label="${esc(group.planName || '按量 API')}模型报价">${rows}</ul>${note}</div>`
       );
     }).join('');
     return (
@@ -103,7 +105,7 @@
       `<h3 id="platformDetailApiPricingHeading" class="platform-detail-section-title">按量 API 定价</h3>` +
       `<p class="platform-detail-api-unit">单位：每百万 Token；综合价按站点统一工作负载计算</p>` +
       content +
-      `<a class="platform-detail-avail-link" href="/pricing/">在价格与额度中查看 →</a>` +
+      `<a class="tool-button platform-detail-api-link" href="/pricing/">在价格与额度中查看 →</a>` +
       `</section>`
     );
   }

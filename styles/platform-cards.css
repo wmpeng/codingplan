@@ -491,72 +491,99 @@ body .platform-card:focus-visible .platform-card-hint {
     color: var(--text-tertiary);
 }
 
-.platform-detail-api-table-wrap {
-    overflow-x: auto;
-    border-radius: 14px;
-    border: 1px solid rgba(23, 32, 51, 0.08);
-    background: rgba(255, 252, 247, 0.95);
+.platform-detail-api-list {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-secondary);
 }
 
-.platform-detail-api-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
+.platform-detail-api-item {
     min-width: 0;
+    padding: 14px 16px;
 }
 
-.platform-detail-api-table th,
-.platform-detail-api-table td {
-    padding: 12px 14px;
-    text-align: left;
-    border-bottom: 1px solid rgba(23, 32, 51, 0.06);
-    vertical-align: top;
-    background: transparent;
-    color: var(--text-primary);
-    white-space: normal;
-    cursor: default;
-    user-select: text;
-    text-transform: none;
-    letter-spacing: normal;
-    font-weight: 500;
-    position: static;
-    z-index: auto;
-    transition: none;
+.platform-detail-api-item + .platform-detail-api-item {
+    border-top: 1px solid var(--border-light);
 }
 
-.platform-detail-api-table thead th {
-    font-size: 12px;
-    font-weight: 650;
-    color: var(--text-secondary);
-    background: rgba(244, 236, 223, 0.7);
-    border-bottom: 1px solid rgba(23, 32, 51, 0.08);
-}
-
-.platform-detail-api-table thead th:hover,
-.platform-detail-api-table tbody td:hover {
-    background: inherit;
-    color: inherit;
-}
-
-.platform-detail-api-table tbody tr:nth-child(even) td {
-    background: rgba(248, 242, 231, 0.45);
-}
-
-.platform-detail-api-table tbody tr:last-child td {
-    border-bottom: 0;
+.platform-detail-api-model {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 8px;
+    margin-bottom: 12px;
 }
 
 .platform-detail-api-model-name {
-    font-weight: 700;
+    min-width: 0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.6;
     color: var(--text-primary);
+    overflow-wrap: anywhere;
+}
+
+.platform-detail-api-tier {
+    max-width: 100%;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.platform-detail-api-prices {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0;
+}
+
+.platform-detail-api-price {
+    min-width: 0;
+}
+
+.platform-detail-api-price dt {
+    margin-bottom: 4px;
+    color: var(--text-tertiary);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.platform-detail-api-price dd {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
 }
 
 .platform-detail-api-model-note {
-    margin-top: 4px;
+    margin: 10px 0 0;
     font-size: 12px;
-    font-weight: 500;
-    color: var(--text-tertiary);
-    line-height: 1.45;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+    .platform-detail-api-item { padding: 12px; }
+    .platform-detail-api-prices { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; }
+}
+
+.platform-detail-api-link {
+    max-width: 100%;
+    margin-top: 14px;
+    white-space: normal;
+    text-align: center;
 }
 
 .platform-detail-api-note {
