@@ -14,6 +14,7 @@
     root.PlatformDetail = api;
   }
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (PlatformCatalog, EntityData, Numbers) {
+  const UI = globalThis.CodingPlanUI || (typeof require === 'function' ? require('./ui-core.js') : null);
   const DEFAULT_MONITOR_API_BASE = 'https://api.dreamfree.space/vc';
   const Notices = globalThis.ChangeNotices || (typeof require==='function' ? require('./change-notices.js') : null);
 
@@ -31,6 +32,7 @@
   let openPlatformName = null;
   let triggerEl = null;
   let releaseModal = null;
+  let modelRows = null;
   let closeBound = false;
   let openSeq = 0;
   let boardCache = null; // { platforms: [] } | false (failed)
@@ -166,7 +168,7 @@
   }
 
   function buildModelTagsHtml(labels, ariaLabel) {
-    return (globalThis.CodingPlanUI || require('./ui-core.js')).modelTags(labels, {className:'platform-detail-models',ariaLabel});
+    return UI.modelTags(labels, {maxRows:2,className:'platform-detail-models',ariaLabel});
   }
 
   function buildModelsSectionHtml(labels) {
@@ -512,6 +514,7 @@
   function onOverlayClick(event) {
     const target = event.target;
     if (!target || !target.getAttribute) return;
+    if (UI.toggleModels(event)) return;
     if (target.getAttribute('data-platform-detail-close') === '1') {
       close();
       return;
@@ -575,6 +578,8 @@
   }
 
   function close() {
+    modelRows?.disconnect();
+    modelRows = null;
     const overlay = overlayEl();
     if (overlay) {
       overlay.hidden = true;
@@ -631,6 +636,8 @@
       trigger: triggerEl, initialFocus: closeBtnEl(), onClose: close
     });
 
+    modelRows = UI.observeModelTagRows(body);
+
     const board = await ensureBoard(options.monitorApiBase);
     if (seq !== openSeq || !isOpen()) return;
     if (!board || !Array.isArray(board.platforms)) return;
@@ -651,6 +658,7 @@
           ? !!options.isPlatformPinned(platform && platform.slug)
           : false
     });
+    modelRows?.refresh();
   }
 
   return {

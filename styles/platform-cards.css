@@ -666,6 +666,10 @@ body .platform-card:focus-visible .platform-card-hint {
     margin-top: 22px;
 }
 
+.platform-detail-models {
+    width: 100%;
+}
+
 .platform-detail-plans-list {
     width: 100%;
     max-width: 100%;
