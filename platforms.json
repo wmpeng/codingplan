@@ -121,7 +121,7 @@
       "name": "MiniMax",
       "rating": 5,
       "summary": "新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。",
-      "detail": "M3.1 Flash精确Token额度未公开，按五小时与七天窗口选择档位。",
+      "detail": "M3.1 Flash官方固定Token配额未公开；提供社区样本和加权扣减假设推算的五小时、周及四周用量参考。",
       "dimensions": {
         "value": {
           "score": 4,

@@ -2,7 +2,7 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.10.21 | MiniMax Code 限时权益与 M Plan 首月优惠更新
+> 更新日期 2026.10.21 | MiniMax M Plan 估算额度与限时权益更新
 
 当前展示 **42 个平台、142 个在售订阅套餐、2 个按量 API、163 个模型和 2329 条套餐模型关系**。
 
@@ -115,13 +115,16 @@
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 |
 |---|---|---|---:|---:|---:|---:|
+| [MiniMax · M Plan Build](https://www.minimax.cn/m-plan) | - | ¥234.5/首月 | 533.23M | 5,332.3M | 21,329.2M | ¥0.022/M |
+| [MiniMax · M Plan Explore](https://www.minimax.cn/m-plan) | - | ¥59.5/首月 | 133.31M | 1,333.08M | 5,332.3M | ¥0.0223/M |
+| [MiniMax · M Plan Go](https://www.minimax.cn/m-plan) | - | ¥24.5/首月 | 44.44M | 444.36M | 1,777.4M | ¥0.0276/M |
 | [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | - | $1/首月 | - | - | 243.5M | ¥0.0279/M |
 | [Ollama · Pro](https://api.dreamfree.space/c/s/cpyqollama) | - | $20/首月 | 2,434.9M | 2,434.9M | 2,434.9M | ¥0.0558/M |
 | [Ollama · Max](https://api.dreamfree.space/c/s/cpyqollama) | - | $100/首月 | 12,174.7M | 12,174.7M | 12,174.7M | ¥0.0558/M |
 | [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | - | $10/首月 | - | - | 811.6M | ¥0.0836/M |
 | [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | - | $20/首月 | - | - | 1,217.5M | ¥0.1115/M |
-| [Command Code · Max 10×](https://api.dreamfree.space/c/s/cpcommandcode) | - | $100/首月 | - | - | 6,087.4M | ¥0.1115/M |
-| [Command Code · Max 20×](https://api.dreamfree.space/c/s/cpcommandcode) | - | $200/首月 | - | - | 12,174.7M | ¥0.1115/M |
+
+还有 2 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### GPT-6-Astra
 
@@ -304,6 +307,7 @@
 
 ### 2026.10.21
 
+- 补充MiniMax M Plan正式M3.1 Flash的五小时、周和四周估算用量：按社区样本及加权扣减假设计算，非官方固定Token配额。
 - MiniMax Code订阅用户可在客户端内不限量使用M3.1 Flash至10月25日；外部工具API未获不限量承诺。
 - MiniMax Code内新订阅或升级M Plan首月五折活动截至10月31日：Go / Explore / Build首月24.5 / 59.5 / 234.5元，次月起49 / 119 / 469元每月。
 - 调整 Codex 参考额度估算：Plus、Pro $200、Pro $500 分别按 Pro $100 的 1/5、2 倍、5 倍换算；补齐 Fast / Ultrafast 参考额度，均非官方固定 Token 配额。

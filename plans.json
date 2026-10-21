@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-21T12:19:32Z",
+  "generatedAt": "2026-10-21T15:28:39Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -4169,7 +4169,7 @@
       "benefits": [
         "包含MiniMax Code及订阅API Key"
       ],
-      "note": "相对Go用量1倍；文本与其他模态共享额度，非视频模型受5小时及7天窗口控制，具体Token数未公布。截至2026-10-31，在MiniMax Code内新订阅或升级M Plan首月5折，首月¥24.5，次月起¥49/月；年付按整年付款。截至2026-10-25，所有订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。额度耗尽后可使用另购积分包，不自动扣按量账户余额。",
+      "note": "相对Go用量1倍；文本与其他模态共享额度，非视频模型受5小时及7天窗口控制，官方未公布固定Token配额；提供社区样本推算参考量。截至2026-10-31，在MiniMax Code内新订阅或升级M Plan首月5折，首月¥24.5，次月起¥49/月；年付按整年付款。截至2026-10-25，所有订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。额度耗尽后可使用另购积分包，不自动扣按量账户余额。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4178,12 +4178,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 44.4358578053,
+            "weeklyTokenInM": 444.3585780526,
+            "monthlyTokenInM": 1777.4,
+            "unitPriceCnyPerM": 0.0276
           },
-          "pricing": null,
-          "note": "新型号精确Token用量未知；常规受5h和7天窗口限制；截至2026-10-25订阅用户在MiniMax Code内使用不限量，未承诺外部工具API不限量；相对Go 1倍"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 1000000.0,
+            "cachePerM": 200000.0,
+            "outputPerM": 4000000.0,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 0.20 Token/Token、输出 4 Token/Token；套餐共享额度：5小时 11.50M Token、每周 115M Token、每月 460M Token；社区样本推算，非官方固定Token配额；采用输入/输出/缓存读取1/4/0.2的加权扣减假设，按输入缓存命中率95%、输出占比0.5%估算；月参考量按四周换算，不是独立月额度池。文本与其他模态共享额度，实际可用Token数随上下文、缓存和思考输出变化。；抵扣单位Token表示本估算模型的加权Token，不等于原始Token总数或按量API报价。截至2026-10-25，订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。"
         }
       ]
     },
@@ -4201,7 +4210,7 @@
       "benefits": [
         "包含MiniMax Code及订阅API Key"
       ],
-      "note": "相对Go用量3倍；文本与其他模态共享额度，非视频模型受5小时及7天窗口控制，具体Token数未公布。截至2026-10-31，在MiniMax Code内新订阅或升级M Plan首月5折，首月¥59.5，次月起¥119/月；年付按整年付款。截至2026-10-25，所有订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。额度耗尽后可使用另购积分包，不自动扣按量账户余额。",
+      "note": "相对Go用量3倍；文本与其他模态共享额度，非视频模型受5小时及7天窗口控制，官方未公布固定Token配额；提供社区样本推算参考量。截至2026-10-31，在MiniMax Code内新订阅或升级M Plan首月5折，首月¥59.5，次月起¥119/月；年付按整年付款。截至2026-10-25，所有订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。额度耗尽后可使用另购积分包，不自动扣按量账户余额。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4210,12 +4219,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 133.3075734158,
+            "weeklyTokenInM": 1333.0757341577,
+            "monthlyTokenInM": 5332.3,
+            "unitPriceCnyPerM": 0.0223
           },
-          "pricing": null,
-          "note": "新型号精确Token用量未知；常规受5h和7天窗口限制；截至2026-10-25订阅用户在MiniMax Code内使用不限量，未承诺外部工具API不限量；相对Go 3倍"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 1000000.0,
+            "cachePerM": 200000.0,
+            "outputPerM": 4000000.0,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 0.20 Token/Token、输出 4 Token/Token；套餐共享额度：5小时 34.50M Token、每周 345M Token、每月 1,380M Token；社区样本推算，非官方固定Token配额；采用输入/输出/缓存读取1/4/0.2的加权扣减假设，按输入缓存命中率95%、输出占比0.5%估算；月参考量按四周换算，不是独立月额度池。文本与其他模态共享额度，实际可用Token数随上下文、缓存和思考输出变化。；抵扣单位Token表示本估算模型的加权Token，不等于原始Token总数或按量API报价。截至2026-10-25，订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。"
         }
       ]
     },
@@ -4233,7 +4251,7 @@
       "benefits": [
         "包含MiniMax Code及订阅API Key"
       ],
-      "note": "相对Go用量12倍；文本与其他模态共享额度，非视频模型受5小时及7天窗口控制，具体Token数未公布。截至2026-10-31，在MiniMax Code内新订阅或升级M Plan首月5折，首月¥234.5，次月起¥469/月；年付按整年付款。截至2026-10-25，所有订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。额度耗尽后可使用另购积分包，不自动扣按量账户余额。",
+      "note": "相对Go用量12倍；文本与其他模态共享额度，非视频模型受5小时及7天窗口控制，官方未公布固定Token配额；提供社区样本推算参考量。截至2026-10-31，在MiniMax Code内新订阅或升级M Plan首月5折，首月¥234.5，次月起¥469/月；年付按整年付款。截至2026-10-25，所有订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。额度耗尽后可使用另购积分包，不自动扣按量账户余额。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4242,12 +4260,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 533.2302936631,
+            "weeklyTokenInM": 5332.3029366306,
+            "monthlyTokenInM": 21329.2,
+            "unitPriceCnyPerM": 0.022
           },
-          "pricing": null,
-          "note": "新型号精确Token用量未知；常规受5h和7天窗口限制；截至2026-10-25订阅用户在MiniMax Code内使用不限量，未承诺外部工具API不限量；相对Go 12倍"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 1000000.0,
+            "cachePerM": 200000.0,
+            "outputPerM": 4000000.0,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 0.20 Token/Token、输出 4 Token/Token；套餐共享额度：5小时 138M Token、每周 1,380M Token、每月 5,520M Token；社区样本推算，非官方固定Token配额；采用输入/输出/缓存读取1/4/0.2的加权扣减假设，按输入缓存命中率95%、输出占比0.5%估算；月参考量按四周换算，不是独立月额度池。文本与其他模态共享额度，实际可用Token数随上下文、缓存和思考输出变化。；抵扣单位Token表示本估算模型的加权Token，不等于原始Token总数或按量API报价。截至2026-10-25，订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。"
         }
       ]
     },
