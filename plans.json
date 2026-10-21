@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-21T12:04:29Z",
+  "generatedAt": "2026-10-21T12:19:32Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -7073,7 +7073,7 @@
       "name": "Free",
       "billingMode": "subscription",
       "action": "https://learn.chatgpt.com/docs/pricing",
-      "rating": 0,
+      "rating": 4,
       "monthlyPrice": 0,
       "currency": "$",
       "firstMonthPrice": 0,
@@ -7106,7 +7106,7 @@
       "name": "Go",
       "billingMode": "subscription",
       "action": "https://learn.chatgpt.com/docs/pricing",
-      "rating": 0,
+      "rating": 3,
       "monthlyPrice": 8,
       "currency": "$",
       "firstMonthPrice": 8,
