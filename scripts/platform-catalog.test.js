@@ -3,7 +3,6 @@ const assert = require('node:assert/strict');
 const {
   filterPlatforms,
   collectModelsForVendor,
-  resolvePlatformAction,
   validatePlatformRecords,
   escapeHtml,
   formatInlineMarkdown,
@@ -72,11 +71,15 @@ describe('collectModelsForVendor', () => {
   });
 });
 
-describe('resolvePlatformAction', () => {
-  it('prefers platform.action then first plan action', () => {
-    const plans = [{ platformSlug: 'a', action: 'https://plan' }];
-    assert.equal(resolvePlatformAction({ slug: 'a', name: 'A', action: 'https://own' }, plans), 'https://own');
-    assert.equal(resolvePlatformAction({ slug: 'a', name: 'A', action: null }, plans), 'https://plan');
+describe('platform action', () => {
+  it('uses the explicit platform link regardless of plan links or order', () => {
+    const platform=samplePlatform({action:'https://example.com/platform'});
+    const plans=[{platformSlug:platform.slug,action:'https://example.com/plan-one'}, {platformSlug:platform.slug,action:'https://example.com/plan-two'}];
+    for(const rows of [plans,plans.slice().reverse()]){
+      const html=buildPlatformCardHtml(platform,rows);
+      assert.match(html,/href="https:\/\/example\.com\/platform"/);
+      assert.doesNotMatch(html,/href="https:\/\/example\.com\/plan-/);
+    }
   });
 });
 

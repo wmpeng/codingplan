@@ -8,6 +8,7 @@
     const EntityData = root.EntityData || (typeof require === 'function' ? require('./entity-data.js') : null);
     const UI = root.CodingPlanUI || (typeof require === 'function' ? require('./ui-core.js') : null);
     const Numbers = root.NumberDisplay || (typeof require === 'function' ? require('./number-display.js') : null);
+    const Notices = root.ChangeNotices || (typeof require === 'function' ? require('./change-notices.js') : null);
 
     const BENCHMARKS = {
         artificialAnalysis: { label: 'AA 智力', short: 'AA' },
@@ -20,13 +21,13 @@
         '#db2777', '#4f46e5', '#65a30d', '#9333ea', '#ea580c', '#0f766e',
         '#475569', '#a16207', '#be123c', '#0369a1'
     ];
-    // Featured entities come only from model-comparison-presets.json.
+    // Featured entities come only from featured-catalog.json.
     const DEFAULT_PLATFORM_SLUGS = [];
     const DEFAULT_MODEL_SLUGS = [];
     const COMPARISON_TABLE_COLUMNS = [
         { key: 'vendor', label: '平台' },
         { key: 'plan', label: '套餐' },
-        { key: 'price', label: '套餐价格' },
+        { key: 'price', label: '首月价格' },
         { key: 'model', label: '模型' },
         { key: 'unitPriceCnyPerM', label: '综合单价' },
         { key: 'unitPriceVisual', label: '单价对比', hint: '低 → 高 · 对数', sortable: false },
@@ -447,7 +448,7 @@
             : Numbers.monthlyFee(original, originalCurrency);
         const isCny = originalCurrency === '¥';
         const converted = !isCny && cny !== null ? `（约 ${Numbers.monthlyFee(cny)}）` : '';
-        return `${originalText}${converted} / 月`;
+        return `${originalText}${converted} / 首月`;
     }
 
     function comparisonSortValue(point, key) {
@@ -494,7 +495,7 @@
             const sorting = sortable
                 ? ` tabindex="0" aria-sort="none" data-table-sort="${tableName}" data-sort-key="${column.key}"`
                 : '';
-            const label = compact && column.key === 'vendor' ? '平台 / 套餐' : compact && column.key === 'price' ? '每月价格' : column.hint
+            const label = compact && column.key === 'vendor' ? '平台 / 套餐' : compact && column.key === 'price' ? '首月价格' : column.hint
                 ? `<span class="usage-table-heading"><span>${column.label}</span><small>${column.hint}</small></span>`
                 : column.label;
             return `<th scope="col" data-comparison-col="${column.key}"${classes ? ` class="${classes}"` : ''}${sorting}>${label}</th>`;
@@ -517,8 +518,9 @@
     }
 
     function comparisonTableRowHtml(point, tokenUnit, visualOptions) {
+        const notice = key => Notices.forField(visualOptions?.changes,{...point,type:'point'},key,{seen:visualOptions?.noticeSeen});
         const subscription = point.billingMode === 'subscription';
-        const price = subscription ? (point.monthlyFeeCny === 0 ? '¥0 / 月' : finitePositive(point.monthlyFeeCny) !== null
+        const price = subscription ? (point.monthlyFeeCny === 0 ? '¥0 / 首月' : finitePositive(point.monthlyFeeCny) !== null
             ? formatSubscriptionMonthlyPrice(point) : '未公开') : '按量';
         const unitPrice = formatUnitPrice(point.unitPriceCnyPerM, tokenUnit);
         const aaScore = point.scores && point.scores.artificialAnalysis;
@@ -531,16 +533,16 @@
         const deepSWEInterval = deepSWEScore && Number.isFinite(Number(deepSWEScore.confidenceInterval))
             ? ` ±${formatNumber(deepSWEScore.confidenceInterval, 0)}` : '';
         return `<tr data-point-id="${escapeHtml(point.slug)}"${[visualOptions?.focused ? 'price-focus-row' : '', visualOptions?.pinned ? 'is-pinned' : ''].filter(Boolean).length ? ` class="${[visualOptions?.focused ? 'price-focus-row' : '', visualOptions?.pinned ? 'is-pinned' : ''].filter(Boolean).join(' ')}"` : ''}>` +
-            `<td class="sticky-first" data-comparison-col="vendor">${identity}</td>` +
+            `<td class="sticky-first" data-comparison-col="vendor">${identity}${notice('general')}</td>` +
             (compact ? '' : `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}<div class="plan-capabilities">${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></td>`) +
-            `<td class="numeric">${price}</td>` +
-            `<td class="usage-table-model">${escapeHtml(point.relationLabel || point.modelName)}</td>` +
+            `<td class="numeric">${price}${notice('price')}</td>` +
+            `<td class="usage-table-model">${escapeHtml(point.relationLabel || point.modelName)}${notice('models')}</td>` +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
             `<td class="usage-table-price-visual">${unitPriceVisualHtml(point, tokenUnit, visualOptions)}</td>` +
             `<td class="usage-table-api-pricing">${subscription ? '—' : escapeHtml(formatApiPricing(point.apiPricing))}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.weeklyTokenInM, tokenUnit) : '—'}</td>` +
-            `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}</td>` +
+            `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}${notice('quota')}</td>` +
             `<td class="numeric">${aaScore ? formatNumber(aaScore.score, 0) : '—'}</td>` +
             `<td class="numeric">${deepSWEScore ? `${formatNumber(deepSWEScore.score, 0)}${deepSWEInterval}` : '—'}</td>` +
             `<td class="usage-table-note">${point.note ? `<details class="usage-note-disclosure"><summary>用量口径与限制</summary><div>${escapeHtml(point.note)}</div></details>` : '—'}</td></tr>`;
@@ -626,7 +628,7 @@
         }).join('') : `<tr><td class="usage-table-empty" colspan="${columns.length}">当前暂无可比较的套餐。</td></tr>`;
         return `<article class="usage-preset-card usage-preset-card--${kind}" data-preset-id="${escapeHtml(group.id)}">` +
             `<header><div><h4>${escapeHtml(group.title)}</h4>${subtitle}</div><span${options.modelFilter?' data-preset-count aria-live="polite" aria-atomic="true"':''}>${rows.length} 条</span></header>` +
-            `<div class="usage-preset-table-scroll" tabindex="0" role="region" aria-label="${escapeHtml(group.title)}价格与用量"><table class="usage-preset-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>` +
+            `<div class="usage-preset-table-scroll" tabindex="0" role="region" aria-label="${escapeHtml(group.title)}价格与额度"><table class="usage-preset-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>` +
             (rows.length > limit ? `<button type="button" class="preset-expand" data-preset-expand aria-expanded="false"><span>展开全部</span></button>` : '') + '</article>';
     }
 
@@ -674,7 +676,7 @@
         const status = point.planStatus && point.planStatus !== 'open' ? `<div>${escapeHtml(UI.statusLabels[point.planStatus] || point.planStatus)}</div>` : '';
         const basis = point.unitPriceBasis === 'firstMonth' ? `<div>综合单价按首月价格计算：${Numbers.monthlyFee(point.firstMonthPrice, currencySymbol(point.originalCurrency))}</div>` : '';
         const fee = point.billingMode === 'subscription'
-            ? `<div>月费：${formatSubscriptionMonthlyPrice(point)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
+            ? `<div>首月价格：${formatSubscriptionMonthlyPrice(point)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
             : '';
         const apiPricing = point.billingMode === 'payg'
             ? `<div>API 单价：${escapeHtml(formatApiPricing(point.apiPricing))}</div>`
@@ -711,34 +713,34 @@
         container.innerHTML = `
             <section class="usage-view" aria-labelledby="usageViewTitle">
                 <header class="usage-heading">
-                    <div><p class="usage-eyebrow">模型购买决策</p><h2 id="usageViewTitle">价格与额度对比</h2></div>
-                    <p>把同一套餐下的不同模型拆成独立点，比较钱花在哪里、实际能换来多少额度和模型能力。 <a class="main-view-full-link" href="/pricing/">查看完整价格页 →</a></p>
+                    <div><p class="usage-eyebrow">模型购买决策</p><h2 id="usageViewTitle">价格与额度</h2></div>
+                    <p>把同一套餐下的不同模型拆成独立点，比较钱花在哪里、实际能换来多少额度和模型能力。 <a class="main-view-full-link" href="/pricing/">查看完整价格与额度 →</a></p>
                 </header>
-                <div class="usage-method-note"><strong>统一口径：</strong>价格筛选和坐标统一按折合人民币计算，美元按当前站点汇率 USD 1 ≈ ¥${formatNumber(Number(root.appConfig && root.appConfig.usdToCnyRate) || 6.8, 2)}；表格保留原始币种。具体输入、输出、缓存价格的为计算得出，其余的除了Kimi套餐没有购买到之外，均为实测数据，实测尽量构造95%缓存命中率和0.5%的输出占比。</div>
+                <div class="usage-method-note"><strong>统一口径：</strong>价格筛选和坐标统一按折合人民币计算，美元按当前站点汇率 USD 1 ≈ ¥${formatNumber(Number(root.appConfig && root.appConfig.usdToCnyRate) || 6.8, 2)}；表格保留原始币种。参考额度分别来自真实使用记录、官方 Token 额度、按扣减价格计算、请求估算或倍率换算，估算依据见备注。按价格计算时统一假设95%缓存命中率和0.5%的输出占比，未知额度不等于零。</div>
                 <section class="usage-presets" data-presets aria-label="常见模型对比" hidden></section>
                 <div class="usage-explorer-heading"><h3>完整对比</h3><p>使用筛选、图表与数据明细继续探索全部套餐和模型。</p></div>
-                <div class="filter-bar surface-panel usage-filters" aria-label="图表筛选">
+                <div class="filter-bar surface-panel usage-filters" aria-label="图表筛选"${compact ? ' hidden' : ''}>
                     <div class="filter-dropdown" data-picker="vendors"><button type="button" class="filter-btn" data-picker-toggle><span>平台</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-count hidden>0</span></button><div class="dropdown-menu"><div class="dropdown-section"><div class="checkbox-group" data-options></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-picker-reset>重置</button><button type="button" class="dropdown-btn primary" data-picker-done>确定</button></div></div></div>
                     <div class="filter-dropdown" data-picker="models"><button type="button" class="filter-btn" data-picker-toggle><span>模型</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-count hidden>0</span></button><div class="dropdown-menu usage-model-menu"><input class="usage-search" type="search" data-model-search placeholder="搜索模型" aria-label="搜索模型"><div class="dropdown-section"><div class="checkbox-group" data-options></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-picker-reset>重置</button><button type="button" class="dropdown-btn primary" data-picker-done>确定</button></div></div></div>
-                    <div class="filter-dropdown" data-picker="monthly-price"><button type="button" class="filter-btn" data-picker-toggle><span>套餐价格</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-price-count hidden>●</span></button><div class="dropdown-menu usage-price-menu"><div class="dropdown-section"><div class="dropdown-title">包月价格区间（人民币）</div><div class="price-slider-container"><div class="price-slider" data-price-slider><div class="slider-track"></div><div class="slider-range" data-price-range></div><div class="slider-thumb" data-price-thumb="min" role="slider" tabindex="0" aria-label="最低套餐价格"></div><div class="slider-thumb" data-price-thumb="max" role="slider" tabindex="0" aria-label="最高套餐价格"></div></div><div class="slider-values"><span class="slider-value" data-price-value="min">¥0</span><span class="slider-value" data-price-value="max">¥0</span></div></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-price-reset>重置</button><button type="button" class="dropdown-btn primary" data-price-apply>确定</button></div></div></div>
+                    <div class="filter-dropdown" data-picker="monthly-price"><button type="button" class="filter-btn" data-picker-toggle><span>套餐价格</span><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span><span class="count" data-price-count hidden>●</span></button><div class="dropdown-menu usage-price-menu"><div class="dropdown-section"><div class="dropdown-title">首月价格区间（人民币）</div><div class="price-slider-container"><div class="price-slider" data-price-slider><div class="slider-track"></div><div class="slider-range" data-price-range></div><div class="slider-thumb" data-price-thumb="min" role="slider" tabindex="0" aria-label="最低套餐价格"></div><div class="slider-thumb" data-price-thumb="max" role="slider" tabindex="0" aria-label="最高套餐价格"></div></div><div class="slider-values"><span class="slider-value" data-price-value="min">¥0</span><span class="slider-value" data-price-value="max">¥0</span></div></div></div><div class="dropdown-actions"><button type="button" class="dropdown-btn secondary" data-price-reset>重置</button><button type="button" class="dropdown-btn primary" data-price-apply>确定</button></div></div></div>
                     <label class="filter-btn usage-inline-filter"><span>多模态</span><select data-filter="multimodal" aria-label="多模态"><option value="all">全部</option><option value="multimodal">多模态</option><option value="text">纯文本</option></select></label>
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>AA 最低分</span><input data-filter="aaScoreMin" aria-label="AA 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>DeepSWE 最低分</span><input data-filter="deepSWEScoreMin" aria-label="DeepSWE 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
-                    <div class="usage-color-control" aria-label="颜色区分方式"><span>颜色</span><div class="usage-segments"><button type="button" data-color-mode="vendor" class="is-active">按平台</button><button type="button" data-color-mode="model">按模型</button></div></div>
-                    <div class="filter-trailing"><button type="button" class="reset-btn" data-action="restore-defaults">恢复默认</button><div class="stats-bar usage-counts" data-counts aria-live="polite"></div></div>
+                    <div class="usage-color-control" aria-label="颜色区分方式"><span>颜色</span><div class="usage-segments" role="group" aria-label="颜色区分方式"><button type="button" data-color-mode="vendor" class="is-active" aria-pressed="true">按平台</button><button type="button" data-color-mode="model" aria-pressed="false">按模型</button></div></div>
+                    ${compact ? '' : '<div class="filter-trailing"><button type="button" class="reset-btn" data-action="restore-defaults">恢复默认</button><div class="stats-bar usage-counts" data-counts aria-live="polite"></div></div>'}
                 </div>
                 <div class="usage-color-legend"><strong data-color-legend-title>平台颜色</strong><div data-color-legend></div></div>
                 <article class="usage-chart-card">
-                    <div class="usage-chart-head"><div><h3>月费 vs 月 Token</h3><p>一个点代表一个平台 × 套餐 × 模型；越靠左上越有吸引力。</p></div><label>坐标轴<select data-scale="tokens"><option value="log">对数</option><option value="value">线性</option></select></label></div>
-                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="月费和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的月费与月额度数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
+                    <div class="usage-chart-head"><div><h3>首月价格 vs 月 Token</h3><p>一个点代表一个平台 × 套餐 × 模型；越靠左上越有吸引力。</p></div><div class="usage-scale-control"><span>坐标轴</span><div class="usage-segments" data-scale="tokens" role="group" aria-label="坐标轴"><button type="button" data-scale-value="log" class="is-active" aria-pressed="true">对数</button><button type="button" data-scale-value="value" aria-pressed="false">线性</button></div></div></div>
+                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="首月价格和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的首月价格与月额度数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
                 </article>
                 <article class="usage-chart-card">
-                    <div class="usage-chart-head"><div><h3>单位价格 vs 模型评分</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标"><button type="button" data-benchmark="artificialAnalysis" class="is-active">AA</button><button type="button" data-benchmark="deepSWE">DeepSWE</button></div><label>价格轴<select data-scale="price"><option value="log">对数</option><option value="value">线性</option></select></label></div></div>
+                    <div class="usage-chart-head"><div><h3>单位价格 vs 模型评分</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标"><button type="button" data-benchmark="artificialAnalysis" class="is-active">AA</button><button type="button" data-benchmark="deepSWE">DeepSWE</button></div><div class="usage-scale-control"><span>价格轴</span><div class="usage-segments" data-scale="price" role="group" aria-label="价格轴"><button type="button" data-scale-value="log" class="is-active" aria-pressed="true">对数</button><button type="button" data-scale-value="value" aria-pressed="false">线性</button></div></div></div></div>
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和模型评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
                 </article>
                 <article class="usage-chart-card usage-data-card">
                     <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3><p>精确单价旁的横条按当前结果统一比较，采用对数尺度兼顾低价与高价；条越短，综合单价越低。按量 API 没有周期额度时显示“—”。</p></div><span class="usage-table-count" data-table-count="comparison"></span></div>
-                    <section class="usage-table-section" aria-label="额度和价格数据明细"><div class="usage-table-scroll"><table class="usage-data-table" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison', compact)}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
+                    <section class="usage-table-section" aria-label="价格与额度数据明细"><div class="usage-table-scroll"><table class="usage-data-table" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison', compact)}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
                 </article>
             </section>`;
     }
@@ -841,6 +843,20 @@
                 tokensScale: 'log', priceScale: 'log', presetPlatformScope: 'featured',
                 tokenUnit: root.CodingPlanDisplaySettings?.getTokenUnit() || 'yi'
             });
+            const colorControl = container.querySelector('.usage-color-control');
+            if (mountOptions.colorControlHost) mountOptions.colorControlHost.append(colorControl);
+            function onColorModeClick(event) {
+                const button = event.target.closest('[data-color-mode]');
+                if (!button || state.colorMode === button.dataset.colorMode) return;
+                state.colorMode = button.dataset.colorMode;
+                state.soloColorKey = null;
+                colorControl.querySelectorAll('[data-color-mode]').forEach(item => {
+                    item.classList.toggle('is-active', item === button);
+                    item.setAttribute('aria-pressed', String(item === button));
+                });
+                render();
+            }
+            colorControl.addEventListener('click', onColorModeClick);
             const usageChart = echarts.init(container.querySelector('[data-chart="usage"]'));
             const intelligenceChart = echarts.init(container.querySelector('[data-chart="intelligence"]'));
             enableClickPinnedTooltip(usageChart);
@@ -875,12 +891,12 @@
                 state.priceRanges = external.priceRanges || {};
                 state.filterContext = context;
                 state.sharedFilters = external;
-                const monthlyRange = external.priceRanges && external.priceRanges.monthlyPrice;
+                const firstMonthRange = external.priceRanges && external.priceRanges.firstMonthPrice;
                 const numericBounds = values => values
                     .filter(value => value !== null && value !== undefined && value !== '')
                     .map(value => Number(value)).filter(Number.isFinite);
-                const minimums = numericBounds([budget && budget.min, monthlyRange && monthlyRange.min]);
-                const maximums = numericBounds([budget && budget.max, monthlyRange && monthlyRange.max]);
+                const minimums = numericBounds([budget && budget.min, firstMonthRange && firstMonthRange.min]);
+                const maximums = numericBounds([budget && budget.max, firstMonthRange && firstMonthRange.max]);
                 state.monthlyPriceMin = minimums.length ? Math.max(...minimums) : null;
                 state.monthlyPriceMax = maximums.length ? Math.min(...maximums) : null;
                 syncFilterControls();
@@ -1065,9 +1081,11 @@
                 }
                 const colors = state.colorMode === 'model' ? modelColors : platformColors;
                 const body = container.querySelector(`[data-table-body="${tableName}"]`);
+                const noticeSeen = new Set();
                 body.innerHTML = sorted.length
                     ? sorted.map((point) => comparisonTableRowHtml(point, state.tokenUnit, {
                         scale,
+                        changes:context.changes, noticeSeen,
                         focused: focusRelationSlugs.has(point.slug),
                         compactIdentity:Boolean(Directory), pinned:pins.includes(point.slug),
                         color: colors[getPointColorKey(point, state.colorMode)]
@@ -1085,7 +1103,7 @@
             let sortSelect, sortPicker, directionButton;
             if (Directory) {
                 const tools = document.createElement('div'); tools.className = 'usage-detail-tools';
-                tools.innerHTML = `<label data-select-fallback>排序 <select id="pricingSort" aria-label="明细排序">${COMPARISON_TABLE_COLUMNS.filter(column => column.sortable !== false).map(column => `<option value="${column.key}">${column.key === 'unitPriceCnyPerM' ? '默认（综合单价）' : column.key === 'price' ? '每月价格' : column.label}</option>`).join('')}</select></label><button class="tool-button price-sort-direction" type="button" aria-label="改为降序">↑</button>`;
+                tools.innerHTML = `<label data-select-fallback>排序 <select id="pricingSort" aria-label="明细排序">${COMPARISON_TABLE_COLUMNS.filter(column => column.sortable !== false).map(column => `<option value="${column.key}">${column.key === 'unitPriceCnyPerM' ? '默认（综合单价）' : column.key === 'price' ? '首月价格' : column.label}</option>`).join('')}</select></label><button class="tool-button price-sort-direction" type="button" aria-label="改为降序">↑</button>`;
                 const count = container.querySelector('[data-table-count]'); count.before(tools);
                 const pagerHtml='<button class="tool-button" type="button" data-price-page="first">第一页</button><button class="tool-button" type="button" data-price-page="previous">上一页</button><span data-price-page-label aria-live="polite"></span><button class="tool-button" type="button" data-price-page="next">下一页</button>';
                 const pager=document.createElement('div');pager.className='price-pagination';pager.dataset.pricePagination='';pager.innerHTML=pagerHtml;
@@ -1096,11 +1114,6 @@
                 directionButton = tools.querySelector('button.price-sort-direction');
                 sortSelect.addEventListener('change', () => { tableSortState.comparison = {key:sortSelect.value,direction:'asc'}; renderDataTable('comparison',latestTableRows.comparison); });
                 directionButton.addEventListener('click', () => { const sort=tableSortState.comparison; sort.direction=sort.direction==='asc'?'desc':'asc'; renderDataTable('comparison',latestTableRows.comparison); });
-                container.querySelectorAll('[data-scale]').forEach(select => {
-                    select.id = 'pricingScale'+select.dataset.scale;
-                    const label=select.closest('label'); label.dataset.selectFallback='';
-                    root.CodingPlanSingleSelect.mount(select, select.dataset.scale==='tokens'?'坐标轴':'价格轴');
-                });
                 search.addEventListener('input', () => { cancelAnimationFrame(renderFrame); renderFrame=requestAnimationFrame(render); });
                 document.getElementById('toolFilters').addEventListener('click', event => {
                     if (event.target.closest('[data-filter-action]')) { search.value=''; tableSortState.comparison={key:'unitPriceCnyPerM',direction:'asc'}; }
@@ -1152,14 +1165,17 @@
                 const pointLabelField = getSoloPointLabelField(visibleFiltered);
                 const color = colorContext(filtered);
                 renderColorLegend(color);
-                const totalUsage = buildUsageChartPoints(points).length;
-                const totalIntelligence = buildIntelligenceChartPoints(points, state.benchmark, state.priceScale).length;
-                container.querySelector('[data-counts]').textContent = `额度图 ${usagePoints.length}/${totalUsage} · 智力图 ${intelligencePoints.length}/${totalIntelligence} · 明细 ${visibleFiltered.length}/${points.length}`;
+                const counts = container.querySelector('[data-counts]');
+                if (counts) {
+                    const totalUsage = buildUsageChartPoints(points).length;
+                    const totalIntelligence = buildIntelligenceChartPoints(points, state.benchmark, state.priceScale).length;
+                    counts.textContent = `额度图 ${usagePoints.length}/${totalUsage} · 智力图 ${intelligencePoints.length}/${totalIntelligence} · 明细 ${visibleFiltered.length}/${points.length}`;
+                }
 
                 const tokenUnitLabel = Numbers.tokenUnit(state.tokenUnit);
                 const usageZone = buildUsageAttractiveZone(usagePoints, state.tokenUnit, state.tokensScale);
                 setScatterOptions(usageChart, Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
-                    xAxis: { type: state.tokensScale, name: '月费（人民币）', nameLocation: 'middle', nameGap: 38, min: usageZone.xBounds.min, max: usageZone.xBounds.max, logBase: 10, axisLabel: { formatter: (v) => Numbers.monthlyFee(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
+                    xAxis: { type: state.tokensScale, name: '首月价格（人民币）', nameLocation: 'middle', nameGap: 38, min: usageZone.xBounds.min, max: usageZone.xBounds.max, logBase: 10, axisLabel: { formatter: (v) => Numbers.monthlyFee(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     yAxis: { type: state.tokensScale, name: `月 Token（${tokenUnitLabel}）`, nameLocation: 'middle', nameGap: 55, min: usageZone.yBounds.min, max: usageZone.yBounds.max, logBase: 10, axisLabel: { formatter: (v) => Numbers.tokens(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     series: [buildUsageAttractiveZoneSeries(usageZone), ...seriesByColor(usagePoints, state.colorMode, color.colors, (point) => ({ value: [point.monthlyFeeCny, tokenAmountInUnit(point.monthlyTokenInM, state.tokenUnit)], meta: point }), 'usage', pointLabelField)]
                 }), true);
@@ -1204,8 +1220,6 @@
                 } else if (target.matches('[data-filter="multimodal"]')) state.multimodal = target.value;
                 else if (target.matches('[data-filter="aaScoreMin"]')) state.aaScoreMin = target.value;
                 else if (target.matches('[data-filter="deepSWEScoreMin"]')) state.deepSWEScoreMin = target.value;
-                else if (target.matches('[data-scale="tokens"]')) state.tokensScale = target.value;
-                else if (target.matches('[data-scale="price"]')) state.priceScale = target.value;
                 else return;
                 render();
             });
@@ -1221,6 +1235,7 @@
             const onPriceBasisChange = () => { priceBasis=root.EntityData.displayPriceBasis(); points=root.EntityData.withComparisonPriceBasis(originalPoints,context,priceBasis); render(); };
             root.addEventListener('codingplan:price-basis-changed',onPriceBasisChange);
             container.__usageCleanup = () => {
+                colorControl.removeEventListener('click', onColorModeClick);
                 root.removeEventListener('codingplan:filters-changed', onSharedFilterChange);
                 root.removeEventListener('codingplan:token-unit-changed', onTokenUnitChange);
                 root.removeEventListener('codingplan:price-basis-changed',onPriceBasisChange);
@@ -1348,6 +1363,20 @@
                     render();
                     return;
                 }
+                const scaleButton = event.target.closest('[data-scale-value]');
+                if (scaleButton) {
+                    const group = scaleButton.closest('[data-scale]');
+                    const key = group.dataset.scale === 'tokens' ? 'tokensScale' : 'priceScale';
+                    if (state[key] === scaleButton.dataset.scaleValue) return;
+                    state[key] = scaleButton.dataset.scaleValue;
+                    group.querySelectorAll('button').forEach(button => {
+                        const selected = button === scaleButton;
+                        button.classList.toggle('is-active', selected);
+                        button.setAttribute('aria-pressed', String(selected));
+                    });
+                    render();
+                    return;
+                }
                 const benchmarkButton = event.target.closest('[data-benchmark]');
                 if (benchmarkButton) {
                     state.benchmark = benchmarkButton.dataset.benchmark;
@@ -1359,14 +1388,6 @@
                 if (colorLegendItem) {
                     const key = colorLegendItem.dataset.colorKey;
                     state.soloColorKey = state.soloColorKey === key ? null : key;
-                    render();
-                    return;
-                }
-                const colorModeButton = event.target.closest('[data-color-mode]');
-                if (colorModeButton) {
-                    state.colorMode = colorModeButton.dataset.colorMode;
-                    state.soloColorKey = null;
-                    container.querySelectorAll('[data-color-mode]').forEach((button) => button.classList.toggle('is-active', button === colorModeButton));
                     render();
                     return;
                 }

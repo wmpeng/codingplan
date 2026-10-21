@@ -1,8 +1,8 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.10.13 | 平台与模型资料补全",
-    "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Cursor、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.1-Sol、Claude 5.5系列、MiniMax-M3.1-Flash-Preview、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3与Qwen-3.8等模型",
+    "updateDate": "更新日期 2026.10.21 | MiniMax Code 限时权益与 M Plan 首月优惠更新",
+    "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Cursor、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.1-Sol、Claude 5.5系列、MiniMax-M3.1-Flash、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3与Qwen-3.8等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
     "entry": {
@@ -69,7 +69,7 @@
   "notes": [
     "包季/包年价格中的划线数字表示原始价格（包月×3 或 包月×12），未划线的为实际优惠价格。",
     "使用表格邀请链接，部分平台可享优惠",
-    "综合单价 = 连续包月价（美元按汇率折算人民币）÷ 实测月 Token，单位为 ￥/M Token；缺数时显示「-」，仅供横向对比。",
+    "综合单价 = 连续包月价（美元按汇率折算人民币）÷ 参考月 Token 额度，单位为 ￥/M Token；额度可能来自实测、官方额度或估算，缺数时显示「-」，仅供横向对比。",
     "本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议"
   ],
   "accountSale": {
@@ -99,12 +99,9 @@
       "quarterlyPrice": "连续包季",
       "yearlyPrice": "连续包年",
       "models": "支持模型",
-      "fiveHoursRequests": "5小时请求数",
-      "weeklyRequests": "每周请求数",
-      "monthlyRequests": "每月请求数",
-      "measuredFiveHoursTokenLimit": "5h Token",
-      "measuredWeeklyTokenLimit": "周Token",
-      "measuredMonthlyTokenLimit": "月Token",
+      "requestQuota.fiveHours": "5小时请求数",
+      "requestQuota.weekly": "每周请求数",
+      "requestQuota.monthly": "每月请求数",
       "benefits": "其他权益",
       "planStatus": "状态",
       "note": "备注"
@@ -127,6 +124,31 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.10.21",
+      "items": [
+        "MiniMax Code订阅用户可在客户端内不限量使用M3.1 Flash至10月25日；外部工具API未获不限量承诺。",
+        "MiniMax Code内新订阅或升级M Plan首月五折活动截至10月31日：Go / Explore / Build首月24.5 / 59.5 / 234.5元，次月起49 / 119 / 469元每月。",
+        "调整 Codex 参考额度估算：Plus、Pro $200、Pro $500 分别按 Pro $100 的 1/5、2 倍、5 倍换算；补齐 Fast / Ultrafast 参考额度，均非官方固定 Token 配额。"
+      ]
+    },
+    {
+      "date": "2026.10.20",
+      "items": [
+        "比较价格统一采用通用价，邀请优惠单列资格：更新共绩API标价、智谱国际及方舟首月价格。",
+        "MiniMax M Plan使用正式M3.1 Flash；补OpenCode、Command Code、Ollama相应入口及OpenCode Beam Free，精确型号评测独立核对。",
+        "补Kimi视频输入差异、Command免费模型门槛和共享额度，以及Qoder、MiMo、智谱客户端活动条件；未明确的数字与叠加方式继续保留未知。"
+      ]
+    },
+    {
+      "date": "2026.10.19",
+      "items": [
+        "更新已确认的套餐价格、续费与优惠条件：补Kimi Ultra及多平台周期价，标明限购、售罄和停售。",
+        "调整Codex、Claude、Cursor、OpenCode、Command Code、Qoder等平台模型支持与额度；DeepSeek官方及腾讯已确认渠道使用独立1017型号。",
+        "补充共享池、客户端、工具计费与活动期限；未来变化收录于「预告与更新」，按确认结果维护现行数据。",
+        "同步AA与DeepSWE评测资料，未公开Token量及存在冲突的型号、价格和权限继续保留未知或原记录。"
+      ]
+    },
     {
       "date": "2026.10.13",
       "items": [

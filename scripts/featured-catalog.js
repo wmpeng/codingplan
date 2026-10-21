@@ -51,7 +51,7 @@
       return p && p.planStatus !== 'delisted' && platform && platform.platformStatus !== 'delisted';
     }).map(p => p.platformSlug));
     const title = options.directory ? `<header class="model-card-header"><h3>${esc(model.name)}</h3><div class="model-card-aside">${options.featured ? '<span class="model-featured-badge">精选</span>' : ''}${UI.pinButton({pinned:options.pinned,label:`${options.pinned ? '取消置顶' : '置顶'} ${model.name}`,attributes:{'data-model-pin':model.slug}})}</div></header>` : `<h3>${esc(model.name)}</h3>`;
-    return `<article class="model-card${options.featured ? ' is-featured' : ''}${options.pinned ? ' is-pinned' : ''}" data-model-slug="${esc(model.slug)}">${title}<p class="model-modality">${esc(modalities(model))}</p><div class="model-scores">${scoreHtml(model,'artificialAnalysis','AA')}${scoreHtml(model,'deepSWE','DeepSWE')}</div><a class="model-offers-link" href="${esc(UI.route('plans',{model:model.slug}))}">${supported.size} 个平台收录 · 查看套餐 →</a><a class="model-price-link" href="${esc(UI.route('pricing',{model:model.slug}))}">比较价格与按量 API →</a></article>`;
+    return `<article class="model-card${options.featured ? ' is-featured' : ''}${options.pinned ? ' is-pinned' : ''}" data-model-slug="${esc(model.slug)}">${title}<p class="model-modality">${esc(modalities(model))}</p><div class="model-scores">${scoreHtml(model,'artificialAnalysis','AA')}${scoreHtml(model,'deepSWE','DeepSWE')}</div><a class="model-offers-link" href="${esc(UI.route('plans',{model:model.slug}))}">${supported.size} 个平台收录 · 查看套餐 →</a><a class="model-price-link" href="${esc(UI.route('pricing',{model:model.slug}))}">比较价格与额度 →</a></article>`;
   }
   function modelGroups(config, context) {
     return config.groups.map(g => `<section class="featured-model-group"><div class="section-heading"><h3>${esc(g.title)}</h3><span>${g.modelSlugs.length} 个模型</span></div><div class="model-grid">${g.modelSlugs.map(s => modelCard(context.modelBySlug.get(s),context)).join('')}</div></section>`).join('');
@@ -72,7 +72,7 @@
       const selectedButton = focused?.closest?.('[data-preset-model]');
       const focus = selectedButton && host.contains(selectedButton) ? {group:selectedButton.closest('[data-preset-id]').dataset.presetId,model:selectedButton.dataset.presetModel} : null;
       globalThis.ModelComparison.renderPresetComparisons(host,preset,data,unit,'featured',tableOptions);
-      host.insertAdjacentHTML('beforeend', `<p class="comparison-method">订阅单价按参考月额度用满计算；各模型额度不相加。${Help.html(host.id + '-priceHelp','综合单价说明','订阅综合单价＝首月或每月价格 ÷ 参考月额度，假设额度用满。右上角可切换首月或每月价格，首月价格未知时使用每月价格。按量 API 按实际用量计费；实际成本还受输入、输出及缓存比例影响。未知额度不等于零。')}<a href="/pricing/#pricingMethod">计算口径 →</a></p>`);
+      host.insertAdjacentHTML('beforeend', `<p class="comparison-method">订阅单价按参考月额度用满计算；各模型额度不相加。${Help.html(host.id + '-priceHelp','综合单价说明','订阅综合单价＝首月或每月价格 ÷ 参考月额度，假设额度用满。右上角可切换首月或每月价格，首月价格未知时使用每月价格。按量 API 按实际用量计费；实际成本还受输入、输出及缓存比例影响。未知额度不等于零。')}</p>`);
       for (const id of expanded) { const card = [...host.querySelectorAll('[data-preset-id]')].find(x=>x.dataset.presetId===id); if(card) toggle(card,true); }
       if(focus) focusModelButton(focus.group,focus.model);
     };

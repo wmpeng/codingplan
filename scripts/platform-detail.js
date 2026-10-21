@@ -14,7 +14,9 @@
     root.PlatformDetail = api;
   }
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (PlatformCatalog, EntityData, Numbers) {
+  const UI = globalThis.CodingPlanUI || (typeof require === 'function' ? require('./ui-core.js') : null);
   const DEFAULT_MONITOR_API_BASE = 'https://api.dreamfree.space/vc';
+  const Notices = globalThis.ChangeNotices || (typeof require==='function' ? require('./change-notices.js') : null);
 
   let options = {
     getPlans: () => [],
@@ -30,6 +32,7 @@
   let openPlatformName = null;
   let triggerEl = null;
   let releaseModal = null;
+  let modelRows = null;
   let closeBound = false;
   let openSeq = 0;
   let boardCache = null; // { platforms: [] } | false (failed)
@@ -71,17 +74,22 @@
     if (!validGroups.length) return '';
     const content = validGroups.map((group) => {
       const rows = group.rows.map((row) => {
-        const note = row.note
-          ? `<div class="platform-detail-api-model-note">${esc(row.note)}</div>`
-          : '';
+        const prices = [
+          ['输入', row.inputPerM, row.currency],
+          ['缓存', row.cachePerM, row.currency],
+          ['输出', row.outputPerM, row.currency],
+          ['综合', row.unitPriceCnyPerM, '¥']
+        ].map(([label, value, currency]) =>
+          `<div class="platform-detail-api-price"><dt>${label}</dt><dd>${esc(formatApiPrice(value, currency))}</dd></div>`
+        ).join('');
         return (
-          `<tr>` +
-          `<td><span class="platform-detail-api-model-name">${esc(row.modelName)}</span>${row.tierLabel ? `<div>${esc(row.tierLabel)}</div>` : ''}${note}</td>` +
-          `<td>${esc(formatApiPrice(row.inputPerM, row.currency))}</td>` +
-          `<td>${esc(formatApiPrice(row.cachePerM, row.currency))}</td>` +
-          `<td>${esc(formatApiPrice(row.outputPerM, row.currency))}</td>` +
-          `<td>${esc(formatApiPrice(row.unitPriceCnyPerM, '¥'))}</td>` +
-          `</tr>`
+          `<li class="platform-detail-api-item">` +
+          `<div class="platform-detail-api-model">` +
+          `<span class="platform-detail-api-model-name">${esc(row.modelName)}</span>` +
+          (row.tierLabel ? `<span class="platform-detail-api-tier">${esc(row.tierLabel)}</span>` : '') +
+          `</div><dl class="platform-detail-api-prices">${prices}</dl>` +
+          (row.note ? `<p class="platform-detail-api-model-note">${esc(row.note)}</p>` : '') +
+          `</li>`
         );
       }).join('');
       const note = group.planNote
@@ -91,10 +99,7 @@
         `<div class="platform-detail-api-group">` +
         (validGroups.length > 1 ? `<h4>${esc(group.planName)}</h4>` : '') +
         EntityData.harnessApiBadge(group.supportsHarnessApi) +
-        `<div class="platform-detail-api-table-wrap">` +
-        `<table class="platform-detail-api-table">` +
-        `<thead><tr><th scope="col">模型</th><th scope="col">输入</th><th scope="col">缓存</th><th scope="col">输出</th><th scope="col">综合</th></tr></thead>` +
-        `<tbody>${rows}</tbody></table></div>${note}</div>`
+        `<ul class="platform-detail-api-list" role="list" aria-label="${esc(group.planName || '按量 API')}模型报价">${rows}</ul>${note}</div>`
       );
     }).join('');
     return (
@@ -102,7 +107,7 @@
       `<h3 id="platformDetailApiPricingHeading" class="platform-detail-section-title">按量 API 定价</h3>` +
       `<p class="platform-detail-api-unit">单位：每百万 Token；综合价按站点统一工作负载计算</p>` +
       content +
-      `<a class="platform-detail-avail-link" href="/pricing/">在价格与额度中查看 →</a>` +
+      `<a class="tool-button platform-detail-api-link" href="/pricing/">在价格与额度中查看 →</a>` +
       `</section>`
     );
   }
@@ -111,7 +116,7 @@
     const monthly = formatMoney(plan && plan.monthlyPrice, plan && plan.currency);
     if (!monthly) return '-';
     const first = formatMoney(plan && plan.firstMonthPrice, plan && plan.currency);
-    if (first && Number(plan.firstMonthPrice) !== Number(plan.monthlyPrice)) {
+    if (typeof plan.firstMonthPrice === 'number' && first && plan.firstMonthPrice !== plan.monthlyPrice) {
       return (
         `<span class="platform-detail-price-main">${esc(monthly)}</span>` +
         `<span class="platform-detail-price-sep" aria-hidden="true"> · </span>` +
@@ -135,23 +140,16 @@
   function formatPlanQuota(plan) {
     if (!plan) return '';
 
-    if (
-      typeof plan.measuredMonthlyTokenLimit === 'number' &&
-      Number.isFinite(plan.measuredMonthlyTokenLimit) &&
-      plan.measuredMonthlyTokenLimit > 0
-    ) {
-      return `${Numbers.tokens(plan.measuredMonthlyTokenLimit)}M Token`;
-    }
-    if (typeof plan.monthlyRequests === 'number' && Number.isFinite(plan.monthlyRequests)) {
-      const short = formatCountShort(plan.monthlyRequests);
+    if (typeof plan.requestQuota?.monthly === 'number' && Number.isFinite(plan.requestQuota?.monthly)) {
+      const short = formatCountShort(plan.requestQuota?.monthly);
       return short ? `${short}次/月` : '';
     }
-    if (typeof plan.weeklyRequests === 'number' && Number.isFinite(plan.weeklyRequests)) {
-      const short = formatCountShort(plan.weeklyRequests);
+    if (typeof plan.requestQuota?.weekly === 'number' && Number.isFinite(plan.requestQuota?.weekly)) {
+      const short = formatCountShort(plan.requestQuota?.weekly);
       return short ? `${short}次/周` : '';
     }
-    if (typeof plan.fiveHoursRequests === 'number' && Number.isFinite(plan.fiveHoursRequests)) {
-      const short = formatCountShort(plan.fiveHoursRequests);
+    if (typeof plan.requestQuota?.fiveHours === 'number' && Number.isFinite(plan.requestQuota?.fiveHours)) {
+      const short = formatCountShort(plan.requestQuota?.fiveHours);
       return short ? `${short}次/5h` : '';
     }
     return '';
@@ -163,7 +161,7 @@
   }
 
   function buildModelTagsHtml(labels, ariaLabel) {
-    return (globalThis.CodingPlanUI || require('./ui-core.js')).modelTags(labels, {className:'platform-detail-models',ariaLabel});
+    return UI.modelTags(labels, {maxRows:2,className:'platform-detail-models',ariaLabel});
   }
 
   function buildModelsSectionHtml(labels) {
@@ -189,11 +187,6 @@
         const ratingHtml = stars
           ? `<span class="platform-detail-plan-rating" aria-label="${rating} 星">${stars}</span>`
           : '';
-        const summary =
-          typeof plan.summary === 'string' && plan.summary.trim() ? plan.summary.trim() : '';
-        const summaryHtml = summary
-          ? `<p class="platform-detail-plan-summary">${esc(summary)}</p>`
-          : '';
         const harnessHtml = EntityData.harnessApiBadge(EntityData.resolveHarnessApi(platform, plan));
         const modelsHtml = buildModelTagsHtml(plan.modelLabels, `${plan.name} 支持模型`);
         const quota = formatPlanQuota(plan);
@@ -208,7 +201,7 @@
           `<span class="platform-detail-plan-name">${planName}</span>` +
           ratingHtml +
           `</div>` +
-          harnessHtml + summaryHtml + modelsHtml +
+          harnessHtml + modelsHtml +
           `</div>` +
           `<div class="platform-detail-plan-side">` +
           `<div class="platform-detail-plan-price">${priceHtml}</div>` +
@@ -356,10 +349,7 @@
         ? ''
         : `<span class="platform-detail-rush" data-platform-status="${esc(status)}">${esc(statusLabel)}</span>`;
     const discontinued = status === 'delisted';
-    const actionUrl =
-      typeof PlatformCatalog.resolvePlatformAction === 'function'
-        ? PlatformCatalog.resolvePlatformAction(platform, Array.isArray(context.plans) ? context.plans : [])
-        : null;
+    const actionUrl = platform.action;
     const actionLink = actionUrl
       ? `<a class="platform-detail-action" href="${esc(actionUrl)}" target="_blank" rel="noopener noreferrer">去官网 ${PlatformCatalog.EXTERNAL_LINK_ICON}</a>`
       : '';
@@ -439,6 +429,7 @@
       `<header class="platform-detail-header${discontinued ? ' is-discontinued' : ''}">` +
       `<div class="platform-detail-title-row">` +
       `<h2 id="platformDetailTitle" class="platform-detail-title">${name}</h2>` +
+      (Notices?.platformInfo(context.entityContext?.changes,platformId) || '') +
       pinHtml +
       actionLink +
       (PlatformCatalog.getPlatformGuideUrl(platformId) ? `<a class="platform-guide-link" href="${esc(PlatformCatalog.getPlatformGuideUrl(platformId))}">查看完整介绍 →</a>` : '') +
@@ -513,6 +504,7 @@
   function onOverlayClick(event) {
     const target = event.target;
     if (!target || !target.getAttribute) return;
+    if (UI.toggleModels(event)) return;
     if (target.getAttribute('data-platform-detail-close') === '1') {
       close();
       return;
@@ -576,6 +568,8 @@
   }
 
   function close() {
+    modelRows?.disconnect();
+    modelRows = null;
     const overlay = overlayEl();
     if (overlay) {
       overlay.hidden = true;
@@ -632,6 +626,8 @@
       trigger: triggerEl, initialFocus: closeBtnEl(), onClose: close
     });
 
+    modelRows = UI.observeModelTagRows(body);
+
     const board = await ensureBoard(options.monitorApiBase);
     if (seq !== openSeq || !isOpen()) return;
     if (!board || !Array.isArray(board.platforms)) return;
@@ -652,6 +648,7 @@
           ? !!options.isPlatformPinned(platform && platform.slug)
           : false
     });
+    modelRows?.refresh();
   }
 
   return {

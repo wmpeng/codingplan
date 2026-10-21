@@ -5,9 +5,11 @@
   if (root.document) api.bind(root.document);
 })(globalThis, function (UI) {
   'use strict';
-  function html(id, label, text) {
+  function html(id, label, text, options = {}) {
     const esc = UI.escapeHtml;
-    return `<span class="ui-help"><button type="button" class="ui-help-button" popovertarget="${esc(id)}" aria-label="${esc(label)}" aria-expanded="false" aria-controls="${esc(id)}" aria-describedby="${esc(id)}"><span aria-hidden="true">?</span></button><span class="ui-help-content" id="${esc(id)}" popover="auto" role="tooltip">${esc(text)}</span></span>`;
+    // Rich content must come from a renderer that escapes its own data, not raw source text.
+    const rich = typeof options.contentHtml === 'string';
+    return `<span class="ui-help${options.icon==='info'?' ui-help--info':''}"><button type="button" class="ui-help-button" popovertarget="${esc(id)}" aria-label="${esc(label)}" aria-expanded="false" aria-controls="${esc(id)}"${rich?'':` aria-describedby="${esc(id)}"`}><span aria-hidden="true">${options.icon==='info'?'i':'?'}</span></button><span class="ui-help-content" id="${esc(id)}" popover="auto" role="${rich?'dialog':'tooltip'}"${rich?` aria-label="${esc(label)}"`:''}>${rich?`<button type="button" class="ui-help-close" data-ui-help-close aria-label="关闭变更预告">×</button>${options.contentHtml}`:esc(text)}</span></span>`;
   }
   function bind(doc) {
     let active = null, pinned = false, closeTimer = null;
@@ -57,11 +59,12 @@
     doc.addEventListener('focusin', event => { const b = buttonFor(event.target); if (b) show(b); });
     doc.addEventListener('focusout', event => { if (active && !pinned && active.closest('.ui-help').contains(event.target) && !active.closest('.ui-help').contains(event.relatedTarget)) close(); });
     doc.addEventListener('click', event => {
+      if(event.target.closest('[data-ui-help-close]') && active && content(active).contains(event.target)){const button=active;button.focus({preventScroll:true});close();return;}
       const b = buttonFor(event.target);
       if (b) { event.preventDefault(); if (active === b && pinned) close(); else { show(b); pinned = true; } }
       else if (active && !active.closest('.ui-help').contains(event.target)) close();
     });
-    doc.addEventListener('keydown', event => { if (event.key === 'Escape' && active) { event.preventDefault(); close(); } });
+    doc.addEventListener('keydown', event => { if (event.key === 'Escape' && active) { event.preventDefault(); const button=active; if(content(button).contains(doc.activeElement)) button.focus({preventScroll:true}); close(); } });
     doc.addEventListener('toggle', event => {
       if (active && event.target === content(active) && event.newState === 'closed') close();
     }, true);

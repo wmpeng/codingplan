@@ -326,7 +326,7 @@ test("真实目录的推荐引用完整，AA无分数不冒充零，分组模型
     require("../plans.json"),
     require("../models.json"),
   );
-  c.modelGroups = require("../model-comparison-presets.json").groups;
+  c.modelGroups = require("../featured-catalog.json").groups;
   for (const group of c.modelGroups.filter((x) =>
     ["sota-models", "high-volume-models"].includes(x.id),
   ))

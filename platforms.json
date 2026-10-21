@@ -23,7 +23,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqzhipu"
     },
     {
       "slug": "zhipu-coding-legacy",
@@ -34,18 +35,19 @@
       "platformStatus": "delisted",
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
-      "supportsHarnessApi": null
+      "supportsHarnessApi": null,
+      "action": "https://api.dreamfree.space/c/s/cpyqzhipu"
     },
     {
       "slug": "opencode",
       "name": "OpenCode",
       "rating": 5,
-      "summary": "Go与Go Plus的多模型订阅，各模型独立额度；当前32个LLM。",
+      "summary": "Go 与 Go Plus 多模型订阅，各型号额度不同；免费与 Contributor 型号有额外条件。",
       "detail": "各模型的Go Plus额度增幅不同，不能统一按四倍算。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "Go $10/月、Go Plus $40/月，各模型有独立月额度与短窗口；当前额度和活动依模型不同，不统一按四倍计算。"
+          "reason": "Go $10/月、Go Plus $40/月，各模型有不同月额度与短窗口；当前额度和活动依模型不同，不统一按四倍计算。"
         },
         "models": {
           "score": 5,
@@ -59,7 +61,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqopencode"
     },
     {
       "slug": "bytedance-ark",
@@ -84,7 +87,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqfangzhou"
     },
     {
       "slug": "bytedance-ark-agent",
@@ -109,14 +113,15 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqfangzhout"
     },
     {
       "slug": "minimax",
       "name": "MiniMax",
       "rating": 5,
       "summary": "新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。",
-      "detail": "M3.1 Flash Preview精确Token额度未公开，按五小时与七天窗口选择档位。",
+      "detail": "M3.1 Flash精确Token额度未公开，按五小时与七天窗口选择档位。",
       "dimensions": {
         "value": {
           "score": 4,
@@ -124,7 +129,7 @@
         },
         "models": {
           "score": 4,
-          "reason": "M3.1 Flash Preview精确Token额度未公开，按五小时与七天窗口选择档位。"
+          "reason": "M3.1 Flash精确Token额度未公开，按五小时与七天窗口选择档位。"
         },
         "stability": {
           "score": 5,
@@ -134,7 +139,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://www.minimax.cn/m-plan"
     },
     {
       "slug": "minimax-coding-legacy",
@@ -145,7 +151,8 @@
       "platformStatus": "delisted",
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
-      "supportsHarnessApi": null
+      "supportsHarnessApi": null,
+      "action": "https://api.dreamfree.space/c/s/cpyqminimax"
     },
     {
       "slug": "zhipu-intl",
@@ -157,7 +164,7 @@
         "value": {
           "score": 4,
           "reason": "用量与国内版一致，新套餐价格也基本一致。",
-          "detail": "用量与国内版完全一致，新套餐价格也基本一致。使用[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)可享9折。[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)内有成品号出售。"
+          "detail": "用量与国内版一致。通过[邀请链接](https://api.dreamfree.space/c/s/cpyqzai)完成绑定、且此前从未付费订阅的合资格用户，首次订阅订单可享9折；后续续费与升级不适用，不可叠加同类首单优惠。[飞书群](https://api.dreamfree.space/c/s/cpfeishulink)内有成品号出售。"
         },
         "models": {
           "score": 5,
@@ -171,7 +178,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": true,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqzai"
     },
     {
       "slug": "zhipu-intl-coding-legacy",
@@ -182,17 +190,18 @@
       "platformStatus": "delisted",
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
-      "supportsHarnessApi": null
+      "supportsHarnessApi": null,
+      "action": "https://api.dreamfree.space/c/s/cpyqzai"
     },
     {
       "slug": "kimi",
       "name": "Kimi",
       "rating": 4,
-      "summary": "当前Go/Plus/Pro/Max订阅；Plus起支持Coding，旧四档仅老用户续费。",
+      "summary": "当前Go/Plus/Pro/Max/Ultra订阅；Plus起支持Coding，旧四档仅老用户续费。",
       "dimensions": {
         "value": {
           "score": 3,
-          "reason": "当前Go/Plus/Pro/Max月费49/99/199/699元，Plus起支持Coding；老套餐仅存量续费，不能按新用户价格比较旧实测。"
+          "reason": "Go/Plus/Pro/Max/Ultra月费49/99/199/699/1399元，Plus起支持Coding；新旧套餐额度规则不同。"
         },
         "models": {
           "score": 5,
@@ -207,14 +216,15 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "detail": "Coding支持Kimi K3与K2.8 Preview，Go不提供Coding API，不能混用客户端与API权益。"
+      "detail": "Coding支持Kimi K3与K2.8 Preview，Go不提供Coding API，不能混用客户端与API权益。",
+      "action": "https://api.dreamfree.space/c/s/cpyqkimi"
     },
     {
       "slug": "deepseek-official",
       "name": "DeepSeek",
       "rating": 5,
       "summary": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。",
-      "detail": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。DeepSeek V4.1 Flash 已上线，原生多模态、1M 上下文，空闲时段价格更低，按量使用更灵活。",
+      "detail": "官方DeepSeek按量通道，当前Flash实际版本为DeepSeek-V4.1-Flash-1017，原生图片理解、1M上下文；V4 Pro继续提供服务，按峰谷价格计费。",
       "dimensions": {
         "value": {
           "score": 4,
@@ -222,7 +232,7 @@
         },
         "models": {
           "score": 5,
-          "reason": "当前V4.1 Flash与V4 Pro按峰谷价格分别展示；原计划V4 Pro停服安排已撤销，继续提供服务。"
+          "reason": "当前V4.1 Flash 1017与V4 Pro按峰谷价格分别展示；V4 Pro继续提供服务。"
         },
         "stability": {
           "score": 5,
@@ -239,12 +249,12 @@
       "slug": "gongji",
       "name": "共绩算力",
       "rating": 5,
-      "summary": "GLM、Kimi、Qwen、DeepSeek按量API；邀请8折仅适用于资格仍有效的用户。",
-      "detail": "支持 11 个大语言模型；DeepSeek V4 正式版能否恢复调用待确认。邀请折扣需有效资格，购买前请在账户中确认。",
+      "summary": "GLM、Kimi、Qwen、DeepSeek等模型的按量API，邀请优惠需有效资格。",
+      "detail": "提供14个大语言模型入口；DeepSeek V4预览ID将转向正式服务，目标版本未公布。邀请折扣以账户结算为准。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "有效邀请资格可享标价 8 折，实际折扣以账户结算为准。"
+          "reason": "按实际Token用量付费；合资格受邀用户可享标价8折，实际折扣以账户结算为准。"
         },
         "models": {
           "score": 5,
@@ -284,7 +294,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqyyzs"
     },
     {
       "slug": "codex",
@@ -309,7 +320,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": true,
       "requiresOverseasPayment": true,
-      "supportsHarnessApi": false
+      "supportsHarnessApi": false,
+      "action": "https://api.dreamfree.space/c/s/cpyqchatgpt"
     },
     {
       "slug": "claude",
@@ -334,13 +346,14 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": true,
       "requiresOverseasPayment": true,
-      "supportsHarnessApi": false
+      "supportsHarnessApi": false,
+      "action": "https://api.dreamfree.space/c/s/cpyqclaudeup"
     },
     {
       "slug": "ollama",
       "name": "Ollama",
       "rating": 4,
-      "summary": "当前18个云端LLM的美元Credits订阅，月池可集中使用；部分缓存价格未知。",
+      "summary": "云端 LLM 的美元 Credits 订阅，月池可集中使用；部分缓存价格未知。",
       "dimensions": {
         "value": {
           "score": 5,
@@ -359,7 +372,8 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "detail": "Pro/Max 云端月额度与本地免费模型相互独立。"
+      "detail": "Pro/Max 云端月额度与本地免费模型相互独立。",
+      "action": "https://api.dreamfree.space/c/s/cpyqollama"
     },
     {
       "slug": "aliyun-bailian",
@@ -384,7 +398,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqbailiant"
     },
     {
       "slug": "aliyun-bailian-coding",
@@ -409,7 +424,8 @@
       "platformStatus": "restricted",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqbailianc"
     },
     {
       "slug": "xiaomi-mimo",
@@ -434,7 +450,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqmimo"
     },
     {
       "slug": "command-code",
@@ -459,7 +476,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpcommandcode"
     },
     {
       "slug": "baidu-qianfan",
@@ -484,7 +502,8 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "detail": "Token总量按官方口径；积分制逐模型动态抵扣不能用固定Token量替代。"
+      "detail": "Token总量按官方口径；积分制逐模型动态抵扣不能用固定Token量替代。",
+      "action": "https://api.dreamfree.space/c/s/cpyqqianfan"
     },
     {
       "slug": "baidu-qianfan-coding-legacy",
@@ -495,7 +514,8 @@
       "platformStatus": "delisted",
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
-      "supportsHarnessApi": null
+      "supportsHarnessApi": null,
+      "action": "https://api.dreamfree.space/c/s/cpyqqianfan"
     },
     {
       "slug": "huawei-cloud",
@@ -520,7 +540,8 @@
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "summary": "华为云个人Token Plan，当前五个LLM，按官方月Token总量。",
-      "detail": "仅西南贵阳一，每日限量发售；官方Token总量与请求次数、TPM分开。"
+      "detail": "仅西南贵阳一，每日限量发售；官方Token总量与请求次数、TPM分开。",
+      "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement"
     },
     {
       "slug": "tencent-cloud",
@@ -534,7 +555,7 @@
         },
         "models": {
           "score": 2,
-          "reason": "当前通用套餐支持Auto及DeepSeek、GLM、Kimi、MiniMax、Hy、MiMo等模型；旧GLM5/5.1已下线。"
+          "reason": "支持DeepSeek-V4.1-Flash-1017及GLM、Kimi、MiniMax、Hy、MiMo等模型；MiniMax-M2.7将于2026-11-17下线。"
         },
         "stability": {
           "score": 5,
@@ -544,7 +565,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqtengxunt"
     },
     {
       "slug": "tencent-cloud-coding-legacy",
@@ -555,14 +577,15 @@
       "platformStatus": "delisted",
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
-      "supportsHarnessApi": null
+      "supportsHarnessApi": null,
+      "action": "https://api.dreamfree.space/c/s/cpyqtengxunc"
     },
     {
       "slug": "qoder-cn",
       "name": "Qoder 国内版",
       "rating": 3,
-      "summary": "Qoder国内套餐，当前CLI支持名单与国际版不同。",
-      "detail": "内置型号按官方名单核对，不能把BYOK全目录当套餐支持。",
+      "summary": "Qoder全家桶个人订阅，模型选择因客户端而异；Qwen3.8-Flash当前免Credits。",
+      "detail": "订阅Credits跨全家桶共享；Qwen专属赠额另计，具体Token用量未知。",
       "platformStatus": "open",
       "dimensions": {
         "value": {
@@ -571,7 +594,7 @@
         },
         "models": {
           "score": null,
-          "reason": "内置型号按官方名单核对，不能把BYOK全目录当套餐支持。"
+          "reason": "主客户端与CLI的可选型号有差异；自定义API模型不包含在订阅额度内。"
         },
         "stability": {
           "score": null,
@@ -580,14 +603,15 @@
       },
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": false
+      "supportsHarnessApi": false,
+      "action": "https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription"
     },
     {
       "slug": "qoder-intl",
       "name": "Qoder 国际版",
       "rating": 3,
       "summary": "Qoder国际套餐，当前支持K3、K2.8、GLM5.3及Qwen3.8等；具体Token额度未知。",
-      "detail": "CLI内置和自定义API模型分开，按真实产品线比较。",
+      "detail": "月付首购及续费有Credits加赠；Qwen3.8-Flash当前免Credits，具体Token额度未知。",
       "platformStatus": "open",
       "dimensions": {
         "value": {
@@ -605,7 +629,8 @@
       },
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": false
+      "supportsHarnessApi": false,
+      "action": "https://qoder.com/pricing"
     },
     {
       "slug": "workbuddy",
@@ -630,19 +655,20 @@
       },
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": false
+      "supportsHarnessApi": false,
+      "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing"
     },
     {
       "slug": "trae-cn",
       "name": "TRAE 国内版",
       "rating": 3,
-      "summary": "TRAE国内订阅，以积分计费；当前内置型号已换代，支持范围按档位区分。",
-      "detail": "Seed Evolving仅Pro/Pro+/Ultra及历史Express可用；BYOK不等于内置支持。",
+      "summary": "TRAE统一积分会员，31天一个周期；Lite首月39元，模型权限按档位区分。",
+      "detail": "Seed Evolving仅Pro/Pro+/Ultra及历史Express可用；四档会员使用Seed-2.1-Turbo和Seed-Code享2.5折。",
       "platformStatus": "open",
       "dimensions": {
         "value": {
           "score": null,
-          "reason": "Lite/Pro/Pro+/Ultra连续月付45/89/219/629元；模型权限与积分倍率依档位不同，当前Token额度未知。"
+          "reason": "Lite/Pro/Pro+/Ultra连续订阅每31天45/89/219/629元；新用户前两档首期39/69元，具体Token用量未知。"
         },
         "models": {
           "score": null,
@@ -655,7 +681,8 @@
       },
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": false
+      "supportsHarnessApi": false,
+      "action": "https://www.trae.cn"
     },
     {
       "slug": "trae-intl",
@@ -680,7 +707,8 @@
       },
       "requiresOverseasNetwork": true,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": false
+      "supportsHarnessApi": false,
+      "action": "https://www.trae.ai/pricing"
     },
     {
       "slug": "github",
@@ -705,14 +733,15 @@
       "requiresOverseasNetwork": true,
       "requiresOverseasPayment": true,
       "supportsHarnessApi": false,
-      "detail": "用量按模型Token价格与当前基础/Flex积分计算，部分老年付仍有过渡口径。"
+      "detail": "用量按模型Token价格与当前基础/Flex积分计算，部分老年付仍有过渡口径。",
+      "action": "https://api.dreamfree.space/c/s/cpyqghcopilotp"
     },
     {
       "slug": "cursor",
       "name": "Cursor",
       "rating": 0,
       "summary": "AI 编程编辑器与 Agent；新 X Subscription 从免费至 $200/月，旧 Pro 系列仅存量保留。",
-      "detail": "新订阅共享 Grok 周额度，Premium 及以上的第三方模型另付费；编辑器、CLI 和 SDK 接入各有边界。",
+      "detail": "新订阅的 Grok 与 Composer 共享周额度，Premium 及以上的第三方模型另付费；编辑器、CLI 和 SDK 接入各有边界。",
       "dimensions": {
         "value": {
           "score": null,
@@ -730,32 +759,34 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": true,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": null
+      "supportsHarnessApi": null,
+      "action": "https://cursor.com/pricing"
     },
     {
       "slug": "jd-cloud",
-      "name": "京东云",
+      "name": "京东云 Coding Plan（已下架）",
       "rating": 2,
-      "summary": "京东Coding Plan与新的Credits Token Plan并存，使用独立端点与计费。",
+      "summary": "旧Coding Plan已停售，仅保留历史套餐；当前Credits订阅为独立的京东云Token Plan。",
       "dimensions": {
         "value": {
           "score": 3,
-          "reason": "有首月优惠，但是用量证据不足，不予评价。"
+          "reason": "旧Coding Plan已停止新购、续费和升级，仅保留历史价格与权益。"
         },
         "models": {
           "score": 2,
-          "reason": "Coding Plan 与新 Token Plan 的模型范围和上下文计费规则不同。"
+          "reason": "旧Coding Plan的模型名单仅作历史参考；当前Token Plan使用独立端点、额度与模型权限。"
         },
         "stability": {
           "score": 4,
           "reason": "京东云官方运营，证据不足，但推测稳定性尚可。"
         }
       },
-      "platformStatus": "restricted",
+      "platformStatus": "delisted",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "detail": "Coding Plan 与新 Token Plan 的模型范围和上下文计费规则不同。"
+      "detail": "2026-07-29起停止新购、续费和升级；存量套餐仅可使用至原有效期结束。",
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdong"
     },
     {
       "slug": "iflytek",
@@ -779,13 +810,14 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqxunfei"
     },
     {
       "slug": "unicom-cloud",
       "name": "联通云",
       "rating": 2,
-      "summary": "Token Plan 当前价格、模型支持范围和购买状态待确认。",
+      "summary": "个人版按Token额度、团队版按Credits计量；当前成交价、库存及DeepSeek精确版本待确认。",
       "dimensions": {
         "value": {
           "score": 3,
@@ -793,7 +825,7 @@
         },
         "models": {
           "score": 1,
-          "reason": "曾支持 DeepSeek V4 Flash 与 MiniMax M2.5 等；当前完整模型名单待确认。"
+          "reason": "文档列DeepSeek V4 Flash、MiniMax M2.5，团队版另含V4 Pro；DeepSeek具体版本待确认。"
         },
         "stability": {
           "score": 4,
@@ -803,7 +835,9 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "detail": "个人版标称月额度600万、1200万、1800万Tokens；团队版25000、100000、250000Credits。完整抵扣系数与Token计数细则未公开，实际Token参考用量待确认。",
+      "action": "https://api.dreamfree.space/c/s/cpyqunicomtp"
     },
     {
       "slug": "unicom-cloud-coding-legacy",
@@ -814,7 +848,8 @@
       "platformStatus": "delisted",
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
-      "supportsHarnessApi": null
+      "supportsHarnessApi": null,
+      "action": "https://api.dreamfree.space/c/s/cpyqunicomcp"
     },
     {
       "slug": "cmcc-cloud",
@@ -839,7 +874,8 @@
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "summary": "移动云请求制订阅，当前M2.5；首月与续费券按活动资格区分。",
-      "detail": "首次优惠每账号一次，两档互斥；续费券不是永久自动折扣。"
+      "detail": "首次优惠每账号一次，两档互斥；续费券不是永久自动折扣。",
+      "action": "https://api.dreamfree.space/c/s/cpyqmobilecp"
     },
     {
       "slug": "stepfun",
@@ -852,7 +888,7 @@
         },
         "models": {
           "score": 1,
-          "reason": "旧prompt推算不适用当前Credits，精确抵扣未公开；恢复发售时间未知。"
+          "reason": "支持Step5 Preview和Flash系列，具体Token抵扣未公开；当前名额售罄。"
         },
         "stability": {
           "score": 4,
@@ -863,14 +899,15 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "summary": "Step Plan现按月Credits，支持Step5 Preview和Flash系列；目前售罄，恢复发售时间未知。",
-      "detail": "旧prompt推算不适用当前Credits，精确抵扣未公开；恢复发售时间未知。"
+      "summary": "Step Plan按月Credits计费，支持Step5 Preview和Flash系列；每日限量，当前售罄。",
+      "detail": "Step-5-Preview高峰时段消耗双倍Credits；具体Token抵扣未公开，后续放量时间未公布。",
+      "action": "https://api.dreamfree.space/c/s/cpyqstepfun"
     },
     {
       "slug": "taotoken",
       "name": "TaoToken",
       "rating": 3,
-      "summary": "双Flash Coding Plan：GLM5.3 Flash与DeepSeek V4 Flash0731，月付限量抢购。",
+      "summary": "双Flash Coding Plan，支持GLM5.3 Flash与DeepSeek V4 Flash；Lite月付和季付名额售罄。",
       "dimensions": {
         "value": {
           "score": 3,
@@ -888,7 +925,8 @@
       "platformStatus": "restricted",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqtaotoken"
     },
     {
       "slug": "chaosuan",
@@ -902,7 +940,7 @@
         },
         "models": {
           "score": 1,
-          "reason": "Coding当前购买状态待确认，不能从新Token Plan文档推断旧套餐恢复销售。"
+          "reason": "支持两个具体模型；当前购买状态待确认，具体Token量按请求负载估算。"
         },
         "stability": {
           "score": 3,
@@ -913,7 +951,8 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "detail": "Coding当前购买状态待确认，不能从新Token Plan文档推断旧套餐恢复销售。"
+      "detail": "Coding Plan当前购买状态待确认；仅限本人在AI开发工具内交互使用，额度耗尽不会自动转按量。",
+      "action": "https://api.dreamfree.space/c/s/cpyqscnetcp"
     },
     {
       "slug": "sensetime",
@@ -938,7 +977,8 @@
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "summary": "免费公测，SenseNova6.8 Flash Lite与U1 Fast，五小时60000积分。",
-      "detail": "付费Lite/Pro尚未开放，特殊模型与精确Token换算待确认。"
+      "detail": "付费Lite/Pro尚未开放，特殊模型与精确Token换算待确认。",
+      "action": "https://api.dreamfree.space/c/s/cpyqsensenova"
     },
     {
       "slug": "moorethreads",
@@ -962,7 +1002,8 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "summary": "KUAE Coding Plan当前GLM4.7；免费试用30天，付费套餐经官方京东入口销售。"
+      "summary": "KUAE Coding Plan当前GLM4.7；免费试用30天，付费套餐经官方京东入口销售。",
+      "action": "https://api.dreamfree.space/c/s/cpyqmoorefree"
     },
     {
       "slug": "infrafun",
@@ -987,32 +1028,60 @@
       "requiresOverseasPayment": null,
       "supportsHarnessApi": true,
       "summary": "已停止向个人用户提供服务，企业体验按官方联系方式办理。",
-      "detail": "个人套餐已停售，不再提供个人服务。"
+      "detail": "个人套餐已停售，不再提供个人服务。",
+      "action": "https://api.dreamfree.space/c/s/cpyqinfini"
     },
     {
-      "slug": "ctyun",
-      "name": "天翼云",
+      "slug": "ctyun-glm",
+      "name": "天翼云 · 旧 GLM 套餐",
       "rating": 1,
       "dimensions": {
         "value": {
           "score": 2,
-          "reason": "旧请求制不可新购；官方另有五档存量Token续订权益，与积分制分开。"
+          "reason": "历史 GLM 请求制套餐已停止新购，保留旧价格与权益供参考。"
         },
         "models": {
           "score": 2,
-          "reason": "新旧计费方式、支持型号与续费条件分开。"
+          "reason": "旧 GLM 套餐的模型支持范围与 Token 制和积分制产品分开。"
         },
         "stability": {
           "score": 1,
-          "reason": "历史Coding Plan已下线；Token制存量周期内可续订，当前积分制有独立在售产品。"
+          "reason": "历史 GLM Coding Plan 已下架，当前可购买产品另列。"
         }
       },
       "platformStatus": "delisted",
       "requiresOverseasNetwork": null,
       "requiresOverseasPayment": null,
       "supportsHarnessApi": true,
-      "summary": "历史请求制停售；存量Token制仅周期内可续订，新购Credits产品另列。",
-      "detail": "新旧计费方式、支持型号与续费条件分开。"
+      "summary": "历史 GLM 请求制套餐已下架，仅保留旧套餐信息。",
+      "detail": "GLM Lite、Pro、Max 为历史请求制套餐，官方以 prompt 计数。",
+      "action": "https://api.dreamfree.space/c/s/cpyqctyun"
+    },
+    {
+      "slug": "ctyun",
+      "name": "天翼云 · 旧 Token 套餐",
+      "rating": 1,
+      "dimensions": {
+        "value": {
+          "score": 2,
+          "reason": "官方五档存量 Token 续订权益，与当前积分制分开。"
+        },
+        "models": {
+          "score": 2,
+          "reason": "存量 Token 套餐的模型支持范围与旧 GLM 请求制套餐分开。"
+        },
+        "stability": {
+          "score": 1,
+          "reason": "旧 Token 制仅存量订购周期内可续订；当前积分制为独立在售产品。"
+        }
+      },
+      "platformStatus": "delisted",
+      "requiresOverseasNetwork": null,
+      "requiresOverseasPayment": null,
+      "supportsHarnessApi": true,
+      "summary": "旧 Token 制仅允许存量用户在订购周期内续订，新购 Credits 产品另列。",
+      "detail": "保留五档存量 Token 续订套餐及官方月 Token 额度；GLM 请求制旧套餐另列。",
+      "action": "https://api.dreamfree.space/c/s/cpyqctyun"
     },
     {
       "slug": "tencent-cloud-hy",
@@ -1036,7 +1105,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqtengxunt"
     },
     {
       "slug": "baidu-qianfan-credits",
@@ -1060,7 +1130,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqqianfan"
     },
     {
       "slug": "ctyun-token",
@@ -1084,7 +1155,8 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "summary": "2026-09-23启用积分制；旧Token制仅周期内用户可续订。"
+      "summary": "2026-09-23启用积分制；旧Token制仅周期内用户可续订。",
+      "action": "https://api.dreamfree.space/c/s/cpyqctyun"
     },
     {
       "slug": "jd-cloud-token",
@@ -1108,7 +1180,8 @@
       "platformStatus": "restricted",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdong"
     },
     {
       "slug": "taotoken-token",
@@ -1132,7 +1205,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://taotoken.net/token-plan"
     },
     {
       "slug": "chaosuan-token",
@@ -1156,7 +1230,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://www.scnet.cn/"
     },
     {
       "slug": "iflytek-token",
@@ -1180,7 +1255,8 @@
       "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "action": "https://maas.xfyun.cn/"
     }
   ]
 }

@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-16T12:07:52Z",
+  "generatedAt": "2026-10-21T11:03:56Z",
   "benchmarks": {
     "artificialAnalysis": {
       "name": "Artificial Analysis Intelligence Index",
       "version": "v4.3.2",
       "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-6-sol",
-      "fetchedAt": "2026-10-13T12:09:41Z",
-      "availableConfigurations": 699
+      "fetchedAt": "2026-10-19T17:03:45Z",
+      "availableConfigurations": 706
     },
     "deepSWE": {
       "name": "DeepSWE",
@@ -19,9 +19,9 @@
     }
   },
   "coverage": {
-    "artificialAnalysisScores": 107,
+    "artificialAnalysisScores": 112,
     "deepSWEScores": 28,
-    "multimodalKnown": 136
+    "multimodalKnown": 142
   },
   "models": [
     {
@@ -2151,8 +2151,8 @@
       },
       "scores": {
         "artificialAnalysis": {
-          "score": 25,
-          "scoreExact": 25.1743063555572,
+          "score": 22,
+          "scoreExact": 21.8248678794953,
           "configuration": "MiMo-V2.5",
           "modelSlug": "mimo-v2-5-0424",
           "sourceUrl": "https://artificialanalysis.ai/models/mimo-v2-5-0424"
@@ -2643,7 +2643,7 @@
       "scores": {
         "artificialAnalysis": {
           "score": 34,
-          "scoreExact": 33.6962858057476,
+          "scoreExact": 33.6762858057476,
           "configuration": "Qwen3.8 27B (Xhigh)",
           "modelSlug": "qwen3-8-27b",
           "sourceUrl": "https://artificialanalysis.ai/models/qwen3-8-27b"
@@ -3539,6 +3539,168 @@
       "modalities": null,
       "scores": {
         "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "deepseek-v4-1-flash-1017",
+      "name": "DeepSeek-V4.1-Flash-1017",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "beam-1-0",
+      "name": "Beam 1.0",
+      "multimodal": false,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 30,
+          "scoreExact": 30.3334426348039,
+          "configuration": "Beam 1.0",
+          "modelSlug": "reflection-beam",
+          "sourceUrl": "https://artificialanalysis.ai/models/reflection-beam"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "cat-jam",
+      "name": "Cat Jam",
+      "multimodal": "unknown",
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "muse-spark-open",
+      "name": "Muse Spark Open",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "speech",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 39,
+          "scoreExact": 38.8666662997805,
+          "configuration": "Muse Spark Open (Xhigh)",
+          "modelSlug": "muse-spark-open",
+          "sourceUrl": "https://artificialanalysis.ai/models/muse-spark-open"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "nemotron-3-5-super-vl",
+      "name": "Nemotron 3.5 Super VL",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 26,
+          "scoreExact": 26.4910658661689,
+          "configuration": "Nemotron 3.5 Super VL",
+          "modelSlug": "nemotron-3-5-super-vl",
+          "sourceUrl": "https://artificialanalysis.ai/models/nemotron-3-5-super-vl"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "qwen-3-8-max-prime",
+      "name": "Qwen-3.8-Max-Prime",
+      "multimodal": "unknown",
+      "modalities": null,
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "muse-wonder",
+      "name": "Muse Wonder",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "speech",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 52,
+          "scoreExact": 52.393894697293,
+          "configuration": "Muse Wonder (Max)",
+          "modelSlug": "muse-wonder",
+          "sourceUrl": "https://artificialanalysis.ai/models/muse-wonder"
+        },
+        "deepSWE": null
+      }
+    },
+    {
+      "slug": "minimax-m3-1-flash",
+      "name": "MiniMax-M3.1-Flash",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 42,
+          "scoreExact": 42.3811052132362,
+          "configuration": "MiniMax-M3.1-Flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "sourceUrl": "https://artificialanalysis.ai/models/minimax-m3-1-flash"
+        },
         "deepSWE": null
       }
     }

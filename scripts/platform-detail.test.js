@@ -22,6 +22,12 @@ function samplePlatform(overrides = {}) {
 }
 
 describe('buildDetailBodyHtml', () => {
+  it('uses the explicit platform action even when the first plan has another link', () => {
+    const platform=samplePlatform({action:'https://example.com/platform'});
+    const html=buildDetailBodyHtml(platform,{plans:[{slug:'p',platformSlug:platform.slug,name:'Plan',action:'https://example.com/plan'}],monitorRow:null});
+    assert.match(html,/class="platform-detail-action" href="https:\/\/example\.com\/platform"/);
+  });
+
   it('uses one canonical delisted status without a duplicate discontinued badge', () => {
     const html = buildDetailBodyHtml(samplePlatform({platformStatus:'delisted'}), {plans:[],monitorRow:null});
     assert.equal((html.match(/>已下架</g) || []).length,1);
@@ -47,11 +53,11 @@ describe('buildDetailBodyHtml', () => {
     for (const model of models.slice(0, 6)) assert.ok(inventory.includes(model.name));
     assert.equal((inventory.match(/>Model 0<\/span>/g) || []).length, 1);
     assert.ok(!inventory.includes('Model 6'));
-    assert.ok(!inventory.includes('hidden'));
-    const liteModels = html.match(/<div class="ui-model-tags platform-detail-models" data-model-tags aria-label="Lite 支持模型">(.*?)<\/div>/)[1];
+    assert.match(inventory, /data-model-max-rows="2"/);
+    const liteModels = html.match(/<div class="ui-model-tags platform-detail-models" data-model-tags[^>]*aria-label="Lite 支持模型">(.*?)<\/div>/)[1];
     assert.ok(liteModels.includes('Model 0'));
     assert.ok(!liteModels.includes('Model 1'));
-    const proModels = html.match(/<div class="ui-model-tags platform-detail-models" data-model-tags aria-label="Pro 支持模型">(.*?)<\/div>/)[1];
+    const proModels = html.match(/<div class="ui-model-tags platform-detail-models" data-model-tags[^>]*aria-label="Pro 支持模型">(.*?)<\/div>/)[1];
     assert.ok(proModels.includes('Model 4'));
     assert.ok(!proModels.includes('Model 5'));
   });
@@ -187,8 +193,7 @@ describe('buildDetailBodyHtml', () => {
         monthlyPrice: 100,
         firstMonthPrice: 90,
         rating: 4,
-        measuredMonthlyTokenLimit: 600,
-        summary: '额度充足，适合主力日常',
+        requestQuota: {fiveHours: 'unknown', weekly: 'unknown', monthly: 600},
         planStatus: 'open'
       },
       { platformSlug: 'x', name: 'Old', billingMode: 'subscription', monthlyPrice: 50, planStatus: 'delisted' }
@@ -199,16 +204,15 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('platform-detail-plan-title-row'));
     assert.ok(html.includes('Pro'));
     assert.ok(!html.includes('Old'));
-    assert.ok(html.includes('600M Token'));
+    assert.ok(html.includes('600次/月'));
     assert.ok(html.includes('¥100'));
     assert.ok(html.includes('首月'));
     assert.ok(html.includes('platform-detail-price-sep'));
     assert.ok(html.includes('platform-detail-plan-rating'));
-    assert.ok(html.includes('额度充足，适合主力日常'));
     assert.ok(html.includes('在套餐页面查看'));
   });
 
-  it('omits empty summary and keeps price on one line without first-month when absent', () => {
+  it('keeps price on one line without first-month when absent', () => {
     const plans = [
       {
         platformSlug: 'x',
@@ -217,15 +221,13 @@ describe('buildDetailBodyHtml', () => {
         monthlyPrice: 49,
         firstMonthPrice: '-',
         rating: 3,
-        monthlyRequests: 1900,
-        summary: '   ',
+        requestQuota: {fiveHours: 'unknown', weekly: 'unknown', monthly: 1900},
         planStatus: 'open'
       }
     ];
     const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
     assert.ok(html.includes('Lite'));
     assert.ok(html.includes('1,900次/月') || html.includes('1900'));
-    assert.ok(!html.includes('platform-detail-plan-summary'));
     assert.ok(!html.includes('platform-detail-price-sep'));
     assert.ok(!html.includes('首月'));
   });
@@ -237,12 +239,12 @@ describe('buildDetailBodyHtml', () => {
         name: 'Lite',
         billingMode: 'subscription',
         monthlyPrice: 49,
-        monthlyRequests: 24000,
+        requestQuota: {fiveHours: 'unknown', weekly: 'unknown', monthly: 24000},
         planStatus: 'open'
       }
     ];
     const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
-    assert.ok(html.includes('2.4万次/月') || html.includes('24000'));
+    assert.ok(html.includes('2.40万次/月') || html.includes('24000'));
   });
 
   it('hides plans section when only discontinued plans exist', () => {
@@ -272,36 +274,6 @@ describe('buildDetailBodyHtml', () => {
     assert.ok(html.includes('platform-detail-plan-main'));
     assert.ok(!html.includes('未公开'));
     assert.ok(!html.includes('platform-detail-plan-quota'));
-  });
-
-  it('prefers measured monthly token over request counts for quota pill', () => {
-    const plans = [
-      {
-        platformSlug: 'kimi',
-        name: 'Andante',
-        billingMode: 'subscription',
-        monthlyPrice: 49,
-        fiveHoursRequests: '未公开',
-        weeklyRequests: '未公开',
-        monthlyRequests: '未公开',
-        measuredMonthlyTokenLimit: 84,
-        planStatus: 'open'
-      },
-      {
-        platformSlug: 'kimi',
-        name: 'Zero',
-        billingMode: 'subscription',
-        monthlyPrice: 1,
-        planStatus: 'open'
-      }
-    ];
-    const html = buildDetailBodyHtml(samplePlatform({ slug: 'kimi', name: 'Kimi' }), { plans, monitorRow: null });
-    assert.ok(html.includes('Andante'));
-    assert.ok(html.includes('Zero'));
-    assert.ok(html.includes('84M Token'));
-    assert.ok(!html.includes('未公开'));
-    assert.ok(!html.includes('无限制'));
-    assert.ok(!html.includes('0M'));
   });
 
   it('omits plans section when empty', () => {

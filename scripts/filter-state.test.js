@@ -147,9 +147,9 @@ test('公开套餐不保留标签字段，默认筛选不再限制套餐名单',
 
 test('单侧范围在多次规范化后仍保持开放，未知值不转换成零', () => {
   for (const range of [{ min: 50, max: null }, { min: null, max: 100 }]) {
-    const state = unrestricted({ budgetCny: range, requestRanges: { weeklyRequests: range } });
+    const state = unrestricted({ budgetCny: range, requestRanges: { weekly: range } });
     assert.deepEqual(Filters.cloneState(state).budgetCny, range);
-    assert.deepEqual(Filters.cloneState(state).requestRanges.weeklyRequests, range);
+    assert.deepEqual(Filters.cloneState(state).requestRanges.weekly, range);
   }
   assert.equal(unrestricted({ budgetCny: { min: '', max: null } }).budgetCny, null);
   for (const value of [null, undefined, '', ' ', 'unknown', false]) {
@@ -178,11 +178,27 @@ test('订阅价格点按关联套餐筛选季价，按量 API 不受套餐价格
     { slug: 'api', billingMode: 'payg' }
   ];
   const context = { planBySlug: new Map([['a', { quarterlyPrice: 10, currency: '$' }], ['b', { quarterlyPrice: 'unknown' }]]) };
-  const state = unrestricted({ priceRanges: { quarterlyPrice: { min: 70, max: null } }, requestRanges: { weeklyRequests: { min: 100 } } });
+  const state = unrestricted({ priceRanges: { quarterlyPrice: { min: 70, max: null } }, requestRanges: { weekly: { min: 100 } } });
   assert.deepEqual(Filters.filterPoints(points, state, { context, usdToCnyRate: 7 }).map(p => p.slug), ['known', 'api']);
-  const plans = [{ slug: 'unlimited', weeklyRequests: '无限制' }, { slug: 'unknown', weeklyRequests: '未公开' }];
-  assert.deepEqual(Filters.filterPlans(plans, unrestricted({ requestRanges: { weeklyRequests: { min: 100 } } })).map(p => p.slug), ['unlimited']);
-  assert.deepEqual(Filters.filterPlans(plans, unrestricted({ requestRanges: { weeklyRequests: { max: 100 } } })), []);
+  const plans = [{ slug: 'unlimited', requestQuota: {weekly:'unlimited'} }, { slug: 'unknown', requestQuota: {weekly:'unknown'} }];
+  assert.deepEqual(Filters.filterPlans(plans, unrestricted({ requestRanges: { weekly: { min: 100 } } })).map(p => p.slug), ['unlimited']);
+  assert.deepEqual(Filters.filterPlans(plans, unrestricted({ requestRanges: { weekly: { max: 100 } } })), []);
+});
+
+test('请求额度范围在目录与关系候选中一致处理数值、未知、缺省和不限量', () => {
+  const {fixtureContext}=require('./test-fixtures.cjs'), E=require('./entity-data.js');
+  const plans = [0,4200,'unknown','unlimited',undefined].map((weekly,index)=>({
+    slug:String(index),platformSlug:'p',billingMode:'subscription',monthlyPrice:10,
+    ...(weekly === undefined ? {} : {requestQuota:{fiveHours:'unknown',weekly,monthly:'unknown'}})
+  }));
+  const context=fixtureContext({schemaVersion:1,platforms:[{slug:'p',platformStatus:'open'}]},
+    {plans}, {schemaVersion:1,models:[{slug:'m'}]},
+    {planModels:plans.map(plan=>({slug:plan.slug,planSlug:plan.slug,modelSlug:'m'}))});
+  for (const [range, expected] of [[{min:0,max:4200},['0','1']],[{min:4200},['1','3']]]) {
+    const state={requestRanges:{weekly:range}};
+    assert.deepEqual(Filters.matchingOffers(context,state).map(o=>o.plan.slug),expected);
+    assert.deepEqual(Filters.filterPlans(E.buildPlanCatalog(context),state,{context}).map(p=>p.slug),expected);
+  }
 });
 
 test('默认精选配置可读取并校验稳定 slug', () => {
@@ -319,4 +335,16 @@ test('空模型清单保留勾选状态但不限制业务，不能令未知额�
   assert.deepEqual(Filters.filterPlans(plans,cleared).map(p=>p.slug),['known']);
   const points=[{slug:'known',modelSlug:'m',billingMode:'subscription',monthlyTokenInM:100},{slug:'unknown',modelSlug:'m',billingMode:'subscription',monthlyTokenInM:null}];
   assert.deepEqual(Filters.filterPoints(points,cleared).map(p=>p.slug),['known']);
+});
+
+
+test('比较点使用首月金额时，月付价格条件仍检查正式月价',()=>{
+  const point={slug:'r',planSlug:'p',billingMode:'subscription',monthlyFeeCny:20};
+  const context={planBySlug:new Map([['p',{monthlyPrice:100,firstMonthPrice:20,currency:'¥'}]])};
+  const filter=priceRanges=>Filters.filterPoints([point],unrestricted({priceRanges}),{context});
+  assert.equal(filter({monthlyPrice:{min:90,max:110}}).length,1);
+  assert.equal(filter({monthlyPrice:{max:30}}).length,0);
+  assert.equal(filter({firstMonthPrice:{max:30}}).length,1);
+  context.planBySlug.get('p').monthlyPrice='不适用';
+  assert.equal(filter({monthlyPrice:{min:0}}).length,0);
 });

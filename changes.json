@@ -37,7 +37,7 @@
     {
       "slug": "minimax-token-plan-model-routing-20261019",
       "title": "MiniMax 老 Token Plan 模型路由调整",
-      "officialStatus": "announced",
+      "officialStatus": "effective",
       "effectiveTime": {
         "type": "date",
         "date": "2026-10-19"
@@ -47,11 +47,11 @@
           "type": "model_support",
           "label": "M2.5 / M2.7 请求",
           "before": "原型号入口",
-          "after": "路由至 M3.1 Flash Preview，原名称保留为兼容入口"
+          "after": "路由至正式M3.1 Flash，原名称为兼容入口；旧模型实测不代表新型号额度"
         }
       ],
       "audience": "仍在自动续费的老 Token Plan 用户",
-      "summary": "公告安排 2026-10-19 起，M2.5/M2.7 请求统一路由至 M3.1 Flash Preview；旧型号实测不代表新型号额度。",
+      "summary": "MiniMax订阅中的M2.5/M2.7旧名称请求由正式M3.1 Flash承接；原型号的Token实测不代表新型号额度。",
       "targets": [
         {
           "type": "plan",
@@ -75,6 +75,9 @@
       "sources": [
         {
           "url": "https://platform.minimax.cn/docs/m-plan/token-plan-notice"
+        },
+        {
+          "url": "https://platform.minimax.cn/docs/faq/models"
         }
       ],
       "relatedChanges": []
@@ -82,7 +85,7 @@
     {
       "slug": "codex-gpt-5-5-retirement-20261014",
       "title": "Codex 的 GPT-5.5 支持调整",
-      "officialStatus": "announced",
+      "officialStatus": "effective",
       "effectiveTime": {
         "type": "date",
         "date": "2026-10-14"
@@ -92,34 +95,40 @@
           "type": "model_support",
           "label": "ChatGPT 登录的 Codex",
           "before": "可选 GPT-5.5",
-          "after": "公告将移除 GPT-5.5；API 可用性不受此调整影响"
+          "after": "GPT-5.5 已退出 ChatGPT 登录的 Codex；API Key 登录及 API 可用性不受影响"
         }
       ],
-      "summary": "原公告安排 2026-10-14 从 ChatGPT 登录的 Codex 中移除 GPT-5.5；不涉及 API 可用性。",
+      "summary": "GPT-5.5 已于10月14日从ChatGPT登录的Codex移除；API Key登录及API不受影响。",
       "targets": [
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "codex",
           "planSlug": "codex-plus",
-          "planModelSlug": "codex-plus--gpt-5-5",
-          "label": "Codex · Plus · GPT-5.5"
+          "label": "Codex · Plus"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "codex",
           "planSlug": "codex-pro5",
-          "planModelSlug": "codex-pro5--gpt-5-5",
-          "label": "Codex · Pro $100 · GPT-5.5"
+          "label": "Codex · Pro $100"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "codex",
           "planSlug": "codex-pro20",
-          "planModelSlug": "codex-pro20--gpt-5-5",
-          "label": "Codex · Pro $200 · GPT-5.5"
+          "label": "Codex · Pro $200"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "codex",
+          "planSlug": "codex-pro500",
+          "label": "Codex · Pro $500"
         }
       ],
       "sources": [
+        {
+          "url": "https://learn.chatgpt.com/docs/models"
+        },
         {
           "url": "https://learn.chatgpt.com/docs/models"
         }
@@ -166,6 +175,1434 @@
       "sources": [
         {
           "url": "https://commandcode.ai/docs/resources/pricing-limits"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "tencent-hy4-preview-discount-end-20261015",
+      "title": "腾讯 Hy4 Preview 五折结束",
+      "officialStatus": "effective",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-15",
+        "description": "北京时间12:00结束五折，恢复120/6/360积分每百万输入/缓存/输出Token"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "Hy4 积分价格",
+          "before": "五折积分价",
+          "after": "恢复输入/缓存/输出120/6/360积分每百万Token"
+        }
+      ],
+      "summary": "Hy4 Preview五折已于10月15日12:00（北京时间）结束，恢复120/6/360积分每百万输入/缓存/输出Token。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-lite",
+          "planModelSlug": "tencent-cloud-token-plan-lite--hy4-preview",
+          "label": "腾讯云 · Lite · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-standard",
+          "planModelSlug": "tencent-cloud-token-plan-standard--hy4-preview",
+          "label": "腾讯云 · Standard · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-pro",
+          "planModelSlug": "tencent-cloud-token-plan-pro--hy4-preview",
+          "label": "腾讯云 · Pro · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-max",
+          "planModelSlug": "tencent-cloud-token-plan-max--hy4-preview",
+          "label": "腾讯云 · Max · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-lite",
+          "planModelSlug": "tencent-cloud-hy-lite--hy4-preview",
+          "label": "腾讯云 · Hy · Lite · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-standard",
+          "planModelSlug": "tencent-cloud-hy-standard--hy4-preview",
+          "label": "腾讯云 · Hy · Standard · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-pro",
+          "planModelSlug": "tencent-cloud-hy-pro--hy4-preview",
+          "label": "腾讯云 · Hy · Pro · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-max",
+          "planModelSlug": "tencent-cloud-hy-max--hy4-preview",
+          "label": "腾讯云 · Hy · Max · Hy4-preview"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/133811"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "tencent-minimax-m2-7-retirement-20261117",
+      "title": "腾讯 MiniMax M2.7 即将下线",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-17",
+        "description": "具体时刻未公布；当前保留支持关系"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "MiniMax M2.7",
+          "before": "当前支持",
+          "after": "11月17日下线，具体时刻未公布"
+        }
+      ],
+      "summary": "腾讯公告MiniMax M2.7将于11月17日下线，目前仍可使用，具体停止时刻未公布。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-lite",
+          "planModelSlug": "tencent-cloud-token-plan-lite--minimax-m2-7",
+          "label": "腾讯云 · Lite · MiniMax-M2.7"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-standard",
+          "planModelSlug": "tencent-cloud-token-plan-standard--minimax-m2-7",
+          "label": "腾讯云 · Standard · MiniMax-M2.7"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-pro",
+          "planModelSlug": "tencent-cloud-token-plan-pro--minimax-m2-7",
+          "label": "腾讯云 · Pro · MiniMax-M2.7"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-max",
+          "planModelSlug": "tencent-cloud-token-plan-max--minimax-m2-7",
+          "label": "腾讯云 · Max · MiniMax-M2.7"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/130060"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "jd-coding-plan-sales-end-20260729",
+      "title": "京东旧 Coding Plan 已停售",
+      "officialStatus": "effective",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-07-29"
+      },
+      "changes": [
+        {
+          "type": "access_condition",
+          "label": "购买与续费",
+          "before": "可购买及续费",
+          "after": "停止新购、续费和升级，仅原有效期内可用"
+        }
+      ],
+      "summary": "京东旧Coding Plan已于7月29日停止新购、续费和升级；存量订阅仅在原有效期内可用。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "jd-cloud",
+          "planSlug": "jd-cloud-coding-plan-lite",
+          "label": "京东云 Coding Plan（已下架） · Lite"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "jd-cloud",
+          "planSlug": "jd-cloud-coding-plan-pro",
+          "label": "京东云 Coding Plan（已下架） · Pro"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.jdcloud.com/cn/jdaip/codingplan-notice"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "tencent-october-model-discounts-end-20261030",
+      "title": "腾讯部分模型十月优惠结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-30",
+        "description": "北京时间12:00；现有GLM5.3/Flash、KimiK3/K2.7Code和固定Hy3折扣未来结束，届时需复核"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "指定型号积分折扣",
+          "before": "当前活动积分价",
+          "after": "活动到期，恢复常规积分价"
+        }
+      ],
+      "summary": "指定GLM5.3/Flash、Kimi K3/K2.7 Code及固定Hy3档优惠计划于10月30日12:00（北京时间）结束；其他型号不适用。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-lite",
+          "planModelSlug": "tencent-cloud-token-plan-lite--glm-5-3",
+          "label": "腾讯云 · Lite · GLM-5.3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-lite",
+          "planModelSlug": "tencent-cloud-token-plan-lite--glm-5-3-flash",
+          "label": "腾讯云 · Lite · GLM-5.3-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-lite",
+          "planModelSlug": "tencent-cloud-token-plan-lite--kimi-k2-7-code",
+          "label": "腾讯云 · Lite · Kimi-K2.7-Code"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-lite",
+          "planModelSlug": "tencent-cloud-token-plan-lite--kimi-k3",
+          "label": "腾讯云 · Lite · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-standard",
+          "planModelSlug": "tencent-cloud-token-plan-standard--glm-5-3",
+          "label": "腾讯云 · Standard · GLM-5.3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-standard",
+          "planModelSlug": "tencent-cloud-token-plan-standard--glm-5-3-flash",
+          "label": "腾讯云 · Standard · GLM-5.3-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-standard",
+          "planModelSlug": "tencent-cloud-token-plan-standard--kimi-k2-7-code",
+          "label": "腾讯云 · Standard · Kimi-K2.7-Code"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-standard",
+          "planModelSlug": "tencent-cloud-token-plan-standard--kimi-k3",
+          "label": "腾讯云 · Standard · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-pro",
+          "planModelSlug": "tencent-cloud-token-plan-pro--glm-5-3",
+          "label": "腾讯云 · Pro · GLM-5.3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-pro",
+          "planModelSlug": "tencent-cloud-token-plan-pro--glm-5-3-flash",
+          "label": "腾讯云 · Pro · GLM-5.3-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-pro",
+          "planModelSlug": "tencent-cloud-token-plan-pro--kimi-k2-7-code",
+          "label": "腾讯云 · Pro · Kimi-K2.7-Code"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-pro",
+          "planModelSlug": "tencent-cloud-token-plan-pro--kimi-k3",
+          "label": "腾讯云 · Pro · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-max",
+          "planModelSlug": "tencent-cloud-token-plan-max--glm-5-3",
+          "label": "腾讯云 · Max · GLM-5.3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-max",
+          "planModelSlug": "tencent-cloud-token-plan-max--glm-5-3-flash",
+          "label": "腾讯云 · Max · GLM-5.3-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-max",
+          "planModelSlug": "tencent-cloud-token-plan-max--kimi-k2-7-code",
+          "label": "腾讯云 · Max · Kimi-K2.7-Code"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-max",
+          "planModelSlug": "tencent-cloud-token-plan-max--kimi-k3",
+          "label": "腾讯云 · Max · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-lite",
+          "planModelSlug": "tencent-cloud-hy-lite--hy3--fixed",
+          "label": "腾讯云 · Hy · Lite · Hy3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-standard",
+          "planModelSlug": "tencent-cloud-hy-standard--hy3--fixed",
+          "label": "腾讯云 · Hy · Standard · Hy3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-pro",
+          "planModelSlug": "tencent-cloud-hy-pro--hy3--fixed",
+          "label": "腾讯云 · Hy · Pro · Hy3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-max",
+          "planModelSlug": "tencent-cloud-hy-max--hy3--fixed",
+          "label": "腾讯云 · Hy · Max · Hy3"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/133811"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "baidu-credit-plan-night-discount-end-20261130",
+      "title": "百度积分制夜间优惠结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-30",
+        "description": "23:59结束；官网未明确时区；恢复常规动态积分消耗，完整系数仍未知。"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "三型号夜间折扣",
+          "before": "22:00至次日08:00两折",
+          "after": "活动结束，恢复常规动态积分消耗"
+        }
+      ],
+      "summary": "百度积分制的三型号夜间两折计划于11月30日23:59结束；仅积分制适用，完整常规系数仍未公开，官网未明确时区。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "baidu-qianfan-credits",
+          "planSlug": "baidu-qianfan-credits-plan-mini",
+          "planModelSlug": "baidu-qianfan-credits-plan-mini--deepseek-v4-1-flash",
+          "label": "百度千帆 · 积分制 · Mini · DeepSeek-V4.1-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "baidu-qianfan-credits",
+          "planSlug": "baidu-qianfan-credits-plan-mini",
+          "planModelSlug": "baidu-qianfan-credits-plan-mini--deepseek-v4-pro-0813",
+          "label": "百度千帆 · 积分制 · Mini · DeepSeek-V4-Pro-0813"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "baidu-qianfan-credits",
+          "planSlug": "baidu-qianfan-credits-plan-mini",
+          "planModelSlug": "baidu-qianfan-credits-plan-mini--glm-5-3",
+          "label": "百度千帆 · 积分制 · Mini · GLM-5.3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "baidu-qianfan-credits",
+          "planSlug": "baidu-qianfan-credits-plan-lite",
+          "planModelSlug": "baidu-qianfan-credits-plan-lite--deepseek-v4-1-flash",
+          "label": "百度千帆 · 积分制 · Lite · DeepSeek-V4.1-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "baidu-qianfan-credits",
+          "planSlug": "baidu-qianfan-credits-plan-lite",
+          "planModelSlug": "baidu-qianfan-credits-plan-lite--deepseek-v4-pro-0813",
+          "label": "百度千帆 · 积分制 · Lite · DeepSeek-V4-Pro-0813"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "baidu-qianfan-credits",
+          "planSlug": "baidu-qianfan-credits-plan-lite",
+          "planModelSlug": "baidu-qianfan-credits-plan-lite--glm-5-3",
+          "label": "百度千帆 · 积分制 · Lite · GLM-5.3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "baidu-qianfan-credits",
+          "planSlug": "baidu-qianfan-credits-plan-pro",
+          "planModelSlug": "baidu-qianfan-credits-plan-pro--deepseek-v4-1-flash",
+          "label": "百度千帆 · 积分制 · Pro · DeepSeek-V4.1-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "baidu-qianfan-credits",
+          "planSlug": "baidu-qianfan-credits-plan-pro",
+          "planModelSlug": "baidu-qianfan-credits-plan-pro--deepseek-v4-pro-0813",
+          "label": "百度千帆 · 积分制 · Pro · DeepSeek-V4-Pro-0813"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "baidu-qianfan-credits",
+          "planSlug": "baidu-qianfan-credits-plan-pro",
+          "planModelSlug": "baidu-qianfan-credits-plan-pro--glm-5-3",
+          "label": "百度千帆 · 积分制 · Pro · GLM-5.3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "baidu-qianfan-credits",
+          "planSlug": "baidu-qianfan-credits-plan-max",
+          "planModelSlug": "baidu-qianfan-credits-plan-max--deepseek-v4-1-flash",
+          "label": "百度千帆 · 积分制 · Max · DeepSeek-V4.1-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "baidu-qianfan-credits",
+          "planSlug": "baidu-qianfan-credits-plan-max",
+          "planModelSlug": "baidu-qianfan-credits-plan-max--deepseek-v4-pro-0813",
+          "label": "百度千帆 · 积分制 · Max · DeepSeek-V4-Pro-0813"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "baidu-qianfan-credits",
+          "planSlug": "baidu-qianfan-credits-plan-max",
+          "planModelSlug": "baidu-qianfan-credits-plan-max--glm-5-3",
+          "label": "百度千帆 · 积分制 · Max · GLM-5.3"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://cloud.baidu.com/doc/qianfan/s/Dmrabu8b6"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "gongji-deepseek-v4-preview-routing-20261020",
+      "title": "共绩 DeepSeek V4 预览资源下架及旧入口路由调整",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-20",
+        "description": "官方为12:00中午，未明确时区；不能自动切换数据或推定正式版具体版本。"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "预览资源与旧模型入口",
+          "before": "提供DeepSeek V4预览版资源",
+          "after": "预览资源下架，调用预览ID的请求自动路由正式服务；具体正式版本待确认"
+        }
+      ],
+      "audience": "使用共绩DeepSeek V4 Flash/Pro预览模型ID的用户。",
+      "summary": "共绩公告将于10月20日12:00下架DeepSeek V4预览资源，旧模型ID将转向正式服务；时区及具体正式版本未明确。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "gongji",
+          "planSlug": "gongji-api",
+          "planModelSlug": "gongji-api--deepseek-v4-preview",
+          "label": "共绩算力 · 按量 API · DeepSeek-V4-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "gongji",
+          "planSlug": "gongji-api",
+          "planModelSlug": "gongji-api--deepseek-v4-pro-preview",
+          "label": "共绩算力 · 按量 API · DeepSeek-V4-Pro-Preview"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://maas.suanli.cn/models/deepseek%252Fdeepseek-v4-flash"
+        },
+        {
+          "url": "https://maas.suanli.cn/models/deepseek%252Fdeepseek-v4-pro"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "qoder-intl-ultimate-offpeak-end-20261031",
+      "title": "Qoder 国际版 Ultimate 低峰优惠结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-31",
+        "description": "官方截止2026-10-31 00:00 UTC，即香港时间08:00。"
+      },
+      "changes": [
+        {
+          "type": "price",
+          "label": "Ultimate低峰Credits参考系数",
+          "before": "活动期间每日14:00–00:00 UTC低峰由常规2×降至0.4×",
+          "after": "活动到期，恢复常规2×；不是套餐月费调整"
+        }
+      ],
+      "audience": "Qoder国际版有效个人Pro/Pro+/Ultra订阅中手动选择Ultimate档位的用户；Service Account时段不同。",
+      "summary": "Ultimate低峰0.4×优惠计划于10月31日08:00（香港时间）结束，之后恢复常规2×；套餐月费不变。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "qoder-intl",
+          "planSlug": "qoder-intl-pro",
+          "label": "Qoder 国际版 · Pro"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "qoder-intl",
+          "planSlug": "qoder-intl-pro-plus",
+          "label": "Qoder 国际版 · Pro+"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "qoder-intl",
+          "planSlug": "qoder-intl-ultra",
+          "label": "Qoder 国际版 · Ultra"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.qoder.com/events/offpeakrate"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "mimo-v2-5-forwarding-20261014",
+      "title": "MiMo V2.5 系列已转发 V2.6",
+      "officialStatus": "effective",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-14"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "实际服务型号",
+          "before": "V2.5-Pro / V2.5",
+          "after": "由V2.6系列承接，旧名称暂作兼容入口"
+        }
+      ],
+      "summary": "MiMo V2.5-Pro及V2.5已于10月14日18:00（UTC+8）转发至V2.6系列；旧名称将于10月21日失效。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "xiaomi-mimo",
+          "planSlug": "mimo-lite",
+          "label": "小米·MiMo · Lite"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "xiaomi-mimo",
+          "planSlug": "mimo-standard",
+          "label": "小米·MiMo · Standard"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "xiaomi-mimo",
+          "planSlug": "mimo-pro",
+          "label": "小米·MiMo · Pro"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "xiaomi-mimo",
+          "planSlug": "mimo-max",
+          "label": "小米·MiMo · Max"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://mimo.mi.com/docs/zh-CN/tokenplan/Token%20Plan/subscription"
+        }
+      ],
+      "relatedChanges": [
+        "mimo-v2-5-identifiers-retirement-20261021"
+      ]
+    },
+    {
+      "slug": "mimo-v2-5-identifiers-retirement-20261021",
+      "title": "MiMo V2.5 旧模型名称失效",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-21"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "兼容模型名称",
+          "before": "旧名称转发V2.6",
+          "after": "原V2.5-Pro / V2.5名称失效，需切换V2.6名称"
+        }
+      ],
+      "summary": "MiMo公告原V2.5-Pro及V2.5模型名称将于10月21日10:00（UTC+8）失效，请切换至V2.6系列。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "xiaomi-mimo",
+          "planSlug": "mimo-lite",
+          "label": "小米·MiMo · Lite"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "xiaomi-mimo",
+          "planSlug": "mimo-standard",
+          "label": "小米·MiMo · Standard"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "xiaomi-mimo",
+          "planSlug": "mimo-pro",
+          "label": "小米·MiMo · Pro"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "xiaomi-mimo",
+          "planSlug": "mimo-max",
+          "label": "小米·MiMo · Max"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://mimo.mi.com/docs/zh-CN/tokenplan/Token%20Plan/subscription"
+        }
+      ],
+      "relatedChanges": [
+        "mimo-v2-5-forwarding-20261014"
+      ]
+    },
+    {
+      "slug": "ark-kimi-k2-7-new-user-restriction-20261013",
+      "title": "方舟 K2.7 Code 限制新使用者",
+      "officialStatus": "effective",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-13"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "K2.7 Code使用资格",
+          "before": "符合套餐条件可用",
+          "after": "仅此前使用过该模型的订户暂可继续使用"
+        }
+      ],
+      "summary": "10月13日10:00（UTC+8）起，方舟Coding/Agent Plan未使用过K2.7 Code的订户不再开放该型号；老使用者暂可继续使用。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-lite",
+          "planModelSlug": "volcengine-coding-lite--kimi-k2-7-code",
+          "label": "字节·方舟 Coding Plan · Lite · Kimi-K2.7-Code"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-pro",
+          "planModelSlug": "volcengine-coding-pro--kimi-k2-7-code",
+          "label": "字节·方舟 Coding Plan · Pro · Kimi-K2.7-Code"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-small",
+          "planModelSlug": "volcengine-agent-small--kimi-k2-7-code",
+          "label": "字节·方舟 Agent Plan · Small · Kimi-K2.7-Code"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-medium",
+          "planModelSlug": "volcengine-agent-medium--kimi-k2-7-code",
+          "label": "字节·方舟 Agent Plan · Medium · Kimi-K2.7-Code"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-large",
+          "planModelSlug": "volcengine-agent-large--kimi-k2-7-code",
+          "label": "字节·方舟 Agent Plan · Large · Kimi-K2.7-Code"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-max",
+          "planModelSlug": "volcengine-agent-max--kimi-k2-7-code",
+          "label": "字节·方舟 Agent Plan · Max · Kimi-K2.7-Code"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-model-deprecation?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-deprecation-announcement?lang=zh"
+        }
+      ],
+      "relatedChanges": [
+        "ark-kimi-k2-7-retirement-20261028"
+      ]
+    },
+    {
+      "slug": "ark-kimi-k2-7-retirement-20261028",
+      "title": "方舟 K2.7 Code 停止服务",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-28"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "K2.7 Code使用资格",
+          "before": "既有使用者仍可使用",
+          "after": "10月28日14:00（UTC+8）停止服务"
+        }
+      ],
+      "summary": "方舟Coding/Agent Plan的K2.7 Code计划于10月28日14:00（UTC+8）停止服务；当前保留老使用者支持。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-lite",
+          "planModelSlug": "volcengine-coding-lite--kimi-k2-7-code",
+          "label": "字节·方舟 Coding Plan · Lite · Kimi-K2.7-Code"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-pro",
+          "planModelSlug": "volcengine-coding-pro--kimi-k2-7-code",
+          "label": "字节·方舟 Coding Plan · Pro · Kimi-K2.7-Code"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-small",
+          "planModelSlug": "volcengine-agent-small--kimi-k2-7-code",
+          "label": "字节·方舟 Agent Plan · Small · Kimi-K2.7-Code"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-medium",
+          "planModelSlug": "volcengine-agent-medium--kimi-k2-7-code",
+          "label": "字节·方舟 Agent Plan · Medium · Kimi-K2.7-Code"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-large",
+          "planModelSlug": "volcengine-agent-large--kimi-k2-7-code",
+          "label": "字节·方舟 Agent Plan · Large · Kimi-K2.7-Code"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-max",
+          "planModelSlug": "volcengine-agent-max--kimi-k2-7-code",
+          "label": "字节·方舟 Agent Plan · Max · Kimi-K2.7-Code"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-model-deprecation?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-deprecation-announcement?lang=zh"
+        }
+      ],
+      "relatedChanges": [
+        "ark-kimi-k2-7-new-user-restriction-20261013"
+      ]
+    },
+    {
+      "slug": "ark-minimax-m3-retirement-announced",
+      "title": "方舟 MiniMax M3 即将下线",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "unknown",
+        "description": "当前两份概览仅标即将下线，未列确切日期，日期待确认。"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "MiniMax M3",
+          "before": "当前仍列为支持型号",
+          "after": "标记即将下线，概览未列具体日期，日期待确认"
+        }
+      ],
+      "summary": "方舟Coding及Agent Plan当前概览将MiniMax M3标为即将下线，概览未列确切日期；当前支持关系保留。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-lite",
+          "planModelSlug": "volcengine-coding-lite--minimax-m3",
+          "label": "字节·方舟 Coding Plan · Lite · MiniMax-M3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-pro",
+          "planModelSlug": "volcengine-coding-pro--minimax-m3",
+          "label": "字节·方舟 Coding Plan · Pro · MiniMax-M3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-small",
+          "planModelSlug": "volcengine-agent-small--minimax-m3",
+          "label": "字节·方舟 Agent Plan · Small · MiniMax-M3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-medium",
+          "planModelSlug": "volcengine-agent-medium--minimax-m3",
+          "label": "字节·方舟 Agent Plan · Medium · MiniMax-M3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-large",
+          "planModelSlug": "volcengine-agent-large--minimax-m3",
+          "label": "字节·方舟 Agent Plan · Large · MiniMax-M3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-max",
+          "planModelSlug": "volcengine-agent-max--minimax-m3",
+          "label": "字节·方舟 Agent Plan · Max · MiniMax-M3"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-plan-overview?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-plan-overview?lang=zh"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "ark-k3-discount-end-20261025",
+      "title": "方舟 Kimi K3 优惠结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-25"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "模型抵扣优惠",
+          "before": "当前活动抵扣系数",
+          "after": "活动到期，需按届时有效价抵扣"
+        }
+      ],
+      "summary": "方舟该型号抵扣优惠计划于2026-10-25 23:59:59（UTC+8）结束；Coding与Agent Plan各自系数不互套。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-lite",
+          "planModelSlug": "volcengine-coding-lite--kimi-k3",
+          "label": "字节·方舟 Coding Plan · Lite · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-pro",
+          "planModelSlug": "volcengine-coding-pro--kimi-k3",
+          "label": "字节·方舟 Coding Plan · Pro · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-medium",
+          "planModelSlug": "volcengine-agent-medium--kimi-k3",
+          "label": "字节·方舟 Agent Plan · Medium · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-large",
+          "planModelSlug": "volcengine-agent-large--kimi-k3",
+          "label": "字节·方舟 Agent Plan · Large · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-max",
+          "planModelSlug": "volcengine-agent-max--kimi-k3",
+          "label": "字节·方舟 Agent Plan · Max · Kimi-K3"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-model-discount?lang=zh"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "ark-k2-8-discount-end-20261214",
+      "title": "方舟 Kimi K2.8 优惠结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-12-14"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "模型抵扣优惠",
+          "before": "当前活动抵扣系数",
+          "after": "活动到期，需按届时有效价抵扣"
+        }
+      ],
+      "summary": "方舟该型号抵扣优惠计划于2026-12-14 23:59:59（UTC+8）结束；Coding与Agent Plan各自系数不互套。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-lite",
+          "planModelSlug": "volcengine-coding-lite--kimi-k2-8-preview",
+          "label": "字节·方舟 Coding Plan · Lite · Kimi-K2.8-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-pro",
+          "planModelSlug": "volcengine-coding-pro--kimi-k2-8-preview",
+          "label": "字节·方舟 Coding Plan · Pro · Kimi-K2.8-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-small",
+          "planModelSlug": "volcengine-agent-small--kimi-k2-8-preview",
+          "label": "字节·方舟 Agent Plan · Small · Kimi-K2.8-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-medium",
+          "planModelSlug": "volcengine-agent-medium--kimi-k2-8-preview",
+          "label": "字节·方舟 Agent Plan · Medium · Kimi-K2.8-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-large",
+          "planModelSlug": "volcengine-agent-large--kimi-k2-8-preview",
+          "label": "字节·方舟 Agent Plan · Large · Kimi-K2.8-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-max",
+          "planModelSlug": "volcengine-agent-max--kimi-k2-8-preview",
+          "label": "字节·方舟 Agent Plan · Max · Kimi-K2.8-Preview"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-plan-overview?lang=zh"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "ark-v4-1-discount-end-20261230",
+      "title": "方舟 DeepSeek V4.1 优惠结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-12-30"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "模型抵扣优惠",
+          "before": "当前活动抵扣系数",
+          "after": "活动到期，需按届时有效价抵扣"
+        }
+      ],
+      "summary": "方舟该型号抵扣优惠计划于2026-12-30 23:59:59（UTC+8）结束；Coding与Agent Plan各自系数不互套。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-lite",
+          "planModelSlug": "volcengine-coding-lite--deepseek-v4-1-flash",
+          "label": "字节·方舟 Coding Plan · Lite · DeepSeek-V4.1-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-pro",
+          "planModelSlug": "volcengine-coding-pro--deepseek-v4-1-flash",
+          "label": "字节·方舟 Coding Plan · Pro · DeepSeek-V4.1-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-small",
+          "planModelSlug": "volcengine-agent-small--deepseek-v4-1-flash",
+          "label": "字节·方舟 Agent Plan · Small · DeepSeek-V4.1-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-medium",
+          "planModelSlug": "volcengine-agent-medium--deepseek-v4-1-flash",
+          "label": "字节·方舟 Agent Plan · Medium · DeepSeek-V4.1-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-large",
+          "planModelSlug": "volcengine-agent-large--deepseek-v4-1-flash",
+          "label": "字节·方舟 Agent Plan · Large · DeepSeek-V4.1-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-max",
+          "planModelSlug": "volcengine-agent-max--deepseek-v4-1-flash",
+          "label": "字节·方舟 Agent Plan · Max · DeepSeek-V4.1-Flash"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-plan-overview?lang=zh"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "ark-small-medium-promotion-end-20261108",
+      "title": "方舟 Coding / Agent 入门档普惠活动结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-08"
+      },
+      "changes": [
+        {
+          "type": "price",
+          "label": "Coding Lite/Pro及Agent Small/Medium首两月优惠",
+          "before": "符合资格订单首两月9.9/49.9元",
+          "after": "优惠活动到期，后续按有效价格购买"
+        }
+      ],
+      "summary": "方舟Coding Lite/Pro与Agent Small/Medium的首两月9.9/49.9元普惠活动截至11月8日；限量和各产品资格要求适用，不改变已支付订单权益。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-small",
+          "label": "字节·方舟 Agent Plan · Small"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-medium",
+          "label": "字节·方舟 Agent Plan · Medium"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-lite",
+          "label": "字节·方舟 Coding Plan · Lite"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-pro",
+          "label": "字节·方舟 Coding Plan · Pro"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-universal-promotion?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-universal-promotion?lang=zh"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "deepseek-server-tools-billing-20261101",
+      "title": "DeepSeek Server 端 Search / Fetch 开始收费",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-01"
+      },
+      "changes": [
+        {
+          "type": "price",
+          "label": "Server端Search / Fetch调用",
+          "before": "当前免费",
+          "after": "11月1日00:00北京时间起，每1000次成功请求5元"
+        }
+      ],
+      "summary": "DeepSeek Server端Search/Fetch调用目前免费，11月1日00:00（北京时间）起每千次成功请求5元；独立Search/Fetch API当前已收费。",
+      "targets": [
+        {
+          "type": "platform",
+          "platformSlug": "deepseek-official",
+          "label": "DeepSeek"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "ark-coding-invitation-end-20261119",
+      "title": "方舟 Coding 首次受邀优惠活动结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-19",
+        "description": "具体时刻及页面时区未公布。"
+      },
+      "changes": [
+        {
+          "type": "price",
+          "label": "首次受邀订阅优惠",
+          "before": "符合条件首次受邀订单9.5折",
+          "after": "邀请优惠活动到期，后续以有效优惠和结算为准"
+        }
+      ],
+      "summary": "方舟Coding Lite/Pro首次受邀订单9.5折的活动期截至11月19日；资格限制及其他优惠的独立规则继续适用。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-lite",
+          "label": "字节·方舟 Coding Plan · Lite"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-pro",
+          "label": "字节·方舟 Coding Plan · Pro"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-limited-time-invitation-event?lang=zh"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "ark-agent-invitation-end-20261231",
+      "title": "方舟 Agent 入门档首次受邀优惠活动结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-12-31",
+        "description": "具体时刻及页面时区未公布。"
+      },
+      "changes": [
+        {
+          "type": "price",
+          "label": "Small/Medium首次受邀优惠",
+          "before": "符合条件首次受邀订单9.5折",
+          "after": "邀请优惠活动到期，后续以有效优惠和结算为准"
+        }
+      ],
+      "summary": "方舟Agent Small/Medium首次受邀订单9.5折的活动期截至12月31日；创建过邀请码者不能再受邀，首单及叠加规则以结算为准。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-small",
+          "label": "字节·方舟 Agent Plan · Small"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-medium",
+          "label": "字节·方舟 Agent Plan · Medium"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-small-medium-invitation?lang=zh"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "ark-agent-quarterly-annual-promotion-end-20280519",
+      "title": "方舟 Agent 季付年付首周期优惠活动结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2028-05-19",
+        "description": "页面给出23:59，但未注明时区；仅活动期开通的首周期价格。"
+      },
+      "changes": [
+        {
+          "type": "price",
+          "label": "季付/年付首周期优惠",
+          "before": "活动期开通连续季97折、连续年95折",
+          "after": "活动到期，后续按届时有效价开通；已有续费依扣款日价格"
+        }
+      ],
+      "summary": "方舟Agent Plan连续季97折、年95折的首周期开通活动截至2028年5月19日23:59；后续续费按扣款日有效价，页面未注明时区。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-small",
+          "label": "字节·方舟 Agent Plan · Small"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-medium",
+          "label": "字节·方舟 Agent Plan · Medium"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-large",
+          "label": "字节·方舟 Agent Plan · Large"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-max",
+          "label": "字节·方舟 Agent Plan · Max"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-annual-quarterly?lang=zh"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "minimax-mplan-flash-final-20261020",
+      "title": "MiniMax M Plan 使用正式 M3.1 Flash",
+      "officialStatus": "effective",
+      "effectiveTime": {
+        "type": "unknown",
+        "description": "当前官方已确认Preview下线并由正式Flash承接，未明确该项单独生效的具体时刻。"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "当前文本模型",
+          "before": "MiniMax-M3.1-Flash-Preview",
+          "after": "正式MiniMax-M3.1-Flash；精确Token额度仍未公布"
+        }
+      ],
+      "audience": "新购M Plan Go、Explore、Build或使用MiniMax Code Free的用户",
+      "summary": "M Plan Go、Explore、Build及MiniMax Code Free现使用正式M3.1 Flash，旧Preview名称请求由正式模型承接；具体Token配额未公布。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-mplan-go",
+          "label": "MiniMax · M Plan Go"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-mplan-explore",
+          "label": "MiniMax · M Plan Explore"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-mplan-build",
+          "label": "MiniMax · M Plan Build"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-code-free",
+          "label": "MiniMax · MiniMax Code Free"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://platform.minimax.cn/docs/m-plan/intro"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "minimax-code-flash-unlimited-end-20261025",
+      "title": "MiniMax Code 的 M3.1 Flash 订阅不限量活动结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-25",
+        "description": "官方公布的活动截止日期；未注明具体截止时刻与时区。"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "MiniMax Code 内 M3.1 Flash 用量",
+          "before": "截至2026-10-25，所有订阅用户在MiniMax Code内使用M3.1 Flash不限量；未承诺外部工具API不限量",
+          "after": "限时不限量权益结束，按届时套餐规则使用；常规精确Token额度未公布"
+        }
+      ],
+      "audience": "所有订阅用户；仅限MiniMax Code内的M3.1 Flash，不包含Code Free，未承诺外部工具API不限量",
+      "summary": "MiniMax Code订阅用户的M3.1 Flash不限量活动截至2026-10-25；外部工具API未获不限量承诺。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-mplan-go",
+          "label": "MiniMax · M Plan Go"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-mplan-explore",
+          "label": "MiniMax · M Plan Explore"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-mplan-build",
+          "label": "MiniMax · M Plan Build"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://agent.minimax.cn/"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "minimax-mplan-first-month-discount-end-20261031",
+      "title": "MiniMax M Plan 首月五折活动结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-31",
+        "description": "官方公布的活动截止日期；未注明具体截止时刻与时区。"
+      },
+      "changes": [
+        {
+          "type": "price",
+          "label": "Go / Explore / Build 首月订阅价",
+          "before": "截至2026-10-31，新订阅或升级M Plan首月¥24.5 / ¥59.5 / ¥234.5，次月起¥49 / ¥119 / ¥469每月",
+          "after": "首月五折活动结束，后续订购按届时价格；已享首月优惠的订阅从次月起按原价续订"
+        }
+      ],
+      "audience": "在MiniMax Code内新订阅或升级M Plan的用户",
+      "summary": "MiniMax Code内新订阅或升级M Plan的首月五折活动截至2026-10-31，三档首月¥24.5 / ¥59.5 / ¥234.5，次月起¥49 / ¥119 / ¥469每月。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-mplan-go",
+          "label": "MiniMax · M Plan Go"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-mplan-explore",
+          "label": "MiniMax · M Plan Explore"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "minimax",
+          "planSlug": "minimax-mplan-build",
+          "label": "MiniMax · M Plan Build"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://agent.minimax.cn/"
         }
       ],
       "relatedChanges": []

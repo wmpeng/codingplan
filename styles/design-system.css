@@ -186,7 +186,7 @@ body :is(.usage-preset-table, .usage-data-table, .tool-table) tbody tr:nth-child
 body :is(.usage-preset-table, .usage-data-table, .tool-table) tbody tr:hover td { background: var(--bg-tertiary); }
 body .usage-data-table .usage-table-note { min-width: 320px; width: 360px; }
 body .usage-note-disclosure > summary { min-height: 20px; padding: 0; }
-body .usage-note-disclosure > div { width: 320px; max-width: 100%; margin-top: 12px; color: var(--text-secondary); line-height: 1.7; }
+body .usage-note-disclosure > div { width: auto; max-width: 100%; margin-top: 12px; color: var(--text-secondary); line-height: 1.7; }
 body .usage-data-table .usage-table-model { font-weight: 400; }
 body .usage-preset-table td { padding: 12px 16px; }
 body .usage-preset-table th { padding: 10px 16px; }

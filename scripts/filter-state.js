@@ -44,10 +44,11 @@
     return { min, max };
   }
 
-  function normalizeRangeMap(value) {
+  function normalizeRangeMap(value, allowedKeys) {
     const output = {};
     if (!value || typeof value !== 'object') return output;
     for (const [key, range] of Object.entries(value)) {
+      if (allowedKeys && !allowedKeys.includes(key)) continue;
       const normalized = cloneRange(range);
       if (normalized) output[key] = normalized;
     }
@@ -97,7 +98,7 @@
       planStatusOnly: input.planStatusOnly === true,
       includeDiscontinued: input.includeDiscontinued === undefined ? base.includeDiscontinued : input.includeDiscontinued === true,
       priceRanges: normalizeRangeMap(input.priceRanges === undefined ? base.priceRanges : input.priceRanges),
-      requestRanges: normalizeRangeMap(input.requestRanges === undefined ? base.requestRanges : input.requestRanges),
+      requestRanges: normalizeRangeMap(input.requestRanges === undefined ? base.requestRanges : input.requestRanges, ['fiveHours','weekly','monthly']),
       multimodal: ['all', 'multimodal', 'text'].includes(input.multimodal) ? input.multimodal : 'all',
       aaScoreMin: nullableNumber(input.aaScoreMin, base.aaScoreMin),
       deepSWEScoreMin: nullableNumber(input.deepSWEScoreMin, base.deepSWEScoreMin)
@@ -300,11 +301,12 @@
         if (!inRange(toCny(plan[key], plan.currency, rate), range)) return false;
       }
       for (const [key, range] of Object.entries(current.requestRanges)) {
-        if (plan[key] === '无限制' || plan[key] === 'unlimited') {
+        const quota = plan.requestQuota?.[key];
+        if (quota === 'unlimited') {
           if (range.max !== null) return false;
           continue;
         }
-        if (!inRange(plan[key], range)) return false;
+        if (!inRange(quota, range)) return false;
       }
       return true;
     });
@@ -383,11 +385,8 @@
       if (point.billingMode === 'subscription' && !inRange(monthly, current.budgetCny)) return false;
       if (point.billingMode === 'subscription') {
         for (const [key, range] of Object.entries(current.priceRanges)) {
-          if (key === 'monthlyPrice' && !inRange(monthly, range)) return false;
-          if (key !== 'monthlyPrice') {
-            const plan = opts.context && opts.context.planBySlug && opts.context.planBySlug.get(point.planSlug);
-            if (!plan || !inRange(toCny(plan[key], plan.currency, rate), range)) return false;
-          }
+          const plan = opts.context?.planBySlug?.get(point.planSlug);
+          if (!plan || !inRange(toCny(plan[key], plan.currency, rate), range)) return false;
         }
       }
       return true;
@@ -424,7 +423,7 @@
       const monthlyCost = toCny(plan.monthlyPrice, plan.currency, opts.usdToCnyRate);
       if (plan.billingMode !== 'payg' && !inRange(monthlyCost, s.budgetCny)) continue;
       if (plan.billingMode !== 'payg' && Object.entries(s.priceRanges).some(([key, range]) => !inRange(toCny(plan[key], plan.currency, opts.usdToCnyRate), range))) continue;
-      if (Object.entries(s.requestRanges).some(([key, range]) => !tokenInRange(plan[key] === '无限制' ? 'unlimited' : plan[key], range))) continue;
+      if (Object.entries(s.requestRanges).some(([key, range]) => !tokenInRange(plan.requestQuota?.[key], range))) continue;
       const rows = (context.relationsByPlanSlug.get(plan.slug) || []).filter(row => {
         const model = context.modelBySlug.get(row.modelSlug);
         if (!model || !selectedMatch(model.slug, s.modelSlugs)) return false;

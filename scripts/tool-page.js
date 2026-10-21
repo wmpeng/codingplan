@@ -9,14 +9,16 @@
     }).catch(error => { requests.delete(file); throw error; }));
     return requests.get(file);
   }
-  function loadPreset() { return loadJson('model-comparison-presets.json'); }
+  function loadPreset() { return loadJson('featured-catalog.json'); }
   function load() {
     if (!pending) pending = Promise.all([
       ...['platforms.json', 'plans.json', 'models.json', 'config.json'].map(loadJson),
-      loadPreset().catch(() => null)
-    ]).then(([platforms, plans, models, config, preset]) => {
+      loadPreset().catch(() => null),
+      root.ChangeNotices ? loadJson('changes.json').catch(() => null) : null
+    ]).then(([platforms, plans, models, config, preset, changes]) => {
       root.appConfig = config;
       const context = root.EntityData.buildContext(platforms, plans, models);
+      context.changes = changes;
       if (preset) {
         context.modelGroups = preset.groups || [];
         context.featuredPlatformSlugs = preset.platformSlugs || [];

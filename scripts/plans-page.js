@@ -4,14 +4,13 @@
   const UI = root.CodingPlanUI, esc = UI.escapeHtml, Numbers = root.NumberDisplay;
   const money = (plan, field) => {
     const value = Directory.priceValue(plan, field);
-    if (field === 'monthlyPrice' || field === 'firstMonthPrice') return Numbers.monthlyFee(value, plan.currency || '¥', '未知');
-    return Numbers.finite(value) === null ? '未知' : `${plan.currency || '¥'}${Numbers.amount(value)}`;
+    return Numbers.monthlyFee(value, plan.currency || '¥', '未知');
   };
   const requests = (plan, field) => {
-    const value = plan[field];
-    if (value === '无限制' || value === 'unlimited') return '无限制';
+    const value = plan.requestQuota?.[field];
+    if (value === 'unlimited') return '无限制';
     if (Numbers.finite(value) === null) return '未知';
-    return (field === 'monthlyRequests' ? Numbers.tokens : Numbers.count)(value);
+    return (field === 'monthly' ? Numbers.tokens : Numbers.count)(value);
   };
   function chips(values) {
     const items = values || [], tag = value => `<span class="tool-tag">${esc(value)}</span>`;
@@ -48,16 +47,20 @@
           const url = UI.sanitizeUrl(plan.action, '');
           const models = UI.prioritizeFeaturedModels(plan.supportedModels || [], context.modelGroups);
           const label = `${plan.platformName} ${plan.name}`;
+          const scope = {type:'plan',platformSlug:plan.platformSlug,planSlug:plan.slug};
+          const notice = key => root.ChangeNotices.forField(context.changes,scope,key);
+          const modelNotice = notice('models');
+          const modelList = UI.modelTags(models.map(model => model.name), {maxRows:2,ariaLabel:label+' 支持模型'});
           const title = status !== 'delisted' && url
             ? `<a class="plan-title" data-plan-link="${status}" href="${esc(url)}" target="_blank" rel="noopener noreferrer" aria-label="${status === 'open' ? '开通' : '去官网查看'} ${esc(label)}">${esc(label)} ${UI.externalLinkIcon}</a>`
             : `<strong class="plan-title">${esc(label)}</strong>`;
           return `<tr data-plan-row="${esc(plan.slug)}"${selection.pinned.has(plan.slug) ? ' class="is-pinned"' : ''}>
-            <td data-plan-col="identity"><div class="plan-identity">${UI.pinButton({pinned:selection.pinned.has(plan.slug), label:`${selection.pinned.has(plan.slug) ? '取消置顶' : '置顶'} ${label}`, attributes:{'data-plan-pin':plan.slug}})}<div class="plan-identity-copy">${title}<div class="plan-meta">${status === 'open' ? '' : `<span class="tool-tag plan-status" data-plan-status="${status}">${esc(UI.statusLabels[status])}</span>`}${root.EntityData.harnessApiBadge(plan.supportsHarnessApi)}</div></div></div></td>
+            <td data-plan-col="identity"><div class="plan-identity">${UI.pinButton({pinned:selection.pinned.has(plan.slug), label:`${selection.pinned.has(plan.slug) ? '取消置顶' : '置顶'} ${label}`, attributes:{'data-plan-pin':plan.slug}})}<div class="plan-identity-copy">${title}${notice('general')}<div class="plan-meta">${status === 'open' ? '' : `<span class="tool-tag plan-status" data-plan-status="${status}">${esc(UI.statusLabels[status])}</span>`}${root.EntityData.harnessApiBadge(plan.supportsHarnessApi)}</div></div></div></td>
             <td data-plan-col="rating"><span class="plan-rating" aria-label="${plan.rating > 0 ? esc(plan.rating)+' 星' : '待评定'}">${plan.rating > 0 ? '★ '+Number(plan.rating).toFixed(1) : '待评定'}</span></td>
-            ${['firstMonthPrice','monthlyPrice','quarterlyPrice','yearlyPrice'].map(key => `<td data-plan-col="${key}"${key === 'firstMonthPrice' ? '' : ' data-plan-extra'}>${esc(money(plan,key))}</td>`).join('')}
-            <td data-plan-col="models">${UI.modelTags(models.map(model => model.name), {maxRows:2,ariaLabel:label+' 支持模型'})}</td>
-            <td data-plan-col="monthlyToken" class="monthly-token-cell" title="所选模型各档位的月 Token 参考范围，不相加；按最大值排序，详细口径见价格与额度">${esc(Filters.formatMonthlyTokens(plan,state))}</td>
-            ${['fiveHoursRequests','weeklyRequests','monthlyRequests'].map(key => `<td data-plan-col="${key}" data-plan-extra>${esc(requests(plan,key))}</td>`).join('')}
+            ${['firstMonthPrice','monthlyPrice','quarterlyPrice','yearlyPrice'].map(key => `<td data-plan-col="${key}"${key === 'firstMonthPrice' ? '' : ' data-plan-extra'}>${esc(money(plan,key))}${key==='firstMonthPrice'?notice('price'):''}</td>`).join('')}
+            <td data-plan-col="models">${modelNotice ? `<div class="plan-models-with-notice">${modelList}${modelNotice}</div>` : modelList}</td>
+            <td data-plan-col="monthlyToken" class="monthly-token-cell" title="所选模型各档位的月 Token 参考范围，不相加；按最大值排序，详细口径见价格与额度">${esc(Filters.formatMonthlyTokens(plan,state))}${notice('quota')}</td>
+            ${['fiveHours','weekly','monthly'].map(key => `<td data-plan-col="requestQuota.${key}" data-plan-extra>${esc(requests(plan,key))}</td>`).join('')}
             <td data-plan-col="benefits" data-plan-extra>${chips(plan.benefits)}</td><td class="plan-note" data-plan-col="note">${esc(plan.note || '')}</td>
           </tr>`;
         }).join('') : '<tr><td colspan="13"><div class="tool-empty">没有匹配套餐，试着清空搜索或减少筛选条件。</div></td></tr>';

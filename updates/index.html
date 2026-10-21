@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
 <script src="/scripts/ui-core.js?v=101203ea10"></script>
-<script src="/scripts/ui-help.js?v=065329afe1"></script>
+<script src="/scripts/ui-help.js?v=b8624088b6"></script>
 <script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
-<script src="/scripts/ui-dialog.js?v=833c330a51" defer></script>
+<script src="/scripts/ui-dialog.js?v=632fc11cea" defer></script>
 <script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,14 +13,14 @@
   <link rel="canonical" href="https://codingplan.fyi/updates/">
   <link rel="icon" href="/favicon.ico?v=260924a">
   <link rel="stylesheet" href="/styles/shared.css?v=482edb170c">
-  <link rel="stylesheet" href="/styles/tool-page.css?v=1688597461">
-  <link rel="stylesheet" href="/styles/design-system.css?v=8b40812952">
+  <link rel="stylesheet" href="/styles/tool-page.css?v=7b6cf437a0">
+  <link rel="stylesheet" href="/styles/design-system.css?v=294b0cc3f4">
   <link rel="stylesheet" href="/styles/changes-page.css?v=07141e11a3">
 <script src="/scripts/changes-page.js?v=02ada7f47c" defer></script>
 <script src="/scripts/site-navigation.js?v=58bc3a8bab" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
-<link rel="stylesheet" href="/styles/ui-components.css?v=bf5f1551fa">
-<link rel="stylesheet" href="/styles/ui-help.css?v=f7c4d9118a">
+<link rel="stylesheet" href="/styles/ui-components.css?v=4839ae1fc0">
+<link rel="stylesheet" href="/styles/ui-help.css?v=50cda6ca65">
 </head>
 <body class="tool-page content-list-view">
 <!-- SITE_NAV_START -->
@@ -80,21 +80,13 @@
       <p class="content-list-lead">关注即将影响价格、额度与模型支持的变化，回看资料更新。</p>
       <nav class="updates-jumps" aria-label="本页内容"><a href="#upcoming">变更预告</a><a href="#history">更新历史</a></nav>
     </header>
-    <section id="upcoming" class="changes-section" aria-labelledby="upcoming-heading"><div class="changes-heading"><h2 id="upcoming-heading">变更预告</h2><span>4 项</span></div><div class="changes-upcoming"><article class="change-record" id="change-codex-gpt-5-5-retirement-20261014" data-change-status="announced" data-effective-date="2026-10-14" tabindex="-1">
-  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-10-14</span></div>
-  <h3><a href="#change-codex-gpt-5-5-retirement-20261014">Codex 的 GPT-5.5 支持调整</a></h3>
-  <p class="change-summary">原公告安排 2026-10-14 从 ChatGPT 登录的 Codex 中移除 GPT-5.5；不涉及 API 可用性。</p>
-
-  <dl class="change-values"><div><dt>ChatGPT 登录的 Codex</dt><dd><span class="change-before">可选 GPT-5.5</span><span class="change-arrow" aria-label="变为">→</span><strong>公告将移除 GPT-5.5；API 可用性不受此调整影响</strong></dd></div></dl>
-  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>Codex · Plus · GPT-5.5</li><li>Codex · Pro $100 · GPT-5.5</li><li>Codex · Pro $200 · GPT-5.5</li></ul><p class="change-sources"><a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
-  </article>
-<article class="change-record" id="change-minimax-token-plan-model-routing-20261019" data-change-status="announced" data-effective-date="2026-10-19" tabindex="-1">
-  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-10-19</span></div>
-  <h3><a href="#change-minimax-token-plan-model-routing-20261019">MiniMax 老 Token Plan 模型路由调整</a></h3>
-  <p class="change-summary">公告安排 2026-10-19 起，M2.5/M2.7 请求统一路由至 M3.1 Flash Preview；旧型号实测不代表新型号额度。</p>
-  <p class="change-audience"><span>适用条件</span>仍在自动续费的老 Token Plan 用户</p>
-  <dl class="change-values"><div><dt>M2.5 / M2.7 请求</dt><dd><span class="change-before">原型号入口</span><span class="change-arrow" aria-label="变为">→</span><strong>路由至 M3.1 Flash Preview，原名称保留为兼容入口</strong></dd></div></dl>
-  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>MiniMax · 老Token Plan Plus</li><li>MiniMax · 老Token Plan Max</li><li>MiniMax · 老Token Plan Ultra</li></ul><p class="change-sources"><a href="https://platform.minimax.cn/docs/m-plan/token-plan-notice" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+    <section id="upcoming" class="changes-section" aria-labelledby="upcoming-heading"><div class="changes-heading"><h2 id="upcoming-heading">变更预告</h2><span>20 项</span></div><div class="changes-upcoming"><article class="change-record" id="change-gongji-deepseek-v4-preview-routing-20261020" data-change-status="announced" data-effective-date="2026-10-20" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-10-20</span></div>
+  <h3><a href="#change-gongji-deepseek-v4-preview-routing-20261020">共绩 DeepSeek V4 预览资源下架及旧入口路由调整</a></h3>
+  <p class="change-summary">共绩公告将于10月20日12:00下架DeepSeek V4预览资源，旧模型ID将转向正式服务；时区及具体正式版本未明确。</p>
+  <p class="change-audience"><span>适用条件</span>使用共绩DeepSeek V4 Flash/Pro预览模型ID的用户。</p>
+  <dl class="change-values"><div><dt>预览资源与旧模型入口</dt><dd><span class="change-before">提供DeepSeek V4预览版资源</span><span class="change-arrow" aria-label="变为">→</span><strong>预览资源下架，调用预览ID的请求自动路由正式服务；具体正式版本待确认</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>共绩算力 · 按量 API · DeepSeek-V4-Preview</li><li>共绩算力 · 按量 API · DeepSeek-V4-Pro-Preview</li></ul><p>官方为12:00中午，未明确时区；不能自动切换数据或推定正式版具体版本。</p><p class="change-sources"><a href="https://maas.suanli.cn/models/deepseek%252Fdeepseek-v4-flash" target="_blank" rel="noopener noreferrer">官方来源 1 ↗</a> · <a href="https://maas.suanli.cn/models/deepseek%252Fdeepseek-v4-pro" target="_blank" rel="noopener noreferrer">官方来源 2 ↗</a></p></div></details>
   </article>
 <article class="change-record" id="change-command-code-mistral-bonus-end-20261021" data-change-status="announced" data-effective-date="2026-10-21" tabindex="-1">
   <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-10-21</span></div>
@@ -104,6 +96,126 @@
   <dl class="change-values"><div><dt>Mistral Large 4 月额度</dt><dd><span class="change-before">Go / GOAT / Pro 分别 $10 / $40 / $50</span><span class="change-arrow" aria-label="变为">→</span><strong>分别恢复 $6 / $20 / $30</strong></dd></div></dl>
   <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>Command Code · Go</li><li>Command Code · GOAT</li><li>Command Code · Pro</li></ul><p class="change-sources"><a href="https://commandcode.ai/docs/resources/pricing-limits" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
   </article>
+<article class="change-record" id="change-mimo-v2-5-identifiers-retirement-20261021" data-change-status="announced" data-effective-date="2026-10-21" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-10-21</span></div>
+  <h3><a href="#change-mimo-v2-5-identifiers-retirement-20261021">MiMo V2.5 旧模型名称失效</a></h3>
+  <p class="change-summary">MiMo公告原V2.5-Pro及V2.5模型名称将于10月21日10:00（UTC+8）失效，请切换至V2.6系列。</p>
+
+  <dl class="change-values"><div><dt>兼容模型名称</dt><dd><span class="change-before">旧名称转发V2.6</span><span class="change-arrow" aria-label="变为">→</span><strong>原V2.5-Pro / V2.5名称失效，需切换V2.6名称</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>小米·MiMo · Lite</li><li>小米·MiMo · Standard</li><li>小米·MiMo · Pro</li><li>小米·MiMo · Max</li></ul><p class="change-related">相关事项：<a href="#change-mimo-v2-5-forwarding-20261014">查看关联变更</a></p><p class="change-sources"><a href="https://mimo.mi.com/docs/zh-CN/tokenplan/Token%20Plan/subscription" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-ark-k3-discount-end-20261025" data-change-status="announced" data-effective-date="2026-10-25" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-10-25</span></div>
+  <h3><a href="#change-ark-k3-discount-end-20261025">方舟 Kimi K3 优惠结束</a></h3>
+  <p class="change-summary">方舟该型号抵扣优惠计划于2026-10-25 23:59:59（UTC+8）结束；Coding与Agent Plan各自系数不互套。</p>
+
+  <dl class="change-values"><div><dt>模型抵扣优惠</dt><dd><span class="change-before">当前活动抵扣系数</span><span class="change-arrow" aria-label="变为">→</span><strong>活动到期，需按届时有效价抵扣</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>字节·方舟 Coding Plan · Lite · Kimi-K3</li><li>字节·方舟 Coding Plan · Pro · Kimi-K3</li><li>字节·方舟 Agent Plan · Medium · Kimi-K3</li><li>字节·方舟 Agent Plan · Large · Kimi-K3</li><li>字节·方舟 Agent Plan · Max · Kimi-K3</li></ul><p class="change-sources"><a href="https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 1 ↗</a> · <a href="https://docs.volcengine.com/docs/ark/coding-plan-personal-model-discount?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 2 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-minimax-code-flash-unlimited-end-20261025" data-change-status="announced" data-effective-date="2026-10-25" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-10-25</span></div>
+  <h3><a href="#change-minimax-code-flash-unlimited-end-20261025">MiniMax Code 的 M3.1 Flash 订阅不限量活动结束</a></h3>
+  <p class="change-summary">MiniMax Code订阅用户的M3.1 Flash不限量活动截至2026-10-25；外部工具API未获不限量承诺。</p>
+  <p class="change-audience"><span>适用条件</span>所有订阅用户；仅限MiniMax Code内的M3.1 Flash，不包含Code Free，未承诺外部工具API不限量</p>
+  <dl class="change-values"><div><dt>MiniMax Code 内 M3.1 Flash 用量</dt><dd><span class="change-before">截至2026-10-25，所有订阅用户在MiniMax Code内使用M3.1 Flash不限量；未承诺外部工具API不限量</span><span class="change-arrow" aria-label="变为">→</span><strong>限时不限量权益结束，按届时套餐规则使用；常规精确Token额度未公布</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>MiniMax · M Plan Go</li><li>MiniMax · M Plan Explore</li><li>MiniMax · M Plan Build</li></ul><p>官方公布的活动截止日期；未注明具体截止时刻与时区。</p><p class="change-sources"><a href="https://agent.minimax.cn/" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-ark-kimi-k2-7-retirement-20261028" data-change-status="announced" data-effective-date="2026-10-28" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-10-28</span></div>
+  <h3><a href="#change-ark-kimi-k2-7-retirement-20261028">方舟 K2.7 Code 停止服务</a></h3>
+  <p class="change-summary">方舟Coding/Agent Plan的K2.7 Code计划于10月28日14:00（UTC+8）停止服务；当前保留老使用者支持。</p>
+
+  <dl class="change-values"><div><dt>K2.7 Code使用资格</dt><dd><span class="change-before">既有使用者仍可使用</span><span class="change-arrow" aria-label="变为">→</span><strong>10月28日14:00（UTC+8）停止服务</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>字节·方舟 Coding Plan · Lite · Kimi-K2.7-Code</li><li>字节·方舟 Coding Plan · Pro · Kimi-K2.7-Code</li><li>字节·方舟 Agent Plan · Small · Kimi-K2.7-Code</li><li>字节·方舟 Agent Plan · Medium · Kimi-K2.7-Code</li><li>字节·方舟 Agent Plan · Large · Kimi-K2.7-Code</li><li>字节·方舟 Agent Plan · Max · Kimi-K2.7-Code</li></ul><p class="change-related">相关事项：<a href="#change-ark-kimi-k2-7-new-user-restriction-20261013">查看关联变更</a></p><p class="change-sources"><a href="https://docs.volcengine.com/docs/ark/coding-plan-personal-model-deprecation?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 1 ↗</a> · <a href="https://docs.volcengine.com/docs/ark/agent-plan-personal-model-deprecation-announcement?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 2 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-tencent-october-model-discounts-end-20261030" data-change-status="announced" data-effective-date="2026-10-30" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-10-30</span></div>
+  <h3><a href="#change-tencent-october-model-discounts-end-20261030">腾讯部分模型十月优惠结束</a></h3>
+  <p class="change-summary">指定GLM5.3/Flash、Kimi K3/K2.7 Code及固定Hy3档优惠计划于10月30日12:00（北京时间）结束；其他型号不适用。</p>
+
+  <dl class="change-values"><div><dt>指定型号积分折扣</dt><dd><span class="change-before">当前活动积分价</span><span class="change-arrow" aria-label="变为">→</span><strong>活动到期，恢复常规积分价</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>腾讯云 · Lite · GLM-5.3</li><li>腾讯云 · Lite · GLM-5.3-Flash</li><li>腾讯云 · Lite · Kimi-K2.7-Code</li><li>腾讯云 · Lite · Kimi-K3</li><li>腾讯云 · Standard · GLM-5.3</li><li>腾讯云 · Standard · GLM-5.3-Flash</li><li>腾讯云 · Standard · Kimi-K2.7-Code</li><li>腾讯云 · Standard · Kimi-K3</li><li>腾讯云 · Pro · GLM-5.3</li><li>腾讯云 · Pro · GLM-5.3-Flash</li><li>腾讯云 · Pro · Kimi-K2.7-Code</li><li>腾讯云 · Pro · Kimi-K3</li><li>腾讯云 · Max · GLM-5.3</li><li>腾讯云 · Max · GLM-5.3-Flash</li><li>腾讯云 · Max · Kimi-K2.7-Code</li><li>腾讯云 · Max · Kimi-K3</li><li>腾讯云 · Hy · Lite · Hy3</li><li>腾讯云 · Hy · Standard · Hy3</li><li>腾讯云 · Hy · Pro · Hy3</li><li>腾讯云 · Hy · Max · Hy3</li></ul><p>北京时间12:00；现有GLM5.3/Flash、KimiK3/K2.7Code和固定Hy3折扣未来结束，届时需复核</p><p class="change-sources"><a href="https://cloud.tencent.com/document/product/1823/133811" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-minimax-mplan-first-month-discount-end-20261031" data-change-status="announced" data-effective-date="2026-10-31" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-10-31</span></div>
+  <h3><a href="#change-minimax-mplan-first-month-discount-end-20261031">MiniMax M Plan 首月五折活动结束</a></h3>
+  <p class="change-summary">MiniMax Code内新订阅或升级M Plan的首月五折活动截至2026-10-31，三档首月¥24.5 / ¥59.5 / ¥234.5，次月起¥49 / ¥119 / ¥469每月。</p>
+  <p class="change-audience"><span>适用条件</span>在MiniMax Code内新订阅或升级M Plan的用户</p>
+  <dl class="change-values"><div><dt>Go / Explore / Build 首月订阅价</dt><dd><span class="change-before">截至2026-10-31，新订阅或升级M Plan首月¥24.5 / ¥59.5 / ¥234.5，次月起¥49 / ¥119 / ¥469每月</span><span class="change-arrow" aria-label="变为">→</span><strong>首月五折活动结束，后续订购按届时价格；已享首月优惠的订阅从次月起按原价续订</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>MiniMax · M Plan Go</li><li>MiniMax · M Plan Explore</li><li>MiniMax · M Plan Build</li></ul><p>官方公布的活动截止日期；未注明具体截止时刻与时区。</p><p class="change-sources"><a href="https://agent.minimax.cn/" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-qoder-intl-ultimate-offpeak-end-20261031" data-change-status="announced" data-effective-date="2026-10-31" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-10-31</span></div>
+  <h3><a href="#change-qoder-intl-ultimate-offpeak-end-20261031">Qoder 国际版 Ultimate 低峰优惠结束</a></h3>
+  <p class="change-summary">Ultimate低峰0.4×优惠计划于10月31日08:00（香港时间）结束，之后恢复常规2×；套餐月费不变。</p>
+  <p class="change-audience"><span>适用条件</span>Qoder国际版有效个人Pro/Pro+/Ultra订阅中手动选择Ultimate档位的用户；Service Account时段不同。</p>
+  <dl class="change-values"><div><dt>Ultimate低峰Credits参考系数</dt><dd><span class="change-before">活动期间每日14:00–00:00 UTC低峰由常规2×降至0.4×</span><span class="change-arrow" aria-label="变为">→</span><strong>活动到期，恢复常规2×；不是套餐月费调整</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>Qoder 国际版 · Pro</li><li>Qoder 国际版 · Pro+</li><li>Qoder 国际版 · Ultra</li></ul><p>官方截止2026-10-31 00:00 UTC，即香港时间08:00。</p><p class="change-sources"><a href="https://docs.qoder.com/events/offpeakrate" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-deepseek-server-tools-billing-20261101" data-change-status="announced" data-effective-date="2026-11-01" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-11-01</span></div>
+  <h3><a href="#change-deepseek-server-tools-billing-20261101">DeepSeek Server 端 Search / Fetch 开始收费</a></h3>
+  <p class="change-summary">DeepSeek Server端Search/Fetch调用目前免费，11月1日00:00（北京时间）起每千次成功请求5元；独立Search/Fetch API当前已收费。</p>
+
+  <dl class="change-values"><div><dt>Server端Search / Fetch调用</dt><dd><span class="change-before">当前免费</span><span class="change-arrow" aria-label="变为">→</span><strong>11月1日00:00北京时间起，每1000次成功请求5元</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>DeepSeek</li></ul><p class="change-sources"><a href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing/" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-ark-small-medium-promotion-end-20261108" data-change-status="announced" data-effective-date="2026-11-08" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-11-08</span></div>
+  <h3><a href="#change-ark-small-medium-promotion-end-20261108">方舟 Coding / Agent 入门档普惠活动结束</a></h3>
+  <p class="change-summary">方舟Coding Lite/Pro与Agent Small/Medium的首两月9.9/49.9元普惠活动截至11月8日；限量和各产品资格要求适用，不改变已支付订单权益。</p>
+
+  <dl class="change-values"><div><dt>Coding Lite/Pro及Agent Small/Medium首两月优惠</dt><dd><span class="change-before">符合资格订单首两月9.9/49.9元</span><span class="change-arrow" aria-label="变为">→</span><strong>优惠活动到期，后续按有效价格购买</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>字节·方舟 Agent Plan · Small</li><li>字节·方舟 Agent Plan · Medium</li><li>字节·方舟 Coding Plan · Lite</li><li>字节·方舟 Coding Plan · Pro</li></ul><p class="change-sources"><a href="https://docs.volcengine.com/docs/ark/agent-plan-personal-universal-promotion?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 1 ↗</a> · <a href="https://docs.volcengine.com/docs/ark/coding-plan-personal-universal-promotion?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 2 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-tencent-minimax-m2-7-retirement-20261117" data-change-status="announced" data-effective-date="2026-11-17" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-11-17</span></div>
+  <h3><a href="#change-tencent-minimax-m2-7-retirement-20261117">腾讯 MiniMax M2.7 即将下线</a></h3>
+  <p class="change-summary">腾讯公告MiniMax M2.7将于11月17日下线，目前仍可使用，具体停止时刻未公布。</p>
+
+  <dl class="change-values"><div><dt>MiniMax M2.7</dt><dd><span class="change-before">当前支持</span><span class="change-arrow" aria-label="变为">→</span><strong>11月17日下线，具体时刻未公布</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>腾讯云 · Lite · MiniMax-M2.7</li><li>腾讯云 · Standard · MiniMax-M2.7</li><li>腾讯云 · Pro · MiniMax-M2.7</li><li>腾讯云 · Max · MiniMax-M2.7</li></ul><p>具体时刻未公布；当前保留支持关系</p><p class="change-sources"><a href="https://cloud.tencent.com/document/product/1823/130060" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-ark-coding-invitation-end-20261119" data-change-status="announced" data-effective-date="2026-11-19" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-11-19</span></div>
+  <h3><a href="#change-ark-coding-invitation-end-20261119">方舟 Coding 首次受邀优惠活动结束</a></h3>
+  <p class="change-summary">方舟Coding Lite/Pro首次受邀订单9.5折的活动期截至11月19日；资格限制及其他优惠的独立规则继续适用。</p>
+
+  <dl class="change-values"><div><dt>首次受邀订阅优惠</dt><dd><span class="change-before">符合条件首次受邀订单9.5折</span><span class="change-arrow" aria-label="变为">→</span><strong>邀请优惠活动到期，后续以有效优惠和结算为准</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>字节·方舟 Coding Plan · Lite</li><li>字节·方舟 Coding Plan · Pro</li></ul><p>具体时刻及页面时区未公布。</p><p class="change-sources"><a href="https://docs.volcengine.com/docs/ark/coding-plan-personal-limited-time-invitation-event?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-baidu-credit-plan-night-discount-end-20261130" data-change-status="announced" data-effective-date="2026-11-30" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-11-30</span></div>
+  <h3><a href="#change-baidu-credit-plan-night-discount-end-20261130">百度积分制夜间优惠结束</a></h3>
+  <p class="change-summary">百度积分制的三型号夜间两折计划于11月30日23:59结束；仅积分制适用，完整常规系数仍未公开，官网未明确时区。</p>
+
+  <dl class="change-values"><div><dt>三型号夜间折扣</dt><dd><span class="change-before">22:00至次日08:00两折</span><span class="change-arrow" aria-label="变为">→</span><strong>活动结束，恢复常规动态积分消耗</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>百度千帆 · 积分制 · Mini · DeepSeek-V4.1-Flash</li><li>百度千帆 · 积分制 · Mini · DeepSeek-V4-Pro-0813</li><li>百度千帆 · 积分制 · Mini · GLM-5.3</li><li>百度千帆 · 积分制 · Lite · DeepSeek-V4.1-Flash</li><li>百度千帆 · 积分制 · Lite · DeepSeek-V4-Pro-0813</li><li>百度千帆 · 积分制 · Lite · GLM-5.3</li><li>百度千帆 · 积分制 · Pro · DeepSeek-V4.1-Flash</li><li>百度千帆 · 积分制 · Pro · DeepSeek-V4-Pro-0813</li><li>百度千帆 · 积分制 · Pro · GLM-5.3</li><li>百度千帆 · 积分制 · Max · DeepSeek-V4.1-Flash</li><li>百度千帆 · 积分制 · Max · DeepSeek-V4-Pro-0813</li><li>百度千帆 · 积分制 · Max · GLM-5.3</li></ul><p>23:59结束；官网未明确时区；恢复常规动态积分消耗，完整系数仍未知。</p><p class="change-sources"><a href="https://cloud.baidu.com/doc/qianfan/s/Dmrabu8b6" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-ark-k2-8-discount-end-20261214" data-change-status="announced" data-effective-date="2026-12-14" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-12-14</span></div>
+  <h3><a href="#change-ark-k2-8-discount-end-20261214">方舟 Kimi K2.8 优惠结束</a></h3>
+  <p class="change-summary">方舟该型号抵扣优惠计划于2026-12-14 23:59:59（UTC+8）结束；Coding与Agent Plan各自系数不互套。</p>
+
+  <dl class="change-values"><div><dt>模型抵扣优惠</dt><dd><span class="change-before">当前活动抵扣系数</span><span class="change-arrow" aria-label="变为">→</span><strong>活动到期，需按届时有效价抵扣</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>字节·方舟 Coding Plan · Lite · Kimi-K2.8-Preview</li><li>字节·方舟 Coding Plan · Pro · Kimi-K2.8-Preview</li><li>字节·方舟 Agent Plan · Small · Kimi-K2.8-Preview</li><li>字节·方舟 Agent Plan · Medium · Kimi-K2.8-Preview</li><li>字节·方舟 Agent Plan · Large · Kimi-K2.8-Preview</li><li>字节·方舟 Agent Plan · Max · Kimi-K2.8-Preview</li></ul><p class="change-sources"><a href="https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 1 ↗</a> · <a href="https://docs.volcengine.com/docs/ark/coding-plan-personal-plan-overview?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 2 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-ark-v4-1-discount-end-20261230" data-change-status="announced" data-effective-date="2026-12-30" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-12-30</span></div>
+  <h3><a href="#change-ark-v4-1-discount-end-20261230">方舟 DeepSeek V4.1 优惠结束</a></h3>
+  <p class="change-summary">方舟该型号抵扣优惠计划于2026-12-30 23:59:59（UTC+8）结束；Coding与Agent Plan各自系数不互套。</p>
+
+  <dl class="change-values"><div><dt>模型抵扣优惠</dt><dd><span class="change-before">当前活动抵扣系数</span><span class="change-arrow" aria-label="变为">→</span><strong>活动到期，需按届时有效价抵扣</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>字节·方舟 Coding Plan · Lite · DeepSeek-V4.1-Flash</li><li>字节·方舟 Coding Plan · Pro · DeepSeek-V4.1-Flash</li><li>字节·方舟 Agent Plan · Small · DeepSeek-V4.1-Flash</li><li>字节·方舟 Agent Plan · Medium · DeepSeek-V4.1-Flash</li><li>字节·方舟 Agent Plan · Large · DeepSeek-V4.1-Flash</li><li>字节·方舟 Agent Plan · Max · DeepSeek-V4.1-Flash</li></ul><p class="change-sources"><a href="https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 1 ↗</a> · <a href="https://docs.volcengine.com/docs/ark/coding-plan-personal-plan-overview?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 2 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-ark-agent-invitation-end-20261231" data-change-status="announced" data-effective-date="2026-12-31" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-12-31</span></div>
+  <h3><a href="#change-ark-agent-invitation-end-20261231">方舟 Agent 入门档首次受邀优惠活动结束</a></h3>
+  <p class="change-summary">方舟Agent Small/Medium首次受邀订单9.5折的活动期截至12月31日；创建过邀请码者不能再受邀，首单及叠加规则以结算为准。</p>
+
+  <dl class="change-values"><div><dt>Small/Medium首次受邀优惠</dt><dd><span class="change-before">符合条件首次受邀订单9.5折</span><span class="change-arrow" aria-label="变为">→</span><strong>邀请优惠活动到期，后续以有效优惠和结算为准</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>字节·方舟 Agent Plan · Small</li><li>字节·方舟 Agent Plan · Medium</li></ul><p>具体时刻及页面时区未公布。</p><p class="change-sources"><a href="https://docs.volcengine.com/docs/ark/agent-plan-personal-small-medium-invitation?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
 <article class="change-record" id="change-workbuddy-legacy-renewal-price-2027" data-change-status="announced" data-effective-date="2027-01-01" tabindex="-1">
   <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2027-01-01</span></div>
   <h3><a href="#change-workbuddy-legacy-renewal-price-2027">WorkBuddy 老用户保价结束</a></h3>
@@ -111,9 +223,83 @@
   <p class="change-audience"><span>适用条件</span>2026-07-01 前已开启自动续费且持续保留资格的用户</p>
   <dl class="change-values"><div><dt>自动续费月价</dt><dd><span class="change-before">¥58/月</span><span class="change-arrow" aria-label="变为">→</span><strong>¥70/月</strong></dd></div></dl>
   <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>WorkBuddy · 标准版老用户保价</li></ul><p class="change-sources"><a href="https://www.workbuddy.cn/docs/workbuddy/Pricing" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-ark-agent-quarterly-annual-promotion-end-20280519" data-change-status="announced" data-effective-date="2028-05-19" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2028-05-19</span></div>
+  <h3><a href="#change-ark-agent-quarterly-annual-promotion-end-20280519">方舟 Agent 季付年付首周期优惠活动结束</a></h3>
+  <p class="change-summary">方舟Agent Plan连续季97折、年95折的首周期开通活动截至2028年5月19日23:59；后续续费按扣款日有效价，页面未注明时区。</p>
+
+  <dl class="change-values"><div><dt>季付/年付首周期优惠</dt><dd><span class="change-before">活动期开通连续季97折、连续年95折</span><span class="change-arrow" aria-label="变为">→</span><strong>活动到期，后续按届时有效价开通；已有续费依扣款日价格</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>字节·方舟 Agent Plan · Small</li><li>字节·方舟 Agent Plan · Medium</li><li>字节·方舟 Agent Plan · Large</li><li>字节·方舟 Agent Plan · Max</li></ul><p>页面给出23:59，但未注明时区；仅活动期开通的首周期价格。</p><p class="change-sources"><a href="https://docs.volcengine.com/docs/ark/agent-plan-personal-annual-quarterly?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-ark-minimax-m3-retirement-announced" data-change-status="announced" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">生效日期未公布</span></div>
+  <h3><a href="#change-ark-minimax-m3-retirement-announced">方舟 MiniMax M3 即将下线</a></h3>
+  <p class="change-summary">方舟Coding及Agent Plan当前概览将MiniMax M3标为即将下线，概览未列确切日期；当前支持关系保留。</p>
+
+  <dl class="change-values"><div><dt>MiniMax M3</dt><dd><span class="change-before">当前仍列为支持型号</span><span class="change-arrow" aria-label="变为">→</span><strong>标记即将下线，概览未列具体日期，日期待确认</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>字节·方舟 Coding Plan · Lite · MiniMax-M3</li><li>字节·方舟 Coding Plan · Pro · MiniMax-M3</li><li>字节·方舟 Agent Plan · Small · MiniMax-M3</li><li>字节·方舟 Agent Plan · Medium · MiniMax-M3</li><li>字节·方舟 Agent Plan · Large · MiniMax-M3</li><li>字节·方舟 Agent Plan · Max · MiniMax-M3</li></ul><p class="change-sources"><a href="https://docs.volcengine.com/docs/ark/coding-plan-personal-plan-overview?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 1 ↗</a> · <a href="https://docs.volcengine.com/docs/ark/agent-plan-personal-plan-overview?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 2 ↗</a></p></div></details>
   </article></div></section>
-  <details class="changes-ended"><summary>已结束的变更 <span>0 项</span></summary><div><p class="changes-empty">暂无已结束的变更。</p></div></details>
-    <section id="history" class="updates-history" aria-labelledby="history-heading"><h2 id="history-heading">更新历史</h2><div class="updates-list"><section class="update-entry"><h2>2026.10.13</h2><ul><li>调整目录收录范围，暂移除两项新增平台及其套餐、模型支持记录。</li><li>补齐境内网络与支付条件，境内可用、境内可购买平台名单按当前确认结果筛选。</li><li>新增 Cursor 平台与介绍页：收录 X Subscription 五档新套餐及四档存量个人套餐，区分 Grok 共享周额度与第三方模型另行付费；补齐模型价格、上下文和高速档。</li><li>复核 AA 与 DeepSWE 评测资料，补齐模型具体输入、输出模态，并确认阶跃星辰支持个人 Harness API。</li></ul></section>
+  <details class="changes-ended"><summary>已结束的变更 <span>7 项</span></summary><div><article class="change-record" id="change-minimax-token-plan-model-routing-20261019" data-change-status="effective" data-effective-date="2026-10-19" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已生效</span><span class="change-timing">计划生效 2026-10-19</span></div>
+  <h3><a href="#change-minimax-token-plan-model-routing-20261019">MiniMax 老 Token Plan 模型路由调整</a></h3>
+  <p class="change-summary">MiniMax订阅中的M2.5/M2.7旧名称请求由正式M3.1 Flash承接；原型号的Token实测不代表新型号额度。</p>
+  <p class="change-audience"><span>适用条件</span>仍在自动续费的老 Token Plan 用户</p>
+  <dl class="change-values"><div><dt>M2.5 / M2.7 请求</dt><dd><span class="change-before">原型号入口</span><span class="change-arrow" aria-label="变为">→</span><strong>路由至正式M3.1 Flash，原名称为兼容入口；旧模型实测不代表新型号额度</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>MiniMax · 老Token Plan Plus</li><li>MiniMax · 老Token Plan Max</li><li>MiniMax · 老Token Plan Ultra</li></ul><p class="change-sources"><a href="https://platform.minimax.cn/docs/m-plan/token-plan-notice" target="_blank" rel="noopener noreferrer">官方来源 1 ↗</a> · <a href="https://platform.minimax.cn/docs/faq/models" target="_blank" rel="noopener noreferrer">官方来源 2 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-codex-gpt-5-5-retirement-20261014" data-change-status="effective" data-effective-date="2026-10-14" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已生效</span><span class="change-timing">计划生效 2026-10-14</span></div>
+  <h3><a href="#change-codex-gpt-5-5-retirement-20261014">Codex 的 GPT-5.5 支持调整</a></h3>
+  <p class="change-summary">GPT-5.5 已于10月14日从ChatGPT登录的Codex移除；API Key登录及API不受影响。</p>
+
+  <dl class="change-values"><div><dt>ChatGPT 登录的 Codex</dt><dd><span class="change-before">可选 GPT-5.5</span><span class="change-arrow" aria-label="变为">→</span><strong>GPT-5.5 已退出 ChatGPT 登录的 Codex；API Key 登录及 API 可用性不受影响</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>Codex · Plus</li><li>Codex · Pro $100</li><li>Codex · Pro $200</li><li>Codex · Pro $500</li></ul><p class="change-sources"><a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noopener noreferrer">官方来源 1 ↗</a> · <a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noopener noreferrer">官方来源 2 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-tencent-hy4-preview-discount-end-20261015" data-change-status="effective" data-effective-date="2026-10-15" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已生效</span><span class="change-timing">计划生效 2026-10-15</span></div>
+  <h3><a href="#change-tencent-hy4-preview-discount-end-20261015">腾讯 Hy4 Preview 五折结束</a></h3>
+  <p class="change-summary">Hy4 Preview五折已于10月15日12:00（北京时间）结束，恢复120/6/360积分每百万输入/缓存/输出Token。</p>
+
+  <dl class="change-values"><div><dt>Hy4 积分价格</dt><dd><span class="change-before">五折积分价</span><span class="change-arrow" aria-label="变为">→</span><strong>恢复输入/缓存/输出120/6/360积分每百万Token</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>腾讯云 · Lite · Hy4-preview</li><li>腾讯云 · Standard · Hy4-preview</li><li>腾讯云 · Pro · Hy4-preview</li><li>腾讯云 · Max · Hy4-preview</li><li>腾讯云 · Hy · Lite · Hy4-preview</li><li>腾讯云 · Hy · Standard · Hy4-preview</li><li>腾讯云 · Hy · Pro · Hy4-preview</li><li>腾讯云 · Hy · Max · Hy4-preview</li></ul><p>北京时间12:00结束五折，恢复120/6/360积分每百万输入/缓存/输出Token</p><p class="change-sources"><a href="https://cloud.tencent.com/document/product/1823/133811" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-jd-coding-plan-sales-end-20260729" data-change-status="effective" data-effective-date="2026-07-29" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已生效</span><span class="change-timing">计划生效 2026-07-29</span></div>
+  <h3><a href="#change-jd-coding-plan-sales-end-20260729">京东旧 Coding Plan 已停售</a></h3>
+  <p class="change-summary">京东旧Coding Plan已于7月29日停止新购、续费和升级；存量订阅仅在原有效期内可用。</p>
+
+  <dl class="change-values"><div><dt>购买与续费</dt><dd><span class="change-before">可购买及续费</span><span class="change-arrow" aria-label="变为">→</span><strong>停止新购、续费和升级，仅原有效期内可用</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>京东云 Coding Plan（已下架） · Lite</li><li>京东云 Coding Plan（已下架） · Pro</li></ul><p class="change-sources"><a href="https://docs.jdcloud.com/cn/jdaip/codingplan-notice" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-mimo-v2-5-forwarding-20261014" data-change-status="effective" data-effective-date="2026-10-14" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已生效</span><span class="change-timing">计划生效 2026-10-14</span></div>
+  <h3><a href="#change-mimo-v2-5-forwarding-20261014">MiMo V2.5 系列已转发 V2.6</a></h3>
+  <p class="change-summary">MiMo V2.5-Pro及V2.5已于10月14日18:00（UTC+8）转发至V2.6系列；旧名称将于10月21日失效。</p>
+
+  <dl class="change-values"><div><dt>实际服务型号</dt><dd><span class="change-before">V2.5-Pro / V2.5</span><span class="change-arrow" aria-label="变为">→</span><strong>由V2.6系列承接，旧名称暂作兼容入口</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>小米·MiMo · Lite</li><li>小米·MiMo · Standard</li><li>小米·MiMo · Pro</li><li>小米·MiMo · Max</li></ul><p class="change-related">相关事项：<a href="#change-mimo-v2-5-identifiers-retirement-20261021">查看关联变更</a></p><p class="change-sources"><a href="https://mimo.mi.com/docs/zh-CN/tokenplan/Token%20Plan/subscription" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-ark-kimi-k2-7-new-user-restriction-20261013" data-change-status="effective" data-effective-date="2026-10-13" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已生效</span><span class="change-timing">计划生效 2026-10-13</span></div>
+  <h3><a href="#change-ark-kimi-k2-7-new-user-restriction-20261013">方舟 K2.7 Code 限制新使用者</a></h3>
+  <p class="change-summary">10月13日10:00（UTC+8）起，方舟Coding/Agent Plan未使用过K2.7 Code的订户不再开放该型号；老使用者暂可继续使用。</p>
+
+  <dl class="change-values"><div><dt>K2.7 Code使用资格</dt><dd><span class="change-before">符合套餐条件可用</span><span class="change-arrow" aria-label="变为">→</span><strong>仅此前使用过该模型的订户暂可继续使用</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>字节·方舟 Coding Plan · Lite · Kimi-K2.7-Code</li><li>字节·方舟 Coding Plan · Pro · Kimi-K2.7-Code</li><li>字节·方舟 Agent Plan · Small · Kimi-K2.7-Code</li><li>字节·方舟 Agent Plan · Medium · Kimi-K2.7-Code</li><li>字节·方舟 Agent Plan · Large · Kimi-K2.7-Code</li><li>字节·方舟 Agent Plan · Max · Kimi-K2.7-Code</li></ul><p class="change-related">相关事项：<a href="#change-ark-kimi-k2-7-retirement-20261028">查看关联变更</a></p><p class="change-sources"><a href="https://docs.volcengine.com/docs/ark/coding-plan-personal-model-deprecation?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 1 ↗</a> · <a href="https://docs.volcengine.com/docs/ark/agent-plan-personal-model-deprecation-announcement?lang=zh" target="_blank" rel="noopener noreferrer">官方来源 2 ↗</a></p></div></details>
+  </article>
+<article class="change-record" id="change-minimax-mplan-flash-final-20261020" data-change-status="effective" tabindex="-1">
+  <div class="change-meta"><span class="change-status" data-change-status-label>已生效</span><span class="change-timing">生效日期未公布</span></div>
+  <h3><a href="#change-minimax-mplan-flash-final-20261020">MiniMax M Plan 使用正式 M3.1 Flash</a></h3>
+  <p class="change-summary">M Plan Go、Explore、Build及MiniMax Code Free现使用正式M3.1 Flash，旧Preview名称请求由正式模型承接；具体Token配额未公布。</p>
+  <p class="change-audience"><span>适用条件</span>新购M Plan Go、Explore、Build或使用MiniMax Code Free的用户</p>
+  <dl class="change-values"><div><dt>当前文本模型</dt><dd><span class="change-before">MiniMax-M3.1-Flash-Preview</span><span class="change-arrow" aria-label="变为">→</span><strong>正式MiniMax-M3.1-Flash；精确Token额度仍未公布</strong></dd></div></dl>
+  <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>MiniMax · M Plan Go</li><li>MiniMax · M Plan Explore</li><li>MiniMax · M Plan Build</li><li>MiniMax · MiniMax Code Free</li></ul><p class="change-sources"><a href="https://platform.minimax.cn/docs/m-plan/intro" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
+  </article></div></details>
+    <section id="history" class="updates-history" aria-labelledby="history-heading"><h2 id="history-heading">更新历史</h2><div class="updates-list"><section class="update-entry"><h2>2026.10.21</h2><ul><li>MiniMax Code订阅用户可在客户端内不限量使用M3.1 Flash至10月25日；外部工具API未获不限量承诺。</li><li>MiniMax Code内新订阅或升级M Plan首月五折活动截至10月31日：Go / Explore / Build首月24.5 / 59.5 / 234.5元，次月起49 / 119 / 469元每月。</li><li>调整 Codex 参考额度估算：Plus、Pro $200、Pro $500 分别按 Pro $100 的 1/5、2 倍、5 倍换算；补齐 Fast / Ultrafast 参考额度，均非官方固定 Token 配额。</li></ul></section>
+<section class="update-entry"><h2>2026.10.20</h2><ul><li>比较价格统一采用通用价，邀请优惠单列资格：更新共绩API标价、智谱国际及方舟首月价格。</li><li>MiniMax M Plan使用正式M3.1 Flash；补OpenCode、Command Code、Ollama相应入口及OpenCode Beam Free，精确型号评测独立核对。</li><li>补Kimi视频输入差异、Command免费模型门槛和共享额度，以及Qoder、MiMo、智谱客户端活动条件；未明确的数字与叠加方式继续保留未知。</li></ul></section>
+<section class="update-entry"><h2>2026.10.19</h2><ul><li>更新已确认的套餐价格、续费与优惠条件：补Kimi Ultra及多平台周期价，标明限购、售罄和停售。</li><li>调整Codex、Claude、Cursor、OpenCode、Command Code、Qoder等平台模型支持与额度；DeepSeek官方及腾讯已确认渠道使用独立1017型号。</li><li>补充共享池、客户端、工具计费与活动期限；未来变化收录于「预告与更新」，按确认结果维护现行数据。</li><li>同步AA与DeepSWE评测资料，未公开Token量及存在冲突的型号、价格和权限继续保留未知或原记录。</li></ul></section>
+<section class="update-entry"><h2>2026.10.13</h2><ul><li>调整目录收录范围，暂移除两项新增平台及其套餐、模型支持记录。</li><li>补齐境内网络与支付条件，境内可用、境内可购买平台名单按当前确认结果筛选。</li><li>新增 Cursor 平台与介绍页：收录 X Subscription 五档新套餐及四档存量个人套餐，区分 Grok 共享周额度与第三方模型另行付费；补齐模型价格、上下文和高速档。</li><li>复核 AA 与 DeepSWE 评测资料，补齐模型具体输入、输出模态，并确认阶跃星辰支持个人 Harness API。</li></ul></section>
 <section class="update-entry"><h2>2026.10.12</h2><ul><li>更新多平台当前模型及支持关系，新增GPT-6.1 Sol、Claude 5.5系列、MiniMax M3.1 Flash Preview、Kimi K2.8 Preview、Step 5 Preview等；同步AA/DeepSWE榜单，未有对应记录的分数保持未知</li><li>MiniMax升级M Plan，Kimi和TRAE国际版区分新订阅与老用户续费；新增腾讯Hy、百度积分制、天翼/京东/超算Token Plan、讯飞成员积分制。</li><li>重新核对积分、请求、美元额度和上下文阶梯；MiMo新增峰谷扣减，优云新增模型并更新并发，共绩取消过期限时五折，邀请折扣资格注明核对条件</li><li>OpenCode新增Go Plus，Ollama采用当前月Credits池，GitHub个人方案按AI Credits计费；动态扣减或缺乏依据的Token量保持未知</li><li>保留停售及续费历史，补齐首月优惠、活动期限、型号转发/下线与使用限制；无法读取的当前购买状态明确列为待确认</li></ul></section>
 <section class="update-entry"><h2>2026.9.24</h2><ul><li>Codex Plus、Pro *5、Pro *20 新增 GPT-6-Sol 与 GPT-6-Luna，均支持文本和图片输入</li><li>两款模型 Token 额度暂按同套餐 GPT-5.6-Sol、GPT-5.6-Luna 的 2 倍估算，非官方额度或独立实测</li><li>额度/价格默认筛选和精选比较改用 GPT-6-Sol / Luna，旧型号仍可手动选择</li></ul></section>
 <section class="update-entry"><h2>2026.9.22</h2><ul><li>小米 MiMo 上线 V2.6 系列：Token Plan 四档套餐新增 MiMo-V2.6-Pro 与 MiMo-V2.6-Flash，Credits 折算与 V2.5 价格一致，套餐价格与月度额度均未变；V2.5-Pro / V2.5 将于 10.21 下线，全系支持多模态输入</li><li>京东云套餐移动至 GitHub 之后展示</li></ul></section>

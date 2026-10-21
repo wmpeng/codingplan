@@ -270,6 +270,19 @@
       if (groupsReady && sameSelection(presetSlugs("featured"))) return "featured";
       return (context.modelGroups || []).find(group => sameSelection(presetSlugs(group.id)))?.id || "custom";
     }
+    function sortPickerOptions(key) {
+      const picker = host.querySelector(`[data-picker="${key}"]`);
+      if (!picker) return;
+      const items = key === 'modelSlugs' ? models : platforms;
+      const featured = key === 'modelSlugs' ? presetSlugs('featured') : featuredPlatforms();
+      const positions = new Map(items.map((item, index) => [item.slug, index]));
+      const featuredPositions = new Map(featured.map((slug, index) => [slug, index]));
+      const selected = state[key], selectedPositions = new Map((selected?.length < items.length ? selected : []).map((slug, index) => [slug, index]));
+      const rank = slug => selectedPositions.has(slug) ? selectedPositions.get(slug) - items.length
+        : featuredPositions.has(slug) ? featuredPositions.get(slug) : featured.length + positions.get(slug);
+      const list = picker.querySelector('[data-picker-options]');
+      [...list.children].sort((a, b) => rank(a.querySelector('input').value) - rank(b.querySelector('input').value)).forEach(option => list.append(option));
+    }
     function resetModelList() {
       const picker = host.querySelector('[data-picker="modelSlugs"]');
       picker.querySelector('[data-picker-search]').value = "";
@@ -277,14 +290,7 @@
       picker.querySelector('.filter-search-empty').hidden = true;
       const list = picker.querySelector('[data-picker-options]');
       list.scrollTop = 0;
-      const selected = state.modelSlugs;
-      const options = [...list.children];
-      options.sort((a, b) => {
-        const av = a.querySelector('input').value, bv = b.querySelector('input').value;
-        const rank = value => selected === null ? models.findIndex(m => m.slug === value)
-          : selected.includes(value) ? selected.indexOf(value) - models.length : models.findIndex(m => m.slug === value);
-        return rank(av) - rank(bv);
-      }).forEach(option => list.append(option));
+      sortPickerOptions('modelSlugs');
     }
     function selectModelPreset(id, source = "manual") {
       if (id !== "all" && !groupsReady) return false;
@@ -441,6 +447,7 @@
         const picker = host.querySelector(`[data-picker="${key}"]`),
           selected = state[key];
         if (!picker) continue;
+        if (!picker.open) sortPickerOptions(key);
         picker.querySelector("[data-picker-count]").textContent =
           selected === null
             ? "全部"
@@ -767,6 +774,7 @@
       });
     });
     host.querySelector('[data-picker="modelSlugs"]').addEventListener('toggle', event => {
+      if (event.target.open) sortPickerOptions('modelSlugs');
       if (!event.target.open) {
         resetModelList();
         if (pendingAll) { pendingAll = false; render(); }
@@ -774,7 +782,10 @@
       positionSelectionPanels();
     });
     host.querySelector('#homeStatusPicker')?.addEventListener('toggle', positionStatusPanel);
-    host.querySelector('[data-picker="platformSlugs"]')?.addEventListener('toggle', positionSelectionPanels);
+    host.querySelector('[data-picker="platformSlugs"]')?.addEventListener('toggle', () => {
+      sortPickerOptions('platformSlugs');
+      positionSelectionPanels();
+    });
     root.addEventListener('resize', positionSelectionPanels);
     root.addEventListener('scroll', positionSelectionPanels, {passive:true});
     root.visualViewport?.addEventListener('resize', positionSelectionPanels);

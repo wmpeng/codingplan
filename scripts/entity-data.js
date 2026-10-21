@@ -215,7 +215,7 @@
         if (usage.fiveHourTokenInM === 0) windows.fiveHours = 0;
       }
       const billingMode = plan.billingMode;
-      const fee = displayNumber(plan.comparisonMonthlyPrice ?? plan.monthlyPrice);
+      const fee = displayNumber(plan.firstMonthPrice);
       const displayCurrency = plan.currency || '¥';
       const rate = currencyRate(displayCurrency, usdToCnyRate);
       const monthlyFeeCny = fee !== null && rate ? Math.round(fee * rate * 1e6) / 1e6 : null;
@@ -226,7 +226,7 @@
         planSlug: plan.slug,
         modelSlug: model.slug,
         platformName: platform.name,
-        planName: plan.comparisonName || plan.name,
+        planName: plan.name,
         ...billingPresentation(model, relation),
         multimodal: model.multimodal,
         scores: comparisonScores(model.scores),

@@ -1,0 +1,16 @@
+.change-notice { display: block; color: var(--text-primary); white-space: normal; overflow-wrap: anywhere; }
+.change-notice h3 { margin: 0 0 8px; }
+.change-notice p { margin: 6px 0; }
+.change-notice-time, .change-notice-scope, .change-notice-audience { color: var(--text-secondary); }
+.change-notice.is-due .change-notice-time { color: #80520b; font-weight: 600; }
+.change-notice-list > .change-notice + .change-notice { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-color); }
+.change-notice a { display: inline-block; color: var(--accent-primary); text-decoration: none; }
+.change-notice a:hover { text-decoration: underline; }
+.change-notice a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.ui-help--info > .ui-help-content { width: 400px; }
+.change-info-items .change-notice > span, .change-info-items .change-notice > strong { display: block; margin-bottom: 5px; }
+.change-info-items .change-notice + .change-notice { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color); }
+.plan-models-with-notice { display: flex; align-items: flex-start; gap: 2px; }
+.plan-models-with-notice > [data-model-tags] { flex: 1; min-width: 0; }
+.plan-models-with-notice > .ui-help { flex: 0 0 auto; }
+@media(max-width: 800px), (pointer: coarse) { .change-notice a { display: inline-flex; align-items: center; min-height: 44px; } }
