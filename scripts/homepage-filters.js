@@ -197,6 +197,7 @@
   function mount(options) {
     const opts = options || {}, policy = Filters.createViewPolicy(opts);
     const {full, pricing, plansPage, planStatusOnly, platformHub, monitor, purchaseTool} = policy;
+    const featuredCatalog = platformHub || plansPage;
     const host =
       opts.element || document.getElementById("homepageUnifiedFiltersMount");
     const context = opts.context || root.codingplanEntityContext;
@@ -254,7 +255,7 @@
     function resetFilters(featured = false) {
       if (featured && !canRestoreDefaults()) return false;
       state = Filters.cloneControlState(defaults);
-      if (platformHub) featuredOnly = false;
+      if (featuredCatalog) featuredOnly = false;
       if (featured) {
         state.platformSlugs = featuredPlatforms();
         state.modelSlugs = presetSlugs("featured");
@@ -324,8 +325,8 @@
       state.platformSlugs = [platform];
     if (validModel) state.modelSlugs = [model];
     if (params.get("billing") === "payg" && !plansPage) state.apiOnly = true;
-    host.innerHTML = `<section class="filter-state-bar surface-panel${full ? "" : " home-filter-panel"}${platformHub ? " platform-hub-filters" : ""}" aria-label="统一筛选">
-      ${platformHub ? '<div class="platform-filter-row"><fieldset class="platform-filter-fields" data-platform-filter-fields><legend class="sr-only">平台筛选条件</legend>' : ""}
+    host.innerHTML = `<section class="filter-state-bar surface-panel${full ? "" : " home-filter-panel"}${platformHub ? " platform-hub-filters" : plansPage ? " plan-featured-filters" : ""}" aria-label="统一筛选">
+      ${featuredCatalog ? `<div class="platform-filter-row"><fieldset class="platform-filter-fields" data-featured-filter-fields ${platformHub ? 'data-platform-filter-fields' : 'data-plan-filter-fields'}><legend class="sr-only">${platformHub ? '平台' : '套餐'}筛选条件</legend>` : ""}
       <div class="filter-state-grid">
       ${platformHub ? "" : buildPicker({ id: "homePlatformPicker", label: "平台", key: "platformSlugs", items: platforms, state })}
       ${buildPicker({ id: "homeModelPicker", label: "模型", key: "modelSlugs", items: models, state, groups: context.modelGroups })}
@@ -336,7 +337,7 @@
       }
       ${!monitor ? buildStatusPicker(purchaseTool, planStatusOnly) : ""}
       ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-platform-domestic>支持中国大陆</label>' : ""}${plansPage ? '<label class="plan-harness-filter"><input type="checkbox" data-filter-field="harnessApiRequired">需支持第三方工具</label>' : ""}</div>
-      ${platformHub ? '<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-platform-featured aria-pressed="false">显示精选平台</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>' : ""}
+      ${featuredCatalog ? `<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-catalog-featured ${platformHub ? 'data-platform-featured' : 'data-plan-featured'} aria-pressed="false">${platformHub ? '显示精选平台' : '显示精选'}</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>` : ""}
       <div class="filter-state-footer">
       ${full ? "" : `<div class="filter-state-controls"><div class="offer-sort"><span aria-hidden="true">排序</span><span data-select-fallback><select id="homeOfferSort" data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></span></div><span class="offer-sort-help" id="offerSortHelp"></span>`}
       <div class="filter-state-actions"><button type="button" data-filter-action="reset"${purchaseTool && !platformHub && !plansPage ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub || plansPage ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>${full && !platformHub && !plansPage ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">显示精选</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
@@ -468,18 +469,18 @@
         const platformNotice = platformPicker.querySelector('[data-platform-shortcut-notice]');
         platformNotice.hidden = !platformShortcutNotice; platformNotice.textContent = platformShortcutNotice;
       }
-      if (platformHub) {
-        host.querySelector('[data-platform-domestic]').checked = state.domesticNetworkOnly && state.domesticPaymentOnly;
-        const available = featuredPlatforms().length > 0;
-        const toggle = host.querySelector('[data-platform-featured]');
+      if (featuredCatalog) {
+        if (platformHub) host.querySelector('[data-platform-domestic]').checked = state.domesticNetworkOnly && state.domesticPaymentOnly;
+        const available = plansPage ? canRestoreDefaults() : featuredPlatforms().length > 0;
+        const toggle = host.querySelector('[data-catalog-featured]');
         toggle.disabled = !available;
         toggle.setAttribute('aria-pressed', String(featuredOnly));
-        const fields = host.querySelector('[data-platform-filter-fields]');
+        const fields = host.querySelector('[data-featured-filter-fields]');
         fields.disabled = featuredOnly;
         fields.inert = featuredOnly;
         fields.setAttribute('aria-disabled', String(featuredOnly));
         host.querySelector('[data-filter-action="reset"]').disabled = featuredOnly;
-        host.querySelector('.platform-hub-filters').classList.toggle('is-featured-mode', featuredOnly);
+        fields.closest('.filter-state-bar').classList.toggle('is-featured-mode', featuredOnly);
         host.querySelector('[data-hub-retry-featured]').hidden = available;
       }
       const modelPicker = host.querySelector('[data-picker="modelSlugs"]');
@@ -690,7 +691,7 @@
     host.addEventListener("click", (event) => {
       const el = event.target.closest("button");
       if (!el) return;
-      if (el.hasAttribute('data-platform-featured')) {
+      if (el.hasAttribute('data-catalog-featured')) {
         featuredOnly = !featuredOnly;
         host.querySelectorAll('details[open]').forEach(picker => { picker.open = false; });
         publish('featured-mode');

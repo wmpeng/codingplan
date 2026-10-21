@@ -230,12 +230,12 @@ body.tool-page { padding: 0; }
 
 .tool-loading { min-height: 280px; display: grid; place-items: center; color: var(--text-secondary); font-size: 13px; }
 /* 平台中心：精选按钮、暂停筛选与统一卡片网格。 */
-.platform-hub-page .platform-filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-.platform-hub-page .platform-filter-fields { flex: 0 1 auto; min-width: 0; max-width: 100%; padding: 0; margin: 0; border: 0; }
+:is(.platform-hub-page, .plans-page) .platform-filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+:is(.platform-hub-page, .plans-page) .platform-filter-fields { flex: 0 1 auto; min-width: 0; max-width: 100%; padding: 0; margin: 0; border: 0; }
 .platform-filter-fields legend { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .platform-featured-control { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
-.platform-hub-page .is-featured-mode .platform-filter-fields { opacity: .6; filter: grayscale(1); pointer-events: none; }
-.platform-hub-page .is-search-paused input { opacity: .6; background: var(--bg-tertiary); cursor: not-allowed; }
+:is(.platform-hub-page, .plans-page) .is-featured-mode .platform-filter-fields { opacity: .6; filter: grayscale(1); pointer-events: none; }
+:is(.platform-hub-page, .plans-page) .is-search-paused input { opacity: .6; background: var(--bg-tertiary); cursor: not-allowed; }
 .platform-hub-page .platform-count-main { white-space: nowrap; }
 .platform-hub-page .platform-card > header { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
 .platform-hub-page .platform-card-heading { overflow-wrap: anywhere; }
@@ -245,3 +245,5 @@ body.platform-hub-page .platform-card.is-pinned { border-color: #a5b9d1; }
 .platform-featured-badge { display: inline-flex; align-items: center; padding: 3px 7px; border: 1px solid #e4d1b2; border-radius: 5px; background: #fff8ec; color: var(--platform-featured-color, #946c35); font-size: 12px; line-height: 1.5; white-space: nowrap; }
 
 #plansPage th[aria-sort="ascending"] .table-sort-button:not(.is-active-sort)::after, #plansPage th[aria-sort="descending"] .table-sort-button:not(.is-active-sort)::after { content: " ↕"; opacity: .45; }
+
+#plansPage .plan-identity-copy > .platform-featured-badge{margin-left:6px;vertical-align:middle}

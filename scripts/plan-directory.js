@@ -34,17 +34,29 @@
   }
   function select(plans, state, options = {}) {
     const {context, config = {}, query = '', sort = {key:'platformOrder', direction:'asc'}} = options;
+    const featuredState = Filters.createViewPolicy({mode:'full',view:'plans'}).createDefaults(config,state.tokenUnit);
+    featuredState.platformSlugs = (context.featuredPlatformSlugs || []).filter(slug => context.platforms.some(p => p.slug === slug));
+    const validModels = new Set((context.models || []).map(model => model.slug));
+    featuredState.modelSlugs = [...new Set((context.modelGroups || []).filter(group => group.enabled !== false).flatMap(group => group.modelSlugs || []))].filter(slug => validModels.has(slug));
+    const filterOptions = {context, usdToCnyRate:config.usdToCnyRate, platformCatalog:config.platformCatalog};
+    const featuredModels = new Set(featuredState.modelSlugs);
+    const featured = new Set(featuredState.platformSlugs.length && featuredState.modelSlugs.length
+      ? Filters.filterPlans(plans,featuredState,filterOptions)
+        // Even if every model is featured, an empty support list is not a match.
+        .filter(plan => (plan.supportedModels || plan.modelSlugs || []).some(model => featuredModels.has(typeof model === 'string' ? model : model.slug)))
+        .map(plan => plan.slug) : []);
+    const effectiveState = options.featuredOnly ? featuredState : state;
     const pinned = new Set(sanitizePins(options.pins, plans));
     const text = String(query).trim().toLocaleLowerCase('zh-CN');
-    const matched = Filters.filterPlans(plans, {...state, apiOnly:false}, {
-      context, usdToCnyRate:config.usdToCnyRate, platformCatalog:config.platformCatalog
-    }).filter(plan => `${plan.platformName} ${plan.name} ${plan.slug}`.toLocaleLowerCase('zh-CN').includes(text));
+    const matched = options.featuredOnly ? plans.filter(plan => featured.has(plan.slug))
+      : Filters.filterPlans(plans, {...state, apiOnly:false}, filterOptions)
+        .filter(plan => `${plan.platformName} ${plan.name} ${plan.slug}`.toLocaleLowerCase('zh-CN').includes(text));
     const matchedIds = new Set(matched.map(plan => plan.slug));
     const visible = plans.filter(plan => matchedIds.has(plan.slug) || pinned.has(plan.slug));
     const platformOrder = new Map(context.platforms.map((platform, index) => [platform.slug, index]));
     const value = plan => {
       if (sort.key === 'monthlyToken') {
-        const values = (plan.monthlyTokenOptions || []).filter(row => !state.modelSlugs?.length || state.modelSlugs.includes(row.modelSlug))
+        const values = (plan.monthlyTokenOptions || []).filter(row => !effectiveState.modelSlugs?.length || effectiveState.modelSlugs.includes(row.modelSlug))
           .map(row => row.value === 'unlimited' ? Infinity : row.value).filter(value => typeof value === 'number' && !Number.isNaN(value));
         return values.length ? Math.max(...values) : null;
       }
@@ -69,10 +81,14 @@
       const delta = left === right ? 0 : typeof left === 'number' && typeof right === 'number' ? left - right : String(left).localeCompare(String(right), 'zh-CN');
       return sort.direction === 'desc' ? -delta : delta;
     });
-    return {visible, pinned, matchedCount:matched.length, totalCount:plans.length};
+    return {visible, pinned, featured, effectiveState, featuredOnly:!!options.featuredOnly,
+      extraPinnedCount:[...pinned].filter(slug => !matchedIds.has(slug)).length,
+      matchedCount:matched.length, totalCount:plans.length};
   }
   function countLabel(selection) {
-    return `${selection.matchedCount} / ${selection.totalCount} 个套餐` + (selection.pinned.size ? ` · 置顶 ${selection.pinned.size} 个` : '');
+    const count = selection.featuredOnly ? `精选 ${selection.matchedCount} 个套餐` : `${selection.matchedCount} / ${selection.totalCount} 个套餐`;
+    const pins = selection.featuredOnly ? selection.extraPinnedCount : selection.pinned.size;
+    return count + (pins ? ` · 置顶 ${pins} 个` : '');
   }
   return {pinKey, sortOptions, sanitizePins, readPins, writePins, purchaseStatus, cycleSort, priceValue, select, countLabel};
 });

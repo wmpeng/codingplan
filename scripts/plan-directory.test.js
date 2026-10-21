@@ -14,6 +14,33 @@ const plans = [
 // No entity relations are needed for this catalog fixture; shared eligibility is tested separately.
 const options = {context:{platforms},config:{usdToCnyRate:7}};
 const ids = selection => selection.visible.map(plan => plan.slug);
+
+test('精选套餐由精选平台与任一精选模型共同决定，暂停条件和搜索但保留额外置顶',()=>{
+  const rows=[
+    {...plans[0],slug:'featured-a',supportedModels:[{slug:'m1'}],monthlyTokenOptions:[{modelSlug:'m1',value:10},{modelSlug:'m2',value:1000}]},
+    {...plans[0],slug:'featured-b',planStatus:'restricted',supportedModels:[{slug:'m1'},{slug:'m2'}],monthlyTokenOptions:[{modelSlug:'m1',value:50}]},
+    {...plans[0],slug:'no-featured-model',supportedModels:[{slug:'m2'}]},
+    {...plans[4],slug:'other-platform',supportedModels:[{slug:'m1'}]},
+    {...plans[0],slug:'delisted',planStatus:'delisted',supportedModels:[{slug:'m1'}]},
+    {...plans[0],slug:'no-models',supportedModels:[]}
+  ];
+  const context={platforms,models:[{slug:'m1'},{slug:'m2'}],featuredPlatformSlugs:['z'],modelGroups:[{modelSlugs:['m1']},{enabled:false,modelSlugs:['m2']}]};
+  const saved={...state,modelSlugs:['m2'],budgetCny:{max:0},harnessApiRequired:true,excludedPlanStatuses:['restricted'],includeDiscontinued:true};
+  const snapshot=JSON.stringify(saved);
+  const selection=Directory.select(rows,saved,{...options,context,query:'不会匹配',featuredOnly:true,pins:['other-platform','featured-a','delisted'],sort:{key:'monthlyToken',direction:'desc'}});
+  assert.deepEqual([...selection.featured],['featured-a','featured-b']);
+  assert.deepEqual(new Set(ids(selection)),new Set(['featured-a','featured-b','other-platform','delisted']));
+  assert.equal(selection.matchedCount,2);assert.equal(Directory.countLabel(selection),'精选 2 个套餐 · 置顶 2 个');
+  assert.equal(ids(selection).filter(id=>id==='featured-a').length,1);
+  assert.deepEqual(selection.effectiveState.modelSlugs,['m1']);assert.equal(JSON.stringify(saved),snapshot);
+  const sorted=Directory.select(rows,saved,{...options,context,featuredOnly:true,sort:{key:'monthlyToken',direction:'desc'}});
+  assert.deepEqual(ids(sorted),['featured-b','featured-a']);
+  const normal=Directory.select(rows,saved,{...options,context,query:'不会匹配'});
+  assert.equal(normal.matchedCount,0);assert.deepEqual([...normal.featured],['featured-a','featured-b']);
+  for(const patch of [{featuredPlatformSlugs:[]},{modelGroups:[]}])assert.equal(Directory.select(rows,saved,{...options,context:{...context,...patch},featuredOnly:true}).matchedCount,0);
+  const allFeatured=Directory.select(rows,saved,{...options,context:{...context,modelGroups:[{modelSlugs:['m1','m2']}]},featuredOnly:true});
+  assert.equal(allFeatured.featured.has('no-models'),false);
+});
 test('默认按平台目录与月价排序，未知排后；价格统一换算且零价有效', () => {
   assert.deepEqual(ids(Directory.select(plans,state,options)),['free','usd','cny','unknown']);
   const sorted = direction => ids(Directory.select(plans,state,{...options,sort:{key:'monthlyPrice',direction}}));
