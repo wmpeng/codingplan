@@ -89,9 +89,9 @@
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 | 口径 |
 |---|---|---|---:|---:|---:|---:|---|
-| [Codex · Pro $200](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $200/首月 | 48,000M | 48,000M | 192,000M | ¥0.0068/M | 倍率换算 |
+| [Codex · Pro $200](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $200/首月 | 40,000M | 40,000M | 160,000M | ¥0.0088/M | 倍率换算 |
 | [Codex · Plus](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $20/首月 | 400M | 2,400M | 9,600M | ¥0.0143/M | 倍率换算 |
-| [Codex · Pro $100](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $100/首月 | 12,000M | 12,000M | 48,000M | ¥0.0143/M | 倍率换算 |
+| [Codex · Pro $100](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $100/首月 | 10,000M | 10,000M | 40,000M | ¥0.017/M | 倍率换算 |
 | [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | [≤272K] | $1/首月 | - | - | 354.5M | ¥0.019/M | 计算 |
 | [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | [>272K] | $1/首月 | - | - | 184M | ¥0.0367/M | 计算 |
 | [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | [≤272K] | $10/首月 | 236.3M | 590.75M | 1,181.5M | ¥0.0578/M | 计算 |
@@ -129,7 +129,7 @@
 |---|---|---|---:|---:|---:|---:|---|
 | [Codex · Pro $200](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $200/首月 | 800M | 800M | 3,200M | ¥0.425/M | 倍率换算 |
 | [Codex · Plus](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $20/首月 | 6.67M | 40M | 160M | ¥0.85/M | 倍率换算 |
-| [Codex · Pro $100](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $100/首月 | 200M | 200M | 800M | ¥0.85/M | 实测 |
+| [Codex · Pro $100](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $100/首月 | 200M | 200M | 800M | ¥0.85/M | 倍率换算 |
 | [GitHub · Max](https://github.com/features/copilot/plans) | [≤272K] | $100/首月 | - | - | 118.2M | ¥5.7555/M | 计算 |
 | [GitHub · Pro+](https://api.dreamfree.space/c/s/cpyqghcopilotp) | [≤272K] | $39/首月 | - | - | 41.4M | ¥6.4131/M | 计算 |
 | [GitHub · Max](https://github.com/features/copilot/plans) | [>272K] | $100/首月 | - | - | 61.3M | ¥11.086/M | 计算 |
@@ -142,6 +142,7 @@
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 | 口径 |
 |---|---|---|---:|---:|---:|---:|---|
+| [Codex · Pro $100](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $100/首月 | 1,250M | 1,250M | 5,000M | ¥0.136/M | 倍率换算 |
 | [GitHub · Max](https://github.com/features/copilot/plans) | [≤272K] | $100/首月 | - | - | 819.6M | ¥0.8296/M | 计算 |
 | [GitHub · Pro+](https://api.dreamfree.space/c/s/cpyqghcopilotp) | [≤272K] | $39/首月 | - | - | 286.9M | ¥0.9248/M | 计算 |
 | [GitHub · Max](https://github.com/features/copilot/plans) | [>272K] | $100/首月 | - | - | 431.9M | ¥1.5742/M | 计算 |
@@ -290,7 +291,7 @@
 
 ## 数据口径
 
-实测 7 · 官方 Token 额度 15 · 计算 1274 · 请求估算 58 · 倍率换算 43 · 未知 932
+实测 6 · 官方 Token 额度 15 · 计算 1274 · 请求估算 58 · 倍率换算 47 · 未知 929
 
 | 标记 | 含义 |
 |---|---|

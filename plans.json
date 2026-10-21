@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-20T17:18:28Z",
+  "generatedAt": "2026-10-21T11:04:01Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -2351,9 +2351,9 @@
           "serviceTier": null,
           "method": "measured",
           "usage": {
-            "fiveHourTokenInM": 40,
-            "weeklyTokenInM": 300,
-            "monthlyTokenInM": 600,
+            "fiveHourTokenInM": 40.0,
+            "weeklyTokenInM": 300.0,
+            "monthlyTokenInM": 600.0,
             "unitPriceCnyPerM": 0.0667
           },
           "pricing": null,
@@ -2576,9 +2576,9 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 200,
-            "weeklyTokenInM": 1500,
-            "monthlyTokenInM": 3000,
+            "fiveHourTokenInM": 200.0,
+            "weeklyTokenInM": 1500.0,
+            "monthlyTokenInM": 3000.0,
             "unitPriceCnyPerM": 0.0667
           },
           "pricing": null,
@@ -5174,8 +5174,8 @@
           "method": "measured",
           "usage": {
             "fiveHourTokenInM": 4.2,
-            "weeklyTokenInM": 21,
-            "monthlyTokenInM": 84,
+            "weeklyTokenInM": 21.0,
+            "monthlyTokenInM": 84.0,
             "unitPriceCnyPerM": 1.1786
           },
           "pricing": null,
@@ -5222,8 +5222,8 @@
           "method": "measured",
           "usage": {
             "fiveHourTokenInM": 30.0,
-            "weeklyTokenInM": 150,
-            "monthlyTokenInM": 600,
+            "weeklyTokenInM": 150.0,
+            "monthlyTokenInM": 600.0,
             "unitPriceCnyPerM": 0.3317
           },
           "pricing": null,
@@ -5299,8 +5299,8 @@
           "method": "measured",
           "usage": {
             "fiveHourTokenInM": 80.0,
-            "weeklyTokenInM": 400,
-            "monthlyTokenInM": 1600,
+            "weeklyTokenInM": 400.0,
+            "monthlyTokenInM": 1600.0,
             "unitPriceCnyPerM": 0.4369
           },
           "pricing": null,
@@ -7187,8 +7187,8 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": 40.0,
-            "weeklyTokenInM": 240,
-            "monthlyTokenInM": 960,
+            "weeklyTokenInM": 240.0,
+            "monthlyTokenInM": 960.0,
             "unitPriceCnyPerM": 0.14144
           },
           "pricing": null,
@@ -7203,8 +7203,8 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": 400.0,
-            "weeklyTokenInM": 2400,
-            "monthlyTokenInM": 9600,
+            "weeklyTokenInM": 2400.0,
+            "monthlyTokenInM": 9600.0,
             "unitPriceCnyPerM": 0.01428
           },
           "pricing": null,
@@ -7219,8 +7219,8 @@
           "method": "measured",
           "usage": {
             "fiveHourTokenInM": 20.0,
-            "weeklyTokenInM": 120,
-            "monthlyTokenInM": 480,
+            "weeklyTokenInM": 120.0,
+            "monthlyTokenInM": 480.0,
             "unitPriceCnyPerM": 0.28356
           },
           "pricing": null,
@@ -7235,8 +7235,8 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": 200.0,
-            "weeklyTokenInM": 1200,
-            "monthlyTokenInM": 4800,
+            "weeklyTokenInM": 1200.0,
+            "monthlyTokenInM": 4800.0,
             "unitPriceCnyPerM": 0.02856
           },
           "pricing": null,
@@ -7370,9 +7370,12 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 1250.0,
+            "monthlyTokenInM": 5000.0,
+            "unitPriceCnyPerM": 0.136
           },
           "pricing": null,
           "note": "Plus/Pro 可用；支持文本与图片输入。订阅 Token 额度未独立实测，API 价格不用于推算订阅额度。"
@@ -7383,11 +7386,11 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "measured",
+          "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 200,
-            "monthlyTokenInM": 800,
+            "weeklyTokenInM": 200.0,
+            "monthlyTokenInM": 800.0,
             "unitPriceCnyPerM": 0.85
           },
           "pricing": null,
@@ -7402,9 +7405,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 1200,
-            "monthlyTokenInM": 4800,
-            "unitPriceCnyPerM": 0.14144
+            "weeklyTokenInM": 1000.0,
+            "monthlyTokenInM": 4000.0,
+            "unitPriceCnyPerM": 0.17
           },
           "pricing": null,
           "note": "暂按同套餐 GPT-5.6-Sol 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
@@ -7418,9 +7421,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 12000,
-            "monthlyTokenInM": 48000,
-            "unitPriceCnyPerM": 0.01428
+            "weeklyTokenInM": 10000.0,
+            "monthlyTokenInM": 40000.0,
+            "unitPriceCnyPerM": 0.017
           },
           "pricing": null,
           "note": "暂按同套餐 GPT-5.6-Luna 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
@@ -7434,9 +7437,9 @@
           "method": "measured",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 600,
-            "monthlyTokenInM": 2400,
-            "unitPriceCnyPerM": 0.28356
+            "weeklyTokenInM": 500.0,
+            "monthlyTokenInM": 2000.0,
+            "unitPriceCnyPerM": 0.34
           },
           "pricing": null,
           "note": "个人实测，基本都是 High，缓存命中率约 95%；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
@@ -7450,9 +7453,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 6000,
-            "monthlyTokenInM": 24000,
-            "unitPriceCnyPerM": 0.02856
+            "weeklyTokenInM": 5000.0,
+            "monthlyTokenInM": 20000.0,
+            "unitPriceCnyPerM": 0.034
           },
           "pricing": null,
           "note": "按个人实测的 GPT-5.6-Sol 用量约 10 倍计算；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
@@ -7463,9 +7466,12 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 750.0,
+            "monthlyTokenInM": 3000.0,
+            "unitPriceCnyPerM": 0.22644
           },
           "pricing": null,
           "note": "当前官方明确标为GPT-5.6-Terra，旧无后缀5.6不用于该关系；用量未实测"
@@ -7601,8 +7607,8 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 800,
-            "monthlyTokenInM": 3200,
+            "weeklyTokenInM": 800.0,
+            "monthlyTokenInM": 3200.0,
             "unitPriceCnyPerM": 0.425
           },
           "pricing": null,
@@ -7617,9 +7623,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 4800,
-            "monthlyTokenInM": 19200,
-            "unitPriceCnyPerM": 0.07072
+            "weeklyTokenInM": 4000.0,
+            "monthlyTokenInM": 16000.0,
+            "unitPriceCnyPerM": 0.085
           },
           "pricing": null,
           "note": "暂按同套餐 GPT-5.6-Sol 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
@@ -7633,9 +7639,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 48000,
-            "monthlyTokenInM": 192000,
-            "unitPriceCnyPerM": 0.0068
+            "weeklyTokenInM": 40000.0,
+            "monthlyTokenInM": 160000.0,
+            "unitPriceCnyPerM": 0.00884
           },
           "pricing": null,
           "note": "暂按同套餐 GPT-5.6-Luna 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
@@ -7646,9 +7652,12 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 3000.0,
+            "monthlyTokenInM": 12000.0,
+            "unitPriceCnyPerM": 0.11356
           },
           "pricing": null,
           "note": "当前官方明确标为GPT-5.6-Terra，旧无后缀5.6不用于该关系；用量未实测"
@@ -7662,9 +7671,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 2400,
-            "monthlyTokenInM": 9600,
-            "unitPriceCnyPerM": 0.14144
+            "weeklyTokenInM": 2000.0,
+            "monthlyTokenInM": 8000.0,
+            "unitPriceCnyPerM": 0.17
           },
           "pricing": null,
           "note": "；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
@@ -7678,9 +7687,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 24000,
-            "monthlyTokenInM": 96000,
-            "unitPriceCnyPerM": 0.01428
+            "weeklyTokenInM": 20000.0,
+            "monthlyTokenInM": 80000.0,
+            "unitPriceCnyPerM": 0.017
           },
           "pricing": null,
           "note": "；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
@@ -42155,7 +42164,7 @@
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
-            "monthlyTokenInM": 25,
+            "monthlyTokenInM": 25.0,
             "unitPriceCnyPerM": 1.16
           },
           "pricing": null,
@@ -42171,7 +42180,7 @@
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
-            "monthlyTokenInM": 25,
+            "monthlyTokenInM": 25.0,
             "unitPriceCnyPerM": 1.16
           },
           "pricing": null,
@@ -42187,7 +42196,7 @@
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
-            "monthlyTokenInM": 25,
+            "monthlyTokenInM": 25.0,
             "unitPriceCnyPerM": 1.16
           },
           "pricing": null,
@@ -42222,7 +42231,7 @@
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
-            "monthlyTokenInM": 80,
+            "monthlyTokenInM": 80.0,
             "unitPriceCnyPerM": 1.1125
           },
           "pricing": null,
@@ -42238,7 +42247,7 @@
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
-            "monthlyTokenInM": 80,
+            "monthlyTokenInM": 80.0,
             "unitPriceCnyPerM": 1.1125
           },
           "pricing": null,
@@ -42254,7 +42263,7 @@
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
-            "monthlyTokenInM": 80,
+            "monthlyTokenInM": 80.0,
             "unitPriceCnyPerM": 1.1125
           },
           "pricing": null,
@@ -42289,7 +42298,7 @@
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
-            "monthlyTokenInM": 180,
+            "monthlyTokenInM": 180.0,
             "unitPriceCnyPerM": 1.1056
           },
           "pricing": null,
@@ -42305,7 +42314,7 @@
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
-            "monthlyTokenInM": 180,
+            "monthlyTokenInM": 180.0,
             "unitPriceCnyPerM": 1.1056
           },
           "pricing": null,
@@ -42321,7 +42330,7 @@
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
-            "monthlyTokenInM": 180,
+            "monthlyTokenInM": 180.0,
             "unitPriceCnyPerM": 1.1056
           },
           "pricing": null,
@@ -42356,7 +42365,7 @@
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
-            "monthlyTokenInM": 380,
+            "monthlyTokenInM": 380.0,
             "unitPriceCnyPerM": 1.05
           },
           "pricing": null,
@@ -42372,7 +42381,7 @@
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
-            "monthlyTokenInM": 380,
+            "monthlyTokenInM": 380.0,
             "unitPriceCnyPerM": 1.05
           },
           "pricing": null,
@@ -42388,7 +42397,7 @@
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
-            "monthlyTokenInM": 380,
+            "monthlyTokenInM": 380.0,
             "unitPriceCnyPerM": 1.05
           },
           "pricing": null,
@@ -42423,7 +42432,7 @@
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
-            "monthlyTokenInM": 680,
+            "monthlyTokenInM": 680.0,
             "unitPriceCnyPerM": 1.0279
           },
           "pricing": null,
@@ -42439,7 +42448,7 @@
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
-            "monthlyTokenInM": 680,
+            "monthlyTokenInM": 680.0,
             "unitPriceCnyPerM": 1.0279
           },
           "pricing": null,
@@ -42455,7 +42464,7 @@
           "usage": {
             "fiveHourTokenInM": "unknown",
             "weeklyTokenInM": "unknown",
-            "monthlyTokenInM": 680,
+            "monthlyTokenInM": 680.0,
             "unitPriceCnyPerM": 1.0279
           },
           "pricing": null,
