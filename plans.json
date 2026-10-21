@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-21T11:04:01Z",
+  "generatedAt": "2026-10-21T12:04:29Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -7146,7 +7146,7 @@
       "yearlyPrice": 240,
       "currency": "$",
       "benefits": [],
-      "note": "Plus有五小时及周用量窗口，ChatGPT与Codex共享使用量；消耗随模型、速度档及负载变化，官方没有固定Token配额，旧测量仅供参考。",
+      "note": "有 5 小时及周用量窗口；参考周、月 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时按周额度的 1/6 换算。ChatGPT 与 Codex 共享使用量，消耗随模型、速度档及负载变化；各模型额度不能相加，非官方固定 Token 配额。",
       "planStatus": "open",
       "planModels": [
         {
@@ -7155,12 +7155,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 40.0,
+            "weeklyTokenInM": 240.0,
+            "monthlyTokenInM": 960.0,
+            "unitPriceCnyPerM": 0.14144
           },
           "pricing": null,
-          "note": "Plus/Pro 可用；支持文本与图片输入。订阅 Token 额度未独立实测，API 价格不用于推算订阅额度。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6 换算；未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-plus--gpt-6-astra",
@@ -7176,7 +7179,7 @@
             "unitPriceCnyPerM": 0.85
           },
           "pricing": null,
-          "note": "按 Pro *5 用户实测周额度 200M 的五分之一折算；测试以中等思考强度为主，缓存命中率约 96.8%，输出占比约 0.24%；Plus 五小时按周额度的 1/6 换算；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6 换算；未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-plus--gpt-6-sol",
@@ -7186,13 +7189,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 40.0,
-            "weeklyTokenInM": 240.0,
-            "monthlyTokenInM": 960.0,
-            "unitPriceCnyPerM": 0.14144
+            "fiveHourTokenInM": 33.3333333333,
+            "weeklyTokenInM": 200.0,
+            "monthlyTokenInM": 800.0,
+            "unitPriceCnyPerM": 0.17
           },
           "pricing": null,
-          "note": "暂按同套餐 GPT-5.6-Sol 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6 换算；未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-plus--gpt-6-luna",
@@ -7202,13 +7205,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 400.0,
-            "weeklyTokenInM": 2400.0,
-            "monthlyTokenInM": 9600.0,
-            "unitPriceCnyPerM": 0.01428
+            "fiveHourTokenInM": 333.3333333333,
+            "weeklyTokenInM": 2000.0,
+            "monthlyTokenInM": 8000.0,
+            "unitPriceCnyPerM": 0.017
           },
           "pricing": null,
-          "note": "暂按同套餐 GPT-5.6-Luna 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6 换算；未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-plus--gpt-5-6-sol",
@@ -7216,15 +7219,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "measured",
+          "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 20.0,
-            "weeklyTokenInM": 120.0,
-            "monthlyTokenInM": 480.0,
-            "unitPriceCnyPerM": 0.28356
+            "fiveHourTokenInM": 16.6666666667,
+            "weeklyTokenInM": 100.0,
+            "monthlyTokenInM": 400.0,
+            "unitPriceCnyPerM": 0.34
           },
           "pricing": null,
-          "note": "个人实测，基本都是 High，缓存命中率约 95%；五小时按周额度的 1/6 换算；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6 换算；未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-plus--gpt-5-6-luna",
@@ -7234,13 +7237,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 200.0,
-            "weeklyTokenInM": 1200.0,
-            "monthlyTokenInM": 4800.0,
-            "unitPriceCnyPerM": 0.02856
+            "fiveHourTokenInM": 166.6666666667,
+            "weeklyTokenInM": 1000.0,
+            "monthlyTokenInM": 4000.0,
+            "unitPriceCnyPerM": 0.034
           },
           "pricing": null,
-          "note": "按个人实测的 GPT-5.6-Sol 用量约 10 倍计算；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6 换算；未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-plus--gpt-5-6",
@@ -7248,12 +7251,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 25.0,
+            "weeklyTokenInM": 150.0,
+            "monthlyTokenInM": 600.0,
+            "unitPriceCnyPerM": 0.22644
           },
           "pricing": null,
-          "note": "当前官方明确标为GPT-5.6-Terra，旧无后缀5.6不用于该关系；用量未实测"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6 换算；未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-plus--gpt-6-astra--service-fast",
@@ -7261,12 +7267,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 2.6666666667,
+            "weeklyTokenInM": 16.0,
+            "monthlyTokenInM": 64.0,
+            "unitPriceCnyPerM": 2.125
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-plus--gpt-6-1-sol--service-fast",
@@ -7274,12 +7283,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 16.0,
+            "weeklyTokenInM": 96.0,
+            "monthlyTokenInM": 384.0,
+            "unitPriceCnyPerM": 0.35428
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-plus--gpt-6-sol--service-fast",
@@ -7287,12 +7299,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 13.3333333333,
+            "weeklyTokenInM": 80.0,
+            "monthlyTokenInM": 320.0,
+            "unitPriceCnyPerM": 0.425
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-plus--gpt-6-luna--service-fast",
@@ -7300,12 +7315,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 133.3333333333,
+            "weeklyTokenInM": 800.0,
+            "monthlyTokenInM": 3200.0,
+            "unitPriceCnyPerM": 0.04284
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-plus--gpt-5-6-sol--fast",
@@ -7313,12 +7331,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 6.6666666667,
+            "weeklyTokenInM": 40.0,
+            "monthlyTokenInM": 160.0,
+            "unitPriceCnyPerM": 0.85
           },
           "pricing": null,
-          "note": "Fast以2.5倍消耗订阅额度，购买Credits以2倍消耗；具体Token未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-plus--gpt-5-6-luna--fast",
@@ -7326,12 +7347,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 66.6666666667,
+            "weeklyTokenInM": 400.0,
+            "monthlyTokenInM": 1600.0,
+            "unitPriceCnyPerM": 0.085
           },
           "pricing": null,
-          "note": "Fast以2.5倍消耗订阅额度，购买Credits以2倍消耗；具体Token未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-plus--gpt-5-6-terra--fast",
@@ -7339,12 +7363,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 10.0,
+            "weeklyTokenInM": 60.0,
+            "monthlyTokenInM": 240.0,
+            "unitPriceCnyPerM": 0.56644
           },
           "pricing": null,
-          "note": "Fast以2.5倍消耗订阅额度，购买Credits以2倍消耗；具体Token未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         }
       ]
     },
@@ -7373,12 +7400,12 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 1250.0,
-            "monthlyTokenInM": 5000.0,
-            "unitPriceCnyPerM": 0.136
+            "weeklyTokenInM": 1200.0,
+            "monthlyTokenInM": 4800.0,
+            "unitPriceCnyPerM": 0.14144
           },
           "pricing": null,
-          "note": "Plus/Pro 可用；支持文本与图片输入。订阅 Token 额度未独立实测，API 价格不用于推算订阅额度。"
+          "note": "Plus/Pro 可用；支持文本与图片输入。参考 Token 额度按同套餐 GPT-5.6-Sol 的 2.4 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro5--gpt-6-astra",
@@ -7474,7 +7501,7 @@
             "unitPriceCnyPerM": 0.22644
           },
           "pricing": null,
-          "note": "当前官方明确标为GPT-5.6-Terra，旧无后缀5.6不用于该关系；用量未实测"
+          "note": "参考 Token 额度按同套餐 GPT-5.6-Sol 的 1.5 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro5--gpt-6-astra--service-fast",
@@ -7482,12 +7509,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 80.0,
+            "monthlyTokenInM": 320.0,
+            "unitPriceCnyPerM": 2.125
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro5--gpt-6-1-sol--service-fast",
@@ -7495,12 +7525,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 480.0,
+            "monthlyTokenInM": 1920.0,
+            "unitPriceCnyPerM": 0.35428
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro5--gpt-6-sol--service-fast",
@@ -7508,12 +7541,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 400.0,
+            "monthlyTokenInM": 1600.0,
+            "unitPriceCnyPerM": 0.425
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro5--gpt-6-luna--service-fast",
@@ -7521,12 +7557,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 4000.0,
+            "monthlyTokenInM": 16000.0,
+            "unitPriceCnyPerM": 0.04284
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro5--gpt-5-6-sol--fast",
@@ -7534,12 +7573,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 200.0,
+            "monthlyTokenInM": 800.0,
+            "unitPriceCnyPerM": 0.85
           },
           "pricing": null,
-          "note": "Fast以2.5倍消耗订阅额度，购买Credits以2倍消耗；具体Token未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro5--gpt-5-6-luna--fast",
@@ -7547,12 +7589,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 2000.0,
+            "monthlyTokenInM": 8000.0,
+            "unitPriceCnyPerM": 0.085
           },
           "pricing": null,
-          "note": "Fast以2.5倍消耗订阅额度，购买Credits以2倍消耗；具体Token未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro5--gpt-5-6-terra--fast",
@@ -7560,12 +7605,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 300.0,
+            "monthlyTokenInM": 1200.0,
+            "unitPriceCnyPerM": 0.56644
           },
           "pricing": null,
-          "note": "Fast以2.5倍消耗订阅额度，购买Credits以2倍消耗；具体Token未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         }
       ]
     },
@@ -7582,7 +7630,7 @@
       "yearlyPrice": 2400,
       "currency": "$",
       "benefits": [],
-      "note": "• 无5h限制，只有周限制\nChatGPT与Codex共享使用量；窗口消耗随模型、速度档及负载变化，官方没有固定Token配额，旧测量仅供参考。",
+      "note": "无独立 5 小时限制，有周用量限制；参考 Token 额度按 Pro $100 对应模型的 2 倍估算。ChatGPT 与 Codex 共享使用量，消耗随模型、速度档及负载变化；各模型额度不能相加，非官方固定 Token 配额。",
       "planStatus": "open",
       "planModels": [
         {
@@ -7591,12 +7639,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 2400.0,
+            "monthlyTokenInM": 9600.0,
+            "unitPriceCnyPerM": 0.14144
           },
           "pricing": null,
-          "note": "Plus/Pro 可用；支持文本与图片输入。订阅 Token 额度未独立实测，API 价格不用于推算订阅额度。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro20--gpt-6-astra",
@@ -7607,64 +7658,16 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 800.0,
-            "monthlyTokenInM": 3200.0,
-            "unitPriceCnyPerM": 0.425
+            "weeklyTokenInM": 400.0,
+            "monthlyTokenInM": 1600.0,
+            "unitPriceCnyPerM": 0.85
           },
           "pricing": null,
-          "note": "按 Pro *5 用户实测周额度 200M 的 4 倍计算；测试以中等思考强度为主，缓存命中率约 96.8%，输出占比约 0.24%；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro20--gpt-6-sol",
           "modelSlug": "gpt-6-sol",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "multiplied",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 4000.0,
-            "monthlyTokenInM": 16000.0,
-            "unitPriceCnyPerM": 0.085
-          },
-          "pricing": null,
-          "note": "暂按同套餐 GPT-5.6-Sol 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
-        },
-        {
-          "slug": "codex-pro20--gpt-6-luna",
-          "modelSlug": "gpt-6-luna",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "multiplied",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 40000.0,
-            "monthlyTokenInM": 160000.0,
-            "unitPriceCnyPerM": 0.00884
-          },
-          "pricing": null,
-          "note": "暂按同套餐 GPT-5.6-Luna 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
-        },
-        {
-          "slug": "codex-pro20--gpt-5-6",
-          "modelSlug": "gpt-5-6-terra",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "multiplied",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 3000.0,
-            "monthlyTokenInM": 12000.0,
-            "unitPriceCnyPerM": 0.11356
-          },
-          "pricing": null,
-          "note": "当前官方明确标为GPT-5.6-Terra，旧无后缀5.6不用于该关系；用量未实测"
-        },
-        {
-          "slug": "codex-pro20--gpt-5-6-sol",
-          "modelSlug": "gpt-5-6-sol",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -7676,11 +7679,11 @@
             "unitPriceCnyPerM": 0.17
           },
           "pricing": null,
-          "note": "；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
         },
         {
-          "slug": "codex-pro20--gpt-5-6-luna",
-          "modelSlug": "gpt-5-6-luna",
+          "slug": "codex-pro20--gpt-6-luna",
+          "modelSlug": "gpt-6-luna",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -7692,7 +7695,55 @@
             "unitPriceCnyPerM": 0.017
           },
           "pricing": null,
-          "note": "；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
+        },
+        {
+          "slug": "codex-pro20--gpt-5-6",
+          "modelSlug": "gpt-5-6-terra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "multiplied",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 1500.0,
+            "monthlyTokenInM": 6000.0,
+            "unitPriceCnyPerM": 0.22644
+          },
+          "pricing": null,
+          "note": "参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
+        },
+        {
+          "slug": "codex-pro20--gpt-5-6-sol",
+          "modelSlug": "gpt-5-6-sol",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "multiplied",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 1000.0,
+            "monthlyTokenInM": 4000.0,
+            "unitPriceCnyPerM": 0.34
+          },
+          "pricing": null,
+          "note": "参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
+        },
+        {
+          "slug": "codex-pro20--gpt-5-6-luna",
+          "modelSlug": "gpt-5-6-luna",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "multiplied",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 10000.0,
+            "monthlyTokenInM": 40000.0,
+            "unitPriceCnyPerM": 0.034
+          },
+          "pricing": null,
+          "note": "参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro20--gpt-6-astra--service-fast",
@@ -7700,12 +7751,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 160.0,
+            "monthlyTokenInM": 640.0,
+            "unitPriceCnyPerM": 2.125
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro20--gpt-6-1-sol--service-fast",
@@ -7713,12 +7767,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 960.0,
+            "monthlyTokenInM": 3840.0,
+            "unitPriceCnyPerM": 0.35428
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro20--gpt-6-sol--service-fast",
@@ -7726,12 +7783,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 800.0,
+            "monthlyTokenInM": 3200.0,
+            "unitPriceCnyPerM": 0.425
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro20--gpt-6-luna--service-fast",
@@ -7739,12 +7799,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 8000.0,
+            "monthlyTokenInM": 32000.0,
+            "unitPriceCnyPerM": 0.04284
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro20--gpt-5-6-sol--fast",
@@ -7752,12 +7815,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 400.0,
+            "monthlyTokenInM": 1600.0,
+            "unitPriceCnyPerM": 0.85
           },
           "pricing": null,
-          "note": "Fast以2.5倍消耗订阅额度，购买Credits以2倍消耗；具体Token未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro20--gpt-5-6-luna--fast",
@@ -7765,12 +7831,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 4000.0,
+            "monthlyTokenInM": 16000.0,
+            "unitPriceCnyPerM": 0.085
           },
           "pricing": null,
-          "note": "Fast以2.5倍消耗订阅额度，购买Credits以2倍消耗；具体Token未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro20--gpt-5-6-terra--fast",
@@ -7778,12 +7847,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 600.0,
+            "monthlyTokenInM": 2400.0,
+            "unitPriceCnyPerM": 0.56644
           },
           "pricing": null,
-          "note": "Fast以2.5倍消耗订阅额度，购买Credits以2倍消耗；具体Token未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         }
       ]
     },
@@ -7802,7 +7874,7 @@
       "benefits": [
         "Ultrafast 资格（依账号与客户端开放情况）"
       ],
-      "note": "含 GPT-6 Astra / GPT-6.1 Sol Ultrafast；订阅用量消耗为标准速度的 8 倍，购买 Credits 为 6 倍。Token 配额未知。\nChatGPT与Codex共享使用量；窗口消耗随模型、速度档及负载变化，官方没有固定Token配额，旧测量仅供参考。",
+      "note": "无独立 5 小时限制，有周用量限制；参考 Token 额度按 Pro $100 对应模型的 5 倍估算。ChatGPT 与 Codex 共享使用量，消耗随模型、速度档及负载变化；各模型额度不能相加，非官方固定 Token 配额。 GPT-6-Astra / GPT-6.1-Sol 支持 Ultrafast，订阅用量消耗为 Standard 的 8 倍，购买 Credits 为 6 倍。",
       "planStatus": "open",
       "planModels": [
         {
@@ -7811,12 +7883,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 6000.0,
+            "monthlyTokenInM": 24000.0,
+            "unitPriceCnyPerM": 0.14144
           },
           "pricing": null,
-          "note": "Token 配额未公布。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro500--gpt-6-astra",
@@ -7824,12 +7899,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 1000.0,
+            "monthlyTokenInM": 4000.0,
+            "unitPriceCnyPerM": 0.85
           },
           "pricing": null,
-          "note": "Token 配额未公布。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro500--gpt-6-sol",
@@ -7837,12 +7915,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 5000.0,
+            "monthlyTokenInM": 20000.0,
+            "unitPriceCnyPerM": 0.17
           },
           "pricing": null,
-          "note": "Token 配额未公布。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro500--gpt-6-luna",
@@ -7850,12 +7931,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 50000.0,
+            "monthlyTokenInM": 200000.0,
+            "unitPriceCnyPerM": 0.017
           },
           "pricing": null,
-          "note": "Token 配额未公布。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro500--gpt-5-6-sol",
@@ -7863,12 +7947,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 2500.0,
+            "monthlyTokenInM": 10000.0,
+            "unitPriceCnyPerM": 0.34
           },
           "pricing": null,
-          "note": "Token 配额未公布。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro500--gpt-5-6-luna",
@@ -7876,12 +7963,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 25000.0,
+            "monthlyTokenInM": 100000.0,
+            "unitPriceCnyPerM": 0.034
           },
           "pricing": null,
-          "note": "Token 配额未公布。"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro500--gpt-6-astra--service-ultrafast",
@@ -7889,12 +7979,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Ultrafast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 125.0,
+            "monthlyTokenInM": 500.0,
+            "unitPriceCnyPerM": 6.8
           },
           "pricing": null,
-          "note": "Pro $500 支持；订阅用量按 Standard 的 8 倍消耗，购买 Credits 按 6 倍；Standard 固定 Token 额度未知，不推算本档额度。"
+          "note": "Pro $500 支持；参考 Token 额度按同套餐、同模型 Standard 的 1/8 估算，未独立实测；订阅用量消耗为 Standard 的 8 倍，购买 Credits 为 6 倍。"
         },
         {
           "slug": "codex-pro500--gpt-6-1-sol--service-ultrafast",
@@ -7902,12 +7995,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Ultrafast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 750.0,
+            "monthlyTokenInM": 3000.0,
+            "unitPriceCnyPerM": 1.13356
           },
           "pricing": null,
-          "note": "Pro $500 支持；订阅用量按 Standard 的 8 倍消耗，购买 Credits 按 6 倍；Standard 固定 Token 额度未知，不推算本档额度。"
+          "note": "Pro $500 支持；参考 Token 额度按同套餐、同模型 Standard 的 1/8 估算，未独立实测；订阅用量消耗为 Standard 的 8 倍，购买 Credits 为 6 倍。"
         },
         {
           "slug": "codex-pro500--gpt-6-astra--service-fast",
@@ -7915,12 +8011,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 400.0,
+            "monthlyTokenInM": 1600.0,
+            "unitPriceCnyPerM": 2.125
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro500--gpt-6-1-sol--service-fast",
@@ -7928,12 +8027,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 2400.0,
+            "monthlyTokenInM": 9600.0,
+            "unitPriceCnyPerM": 0.35428
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro500--gpt-6-sol--service-fast",
@@ -7941,12 +8043,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 2000.0,
+            "monthlyTokenInM": 8000.0,
+            "unitPriceCnyPerM": 0.425
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro500--gpt-6-luna--service-fast",
@@ -7954,12 +8059,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 20000.0,
+            "monthlyTokenInM": 80000.0,
+            "unitPriceCnyPerM": 0.04284
           },
           "pricing": null,
-          "note": "可用性依客户端与账号；订阅用量按 Standard 的 2.5 倍消耗，购买 Credits 按 2 倍；本档未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro500--gpt-5-6-terra",
@@ -7967,12 +8075,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 3750.0,
+            "monthlyTokenInM": 15000.0,
+            "unitPriceCnyPerM": 0.22644
           },
           "pricing": null,
-          "note": "GPT-5.6-Terra当前可用，未独立实测"
+          "note": "参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro500--gpt-5-6-sol--fast",
@@ -7980,12 +8091,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 1000.0,
+            "monthlyTokenInM": 4000.0,
+            "unitPriceCnyPerM": 0.85
           },
           "pricing": null,
-          "note": "Fast以2.5倍消耗订阅额度，购买Credits以2倍消耗；具体Token未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro500--gpt-5-6-luna--fast",
@@ -7993,12 +8107,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 10000.0,
+            "monthlyTokenInM": 40000.0,
+            "unitPriceCnyPerM": 0.085
           },
           "pricing": null,
-          "note": "Fast以2.5倍消耗订阅额度，购买Credits以2倍消耗；具体Token未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro500--gpt-5-6-terra--fast",
@@ -8006,12 +8123,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Fast",
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 1500.0,
+            "monthlyTokenInM": 6000.0,
+            "unitPriceCnyPerM": 0.56644
           },
           "pricing": null,
-          "note": "Fast以2.5倍消耗订阅额度，购买Credits以2倍消耗；具体Token未独立实测。"
+          "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
         }
       ]
     },
