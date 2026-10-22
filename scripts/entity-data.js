@@ -156,6 +156,7 @@
               method: relation.method,
               currency: pricing && pricing.currency,
               inputPerM: pricing && pricing.inputPerM,
+              ...(pricing && pricing.cacheWritePerM !== undefined ? {cacheWritePerM: pricing.cacheWritePerM} : {}),
               cachePerM: pricing && pricing.cachePerM,
               outputPerM: pricing && pricing.outputPerM,
               unitPriceCnyPerM: relation.usage && relation.usage.unitPriceCnyPerM,
@@ -242,6 +243,7 @@
           ? {
               currency: relation.pricing.currency,
               inputPerM: relation.pricing.inputPerM,
+              ...(relation.pricing.cacheWritePerM !== undefined ? {cacheWritePerM: relation.pricing.cacheWritePerM} : {}),
               cachePerM: relation.pricing.cachePerM,
               outputPerM: relation.pricing.outputPerM
             }

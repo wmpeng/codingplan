@@ -2,7 +2,7 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.10.21 | MiniMax M Plan 估算额度与限时权益更新
+> 更新日期 2026.10.22 | Claude 额度估算与缓存写入口径更新
 
 当前展示 **42 个平台、142 个在售订阅套餐、2 个按量 API、163 个模型和 2329 条套餐模型关系**。
 
@@ -160,6 +160,9 @@
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 |
 |---|---|---|---:|---:|---:|---:|
+| [Claude · Pro](https://api.dreamfree.space/c/s/cpyqclaudeup) | - | $20/首月 | 61.53M | 463.49M | 1,854M | ¥0.0734/M |
+| [Claude · Max *5](https://api.dreamfree.space/c/s/cpyqclaudeup) | - | $100/首月 | 307.63M | 2,317.46M | 9,269.8M | ¥0.0734/M |
+| [Claude · Max *20](https://api.dreamfree.space/c/s/cpyqclaudeup) | - | $200/首月 | 1,230.51M | 4,634.92M | 18,539.7M | ¥0.0734/M |
 | [GitHub · Max](https://github.com/features/copilot/plans) | - | $100/首月 | - | - | 409.8M | ¥1.6592/M |
 | [GitHub · Pro+](https://api.dreamfree.space/c/s/cpyqghcopilotp) | - | $39/首月 | - | - | 143.4M | ¥1.8489/M |
 | [Command Code · Max 10×](https://api.dreamfree.space/c/s/cpcommandcode) | - | $100/首月 | 61.47M | 122.94M | 204.9M | ¥3.3191/M |
@@ -210,7 +213,7 @@
 | [共绩算力](https://api.dreamfree.space/c/s/cpyqgongji) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | GLM、Kimi、Qwen、DeepSeek等模型的按量API，邀请优惠需有效资格。 |
 | [优云智算](https://api.dreamfree.space/c/s/cpyqyyzs) | 可以购买 | ⭐️⭐️⭐️⭐️ | 六档请求制Coding Plan，当前九个LLM各按明确次数扣减。 |
 | [Codex](https://api.dreamfree.space/c/s/cpyqchatgpt) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | Codex官方订阅，支持GPT-6.1 Sol及6系列；Pro $500另支持Ultrafast。 |
-| [Claude](https://api.dreamfree.space/c/s/cpyqclaudeup) | 可以购买 | ⭐️⭐️⭐️⭐️ | Claude Code官方订阅，已支持Opus、Sonnet、Haiku 5.5；新型号精确Token额度未知。 |
+| [Claude](https://api.dreamfree.space/c/s/cpyqclaudeup) | 可以购买 | ⭐️⭐️⭐️⭐️ | Claude Code 官方订阅，支持 Opus、Sonnet、Haiku 5.5；Token 容量为带负载条件的估算。 |
 | [Ollama](https://api.dreamfree.space/c/s/cpyqollama) | 可以购买 | ⭐️⭐️⭐️⭐️ | 云端 LLM 的美元 Credits 订阅，月池可集中使用；部分缓存价格未知。 |
 | [阿里·百炼 Token Plan](https://api.dreamfree.space/c/s/cpyqbailiant) | 可以购买 | ⭐️⭐️⭐️⭐️ | 百炼Token Plan现为四档Credits订阅，与旧Coding Plan产品分开。 |
 | [阿里·百炼 Coding Plan](https://api.dreamfree.space/c/s/cpyqbailianc) | 购买受限 | ⭐️⭐️⭐️⭐️ | Pro 套餐性价比高，但供应有限。 |
@@ -305,6 +308,11 @@
 
 ## 最近更新
 
+### 2026.10.22
+
+- 更新 Claude 各套餐的条件额度估算：以 Opus 5.5 为基准，按模型与分窗口倍率计算；Haiku 5.5、Fable 5 等关系包含外推假设，均非官方固定 Token 配额。
+- Claude 额度估算区分普通输入、缓存写入、缓存读取和输出；未命中输入暂按全部写缓存估算，其他平台口径保持不变。
+
 ### 2026.10.21
 
 - 补充MiniMax M Plan正式M3.1 Flash的五小时、周和四周估算用量：按社区样本及加权扣减假设计算，非官方固定Token配额。
@@ -350,10 +358,6 @@
 
 - 小米 MiMo 上线 V2.6 系列：Token Plan 四档套餐新增 MiMo-V2.6-Pro 与 MiMo-V2.6-Flash，Credits 折算与 V2.5 价格一致，套餐价格与月度额度均未变；V2.5-Pro / V2.5 将于 10.21 下线，全系支持多模态输入
 - 京东云套餐移动至 GitHub 之后展示
-
-### 2026.9.22
-
-- Qoder（国内 / 国际版）、WorkBuddy、TRAE（国内 / 国际版）完成初步体验评定，星级由「待评定」更新为三星，套餐大表与平台目录同步将其移至京东云之前
 
 ## 延伸阅读
 

@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/styles/shared.css?v=482edb170c">
   <link rel="stylesheet" href="/styles/platform-cards.css?v=e707cfc708">
   <link rel="stylesheet" href="/styles/platform-comparison.css?v=c3480596a5">
-  <link rel="stylesheet" href="/styles/tool-page.css?v=041b9d7417"><link rel="stylesheet" href="/styles/homepage-filters.css?v=2d8d95caf1">
+  <link rel="stylesheet" href="/styles/tool-page.css?v=c391128a7b"><link rel="stylesheet" href="/styles/homepage-filters.css?v=e2dcc120f7">
 <link rel="stylesheet" href="/styles/design-system.css?v=294b0cc3f4">
 <script src="/scripts/site-navigation.js?v=58bc3a8bab" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
@@ -318,8 +318,8 @@
                             <span class="platform-rating" aria-label="4 星">★ 4.0</span>
                         </div>
                     </header>
-                    <p class="platform-summary">Claude Code官方订阅，已支持Opus、Sonnet、Haiku 5.5；新型号精确Token额度未知。</p>
-                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">用量很大</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">支持 Claude 5.5 系列；精确订阅 Token 额度未知，不能按 API 价格推算。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">Anthropic 官方 API，本身稳定性没问题。但需要境外网络环境，从中国大陆访问限制比较多。</span></li></ul>
+                    <p class="platform-summary">Claude Code 官方订阅，支持 Opus、Sonnet、Haiku 5.5；Token 容量为带负载条件的估算。</p>
+                    <ul class="platform-dimensions"><li data-dim="value"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">性价比</span></div><span class="dim-reason">用量很大</span></li><li data-dim="models"><div class="dim-meta"><span class="dim-score">5<span class="dim-score-unit">分</span></span><span class="dim-label">模型</span></div><span class="dim-reason">支持 Claude 5.5 系列；额度参考含历史参数和外推假设，实际可用量以账号用量为准。</span></li><li data-dim="stability"><div class="dim-meta"><span class="dim-score">3<span class="dim-score-unit">分</span></span><span class="dim-label">可用性</span></div><span class="dim-reason">Anthropic 官方 API，本身稳定性没问题。但需要境外网络环境，从中国大陆访问限制比较多。</span></li></ul>
                     <div class="platform-capabilities"><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span></div>
                     <div class="ui-model-tags platform-models" data-model-tags data-model-max-rows="2" data-model-limit="14" aria-label="模型"><span class="model-tag">Claude Opus 5.5</span><span class="model-tag" data-extra-model hidden>Claude Sonnet 5.5</span><span class="model-tag" data-extra-model hidden>Claude Haiku 5.5</span><span class="model-tag" data-extra-model hidden>Claude Fable 5.1</span><span class="model-tag" data-extra-model hidden>Claude Fable 5</span><span class="model-tag" data-extra-model hidden>Claude Opus 5</span><span class="model-tag" data-extra-model hidden>Claude Sonnet 5</span><span class="model-tag" data-extra-model hidden>Claude Sonnet 4.6</span><span class="model-tag" data-extra-model hidden>Claude Sonnet 4.5</span><span class="model-tag" data-extra-model hidden>Claude Opus 4.7</span><span class="model-tag" data-extra-model hidden>Claude Opus 4.6</span><span class="model-tag" data-extra-model hidden>Claude Opus 4.5</span><span class="model-tag" data-extra-model hidden>Claude Haiku 4.5</span><span class="model-tag" data-extra-model hidden>Claude Opus 4.8</span><button type="button" class="model-tag model-tag-more" data-platform-toggle-models data-extra-count="13" aria-expanded="false" aria-label="展开其余 13 个模型">+13</button></div>
                     <div class="platform-card-links"><span class="platform-card-hint">快速查看 <span aria-hidden="true">→</span></span></div>
@@ -933,13 +933,13 @@
   </main>
   <div id="platformDetailOverlay" class="platform-detail-overlay" hidden><div class="platform-detail-backdrop" data-platform-detail-close="1"></div><div class="platform-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="platformDetailTitle" tabindex="-1"><button type="button" class="platform-detail-close" id="platformDetailClose" aria-label="关闭">×</button><div id="platformDetailBody"></div></div></div>
   <script src="/monitor/monitor-config.js"></script>
-<script src="/scripts/entity-data.js?v=e638588477"></script><script src="/scripts/number-display.js?v=c42af79c1b"></script>
+<script src="/scripts/entity-data.js?v=bb13b5fa30"></script><script src="/scripts/number-display.js?v=c42af79c1b"></script>
 <script src="/scripts/filter-state.js?v=da16090984"></script><script src="/scripts/ui-single-select.js?v=09370d929b"></script>
 <script src="/scripts/homepage-filters.js?v=cf989cd49d"></script><script src="/scripts/tool-page.js?v=71570098e6"></script>
 
 <script src="/scripts/platform-pages.js?v=601d13bd7b"></script>
 <script src="/scripts/platform-catalog.js?v=daf1b65aaa"></script>
-<script src="/scripts/platform-detail.js?v=12e0213b35"></script>
+<script src="/scripts/platform-detail.js?v=8e2fcdbc07"></script>
 <script src="/scripts/platform-comparison.js?v=5bc83d1d86"></script>
 <script src="/scripts/platform-hub.js?v=b19be304a3"></script>
 <script src="/scripts/platforms-page.js?v=7457d6ea96"></script>

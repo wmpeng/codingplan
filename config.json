@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.10.21 | MiniMax M Plan 估算额度与限时权益更新",
+    "updateDate": "更新日期 2026.10.22 | Claude 额度估算与缓存写入口径更新",
     "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Cursor、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.1-Sol、Claude 5.5系列、MiniMax-M3.1-Flash、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3与Qwen-3.8等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
@@ -124,6 +124,13 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.10.22",
+      "items": [
+        "更新 Claude 各套餐的条件额度估算：以 Opus 5.5 为基准，按模型与分窗口倍率计算；Haiku 5.5、Fable 5 等关系包含外推假设，均非官方固定 Token 配额。",
+        "Claude 额度估算区分普通输入、缓存写入、缓存读取和输出；未命中输入暂按全部写缓存估算，其他平台口径保持不变。"
+      ]
+    },
     {
       "date": "2026.10.21",
       "items": [
