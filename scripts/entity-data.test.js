@@ -175,6 +175,9 @@ test('builds API pricing groups and keeps raw input cache output prices', () => 
   const point = EntityData.buildComparisonPoints(context, 6.8)[0];
   assert.equal(point.billingMode, 'payg');
   assert.deepEqual(point.apiPricing, { currency: '¥', inputPerM: 1, cachePerM: 0.1, outputPerM: 2 });
+  context.planModels[0].pricing.cacheWritePerM = 0;
+  assert.equal(EntityData.buildApiPricingGroups(context, 'platform-a')[0].rows[0].cacheWritePerM, 0);
+  assert.equal(EntityData.buildComparisonPoints(context, 6.8)[0].apiPricing.cacheWritePerM, 0);
 });
 
 

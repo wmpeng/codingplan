@@ -76,7 +76,8 @@
       const rows = group.rows.map((row) => {
         const prices = [
           ['输入', row.inputPerM, row.currency],
-          ['缓存', row.cachePerM, row.currency],
+          ...(row.cacheWritePerM === undefined ? [] : [['缓存写入', row.cacheWritePerM, row.currency]]),
+          [row.cacheWritePerM === undefined ? '缓存' : '缓存读取', row.cachePerM, row.currency],
           ['输出', row.outputPerM, row.currency],
           ['综合', row.unitPriceCnyPerM, '¥']
         ].map(([label, value, currency]) =>

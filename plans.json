@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-21T12:19:32Z",
+  "generatedAt": "2026-10-22T15:42:02Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -4169,7 +4169,7 @@
       "benefits": [
         "包含MiniMax Code及订阅API Key"
       ],
-      "note": "相对Go用量1倍；文本与其他模态共享额度，非视频模型受5小时及7天窗口控制，具体Token数未公布。截至2026-10-31，在MiniMax Code内新订阅或升级M Plan首月5折，首月¥24.5，次月起¥49/月；年付按整年付款。截至2026-10-25，所有订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。额度耗尽后可使用另购积分包，不自动扣按量账户余额。",
+      "note": "相对Go用量1倍；文本与其他模态共享额度，非视频模型受5小时及7天窗口控制，官方未公布固定Token配额；提供社区样本推算参考量。截至2026-10-31，在MiniMax Code内新订阅或升级M Plan首月5折，首月¥24.5，次月起¥49/月；年付按整年付款。截至2026-10-25，所有订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。额度耗尽后可使用另购积分包，不自动扣按量账户余额。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4178,12 +4178,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 44.4358578053,
+            "weeklyTokenInM": 444.3585780526,
+            "monthlyTokenInM": 1777.4,
+            "unitPriceCnyPerM": 0.0276
           },
-          "pricing": null,
-          "note": "新型号精确Token用量未知；常规受5h和7天窗口限制；截至2026-10-25订阅用户在MiniMax Code内使用不限量，未承诺外部工具API不限量；相对Go 1倍"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 1000000.0,
+            "cachePerM": 200000.0,
+            "outputPerM": 4000000.0,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 0.20 Token/Token、输出 4 Token/Token；套餐共享额度：5小时 11.50M Token、每周 115M Token、每月 460M Token；社区样本推算，非官方固定Token配额；采用输入/输出/缓存读取1/4/0.2的加权扣减假设，按输入缓存命中率95%、输出占比0.5%估算；月参考量按四周换算，不是独立月额度池。文本与其他模态共享额度，实际可用Token数随上下文、缓存和思考输出变化。；抵扣单位Token表示本估算模型的加权Token，不等于原始Token总数或按量API报价。截至2026-10-25，订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。"
         }
       ]
     },
@@ -4201,7 +4210,7 @@
       "benefits": [
         "包含MiniMax Code及订阅API Key"
       ],
-      "note": "相对Go用量3倍；文本与其他模态共享额度，非视频模型受5小时及7天窗口控制，具体Token数未公布。截至2026-10-31，在MiniMax Code内新订阅或升级M Plan首月5折，首月¥59.5，次月起¥119/月；年付按整年付款。截至2026-10-25，所有订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。额度耗尽后可使用另购积分包，不自动扣按量账户余额。",
+      "note": "相对Go用量3倍；文本与其他模态共享额度，非视频模型受5小时及7天窗口控制，官方未公布固定Token配额；提供社区样本推算参考量。截至2026-10-31，在MiniMax Code内新订阅或升级M Plan首月5折，首月¥59.5，次月起¥119/月；年付按整年付款。截至2026-10-25，所有订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。额度耗尽后可使用另购积分包，不自动扣按量账户余额。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4210,12 +4219,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 133.3075734158,
+            "weeklyTokenInM": 1333.0757341577,
+            "monthlyTokenInM": 5332.3,
+            "unitPriceCnyPerM": 0.0223
           },
-          "pricing": null,
-          "note": "新型号精确Token用量未知；常规受5h和7天窗口限制；截至2026-10-25订阅用户在MiniMax Code内使用不限量，未承诺外部工具API不限量；相对Go 3倍"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 1000000.0,
+            "cachePerM": 200000.0,
+            "outputPerM": 4000000.0,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 0.20 Token/Token、输出 4 Token/Token；套餐共享额度：5小时 34.50M Token、每周 345M Token、每月 1,380M Token；社区样本推算，非官方固定Token配额；采用输入/输出/缓存读取1/4/0.2的加权扣减假设，按输入缓存命中率95%、输出占比0.5%估算；月参考量按四周换算，不是独立月额度池。文本与其他模态共享额度，实际可用Token数随上下文、缓存和思考输出变化。；抵扣单位Token表示本估算模型的加权Token，不等于原始Token总数或按量API报价。截至2026-10-25，订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。"
         }
       ]
     },
@@ -4233,7 +4251,7 @@
       "benefits": [
         "包含MiniMax Code及订阅API Key"
       ],
-      "note": "相对Go用量12倍；文本与其他模态共享额度，非视频模型受5小时及7天窗口控制，具体Token数未公布。截至2026-10-31，在MiniMax Code内新订阅或升级M Plan首月5折，首月¥234.5，次月起¥469/月；年付按整年付款。截至2026-10-25，所有订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。额度耗尽后可使用另购积分包，不自动扣按量账户余额。",
+      "note": "相对Go用量12倍；文本与其他模态共享额度，非视频模型受5小时及7天窗口控制，官方未公布固定Token配额；提供社区样本推算参考量。截至2026-10-31，在MiniMax Code内新订阅或升级M Plan首月5折，首月¥234.5，次月起¥469/月；年付按整年付款。截至2026-10-25，所有订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。额度耗尽后可使用另购积分包，不自动扣按量账户余额。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4242,12 +4260,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 533.2302936631,
+            "weeklyTokenInM": 5332.3029366306,
+            "monthlyTokenInM": 21329.2,
+            "unitPriceCnyPerM": 0.022
           },
-          "pricing": null,
-          "note": "新型号精确Token用量未知；常规受5h和7天窗口限制；截至2026-10-25订阅用户在MiniMax Code内使用不限量，未承诺外部工具API不限量；相对Go 12倍"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 1000000.0,
+            "cachePerM": 200000.0,
+            "outputPerM": 4000000.0,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 0.20 Token/Token、输出 4 Token/Token；套餐共享额度：5小时 138M Token、每周 1,380M Token、每月 5,520M Token；社区样本推算，非官方固定Token配额；采用输入/输出/缓存读取1/4/0.2的加权扣减假设，按输入缓存命中率95%、输出占比0.5%估算；月参考量按四周换算，不是独立月额度池。文本与其他模态共享额度，实际可用Token数随上下文、缓存和思考输出变化。；抵扣单位Token表示本估算模型的加权Token，不等于原始Token总数或按量API报价。截至2026-10-25，订阅用户在MiniMax Code内使用M3.1 Flash不限量；该活动未承诺外部工具API不限量。"
         }
       ]
     },
@@ -5409,7 +5436,7 @@
       "quarterlyPrice": 297,
       "yearlyPrice": 948,
       "benefits": [],
-      "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。月总额度耗尽后可使用加油包；Token 配额未公布。",
+      "note": "Code 用量为社区样本与暂定倍率推算，Plus／Pro／Max／Ultra 按 1∶5∶16∶32 估算，与官网 Agent 额度比例 1∶2∶7∶14 不同。无独立周限额，仍受五小时窗口及共享月额度限制；月额度耗尽可另购加油包。",
       "planStatus": "open",
       "supportsHarnessApi": true,
       "planModels": [
@@ -5419,12 +5446,43 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 1.9841483941,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 49.6,
+            "unitPriceCnyPerM": 1.9958
           },
-          "pricing": null,
-          "note": "最高 1M 上下文；新套餐无周窗口，有五小时窗口及月总额度；Token 配额未公布。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 600000.0,
+            "cachePerM": 3000.0,
+            "outputPerM": 5625000.0,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 0.60 Token/Token、缓存读取 0.003000 Token/Token、输出 5.63 Token/Token；套餐共享额度：5小时 120,658 Token、每周 不限量、每月 3,016,439 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；kimi-for-coding 对应 K2.8 Preview，最高 1M 上下文，支持图片和视频。输入／输出／缓存消耗暂按 K3 的 3/5、3/4、1/2 估算。"
+        },
+        {
+          "slug": "kimi-plus-2026--kimi-k3",
+          "modelSlug": "kimi-k3",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 1.2984890683,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 32.5,
+            "unitPriceCnyPerM": 3.0497
+          },
+          "pricing": {
+            "currency": null,
+            "inputPerM": 1000000.0,
+            "cachePerM": 6000.0,
+            "outputPerM": 7500000.0,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 0.006000 Token/Token、输出 7.50 Token/Token；套餐共享额度：5小时 120,658 Token、每周 不限量、每月 3,016,439 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；k3，Plus 最高 256K 上下文，支持图片和视频。未缓存输入／输出／缓存读取消耗暂按 1∶7.5∶0.006 估算。"
         },
         {
           "slug": "kimi-plus-2026--kimi-k3--ctx-256k",
@@ -5432,12 +5490,15 @@
           "timeTier": null,
           "contextTier": "256K",
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 2.5969781366,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 64.9,
+            "unitPriceCnyPerM": 1.5248
           },
           "pricing": null,
-          "note": "Plus的K3最高256K：k3支持图片和视频，k3-256k仅支持图片、不支持视频。Token配额未公布。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；k3-256k，固定 256K 上下文，仅支持图片、不支持视频；消耗按 k3 的一半估算。含视频会话切换前需先压缩上下文。"
         }
       ]
     },
@@ -5455,7 +5516,7 @@
       "benefits": [
         "专属Kimi Claw"
       ],
-      "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。月总额度耗尽后可使用加油包；Token 配额未公布。",
+      "note": "Code 用量为社区样本与暂定倍率推算，Plus／Pro／Max／Ultra 按 1∶5∶16∶32 估算，与官网 Agent 额度比例 1∶2∶7∶14 不同。无独立周限额，仍受五小时窗口及共享月额度限制；月额度耗尽可另购加油包。",
       "planStatus": "open",
       "supportsHarnessApi": true,
       "planModels": [
@@ -5465,12 +5526,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 9.9207419707,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 248.0,
+            "unitPriceCnyPerM": 0.8024
           },
-          "pricing": null,
-          "note": "最高 1M 上下文；新套餐无周窗口，有五小时窗口及月总额度；Token 配额未公布。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 600000.0,
+            "cachePerM": 3000.0,
+            "outputPerM": 5625000.0,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 0.60 Token/Token、缓存读取 0.003000 Token/Token、输出 5.63 Token/Token；套餐共享额度：5小时 603,288 Token、每周 不限量、每月 15,082,194 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；kimi-for-coding 对应 K2.8 Preview，最高 1M 上下文，支持图片和视频。输入／输出／缓存消耗暂按 K3 的 3/5、3/4、1/2 估算。"
         },
         {
           "slug": "kimi-pro-2026--kimi-k3",
@@ -5478,12 +5548,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 6.4924453415,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 162.3,
+            "unitPriceCnyPerM": 1.226
           },
-          "pricing": null,
-          "note": "k3最高1M上下文，支持图片和视频；Token配额未公布。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 1000000.0,
+            "cachePerM": 6000.0,
+            "outputPerM": 7500000.0,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 0.006000 Token/Token、输出 7.50 Token/Token；套餐共享额度：5小时 603,288 Token、每周 不限量、每月 15,082,194 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；k3，最高 1M 上下文，支持图片和视频。未缓存输入／输出／缓存读取消耗暂按 1∶7.5∶0.006 估算。"
         },
         {
           "slug": "kimi-pro-2026--kimi-k3--ctx-256k",
@@ -5491,12 +5570,15 @@
           "timeTier": null,
           "contextTier": "256K",
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 12.9848906829,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 324.6,
+            "unitPriceCnyPerM": 0.613
           },
           "pricing": null,
-          "note": "k3-256k仅支持图片、不支持视频；含视频的会话切换前需先压缩上下文。官方说明消耗约为K3 1M的一半；无官方固定Token配额。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；k3-256k，固定 256K 上下文，仅支持图片、不支持视频；消耗按 k3 的一半估算。含视频会话切换前需先压缩上下文。"
         },
         {
           "slug": "kimi-pro-2026--kimi-k2-7-code-highspeed",
@@ -5504,12 +5586,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 3.3069139902,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 82.7,
+            "unitPriceCnyPerM": 2.4071
           },
           "pricing": null,
-          "note": "256K 上下文；官方约 6 倍速、3 倍消耗。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；K2.7 Code HighSpeed，256K 上下文。输入／输出／缓存消耗暂按 K2.8 Preview 的 3 倍估算；此跨版本比例不是官方公布的倍率。"
         }
       ]
     },
@@ -5527,7 +5612,7 @@
       "benefits": [
         "专属Kimi Claw"
       ],
-      "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。月总额度耗尽后可使用加油包；Token 配额未公布。",
+      "note": "Code 用量为社区样本与暂定倍率推算，Plus／Pro／Max／Ultra 按 1∶5∶16∶32 估算，与官网 Agent 额度比例 1∶2∶7∶14 不同。无独立周限额，仍受五小时窗口及共享月额度限制；月额度耗尽可另购加油包。",
       "planStatus": "open",
       "supportsHarnessApi": true,
       "planModels": [
@@ -5537,12 +5622,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 31.7463743063,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 793.7,
+            "unitPriceCnyPerM": 0.8807
           },
-          "pricing": null,
-          "note": "最高 1M 上下文；新套餐无周窗口，有五小时窗口及月总额度；Token 配额未公布。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 600000.0,
+            "cachePerM": 3000.0,
+            "outputPerM": 5625000.0,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 0.60 Token/Token、缓存读取 0.003000 Token/Token、输出 5.63 Token/Token；套餐共享额度：5小时 1,930,521 Token、每周 不限量、每月 48,263,021 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；kimi-for-coding 对应 K2.8 Preview，最高 1M 上下文，支持图片和视频。输入／输出／缓存消耗暂按 K3 的 3/5、3/4、1/2 估算。"
         },
         {
           "slug": "kimi-max-2026--kimi-k3",
@@ -5550,12 +5644,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 20.7758250927,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 519.4,
+            "unitPriceCnyPerM": 1.3458
           },
-          "pricing": null,
-          "note": "k3最高1M上下文，支持图片和视频；Token配额未公布。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 1000000.0,
+            "cachePerM": 6000.0,
+            "outputPerM": 7500000.0,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 0.006000 Token/Token、输出 7.50 Token/Token；套餐共享额度：5小时 1,930,521 Token、每周 不限量、每月 48,263,021 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；k3，最高 1M 上下文，支持图片和视频。未缓存输入／输出／缓存读取消耗暂按 1∶7.5∶0.006 估算。"
         },
         {
           "slug": "kimi-max-2026--kimi-k3--ctx-256k",
@@ -5563,12 +5666,15 @@
           "timeTier": null,
           "contextTier": "256K",
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 41.5516501853,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 1038.8,
+            "unitPriceCnyPerM": 0.6729
           },
           "pricing": null,
-          "note": "k3-256k仅支持图片、不支持视频；含视频的会话切换前需先压缩上下文。官方说明消耗约为K3 1M的一半；无官方固定Token配额。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；k3-256k，固定 256K 上下文，仅支持图片、不支持视频；消耗按 k3 的一半估算。含视频会话切换前需先压缩上下文。"
         },
         {
           "slug": "kimi-max-2026--kimi-k2-7-code-highspeed",
@@ -5576,12 +5682,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 10.5821247688,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 264.6,
+            "unitPriceCnyPerM": 2.6422
           },
           "pricing": null,
-          "note": "256K 上下文；官方约 6 倍速、3 倍消耗。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；K2.7 Code HighSpeed，256K 上下文。输入／输出／缓存消耗暂按 K2.8 Preview 的 3 倍估算；此跨版本比例不是官方公布的倍率。"
         }
       ]
     },
@@ -5599,7 +5708,7 @@
       "benefits": [
         "专属Kimi Claw"
       ],
-      "note": "新套餐取消周限额，保留五小时滚动频率窗口及月总额度。月总额度耗尽后可使用加油包；Token 配额未公布。 官方标示28倍Agent额度，不等于固定Coding Token配额。",
+      "note": "Code 用量为社区样本与暂定倍率推算，Plus／Pro／Max／Ultra 按 1∶5∶16∶32 估算，与官网 Agent 额度比例 1∶2∶7∶14 不同。无独立周限额，仍受五小时窗口及共享月额度限制；月额度耗尽可另购加油包。",
       "planStatus": "open",
       "supportsHarnessApi": true,
       "planModels": [
@@ -5609,12 +5718,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 63.4927486127,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 1587.3,
+            "unitPriceCnyPerM": 0.8814
           },
-          "pricing": null,
-          "note": "最高 1M 上下文；新套餐无周窗口，有五小时窗口及月总额度；Token 配额未公布。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 600000.0,
+            "cachePerM": 3000.0,
+            "outputPerM": 5625000.0,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 0.60 Token/Token、缓存读取 0.003000 Token/Token、输出 5.63 Token/Token；套餐共享额度：5小时 3,861,042 Token、每周 不限量、每月 96,526,042 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；kimi-for-coding 对应 K2.8 Preview，最高 1M 上下文，支持图片和视频。输入／输出／缓存消耗暂按 K3 的 3/5、3/4、1/2 估算。"
         },
         {
           "slug": "kimi-ultra-2026--kimi-k3",
@@ -5622,12 +5740,21 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 41.5516501853,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 1038.8,
+            "unitPriceCnyPerM": 1.3468
           },
-          "pricing": null,
-          "note": "k3最高1M上下文，支持图片和视频；Token配额未公布。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 1000000.0,
+            "cachePerM": 6000.0,
+            "outputPerM": 7500000.0,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 0.006000 Token/Token、输出 7.50 Token/Token；套餐共享额度：5小时 3,861,042 Token、每周 不限量、每月 96,526,042 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；k3，最高 1M 上下文，支持图片和视频。未缓存输入／输出／缓存读取消耗暂按 1∶7.5∶0.006 估算。"
         },
         {
           "slug": "kimi-ultra-2026--kimi-k3--ctx-256k",
@@ -5635,12 +5762,15 @@
           "timeTier": null,
           "contextTier": "256K",
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 83.1033003707,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 2077.6,
+            "unitPriceCnyPerM": 0.6734
           },
           "pricing": null,
-          "note": "k3-256k仅支持图片、不支持视频；含视频的会话切换前需先压缩上下文。官方说明消耗约为K3 1M的一半；无官方固定Token配额。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；k3-256k，固定 256K 上下文，仅支持图片、不支持视频；消耗按 k3 的一半估算。含视频会话切换前需先压缩上下文。"
         },
         {
           "slug": "kimi-ultra-2026--kimi-k2-7-code-highspeed",
@@ -5648,12 +5778,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 21.1642495376,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 529.1,
+            "unitPriceCnyPerM": 2.6441
           },
           "pricing": null,
-          "note": "256K 上下文；官方约 6 倍速、3 倍消耗。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；K2.7 Code HighSpeed，256K 上下文。输入／输出／缓存消耗暂按 K2.8 Preview 的 3 倍估算；此跨版本比例不是官方公布的倍率。"
         }
       ]
     },
@@ -8150,7 +8283,7 @@
       "benefits": [
         "原生 Claude 体验"
       ],
-      "note": "• 部分用户订阅时可能被要求实名认证\n• Claude / Claude Code 订阅主额度不可用于 OpenClaw、Hermes 等第三方编程 Agent",
+      "note": "部分用户订阅时可能被要求实名认证。订阅认证的 Claude Agent SDK / claude -p 可消耗订阅额度；API key 使用对应 Console 组织的 API 余额。",
       "planStatus": "open",
       "planModels": [
         {
@@ -8159,12 +8292,22 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 61.5255254024,
+            "weeklyTokenInM": 463.4922913644,
+            "monthlyTokenInM": 1854.0,
+            "unitPriceCnyPerM": 0.07344
           },
-          "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 1000000.0,
+            "cacheWritePerM": 1250000.0,
+            "cachePerM": 25000.0,
+            "outputPerM": 5000000.0,
+            "unit": "Credits"
+          },
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；2026-09-29 Max 20x 交互 CLI 社区经验扣额系数，非官方 API 报价；按 Opus 5.5 普通输入归一化。；相对 Max 20x 的五小时与周容量分别外推；周比例及跨套餐系数一致性为估算假设，非本套餐直接实测。"
         },
         {
           "slug": "claude-pro--claude-sonnet-5-5",
@@ -8172,12 +8315,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 90.2374372568,
+            "weeklyTokenInM": 679.7886940011,
+            "monthlyTokenInM": 2719.2,
+            "unitPriceCnyPerM": 0.05032
           },
           "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
         },
         {
           "slug": "claude-pro--claude-haiku-5-5",
@@ -8185,12 +8331,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 1201.5935111079,
+            "weeklyTokenInM": 9052.0044503463,
+            "monthlyTokenInM": 36208.0,
+            "unitPriceCnyPerM": 0.00408
           },
           "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 Opus 5.5 容量×19.53 外推，基于 API 混合价比的低置信估算；未验证分类订阅扣额系数及不同上下文下的容量。"
         },
         {
           "slug": "claude-pro--claude-fable-5-1",
@@ -8203,7 +8352,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Claude Code 2.1.255 起支持；Pro 套餐可用，但官方明确不计入订阅额度，需从首次调用起按 Usage Credits 额外计费；因此不估算套餐 Token 用量；官方上下文上限 1M"
+          "note": "不包含订阅内用量，从首次调用起按 Usage Credits 额外付费；不计入套餐 Token 容量。"
         },
         {
           "slug": "claude-pro--claude-fable-5",
@@ -8216,7 +8365,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Claude Code 2.1.170 起支持；Pro 套餐可用，但官方明确不计入订阅额度，需从首次调用起按 Usage Credits 额外计费；因此不估算套餐 Token 用量；官方上下文上限 1M"
+          "note": "不包含订阅内用量，从首次调用起按 Usage Credits 额外付费；不计入套餐 Token 容量。"
         },
         {
           "slug": "claude-pro--claude-opus-5",
@@ -8224,21 +8373,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 22.0735785953,
-            "weeklyTokenInM": 100.3344481605,
-            "monthlyTokenInM": 401.3,
-            "unitPriceCnyPerM": 0.33864
+            "fiveHourTokenInM": 49.2204203219,
+            "weeklyTokenInM": 370.7938330915,
+            "monthlyTokenInM": 1483.2,
+            "unitPriceCnyPerM": 0.0918
           },
-          "pricing": {
-            "currency": null,
-            "inputPerM": 666666.6666666666,
-            "cachePerM": 0.0,
-            "outputPerM": 3333333.3333333335,
-            "unit": "Credits"
-          },
-          "note": "抵扣单价：输入 0.67 Credits/Token、缓存读取 0 Credits/Token、输出 3.33 Credits/Token；套餐共享额度：5小时 1,100,000 Credits、每周 5,000,000 Credits、每月 20,000,000 Credits；历史社区逆向订阅扣减系数，非官方 API 报价；缓存读取按不扣减处理；按社区额度数据、Opus 家族 credits 系数、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "pricing": null,
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
         },
         {
           "slug": "claude-pro--claude-sonnet-5",
@@ -8246,21 +8389,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 36.7892976589,
-            "weeklyTokenInM": 167.2240802676,
-            "monthlyTokenInM": 668.9,
-            "unitPriceCnyPerM": 0.20332
+            "fiveHourTokenInM": 90.2374372568,
+            "weeklyTokenInM": 679.7886940011,
+            "monthlyTokenInM": 2719.2,
+            "unitPriceCnyPerM": 0.05032
           },
-          "pricing": {
-            "currency": null,
-            "inputPerM": 400000.0,
-            "cachePerM": 0.0,
-            "outputPerM": 2000000.0,
-            "unit": "Credits"
-          },
-          "note": "抵扣单价：输入 0.40 Credits/Token、缓存读取 0 Credits/Token、输出 2 Credits/Token；套餐共享额度：5小时 1,100,000 Credits、每周 5,000,000 Credits、每月 20,000,000 Credits；历史社区逆向订阅扣减系数，非官方 API 报价；缓存读取按不扣减处理；按社区额度数据、Sonnet 家族 credits 系数（新增输入 0.4、输出 2、缓存读取免费）、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；未针对 Sonnet 5 单独实测，数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "pricing": null,
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
         },
         {
           "slug": "claude-pro--claude-sonnet-4-6",
@@ -8333,12 +8470,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 135.3561558852,
+            "weeklyTokenInM": 1019.6830410016,
+            "monthlyTokenInM": 4078.7,
+            "unitPriceCnyPerM": 0.03332
           },
           "pricing": null,
-          "note": null
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
         },
         {
           "slug": "claude-pro--claude-opus-4-8",
@@ -8371,7 +8511,7 @@
         "原生 Claude 体验",
         "Claude Platform 每月赠送 API Credits：$100（2026-10-07 公告；与订阅额度分开）"
       ],
-      "note": "• 部分用户订阅时可能被要求实名认证\n• Claude / Claude Code 订阅主额度不可用于 OpenClaw、Hermes 等第三方编程 Agent 赠送的 Claude Platform API Credits 需新订阅满 7 天并绑定 Console 组织后领取，周期末失效、不结转，不能支付 Claude Code 或 Claude 应用内额外用量。",
+      "note": "部分用户订阅时可能被要求实名认证。订阅认证的 Claude Agent SDK / claude -p 可消耗订阅额度；API key 使用对应 Console 组织的 API 余额。 每月赠送 API Credits 需新订阅满 7 天并绑定 Console 组织领取，周期末失效、不结转；与订阅额度分开，不能支付交互式 Claude Code 或应用内额外用量。自行使用关联组织 API key 运行 SDK / claude -p 可使用赠额，IDE、Desktop、GitHub Action 发起的 Code 运行不适用。",
       "planStatus": "open",
       "planModels": [
         {
@@ -8380,12 +8520,22 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 307.6276270118,
+            "weeklyTokenInM": 2317.4614568219,
+            "monthlyTokenInM": 9269.8,
+            "unitPriceCnyPerM": 0.07344
           },
-          "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 1000000.0,
+            "cacheWritePerM": 1250000.0,
+            "cachePerM": 25000.0,
+            "outputPerM": 5000000.0,
+            "unit": "Credits"
+          },
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；2026-09-29 Max 20x 交互 CLI 社区经验扣额系数，非官方 API 报价；按 Opus 5.5 普通输入归一化。；相对 Max 20x 的五小时与周容量分别外推；周比例及跨套餐系数一致性为估算假设，非本套餐直接实测。"
         },
         {
           "slug": "claude-max5--claude-sonnet-5-5",
@@ -8393,12 +8543,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 451.1871862839,
+            "weeklyTokenInM": 3398.9434700055,
+            "monthlyTokenInM": 13595.8,
+            "unitPriceCnyPerM": 0.05032
           },
           "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
         },
         {
           "slug": "claude-max5--claude-haiku-5-5",
@@ -8406,12 +8559,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 6007.9675555396,
+            "weeklyTokenInM": 45260.0222517317,
+            "monthlyTokenInM": 181040.1,
+            "unitPriceCnyPerM": 0.00408
           },
           "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 Opus 5.5 容量×19.53 外推，基于 API 混合价比的低置信估算；未验证分类订阅扣额系数及不同上下文下的容量。"
         },
         {
           "slug": "claude-max5--claude-fable-5-1",
@@ -8421,13 +8577,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 66.220735786,
-            "weeklyTokenInM": 209.0302675585,
-            "monthlyTokenInM": 836.1,
-            "unitPriceCnyPerM": 0.81328
+            "fiveHourTokenInM": 67.6780779426,
+            "weeklyTokenInM": 254.9207602504,
+            "monthlyTokenInM": 1019.7,
+            "unitPriceCnyPerM": 0.66708
           },
           "pricing": null,
-          "note": "Claude Code 2.1.255 起支持；按官方 Fable 每周最多占套餐周额度 50%、Fable 输入/输出价格为 Opus 5 的 2 倍及现有 credits 价格比例关系推算：5小时为 Opus 5 的 1/2，周为 Opus 5 的 1/4，月按周×4；缓存命中率95%、输出占比0.5%；未单独实测，数据可能存在偏差，欢迎反馈；官方上下文上限 1M；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按历史模型权重外推；Fable 系列合计最多消耗共享周额度的 50%，不是额外额度。共享 token 权重为估算假设。"
         },
         {
           "slug": "claude-max5--claude-fable-5",
@@ -8437,13 +8593,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 66.220735786,
-            "weeklyTokenInM": 209.0302675585,
-            "monthlyTokenInM": 836.1,
-            "unitPriceCnyPerM": 0.81328
+            "fiveHourTokenInM": 67.6780779426,
+            "weeklyTokenInM": 254.9207602504,
+            "monthlyTokenInM": 1019.7,
+            "unitPriceCnyPerM": 0.66708
           },
           "pricing": null,
-          "note": "Claude Code 2.1.170 起支持；按官方 Fable 每周最多占套餐周额度 50%、Fable 输入/输出价格为 Opus 5 的 2 倍及现有 credits 价格比例关系推算：5小时为 Opus 5 的 1/2，周为 Opus 5 的 1/4，月按周×4；缓存命中率95%、输出占比0.5%；未单独实测，数据可能存在偏差，欢迎反馈；官方上下文上限 1M；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按与 Fable 5.1 相同容量估算，非本版本独立测量；两版本合计最多消耗共享周额度的 50%。"
         },
         {
           "slug": "claude-max5--claude-opus-5",
@@ -8451,21 +8607,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 132.4414715719,
-            "weeklyTokenInM": 836.1210702341,
-            "monthlyTokenInM": 3344.5,
-            "unitPriceCnyPerM": 0.20332
+            "fiveHourTokenInM": 246.1021016094,
+            "weeklyTokenInM": 1853.9691654575,
+            "monthlyTokenInM": 7415.9,
+            "unitPriceCnyPerM": 0.0918
           },
-          "pricing": {
-            "currency": null,
-            "inputPerM": 666666.6666666666,
-            "cachePerM": 0.0,
-            "outputPerM": 3333333.3333333335,
-            "unit": "Credits"
-          },
-          "note": "抵扣单价：输入 0.67 Credits/Token、缓存读取 0 Credits/Token、输出 3.33 Credits/Token；套餐共享额度：5小时 6,600,000 Credits、每周 41,666,700 Credits、每月 166,666,800 Credits；历史社区逆向订阅扣减系数，非官方 API 报价；缓存读取按不扣减处理；按社区额度数据、Opus 家族 credits 系数、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "pricing": null,
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
         },
         {
           "slug": "claude-max5--claude-sonnet-5",
@@ -8473,21 +8623,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 220.7357859532,
-            "weeklyTokenInM": 1393.5351170569,
-            "monthlyTokenInM": 5574.1,
-            "unitPriceCnyPerM": 0.12172
+            "fiveHourTokenInM": 451.1871862839,
+            "weeklyTokenInM": 3398.9434700055,
+            "monthlyTokenInM": 13595.8,
+            "unitPriceCnyPerM": 0.05032
           },
-          "pricing": {
-            "currency": null,
-            "inputPerM": 400000.0,
-            "cachePerM": 0.0,
-            "outputPerM": 2000000.0,
-            "unit": "Credits"
-          },
-          "note": "抵扣单价：输入 0.40 Credits/Token、缓存读取 0 Credits/Token、输出 2 Credits/Token；套餐共享额度：5小时 6,600,000 Credits、每周 41,666,700 Credits、每月 166,666,800 Credits；历史社区逆向订阅扣减系数，非官方 API 报价；缓存读取按不扣减处理；按社区额度数据、Sonnet 家族 credits 系数（新增输入 0.4、输出 2、缓存读取免费）、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；未针对 Sonnet 5 单独实测，数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "pricing": null,
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
         },
         {
           "slug": "claude-max5--claude-sonnet-4-6",
@@ -8560,12 +8704,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 676.7807794259,
+            "weeklyTokenInM": 5098.4152050082,
+            "monthlyTokenInM": 20393.7,
+            "unitPriceCnyPerM": 0.03332
           },
           "pricing": null,
-          "note": null
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
         },
         {
           "slug": "claude-max5--claude-opus-4-8",
@@ -8598,7 +8745,7 @@
         "原生 Claude 体验",
         "Claude Platform 每月赠送 API Credits：$200（2026-10-07 公告；与订阅额度分开）"
       ],
-      "note": "• 部分用户订阅时可能被要求实名认证\n• Claude / Claude Code 订阅主额度不可用于 OpenClaw、Hermes 等第三方编程 Agent 赠送的 Claude Platform API Credits 需新订阅满 7 天并绑定 Console 组织后领取，周期末失效、不结转，不能支付 Claude Code 或 Claude 应用内额外用量。",
+      "note": "部分用户订阅时可能被要求实名认证。订阅认证的 Claude Agent SDK / claude -p 可消耗订阅额度；API key 使用对应 Console 组织的 API 余额。 每月赠送 API Credits 需新订阅满 7 天并绑定 Console 组织领取，周期末失效、不结转；与订阅额度分开，不能支付交互式 Claude Code 或应用内额外用量。自行使用关联组织 API key 运行 SDK / claude -p 可使用赠额，IDE、Desktop、GitHub Action 发起的 Code 运行不适用。",
       "planStatus": "open",
       "planModels": [
         {
@@ -8607,12 +8754,22 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 1230.510508047,
+            "weeklyTokenInM": 4634.9229136438,
+            "monthlyTokenInM": 18539.7,
+            "unitPriceCnyPerM": 0.07344
           },
-          "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 1000000.0,
+            "cacheWritePerM": 1250000.0,
+            "cachePerM": 25000.0,
+            "outputPerM": 5000000.0,
+            "unit": "Credits"
+          },
+          "note": "抵扣单价：输入 1 Credits/Token、缓存写入 1.25 Credits/Token、缓存读取 0.03 Credits/Token、输出 5 Credits/Token；套餐共享额度：5小时 136M Credits、每周 514M Credits、每月 2,055M Credits；按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；2026-09-29 Max 20x 交互 CLI 社区经验扣额系数，非官方 API 报价；按 Opus 5.5 普通输入归一化。；2026-09-29 Max 20x 交互 CLI 社区实验校准估算，精确现行 Token 上限可能变化。"
         },
         {
           "slug": "claude-max20--claude-sonnet-5-5",
@@ -8620,12 +8777,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 1804.7487451356,
+            "weeklyTokenInM": 6797.8869400109,
+            "monthlyTokenInM": 27191.5,
+            "unitPriceCnyPerM": 0.05032
           },
           "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
         },
         {
           "slug": "claude-max20--claude-haiku-5-5",
@@ -8633,12 +8793,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 24031.8702221584,
+            "weeklyTokenInM": 90520.0445034633,
+            "monthlyTokenInM": 362080.2,
+            "unitPriceCnyPerM": 0.00408
           },
           "pricing": null,
-          "note": "Claude Code 当前支持，1M 上下文；精确 Token 额度未知。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 Opus 5.5 容量×19.53 外推，基于 API 混合价比的低置信估算；未验证分类订阅扣额系数及不同上下文下的容量。"
         },
         {
           "slug": "claude-max20--claude-fable-5-1",
@@ -8648,13 +8811,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 220.7357859532,
-            "weeklyTokenInM": 418.0600334448,
-            "monthlyTokenInM": 1672.2,
-            "unitPriceCnyPerM": 0.81328
+            "fiveHourTokenInM": 270.7123117703,
+            "weeklyTokenInM": 509.8415205008,
+            "monthlyTokenInM": 2039.4,
+            "unitPriceCnyPerM": 0.66708
           },
           "pricing": null,
-          "note": "Claude Code 2.1.255 起支持；按官方 Fable 每周最多占套餐周额度 50%、Fable 输入/输出价格为 Opus 5 的 2 倍及现有 credits 价格比例关系推算：5小时为 Opus 5 的 1/2，周为 Opus 5 的 1/4，月按周×4；缓存命中率95%、输出占比0.5%；未单独实测，数据可能存在偏差，欢迎反馈；官方上下文上限 1M；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按历史模型权重外推；Fable 系列合计最多消耗共享周额度的 50%，不是额外额度。共享 token 权重为估算假设。"
         },
         {
           "slug": "claude-max20--claude-fable-5",
@@ -8664,13 +8827,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 220.7357859532,
-            "weeklyTokenInM": 418.0600334448,
-            "monthlyTokenInM": 1672.2,
-            "unitPriceCnyPerM": 0.81328
+            "fiveHourTokenInM": 270.7123117703,
+            "weeklyTokenInM": 509.8415205008,
+            "monthlyTokenInM": 2039.4,
+            "unitPriceCnyPerM": 0.66708
           },
           "pricing": null,
-          "note": "Claude Code 2.1.170 起支持；按官方 Fable 每周最多占套餐周额度 50%、Fable 输入/输出价格为 Opus 5 的 2 倍及现有 credits 价格比例关系推算：5小时为 Opus 5 的 1/2，周为 Opus 5 的 1/4，月按周×4；缓存命中率95%、输出占比0.5%；未单独实测，数据可能存在偏差，欢迎反馈；官方上下文上限 1M；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按与 Fable 5.1 相同容量估算，非本版本独立测量；两版本合计最多消耗共享周额度的 50%。"
         },
         {
           "slug": "claude-max20--claude-opus-5",
@@ -8678,21 +8841,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 441.4715719064,
-            "weeklyTokenInM": 1672.2401337793,
-            "monthlyTokenInM": 6689.0,
-            "unitPriceCnyPerM": 0.20332
+            "fiveHourTokenInM": 984.4084064376,
+            "weeklyTokenInM": 3707.938330915,
+            "monthlyTokenInM": 14831.8,
+            "unitPriceCnyPerM": 0.0918
           },
-          "pricing": {
-            "currency": null,
-            "inputPerM": 666666.6666666666,
-            "cachePerM": 0.0,
-            "outputPerM": 3333333.3333333335,
-            "unit": "Credits"
-          },
-          "note": "抵扣单价：输入 0.67 Credits/Token、缓存读取 0 Credits/Token、输出 3.33 Credits/Token；套餐共享额度：5小时 22,000,000 Credits、每周 83,333,300 Credits、每月 333,333,200 Credits；历史社区逆向订阅扣减系数，非官方 API 报价；缓存读取按不扣减处理；按社区额度数据、Opus 家族 credits 系数、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "pricing": null,
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
         },
         {
           "slug": "claude-max20--claude-sonnet-5",
@@ -8700,21 +8857,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "calculated",
+          "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 735.7859531773,
-            "weeklyTokenInM": 2787.0668896321,
-            "monthlyTokenInM": 11148.3,
-            "unitPriceCnyPerM": 0.12172
+            "fiveHourTokenInM": 1804.7487451356,
+            "weeklyTokenInM": 6797.8869400109,
+            "monthlyTokenInM": 27191.5,
+            "unitPriceCnyPerM": 0.05032
           },
-          "pricing": {
-            "currency": null,
-            "inputPerM": 400000.0,
-            "cachePerM": 0.0,
-            "outputPerM": 2000000.0,
-            "unit": "Credits"
-          },
-          "note": "抵扣单价：输入 0.40 Credits/Token、缓存读取 0 Credits/Token、输出 2 Credits/Token；套餐共享额度：5小时 22,000,000 Credits、每周 83,333,300 Credits、每月 333,333,200 Credits；历史社区逆向订阅扣减系数，非官方 API 报价；缓存读取按不扣减处理；按社区额度数据、Sonnet 家族 credits 系数（新增输入 0.4、输出 2、缓存读取免费）、95% 缓存命中率和 0.5% 输出占比计算；五小时按额度翻倍后估算，月按周额度的 4 倍计算；未针对 Sonnet 5 单独实测，数据可能存在偏差，欢迎反馈；该参考采用旧社区扣减口径，未针对 2026-09-22 提高五小时额度后的规则复测。"
+          "pricing": null,
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
         },
         {
           "slug": "claude-max20--claude-sonnet-4-6",
@@ -8787,12 +8938,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 2707.1231177035,
+            "weeklyTokenInM": 10196.8304100164,
+            "monthlyTokenInM": 40787.3,
+            "unitPriceCnyPerM": 0.03332
           },
           "pricing": null,
-          "note": null
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
         },
         {
           "slug": "claude-max20--claude-opus-4-8",

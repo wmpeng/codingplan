@@ -428,7 +428,9 @@
         const format = (value) => {
             return Numbers.unitPrice(value, currency);
         };
-        return `输入 ${format(pricing.inputPerM)} · 缓存 ${format(pricing.cachePerM)} · 输出 ${format(pricing.outputPerM)} / M`;
+        const write = pricing.cacheWritePerM === undefined ? '' : ` · 缓存写入 ${format(pricing.cacheWritePerM)}`;
+        const cacheLabel = pricing.cacheWritePerM === undefined ? '缓存' : '缓存读取';
+        return `输入 ${format(pricing.inputPerM)}${write} · ${cacheLabel} ${format(pricing.cachePerM)} · 输出 ${format(pricing.outputPerM)} / M`;
     }
 
     function currencySymbol(currency) {

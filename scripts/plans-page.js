@@ -24,7 +24,7 @@
       const allPlans = root.EntityData.buildPlanCatalog(context).filter(plan => plan.billingMode === 'subscription');
       const search = host.querySelector('[data-plan-search]');
       let state = Filters.createDefaultState(config, {mode:'full'}), pins = Directory.readPins(root.localStorage, allPlans);
-      let sort = {key:'platformOrder', direction:'asc'}, sortPicker, sortSelect, directionButton, lastFilterKey;
+      let sort = {key:'platformOrder', direction:'asc'}, sortPicker, sortSelect, directionButton, lastFilterKey, featuredOnly = false;
       const tableBody = host.querySelector('[data-plan-body]'), count = host.querySelector('[data-plan-count]');
       function syncSort() {
         if (sortSelect) { sortSelect.value = sort.key; sortPicker.sync(); }
@@ -40,7 +40,9 @@
         });
       }
       function apply() {
-        const selection = Directory.select(allPlans, state, {context, config, query:search.value, sort, pins});
+        const selection = Directory.select(allPlans, state, {context, config, query:search.value, sort, pins, featuredOnly});
+        search.disabled = featuredOnly;
+        search.closest('.tool-result-bar').classList.toggle('is-search-paused', featuredOnly);
         count.textContent = Directory.countLabel(selection); syncSort();
         tableBody.innerHTML = selection.visible.length ? selection.visible.map(plan => {
           const status = plan.planStatus || 'open';
@@ -55,15 +57,15 @@
             ? `<a class="plan-title" data-plan-link="${status}" href="${esc(url)}" target="_blank" rel="noopener noreferrer" aria-label="${status === 'open' ? '开通' : '去官网查看'} ${esc(label)}">${esc(label)} ${UI.externalLinkIcon}</a>`
             : `<strong class="plan-title">${esc(label)}</strong>`;
           return `<tr data-plan-row="${esc(plan.slug)}"${selection.pinned.has(plan.slug) ? ' class="is-pinned"' : ''}>
-            <td data-plan-col="identity"><div class="plan-identity">${UI.pinButton({pinned:selection.pinned.has(plan.slug), label:`${selection.pinned.has(plan.slug) ? '取消置顶' : '置顶'} ${label}`, attributes:{'data-plan-pin':plan.slug}})}<div class="plan-identity-copy">${title}${notice('general')}<div class="plan-meta">${status === 'open' ? '' : `<span class="tool-tag plan-status" data-plan-status="${status}">${esc(UI.statusLabels[status])}</span>`}${root.EntityData.harnessApiBadge(plan.supportsHarnessApi)}</div></div></div></td>
+            <td data-plan-col="identity"><div class="plan-identity">${UI.pinButton({pinned:selection.pinned.has(plan.slug), label:`${selection.pinned.has(plan.slug) ? '取消置顶' : '置顶'} ${label}`, attributes:{'data-plan-pin':plan.slug}})}<div class="plan-identity-copy">${title}${selection.featured.has(plan.slug) ? ' <span class="platform-featured-badge" data-plan-featured-badge>精选</span>' : ''}${notice('general')}<div class="plan-meta">${status === 'open' ? '' : `<span class="tool-tag plan-status" data-plan-status="${status}">${esc(UI.statusLabels[status])}</span>`}${root.EntityData.harnessApiBadge(plan.supportsHarnessApi)}</div></div></div></td>
             <td data-plan-col="rating"><span class="plan-rating" aria-label="${plan.rating > 0 ? esc(plan.rating)+' 星' : '待评定'}">${plan.rating > 0 ? '★ '+Number(plan.rating).toFixed(1) : '待评定'}</span></td>
             ${['firstMonthPrice','monthlyPrice','quarterlyPrice','yearlyPrice'].map(key => `<td data-plan-col="${key}"${key === 'firstMonthPrice' ? '' : ' data-plan-extra'}>${esc(money(plan,key))}${key==='firstMonthPrice'?notice('price'):''}</td>`).join('')}
             <td data-plan-col="models">${modelNotice ? `<div class="plan-models-with-notice">${modelList}${modelNotice}</div>` : modelList}</td>
-            <td data-plan-col="monthlyToken" class="monthly-token-cell" title="所选模型各档位的月 Token 参考范围，不相加；按最大值排序，详细口径见价格与额度">${esc(Filters.formatMonthlyTokens(plan,state))}${notice('quota')}</td>
+            <td data-plan-col="monthlyToken" class="monthly-token-cell" title="所选模型各档位的月 Token 参考范围，不相加；按最大值排序，详细口径见价格与额度">${esc(Filters.formatMonthlyTokens(plan,selection.effectiveState))}${notice('quota')}</td>
             ${['fiveHours','weekly','monthly'].map(key => `<td data-plan-col="requestQuota.${key}" data-plan-extra>${esc(requests(plan,key))}</td>`).join('')}
             <td data-plan-col="benefits" data-plan-extra>${chips(plan.benefits)}</td><td class="plan-note" data-plan-col="note">${esc(plan.note || '')}</td>
           </tr>`;
-        }).join('') : '<tr><td colspan="13"><div class="tool-empty">没有匹配套餐，试着清空搜索或减少筛选条件。</div></td></tr>';
+        }).join('') : `<tr><td colspan="13"><div class="tool-empty">${featuredOnly ? '暂无符合精选范围的套餐，可关闭“显示精选”查看其他套餐。' : '没有匹配套餐，试着清空搜索或减少筛选条件。'}</div></td></tr>`;
         modelRows.refresh(); host.dataset.mounted = '1';
       }
       search.disabled = false; search.addEventListener('input', apply);
@@ -87,10 +89,11 @@
         host.classList.toggle('show-all-columns', event.target.checked); modelRows.refresh();
       });
       root.CodingPlanToolPage.filters({context,config},'plans',(next,meta) => {
-        const key = JSON.stringify([next, context.modelGroups]);
+        const key = JSON.stringify([next, meta.featuredOnly, context.modelGroups, context.featuredPlatformSlugs]);
         if (meta.source === 'catalog' && key === lastFilterKey) return;
         lastFilterKey = key;
         state = next;
+        featuredOnly = !!meta.featuredOnly;
         if (meta.source === 'reset') { search.value = ''; sort = {key:'platformOrder',direction:'asc'}; }
         apply();
       });

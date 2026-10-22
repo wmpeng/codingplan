@@ -121,7 +121,7 @@
       "name": "MiniMax",
       "rating": 5,
       "summary": "新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。",
-      "detail": "M3.1 Flash精确Token额度未公开，按五小时与七天窗口选择档位。",
+      "detail": "M3.1 Flash官方固定Token配额未公开；提供社区样本和加权扣减假设推算的五小时、周及四周用量参考。",
       "dimensions": {
         "value": {
           "score": 4,
@@ -327,8 +327,8 @@
       "slug": "claude",
       "name": "Claude",
       "rating": 4,
-      "summary": "Claude Code官方订阅，已支持Opus、Sonnet、Haiku 5.5；新型号精确Token额度未知。",
-      "detail": "支持 Claude 5.5 系列；精确订阅 Token 额度未知，不能按 API 价格推算。",
+      "summary": "Claude Code 官方订阅，支持 Opus、Sonnet、Haiku 5.5；Token 容量为带负载条件的估算。",
+      "detail": "支持 Claude 5.5 系列；容量按历史社区参数及模型/套餐倍率估算，非官方固定 Token 配额。Haiku 5.5 与部分跨型号、跨套餐关系含外推假设。",
       "dimensions": {
         "value": {
           "score": 5,
@@ -336,7 +336,7 @@
         },
         "models": {
           "score": 5,
-          "reason": "支持 Claude 5.5 系列；精确订阅 Token 额度未知，不能按 API 价格推算。"
+          "reason": "支持 Claude 5.5 系列；额度参考含历史参数和外推假设，实际可用量以账号用量为准。"
         },
         "stability": {
           "score": 3,

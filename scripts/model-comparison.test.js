@@ -390,6 +390,10 @@ test('API pricing formatter preserves raw price components and unknowns', () => 
     '输入 $2 · 缓存 $0.20 · 输出 $8 / M'
   );
   assert.equal(formatApiPricing(null), '—');
+  assert.equal(
+    formatApiPricing({currency:'$', inputPerM:2, cacheWritePerM:0, cachePerM:.2, outputPerM:8}),
+    '输入 $2 · 缓存写入 $0 · 缓存读取 $0.20 · 输出 $8 / M'
+  );
 });
 
 test('platform table cell links to safe plan actions', () => {
