@@ -2,9 +2,9 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.10.22 | Claude 额度估算与缓存写入口径更新
+> 更新日期 2026.10.22 | Claude 额度估算与缓存写入口径、Kimi 新套餐额度估算更新
 
-当前展示 **42 个平台、142 个在售订阅套餐、2 个按量 API、163 个模型和 2329 条套餐模型关系**。
+当前展示 **42 个平台、142 个在售订阅套餐、2 个按量 API、163 个模型和 2330 条套餐模型关系**。
 
 [在线平台中心](https://codingplan.fyi/platforms/) · [模型目录](https://codingplan.fyi/models/) · [价格与额度](https://codingplan.fyi/pricing/) · [套餐对比](https://codingplan.fyi/plans/) · [预告与更新](https://codingplan.fyi/updates/)
 
@@ -106,10 +106,14 @@
 |---|---|---|---:|---:|---:|---:|
 | [字节·方舟 Coding Plan · Lite](https://api.dreamfree.space/c/s/cpyqfangzhou) | - | ¥9.9/首月 | 4.17M | 31.25M | 62.5M | ¥0.64/M |
 | [字节·方舟 Coding Plan · Pro](https://api.dreamfree.space/c/s/cpyqfangzhou) | - | ¥49.9/首月 | 20.83M | 156.25M | 312.5M | ¥0.64/M |
+| [Kimi · Pro](https://api.dreamfree.space/c/s/cpyqkimi) | - | ¥199/首月 | 9.92M | 248M | 248M | ¥0.8024/M |
+| [Kimi · Max](https://api.dreamfree.space/c/s/cpyqkimi) | - | ¥699/首月 | 31.75M | 793.7M | 793.7M | ¥0.8807/M |
+| [Kimi · Ultra](https://api.dreamfree.space/c/s/cpyqkimi) | - | ¥1,399/首月 | 63.49M | 1,587.3M | 1,587.3M | ¥0.8814/M |
 | [字节·方舟 Agent Plan · Small](https://api.dreamfree.space/c/s/cpyqfangzhout) | - | ¥9.9/首月 | 4.17M | 14.58M | 41.7M | ¥0.96/M |
 | [字节·方舟 Agent Plan · Medium](https://api.dreamfree.space/c/s/cpyqfangzhout) | - | ¥49.9/首月 | 20.83M | 72.92M | 208.3M | ¥0.96/M |
 | [字节·方舟 Agent Plan · Large](https://api.dreamfree.space/c/s/cpyqfangzhout) | - | ¥500/首月 | 52.08M | 182.29M | 520.8M | ¥0.96/M |
-| [字节·方舟 Agent Plan · Max](https://api.dreamfree.space/c/s/cpyqfangzhout) | - | ¥1,000/首月 | 104.17M | 364.58M | 1,041.7M | ¥0.96/M |
+
+还有 2 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### MiniMax-M3.1-Flash
 
@@ -192,11 +196,11 @@
 | [Kimi · Allegretto（老套餐）](https://api.dreamfree.space/c/s/cpyqkimi) | - | ¥199/首月 | 30M | 150M | 600M | ¥0.3317/M |
 | [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | - | $1/首月 | - | - | 15.8M | ¥0.4318/M |
 | [Kimi · Allegro（老套餐）](https://api.dreamfree.space/c/s/cpyqkimi) | - | ¥699/首月 | 80M | 400M | 1,600M | ¥0.4369/M |
+| [Kimi · Pro](https://api.dreamfree.space/c/s/cpyqkimi) | [256K] | ¥199/首月 | 12.98M | 324.6M | 324.6M | ¥0.613/M |
 | [字节·方舟 Coding Plan · Lite](https://api.dreamfree.space/c/s/cpyqfangzhou) | - | ¥9.9/首月 | 4M | 30M | 60M | ¥0.6667/M |
-| [字节·方舟 Coding Plan · Pro](https://api.dreamfree.space/c/s/cpyqfangzhou) | - | ¥49.9/首月 | 20M | 150M | 300M | ¥0.6667/M |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥20 / 缓存¥2 / 出¥100 | - | - | - | ¥3.3855/M |
 
-还有 23 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
+还有 31 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ## 平台对比
 
@@ -312,6 +316,7 @@
 
 - 更新 Claude 各套餐的条件额度估算：以 Opus 5.5 为基准，按模型与分窗口倍率计算；Haiku 5.5、Fable 5 等关系包含外推假设，均非官方固定 Token 配额。
 - Claude 额度估算区分普通输入、缓存写入、缓存读取和输出；未命中输入暂按全部写缓存估算，其他平台口径保持不变。
+- 补充 Kimi Plus、Pro、Max、Ultra 的 Code 额度估算：按模型、缓存命中率和输出占比换算；Code 暂估比例与官网 Agent 额度比例不同。
 
 ### 2026.10.21
 

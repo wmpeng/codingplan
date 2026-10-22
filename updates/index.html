@@ -1,26 +1,26 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<script src="/scripts/ui-core.js?v=101203ea10"></script>
-<script src="/scripts/ui-help.js?v=b8624088b6"></script>
-<script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
-<script src="/scripts/ui-dialog.js?v=632fc11cea" defer></script>
-<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
+<script src="/scripts/ui-core.js?v=a84b5a6a44"></script>
+<script src="/scripts/ui-help.js?v=e0a6ce9057"></script>
+<script src="/scripts/site-features.js?v=085e184d3a"></script>
+<script src="/scripts/ui-dialog.js?v=c1774b93df" defer></script>
+<script src="/scripts/section-navigation.js?v=c0c57096eb" defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>变更预告与更新历史 - Coding Plan</title>
 <meta name="description" content="查看平台、套餐与模型的变更预告、生效条件及 Coding Plan 资料更新历史。">
   <link rel="canonical" href="https://codingplan.fyi/updates/">
   <link rel="icon" href="/favicon.ico?v=260924a">
-  <link rel="stylesheet" href="/styles/shared.css?v=482edb170c">
-  <link rel="stylesheet" href="/styles/tool-page.css?v=c391128a7b">
-  <link rel="stylesheet" href="/styles/design-system.css?v=294b0cc3f4">
-  <link rel="stylesheet" href="/styles/changes-page.css?v=07141e11a3">
-<script src="/scripts/changes-page.js?v=02ada7f47c" defer></script>
-<script src="/scripts/site-navigation.js?v=58bc3a8bab" defer></script>
-<link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
-<link rel="stylesheet" href="/styles/ui-components.css?v=4839ae1fc0">
-<link rel="stylesheet" href="/styles/ui-help.css?v=50cda6ca65">
+  <link rel="stylesheet" href="/styles/shared.css?v=ac9b008487">
+  <link rel="stylesheet" href="/styles/tool-page.css?v=041b9d7417">
+  <link rel="stylesheet" href="/styles/design-system.css?v=5f03a7cffd">
+  <link rel="stylesheet" href="/styles/changes-page.css?v=37b007d9f4">
+<script src="/scripts/changes-page.js?v=dd072271cc" defer></script>
+<script src="/scripts/site-navigation.js?v=121f3bd6d1" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=3c430639bf">
+<link rel="stylesheet" href="/styles/ui-components.css?v=bf5f1551fa">
+<link rel="stylesheet" href="/styles/ui-help.css?v=5e15e3e2c0">
 </head>
 <body class="tool-page content-list-view">
 <!-- SITE_NAV_START -->
@@ -296,7 +296,7 @@
   <dl class="change-values"><div><dt>当前文本模型</dt><dd><span class="change-before">MiniMax-M3.1-Flash-Preview</span><span class="change-arrow" aria-label="变为">→</span><strong>正式MiniMax-M3.1-Flash；精确Token额度仍未公布</strong></dd></div></dl>
   <details class="change-details"><summary>适用范围与官方来源</summary><div class="change-details-body"><ul><li>MiniMax · M Plan Go</li><li>MiniMax · M Plan Explore</li><li>MiniMax · M Plan Build</li><li>MiniMax · MiniMax Code Free</li></ul><p class="change-sources"><a href="https://platform.minimax.cn/docs/m-plan/intro" target="_blank" rel="noopener noreferrer">官方来源 ↗</a></p></div></details>
   </article></div></details>
-    <section id="history" class="updates-history" aria-labelledby="history-heading"><h2 id="history-heading">更新历史</h2><div class="updates-list"><section class="update-entry"><h2>2026.10.22</h2><ul><li>更新 Claude 各套餐的条件额度估算：以 Opus 5.5 为基准，按模型与分窗口倍率计算；Haiku 5.5、Fable 5 等关系包含外推假设，均非官方固定 Token 配额。</li><li>Claude 额度估算区分普通输入、缓存写入、缓存读取和输出；未命中输入暂按全部写缓存估算，其他平台口径保持不变。</li></ul></section>
+    <section id="history" class="updates-history" aria-labelledby="history-heading"><h2 id="history-heading">更新历史</h2><div class="updates-list"><section class="update-entry"><h2>2026.10.22</h2><ul><li>更新 Claude 各套餐的条件额度估算：以 Opus 5.5 为基准，按模型与分窗口倍率计算；Haiku 5.5、Fable 5 等关系包含外推假设，均非官方固定 Token 配额。</li><li>Claude 额度估算区分普通输入、缓存写入、缓存读取和输出；未命中输入暂按全部写缓存估算，其他平台口径保持不变。</li><li>补充 Kimi Plus、Pro、Max、Ultra 的 Code 额度估算：按模型、缓存命中率和输出占比换算；Code 暂估比例与官网 Agent 额度比例不同。</li></ul></section>
 <section class="update-entry"><h2>2026.10.21</h2><ul><li>补充MiniMax M Plan正式M3.1 Flash的五小时、周和四周估算用量：按社区样本及加权扣减假设计算，非官方固定Token配额。</li><li>MiniMax Code订阅用户可在客户端内不限量使用M3.1 Flash至10月25日；外部工具API未获不限量承诺。</li><li>MiniMax Code内新订阅或升级M Plan首月五折活动截至10月31日：Go / Explore / Build首月24.5 / 59.5 / 234.5元，次月起49 / 119 / 469元每月。</li><li>调整 Codex 参考额度估算：Plus、Pro $200、Pro $500 分别按 Pro $100 的 1/5、2 倍、5 倍换算；补齐 Fast / Ultrafast 参考额度，均非官方固定 Token 配额。</li></ul></section>
 <section class="update-entry"><h2>2026.10.20</h2><ul><li>比较价格统一采用通用价，邀请优惠单列资格：更新共绩API标价、智谱国际及方舟首月价格。</li><li>MiniMax M Plan使用正式M3.1 Flash；补OpenCode、Command Code、Ollama相应入口及OpenCode Beam Free，精确型号评测独立核对。</li><li>补Kimi视频输入差异、Command免费模型门槛和共享额度，以及Qoder、MiMo、智谱客户端活动条件；未明确的数字与叠加方式继续保留未知。</li></ul></section>
 <section class="update-entry"><h2>2026.10.19</h2><ul><li>更新已确认的套餐价格、续费与优惠条件：补Kimi Ultra及多平台周期价，标明限购、售罄和停售。</li><li>调整Codex、Claude、Cursor、OpenCode、Command Code、Qoder等平台模型支持与额度；DeepSeek官方及腾讯已确认渠道使用独立1017型号。</li><li>补充共享池、客户端、工具计费与活动期限；未来变化收录于「预告与更新」，按确认结果维护现行数据。</li><li>同步AA与DeepSWE评测资料，未公开Token量及存在冲突的型号、价格和权限继续保留未知或原记录。</li></ul></section>
