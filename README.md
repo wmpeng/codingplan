@@ -2,9 +2,9 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.10.22 | Claude 额度估算与缓存写入口径、Kimi 新套餐额度估算更新
+> 更新日期 2026.10.23 | 模型支持、OpenCode额度与火山Economy计费档更新
 
-当前展示 **42 个平台、142 个在售订阅套餐、2 个按量 API、163 个模型和 2330 条套餐模型关系**。
+当前展示 **42 个平台、142 个在售订阅套餐、2 个按量 API、163 个模型和 2327 条套餐模型关系**。
 
 [在线平台中心](https://codingplan.fyi/platforms/) · [模型目录](https://codingplan.fyi/models/) · [价格与额度](https://codingplan.fyi/pricing/) · [套餐对比](https://codingplan.fyi/plans/) · [预告与更新](https://codingplan.fyi/updates/)
 
@@ -50,6 +50,10 @@
 | [腾讯云 · Pro](https://api.dreamfree.space/c/s/cpyqtengxunt) | - | ¥299/首月 | 1,686.3M | 1,686.3M | 1,686.3M | ¥0.1773/M |
 | [腾讯云 · Max](https://api.dreamfree.space/c/s/cpyqtengxunt) | - | ¥599/首月 | 3,378.3M | 3,378.3M | 3,378.3M | ¥0.1773/M |
 | [DeepSeek · 按量 API](https://platform.deepseek.com/) | [峰] | 入¥2 / 缓存¥0.04 / 出¥8 | - | - | - | ¥0.1773/M |
+| [百度·千帆 · Max](https://api.dreamfree.space/c/s/cpyqqianfan) | - | ¥299.9/首月 | 700M | 700M | 700M | ¥0.8571/M |
+| [百度·千帆 · Pro](https://api.dreamfree.space/c/s/cpyqqianfan) | - | ¥99.9/首月 | 230M | 230M | 230M | ¥0.8696/M |
+
+还有 2 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### DeepSeek-V4.1-Flash
 
@@ -64,7 +68,7 @@
 | [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | [峰] | $10/首月 | 601.58M | 1,503.96M | 3,007.9M | ¥0.0224/M |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M |
 
-还有 41 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
+还有 45 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### DeepSeek-V4-Flash-0731
 
@@ -137,9 +141,9 @@
 | [Ollama · Pro](https://api.dreamfree.space/c/s/cpyqollama) | - | $20/首月 | 2,434.9M | 2,434.9M | 2,434.9M | ¥0.0558/M |
 | [Ollama · Max](https://api.dreamfree.space/c/s/cpyqollama) | - | $100/首月 | 12,174.7M | 12,174.7M | 12,174.7M | ¥0.0558/M |
 | [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | - | $10/首月 | - | - | 811.6M | ¥0.0836/M |
-| [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | - | $20/首月 | - | - | 1,217.5M | ¥0.1115/M |
+| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | - | $10/首月 | 162.33M | 405.82M | 811.6M | ¥0.0836/M |
 
-还有 2 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
+还有 4 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### GPT-6-Astra
 
@@ -232,7 +236,7 @@
 | [Ollama](https://api.dreamfree.space/c/s/cpyqollama) | 可以购买 | ⭐️⭐️⭐️⭐️ | 云端 LLM 的美元 Credits 订阅，月池可集中使用；部分缓存价格未知。 |
 | [阿里·百炼 Token Plan](https://api.dreamfree.space/c/s/cpyqbailiant) | 可以购买 | ⭐️⭐️⭐️⭐️ | 百炼Token Plan现为四档Credits订阅，与旧Coding Plan产品分开。 |
 | [阿里·百炼 Coding Plan](https://api.dreamfree.space/c/s/cpyqbailianc) | 购买受限 | ⭐️⭐️⭐️⭐️ | Pro 套餐性价比高，但供应有限。 |
-| [小米·MiMo](https://api.dreamfree.space/c/s/cpyqmimo) | 可以购买 | ⭐️⭐️⭐️⭐️ | MiMo文本Credits订阅，当前4个LLM，夜间00–08点UTC+8享0.8消耗。 |
+| [小米·MiMo](https://api.dreamfree.space/c/s/cpyqmimo) | 可以购买 | ⭐️⭐️⭐️⭐️ | MiMo文本Credits订阅，当前2个LLM，夜间00–08点UTC+8享0.8消耗。 |
 | [Command Code](https://api.dreamfree.space/c/s/cpcommandcode) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | Go、GOAT、Pro与两档Max多模型订阅，按实际模型价格与上下文档扣减Credits。 |
 | [百度·千帆](https://api.dreamfree.space/c/s/cpyqqianfan) | 可以购买 | ⭐️⭐️⭐️ | Token计量与积分计量产品并存，统一品牌下按独立计费套餐比较。 |
 | [华为云](https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement) | 购买受限 | ⭐️⭐️⭐️ | 华为云个人Token Plan，当前五个LLM，按官方月Token总量。 |
@@ -248,7 +252,7 @@
 | [联通云](https://api.dreamfree.space/c/s/cpyqunicomtp) | 可以购买 | ⭐️⭐️ | 个人版按Token额度、团队版按Credits计量；当前成交价、库存及DeepSeek精确版本待确认。 |
 | [移动云](https://api.dreamfree.space/c/s/cpyqmobilecp) | 可以购买 | ⭐️⭐️ | 移动云请求制订阅，当前M2.5；首月与续费券按活动资格区分。 |
 | [阶跃星辰](https://api.dreamfree.space/c/s/cpyqstepfun) | 购买受限 | ⭐️⭐️ | Step Plan按月Credits计费，支持Step5 Preview和Flash系列；每日限量，当前售罄。 |
-| [TaoToken](https://api.dreamfree.space/c/s/cpyqtaotoken) | 购买受限 | ⭐️⭐️⭐️ | 双Flash Coding Plan，支持GLM5.3 Flash与DeepSeek V4 Flash；Lite月付和季付名额售罄。 |
+| [TaoToken](https://api.dreamfree.space/c/s/cpyqtaotoken) | 购买受限 | ⭐️⭐️⭐️ | 双Flash Coding Plan，支持GLM5.3 Flash与DeepSeek V4.1 Flash 1017；Lite月付和季付名额售罄。 |
 | [超算](https://api.dreamfree.space/c/s/cpyqscnetcp) | 购买受限 | ⭐️⭐️ | 旧 Coding Plan 支持两个模型，与新 Credits Token Plan 为独立产品。 |
 | [商汤·日日新](https://api.dreamfree.space/c/s/cpyqsensenova) | 购买受限 | ⭐️⭐️ | 免费公测，SenseNova6.8 Flash Lite与U1 Fast，五小时60000积分。 |
 | [摩尔线程](https://api.dreamfree.space/c/s/cpyqmoorefree) | 购买受限 | ⭐️⭐️ | KUAE Coding Plan当前GLM4.7；免费试用30天，付费套餐经官方京东入口销售。 |
@@ -257,7 +261,7 @@
 | [天翼云 · 积分制](https://api.dreamfree.space/c/s/cpyqctyun) | 可以购买 | - | 2026-09-23启用积分制；旧Token制仅周期内用户可续订。 |
 | [京东云 · Token Plan](https://api.dreamfree.space/c/s/cpyqjingdong) | 购买受限 | - | 个人Credits订阅，按模型和输入长度计费，可与Coding Plan同时订阅。 |
 | [淘Token · Token Plan](https://taotoken.net/token-plan) | 可以购买 | - | 多模型Credits月订阅，独立/token入口；与双Flash Coding Plan分开抵扣。 |
-| [超算 · Token Plan](https://www.scnet.cn/) | 可以购买 | - | 19个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。 |
+| [超算 · Token Plan](https://www.scnet.cn/) | 可以购买 | - | 18个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。 |
 | [讯飞 · Astron Token Plan](https://maas.xfyun.cn/) | 可以购买 | - | 面向企业/团队的成员积分订阅；活动已结束，现按常规月价购买。 |
 
 更详细的性价比、模型覆盖、稳定性评价和状态筛选见[在线平台中心](https://codingplan.fyi/platforms/)。
@@ -269,7 +273,7 @@
 | 平台 | 在售套餐 | 月费 / 计费 | 代表模型 |
 |---|---:|---|---|
 | 智谱AI | 3 | ¥118–¥1,078/月 | GLM-5.3、GLM-5.3-Flash |
-| OpenCode | 2 | $10–$40/月 | DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、GPT-6-Luna、等 30 个 |
+| OpenCode | 2 | $10–$40/月 | DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、GPT-6-Luna、等 29 个 |
 | 字节·方舟 Coding Plan | 2 | ¥40–¥200/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、等 13 个 |
 | 字节·方舟 Agent Plan | 4 | ¥40–¥1,000/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、等 13 个 |
 | MiniMax | 4 | ¥0–¥469/月 | MiniMax-M3.1-Flash |
@@ -281,34 +285,34 @@
 | Codex | 6 | $0–$500/月 | GPT-6-Astra、GPT-6-Luna、GPT-6.1-Sol、GPT-5.6-Luna、等 7 个 |
 | Claude | 3 | $20–$200/月 | Claude Opus 5.5、Claude Fable 5、Claude Fable 5.1、Claude Haiku 4.5、等 14 个 |
 | Ollama | 2 | $20–$100/月 | DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、Kimi-K3、等 20 个 |
-| 阿里·百炼 Token Plan | 4 | ¥39–¥499/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、DeepSeek-V4-Pro-0813、等 10 个 |
+| 阿里·百炼 Token Plan | 4 | ¥39–¥499/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、DeepSeek-V4.1-Flash-1017、GLM-5.3、等 11 个 |
 | 阿里·百炼 Coding Plan | 1 | ¥200/月 | GLM-5、Kimi-K2.5、MiniMax-M2.5、Qwen-3.5-Plus、等 6 个 |
 | 小米·MiMo | 4 | ¥39–¥659/月 | MiMo-V2.6-Flash、MiMo-V2.6-Pro |
 | Command Code | 5 | $1–$200/月 | Claude Opus 5.5、DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、等 91 个 |
-| 百度·千帆 | 4 | ¥9.9–¥600/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、等 8 个 |
+| 百度·千帆 | 4 | ¥9.9–¥600/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、DeepSeek-V4.1-Flash-1017、GLM-5.3、等 9 个 |
 | 华为云 | 4 | ¥59–¥799/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.1、等 5 个 |
 | 腾讯云 | 4 | ¥39–¥599/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash-1017、GLM-5.3、GLM-5.3-Flash、等 12 个 |
-| Qoder 国内版 | 3 | ¥59–¥559/月 | DeepSeek-V4-Flash-0731、GLM-5.3、GLM-5.3-Flash、Kimi-K2.8-Preview、等 14 个 |
-| Qoder 国际版 | 3 | $20–$200/月 | DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、Kimi-K2.8-Preview、等 11 个 |
+| Qoder 国内版 | 3 | ¥59–¥559/月 | DeepSeek-V4-Flash-0731、GLM-5.3、GLM-5.3-Flash、Kimi-K2.8-Preview、等 15 个 |
+| Qoder 国际版 | 3 | $20–$200/月 | DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、Kimi-K2.8-Preview、等 12 个 |
 | WorkBuddy | 4 | ¥0–¥700/月 | DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、Kimi-K3、等 14 个 |
 | TRAE 国内版 | 4 | ¥45–¥629/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、等 20 个 |
 | TRAE 国际版 | 5 | $0–$200/月 | DeepSeek-V4-Flash-0731、GPT-6-Astra、GPT-6-Luna、Kimi-K3、等 19 个 |
-| GitHub | 5 | $0–$100/月 | Claude Opus 5.5、GPT-6-Astra、GPT-6-Luna、GPT-6.1-Sol、等 31 个 |
+| GitHub | 5 | $0–$100/月 | Claude Opus 5.5、GPT-6-Astra、GPT-6-Luna、GPT-6.1-Sol、等 26 个 |
 | Cursor | 5 | $0–$200/月 | Claude Opus 5.5、Claude Fable 5.1、Claude Haiku 5.5、Claude Sonnet 5.5、等 16 个 |
 | 讯飞·星火 | 2 | ¥199–¥699/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、GLM-5、GLM-5.1、等 10 个 |
 | 联通云 | 6 | ¥15–¥1,398/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、MiniMax-M2.5 |
 | 移动云 | 2 | ¥40–¥200/月 | MiniMax-M2.5 |
 | 阶跃星辰 | 4 | ¥49–¥699/月 | step-3.5-flash、step-3.7-flash、Step-5-Preview |
-| TaoToken | 3 | ¥39–¥338/月 | DeepSeek-V4-Flash-0731、GLM-5.3-Flash |
+| TaoToken | 3 | ¥39–¥338/月 | DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash |
 | 超算 | 2 | ¥20–¥100/月 | MiniMax-M2.5、Qwen-3-235B-A22B |
 | 商汤·日日新 | 1 | ¥0/月 | SenseNova 6.8 Flash Lite、SenseNova U1 Fast |
 | 摩尔线程 | 1 | ¥0/月 | GLM-4.7 |
 | 腾讯云 · Hy | 4 | ¥28–¥468/月 | Hy3、Hy4-preview |
-| 百度千帆 · 积分制 | 4 | ¥9.9–¥600/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、等 8 个 |
+| 百度千帆 · 积分制 | 4 | ¥9.9–¥600/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、DeepSeek-V4.1-Flash-1017、GLM-5.3、等 9 个 |
 | 天翼云 · 积分制 | 5 | ¥29–¥699/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、GLM-5.1、GLM-5.2、等 6 个 |
 | 京东云 · Token Plan | 4 | ¥69–¥999/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Preview、DeepSeek-V4-Pro-0813、DeepSeek-V4-Pro-Preview、等 8 个 |
 | 淘Token · Token Plan | 2 | ¥59–¥149/月 | DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash |
-| 超算 · Token Plan | 4 | ¥30–¥899/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、等 19 个 |
+| 超算 · Token Plan | 4 | ¥30–¥899/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、DeepSeek-V4.1-Flash-1017、GLM-5.3、等 18 个 |
 | 讯飞 · Astron Token Plan | 3 | ¥200–¥2,000/月 | GLM-4.7-Flash、GLM-5、GLM-5.1、GLM-5.2、等 13 个 |
 
 全部价格、周期优惠、请求数、权益和备注见[在线套餐对比](https://codingplan.fyi/plans/)。
@@ -322,6 +326,13 @@
 - 本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议
 
 ## 最近更新
+
+### 2026.10.23
+
+- 补充百炼、百度千帆和超算Token Plan的DeepSeek V4.1 Flash 1017支持，更新淘Token双Flash型号；精确抵扣未知的套餐继续标注未知。
+- OpenCode Step 5 Preview恢复常规额度，M3.1 Flash按Token计费；移除当前套餐未列出的Space Bunny。
+- 补充火山Agent Plan的DeepSeek V4.1 Flash Economy档及限时折扣、Qoder国际版M3.1 Flash支持；移除Copilot已退役型号，更新超算综合抵扣倍率。
+- 更新Qoder国内版按档位续费赠送；Command Code的Mistral Large 4恢复常规额度，MiMo旧型号入口已停用。
 
 ### 2026.10.22
 
@@ -369,11 +380,6 @@
 - Codex Plus、Pro *5、Pro *20 新增 GPT-6-Sol 与 GPT-6-Luna，均支持文本和图片输入
 - 两款模型 Token 额度暂按同套餐 GPT-5.6-Sol、GPT-5.6-Luna 的 2 倍估算，非官方额度或独立实测
 - 额度/价格默认筛选和精选比较改用 GPT-6-Sol / Luna，旧型号仍可手动选择
-
-### 2026.9.22
-
-- 小米 MiMo 上线 V2.6 系列：Token Plan 四档套餐新增 MiMo-V2.6-Pro 与 MiMo-V2.6-Flash，Credits 折算与 V2.5 价格一致，套餐价格与月度额度均未变；V2.5-Pro / V2.5 将于 10.21 下线，全系支持多模态输入
-- 京东云套餐移动至 GitHub 之后展示
 
 ## 延伸阅读
 

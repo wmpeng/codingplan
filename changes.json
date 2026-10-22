@@ -138,7 +138,7 @@
     {
       "slug": "command-code-mistral-bonus-end-20261021",
       "title": "Command Code 的 Mistral Large 4 额度加成结束",
-      "officialStatus": "announced",
+      "officialStatus": "effective",
       "effectiveTime": {
         "type": "date",
         "date": "2026-10-21"
@@ -175,6 +175,9 @@
       "sources": [
         {
           "url": "https://commandcode.ai/docs/resources/pricing-limits"
+        },
+        {
+          "url": "https://commandcode.ai/docs/plans/go"
         }
       ],
       "relatedChanges": []
@@ -779,7 +782,7 @@
     {
       "slug": "mimo-v2-5-identifiers-retirement-20261021",
       "title": "MiMo V2.5 旧模型名称失效",
-      "officialStatus": "announced",
+      "officialStatus": "effective",
       "effectiveTime": {
         "type": "date",
         "date": "2026-10-21"
@@ -792,7 +795,7 @@
           "after": "原V2.5-Pro / V2.5名称失效，需切换V2.6名称"
         }
       ],
-      "summary": "MiMo公告原V2.5-Pro及V2.5模型名称将于10月21日10:00（UTC+8）失效，请切换至V2.6系列。",
+      "summary": "MiMo V2.5-Pro及V2.5旧模型名称已于2026年10月21日10:00（UTC+8）失效，请切换至V2.6系列。",
       "targets": [
         {
           "type": "plan",
@@ -820,6 +823,9 @@
         }
       ],
       "sources": [
+        {
+          "url": "https://mimo.mi.com/docs/zh-CN/tokenplan/Token%20Plan/subscription"
+        },
         {
           "url": "https://mimo.mi.com/docs/zh-CN/tokenplan/Token%20Plan/subscription"
         }
@@ -1603,6 +1609,104 @@
       "sources": [
         {
           "url": "https://agent.minimax.cn/"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "ark-agent-economy-discount-end-20261231",
+      "title": "火山 Agent Plan Economy 五折活动结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-12-31",
+        "description": "活动截至2026-12-30 23:59:59（UTC+8）。"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "DeepSeek V4.1 Flash Economy 每万Token抵扣",
+          "before": "1 AFP",
+          "after": "2 AFP"
+        }
+      ],
+      "summary": "DeepSeek V4.1 Flash Economy五折活动截至2026-12-30 23:59:59（UTC+8）；输入、缓存、输出常规每万Token均抵扣2 AFP，活动期1 AFP。",
+      "targets": [
+        {
+          "type": "platform",
+          "platformSlug": "bytedance-ark-agent",
+          "label": "字节·方舟 Agent Plan"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-afp-credits-billing-rules?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "github-model-retirements-20261019",
+      "title": "Copilot 部分模型退役",
+      "officialStatus": "effective",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-19"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "可选模型",
+          "before": "Gemini 3.7 Flash、GPT-5 mini、GPT-5.4、GPT-5.4 mini、GPT-5.5",
+          "after": "已退役"
+        }
+      ],
+      "summary": "上述型号自2026-10-19起已退役，请改用当前套餐提供的其他模型。",
+      "targets": [
+        {
+          "type": "platform",
+          "platformSlug": "github",
+          "label": "GitHub"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.github.com/en/copilot/reference/ai-models/supported-models"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "qoder-cn-renewal-bonus-20261021",
+      "title": "Qoder CN 续费加赠提高",
+      "officialStatus": "effective",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-21",
+        "description": "北京时间00:00起，结束时间待公告。"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "月付续费、升级或到期后重购加赠",
+          "before": "各档1000 Qwen Credits",
+          "after": "专业版1000、高级版2000、旗舰版3000 Qwen Credits"
+        }
+      ],
+      "summary": "个人月付续费、升级或到期后重购，每人每自然月限一次；加赠仅用于Qwen系列，30个自然日有效；不含首次订阅、年付、团队和会员卡。",
+      "targets": [
+        {
+          "type": "platform",
+          "platformSlug": "qoder-cn",
+          "label": "Qoder 国内版"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.qoder.cn/events/renewal-offer"
         }
       ],
       "relatedChanges": []
