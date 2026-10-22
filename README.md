@@ -40,6 +40,17 @@
 
 以下使用网站“精选模型价格与用量”中的模型。综合单价统一折算为人民币每 M Token；每个模型最多展示 8 个可计算选项，并为按量 API 保留位置。
 
+### DeepSeek-V4.1-Flash-1017
+
+| 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 |
+|---|---|---|---:|---:|---:|---:|
+| [DeepSeek · 按量 API](https://platform.deepseek.com/) | [谷] | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M |
+| [腾讯云 · Lite](https://api.dreamfree.space/c/s/cpyqtengxunt) | - | ¥39/首月 | 220M | 220M | 220M | ¥0.1773/M |
+| [腾讯云 · Standard](https://api.dreamfree.space/c/s/cpyqtengxunt) | - | ¥99/首月 | 558.3M | 558.3M | 558.3M | ¥0.1773/M |
+| [腾讯云 · Pro](https://api.dreamfree.space/c/s/cpyqtengxunt) | - | ¥299/首月 | 1,686.3M | 1,686.3M | 1,686.3M | ¥0.1773/M |
+| [腾讯云 · Max](https://api.dreamfree.space/c/s/cpyqtengxunt) | - | ¥599/首月 | 3,378.3M | 3,378.3M | 3,378.3M | ¥0.1773/M |
+| [DeepSeek · 按量 API](https://platform.deepseek.com/) | [峰] | 入¥2 / 缓存¥0.04 / 出¥8 | - | - | - | ¥0.1773/M |
+
 ### DeepSeek-V4.1-Flash
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 |
@@ -264,7 +275,7 @@
 | MiniMax | 4 | ¥0–¥469/月 | MiniMax-M3.1-Flash |
 | 智谱国际版 | 3 | $18–$168/月 | GLM-5.3、GLM-5.3-Flash |
 | Kimi | 5 | ¥49–¥1,399/月 | Kimi-K2.8-Preview、Kimi-K3、Kimi-K2.7-Code-HighSpeed |
-| DeepSeek | 1 | 不适用 / 含按量 API | DeepSeek-V4-Pro-0813、DeepSeek-V4.1-Flash-1017 |
+| DeepSeek | 1 | 不适用 / 含按量 API | DeepSeek-V4.1-Flash-1017、DeepSeek-V4-Pro-0813 |
 | 共绩算力 | 1 | 不适用 / 含按量 API | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、等 14 个 |
 | 优云智算 | 6 | ¥49–¥999/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3-Flash、DeepSeek-V4-Flash-Vision-Exp、等 9 个 |
 | Codex | 6 | $0–$500/月 | GPT-6-Astra、GPT-6-Luna、GPT-6.1-Sol、GPT-5.6-Luna、等 7 个 |
@@ -276,7 +287,7 @@
 | Command Code | 5 | $1–$200/月 | Claude Opus 5.5、DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、等 91 个 |
 | 百度·千帆 | 4 | ¥9.9–¥600/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、等 8 个 |
 | 华为云 | 4 | ¥59–¥799/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.1、等 5 个 |
-| 腾讯云 | 4 | ¥39–¥599/月 | DeepSeek-V4-Flash-0731、GLM-5.3、GLM-5.3-Flash、Kimi-K3、等 12 个 |
+| 腾讯云 | 4 | ¥39–¥599/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash-1017、GLM-5.3、GLM-5.3-Flash、等 12 个 |
 | Qoder 国内版 | 3 | ¥59–¥559/月 | DeepSeek-V4-Flash-0731、GLM-5.3、GLM-5.3-Flash、Kimi-K2.8-Preview、等 14 个 |
 | Qoder 国际版 | 3 | $20–$200/月 | DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、Kimi-K2.8-Preview、等 11 个 |
 | WorkBuddy | 4 | ¥0–¥700/月 | DeepSeek-V4.1-Flash、GLM-5.3、GLM-5.3-Flash、Kimi-K3、等 14 个 |
