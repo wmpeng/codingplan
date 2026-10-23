@@ -1,13 +1,3 @@
-/* Only plans with curated highlights use compact notes; existing short notes stay intact. */
-#plansPage .plan-note-highlights { margin: 0; padding-left: 1.15em; white-space: normal; list-style: disc; }
-#plansPage .plan-note-highlights li + li { margin-top: 4px; }
-#plansPage .plan-note-details { margin-top: 4px; white-space: normal; }
-#plansPage .plan-note-details > summary { width: fit-content; min-height: 32px; align-content: center; color: var(--text-secondary); cursor: pointer; font-size: 12px; }
-#plansPage .plan-note-details > summary:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
-#plansPage .plan-note-details > p { margin: 4px 0 0; white-space: pre-line; color: var(--text-secondary); }
-@media (max-width: 800px), (pointer: coarse) {
-  #plansPage .plan-note-details > summary { min-height: 44px; }
-}
 /* Quota details use the visible table width, including while scrolling sideways. */
 #plansPage .plan-quota-toggle {
   display: inline-flex; align-items: center; justify-content: flex-end; gap: 8px;
