@@ -317,18 +317,6 @@ function collectPlansForVendor(plans, platformSlug) {
   return plans.filter(p => p && p.platformSlug === platformSlug);
 }
 
-function matchMonitorPlatform(platform, boardPlatforms) {
-  if (!platform || !Array.isArray(boardPlatforms)) return null;
-  const slug = typeof platform.monitorSlug === 'string' ? platform.monitorSlug.trim() : '';
-  if (slug) {
-    const bySlug = boardPlatforms.find(b => b && b.platform_slug === slug);
-    if (bySlug) return bySlug;
-  }
-  const name = String(platform.name || '').trim();
-  if (!name) return null;
-  return boardPlatforms.find(b => b && String(b.platform_display_name || '').trim() === name) || null;
-}
-
 function validatePlatformRecords(platforms, plans) {
   const errors = [];
   const platformSlugs = new Set(platforms.map(p => p.slug));
@@ -554,7 +542,6 @@ const PlatformCatalog = {
   collectModelsForVendor,
   dimensionCopy,
   collectPlansForVendor,
-  matchMonitorPlatform,
   validatePlatformRecords,
   buildPlatformStatusSliderHtml,
   buildPlatformCardHtml,

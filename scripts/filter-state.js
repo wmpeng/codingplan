@@ -141,9 +141,8 @@
     const pricing = full && options.view === 'pricing';
     const plansPage = full && options.view === 'plans';
     const platformHub = full && options.view === 'platforms';
-    const monitor = full && options.view === 'monitor';
     const planStatusOnly = plansPage || pricing;
-    const purchaseTool = full && !monitor;
+    const purchaseTool = full;
     function constrain(state) {
       state.planStatusOnly = planStatusOnly;
       if (planStatusOnly) {
@@ -180,7 +179,7 @@
       }
       return constrain(state);
     }
-    return {full, pricing, plansPage, platformHub, monitor, planStatusOnly, purchaseTool, createDefaults, constrain};
+    return {full, pricing, plansPage, platformHub, planStatusOnly, purchaseTool, createDefaults, constrain};
   }
 
   function toCny(value, currency, rate) {

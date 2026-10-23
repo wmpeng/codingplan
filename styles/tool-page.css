@@ -40,7 +40,6 @@ body.tool-page {
 .tool-page .usage-explorer { margin-top: 0; }
 .tool-page .platform-catalog { margin-top: 0; }
 .tool-page .platform-card-grid { margin-top: 14px; }
-.tool-page .monitor-toolbar { position: static; }
 .platform-hub-tools { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
 .platform-hub-tools input { flex: 1 1 260px; border: 1px solid var(--tool-line); border-radius: 10px; padding: 11px 12px; font: inherit; }
 .platform-hub-tools select { border: 1px solid var(--tool-line); border-radius: 10px; padding: 11px 12px; background: #fff; }
@@ -165,12 +164,6 @@ body.tool-page.ultra-wide { --tool-page-width: 1920px; }
 .tool-secondary { margin-top: 16px; padding: 14px 16px; background: #fff; border: 1px solid var(--border-color); border-radius: 12px; }
 .tool-secondary > summary { cursor: pointer; font-size: 13px; color: var(--text-secondary); }
 .tool-secondary[open] > summary { margin-bottom: 14px; }
-.tool-page .monitor-toolbar { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; font-size: 13px; padding: 10px 14px; box-shadow: none; border-radius: 10px; }
-.tool-page .monitor-toolbar .filter-trailing { margin-left: auto; }
-.tool-unified-active .monitor-toolbar .monitor-control, .tool-unified-active #monitorClearFilters { display: none; }
-.tool-page .monitor-toolbar .checkbox-label { display: inline-flex; align-items: center; gap: 7px; }
-.tool-page .monitor-board-panel { border-radius: 12px; box-shadow: var(--shadow-sm); }
-.monitor-retry { display: block; margin: 14px auto 0; }
 .tool-page .tool-empty p { margin-bottom: 14px; }
 .tool-page :is(button, a, input, select, summary):focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
 @media (min-width: 1340px) { .platform-hub-page .platform-card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }

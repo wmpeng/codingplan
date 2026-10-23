@@ -72,15 +72,6 @@ function assert(cond, msg) {
   assert(await page.locator('#view-usage').isVisible(), 'usage visible');
   assert((await page.locator('.usage-data-table tbody tr').count()) > 0, 'usage rows');
 
-  await page.click('[data-main-view="monitor"]');
-  await page.waitForTimeout(2000);
-  assert(page.url().includes('view=monitor'), 'url monitor');
-  assert(await page.locator('#view-monitor').isVisible(), 'monitor visible');
-  const monitorHasUi =
-    (await page.locator('#view-monitor .monitor-toolbar').count()) > 0 ||
-    (await page.locator('#view-monitor').innerHTML()).length > 50;
-  assert(monitorHasUi, 'monitor ui mounted');
-
   await page.goto(`${base}/index.html?view=usage`, { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(
     () => window.__mainViewsController && window.__mainViewsController.getView() === 'usage',
@@ -88,10 +79,6 @@ function assert(cond, msg) {
     { timeout: 25000 }
   );
   assert(await page.locator('#view-usage').isVisible(), 'deep link usage');
-
-  await page.goto(`${base}/monitor/index.html`, { waitUntil: 'domcontentloaded' });
-  assert(page.url().includes('monitor/'), 'standalone monitor no redirect');
-  assert(!page.url().includes('view=monitor'), 'monitor not redirected to homepage');
 
   await browser.close();
   server.close();

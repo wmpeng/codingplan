@@ -196,7 +196,7 @@
   }
   function mount(options) {
     const opts = options || {}, policy = Filters.createViewPolicy(opts);
-    const {full, pricing, plansPage, planStatusOnly, platformHub, monitor, purchaseTool} = policy;
+    const {full, pricing, plansPage, planStatusOnly, platformHub, purchaseTool} = policy;
     const featuredCatalog = platformHub || plansPage;
     const host =
       opts.element || document.getElementById("homepageUnifiedFiltersMount");
@@ -330,19 +330,13 @@
       <div class="filter-state-grid">
       ${platformHub ? "" : buildPicker({ id: "homePlatformPicker", label: "平台", key: "platformSlugs", items: platforms, state })}
       ${buildPicker({ id: "homeModelPicker", label: "模型", key: "modelSlugs", items: models, state, groups: context.modelGroups })}
-      ${
-        monitor
-          ? ""
-          : `${buildRangePicker("budget", state, plansPage)}${buildRangePicker("token", state, plansPage)}`
-      }
-      ${!monitor ? buildStatusPicker(purchaseTool, planStatusOnly) : ""}
+      ${buildRangePicker("budget", state, plansPage)}${buildRangePicker("token", state, plansPage)}
+      ${buildStatusPicker(purchaseTool, planStatusOnly)}
       ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-platform-domestic><span class="filter-control-text">支持中国大陆</span></label>' : ""}${plansPage ? '<label class="plan-harness-filter"><input type="checkbox" data-filter-field="harnessApiRequired"><span class="filter-control-text">需支持第三方工具</span></label>' : ""}</div>
       ${featuredCatalog ? `<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-catalog-featured ${platformHub ? 'data-platform-featured' : 'data-plan-featured'} aria-pressed="false">${platformHub ? '显示精选平台' : '显示精选'}</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>` : ""}
       <div class="filter-state-footer">
       ${full ? "" : `<div class="filter-state-controls"><div class="offer-sort"><span aria-hidden="true">排序</span><span data-select-fallback><select id="homeOfferSort" data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></span></div><span class="offer-sort-help" id="offerSortHelp"></span>`}
       <div class="filter-state-actions"><button type="button" data-filter-action="reset"${purchaseTool && !platformHub && !plansPage ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub || plansPage ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>${full && !platformHub && !plansPage ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">显示精选</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
-      ${monitor ? '<p class="filter-state-hint" data-filter-hint>监控只使用平台、模型条件；未监控项目没有统计。</p>' : ""}
-      ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
       </section>`;
     bindSelectionHelp(host);
     const offerSortSelect = host.querySelector('[data-offer-sort]');

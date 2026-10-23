@@ -657,8 +657,7 @@ body .platform-card:focus-visible .platform-card-hint {
 }
 
 .platform-detail-section[data-section="models"],
-.platform-detail-section[data-section="plans"],
-.platform-detail-section[data-section="availability"] {
+.platform-detail-section[data-section="plans"] {
     margin-top: 22px;
 }
 
@@ -811,98 +810,6 @@ body .platform-card:focus-visible .platform-card-hint {
 .platform-detail-jump-plans:focus-visible {
     outline: 2px solid var(--accent-primary, #0f766e);
     outline-offset: 3px;
-}
-
-.platform-detail-avail-link {
-    display: inline-flex;
-    align-items: center;
-    margin-top: 14px;
-    min-height: 34px;
-    padding: 0 14px;
-    border: 1px solid rgba(15, 118, 110, 0.28);
-    border-radius: 999px;
-    background: rgba(15, 118, 110, 0.06);
-    color: var(--accent-primary, #0f766e);
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: background 0.15s ease, border-color 0.15s ease;
-}
-
-.platform-detail-avail-link:hover {
-    background: rgba(15, 118, 110, 0.12);
-    border-color: rgba(15, 118, 110, 0.4);
-    color: #0b5f58;
-}
-
-.platform-detail-avail-link:focus-visible {
-    outline: 2px solid var(--accent-primary, #0f766e);
-    outline-offset: 3px;
-}
-
-/* 可用性摘要：对齐 monitor 页 monitor-row / monitor-bar / timeline-cell */
-.platform-detail-avail {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    width: 100%;
-    min-width: 0;
-}
-
-.platform-detail-avail-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-}
-
-.platform-detail-avail-caption {
-    font-size: 0.8rem;
-    color: var(--text-tertiary, #8b93a7);
-}
-
-.platform-detail-avail-rate {
-    font-size: 0.82rem;
-    color: var(--text-tertiary, #8b93a7);
-    white-space: nowrap;
-}
-
-.platform-detail-avail-bar-caption {
-    font-size: 0.75rem;
-    color: var(--text-tertiary, #8b93a7);
-    line-height: 1.35;
-}
-
-.platform-detail-hours {
-    display: flex;
-    gap: 2px;
-    width: 100%;
-    height: 34px;
-    min-width: 0;
-}
-
-.platform-detail-hour-cell {
-    flex: 1 1 0;
-    min-width: 2px;
-    height: 100%;
-    border-radius: 2px;
-    background: #e8ecf1;
-}
-
-.platform-detail-hour-cell--green {
-    background: #2f9e76;
-}
-
-.platform-detail-hour-cell--yellow {
-    background: #d4a017;
-}
-
-.platform-detail-hour-cell--red {
-    background: #dc6b5a;
-}
-
-.platform-detail-hour-cell--gray {
-    background: #e8ecf1;
 }
 
 @media (max-width: 800px) { .platform-card-grid { grid-template-columns: 1fr; } .platform-detail-dialog { width: calc(100vw - 24px); max-height: calc(100dvh - 24px); padding: 20px; } .platform-detail-dim-grid { grid-template-columns: 1fr; } }

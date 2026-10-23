@@ -15,7 +15,8 @@
   const storageKey = suffix => `eventCollect:${config.namespace}:${suffix}`;
   function read(suffix) { try { return JSON.parse(env.localStorage.getItem(storageKey(suffix))); } catch (_) { return null; } }
   function write(suffix, value) { try { env.localStorage.setItem(storageKey(suffix), JSON.stringify(value)); } catch (_) {} }
-  function enabled() { return !!config && config.enabled !== false && read('disabled') !== true && !disabled && !stopped; }
+  function isUserEnabled() { return !disabled; }
+  function enabled() { return !!config && config.enabled !== false && isUserEnabled() && !stopped; }
   function identities() {
     const time = now();
     visitor = read('visitor') || visitor;
@@ -98,6 +99,7 @@
   function init(options) {
     if (config) return api;
     config = { enabled: true, context: {}, ...options };
+    disabled = read('disabled') === true;
     if (!/^[a-z][a-z0-9_]{0,63}$/.test(config.namespace || '') || !config.endpoint) config.enabled = false;
     try { pageId = id(); } catch (_) { config.enabled = false; }
     timer = env.setInterval(() => { void flush(); }, 5000);
@@ -106,10 +108,14 @@
     env.addEventListener('pageshow', event => {
       if (event.persisted) { pageId = id(); track('page_view', { navigation: 'back_forward' }); }
     });
-    env.addEventListener('storage', event => { if (event.key === storageKey('disabled') && !enabled()) queue = []; });
+    env.addEventListener('storage', event => {
+      if (event.key !== storageKey('disabled') && event.key !== null) return;
+      disabled = event.key !== null && event.newValue === 'true';
+      if (!isUserEnabled()) queue = [];
+    });
     return api;
   }
   function destroy() { stopped = true; queue = []; env.clearInterval(timer); }
-  const api = { init, track, flush, setEnabled, isEnabled: enabled, destroy };
+  const api = { init, track, flush, setEnabled, isUserEnabled, isEnabled: enabled, destroy };
   return api;
 });

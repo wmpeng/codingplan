@@ -4,7 +4,6 @@
   const path = location.pathname;
   const pageType = /^\/articles\/.+/.test(path) ? 'article' : path.split('/').filter(Boolean)[0] || 'home';
   const config = root.CodingPlanEventCollectConfig || {};
-  const local = ['localhost', '127.0.0.1'].includes(location.hostname) && location.port === '8765';
   const sdk = root.EventCollect;
   let ready = false, pending, latestResult, interaction;
   let lastResultKey;
@@ -78,21 +77,26 @@
   }, true);
   function init() {
     if (!sdk) return;
-    sdk.init({ namespace: 'codingplan', endpoint: local ? config.localEndpoint : config.endpoint,
-      enabled: local || config.enabled === true, context: { page_type: pageType } });
+    sdk.init({ namespace: 'codingplan', endpoint: config.endpoint, context: { page_type: pageType } });
     ready = true;
     track('page_view');
     // 已加载的结果可能早于 DOMContentLoaded，补记初次实际展示。
     if (latestResult) { const detail = latestResult; lastResultKey = undefined; results(detail); }
     const panel = document.getElementById('settingsPanel');
     if (panel) {
-      const label = document.createElement('label'); label.className = 'settings-unit-section';
-      const toggle = document.createElement('input'); toggle.type = 'checkbox'; toggle.checked = sdk.isEnabled();
-      label.append(toggle, document.createTextNode(' 允许匿名使用统计'));
-      const description = document.createElement('small');
-      description.textContent = '记录页面访问和关键操作，用于改进网站；不采集输入内容。';
-      label.append(document.createElement('br'), description); panel.append(label);
+      const section = document.createElement('div'); section.className = 'settings-privacy-section';
+      section.innerHTML = `<div class="settings-toggle-row">
+        <label for="eventCollectToggle">允许匿名使用统计</label>
+        <label class="toggle-switch">
+          <input type="checkbox" id="eventCollectToggle" aria-label="允许匿名使用统计" aria-describedby="eventCollectDescription">
+          <span class="toggle-slider" aria-hidden="true"></span>
+        </label>
+      </div>
+      <p class="settings-description" id="eventCollectDescription">仅统计访问与操作，不采集输入内容。</p>`;
+      const toggle = section.querySelector('input'); toggle.checked = sdk.isUserEnabled();
+      panel.append(section);
       toggle.addEventListener('change', () => sdk.setEnabled(toggle.checked));
+      root.addEventListener('storage', () => { toggle.checked = sdk.isUserEnabled(); });
     }
     if (pageType === 'article') {
       let visibleSince = document.hidden ? null : performance.now(), visibleTime = 0, read = false;

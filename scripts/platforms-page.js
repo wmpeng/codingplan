@@ -81,7 +81,6 @@
       if (root.PlatformDetail) root.PlatformDetail.init({
         getPlans: () => plans,
         getEntityContext: () => context,
-        monitorApiBase: (root.MONITOR_CONFIG && root.MONITOR_CONFIG.apiBase) || 'https://api.dreamfree.space/vc',
         onJumpPlansTable: platformName => { window.location.href = root.CodingPlanUI.route('plans',{platform:platforms.find(item=>item.name===platformName)?.slug}); },
         isPlatformPinned: id => pinnedIds.includes(id),
         onTogglePlatformPin: id => {

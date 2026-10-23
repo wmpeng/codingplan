@@ -15,13 +15,11 @@
   }
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (PlatformCatalog, EntityData, Numbers) {
   const UI = globalThis.CodingPlanUI || (typeof require === 'function' ? require('./ui-core.js') : null);
-  const DEFAULT_MONITOR_API_BASE = 'https://api.dreamfree.space/vc';
   const Notices = globalThis.ChangeNotices || (typeof require==='function' ? require('./change-notices.js') : null);
 
   let options = {
     getPlans: () => [],
     getEntityContext: () => null,
-    monitorApiBase: DEFAULT_MONITOR_API_BASE,
     onJumpPlansTable: () => {},
     isPlatformPinned: () => false,
     onTogglePlatformPin: () => {},
@@ -34,9 +32,6 @@
   let releaseModal = null;
   let modelRows = null;
   let closeBound = false;
-  let openSeq = 0;
-  let boardCache = null; // { platforms: [] } | false (failed)
-  let boardPromise = null;
 
   function esc(text) {
     const fn = options.escapeHtml || PlatformCatalog.escapeHtml;
@@ -224,115 +219,8 @@
     );
   }
 
-  const DETAIL_AVAIL_HOURS = 48;
-
-  function formatAvailabilityRate(rate) {
-    return ((rate || 0) * 100).toFixed(1) + '%';
-  }
-
-  // 与监控页同口径：排除灰格后 绿=1、黄=0.5、红=0，再取平均
-  function availabilityRateFromHours(hours) {
-    const cells = Array.isArray(hours) ? hours : [];
-    let withData = 0;
-    let score = 0;
-    for (let i = 0; i < cells.length; i++) {
-      const color = (cells[i] && cells[i].color) || 'gray';
-      if (color === 'gray') continue;
-      withData += 1;
-      if (color === 'green') score += 1;
-      else if (color === 'yellow') score += 0.5;
-    }
-    if (!withData) return 0;
-    return Math.round((score / withData) * 10000) / 10000;
-  }
-
-  function recentHours(hours, count) {
-    if (!Array.isArray(hours) || hours.length === 0) return [];
-    if (hours.length <= count) return hours;
-    return hours.slice(hours.length - count);
-  }
-
-  function buildHoursSparklineHtml(hours) {
-    if (!hours.length) return '';
-    const cells = hours
-      .map(cell => {
-        const color = (cell && cell.color) || 'gray';
-        return `<span class="platform-detail-hour-cell platform-detail-hour-cell--${esc(color)}"></span>`;
-      })
-      .join('');
-    return `<div class="platform-detail-hours" aria-hidden="true">${cells}</div>`;
-  }
-
-  function buildAvailabilitySectionHtml(platform, monitorRow) {
-    if (typeof globalThis !== 'undefined' && globalThis.__CODINGPLAN_FEATURES?.monitorView === false) return '';
-    if (!monitorRow) return '';
-
-    // 弹层宽度有限：条带与百分比都按最近 48 小时
-    const visible = recentHours(monitorRow.hours, DETAIL_AVAIL_HOURS);
-    const rateText = `${formatAvailabilityRate(availabilityRateFromHours(visible))} 可用`;
-    const slug =
-      (monitorRow.platform_slug && String(monitorRow.platform_slug).trim()) ||
-      (platform && platform.monitorSlug && String(platform.monitorSlug).trim()) ||
-      (platform && platform.name) ||
-      '';
-    const href = `/monitor/?platform=${encodeURIComponent(slug)}`;
-
-    return (
-      `<section class="platform-detail-section" data-section="availability" aria-labelledby="platformDetailAvailHeading">` +
-      `<h3 id="platformDetailAvailHeading" class="platform-detail-section-title">可用性</h3>` +
-      `<div class="platform-detail-avail">` +
-      `<div class="platform-detail-avail-top">` +
-      `<span class="platform-detail-avail-caption">近 48 小时</span>` +
-      `<span class="platform-detail-avail-rate">${esc(rateText)}</span>` +
-      `</div>` +
-      buildHoursSparklineHtml(visible) +
-      `</div>` +
-      `<a class="platform-detail-avail-link" href="${esc(href)}">查看完整可用性 →</a>` +
-      `</section>`
-    );
-  }
-
-  function normalizeBoardPayload(resp) {
-    // 与可用性监控接口一致：优先取 resp.data
-    const payload = (resp && resp.data) || resp;
-    if (!payload || typeof payload !== 'object') return null;
-    if (!Array.isArray(payload.platforms)) return null;
-    return payload;
-  }
-
-  async function ensureBoard(apiBase) {
-    if (typeof globalThis !== 'undefined' && globalThis.__CODINGPLAN_FEATURES?.monitorView === false) return null;
-    if (boardCache) return boardCache;
-    if (boardCache === false) return null;
-    if (boardPromise) return boardPromise;
-    const base = (apiBase || DEFAULT_MONITOR_API_BASE).replace(/\/$/, '');
-    boardPromise = fetch(`${base}/monitor/board?days=7`, { cache: 'no-store' })
-      .then(r => {
-        if (!r.ok) throw new Error(String(r.status));
-        return r.json();
-      })
-      .then(data => {
-        const normalized = normalizeBoardPayload(data);
-        if (!normalized) {
-          boardCache = false;
-          return null;
-        }
-        boardCache = normalized;
-        return normalized;
-      })
-      .catch(() => {
-        boardCache = false;
-        return null;
-      })
-      .finally(() => {
-        boardPromise = null;
-      });
-    return boardPromise;
-  }
-
   function buildDetailBodyHtml(platform, ctx) {
     const context = ctx || {};
-    const monitorRow = context.monitorRow || null;
 
     const name = esc(platform && platform.name);
     const rating = Math.max(0, Math.min(5, Number(platform && platform.rating) || 0));
@@ -448,8 +336,7 @@
       `</section>` +
       buildModelsSectionHtml(modelLabels) +
       buildApiPricingSectionHtml(context.apiPricingGroups) +
-      buildPlansSectionHtml(vendorPlans, platform) +
-      buildAvailabilitySectionHtml(platform, monitorRow)
+      buildPlansSectionHtml(vendorPlans, platform)
     );
   }
 
@@ -550,7 +437,6 @@
     options = {
       getPlans: () => [],
       getEntityContext: () => null,
-      monitorApiBase: DEFAULT_MONITOR_API_BASE,
       onJumpPlansTable: () => {},
       isPlatformPinned: () => false,
       onTogglePlatformPin: () => {},
@@ -583,14 +469,13 @@
     triggerEl = null;
   }
 
-  async function open(platform, openOpts) {
+  function open(platform, openOpts) {
     if (!platform) return;
     const opts = openOpts || {};
     if (isOpen()) close();
 
     bindChromeOnce();
 
-    const seq = ++openSeq;
     const plans =
       typeof options.getPlans === 'function' ? options.getPlans() || [] : [];
     const entityContext =
@@ -602,7 +487,6 @@
     const html = buildDetailBodyHtml(platform, {
       plans,
       entityContext,
-      monitorRow: null,
       apiPricingGroups,
       isPinned:
         typeof options.isPlatformPinned === 'function'
@@ -631,27 +515,6 @@
 
     modelRows = UI.observeModelTagRows(body);
 
-    const board = await ensureBoard(options.monitorApiBase);
-    if (seq !== openSeq || !isOpen()) return;
-    if (!board || !Array.isArray(board.platforms)) return;
-
-    const monitorRow =
-      typeof PlatformCatalog.matchMonitorPlatform === 'function'
-        ? PlatformCatalog.matchMonitorPlatform(platform, board.platforms)
-        : null;
-    if (!monitorRow) return;
-
-    body.innerHTML = buildDetailBodyHtml(platform, {
-      plans,
-      entityContext,
-      monitorRow,
-      apiPricingGroups,
-      isPinned:
-        typeof options.isPlatformPinned === 'function'
-          ? !!options.isPlatformPinned(platform && platform.slug)
-          : false
-    });
-    modelRows?.refresh();
   }
 
   return {

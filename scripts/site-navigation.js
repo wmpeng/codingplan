@@ -71,9 +71,6 @@
     });
   }
   function init() {
-    document.querySelectorAll('[data-monitor-nav]').forEach(link => {
-      link.hidden = window.__CODINGPLAN_FEATURES?.monitorView !== true;
-    });
     const nav = document.querySelector('.site-header .tool-nav');
     const selected = nav?.querySelector('[aria-current="page"]');
     if (selected && nav.scrollWidth > nav.clientWidth) {

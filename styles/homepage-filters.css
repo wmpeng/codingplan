@@ -60,9 +60,7 @@
   margin-bottom: 12px;
 }
 
-:is(.homepage-unified-active, .tool-unified-active) .usage-view > .usage-filters,
-:is(.homepage-unified-active, .tool-unified-active) #view-monitor .monitor-control,
-:is(.homepage-unified-active, .tool-unified-active) #view-monitor #monitorClearFilters {
+:is(.homepage-unified-active, .tool-unified-active) .usage-view > .usage-filters {
   display: none;
 }
 
