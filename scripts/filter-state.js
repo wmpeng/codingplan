@@ -262,12 +262,11 @@
   function formatMonthlyTokens(plan, state) {
     const rows = monthlyOptions(plan, state);
     const values = rows.map(row => row.value).filter(value => typeof value === 'number' && Number.isFinite(value));
-    const unlimited = rows.some(row => row.value === 'unlimited');
-    if (!values.length && !unlimited) return '未知';
+    if (!values.length) return '未知';
     const unit = Numbers.tokenUnit(state.tokenUnit);
     const format = value => Numbers.tokenAmount(value, state.tokenUnit);
     const min = Math.min(...values), max = Math.max(...values);
-    const text = values.length ? `${format(min)}${unlimited ? '–无限制' : min === max ? '' : '–' + format(max)} ${unit}` : '无限制';
+    const text = `${format(min)}${min === max ? '' : '–' + format(max)} ${unit}`;
     return text + (values.length + rows.filter(row => row.value === 'unlimited').length < rows.length ? '（部分未知）' : '');
   }
 

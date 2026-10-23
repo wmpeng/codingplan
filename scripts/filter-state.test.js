@@ -136,6 +136,26 @@ test('月 Token 按同一模型关系匹配，不相加；未知订阅在范围�
   assert.deepEqual(Filters.cloneState(state).monthlyTokenRange, { min: 200, max: null });
 });
 
+test('套餐月 Token 摘要仅统计有限额度，保留模型选择、零值及未知提示', () => {
+  const plan = { monthlyTokenOptions: [
+    { modelSlug: 'a', value: 13 }, { modelSlug: 'a', value: 200 },
+    { modelSlug: 'b', value: 'unlimited' }, { modelSlug: 'c', value: null },
+    { modelSlug: 'zero', value: 0 }
+  ] };
+  const snapshot = JSON.stringify(plan);
+  const summary = (modelSlugs, tokenUnit = 'yi') => Filters.formatMonthlyTokens(plan, unrestricted({ modelSlugs, tokenUnit }));
+  assert.equal(summary(['a', 'b']), '0.13–2 亿');
+  assert.equal(summary(['a', 'b'], 'M'), '13–200 M');
+  assert.equal(summary(['a', 'b'], 'B'), '0.01–0.20 B');
+  assert.equal(summary(['a', 'b', 'c']), '0.13–2 亿（部分未知）');
+  assert.equal(summary(['zero', 'b']), '0 亿');
+  for (const slugs of [['b'], ['b', 'c'], ['c'], ['missing']]) assert.equal(summary(slugs), '未知');
+  assert.equal(Filters.formatMonthlyTokens({ monthlyTokenOptions: [
+    { modelSlug: 'a', value: 13 }, { modelSlug: 'b', value: 'unlimited' }
+  ] }, unrestricted({ tokenUnit: 'yi' })), '0.13 亿');
+  assert.equal(JSON.stringify(plan), snapshot);
+});
+
 test('公开套餐不保留标签字段，默认筛选不再限制套餐名单', () => {
   const plans = require('../plans.json').plans;
   assert.ok(plans.every(plan => !Object.hasOwn(plan, 'tags')));
