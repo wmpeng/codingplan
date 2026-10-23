@@ -26,6 +26,14 @@
       let state = Filters.createDefaultState(config, {mode:'full'}), pins = Directory.readPins(root.localStorage, allPlans);
       let sort = {key:'platformOrder', direction:'asc'}, sortPicker, sortSelect, directionButton, lastFilterKey, featuredOnly = false;
       const tableBody = host.querySelector('[data-plan-body]'), count = host.querySelector('[data-plan-count]');
+      const expandedQuotas = new Set(), expandedNotes = new Set();
+      const tableWrap = tableBody.closest('.tool-table-wrap');
+      const resizeQuota = () => host.style.setProperty('--plan-quota-width', `${tableWrap.clientWidth}px`);
+      new ResizeObserver(resizeQuota).observe(tableWrap);
+      resizeQuota();
+      let selection;
+      const quotaId = plan => `plan-quota-${encodeURIComponent(plan.slug)}`;
+      const quotaContent = plan => root.PlanQuota.render(plan, context, selection.effectiveState, {notesOpen:expandedNotes.has(plan.slug)});
       function syncSort() {
         if (sortSelect) { sortSelect.value = sort.key; sortPicker.sync(); }
         if (directionButton) {
@@ -33,14 +41,14 @@
           directionButton.textContent = sort.direction === 'asc' ? '↑' : '↓';
           directionButton.setAttribute('aria-label', `当前${sort.direction === 'asc' ? '升序' : '降序'}，切换为${sort.direction === 'asc' ? '降序' : '升序'}`);
         }
-        host.querySelectorAll('th').forEach(th => {
+        host.querySelectorAll('.tool-table > thead > tr > th').forEach(th => {
           const active = [...th.querySelectorAll('[data-plan-sort]')].find(button => button.dataset.planSort === sort.key);
           th.setAttribute('aria-sort', active ? sort.direction === 'asc' ? 'ascending' : 'descending' : 'none');
           th.querySelectorAll('[data-plan-sort]').forEach(button => button.classList.toggle('is-active-sort', button === active));
         });
       }
       function apply() {
-        const selection = Directory.select(allPlans, state, {context, config, query:search.value, sort, pins, featuredOnly});
+        selection = Directory.select(allPlans, state, {context, config, query:search.value, sort, pins, featuredOnly});
         search.disabled = featuredOnly;
         search.closest('.tool-result-bar').classList.toggle('is-search-paused', featuredOnly);
         count.textContent = Directory.countLabel(selection); syncSort();
@@ -61,16 +69,26 @@
             <td data-plan-col="rating"><span class="plan-rating" aria-label="${plan.rating > 0 ? esc(plan.rating)+' 星' : '待评定'}">${plan.rating > 0 ? '★ '+Number(plan.rating).toFixed(1) : '待评定'}</span></td>
             ${['firstMonthPrice','monthlyPrice','quarterlyPrice','yearlyPrice'].map(key => `<td data-plan-col="${key}"${key === 'firstMonthPrice' ? '' : ' data-plan-extra'}>${esc(money(plan,key))}${key==='firstMonthPrice'?notice('price'):''}</td>`).join('')}
             <td data-plan-col="models">${modelNotice ? `<div class="plan-models-with-notice">${modelList}${modelNotice}</div>` : modelList}</td>
-            <td data-plan-col="monthlyToken" class="monthly-token-cell" title="所选模型各档位的月 Token 参考范围，不相加；按最大值排序，详细口径见价格与额度">${esc(Filters.formatMonthlyTokens(plan,selection.effectiveState))}${notice('quota')}</td>
+            <td data-plan-col="monthlyToken" class="monthly-token-cell"><button type="button" class="plan-quota-toggle" data-plan-quota="${esc(plan.slug)}" aria-expanded="${expandedQuotas.has(plan.slug)}" aria-controls="${quotaId(plan)}" aria-label="${esc(label)} 额度明细"><span>${esc(Filters.formatMonthlyTokens(plan,selection.effectiveState))}</span></button>${notice('quota')}</td>
             ${['fiveHours','weekly','monthly'].map(key => `<td data-plan-col="requestQuota.${key}" data-plan-extra>${esc(requests(plan,key))}</td>`).join('')}
             <td data-plan-col="benefits" data-plan-extra>${chips(plan.benefits)}</td><td class="plan-note" data-plan-col="note">${esc(plan.note || '')}</td>
-          </tr>`;
+          </tr><tr class="plan-quota-row" data-plan-quota-row="${esc(plan.slug)}"${expandedQuotas.has(plan.slug) ? '' : ' hidden'}><td colspan="${host.classList.contains('show-all-columns') ? 13 : 6}"><section class="plan-quota-panel" id="${quotaId(plan)}" aria-label="${esc(label)} 额度明细">${expandedQuotas.has(plan.slug) ? quotaContent(plan) : ''}</section></td></tr>`;
         }).join('') : `<tr><td colspan="13"><div class="tool-empty">${featuredOnly ? '暂无符合精选范围的套餐，可关闭“显示精选”查看其他套餐。' : '没有匹配套餐，试着清空搜索或减少筛选条件。'}</div></td></tr>`;
         modelRows.refresh(); host.dataset.mounted = '1';
       }
       search.disabled = false; search.addEventListener('input', apply);
       host.addEventListener('click', event => {
         if (UI.toggleModels(event)) return;
+        const quota = event.target.closest('[data-plan-quota]');
+        if (quota) {
+          const slug = quota.dataset.planQuota, open = !expandedQuotas.has(slug);
+          if (open) expandedQuotas.add(slug); else expandedQuotas.delete(slug);
+          quota.setAttribute('aria-expanded', String(open));
+          const panel = document.getElementById(quota.getAttribute('aria-controls'));
+          panel.closest('tr').hidden = !open;
+          if (open) panel.innerHTML = quotaContent(allPlans.find(plan => plan.slug === slug));
+          return;
+        }
         const pin = event.target.closest('[data-plan-pin]');
         if (pin) {
           const slug = pin.dataset.planPin;
@@ -85,8 +103,13 @@
           sort = Directory.cycleSort(sort,key); apply();
         }
       });
+      host.addEventListener('toggle', event => {
+        const slug = event.target.dataset?.planQuotaNotes;
+        if (slug) { if (event.target.open) expandedNotes.add(slug); else expandedNotes.delete(slug); }
+      }, true);
       host.querySelector('[data-plan-columns]').addEventListener('change', event => {
         host.classList.toggle('show-all-columns', event.target.checked); modelRows.refresh();
+        host.querySelectorAll('[data-plan-quota-row] > td').forEach(cell => cell.colSpan = event.target.checked ? 13 : 6);
       });
       root.CodingPlanToolPage.filters({context,config},'plans',(next,meta) => {
         const key = JSON.stringify([next, meta.featuredOnly, context.modelGroups, context.featuredPlatformSlugs]);
