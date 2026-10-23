@@ -1,3 +1,22 @@
 {
-  "announcements": []
+  "announcements": [
+    {
+      "slug": "minimax-code-m31-flash-unlimited-oct-2026",
+      "title": "MiniMax Code 订阅用户：M3.1 Flash 限时不限量",
+      "body": "截至 **2026 年 10 月 25 日**，所有订阅用户在 **MiniMax Code 内**使用 **M3.1 Flash** 模型，可享不限量权益。\n\n- 需要已订阅；免费用户不在本次公布的适用范围内。\n- 不限量权益限 MiniMax Code 内的 M3.1 Flash；官方未承诺通过 API 接入 Claude Code、OpenCode 等外部工具也不限量。\n- 不代表其他模型或视频、图像等功能不限量。\n\n官方未注明截止的具体时刻或时区，参与情况以活动页面为准。",
+      "visible": true,
+      "ended": false,
+      "endsOn": "2026-10-25",
+      "url": "https://agent.minimax.cn/"
+    },
+    {
+      "slug": "minimax-m-plan-first-month-half-price-oct-2026",
+      "title": "MiniMax M Plan 新订阅或升级：首月五折",
+      "body": "截至 **2026 年 10 月 31 日**，在 **MiniMax Code** 活动内新订阅或升级 **M Plan**，可享首月五折。\n\n- 适用于新订阅或升级用户。\n- **仅首月五折，次月起按原价续订**，具体金额以订购页面为准。\n- 此项优惠与 M3.1 Flash 不限量活动的截止日期不同；不限量权益截至 10 月 25 日。\n\n官方未注明截止的具体时刻或时区，参与情况以活动页面为准。",
+      "visible": true,
+      "ended": false,
+      "endsOn": "2026-10-31",
+      "url": "https://agent.minimax.cn/"
+    }
+  ]
 }
