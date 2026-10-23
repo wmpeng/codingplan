@@ -19,7 +19,7 @@
 .home-announcements li>a { display:flex;align-items:center;gap:16px;justify-content:space-between;min-height:32px;padding:4px 0;line-height:1.5;color:#40566e; }
 .home-announcements li>a:hover>span:first-child { text-decoration:underline; }
 .home-announcements li>a>span:first-child { min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
-.home-announcements time { flex-shrink:0;font-size:11px;font-variant-numeric:tabular-nums;color:var(--text-secondary); }
+.home-announcements .announcement-dates { flex-shrink:0;white-space:nowrap;font-size:11px;font-variant-numeric:tabular-nums;color:var(--text-secondary); }
 /* 详情保持普通阅读排版；深链仅用细竖线标记当前记录。 */
 .announcements-section { margin-top:30px;scroll-margin-top:112px; }
 .announcements-section>h2 { font-size:20px;font-weight:600; }

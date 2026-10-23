@@ -7,7 +7,8 @@
       "visible": true,
       "ended": false,
       "endsOn": "2026-11-08",
-      "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-universal-promotion?lang=zh"
+      "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-universal-promotion?lang=zh",
+      "startsOn": "2026-06-08"
     },
     {
       "slug": "minimax-code-m31-flash-unlimited-oct-2026",
@@ -33,7 +34,8 @@
       "body": "自 **2026 年 10 月 21 日 00:00（UTC+8）** 起，国际站 **qoder.com 个人月付套餐**限时加赠，结束日期尚未公布。\n\n- 从未成功付费的账号首购 Lite / Pro / Pro+，首月合计 **2,000 / 4,000 / 12,000 Credits**；Ultra 首购不加赠。\n- 续费或到期重订 Lite / Pro / Pro+ / Ultra，分别赠 500 / 1,000 / 2,000 / 3,000 Credits；升级至 Pro / Pro+ / Ultra 分别赠 1,000 / 2,000 / 3,000。\n- 赠送额度到账后 **30 天有效**，不是现金折扣；退款订单仍算付费历史。团队、企业套餐不参加，国内站规则另行适用。",
       "visible": true,
       "ended": false,
-      "url": "https://docs.qoder.com/events/newbogo"
+      "url": "https://docs.qoder.com/events/newbogo",
+      "startsOn": "2026-10-21"
     },
     {
       "slug": "qoder-global-community-boost-oct-2026",
@@ -42,7 +44,8 @@
       "visible": true,
       "ended": false,
       "endsOn": "2026-10-30",
-      "url": "https://docs.qoder.com/events/communityboost"
+      "url": "https://docs.qoder.com/events/communityboost",
+      "startsOn": "2026-10-22"
     },
     {
       "slug": "aliyun-token-plan-night-discount",
@@ -59,7 +62,8 @@
       "visible": true,
       "ended": false,
       "endsOn": "2026-10-25",
-      "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh"
+      "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh",
+      "startsOn": "2026-10-12"
     },
     {
       "slug": "ark-deepseek-v41-half-credits-2026",
@@ -82,10 +86,11 @@
     {
       "slug": "qoder-global-qwen38-flash-free",
       "title": "Qoder 国际版：Qwen3.8-Flash 限时免费",
-      "body": "国际站 **qoder.com** 的个人用户可限时免费使用 **Qwen3.8-Flash**，调用不消耗 Credits，**Free 用户及零余额账号也可参加**。\n\n选择该模型即可，无需领券；Teams / Enterprise 不适用，也不代表其他模型免费。原定 9 月 30 日结束的活动已经延期，新的结束日期尚未公布。高峰期可能响应较慢。",
+      "body": "自 **2026 年 9 月 18 日 10:00（UTC+8）** 起，国际站 **qoder.com** 的个人用户可限时免费使用 **Qwen3.8-Flash**，调用不消耗 Credits，**Free 用户及零余额账号也可参加**。\n\n选择该模型即可，无需领券；Teams / Enterprise 不适用，也不代表其他模型免费。原定 9 月 30 日结束的活动已经延期，新的结束日期尚未公布。高峰期可能响应较慢。",
       "visible": true,
       "ended": false,
-      "url": "https://docs.qoder.com/events/flashoffer"
+      "url": "https://docs.qoder.com/events/flashoffer",
+      "startsOn": "2026-09-18"
     },
     {
       "slug": "opencode-glm-deepseek-free",
