@@ -1,26 +1,28 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<script src="/scripts/ui-core.js?v=a84b5a6a44"></script>
-<script src="/scripts/ui-help.js?v=e0a6ce9057"></script>
-<script src="/scripts/site-features.js?v=085e184d3a"></script>
-<script src="/scripts/ui-dialog.js?v=c1774b93df" defer></script>
-<script src="/scripts/section-navigation.js?v=c0c57096eb" defer></script>
+<script src="/scripts/ui-core.js?v=101203ea10"></script>
+<script src="/scripts/ui-help.js?v=b8624088b6"></script>
+<script src="/scripts/site-features.js?v=4c9f9f0d85"></script>
+<script src="/scripts/ui-dialog.js?v=632fc11cea" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>变更预告与更新历史 - Coding Plan</title>
-<meta name="description" content="查看平台、套餐与模型的变更预告、生效条件及 Coding Plan 资料更新历史。">
+  <title>公告、预告与更新 - Coding Plan</title>
+<meta name="description" content="查看重要活动与优惠公告、平台变更预告及 Coding Plan 资料更新历史。">
   <link rel="canonical" href="https://codingplan.fyi/updates/">
   <link rel="icon" href="/favicon.ico?v=260924a">
-  <link rel="stylesheet" href="/styles/shared.css?v=ac9b008487">
-  <link rel="stylesheet" href="/styles/tool-page.css?v=041b9d7417">
-  <link rel="stylesheet" href="/styles/design-system.css?v=5f03a7cffd">
-  <link rel="stylesheet" href="/styles/changes-page.css?v=37b007d9f4">
-<script src="/scripts/changes-page.js?v=dd072271cc" defer></script>
-<script src="/scripts/site-navigation.js?v=121f3bd6d1" defer></script>
-<link rel="stylesheet" href="/styles/site-features.css?v=3c430639bf">
-<link rel="stylesheet" href="/styles/ui-components.css?v=bf5f1551fa">
-<link rel="stylesheet" href="/styles/ui-help.css?v=5e15e3e2c0">
+  <link rel="stylesheet" href="/styles/shared.css?v=482edb170c">
+  <link rel="stylesheet" href="/styles/tool-page.css?v=c391128a7b">
+  <link rel="stylesheet" href="/styles/design-system.css?v=294b0cc3f4">
+  <link rel="stylesheet" href="/styles/changes-page.css?v=07141e11a3">
+<script src="/scripts/changes-page.js?v=02ada7f47c" defer></script>
+  <link rel="stylesheet" href="/styles/announcements.css?v=6fe24bd4a9">
+<script src="/scripts/announcements.js?v=ce52a98d42" defer></script>
+<script src="/scripts/site-navigation.js?v=58bc3a8bab" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=9d851d7c5b">
+<link rel="stylesheet" href="/styles/ui-components.css?v=4839ae1fc0">
+<link rel="stylesheet" href="/styles/ui-help.css?v=50cda6ca65">
 </head>
 <body class="tool-page content-list-view">
 <!-- SITE_NAV_START -->
@@ -76,10 +78,11 @@
   <main class="updates-main content-list-page">
     <header class="content-list-header">
       <p class="content-list-kicker">Coding Plan</p>
-      <h1>变更预告与更新历史</h1>
-      <p class="content-list-lead">关注即将影响价格、额度与模型支持的变化，回看资料更新。</p>
-      <nav class="updates-jumps" aria-label="本页内容"><a href="#upcoming">变更预告</a><a href="#history">更新历史</a></nav>
+      <h1>公告、预告与更新</h1>
+      <p class="content-list-lead">关注活动与优惠、价格与额度变化，回看资料更新。</p>
+      <nav class="updates-jumps" aria-label="本页内容"><a href="#announcements">公告</a><a href="#upcoming">变更预告</a><a href="#history">更新历史</a></nav>
     </header>
+    <section id="announcements" class="announcements-section" data-announcement-details aria-labelledby="announcements-heading"><h2 id="announcements-heading">公告</h2><div data-announcement-active></div><p class="changes-empty" data-announcement-empty>暂无进行中的公告。</p><details class="announcement-archive" hidden><summary>往期公告（<span data-announcement-archive-count>0</span>）</summary><div data-announcement-archive></div></details></section>
     <section id="upcoming" class="changes-section" aria-labelledby="upcoming-heading"><div class="changes-heading"><h2 id="upcoming-heading">变更预告</h2><span>19 项</span></div><div class="changes-upcoming"><article class="change-record" id="change-gongji-deepseek-v4-preview-routing-20261020" data-change-status="announced" data-effective-date="2026-10-20" tabindex="-1">
   <div class="change-meta"><span class="change-status" data-change-status-label>已公告</span><span class="change-timing">计划生效 2026-10-20</span></div>
   <h3><a href="#change-gongji-deepseek-v4-preview-routing-20261020">共绩 DeepSeek V4 预览资源下架及旧入口路由调整</a></h3>
