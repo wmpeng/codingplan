@@ -1,4 +1,4 @@
-/* 首屏公告融入介绍区，用细线和文字区分层级。 */
+/* 首屏活动公告融入介绍区，用细线和文字区分层级。 */
 .home-announcements {
   margin-top:18px;
   padding-top:10px;
@@ -7,7 +7,7 @@
 }
 .home-announcements[hidden],.home-announcements [hidden],.announcements-section [hidden] { display:none; }
 .announcement-bar { display:flex;align-items:center;justify-content:space-between;gap:12px;line-height:1.6; }
-.announcement-bar strong { display:flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:var(--text-secondary); }
+.announcement-bar strong { white-space:nowrap;display:flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:var(--text-secondary); }
 .announcement-bar strong::before { content:"";width:5px;height:5px;border-radius:50%;background:#82a99d; }
 .announcement-bar>a { font-size:12px;color:var(--text-secondary); }
 .home-announcements a { text-decoration:none;text-underline-offset:4px; }
@@ -40,7 +40,7 @@
 .announcement-archive { margin-top:16px; }
 .announcement-archive>summary { cursor:pointer;color:var(--text-secondary);padding:10px 0;font-size:13px; }
 @media(max-width:600px) {
-  .home-announcements { display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;padding-top:4px;margin-top:14px; }
+  .home-announcements { display:grid;grid-template-columns:max-content minmax(0,1fr);gap:10px;padding-top:4px;margin-top:14px; }
   .home-announcements li>a,.announcement-bar>a,.announcement-action,.announcement-archive>summary { min-height:44px;align-items:center; }
   .announcement-bar { flex-direction:column;justify-content:flex-start;gap:0;padding-top:12px; }
   .announcement-bar strong { gap:5px; }
