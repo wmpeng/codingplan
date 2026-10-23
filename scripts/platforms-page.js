@@ -44,6 +44,7 @@
         host.setAttribute('aria-busy','false');
         empty.hidden = selection.visible.length > 0;
         showing.innerHTML = root.PlatformHub.countHtml(selection, featuredOnly);
+        root.CodingPlanEvents?.results({result_count:selection.visible.length,result_key:JSON.stringify([state,selection.visible.map(x=>x.slug)])});
         if (root.PlatformDetail && root.PlatformDetail.syncPinUi) root.PlatformDetail.syncPinUi();
       }
 

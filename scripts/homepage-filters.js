@@ -584,6 +584,7 @@
       pendingAll = false;
       state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || state.tokenUnit;
       const clean = Filters.cloneState(state);
+      root.dispatchEvent(new CustomEvent("codingplan:filters-changing", {detail:{state:clean,source,full}}));
       if (!full) {
         root.__codingplanUnifiedFiltersState = clean;
         root.__codingplanHomeApi?.setUnifiedFilters(clean);

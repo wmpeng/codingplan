@@ -379,7 +379,7 @@
         const vendor = escapeHtml(point.platformName);
         const actionUrl = String(point.actionUrl || '').trim();
         if (point.planStatus === 'delisted' || !/^https?:\/\//i.test(actionUrl)) return `<strong>${vendor}</strong>`;
-        return `<a class="usage-platform-link" href="${escapeHtml(UI.sanitizeUrl(actionUrl))}" target="_blank" rel="noopener noreferrer"><strong>${vendor}</strong>${UI.externalLinkIcon}</a>`;
+        return `<a class="usage-platform-link" data-collect-outbound data-collect-platform="${escapeHtml(point.platformSlug || '')}" data-collect-plan="${escapeHtml(point.planSlug || '')}" href="${escapeHtml(UI.sanitizeUrl(actionUrl))}" target="_blank" rel="noopener noreferrer"><strong>${vendor}</strong>${UI.externalLinkIcon}</a>`;
     }
 
     function formatNumber(value, maximumFractionDigits) {
@@ -1074,6 +1074,7 @@
                     renderKey = JSON.stringify([nextSelectionKey,pageIndex,state.tokenUnit,state.colorMode]);
                     const label = `${rows.length} / ${points.length} 条明细${pins.length ? ' · 置顶 '+pins.length+' 条' : ''}`;
                     mountOptions.count.textContent = label;
+                    root.CodingPlanEvents?.results({result_count:rows.length,result_key:JSON.stringify(rows.map(x=>x.slug))});
                     container.querySelector('[data-table-count]').textContent = label;
                     sortSelect.value = sort.key; sortPicker.sync();
                     directionButton.textContent = sort.direction === 'asc' ? '↑' : '↓';

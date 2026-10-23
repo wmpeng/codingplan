@@ -619,6 +619,8 @@
     overlay.classList.add('is-open');
 
 
+    globalThis.CodingPlanEvents?.track('detail_open', {entity_type:'platform', platform_slug:platform.slug, placement:location.pathname});
+    overlay.dataset.collectPlatform = platform.slug;
     openPlatformId = platform.slug || null;
     openPlatformName = platform.name || null;
     triggerEl = opts.triggerEl || null;

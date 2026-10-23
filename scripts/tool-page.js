@@ -31,6 +31,7 @@
     return root.CodingPlanFilterUI.mount({ element: document.getElementById('toolFilters'), context: data.context, config: data.config, mode: 'full', view, onChange });
   }
   function error(host, message, options = {}) {
+    root.CodingPlanEvents?.track('load_error', {module:'tool_page', error_code:'data_unavailable'});
     const box = document.createElement('div');
     box.className = 'tool-empty';
     box.setAttribute('role', 'alert');

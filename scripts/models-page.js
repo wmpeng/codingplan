@@ -23,6 +23,7 @@
         })).join('') : '<p class="tool-empty">没有匹配模型，试着清空搜索或减少条件。</p>';
         document.getElementById('modelCount').textContent = Directory.countLabel(selection);
         host.dataset.mounted = '1';
+        root.CodingPlanEvents?.results({result_count:selection.visible.length,result_key:JSON.stringify(selection.visible.map(x=>x.slug))});
       }
       document.getElementById('modelControls').addEventListener('input', render);
       search.addEventListener('input', render);

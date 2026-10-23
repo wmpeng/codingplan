@@ -52,6 +52,7 @@
         search.disabled = featuredOnly;
         search.closest('.tool-result-bar').classList.toggle('is-search-paused', featuredOnly);
         count.textContent = Directory.countLabel(selection); syncSort();
+        root.CodingPlanEvents?.results({result_count:selection.visible.length,result_key:JSON.stringify([state,selection.visible.map(x=>x.slug)])});
         tableBody.innerHTML = selection.visible.length ? selection.visible.map(plan => {
           const status = plan.planStatus || 'open';
           const url = UI.sanitizeUrl(plan.action, '');
@@ -62,7 +63,7 @@
           const modelNotice = notice('models');
           const modelList = UI.modelTags(models.map(model => model.name), {maxRows:2,ariaLabel:label+' 支持模型'});
           const title = status !== 'delisted' && url
-            ? `<a class="plan-title" data-plan-link="${status}" href="${esc(url)}" target="_blank" rel="noopener noreferrer" aria-label="${status === 'open' ? '开通' : '去官网查看'} ${esc(label)}">${esc(label)} ${UI.externalLinkIcon}</a>`
+            ? `<a class="plan-title" data-plan-link="${status}" data-collect-outbound data-collect-platform="${esc(plan.platformSlug)}" data-collect-plan="${esc(plan.slug)}" href="${esc(url)}" target="_blank" rel="noopener noreferrer" aria-label="${status === 'open' ? '开通' : '去官网查看'} ${esc(label)}">${esc(label)} ${UI.externalLinkIcon}</a>`
             : `<strong class="plan-title">${esc(label)}</strong>`;
           return `<tr data-plan-row="${esc(plan.slug)}"${selection.pinned.has(plan.slug) ? ' class="is-pinned"' : ''}>
             <td data-plan-col="identity"><div class="plan-identity">${UI.pinButton({pinned:selection.pinned.has(plan.slug), label:`${selection.pinned.has(plan.slug) ? '取消置顶' : '置顶'} ${label}`, attributes:{'data-plan-pin':plan.slug}})}<div class="plan-identity-copy">${title}${selection.featured.has(plan.slug) ? ' <span class="platform-featured-badge" data-plan-featured-badge>精选</span>' : ''}${notice('general')}<div class="plan-meta">${status === 'open' ? '' : `<span class="tool-tag plan-status" data-plan-status="${status}">${esc(UI.statusLabels[status])}</span>`}${root.EntityData.harnessApiBadge(plan.supportsHarnessApi)}</div></div></div></td>
@@ -86,6 +87,7 @@
           quota.setAttribute('aria-expanded', String(open));
           const panel = document.getElementById(quota.getAttribute('aria-controls'));
           panel.closest('tr').hidden = !open;
+          if (open) root.CodingPlanEvents?.track('detail_open', {entity_type:'plan_quota',plan_slug:slug,placement:'plans'});
           if (open) panel.innerHTML = quotaContent(allPlans.find(plan => plan.slug === slug));
           return;
         }

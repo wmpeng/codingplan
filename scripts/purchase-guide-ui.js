@@ -183,6 +183,7 @@
       pendingStart = true;
       return;
     }
+    root.CodingPlanEvents?.track('guide_start');
     pendingStart = false;
     const current = controller.getState();
     if (!G.directAdvice(answers) && G.scenarioPatch(answers).apiOnly !== current.apiOnly) {
@@ -277,6 +278,7 @@
       render();
     }
     if (action === "prev" || action === "next" || action === "skip") {
+      root.CodingPlanEvents?.track('guide_step', {step:step + 1, action});
       if (action === "skip") {
         if (step === 0) {
           answers.scenario = null;
@@ -292,6 +294,7 @@
           set({ preference: "balanced" });
       }
       if (step === questions.length - 1 && action !== "prev") {
+        root.CodingPlanEvents?.track('guide_complete');
         collapsed = true;
         render();
         document
