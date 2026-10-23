@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-23T15:11:21Z",
+  "generatedAt": "2026-10-23T17:13:23Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -7580,7 +7580,7 @@
             "unitPriceCnyPerM": 0.14144
           },
           "pricing": null,
-          "note": "Plus/Pro 可用；支持文本与图片输入。参考 Token 额度按同套餐 GPT-5.6-Sol 的 2.4 倍估算，未独立实测，非官方固定配额。"
+          "note": "Plus/Pro 可用；支持文本与图片输入。参考 Token 额度按同套餐 GPT-6-Sol 的 1.2 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro5--gpt-6-astra",
@@ -7612,7 +7612,7 @@
             "unitPriceCnyPerM": 0.17
           },
           "pricing": null,
-          "note": "暂按同套餐 GPT-5.6-Sol 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
+          "note": "参考周额度 10 亿 Token，按历史 GPT-5.6-Sol 实测周额度的 2 倍估算，未独立实测，非官方固定配额；实际可用量随模型、负载及账号变化。"
         },
         {
           "slug": "codex-pro5--gpt-6-luna",
@@ -7628,7 +7628,7 @@
             "unitPriceCnyPerM": 0.017
           },
           "pricing": null,
-          "note": "暂按同套餐 GPT-5.6-Luna 的 Token 额度 2 倍估算，非官方额度或独立实测；实际可用性以账号与客户端为准；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
+          "note": "参考 Token 额度按同套餐 GPT-6-Sol 的 10 倍估算，未独立实测，非官方固定配额；实际可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro5--gpt-5-6-sol",
@@ -7636,7 +7636,7 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "measured",
+          "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": 500.0,
@@ -7644,7 +7644,7 @@
             "unitPriceCnyPerM": 0.34
           },
           "pricing": null,
-          "note": "个人实测，基本都是 High，缓存命中率约 95%；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
+          "note": "参考 Token 额度按同套餐 GPT-6-Sol 的 0.5 倍换算；历史个人实测基本都是 High、缓存命中率约 95%，不代表当前账号的官方保证。"
         },
         {
           "slug": "codex-pro5--gpt-5-6-luna",
@@ -7660,7 +7660,7 @@
             "unitPriceCnyPerM": 0.034
           },
           "pricing": null,
-          "note": "按个人实测的 GPT-5.6-Sol 用量约 10 倍计算；沿用既有历史实测/估算，不代表新型号或当前账号的官方保证。"
+          "note": "参考 Token 额度按同套餐 GPT-6-Sol 的 5 倍估算；沿用历史估算，不代表当前账号的官方保证。"
         },
         {
           "slug": "codex-pro5--gpt-5-6",
@@ -7676,7 +7676,7 @@
             "unitPriceCnyPerM": 0.22644
           },
           "pricing": null,
-          "note": "参考 Token 额度按同套餐 GPT-5.6-Sol 的 1.5 倍估算，未独立实测，非官方固定配额。"
+          "note": "参考 Token 额度按同套餐 GPT-6-Sol 的 0.75 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro5--gpt-6-astra--service-fast",
