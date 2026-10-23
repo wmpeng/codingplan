@@ -182,11 +182,6 @@
     white-space: nowrap;
 }
 
-.platform-rush[data-platform-status="restricted"] {
-    background: rgba(245, 158, 11, 0.13);
-    color: #a45f0c;
-}
-
 .platform-rush[data-platform-status="delisted"] {
     background: rgba(100, 116, 139, 0.14);
     color: #64748b;
@@ -433,11 +428,6 @@ body .platform-card:focus-visible .platform-card-hint {
     font-weight: 700;
     background: rgba(15, 118, 110, 0.1);
     color: #0f766e;
-}
-
-.platform-detail-rush[data-platform-status="restricted"] {
-    background: rgba(245, 158, 11, 0.13);
-    color: #a45f0c;
 }
 
 .platform-detail-rush[data-platform-status="delisted"] {

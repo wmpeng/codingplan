@@ -46,7 +46,7 @@
     const quotaSummary=`<summary class="offer-quota-summary is-compact${range==='额度未知'?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota"><span class="offer-summary-label">月额度 </span><span class="offer-summary-value">${esc(range)}</span></span>${priceRange!==null?`<span class="offer-summary-price" aria-hidden="true"><span class="offer-summary-label">单价 </span><span class="offer-summary-value">${esc(priceRange)} /${unitLabel(unit)}</span></span>`:''}</span></summary>`;
     const unknownPrices=item.rows.some(row=>Numbers.finite(row.usage?.unitPriceCnyPerM)===null);
     const apiSummary=`<summary class="offer-quota-summary offer-api-summary${priceRange===null?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota"><span class="offer-summary-label">${priceRange!==null && unknownPrices?'已知单价':'单价'} </span><span class="offer-summary-value">${priceRange!==null?`${esc(priceRange)} /${unitLabel(unit)}`:'待确认'}</span></span></span></summary>`;
-    const badges=(statusKey==='open'?'':`<span class="offer-status">${status}</span>`)+(E.resolveHarnessApi(item.platform,item.plan)===false?E.harnessApiBadge(false):'');
+    const badges=(statusKey==='open'?'':`<span class="offer-status" data-offer-status="${statusKey}">${status}</span>`)+(E.resolveHarnessApi(item.platform,item.plan)===false?E.harnessApiBadge(false):'');
     const capabilities=badges?`<div class="offer-capabilities">${badges}</div>`:'';
     const action=url(item.plan.action || item.platform.action);
     const name=esc(item.platform.name+' '+item.plan.name);
