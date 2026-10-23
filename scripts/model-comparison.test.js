@@ -430,13 +430,13 @@ test('token unit conversion keeps amount and unit price mathematically aligned',
   assert.match(yiRow, /10亿/);
 });
 
-test('unit price column appears before all three usage columns', () => {
+test('unit price precedes all three usage columns and API pricing follows monthly usage', () => {
   const keys = COMPARISON_TABLE_COLUMNS.map((column) => column.key);
   const unitPriceIndex = keys.indexOf('unitPriceCnyPerM');
   const unitPriceVisualIndex = keys.indexOf('unitPriceVisual');
   const apiPricingIndex = keys.indexOf('apiPricing');
   assert.equal(unitPriceVisualIndex, unitPriceIndex + 1);
-  assert.equal(apiPricingIndex, unitPriceVisualIndex + 1);
+  assert.equal(apiPricingIndex, keys.indexOf('monthlyTokenInM') + 1);
   assert.equal(COMPARISON_TABLE_COLUMNS[unitPriceVisualIndex].sortable, false);
   assert.ok(unitPriceIndex < keys.indexOf('fiveHourTokenInM'));
   assert.ok(unitPriceIndex < keys.indexOf('weeklyTokenInM'));

@@ -31,10 +31,10 @@
         { key: 'model', label: '模型' },
         { key: 'unitPriceCnyPerM', label: '综合单价' },
         { key: 'unitPriceVisual', label: '单价对比', hint: '低 → 高 · 对数', sortable: false },
-        { key: 'apiPricing', label: 'API 单价（输入 / 缓存 / 输出）', sortable: false },
         { key: 'fiveHourTokenInM', label: '5h用量' },
         { key: 'weeklyTokenInM', label: '周用量' },
         { key: 'monthlyTokenInM', label: '月用量' },
+        { key: 'apiPricing', label: 'API 单价（输入 / 缓存 / 输出）', sortable: false },
         { key: 'artificialAnalysis', label: 'AA分数' },
         { key: 'deepSWE', label: 'DeepSWE分数' },
         { key: 'note', label: '备注' }
@@ -541,10 +541,10 @@
             `<td class="usage-table-model">${escapeHtml(point.relationLabel || point.modelName)}${notice('models')}</td>` +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
             `<td class="usage-table-price-visual">${unitPriceVisualHtml(point, tokenUnit, visualOptions)}</td>` +
-            `<td class="usage-table-api-pricing">${subscription ? '—' : escapeHtml(formatApiPricing(point.apiPricing))}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.weeklyTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}${notice('quota')}</td>` +
+            `<td class="usage-table-api-pricing">${subscription ? '—' : escapeHtml(formatApiPricing(point.apiPricing))}</td>` +
             `<td class="numeric">${aaScore ? formatNumber(aaScore.score, 0) : '—'}</td>` +
             `<td class="numeric">${deepSWEScore ? `${formatNumber(deepSWEScore.score, 0)}${deepSWEInterval}` : '—'}</td>` +
             `<td class="usage-table-note">${point.note ? `<details class="usage-note-disclosure"><summary>用量口径与限制</summary><div>${escapeHtml(point.note)}</div></details>` : '—'}</td></tr>`;
