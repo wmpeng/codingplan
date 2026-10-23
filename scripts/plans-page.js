@@ -26,7 +26,7 @@
       let state = Filters.createDefaultState(config, {mode:'full'}), pins = Directory.readPins(root.localStorage, allPlans);
       let sort = {key:'platformOrder', direction:'asc'}, sortPicker, sortSelect, directionButton, lastFilterKey, featuredOnly = false;
       const tableBody = host.querySelector('[data-plan-body]'), count = host.querySelector('[data-plan-count]');
-      const expandedQuotas = new Set(), expandedNotes = new Set();
+      const expandedQuotas = new Set(), expandedNotes = new Set(), expandedPlanNotes = new Set();
       const tableWrap = tableBody.closest('.tool-table-wrap');
       const resizeQuota = () => host.style.setProperty('--plan-quota-width', `${tableWrap.clientWidth}px`);
       new ResizeObserver(resizeQuota).observe(tableWrap);
@@ -34,6 +34,9 @@
       let selection;
       const quotaId = plan => `plan-quota-${encodeURIComponent(plan.slug)}`;
       const quotaContent = plan => root.PlanQuota.render(plan, context, selection.effectiveState, {notesOpen:expandedNotes.has(plan.slug)});
+      const planNotes = plan => plan.noteHighlights?.length
+        ? `<ul class="plan-note-highlights">${plan.noteHighlights.map(text => `<li>${esc(text)}</li>`).join('')}</ul><details class="plan-note-details" data-plan-full-note="${esc(plan.slug)}"${expandedPlanNotes.has(plan.slug) ? ' open' : ''}><summary>完整说明</summary><p>${esc(plan.note || '')}</p></details>`
+        : esc(plan.note || '');
       function syncSort() {
         if (sortSelect) { sortSelect.value = sort.key; sortPicker.sync(); }
         if (directionButton) {
@@ -72,7 +75,7 @@
             <td data-plan-col="models">${modelNotice ? `<div class="plan-models-with-notice">${modelList}${modelNotice}</div>` : modelList}</td>
             <td data-plan-col="monthlyToken" class="monthly-token-cell"><button type="button" class="plan-quota-toggle" data-plan-quota="${esc(plan.slug)}" aria-expanded="${expandedQuotas.has(plan.slug)}" aria-controls="${quotaId(plan)}" aria-label="${esc(label)} 额度明细"><span>${esc(Filters.formatMonthlyTokens(plan,selection.effectiveState))}</span></button>${notice('quota')}</td>
             ${['fiveHours','weekly','monthly'].map(key => `<td data-plan-col="requestQuota.${key}" data-plan-extra>${esc(requests(plan,key))}</td>`).join('')}
-            <td data-plan-col="benefits" data-plan-extra>${chips(plan.benefits)}</td><td class="plan-note" data-plan-col="note">${esc(plan.note || '')}</td>
+            <td data-plan-col="benefits" data-plan-extra>${chips(plan.benefits)}</td><td class="plan-note" data-plan-col="note">${planNotes(plan)}</td>
           </tr><tr class="plan-quota-row" data-plan-quota-row="${esc(plan.slug)}"${expandedQuotas.has(plan.slug) ? '' : ' hidden'}><td colspan="${host.classList.contains('show-all-columns') ? 13 : 6}"><section class="plan-quota-panel" id="${quotaId(plan)}" aria-label="${esc(label)} 额度明细">${expandedQuotas.has(plan.slug) ? quotaContent(plan) : ''}</section></td></tr>`;
         }).join('') : `<tr><td colspan="13"><div class="tool-empty">${featuredOnly ? '暂无符合精选范围的套餐，可关闭“显示精选”查看其他套餐。' : '没有匹配套餐，试着清空搜索或减少筛选条件。'}</div></td></tr>`;
         modelRows.refresh(); host.dataset.mounted = '1';
@@ -106,6 +109,8 @@
         }
       });
       host.addEventListener('toggle', event => {
+        const planSlug = event.target.dataset?.planFullNote;
+        if (planSlug) { if (event.target.open) expandedPlanNotes.add(planSlug); else expandedPlanNotes.delete(planSlug); }
         const slug = event.target.dataset?.planQuotaNotes;
         if (slug) { if (event.target.open) expandedNotes.add(slug); else expandedNotes.delete(slug); }
       }, true);
