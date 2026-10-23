@@ -4,7 +4,7 @@
 
 > 更新日期 2026.10.23 | 模型支持、OpenCode额度与火山Economy计费档更新
 
-当前展示 **42 个平台、142 个在售订阅套餐、2 个按量 API、163 个模型和 2327 条套餐模型关系**。
+当前展示 **42 个平台、142 个在售订阅套餐、2 个按量 API、163 个模型和 2359 条套餐模型关系**。
 
 [在线平台中心](https://codingplan.fyi/platforms/) · [模型目录](https://codingplan.fyi/models/) · [价格与额度](https://codingplan.fyi/pricing/) · [套餐对比](https://codingplan.fyi/plans/) · [预告与更新](https://codingplan.fyi/updates/)
 
@@ -44,16 +44,16 @@
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 |
 |---|---|---|---:|---:|---:|---:|
+| [阿里·百炼 Token Plan · Pro](https://api.dreamfree.space/c/s/cpyqbailiant) | [谷] | ¥499/首月 | 10,957.2M | 10,957.2M | 10,957.2M | ¥0.0455/M |
+| [阿里·百炼 Token Plan · Standard](https://api.dreamfree.space/c/s/cpyqbailiant) | [谷] | ¥139/首月 | 2,739.3M | 2,739.3M | 2,739.3M | ¥0.0507/M |
+| [阿里·百炼 Token Plan · Essential](https://api.dreamfree.space/c/s/cpyqbailiant) | [谷] | ¥79/首月 | 1,552.3M | 1,552.3M | 1,552.3M | ¥0.0509/M |
+| [阿里·百炼 Token Plan · Lite](https://api.dreamfree.space/c/s/cpyqbailiant) | [谷] | ¥39/首月 | 700M | 700M | 700M | ¥0.0557/M |
 | [DeepSeek · 按量 API](https://platform.deepseek.com/) | [谷] | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M |
-| [腾讯云 · Lite](https://api.dreamfree.space/c/s/cpyqtengxunt) | - | ¥39/首月 | 220M | 220M | 220M | ¥0.1773/M |
-| [腾讯云 · Standard](https://api.dreamfree.space/c/s/cpyqtengxunt) | - | ¥99/首月 | 558.3M | 558.3M | 558.3M | ¥0.1773/M |
-| [腾讯云 · Pro](https://api.dreamfree.space/c/s/cpyqtengxunt) | - | ¥299/首月 | 1,686.3M | 1,686.3M | 1,686.3M | ¥0.1773/M |
-| [腾讯云 · Max](https://api.dreamfree.space/c/s/cpyqtengxunt) | - | ¥599/首月 | 3,378.3M | 3,378.3M | 3,378.3M | ¥0.1773/M |
+| [阿里·百炼 Token Plan · Pro](https://api.dreamfree.space/c/s/cpyqbailiant) | [峰] | ¥499/首月 | 5,478.6M | 5,478.6M | 5,478.6M | ¥0.0911/M |
+| [阿里·百炼 Token Plan · Standard](https://api.dreamfree.space/c/s/cpyqbailiant) | [峰] | ¥139/首月 | 1,369.7M | 1,369.7M | 1,369.7M | ¥0.1015/M |
 | [DeepSeek · 按量 API](https://platform.deepseek.com/) | [峰] | 入¥2 / 缓存¥0.04 / 出¥8 | - | - | - | ¥0.1773/M |
-| [百度·千帆 · Max](https://api.dreamfree.space/c/s/cpyqqianfan) | - | ¥299.9/首月 | 700M | 700M | 700M | ¥0.8571/M |
-| [百度·千帆 · Pro](https://api.dreamfree.space/c/s/cpyqqianfan) | - | ¥99.9/首月 | 230M | 230M | 230M | ¥0.8696/M |
 
-还有 2 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
+还有 10 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### DeepSeek-V4.1-Flash
 
@@ -68,7 +68,7 @@
 | [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | [峰] | $10/首月 | 601.58M | 1,503.96M | 3,007.9M | ¥0.0224/M |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M |
 
-还有 45 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
+还有 53 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### DeepSeek-V4-Flash-0731
 
@@ -83,7 +83,7 @@
 | [Command Code · Max 10×](https://api.dreamfree.space/c/s/cpcommandcode) | [谷] | $100/首月 | 3,383.9M | 6,767.81M | 11,279.7M | ¥0.0605/M |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥1.5 / 缓存¥0.05 / 出¥4.5 | - | - | - | ¥0.1444/M |
 
-还有 53 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
+还有 61 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### GLM-5.3-Flash
 
@@ -200,7 +200,7 @@
 | [智谱国际版 · 新Lite](https://api.dreamfree.space/c/s/cpyqzai) | [谷] | $18/首月 | 19.32M | 96.61M | 386.4M | ¥0.3169/M |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥8 / 缓存¥2 / 出¥28 | - | - | - | ¥2.4285/M |
 
-还有 32 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
+还有 36 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### Kimi-K3
 
@@ -329,6 +329,7 @@
 
 ### 2026.10.23
 
+- 补充阿里百炼四档Token Plan的模型用量估算：按北京API价格×100 Credits计算，区分峰谷与上下文档，实际消耗可能不同。
 - 补充百炼、百度千帆和超算Token Plan的DeepSeek V4.1 Flash 1017支持，更新淘Token双Flash型号；精确抵扣未知的套餐继续标注未知。
 - OpenCode Step 5 Preview恢复常规额度，M3.1 Flash按Token计费；移除当前套餐未列出的Space Bunny。
 - 补充火山Agent Plan的DeepSeek V4.1 Flash Economy档及限时折扣、Qoder国际版M3.1 Flash支持；移除Copilot已退役型号，更新超算综合抵扣倍率。
