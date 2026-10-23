@@ -13,8 +13,10 @@
       let state = root.CodingPlanFilters.createDefaultState(appConfig, { mode: 'full' });
       let featuredOnly = false;
       const search = host.querySelector('[data-hub-search]');
+      const Url = root.CodingPlanFilterUrl, searchSchema = {query:Url.text('q')};
       const linkedPlatform = platforms.find(platform => platform.slug === new URLSearchParams(location.search).get('platform'));
       if (linkedPlatform) search.value = linkedPlatform.name;
+      search.value = Url.read(searchSchema).query ?? search.value;
       search.disabled = false;
       const grid = host.querySelector('[data-hub-grid]');
       const empty = host.querySelector('[data-hub-empty]');
@@ -23,6 +25,7 @@
       let pinnedIds = root.PlatformCatalog.sanitizePinnedIds(pinned, platforms);
 
       function render() {
+        Url.replace(searchSchema, {query:search.value});
         const featuredSlugs = context.featuredPlatformSlugs || [];
         const selection = root.PlatformHub.select(platforms, state, {featuredOnly, featuredSlugs, pinnedIds, query:search.value,
           filterOptions:{platformCatalog:config, context, usdToCnyRate:appConfig.usdToCnyRate, entityData:root.EntityData}});

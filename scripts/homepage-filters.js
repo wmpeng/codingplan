@@ -198,6 +198,7 @@
     const opts = options || {}, policy = Filters.createViewPolicy(opts);
     const {full, pricing, plansPage, planStatusOnly, platformHub, purchaseTool} = policy;
     const featuredCatalog = platformHub || plansPage;
+    const Url = root.CodingPlanFilterUrl;
     const host =
       opts.element || document.getElementById("homepageUnifiedFiltersMount");
     const context = opts.context || root.codingplanEntityContext;
@@ -208,6 +209,8 @@
       models = context.models;
     let state = policy.createDefaults(config, root.CodingPlanDisplaySettings?.getTokenUnit() || "yi");
     const defaults = Filters.cloneControlState(state);
+    const urlSchema = Url.sharedSchema(context, policy);
+    let resetUrl = false;
     let featuredOnly = false;
     if (opts.featuredPreset) {
       context.modelGroups = opts.featuredPreset.groups || [];
@@ -261,6 +264,7 @@
         state.modelSlugs = presetSlugs("featured");
       }
       resetModelList();
+      resetUrl = !full || featured || featuredCatalog;
       publish(platformHub || plansPage ? "reset" : "manual");
       return true;
     }
@@ -319,12 +323,24 @@
       initialPresetPending = false;
       return true;
     }
-    if (explicitSelection) initialPresetPending = false;
-    else applyInitialPreset();
-    if (validPlatform && !platformHub)
-      state.platformSlugs = [platform];
-    if (validModel) state.modelSlugs = [model];
-    if (params.get("billing") === "payg" && !plansPage) state.apiOnly = true;
+    const saved = Url.read(urlSchema);
+    if (saved.snapshot) {
+      initialPresetPending = false;
+      const {snapshot, restricted, history, domestic, featuredOnly: featured, ...conditions} = saved;
+      Object.assign(state, conditions);
+      state[planStatusOnly ? 'excludedPlanStatuses' : 'excludedPlatformStatuses'] = restricted ? ['restricted'] : [];
+      if (planStatusOnly) state.includeDiscontinued = history === true;
+      else state.platformStatusMax = history ? 'delisted' : 'restricted';
+      if (platformHub) state.domesticNetworkOnly = state.domesticPaymentOnly = domestic === true;
+      featuredOnly = featuredCatalog && featured === true;
+      if (!state.modelSlugs || state.modelSlugs.length < 2) state.modelMatch = 'any';
+    } else {
+      if (explicitSelection) initialPresetPending = false;
+      else applyInitialPreset();
+      if (validPlatform && !platformHub) state.platformSlugs = [platform];
+      if (validModel) state.modelSlugs = [model];
+      if (params.get("billing") === "payg" && !plansPage) state.apiOnly = true;
+    }
     host.innerHTML = `<section class="filter-state-bar surface-panel${full ? "" : " home-filter-panel"}${platformHub ? " platform-hub-filters" : plansPage ? " plan-featured-filters" : ""}" aria-label="统一筛选">
       ${featuredCatalog ? `<div class="platform-filter-row"><fieldset class="platform-filter-fields" data-featured-filter-fields ${platformHub ? 'data-platform-filter-fields' : 'data-plan-filter-fields'}><legend class="sr-only">${platformHub ? '平台' : '套餐'}筛选条件</legend>` : ""}
       <div class="filter-state-grid">
@@ -584,6 +600,17 @@
         root.__codingplanHomeApi?.setUnifiedFilters(clean);
       }
       if (opts.onChange) opts.onChange(clean, {source, featuredOnly});
+      if (!["init", "catalog", "display"].includes(source)) {
+        const remove = ['platform','model','billing'];
+        if (resetUrl && !params.has('plan') && !params.has('relation')) Url.clear(urlSchema, remove);
+        else Url.replace(urlSchema, {
+          ...state, snapshot:true, featuredOnly,
+          restricted:state[planStatusOnly ? 'excludedPlanStatuses' : 'excludedPlatformStatuses'].includes('restricted'),
+          history:planStatusOnly ? state.includeDiscontinued : state.platformStatusMax === 'delisted',
+          domestic:platformHub && state.domesticNetworkOnly
+        }, {remove, delay:source === 'range'});
+        resetUrl = false;
+      }
       render();
       root.dispatchEvent(
         new CustomEvent("codingplan:filters-changed", {
@@ -600,7 +627,7 @@
           : position >= budgetNumericMax + 50 ? setBudget(null)
           : setBudget(rangeValue(key, Math.min(position, budgetNumericMax) - 1)));
         else state.monthlyTokenRange = position === 0 ? null : { min: rangeValue(key, position - 1), max: null };
-        publish();
+        publish('range');
         return;
       }
       if (el.matches("[data-picker-search]")) {

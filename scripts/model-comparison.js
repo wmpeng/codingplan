@@ -867,6 +867,16 @@
             const tableSortState = {
                 comparison: { key: 'unitPriceCnyPerM', direction: 'asc' }
             };
+            const Url = root.CodingPlanFilterUrl;
+            const urlSchema = Directory && {
+                query:Url.text('q'), key:Url.choice('sort', COMPARISON_TABLE_COLUMNS.filter(column => column.sortable !== false).map(column => column.key), 'unitPriceCnyPerM'),
+                direction:Url.choice('direction', ['asc','desc'], 'asc')
+            };
+            if (Directory) {
+                const saved = Url.read(urlSchema);
+                search.value = saved.query || '';
+                tableSortState.comparison = {key:saved.key || 'unitPriceCnyPerM', direction:saved.direction || 'asc'};
+            }
             const latestTableRows = { comparison: [] };
             const priceBounds = getMonthlyPriceBounds(points);
             const priceSlider = { min: priceBounds.min, max: priceBounds.max };
@@ -1058,6 +1068,7 @@
             function renderDataTable(tableName, rows) {
                 latestTableRows[tableName] = rows || [];
                 const sort = tableSortState[tableName];
+                if (Directory) Url.replace(urlSchema, {query:search.value, ...sort});
                 let sorted = Directory ? Directory.tableRows(rows, points, pins, sortComparisonRows, sort) : sortComparisonRows(rows, sort.key, sort.direction);
                 const scale = buildUnitPriceVisualScale(sorted);
                 let renderKey = '';
@@ -1112,7 +1123,7 @@
                 const pager=document.createElement('div');pager.className='price-pagination';pager.dataset.pricePagination='';pager.innerHTML=pagerHtml;
                 const card=container.querySelector('.usage-data-card');card.append(pager);
                 const topPager=pager.cloneNode(true);card.querySelector('.usage-chart-head').append(topPager);
-                sortSelect = tools.querySelector('select'); sortSelect.value = 'unitPriceCnyPerM';
+                sortSelect = tools.querySelector('select'); sortSelect.value = tableSortState.comparison.key;
                 sortPicker = root.CodingPlanSingleSelect.mount(sortSelect, '明细排序', {showLabel:false});
                 directionButton = tools.querySelector('button.price-sort-direction');
                 sortSelect.addEventListener('change', () => { tableSortState.comparison = {key:sortSelect.value,direction:'asc'}; renderDataTable('comparison',latestTableRows.comparison); });

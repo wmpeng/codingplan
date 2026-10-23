@@ -10,9 +10,18 @@
       const reset = document.getElementById('modelReset'), buttons = [...document.querySelectorAll('[data-model-featured]')];
       buttons.forEach(button => { if (button.dataset.modelFeatured !== 'all') button.textContent = root.CodingPlanUI.modelGroupLabel(preset.groups, button.dataset.modelFeatured); });
       const picker = root.CodingPlanSingleSelect.mount(sort, '排序');
-      let featuredMode = '';
+      const Url = root.CodingPlanFilterUrl;
+      const urlSchema = {
+        query:Url.text('q'), sort:Url.choice('sort', ['default','name','artificialAnalysis','deepSWE'], 'default'),
+        multimodal:Url.flag('multimodal'), featuredMode:Url.choice('featured', ['all', ...preset.groups.map(group => group.id)], '')
+      };
+      const saved = Url.read(urlSchema);
+      let featuredMode = saved.featuredMode || '';
+      search.value = saved.query || ''; sort.value = saved.sort || 'default'; multimodal.checked = saved.multimodal === true;
+      picker.sync();
       let pins = Directory.readPins(root.localStorage, context.models);
       function render() {
+        Url.replace(urlSchema, {query:search.value, sort:sort.value, multimodal:multimodal.checked, featuredMode});
         const selection = Directory.select(context.models, preset.groups, {query:search.value, featuredMode, sort:sort.value, multimodal:multimodal.checked}, pins);
         fields.disabled = selection.featuredMode; fields.inert = selection.featuredMode;
         fields.classList.toggle('is-paused', selection.featuredMode);

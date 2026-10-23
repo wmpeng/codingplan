@@ -25,6 +25,12 @@
       const search = host.querySelector('[data-plan-search]');
       let state = Filters.createDefaultState(config, {mode:'full'}), pins = Directory.readPins(root.localStorage, allPlans);
       let sort = {key:'platformOrder', direction:'asc'}, sortPicker, sortSelect, directionButton, lastFilterKey, featuredOnly = false;
+      const Url = root.CodingPlanFilterUrl, urlSchema = {
+        query:Url.text('q'), key:Url.choice('sort', Directory.sortOptions.map(([key]) => key), 'platformOrder'),
+        direction:Url.choice('direction', ['asc','desc'], 'asc')
+      };
+      const saved = Url.read(urlSchema);
+      search.value = saved.query || ''; sort = {key:saved.key || 'platformOrder', direction:saved.direction || 'asc'};
       const tableBody = host.querySelector('[data-plan-body]'), count = host.querySelector('[data-plan-count]');
       const expandedQuotas = new Set(), expandedNotes = new Set();
       const quotaSorts = new Map();
@@ -49,6 +55,7 @@
         });
       }
       function apply() {
+        Url.replace(urlSchema, {query:search.value, ...sort});
         selection = Directory.select(allPlans, state, {context, config, query:search.value, sort, pins, featuredOnly});
         search.disabled = featuredOnly;
         search.closest('.tool-result-bar').classList.toggle('is-search-paused', featuredOnly);
