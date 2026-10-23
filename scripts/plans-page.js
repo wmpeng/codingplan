@@ -27,13 +27,14 @@
       let sort = {key:'platformOrder', direction:'asc'}, sortPicker, sortSelect, directionButton, lastFilterKey, featuredOnly = false;
       const tableBody = host.querySelector('[data-plan-body]'), count = host.querySelector('[data-plan-count]');
       const expandedQuotas = new Set(), expandedNotes = new Set();
+      const quotaSorts = new Map();
       const tableWrap = tableBody.closest('.tool-table-wrap');
       const resizeQuota = () => host.style.setProperty('--plan-quota-width', `${tableWrap.clientWidth}px`);
       new ResizeObserver(resizeQuota).observe(tableWrap);
       resizeQuota();
       let selection;
       const quotaId = plan => `plan-quota-${encodeURIComponent(plan.slug)}`;
-      const quotaContent = plan => root.PlanQuota.render(plan, context, selection.effectiveState, {notesOpen:expandedNotes.has(plan.slug)});
+      const quotaContent = plan => root.PlanQuota.render(plan, context, selection.effectiveState, {notesOpen:expandedNotes.has(plan.slug), sort:quotaSorts.get(plan.slug)});
       function syncSort() {
         if (sortSelect) { sortSelect.value = sort.key; sortPicker.sync(); }
         if (directionButton) {
@@ -80,6 +81,17 @@
       search.disabled = false; search.addEventListener('input', apply);
       host.addEventListener('click', event => {
         if (UI.toggleModels(event)) return;
+        const quotaSort = event.target.closest('[data-plan-quota-sort]');
+        if (quotaSort) {
+          const panel = quotaSort.closest('.plan-quota-panel');
+          const slug = panel.closest('[data-plan-quota-row]').dataset.planQuotaRow;
+          const key = quotaSort.dataset.planQuotaSort;
+          const next = root.PlanQuota.cycleSort(quotaSorts.get(slug), key);
+          if (next) quotaSorts.set(slug, next); else quotaSorts.delete(slug);
+          panel.innerHTML = quotaContent(allPlans.find(plan => plan.slug === slug));
+          panel.querySelector(`[data-plan-quota-sort="${key}"]`)?.focus({preventScroll:true});
+          return;
+        }
         const quota = event.target.closest('[data-plan-quota]');
         if (quota) {
           const slug = quota.dataset.planQuota, open = !expandedQuotas.has(slug);

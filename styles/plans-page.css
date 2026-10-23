@@ -12,7 +12,7 @@
 }
 #plansPage .plan-quota-toggle[aria-expanded="true"]::after { transform: translateY(2px) rotate(225deg); }
 #plansPage .plan-quota-toggle:hover { background: var(--bg-tertiary); }
-#plansPage :is(.plan-quota-toggle, .plan-quota-notes > summary):focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+#plansPage :is(.plan-quota-toggle, .plan-quota-notes > summary, [data-plan-quota-sort]):focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
 #plansPage .plan-quota-row > td { padding: 0; background: var(--bg-secondary, #f8fafc); }
 #plansPage .plan-quota-panel {
   position: sticky; left: 0; width: var(--plan-quota-width); max-width: 100%;
@@ -30,7 +30,7 @@
 #plansPage .plan-quota-table th:first-child { width: 36%; text-align: left; }
 #plansPage .plan-quota-table tbody th { color: var(--text-primary); font-weight: 500; white-space: normal; background: transparent; }
 #plansPage .plan-quota-table small { display: inline; margin-left: 6px; color: var(--text-secondary); font-size: 12px; font-weight: 400; }
-#plansPage .plan-quota-table .plan-quota-method { color: var(--text-secondary); font-size: 12px; }
+#plansPage .plan-quota-table .table-sort-button { text-align: right; }
 #plansPage .plan-quota-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; margin-top: 10px; font-size: 12px; color: var(--text-secondary); }
 #plansPage .plan-quota-footer a { display: inline-flex; align-items: center; min-height: 32px; }
 #plansPage .plan-quota-notes { margin-top: 6px; font-size: 12px; color: var(--text-secondary); }
@@ -40,7 +40,7 @@
 #plansPage .plan-quota-notes strong { display: block; margin-bottom: 2px; color: var(--text-primary); font-weight: 500; }
 #plansPage .plan-quota-empty { color: var(--text-secondary); font-size: 13px; }
 @media (max-width: 800px), (pointer: coarse) {
-  #plansPage :is(.plan-quota-toggle, .plan-quota-notes > summary, .plan-quota-footer a) { min-height: 44px; }
+  #plansPage :is(.plan-quota-toggle, .plan-quota-notes > summary, .plan-quota-footer a, [data-plan-quota-sort]) { min-height: 44px; }
 }
 @media (max-width: 800px) {
   #plansPage .plan-quota-panel { padding: 12px 10px; }

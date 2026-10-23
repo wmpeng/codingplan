@@ -29,13 +29,40 @@ test('明细与摘要按同一模型选择，保留该模型全部档位而不�
   assert.equal((html.match(/扣减估算/g)||[]).length,1);assert.doesNotMatch(html,/>口径</);
 });
 
-test('零、未知和无限制保持各自语义；混合口径独立标记，单位换算不改源', () => {
+test('零、未知和无限制保持各自语义；移除口径列并在标题合并标注，单位换算不改源', () => {
   const snapshot=JSON.stringify(context.relationsByPlanSlug.get('p'));
   const html=Quota.render(plan,context,{modelSlugs:null,tokenUnit:'M'});
   assert.match(html,/<td>0<\/td>/);assert.match(html,/<td>不限量<\/td>/);assert.match(html,/<td>未知<\/td>/);
-  assert.match(html,/>口径</);assert.match(html,/扣减估算/);assert.match(html,/待确认/);
+  assert.doesNotMatch(html,/>口径</);assert.doesNotMatch(html,/plan-quota-method/);
+  assert.match(html,/plan-quota-basis">扣减估算 · 待确认/);
   assert.match(html,/<td>100<\/td>/);assert.match(html,/<td>200<\/td>/);
   assert.equal(JSON.stringify(context.relationsByPlanSlug.get('p')),snapshot);
+});
+
+test('额度明细按各窗口原值稳定排序，未知始终排后，无限制大于有限值，默认顺序可恢复', () => {
+  const source = [
+    row('unknown','a','unknown',{}),
+    row('large','a','measured',{monthlyTokenInM:200,weeklyTokenInM:5,fiveHourTokenInM:2}),
+    row('zero','b','measured',{monthlyTokenInM:0,weeklyTokenInM:10,fiveHourTokenInM:0}),
+    row('tie','b','measured',{monthlyTokenInM:200,weeklyTokenInM:0}),
+    row('unlimited','c','officialQuota',{monthlyTokenInM:'unlimited',weeklyTokenInM:'unlimited',fiveHourTokenInM:'unlimited'})
+  ];
+  const data={...context,relationsByPlanSlug:new Map([['p',source]])};
+  const snapshot=JSON.stringify(source),ids=(sort,state={})=>Quota.rows(plan,data,state,sort).map(r=>r.slug);
+  let sort=Quota.cycleSort(null,'monthlyTokenInM');
+  assert.deepEqual(ids(sort),['zero','large','tie','unlimited','unknown']);
+  sort=Quota.cycleSort(sort,'monthlyTokenInM');
+  assert.deepEqual(ids(sort),['unlimited','large','tie','zero','unknown']);
+  assert.deepEqual(ids(sort,{modelSlugs:['b']}),['tie','zero']);
+  sort=Quota.cycleSort(sort,'monthlyTokenInM');assert.equal(sort,null);
+  assert.deepEqual(ids(sort),source.map(r=>r.slug));
+  assert.deepEqual(ids({key:'weeklyTokenInM',direction:'asc'}),['tie','large','zero','unlimited','unknown']);
+  assert.deepEqual(ids({key:'fiveHourTokenInM',direction:'desc'}),['unlimited','large','zero','unknown','tie']);
+  assert.equal(Quota.cycleSort(null,'invalid'),null);
+  const html=Quota.render(plan,data,{tokenUnit:'M'},{sort:{key:'monthlyTokenInM',direction:'desc'}});
+  assert.match(html,/aria-sort="descending"><button[^>]+data-plan-quota-sort="monthlyTokenInM"/);
+  assert.match(html,/每月用量：恢复默认顺序/);
+  assert.equal(JSON.stringify(source),snapshot);
 });
 
 test('未知月额度仍可查看请求额度和限制，全未知短窗口不增加空列', () => {
