@@ -1,10 +1,16 @@
-/* Coding Plan 事件语义集中在此；传输、身份和重试由 common 发送器维护。 */
+/* Coding Plan 事件语义集中在此；传输和重试由 common 发送器维护。 */
 (function (root) {
   'use strict';
   const path = location.pathname;
   const pageType = /^\/articles\/.+/.test(path) ? 'article' : path.split('/').filter(Boolean)[0] || 'home';
   const config = root.CodingPlanEventCollectConfig || {};
   const sdk = root.EventCollect;
+  // 默认关闭；开发地址注入不能绕过网站总开关。
+  if (config.enabled !== true || !config.endpoint) {
+    sdk?.init({ namespace: 'codingplan', enabled: false });
+    root.CodingPlanEvents = { track: () => null, results: () => {}, commitFilter: () => {} };
+    return;
+  }
   let ready = false, pending, latestResult, interaction;
   let lastResultKey;
   function track(name, properties = {}, urgent = false) {
@@ -125,36 +131,11 @@
   }, true);
   function init() {
     if (!sdk) return;
-    sdk.init({ namespace: 'codingplan', endpoint: config.endpoint, context: { page_type: pageType } });
+    sdk.init({ namespace: 'codingplan', enabled: config.enabled, endpoint: config.endpoint, context: { page_type: pageType } });
     ready = true;
     track('page_view');
     // 已加载的结果可能早于 DOMContentLoaded，补记初次实际展示。
     if (latestResult) { const detail = latestResult; lastResultKey = undefined; results(detail); }
-    const panel = document.getElementById('settingsPanel');
-    if (panel) {
-      const section = document.createElement('div'); section.className = 'settings-privacy-section';
-      section.innerHTML = `<div class="settings-toggle-row">
-        <label for="eventCollectToggle">允许匿名使用统计</label>
-        <label class="toggle-switch">
-          <input type="checkbox" id="eventCollectToggle" aria-label="允许匿名使用统计" aria-describedby="eventCollectDescription">
-          <span class="toggle-slider" aria-hidden="true"></span>
-        </label>
-      </div>
-      <p class="settings-description" id="eventCollectDescription">仅统计访问与操作，不采集输入内容。</p>`;
-      const toggle = section.querySelector('input'); toggle.checked = sdk.isUserEnabled();
-      panel.append(section);
-      toggle.addEventListener('change', () => {
-        if (toggle.checked) {
-          sdk.setEnabled(true);
-          track('settings_change', {setting:'anonymous_statistics', value:true});
-        } else {
-          // One best-effort send while still allowed; disable synchronously, with no retry after opt-out.
-          track('settings_change', {setting:'anonymous_statistics', value:false}, true);
-          sdk.setEnabled(false);
-        }
-      });
-      root.addEventListener('storage', () => { toggle.checked = sdk.isUserEnabled(); });
-    }
     if (pageType === 'article') {
       let visibleSince = document.hidden ? null : performance.now(), visibleTime = 0, read = false;
       function accrue() {

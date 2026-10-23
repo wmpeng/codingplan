@@ -1,4 +1,4 @@
-/* 公开采集地址；开发启动器在响应时提供开发配置。 */
+/* 网站采集暂未启用；正式采集地址与下发方式待后端就绪后确定。 */
 globalThis.CodingPlanEventCollectConfig = {
-  endpoint: 'https://api.dreamfree.space/c/events/collect'
+  "enabled": false
 };

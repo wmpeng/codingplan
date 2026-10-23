@@ -6,28 +6,12 @@
 })(globalThis, function createEventCollect(env) {
   'use strict';
   let config, queue = [], sending = false, timer, retryAt = 0, stopped = false;
-  let pageId, session, visitor, disabled = false;
   const MAX_QUEUE = 200, MAX_BYTES = 32768, MAX_RETRIES = 2;
   const now = () => (env.Date || Date).now();
   const id = () => env.crypto.randomUUID ? env.crypto.randomUUID() :
     '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, c =>
       (Number(c) ^ env.crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> Number(c) / 4).toString(16));
-  const storageKey = suffix => `eventCollect:${config.namespace}:${suffix}`;
-  function read(suffix) { try { return JSON.parse(env.localStorage.getItem(storageKey(suffix))); } catch (_) { return null; } }
-  function write(suffix, value) { try { env.localStorage.setItem(storageKey(suffix), JSON.stringify(value)); } catch (_) {} }
-  function isUserEnabled() { return !disabled; }
-  function enabled() { return !!config && config.enabled !== false && isUserEnabled() && !stopped; }
-  function identities() {
-    const time = now();
-    visitor = read('visitor') || visitor;
-    if (!visitor || typeof visitor.id !== 'string' || visitor.expires <= time) {
-      visitor = { id: id(), expires: time + 90 * 86400000 }; write('visitor', visitor);
-    }
-    session = read('session') || session;
-    if (!session || typeof session.id !== 'string' || time - session.last >= 1800000) session = { id: id(), last: time };
-    session.last = time; write('session', session);
-    return { visitor_id: visitor.id, session_id: session.id, page_view_id: pageId };
-  }
+  function enabled() { return !!config && config.enabled !== false && !stopped; }
   function context() {
     const result = { sdk_version: '1.0.0', device_type: env.innerWidth < 768 ? 'mobile' : 'desktop' };
     try {
@@ -48,7 +32,7 @@
       // 快照业务参数，防止调用者后续修改影响排队中的事件。
       const params = JSON.parse(JSON.stringify(properties));
       const item = { event_id: id(), event_name: name, event_version: 1, occurred_at_ms: now(),
-        ...identities(), page_path: env.location.pathname, context: context(), properties: params };
+        page_path: env.location.pathname, context: context(), properties: params };
       if (bytes(JSON.stringify([item.context, item.properties])) > 8192) return null;
       if (queue.length >= MAX_QUEUE) queue.shift();
       queue.push({ item, attempts: 0 });
@@ -91,31 +75,20 @@
       retryAt = now() + delay;
     }
   }
-  function setEnabled(value) {
-    if (!config) return;
-    disabled = !value; write('disabled', !value);
-    if (!value) queue = [];
-  }
   function init(options) {
     if (config) return api;
     config = { enabled: true, context: {}, ...options };
-    disabled = read('disabled') === true;
     if (!/^[a-z][a-z0-9_]{0,63}$/.test(config.namespace || '') || !config.endpoint) config.enabled = false;
-    try { pageId = id(); } catch (_) { config.enabled = false; }
+    if (!enabled()) return api;
     timer = env.setInterval(() => { void flush(); }, 5000);
     env.document.addEventListener('visibilitychange', () => { if (env.document.visibilityState === 'hidden') void flush(true); });
     env.addEventListener('pagehide', () => { void flush(true); });
     env.addEventListener('pageshow', event => {
-      if (event.persisted) { pageId = id(); track('page_view', { navigation: 'back_forward' }); }
-    });
-    env.addEventListener('storage', event => {
-      if (event.key !== storageKey('disabled') && event.key !== null) return;
-      disabled = event.key !== null && event.newValue === 'true';
-      if (!isUserEnabled()) queue = [];
+      if (event.persisted) track('page_view', { navigation: 'back_forward' });
     });
     return api;
   }
   function destroy() { stopped = true; queue = []; env.clearInterval(timer); }
-  const api = { init, track, flush, setEnabled, isUserEnabled, isEnabled: enabled, destroy };
+  const api = { init, track, flush, isEnabled: enabled, destroy };
   return api;
 });
