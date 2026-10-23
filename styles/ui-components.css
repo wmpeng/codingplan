@@ -44,7 +44,7 @@ body .usage-segments :is(.is-active, [aria-pressed="true"]) { background: var(--
 
 /* 公共小组件的视觉归属；页面 CSS 只安排位置和间距。 */
 body .ui-model-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; min-width: 0; max-width: 100%; }
-body .ui-model-tags .model-tag { display: inline-flex; align-items: center; justify-content: center; min-width: 0; max-width: 100%; min-height: 27px; box-sizing: border-box; padding: 3px 6px; margin: 0; border: 1px solid var(--border-light); border-radius: 5px; background: var(--bg-tertiary); color: var(--text-secondary); font: 400 12px/1.6 var(--font-ui); white-space: normal; overflow-wrap: anywhere; }
+body .ui-model-tags .model-tag { display: inline-flex; align-items: center; justify-content: center; min-width: 0; max-width: 100%; min-height: 27px; box-sizing: border-box; padding: 4px 6px 2px; margin: 0; border: 1px solid var(--border-light); border-radius: 5px; background: var(--bg-tertiary); color: var(--text-secondary); font: 400 12px/1.6 var(--font-ui); white-space: normal; overflow-wrap: anywhere; }
 body .ui-model-tags [hidden] { display: none; }
 body .ui-model-tags button.model-tag-more { cursor: pointer; transition: background .16s, color .16s; }
 body .ui-model-tags button.model-tag-more:hover { background: color-mix(in srgb, var(--bg-tertiary), var(--border-color) 35%); color: var(--text-primary); }

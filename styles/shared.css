@@ -960,7 +960,8 @@ button:disabled { cursor: not-allowed; }
   display: inline-flex;
   align-items: center;
   max-width: 100%;
-  padding: 3px 8px;
+  /* 以不改变标签高度的 1px 光学校正平衡字形上下留白。 */
+  padding: 4px 8px 2px;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
   background: #f3f4f6;
