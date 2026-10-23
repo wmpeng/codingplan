@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.10.23 | 模型支持、OpenCode额度与火山Economy计费档更新",
+    "updateDate": "更新日期 2026.10.24 | Codex 四款模型参考用量估算调整",
     "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Cursor、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.1-Sol、Claude 5.5系列、MiniMax-M3.1-Flash、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3与Qwen-3.8等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
@@ -124,6 +124,12 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.10.24",
+      "items": [
+        "调整 Codex 的 GPT-5.6-Sol、GPT-6-Luna、GPT-5.6-Luna 与 GPT-5.6-Terra 参考 Token 用量，相关套餐与速度档的综合单价同步重算；这些数值为估算，非官方固定配额或新实测结果。"
+      ]
+    },
     {
       "date": "2026.10.23",
       "items": [

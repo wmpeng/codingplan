@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-23T17:13:23Z",
+  "generatedAt": "2026-10-23T17:22:29Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -7380,10 +7380,10 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 333.3333333333,
-            "weeklyTokenInM": 2000.0,
-            "monthlyTokenInM": 8000.0,
-            "unitPriceCnyPerM": 0.017
+            "fiveHourTokenInM": 666.6666666667,
+            "weeklyTokenInM": 4000.0,
+            "monthlyTokenInM": 16000.0,
+            "unitPriceCnyPerM": 0.00884
           },
           "pricing": null,
           "note": "参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6 换算；未独立实测，非官方固定配额。"
@@ -7396,10 +7396,10 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 16.6666666667,
-            "weeklyTokenInM": 100.0,
-            "monthlyTokenInM": 400.0,
-            "unitPriceCnyPerM": 0.34
+            "fiveHourTokenInM": 26.6666666667,
+            "weeklyTokenInM": 160.0,
+            "monthlyTokenInM": 640.0,
+            "unitPriceCnyPerM": 0.21216
           },
           "pricing": null,
           "note": "参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6 换算；未独立实测，非官方固定配额。"
@@ -7412,10 +7412,10 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 166.6666666667,
-            "weeklyTokenInM": 1000.0,
-            "monthlyTokenInM": 4000.0,
-            "unitPriceCnyPerM": 0.034
+            "fiveHourTokenInM": 333.3333333333,
+            "weeklyTokenInM": 2000.0,
+            "monthlyTokenInM": 8000.0,
+            "unitPriceCnyPerM": 0.017
           },
           "pricing": null,
           "note": "参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6 换算；未独立实测，非官方固定配额。"
@@ -7428,10 +7428,10 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 25.0,
-            "weeklyTokenInM": 150.0,
-            "monthlyTokenInM": 600.0,
-            "unitPriceCnyPerM": 0.22644
+            "fiveHourTokenInM": 33.3333333333,
+            "weeklyTokenInM": 200.0,
+            "monthlyTokenInM": 800.0,
+            "unitPriceCnyPerM": 0.17
           },
           "pricing": null,
           "note": "参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6 换算；未独立实测，非官方固定配额。"
@@ -7492,10 +7492,10 @@
           "serviceTier": "Fast",
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 133.3333333333,
-            "weeklyTokenInM": 800.0,
-            "monthlyTokenInM": 3200.0,
-            "unitPriceCnyPerM": 0.04284
+            "fiveHourTokenInM": 266.6666666667,
+            "weeklyTokenInM": 1600.0,
+            "monthlyTokenInM": 6400.0,
+            "unitPriceCnyPerM": 0.02108
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -7508,10 +7508,10 @@
           "serviceTier": "Fast",
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 6.6666666667,
-            "weeklyTokenInM": 40.0,
-            "monthlyTokenInM": 160.0,
-            "unitPriceCnyPerM": 0.85
+            "fiveHourTokenInM": 10.6666666667,
+            "weeklyTokenInM": 64.0,
+            "monthlyTokenInM": 256.0,
+            "unitPriceCnyPerM": 0.53108
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -7524,10 +7524,10 @@
           "serviceTier": "Fast",
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 66.6666666667,
-            "weeklyTokenInM": 400.0,
-            "monthlyTokenInM": 1600.0,
-            "unitPriceCnyPerM": 0.085
+            "fiveHourTokenInM": 133.3333333333,
+            "weeklyTokenInM": 800.0,
+            "monthlyTokenInM": 3200.0,
+            "unitPriceCnyPerM": 0.04284
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -7540,10 +7540,10 @@
           "serviceTier": "Fast",
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 10.0,
-            "weeklyTokenInM": 60.0,
-            "monthlyTokenInM": 240.0,
-            "unitPriceCnyPerM": 0.56644
+            "fiveHourTokenInM": 13.3333333333,
+            "weeklyTokenInM": 80.0,
+            "monthlyTokenInM": 320.0,
+            "unitPriceCnyPerM": 0.425
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -7623,12 +7623,12 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 10000.0,
-            "monthlyTokenInM": 40000.0,
-            "unitPriceCnyPerM": 0.017
+            "weeklyTokenInM": 20000.0,
+            "monthlyTokenInM": 80000.0,
+            "unitPriceCnyPerM": 0.00884
           },
           "pricing": null,
-          "note": "参考 Token 额度按同套餐 GPT-6-Sol 的 10 倍估算，未独立实测，非官方固定配额；实际可用性以账号与客户端为准。"
+          "note": "参考 Token 额度按同套餐 GPT-6-Sol 的 20 倍估算，未独立实测，非官方固定配额。实际可用性以账号与客户端为准。"
         },
         {
           "slug": "codex-pro5--gpt-5-6-sol",
@@ -7639,12 +7639,12 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 500.0,
-            "monthlyTokenInM": 2000.0,
-            "unitPriceCnyPerM": 0.34
+            "weeklyTokenInM": 800.0,
+            "monthlyTokenInM": 3200.0,
+            "unitPriceCnyPerM": 0.21216
           },
           "pricing": null,
-          "note": "参考 Token 额度按同套餐 GPT-6-Sol 的 0.5 倍换算；历史个人实测基本都是 High、缓存命中率约 95%，不代表当前账号的官方保证。"
+          "note": "参考 Token 额度按同套餐 GPT-6-Sol 的 0.8 倍估算，未独立实测，非官方固定配额。历史个人实测基本使用 High、缓存命中率约 95%，不代表当前参考额度已被实测验证。"
         },
         {
           "slug": "codex-pro5--gpt-5-6-luna",
@@ -7655,12 +7655,12 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 5000.0,
-            "monthlyTokenInM": 20000.0,
-            "unitPriceCnyPerM": 0.034
+            "weeklyTokenInM": 10000.0,
+            "monthlyTokenInM": 40000.0,
+            "unitPriceCnyPerM": 0.017
           },
           "pricing": null,
-          "note": "参考 Token 额度按同套餐 GPT-6-Sol 的 5 倍估算；沿用历史估算，不代表当前账号的官方保证。"
+          "note": "参考 Token 额度按同套餐 GPT-6-Sol 的 10 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro5--gpt-5-6",
@@ -7671,12 +7671,12 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 750.0,
-            "monthlyTokenInM": 3000.0,
-            "unitPriceCnyPerM": 0.22644
+            "weeklyTokenInM": 1000.0,
+            "monthlyTokenInM": 4000.0,
+            "unitPriceCnyPerM": 0.17
           },
           "pricing": null,
-          "note": "参考 Token 额度按同套餐 GPT-6-Sol 的 0.75 倍估算，未独立实测，非官方固定配额。"
+          "note": "参考 Token 额度按同套餐 GPT-6-Sol 的 1 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro5--gpt-6-astra--service-fast",
@@ -7735,9 +7735,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 4000.0,
-            "monthlyTokenInM": 16000.0,
-            "unitPriceCnyPerM": 0.04284
+            "weeklyTokenInM": 8000.0,
+            "monthlyTokenInM": 32000.0,
+            "unitPriceCnyPerM": 0.02108
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -7751,9 +7751,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 200.0,
-            "monthlyTokenInM": 800.0,
-            "unitPriceCnyPerM": 0.85
+            "weeklyTokenInM": 320.0,
+            "monthlyTokenInM": 1280.0,
+            "unitPriceCnyPerM": 0.53108
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -7767,9 +7767,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 2000.0,
-            "monthlyTokenInM": 8000.0,
-            "unitPriceCnyPerM": 0.085
+            "weeklyTokenInM": 4000.0,
+            "monthlyTokenInM": 16000.0,
+            "unitPriceCnyPerM": 0.04284
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -7783,9 +7783,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 300.0,
-            "monthlyTokenInM": 1200.0,
-            "unitPriceCnyPerM": 0.56644
+            "weeklyTokenInM": 400.0,
+            "monthlyTokenInM": 1600.0,
+            "unitPriceCnyPerM": 0.425
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -7865,9 +7865,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 20000.0,
-            "monthlyTokenInM": 80000.0,
-            "unitPriceCnyPerM": 0.017
+            "weeklyTokenInM": 40000.0,
+            "monthlyTokenInM": 160000.0,
+            "unitPriceCnyPerM": 0.00884
           },
           "pricing": null,
           "note": "参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
@@ -7881,9 +7881,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 1500.0,
-            "monthlyTokenInM": 6000.0,
-            "unitPriceCnyPerM": 0.22644
+            "weeklyTokenInM": 2000.0,
+            "monthlyTokenInM": 8000.0,
+            "unitPriceCnyPerM": 0.17
           },
           "pricing": null,
           "note": "参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
@@ -7897,9 +7897,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 1000.0,
-            "monthlyTokenInM": 4000.0,
-            "unitPriceCnyPerM": 0.34
+            "weeklyTokenInM": 1600.0,
+            "monthlyTokenInM": 6400.0,
+            "unitPriceCnyPerM": 0.21216
           },
           "pricing": null,
           "note": "参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
@@ -7913,9 +7913,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 10000.0,
-            "monthlyTokenInM": 40000.0,
-            "unitPriceCnyPerM": 0.034
+            "weeklyTokenInM": 20000.0,
+            "monthlyTokenInM": 80000.0,
+            "unitPriceCnyPerM": 0.017
           },
           "pricing": null,
           "note": "参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
@@ -7977,9 +7977,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 8000.0,
-            "monthlyTokenInM": 32000.0,
-            "unitPriceCnyPerM": 0.04284
+            "weeklyTokenInM": 16000.0,
+            "monthlyTokenInM": 64000.0,
+            "unitPriceCnyPerM": 0.02108
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -7993,9 +7993,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 400.0,
-            "monthlyTokenInM": 1600.0,
-            "unitPriceCnyPerM": 0.85
+            "weeklyTokenInM": 640.0,
+            "monthlyTokenInM": 2560.0,
+            "unitPriceCnyPerM": 0.53108
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8009,9 +8009,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 4000.0,
-            "monthlyTokenInM": 16000.0,
-            "unitPriceCnyPerM": 0.085
+            "weeklyTokenInM": 8000.0,
+            "monthlyTokenInM": 32000.0,
+            "unitPriceCnyPerM": 0.04284
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8025,9 +8025,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 600.0,
-            "monthlyTokenInM": 2400.0,
-            "unitPriceCnyPerM": 0.56644
+            "weeklyTokenInM": 800.0,
+            "monthlyTokenInM": 3200.0,
+            "unitPriceCnyPerM": 0.425
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8109,9 +8109,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 50000.0,
-            "monthlyTokenInM": 200000.0,
-            "unitPriceCnyPerM": 0.017
+            "weeklyTokenInM": 100000.0,
+            "monthlyTokenInM": 400000.0,
+            "unitPriceCnyPerM": 0.00884
           },
           "pricing": null,
           "note": "参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
@@ -8125,9 +8125,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 2500.0,
-            "monthlyTokenInM": 10000.0,
-            "unitPriceCnyPerM": 0.34
+            "weeklyTokenInM": 4000.0,
+            "monthlyTokenInM": 16000.0,
+            "unitPriceCnyPerM": 0.21216
           },
           "pricing": null,
           "note": "参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
@@ -8141,9 +8141,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 25000.0,
-            "monthlyTokenInM": 100000.0,
-            "unitPriceCnyPerM": 0.034
+            "weeklyTokenInM": 50000.0,
+            "monthlyTokenInM": 200000.0,
+            "unitPriceCnyPerM": 0.017
           },
           "pricing": null,
           "note": "参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
@@ -8237,9 +8237,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 20000.0,
-            "monthlyTokenInM": 80000.0,
-            "unitPriceCnyPerM": 0.04284
+            "weeklyTokenInM": 40000.0,
+            "monthlyTokenInM": 160000.0,
+            "unitPriceCnyPerM": 0.02108
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8253,9 +8253,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 3750.0,
-            "monthlyTokenInM": 15000.0,
-            "unitPriceCnyPerM": 0.22644
+            "weeklyTokenInM": 5000.0,
+            "monthlyTokenInM": 20000.0,
+            "unitPriceCnyPerM": 0.17
           },
           "pricing": null,
           "note": "参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
@@ -8269,9 +8269,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 1000.0,
-            "monthlyTokenInM": 4000.0,
-            "unitPriceCnyPerM": 0.85
+            "weeklyTokenInM": 1600.0,
+            "monthlyTokenInM": 6400.0,
+            "unitPriceCnyPerM": 0.53108
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8285,9 +8285,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 10000.0,
-            "monthlyTokenInM": 40000.0,
-            "unitPriceCnyPerM": 0.085
+            "weeklyTokenInM": 20000.0,
+            "monthlyTokenInM": 80000.0,
+            "unitPriceCnyPerM": 0.04284
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8301,9 +8301,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 1500.0,
-            "monthlyTokenInM": 6000.0,
-            "unitPriceCnyPerM": 0.56644
+            "weeklyTokenInM": 2000.0,
+            "monthlyTokenInM": 8000.0,
+            "unitPriceCnyPerM": 0.425
           },
           "pricing": null,
           "note": "参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"

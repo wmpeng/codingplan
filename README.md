@@ -2,7 +2,7 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.10.23 | 模型支持、OpenCode额度与火山Economy计费档更新
+> 更新日期 2026.10.24 | Codex 四款模型参考用量估算调整
 
 当前展示 **42 个平台、142 个在售订阅套餐、2 个按量 API、163 个模型和 2359 条套餐模型关系**。
 
@@ -104,14 +104,14 @@
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 |
 |---|---|---|---:|---:|---:|---:|
-| [Codex · Plus](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $20/首月 | 333.33M | 2,000M | 8,000M | ¥0.017/M |
-| [Codex · Pro $100](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $100/首月 | 10,000M | 10,000M | 40,000M | ¥0.017/M |
-| [Codex · Pro $200](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $200/首月 | 20,000M | 20,000M | 80,000M | ¥0.017/M |
-| [Codex · Pro $500](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $500/首月 | 50,000M | 50,000M | 200,000M | ¥0.017/M |
+| [Codex · Plus](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $20/首月 | 666.67M | 4,000M | 16,000M | ¥0.0088/M |
+| [Codex · Pro $100](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $100/首月 | 20,000M | 20,000M | 80,000M | ¥0.0088/M |
+| [Codex · Pro $200](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $200/首月 | 40,000M | 40,000M | 160,000M | ¥0.0088/M |
+| [Codex · Pro $500](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $500/首月 | 100,000M | 100,000M | 400,000M | ¥0.0088/M |
 | [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | [≤272K] | $1/首月 | - | - | 354.5M | ¥0.019/M |
-| [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | [>272K] | $1/首月 | - | - | 184M | ¥0.0367/M |
-| [Codex · Plus](https://api.dreamfree.space/c/s/cpyqchatgpt) | [Fast] | $20/首月 | 133.33M | 800M | 3,200M | ¥0.0428/M |
-| [Codex · Pro $100](https://api.dreamfree.space/c/s/cpyqchatgpt) | [Fast] | $100/首月 | 4,000M | 4,000M | 16,000M | ¥0.0428/M |
+| [Codex · Plus](https://api.dreamfree.space/c/s/cpyqchatgpt) | [Fast] | $20/首月 | 266.67M | 1,600M | 6,400M | ¥0.0211/M |
+| [Codex · Pro $100](https://api.dreamfree.space/c/s/cpyqchatgpt) | [Fast] | $100/首月 | 8,000M | 8,000M | 32,000M | ¥0.0211/M |
+| [Codex · Pro $200](https://api.dreamfree.space/c/s/cpyqchatgpt) | [Fast] | $200/首月 | 16,000M | 16,000M | 64,000M | ¥0.0211/M |
 
 还有 28 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
@@ -327,6 +327,10 @@
 
 ## 最近更新
 
+### 2026.10.24
+
+- 调整 Codex 的 GPT-5.6-Sol、GPT-6-Luna、GPT-5.6-Luna 与 GPT-5.6-Terra 参考 Token 用量，相关套餐与速度档的综合单价同步重算；这些数值为估算，非官方固定配额或新实测结果。
+
 ### 2026.10.23
 
 - 补充阿里百炼四档Token Plan的模型用量估算：按北京API价格×100 Credits计算，区分峰谷与上下文档，实际消耗可能不同。
@@ -375,12 +379,6 @@
 - 重新核对积分、请求、美元额度和上下文阶梯；MiMo新增峰谷扣减，优云新增模型并更新并发，共绩取消过期限时五折，邀请折扣资格注明核对条件
 - OpenCode新增Go Plus，Ollama采用当前月Credits池，GitHub个人方案按AI Credits计费；动态扣减或缺乏依据的Token量保持未知
 - 保留停售及续费历史，补齐首月优惠、活动期限、型号转发/下线与使用限制；无法读取的当前购买状态明确列为待确认
-
-### 2026.9.24
-
-- Codex Plus、Pro *5、Pro *20 新增 GPT-6-Sol 与 GPT-6-Luna，均支持文本和图片输入
-- 两款模型 Token 额度暂按同套餐 GPT-5.6-Sol、GPT-5.6-Luna 的 2 倍估算，非官方额度或独立实测
-- 额度/价格默认筛选和精选比较改用 GPT-6-Sol / Luna，旧型号仍可手动选择
 
 ## 延伸阅读
 
