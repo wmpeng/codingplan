@@ -1,20 +1,22 @@
-/* 首屏活动公告融入介绍区，用细线和文字区分层级。 */
+/* 活动公告位于首屏下方，横跨主内容区，用细线和文字区分层级。 */
 .home-announcements {
-  margin-top:18px;
-  padding-top:10px;
+  margin-top:20px;
+  padding-top:16px;
   border-top:1px solid var(--border-color);
   font-size:13px;
 }
 .home-announcements[hidden],.home-announcements [hidden],.announcements-section [hidden] { display:none; }
 .announcement-bar { display:flex;align-items:center;justify-content:space-between;gap:12px;line-height:1.6; }
-.announcement-bar strong { white-space:nowrap;display:flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:var(--text-secondary); }
-.announcement-bar strong::before { content:"";width:5px;height:5px;border-radius:50%;background:#82a99d; }
+.announcement-bar strong { white-space:nowrap;display:flex;align-items:center;gap:8px;font-size:18px;font-weight:600;color:var(--text-primary); }
+.announcement-bar strong::before { content:"";width:6px;height:6px;flex-shrink:0;border-radius:50%;background:#82a99d; }
 .announcement-bar>a { font-size:12px;color:var(--text-secondary); }
 .home-announcements a { text-decoration:none;text-underline-offset:4px; }
 .home-announcements a:hover { color:var(--accent-primary); }
 .home-announcements a:focus-visible { outline:2px solid var(--accent-primary);outline-offset:3px;border-radius:3px; }
-.home-announcements ul { list-style:none;padding:0;margin:4px 0 0; }
-.home-announcements li>a { display:flex;align-items:baseline;gap:16px;justify-content:space-between;padding:5px 0;line-height:1.5;color:#40566e; }
+.home-announcements ul { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px;list-style:none;padding:0;margin:8px 0 0; }
+.home-announcements li { min-width:0; }
+.home-announcements + .discovery-section { margin-top:28px; }
+.home-announcements li>a { display:flex;align-items:center;gap:16px;justify-content:space-between;min-height:32px;padding:4px 0;line-height:1.5;color:#40566e; }
 .home-announcements li>a:hover>span:first-child { text-decoration:underline; }
 .home-announcements li>a>span:first-child { min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
 .home-announcements time { flex-shrink:0;font-size:11px;font-variant-numeric:tabular-nums;color:var(--text-secondary); }
@@ -40,14 +42,16 @@
 .announcement-archive { margin-top:16px; }
 .announcement-archive>summary { cursor:pointer;color:var(--text-secondary);padding:10px 0;font-size:13px; }
 @media(max-width:600px) {
-  .home-announcements { display:grid;grid-template-columns:max-content minmax(0,1fr);gap:10px;padding-top:4px;margin-top:14px; }
+  .home-announcements { margin-top:8px;padding-top:14px; }
   .home-announcements li>a,.announcement-bar>a,.announcement-action,.announcement-archive>summary { min-height:44px;align-items:center; }
-  .announcement-bar { flex-direction:column;justify-content:flex-start;gap:0;padding-top:12px; }
-  .announcement-bar strong { gap:5px; }
+  .home-announcements ul { grid-template-columns:minmax(0,1fr); }
+  .announcement-bar strong { gap:7px;font-size:17px; }
   .announcement-bar>a { display:flex;font-size:11px;white-space:nowrap; }
-  .announcement-view-word { display:none; }
-  .home-announcements ul { margin:0; }
   .home-announcements li>a { gap:10px; }
   .announcement-record h3 { font-size:16px; }
   .announcement-record:target::before,.announcement-record:focus-visible::before { left:-10px; }
+}
+
+@media(pointer:coarse) {
+  .home-announcements li>a,.announcement-bar>a { min-height:44px; }
 }

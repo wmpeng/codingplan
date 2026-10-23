@@ -1,5 +1,6 @@
 (function(root) {
   'use strict';
+  const HOME_LIMIT = 6;
   function today() {
     return new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   }
@@ -11,7 +12,7 @@
     if (home) {
       let shown = 0;
       for (const row of home.querySelectorAll('[data-announcement]')) {
-        row.hidden = ended({ended:row.dataset.ended === 'true',endsOn:row.dataset.endsOn},day) || shown >= 3;
+        row.hidden = ended({ended:row.dataset.ended === 'true',endsOn:row.dataset.endsOn},day) || shown >= HOME_LIMIT;
         if (!row.hidden) shown++;
       }
       home.hidden = shown === 0;
@@ -48,6 +49,6 @@
     document.addEventListener('visibilitychange', () => {if (!document.hidden) update();});
     root.setInterval(() => refresh(document), 60000);
   }
-  if (typeof module === 'object' && module.exports) module.exports = {today, ended, refresh, reveal};
+  if (typeof module === 'object' && module.exports) module.exports = {HOME_LIMIT, today, ended, refresh, reveal};
   if (typeof document !== 'undefined') document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', boot) : boot();
 })(typeof globalThis !== 'undefined' ? globalThis : this);
