@@ -212,14 +212,14 @@
 }
 
 /* 完整价格页：固定列宽避免全量明细随窗口宽度逐格重新测量。 */
-.pricing-directory .usage-data-table { table-layout: fixed; width: 2455px; min-width: 100%; }
+.pricing-directory .usage-data-table { --pricing-identity-width: 260px; table-layout: fixed; width: 2455px; min-width: 100%; }
 .pricing-directory .usage-chart-card { min-width: 0; }
 .pricing-directory .usage-chart { min-width: 0; overflow: hidden; }
 .pricing-directory .usage-chart-head { flex-wrap: wrap; min-width: 0; }
 .pricing-directory .usage-chart-head > div:first-child { flex: 1 1 440px; min-width: 0; }
 .pricing-directory .usage-data-card { scroll-margin-top: 110px; }
 .pricing-directory .usage-data-table :is(th,td) { box-sizing: border-box; padding: 8px 10px; }
-.pricing-directory [data-comparison-col="vendor"] { width: 260px; white-space: normal; }
+.pricing-directory [data-comparison-col="vendor"] { width: var(--pricing-identity-width); white-space: normal; }
 .pricing-directory th[data-comparison-col="price"] { width: 160px; }
 .pricing-directory th[data-comparison-col="model"] { width: 235px; }
 .pricing-directory th[data-comparison-col="unitPriceCnyPerM"] { width: 130px; }
@@ -231,6 +231,12 @@
 .pricing-directory th[data-comparison-col="deepSWE"] { width: 120px; }
 .pricing-directory th[data-comparison-col="note"] { width: 640px; }
 .pricing-directory .usage-table-model { white-space: normal; overflow-wrap: anywhere; }
+@media (min-width: 651px) {
+  /* Let the intervening price column scroll away before the model sticks beside the identity. */
+  .pricing-directory .usage-data-table :is(th[data-comparison-col="model"], td.usage-table-model) { position: sticky; left: var(--pricing-identity-width); border-right: 1px solid var(--border-light); }
+  .pricing-directory .usage-data-table th[data-comparison-col="model"] { z-index: 4; }
+  .pricing-directory .usage-data-table td.usage-table-model { z-index: 2; }
+}
 .pricing-directory .usage-table-note { min-width: 0; }
 .price-identity { display: flex; align-items: flex-start; gap: 7px; }
 .price-identity > div { min-width: 0; }
