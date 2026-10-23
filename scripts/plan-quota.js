@@ -10,8 +10,12 @@
   const known = value => value === 'unlimited' || Numbers.finite(value) !== null;
   function rows(plan, context, state) {
     const selected = state.modelSlugs;
+    const models = UI.prioritizeFeaturedModels(plan.supportedModels || EntityData.supportedModels(context, [plan]), context.modelGroups);
+    const order = new Map(models.map((model, index) => [model.slug, index]));
+    const rank = row => order.get(row.modelSlug) ?? order.size;
     return (context.relationsByPlanSlug.get(plan.slug) || [])
-      .filter(row => !selected?.length || selected.includes(row.modelSlug));
+      .filter(row => !selected?.length || selected.includes(row.modelSlug))
+      .sort((a, b) => rank(a) - rank(b));
   }
   function render(plan, context, state, {notesOpen = false} = {}) {
     const items = rows(plan, context, state);

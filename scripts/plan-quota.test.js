@@ -8,7 +8,17 @@ const rows = [
   row('a-offpeak','a','calculated',{monthlyTokenInM:200},{timeTier:'谷',note:'模型专属限制 <说明>'}),
   row('b','b','unknown',{monthlyTokenInM:'unknown'})
 ];
-const context = {relationsByPlanSlug:new Map([['p',rows]]),modelBySlug:new Map([['a',{name:'模型 A'}],['b',{name:'模型 B'}]])};
+const context = {relationsByPlanSlug:new Map([['p',rows]]),modelBySlug:new Map([['a',{slug:'a',name:'模型 A'}],['b',{slug:'b',name:'模型 B'}]])};
+
+test('明细按上方模型标签的精选优先顺序分组，同模型档位保留原序且不改源顺序', () => {
+  const source = [rows[0],rows[2],rows[1]];
+  const data = {...context,relationsByPlanSlug:new Map([['p',source]]),modelGroups:[{modelSlugs:['b']},{enabled:false,modelSlugs:['a']}]};
+  const snapshot=JSON.stringify(source);
+  assert.deepEqual(Quota.rows(plan,data,{}).map(r=>r.slug),['b','a-peak','a-offpeak']);
+  assert.deepEqual(Quota.rows(plan,data,{modelSlugs:['a']}).map(r=>r.slug),['a-peak','a-offpeak']);
+  assert.deepEqual(Quota.rows({...plan,supportedModels:[{slug:'b'},{slug:'a'}]},context,{}).map(r=>r.slug),['b','a-peak','a-offpeak']);
+  assert.equal(JSON.stringify(source),snapshot);
+});
 
 test('明细与摘要按同一模型选择，保留该模型全部档位而不聚合额度', () => {
   assert.deepEqual(Quota.rows(plan, context, {modelSlugs:['a']}).map(r=>r.slug),['a-peak','a-offpeak']);
