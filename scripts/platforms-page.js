@@ -59,6 +59,7 @@
           pinnedIds = root.PlatformCatalog.sanitizePinnedIds(root.PlatformCatalog.togglePinnedId(pinnedIds, id), platforms);
           root.PlatformCatalog.writePinnedIdsToStorage(root.localStorage, pinnedIds);
           render();
+          root.CodingPlanEvents?.track('pin_change', {entity_type:'platform',entity_slug:id,pinned:pinnedIds.includes(id),placement:'platforms'});
           host.querySelectorAll('[data-platform-pin="1"]').forEach(button => {
             if (button.getAttribute('data-platform-id') === id) button.focus({preventScroll:true});
           });
@@ -83,10 +84,11 @@
         getEntityContext: () => context,
         onJumpPlansTable: platformName => { window.location.href = root.CodingPlanUI.route('plans',{platform:platforms.find(item=>item.name===platformName)?.slug}); },
         isPlatformPinned: id => pinnedIds.includes(id),
-        onTogglePlatformPin: id => {
+        onTogglePlatformPin: (id, placement) => {
           pinnedIds = root.PlatformCatalog.sanitizePinnedIds(root.PlatformCatalog.togglePinnedId(pinnedIds, id), platforms);
           root.PlatformCatalog.writePinnedIdsToStorage(root.localStorage, pinnedIds);
           render();
+          root.CodingPlanEvents?.track('pin_change', {entity_type:'platform',entity_slug:id,pinned:pinnedIds.includes(id),placement});
         }
       });
       if (root.__CODINGPLAN_FEATURES?.platformComparison === true && root.PlatformComparison && root.PlatformComparison.mountLauncher) {

@@ -1310,6 +1310,7 @@
                 if (Directory && pin) {
                     const slug=pin.dataset.pricePin; pins=pins.includes(slug)?pins.filter(id=>id!==slug):[slug,...pins];
                     Directory.writePins(root.localStorage,pins); renderDataTable('comparison',latestTableRows.comparison);
+                    root.CodingPlanEvents?.track('pin_change', {entity_type:'price_row',entity_slug:slug,pinned:pins.includes(slug),placement:'pricing'});
                     [...container.querySelectorAll('[data-price-pin]')].find(button=>button.dataset.pricePin===slug)?.focus({preventScroll:true}); return;
                 }
                 const sortHeader = event.target.closest('[data-table-sort][data-sort-key]');

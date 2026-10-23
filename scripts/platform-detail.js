@@ -404,15 +404,17 @@
       const id =
         (pinBtn.getAttribute('data-platform-id') || openPlatformId || '').trim();
       if (id && typeof options.onTogglePlatformPin === 'function') {
-        options.onTogglePlatformPin(id);
+        options.onTogglePlatformPin(id, 'platform_detail');
       }
       syncPinUi();
       return;
     }
     if (target.closest && target.closest('[data-jump-plans="1"]')) {
       const vendorName = openPlatformName;
+      const platformSlug = openPlatformId;
       close();
       if (typeof options.onJumpPlansTable === 'function' && vendorName) {
+        globalThis.CodingPlanEvents?.track('navigation_click', {target:'plans',platform_slug:platformSlug,placement:'platform_detail'}, true);
         options.onJumpPlansTable(vendorName);
       }
     }

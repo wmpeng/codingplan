@@ -39,6 +39,7 @@
         const slug = button.dataset.modelPin;
         pins = pins.includes(slug) ? pins.filter(id => id !== slug) : [slug, ...pins];
         Directory.writePins(root.localStorage, pins); render();
+        root.CodingPlanEvents?.track('pin_change', {entity_type:'model',entity_slug:slug,pinned:pins.includes(slug),placement:'models'});
         [...host.querySelectorAll('[data-model-pin]')].find(item => item.dataset.modelPin === slug)?.focus({preventScroll:true});
       });
       root.addEventListener('storage', event => {
