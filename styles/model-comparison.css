@@ -236,7 +236,6 @@
   z-index: 1; opacity: 0; cursor: pointer;
 }
 .usage-chart-head .usage-score-columns-control > svg { display: block; width: 16px; height: 16px; flex: none; }
-.usage-chart-head .usage-score-columns-text { position: relative; top: 1px; }
 .usage-chart-head .usage-score-columns-switch {
   position: relative; width: 34px; height: 20px; flex: none; margin-left: 2px;
   border-radius: 999px; background: #cbd5e1; transition: background-color .15s;

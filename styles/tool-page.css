@@ -103,7 +103,7 @@ body.tool-page.ultra-wide { --tool-page-width: 1920px; }
 .tool-panel { border-radius: 12px; box-shadow: var(--shadow-sm); }
 .tool-button { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; font: inherit; font-size: 13px; white-space: nowrap; }
 .tool-result-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 16px 0 12px; font-size: 13px; }
-.tool-result-bar input[type="search"] { width: min(320px, 100%); padding: 9px 12px 7px; border: 1px solid var(--border-color); background: white; border-radius: 8px; font: inherit; }
+.tool-result-bar input[type="search"] { width: min(320px, 100%); padding: 8px 12px; border: 1px solid var(--border-color); background: white; border-radius: 8px; font: inherit; }
 .tool-result-bar .tool-count { margin-right: auto; }
 .tool-result-bar label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
 .tool-page input[type="checkbox"] { accent-color: var(--accent-primary); }
@@ -236,6 +236,6 @@ body.tool-page { padding: 0; }
 .platform-hub-page { --platform-featured-color: #946c35; --platform-featured-border: #d3bd98; }
 body.platform-hub-page .platform-card.is-featured:not(.is-pinned) { border-color: var(--platform-featured-border); }
 body.platform-hub-page .platform-card.is-pinned { border-color: #a5b9d1; }
-.platform-featured-badge { display: inline-flex; align-items: center; padding: 4px 7px 2px; border: 1px solid #e4d1b2; border-radius: 5px; background: #fff8ec; color: var(--platform-featured-color, #946c35); font-size: 12px; line-height: 1.5; white-space: nowrap; }
+.platform-featured-badge { display: inline-flex; align-items: center; padding: 3px 7px; border: 1px solid #e4d1b2; border-radius: 5px; background: #fff8ec; color: var(--platform-featured-color, #946c35); font-size: 12px; line-height: 1.5; white-space: nowrap; }
 
 #plansPage th[aria-sort="ascending"] .table-sort-button:not(.is-active-sort)::after, #plansPage th[aria-sort="descending"] .table-sort-button:not(.is-active-sort)::after { content: " ↕"; opacity: .45; }

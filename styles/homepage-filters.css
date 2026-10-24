@@ -15,7 +15,7 @@
 .filter-picker-menu { position: absolute; left: 0; right: 0; top: calc(100% + 6px); min-width: 250px; max-height: min(420px, 60vh); overflow: auto; padding: 10px; background: #fff; border: 1px solid var(--tool-line); border-radius: 12px; box-shadow: 0 16px 40px rgba(15, 23, 42, .15); }
 .filter-picker-menu label { display: flex; gap: 8px; padding: 7px 5px; align-items: flex-start; font-size: 13px; line-height: 1.35; }
 .filter-picker-menu label:hover { background: var(--tool-soft); }
-.filter-picker-menu input[type="search"] { width: 100%; box-sizing: border-box; border: 1px solid var(--tool-line); border-radius: 8px; padding: 9px 8px 7px; margin-bottom: 7px; }
+.filter-picker-menu input[type="search"] { width: 100%; box-sizing: border-box; border: 1px solid var(--tool-line); border-radius: 8px; padding: 8px; margin-bottom: 7px; }
 .filter-picker-tools { display: flex; gap: 6px; padding: 4px 0 8px; border-bottom: 1px solid var(--tool-line); margin-bottom: 5px; }
 .filter-more { margin-top: 10px; border-top: 1px solid var(--tool-line); padding-top: 10px; }
 .filter-more > summary { cursor: pointer; color: var(--tool-muted); font-size: 13px; }
@@ -176,7 +176,7 @@
 :is(.homepage-unified-active, .tool-unified-active) .filter-picker-value {
   min-width: 0;
   max-width: 100%;
-  padding: 2px 6px 0;
+  padding: 1px 6px;
   border-radius: 5px;
   background: #edf3fb;
   color: var(--accent-primary);
@@ -383,7 +383,7 @@ body.tool-unified-active .filter-state-actions > button { flex: none; white-spac
 body .filter-state-actions > button[data-filter-action] {
   display: inline-flex; align-items: center; justify-content: center;
   min-height: 40px;
-  padding: 9px 14px 7px;
+  padding: 8px 14px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
   background: #f3f4f6;
@@ -607,7 +607,7 @@ body.models-page .model-featured-controls .model-preset-divider { background: #e
 }
 body :is(.platform-hub-filters, .plan-featured-filters) .platform-featured-button {
   display: inline-flex; align-items: center; justify-content: center; min-height: var(--control-height);
-  padding: 9px 12px 7px; border: 1px solid #e4d1b2; border-radius: var(--radius-md);
+  padding: 8px 12px; border: 1px solid #e4d1b2; border-radius: var(--radius-md);
   background: #fffaf2; color: #946c35; font: inherit; font-size: 13px; font-weight: 500; line-height: 1.6;
   white-space: nowrap; text-decoration: none; cursor: pointer;
   transition: border-color .15s, background .15s, color .15s;
@@ -617,9 +617,6 @@ body :is(.platform-hub-filters, .plan-featured-filters) .platform-featured-butto
 body :is(.platform-hub-filters, .plan-featured-filters) .platform-featured-button:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
 body :is(.platform-hub-filters, .plan-featured-filters) .platform-access-filter, body.plans-page .plan-harness-filter { display: inline-flex; gap: 8px; align-items: center; min-height: var(--control-height); padding: 0 10px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 13px; cursor: pointer; }
 body :is(.platform-hub-filters, .plan-featured-filters) .platform-access-filter input, body.plans-page .plan-harness-filter input { accent-color: var(--accent-primary); margin: 0; }
-/* 只校正文字的视觉中心；框、复选框及箭头仍由原有布局对齐。 */
-:is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary > :is(span:first-child:not(.filter-picker-value), [data-select-value]),
-body .filter-control-text { position: relative; top: 1px; }
 body .filter-state-bar { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; box-shadow: none; }
 body .filter-state-label { color: var(--text-primary); font-size: 14px; font-weight: 600; }
 body .filter-state-chip { border: 0; border-radius: 4px; background: var(--bg-tertiary); color: var(--text-secondary); font-size: 12px; padding: 4px 8px; }
