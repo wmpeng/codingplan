@@ -4,6 +4,7 @@
   root.CodingPlanFilters = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (EntityData, Numbers) {
   'use strict';
+  const UI = globalThis.CodingPlanUI || require('./ui-core.js');
 
   const DEFAULTS = Object.freeze({
     platformSlugs: null,
@@ -129,7 +130,7 @@
     const preset = options && options.featuredPreset;
     if (preset) {
       state.platformSlugs = arrayOrNull(preset.platformSlugs);
-      state.modelSlugs = arrayOrNull((preset.groups || []).flatMap(group => group.modelSlugs || []));
+      state.modelSlugs = arrayOrNull(UI.modelPresetSlugs(preset.groups));
     }
     return state;
   }

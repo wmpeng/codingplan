@@ -5,6 +5,7 @@
 })(globalThis, function (Catalog) {
   'use strict';
   const EntityData = globalThis.EntityData || require('./entity-data.js');
+  const UI = globalThis.CodingPlanUI || require('./ui-core.js');
   const pinKey = 'codingplanPinnedModels';
   function sanitizePins(ids, models) {
     const valid = new Set(models.map(model => model.slug));
@@ -16,15 +17,16 @@
   function writePins(storage, ids) { try { storage.setItem(pinKey, JSON.stringify(ids)); } catch (_) {} }
   function select(models, groups, state = {}, pins = []) {
     const pinned = new Set(sanitizePins(pins, models));
-    const featured = new Set(groups.filter(group => group.enabled !== false).flatMap(group => group.modelSlugs || []));
+    const featured = new Set(UI.modelPresetSlugs(groups, 'featured', models));
     const enabledGroups = groups.filter(group => group.enabled !== false);
     const group = enabledGroups.find(group => group.id === state.featuredMode);
-    const modeSlugs = state.featuredMode === 'all' ? featured : group ? new Set(group.modelSlugs) : null;
+    const modeSlugs = state.featuredMode === 'all' ? featured : group ? new Set(UI.modelPresetSlugs(groups, group.id, models)) : null;
     const query = String(state.query || '').trim().toLocaleLowerCase();
     const matched = models.filter(model => modeSlugs ? modeSlugs.has(model.slug)
       : (!query || `${model.name} ${model.slug}`.toLocaleLowerCase().includes(query)) && (!state.multimodal || EntityData.isMultimodal(model)));
     const matchedIds = new Set(matched.map(model => model.slug));
     const order = new Map(models.map((model, index) => [model.slug, index]));
+    const featuredOrder = new Map([...featured].map((slug, index) => [slug, index]));
     const rank = model => pinned.has(model.slug) ? 0 : featured.has(model.slug) ? 1 : 2;
     const visible = models.filter(model => pinned.has(model.slug) || matchedIds.has(model.slug));
     visible.sort((a, b) => {
@@ -36,6 +38,7 @@
         if (x === null || y === null) { if (x !== y) return x === null ? 1 : -1; }
         else if (x !== y) return y - x;
       }
+      if ((!state.sort || state.sort === 'default') && state.featuredMode === 'all' && !pinned.has(a.slug)) return featuredOrder.get(a.slug) - featuredOrder.get(b.slug);
       return order.get(a.slug) - order.get(b.slug);
     });
     return {visible, featured, pinned, matchedCount: matched.length, featuredMode: !!modeSlugs,

@@ -37,6 +37,21 @@ test('精选模式互斥且忽略搜索与多模态，保留置顶、去重并�
   assert.equal(Directory.select(models,grouped,{featuredMode:''}).visible.length,models.length);
 });
 
+test('全部精选默认先头部级再甜品级，保留组内顺序、置顶及主动排序', () => {
+  const grouped = [
+    {id:'high-volume-models',modelSlugs:['featured-a']},
+    {id:'sota-models',modelSlugs:['featured-b','unknown']}
+  ];
+  const ids = (state, pins=[]) => Directory.select(models,grouped,state,pins).visible.map(model=>model.slug);
+  assert.deepEqual(ids({featuredMode:'all'}), ['featured-b','unknown','featured-a']);
+  assert.deepEqual(ids({featuredMode:'all'}, ['ordinary','featured-a']), ['ordinary','featured-a','featured-b','unknown']);
+  for (const sort of ['name','artificialAnalysis','deepSWE']) {
+    assert.deepEqual(ids({featuredMode:'all',sort}), ['featured-a','featured-b','unknown']);
+  }
+  assert.deepEqual(ids({featuredMode:'sota-models'}), ['featured-b','unknown']);
+  assert.deepEqual(ids({}), ['featured-b','featured-a','unknown','ordinary','pinned']);
+});
+
 test('多模态沿用实体布尔字段，包含非图片的音频或输出能力，未知不计入', () => {
   const modes=[{slug:'audio',name:'音频',multimodal:true,modalities:{input:['text','audio']}},
     {slug:'output',name:'输出',multimodal:true,modalities:{input:['text'],output:['text','audio']}},

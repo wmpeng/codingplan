@@ -41,6 +41,17 @@ test('精选套餐由精选平台与任一精选模型共同决定，暂停条�
   const allFeatured=Directory.select(rows,saved,{...options,context:{...context,modelGroups:[{modelSlugs:['m1','m2']}]},featuredOnly:true});
   assert.equal(allFeatured.featured.has('no-models'),false);
 });
+test('套餐精选模型范围先头部级再甜品级，过滤无效模型且不改变匹配资格', () => {
+  const context = {platforms, models:[{slug:'top'},{slug:'sweet'}], featuredPlatformSlugs:['z'], modelGroups:[
+    {id:'high-volume-models',modelSlugs:['sweet','missing']},
+    {id:'sota-models',modelSlugs:['top']}
+  ]};
+  const rows = [{...plans[0], supportedModels:[{slug:'sweet'}]}];
+  const selection = Directory.select(rows,state,{...options,context,featuredOnly:true});
+  assert.deepEqual(selection.effectiveState.modelSlugs,['top','sweet']);
+  assert.deepEqual(ids(selection),['usd']);
+});
+
 test('默认按平台目录与月价排序，未知排后；价格统一换算且零价有效', () => {
   assert.deepEqual(ids(Directory.select(plans,state,options)),['free','usd','cny','unknown']);
   const sorted = direction => ids(Directory.select(plans,state,{...options,sort:{key:'monthlyPrice',direction}}));

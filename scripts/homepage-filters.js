@@ -250,9 +250,7 @@
       state.modelSlugs = slugs; state.modelGroup = "any"; state.modelMatch = "any";
       publish(source); return true;
     }
-    const presetSlugs = id => [...new Set((context.modelGroups || [])
-      .filter(group => group.enabled !== false && (id === "featured" || group.id === id))
-      .flatMap(group => group.modelSlugs || []))].filter(slug => models.some(m => m.slug === slug));
+    const presetSlugs = id => root.CodingPlanUI.modelPresetSlugs(context.modelGroups, id, models);
     const featuredPlatforms = () => (context.featuredPlatformSlugs || []).filter(slug => platforms.some(platform => platform.slug === slug));
     const canRestoreDefaults = () => groupsReady && featuredPlatforms().length > 0 && presetSlugs("featured").length > 0;
     function resetFilters(featured = false) {

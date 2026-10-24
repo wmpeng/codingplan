@@ -2,6 +2,25 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const UI = require('./ui-core');
 
+test('精选名单统一先头部级再甜品级，单组保序、排除禁用与失效项并去重', () => {
+  const groups = [
+    {id:'high-volume-models', modelSlugs:['sweet-b','shared','sweet-a','missing']},
+    {id:'disabled', enabled:false, modelSlugs:['disabled']},
+    {id:'sota-models', modelSlugs:['top-b','shared','top-a','top-b']}
+  ];
+  const models = ['sweet-a','sweet-b','top-a','top-b','shared'].map(slug => ({slug}));
+  const snapshot = JSON.stringify(groups);
+  const expected = ['top-b','shared','top-a','sweet-b','sweet-a'];
+  assert.deepEqual(UI.modelPresetSlugs(groups, 'featured', models), expected);
+  assert.deepEqual(UI.modelPresetSlugs([...groups].reverse(), 'featured', models), expected);
+  assert.deepEqual(UI.modelPresetSlugs(groups, 'sota-models', models), ['top-b','shared','top-a']);
+  assert.deepEqual(UI.modelPresetSlugs(groups, 'high-volume-models', models), ['sweet-b','shared','sweet-a']);
+  assert.deepEqual(UI.modelPresetSlugs(groups, 'disabled', models), []);
+  assert.deepEqual(UI.modelPresetSlugs(groups, 'missing', models), []);
+  assert.deepEqual(UI.modelPresetSlugs(undefined), []);
+  assert.equal(JSON.stringify(groups), snapshot);
+});
+
 test('模型分组入口读取配置短名称，未加载时不复制旧分组名', () => {
   const groups = [{id:'sota-models',title:'能力模型',label:'能力级'}];
   assert.equal(UI.modelGroupLabel(groups,'sota-models'),'能力级');

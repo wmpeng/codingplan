@@ -247,11 +247,13 @@ test('默认精选配置可读取并校验稳定 slug', () => {
 test('显式精选参数取平台与两组模型并集，完整页基础状态为全量', () => {
   const config = { homepageFilters: { defaults: { platformSlugs: ['old'], modelSlugs: ['old'], budgetCny: { max: 200 } } } };
   const featuredPreset = { platformSlugs: ['p1', 'p2'], groups: [
-    { modelSlugs: ['m1', 'm2'] }, { modelSlugs: ['m2', 'm3'] }
+    { id:'high-volume-models', modelSlugs: ['m1', 'm2'] },
+    { id:'sota-models', modelSlugs: ['m2', 'm3'] },
+    { id:'disabled', enabled:false, modelSlugs: ['disabled'] }
   ] };
   const state = Filters.createDefaultState(config, { mode: 'home', featuredPreset });
   assert.deepEqual(state.platformSlugs, ['p1', 'p2']);
-  assert.deepEqual(state.modelSlugs, ['m1', 'm2', 'm3']);
+  assert.deepEqual(state.modelSlugs, ['m2', 'm3', 'm1']);
   assert.deepEqual(state.budgetCny, { min: null, max: 200 });
   assert.equal(state.platformStatusMax, 'restricted');
   assert.equal(state.modelMatch, 'any');
@@ -259,7 +261,7 @@ test('显式精选参数取平台与两组模型并集，完整页基础状态�
   state.modelSlugs.pop();
   const restored = Filters.createDefaultState(config, { featuredPreset });
   assert.deepEqual(restored.platformSlugs, ['p1', 'p2']);
-  assert.deepEqual(restored.modelSlugs, ['m1', 'm2', 'm3']);
+  assert.deepEqual(restored.modelSlugs, ['m2', 'm3', 'm1']);
   const full = Filters.createDefaultState(config, { mode: 'full', featuredPreset });
   assert.equal(full.platformSlugs, null);
   assert.equal(full.modelSlugs, null);

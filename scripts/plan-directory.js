@@ -4,6 +4,7 @@
   else root.PlanDirectory = api;
 })(globalThis, function (Filters) {
   'use strict';
+  const UI = globalThis.CodingPlanUI || require('./ui-core.js');
   const pinKey = 'codingplanPinnedPlans';
   const sortOptions = [
     ['platformOrder', '默认'], ['platformName', '平台名称'], ['name', '套餐名称'],
@@ -36,8 +37,7 @@
     const {context, config = {}, query = '', sort = {key:'platformOrder', direction:'asc'}} = options;
     const featuredState = Filters.createViewPolicy({mode:'full',view:'plans'}).createDefaults(config,state.tokenUnit);
     featuredState.platformSlugs = (context.featuredPlatformSlugs || []).filter(slug => context.platforms.some(p => p.slug === slug));
-    const validModels = new Set((context.models || []).map(model => model.slug));
-    featuredState.modelSlugs = [...new Set((context.modelGroups || []).filter(group => group.enabled !== false).flatMap(group => group.modelSlugs || []))].filter(slug => validModels.has(slug));
+    featuredState.modelSlugs = UI.modelPresetSlugs(context.modelGroups, 'featured', context.models || []);
     const filterOptions = {context, usdToCnyRate:config.usdToCnyRate, platformCatalog:config.platformCatalog};
     const featuredModels = new Set(featuredState.modelSlugs);
     const featured = new Set(featuredState.platformSlugs.length && featuredState.modelSlugs.length
