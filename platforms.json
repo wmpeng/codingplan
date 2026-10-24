@@ -205,7 +205,7 @@
         },
         "models": {
           "score": 5,
-          "reason": "Coding支持Kimi K3与K2.8 Preview，Go不提供Coding API，不能混用客户端与API权益。"
+          "reason": "Coding 支持 Kimi K3.1 Pro、K3 与 K2.8 Preview；Plus 起可用 K3.1 Pro，Pro 起支持其高速版与 1M 上下文，Go 不含 Coding API。"
         },
         "stability": {
           "score": 4,
@@ -216,7 +216,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "detail": "Coding支持Kimi K3与K2.8 Preview，Go不提供Coding API，不能混用客户端与API权益。",
+      "detail": "Coding 支持 Kimi K3.1 Pro、K3 与 K2.8 Preview；Plus 起可用 K3.1 Pro，Pro 起支持其高速版与 1M 上下文，Go 不含 Coding API。",
       "action": "https://api.dreamfree.space/c/s/cpyqkimi"
     },
     {

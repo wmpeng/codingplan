@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-23T17:20:51Z",
+  "generatedAt": "2026-10-24T02:56:19Z",
   "benchmarks": {
     "artificialAnalysis": {
       "name": "Artificial Analysis Intelligence Index",
@@ -19,9 +19,9 @@
     }
   },
   "coverage": {
-    "artificialAnalysisScores": 112,
+    "artificialAnalysisScores": 113,
     "deepSWEScores": 28,
-    "multimodalKnown": 142
+    "multimodalKnown": 143
   },
   "models": [
     {
@@ -1957,6 +1957,31 @@
           "modelName": "kimi-k3",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         }
+      }
+    },
+    {
+      "slug": "kimi-k3-1-pro",
+      "name": "Kimi-K3.1-Pro",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 55,
+          "scoreExact": 55.0869210959395,
+          "configuration": "Kimi K3.1 Pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "sourceUrl": "https://artificialanalysis.ai/models/kimi-k3-1-pro"
+        },
+        "deepSWE": null
       }
     },
     {

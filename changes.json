@@ -1710,6 +1710,39 @@
         }
       ],
       "relatedChanges": []
+    },
+    {
+      "slug": "kimi-k3-1-pro-weights-20261104",
+      "title": "Kimi K3.1 Pro 完整权重发布计划",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-04",
+        "description": "官方承诺于 2026 年 11 月 4 日前发布；这是最晚计划日期，不表示已经发布，具体时刻与时区未公布。"
+      },
+      "changes": [
+        {
+          "type": "other",
+          "label": "完整模型权重",
+          "before": "在线服务已上线，完整权重尚未发布",
+          "after": "计划于 2026 年 11 月 4 日前发布完整模型权重"
+        }
+      ],
+      "audience": "希望自行部署 Kimi K3.1 Pro 的用户；在线服务已上线，完整权重及许可安排须以正式发布为准。",
+      "summary": "Kimi K3.1 Pro 在线服务已上线；官方计划于 2026 年 11 月 4 日前发布完整模型权重，当前不表示已可下载部署。",
+      "targets": [
+        {
+          "type": "model",
+          "modelSlug": "kimi-k3-1-pro",
+          "label": "Kimi-K3.1-Pro"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.kimi.com/en/blog/kimi-k3-1-pro"
+        }
+      ],
+      "relatedChanges": []
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-23T17:41:31Z",
+  "generatedAt": "2026-10-24T02:56:24Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -538,6 +538,32 @@
       "note": "• 各模型月美元额度不同，五小时/周窗口分别为该模型月额度的20%/50%；模型额度不相加。\n• Token 用量按统一工作负载估算，非官方Token上限。",
       "planStatus": "open",
       "planModels": [
+        {
+          "slug": "opencode-go--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 8.8613203367,
+            "weeklyTokenInM": 22.1533008418,
+            "monthlyTokenInM": 44.3,
+            "unitPriceCnyPerM": 1.53476
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cacheWritePerM": 2.0,
+            "cachePerM": 0.2,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheWriteCnyPerM": 13.6,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存写入 $2/M Token、缓存读取 $0.20/M Token、输出 $10/M Token；该模型适用额度：5小时 $3、每周 $7.50、每月 $15；是否共享及能否叠加以套餐说明为准；Kimi K3.1 Pro，最高 1M 上下文。；支持 Kimi K3.1 Pro，最高 1M 上下文；按输入、缓存读取、缓存写入和输出 Token 计费。Token 参考用量为统一工作负载下的估算，各模型额度不相加。"
+        },
         {
           "slug": "opencode-go--glm-5-3-flash",
           "modelSlug": "glm-5-3-flash",
@@ -1418,6 +1444,32 @@
       "note": "• 各模型月美元额度不同，五小时/周窗口分别为该模型月额度的20%/50%；模型额度不相加。\n• Token 用量按统一工作负载估算，非官方Token上限。",
       "planStatus": "open",
       "planModels": [
+        {
+          "slug": "opencode-go-plus--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 35.4452813469,
+            "weeklyTokenInM": 88.6132033673,
+            "monthlyTokenInM": 177.2,
+            "unitPriceCnyPerM": 1.53476
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cacheWritePerM": 2.0,
+            "cachePerM": 0.2,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheWriteCnyPerM": 13.6,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存写入 $2/M Token、缓存读取 $0.20/M Token、输出 $10/M Token；该模型适用额度：5小时 $12、每周 $30、每月 $60；是否共享及能否叠加以套餐说明为准；Kimi K3.1 Pro，最高 1M 上下文。；支持 Kimi K3.1 Pro，最高 1M 上下文；按输入、缓存读取、缓存写入和输出 Token 计费。Token 参考用量为统一工作负载下的估算，各模型额度不相加。"
+        },
         {
           "slug": "opencode-go-plus--glm-5-3-flash",
           "modelSlug": "glm-5-3-flash",
@@ -5483,6 +5535,19 @@
       "supportsHarnessApi": true,
       "planModels": [
         {
+          "slug": "kimi-plus-2026--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": "256K",
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "k3.1-pro，本档最高 256K 上下文，支持图片和视频；仅支持思考模式，默认 max。与其他会员功能共享额度，Token 参考用量未知。"
+        },
+        {
           "slug": "kimi-plus-2026--kimi-k2-8-preview",
           "modelSlug": "kimi-k2-8-preview",
           "timeTier": null,
@@ -5562,6 +5627,32 @@
       "planStatus": "open",
       "supportsHarnessApi": true,
       "planModels": [
+        {
+          "slug": "kimi-pro-2026--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "k3.1-pro，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 max。与其他会员功能共享额度，Token 参考用量未知。"
+        },
+        {
+          "slug": "kimi-pro-2026--kimi-k3-1-pro--service-highspeed",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "高速",
+          "method": "multiplied",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "k3.1-pro-highspeed，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 max。模型能力与标准版相同，输出约快 2–3 倍，消耗约为标准版两倍；共享额度，Token 参考用量未知。"
+        },
         {
           "slug": "kimi-pro-2026--kimi-k2-8-preview",
           "modelSlug": "kimi-k2-8-preview",
@@ -5659,6 +5750,32 @@
       "supportsHarnessApi": true,
       "planModels": [
         {
+          "slug": "kimi-max-2026--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "k3.1-pro，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 max。与其他会员功能共享额度，Token 参考用量未知。"
+        },
+        {
+          "slug": "kimi-max-2026--kimi-k3-1-pro--service-highspeed",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "高速",
+          "method": "multiplied",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "k3.1-pro-highspeed，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 max。模型能力与标准版相同，输出约快 2–3 倍，消耗约为标准版两倍；共享额度，Token 参考用量未知。"
+        },
+        {
           "slug": "kimi-max-2026--kimi-k2-8-preview",
           "modelSlug": "kimi-k2-8-preview",
           "timeTier": null,
@@ -5754,6 +5871,32 @@
       "planStatus": "open",
       "supportsHarnessApi": true,
       "planModels": [
+        {
+          "slug": "kimi-ultra-2026--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "k3.1-pro，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 max。与其他会员功能共享额度，Token 参考用量未知。"
+        },
+        {
+          "slug": "kimi-ultra-2026--kimi-k3-1-pro--service-highspeed",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "高速",
+          "method": "multiplied",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "k3.1-pro-highspeed，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 max。模型能力与标准版相同，输出约快 2–3 倍，消耗约为标准版两倍；共享额度，Token 参考用量未知。"
+        },
         {
           "slug": "kimi-ultra-2026--kimi-k2-8-preview",
           "modelSlug": "kimi-k2-8-preview",
@@ -12605,6 +12748,30 @@
       "planStatus": "open",
       "planModels": [
         {
+          "slug": "commandcode-go--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 17.7,
+            "unitPriceCnyPerM": 0.38352
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.2,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.20/M Token、输出 $10/M Token；该模型适用额度：5小时 未知、每周 未知、每月 $6；是否共享及能否叠加以套餐说明为准；Kimi K3.1 Pro，最高 1M 上下文。；Kimi K3.1 Pro，最高 1M 上下文；按实际 Token 价格扣减美元 Credits，与其他模型共享套餐池，模型额度不能相加。Token 参考用量为统一工作负载下的估算。 Go 仅限 Command Code 客户端使用，五小时与周窗口额度待确认。"
+        },
+        {
           "slug": "commandcode-go--deepseek-v4-1-flash--gu",
           "modelSlug": "deepseek-v4-1-flash",
           "timeTier": "谷",
@@ -14323,6 +14490,30 @@
       "note": "• 各型号共享一个月度套餐池，基准为 70 Credits。\n• 逐型号月额度表示整池只用于该型号时的使用价值；混用时按各型号月额度的消耗比例合并计量，不能相加。\n• 活动型号可对应高于 $70 的单型号使用价值，不代表额外发放独立余额。\n• DeepSeek V4.1 Flash 额度加成无结束日期。\n• Provider API 与客户端共用额度。",
       "planStatus": "open",
       "planModels": [
+        {
+          "slug": "commandcode-goat--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 11.8150937823,
+            "weeklyTokenInM": 29.5377344558,
+            "monthlyTokenInM": 59.1,
+            "unitPriceCnyPerM": 1.15124
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.2,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.20/M Token、输出 $10/M Token；该模型适用额度：5小时 $4、每周 $10、每月 $20；是否共享及能否叠加以套餐说明为准；Kimi K3.1 Pro，最高 1M 上下文。；Kimi K3.1 Pro，最高 1M 上下文；按实际 Token 价格扣减美元 Credits，与其他模型共享套餐池，模型额度不能相加。Token 参考用量为统一工作负载下的估算。"
+        },
         {
           "slug": "commandcode-goat--gpt-5-6-sol--contexttier-272k",
           "modelSlug": "gpt-5-6-sol",
@@ -16402,6 +16593,30 @@
       "note": "• 各型号共享一个月度套餐池，基准为 80 Credits。\n• 逐型号月额度表示整池只用于该型号时的使用价值；混用时按各型号月额度的消耗比例合并计量，不能相加。\n• 活动型号可对应高于 $80 的单型号使用价值，不代表额外发放独立余额。\n• DeepSeek V4.1 Flash 额度加成无结束日期。\n• Provider API 与客户端共用额度。",
       "planStatus": "open",
       "planModels": [
+        {
+          "slug": "commandcode-pro--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 17.7226406735,
+            "weeklyTokenInM": 44.3066016837,
+            "monthlyTokenInM": 88.6,
+            "unitPriceCnyPerM": 1.53476
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.2,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.20/M Token、输出 $10/M Token；该模型适用额度：5小时 $6、每周 $15、每月 $30；是否共享及能否叠加以套餐说明为准；Kimi K3.1 Pro，最高 1M 上下文。；Kimi K3.1 Pro，最高 1M 上下文；按实际 Token 价格扣减美元 Credits，与其他模型共享套餐池，模型额度不能相加。Token 参考用量为统一工作负载下的估算。"
+        },
         {
           "slug": "commandcode-pro--gpt-5-6-sol--contexttier-272k",
           "modelSlug": "gpt-5-6-sol",
@@ -18889,6 +19104,30 @@
       "note": "• 高级/标准模型分别共享$100/$150.0月额度池；美元Credits计费",
       "planStatus": "open",
       "planModels": [
+        {
+          "slug": "commandcode-max10--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 132.919805051,
+            "weeklyTokenInM": 265.8396101019,
+            "monthlyTokenInM": 443.1,
+            "unitPriceCnyPerM": 1.53476
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.2,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.20/M Token、输出 $10/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；Kimi K3.1 Pro，最高 1M 上下文。；Kimi K3.1 Pro，最高 1M 上下文；按实际 Token 价格扣减美元 Credits，与其他模型共享套餐池，模型额度不能相加。Token 参考用量为统一工作负载下的估算。"
+        },
         {
           "slug": "commandcode-max10--laguna-s-2-1",
           "modelSlug": "laguna-s-2-1",
@@ -21640,6 +21879,30 @@
       "note": "• 高级/标准模型分别共享$200/$300.0月额度池；美元Credits计费",
       "planStatus": "open",
       "planModels": [
+        {
+          "slug": "commandcode-max20--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 265.8396101019,
+            "weeklyTokenInM": 531.6792202038,
+            "monthlyTokenInM": 886.1,
+            "unitPriceCnyPerM": 1.53476
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.2,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.20/M Token、输出 $10/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；Kimi K3.1 Pro，最高 1M 上下文。；Kimi K3.1 Pro，最高 1M 上下文；按实际 Token 价格扣减美元 Credits，与其他模型共享套餐池，模型额度不能相加。Token 参考用量为统一工作负载下的估算。"
+        },
         {
           "slug": "commandcode-max20--laguna-s-2-1",
           "modelSlug": "laguna-s-2-1",
