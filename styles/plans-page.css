@@ -1,3 +1,26 @@
+/* The column toggle is a compact view control, while retaining checkbox semantics. */
+#plansPage .plan-columns-control {
+  position: relative; box-sizing: border-box; min-height: 40px; padding: 8px 13px;
+  border: 1px solid var(--border-color); border-radius: 8px;
+  background: var(--bg-secondary); color: var(--text-primary);
+  font-size: 13px; font-weight: 500; line-height: 1.6; white-space: nowrap;
+  cursor: pointer; user-select: none; transition: border-color .15s, background-color .15s, color .15s;
+}
+#plansPage .plan-columns-control > input {
+  position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;
+  opacity: 0; cursor: pointer;
+}
+#plansPage .plan-columns-control > svg { width: 16px; height: 16px; flex: none; }
+#plansPage .plan-columns-control:hover { border-color: #a5b9d1; background: #f7faff; }
+#plansPage.show-all-columns .plan-columns-control {
+  border-color: #a5bfe4; background: var(--accent-soft); color: var(--accent-primary);
+}
+#plansPage.show-all-columns .plan-columns-control:hover { border-color: var(--accent-primary); background: #e5effc; }
+#plansPage .plan-columns-control:has(input:focus-visible) { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+@media (max-width: 800px), (pointer: coarse) {
+  #plansPage .plan-columns-control { min-height: 44px; }
+}
+
 /* Quota details use the visible table width, including while scrolling sideways. */
 #plansPage .plan-quota-toggle {
   display: inline-flex; align-items: center; justify-content: flex-end; gap: 8px;
