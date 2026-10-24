@@ -33,7 +33,7 @@
       const priority = rank(a) - rank(b);
       if (priority) return priority;
       if (state.sort === 'name') return a.name.localeCompare(b.name, 'zh-CN') || order.get(a.slug) - order.get(b.slug);
-      if (['artificialAnalysis', 'deepSWE'].includes(state.sort)) {
+      if ((globalThis.BenchmarkScores || require('./benchmark-scores.js')).keys.includes(state.sort)) {
         const x = Catalog.score(a, state.sort), y = Catalog.score(b, state.sort);
         if (x === null || y === null) { if (x !== y) return x === null ? 1 : -1; }
         else if (x !== y) return y - x;

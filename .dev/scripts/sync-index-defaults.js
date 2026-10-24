@@ -60,7 +60,7 @@ let models=fs.readFileSync(path.resolve(root,'../scripts/codingplan/models-templ
 const selection=Directory.select(ctx.models,preset.groups);
 models=replace(models,'MODEL_DIRECTORY',selection.visible.map(m=>C.modelCard(m,ctx,{directory:true,featured:selection.featured.has(m.slug)})).join('\n'));
 models=models.replace('{{modelCount}}',Directory.countLabel(selection));
-models=models.replace('{{modelScoreHelp}}',Help.html('modelScoreHelp','模型评分说明','AA 与 DeepSWE 使用不同量尺，各自排序，不合成总分。缺少分数表示暂无评测，不代表能力为零；分数旁的链接提供评分来源。'));
+models=models.replace('{{modelScoreHelp}}',Help.html('modelScoreHelp','模型评分说明','AA、DeepSWE、LiveBench（综合）与 Arena（Agent Overall 净改善）使用不同量尺，各自排序，不合成总分。Arena 为可正可负的百分比。缺失不代表能力为零；点击分数查看口径、配置与数据日期，旁边链接提供来源。'));
 models=models.replace('{{highVolumeLabel}}',esc(UI.modelGroupLabel(preset.groups,'high-volume-models'))).replace('{{sotaLabel}}',esc(UI.modelGroupLabel(preset.groups,'sota-models')));
 write('models/index.html',applySiteHeader(models,'models','/models/'));
 if(fs.existsSync(generator))require(generator).generate({check});

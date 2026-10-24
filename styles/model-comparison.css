@@ -266,3 +266,19 @@
 /* The shared filter row owns the pricing colour control; hide the legacy filter shell. */
 .pricing-directory .usage-view > .usage-filters[hidden] { display: none; }
 #toolFilters .usage-color-control { box-sizing: border-box; min-height: 44px; max-width: 100%; padding: 2px 8px; border-color: var(--border-color); border-radius: 8px; flex: 0 0 auto; }
+
+.usage-data-table [hidden] { display:none; }
+.usage-chart-controls [aria-label="评分指标"] { display:flex; flex-wrap:wrap; }
+@media(max-width:650px) {
+  .usage-chart-controls { width:100%; }
+  .usage-chart-controls [aria-label="评分指标"] { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); width:100%; }
+  .usage-chart-controls [data-benchmark] { min-width:0; min-height:44px; padding:6px 8px; }
+}
+/* 固定价格列宽继续由原规则管理；总宽度随实际可见评分列计算。 */
+.pricing-directory .usage-data-table { --score-aa:0px; --score-swe:0px; --score-live:0px; --score-arena:0px; width:calc(2245px + var(--score-aa) + var(--score-swe) + var(--score-live) + var(--score-arena)); }
+.pricing-directory .usage-data-table:has(th[data-comparison-col="artificialAnalysis"]:not([hidden])) { --score-aa:90px; }
+.pricing-directory .usage-data-table:has(th[data-comparison-col="deepSWE"]:not([hidden])) { --score-swe:120px; }
+.pricing-directory .usage-data-table:has(th[data-comparison-col="liveBench"]:not([hidden])) { --score-live:110px; }
+.pricing-directory .usage-data-table:has(th[data-comparison-col="arena"]:not([hidden])) { --score-arena:130px; }
+.pricing-directory th[data-comparison-col="liveBench"] { width:110px; }
+.pricing-directory th[data-comparison-col="arena"] { width:130px; }

@@ -361,8 +361,8 @@ test('comparison table rows format subscription and API semantics', () => {
   assert.match(subscription, /50M/);
   assert.match(subscription, /100M/);
   assert.match(subscription, /¥0\.70 \/ M/);
-  assert.match(subscription, />52</);
-  assert.match(subscription, /41 ±3/);
+  assert.match(subscription, />51\.6</);
+  assert.match(subscription, /40\.7 ±3/);
   assert.match(subscription, /按官方额度推算/);
 
   const usdSubscription = comparisonTableRowHtml({

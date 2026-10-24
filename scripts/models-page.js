@@ -12,7 +12,7 @@
       const picker = root.CodingPlanSingleSelect.mount(sort, '排序');
       const Url = root.CodingPlanFilterUrl;
       const urlSchema = {
-        query:Url.text('q'), sort:Url.choice('sort', ['default','name','artificialAnalysis','deepSWE'], 'default'),
+        query:Url.text('q'), sort:Url.choice('sort', ['default','name',...root.BenchmarkScores.keys], 'default'),
         multimodal:Url.flag('multimodal'), featuredMode:Url.choice('featured', ['all', ...preset.groups.map(group => group.id)], '')
       };
       const saved = Url.read(urlSchema);
