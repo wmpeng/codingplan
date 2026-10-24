@@ -38,7 +38,7 @@
         if (x === null || y === null) { if (x !== y) return x === null ? 1 : -1; }
         else if (x !== y) return y - x;
       }
-      if ((!state.sort || state.sort === 'default') && state.featuredMode === 'all' && !pinned.has(a.slug)) return featuredOrder.get(a.slug) - featuredOrder.get(b.slug);
+      if ((!state.sort || state.sort === 'default') && !pinned.has(a.slug) && featured.has(a.slug)) return featuredOrder.get(a.slug) - featuredOrder.get(b.slug);
       return order.get(a.slug) - order.get(b.slug);
     });
     return {visible, featured, pinned, matchedCount: matched.length, featuredMode: !!modeSlugs,

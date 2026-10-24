@@ -830,7 +830,9 @@
             const platforms = [...platformMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
             const modelMap = new Map();
             points.forEach((point) => modelMap.set(point.modelSlug, point.modelName));
-            const models = [...modelMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
+            const models = UI.prioritizeFeaturedModels([...modelMap.entries()]
+                .map(([slug, name]) => ({slug, name})).sort((a, b) => a.name.localeCompare(b.name, 'zh-CN')), context.modelGroups)
+                .map(model => [model.slug, model.name]);
             const platformColors = buildVendorColorMap(platforms.map(([key]) => key));
             const modelColors = buildModelColorMap(models.map(([id]) => id));
             const focusRelationSlugs = new Set(mountOptions.focusRelationSlugs || []);
@@ -1054,9 +1056,11 @@
 
             function renderColorLegend(context) {
                 container.querySelector('[data-color-legend-title]').textContent = state.colorMode === 'model' ? '模型颜色' : '平台颜色';
-                container.querySelector('[data-color-legend]').innerHTML = [...context.entries.entries()]
-                    .sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'))
-                    .map(([key, label]) => {
+                const entries = [...context.entries.entries()].map(([slug, name]) => ({slug, name}))
+                    .sort((a, b) => a.name.localeCompare(b.name, 'zh-CN'));
+                const ordered = state.colorMode === 'model' ? UI.prioritizeFeaturedModels(entries, presetConfig.groups) : entries;
+                container.querySelector('[data-color-legend]').innerHTML = ordered
+                    .map(({slug:key, name:label}) => {
                         const solo = state.soloColorKey === key;
                         const muted = state.soloColorKey && !solo;
                         const subject = state.colorMode === 'model' ? '模型' : '平台';

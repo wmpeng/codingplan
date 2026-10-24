@@ -64,11 +64,12 @@
     return Numbers.unitPrice(value, currency || '¥');
   }
 
-  function buildApiPricingSectionHtml(groups) {
+  function buildApiPricingSectionHtml(groups, modelGroups) {
     const validGroups = Array.isArray(groups) ? groups.filter((group) => group && Array.isArray(group.rows) && group.rows.length) : [];
     if (!validGroups.length) return '';
     const content = validGroups.map((group) => {
-      const rows = group.rows.map((row) => {
+      const ordered = UI.prioritizeFeaturedModels(group.rows.map(row => ({slug:row.modelSlug, row})), modelGroups);
+      const rows = ordered.map(({row}) => {
         const prices = [
           ['输入', row.inputPerM, row.currency],
           ...(row.cacheWritePerM === undefined ? [] : [['缓存写入', row.cacheWritePerM, row.currency]]),
@@ -171,7 +172,7 @@
     );
   }
 
-  function buildPlansSectionHtml(plans, platform) {
+  function buildPlansSectionHtml(plans, platform, entityContext) {
     const active = activePlansOnly(plans);
     if (active.length === 0) return '';
 
@@ -184,7 +185,10 @@
           ? `<span class="platform-detail-plan-rating" aria-label="${rating} 星">${stars}</span>`
           : '';
         const harnessHtml = EntityData.harnessApiBadge(EntityData.resolveHarnessApi(platform, plan));
-        const modelsHtml = buildModelTagsHtml(plan.modelLabels, `${plan.name} 支持模型`);
+        const modelLabels = entityContext
+          ? UI.prioritizeFeaturedModels(EntityData.supportedModels(entityContext, [plan]), entityContext.modelGroups).map(model => model.name)
+          : plan.modelLabels;
+        const modelsHtml = buildModelTagsHtml(modelLabels, `${plan.name} 支持模型`);
         const quota = formatPlanQuota(plan);
         const quotaHtml = quota
           ? `<div class="platform-detail-plan-quota">${esc(quota)}</div>`
@@ -265,7 +269,7 @@
         ? PlatformCatalog.collectPlansForVendor(rawPlans, platform && platform.slug)
         : rawPlans.filter(p => p && p.platformSlug === (platform && platform.slug));
     const modelLabels = context.entityContext
-      ? EntityData.platformModels(context.entityContext, platformId).map(model => model.name)
+      ? UI.prioritizeFeaturedModels(EntityData.platformModels(context.entityContext, platformId), context.entityContext.modelGroups).map(model => model.name)
       : PlatformCatalog.collectModelsForVendor(vendorPlans, platformId);
 
     const dims = dimensionMeta()
@@ -335,8 +339,8 @@
       `<ul class="platform-detail-dimensions">${dims}</ul>` +
       `</section>` +
       buildModelsSectionHtml(modelLabels) +
-      buildApiPricingSectionHtml(context.apiPricingGroups) +
-      buildPlansSectionHtml(vendorPlans, platform)
+      buildApiPricingSectionHtml(context.apiPricingGroups, context.entityContext?.modelGroups) +
+      buildPlansSectionHtml(vendorPlans, platform, context.entityContext)
     );
   }
 

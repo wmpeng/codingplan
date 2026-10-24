@@ -10,9 +10,9 @@ const models = [
   {slug:'unknown',name:'D',scores:{}}
 ];
 const groups = [{id:'featured',enabled:true,modelSlugs:['featured-a','featured-b']},{id:'disabled',enabled:false,modelSlugs:['ordinary']}];
-test('所有排序始终置顶、精选、普通优先，默认保留目录顺序，分数未知排后', () => {
+test('所有排序始终置顶、精选、普通优先，默认精选按配置顺序，分数未知排后', () => {
   const ids = sort => Directory.select(models,groups,{sort},['pinned']).visible.map(model=>model.slug);
-  assert.deepEqual(ids('default'),['pinned','featured-b','featured-a','ordinary','unknown']);
+  assert.deepEqual(ids('default'),['pinned','featured-a','featured-b','ordinary','unknown']);
   for(const sort of ['name','artificialAnalysis','deepSWE']) assert.deepEqual(ids(sort),['pinned','featured-a','featured-b','ordinary','unknown']);
   assert.deepEqual(models.map(model=>model.slug),['ordinary','featured-b','pinned','featured-a','unknown']);
 });
@@ -37,7 +37,7 @@ test('精选模式互斥且忽略搜索与多模态，保留置顶、去重并�
   assert.equal(Directory.select(models,grouped,{featuredMode:''}).visible.length,models.length);
 });
 
-test('全部精选默认先头部级再甜品级，保留组内顺序、置顶及主动排序', () => {
+test('普通浏览和全部精选默认先头部级再甜品级，保留组内顺序、置顶及主动排序', () => {
   const grouped = [
     {id:'high-volume-models',modelSlugs:['featured-a']},
     {id:'sota-models',modelSlugs:['featured-b','unknown']}
@@ -49,7 +49,9 @@ test('全部精选默认先头部级再甜品级，保留组内顺序、置顶�
     assert.deepEqual(ids({featuredMode:'all',sort}), ['featured-a','featured-b','unknown']);
   }
   assert.deepEqual(ids({featuredMode:'sota-models'}), ['featured-b','unknown']);
-  assert.deepEqual(ids({}), ['featured-b','featured-a','unknown','ordinary','pinned']);
+  assert.deepEqual(ids({}), ['featured-b','unknown','featured-a','ordinary','pinned']);
+  assert.deepEqual(ids({query:'featured'}), ['featured-b','featured-a']);
+  assert.deepEqual(ids({}, ['ordinary','featured-a']), ['ordinary','featured-a','featured-b','unknown','pinned']);
 });
 
 test('多模态沿用实体布尔字段，包含非图片的音频或输出能力，未知不计入', () => {

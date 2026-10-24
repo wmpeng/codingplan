@@ -20,6 +20,11 @@ test('明细按上方模型标签的精选优先顺序分组，同模型档位�
   assert.equal(JSON.stringify(source),snapshot);
 });
 
+test('默认额度明细按头部、甜品排列，保持同模型档位顺序', () => {
+  const data={...context,modelGroups:[{id:'high-volume-models',modelSlugs:['a']},{id:'sota-models',modelSlugs:['b']}]};
+  assert.deepEqual(Quota.rows(plan,data,{}).map(row=>row.slug),['b','a-peak','a-offpeak']);
+});
+
 test('明细与摘要按同一模型选择，保留该模型全部档位而不聚合额度', () => {
   assert.deepEqual(Quota.rows(plan, context, {modelSlugs:['a']}).map(r=>r.slug),['a-peak','a-offpeak']);
   for(const modelSlugs of [[],null]) assert.equal(Quota.rows(plan,context,{modelSlugs}).length,3);

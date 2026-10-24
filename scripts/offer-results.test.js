@@ -5,6 +5,19 @@ const Cards=require('./platform-catalog.js');
 function offer(overrides={}){
   return {id:'test-offer',platform:{slug:'test-platform',name:'平台',action:'https://example.com/platform',platformStatus:'open',supportsHarnessApi:true},plan:{slug:'test-plan',name:'套餐',action:'https://example.com/plan',billingMode:'subscription',monthlyPrice:20,currency:'$'},models:[{slug:'one',name:'模型一'},{slug:'two',name:'模型二'}],rows:[{slug:'one-tier',modelSlug:'one',usage:{monthlyTokenInM:0,unitPriceCnyPerM:0}},{slug:'two-tier',modelSlug:'two',usage:{monthlyTokenInM:'unknown',unitPriceCnyPerM:null}}],cost:136,reasons:[],cautions:[],...overrides};
 }
+test('匹配模型标签和明细统一头部在前，档位保序且不改变候选输入',()=>{
+  const item=offer();
+  item.rows.push({...item.rows[0],slug:'one-extra'});
+  const before=JSON.stringify(item);
+  const groups=[{id:'high-volume-models',modelSlugs:['one']},{id:'sota-models',modelSlugs:['two']}];
+  const html=Offers.card(item,{tokenUnit:'yi'},groups);
+  const tags=html.match(/class="ui-model-tags[\s\S]*?<\/div>/)[0];
+  assert.ok(tags.indexOf('模型二')<tags.indexOf('模型一'));
+  const table=html.match(/<tbody>([\s\S]*?)<\/tbody>/)[1];
+  assert.deepEqual([...table.matchAll(/<th scope="row">([^<]+)/g)].map(match=>match[1]),['模型二','模型一','模型一']);
+  assert.equal(JSON.stringify(item),before);
+});
+
 test('套餐导航遵守购买状态和安全地址，复用平台外链图标',()=>{
   const item=offer(),html=Offers.card(item,{tokenUnit:'yi'});
   assert.ok(html.includes(Cards.EXTERNAL_LINK_ICON));

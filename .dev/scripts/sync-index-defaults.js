@@ -28,7 +28,7 @@ const announcements=Announcements.loadCatalog({check});
 const plans=E.buildPlanCatalog(ctx).filter(plan=>plan.billingMode==='subscription');
 let home=fs.readFileSync(path.join(root,'index.html'),'utf8');
 home=replace(home,'HOME_ANNOUNCEMENTS',Announcements.renderHome(announcements));
-home=replace(home,'FEATURED_PLATFORMS',preset.platformSlugs.map(slug=>P.buildPlatformCardHtml(ctx.platformBySlug.get(slug),plans,{capabilitiesBeforeScores:true,supportedModels:E.platformModels(ctx,slug),hasApiPlan:E.buildApiPricingGroups(ctx,slug).length>0,sanitizeUrl:C.url})).join('\n'));
+home=replace(home,'FEATURED_PLATFORMS',preset.platformSlugs.map(slug=>P.buildPlatformCardHtml(ctx.platformBySlug.get(slug),plans,{capabilitiesBeforeScores:true,supportedModels:UI.prioritizeFeaturedModels(E.platformModels(ctx,slug),preset.groups),hasApiPlan:E.buildApiPricingGroups(ctx,slug).length>0,sanitizeUrl:C.url})).join('\n'));
 home=replace(home,'FEATURED_MODELS',C.modelGroups(preset,ctx));
 home=replace(home,'FEATURED_MODEL_INTRO',`<p>${esc(preset.groups.find(group=>group.id==='high-volume-models').title)} - 日常及大批量任务中优先考虑，性价比高；${esc(preset.groups.find(group=>group.id==='sota-models').title)} - 在复杂任务中优先考虑，能力强</p>`);
 home=replace(home,'FEATURED_TABLES','<div class="usage-preset-grid usage-preset-grid--multi">'+preset.groups.map(group=>M.presetComparisonTableHtml(group,C.points(ctx,config),'yi','featured',C.presetTableOptions({platformSlugs:preset.platformSlugs,modelFilter:false}))).join('')+'</div>');

@@ -29,8 +29,8 @@
       .flatMap(group => group.modelSlugs || []))].filter(slug => !valid || valid.has(slug));
   }
   function prioritizeFeaturedModels(models, groups = []) {
-    const featured = new Set(modelPresetSlugs(groups));
-    return [...models.filter(model => featured.has(model.slug)), ...models.filter(model => !featured.has(model.slug))];
+    const order = new Map(modelPresetSlugs(groups).map((slug, index) => [slug, index]));
+    return [...models].sort((a, b) => (order.get(a.slug) ?? order.size) - (order.get(b.slug) ?? order.size));
   }
   const externalLinkIcon = '<svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>';
   const closeIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"></path></svg>';

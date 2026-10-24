@@ -48,6 +48,7 @@ describe('buildDetailBodyHtml', () => {
       { planSlug: 'api', modelSlug: 'm5' },
       { planSlug: 'old', modelSlug: 'm6' }
     ] });
+    entityContext.modelGroups=[{id:'high-volume-models',modelSlugs:['m1']},{id:'sota-models',modelSlugs:['m4','m3']}];
     const html = buildDetailBodyHtml(platform, { entityContext, plans: EntityData.buildPlanCatalog(entityContext) });
     const inventory = html.match(/<section[^>]*data-section="models"[\s\S]*?<\/section>/)[0];
     for (const model of models.slice(0, 6)) assert.ok(inventory.includes(model.name));
@@ -60,6 +61,9 @@ describe('buildDetailBodyHtml', () => {
     const proModels = html.match(/<div class="ui-model-tags platform-detail-models" data-model-tags[^>]*aria-label="Pro 支持模型">(.*?)<\/div>/)[1];
     assert.ok(proModels.includes('Model 4'));
     assert.ok(!proModels.includes('Model 5'));
+    const names = html => [...html.matchAll(/<span class="model-tag"[^>]*>([^<]+)<\/span>/g)].map(match=>match[1]);
+    assert.deepEqual(names(inventory),['Model 4','Model 3','Model 1','Model 0','Model 2','Model 5']);
+    assert.deepEqual(names(proModels),['Model 4','Model 3','Model 1','Model 0','Model 2']);
   });
 
   it('renders model labels safely without entity context and omits empty inventories', () => {

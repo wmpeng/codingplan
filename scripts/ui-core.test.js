@@ -21,6 +21,15 @@ test('精选名单统一先头部级再甜品级，单组保序、排除禁用�
   assert.equal(JSON.stringify(groups), snapshot);
 });
 
+test('模型展示按头部和甜品配置顺序排序，其余稳定保序且不修改输入', () => {
+  const groups=[{id:'high-volume-models',modelSlugs:['sweet-b','sweet-a']},{id:'sota-models',modelSlugs:['top-b','top-a']}];
+  const models=['other-b','sweet-a','top-a','other-a','top-b','sweet-b'].map(slug=>({slug}));
+  const before=JSON.stringify(models);
+  assert.deepEqual(UI.prioritizeFeaturedModels(models,groups).map(m=>m.slug),['top-b','top-a','sweet-b','sweet-a','other-b','other-a']);
+  assert.deepEqual(UI.prioritizeFeaturedModels(models,[]),models);
+  assert.equal(JSON.stringify(models),before);
+});
+
 test('模型分组入口读取配置短名称，未加载时不复制旧分组名', () => {
   const groups = [{id:'sota-models',title:'能力模型',label:'能力级'}];
   assert.equal(UI.modelGroupLabel(groups,'sota-models'),'能力级');
