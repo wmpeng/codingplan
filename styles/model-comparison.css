@@ -217,6 +217,45 @@
 .pricing-directory .usage-chart { min-width: 0; overflow: hidden; }
 .pricing-directory .usage-chart-head { flex-wrap: wrap; min-width: 0; }
 .pricing-directory .usage-chart-head > div:first-child { flex: 1 1 440px; min-width: 0; }
+.usage-data-card .usage-chart-head { flex-wrap: wrap; }
+.usage-data-card .usage-detail-summary {
+  display: flex; flex: 1 0 100%; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 4px 12px; min-width: 0;
+}
+.usage-data-card .usage-detail-summary .usage-table-count { margin: 0; text-align: left; }
+.usage-chart-head .usage-score-columns-control {
+  position: relative; display: inline-flex; align-items: center; gap: 8px; margin-left: auto;
+  box-sizing: border-box; min-height: 40px; padding: 0 6px 0 8px;
+  border-radius: 8px; background: transparent; color: var(--text-secondary);
+  font-size: 13px; font-weight: 500; line-height: 1.4; white-space: nowrap;
+  cursor: pointer; user-select: none; transition: background-color .15s, color .15s;
+}
+.usage-chart-head .usage-score-columns-control > input {
+  position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;
+  z-index: 1; opacity: 0; cursor: pointer;
+}
+.usage-chart-head .usage-score-columns-control > svg { display: block; width: 16px; height: 16px; flex: none; }
+.usage-chart-head .usage-score-columns-text { position: relative; top: 1px; }
+.usage-chart-head .usage-score-columns-switch {
+  position: relative; width: 34px; height: 20px; flex: none; margin-left: 2px;
+  border-radius: 999px; background: #cbd5e1; transition: background-color .15s;
+}
+.usage-chart-head .usage-score-columns-switch::before {
+  content: ''; position: absolute; top: 3px; left: 3px;
+  width: 14px; height: 14px; border-radius: 50%; background: #fff;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .18); transition: transform .15s;
+}
+.usage-chart-head .usage-score-columns-control:hover { background: #edf3fb; color: var(--text-primary); }
+.usage-chart-head .usage-score-columns-control:has(input:checked) { color: var(--accent-primary); }
+.usage-chart-head .usage-score-columns-control:has(input:checked) .usage-score-columns-switch { background: var(--accent-primary); }
+.usage-chart-head .usage-score-columns-control:has(input:checked) .usage-score-columns-switch::before { transform: translateX(14px); }
+.usage-chart-head .usage-score-columns-control:has(input:focus-visible) { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .usage-chart-head .usage-score-columns-control, .usage-chart-head .usage-score-columns-switch, .usage-chart-head .usage-score-columns-switch::before { transition: none; }
+}
+@media (max-width: 800px), (pointer: coarse) {
+  .usage-chart-head .usage-score-columns-control { min-height: 44px; }
+}
 .pricing-directory .usage-data-card { scroll-margin-top: 110px; }
 .pricing-directory .usage-data-table :is(th,td) { box-sizing: border-box; padding: 8px 10px; }
 .pricing-directory [data-comparison-col="vendor"] { width: var(--pricing-identity-width); white-space: normal; }

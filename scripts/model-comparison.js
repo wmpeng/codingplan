@@ -736,8 +736,8 @@
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和模型评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
                 </article>
                 <article class="usage-chart-card usage-data-card">
-                    <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3><p>精确单价旁的横条按当前结果统一比较，采用对数尺度兼顾低价与高价；条越短，综合单价越低。按量 API 没有周期额度时显示“—”。</p></div><button type="button" class="tool-button" data-all-scores aria-expanded="false">显示全部评分</button><span class="usage-table-count" data-table-count="comparison"></span></div>
-                    <section class="usage-table-section" aria-label="价格与额度数据明细"><div class="usage-table-scroll"><table class="usage-data-table" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison', compact)}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
+                    <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3><p>精确单价旁的横条按当前结果统一比较，采用对数尺度兼顾低价与高价；条越短，综合单价越低。按量 API 没有周期额度时显示“—”。</p></div><div class="usage-detail-summary"><span class="usage-table-count" data-table-count="comparison"></span><label class="usage-score-columns-control"><input type="checkbox" role="switch" data-all-scores aria-controls="pricingComparisonTable"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.75" y="3.75" width="14.5" height="12.5" rx="1.5"/><path d="M7.5 4v12M12.5 4v12"/></svg><span class="usage-score-columns-text">显示全部评分</span><span class="usage-score-columns-switch" aria-hidden="true"></span></label></div></div>
+                    <section class="usage-table-section" aria-label="价格与额度数据明细"><div class="usage-table-scroll"><table class="usage-data-table" id="pricingComparisonTable" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison', compact)}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
                 </article>
             </section>`;
     }
@@ -1125,7 +1125,7 @@
             if (Directory) {
                 const tools = document.createElement('div'); tools.className = 'usage-detail-tools';
                 tools.innerHTML = `<label data-select-fallback>排序 <select id="pricingSort" aria-label="明细排序">${COMPARISON_TABLE_COLUMNS.filter(column => column.sortable !== false).map(column => `<option value="${column.key}">${column.key === 'unitPriceCnyPerM' ? '默认（综合单价）' : column.key === 'price' ? '首月价格' : column.label}</option>`).join('')}</select></label><button class="tool-button price-sort-direction" type="button" aria-label="改为降序">↑</button>`;
-                const count = container.querySelector('[data-table-count]'); count.before(tools);
+                container.querySelector('.usage-detail-summary').before(tools);
                 const pagerHtml='<button class="tool-button" type="button" data-price-page="first">第一页</button><button class="tool-button" type="button" data-price-page="previous">上一页</button><span data-price-page-label aria-live="polite"></span><button class="tool-button" type="button" data-price-page="next">下一页</button>';
                 const pager=document.createElement('div');pager.className='price-pagination';pager.dataset.pricePagination='';pager.innerHTML=pagerHtml;
                 const card=container.querySelector('.usage-data-card');card.append(pager);
@@ -1168,9 +1168,7 @@
                     button.classList.toggle('is-active',button.dataset.benchmark === state.benchmark);
                     button.setAttribute('aria-pressed',String(button.dataset.benchmark === state.benchmark));
                 });
-                const allButton = container.querySelector('[data-all-scores]');
-                allButton.setAttribute('aria-expanded',String(state.allScores));
-                allButton.textContent = state.allScores ? '只显示当前评分' : '显示全部评分';
+                container.querySelector('[data-all-scores]').checked = state.allScores;
                 const presetRenderKey = `${state.tokenUnit}:${state.presetPlatformScope}`;
                 if (renderedPresetKey !== presetRenderKey) {
                     if (!mountOptions.hidePresets) renderPresetComparisons(container.querySelector('[data-presets]'), presetConfig, points, state.tokenUnit, state.presetPlatformScope);
@@ -1239,6 +1237,11 @@
 
             container.addEventListener('change', (event) => {
                 const target = event.target;
+                if (target.matches('[data-all-scores]')) {
+                    state.allScores = target.checked;
+                    render();
+                    return;
+                }
                 if (target.matches('[data-option-kind="platform"]')) {
                     target.checked ? state.platforms.add(target.value) : state.platforms.delete(target.value);
                     updatePickerCount('vendors', state.platforms);
@@ -1406,7 +1409,6 @@
                     render();
                     return;
                 }
-                if(event.target.closest('[data-all-scores]')) { state.allScores = !state.allScores; render(); return; }
                 const benchmarkButton = event.target.closest('[data-benchmark]');
                 if (benchmarkButton) {
                     state.benchmark = benchmarkButton.dataset.benchmark;
