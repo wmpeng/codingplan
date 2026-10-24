@@ -49,7 +49,7 @@
 .usage-preset-card > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 13px 14px 11px; border-bottom: 1px solid #e8edf2; background: #f8fafb; }
 .usage-preset-card > header h4 { margin: 0; color: #1d293d; font-size: 14px; line-height: 1.35; }
 .usage-preset-card > header p { margin: 3px 0 0; color: #8490a1; font-size: 10px; }
-.usage-preset-card > header > span { padding: 3px 7px; border-radius: 999px; background: #edf2f7; color: #667489; font-size: 10px; white-space: nowrap; }
+.usage-preset-card > header > span { display: inline-flex; align-items: center; justify-content: center; min-height: 28px; padding: 4px 8px; border-radius: 999px; background: #edf2f7; color: #667489; font-size: 12px; line-height: 1.5; white-space: nowrap; }
 .usage-preset-table-scroll { width: 100%; overflow-x: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
 .usage-preset-table { width: 100%; min-width: 0; table-layout: fixed; border-collapse: separate; border-spacing: 0; }
 .usage-preset-table th { padding: 9px 10px; border-bottom: 1px solid #dfe6ed; background: #f3f6f9; color: #6c788a; font-size: 11px; font-weight: 600; text-align: left; white-space: nowrap; }
@@ -80,7 +80,8 @@
 .usage-preset-card .usage-preset-primary-line .usage-table-model { font-weight: 600; }
 .usage-preset-card .preset-model-filters { display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:8px;color:var(--text-secondary);font-size:12px; }
 .usage-preset-card .preset-model-filters > span { flex-shrink:0; }
-.usage-preset-card .preset-model-filters button { display:inline-flex;align-items:center;justify-content:center;font:inherit;line-height:1.5;min-height:28px;max-width:100%;padding:4px 7px 2px;border:1px solid var(--border-color);border-radius:6px;background:var(--bg-secondary);color:var(--text-secondary);overflow-wrap:anywhere;cursor:pointer;transition:color .16s,background .16s; }
+/* Center the line box with symmetric padding; glyph metrics belong to the active font. */
+.usage-preset-card .preset-model-filters button { display:inline-flex;align-items:center;justify-content:center;font:inherit;line-height:1.5;min-height:28px;max-width:100%;padding:3px 7px;border:1px solid var(--border-color);border-radius:6px;background:var(--bg-secondary);color:var(--text-secondary);overflow-wrap:anywhere;cursor:pointer;transition:color .16s,background .16s; }
 .usage-preset-card .preset-model-filters button:hover { background:var(--bg-tertiary);color:var(--accent-primary); }
 .usage-preset-card .preset-model-filters button[aria-pressed="true"] { color:var(--accent-primary);font-weight:600;background:var(--bg-tertiary); }
 @media (max-width:800px), (pointer:coarse) {
