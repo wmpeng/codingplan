@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-24T03:40:04Z",
+  "generatedAt": "2026-10-24T06:41:53Z",
   "benchmarks": {
     "artificialAnalysis": {
       "name": "Artificial Analysis Intelligence Index",
       "version": "v4.3.2",
       "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-6-sol",
-      "fetchedAt": "2026-10-19T17:03:45Z",
-      "availableConfigurations": 706
+      "fetchedAt": "2026-10-24T06:31:42Z",
+      "availableConfigurations": 709
     },
     "deepSWE": {
       "name": "DeepSWE",
@@ -39,7 +39,7 @@
     }
   },
   "coverage": {
-    "artificialAnalysisScores": 113,
+    "artificialAnalysisScores": 114,
     "deepSWEScores": 28,
     "liveBenchScores": 46,
     "arenaScores": 45,
@@ -4589,7 +4589,13 @@
         ]
       },
       "scores": {
-        "artificialAnalysis": null,
+        "artificialAnalysis": {
+          "score": 45,
+          "scoreExact": 45.0965048681912,
+          "configuration": "DeepSeek V4.1 Flash 1017 (Max)",
+          "modelSlug": "deepseek-v4-1-flash-1017",
+          "sourceUrl": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017"
+        },
         "deepSWE": null,
         "liveBench": {
           "score": 79.2,
