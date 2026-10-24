@@ -210,6 +210,20 @@
     },
     {
       "series": "news",
+      "slug": "20260910_deepseek_v4_1_flash",
+      "title": "DeepSeek V4.1 Flash 发布：552B 新架构、原生多模态，API 价格同步下调",
+      "publishedAt": "2026-09-10",
+      "updatedAt": "2026-09-10",
+      "description": "DeepSeek V4.1 Flash 采用 552B 参数新架构，支持原生多模态与百万上下文。了解官方编程与 Agent 基准、缓存压缩、API 调价和旧模型迁移安排。",
+      "kicker": "AI 行业快讯",
+      "url": "/articles/news/20260910_deepseek_v4_1_flash/",
+      "cover": {
+        "src": "/articles/news/20260910_deepseek_v4_1_flash/assets/deepseek-v41-flash-benchmark-table-cn.png",
+        "alt": "DeepSeek V4.1 Flash 与主流前沿模型的完整对照表"
+      }
+    },
+    {
+      "series": "news",
       "slug": "20261017_deepseek_v4_1_flash_1017",
       "title": "DeepSeek V4.1 Flash 1017 更新：编程与 Agent 提升，搜索 API 正式开放",
       "publishedAt": "2026-10-18",
@@ -220,6 +234,34 @@
       "cover": {
         "src": "/articles/news/20261017_deepseek_v4_1_flash_1017/assets/deepseek-v41-flash-1017-benchmarks-cn.png",
         "alt": "DeepSeek V4.1 Flash 1017 官方基准成绩对照"
+      }
+    },
+    {
+      "series": "news",
+      "slug": "20261020_minimax_m3_1_flash",
+      "title": "MiniMax M3.1 Flash 正式发布：Space Bunny 揭晓，编程与 Agent 升级",
+      "publishedAt": "2026-10-20",
+      "updatedAt": "2026-10-20",
+      "description": "MiniMax M3.1 Flash 正式发布，Space Bunny 身份揭晓。结合官方基准、AA 和社区体验，了解编程与自动化表现、人民币 API 价格，以及 M Plan 和旧订阅迁移安排。",
+      "kicker": "AI 行业快讯",
+      "url": "/articles/news/20261020_minimax_m3_1_flash/",
+      "cover": {
+        "src": "/articles/news/20261020_minimax_m3_1_flash/assets/minimax-m31-flash-benchmarks.webp",
+        "alt": "MiniMax M3.1 Flash 官方完整基准对照表及评测说明"
+      }
+    },
+    {
+      "series": "news",
+      "slug": "20261024_kimi_k3_1_pro",
+      "title": "Kimi K3.1 Pro 正式发布：编程与 3D 能力升级，Highspeed 同步上线",
+      "publishedAt": "2026-10-24",
+      "updatedAt": "2026-10-24",
+      "description": "Kimi K3.1 Pro 与 Highspeed 同步上线，升级长程编程、3D 建模和金融文档能力。对照官方基准、AA 与 LiveBench，了解能力差异、API 价格、缓存和会员使用范围。",
+      "kicker": "AI 行业快讯",
+      "url": "/articles/news/20261024_kimi_k3_1_pro/",
+      "cover": {
+        "src": "/articles/news/20261024_kimi_k3_1_pro/assets/kimi-k31-pro-benchmarks.webp",
+        "alt": "Kimi K3.1 Pro 官方基准测试总览"
       }
     },
     {
