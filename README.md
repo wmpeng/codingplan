@@ -2,9 +2,9 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.10.24 | Kimi K3.1 Pro 上线与 Codex 参考用量调整
+> 更新日期 2026.10.24 | 全站数据复查、套餐与活动规则补充
 
-当前展示 **42 个平台、142 个在售订阅套餐、2 个按量 API、164 个模型和 2373 条套餐模型关系**。
+当前展示 **42 个平台、143 个在售订阅套餐、2 个按量 API、165 个模型和 2378 条套餐模型关系**。
 
 [在线平台中心](https://codingplan.fyi/platforms/) · [模型目录](https://codingplan.fyi/models/) · [价格与额度](https://codingplan.fyi/pricing/) · [套餐对比](https://codingplan.fyi/plans/) · [预告与更新](https://codingplan.fyi/updates/)
 
@@ -152,7 +152,7 @@
 | [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | [峰] | $10/首月 | 601.58M | 1,503.96M | 3,007.9M | ¥0.0224/M |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M |
 
-还有 53 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
+还有 55 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### DeepSeek-V4-Flash-0731
 
@@ -300,12 +300,12 @@
 | 阿里·百炼 Token Plan | 4 | ¥39–¥499/月 | GLM-5.3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、等 11 个 |
 | 阿里·百炼 Coding Plan | 1 | ¥200/月 | GLM-5、Kimi-K2.5、MiniMax-M2.5、Qwen-3.5-Plus、等 6 个 |
 | 小米·MiMo | 4 | ¥39–¥659/月 | MiMo-V2.6-Flash、MiMo-V2.6-Pro |
-| Command Code | 5 | $1–$200/月 | GPT-6-Astra、GPT-6.1-Sol、Claude Opus 5.5、GLM-5.3、等 92 个 |
+| Command Code | 5 | $1–$200/月 | GPT-6-Astra、GPT-6.1-Sol、Claude Opus 5.5、GLM-5.3、等 90 个 |
 | 百度·千帆 | 4 | ¥9.9–¥600/月 | GLM-5.3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、等 9 个 |
 | 华为云 | 4 | ¥59–¥799/月 | GLM-5.3、DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、GLM-5.1、等 5 个 |
 | 腾讯云 | 4 | ¥39–¥599/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4-Flash-0731、等 12 个 |
 | Qoder 国内版 | 3 | ¥59–¥559/月 | GLM-5.3、Kimi-K3、DeepSeek-V4-Flash-0731、GLM-5.3-Flash、等 15 个 |
-| Qoder 国际版 | 3 | $20–$200/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash、GLM-5.3-Flash、等 12 个 |
+| Qoder 国际版 | 4 | $10–$200/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4.1-Flash、等 13 个 |
 | WorkBuddy | 4 | ¥0–¥700/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash、GLM-5.3-Flash、等 14 个 |
 | TRAE 国内版 | 4 | ¥45–¥629/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、等 20 个 |
 | TRAE 国际版 | 5 | $0–$200/月 | GPT-6-Astra、Kimi-K3、DeepSeek-V4-Flash-0731、GPT-6-Luna、等 19 个 |
@@ -341,6 +341,9 @@
 
 ### 2026.10.24
 
+- 全站复查现有52条平台与产品线：补Qoder国际版Lite $10/月及分档加赠，MiMo年价采用官网明确人民币总额，腾讯Hy4 preview五折持续至10月30日12:00（北京时间）。
+- 补Kimi老套餐K3.1 Pro权限与方舟Coding的DeepSeek Economy档；登记Agent Plan MiniMax M3新用户限制及11月2日下线安排。
+- Command Code新增Ornith 1.5 122B，更新MiMo旧入口与限免档范围；Ornith暂无四项榜单分数，Token用量按套餐价格与额度估算。
 - 新增 Kimi K3.1 Pro：补充 Kimi、OpenCode 与 Command Code 的支持、价格和额度；Kimi 的 Highspeed 按高速档展示，绝对 Token 用量仍待确认。
 - 调整 Codex 的 GPT-5.6-Sol、GPT-6-Luna、GPT-5.6-Luna 与 GPT-5.6-Terra 参考 Token 用量，相关套餐与速度档的综合单价同步重算；这些数值为估算，非官方固定配额或新实测结果。
 - 新增 LiveBench 综合与 Arena Agent Overall 评分，模型卡片以四格展示；图表可直接切换四项指标，明细支持展开全部评分。

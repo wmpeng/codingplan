@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-24T06:41:53Z",
+  "generatedAt": "2026-10-24T10:33:32Z",
   "benchmarks": {
     "artificialAnalysis": {
       "name": "Artificial Analysis Intelligence Index",
@@ -43,7 +43,7 @@
     "deepSWEScores": 28,
     "liveBenchScores": 46,
     "arenaScores": 45,
-    "multimodalKnown": 143
+    "multimodalKnown": 144
   },
   "models": [
     {
@@ -4809,6 +4809,26 @@
           "sourceUrl": "https://livebench.ai/",
           "publishedAt": "2026-10-23"
         },
+        "arena": null
+      }
+    },
+    {
+      "slug": "ornith-1-5-122b",
+      "name": "Ornith 1.5 122B",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": null,
+        "deepSWE": null,
+        "liveBench": null,
         "arena": null
       }
     }
