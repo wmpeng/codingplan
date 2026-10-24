@@ -15,7 +15,7 @@
 .filter-picker-menu { position: absolute; left: 0; right: 0; top: calc(100% + 6px); min-width: 250px; max-height: min(420px, 60vh); overflow: auto; padding: 10px; background: #fff; border: 1px solid var(--tool-line); border-radius: 12px; box-shadow: 0 16px 40px rgba(15, 23, 42, .15); }
 .filter-picker-menu label { display: flex; gap: 8px; padding: 7px 5px; align-items: flex-start; font-size: 13px; line-height: 1.35; }
 .filter-picker-menu label:hover { background: var(--tool-soft); }
-.filter-picker-menu input[type="search"] { width: 100%; box-sizing: border-box; border: 1px solid var(--tool-line); border-radius: 8px; padding: 8px; margin-bottom: 7px; }
+.filter-picker-menu input[type="search"] { width: 100%; box-sizing: border-box; border: 1px solid var(--tool-line); border-radius: 8px; padding: 9px 8px 7px; margin-bottom: 7px; }
 .filter-picker-tools { display: flex; gap: 6px; padding: 4px 0 8px; border-bottom: 1px solid var(--tool-line); margin-bottom: 5px; }
 .filter-more { margin-top: 10px; border-top: 1px solid var(--tool-line); padding-top: 10px; }
 .filter-more > summary { cursor: pointer; color: var(--tool-muted); font-size: 13px; }
