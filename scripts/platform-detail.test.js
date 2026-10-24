@@ -24,12 +24,12 @@ function samplePlatform(overrides = {}) {
 describe('buildDetailBodyHtml', () => {
   it('uses the explicit platform action even when the first plan has another link', () => {
     const platform=samplePlatform({action:'https://example.com/platform'});
-    const html=buildDetailBodyHtml(platform,{plans:[{slug:'p',platformSlug:platform.slug,name:'Plan',action:'https://example.com/plan'}],monitorRow:null});
+    const html=buildDetailBodyHtml(platform,{plans:[{slug:'p',platformSlug:platform.slug,name:'Plan',action:'https://example.com/plan'}]});
     assert.match(html,/class="platform-detail-action" href="https:\/\/example\.com\/platform"/);
   });
 
   it('uses one canonical delisted status without a duplicate discontinued badge', () => {
-    const html = buildDetailBodyHtml(samplePlatform({platformStatus:'delisted'}), {plans:[],monitorRow:null});
+    const html = buildDetailBodyHtml(samplePlatform({platformStatus:'delisted'}), {plans:[]});
     assert.equal((html.match(/>已下架</g) || []).length,1);
     assert.doesNotMatch(html,/已停售/);
   });
@@ -48,6 +48,7 @@ describe('buildDetailBodyHtml', () => {
       { planSlug: 'api', modelSlug: 'm5' },
       { planSlug: 'old', modelSlug: 'm6' }
     ] });
+    entityContext.modelGroups=[{id:'high-volume-models',modelSlugs:['m1']},{id:'sota-models',modelSlugs:['m4','m3']}];
     const html = buildDetailBodyHtml(platform, { entityContext, plans: EntityData.buildPlanCatalog(entityContext) });
     const inventory = html.match(/<section[^>]*data-section="models"[\s\S]*?<\/section>/)[0];
     for (const model of models.slice(0, 6)) assert.ok(inventory.includes(model.name));
@@ -60,6 +61,9 @@ describe('buildDetailBodyHtml', () => {
     const proModels = html.match(/<div class="ui-model-tags platform-detail-models" data-model-tags[^>]*aria-label="Pro 支持模型">(.*?)<\/div>/)[1];
     assert.ok(proModels.includes('Model 4'));
     assert.ok(!proModels.includes('Model 5'));
+    const names = html => [...html.matchAll(/<span class="model-tag"[^>]*>([^<]+)<\/span>/g)].map(match=>match[1]);
+    assert.deepEqual(names(inventory),['Model 4','Model 3','Model 1','Model 0','Model 2','Model 5']);
+    assert.deepEqual(names(proModels),['Model 4','Model 3','Model 1','Model 0','Model 2']);
   });
 
   it('renders model labels safely without entity context and omits empty inventories', () => {
@@ -76,7 +80,7 @@ describe('buildDetailBodyHtml', () => {
 
   it('detail section uses dimensionCopy', () => {
     const platform = samplePlatform();
-    const html = buildDetailBodyHtml(platform, { plans: [], monitorRow: null });
+    const html = buildDetailBodyHtml(platform, { plans: [] });
     assert.ok(html.includes('评价详解'));
     assert.ok(html.includes('长详解'));
     assert.ok(html.includes('platform-detail-dim-score-unit'));
@@ -93,7 +97,7 @@ describe('buildDetailBodyHtml', () => {
         models: { score: 4, reason: '模型短' }
 }
     });
-    const html = buildDetailBodyHtml(platform, { plans: [], monitorRow: null });
+    const html = buildDetailBodyHtml(platform, { plans: [] });
     assert.ok(html.includes('仅短理由'));
     assert.ok(html.includes('性价比'));
   });
@@ -101,7 +105,7 @@ describe('buildDetailBodyHtml', () => {
   it('renders platform overview from detail, falls back to summary, omits when empty', () => {
     const withDetail = buildDetailBodyHtml(
       samplePlatform({ summary: '卡面短', detail: '浮层长文案' }),
-      { plans: [], monitorRow: null }
+      { plans: [] }
     );
     assert.ok(withDetail.includes('data-section="overview"'));
     assert.ok(withDetail.includes('platform-detail-overview'));
@@ -111,12 +115,12 @@ describe('buildDetailBodyHtml', () => {
 
     const summaryOnly = buildDetailBodyHtml(
       samplePlatform({ summary: '只有简要' }),
-      { plans: [], monitorRow: null }
+      { plans: [] }
     );
     assert.ok(summaryOnly.includes('data-section="overview"'));
     assert.ok(summaryOnly.includes('只有简要'));
 
-    const none = buildDetailBodyHtml(samplePlatform(), { plans: [], monitorRow: null });
+    const none = buildDetailBodyHtml(samplePlatform(), { plans: [] });
     assert.ok(!none.includes('data-section="overview"'));
   });
 
@@ -134,7 +138,7 @@ describe('buildDetailBodyHtml', () => {
           stability: { score: 3, reason: '稳定短' }
         }
       }),
-      { plans: [], monitorRow: null }
+      { plans: [] }
     );
     assert.match(html, /platform-detail-overview[\s\S]*<strong>加粗<\/strong>/);
     assert.match(html, /platform-detail-overview[\s\S]*href="https:\/\/example\.com\/d"/);
@@ -145,7 +149,6 @@ describe('buildDetailBodyHtml', () => {
   it('renders API pricing from PlanModel groups and links to the comparison view', () => {
     const html = buildDetailBodyHtml(samplePlatform({ slug: 'gongji', name: '共绩算力' }), {
       plans: [],
-      monitorRow: null,
       apiPricingGroups: [{
         planSlug: 'gongji-api',
         planName: '按量 API',
@@ -176,7 +179,6 @@ describe('buildDetailBodyHtml', () => {
   it('renders pin button in detail header', () => {
     const html = buildDetailBodyHtml(samplePlatform({ slug: 'opencode', name: 'OpenCode' }), {
       plans: [],
-      monitorRow: null,
       isPinned: true
     });
     assert.match(html, /data-platform-pin="1"/);
@@ -198,7 +200,7 @@ describe('buildDetailBodyHtml', () => {
       },
       { platformSlug: 'x', name: 'Old', billingMode: 'subscription', monthlyPrice: 50, planStatus: 'delisted' }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans });
     assert.ok(html.includes('data-section="plans"'));
     assert.ok(html.includes('platform-detail-plans-list'));
     assert.ok(html.includes('platform-detail-plan-title-row'));
@@ -225,7 +227,7 @@ describe('buildDetailBodyHtml', () => {
         planStatus: 'open'
       }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans });
     assert.ok(html.includes('Lite'));
     assert.ok(html.includes('1,900次/月') || html.includes('1900'));
     assert.ok(!html.includes('platform-detail-price-sep'));
@@ -243,7 +245,7 @@ describe('buildDetailBodyHtml', () => {
         planStatus: 'open'
       }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans });
     assert.ok(html.includes('2.40万次/月') || html.includes('24000'));
   });
 
@@ -251,7 +253,7 @@ describe('buildDetailBodyHtml', () => {
     const plans = [
       { platformSlug: 'x', name: 'Old', billingMode: 'subscription', monthlyPrice: 50, planStatus: 'delisted' }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'x', name: 'X' }), { plans });
     assert.ok(!html.includes('data-section="plans"'));
   });
 
@@ -267,7 +269,7 @@ describe('buildDetailBodyHtml', () => {
         planStatus: 'open'
       }
     ];
-    const html = buildDetailBodyHtml(samplePlatform({ slug: 'opencode', name: 'OpenCode' }), { plans, monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ slug: 'opencode', name: 'OpenCode' }), { plans });
     assert.ok(html.includes('data-section="plans"'));
     assert.ok(html.includes('Go'));
     assert.ok(html.includes('$10') || html.includes('10'));
@@ -277,49 +279,9 @@ describe('buildDetailBodyHtml', () => {
   });
 
   it('omits plans section when empty', () => {
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans: [], monitorRow: null });
+    const html = buildDetailBodyHtml(samplePlatform({ name: 'X' }), { plans: [] });
     assert.ok(!html.includes('data-section="plans"'));
   });
 
-  it('renders availability when monitorRow present', () => {
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'MiniMax' }), {
-      plans: [],
-      monitorRow: {
-        platform_slug: 'minimax',
-        platform_display_name: 'MiniMax',
-        // 绿=1、黄=0.5、红=0 / 非灰 = 1.5/3 = 50%
-        hours: [
-          { color: 'green' },
-          { color: 'yellow' },
-          { color: 'red' },
-          { color: 'gray' }
-        ]
-      }
-    });
-    assert.ok(html.includes('data-section="availability"'));
-    assert.ok(html.includes('50.0% 可用'));
-    assert.ok(html.includes('近 48 小时'));
-    assert.ok(html.includes('platform-detail-hour-cell--green'));
-    assert.ok(html.includes('platform-detail-hour-cell--yellow'));
-    assert.ok(html.includes('查看完整可用性'));
-  });
 
-  it('availability rate uses last 48 hours only', () => {
-    const olderRed = Array.from({ length: 48 }, () => ({ color: 'red' }));
-    const recentGreen = Array.from({ length: 48 }, () => ({ color: 'green' }));
-    const html = buildDetailBodyHtml(samplePlatform({ name: 'MiniMax' }), {
-      plans: [],
-      monitorRow: {
-        platform_slug: 'minimax',
-        hours: olderRed.concat(recentGreen)
-      }
-    });
-    assert.ok(html.includes('100.0% 可用'));
-    assert.ok(!html.includes('50.0% 可用'));
-  });
-
-  it('omits availability when monitorRow null', () => {
-    const html = buildDetailBodyHtml(samplePlatform(), { plans: [], monitorRow: null });
-    assert.ok(!html.includes('data-section="availability"'));
-  });
 });

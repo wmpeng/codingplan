@@ -10,9 +10,18 @@
       const reset = document.getElementById('modelReset'), buttons = [...document.querySelectorAll('[data-model-featured]')];
       buttons.forEach(button => { if (button.dataset.modelFeatured !== 'all') button.textContent = root.CodingPlanUI.modelGroupLabel(preset.groups, button.dataset.modelFeatured); });
       const picker = root.CodingPlanSingleSelect.mount(sort, '排序');
-      let featuredMode = '';
+      const Url = root.CodingPlanFilterUrl;
+      const urlSchema = {
+        query:Url.text('q'), sort:Url.choice('sort', ['default','name',...root.BenchmarkScores.keys], 'default'),
+        multimodal:Url.flag('multimodal'), featuredMode:Url.choice('featured', ['all', ...preset.groups.map(group => group.id)], '')
+      };
+      const saved = Url.read(urlSchema);
+      let featuredMode = saved.featuredMode || '';
+      search.value = saved.query || ''; sort.value = saved.sort || 'default'; multimodal.checked = saved.multimodal === true;
+      picker.sync();
       let pins = Directory.readPins(root.localStorage, context.models);
       function render() {
+        Url.replace(urlSchema, {query:search.value, sort:sort.value, multimodal:multimodal.checked, featuredMode});
         const selection = Directory.select(context.models, preset.groups, {query:search.value, featuredMode, sort:sort.value, multimodal:multimodal.checked}, pins);
         fields.disabled = selection.featuredMode; fields.inert = selection.featuredMode;
         fields.classList.toggle('is-paused', selection.featuredMode);
@@ -23,6 +32,7 @@
         })).join('') : '<p class="tool-empty">没有匹配模型，试着清空搜索或减少条件。</p>';
         document.getElementById('modelCount').textContent = Directory.countLabel(selection);
         host.dataset.mounted = '1';
+        root.CodingPlanEvents?.results({result_count:selection.visible.length,result_key:JSON.stringify(selection.visible.map(x=>x.slug))});
       }
       document.getElementById('modelControls').addEventListener('input', render);
       search.addEventListener('input', render);
@@ -38,6 +48,7 @@
         const slug = button.dataset.modelPin;
         pins = pins.includes(slug) ? pins.filter(id => id !== slug) : [slug, ...pins];
         Directory.writePins(root.localStorage, pins); render();
+        root.CodingPlanEvents?.track('pin_change', {entity_type:'model',entity_slug:slug,pinned:pins.includes(slug),placement:'models'});
         [...host.querySelectorAll('[data-model-pin]')].find(item => item.dataset.modelPin === slug)?.focus({preventScroll:true});
       });
       root.addEventListener('storage', event => {

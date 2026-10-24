@@ -7,10 +7,9 @@ const views = [
   {name:'pricing', options:{mode:'full',view:'pricing'}, platformSlugs:null, modelSlugs:null, history:false, max:'delisted', planOnly:true},
   {name:'platforms', options:{mode:'full',view:'platforms'}, platformSlugs:null, modelSlugs:[], history:false, max:'restricted', planOnly:false},
   {name:'plans', options:{mode:'full',view:'plans'}, platformSlugs:[], modelSlugs:[], history:false, max:'delisted', planOnly:true},
-  {name:'monitor', options:{mode:'full',view:'monitor'}, platformSlugs:null, modelSlugs:null, history:true, max:'delisted', planOnly:false}
 ];
 
-test('五类页面的默认条件和重置快照保持各自口径，单位和配置输入不被修改', () => {
+test('四类页面的默认条件和重置快照保持各自口径，单位和配置输入不被修改', () => {
   for(const view of views) {
     const config={homepageFilters:{defaults:{modelGroup:'sota-models',modelMatch:'all'}}};
     const before=JSON.stringify(config), policy=Filters.createViewPolicy(view.options);

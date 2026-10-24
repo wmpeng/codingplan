@@ -44,36 +44,42 @@
     syncDisplayControls();
     panel.addEventListener('click', event => {
       const control = event.target.closest('[data-settings-token-unit]');
-      if (control) applyTokenUnit(control.dataset.settingsTokenUnit);
+      if (control && control.dataset.settingsTokenUnit !== tokenUnit) {
+        applyTokenUnit(control.dataset.settingsTokenUnit);
+        window.CodingPlanEvents?.track('settings_change', {setting:'token_unit', value:tokenUnit});
+      }
       const basis = event.target.closest('[data-settings-price-basis]');
-      if(basis)applyPriceBasis(basis.dataset.settingsPriceBasis);
+      if(basis && basis.dataset.settingsPriceBasis !== priceBasis) {
+        applyPriceBasis(basis.dataset.settingsPriceBasis);
+        window.CodingPlanEvents?.track('settings_change', {setting:'price_basis', value:priceBasis});
+      }
     });
     function apply(on) {
       document.body.classList.toggle('ultra-wide', on);
       toggle.checked = on;
     }
     try { apply(localStorage.getItem('ultraWide') === '1'); } catch (_) { apply(false); }
-    function open(on) {
+    function open(on, source) {
+      if (panel.hidden === !on) return;
       panel.hidden = !on;
       button.classList.toggle('active', on);
       button.setAttribute('aria-expanded', String(on));
+      window.CodingPlanEvents?.track('settings_panel', {action:on ? 'open' : 'close', source});
     }
-    button.addEventListener('click', () => open(panel.hidden));
+    button.addEventListener('click', () => open(panel.hidden, 'button'));
     toggle.addEventListener('change', () => {
       apply(toggle.checked);
       try { localStorage.setItem('ultraWide', toggle.checked ? '1' : '0'); } catch (_) { /* 本次页面仍可设置。 */ }
+      window.CodingPlanEvents?.track('settings_change', {setting:'ultra_wide', value:toggle.checked});
     });
     document.addEventListener('click', event => {
-      if (!panel.hidden && !document.getElementById('settingsMount').contains(event.target)) open(false);
+      if (!panel.hidden && !document.getElementById('settingsMount').contains(event.target)) open(false, 'outside');
     });
     document.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && !panel.hidden) { open(false); button.focus(); }
+      if (event.key === 'Escape' && !panel.hidden) { open(false, 'escape'); button.focus(); }
     });
   }
   function init() {
-    document.querySelectorAll('[data-monitor-nav]').forEach(link => {
-      link.hidden = window.__CODINGPLAN_FEATURES?.monitorView !== true;
-    });
     const nav = document.querySelector('.site-header .tool-nav');
     const selected = nav?.querySelector('[aria-current="page"]');
     if (selected && nav.scrollWidth > nav.clientWidth) {

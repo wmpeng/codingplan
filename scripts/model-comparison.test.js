@@ -361,8 +361,8 @@ test('comparison table rows format subscription and API semantics', () => {
   assert.match(subscription, /50M/);
   assert.match(subscription, /100M/);
   assert.match(subscription, /¥0\.70 \/ M/);
-  assert.match(subscription, />52</);
-  assert.match(subscription, /41 ±3/);
+  assert.match(subscription, />51\.6</);
+  assert.match(subscription, /40\.7 ±3/);
   assert.match(subscription, /按官方额度推算/);
 
   const usdSubscription = comparisonTableRowHtml({
@@ -430,13 +430,13 @@ test('token unit conversion keeps amount and unit price mathematically aligned',
   assert.match(yiRow, /10亿/);
 });
 
-test('unit price column appears before all three usage columns', () => {
+test('unit price precedes all three usage columns and API pricing follows monthly usage', () => {
   const keys = COMPARISON_TABLE_COLUMNS.map((column) => column.key);
   const unitPriceIndex = keys.indexOf('unitPriceCnyPerM');
   const unitPriceVisualIndex = keys.indexOf('unitPriceVisual');
   const apiPricingIndex = keys.indexOf('apiPricing');
   assert.equal(unitPriceVisualIndex, unitPriceIndex + 1);
-  assert.equal(apiPricingIndex, unitPriceVisualIndex + 1);
+  assert.equal(apiPricingIndex, keys.indexOf('monthlyTokenInM') + 1);
   assert.equal(COMPARISON_TABLE_COLUMNS[unitPriceVisualIndex].sortable, false);
   assert.ok(unitPriceIndex < keys.indexOf('fiveHourTokenInM'));
   assert.ok(unitPriceIndex < keys.indexOf('weeklyTokenInM'));

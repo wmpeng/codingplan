@@ -23,9 +23,12 @@ function replace(html,id,body){
  return html.replace(re,(_,start,end)=>start+'\n'+body+'\n'+end);
 }
 function write(file,html){html=html.replace(/\r\n/g,'\n').replace(/[ \t]+$/gm,'');const target=path.join(root,file);if(fs.readFileSync(target,'utf8')===html)return;if(check)throw new Error(file+' 需要重新生成');fs.writeFileSync(target,html,'utf8');}
+const Announcements=require(path.resolve(root,'../data/announcements/render.js'));
+const announcements=Announcements.loadCatalog({check});
 const plans=E.buildPlanCatalog(ctx).filter(plan=>plan.billingMode==='subscription');
 let home=fs.readFileSync(path.join(root,'index.html'),'utf8');
-home=replace(home,'FEATURED_PLATFORMS',preset.platformSlugs.map(slug=>P.buildPlatformCardHtml(ctx.platformBySlug.get(slug),plans,{capabilitiesBeforeScores:true,supportedModels:E.platformModels(ctx,slug),hasApiPlan:E.buildApiPricingGroups(ctx,slug).length>0,sanitizeUrl:C.url})).join('\n'));
+home=replace(home,'HOME_ANNOUNCEMENTS',Announcements.renderHome(announcements));
+home=replace(home,'FEATURED_PLATFORMS',preset.platformSlugs.map(slug=>P.buildPlatformCardHtml(ctx.platformBySlug.get(slug),plans,{capabilitiesBeforeScores:true,supportedModels:UI.prioritizeFeaturedModels(E.platformModels(ctx,slug),preset.groups),hasApiPlan:E.buildApiPricingGroups(ctx,slug).length>0,sanitizeUrl:C.url})).join('\n'));
 home=replace(home,'FEATURED_MODELS',C.modelGroups(preset,ctx));
 home=replace(home,'FEATURED_MODEL_INTRO',`<p>${esc(preset.groups.find(group=>group.id==='high-volume-models').title)} - 日常及大批量任务中优先考虑，性价比高；${esc(preset.groups.find(group=>group.id==='sota-models').title)} - 在复杂任务中优先考虑，能力强</p>`);
 home=replace(home,'FEATURED_TABLES','<div class="usage-preset-grid usage-preset-grid--multi">'+preset.groups.map(group=>M.presetComparisonTableHtml(group,C.points(ctx,config),'yi','featured',C.presetTableOptions({platformSlugs:preset.platformSlugs,modelFilter:false}))).join('')+'</div>');
@@ -57,7 +60,7 @@ let models=fs.readFileSync(path.resolve(root,'../scripts/codingplan/models-templ
 const selection=Directory.select(ctx.models,preset.groups);
 models=replace(models,'MODEL_DIRECTORY',selection.visible.map(m=>C.modelCard(m,ctx,{directory:true,featured:selection.featured.has(m.slug)})).join('\n'));
 models=models.replace('{{modelCount}}',Directory.countLabel(selection));
-models=models.replace('{{modelScoreHelp}}',Help.html('modelScoreHelp','模型评分说明','AA 与 DeepSWE 使用不同量尺，各自排序，不合成总分。缺少分数表示暂无评测，不代表能力为零；分数旁的链接提供评分来源。'));
+models=models.replace('{{modelScoreHelp}}',Help.html('modelScoreHelp','模型评分说明','AA、DeepSWE、LiveBench（综合）与 Arena（Agent Overall 净改善）使用不同量尺，各自排序，不合成总分。Arena 为可正可负的百分比。缺失不代表能力为零；点击分数查看口径、配置与数据日期，旁边链接提供来源。'));
 models=models.replace('{{highVolumeLabel}}',esc(UI.modelGroupLabel(preset.groups,'high-volume-models'))).replace('{{sotaLabel}}',esc(UI.modelGroupLabel(preset.groups,'sota-models')));
 write('models/index.html',applySiteHeader(models,'models','/models/'));
 if(fs.existsSync(generator))require(generator).generate({check});

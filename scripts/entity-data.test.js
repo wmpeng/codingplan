@@ -148,7 +148,7 @@ test('builds comparison points without name-based joins', () => {
   assert.equal(EntityData.buildComparisonPoints(context,6.8)[0].planName,'套餐正式名称');
   assert.equal(point.billingMode, 'subscription');
   assert.equal(point.monthlyFeeCny, 68);
-  assert.deepEqual(point.scores, { artificialAnalysis: { score: 10, scoreExact: 10.2 } });
+  assert.deepEqual(point.scores, { artificialAnalysis: { score: 10, scoreExact: 10.2, sourceUrl:'https://example.com' } });
 });
 
 test('builds API pricing groups and keeps raw input cache output prices', () => {

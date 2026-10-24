@@ -1,8 +1,8 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.10.22 | Claude 额度估算与缓存写入口径、Kimi 新套餐额度估算更新",
-    "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Cursor、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.1-Sol、Claude 5.5系列、MiniMax-M3.1-Flash、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3与Qwen-3.8等模型",
+    "updateDate": "更新日期 2026.10.24 | Kimi K3.1 Pro 上线与 Codex 参考用量调整",
+    "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Cursor、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.1-Sol、Claude 5.5系列、MiniMax-M3.1-Flash、Kimi-K3.1-Pro、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3与Qwen-3.8等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
     "entry": {
@@ -124,6 +124,25 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.10.24",
+      "items": [
+        "新增 Kimi K3.1 Pro：补充 Kimi、OpenCode 与 Command Code 的支持、价格和额度；Kimi 的 Highspeed 按高速档展示，绝对 Token 用量仍待确认。",
+        "调整 Codex 的 GPT-5.6-Sol、GPT-6-Luna、GPT-5.6-Luna 与 GPT-5.6-Terra 参考 Token 用量，相关套餐与速度档的综合单价同步重算；这些数值为估算，非官方固定配额或新实测结果。",
+        "新增 LiveBench 综合与 Arena Agent Overall 评分，模型卡片以四格展示；图表可直接切换四项指标，明细支持展开全部评分。",
+        "DeepSeek V4.1 Flash 1017 新增 AA 智能指数 45.1 分（Max 配置）；DeepSWE 暂无对应型号评分。"
+      ]
+    },
+    {
+      "date": "2026.10.23",
+      "items": [
+        "补充阿里百炼四档Token Plan的模型用量估算：按北京API价格×100 Credits计算，区分峰谷与上下文档，实际消耗可能不同。",
+        "补充百炼、百度千帆和超算Token Plan的DeepSeek V4.1 Flash 1017支持，更新淘Token双Flash型号；精确抵扣未知的套餐继续标注未知。",
+        "OpenCode Step 5 Preview恢复常规额度，M3.1 Flash按Token计费；移除当前套餐未列出的Space Bunny。",
+        "补充火山Agent Plan的DeepSeek V4.1 Flash Economy档及限时折扣、Qoder国际版M3.1 Flash支持；移除Copilot已退役型号，更新超算综合抵扣倍率。",
+        "更新Qoder国内版按档位续费赠送；Command Code的Mistral Large 4恢复常规额度，MiMo旧型号入口已停用。"
+      ]
+    },
     {
       "date": "2026.10.22",
       "items": [

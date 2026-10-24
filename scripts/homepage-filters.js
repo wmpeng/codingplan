@@ -196,8 +196,9 @@
   }
   function mount(options) {
     const opts = options || {}, policy = Filters.createViewPolicy(opts);
-    const {full, pricing, plansPage, planStatusOnly, platformHub, monitor, purchaseTool} = policy;
+    const {full, pricing, plansPage, planStatusOnly, platformHub, purchaseTool} = policy;
     const featuredCatalog = platformHub || plansPage;
+    const Url = root.CodingPlanFilterUrl;
     const host =
       opts.element || document.getElementById("homepageUnifiedFiltersMount");
     const context = opts.context || root.codingplanEntityContext;
@@ -208,6 +209,8 @@
       models = context.models;
     let state = policy.createDefaults(config, root.CodingPlanDisplaySettings?.getTokenUnit() || "yi");
     const defaults = Filters.cloneControlState(state);
+    const urlSchema = Url.sharedSchema(context, policy);
+    let resetUrl = false;
     let featuredOnly = false;
     if (opts.featuredPreset) {
       context.modelGroups = opts.featuredPreset.groups || [];
@@ -247,9 +250,7 @@
       state.modelSlugs = slugs; state.modelGroup = "any"; state.modelMatch = "any";
       publish(source); return true;
     }
-    const presetSlugs = id => [...new Set((context.modelGroups || [])
-      .filter(group => group.enabled !== false && (id === "featured" || group.id === id))
-      .flatMap(group => group.modelSlugs || []))].filter(slug => models.some(m => m.slug === slug));
+    const presetSlugs = id => root.CodingPlanUI.modelPresetSlugs(context.modelGroups, id, models);
     const featuredPlatforms = () => (context.featuredPlatformSlugs || []).filter(slug => platforms.some(platform => platform.slug === slug));
     const canRestoreDefaults = () => groupsReady && featuredPlatforms().length > 0 && presetSlugs("featured").length > 0;
     function resetFilters(featured = false) {
@@ -261,6 +262,7 @@
         state.modelSlugs = presetSlugs("featured");
       }
       resetModelList();
+      resetUrl = !full || featured || featuredCatalog;
       publish(platformHub || plansPage ? "reset" : "manual");
       return true;
     }
@@ -319,30 +321,36 @@
       initialPresetPending = false;
       return true;
     }
-    if (explicitSelection) initialPresetPending = false;
-    else applyInitialPreset();
-    if (validPlatform && !platformHub)
-      state.platformSlugs = [platform];
-    if (validModel) state.modelSlugs = [model];
-    if (params.get("billing") === "payg" && !plansPage) state.apiOnly = true;
+    const saved = Url.read(urlSchema);
+    if (saved.snapshot) {
+      initialPresetPending = false;
+      const {snapshot, restricted, history, domestic, featuredOnly: featured, ...conditions} = saved;
+      Object.assign(state, conditions);
+      state[planStatusOnly ? 'excludedPlanStatuses' : 'excludedPlatformStatuses'] = restricted ? ['restricted'] : [];
+      if (planStatusOnly) state.includeDiscontinued = history === true;
+      else state.platformStatusMax = history ? 'delisted' : 'restricted';
+      if (platformHub) state.domesticNetworkOnly = state.domesticPaymentOnly = domestic === true;
+      featuredOnly = featuredCatalog && featured === true;
+      if (!state.modelSlugs || state.modelSlugs.length < 2) state.modelMatch = 'any';
+    } else {
+      if (explicitSelection) initialPresetPending = false;
+      else applyInitialPreset();
+      if (validPlatform && !platformHub) state.platformSlugs = [platform];
+      if (validModel) state.modelSlugs = [model];
+      if (params.get("billing") === "payg" && !plansPage) state.apiOnly = true;
+    }
     host.innerHTML = `<section class="filter-state-bar surface-panel${full ? "" : " home-filter-panel"}${platformHub ? " platform-hub-filters" : plansPage ? " plan-featured-filters" : ""}" aria-label="统一筛选">
       ${featuredCatalog ? `<div class="platform-filter-row"><fieldset class="platform-filter-fields" data-featured-filter-fields ${platformHub ? 'data-platform-filter-fields' : 'data-plan-filter-fields'}><legend class="sr-only">${platformHub ? '平台' : '套餐'}筛选条件</legend>` : ""}
       <div class="filter-state-grid">
       ${platformHub ? "" : buildPicker({ id: "homePlatformPicker", label: "平台", key: "platformSlugs", items: platforms, state })}
       ${buildPicker({ id: "homeModelPicker", label: "模型", key: "modelSlugs", items: models, state, groups: context.modelGroups })}
-      ${
-        monitor
-          ? ""
-          : `${buildRangePicker("budget", state, plansPage)}${buildRangePicker("token", state, plansPage)}`
-      }
-      ${!monitor ? buildStatusPicker(purchaseTool, planStatusOnly) : ""}
-      ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-platform-domestic>支持中国大陆</label>' : ""}${plansPage ? '<label class="plan-harness-filter"><input type="checkbox" data-filter-field="harnessApiRequired">需支持第三方工具</label>' : ""}</div>
+      ${buildRangePicker("budget", state, plansPage)}${buildRangePicker("token", state, plansPage)}
+      ${buildStatusPicker(purchaseTool, planStatusOnly)}
+      ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-platform-domestic><span class="filter-control-text">支持中国大陆</span></label>' : ""}${plansPage ? '<label class="plan-harness-filter"><input type="checkbox" data-filter-field="harnessApiRequired"><span class="filter-control-text">需支持第三方工具</span></label>' : ""}</div>
       ${featuredCatalog ? `<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-catalog-featured ${platformHub ? 'data-platform-featured' : 'data-plan-featured'} aria-pressed="false">${platformHub ? '显示精选平台' : '显示精选'}</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>` : ""}
       <div class="filter-state-footer">
       ${full ? "" : `<div class="filter-state-controls"><div class="offer-sort"><span aria-hidden="true">排序</span><span data-select-fallback><select id="homeOfferSort" data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></span></div><span class="offer-sort-help" id="offerSortHelp"></span>`}
       <div class="filter-state-actions"><button type="button" data-filter-action="reset"${purchaseTool && !platformHub && !plansPage ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub || plansPage ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>${full && !platformHub && !plansPage ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">显示精选</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
-      ${monitor ? '<p class="filter-state-hint" data-filter-hint>监控只使用平台、模型条件；未监控项目没有统计。</p>' : ""}
-      ${full ? "" : '<p class="home-monitor-filter-note">监控仅使用平台、模型条件。预算等购买条件已保留，返回对比时继续生效。</p>'}
       </section>`;
     bindSelectionHelp(host);
     const offerSortSelect = host.querySelector('[data-offer-sort]');
@@ -584,11 +592,23 @@
       pendingAll = false;
       state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || state.tokenUnit;
       const clean = Filters.cloneState(state);
+      root.dispatchEvent(new CustomEvent("codingplan:filters-changing", {detail:{state:clean,source,full}}));
       if (!full) {
         root.__codingplanUnifiedFiltersState = clean;
         root.__codingplanHomeApi?.setUnifiedFilters(clean);
       }
       if (opts.onChange) opts.onChange(clean, {source, featuredOnly});
+      if (!["init", "catalog", "display"].includes(source)) {
+        const remove = ['platform','model','billing'];
+        if (resetUrl && !params.has('plan') && !params.has('relation')) Url.clear(urlSchema, remove);
+        else Url.replace(urlSchema, {
+          ...state, snapshot:true, featuredOnly,
+          restricted:state[planStatusOnly ? 'excludedPlanStatuses' : 'excludedPlatformStatuses'].includes('restricted'),
+          history:planStatusOnly ? state.includeDiscontinued : state.platformStatusMax === 'delisted',
+          domestic:platformHub && state.domesticNetworkOnly
+        }, {remove, delay:source === 'range'});
+        resetUrl = false;
+      }
       render();
       root.dispatchEvent(
         new CustomEvent("codingplan:filters-changed", {
@@ -605,7 +625,7 @@
           : position >= budgetNumericMax + 50 ? setBudget(null)
           : setBudget(rangeValue(key, Math.min(position, budgetNumericMax) - 1)));
         else state.monthlyTokenRange = position === 0 ? null : { min: rangeValue(key, position - 1), max: null };
-        publish();
+        publish('range');
         return;
       }
       if (el.matches("[data-picker-search]")) {

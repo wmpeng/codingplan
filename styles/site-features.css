@@ -1,4 +1,2 @@
-html.feature-monitor-disabled :is([data-main-view="monitor"], a[href^="/monitor/"], [data-monitor-enabled]) { display: none !important; }
-html:not(.feature-monitor-disabled) [data-monitor-disabled] { display: none !important; }
 /* 默认隐藏平台对比入口，脚本未加载或禁用时也不显示。 */
 html:not(.feature-platform-comparison-enabled) :is([data-platform-comparison-entry], [data-hub-compare], a[href*="platform-compare.html"]) { display: none !important; }

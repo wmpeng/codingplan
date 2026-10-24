@@ -708,7 +708,6 @@ body.has-platform-compare-picker {
 }
 
 .platform-comparison-status--open { color: #08746b; background: rgba(15,118,110,.1); }
-.platform-comparison-status--restricted { color: #a45f0c; background: rgba(245,158,11,.13); }
 .platform-comparison-status--delisted { color: #8b3c37; background: rgba(239,68,68,.1); }
 
 .platform-comparison-model-list {

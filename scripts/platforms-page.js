@@ -13,8 +13,10 @@
       let state = root.CodingPlanFilters.createDefaultState(appConfig, { mode: 'full' });
       let featuredOnly = false;
       const search = host.querySelector('[data-hub-search]');
+      const Url = root.CodingPlanFilterUrl, searchSchema = {query:Url.text('q')};
       const linkedPlatform = platforms.find(platform => platform.slug === new URLSearchParams(location.search).get('platform'));
       if (linkedPlatform) search.value = linkedPlatform.name;
+      search.value = Url.read(searchSchema).query ?? search.value;
       search.disabled = false;
       const grid = host.querySelector('[data-hub-grid]');
       const empty = host.querySelector('[data-hub-empty]');
@@ -23,6 +25,7 @@
       let pinnedIds = root.PlatformCatalog.sanitizePinnedIds(pinned, platforms);
 
       function render() {
+        Url.replace(searchSchema, {query:search.value});
         const featuredSlugs = context.featuredPlatformSlugs || [];
         const selection = root.PlatformHub.select(platforms, state, {featuredOnly, featuredSlugs, pinnedIds, query:search.value,
           filterOptions:{platformCatalog:config, context, usdToCnyRate:appConfig.usdToCnyRate, entityData:root.EntityData}});
@@ -44,6 +47,7 @@
         host.setAttribute('aria-busy','false');
         empty.hidden = selection.visible.length > 0;
         showing.innerHTML = root.PlatformHub.countHtml(selection, featuredOnly);
+        root.CodingPlanEvents?.results({result_count:selection.visible.length,result_key:JSON.stringify([state,selection.visible.map(x=>x.slug)])});
         if (root.PlatformDetail && root.PlatformDetail.syncPinUi) root.PlatformDetail.syncPinUi();
       }
 
@@ -58,6 +62,7 @@
           pinnedIds = root.PlatformCatalog.sanitizePinnedIds(root.PlatformCatalog.togglePinnedId(pinnedIds, id), platforms);
           root.PlatformCatalog.writePinnedIdsToStorage(root.localStorage, pinnedIds);
           render();
+          root.CodingPlanEvents?.track('pin_change', {entity_type:'platform',entity_slug:id,pinned:pinnedIds.includes(id),placement:'platforms'});
           host.querySelectorAll('[data-platform-pin="1"]').forEach(button => {
             if (button.getAttribute('data-platform-id') === id) button.focus({preventScroll:true});
           });
@@ -80,13 +85,13 @@
       if (root.PlatformDetail) root.PlatformDetail.init({
         getPlans: () => plans,
         getEntityContext: () => context,
-        monitorApiBase: (root.MONITOR_CONFIG && root.MONITOR_CONFIG.apiBase) || 'https://api.dreamfree.space/vc',
         onJumpPlansTable: platformName => { window.location.href = root.CodingPlanUI.route('plans',{platform:platforms.find(item=>item.name===platformName)?.slug}); },
         isPlatformPinned: id => pinnedIds.includes(id),
-        onTogglePlatformPin: id => {
+        onTogglePlatformPin: (id, placement) => {
           pinnedIds = root.PlatformCatalog.sanitizePinnedIds(root.PlatformCatalog.togglePinnedId(pinnedIds, id), platforms);
           root.PlatformCatalog.writePinnedIdsToStorage(root.localStorage, pinnedIds);
           render();
+          root.CodingPlanEvents?.track('pin_change', {entity_type:'platform',entity_slug:id,pinned:pinnedIds.includes(id),placement});
         }
       });
       if (root.__CODINGPLAN_FEATURES?.platformComparison === true && root.PlatformComparison && root.PlatformComparison.mountLauncher) {

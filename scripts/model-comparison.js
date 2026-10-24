@@ -10,10 +10,8 @@
     const Numbers = root.NumberDisplay || (typeof require === 'function' ? require('./number-display.js') : null);
     const Notices = root.ChangeNotices || (typeof require === 'function' ? require('./change-notices.js') : null);
 
-    const BENCHMARKS = {
-        artificialAnalysis: { label: 'AA 智力', short: 'AA' },
-        deepSWE: { label: 'DeepSWE', short: 'DeepSWE' }
-    };
+    const Scores = root.BenchmarkScores || (typeof require === 'function' ? require('./benchmark-scores.js') : null);
+    const BENCHMARKS = Scores.definitions;
     const ATTRACTIVE_UNIT_PRICE_CNY_PER_YI = 15;
     const ATTRACTIVE_UNIT_PRICE_CNY_PER_M = ATTRACTIVE_UNIT_PRICE_CNY_PER_YI / 100;
     const PLATFORM_COLORS = [
@@ -31,12 +29,11 @@
         { key: 'model', label: '模型' },
         { key: 'unitPriceCnyPerM', label: '综合单价' },
         { key: 'unitPriceVisual', label: '单价对比', hint: '低 → 高 · 对数', sortable: false },
-        { key: 'apiPricing', label: 'API 单价（输入 / 缓存 / 输出）', sortable: false },
         { key: 'fiveHourTokenInM', label: '5h用量' },
         { key: 'weeklyTokenInM', label: '周用量' },
         { key: 'monthlyTokenInM', label: '月用量' },
-        { key: 'artificialAnalysis', label: 'AA分数' },
-        { key: 'deepSWE', label: 'DeepSWE分数' },
+        { key: 'apiPricing', label: 'API 单价（输入 / 缓存 / 输出）', sortable: false },
+        ...Scores.keys.map(key => ({key, label:BENCHMARKS[key].label})),
         { key: 'note', label: '备注' }
     ];
     const PRESET_TABLE_COLUMNS = {
@@ -62,9 +59,7 @@
     }
 
     function getPointScore(point, benchmark) {
-        const score = point && point.scores && point.scores[benchmark];
-        const exact = score && Number(score.scoreExact);
-        return Number.isFinite(exact) ? exact : null;
+        return Scores.value(point?.scores?.[benchmark]);
     }
 
     function getPointPlatformKey(point) {
@@ -379,7 +374,7 @@
         const vendor = escapeHtml(point.platformName);
         const actionUrl = String(point.actionUrl || '').trim();
         if (point.planStatus === 'delisted' || !/^https?:\/\//i.test(actionUrl)) return `<strong>${vendor}</strong>`;
-        return `<a class="usage-platform-link" href="${escapeHtml(UI.sanitizeUrl(actionUrl))}" target="_blank" rel="noopener noreferrer"><strong>${vendor}</strong>${UI.externalLinkIcon}</a>`;
+        return `<a class="usage-platform-link" data-collect-outbound data-collect-platform="${escapeHtml(point.platformSlug || '')}" data-collect-plan="${escapeHtml(point.planSlug || '')}" href="${escapeHtml(UI.sanitizeUrl(actionUrl))}" target="_blank" rel="noopener noreferrer"><strong>${vendor}</strong>${UI.externalLinkIcon}</a>`;
     }
 
     function formatNumber(value, maximumFractionDigits) {
@@ -455,7 +450,7 @@
 
     function comparisonSortValue(point, key) {
         if (key === 'price') return finiteNonnegative(point.monthlyFeeCny);
-        if (key === 'artificialAnalysis' || key === 'deepSWE') return getPointScore(point, key);
+        if (Scores.keys.includes(key)) return getPointScore(point, key);
         if (key === 'vendor') return point.platformName || '';
         if (key === 'plan') return point.planName || '';
         if (key === 'note') return point[key] || '';
@@ -541,12 +536,11 @@
             `<td class="usage-table-model">${escapeHtml(point.relationLabel || point.modelName)}${notice('models')}</td>` +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
             `<td class="usage-table-price-visual">${unitPriceVisualHtml(point, tokenUnit, visualOptions)}</td>` +
-            `<td class="usage-table-api-pricing">${subscription ? '—' : escapeHtml(formatApiPricing(point.apiPricing))}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.weeklyTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}${notice('quota')}</td>` +
-            `<td class="numeric">${aaScore ? formatNumber(aaScore.score, 0) : '—'}</td>` +
-            `<td class="numeric">${deepSWEScore ? `${formatNumber(deepSWEScore.score, 0)}${deepSWEInterval}` : '—'}</td>` +
+            `<td class="usage-table-api-pricing">${subscription ? '—' : escapeHtml(formatApiPricing(point.apiPricing))}</td>` +
+            Scores.keys.map(key => `<td class="numeric" data-comparison-col="${key}" title="${escapeHtml(Scores.details(point.scores?.[key],key))}">${escapeHtml(Scores.format(point.scores?.[key],key))}${key === 'deepSWE' && deepSWEScore ? deepSWEInterval : ''}</td>`).join('') +
             `<td class="usage-table-note">${point.note ? `<details class="usage-note-disclosure"><summary>用量口径与限制</summary><div>${escapeHtml(point.note)}</div></details>` : '—'}</td></tr>`;
     }
 
@@ -664,10 +658,11 @@
     function scoreText(point, benchmark) {
         const score = point.scores && point.scores[benchmark];
         if (!score) return '暂无评分';
-        const ci = benchmark === 'deepSWE' && Number.isFinite(Number(score.confidenceInterval))
-            ? ` ±${formatNumber(score.confidenceInterval, 0)}` : '';
+        const ci = benchmark === 'deepSWE' && Number.isFinite(score.confidenceIntervalExact)
+            ? ` ±${formatNumber(score.confidenceIntervalExact, 1)}` : benchmark === 'arena' ? ` [${formatNumber(score.confidenceLowerExact,2)}%, ${formatNumber(score.confidenceUpperExact,2)}%]` : '';
         const config = score.configuration ? ` · ${escapeHtml(score.configuration)}` : '';
-        return `${BENCHMARKS[benchmark].short} ${formatNumber(score.score, 0)}${ci}${config}`;
+        const date = score.publishedAt ? ` · ${escapeHtml(score.publishedAt)}` : '';
+        return `${BENCHMARKS[benchmark].short} ${Scores.format(score,benchmark)}${ci}${config}${date}`;
     }
 
     function tooltipHtml(point, benchmark, colorMode, tokenUnit) {
@@ -737,11 +732,11 @@
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="首月价格和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的首月价格与月额度数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
                 </article>
                 <article class="usage-chart-card">
-                    <div class="usage-chart-head"><div><h3>单位价格 vs 模型评分</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标"><button type="button" data-benchmark="artificialAnalysis" class="is-active">AA</button><button type="button" data-benchmark="deepSWE">DeepSWE</button></div><div class="usage-scale-control"><span>价格轴</span><div class="usage-segments" data-scale="price" role="group" aria-label="价格轴"><button type="button" data-scale-value="log" class="is-active" aria-pressed="true">对数</button><button type="button" data-scale-value="value" aria-pressed="false">线性</button></div></div></div></div>
+                    <div class="usage-chart-head"><div><h3>单位价格 vs 模型评分</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标">${Scores.keys.map((key,index) => `<button type="button" data-benchmark="${key}" class="${index === 0 ? 'is-active' : ''}" aria-pressed="${index === 0}">${BENCHMARKS[key].label}</button>`).join('')}</div><div class="usage-scale-control"><span>价格轴</span><div class="usage-segments" data-scale="price" role="group" aria-label="价格轴"><button type="button" data-scale-value="log" class="is-active" aria-pressed="true">对数</button><button type="button" data-scale-value="value" aria-pressed="false">线性</button></div></div></div></div>
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和模型评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
                 </article>
                 <article class="usage-chart-card usage-data-card">
-                    <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3><p>精确单价旁的横条按当前结果统一比较，采用对数尺度兼顾低价与高价；条越短，综合单价越低。按量 API 没有周期额度时显示“—”。</p></div><span class="usage-table-count" data-table-count="comparison"></span></div>
+                    <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3><p>精确单价旁的横条按当前结果统一比较，采用对数尺度兼顾低价与高价；条越短，综合单价越低。按量 API 没有周期额度时显示“—”。</p></div><button type="button" class="tool-button" data-all-scores aria-expanded="false">显示全部评分</button><span class="usage-table-count" data-table-count="comparison"></span></div>
                     <section class="usage-table-section" aria-label="价格与额度数据明细"><div class="usage-table-scroll"><table class="usage-data-table" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison', compact)}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
                 </article>
             </section>`;
@@ -835,13 +830,15 @@
             const platforms = [...platformMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
             const modelMap = new Map();
             points.forEach((point) => modelMap.set(point.modelSlug, point.modelName));
-            const models = [...modelMap.entries()].sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'));
+            const models = UI.prioritizeFeaturedModels([...modelMap.entries()]
+                .map(([slug, name]) => ({slug, name})).sort((a, b) => a.name.localeCompare(b.name, 'zh-CN')), context.modelGroups)
+                .map(model => [model.slug, model.name]);
             const platformColors = buildVendorColorMap(platforms.map(([key]) => key));
             const modelColors = buildModelColorMap(models.map(([id]) => id));
             const focusRelationSlugs = new Set(mountOptions.focusRelationSlugs || []);
             container.classList.toggle('is-full-tool', mountOptions.mode === 'full');
             const state = Object.assign(createDefaultFilterState(points, mountOptions), {
-                benchmark: 'artificialAnalysis', colorMode: 'vendor',
+                allScores:false, benchmark: 'artificialAnalysis', colorMode: 'vendor',
                 tokensScale: 'log', priceScale: 'log', presetPlatformScope: 'featured',
                 tokenUnit: root.CodingPlanDisplaySettings?.getTokenUnit() || 'yi'
             });
@@ -867,6 +864,20 @@
             const tableSortState = {
                 comparison: { key: 'unitPriceCnyPerM', direction: 'asc' }
             };
+            const Url = root.CodingPlanFilterUrl;
+            const urlSchema = Directory && {
+                query:Url.text('q'), key:Url.choice('sort', COMPARISON_TABLE_COLUMNS.filter(column => column.sortable !== false).map(column => column.key), 'unitPriceCnyPerM'),
+                direction:Url.choice('direction', ['asc','desc'], 'asc'),
+                benchmark:Url.choice('benchmark', Scores.keys, 'artificialAnalysis'), allScores:Url.flag('allScores')
+            };
+            if (Directory) {
+                const saved = Url.read(urlSchema);
+                search.value = saved.query || '';
+                state.benchmark = saved.allScores !== true && Scores.keys.includes(saved.key)
+                    ? saved.key : saved.benchmark || 'artificialAnalysis';
+                state.allScores = saved.allScores === true;
+                tableSortState.comparison = {key:saved.key || 'unitPriceCnyPerM', direction:saved.direction || 'asc'};
+            }
             const latestTableRows = { comparison: [] };
             const priceBounds = getMonthlyPriceBounds(points);
             const priceSlider = { min: priceBounds.min, max: priceBounds.max };
@@ -1045,9 +1056,11 @@
 
             function renderColorLegend(context) {
                 container.querySelector('[data-color-legend-title]').textContent = state.colorMode === 'model' ? '模型颜色' : '平台颜色';
-                container.querySelector('[data-color-legend]').innerHTML = [...context.entries.entries()]
-                    .sort((a, b) => a[1].localeCompare(b[1], 'zh-CN'))
-                    .map(([key, label]) => {
+                const entries = [...context.entries.entries()].map(([slug, name]) => ({slug, name}))
+                    .sort((a, b) => a.name.localeCompare(b.name, 'zh-CN'));
+                const ordered = state.colorMode === 'model' ? UI.prioritizeFeaturedModels(entries, presetConfig.groups) : entries;
+                container.querySelector('[data-color-legend]').innerHTML = ordered
+                    .map(({slug:key, name:label}) => {
                         const solo = state.soloColorKey === key;
                         const muted = state.soloColorKey && !solo;
                         const subject = state.colorMode === 'model' ? '模型' : '平台';
@@ -1058,6 +1071,7 @@
             function renderDataTable(tableName, rows) {
                 latestTableRows[tableName] = rows || [];
                 const sort = tableSortState[tableName];
+                if (Directory) Url.replace(urlSchema, {query:search.value, ...sort, benchmark:state.benchmark, allScores:state.allScores});
                 let sorted = Directory ? Directory.tableRows(rows, points, pins, sortComparisonRows, sort) : sortComparisonRows(rows, sort.key, sort.direction);
                 const scale = buildUnitPriceVisualScale(sorted);
                 let renderKey = '';
@@ -1071,9 +1085,10 @@
                         pager.querySelector('[data-price-page-label]').textContent=`${pageIndex+1} / ${pagination.pages} 页`;
                         pager.querySelectorAll('[data-price-page]').forEach(button=>button.disabled=button.dataset.pricePage==='next'?pageIndex>=pagination.pages-1:pageIndex===0);
                     });
-                    renderKey = JSON.stringify([nextSelectionKey,pageIndex,state.tokenUnit,state.colorMode]);
+                    renderKey = JSON.stringify([nextSelectionKey,pageIndex,state.tokenUnit,state.colorMode,state.benchmark,state.allScores]);
                     const label = `${rows.length} / ${points.length} 条明细${pins.length ? ' · 置顶 '+pins.length+' 条' : ''}`;
                     mountOptions.count.textContent = label;
+                    root.CodingPlanEvents?.results({result_count:rows.length,result_key:JSON.stringify(rows.map(x=>x.slug))});
                     container.querySelector('[data-table-count]').textContent = label;
                     sortSelect.value = sort.key; sortPicker.sync();
                     directionButton.textContent = sort.direction === 'asc' ? '↑' : '↓';
@@ -1093,6 +1108,10 @@
                         color: colors[getPointColorKey(point, state.colorMode)]
                     })).join('')
                     : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length - (Directory ? 1 : 0)}">当前筛选下没有可展示的数据；请在上方下拉框调整条件，或点击“显示全部”。</td></tr>`;
+                container.querySelectorAll('[data-comparison-col]').forEach(cell => {
+                    const key = cell.dataset.comparisonCol;
+                    cell.hidden = Scores.keys.includes(key) && !state.allScores && key !== state.benchmark;
+                });
                 if (!Directory) container.querySelector(`[data-table-count="${tableName}"]`).textContent = `${sorted.length} 条`;
                 container.querySelectorAll(`[data-table="${tableName}"] th[data-sort-key]`).forEach((header) => {
                     const active = header.dataset.sortKey === sort.key;
@@ -1111,10 +1130,10 @@
                 const pager=document.createElement('div');pager.className='price-pagination';pager.dataset.pricePagination='';pager.innerHTML=pagerHtml;
                 const card=container.querySelector('.usage-data-card');card.append(pager);
                 const topPager=pager.cloneNode(true);card.querySelector('.usage-chart-head').append(topPager);
-                sortSelect = tools.querySelector('select'); sortSelect.value = 'unitPriceCnyPerM';
+                sortSelect = tools.querySelector('select'); sortSelect.value = tableSortState.comparison.key;
                 sortPicker = root.CodingPlanSingleSelect.mount(sortSelect, '明细排序', {showLabel:false});
                 directionButton = tools.querySelector('button.price-sort-direction');
-                sortSelect.addEventListener('change', () => { tableSortState.comparison = {key:sortSelect.value,direction:'asc'}; renderDataTable('comparison',latestTableRows.comparison); });
+                sortSelect.addEventListener('change', () => { tableSortState.comparison = {key:sortSelect.value,direction:'asc'}; if(Scores.keys.includes(sortSelect.value))state.benchmark=sortSelect.value; render(); });
                 directionButton.addEventListener('click', () => { const sort=tableSortState.comparison; sort.direction=sort.direction==='asc'?'desc':'asc'; renderDataTable('comparison',latestTableRows.comparison); });
                 search.addEventListener('input', () => { cancelAnimationFrame(renderFrame); renderFrame=requestAnimationFrame(render); });
                 document.getElementById('toolFilters').addEventListener('click', event => {
@@ -1145,6 +1164,13 @@
             }
 
             function render() {
+                container.querySelectorAll('[data-benchmark]').forEach(button => {
+                    button.classList.toggle('is-active',button.dataset.benchmark === state.benchmark);
+                    button.setAttribute('aria-pressed',String(button.dataset.benchmark === state.benchmark));
+                });
+                const allButton = container.querySelector('[data-all-scores]');
+                allButton.setAttribute('aria-expanded',String(state.allScores));
+                allButton.textContent = state.allScores ? '只显示当前评分' : '显示全部评分';
                 const presetRenderKey = `${state.tokenUnit}:${state.presetPlatformScope}`;
                 if (renderedPresetKey !== presetRenderKey) {
                     if (!mountOptions.hidePresets) renderPresetComparisons(container.querySelector('[data-presets]'), presetConfig, points, state.tokenUnit, state.presetPlatformScope);
@@ -1196,7 +1222,7 @@
                 const intelligenceScoreReference = intelligenceScores.length ? Math.min(...intelligenceScores) : 0;
                 setScatterOptions(intelligenceChart, Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
                     xAxis: { type: state.priceScale, name: `人民币 / ${tokenUnitLabel} Token`, nameLocation: 'middle', nameGap: 38, min: state.priceScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => Numbers.unitPrice(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
-                    yAxis: { type: 'value', name: `${BENCHMARKS[state.benchmark].short} 评分`, nameLocation: 'middle', nameGap: 45, scale: true, axisLabel: { formatter: (v) => formatNumber(v, 0) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
+                    yAxis: { type: 'value', name: state.benchmark === 'arena' ? 'Arena 净改善（%）' : `${BENCHMARKS[state.benchmark].short} 评分`, nameLocation: 'middle', nameGap: 45, scale: true, axisLabel: { formatter: (v) => state.benchmark === 'arena' ? `${formatNumber(v,1)}%` : formatNumber(v,1) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
                     series: [
                         buildIntelligenceAttractiveZoneSeries(
                             getAttractiveUnitPriceThreshold(state.tokenUnit),
@@ -1309,6 +1335,7 @@
                 if (Directory && pin) {
                     const slug=pin.dataset.pricePin; pins=pins.includes(slug)?pins.filter(id=>id!==slug):[slug,...pins];
                     Directory.writePins(root.localStorage,pins); renderDataTable('comparison',latestTableRows.comparison);
+                    root.CodingPlanEvents?.track('pin_change', {entity_type:'price_row',entity_slug:slug,pinned:pins.includes(slug),placement:'pricing'});
                     [...container.querySelectorAll('[data-price-pin]')].find(button=>button.dataset.pricePin===slug)?.focus({preventScroll:true}); return;
                 }
                 const sortHeader = event.target.closest('[data-table-sort][data-sort-key]');
@@ -1379,9 +1406,11 @@
                     render();
                     return;
                 }
+                if(event.target.closest('[data-all-scores]')) { state.allScores = !state.allScores; render(); return; }
                 const benchmarkButton = event.target.closest('[data-benchmark]');
                 if (benchmarkButton) {
                     state.benchmark = benchmarkButton.dataset.benchmark;
+                    if(Scores.keys.includes(tableSortState.comparison.key))tableSortState.comparison.key=state.benchmark;
                     container.querySelectorAll('[data-benchmark]').forEach((button) => button.classList.toggle('is-active', button === benchmarkButton));
                     render();
                     return;

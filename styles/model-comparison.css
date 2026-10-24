@@ -80,7 +80,7 @@
 .usage-preset-card .usage-preset-primary-line .usage-table-model { font-weight: 600; }
 .usage-preset-card .preset-model-filters { display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:8px;color:var(--text-secondary);font-size:12px; }
 .usage-preset-card .preset-model-filters > span { flex-shrink:0; }
-.usage-preset-card .preset-model-filters button { font:inherit;min-height:28px;max-width:100%;padding:3px 7px;border:1px solid var(--border-color);border-radius:6px;background:var(--bg-secondary);color:var(--text-secondary);overflow-wrap:anywhere;cursor:pointer;transition:color .16s,background .16s; }
+.usage-preset-card .preset-model-filters button { display:inline-flex;align-items:center;justify-content:center;font:inherit;line-height:1.5;min-height:28px;max-width:100%;padding:4px 7px 2px;border:1px solid var(--border-color);border-radius:6px;background:var(--bg-secondary);color:var(--text-secondary);overflow-wrap:anywhere;cursor:pointer;transition:color .16s,background .16s; }
 .usage-preset-card .preset-model-filters button:hover { background:var(--bg-tertiary);color:var(--accent-primary); }
 .usage-preset-card .preset-model-filters button[aria-pressed="true"] { color:var(--accent-primary);font-weight:600;background:var(--bg-tertiary); }
 @media (max-width:800px), (pointer:coarse) {
@@ -212,14 +212,14 @@
 }
 
 /* 完整价格页：固定列宽避免全量明细随窗口宽度逐格重新测量。 */
-.pricing-directory .usage-data-table { table-layout: fixed; width: 2455px; min-width: 100%; }
+.pricing-directory .usage-data-table { --pricing-identity-width: 260px; table-layout: fixed; width: 2455px; min-width: 100%; }
 .pricing-directory .usage-chart-card { min-width: 0; }
 .pricing-directory .usage-chart { min-width: 0; overflow: hidden; }
 .pricing-directory .usage-chart-head { flex-wrap: wrap; min-width: 0; }
 .pricing-directory .usage-chart-head > div:first-child { flex: 1 1 440px; min-width: 0; }
 .pricing-directory .usage-data-card { scroll-margin-top: 110px; }
 .pricing-directory .usage-data-table :is(th,td) { box-sizing: border-box; padding: 8px 10px; }
-.pricing-directory [data-comparison-col="vendor"] { width: 260px; white-space: normal; }
+.pricing-directory [data-comparison-col="vendor"] { width: var(--pricing-identity-width); white-space: normal; }
 .pricing-directory th[data-comparison-col="price"] { width: 160px; }
 .pricing-directory th[data-comparison-col="model"] { width: 235px; }
 .pricing-directory th[data-comparison-col="unitPriceCnyPerM"] { width: 130px; }
@@ -231,6 +231,12 @@
 .pricing-directory th[data-comparison-col="deepSWE"] { width: 120px; }
 .pricing-directory th[data-comparison-col="note"] { width: 640px; }
 .pricing-directory .usage-table-model { white-space: normal; overflow-wrap: anywhere; }
+@media (min-width: 651px) {
+  /* Let the intervening price column scroll away before the model sticks beside the identity. */
+  .pricing-directory .usage-data-table :is(th[data-comparison-col="model"], td.usage-table-model) { position: sticky; left: var(--pricing-identity-width); border-right: 1px solid var(--border-light); }
+  .pricing-directory .usage-data-table th[data-comparison-col="model"] { z-index: 4; }
+  .pricing-directory .usage-data-table td.usage-table-model { z-index: 2; }
+}
 .pricing-directory .usage-table-note { min-width: 0; }
 .price-identity { display: flex; align-items: flex-start; gap: 7px; }
 .price-identity > div { min-width: 0; }
@@ -260,3 +266,19 @@
 /* The shared filter row owns the pricing colour control; hide the legacy filter shell. */
 .pricing-directory .usage-view > .usage-filters[hidden] { display: none; }
 #toolFilters .usage-color-control { box-sizing: border-box; min-height: 44px; max-width: 100%; padding: 2px 8px; border-color: var(--border-color); border-radius: 8px; flex: 0 0 auto; }
+
+.usage-data-table [hidden] { display:none; }
+.usage-chart-controls [aria-label="评分指标"] { display:flex; flex-wrap:wrap; }
+@media(max-width:650px) {
+  .usage-chart-controls { width:100%; }
+  .usage-chart-controls [aria-label="评分指标"] { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); width:100%; }
+  .usage-chart-controls [data-benchmark] { min-width:0; min-height:44px; padding:6px 8px; }
+}
+/* 固定价格列宽继续由原规则管理；总宽度随实际可见评分列计算。 */
+.pricing-directory .usage-data-table { --score-aa:0px; --score-swe:0px; --score-live:0px; --score-arena:0px; width:calc(2245px + var(--score-aa) + var(--score-swe) + var(--score-live) + var(--score-arena)); }
+.pricing-directory .usage-data-table:has(th[data-comparison-col="artificialAnalysis"]:not([hidden])) { --score-aa:90px; }
+.pricing-directory .usage-data-table:has(th[data-comparison-col="deepSWE"]:not([hidden])) { --score-swe:120px; }
+.pricing-directory .usage-data-table:has(th[data-comparison-col="liveBench"]:not([hidden])) { --score-live:110px; }
+.pricing-directory .usage-data-table:has(th[data-comparison-col="arena"]:not([hidden])) { --score-arena:130px; }
+.pricing-directory th[data-comparison-col="liveBench"] { width:110px; }
+.pricing-directory th[data-comparison-col="arena"] { width:130px; }

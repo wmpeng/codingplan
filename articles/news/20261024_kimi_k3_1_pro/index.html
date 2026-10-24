@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="/scripts/event-collect.js?v=e3ae87fa58" defer></script>
+<script src="/scripts/event-collect-config.js?v=fe6767a8a0" defer></script>
+<script src="/scripts/event-collect-site.js?v=f2aa8e4c89" defer></script>
+<script src="/scripts/ui-core.js?v=4c26d7d716"></script>
+<script src="/scripts/ui-help.js?v=b8624088b6"></script>
+<script src="/scripts/site-features.js?v=af13f3915f"></script>
+<script src="/scripts/ui-dialog.js?v=632fc11cea" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kimi K3.1 Pro 正式发布：编程与 3D 能力升级，Highspeed 同步上线</title>
+<link rel="canonical" href="https://codingplan.fyi/articles/news/20261024_kimi_k3_1_pro/">
+<meta name="description" content="Kimi K3.1 Pro 与 Highspeed 同步上线，升级长程编程、3D 建模和金融文档能力。对照官方基准、AA 与 LiveBench，了解能力差异、API 价格、缓存和会员使用范围。" />
+  <meta property="article:published_time" content="2026-10-24" />
+  <meta property="article:modified_time" content="2026-10-24" />
+  <link rel="icon" href="/favicon.ico?v=260924a" type="image/x-icon" />
+  <link rel="stylesheet" href="/styles/shared.css?v=07dd7370e2" />
+  <link rel="stylesheet" href="/styles/reading.css?v=05dca7deaf" />
+  <link rel="stylesheet" href="/styles/design-system.css?v=d4c66928e5" />
+<script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
+<script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
+<link rel="stylesheet" href="/styles/ui-components.css?v=d2bf1b5a58">
+<link rel="stylesheet" href="/styles/ui-help.css?v=50cda6ca65">
+</head>
+<body class="article-page">
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/articles/" aria-current="page">文章</a>
+    <a href="/updates/">预告与更新</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="priceBasisLabel">综合单价口径</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="priceBasisLabel" title="首月价缺失时使用每月价格；按量 API 报价和 Token 额度不变。">
+            <button type="button" data-settings-price-basis="firstMonth" aria-pressed="true">首月价格</button>
+            <button type="button" data-settings-price-basis="monthly" aria-pressed="false">每月价格</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="doc-wrap">
+    <nav class="guide-breadcrumb article-breadcrumb" aria-label="面包屑">
+      <a href="/">Coding Plan</a><span aria-hidden="true">/</span>
+      <a href="/articles/">文章列表</a><span aria-hidden="true">/</span>
+      <span aria-current="page" title="Kimi K3.1 Pro 正式发布：编程与 3D 能力升级，Highspeed 同步上线">Kimi K3.1 Pro 正式发布：编程与 3D 能力升级，Highspeed 同步上线</span>
+    </nav>
+    <div class="doc-layout">
+      <aside class="doc-toc-aside doc-toc-aside--desktop"><nav class="doc-toc" aria-label="本页内容"><div class="toc">
+<ul>
+<li><a href="#_1">一、长程编程升级，科学任务仍有差距</a></li>
+<li><a href="#aa-livebench">二、独立评测：AA 与 LiveBench 的表现</a><ul>
+<li><a href="#aa-55">AA：综合指数 55 分</a></li>
+<li><a href="#livebench-20-767-k3">LiveBench 2.0：总分 76.7，编程较 K3 提升</a></li>
+</ul>
+</li>
+<li><a href="#3d-make">三、3D Make 上线，金融工作流也有提升</a></li>
+<li><a href="#k3">四、普通版比 K3 便宜，高速版并非每一项都翻倍</a></li>
+<li><a href="#kimi-code-id">五、Kimi Code 怎么用：会员门槛与模型 ID 要分清</a></li>
+<li><a href="#_2">六、总结</a></li>
+</ul>
+</div>
+</nav></aside>
+      <article class="doc">
+        <p class="doc-kicker">AI 行业快讯</p>
+        <h1>Kimi K3.1 Pro 正式发布：编程与 3D 能力升级，Highspeed 同步上线</h1>
+        <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="本页内容"><div class="toc">
+<ul>
+<li><a href="#_1">一、长程编程升级，科学任务仍有差距</a></li>
+<li><a href="#aa-livebench">二、独立评测：AA 与 LiveBench 的表现</a><ul>
+<li><a href="#aa-55">AA：综合指数 55 分</a></li>
+<li><a href="#livebench-20-767-k3">LiveBench 2.0：总分 76.7，编程较 K3 提升</a></li>
+</ul>
+</li>
+<li><a href="#3d-make">三、3D Make 上线，金融工作流也有提升</a></li>
+<li><a href="#k3">四、普通版比 K3 便宜，高速版并非每一项都翻倍</a></li>
+<li><a href="#kimi-code-id">五、Kimi Code 怎么用：会员门槛与模型 ID 要分清</a></li>
+<li><a href="#_2">六、总结</a></li>
+</ul>
+</div>
+</nav></details>
+        <p><strong>更新日期 2026.10.24</strong></p>
+<p>10 月 24 日，Kimi 正式推出 <strong>K3.1 Pro</strong>，同步上线 <strong>K3.1 Pro Highspeed</strong>。这是 K3.1 系列的首个模型，定位为 3 万亿级参数旗舰，支持 100 万 token 上下文；Kimi 网页、App、Kimi Work、Kimi Code 和 API 均已提供入口。<a href="https://www.kimi.com/en/blog/kimi-k3-1-pro" rel="noopener noreferrer">官方公告</a>表示，完整模型权重计划在 <strong>2026 年 11 月 4 日前</strong>发布。</p>
+<blockquote class="doc-blockquote">
+<p>这次更新的重点：</p>
+<ul>
+<li>加强长程编程、3D 建模和金融文档工作流，继续支持百万 token 上下文。</li>
+<li>Highspeed 据官方介绍保持同等能力，输出速度约为普通版的 2–3 倍。</li>
+<li>普通版人民币 API 单价低于 K3；高速版的输入、输出更贵，但缓存命中单价与普通版相同。</li>
+<li>Kimi Code 普通版从 Plus / Moderato 起可用，完整 1M 上下文与高速版需要更高档位。</li>
+</ul>
+</blockquote>
+<h2 id="_1">一、长程编程升级，科学任务仍有差距</h2>
+<p>K3.1 Pro 是 <strong>K3 的后训练升级版本</strong>。官方增加了强化学习投入，覆盖数百个下游领域，并优化长上下文推理、沙箱环境和训练调度。重点包括让模型在读代码、调用工具、执行测试与修复问题之间持续推进。</p>
+<p>在 Kimi 公布的编程成绩中，普通终端任务与更偏科学研究的终端任务呈现出不同表现：</p>
+<div class="doc-table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>基准</th>
+<th style="text-align: right;">K3.1 Pro</th>
+<th style="text-align: right;">Claude Opus 5.5</th>
+<th style="text-align: right;">GPT-6 Astra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Terminal-Bench 4.0</td>
+<td style="text-align: right;"><strong>65.7%</strong></td>
+<td style="text-align: right;">66.4%</td>
+<td style="text-align: right;">58.2%</td>
+</tr>
+<tr>
+<td>Terminal-Bench Science 0.1</td>
+<td style="text-align: right;"><strong>38.1%</strong></td>
+<td style="text-align: right;">63.3%</td>
+<td style="text-align: right;">68.1%</td>
+</tr>
+</tbody>
+</table></div>
+<p>来源：<a href="https://www.kimi.com/en/blog/kimi-k3-1-pro" rel="noopener noreferrer">Kimi 官方基准总览及脚注</a>。Kimi 在这两项中使用 Claude Code 执行框架；普通 Terminal-Bench 的其他模型成绩取自各自公告或官方榜单的较高值，Science 的其他成绩来自对应榜单。它们是厂商汇总结果，不能视为全部模型在同一环境中的独立复测。</p>
+<p><strong>K3.1 Pro 在 Terminal-Bench 4.0 接近 Opus 5.5，但在 Science 0.1 上仍有明显差距。</strong> 真实选型需要区分日常工程任务、科学计算和复杂研究，不能用一项领先概括全部编程能力。</p>
+<p>在 Kimi 自研的 <strong>Code Bench 3.0 Long-horizon</strong> 中，K3.1 Pro 为 <strong>61.2%</strong>，K3 为 <strong>55.95%</strong>。这项测试侧重多步执行、工具调用和端到端工程任务；内部成绩适合观察厂商报告的代际变化。</p>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="Kimi K3.1 Pro 官方基准测试总览" src="assets/kimi-k31-pro-benchmarks.webp" /></figure>
+<p class="img-source">图片来源：<a href="https://www.kimi.com/en/blog/kimi-k3-1-pro" rel="noopener noreferrer">Kimi 官方发布页</a>。图中各模型按最高思考强度比较，具体执行框架、成绩引用来源及回退等说明见原文脚注。</p>
+<h2 id="aa-livebench">二、独立评测：AA 与 LiveBench 的表现</h2>
+<h3 id="aa-55">AA：综合指数 55 分</h3>
+<p>截至 <strong>10 月 24 日</strong>，Artificial Analysis（AA）已给出 K3.1 Pro 的独立结果。以下八个模型页面均采用 <strong>Intelligence Index v4.3.2</strong>，按页面展示的整数分数排列：</p>
+<div class="doc-table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>模型（AA 测试配置）</th>
+<th style="text-align: right;">AA Intelligence Index</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Opus 5.5（Max，默认回退）</td>
+<td style="text-align: right;">58</td>
+</tr>
+<tr>
+<td><strong>Kimi K3.1 Pro</strong></td>
+<td style="text-align: right;"><strong>55</strong></td>
+</tr>
+<tr>
+<td>Claude Fable 5.1（Max，默认回退）</td>
+<td style="text-align: right;">53</td>
+</tr>
+<tr>
+<td>GPT-6 Astra（Max）</td>
+<td style="text-align: right;">53</td>
+</tr>
+<tr>
+<td>GPT-6.1 Sol（Max）</td>
+<td style="text-align: right;">52</td>
+</tr>
+<tr>
+<td>DeepSeek V4.1 Flash 1017（Max）</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr>
+<td>Kimi K3（Max）</td>
+<td style="text-align: right;">44</td>
+</tr>
+<tr>
+<td>MiniMax M3.1 Flash</td>
+<td style="text-align: right;">43</td>
+</tr>
+</tbody>
+</table></div>
+<p>来源：<a href="https://artificialanalysis.ai/models/kimi-k3-1-pro" rel="noopener noreferrer">AA：Kimi K3.1 Pro</a>、<a href="https://artificialanalysis.ai/models/kimi-k3" rel="noopener noreferrer">Kimi K3</a>、<a href="https://artificialanalysis.ai/models/claude-opus-5-5" rel="noopener noreferrer">Opus 5.5</a>、<a href="https://artificialanalysis.ai/models/claude-fable-5-1" rel="noopener noreferrer">Fable 5.1</a>、<a href="https://artificialanalysis.ai/models/gpt-6-astra" rel="noopener noreferrer">GPT-6 Astra</a>、<a href="https://artificialanalysis.ai/models/gpt-6-1-sol" rel="noopener noreferrer">GPT-6.1 Sol</a>、<a href="https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017" rel="noopener noreferrer">DeepSeek 1017</a>、<a href="https://artificialanalysis.ai/models/minimax-m3-1-flash" rel="noopener noreferrer">MiniMax M3.1 Flash</a>。两款 Claude 保留 AA 标注的 Default Fallback（默认回退）测试条件；不同思考档位或回退设置的结果不能直接替换。</p>
+<p><strong>K3.1 Pro 比 K3（Max）高 11 分，与 Opus 5.5（Max，默认回退）相差 3 分</strong>；比 Fable 5.1 和 GPT-6 Astra 的上述配置各高 2 分，比 GPT-6.1 Sol（Max）高 3 分。它也比 DeepSeek 1017（Max）、MiniMax M3.1 Flash 分别高 10 分和 12 分。这个指数混合了知识工作、终端任务、推理、长上下文等评测，<strong>55 分不是 55% 正确率，分差也不能直接换算为能力提升百分比</strong>。</p>
+<p>AA 页面测得普通版输出速度为 <strong>77.1 token/秒</strong>。这为等待时间提供了一个外部参照，但不代表自己的请求一定达到该速度，也不能将它直接乘以官方倍率，作为 Highspeed 的独立测速结果。</p>
+<h3 id="livebench-20-767-k3">LiveBench 2.0：总分 76.7，编程较 K3 提升</h3>
+<p><a href="https://livebench.ai/#/" rel="noopener noreferrer">LiveBench 2.0</a>覆盖长程 Agent、编程、浏览器操作、研究、文档设计，以及短题形式的推理和数据分析。以下采用 <strong>2026 年 10 月 14 日发布的评测版本</strong>，榜单标注最近更新为 <strong>10 月 23 日</strong>，列出同一组八个模型的总分与四个分项：</p>
+<div class="doc-table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>模型</th>
+<th style="text-align: right;">总分</th>
+<th style="text-align: right;">Agentic（长程任务）</th>
+<th style="text-align: right;">Reasoning（推理）</th>
+<th style="text-align: right;">Coding（编程）</th>
+<th style="text-align: right;">Research（研究）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Fable 5.1</td>
+<td style="text-align: right;">88.0</td>
+<td style="text-align: right;">80.8</td>
+<td style="text-align: right;">91.7</td>
+<td style="text-align: right;">97.7</td>
+<td style="text-align: right;">82.0</td>
+</tr>
+<tr>
+<td>Claude Opus 5.5</td>
+<td style="text-align: right;">86.5</td>
+<td style="text-align: right;">85.0</td>
+<td style="text-align: right;">92.2</td>
+<td style="text-align: right;">96.3</td>
+<td style="text-align: right;">85.0</td>
+</tr>
+<tr>
+<td>GPT-6 Astra</td>
+<td style="text-align: right;">86.1</td>
+<td style="text-align: right;">82.4</td>
+<td style="text-align: right;">92.7</td>
+<td style="text-align: right;">93.7</td>
+<td style="text-align: right;">85.2</td>
+</tr>
+<tr>
+<td>GPT-6.1 Sol</td>
+<td style="text-align: right;">85.4</td>
+<td style="text-align: right;">73.0</td>
+<td style="text-align: right;">92.6</td>
+<td style="text-align: right;">96.0</td>
+<td style="text-align: right;">83.5</td>
+</tr>
+<tr>
+<td>DeepSeek V4.1 Flash 1017</td>
+<td style="text-align: right;">79.2</td>
+<td style="text-align: right;">50.9</td>
+<td style="text-align: right;">89.1</td>
+<td style="text-align: right;">96.0</td>
+<td style="text-align: right;">79.5</td>
+</tr>
+<tr>
+<td><strong>Kimi K3.1 Pro</strong></td>
+<td style="text-align: right;"><strong>76.7</strong></td>
+<td style="text-align: right;"><strong>49.5</strong></td>
+<td style="text-align: right;"><strong>91.1</strong></td>
+<td style="text-align: right;"><strong>81.8</strong></td>
+<td style="text-align: right;"><strong>77.9</strong></td>
+</tr>
+<tr>
+<td>MiniMax M3.1 Flash</td>
+<td style="text-align: right;">73.1</td>
+<td style="text-align: right;">34.7</td>
+<td style="text-align: right;">82.9</td>
+<td style="text-align: right;">83.9</td>
+<td style="text-align: right;">72.7</td>
+</tr>
+<tr>
+<td>Kimi K3</td>
+<td style="text-align: right;">63.4</td>
+<td style="text-align: right;">42.8</td>
+<td style="text-align: right;">90.7</td>
+<td style="text-align: right;">59.3</td>
+<td style="text-align: right;">79.0</td>
+</tr>
+</tbody>
+</table></div>
+<p>来源：<a href="https://livebench.ai/#/" rel="noopener noreferrer">LiveBench 原站榜单</a>，读取日期为 10 月 24 日；表中模型的展开行均标注 <code>max</code>。总分按该版本七套任务等权平均，表内仅展示四个分项，不能用这四列重新计算总分；其数值与 AA 指数也不能互换。</p>
+<p><strong>K3.1 Pro 比 K3 的总分高 13.3 分，Coding 高 22.5 分，Agentic 高 6.7 分；Research 则低 1.1 分。</strong> 在这组任务中，K3.1 Pro 的总分、Coding 和 Agentic 都低于 DeepSeek 1017，也低于表中的两款 Claude 和两款 GPT。AA 与 LiveBench 的相对表现不同，综合能力和具体工作流需要分别看。</p>
+<p>按<a href="https://livebench.ai/#/methodology" rel="noopener noreferrer">评测方法</a>，LiveBench 每个模型每套任务只运行一次，其中 Agentic 为 18 个任务、Coding 为 29 个任务；工具或供应商故障在一次重试后仍无法测量的任务也计零分。单次结果有波动，不能仅凭某个分项下降就断言出现稳定退化。</p>
+<h2 id="3d-make">三、3D Make 上线，金融工作流也有提升</h2>
+<p>3D 是这次更新比较直观的应用方向。按照<a href="https://platform.kimi.com/docs/guide/kimi-k3-1-pro-quickstart" rel="noopener noreferrer">官方模型介绍</a>，模型可以通过编写和运行 Blender、CAD 等工具的脚本，处理几何、材质和场景，再将资产接入网页或游戏引擎。</p>
+<p>在 Kimi 公布的 <strong>BenchCAD 使用工具测试</strong>中，K3.1 Pro 得分 <strong>92.7%</strong>。该测试通过生成 CAD 代码重建多视角图像中的物体，考察空间理解与建模；成绩对应官方抽取的 1,000 个样本及特定工具框架，不能直接当作任意工业设计任务的成功率。</p>
+<p>Kimi 网页和 App 同步提供 <strong>3D Make</strong>：支持在线预览、编辑模型，并下载用于 3D 打印，或导出视频、实况照片。做交互原型、小游戏和产品展示时，可以先从一个可验收的小资产开始。</p>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="Kimi 3D Make 功能界面与模型模板示意" src="assets/kimi-3d-make.webp" /></figure>
+<p class="img-source">图片来源：<a href="https://www.kimi.com/en/blog/kimi-k3-1-pro" rel="noopener noreferrer">Kimi 官方发布页</a>。此图展示 3D Make 功能与模板；界面中的模型标签沿用官方示意，不代表当前会话已选择 K3.1 Pro。</p>
+<p>金融场景主要涉及文档检索、跨文件核对、多步计算与表格工作。在官方公布的结果中，<strong>OfficeQA Pro v2 为 64.4，Frontier Finance 为 58.6</strong>。两项分别侧重财务文档分析和完整投资工作流，成绩也说明优势会随任务变化：K3.1 Pro 在这张 OfficeQA 对照图中最高，Frontier Finance 则低于 Fable 5.1。</p>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="Kimi K3.1 Pro 官方金融工作流基准对比" src="assets/kimi-k31-pro-finance.webp" /></figure>
+<p class="img-source">图片来源：<a href="https://www.kimi.com/en/blog/kimi-k3-1-pro" rel="noopener noreferrer">Kimi 官方发布页</a>。厂商公布的成绩与比较条件，不等同于实际投资收益或日常任务保证。</p>
+<h2 id="k3">四、普通版比 K3 便宜，高速版并非每一项都翻倍</h2>
+<p><a href="https://platform.kimi.com/docs/pricing/chat" rel="noopener noreferrer">Kimi 人民币定价页</a>与<a href="https://platform.kimi.com/" rel="noopener noreferrer">开放平台首页</a>列出的价格如下，单位均为 <strong>元 / 百万 token</strong>：</p>
+<div class="doc-table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>模型</th>
+<th style="text-align: right;">未缓存输入</th>
+<th style="text-align: right;">输出</th>
+<th style="text-align: right;">缓存命中</th>
+<th style="text-align: right;">缓存写入 5 分钟</th>
+<th style="text-align: right;">缓存写入 1 小时</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>K3.1 Pro</td>
+<td style="text-align: right;"><strong>13</strong></td>
+<td style="text-align: right;"><strong>68</strong></td>
+<td style="text-align: right;"><strong>1.3</strong></td>
+<td style="text-align: right;"><strong>13</strong></td>
+<td style="text-align: right;"><strong>26</strong></td>
+</tr>
+<tr>
+<td>K3.1 Pro Highspeed</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;"><strong>1.3</strong></td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">52</td>
+</tr>
+<tr>
+<td>K3</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">40</td>
+</tr>
+</tbody>
+</table></div>
+<p>普通版相对 K3，未缓存输入、缓存读取和写入单价下降 <strong>35%</strong>，输出单价下降 <strong>32%</strong>。模型完成同一任务时可能产生不同的思考和工具调用量，因此这不是实际任务费用的固定降幅。</p>
+<p>Highspeed 的未缓存输入、输出和写入价格均为普通版的两倍，但<strong>缓存命中仍为 1.3 元</strong>。高缓存命中率的长会话，最终价差会明显小于两倍。</p>
+<p>例如，多次调用累计输入 <strong>1 亿 token</strong>，其中 <strong>96% 命中缓存</strong>，计费输出为 <strong>30 万 token</strong>。其余 <strong>400 万输入</strong>按未缓存或默认 5 分钟写入计费，两类单价相同；不包含 1 小时写入及工具等其他费用。普通版费用为：</p>
+<p><strong>96 × 1.3 + 4 × 13 + 0.3 × 68 = 197.20 元。</strong></p>
+<p>相同计费用量下，Highspeed 为 <strong>269.60 元</strong>，约贵 <strong>36.7%</strong>；K3 为 <strong>302.00 元</strong>。这是假设用量算例，输入是多次调用的累计值，输出需包含实际计费的思考 token，不能据此保证同一真实任务的费用。</p>
+<p><a href="https://platform.kimi.com/docs/guide/context-caching" rel="noopener noreferrer">缓存文档</a>说明，缓存读取、写入与未缓存输入的 token 分类互斥，<strong>同一批写入 token 不再重复加收一遍未缓存输入费</strong>。默认缓存有效期为 5 分钟，命中可免费续期；选择 1 小时档则按更高的写入单价计费。连续执行的 Agent 与隔一段时间再追问的会话，需要分别考虑。</p>
+<h2 id="kimi-code-id">五、Kimi Code 怎么用：会员门槛与模型 ID 要分清</h2>
+<p><a href="https://www.kimi.com/code/docs/kimi-code/models.html" rel="noopener noreferrer">Kimi Code 模型配置</a>给出的权限如下：</p>
+<div class="doc-table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>能力</th>
+<th>新套餐</th>
+<th>老套餐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>K3.1 Pro 普通版</td>
+<td>Plus 及以上</td>
+<td>Moderato 及以上</td>
+</tr>
+<tr>
+<td>普通版最高 1M 上下文</td>
+<td>Pro 及以上</td>
+<td>Allegretto 及以上</td>
+</tr>
+<tr>
+<td>K3.1 Pro Highspeed</td>
+<td>Pro 及以上</td>
+<td>Allegretto 及以上</td>
+</tr>
+</tbody>
+</table></div>
+<p>能选普通版，不等于当前套餐已经解锁完整百万上下文。Code 文档还注明，高速版的消耗约为普通版两倍；这是 <strong>Coding Plan 的消耗说明</strong>，与按量 API 的分项价格分别计算，不能互相套用。</p>
+<p>已有 Code 权限时，建议<strong>新建会话</strong>，在官方 CLI 输入 <code>/model</code> 切换；列表尚未更新时，可按官方指引退出后重新登录。第三方工具应填写正确的模型 ID：</p>
+<ul>
+<li><strong>Kimi Code</strong>：<code>k3.1-pro</code>、<code>k3.1-pro-highspeed</code>。</li>
+<li><strong>按量 Kimi API</strong>：<code>kimi-k3.1-pro</code>、<code>kimi-k3.1-pro-highspeed</code>。</li>
+</ul>
+<p>两种入口使用各自的 Key、地址和计费方式。Code 文档提示，填错模型 ID 可能兜底到旧模型，因此只修改界面显示名称还不够。</p>
+<p>K3.1 Pro 系列<strong>仅支持思考模式</strong>，提供 <code>low</code>、<code>high</code>、<code>max</code> 三档，默认 <code>max</code>；关闭思考会被拒绝。简单修改可以先降低思考强度，复杂任务则应给推理和最终答案都留足预算。</p>
+<p>按量 API 还有独立的访问条件：<a href="https://platform.kimi.com/docs/guide/kimi-k3-1-pro-quickstart" rel="noopener noreferrer">官方指南</a>要求先充值解锁，最低充值 <strong>10 元</strong>；新用户注册认证赠送的 <strong>15 元代金券不能用于 K3.1 Pro</strong>。已有 Kimi 会员也不应默认按量 API 会从会员额度中扣除。</p>
+<h2 id="_2">六、总结</h2>
+<p>Kimi K3.1 Pro 的升级重点是长程编程、3D 创作和金融工作流。AA 综合指数达到 <strong>55 分</strong>，比 K3（Max）高 11 分，与 Opus 5.5（Max，默认回退）相差 3 分；在科学任务等单项上仍有差距，实际表现需要结合具体场景判断。</p>
+<p>普通版 API 单价低于 K3，Highspeed 则提供官方所称的约 <strong>2–3 倍输出速度</strong>，两者缓存命中单价相同。在线产品与 API 已上线，Kimi Code 的模型和上下文权限按会员档位开放；完整模型权重计划在 <strong>11 月 4 日前</strong>发布。</p>
+<p>体验入口（推广）：<a href="https://api.dreamfree.space/c/s/cpyqkimi/20261024_kimi_k3_1_pro" rel="noopener noreferrer">Kimi / Kimi Code</a>。对照模型入口：<a href="https://api.dreamfree.space/c/s/cpyqdeepseek/20261024_kimi_k3_1_pro" rel="noopener noreferrer">DeepSeek API</a>、<a href="https://api.dreamfree.space/c/s/cpyqminimax/20261024_kimi_k3_1_pro" rel="noopener noreferrer">MiniMax</a>。</p>
+      </article>
+    </div>
+  </div>
+</body>
+</html>

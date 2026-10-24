@@ -27,7 +27,6 @@ const {
   PLANS_TABLE_PIN_STORAGE_KEY,
   dimensionCopy,
   collectPlansForVendor,
-  matchMonitorPlatform,
   DEFAULT_PLATFORM_STATUS_MAX
 } = require('./platform-catalog.js');
 
@@ -349,24 +348,6 @@ describe('collectPlansForVendor', () => {
     assert.equal(rows.length, 2);
     assert.equal(rows[0].name, '1');
     assert.equal(rows[1].name, '2');
-  });
-});
-
-describe('matchMonitorPlatform', () => {
-  const board = [
-    { platform_slug: 'minimax', platform_display_name: 'MiniMax' },
-    { platform_slug: 'foo', platform_display_name: 'Foo云' }
-  ];
-  it('matches by monitorSlug first', () => {
-    const hit = matchMonitorPlatform({ name: '别名', monitorSlug: 'minimax' }, board);
-    assert.equal(hit.platform_slug, 'minimax');
-  });
-  it('matches by trimmed display name', () => {
-    const hit = matchMonitorPlatform({ name: ' MiniMax ' }, board);
-    assert.equal(hit.platform_slug, 'minimax');
-  });
-  it('returns null when no match', () => {
-    assert.equal(matchMonitorPlatform({ name: '不存在' }, board), null);
   });
 });
 

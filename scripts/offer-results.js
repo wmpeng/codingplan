@@ -15,7 +15,9 @@
     return typeof value==='number' ? `${tokenAmount(value,unit)} ${unitLabel(unit)}${withToken?' Token':''}` : '额度未知';
   }
   const setModelsExpanded = UI.setModelsExpanded;
-  function card(item,state) {
+  function card(item,state,modelGroups = []) {
+    const models = UI.prioritizeFeaturedModels(item.models,modelGroups);
+    const modelOrder = new Map(models.map((model,index)=>[model.slug,index]));
     const api=item.plan.billingMode==='payg', unit=state.tokenUnit;
     const unitPrice = row => E.comparisonUnitPrice(row.usage?.unitPriceCnyPerM,item.plan,E.displayPriceBasis());
     const estimateColumn=api && state.monthlyTokenRange != null;
@@ -24,7 +26,7 @@
     const statuses=[item.platform.platformStatus || 'open',item.plan.planStatus || 'open'];
     const statusKey=statuses.includes('delisted')?'delisted':statuses.includes('restricted')?'restricted':'open';
     const status=UI.statusLabels[statusKey], canBuy=statusKey==='open';
-    const rows=item.rows.map(row=>{
+    const rows=[...item.rows].sort((a,b)=>(modelOrder.get(a.modelSlug) ?? models.length)-(modelOrder.get(b.modelSlug) ?? models.length)).map(row=>{
       const model=item.models.find(m=>m.slug===row.modelSlug), tiers=[row.serviceTier,row.contextTier,row.timeTier].filter(Boolean).join(' / ');
       const inlineTimeTier=row.timeTier && !row.serviceTier && !row.contextTier;
       const name=esc(model?.name || row.modelSlug), tier=tiers?`<small${inlineTimeTier?' class="offer-time-tier"':''}>${esc(tiers)}</small>`:'';
@@ -37,7 +39,7 @@
     const amountHeading=api && !estimateColumn ? '' : `<th scope="col">${estimateColumn?'月支出估算':'月额度 / '+unitLabel(unit)}</th>`;
     const table=`<div class="offer-model-table-wrap" role="region" aria-label="${esc(item.platform.name+' '+item.plan.name)}${api?'价格与估算':'模型额度'}"><table class="offer-model-table"><thead><tr><th scope="col">模型 / 档位</th>${amountHeading}<th scope="col">单价 / ${unitLabel(unit)}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     const modelsId='offer-model-tags-'+encodeURIComponent(item.id);
-    const modelTags=UI.modelTags(item.models.map(m=>m.name),{maxRows:1,id:modelsId,className:'offer-model-summary platform-models',ariaLabel:'匹配模型'});
+    const modelTags=UI.modelTags(models.map(m=>m.name),{maxRows:1,id:modelsId,className:'offer-model-summary platform-models',ariaLabel:'匹配模型'});
     const rangeText=Numbers.range(item.rows.map(r=>r.usage?.monthlyTokenInM),v=>tokenAmount(v,unit));
     const unlimited=item.rows.some(r=>r.usage?.monthlyTokenInM==='unlimited');
     const range=rangeText!==null ? `${rangeText} ${unitLabel(unit)}`+(unlimited?'～不限量':'') : unlimited?'不限量':'额度未知';
@@ -46,7 +48,7 @@
     const quotaSummary=`<summary class="offer-quota-summary is-compact${range==='额度未知'?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota"><span class="offer-summary-label">月额度 </span><span class="offer-summary-value">${esc(range)}</span></span>${priceRange!==null?`<span class="offer-summary-price" aria-hidden="true"><span class="offer-summary-label">单价 </span><span class="offer-summary-value">${esc(priceRange)} /${unitLabel(unit)}</span></span>`:''}</span></summary>`;
     const unknownPrices=item.rows.some(row=>Numbers.finite(row.usage?.unitPriceCnyPerM)===null);
     const apiSummary=`<summary class="offer-quota-summary offer-api-summary${priceRange===null?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota"><span class="offer-summary-label">${priceRange!==null && unknownPrices?'已知单价':'单价'} </span><span class="offer-summary-value">${priceRange!==null?`${esc(priceRange)} /${unitLabel(unit)}`:'待确认'}</span></span></span></summary>`;
-    const badges=(statusKey==='open'?'':`<span class="offer-status">${status}</span>`)+(E.resolveHarnessApi(item.platform,item.plan)===false?E.harnessApiBadge(false):'');
+    const badges=(statusKey==='open'?'':`<span class="offer-status" data-offer-status="${statusKey}">${status}</span>`)+(E.resolveHarnessApi(item.platform,item.plan)===false?E.harnessApiBadge(false):'');
     const capabilities=badges?`<div class="offer-capabilities">${badges}</div>`:'';
     const action=url(item.plan.action || item.platform.action);
     const name=esc(item.platform.name+' '+item.plan.name);
@@ -56,7 +58,7 @@
     const details=`<details class="offer-models">${api?apiSummary:quotaSummary}<div class="offer-model-details">${table}<p class="comparison-method${api?' offer-api-estimate-note':''}">${detailNote}</p>${fullPrice}</div></details>`;
     const priceText=api ? estimatedRange ?? '按量计费' : money(item.cost);
     const estimateLabel=item.costRange?.hasUnknown?'已知费用估算':item.costRange && item.costRange.min!==item.costRange.max?'估算范围':'估算';
-    return `<article class="offer-result offer-card-refined${api?' offer-api':''}" data-offer-id="${esc(item.id)}" data-plan-slug="${esc(item.plan.slug)}"><div class="offer-result-heading"><div><h3 class="offer-title">${title}</h3>${capabilities}</div><div class="offer-price${item.cost==null?' is-unknown':''}"><div class="offer-price-line"><span>${esc(priceText).replace('～','<wbr>～')}</span>${item.cost!=null?'<small>/ 月</small>':''}</div>${api&&item.cost!=null?`<div class="offer-price-note">${estimateLabel}</div>`:''}${originalPrice}</div></div>${modelTags}${details}<div class="offer-result-actions"><details class="offer-reasons"><summary>匹配说明与限制</summary><ul>${[...item.reasons,...item.cautions].map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details></div></article>`;
+    return `<article class="offer-result offer-card-refined${api?' offer-api':''}" data-offer-id="${esc(item.id)}" data-plan-slug="${esc(item.plan.slug)}" data-collect-platform="${esc(item.platform.slug)}"><div class="offer-result-heading"><div><h3 class="offer-title">${title}</h3>${capabilities}</div><div class="offer-price${item.cost==null?' is-unknown':''}"><div class="offer-price-line"><span>${esc(priceText).replace('～','<wbr>～')}</span>${item.cost!=null?'<small>/ 月</small>':''}</div>${api&&item.cost!=null?`<div class="offer-price-note">${estimateLabel}</div>`:''}${originalPrice}</div></div>${modelTags}${details}<div class="offer-result-actions"><details class="offer-reasons"><summary>匹配说明与限制</summary><ul>${[...item.reasons,...item.cautions].map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details></div></article>`;
   }
   function mount(host,context,config) {
     let advice=null, renderedAdvice, lastResult, lastFilterKey, lastPreference;
@@ -113,7 +115,7 @@
           el.querySelector('.offer-reasons ul').innerHTML=[...item.reasons,...item.cautions].map(text=>`<li>${esc(text)}</li>`).join('');
           grid.append(el);
         }
-      } else content.innerHTML=result.candidates.length?`<div class="offer-results-grid">${result.candidates.map(x=>card(x,state)).join('')}</div>`:`<div class="tool-empty"><h3>暂无同时符合条件的方案</h3><p>${result.modelConflict?esc(result.modelConflict):"试着放宽一项条件；筛选不会自动改变。"}</p><div class="guide-options">${result.conflicts.map(x=>`<button type="button" data-relax="${esc(x.key)}">取消${esc(x.label)}（${x.count} 个套餐）</button>`).join('')}</div><button type="button" class="tool-button" data-reset-results>显示精选</button></div>`;
+      } else content.innerHTML=result.candidates.length?`<div class="offer-results-grid">${result.candidates.map(x=>card(x,state,context.modelGroups)).join('')}</div>`:`<div class="tool-empty"><h3>暂无同时符合条件的方案</h3><p>${result.modelConflict?esc(result.modelConflict):"试着放宽一项条件；筛选不会自动改变。"}</p><div class="guide-options">${result.conflicts.map(x=>`<button type="button" data-relax="${esc(x.key)}">取消${esc(x.label)}（${x.count} 个套餐）</button>`).join('')}</div><button type="button" class="tool-button" data-reset-results>显示精选</button></div>`;
       summaryObserver.disconnect();
       host.querySelectorAll('.offer-quota-summary').forEach(summary=>{fitSummary(summary);summaryObserver.observe(summary);});
       for(const [id,cls] of open){const el=[...host.querySelectorAll('[data-offer-id]')].find(x=>x.dataset.offerId===id);const d=el?.querySelector('details.'+cls);if(d)d.open=true;}
@@ -123,6 +125,7 @@
         if(host.contains(focused) && focused!==document.activeElement)focused.focus({preventScroll:true});
         globalThis.scrollTo({...scroll,behavior:'instant'});
       }
+      globalThis.dispatchEvent(new CustomEvent('codingplan:results-rendered', {detail:{result_count:result.candidates.length,result_key:JSON.stringify(state)}}));
       lastFilterKey=filterKey;
       lastPreference=state.preference;
     };

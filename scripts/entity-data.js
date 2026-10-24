@@ -81,7 +81,7 @@
       if (!relationsByPlanSlug.has(relation.planSlug)) relationsByPlanSlug.set(relation.planSlug, []);
       relationsByPlanSlug.get(relation.planSlug).push(relation);
     });
-    return { workload: planDoc.workload, platforms, plans, models, planModels, platformBySlug, planBySlug, modelBySlug, relationsByPlanSlug };
+    return { benchmarks: modelDoc.benchmarks || {}, workload: planDoc.workload, platforms, plans, models, planModels, platformBySlug, planBySlug, modelBySlug, relationsByPlanSlug };
   }
 
   function listPlatforms(context) {
@@ -127,7 +127,7 @@
       }
       if (typeof value !== 'object') continue;
       output[benchmark] = {};
-      for (const key of ['score', 'scoreExact', 'configuration', 'confidenceInterval', 'confidenceIntervalExact']) {
+      for (const key of ['score', 'scoreExact', 'configuration', 'confidenceInterval', 'confidenceIntervalExact', 'sourceUrl', 'publishedAt', 'confidenceLowerExact', 'confidenceUpperExact']) {
         if (value[key] !== undefined) output[benchmark][key] = value[key];
       }
     }

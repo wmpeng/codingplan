@@ -13,7 +13,8 @@ test('精选来源完整、唯一，首页默认选择直接取同一名单',()=
   assert.deepEqual(preset.groups.map(group=>[group.label,group.title]),[['甜品级','甜品级模型'],['头部级','头部级模型']]);
   const state=F.createDefaultState(config,{featuredPreset:preset});
   assert.deepEqual(state.platformSlugs,preset.platformSlugs);
-  assert.deepEqual(state.modelSlugs,[...new Set(preset.groups.flatMap(g=>g.modelSlugs))]);
+  const expected = ['sota-models','high-volume-models'].flatMap(id=>preset.groups.find(group=>group.id===id).modelSlugs);
+  assert.deepEqual(state.modelSlugs,expected);
   assert.equal(config.recommendationGroups,undefined);
   assert.throws(()=>C.validate({...preset,platformSlugs:['missing']},ctx),/无效平台/);
   assert.throws(()=>C.validate({...preset,groups:[preset.groups[0],{...preset.groups[1],modelSlugs:preset.groups[0].modelSlugs}]},ctx),/重复分组/);

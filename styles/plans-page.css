@@ -1,0 +1,49 @@
+/* Quota details use the visible table width, including while scrolling sideways. */
+#plansPage .plan-quota-toggle {
+  display: inline-flex; align-items: center; justify-content: flex-end; gap: 8px;
+  border: 0; border-radius: 5px; padding: 4px; min-height: 32px;
+  background: transparent; color: var(--accent-primary); font: inherit; cursor: pointer;
+  text-align: right; font-variant-numeric: tabular-nums;
+}
+#plansPage .plan-quota-toggle::after {
+  content: ''; width: 6px; height: 6px; flex-shrink: 0;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+#plansPage .plan-quota-toggle[aria-expanded="true"]::after { transform: translateY(2px) rotate(225deg); }
+#plansPage .plan-quota-toggle:hover { background: var(--bg-tertiary); }
+#plansPage :is(.plan-quota-toggle, .plan-quota-notes > summary, [data-plan-quota-sort]):focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+#plansPage .plan-quota-row > td { padding: 0; background: var(--bg-secondary, #f8fafc); }
+#plansPage .plan-quota-panel {
+  position: sticky; left: 0; width: var(--plan-quota-width); max-width: 100%;
+  box-sizing: border-box; padding: 16px 20px 18px;
+}
+#plansPage .plan-quota-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; margin-bottom: 10px; }
+#plansPage .plan-quota-heading h2 { margin: 0; font-size: 14px; font-weight: 600; }
+#plansPage .plan-quota-basis { color: var(--text-secondary); font-size: 12px; }
+#plansPage .plan-quota-requests { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-bottom: 12px; font-size: 12px; }
+#plansPage .plan-quota-requests > span:first-child { color: var(--text-secondary); }
+#plansPage .plan-quota-table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 13px; }
+#plansPage .plan-quota-table caption { text-align: left; color: var(--text-secondary); font-size: 12px; padding-bottom: 6px; }
+#plansPage .plan-quota-table :is(th, td) { padding: 7px 10px; border-bottom: 1px solid var(--border-light); text-align: right; font-variant-numeric: tabular-nums; }
+#plansPage .plan-quota-table thead th { font-weight: 400; white-space: normal; background: transparent; }
+#plansPage .plan-quota-table th:first-child { width: 36%; text-align: left; }
+#plansPage .plan-quota-table tbody th { color: var(--text-primary); font-weight: 500; white-space: normal; background: transparent; }
+#plansPage .plan-quota-table small { display: inline; margin-left: 6px; color: var(--text-secondary); font-size: 12px; font-weight: 400; }
+#plansPage .plan-quota-table .table-sort-button { text-align: right; }
+#plansPage .plan-quota-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; margin-top: 10px; font-size: 12px; color: var(--text-secondary); }
+#plansPage .plan-quota-footer a { display: inline-flex; align-items: center; min-height: 32px; }
+#plansPage .plan-quota-notes { margin-top: 6px; font-size: 12px; color: var(--text-secondary); }
+#plansPage .plan-quota-notes > summary { width: fit-content; cursor: pointer; min-height: 32px; align-content: center; }
+#plansPage .plan-quota-notes > div { display: grid; gap: 12px; padding-top: 6px; }
+#plansPage .plan-quota-notes p { margin: 0; white-space: pre-line; line-height: 1.7; }
+#plansPage .plan-quota-notes strong { display: block; margin-bottom: 2px; color: var(--text-primary); font-weight: 500; }
+#plansPage .plan-quota-empty { color: var(--text-secondary); font-size: 13px; }
+@media (max-width: 800px), (pointer: coarse) {
+  #plansPage :is(.plan-quota-toggle, .plan-quota-notes > summary, .plan-quota-footer a, [data-plan-quota-sort]) { min-height: 44px; }
+}
+@media (max-width: 800px) {
+  #plansPage .plan-quota-panel { padding: 12px 10px; }
+  #plansPage .plan-quota-table :is(th, td) { padding: 7px 4px; font-size: 12px; }
+  #plansPage .plan-quota-table th:first-child { width: 32%; }
+}

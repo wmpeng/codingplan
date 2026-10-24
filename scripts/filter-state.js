@@ -4,6 +4,7 @@
   root.CodingPlanFilters = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (EntityData, Numbers) {
   'use strict';
+  const UI = globalThis.CodingPlanUI || require('./ui-core.js');
 
   const DEFAULTS = Object.freeze({
     platformSlugs: null,
@@ -129,7 +130,7 @@
     const preset = options && options.featuredPreset;
     if (preset) {
       state.platformSlugs = arrayOrNull(preset.platformSlugs);
-      state.modelSlugs = arrayOrNull((preset.groups || []).flatMap(group => group.modelSlugs || []));
+      state.modelSlugs = arrayOrNull(UI.modelPresetSlugs(preset.groups));
     }
     return state;
   }
@@ -141,9 +142,8 @@
     const pricing = full && options.view === 'pricing';
     const plansPage = full && options.view === 'plans';
     const platformHub = full && options.view === 'platforms';
-    const monitor = full && options.view === 'monitor';
     const planStatusOnly = plansPage || pricing;
-    const purchaseTool = full && !monitor;
+    const purchaseTool = full;
     function constrain(state) {
       state.planStatusOnly = planStatusOnly;
       if (planStatusOnly) {
@@ -180,7 +180,7 @@
       }
       return constrain(state);
     }
-    return {full, pricing, plansPage, platformHub, monitor, planStatusOnly, purchaseTool, createDefaults, constrain};
+    return {full, pricing, plansPage, platformHub, planStatusOnly, purchaseTool, createDefaults, constrain};
   }
 
   function toCny(value, currency, rate) {
@@ -262,12 +262,11 @@
   function formatMonthlyTokens(plan, state) {
     const rows = monthlyOptions(plan, state);
     const values = rows.map(row => row.value).filter(value => typeof value === 'number' && Number.isFinite(value));
-    const unlimited = rows.some(row => row.value === 'unlimited');
-    if (!values.length && !unlimited) return '未知';
+    if (!values.length) return '未知';
     const unit = Numbers.tokenUnit(state.tokenUnit);
     const format = value => Numbers.tokenAmount(value, state.tokenUnit);
     const min = Math.min(...values), max = Math.max(...values);
-    const text = values.length ? `${format(min)}${unlimited ? '–无限制' : min === max ? '' : '–' + format(max)} ${unit}` : '无限制';
+    const text = `${format(min)}${min === max ? '' : '–' + format(max)} ${unit}`;
     return text + (values.length + rows.filter(row => row.value === 'unlimited').length < rows.length ? '（部分未知）' : '');
   }
 

@@ -205,7 +205,7 @@
         },
         "models": {
           "score": 5,
-          "reason": "Coding支持Kimi K3与K2.8 Preview，Go不提供Coding API，不能混用客户端与API权益。"
+          "reason": "Coding 支持 Kimi K3.1 Pro、K3 与 K2.8 Preview；Plus 起可用 K3.1 Pro，Pro 起支持其高速版与 1M 上下文，Go 不含 Coding API。"
         },
         "stability": {
           "score": 4,
@@ -216,7 +216,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "detail": "Coding支持Kimi K3与K2.8 Preview，Go不提供Coding API，不能混用客户端与API权益。",
+      "detail": "Coding 支持 Kimi K3.1 Pro、K3 与 K2.8 Preview；Plus 起可用 K3.1 Pro，Pro 起支持其高速版与 1M 上下文，Go 不含 Coding API。",
       "action": "https://api.dreamfree.space/c/s/cpyqkimi"
     },
     {
@@ -431,8 +431,8 @@
       "slug": "xiaomi-mimo",
       "name": "小米·MiMo",
       "rating": 4,
-      "summary": "MiMo文本Credits订阅，当前4个LLM，夜间00–08点UTC+8享0.8消耗。",
-      "detail": "V2.5系列10月14日转发、10月21日下线；年池和月池分开理解。",
+      "summary": "MiMo文本Credits订阅，当前2个LLM，夜间00–08点UTC+8享0.8消耗。",
+      "detail": "V2.5系列旧入口已失效，使用V2.6-Pro或V2.6-Flash；年池和月池分开理解。",
       "dimensions": {
         "value": {
           "score": 5,
@@ -440,7 +440,7 @@
         },
         "models": {
           "score": 5,
-          "reason": "V2.5系列10月14日转发、10月21日下线；年池和月池分开理解。"
+          "reason": "V2.5系列旧入口已失效，使用V2.6-Pro或V2.6-Flash；年池和月池分开理解。"
         },
         "stability": {
           "score": 5,
@@ -907,7 +907,7 @@
       "slug": "taotoken",
       "name": "TaoToken",
       "rating": 3,
-      "summary": "双Flash Coding Plan，支持GLM5.3 Flash与DeepSeek V4 Flash；Lite月付和季付名额售罄。",
+      "summary": "双Flash Coding Plan，支持GLM5.3 Flash与DeepSeek V4.1 Flash 1017；Lite月付和季付名额售罄。",
       "dimensions": {
         "value": {
           "score": 3,
@@ -1212,7 +1212,7 @@
       "slug": "chaosuan-token",
       "name": "超算 · Token Plan",
       "rating": 0,
-      "summary": "19个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。",
+      "summary": "18个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。",
       "dimensions": {
         "value": {
           "score": null,
@@ -1220,7 +1220,7 @@
         },
         "models": {
           "score": null,
-          "reason": "当前19个LLM，含DeepSeek-V4.1-Flash、Kimi-K3、GLM-5.3、Qwen3.8及MiniMax。"
+          "reason": "当前18个LLM，含DeepSeek-V4.1-Flash-1017、Kimi-K3、GLM-5.3、Qwen3.8及MiniMax。"
         },
         "stability": {
           "score": null,
