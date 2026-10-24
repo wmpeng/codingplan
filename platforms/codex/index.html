@@ -1,0 +1,159 @@
+<!-- Generated platform guide; edit data/platforms/pages/content instead. -->
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<script src="/scripts/event-collect.js?v=e3ae87fa58" defer></script>
+<script src="/scripts/event-collect-config.js?v=fe6767a8a0" defer></script>
+<script src="/scripts/event-collect-site.js?v=f2aa8e4c89" defer></script>
+<script src="/scripts/ui-core.js?v=4c26d7d716"></script>
+<script src="/scripts/ui-help.js?v=b8624088b6"></script>
+<script src="/scripts/site-features.js?v=af13f3915f"></script>
+<script src="/scripts/ui-dialog.js?v=632fc11cea" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codex：价格、模型与使用指南 - Coding Plan</title>
+<meta name="description" content="比较 Codex Plus 与 Pro 各档、模型和速度权限，了解共享用量、Token 参考估算，以及订阅登录和 API Key 计费的区别。">
+  <link rel="canonical" href="https://codingplan.fyi/platforms/codex/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="Coding Plan">
+  <meta property="og:title" content="Codex：价格、模型与使用指南 - Coding Plan">
+  <meta property="og:description" content="比较 Codex Plus 与 Pro 各档、模型和速度权限，了解共享用量、Token 参考估算，以及订阅登录和 API Key 计费的区别。">
+  <meta property="og:url" content="https://codingplan.fyi/platforms/codex/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Codex：价格、模型与使用指南 - Coding Plan">
+  <meta name="twitter:description" content="比较 Codex Plus 与 Pro 各档、模型和速度权限，了解共享用量、Token 参考估算，以及订阅登录和 API Key 计费的区别。">
+  <link rel="icon" href="/favicon.ico?v=260924a">
+  <link rel="stylesheet" href="/styles/shared.css?v=07dd7370e2">
+  <link rel="stylesheet" href="/styles/tool-page.css?v=178468555f">
+  <link rel="stylesheet" href="/styles/platform-guide.css?v=cf1c74f518">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://codingplan.fyi/platforms/codex/","url":"https://codingplan.fyi/platforms/codex/","name":"Codex：价格、模型与使用指南 - Coding Plan","description":"比较 Codex Plus 与 Pro 各档、模型和速度权限，了解共享用量、Token 参考估算，以及订阅登录和 API Key 计费的区别。","inLanguage":"zh-CN","datePublished":"2026-10-24","dateModified":"2026-10-24","isPartOf":{"@type":"WebSite","name":"Coding Plan","url":"https://codingplan.fyi/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Coding Plan","item":"https://codingplan.fyi/"},{"@type":"ListItem","position":2,"name":"平台介绍","item":"https://codingplan.fyi/platforms/"},{"@type":"ListItem","position":3,"name":"Codex","item":"https://codingplan.fyi/platforms/codex/"}]}]}</script>
+<link rel="stylesheet" href="/styles/design-system.css?v=88374cd95a">
+<script src="/scripts/number-display.js?v=c42af79c1b" defer></script>
+<script src="/scripts/platform-guide.js?v=eb39249fa5" defer></script>
+<script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
+<link rel="stylesheet" href="/styles/ui-components.css?v=d2bf1b5a58">
+<link rel="stylesheet" href="/styles/ui-help.css?v=50cda6ca65">
+</head>
+<body class="platform-guide">
+  <a class="guide-skip" href="#guide-content">跳到介绍正文</a>
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/" aria-current="page">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/articles/">文章</a>
+    <a href="/updates/">预告与更新</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="priceBasisLabel">综合单价口径</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="priceBasisLabel" title="首月价缺失时使用每月价格；按量 API 报价和 Token 额度不变。">
+            <button type="button" data-settings-price-basis="firstMonth" aria-pressed="true">首月价格</button>
+            <button type="button" data-settings-price-basis="monthly" aria-pressed="false">每月价格</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="guide-shell">
+    <nav class="guide-breadcrumb" aria-label="面包屑"><a href="/">Coding Plan</a><span>/</span><a href="/platforms/">平台介绍</a><span>/</span><span aria-current="page">Codex</span></nav>
+    <header class="guide-hero">
+      <div class="guide-hero-copy">
+        <p class="guide-eyebrow">平台介绍 · 可以购买</p>
+        <h1>Codex</h1>
+        <p class="guide-lead">Codex 是 OpenAI 的编程 Agent，可通过 ChatGPT 订阅登录使用，也可使用 API Key 按量付费。选择个人订阅时，先看常用模型、速度档和共享用量，再比较套餐价格。</p>
+        <div class="guide-actions"><a class="guide-button" href="/plans/?platform=codex">查看套餐对比 →</a><a class="guide-button secondary" href="https://learn.chatgpt.com/docs/pricing">查看官网 <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></div>
+        <p class="guide-dates">介绍更新 <time datetime="2026-10-24">2026-10-24</time><span>·</span>套餐与模型记录 <time datetime="2026-10-24">2026-10-24</time></p>
+      </div>
+      <div class="guide-monogram" aria-hidden="true">Cx</div>
+    </header>
+    <div class="guide-layout">
+      <nav class="guide-toc" aria-label="本页目录"><p>本页内容</p><a href="#overview"><span>01</span>适合什么人</a><a href="#plans"><span>02</span>个人套餐怎么选</a><a href="#models"><span>03</span>模型与使用范围</a><a href="#speed"><span>04</span>速度与消耗倍率</a><a href="#usage"><span>05</span>共享用量与 Token 参考</a><a href="#tools"><span>06</span>登录与查看余量</a><a href="#related"><span>07</span>继续比较</a><a href="#sources"><span>08</span>官方资料</a></nav>
+      <main id="guide-content" class="guide-content"><section id="overview" class="guide-section"><h2>适合什么人</h2><p>希望使用 OpenAI 官方模型完成代码实现、排错和项目任务，可以比较 Codex 个人订阅。CLI、编辑器扩展与其他客户端的权限受套餐和开放进度影响；先确认自己需要的入口，再选档位。</p>
+<p>订阅与 API Key 是两种付费方式：用 ChatGPT 账号登录消耗订阅用量；使用 API Key 按 API 规则收费，订阅月费不等于通用 API 余额。</p>
+</section>
+<section id="plans" class="guide-section"><h2>个人套餐怎么选</h2><div class="guide-plan-grid"><article class="guide-plan">
+    <h3>Free</h3><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span><p class="guide-price">$0<small>/ 月</small></p>
+    <dl><div><dt>首月价格</dt><dd>$0</dd></div><div><dt>按季支付</dt><dd>$0</dd></div><div><dt>按年支付</dt><dd>$0</dd></div></dl>
+    <ul><li>桌面端 GPT-6 Luna 标准速度，按账号逐步开放</li></ul>
+    <p class="guide-plan-advice">可先体验桌面端逐步开放的 Luna 标准速度；具体权限以账号为准。</p>
+  </article><article class="guide-plan">
+    <h3>Go</h3><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span><p class="guide-price">$8<small>/ 月</small></p>
+    <dl><div><dt>首月价格</dt><dd>$8</dd></div><div><dt>按季支付</dt><dd>$24</dd></div><div><dt>按年支付</dt><dd>$96</dd></div></dl>
+    <ul><li>桌面端 GPT-6 Luna 标准速度，按账号逐步开放</li></ul>
+    <p class="guide-plan-advice">适合轻量体验；不要按 Plus 的模型与客户端权限判断。</p>
+  </article><article class="guide-plan">
+    <h3>Plus</h3><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span><p class="guide-price">$20<small>/ 月</small></p>
+    <dl><div><dt>首月价格</dt><dd>$20</dd></div><div><dt>按季支付</dt><dd>$60</dd></div><div><dt>按年支付</dt><dd>$240</dd></div></dl>
+
+    <p class="guide-plan-advice">适合从日常编程任务开始，观察五小时窗口和每周消耗。</p>
+  </article><article class="guide-plan">
+    <h3>Pro $100</h3><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span><p class="guide-price">$100<small>/ 月</small></p>
+    <dl><div><dt>首月价格</dt><dd>$100</dd></div><div><dt>按季支付</dt><dd>$300</dd></div><div><dt>按年支付</dt><dd>$1,200</dd></div></dl>
+
+    <p class="guide-plan-advice">适合 Plus 用量不足、需要取消独立五小时限制的用户；仍有周限制。</p>
+  </article><article class="guide-plan">
+    <h3>Pro $200</h3><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span><p class="guide-price">$200<small>/ 月</small></p>
+    <dl><div><dt>首月价格</dt><dd>$200</dd></div><div><dt>按季支付</dt><dd>$600</dd></div><div><dt>按年支付</dt><dd>$2,400</dd></div></dl>
+
+    <p class="guide-plan-advice">适合已了解日常模型消耗、希望提高周参考额度的用户。</p>
+  </article><article class="guide-plan">
+    <h3>Pro $500</h3><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span><p class="guide-price">$500<small>/ 月</small></p>
+    <dl><div><dt>首月价格</dt><dd>$500</dd></div><div><dt>按季支付</dt><dd>$1,500</dd></div><div><dt>按年支付</dt><dd>$6,000</dd></div></dl>
+    <ul><li>Ultrafast 资格（依账号与客户端开放情况）</li></ul>
+    <p class="guide-plan-advice">需要更高用量或 Ultrafast 时比较此档；加速同时提高额度消耗。</p>
+  </article></div><p class="guide-muted">部分周期金额按月价或季价换算，仅作比较；是否提供该周期订阅以平台实际提供为准。“不适用”表示没有可用价格，0 表示免费。</p><p>Free、Go 的桌面端 Luna 标准速度按账号逐步开放，不包含 GPT-6.1 Sol 首发权限。需要完整编程工作流时从 Plus 起比较，再根据真实消耗考虑 Pro，避免只按套餐名字判断能力。</p>
+</section>
+<section id="models" class="guide-section"><h2>模型与使用范围</h2><p>本站收录 7 个支持模型；同一模型的不同计费档位合并展示。</p><div class="guide-table-wrap" tabindex="0" role="region" aria-label="套餐支持模型"><table><caption>套餐支持模型</caption><thead><tr><th scope="col">模型</th><th scope="col">支持套餐</th></tr></thead><tbody><tr><th scope="row">GPT-6-Astra</th><td>Plus、Pro $100、Pro $200、Pro $500</td></tr><tr><th scope="row">GPT-6.1-Sol</th><td>Plus、Pro $100、Pro $200、Pro $500</td></tr><tr><th scope="row">GPT-6-Luna</th><td>Free、Go、Plus、Pro $100、Pro $200、Pro $500</td></tr><tr><th scope="row">GPT-6-Sol</th><td>Plus、Pro $100、Pro $200、Pro $500</td></tr><tr><th scope="row">GPT-5.6-Sol</th><td>Plus、Pro $100、Pro $200、Pro $500</td></tr><tr><th scope="row">GPT-5.6-Luna</th><td>Plus、Pro $100、Pro $200、Pro $500</td></tr><tr><th scope="row">GPT-5.6-Terra</th><td>Plus、Pro $100、Pro $200、Pro $500</td></tr></tbody></table></div><p class="guide-muted">模型记录日期：2026-10-24。可选名称与实际服务版本可能不同，使用前请核对官方说明。</p><p>模型权限与速度权限需要分别看。GPT-6.1 Sol 可用于复杂代码任务，Luna 更适合范围明确的日常任务；具体可选项由账号、客户端和开放进度决定。</p>
+</section>
+<section id="speed" class="guide-section"><h2>速度与消耗倍率</h2><p>Standard、Fast、Ultrafast 是同模型的速度档。Fast 消耗包含的订阅用量为 Standard 的 2.5 倍，另购 Credits 为 2 倍；Ultrafast 则分别为 8 倍、6 倍。消耗倍率不等于完成所有任务都能按同样倍数提速。</p>
+<p>个人订阅中的 Ultrafast 目前限 Pro $500，支持 GPT-6 Astra 和 GPT-6.1 Sol，仍取决于客户端开放情况。使用 API Key 时遵循 API 计费，不能套用上述订阅或 Credits 倍率。</p>
+</section>
+<section id="usage" class="guide-section"><h2>共享用量与 Token 参考</h2><div class="guide-usage-comparison" data-guide-usage><div class="guide-table-wrap" tabindex="0" role="region" aria-label="月 Token 参考量"><table><caption>月 Token 参考量（<span data-guide-token-unit>亿</span> Token）</caption><thead><tr><th scope="col">模型</th><th scope="col">时段 / 档位</th><th scope="col">Free</th><th scope="col">Go</th><th scope="col">Plus</th><th scope="col">Pro $100</th><th scope="col">Pro $200</th><th scope="col">Pro $500</th></tr></thead><tbody><tr><th scope="row">GPT-6-Astra</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="165.4">1.65</span></td><td><span data-guide-token-m="827.1">8.27</span></td><td><span data-guide-token-m="1654.1">16.54</span></td><td><span data-guide-token-m="4135.3">41.35</span></td></tr><tr><th scope="row">GPT-6-Astra</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="66.2">0.66</span></td><td><span data-guide-token-m="330.8">3.31</span></td><td><span data-guide-token-m="661.6">6.62</span></td><td><span data-guide-token-m="1654.1">16.54</span></td></tr><tr><th scope="row">GPT-6-Astra</th><td>Ultrafast</td><td>未收录</td><td>未收录</td><td>未收录</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="516.9">5.17</span></td></tr><tr><th scope="row">GPT-6.1-Sol</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="1002.5">10.03</span></td><td><span data-guide-token-m="5012.5">50.13</span></td><td><span data-guide-token-m="10024.9">100</span></td><td><span data-guide-token-m="25062.3">251</span></td></tr><tr><th scope="row">GPT-6.1-Sol</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="401">4.01</span></td><td><span data-guide-token-m="2005">20.05</span></td><td><span data-guide-token-m="4010">40.10</span></td><td><span data-guide-token-m="10024.9">100</span></td></tr><tr><th scope="row">GPT-6.1-Sol</th><td>Ultrafast</td><td>未收录</td><td>未收录</td><td>未收录</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="3132.8">31.33</span></td></tr><tr><th scope="row">GPT-6-Luna</th><td>常规</td><td>待确认</td><td>待确认</td><td><span data-guide-token-m="16541.1">165</span></td><td><span data-guide-token-m="82705.7">827</span></td><td><span data-guide-token-m="165411.3">1,654</span></td><td><span data-guide-token-m="413528.3">4,135</span></td></tr><tr><th scope="row">GPT-6-Luna</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="6616.5">66.17</span></td><td><span data-guide-token-m="33082.3">331</span></td><td><span data-guide-token-m="66164.5">662</span></td><td><span data-guide-token-m="165411.3">1,654</span></td></tr><tr><th scope="row">GPT-6-Sol</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="827.1">8.27</span></td><td><span data-guide-token-m="4135.3">41.35</span></td><td><span data-guide-token-m="8270.6">82.71</span></td><td><span data-guide-token-m="20676.4">207</span></td></tr><tr><th scope="row">GPT-5.6-Sol</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="642.7">6.43</span></td><td><span data-guide-token-m="3213.3">32.13</span></td><td><span data-guide-token-m="6426.6">64.27</span></td><td><span data-guide-token-m="16066.6">161</span></td></tr><tr><th scope="row">GPT-5.6-Luna</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="8033.3">80.33</span></td><td><span data-guide-token-m="40166.4">402</span></td><td><span data-guide-token-m="80332.8">803</span></td><td><span data-guide-token-m="200832">2,008</span></td></tr><tr><th scope="row">GPT-5.6-Terra</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="803.3">8.03</span></td><td><span data-guide-token-m="4016.6">40.17</span></td><td><span data-guide-token-m="8033.3">80.33</span></td><td><span data-guide-token-m="20083.2">201</span></td></tr><tr><th scope="row">GPT-6-Sol</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="330.8">3.31</span></td><td><span data-guide-token-m="1654.1">16.54</span></td><td><span data-guide-token-m="3308.2">33.08</span></td><td><span data-guide-token-m="8270.6">82.71</span></td></tr><tr><th scope="row">GPT-5.6-Sol</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="257.1">2.57</span></td><td><span data-guide-token-m="1285.3">12.85</span></td><td><span data-guide-token-m="2570.6">25.71</span></td><td><span data-guide-token-m="6426.6">64.27</span></td></tr><tr><th scope="row">GPT-5.6-Luna</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="3213.3">32.13</span></td><td><span data-guide-token-m="16066.6">161</span></td><td><span data-guide-token-m="32133.1">321</span></td><td><span data-guide-token-m="80332.8">803</span></td></tr><tr><th scope="row">GPT-5.6-Terra</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="321.3">3.21</span></td><td><span data-guide-token-m="1606.7">16.07</span></td><td><span data-guide-token-m="3213.3">32.13</span></td><td><span data-guide-token-m="8033.3">80.33</span></td></tr></tbody></table></div><details class="guide-usage-details"><summary>查看每 5 小时与每周参考量</summary><div class="guide-table-wrap" tabindex="0" role="region" aria-label="每 5 小时 Token 参考量"><table><caption>每 5 小时 Token 参考量（<span data-guide-token-unit>亿</span> Token）</caption><thead><tr><th scope="col">模型</th><th scope="col">时段 / 档位</th><th scope="col">Free</th><th scope="col">Go</th><th scope="col">Plus</th><th scope="col">Pro $100</th><th scope="col">Pro $200</th><th scope="col">Pro $500</th></tr></thead><tbody><tr><th scope="row">GPT-6-Astra</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="6.4613794122">0.06</span></td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">GPT-6-Astra</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="2.5845517649">0.03</span></td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">GPT-6-Astra</th><td>Ultrafast</td><td>未收录</td><td>未收录</td><td>未收录</td><td>未收录</td><td>未收录</td><td>不限量</td></tr><tr><th scope="row">GPT-6.1-Sol</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="39.1598752254">0.39</span></td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">GPT-6.1-Sol</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="15.6639500902">0.16</span></td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">GPT-6.1-Sol</th><td>Ultrafast</td><td>未收录</td><td>未收录</td><td>未收录</td><td>未收录</td><td>未收录</td><td>不限量</td></tr><tr><th scope="row">GPT-6-Luna</th><td>常规</td><td>待确认</td><td>待确认</td><td><span data-guide-token-m="646.1379412199">6.46</span></td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">GPT-6-Luna</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="258.455176488">2.58</span></td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">GPT-6-Sol</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="32.306897061">0.32</span></td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">GPT-5.6-Sol</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="25.1040022952">0.25</span></td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">GPT-5.6-Luna</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="313.8000286903">3.14</span></td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">GPT-5.6-Terra</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="31.380002869">0.31</span></td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">GPT-6-Sol</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="12.9227588244">0.13</span></td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">GPT-5.6-Sol</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="10.0416009181">0.10</span></td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">GPT-5.6-Luna</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="125.5200114761">1.26</span></td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">GPT-5.6-Terra</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="12.5520011476">0.13</span></td><td>不限量</td><td>不限量</td><td>不限量</td></tr></tbody></table></div><div class="guide-table-wrap" tabindex="0" role="region" aria-label="每周 Token 参考量"><table><caption>每周 Token 参考量（<span data-guide-token-unit>亿</span> Token）</caption><thead><tr><th scope="col">模型</th><th scope="col">时段 / 档位</th><th scope="col">Free</th><th scope="col">Go</th><th scope="col">Plus</th><th scope="col">Pro $100</th><th scope="col">Pro $200</th><th scope="col">Pro $500</th></tr></thead><tbody><tr><th scope="row">GPT-6-Astra</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="41.3528282381">0.41</span></td><td><span data-guide-token-m="206.7641411904">2.07</span></td><td><span data-guide-token-m="413.5282823807">4.14</span></td><td><span data-guide-token-m="1033.8207059519">10.34</span></td></tr><tr><th scope="row">GPT-6-Astra</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="16.5411312952">0.17</span></td><td><span data-guide-token-m="82.7056564761">0.83</span></td><td><span data-guide-token-m="165.4113129523">1.65</span></td><td><span data-guide-token-m="413.5282823807">4.14</span></td></tr><tr><th scope="row">GPT-6-Astra</th><td>Ultrafast</td><td>未收录</td><td>未收录</td><td>未收录</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="129.227588244">1.29</span></td></tr><tr><th scope="row">GPT-6.1-Sol</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="250.6232014429">2.51</span></td><td><span data-guide-token-m="1253.1160072144">12.53</span></td><td><span data-guide-token-m="2506.2320144287">25.06</span></td><td><span data-guide-token-m="6265.5800360718">62.66</span></td></tr><tr><th scope="row">GPT-6.1-Sol</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="100.2492805771">1.00</span></td><td><span data-guide-token-m="501.2464028857">5.01</span></td><td><span data-guide-token-m="1002.4928057715">10.02</span></td><td><span data-guide-token-m="2506.2320144287">25.06</span></td></tr><tr><th scope="row">GPT-6.1-Sol</th><td>Ultrafast</td><td>未收录</td><td>未收录</td><td>未收录</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="783.197504509">7.83</span></td></tr><tr><th scope="row">GPT-6-Luna</th><td>常规</td><td>待确认</td><td>待确认</td><td><span data-guide-token-m="4135.2828238074">41.35</span></td><td><span data-guide-token-m="20676.4141190371">207</span></td><td><span data-guide-token-m="41352.8282380741">414</span></td><td><span data-guide-token-m="103382.0705951853">1,034</span></td></tr><tr><th scope="row">GPT-6-Luna</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="1654.113129523">16.54</span></td><td><span data-guide-token-m="8270.5656476148">82.71</span></td><td><span data-guide-token-m="16541.1312952297">165</span></td><td><span data-guide-token-m="41352.8282380741">414</span></td></tr><tr><th scope="row">GPT-6-Sol</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="206.7641411904">2.07</span></td><td><span data-guide-token-m="1033.8207059519">10.34</span></td><td><span data-guide-token-m="2067.6414119037">20.68</span></td><td><span data-guide-token-m="5169.1035297593">51.69</span></td></tr><tr><th scope="row">GPT-5.6-Sol</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="160.6656146894">1.61</span></td><td><span data-guide-token-m="803.3280734471">8.03</span></td><td><span data-guide-token-m="1606.6561468943">16.07</span></td><td><span data-guide-token-m="4016.6403672357">40.17</span></td></tr><tr><th scope="row">GPT-5.6-Luna</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="2008.3201836178">20.08</span></td><td><span data-guide-token-m="10041.6009180892">100</span></td><td><span data-guide-token-m="20083.2018361784">201</span></td><td><span data-guide-token-m="50208.0045904461">502</span></td></tr><tr><th scope="row">GPT-5.6-Terra</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="200.8320183618">2.01</span></td><td><span data-guide-token-m="1004.1600918089">10.04</span></td><td><span data-guide-token-m="2008.3201836178">20.08</span></td><td><span data-guide-token-m="5020.8004590446">50.21</span></td></tr><tr><th scope="row">GPT-6-Sol</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="82.7056564761">0.83</span></td><td><span data-guide-token-m="413.5282823807">4.14</span></td><td><span data-guide-token-m="827.0565647615">8.27</span></td><td><span data-guide-token-m="2067.6414119037">20.68</span></td></tr><tr><th scope="row">GPT-5.6-Sol</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="64.2662458758">0.64</span></td><td><span data-guide-token-m="321.3312293789">3.21</span></td><td><span data-guide-token-m="642.6624587577">6.43</span></td><td><span data-guide-token-m="1606.6561468943">16.07</span></td></tr><tr><th scope="row">GPT-5.6-Luna</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="803.3280734471">8.03</span></td><td><span data-guide-token-m="4016.6403672357">40.17</span></td><td><span data-guide-token-m="8033.2807344714">80.33</span></td><td><span data-guide-token-m="20083.2018361785">201</span></td></tr><tr><th scope="row">GPT-5.6-Terra</th><td>Fast</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="80.3328073447">0.80</span></td><td><span data-guide-token-m="401.6640367236">4.02</span></td><td><span data-guide-token-m="803.3280734471">8.03</span></td><td><span data-guide-token-m="2008.3201836178">20.08</span></td></tr></tbody></table></div></details></div><p>Plus 有五小时窗口，Pro 当前没有独立五小时限制，仍需观察周用量。Codex 与 ChatGPT Work 等共享额度功能会互相影响剩余量，以用量面板和重置时间为准。</p>
+<p>表中的 Token 数是站内经验估算，不是官方固定配额。参考值按缓存命中率 95%、输出占总 Token 的 0.5% 换算；模型扣减系数来自经验估计，不能把它当作 API 美元价或可购买 Credits。</p>
+<p>周、月参考以 Pro $100 同模型为基准：Plus 为 1/5，Pro $200 为 2 倍，Pro $500 为 5 倍；这是估算关系。Plus 五小时暂按本档周参考的 1/6.4，月参考按周 ×4 比较，不是额外一份月额度池。不同模型、速度档和窗口的数字不能相加；Free、Go 的精确 Token 量保持待确认。</p>
+<p>长上下文、更多思考输出或较低缓存命中都会改变实际消耗。官方另购 Credits 价格也不能反推出包含的订阅额度，选择时应结合真实任务观察。</p>
+</section>
+<section id="tools" class="guide-section"><h2>登录与查看余量</h2><p>在官方客户端选择 ChatGPT 登录使用订阅；如选 API Key，先确认所用 API 账号、项目和付费方式。CLI 内可用 <code>/model</code> 查看模型、<code>/status</code> 查看当前用量，速度设置与模型选择分别检查。</p>
+<p>若额度耗尽，先判断耗尽的是哪个共享窗口，再决定等待、升档或购买 Credits。购买前确认所在地支持、网络及支付条件；本站将该平台标为需要境外网络与支付条件。</p>
+</section>
+<section id="related" class="guide-section"><h2>继续比较</h2><p>偏好完整编辑器工作流时可比较 Cursor，但其内置模型和额外计费与 Codex 订阅分别计算；需要国产模型组合时可比较 OpenCode。</p>
+<div class="guide-related"><a class="guide-related-card" href="/platforms/cursor/"><strong>Cursor</strong><span>了解 Cursor 的 X Subscription 与旧 Pro 系列差异，比较个人套餐、Grok 与 Composer 共享周额度、第三方模型费用和编辑器、CLI、SDK 的使用方式。</span><span>阅读平台介绍 →</span></a><a class="guide-related-card" href="/platforms/opencode/"><strong>OpenCode Go / Go Plus</strong><span>了解 OpenCode Go / Go Plus 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。</span><span>阅读平台介绍 →</span></a></div></section>
+<section id="sources" class="guide-section"><h2>官方资料</h2><ul class="guide-sources"><li><a href="https://learn.chatgpt.com/docs/pricing">Codex 官方价格与订阅</a><span>个人套餐、用量、Credits 和 API Key 方式。</span></li><li><a href="https://learn.chatgpt.com/docs/models">Codex 模型</a><span>型号、账号与客户端开放范围。</span></li><li><a href="https://learn.chatgpt.com/docs/agent-configuration/speed">Codex 速度档</a><span>Fast、Ultrafast 的资格与消耗倍率。</span></li></ul></section></main>
+    </div>
+    <footer class="guide-footer"><p>价格、活动与可用模型可能变化，购买和接入前请核对官方页面。本站的选择建议不代表服务承诺。</p><div><a href="/platforms/">全部平台</a><a href="/plans/">套餐对比</a><a href="/">返回首页</a><a href="https://github.com/wmpeng/codingplan/issues">反馈资料问题</a></div></footer>
+  </div>
+</body>
+</html>

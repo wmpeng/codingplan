@@ -10,7 +10,7 @@
 
 ## 平台介绍
 
-[Command Code](https://codingplan.fyi/platforms/command-code/) · [Cursor](https://codingplan.fyi/platforms/cursor/) · [MiniMax M Plan](https://codingplan.fyi/platforms/minimax/) · [OpenCode Go / Go Plus](https://codingplan.fyi/platforms/opencode/) · [智谱 GLM Coding Plan](https://codingplan.fyi/platforms/zhipu/) · [全部介绍](https://codingplan.fyi/platforms/)
+[字节·方舟 Coding Plan](https://codingplan.fyi/platforms/bytedance-ark/) · [Codex](https://codingplan.fyi/platforms/codex/) · [Command Code](https://codingplan.fyi/platforms/command-code/) · [Cursor](https://codingplan.fyi/platforms/cursor/) · [DeepSeek 官方 API](https://codingplan.fyi/platforms/deepseek-official/) · [Kimi Code](https://codingplan.fyi/platforms/kimi/) · [MiniMax M Plan](https://codingplan.fyi/platforms/minimax/) · [OpenCode Go / Go Plus](https://codingplan.fyi/platforms/opencode/) · [智谱 GLM Coding Plan](https://codingplan.fyi/platforms/zhipu/) · [全部介绍](https://codingplan.fyi/platforms/)
 
 ## 目录
 

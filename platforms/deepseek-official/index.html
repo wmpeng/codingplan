@@ -1,0 +1,126 @@
+<!-- Generated platform guide; edit data/platforms/pages/content instead. -->
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<script src="/scripts/event-collect.js?v=e3ae87fa58" defer></script>
+<script src="/scripts/event-collect-config.js?v=fe6767a8a0" defer></script>
+<script src="/scripts/event-collect-site.js?v=f2aa8e4c89" defer></script>
+<script src="/scripts/ui-core.js?v=4c26d7d716"></script>
+<script src="/scripts/ui-help.js?v=b8624088b6"></script>
+<script src="/scripts/site-features.js?v=af13f3915f"></script>
+<script src="/scripts/ui-dialog.js?v=632fc11cea" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
+<script src="/scripts/change-notices.js?v=4c33ae13c0"></script>
+<link rel="stylesheet" href="/styles/change-notices.css?v=fc8ec4f748">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeepSeek 官方 API：价格、模型与使用指南 - Coding Plan</title>
+<meta name="description" content="查看 DeepSeek 官方 API 的分模型峰谷价格，了解缓存与输出计费、Search/Fetch 费用、兼容端点及按量使用方式。">
+  <link rel="canonical" href="https://codingplan.fyi/platforms/deepseek-official/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="Coding Plan">
+  <meta property="og:title" content="DeepSeek 官方 API：价格、模型与使用指南 - Coding Plan">
+  <meta property="og:description" content="查看 DeepSeek 官方 API 的分模型峰谷价格，了解缓存与输出计费、Search/Fetch 费用、兼容端点及按量使用方式。">
+  <meta property="og:url" content="https://codingplan.fyi/platforms/deepseek-official/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DeepSeek 官方 API：价格、模型与使用指南 - Coding Plan">
+  <meta name="twitter:description" content="查看 DeepSeek 官方 API 的分模型峰谷价格，了解缓存与输出计费、Search/Fetch 费用、兼容端点及按量使用方式。">
+  <link rel="icon" href="/favicon.ico?v=260924a">
+  <link rel="stylesheet" href="/styles/shared.css?v=07dd7370e2">
+  <link rel="stylesheet" href="/styles/tool-page.css?v=178468555f">
+  <link rel="stylesheet" href="/styles/platform-guide.css?v=cf1c74f518">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://codingplan.fyi/platforms/deepseek-official/","url":"https://codingplan.fyi/platforms/deepseek-official/","name":"DeepSeek 官方 API：价格、模型与使用指南 - Coding Plan","description":"查看 DeepSeek 官方 API 的分模型峰谷价格，了解缓存与输出计费、Search/Fetch 费用、兼容端点及按量使用方式。","inLanguage":"zh-CN","datePublished":"2026-10-24","dateModified":"2026-10-24","isPartOf":{"@type":"WebSite","name":"Coding Plan","url":"https://codingplan.fyi/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Coding Plan","item":"https://codingplan.fyi/"},{"@type":"ListItem","position":2,"name":"平台介绍","item":"https://codingplan.fyi/platforms/"},{"@type":"ListItem","position":3,"name":"DeepSeek 官方 API","item":"https://codingplan.fyi/platforms/deepseek-official/"}]}]}</script>
+<link rel="stylesheet" href="/styles/design-system.css?v=88374cd95a">
+<script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
+<link rel="stylesheet" href="/styles/ui-components.css?v=d2bf1b5a58">
+<link rel="stylesheet" href="/styles/ui-help.css?v=50cda6ca65">
+</head>
+<body class="platform-guide">
+  <a class="guide-skip" href="#guide-content">跳到介绍正文</a>
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/" aria-current="page">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/articles/">文章</a>
+    <a href="/updates/">预告与更新</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="priceBasisLabel">综合单价口径</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="priceBasisLabel" title="首月价缺失时使用每月价格；按量 API 报价和 Token 额度不变。">
+            <button type="button" data-settings-price-basis="firstMonth" aria-pressed="true">首月价格</button>
+            <button type="button" data-settings-price-basis="monthly" aria-pressed="false">每月价格</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="guide-shell">
+    <nav class="guide-breadcrumb" aria-label="面包屑"><a href="/">Coding Plan</a><span>/</span><a href="/platforms/">平台介绍</a><span>/</span><span aria-current="page">DeepSeek 官方 API</span></nav>
+    <header class="guide-hero">
+      <div class="guide-hero-copy">
+        <p class="guide-eyebrow">平台介绍 · 可以购买</p>
+        <h1>DeepSeek 官方 API</h1>
+        <p class="guide-lead">DeepSeek 官方 API 按实际调用计费，适合希望直接使用 DeepSeek 模型、无需按月购买固定订阅的用户。预算取决于输入、缓存、输出和额外工具调用，充值金额不是固定 Token 配额。</p>
+        <div class="guide-actions"><a class="guide-button" href="/pricing/?platform=deepseek-official">查看 API 价格 →</a><a class="guide-button secondary" href="https://platform.deepseek.com/">查看官网 <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></div>
+        <p class="guide-dates">介绍更新 <time datetime="2026-10-24">2026-10-24</time><span>·</span>套餐与模型记录 <time datetime="2026-10-19">2026-10-19</time></p>
+      </div>
+      <div class="guide-monogram" aria-hidden="true">DS</div>
+    </header>
+    <div class="guide-layout">
+      <nav class="guide-toc" aria-label="本页目录"><p>本页内容</p><a href="#overview"><span>01</span>适合什么人</a><a href="#changes"><span>02</span>变更预告</a><a href="#pricing"><span>03</span>模型与按量价格</a><a href="#models"><span>04</span>模型名称与实际版本</a><a href="#tools-billing"><span>05</span>搜索与抓取另计费用</a><a href="#tools"><span>06</span>接入与预算管理</a><a href="#related"><span>07</span>继续比较</a><a href="#sources"><span>08</span>官方资料</a></nav>
+      <main id="guide-content" class="guide-content"><section id="overview" class="guide-section"><h2>适合什么人</h2><p>主要使用 DeepSeek、调用量不固定，或需要按实际消耗支付费用时，可以考虑官方 API。与固定月费订阅比较时，应按自己的输入、缓存与输出组成估计成本，而不只看其中一项单价。</p>
+<p>这是开放平台 API，与免费网页对话分别使用。它没有订阅月费对应的固定 Token 包，余额可支持多少工作取决于实际任务。</p>
+</section>
+<section id="changes" class="guide-section"><h2>变更预告</h2><div class="change-notice-list" data-change-notices><article class="change-notice" data-change-notice="deepseek-server-tools-billing-20261101" data-change-date="2026-11-01"><h3>DeepSeek Server 端 Search / Fetch 开始收费</h3><p class="change-notice-time">2026-11-01 起（公告计划）</p><p>Server端Search / Fetch调用：当前免费 → 11月1日00:00北京时间起，每1000次成功请求5元</p><p class="change-notice-scope">涉及：DeepSeek</p><a href="/updates/#change-deepseek-server-tools-billing-20261101">查看详情 →</a></article></div></section>
+<section id="pricing" class="guide-section"><h2>模型与按量价格</h2><div class="guide-table-wrap" tabindex="0" role="region" aria-label="按量 API价格（每百万 Token）"><table><caption>按量 API价格（每百万 Token）</caption><thead><tr><th scope="col">模型</th><th scope="col">档位</th><th scope="col">输入</th><th scope="col">缓存读取</th><th scope="col">输出</th></tr></thead><tbody><tr><th scope="row">DeepSeek-V4.1-Flash-1017</th><td>[谷]</td><td>¥1</td><td>¥0.02</td><td>¥4</td></tr><tr><th scope="row">DeepSeek-V4.1-Flash-1017</th><td>[峰]</td><td>¥2</td><td>¥0.04</td><td>¥8</td></tr><tr><th scope="row">DeepSeek-V4-Pro-0813</th><td>[谷]</td><td>¥4.50</td><td>¥0.15</td><td>¥13.50</td></tr><tr><th scope="row">DeepSeek-V4-Pro-0813</th><td>[峰]</td><td>¥9</td><td>¥0.30</td><td>¥27</td></tr></tbody></table></div><p>独立Search与Fetch API分别按每1000次成功请求5元计费，不包含在模型Token费率中；DeepSeek Harness、Claude Code、Codex中的Server端Search/Fetch工具调用当前免费，官方公布2026-11-01 00:00北京时间起按次收费。</p><ul class="guide-muted"><li>DeepSeek-V4.1-Flash-1017 · [谷]：API模型名deepseek-flash，当前实际版本DeepSeek-V4.1-Flash-1017；旧Flash模型名为兼容入口，按当前版本价格计费。空闲按表列价，为高峰的一半。 高峰为北京时间周一至周五（不含中国法定节假日）09:00–12:00、14:00–18:00，其余及法定节假日全天为谷时。</li><li>DeepSeek-V4.1-Flash-1017 · [峰]：API模型名deepseek-flash，当前实际版本DeepSeek-V4.1-Flash-1017；旧Flash模型名为兼容入口，按当前版本价格计费。高峰按表列价。 高峰为北京时间周一至周五（不含中国法定节假日）09:00–12:00、14:00–18:00，其余及法定节假日全天为谷时。</li><li>DeepSeek-V4-Pro-0813 · [谷]：官方已撤销原定 2026-09-14 停服/路由替换安排；V4 Pro 继续提供服务，计费不变。空闲时段价格为高峰的一半。 高峰为北京时间周一至周五（不含中国法定节假日）09:00–12:00、14:00–18:00，其余及法定节假日全天为谷时。</li><li>DeepSeek-V4-Pro-0813 · [峰]：官方已撤销原定 2026-09-14 停服/路由替换安排；V4 Pro 继续提供服务，计费不变。高峰为北京时间周一至周五 09:00–12:00、14:00–18:00。 高峰为北京时间周一至周五（不含中国法定节假日）09:00–12:00、14:00–18:00，其余及法定节假日全天为谷时。</li></ul><p>输入分为缓存命中和未命中，输出另计费；不能把缓存低价用于全部输入。峰谷档位表示同一模型在不同时段的价格，不是两个可相加的额度池。价格按每百万 Token 展示，充值也不保证无限调用。</p>
+<p>高峰为北京时间周一至周五（不含中国法定节假日）09:00–12:00、14:00–18:00；其他时段及法定节假日全天为空闲时段，空闲价格为高峰的一半。需要持续运行的任务，应同时考虑高峰账单。</p>
+</section>
+<section id="models" class="guide-section"><h2>模型名称与实际版本</h2><p>本站收录 2 个支持模型；同一模型的不同计费档位合并展示。</p><div class="guide-table-wrap" tabindex="0" role="region" aria-label="套餐支持模型"><table><caption>套餐支持模型</caption><thead><tr><th scope="col">模型</th><th scope="col">支持套餐</th></tr></thead><tbody><tr><th scope="row">DeepSeek-V4.1-Flash-1017</th><td>按量 API</td></tr><tr><th scope="row">DeepSeek-V4-Pro-0813</th><td>按量 API</td></tr></tbody></table></div><p class="guide-muted">模型记录日期：2026-10-19。可选名称与实际服务版本可能不同，使用前请核对官方说明。</p><p>调用 Flash 使用 <code>deepseek-flash</code>；当前服务版本为 DeepSeek-V4.1-Flash-1017。旧 Flash 兼容名称仍可能被接受，但不代表旧版本模型仍独立提供服务。V4 Pro 使用 <code>deepseek-v4-pro</code>，两者的输入能力和价格不同。</p>
+</section>
+<section id="tools-billing" class="guide-section"><h2>搜索与抓取另计费用</h2><p>模型 Token 费用与 Search／Fetch 请求费用分开。独立 Search、Fetch API 各为每千次成功请求 5 元，不能按“模型支持工具调用”理解为这些服务全部免费。</p>
+<p>在 DeepSeek Harness、Claude Code、Codex 中使用 DeepSeek API 时，Server 端 Search／Fetch 当前免费；官方公布从北京时间 2026-11-01 00:00 起按次收费。规划跨过该日期的自动任务时，应把工具费用纳入预算。</p>
+</section>
+<section id="tools" class="guide-section"><h2>接入与预算管理</h2><p>在开放平台创建 API Key 并充值，按官方文档选择协议：OpenAI 格式 Base URL 为 <code>https://api.deepseek.com</code>，Anthropic 格式为 <code>https://api.deepseek.com/anthropic</code>。具体工具的字段、模型名和思考设置应按对应官方接入指南填写。</p>
+<p>先运行小任务查看账单中的输入、缓存和输出，再估计长期支出。控制台余额、并发及服务限流都可能影响连续调用，不能把“按量计费”理解为没有任何使用限制。密钥只保存在受信任的客户端或服务端。</p>
+</section>
+<section id="related" class="guide-section"><h2>继续比较</h2><p>使用量稳定且主要在个人编程工具中工作时，可将账单与方舟 Coding Plan 或 OpenCode 订阅比较；同时检查其中的具体 DeepSeek 版本、共享额度和使用范围。</p>
+<div class="guide-related"><a class="guide-related-card" href="/platforms/bytedance-ark/"><strong>字节·方舟 Coding Plan</strong><span>了解方舟 Coding Plan Lite 与 Pro 的价格、多模型接入、专用端点和共享窗口，区分历史测量、推算额度与 Agent Plan。</span><span>阅读平台介绍 →</span></a><a class="guide-related-card" href="/platforms/opencode/"><strong>OpenCode Go / Go Plus</strong><span>了解 OpenCode Go / Go Plus 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。</span><span>阅读平台介绍 →</span></a></div></section>
+<section id="sources" class="guide-section"><h2>官方资料</h2><ul class="guide-sources"><li><a href="https://platform.deepseek.com/">DeepSeek 开放平台</a><span>创建 API Key、充值并查看账单。</span></li><li><a href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing/">模型与价格</a><span>模型版本、峰谷单价和额外工具计费。</span></li><li><a href="https://api-docs.deepseek.com/zh-cn/">首次调用 API</a><span>兼容接口与请求示例。</span></li></ul></section></main>
+    </div>
+    <footer class="guide-footer"><p>价格、活动与可用模型可能变化，购买和接入前请核对官方页面。本站的选择建议不代表服务承诺。</p><div><a href="/platforms/">全部平台</a><a href="/plans/">套餐对比</a><a href="/">返回首页</a><a href="https://github.com/wmpeng/codingplan/issues">反馈资料问题</a></div></footer>
+  </div>
+</body>
+</html>
