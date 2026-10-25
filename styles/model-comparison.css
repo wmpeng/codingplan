@@ -279,6 +279,7 @@
 .pricing-directory .usage-table-note { min-width: 0; }
 .price-identity { display: flex; align-items: flex-start; gap: 7px; }
 .price-identity > div { min-width: 0; }
+.price-identity > .ui-help { flex: 0 0 auto; margin-left: auto; }
 .price-identity .ui-icon-button { flex-shrink: 0; }
 .price-identity-title { display: flex; align-items: baseline; flex-wrap: wrap; gap: 3px 7px; overflow-wrap: anywhere; }
 .price-identity-title > span { color: var(--text-secondary); }
