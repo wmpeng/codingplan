@@ -102,12 +102,15 @@
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 |
 |---|---|---|---:|---:|---:|---:|
 | [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | - | $1/首月 | - | - | 17.7M | ¥0.3835/M |
+| [Kimi · Pro](https://api.dreamfree.space/c/s/cpyqkimi) | - | ¥199/首月 | 7.64M | 191M | 191M | ¥1.0421/M |
+| [Kimi · Max](https://api.dreamfree.space/c/s/cpyqkimi) | - | ¥699/首月 | 24.44M | 611.1M | 611.1M | ¥1.1439/M |
+| [Kimi · Ultra](https://api.dreamfree.space/c/s/cpyqkimi) | - | ¥1,399/首月 | 48.88M | 1,222.1M | 1,222.1M | ¥1.1447/M |
 | [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | - | $10/首月 | 11.82M | 29.54M | 59.1M | ¥1.1512/M |
 | [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | - | $20/首月 | 17.72M | 44.31M | 88.6M | ¥1.5348/M |
 | [Command Code · Max 10×](https://api.dreamfree.space/c/s/cpcommandcode) | - | $100/首月 | 132.92M | 265.84M | 443.1M | ¥1.5348/M |
 | [Command Code · Max 20×](https://api.dreamfree.space/c/s/cpcommandcode) | - | $200/首月 | 265.84M | 531.68M | 886.1M | ¥1.5348/M |
-| [OpenCode · Go](https://api.dreamfree.space/c/s/cpyqopencode) | - | $10/首月 | 8.86M | 22.15M | 44.3M | ¥1.5348/M |
-| [OpenCode · Go Plus](https://api.dreamfree.space/c/s/cpyqopencode) | - | $40/首月 | 35.45M | 88.61M | 177.2M | ¥1.5348/M |
+
+还有 6 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### Kimi-K3
 
@@ -339,6 +342,10 @@
 
 ## 最近更新
 
+### 2026.10.25
+
+- 补充 Kimi K3.1 Pro 的额度参考：老 Allegretto／Allegro 按各自社区拟合估算；新 Plus／Pro／Max／Ultra 暂按 K3 的 85% 扣额外推，高速版参考量为标准版的一半。新套餐未独立实测，老 Moderato 及未量化的月池仍保留未知。
+
 ### 2026.10.24
 
 - 全站复查现有52条平台与产品线：补Qoder国际版Lite $10/月及分档加赠，MiMo年价采用官网明确人民币总额，腾讯Hy4 preview五折持续至10月30日12:00（北京时间）。
@@ -389,14 +396,6 @@
 - 补齐境内网络与支付条件，境内可用、境内可购买平台名单按当前确认结果筛选。
 - 新增 Cursor 平台与介绍页：收录 X Subscription 五档新套餐及四档存量个人套餐，区分 Grok 共享周额度与第三方模型另行付费；补齐模型价格、上下文和高速档。
 - 复核 AA 与 DeepSWE 评测资料，补齐模型具体输入、输出模态，并确认阶跃星辰支持个人 Harness API。
-
-### 2026.10.12
-
-- 更新多平台当前模型及支持关系，新增GPT-6.1 Sol、Claude 5.5系列、MiniMax M3.1 Flash Preview、Kimi K2.8 Preview、Step 5 Preview等；同步AA/DeepSWE榜单，未有对应记录的分数保持未知
-- MiniMax升级M Plan，Kimi和TRAE国际版区分新订阅与老用户续费；新增腾讯Hy、百度积分制、天翼/京东/超算Token Plan、讯飞成员积分制。
-- 重新核对积分、请求、美元额度和上下文阶梯；MiMo新增峰谷扣减，优云新增模型并更新并发，共绩取消过期限时五折，邀请折扣资格注明核对条件
-- OpenCode新增Go Plus，Ollama采用当前月Credits池，GitHub个人方案按AI Credits计费；动态扣减或缺乏依据的Token量保持未知
-- 保留停售及续费历史，补齐首月优惠、活动期限、型号转发/下线与使用限制；无法读取的当前购买状态明确列为待确认
 
 ## 延伸阅读
 

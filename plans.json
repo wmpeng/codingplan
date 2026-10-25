@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-24T10:33:51Z",
+  "generatedAt": "2026-10-25T08:21:55Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -5385,12 +5385,20 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
+            "fiveHourTokenInM": 36.7951938118,
+            "weeklyTokenInM": 183.9759690589,
             "monthlyTokenInM": "unknown"
           },
-          "pricing": null,
-          "note": "k3.1-pro，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。与其他会员功能共享额度，Token 参考用量未知。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 1000000.0,
+            "cachePerM": 6491.2280701754,
+            "outputPerM": 7894736.842105263,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 0.006491 Token/Token、输出 7.89 Token/Token；该模型适用额度：5小时 3,508,772 Token、每周 17,543,860 Token、每月 未知；是否共享及能否叠加以套餐说明为准；k3.1-pro，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。与其他会员功能共享额度。2026-10-25 老 Allegretto 社区拟合参考；缓存扣减采用样本上限作保守估算，五小时／周窗口按 1∶5，未量化共享月池。抵扣量为未缓存输入等价 Token，参考用量随缓存率和输出占比变化，并非官方固定配额。"
         },
         {
           "slug": "kimi-allegretto--kimi-k3-1-pro--service-highspeed",
@@ -5400,10 +5408,12 @@
           "serviceTier": "高速",
           "method": "multiplied",
           "usage": {
+            "fiveHourTokenInM": 18.3975969059,
+            "weeklyTokenInM": 91.9879845295,
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "k3.1-pro-highspeed，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。模型能力与标准版相同，输出约快 2–3 倍，消耗约为标准版两倍；共享额度，Token 参考用量未知。"
+          "note": "k3.1-pro-highspeed，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。模型能力与标准版相同，输出约快 2–3 倍，消耗约为标准版两倍；共享额度。Token 用量按本档标准版的一半估算，沿用标准版的样本与限制。"
         },
         {
           "slug": "kimi-allegretto--kimi-k3",
@@ -5488,12 +5498,20 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
+            "fiveHourTokenInM": 112.8833387663,
+            "weeklyTokenInM": 564.4166938316,
             "monthlyTokenInM": "unknown"
           },
-          "pricing": null,
-          "note": "k3.1-pro，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。与其他会员功能共享额度，Token 参考用量未知。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 1000000.0,
+            "cachePerM": 5053.4188034188,
+            "outputPerM": 8023504.273504272,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 0.005053 Token/Token、输出 8.02 Token/Token；该模型适用额度：5小时 10,683,761 Token、每周 53,418,803 Token、每月 未知；是否共享及能否叠加以套餐说明为准；k3.1-pro，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。与其他会员功能共享额度。2026-10-25 老 Allegro 社区拟合参考；五小时／周窗口按 1∶5，未量化共享月池。抵扣量为未缓存输入等价 Token，参考用量随缓存率和输出占比变化，并非官方固定配额。"
         },
         {
           "slug": "kimi-allegro--kimi-k3-1-pro--service-highspeed",
@@ -5503,10 +5521,12 @@
           "serviceTier": "高速",
           "method": "multiplied",
           "usage": {
+            "fiveHourTokenInM": 56.4416693832,
+            "weeklyTokenInM": 282.2083469158,
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "k3.1-pro-highspeed，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。模型能力与标准版相同，输出约快 2–3 倍，消耗约为标准版两倍；共享额度，Token 参考用量未知。"
+          "note": "k3.1-pro-highspeed，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。模型能力与标准版相同，输出约快 2–3 倍，消耗约为标准版两倍；共享额度。Token 用量按本档标准版的一半估算，沿用标准版的样本与限制。"
         },
         {
           "slug": "kimi-allegro--kimi-k3",
@@ -5637,12 +5657,21 @@
           "timeTier": null,
           "contextTier": "256K",
           "serviceTier": null,
-          "method": "unknown",
+          "method": "calculated",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 1.527634198,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 38.2,
+            "unitPriceCnyPerM": 2.5922
           },
-          "pricing": null,
-          "note": "k3.1-pro，本档最高 256K 上下文，支持图片和视频；仅支持思考模式，默认 high。与其他会员功能共享额度，Token 参考用量未知。"
+          "pricing": {
+            "currency": null,
+            "inputPerM": 850000.0,
+            "cachePerM": 5100.0,
+            "outputPerM": 6375000.0,
+            "unit": "Token"
+          },
+          "note": "抵扣单价：输入 0.85 Token/Token、缓存读取 0.005100 Token/Token、输出 6.38 Token/Token；套餐共享额度：5小时 120,658 Token、每周 不限量、每月 3,016,439 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；k3.1-pro，本档最高 256K 上下文，支持图片和视频；仅支持思考模式，默认 high。与其他会员功能共享额度。依据老套餐社区样本，暂按 K3 的 85% 扣额估算；新套餐尚未独立实测，绝对池与跨档倍率均为估算，非官方固定 Token 配额。"
         },
         {
           "slug": "kimi-plus-2026--kimi-k2-8-preview",
@@ -5730,12 +5759,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 7.63817099,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 191.0,
+            "unitPriceCnyPerM": 1.0421
           },
           "pricing": null,
-          "note": "k3.1-pro，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。与其他会员功能共享额度，Token 参考用量未知。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；k3.1-pro，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。与其他会员功能共享额度。依据老套餐社区样本，暂按 K3 的 85% 扣额估算；新套餐尚未独立实测，绝对池与跨档倍率均为估算，非官方固定 Token 配额。"
         },
         {
           "slug": "kimi-pro-2026--kimi-k3-1-pro--service-highspeed",
@@ -5745,10 +5777,13 @@
           "serviceTier": "高速",
           "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 3.819085495,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 95.5,
+            "unitPriceCnyPerM": 2.0843
           },
           "pricing": null,
-          "note": "k3.1-pro-highspeed，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。模型能力与标准版相同，输出约快 2–3 倍，消耗约为标准版两倍；共享额度，Token 参考用量未知。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；k3.1-pro-highspeed，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。模型能力与标准版相同，输出约快 2–3 倍，消耗约为标准版两倍；共享额度。Token 用量按本档标准版的一半估算，沿用标准版的样本与限制。"
         },
         {
           "slug": "kimi-pro-2026--kimi-k2-8-preview",
@@ -5852,12 +5887,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 24.4421471678,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 611.1,
+            "unitPriceCnyPerM": 1.1439
           },
           "pricing": null,
-          "note": "k3.1-pro，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。与其他会员功能共享额度，Token 参考用量未知。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；k3.1-pro，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。与其他会员功能共享额度。依据老套餐社区样本，暂按 K3 的 85% 扣额估算；新套餐尚未独立实测，绝对池与跨档倍率均为估算，非官方固定 Token 配额。"
         },
         {
           "slug": "kimi-max-2026--kimi-k3-1-pro--service-highspeed",
@@ -5867,10 +5905,13 @@
           "serviceTier": "高速",
           "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 12.2210735839,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 305.5,
+            "unitPriceCnyPerM": 2.2879
           },
           "pricing": null,
-          "note": "k3.1-pro-highspeed，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。模型能力与标准版相同，输出约快 2–3 倍，消耗约为标准版两倍；共享额度，Token 参考用量未知。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；k3.1-pro-highspeed，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。模型能力与标准版相同，输出约快 2–3 倍，消耗约为标准版两倍；共享额度。Token 用量按本档标准版的一半估算，沿用标准版的样本与限制。"
         },
         {
           "slug": "kimi-max-2026--kimi-k2-8-preview",
@@ -5974,12 +6015,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 48.8842943357,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 1222.1,
+            "unitPriceCnyPerM": 1.1447
           },
           "pricing": null,
-          "note": "k3.1-pro，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。与其他会员功能共享额度，Token 参考用量未知。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；k3.1-pro，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。与其他会员功能共享额度。依据老套餐社区样本，暂按 K3 的 85% 扣额估算；新套餐尚未独立实测，绝对池与跨档倍率均为估算，非官方固定 Token 配额。"
         },
         {
           "slug": "kimi-ultra-2026--kimi-k3-1-pro--service-highspeed",
@@ -5989,10 +6033,13 @@
           "serviceTier": "高速",
           "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 24.4421471678,
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 611.1,
+            "unitPriceCnyPerM": 2.2895
           },
           "pricing": null,
-          "note": "k3.1-pro-highspeed，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。模型能力与标准版相同，输出约快 2–3 倍，消耗约为标准版两倍；共享额度，Token 参考用量未知。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；k3.1-pro-highspeed，最高 1M 上下文，支持图片和视频；仅支持思考模式，默认 high。模型能力与标准版相同，输出约快 2–3 倍，消耗约为标准版两倍；共享额度。Token 用量按本档标准版的一半估算，沿用标准版的样本与限制。"
         },
         {
           "slug": "kimi-ultra-2026--kimi-k2-8-preview",
