@@ -1,5 +1,6 @@
 {
   "schemaVersion": 3,
+  "generatedAt": "2026-10-25T16:02:32Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -1020,7 +1021,7 @@
         },
         {
           "slug": "opencode-go--deepseek-v4-1-flash--gu",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": null,
@@ -1040,11 +1041,11 @@
             "cacheCnyPerM": 0.0204,
             "outputCnyPerM": 4.08
           },
-          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；该模型适用额度：5小时 $16、每周 $40、每月 $80；是否共享及能否叠加以套餐说明为准；高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。；高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。"
+          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；该模型适用额度：5小时 $16、每周 $40、每月 $80；是否共享及能否叠加以套餐说明为准；高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。；调用名称仍为 deepseek-v4.1-flash，实际服务为 1017 版。高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。"
         },
         {
           "slug": "opencode-go--deepseek-v4-1-flash--feng",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": null,
@@ -1064,7 +1065,7 @@
             "cacheCnyPerM": 0.0408,
             "outputCnyPerM": 8.16
           },
-          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；该模型适用额度：5小时 $16、每周 $40、每月 $80；是否共享及能否叠加以套餐说明为准；高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。；高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。"
+          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；该模型适用额度：5小时 $16、每周 $40、每月 $80；是否共享及能否叠加以套餐说明为准；高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。；调用名称仍为 deepseek-v4.1-flash，实际服务为 1017 版。高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。"
         },
         {
           "slug": "opencode-go--deepseek-v4-pro-0813--gu",
@@ -1926,7 +1927,7 @@
         },
         {
           "slug": "opencode-go-plus--deepseek-v4-1-flash--time-offpeak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": null,
@@ -1946,11 +1947,11 @@
             "cacheCnyPerM": 0.0204,
             "outputCnyPerM": 4.08
           },
-          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；该模型适用额度：5小时 $32、每周 $80、每月 $160；是否共享及能否叠加以套餐说明为准；高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。；高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。"
+          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；该模型适用额度：5小时 $32、每周 $80、每月 $160；是否共享及能否叠加以套餐说明为准；高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。；调用名称仍为 deepseek-v4.1-flash，实际服务为 1017 版。高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。"
         },
         {
           "slug": "opencode-go-plus--deepseek-v4-1-flash--time-peak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": null,
@@ -1970,7 +1971,7 @@
             "cacheCnyPerM": 0.0408,
             "outputCnyPerM": 8.16
           },
-          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；该模型适用额度：5小时 $32、每周 $80、每月 $160；是否共享及能否叠加以套餐说明为准；高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。；高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。"
+          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；该模型适用额度：5小时 $32、每周 $80、每月 $160；是否共享及能否叠加以套餐说明为准；高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。；调用名称仍为 deepseek-v4.1-flash，实际服务为 1017 版。高峰为北京时间周一至周五 09:00–12:00、14:00–18:00；其余为空闲。"
         },
         {
           "slug": "opencode-go-plus--deepseek-v4-pro-0813--time-offpeak",
@@ -2554,7 +2555,7 @@
             "unitPriceCnyPerM": 0.1667
           },
           "pricing": null,
-          "note": "参照 Agent Plan 当前系数 1.25 与 2026-08-29 DeepSeek V4 Flash 实测基准推测；工作负载 120K/请求，部分请求约 1.5 倍入账的触发条件仍未知。2026-09-23 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。参照 Agent Plan 当前系数 1.25 与 2026-08-29 DeepSeek V4 Flash 实测基准推测；工作负载 120K/请求，部分请求约 1.5 倍入账的触发条件仍未知。2026-09-23 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
         },
         {
           "slug": "volcengine-coding-lite--deepseek-v4-1-flash--economy",
@@ -2570,7 +2571,7 @@
             "unitPriceCnyPerM": 0.1333
           },
           "pricing": null,
-          "note": "与标准版使用相同模型权重、生成略慢。Token参考量沿用按Agent Plan对应抵扣系数与历史测量推算的口径，非官方固定配额。2026-10-20 00:00至12-30 23:59:59（UTC+8）五折活动；当前参考量按标准版的1.25倍估算。"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。与标准版使用相同模型权重、生成略慢。Token参考量沿用按Agent Plan对应抵扣系数与历史测量推算的口径，非官方固定配额。2026-10-20 00:00至12-30 23:59:59（UTC+8）五折活动；当前参考量按标准版的1.25倍估算。"
         }
       ]
     },
@@ -2795,7 +2796,7 @@
             "unitPriceCnyPerM": 0.1667
           },
           "pricing": null,
-          "note": "参照 Agent Plan 当前系数 1.25 与 2026-08-29 DeepSeek V4 Flash 实测基准推测；工作负载 120K/请求，部分请求约 1.5 倍入账的触发条件仍未知。2026-09-23 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。"
         },
         {
           "slug": "volcengine-coding-pro--deepseek-v4-1-flash--economy",
@@ -2811,7 +2812,7 @@
             "unitPriceCnyPerM": 0.1333
           },
           "pricing": null,
-          "note": "与标准版使用相同模型权重、生成略慢。Token参考量沿用按Agent Plan对应抵扣系数与历史测量推算的口径，非官方固定配额。2026-10-20 00:00至12-30 23:59:59（UTC+8）五折活动；当前参考量按标准版的1.25倍估算。"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。与标准版使用相同模型权重、生成略慢。Token参考量沿用按Agent Plan对应抵扣系数与历史测量推算的口径，非官方固定配额。2026-10-20 00:00至12-30 23:59:59（UTC+8）五折活动；当前参考量按标准版的1.25倍估算。"
         }
       ]
     },
@@ -3096,7 +3097,7 @@
             "outputPerM": 125.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 2K AFP、每周 7K AFP、每月 20K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
+          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 2K AFP、每周 7K AFP、每月 20K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；平台入口未明确日期版本，是否提供 1017 版仍未知。按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
         },
         {
           "slug": "volcengine-agent-small--deepseek-v4-1-flash--economy",
@@ -3118,7 +3119,7 @@
             "outputPerM": 100.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 2K AFP、每周 7K AFP、每月 20K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
+          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 2K AFP、每周 7K AFP、每月 20K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；平台入口未明确日期版本，是否提供 1017 版仍未知。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
         }
       ]
     },
@@ -3426,7 +3427,7 @@
             "outputPerM": 125.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
+          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；平台入口未明确日期版本，是否提供 1017 版仍未知。按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
         },
         {
           "slug": "volcengine-agent-medium--deepseek-v4-1-flash--economy",
@@ -3448,7 +3449,7 @@
             "outputPerM": 100.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
+          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；平台入口未明确日期版本，是否提供 1017 版仍未知。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
         }
       ]
     },
@@ -3756,7 +3757,7 @@
             "outputPerM": 125.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
+          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；平台入口未明确日期版本，是否提供 1017 版仍未知。按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
         },
         {
           "slug": "volcengine-agent-large--deepseek-v4-1-flash--economy",
@@ -3778,7 +3779,7 @@
             "outputPerM": 100.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
+          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；平台入口未明确日期版本，是否提供 1017 版仍未知。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
         }
       ]
     },
@@ -4086,7 +4087,7 @@
             "outputPerM": 125.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
+          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；平台入口未明确日期版本，是否提供 1017 版仍未知。按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
         },
         {
           "slug": "volcengine-agent-max--deepseek-v4-1-flash--economy",
@@ -4108,7 +4109,7 @@
             "outputPerM": 100.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
+          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；平台入口未明确日期版本，是否提供 1017 版仍未知。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
         }
       ]
     },
@@ -6507,7 +6508,7 @@
             "cacheCnyPerM": 0.02,
             "outputCnyPerM": 4.0
           },
-          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
         },
         {
           "slug": "gongji-api--hy3",
@@ -6630,7 +6631,7 @@
             "unitPriceCnyPerM": 0.6447
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-mini--deepseek-v4-flash-vision-exp",
@@ -6796,7 +6797,7 @@
             "unitPriceCnyPerM": 0.6513
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-lite--deepseek-v4-flash-vision-exp",
@@ -6962,7 +6963,7 @@
             "unitPriceCnyPerM": 0.6546
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-basic--deepseek-v4-flash-vision-exp",
@@ -7128,7 +7129,7 @@
             "unitPriceCnyPerM": 0.6566
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-pro--deepseek-v4-flash-vision-exp",
@@ -7294,7 +7295,7 @@
             "unitPriceCnyPerM": 0.6444
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-max--deepseek-v4-flash-vision-exp",
@@ -7460,7 +7461,7 @@
             "unitPriceCnyPerM": 0.6404
           },
           "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。按套餐请求额度和模型单次 3 次扣减计算"
         },
         {
           "slug": "youyun-ultra--deepseek-v4-flash-vision-exp",
@@ -9457,7 +9458,31 @@
             "cacheCnyPerM": 0.0408,
             "outputCnyPerM": 8.16
           },
-          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $60；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。月美元Credits与本地模型运行用量分开；不再应用旧会话/周限额。"
+          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $60；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。；调用名称为 deepseek-v4.1-flash:cloud；与 1017-cloud 标签分别提供。高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。月美元Credits与本地模型运行用量分开；不再应用旧会话/周限额。"
+        },
+        {
+          "slug": "ollama-coding-plan-pro--deepseek-v4-1-flash-1017--time-peak",
+          "modelSlug": "deepseek-v4-1-flash-1017",
+          "timeTier": "峰",
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 2255.9,
+            "unitPriceCnyPerM": 0.06052
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.3,
+            "cachePerM": 0.006,
+            "outputPerM": 1.2,
+            "inputCnyPerM": 2.04,
+            "cacheCnyPerM": 0.0408,
+            "outputCnyPerM": 8.16
+          },
+          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $60；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。；调用名称为 deepseek-v4.1-flash:1017-cloud。高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。月美元Credits与本地模型运行用量分开；不再应用旧会话/周限额。"
         },
         {
           "slug": "ollama-coding-plan-pro--deepseek-v4-1-flash--time-offpeak",
@@ -9481,7 +9506,31 @@
             "cacheCnyPerM": 0.0204,
             "outputCnyPerM": 4.08
           },
-          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $60；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。月美元Credits与本地模型运行用量分开；不再应用旧会话/周限额。"
+          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $60；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。；调用名称为 deepseek-v4.1-flash:cloud；与 1017-cloud 标签分别提供。高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。月美元Credits与本地模型运行用量分开；不再应用旧会话/周限额。"
+        },
+        {
+          "slug": "ollama-coding-plan-pro--deepseek-v4-1-flash-1017--time-offpeak",
+          "modelSlug": "deepseek-v4-1-flash-1017",
+          "timeTier": "谷",
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 4511.9,
+            "unitPriceCnyPerM": 0.02992
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.15,
+            "cachePerM": 0.003,
+            "outputPerM": 0.6,
+            "inputCnyPerM": 1.02,
+            "cacheCnyPerM": 0.0204,
+            "outputCnyPerM": 4.08
+          },
+          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $60；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。；调用名称为 deepseek-v4.1-flash:1017-cloud。高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。月美元Credits与本地模型运行用量分开；不再应用旧会话/周限额。"
         },
         {
           "slug": "ollama-coding-plan-pro--deepseek-v4-pro-0813--time-peak",
@@ -9997,7 +10046,31 @@
             "cacheCnyPerM": 0.0408,
             "outputCnyPerM": 8.16
           },
-          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $300；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。月美元Credits与本地模型运行用量分开；不再应用旧会话/周限额。"
+          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $300；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。；调用名称为 deepseek-v4.1-flash:cloud；与 1017-cloud 标签分别提供。高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。月美元Credits与本地模型运行用量分开；不再应用旧会话/周限额。"
+        },
+        {
+          "slug": "ollama-coding-plan-max--deepseek-v4-1-flash-1017--time-peak",
+          "modelSlug": "deepseek-v4-1-flash-1017",
+          "timeTier": "峰",
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 11279.7,
+            "unitPriceCnyPerM": 0.06052
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.3,
+            "cachePerM": 0.006,
+            "outputPerM": 1.2,
+            "inputCnyPerM": 2.04,
+            "cacheCnyPerM": 0.0408,
+            "outputCnyPerM": 8.16
+          },
+          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $300；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。；调用名称为 deepseek-v4.1-flash:1017-cloud。高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。月美元Credits与本地模型运行用量分开；不再应用旧会话/周限额。"
         },
         {
           "slug": "ollama-coding-plan-max--deepseek-v4-1-flash--time-offpeak",
@@ -10021,7 +10094,31 @@
             "cacheCnyPerM": 0.0204,
             "outputCnyPerM": 4.08
           },
-          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $300；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。月美元Credits与本地模型运行用量分开；不再应用旧会话/周限额。"
+          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $300；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。；调用名称为 deepseek-v4.1-flash:cloud；与 1017-cloud 标签分别提供。高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。月美元Credits与本地模型运行用量分开；不再应用旧会话/周限额。"
+        },
+        {
+          "slug": "ollama-coding-plan-max--deepseek-v4-1-flash-1017--time-offpeak",
+          "modelSlug": "deepseek-v4-1-flash-1017",
+          "timeTier": "谷",
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 22559.4,
+            "unitPriceCnyPerM": 0.02992
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.15,
+            "cachePerM": 0.003,
+            "outputPerM": 0.6,
+            "inputCnyPerM": 1.02,
+            "cacheCnyPerM": 0.0204,
+            "outputCnyPerM": 4.08
+          },
+          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $300；高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。；调用名称为 deepseek-v4.1-flash:1017-cloud。高峰为工作日 UTC 12:00–18:00（北京时间20:00–次日02:00），其余及周末为空闲；采用 Ollama 当前规则。月美元Credits与本地模型运行用量分开；不再应用旧会话/周限额。"
         },
         {
           "slug": "ollama-coding-plan-max--deepseek-v4-pro-0813--time-peak",
@@ -12916,7 +13013,7 @@
         },
         {
           "slug": "commandcode-go--deepseek-v4-1-flash--gu",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": null,
@@ -12936,11 +13033,11 @@
             "cacheCnyPerM": 0.0204,
             "outputCnyPerM": 4.08
           },
-          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；该模型适用额度：5小时 未知、每周 未知、每月 $10；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
+          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；该模型适用额度：5小时 未知、每周 未知、每月 $10；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--deepseek-v4-1-flash--feng",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": null,
@@ -12960,7 +13057,7 @@
             "cacheCnyPerM": 0.0408,
             "outputCnyPerM": 8.16
           },
-          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；该模型适用额度：5小时 未知、每周 未知、每月 $10；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
+          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；该模型适用额度：5小时 未知、每周 未知、每月 $10；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--glm-5-2",
@@ -13492,7 +13589,7 @@
         },
         {
           "slug": "commandcode-go--deepseek-v4-1-flash--timetier--servicetier-fast-offpeak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": "Fast",
@@ -13512,11 +13609,11 @@
             "cacheCnyPerM": 0.1088,
             "outputCnyPerM": 3.944
           },
-          "note": "抵扣单价：输入 $0.16/M Token、缓存读取 $0.02/M Token、输出 $0.58/M Token；该模型适用额度：5小时 未知、每周 未知、每月 $6；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
+          "note": "抵扣单价：输入 $0.16/M Token、缓存读取 $0.02/M Token、输出 $0.58/M Token；该模型适用额度：5小时 未知、每周 未知、每月 $6；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--deepseek-v4-1-flash--timetier--servicetier-fast-peak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": "Fast",
@@ -13536,7 +13633,7 @@
             "cacheCnyPerM": 0.2176,
             "outputCnyPerM": 7.888
           },
-          "note": "抵扣单价：输入 $0.32/M Token、缓存读取 $0.03/M Token、输出 $1.16/M Token；该模型适用额度：5小时 未知、每周 未知、每月 $6；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
+          "note": "抵扣单价：输入 $0.32/M Token、缓存读取 $0.03/M Token、输出 $1.16/M Token；该模型适用额度：5小时 未知、每周 未知、每月 $6；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加；短窗口按集中价格页$2/$5采用20%/50%，Go专页仍写$3/$6，官方页面存在冲突 5 小时与周窗口存在官方口径冲突，短窗口用量未知；已列月额度保持不变。"
         },
         {
           "slug": "commandcode-go--gpt-5-6-luna--contexttier-272k",
@@ -14757,7 +14854,7 @@
         },
         {
           "slug": "commandcode-goat--deepseek-v4-1-flash--gu",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": null,
@@ -14777,11 +14874,11 @@
             "cacheCnyPerM": 0.0204,
             "outputCnyPerM": 4.08
           },
-          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；该模型适用额度：5小时 $16、每周 $40、每月 $80；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；该模型适用额度：5小时 $16、每周 $40、每月 $80；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-goat--deepseek-v4-1-flash--feng",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": null,
@@ -14801,11 +14898,11 @@
             "cacheCnyPerM": 0.0408,
             "outputCnyPerM": 8.16
           },
-          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；该模型适用额度：5小时 $16、每周 $40、每月 $80；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；该模型适用额度：5小时 $16、每周 $40、每月 $80；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-goat--deepseek-v4-1-flash--timetier--servicetier-fast-offpeak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": "Fast",
@@ -14825,11 +14922,11 @@
             "cacheCnyPerM": 0.1088,
             "outputCnyPerM": 3.944
           },
-          "note": "抵扣单价：输入 $0.16/M Token、缓存读取 $0.02/M Token、输出 $0.58/M Token；该模型适用额度：5小时 $12、每周 $30、每月 $60；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.16/M Token、缓存读取 $0.02/M Token、输出 $0.58/M Token；该模型适用额度：5小时 $12、每周 $30、每月 $60；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-goat--deepseek-v4-1-flash--timetier--servicetier-fast-peak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": "Fast",
@@ -14849,7 +14946,7 @@
             "cacheCnyPerM": 0.2176,
             "outputCnyPerM": 7.888
           },
-          "note": "抵扣单价：输入 $0.32/M Token、缓存读取 $0.03/M Token、输出 $1.16/M Token；该模型适用额度：5小时 $12、每周 $30、每月 $60；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.32/M Token、缓存读取 $0.03/M Token、输出 $1.16/M Token；该模型适用额度：5小时 $12、每周 $30、每月 $60；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-goat--kimi-k2-7-code",
@@ -16790,7 +16887,7 @@
         },
         {
           "slug": "commandcode-pro--deepseek-v4-1-flash--gu",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": null,
@@ -16810,11 +16907,11 @@
             "cacheCnyPerM": 0.0204,
             "outputCnyPerM": 4.08
           },
-          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；该模型适用额度：5小时 $18、每周 $45、每月 $90；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；该模型适用额度：5小时 $18、每周 $45、每月 $90；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-pro--deepseek-v4-1-flash--feng",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": null,
@@ -16834,11 +16931,11 @@
             "cacheCnyPerM": 0.0408,
             "outputCnyPerM": 8.16
           },
-          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；该模型适用额度：5小时 $18、每周 $45、每月 $90；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；该模型适用额度：5小时 $18、每周 $45、每月 $90；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-pro--deepseek-v4-1-flash--timetier--servicetier-fast-offpeak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": "Fast",
@@ -16858,11 +16955,11 @@
             "cacheCnyPerM": 0.1088,
             "outputCnyPerM": 3.944
           },
-          "note": "抵扣单价：输入 $0.16/M Token、缓存读取 $0.02/M Token、输出 $0.58/M Token；该模型适用额度：5小时 $14、每周 $35、每月 $70；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.16/M Token、缓存读取 $0.02/M Token、输出 $0.58/M Token；该模型适用额度：5小时 $14、每周 $35、每月 $70；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-pro--deepseek-v4-1-flash--timetier--servicetier-fast-peak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": "Fast",
@@ -16882,7 +16979,7 @@
             "cacheCnyPerM": 0.2176,
             "outputCnyPerM": 7.888
           },
-          "note": "抵扣单价：输入 $0.32/M Token、缓存读取 $0.03/M Token、输出 $1.16/M Token；该模型适用额度：5小时 $14、每周 $35、每月 $70；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.32/M Token、缓存读取 $0.03/M Token、输出 $1.16/M Token；该模型适用额度：5小时 $14、每周 $35、每月 $70；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-pro--kimi-k2-7-code",
@@ -19731,7 +19828,7 @@
         },
         {
           "slug": "commandcode-max10--deepseek-v4-1-flash--timetier--offpeak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": null,
@@ -19751,11 +19848,11 @@
             "cacheCnyPerM": 0.0204,
             "outputCnyPerM": 4.08
           },
-          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-max10--deepseek-v4-1-flash--timetier--peak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": null,
@@ -19775,11 +19872,11 @@
             "cacheCnyPerM": 0.0408,
             "outputCnyPerM": 8.16
           },
-          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-max10--deepseek-v4-1-flash--timetier--servicetier-fast-offpeak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": "Fast",
@@ -19799,11 +19896,11 @@
             "cacheCnyPerM": 0.1088,
             "outputCnyPerM": 3.944
           },
-          "note": "抵扣单价：输入 $0.16/M Token、缓存读取 $0.02/M Token、输出 $0.58/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.16/M Token、缓存读取 $0.02/M Token、输出 $0.58/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-max10--deepseek-v4-1-flash--timetier--servicetier-fast-peak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": "Fast",
@@ -19823,7 +19920,7 @@
             "cacheCnyPerM": 0.2176,
             "outputCnyPerM": 7.888
           },
-          "note": "抵扣单价：输入 $0.32/M Token、缓存读取 $0.03/M Token、输出 $1.16/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.32/M Token、缓存读取 $0.03/M Token、输出 $1.16/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-max10--qwen-3-8-omni-flash",
@@ -22480,7 +22577,7 @@
         },
         {
           "slug": "commandcode-max20--deepseek-v4-1-flash--timetier--offpeak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": null,
@@ -22500,11 +22597,11 @@
             "cacheCnyPerM": 0.0204,
             "outputCnyPerM": 4.08
           },
-          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.15/M Token、缓存读取 $0.003000/M Token、输出 $0.60/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-max20--deepseek-v4-1-flash--timetier--peak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": null,
@@ -22524,11 +22621,11 @@
             "cacheCnyPerM": 0.0408,
             "outputCnyPerM": 8.16
           },
-          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.006000/M Token、输出 $1.20/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-max20--deepseek-v4-1-flash--timetier--servicetier-fast-offpeak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": "Fast",
@@ -22548,11 +22645,11 @@
             "cacheCnyPerM": 0.1088,
             "outputCnyPerM": 3.944
           },
-          "note": "抵扣单价：输入 $0.16/M Token、缓存读取 $0.02/M Token、输出 $0.58/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.16/M Token、缓存读取 $0.02/M Token、输出 $0.58/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 以外及周末谷时；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-max20--deepseek-v4-1-flash--timetier--servicetier-fast-peak",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": "Fast",
@@ -22572,7 +22669,7 @@
             "cacheCnyPerM": 0.2176,
             "outputCnyPerM": 7.888
           },
-          "note": "抵扣单价：输入 $0.32/M Token、缓存读取 $0.03/M Token、输出 $1.16/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $0.32/M Token、缓存读取 $0.03/M Token、输出 $1.16/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；工作日 UTC 01–04、06–10 为峰时，其余及周末为谷时。峰时缓存价按同模型输入/输出翻倍规则推断，待官方补充；V4.1 Flash 标准与 Fast 入口均使用 1017 版；调用名称不变。美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-max20--qwen-3-8-omni-flash",
@@ -25692,7 +25789,7 @@
             "outputPerM": 1000000.0,
             "unit": "Token"
           },
-          "note": "抵扣单价：输入 1 Token/Token、缓存读取 1 Token/Token、输出 1 Token/Token；该模型适用额度：5小时 不限量、每周 不限量、每月 50M Token；是否共享及能否叠加以套餐说明为准；官方月Token额度，输入/输出/缓存统一计数，无独立短窗口总量限制"
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 1 Token/Token、输出 1 Token/Token；该模型适用额度：5小时 不限量、每周 不限量、每月 50M Token；是否共享及能否叠加以套餐说明为准；平台入口未明确日期版本，是否提供 1017 版仍未知。官方月Token额度，输入/输出/缓存统一计数，无独立短窗口总量限制"
         },
         {
           "slug": "huawei-cloud-token-plan-lite--deepseek-v4-flash-0731",
@@ -25819,7 +25916,7 @@
             "outputPerM": 1000000.0,
             "unit": "Token"
           },
-          "note": "抵扣单价：输入 1 Token/Token、缓存读取 1 Token/Token、输出 1 Token/Token；该模型适用额度：5小时 不限量、每周 不限量、每月 130M Token；是否共享及能否叠加以套餐说明为准；官方月Token额度，输入/输出/缓存统一计数，无独立短窗口总量限制"
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 1 Token/Token、输出 1 Token/Token；该模型适用额度：5小时 不限量、每周 不限量、每月 130M Token；是否共享及能否叠加以套餐说明为准；平台入口未明确日期版本，是否提供 1017 版仍未知。官方月Token额度，输入/输出/缓存统一计数，无独立短窗口总量限制"
         },
         {
           "slug": "huawei-cloud-token-plan-standard--deepseek-v4-flash-0731",
@@ -25946,7 +26043,7 @@
             "outputPerM": 1000000.0,
             "unit": "Token"
           },
-          "note": "抵扣单价：输入 1 Token/Token、缓存读取 1 Token/Token、输出 1 Token/Token；该模型适用额度：5小时 不限量、每周 不限量、每月 380M Token；是否共享及能否叠加以套餐说明为准；官方月Token额度，输入/输出/缓存统一计数，无独立短窗口总量限制"
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 1 Token/Token、输出 1 Token/Token；该模型适用额度：5小时 不限量、每周 不限量、每月 380M Token；是否共享及能否叠加以套餐说明为准；平台入口未明确日期版本，是否提供 1017 版仍未知。官方月Token额度，输入/输出/缓存统一计数，无独立短窗口总量限制"
         },
         {
           "slug": "huawei-cloud-token-plan-pro--deepseek-v4-flash-0731",
@@ -26073,7 +26170,7 @@
             "outputPerM": 1000000.0,
             "unit": "Token"
           },
-          "note": "抵扣单价：输入 1 Token/Token、缓存读取 1 Token/Token、输出 1 Token/Token；该模型适用额度：5小时 不限量、每周 不限量、每月 880M Token；是否共享及能否叠加以套餐说明为准；官方月Token额度，输入/输出/缓存统一计数，无独立短窗口总量限制"
+          "note": "抵扣单价：输入 1 Token/Token、缓存读取 1 Token/Token、输出 1 Token/Token；该模型适用额度：5小时 不限量、每周 不限量、每月 880M Token；是否共享及能否叠加以套餐说明为准；平台入口未明确日期版本，是否提供 1017 版仍未知。官方月Token额度，输入/输出/缓存统一计数，无独立短窗口总量限制"
         },
         {
           "slug": "huawei-cloud-token-plan-max--deepseek-v4-flash-0731",
@@ -27582,7 +27679,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "CLI可选型号；其他客户端可选范围可能不同。"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。CLI可选型号；其他客户端可选范围可能不同。"
         },
         {
           "slug": "qoder-cn-pro--glm-5-2",
@@ -27798,7 +27895,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "CLI可选型号；其他客户端可选范围可能不同。"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。CLI可选型号；其他客户端可选范围可能不同。"
         },
         {
           "slug": "qoder-cn-pro-plus--glm-5-2",
@@ -28014,7 +28111,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "CLI可选型号；其他客户端可选范围可能不同。"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。CLI可选型号；其他客户端可选范围可能不同。"
         },
         {
           "slug": "qoder-cn-ultra--glm-5-2",
@@ -28178,7 +28275,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "DeepSeek-V4.1-Flash-1017当前限时免Credits，结束日期未公布；免费不代表固定或无限Token配额。"
+          "note": "选择器中的 DeepSeek-Flash 对应 V4.1 Flash 1017。DeepSeek-V4.1-Flash-1017当前限时免Credits，结束日期未公布；免费不代表固定或无限Token配额。"
         },
         {
           "slug": "qoder-intl-lite--glm-5-3-flash",
@@ -28359,7 +28456,7 @@
         },
         {
           "slug": "qoder-intl-pro--deepseek-v4-1-flash",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -28368,7 +28465,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": "选择器中的 DeepSeek-Flash 对应 V4.1 Flash 1017。"
         },
         {
           "slug": "qoder-intl-pro--glm-5-3",
@@ -28536,7 +28633,7 @@
         },
         {
           "slug": "qoder-intl-pro-plus--deepseek-v4-1-flash",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -28545,7 +28642,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": "选择器中的 DeepSeek-Flash 对应 V4.1 Flash 1017。"
         },
         {
           "slug": "qoder-intl-pro-plus--glm-5-3",
@@ -28713,7 +28810,7 @@
         },
         {
           "slug": "qoder-intl-ultra--deepseek-v4-1-flash",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -28722,7 +28819,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": "选择器中的 DeepSeek-Flash 对应 V4.1 Flash 1017。"
         },
         {
           "slug": "qoder-intl-ultra--glm-5-3",
@@ -28991,7 +29088,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "入口名仍为DeepSeek-V4-Flash；按DeepSeek官方接入公告对应V4.1 Flash"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。入口名仍为DeepSeek-V4-Flash；按DeepSeek官方接入公告对应V4.1 Flash"
         },
         {
           "slug": "workbuddy-standard--deepseek-v4-pro-0813",
@@ -29195,7 +29292,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "入口名仍为DeepSeek-V4-Flash；按DeepSeek官方接入公告对应V4.1 Flash"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。入口名仍为DeepSeek-V4-Flash；按DeepSeek官方接入公告对应V4.1 Flash"
         },
         {
           "slug": "workbuddy-advanced--deepseek-v4-pro-0813",
@@ -29399,7 +29496,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "入口名仍为DeepSeek-V4-Flash；按DeepSeek官方接入公告对应V4.1 Flash"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。入口名仍为DeepSeek-V4-Flash；按DeepSeek官方接入公告对应V4.1 Flash"
         },
         {
           "slug": "workbuddy-flagship--deepseek-v4-pro-0813",
@@ -29601,7 +29698,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "常规Auto调度，当前限免全模型可选，活动起止日期未公布；不含CLI访问；积分与CodeBuddy共享"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。常规Auto调度，当前限免全模型可选，活动起止日期未公布；不含CLI访问；积分与CodeBuddy共享"
         },
         {
           "slug": "workbuddy-free--deepseek-v4-pro-0813",
@@ -29803,7 +29900,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "2026-07-01前已开启自动续费的用户，保价至2026-12-31；2027-01-01起¥70/月，按国内平台推定UTC+8，官网未明确时区；取消后再购按现价"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。2026-07-01前已开启自动续费的用户，保价至2026-12-31；2027-01-01起¥70/月，按国内平台推定UTC+8，官网未明确时区；取消后再购按现价"
         },
         {
           "slug": "workbuddy-standard-renew-2026--deepseek-v4-pro-0813",
@@ -29982,7 +30079,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。"
         },
         {
           "slug": "trae-cn-lite--deepseek-v4-flash-0731",
@@ -30265,7 +30362,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。"
         },
         {
           "slug": "trae-cn-pro--deepseek-v4-flash-0731",
@@ -30548,7 +30645,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。"
         },
         {
           "slug": "trae-cn-pro-plus--deepseek-v4-flash-0731",
@@ -30831,7 +30928,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。"
         },
         {
           "slug": "trae-cn-ultra--deepseek-v4-flash-0731",
@@ -48167,7 +48264,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "月Credits动态扣减，完整系数未公布；已确认支持，Token用量未知"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。月Credits动态扣减，完整系数未公布；已确认支持，Token用量未知"
         }
       ]
     },
@@ -48225,7 +48322,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "月Credits动态扣减，完整系数未公布；已确认支持，Token用量未知"
+          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。月Credits动态扣减，完整系数未公布；已确认支持，Token用量未知"
         }
       ]
     },
@@ -51022,6 +51119,5 @@
       ]
     }
   ],
-  "generatedAt": "2026-10-25T08:21:55Z",
-  "contentVersion": "2026-10-25T10:48:45.154Z"
+  "contentVersion": "2026-10-25T15:54:21.968Z"
 }
