@@ -58,7 +58,6 @@
 #plansPage .plan-quota-requests { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-bottom: 12px; font-size: 12px; }
 #plansPage .plan-quota-requests > span:first-child { color: var(--text-secondary); }
 #plansPage .plan-quota-table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 13px; }
-#plansPage .plan-quota-table caption { text-align: left; color: var(--text-secondary); font-size: 12px; padding-bottom: 6px; }
 #plansPage .plan-quota-table :is(th, td) { padding: 7px 10px; border-bottom: 1px solid var(--border-light); text-align: right; font-variant-numeric: tabular-nums; }
 #plansPage .plan-quota-table thead th { font-weight: 400; white-space: normal; background: transparent; }
 #plansPage .plan-quota-table th:first-child { width: 36%; text-align: left; }
