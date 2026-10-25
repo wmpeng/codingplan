@@ -1191,42 +1191,42 @@
           "platformSlug": "bytedance-ark",
           "planSlug": "volcengine-coding-lite",
           "planModelSlug": "volcengine-coding-lite--deepseek-v4-1-flash",
-          "label": "字节·方舟 Coding Plan · Lite · DeepSeek-V4.1-Flash"
+          "label": "字节·方舟 Coding Plan · Lite · DeepSeek-V4.1-Flash-1017"
         },
         {
           "type": "plan_model",
           "platformSlug": "bytedance-ark",
           "planSlug": "volcengine-coding-pro",
           "planModelSlug": "volcengine-coding-pro--deepseek-v4-1-flash",
-          "label": "字节·方舟 Coding Plan · Pro · DeepSeek-V4.1-Flash"
+          "label": "字节·方舟 Coding Plan · Pro · DeepSeek-V4.1-Flash-1017"
         },
         {
           "type": "plan_model",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-small",
           "planModelSlug": "volcengine-agent-small--deepseek-v4-1-flash",
-          "label": "字节·方舟 Agent Plan · Small · DeepSeek-V4.1-Flash"
+          "label": "字节·方舟 Agent Plan · Small · DeepSeek-V4.1-Flash-1017"
         },
         {
           "type": "plan_model",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-medium",
           "planModelSlug": "volcengine-agent-medium--deepseek-v4-1-flash",
-          "label": "字节·方舟 Agent Plan · Medium · DeepSeek-V4.1-Flash"
+          "label": "字节·方舟 Agent Plan · Medium · DeepSeek-V4.1-Flash-1017"
         },
         {
           "type": "plan_model",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-large",
           "planModelSlug": "volcengine-agent-large--deepseek-v4-1-flash",
-          "label": "字节·方舟 Agent Plan · Large · DeepSeek-V4.1-Flash"
+          "label": "字节·方舟 Agent Plan · Large · DeepSeek-V4.1-Flash-1017"
         },
         {
           "type": "plan_model",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-max",
           "planModelSlug": "volcengine-agent-max--deepseek-v4-1-flash",
-          "label": "字节·方舟 Agent Plan · Max · DeepSeek-V4.1-Flash"
+          "label": "字节·方舟 Agent Plan · Max · DeepSeek-V4.1-Flash-1017"
         }
       ],
       "sources": [
@@ -1624,14 +1624,14 @@
           "platformSlug": "bytedance-ark",
           "planSlug": "volcengine-coding-lite",
           "planModelSlug": "volcengine-coding-lite--deepseek-v4-1-flash--economy",
-          "label": "字节·方舟 Coding Plan · Lite · DeepSeek-V4.1-Flash"
+          "label": "字节·方舟 Coding Plan · Lite · DeepSeek-V4.1-Flash-1017"
         },
         {
           "type": "plan_model",
           "platformSlug": "bytedance-ark",
           "planSlug": "volcengine-coding-pro",
           "planModelSlug": "volcengine-coding-pro--deepseek-v4-1-flash--economy",
-          "label": "字节·方舟 Coding Plan · Pro · DeepSeek-V4.1-Flash"
+          "label": "字节·方舟 Coding Plan · Pro · DeepSeek-V4.1-Flash-1017"
         }
       ],
       "sources": [
@@ -1991,5 +1991,5 @@
       "relatedChanges": []
     }
   ],
-  "contentVersion": "2026-10-25T10:48:45.158Z"
+  "contentVersion": "2026-10-25T16:36:29.712Z"
 }

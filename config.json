@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.10.25 | DeepSeek Flash 版本与平台支持关系修正",
+    "updateDate": "更新日期 2026.10.26 | 方舟 Flash 1017 与独立入口补充",
     "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Cursor、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.1-Sol、Claude 5.5系列、MiniMax-M3.1-Flash、Kimi-K3.1-Pro、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3与Qwen-3.8等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
@@ -124,6 +124,13 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.10.26",
+      "items": [
+        "补充共绩算力的 DeepSeek V4.1 Flash 1017 独立入口及通用价格；保留原 V4.1 入口，旧入口是否跟随升级仍未知。",
+        "方舟 Coding Plan、Agent Plan 的 V4.1 Flash 标准与 Economy 已升级至 1017，调用名称保持不变；优云智算六档套餐新增独立 1017 入口，每次扣减 3 次请求额度。"
+      ]
+    },
     {
       "date": "2026.10.25",
       "items": [
@@ -537,5 +544,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-10-25T15:54:25.967Z"
+  "contentVersion": "2026-10-25T16:38:26.291Z"
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-25T16:02:32Z",
+  "generatedAt": "2026-10-25T16:38:46Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -2543,7 +2543,7 @@
         },
         {
           "slug": "volcengine-coding-lite--deepseek-v4-1-flash",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -2555,11 +2555,11 @@
             "unitPriceCnyPerM": 0.1667
           },
           "pricing": null,
-          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。参照 Agent Plan 当前系数 1.25 与 2026-08-29 DeepSeek V4 Flash 实测基准推测；工作负载 120K/请求，部分请求约 1.5 倍入账的触发条件仍未知。2026-09-23 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
+          "note": "实际服务为 1017 版；调用名称仍不带日期后缀。参照 Agent Plan 当前系数 1.25 与 2026-08-29 DeepSeek V4 Flash 实测基准推测；工作负载 120K/请求，部分请求约 1.5 倍入账的触发条件仍未知。2026-09-23 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
         },
         {
           "slug": "volcengine-coding-lite--deepseek-v4-1-flash--economy",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Economy",
@@ -2571,7 +2571,7 @@
             "unitPriceCnyPerM": 0.1333
           },
           "pricing": null,
-          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。与标准版使用相同模型权重、生成略慢。Token参考量沿用按Agent Plan对应抵扣系数与历史测量推算的口径，非官方固定配额。2026-10-20 00:00至12-30 23:59:59（UTC+8）五折活动；当前参考量按标准版的1.25倍估算。"
+          "note": "实际服务为 1017 版；调用名称仍不带日期后缀。与标准版使用相同模型权重、生成略慢。Token参考量沿用按Agent Plan对应抵扣系数与历史测量推算的口径，非官方固定配额。2026-10-20 00:00至12-30 23:59:59（UTC+8）五折活动；当前参考量按标准版的1.25倍估算。"
         }
       ]
     },
@@ -2784,7 +2784,7 @@
         },
         {
           "slug": "volcengine-coding-pro--deepseek-v4-1-flash",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -2796,11 +2796,11 @@
             "unitPriceCnyPerM": 0.1667
           },
           "pricing": null,
-          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。"
+          "note": "实际服务为 1017 版；调用名称仍不带日期后缀。"
         },
         {
           "slug": "volcengine-coding-pro--deepseek-v4-1-flash--economy",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Economy",
@@ -2812,7 +2812,7 @@
             "unitPriceCnyPerM": 0.1333
           },
           "pricing": null,
-          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。与标准版使用相同模型权重、生成略慢。Token参考量沿用按Agent Plan对应抵扣系数与历史测量推算的口径，非官方固定配额。2026-10-20 00:00至12-30 23:59:59（UTC+8）五折活动；当前参考量按标准版的1.25倍估算。"
+          "note": "实际服务为 1017 版；调用名称仍不带日期后缀。与标准版使用相同模型权重、生成略慢。Token参考量沿用按Agent Plan对应抵扣系数与历史测量推算的口径，非官方固定配额。2026-10-20 00:00至12-30 23:59:59（UTC+8）五折活动；当前参考量按标准版的1.25倍估算。"
         }
       ]
     },
@@ -3079,7 +3079,7 @@
         },
         {
           "slug": "volcengine-agent-small--deepseek-v4-1-flash",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -3097,11 +3097,11 @@
             "outputPerM": 125.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 2K AFP、每周 7K AFP、每月 20K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；平台入口未明确日期版本，是否提供 1017 版仍未知。按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
+          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 2K AFP、每周 7K AFP、每月 20K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；实际服务为 1017 版；调用名称仍不带日期后缀。按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
         },
         {
           "slug": "volcengine-agent-small--deepseek-v4-1-flash--economy",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Economy",
@@ -3119,7 +3119,7 @@
             "outputPerM": 100.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 2K AFP、每周 7K AFP、每月 20K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；平台入口未明确日期版本，是否提供 1017 版仍未知。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
+          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 2K AFP、每周 7K AFP、每月 20K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；实际服务为 1017 版；调用名称仍不带日期后缀。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
         }
       ]
     },
@@ -3409,7 +3409,7 @@
         },
         {
           "slug": "volcengine-agent-medium--deepseek-v4-1-flash",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -3427,11 +3427,11 @@
             "outputPerM": 125.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；平台入口未明确日期版本，是否提供 1017 版仍未知。按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
+          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；实际服务为 1017 版；调用名称仍不带日期后缀。按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
         },
         {
           "slug": "volcengine-agent-medium--deepseek-v4-1-flash--economy",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Economy",
@@ -3449,7 +3449,7 @@
             "outputPerM": 100.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；平台入口未明确日期版本，是否提供 1017 版仍未知。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
+          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；实际服务为 1017 版；调用名称仍不带日期后缀。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
         }
       ]
     },
@@ -3739,7 +3739,7 @@
         },
         {
           "slug": "volcengine-agent-large--deepseek-v4-1-flash",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -3757,11 +3757,11 @@
             "outputPerM": 125.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；平台入口未明确日期版本，是否提供 1017 版仍未知。按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
+          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；实际服务为 1017 版；调用名称仍不带日期后缀。按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
         },
         {
           "slug": "volcengine-agent-large--deepseek-v4-1-flash--economy",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Economy",
@@ -3779,7 +3779,7 @@
             "outputPerM": 100.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；平台入口未明确日期版本，是否提供 1017 版仍未知。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
+          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；实际服务为 1017 版；调用名称仍不带日期后缀。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
         }
       ]
     },
@@ -4069,7 +4069,7 @@
         },
         {
           "slug": "volcengine-agent-max--deepseek-v4-1-flash",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -4087,11 +4087,11 @@
             "outputPerM": 125.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；平台入口未明确日期版本，是否提供 1017 版仍未知。按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
+          "note": "抵扣单价：输入 0.13 AFP/K Token、缓存读取 0.13 AFP/K Token、输出 0.13 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5；实际服务为 1017 版；调用名称仍不带日期后缀。按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-09-15 00:00:00 至 2026-12-30 23:59:59（UTC+8）系数 1.25，常规 2.5"
         },
         {
           "slug": "volcengine-agent-max--deepseek-v4-1-flash--economy",
-          "modelSlug": "deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash-1017",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": "Economy",
@@ -4109,7 +4109,7 @@
             "outputPerM": 100.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；平台入口未明确日期版本，是否提供 1017 版仍未知。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
+          "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；实际服务为 1017 版；调用名称仍不带日期后缀。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
         }
       ]
     },
@@ -6508,7 +6508,28 @@
             "cacheCnyPerM": 0.02,
             "outputCnyPerM": 4.0
           },
-          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
+          "note": "平台另有独立 1017 入口；本入口未注明是否随新版升级。邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
+        },
+        {
+          "slug": "gongji-api--deepseek-v4-1-flash-1017",
+          "modelSlug": "deepseek-v4-1-flash-1017",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.0887
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 1.0,
+            "cachePerM": 0.02,
+            "outputPerM": 4.0,
+            "inputCnyPerM": 1.0,
+            "cacheCnyPerM": 0.02,
+            "outputCnyPerM": 4.0
+          },
+          "note": "调用名称为 deepseek/deepseek-v4.1-flash-1017。邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
         },
         {
           "slug": "gongji-api--hy3",
@@ -6631,7 +6652,23 @@
             "unitPriceCnyPerM": 0.6447
           },
           "pricing": null,
-          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。按套餐请求额度和模型单次 3 次扣减计算"
+          "note": "平台另有独立 1017 入口；本入口未注明是否随新版升级。按套餐请求额度和模型单次 3 次扣减计算"
+        },
+        {
+          "slug": "youyun-mini--deepseek-v4-1-flash-1017",
+          "modelSlug": "deepseek-v4-1-flash-1017",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculatedRequests",
+          "usage": {
+            "fiveHourTokenInM": 12.0,
+            "weeklyTokenInM": 30.0,
+            "monthlyTokenInM": 76.0,
+            "unitPriceCnyPerM": 0.6447
+          },
+          "pricing": null,
+          "note": "调用名称为 deepseek-v4.1-flash-1017；每次调用扣减 3 次请求额度。"
         },
         {
           "slug": "youyun-mini--deepseek-v4-flash-vision-exp",
@@ -6797,7 +6834,23 @@
             "unitPriceCnyPerM": 0.6513
           },
           "pricing": null,
-          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。按套餐请求额度和模型单次 3 次扣减计算"
+          "note": "平台另有独立 1017 入口；本入口未注明是否随新版升级。按套餐请求额度和模型单次 3 次扣减计算"
+        },
+        {
+          "slug": "youyun-lite--deepseek-v4-1-flash-1017",
+          "modelSlug": "deepseek-v4-1-flash-1017",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculatedRequests",
+          "usage": {
+            "fiveHourTokenInM": 24.0,
+            "weeklyTokenInM": 60.0,
+            "monthlyTokenInM": 152.0,
+            "unitPriceCnyPerM": 0.6513
+          },
+          "pricing": null,
+          "note": "调用名称为 deepseek-v4.1-flash-1017；每次调用扣减 3 次请求额度。"
         },
         {
           "slug": "youyun-lite--deepseek-v4-flash-vision-exp",
@@ -6963,7 +7016,23 @@
             "unitPriceCnyPerM": 0.6546
           },
           "pricing": null,
-          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。按套餐请求额度和模型单次 3 次扣减计算"
+          "note": "平台另有独立 1017 入口；本入口未注明是否随新版升级。按套餐请求额度和模型单次 3 次扣减计算"
+        },
+        {
+          "slug": "youyun-basic--deepseek-v4-1-flash-1017",
+          "modelSlug": "deepseek-v4-1-flash-1017",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculatedRequests",
+          "usage": {
+            "fiveHourTokenInM": 48.0,
+            "weeklyTokenInM": 120.0,
+            "monthlyTokenInM": 304.0,
+            "unitPriceCnyPerM": 0.6546
+          },
+          "pricing": null,
+          "note": "调用名称为 deepseek-v4.1-flash-1017；每次调用扣减 3 次请求额度。"
         },
         {
           "slug": "youyun-basic--deepseek-v4-flash-vision-exp",
@@ -7129,7 +7198,23 @@
             "unitPriceCnyPerM": 0.6566
           },
           "pricing": null,
-          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。按套餐请求额度和模型单次 3 次扣减计算"
+          "note": "平台另有独立 1017 入口；本入口未注明是否随新版升级。按套餐请求额度和模型单次 3 次扣减计算"
+        },
+        {
+          "slug": "youyun-pro--deepseek-v4-1-flash-1017",
+          "modelSlug": "deepseek-v4-1-flash-1017",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculatedRequests",
+          "usage": {
+            "fiveHourTokenInM": 120.0,
+            "weeklyTokenInM": 300.0,
+            "monthlyTokenInM": 760.0,
+            "unitPriceCnyPerM": 0.6566
+          },
+          "pricing": null,
+          "note": "调用名称为 deepseek-v4.1-flash-1017；每次调用扣减 3 次请求额度。"
         },
         {
           "slug": "youyun-pro--deepseek-v4-flash-vision-exp",
@@ -7295,7 +7380,23 @@
             "unitPriceCnyPerM": 0.6444
           },
           "pricing": null,
-          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。按套餐请求额度和模型单次 3 次扣减计算"
+          "note": "平台另有独立 1017 入口；本入口未注明是否随新版升级。按套餐请求额度和模型单次 3 次扣减计算"
+        },
+        {
+          "slug": "youyun-max--deepseek-v4-1-flash-1017",
+          "modelSlug": "deepseek-v4-1-flash-1017",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculatedRequests",
+          "usage": {
+            "fiveHourTokenInM": 192.0,
+            "weeklyTokenInM": 480.0,
+            "monthlyTokenInM": 1240.0,
+            "unitPriceCnyPerM": 0.6444
+          },
+          "pricing": null,
+          "note": "调用名称为 deepseek-v4.1-flash-1017；每次调用扣减 3 次请求额度。"
         },
         {
           "slug": "youyun-max--deepseek-v4-flash-vision-exp",
@@ -7461,7 +7562,23 @@
             "unitPriceCnyPerM": 0.6404
           },
           "pricing": null,
-          "note": "平台入口未明确日期版本，是否提供 1017 版仍未知。按套餐请求额度和模型单次 3 次扣减计算"
+          "note": "平台另有独立 1017 入口；本入口未注明是否随新版升级。按套餐请求额度和模型单次 3 次扣减计算"
+        },
+        {
+          "slug": "youyun-ultra--deepseek-v4-1-flash-1017",
+          "modelSlug": "deepseek-v4-1-flash-1017",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculatedRequests",
+          "usage": {
+            "fiveHourTokenInM": 240.0,
+            "weeklyTokenInM": 600.0,
+            "monthlyTokenInM": 1560.0,
+            "unitPriceCnyPerM": 0.6404
+          },
+          "pricing": null,
+          "note": "调用名称为 deepseek-v4.1-flash-1017；每次调用扣减 3 次请求额度。"
         },
         {
           "slug": "youyun-ultra--deepseek-v4-flash-vision-exp",
@@ -51119,5 +51236,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-10-25T15:54:21.968Z"
+  "contentVersion": "2026-10-25T16:36:28.120Z"
 }

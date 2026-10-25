@@ -2,9 +2,9 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.10.25 | DeepSeek Flash 版本与平台支持关系修正
+> 更新日期 2026.10.26 | 方舟 Flash 1017 与独立入口补充
 
-当前展示 **42 个平台、143 个在售订阅套餐、2 个按量 API、165 个模型和 2382 条套餐模型关系**。
+当前展示 **42 个平台、143 个在售订阅套餐、2 个按量 API、165 个模型和 2389 条套餐模型关系**。
 
 [在线平台中心](https://codingplan.fyi/platforms/) · [模型目录](https://codingplan.fyi/models/) · [价格与额度](https://codingplan.fyi/pricing/) · [套餐对比](https://codingplan.fyi/plans/) · [预告与更新](https://codingplan.fyi/updates/)
 
@@ -137,10 +137,10 @@
 | [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | [峰] | $1/首月 | - | - | 376M | ¥0.0184/M |
 | [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | [谷] | $20/首月 | 1,353.56M | 3,383.9M | 6,767.8M | ¥0.0204/M |
 | [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | [峰] | $10/首月 | 601.58M | 1,503.96M | 3,007.9M | ¥0.0224/M |
+| [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M |
 | [DeepSeek · 按量 API](https://platform.deepseek.com/) | [谷] | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M |
-| [DeepSeek · 按量 API](https://platform.deepseek.com/) | [峰] | 入¥2 / 缓存¥0.04 / 出¥8 | - | - | - | ¥0.1773/M |
 
-还有 38 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
+还有 57 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### DeepSeek-V4.1-Flash
 
@@ -155,7 +155,7 @@
 | [Ollama · Pro](https://api.dreamfree.space/c/s/cpyqollama) | [峰] | $20/首月 | 2,255.9M | 2,255.9M | 2,255.9M | ¥0.0605/M |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M |
 
-还有 31 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
+还有 19 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### DeepSeek-V4-Flash-0731
 
@@ -289,14 +289,14 @@
 |---|---:|---|---|
 | 智谱AI | 3 | ¥118–¥1,078/月 | GLM-5.3、GLM-5.3-Flash |
 | OpenCode | 2 | $10–$40/月 | GLM-5.3、Kimi-K3.1-Pro、Kimi-K3、DeepSeek-V4.1-Flash-1017、等 30 个 |
-| 字节·方舟 Coding Plan | 2 | ¥40–¥200/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、等 13 个 |
-| 字节·方舟 Agent Plan | 4 | ¥40–¥1,000/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、等 13 个 |
+| 字节·方舟 Coding Plan | 2 | ¥40–¥200/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4-Flash-0731、等 13 个 |
+| 字节·方舟 Agent Plan | 4 | ¥40–¥1,000/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4-Flash-0731、等 13 个 |
 | MiniMax | 4 | ¥0–¥469/月 | MiniMax-M3.1-Flash |
 | 智谱国际版 | 3 | $18–$168/月 | GLM-5.3、GLM-5.3-Flash |
 | Kimi | 5 | ¥49–¥1,399/月 | Kimi-K3.1-Pro、Kimi-K3、Kimi-K2.8-Preview、Kimi-K2.7-Code-HighSpeed |
 | DeepSeek | 1 | 不适用 / 含按量 API | DeepSeek-V4.1-Flash-1017、DeepSeek-V4-Pro-0813 |
-| 共绩算力 | 1 | 不适用 / 含按量 API | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、等 14 个 |
-| 优云智算 | 6 | ¥49–¥999/月 | DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、GLM-5.3-Flash、DeepSeek-V4-Flash-Vision-Exp、等 9 个 |
+| 共绩算力 | 1 | 不适用 / 含按量 API | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4.1-Flash、等 15 个 |
+| 优云智算 | 6 | ¥49–¥999/月 | DeepSeek-V4.1-Flash-1017、DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、GLM-5.3-Flash、等 10 个 |
 | Codex | 6 | $0–$500/月 | GPT-6-Astra、GPT-6.1-Sol、GPT-6-Luna、GPT-5.6-Luna、等 7 个 |
 | Claude | 3 | $20–$200/月 | Claude Opus 5.5、Claude Fable 5、Claude Fable 5.1、Claude Haiku 4.5、等 14 个 |
 | Ollama | 2 | $20–$100/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4.1-Flash、等 21 个 |
@@ -341,6 +341,11 @@
 - 本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议
 
 ## 最近更新
+
+### 2026.10.26
+
+- 补充共绩算力的 DeepSeek V4.1 Flash 1017 独立入口及通用价格；保留原 V4.1 入口，旧入口是否跟随升级仍未知。
+- 方舟 Coding Plan、Agent Plan 的 V4.1 Flash 标准与 Economy 已升级至 1017，调用名称保持不变；优云智算六档套餐新增独立 1017 入口，每次扣减 3 次请求额度。
 
 ### 2026.10.25
 
@@ -390,13 +395,6 @@
 - 调整Codex、Claude、Cursor、OpenCode、Command Code、Qoder等平台模型支持与额度；DeepSeek官方及腾讯已确认渠道使用独立1017型号。
 - 补充共享池、客户端、工具计费与活动期限；未来变化收录于「预告与更新」，按确认结果维护现行数据。
 - 同步AA与DeepSWE评测资料，未公开Token量及存在冲突的型号、价格和权限继续保留未知或原记录。
-
-### 2026.10.13
-
-- 调整目录收录范围，暂移除两项新增平台及其套餐、模型支持记录。
-- 补齐境内网络与支付条件，境内可用、境内可购买平台名单按当前确认结果筛选。
-- 新增 Cursor 平台与介绍页：收录 X Subscription 五档新套餐及四档存量个人套餐，区分 Grok 共享周额度与第三方模型另行付费；补齐模型价格、上下文和高速档。
-- 复核 AA 与 DeepSWE 评测资料，补齐模型具体输入、输出模态，并确认阶跃星辰支持个人 Harness API。
 
 ## 延伸阅读
 
