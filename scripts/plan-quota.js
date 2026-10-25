@@ -45,9 +45,9 @@
         if (!notes.has(note)) notes.set(note, []);
         notes.get(note).push(presentation.relationLabel);
       }
-      return `<tr data-quota-relation="${esc(row.slug)}"><th scope="row"><span>${esc(presentation.modelName)}</span>${presentation.tierLabel ? `<small>${esc(presentation.tierLabel)}</small>` : ''}</th>${columns.map(([key]) => `<td>${esc(Numbers.tokenAmount(row.usage?.[key], state.tokenUnit, '未知'))}</td>`).join('')}</tr>`;
+      return `<tr data-quota-relation="${esc(row.slug)}"><th scope="row"><span>${esc(presentation.modelName)}</span>${presentation.tierLabel ? `<small>${esc(presentation.tierLabel)}</small>` : ''}</th>${columns.map(([key]) => `<td>${esc(Numbers.tokenAmount(row.usage?.[key], state.tokenUnit, '未知'))}${Numbers.finite(row.usage?.[key]) !== null ? ` ${esc(Numbers.tokenUnit(state.tokenUnit))}` : ''}</td>`).join('')}</tr>`;
     }).join('');
-    const table = items.length ? `<table class="plan-quota-table"><caption>Token 参考额度（${esc(Numbers.tokenUnit(state.tokenUnit))} Token）</caption><thead><tr><th scope="col">模型 / 档位</th>${columns.map(([key,label]) => {
+    const table = items.length ? `<table class="plan-quota-table"><caption>Token 参考额度</caption><thead><tr><th scope="col">模型 / 档位</th>${columns.map(([key,label]) => {
       const active = sort?.key === key;
       const action = !active ? '升序排列' : sort.direction === 'asc' ? '降序排列' : '恢复默认顺序';
       return `<th scope="col" aria-sort="${active ? sort.direction === 'asc' ? 'ascending' : 'descending' : 'none'}"><button type="button" class="table-sort-button${active ? ' is-active-sort' : ''}" data-plan-quota-sort="${key}" aria-label="${label}用量：${action}">${label}</button></th>`;

@@ -30,17 +30,17 @@ test('明细与摘要按同一模型选择，保留该模型全部档位而不�
   for(const modelSlugs of [[],null]) assert.equal(Quota.rows(plan,context,{modelSlugs}).length,3);
   const html=Quota.render(plan,context,{modelSlugs:['a'],tokenUnit:'yi'});
   assert.match(html,/模型 A/);assert.doesNotMatch(html,/模型 B/);
-  assert.match(html,/<td>1<\/td>/);assert.match(html,/<td>2<\/td>/);assert.match(html,/\[峰\]/);assert.match(html,/\[谷\]/);
+  assert.match(html,/<td>1 亿<\/td>/);assert.match(html,/<td>2 亿<\/td>/);assert.match(html,/\[峰\]/);assert.match(html,/\[谷\]/);
   assert.equal((html.match(/扣减估算/g)||[]).length,1);assert.doesNotMatch(html,/>口径</);
 });
 
 test('零、未知和无限制保持各自语义；移除口径列并在标题合并标注，单位换算不改源', () => {
   const snapshot=JSON.stringify(context.relationsByPlanSlug.get('p'));
   const html=Quota.render(plan,context,{modelSlugs:null,tokenUnit:'M'});
-  assert.match(html,/<td>0<\/td>/);assert.match(html,/<td>不限量<\/td>/);assert.match(html,/<td>未知<\/td>/);
+  assert.match(html,/<td>0 M<\/td>/);assert.match(html,/<td>不限量<\/td>/);assert.match(html,/<td>未知<\/td>/);
   assert.doesNotMatch(html,/>口径</);assert.doesNotMatch(html,/plan-quota-method/);
   assert.match(html,/plan-quota-basis">扣减估算 · 待确认/);
-  assert.match(html,/<td>100<\/td>/);assert.match(html,/<td>200<\/td>/);
+  assert.match(html,/<td>100 M<\/td>/);assert.match(html,/<td>200 M<\/td>/);
   assert.equal(JSON.stringify(context.relationsByPlanSlug.get('p')),snapshot);
 });
 
