@@ -23,7 +23,7 @@
       const controller = new env.AbortController();
       const timeout = env.setTimeout(() => controller.abort(), 5000);
       try {
-        const response = await env.fetch('https://api.dreamfree.space/vc/site/data/check_updates', {
+        const response = await env.fetch(env.CodingPlanDataUpdateEndpoint || 'https://api.dreamfree.space/vc/site/data/check_updates', {
           method:'POST', headers:{'Content-Type':'application/json'}, credentials:'omit', cache:'no-store',
           body:key, signal:controller.signal
         });

@@ -70,3 +70,9 @@ test('a pending request never blocks caller or other purposes; identical in-flig
 test('page types distinguish static guides and articles',()=>{
   for(const [url,type] of [['/','home'],['/models/','models'],['/platforms/','platforms'],['/platforms/codex/','platform_guide'],['/articles/','articles'],['/articles/news/example/','article']])assert.equal(pageType(url),type);
 });
+
+test('an explicitly injected development endpoint overrides the production default',async()=>{
+  const f=fixture();f.env.CodingPlanDataUpdateEndpoint='http://127.0.0.1:5005/site/data/check_updates';
+  f.check('page_display');await f.tick(0);
+  assert.equal(f.calls[0].url,f.env.CodingPlanDataUpdateEndpoint);
+});
