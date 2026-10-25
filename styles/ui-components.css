@@ -1,3 +1,9 @@
+/* 数据更新仅提示，由用户决定是否刷新。 */
+.data-update-dialog { margin:auto; width:min(420px,calc(100% - 32px)); padding:24px; border:1px solid var(--border-color); border-radius:var(--radius-lg); background:var(--bg-secondary); color:var(--text-primary); box-shadow:var(--shadow-xl); }
+.data-update-dialog::backdrop { background:rgb(15 23 42 / .35); }
+.data-update-dialog h2 { font-size:18px; margin:0 0 12px; }
+.data-update-dialog p { color:var(--text-secondary); line-height:1.6; margin:0; }
+.data-update-dialog footer { display:flex; justify-content:flex-end; gap:10px; margin-top:24px; }
 /* 控件：一种基础样式，主操作和选中状态是明确的变体。 */
 body :is(.tool-button, .filter-state-btn, .updates-toggle, .guide-button, .back-home-btn,
   .platform-comparison-secondary-btn, .platform-comparison-primary-btn, .platform-detail-action,

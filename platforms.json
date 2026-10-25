@@ -1258,5 +1258,6 @@
       "supportsHarnessApi": true,
       "action": "https://maas.xfyun.cn/"
     }
-  ]
+  ],
+  "contentVersion": "2026-10-25T10:48:45.132Z"
 }

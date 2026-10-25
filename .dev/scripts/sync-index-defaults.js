@@ -11,6 +11,8 @@ const UI = require(path.join(root,'scripts/ui-core.js'));
 const Help = require(path.join(root,'scripts/ui-help.js'));
 const {applySiteHeader} = require(path.resolve(root,'../scripts/codingplan/site-header.js'));
 const check = process.argv.includes('--check');
+const {syncVersions,snapshot} = require(path.resolve(root,'../scripts/codingplan/data-versions.js'));
+syncVersions({check});
 const generator=path.resolve(root,'../data/platforms/pages/generate.js');
 if(!fs.existsSync(generator))throw new Error('请在维护仓库执行完整生成与检查');
 const config = read('config'), preset = read('featured-catalog');
@@ -55,7 +57,7 @@ home=replace(home,'COMMUNITY_FLOAT',`<div class="community-float" id="communityF
 </dialog>`);
 const meta=`<div class="home-meta"><div><details><summary>收录范围与数据口径 · ${esc(config.header.updateDate)}</summary><p>${esc(E.headerSubtitle(ctx,'').split('<br>')[0])}</p><ul>${(config.notes || []).map(x=>'<li>'+esc(x)+'</li>').join('')}</ul></details><details id="updateHistory"><summary>更新历史</summary><ul>${(config.updates || []).map(x=>'<li><strong>'+esc(x.date)+'</strong><ul>'+x.items.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul></li>').join('')}</ul></details></div><aside class="community-panel" id="communityFooter"><img src="${groupQr}" alt="${groupAlt}" loading="lazy" width="100" height="100"><div><h3>${esc(community.title || '交流与反馈')}</h3><p>${esc(community.description || '')}</p><p><a class="community-join" href="${esc(C.url(feedback.feedbackEntry?.url))}" target="_blank" rel="noopener noreferrer">${esc(feedback.feedbackEntry?.text || '加入讨论群')} ↗</a></p><a href="${esc(C.url(feedback.dataIssue?.url))}" target="_blank" rel="noopener noreferrer">${esc(feedback.dataIssue?.text || '反馈问题')} ↗</a></div></aside></div>`;
 home=replace(home,'HOME_META',meta);
-write('index.html',home);
+write('index.html',snapshot(home,['platforms','plans','models','config','featured_catalog','announcements']));
 let models=fs.readFileSync(path.resolve(root,'../scripts/codingplan/models-template.html'),'utf8');
 const selection=Directory.select(ctx.models,preset.groups);
 models=replace(models,'MODEL_DIRECTORY',selection.visible.map(m=>C.modelCard(m,ctx,{directory:true,featured:selection.featured.has(m.slug)})).join('\n'));
