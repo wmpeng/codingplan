@@ -253,7 +253,7 @@
     const presetSlugs = id => root.CodingPlanUI.modelPresetSlugs(context.modelGroups, id, models);
     const featuredPlatforms = () => (context.featuredPlatformSlugs || []).filter(slug => platforms.some(platform => platform.slug === slug));
     const canRestoreDefaults = () => groupsReady && featuredPlatforms().length > 0 && presetSlugs("featured").length > 0;
-    function resetFilters(featured = false) {
+    function resetFilters(featured = false, updatePurpose = 'filter_reset') {
       if (featured && !canRestoreDefaults()) return false;
       state = Filters.cloneControlState(defaults);
       if (featuredCatalog) featuredOnly = false;
@@ -263,7 +263,7 @@
       }
       resetModelList();
       resetUrl = !full || featured || featuredCatalog;
-      publish(platformHub || plansPage ? "reset" : "manual");
+      publish(platformHub || plansPage ? "reset" : "manual", updatePurpose);
       return true;
     }
     const sameSelection = slugs => Array.isArray(state.modelSlugs) && slugs.length === state.modelSlugs.length && slugs.every(slug => state.modelSlugs.includes(slug));
@@ -303,7 +303,7 @@
       state.modelGroup = "any";
       state.modelMatch = "any";
       resetModelList();
-      publish(source);
+      publish(source, source === 'manual' ? 'filter_featured_toggle' : undefined);
       return true;
     }
     const params = new URLSearchParams(location.search),
@@ -405,7 +405,7 @@
         if (platformNotice) { platformShortcutNotice = platformNotice; render(); }
       },
       reset: () => resetFilters(!full),
-      restoreDefaults: () => resetFilters(true),
+      restoreDefaults: () => resetFilters(true, 'filter_featured_toggle'),
     };
     host.filterController = controller;
     if (!full) root.CodingPlanHomeFilters = controller;
@@ -584,7 +584,7 @@
       host.querySelector('[data-range-clear="token"]')?.setAttribute("aria-pressed", String(!state.monthlyTokenRange));
       positionSelectionPanels();
     }
-    function publish(source = "manual") {
+    function publish(source = "manual", updatePurpose) {
       policy.constrain(state);
       if (!["init", "catalog", "display"].includes(source)) initialPresetPending = false;
       multimodalNotice = "";
@@ -612,7 +612,7 @@
       render();
       root.dispatchEvent(
         new CustomEvent("codingplan:filters-changed", {
-          detail: { state: clean, source, full },
+          detail: { state: clean, source, full, updatePurpose },
         }),
       );
     }
@@ -738,7 +738,7 @@
         if (key === "platformSlugs" && el.dataset.pickerAction === "default") {
           const slugs = featuredPlatforms();
           if (!slugs.length) return;
-          state.platformSlugs = slugs; publish(); return;
+          state.platformSlugs = slugs; publish('manual','filter_featured_toggle'); return;
         }
         if (key === "modelSlugs") { state.modelMatch = "any"; state.modelGroup = "any"; }
         state[key] =

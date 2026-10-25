@@ -78,6 +78,9 @@
         },
         {
           "url": "https://platform.minimax.cn/docs/faq/models"
+        },
+        {
+          "url": "https://platform.minimax.cn/docs/m-plan/token-plan-notice"
         }
       ],
       "relatedChanges": []
@@ -184,8 +187,8 @@
     },
     {
       "slug": "tencent-hy4-preview-discount-end-20261015",
-      "title": "腾讯 Hy4 Preview 五折结束",
-      "officialStatus": "effective",
+      "title": "腾讯 Hy4 Preview 原截止安排已更新",
+      "officialStatus": "superseded",
       "effectiveTime": {
         "type": "date",
         "date": "2026-10-15",
@@ -196,10 +199,10 @@
           "type": "quota",
           "label": "Hy4 积分价格",
           "before": "五折积分价",
-          "after": "恢复输入/缓存/输出120/6/360积分每百万Token"
+          "after": "原10月15日截止安排已由10月30日12:00（北京时间）截止安排替代，当前仍按五折抵扣。"
         }
       ],
-      "summary": "Hy4 Preview五折已于10月15日12:00（北京时间）结束，恢复120/6/360积分每百万输入/缓存/输出Token。",
+      "summary": "当前Hy4 preview五折活动持续至2026年10月30日12:00（北京时间），输入/缓存/输出为60/3/180积分每百万Token；以新的截止事项为准。",
       "targets": [
         {
           "type": "plan_model",
@@ -261,9 +264,14 @@
       "sources": [
         {
           "url": "https://cloud.tencent.com/document/product/1823/133811"
+        },
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/133811"
         }
       ],
-      "relatedChanges": []
+      "relatedChanges": [
+        "tencent-hy4-preview-discount-end-20261030"
+      ]
     },
     {
       "slug": "tencent-minimax-m2-7-retirement-20261117",
@@ -982,21 +990,21 @@
     },
     {
       "slug": "ark-minimax-m3-retirement-announced",
-      "title": "方舟 MiniMax M3 即将下线",
+      "title": "方舟 Coding Plan MiniMax M3 即将下线",
       "officialStatus": "announced",
       "effectiveTime": {
         "type": "unknown",
-        "description": "当前两份概览仅标即将下线，未列确切日期，日期待确认。"
+        "description": "Coding Plan已宣布MiniMax M3即将下线，具体停服日期待确认。"
       },
       "changes": [
         {
           "type": "model_support",
           "label": "MiniMax M3",
           "before": "当前仍列为支持型号",
-          "after": "标记即将下线，概览未列具体日期，日期待确认"
+          "after": "Coding Plan标记即将下线，具体停服日期待核实"
         }
       ],
-      "summary": "方舟Coding及Agent Plan当前概览将MiniMax M3标为即将下线，概览未列确切日期；当前支持关系保留。",
+      "summary": "Coding Plan中的MiniMax M3仍标记即将下线，当前关系保留；具体停服日期以Coding Plan公告为准。Agent Plan已有独立明确安排。",
       "targets": [
         {
           "type": "plan_model",
@@ -1011,34 +1019,6 @@
           "planSlug": "volcengine-coding-pro",
           "planModelSlug": "volcengine-coding-pro--minimax-m3",
           "label": "字节·方舟 Coding Plan · Pro · MiniMax-M3"
-        },
-        {
-          "type": "plan_model",
-          "platformSlug": "bytedance-ark-agent",
-          "planSlug": "volcengine-agent-small",
-          "planModelSlug": "volcengine-agent-small--minimax-m3",
-          "label": "字节·方舟 Agent Plan · Small · MiniMax-M3"
-        },
-        {
-          "type": "plan_model",
-          "platformSlug": "bytedance-ark-agent",
-          "planSlug": "volcengine-agent-medium",
-          "planModelSlug": "volcengine-agent-medium--minimax-m3",
-          "label": "字节·方舟 Agent Plan · Medium · MiniMax-M3"
-        },
-        {
-          "type": "plan_model",
-          "platformSlug": "bytedance-ark-agent",
-          "planSlug": "volcengine-agent-large",
-          "planModelSlug": "volcengine-agent-large--minimax-m3",
-          "label": "字节·方舟 Agent Plan · Large · MiniMax-M3"
-        },
-        {
-          "type": "plan_model",
-          "platformSlug": "bytedance-ark-agent",
-          "planSlug": "volcengine-agent-max",
-          "planModelSlug": "volcengine-agent-max--minimax-m3",
-          "label": "字节·方舟 Agent Plan · Max · MiniMax-M3"
         }
       ],
       "sources": [
@@ -1049,7 +1029,9 @@
           "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-plan-overview?lang=zh"
         }
       ],
-      "relatedChanges": []
+      "relatedChanges": [
+        "ark-agent-minimax-m3-retirement-20261102"
+      ]
     },
     {
       "slug": "ark-k3-discount-end-20261025",
@@ -1209,42 +1191,42 @@
           "platformSlug": "bytedance-ark",
           "planSlug": "volcengine-coding-lite",
           "planModelSlug": "volcengine-coding-lite--deepseek-v4-1-flash",
-          "label": "字节·方舟 Coding Plan · Lite · DeepSeek-V4.1-Flash"
+          "label": "字节·方舟 Coding Plan · Lite · DeepSeek-V4.1-Flash-1017"
         },
         {
           "type": "plan_model",
           "platformSlug": "bytedance-ark",
           "planSlug": "volcengine-coding-pro",
           "planModelSlug": "volcengine-coding-pro--deepseek-v4-1-flash",
-          "label": "字节·方舟 Coding Plan · Pro · DeepSeek-V4.1-Flash"
+          "label": "字节·方舟 Coding Plan · Pro · DeepSeek-V4.1-Flash-1017"
         },
         {
           "type": "plan_model",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-small",
           "planModelSlug": "volcengine-agent-small--deepseek-v4-1-flash",
-          "label": "字节·方舟 Agent Plan · Small · DeepSeek-V4.1-Flash"
+          "label": "字节·方舟 Agent Plan · Small · DeepSeek-V4.1-Flash-1017"
         },
         {
           "type": "plan_model",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-medium",
           "planModelSlug": "volcengine-agent-medium--deepseek-v4-1-flash",
-          "label": "字节·方舟 Agent Plan · Medium · DeepSeek-V4.1-Flash"
+          "label": "字节·方舟 Agent Plan · Medium · DeepSeek-V4.1-Flash-1017"
         },
         {
           "type": "plan_model",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-large",
           "planModelSlug": "volcengine-agent-large--deepseek-v4-1-flash",
-          "label": "字节·方舟 Agent Plan · Large · DeepSeek-V4.1-Flash"
+          "label": "字节·方舟 Agent Plan · Large · DeepSeek-V4.1-Flash-1017"
         },
         {
           "type": "plan_model",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-max",
           "planModelSlug": "volcengine-agent-max--deepseek-v4-1-flash",
-          "label": "字节·方舟 Agent Plan · Max · DeepSeek-V4.1-Flash"
+          "label": "字节·方舟 Agent Plan · Max · DeepSeek-V4.1-Flash-1017"
         }
       ],
       "sources": [
@@ -1615,7 +1597,7 @@
     },
     {
       "slug": "ark-agent-economy-discount-end-20261231",
-      "title": "火山 Agent Plan Economy 五折活动结束",
+      "title": "方舟 Agent / Coding Plan Economy 五折结束",
       "officialStatus": "announced",
       "effectiveTime": {
         "type": "date",
@@ -1636,6 +1618,20 @@
           "type": "platform",
           "platformSlug": "bytedance-ark-agent",
           "label": "字节·方舟 Agent Plan"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-lite",
+          "planModelSlug": "volcengine-coding-lite--deepseek-v4-1-flash--economy",
+          "label": "字节·方舟 Coding Plan · Lite · DeepSeek-V4.1-Flash-1017"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-pro",
+          "planModelSlug": "volcengine-coding-pro--deepseek-v4-1-flash--economy",
+          "label": "字节·方舟 Coding Plan · Pro · DeepSeek-V4.1-Flash-1017"
         }
       ],
       "sources": [
@@ -1644,6 +1640,9 @@
         },
         {
           "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-plan-overview?lang=zh"
         }
       ],
       "relatedChanges": []
@@ -1743,6 +1742,254 @@
         }
       ],
       "relatedChanges": []
+    },
+    {
+      "slug": "tencent-hy4-preview-discount-end-20261030",
+      "title": "腾讯 Hy4 Preview 五折将于10月30日结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-30",
+        "description": "北京时间12:00结束；当前活动为2026-09-25 00:00至2026-10-30 12:00。"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "Hy4 preview积分抵扣价",
+          "before": "输入/缓存/输出60/3/180积分每百万Token",
+          "after": "活动结束后恢复120/6/360积分每百万Token"
+        }
+      ],
+      "summary": "适用通用Token Plan与Hy Token Plan；Hy4 preview当前五折，不与其他优惠叠加，10月30日12:00（北京时间）结束后恢复常规系数。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-lite",
+          "planModelSlug": "tencent-cloud-token-plan-lite--hy4-preview",
+          "label": "腾讯云 · Lite · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-standard",
+          "planModelSlug": "tencent-cloud-token-plan-standard--hy4-preview",
+          "label": "腾讯云 · Standard · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-pro",
+          "planModelSlug": "tencent-cloud-token-plan-pro--hy4-preview",
+          "label": "腾讯云 · Pro · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-max",
+          "planModelSlug": "tencent-cloud-token-plan-max--hy4-preview",
+          "label": "腾讯云 · Max · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-lite",
+          "planModelSlug": "tencent-cloud-hy-lite--hy4-preview",
+          "label": "腾讯云 · Hy · Lite · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-standard",
+          "planModelSlug": "tencent-cloud-hy-standard--hy4-preview",
+          "label": "腾讯云 · Hy · Standard · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-pro",
+          "planModelSlug": "tencent-cloud-hy-pro--hy4-preview",
+          "label": "腾讯云 · Hy · Pro · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-max",
+          "planModelSlug": "tencent-cloud-hy-max--hy4-preview",
+          "label": "腾讯云 · Hy · Max · Hy4-preview"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/133811"
+        }
+      ],
+      "relatedChanges": [
+        "tencent-hy4-preview-discount-end-20261015"
+      ]
+    },
+    {
+      "slug": "ark-agent-minimax-m3-retirement-20261102",
+      "title": "方舟 Agent Plan MiniMax M3 将于11月2日下线",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-02",
+        "description": "14:00（UTC+8）正式下线停止服务。"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "MiniMax M3存量调用",
+          "before": "已使用过该模型的存量用户仍可调用",
+          "after": "正式下线并停止服务，建议迁移至doubao-seed-evolving或kimi-k3"
+        }
+      ],
+      "summary": "Agent Plan已使用过M3的存量用户须在2026年11月2日14:00（UTC+8）前迁移；新用户自10月19日10:00起已不可用。Coding Plan安排另行核实。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-small",
+          "planModelSlug": "volcengine-agent-small--minimax-m3",
+          "label": "字节·方舟 Agent Plan · Small · MiniMax-M3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-medium",
+          "planModelSlug": "volcengine-agent-medium--minimax-m3",
+          "label": "字节·方舟 Agent Plan · Medium · MiniMax-M3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-large",
+          "planModelSlug": "volcengine-agent-large--minimax-m3",
+          "label": "字节·方舟 Agent Plan · Large · MiniMax-M3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-max",
+          "planModelSlug": "volcengine-agent-max--minimax-m3",
+          "label": "字节·方舟 Agent Plan · Max · MiniMax-M3"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-deprecation-announcement?lang=zh"
+        }
+      ],
+      "relatedChanges": [
+        "ark-minimax-m3-retirement-announced"
+      ]
+    },
+    {
+      "slug": "ark-agent-minimax-m3-new-user-restriction-20261019",
+      "title": "方舟 Agent Plan M3 已停止向新用户开放",
+      "officialStatus": "effective",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-19",
+        "description": "10:00（UTC+8）起；新用户指购买套餐但未使用过该模型的用户。"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "MiniMax M3新用户权限",
+          "before": "可按套餐使用",
+          "after": "未使用过该模型的新用户不可调用，存量调用暂时保留"
+        }
+      ],
+      "summary": "Agent Plan未使用过MiniMax M3的新用户自2026年10月19日10:00（UTC+8）起不可调用；存量服务将于11月2日14:00下线。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-small",
+          "planModelSlug": "volcengine-agent-small--minimax-m3",
+          "label": "字节·方舟 Agent Plan · Small · MiniMax-M3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-medium",
+          "planModelSlug": "volcengine-agent-medium--minimax-m3",
+          "label": "字节·方舟 Agent Plan · Medium · MiniMax-M3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-large",
+          "planModelSlug": "volcengine-agent-large--minimax-m3",
+          "label": "字节·方舟 Agent Plan · Large · MiniMax-M3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-max",
+          "planModelSlug": "volcengine-agent-max--minimax-m3",
+          "label": "字节·方舟 Agent Plan · Max · MiniMax-M3"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-deprecation-announcement?lang=zh"
+        }
+      ],
+      "relatedChanges": [
+        "ark-agent-minimax-m3-retirement-20261102"
+      ]
+    },
+    {
+      "slug": "qoder-intl-qwen37-plus-offpeak-end-20261022",
+      "title": "Qoder国际版Qwen3.7-Plus夜间优惠已结束",
+      "officialStatus": "effective",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-22",
+        "description": "22:00 SGT（UTC+8）结束，当前全天按常规系数0.1×。"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "Qwen3.7-Plus夜间参考系数",
+          "before": "夜间0.04×，常规0.1×",
+          "after": "全天0.1×；参考系数不表示固定Token单价"
+        }
+      ],
+      "summary": "Qwen3.7-Plus夜间优惠已于2026年10月22日22:00（UTC+8）结束，当前全天按常规参考系数0.1×。Qwen3.8-Max与Ultimate活动按各自规则执行。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "qoder-intl",
+          "planSlug": "qoder-intl-pro",
+          "planModelSlug": "qoder-intl-pro--qwen-3-7-plus",
+          "label": "Qoder 国际版 · Pro · Qwen-3.7-Plus"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "qoder-intl",
+          "planSlug": "qoder-intl-pro-plus",
+          "planModelSlug": "qoder-intl-pro-plus--qwen-3-7-plus",
+          "label": "Qoder 国际版 · Pro+ · Qwen-3.7-Plus"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "qoder-intl",
+          "planSlug": "qoder-intl-ultra",
+          "planModelSlug": "qoder-intl-ultra--qwen-3-7-plus",
+          "label": "Qoder 国际版 · Ultra · Qwen-3.7-Plus"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.qoder.com/events/offpeakrate"
+        }
+      ],
+      "relatedChanges": []
     }
-  ]
+  ],
+  "contentVersion": "2026-10-25T16:36:29.712Z"
 }

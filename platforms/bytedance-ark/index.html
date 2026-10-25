@@ -1,0 +1,143 @@
+<!-- Generated platform guide; edit data/platforms/pages/content instead. -->
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<script src="/scripts/event-collect.js?v=e3ae87fa58" defer></script>
+<script src="/scripts/event-collect-config.js?v=fe6767a8a0" defer></script>
+<script src="/scripts/event-collect-site.js?v=f2aa8e4c89" defer></script>
+<script src="/scripts/ui-core.js?v=310b87a89d"></script>
+<script src="/scripts/ui-help.js?v=2ecce1a2f6"></script>
+<script src="/scripts/site-features.js?v=af13f3915f"></script>
+<script src="/scripts/ui-dialog.js?v=632fc11cea" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
+<script src="/scripts/data-updates.js?v=bd42009280" defer></script>
+<script src="/scripts/change-notices.js?v=4c33ae13c0"></script>
+<link rel="stylesheet" href="/styles/change-notices.css?v=fc8ec4f748">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>字节·方舟 Coding Plan：价格、模型与使用指南 - Coding Plan</title>
+<meta name="description" content="了解方舟 Coding Plan Lite 与 Pro 的价格、多模型接入、专用端点和共享窗口，区分历史测量、推算额度与 Agent Plan。">
+  <link rel="canonical" href="https://codingplan.fyi/platforms/bytedance-ark/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="Coding Plan">
+  <meta property="og:title" content="字节·方舟 Coding Plan：价格、模型与使用指南 - Coding Plan">
+  <meta property="og:description" content="了解方舟 Coding Plan Lite 与 Pro 的价格、多模型接入、专用端点和共享窗口，区分历史测量、推算额度与 Agent Plan。">
+  <meta property="og:url" content="https://codingplan.fyi/platforms/bytedance-ark/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="字节·方舟 Coding Plan：价格、模型与使用指南 - Coding Plan">
+  <meta name="twitter:description" content="了解方舟 Coding Plan Lite 与 Pro 的价格、多模型接入、专用端点和共享窗口，区分历史测量、推算额度与 Agent Plan。">
+  <link rel="icon" href="/favicon.ico?v=260924a">
+  <link rel="stylesheet" href="/styles/shared.css?v=bd1276c850">
+  <link rel="stylesheet" href="/styles/tool-page.css?v=3108254cb1">
+  <link rel="stylesheet" href="/styles/platform-guide.css?v=cf1c74f518">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://codingplan.fyi/platforms/bytedance-ark/","url":"https://codingplan.fyi/platforms/bytedance-ark/","name":"字节·方舟 Coding Plan：价格、模型与使用指南 - Coding Plan","description":"了解方舟 Coding Plan Lite 与 Pro 的价格、多模型接入、专用端点和共享窗口，区分历史测量、推算额度与 Agent Plan。","inLanguage":"zh-CN","datePublished":"2026-10-24","dateModified":"2026-10-26","isPartOf":{"@type":"WebSite","name":"Coding Plan","url":"https://codingplan.fyi/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Coding Plan","item":"https://codingplan.fyi/"},{"@type":"ListItem","position":2,"name":"平台介绍","item":"https://codingplan.fyi/platforms/"},{"@type":"ListItem","position":3,"name":"字节·方舟 Coding Plan","item":"https://codingplan.fyi/platforms/bytedance-ark/"}]}]}</script>
+<link rel="stylesheet" href="/styles/design-system.css?v=b3c0a84784">
+<script src="/scripts/number-display.js?v=c42af79c1b" defer></script>
+<script src="/scripts/platform-guide.js?v=eb39249fa5" defer></script>
+<script id="site-data-versions" type="application/json">{"platforms":"2026-10-25T16:31:43.191Z","plans":"2026-10-25T16:36:28.120Z","models":"2026-10-25T10:48:45.156Z","config":"2026-10-25T16:38:26.291Z","featured_catalog":"2026-10-25T10:48:45.157Z","changes":"2026-10-25T16:36:29.712Z","announcements":"2026-10-25T10:48:45.158Z","articles_catalog":"2026-10-25T10:48:45.159Z"}</script>
+<script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
+<link rel="stylesheet" href="/styles/ui-components.css?v=89d1dc5ef7">
+<link rel="stylesheet" href="/styles/ui-help.css?v=50cda6ca65">
+</head>
+<body class="platform-guide">
+  <a class="guide-skip" href="#guide-content">跳到介绍正文</a>
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/" aria-current="page">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/articles/">文章</a>
+    <a href="/updates/">预告与更新</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="priceBasisLabel">综合单价口径</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="priceBasisLabel" title="首月价缺失时使用每月价格；按量 API 报价和 Token 额度不变。">
+            <button type="button" data-settings-price-basis="firstMonth" aria-pressed="true">首月价格</button>
+            <button type="button" data-settings-price-basis="monthly" aria-pressed="false">每月价格</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="guide-shell">
+    <nav class="guide-breadcrumb" aria-label="面包屑"><a href="/">Coding Plan</a><span>/</span><a href="/platforms/">平台介绍</a><span>/</span><span aria-current="page">字节·方舟 Coding Plan</span></nav>
+    <header class="guide-hero">
+      <div class="guide-hero-copy">
+        <p class="guide-eyebrow">平台介绍 · 可以购买</p>
+        <h1>字节·方舟 Coding Plan</h1>
+        <p class="guide-lead">方舟 Coding Plan 是面向个人编程工具的多模型订阅。Lite 与 Pro 适合希望按月管理开支、在国产模型间切换的用户；它与方舟按量 API 和 Agent Plan 分别计费。</p>
+        <div class="guide-actions"><a class="guide-button" href="/plans/?platform=bytedance-ark">查看套餐对比 →</a><a class="guide-button secondary" href="https://console.volcengine.com/ark/region:cn-beijing/subscription/coding-plan">查看官网 <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></div>
+        <p class="guide-dates">介绍更新 <time datetime="2026-10-25">2026-10-25</time><span>·</span>套餐与模型记录 <time datetime="2026-10-26">2026-10-26</time></p>
+      </div>
+      <div class="guide-monogram" aria-hidden="true">Ark</div>
+    </header>
+    <div class="guide-layout">
+      <nav class="guide-toc" aria-label="本页目录"><p>本页内容</p><a href="#overview"><span>01</span>适合什么人</a><a href="#changes"><span>02</span>变更预告</a><a href="#plans"><span>03</span>Lite 与 Pro 怎么选</a><a href="#models"><span>04</span>多模型支持与版本</a><a href="#usage"><span>05</span>额度、窗口与推算</a><a href="#tools"><span>06</span>接入工具时先查端点</a><a href="#related"><span>07</span>继续比较</a><a href="#sources"><span>08</span>官方资料</a></nav>
+      <main id="guide-content" class="guide-content"><section id="overview" class="guide-section"><h2>适合什么人</h2><p>希望在同一个个人编程订阅中切换豆包、DeepSeek、GLM、Kimi 等模型，可以比较方舟 Coding Plan。选择时优先看自己的常用模型、任务消耗和工具兼容性，支持多模型不代表每个模型有独立额度。</p>
+<p>本页介绍个人 Coding Plan。方舟通用按量 API 与 Agent Plan 是不同产品，密钥、端点、抵扣规则和活动不可直接互套。</p>
+</section>
+<section id="changes" class="guide-section"><h2>变更预告</h2><div class="change-notice-list" data-change-notices><article class="change-notice is-due" data-change-notice="ark-k3-discount-end-20261025" data-change-date="2026-10-25"><h3>方舟 Kimi K3 优惠结束</h3><p class="change-notice-time">2026-10-25 · 生效情况待确认</p><p>模型抵扣优惠：当前活动抵扣系数 → 活动到期，需按届时有效价抵扣</p><p class="change-notice-scope">涉及：字节·方舟 Coding Plan · Lite · Kimi-K3、字节·方舟 Coding Plan · Pro · Kimi-K3、字节·方舟 Agent Plan · Medium · Kimi-K3、字节·方舟 Agent Plan · Large · Kimi-K3、字节·方舟 Agent Plan · Max · Kimi-K3</p><a href="/updates/#change-ark-k3-discount-end-20261025">查看详情 →</a></article><article class="change-notice" data-change-notice="ark-kimi-k2-7-retirement-20261028" data-change-date="2026-10-28"><h3>方舟 K2.7 Code 停止服务</h3><p class="change-notice-time">2026-10-28 起（公告计划）</p><p>K2.7 Code使用资格：既有使用者仍可使用 → 10月28日14:00（UTC+8）停止服务</p><p class="change-notice-scope">涉及：字节·方舟 Coding Plan · Lite · Kimi-K2.7-Code、字节·方舟 Coding Plan · Pro · Kimi-K2.7-Code、字节·方舟 Agent Plan · Small · Kimi-K2.7-Code、字节·方舟 Agent Plan · Medium · Kimi-K2.7-Code、字节·方舟 Agent Plan · Large · Kimi-K2.7-Code、字节·方舟 Agent Plan · Max · Kimi-K2.7-Code</p><a href="/updates/#change-ark-kimi-k2-7-retirement-20261028">查看详情 →</a></article><article class="change-notice" data-change-notice="ark-small-medium-promotion-end-20261108" data-change-date="2026-11-08"><h3>方舟 Coding / Agent 入门档普惠活动结束</h3><p class="change-notice-time">2026-11-08 起（公告计划）</p><p>Coding Lite/Pro及Agent Small/Medium首两月优惠：符合资格订单首两月9.9/49.9元 → 优惠活动到期，后续按有效价格购买</p><p class="change-notice-scope">涉及：字节·方舟 Agent Plan · Small、字节·方舟 Agent Plan · Medium、字节·方舟 Coding Plan · Lite、字节·方舟 Coding Plan · Pro</p><a href="/updates/#change-ark-small-medium-promotion-end-20261108">查看详情 →</a></article><article class="change-notice" data-change-notice="ark-coding-invitation-end-20261119" data-change-date="2026-11-19"><h3>方舟 Coding 首次受邀优惠活动结束</h3><p class="change-notice-time">2026-11-19 起（公告计划）</p><p>首次受邀订阅优惠：符合条件首次受邀订单9.5折 → 邀请优惠活动到期，后续以有效优惠和结算为准</p><p>具体时刻及页面时区未公布。</p><p class="change-notice-scope">涉及：字节·方舟 Coding Plan · Lite、字节·方舟 Coding Plan · Pro</p><a href="/updates/#change-ark-coding-invitation-end-20261119">查看详情 →</a></article><article class="change-notice" data-change-notice="ark-k2-8-discount-end-20261214" data-change-date="2026-12-14"><h3>方舟 Kimi K2.8 优惠结束</h3><p class="change-notice-time">2026-12-14 起（公告计划）</p><p>模型抵扣优惠：当前活动抵扣系数 → 活动到期，需按届时有效价抵扣</p><p class="change-notice-scope">涉及：字节·方舟 Coding Plan · Lite · Kimi-K2.8-Preview、字节·方舟 Coding Plan · Pro · Kimi-K2.8-Preview、字节·方舟 Agent Plan · Small · Kimi-K2.8-Preview、字节·方舟 Agent Plan · Medium · Kimi-K2.8-Preview、字节·方舟 Agent Plan · Large · Kimi-K2.8-Preview、字节·方舟 Agent Plan · Max · Kimi-K2.8-Preview</p><a href="/updates/#change-ark-k2-8-discount-end-20261214">查看详情 →</a></article><article class="change-notice" data-change-notice="ark-v4-1-discount-end-20261230" data-change-date="2026-12-30"><h3>方舟 DeepSeek V4.1 优惠结束</h3><p class="change-notice-time">2026-12-30 起（公告计划）</p><p>模型抵扣优惠：当前活动抵扣系数 → 活动到期，需按届时有效价抵扣</p><p class="change-notice-scope">涉及：字节·方舟 Coding Plan · Lite · DeepSeek-V4.1-Flash-1017、字节·方舟 Coding Plan · Pro · DeepSeek-V4.1-Flash-1017、字节·方舟 Agent Plan · Small · DeepSeek-V4.1-Flash-1017、字节·方舟 Agent Plan · Medium · DeepSeek-V4.1-Flash-1017、字节·方舟 Agent Plan · Large · DeepSeek-V4.1-Flash-1017、字节·方舟 Agent Plan · Max · DeepSeek-V4.1-Flash-1017</p><a href="/updates/#change-ark-v4-1-discount-end-20261230">查看详情 →</a></article><article class="change-notice" data-change-notice="ark-agent-economy-discount-end-20261231" data-change-date="2026-12-31"><h3>方舟 Agent / Coding Plan Economy 五折结束</h3><p class="change-notice-time">2026-12-31 起（公告计划）</p><p>DeepSeek V4.1 Flash Economy 每万Token抵扣：1 AFP → 2 AFP</p><p>活动截至2026-12-30 23:59:59（UTC+8）。</p><p class="change-notice-scope">涉及：字节·方舟 Agent Plan、字节·方舟 Coding Plan · Lite · DeepSeek-V4.1-Flash-1017、字节·方舟 Coding Plan · Pro · DeepSeek-V4.1-Flash-1017</p><a href="/updates/#change-ark-agent-economy-discount-end-20261231">查看详情 →</a></article><article class="change-notice" data-change-notice="ark-minimax-m3-retirement-announced"><h3>方舟 Coding Plan MiniMax M3 即将下线</h3><p class="change-notice-time">生效日期未公布</p><p>MiniMax M3：当前仍列为支持型号 → Coding Plan标记即将下线，具体停服日期待核实</p><p class="change-notice-scope">涉及：字节·方舟 Coding Plan · Lite · MiniMax-M3、字节·方舟 Coding Plan · Pro · MiniMax-M3</p><a href="/updates/#change-ark-minimax-m3-retirement-announced">查看详情 →</a></article></div></section>
+<section id="plans" class="guide-section"><h2>Lite 与 Pro 怎么选</h2><div class="guide-plan-grid"><article class="guide-plan">
+    <h3>Lite</h3><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span><p class="guide-price">¥40<small>/ 月</small></p>
+    <dl><div><dt>首月价格</dt><dd>¥9.90</dd></div><div><dt>按季支付</dt><dd>¥120</dd></div><div><dt>按年支付</dt><dd>¥480</dd></div></dl>
+
+    <p class="guide-plan-advice">适合先验证常用模型与工具的接入体验；长期预算同时看常规续费价。</p>
+  </article><article class="guide-plan">
+    <h3>Pro</h3><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span><p class="guide-price">¥200<small>/ 月</small></p>
+    <dl><div><dt>首月价格</dt><dd>¥49.90</dd></div><div><dt>按季支付</dt><dd>¥600</dd></div><div><dt>按年支付</dt><dd>¥2,400</dd></div></dl>
+
+    <p class="guide-plan-advice">额度为 Lite 的 5 倍；需要持续使用或较多长任务时，再根据实际窗口消耗升档。</p>
+  </article></div><p class="guide-muted">部分周期金额按月价或季价换算，仅作比较；是否提供该周期订阅以平台实际提供为准。“不适用”表示没有可用价格，0 表示免费。</p><p>Pro 的套餐额度为 Lite 的 5 倍，模型切换后的实际 Token 用量还受对应扣减规则影响。先确认 Lite 能否覆盖自己的常见任务，再判断是否需要更高额度。</p>
+<p>首月价与常规月费分开展示。限量订购优惠至 2026-11-08，前两个月适用优惠，第三个月恢复常规价格；新购、续费与升配共享两个月资格。官方未公布具体截止时刻或时区。邀请优惠另有资格，不计入默认首月报价，能否享受以实际结算为准。</p>
+</section>
+<section id="models" class="guide-section"><h2>多模型支持与版本</h2><p>本站收录 13 个支持模型；同一模型的不同计费档位合并展示。</p><div class="guide-table-wrap" tabindex="0" role="region" aria-label="套餐支持模型"><table><caption>套餐支持模型</caption><thead><tr><th scope="col">模型</th><th scope="col">支持套餐</th></tr></thead><tbody><tr><th scope="row">GLM-5.3</th><td>Lite、Pro</td></tr><tr><th scope="row">Kimi-K3</th><td>Lite、Pro</td></tr><tr><th scope="row">DeepSeek-V4.1-Flash-1017</th><td>Lite、Pro</td></tr><tr><th scope="row">DeepSeek-V4-Flash-0731</th><td>Lite、Pro</td></tr><tr><th scope="row">GLM-5.3-Flash</th><td>Lite、Pro</td></tr><tr><th scope="row">Kimi-K2.8-Preview</th><td>Lite、Pro</td></tr><tr><th scope="row">Doubao-Seed-2.1-Pro</th><td>Lite、Pro</td></tr><tr><th scope="row">Doubao-Seed-2.1-Lite</th><td>Lite、Pro</td></tr><tr><th scope="row">Doubao-Seed-2.0-Mini</th><td>Lite、Pro</td></tr><tr><th scope="row">Doubao-Seed-Evolving</th><td>Lite、Pro</td></tr><tr><th scope="row">MiniMax-M3</th><td>Lite、Pro</td></tr><tr><th scope="row">Kimi-K2.7-Code</th><td>Lite、Pro</td></tr><tr><th scope="row">DeepSeek-V4-Pro-0813</th><td>Lite、Pro</td></tr></tbody></table></div><p class="guide-muted">模型记录日期：2026-10-26。可选名称与实际服务版本可能不同，使用前请核对官方说明。</p><p>V4.1 Flash 标准与 Economy 入口当前均提供 1017 版，调用名称仍不带日期后缀；Economy 与标准版使用相同权重，生成速度略慢。</p>
+<p>同名系列在不同平台可能提供不同版本或上下文，模型刚发布也不代表订阅内立即可用。临时折扣和旧型号停服可能改变选择，使用前核对官方模型列表和账号中可选项。</p>
+<p>DeepSeek V4.1 Flash Economy 与标准版使用相同模型权重，生成速度略慢。Lite、Pro 均已支持；当前Token参考量沿用下文的条件推算，按同套餐标准版的1.25倍估算，不是独立实测或官方固定额度。该档五折活动截至2026年12月30日23:59:59（UTC+8）。</p>
+<p>Auto 是自动路由方式；需要比较指定模型时，应主动选择该模型，避免把 Auto 的规则套到直接调用上。</p>
+</section>
+<section id="usage" class="guide-section"><h2>额度、窗口与推算</h2><div class="guide-usage-comparison" data-guide-usage><div class="guide-table-wrap" tabindex="0" role="region" aria-label="月 Token 参考量"><table><caption>月 Token 参考量（<span data-guide-token-unit>亿</span> Token）</caption><thead><tr><th scope="col">模型</th><th scope="col">时段 / 档位</th><th scope="col">Lite</th><th scope="col">Pro</th></tr></thead><tbody><tr><th scope="row">GLM-5.3</th><td>常规</td><td><span data-guide-token-m="66.7">0.67</span></td><td><span data-guide-token-m="333.3">3.33</span></td></tr><tr><th scope="row">Kimi-K3</th><td>常规</td><td><span data-guide-token-m="60">0.60</span></td><td><span data-guide-token-m="300">3</span></td></tr><tr><th scope="row">DeepSeek-V4.1-Flash-1017</th><td>常规</td><td><span data-guide-token-m="240">2.40</span></td><td><span data-guide-token-m="1200">12</span></td></tr><tr><th scope="row">DeepSeek-V4.1-Flash-1017</th><td>Economy</td><td><span data-guide-token-m="300">3</span></td><td><span data-guide-token-m="1500">15</span></td></tr><tr><th scope="row">DeepSeek-V4-Flash-0731</th><td>常规</td><td><span data-guide-token-m="600">6</span></td><td><span data-guide-token-m="3000">30</span></td></tr><tr><th scope="row">GLM-5.3-Flash</th><td>常规</td><td><span data-guide-token-m="600">6</span></td><td><span data-guide-token-m="3000">30</span></td></tr><tr><th scope="row">Kimi-K2.8-Preview</th><td>常规</td><td><span data-guide-token-m="62.5">0.63</span></td><td><span data-guide-token-m="312.5">3.13</span></td></tr><tr><th scope="row">Doubao-Seed-2.1-Pro</th><td>常规</td><td><span data-guide-token-m="120">1.20</span></td><td><span data-guide-token-m="600">6</span></td></tr><tr><th scope="row">Doubao-Seed-2.1-Lite</th><td>常规</td><td><span data-guide-token-m="600">6</span></td><td><span data-guide-token-m="3000">30</span></td></tr><tr><th scope="row">Doubao-Seed-2.0-Mini</th><td>常规</td><td><span data-guide-token-m="1200">12</span></td><td><span data-guide-token-m="6000">60</span></td></tr><tr><th scope="row">Doubao-Seed-Evolving</th><td>常规</td><td><span data-guide-token-m="120">1.20</span></td><td><span data-guide-token-m="600">6</span></td></tr><tr><th scope="row">MiniMax-M3</th><td>常规</td><td><span data-guide-token-m="120">1.20</span></td><td><span data-guide-token-m="600">6</span></td></tr><tr><th scope="row">Kimi-K2.7-Code</th><td>256K</td><td><span data-guide-token-m="66.7">0.67</span></td><td><span data-guide-token-m="333.3">3.33</span></td></tr><tr><th scope="row">DeepSeek-V4-Pro-0813</th><td>常规</td><td><span data-guide-token-m="54.5">0.55</span></td><td><span data-guide-token-m="272.7">2.73</span></td></tr></tbody></table></div><details class="guide-usage-details"><summary>查看每 5 小时与每周参考量</summary><div class="guide-table-wrap" tabindex="0" role="region" aria-label="每 5 小时 Token 参考量"><table><caption>每 5 小时 Token 参考量（<span data-guide-token-unit>亿</span> Token）</caption><thead><tr><th scope="col">模型</th><th scope="col">时段 / 档位</th><th scope="col">Lite</th><th scope="col">Pro</th></tr></thead><tbody><tr><th scope="row">GLM-5.3</th><td>常规</td><td><span data-guide-token-m="4.4444444444">0.04</span></td><td><span data-guide-token-m="22.2222222222">0.22</span></td></tr><tr><th scope="row">Kimi-K3</th><td>常规</td><td><span data-guide-token-m="4">0.04</span></td><td><span data-guide-token-m="20">0.20</span></td></tr><tr><th scope="row">DeepSeek-V4.1-Flash-1017</th><td>常规</td><td><span data-guide-token-m="16">0.16</span></td><td><span data-guide-token-m="80">0.80</span></td></tr><tr><th scope="row">DeepSeek-V4.1-Flash-1017</th><td>Economy</td><td><span data-guide-token-m="20">0.20</span></td><td><span data-guide-token-m="100">1</span></td></tr><tr><th scope="row">DeepSeek-V4-Flash-0731</th><td>常规</td><td><span data-guide-token-m="40">0.40</span></td><td><span data-guide-token-m="200">2</span></td></tr><tr><th scope="row">GLM-5.3-Flash</th><td>常规</td><td><span data-guide-token-m="40">0.40</span></td><td><span data-guide-token-m="200">2</span></td></tr><tr><th scope="row">Kimi-K2.8-Preview</th><td>常规</td><td><span data-guide-token-m="4.1666666667">0.04</span></td><td><span data-guide-token-m="20.8333333333">0.21</span></td></tr><tr><th scope="row">Doubao-Seed-2.1-Pro</th><td>常规</td><td><span data-guide-token-m="8">0.08</span></td><td><span data-guide-token-m="40">0.40</span></td></tr><tr><th scope="row">Doubao-Seed-2.1-Lite</th><td>常规</td><td><span data-guide-token-m="40">0.40</span></td><td><span data-guide-token-m="200">2</span></td></tr><tr><th scope="row">Doubao-Seed-2.0-Mini</th><td>常规</td><td><span data-guide-token-m="80">0.80</span></td><td><span data-guide-token-m="400">4</span></td></tr><tr><th scope="row">Doubao-Seed-Evolving</th><td>常规</td><td><span data-guide-token-m="8">0.08</span></td><td><span data-guide-token-m="40">0.40</span></td></tr><tr><th scope="row">MiniMax-M3</th><td>常规</td><td><span data-guide-token-m="8">0.08</span></td><td><span data-guide-token-m="40">0.40</span></td></tr><tr><th scope="row">Kimi-K2.7-Code</th><td>256K</td><td><span data-guide-token-m="4.4444444444">0.04</span></td><td><span data-guide-token-m="22.2222222222">0.22</span></td></tr><tr><th scope="row">DeepSeek-V4-Pro-0813</th><td>常规</td><td><span data-guide-token-m="3.6363636364">0.04</span></td><td><span data-guide-token-m="18.1818181818">0.18</span></td></tr></tbody></table></div><div class="guide-table-wrap" tabindex="0" role="region" aria-label="每周 Token 参考量"><table><caption>每周 Token 参考量（<span data-guide-token-unit>亿</span> Token）</caption><thead><tr><th scope="col">模型</th><th scope="col">时段 / 档位</th><th scope="col">Lite</th><th scope="col">Pro</th></tr></thead><tbody><tr><th scope="row">GLM-5.3</th><td>常规</td><td><span data-guide-token-m="33.3333333333">0.33</span></td><td><span data-guide-token-m="166.6666666667">1.67</span></td></tr><tr><th scope="row">Kimi-K3</th><td>常规</td><td><span data-guide-token-m="30">0.30</span></td><td><span data-guide-token-m="150">1.50</span></td></tr><tr><th scope="row">DeepSeek-V4.1-Flash-1017</th><td>常规</td><td><span data-guide-token-m="120">1.20</span></td><td><span data-guide-token-m="600">6</span></td></tr><tr><th scope="row">DeepSeek-V4.1-Flash-1017</th><td>Economy</td><td><span data-guide-token-m="150">1.50</span></td><td><span data-guide-token-m="750">7.50</span></td></tr><tr><th scope="row">DeepSeek-V4-Flash-0731</th><td>常规</td><td><span data-guide-token-m="300">3</span></td><td><span data-guide-token-m="1500">15</span></td></tr><tr><th scope="row">GLM-5.3-Flash</th><td>常规</td><td><span data-guide-token-m="300">3</span></td><td><span data-guide-token-m="1500">15</span></td></tr><tr><th scope="row">Kimi-K2.8-Preview</th><td>常规</td><td><span data-guide-token-m="31.25">0.31</span></td><td><span data-guide-token-m="156.25">1.56</span></td></tr><tr><th scope="row">Doubao-Seed-2.1-Pro</th><td>常规</td><td><span data-guide-token-m="60">0.60</span></td><td><span data-guide-token-m="300">3</span></td></tr><tr><th scope="row">Doubao-Seed-2.1-Lite</th><td>常规</td><td><span data-guide-token-m="300">3</span></td><td><span data-guide-token-m="1500">15</span></td></tr><tr><th scope="row">Doubao-Seed-2.0-Mini</th><td>常规</td><td><span data-guide-token-m="600">6</span></td><td><span data-guide-token-m="3000">30</span></td></tr><tr><th scope="row">Doubao-Seed-Evolving</th><td>常规</td><td><span data-guide-token-m="60">0.60</span></td><td><span data-guide-token-m="300">3</span></td></tr><tr><th scope="row">MiniMax-M3</th><td>常规</td><td><span data-guide-token-m="60">0.60</span></td><td><span data-guide-token-m="300">3</span></td></tr><tr><th scope="row">Kimi-K2.7-Code</th><td>256K</td><td><span data-guide-token-m="33.3333333333">0.33</span></td><td><span data-guide-token-m="166.6666666667">1.67</span></td></tr><tr><th scope="row">DeepSeek-V4-Pro-0813</th><td>常规</td><td><span data-guide-token-m="27.2727272727">0.27</span></td><td><span data-guide-token-m="136.3636363636">1.36</span></td></tr></tbody></table></div></details></div><p>五小时、周、月窗口同时约束使用，共享额度不能按模型行相加。表中 DeepSeek-V4-Flash-0731 基准来自历史实测，其他模型包含参考 Agent Plan 文本系数的推测，不是 Coding Plan 官方公布的固定 Token 配额，也不代表已经逐个模型实测。</p>
+<p>历史基准任务以高缓存命中、少输出的代码工作负载为主；更长上下文、思考输出、缓存变化和活动结束都可能影响实际消耗。参考量用于同条件比较，不是固定调用次数或可保证的任务数量。Agent Plan 的 AFP 积分也不能直接当作 Coding Plan 额度。</p>
+</section>
+<section id="tools" class="guide-section"><h2>接入工具时先查端点</h2><p>在订阅控制台获取 Coding Plan 的 API Key，按官方支持列表配置编程工具。专用 Base URL 为 <code>https://ark.cn-beijing.volces.com/api/coding/v3</code>，不要填成普通方舟 API 的 <code>/api/v3</code>；模型 ID 按官方示例填写。</p>
+<p>接入后用小任务确认模型、用量面板和扣减是否符合预期，再连续运行长任务。个人订阅的使用范围与限流规则以官方条款为准，需要通用服务端调用时另行比较按量 API。</p>
+</section>
+<section id="related" class="guide-section"><h2>继续比较</h2><p>多模型订阅可与 OpenCode 比较；主要调用 DeepSeek 时，也可以比较官方按量 API 的实际账单。只使用 Kimi 时，则重点比较直订的权限和共享额度。</p>
+<div class="guide-related"><a class="guide-related-card" href="/platforms/opencode/"><strong>OpenCode Go / Go Plus</strong><span>了解 OpenCode Go / Go Plus 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。</span><span>阅读平台介绍 →</span></a><a class="guide-related-card" href="/platforms/deepseek-official/"><strong>DeepSeek 官方 API</strong><span>查看 DeepSeek 官方 API 的分模型峰谷价格，了解缓存与输出计费、Search/Fetch 费用、兼容端点及按量使用方式。</span><span>阅读平台介绍 →</span></a><a class="guide-related-card" href="/platforms/kimi/"><strong>Kimi Code</strong><span>比较 Kimi 新旧会员的编程权益、模型权限、五小时与月额度，了解 K3.1 Pro 接入及 Token 估算的适用范围。</span><span>阅读平台介绍 →</span></a></div></section>
+<section id="sources" class="guide-section"><h2>官方资料</h2><ul class="guide-sources"><li><a href="https://console.volcengine.com/ark/region:cn-beijing/subscription/coding-plan">方舟 Coding Plan 订阅控制台</a><span>查看订购资格、余额与用量。</span></li><li><a href="https://docs.volcengine.com/docs/ark/coding-plan-personal-plan-overview?lang=zh">Coding Plan 个人版概述</a><span>模型支持、客户端配置与使用范围。</span></li><li><a href="https://docs.volcengine.com/docs/82379/2533566?lang=zh">Coding Plan 活动说明</a><span>活动资格、期限及优惠条件。</span></li></ul></section></main>
+    </div>
+    <footer class="guide-footer"><p>价格、活动与可用模型可能变化，购买和接入前请核对官方页面。本站的选择建议不代表服务承诺。</p><div><a href="/platforms/">全部平台</a><a href="/plans/">套餐对比</a><a href="/">返回首页</a><a href="https://github.com/wmpeng/codingplan/issues">反馈资料问题</a></div></footer>
+  </div>
+</body>
+</html>

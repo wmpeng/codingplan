@@ -250,7 +250,7 @@
       "name": "共绩算力",
       "rating": 5,
       "summary": "GLM、Kimi、Qwen、DeepSeek等模型的按量API，邀请优惠需有效资格。",
-      "detail": "提供14个大语言模型入口；DeepSeek V4预览ID将转向正式服务，目标版本未公布。邀请折扣以账户结算为准。",
+      "detail": "提供15个大语言模型入口，DeepSeek V4.1 Flash 与 1017 版分别提供。DeepSeek V4预览ID的正式路由目标版本未公布；邀请折扣以账户结算为准。",
       "dimensions": {
         "value": {
           "score": 5,
@@ -616,7 +616,7 @@
       "dimensions": {
         "value": {
           "score": null,
-          "reason": "$20 起，按 Credits 使用；不能与国内版积分等值比较。"
+          "reason": "$10起，Lite含1000 Credits/月及限定模型；Pro起提供完整模型名单，Token参考量仍未知。"
         },
         "models": {
           "score": null,
@@ -1258,5 +1258,6 @@
       "supportsHarnessApi": true,
       "action": "https://maas.xfyun.cn/"
     }
-  ]
+  ],
+  "contentVersion": "2026-10-25T16:31:43.191Z"
 }

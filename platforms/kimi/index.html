@@ -1,0 +1,159 @@
+<!-- Generated platform guide; edit data/platforms/pages/content instead. -->
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<script src="/scripts/event-collect.js?v=e3ae87fa58" defer></script>
+<script src="/scripts/event-collect-config.js?v=fe6767a8a0" defer></script>
+<script src="/scripts/event-collect-site.js?v=f2aa8e4c89" defer></script>
+<script src="/scripts/ui-core.js?v=310b87a89d"></script>
+<script src="/scripts/ui-help.js?v=2ecce1a2f6"></script>
+<script src="/scripts/site-features.js?v=af13f3915f"></script>
+<script src="/scripts/ui-dialog.js?v=632fc11cea" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
+<script src="/scripts/data-updates.js?v=bd42009280" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kimi Code：价格、模型与使用指南 - Coding Plan</title>
+<meta name="description" content="比较 Kimi 新旧会员的编程权益、模型权限、五小时与月额度，了解 K3.1 Pro 接入及 Token 估算的适用范围。">
+  <link rel="canonical" href="https://codingplan.fyi/platforms/kimi/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="Coding Plan">
+  <meta property="og:title" content="Kimi Code：价格、模型与使用指南 - Coding Plan">
+  <meta property="og:description" content="比较 Kimi 新旧会员的编程权益、模型权限、五小时与月额度，了解 K3.1 Pro 接入及 Token 估算的适用范围。">
+  <meta property="og:url" content="https://codingplan.fyi/platforms/kimi/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Kimi Code：价格、模型与使用指南 - Coding Plan">
+  <meta name="twitter:description" content="比较 Kimi 新旧会员的编程权益、模型权限、五小时与月额度，了解 K3.1 Pro 接入及 Token 估算的适用范围。">
+  <link rel="icon" href="/favicon.ico?v=260924a">
+  <link rel="stylesheet" href="/styles/shared.css?v=bd1276c850">
+  <link rel="stylesheet" href="/styles/tool-page.css?v=3108254cb1">
+  <link rel="stylesheet" href="/styles/platform-guide.css?v=cf1c74f518">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://codingplan.fyi/platforms/kimi/","url":"https://codingplan.fyi/platforms/kimi/","name":"Kimi Code：价格、模型与使用指南 - Coding Plan","description":"比较 Kimi 新旧会员的编程权益、模型权限、五小时与月额度，了解 K3.1 Pro 接入及 Token 估算的适用范围。","inLanguage":"zh-CN","datePublished":"2026-10-24","dateModified":"2026-10-25","isPartOf":{"@type":"WebSite","name":"Coding Plan","url":"https://codingplan.fyi/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Coding Plan","item":"https://codingplan.fyi/"},{"@type":"ListItem","position":2,"name":"平台介绍","item":"https://codingplan.fyi/platforms/"},{"@type":"ListItem","position":3,"name":"Kimi Code","item":"https://codingplan.fyi/platforms/kimi/"}]}]}</script>
+<link rel="stylesheet" href="/styles/design-system.css?v=b3c0a84784">
+<script src="/scripts/number-display.js?v=c42af79c1b" defer></script>
+<script src="/scripts/platform-guide.js?v=eb39249fa5" defer></script>
+<script id="site-data-versions" type="application/json">{"platforms":"2026-10-25T16:31:43.191Z","plans":"2026-10-25T16:36:28.120Z","models":"2026-10-25T10:48:45.156Z","config":"2026-10-25T16:38:26.291Z","featured_catalog":"2026-10-25T10:48:45.157Z","changes":"2026-10-25T16:36:29.712Z","announcements":"2026-10-25T10:48:45.158Z","articles_catalog":"2026-10-25T10:48:45.159Z"}</script>
+<script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
+<link rel="stylesheet" href="/styles/ui-components.css?v=89d1dc5ef7">
+<link rel="stylesheet" href="/styles/ui-help.css?v=50cda6ca65">
+</head>
+<body class="platform-guide">
+  <a class="guide-skip" href="#guide-content">跳到介绍正文</a>
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/" aria-current="page">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/articles/">文章</a>
+    <a href="/updates/">预告与更新</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="priceBasisLabel">综合单价口径</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="priceBasisLabel" title="首月价缺失时使用每月价格；按量 API 报价和 Token 额度不变。">
+            <button type="button" data-settings-price-basis="firstMonth" aria-pressed="true">首月价格</button>
+            <button type="button" data-settings-price-basis="monthly" aria-pressed="false">每月价格</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="guide-shell">
+    <nav class="guide-breadcrumb" aria-label="面包屑"><a href="/">Coding Plan</a><span>/</span><a href="/platforms/">平台介绍</a><span>/</span><span aria-current="page">Kimi Code</span></nav>
+    <header class="guide-hero">
+      <div class="guide-hero-copy">
+        <p class="guide-eyebrow">平台介绍 · 可以购买</p>
+        <h1>Kimi Code</h1>
+        <p class="guide-lead">Kimi Code 随 Kimi 会员提供，适合主要使用 Kimi 模型的个人开发者。新套餐从 Plus 起包含编程额度，选择时需要同时看模型权限、上下文长度和共享月额度。</p>
+        <div class="guide-actions"><a class="guide-button" href="/plans/?platform=kimi">查看套餐对比 →</a><a class="guide-button secondary" href="https://www.kimi.com/membership/pricing">查看官网 <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></div>
+        <p class="guide-dates">介绍更新 <time datetime="2026-10-25">2026-10-25</time><span>·</span>套餐与模型记录 <time datetime="2026-10-24">2026-10-24</time></p>
+      </div>
+      <div class="guide-monogram" aria-hidden="true">K</div>
+    </header>
+    <div class="guide-layout">
+      <nav class="guide-toc" aria-label="本页目录"><p>本页内容</p><a href="#overview"><span>01</span>适合什么人</a><a href="#plans"><span>02</span>订阅价格与选择</a><a href="#models"><span>03</span>模型、上下文与高速版</a><a href="#limits"><span>04</span>新旧套餐的额度差异</a><a href="#usage"><span>05</span>Token 参考量怎么读</a><a href="#tools"><span>06</span>接入与常见问题</a><a href="#related"><span>07</span>继续比较</a><a href="#sources"><span>08</span>资料来源</a></nav>
+      <main id="guide-content" class="guide-content"><section id="overview" class="guide-section"><h2>适合什么人</h2><p>如果日常主要使用 Kimi 写代码，希望在官方客户端与其他编程工具之间切换，可以考虑 Kimi Code。它随会员提供，与其他会员功能共享额度；仅购买 Go 不包含编程额度。</p>
+<p>需要为应用提供通用模型服务时，应另行比较开放平台 API，不能把个人会员当作通用 API 余额。</p>
+</section>
+<section id="plans" class="guide-section"><h2>订阅价格与选择</h2><div class="guide-plan-grid"><article class="guide-plan">
+    <h3>Go</h3><span class="harness-api-badge" data-harness-api="false" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">不可接入第三方工具</span><p class="guide-price">¥49<small>/ 月</small></p>
+    <dl><div><dt>首月价格</dt><dd>¥49</dd></div><div><dt>按季支付</dt><dd>¥147</dd></div><div><dt>按年支付</dt><dd>¥468</dd></div></dl>
+
+    <p class="guide-plan-advice">不含编程额度；需要 Kimi Code 时从 Plus 起比较。</p>
+  </article><article class="guide-plan">
+    <h3>Plus</h3><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span><p class="guide-price">¥99<small>/ 月</small></p>
+    <dl><div><dt>首月价格</dt><dd>¥99</dd></div><div><dt>按季支付</dt><dd>¥297</dd></div><div><dt>按年支付</dt><dd>¥948</dd></div></dl>
+
+    <p class="guide-plan-advice">适合先体验 Kimi Code 与 K3.1 Pro；最高上下文和高速版权限低于 Pro。</p>
+  </article><article class="guide-plan">
+    <h3>Pro</h3><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span><p class="guide-price">¥199<small>/ 月</small></p>
+    <dl><div><dt>首月价格</dt><dd>¥199</dd></div><div><dt>按季支付</dt><dd>¥597</dd></div><div><dt>按年支付</dt><dd>¥1,908</dd></div></dl>
+    <ul><li>专属Kimi Claw</li></ul>
+    <p class="guide-plan-advice">需要 1M 上下文、高速版或 Kimi Claw 时重点比较此档。</p>
+  </article><article class="guide-plan">
+    <h3>Max</h3><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span><p class="guide-price">¥699<small>/ 月</small></p>
+    <dl><div><dt>首月价格</dt><dd>¥699</dd></div><div><dt>按季支付</dt><dd>¥2,097</dd></div><div><dt>按年支付</dt><dd>¥6,708</dd></div></dl>
+    <ul><li>专属Kimi Claw</li></ul>
+    <p class="guide-plan-advice">适合已确认 Pro 用量不足的用户；先看自己的五小时和月消耗。</p>
+  </article><article class="guide-plan">
+    <h3>Ultra</h3><span class="harness-api-badge" data-harness-api="true" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">可接入第三方工具</span><p class="guide-price">¥1,399<small>/ 月</small></p>
+    <dl><div><dt>首月价格</dt><dd>¥1,399</dd></div><div><dt>按季支付</dt><dd>¥4,197</dd></div><div><dt>按年支付</dt><dd>¥13,428</dd></div></dl>
+    <ul><li>专属Kimi Claw</li></ul>
+    <p class="guide-plan-advice">适合持续高强度使用；更高额度不等于所有型号都已公布固定 Token 配额。</p>
+  </article></div><p class="guide-muted">部分周期金额按月价或季价换算，仅作比较；是否提供该周期订阅以平台实际提供为准。“不适用”表示没有可用价格，0 表示免费。</p><p>新用户从 Plus、Pro、Max、Ultra 比较。不要只按月费判断可用模型：更长上下文、高速版与 Kimi Claw 等权限也随档位变化。先用常见任务观察五小时消耗和月进度，再决定是否升档。</p>
+</section>
+<section id="models" class="guide-section"><h2>模型、上下文与高速版</h2><p>本站收录 4 个支持模型；同一模型的不同计费档位合并展示。</p><div class="guide-table-wrap" tabindex="0" role="region" aria-label="套餐支持模型"><table><caption>套餐支持模型</caption><thead><tr><th scope="col">模型</th><th scope="col">支持套餐</th></tr></thead><tbody><tr><th scope="row">Kimi-K3.1-Pro</th><td>Plus、Pro、Max、Ultra</td></tr><tr><th scope="row">Kimi-K3</th><td>Plus、Pro、Max、Ultra</td></tr><tr><th scope="row">Kimi-K2.8-Preview</th><td>Plus、Pro、Max、Ultra</td></tr><tr><th scope="row">Kimi-K2.7-Code-HighSpeed</th><td>Pro、Max、Ultra</td></tr></tbody></table></div><p class="guide-muted">模型记录日期：2026-10-24。可选名称与实际服务版本可能不同，使用前请核对官方说明。</p><p>K3.1 Pro 从 Plus 起可用；Plus 最高 256K 上下文，Pro 及以上支持最高 1M，并可使用高速版。高速版能力相同，输出约快 2–3 倍，消耗约为标准版两倍；它不是额外一份额度。</p>
+<p>旧套餐的 Moderato 也可使用最高256K的 K3.1 Pro；Allegretto、Allegro 支持最高1M及高速版，额度仍按各自旧套餐规则使用。</p>
+<p>K3.1 Pro 支持图片和视频输入，必须开启思考，默认 high。旧 K3 的 <code>k3</code> 与 <code>k3-256k</code> 也有不同的上下文、模态和扣减规则，不能只看名称中是否出现 256K。</p>
+</section>
+<section id="limits" class="guide-section"><h2>新旧套餐的额度差异</h2><p>新套餐没有独立周限额，仍受五小时滚动窗口及共享月总额约束。所有客户端、设备和 API Key 共用额度；月总额耗尽后，等待五小时窗口恢复也不会补回月额度。</p>
+<p>旧 Andante、Moderato、Allegretto、Allegro 供原订阅用户继续使用和续订，仍有周窗口，不能与新套餐套用同一套规则。升级前比较原有权益及新档权限。订阅耗尽后若开启加油包，会继续扣加油包余额，应同时检查月消费上限。</p>
+</section>
+<section id="usage" class="guide-section"><h2>Token 参考量怎么读</h2><div class="guide-usage-comparison" data-guide-usage><div class="guide-table-wrap" tabindex="0" role="region" aria-label="月 Token 参考量"><table><caption>月 Token 参考量（<span data-guide-token-unit>亿</span> Token）</caption><thead><tr><th scope="col">模型</th><th scope="col">时段 / 档位</th><th scope="col">Go</th><th scope="col">Plus</th><th scope="col">Pro</th><th scope="col">Max</th><th scope="col">Ultra</th></tr></thead><tbody><tr><th scope="row">Kimi-K3.1-Pro</th><td>256K</td><td>未收录</td><td><span data-guide-token-m="38.2">0.38</span></td><td>未收录</td><td>未收录</td><td>未收录</td></tr><tr><th scope="row">Kimi-K3.1-Pro</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="191">1.91</span></td><td><span data-guide-token-m="611.1">6.11</span></td><td><span data-guide-token-m="1222.1">12.22</span></td></tr><tr><th scope="row">Kimi-K3.1-Pro</th><td>高速</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="95.5">0.96</span></td><td><span data-guide-token-m="305.5">3.06</span></td><td><span data-guide-token-m="611.1">6.11</span></td></tr><tr><th scope="row">Kimi-K3</th><td>常规</td><td>未收录</td><td><span data-guide-token-m="32.5">0.33</span></td><td><span data-guide-token-m="162.3">1.62</span></td><td><span data-guide-token-m="519.4">5.19</span></td><td><span data-guide-token-m="1038.8">10.39</span></td></tr><tr><th scope="row">Kimi-K3</th><td>256K</td><td>未收录</td><td><span data-guide-token-m="64.9">0.65</span></td><td><span data-guide-token-m="324.6">3.25</span></td><td><span data-guide-token-m="1038.8">10.39</span></td><td><span data-guide-token-m="2077.6">20.78</span></td></tr><tr><th scope="row">Kimi-K2.8-Preview</th><td>常规</td><td>未收录</td><td><span data-guide-token-m="49.6">0.50</span></td><td><span data-guide-token-m="248">2.48</span></td><td><span data-guide-token-m="793.7">7.94</span></td><td><span data-guide-token-m="1587.3">15.87</span></td></tr><tr><th scope="row">Kimi-K2.7-Code-HighSpeed</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="82.7">0.83</span></td><td><span data-guide-token-m="264.6">2.65</span></td><td><span data-guide-token-m="529.1">5.29</span></td></tr></tbody></table></div><details class="guide-usage-details"><summary>查看每 5 小时与每周参考量</summary><div class="guide-table-wrap" tabindex="0" role="region" aria-label="每 5 小时 Token 参考量"><table><caption>每 5 小时 Token 参考量（<span data-guide-token-unit>亿</span> Token）</caption><thead><tr><th scope="col">模型</th><th scope="col">时段 / 档位</th><th scope="col">Go</th><th scope="col">Plus</th><th scope="col">Pro</th><th scope="col">Max</th><th scope="col">Ultra</th></tr></thead><tbody><tr><th scope="row">Kimi-K3.1-Pro</th><td>256K</td><td>未收录</td><td><span data-guide-token-m="1.527634198">0.02</span></td><td>未收录</td><td>未收录</td><td>未收录</td></tr><tr><th scope="row">Kimi-K3.1-Pro</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="7.63817099">0.08</span></td><td><span data-guide-token-m="24.4421471678">0.24</span></td><td><span data-guide-token-m="48.8842943357">0.49</span></td></tr><tr><th scope="row">Kimi-K3.1-Pro</th><td>高速</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="3.819085495">0.04</span></td><td><span data-guide-token-m="12.2210735839">0.12</span></td><td><span data-guide-token-m="24.4421471678">0.24</span></td></tr><tr><th scope="row">Kimi-K3</th><td>常规</td><td>未收录</td><td><span data-guide-token-m="1.2984890683">0.01</span></td><td><span data-guide-token-m="6.4924453415">0.06</span></td><td><span data-guide-token-m="20.7758250927">0.21</span></td><td><span data-guide-token-m="41.5516501853">0.42</span></td></tr><tr><th scope="row">Kimi-K3</th><td>256K</td><td>未收录</td><td><span data-guide-token-m="2.5969781366">0.03</span></td><td><span data-guide-token-m="12.9848906829">0.13</span></td><td><span data-guide-token-m="41.5516501853">0.42</span></td><td><span data-guide-token-m="83.1033003707">0.83</span></td></tr><tr><th scope="row">Kimi-K2.8-Preview</th><td>常规</td><td>未收录</td><td><span data-guide-token-m="1.9841483941">0.02</span></td><td><span data-guide-token-m="9.9207419707">0.10</span></td><td><span data-guide-token-m="31.7463743063">0.32</span></td><td><span data-guide-token-m="63.4927486127">0.63</span></td></tr><tr><th scope="row">Kimi-K2.7-Code-HighSpeed</th><td>常规</td><td>未收录</td><td>未收录</td><td><span data-guide-token-m="3.3069139902">0.03</span></td><td><span data-guide-token-m="10.5821247688">0.11</span></td><td><span data-guide-token-m="21.1642495376">0.21</span></td></tr></tbody></table></div><div class="guide-table-wrap" tabindex="0" role="region" aria-label="每周 Token 参考量"><table><caption>每周 Token 参考量（<span data-guide-token-unit>亿</span> Token）</caption><thead><tr><th scope="col">模型</th><th scope="col">时段 / 档位</th><th scope="col">Go</th><th scope="col">Plus</th><th scope="col">Pro</th><th scope="col">Max</th><th scope="col">Ultra</th></tr></thead><tbody><tr><th scope="row">Kimi-K3.1-Pro</th><td>256K</td><td>未收录</td><td>不限量</td><td>未收录</td><td>未收录</td><td>未收录</td></tr><tr><th scope="row">Kimi-K3.1-Pro</th><td>常规</td><td>未收录</td><td>未收录</td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">Kimi-K3.1-Pro</th><td>高速</td><td>未收录</td><td>未收录</td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">Kimi-K3</th><td>常规</td><td>未收录</td><td>不限量</td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">Kimi-K3</th><td>256K</td><td>未收录</td><td>不限量</td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">Kimi-K2.8-Preview</th><td>常规</td><td>未收录</td><td>不限量</td><td>不限量</td><td>不限量</td><td>不限量</td></tr><tr><th scope="row">Kimi-K2.7-Code-HighSpeed</th><td>常规</td><td>未收录</td><td>未收录</td><td>不限量</td><td>不限量</td><td>不限量</td></tr></tbody></table></div></details></div><p>表中按各模型分别估算同一共享额度可支持的用量，各行不能相加。默认按输入缓存命中率 95%、输出占总 Token 的 0.5% 计算，输出包含思考；实际任务的构成不同时，可用 Token 数会变化。旧 K3 等模型的参考量来自社区样本和暂定扣减系数；新套餐 Code 用量暂按 Plus 为基准、Pro／Max／Ultra 分别为 5／16／32 倍估算，不等于官网 Agent 权益倍率，也不是官方保证的固定 Token 配额。</p>
+<p>新套餐五小时参考暂按月参考的 1/25；模型和档位改变会影响实际可用量，缓存命中更低或输出更多时消耗也会变化。</p>
+<p>K3.1 Pro 的新套餐参考量暂按 K3 的 85% 扣额估算，同样的缓存率和输出占比下，约可用 K3 的 1.18 倍 Token。这个相对系数来自老套餐社区样本；新套餐的绝对池、跨档倍率及该系数的适用性均未逐档实测，不能视为官方配额或官方加量承诺。高速版参考量为标准版的一半。</p>
+<p>老 Allegretto、Allegro 的 K3.1 Pro 采用各自的社区拟合系数，五小时／周窗口按 1∶5；月度共享池未量化，月参考保持待确认。老 Moderato 也保持待确认。社区在 10 月 24–25 日观察到扣额系数变化，实际用量以账号当前读数为准；不能把首发消耗、旧 K3 历史参考和不同缓存率的总 Token 直接比较。</p>
+</section>
+<section id="tools" class="guide-section"><h2>接入与常见问题</h2><p>官方客户端使用会员账号登录；第三方工具在 Kimi Code 控制台创建 API Key，再按官方接入文档配置协议和模型 ID。Code Key 与开放平台的按量计费需要分开管理。</p>
+<p>国内 OpenAI 格式端点为 <code>https://api.kimi.com/coding/v1</code>，Anthropic 格式为 <code>https://api.kimi.com/coding/</code>。K3.1 Pro 的模型 ID 为 <code>k3.1-pro</code>，高速版为 <code>k3.1-pro-highspeed</code>；使用前确认工具能保留思考设置和所需协议。</p>
+<p>切换模型建议新建会话，避免旧缓存失效和上下文混用。权限错误先查订阅档位；关闭 K3.1 Pro 的思考或超出上下文上限，也可能导致请求失败。</p>
+</section>
+<section id="related" class="guide-section"><h2>继续比较</h2><p>主要使用另一家自研模型时可比较 MiniMax；希望在多个厂商模型间切换时，可比较 OpenCode 的模型范围与各自额度。</p>
+<div class="guide-related"><a class="guide-related-card" href="/platforms/minimax/"><strong>MiniMax M Plan</strong><span>了解MiniMax M Plan三档价格、正式M3.1 Flash估算额度、用量窗口与旧Token Plan续费安排。</span><span>阅读平台介绍 →</span></a><a class="guide-related-card" href="/platforms/opencode/"><strong>OpenCode Go / Go Plus</strong><span>了解 OpenCode Go / Go Plus 订阅与 OpenCode 工具的区别，查看支持模型、各模型额度、计费方式和客户端接入要点，判断是否适合自己的编程任务。</span><span>阅读平台介绍 →</span></a></div></section>
+<section id="sources" class="guide-section"><h2>资料来源</h2><ul class="guide-sources"><li><a href="https://www.kimi.com/membership/pricing">Kimi 会员订阅</a><span>查看当前个人档位与订阅权益。</span></li><li><a href="https://www.kimi.com/code/docs/kimi-code/models.html">Kimi Code 模型与第三方接入</a><span>模型 ID、上下文、思考模式与协议。</span></li><li><a href="https://www.kimi.com/help/kimi-code/benefits">Kimi Code 会员权益</a><span>新旧套餐的窗口、共享额度与加油包。</span></li><li><a href="https://linux.do/t/topic/3070992">K3.1 Pro 老 Allegro 社区实测</a><span>10 月 24–25 日对照与复测；单账号样本，非官方配额。</span></li><li><a href="https://linux.do/t/topic/3071240">K3.1 Pro 老 Allegretto 社区实测</a><span>独立账号拟合；缓存项仍有舍入误差。</span></li></ul></section></main>
+    </div>
+    <footer class="guide-footer"><p>价格、活动与可用模型可能变化，购买和接入前请核对官方页面。本站的选择建议不代表服务承诺。</p><div><a href="/platforms/">全部平台</a><a href="/plans/">套餐对比</a><a href="/">返回首页</a><a href="https://github.com/wmpeng/codingplan/issues">反馈资料问题</a></div></footer>
+  </div>
+</body>
+</html>

@@ -1,3 +1,37 @@
+/* The column switch controls the table's visible fields. */
+#plansPage .plan-columns-control {
+  position: relative; display: inline-flex; align-items: center; gap: 8px;
+  box-sizing: border-box; min-height: 40px; padding: 0 6px 0 8px;
+  border-radius: 8px; background: transparent; color: var(--text-secondary);
+  font-size: 13px; font-weight: 500; line-height: 1.4; white-space: nowrap;
+  cursor: pointer; user-select: none; transition: background-color .15s, color .15s;
+}
+#plansPage .plan-columns-control > input {
+  position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;
+  z-index: 1; opacity: 0; cursor: pointer;
+}
+#plansPage .plan-columns-control > svg { display: block; width: 16px; height: 16px; flex: none; }
+#plansPage .plan-columns-switch {
+  position: relative; width: 34px; height: 20px; flex: none; margin-left: 2px;
+  border-radius: 999px; background: #cbd5e1; transition: background-color .15s;
+}
+#plansPage .plan-columns-switch::before {
+  content: ''; position: absolute; top: 3px; left: 3px;
+  width: 14px; height: 14px; border-radius: 50%; background: #fff;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .18); transition: transform .15s;
+}
+#plansPage .plan-columns-control:hover { background: #edf3fb; color: var(--text-primary); }
+#plansPage.show-all-columns .plan-columns-control { color: var(--accent-primary); }
+#plansPage.show-all-columns .plan-columns-switch { background: var(--accent-primary); }
+#plansPage.show-all-columns .plan-columns-switch::before { transform: translateX(14px); }
+#plansPage .plan-columns-control:has(input:focus-visible) { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  #plansPage .plan-columns-control, #plansPage .plan-columns-switch, #plansPage .plan-columns-switch::before { transition: none; }
+}
+@media (max-width: 800px), (pointer: coarse) {
+  #plansPage .plan-columns-control { min-height: 44px; }
+}
+
 /* Quota details use the visible table width, including while scrolling sideways. */
 #plansPage .plan-quota-toggle {
   display: inline-flex; align-items: center; justify-content: flex-end; gap: 8px;
@@ -24,7 +58,6 @@
 #plansPage .plan-quota-requests { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-bottom: 12px; font-size: 12px; }
 #plansPage .plan-quota-requests > span:first-child { color: var(--text-secondary); }
 #plansPage .plan-quota-table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 13px; }
-#plansPage .plan-quota-table caption { text-align: left; color: var(--text-secondary); font-size: 12px; padding-bottom: 6px; }
 #plansPage .plan-quota-table :is(th, td) { padding: 7px 10px; border-bottom: 1px solid var(--border-light); text-align: right; font-variant-numeric: tabular-nums; }
 #plansPage .plan-quota-table thead th { font-weight: 400; white-space: normal; background: transparent; }
 #plansPage .plan-quota-table th:first-child { width: 36%; text-align: left; }

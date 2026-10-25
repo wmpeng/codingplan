@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.10.24 | Kimi K3.1 Pro 上线与 Codex 参考用量调整",
+    "updateDate": "更新日期 2026.10.26 | 方舟 Flash 1017 与独立入口补充",
     "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Cursor、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.1-Sol、Claude 5.5系列、MiniMax-M3.1-Flash、Kimi-K3.1-Pro、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3与Qwen-3.8等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
@@ -125,8 +125,25 @@
   },
   "updates": [
     {
+      "date": "2026.10.26",
+      "items": [
+        "补充共绩算力的 DeepSeek V4.1 Flash 1017 独立入口及通用价格；保留原 V4.1 入口，旧入口是否跟随升级仍未知。",
+        "方舟 Coding Plan、Agent Plan 的 V4.1 Flash 标准与 Economy 已升级至 1017，调用名称保持不变；优云智算六档套餐新增独立 1017 入口，每次扣减 3 次请求额度。"
+      ]
+    },
+    {
+      "date": "2026.10.25",
+      "items": [
+        "补充 Kimi K3.1 Pro 的额度参考：老 Allegretto／Allegro 按各自社区拟合估算；新 Plus／Pro／Max／Ultra 暂按 K3 的 85% 扣额外推，高速版参考量为标准版的一半。新套餐未独立实测，老 Moderato 及未量化的月池仍保留未知。",
+        "修正 OpenCode、Command Code、Qoder 国际版的 DeepSeek V4.1 Flash 1017 支持关系；补充 Ollama 1017-cloud，保留独立旧版，并标注其他平台尚未明确的日期版本。"
+      ]
+    },
+    {
       "date": "2026.10.24",
       "items": [
+        "全站复查现有52条平台与产品线：补Qoder国际版Lite $10/月及分档加赠，MiMo年价采用官网明确人民币总额，腾讯Hy4 preview五折持续至10月30日12:00（北京时间）。",
+        "补Kimi老套餐K3.1 Pro权限与方舟Coding的DeepSeek Economy档；登记Agent Plan MiniMax M3新用户限制及11月2日下线安排。",
+        "Command Code新增Ornith 1.5 122B，更新MiMo旧入口与限免档范围；Ornith暂无四项榜单分数，Token用量按套餐价格与额度估算。",
         "新增 Kimi K3.1 Pro：补充 Kimi、OpenCode 与 Command Code 的支持、价格和额度；Kimi 的 Highspeed 按高速档展示，绝对 Token 用量仍待确认。",
         "调整 Codex 的 GPT-5.6-Sol、GPT-6-Luna、GPT-5.6-Luna 与 GPT-5.6-Terra 参考 Token 用量，相关套餐与速度档的综合单价同步重算；这些数值为估算，非官方固定配额或新实测结果。",
         "新增 LiveBench 综合与 Arena Agent Overall 评分，模型卡片以四格展示；图表可直接切换四项指标，明细支持展开全部评分。",
@@ -526,5 +543,6 @@
         "更新智谱AI GLM-5.1 模型信息"
       ]
     }
-  ]
+  ],
+  "contentVersion": "2026-10-25T16:38:26.291Z"
 }

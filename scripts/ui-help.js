@@ -25,9 +25,13 @@
       const height = view?.height || doc.documentElement.clientHeight;
       tip.style.maxWidth = `${Math.max(0, width - 24)}px`;
       tip.style.maxHeight = `${Math.max(0, height - 24)}px`;
+      const belowSpace = Math.max(0, top + height - 12 - box.bottom - 8);
+      const aboveSpace = Math.max(0, box.top - top - 12 - 8);
+      const below = tip.getBoundingClientRect().height <= belowSpace || belowSpace >= aboveSpace;
+      tip.style.maxHeight = `${below ? belowSpace : aboveSpace}px`;
       const size = tip.getBoundingClientRect();
       tip.style.left = `${Math.max(left + 12, Math.min(box.left, left + width - size.width - 12))}px`;
-      tip.style.top = `${Math.max(top + 12, box.bottom + size.height + 8 < top + height - 12 ? box.bottom + 8 : box.top - size.height - 8)}px`;
+      tip.style.top = `${Math.max(top + 12, below ? box.bottom + 8 : box.top - size.height - 8)}px`;
     };
     const close = () => {
       cancelClose();

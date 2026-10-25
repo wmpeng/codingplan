@@ -1,3 +1,9 @@
+/* 数据更新仅提示，由用户决定是否刷新。 */
+.data-update-dialog { margin:auto; width:min(420px,calc(100% - 32px)); padding:24px; border:1px solid var(--border-color); border-radius:var(--radius-lg); background:var(--bg-secondary); color:var(--text-primary); box-shadow:var(--shadow-xl); }
+.data-update-dialog::backdrop { background:rgb(15 23 42 / .35); }
+.data-update-dialog h2 { font-size:18px; margin:0 0 12px; }
+.data-update-dialog p { color:var(--text-secondary); line-height:1.6; margin:0; }
+.data-update-dialog footer { display:flex; justify-content:flex-end; gap:10px; margin-top:24px; }
 /* 控件：一种基础样式，主操作和选中状态是明确的变体。 */
 body :is(.tool-button, .filter-state-btn, .updates-toggle, .guide-button, .back-home-btn,
   .platform-comparison-secondary-btn, .platform-comparison-primary-btn, .platform-detail-action,
@@ -44,7 +50,7 @@ body .usage-segments :is(.is-active, [aria-pressed="true"]) { background: var(--
 
 /* 公共小组件的视觉归属；页面 CSS 只安排位置和间距。 */
 body .ui-model-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; min-width: 0; max-width: 100%; }
-body .ui-model-tags .model-tag { display: inline-flex; align-items: center; justify-content: center; min-width: 0; max-width: 100%; min-height: 27px; box-sizing: border-box; padding: 4px 6px 2px; margin: 0; border: 1px solid var(--border-light); border-radius: 5px; background: var(--bg-tertiary); color: var(--text-secondary); font: 400 12px/1.6 var(--font-ui); white-space: normal; overflow-wrap: anywhere; }
+body .ui-model-tags .model-tag { display: inline-flex; align-items: center; justify-content: center; min-width: 0; max-width: 100%; min-height: 27px; box-sizing: border-box; padding: 3px 6px; margin: 0; border: 1px solid var(--border-light); border-radius: 5px; background: var(--bg-tertiary); color: var(--text-secondary); font: 400 12px/1.6 var(--font-ui); white-space: normal; overflow-wrap: anywhere; }
 body .ui-model-tags [hidden] { display: none; }
 body .ui-model-tags button.model-tag-more { cursor: pointer; transition: background .16s, color .16s; }
 body .ui-model-tags button.model-tag-more:hover { background: color-mix(in srgb, var(--bg-tertiary), var(--border-color) 35%); color: var(--text-primary); }
@@ -58,7 +64,7 @@ body :is(.plan-status[data-plan-status="restricted"], .plan-status[data-price-st
   .platform-rush[data-platform-status="restricted"], .platform-detail-rush[data-platform-status="restricted"],
   .platform-comparison-status--restricted, .offer-capabilities > .offer-status[data-offer-status="restricted"]) {
   display: inline-flex; align-items: center; gap: 4px; min-height: 26px;
-  padding: 3px 0 1px; border: 0; border-radius: 0; background: transparent;
+  padding: 2px 0; border: 0; border-radius: 0; background: transparent;
   color: var(--purchase-restricted-color); font-size: 12px; font-weight: 400; line-height: 1.5; white-space: nowrap;
 }
 body :is(.plan-status[data-plan-status="restricted"], .plan-status[data-price-status="restricted"],

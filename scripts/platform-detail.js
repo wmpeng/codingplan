@@ -520,6 +520,7 @@
     });
 
     modelRows = UI.observeModelTagRows(body);
+    globalThis.CodingPlanUpdates?.check('platform_detail',{platform_slug:platform.slug});
 
   }
 

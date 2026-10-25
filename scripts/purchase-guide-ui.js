@@ -179,6 +179,7 @@
     controller.setState(patch, "guide");
   }
   function begin() {
+    root.CodingPlanUpdates?.check('purchase_guide');
     if (!controller) {
       pendingStart = true;
       return;

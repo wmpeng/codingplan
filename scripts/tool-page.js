@@ -6,6 +6,10 @@
     if (!requests.has(file)) requests.set(file, fetch('/' + file, { cache: 'no-store' }).then(response => {
       if (!response.ok) throw new Error('目录加载失败，请重试');
       return response.json();
+    }).then(document => {
+      const names = {'platforms.json':'platforms','plans.json':'plans','models.json':'models','config.json':'config','featured-catalog.json':'featured_catalog','changes.json':'changes'};
+      if (document.contentVersion) (root.codingplanDataVersions ||= {})[names[file]] = document.contentVersion;
+      return document;
     }).catch(error => { requests.delete(file); throw error; }));
     return requests.get(file);
   }
@@ -23,6 +27,8 @@
         context.modelGroups = preset.groups || [];
         context.featuredPlatformSlugs = preset.platformSlugs || [];
       }
+      root.codingplanDataReady = true;
+      root.dispatchEvent(new Event('codingplan:data-ready'));
       return { context, config };
     }).catch(error => { pending = null; throw error; });
     return pending;
