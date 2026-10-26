@@ -72,6 +72,20 @@
       }
     },
     {
+      "series": "model_comparisons",
+      "slug": "20261024",
+      "title": "2026年10月主流大模型能力对比：Kimi K3.1 Pro、DeepSeek V4.1 Flash、MiniMax M3.1 Flash、GPT-6 Astra 怎么选",
+      "publishedAt": "2026-10-24",
+      "updatedAt": "2026-10-24",
+      "description": "对比22款主流模型的综合能力、网页开发、代码修改、长程Agent与任务成本，结合Kimi K3.1 Pro、DeepSeek 1017、MiniMax M3.1 Flash及海外旗舰的表现，按实际任务选择主力。",
+      "kicker": "模型评测 · Coding Plan",
+      "url": "/articles/model_comparisons/20261024/",
+      "cover": {
+        "src": "/articles/model_comparisons/20261024/assets/aa-intelligence.png",
+        "alt": "AA Intelligence Index v4.3.2，2026年10月24日，指定22款模型及各自配置"
+      }
+    },
+    {
       "series": "news",
       "slug": "20260602_minimax_m3",
       "title": "MiniMax-M3 重磅升级：原生多模态、Ultra 套餐登场、性价比再封王",
@@ -330,7 +344,21 @@
         "src": "/articles/plan_comparisons/20260824/assets/platforms.jpg",
         "alt": "AI 编程平台对比总览"
       }
+    },
+    {
+      "series": "plan_comparisons",
+      "slug": "20261026",
+      "title": "2026年10月 AI Coding Plan 与 API 平台对比：MiniMax M Plan、Kimi新会员、OpenCode Go Plus怎么选",
+      "publishedAt": "2026-10-26",
+      "updatedAt": "2026-10-26",
+      "description": "比较12个平台的订阅与按量API，梳理MiniMax M Plan、Kimi新会员、OpenCode Go Plus等变化，分清模型权限、额度窗口、参考成本与购买限制，按任务和预算选择方案。",
+      "kicker": "平台对比 · Coding Plan",
+      "url": "/articles/plan_comparisons/20261026/",
+      "cover": {
+        "src": "/articles/plan_comparisons/20261026/assets/plan-changes-20261026.png",
+        "alt": "2026年10月AI编程套餐六项变化"
+      }
     }
   ],
-  "contentVersion": "2026-10-25T10:48:45.159Z"
+  "contentVersion": "2026-10-25T17:18:54.882Z"
 }
