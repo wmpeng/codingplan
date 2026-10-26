@@ -4,6 +4,21 @@
   "description": "订阅套餐与按量 API 使用同一口径比较综合单价；用量为参考值，各模型额度不相加。",
   "groups": [
     {
+      "id": "sota-models",
+      "title": "头部级模型",
+      "label": "头部级",
+      "kind": "multi",
+      "enabled": true,
+      "modelSlugs": [
+        "gpt-6-astra",
+        "gpt-6-1-sol",
+        "claude-opus-5-5",
+        "glm-5-3",
+        "kimi-k3-1-pro",
+        "kimi-k3"
+      ]
+    },
+    {
       "id": "high-volume-models",
       "title": "甜品级模型",
       "label": "甜品级",
@@ -18,21 +33,6 @@
         "kimi-k2-8-preview",
         "minimax-m3-1-flash"
       ]
-    },
-    {
-      "id": "sota-models",
-      "title": "头部级模型",
-      "label": "头部级",
-      "kind": "multi",
-      "enabled": true,
-      "modelSlugs": [
-        "gpt-6-astra",
-        "gpt-6-1-sol",
-        "claude-opus-5-5",
-        "glm-5-3",
-        "kimi-k3-1-pro",
-        "kimi-k3"
-      ]
     }
   ],
   "platformSlugs": [
@@ -44,5 +44,5 @@
     "deepseek-official",
     "codex"
   ],
-  "contentVersion": "2026-10-25T10:48:45.157Z"
+  "contentVersion": "2026-10-26T11:01:52.086Z"
 }

@@ -258,10 +258,10 @@ test('unit price sorting uses package price ascending as the tie breaker', () =>
 test('one source defines the featured platforms and exactly two model groups', () => {
   const source = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'featured-catalog.json'), 'utf8'));
   const config = normalizePresetConfig(source);
-  assert.deepEqual(config.groups.map(g=>g.id), ['high-volume-models','sota-models']);
+  assert.deepEqual(config.groups.map(g=>g.id), ['sota-models','high-volume-models']);
   assert.equal(config.platformSlugs.length,7);
-  assert.ok(config.groups[0].modelSlugs.includes('gpt-6-luna'));
-  assert.ok(config.groups[1].modelSlugs.includes('gpt-6-1-sol'));
+  assert.ok(config.groups.find(group=>group.id==='high-volume-models').modelSlugs.includes('gpt-6-luna'));
+  assert.ok(config.groups.find(group=>group.id==='sota-models').modelSlugs.includes('gpt-6-1-sol'));
 });
 
 test('preset rows include subscriptions and API while sorting by unit and package price', () => {
