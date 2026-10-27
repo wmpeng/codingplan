@@ -296,7 +296,7 @@ test('preset tables add model only for multi groups and preserve single-model qu
   assert.match(single, /¥0\.10 \/ M/);
   assert.match(multi, /平台 \/ 模型 \/ 套餐/);
   assert.equal(multi.includes('<th scope="col">模型</th>'), false);
-  assert.match(multi, /包含：GLM-5\.3-Flash/);
+  assert.match(multi, /aria-label="包含模型">GLM-5\.3-Flash/);
   assert.match(multi, /GLM-5\.3-Flash \[谷\]/);
   assert.match(multi, /¥10 \/ 亿/);
   assert.match(multi, /10亿/);

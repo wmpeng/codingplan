@@ -25,6 +25,9 @@
 .section-heading>span { color:#64748b;font-size:13px; }
 .featured-model-group { margin-top:24px; }
 .featured-model-group>.section-heading h3 { font-size:18px; }
+.featured-model-group-title { display:flex; flex-wrap:wrap; align-items:center; gap:6px 12px; }
+.featured-model-group-description { color:var(--text-secondary); font-size:13px; line-height:1.6; }
+.models-page .tool-footer { justify-content:flex-end; }
 .model-grid { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px; }
 .model-card { padding:18px;border:1px solid #dce5f0;background:#fff;border-radius:12px;min-width:0; }
 .model-card h3 { font-size:16px;line-height:1.45;overflow-wrap:anywhere; }

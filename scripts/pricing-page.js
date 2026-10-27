@@ -6,7 +6,7 @@
       const data = await root.CodingPlanToolPage.load();
       const preset = await root.CodingPlanToolPage.loadPreset();
       root.FeaturedCatalog.validate(preset, data.context);
-      root.FeaturedCatalog.mountTables(document.getElementById('pricingPresets'), preset, data.context, data.config);
+      root.FeaturedCatalog.mountTables(document.getElementById('pricingPresets'), preset, data.context, data.config, {hideHeading:true});
       root.CodingPlanToolPage.filters(data, 'pricing');
       const results = document.createElement('div'); results.className = 'tool-result-bar pricing-result-bar';
       results.innerHTML = '<input type="search" data-price-search placeholder="搜索平台、套餐或模型" aria-label="搜索平台、套餐或模型"><span class="tool-count" data-pricing-result-count aria-live="polite"></span>';

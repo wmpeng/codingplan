@@ -8,6 +8,7 @@
     const EntityData = root.EntityData || (typeof require === 'function' ? require('./entity-data.js') : null);
     const UI = root.CodingPlanUI || (typeof require === 'function' ? require('./ui-core.js') : null);
     const Numbers = root.NumberDisplay || (typeof require === 'function' ? require('./number-display.js') : null);
+    const Help = root.CodingPlanHelp || (typeof require === 'function' ? require('./ui-help.js') : null);
     const Notices = root.ChangeNotices || (typeof require === 'function' ? require('./change-notices.js') : null);
 
     const Scores = root.BenchmarkScores || (typeof require === 'function' ? require('./benchmark-scores.js') : null);
@@ -467,14 +468,20 @@
     function comparisonTableHeadHtml(tableName, compact) {
         return `<tr>${COMPARISON_TABLE_COLUMNS.filter(column => !compact || column.key !== 'plan').map((column) => {
             const sortable = column.sortable !== false;
-            const classes = `${sortable ? 'sortable' : ''}${column.key === 'vendor' ? ' sticky-first' : ''}`.trim();
+            const classes = column.key === 'vendor' ? 'sticky-first' : '';
             const sorting = sortable
-                ? ` tabindex="0" aria-sort="none" data-table-sort="${tableName}" data-sort-key="${column.key}"`
+                ? ` aria-sort="none" data-table-sort="${tableName}" data-sort-key="${column.key}"`
                 : '';
             const label = compact && column.key === 'vendor' ? '平台 / 套餐' : compact && column.key === 'price' ? '首月价格' : column.hint
                 ? `<span class="usage-table-heading"><span>${column.label}</span><small>${column.hint}</small></span>`
                 : column.label;
-            return `<th scope="col" data-comparison-col="${column.key}"${classes ? ` class="${classes}"` : ''}${sorting}>${label}</th>`;
+            const helpText = column.key === 'unitPriceVisual'
+                ? '横条按当前结果采用对数尺度比较；条越短，综合单价越低。'
+                : ['fiveHourTokenInM', 'weeklyTokenInM', 'monthlyTokenInM'].includes(column.key)
+                    ? '按量 API 没有周期额度时显示“—”；订阅的未知额度不表示零。' : '';
+            const help = helpText ? Help.html(`${tableName}-${column.key}-help`, `${column.label}说明`, helpText) : '';
+            const heading = sortable ? `<button type="button" class="table-sort-button" aria-label="${column.label}排序">${label}</button>` : label;
+            return `<th scope="col" data-comparison-col="${column.key}"${classes ? ` class="${classes}"` : ''}${sorting}>${heading}${help}</th>`;
         }).join('')}</tr>`;
     }
 
@@ -579,8 +586,8 @@
             : '';
         const modelOption = (slug, label) => `<button type="button" data-preset-model="${escapeHtml(slug)}" aria-pressed="${slug ? selectedModels.has(slug) : !selectedModels.size}">${escapeHtml(label)}</button>`;
         const subtitle = includedModels ? options.modelFilter
-            ? `<div class="preset-model-filters" role="group" aria-label="${escapeHtml(group.title)}表格的模型筛选，可多选"><span>包含：</span>${modelOption('', '全部')}${group.modelSlugs.map(slug => modelOption(slug, modelNamesBySlug.get(slug) || slug)).join('')}</div>`
-            : `<p>包含：${escapeHtml(includedModels)}</p>` : '';
+            ? `<div class="preset-model-filters" role="group" aria-label="${escapeHtml(group.title)}表格的模型筛选，可多选">${modelOption('', '全部')}${group.modelSlugs.map(slug => modelOption(slug, modelNamesBySlug.get(slug) || slug)).join('')}</div>`
+            : `<p class="preset-model-list" aria-label="包含模型">${escapeHtml(includedModels)}</p>` : '';
         const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
         const limit = options.limit || rows.length;
         const body = rows.length ? rows.map((point, index) => {
@@ -714,8 +721,8 @@
                         <div class="usage-segments" role="group" aria-label="计费方式"><button type="button" data-chart-billing="all" class="is-active" aria-pressed="true">全部</button><button type="button" data-chart-billing="subscription" aria-pressed="false">订阅</button><button type="button" data-chart-billing="payg" aria-pressed="false">按量 API</button></div>
                         <div class="usage-scale-control"><span>价格轴</span><div class="usage-segments" data-scale="price" role="group" aria-label="价格轴"><button type="button" data-scale-value="log" class="is-active" aria-pressed="true">对数</button><button type="button" data-scale-value="value" aria-pressed="false">线性</button></div></div>
                     </div>
-                    <div class="usage-color-legend"><strong data-color-legend-title>平台颜色</strong><div data-color-legend></div></div>
-                    <div class="price-chart-key"><span class="price-chart-direction">↖ 更低单价 · 更高评分</span><span class="price-chart-frontier" title="当前筛选下，不存在另一个价格不高、评分不低且至少一项更好的方案。仅比较综合单价与评分。">价格—能力优势前沿</span></div>
+                    <div class="usage-color-legend"><div data-color-legend></div></div>
+                    <div class="price-chart-key"><span class="price-chart-frontier" title="当前筛选下，不存在另一个价格不高、评分不低且至少一项更好的方案。仅比较综合单价与评分。">价格—能力优势前沿</span></div>
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="模型能力和综合单价散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前条件下没有可绘制的评分与价格；请调整上方筛选、计费方式或价格轴。</div></div>
                     <div class="price-chart-meta" data-chart-meta aria-live="polite"></div>
                     <div class="price-chart-symbols"><span>● 订阅折算价</span><span>◆ 按量 API 加权价</span><span>同坐标、同计费方式的报价合并显示</span></div>
@@ -727,7 +734,7 @@
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="首月价格和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的首月价格与月额度数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
                 </article>
                 <article class="usage-chart-card usage-data-card">
-                    <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3><p>精确单价旁的横条按当前结果统一比较，采用对数尺度兼顾低价与高价；条越短，综合单价越低。按量 API 没有周期额度时显示“—”。</p></div><div class="usage-detail-summary"><span class="usage-table-count" data-table-count="comparison"></span><label class="usage-score-columns-control"><input type="checkbox" role="switch" data-all-scores aria-controls="pricingComparisonTable"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.75" y="3.75" width="14.5" height="12.5" rx="1.5"/><path d="M7.5 4v12M12.5 4v12"/></svg><span class="usage-score-columns-text">显示全部评分</span><span class="usage-score-columns-switch" aria-hidden="true"></span></label></div></div>
+                    <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3></div><div class="usage-detail-summary"><span class="usage-table-count" data-table-count="comparison"></span><label class="usage-score-columns-control"><input type="checkbox" role="switch" data-all-scores aria-controls="pricingComparisonTable"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.75" y="3.75" width="14.5" height="12.5" rx="1.5"/><path d="M7.5 4v12M12.5 4v12"/></svg><span class="usage-score-columns-text">显示全部评分</span><span class="usage-score-columns-switch" aria-hidden="true"></span></label></div></div>
                     <section class="usage-table-section" aria-label="价格与额度数据明细"><div class="usage-table-scroll"><table class="usage-data-table" id="pricingComparisonTable" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison', compact)}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
                 </article>
             </section>`;
@@ -1050,7 +1057,6 @@
             }
 
             function renderColorLegend(context) {
-                container.querySelector('[data-color-legend-title]').textContent = state.colorMode === 'model' ? '模型颜色' : '平台颜色';
                 const entries = [...context.entries.entries()].map(([slug, name]) => ({slug, name}))
                     .sort((a, b) => a.name.localeCompare(b.name, 'zh-CN'));
                 const ordered = state.colorMode === 'model' ? UI.prioritizeFeaturedModels(entries, presetConfig.groups) : entries;
@@ -1398,6 +1404,7 @@
                     root.CodingPlanEvents?.track('pin_change', {entity_type:'price_row',entity_slug:slug,pinned:pins.includes(slug),placement:'pricing'});
                     [...container.querySelectorAll('[data-price-pin]')].find(button=>button.dataset.pricePin===slug)?.focus({preventScroll:true}); return;
                 }
+                if (event.target.closest('.ui-help')) return;
                 const sortHeader = event.target.closest('[data-table-sort][data-sort-key]');
                 if (sortHeader) {
                     const tableName = sortHeader.dataset.tableSort;

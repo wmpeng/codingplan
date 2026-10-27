@@ -38,6 +38,7 @@ body.tool-page {
 .tool-empty { padding: 52px 20px; text-align: center; color: var(--tool-muted); }
 .tool-footer { display: flex; justify-content: space-between; gap: 16px; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--tool-line); color: var(--tool-muted); font-size: 13px; }
 .tool-page .usage-explorer { margin-top: 0; }
+.pricing-explorer { margin-top:40px; padding-top:28px; border-top:1px solid var(--tool-line); }
 .tool-page .platform-catalog { margin-top: 0; }
 .tool-page .platform-card-grid { margin-top: 14px; }
 .platform-hub-tools { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }

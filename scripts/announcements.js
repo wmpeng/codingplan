@@ -26,7 +26,9 @@
     for (const row of rows) {
       const isEnded = ended({ended:row.dataset.ended === 'true',endsOn:row.dataset.endsOn},day);
       (isEnded ? archive : active).append(row);
-      row.querySelector('[data-announcement-status]').textContent = isEnded ? '已结束' : '活动公告';
+      const status = row.querySelector('[data-announcement-status]');
+      status.textContent = isEnded ? '已结束' : '';
+      status.hidden = !isEnded;
       if (!isEnded) count++;
     }
     section.querySelector('[data-announcement-empty]').hidden = count > 0;

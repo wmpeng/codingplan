@@ -112,11 +112,6 @@
 .usage-data-table th { position: sticky; top: 0; z-index: 3; padding: 12px 14px; border-bottom: 1px solid #dfe5ed; background: #f5f7fb; color: #667287; font-size: 12px; font-weight: 600; letter-spacing: .02em; text-align: left; white-space: nowrap; user-select: none; }
 .usage-table-heading { display: inline-flex; align-items: baseline; gap: 7px; }
 .usage-table-heading small { color: #8a96a8; font-size: 9px; font-weight: 500; letter-spacing: 0; }
-.usage-data-table th.sortable { cursor: pointer; transition: background .15s ease, color .15s ease; }
-.usage-data-table th.sortable:hover, .usage-data-table th.sortable:focus-visible { background: #edf2f8; color: #253247; outline: none; }
-.usage-data-table th.sortable::after { content: ''; display: inline-block; width: 0; height: 0; margin-left: 7px; vertical-align: middle; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid #9aa5b5; opacity: .5; }
-.usage-data-table th.sort-asc::after { border-top: 0; border-bottom: 4px solid #1677ff; opacity: 1; }
-.usage-data-table th.sort-desc::after { border-top-color: #1677ff; opacity: 1; }
 .usage-data-table td { padding: 12px 14px; border-bottom: 1px solid #edf0f4; background: #fff; color: #36445a; font-size: 12px; line-height: 1.45; white-space: nowrap; }
 .usage-data-table tbody tr:nth-child(even) td { background: #f9fafc; }
 .usage-data-table tbody tr:hover td { background: #eef6ff; }
@@ -318,7 +313,6 @@
 .price-intelligence-card .usage-chart { height:430px; }
 .price-chart-key, .price-chart-meta, .price-chart-symbols { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 18px; font-size:11px; color:var(--text-tertiary); }
 .price-chart-key { margin:14px 0 6px; }
-.price-chart-direction { color:#348775; }
 .price-chart-frontier { display:inline-flex; align-items:center; gap:7px; cursor:help; }
 .price-chart-frontier::before { content:''; width:25px; border-top:2px dotted #7c8da2; }
 .price-chart-symbols { justify-content:flex-start; margin:8px 0 16px; }
