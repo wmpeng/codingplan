@@ -142,36 +142,6 @@
 
 还有 57 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
-### DeepSeek-V4.1-Flash
-
-| 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 |
-|---|---|---|---:|---:|---:|---:|
-| [Ollama · Pro](https://api.dreamfree.space/c/s/cpyqollama) | [谷] | $20/首月 | 4,511.9M | 4,511.9M | 4,511.9M | ¥0.0299/M |
-| [Ollama · Max](https://api.dreamfree.space/c/s/cpyqollama) | [谷] | $100/首月 | 22,559.4M | 22,559.4M | 22,559.4M | ¥0.0299/M |
-| [阿里·百炼 Token Plan · Pro](https://api.dreamfree.space/c/s/cpyqbailiant) | [谷] | ¥499/首月 | 10,957.2M | 10,957.2M | 10,957.2M | ¥0.0455/M |
-| [阿里·百炼 Token Plan · Standard](https://api.dreamfree.space/c/s/cpyqbailiant) | [谷] | ¥139/首月 | 2,739.3M | 2,739.3M | 2,739.3M | ¥0.0507/M |
-| [阿里·百炼 Token Plan · Essential](https://api.dreamfree.space/c/s/cpyqbailiant) | [谷] | ¥79/首月 | 1,552.3M | 1,552.3M | 1,552.3M | ¥0.0509/M |
-| [阿里·百炼 Token Plan · Lite](https://api.dreamfree.space/c/s/cpyqbailiant) | [谷] | ¥39/首月 | 700M | 700M | 700M | ¥0.0557/M |
-| [Ollama · Pro](https://api.dreamfree.space/c/s/cpyqollama) | [峰] | $20/首月 | 2,255.9M | 2,255.9M | 2,255.9M | ¥0.0605/M |
-| [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M |
-
-还有 19 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
-
-### DeepSeek-V4-Flash-0731
-
-| 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 |
-|---|---|---|---:|---:|---:|---:|
-| [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | [谷] | $1/首月 | - | - | 451.2M | ¥0.015/M |
-| [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | [谷] | $10/首月 | 902.37M | 2,255.94M | 4,511.9M | ¥0.015/M |
-| [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | [谷] | $20/首月 | 1,052.77M | 2,631.93M | 5,263.9M | ¥0.0258/M |
-| [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | [峰] | $1/首月 | - | - | 225.6M | ¥0.0299/M |
-| [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | [峰] | $10/首月 | 451.19M | 1,127.97M | 2,255.9M | ¥0.0299/M |
-| [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | [峰] | $20/首月 | 526.39M | 1,315.96M | 2,631.9M | ¥0.0517/M |
-| [Command Code · Max 10×](https://api.dreamfree.space/c/s/cpcommandcode) | [谷] | $100/首月 | 3,383.9M | 6,767.81M | 11,279.7M | ¥0.0605/M |
-| [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥1.5 / 缓存¥0.05 / 出¥4.5 | - | - | - | ¥0.1444/M |
-
-还有 61 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
-
 ### GLM-5.3-Flash
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 |
@@ -310,23 +280,23 @@
 | 智谱国际版 | 3 | $18–$168/月 | GLM-5.3、GLM-5.3-Flash |
 | Kimi | 5 | ¥49–¥1,399/月 | Kimi-K3.1-Pro、Kimi-K3、Kimi-K2.8-Preview、Kimi-K2.7-Code-HighSpeed |
 | DeepSeek | 1 | 不适用 / 含按量 API | DeepSeek-V4.1-Flash-1017、DeepSeek-V4-Pro-0813 |
-| 共绩算力 | 1 | 不适用 / 含按量 API | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4.1-Flash、等 15 个 |
-| 优云智算 | 6 | ¥49–¥999/月 | DeepSeek-V4.1-Flash-1017、DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、GLM-5.3-Flash、等 10 个 |
+| 共绩算力 | 1 | 不适用 / 含按量 API | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、等 15 个 |
+| 优云智算 | 6 | ¥49–¥999/月 | DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、DeepSeek-V4-Flash-0731、DeepSeek-V4-Flash-Vision-Exp、等 10 个 |
 | Codex | 6 | $0–$500/月 | GPT-6-Astra、GPT-6.1-Sol、GPT-6.1-Terra、GPT-6-Luna、等 8 个 |
 | Claude | 3 | $20–$200/月 | Claude Opus 5.5、Claude Fable 5、Claude Fable 5.1、Claude Haiku 4.5、等 14 个 |
-| Ollama | 2 | $20–$100/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4.1-Flash、等 21 个 |
-| 阿里·百炼 Token Plan | 4 | ¥39–¥499/月 | GLM-5.3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、等 11 个 |
+| Ollama | 2 | $20–$100/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、等 21 个 |
+| 阿里·百炼 Token Plan | 4 | ¥39–¥499/月 | GLM-5.3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、等 11 个 |
 | 阿里·百炼 Coding Plan | 1 | ¥200/月 | GLM-5、Kimi-K2.5、MiniMax-M2.5、Qwen-3.5-Plus、等 6 个 |
 | 小米·MiMo | 4 | ¥39–¥659/月 | MiMo-V2.6-Flash、MiMo-V2.6-Pro |
 | Command Code | 5 | $1–$200/月 | GPT-6-Astra、GPT-6.1-Sol、Claude Opus 5.5、GLM-5.3、等 91 个 |
-| 百度·千帆 | 4 | ¥9.9–¥600/月 | GLM-5.3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、等 9 个 |
-| 华为云 | 4 | ¥59–¥799/月 | GLM-5.3、DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、GLM-5.1、等 5 个 |
-| 腾讯云 | 4 | ¥39–¥599/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4-Flash-0731、等 12 个 |
-| Qoder 国内版 | 3 | ¥59–¥559/月 | GLM-5.3、Kimi-K3、DeepSeek-V4-Flash-0731、GLM-5.3-Flash、等 15 个 |
+| 百度·千帆 | 4 | ¥9.9–¥600/月 | GLM-5.3、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、DeepSeek-V4-Flash-0731、等 9 个 |
+| 华为云 | 4 | ¥59–¥799/月 | GLM-5.3、DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.1、等 5 个 |
+| 腾讯云 | 4 | ¥39–¥599/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、等 12 个 |
+| Qoder 国内版 | 3 | ¥59–¥559/月 | GLM-5.3、Kimi-K3、GLM-5.3-Flash、Kimi-K2.8-Preview、等 15 个 |
 | Qoder 国际版 | 4 | $10–$200/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、等 12 个 |
-| WorkBuddy | 4 | ¥0–¥700/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash、GLM-5.3-Flash、等 14 个 |
-| TRAE 国内版 | 4 | ¥45–¥629/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、等 20 个 |
-| TRAE 国际版 | 5 | $0–$200/月 | GPT-6-Astra、Kimi-K3、DeepSeek-V4-Flash-0731、GPT-6-Luna、等 19 个 |
+| WorkBuddy | 4 | ¥0–¥700/月 | GLM-5.3、Kimi-K3、GLM-5.3-Flash、DeepSeek-V4-Pro-0813、等 14 个 |
+| TRAE 国内版 | 4 | ¥45–¥629/月 | GLM-5.3、Kimi-K3、GLM-5.3-Flash、Kimi-K2.8-Preview、等 20 个 |
+| TRAE 国际版 | 5 | $0–$200/月 | GPT-6-Astra、Kimi-K3、GPT-6-Luna、DeepSeek-V4-Flash-0731、等 19 个 |
 | GitHub | 5 | $0–$100/月 | GPT-6-Astra、GPT-6.1-Sol、Claude Opus 5.5、Kimi-K3、等 27 个 |
 | Cursor | 5 | $0–$200/月 | Claude Opus 5.5、Claude Fable 5.1、Claude Haiku 5.5、Claude Sonnet 5.5、等 16 个 |
 | 讯飞·星火 | 2 | ¥199–¥699/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、GLM-5、GLM-5.1、等 10 个 |
@@ -338,11 +308,11 @@
 | 商汤·日日新 | 1 | ¥0/月 | SenseNova 6.8 Flash Lite、SenseNova U1 Fast |
 | 摩尔线程 | 1 | ¥0/月 | GLM-4.7 |
 | 腾讯云 · Hy | 4 | ¥28–¥468/月 | Hy3、Hy4-preview |
-| 百度千帆 · 积分制 | 4 | ¥9.9–¥600/月 | GLM-5.3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4.1-Flash、DeepSeek-V4-Flash-0731、等 9 个 |
+| 百度千帆 · 积分制 | 4 | ¥9.9–¥600/月 | GLM-5.3、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、DeepSeek-V4-Flash-0731、等 9 个 |
 | 天翼云 · 积分制 | 5 | ¥29–¥699/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、GLM-5.1、GLM-5.2、等 6 个 |
 | 京东云 · Token Plan | 4 | ¥69–¥999/月 | DeepSeek-V4-Flash-0731、DeepSeek-V4-Preview、DeepSeek-V4-Pro-0813、DeepSeek-V4-Pro-Preview、等 8 个 |
-| 淘Token · Token Plan | 2 | ¥59–¥149/月 | GLM-5.3、DeepSeek-V4.1-Flash、GLM-5.3-Flash |
-| 超算 · Token Plan | 4 | ¥30–¥899/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4.1-Flash、等 18 个 |
+| 淘Token · Token Plan | 2 | ¥59–¥149/月 | GLM-5.3、GLM-5.3-Flash、DeepSeek-V4.1-Flash |
+| 超算 · Token Plan | 4 | ¥30–¥899/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、等 18 个 |
 | 讯飞 · Astron Token Plan | 3 | ¥200–¥2,000/月 | GLM-4.7-Flash、GLM-5、GLM-5.1、GLM-5.2、等 13 个 |
 
 全部价格、周期优惠、请求数、权益和备注见[在线套餐对比](https://codingplan.fyi/plans/)。

@@ -26,8 +26,6 @@
       "enabled": true,
       "modelSlugs": [
         "deepseek-v4-1-flash-1017",
-        "deepseek-v4-1-flash",
-        "deepseek-v4-flash-0731",
         "glm-5-3-flash",
         "gpt-6-1-terra",
         "gpt-6-luna",
@@ -45,5 +43,5 @@
     "deepseek-official",
     "codex"
   ],
-  "contentVersion": "2026-10-27T03:55:11.197Z"
+  "contentVersion": "2026-10-27T06:36:31.946Z"
 }
