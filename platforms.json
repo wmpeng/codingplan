@@ -604,7 +604,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": false,
-      "action": "https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription"
+      "action": "https://api.dreamfree.space/c/s/cpyqqodercn"
     },
     {
       "slug": "qoder-intl",
@@ -630,7 +630,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": false,
-      "action": "https://qoder.com/pricing"
+      "action": "https://api.dreamfree.space/c/s/cpyqqoderintl"
     },
     {
       "slug": "workbuddy",
@@ -656,7 +656,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": false,
-      "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing"
+      "action": "https://api.dreamfree.space/c/s/cpyqworkbuddy"
     },
     {
       "slug": "trae-cn",
@@ -682,7 +682,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": false,
-      "action": "https://www.trae.cn"
+      "action": "https://api.dreamfree.space/c/s/cpyqtraecn"
     },
     {
       "slug": "trae-intl",
@@ -708,7 +708,7 @@
       "requiresOverseasNetwork": true,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": false,
-      "action": "https://www.trae.ai/pricing"
+      "action": "https://api.dreamfree.space/c/s/cpyqtraeintl"
     },
     {
       "slug": "github",
@@ -760,7 +760,7 @@
       "requiresOverseasNetwork": true,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": null,
-      "action": "https://cursor.com/pricing"
+      "action": "https://api.dreamfree.space/c/s/cpyqcursor"
     },
     {
       "slug": "jd-cloud",
@@ -1259,5 +1259,5 @@
       "action": "https://api.dreamfree.space/c/s/cpyqxunfei"
     }
   ],
-  "contentVersion": "2026-10-27T14:02:57.847Z"
+  "contentVersion": "2026-10-27T14:11:00.353Z"
 }

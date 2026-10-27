@@ -227,13 +227,13 @@
 | [百度·千帆](https://api.dreamfree.space/c/s/cpyqqianfan) | 可以购买 | ⭐️⭐️⭐️ | Token计量与积分计量产品并存，统一品牌下按独立计费套餐比较。 |
 | [华为云](https://api.dreamfree.space/c/s/cpyqhuawei) | 购买受限 | ⭐️⭐️⭐️ | 华为云个人Token Plan，当前五个LLM，按官方月Token总量。 |
 | [腾讯云](https://api.dreamfree.space/c/s/cpyqtengxunt) | 可以购买 | ⭐️⭐️⭐️ | 通用Token Plan与Hy专属产品线分开；模型与套餐抵扣系数需逐项比较。 |
-| [Qoder 国内版](https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription) | 可以购买 | ⭐️⭐️⭐️ | Qoder全家桶个人订阅，模型选择因客户端而异；Qwen3.8-Flash当前免Credits。 |
-| [Qoder 国际版](https://qoder.com/pricing) | 可以购买 | ⭐️⭐️⭐️ | Qoder国际套餐，当前支持K3、K2.8、GLM5.3及Qwen3.8等；具体Token额度未知。 |
-| [WorkBuddy](https://www.workbuddy.cn/docs/workbuddy/Pricing) | 可以购买 | ⭐️⭐️⭐️ | 体验版与三档付费个人订阅，WorkBuddy与CodeBuddy共享积分。 |
-| [TRAE 国内版](https://www.trae.cn) | 可以购买 | ⭐️⭐️⭐️ | TRAE统一积分会员，31天一个周期；Lite首月39元，模型权限按档位区分。 |
-| [TRAE 国际版](https://www.trae.ai/pricing) | 可以购买 | ⭐️⭐️⭐️ | Free仅Auto；新Lite/Pro/Pro+/Ultra与老套餐并存，按模型Token价扣减月Usage。 |
+| [Qoder 国内版](https://api.dreamfree.space/c/s/cpyqqodercn) | 可以购买 | ⭐️⭐️⭐️ | Qoder全家桶个人订阅，模型选择因客户端而异；Qwen3.8-Flash当前免Credits。 |
+| [Qoder 国际版](https://api.dreamfree.space/c/s/cpyqqoderintl) | 可以购买 | ⭐️⭐️⭐️ | Qoder国际套餐，当前支持K3、K2.8、GLM5.3及Qwen3.8等；具体Token额度未知。 |
+| [WorkBuddy](https://api.dreamfree.space/c/s/cpyqworkbuddy) | 可以购买 | ⭐️⭐️⭐️ | 体验版与三档付费个人订阅，WorkBuddy与CodeBuddy共享积分。 |
+| [TRAE 国内版](https://api.dreamfree.space/c/s/cpyqtraecn) | 可以购买 | ⭐️⭐️⭐️ | TRAE统一积分会员，31天一个周期；Lite首月39元，模型权限按档位区分。 |
+| [TRAE 国际版](https://api.dreamfree.space/c/s/cpyqtraeintl) | 可以购买 | ⭐️⭐️⭐️ | Free仅Auto；新Lite/Pro/Pro+/Ultra与老套餐并存，按模型Token价扣减月Usage。 |
 | [GitHub](https://api.dreamfree.space/c/s/cpyqghcopilot) | 可以购买 | ⭐️⭐️⭐️ | Copilot个人方案现按AI Credits计费，新增Max；免费与学生档仅Auto选择。 |
-| [Cursor](https://cursor.com/pricing) | 可以购买 | - | AI 编程编辑器与 Agent；新 X Subscription 从免费至 $200/月，旧 Pro 系列仅存量保留。 |
+| [Cursor](https://api.dreamfree.space/c/s/cpyqcursor) | 可以购买 | - | AI 编程编辑器与 Agent；新 X Subscription 从免费至 $200/月，旧 Pro 系列仅存量保留。 |
 | [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) | 可以购买 | ⭐️⭐️⭐️ | 个人版分高效版与速通版；当前价格和完整模型支持范围待确认。 |
 | [联通云](https://api.dreamfree.space/c/s/cpyqunicomtp) | 可以购买 | ⭐️⭐️ | 个人版按Token额度、团队版按Credits计量；当前成交价、库存及DeepSeek精确版本待确认。 |
 | [移动云](https://api.dreamfree.space/c/s/cpyqmobilecp) | 可以购买 | ⭐️⭐️ | 移动云请求制订阅，当前M2.5；首月与续费券按活动资格区分。 |
