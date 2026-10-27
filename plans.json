@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-27T04:03:25Z",
+  "generatedAt": "2026-10-27T06:39:21Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -7870,12 +7870,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 78.3197504509,
+            "weeklyTokenInM": 501.2464028857,
+            "monthlyTokenInM": 2005.0,
+            "unitPriceCnyPerM": 0.068
           },
           "pricing": null,
-          "note": "Plus / Pro 支持 GPT-6.1 Terra；CLI 需 0.159.0 或更高版本，具体客户端与账号开放情况以官方为准。订阅 Token 配额未知，不能用 API 或另购 Credits 单价反推。"
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Terra 的订阅可用量为同档 GPT-6.1 Sol 的 2 倍；Token 参考量按同套餐 Sol Standard ×2 推算，继承基准估算误差，非官方固定配额。CLI 需 0.159.0 或更高版本，具体开放情况以账号与客户端为准。"
         },
         {
           "slug": "codex-plus--gpt-6-astra",
@@ -8093,10 +8096,13 @@
           "serviceTier": "Fast",
           "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": 31.3279001804,
+            "weeklyTokenInM": 200.4985611543,
+            "monthlyTokenInM": 802.0,
+            "unitPriceCnyPerM": 0.16932
           },
           "pricing": null,
-          "note": "Fast 的订阅用量消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；Standard 的绝对 Token 配额未知，高速档同样未知。不包含 Ultrafast。"
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Token 参考量为同套餐 Terra Standard 的 1/2.5，即 Sol Standard 的 0.8 倍；绝对数仍为估算。Fast 的订阅额度消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；不包含 Ultrafast。"
         }
       ]
     },
@@ -8144,12 +8150,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 2506.2320144287,
+            "monthlyTokenInM": 10024.9,
+            "unitPriceCnyPerM": 0.068
           },
           "pricing": null,
-          "note": "Plus / Pro 支持 GPT-6.1 Terra；CLI 需 0.159.0 或更高版本，具体客户端与账号开放情况以官方为准。订阅 Token 配额未知，不能用 API 或另购 Credits 单价反推。"
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Terra 的订阅可用量为同档 GPT-6.1 Sol 的 2 倍；Token 参考量按同套餐 Sol Standard ×2 推算，继承基准估算误差，非官方固定配额。CLI 需 0.159.0 或更高版本，具体开放情况以账号与客户端为准。"
         },
         {
           "slug": "codex-pro5--gpt-6-astra",
@@ -8403,10 +8412,13 @@
           "serviceTier": "Fast",
           "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 1002.4928057715,
+            "monthlyTokenInM": 4010.0,
+            "unitPriceCnyPerM": 0.16932
           },
           "pricing": null,
-          "note": "Fast 的订阅用量消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；Standard 的绝对 Token 配额未知，高速档同样未知。不包含 Ultrafast。"
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Token 参考量为同套餐 Terra Standard 的 1/2.5，即 Sol Standard 的 0.8 倍；绝对数仍为估算。Fast 的订阅额度消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；不包含 Ultrafast。"
         }
       ]
     },
@@ -8454,12 +8466,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 5012.4640288575,
+            "monthlyTokenInM": 20049.9,
+            "unitPriceCnyPerM": 0.068
           },
           "pricing": null,
-          "note": "Plus / Pro 支持 GPT-6.1 Terra；CLI 需 0.159.0 或更高版本，具体客户端与账号开放情况以官方为准。订阅 Token 配额未知，不能用 API 或另购 Credits 单价反推。"
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Terra 的订阅可用量为同档 GPT-6.1 Sol 的 2 倍；Token 参考量按同套餐 Sol Standard ×2 推算，继承基准估算误差，非官方固定配额。CLI 需 0.159.0 或更高版本，具体开放情况以账号与客户端为准。"
         },
         {
           "slug": "codex-pro20--gpt-6-astra",
@@ -8713,10 +8728,13 @@
           "serviceTier": "Fast",
           "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 2004.985611543,
+            "monthlyTokenInM": 8019.9,
+            "unitPriceCnyPerM": 0.16932
           },
           "pricing": null,
-          "note": "Fast 的订阅用量消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；Standard 的绝对 Token 配额未知，高速档同样未知。不包含 Ultrafast。"
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Token 参考量为同套餐 Terra Standard 的 1/2.5，即 Sol Standard 的 0.8 倍；绝对数仍为估算。Fast 的订阅额度消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；不包含 Ultrafast。"
         }
       ]
     },
@@ -8766,12 +8784,15 @@
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
-          "method": "unknown",
+          "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 12531.1600721437,
+            "monthlyTokenInM": 50124.6,
+            "unitPriceCnyPerM": 0.068
           },
           "pricing": null,
-          "note": "Plus / Pro 支持 GPT-6.1 Terra；CLI 需 0.159.0 或更高版本，具体客户端与账号开放情况以官方为准。订阅 Token 配额未知，不能用 API 或另购 Credits 单价反推。"
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Terra 的订阅可用量为同档 GPT-6.1 Sol 的 2 倍；Token 参考量按同套餐 Sol Standard ×2 推算，继承基准估算误差，非官方固定配额。CLI 需 0.159.0 或更高版本，具体开放情况以账号与客户端为准。"
         },
         {
           "slug": "codex-pro500--gpt-6-astra",
@@ -9057,10 +9078,13 @@
           "serviceTier": "Fast",
           "method": "multiplied",
           "usage": {
-            "monthlyTokenInM": "unknown"
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 5012.4640288575,
+            "monthlyTokenInM": 20049.9,
+            "unitPriceCnyPerM": 0.16932
           },
           "pricing": null,
-          "note": "Fast 的订阅用量消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；Standard 的绝对 Token 配额未知，高速档同样未知。不包含 Ultrafast。"
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Token 参考量为同套餐 Terra Standard 的 1/2.5，即 Sol Standard 的 0.8 倍；绝对数仍为估算。Fast 的订阅额度消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；不包含 Ultrafast。"
         }
       ]
     },
@@ -51772,5 +51796,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-10-27T03:55:04.305Z"
+  "contentVersion": "2026-10-27T06:31:12.821Z"
 }

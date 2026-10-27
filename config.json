@@ -127,7 +127,7 @@
     {
       "date": "2026.10.27",
       "items": [
-        "新增 GPT-6.1 Terra：图文输入，补充 AA / LiveBench 评分及 Codex、GitHub Copilot、Command Code 的实际套餐支持与档位。Codex Token 配额未知；Copilot 与 Command Code 按各自价格和共享额度估算。",
+        "新增 GPT-6.1 Terra：图文输入，补充 AA / LiveBench 评分及 Codex、GitHub Copilot、Command Code 的实际套餐支持与档位。Codex Terra 按同套餐 6.1 Sol 的两倍估算，非官方固定 Token 配额；Copilot 与 Command Code 按各自价格和共享额度估算。",
         "新增方舟 Coding / Agent Plan 的 Kimi K3.1 Pro 支持与限时抵扣，活动截至 11 月 9 日；复查四项榜单、活动公告和预告，未确认恢复的到期活动保留待确认。"
       ]
     },
@@ -551,5 +551,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-10-27T03:55:11.196Z"
+  "contentVersion": "2026-10-27T06:31:40.597Z"
 }

@@ -191,16 +191,16 @@
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 |
 |---|---|---|---:|---:|---:|---:|
-| [GitHub · Max](https://github.com/features/copilot/plans) | [≤272K] | $100/首月 | - | - | 1,639.2M | ¥0.4148/M |
-| [GitHub · Pro+](https://api.dreamfree.space/c/s/cpyqghcopilotp) | [≤272K] | $39/首月 | - | - | 573.7M | ¥0.4624/M |
-| [GitHub · Pro](https://api.dreamfree.space/c/s/cpyqghcopilot) | [≤272K] | $10/首月 | - | - | 122.9M | ¥0.5528/M |
-| [GitHub · Max](https://github.com/features/copilot/plans) | [>272K] | $100/首月 | - | - | 863.8M | ¥0.7874/M |
-| [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | [≤272K] | $20/首月 | 32.78M | 81.96M | 163.9M | ¥0.8296/M |
-| [Command Code · Max 10×](https://api.dreamfree.space/c/s/cpcommandcode) | [≤272K] | $100/首月 | 245.88M | 491.75M | 819.6M | ¥0.8296/M |
-| [Command Code · Max 20×](https://api.dreamfree.space/c/s/cpcommandcode) | [≤272K] | $200/首月 | 491.75M | 983.51M | 1,639.2M | ¥0.8296/M |
-| [GitHub · Pro+](https://api.dreamfree.space/c/s/cpyqghcopilotp) | [>272K] | $39/首月 | - | - | 302.3M | ¥0.8772/M |
+| [Codex · Plus](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $20/首月 | 78.32M | 501.25M | 2,005M | ¥0.068/M |
+| [Codex · Pro $100](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $100/首月 | 2,506.23M | 2,506.23M | 10,024.9M | ¥0.068/M |
+| [Codex · Pro $200](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $200/首月 | 5,012.46M | 5,012.46M | 20,049.9M | ¥0.068/M |
+| [Codex · Pro $500](https://api.dreamfree.space/c/s/cpyqchatgpt) | - | $500/首月 | 12,531.16M | 12,531.16M | 50,124.6M | ¥0.068/M |
+| [Codex · Plus](https://api.dreamfree.space/c/s/cpyqchatgpt) | [Fast] | $20/首月 | 31.33M | 200.5M | 802M | ¥0.1693/M |
+| [Codex · Pro $100](https://api.dreamfree.space/c/s/cpyqchatgpt) | [Fast] | $100/首月 | 1,002.49M | 1,002.49M | 4,010M | ¥0.1693/M |
+| [Codex · Pro $200](https://api.dreamfree.space/c/s/cpyqchatgpt) | [Fast] | $200/首月 | 2,004.99M | 2,004.99M | 8,019.9M | ¥0.1693/M |
+| [Codex · Pro $500](https://api.dreamfree.space/c/s/cpyqchatgpt) | [Fast] | $500/首月 | 5,012.46M | 5,012.46M | 20,049.9M | ¥0.1693/M |
 
-还有 4 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
+还有 12 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### GPT-6-Luna
 
@@ -359,7 +359,7 @@
 
 ### 2026.10.27
 
-- 新增 GPT-6.1 Terra：图文输入，补充 AA / LiveBench 评分及 Codex、GitHub Copilot、Command Code 的实际套餐支持与档位。Codex Token 配额未知；Copilot 与 Command Code 按各自价格和共享额度估算。
+- 新增 GPT-6.1 Terra：图文输入，补充 AA / LiveBench 评分及 Codex、GitHub Copilot、Command Code 的实际套餐支持与档位。Codex Terra 按同套餐 6.1 Sol 的两倍估算，非官方固定 Token 配额；Copilot 与 Command Code 按各自价格和共享额度估算。
 - 新增方舟 Coding / Agent Plan 的 Kimi K3.1 Pro 支持与限时抵扣，活动截至 11 月 9 日；复查四项榜单、活动公告和预告，未确认恢复的到期活动保留待确认。
 
 ### 2026.10.26
