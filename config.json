@@ -130,7 +130,8 @@
         "新增 GPT-6.1 Terra：图文输入，补充 AA / LiveBench 评分及 Codex、GitHub Copilot、Command Code 的实际套餐支持与档位。Codex Terra 按同套餐 6.1 Sol 的两倍估算，非官方固定 Token 配额；Copilot 与 Command Code 按各自价格和共享额度估算。",
         "新增方舟 Coding / Agent Plan 的 Kimi K3.1 Pro 支持与限时抵扣，活动截至 11 月 9 日；复查四项榜单、活动公告和预告，未确认恢复的到期活动保留待确认。",
         "新增Qoder国内版、国际版、WorkBuddy与TRAE国内版的Kimi K3.1 Pro支持，按套餐权限区分；WorkBuddy包含高速档，新增关系的Token额度暂未量化。",
-        "补充TRAE国内版MiniMax M3.1 Flash；Qoder国际版DeepSeek 1017免Credits截至11月1日00:00（UTC+8）；Terra的LiveBench评分更新为77.8。"
+        "补充TRAE国内版MiniMax M3.1 Flash；Qoder国际版DeepSeek 1017免Credits截至11月1日00:00（UTC+8）；Terra的LiveBench评分更新为77.8。",
+        "京东云 Token Plan 四档套餐现标为可以购买，并更新购买入口。"
       ]
     },
     {
@@ -553,5 +554,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-10-27T09:11:16.935Z"
+  "contentVersion": "2026-10-27T15:57:54.136Z"
 }

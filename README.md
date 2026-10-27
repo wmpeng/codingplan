@@ -245,7 +245,7 @@
 | [腾讯云 · Hy](https://api.dreamfree.space/c/s/cpyqtengxunt) | 可以购买 | - | Hy3、Hy4 preview专属订阅，与通用套餐可并存。 |
 | [百度千帆 · 积分制](https://api.dreamfree.space/c/s/cpyqqianfan) | 可以购买 | - | 按模型与Token类型抵扣积分，可与Token制区分选购。 |
 | [天翼云 · 积分制](https://api.dreamfree.space/c/s/cpyqctyun) | 可以购买 | - | 2026-09-23启用积分制；旧Token制仅周期内用户可续订。 |
-| [京东云 · Token Plan](https://api.dreamfree.space/c/s/cpyqjingdong) | 购买受限 | - | 个人Credits订阅，按模型和输入长度计费，可与Coding Plan同时订阅。 |
+| [京东云 · Token Plan](https://api.dreamfree.space/c/s/cpyqjingdongtp) | 可以购买 | - | 个人Credits订阅，按模型和输入长度计费，可与Coding Plan同时订阅。 |
 | [淘Token · Token Plan](https://api.dreamfree.space/c/s/cpyqtaotoken) | 可以购买 | - | 多模型Credits月订阅，独立/token入口；与双Flash Coding Plan分开抵扣。 |
 | [超算 · Token Plan](https://api.dreamfree.space/c/s/cpyqchaosuantp) | 可以购买 | - | 18个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。 |
 | [讯飞 · Astron Token Plan](https://api.dreamfree.space/c/s/cpyqxunfei) | 可以购买 | - | 面向企业/团队的成员积分订阅；活动已结束，现按常规月价购买。 |
@@ -319,6 +319,7 @@
 - 新增方舟 Coding / Agent Plan 的 Kimi K3.1 Pro 支持与限时抵扣，活动截至 11 月 9 日；复查四项榜单、活动公告和预告，未确认恢复的到期活动保留待确认。
 - 新增Qoder国内版、国际版、WorkBuddy与TRAE国内版的Kimi K3.1 Pro支持，按套餐权限区分；WorkBuddy包含高速档，新增关系的Token额度暂未量化。
 - 补充TRAE国内版MiniMax M3.1 Flash；Qoder国际版DeepSeek 1017免Credits截至11月1日00:00（UTC+8）；Terra的LiveBench评分更新为77.8。
+- 京东云 Token Plan 四档套餐现标为可以购买，并更新购买入口。
 
 ### 2026.10.26
 

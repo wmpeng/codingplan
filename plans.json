@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-27T14:12:54Z",
+  "generatedAt": "2026-10-27T15:58:54Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -46943,7 +46943,7 @@
       "platformSlug": "jd-cloud-token",
       "name": "Lite",
       "billingMode": "subscription",
-      "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdongtp",
       "rating": 0,
       "firstMonthPrice": 69,
       "monthlyPrice": 69,
@@ -46955,7 +46955,7 @@
         "60 RPM"
       ],
       "note": "• 个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。\n• 不支持缓存命中。",
-      "planStatus": "restricted",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "jd-cloud-token-lite--glm-5-1--ctx-32k",
@@ -47492,7 +47492,7 @@
       "platformSlug": "jd-cloud-token",
       "name": "Standard",
       "billingMode": "subscription",
-      "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdongtp",
       "rating": 0,
       "firstMonthPrice": 199,
       "monthlyPrice": 199,
@@ -47504,7 +47504,7 @@
         "60 RPM"
       ],
       "note": "• 个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。\n• 不支持缓存命中。",
-      "planStatus": "restricted",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "jd-cloud-token-standard--glm-5-1--ctx-32k",
@@ -48041,7 +48041,7 @@
       "platformSlug": "jd-cloud-token",
       "name": "Pro",
       "billingMode": "subscription",
-      "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdongtp",
       "rating": 0,
       "firstMonthPrice": 599,
       "monthlyPrice": 599,
@@ -48053,7 +48053,7 @@
         "60 RPM"
       ],
       "note": "• 个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。\n• 不支持缓存命中。",
-      "planStatus": "restricted",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "jd-cloud-token-pro--glm-5-1--ctx-32k",
@@ -48590,7 +48590,7 @@
       "platformSlug": "jd-cloud-token",
       "name": "Max",
       "billingMode": "subscription",
-      "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdongtp",
       "rating": 0,
       "firstMonthPrice": 999,
       "monthlyPrice": 999,
@@ -48602,7 +48602,7 @@
         "60 RPM"
       ],
       "note": "• 个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。\n• 不支持缓存命中。",
-      "planStatus": "restricted",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "jd-cloud-token-max--glm-5-1--ctx-32k",
@@ -52043,5 +52043,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-10-27T14:11:05.766Z"
+  "contentVersion": "2026-10-27T15:57:50.672Z"
 }
