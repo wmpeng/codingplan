@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/styles/reading.css?v=05dca7deaf" />
   <link rel="stylesheet" href="/styles/design-system.css?v=b229e5aa01" />
 <script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
-<script id="site-data-versions" type="application/json">{"platforms":"2026-10-25T16:31:43.191Z","plans":"2026-10-25T16:36:28.120Z","models":"2026-10-25T10:48:45.156Z","config":"2026-10-25T16:38:26.291Z","featured_catalog":"2026-10-25T10:48:45.157Z","changes":"2026-10-25T16:36:29.712Z","announcements":"2026-10-25T10:48:45.158Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
+<script id="site-data-versions" type="application/json">{"platforms":"2026-10-27T13:39:28.986Z","plans":"2026-10-27T13:39:34.471Z","models":"2026-10-27T09:10:28.501Z","config":"2026-10-27T09:11:16.935Z","featured_catalog":"2026-10-27T11:25:07.246Z","changes":"2026-10-27T09:10:56.626Z","announcements":"2026-10-27T09:11:15.952Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
 <script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
 <link rel="stylesheet" href="/styles/ui-components.css?v=89d1dc5ef7">
@@ -224,19 +224,19 @@
 </tr>
 </tbody>
 </table></div>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="GLM-5.3 官方公开 benchmark 对比图" src="assets/glm-5-3-official-01.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="GLM-5.3 官方公开 benchmark 对比图" src="/articles/news/20260814_glm_5_3/assets/glm-5-3-official-01.png" /></figure>
 <p class="img-source">图片来源：<a href="https://z.ai/blog/glm-5.3" rel="noopener noreferrer">智谱官方博客</a></p>
 <p>AutomationBench 和 GDPval 已经是五家里最高；Agents' Last Exam 与 GPT-5.6 Sol 基本持平。Terminal Bench 3.0、DeepSWE、HLE 超过 Kimi K3，仍低于 Fable 5 和 GPT-5.6 Sol。</p>
 <h3 id="agent">横向对比：编程、安全、Agent</h3>
 <p>官方横向表覆盖 Kimi K3、DeepSeek V4 Pro、Qwen3.8-Max、Claude Opus 4.8、Fable 5 和 GPT-5.6 Sol。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="GLM-5.3 多模型横向评测全表" src="assets/glm-5-3-official-03.jpeg" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="GLM-5.3 多模型横向评测全表" src="/articles/news/20260814_glm_5_3/assets/glm-5-3-official-03.jpeg" /></figure>
 <p class="img-source">图片来源：<a href="https://z.ai/blog/glm-5.3" rel="noopener noreferrer">智谱官方博客</a></p>
 <p>相对 GLM-5.2，Coding、Agent、Cyber 全面提升。
 * 国产里，整体强于 DeepSeek V4 Pro 和 Qwen3.8-Max；和 Kimi K3 接近，多数项略高。
 * 和 Opus 4.8 比，整体已经更强：终端、持续改代码、自动化、长程 Agent 都领先，从需求生成仓库、工具调用仍弱于 Opus。
 * 和 Fable 5、GPT-5.6 Sol 比，自动化、专业任务执行、部分 Agent、漏洞发现已经到同一水平或略高；更难的终端任务、高难编程和漏洞利用仍落后。</p>
 <h3 id="token">Token 效率也在改善</h3>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="Z.ai Code Bench：准确率与平均输出 Token 对比" src="assets/glm-5-3-official-02.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="Z.ai Code Bench：准确率与平均输出 Token 对比" src="/articles/news/20260814_glm_5_3/assets/glm-5-3-official-02.png" /></figure>
 <p class="img-source">图片来源：<a href="https://z.ai/blog/glm-5.3" rel="noopener noreferrer">智谱官方博客</a></p>
 <p>智谱内部的 Z.ai Code Bench 同时看任务完成率和平均输出 Token。相对 GLM-5.2，完成率更高、输出更短；相对 Opus 4.8，更短的轨迹也能拿到更高完成率；相对 Fable 5，准确率仍有差距。这里的 Token 是平均输出量，不是价格。</p>
 <h2 id="_3">三、社区实测：复杂前端和交互任务</h2>
@@ -251,7 +251,7 @@
 <p>这些演示没有统一运行环境、完整提示词、人工修改记录和耗时 / 额度数据，也没有第三方复测。</p>
 <h3 id="kingbench-3">KingBench 3</h3>
 <p><a href="https://x.com/aicodeking/status/2088131439892316259" rel="noopener noreferrer">AICodeKing</a>（<code>@aicodeking</code>）在 X 上发布了 KingBench 3 榜单。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="KingBench 3 Leaderboard" src="assets/glm-5-3-kingbench-3.jpg" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="KingBench 3 Leaderboard" src="/articles/news/20260814_glm_5_3/assets/glm-5-3-kingbench-3.jpg" /></figure>
 <p class="img-source">图片来源：<a href="https://x.com/aicodeking/status/2088131439892316259" rel="noopener noreferrer">AICodeKing</a></p>
 <p>这张图的发布出处可以确认。任务样本、评分公式、测试设置和独立复测目前都没有完整公开，所以它反映的是社区讨论热度，不能替代 Terminal Bench、DeepSWE、Agents' Last Exam 这类公开基准。</p>
 <h2 id="_5">四、网络安全能力上来了</h2>

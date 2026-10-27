@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/styles/reading.css?v=05dca7deaf" />
   <link rel="stylesheet" href="/styles/design-system.css?v=b229e5aa01" />
 <script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
-<script id="site-data-versions" type="application/json">{"platforms":"2026-10-25T16:31:43.191Z","plans":"2026-10-25T16:36:28.120Z","models":"2026-10-25T10:48:45.156Z","config":"2026-10-25T16:38:26.291Z","featured_catalog":"2026-10-25T10:48:45.157Z","changes":"2026-10-25T16:36:29.712Z","announcements":"2026-10-25T10:48:45.158Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
+<script id="site-data-versions" type="application/json">{"platforms":"2026-10-27T13:39:28.986Z","plans":"2026-10-27T13:39:34.471Z","models":"2026-10-27T09:10:28.501Z","config":"2026-10-27T09:11:16.935Z","featured_catalog":"2026-10-27T11:25:07.246Z","changes":"2026-10-27T09:10:56.626Z","announcements":"2026-10-27T09:11:15.952Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
 <script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
 <link rel="stylesheet" href="/styles/ui-components.css?v=89d1dc5ef7">
@@ -122,9 +122,9 @@
 <h2 id="deepswe-693">一、先回看 DeepSWE：第三方榜 69%±3%，并列第一梯队</h2>
 <p>在上一篇 <a href="/articles/news/20260814_glm_5_3/" rel="noopener noreferrer">《GLM-5.3 发布》</a> 里已经梳理过官方跑分：提升几乎全部来自后训练，最突出的是长程软件工程任务。官方口径里，DeepSWE v1.1 从 GLM-5.2 的 46.2 提升到 66.9，Terminal Bench 3.0 从 4.6 提升到 28.3，Agents' Last Exam（CLI）从 23.8 提升到 28.5。</p>
 <p>第三方榜单 DeepSWE（<a href="https://deepswe.datacurve.ai/" rel="noopener noreferrer">deepswe.datacurve.ai</a>）用统一环境重新跑了一遍：113 个任务、覆盖 91 个仓库、5 种语言，所有模型都跑在 mini-swe-agent 上，保证执行环境一致。榜单收录 25 个模型配置，截图展示其中 18 个；下面列出与本文相关的 11 个配置。对应 v1.1，更新于 8 月 20 日：</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSWE 实时榜单：GLM-5.3 与 Kimi K3 同处 69% 第一梯队" src="assets/deepswe-leaderboard-1.jpeg" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSWE 实时榜单：GLM-5.3 与 Kimi K3 同处 69% 第一梯队" src="/articles/news/20260818_glm_5_3_aa/assets/deepswe-leaderboard-1.jpeg" /></figure>
 <p class="img-source">图片来源：<a href="https://deepswe.datacurve.ai/" rel="noopener noreferrer">DeepSWE 实时榜单</a></p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSWE 榜单明细：GLM-5.3 69%±3%、平均成本约 ¥28（\$3.99）" src="assets/deepswe-leaderboard-2.jpeg" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSWE 榜单明细：GLM-5.3 69%±3%、平均成本约 ¥28（\$3.99）" src="/articles/news/20260818_glm_5_3_aa/assets/deepswe-leaderboard-2.jpeg" /></figure>
 <p class="img-source">图片来源：<a href="https://deepswe.datacurve.ai/" rel="noopener noreferrer">DeepSWE 实时榜单</a></p>
 <div class="doc-table-wrap" tabindex="0"><table>
 <thead>
@@ -251,7 +251,7 @@
 </tr>
 </tbody>
 </table></div>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="Artificial Analysis Intelligence Index v4.1.1：GLM-5.3 显示 60 分，14 模型对比集内第 5" src="assets/aa-intelligence-index.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="Artificial Analysis Intelligence Index v4.1.1：GLM-5.3 显示 60 分，14 模型对比集内第 5" src="/articles/news/20260818_glm_5_3_aa/assets/aa-intelligence-index.png" /></figure>
 <p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?models=muse-spark-1-2%2Cminimax-m3%2Cgpt-5-6-luna%2Cdeepseek-v4-pro%2Cqwen3-8-2-4t-a95b%2Cqwen3-8-27b%2Cgemini-3-7-flash%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cgrok-4-6%2Cglm-5-3%2Cgpt-5-6-sol%2Ckimi-k3%2Cdeepseek-v4-flash#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis · Intelligence Index</a></p>
 <p>Kimi K3 与 GLM-5.3 同为 60 分，Kimi K3 第 4、GLM-5.3 第 5。再往上是 Grok 4.6 和 GPT-5.6 Sol（均显示 61）、Claude Opus 5（63）。往下看，Qwen3.8 2.4T A95B 为 58，DeepSeek V4 Pro 0813 为 53。</p>
 <p>在这份对比集内，国产模型里 GLM-5.3 紧贴 Kimi K3，明显高于 Qwen3.8 2.4T A95B 和 DeepSeek V4 Pro；整体落后于 Claude Opus 5、GPT-5.6 Sol、Grok 4.6 三款第一梯队。</p>
@@ -323,7 +323,7 @@
 </tr>
 </tbody>
 </table></div>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="Artificial Analysis Agentic Index：GLM-5.3 显示 59 分，14 模型对比集内第 2" src="assets/aa-agentic-index.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="Artificial Analysis Agentic Index：GLM-5.3 显示 59 分，14 模型对比集内第 2" src="/articles/news/20260818_glm_5_3_aa/assets/aa-agentic-index.png" /></figure>
 <p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?models=muse-spark-1-2%2Cminimax-m3%2Cgpt-5-6-luna%2Cdeepseek-v4-pro%2Cqwen3-8-2-4t-a95b%2Cqwen3-8-27b%2Cgemini-3-7-flash%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cgrok-4-6%2Cglm-5-3%2Cgpt-5-6-sol%2Ckimi-k3%2Cdeepseek-v4-flash&amp;intelligence=agentic-index#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis · Agentic Index</a></p>
 <p>Claude Opus 5、GLM-5.3、Grok 4.6 都显示 59 分，Claude Opus 5 第 1、GLM-5.3 第 2、Grok 4.6 第 3。GLM-5.3 明显高于 Kimi K3（54）和 DeepSeek V4 Pro 0813（50）；其中 Kimi K3 在 Agentic 榜上的位置比综合榜更靠后。这类任务通常要求模型自己读仓库、跑命令、看报错再修正，评估方式与 Coding Agent 的实际使用更接近。</p>
 <p>这与 DeepSWE 的提升方向一致：长程执行和 agentic 能力是 GLM-5.3 相对最突出的部分。对依赖工具调用、终端操作和长任务自动化的场景，这个位置比综合榜更有参考价值。Agentic 59 分不表示比综合 60 分差，两套指数考察范围不同，不能直接比大小。</p>

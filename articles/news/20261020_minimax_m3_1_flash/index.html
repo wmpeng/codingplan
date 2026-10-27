@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/styles/reading.css?v=05dca7deaf" />
   <link rel="stylesheet" href="/styles/design-system.css?v=b229e5aa01" />
 <script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
-<script id="site-data-versions" type="application/json">{"platforms":"2026-10-25T16:31:43.191Z","plans":"2026-10-25T16:36:28.120Z","models":"2026-10-25T10:48:45.156Z","config":"2026-10-25T16:38:26.291Z","featured_catalog":"2026-10-25T10:48:45.157Z","changes":"2026-10-25T16:36:29.712Z","announcements":"2026-10-25T10:48:45.158Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
+<script id="site-data-versions" type="application/json">{"platforms":"2026-10-27T13:39:28.986Z","plans":"2026-10-27T13:39:34.471Z","models":"2026-10-27T09:10:28.501Z","config":"2026-10-27T09:11:16.935Z","featured_catalog":"2026-10-27T11:25:07.246Z","changes":"2026-10-27T09:10:56.626Z","announcements":"2026-10-27T09:11:15.952Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
 <script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
 <link rel="stylesheet" href="/styles/ui-components.css?v=89d1dc5ef7">
@@ -170,7 +170,7 @@
 </tbody>
 </table></div>
 <p>来源：<a href="https://www.minimax.cn/blog/minimax-m31f" rel="noopener noreferrer">MiniMax 官方发布对照表</a>。各项采用不同评测框架或结果来源；例如 DeepSWE 使用 mini-SWE-agent，终端测试使用 Codex，NL2Repo 使用 Claude Code。表中“—”表示未提供对应结果。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="MiniMax M3.1 Flash 官方完整基准对照表及评测说明" src="assets/minimax-m31-flash-benchmarks.webp" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="MiniMax M3.1 Flash 官方完整基准对照表及评测说明" src="/articles/news/20261020_minimax_m3_1_flash/assets/minimax-m31-flash-benchmarks.webp" /></figure>
 <p class="img-source">图片来源：<a href="https://www.minimax.cn/blog/minimax-m31f" rel="noopener noreferrer">MiniMax 官方发布页</a>。完整表含各项框架与测试集说明；其中 HLE 为不使用工具的 2,158 道纯文本题子集。</p>
 <p>完整表还列出 <strong>BankerToolBench 76.2</strong>、<strong>CyberGym 82.2</strong>，分别涉及复杂金融工具任务和漏洞发现、验证。M3.1 Flash 的优势覆盖多个实际工作场景，但选型仍应落到具体任务：自动化流程、代码修改和电脑操作，不能只用其中一项成绩代替全部能力。</p>
 <h2 id="_2">二、独立结果已出现，社区体验要分版本看</h2>
@@ -255,7 +255,7 @@
 <p>M3 仅列当前标准服务价格。DeepSeek 高峰时段为北京时间周一至周五的 9:00–12:00、14:00–18:00，不含中国法定节假日；其余时间，包括周末和法定节假日全天，均为空闲时段。</p>
 <p><strong>M3.1 Flash 比 M3 两档标准价都低；与 DeepSeek 空闲价相比，未缓存输入和输出持平，缓存读取价格为其 5 倍。</strong> 与 DeepSeek 高峰价相比，M3.1 Flash 的未缓存输入和输出便宜一半，但缓存读取仍更贵。高缓存命中率的 Agent 工作流，需要把缓存价格一起算进去。</p>
 <p>官方所说的 <strong>Agent 任务综合成本下降 70%</strong>，包含任务执行中的实际消耗，不能直接理解为每一项 token 单价都降低 70%。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="MiniMax M3.1 Flash 国内 API 价格" src="assets/minimax-m31-flash-pricing.webp" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="MiniMax M3.1 Flash 国内 API 价格" src="/articles/news/20261020_minimax_m3_1_flash/assets/minimax-m31-flash-pricing.webp" /></figure>
 <p class="img-source">图片来源：<a href="https://www.minimax.cn/blog/minimax-m31f" rel="noopener noreferrer">MiniMax 官方发布页</a>。人民币官方标价，单位为元 / 百万 token。</p>
 <p>缓存会明显影响账单。假设一组调用累计输入 <strong>1 亿 token</strong>，其中 <strong>96% 命中缓存</strong>，即 9600 万命中、400 万未命中；输出量为输入的 <strong>0.3%</strong>，即 <strong>30 万 token</strong>。按每百万 token 的单价计算，模型 token 费用为：</p>
 <p><strong>96 × 0.1 + 4 × 1 + 0.3 × 4 = 14.80 元。</strong></p>
@@ -293,7 +293,7 @@
 </table></div>
 <p>这里的 1 亿 token 是多次调用的累计输入，分别假设所有请求都按对应长度档位或时段计费。固定用量下，M3.1 Flash 比 M3 更省，与 DeepSeek 高峰费用接近，而 DeepSeek 空闲费用更低；同一真实任务在不同模型上的 token 消耗和缓存命中率仍可能不同。</p>
 <p>MiniMax 同时公布了 Automation-Bench 的分数与单任务成本曲线：M3.1 Flash 从 low 到 max 的成绩由 <strong>52.8% 提升至 62.8%</strong>，思考强度提高也增加了消耗。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="MiniMax M3.1 Flash 在 Automation-Bench 中不同思考强度的成绩与成本" src="assets/minimax-m31-flash-automation-cost.webp" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="MiniMax M3.1 Flash 在 Automation-Bench 中不同思考强度的成绩与成本" src="/articles/news/20261020_minimax_m3_1_flash/assets/minimax-m31-flash-automation-cost.webp" /></figure>
 <p class="img-source">图片来源：<a href="https://www.minimax.cn/blog/minimax-m31f" rel="noopener noreferrer">MiniMax 官方发布页</a>。官方评测采用 Automation-Bench v1.0.6 与 Claude Code；横轴为单任务平均成本、对数刻度。图中 DeepSeek 1017 使用厂商图注所列的高峰报价，其中缓存单价与当前人民币价表不同，不能直接用于估算当前各时段的账单。</p>
 <p>速度方面，<a href="https://www.minimax.cn/blog/minimax-m31f" rel="noopener noreferrer">官方公告</a>称输出中位数（P50）达到 <strong>170+ token/秒</strong>，日常场景可达 <strong>200+ token/秒</strong>。这是厂商披露的线上输出速度；任务还包含思考、工具运行、检查和返修，输出快不等于整个项目按同样比例更快交付。</p>
 <h2 id="_3">四、旧模型名保留，实际调用可能已经改变</h2>

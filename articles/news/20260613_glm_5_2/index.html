@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/styles/reading.css?v=05dca7deaf" />
   <link rel="stylesheet" href="/styles/design-system.css?v=b229e5aa01" />
 <script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
-<script id="site-data-versions" type="application/json">{"platforms":"2026-10-25T16:31:43.191Z","plans":"2026-10-25T16:36:28.120Z","models":"2026-10-25T10:48:45.156Z","config":"2026-10-25T16:38:26.291Z","featured_catalog":"2026-10-25T10:48:45.157Z","changes":"2026-10-25T16:36:29.712Z","announcements":"2026-10-25T10:48:45.158Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
+<script id="site-data-versions" type="application/json">{"platforms":"2026-10-27T13:39:28.986Z","plans":"2026-10-27T13:39:34.471Z","models":"2026-10-27T09:10:28.501Z","config":"2026-10-27T09:11:16.935Z","featured_catalog":"2026-10-27T11:25:07.246Z","changes":"2026-10-27T09:10:56.626Z","announcements":"2026-10-27T09:11:15.952Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
 <script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
 <link rel="stylesheet" href="/styles/ui-components.css?v=89d1dc5ef7">
@@ -172,7 +172,7 @@
 <h2 id="code-v3">二、Code V3 私有评测：官方榜单空缺下的参考坐标</h2>
 <h3 id="1">1. 榜单来源</h3>
 <p>智谱尚未发布 GLM-5.2 官方 benchmark 时，可参考维护者 <strong>toyama nao</strong>（llm2014）的 <a href="https://llm2014.github.io/llm_benchmark/#category=code_v3&amp;dataset=code_v3%7C2026-06%7C0" rel="noopener noreferrer"><strong>LLM Benchmark Code V3</strong></a>——个人私有题库、Agent 实装向，维护者亦提醒「不可盲信任何评测」。GLM-5.2 以 <strong><code>GLM-5.2(max)</code> + Claude Code</strong> 入榜；下图为 <strong>2026-06 月榜</strong>截图，下文结合 CSV 与维护者解读展开。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="LLM Benchmark Code V3 2026-06 月榜" src="assets/2026_165850_llm2014.github.io.jpeg" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="LLM Benchmark Code V3 2026-06 月榜" src="/articles/news/20260613_glm_5_2/assets/2026_165850_llm2014.github.io.jpeg" /></figure>
 <h3 id="2-glm-52max">2. 综合排序：GLM-5.2(max) 暂列总榜第三</h3>
 <p>按该 CSV 当前行序（维护者按综合表现排序），<strong>GLM-5.2(max) 位列第 3</strong>，仅次于 <strong>GPT-5.5 (high)</strong> 与 <strong>Claude Opus 4.8 (high)</strong>，领先于 <strong>GPT-5.4 (high)</strong>、<strong>Claude Opus 4.6</strong> 等主流闭源模型。在<strong>国产 / 可经由 Coding Plan 使用的模型</strong>中，GLM-5.2 为<strong>本轮 Code V3 最高分</strong>；同榜 <strong>GLM-5.1</strong> 排在第 9 位，<strong>DeepSeek V4 Pro (max)</strong>、<strong>MiniMax-M3</strong> 等亦在榜，但综合位次低于 GLM-5.2。</p>
 <p><strong>需再次强调</strong>：这是<strong>单一维护者、私有题目、小样本</strong>的 Agent 实装测试，<strong>不能</strong>等价为 SWE-bench Verified / Terminal-Bench 官方结果；但在智谱尚未发布 GLM-5.2 官方 benchmark 的窗口期，它是目前<strong>可核对原始 CSV、可复现查询路径</strong>的重要参考。</p>

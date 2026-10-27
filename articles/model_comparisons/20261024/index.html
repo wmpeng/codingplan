@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/styles/reading.css?v=05dca7deaf" />
   <link rel="stylesheet" href="/styles/design-system.css?v=b229e5aa01" />
 <script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
-<script id="site-data-versions" type="application/json">{"platforms":"2026-10-25T16:31:43.191Z","plans":"2026-10-25T16:36:28.120Z","models":"2026-10-25T10:48:45.156Z","config":"2026-10-25T16:38:26.291Z","featured_catalog":"2026-10-25T10:48:45.157Z","changes":"2026-10-25T16:36:29.712Z","announcements":"2026-10-25T10:48:45.158Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
+<script id="site-data-versions" type="application/json">{"platforms":"2026-10-27T13:39:28.986Z","plans":"2026-10-27T13:39:34.471Z","models":"2026-10-27T09:10:28.501Z","config":"2026-10-27T09:11:16.935Z","featured_catalog":"2026-10-27T11:25:07.246Z","changes":"2026-10-27T09:10:56.626Z","announcements":"2026-10-27T09:11:15.952Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
 <script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
 <link rel="stylesheet" href="/styles/ui-components.css?v=89d1dc5ef7">
@@ -398,7 +398,7 @@
 <h2 id="kimi-deepseek">二、综合能力：Kimi 靠前，DeepSeek 的编程长处要看分项</h2>
 <h3 id="aa">AA：先缩小候选范围</h3>
 <p>AA Intelligence Index 汇总推理、代码、Agent 和通用任务，适合初步判断模型覆盖复杂需求的能力。它主要基于文本任务，不能代替图像理解、语音或视频专项评测。当前版本与上期不同，同一个模型的绝对分数也可能变化。来源：<a href="https://artificialanalysis.ai/methodology/intelligence-benchmarking" rel="noopener noreferrer">AA 评测方法</a>。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="AA Intelligence Index v4.3.2，2026年10月24日，指定22款模型及各自配置" src="assets/aa-intelligence.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="AA Intelligence Index v4.3.2，2026年10月24日，指定22款模型及各自配置" src="/articles/model_comparisons/20261024/assets/aa-intelligence.png" /></figure>
 <p>图源：<a href="https://artificialanalysis.ai/?models=step-5%2Cglm-5-3-flash%2Cmimo-v2-6-pro%2Cgpt-6-astra%2Cclaude-opus-5-5%2Cclaude-fable-5-1%2Cgrok-4-7%2Ckimi-k3-1-pro%2Cgpt-6-luna%2Cclaude-haiku-5-5%2Cgemini-3-8-flash%2Cqwen3-8-27b%2Cqwen3-8-max%2Cclaude-sonnet-5-5%2Cgpt-6-1-sol%2Cglm-5-3%2Cgemini-4-argon%2Cminimax-m3-1-flash%2Cmuse-wonder-full%2Cdeepseek-v4-1-flash-1017%2Cmuse-wonder%2Ckimi-k3" rel="noopener noreferrer">AA 本期所选 22 款模型</a>，2026-10-24 读取并重绘。保留原站 max、high、xhigh 与 max with fallback 标签；同分顺序不表示强弱。斜纹表示 Muse Wonder Full 没有公开 API。这是所选模型比较，并非全站所有型号排名。</p>
 <p><strong>Kimi K3.1 Pro 是本期所选国产候选中 AA 综合分最高的一款，适合先纳入复杂需求的试用名单。</strong> MiMo Pro 的 AA 高于 Qwen Max 0902、DeepSeek 1017 与 GLM-5.3，后三者显示同样的整数分。这只能说明综合任务上的大致位置，不能据此给所有编程场景排出固定顺序。</p>
 <p>DeepSeek 1017 的 AA 低于 Kimi Pro，LiveBench Coding 却更高；MiniMax、MiMo 在低费用任务上的取舍也不能只看 AA。<strong>在国产候选中，覆盖多类工作可重点比较 Kimi，边界明确的代码修改则要把 DeepSeek 放进同一轮测试。</strong></p>
@@ -557,7 +557,7 @@
 <p><strong>混合办公与编程，Fable 5.1 仍值得保留在首轮名单；更重视持续推进任务，优先看 Opus 与 Astra。</strong> Argon 的推理、数据分析和 Muse Wonder 的研究分项也各有优势。挑主力应围绕最常做的工作：代码修改占大头，就给 Coding 更高权重；报告、表格和浏览器操作混在一起，就看对应分项是否均衡。</p>
 <h2 id="_2">三、网页开发：看成品偏好，也看分数区间</h2>
 <p>Arena WebDev 让用户比较模型生成的网页并投票，更接近“这份页面成品更符合需求吗”。做前端原型、页面迭代和 Vibe Coding，它是有价值的参考；接手一个大型仓库、排查隐蔽 Bug，则还需要工程任务的证据。来源：<a href="https://arena.ai/leaderboard/code/webdev" rel="noopener noreferrer">Arena WebDev</a>。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="Arena WebDev所选22款模型的分数与原站区间，橙色P为初步结果" src="assets/webdev-comparison.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="Arena WebDev所选22款模型的分数与原站区间，橙色P为初步结果" src="/articles/model_comparisons/20261024/assets/webdev-comparison.png" /></figure>
 <p>图源：<a href="https://arena.ai/leaderboard/code/webdev" rel="noopener noreferrer">Arena WebDev Overall</a>，页面更新 2026-10-22，2026-10-24 读取并重绘。点为分数，误差线保留原站公布区间；横轴从 1535 起，分数不是百分比。P 表示初步结果。</p>
 <p><strong>做前端原型，国产候选优先比较 Kimi K3.1 Pro、Qwen3.8 Max 0902 与 DeepSeek 1017。</strong> Kimi Pro 的点估计在这组中较高，Kimi 与 Qwen 都仍带初步结果标记；Qwen 与 DeepSeek 的区间重叠，不宜把相邻名次解释为稳定优势。试用时应拿同一份页面需求，检查交互、布局和后续修改，而不只看首屏观感。</p>
 <p>Opus 5.5、Astra、Sonnet 5.5、Sol 和 Fable 5.1 占据本期所选模型的前五位。<strong>若优先追求网页成品质量，先从 Opus 与 Astra 开始；更在意费用，再比较 Sol 和国产候选。</strong> 相邻型号的区间有重叠，已经用顺手的模型不必因为几分差距就更换；需求完成度、交互细节和第二轮修改质量，比名次的小幅变化更值得看。</p>
@@ -733,7 +733,7 @@
 <p>来源：<a href="https://artificialanalysis.ai/leaderboards/models" rel="noopener noreferrer">AA 模型榜</a>、<a href="https://arena.ai/leaderboard/code/webdev" rel="noopener noreferrer">Arena WebDev</a>、<a href="https://livebench.ai/" rel="noopener noreferrer">LiveBench</a>，均为 2026-10-24 所读数据。AA 的 fallback 标签是成绩配置的一部分，不应去掉后把它解释成另一套运行方式。</p>
 <h2 id="bug-agentdeepseek-sol">四、修 Bug 与长程 Agent：DeepSeek 和 Sol 的同分意味着什么</h2>
 <p>LiveBench 的 <strong>Coding 有 29 个任务</strong>，要求在固定快照的大型生产代码库中修复真实 Bug；<strong>Agentic 有 18 个任务</strong>，涉及连续业务变化、模拟多个月运行、系统工程和优化任务。后者要求前面的决策在后续轮次中仍然成立。两项都涉及工具与代码，但承担的工作长度和约束不同。来源：<a href="https://livebench.ai/#/methodology" rel="noopener noreferrer">LiveBench 方法说明</a>。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="LiveBench Coding与Agentic分别计分，20款有对应成绩的模型按Agentic排序" src="assets/livebench-coding-agentic.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="LiveBench Coding与Agentic分别计分，20款有对应成绩的模型按Agentic排序" src="/articles/model_comparisons/20261024/assets/livebench-coding-agentic.png" /></figure>
 <p>图源：<a href="https://livebench.ai/" rel="noopener noreferrer">LiveBench 2.0</a>，release 2026-10-14，页面更新 10 月 23 日，10 月 24 日读取并重绘。显示各模型的实际 effort；每项为单次运行的任务均分。所选模型中，Muse Wonder Full 与 Qwen3.8 Max 0902 没有可列的对应成绩，未按零分绘制。</p>
 <p><strong>DeepSeek 1017 与 Sol 的 Coding 均为 96.0，Agentic 分别为 50.9 和 73.0。</strong> 对于定位明确的 Bug、可运行的测试、能清楚验收的修改，两者都值得比较，DeepSeek 的较低 AA 任务成本是一个优势；如果任务会持续变更需求，需要模型自主维护多轮状态，Sol 更高的 Agentic 成绩提供了另一层选择理由。Astra、Opus 在长程任务上的成绩还要更高。</p>
 <p>Kimi Pro、MiMo Pro 的长程分项也低于 Coding，MiniMax、GLM Flash 和 Step 的差距更明显。<strong>这些型号更适合承担拆好、能验收的一段工作；跨多轮需求、需要持续维护状态的任务，则优先交给 Agentic 更强的候选。</strong> 这是一种比“所有任务都用最贵”或“所有任务都用最便宜”更合理的分工：明确修改控制费用，复杂推进减少接管。</p>
@@ -847,7 +847,7 @@
 <p><strong>Grok 4.7</strong> 支持文本与图像，窗口为 500,000；本期 Research 分项较高，但网页开发与长程 Agentic 并未进入所选旗舰前列。已有 Grok 工作流的用户，可以重点测试自己需要的研究任务，而不必从综合名次推断所有用途。来源：<a href="https://docs.x.ai/developers/models/grok-4.7" rel="noopener noreferrer">Grok 4.7 文档</a>、<a href="https://livebench.ai/" rel="noopener noreferrer">LiveBench</a>。</p>
 <h2 id="token">六、成本：关心完成任务的代价，而不只看 token 单价</h2>
 <p>以下使用 AA 的 <strong>Cost per Intelligence Index Task</strong>，即按该评测权重统计的任务成本。AA 根据 token 用量、价格及典型缓存命中情况计算费用；思考档位、输出长度与工具过程都会影响结果。这不是一次聊天的报价，也不能直接换算成会员月额度。来源：<a href="https://artificialanalysis.ai/methodology/intelligence-benchmarking" rel="noopener noreferrer">AA 方法与成本说明</a>。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="AA任务成本与综合分并列，成本使用对数轴，20款有费用数据的模型按费用升序" src="assets/aa-cost-quality.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="AA任务成本与综合分并列，成本使用对数轴，20款有费用数据的模型按费用升序" src="/articles/model_comparisons/20261024/assets/aa-cost-quality.png" /></figure>
 <p>图源：<a href="https://artificialanalysis.ai/leaderboards/models" rel="noopener noreferrer">AA 模型榜</a>，v4.3.2，2026-10-24 读取并重绘。左侧为美元/加权任务，采用对数轴，等距离表示相同比例；右侧为线性刻度的综合分。每行保留同一 AA 配置。Muse Wonder Full 与 Kimi K3 未列出本期可用费用，故没有绘入成本图。</p>
 <p><strong>低费用候选包括 Luna、MiMo Pro、Haiku、MiniMax 和 DeepSeek，选择时要同时看完成质量。</strong> 这组 AA 任务中，Kimi Pro 的费用高于 MiMo Pro、MiniMax 和 DeepSeek，需要判断其综合能力能否减少足够多的返工。Sol 也提供了另一种能力与费用组合，不能仅按产地决定谁更划算。</p>
 <p>两个同口径比值可以帮助理解量级：</p>

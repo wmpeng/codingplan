@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/styles/reading.css?v=05dca7deaf" />
   <link rel="stylesheet" href="/styles/design-system.css?v=b229e5aa01" />
 <script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
-<script id="site-data-versions" type="application/json">{"platforms":"2026-10-25T16:31:43.191Z","plans":"2026-10-25T16:36:28.120Z","models":"2026-10-25T10:48:45.156Z","config":"2026-10-25T16:38:26.291Z","featured_catalog":"2026-10-25T10:48:45.157Z","changes":"2026-10-25T16:36:29.712Z","announcements":"2026-10-25T10:48:45.158Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
+<script id="site-data-versions" type="application/json">{"platforms":"2026-10-27T13:39:28.986Z","plans":"2026-10-27T13:39:34.471Z","models":"2026-10-27T09:10:28.501Z","config":"2026-10-27T09:11:16.935Z","featured_catalog":"2026-10-27T11:25:07.246Z","changes":"2026-10-27T09:10:56.626Z","announcements":"2026-10-27T09:11:15.952Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
 <script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
 <link rel="stylesheet" href="/styles/ui-components.css?v=89d1dc5ef7">
@@ -198,7 +198,7 @@
 <h2 id="_3">三、怎么选模型和思考深度</h2>
 <p>下面两张图来自 Artificial Analysis，分别从成本和耗时看 GPT-5.6 Sol、Terra、Luna 在各思考深度下的分布。</p>
 <h3 id="_4">如果你更关心成本或者额度</h3>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="Artificial Analysis：GPT-5.6 Sol / Terra / Luna 各思考深度 Intelligence vs. Cost per Task" src="assets/gpt56-price-cost-pareto.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="Artificial Analysis：GPT-5.6 Sol / Terra / Luna 各思考深度 Intelligence vs. Cost per Task" src="/articles/news/20260803_gpt56_price/assets/gpt56-price-cost-pareto.png" /></figure>
 <p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?models=gpt-5-6-sol%2Cgpt-5-6-terra%2Cgpt-5-6-luna%2Cgpt-5-6-luna-high%2Cgpt-5-6-luna-xhigh%2Cgpt-5-6-luna-medium%2Cgpt-5-6-terra-high%2Cgpt-5-6-terra-xhigh%2Cgpt-5-6-terra-medium%2Cgpt-5-6-terra%2Cgpt-5-6-sol-xhigh%2Cgpt-5-6-sol-high%2Cgpt-5-6-sol-medium%2Cgpt-5-6-luna-low%2Cgpt-5-6-terra-low#intelligence-comparison-tabs" rel="noopener noreferrer">Artificial Analysis</a></p>
 <p>横轴是每任务成本，纵轴是智能水平。Sol、Terra、Luna 三档各有 low / medium / high / xhigh / max 等思考深度变体，点位从左下的 Luna-low 一直拉到右上的 Sol-max。图上有 Pareto line：线上的点，在该价位仍值得看；被线压住的点，通常有更省或更强的替代。</p>
 <p>只看「花多少钱换多少智能」，Luna 是这轮最大赢家：成本线上从 low 到 max 覆盖最完整。Terra 多数点位和 Sol 挤在一起；Sol 要到 medium 以上，才真正值得和前两档一起比。</p>
@@ -210,7 +210,7 @@
 </ul>
 <p>预算有限、想多跑任务时，别一上来就盯 Sol；先把 Luna 用满，顶不住再往 Terra 高思考深度和 Sol 高思考深度走。</p>
 <h3 id="_5">如果你更关心速度</h3>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="Artificial Analysis：GPT-5.6 Sol / Terra / Luna 各思考深度 Intelligence vs. Time per Task" src="assets/gpt56-price-time-pareto.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="Artificial Analysis：GPT-5.6 Sol / Terra / Luna 各思考深度 Intelligence vs. Time per Task" src="/articles/news/20260803_gpt56_price/assets/gpt56-price-time-pareto.png" /></figure>
 <p class="img-source">图片来源：<a href="https://artificialanalysis.ai/?models=gpt-5-6-sol%2Cgpt-5-6-terra%2Cgpt-5-6-luna%2Cgpt-5-6-luna-high%2Cgpt-5-6-luna-xhigh%2Cgpt-5-6-luna-medium%2Cgpt-5-6-terra-high%2Cgpt-5-6-terra-xhigh%2Cgpt-5-6-terra-medium%2Cgpt-5-6-terra%2Cgpt-5-6-sol-xhigh%2Cgpt-5-6-sol-high%2Cgpt-5-6-sol-medium%2Cgpt-5-6-luna-low%2Cgpt-5-6-terra-low&amp;intelligence-comparison=intelligence-vs-time-per-task#intelligence-comparison-tabs" rel="noopener noreferrer">Artificial Analysis</a></p>
 <p>换成耗时维度：思考深度越高通常越慢。更稳的做法是用更强模型配浅思考深度，少用弱模型硬堆高思考深度。</p>
 <p>选型顺序反过来：</p>
