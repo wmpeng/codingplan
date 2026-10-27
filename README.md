@@ -4,7 +4,7 @@
 
 > 更新日期 2026.10.27 | GPT-6.1 Terra 与全站数据复查
 
-当前展示 **42 个平台、143 个在售订阅套餐、2 个按量 API、166 个模型和 2415 条套餐模型关系**。
+当前展示 **42 个平台、143 个在售订阅套餐、2 个按量 API、166 个模型和 2434 条套餐模型关系**。
 
 [在线平台中心](https://codingplan.fyi/platforms/) · [模型目录](https://codingplan.fyi/models/) · [价格与额度](https://codingplan.fyi/pricing/) · [套餐对比](https://codingplan.fyi/plans/) · [预告与更新](https://codingplan.fyi/updates/)
 
@@ -293,10 +293,10 @@
 | 百度·千帆 | 4 | ¥9.9–¥600/月 | GLM-5.3、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、DeepSeek-V4-Flash-0731、等 9 个 |
 | 华为云 | 4 | ¥59–¥799/月 | GLM-5.3、DeepSeek-V4-Flash-0731、DeepSeek-V4.1-Flash、GLM-5.1、等 5 个 |
 | 腾讯云 | 4 | ¥39–¥599/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、等 12 个 |
-| Qoder 国内版 | 3 | ¥59–¥559/月 | GLM-5.3、Kimi-K3、GLM-5.3-Flash、Kimi-K2.8-Preview、等 15 个 |
-| Qoder 国际版 | 4 | $10–$200/月 | GLM-5.3、Kimi-K3、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、等 12 个 |
-| WorkBuddy | 4 | ¥0–¥700/月 | GLM-5.3、Kimi-K3、GLM-5.3-Flash、DeepSeek-V4-Pro-0813、等 14 个 |
-| TRAE 国内版 | 4 | ¥45–¥629/月 | GLM-5.3、Kimi-K3、GLM-5.3-Flash、Kimi-K2.8-Preview、等 20 个 |
+| Qoder 国内版 | 3 | ¥59–¥559/月 | GLM-5.3、Kimi-K3.1-Pro、Kimi-K3、GLM-5.3-Flash、等 16 个 |
+| Qoder 国际版 | 4 | $10–$200/月 | GLM-5.3、Kimi-K3.1-Pro、Kimi-K3、DeepSeek-V4.1-Flash-1017、等 13 个 |
+| WorkBuddy | 4 | ¥0–¥700/月 | GLM-5.3、Kimi-K3.1-Pro、Kimi-K3、GLM-5.3-Flash、等 15 个 |
+| TRAE 国内版 | 4 | ¥45–¥629/月 | GLM-5.3、Kimi-K3.1-Pro、Kimi-K3、GLM-5.3-Flash、等 22 个 |
 | TRAE 国际版 | 5 | $0–$200/月 | GPT-6-Astra、Kimi-K3、GPT-6-Luna、DeepSeek-V4-Flash-0731、等 19 个 |
 | GitHub | 5 | $0–$100/月 | GPT-6-Astra、GPT-6.1-Sol、Claude Opus 5.5、Kimi-K3、等 27 个 |
 | Cursor | 5 | $0–$200/月 | Claude Opus 5.5、Claude Fable 5.1、Claude Haiku 5.5、Claude Sonnet 5.5、等 16 个 |
@@ -332,6 +332,8 @@
 
 - 新增 GPT-6.1 Terra：图文输入，补充 AA / LiveBench 评分及 Codex、GitHub Copilot、Command Code 的实际套餐支持与档位。Codex Terra 按同套餐 6.1 Sol 的两倍估算，非官方固定 Token 配额；Copilot 与 Command Code 按各自价格和共享额度估算。
 - 新增方舟 Coding / Agent Plan 的 Kimi K3.1 Pro 支持与限时抵扣，活动截至 11 月 9 日；复查四项榜单、活动公告和预告，未确认恢复的到期活动保留待确认。
+- 新增Qoder国内版、国际版、WorkBuddy与TRAE国内版的Kimi K3.1 Pro支持，按套餐权限区分；WorkBuddy包含高速档，新增关系的Token额度暂未量化。
+- 补充TRAE国内版MiniMax M3.1 Flash；Qoder国际版DeepSeek 1017免Credits截至11月1日00:00（UTC+8）；Terra的LiveBench评分更新为77.8。
 
 ### 2026.10.26
 

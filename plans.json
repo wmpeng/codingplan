@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-27T06:39:21Z",
+  "generatedAt": "2026-10-27T11:06:56Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -28291,7 +28291,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Qoder主客户端内置可选；CLI等客户端的可选范围可能不同。"
+          "note": "旧版K3入口的当前可选范围待确认；主客户端当前模型表列出K3.1 Pro，各客户端和账号的可选范围可能不同。"
         },
         {
           "slug": "qoder-cn-pro--kimi-k2-8-preview",
@@ -28318,6 +28318,19 @@
           },
           "pricing": null,
           "note": "Qoder桌面端模型选择器参考消耗倍率0.1×；不同客户端可用型号不同，固定Token用量未知。"
+        },
+        {
+          "slug": "qoder-cn-pro--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
         }
       ]
     },
@@ -28507,7 +28520,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Qoder主客户端内置可选；CLI等客户端的可选范围可能不同。"
+          "note": "旧版K3入口的当前可选范围待确认；主客户端当前模型表列出K3.1 Pro，各客户端和账号的可选范围可能不同。"
         },
         {
           "slug": "qoder-cn-pro-plus--kimi-k2-8-preview",
@@ -28534,6 +28547,19 @@
           },
           "pricing": null,
           "note": "Qoder桌面端模型选择器参考消耗倍率0.1×；不同客户端可用型号不同，固定Token用量未知。"
+        },
+        {
+          "slug": "qoder-cn-pro-plus--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
         }
       ]
     },
@@ -28723,7 +28749,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Qoder主客户端内置可选；CLI等客户端的可选范围可能不同。"
+          "note": "旧版K3入口的当前可选范围待确认；主客户端当前模型表列出K3.1 Pro，各客户端和账号的可选范围可能不同。"
         },
         {
           "slug": "qoder-cn-ultra--kimi-k2-8-preview",
@@ -28750,6 +28776,19 @@
           },
           "pricing": null,
           "note": "Qoder桌面端模型选择器参考消耗倍率0.1×；不同客户端可用型号不同，固定Token用量未知。"
+        },
+        {
+          "slug": "qoder-cn-ultra--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
         }
       ]
     },
@@ -28796,7 +28835,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "选择器中的 DeepSeek-Flash 对应 V4.1 Flash 1017。DeepSeek-V4.1-Flash-1017当前限时免Credits，结束日期未公布；免费不代表固定或无限Token配额。"
+          "note": "选择器中的DeepSeek-Flash对应V4.1 Flash 1017；限时免Credits至2026-11-01 00:00（UTC+8），免费及付费个人用户均适用。免Credits不代表固定或无限Token配额。"
         },
         {
           "slug": "qoder-intl-lite--glm-5-3-flash",
@@ -28986,7 +29025,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "选择器中的 DeepSeek-Flash 对应 V4.1 Flash 1017。"
+          "note": "选择器中的DeepSeek-Flash对应V4.1 Flash 1017；限时免Credits至2026-11-01 00:00（UTC+8），免费及付费个人用户均适用。免Credits不代表固定或无限Token配额。"
         },
         {
           "slug": "qoder-intl-pro--glm-5-3",
@@ -29025,7 +29064,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": "旧版K3入口的当前可选范围待确认；主客户端当前模型表列出K3.1 Pro，各客户端和账号的可选范围可能不同。"
         },
         {
           "slug": "qoder-intl-pro--kimi-k2-8-preview",
@@ -29065,6 +29104,19 @@
           },
           "pricing": null,
           "note": "模型选择器参考消耗倍率0.1×；实际Credits消耗随任务变化，固定Token用量未知。"
+        },
+        {
+          "slug": "qoder-intl-pro--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
         }
       ]
     },
@@ -29163,7 +29215,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "选择器中的 DeepSeek-Flash 对应 V4.1 Flash 1017。"
+          "note": "选择器中的DeepSeek-Flash对应V4.1 Flash 1017；限时免Credits至2026-11-01 00:00（UTC+8），免费及付费个人用户均适用。免Credits不代表固定或无限Token配额。"
         },
         {
           "slug": "qoder-intl-pro-plus--glm-5-3",
@@ -29202,7 +29254,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": "旧版K3入口的当前可选范围待确认；主客户端当前模型表列出K3.1 Pro，各客户端和账号的可选范围可能不同。"
         },
         {
           "slug": "qoder-intl-pro-plus--kimi-k2-8-preview",
@@ -29242,6 +29294,19 @@
           },
           "pricing": null,
           "note": "模型选择器参考消耗倍率0.1×；实际Credits消耗随任务变化，固定Token用量未知。"
+        },
+        {
+          "slug": "qoder-intl-pro-plus--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
         }
       ]
     },
@@ -29340,7 +29405,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "选择器中的 DeepSeek-Flash 对应 V4.1 Flash 1017。"
+          "note": "选择器中的DeepSeek-Flash对应V4.1 Flash 1017；限时免Credits至2026-11-01 00:00（UTC+8），免费及付费个人用户均适用。免Credits不代表固定或无限Token配额。"
         },
         {
           "slug": "qoder-intl-ultra--glm-5-3",
@@ -29379,7 +29444,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": "旧版K3入口的当前可选范围待确认；主客户端当前模型表列出K3.1 Pro，各客户端和账号的可选范围可能不同。"
         },
         {
           "slug": "qoder-intl-ultra--kimi-k2-8-preview",
@@ -29419,6 +29484,19 @@
           },
           "pricing": null,
           "note": "模型选择器参考消耗倍率0.1×；实际Credits消耗随任务变化，固定Token用量未知。"
+        },
+        {
+          "slug": "qoder-intl-ultra--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
         }
       ]
     },
@@ -29623,6 +29701,32 @@
           },
           "pricing": null,
           "note": null
+        },
+        {
+          "slug": "workbuddy-standard--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "个人订阅用户优先开放，算力紧张时可能排队或限流；具体Token额度未知。"
+        },
+        {
+          "slug": "workbuddy-standard--kimi-k3-1-pro--highspeed",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "高速",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "个人订阅用户优先开放；同等智能、输出约快2–3倍，积分消耗规则与Token额度待确认。"
         }
       ]
     },
@@ -29827,6 +29931,32 @@
           },
           "pricing": null,
           "note": null
+        },
+        {
+          "slug": "workbuddy-advanced--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "个人订阅用户优先开放，算力紧张时可能排队或限流；具体Token额度未知。"
+        },
+        {
+          "slug": "workbuddy-advanced--kimi-k3-1-pro--highspeed",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "高速",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "个人订阅用户优先开放；同等智能、输出约快2–3倍，积分消耗规则与Token额度待确认。"
         }
       ]
     },
@@ -30031,6 +30161,32 @@
           },
           "pricing": null,
           "note": null
+        },
+        {
+          "slug": "workbuddy-flagship--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "个人订阅用户优先开放，算力紧张时可能排队或限流；具体Token额度未知。"
+        },
+        {
+          "slug": "workbuddy-flagship--kimi-k3-1-pro--highspeed",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "高速",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "个人订阅用户优先开放；同等智能、输出约快2–3倍，积分消耗规则与Token额度待确认。"
         }
       ]
     },
@@ -30705,6 +30861,19 @@
           },
           "pricing": null,
           "note": null
+        },
+        {
+          "slug": "trae-cn-lite--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "中国版内置模型，面向全量用户开放；算力紧张时可能排队，具体Token额度未知。"
         }
       ]
     },
@@ -30988,6 +31157,32 @@
           },
           "pricing": null,
           "note": null
+        },
+        {
+          "slug": "trae-cn-pro--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "仅限Pro及以上会员，需更新至最新客户端；算力紧张时可能排队，具体积分扣减和Token额度未知。"
+        },
+        {
+          "slug": "trae-cn-pro--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "中国版内置模型，面向全量用户开放；算力紧张时可能排队，具体Token额度未知。"
         }
       ]
     },
@@ -31271,6 +31466,32 @@
           },
           "pricing": null,
           "note": null
+        },
+        {
+          "slug": "trae-cn-pro-plus--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "仅限Pro及以上会员，需更新至最新客户端；算力紧张时可能排队，具体积分扣减和Token额度未知。"
+        },
+        {
+          "slug": "trae-cn-pro-plus--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "中国版内置模型，面向全量用户开放；算力紧张时可能排队，具体Token额度未知。"
         }
       ]
     },
@@ -31554,6 +31775,32 @@
           },
           "pricing": null,
           "note": null
+        },
+        {
+          "slug": "trae-cn-ultra--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "仅限Pro及以上会员，需更新至最新客户端；算力紧张时可能排队，具体积分扣减和Token额度未知。"
+        },
+        {
+          "slug": "trae-cn-ultra--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "中国版内置模型，面向全量用户开放；算力紧张时可能排队，具体Token额度未知。"
         }
       ]
     },
@@ -51796,5 +52043,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-10-27T06:31:12.821Z"
+  "contentVersion": "2026-10-27T09:10:41.342Z"
 }

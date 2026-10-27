@@ -2065,7 +2065,63 @@
         }
       ],
       "relatedChanges": []
+    },
+    {
+      "slug": "qoder-intl-deepseek-1017-free-end-20261101",
+      "title": "Qoder国际版DeepSeek 1017免Credits活动截止",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-01",
+        "description": "2026年11月1日00:00（UTC+8）截止；到期核对是否延期。"
+      },
+      "changes": [
+        {
+          "type": "price",
+          "label": "DeepSeek V4.1 Flash-1017抵扣",
+          "before": "活动期间0.0×，调用免Credits",
+          "after": "公告截止后按届时规则抵扣，是否延期及实际系数待确认；不代表模型下架。"
+        }
+      ],
+      "announcedOn": "2026-10-26",
+      "summary": "DeepSeek V4.1 Flash-1017免Credits截至2026年11月1日00:00（UTC+8），是否延期及到期规则待确认。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "qoder-intl",
+          "planSlug": "qoder-intl-lite",
+          "planModelSlug": "qoder-intl-lite--deepseek-v4-1-flash-1017",
+          "label": "Qoder 国际版 · Lite · DeepSeek-V4.1-Flash-1017"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "qoder-intl",
+          "planSlug": "qoder-intl-pro",
+          "planModelSlug": "qoder-intl-pro--deepseek-v4-1-flash",
+          "label": "Qoder 国际版 · Pro · DeepSeek-V4.1-Flash-1017"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "qoder-intl",
+          "planSlug": "qoder-intl-pro-plus",
+          "planModelSlug": "qoder-intl-pro-plus--deepseek-v4-1-flash",
+          "label": "Qoder 国际版 · Pro+ · DeepSeek-V4.1-Flash-1017"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "qoder-intl",
+          "planSlug": "qoder-intl-ultra",
+          "planModelSlug": "qoder-intl-ultra--deepseek-v4-1-flash",
+          "label": "Qoder 国际版 · Ultra · DeepSeek-V4.1-Flash-1017"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://forum.qoder.com/t/deepseek-v4-1-flash-1017-supported-in-qoder-0-0x-credits-until-nov-1/13589"
+        }
+      ],
+      "relatedChanges": []
     }
   ],
-  "contentVersion": "2026-10-27T03:55:07.582Z"
+  "contentVersion": "2026-10-27T09:10:56.626Z"
 }

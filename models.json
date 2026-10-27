@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-27T06:39:17Z",
+  "generatedAt": "2026-10-27T11:06:44Z",
   "benchmarks": {
     "artificialAnalysis": {
       "name": "Artificial Analysis Intelligence Index",
@@ -23,7 +23,7 @@
       "sourceUrl": "https://livebench.ai/",
       "releaseDate": "2026-10-25",
       "publishedAt": "2026-10-25",
-      "fetchedAt": "2026-10-27T03:46:13Z",
+      "fetchedAt": "2026-10-27T09:05:53Z",
       "dataUrl": "https://livebench.ai/data/20261025/table.csv",
       "availableConfigurations": 31
     },
@@ -3633,8 +3633,8 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 77.2,
-          "scoreExact": 77.20555555555556,
+          "score": 77.8,
+          "scoreExact": 77.78888888888889,
           "configuration": "GPT-6.1 Terra (max)",
           "modelName": "gpt-6.1-terra",
           "sourceUrl": "https://livebench.ai/",
@@ -4733,5 +4733,5 @@
       }
     }
   ],
-  "contentVersion": "2026-10-27T03:51:56.031Z"
+  "contentVersion": "2026-10-27T09:10:28.501Z"
 }
