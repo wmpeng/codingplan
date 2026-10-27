@@ -27,11 +27,11 @@
 | 平台 | 状态 | 评分 | 简介 |
 |---|---|---:|---|
 | [智谱AI](https://api.dreamfree.space/c/s/cpyqzhipu) | 可以购买 | 5 | 涨价后新套餐无需抢购。 |
-| [MiniMax](https://www.minimax.cn/m-plan) | 可以购买 | 5 | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
+| [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) | 可以购买 | 5 | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
 | [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) | 可以购买 | 4 | 当前Go/Plus/Pro/Max/Ultra订阅；Plus起支持Coding，旧四档仅老用户续费。 |
 | [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) | 可以购买 | 5 | Go 与 Go Plus 多模型订阅，各型号额度不同；免费与 Contributor 型号有额外条件。 |
 | [字节·方舟 Coding Plan](https://api.dreamfree.space/c/s/cpyqfangzhou) | 可以购买 | 5 | 支持多模型与 Auto 接入；部分模型额度为估算值。 |
-| [DeepSeek](https://platform.deepseek.com/) | 可以购买 | 5 | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
+| [DeepSeek](https://api.dreamfree.space/c/s/cpyqdeepseek) | 可以购买 | 5 | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
 | [Codex](https://api.dreamfree.space/c/s/cpyqchatgpt) | 可以购买 | 5 | Codex 官方订阅，Plus / Pro 支持 GPT-6.1 Sol / Terra；Pro $500 另支持 Ultrafast。 |
 | [Claude](https://api.dreamfree.space/c/s/cpyqclaudeup) | 可以购买 | 4 | Claude Code 官方订阅，支持 Opus、Sonnet、Haiku 5.5；Token 容量为带负载条件的估算。 |
 
@@ -124,7 +124,7 @@
 | [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | [谷] | $20/首月 | 1,353.56M | 3,383.9M | 6,767.8M | ¥0.0204/M |
 | [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | [峰] | $10/首月 | 601.58M | 1,503.96M | 3,007.9M | ¥0.0224/M |
 | [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M |
-| [DeepSeek · 按量 API](https://platform.deepseek.com/) | [谷] | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M |
+| [DeepSeek · 按量 API](https://api.dreamfree.space/c/s/cpyqdeepseek) | [谷] | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M |
 
 还有 57 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
@@ -192,9 +192,9 @@
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 |
 |---|---|---|---:|---:|---:|---:|
-| [MiniMax · M Plan Build](https://www.minimax.cn/m-plan) | - | ¥234.5/首月 | 533.23M | 5,332.3M | 21,329.2M | ¥0.022/M |
-| [MiniMax · M Plan Explore](https://www.minimax.cn/m-plan) | - | ¥59.5/首月 | 133.31M | 1,333.08M | 5,332.3M | ¥0.0223/M |
-| [MiniMax · M Plan Go](https://www.minimax.cn/m-plan) | - | ¥24.5/首月 | 44.44M | 444.36M | 1,777.4M | ¥0.0276/M |
+| [MiniMax · M Plan Build](https://api.dreamfree.space/c/s/cpyqminimax) | - | ¥234.5/首月 | 533.23M | 5,332.3M | 21,329.2M | ¥0.022/M |
+| [MiniMax · M Plan Explore](https://api.dreamfree.space/c/s/cpyqminimax) | - | ¥59.5/首月 | 133.31M | 1,333.08M | 5,332.3M | ¥0.0223/M |
+| [MiniMax · M Plan Go](https://api.dreamfree.space/c/s/cpyqminimax) | - | ¥24.5/首月 | 44.44M | 444.36M | 1,777.4M | ¥0.0276/M |
 | [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | - | $1/首月 | - | - | 243.5M | ¥0.0279/M |
 | [Ollama · Pro](https://api.dreamfree.space/c/s/cpyqollama) | - | $20/首月 | 2,434.9M | 2,434.9M | 2,434.9M | ¥0.0558/M |
 | [Ollama · Max](https://api.dreamfree.space/c/s/cpyqollama) | - | $100/首月 | 12,174.7M | 12,174.7M | 12,174.7M | ¥0.0558/M |
@@ -211,10 +211,10 @@
 | [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | Go 与 Go Plus 多模型订阅，各型号额度不同；免费与 Contributor 型号有额外条件。 |
 | [字节·方舟 Coding Plan](https://api.dreamfree.space/c/s/cpyqfangzhou) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 支持多模型与 Auto 接入；部分模型额度为估算值。 |
 | [字节·方舟 Agent Plan](https://api.dreamfree.space/c/s/cpyqfangzhout) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 四档AFP订阅，当前文本统一按模型系数扣减；Small不含Kimi K3。 |
-| [MiniMax](https://www.minimax.cn/m-plan) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
+| [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
 | [智谱国际版](https://api.dreamfree.space/c/s/cpyqzai) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 国内版的替代，无需抢购。 |
 | [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) | 可以购买 | ⭐️⭐️⭐️⭐️ | 当前Go/Plus/Pro/Max/Ultra订阅；Plus起支持Coding，旧四档仅老用户续费。 |
-| [DeepSeek](https://platform.deepseek.com/) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
+| [DeepSeek](https://api.dreamfree.space/c/s/cpyqdeepseek) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
 | [共绩算力](https://api.dreamfree.space/c/s/cpyqgongji) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | GLM、Kimi、Qwen、DeepSeek等模型的按量API，邀请优惠需有效资格。 |
 | [优云智算](https://api.dreamfree.space/c/s/cpyqyyzs) | 可以购买 | ⭐️⭐️⭐️⭐️ | 六档请求制Coding Plan，当前九个LLM各按明确次数扣减。 |
 | [Codex](https://api.dreamfree.space/c/s/cpyqchatgpt) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | Codex 官方订阅，Plus / Pro 支持 GPT-6.1 Sol / Terra；Pro $500 另支持 Ultrafast。 |
@@ -225,7 +225,7 @@
 | [小米·MiMo](https://api.dreamfree.space/c/s/cpyqmimo) | 可以购买 | ⭐️⭐️⭐️⭐️ | MiMo文本Credits订阅，当前2个LLM，夜间00–08点UTC+8享0.8消耗。 |
 | [Command Code](https://api.dreamfree.space/c/s/cpcommandcode) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | Go、GOAT、Pro与两档Max多模型订阅，按实际模型价格与上下文档扣减Credits。 |
 | [百度·千帆](https://api.dreamfree.space/c/s/cpyqqianfan) | 可以购买 | ⭐️⭐️⭐️ | Token计量与积分计量产品并存，统一品牌下按独立计费套餐比较。 |
-| [华为云](https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement) | 购买受限 | ⭐️⭐️⭐️ | 华为云个人Token Plan，当前五个LLM，按官方月Token总量。 |
+| [华为云](https://api.dreamfree.space/c/s/cpyqhuawei) | 购买受限 | ⭐️⭐️⭐️ | 华为云个人Token Plan，当前五个LLM，按官方月Token总量。 |
 | [腾讯云](https://api.dreamfree.space/c/s/cpyqtengxunt) | 可以购买 | ⭐️⭐️⭐️ | 通用Token Plan与Hy专属产品线分开；模型与套餐抵扣系数需逐项比较。 |
 | [Qoder 国内版](https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription) | 可以购买 | ⭐️⭐️⭐️ | Qoder全家桶个人订阅，模型选择因客户端而异；Qwen3.8-Flash当前免Credits。 |
 | [Qoder 国际版](https://qoder.com/pricing) | 可以购买 | ⭐️⭐️⭐️ | Qoder国际套餐，当前支持K3、K2.8、GLM5.3及Qwen3.8等；具体Token额度未知。 |
@@ -246,9 +246,9 @@
 | [百度千帆 · 积分制](https://api.dreamfree.space/c/s/cpyqqianfan) | 可以购买 | - | 按模型与Token类型抵扣积分，可与Token制区分选购。 |
 | [天翼云 · 积分制](https://api.dreamfree.space/c/s/cpyqctyun) | 可以购买 | - | 2026-09-23启用积分制；旧Token制仅周期内用户可续订。 |
 | [京东云 · Token Plan](https://api.dreamfree.space/c/s/cpyqjingdong) | 购买受限 | - | 个人Credits订阅，按模型和输入长度计费，可与Coding Plan同时订阅。 |
-| [淘Token · Token Plan](https://taotoken.net/token-plan) | 可以购买 | - | 多模型Credits月订阅，独立/token入口；与双Flash Coding Plan分开抵扣。 |
+| [淘Token · Token Plan](https://api.dreamfree.space/c/s/cpyqtaotoken) | 可以购买 | - | 多模型Credits月订阅，独立/token入口；与双Flash Coding Plan分开抵扣。 |
 | [超算 · Token Plan](https://www.scnet.cn/) | 可以购买 | - | 18个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。 |
-| [讯飞 · Astron Token Plan](https://maas.xfyun.cn/) | 可以购买 | - | 面向企业/团队的成员积分订阅；活动已结束，现按常规月价购买。 |
+| [讯飞 · Astron Token Plan](https://api.dreamfree.space/c/s/cpyqxunfei) | 可以购买 | - | 面向企业/团队的成员积分订阅；活动已结束，现按常规月价购买。 |
 
 更详细的性价比、模型覆盖、稳定性评价和状态筛选见[在线平台中心](https://codingplan.fyi/platforms/)。
 

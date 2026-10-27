@@ -140,7 +140,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://www.minimax.cn/m-plan"
+      "action": "https://api.dreamfree.space/c/s/cpyqminimax"
     },
     {
       "slug": "minimax-coding-legacy",
@@ -240,7 +240,7 @@
         }
       },
       "platformStatus": "open",
-      "action": "https://platform.deepseek.com/",
+      "action": "https://api.dreamfree.space/c/s/cpyqdeepseek",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true
@@ -541,7 +541,7 @@
       "supportsHarnessApi": true,
       "summary": "华为云个人Token Plan，当前五个LLM，按官方月Token总量。",
       "detail": "仅西南贵阳一，每日限量发售；官方Token总量与请求次数、TPM分开。",
-      "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement"
+      "action": "https://api.dreamfree.space/c/s/cpyqhuawei"
     },
     {
       "slug": "tencent-cloud",
@@ -1206,7 +1206,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://taotoken.net/token-plan"
+      "action": "https://api.dreamfree.space/c/s/cpyqtaotoken"
     },
     {
       "slug": "chaosuan-token",
@@ -1256,8 +1256,8 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://maas.xfyun.cn/"
+      "action": "https://api.dreamfree.space/c/s/cpyqxunfei"
     }
   ],
-  "contentVersion": "2026-10-27T03:51:52.588Z"
+  "contentVersion": "2026-10-27T13:39:28.986Z"
 }
