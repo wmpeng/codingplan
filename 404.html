@@ -22,10 +22,31 @@
     <p>404</p>
     <h1>页面不存在</h1>
     <p>请检查网址，或从首页继续浏览。</p>
+    <p id="return-status" aria-live="polite" hidden><span id="return-countdown">3</span> 秒内无操作将自动返回首页。</p>
     <nav aria-label="继续浏览">
       <a href="/">返回首页</a>
       <a href="/articles/">浏览文章</a>
     </nav>
   </main>
+  <script>
+    const status = document.getElementById('return-status');
+    const countdown = document.getElementById('return-countdown');
+    const activityEvents = ['pointermove', 'pointerdown', 'keydown', 'wheel', 'touchstart', 'scroll'];
+    let remaining = 3;
+    status.hidden = false;
+    const timer = window.setInterval(() => {
+      countdown.textContent = String(--remaining);
+      if (remaining === 0) {
+        window.clearInterval(timer);
+        window.location.replace('/');
+      }
+    }, 1000);
+    function cancelReturn() {
+      window.clearInterval(timer);
+      status.textContent = '已取消自动返回，可选择下方入口继续浏览。';
+      activityEvents.forEach(event => window.removeEventListener(event, cancelReturn));
+    }
+    activityEvents.forEach(event => window.addEventListener(event, cancelReturn, { passive: true }));
+  </script>
 </body>
 </html>
