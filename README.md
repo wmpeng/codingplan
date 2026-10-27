@@ -78,7 +78,7 @@
 | [Claude · Pro](https://api.dreamfree.space/c/s/cpyqclaudeup) | - | $20/首月 | 61.53M | 463.49M | 1,854M | ¥0.0734/M |
 | [Claude · Max *5](https://api.dreamfree.space/c/s/cpyqclaudeup) | - | $100/首月 | 307.63M | 2,317.46M | 9,269.8M | ¥0.0734/M |
 | [Claude · Max *20](https://api.dreamfree.space/c/s/cpyqclaudeup) | - | $200/首月 | 1,230.51M | 4,634.92M | 18,539.7M | ¥0.0734/M |
-| [GitHub · Max](https://github.com/features/copilot/plans) | - | $100/首月 | - | - | 409.8M | ¥1.6592/M |
+| [GitHub · Max](https://api.dreamfree.space/c/s/cpyqghcopilot) | - | $100/首月 | - | - | 409.8M | ¥1.6592/M |
 | [GitHub · Pro+](https://api.dreamfree.space/c/s/cpyqghcopilotp) | - | $39/首月 | - | - | 143.4M | ¥1.8489/M |
 | [Command Code · Max 10×](https://api.dreamfree.space/c/s/cpcommandcode) | - | $100/首月 | 61.47M | 122.94M | 204.9M | ¥3.3191/M |
 | [Command Code · Max 20×](https://api.dreamfree.space/c/s/cpcommandcode) | - | $200/首月 | 122.94M | 245.88M | 409.8M | ¥3.3191/M |
@@ -232,7 +232,7 @@
 | [WorkBuddy](https://www.workbuddy.cn/docs/workbuddy/Pricing) | 可以购买 | ⭐️⭐️⭐️ | 体验版与三档付费个人订阅，WorkBuddy与CodeBuddy共享积分。 |
 | [TRAE 国内版](https://www.trae.cn) | 可以购买 | ⭐️⭐️⭐️ | TRAE统一积分会员，31天一个周期；Lite首月39元，模型权限按档位区分。 |
 | [TRAE 国际版](https://www.trae.ai/pricing) | 可以购买 | ⭐️⭐️⭐️ | Free仅Auto；新Lite/Pro/Pro+/Ultra与老套餐并存，按模型Token价扣减月Usage。 |
-| [GitHub](https://api.dreamfree.space/c/s/cpyqghcopilotp) | 可以购买 | ⭐️⭐️⭐️ | Copilot个人方案现按AI Credits计费，新增Max；免费与学生档仅Auto选择。 |
+| [GitHub](https://api.dreamfree.space/c/s/cpyqghcopilot) | 可以购买 | ⭐️⭐️⭐️ | Copilot个人方案现按AI Credits计费，新增Max；免费与学生档仅Auto选择。 |
 | [Cursor](https://cursor.com/pricing) | 可以购买 | - | AI 编程编辑器与 Agent；新 X Subscription 从免费至 $200/月，旧 Pro 系列仅存量保留。 |
 | [讯飞·星火](https://api.dreamfree.space/c/s/cpyqxunfei) | 可以购买 | ⭐️⭐️⭐️ | 个人版分高效版与速通版；当前价格和完整模型支持范围待确认。 |
 | [联通云](https://api.dreamfree.space/c/s/cpyqunicomtp) | 可以购买 | ⭐️⭐️ | 个人版按Token额度、团队版按Credits计量；当前成交价、库存及DeepSeek精确版本待确认。 |
@@ -247,7 +247,7 @@
 | [天翼云 · 积分制](https://api.dreamfree.space/c/s/cpyqctyun) | 可以购买 | - | 2026-09-23启用积分制；旧Token制仅周期内用户可续订。 |
 | [京东云 · Token Plan](https://api.dreamfree.space/c/s/cpyqjingdong) | 购买受限 | - | 个人Credits订阅，按模型和输入长度计费，可与Coding Plan同时订阅。 |
 | [淘Token · Token Plan](https://api.dreamfree.space/c/s/cpyqtaotoken) | 可以购买 | - | 多模型Credits月订阅，独立/token入口；与双Flash Coding Plan分开抵扣。 |
-| [超算 · Token Plan](https://www.scnet.cn/) | 可以购买 | - | 18个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。 |
+| [超算 · Token Plan](https://api.dreamfree.space/c/s/cpyqchaosuantp) | 可以购买 | - | 18个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。 |
 | [讯飞 · Astron Token Plan](https://api.dreamfree.space/c/s/cpyqxunfei) | 可以购买 | - | 面向企业/团队的成员积分订阅；活动已结束，现按常规月价购买。 |
 
 更详细的性价比、模型覆盖、稳定性评价和状态筛选见[在线平台中心](https://codingplan.fyi/platforms/)。

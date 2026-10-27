@@ -734,7 +734,7 @@
       "requiresOverseasPayment": true,
       "supportsHarnessApi": false,
       "detail": "用量按模型Token价格与当前基础/Flex积分计算，部分老年付仍有过渡口径。",
-      "action": "https://api.dreamfree.space/c/s/cpyqghcopilotp"
+      "action": "https://api.dreamfree.space/c/s/cpyqghcopilot"
     },
     {
       "slug": "cursor",
@@ -1231,7 +1231,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://www.scnet.cn/"
+      "action": "https://api.dreamfree.space/c/s/cpyqchaosuantp"
     },
     {
       "slug": "iflytek-token",
@@ -1259,5 +1259,5 @@
       "action": "https://api.dreamfree.space/c/s/cpyqxunfei"
     }
   ],
-  "contentVersion": "2026-10-27T13:39:28.986Z"
+  "contentVersion": "2026-10-27T14:02:57.847Z"
 }

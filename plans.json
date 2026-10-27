@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-27T13:40:19Z",
+  "generatedAt": "2026-10-27T14:04:39Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -37131,7 +37131,7 @@
       "platformSlug": "github",
       "name": "Max",
       "billingMode": "subscription",
-      "action": "https://github.com/features/copilot/plans",
+      "action": "https://api.dreamfree.space/c/s/cpyqghcopilot",
       "rating": 3,
       "firstMonthPrice": 100,
       "monthlyPrice": 100,
@@ -38093,7 +38093,7 @@
       "platformSlug": "github",
       "name": "Free",
       "billingMode": "subscription",
-      "action": "https://github.com/features/copilot/plans",
+      "action": "https://api.dreamfree.space/c/s/cpyqghcopilot",
       "rating": 3,
       "firstMonthPrice": 0,
       "monthlyPrice": 0,
@@ -49255,7 +49255,7 @@
       "platformSlug": "chaosuan-token",
       "name": "基础版",
       "billingMode": "subscription",
-      "action": "https://www.scnet.cn/",
+      "action": "https://api.dreamfree.space/c/s/cpyqchaosuantp",
       "rating": 0,
       "firstMonthPrice": 30,
       "monthlyPrice": 30,
@@ -49508,7 +49508,7 @@
       "platformSlug": "chaosuan-token",
       "name": "标准版",
       "billingMode": "subscription",
-      "action": "https://www.scnet.cn/",
+      "action": "https://api.dreamfree.space/c/s/cpyqchaosuantp",
       "rating": 0,
       "firstMonthPrice": 130,
       "monthlyPrice": 130,
@@ -49761,7 +49761,7 @@
       "platformSlug": "chaosuan-token",
       "name": "高级版",
       "billingMode": "subscription",
-      "action": "https://www.scnet.cn/",
+      "action": "https://api.dreamfree.space/c/s/cpyqchaosuantp",
       "rating": 0,
       "firstMonthPrice": 310,
       "monthlyPrice": 310,
@@ -50014,7 +50014,7 @@
       "platformSlug": "chaosuan-token",
       "name": "旗舰版",
       "billingMode": "subscription",
-      "action": "https://www.scnet.cn/",
+      "action": "https://api.dreamfree.space/c/s/cpyqchaosuantp",
       "rating": 0,
       "firstMonthPrice": 899,
       "monthlyPrice": 899,
@@ -52043,5 +52043,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-10-27T13:39:34.471Z"
+  "contentVersion": "2026-10-27T14:03:03.387Z"
 }
