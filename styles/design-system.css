@@ -179,7 +179,6 @@ body :is(.usage-preset-card, .usage-chart-card, .usage-explorer) { box-shadow: n
 body .usage-preset-card > header { background: var(--bg-secondary); padding: 16px; border-color: var(--border-light); }
 body .usage-preset-card > header h4 { color:var(--text-primary); font-size:17px; font-weight: 600; }
 body .usage-preset-card > header p { font-size: 12px; color: var(--text-secondary); margin-top: 6px; line-height: 1.6; }
-body .usage-preset-card > header > span { color:var(--text-secondary); background:var(--bg-tertiary); border-radius:6px; }
 body :is(.usage-preset-table, .usage-data-table, .tool-table) :is(th, td) { font-size: 13px; line-height: 1.6; border-color: var(--border-light); }
 body :is(.usage-preset-table, .usage-data-table, .tool-table) th { color: var(--text-secondary); background: var(--bg-tertiary); font-weight: 400; }
 body :is(.usage-preset-table, .usage-data-table, .tool-table) td { color: var(--text-primary); background: var(--bg-secondary); }

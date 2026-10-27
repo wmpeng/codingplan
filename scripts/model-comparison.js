@@ -624,9 +624,10 @@
             }).join('')}</tr>`;
         }).join('') : `<tr><td class="usage-table-empty" colspan="${columns.length}">当前暂无可比较的套餐。</td></tr>`;
         return `<article class="usage-preset-card usage-preset-card--${kind}" data-preset-id="${escapeHtml(group.id)}">` +
-            `<header><div><h4>${escapeHtml(group.title)}</h4>${subtitle}</div><span${options.modelFilter?' data-preset-count aria-live="polite" aria-atomic="true"':''}>${rows.length} 条</span></header>` +
+            `<header><div><h4>${escapeHtml(group.title)}</h4>${subtitle}</div></header>` +
             `<div class="usage-preset-table-scroll" tabindex="0" role="region" aria-label="${escapeHtml(group.title)}价格与额度"><table class="usage-preset-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>` +
-            (rows.length > limit ? `<button type="button" class="preset-expand" data-preset-expand aria-expanded="false"><span>展开全部</span></button>` : '') + '</article>';
+            `<footer class="preset-footer"><span class="preset-total"${options.modelFilter?' data-preset-count aria-live="polite" aria-atomic="true"':''}>共 ${rows.length} 条</span>` +
+            (rows.length > limit ? `<button type="button" class="preset-expand" data-preset-expand aria-expanded="false"><span>展开全部</span></button>` : '') + '</footer></article>';
     }
 
     function renderPresetComparisons(host, config, points, tokenUnit, platformScope, options = {}) {

@@ -314,18 +314,18 @@ test('preset model multi-selection keeps the union of rows, tiers and empty stat
   assert.match(selected,/data-preset-model="a" aria-pressed="true"/);
   assert.match(selected,/data-preset-model="b" aria-pressed="false"/);
   assert.match(selected,/data-point-id="a-low"/);assert.match(selected,/data-point-id="a-high"/);
-  assert.doesNotMatch(selected,/data-point-id="b"/);assert.match(selected,/>2 条<\/span>/);
+  assert.doesNotMatch(selected,/data-point-id="b"/);assert.match(selected,/>共 2 条<\/span>/);
   assert.match(selected,/模型 A \[谷\]/);assert.match(selected,/模型 A \[峰\]/);
   const multi=presetComparisonTableHtml(group,points,'B','all',{modelFilter:true,selectedModelSlugs:['a','b','a','not-in-group']});
   assert.match(multi,/data-preset-model="a" aria-pressed="true"/);
   assert.match(multi,/data-preset-model="b" aria-pressed="true"/);
   assert.match(multi,/data-preset-model="" aria-pressed="false"/);
-  assert.match(multi,/>3 条<\/span>/);
+  assert.match(multi,/>共 3 条<\/span>/);
   assert.equal((multi.match(/data-point-id=/g)||[]).length,3);
   const all=presetComparisonTableHtml(group,points,'B','all',{modelFilter:true,selectedModelSlugs:['not-in-group']});
   assert.match(all,/data-preset-model="" aria-pressed="true"/);assert.match(all,/data-point-id="b"/);
   const empty=presetComparisonTableHtml(group,points,'yi','all',{modelFilter:true,selectedModelSlugs:['empty']});
-  assert.match(empty,/>0 条<\/span>/);assert.match(empty,/当前暂无可比较的套餐/);
+  assert.match(empty,/>共 0 条<\/span>/);assert.match(empty,/当前暂无可比较的套餐/);
   assert.match(empty,/data-preset-model=""/);
 });
 
