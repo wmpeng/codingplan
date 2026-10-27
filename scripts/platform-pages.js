@@ -5,6 +5,10 @@
     "title": "字节·方舟 Coding Plan",
     "url": "/platforms/bytedance-ark/"
   },
+  "claude": {
+    "title": "Claude Code",
+    "url": "/platforms/claude/"
+  },
   "codex": {
     "title": "Codex",
     "url": "/platforms/codex/"

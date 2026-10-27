@@ -41,7 +41,8 @@
     "opencode",
     "bytedance-ark",
     "deepseek-official",
-    "codex"
+    "codex",
+    "claude"
   ],
-  "contentVersion": "2026-10-27T06:36:31.946Z"
+  "contentVersion": "2026-10-27T08:35:37.961Z"
 }

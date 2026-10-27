@@ -10,7 +10,7 @@
 
 ## 平台介绍
 
-[字节·方舟 Coding Plan](https://codingplan.fyi/platforms/bytedance-ark/) · [Codex](https://codingplan.fyi/platforms/codex/) · [Command Code](https://codingplan.fyi/platforms/command-code/) · [Cursor](https://codingplan.fyi/platforms/cursor/) · [DeepSeek 官方 API](https://codingplan.fyi/platforms/deepseek-official/) · [Kimi Code](https://codingplan.fyi/platforms/kimi/) · [MiniMax M Plan](https://codingplan.fyi/platforms/minimax/) · [OpenCode Go / Go Plus](https://codingplan.fyi/platforms/opencode/) · [智谱 GLM Coding Plan](https://codingplan.fyi/platforms/zhipu/) · [全部介绍](https://codingplan.fyi/platforms/)
+[字节·方舟 Coding Plan](https://codingplan.fyi/platforms/bytedance-ark/) · [Claude Code](https://codingplan.fyi/platforms/claude/) · [Codex](https://codingplan.fyi/platforms/codex/) · [Command Code](https://codingplan.fyi/platforms/command-code/) · [Cursor](https://codingplan.fyi/platforms/cursor/) · [DeepSeek 官方 API](https://codingplan.fyi/platforms/deepseek-official/) · [Kimi Code](https://codingplan.fyi/platforms/kimi/) · [MiniMax M Plan](https://codingplan.fyi/platforms/minimax/) · [OpenCode Go / Go Plus](https://codingplan.fyi/platforms/opencode/) · [智谱 GLM Coding Plan](https://codingplan.fyi/platforms/zhipu/) · [全部介绍](https://codingplan.fyi/platforms/)
 
 ## 目录
 
@@ -33,6 +33,7 @@
 | [字节·方舟 Coding Plan](https://api.dreamfree.space/c/s/cpyqfangzhou) | 可以购买 | 5 | 支持多模型与 Auto 接入；部分模型额度为估算值。 |
 | [DeepSeek](https://platform.deepseek.com/) | 可以购买 | 5 | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
 | [Codex](https://api.dreamfree.space/c/s/cpyqchatgpt) | 可以购买 | 5 | Codex 官方订阅，Plus / Pro 支持 GPT-6.1 Sol / Terra；Pro $500 另支持 Ultrafast。 |
+| [Claude](https://api.dreamfree.space/c/s/cpyqclaudeup) | 可以购买 | 4 | Claude Code 官方订阅，支持 Opus、Sonnet、Haiku 5.5；Token 容量为带负载条件的估算。 |
 
 [浏览全部模型](https://codingplan.fyi/models/) · [按需求筛选所有方案](https://codingplan.fyi/#selectionWorkspace)
 
