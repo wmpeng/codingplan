@@ -45,7 +45,7 @@
 .usage-preset-grid + .usage-preset-grid { margin-top: 14px; }
 .usage-preset-grid--single { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
 .usage-preset-grid--multi { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
-.usage-preset-card { min-width: 0; overflow: hidden; border: 1px solid #e0e7ee; border-radius: 14px; background: #fff; box-shadow: 0 7px 20px rgba(32,54,77,.045); }
+.usage-preset-card { min-width: 0; overflow: clip; border: 1px solid #e0e7ee; border-radius: 14px; background: #fff; box-shadow: 0 7px 20px rgba(32,54,77,.045); }
 .usage-preset-card > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 13px 14px 11px; border-bottom: 1px solid #e8edf2; background: #f8fafb; }
 .usage-preset-card > header h4 { margin: 0; color: #1d293d; font-size: 14px; line-height: 1.35; }
 .usage-preset-card > header p { margin: 3px 0 0; color: #8490a1; font-size: 10px; }

@@ -24,9 +24,13 @@
       pending = false;
       const bottom = footer.getBoundingClientRect();
       const footerVisible = bottom.top < innerHeight && bottom.bottom > 0;
+      const expandedTableVisible = [...document.querySelectorAll('.preset-footer:has([data-preset-expand][aria-expanded="true"])')].some(node => {
+        const rect = node.getBoundingClientRect();
+        return rect.top < innerHeight && rect.bottom > 0;
+      });
       const busy = [...document.querySelectorAll('#platformDetailOverlay, #purchaseGuide, .filter-picker[open], #settingsPanel')].some(visible);
       const keyboard = mobile() && window.visualViewport && innerHeight - visualViewport.height > 140;
-      const hide = dismissed || hero.getBoundingClientRect().bottom > 0 || footerVisible || busy || keyboard;
+      const hide = dismissed || hero.getBoundingClientRect().bottom > 0 || footerVisible || expandedTableVisible || busy || keyboard;
       if (hide) closePanel(false);
       if (launcher.hidden !== !!hide) launcher.hidden = !!hide;
     }
@@ -59,9 +63,9 @@
       if (!dialog.contains(event.target) || event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) closePanel(false);
     });
     const observer = new MutationObserver(schedule);
-    for (const selector of ['#platformDetailOverlay', '#purchaseGuide', '#homepageUnifiedFiltersMount', '#settingsMount']) {
+    for (const selector of ['#platformDetailOverlay', '#purchaseGuide', '#homepageUnifiedFiltersMount', '#settingsMount', '#featuredComparisons']) {
       const node = document.querySelector(selector);
-      if (node) observer.observe(node, { subtree: true, childList: true, attributes: true, attributeFilter: ['hidden', 'open', 'class'] });
+      if (node) observer.observe(node, { subtree: true, childList: true, attributes: true, attributeFilter: ['hidden', 'open', 'class', 'aria-expanded'] });
     }
     addEventListener('scroll', schedule, { passive: true });
     addEventListener('resize', () => { closePanel(false); schedule(); });
