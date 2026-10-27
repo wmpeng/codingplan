@@ -301,7 +301,7 @@
       "slug": "codex",
       "name": "Codex",
       "rating": 5,
-      "summary": "Codex官方订阅，支持GPT-6.1 Sol及6系列；Pro $500另支持Ultrafast。",
+      "summary": "Codex 官方订阅，Plus / Pro 支持 GPT-6.1 Sol / Terra；Pro $500 另支持 Ultrafast。",
       "detail": "速度档影响额度消耗；新型号与新套餐的精确 Token 额度未知。",
       "dimensions": {
         "value": {
@@ -1259,5 +1259,5 @@
       "action": "https://maas.xfyun.cn/"
     }
   ],
-  "contentVersion": "2026-10-25T16:31:43.191Z"
+  "contentVersion": "2026-10-27T03:51:52.588Z"
 }

@@ -11,9 +11,19 @@
       "startsOn": "2026-06-08"
     },
     {
+      "slug": "ark-kimi-k31-pro-half-credits-oct-2026",
+      "title": "火山 Kimi K3.1 Pro：抵扣五折至 11 月 9 日",
+      "body": "**2026 年 10 月 24 日 00:00:00 至 11 月 9 日 23:59:59（UTC+8）**，方舟 **Coding / Agent Plan 个人版**调用 **Kimi K3.1 Pro**享模型抵扣五折。\n\n- Agent Plan 抵扣系数由常规 7 降至 3.5；Coding Plan 活动可用量与对应五折期间相当。\n- Coding Plan Lite / Pro 与 Agent Plan Small / Medium / Large / Max 均已支持该模型。\n- 这是模型消耗优惠，不是订阅售价五折；共享额度、窗口与其他使用限制仍适用。",
+      "visible": true,
+      "ended": false,
+      "startsOn": "2026-10-24",
+      "endsOn": "2026-11-09",
+      "url": "https://docs.volcengine.com/docs/82379/2533566?lang=zh"
+    },
+    {
       "slug": "minimax-code-m31-flash-unlimited-oct-2026",
       "title": "MiniMax Code 订阅用户：M3.1 Flash 限时不限量",
-      "body": "截至 **2026 年 10 月 25 日**，所有订阅用户在 **MiniMax Code 内**使用 **M3.1 Flash** 模型，可享不限量权益。\n\n- 需要已订阅；免费用户不在本次公布的适用范围内。\n- 不限量权益限 MiniMax Code 内的 M3.1 Flash；官方未承诺通过 API 接入 Claude Code、OpenCode 等外部工具也不限量。\n- 不代表其他模型或视频、图像等功能不限量。\n\n官方未注明截止的具体时刻或时区，参与情况以活动页面为准。",
+      "body": "截至 **2026 年 10 月 25 日**，所有订阅用户在 **MiniMax Code 内**使用 **M3.1 Flash** 模型，可享不限量权益。\n\n- 需要已订阅；免费用户不在本次公布的适用范围内。\n- 不限量权益限 MiniMax Code 内的 M3.1 Flash；官方未承诺通过 API 接入 Claude Code、OpenCode 等外部工具也不限量。\n- 不代表其他模型或视频、图像等功能不限量。\n\n官方未注明截止的具体时刻或时区，参与情况以活动页面为准。\n\n公告截止日期已过，是否恢复常规规则或另有延长安排仍待确认。",
       "visible": true,
       "ended": false,
       "endsOn": "2026-10-25",
@@ -58,7 +68,7 @@
     {
       "slug": "ark-kimi-k3-half-credits-oct-2026",
       "title": "火山 Agent / Coding Plan：Kimi K3 抵扣五折",
-      "body": "截至 **2026 年 10 月 25 日 23:59:59**，方舟 **Agent / Coding Plan 个人版**调用 **kimi-k3**，在原有模型抵扣系数基础上享 **5 折**，同等配额可用量约为原来的 2 倍。\n\n活动自动生效，无需申请；套餐自身的额度刷新和使用限制不变，其他模型不随之打折。到期恢复原有抵扣规则，具体时间以官方活动页为准。",
+      "body": "截至 **2026 年 10 月 25 日 23:59:59**，方舟 **Agent / Coding Plan 个人版**调用 **kimi-k3**，在原有模型抵扣系数基础上享 **5 折**，同等配额可用量约为原来的 2 倍。\n\n活动自动生效，无需申请；套餐自身的额度刷新和使用限制不变，其他模型不随之打折。到期恢复原有抵扣规则，具体时间以官方活动页为准。\n\n公告截止日期已过，是否恢复常规规则或另有延长安排仍待确认。",
       "visible": true,
       "ended": false,
       "endsOn": "2026-10-25",
@@ -101,5 +111,5 @@
       "url": "https://opencode.ai/v2/docs/console/models/"
     }
   ],
-  "contentVersion": "2026-10-25T10:48:45.158Z"
+  "contentVersion": "2026-10-27T03:55:11.032Z"
 }

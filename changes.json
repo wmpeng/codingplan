@@ -1049,7 +1049,7 @@
           "after": "活动到期，需按届时有效价抵扣"
         }
       ],
-      "summary": "方舟该型号抵扣优惠计划于2026-10-25 23:59:59（UTC+8）结束；Coding与Agent Plan各自系数不互套。",
+      "summary": "方舟该型号抵扣优惠计划于2026-10-25 23:59:59（UTC+8）结束；Coding与Agent Plan各自系数不互套。 公告截止日期已过，恢复常规规则的情况待确认。",
       "targets": [
         {
           "type": "plan_model",
@@ -1093,6 +1093,9 @@
         },
         {
           "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-model-discount?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh"
         }
       ],
       "relatedChanges": []
@@ -1521,7 +1524,7 @@
         }
       ],
       "audience": "所有订阅用户；仅限MiniMax Code内的M3.1 Flash，不包含Code Free，未承诺外部工具API不限量",
-      "summary": "MiniMax Code订阅用户的M3.1 Flash不限量活动截至2026-10-25；外部工具API未获不限量承诺。",
+      "summary": "MiniMax Code订阅用户的M3.1 Flash不限量活动截至2026-10-25；外部工具API未获不限量承诺。 公告截止日期已过，恢复常规规则的情况待确认。",
       "targets": [
         {
           "type": "plan",
@@ -1543,6 +1546,9 @@
         }
       ],
       "sources": [
+        {
+          "url": "https://agent.minimax.cn/"
+        },
         {
           "url": "https://agent.minimax.cn/"
         }
@@ -1989,7 +1995,77 @@
         }
       ],
       "relatedChanges": []
+    },
+    {
+      "slug": "ark-k31-pro-discount-end-20261110",
+      "title": "方舟 Kimi K3.1 Pro 五折活动结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-10",
+        "description": "优惠截至2026-11-09 23:59:59（UTC+8），结束后按官方当时规则抵扣。"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "Kimi K3.1 Pro 抵扣系数",
+          "before": "2026-10-24至11-09，Agent Plan系数3.5；Coding Plan按对应五折活动可用量使用",
+          "after": "活动结束后恢复常规系数7；实际恢复情况需到期核对，不能提前切换"
+        }
+      ],
+      "audience": "方舟Coding Plan Lite / Pro，以及Agent Plan Small / Medium / Large / Max个人版用户。",
+      "summary": "方舟Coding / Agent Plan个人版的Kimi K3.1 Pro限时五折截至2026-11-09 23:59:59（UTC+8）；只影响本模型消耗，非订阅售价优惠。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-lite",
+          "planModelSlug": "volcengine-coding-lite--kimi-k3-1-pro",
+          "label": "字节·方舟 Coding Plan · Lite · Kimi-K3.1-Pro"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-pro",
+          "planModelSlug": "volcengine-coding-pro--kimi-k3-1-pro",
+          "label": "字节·方舟 Coding Plan · Pro · Kimi-K3.1-Pro"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-small",
+          "planModelSlug": "volcengine-agent-small--kimi-k3-1-pro",
+          "label": "字节·方舟 Agent Plan · Small · Kimi-K3.1-Pro"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-medium",
+          "planModelSlug": "volcengine-agent-medium--kimi-k3-1-pro",
+          "label": "字节·方舟 Agent Plan · Medium · Kimi-K3.1-Pro"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-large",
+          "planModelSlug": "volcengine-agent-large--kimi-k3-1-pro",
+          "label": "字节·方舟 Agent Plan · Large · Kimi-K3.1-Pro"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-max",
+          "planModelSlug": "volcengine-agent-max--kimi-k3-1-pro",
+          "label": "字节·方舟 Agent Plan · Max · Kimi-K3.1-Pro"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/82379/2533566?lang=zh"
+        }
+      ],
+      "relatedChanges": []
     }
   ],
-  "contentVersion": "2026-10-25T16:36:29.712Z"
+  "contentVersion": "2026-10-27T03:55:07.582Z"
 }

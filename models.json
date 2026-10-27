@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-25T16:38:44Z",
+  "generatedAt": "2026-10-27T04:03:13Z",
   "benchmarks": {
     "artificialAnalysis": {
       "name": "Artificial Analysis Intelligence Index",
       "version": "v4.3.2",
       "sourceUrl": "https://artificialanalysis.ai/models/gpt-5-6-sol",
-      "fetchedAt": "2026-10-24T06:31:42Z",
-      "availableConfigurations": 709
+      "fetchedAt": "2026-10-27T03:46:15Z",
+      "availableConfigurations": 715
     },
     "deepSWE": {
       "name": "DeepSWE",
@@ -21,29 +21,29 @@
       "name": "LiveBench 2.0 Overall",
       "version": "2.0",
       "sourceUrl": "https://livebench.ai/",
-      "releaseDate": "2026-10-14",
-      "publishedAt": "2026-10-23",
-      "fetchedAt": "2026-10-24T03:30:06Z",
-      "dataUrl": "https://livebench.ai/data/20261014/table.csv",
-      "availableConfigurations": 53
+      "releaseDate": "2026-10-25",
+      "publishedAt": "2026-10-25",
+      "fetchedAt": "2026-10-27T03:46:13Z",
+      "dataUrl": "https://livebench.ai/data/20261025/table.csv",
+      "availableConfigurations": 31
     },
     "arena": {
       "name": "Arena Agent Overall — Net Improvement",
       "sourceUrl": "https://arena.ai/leaderboard/agent",
       "datasetUrl": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
-      "revision": "9761a3ce414bac9ebac5a7742f67f230be809df4",
+      "revision": "a467e6b989bd2bd55ac2b83f8fd2c71052cc4e00",
       "license": "CC-BY-4.0",
       "publishedAt": "2026-10-23",
-      "fetchedAt": "2026-10-24T03:30:06Z",
+      "fetchedAt": "2026-10-27T03:46:13Z",
       "availableConfigurations": 50
     }
   },
   "coverage": {
-    "artificialAnalysisScores": 114,
+    "artificialAnalysisScores": 115,
     "deepSWEScores": 28,
-    "liveBenchScores": 46,
+    "liveBenchScores": 28,
     "arenaScores": 45,
-    "multimodalKnown": 144
+    "multimodalKnown": 145
   },
   "models": [
     {
@@ -76,14 +76,7 @@
           "modelName": "claude-fable-5",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
-        "liveBench": {
-          "score": 83.6,
-          "scoreExact": 83.61428571428571,
-          "configuration": "Claude Fable 5 (max)",
-          "modelName": "claude-fable-5",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": {
           "score": 7.75,
           "scoreExact": 7.75262959991064,
@@ -119,12 +112,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 88.0,
-          "scoreExact": 87.98571428571428,
+          "score": 85.7,
+          "scoreExact": 85.69444444444444,
           "configuration": "Claude Fable 5.1 (max)",
           "modelName": "claude-fable-5.1",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 13.94,
@@ -160,14 +153,7 @@
           "sourceUrl": "https://artificialanalysis.ai/models/claude-4-5-haiku-reasoning"
         },
         "deepSWE": null,
-        "liveBench": {
-          "score": 46.0,
-          "scoreExact": 46.042857142857144,
-          "configuration": "Claude Haiku 4.5 (max)",
-          "modelName": "claude-haiku-4.5",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": null
       }
     },
@@ -279,14 +265,7 @@
           "modelName": "claude-opus-4-8",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
-        "liveBench": {
-          "score": 76.8,
-          "scoreExact": 76.77142857142857,
-          "configuration": "Claude Opus 4.8 (max)",
-          "modelName": "claude-opus-4.8",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": null
       }
     },
@@ -320,14 +299,7 @@
           "modelName": "claude-opus-5",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
-        "liveBench": {
-          "score": 82.1,
-          "scoreExact": 82.08571428571429,
-          "configuration": "Claude Opus 5 (max)",
-          "modelName": "claude-opus-5",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": {
           "score": 8.22,
           "scoreExact": 8.21816621110375,
@@ -396,14 +368,7 @@
           "modelName": "claude-sonnet-4-6",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
-        "liveBench": {
-          "score": 65.1,
-          "scoreExact": 65.08571428571429,
-          "configuration": "Claude Sonnet 4.6 (max)",
-          "modelName": "claude-sonnet-4.6",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": null
       }
     },
@@ -437,14 +402,7 @@
           "modelName": "claude-sonnet-5",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
-        "liveBench": {
-          "score": 73.0,
-          "scoreExact": 72.98571428571428,
-          "configuration": "Claude Sonnet 5 (max)",
-          "modelName": "claude-sonnet-5",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": {
           "score": 3.75,
           "scoreExact": 3.7508799154358625,
@@ -504,14 +462,7 @@
           "sourceUrl": "https://artificialanalysis.ai/models/deepseek-v4-1-flash"
         },
         "deepSWE": null,
-        "liveBench": {
-          "score": 78.0,
-          "scoreExact": 78.04285714285713,
-          "configuration": "DeepSeek V4.1 Flash (max)",
-          "modelName": "deepseek-v4.1-flash",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": null
       }
     },
@@ -544,14 +495,7 @@
           "modelName": "deepseek-v4-flash",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
-        "liveBench": {
-          "score": 57.6,
-          "scoreExact": 57.58571428571429,
-          "configuration": "DeepSeek V4 Flash 0731 (max)",
-          "modelName": "deepseek-v4-flash",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": null
       }
     },
@@ -922,14 +866,7 @@
           "modelName": "gemini-3-1-pro-preview",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
-        "liveBench": {
-          "score": 54.9,
-          "scoreExact": 54.91428571428571,
-          "configuration": "Gemini 3.1 Pro (high)",
-          "modelName": "gemini-3.1-pro",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": {
           "score": -4.45,
           "scoreExact": -4.446070342674809,
@@ -1130,14 +1067,7 @@
           "modelName": "gemini-3-7-flash",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
-        "liveBench": {
-          "score": 67.2,
-          "scoreExact": 67.18571428571428,
-          "configuration": "Gemini 3.7 Flash (high)",
-          "modelName": "gemini-3.7-flash",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": {
           "score": -1.27,
           "scoreExact": -1.271948794207668,
@@ -1183,12 +1113,12 @@
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
         "liveBench": {
-          "score": 67.3,
-          "scoreExact": 67.34285714285714,
+          "score": 59.2,
+          "scoreExact": 59.205555555555556,
           "configuration": "Gemini 3.8 Flash (high)",
           "modelName": "gemini-3.8-flash",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 3.17,
@@ -1385,14 +1315,7 @@
           "modelName": "glm-5-3",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
-        "liveBench": {
-          "score": 60.7,
-          "scoreExact": 60.74285714285714,
-          "configuration": "GLM-5.3 (max)",
-          "modelName": "glm-5.3",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": {
           "score": 1.22,
           "scoreExact": 1.216083775855935,
@@ -1436,12 +1359,12 @@
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
         "liveBench": {
-          "score": 70.6,
-          "scoreExact": 70.61428571428571,
+          "score": 62.1,
+          "scoreExact": 62.06666666666667,
           "configuration": "GLM-5.3 Flash (max)",
           "modelName": "glm-5.3-flash",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": -1.77,
@@ -1565,12 +1488,12 @@
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
         "liveBench": {
-          "score": 86.1,
-          "scoreExact": 86.14285714285714,
+          "score": 85.6,
+          "scoreExact": 85.63888888888889,
           "configuration": "GPT-6 Astra (max)",
           "modelName": "gpt-6-astra",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 13.96,
@@ -1606,14 +1529,7 @@
           "sourceUrl": "https://artificialanalysis.ai/models/gpt-6-sol"
         },
         "deepSWE": null,
-        "liveBench": {
-          "score": 81.9,
-          "scoreExact": 81.91428571428571,
-          "configuration": "GPT-6 Sol (max)",
-          "modelName": "gpt-6-sol",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": {
           "score": 8.57,
           "scoreExact": 8.566783379600947,
@@ -1649,12 +1565,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 69.4,
-          "scoreExact": 69.4,
+          "score": 64.6,
+          "scoreExact": 64.58888888888889,
           "configuration": "GPT-6 Luna (max)",
           "modelName": "gpt-6-luna",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 2.79,
@@ -1862,14 +1778,7 @@
           "modelName": "gpt-5-5",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
-        "liveBench": {
-          "score": 68.7,
-          "scoreExact": 68.7,
-          "configuration": "GPT-5.5 (xhigh)",
-          "modelName": "gpt-5.5",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": null
       }
     },
@@ -1915,14 +1824,7 @@
           "modelName": "gpt-5-6-luna",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
-        "liveBench": {
-          "score": 66.1,
-          "scoreExact": 66.08571428571427,
-          "configuration": "GPT-5.6 Luna (max)",
-          "modelName": "gpt-5.6-luna",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": null
       }
     },
@@ -1956,14 +1858,7 @@
           "modelName": "gpt-5-6-sol",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
-        "liveBench": {
-          "score": 76.3,
-          "scoreExact": 76.25714285714285,
-          "configuration": "GPT-5.6 Sol (max)",
-          "modelName": "gpt-5.6-sol",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": {
           "score": 6.06,
           "scoreExact": 6.055403494156565,
@@ -2007,12 +1902,12 @@
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
         "liveBench": {
-          "score": 75.0,
-          "scoreExact": 74.98571428571428,
+          "score": 67.8,
+          "scoreExact": 67.78888888888889,
           "configuration": "GPT-5.6 Terra (max)",
           "modelName": "gpt-5.6-terra",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 0.22,
@@ -2101,14 +1996,7 @@
           "modelName": "grok-4-5",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
-        "liveBench": {
-          "score": 70.1,
-          "scoreExact": 70.05714285714285,
-          "configuration": "Grok 4.5 (xhigh)",
-          "modelName": "grok-4.5",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": null
       }
     },
@@ -2143,12 +2031,12 @@
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
         "liveBench": {
-          "score": 74.9,
-          "scoreExact": 74.94285714285715,
+          "score": 67.8,
+          "scoreExact": 67.75,
           "configuration": "Grok 4.6 (xhigh)",
           "modelName": "grok-4.6",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 0.63,
@@ -2260,12 +2148,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 51.9,
-          "scoreExact": 51.91428571428571,
+          "score": 47.1,
+          "scoreExact": 47.05,
           "configuration": "Inkling (max)",
           "modelName": "inkling",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": -14.9,
@@ -2493,12 +2381,12 @@
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
         "liveBench": {
-          "score": 63.4,
-          "scoreExact": 63.385714285714286,
+          "score": 64.6,
+          "scoreExact": 64.57222222222222,
           "configuration": "Kimi K3 (max)",
           "modelName": "kimi-k3",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 1.57,
@@ -2536,12 +2424,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 76.7,
-          "scoreExact": 76.74285714285715,
+          "score": 71.3,
+          "scoreExact": 71.28888888888889,
           "configuration": "Kimi K3.1 Pro (max)",
           "modelName": "kimi-k3.1-pro",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": null
       }
@@ -2745,12 +2633,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 74.9,
-          "scoreExact": 74.87142857142858,
+          "score": 68.5,
+          "scoreExact": 68.47777777777777,
           "configuration": "MiMo V2.6 Pro (high)",
           "modelName": "mimo-v2.6-pro",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 3.3,
@@ -2916,14 +2804,7 @@
           "sourceUrl": "https://artificialanalysis.ai/models/minimax-m3"
         },
         "deepSWE": null,
-        "liveBench": {
-          "score": 53.7,
-          "scoreExact": 53.74285714285714,
-          "configuration": "MiniMax M3 (max)",
-          "modelName": "minimax-m3",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": {
           "score": -10.07,
           "scoreExact": -10.070096855980108,
@@ -3013,14 +2894,7 @@
           "modelName": "muse-spark-1-2",
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
-        "liveBench": {
-          "score": 62.4,
-          "scoreExact": 62.4,
-          "configuration": "Muse Spark 1.2 (xhigh)",
-          "modelName": "muse-spark-1.2",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": {
           "score": -7.02,
           "scoreExact": -7.0204388979708074,
@@ -3057,12 +2931,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 74.8,
-          "scoreExact": 74.75714285714285,
+          "score": 63.0,
+          "scoreExact": 63.03333333333333,
           "configuration": "Muse Spark 1.3 (max)",
           "modelName": "muse-spark-1.3",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 3.05,
@@ -3417,12 +3291,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 62.7,
-          "scoreExact": 62.65714285714286,
+          "score": 58.4,
+          "scoreExact": 58.38333333333334,
           "configuration": "Qwen3.8 27B (max)",
           "modelName": "qwen3.8-27b",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": -4.1,
@@ -3504,12 +3378,12 @@
           "sourceUrl": "https://deepswe.datacurve.ai/"
         },
         "liveBench": {
-          "score": 64.2,
-          "scoreExact": 64.24285714285715,
+          "score": 61.6,
+          "scoreExact": 61.5611111111111,
           "configuration": "Qwen3.8 Max (max)",
           "modelName": "qwen3.8-max",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 1.13,
@@ -3717,12 +3591,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 85.4,
-          "scoreExact": 85.41428571428571,
+          "score": 84.1,
+          "scoreExact": 84.07222222222222,
           "configuration": "GPT-6.1 Sol (max)",
           "modelName": "gpt-6.1-sol",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 13.64,
@@ -3734,6 +3608,39 @@
           "confidenceLowerExact": 12.013475893619807,
           "confidenceUpperExact": 15.273502110839477
         }
+      }
+    },
+    {
+      "slug": "gpt-6-1-terra",
+      "name": "GPT-6.1-Terra",
+      "multimodal": true,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "scores": {
+        "artificialAnalysis": {
+          "score": 48,
+          "scoreExact": 48.1061836463044,
+          "configuration": "GPT-6.1 Terra (Max)",
+          "modelSlug": "gpt-6-1-terra",
+          "sourceUrl": "https://artificialanalysis.ai/models/gpt-6-1-terra"
+        },
+        "deepSWE": null,
+        "liveBench": {
+          "score": 77.2,
+          "scoreExact": 77.20555555555556,
+          "configuration": "GPT-6.1 Terra (max)",
+          "modelName": "gpt-6.1-terra",
+          "sourceUrl": "https://livebench.ai/",
+          "publishedAt": "2026-10-25"
+        },
+        "arena": null
       }
     },
     {
@@ -3759,12 +3666,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 86.5,
-          "scoreExact": 86.52857142857144,
+          "score": 85.1,
+          "scoreExact": 85.14444444444445,
           "configuration": "Claude Opus 5.5 (max)",
           "modelName": "claude-opus-5.5",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 20.77,
@@ -3801,12 +3708,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 82.5,
-          "scoreExact": 82.45714285714287,
+          "score": 80.0,
+          "scoreExact": 80.03888888888889,
           "configuration": "Claude Sonnet 5.5 (max)",
           "modelName": "claude-sonnet-5.5",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 13.99,
@@ -3843,12 +3750,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 75.6,
-          "scoreExact": 75.64285714285714,
+          "score": 69.9,
+          "scoreExact": 69.85,
           "configuration": "Claude Haiku 5.5 (max)",
           "modelName": "claude-haiku-5.5",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 1.14,
@@ -3906,12 +3813,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 62.0,
-          "scoreExact": 62.01428571428572,
+          "score": 58.6,
+          "scoreExact": 58.60555555555555,
           "configuration": "Step 5 (Preview) (max)",
           "modelName": "step-5-preview",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": -2.03,
@@ -3968,12 +3875,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 74.1,
-          "scoreExact": 74.08571428571429,
+          "score": 70.1,
+          "scoreExact": 70.13888888888889,
           "configuration": "Grok 4.7 (xhigh)",
           "modelName": "grok-4.7",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 3.02,
@@ -4010,12 +3917,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 47.7,
-          "scoreExact": 47.699999999999996,
+          "score": 43.9,
+          "scoreExact": 43.900000000000006,
           "configuration": "Mistral Large 4 (high)",
           "modelName": "mistral-large-4",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": -5.06,
@@ -4074,12 +3981,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 41.5,
-          "scoreExact": 41.528571428571425,
+          "score": 38.7,
+          "scoreExact": 38.72222222222222,
           "configuration": "Gemma 4 31B (max)",
           "modelName": "gemma-4-31b",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": null
       }
@@ -4233,12 +4140,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 84.1,
-          "scoreExact": 84.10000000000001,
+          "score": 79.3,
+          "scoreExact": 79.30000000000001,
           "configuration": "Gemini 4 Argon (high)",
           "modelName": "gemini-4-argon",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": {
           "score": 11.75,
@@ -4598,12 +4505,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 79.2,
-          "scoreExact": 79.2,
+          "score": 74.0,
+          "scoreExact": 74.02222222222223,
           "configuration": "DeepSeek V4.1 Flash 1017 (max)",
           "modelName": "deepseek-v4.1-flash-1017",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": null
       }
@@ -4629,14 +4536,7 @@
           "sourceUrl": "https://artificialanalysis.ai/models/reflection-beam"
         },
         "deepSWE": null,
-        "liveBench": {
-          "score": 55.5,
-          "scoreExact": 55.5,
-          "configuration": "Beam 1.0 (max)",
-          "modelName": "beam-1.0",
-          "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
-        },
+        "liveBench": null,
         "arena": {
           "score": -3.04,
           "scoreExact": -3.0434287265530147,
@@ -4686,12 +4586,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 57.6,
-          "scoreExact": 57.57142857142857,
+          "score": 51.6,
+          "scoreExact": 51.62777777777777,
           "configuration": "Muse Spark Open (max)",
           "modelName": "muse-spark-open",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": null
       }
@@ -4719,12 +4619,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 51.5,
-          "scoreExact": 51.471428571428575,
+          "score": 50.2,
+          "scoreExact": 50.227777777777774,
           "configuration": "Nemotron 3.5 Super VL (max)",
           "modelName": "nemotron-super-vl-3.5",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": null
       }
@@ -4802,12 +4702,12 @@
         },
         "deepSWE": null,
         "liveBench": {
-          "score": 73.1,
-          "scoreExact": 73.08571428571429,
+          "score": 66.9,
+          "scoreExact": 66.89444444444445,
           "configuration": "MiniMax M3.1 Flash (max)",
           "modelName": "minimax-m3.1-flash",
           "sourceUrl": "https://livebench.ai/",
-          "publishedAt": "2026-10-23"
+          "publishedAt": "2026-10-25"
         },
         "arena": null
       }
@@ -4833,5 +4733,5 @@
       }
     }
   ],
-  "contentVersion": "2026-10-25T10:48:45.156Z"
+  "contentVersion": "2026-10-27T03:51:56.031Z"
 }

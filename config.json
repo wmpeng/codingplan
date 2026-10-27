@@ -1,8 +1,8 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.10.26 | 方舟 Flash 1017 与独立入口补充",
-    "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Cursor、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.1-Sol、Claude 5.5系列、MiniMax-M3.1-Flash、Kimi-K3.1-Pro、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3与Qwen-3.8等模型",
+    "updateDate": "更新日期 2026.10.27 | GPT-6.1 Terra 与全站数据复查",
+    "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Cursor、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.1-Sol / Terra、Claude 5.5系列、MiniMax-M3.1-Flash、Kimi-K3.1-Pro、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3与Qwen-3.8等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
     "entry": {
@@ -124,6 +124,13 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.10.27",
+      "items": [
+        "新增 GPT-6.1 Terra：图文输入，补充 AA / LiveBench 评分及 Codex、GitHub Copilot、Command Code 的实际套餐支持与档位。Codex Token 配额未知；Copilot 与 Command Code 按各自价格和共享额度估算。",
+        "新增方舟 Coding / Agent Plan 的 Kimi K3.1 Pro 支持与限时抵扣，活动截至 11 月 9 日；复查四项榜单、活动公告和预告，未确认恢复的到期活动保留待确认。"
+      ]
+    },
     {
       "date": "2026.10.26",
       "items": [
@@ -544,5 +551,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-10-25T16:38:26.291Z"
+  "contentVersion": "2026-10-27T03:55:11.196Z"
 }
