@@ -45,11 +45,10 @@
 .usage-preset-grid + .usage-preset-grid { margin-top: 14px; }
 .usage-preset-grid--single { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
 .usage-preset-grid--multi { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
-.usage-preset-card { min-width: 0; overflow: hidden; border: 1px solid #e0e7ee; border-radius: 14px; background: #fff; box-shadow: 0 7px 20px rgba(32,54,77,.045); }
+.usage-preset-card { min-width: 0; overflow: clip; border: 1px solid #e0e7ee; border-radius: 14px; background: #fff; box-shadow: 0 7px 20px rgba(32,54,77,.045); }
 .usage-preset-card > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 13px 14px 11px; border-bottom: 1px solid #e8edf2; background: #f8fafb; }
 .usage-preset-card > header h4 { margin: 0; color: #1d293d; font-size: 14px; line-height: 1.35; }
 .usage-preset-card > header p { margin: 3px 0 0; color: #8490a1; font-size: 10px; }
-.usage-preset-card > header > span { display: inline-flex; align-items: center; justify-content: center; min-height: 28px; padding: 4px 8px; border-radius: 999px; background: #edf2f7; color: #667489; font-size: 12px; line-height: 1.5; white-space: nowrap; }
 .usage-preset-table-scroll { width: 100%; overflow-x: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
 .usage-preset-table { width: 100%; min-width: 0; table-layout: fixed; border-collapse: separate; border-spacing: 0; }
 .usage-preset-table th { padding: 9px 10px; border-bottom: 1px solid #dfe6ed; background: #f3f6f9; color: #6c788a; font-size: 11px; font-weight: 600; text-align: left; white-space: nowrap; }
@@ -113,11 +112,6 @@
 .usage-data-table th { position: sticky; top: 0; z-index: 3; padding: 12px 14px; border-bottom: 1px solid #dfe5ed; background: #f5f7fb; color: #667287; font-size: 12px; font-weight: 600; letter-spacing: .02em; text-align: left; white-space: nowrap; user-select: none; }
 .usage-table-heading { display: inline-flex; align-items: baseline; gap: 7px; }
 .usage-table-heading small { color: #8a96a8; font-size: 9px; font-weight: 500; letter-spacing: 0; }
-.usage-data-table th.sortable { cursor: pointer; transition: background .15s ease, color .15s ease; }
-.usage-data-table th.sortable:hover, .usage-data-table th.sortable:focus-visible { background: #edf2f8; color: #253247; outline: none; }
-.usage-data-table th.sortable::after { content: ''; display: inline-block; width: 0; height: 0; margin-left: 7px; vertical-align: middle; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid #9aa5b5; opacity: .5; }
-.usage-data-table th.sort-asc::after { border-top: 0; border-bottom: 4px solid #1677ff; opacity: 1; }
-.usage-data-table th.sort-desc::after { border-top-color: #1677ff; opacity: 1; }
 .usage-data-table td { padding: 12px 14px; border-bottom: 1px solid #edf0f4; background: #fff; color: #36445a; font-size: 12px; line-height: 1.45; white-space: nowrap; }
 .usage-data-table tbody tr:nth-child(even) td { background: #f9fafc; }
 .usage-data-table tbody tr:hover td { background: #eef6ff; }
@@ -309,6 +303,58 @@
 
 .usage-data-table [hidden] { display:none; }
 .usage-chart-controls [aria-label="评分指标"] { display:flex; flex-wrap:wrap; }
+
+/* Model ability / price explorer. Names and billing tiers remain complete. */
+.price-chart-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:12px; padding:14px 0; border-bottom:1px solid var(--border-light); }
+.price-chart-toolbar .usage-segments { flex-wrap:wrap; }
+.price-chart-toolbar .usage-scale-control { margin-left:auto; }
+.price-intelligence-card .tool-legend { margin:14px 0 8px; }
+.price-intelligence-card .usage-color-legend { padding:0; }
+.price-intelligence-card .usage-chart { height:430px; }
+.price-chart-key, .price-chart-meta, .price-chart-symbols { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 18px; font-size:11px; color:var(--text-tertiary); }
+.price-chart-key { margin:14px 0 6px; }
+.price-chart-frontier { display:inline-flex; align-items:center; gap:7px; cursor:help; }
+.price-chart-frontier::before { content:''; width:25px; border-top:2px dotted #7c8da2; }
+.price-chart-symbols { justify-content:flex-start; margin:8px 0 16px; }
+.price-chart-detail { padding:15px 17px; border:1px solid var(--border-color); border-radius:9px; background:var(--bg-primary); }
+.price-chart-placeholder { color:var(--text-secondary); font-size:13px; }
+.price-chart-placeholder small { display:block; margin-top:4px; color:var(--text-tertiary); font-size:11px; }
+.price-chart-selection { display:flex; flex-wrap:wrap; gap:15px 24px; align-items:center; }
+.price-chart-identity { flex:1 1 240px; min-width:0; }
+.price-chart-identity small, .price-chart-metric small { display:block; color:var(--text-tertiary); font-size:11px; }
+.price-chart-identity strong { display:block; margin:4px 0; color:var(--text-primary); font-size:14px; overflow-wrap:anywhere; }
+.price-chart-identity > span { color:var(--text-secondary); font-size:12px; }
+.price-chart-metric { min-width:100px; }
+.price-chart-metric strong { display:block; margin-top:4px; color:var(--text-primary); font-size:21px; font-weight:600; }
+.price-chart-actions { display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; }
+.price-chart-clear { padding:6px 0; border:0; background:none; color:var(--text-secondary); font:inherit; font-size:12px; cursor:pointer; }
+.price-chart-members { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:14px; font-size:12px; color:var(--text-secondary); }
+.price-chart-members select { max-width:100%; min-width:0; padding:6px 8px; border:1px solid var(--border-color); border-radius:6px; background:var(--bg-secondary); color:var(--text-primary); font:inherit; }
+.price-chart-offer-note { margin-top:12px; padding-top:10px; border-top:1px solid var(--border-color); font-size:12px; color:var(--text-secondary); }
+.price-chart-offer-note summary { cursor:pointer; }
+.price-chart-offer-note .usage-tooltip { min-width:0; padding-top:10px; font-size:12px; white-space:normal; overflow-wrap:anywhere; }
+.price-chart-offer-note p { margin-top:8px; white-space:pre-line; overflow-wrap:anywhere; }
+.price-chart-method { margin:13px 0 0; color:var(--text-tertiary); font-size:11px; line-height:1.8; }
+.price-chart-method a { color:var(--accent-primary); text-underline-offset:3px; }
+.price-chart-overlap { margin-top:8px; padding-top:7px; border-top:1px solid var(--border-light); color:var(--text-secondary); font-size:11px; }
+.price-chart-model-button { padding:0; border:0; background:none; color:inherit; font:inherit; text-align:left; cursor:pointer; text-decoration:underline; text-decoration-color:#aab8ca; text-underline-offset:3px; }
+.usage-data-table .price-chart-focus-row > td { background:#edf3fc; box-shadow:inset 0 1px #b9ceeb,inset 0 -1px #b9ceeb; }
+@media (max-width:800px) {
+  .price-intelligence-card .usage-chart { height:340px; }
+  .price-intelligence-card .usage-chart-head { display:flex; gap:12px; }
+  .pricing-directory .price-intelligence-card .usage-chart-head > div:first-child { flex:1 1 180px; }
+  .price-chart-toolbar { gap:9px; }
+  .price-chart-toolbar .usage-scale-control { margin-left:0; }
+  .price-chart-toolbar .usage-segments button { min-height:44px; padding:6px 9px; font-size:12px; }
+  .price-chart-toolbar > .usage-segments:first-child { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); width:100%; }
+  .price-chart-detail { padding:12px; }
+  .price-chart-selection { gap:12px; }
+  .price-chart-identity { flex-basis:100%; }
+  .price-chart-metric { flex:1; }
+  .price-chart-actions { flex-basis:100%; }
+  .price-chart-actions button, .price-chart-export, .price-chart-members select, .price-chart-offer-note summary, .price-chart-model-button { min-height:44px; }
+  .price-chart-symbols { font-size:10px; }
+}
 @media(max-width:650px) {
   .usage-chart-controls { width:100%; }
   .usage-chart-controls [aria-label="评分指标"] { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); width:100%; }

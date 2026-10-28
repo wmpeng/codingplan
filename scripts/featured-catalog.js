@@ -51,7 +51,7 @@
     return `<article class="model-card${options.featured ? ' is-featured' : ''}${options.pinned ? ' is-pinned' : ''}" data-model-slug="${esc(model.slug)}">${title}<p class="model-modality">${esc(modalities(model))}</p><div class="model-scores">${Scores.keys.map(key => Scores.cardHtml(model,key,context.benchmarks?.[key])).join('')}</div><a class="model-offers-link" href="${esc(UI.route('plans',{model:model.slug}))}">${supported.size} 个平台收录 · 查看套餐 →</a><a class="model-price-link" href="${esc(UI.route('pricing',{model:model.slug}))}">比较价格与额度 →</a></article>`;
   }
   function modelGroups(config, context) {
-    return config.groups.map(g => `<section class="featured-model-group"><div class="section-heading"><h3>${esc(g.title)}</h3><span>${g.modelSlugs.length} 个模型</span></div><div class="model-grid">${g.modelSlugs.map(s => modelCard(context.modelBySlug.get(s),context)).join('')}</div></section>`).join('');
+    return config.groups.map(g => `<section class="featured-model-group"><div class="section-heading"><div class="featured-model-group-title"><h3>${esc(g.title)}</h3><span class="featured-model-group-description">${g.id === 'sota-models' ? '复杂任务 · 能力优先' : '日常高频 · 性价比优先'}</span></div><span>${g.modelSlugs.length} 个模型</span></div><div class="model-grid">${g.modelSlugs.map(s => modelCard(context.modelBySlug.get(s),context)).join('')}</div></section>`).join('');
   }
   function points(context, config) {
     return globalThis.EntityData.buildComparisonPoints(context, config.usdToCnyRate, {includeUnknown:true,priceBasis:globalThis.EntityData.displayPriceBasis()}).map(p => ({...p, available: (p.planStatus || 'open') === 'open' && (context.platformBySlug.get(p.platformSlug)?.platformStatus || 'open') === 'open'}));
@@ -81,7 +81,11 @@
     function toggle(card,open) {
       card.querySelectorAll('[data-preset-extra]').forEach(row=>row.hidden=!open);
       const button=card.querySelector('[data-preset-expand]');
-      if(button){button.setAttribute('aria-expanded',String(open));button.querySelector('span').textContent=open?'收起':'展开全部';}
+      if(button){
+        button.setAttribute('aria-expanded',String(open));
+        button.querySelector('span').textContent=open?'收起':'展开全部';
+        if(!open)button.scrollIntoView({block:'nearest',behavior:'instant'});
+      }
     }
     host.addEventListener('click', event => {
       const b=event.target.closest('button'); if(!b)return;

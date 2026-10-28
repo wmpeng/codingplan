@@ -4,22 +4,6 @@
   "description": "订阅套餐与按量 API 使用同一口径比较综合单价；用量为参考值，各模型额度不相加。",
   "groups": [
     {
-      "id": "high-volume-models",
-      "title": "甜品级模型",
-      "label": "甜品级",
-      "kind": "multi",
-      "enabled": true,
-      "modelSlugs": [
-        "deepseek-v4-1-flash-1017",
-        "deepseek-v4-1-flash",
-        "deepseek-v4-flash-0731",
-        "glm-5-3-flash",
-        "gpt-6-luna",
-        "kimi-k2-8-preview",
-        "minimax-m3-1-flash"
-      ]
-    },
-    {
       "id": "sota-models",
       "title": "头部级模型",
       "label": "头部级",
@@ -30,8 +14,22 @@
         "gpt-6-1-sol",
         "claude-opus-5-5",
         "glm-5-3",
-        "kimi-k3-1-pro",
-        "kimi-k3"
+        "kimi-k3-1-pro"
+      ]
+    },
+    {
+      "id": "high-volume-models",
+      "title": "甜品级模型",
+      "label": "甜品级",
+      "kind": "multi",
+      "enabled": true,
+      "modelSlugs": [
+        "deepseek-v4-1-flash-1017",
+        "glm-5-3-flash",
+        "gpt-6-1-terra",
+        "gpt-6-luna",
+        "kimi-k2-8-preview",
+        "minimax-m3-1-flash"
       ]
     }
   ],
@@ -42,7 +40,8 @@
     "opencode",
     "bytedance-ark",
     "deepseek-official",
-    "codex"
+    "codex",
+    "claude"
   ],
-  "contentVersion": "2026-10-25T10:48:45.157Z"
+  "contentVersion": "2026-10-27T11:25:07.246Z"
 }

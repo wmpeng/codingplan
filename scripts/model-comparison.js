@@ -8,10 +8,12 @@
     const EntityData = root.EntityData || (typeof require === 'function' ? require('./entity-data.js') : null);
     const UI = root.CodingPlanUI || (typeof require === 'function' ? require('./ui-core.js') : null);
     const Numbers = root.NumberDisplay || (typeof require === 'function' ? require('./number-display.js') : null);
+    const Help = root.CodingPlanHelp || (typeof require === 'function' ? require('./ui-help.js') : null);
     const Notices = root.ChangeNotices || (typeof require === 'function' ? require('./change-notices.js') : null);
 
     const Scores = root.BenchmarkScores || (typeof require === 'function' ? require('./benchmark-scores.js') : null);
     const BENCHMARKS = Scores.definitions;
+    const PriceChart = root.ModelPriceChart || (typeof require === 'function' ? require('./model-price-chart.js') : null);
     const ATTRACTIVE_UNIT_PRICE_CNY_PER_YI = 15;
     const ATTRACTIVE_UNIT_PRICE_CNY_PER_M = ATTRACTIVE_UNIT_PRICE_CNY_PER_YI / 100;
     const PLATFORM_COLORS = [
@@ -276,28 +278,6 @@
         };
     }
 
-    function buildIntelligenceAttractiveZoneSeries(threshold, scoreReference, tokenUnit = 'yi') {
-        return {
-            id: 'intelligence-attractive-zone', type: 'custom', coordinateSystem: 'cartesian2d',
-            silent: true, clip: true, z: 0, data: [[threshold, scoreReference]],
-            renderItem: function (params, api) {
-                const coord = api.coord([threshold, scoreReference]);
-                const left = params.coordSys.x;
-                const right = params.coordSys.x + params.coordSys.width;
-                const boundaryX = Math.max(left, Math.min(right, coord[0]));
-                const children = [];
-                if (boundaryX > left) {
-                    children.push({ type: 'rect', shape: { x: left, y: params.coordSys.y, width: boundaryX - left, height: params.coordSys.height }, style: { fill: 'rgba(34, 197, 94, 0.07)' } });
-                }
-                if (boundaryX > left && boundaryX < right) {
-                    children.push({ type: 'line', shape: { x1: boundaryX, y1: params.coordSys.y, x2: boundaryX, y2: params.coordSys.y + params.coordSys.height }, style: { stroke: '#22a447', lineWidth: 1.5, lineDash: [6, 4] } });
-                    children.push({ type: 'text', style: { x: Math.max(left + 70, Math.min(right - 70, boundaryX - 70)), y: params.coordSys.y + 14, text: attractiveZoneLabel(tokenUnit), textAlign: 'center', fill: '#15803d', font: '600 11px sans-serif', backgroundColor: 'rgba(240, 253, 244, 0.9)', padding: [3, 5], borderRadius: 4 } });
-                }
-                return { type: 'group', children };
-            }
-        };
-    }
-
     function buildVendorColorMap(vendors) {
         const map = {};
         const used = new Set();
@@ -488,14 +468,20 @@
     function comparisonTableHeadHtml(tableName, compact) {
         return `<tr>${COMPARISON_TABLE_COLUMNS.filter(column => !compact || column.key !== 'plan').map((column) => {
             const sortable = column.sortable !== false;
-            const classes = `${sortable ? 'sortable' : ''}${column.key === 'vendor' ? ' sticky-first' : ''}`.trim();
+            const classes = column.key === 'vendor' ? 'sticky-first' : '';
             const sorting = sortable
-                ? ` tabindex="0" aria-sort="none" data-table-sort="${tableName}" data-sort-key="${column.key}"`
+                ? ` aria-sort="none" data-table-sort="${tableName}" data-sort-key="${column.key}"`
                 : '';
             const label = compact && column.key === 'vendor' ? '平台 / 套餐' : compact && column.key === 'price' ? '首月价格' : column.hint
                 ? `<span class="usage-table-heading"><span>${column.label}</span><small>${column.hint}</small></span>`
                 : column.label;
-            return `<th scope="col" data-comparison-col="${column.key}"${classes ? ` class="${classes}"` : ''}${sorting}>${label}</th>`;
+            const helpText = column.key === 'unitPriceVisual'
+                ? '横条按当前结果采用对数尺度比较；条越短，综合单价越低。'
+                : ['fiveHourTokenInM', 'weeklyTokenInM', 'monthlyTokenInM'].includes(column.key)
+                    ? '按量 API 没有周期额度时显示“—”；订阅的未知额度不表示零。' : '';
+            const help = helpText ? Help.html(`${tableName}-${column.key}-help`, `${column.label}说明`, helpText) : '';
+            const heading = sortable ? `<button type="button" class="table-sort-button" aria-label="${column.label}排序">${label}</button>` : label;
+            return `<th scope="col" data-comparison-col="${column.key}"${classes ? ` class="${classes}"` : ''}${sorting}>${heading}${help}</th>`;
         }).join('')}</tr>`;
     }
 
@@ -534,7 +520,7 @@
             `<td class="sticky-first" data-comparison-col="vendor">${identity}</td>` +
             (compact ? '' : `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}<div class="plan-capabilities">${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></td>`) +
             `<td class="numeric">${price}${notice('price')}</td>` +
-            `<td class="usage-table-model">${escapeHtml(point.relationLabel || point.modelName)}${notice('models')}</td>` +
+            `<td class="usage-table-model">${visualOptions?.chartSelectable ? `<button type="button" class="price-chart-model-button" data-chart-select="${escapeHtml(point.slug)}" aria-label="在图中查看 ${escapeHtml(point.relationLabel || point.modelName)}">${escapeHtml(point.relationLabel || point.modelName)}</button>` : escapeHtml(point.relationLabel || point.modelName)}${notice('models')}</td>` +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
             `<td class="usage-table-price-visual">${unitPriceVisualHtml(point, tokenUnit, visualOptions)}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
@@ -600,8 +586,8 @@
             : '';
         const modelOption = (slug, label) => `<button type="button" data-preset-model="${escapeHtml(slug)}" aria-pressed="${slug ? selectedModels.has(slug) : !selectedModels.size}">${escapeHtml(label)}</button>`;
         const subtitle = includedModels ? options.modelFilter
-            ? `<div class="preset-model-filters" role="group" aria-label="${escapeHtml(group.title)}表格的模型筛选，可多选"><span>包含：</span>${modelOption('', '全部')}${group.modelSlugs.map(slug => modelOption(slug, modelNamesBySlug.get(slug) || slug)).join('')}</div>`
-            : `<p>包含：${escapeHtml(includedModels)}</p>` : '';
+            ? `<div class="preset-model-filters" role="group" aria-label="${escapeHtml(group.title)}表格的模型筛选，可多选">${modelOption('', '全部')}${group.modelSlugs.map(slug => modelOption(slug, modelNamesBySlug.get(slug) || slug)).join('')}</div>`
+            : `<p class="preset-model-list" aria-label="包含模型">${escapeHtml(includedModels)}</p>` : '';
         const head = `<tr>${columns.map((column) => `<th scope="col">${column.label}</th>`).join('')}</tr>`;
         const limit = options.limit || rows.length;
         const body = rows.length ? rows.map((point, index) => {
@@ -624,9 +610,10 @@
             }).join('')}</tr>`;
         }).join('') : `<tr><td class="usage-table-empty" colspan="${columns.length}">当前暂无可比较的套餐。</td></tr>`;
         return `<article class="usage-preset-card usage-preset-card--${kind}" data-preset-id="${escapeHtml(group.id)}">` +
-            `<header><div><h4>${escapeHtml(group.title)}</h4>${subtitle}</div><span${options.modelFilter?' data-preset-count aria-live="polite" aria-atomic="true"':''}>${rows.length} 条</span></header>` +
+            `<header><div><h4>${escapeHtml(group.title)}</h4>${subtitle}</div></header>` +
             `<div class="usage-preset-table-scroll" tabindex="0" role="region" aria-label="${escapeHtml(group.title)}价格与额度"><table class="usage-preset-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>` +
-            (rows.length > limit ? `<button type="button" class="preset-expand" data-preset-expand aria-expanded="false"><span>展开全部</span></button>` : '') + '</article>';
+            `<footer class="preset-footer"><span class="preset-total"${options.modelFilter?' data-preset-count aria-live="polite" aria-atomic="true"':''}>共 ${rows.length} 条</span>` +
+            (rows.length > limit ? `<button type="button" class="preset-expand" data-preset-expand aria-expanded="false"><span>展开全部</span></button>` : '') + '</footer></article>';
     }
 
     function renderPresetComparisons(host, config, points, tokenUnit, platformScope, options = {}) {
@@ -727,17 +714,27 @@
                     <div class="usage-color-control" aria-label="颜色区分方式"><span>颜色</span><div class="usage-segments" role="group" aria-label="颜色区分方式"><button type="button" data-color-mode="vendor" class="is-active" aria-pressed="true">按平台</button><button type="button" data-color-mode="model" aria-pressed="false">按模型</button></div></div>
                     ${compact ? '' : '<div class="filter-trailing"><button type="button" class="reset-btn" data-action="restore-defaults">恢复默认</button><div class="stats-bar usage-counts" data-counts aria-live="polite"></div></div>'}
                 </div>
-                <div class="usage-color-legend"><strong data-color-legend-title>平台颜色</strong><div data-color-legend></div></div>
+                <article class="usage-chart-card price-intelligence-card">
+                    <div class="usage-chart-head"><div><h3>模型能力与价格</h3><p>越靠左，综合单价越低；越靠上，模型评分越高。</p></div><button type="button" class="tool-button price-chart-export" data-chart-export>保存图表 ↓</button></div>
+                    <div class="price-chart-toolbar">
+                        <div class="usage-segments" role="group" aria-label="评分指标">${Scores.keys.map((key,index) => `<button type="button" data-benchmark="${key}" class="${index === 0 ? 'is-active' : ''}" aria-pressed="${index === 0}">${BENCHMARKS[key].label}</button>`).join('')}</div>
+                        <div class="usage-segments" role="group" aria-label="计费方式"><button type="button" data-chart-billing="all" class="is-active" aria-pressed="true">全部</button><button type="button" data-chart-billing="subscription" aria-pressed="false">订阅</button><button type="button" data-chart-billing="payg" aria-pressed="false">按量 API</button></div>
+                        <div class="usage-scale-control"><span>价格轴</span><div class="usage-segments" data-scale="price" role="group" aria-label="价格轴"><button type="button" data-scale-value="log" class="is-active" aria-pressed="true">对数</button><button type="button" data-scale-value="value" aria-pressed="false">线性</button></div></div>
+                    </div>
+                    <div class="usage-color-legend"><div data-color-legend></div></div>
+                    <div class="price-chart-key"><span class="price-chart-frontier" title="当前筛选下，不存在另一个价格不高、评分不低且至少一项更好的方案。仅比较综合单价与评分。">价格—能力优势前沿</span></div>
+                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="模型能力和综合单价散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前条件下没有可绘制的评分与价格；请调整上方筛选、计费方式或价格轴。</div></div>
+                    <div class="price-chart-meta" data-chart-meta aria-live="polite"></div>
+                    <div class="price-chart-symbols"><span>● 订阅折算价</span><span>◆ 按量 API 加权价</span><span>同坐标、同计费方式的报价合并显示</span></div>
+                    <div class="price-chart-detail" data-chart-detail></div>
+                    <p class="price-chart-method">综合单价按全站显示设置的首月／每月价格口径计算，订阅按参考额度折算，不代表固定任务成本。<a href="/pricing/#pricingMethod">查看价格与用量口径</a></p>
+                </article>
                 <article class="usage-chart-card">
                     <div class="usage-chart-head"><div><h3>首月价格 vs 月 Token</h3><p>一个点代表一个平台 × 套餐 × 模型；越靠左上越有吸引力。</p></div><div class="usage-scale-control"><span>坐标轴</span><div class="usage-segments" data-scale="tokens" role="group" aria-label="坐标轴"><button type="button" data-scale-value="log" class="is-active" aria-pressed="true">对数</button><button type="button" data-scale-value="value" aria-pressed="false">线性</button></div></div></div>
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="首月价格和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前筛选下没有可绘制的首月价格与月额度数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
                 </article>
-                <article class="usage-chart-card">
-                    <div class="usage-chart-head"><div><h3>单位价格 vs 模型评分</h3><p>同时纳入订阅套餐与按量 API；越靠左上越有吸引力。</p></div><div class="usage-chart-controls"><div class="usage-segments" role="group" aria-label="评分指标">${Scores.keys.map((key,index) => `<button type="button" data-benchmark="${key}" class="${index === 0 ? 'is-active' : ''}" aria-pressed="${index === 0}">${BENCHMARKS[key].label}</button>`).join('')}</div><div class="usage-scale-control"><span>价格轴</span><div class="usage-segments" data-scale="price" role="group" aria-label="价格轴"><button type="button" data-scale-value="log" class="is-active" aria-pressed="true">对数</button><button type="button" data-scale-value="value" aria-pressed="false">线性</button></div></div></div></div>
-                    <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="单位价格和模型评分散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前筛选与评分指标下没有可绘制的数据；请在上方下拉框调整条件，或点击“显示全部”。</div></div>
-                </article>
                 <article class="usage-chart-card usage-data-card">
-                    <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3><p>精确单价旁的横条按当前结果统一比较，采用对数尺度兼顾低价与高价；条越短，综合单价越低。按量 API 没有周期额度时显示“—”。</p></div><div class="usage-detail-summary"><span class="usage-table-count" data-table-count="comparison"></span><label class="usage-score-columns-control"><input type="checkbox" role="switch" data-all-scores aria-controls="pricingComparisonTable"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.75" y="3.75" width="14.5" height="12.5" rx="1.5"/><path d="M7.5 4v12M12.5 4v12"/></svg><span class="usage-score-columns-text">显示全部评分</span><span class="usage-score-columns-switch" aria-hidden="true"></span></label></div></div>
+                    <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3></div><div class="usage-detail-summary"><span class="usage-table-count" data-table-count="comparison"></span><label class="usage-score-columns-control"><input type="checkbox" role="switch" data-all-scores aria-controls="pricingComparisonTable"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.75" y="3.75" width="14.5" height="12.5" rx="1.5"/><path d="M7.5 4v12M12.5 4v12"/></svg><span class="usage-score-columns-text">显示全部评分</span><span class="usage-score-columns-switch" aria-hidden="true"></span></label></div></div>
                     <section class="usage-table-section" aria-label="价格与额度数据明细"><div class="usage-table-scroll"><table class="usage-data-table" id="pricingComparisonTable" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison', compact)}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
                 </article>
             </section>`;
@@ -841,6 +838,7 @@
             const state = Object.assign(createDefaultFilterState(points, mountOptions), {
                 allScores:false, benchmark: 'artificialAnalysis', colorMode: 'vendor',
                 tokensScale: 'log', priceScale: 'log', presetPlatformScope: 'featured',
+                chartBilling: 'all', selectedChartSlug: null,
                 tokenUnit: root.CodingPlanDisplaySettings?.getTokenUnit() || 'yi'
             });
             const colorControl = container.querySelector('.usage-color-control');
@@ -860,7 +858,7 @@
             const usageChart = echarts.init(container.querySelector('[data-chart="usage"]'));
             const intelligenceChart = echarts.init(container.querySelector('[data-chart="intelligence"]'));
             enableClickPinnedTooltip(usageChart);
-            enableClickPinnedTooltip(intelligenceChart);
+
             container.__usageCharts = [usageChart, intelligenceChart];
             const tableSortState = {
                 comparison: { key: 'unitPriceCnyPerM', direction: 'asc' }
@@ -869,7 +867,8 @@
             const urlSchema = Directory && {
                 query:Url.text('q'), key:Url.choice('sort', COMPARISON_TABLE_COLUMNS.filter(column => column.sortable !== false).map(column => column.key), 'unitPriceCnyPerM'),
                 direction:Url.choice('direction', ['asc','desc'], 'asc'),
-                benchmark:Url.choice('benchmark', Scores.keys, 'artificialAnalysis'), allScores:Url.flag('allScores')
+                benchmark:Url.choice('benchmark', Scores.keys, 'artificialAnalysis'), allScores:Url.flag('allScores'),
+                chartBilling:Url.choice('chartBilling', ['all','subscription','payg'], 'all')
             };
             if (Directory) {
                 const saved = Url.read(urlSchema);
@@ -877,12 +876,14 @@
                 state.benchmark = saved.allScores !== true && Scores.keys.includes(saved.key)
                     ? saved.key : saved.benchmark || 'artificialAnalysis';
                 state.allScores = saved.allScores === true;
+                state.chartBilling = saved.chartBilling || 'all';
                 tableSortState.comparison = {key:saved.key || 'unitPriceCnyPerM', direction:saved.direction || 'asc'};
             }
             const latestTableRows = { comparison: [] };
             const priceBounds = getMonthlyPriceBounds(points);
             const priceSlider = { min: priceBounds.min, max: priceBounds.max };
             let renderedPresetKey = null;
+            let latestPriceGroups = [];
 
             function applyExternalFilter(external) {
                 if (!external) return;
@@ -1056,7 +1057,6 @@
             }
 
             function renderColorLegend(context) {
-                container.querySelector('[data-color-legend-title]').textContent = state.colorMode === 'model' ? '模型颜色' : '平台颜色';
                 const entries = [...context.entries.entries()].map(([slug, name]) => ({slug, name}))
                     .sort((a, b) => a.name.localeCompare(b.name, 'zh-CN'));
                 const ordered = state.colorMode === 'model' ? UI.prioritizeFeaturedModels(entries, presetConfig.groups) : entries;
@@ -1072,9 +1072,10 @@
             function renderDataTable(tableName, rows) {
                 latestTableRows[tableName] = rows || [];
                 const sort = tableSortState[tableName];
-                if (Directory) Url.replace(urlSchema, {query:search.value, ...sort, benchmark:state.benchmark, allScores:state.allScores});
+                if (Directory) Url.replace(urlSchema, {query:search.value, ...sort, benchmark:state.benchmark, allScores:state.allScores, chartBilling:state.chartBilling});
                 let sorted = Directory ? Directory.tableRows(rows, points, pins, sortComparisonRows, sort) : sortComparisonRows(rows, sort.key, sort.direction);
                 const scale = buildUnitPriceVisualScale(sorted);
+                const chartSlugs = new Set(latestPriceGroups.flatMap(group => group.members.map(point => point.slug)));
                 let renderKey = '';
                 if (Directory) {
                     const nextSelectionKey=JSON.stringify([sorted.map(point=>point.slug),priceBasis,pins,sort]);
@@ -1086,7 +1087,7 @@
                         pager.querySelector('[data-price-page-label]').textContent=`${pageIndex+1} / ${pagination.pages} 页`;
                         pager.querySelectorAll('[data-price-page]').forEach(button=>button.disabled=button.dataset.pricePage==='next'?pageIndex>=pagination.pages-1:pageIndex===0);
                     });
-                    renderKey = JSON.stringify([nextSelectionKey,pageIndex,state.tokenUnit,state.colorMode,state.benchmark,state.allScores]);
+                    renderKey = JSON.stringify([nextSelectionKey,pageIndex,state.tokenUnit,state.colorMode,state.benchmark,state.allScores,sorted.map(point=>chartSlugs.has(point.slug))]);
                     const label = `${rows.length} / ${points.length} 条明细${pins.length ? ' · 置顶 '+pins.length+' 条' : ''}`;
                     mountOptions.count.textContent = label;
                     root.CodingPlanEvents?.results({result_count:rows.length,result_key:JSON.stringify(rows.map(x=>x.slug))});
@@ -1106,6 +1107,7 @@
                         changes:context.changes, noticeSeen,
                         focused: focusRelationSlugs.has(point.slug),
                         compactIdentity:Boolean(Directory), pinned:pins.includes(point.slug),
+                        chartSelectable:chartSlugs.has(point.slug),
                         color: colors[getPointColorKey(point, state.colorMode)]
                     })).join('')
                     : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length - (Directory ? 1 : 0)}">当前筛选下没有可展示的数据；请在上方下拉框调整条件，或点击“显示全部”。</td></tr>`;
@@ -1138,7 +1140,7 @@
                 directionButton.addEventListener('click', () => { const sort=tableSortState.comparison; sort.direction=sort.direction==='asc'?'desc':'asc'; renderDataTable('comparison',latestTableRows.comparison); });
                 search.addEventListener('input', () => { cancelAnimationFrame(renderFrame); renderFrame=requestAnimationFrame(render); });
                 document.getElementById('toolFilters').addEventListener('click', event => {
-                    if (event.target.closest('[data-filter-action]')) { search.value=''; tableSortState.comparison={key:'unitPriceCnyPerM',direction:'asc'}; }
+                    if (event.target.closest('[data-filter-action]')) { state.chartBilling='all'; state.selectedChartSlug=null; search.value=''; tableSortState.comparison={key:'unitPriceCnyPerM',direction:'asc'}; }
                 }, true);
                 root.addEventListener('storage', event => { if(event.key===Directory.pinKey || event.key===null){pins=Directory.readPins(root.localStorage,points);renderDataTable('comparison',latestTableRows.comparison);} });
             }
@@ -1185,12 +1187,20 @@
                     priceRanges: state.priceRanges, filterContext: state.filterContext, sharedFilters: state.sharedFilters
                 });
                 if (Directory) filtered = Directory.search(filtered, search.value);
-                if (state.soloColorKey && !filtered.some(point => getPointColorKey(point, state.colorMode) === state.soloColorKey)) state.soloColorKey = null;
-                const visibleFiltered = filterBySoloColorKey(filtered, state.colorMode, state.soloColorKey);
+                const billingFiltered = filtered.filter(point => state.chartBilling === 'all' || point.billingMode === state.chartBilling);
+                if (state.soloColorKey && !billingFiltered.some(point => getPointColorKey(point, state.colorMode) === state.soloColorKey)) state.soloColorKey = null;
+                const visibleFiltered = filterBySoloColorKey(billingFiltered, state.colorMode, state.soloColorKey);
                 const usagePoints = buildUsageChartPoints(visibleFiltered);
                 const intelligencePoints = buildIntelligenceChartPoints(visibleFiltered, state.benchmark, state.priceScale);
+                latestPriceGroups = PriceChart.groupPoints(intelligencePoints, state.benchmark);
+                if (!latestPriceGroups.some(group => group.members.some(point => point.slug === state.selectedChartSlug))) state.selectedChartSlug = null;
+                container.querySelectorAll('[data-chart-billing]').forEach(button => {
+                    const active = button.dataset.chartBilling === state.chartBilling;
+                    button.classList.toggle('is-active', active);
+                    button.setAttribute('aria-pressed', String(active));
+                });
                 const pointLabelField = getSoloPointLabelField(visibleFiltered);
-                const color = colorContext(filtered);
+                const color = colorContext(billingFiltered);
                 renderColorLegend(color);
                 const counts = container.querySelector('[data-counts]');
                 if (counts) {
@@ -1207,37 +1217,56 @@
                     series: [buildUsageAttractiveZoneSeries(usageZone), ...seriesByColor(usagePoints, state.colorMode, color.colors, (point) => ({ value: [point.monthlyFeeCny, tokenAmountInUnit(point.monthlyTokenInM, state.tokenUnit)], meta: point }), 'usage', pointLabelField)]
                 }), true);
 
-                const intelligenceSeries = seriesByColor(
-                    intelligencePoints,
-                    state.colorMode,
-                    color.colors,
-                    (point) => ({ value: [unitPriceInTokenUnit(point.unitPriceCnyPerM, state.tokenUnit), getPointScore(point, state.benchmark)], meta: point }),
-                    'intelligence',
-                    pointLabelField
-                );
-                const intelligenceScores = intelligencePoints
-                    .map((point) => getPointScore(point, state.benchmark))
-                    .filter((value) => value !== null);
-                const intelligenceScoreReference = intelligenceScores.length ? Math.min(...intelligenceScores) : 0;
-                setScatterOptions(intelligenceChart, Object.assign(chartBase((params) => tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)), {
-                    xAxis: { type: state.priceScale, name: `人民币 / ${tokenUnitLabel} Token`, nameLocation: 'middle', nameGap: 38, min: state.priceScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => Numbers.unitPrice(v) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
-                    yAxis: { type: 'value', name: state.benchmark === 'arena' ? 'Arena 净改善（%）' : `${BENCHMARKS[state.benchmark].short} 评分`, nameLocation: 'middle', nameGap: 45, scale: true, axisLabel: { formatter: (v) => state.benchmark === 'arena' ? `${formatNumber(v,1)}%` : formatNumber(v,1) }, splitLine: { lineStyle: { color: '#e5e7eb' } } },
-                    series: [
-                        buildIntelligenceAttractiveZoneSeries(
-                            getAttractiveUnitPriceThreshold(state.tokenUnit),
-                            intelligenceScoreReference,
-                            state.tokenUnit
-                        ),
-                        ...intelligenceSeries
-                    ]
+                const intelligenceSeries = PriceChart.buildSeries(latestPriceGroups, {
+                    benchmark: state.benchmark, colors: color.colors, colorMode: state.colorMode,
+                    tokenUnit: state.tokenUnit, compact: intelligenceChart.getWidth() < 800,
+                    selectedSlug: state.selectedChartSlug
+                });
+                setScatterOptions(intelligenceChart, Object.assign(chartBase((params) => {
+                    if (!params.data?.meta) return '';
+                    return tooltipHtml(params.data.meta, state.benchmark, state.colorMode, state.tokenUnit)
+                        + (params.data.members.length > 1 ? `<div class="price-chart-overlap">此位置共 ${params.data.members.length} 个方案，点击后可逐条查看。</div>` : '');
+                }), {
+                    xAxis: { type: state.priceScale, name: `综合单价（人民币 / ${tokenUnitLabel} Token）`, nameLocation: 'middle', nameGap: 38, min: state.priceScale === 'log' ? undefined : 0, logBase: 10, axisLabel: { formatter: (v) => Numbers.unitPrice(v) }, splitLine: { lineStyle: { color: '#edf1f6', type: 'dashed' } } },
+                    yAxis: { type: 'value', name: state.benchmark === 'arena' ? 'Arena 净改善（%）' : `${BENCHMARKS[state.benchmark].short} 评分`, nameLocation: 'middle', nameGap: 45, scale: true, axisLabel: { formatter: (v) => state.benchmark === 'arena' ? `${formatNumber(v,1)}%` : formatNumber(v,1) }, splitLine: { lineStyle: { color: '#edf1f6' } } },
+                    series: intelligenceSeries
                 }), false);
+                container.querySelector('[data-chart-meta]').innerHTML = PriceChart.metadataHtml(latestPriceGroups, state.benchmark, context.benchmarks?.[state.benchmark], priceBasis, visibleFiltered.length - intelligencePoints.length);
+                renderChartDetail();
                 renderDataTable('comparison', visibleFiltered);
                 container.querySelector('[data-empty="usage"]').hidden = usagePoints.length > 0;
                 container.querySelector('[data-empty="intelligence"]').hidden = intelligencePoints.length > 0;
             }
 
+            function renderChartDetail() {
+                const host = container.querySelector('[data-chart-detail]');
+                const disclosure = host.querySelector('details');
+                const wasOpen = disclosure?.open;
+                host.innerHTML = PriceChart.detailHtml(latestPriceGroups, state.selectedChartSlug, {
+                    benchmark: state.benchmark, tokenUnit: state.tokenUnit,
+                    tooltipHtml: point => tooltipHtml(point, state.benchmark, state.colorMode, state.tokenUnit)
+                });
+                if (wasOpen && host.querySelector('details')) host.querySelector('details').open = true;
+            }
+            intelligenceChart.on('click', params => {
+                if (!params.data?.meta) return;
+                state.selectedChartSlug = params.data.meta.slug;
+                intelligenceChart.dispatchAction({type:'hideTip'});
+                render();
+            });
+            intelligenceChart.getZr().on('click', event => {
+                if (event.target || !state.selectedChartSlug) return;
+                state.selectedChartSlug = null;
+                render();
+            });
             container.addEventListener('change', (event) => {
                 const target = event.target;
+                if (target.matches('[data-chart-member]')) {
+                    state.selectedChartSlug = target.value;
+                    render();
+                    container.querySelector('[data-chart-member]')?.focus({preventScroll:true});
+                    return;
+                }
                 if (target.matches('[data-all-scores]')) {
                     state.allScores = target.checked;
                     render();
@@ -1257,7 +1286,8 @@
             });
             function onSharedFilterChange(event) {
                 // Business filters supersede the temporary legend restriction; display units do not.
-                if (!event || !event.detail || event.detail.source !== 'display') state.soloColorKey = null;
+                if (!event || !event.detail || event.detail.source !== 'display') { state.soloColorKey = null; state.selectedChartSlug = null; }
+                if (event?.detail?.source === 'reset' || event?.detail?.source === 'preset') state.chartBilling = 'all';
                 applyExternalFilter(event && event.detail && event.detail.state);
                 render();
             }
@@ -1305,7 +1335,7 @@
                 setChartSeriesHighlight(usageChart, [`usage:${key}`], active);
                 setChartSeriesHighlight(intelligenceChart, [`intelligence:${key}`], active);
             }
-            [usageChart, intelligenceChart].forEach((chart) => {
+            [usageChart].forEach((chart) => {
                 chart.on('mouseover', (params) => {
                     if (params.componentType !== 'series' || !params.data || !params.data.meta) return;
                     setColorHighlight(getPointColorKey(params.data.meta, state.colorMode), true);
@@ -1328,6 +1358,38 @@
                 setColorHighlight(item.dataset.colorKey, false);
             });
             container.addEventListener('click', (event) => {
+                const selectPoint = event.target.closest('[data-chart-select]');
+                if (selectPoint) {
+                    state.selectedChartSlug = selectPoint.dataset.chartSelect; render();
+                    const detail = container.querySelector('[data-chart-detail]');
+                    detail.tabIndex=-1; detail.focus({preventScroll:true}); detail.scrollIntoView({block:'center',behavior:'smooth'});
+                    return;
+                }
+                const billingButton = event.target.closest('[data-chart-billing]');
+                if (billingButton) { state.chartBilling = billingButton.dataset.chartBilling; render(); return; }
+                if (event.target.closest('[data-chart-clear]')) { state.selectedChartSlug = null; render(); return; }
+                if (event.target.closest('[data-chart-export]')) {
+                    const link = document.createElement('a');
+                    link.download = `模型能力与价格-${BENCHMARKS[state.benchmark].short}.png`;
+                    link.href = intelligenceChart.getDataURL({type:'png',pixelRatio:2,backgroundColor:'#fff'});
+                    link.click();
+                    return;
+                }
+                const locate = event.target.closest('[data-chart-locate]');
+                if (locate) {
+                    const slug = locate.dataset.chartLocate;
+                    if (Directory) {
+                        const sorted = Directory.tableRows(latestTableRows.comparison,points,pins,sortComparisonRows,tableSortState.comparison);
+                        const ordinary = sorted.filter(point => !pins.includes(point.slug) && !focusRelationSlugs.has(point.slug));
+                        const index = ordinary.findIndex(point => point.slug === slug);
+                        if (index >= 0) pageIndex = Math.floor(index / 200);
+                        renderDataTable('comparison',latestTableRows.comparison);
+                    }
+                    const row = [...container.querySelectorAll('[data-point-id]')].find(row => row.dataset.pointId === slug);
+                    container.querySelectorAll('.price-chart-focus-row').forEach(row => row.classList.remove('price-chart-focus-row'));
+                    if (row) { row.classList.add('price-chart-focus-row'); row.tabIndex=-1; row.focus({preventScroll:true}); row.scrollIntoView({block:'center',behavior:'smooth'}); }
+                    return;
+                }
                 const pageButton=event.target.closest('[data-price-page]');
                 if(Directory && pageButton){
                     pageIndex=pageButton.dataset.pricePage==='first'?0:pageIndex+(pageButton.dataset.pricePage==='next'?1:-1);
@@ -1342,6 +1404,7 @@
                     root.CodingPlanEvents?.track('pin_change', {entity_type:'price_row',entity_slug:slug,pinned:pins.includes(slug),placement:'pricing'});
                     [...container.querySelectorAll('[data-price-pin]')].find(button=>button.dataset.pricePin===slug)?.focus({preventScroll:true}); return;
                 }
+                if (event.target.closest('.ui-help')) return;
                 const sortHeader = event.target.closest('[data-table-sort][data-sort-key]');
                 if (sortHeader) {
                     const tableName = sortHeader.dataset.tableSort;
@@ -1454,6 +1517,7 @@
             });
             document.addEventListener('click', () => closeUsageDropdowns());
             let resizeFrame=0;
+            let compactPriceLabels = intelligenceChart.getWidth() < 800;
             const resize = () => {
                 if(resizeFrame)return;
                 resizeFrame=requestAnimationFrame(()=>{
@@ -1463,6 +1527,8 @@
                         if(element.clientWidth===chart.getWidth() && element.clientHeight===chart.getHeight())return;
                         chart.resize(); fitScatterLayout(chart,index===0);
                     });
+                    const nextCompact = intelligenceChart.getWidth() < 800;
+                    if (compactPriceLabels !== nextCompact) { compactPriceLabels = nextCompact; render(); }
                 });
             };
             root.addEventListener('resize', resize);

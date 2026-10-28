@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-25T16:38:46Z",
+  "generatedAt": "2026-10-27T15:58:54Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -2491,7 +2491,7 @@
             "unitPriceCnyPerM": 0.6667
           },
           "pricing": null,
-          "note": "参照 Agent Plan 当前系数 5 与 2026-08-29 DeepSeek V4 Flash 实测基准推测；工作负载 120K/请求，部分请求约 1.5 倍入账的触发条件仍未知。2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10"
+          "note": "参照 Agent Plan 当前系数 5 与 2026-08-29 DeepSeek V4 Flash 实测基准推测；工作负载 120K/请求，部分请求约 1.5 倍入账的触发条件仍未知。2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；活动公告截至 2026-10-25，但当前页面仍标进行中，是否已恢复常规抵扣待确认；参考量暂按活动系数估算。"
         },
         {
           "slug": "volcengine-coding-lite--glm-5-3",
@@ -2572,6 +2572,22 @@
           },
           "pricing": null,
           "note": "实际服务为 1017 版；调用名称仍不带日期后缀。与标准版使用相同模型权重、生成略慢。Token参考量沿用按Agent Plan对应抵扣系数与历史测量推算的口径，非官方固定配额。2026-10-20 00:00至12-30 23:59:59（UTC+8）五折活动；当前参考量按标准版的1.25倍估算。"
+        },
+        {
+          "slug": "volcengine-coding-lite--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "multiplied",
+          "usage": {
+            "fiveHourTokenInM": 5.7142857143,
+            "weeklyTokenInM": 42.8571428571,
+            "monthlyTokenInM": 85.7,
+            "unitPriceCnyPerM": 0.4667
+          },
+          "pricing": null,
+          "note": "Coding Plan 的 K3.1 Pro 用量按 Agent Plan 系数与历史实测基准推算，非官方固定 Token 配额；120K/请求负载可能受额外入账因素影响。2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。"
         }
       ]
     },
@@ -2732,7 +2748,7 @@
             "unitPriceCnyPerM": 0.6667
           },
           "pricing": null,
-          "note": "参照 Agent Plan 当前系数 5 与 2026-08-29 DeepSeek V4 Flash 实测基准推测；工作负载 120K/请求，部分请求约 1.5 倍入账的触发条件仍未知。2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10"
+          "note": "按同套餐规则估算。；活动公告截至 2026-10-25，但当前页面仍标进行中，是否已恢复常规抵扣待确认；参考量暂按活动系数估算。"
         },
         {
           "slug": "volcengine-coding-pro--glm-5-3",
@@ -2813,6 +2829,22 @@
           },
           "pricing": null,
           "note": "实际服务为 1017 版；调用名称仍不带日期后缀。与标准版使用相同模型权重、生成略慢。Token参考量沿用按Agent Plan对应抵扣系数与历史测量推算的口径，非官方固定配额。2026-10-20 00:00至12-30 23:59:59（UTC+8）五折活动；当前参考量按标准版的1.25倍估算。"
+        },
+        {
+          "slug": "volcengine-coding-pro--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "multiplied",
+          "usage": {
+            "fiveHourTokenInM": 28.5714285714,
+            "weeklyTokenInM": 214.2857142857,
+            "monthlyTokenInM": 428.6,
+            "unitPriceCnyPerM": 0.4667
+          },
+          "pricing": null,
+          "note": "Coding Plan 的 K3.1 Pro 用量按 Agent Plan 系数与历史实测基准推算，非官方固定 Token 配额；120K/请求负载可能受额外入账因素影响。2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。"
         }
       ]
     },
@@ -3120,6 +3152,28 @@
             "unit": "AFP"
           },
           "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 2K AFP、每周 7K AFP、每月 20K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；实际服务为 1017 版；调用名称仍不带日期后缀。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
+        },
+        {
+          "slug": "volcengine-agent-small--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 5.7142857143,
+            "weeklyTokenInM": 20.0,
+            "monthlyTokenInM": 57.1,
+            "unitPriceCnyPerM": 0.7
+          },
+          "pricing": {
+            "currency": null,
+            "inputPerM": 350.0,
+            "cachePerM": 350.0,
+            "outputPerM": 350.0,
+            "unit": "AFP"
+          },
+          "note": "抵扣单价：输入 0.35 AFP/K Token、缓存读取 0.35 AFP/K Token、输出 0.35 AFP/K Token；套餐共享额度：5小时 2K AFP、每周 7K AFP、每月 20K AFP；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。"
         }
       ]
     },
@@ -3317,7 +3371,7 @@
             "outputPerM": 500.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.50 AFP/K Token、缓存读取 0.50 AFP/K Token、输出 0.50 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10"
+          "note": "抵扣单价：输入 0.50 AFP/K Token、缓存读取 0.50 AFP/K Token、输出 0.50 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；活动公告截至 2026-10-25，但当前页面仍标进行中，是否已恢复常规抵扣待确认；参考量暂按活动系数估算。"
         },
         {
           "slug": "volcengine-agent-medium--glm-5-3",
@@ -3450,6 +3504,28 @@
             "unit": "AFP"
           },
           "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；实际服务为 1017 版；调用名称仍不带日期后缀。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
+        },
+        {
+          "slug": "volcengine-agent-medium--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 28.5714285714,
+            "weeklyTokenInM": 100.0,
+            "monthlyTokenInM": 285.7,
+            "unitPriceCnyPerM": 0.7
+          },
+          "pricing": {
+            "currency": null,
+            "inputPerM": 350.0,
+            "cachePerM": 350.0,
+            "outputPerM": 350.0,
+            "unit": "AFP"
+          },
+          "note": "抵扣单价：输入 0.35 AFP/K Token、缓存读取 0.35 AFP/K Token、输出 0.35 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。"
         }
       ]
     },
@@ -3647,7 +3723,7 @@
             "outputPerM": 500.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.50 AFP/K Token、缓存读取 0.50 AFP/K Token、输出 0.50 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10"
+          "note": "抵扣单价：输入 0.50 AFP/K Token、缓存读取 0.50 AFP/K Token、输出 0.50 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；活动公告截至 2026-10-25，但当前页面仍标进行中，是否已恢复常规抵扣待确认；参考量暂按活动系数估算。"
         },
         {
           "slug": "volcengine-agent-large--glm-5-3",
@@ -3780,6 +3856,28 @@
             "unit": "AFP"
           },
           "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；实际服务为 1017 版；调用名称仍不带日期后缀。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
+        },
+        {
+          "slug": "volcengine-agent-large--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 71.4285714286,
+            "weeklyTokenInM": 250.0,
+            "monthlyTokenInM": 714.3,
+            "unitPriceCnyPerM": 0.7
+          },
+          "pricing": {
+            "currency": null,
+            "inputPerM": 350.0,
+            "cachePerM": 350.0,
+            "outputPerM": 350.0,
+            "unit": "AFP"
+          },
+          "note": "抵扣单价：输入 0.35 AFP/K Token、缓存读取 0.35 AFP/K Token、输出 0.35 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。"
         }
       ]
     },
@@ -3977,7 +4075,7 @@
             "outputPerM": 500.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.50 AFP/K Token、缓存读取 0.50 AFP/K Token、输出 0.50 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10"
+          "note": "抵扣单价：输入 0.50 AFP/K Token、缓存读取 0.50 AFP/K Token、输出 0.50 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；活动公告截至 2026-10-25，但当前页面仍标进行中，是否已恢复常规抵扣待确认；参考量暂按活动系数估算。"
         },
         {
           "slug": "volcengine-agent-max--glm-5-3",
@@ -4110,6 +4208,28 @@
             "unit": "AFP"
           },
           "note": "抵扣单价：输入 0.10 AFP/K Token、缓存读取 0.10 AFP/K Token、输出 0.10 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。；实际服务为 1017 版；调用名称仍不带日期后缀。Economy与标准版使用相同权重，生成速度略慢。2026-10-20 00:00:00至2026-12-30 23:59:59（UTC+8）每万Token抵扣1 AFP，常规2 AFP；输入、缓存、输出同系数。"
+        },
+        {
+          "slug": "volcengine-agent-max--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 142.8571428571,
+            "weeklyTokenInM": 500.0,
+            "monthlyTokenInM": 1428.6,
+            "unitPriceCnyPerM": 0.7
+          },
+          "pricing": {
+            "currency": null,
+            "inputPerM": 350.0,
+            "cachePerM": 350.0,
+            "outputPerM": 350.0,
+            "unit": "AFP"
+          },
+          "note": "抵扣单价：输入 0.35 AFP/K Token、缓存读取 0.35 AFP/K Token、输出 0.35 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。"
         }
       ]
     },
@@ -4286,7 +4406,7 @@
       "platformSlug": "minimax",
       "name": "M Plan Go",
       "billingMode": "subscription",
-      "action": "https://www.minimax.cn/m-plan",
+      "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
       "firstMonthPrice": 24.5,
       "monthlyPrice": 49,
@@ -4295,7 +4415,7 @@
       "benefits": [
         "包含MiniMax Code及订阅API Key"
       ],
-      "note": "• 截至2026-10-31，在MiniMax Code内新订或升级首月¥24.5，次月起¥49/月。\n• 截至2026-10-25，Code内M3.1 Flash不限量，外部工具API不适用此承诺。\n• 文本与其他模态共享额度，非视频受5小时及7天窗口限制；Token为社区估算，耗尽可另购积分包。",
+      "note": "• 截至2026-10-31，在MiniMax Code内新订或升级首月¥24.5，次月起¥49/月。\n• 截至2026-10-25，Code内M3.1 Flash不限量，外部工具API不适用此承诺。\n• 文本与其他模态共享额度，非视频受5小时及7天窗口限制；Token为社区估算，耗尽可另购积分包。\n• Code 内不限量活动原公告截至 10 月 25 日，当前是否延续待确认；外部工具 API 不享有已确认的不限量权益。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4327,7 +4447,7 @@
       "platformSlug": "minimax",
       "name": "M Plan Explore",
       "billingMode": "subscription",
-      "action": "https://www.minimax.cn/m-plan",
+      "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
       "firstMonthPrice": 59.5,
       "monthlyPrice": 119,
@@ -4336,7 +4456,7 @@
       "benefits": [
         "包含MiniMax Code及订阅API Key"
       ],
-      "note": "• 截至2026-10-31，在MiniMax Code内新订或升级首月¥59.5，次月起¥119/月。\n• 截至2026-10-25，Code内M3.1 Flash不限量，外部工具API不适用此承诺。\n• 文本与其他模态共享额度，非视频受5小时及7天窗口限制；Token为社区估算，耗尽可另购积分包。",
+      "note": "• 截至2026-10-31，在MiniMax Code内新订或升级首月¥59.5，次月起¥119/月。\n• 截至2026-10-25，Code内M3.1 Flash不限量，外部工具API不适用此承诺。\n• 文本与其他模态共享额度，非视频受5小时及7天窗口限制；Token为社区估算，耗尽可另购积分包。\n• Code 内不限量活动原公告截至 10 月 25 日，当前是否延续待确认；外部工具 API 不享有已确认的不限量权益。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4368,7 +4488,7 @@
       "platformSlug": "minimax",
       "name": "M Plan Build",
       "billingMode": "subscription",
-      "action": "https://www.minimax.cn/m-plan",
+      "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 5,
       "firstMonthPrice": 234.5,
       "monthlyPrice": 469,
@@ -4377,7 +4497,7 @@
       "benefits": [
         "包含MiniMax Code及订阅API Key"
       ],
-      "note": "• 截至2026-10-31，在MiniMax Code内新订或升级首月¥234.5，次月起¥469/月。\n• 截至2026-10-25，Code内M3.1 Flash不限量，外部工具API不适用此承诺。\n• 文本与其他模态共享额度，非视频受5小时及7天窗口限制；Token为社区估算，耗尽可另购积分包。",
+      "note": "• 截至2026-10-31，在MiniMax Code内新订或升级首月¥234.5，次月起¥469/月。\n• 截至2026-10-25，Code内M3.1 Flash不限量，外部工具API不适用此承诺。\n• 文本与其他模态共享额度，非视频受5小时及7天窗口限制；Token为社区估算，耗尽可另购积分包。\n• Code 内不限量活动原公告截至 10 月 25 日，当前是否延续待确认；外部工具 API 不享有已确认的不限量权益。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4409,7 +4529,7 @@
       "platformSlug": "minimax",
       "name": "MiniMax Code Free",
       "billingMode": "subscription",
-      "action": "https://agent.minimax.cn/",
+      "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "rating": 4,
       "firstMonthPrice": 0,
       "monthlyPrice": 0,
@@ -6124,7 +6244,7 @@
       "platformSlug": "deepseek-official",
       "name": "按量 API",
       "billingMode": "payg",
-      "action": "https://platform.deepseek.com/",
+      "action": "https://api.dreamfree.space/c/s/cpyqdeepseek",
       "rating": 0,
       "firstMonthPrice": "不适用",
       "monthlyPrice": "不适用",
@@ -7651,7 +7771,7 @@
       "platformSlug": "codex",
       "name": "Free",
       "billingMode": "subscription",
-      "action": "https://learn.chatgpt.com/docs/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
       "rating": 4,
       "monthlyPrice": 0,
       "currency": "$",
@@ -7661,7 +7781,7 @@
       "benefits": [
         "桌面端 GPT-6 Luna 标准速度，按账号逐步开放"
       ],
-      "note": "• 可用性取决于账号与客户端的开放进度；不包含 GPT-6.1 Sol 首发权限，精确 Token 配额未公开。",
+      "note": "• 可用性取决于账号与客户端的开放进度；不包含 GPT-6.1 Sol / Terra 首发权限，精确 Token 配额未公开。",
       "planStatus": "open",
       "planModels": [
         {
@@ -7684,7 +7804,7 @@
       "platformSlug": "codex",
       "name": "Go",
       "billingMode": "subscription",
-      "action": "https://learn.chatgpt.com/docs/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
       "rating": 3,
       "monthlyPrice": 8,
       "currency": "$",
@@ -7694,7 +7814,7 @@
       "benefits": [
         "桌面端 GPT-6 Luna 标准速度，按账号逐步开放"
       ],
-      "note": "• 可用性取决于账号与客户端的开放进度；不包含 GPT-6.1 Sol 首发权限，精确 Token 配额未公开。",
+      "note": "• 可用性取决于账号与客户端的开放进度；不包含 GPT-6.1 Sol / Terra 首发权限，精确 Token 配额未公开。",
       "planStatus": "open",
       "planModels": [
         {
@@ -7743,6 +7863,22 @@
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6.4 换算；未独立实测，非官方固定配额。"
+        },
+        {
+          "slug": "codex-plus--gpt-6-1-terra",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "multiplied",
+          "usage": {
+            "fiveHourTokenInM": 78.3197504509,
+            "weeklyTokenInM": 501.2464028857,
+            "monthlyTokenInM": 2005.0,
+            "unitPriceCnyPerM": 0.068
+          },
+          "pricing": null,
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Terra 的订阅可用量为同档 GPT-6.1 Sol 的 2 倍；Token 参考量按同套餐 Sol Standard ×2 推算，继承基准估算误差，非官方固定配额。CLI 需 0.159.0 或更高版本，具体开放情况以账号与客户端为准。"
         },
         {
           "slug": "codex-plus--gpt-6-astra",
@@ -7951,6 +8087,22 @@
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
+        },
+        {
+          "slug": "codex-plus--gpt-6-1-terra--service-fast",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Fast",
+          "method": "multiplied",
+          "usage": {
+            "fiveHourTokenInM": 31.3279001804,
+            "weeklyTokenInM": 200.4985611543,
+            "monthlyTokenInM": 802.0,
+            "unitPriceCnyPerM": 0.16932
+          },
+          "pricing": null,
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Token 参考量为同套餐 Terra Standard 的 1/2.5，即 Sol Standard 的 0.8 倍；绝对数仍为估算。Fast 的订阅额度消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；不包含 Ultrafast。"
         }
       ]
     },
@@ -7991,6 +8143,22 @@
             "unit": "参考单位"
           },
           "note": "抵扣单价：输入 1.65 参考单位/M Token、缓存读取 0.17 参考单位/M Token、输出 8.25 参考单位/M Token；套餐共享额度：5小时 不限量、每周 350 参考单位、每月 1,400 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Standard 参考量按共享参考池和该模型输入、缓存读取、输出系数折算，非官方固定 Token 配额。"
+        },
+        {
+          "slug": "codex-pro5--gpt-6-1-terra",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "multiplied",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 2506.2320144287,
+            "monthlyTokenInM": 10024.9,
+            "unitPriceCnyPerM": 0.068
+          },
+          "pricing": null,
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Terra 的订阅可用量为同档 GPT-6.1 Sol 的 2 倍；Token 参考量按同套餐 Sol Standard ×2 推算，继承基准估算误差，非官方固定配额。CLI 需 0.159.0 或更高版本，具体开放情况以账号与客户端为准。"
         },
         {
           "slug": "codex-pro5--gpt-6-astra",
@@ -8235,6 +8403,22 @@
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
+        },
+        {
+          "slug": "codex-pro5--gpt-6-1-terra--service-fast",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Fast",
+          "method": "multiplied",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 1002.4928057715,
+            "monthlyTokenInM": 4010.0,
+            "unitPriceCnyPerM": 0.16932
+          },
+          "pricing": null,
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Token 参考量为同套餐 Terra Standard 的 1/2.5，即 Sol Standard 的 0.8 倍；绝对数仍为估算。Fast 的订阅额度消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；不包含 Ultrafast。"
         }
       ]
     },
@@ -8275,6 +8459,22 @@
             "unit": "参考单位"
           },
           "note": "抵扣单价：输入 1.65 参考单位/M Token、缓存读取 0.17 参考单位/M Token、输出 8.25 参考单位/M Token；套餐共享额度：5小时 不限量、每周 700 参考单位、每月 2,800 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
+        },
+        {
+          "slug": "codex-pro20--gpt-6-1-terra",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "multiplied",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 5012.4640288575,
+            "monthlyTokenInM": 20049.9,
+            "unitPriceCnyPerM": 0.068
+          },
+          "pricing": null,
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Terra 的订阅可用量为同档 GPT-6.1 Sol 的 2 倍；Token 参考量按同套餐 Sol Standard ×2 推算，继承基准估算误差，非官方固定配额。CLI 需 0.159.0 或更高版本，具体开放情况以账号与客户端为准。"
         },
         {
           "slug": "codex-pro20--gpt-6-astra",
@@ -8519,6 +8719,22 @@
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
+        },
+        {
+          "slug": "codex-pro20--gpt-6-1-terra--service-fast",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Fast",
+          "method": "multiplied",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 2004.985611543,
+            "monthlyTokenInM": 8019.9,
+            "unitPriceCnyPerM": 0.16932
+          },
+          "pricing": null,
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Token 参考量为同套餐 Terra Standard 的 1/2.5，即 Sol Standard 的 0.8 倍；绝对数仍为估算。Fast 的订阅额度消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；不包含 Ultrafast。"
         }
       ]
     },
@@ -8561,6 +8777,22 @@
             "unit": "参考单位"
           },
           "note": "抵扣单价：输入 1.65 参考单位/M Token、缓存读取 0.17 参考单位/M Token、输出 8.25 参考单位/M Token；套餐共享额度：5小时 不限量、每周 1,750 参考单位、每月 7,000 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
+        },
+        {
+          "slug": "codex-pro500--gpt-6-1-terra",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "multiplied",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 12531.1600721437,
+            "monthlyTokenInM": 50124.6,
+            "unitPriceCnyPerM": 0.068
+          },
+          "pricing": null,
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Terra 的订阅可用量为同档 GPT-6.1 Sol 的 2 倍；Token 参考量按同套餐 Sol Standard ×2 推算，继承基准估算误差，非官方固定配额。CLI 需 0.159.0 或更高版本，具体开放情况以账号与客户端为准。"
         },
         {
           "slug": "codex-pro500--gpt-6-astra",
@@ -8837,6 +9069,22 @@
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
+        },
+        {
+          "slug": "codex-pro500--gpt-6-1-terra--service-fast",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Fast",
+          "method": "multiplied",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": 5012.4640288575,
+            "monthlyTokenInM": 20049.9,
+            "unitPriceCnyPerM": 0.16932
+          },
+          "pricing": null,
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Token 参考量为同套餐 Terra Standard 的 1/2.5，即 Sol Standard 的 0.8 倍；绝对数仍为估算。Fast 的订阅额度消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；不包含 Ultrafast。"
         }
       ]
     },
@@ -19228,6 +19476,58 @@
             "outputCnyPerM": 4.352
           },
           "note": "抵扣单价：输入 $0.16/M Token、缓存读取 $0.02/M Token、输出 $0.64/M Token；该模型适用额度：5小时 $6、每周 $15、每月 $30；是否共享及能否叠加以套餐说明为准；最高262K上下文。；最高262K上下文；与其他模型共享套餐池，模型额度不可相加。"
+        },
+        {
+          "slug": "commandcode-pro--gpt-6-1-terra--ctx-272k",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": "≤272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 32.783526278,
+            "weeklyTokenInM": 81.9588156951,
+            "monthlyTokenInM": 163.9,
+            "unitPriceCnyPerM": 0.8296
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.0,
+            "cacheWritePerM": 1.25,
+            "cachePerM": 0.05,
+            "outputPerM": 5.0,
+            "inputCnyPerM": 6.8,
+            "cacheWriteCnyPerM": 8.5,
+            "cacheCnyPerM": 0.34,
+            "outputCnyPerM": 34.0
+          },
+          "note": "抵扣单价：输入 $1/M Token、缓存写入 $1.25/M Token、缓存读取 $0.05/M Token、输出 $5/M Token；该模型适用额度：5小时 $4、每周 $10、每月 $20；是否共享及能否叠加以套餐说明为准；平台支持最高 1.1M 上下文；缓存写入另计，当前 Token 参考换算不含该项。；Pro 月模型额度 $20，Max 10× / 20× 分别 $100 / $200；来自共享套餐池、不能相加。Token 数按统一负载估算，不把宣传请求数当配额；缓存写入另计，换算不含该项。"
+        },
+        {
+          "slug": "commandcode-pro--gpt-6-1-terra--ctx-272k-long",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": ">272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 17.2767519706,
+            "weeklyTokenInM": 43.1918799266,
+            "monthlyTokenInM": 86.4,
+            "unitPriceCnyPerM": 1.5742
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cacheWritePerM": 2.5,
+            "cachePerM": 0.1,
+            "outputPerM": 7.5,
+            "inputCnyPerM": 13.6,
+            "cacheWriteCnyPerM": 17.0,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 51.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $7.50/M Token；该模型适用额度：5小时 $4、每周 $10、每月 $20；是否共享及能否叠加以套餐说明为准；平台支持最高 1.1M 上下文；缓存写入另计，当前 Token 参考换算不含该项。；Pro 月模型额度 $20，Max 10× / 20× 分别 $100 / $200；来自共享套餐池、不能相加。Token 数按统一负载估算，不把宣传请求数当配额；缓存写入另计，换算不含该项。"
         }
       ]
     },
@@ -21977,6 +22277,58 @@
             "outputCnyPerM": 0.0
           },
           "note": "Max专页列出的零价入口，结束日期未公布；免费不保证无限速或始终可用。；Max套餐另有零价入口；结束日期与实际Token限额未公布，免费不保证无限量、无限速或始终可用。"
+        },
+        {
+          "slug": "commandcode-max10--gpt-6-1-terra--ctx-272k",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": "≤272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 245.8764470853,
+            "weeklyTokenInM": 491.7528941707,
+            "monthlyTokenInM": 819.6,
+            "unitPriceCnyPerM": 0.8296
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.0,
+            "cacheWritePerM": 1.25,
+            "cachePerM": 0.05,
+            "outputPerM": 5.0,
+            "inputCnyPerM": 6.8,
+            "cacheWriteCnyPerM": 8.5,
+            "cacheCnyPerM": 0.34,
+            "outputCnyPerM": 34.0
+          },
+          "note": "抵扣单价：输入 $1/M Token、缓存写入 $1.25/M Token、缓存读取 $0.05/M Token、输出 $5/M Token；该模型适用额度：5小时 $30、每周 $60、每月 $100；是否共享及能否叠加以套餐说明为准；平台支持最高 1.1M 上下文；缓存写入另计，当前 Token 参考换算不含该项。；Pro 月模型额度 $20，Max 10× / 20× 分别 $100 / $200；来自共享套餐池、不能相加。Token 数按统一负载估算，不把宣传请求数当配额；缓存写入另计，换算不含该项。"
+        },
+        {
+          "slug": "commandcode-max10--gpt-6-1-terra--ctx-272k-long",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": ">272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 129.5756397797,
+            "weeklyTokenInM": 259.1512795594,
+            "monthlyTokenInM": 431.9,
+            "unitPriceCnyPerM": 1.5742
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cacheWritePerM": 2.5,
+            "cachePerM": 0.1,
+            "outputPerM": 7.5,
+            "inputCnyPerM": 13.6,
+            "cacheWriteCnyPerM": 17.0,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 51.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $7.50/M Token；该模型适用额度：5小时 $30、每周 $60、每月 $100；是否共享及能否叠加以套餐说明为准；平台支持最高 1.1M 上下文；缓存写入另计，当前 Token 参考换算不含该项。；Pro 月模型额度 $20，Max 10× / 20× 分别 $100 / $200；来自共享套餐池、不能相加。Token 数按统一负载估算，不把宣传请求数当配额；缓存写入另计，换算不含该项。"
         }
       ]
     },
@@ -24726,6 +25078,58 @@
             "outputCnyPerM": 0.0
           },
           "note": "Max专页列出的零价入口，结束日期未公布；免费不保证无限速或始终可用。；Max套餐另有零价入口；结束日期与实际Token限额未公布，免费不保证无限量、无限速或始终可用。"
+        },
+        {
+          "slug": "commandcode-max20--gpt-6-1-terra--ctx-272k",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": "≤272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 491.7528941707,
+            "weeklyTokenInM": 983.5057883414,
+            "monthlyTokenInM": 1639.2,
+            "unitPriceCnyPerM": 0.8296
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.0,
+            "cacheWritePerM": 1.25,
+            "cachePerM": 0.05,
+            "outputPerM": 5.0,
+            "inputCnyPerM": 6.8,
+            "cacheWriteCnyPerM": 8.5,
+            "cacheCnyPerM": 0.34,
+            "outputCnyPerM": 34.0
+          },
+          "note": "抵扣单价：输入 $1/M Token、缓存写入 $1.25/M Token、缓存读取 $0.05/M Token、输出 $5/M Token；该模型适用额度：5小时 $60、每周 $120、每月 $200；是否共享及能否叠加以套餐说明为准；平台支持最高 1.1M 上下文；缓存写入另计，当前 Token 参考换算不含该项。；Pro 月模型额度 $20，Max 10× / 20× 分别 $100 / $200；来自共享套餐池、不能相加。Token 数按统一负载估算，不把宣传请求数当配额；缓存写入另计，换算不含该项。"
+        },
+        {
+          "slug": "commandcode-max20--gpt-6-1-terra--ctx-272k-long",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": ">272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 259.1512795594,
+            "weeklyTokenInM": 518.3025591189,
+            "monthlyTokenInM": 863.8,
+            "unitPriceCnyPerM": 1.5742
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cacheWritePerM": 2.5,
+            "cachePerM": 0.1,
+            "outputPerM": 7.5,
+            "inputCnyPerM": 13.6,
+            "cacheWriteCnyPerM": 17.0,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 51.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $7.50/M Token；该模型适用额度：5小时 $60、每周 $120、每月 $200；是否共享及能否叠加以套餐说明为准；平台支持最高 1.1M 上下文；缓存写入另计，当前 Token 参考换算不含该项。；Pro 月模型额度 $20，Max 10× / 20× 分别 $100 / $200；来自共享套餐池、不能相加。Token 数按统一负载估算，不把宣传请求数当配额；缓存写入另计，换算不含该项。"
         }
       ]
     },
@@ -25810,7 +26214,7 @@
       "platformSlug": "huawei-cloud",
       "name": "Lite",
       "billingMode": "subscription",
-      "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
+      "action": "https://api.dreamfree.space/c/s/cpyqhuawei",
       "rating": 3,
       "firstMonthPrice": 59,
       "monthlyPrice": 59,
@@ -25937,7 +26341,7 @@
       "platformSlug": "huawei-cloud",
       "name": "Standard",
       "billingMode": "subscription",
-      "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
+      "action": "https://api.dreamfree.space/c/s/cpyqhuawei",
       "rating": 3,
       "firstMonthPrice": 149,
       "monthlyPrice": 149,
@@ -26064,7 +26468,7 @@
       "platformSlug": "huawei-cloud",
       "name": "Pro",
       "billingMode": "subscription",
-      "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
+      "action": "https://api.dreamfree.space/c/s/cpyqhuawei",
       "rating": 3,
       "firstMonthPrice": 399,
       "monthlyPrice": 399,
@@ -26191,7 +26595,7 @@
       "platformSlug": "huawei-cloud",
       "name": "Max",
       "billingMode": "subscription",
-      "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement",
+      "action": "https://api.dreamfree.space/c/s/cpyqhuawei",
       "rating": 3,
       "firstMonthPrice": 799,
       "monthlyPrice": 799,
@@ -27706,7 +28110,7 @@
       "platformSlug": "qoder-cn",
       "name": "Pro",
       "billingMode": "subscription",
-      "action": "https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqqodercn",
       "rating": 3,
       "monthlyPrice": 59,
       "currency": "¥",
@@ -27887,7 +28291,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Qoder主客户端内置可选；CLI等客户端的可选范围可能不同。"
+          "note": "旧版K3入口的当前可选范围待确认；主客户端当前模型表列出K3.1 Pro，各客户端和账号的可选范围可能不同。"
         },
         {
           "slug": "qoder-cn-pro--kimi-k2-8-preview",
@@ -27914,6 +28318,19 @@
           },
           "pricing": null,
           "note": "Qoder桌面端模型选择器参考消耗倍率0.1×；不同客户端可用型号不同，固定Token用量未知。"
+        },
+        {
+          "slug": "qoder-cn-pro--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
         }
       ]
     },
@@ -27922,7 +28339,7 @@
       "platformSlug": "qoder-cn",
       "name": "Pro+",
       "billingMode": "subscription",
-      "action": "https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqqodercn",
       "rating": 3,
       "monthlyPrice": 169,
       "currency": "¥",
@@ -28103,7 +28520,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Qoder主客户端内置可选；CLI等客户端的可选范围可能不同。"
+          "note": "旧版K3入口的当前可选范围待确认；主客户端当前模型表列出K3.1 Pro，各客户端和账号的可选范围可能不同。"
         },
         {
           "slug": "qoder-cn-pro-plus--kimi-k2-8-preview",
@@ -28130,6 +28547,19 @@
           },
           "pricing": null,
           "note": "Qoder桌面端模型选择器参考消耗倍率0.1×；不同客户端可用型号不同，固定Token用量未知。"
+        },
+        {
+          "slug": "qoder-cn-pro-plus--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
         }
       ]
     },
@@ -28138,7 +28568,7 @@
       "platformSlug": "qoder-cn",
       "name": "Ultra",
       "billingMode": "subscription",
-      "action": "https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription",
+      "action": "https://api.dreamfree.space/c/s/cpyqqodercn",
       "rating": 3,
       "monthlyPrice": 559,
       "currency": "¥",
@@ -28319,7 +28749,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Qoder主客户端内置可选；CLI等客户端的可选范围可能不同。"
+          "note": "旧版K3入口的当前可选范围待确认；主客户端当前模型表列出K3.1 Pro，各客户端和账号的可选范围可能不同。"
         },
         {
           "slug": "qoder-cn-ultra--kimi-k2-8-preview",
@@ -28346,6 +28776,19 @@
           },
           "pricing": null,
           "note": "Qoder桌面端模型选择器参考消耗倍率0.1×；不同客户端可用型号不同，固定Token用量未知。"
+        },
+        {
+          "slug": "qoder-cn-ultra--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
         }
       ]
     },
@@ -28354,7 +28797,7 @@
       "platformSlug": "qoder-intl",
       "name": "Lite",
       "billingMode": "subscription",
-      "action": "https://qoder.com/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqqoderintl",
       "rating": 3,
       "monthlyPrice": 10,
       "currency": "$",
@@ -28392,7 +28835,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "选择器中的 DeepSeek-Flash 对应 V4.1 Flash 1017。DeepSeek-V4.1-Flash-1017当前限时免Credits，结束日期未公布；免费不代表固定或无限Token配额。"
+          "note": "选择器中的DeepSeek-Flash对应V4.1 Flash 1017；限时免Credits至2026-11-01 00:00（UTC+8），免费及付费个人用户均适用。免Credits不代表固定或无限Token配额。"
         },
         {
           "slug": "qoder-intl-lite--glm-5-3-flash",
@@ -28492,7 +28935,7 @@
       "platformSlug": "qoder-intl",
       "name": "Pro",
       "billingMode": "subscription",
-      "action": "https://qoder.com/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqqoderintl",
       "rating": 3,
       "monthlyPrice": 20,
       "currency": "$",
@@ -28582,7 +29025,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "选择器中的 DeepSeek-Flash 对应 V4.1 Flash 1017。"
+          "note": "选择器中的DeepSeek-Flash对应V4.1 Flash 1017；限时免Credits至2026-11-01 00:00（UTC+8），免费及付费个人用户均适用。免Credits不代表固定或无限Token配额。"
         },
         {
           "slug": "qoder-intl-pro--glm-5-3",
@@ -28621,7 +29064,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": "旧版K3入口的当前可选范围待确认；主客户端当前模型表列出K3.1 Pro，各客户端和账号的可选范围可能不同。"
         },
         {
           "slug": "qoder-intl-pro--kimi-k2-8-preview",
@@ -28661,6 +29104,19 @@
           },
           "pricing": null,
           "note": "模型选择器参考消耗倍率0.1×；实际Credits消耗随任务变化，固定Token用量未知。"
+        },
+        {
+          "slug": "qoder-intl-pro--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
         }
       ]
     },
@@ -28669,7 +29125,7 @@
       "platformSlug": "qoder-intl",
       "name": "Pro+",
       "billingMode": "subscription",
-      "action": "https://qoder.com/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqqoderintl",
       "rating": 3,
       "monthlyPrice": 60,
       "currency": "$",
@@ -28759,7 +29215,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "选择器中的 DeepSeek-Flash 对应 V4.1 Flash 1017。"
+          "note": "选择器中的DeepSeek-Flash对应V4.1 Flash 1017；限时免Credits至2026-11-01 00:00（UTC+8），免费及付费个人用户均适用。免Credits不代表固定或无限Token配额。"
         },
         {
           "slug": "qoder-intl-pro-plus--glm-5-3",
@@ -28798,7 +29254,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": "旧版K3入口的当前可选范围待确认；主客户端当前模型表列出K3.1 Pro，各客户端和账号的可选范围可能不同。"
         },
         {
           "slug": "qoder-intl-pro-plus--kimi-k2-8-preview",
@@ -28838,6 +29294,19 @@
           },
           "pricing": null,
           "note": "模型选择器参考消耗倍率0.1×；实际Credits消耗随任务变化，固定Token用量未知。"
+        },
+        {
+          "slug": "qoder-intl-pro-plus--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
         }
       ]
     },
@@ -28846,7 +29315,7 @@
       "platformSlug": "qoder-intl",
       "name": "Ultra",
       "billingMode": "subscription",
-      "action": "https://qoder.com/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqqoderintl",
       "rating": 3,
       "monthlyPrice": 200,
       "currency": "$",
@@ -28936,7 +29405,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "选择器中的 DeepSeek-Flash 对应 V4.1 Flash 1017。"
+          "note": "选择器中的DeepSeek-Flash对应V4.1 Flash 1017；限时免Credits至2026-11-01 00:00（UTC+8），免费及付费个人用户均适用。免Credits不代表固定或无限Token配额。"
         },
         {
           "slug": "qoder-intl-ultra--glm-5-3",
@@ -28975,7 +29444,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": "旧版K3入口的当前可选范围待确认；主客户端当前模型表列出K3.1 Pro，各客户端和账号的可选范围可能不同。"
         },
         {
           "slug": "qoder-intl-ultra--kimi-k2-8-preview",
@@ -29015,6 +29484,19 @@
           },
           "pricing": null,
           "note": "模型选择器参考消耗倍率0.1×；实际Credits消耗随任务变化，固定Token用量未知。"
+        },
+        {
+          "slug": "qoder-intl-ultra--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
         }
       ]
     },
@@ -29023,7 +29505,7 @@
       "platformSlug": "workbuddy",
       "name": "标准版",
       "billingMode": "subscription",
-      "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqworkbuddy",
       "rating": 3,
       "monthlyPrice": 70,
       "currency": "¥",
@@ -29219,6 +29701,32 @@
           },
           "pricing": null,
           "note": null
+        },
+        {
+          "slug": "workbuddy-standard--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "个人订阅用户优先开放，算力紧张时可能排队或限流；具体Token额度未知。"
+        },
+        {
+          "slug": "workbuddy-standard--kimi-k3-1-pro--highspeed",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "高速",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "个人订阅用户优先开放；同等智能、输出约快2–3倍，积分消耗规则与Token额度待确认。"
         }
       ]
     },
@@ -29227,7 +29735,7 @@
       "platformSlug": "workbuddy",
       "name": "高级版",
       "billingMode": "subscription",
-      "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqworkbuddy",
       "rating": 3,
       "monthlyPrice": 140,
       "currency": "¥",
@@ -29423,6 +29931,32 @@
           },
           "pricing": null,
           "note": null
+        },
+        {
+          "slug": "workbuddy-advanced--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "个人订阅用户优先开放，算力紧张时可能排队或限流；具体Token额度未知。"
+        },
+        {
+          "slug": "workbuddy-advanced--kimi-k3-1-pro--highspeed",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "高速",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "个人订阅用户优先开放；同等智能、输出约快2–3倍，积分消耗规则与Token额度待确认。"
         }
       ]
     },
@@ -29431,7 +29965,7 @@
       "platformSlug": "workbuddy",
       "name": "旗舰版",
       "billingMode": "subscription",
-      "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqworkbuddy",
       "rating": 3,
       "monthlyPrice": 700,
       "currency": "¥",
@@ -29627,6 +30161,32 @@
           },
           "pricing": null,
           "note": null
+        },
+        {
+          "slug": "workbuddy-flagship--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "个人订阅用户优先开放，算力紧张时可能排队或限流；具体Token额度未知。"
+        },
+        {
+          "slug": "workbuddy-flagship--kimi-k3-1-pro--highspeed",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "高速",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "个人订阅用户优先开放；同等智能、输出约快2–3倍，积分消耗规则与Token额度待确认。"
         }
       ]
     },
@@ -29635,7 +30195,7 @@
       "platformSlug": "workbuddy",
       "name": "体验版",
       "billingMode": "subscription",
-      "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqworkbuddy",
       "rating": 3,
       "monthlyPrice": 0,
       "currency": "¥",
@@ -30039,7 +30599,7 @@
       "platformSlug": "trae-cn",
       "name": "Lite",
       "billingMode": "subscription",
-      "action": "https://www.trae.cn",
+      "action": "https://api.dreamfree.space/c/s/cpyqtraecn",
       "rating": 3,
       "monthlyPrice": 45,
       "currency": "¥",
@@ -30301,6 +30861,19 @@
           },
           "pricing": null,
           "note": null
+        },
+        {
+          "slug": "trae-cn-lite--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "中国版内置模型，面向全量用户开放；算力紧张时可能排队，具体Token额度未知。"
         }
       ]
     },
@@ -30309,7 +30882,7 @@
       "platformSlug": "trae-cn",
       "name": "Pro",
       "billingMode": "subscription",
-      "action": "https://www.trae.cn",
+      "action": "https://api.dreamfree.space/c/s/cpyqtraecn",
       "rating": 3,
       "monthlyPrice": 89,
       "currency": "¥",
@@ -30584,6 +31157,32 @@
           },
           "pricing": null,
           "note": null
+        },
+        {
+          "slug": "trae-cn-pro--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "仅限Pro及以上会员，需更新至最新客户端；算力紧张时可能排队，具体积分扣减和Token额度未知。"
+        },
+        {
+          "slug": "trae-cn-pro--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "中国版内置模型，面向全量用户开放；算力紧张时可能排队，具体Token额度未知。"
         }
       ]
     },
@@ -30592,7 +31191,7 @@
       "platformSlug": "trae-cn",
       "name": "Pro+",
       "billingMode": "subscription",
-      "action": "https://www.trae.cn",
+      "action": "https://api.dreamfree.space/c/s/cpyqtraecn",
       "rating": 3,
       "monthlyPrice": 219,
       "currency": "¥",
@@ -30867,6 +31466,32 @@
           },
           "pricing": null,
           "note": null
+        },
+        {
+          "slug": "trae-cn-pro-plus--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "仅限Pro及以上会员，需更新至最新客户端；算力紧张时可能排队，具体积分扣减和Token额度未知。"
+        },
+        {
+          "slug": "trae-cn-pro-plus--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "中国版内置模型，面向全量用户开放；算力紧张时可能排队，具体Token额度未知。"
         }
       ]
     },
@@ -30875,7 +31500,7 @@
       "platformSlug": "trae-cn",
       "name": "Ultra",
       "billingMode": "subscription",
-      "action": "https://www.trae.cn",
+      "action": "https://api.dreamfree.space/c/s/cpyqtraecn",
       "rating": 3,
       "monthlyPrice": 629,
       "currency": "¥",
@@ -31150,6 +31775,32 @@
           },
           "pricing": null,
           "note": null
+        },
+        {
+          "slug": "trae-cn-ultra--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "仅限Pro及以上会员，需更新至最新客户端；算力紧张时可能排队，具体积分扣减和Token额度未知。"
+        },
+        {
+          "slug": "trae-cn-ultra--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "中国版内置模型，面向全量用户开放；算力紧张时可能排队，具体Token额度未知。"
         }
       ]
     },
@@ -31978,7 +32629,7 @@
       "platformSlug": "trae-intl",
       "name": "Lite",
       "billingMode": "subscription",
-      "action": "https://www.trae.ai/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqtraeintl",
       "rating": 3,
       "monthlyPrice": 8,
       "currency": "$",
@@ -32696,7 +33347,7 @@
       "platformSlug": "trae-intl",
       "name": "Pro",
       "billingMode": "subscription",
-      "action": "https://www.trae.ai/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqtraeintl",
       "rating": 3,
       "monthlyPrice": 20,
       "currency": "$",
@@ -33414,7 +34065,7 @@
       "platformSlug": "trae-intl",
       "name": "Pro+",
       "billingMode": "subscription",
-      "action": "https://www.trae.ai/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqtraeintl",
       "rating": 3,
       "monthlyPrice": 60,
       "currency": "$",
@@ -34132,7 +34783,7 @@
       "platformSlug": "trae-intl",
       "name": "Ultra",
       "billingMode": "subscription",
-      "action": "https://www.trae.ai/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqtraeintl",
       "rating": 3,
       "monthlyPrice": 200,
       "currency": "$",
@@ -34850,7 +35501,7 @@
       "platformSlug": "trae-intl",
       "name": "Free",
       "billingMode": "subscription",
-      "action": "https://www.trae.ai/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqtraeintl",
       "rating": 3,
       "monthlyPrice": 0,
       "yearlyPrice": 0,
@@ -35434,6 +36085,58 @@
             "outputCnyPerM": 102.0
           },
           "note": "抵扣单价：输入 $3/M Token、缓存读取 $0.30/M Token、输出 $15/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $15；每M Token美元价计入AI Credits；当前换算不含额外缓存写入费用；含基础$10和当前Flex$5月额度；Flex可能变化。月初UTC00重置，未公开短窗口量；缓存写入另计，换算不含该项。"
+        },
+        {
+          "slug": "github-token-plan-pro--gpt-6-1-terra--ctx-272k",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": "≤272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 122.9,
+            "unitPriceCnyPerM": 0.55284
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.0,
+            "cacheWritePerM": 1.25,
+            "cachePerM": 0.05,
+            "outputPerM": 5.0,
+            "inputCnyPerM": 6.8,
+            "cacheWriteCnyPerM": 8.5,
+            "cacheCnyPerM": 0.34,
+            "outputCnyPerM": 34.0
+          },
+          "note": "抵扣单价：输入 $1/M Token、缓存写入 $1.25/M Token、缓存读取 $0.05/M Token、输出 $5/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $15；每百万 Token 美元价计入 AI Credits；缓存写入另计，当前 Token 参考换算不含该项。；Pro / Pro+ / Max 支持；按本套餐现有共享 AI Credits 月池估算，短窗口额度未知；缓存写入另计，参考换算不含该项，各模型额度不能相加。"
+        },
+        {
+          "slug": "github-token-plan-pro--gpt-6-1-terra--ctx-272k-long",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": ">272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 64.8,
+            "unitPriceCnyPerM": 1.04992
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cacheWritePerM": 2.5,
+            "cachePerM": 0.1,
+            "outputPerM": 7.5,
+            "inputCnyPerM": 13.6,
+            "cacheWriteCnyPerM": 17.0,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 51.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $7.50/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $15；每百万 Token 美元价计入 AI Credits；缓存写入另计，当前 Token 参考换算不含该项。；Pro / Pro+ / Max 支持；按本套餐现有共享 AI Credits 月池估算，短窗口额度未知；缓存写入另计，参考换算不含该项，各模型额度不能相加。"
         }
       ]
     },
@@ -36368,6 +37071,58 @@
             "outputCnyPerM": 68.0
           },
           "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $70；每百万 Token 美元报价转换为 AI Credits；默认上下文档。"
+        },
+        {
+          "slug": "github-token-plan-pro-2--gpt-6-1-terra--ctx-272k",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": "≤272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 573.7,
+            "unitPriceCnyPerM": 0.4624
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.0,
+            "cacheWritePerM": 1.25,
+            "cachePerM": 0.05,
+            "outputPerM": 5.0,
+            "inputCnyPerM": 6.8,
+            "cacheWriteCnyPerM": 8.5,
+            "cacheCnyPerM": 0.34,
+            "outputCnyPerM": 34.0
+          },
+          "note": "抵扣单价：输入 $1/M Token、缓存写入 $1.25/M Token、缓存读取 $0.05/M Token、输出 $5/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $70；每百万 Token 美元价计入 AI Credits；缓存写入另计，当前 Token 参考换算不含该项。；Pro / Pro+ / Max 支持；按本套餐现有共享 AI Credits 月池估算，短窗口额度未知；缓存写入另计，参考换算不含该项，各模型额度不能相加。"
+        },
+        {
+          "slug": "github-token-plan-pro-2--gpt-6-1-terra--ctx-272k-long",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": ">272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 302.3,
+            "unitPriceCnyPerM": 0.8772
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cacheWritePerM": 2.5,
+            "cachePerM": 0.1,
+            "outputPerM": 7.5,
+            "inputCnyPerM": 13.6,
+            "cacheWriteCnyPerM": 17.0,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 51.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $7.50/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $70；每百万 Token 美元价计入 AI Credits；缓存写入另计，当前 Token 参考换算不含该项。；Pro / Pro+ / Max 支持；按本套餐现有共享 AI Credits 月池估算，短窗口额度未知；缓存写入另计，参考换算不含该项，各模型额度不能相加。"
         }
       ]
     },
@@ -36376,7 +37131,7 @@
       "platformSlug": "github",
       "name": "Max",
       "billingMode": "subscription",
-      "action": "https://github.com/features/copilot/plans",
+      "action": "https://api.dreamfree.space/c/s/cpyqghcopilot",
       "rating": 3,
       "firstMonthPrice": 100,
       "monthlyPrice": 100,
@@ -37278,6 +38033,58 @@
             "outputCnyPerM": 68.0
           },
           "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $200；每百万 Token 美元报价转换为 AI Credits；默认上下文档。"
+        },
+        {
+          "slug": "github-token-plan-max--gpt-6-1-terra--ctx-272k",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": "≤272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 1639.2,
+            "unitPriceCnyPerM": 0.4148
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.0,
+            "cacheWritePerM": 1.25,
+            "cachePerM": 0.05,
+            "outputPerM": 5.0,
+            "inputCnyPerM": 6.8,
+            "cacheWriteCnyPerM": 8.5,
+            "cacheCnyPerM": 0.34,
+            "outputCnyPerM": 34.0
+          },
+          "note": "抵扣单价：输入 $1/M Token、缓存写入 $1.25/M Token、缓存读取 $0.05/M Token、输出 $5/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $200；每百万 Token 美元价计入 AI Credits；缓存写入另计，当前 Token 参考换算不含该项。；Pro / Pro+ / Max 支持；按本套餐现有共享 AI Credits 月池估算，短窗口额度未知；缓存写入另计，参考换算不含该项，各模型额度不能相加。"
+        },
+        {
+          "slug": "github-token-plan-max--gpt-6-1-terra--ctx-272k-long",
+          "modelSlug": "gpt-6-1-terra",
+          "timeTier": null,
+          "contextTier": ">272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 863.8,
+            "unitPriceCnyPerM": 0.78744
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cacheWritePerM": 2.5,
+            "cachePerM": 0.1,
+            "outputPerM": 7.5,
+            "inputCnyPerM": 13.6,
+            "cacheWriteCnyPerM": 17.0,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 51.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $7.50/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $200；每百万 Token 美元价计入 AI Credits；缓存写入另计，当前 Token 参考换算不含该项。；Pro / Pro+ / Max 支持；按本套餐现有共享 AI Credits 月池估算，短窗口额度未知；缓存写入另计，参考换算不含该项，各模型额度不能相加。"
         }
       ]
     },
@@ -37286,7 +38093,7 @@
       "platformSlug": "github",
       "name": "Free",
       "billingMode": "subscription",
-      "action": "https://github.com/features/copilot/plans",
+      "action": "https://api.dreamfree.space/c/s/cpyqghcopilot",
       "rating": 3,
       "firstMonthPrice": 0,
       "monthlyPrice": 0,
@@ -37306,7 +38113,7 @@
       "platformSlug": "cursor",
       "name": "Free（X Subscription）",
       "billingMode": "subscription",
-      "action": "https://cursor.com/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqcursor",
       "rating": 0,
       "monthlyPrice": 0,
       "currency": "$",
@@ -37326,7 +38133,7 @@
       "platformSlug": "cursor",
       "name": "Plus（X Subscription）",
       "billingMode": "subscription",
-      "action": "https://cursor.com/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqcursor",
       "rating": 0,
       "monthlyPrice": 8,
       "currency": "$",
@@ -37431,7 +38238,7 @@
       "platformSlug": "cursor",
       "name": "Premium（X Subscription）",
       "billingMode": "subscription",
-      "action": "https://cursor.com/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqcursor",
       "rating": 0,
       "monthlyPrice": 30,
       "currency": "$",
@@ -38146,7 +38953,7 @@
       "platformSlug": "cursor",
       "name": "Super（X Subscription）",
       "billingMode": "subscription",
-      "action": "https://cursor.com/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqcursor",
       "rating": 0,
       "monthlyPrice": 100,
       "currency": "$",
@@ -38862,7 +39669,7 @@
       "platformSlug": "cursor",
       "name": "Ultra（X Subscription）",
       "billingMode": "subscription",
-      "action": "https://cursor.com/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqcursor",
       "rating": 0,
       "monthlyPrice": 200,
       "currency": "$",
@@ -46136,7 +46943,7 @@
       "platformSlug": "jd-cloud-token",
       "name": "Lite",
       "billingMode": "subscription",
-      "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdongtp",
       "rating": 0,
       "firstMonthPrice": 69,
       "monthlyPrice": 69,
@@ -46148,7 +46955,7 @@
         "60 RPM"
       ],
       "note": "• 个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。\n• 不支持缓存命中。",
-      "planStatus": "restricted",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "jd-cloud-token-lite--glm-5-1--ctx-32k",
@@ -46685,7 +47492,7 @@
       "platformSlug": "jd-cloud-token",
       "name": "Standard",
       "billingMode": "subscription",
-      "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdongtp",
       "rating": 0,
       "firstMonthPrice": 199,
       "monthlyPrice": 199,
@@ -46697,7 +47504,7 @@
         "60 RPM"
       ],
       "note": "• 个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。\n• 不支持缓存命中。",
-      "planStatus": "restricted",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "jd-cloud-token-standard--glm-5-1--ctx-32k",
@@ -47234,7 +48041,7 @@
       "platformSlug": "jd-cloud-token",
       "name": "Pro",
       "billingMode": "subscription",
-      "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdongtp",
       "rating": 0,
       "firstMonthPrice": 599,
       "monthlyPrice": 599,
@@ -47246,7 +48053,7 @@
         "60 RPM"
       ],
       "note": "• 个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。\n• 不支持缓存命中。",
-      "planStatus": "restricted",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "jd-cloud-token-pro--glm-5-1--ctx-32k",
@@ -47783,7 +48590,7 @@
       "platformSlug": "jd-cloud-token",
       "name": "Max",
       "billingMode": "subscription",
-      "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdongtp",
       "rating": 0,
       "firstMonthPrice": 999,
       "monthlyPrice": 999,
@@ -47795,7 +48602,7 @@
         "60 RPM"
       ],
       "note": "• 个人版：每5h月额度10%、每周30%；周一北京时间00重置，月额度按订阅周期刷新。\n• 不支持缓存命中。",
-      "planStatus": "restricted",
+      "planStatus": "open",
       "planModels": [
         {
           "slug": "jd-cloud-token-max--glm-5-1--ctx-32k",
@@ -48332,7 +49139,7 @@
       "platformSlug": "taotoken-token",
       "name": "Lite",
       "billingMode": "subscription",
-      "action": "https://taotoken.net/token-plan",
+      "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
       "rating": 0,
       "firstMonthPrice": 59,
       "monthlyPrice": 59,
@@ -48390,7 +49197,7 @@
       "platformSlug": "taotoken-token",
       "name": "Pro",
       "billingMode": "subscription",
-      "action": "https://taotoken.net/token-plan",
+      "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
       "rating": 0,
       "firstMonthPrice": 149,
       "monthlyPrice": 149,
@@ -48448,7 +49255,7 @@
       "platformSlug": "chaosuan-token",
       "name": "基础版",
       "billingMode": "subscription",
-      "action": "https://www.scnet.cn/",
+      "action": "https://api.dreamfree.space/c/s/cpyqchaosuantp",
       "rating": 0,
       "firstMonthPrice": 30,
       "monthlyPrice": 30,
@@ -48701,7 +49508,7 @@
       "platformSlug": "chaosuan-token",
       "name": "标准版",
       "billingMode": "subscription",
-      "action": "https://www.scnet.cn/",
+      "action": "https://api.dreamfree.space/c/s/cpyqchaosuantp",
       "rating": 0,
       "firstMonthPrice": 130,
       "monthlyPrice": 130,
@@ -48954,7 +49761,7 @@
       "platformSlug": "chaosuan-token",
       "name": "高级版",
       "billingMode": "subscription",
-      "action": "https://www.scnet.cn/",
+      "action": "https://api.dreamfree.space/c/s/cpyqchaosuantp",
       "rating": 0,
       "firstMonthPrice": 310,
       "monthlyPrice": 310,
@@ -49207,7 +50014,7 @@
       "platformSlug": "chaosuan-token",
       "name": "旗舰版",
       "billingMode": "subscription",
-      "action": "https://www.scnet.cn/",
+      "action": "https://api.dreamfree.space/c/s/cpyqchaosuantp",
       "rating": 0,
       "firstMonthPrice": 899,
       "monthlyPrice": 899,
@@ -49461,7 +50268,7 @@
       "platformSlug": "iflytek-token",
       "name": "标准成员",
       "billingMode": "subscription",
-      "action": "https://maas.xfyun.cn/",
+      "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
       "rating": 0,
       "firstMonthPrice": 200,
       "monthlyPrice": 200,
@@ -50054,7 +50861,7 @@
       "platformSlug": "iflytek-token",
       "name": "高级成员",
       "billingMode": "subscription",
-      "action": "https://maas.xfyun.cn/",
+      "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
       "rating": 0,
       "firstMonthPrice": 600,
       "monthlyPrice": 600,
@@ -50647,7 +51454,7 @@
       "platformSlug": "iflytek-token",
       "name": "尊享成员",
       "billingMode": "subscription",
-      "action": "https://maas.xfyun.cn/",
+      "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
       "rating": 0,
       "firstMonthPrice": 2000,
       "monthlyPrice": 2000,
@@ -51236,5 +52043,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-10-25T16:36:28.120Z"
+  "contentVersion": "2026-10-27T15:57:50.672Z"
 }

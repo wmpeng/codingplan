@@ -16,7 +16,7 @@
     [
       "用途",
       "主要想用 AI 做什么？",
-      "先选主要用途；不需要买套餐的需求，我们会直接给使用建议。",
+      "",
     ],
     [
       "用量",
@@ -159,8 +159,8 @@
     const advice = G.directAdvice(answers);
     root.dispatchEvent(new CustomEvent('codingplan:guide-advice', {detail: advice}));
     if (host.hidden) { host.innerHTML = ''; return; }
-    host.innerHTML = `<section class="purchase-guide-panel"><header class="guide-header"><div><span class="guide-eyebrow">一起整理你的需求</span><h2>不确定怎么填？一步步来</h2><p>回答会直接更新下方“我的需求”，也可以随时手动调整。</p></div><div class="guide-header-actions"><button type="button" data-guide-action="collapse">完成 / 收起</button></div></header>
-      ${advice ? '<button type="button" data-guide-action="restart">改为工具接入或 API</button>' : `<nav class="guide-progress" aria-label="选购步骤">${questions.map(([label], i) => `<button type="button" data-step="${i}" aria-current="${i === step ? 'step' : 'false'}">${i + 1} ${label}</button>`).join('')}</nav><div class="guide-question"><h3 tabindex="-1" id="guideQuestionTitle">${questions[step][1]}</h3><p>${questions[step][2]}</p>${content(s)}</div><footer class="guide-step-actions"><button type="button" data-guide-action="prev" ${step === 0 ? 'disabled' : ''}>上一步</button><button type="button" data-guide-action="skip">不确定 / 跳过</button><button type="button" class="guide-primary" data-guide-action="next">${step === questions.length - 1 ? '完成，查看方案 ↓' : '下一步'}</button></footer>`}
+    host.innerHTML = `<section class="purchase-guide-panel"><header class="guide-header"><div><h2>不确定怎么填？一步步来</h2><p>选择后即时更新方案。</p></div><div class="guide-header-actions"><button type="button" data-guide-action="collapse">完成 / 收起</button></div></header>
+      ${advice ? '<button type="button" data-guide-action="restart">改为工具接入或 API</button>' : `<nav class="guide-progress" aria-label="选购步骤">${questions.map(([label], i) => `<button type="button" data-step="${i}" aria-current="${i === step ? 'step' : 'false'}">${i + 1} ${label}</button>`).join('')}</nav><div class="guide-question"><h3 tabindex="-1" id="guideQuestionTitle">${questions[step][1]}</h3>${questions[step][2] ? `<p>${questions[step][2]}</p>` : ''}${content(s)}</div><footer class="guide-step-actions"><button type="button" data-guide-action="prev" ${step === 0 ? 'disabled' : ''}>上一步</button><button type="button" data-guide-action="skip">不确定 / 跳过</button><button type="button" class="guide-primary" data-guide-action="next">${step === questions.length - 1 ? '完成，查看方案 ↓' : '下一步'}</button></footer>`}
       <div class="guide-summary" data-guide-summary>${advice ? '下方已给出直接使用建议；购买需求保持不变。' : esc(summary(s))}${!advice && s.modelMatch === 'all' ? '<span class="model-match-warning">需同时支持所选模型</span>' : ''}</div></section>`;
   }
 

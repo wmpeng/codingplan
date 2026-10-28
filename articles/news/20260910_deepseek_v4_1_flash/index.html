@@ -20,9 +20,9 @@
   <link rel="icon" href="/favicon.ico?v=260924a" type="image/x-icon" />
   <link rel="stylesheet" href="/styles/shared.css?v=bd1276c850" />
   <link rel="stylesheet" href="/styles/reading.css?v=05dca7deaf" />
-  <link rel="stylesheet" href="/styles/design-system.css?v=b3c0a84784" />
+  <link rel="stylesheet" href="/styles/design-system.css?v=b229e5aa01" />
 <script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
-<script id="site-data-versions" type="application/json">{"platforms":"2026-10-25T16:31:43.191Z","plans":"2026-10-25T16:36:28.120Z","models":"2026-10-25T10:48:45.156Z","config":"2026-10-25T16:38:26.291Z","featured_catalog":"2026-10-25T10:48:45.157Z","changes":"2026-10-25T16:36:29.712Z","announcements":"2026-10-25T10:48:45.158Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
+<script id="site-data-versions" type="application/json">{"platforms":"2026-10-27T14:11:00.353Z","plans":"2026-10-27T14:11:05.766Z","models":"2026-10-27T09:10:28.501Z","config":"2026-10-27T09:11:16.935Z","featured_catalog":"2026-10-27T11:25:07.246Z","changes":"2026-10-27T09:10:56.626Z","announcements":"2026-10-27T09:11:15.952Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
 <script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
 <link rel="stylesheet" href="/styles/ui-components.css?v=89d1dc5ef7">
@@ -262,17 +262,17 @@
 </tbody>
 </table></div>
 <p>Agent 这一组的提升幅度明显：Terminal-Bench 3.0 从 V4 Pro 的 11.8 提到 30.0，DeepSWE v1.1 从 62.7 提到 74.2，Automation-Bench 从 43.2 提到 54.8，Agents' Last Exam 从 25.7 提到 31.8。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSeek V4.1 Flash 与主流前沿模型的完整对照表" src="assets/deepseek-v41-flash-benchmark-table-cn.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSeek V4.1 Flash 与主流前沿模型的完整对照表" src="/articles/news/20260910_deepseek_v4_1_flash/assets/deepseek-v41-flash-benchmark-table-cn.png" /></figure>
 <p class="img-source">图片来源：<a href="https://www.deepseek.com/news/deepseek-v4-1-flash/" rel="noopener noreferrer">DeepSeek 官方发布页</a></p>
 <p>注：公告表与官方更新日志在个别单元格上取值不同，正文数字统一以官方更新日志为准。</p>
 <p>只看 DeepSeek 自家三款，能说明的是代际变化；放进同一张官方表横向比，位置才清楚。V4.1 Flash 的 DeepSWE v1.1 达到 74.2，略高于 Claude Opus 5.0 的 74.0 和 GPT-5.6 Sol 的 73.0，也高于 Kimi K3 的 67.5、GLM-5.3 的 66.9；CyberGym 88.1 高于 GLM-5.3 与 GPT-5.6 Sol 的 84.5；Automation-Bench 54.8 高于 Opus 5.0 的 50.3。落后的地方同样清楚：Terminal-Bench 3.0 与 4.0 上，Opus 5.0 的 43.3 与 51.8 仍明显领先 V4.1 Flash 的 30.0 与 31.2，GPT-5.6 Sol 的 34.4 与 39.9 也在前面。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSeek V4.1 Flash 重点 Agent 指标的同类对比" src="assets/deepseek-v41-flash-benchmark.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSeek V4.1 Flash 重点 Agent 指标的同类对比" src="/articles/news/20260910_deepseek_v4_1_flash/assets/deepseek-v41-flash-benchmark.png" /></figure>
 <p class="img-source">图片来源：<a href="https://www.deepseek.com/news/deepseek-v4-1-flash/" rel="noopener noreferrer">DeepSeek 官方发布页</a></p>
 <p>还有个容易被忽略的变量：换 Agent 框架带来的差距，和换模型差不多大。官方模型卡里，同一个 V4.1 Flash 在 DeepSWE v1.1 上按框架分布为 mini-SWE 74.2、DSH Minimal 72.6、Claude Code 69.8、Pi 66.2、Codex 65.6、OpenCode 65.5；Terminal-Bench 2.1 上则是 DSH Minimal 90.6、mini-SWE 90.3、Claude Code 88.0、OpenCode 85.0、Codex 84.1。横向比分数时，跑分用的框架和模型本身一样值得看。</p>
 <p>以上分数均为厂商自测，第三方复测尚未出现。</p>
 <h2 id="kv-cache-890-token">三、KV Cache 压缩到 890 字节/token</h2>
 <p>Agent 场景里，缓存命中的费用往往占大头，所以 KV Cache 的体积直接决定使用成本。官方给出的每 token 全局 KV Cache 数据是：DeepSeek-V1 为 389,120 字节，V3.2 降到 48,068 字节，V4-Flash 降到 3,514 字节，V4.1-Flash 进一步降到 890 字节。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSeek 各代模型每 token 全局 KV Cache 体积对比" src="assets/deepseek-v41-flash-kvcache.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSeek 各代模型每 token 全局 KV Cache 体积对比" src="/articles/news/20260910_deepseek_v4_1_flash/assets/deepseek-v41-flash-kvcache.png" /></figure>
 <p class="img-source">图片来源：<a href="https://www.deepseek.com/news/deepseek-v4-1-flash/" rel="noopener noreferrer">DeepSeek 官方发布页</a></p>
 <p>换算下来，V4.1 Flash 的全局缓存约为上一代 V4-Flash 的 1/4，相对初代模型缩小约 437 倍。官方同时说明，与上一代相比 HBM 需求降到 1/4、SSD 需求降到 1/8 —— 后者的实现方式是 SWA Bounded Replay：只需要重放最近一段 token 就能重建缺失的滑动窗口 KV，不必把它持久化到 SSD。</p>
 <h2 id="api-deepseek-flash-flash-v4-pro">四、API 与价格：模型名改为 deepseek-flash，单价低于上一代 Flash 和 V4 Pro</h2>
@@ -335,7 +335,7 @@
 </tbody>
 </table></div>
 <p>对照上一代 V4 Flash，V4.1 Flash 的缓存命中输入从 0.05 元降到 0.02 元，降幅 60%；缓存未命中输入从 1.5 元降到 1 元，输出从 4.5 元降到 4 元。相对 V4 Pro 的差距更大：缓存命中输入只有它的 13%，缓存未命中输入约 22%，输出约 30%，空闲与高峰两档的比值一致。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSeek V4.1 Flash API 价格表" src="assets/deepseek-v41-flash-price-cn.jpeg" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSeek V4.1 Flash API 价格表" src="/articles/news/20260910_deepseek_v4_1_flash/assets/deepseek-v41-flash-price-cn.jpeg" /></figure>
 <p class="img-source">图片来源：<a href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing" rel="noopener noreferrer">DeepSeek 官方定价页</a></p>
 <p><strong>按 1 亿 tokens 算一笔总账</strong></p>
 <p>单价看不出总成本，按一组偏 Agent 场景的假设折算：总量 1 亿 tokens、输入与输出比 99.5% : 0.5%、输入里 97% 命中缓存。对应缓存命中输入 9,651.5 万 tokens、未命中输入 298.5 万 tokens、输出 50 万 tokens，结果如下：</p>

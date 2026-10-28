@@ -140,7 +140,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://www.minimax.cn/m-plan"
+      "action": "https://api.dreamfree.space/c/s/cpyqminimax"
     },
     {
       "slug": "minimax-coding-legacy",
@@ -240,7 +240,7 @@
         }
       },
       "platformStatus": "open",
-      "action": "https://platform.deepseek.com/",
+      "action": "https://api.dreamfree.space/c/s/cpyqdeepseek",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true
@@ -301,7 +301,7 @@
       "slug": "codex",
       "name": "Codex",
       "rating": 5,
-      "summary": "Codex官方订阅，支持GPT-6.1 Sol及6系列；Pro $500另支持Ultrafast。",
+      "summary": "Codex 官方订阅，Plus / Pro 支持 GPT-6.1 Sol / Terra；Pro $500 另支持 Ultrafast。",
       "detail": "速度档影响额度消耗；新型号与新套餐的精确 Token 额度未知。",
       "dimensions": {
         "value": {
@@ -541,7 +541,7 @@
       "supportsHarnessApi": true,
       "summary": "华为云个人Token Plan，当前五个LLM，按官方月Token总量。",
       "detail": "仅西南贵阳一，每日限量发售；官方Token总量与请求次数、TPM分开。",
-      "action": "https://console.huaweicloud.com/modelarts/?region=cn-southwest-2#/model-studio/resourcePlanManagement"
+      "action": "https://api.dreamfree.space/c/s/cpyqhuawei"
     },
     {
       "slug": "tencent-cloud",
@@ -604,7 +604,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": false,
-      "action": "https://qoder.com.cn/pricing?tab=qoderwork-cli&type=subscription"
+      "action": "https://api.dreamfree.space/c/s/cpyqqodercn"
     },
     {
       "slug": "qoder-intl",
@@ -630,7 +630,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": false,
-      "action": "https://qoder.com/pricing"
+      "action": "https://api.dreamfree.space/c/s/cpyqqoderintl"
     },
     {
       "slug": "workbuddy",
@@ -656,7 +656,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": false,
-      "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing"
+      "action": "https://api.dreamfree.space/c/s/cpyqworkbuddy"
     },
     {
       "slug": "trae-cn",
@@ -682,7 +682,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": false,
-      "action": "https://www.trae.cn"
+      "action": "https://api.dreamfree.space/c/s/cpyqtraecn"
     },
     {
       "slug": "trae-intl",
@@ -708,7 +708,7 @@
       "requiresOverseasNetwork": true,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": false,
-      "action": "https://www.trae.ai/pricing"
+      "action": "https://api.dreamfree.space/c/s/cpyqtraeintl"
     },
     {
       "slug": "github",
@@ -734,7 +734,7 @@
       "requiresOverseasPayment": true,
       "supportsHarnessApi": false,
       "detail": "用量按模型Token价格与当前基础/Flex积分计算，部分老年付仍有过渡口径。",
-      "action": "https://api.dreamfree.space/c/s/cpyqghcopilotp"
+      "action": "https://api.dreamfree.space/c/s/cpyqghcopilot"
     },
     {
       "slug": "cursor",
@@ -760,7 +760,7 @@
       "requiresOverseasNetwork": true,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": null,
-      "action": "https://cursor.com/pricing"
+      "action": "https://api.dreamfree.space/c/s/cpyqcursor"
     },
     {
       "slug": "jd-cloud",
@@ -1177,11 +1177,11 @@
           "reason": "京东云官方运营，证据不足，但推测稳定性尚可。"
         }
       },
-      "platformStatus": "restricted",
+      "platformStatus": "open",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqjingdong"
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdongtp"
     },
     {
       "slug": "taotoken-token",
@@ -1206,7 +1206,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://taotoken.net/token-plan"
+      "action": "https://api.dreamfree.space/c/s/cpyqtaotoken"
     },
     {
       "slug": "chaosuan-token",
@@ -1231,7 +1231,7 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://www.scnet.cn/"
+      "action": "https://api.dreamfree.space/c/s/cpyqchaosuantp"
     },
     {
       "slug": "iflytek-token",
@@ -1256,8 +1256,8 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://maas.xfyun.cn/"
+      "action": "https://api.dreamfree.space/c/s/cpyqxunfei"
     }
   ],
-  "contentVersion": "2026-10-25T16:31:43.191Z"
+  "contentVersion": "2026-10-27T15:57:45.154Z"
 }

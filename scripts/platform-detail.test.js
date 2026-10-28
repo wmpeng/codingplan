@@ -22,6 +22,30 @@ function samplePlatform(overrides = {}) {
 }
 
 describe('buildDetailBodyHtml', () => {
+  it('collapses inherited capability badges but keeps every active explicit override, including equal values and API plans', () => {
+    const platform = samplePlatform({supportsHarnessApi:true});
+    for (const [override, expected] of [[undefined,1], [true,3], [false,3]]) {
+      const plans = [
+        {slug:'lite',platformSlug:'demo',name:'Lite',billingMode:'subscription',planStatus:'open'},
+        {slug:'pro',platformSlug:'demo',name:'Pro',billingMode:'subscription',planStatus:'open',...(override === undefined ? {} : {supportsHarnessApi:override})},
+        {slug:'old',platformSlug:'demo',name:'Old',billingMode:'subscription',planStatus:'delisted',supportsHarnessApi:false}
+      ];
+      const entityContext = fixtureContext({schemaVersion:1,platforms:[platform]}, {schemaVersion:1,plans}, {schemaVersion:1,models:[]}, {schemaVersion:1,planModels:[]});
+      // Every catalog plan has a resolved boolean, even when no raw override exists.
+      const html = buildDetailBodyHtml(platform, {entityContext,plans:EntityData.buildPlanCatalog(entityContext)});
+      assert.equal((html.match(/class="harness-api-badge"/g) || []).length, expected);
+      if (override === false) assert.match(html, /data-harness-api="false"/);
+    }
+    const plans = [
+      {slug:'lite',platformSlug:'demo',name:'Lite',billingMode:'subscription',planStatus:'open'},
+      {slug:'api',platformSlug:'demo',name:'API',billingMode:'payg',planStatus:'open',supportsHarnessApi:false}
+    ];
+    const entityContext = fixtureContext({schemaVersion:1,platforms:[platform]}, {schemaVersion:1,plans}, {schemaVersion:1,models:[]}, {schemaVersion:1,planModels:[]});
+    const html = buildDetailBodyHtml(platform, {entityContext,plans:EntityData.buildPlanCatalog(entityContext).filter(p=>p.billingMode==='subscription'),apiPricingGroups:[{planSlug:'api',planName:'API',supportsHarnessApi:false,rows:[{modelName:'Model',currency:'¥',inputPerM:1,cachePerM:0,outputPerM:2}]}]});
+    assert.equal((html.match(/class="harness-api-badge"/g) || []).length, 3);
+    assert.match(html, /data-section="api-pricing"[\s\S]*data-harness-api="false"/);
+  });
+
   it('uses the explicit platform action even when the first plan has another link', () => {
     const platform=samplePlatform({action:'https://example.com/platform'});
     const html=buildDetailBodyHtml(platform,{plans:[{slug:'p',platformSlug:platform.slug,name:'Plan',action:'https://example.com/plan'}]});
@@ -81,7 +105,7 @@ describe('buildDetailBodyHtml', () => {
   it('detail section uses dimensionCopy', () => {
     const platform = samplePlatform();
     const html = buildDetailBodyHtml(platform, { plans: [] });
-    assert.ok(html.includes('评价详解'));
+    assert.ok(html.includes('aria-label="平台评价"'));
     assert.ok(html.includes('长详解'));
     assert.ok(html.includes('platform-detail-dim-score-unit'));
     assert.ok(html.includes('>5<span class="platform-detail-dim-score-unit">分</span>'));

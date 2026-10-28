@@ -20,9 +20,9 @@
   <link rel="icon" href="/favicon.ico?v=260924a" type="image/x-icon" />
   <link rel="stylesheet" href="/styles/shared.css?v=bd1276c850" />
   <link rel="stylesheet" href="/styles/reading.css?v=05dca7deaf" />
-  <link rel="stylesheet" href="/styles/design-system.css?v=b3c0a84784" />
+  <link rel="stylesheet" href="/styles/design-system.css?v=b229e5aa01" />
 <script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
-<script id="site-data-versions" type="application/json">{"platforms":"2026-10-25T16:31:43.191Z","plans":"2026-10-25T16:36:28.120Z","models":"2026-10-25T10:48:45.156Z","config":"2026-10-25T16:38:26.291Z","featured_catalog":"2026-10-25T10:48:45.157Z","changes":"2026-10-25T16:36:29.712Z","announcements":"2026-10-25T10:48:45.158Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
+<script id="site-data-versions" type="application/json">{"platforms":"2026-10-27T14:11:00.353Z","plans":"2026-10-27T14:11:05.766Z","models":"2026-10-27T09:10:28.501Z","config":"2026-10-27T09:11:16.935Z","featured_catalog":"2026-10-27T11:25:07.246Z","changes":"2026-10-27T09:10:56.626Z","announcements":"2026-10-27T09:11:15.952Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
 <script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
 <link rel="stylesheet" href="/styles/ui-components.css?v=89d1dc5ef7">
@@ -132,7 +132,7 @@
 <li>DeepSWE 得分 63%；当前 API 价格为缓存命中输入 0.025 元、未命中输入 3 元、输出 6 元 / 百万 tokens。8 月 17 日 0 时起改为峰谷定价，高峰时段 Pro 未命中输入 9 元、输出 27 元。</li>
 </ul>
 <p>8 月 13 日，DeepSeek 在官网确认 V4 Pro 正式版上线。APP、网页端和 API 同步更新，网页和 APP 可在「专家模式」中调用，API 模型名仍为 <code>deepseek-v4-pro</code>。发布公告和定价页同时带来了两个变化：正式版的 Agent / Coding 评测成绩公开了，API 峰谷定价也定了下来。当前 3 元的未命中输入价格只保留到 8 月 16 日。</p>
-<p><img loading="lazy" decoding="async" alt="DeepSeek 官网首页正式版公告" src="assets/deepseek-v4-pro-0813-homepage-announcement.jpeg" />
+<p><img loading="lazy" decoding="async" alt="DeepSeek 官网首页正式版公告" src="/articles/news/20260813_deepseek_v4_pro_0813/assets/deepseek-v4-pro-0813-homepage-announcement.jpeg" />
 图片来源：<a href="https://www.deepseek.com" rel="noopener noreferrer">DeepSeek官网</a></p>
 <p>13 日下午，官网首页这则公告曾短暂撤下，晚上又重新出现。结合官网新闻页，APP、网页端和 API 全面上线已经是官方确认的信息。</p>
 <h2 id="_1">一、正式版更新了什么</h2>
@@ -142,7 +142,7 @@
 <p>社区用户还反馈，正式版的思维链比过去更精简，常常省略不影响语义的连接词和解释。这只是用户实测印象，不能据此判断模型的写作能力。</p>
 <h2 id="_2">二、官方评测表：正式版比预览版提升了多少</h2>
 <p>DeepSeek 发布的对比表覆盖 HLE、Terminal Bench 2.1、NL2Repo、Cybergym、DeepSWE、Toolathlon、Agents' Last Exam、AutomationBench 和两项 DSBench。Flash-0731 一列与官方模型卡逐项相符，表内数据可以作为比较依据。官方还注明，公开基准中的 Code Agent 任务使用 DeepSeek Harness 极简模式、max 档、topp=0.95、temperature=1.0 测试，换用其他框架后结果可能略有不同。</p>
-<p><img loading="lazy" decoding="async" alt="DeepSeek V4 Pro 正式版官方评测对比表" src="assets/deepseek-v4-pro-0813-benchmark.jpg" />
+<p><img loading="lazy" decoding="async" alt="DeepSeek V4 Pro 正式版官方评测对比表" src="/articles/news/20260813_deepseek_v4_pro_0813/assets/deepseek-v4-pro-0813-benchmark.jpg" />
 图片来源：<a href="https://api-docs.deepseek.com/zh-cn/news/news260813/" rel="noopener noreferrer">DeepSeek官网</a></p>
 <p>下表保留 V4 Pro 与几个主要对手的关键分数，完整对比见配图：</p>
 <div class="doc-table-wrap" tabindex="0"><table>
@@ -256,7 +256,7 @@
 <h2 id="deepswe-coding-agent">三、DeepSWE：更接近实际 Coding Agent 任务</h2>
 <p>DeepSWE 更接近 Cursor、Codex 这类工具的实际用法：给模型一个目标，让它在真实仓库里翻代码、改文件、跑验证，遇到问题再继续修改，多步完成一项工作。</p>
 <p>DeepSWE 由 Datacurve 维护，测试长周期软件工程任务。当前 v1.1 有 113 个任务、91 个仓库和 5 种语言，所有模型统一使用 mini-swe-agent。任务全部从零开始，不从现成 commit / PR 改编；验证器由人工编写，检查任务行为是否正确，不要求实现方式与参考答案一致。相比短题榜或固定仓库修补任务，DeepSWE 的 prompt 约为 SWE-bench Pro 的一半长，但解决方案代码量是后者的 5.5 倍，输出 token 约 2 倍，更接近 Agent 在项目中连续写代码的场景。</p>
-<p><img loading="lazy" decoding="async" alt="DeepSWE v1.1 榜单：Pass@1、平均成本、输出 token 与步骤数" src="assets/deepswe-leaderboard-deepseek-v4-pro-0813.png" />
+<p><img loading="lazy" decoding="async" alt="DeepSWE v1.1 榜单：Pass@1、平均成本、输出 token 与步骤数" src="/articles/news/20260813_deepseek_v4_pro_0813/assets/deepswe-leaderboard-deepseek-v4-pro-0813.png" />
 图片来源：<a href="https://deepswe.datacurve.ai/" rel="noopener noreferrer">DeepSWE</a></p>
 <p>在榜单的 max 配置下，V4 Pro 的 Pass@1 为 <strong>63%±6%</strong>，排在第 9 位，高于 Opus 4.8 的 59%±2%，低于 Fable 5 的 70%±4%、Kimi K3 的 69%±5% 和 Grok 4.6 的 67%±2%。官方对比表中的 DeepSWE 分数为 62.7，与榜单的 63%接近。V4 Pro 已经超过 Opus 4.8，但还没有追上 Fable 5 和 Kimi K3。</p>
 <div class="doc-table-wrap" tabindex="0"><table>
@@ -300,7 +300,7 @@
 </tr>
 </tbody>
 </table></div>
-<p><img loading="lazy" decoding="async" alt="DeepSWE 分数与每任务平均成本散点图" src="assets/deepswe-score-vs-cost-deepseek-v4-pro-0813.png" />
+<p><img loading="lazy" decoding="async" alt="DeepSWE 分数与每任务平均成本散点图" src="/articles/news/20260813_deepseek_v4_pro_0813/assets/deepswe-score-vs-cost-deepseek-v4-pro-0813.png" />
 图片来源：<a href="https://deepswe.datacurve.ai/" rel="noopener noreferrer">DeepSWE</a></p>
 <p>图的纵轴是 DeepSWE 分数，越高越好；横轴是每任务平均成本，而且刻度是反的：左边更贵，右边更便宜，最右侧接近 0。右上角标注了 most efficient，<strong>越靠上、越靠右越好</strong>。Claude Opus 5、Fable 5 的分数更高，但都落在左侧高价区；Kimi K3、Grok 4.6 位于中间。DeepSeek 的两个点明显贴近右侧：V4 Pro 每任务平均成本 \$0.06，全榜最低，Flash 是 \$0.10。V4 Pro 的分数不是榜首，63%也低于 Fable 5 的 70%，但它用接近 60%的完成率，换来了远低于其他高分模型的任务成本。这里的成本采用榜单评测口径，不能直接当成 8 月 17 日涨价后的 API 账单。</p>
 <h2 id="artificial-analysis-agent">四、Artificial Analysis：综合智能与 Agent 能力分开看</h2>
@@ -347,10 +347,10 @@
 </tbody>
 </table></div>
 <p>两项分数放在一起看，V4 Pro 的优势主要落在 Agent 任务，而不是综合能力榜首。</p>
-<p><img loading="lazy" decoding="async" alt="Artificial Analysis Intelligence Index" src="assets/aa-intelligence-index-deepseek-v4-pro-0813.png" />
+<p><img loading="lazy" decoding="async" alt="Artificial Analysis Intelligence Index" src="/articles/news/20260813_deepseek_v4_pro_0813/assets/aa-intelligence-index-deepseek-v4-pro-0813.png" />
 图片来源：<a href="https://artificialanalysis.ai/?capability-index=healthcare-and-medical&amp;capability-models=inkling%2Ck-exaone-2-0-0803%2Cminimax-m3%2Cnemotron-3-5-lightning%2Ccommand-a-plus%2Cgpt-5-6-luna%2Cnvidia-nemotron-3-ultra-550b-a55b%2Cqwen3-8-max%2Cnvidia-nemotron-3-super-120b-a12b%2Csolar-open2-250b%2Ca-x-k2%2Cdeepseek-v4-pro%2Cclaude-4-5-haiku-reasoning%2Cmotif-3%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cgrok-4-6%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cmistral-medium-3-5%2Cgpt-oss-120b%2Cglm-5-2%2Ckimi-k3&amp;text-to-image=nano-banana-2%2Copenai-gpt_image-1-5%2Cmai-image-2-5%2Cgemini_nano-banana-pro%2Cnano-banana-2-lite%2Cseedream-5-0-pro%2Cgrok-imagine-image-quality%2Cqwen-image-2-0-pro-alibaba-cloud-may-2026%2Cblack_forest_labs_flux-2-max%2Cmai-image-2-5-flash%2Chidream-o1-image-1-5%2Ckrea-2-medium-turbo%2Ckrea-2-large%2Creve-2-1%2Cgpt-image-2&amp;models=minimax-m3%2Cgpt-5-6-luna%2Cqwen3-8-max%2Cdeepseek-v4-pro%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cgrok-4-6%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cclaude-opus-4-8%2Cgpt-5-5%2Cdeepseek-v4-flash-0420-high%2Cdeepseek-v4-pro-0424-high#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis Intelligence Index</a></p>
 <p>在 Artificial Analysis Intelligence Index v4.1.1 中，V4 Pro 0813 得分 53，与 GLM-5.2 并列，低于 Fable 5 的 62、Opus 5 的 63 和 Kimi K3 的 60，高于 V4 Pro 预览版的 44。和预览版相比，正式版的综合能力提升明显。</p>
-<p><img loading="lazy" decoding="async" alt="Artificial Analysis Agentic Index" src="assets/aa-agentic-index-deepseek-v4-pro-0813.png" />
+<p><img loading="lazy" decoding="async" alt="Artificial Analysis Agentic Index" src="/articles/news/20260813_deepseek_v4_pro_0813/assets/aa-agentic-index-deepseek-v4-pro-0813.png" />
 图片来源：<a href="https://artificialanalysis.ai/?capability-index=healthcare-and-medical&amp;capability-models=inkling%2Ck-exaone-2-0-0803%2Cminimax-m3%2Cnemotron-3-5-lightning%2Ccommand-a-plus%2Cgpt-5-6-luna%2Cnvidia-nemotron-3-ultra-550b-a55b%2Cqwen3-8-max%2Cnvidia-nemotron-3-super-120b-a12b%2Csolar-open2-250b%2Ca-x-k2%2Cdeepseek-v4-pro%2Cclaude-4-5-haiku-reasoning%2Cmotif-3%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cgrok-4-6%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cmistral-medium-3-5%2Cgpt-oss-120b%2Cglm-5-2%2Ckimi-k3&amp;text-to-image=nano-banana-2%2Copenai-gpt_image-1-5%2Cmai-image-2-5%2Cgemini_nano-banana-pro%2Cnano-banana-2-lite%2Cseedream-5-0-pro%2Cgrok-imagine-image-quality%2Cqwen-image-2-0-pro-alibaba-cloud-may-2026%2Cblack_forest_labs_flux-2-max%2Cmai-image-2-5-flash%2Chidream-o1-image-1-5%2Ckrea-2-medium-turbo%2Ckrea-2-large%2Creve-2-1%2Cgpt-image-2&amp;models=minimax-m3%2Cgpt-5-6-luna%2Cqwen3-8-max%2Cdeepseek-v4-pro%2Cclaude-opus-5%2Cgpt-5-6-terra%2Cgrok-4-6%2Cclaude-fable-5%2Cgpt-5-6-sol%2Cglm-5-2%2Ckimi-k3%2Cdeepseek-v4-flash%2Cclaude-opus-4-8%2Cgpt-5-5%2Cdeepseek-v4-flash-0420-high%2Cdeepseek-v4-pro-0424-high&amp;intelligence=agentic-index#intelligence-tabs" rel="noopener noreferrer">Artificial Analysis Agentic Index</a></p>
 <p>Agentic Index 中，V4 Pro 0813 得分 50，高于 Opus 4.8 的 49、V4 Flash-0731 的 48 和 GLM-5.2 的 46，低于 Fable 5 的 57 和 Kimi K3 的 54。这个分数更能对应 V4 Pro 的使用场景：Agent、工具调用和长周期 Coding 任务。</p>
 <h2 id="8-17">五、价格：8 月 17 日起进入峰谷定价</h2>

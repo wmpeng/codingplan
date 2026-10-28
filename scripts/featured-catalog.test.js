@@ -10,7 +10,7 @@ const ctx=E.buildContext(read('platforms'),read('plans'),read('models'));ctx.mod
 test('精选来源完整、唯一，首页默认选择直接取同一名单',()=>{
   C.validate(preset,ctx);
   assert.equal(preset.groups.length,2);
-  assert.deepEqual(preset.groups.map(group=>[group.label,group.title]),[['甜品级','甜品级模型'],['头部级','头部级模型']]);
+  assert.deepEqual(preset.groups.map(group=>[group.label,group.title]),[['头部级','头部级模型'],['甜品级','甜品级模型']]);
   const state=F.createDefaultState(config,{featuredPreset:preset});
   assert.deepEqual(state.platformSlugs,preset.platformSlugs);
   const expected = ['sota-models','high-volume-models'].flatMap(id=>preset.groups.find(group=>group.id===id).modelSlugs);

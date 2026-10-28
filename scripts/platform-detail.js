@@ -64,7 +64,7 @@
     return Numbers.unitPrice(value, currency || '¥');
   }
 
-  function buildApiPricingSectionHtml(groups, modelGroups) {
+  function buildApiPricingSectionHtml(groups, modelGroups, showHarnessApi = true) {
     const validGroups = Array.isArray(groups) ? groups.filter((group) => group && Array.isArray(group.rows) && group.rows.length) : [];
     if (!validGroups.length) return '';
     const content = validGroups.map((group) => {
@@ -95,7 +95,7 @@
       return (
         `<div class="platform-detail-api-group">` +
         (validGroups.length > 1 ? `<h4>${esc(group.planName)}</h4>` : '') +
-        EntityData.harnessApiBadge(group.supportsHarnessApi) +
+        (showHarnessApi ? EntityData.harnessApiBadge(group.supportsHarnessApi) : '') +
         `<ul class="platform-detail-api-list" role="list" aria-label="${esc(group.planName || '按量 API')}模型报价">${rows}</ul>${note}</div>`
       );
     }).join('');
@@ -172,7 +172,7 @@
     );
   }
 
-  function buildPlansSectionHtml(plans, platform, entityContext) {
+  function buildPlansSectionHtml(plans, platform, entityContext, showHarnessApi = true) {
     const active = activePlansOnly(plans);
     if (active.length === 0) return '';
 
@@ -184,7 +184,7 @@
         const ratingHtml = stars
           ? `<span class="platform-detail-plan-rating" aria-label="${rating} 星">${stars}</span>`
           : '';
-        const harnessHtml = EntityData.harnessApiBadge(EntityData.resolveHarnessApi(platform, plan));
+        const harnessHtml = showHarnessApi ? EntityData.harnessApiBadge(EntityData.resolveHarnessApi(platform, plan)) : '';
         const modelLabels = entityContext
           ? UI.prioritizeFeaturedModels(EntityData.supportedModels(entityContext, [plan]), entityContext.modelGroups).map(model => model.name)
           : plan.modelLabels;
@@ -268,6 +268,9 @@
       typeof PlatformCatalog.collectPlansForVendor === 'function'
         ? PlatformCatalog.collectPlansForVendor(rawPlans, platform && platform.slug)
         : rawPlans.filter(p => p && p.platformSlug === (platform && platform.slug));
+    // Catalog plans contain resolved capabilities; only raw plans retain override provenance.
+    const capabilityPlans = context.entityContext?.plans.filter(plan => plan.platformSlug === platformId) || vendorPlans;
+    const showPlanHarnessApi = activePlansOnly(capabilityPlans).some(plan => typeof plan.supportsHarnessApi === 'boolean');
     const modelLabels = context.entityContext
       ? UI.prioritizeFeaturedModels(EntityData.platformModels(context.entityContext, platformId), context.entityContext.modelGroups).map(model => model.name)
       : PlatformCatalog.collectModelsForVendor(vendorPlans, platformId);
@@ -334,13 +337,12 @@
       `</div>` +
       `</header>` +
       overviewHtml +
-      `<section class="platform-detail-section" data-section="dimensions" aria-labelledby="platformDetailDimsHeading">` +
-      `<h3 id="platformDetailDimsHeading" class="platform-detail-section-title">评价详解</h3>` +
+      `<section class="platform-detail-section" data-section="dimensions" aria-label="平台评价">` +
       `<ul class="platform-detail-dimensions">${dims}</ul>` +
       `</section>` +
       buildModelsSectionHtml(modelLabels) +
-      buildApiPricingSectionHtml(context.apiPricingGroups, context.entityContext?.modelGroups) +
-      buildPlansSectionHtml(vendorPlans, platform, context.entityContext)
+      buildApiPricingSectionHtml(context.apiPricingGroups, context.entityContext?.modelGroups, showPlanHarnessApi) +
+      buildPlansSectionHtml(vendorPlans, platform, context.entityContext, showPlanHarnessApi)
     );
   }
 

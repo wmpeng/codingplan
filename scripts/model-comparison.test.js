@@ -258,10 +258,10 @@ test('unit price sorting uses package price ascending as the tie breaker', () =>
 test('one source defines the featured platforms and exactly two model groups', () => {
   const source = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'featured-catalog.json'), 'utf8'));
   const config = normalizePresetConfig(source);
-  assert.deepEqual(config.groups.map(g=>g.id), ['high-volume-models','sota-models']);
-  assert.equal(config.platformSlugs.length,7);
-  assert.ok(config.groups[0].modelSlugs.includes('gpt-6-luna'));
-  assert.ok(config.groups[1].modelSlugs.includes('gpt-6-1-sol'));
+  assert.deepEqual(config.groups.map(g=>g.id), ['sota-models','high-volume-models']);
+  assert.deepEqual(config.platformSlugs,source.platformSlugs);
+  assert.ok(config.groups.find(group=>group.id==='high-volume-models').modelSlugs.includes('gpt-6-luna'));
+  assert.ok(config.groups.find(group=>group.id==='sota-models').modelSlugs.includes('gpt-6-1-sol'));
 });
 
 test('preset rows include subscriptions and API while sorting by unit and package price', () => {
@@ -296,7 +296,7 @@ test('preset tables add model only for multi groups and preserve single-model qu
   assert.match(single, /¥0\.10 \/ M/);
   assert.match(multi, /平台 \/ 模型 \/ 套餐/);
   assert.equal(multi.includes('<th scope="col">模型</th>'), false);
-  assert.match(multi, /包含：GLM-5\.3-Flash/);
+  assert.match(multi, /aria-label="包含模型">GLM-5\.3-Flash/);
   assert.match(multi, /GLM-5\.3-Flash \[谷\]/);
   assert.match(multi, /¥10 \/ 亿/);
   assert.match(multi, /10亿/);
@@ -314,18 +314,18 @@ test('preset model multi-selection keeps the union of rows, tiers and empty stat
   assert.match(selected,/data-preset-model="a" aria-pressed="true"/);
   assert.match(selected,/data-preset-model="b" aria-pressed="false"/);
   assert.match(selected,/data-point-id="a-low"/);assert.match(selected,/data-point-id="a-high"/);
-  assert.doesNotMatch(selected,/data-point-id="b"/);assert.match(selected,/>2 条<\/span>/);
+  assert.doesNotMatch(selected,/data-point-id="b"/);assert.match(selected,/>共 2 条<\/span>/);
   assert.match(selected,/模型 A \[谷\]/);assert.match(selected,/模型 A \[峰\]/);
   const multi=presetComparisonTableHtml(group,points,'B','all',{modelFilter:true,selectedModelSlugs:['a','b','a','not-in-group']});
   assert.match(multi,/data-preset-model="a" aria-pressed="true"/);
   assert.match(multi,/data-preset-model="b" aria-pressed="true"/);
   assert.match(multi,/data-preset-model="" aria-pressed="false"/);
-  assert.match(multi,/>3 条<\/span>/);
+  assert.match(multi,/>共 3 条<\/span>/);
   assert.equal((multi.match(/data-point-id=/g)||[]).length,3);
   const all=presetComparisonTableHtml(group,points,'B','all',{modelFilter:true,selectedModelSlugs:['not-in-group']});
   assert.match(all,/data-preset-model="" aria-pressed="true"/);assert.match(all,/data-point-id="b"/);
   const empty=presetComparisonTableHtml(group,points,'yi','all',{modelFilter:true,selectedModelSlugs:['empty']});
-  assert.match(empty,/>0 条<\/span>/);assert.match(empty,/当前暂无可比较的套餐/);
+  assert.match(empty,/>共 0 条<\/span>/);assert.match(empty,/当前暂无可比较的套餐/);
   assert.match(empty,/data-preset-model=""/);
 });
 

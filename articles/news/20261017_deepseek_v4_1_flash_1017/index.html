@@ -20,9 +20,9 @@
   <link rel="icon" href="/favicon.ico?v=260924a" type="image/x-icon" />
   <link rel="stylesheet" href="/styles/shared.css?v=bd1276c850" />
   <link rel="stylesheet" href="/styles/reading.css?v=05dca7deaf" />
-  <link rel="stylesheet" href="/styles/design-system.css?v=b3c0a84784" />
+  <link rel="stylesheet" href="/styles/design-system.css?v=b229e5aa01" />
 <script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
-<script id="site-data-versions" type="application/json">{"platforms":"2026-10-25T16:31:43.191Z","plans":"2026-10-25T16:36:28.120Z","models":"2026-10-25T10:48:45.156Z","config":"2026-10-25T16:38:26.291Z","featured_catalog":"2026-10-25T10:48:45.157Z","changes":"2026-10-25T16:36:29.712Z","announcements":"2026-10-25T10:48:45.158Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
+<script id="site-data-versions" type="application/json">{"platforms":"2026-10-27T14:11:00.353Z","plans":"2026-10-27T14:11:05.766Z","models":"2026-10-27T09:10:28.501Z","config":"2026-10-27T09:11:16.935Z","featured_catalog":"2026-10-27T11:25:07.246Z","changes":"2026-10-27T09:10:56.626Z","announcements":"2026-10-27T09:11:15.952Z","articles_catalog":"2026-10-25T17:18:54.882Z"}</script>
 <script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
 <link rel="stylesheet" href="/styles/ui-components.css?v=89d1dc5ef7">
@@ -170,13 +170,13 @@
 </tbody>
 </table></div>
 <p>Terminal-Bench 关注模型在终端里执行任务，DeepSWE 关注软件工程任务，NL2Repo 则考察从自然语言需求到仓库级实现的能力。终端任务和 ProgramBench 的分数变化较大，DeepSWE 在原本较高的成绩上继续改善。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSeek V4.1 Flash 1017 官方基准成绩对照" src="assets/deepseek-v41-flash-1017-benchmarks-cn.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSeek V4.1 Flash 1017 官方基准成绩对照" src="/articles/news/20261017_deepseek_v4_1_flash_1017/assets/deepseek-v41-flash-1017-benchmarks-cn.png" /></figure>
 <p class="img-source">图片来源：<a href="https://api-docs.deepseek.com/zh-cn/news/news261017/" rel="noopener noreferrer">DeepSeek 官方发布页</a>，厂商自测结果。</p>
 <p>表中的 Terminal-Bench 4.0 使用 Claude Code 框架，DeepSWE 使用 Mini-SWE-V2。HLE 的 42.6 是整体成绩，纯文本子集为 44.0；图中的 ZeroBench-main 使用 Pass@5，即允许多次尝试的评测方式。</p>
 <p>横向比较也要看具体项目：官方表中，1017 的 DeepSWE 77.0 高于 Claude Opus 5 的 74.0；但 Terminal-Bench 4.0、ProgramBench 和 NL2Repo 仍低于表中的 Opus 5。这份表比较的是列出的特定模型版本，不能延伸为超过所有最新旗舰。</p>
 <h2 id="_2">二、任务成本更低，是在哪些条件下成立？</h2>
 <p>官方同时强调任务运行时间与输出长度下降，并用 DeepSWE 的通过率和任务均价展示改善。在这类多轮编码任务中，即使 token 单价不动，只要完成任务所需的推理、工具往返和输出减少，费用也可能下降。</p>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSeek V4.1 Flash 1017 在 DeepSWE 上的通过率与任务成本" src="assets/deepseek-v41-flash-1017-cost-cn.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="DeepSeek V4.1 Flash 1017 在 DeepSWE 上的通过率与任务成本" src="/articles/news/20261017_deepseek_v4_1_flash_1017/assets/deepseek-v41-flash-1017-cost-cn.png" /></figure>
 <p class="img-source">图片来源：<a href="https://api-docs.deepseek.com/zh-cn/news/news261017/" rel="noopener noreferrer">DeepSeek 官方发布页</a>，厂商给出的 DeepSWE v1.1 比较图。</p>
 <p>图中横轴是人民币任务均价，采用对数刻度；同一模型的 low、high、max 也分别列点。图底说明，公开模型的部分基线取自 9 月 22 日榜单，OpenAI 模型点来自另一份官方表，因此它并非所有模型在同一天重新测试的结果。</p>
 <p>独立测试已经提供了补充。<strong>LiveBench 2.0</strong> 在 10 月 18 日更新的榜单中，1017 综合分为 79.2，9 月版为 78.0。七个分项的变化并不相同：</p>
@@ -240,7 +240,7 @@
 </tr>
 </tbody>
 </table></div>
-<figure class="doc-figure"><img loading="lazy" decoding="async" alt="LiveBench 2.0 中 DeepSeek V4.1 Flash 新旧版本对照" src="assets/livebench-deepseek-v41-1017-20261018.png" /></figure>
+<figure class="doc-figure"><img loading="lazy" decoding="async" alt="LiveBench 2.0 中 DeepSeek V4.1 Flash 新旧版本对照" src="/articles/news/20261017_deepseek_v4_1_flash_1017/assets/livebench-deepseek-v41-1017-20261018.png" /></figure>
 <p class="img-source">图片来源：<a href="https://livebench.ai/" rel="noopener noreferrer">LiveBench 2.0</a>，截图日期 2026 年 10 月 18 日。</p>
 <p>这份结果支持编程与 Agent 任务改善，也显示浏览器操作、研究两项得分较低。按<a href="https://livebench.ai/#/methodology" rel="noopener noreferrer">榜单评测方法</a>，每个模型每套任务只运行一次，分数还会受到工具与供应商故障影响，不能只凭这次结果就断言出现稳定退化。</p>
 <p>该榜单全范围的“每成功任务成本”由约 0.75 元降到约 0.58 元，降幅约 22.4%。这里混合了编码、长程任务及大量简答题，与官方 DeepSWE 的任务均价无法统一换算。</p>
