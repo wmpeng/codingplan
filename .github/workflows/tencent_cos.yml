@@ -20,8 +20,12 @@ jobs:
         SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
         SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
         BUCKET: ${{ vars.TENCENT_COS_BUCKET }}
-        REGION: ${{ vars.TENCENT_COS_REGION }}
-      run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
+      run: |
+        coscmd config \
+          -a "$SECRET_ID" \
+          -s "$SECRET_KEY" \
+          -b "$BUCKET" \
+          -e cos.accelerate.myqcloud.com
     
     - name: remove non-dist folders and files
       run: |
