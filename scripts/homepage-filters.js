@@ -217,7 +217,7 @@
       context.featuredPlatformSlugs = opts.featuredPreset.platformSlugs || [];
     }
     let groupsReady = Array.isArray(context.modelGroups), initialPresetPending = !full || pricing, pendingAll = false, multimodalNotice = "", platformShortcutNotice = "";
-    const platformCandidates = kind => platforms.filter(platform => (platformShortcutKinds[kind].fields || [platformShortcutKinds[kind].field]).every(field => platform[field] === false)).map(platform => platform.slug);
+    const platformCandidates = kind => platforms.filter(platform => kind === 'mainland' ? Filters.isMainlandPlatform(platform) : platform[platformShortcutKinds[kind].field] === false).map(platform => platform.slug);
     function platformShortcutAction(kind) {
       const eligible = platformCandidates(kind);
       const selected = state.platformSlugs === null ? platforms.map(platform => platform.slug) : state.platformSlugs;
@@ -346,11 +346,12 @@
       ${buildPicker({ id: "homeModelPicker", label: "模型", key: "modelSlugs", items: models, state, groups: context.modelGroups })}
       ${buildRangePicker("budget", state, plansPage)}${buildRangePicker("token", state, plansPage)}
       ${buildStatusPicker(purchaseTool, planStatusOnly)}
-      ${platformHub ? '<label class="platform-access-filter"><input type="checkbox" data-platform-domestic><span class="filter-control-text">支持中国大陆</span></label>' : ""}${plansPage ? '<label class="plan-harness-filter"><input type="checkbox" data-filter-field="harnessApiRequired"><span class="filter-control-text">需支持第三方工具</span></label>' : ""}</div>
+      ${pricing ? `<div class="pricing-mainland-control"><label class="pricing-mainland-filter"><span>支持中国大陆</span><span class="toggle-switch"><input type="checkbox" role="switch" data-filter-field="mainlandRequired"><span class="toggle-slider" aria-hidden="true"></span></span></label></div>` : ''}
+      ${platformHub ? '<label class="platform-access-filter"><span class="filter-control-text">支持中国大陆</span><span class="toggle-switch"><input type="checkbox" role="switch" data-platform-domestic><span class="toggle-slider" aria-hidden="true"></span></span></label>' : ""}${plansPage ? '<label class="plan-harness-filter"><input type="checkbox" data-filter-field="harnessApiRequired"><span class="filter-control-text">需支持第三方工具</span></label>' : ""}</div>
       ${featuredCatalog ? `<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-catalog-featured ${platformHub ? 'data-platform-featured' : 'data-plan-featured'} aria-pressed="false">${platformHub ? '显示精选平台' : '显示精选'}</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>` : ""}
       <div class="filter-state-footer">
       ${full ? "" : `<div class="filter-state-controls"><div class="offer-sort"><span aria-hidden="true">排序</span><span data-select-fallback><select id="homeOfferSort" data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></span></div><span class="offer-sort-help" id="offerSortHelp"></span>`}
-      <div class="filter-state-actions"><button type="button" data-filter-action="reset"${purchaseTool && !platformHub && !plansPage ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub || plansPage ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>${full && !platformHub && !plansPage ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">显示精选</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
+      <div class="filter-state-actions">${pricing ? "" : `<button type="button" data-filter-action="reset"${purchaseTool && !platformHub && !plansPage ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub || plansPage ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>`}${full && !platformHub && !plansPage ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">${pricing ? "重置筛选" : "显示精选"}</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
       </section>`;
     bindSelectionHelp(host);
     const offerSortSelect = host.querySelector('[data-offer-sort]');
@@ -415,7 +416,7 @@
       const menu = picker.querySelector('.filter-picker-menu');
       if (root.innerWidth <= 800) { menu.removeAttribute('style'); return; }
       const anchor = picker.querySelector('summary').getBoundingClientRect();
-      const actions = host.querySelector('[data-filter-action="reset"]').getBoundingClientRect();
+      const actions = host.querySelector('.filter-state-actions').getBoundingClientRect();
       const panelWidth = 240;
       const minTop = (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0) + 8;
       Object.assign(menu.style, {position:'fixed', width:`${panelWidth}px`, right:'auto', bottom:'auto', maxHeight:`${Math.max(100, root.innerHeight - minTop - 14)}px`});
@@ -430,14 +431,14 @@
     }
     function positionSelectionPanels() {
       positionStatusPanel();
-      host.querySelectorAll('[data-picker][open]').forEach(picker => {
+      host.querySelectorAll('[data-picker][open], #homeBudgetPicker[open], #homeTokenPicker[open]').forEach(picker => {
       const menu = picker.querySelector('.filter-picker-menu');
       const viewport = root.visualViewport;
       const width = viewport?.width || root.innerWidth;
       const height = viewport?.height || root.innerHeight;
       const left = viewport?.offsetLeft || 0, top = viewport?.offsetTop || 0;
       const mobile = root.innerWidth <= 800;
-      const panelWidth = mobile ? width - 28 : Math.min(380, width - 28);
+      const panelWidth = mobile ? width - 28 : Math.min(menu.classList.contains('budget-menu') ? 350 : 380, width - 28);
       const minTop = Math.max(top + 14, Math.min(top + height - 100, (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0) + 8));
       Object.assign(menu.style, {position:"fixed", width:`${panelWidth}px`, maxHeight:`${Math.min(620, top + height - minTop - 14)}px`, right:"auto", bottom:"auto"});
       const anchor = picker.querySelector('summary').getBoundingClientRect();
@@ -803,6 +804,9 @@
       positionSelectionPanels();
     });
     host.querySelector('#homeStatusPicker')?.addEventListener('toggle', positionStatusPanel);
+    host.querySelectorAll('#homeBudgetPicker, #homeTokenPicker').forEach(picker => {
+      picker.addEventListener('toggle', positionSelectionPanels);
+    });
     host.querySelector('[data-picker="platformSlugs"]')?.addEventListener('toggle', () => {
       sortPickerOptions('platformSlugs');
       positionSelectionPanels();

@@ -13,6 +13,7 @@
     budgetCny: null,
     apiOnly: false,
     harnessApiRequired: false,
+    mainlandRequired: false,
     monthlyTokenRange: null,
     tokenUnit: 'yi',
     platformStatusMax: 'restricted',
@@ -28,6 +29,14 @@
   });
 
   const STATUS_RANK = { open: 0, restricted: 1, delisted: 2 };
+  // 选购筛选口径：中国模型系列及 Grok；新系列在此集中维护，不给型号添加地域标签。
+  const MAINLAND_MODEL_SERIES = /^(?:deepseek-|doubao-|ernie-|glm-|hy(?:\d|[-])|kimi-|ling-|longcat-|mimo-|minimax-|qwen(?:\d|[-])|sensenova-|spark-|step-|grok-)/;
+  function isMainlandModel(slug) {
+    return typeof slug === 'string' && MAINLAND_MODEL_SERIES.test(slug);
+  }
+  function isMainlandPlatform(platform) {
+    return platform?.requiresOverseasNetwork === false && platform?.requiresOverseasPayment === false;
+  }
   // Keep existing in-session filters usable after the two middle states merge.
   const normalizeStatus = status => status === 'limited' || status === 'paused' ? 'restricted' : status;
 
@@ -85,6 +94,7 @@
       modelMatch: input.modelMatch === 'all' ? 'all' : 'any',
       apiOnly: input.apiOnly === true,
       harnessApiRequired: input.harnessApiRequired === true,
+      mainlandRequired: input.mainlandRequired === true,
       modelGroup: ['sota-models', 'high-volume-models'].includes(input.modelGroup) ? input.modelGroup : 'any',
       imageRequired: input.imageRequired === true,
       domesticNetworkOnly: input.domesticNetworkOnly === true,
@@ -151,6 +161,7 @@
         state.excludedPlatformStatuses = [];
       } else state.excludedPlanStatuses = [];
       state.imageRequired = false;
+      if (!pricing) state.mainlandRequired = false;
       if (plansPage) state.apiOnly = false;
       else state.harnessApiRequired = false;
       if (platformHub) {
@@ -174,6 +185,7 @@
       state.tokenUnit = tokenUnit;
       state.modelGroup = 'any';
       state.modelMatch = 'any';
+      state.mainlandRequired = pricing;
       if (purchaseTool) {
         state.platformStatusMax = 'restricted';
         state.includeDiscontinued = false;
@@ -345,6 +357,9 @@
     const current = normalizeState(state);
     const opts = options || {};
     const rate = opts.usdToCnyRate;
+    const mainlandMatches = point => !current.mainlandRequired || (
+      isMainlandPlatform(opts.context?.platformBySlug?.get(point.platformSlug) || point) && isMainlandModel(point.modelSlug)
+    );
     if (opts.context && Array.isArray(opts.context.plans)) {
       const ids = new Set(matchingOffers(opts.context, current, opts).flatMap(offer => offer.rows.map(row => row.slug)));
       return (points || []).filter(point => ids.has(point.slug));
@@ -352,6 +367,7 @@
     const modelGroups = new Map();
     if (current.modelSlugs?.length && current.modelMatch === 'all') {
       (points || []).forEach(point => {
+        if (!mainlandMatches(point)) return;
         if (!planStatusMatches(point, current)) return;
         if (current.monthlyTokenRange && point.billingMode !== 'payg' && !tokenInRange(point.monthlyTokenInM, current.monthlyTokenRange)) return;
         const key = `${point.platformSlug || ''}::${point.billingMode || ''}::${point.planSlug || ''}`;
@@ -360,6 +376,7 @@
       });
     }
     return (points || []).filter(point => {
+      if (!mainlandMatches(point)) return false;
       if (current.apiOnly && point.billingMode !== 'payg') return false;
       if (current.harnessApiRequired && point.supportsHarnessApi !== true) return false;
       if (!planStatusMatches(point, current)) return false;
@@ -414,6 +431,7 @@
       if (!planStatusMatches(plan, s)) continue;
       if (!selectedMatch(platform.slug, s.platformSlugs)) continue;
       if (!s.planStatusOnly && !platformStatusMatches(platform, s)) continue;
+      if (s.mainlandRequired && !isMainlandPlatform(platform)) continue;
       if (s.domesticNetworkOnly && platform.requiresOverseasNetwork !== false) continue;
       if (s.domesticPaymentOnly && platform.requiresOverseasPayment !== false) continue;
       const supportsHarnessApi = EntityData.resolveHarnessApi(platform, plan);
@@ -426,6 +444,7 @@
       const rows = (context.relationsByPlanSlug.get(plan.slug) || []).filter(row => {
         const model = context.modelBySlug.get(row.modelSlug);
         if (!model || !selectedMatch(model.slug, s.modelSlugs)) return false;
+        if (s.mainlandRequired && !isMainlandModel(model.slug)) return false;
         if (s.modelGroup !== 'any' && (!selectedGroup || !selectedGroup.modelSlugs.includes(model.slug))) return false;
         if ((s.imageRequired || s.multimodal === 'multimodal') && !EntityData.isMultimodal(model)) return false;
         if (s.multimodal === 'text' && model.multimodal !== false) return false;
@@ -464,6 +483,8 @@
   return {
     DEFAULTS,
     STATUS_RANK,
+    isMainlandModel,
+    isMainlandPlatform,
     arrayOrNull,
     normalizeState,
     cloneState,

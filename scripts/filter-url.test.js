@@ -7,6 +7,22 @@ const Filters = require('./filter-state');
 const context = {platforms:[{slug:'codex'},{slug:'zhipu'}], models:[{slug:'gpt-6-astra'},{slug:'glm-5-3'}]};
 const schema = Url.sharedSchema(context, Filters.createViewPolicy({mode:'full',view:'pricing'}));
 
+test('价格页大陆条件默认开启，关闭写入URL，旧链接保留默认，其他页面不接收', () => {
+  const closed=Url.update('https://codingplan.fyi/pricing/',schema,{snapshot:true,mainlandRequired:false});
+  assert.equal(closed.searchParams.get('mainland'),'0');
+  assert.equal(Url.read(schema,closed.search).mainlandRequired,false);
+  const enabled=Url.update(closed.href,schema,{mainlandRequired:true});
+  assert.equal(enabled.searchParams.has('mainland'),false);
+  const defaults=Filters.createViewPolicy({mode:'full',view:'pricing'}).createDefaults({});
+  assert.equal({...defaults,...Url.read(schema,'?filters=1&platforms=codex')}.mainlandRequired,true);
+  assert.equal(Url.read(schema,'?mainland=1').mainlandRequired,true);
+  assert.deepEqual(Url.read(schema,'?mainland=unknown'),{});
+  for(const options of [{},{mode:'full',view:'plans'},{mode:'full',view:'platforms'}]) {
+    const other=Url.sharedSchema(context,Filters.createViewPolicy(options));
+    assert.equal(Object.hasOwn(other,'mainlandRequired'),false);
+  }
+});
+
 test('筛选链接区分不限、空勾选与部分勾选，名单去重且保持选择顺序', () => {
   for (const selected of [null, [], ['glm-5-3','gpt-6-astra']]) {
     const url = Url.update('https://codingplan.fyi/pricing/', schema, {snapshot:true,modelSlugs:selected});

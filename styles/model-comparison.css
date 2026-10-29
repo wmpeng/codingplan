@@ -22,10 +22,9 @@
 .usage-color-control { display: inline-flex; align-items: center; gap: 9px; min-height: 42px; padding: 4px 6px 4px 14px; border: 1px solid rgba(23,32,51,.08); border-radius: 7px; background: #fff; color: var(--text-secondary); font-size: 13px; font-weight: 500; box-shadow: none; }
 .usage-color-control .usage-segments { border: 0; background: rgba(23,32,51,.06); }
 .usage-counts { color: var(--text-tertiary); font-size: 12px; white-space: nowrap; }
-.usage-color-legend { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 7px 12px; padding: 1px 5px; color: #657187; font-size: 12px; }
-.usage-color-legend strong { padding: 5px 0; color: var(--text-secondary); font-size: 12px; white-space: nowrap; }
-.usage-color-legend > div { display: flex; flex-wrap: wrap; gap: 7px 14px; max-height: 66px; overflow: auto; scrollbar-width: thin; }
-.usage-legend-item { display: inline-flex; align-items: center; gap: 6px; margin: 0; padding: 4px 7px; border: 1px solid transparent; border-radius: 8px; background: transparent; color: inherit; font: inherit; white-space: nowrap; cursor: pointer; transition: color .16s ease, background .16s ease, border-color .16s ease, opacity .16s ease, box-shadow .16s ease; }
+.usage-color-legend { display: block; padding: 1px 5px; color: #657187; font-size: 12px; }
+.usage-color-legend > div { display: flex; flex-wrap: wrap; gap: 7px 14px; }
+.usage-legend-item { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; margin: 0; padding: 4px 7px; border: 1px solid transparent; border-radius: 8px; background: transparent; color: inherit; font: inherit; white-space: normal; overflow-wrap: anywhere; text-align: left; cursor: pointer; transition: color .16s ease, background .16s ease, border-color .16s ease, opacity .16s ease, box-shadow .16s ease; }
 .usage-legend-item:hover, .usage-legend-item.is-hovered { border-color: rgba(15,118,110,.2); background: rgba(255,255,255,.78); color: var(--text-primary); box-shadow: 0 5px 14px rgba(23,32,51,.08); }
 .usage-legend-item:focus-visible { outline: 2px solid rgba(15,118,110,.48); outline-offset: 2px; }
 .usage-legend-item.is-solo { border-color: rgba(15,118,110,.28); background: rgba(255,255,255,.92); color: var(--text-primary); box-shadow: 0 5px 14px rgba(23,32,51,.1); }
@@ -157,9 +156,6 @@
   .usage-color-control { flex: 1 1 100%; justify-content: space-between; }
   .usage-filters .filter-trailing { width: 100%; margin-left: 0; justify-content: space-between; }
   .usage-filters .dropdown-menu { position: fixed; z-index: 100; top: 50%; left: 50%; width: calc(100vw - 32px); max-height: 70vh; transform: translate(-50%, -50%); animation-name: dropdownFadeCenter; }
-  .usage-color-legend { grid-template-columns: 1fr; }
-  .usage-color-legend strong { padding: 0; }
-  .usage-color-legend > div { max-height: 72px; }
   .usage-presets { padding: 15px 10px; border-radius: 16px; }
   .usage-preset-heading { display: block; padding: 0 4px; }
   .usage-preset-heading-actions { align-items: flex-start; flex-direction: column; margin-top: 10px; }
@@ -193,7 +189,6 @@
 .usage-segments button { min-height: 30px; font: inherit; font-size: 12px; }
 .usage-color-control { min-height: 38px; }
 .usage-color-legend { padding: 4px 0; }
-.usage-color-legend > div { max-height: 84px; }
 .usage-view .usage-data-table .numeric { text-align: right; }
 .usage-chart-head .usage-table-count { white-space: normal; text-align: right; }
 .usage-segments button:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
@@ -212,7 +207,8 @@
 .pricing-directory .usage-chart { min-width: 0; overflow: hidden; }
 .pricing-directory .usage-chart-head { flex-wrap: wrap; min-width: 0; }
 .pricing-directory .usage-chart-head > div:first-child { flex: 1 1 440px; min-width: 0; }
-.usage-data-card .usage-chart-head { flex-wrap: wrap; }
+.usage-data-card .usage-chart-head { flex-wrap: wrap; padding-inline: 0; }
+.usage-data-card .usage-table-section { margin: 16px 0 0; padding-top: 0; border-top: 0; }
 .usage-data-card .usage-detail-summary {
   display: flex; flex: 1 0 100%; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: 4px 12px; min-width: 0;
@@ -299,7 +295,6 @@
 
 /* The shared filter row owns the pricing colour control; hide the legacy filter shell. */
 .pricing-directory .usage-view > .usage-filters[hidden] { display: none; }
-#toolFilters .usage-color-control { box-sizing: border-box; min-height: 44px; max-width: 100%; padding: 2px 8px; border-color: var(--border-color); border-radius: 8px; flex: 0 0 auto; }
 
 .usage-data-table [hidden] { display:none; }
 .usage-chart-controls [aria-label="评分指标"] { display:flex; flex-wrap:wrap; }

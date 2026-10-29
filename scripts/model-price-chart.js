@@ -42,14 +42,15 @@
         for (const group of groups) {
             for (const member of group.members) {
                 if (!cheapest.has(member.modelSlug) || group.price < cheapest.get(member.modelSlug).group.price) {
-                    cheapest.set(member.modelSlug, {group, name: member.modelName});
+                    cheapest.set(member.modelSlug, {group, member});
                 }
             }
         }
         const labels = new Map();
-        for (const {group, name} of cheapest.values()) {
+        for (const {group, member} of cheapest.values()) {
             if (!labels.has(group.key)) labels.set(group.key, []);
-            labels.get(group.key).push(name);
+            const platforms = [...new Set(group.members.filter(point => point.modelSlug === member.modelSlug).map(point => point.platformName))];
+            labels.get(group.key).push(`${member.modelName}\n${platforms.join('、')}`);
         }
         return labels;
     }
@@ -81,11 +82,12 @@
                 },
                 label: {
                     show: active || (!selected && !compact && labels.has(group.key)),
-                    formatter: active ? selected.modelName : (labels.get(group.key) || []).join('\n'),
+                    formatter: active ? `${selected.modelName}\n${selected.platformName}` : (labels.get(group.key) || []).join('\n'),
                     position: 'top', distance: 9, color: '#506178', fontSize: 11,
+                    lineHeight: 15,
                     fontWeight: frontierCoordinates.has(JSON.stringify([group.price, group.score])) ? 600 : 400
                 },
-                emphasis: {label: {formatter: point.modelName}}
+                emphasis: {label: {formatter: `${point.modelName}\n${point.platformName}`}}
             });
         }
         return [{
