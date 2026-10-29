@@ -82,6 +82,7 @@
       domestic: flag('domestic'), featuredOnly: flag('featured')
     };
     if (!policy.platformHub) schema.platformSlugs = selection('platforms', context.platforms);
+    if (policy.pricing) schema.mainlandRequired = {...flag('mainland'), fallback:true};
     return schema;
   }
   // Flush trailing slider updates before reload, leaving the page, or copying a URL.

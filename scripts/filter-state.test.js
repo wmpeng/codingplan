@@ -2,6 +2,50 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const Filters = require('./filter-state.js');
 
+test('大陆可用条件取网络支付与中国系列/Grok交集，不改勾选，严格模型匹配仍逐项满足', () => {
+  const {fixtureContext}=require('./test-fixtures.cjs'), E=require('./entity-data.js');
+  const platforms=[
+    {slug:'yes',requiresOverseasNetwork:false,requiresOverseasPayment:false},
+    {slug:'network',requiresOverseasNetwork:true,requiresOverseasPayment:false},
+    {slug:'payment',requiresOverseasNetwork:false,requiresOverseasPayment:true},
+    {slug:'unknown',requiresOverseasNetwork:false,requiresOverseasPayment:null},
+    {slug:'missing',requiresOverseasNetwork:false}
+  ].map(p=>({...p,platformStatus:'open'}));
+  const models=['glm-5-3','grok-4-7','gpt-6-luna','gpt-oss-120b','muse-spark-open','unknown-preview'].map(slug=>({slug}));
+  const plans=platforms.map(p=>({slug:p.slug,platformSlug:p.slug,billingMode:'subscription',monthlyPrice:10}));
+  plans.push({slug:'api',platformSlug:'yes',billingMode:'payg'});
+  const relations=plans.flatMap(p=>models.map(m=>({slug:`${p.slug}--${m.slug}`,planSlug:p.slug,modelSlug:m.slug})));
+  const c=fixtureContext({schemaVersion:1,platforms},{plans},{schemaVersion:1,models},{planModels:relations});
+  const state=Filters.normalizeState({mainlandRequired:true,platformSlugs:platforms.map(p=>p.slug),modelSlugs:models.map(m=>m.slug)});
+  const before=JSON.stringify(state), opts={context:c};
+  const offers=Filters.matchingOffers(c,state);
+  assert.deepEqual(offers.map(o=>o.plan.slug),['yes','api']);
+  assert.ok(offers.every(o=>o.rows.map(r=>r.modelSlug).join(',')==='glm-5-3,grok-4-7'));
+  const points=relations.map(r=>({...r,platformSlug:c.planBySlug.get(r.planSlug).platformSlug,billingMode:c.planBySlug.get(r.planSlug).billingMode}));
+  const expected=offers.flatMap(o=>o.rows.map(r=>r.slug));
+  assert.deepEqual(Filters.filterPoints(points,state,opts).map(p=>p.slug),expected);
+  // 没有完整目录的纯报价入口也执行相同条件，严格匹配不借用被排除的型号。
+  assert.deepEqual(Filters.filterPoints(points,state,{context:{platformBySlug:c.platformBySlug}}).map(p=>p.slug),expected);
+  assert.deepEqual(Filters.matchingOffers(c,{...state,modelSlugs:['gpt-6-luna']}),[]);
+  assert.deepEqual(Filters.matchingOffers(c,{...state,modelMatch:'all'}),[]);
+  assert.deepEqual(Filters.filterPoints(points,{...state,modelMatch:'all'},{context:{platformBySlug:c.platformBySlug}}),[]);
+  assert.equal(Filters.matchingOffers(c,{...state,modelMatch:'all',modelSlugs:['glm-5-3','grok-4-7']}).length,2);
+  assert.equal(Filters.matchingOffers(c,{...state,mainlandRequired:false}).length,plans.length);
+  assert.equal(JSON.stringify(state),before);
+  const D=require('./pricing-directory'), M=require('./model-comparison');
+  const pinned=points.find(p=>p.slug==='yes--gpt-6-luna');
+  const rows=D.tableRows(Filters.filterPoints(points,state,opts),points,[pinned.slug],M.sortComparisonRows,{key:'unitPriceCnyPerM',direction:'asc'});
+  assert.equal(rows[0].slug,pinned.slug,'置顶明细继续突破大陆条件显示');
+});
+
+test('中国模型系列规则覆盖新型号及旧命名，不因开放权重或相似名称放行其他系列', () => {
+  for(const slug of ['deepseek-new','doubao-seed-evolving','ernie-5-1','glm-5-3','hy3','hy4-preview','hy-t1',
+    'kimi-next','ling-3-1-flash','longcat-2-5-preview','mimo-v2-6-pro','minimax-m3','qwen-3-8-max','qwen3-6-35b-a3b',
+    'sensenova-6-8-flash-lite','spark-x2-5','step-5-preview','grok-next']) assert.equal(Filters.isMainlandModel(slug),true,slug);
+  for(const slug of ['claude-haiku-5-5','gpt-oss-20b','muse-spark-open','gemma-4-31b','mistral-large-4','nemotron-3-ultra',
+    'beam-1-0','composer-2-5','glyph-cluster','qwenish','hybrid','groking',null,undefined]) assert.equal(Filters.isMainlandModel(slug),false,slug);
+});
+
 test('第三方工具条件采用套餐覆盖与平台默认，未确认不匹配，所有资格入口保持一致', () => {
   const {fixtureContext}=require('./test-fixtures.cjs'), E=require('./entity-data.js');
   const platforms=[{slug:'yes',platformStatus:'open',supportsHarnessApi:true},{slug:'no',platformStatus:'open',supportsHarnessApi:false},{slug:'unknown',platformStatus:'open'}];

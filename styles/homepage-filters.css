@@ -359,6 +359,10 @@ body .range-picker-slider input:focus-visible { outline: 2px solid #6b7280; outl
 body.tool-unified-active .filter-state-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 24px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border-color); }
 body.tool-unified-active .filter-state-footer .filter-checks { border: 0; padding: 0; }
 body.tool-unified-active .filter-state-footer .filter-state-actions { flex: 0 0 auto; width: auto; max-width: 100%; justify-content: flex-end; margin: 0 0 0 auto; }
+body .pricing-mainland-control { display: inline-flex; align-items: center; gap: 4px; }
+body .pricing-mainland-filter { display: inline-flex; align-items: center; gap: 10px; min-height: 40px; font-size: 13px; color: var(--text-primary); cursor: pointer; }
+body .pricing-mainland-filter .toggle-switch:has(input:focus-visible) { outline: 2px solid var(--accent-primary); outline-offset: 4px; border-radius: 20px; }
+@media (max-width: 800px), (pointer: coarse) { body .pricing-mainland-filter { min-height: 44px; } }
 body.tool-unified-active .filter-state-actions > button { flex: none; white-space: nowrap; }
 .tool-unified-active .filter-state-hint { margin-top: 8px; min-height: 32px; display: flex; align-items: center; }
 @media (max-width: 1100px) {

@@ -19,6 +19,7 @@ test('四类页面的默认条件和重置快照保持各自口径，单位和�
     assert.equal(initial.includeDiscontinued,view.history,view.name);
     assert.equal(initial.platformStatusMax,view.max,view.name);
     assert.equal(initial.planStatusOnly,view.planOnly,view.name);
+    assert.equal(initial.mainlandRequired,view.name==='pricing',view.name);
     assert.equal(initial.modelGroup,'any'); assert.equal(initial.modelMatch,'any');
     assert.equal(initial.tokenUnit,'B');
     reset.budgetCny={max:10}; reset.modelSlugs=['custom'];
@@ -51,7 +52,7 @@ test('每次更新重施页面限制，不能通过控制器打开不适用的�
     const input=Filters.cloneControlState({platformSlugs:['p'],modelSlugs:['m'],budgetCny:{max:25},
       platformStatusMax:'open',excludedPlatformStatuses:['restricted'],excludedPlanStatuses:['restricted'],
       includeDiscontinued:true,planStatusOnly:!view.planOnly,apiOnly:true,harnessApiRequired:true,
-      domesticNetworkOnly:true,domesticPaymentOnly:false,imageRequired:true});
+      domesticNetworkOnly:true,domesticPaymentOnly:false,imageRequired:true,mainlandRequired:true});
     const result=policy.constrain(input);
     assert.equal(result,input,'约束只更新调用者持有的控件状态');
     assert.equal(result.planStatusOnly,view.planOnly);
@@ -62,12 +63,24 @@ test('每次更新重施页面限制，不能通过控制器打开不适用的�
     assert.equal(result.harnessApiRequired,view.name==='plans');
     assert.equal(result.domesticNetworkOnly,view.name==='platforms');
     assert.equal(result.domesticPaymentOnly,view.name==='platforms');
+    assert.equal(result.mainlandRequired,view.name==='pricing');
     assert.equal(result.imageRequired,false);
     assert.deepEqual(result.platformSlugs,view.name==='platforms'?null:['p']);
     assert.deepEqual(result.modelSlugs,['m']);assert.deepEqual(result.budgetCny,{min:null,max:25});
     const snapshot=Filters.cloneControlState(result);
     assert.deepEqual(policy.constrain(result),snapshot,'重复施加约束不再改变状态');
   }
+});
+
+test('价格页允许显式关闭大陆条件，克隆和约束保留原有平台与模型勾选', () => {
+  const policy=Filters.createViewPolicy({mode:'full',view:'pricing'});
+  const state=policy.createDefaults({});
+  state.platformSlugs=['opencode','codex']; state.modelSlugs=['glm-5-3','gpt-6-luna'];
+  state.mainlandRequired=false;
+  const normalized=policy.constrain(Filters.cloneControlState(state));
+  assert.equal(normalized.mainlandRequired,false);
+  assert.deepEqual(normalized.platformSlugs,state.platformSlugs);assert.deepEqual(normalized.modelSlugs,state.modelSlugs);
+  assert.equal(policy.createDefaults({}).mainlandRequired,true,'恢复默认与显示全部重新启用大陆条件');
 });
 
 test('目录全选模型与不限等价，严格同时支持和部分选择不被放宽', () => {
