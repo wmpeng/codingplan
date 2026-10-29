@@ -295,7 +295,6 @@
 
 /* The shared filter row owns the pricing colour control; hide the legacy filter shell. */
 .pricing-directory .usage-view > .usage-filters[hidden] { display: none; }
-#toolFilters .usage-color-control { box-sizing: border-box; min-height: 44px; max-width: 100%; padding: 2px 8px; border-color: var(--border-color); border-radius: 8px; flex: 0 0 auto; }
 
 .usage-data-table [hidden] { display:none; }
 .usage-chart-controls [aria-label="评分指标"] { display:flex; flex-wrap:wrap; }
