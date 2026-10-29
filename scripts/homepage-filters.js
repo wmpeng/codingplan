@@ -351,7 +351,7 @@
       <div class="filter-state-footer">
       ${pricing ? `<div class="pricing-mainland-control"><label class="pricing-mainland-filter"><span>需中国大陆可用</span><span class="toggle-switch"><input type="checkbox" role="switch" data-filter-field="mainlandRequired"><span class="toggle-slider" aria-hidden="true"></span></span></label>${root.CodingPlanHelp?.html('pricingMainlandHelp', '需中国大陆可用说明', '仅保留无需境外网络且有境内支付途径的平台，以及中国模型和 Grok。不改变平台与模型勾选；置顶明细始终保留。') || ''}</div>` : ''}
       ${full ? "" : `<div class="filter-state-controls"><div class="offer-sort"><span aria-hidden="true">排序</span><span data-select-fallback><select id="homeOfferSort" data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></span></div><span class="offer-sort-help" id="offerSortHelp"></span>`}
-      <div class="filter-state-actions"><button type="button" data-filter-action="reset"${purchaseTool && !platformHub && !plansPage ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub || plansPage ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>${full && !platformHub && !plansPage ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">显示精选</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
+      <div class="filter-state-actions">${pricing ? "" : `<button type="button" data-filter-action="reset"${purchaseTool && !platformHub && !plansPage ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub || plansPage ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>`}${full && !platformHub && !plansPage ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">${pricing ? "重置筛选" : "显示精选"}</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
       </section>`;
     bindSelectionHelp(host);
     const offerSortSelect = host.querySelector('[data-offer-sort]');
@@ -416,7 +416,7 @@
       const menu = picker.querySelector('.filter-picker-menu');
       if (root.innerWidth <= 800) { menu.removeAttribute('style'); return; }
       const anchor = picker.querySelector('summary').getBoundingClientRect();
-      const actions = host.querySelector('[data-filter-action="reset"]').getBoundingClientRect();
+      const actions = host.querySelector('.filter-state-actions').getBoundingClientRect();
       const panelWidth = 240;
       const minTop = (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0) + 8;
       Object.assign(menu.style, {position:'fixed', width:`${panelWidth}px`, right:'auto', bottom:'auto', maxHeight:`${Math.max(100, root.innerHeight - minTop - 14)}px`});
