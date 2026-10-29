@@ -27,7 +27,7 @@ test('one cheapest candidate per model uses full names and includes different mo
     const rows = [point('a',2,5,{modelSlug:'m'}),point('b',1,5,{modelSlug:'m'}),point('c',1,5),point('d',1,5,{modelSlug:'m'})];
     const groups = Chart.groupPoints(rows,'artificialAnalysis');
     const labels = Chart.cheapestModelLabels(groups);
-    assert.deepEqual([...labels.values()].flat(),[rows[1].modelName,rows[2].modelName]);
+    assert.deepEqual([...labels.values()].flat(),[`${rows[1].modelName}\n平台 A`,`${rows[2].modelName}\n平台 A`]);
     const series = Chart.buildSeries(groups,{benchmark:'artificialAnalysis',colors:{a:'#123456'},colorMode:'vendor',tokenUnit:'yi',compact:false});
     const data=series.filter(s=>s.type==='scatter').flatMap(s=>s.data);
     assert.equal(data.find(d=>d.members.some(p=>p.slug==='b')).value[0],100);
@@ -43,10 +43,20 @@ test('selection highlights all prices of the selected model, including an overla
     assert.equal(plain.some(d=>d.label.show),false);
     const selected=Chart.buildSeries(groups,{...options,selectedSlug:'b'}).flatMap(s=>s.type==='scatter'?s.data:[]);
     assert.equal(selected.find(d=>d.members.some(p=>p.slug==='b')).meta.slug,'b');
-    assert.equal(selected.find(d=>d.meta.slug==='b').label.formatter,rows[1].modelName);
+    assert.equal(selected.find(d=>d.meta.slug==='b').label.formatter,`${rows[1].modelName}\n平台 A`);
     assert.equal(selected.find(d=>d.meta.slug==='c').itemStyle.opacity,0.86);
     assert.equal(selected.find(d=>d.meta.slug==='d').itemStyle.opacity,0.14);
     assert.equal(selected.find(d=>d.meta.slug==='c').symbol,'diamond');
+});
+
+test('overlap labels retain the platforms of each candidate model and selection names the exact platform', () => {
+    const rows = [point('a',1,5,{modelSlug:'m'}),point('b',1,5,{modelSlug:'m',platformSlug:'b',platformName:'平台 B'}),point('duplicate',1,5,{modelSlug:'m'}),point('c',1,5,{platformSlug:'c',platformName:'平台 C'})];
+    const groups = Chart.groupPoints(rows,'artificialAnalysis');
+    assert.deepEqual(Chart.cheapestModelLabels(groups).get(groups[0].key),[`${rows[0].modelName}\n平台 A、平台 B`,`${rows[3].modelName}\n平台 C`]);
+    const options = {colors:{a:'#123456',b:'#654321'},colorMode:'vendor',tokenUnit:'M',compact:false};
+    const datum = Chart.buildSeries(groups,{...options,selectedSlug:'b'}).find(s=>s.type==='scatter').data[0];
+    assert.equal(datum.label.formatter,`${rows[1].modelName}\n平台 B`);
+    assert.equal(datum.emphasis.label.formatter,`${rows[1].modelName}\n平台 B`);
 });
 
 test('offer details escape model names and notes, preserve every overlap option and show reference pricing semantics', () => {
