@@ -359,10 +359,11 @@ body .range-picker-slider input:focus-visible { outline: 2px solid #6b7280; outl
 body.tool-unified-active .filter-state-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 24px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border-color); }
 body.tool-unified-active .filter-state-footer .filter-checks { border: 0; padding: 0; }
 body.tool-unified-active .filter-state-footer .filter-state-actions { flex: 0 0 auto; width: auto; max-width: 100%; justify-content: flex-end; margin: 0 0 0 auto; }
-body .pricing-mainland-control { --pricing-control-height: 40px; display: inline-flex; align-items: center; gap: 4px; min-height: var(--pricing-control-height); padding: 0 12px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-secondary); }
+body :is(.pricing-mainland-control, .platform-access-filter) { --pricing-control-height: 40px; display: inline-flex; align-items: center; gap: 4px; min-height: var(--pricing-control-height); padding: 0 12px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-secondary); }
+body .platform-access-filter { gap: 10px; font-size: 13px; color: var(--text-primary); white-space: nowrap; cursor: pointer; }
 body .pricing-mainland-filter { display: inline-flex; align-items: center; gap: 10px; min-height: calc(var(--pricing-control-height) - 2px); font-size: 13px; color: var(--text-primary); white-space: nowrap; cursor: pointer; }
-body .pricing-mainland-filter .toggle-switch:has(input:focus-visible) { outline: 2px solid var(--accent-primary); outline-offset: 4px; border-radius: 20px; }
-@media (max-width: 800px), (pointer: coarse) { body .pricing-mainland-control { --pricing-control-height: 44px; } }
+body :is(.pricing-mainland-filter, .platform-access-filter) .toggle-switch:has(input:focus-visible) { outline: 2px solid var(--accent-primary); outline-offset: 4px; border-radius: 20px; }
+@media (max-width: 800px), (pointer: coarse) { body :is(.pricing-mainland-control, .platform-access-filter) { --pricing-control-height: 44px; } }
 #toolFilters .usage-color-control { display: inline-flex; align-items: center; flex: 0 0 auto; gap: 0; box-sizing: border-box; min-height: 40px; max-width: 100%; padding: 0; overflow: hidden; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-secondary); font-size: 13px; font-weight: 400; }
 #toolFilters .usage-color-control > span { padding: 0 12px; }
 #toolFilters .usage-color-control .usage-segments { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px; min-height: 38px; padding: 4px; border: 0; border-radius: 7px; background: rgba(23,32,51,.06); }
@@ -630,8 +631,8 @@ body :is(.platform-hub-filters, .plan-featured-filters) .platform-featured-butto
 body :is(.platform-hub-filters, .plan-featured-filters) .platform-featured-button:hover:not(:disabled) { border-color: #d3bd98; background: #fff5e5; color: #805c2e; }
 body :is(.platform-hub-filters, .plan-featured-filters) .platform-featured-button[aria-pressed="true"], body :is(.platform-hub-filters, .plan-featured-filters) .platform-featured-button[aria-pressed="true"]:hover { border-color: #c7a06a; background: #ffefd5; color: #765022; box-shadow: inset 0 0 0 1px #e9cfa7; }
 body :is(.platform-hub-filters, .plan-featured-filters) .platform-featured-button:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
-body :is(.platform-hub-filters, .plan-featured-filters) .platform-access-filter, body.plans-page .plan-harness-filter { display: inline-flex; gap: 8px; align-items: center; min-height: var(--control-height); padding: 0 10px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 13px; cursor: pointer; }
-body :is(.platform-hub-filters, .plan-featured-filters) .platform-access-filter input, body.plans-page .plan-harness-filter input { accent-color: var(--accent-primary); margin: 0; }
+body.plans-page .plan-harness-filter { display: inline-flex; gap: 8px; align-items: center; min-height: var(--control-height); padding: 0 10px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 13px; cursor: pointer; }
+body.plans-page .plan-harness-filter input { accent-color: var(--accent-primary); margin: 0; }
 body .filter-state-bar { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; box-shadow: none; }
 body .filter-state-label { color: var(--text-primary); font-size: 14px; font-weight: 600; }
 body .filter-state-chip { border: 0; border-radius: 4px; background: var(--bg-tertiary); color: var(--text-secondary); font-size: 12px; padding: 4px 8px; }
@@ -649,7 +650,7 @@ body .filter-inline input[type="checkbox"] { width: 16px; }
 
 @media (max-width: 800px), (pointer: coarse) {
   body .single-select-picker [role="option"], body.models-page .model-multimodal-filter { min-height: 44px; }
-  body :is(.platform-hub-filters, .plan-featured-filters) :is(.platform-featured-button, .platform-access-filter), body.plans-page .plan-harness-filter { min-height: 44px; }
+  body :is(.platform-hub-filters, .plan-featured-filters) .platform-featured-button, body.plans-page .plan-harness-filter { min-height: 44px; }
   :is(.homepage-unified-active, .tool-unified-active) .filter-picker > summary,
   :is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu input[type="search"] { min-height: 44px; }
   body .filter-checks .filter-inline { min-height: 44px; }
