@@ -431,14 +431,14 @@
     }
     function positionSelectionPanels() {
       positionStatusPanel();
-      host.querySelectorAll('[data-picker][open]').forEach(picker => {
+      host.querySelectorAll('[data-picker][open], #homeBudgetPicker[open], #homeTokenPicker[open]').forEach(picker => {
       const menu = picker.querySelector('.filter-picker-menu');
       const viewport = root.visualViewport;
       const width = viewport?.width || root.innerWidth;
       const height = viewport?.height || root.innerHeight;
       const left = viewport?.offsetLeft || 0, top = viewport?.offsetTop || 0;
       const mobile = root.innerWidth <= 800;
-      const panelWidth = mobile ? width - 28 : Math.min(380, width - 28);
+      const panelWidth = mobile ? width - 28 : Math.min(menu.classList.contains('budget-menu') ? 350 : 380, width - 28);
       const minTop = Math.max(top + 14, Math.min(top + height - 100, (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0) + 8));
       Object.assign(menu.style, {position:"fixed", width:`${panelWidth}px`, maxHeight:`${Math.min(620, top + height - minTop - 14)}px`, right:"auto", bottom:"auto"});
       const anchor = picker.querySelector('summary').getBoundingClientRect();
@@ -804,6 +804,9 @@
       positionSelectionPanels();
     });
     host.querySelector('#homeStatusPicker')?.addEventListener('toggle', positionStatusPanel);
+    host.querySelectorAll('#homeBudgetPicker, #homeTokenPicker').forEach(picker => {
+      picker.addEventListener('toggle', positionSelectionPanels);
+    });
     host.querySelector('[data-picker="platformSlugs"]')?.addEventListener('toggle', () => {
       sortPickerOptions('platformSlugs');
       positionSelectionPanels();
