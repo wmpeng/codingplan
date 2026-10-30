@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-27T15:58:54Z",
+  "generatedAt": "2026-10-30T08:09:20Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -7845,7 +7845,7 @@
       "yearlyPrice": 240,
       "currency": "$",
       "benefits": [],
-      "note": "• 有 5 小时及周用量窗口；参考周、月 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时按周额度的 1/6.4 换算。\n• ChatGPT 与 Codex 共享使用量，消耗随模型、速度档及负载变化；各模型额度不能相加，非官方固定 Token 配额。",
+      "note": "• 有 5 小时及周用量窗口；参考周、月 Token 额度按 Pro $100 对应模型的 1/10 估算，5 小时按周额度的 1/6.4 换算。\n• ChatGPT 与 Codex 共享使用量，消耗随模型、速度档及负载变化；各模型额度不能相加，非官方固定 Token 配额。",
       "planStatus": "open",
       "planModels": [
         {
@@ -7862,7 +7862,7 @@
             "unitPriceCnyPerM": 0.136
           },
           "pricing": null,
-          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6.4 换算；未独立实测，非官方固定配额。"
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 1/10 估算，5 小时额度按本套餐周额度的 1/6.4 换算；未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-plus--gpt-6-1-terra",
@@ -7894,7 +7894,7 @@
             "unitPriceCnyPerM": 0.82212
           },
           "pricing": null,
-          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6.4 换算；未独立实测，非官方固定配额。"
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 1/10 估算，5 小时额度按本套餐周额度的 1/6.4 换算；未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-plus--gpt-6-sol",
@@ -7910,7 +7910,7 @@
             "unitPriceCnyPerM": 0.16456
           },
           "pricing": null,
-          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6.4 换算；未独立实测，非官方固定配额。"
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 1/10 估算，5 小时额度按本套餐周额度的 1/6.4 换算；未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-plus--gpt-6-luna",
@@ -7926,7 +7926,7 @@
             "unitPriceCnyPerM": 0.00816
           },
           "pricing": null,
-          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6.4 换算；未独立实测，非官方固定配额。"
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 1/10 估算，5 小时额度按本套餐周额度的 1/6.4 换算；未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-plus--gpt-5-6-sol",
@@ -7942,7 +7942,7 @@
             "unitPriceCnyPerM": 0.21148
           },
           "pricing": null,
-          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6.4 换算；未独立实测，非官方固定配额。"
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 1/10 估算，5 小时额度按本套餐周额度的 1/6.4 换算；未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-plus--gpt-5-6-luna",
@@ -7958,7 +7958,7 @@
             "unitPriceCnyPerM": 0.017
           },
           "pricing": null,
-          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6.4 换算；未独立实测，非官方固定配额。"
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 1/10 估算，5 小时额度按本套餐周额度的 1/6.4 换算；未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-plus--gpt-5-6",
@@ -7974,7 +7974,7 @@
             "unitPriceCnyPerM": 0.16932
           },
           "pricing": null,
-          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 1/5 估算，5 小时额度按本套餐周额度的 1/6.4 换算；未独立实测，非官方固定配额。"
+          "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 1/10 估算，5 小时额度按本套餐周额度的 1/6.4 换算；未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-plus--gpt-6-astra--service-fast",
@@ -8119,7 +8119,7 @@
       "yearlyPrice": 1200,
       "currency": "$",
       "benefits": [],
-      "note": "• 无独立 5 小时限制，有周用量限制。\n• Token 参考量由每周约 350 参考单位及模型系数折算，非官方固定配额；ChatGPT 与 Codex 共享使用量，各模型额度不能相加。",
+      "note": "• 无独立 5 小时限制，有周用量限制。\n• Token 参考量由每周约 700 参考单位及模型系数折算，非官方固定配额；ChatGPT 与 Codex 共享使用量，各模型额度不能相加。",
       "planStatus": "open",
       "planModels": [
         {
@@ -8131,9 +8131,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 1253.1160072144,
-            "monthlyTokenInM": 5012.5,
-            "unitPriceCnyPerM": 0.136
+            "weeklyTokenInM": 2506.2320144287,
+            "monthlyTokenInM": 10024.9,
+            "unitPriceCnyPerM": 0.068
           },
           "pricing": {
             "currency": null,
@@ -8142,7 +8142,7 @@
             "outputPerM": 8.25,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 1.65 参考单位/M Token、缓存读取 0.17 参考单位/M Token、输出 8.25 参考单位/M Token；套餐共享额度：5小时 不限量、每周 350 参考单位、每月 1,400 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Standard 参考量按共享参考池和该模型输入、缓存读取、输出系数折算，非官方固定 Token 配额。"
+          "note": "抵扣单价：输入 1.65 参考单位/M Token、缓存读取 0.17 参考单位/M Token、输出 8.25 参考单位/M Token；套餐共享额度：5小时 不限量、每周 700 参考单位、每月 2,800 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Standard 参考量按共享参考池和该模型输入、缓存读取、输出系数折算，非官方固定 Token 配额。"
         },
         {
           "slug": "codex-pro5--gpt-6-1-terra",
@@ -8153,9 +8153,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 2506.2320144287,
-            "monthlyTokenInM": 10024.9,
-            "unitPriceCnyPerM": 0.068
+            "weeklyTokenInM": 5012.4640288575,
+            "monthlyTokenInM": 20049.9,
+            "unitPriceCnyPerM": 0.034
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Terra 的订阅可用量为同档 GPT-6.1 Sol 的 2 倍；Token 参考量按同套餐 Sol Standard ×2 推算，继承基准估算误差，非官方固定配额。CLI 需 0.159.0 或更高版本，具体开放情况以账号与客户端为准。"
@@ -8169,9 +8169,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 206.7641411904,
-            "monthlyTokenInM": 827.1,
-            "unitPriceCnyPerM": 0.82212
+            "weeklyTokenInM": 413.5282823807,
+            "monthlyTokenInM": 1654.1,
+            "unitPriceCnyPerM": 0.4114
           },
           "pricing": {
             "currency": null,
@@ -8180,7 +8180,7 @@
             "outputPerM": 50.0,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 10 参考单位/M Token、缓存读取 1 参考单位/M Token、输出 50 参考单位/M Token；套餐共享额度：5小时 不限量、每周 350 参考单位、每月 1,400 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Standard 参考量按共享参考池和该模型输入、缓存读取、输出系数折算，非官方固定 Token 配额。"
+          "note": "抵扣单价：输入 10 参考单位/M Token、缓存读取 1 参考单位/M Token、输出 50 参考单位/M Token；套餐共享额度：5小时 不限量、每周 700 参考单位、每月 2,800 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Standard 参考量按共享参考池和该模型输入、缓存读取、输出系数折算，非官方固定 Token 配额。"
         },
         {
           "slug": "codex-pro5--gpt-6-sol",
@@ -8191,9 +8191,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 1033.8207059519,
-            "monthlyTokenInM": 4135.3,
-            "unitPriceCnyPerM": 0.16456
+            "weeklyTokenInM": 2067.6414119037,
+            "monthlyTokenInM": 8270.6,
+            "unitPriceCnyPerM": 0.08228
           },
           "pricing": {
             "currency": null,
@@ -8202,7 +8202,7 @@
             "outputPerM": 10.0,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 2 参考单位/M Token、缓存读取 0.20 参考单位/M Token、输出 10 参考单位/M Token；套餐共享额度：5小时 不限量、每周 350 参考单位、每月 1,400 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Standard 参考量按共享参考池和该模型输入、缓存读取、输出系数折算，非官方固定 Token 配额。"
+          "note": "抵扣单价：输入 2 参考单位/M Token、缓存读取 0.20 参考单位/M Token、输出 10 参考单位/M Token；套餐共享额度：5小时 不限量、每周 700 参考单位、每月 2,800 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Standard 参考量按共享参考池和该模型输入、缓存读取、输出系数折算，非官方固定 Token 配额。"
         },
         {
           "slug": "codex-pro5--gpt-6-luna",
@@ -8213,9 +8213,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 20676.4141190371,
-            "monthlyTokenInM": 82705.7,
-            "unitPriceCnyPerM": 0.00816
+            "weeklyTokenInM": 41352.8282380741,
+            "monthlyTokenInM": 165411.3,
+            "unitPriceCnyPerM": 0.00408
           },
           "pricing": {
             "currency": null,
@@ -8224,7 +8224,7 @@
             "outputPerM": 0.5,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 0.10 参考单位/M Token、缓存读取 0.01 参考单位/M Token、输出 0.50 参考单位/M Token；套餐共享额度：5小时 不限量、每周 350 参考单位、每月 1,400 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Standard 参考量按共享参考池和该模型输入、缓存读取、输出系数折算，非官方固定 Token 配额。该模型系数的独立验证不足，实际可用量可能有较大偏差。"
+          "note": "抵扣单价：输入 0.10 参考单位/M Token、缓存读取 0.01 参考单位/M Token、输出 0.50 参考单位/M Token；套餐共享额度：5小时 不限量、每周 700 参考单位、每月 2,800 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Standard 参考量按共享参考池和该模型输入、缓存读取、输出系数折算，非官方固定 Token 配额。该模型系数的独立验证不足，实际可用量可能有较大偏差。"
         },
         {
           "slug": "codex-pro5--gpt-5-6-sol",
@@ -8235,9 +8235,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 803.3280734471,
-            "monthlyTokenInM": 3213.3,
-            "unitPriceCnyPerM": 0.21148
+            "weeklyTokenInM": 1606.6561468943,
+            "monthlyTokenInM": 6426.6,
+            "unitPriceCnyPerM": 0.10608
           },
           "pricing": {
             "currency": null,
@@ -8246,7 +8246,7 @@
             "outputPerM": 15.0,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 2.50 参考单位/M Token、缓存读取 0.25 参考单位/M Token、输出 15 参考单位/M Token；套餐共享额度：5小时 不限量、每周 350 参考单位、每月 1,400 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Standard 参考量按共享参考池和该模型输入、缓存读取、输出系数折算，非官方固定 Token 配额。该模型系数的独立验证不足，实际可用量可能有较大偏差。"
+          "note": "抵扣单价：输入 2.50 参考单位/M Token、缓存读取 0.25 参考单位/M Token、输出 15 参考单位/M Token；套餐共享额度：5小时 不限量、每周 700 参考单位、每月 2,800 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Standard 参考量按共享参考池和该模型输入、缓存读取、输出系数折算，非官方固定 Token 配额。该模型系数的独立验证不足，实际可用量可能有较大偏差。"
         },
         {
           "slug": "codex-pro5--gpt-5-6-luna",
@@ -8257,9 +8257,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 10041.6009180892,
-            "monthlyTokenInM": 40166.4,
-            "unitPriceCnyPerM": 0.017
+            "weeklyTokenInM": 20083.2018361784,
+            "monthlyTokenInM": 80332.8,
+            "unitPriceCnyPerM": 0.00816
           },
           "pricing": {
             "currency": null,
@@ -8268,7 +8268,7 @@
             "outputPerM": 1.2,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 0.20 参考单位/M Token、缓存读取 0.02 参考单位/M Token、输出 1.20 参考单位/M Token；套餐共享额度：5小时 不限量、每周 350 参考单位、每月 1,400 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Standard 参考量按共享参考池和该模型输入、缓存读取、输出系数折算，非官方固定 Token 配额。该模型系数的独立验证不足，实际可用量可能有较大偏差。"
+          "note": "抵扣单价：输入 0.20 参考单位/M Token、缓存读取 0.02 参考单位/M Token、输出 1.20 参考单位/M Token；套餐共享额度：5小时 不限量、每周 700 参考单位、每月 2,800 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Standard 参考量按共享参考池和该模型输入、缓存读取、输出系数折算，非官方固定 Token 配额。该模型系数的独立验证不足，实际可用量可能有较大偏差。"
         },
         {
           "slug": "codex-pro5--gpt-5-6",
@@ -8279,9 +8279,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 1004.1600918089,
-            "monthlyTokenInM": 4016.6,
-            "unitPriceCnyPerM": 0.16932
+            "weeklyTokenInM": 2008.3201836178,
+            "monthlyTokenInM": 8033.3,
+            "unitPriceCnyPerM": 0.08432
           },
           "pricing": {
             "currency": null,
@@ -8290,7 +8290,7 @@
             "outputPerM": 12.0,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 2 参考单位/M Token、缓存读取 0.20 参考单位/M Token、输出 12 参考单位/M Token；套餐共享额度：5小时 不限量、每周 350 参考单位、每月 1,400 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Standard 参考量按共享参考池和该模型输入、缓存读取、输出系数折算，非官方固定 Token 配额。该模型系数的独立验证不足，实际可用量可能有较大偏差。"
+          "note": "抵扣单价：输入 2 参考单位/M Token、缓存读取 0.20 参考单位/M Token、输出 12 参考单位/M Token；套餐共享额度：5小时 不限量、每周 700 参考单位、每月 2,800 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Standard 参考量按共享参考池和该模型输入、缓存读取、输出系数折算，非官方固定 Token 配额。该模型系数的独立验证不足，实际可用量可能有较大偏差。"
         },
         {
           "slug": "codex-pro5--gpt-6-astra--service-fast",
@@ -8301,9 +8301,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 82.7056564761,
-            "monthlyTokenInM": 330.8,
-            "unitPriceCnyPerM": 2.05564
+            "weeklyTokenInM": 165.4113129523,
+            "monthlyTokenInM": 661.6,
+            "unitPriceCnyPerM": 1.02748
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8317,9 +8317,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 501.2464028857,
-            "monthlyTokenInM": 2005.0,
-            "unitPriceCnyPerM": 0.33932
+            "weeklyTokenInM": 1002.4928057715,
+            "monthlyTokenInM": 4010.0,
+            "unitPriceCnyPerM": 0.16932
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8333,9 +8333,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 413.5282823807,
-            "monthlyTokenInM": 1654.1,
-            "unitPriceCnyPerM": 0.4114
+            "weeklyTokenInM": 827.0565647615,
+            "monthlyTokenInM": 3308.2,
+            "unitPriceCnyPerM": 0.20536
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8349,9 +8349,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 8270.5656476148,
-            "monthlyTokenInM": 33082.3,
-            "unitPriceCnyPerM": 0.0204
+            "weeklyTokenInM": 16541.1312952297,
+            "monthlyTokenInM": 66164.5,
+            "unitPriceCnyPerM": 0.0102
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8365,9 +8365,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 321.3312293789,
-            "monthlyTokenInM": 1285.3,
-            "unitPriceCnyPerM": 0.52904
+            "weeklyTokenInM": 642.6624587577,
+            "monthlyTokenInM": 2570.6,
+            "unitPriceCnyPerM": 0.26452
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8381,9 +8381,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 4016.6403672357,
-            "monthlyTokenInM": 16066.6,
-            "unitPriceCnyPerM": 0.04216
+            "weeklyTokenInM": 8033.2807344714,
+            "monthlyTokenInM": 32133.1,
+            "unitPriceCnyPerM": 0.02108
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8397,9 +8397,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 401.6640367236,
-            "monthlyTokenInM": 1606.7,
-            "unitPriceCnyPerM": 0.42296
+            "weeklyTokenInM": 803.3280734471,
+            "monthlyTokenInM": 3213.3,
+            "unitPriceCnyPerM": 0.21148
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8413,9 +8413,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 1002.4928057715,
-            "monthlyTokenInM": 4010.0,
-            "unitPriceCnyPerM": 0.16932
+            "weeklyTokenInM": 2004.985611543,
+            "monthlyTokenInM": 8019.9,
+            "unitPriceCnyPerM": 0.085
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Token 参考量为同套餐 Terra Standard 的 1/2.5，即 Sol Standard 的 0.8 倍；绝对数仍为估算。Fast 的订阅额度消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；不包含 Ultrafast。"
@@ -8447,9 +8447,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 2506.2320144287,
-            "monthlyTokenInM": 10024.9,
-            "unitPriceCnyPerM": 0.136
+            "weeklyTokenInM": 5012.4640288575,
+            "monthlyTokenInM": 20049.9,
+            "unitPriceCnyPerM": 0.068
           },
           "pricing": {
             "currency": null,
@@ -8458,7 +8458,7 @@
             "outputPerM": 8.25,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 1.65 参考单位/M Token、缓存读取 0.17 参考单位/M Token、输出 8.25 参考单位/M Token；套餐共享额度：5小时 不限量、每周 700 参考单位、每月 2,800 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
+          "note": "抵扣单价：输入 1.65 参考单位/M Token、缓存读取 0.17 参考单位/M Token、输出 8.25 参考单位/M Token；套餐共享额度：5小时 不限量、每周 1,400 参考单位、每月 5,600 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro20--gpt-6-1-terra",
@@ -8469,9 +8469,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 5012.4640288575,
-            "monthlyTokenInM": 20049.9,
-            "unitPriceCnyPerM": 0.068
+            "weeklyTokenInM": 10024.9280577149,
+            "monthlyTokenInM": 40099.7,
+            "unitPriceCnyPerM": 0.034
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Terra 的订阅可用量为同档 GPT-6.1 Sol 的 2 倍；Token 参考量按同套餐 Sol Standard ×2 推算，继承基准估算误差，非官方固定配额。CLI 需 0.159.0 或更高版本，具体开放情况以账号与客户端为准。"
@@ -8485,9 +8485,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 413.5282823807,
-            "monthlyTokenInM": 1654.1,
-            "unitPriceCnyPerM": 0.82212
+            "weeklyTokenInM": 827.0565647615,
+            "monthlyTokenInM": 3308.2,
+            "unitPriceCnyPerM": 0.4114
           },
           "pricing": {
             "currency": null,
@@ -8496,7 +8496,7 @@
             "outputPerM": 50.0,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 10 参考单位/M Token、缓存读取 1 参考单位/M Token、输出 50 参考单位/M Token；套餐共享额度：5小时 不限量、每周 700 参考单位、每月 2,800 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
+          "note": "抵扣单价：输入 10 参考单位/M Token、缓存读取 1 参考单位/M Token、输出 50 参考单位/M Token；套餐共享额度：5小时 不限量、每周 1,400 参考单位、每月 5,600 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro20--gpt-6-sol",
@@ -8507,9 +8507,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 2067.6414119037,
-            "monthlyTokenInM": 8270.6,
-            "unitPriceCnyPerM": 0.16456
+            "weeklyTokenInM": 4135.2828238074,
+            "monthlyTokenInM": 16541.1,
+            "unitPriceCnyPerM": 0.08228
           },
           "pricing": {
             "currency": null,
@@ -8518,7 +8518,7 @@
             "outputPerM": 10.0,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 2 参考单位/M Token、缓存读取 0.20 参考单位/M Token、输出 10 参考单位/M Token；套餐共享额度：5小时 不限量、每周 700 参考单位、每月 2,800 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
+          "note": "抵扣单价：输入 2 参考单位/M Token、缓存读取 0.20 参考单位/M Token、输出 10 参考单位/M Token；套餐共享额度：5小时 不限量、每周 1,400 参考单位、每月 5,600 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro20--gpt-6-luna",
@@ -8529,9 +8529,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 41352.8282380741,
-            "monthlyTokenInM": 165411.3,
-            "unitPriceCnyPerM": 0.00816
+            "weeklyTokenInM": 82705.6564761483,
+            "monthlyTokenInM": 330822.6,
+            "unitPriceCnyPerM": 0.00408
           },
           "pricing": {
             "currency": null,
@@ -8540,7 +8540,7 @@
             "outputPerM": 0.5,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 0.10 参考单位/M Token、缓存读取 0.01 参考单位/M Token、输出 0.50 参考单位/M Token；套餐共享额度：5小时 不限量、每周 700 参考单位、每月 2,800 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
+          "note": "抵扣单价：输入 0.10 参考单位/M Token、缓存读取 0.01 参考单位/M Token、输出 0.50 参考单位/M Token；套餐共享额度：5小时 不限量、每周 1,400 参考单位、每月 5,600 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro20--gpt-5-6",
@@ -8551,9 +8551,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 2008.3201836178,
-            "monthlyTokenInM": 8033.3,
-            "unitPriceCnyPerM": 0.16932
+            "weeklyTokenInM": 4016.6403672357,
+            "monthlyTokenInM": 16066.6,
+            "unitPriceCnyPerM": 0.08432
           },
           "pricing": {
             "currency": null,
@@ -8562,7 +8562,7 @@
             "outputPerM": 12.0,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 2 参考单位/M Token、缓存读取 0.20 参考单位/M Token、输出 12 参考单位/M Token；套餐共享额度：5小时 不限量、每周 700 参考单位、每月 2,800 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
+          "note": "抵扣单价：输入 2 参考单位/M Token、缓存读取 0.20 参考单位/M Token、输出 12 参考单位/M Token；套餐共享额度：5小时 不限量、每周 1,400 参考单位、每月 5,600 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro20--gpt-5-6-sol",
@@ -8573,9 +8573,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 1606.6561468943,
-            "monthlyTokenInM": 6426.6,
-            "unitPriceCnyPerM": 0.21148
+            "weeklyTokenInM": 3213.3122937886,
+            "monthlyTokenInM": 12853.2,
+            "unitPriceCnyPerM": 0.10608
           },
           "pricing": {
             "currency": null,
@@ -8584,7 +8584,7 @@
             "outputPerM": 15.0,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 2.50 参考单位/M Token、缓存读取 0.25 参考单位/M Token、输出 15 参考单位/M Token；套餐共享额度：5小时 不限量、每周 700 参考单位、每月 2,800 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
+          "note": "抵扣单价：输入 2.50 参考单位/M Token、缓存读取 0.25 参考单位/M Token、输出 15 参考单位/M Token；套餐共享额度：5小时 不限量、每周 1,400 参考单位、每月 5,600 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro20--gpt-5-6-luna",
@@ -8595,9 +8595,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 20083.2018361784,
-            "monthlyTokenInM": 80332.8,
-            "unitPriceCnyPerM": 0.017
+            "weeklyTokenInM": 40166.4036723569,
+            "monthlyTokenInM": 160665.6,
+            "unitPriceCnyPerM": 0.00816
           },
           "pricing": {
             "currency": null,
@@ -8606,7 +8606,7 @@
             "outputPerM": 1.2,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 0.20 参考单位/M Token、缓存读取 0.02 参考单位/M Token、输出 1.20 参考单位/M Token；套餐共享额度：5小时 不限量、每周 700 参考单位、每月 2,800 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
+          "note": "抵扣单价：输入 0.20 参考单位/M Token、缓存读取 0.02 参考单位/M Token、输出 1.20 参考单位/M Token；套餐共享额度：5小时 不限量、每周 1,400 参考单位、每月 5,600 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 2 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro20--gpt-6-astra--service-fast",
@@ -8617,9 +8617,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 165.4113129523,
-            "monthlyTokenInM": 661.6,
-            "unitPriceCnyPerM": 2.05564
+            "weeklyTokenInM": 330.8226259046,
+            "monthlyTokenInM": 1323.3,
+            "unitPriceCnyPerM": 1.02748
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8633,9 +8633,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 1002.4928057715,
-            "monthlyTokenInM": 4010.0,
-            "unitPriceCnyPerM": 0.33932
+            "weeklyTokenInM": 2004.985611543,
+            "monthlyTokenInM": 8019.9,
+            "unitPriceCnyPerM": 0.16932
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8649,9 +8649,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 827.0565647615,
-            "monthlyTokenInM": 3308.2,
-            "unitPriceCnyPerM": 0.4114
+            "weeklyTokenInM": 1654.113129523,
+            "monthlyTokenInM": 6616.5,
+            "unitPriceCnyPerM": 0.20536
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8665,9 +8665,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 16541.1312952297,
-            "monthlyTokenInM": 66164.5,
-            "unitPriceCnyPerM": 0.0204
+            "weeklyTokenInM": 33082.2625904593,
+            "monthlyTokenInM": 132329.1,
+            "unitPriceCnyPerM": 0.0102
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8681,9 +8681,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 642.6624587577,
-            "monthlyTokenInM": 2570.6,
-            "unitPriceCnyPerM": 0.52904
+            "weeklyTokenInM": 1285.3249175154,
+            "monthlyTokenInM": 5141.3,
+            "unitPriceCnyPerM": 0.26452
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8697,9 +8697,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 8033.2807344714,
-            "monthlyTokenInM": 32133.1,
-            "unitPriceCnyPerM": 0.04216
+            "weeklyTokenInM": 16066.5614689428,
+            "monthlyTokenInM": 64266.2,
+            "unitPriceCnyPerM": 0.02108
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8713,9 +8713,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 803.3280734471,
-            "monthlyTokenInM": 3213.3,
-            "unitPriceCnyPerM": 0.42296
+            "weeklyTokenInM": 1606.6561468943,
+            "monthlyTokenInM": 6426.6,
+            "unitPriceCnyPerM": 0.21148
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8729,9 +8729,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 2004.985611543,
-            "monthlyTokenInM": 8019.9,
-            "unitPriceCnyPerM": 0.16932
+            "weeklyTokenInM": 4009.971223086,
+            "monthlyTokenInM": 16039.9,
+            "unitPriceCnyPerM": 0.085
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Token 参考量为同套餐 Terra Standard 的 1/2.5，即 Sol Standard 的 0.8 倍；绝对数仍为估算。Fast 的订阅额度消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；不包含 Ultrafast。"
@@ -8765,9 +8765,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 6265.5800360718,
-            "monthlyTokenInM": 25062.3,
-            "unitPriceCnyPerM": 0.136
+            "weeklyTokenInM": 12531.1600721437,
+            "monthlyTokenInM": 50124.6,
+            "unitPriceCnyPerM": 0.068
           },
           "pricing": {
             "currency": null,
@@ -8776,7 +8776,7 @@
             "outputPerM": 8.25,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 1.65 参考单位/M Token、缓存读取 0.17 参考单位/M Token、输出 8.25 参考单位/M Token；套餐共享额度：5小时 不限量、每周 1,750 参考单位、每月 7,000 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
+          "note": "抵扣单价：输入 1.65 参考单位/M Token、缓存读取 0.17 参考单位/M Token、输出 8.25 参考单位/M Token；套餐共享额度：5小时 不限量、每周 3,500 参考单位、每月 14,000 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro500--gpt-6-1-terra",
@@ -8787,9 +8787,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 12531.1600721437,
-            "monthlyTokenInM": 50124.6,
-            "unitPriceCnyPerM": 0.068
+            "weeklyTokenInM": 25062.3201442874,
+            "monthlyTokenInM": 100249.3,
+            "unitPriceCnyPerM": 0.034
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Terra 的订阅可用量为同档 GPT-6.1 Sol 的 2 倍；Token 参考量按同套餐 Sol Standard ×2 推算，继承基准估算误差，非官方固定配额。CLI 需 0.159.0 或更高版本，具体开放情况以账号与客户端为准。"
@@ -8803,9 +8803,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 1033.8207059519,
-            "monthlyTokenInM": 4135.3,
-            "unitPriceCnyPerM": 0.82212
+            "weeklyTokenInM": 2067.6414119037,
+            "monthlyTokenInM": 8270.6,
+            "unitPriceCnyPerM": 0.4114
           },
           "pricing": {
             "currency": null,
@@ -8814,7 +8814,7 @@
             "outputPerM": 50.0,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 10 参考单位/M Token、缓存读取 1 参考单位/M Token、输出 50 参考单位/M Token；套餐共享额度：5小时 不限量、每周 1,750 参考单位、每月 7,000 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
+          "note": "抵扣单价：输入 10 参考单位/M Token、缓存读取 1 参考单位/M Token、输出 50 参考单位/M Token；套餐共享额度：5小时 不限量、每周 3,500 参考单位、每月 14,000 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro500--gpt-6-sol",
@@ -8825,9 +8825,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 5169.1035297593,
-            "monthlyTokenInM": 20676.4,
-            "unitPriceCnyPerM": 0.16456
+            "weeklyTokenInM": 10338.2070595185,
+            "monthlyTokenInM": 41352.8,
+            "unitPriceCnyPerM": 0.08228
           },
           "pricing": {
             "currency": null,
@@ -8836,7 +8836,7 @@
             "outputPerM": 10.0,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 2 参考单位/M Token、缓存读取 0.20 参考单位/M Token、输出 10 参考单位/M Token；套餐共享额度：5小时 不限量、每周 1,750 参考单位、每月 7,000 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
+          "note": "抵扣单价：输入 2 参考单位/M Token、缓存读取 0.20 参考单位/M Token、输出 10 参考单位/M Token；套餐共享额度：5小时 不限量、每周 3,500 参考单位、每月 14,000 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro500--gpt-6-luna",
@@ -8847,9 +8847,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 103382.0705951853,
-            "monthlyTokenInM": 413528.3,
-            "unitPriceCnyPerM": 0.00816
+            "weeklyTokenInM": 206764.1411903707,
+            "monthlyTokenInM": 827056.6,
+            "unitPriceCnyPerM": 0.00408
           },
           "pricing": {
             "currency": null,
@@ -8858,7 +8858,7 @@
             "outputPerM": 0.5,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 0.10 参考单位/M Token、缓存读取 0.01 参考单位/M Token、输出 0.50 参考单位/M Token；套餐共享额度：5小时 不限量、每周 1,750 参考单位、每月 7,000 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
+          "note": "抵扣单价：输入 0.10 参考单位/M Token、缓存读取 0.01 参考单位/M Token、输出 0.50 参考单位/M Token；套餐共享额度：5小时 不限量、每周 3,500 参考单位、每月 14,000 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro500--gpt-5-6-sol",
@@ -8869,9 +8869,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 4016.6403672357,
-            "monthlyTokenInM": 16066.6,
-            "unitPriceCnyPerM": 0.21148
+            "weeklyTokenInM": 8033.2807344714,
+            "monthlyTokenInM": 32133.1,
+            "unitPriceCnyPerM": 0.10608
           },
           "pricing": {
             "currency": null,
@@ -8880,7 +8880,7 @@
             "outputPerM": 15.0,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 2.50 参考单位/M Token、缓存读取 0.25 参考单位/M Token、输出 15 参考单位/M Token；套餐共享额度：5小时 不限量、每周 1,750 参考单位、每月 7,000 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
+          "note": "抵扣单价：输入 2.50 参考单位/M Token、缓存读取 0.25 参考单位/M Token、输出 15 参考单位/M Token；套餐共享额度：5小时 不限量、每周 3,500 参考单位、每月 14,000 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro500--gpt-5-6-luna",
@@ -8891,9 +8891,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 50208.0045904461,
-            "monthlyTokenInM": 200832.0,
-            "unitPriceCnyPerM": 0.017
+            "weeklyTokenInM": 100416.0091808922,
+            "monthlyTokenInM": 401664.0,
+            "unitPriceCnyPerM": 0.00816
           },
           "pricing": {
             "currency": null,
@@ -8902,7 +8902,7 @@
             "outputPerM": 1.2,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 0.20 参考单位/M Token、缓存读取 0.02 参考单位/M Token、输出 1.20 参考单位/M Token；套餐共享额度：5小时 不限量、每周 1,750 参考单位、每月 7,000 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
+          "note": "抵扣单价：输入 0.20 参考单位/M Token、缓存读取 0.02 参考单位/M Token、输出 1.20 参考单位/M Token；套餐共享额度：5小时 不限量、每周 3,500 参考单位、每月 14,000 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro500--gpt-6-astra--service-ultrafast",
@@ -8913,9 +8913,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 129.227588244,
-            "monthlyTokenInM": 516.9,
-            "unitPriceCnyPerM": 6.57764
+            "weeklyTokenInM": 258.455176488,
+            "monthlyTokenInM": 1033.8,
+            "unitPriceCnyPerM": 3.28848
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Pro $500 支持；参考 Token 额度按同套餐、同模型 Standard 的 1/8 估算，未独立实测；订阅用量消耗为 Standard 的 8 倍，购买 Credits 为 6 倍。"
@@ -8929,9 +8929,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 783.197504509,
-            "monthlyTokenInM": 3132.8,
-            "unitPriceCnyPerM": 1.08528
+            "weeklyTokenInM": 1566.395009018,
+            "monthlyTokenInM": 6265.6,
+            "unitPriceCnyPerM": 0.54264
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Pro $500 支持；参考 Token 额度按同套餐、同模型 Standard 的 1/8 估算，未独立实测；订阅用量消耗为 Standard 的 8 倍，购买 Credits 为 6 倍。"
@@ -8945,9 +8945,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 413.5282823807,
-            "monthlyTokenInM": 1654.1,
-            "unitPriceCnyPerM": 2.05564
+            "weeklyTokenInM": 827.0565647615,
+            "monthlyTokenInM": 3308.2,
+            "unitPriceCnyPerM": 1.02748
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8961,9 +8961,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 2506.2320144287,
-            "monthlyTokenInM": 10024.9,
-            "unitPriceCnyPerM": 0.33932
+            "weeklyTokenInM": 5012.4640288575,
+            "monthlyTokenInM": 20049.9,
+            "unitPriceCnyPerM": 0.16932
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8977,9 +8977,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 2067.6414119037,
-            "monthlyTokenInM": 8270.6,
-            "unitPriceCnyPerM": 0.4114
+            "weeklyTokenInM": 4135.2828238074,
+            "monthlyTokenInM": 16541.1,
+            "unitPriceCnyPerM": 0.20536
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -8993,9 +8993,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 41352.8282380741,
-            "monthlyTokenInM": 165411.3,
-            "unitPriceCnyPerM": 0.0204
+            "weeklyTokenInM": 82705.6564761483,
+            "monthlyTokenInM": 330822.6,
+            "unitPriceCnyPerM": 0.0102
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -9009,9 +9009,9 @@
           "method": "calculated",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 5020.8004590446,
-            "monthlyTokenInM": 20083.2,
-            "unitPriceCnyPerM": 0.16932
+            "weeklyTokenInM": 10041.6009180892,
+            "monthlyTokenInM": 40166.4,
+            "unitPriceCnyPerM": 0.08432
           },
           "pricing": {
             "currency": null,
@@ -9020,7 +9020,7 @@
             "outputPerM": 12.0,
             "unit": "参考单位"
           },
-          "note": "抵扣单价：输入 2 参考单位/M Token、缓存读取 0.20 参考单位/M Token、输出 12 参考单位/M Token；套餐共享额度：5小时 不限量、每周 1,750 参考单位、每月 7,000 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
+          "note": "抵扣单价：输入 2 参考单位/M Token、缓存读取 0.20 参考单位/M Token、输出 12 参考单位/M Token；套餐共享额度：5小时 不限量、每周 3,500 参考单位、每月 14,000 参考单位；按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按 Pro $100 对应模型的 5 倍估算，未独立实测，非官方固定配额。"
         },
         {
           "slug": "codex-pro500--gpt-5-6-sol--fast",
@@ -9031,9 +9031,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 1606.6561468943,
-            "monthlyTokenInM": 6426.6,
-            "unitPriceCnyPerM": 0.52904
+            "weeklyTokenInM": 3213.3122937886,
+            "monthlyTokenInM": 12853.2,
+            "unitPriceCnyPerM": 0.26452
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -9047,9 +9047,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 20083.2018361785,
-            "monthlyTokenInM": 80332.8,
-            "unitPriceCnyPerM": 0.04216
+            "weeklyTokenInM": 40166.4036723569,
+            "monthlyTokenInM": 160665.6,
+            "unitPriceCnyPerM": 0.02108
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -9063,9 +9063,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 2008.3201836178,
-            "monthlyTokenInM": 8033.3,
-            "unitPriceCnyPerM": 0.42296
+            "weeklyTokenInM": 4016.6403672357,
+            "monthlyTokenInM": 16066.6,
+            "unitPriceCnyPerM": 0.21148
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；参考 Token 额度按同套餐、同模型 Standard 的 1/2.5 估算，未独立实测；订阅用量消耗为 Standard 的 2.5 倍，购买 Credits 为 2 倍；可用性以账号与客户端为准。"
@@ -9079,9 +9079,9 @@
           "method": "multiplied",
           "usage": {
             "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": 5012.4640288575,
-            "monthlyTokenInM": 20049.9,
-            "unitPriceCnyPerM": 0.16932
+            "weeklyTokenInM": 10024.9280577149,
+            "monthlyTokenInM": 40099.7,
+            "unitPriceCnyPerM": 0.085
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Token 参考量为同套餐 Terra Standard 的 1/2.5，即 Sol Standard 的 0.8 倍；绝对数仍为估算。Fast 的订阅额度消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；不包含 Ultrafast。"
@@ -52043,5 +52043,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-10-27T15:57:50.672Z"
+  "contentVersion": "2026-10-30T08:03:59.048Z"
 }
