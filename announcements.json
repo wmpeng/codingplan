@@ -7,7 +7,8 @@
       "visible": true,
       "ended": false,
       "endsOn": "2026-10-31",
-      "url": "https://forum.qoder.com/t/deepseek-v4-1-flash-1017-supported-in-qoder-0-0x-credits-until-nov-1/13589"
+      "url": "https://forum.qoder.com/t/deepseek-v4-1-flash-1017-supported-in-qoder-0-0x-credits-until-nov-1/13589",
+      "announcedOn": "2026-10-26"
     },
     {
       "slug": "ark-coding-first-two-months-oct-2026",
@@ -120,5 +121,5 @@
       "url": "https://opencode.ai/v2/docs/console/models/"
     }
   ],
-  "contentVersion": "2026-10-27T09:11:15.952Z"
+  "contentVersion": "2026-10-30T08:54:36.680Z"
 }
