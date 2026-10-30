@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-30T08:09:15Z",
+  "generatedAt": "2026-10-30T10:07:26Z",
   "benchmarks": {
     "artificialAnalysis": {
       "name": "Artificial Analysis Intelligence Index",
@@ -87,7 +87,8 @@
           "confidenceLowerExact": 6.349584040908253,
           "confidenceUpperExact": 9.155675158913027
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "claude-fable-5-1",
@@ -129,7 +130,8 @@
           "confidenceLowerExact": 12.007695428504904,
           "confidenceUpperExact": 15.87575246479536
         }
-      }
+      },
+      "tokenConsumptionRate": 1.1284201882108453
     },
     {
       "slug": "claude-haiku-4-5",
@@ -155,7 +157,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "claude-opus-4-5",
@@ -181,7 +184,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "claude-opus-4-6",
@@ -207,7 +211,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "claude-opus-4-7",
@@ -233,7 +238,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "claude-opus-4-8",
@@ -267,7 +273,8 @@
         },
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "claude-opus-5",
@@ -310,7 +317,8 @@
           "confidenceLowerExact": 6.589146968075868,
           "confidenceUpperExact": 9.847185454131631
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "claude-sonnet-4-5",
@@ -336,7 +344,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "claude-sonnet-4-6",
@@ -370,7 +379,8 @@
         },
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "claude-sonnet-5",
@@ -413,7 +423,8 @@
           "confidenceLowerExact": 2.0522373387501913,
           "confidenceUpperExact": 5.449522492121534
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "deepseek-v3-2",
@@ -438,7 +449,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "deepseek-v4-1-flash",
@@ -464,7 +476,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "deepseek-v4-flash-0731",
@@ -497,7 +510,8 @@
         },
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "deepseek-v4-flash-fast",
@@ -509,7 +523,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "deepseek-v4-flash-vision-exp",
@@ -535,7 +550,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "deepseek-v4-preview",
@@ -547,7 +563,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "deepseek-v4-pro-0813",
@@ -589,7 +606,8 @@
           "confidenceLowerExact": -1.9941338823478083,
           "confidenceUpperExact": 1.461316249300015
         }
-      }
+      },
+      "tokenConsumptionRate": 0.9446419833271132
     },
     {
       "slug": "deepseek-v4-pro-preview",
@@ -614,7 +632,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "doubao-seed-2-0-lite",
@@ -635,7 +654,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "doubao-seed-2-0-mini",
@@ -656,7 +676,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "doubao-seed-2-0",
@@ -668,7 +689,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "doubao-seed-2-1-turbo",
@@ -689,7 +711,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "doubao-seed-2-1-pro",
@@ -710,7 +733,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "doubao-seed-code",
@@ -736,7 +760,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "doubao-seed-evolving",
@@ -757,7 +782,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "doubao-seedance-2-0",
@@ -780,7 +806,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "doubao-seedream-5-0-lite",
@@ -800,7 +827,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "ernie-5-1",
@@ -812,7 +840,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "fugu-ultra",
@@ -832,7 +861,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gemini-3-1-pro",
@@ -877,7 +907,8 @@
           "confidenceLowerExact": -5.76458127773441,
           "confidenceUpperExact": -3.127559407615208
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gemini-3-flash-preview",
@@ -905,7 +936,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gemini-3-1-flash-lite",
@@ -933,7 +965,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gemini-3-5-flash",
@@ -969,7 +1002,8 @@
         },
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gemini-3-5-flash-lite",
@@ -997,7 +1031,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": 0.2899070600160308
     },
     {
       "slug": "gemini-3-6-flash",
@@ -1033,7 +1068,8 @@
         },
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gemini-3-7-flash",
@@ -1078,7 +1114,8 @@
           "confidenceLowerExact": -2.234991389024187,
           "confidenceUpperExact": -0.30890619939114866
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gemini-3-8-flash",
@@ -1130,7 +1167,8 @@
           "confidenceLowerExact": 2.095620816197432,
           "confidenceUpperExact": 4.246644148864099
         }
-      }
+      },
+      "tokenConsumptionRate": 0.9466208001753362
     },
     {
       "slug": "glm-4-7",
@@ -1155,7 +1193,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "glm-5",
@@ -1180,7 +1219,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "glm-5-turbo",
@@ -1205,7 +1245,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "glm-5-1",
@@ -1230,7 +1271,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "glm-5-2",
@@ -1272,7 +1314,8 @@
           "confidenceLowerExact": 0.8782138799397047,
           "confidenceUpperExact": 2.510367781482754
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "glm-5-2-fast",
@@ -1284,7 +1327,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "glm-5-3",
@@ -1326,7 +1370,8 @@
           "confidenceLowerExact": 0.37818916159120164,
           "confidenceUpperExact": 2.0539783901206685
         }
-      }
+      },
+      "tokenConsumptionRate": 1.1384238289361353
     },
     {
       "slug": "glm-5-3-flash",
@@ -1376,7 +1421,8 @@
           "confidenceLowerExact": -2.4446050978811624,
           "confidenceUpperExact": -1.1000996108890255
         }
-      }
+      },
+      "tokenConsumptionRate": 1.284028682186962
     },
     {
       "slug": "glm-5v-turbo",
@@ -1403,7 +1449,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-4-1",
@@ -1429,7 +1476,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-4o",
@@ -1455,7 +1503,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-6-astra",
@@ -1505,7 +1554,8 @@
           "confidenceLowerExact": 11.881811229265493,
           "confidenceUpperExact": 16.040416417074084
         }
-      }
+      },
+      "tokenConsumptionRate": 0.497262511046097
     },
     {
       "slug": "gpt-6-sol",
@@ -1540,7 +1590,8 @@
           "confidenceLowerExact": 6.852691459078701,
           "confidenceUpperExact": 10.280875300123192
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-6-luna",
@@ -1582,7 +1633,8 @@
           "confidenceLowerExact": 2.3707477265833914,
           "confidenceUpperExact": 3.2172950909405835
         }
-      }
+      },
+      "tokenConsumptionRate": 0.720407918091987
     },
     {
       "slug": "gpt-5-mini",
@@ -1608,7 +1660,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-5-2",
@@ -1634,7 +1687,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-5-2-codex",
@@ -1660,7 +1714,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-5-3-codex",
@@ -1686,7 +1741,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-5-4",
@@ -1720,7 +1776,8 @@
         },
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-5-4-mini",
@@ -1746,7 +1803,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-5-5",
@@ -1780,7 +1838,8 @@
         },
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-5-6",
@@ -1792,7 +1851,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-5-6-luna",
@@ -1826,7 +1886,8 @@
         },
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-5-6-sol",
@@ -1869,7 +1930,8 @@
           "confidenceLowerExact": 4.717119995437652,
           "confidenceUpperExact": 7.393686992875477
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-5-6-terra",
@@ -1919,7 +1981,8 @@
           "confidenceLowerExact": -1.0998000582770593,
           "confidenceUpperExact": 1.5349516690161567
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-image-2-0",
@@ -1939,7 +2002,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "grok-code-fast-1",
@@ -1964,7 +2028,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "grok-4-5",
@@ -1998,7 +2063,8 @@
         },
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "grok-4-6",
@@ -2048,7 +2114,8 @@
           "confidenceLowerExact": -0.4917709437820648,
           "confidenceUpperExact": 1.746275039728892
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "hy-2-0",
@@ -2060,7 +2127,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "hy3",
@@ -2094,7 +2162,8 @@
           "confidenceLowerExact": -8.241873513947445,
           "confidenceUpperExact": -5.3527002131230965
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "hy4-preview",
@@ -2122,7 +2191,8 @@
           "confidenceLowerExact": 1.3799058884890019,
           "confidenceUpperExact": 2.6535303680223143
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "inkling",
@@ -2165,7 +2235,8 @@
           "confidenceLowerExact": -16.338913959180378,
           "confidenceUpperExact": -13.45963353908634
         }
-      }
+      },
+      "tokenConsumptionRate": 0.490397441878416
     },
     {
       "slug": "inkling-small",
@@ -2201,7 +2272,8 @@
           "confidenceLowerExact": -17.93495394917383,
           "confidenceUpperExact": -14.34312911529781
         }
-      }
+      },
+      "tokenConsumptionRate": 0.35130234947686795
     },
     {
       "slug": "kimi-k2",
@@ -2226,7 +2298,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "kimi-k2-5",
@@ -2253,7 +2326,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "kimi-k2-6",
@@ -2280,7 +2354,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "kimi-k2-6-code",
@@ -2292,7 +2367,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "kimi-k2-7-code",
@@ -2327,7 +2403,8 @@
         },
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "kimi-k2-7-code-highspeed",
@@ -2348,7 +2425,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "kimi-k3",
@@ -2398,7 +2476,8 @@
           "confidenceLowerExact": 0.8205299665528566,
           "confidenceUpperExact": 2.316166937142808
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "kimi-k3-1-pro",
@@ -2432,7 +2511,8 @@
           "publishedAt": "2026-10-25"
         },
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": 0.691158759517435
     },
     {
       "slug": "laguna-s-2-1",
@@ -2451,7 +2531,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "ling-3-0-flash",
@@ -2476,7 +2557,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "ling-3-0-flash-sante",
@@ -2495,7 +2577,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "longcat-2-0",
@@ -2520,7 +2603,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "mimo-v2-omni",
@@ -2546,7 +2630,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "mimo-v2-pro",
@@ -2571,7 +2656,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "mimo-v2-6-flash",
@@ -2606,7 +2692,8 @@
           "confidenceLowerExact": 0.7765844148458177,
           "confidenceUpperExact": 3.4282281434812036
         }
-      }
+      },
+      "tokenConsumptionRate": 1.2610787091171611
     },
     {
       "slug": "mimo-v2-6-pro",
@@ -2650,7 +2737,8 @@
           "confidenceLowerExact": 2.4957453047228637,
           "confidenceUpperExact": 4.114069292029856
         }
-      }
+      },
+      "tokenConsumptionRate": 1.1583879719885328
     },
     {
       "slug": "mimo-v2-5",
@@ -2676,7 +2764,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "mimo-v2-5-pro",
@@ -2710,7 +2799,8 @@
           "confidenceLowerExact": -9.663689021245393,
           "confidenceUpperExact": -7.654575056675596
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "mimo-v2-5-tts",
@@ -2729,7 +2819,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "minimax-m2-5",
@@ -2754,7 +2845,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "minimax-m2-7",
@@ -2779,7 +2871,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "minimax-m3",
@@ -2815,7 +2908,8 @@
           "confidenceLowerExact": -11.277786295824091,
           "confidenceUpperExact": -8.862407416136126
         }
-      }
+      },
+      "tokenConsumptionRate": 0.8749787556841074
     },
     {
       "slug": "muse-spark-1-1",
@@ -2860,7 +2954,8 @@
           "confidenceLowerExact": -7.511907185495459,
           "confidenceUpperExact": -6.216478325316581
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "muse-spark-1-2",
@@ -2905,7 +3000,8 @@
           "confidenceLowerExact": -7.851067182376272,
           "confidenceUpperExact": -6.189810613565343
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "muse-spark-1-3",
@@ -2948,7 +3044,8 @@
           "confidenceLowerExact": 2.2246255065421257,
           "confidenceUpperExact": 3.8848647728776635
         }
-      }
+      },
+      "tokenConsumptionRate": 0.8717472532447783
     },
     {
       "slug": "nemotron-3-ultra",
@@ -2982,7 +3079,8 @@
           "confidenceLowerExact": -18.65147224965845,
           "confidenceUpperExact": -10.763850374335906
         }
-      }
+      },
+      "tokenConsumptionRate": 0.4924252457012755
     },
     {
       "slug": "qwen-3-235b-a22b",
@@ -3007,7 +3105,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-coder",
@@ -3019,7 +3118,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-coder-next",
@@ -3044,7 +3144,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-coder-plus",
@@ -3056,7 +3157,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-max-2026-01-23",
@@ -3068,7 +3170,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-5",
@@ -3080,7 +3183,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-5-plus",
@@ -3101,7 +3205,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-6-flash",
@@ -3122,7 +3227,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-6-max-preview",
@@ -3147,7 +3253,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-6-plus",
@@ -3174,7 +3281,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-7-flash",
@@ -3195,7 +3303,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-7-max",
@@ -3229,7 +3338,8 @@
           "confidenceLowerExact": -7.586464953066187,
           "confidenceUpperExact": -5.272871697256671
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-7-plus",
@@ -3265,7 +3375,8 @@
           "confidenceLowerExact": -9.212817927806194,
           "confidenceUpperExact": -5.674498983719994
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-8-27b",
@@ -3308,7 +3419,8 @@
           "confidenceLowerExact": -4.889987450379109,
           "confidenceUpperExact": -3.3111658493701706
         }
-      }
+      },
+      "tokenConsumptionRate": 1.0505507494325141
     },
     {
       "slug": "qwen-3-8-flash-next",
@@ -3344,7 +3456,8 @@
           "confidenceLowerExact": -3.971215879789018,
           "confidenceUpperExact": -2.5775998662422226
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-8-max",
@@ -3395,7 +3508,8 @@
           "confidenceLowerExact": 0.523062110626629,
           "confidenceUpperExact": 1.7401865536092889
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-8-max-0902",
@@ -3421,7 +3535,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": 1.634100571960911
     },
     {
       "slug": "qwen3-6-35b-a3b",
@@ -3448,7 +3563,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "sensenova-6-7-flash-lite",
@@ -3460,7 +3576,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "sensenova-u1-fast",
@@ -3479,7 +3596,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "step-3-5-flash",
@@ -3491,7 +3609,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "step-3-5-flash-2603",
@@ -3516,7 +3635,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "step-3-7-flash",
@@ -3542,7 +3662,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "step-router-v1",
@@ -3554,7 +3675,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "hy-t1",
@@ -3566,7 +3688,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-6-1-sol",
@@ -3608,7 +3731,8 @@
           "confidenceLowerExact": 12.013475893619807,
           "confidenceUpperExact": 15.273502110839477
         }
-      }
+      },
+      "tokenConsumptionRate": 0.6489148239121104
     },
     {
       "slug": "gpt-6-1-terra",
@@ -3641,7 +3765,8 @@
           "publishedAt": "2026-10-25"
         },
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": 0.5729424673380608
     },
     {
       "slug": "claude-opus-5-5",
@@ -3683,7 +3808,8 @@
           "confidenceLowerExact": 18.386135368531043,
           "confidenceUpperExact": 23.146787863055902
         }
-      }
+      },
+      "tokenConsumptionRate": 1.6581984501839475
     },
     {
       "slug": "claude-sonnet-5-5",
@@ -3725,7 +3851,8 @@
           "confidenceLowerExact": 10.953194226228199,
           "confidenceUpperExact": 17.024128809416425
         }
-      }
+      },
+      "tokenConsumptionRate": 2.730490241118286
     },
     {
       "slug": "claude-haiku-5-5",
@@ -3767,7 +3894,8 @@
           "confidenceLowerExact": 0.10958828170153576,
           "confidenceUpperExact": 2.1690571315374214
         }
-      }
+      },
+      "tokenConsumptionRate": 2.161968144201505
     },
     {
       "slug": "kimi-k2-8-preview",
@@ -3788,7 +3916,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "step-5-preview",
@@ -3830,7 +3959,8 @@
           "confidenceLowerExact": -3.4711292115935057,
           "confidenceUpperExact": -0.5955620681330822
         }
-      }
+      },
+      "tokenConsumptionRate": 1.0856712540849993
     },
     {
       "slug": "longcat-2-5-preview",
@@ -3850,7 +3980,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "grok-4-7",
@@ -3892,7 +4023,8 @@
           "confidenceLowerExact": 1.4484411597948628,
           "confidenceUpperExact": 4.597686705127659
         }
-      }
+      },
+      "tokenConsumptionRate": 0.8895017264866413
     },
     {
       "slug": "mistral-large-4",
@@ -3934,7 +4066,8 @@
           "confidenceLowerExact": -7.040329466560139,
           "confidenceUpperExact": -3.086904202732062
         }
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "space-bunny",
@@ -3955,7 +4088,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gemma-4-31b",
@@ -3989,7 +4123,8 @@
           "publishedAt": "2026-10-25"
         },
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-oss-120b",
@@ -4014,7 +4149,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-oss-20b",
@@ -4039,7 +4175,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "mistral-large-3",
@@ -4065,7 +4202,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "nemotron-3-nano",
@@ -4090,7 +4228,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "nemotron-3-super",
@@ -4115,7 +4254,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gemini-4-argon",
@@ -4157,7 +4297,8 @@
           "confidenceLowerExact": 10.836459590941011,
           "confidenceUpperExact": 12.659697105965298
         }
-      }
+      },
+      "tokenConsumptionRate": 1.1133711120223715
     },
     {
       "slug": "doubao-seed-2-1-pro-0915",
@@ -4178,7 +4319,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "glm-5-3-flashx",
@@ -4199,7 +4341,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "doubao-seed-2-1-lite",
@@ -4221,7 +4364,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "ling-3-1-flash",
@@ -4246,7 +4390,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "glyph-cluster",
@@ -4258,7 +4403,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-8-omni-flash",
@@ -4280,7 +4426,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "gpt-5-4-nano",
@@ -4306,7 +4453,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "mai-code-1-1-flash",
@@ -4326,7 +4474,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "sensenova-6-8-flash-lite",
@@ -4346,7 +4495,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "minimax-m3-1-flash-preview",
@@ -4367,7 +4517,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "spark-x2-5",
@@ -4379,7 +4530,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "spark-x2-flash",
@@ -4391,7 +4543,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-5-397b-a17b",
@@ -4417,7 +4570,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "qwen-3-5-35b-a3b",
@@ -4443,7 +4597,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "glm-4-7-flash",
@@ -4468,7 +4623,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "composer-2-5",
@@ -4480,7 +4636,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "deepseek-v4-1-flash-1017",
@@ -4513,7 +4670,8 @@
           "publishedAt": "2026-10-25"
         },
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": 1.329539996944943
     },
     {
       "slug": "beam-1-0",
@@ -4547,7 +4705,8 @@
           "confidenceLowerExact": -5.511604309600518,
           "confidenceUpperExact": -0.5752531435055118
         }
-      }
+      },
+      "tokenConsumptionRate": 0.32761794464849847
     },
     {
       "slug": "cat-jam",
@@ -4559,7 +4718,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "muse-spark-open",
@@ -4594,7 +4754,8 @@
           "publishedAt": "2026-10-25"
         },
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": 0.6356769478098553
     },
     {
       "slug": "nemotron-3-5-super-vl",
@@ -4627,7 +4788,8 @@
           "publishedAt": "2026-10-25"
         },
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": 0.7791398565468471
     },
     {
       "slug": "qwen-3-8-max-prime",
@@ -4639,7 +4801,8 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     },
     {
       "slug": "muse-wonder",
@@ -4676,7 +4839,8 @@
           "confidenceLowerExact": 1.7342091322149003,
           "confidenceUpperExact": 4.877358438049205
         }
-      }
+      },
+      "tokenConsumptionRate": 0.9191002057599587
     },
     {
       "slug": "minimax-m3-1-flash",
@@ -4710,7 +4874,8 @@
           "publishedAt": "2026-10-25"
         },
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": 1.322026048949468
     },
     {
       "slug": "ornith-1-5-122b",
@@ -4730,8 +4895,9 @@
         "deepSWE": null,
         "liveBench": null,
         "arena": null
-      }
+      },
+      "tokenConsumptionRate": null
     }
   ],
-  "contentVersion": "2026-10-27T09:10:28.501Z"
+  "contentVersion": "2026-10-30T10:02:39.510Z"
 }

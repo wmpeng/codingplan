@@ -29,6 +29,7 @@
         { key: 'plan', label: '套餐' },
         { key: 'price', label: '首月价格' },
         { key: 'model', label: '模型' },
+        { key: 'tokenConsumptionRate', label: 'token消耗率' },
         { key: 'unitPriceCnyPerM', label: '综合单价' },
         { key: 'unitPriceVisual', label: '单价对比', hint: '低 → 高 · 对数', sortable: false },
         { key: 'fiveHourTokenInM', label: '5h用量' },
@@ -466,7 +467,7 @@
     }
 
     function comparisonTableHeadHtml(tableName, compact) {
-        return `<tr>${COMPARISON_TABLE_COLUMNS.filter(column => !compact || column.key !== 'plan').map((column) => {
+        return `<tr>${COMPARISON_TABLE_COLUMNS.filter(column => (compact || column.key !== 'tokenConsumptionRate') && (!compact || column.key !== 'plan')).map((column) => {
             const sortable = column.sortable !== false;
             const classes = column.key === 'vendor' ? 'sticky-first' : '';
             const sorting = sortable
@@ -475,7 +476,9 @@
             const label = compact && column.key === 'vendor' ? '平台 / 套餐' : compact && column.key === 'price' ? '首月价格' : column.hint
                 ? `<span class="usage-table-heading"><span>${column.label}</span><small>${column.hint}</small></span>`
                 : column.label;
-            const helpText = column.key === 'unitPriceVisual'
+            const helpText = column.key === 'tokenConsumptionRate'
+                ? '基于 AA 默认评测的每任务输出 Token（含思考与答案），相对本站有效模型样本的算术平均值。×1 为平均，×1.5 表示多消耗 50%，越低越省。采用该模型 AA 评分对应配置；仅反映输出消耗，不代表相同完成质量。'
+                : column.key === 'unitPriceVisual'
                 ? '横条按当前结果采用对数尺度比较；条越短，综合单价越低。'
                 : ['fiveHourTokenInM', 'weeklyTokenInM', 'monthlyTokenInM'].includes(column.key)
                     ? '按量 API 没有周期额度时显示“—”；订阅的未知额度不表示零。' : '';
@@ -521,6 +524,7 @@
             (compact ? '' : `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}<div class="plan-capabilities">${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></td>`) +
             `<td class="numeric">${price}${notice('price')}</td>` +
             `<td class="usage-table-model">${visualOptions?.chartSelectable ? `<button type="button" class="price-chart-model-button" data-chart-select="${escapeHtml(point.slug)}" aria-label="在图中查看 ${escapeHtml(point.relationLabel || point.modelName)}">${escapeHtml(point.relationLabel || point.modelName)}</button>` : escapeHtml(point.relationLabel || point.modelName)}${notice('models')}</td>` +
+            (compact ? `<td class="numeric" data-comparison-col="tokenConsumptionRate" title="${escapeHtml(aaScore?.configuration || '')}">${finiteNonnegative(point.tokenConsumptionRate) === null ? '—' : '×' + Numbers.amount(point.tokenConsumptionRate)}</td>` : '') +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
             `<td class="usage-table-price-visual">${unitPriceVisualHtml(point, tokenUnit, visualOptions)}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
@@ -1109,7 +1113,7 @@
                         chartSelectable:chartSlugs.has(point.slug),
                         color: colors[getPointColorKey(point, state.colorMode)]
                     })).join('')
-                    : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length - (Directory ? 1 : 0)}">当前筛选下没有可展示的数据；请在上方下拉框调整条件，或点击“显示全部”。</td></tr>`;
+                    : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length - 1}">当前筛选下没有可展示的数据；请在上方下拉框调整条件，或点击“显示全部”。</td></tr>`;
                 container.querySelectorAll('[data-comparison-col]').forEach(cell => {
                     const key = cell.dataset.comparisonCol;
                     cell.hidden = Scores.keys.includes(key) && !state.allScores && key !== state.benchmark;
