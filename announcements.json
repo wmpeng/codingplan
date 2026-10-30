@@ -1,6 +1,15 @@
 {
   "announcements": [
     {
+      "slug": "codex-pro-usage-double-20261030",
+      "title": "Codex Pro $100/$200/$500：用量上限翻倍",
+      "body": "Codex **Pro $100 / $200 / $500** 三档订阅的用量上限翻倍，**Plus 额度保持不变**。\n\n- 公告同时包含 Business Premium；Free、Go 未列入本次翻倍范围。\n- 不同模型、速度档和任务的实际消耗仍有差异，具体剩余量以账号用量面板为准。\n- 此次公布的是用量上限的相对提升，不是固定 Token 配额；本站表中的绝对 Token 数仍为估算。\n\n公告未明确截止日期。",
+      "visible": true,
+      "ended": false,
+      "announcedOn": "2026-10-30",
+      "url": "https://x.com/thsottiaux/status/2115850175868727621"
+    },
+    {
       "slug": "qoder-global-deepseek-1017-free-oct-2026",
       "title": "Qoder国际版：DeepSeek 1017免Credits至11月1日零点",
       "body": "Qoder国际版的 **DeepSeek V4.1 Flash-1017** 限时免Credits，截止 **2026年11月1日00:00（UTC+8）**，即10月31日结束时。\n\n- 免费与付费个人用户均可选择该模型，无需把订阅额度换算为Token配额。\n- 仅该模型免Credits，其他模型和功能仍按各自规则计费；高峰时可能排队。",
@@ -121,5 +130,5 @@
       "url": "https://opencode.ai/v2/docs/console/models/"
     }
   ],
-  "contentVersion": "2026-10-30T08:54:36.680Z"
+  "contentVersion": "2026-10-30T09:04:15.865Z"
 }
