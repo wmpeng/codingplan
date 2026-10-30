@@ -24,6 +24,18 @@
     target.scrollIntoView({block:'start'});
   }
   function boot() {
+    const jumps=document.querySelector('.updates-jumps');
+    const header=document.querySelector('.site-header');
+    if(jumps && header) {
+      // 吸顶和锚点共用实际高度，适配窄屏、文字放大及按钮换行。
+      const measure=()=>{
+        document.documentElement.style.setProperty('--updates-header-height',`${header.getBoundingClientRect().height}px`);
+        document.documentElement.style.setProperty('--updates-nav-height',`${jumps.getBoundingClientRect().height}px`);
+      };
+      measure();
+      const observer=new ResizeObserver(measure);
+      observer.observe(header);observer.observe(jumps);
+    }
     const refresh=()=>updateDates(document,new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()));
     refresh();revealHash(document,location.hash);
     root.addEventListener('hashchange',()=>revealHash(document,location.hash));
