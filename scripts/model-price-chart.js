@@ -112,7 +112,7 @@
     function detailHtml(groups, selectedSlug, options) {
         const group = groups.find(item => item.members.some(point => point.slug === selectedSlug));
         const point = group?.members.find(item => item.slug === selectedSlug);
-        if (!point) return '<div class="price-chart-placeholder">点击价格点，查看套餐详情并高亮同一模型在不同平台的报价。<small>重合报价可逐条切换；也可在下方价格明细中查看和选择方案。</small></div>';
+        if (!point) return '';
         const {benchmark, tokenUnit, tooltipHtml} = options;
         const members = group.members.length > 1 ? `<label class="price-chart-members">此位置共 ${group.members.length} 个方案<select data-chart-member aria-label="查看重合报价">${group.members.map(member => `<option value="${esc(member.slug)}"${member.slug === selectedSlug ? ' selected' : ''}>${esc(`${member.platformName} · ${member.planName} · ${member.relationLabel}`)}</option>`).join('')}</select></label>` : '';
         return `<div class="price-chart-selection"><div class="price-chart-identity"><small>已选方案 · ${point.billingMode === 'payg' ? '按量 API' : '订阅参考折算'}</small><strong>${esc(point.relationLabel || point.modelName)}</strong><span>${esc(point.platformName)} · ${esc(point.planName)}</span>${point.planStatus !== 'open' ? `<span class="plan-status" data-price-status="${esc(point.planStatus)}">${esc(UI.statusLabels[point.planStatus] || point.planStatus)}</span>` : ''}</div>` +

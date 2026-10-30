@@ -312,8 +312,7 @@
 .price-chart-frontier::before { content:''; width:25px; border-top:2px dotted #7c8da2; }
 .price-chart-symbols { justify-content:flex-start; margin:8px 0 16px; }
 .price-chart-detail { padding:15px 17px; border:1px solid var(--border-color); border-radius:9px; background:var(--bg-primary); }
-.price-chart-placeholder { color:var(--text-secondary); font-size:13px; }
-.price-chart-placeholder small { display:block; margin-top:4px; color:var(--text-tertiary); font-size:11px; }
+.price-chart-detail:empty { display:none; }
 .price-chart-selection { display:flex; flex-wrap:wrap; gap:15px 24px; align-items:center; }
 .price-chart-identity { flex:1 1 240px; min-width:0; }
 .price-chart-identity small, .price-chart-metric small { display:block; color:var(--text-tertiary); font-size:11px; }

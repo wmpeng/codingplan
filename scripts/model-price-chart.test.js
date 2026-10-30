@@ -68,5 +68,5 @@ test('offer details escape model names and notes, preserve every overlap option 
     assert.match(html,/订阅参考折算/);
     assert.match(html,/购买受限/);
     assert.equal((html.match(/<option /g)||[]).length,2);
-    assert.match(Chart.detailHtml([],null,{}),/点击价格点/);
+    assert.equal(Chart.detailHtml([],null,{}),'');
 });
