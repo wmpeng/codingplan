@@ -725,7 +725,6 @@
                     <div class="price-chart-key"><span class="price-chart-frontier" title="当前筛选下，不存在另一个价格不高、评分不低且至少一项更好的方案。仅比较综合单价与评分。">价格—能力优势前沿</span></div>
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="intelligence" role="img" aria-label="模型能力和综合单价散点图"></div><div class="usage-empty" data-empty="intelligence" hidden>当前条件下没有可绘制的评分与价格；请调整上方筛选、计费方式或价格轴。</div></div>
                     <div class="price-chart-meta" data-chart-meta aria-live="polite"></div>
-                    <div class="price-chart-symbols"><span>● 订阅折算价</span><span>◆ 按量 API 加权价</span><span>同坐标、同计费方式的报价合并显示</span></div>
                     <div class="price-chart-detail" data-chart-detail></div>
                     <p class="price-chart-method">综合单价按全站显示设置的首月／每月价格口径计算，订阅按参考额度折算，不代表固定任务成本。<a href="/pricing/#pricingMethod">查看价格与用量口径</a></p>
                 </article>

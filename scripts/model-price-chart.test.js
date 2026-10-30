@@ -3,14 +3,14 @@ const assert = require('node:assert/strict');
 const Chart = require('./model-price-chart.js');
 const point = (slug, price, score, extra = {}) => ({slug, modelSlug:slug, modelName:`Model-${slug}-Preview-1017`, platformSlug:'a', platformName:'平台 A', planName:'套餐', billingMode:'subscription', unitPriceCnyPerM:price, scores:{artificialAnalysis:{scoreExact:score}}, ...extra});
 
-test('exact overlap grouping keeps all offers, distinct billing symbols, zero and negative scores', () => {
+test('exact overlap grouping keeps all billing modes together, zero and negative scores', () => {
     const rows = [point('a',0,0),point('b',0,0),point('api',0,0,{billingMode:'payg'}),point('negative',1,-2),point('nearby',1.000000001,-2),point('unknown',null,10),point('missing',1,null)];
     const copy = JSON.stringify(rows);
     const groups = Chart.groupPoints(rows,'artificialAnalysis');
-    assert.equal(groups.length,4);
-    assert.deepEqual(groups[0].members.map(p=>p.slug),['a','b']);
+    assert.equal(groups.length,3);
+    assert.deepEqual(groups[0].members.map(p=>p.slug),['a','b','api']);
     assert.equal(groups[0].price,0);
-    assert.equal(groups[2].score,-2);
+    assert.equal(groups[1].score,-2);
     assert.equal(JSON.stringify(rows),copy);
 });
 
@@ -46,7 +46,9 @@ test('selection highlights all prices of the selected model, including an overla
     assert.equal(selected.find(d=>d.meta.slug==='b').label.formatter,`${rows[1].modelName}\n平台 A`);
     assert.equal(selected.find(d=>d.meta.slug==='c').itemStyle.opacity,0.86);
     assert.equal(selected.find(d=>d.meta.slug==='d').itemStyle.opacity,0.14);
-    assert.equal(selected.find(d=>d.meta.slug==='c').symbol,'diamond');
+    assert.ok(selected.every(d=>d.symbol==='circle'));
+    assert.equal(selected.find(d=>d.meta.slug==='c').symbolSize,11);
+    assert.equal(selected.find(d=>d.meta.slug==='b').symbolSize,16);
 });
 
 test('overlap labels retain the platforms of each candidate model and selection names the exact platform', () => {
@@ -60,7 +62,7 @@ test('overlap labels retain the platforms of each candidate model and selection 
 });
 
 test('offer details escape model names and notes, preserve every overlap option and show reference pricing semantics', () => {
-    const rows = [point('a',1,5,{modelName:'<Preview>',relationLabel:'<Preview> [1M]',note:'<script>bad</script>',planStatus:'restricted'}),point('b',1,5)];
+    const rows = [point('a',1,5,{modelName:'<Preview>',relationLabel:'<Preview> [1M]',note:'<script>bad</script>',planStatus:'restricted'}),point('b',1,5,{billingMode:'payg'})];
     const html=Chart.detailHtml(Chart.groupPoints(rows,'artificialAnalysis'),'a',{benchmark:'artificialAnalysis',tokenUnit:'yi',tooltipHtml:()=>'<div>价格依据</div>'});
     assert.match(html,/&lt;Preview&gt; \[1M\]/);
     assert.match(html,/&lt;script&gt;bad&lt;\/script&gt;/);
@@ -68,5 +70,14 @@ test('offer details escape model names and notes, preserve every overlap option 
     assert.match(html,/订阅参考折算/);
     assert.match(html,/购买受限/);
     assert.equal((html.match(/<option /g)||[]).length,2);
+    const groups=Chart.groupPoints(rows,'artificialAnalysis');
+    const apiHtml=Chart.detailHtml(groups,'b',{benchmark:'artificialAnalysis',tokenUnit:'yi',tooltipHtml:()=>''});
+    assert.match(apiHtml,/<option value="b" selected>/);
+    assert.match(apiHtml,/已选方案 · 按量 API/);
+    const apiSeries=Chart.buildSeries(groups,{colors:{a:'#123456'},colorMode:'vendor',tokenUnit:'yi',compact:false,selectedSlug:'b'});
+    const apiDatum=apiSeries.find(s=>s.type==='scatter').data[0];
+    assert.equal(apiDatum.meta.slug,'b');
+    assert.equal(apiDatum.symbol,'circle');
+    assert.equal(apiDatum.members.length,2);
     assert.equal(Chart.detailHtml([],null,{}),'');
 });

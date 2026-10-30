@@ -10,15 +10,15 @@
     'use strict';
     const esc = UI.escapeHtml;
 
-    // Keep exact coordinates and every underlying offer. Different billing modes
-    // retain their own symbols; no jitter, rounding or model-name rewriting.
+    // Group exact coordinates across billing modes and keep every underlying
+    // offer; no jitter, rounding or model-name rewriting.
     function groupPoints(points, benchmark) {
         const groups = new Map();
         for (const point of points) {
             const price = point.unitPriceCnyPerM;
             const score = Scores.value(point.scores?.[benchmark]);
             if (typeof price !== 'number' || !Number.isFinite(price) || price < 0 || score === null) continue;
-            const key = JSON.stringify([price, score, point.billingMode]);
+            const key = JSON.stringify([price, score]);
             if (!groups.has(key)) groups.set(key, {key, price, score, members: []});
             groups.get(key).members.push(point);
         }
@@ -74,8 +74,8 @@
             byColor.get(key).push({
                 value: [group.price * Numbers.tokenFactor(tokenUnit), group.score],
                 meta: point, members: group.members, groupKey: group.key,
-                symbol: point.billingMode === 'payg' ? 'diamond' : 'circle',
-                symbolSize: active ? 16 : point.billingMode === 'payg' ? 13 : 11,
+                symbol: 'circle',
+                symbolSize: active ? 16 : 11,
                 itemStyle: {
                     color: colors[key], opacity: selected && !sameModel ? 0.14 : 0.86,
                     borderColor: '#fff', borderWidth: active ? 2 : 1.3

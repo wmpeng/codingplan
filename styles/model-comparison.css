@@ -306,12 +306,11 @@
 .price-intelligence-card .tool-legend { margin:14px 0 8px; }
 .price-intelligence-card .usage-color-legend { padding:0; }
 .price-intelligence-card .usage-chart { height:430px; }
-.price-chart-key, .price-chart-meta, .price-chart-symbols { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 18px; font-size:11px; color:var(--text-tertiary); }
+.price-chart-key, .price-chart-meta { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 18px; font-size:11px; color:var(--text-tertiary); }
 .price-chart-key { margin:14px 0 6px; }
 .price-chart-frontier { display:inline-flex; align-items:center; gap:7px; cursor:help; }
 .price-chart-frontier::before { content:''; width:25px; border-top:2px dotted #7c8da2; }
-.price-chart-symbols { justify-content:flex-start; margin:8px 0 16px; }
-.price-chart-detail { padding:15px 17px; border:1px solid var(--border-color); border-radius:9px; background:var(--bg-primary); }
+.price-chart-detail { margin-top:14px; padding:15px 17px; border:1px solid var(--border-color); border-radius:9px; background:var(--bg-primary); }
 .price-chart-detail:empty { display:none; }
 .price-chart-selection { display:flex; flex-wrap:wrap; gap:15px 24px; align-items:center; }
 .price-chart-identity { flex:1 1 240px; min-width:0; }
@@ -347,7 +346,6 @@
   .price-chart-metric { flex:1; }
   .price-chart-actions { flex-basis:100%; }
   .price-chart-actions button, .price-chart-export, .price-chart-members select, .price-chart-offer-note summary, .price-chart-model-button { min-height:44px; }
-  .price-chart-symbols { font-size:10px; }
 }
 @media(max-width:650px) {
   .usage-chart-controls { width:100%; }
