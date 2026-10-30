@@ -368,12 +368,12 @@
     },
     {
       "slug": "tencent-october-model-discounts-end-20261030",
-      "title": "腾讯部分模型十月优惠结束",
+      "title": "腾讯指定模型优惠延长至11月2日零点",
       "officialStatus": "announced",
       "effectiveTime": {
         "type": "date",
-        "date": "2026-10-30",
-        "description": "北京时间12:00；现有GLM5.3/Flash、KimiK3/K2.7Code和固定Hy3折扣未来结束，届时需复核"
+        "date": "2026-11-02",
+        "description": "优惠延长至2026年11月2日00:00（北京时间），即11月1日结束时；跨周期请求按发起时间对应的积分价抵扣。"
       },
       "changes": [
         {
@@ -383,7 +383,8 @@
           "after": "活动到期，恢复常规积分价"
         }
       ],
-      "summary": "指定GLM5.3/Flash、Kimi K3/K2.7 Code及固定Hy3档优惠计划于10月30日12:00（北京时间）结束；其他型号不适用。",
+      "audience": "通用Token Plan的GLM-5.3/Flash、Kimi K3/K2.7 Code，以及Hy Token Plan的固定hy3-202608；不包含hy3/hy3-preview。",
+      "summary": "通用Token Plan的GLM-5.3/Flash、Kimi K3/K2.7 Code及Hy Token Plan的hy3-202608优惠延长至2026年11月2日00:00（北京时间）；不改变订阅售价。",
       "targets": [
         {
           "type": "plan_model",
@@ -529,6 +530,9 @@
       "sources": [
         {
           "url": "https://cloud.tencent.com/document/product/1823/133811"
+        },
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/140042"
         }
       ],
       "relatedChanges": []
@@ -685,6 +689,9 @@
         },
         {
           "url": "https://maas.suanli.cn/models/deepseek%252Fdeepseek-v4-pro"
+        },
+        {
+          "url": "https://maas.suanli.cn/models/deepseek%252Fdeepseek-v4-flash"
         }
       ],
       "relatedChanges": []
@@ -921,17 +928,18 @@
       "officialStatus": "announced",
       "effectiveTime": {
         "type": "date",
-        "date": "2026-10-28"
+        "date": "2026-10-28",
+        "description": "原定2026年10月28日14:00（UTC+8）停服；日期已过，但当前概览与计费表仍列即将下线，实际停服情况待确认。"
       },
       "changes": [
         {
           "type": "model_support",
           "label": "K2.7 Code使用资格",
-          "before": "既有使用者仍可使用",
-          "after": "10月28日14:00（UTC+8）停止服务"
+          "before": "原公告允许此前已使用该型号的订户在停服前继续调用",
+          "after": "原定10月28日14:00（UTC+8）停服；当前概览仍列即将下线，实际可用状态以账号为准"
         }
       ],
-      "summary": "方舟Coding/Agent Plan的K2.7 Code计划于10月28日14:00（UTC+8）停止服务；当前保留老使用者支持。",
+      "summary": "原公告计划于2026年10月28日14:00（UTC+8）停止K2.7 Code服务；日期已过，但Coding/Agent概览及AFP表仍列即将下线，实际停服情况待确认。未使用过该型号的用户已停止开放。",
       "targets": [
         {
           "type": "plan_model",
@@ -982,6 +990,12 @@
         },
         {
           "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-deprecation-announcement?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-plan-overview?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-plan-overview?lang=zh"
         }
       ],
       "relatedChanges": [
@@ -990,21 +1004,24 @@
     },
     {
       "slug": "ark-minimax-m3-retirement-announced",
-      "title": "方舟 Coding Plan MiniMax M3 即将下线",
+      "title": "方舟 Coding Plan MiniMax M3 将于11月2日下线",
       "officialStatus": "announced",
       "effectiveTime": {
-        "type": "unknown",
-        "description": "Coding Plan已宣布MiniMax M3即将下线，具体停服日期待确认。"
+        "type": "date",
+        "date": "2026-11-02",
+        "description": "14:00（UTC+8）正式下线停止服务；此前已使用过该模型的Coding Plan存量用户应提前迁移。"
       },
       "changes": [
         {
           "type": "model_support",
           "label": "MiniMax M3",
-          "before": "当前仍列为支持型号",
-          "after": "Coding Plan标记即将下线，具体停服日期待核实"
+          "before": "已使用过该模型的存量用户暂可调用",
+          "after": "11月2日14:00（UTC+8）停止服务，建议迁移至doubao-seed-evolving或kimi-k3；以所购套餐实际权限为准"
         }
       ],
-      "summary": "Coding Plan中的MiniMax M3仍标记即将下线，当前关系保留；具体停服日期以Coding Plan公告为准。Agent Plan已有独立明确安排。",
+      "audience": "已使用过MiniMax M3的Coding Plan存量用户；未使用过该模型的用户已自10月19日10:00（UTC+8）起停止开放。",
+      "announcedOn": "2026-10-19",
+      "summary": "Coding Plan已明确MiniMax M3将于2026年11月2日14:00（UTC+8）停服；此前用过该模型的存量用户须迁移，未使用过该模型的用户已停止开放。",
       "targets": [
         {
           "type": "plan_model",
@@ -1027,10 +1044,14 @@
         },
         {
           "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-plan-overview?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-model-deprecation?lang=zh"
         }
       ],
       "relatedChanges": [
-        "ark-agent-minimax-m3-retirement-20261102"
+        "ark-agent-minimax-m3-retirement-20261102",
+        "ark-coding-minimax-m3-new-user-restriction-20261019"
       ]
     },
     {
@@ -1039,14 +1060,15 @@
       "officialStatus": "announced",
       "effectiveTime": {
         "type": "date",
-        "date": "2026-10-25"
+        "date": "2026-10-25",
+        "description": "原公告截至10月25日23:59:59；日期已过，活动状态仍进行中且AFP表仍列限时系数5，是否恢复常规10待确认。"
       },
       "changes": [
         {
           "type": "quota",
           "label": "模型抵扣优惠",
-          "before": "当前活动抵扣系数",
-          "after": "活动到期，需按届时有效价抵扣"
+          "before": "原活动期间Kimi K3抵扣五折；Agent Plan表仍列限时5（常规10）",
+          "after": "原截止日期已过，是否延期或恢复常规抵扣尚未确认；实际消耗以账号用量面板为准"
         }
       ],
       "summary": "方舟该型号抵扣优惠计划于2026-10-25 23:59:59（UTC+8）结束；Coding与Agent Plan各自系数不互套。 公告截止日期已过，恢复常规规则的情况待确认。",
@@ -1096,6 +1118,9 @@
         },
         {
           "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-afp-credits-billing-rules?lang=zh"
         }
       ],
       "relatedChanges": []
@@ -1551,6 +1576,9 @@
         },
         {
           "url": "https://agent.minimax.cn/"
+        },
+        {
+          "url": "https://agent.minimax.cn/"
         }
       ],
       "relatedChanges": []
@@ -1751,12 +1779,12 @@
     },
     {
       "slug": "tencent-hy4-preview-discount-end-20261030",
-      "title": "腾讯 Hy4 Preview 五折将于10月30日结束",
+      "title": "腾讯 Hy4 Preview 五折延长至11月2日零点",
       "officialStatus": "announced",
       "effectiveTime": {
         "type": "date",
-        "date": "2026-10-30",
-        "description": "北京时间12:00结束；当前活动为2026-09-25 00:00至2026-10-30 12:00。"
+        "date": "2026-11-02",
+        "description": "优惠延长至2026年11月2日00:00（北京时间），即11月1日结束时；跨周期请求按发起时间对应的积分价抵扣。"
       },
       "changes": [
         {
@@ -1766,7 +1794,7 @@
           "after": "活动结束后恢复120/6/360积分每百万Token"
         }
       ],
-      "summary": "适用通用Token Plan与Hy Token Plan；Hy4 preview当前五折，不与其他优惠叠加，10月30日12:00（北京时间）结束后恢复常规系数。",
+      "summary": "通用Token Plan与Hy Token Plan的Hy4 preview五折延长至2026年11月2日00:00（北京时间），不与其他优惠叠加；活动结束后恢复常规积分抵扣。",
       "targets": [
         {
           "type": "plan_model",
@@ -1828,6 +1856,9 @@
       "sources": [
         {
           "url": "https://cloud.tencent.com/document/product/1823/133811"
+        },
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/140042"
         }
       ],
       "relatedChanges": [
@@ -1851,7 +1882,7 @@
           "after": "正式下线并停止服务，建议迁移至doubao-seed-evolving或kimi-k3"
         }
       ],
-      "summary": "Agent Plan已使用过M3的存量用户须在2026年11月2日14:00（UTC+8）前迁移；新用户自10月19日10:00起已不可用。Coding Plan安排另行核实。",
+      "summary": "Agent Plan已使用过M3的存量用户须在2026年11月2日14:00（UTC+8）前迁移；新用户自10月19日10:00起已不可用。Coding Plan已有独立公告明确相同停服时间，两产品权限分别适用。",
       "targets": [
         {
           "type": "plan_model",
@@ -1883,6 +1914,9 @@
         }
       ],
       "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-deprecation-announcement?lang=zh"
+        },
         {
           "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-deprecation-announcement?lang=zh"
         }
@@ -2121,7 +2155,51 @@
         }
       ],
       "relatedChanges": []
+    },
+    {
+      "slug": "ark-coding-minimax-m3-new-user-restriction-20261019",
+      "title": "方舟 Coding Plan M3 已停止向新用户开放",
+      "officialStatus": "effective",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-10-19",
+        "description": "10:00（UTC+8）起；新用户指购买Coding Plan套餐但未使用过该模型的用户。"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "MiniMax M3新用户权限",
+          "before": "可按套餐使用",
+          "after": "未使用过该模型的新用户不可调用，存量调用暂时保留至11月2日14:00（UTC+8）"
+        }
+      ],
+      "announcedOn": "2026-10-19",
+      "summary": "Coding Plan未使用过MiniMax M3的用户已自2026年10月19日10:00（UTC+8）起不可调用；存量服务计划于11月2日14:00停止。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-lite",
+          "planModelSlug": "volcengine-coding-lite--minimax-m3",
+          "label": "字节·方舟 Coding Plan · Lite · MiniMax-M3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-pro",
+          "planModelSlug": "volcengine-coding-pro--minimax-m3",
+          "label": "字节·方舟 Coding Plan · Pro · MiniMax-M3"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-model-deprecation?lang=zh"
+        }
+      ],
+      "relatedChanges": [
+        "ark-minimax-m3-retirement-announced"
+      ]
     }
   ],
-  "contentVersion": "2026-10-27T09:10:56.626Z"
+  "contentVersion": "2026-10-30T09:54:30.449Z"
 }
