@@ -80,7 +80,7 @@
           "reason": "Coding与Agent活动日期和系数不同，不能互套。"
         },
         "stability": {
-          "score": 4,
+          "score": 5,
           "reason": "火山引擎官方服务，整体稳定。"
         }
       },
@@ -1259,5 +1259,5 @@
       "action": "https://api.dreamfree.space/c/s/cpyqxunfei"
     }
   ],
-  "contentVersion": "2026-10-27T15:57:45.154Z"
+  "contentVersion": "2026-10-31T09:07:50.290Z"
 }
