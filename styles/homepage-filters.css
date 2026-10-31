@@ -359,10 +359,12 @@ body .range-picker-slider input:focus-visible { outline: 2px solid #6b7280; outl
 body.tool-unified-active .filter-state-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 24px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border-color); }
 body.tool-unified-active .filter-state-footer .filter-checks { border: 0; padding: 0; }
 body.tool-unified-active .filter-state-footer .filter-state-actions { flex: 0 0 auto; width: auto; max-width: 100%; justify-content: flex-end; margin: 0 0 0 auto; }
-body.tool-unified-active .filter-state-footer .filter-result-search { flex: 0 1 320px; min-width: 0; max-width: 100%; margin: 0 auto 0 0; }
-body.tool-unified-active .filter-result-search input[type="search"] { box-sizing: border-box; width: 100%; min-width: 0; min-height: 40px; }
+body.tool-unified-active .filter-state-footer .filter-result-search { flex: 0 1 auto; min-width: 0; max-width: 100%; margin: 0 auto 0 0; }
+body.tool-unified-active .filter-result-search input[type="search"] { box-sizing: border-box; flex: 0 1 320px; width: 320px; max-width: 100%; min-width: 0; min-height: 40px; }
+body.plans-page #plansPage > .tool-result-bar, body.models-page .model-result-bar { justify-content: flex-end; }
 @media (max-width: 800px) {
   body.tool-unified-active .filter-state-footer .filter-result-search { flex-basis: 100%; }
+  body.tool-unified-active .filter-result-search input[type="search"] { flex-basis: 100%; width: 100%; }
 }
 @media (max-width: 800px), (pointer: coarse) {
   body.tool-unified-active .filter-result-search input[type="search"] { min-height: 44px; }

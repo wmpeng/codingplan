@@ -36,11 +36,13 @@
   function filters(data, view, onChange) {
     return root.CodingPlanFilterUI.mount({ element: document.getElementById('toolFilters'), context: data.context, config: data.config, mode: 'full', view, onChange });
   }
-  function mountSearch(search) {
+  function mountSearch(search, count) {
+    const previous = search.closest('.tool-result-bar');
     const row = document.createElement('div');
     row.className = 'tool-result-bar filter-result-search';
     document.querySelector('#toolFilters .filter-state-footer').prepend(row);
-    row.append(search);
+    row.append(search, count);
+    if (previous && !previous.children.length) previous.remove();
   }
   function error(host, message, options = {}) {
     root.CodingPlanEvents?.track('load_error', {module:'tool_page', error_code:'data_unavailable'});

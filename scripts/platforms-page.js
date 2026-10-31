@@ -104,7 +104,7 @@
         if (meta.source === 'reset') search.value = '';
         render();
       });
-      root.CodingPlanToolPage.mountSearch(search);
+      root.CodingPlanToolPage.mountSearch(search, showing);
     }).catch(error => {
       const loading = document.querySelector('#toolFilters .tool-filter-loading');
       if (loading) loading.textContent = '筛选条件暂时无法加载，仍可浏览下方平台信息';
