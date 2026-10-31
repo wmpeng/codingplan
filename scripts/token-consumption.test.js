@@ -32,28 +32,13 @@ test('all platform rows read the model rate without changing any existing price 
   for(const point of points) assert.equal(point.tokenConsumptionRate,context.modelBySlug.get(point.modelSlug).tokenConsumptionRate ?? null);
   assert.equal(JSON.stringify(models),before);
   for(const model of models.models) delete model.tokenConsumptionRate;
-  for(const model of models.models) delete model.tokenConsumptionEstimated;
   const legacy=E.buildComparisonPoints(E.buildContext(read('platforms.json'),read('plans.json'),models),7,{includeUnknown:true});
-  const strip=rows=>rows.map(({tokenConsumptionRate,tokenConsumptionEstimated,...rest})=>rest);
+  const strip=rows=>rows.map(({tokenConsumptionRate,...rest})=>rest);
   assert.deepEqual(strip(points),strip(legacy));
 });
 
-test('estimated rates remain visibly qualified and propagate to every offer', () => {
-  const read=name=>JSON.parse(fs.readFileSync(path.join(__dirname,'..',name),'utf8'));
-  const models=read('models.json');
-  // A fixture keeps the display contract independent of future AA observations.
-  Object.assign(models.models.find(m=>m.slug==='kimi-k2-8-preview'),{tokenConsumptionRate:.83,tokenConsumptionEstimated:true});
-  const context=E.buildContext(read('platforms.json'),read('plans.json'),models);
-  const model=context.modelBySlug.get('kimi-k2-8-preview');
-  assert.equal(model.tokenConsumptionRate, .83);
-  assert.equal(model.tokenConsumptionEstimated,true);
-  const points=E.buildComparisonPoints(context,7,{includeUnknown:true}).filter(p=>p.modelSlug===model.slug);
-  assert.ok(points.length>0);
-  for(const point of points) {
-    assert.equal(point.tokenConsumptionEstimated,true);
-    const html=M.comparisonTableRowHtml(point,'M',{compactIdentity:true});
-    assert.match(html, /×0\.83（估算）/);
-    assert.ok(!html.includes('recordedOn'));
-  }
-  assert.ok(!M.comparisonTableRowHtml({...points[0],tokenConsumptionRate:null},'M',{compactIdentity:true}).includes('×0.83'));
+test('a supplied model rate renders only its numeric value', () => {
+  const html=M.comparisonTableRowHtml({slug:'manual',scores:{},tokenConsumptionRate:.829390511420922},'M',{compactIdentity:true});
+  assert.match(html, /data-comparison-col="tokenConsumptionRate" title="">×0\.83<\/td>/);
+  assert.ok(!html.includes('估算'));
 });

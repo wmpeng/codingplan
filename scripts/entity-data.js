@@ -232,7 +232,6 @@
         multimodal: model.multimodal,
         scores: comparisonScores(model.scores),
         tokenConsumptionRate: displayNumber(model.tokenConsumptionRate),
-        ...(model.tokenConsumptionEstimated === true ? {tokenConsumptionEstimated: true} : {}),
         billingMode,
         supportsHarnessApi: resolveHarnessApi(platform, plan),
         planStatus: plan.planStatus,

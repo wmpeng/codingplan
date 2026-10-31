@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-31T08:00:39Z",
+  "generatedAt": "2026-10-31T08:26:33Z",
   "benchmarks": {
     "artificialAnalysis": {
       "name": "Artificial Analysis Intelligence Index",
@@ -3917,8 +3917,7 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": 0.829390511420922,
-      "tokenConsumptionEstimated": true
+      "tokenConsumptionRate": 0.829390511420922
     },
     {
       "slug": "step-5-preview",
@@ -4900,5 +4899,5 @@
       "tokenConsumptionRate": null
     }
   ],
-  "contentVersion": "2026-10-31T07:56:31.435Z"
+  "contentVersion": "2026-10-31T08:17:47.160Z"
 }

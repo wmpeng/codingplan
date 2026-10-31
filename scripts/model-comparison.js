@@ -477,7 +477,7 @@
                 ? `<span class="usage-table-heading"><span>${column.label}</span><small>${column.hint}</small></span>`
                 : column.label;
             const helpText = column.key === 'tokenConsumptionRate'
-                ? '基于 AA 默认评测的每任务输出 Token（含思考与答案），相对本站有效模型样本的算术平均值。×1 为平均，×1.5 表示多消耗 50%，越低越省。采用该模型 AA 评分对应配置；标注“估算”的值按参考模型倍率推算，不参与平均值计算。仅反映输出消耗，不代表相同完成质量。'
+                ? '基于 AA 默认评测的每任务输出 Token（含思考与答案），相对本站有效模型样本的算术平均值。×1 为平均，×1.5 表示多消耗 50%，越低越省。采用该模型 AA 评分对应配置；仅反映输出消耗，不代表相同完成质量。'
                 : column.key === 'unitPriceVisual'
                 ? '横条按当前结果采用对数尺度比较；条越短，综合单价越低。'
                 : ['fiveHourTokenInM', 'weeklyTokenInM', 'monthlyTokenInM'].includes(column.key)
@@ -524,7 +524,7 @@
             (compact ? '' : `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}<div class="plan-capabilities">${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></td>`) +
             `<td class="numeric">${price}${notice('price')}</td>` +
             `<td class="usage-table-model">${point.modelSlug ? `<a class="price-chart-model-link" href="/models/?q=${encodeURIComponent(point.modelSlug)}">${escapeHtml(point.relationLabel || point.modelName)}</a>` : escapeHtml(point.relationLabel || point.modelName)}${notice('models')}</td>` +
-            (compact ? `<td class="numeric" data-comparison-col="tokenConsumptionRate" title="${escapeHtml(point.tokenConsumptionEstimated ? '按参考模型的输出消耗倍率估算' : aaScore?.configuration || '')}">${finiteNonnegative(point.tokenConsumptionRate) === null ? '—' : '×' + Numbers.amount(point.tokenConsumptionRate) + (point.tokenConsumptionEstimated ? '（估算）' : '')}</td>` : '') +
+            (compact ? `<td class="numeric" data-comparison-col="tokenConsumptionRate" title="${escapeHtml(aaScore?.configuration || '')}">${finiteNonnegative(point.tokenConsumptionRate) === null ? '—' : '×' + Numbers.amount(point.tokenConsumptionRate)}</td>` : '') +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
             `<td class="usage-table-price-visual">${unitPriceVisualHtml(point, tokenUnit, visualOptions)}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
