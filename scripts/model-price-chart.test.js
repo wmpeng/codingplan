@@ -73,7 +73,8 @@ test('offer details escape model names and notes, preserve every overlap option 
     const groups=Chart.groupPoints(rows,'artificialAnalysis');
     const apiHtml=Chart.detailHtml(groups,'b',{benchmark:'artificialAnalysis',tokenUnit:'yi',tooltipHtml:()=>''});
     assert.match(apiHtml,/<option value="b" selected>/);
-    assert.match(apiHtml,/已选方案 · 按量 API/);
+    assert.match(apiHtml,/按量 API/);
+    assert.doesNotMatch(apiHtml,/已选方案/);
     const apiSeries=Chart.buildSeries(groups,{colors:{a:'#123456'},colorMode:'vendor',tokenUnit:'yi',compact:false,selectedSlug:'b'});
     const apiDatum=apiSeries.find(s=>s.type==='scatter').data[0];
     assert.equal(apiDatum.meta.slug,'b');

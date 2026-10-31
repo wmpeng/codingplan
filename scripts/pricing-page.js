@@ -21,7 +21,7 @@
       const legend = host.querySelector('.usage-color-legend');
       const legendDetails = document.createElement('details'); legendDetails.className = 'tool-legend';
       legendDetails.open = !matchMedia('(max-width: 800px)').matches;
-      const legendLabel = document.createElement('summary'); legendLabel.textContent = '图例 · 点击名称可单独查看';
+      const legendLabel = document.createElement('summary'); legendLabel.textContent = '图例 · 点击名称单独看图';
       legend.before(legendDetails); legendDetails.append(legendLabel, legend);
       const note = host.querySelector('.usage-method-note');
       const method = document.createElement('details'); method.className = 'tool-secondary'; method.id = 'pricingMethod'; if (location.hash === '#pricingMethod') method.open = true;
