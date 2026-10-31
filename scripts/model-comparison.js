@@ -663,7 +663,7 @@
         const platformLine = `${escapeHtml(point.platformName)} · ${billing}`;
         const modelLine = escapeHtml(point.relationLabel);
         const status = point.planStatus && point.planStatus !== 'open' ? `<div>${escapeHtml(UI.statusLabels[point.planStatus] || point.planStatus)}</div>` : '';
-        const basis = point.unitPriceBasis === 'firstMonth' ? `<div>综合单价按首月价格计算：${Numbers.monthlyFee(point.firstMonthPrice, currencySymbol(point.originalCurrency))}</div>` : '';
+
         const fee = point.billingMode === 'subscription'
             ? `<div>首月价格：${formatSubscriptionMonthlyPrice(point)}</div><div>月额度：${formatTokenAmount(point.monthlyTokenInM, tokenUnit)} Token</div>`
             : '';
@@ -677,7 +677,7 @@
             .replace(/^([^/]+?)(?= \/)/, '<b class="usage-tooltip-price">$1</b>');
         return `<div class="usage-tooltip">${heading}` +
             `<div>单位价格：${unitPrice} Token</div>` +
-            `<div class="usage-tooltip-secondary">${status}<div>${modality}</div>${fee}${apiPricing}${basis}` +
+            `<div class="usage-tooltip-secondary">${status}<div>${modality}</div>${fee}${apiPricing}` +
             `<div>${scoreText(point, benchmark)}</div></div></div>`;
     }
 
