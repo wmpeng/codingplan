@@ -20,6 +20,14 @@
       "announcedOn": "2026-10-26"
     },
     {
+      "slug": "kimi-code-k28-preview-half-quota",
+      "title": "Kimi Code 订阅用户：K2.8 Preview 额度消耗限时五折",
+      "body": "**Kimi Code 订阅用户**使用 **K2.8 Preview** 模型，额度消耗限时 **5 折**，即相同用量消耗的额度减少 50%。\n\n- 优惠针对该模型的额度消耗，不是订阅售价五折，也不代表其他模型享受同样优惠。\n- 需要所订套餐具有该模型的使用权限；套餐额度和使用限制仍适用。\n\n活动开始日期和截止日期尚未公布，具体适用情况以 Kimi Code 活动页面和账号用量面板为准。",
+      "visible": true,
+      "ended": false,
+      "url": "https://www.kimi.com/code"
+    },
+    {
       "slug": "tencent-token-plan-discounts-extended-20261102",
       "title": "腾讯 Token Plan：指定模型优惠延长至 11 月 2 日零点",
       "body": "腾讯 Token Plan 个人版的两组模型抵扣优惠均延长至 **2026 年 11 月 2 日 00:00（北京时间）**，即 **11 月 1 日结束时**。\n\n- **通用 Token Plan**：Kimi K3 **7.5 折**、Kimi K2.7 Code **8 折**、GLM-5.3 **5.5 折**、GLM-5.3-Flash **7 折**。\n- **Hy Token Plan**：固定调用名 **hy3-202608 五折**；hy3 / hy3-preview 不在这项固定版本折扣内。\n- **通用与 Hy Token Plan**：**Hy4 preview 五折**，每百万 Token 输入 / 缓存命中 / 输出抵扣 **60 / 3 / 180 积分**，活动后恢复 **120 / 6 / 360 积分**。\n\n优惠自动生效，仅调整指定模型的积分消耗，不是订阅售价折扣；不与其他优惠叠加，套餐额度刷新及使用限制不变。跨活动周期的请求按发起时间对应的积分价抵扣。",
@@ -138,5 +146,5 @@
       "url": "https://opencode.ai/v2/docs/console/models/"
     }
   ],
-  "contentVersion": "2026-10-30T09:54:36.580Z"
+  "contentVersion": "2026-10-31T07:41:13.599Z"
 }
