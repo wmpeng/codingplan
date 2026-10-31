@@ -483,7 +483,7 @@
                 : ['fiveHourTokenInM', 'weeklyTokenInM', 'monthlyTokenInM'].includes(column.key)
                     ? '按量 API 没有周期额度时显示“—”；订阅的未知额度不表示零。' : '';
             const help = helpText ? Help.html(`${tableName}-${column.key}-help`, `${column.label}说明`, helpText) : '';
-            const heading = sortable ? `<button type="button" class="table-sort-button" aria-label="${column.label}排序">${label}</button>` : label;
+            const heading = sortable ? `<button type="button" class="table-sort-button" aria-label="${column.label}排序">${label}</button>` : column.key === 'unitPriceVisual' ? '' : label;
             return `<th scope="col" data-comparison-col="${column.key}"${classes ? ` class="${classes}"` : ''}${sorting}>${heading}${help}</th>`;
         }).join('')}</tr>`;
     }
