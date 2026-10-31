@@ -720,9 +720,9 @@
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>DeepSWE 最低分</span><input data-filter="deepSWEScoreMin" aria-label="DeepSWE 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <div class="usage-color-control" aria-label="颜色区分方式"><span>颜色</span><div class="usage-segments" role="group" aria-label="颜色区分方式"><button type="button" data-color-mode="vendor" class="is-active" aria-pressed="true">按平台</button><button type="button" data-color-mode="model" aria-pressed="false">按模型</button></div></div>
                     <div class="usage-benchmark-control"><span>评分</span><div class="usage-segments" role="group" aria-label="评分指标">${Scores.keys.map((key,index) => `<button type="button" data-benchmark="${key}" class="${index === 0 ? 'is-active' : ''}" aria-pressed="${index === 0}">${BENCHMARKS[key].label}</button>`).join('')}</div></div>
+                    <div class="price-billing-filter"><span>计费方式</span><div class="usage-segments" role="group" aria-label="计费方式"><button type="button" data-chart-billing="all" class="is-active" aria-pressed="true">全部</button><button type="button" data-chart-billing="subscription" aria-pressed="false">订阅</button><button type="button" data-chart-billing="payg" aria-pressed="false">按量 API</button></div></div>
                     ${compact ? '' : '<div class="filter-trailing"><button type="button" class="reset-btn" data-action="restore-defaults">恢复默认</button><div class="stats-bar usage-counts" data-counts aria-live="polite"></div></div>'}
                 </div>
-                <div class="price-billing-filter"><span>计费方式</span><div class="usage-segments" role="group" aria-label="计费方式"><button type="button" data-chart-billing="all" class="is-active" aria-pressed="true">全部</button><button type="button" data-chart-billing="subscription" aria-pressed="false">订阅</button><button type="button" data-chart-billing="payg" aria-pressed="false">按量 API</button></div></div>
                 <article class="usage-chart-card price-intelligence-card">
                     <div class="usage-chart-head"><div><h3>模型能力与价格</h3><p>越靠左，综合单价越低；越靠上，模型评分越高。</p></div><button type="button" class="tool-button price-chart-export" data-chart-export>保存图表 ↓</button></div>
                     <div class="price-chart-toolbar">
@@ -871,6 +871,15 @@
                 render();
             }
             benchmarkControl.addEventListener('click', onBenchmarkClick);
+            const billingControl = container.querySelector('.price-billing-filter');
+            if (mountOptions.billingControlHost) mountOptions.billingControlHost.append(billingControl);
+            function onBillingClick(event) {
+                const button = event.target.closest('[data-chart-billing]');
+                if (!button || state.chartBilling === button.dataset.chartBilling) return;
+                state.chartBilling = button.dataset.chartBilling;
+                render();
+            }
+            billingControl.addEventListener('click', onBillingClick);
             const usageChart = echarts.init(container.querySelector('[data-chart="usage"]'));
             const intelligenceChart = echarts.init(container.querySelector('[data-chart="intelligence"]'));
             enableClickPinnedTooltip(usageChart);
@@ -1210,7 +1219,7 @@
                 const intelligencePoints = buildIntelligenceChartPoints(visibleFiltered, state.benchmark, state.priceScale);
                 latestPriceGroups = PriceChart.groupPoints(intelligencePoints, state.benchmark);
                 if (!latestPriceGroups.some(group => group.members.some(point => point.slug === state.selectedChartSlug))) state.selectedChartSlug = null;
-                container.querySelectorAll('[data-chart-billing]').forEach(button => {
+                billingControl.querySelectorAll('[data-chart-billing]').forEach(button => {
                     const active = button.dataset.chartBilling === state.chartBilling;
                     button.classList.toggle('is-active', active);
                     button.setAttribute('aria-pressed', String(active));
@@ -1310,6 +1319,7 @@
             container.__usageCleanup = () => {
                 colorControl.removeEventListener('click', onColorModeClick);
                 benchmarkControl.removeEventListener('click', onBenchmarkClick);
+                billingControl.removeEventListener('click', onBillingClick);
                 root.removeEventListener('codingplan:filters-changed', onSharedFilterChange);
                 root.removeEventListener('codingplan:token-unit-changed', onTokenUnitChange);
                 root.removeEventListener('codingplan:price-basis-changed',onPriceBasisChange);
@@ -1378,8 +1388,6 @@
                     }
                     return;
                 }
-                const billingButton = event.target.closest('[data-chart-billing]');
-                if (billingButton) { state.chartBilling = billingButton.dataset.chartBilling; render(); return; }
                 if (event.target.closest('[data-chart-clear]')) { state.selectedChartSlug = null; render(); return; }
                 if (event.target.closest('[data-chart-export]')) {
                     const link = document.createElement('a');

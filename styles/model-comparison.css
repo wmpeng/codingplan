@@ -302,7 +302,7 @@
 .price-chart-method a { color:var(--accent-primary); text-underline-offset:3px; }
 .price-chart-overlap { margin-top:8px; padding-top:7px; border-top:1px solid var(--border-light); color:var(--text-secondary); font-size:11px; }
 .price-chart-model-link { color:inherit; text-decoration:underline; text-decoration-color:#aab8ca; text-underline-offset:3px; }
-.price-billing-filter { display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px; color:var(--text-secondary); font-size:13px; }
+.price-billing-filter { display:inline-flex; align-items:center; gap:10px; color:var(--text-secondary); font-size:13px; }
 .price-billing-filter .usage-segments button { min-height:36px; }
 .usage-chart-card[hidden] { display:none; }
 @media (max-width:800px), (pointer:coarse) {
