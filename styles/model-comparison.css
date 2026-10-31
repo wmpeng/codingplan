@@ -249,18 +249,12 @@
 .price-identity-meta .tool-tag, .price-identity-meta .harness-api-badge { margin: 0; }
 .pricing-directory .usage-data-table tr.is-pinned td { background: #f1f6fd; }
 .pricing-directory .usage-data-table tr.is-pinned td.sticky-first { box-shadow: inset 2px 0 #9bb9df; }
-.usage-detail-tools { display: flex; gap: 6px; align-items: center; margin-left: auto; }
-.usage-detail-tools .single-select-picker > summary { min-height: 36px; font-size: 12px; }
-.usage-detail-tools .price-sort-direction { min-width: 36px; min-height: 36px; padding: 0 10px; }
-.pricing-directory .usage-chart-head .single-select-picker > summary { min-height: 36px; font-size: 12px; }
 .price-pagination { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 14px; color: var(--text-secondary); font-size: 12px; }
 .price-pagination[hidden] { display: none; }
 .usage-chart-head .price-pagination { flex-basis: 100%; justify-content: flex-end; margin-top: 0; }
 .price-pagination button { min-height: 36px; font-size: 12px; }
 @media (max-width: 760px) {
   .pricing-directory .usage-chart-head { display: flex; flex-wrap: wrap; }
-  .usage-detail-tools { margin-left: 0; }
-  .usage-detail-tools .price-sort-direction { min-height: 44px; }
   .pricing-directory .usage-chart-head .usage-table-count { margin-top: 0; }
 }
 

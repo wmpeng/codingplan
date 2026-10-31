@@ -26,7 +26,7 @@
     const DEFAULT_MODEL_SLUGS = [];
     const COMPARISON_TABLE_COLUMNS = [
         { key: 'vendor', label: '平台' },
-        { key: 'plan', label: '套餐' },
+        { key: 'plan', label: '套餐', sortable: false },
         { key: 'price', label: '首月价格' },
         { key: 'model', label: '模型' },
         { key: 'tokenConsumptionRate', label: 'token消耗率' },
@@ -434,7 +434,6 @@
         if (key === 'price') return finiteNonnegative(point.monthlyFeeCny);
         if (Scores.keys.includes(key)) return getPointScore(point, key);
         if (key === 'vendor') return point.platformName || '';
-        if (key === 'plan') return point.planName || '';
         if (key === 'note') return point[key] || '';
         if (key === 'model') return point.relationLabel || point.modelName || '';
         return finiteNonnegative(point[key]);
@@ -893,8 +892,9 @@
                 comparison: { key: 'unitPriceCnyPerM', direction: 'asc' }
             };
             const Url = root.CodingPlanFilterUrl;
+            const sortableKeys = COMPARISON_TABLE_COLUMNS.filter(column => column.sortable !== false).map(column => column.key);
             const urlSchema = Directory && {
-                query:Url.text('q'), key:Url.choice('sort', COMPARISON_TABLE_COLUMNS.filter(column => column.sortable !== false).map(column => column.key), 'unitPriceCnyPerM'),
+                query:Url.text('q'), key:Url.choice('sort', sortableKeys, 'unitPriceCnyPerM'),
                 direction:Url.choice('direction', ['asc','desc'], 'asc'),
                 benchmark:Url.choice('benchmark', Scores.keys, 'artificialAnalysis'),
                 colorMode:Url.choice('color', ['vendor','model'], 'vendor'),
@@ -908,7 +908,9 @@
                 state.chartBilling = saved.chartBilling || 'all';
                 state.colorMode = saved.colorMode || 'vendor';
                 state.axisScale = saved.axisScale || 'log';
-                tableSortState.comparison = {key:saved.key || 'unitPriceCnyPerM', direction:saved.direction || 'asc'};
+                const requestedSort = new URLSearchParams(root.location.search).get('sort');
+                const validSort = requestedSort === null || sortableKeys.includes(requestedSort);
+                tableSortState.comparison = {key:saved.key || 'unitPriceCnyPerM', direction:validSort ? saved.direction || 'asc' : 'asc'};
                 if (Scores.keys.includes(tableSortState.comparison.key)) tableSortState.comparison.key = state.benchmark;
             }
             const latestTableRows = { comparison: [] };
@@ -1124,9 +1126,6 @@
                     mountOptions.count.textContent = label;
                     root.CodingPlanEvents?.results({result_count:rows.length,result_key:JSON.stringify(rows.map(x=>x.slug))});
                     container.querySelector('[data-table-count]').textContent = label;
-                    sortSelect.value = sort.key; sortPicker.sync();
-                    directionButton.textContent = sort.direction === 'asc' ? '↑' : '↓';
-                    directionButton.setAttribute('aria-label', sort.direction === 'asc' ? '改为降序' : '改为升序');
                     if (tableRenderKey === renderKey) {
                         if (tableScaleType !== state.axisScale) {
                             const bySlug = new Map(sorted.map(point => [point.slug, point]));
@@ -1165,20 +1164,11 @@
                 });
             }
 
-            let sortSelect, sortPicker, directionButton;
             if (Directory) {
-                const tools = document.createElement('div'); tools.className = 'usage-detail-tools';
-                tools.innerHTML = `<label data-select-fallback>排序 <select id="pricingSort" aria-label="明细排序">${COMPARISON_TABLE_COLUMNS.filter(column => column.sortable !== false).map(column => `<option value="${column.key}">${column.key === 'unitPriceCnyPerM' ? '默认（综合单价）' : column.key === 'price' ? '首月价格' : column.label}</option>`).join('')}</select></label><button class="tool-button price-sort-direction" type="button" aria-label="改为降序">↑</button>`;
-                container.querySelector('.usage-detail-summary').before(tools);
                 const pagerHtml='<button class="tool-button" type="button" data-price-page="first">第一页</button><button class="tool-button" type="button" data-price-page="previous">上一页</button><span data-price-page-label aria-live="polite"></span><button class="tool-button" type="button" data-price-page="next">下一页</button>';
                 const pager=document.createElement('div');pager.className='price-pagination';pager.dataset.pricePagination='';pager.innerHTML=pagerHtml;
                 const card=container.querySelector('.usage-data-card');card.append(pager);
                 const topPager=pager.cloneNode(true);card.querySelector('.usage-chart-head').append(topPager);
-                sortSelect = tools.querySelector('select'); sortSelect.value = tableSortState.comparison.key;
-                sortPicker = root.CodingPlanSingleSelect.mount(sortSelect, '明细排序', {showLabel:false});
-                directionButton = tools.querySelector('button.price-sort-direction');
-                sortSelect.addEventListener('change', () => { tableSortState.comparison = {key:sortSelect.value,direction:'asc'}; if(Scores.keys.includes(sortSelect.value))state.benchmark=sortSelect.value; render(); });
-                directionButton.addEventListener('click', () => { const sort=tableSortState.comparison; sort.direction=sort.direction==='asc'?'desc':'asc'; renderDataTable('comparison',latestTableRows.comparison); });
                 search.addEventListener('input', () => { cancelAnimationFrame(renderFrame); renderFrame=requestAnimationFrame(render); });
                 document.getElementById('toolFilters').addEventListener('click', event => {
                     if (event.target.closest('[data-filter-action="restore-defaults"]')) { state.benchmark='artificialAnalysis'; state.axisScale='log'; state.chartBilling='all'; state.selectedChartSlug=null; search.value=''; tableSortState.comparison={key:'unitPriceCnyPerM',direction:'asc'}; }
