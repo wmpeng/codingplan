@@ -31,7 +31,7 @@
         { key: 'model', label: '模型' },
         { key: 'tokenConsumptionRate', label: 'token消耗率' },
         { key: 'unitPriceCnyPerM', label: '综合单价' },
-        { key: 'unitPriceVisual', label: '单价对比', hint: '低 → 高 · 对数', sortable: false },
+        { key: 'unitPriceVisual', label: '对数', sortable: false },
         { key: 'fiveHourTokenInM', label: '5h用量' },
         { key: 'weeklyTokenInM', label: '周用量' },
         { key: 'monthlyTokenInM', label: '月用量' },
