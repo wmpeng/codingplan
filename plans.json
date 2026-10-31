@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-31T08:00:41Z",
+  "generatedAt": "2026-10-31T08:28:27Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -5478,7 +5478,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "kimi-for-coding 当前路由至 K2.8 Preview；最高 1M 上下文，支持图片和视频输入；Token 额度未知。"
+          "note": "kimi-for-coding 当前路由至 K2.8 Preview；最高 1M 上下文，支持图片和视频输入；Token 额度未知。 当前该模型享额度消耗五折，活动起止日期未公布；绝对 Token 额度仍未知。"
         }
       ]
     },
@@ -5578,7 +5578,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "kimi-for-coding 当前路由至 K2.8 Preview；最高 1M 上下文，支持图片和视频输入；Token 额度未知。"
+          "note": "kimi-for-coding 当前路由至 K2.8 Preview；最高 1M 上下文，支持图片和视频输入；Token 额度未知。 当前该模型享额度消耗五折，活动起止日期未公布；绝对 Token 额度仍未知。"
         },
         {
           "slug": "kimi-allegretto--kimi-k2-7-code-highspeed",
@@ -5691,7 +5691,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "kimi-for-coding 当前路由至 K2.8 Preview；最高 1M 上下文，支持图片和视频输入；Token 额度未知。"
+          "note": "kimi-for-coding 当前路由至 K2.8 Preview；最高 1M 上下文，支持图片和视频输入；Token 额度未知。 当前该模型享额度消耗五折，活动起止日期未公布；绝对 Token 额度仍未知。"
         },
         {
           "slug": "kimi-allegro--kimi-k2-7-code-highspeed",
@@ -5734,7 +5734,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "kimi-for-coding 当前路由至 K2.8 Preview；最高 1M 上下文，支持图片和视频输入；Token 额度未知。"
+          "note": "kimi-for-coding 当前路由至 K2.8 Preview；最高 1M 上下文，支持图片和视频输入；Token 额度未知。 当前该模型享额度消耗五折，活动起止日期未公布；绝对 Token 额度仍未知。"
         }
       ]
     },
@@ -5801,19 +5801,19 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 1.9841483941,
+            "fiveHourTokenInM": 3.9682967883,
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 49.6,
-            "unitPriceCnyPerM": 1.9958
+            "monthlyTokenInM": 99.2,
+            "unitPriceCnyPerM": 0.9979
           },
           "pricing": {
             "currency": null,
-            "inputPerM": 600000.0,
-            "cachePerM": 3000.0,
-            "outputPerM": 5625000.0,
+            "inputPerM": 300000.0,
+            "cachePerM": 1500.0,
+            "outputPerM": 2812500.0,
             "unit": "Token"
           },
-          "note": "抵扣单价：输入 0.60 Token/Token、缓存读取 0.003000 Token/Token、输出 5.63 Token/Token；套餐共享额度：5小时 120,658 Token、每周 不限量、每月 3,016,439 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；kimi-for-coding 对应 K2.8 Preview，最高 1M 上下文，支持图片和视频。输入／输出／缓存消耗暂按 K3 的 3/5、3/4、1/2 估算。"
+          "note": "抵扣单价：输入 0.30 Token/Token、缓存读取 0.001500 Token/Token、输出 2.81 Token/Token；套餐共享额度：5小时 120,658 Token、每周 不限量、每月 3,016,439 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；kimi-for-coding 对应 K2.8 Preview，最高 1M 上下文，支持图片和视频。当前参考用量与综合单价已包含额度消耗五折；输入／输出／缓存消耗暂按 K3 的 3/10、3/8、1/4 估算，非官方固定 Token 配额。活动起止日期未公布。"
         },
         {
           "slug": "kimi-plus-2026--kimi-k3",
@@ -5913,19 +5913,19 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 9.9207419707,
+            "fiveHourTokenInM": 19.8414839415,
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 248.0,
-            "unitPriceCnyPerM": 0.8024
+            "monthlyTokenInM": 496.0,
+            "unitPriceCnyPerM": 0.4012
           },
           "pricing": {
             "currency": null,
-            "inputPerM": 600000.0,
-            "cachePerM": 3000.0,
-            "outputPerM": 5625000.0,
+            "inputPerM": 300000.0,
+            "cachePerM": 1500.0,
+            "outputPerM": 2812500.0,
             "unit": "Token"
           },
-          "note": "抵扣单价：输入 0.60 Token/Token、缓存读取 0.003000 Token/Token、输出 5.63 Token/Token；套餐共享额度：5小时 603,288 Token、每周 不限量、每月 15,082,194 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；kimi-for-coding 对应 K2.8 Preview，最高 1M 上下文，支持图片和视频。输入／输出／缓存消耗暂按 K3 的 3/5、3/4、1/2 估算。"
+          "note": "抵扣单价：输入 0.30 Token/Token、缓存读取 0.001500 Token/Token、输出 2.81 Token/Token；套餐共享额度：5小时 603,288 Token、每周 不限量、每月 15,082,194 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；kimi-for-coding 对应 K2.8 Preview，最高 1M 上下文，支持图片和视频。当前参考用量与综合单价已包含额度消耗五折；输入／输出／缓存消耗暂按 K3 的 3/10、3/8、1/4 估算，非官方固定 Token 配额。活动起止日期未公布。"
         },
         {
           "slug": "kimi-pro-2026--kimi-k3",
@@ -5979,7 +5979,7 @@
             "unitPriceCnyPerM": 2.4071
           },
           "pricing": null,
-          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；K2.7 Code HighSpeed，256K 上下文。输入／输出／缓存消耗暂按 K2.8 Preview 的 3 倍估算；此跨版本比例不是官方公布的倍率。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；K2.7 Code HighSpeed，256K 上下文。该模型不适用 K2.8 Preview 五折优惠，参考用量沿用原估算；输入／输出／缓存消耗暂按活动期 K2.8 Preview 的 6 倍估算，此跨版本比例不是官方公布的倍率。"
         }
       ]
     },
@@ -6041,19 +6041,19 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 31.7463743063,
+            "fiveHourTokenInM": 63.4927486127,
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 793.7,
-            "unitPriceCnyPerM": 0.8807
+            "monthlyTokenInM": 1587.3,
+            "unitPriceCnyPerM": 0.4404
           },
           "pricing": {
             "currency": null,
-            "inputPerM": 600000.0,
-            "cachePerM": 3000.0,
-            "outputPerM": 5625000.0,
+            "inputPerM": 300000.0,
+            "cachePerM": 1500.0,
+            "outputPerM": 2812500.0,
             "unit": "Token"
           },
-          "note": "抵扣单价：输入 0.60 Token/Token、缓存读取 0.003000 Token/Token、输出 5.63 Token/Token；套餐共享额度：5小时 1,930,521 Token、每周 不限量、每月 48,263,021 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；kimi-for-coding 对应 K2.8 Preview，最高 1M 上下文，支持图片和视频。输入／输出／缓存消耗暂按 K3 的 3/5、3/4、1/2 估算。"
+          "note": "抵扣单价：输入 0.30 Token/Token、缓存读取 0.001500 Token/Token、输出 2.81 Token/Token；套餐共享额度：5小时 1,930,521 Token、每周 不限量、每月 48,263,021 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；kimi-for-coding 对应 K2.8 Preview，最高 1M 上下文，支持图片和视频。当前参考用量与综合单价已包含额度消耗五折；输入／输出／缓存消耗暂按 K3 的 3/10、3/8、1/4 估算，非官方固定 Token 配额。活动起止日期未公布。"
         },
         {
           "slug": "kimi-max-2026--kimi-k3",
@@ -6107,7 +6107,7 @@
             "unitPriceCnyPerM": 2.6422
           },
           "pricing": null,
-          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；K2.7 Code HighSpeed，256K 上下文。输入／输出／缓存消耗暂按 K2.8 Preview 的 3 倍估算；此跨版本比例不是官方公布的倍率。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；K2.7 Code HighSpeed，256K 上下文。该模型不适用 K2.8 Preview 五折优惠，参考用量沿用原估算；输入／输出／缓存消耗暂按活动期 K2.8 Preview 的 6 倍估算，此跨版本比例不是官方公布的倍率。"
         }
       ]
     },
@@ -6169,19 +6169,19 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 63.4927486127,
+            "fiveHourTokenInM": 126.9854972253,
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 1587.3,
-            "unitPriceCnyPerM": 0.8814
+            "monthlyTokenInM": 3174.6,
+            "unitPriceCnyPerM": 0.4407
           },
           "pricing": {
             "currency": null,
-            "inputPerM": 600000.0,
-            "cachePerM": 3000.0,
-            "outputPerM": 5625000.0,
+            "inputPerM": 300000.0,
+            "cachePerM": 1500.0,
+            "outputPerM": 2812500.0,
             "unit": "Token"
           },
-          "note": "抵扣单价：输入 0.60 Token/Token、缓存读取 0.003000 Token/Token、输出 5.63 Token/Token；套餐共享额度：5小时 3,861,042 Token、每周 不限量、每月 96,526,042 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；kimi-for-coding 对应 K2.8 Preview，最高 1M 上下文，支持图片和视频。输入／输出／缓存消耗暂按 K3 的 3/5、3/4、1/2 估算。"
+          "note": "抵扣单价：输入 0.30 Token/Token、缓存读取 0.001500 Token/Token、输出 2.81 Token/Token；套餐共享额度：5小时 3,861,042 Token、每周 不限量、每月 96,526,042 Token；Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；kimi-for-coding 对应 K2.8 Preview，最高 1M 上下文，支持图片和视频。当前参考用量与综合单价已包含额度消耗五折；输入／输出／缓存消耗暂按 K3 的 3/10、3/8、1/4 估算，非官方固定 Token 配额。活动起止日期未公布。"
         },
         {
           "slug": "kimi-ultra-2026--kimi-k3",
@@ -6235,7 +6235,7 @@
             "unitPriceCnyPerM": 2.6441
           },
           "pricing": null,
-          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；K2.7 Code HighSpeed，256K 上下文。输入／输出／缓存消耗暂按 K2.8 Preview 的 3 倍估算；此跨版本比例不是官方公布的倍率。"
+          "note": "Token 用量为估算，随缓存命中率和输出占比变化；月额度暂按五小时额度的 25 倍。抵扣数量以 K3 未缓存输入等价 Token 表示，并非官方公布的固定 Token 配额。各模型与其他会员功能共享额度，不能相加。；K2.7 Code HighSpeed，256K 上下文。该模型不适用 K2.8 Preview 五折优惠，参考用量沿用原估算；输入／输出／缓存消耗暂按活动期 K2.8 Preview 的 6 倍估算，此跨版本比例不是官方公布的倍率。"
         }
       ]
     },
@@ -52043,5 +52043,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-10-30T09:54:07.179Z"
+  "contentVersion": "2026-10-31T08:22:57.682Z"
 }

@@ -2199,7 +2199,90 @@
       "relatedChanges": [
         "ark-minimax-m3-retirement-announced"
       ]
+    },
+    {
+      "slug": "kimi-code-k28-half-quota-end",
+      "title": "Kimi Code K2.8 Preview 五折活动结束后恢复消耗",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "unknown",
+        "description": "官方尚未公布活动截止日期；确认结束后的实际规则后再更新，不按日期自动恢复。"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "K2.8 Preview 额度消耗",
+          "before": "当前额度消耗五折；Plus／Pro／Max／Ultra 参考用量与综合单价已包含优惠，旧套餐绝对 Token 额度仍未知",
+          "after": "活动结束后按届时常规规则消耗；不再享受五折，实际系数以官方公告和账号用量为准"
+        }
+      ],
+      "audience": "拥有 Kimi Code K2.8 Preview 使用权限的订阅用户；仅涉及该模型，不包含 K2.7 Code HighSpeed。",
+      "summary": "K2.8 Preview 当前额度消耗五折，截止日期未公布；新套餐参考用量与综合单价已包含优惠。活动结束后按届时常规规则消耗，其他模型规则不变。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "kimi",
+          "planSlug": "kimi-moderato",
+          "planModelSlug": "kimi-moderato--kimi-k2-8-preview",
+          "label": "Kimi · Moderato（老套餐） · Kimi-K2.8-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "kimi",
+          "planSlug": "kimi-allegretto",
+          "planModelSlug": "kimi-allegretto--kimi-k2-8-preview",
+          "label": "Kimi · Allegretto（老套餐） · Kimi-K2.8-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "kimi",
+          "planSlug": "kimi-allegro",
+          "planModelSlug": "kimi-allegro--kimi-k2-8-preview",
+          "label": "Kimi · Allegro（老套餐） · Kimi-K2.8-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "kimi",
+          "planSlug": "kimi-coding-plan-andante",
+          "planModelSlug": "kimi-coding-plan-andante--kimi-k2-8-preview",
+          "label": "Kimi · Andante（老套餐） · Kimi-K2.8-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "kimi",
+          "planSlug": "kimi-plus-2026",
+          "planModelSlug": "kimi-plus-2026--kimi-k2-8-preview",
+          "label": "Kimi · Plus · Kimi-K2.8-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "kimi",
+          "planSlug": "kimi-pro-2026",
+          "planModelSlug": "kimi-pro-2026--kimi-k2-8-preview",
+          "label": "Kimi · Pro · Kimi-K2.8-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "kimi",
+          "planSlug": "kimi-max-2026",
+          "planModelSlug": "kimi-max-2026--kimi-k2-8-preview",
+          "label": "Kimi · Max · Kimi-K2.8-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "kimi",
+          "planSlug": "kimi-ultra-2026",
+          "planModelSlug": "kimi-ultra-2026--kimi-k2-8-preview",
+          "label": "Kimi · Ultra · Kimi-K2.8-Preview"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.kimi.com/code"
+        }
+      ],
+      "relatedChanges": []
     }
   ],
-  "contentVersion": "2026-10-30T09:54:30.449Z"
+  "contentVersion": "2026-10-31T08:22:59.582Z"
 }

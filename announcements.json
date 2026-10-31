@@ -22,7 +22,7 @@
     {
       "slug": "kimi-code-k28-preview-half-quota",
       "title": "Kimi Code 订阅用户：K2.8 Preview 额度消耗限时五折",
-      "body": "**Kimi Code 订阅用户**使用 **K2.8 Preview** 模型，额度消耗限时 **5 折**，即相同用量消耗的额度减少 50%。\n\n- 优惠针对该模型的额度消耗，不是订阅售价五折，也不代表其他模型享受同样优惠。\n- 需要所订套餐具有该模型的使用权限；套餐额度和使用限制仍适用。\n\n活动开始日期和截止日期尚未公布，具体适用情况以 Kimi Code 活动页面和账号用量面板为准。",
+      "body": "**Kimi Code 订阅用户**使用 **K2.8 Preview** 模型，额度消耗限时 **5 折**，即相同用量消耗的额度减少 50%。\n\n- 优惠针对该模型的额度消耗，不是订阅售价五折，也不代表其他模型享受同样优惠。\n- 需要所订套餐具有该模型的使用权限；套餐额度和使用限制仍适用。\n\n活动开始日期和截止日期尚未公布，具体适用情况以 Kimi Code 活动页面和账号用量面板为准。\n\n本站 Plus／Pro／Max／Ultra 的 K2.8 Preview 参考用量与综合单价已包含此次五折优惠，仍为估算；旧套餐未量化的 Token 额度继续保持未知。",
       "visible": true,
       "ended": false,
       "url": "https://www.kimi.com/code"
@@ -146,5 +146,5 @@
       "url": "https://opencode.ai/v2/docs/console/models/"
     }
   ],
-  "contentVersion": "2026-10-31T07:41:13.599Z"
+  "contentVersion": "2026-10-31T08:23:01.830Z"
 }

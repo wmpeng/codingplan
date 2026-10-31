@@ -2,7 +2,7 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.10.30 | Codex Pro 三档额度翻倍
+> 更新日期 2026.10.31 | Kimi K2.8 参考用量已含五折
 
 当前展示 **42 个平台、143 个在售订阅套餐、2 个按量 API、166 个模型和 2434 条套餐模型关系**。
 
@@ -192,11 +192,11 @@
 
 | 平台 / 套餐 | 档位 | 计费 | 5小时 | 每周 | 每月 | 综合单价 |
 |---|---|---|---:|---:|---:|---:|
+| [Kimi · Pro](https://api.dreamfree.space/c/s/cpyqkimi) | - | ¥199/首月 | 19.84M | 496M | 496M | ¥0.4012/M |
+| [Kimi · Max](https://api.dreamfree.space/c/s/cpyqkimi) | - | ¥699/首月 | 63.49M | 1,587.3M | 1,587.3M | ¥0.4404/M |
+| [Kimi · Ultra](https://api.dreamfree.space/c/s/cpyqkimi) | - | ¥1,399/首月 | 126.99M | 3,174.6M | 3,174.6M | ¥0.4407/M |
 | [字节·方舟 Coding Plan · Lite](https://api.dreamfree.space/c/s/cpyqfangzhou) | - | ¥9.9/首月 | 4.17M | 31.25M | 62.5M | ¥0.64/M |
 | [字节·方舟 Coding Plan · Pro](https://api.dreamfree.space/c/s/cpyqfangzhou) | - | ¥49.9/首月 | 20.83M | 156.25M | 312.5M | ¥0.64/M |
-| [Kimi · Pro](https://api.dreamfree.space/c/s/cpyqkimi) | - | ¥199/首月 | 9.92M | 248M | 248M | ¥0.8024/M |
-| [Kimi · Max](https://api.dreamfree.space/c/s/cpyqkimi) | - | ¥699/首月 | 31.75M | 793.7M | 793.7M | ¥0.8807/M |
-| [Kimi · Ultra](https://api.dreamfree.space/c/s/cpyqkimi) | - | ¥1,399/首月 | 63.49M | 1,587.3M | 1,587.3M | ¥0.8814/M |
 | [字节·方舟 Agent Plan · Small](https://api.dreamfree.space/c/s/cpyqfangzhout) | - | ¥9.9/首月 | 4.17M | 14.58M | 41.7M | ¥0.96/M |
 | [字节·方舟 Agent Plan · Medium](https://api.dreamfree.space/c/s/cpyqfangzhout) | - | ¥49.9/首月 | 20.83M | 72.92M | 208.3M | ¥0.96/M |
 | [字节·方舟 Agent Plan · Large](https://api.dreamfree.space/c/s/cpyqfangzhout) | - | ¥500/首月 | 52.08M | 182.29M | 520.8M | ¥0.96/M |
@@ -328,6 +328,10 @@
 
 ## 最近更新
 
+### 2026.10.31
+
+- Kimi Code Plus／Pro／Max／Ultra 的 K2.8 Preview 参考用量已包含当前额度消耗五折，综合单价同步更新；活动起止日期未公布，Token 数仍为估算。K2.7 HighSpeed 与其他型号参考用量不变，旧套餐 K2.8 绝对额度仍未知。
+
 ### 2026.10.30
 
 - 根据 Codex 用量翻倍公告，上调 Pro $100/$200/$500 的参考 Token 额度及相关速度档用量，综合单价同步重算；Plus 额度保持不变，Free、Go 仍待确认。绝对 Token 数为估算，非官方固定配额。
@@ -373,13 +377,6 @@
 - 更新 Claude 各套餐的条件额度估算：以 Opus 5.5 为基准，按模型与分窗口倍率计算；Haiku 5.5、Fable 5 等关系包含外推假设，均非官方固定 Token 配额。
 - Claude 额度估算区分普通输入、缓存写入、缓存读取和输出；未命中输入暂按全部写缓存估算，其他平台口径保持不变。
 - 补充 Kimi Plus、Pro、Max、Ultra 的 Code 额度估算：按模型、缓存命中率和输出占比换算；Code 暂估比例与官网 Agent 额度比例不同。
-
-### 2026.10.21
-
-- 补充MiniMax M Plan正式M3.1 Flash的五小时、周和四周估算用量：按社区样本及加权扣减假设计算，非官方固定Token配额。
-- MiniMax Code订阅用户可在客户端内不限量使用M3.1 Flash至10月25日；外部工具API未获不限量承诺。
-- MiniMax Code内新订阅或升级M Plan首月五折活动截至10月31日：Go / Explore / Build首月24.5 / 59.5 / 234.5元，次月起49 / 119 / 469元每月。
-- 调整 Codex 参考额度估算：Plus、Pro $200、Pro $500 分别按 Pro $100 的 1/5、2 倍、5 倍换算；补齐 Fast / Ultrafast 参考额度，均非官方固定 Token 配额。
 
 ## 延伸阅读
 

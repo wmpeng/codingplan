@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.10.30 | Codex Pro 三档额度翻倍",
+    "updateDate": "更新日期 2026.10.31 | Kimi K2.8 参考用量已含五折",
     "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Cursor、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.1-Sol / Terra、Claude 5.5系列、MiniMax-M3.1-Flash、Kimi-K3.1-Pro、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3与Qwen-3.8等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
@@ -124,6 +124,12 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.10.31",
+      "items": [
+        "Kimi Code Plus／Pro／Max／Ultra 的 K2.8 Preview 参考用量已包含当前额度消耗五折，综合单价同步更新；活动起止日期未公布，Token 数仍为估算。K2.7 HighSpeed 与其他型号参考用量不变，旧套餐 K2.8 绝对额度仍未知。"
+      ]
+    },
     {
       "date": "2026.10.30",
       "items": [
@@ -560,5 +566,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-10-30T08:04:07.206Z"
+  "contentVersion": "2026-10-31T08:23:02.042Z"
 }
