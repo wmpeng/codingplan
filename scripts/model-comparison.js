@@ -673,8 +673,9 @@
         const heading = colorMode === 'model'
             ? `<strong>${modelLine}</strong><div>${platformLine}</div>`
             : `<strong>${platformLine}</strong><div>${modelLine}</div>`;
-        return `<div class="usage-tooltip">${heading}${status}<div>${modality}</div>${fee}${apiPricing}${basis}` +
+        return `<div class="usage-tooltip">${heading}` +
             `<div>单位价格：${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)} Token</div>` +
+            `${status}<div>${modality}</div>${fee}${apiPricing}${basis}` +
             `<div>${scoreText(point, benchmark)}</div></div>`;
     }
 
