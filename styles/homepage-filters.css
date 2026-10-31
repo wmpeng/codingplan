@@ -376,9 +376,13 @@ body :is(.pricing-mainland-filter, .platform-access-filter) .toggle-switch:has(i
   #toolFilters :is(.usage-color-control, .usage-benchmark-control) .usage-segments button { min-height: 34px; }
 }
 #toolFilters .usage-benchmark-control .usage-segments { grid-template-columns: repeat(4, auto); }
+#toolFilters .usage-benchmark-control > span { white-space: nowrap; }
 #toolFilters .usage-benchmark-control .usage-segments button { padding-inline: 8px; }
 @media (max-width: 800px), (pointer: coarse) {
   #toolFilters .usage-benchmark-control .usage-segments button { min-height: 44px; padding-inline: 6px; }
+}
+@media (max-width: 360px) {
+  #toolFilters .usage-benchmark-control .usage-segments button { padding-inline: 2px; }
 }
 body.tool-unified-active .filter-state-actions > button { flex: none; white-space: nowrap; }
 .tool-unified-active .filter-state-hint { margin-top: 8px; min-height: 32px; display: flex; align-items: center; }
