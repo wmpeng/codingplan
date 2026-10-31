@@ -523,7 +523,7 @@
             `<td class="sticky-first" data-comparison-col="vendor">${identity}</td>` +
             (compact ? '' : `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}<div class="plan-capabilities">${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></td>`) +
             `<td class="numeric">${price}${notice('price')}</td>` +
-            `<td class="usage-table-model">${point.modelSlug ? `<a class="price-chart-model-link" href="/models/?q=${encodeURIComponent(point.modelSlug)}">${escapeHtml(point.relationLabel || point.modelName)}</a>` : escapeHtml(point.relationLabel || point.modelName)}${visualOptions?.chartSelectable ? `<button type="button" class="price-chart-model-button" data-chart-select="${escapeHtml(point.slug)}" aria-label="在图中定位 ${escapeHtml(point.relationLabel || point.modelName)}">在图中定位 ↑</button>` : ''}${notice('models')}</td>` +
+            `<td class="usage-table-model">${point.modelSlug ? `<a class="price-chart-model-link" href="/models/?q=${encodeURIComponent(point.modelSlug)}">${escapeHtml(point.relationLabel || point.modelName)}</a>` : escapeHtml(point.relationLabel || point.modelName)}${notice('models')}</td>` +
             (compact ? `<td class="numeric" data-comparison-col="tokenConsumptionRate" title="${escapeHtml(point.tokenConsumptionEstimated ? '按参考模型的输出消耗倍率估算' : aaScore?.configuration || '')}">${finiteNonnegative(point.tokenConsumptionRate) === null ? '—' : '×' + Numbers.amount(point.tokenConsumptionRate) + (point.tokenConsumptionEstimated ? '（估算）' : '')}</td>` : '') +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
             `<td class="usage-table-price-visual">${unitPriceVisualHtml(point, tokenUnit, visualOptions)}</td>` +
@@ -1078,7 +1078,6 @@
                 if (Directory) Url.replace(urlSchema, {query:search.value, ...sort, benchmark:state.benchmark, allScores:state.allScores, chartBilling:state.chartBilling});
                 let sorted = Directory ? Directory.tableRows(rows, points, pins, sortComparisonRows, sort) : sortComparisonRows(rows, sort.key, sort.direction);
                 const scale = buildUnitPriceVisualScale(sorted);
-                const chartSlugs = new Set(latestPriceGroups.flatMap(group => group.members.map(point => point.slug)));
                 let renderKey = '';
                 if (Directory) {
                     const nextSelectionKey=JSON.stringify([sorted.map(point=>point.slug),priceBasis,pins,sort]);
@@ -1090,7 +1089,7 @@
                         pager.querySelector('[data-price-page-label]').textContent=`${pageIndex+1} / ${pagination.pages} 页`;
                         pager.querySelectorAll('[data-price-page]').forEach(button=>button.disabled=button.dataset.pricePage==='next'?pageIndex>=pagination.pages-1:pageIndex===0);
                     });
-                    renderKey = JSON.stringify([nextSelectionKey,pageIndex,state.tokenUnit,state.colorMode,state.benchmark,state.allScores,sorted.map(point=>chartSlugs.has(point.slug))]);
+                    renderKey = JSON.stringify([nextSelectionKey,pageIndex,state.tokenUnit,state.colorMode,state.benchmark,state.allScores]);
                     const label = `${rows.length} / ${points.length} 条明细${pins.length ? ' · 置顶 '+pins.length+' 条' : ''}`;
                     mountOptions.count.textContent = label;
                     root.CodingPlanEvents?.results({result_count:rows.length,result_key:JSON.stringify(rows.map(x=>x.slug))});
@@ -1110,7 +1109,6 @@
                         changes:context.changes, noticeSeen,
                         focused: focusRelationSlugs.has(point.slug),
                         compactIdentity:Boolean(Directory), pinned:pins.includes(point.slug),
-                        chartSelectable:chartSlugs.has(point.slug),
                         color: colors[getPointColorKey(point, state.colorMode)]
                     })).join('')
                     : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length - 1}">当前筛选下没有可展示的数据；请在上方下拉框调整条件，或点击“显示全部”。</td></tr>`;
@@ -1371,13 +1369,6 @@
                     } else {
                         container.querySelector('[data-action="restore-defaults"]').click();
                     }
-                    return;
-                }
-                const selectPoint = event.target.closest('[data-chart-select]');
-                if (selectPoint) {
-                    state.selectedChartSlug = selectPoint.dataset.chartSelect; render();
-                    const detail = container.querySelector('[data-chart-detail]');
-                    detail.tabIndex=-1; detail.focus({preventScroll:true}); detail.scrollIntoView({block:'center',behavior:'smooth'});
                     return;
                 }
                 const billingButton = event.target.closest('[data-chart-billing]');

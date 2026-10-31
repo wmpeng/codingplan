@@ -332,7 +332,6 @@
 .price-chart-method a { color:var(--accent-primary); text-underline-offset:3px; }
 .price-chart-overlap { margin-top:8px; padding-top:7px; border-top:1px solid var(--border-light); color:var(--text-secondary); font-size:11px; }
 .price-chart-model-link { color:inherit; text-decoration:underline; text-decoration-color:#aab8ca; text-underline-offset:3px; }
-.price-chart-model-button { display:block; margin-top:4px; padding:4px 0; border:0; background:none; color:var(--accent-primary); font:inherit; font-size:11px; text-align:left; cursor:pointer; }
 .price-billing-filter { display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px; color:var(--text-secondary); font-size:13px; }
 .price-billing-filter .usage-segments button { min-height:36px; }
 .usage-chart-card[hidden] { display:none; }
@@ -354,7 +353,7 @@
   .price-chart-identity { flex-basis:100%; }
   .price-chart-metric { flex:1; }
   .price-chart-actions { flex-basis:100%; }
-  .price-chart-actions button, .price-chart-export, .price-chart-members select, .price-chart-offer-note summary, .price-chart-model-button { min-height:44px; }
+  .price-chart-actions button, .price-chart-export, .price-chart-members select, .price-chart-offer-note summary { min-height:44px; }
 }
 @media(max-width:650px) {
   .usage-chart-controls { width:100%; }
