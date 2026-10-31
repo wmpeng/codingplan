@@ -854,10 +854,6 @@
                 if (!button || state.colorMode === button.dataset.colorMode) return;
                 state.colorMode = button.dataset.colorMode;
                 state.soloColorKey = null;
-                colorControl.querySelectorAll('[data-color-mode]').forEach(item => {
-                    item.classList.toggle('is-active', item === button);
-                    item.setAttribute('aria-pressed', String(item === button));
-                });
                 render();
             }
             colorControl.addEventListener('click', onColorModeClick);
@@ -893,6 +889,7 @@
                 query:Url.text('q'), key:Url.choice('sort', COMPARISON_TABLE_COLUMNS.filter(column => column.sortable !== false).map(column => column.key), 'unitPriceCnyPerM'),
                 direction:Url.choice('direction', ['asc','desc'], 'asc'),
                 benchmark:Url.choice('benchmark', Scores.keys, 'artificialAnalysis'),
+                colorMode:Url.choice('color', ['vendor','model'], 'vendor'),
                 chartBilling:Url.choice('chartBilling', ['all','subscription','payg'], 'all')
             };
             if (Directory) {
@@ -900,6 +897,7 @@
                 search.value = saved.query || '';
                 state.benchmark = saved.benchmark || (Scores.keys.includes(saved.key) ? saved.key : 'artificialAnalysis');
                 state.chartBilling = saved.chartBilling || 'all';
+                state.colorMode = saved.colorMode || 'vendor';
                 tableSortState.comparison = {key:saved.key || 'unitPriceCnyPerM', direction:saved.direction || 'asc'};
                 if (Scores.keys.includes(tableSortState.comparison.key)) tableSortState.comparison.key = state.benchmark;
             }
@@ -1096,7 +1094,7 @@
             function renderDataTable(tableName, rows) {
                 latestTableRows[tableName] = rows || [];
                 const sort = tableSortState[tableName];
-                if (Directory) Url.replace(urlSchema, {query:search.value, ...sort, benchmark:state.benchmark, chartBilling:state.chartBilling}, {remove:['allScores']});
+                if (Directory) Url.replace(urlSchema, {query:search.value, ...sort, benchmark:state.benchmark, colorMode:state.colorMode, chartBilling:state.chartBilling}, {remove:['allScores']});
                 let sorted = Directory ? Directory.tableRows(rows, points, pins, sortComparisonRows, sort) : sortComparisonRows(rows, sort.key, sort.direction);
                 const scale = buildUnitPriceVisualScale(sorted);
                 let renderKey = '';
@@ -1162,7 +1160,7 @@
                 directionButton.addEventListener('click', () => { const sort=tableSortState.comparison; sort.direction=sort.direction==='asc'?'desc':'asc'; renderDataTable('comparison',latestTableRows.comparison); });
                 search.addEventListener('input', () => { cancelAnimationFrame(renderFrame); renderFrame=requestAnimationFrame(render); });
                 document.getElementById('toolFilters').addEventListener('click', event => {
-                    if (event.target.closest('[data-filter-action]')) { state.chartBilling='all'; state.selectedChartSlug=null; search.value=''; tableSortState.comparison={key:'unitPriceCnyPerM',direction:'asc'}; }
+                    if (event.target.closest('[data-filter-action="restore-defaults"]')) { state.benchmark='artificialAnalysis'; state.chartBilling='all'; state.selectedChartSlug=null; search.value=''; tableSortState.comparison={key:'unitPriceCnyPerM',direction:'asc'}; }
                 }, true);
                 root.addEventListener('storage', event => { if(event.key===Directory.pinKey || event.key===null){pins=Directory.readPins(root.localStorage,points);renderDataTable('comparison',latestTableRows.comparison);} });
             }
@@ -1189,6 +1187,11 @@
             }
 
             function render() {
+                colorControl.querySelectorAll('[data-color-mode]').forEach(button => {
+                    const active = button.dataset.colorMode === state.colorMode;
+                    button.classList.toggle('is-active', active);
+                    button.setAttribute('aria-pressed', String(active));
+                });
                 benchmarkControl.querySelectorAll('[data-benchmark]').forEach(button => {
                     button.classList.toggle('is-active',button.dataset.benchmark === state.benchmark);
                     button.setAttribute('aria-pressed',String(button.dataset.benchmark === state.benchmark));
@@ -1308,6 +1311,7 @@
                 // Business filters supersede the temporary legend restriction; display units do not.
                 if (!event || !event.detail || event.detail.source !== 'display') { state.soloColorKey = null; state.selectedChartSlug = null; }
                 if (event?.detail?.source === 'reset' || event?.detail?.source === 'preset') state.chartBilling = 'all';
+                if (event?.detail?.source === 'reset') state.benchmark = 'artificialAnalysis';
                 applyExternalFilter(event && event.detail && event.detail.state);
                 render();
             }
