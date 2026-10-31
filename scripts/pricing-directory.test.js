@@ -42,12 +42,12 @@ test('明细置顶去重并保留非匹配记录，只改变表格，未知排�
   assert.deepEqual(D.readPins({getItem:()=>'{bad'},points),[]);
 });
 
-test('已下架明细无开通链接，状态与首月口径进入提示，评分保留原分数', () => {
-  const point={slug:'retired',platformName:'平台',planName:'套餐',relationLabel:'模型',billingMode:'subscription',planStatus:'delisted',actionUrl:'https://example.com',unitPriceCnyPerM:1,unitPriceBasis:'firstMonth',firstMonthPrice:10,scores:{artificialAnalysis:{score:42}}};
+test('已下架明细无开通链接，提示展示状态和首月价格，评分保留原分数', () => {
+  const point={slug:'retired',platformName:'平台',planName:'套餐',relationLabel:'模型',billingMode:'subscription',planStatus:'delisted',actionUrl:'https://example.com',unitPriceCnyPerM:1,unitPriceBasis:'firstMonth',firstMonthPrice:10,monthlyFeeCny:10,scores:{artificialAnalysis:{score:42}}};
   const row=M.comparisonTableRowHtml(point,'M',{compactIdentity:true,pinned:true});
   assert.match(row,/已下架/);assert.doesNotMatch(row,/<a /);assert.match(row,/data-price-pin="retired"/);
   assert.match(row,/is-pinned/);assert.match(row,/>42\.0</);assert.equal((row.match(/<td\b/g)||[]).length,15);
-  const tooltip=M.tooltipHtml(point,'artificialAnalysis','vendor','M');assert.match(tooltip,/已下架/);assert.match(tooltip,/按首月价格计算/);
+  const tooltip=M.tooltipHtml(point,'artificialAnalysis','vendor','M');assert.match(tooltip,/已下架/);assert.match(tooltip,/首月价格：¥10 \/ 首月/);assert.equal((tooltip.match(/首月价格：/g)||[]).length,1);
 });
 
 test('分页只限制明细DOM，完整结果不丢失，置顶在每页保留且边界安全', () => {
