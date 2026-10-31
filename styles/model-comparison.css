@@ -142,6 +142,8 @@
 .usage-data-table .usage-table-empty { padding: 30px 14px; color: #7a8699; text-align: center; }
 .usage-tooltip { min-width: 190px; line-height: 1.65; color: #263449; }
 .usage-tooltip strong { display: block; margin-bottom: 3px; color: #111827; }
+.usage-tooltip-price { font-weight: 700; color: #182539; }
+.usage-tooltip-secondary { font-size: 11px; line-height: 21px; }
 .usage-load-error { width: 100%; padding: 34px; border: 1px solid #fecaca; border-radius: 14px; background: #fff7f7; color: #991b1b; text-align: center; }
 
 @media (max-width: 760px) {

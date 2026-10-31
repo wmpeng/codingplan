@@ -673,10 +673,12 @@
         const heading = colorMode === 'model'
             ? `<strong>${modelLine}</strong><div>${platformLine}</div>`
             : `<strong>${platformLine}</strong><div>${modelLine}</div>`;
+        const unitPrice = formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)
+            .replace(/^([^/]+?)(?= \/)/, '<b class="usage-tooltip-price">$1</b>');
         return `<div class="usage-tooltip">${heading}` +
-            `<div>单位价格：${formatUnitPrice(point.unitPriceCnyPerM, tokenUnit)} Token</div>` +
-            `${status}<div>${modality}</div>${fee}${apiPricing}${basis}` +
-            `<div>${scoreText(point, benchmark)}</div></div>`;
+            `<div>单位价格：${unitPrice} Token</div>` +
+            `<div class="usage-tooltip-secondary">${status}<div>${modality}</div>${fee}${apiPricing}${basis}` +
+            `<div>${scoreText(point, benchmark)}</div></div></div>`;
     }
 
     function loadEcharts() {
