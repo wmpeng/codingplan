@@ -133,7 +133,7 @@
 .usage-table-price-visual { min-width: 210px; width: 210px; }
 .usage-price-bar { display: flex; align-items: center; width: 180px; min-height: 20px; }
 .usage-price-bar-track { position: relative; display: block; width: 100%; height: 10px; overflow: hidden; border: 1px solid #dce4ee; border-radius: 999px; background: repeating-linear-gradient(90deg, #f1f5f9 0, #f1f5f9 calc(25% - 1px), #dbe4ee 25%); box-shadow: inset 0 1px 2px rgba(15, 23, 42, .04); }
-.usage-price-bar-fill { position: absolute; inset: 0 auto 0 0; width: max(4px, var(--usage-price-bar-width)); border-radius: inherit; background: var(--usage-price-bar-color); box-shadow: 0 0 0 1px rgba(255, 255, 255, .22) inset; opacity: .82; transition: width .2s ease, opacity .15s ease; }
+.usage-price-bar-fill { position: absolute; inset: 0 auto 0 0; width: var(--usage-price-bar-width); overflow: hidden; border-radius: inherit; background: var(--usage-price-bar-color); box-shadow: 0 0 0 1px rgba(255, 255, 255, .22) inset; opacity: .82; transition: width .2s ease, opacity .15s ease; }
 .usage-price-bar-fill::after { content: ''; position: absolute; top: 50%; right: 2px; width: 3px; height: 3px; border-radius: 50%; background: rgba(255, 255, 255, .9); transform: translateY(-50%); }
 .usage-data-table tbody tr:hover .usage-price-bar-fill { opacity: 1; }
 .usage-price-bar-empty { display: inline-block; width: 180px; color: #9aa5b5; text-align: center; }
@@ -271,9 +271,6 @@
 .usage-chart-controls [aria-label="评分指标"] { display:flex; flex-wrap:wrap; }
 
 /* Model ability / price explorer. Names and billing tiers remain complete. */
-.price-chart-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:12px; padding:14px 0; border-bottom:1px solid var(--border-light); }
-.price-chart-toolbar .usage-segments { flex-wrap:wrap; }
-.price-chart-toolbar .usage-scale-control { margin-left:auto; }
 .price-intelligence-card .tool-legend { margin:14px 0 8px; }
 .price-intelligence-card .usage-color-legend { padding:0; }
 .price-intelligence-card .usage-chart { height:430px; }
@@ -314,9 +311,6 @@
   .price-intelligence-card .usage-chart { height:340px; }
   .price-intelligence-card .usage-chart-head { display:flex; gap:12px; }
   .pricing-directory .price-intelligence-card .usage-chart-head > div:first-child { flex:1 1 180px; }
-  .price-chart-toolbar { gap:9px; }
-  .price-chart-toolbar .usage-scale-control { margin-left:0; }
-  .price-chart-toolbar .usage-segments button { min-height:44px; padding:6px 9px; font-size:12px; }
   .price-chart-detail { padding:12px; }
   .price-chart-selection { gap:12px; }
   .price-chart-identity { flex-basis:100%; }

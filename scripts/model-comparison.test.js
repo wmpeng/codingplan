@@ -117,7 +117,7 @@ test('chart builders exclude invalid coordinates and benchmark gaps', () => {
 
 test('inline unit price bars share a logarithmic scale without inventing unknown values', () => {
   const scale = buildUnitPriceVisualScale([...points, { unitPriceCnyPerM: 'unknown' }]);
-  assert.deepEqual(scale, { min: 0.2, max: 1.2 });
+  assert.deepEqual(scale, { min: 0.2, max: 1.2, type: 'log' });
   assert.equal(getUnitPriceVisualPercent(0, scale), 0);
   assert.equal(getUnitPriceVisualPercent(0, { min: null, max: null }), 0);
   assert.equal(getUnitPriceVisualPercent(1.2, scale), 100);
@@ -130,6 +130,20 @@ test('inline unit price bars share a logarithmic scale without inventing unknown
   assert.match(html, /--usage-price-bar-color:#2563eb/);
   assert.match(html, /综合单价 ¥20 \/ 亿 Token/);
   assert.equal(unitPriceVisualHtml({ unitPriceCnyPerM: 'unknown' }, 'M', { scale }), '<span class="usage-price-bar-empty">—</span>');
+});
+
+test('linear price bars preserve price ratios, zero and unknown values', () => {
+  const scale = buildUnitPriceVisualScale([{unitPriceCnyPerM:2},{unitPriceCnyPerM:10},{unitPriceCnyPerM:0},{unitPriceCnyPerM:null}], 'value');
+  assert.equal(getUnitPriceVisualPercent(2, scale), 20);
+  assert.equal(getUnitPriceVisualPercent(5, scale), 50);
+  assert.equal(getUnitPriceVisualPercent(10, scale), 100);
+  assert.equal(getUnitPriceVisualPercent(20, scale), 100);
+  assert.equal(getUnitPriceVisualPercent(0, scale), 0);
+  assert.equal(getUnitPriceVisualPercent(null, scale), null);
+  assert.equal(getUnitPriceVisualPercent(-1, scale), null);
+  assert.equal(getUnitPriceVisualPercent(2, buildUnitPriceVisualScale([], 'value')), null);
+  assert.match(unitPriceVisualHtml({unitPriceCnyPerM:2}, 'M', {scale}), /线性尺度/);
+  assert.ok(getUnitPriceVisualPercent(2, buildUnitPriceVisualScale([{unitPriceCnyPerM:2},{unitPriceCnyPerM:10}])) > 20);
 });
 
 test('15 yuan per yi attractive zones keep the unit-price boundary consistent', () => {

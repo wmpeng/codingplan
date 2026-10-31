@@ -19,7 +19,7 @@
       const focusRelationSlugs = relation ? [relation] : (data.context.relationsByPlanSlug.get(plan?.slug) || []).map(row => row.slug);
       const filterState = document.getElementById('toolFilters').filterController.getState();
       await root.ModelComparison.mountModelComparisonView(host, { mode: 'full', hidePresets: true, data, preset, filterState, focusRelationSlugs,
-        directory:root.PricingDirectory, colorControlHost:document.querySelector('#toolFilters .filter-state-grid'), benchmarkControlHost:document.querySelector('#toolFilters .filter-state-grid'), billingControlHost:document.querySelector('#toolFilters .filter-state-grid'), search, count:results.querySelector('[data-pricing-result-count]') });
+        directory:root.PricingDirectory, colorControlHost:document.querySelector('#toolFilters .filter-state-grid'), benchmarkControlHost:document.querySelector('#toolFilters .filter-state-grid'), billingControlHost:document.querySelector('#toolFilters .filter-state-grid'), scaleControlHost:document.querySelector('#toolFilters .filter-state-grid'), search, count:results.querySelector('[data-pricing-result-count]') });
       const legend = host.querySelector('.usage-color-legend');
       const legendDetails = document.createElement('details'); legendDetails.className = 'tool-legend';
       legendDetails.open = !matchMedia('(max-width: 800px)').matches;
