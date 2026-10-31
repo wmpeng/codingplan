@@ -717,13 +717,13 @@
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>AA 最低分</span><input data-filter="aaScoreMin" aria-label="AA 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <label class="filter-btn usage-inline-filter usage-score-filter"><span>DeepSWE 最低分</span><input data-filter="deepSWEScoreMin" aria-label="DeepSWE 最低分" type="number" min="0" max="100" step="1" placeholder="不限"></label>
                     <div class="usage-color-control" aria-label="颜色区分方式"><span>颜色</span><div class="usage-segments" role="group" aria-label="颜色区分方式"><button type="button" data-color-mode="vendor" class="is-active" aria-pressed="true">按平台</button><button type="button" data-color-mode="model" aria-pressed="false">按模型</button></div></div>
+                    <div class="usage-benchmark-control"><div class="usage-segments" role="group" aria-label="评分指标">${Scores.keys.map((key,index) => `<button type="button" data-benchmark="${key}" class="${index === 0 ? 'is-active' : ''}" aria-pressed="${index === 0}">${BENCHMARKS[key].label}</button>`).join('')}</div></div>
                     ${compact ? '' : '<div class="filter-trailing"><button type="button" class="reset-btn" data-action="restore-defaults">恢复默认</button><div class="stats-bar usage-counts" data-counts aria-live="polite"></div></div>'}
                 </div>
                 <div class="price-billing-filter"><span>计费方式</span><div class="usage-segments" role="group" aria-label="计费方式"><button type="button" data-chart-billing="all" class="is-active" aria-pressed="true">全部</button><button type="button" data-chart-billing="subscription" aria-pressed="false">订阅</button><button type="button" data-chart-billing="payg" aria-pressed="false">按量 API</button></div></div>
                 <article class="usage-chart-card price-intelligence-card">
                     <div class="usage-chart-head"><div><h3>模型能力与价格</h3><p>越靠左，综合单价越低；越靠上，模型评分越高。</p></div><button type="button" class="tool-button price-chart-export" data-chart-export>保存图表 ↓</button></div>
                     <div class="price-chart-toolbar">
-                        <div class="usage-segments" role="group" aria-label="评分指标">${Scores.keys.map((key,index) => `<button type="button" data-benchmark="${key}" class="${index === 0 ? 'is-active' : ''}" aria-pressed="${index === 0}">${BENCHMARKS[key].label}</button>`).join('')}</div>
                         <div class="usage-scale-control"><span>价格轴</span><div class="usage-segments" data-scale="price" role="group" aria-label="价格轴"><button type="button" data-scale-value="log" class="is-active" aria-pressed="true">对数</button><button type="button" data-scale-value="value" aria-pressed="false">线性</button></div></div>
                     </div>
                     <div class="usage-color-legend"><div data-color-legend></div></div>
@@ -738,7 +738,7 @@
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="首月价格和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前条件下没有可绘制的首月价格与月额度。<button type="button" class="price-chart-clear" data-chart-reset>重置筛选</button></div></div>
                 </article>
                 <article class="usage-chart-card usage-data-card">
-                    <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3></div><div class="usage-detail-summary"><span class="usage-table-count" data-table-count="comparison"></span><label class="usage-score-columns-control"><input type="checkbox" role="switch" data-all-scores aria-controls="pricingComparisonTable"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.75" y="3.75" width="14.5" height="12.5" rx="1.5"/><path d="M7.5 4v12M12.5 4v12"/></svg><span class="usage-score-columns-text">显示全部评分</span><span class="usage-score-columns-switch" aria-hidden="true"></span></label></div></div>
+                    <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3></div><div class="usage-detail-summary"><span class="usage-table-count" data-table-count="comparison"></span></div></div>
                     <section class="usage-table-section" aria-label="价格与额度数据明细"><div class="usage-table-scroll"><table class="usage-data-table" id="pricingComparisonTable" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison', compact)}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
                 </article>
             </section>`;
@@ -840,7 +840,7 @@
             const focusRelationSlugs = new Set(mountOptions.focusRelationSlugs || []);
             container.classList.toggle('is-full-tool', mountOptions.mode === 'full');
             const state = Object.assign(createDefaultFilterState(points, mountOptions), {
-                allScores:false, benchmark: 'artificialAnalysis', colorMode: 'vendor',
+                benchmark: 'artificialAnalysis', colorMode: 'vendor',
                 tokensScale: 'log', priceScale: 'log', presetPlatformScope: 'featured',
                 chartBilling: 'all', selectedChartSlug: null,
                 tokenUnit: root.CodingPlanDisplaySettings?.getTokenUnit() || 'yi'
@@ -859,6 +859,16 @@
                 render();
             }
             colorControl.addEventListener('click', onColorModeClick);
+            const benchmarkControl = container.querySelector('.usage-benchmark-control');
+            if (mountOptions.benchmarkControlHost) mountOptions.benchmarkControlHost.append(benchmarkControl);
+            function onBenchmarkClick(event) {
+                const button = event.target.closest('[data-benchmark]');
+                if (!button || state.benchmark === button.dataset.benchmark) return;
+                state.benchmark = button.dataset.benchmark;
+                if (Scores.keys.includes(tableSortState.comparison.key)) tableSortState.comparison.key = state.benchmark;
+                render();
+            }
+            benchmarkControl.addEventListener('click', onBenchmarkClick);
             const usageChart = echarts.init(container.querySelector('[data-chart="usage"]'));
             const intelligenceChart = echarts.init(container.querySelector('[data-chart="intelligence"]'));
             enableClickPinnedTooltip(usageChart);
@@ -871,17 +881,16 @@
             const urlSchema = Directory && {
                 query:Url.text('q'), key:Url.choice('sort', COMPARISON_TABLE_COLUMNS.filter(column => column.sortable !== false).map(column => column.key), 'unitPriceCnyPerM'),
                 direction:Url.choice('direction', ['asc','desc'], 'asc'),
-                benchmark:Url.choice('benchmark', Scores.keys, 'artificialAnalysis'), allScores:Url.flag('allScores'),
+                benchmark:Url.choice('benchmark', Scores.keys, 'artificialAnalysis'),
                 chartBilling:Url.choice('chartBilling', ['all','subscription','payg'], 'all')
             };
             if (Directory) {
                 const saved = Url.read(urlSchema);
                 search.value = saved.query || '';
-                state.benchmark = saved.allScores !== true && Scores.keys.includes(saved.key)
-                    ? saved.key : saved.benchmark || 'artificialAnalysis';
-                state.allScores = saved.allScores === true;
+                state.benchmark = saved.benchmark || (Scores.keys.includes(saved.key) ? saved.key : 'artificialAnalysis');
                 state.chartBilling = saved.chartBilling || 'all';
                 tableSortState.comparison = {key:saved.key || 'unitPriceCnyPerM', direction:saved.direction || 'asc'};
+                if (Scores.keys.includes(tableSortState.comparison.key)) tableSortState.comparison.key = state.benchmark;
             }
             const latestTableRows = { comparison: [] };
             const priceBounds = getMonthlyPriceBounds(points);
@@ -1076,7 +1085,7 @@
             function renderDataTable(tableName, rows) {
                 latestTableRows[tableName] = rows || [];
                 const sort = tableSortState[tableName];
-                if (Directory) Url.replace(urlSchema, {query:search.value, ...sort, benchmark:state.benchmark, allScores:state.allScores, chartBilling:state.chartBilling});
+                if (Directory) Url.replace(urlSchema, {query:search.value, ...sort, benchmark:state.benchmark, chartBilling:state.chartBilling}, {remove:['allScores']});
                 let sorted = Directory ? Directory.tableRows(rows, points, pins, sortComparisonRows, sort) : sortComparisonRows(rows, sort.key, sort.direction);
                 const scale = buildUnitPriceVisualScale(sorted);
                 let renderKey = '';
@@ -1090,7 +1099,7 @@
                         pager.querySelector('[data-price-page-label]').textContent=`${pageIndex+1} / ${pagination.pages} 页`;
                         pager.querySelectorAll('[data-price-page]').forEach(button=>button.disabled=button.dataset.pricePage==='next'?pageIndex>=pagination.pages-1:pageIndex===0);
                     });
-                    renderKey = JSON.stringify([nextSelectionKey,pageIndex,state.tokenUnit,state.colorMode,state.benchmark,state.allScores]);
+                    renderKey = JSON.stringify([nextSelectionKey,pageIndex,state.tokenUnit,state.colorMode,state.benchmark]);
                     const label = `${rows.length} / ${points.length} 条明细${pins.length ? ' · 置顶 '+pins.length+' 条' : ''}`;
                     mountOptions.count.textContent = label;
                     root.CodingPlanEvents?.results({result_count:rows.length,result_key:JSON.stringify(rows.map(x=>x.slug))});
@@ -1115,7 +1124,7 @@
                     : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length - 1}">当前筛选下没有可展示的数据；请在上方下拉框调整条件，或点击“显示全部”。</td></tr>`;
                 container.querySelectorAll('[data-comparison-col]').forEach(cell => {
                     const key = cell.dataset.comparisonCol;
-                    cell.hidden = Scores.keys.includes(key) && !state.allScores && key !== state.benchmark;
+                    cell.hidden = Scores.keys.includes(key) && key !== state.benchmark;
                 });
                 if (!Directory) container.querySelector(`[data-table-count="${tableName}"]`).textContent = `${sorted.length} 条`;
                 container.querySelectorAll(`[data-table="${tableName}"] th[data-sort-key]`).forEach((header) => {
@@ -1169,11 +1178,10 @@
             }
 
             function render() {
-                container.querySelectorAll('[data-benchmark]').forEach(button => {
+                benchmarkControl.querySelectorAll('[data-benchmark]').forEach(button => {
                     button.classList.toggle('is-active',button.dataset.benchmark === state.benchmark);
                     button.setAttribute('aria-pressed',String(button.dataset.benchmark === state.benchmark));
                 });
-                container.querySelector('[data-all-scores]').checked = state.allScores;
                 const presetRenderKey = `${state.tokenUnit}:${state.presetPlatformScope}`;
                 if (renderedPresetKey !== presetRenderKey) {
                     if (!mountOptions.hidePresets) renderPresetComparisons(container.querySelector('[data-presets]'), presetConfig, points, state.tokenUnit, state.presetPlatformScope);
@@ -1273,11 +1281,6 @@
                     container.querySelector('[data-chart-member]')?.focus({preventScroll:true});
                     return;
                 }
-                if (target.matches('[data-all-scores]')) {
-                    state.allScores = target.checked;
-                    render();
-                    return;
-                }
                 if (target.matches('[data-option-kind="platform"]')) {
                     target.checked ? state.platforms.add(target.value) : state.platforms.delete(target.value);
                     updatePickerCount('vendors', state.platforms);
@@ -1304,6 +1307,7 @@
             root.addEventListener('codingplan:price-basis-changed',onPriceBasisChange);
             container.__usageCleanup = () => {
                 colorControl.removeEventListener('click', onColorModeClick);
+                benchmarkControl.removeEventListener('click', onBenchmarkClick);
                 root.removeEventListener('codingplan:filters-changed', onSharedFilterChange);
                 root.removeEventListener('codingplan:token-unit-changed', onTokenUnitChange);
                 root.removeEventListener('codingplan:price-basis-changed',onPriceBasisChange);
@@ -1477,14 +1481,6 @@
                         button.classList.toggle('is-active', selected);
                         button.setAttribute('aria-pressed', String(selected));
                     });
-                    render();
-                    return;
-                }
-                const benchmarkButton = event.target.closest('[data-benchmark]');
-                if (benchmarkButton) {
-                    state.benchmark = benchmarkButton.dataset.benchmark;
-                    if(Scores.keys.includes(tableSortState.comparison.key))tableSortState.comparison.key=state.benchmark;
-                    container.querySelectorAll('[data-benchmark]').forEach((button) => button.classList.toggle('is-active', button === benchmarkButton));
                     render();
                     return;
                 }
