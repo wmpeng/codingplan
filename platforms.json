@@ -12,7 +12,7 @@
           "reason": "新套餐价格翻倍，性价比有所下降，[查看套餐用量](/plans/?platform=zhipu)。"
         },
         "models": {
-          "score": 5,
+          "score": 4,
           "reason": "GLM-5.3 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
         },
         "stability": {
@@ -54,7 +54,7 @@
           "reason": "各模型的Go Plus额度增幅不同，不能统一按四倍算。"
         },
         "stability": {
-          "score": 5,
+          "score": 4,
           "reason": "各模型基本都是官方通道，稳定性强，较少出现不可用。"
         }
       },
@@ -124,7 +124,7 @@
       "detail": "M3.1 Flash官方固定Token配额未公开；提供社区样本和加权扣减假设推算的五小时、周及四周用量参考。",
       "dimensions": {
         "value": {
-          "score": 4,
+          "score": 5,
           "reason": "基础月费较低，原Token Plan历史额度较充足；新M3.1精确用量未公开。"
         },
         "models": {
@@ -208,7 +208,7 @@
           "reason": "Coding 支持 Kimi K3.1 Pro、K3 与 K2.8 Preview；Plus 起可用 K3.1 Pro，Pro 起支持其高速版与 1M 上下文，Go 不含 Coding API。"
         },
         "stability": {
-          "score": 4,
+          "score": 5,
           "reason": "官方服务，稳定性强。Kimi-K3发布后高峰时段可能会有繁忙，整体可用性尚可。"
         }
       },
@@ -227,7 +227,7 @@
       "detail": "官方DeepSeek按量通道，当前Flash实际版本为DeepSeek-V4.1-Flash-1017，原生图片理解、1M上下文；V4 Pro继续提供服务，按峰谷价格计费。",
       "dimensions": {
         "value": {
-          "score": 4,
+          "score": 5,
           "reason": "第一梯队模型中，最便宜的之一；空闲时段价格再降一半；按量标价透明，高峰翻倍后成本优势会收窄。"
         },
         "models": {
@@ -1259,5 +1259,5 @@
       "action": "https://api.dreamfree.space/c/s/cpyqxunfei"
     }
   ],
-  "contentVersion": "2026-10-31T09:07:50.290Z"
+  "contentVersion": "2026-10-31T09:20:55.786Z"
 }
