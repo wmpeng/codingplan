@@ -36,6 +36,12 @@
   function filters(data, view, onChange) {
     return root.CodingPlanFilterUI.mount({ element: document.getElementById('toolFilters'), context: data.context, config: data.config, mode: 'full', view, onChange });
   }
+  function mountSearch(search) {
+    const row = document.createElement('div');
+    row.className = 'tool-result-bar filter-result-search';
+    document.querySelector('#toolFilters .filter-state-footer').prepend(row);
+    row.append(search);
+  }
   function error(host, message, options = {}) {
     root.CodingPlanEvents?.track('load_error', {module:'tool_page', error_code:'data_unavailable'});
     const box = document.createElement('div');
@@ -50,5 +56,5 @@
     host.setAttribute('aria-busy', 'false');
     if (options.preserveContent) host.prepend(box); else host.replaceChildren(box);
   }
-  root.CodingPlanToolPage = { load, loadPreset, filters, error };
+  root.CodingPlanToolPage = { load, loadPreset, filters, mountSearch, error };
 })(globalThis);

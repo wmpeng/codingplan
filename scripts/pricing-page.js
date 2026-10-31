@@ -11,13 +11,15 @@
       const results = document.createElement('div'); results.className = 'tool-result-bar pricing-result-bar';
       results.innerHTML = '<input type="search" data-price-search placeholder="搜索平台、套餐或模型" aria-label="搜索平台、套餐或模型"><span class="tool-count" data-pricing-result-count aria-live="polite"></span>';
       host.before(results);
+      const search = results.querySelector('input');
+      root.CodingPlanToolPage.mountSearch(search);
       const params = new URLSearchParams(location.search);
       const relation = params.get('relation');
       const plan = data.context.planBySlug.get(params.get('plan'));
       const focusRelationSlugs = relation ? [relation] : (data.context.relationsByPlanSlug.get(plan?.slug) || []).map(row => row.slug);
       const filterState = document.getElementById('toolFilters').filterController.getState();
       await root.ModelComparison.mountModelComparisonView(host, { mode: 'full', hidePresets: true, data, preset, filterState, focusRelationSlugs,
-        directory:root.PricingDirectory, colorControlHost:document.querySelector('#toolFilters .filter-state-grid'), benchmarkControlHost:document.querySelector('#toolFilters .filter-state-grid'), search:results.querySelector('input'), count:results.querySelector('[data-pricing-result-count]') });
+        directory:root.PricingDirectory, colorControlHost:document.querySelector('#toolFilters .filter-state-grid'), benchmarkControlHost:document.querySelector('#toolFilters .filter-state-grid'), search, count:results.querySelector('[data-pricing-result-count]') });
       const legend = host.querySelector('.usage-color-legend');
       const legendDetails = document.createElement('details'); legendDetails.className = 'tool-legend';
       legendDetails.open = !matchMedia('(max-width: 800px)').matches;

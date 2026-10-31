@@ -35,7 +35,6 @@
         root.CodingPlanEvents?.results({result_count:selection.visible.length,result_key:JSON.stringify(selection.visible.map(x=>x.slug))});
       }
       document.getElementById('modelControls').addEventListener('input', render);
-      search.addEventListener('input', render);
       buttons.forEach(button => button.addEventListener('click', () => {
         featuredMode = featuredMode === button.dataset.modelFeatured ? '' : button.dataset.modelFeatured; render();
       }));

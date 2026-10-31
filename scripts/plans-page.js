@@ -143,6 +143,7 @@
         apply();
       });
       const footer = document.querySelector('#toolFilters .filter-state-footer');
+      root.CodingPlanToolPage.mountSearch(search);
       const controls = document.createElement('div'); controls.className = 'plan-sort-controls';
       controls.innerHTML = `<label data-select-fallback>排序 <select id="planSort" aria-label="套餐排序">${Directory.sortOptions.map(([key,label]) => `<option value="${key}">${esc(label)}</option>`).join('')}</select></label><button type="button" class="ui-icon-button ui-icon-button--outlined" data-plan-direction></button>`;
       footer.insertBefore(controls,footer.querySelector('.filter-state-actions'));
