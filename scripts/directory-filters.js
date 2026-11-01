@@ -10,7 +10,8 @@
     const actions = reset.parentElement;
     const header = document.querySelector('.site-header');
     const sentinel = document.createElement('div');
-    host.before(sentinel);
+    const spacer = document.createElement('div'); spacer.className = 'directory-filter-spacer';
+    host.before(sentinel); host.after(spacer);
 
     const toolbar = document.createElement('div');
     toolbar.className = 'directory-filter-toolbar';
@@ -29,7 +30,7 @@
     }
     count.dataset.directoryResultCount = '';
     sentinel.parentElement.classList.add('directory-filter-region');
-    let compact = false, stuck = false, enabled = true, frame;
+    let compact = false, stuck = false, enabled = true, frame, fullHeight = 0, layoutSignature = '';
     let openEntry = null, fitSignature = '';
 
     function button(label, className, icon) {
@@ -75,7 +76,20 @@
       }
       el.classList.add('directory-filter-entry');
       const dot = document.createElement('i'); dot.className = 'directory-filter-dot'; dot.setAttribute('aria-hidden', 'true');
+      trigger.querySelector('span').classList.add('directory-control-label');
       trigger.querySelector('span').append(dot);
+      if (!isPicker) {
+        control.querySelectorAll(':scope > span, summary > span:first-child, label > span').forEach(span => {
+          if (span.textContent.trim() && !span.querySelector('input,button')) span.classList.add('directory-control-label');
+        });
+        const labels = control.matches('label') ? [control] : [...control.querySelectorAll('label')];
+        labels.forEach(label => [...label.childNodes].forEach(node => {
+          if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+            const text = document.createElement('span'); text.className = 'directory-control-label';
+            node.replaceWith(text); text.append(node);
+          }
+        }));
+      }
       const entry = {el, control, trigger, menu, label, isPicker, spec}; entries.push(entry); group.append(el);
       if (!isPicker) trigger.addEventListener('click', () => showMenu(entry, openEntry !== entry));
       else control.addEventListener('toggle', () => { if (control.open) closeMenus(entry); });
@@ -101,8 +115,9 @@
       const width = view?.width || root.innerWidth, height = view?.height || root.innerHeight;
       const anchor = entry.trigger.getBoundingClientRect();
       const minTop = Math.max(top + 8, (header?.getBoundingClientRect().bottom || 0) + 8);
-      const panelWidth = Math.min(entry === searchEntry ? 340 : 420, width - 28);
-      Object.assign(entry.menu.style, {position:'fixed', width:panelWidth+'px', minWidth:'0', right:'auto', bottom:'auto', maxHeight:Math.max(80, top + height - minTop - 14)+'px'});
+      Object.assign(entry.menu.style, {position:'fixed', width:entry === searchEntry ? '340px' : 'max-content', maxWidth:(width-28)+'px', minWidth:'0', right:'auto', bottom:'auto', maxHeight:Math.max(80, top + height - minTop - 14)+'px'});
+      const panelWidth = Math.min(entry.menu.getBoundingClientRect().width, width - 28);
+      entry.menu.style.width = panelWidth+'px';
       entry.menu.style.left = Math.max(left + 14, Math.min(anchor.left, left + width - panelWidth - 14))+'px';
       entry.menu.style.top = Math.max(minTop, Math.min(anchor.bottom + 8, top + height - entry.menu.getBoundingClientRect().height - 14))+'px';
     }
@@ -114,6 +129,9 @@
     }
     searchButton.addEventListener('click', () => showMenu(searchEntry, openEntry !== searchEntry));
 
+    function reserveHeight() {
+      spacer.style.height = stuck ? Math.max(0, fullHeight-host.getBoundingClientRect().height)+'px' : '0px';
+    }
     function setCompact(value) {
       if (value === compact && host.dataset.directoryFiltersMounted) return;
       closeMenus();
@@ -136,6 +154,7 @@
       }
       for (const entry of entries) entry.el.classList.remove('directory-filter-overflow');
       filters.hidden = display.hidden = false;
+      reserveHeight();
       schedule();
     }
     toggle.addEventListener('click', () => {
@@ -199,8 +218,21 @@
       host.style.setProperty('--directory-filter-top', top+'px');
       const viewHeight = root.visualViewport?.height || root.innerHeight;
       enabled = viewHeight - top >= 224;
-      host.classList.toggle('directory-sticky-filters', enabled);
-      const nextStuck = enabled && sentinel.getBoundingClientRect().top < top - 1;
+      const layout = [host.clientWidth, top, getComputedStyle(host).font].join('|');
+      if (stuck && layout !== layoutSignature) {
+        // A narrower layout may make the original card taller than the scroll distance.
+        const wasCompact = compact;
+        host.classList.remove('directory-filters-stuck', 'directory-sticky-filters');
+        toggle.hidden = true; setCompact(false);
+        fullHeight = host.getBoundingClientRect().height;
+        if (wasCompact) setCompact(true);
+        host.classList.add('directory-filters-stuck');
+      }
+      layoutSignature = layout;
+      if (!stuck && !compact) fullHeight = host.getBoundingClientRect().height;
+      // Keep normal flow until the entire original card has passed the header.
+      const nextStuck = enabled && sentinel.getBoundingClientRect().top + fullHeight <= top;
+      host.classList.toggle('directory-sticky-filters', nextStuck);
       toggle.hidden = !nextStuck;
       if (nextStuck !== stuck) {
         stuck = nextStuck; host.classList.toggle('directory-filters-stuck', stuck);
@@ -208,7 +240,7 @@
         setCompact(stuck);
       }
       if (!enabled && compact) setCompact(false);
-      syncState(); fit();
+      syncState(); fit(); reserveHeight();
       if (openEntry) positionMenu(openEntry);
     }
     function schedule() { cancelAnimationFrame(frame); frame = requestAnimationFrame(update); }
@@ -218,7 +250,7 @@
     root.visualViewport?.addEventListener('resize', schedule);
     const observer = new ResizeObserver(schedule); observer.observe(host); if (header) observer.observe(header);
     new MutationObserver(schedule).observe(count, {childList:true, characterData:true, subtree:true});
-    document.fonts?.ready.then(() => { fitSignature = ''; schedule(); });
+    document.fonts?.ready.then(() => { fitSignature = ''; layoutSignature = ''; schedule(); });
     document.addEventListener('click', event => { if (openEntry && !openEntry.el.contains(event.target) && !openEntry.menu.contains(event.target)) closeMenus(); });
     host.addEventListener('keydown', event => {
       if (event.key === 'Escape' && openEntry) { event.preventDefault(); closeMenus(null, true); }
