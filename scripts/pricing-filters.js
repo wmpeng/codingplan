@@ -18,6 +18,8 @@
     filters.className = 'pricing-filter-group'; filters.setAttribute('aria-label', '筛选');
     const display = document.createElement('div');
     display.className = 'pricing-display-group'; display.setAttribute('aria-label', '展示');
+    const divider = document.createElement('span');
+    divider.className = 'pricing-filter-divider'; divider.setAttribute('aria-hidden', 'true');
     const utility = document.createElement('div');
     utility.className = 'pricing-filter-utility';
     const entries = [];
@@ -122,10 +124,11 @@
         toolbar.prepend(filters, display); toolbar.append(utility); utility.insertBefore(count, actions); utility.append(actions, toggle);
         searchMenu.append(search);
       } else {
-        grid.append(filters, display); searchGroup.append(search, count); footer.append(utility);
+        grid.append(filters, divider, display); searchGroup.append(search, count); footer.append(utility);
         utility.append(actions, toggle);
       }
       for (const entry of entries) if (!entry.isPicker) {
+        entry.menu.classList.toggle('filter-picker-menu', compact);
         entry.menu.hidden = compact; entry.trigger.setAttribute('aria-expanded', 'false');
       }
       for (const entry of entries) entry.el.classList.remove('pricing-filter-overflow');
@@ -133,6 +136,7 @@
       schedule();
     }
     toggle.addEventListener('click', () => {
+      if (!stuck) return;
       // Move focus before controls are moved into hidden menus.
       toggle.focus({preventScroll:true}); setCompact(!compact);
     });
@@ -205,9 +209,11 @@
       enabled = viewHeight - top >= 224;
       host.classList.toggle('pricing-sticky-filters', enabled);
       const nextStuck = enabled && sentinel.getBoundingClientRect().top < top - 1;
+      toggle.hidden = !nextStuck;
       if (nextStuck !== stuck) {
         stuck = nextStuck; host.classList.toggle('pricing-filters-stuck', stuck);
-        setCompact(stuck && !host.contains(document.activeElement));
+        if (stuck && host.contains(document.activeElement)) toggle.focus({preventScroll:true});
+        setCompact(stuck);
       }
       if (!enabled && compact) setCompact(false);
       syncState(); fit();

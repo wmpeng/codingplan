@@ -367,6 +367,10 @@ body.tool-unified-active .filter-state-footer .filter-state-actions { flex: 0 0 
 .pricing-filter-toolbar, .pricing-filter-group, .pricing-display-group, .pricing-filter-utility { display: flex; align-items: center; gap: 8px; }
 .pricing-filter-group, .pricing-display-group { flex-wrap: wrap; max-width: 100%; }
 .pricing-display-group::before { content: ''; flex: 0 0 1px; width: 1px; height: 24px; margin-right: 8px; background: var(--border-color); }
+.pricing-filters:not(.pricing-filters-compact) :is(.pricing-filter-group, .pricing-display-group) { display: contents; }
+.pricing-filters:not(.pricing-filters-compact) .pricing-display-group::before { display: none; }
+.pricing-filter-divider { flex: 0 0 1px; width: 1px; height: 24px; align-self: center; background: var(--border-color); }
+.pricing-filters-compact .pricing-filter-divider, .pricing-filter-toggle[hidden] { display: none !important; }
 .pricing-filter-utility { flex: 0 0 auto; margin-left: auto; }
 body.tool-unified-active .pricing-filters .pricing-filter-utility .filter-state-actions { flex: 0 0 auto; margin: 0; }
 .pricing-filter-toggle svg, .pricing-reset-icon svg { width: 16px; height: 16px; }
