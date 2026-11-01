@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-10-31T08:28:27Z",
+  "generatedAt": "2026-11-01T04:26:37Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -9127,7 +9127,7 @@
             "outputPerM": 5000000.0,
             "unit": "Credits"
           },
-          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；2026-09-29 Max 20x 交互 CLI 社区经验扣额系数，非官方 API 报价；按 Opus 5.5 普通输入归一化。；相对 Max 20x 的五小时与周容量分别外推；周比例及跨套餐系数一致性为估算假设，非本套餐直接实测。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；2026-09-29 Max 20x 交互 CLI 社区经验扣额系数，非官方 API 报价；按 Opus 5.5 普通输入归一化。；周容量按 Ultra 的比例估算，五小时容量按历史窗口比例换算；绝对 Token 数及跨套餐模型扣额一致性仍含估算假设。"
         },
         {
           "slug": "claude-pro--claude-sonnet-5-5",
@@ -9318,7 +9318,7 @@
     {
       "slug": "claude-max5",
       "platformSlug": "claude",
-      "name": "Max *5",
+      "name": "Max",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqclaudeup",
       "rating": 4,
@@ -9331,7 +9331,7 @@
         "原生 Claude 体验",
         "Claude Platform 每月赠送 API Credits：$100（2026-10-07 公告；与订阅额度分开）"
       ],
-      "note": "• 部分用户订阅时需实名认证；订阅登录与API key使用不同额度。\n• 赠送API Credits须新订满7天、绑定Console组织领取，当期有效且不结转。\n• 赠额可用于关联组织API key调用，不能支付交互式Claude Code或应用内额外用量；IDE、Desktop等运行不适用。",
+      "note": "• 原 Max 5x；五小时与每周用量均为 Pro 的5倍。\n• 部分用户订阅时需实名认证；订阅登录与API key使用不同额度。\n• 赠送API Credits须新订满7天、绑定Console组织领取，当期有效且不结转。\n• 赠额可用于关联组织API key调用，不能支付交互式Claude Code或应用内额外用量；IDE、Desktop等运行不适用。",
       "planStatus": "open",
       "planModels": [
         {
@@ -9355,7 +9355,7 @@
             "outputPerM": 5000000.0,
             "unit": "Credits"
           },
-          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；2026-09-29 Max 20x 交互 CLI 社区经验扣额系数，非官方 API 报价；按 Opus 5.5 普通输入归一化。；相对 Max 20x 的五小时与周容量分别外推；周比例及跨套餐系数一致性为估算假设，非本套餐直接实测。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；2026-09-29 Max 20x 交互 CLI 社区经验扣额系数，非官方 API 报价；按 Opus 5.5 普通输入归一化。；周容量按 Ultra 的比例估算，五小时容量按历史窗口比例换算；绝对 Token 数及跨套餐模型扣额一致性仍含估算假设。"
         },
         {
           "slug": "claude-max5--claude-sonnet-5-5",
@@ -9552,7 +9552,7 @@
     {
       "slug": "claude-max20",
       "platformSlug": "claude",
-      "name": "Max *20",
+      "name": "Ultra",
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqclaudeup",
       "rating": 4,
@@ -9565,7 +9565,7 @@
         "原生 Claude 体验",
         "Claude Platform 每月赠送 API Credits：$200（2026-10-07 公告；与订阅额度分开）"
       ],
-      "note": "• 部分用户订阅时需实名认证；订阅登录与API key使用不同额度。\n• 赠送API Credits须新订满7天、绑定Console组织领取，当期有效且不结转。\n• 赠额可用于关联组织API key调用，不能支付交互式Claude Code或应用内额外用量；IDE、Desktop等运行不适用。",
+      "note": "• 原 Max 20x，现自动转为 Ultra；每周用量为 Pro 的10倍。\n• 已验证账号无独立五小时限制；未验证账号仍有临时限制，验证由账号及付款历史自动判定。\n• 部分用户订阅时需实名认证；订阅登录与API key使用不同额度。\n• 赠送API Credits须新订满7天、绑定Console组织领取，当期有效且不结转。\n• 赠额可用于关联组织API key调用，不能支付交互式Claude Code或应用内额外用量；IDE、Desktop等运行不适用。",
       "planStatus": "open",
       "planModels": [
         {
@@ -9576,7 +9576,7 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 1230.510508047,
+            "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": 4634.9229136438,
             "monthlyTokenInM": 18539.7,
             "unitPriceCnyPerM": 0.07344
@@ -9589,7 +9589,7 @@
             "outputPerM": 5000000.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 1 Credits/Token、缓存写入 1.25 Credits/Token、缓存读取 0.03 Credits/Token、输出 5 Credits/Token；套餐共享额度：5小时 136M Credits、每周 514M Credits、每月 2,055M Credits；按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；2026-09-29 Max 20x 交互 CLI 社区经验扣额系数，非官方 API 报价；按 Opus 5.5 普通输入归一化。；2026-09-29 Max 20x 交互 CLI 社区实验校准估算，精确现行 Token 上限可能变化。"
+          "note": "抵扣单价：输入 1 Credits/Token、缓存写入 1.25 Credits/Token、缓存读取 0.03 Credits/Token、输出 5 Credits/Token；套餐共享额度：5小时 不限量、每周 514M Credits、每月 2,055M Credits；按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；2026-09-29 Max 20x 交互 CLI 社区经验扣额系数，非官方 API 报价；按 Opus 5.5 普通输入归一化。；周容量按历史社区样本估算，非官方固定 Token 配额；已验证 Ultra 账号无独立五小时限制，五小时可用量参考按周容量展示；未验证账号仍有临时限制。"
         },
         {
           "slug": "claude-max20--claude-sonnet-5-5",
@@ -9599,13 +9599,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 1804.7487451356,
+            "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": 6797.8869400109,
             "monthlyTokenInM": 27191.5,
             "unitPriceCnyPerM": 0.05032
           },
           "pricing": null,
-          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
         },
         {
           "slug": "claude-max20--claude-haiku-5-5",
@@ -9615,13 +9615,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 24031.8702221584,
+            "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": 90520.0445034633,
             "monthlyTokenInM": 362080.2,
             "unitPriceCnyPerM": 0.00408
           },
           "pricing": null,
-          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 Opus 5.5 容量×19.53 外推，基于 API 混合价比的低置信估算；未验证分类订阅扣额系数及不同上下文下的容量。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 Opus 5.5 容量×19.53 外推，基于 API 混合价比的低置信估算；未验证分类订阅扣额系数及不同上下文下的容量。 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
         },
         {
           "slug": "claude-max20--claude-fable-5-1",
@@ -9631,13 +9631,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 270.7123117703,
+            "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": 509.8415205008,
             "monthlyTokenInM": 2039.4,
             "unitPriceCnyPerM": 0.66708
           },
           "pricing": null,
-          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按历史模型权重外推；Fable 系列合计最多消耗共享周额度的 50%，不是额外额度。共享 token 权重为估算假设。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按历史模型权重外推；Fable 系列合计最多消耗共享周额度的 50%，不是额外额度。共享 token 权重为估算假设。 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
         },
         {
           "slug": "claude-max20--claude-fable-5",
@@ -9647,13 +9647,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 270.7123117703,
+            "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": 509.8415205008,
             "monthlyTokenInM": 2039.4,
             "unitPriceCnyPerM": 0.66708
           },
           "pricing": null,
-          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按与 Fable 5.1 相同容量估算，非本版本独立测量；两版本合计最多消耗共享周额度的 50%。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按与 Fable 5.1 相同容量估算，非本版本独立测量；两版本合计最多消耗共享周额度的 50%。 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
         },
         {
           "slug": "claude-max20--claude-opus-5",
@@ -9663,13 +9663,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 984.4084064376,
+            "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": 3707.938330915,
             "monthlyTokenInM": 14831.8,
             "unitPriceCnyPerM": 0.0918
           },
           "pricing": null,
-          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
         },
         {
           "slug": "claude-max20--claude-sonnet-5",
@@ -9679,13 +9679,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 1804.7487451356,
+            "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": 6797.8869400109,
             "monthlyTokenInM": 27191.5,
             "unitPriceCnyPerM": 0.05032
           },
           "pricing": null,
-          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
         },
         {
           "slug": "claude-max20--claude-sonnet-4-6",
@@ -9698,7 +9698,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": " 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
         },
         {
           "slug": "claude-max20--claude-sonnet-4-5",
@@ -9711,7 +9711,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": " 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
         },
         {
           "slug": "claude-max20--claude-opus-4-7",
@@ -9724,7 +9724,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": " 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
         },
         {
           "slug": "claude-max20--claude-opus-4-6",
@@ -9737,7 +9737,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": " 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
         },
         {
           "slug": "claude-max20--claude-opus-4-5",
@@ -9750,7 +9750,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": null
+          "note": " 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
         },
         {
           "slug": "claude-max20--claude-haiku-4-5",
@@ -9760,13 +9760,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 2707.1231177035,
+            "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": 10196.8304100164,
             "monthlyTokenInM": 40787.3,
             "unitPriceCnyPerM": 0.03332
           },
           "pricing": null,
-          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按 2026-09-29 社区模型权重相对 Opus 5.5 外推，采用共同 token 权重假设；非当前各套餐完整分类实测。 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
         },
         {
           "slug": "claude-max20--claude-opus-4-8",
@@ -9779,7 +9779,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Claude Code 官方支持的型号；本套餐精确 Token 用量未知，不沿用其他型号的历史测量。"
+          "note": "Claude Code 官方支持的型号；本套餐精确 Token 用量未知，不沿用其他型号的历史测量。 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
         }
       ]
     },
@@ -52043,5 +52043,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-10-31T08:22:57.682Z"
+  "contentVersion": "2026-11-01T04:20:41.497Z"
 }

@@ -2282,7 +2282,55 @@
         }
       ],
       "relatedChanges": []
+    },
+    {
+      "slug": "claude-max-ultra-limits-20261030",
+      "title": "Claude Max 套餐改名与 Ultra 五小时限制调整",
+      "officialStatus": "effective",
+      "effectiveTime": {
+        "type": "unknown",
+        "description": "官方当前说明已生效；账号逐个自动验证，未验证 Ultra 账号仍有临时限制。"
+      },
+      "changes": [
+        {
+          "type": "other",
+          "label": "套餐名称与月费",
+          "before": "Max 5x $100/月、Max 20x $200/月",
+          "after": "Max $100/月、Ultra $200/月；现有订阅自动转换"
+        },
+        {
+          "type": "quota",
+          "label": "Ultra 五小时与周用量",
+          "before": "Max 20x 有独立五小时限制",
+          "after": "已验证 Ultra 取消独立五小时限制；未验证账号仍有临时限制。共享周额度继续适用，每周为 Pro 的10倍；Fable 仍有专属周限制。"
+        }
+      ],
+      "audience": "Max（原 Max 5x）与 Ultra（原 Max 20x）个人订阅用户；取消五小时限制仅适用于已验证 Ultra 账号。",
+      "summary": "Max 5x 与 Max 20x 分别改名为 Max 与 Ultra，价格不变。已验证 Ultra 账号取消独立五小时限制，仍受共享周额度与 Fable 专属周限制约束；未验证账号仍有临时限制。",
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "claude",
+          "planSlug": "claude-max5",
+          "label": "Claude · Max"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "claude",
+          "planSlug": "claude-max20",
+          "label": "Claude · Ultra"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://support.claude.com/en/articles/17728952-what-is-the-ultra-plan"
+        },
+        {
+          "url": "https://support.claude.com/en/articles/11049741-what-is-the-max-plan"
+        }
+      ],
+      "relatedChanges": []
     }
   ],
-  "contentVersion": "2026-10-31T08:22:59.582Z"
+  "contentVersion": "2026-11-01T04:20:43.365Z"
 }

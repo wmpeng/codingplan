@@ -186,7 +186,7 @@
       "slug": "claude",
       "name": "Claude",
       "rating": 4,
-      "summary": "Claude Code 官方订阅，支持 Opus、Sonnet、Haiku 5.5；Token 容量为带负载条件的估算。",
+      "summary": "Claude Code 官方 Pro / Max / Ultra 订阅；已验证 Ultra 无五小时限制，Token 容量为估算。",
       "detail": "支持 Claude 5.5 系列；容量按历史社区参数及模型/套餐倍率估算，非官方固定 Token 配额。Haiku 5.5 与部分跨型号、跨套餐关系含外推假设。",
       "dimensions": {
         "value": {
@@ -1259,5 +1259,5 @@
       "action": "https://api.dreamfree.space/c/s/cpyqxunfei"
     }
   ],
-  "contentVersion": "2026-11-01T04:05:08.703Z"
+  "contentVersion": "2026-11-01T04:20:35.692Z"
 }
