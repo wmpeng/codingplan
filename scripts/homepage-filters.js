@@ -585,7 +585,7 @@
       host.querySelector('[data-range-clear="token"]')?.setAttribute("aria-pressed", String(!state.monthlyTokenRange));
       positionSelectionPanels();
     }
-    function publish(source = "manual", updatePurpose) {
+    function publish(source = "manual", updatePurpose, persist = false) {
       policy.constrain(state);
       if (!["init", "catalog", "display"].includes(source)) initialPresetPending = false;
       multimodalNotice = "";
@@ -599,7 +599,7 @@
         root.__codingplanHomeApi?.setUnifiedFilters(clean);
       }
       if (opts.onChange) opts.onChange(clean, {source, featuredOnly});
-      if (!["init", "catalog", "display"].includes(source)) {
+      if (persist || !["init", "catalog", "display"].includes(source)) {
         const remove = ['platform','model','billing'];
         if (resetUrl && !params.has('plan') && !params.has('relation')) Url.clear(urlSchema, remove);
         else Url.replace(urlSchema, {
@@ -795,11 +795,18 @@
         if (!d.contains(event.target)) { d.open = false; if (pendingAll) { pendingAll = false; render(); } }
       });
     });
+    function selectAllIfCleared(key) {
+      if (!Array.isArray(state[key]) || state[key].length) return;
+      state[key] = null;
+      // Only normalize the checklist; keep display state and persist the selection.
+      publish("display", undefined, true);
+    }
     host.querySelector('[data-picker="modelSlugs"]').addEventListener('toggle', event => {
       if (event.target.open) sortPickerOptions('modelSlugs');
       if (!event.target.open) {
         resetModelList();
         if (pendingAll) { pendingAll = false; render(); }
+        selectAllIfCleared('modelSlugs');
       }
       positionSelectionPanels();
     });
@@ -807,7 +814,8 @@
     host.querySelectorAll('#homeBudgetPicker, #homeTokenPicker').forEach(picker => {
       picker.addEventListener('toggle', positionSelectionPanels);
     });
-    host.querySelector('[data-picker="platformSlugs"]')?.addEventListener('toggle', () => {
+    host.querySelector('[data-picker="platformSlugs"]')?.addEventListener('toggle', event => {
+      if (!event.target.open) selectAllIfCleared('platformSlugs');
       sortPickerOptions('platformSlugs');
       positionSelectionPanels();
     });
