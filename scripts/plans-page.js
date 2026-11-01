@@ -24,7 +24,7 @@
       const allPlans = root.EntityData.buildPlanCatalog(context).filter(plan => plan.billingMode === 'subscription');
       const search = host.querySelector('[data-plan-search]');
       let state = Filters.createDefaultState(config, {mode:'full'}), pins = Directory.readPins(root.localStorage, allPlans);
-      let sort = {key:'platformOrder', direction:'asc'}, sortPicker, sortSelect, directionButton, lastFilterKey, featuredOnly = false;
+      let sort = {key:'platformOrder', direction:'asc'}, lastFilterKey, featuredOnly = false;
       const Url = root.CodingPlanFilterUrl, urlSchema = {
         query:Url.text('q'), key:Url.choice('sort', Directory.sortOptions.map(([key]) => key), 'platformOrder'),
         direction:Url.choice('direction', ['asc','desc'], 'asc')
@@ -42,12 +42,6 @@
       const quotaId = plan => `plan-quota-${encodeURIComponent(plan.slug)}`;
       const quotaContent = plan => root.PlanQuota.render(plan, context, selection.effectiveState, {notesOpen:expandedNotes.has(plan.slug), sort:quotaSorts.get(plan.slug)});
       function syncSort() {
-        if (sortSelect) { sortSelect.value = sort.key; sortPicker.sync(); }
-        if (directionButton) {
-          directionButton.disabled = sort.key === 'platformOrder';
-          directionButton.textContent = sort.direction === 'asc' ? '↑' : '↓';
-          directionButton.setAttribute('aria-label', `当前${sort.direction === 'asc' ? '升序' : '降序'}，切换为${sort.direction === 'asc' ? '降序' : '升序'}`);
-        }
         host.querySelectorAll('.tool-table > thead > tr > th').forEach(th => {
           const active = [...th.querySelectorAll('[data-plan-sort]')].find(button => button.dataset.planSort === sort.key);
           th.setAttribute('aria-sort', active ? sort.direction === 'asc' ? 'ascending' : 'descending' : 'none');
@@ -144,20 +138,7 @@
         if (meta.source === 'reset') { search.value = ''; sort = {key:'platformOrder',direction:'asc'}; }
         apply();
       });
-      const footer = document.querySelector('#toolFilters .filter-state-footer');
       root.CodingPlanToolPage.mountSearch(search, count);
-      const controls = document.createElement('div'); controls.className = 'plan-sort-controls';
-      controls.innerHTML = `<label data-select-fallback>排序 <select id="planSort" aria-label="套餐排序">${Directory.sortOptions.map(([key,label]) => `<option value="${key}">${esc(label)}</option>`).join('')}</select></label><button type="button" class="ui-icon-button ui-icon-button--outlined" data-plan-direction></button>`;
-      footer.insertBefore(controls,footer.querySelector('.filter-state-actions'));
-      sortSelect = controls.querySelector('select'); directionButton = controls.querySelector('[data-plan-direction]');
-      sortPicker = root.CodingPlanSingleSelect.mount(sortSelect,'排序');
-      sortSelect.addEventListener('input', () => {
-        sort = {key:sortSelect.value,direction:['monthlyToken','rating'].includes(sortSelect.value) ? 'desc' : 'asc'}; apply();
-      });
-      directionButton.addEventListener('click', () => { sort.direction = sort.direction === 'asc' ? 'desc' : 'asc'; apply(); });
-      root.addEventListener('storage', event => {
-        if (event.key === Directory.pinKey || event.key === null) { pins = Directory.readPins(root.localStorage,allPlans); apply(); }
-      });
       syncSort();
       root.CodingPlanToolPage.mountDirectoryFilters('plans', search, count);
     }).catch(error => root.CodingPlanToolPage.error(host,error.message));

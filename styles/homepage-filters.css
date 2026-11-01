@@ -750,12 +750,5 @@ body .filter-inline input[type="checkbox"] { width: 16px; }
   :is(.homepage-unified-active, .tool-unified-active) .filter-picker-menu input[type="search"] { min-height: 44px; }
   body .filter-checks .filter-inline { min-height: 44px; }
 }
-/* 套餐页沿用公共单选与按钮，仅安排排序和重置的位置。 */
-.plans-page .plan-sort-controls { display: flex; align-items: center; gap: 8px; margin-left: auto; max-width: 100%; }
-.plans-page .plan-sort-controls .single-select-picker { width: 190px; max-width: 100%; }
-.plans-page .plan-sort-controls .ui-icon-button { width: 40px; height: 40px; }
 .plans-page .filter-state-footer { gap: 12px; justify-content: flex-end; }
 body.plans-page .filter-state-footer .filter-state-actions { margin-left: 0; }
-@media(max-width:800px), (pointer:coarse) {
-  .plans-page .plan-sort-controls .ui-icon-button { width: 44px; height: 44px; }
-}
