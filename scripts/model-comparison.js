@@ -746,7 +746,7 @@
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="首月价格和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前条件下没有可绘制的首月价格与月额度。<button type="button" class="price-chart-clear" data-chart-reset>重置筛选</button></div></div>
                 </article>
                 <article class="usage-chart-card usage-data-card">
-                    <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3></div>${compact ? '' : '<div class="usage-detail-summary"><span class="usage-table-count" data-table-count="comparison"></span></div>'}</div>
+                    <div class="usage-chart-head">${compact ? '' : '<div class="usage-detail-summary"><span class="usage-table-count" data-table-count="comparison"></span></div>'}</div>
                     <section class="usage-table-section" aria-label="价格与额度数据明细"><div class="usage-table-scroll"><table class="usage-data-table" id="pricingComparisonTable" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison', compact)}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
                 </article>
             </section>`;
@@ -1150,6 +1150,7 @@
                     const nextSelectionKey=JSON.stringify([sorted.map(point=>point.slug),priceBasis,pins,sort]);
                     if(selectionKey!==nextSelectionKey){pageIndex=0;selectionKey=nextSelectionKey;}
                     const pagination=Directory.paginate(sorted,[...pins,...focusRelationSlugs],pageIndex);pageIndex=pagination.page;
+                    container.querySelector('.usage-data-card .usage-chart-head').hidden=pagination.pages===1;
                     sorted=pagination.rows;
                     container.querySelectorAll('[data-price-pagination]').forEach(pager=>{
                         pager.hidden=pagination.pages===1;

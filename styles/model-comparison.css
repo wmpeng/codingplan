@@ -218,6 +218,8 @@
 .pricing-directory .usage-chart-head { flex-wrap: wrap; min-width: 0; }
 .pricing-directory .usage-chart-head > div:first-child { flex: 1 1 440px; min-width: 0; }
 .usage-data-card .usage-chart-head { flex-wrap: wrap; padding-inline: 0; }
+.usage-data-card .usage-chart-head[hidden] { display: none; }
+.usage-data-card .usage-chart-head[hidden] + .usage-table-section { margin-top: 0; }
 .usage-data-card .usage-table-section { margin: 16px 0 0; padding-top: 0; border-top: 0; }
 .usage-data-card .usage-detail-summary {
   display: flex; flex: 1 0 100%; align-items: center; justify-content: space-between;
