@@ -32,6 +32,7 @@
         { key: 'unitPriceCnyPerM', label: '综合单价' },
         { key: 'unitPriceVisual', label: '单价对比', sortable: false },
         { key: 'tokenConsumptionRate', label: 'token消耗率' },
+        { key: 'priceIndexCnyPerM', label: '价格指数' },
         { key: 'fiveHourTokenInM', label: '5h用量' },
         { key: 'weeklyTokenInM', label: '周用量' },
         { key: 'monthlyTokenInM', label: '月用量' },
@@ -432,6 +433,7 @@
 
     function comparisonSortValue(point, key) {
         if (key === 'price') return finiteNonnegative(point.monthlyFeeCny);
+        if (key === 'priceIndexCnyPerM') return priceIndexCnyPerM(point);
         if (Scores.keys.includes(key)) return getPointScore(point, key);
         if (key === 'vendor') return point.platformName || '';
         if (key === 'note') return point[key] || '';
@@ -466,8 +468,12 @@
         });
     }
 
+    function comparisonTableColumns(compact) {
+        return COMPARISON_TABLE_COLUMNS.filter(column => (compact || !['tokenConsumptionRate','priceIndexCnyPerM'].includes(column.key)) && (!compact || column.key !== 'plan'));
+    }
+
     function comparisonTableHeadHtml(tableName, compact) {
-        return `<tr>${COMPARISON_TABLE_COLUMNS.filter(column => (compact || column.key !== 'tokenConsumptionRate') && (!compact || column.key !== 'plan')).map((column) => {
+        return `<tr>${comparisonTableColumns(compact).map((column) => {
             const sortable = column.sortable !== false;
             const classes = column.key === 'vendor' ? 'sticky-first' : '';
             const sorting = sortable
@@ -478,6 +484,8 @@
                 : column.label;
             const helpText = column.key === 'tokenConsumptionRate'
                 ? '该模型比平均多或少消耗多少输出 Token：正数为多，负数为少，0% 为平均。基于本站模型的 AA 评测（含思考与答案），不代表完成质量。'
+                : column.key === 'priceIndexCnyPerM'
+                ? '价格指数 = 当前口径综合单价 × token消耗倍率。例如 +50% 对应 1.5 倍，-20% 对应 0.8 倍。数值越低，考虑 Token 消耗后的参考成本越低；不代表实际账单或完成质量。单价或消耗倍率未知时显示“—”。'
                 : column.key === 'unitPriceVisual'
                 ? '横条按当前结果比较，并跟随上方坐标轴的对数或线性尺度；条越短，综合单价越低。线性尺度下，条长与单价成正比。'
                 : ['fiveHourTokenInM', 'weeklyTokenInM', 'monthlyTokenInM'].includes(column.key)
@@ -511,6 +519,13 @@
         return `${percent > 0 ? '+' : ''}${Numbers.amount(percent)}%`;
     }
 
+    function priceIndexCnyPerM(point) {
+        const price = finiteNonnegative(point?.unitPriceCnyPerM), rate = finiteNonnegative(point?.tokenConsumptionRate);
+        if (price === null || rate === null) return null;
+        const index = price * rate;
+        return Number.isFinite(index) ? index : null;
+    }
+
     function comparisonTableRowHtml(point, tokenUnit, visualOptions) {
         const notice = key => Notices.forField(visualOptions?.changes,{...point,type:'point'},key,{seen:visualOptions?.noticeSeen});
         const subscription = point.billingMode === 'subscription';
@@ -537,6 +552,7 @@
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
             `<td class="usage-table-price-visual">${unitPriceVisualHtml(point, tokenUnit, visualOptions)}</td>` +
             (compact ? `<td class="numeric" data-comparison-col="tokenConsumptionRate" title="${escapeHtml(aaScore?.configuration || '')}">${escapeHtml(formatTokenConsumptionRate(point.tokenConsumptionRate))}</td>` : '') +
+            (compact ? `<td class="numeric" data-comparison-col="priceIndexCnyPerM">${formatUnitPrice(priceIndexCnyPerM(point), tokenUnit)}</td>` : '') +
             `<td class="numeric" data-comparison-col="fiveHourTokenInM">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric" data-comparison-col="weeklyTokenInM">${subscription ? formatTokenAmount(point.weeklyTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}${notice('quota')}</td>` +
@@ -1201,7 +1217,7 @@
                         featured:featuredPointSlugs.has(point.slug),
                         color: colors[getPointColorKey(point, state.colorMode)]
                     })).join('')
-                    : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length - 1}">当前筛选下没有可展示的数据；请在上方下拉框调整条件，或点击“显示全部”。</td></tr>`;
+                    : `<tr><td class="usage-table-empty" colspan="${comparisonTableColumns(Boolean(Directory)).length}">当前筛选下没有可展示的数据；请在上方下拉框调整条件，或点击“显示全部”。</td></tr>`;
                 container.querySelectorAll('[data-comparison-col]').forEach(cell => {
                     const key = cell.dataset.comparisonCol;
                     cell.hidden = Scores.keys.includes(key) && key !== state.benchmark;

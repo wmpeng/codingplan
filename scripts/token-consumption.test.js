@@ -42,3 +42,44 @@ test('a supplied model rate renders only its numeric value', () => {
   assert.match(html, /data-comparison-col="tokenConsumptionRate" title="">-17\.06%<\/td>/);
   assert.ok(!html.includes('估算'));
 });
+
+const indexText = (point, unit = 'M') => M.comparisonTableRowHtml(point,unit,{compactIdentity:true})
+  .match(/data-comparison-col="priceIndexCnyPerM">([^<]*)<\/td>/)[1];
+
+test('价格指数乘以原始消耗倍率，保留真实零；缺失和非法值不作为平均或零', () => {
+  for(const [price,rate,expected] of [[2,1.5,3],[2,.8,1.6],[2,1,2],[2,0,0],[0,1.5,0],[.00012345,1.2345,.000152399025]]) {
+    const point={slug:'index',scores:{},unitPriceCnyPerM:price,tokenConsumptionRate:rate};
+    for(const unit of ['yi','M','B']) assert.equal(indexText(point,unit),M.formatUnitPrice(expected,unit));
+    assert.ok(!M.comparisonTableRowHtml(point,'M',{}).includes('priceIndexCnyPerM'));
+  }
+  for(const invalid of [null,undefined,'',false,-1,NaN,Infinity]) {
+    assert.equal(indexText({slug:'index',unitPriceCnyPerM:2,tokenConsumptionRate:invalid}),'—');
+    assert.equal(indexText({slug:'index',unitPriceCnyPerM:invalid,tokenConsumptionRate:1.5}),'—');
+  }
+  assert.equal(indexText({slug:'index',unitPriceCnyPerM:0,tokenConsumptionRate:null}),'—');
+  assert.equal(indexText({slug:'index',unitPriceCnyPerM:Number.MAX_VALUE,tokenConsumptionRate:2}),'—');
+});
+
+test('价格指数按未舍入乘积双向排序，未知始终排后且不改原记录', () => {
+  const points=[{slug:'cheap',unitPriceCnyPerM:1,tokenConsumptionRate:3},
+    {slug:'efficient',unitPriceCnyPerM:2,tokenConsumptionRate:.5},
+    {slug:'zero',unitPriceCnyPerM:0,tokenConsumptionRate:2},
+    {slug:'precise-a',unitPriceCnyPerM:1,tokenConsumptionRate:1.00002},
+    {slug:'precise-z',unitPriceCnyPerM:1,tokenConsumptionRate:1.00001},
+    {slug:'unknown',unitPriceCnyPerM:1,tokenConsumptionRate:null}];
+  const before=structuredClone(points);
+  assert.deepEqual(M.sortComparisonRows(points,'priceIndexCnyPerM','asc').map(p=>p.slug),['zero','efficient','precise-z','precise-a','cheap','unknown']);
+  assert.deepEqual(M.sortComparisonRows(points,'priceIndexCnyPerM','desc').map(p=>p.slug),['cheap','precise-a','precise-z','efficient','zero','unknown']);
+  assert.deepEqual(points,before);
+});
+
+test('价格指数跟随首月和每月口径，API 不套订阅优惠，原价和额度保持原样', () => {
+  const context={planBySlug:new Map([['p',{monthlyPrice:100,firstMonthPrice:25}]])};
+  const points=[{slug:'sub',planSlug:'p',billingMode:'subscription',unitPriceCnyPerM:2,tokenConsumptionRate:1.5,monthlyTokenInM:20},
+    {slug:'api',billingMode:'payg',unitPriceCnyPerM:2,tokenConsumptionRate:.8}];
+  const before=structuredClone(points),first=E.withComparisonPriceBasis(points,context,'firstMonth');
+  assert.equal(indexText(first[0]),M.formatUnitPrice(.75,'M'));
+  assert.equal(indexText(first[1]),M.formatUnitPrice(1.6,'M'));
+  assert.equal(indexText(E.withComparisonPriceBasis(points,context,'monthly')[0]),M.formatUnitPrice(3,'M'));
+  assert.equal(first[0].monthlyTokenInM,20);assert.deepEqual(points,before);
+});

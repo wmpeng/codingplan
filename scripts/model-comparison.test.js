@@ -452,7 +452,8 @@ test('unit price precedes all three usage columns and API pricing follows monthl
   const apiPricingIndex = keys.indexOf('apiPricing');
   assert.equal(unitPriceVisualIndex, unitPriceIndex + 1);
   assert.equal(keys.indexOf('tokenConsumptionRate'), unitPriceVisualIndex + 1);
-  assert.equal(keys.indexOf('fiveHourTokenInM'), keys.indexOf('tokenConsumptionRate') + 1);
+  assert.equal(keys.indexOf('priceIndexCnyPerM'), keys.indexOf('tokenConsumptionRate') + 1);
+  assert.equal(keys.indexOf('fiveHourTokenInM'), keys.indexOf('priceIndexCnyPerM') + 1);
   assert.equal(apiPricingIndex, keys.indexOf('monthlyTokenInM') + 1);
   assert.equal(COMPARISON_TABLE_COLUMNS[unitPriceVisualIndex].sortable, false);
   assert.ok(unitPriceIndex < keys.indexOf('fiveHourTokenInM'));
