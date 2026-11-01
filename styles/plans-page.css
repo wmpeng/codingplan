@@ -1,35 +1,35 @@
 /* The column switch controls the table's visible fields. */
-#plansPage .plan-columns-control {
+.plans-page .plan-columns-control {
   position: relative; display: inline-flex; align-items: center; gap: 8px;
   box-sizing: border-box; min-height: 40px; padding: 0 6px 0 8px;
   border-radius: 8px; background: transparent; color: var(--text-secondary);
   font-size: 13px; font-weight: 500; line-height: 1.4; white-space: nowrap;
   cursor: pointer; user-select: none; transition: background-color .15s, color .15s;
 }
-#plansPage .plan-columns-control > input {
+.plans-page .plan-columns-control > input {
   position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;
   z-index: 1; opacity: 0; cursor: pointer;
 }
-#plansPage .plan-columns-control > svg { display: block; width: 16px; height: 16px; flex: none; }
-#plansPage .plan-columns-switch {
+.plans-page .plan-columns-control > svg { display: block; width: 16px; height: 16px; flex: none; }
+.plans-page .plan-columns-switch {
   position: relative; width: 34px; height: 20px; flex: none; margin-left: 2px;
   border-radius: 999px; background: #cbd5e1; transition: background-color .15s;
 }
-#plansPage .plan-columns-switch::before {
+.plans-page .plan-columns-switch::before {
   content: ''; position: absolute; top: 3px; left: 3px;
   width: 14px; height: 14px; border-radius: 50%; background: #fff;
   box-shadow: 0 1px 2px rgba(15, 23, 42, .18); transition: transform .15s;
 }
-#plansPage .plan-columns-control:hover { background: #edf3fb; color: var(--text-primary); }
-#plansPage.show-all-columns .plan-columns-control { color: var(--accent-primary); }
-#plansPage.show-all-columns .plan-columns-switch { background: var(--accent-primary); }
-#plansPage.show-all-columns .plan-columns-switch::before { transform: translateX(14px); }
-#plansPage .plan-columns-control:has(input:focus-visible) { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+.plans-page .plan-columns-control:hover { background: #edf3fb; color: var(--text-primary); }
+.plans-page .plan-columns-control:has(input:checked) { color: var(--accent-primary); }
+.plans-page .plan-columns-control:has(input:checked) .plan-columns-switch { background: var(--accent-primary); }
+.plans-page .plan-columns-control:has(input:checked) .plan-columns-switch::before { transform: translateX(14px); }
+.plans-page .plan-columns-control:has(input:focus-visible) { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
-  #plansPage .plan-columns-control, #plansPage .plan-columns-switch, #plansPage .plan-columns-switch::before { transition: none; }
+  .plans-page .plan-columns-control, .plans-page .plan-columns-switch, .plans-page .plan-columns-switch::before { transition: none; }
 }
 @media (max-width: 800px), (pointer: coarse) {
-  #plansPage .plan-columns-control { min-height: 44px; }
+  .plans-page .plan-columns-control { min-height: 44px; }
 }
 
 /* Quota details use the visible table width, including while scrolling sideways. */

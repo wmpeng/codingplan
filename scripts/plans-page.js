@@ -157,6 +157,7 @@
         if (event.key === Directory.pinKey || event.key === null) { pins = Directory.readPins(root.localStorage,allPlans); apply(); }
       });
       syncSort();
+      root.CodingPlanToolPage.mountDirectoryFilters('plans', search, count);
     }).catch(error => root.CodingPlanToolPage.error(host,error.message));
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded',boot); else boot();

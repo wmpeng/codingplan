@@ -44,6 +44,37 @@
     row.append(search, count);
     if (previous && !previous.children.length) previous.remove();
   }
+  function mountDirectoryFilters(view, search, count) {
+    const host = document.getElementById('toolFilters'), controls = [];
+    const state = () => host.filterController.getState();
+    function add(selector, label, read, options = {}) {
+      const element = host.querySelector(selector) || document.querySelector(selector);
+      if (element) controls.push({element, label, read, paused:true, ...options});
+    }
+    const picker = (selector, label, key, value) => add(selector, label,
+      el => [state()[key] != null, el.querySelector(value).textContent], {picker:true});
+    picker('#homePlatformPicker', '平台', 'platformSlugs', '[data-picker-count]');
+    picker('#homeModelPicker', '模型', 'modelSlugs', '[data-picker-count]');
+    add('#homeBudgetPicker', '月预算', el => [state().apiOnly || state().budgetCny != null, el.querySelector('[data-budget-label]').textContent], {picker:true});
+    picker('#homeTokenPicker', '月 Token 数', 'monthlyTokenRange', '[data-token-label]');
+    add('#homeStatusPicker', '购买状态', el => { const value=el.querySelector('[data-status-label]').textContent; return [value !== '不限', value]; }, {picker:true});
+    function segments(selector, label, display = false) {
+      add(selector, label, el => { const buttons=[...el.querySelectorAll('button')], index=buttons.findIndex(button=>button.classList.contains('is-active')); return [index>0, buttons[index]?.textContent || '']; }, {display});
+    }
+    function checkbox(selector, label, options) {
+      add(selector,label,el=>{const checked=el.querySelector('input').checked; return [checked,checked?'开启':'关闭'];},options);
+    }
+    if (view === 'pricing') segments('.price-billing-filter', '计费方式');
+    checkbox('.pricing-mainland-control, .platform-access-filter', '支持中国大陆');
+    checkbox('.plan-harness-filter', '需支持第三方工具');
+    add('.platform-featured-control','显示精选',el=>{const checked=el.querySelector('[data-catalog-featured]').getAttribute('aria-pressed')==='true';return [checked,checked?'开启':'关闭'];},{paused:false});
+    segments('.usage-color-control', '颜色', true);
+    segments('.usage-benchmark-control', '评分', true);
+    segments('.usage-scale-control', '坐标轴', true);
+    add('.plan-sort-controls', '排序', el=>{const select=el.querySelector('select');return [select.value!=='platformOrder',select.selectedOptions[0]?.textContent || ''];},{display:true,paused:false});
+    checkbox('.plan-columns-control','更多字段',{display:true,paused:false});
+    root.DirectoryFilters.mount(host, search, count, {controls, pausedFields:host.querySelector('[data-featured-filter-fields]')});
+  }
   function error(host, message, options = {}) {
     root.CodingPlanEvents?.track('load_error', {module:'tool_page', error_code:'data_unavailable'});
     const box = document.createElement('div');
@@ -58,5 +89,5 @@
     host.setAttribute('aria-busy', 'false');
     if (options.preserveContent) host.prepend(box); else host.replaceChildren(box);
   }
-  root.CodingPlanToolPage = { load, loadPreset, filters, mountSearch, error };
+  root.CodingPlanToolPage = { load, loadPreset, filters, mountSearch, mountDirectoryFilters, error };
 })(globalThis);

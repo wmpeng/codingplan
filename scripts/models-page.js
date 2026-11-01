@@ -54,6 +54,13 @@
         if (event.key === Directory.pinKey || event.key === null) { pins = Directory.readPins(root.localStorage, context.models); render(); }
       });
       render();
+      root.DirectoryFilters.mount(document.getElementById('modelControls'), search, document.getElementById('modelCount'), {
+        controls: [
+          {element:fields, label:'支持多模态', read:()=>[multimodal.checked,multimodal.checked?'开启':'关闭']},
+          {element:document.querySelector('.model-featured-controls'), label:'精选模型', read:()=>[!!featuredMode,buttons.find(button=>button.getAttribute('aria-pressed')==='true')?.textContent || '全部模型']},
+          {element:document.getElementById('modelSortPicker'), label:'排序', picker:true, display:true, read:()=>[sort.value!=='default',sort.selectedOptions[0]?.textContent || '']}
+        ]
+      });
     } catch (error) { root.CodingPlanToolPage.error(host, error.message, {preserveContent:true}); }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
