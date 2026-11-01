@@ -405,6 +405,9 @@ body .directory-filters.directory-filters-compact .filter-picker > summary::afte
 body .directory-filters.directory-filters-compact :is(.filter-picker-value, .directory-picker-value) { display: none; }
 body .directory-filters.directory-filters-compact [data-active="true"] > :is(summary, .directory-control-trigger) .directory-filter-dot { display: inline-block !important; flex: 0 0 5px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-primary); }
 body .directory-filters-compact .directory-control-menu { z-index: 1; overflow: auto; padding: 12px; align-items: flex-start; }
+/* 原位控件进入简单设置弹层后，只保留外层弹框和原生开关。 */
+body .directory-filters.directory-filters-compact .directory-control-menu :is(.pricing-mainland-control, .platform-access-filter, .plan-harness-filter, .model-multimodal-filter) { border: 0; padding: 0; background: transparent; box-shadow: none; }
+body .directory-filters.directory-filters-compact .directory-control-menu label { min-height: 40px; padding: 0; align-items: center; background: transparent; }
 .directory-control-menu.tool-result-bar { margin: 0; }
 .models-page .directory-filters .model-footer-controls { display: contents; }
 .directory-control-menu > :is(.usage-color-control, .usage-benchmark-control, .usage-scale-control, .price-billing-filter) { flex-shrink: 0; }
@@ -416,6 +419,7 @@ body .directory-filters-compact .filter-state-actions > button[data-filter-actio
 .directory-search-toggle.is-active::after { content: ''; position: absolute; right: 3px; top: 3px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-primary); }
 .directory-search-toggle { position: relative; flex-shrink: 0; }
 @media (max-width: 800px), (pointer: coarse) {
+  body .directory-filters.directory-filters-compact .directory-control-menu label { min-height: 44px; }
   body .directory-filters.directory-filters-compact :is(.filter-picker > summary, .directory-control-trigger), body .directory-filter-toggle,
   body .directory-filters-compact .filter-state-actions > button[data-filter-action], body .directory-search-toggle { min-height: 44px; }
 }
