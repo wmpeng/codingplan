@@ -53,23 +53,38 @@
       }
     });
     copyTable.append(copy); overlay.append(copyTable); anchor.append(overlay);
+    const backdrop = document.createElement('div');
+    backdrop.className = 'sticky-table-backdrop'; backdrop.hidden = true; overlay.before(backdrop);
     let frame = 0, syncing = false;
     function update() {
       frame = 0;
       const nav = document.querySelector('.site-header');
       const filters = document.querySelector('#toolFilters.directory-filters-stuck');
-      const top = Math.max(0, nav?.getBoundingClientRect().bottom || 0, filters?.getBoundingClientRect().bottom || 0);
+      const baseTop = Math.max(0, nav?.getBoundingClientRect().bottom || 0, filters?.getBoundingClientRect().bottom || 0);
+      const layoutStyle = getComputedStyle(anchor);
+      const gap = parseFloat(layoutStyle.getPropertyValue('--table-header-gap'));
+      const inset = parseFloat(layoutStyle.getPropertyValue('--table-control-inset'));
+      const top = baseTop + gap;
       const area = scroll.getBoundingClientRect(), tableBox = table.getBoundingClientRect();
+      const scrollStyle = getComputedStyle(scroll);
+      const border = parseFloat(scrollStyle.borderTopWidth) || 0;
+      overlay.style.borderWidth = border + 'px';
+      overlay.style.borderColor = scrollStyle.borderTopColor;
+      overlay.style.borderTopLeftRadius = scrollStyle.borderTopLeftRadius;
+      overlay.style.borderTopRightRadius = scrollStyle.borderTopRightRadius;
       const headBox = header.getBoundingClientRect();
-      const controlWidth = control.getBoundingClientRect().width;
+      const controlBox = control.getBoundingClientRect();
+      const controlTop = Math.max(0, (headBox.height - controlBox.height) / 2);
+      control.style.setProperty('--table-control-offset', (border + controlTop) + 'px');
       const viewportHeight = window.visualViewport?.height || window.innerHeight;
       const visible = area.width > 0 && headBox.height > 0 && headBox.top < top && tableBox.bottom > top + headBox.height && top + headBox.height + 80 < viewportHeight;
-      overlay.hidden = !visible;
+      overlay.hidden = !visible; backdrop.hidden = !visible;
+      Object.assign(backdrop.style, {top:baseTop+'px', height:(gap+headBox.height+border*2)+'px'});
       control.classList.toggle('table-header-control-fixed', visible);
-      if (visible) Object.assign(control.style, {left: (area.right - controlWidth - 10) + 'px', top: (top + 8) + 'px'});
-      else { control.style.left = ''; control.style.top = ''; }
+      if (visible) Object.assign(control.style, {right: (document.documentElement.clientWidth - area.right + inset) + 'px', left: '', top: (top + border + controlTop) + 'px'});
+      else { control.style.left = ''; control.style.right = ''; control.style.top = ''; }
       if (!visible) return;
-      Object.assign(overlay.style, {left: `${area.left}px`, top: `${top}px`, width: `${area.width}px`, height: `${headBox.height}px`});
+      Object.assign(overlay.style, {left: `${area.left}px`, top: `${top}px`, width: `${area.width}px`, height: `${headBox.height + border*2}px`});
       copyTable.style.width = `${tableBox.width}px`;
       const originalCells = [...header.rows[0].cells], copyCells = [...copy.rows[0].cells];
       originalCells.forEach((cell, index) => {

@@ -362,6 +362,13 @@ body.tool-unified-active .filter-state-footer .filter-state-actions { flex: 0 0 
 .directory-filters.directory-sticky-filters, .models-page #modelControls.directory-sticky-filters { position: sticky; top: var(--directory-filter-top); z-index: 20; }
 .directory-filters.directory-sticky-filters:has(.filter-picker[open], .directory-control-menu.filter-picker-menu:not([hidden])) { z-index: 35; }
 .directory-filters > .filter-state-bar, .directory-filters.filter-state-bar { background: var(--bg-secondary); }
+.directory-filters-stuck::before {
+  content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 100vw;
+  transform: translateX(-50%); background: var(--bg-primary); z-index: -1; pointer-events: none;
+}
+.directory-filters-stuck > .filter-state-bar, .directory-filters-stuck.filter-state-bar {
+  border-top: 0; border-top-left-radius: 0; border-top-right-radius: 0;
+}
 /* 目录页只切换原控件的布局，筛选状态与菜单仍由所属组件维护。 */
 .directory-filter-region { overflow-anchor: none; }
 .directory-filter-spacer { overflow-anchor: none; }

@@ -247,7 +247,7 @@
       toggle.title = hidden.length ? '展开全部：'+hidden.map(entry => entry.label).join('、') : '展开筛选与展示设置';
     }
     function update() {
-      const top = (header?.getBoundingClientRect().height || 0) + 8;
+      const top = header?.getBoundingClientRect().height || 0;
       host.style.setProperty('--directory-filter-top', top+'px');
       const viewHeight = root.visualViewport?.height || root.innerHeight;
       enabled = viewHeight - top >= 224;
