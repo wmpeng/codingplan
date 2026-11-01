@@ -32,6 +32,7 @@
     sentinel.parentElement.classList.add('directory-filter-region');
     let compact = false, stuck = false, enabled = true, frame, fullHeight = 0, layoutSignature = '';
     let openEntry = null, fitSignature = '';
+    const compactWidths = new Map(), originalWidths = new Map();
 
     function button(label, className, icon) {
       const el = document.createElement('button'); el.type = 'button';
@@ -132,6 +133,14 @@
     function reserveHeight() {
       spacer.style.height = stuck ? Math.max(0, fullHeight-host.getBoundingClientRect().height)+'px' : '0px';
     }
+    function setOriginal(entry, original) {
+      entry.original = original;
+      entry.el.classList.toggle('directory-filter-original', original);
+      if (!entry.isPicker) {
+        entry.menu.classList.toggle('filter-picker-menu', compact && !original);
+        entry.menu.hidden = compact && !original && openEntry !== entry;
+      }
+    }
     function setCompact(value) {
       if (value === compact && host.dataset.directoryFiltersMounted) return;
       closeMenus();
@@ -148,9 +157,9 @@
         grid.append(filters, divider, display); searchGroup.append(search, count); footer.append(utility);
         utility.append(actions, toggle);
       }
-      for (const entry of entries) if (!entry.isPicker) {
-        entry.menu.classList.toggle('filter-picker-menu', compact);
-        entry.menu.hidden = compact; entry.trigger.setAttribute('aria-expanded', 'false');
+      for (const entry of entries) {
+        setOriginal(entry, !compact);
+        if (!entry.isPicker) entry.trigger.setAttribute('aria-expanded', 'false');
       }
       for (const entry of entries) entry.el.classList.remove('directory-filter-overflow');
       filters.hidden = display.hidden = false;
@@ -179,16 +188,27 @@
     }
 
     function fit() {
+      // Keep an active editor or open menu in place while adapting its neighbours.
+      const locked = new Set(entries.filter(entry => entry.el.contains(document.activeElement) || entry === openEntry || entry.control.open));
       const signature = compact ? [toolbar.clientWidth, utility.getBoundingClientRect().width, getComputedStyle(toolbar).font,
-        ...entries.map(entry => entry.el.dataset.active)].join('|') : '';
+        ...entries.map(entry => [entry.trigger.title, locked.has(entry) ? String(entry.original) : '', entry.control.open])].join('|') : '';
       if (signature && signature === fitSignature) return;
       fitSignature = signature;
       for (const entry of entries) entry.el.classList.remove('directory-filter-overflow');
       filters.hidden = display.hidden = false; display.classList.remove('directory-display-no-divider');
       if (!compact) return;
-      // Restore once, measure all entries together, then apply the chosen set together.
+      // Measure each form in a batch. Focused controls retain their current form.
+      entries.forEach(entry => { if (!locked.has(entry)) setOriginal(entry, false); });
+      entries.forEach(entry => {
+        if (!locked.has(entry) || !entry.original) compactWidths.set(entry, entry.el.getBoundingClientRect().width);
+      });
+      entries.forEach(entry => { if (!locked.has(entry)) setOriginal(entry, true); });
+      entries.forEach(entry => {
+        if (!locked.has(entry) || entry.original) originalWidths.set(entry, entry.el.getBoundingClientRect().width);
+      });
       const filterEntries = entries.filter(entry => !entry.spec.display), displayEntries = entries.filter(entry => entry.spec.display);
-      const sizes = new Map(entries.map(entry => [entry, entry.el.getBoundingClientRect().width]));
+      const originals = new Set(entries.filter(entry => locked.has(entry) ? entry.original : originalWidths.get(entry) <= compactWidths.get(entry)));
+      const sizes = new Map(entries.map(entry => [entry, (originals.has(entry) ? originalWidths : compactWidths).get(entry)]));
       const style = getComputedStyle(toolbar), gap = parseFloat(style.columnGap) || 0;
       const groupGap = parseFloat(getComputedStyle(filters).columnGap) || 0;
       const dividerWidth = 16;
@@ -206,8 +226,21 @@
       }
       const chosen = new Set([...chosenFilters, ...chosenDisplay]);
       // Avoid hiding a keyboard user or an open picker during a resize.
-      if (entries.some(entry => !chosen.has(entry) && (entry.el.contains(document.activeElement) || entry.control.open))) { setCompact(false); return; }
-      entries.forEach(entry => entry.el.classList.toggle('directory-filter-overflow', !chosen.has(entry)));
+      if (entries.some(entry => !chosen.has(entry) && locked.has(entry))) { setCompact(false); return; }
+      // Cover entries first, then spend the remaining width in the same priority order.
+      for (let i = 0; i < Math.max(filterEntries.length, displayEntries.length); i++) {
+        for (const entry of [displayEntries[i], filterEntries[i]]) {
+          if (!entry || !chosen.has(entry) || originals.has(entry) || locked.has(entry)) continue;
+          const previous = sizes.get(entry);
+          sizes.set(entry, originalWidths.get(entry));
+          if (widthFor(chosenFilters, chosenDisplay) <= available) originals.add(entry);
+          else sizes.set(entry, previous);
+        }
+      }
+      entries.forEach(entry => {
+        setOriginal(entry, chosen.has(entry) && originals.has(entry));
+        entry.el.classList.toggle('directory-filter-overflow', !chosen.has(entry));
+      });
       filters.hidden = !chosenFilters.length; display.hidden = !chosenDisplay.length;
       display.classList.toggle('directory-display-no-divider', !chosenFilters.length);
       const hidden = entries.filter(entry => !chosen.has(entry));
@@ -219,7 +252,8 @@
       const viewHeight = root.visualViewport?.height || root.innerHeight;
       enabled = viewHeight - top >= 224;
       const layout = [host.clientWidth, top, getComputedStyle(host).font].join('|');
-      if (stuck && layout !== layoutSignature) {
+      const editing = entries.some(entry => entry.el.contains(document.activeElement) || entry === openEntry || entry.control.open);
+      if (stuck && layout !== layoutSignature && !editing) {
         // A narrower layout may make the original card taller than the scroll distance.
         const wasCompact = compact;
         host.classList.remove('directory-filters-stuck', 'directory-sticky-filters');
@@ -228,7 +262,8 @@
         if (wasCompact) setCompact(true);
         host.classList.add('directory-filters-stuck');
       }
-      layoutSignature = layout;
+      // Defer a full-card measurement until the active editor/menu is released.
+      if (!stuck || !editing) layoutSignature = layout;
       if (!stuck && !compact) fullHeight = host.getBoundingClientRect().height;
       // Keep normal flow until the entire original card has passed the header.
       const nextStuck = enabled && sentinel.getBoundingClientRect().top + fullHeight <= top;
@@ -245,6 +280,7 @@
     }
     function schedule() { cancelAnimationFrame(frame); frame = requestAnimationFrame(update); }
     host.addEventListener('input', schedule); host.addEventListener('change', schedule); host.addEventListener('click', schedule);
+    host.addEventListener('focusin', schedule); host.addEventListener('focusout', schedule);
     root.addEventListener('codingplan:filters-changed', schedule);
     root.addEventListener('resize', schedule); root.addEventListener('scroll', schedule, {passive:true});
     root.visualViewport?.addEventListener('resize', schedule);
