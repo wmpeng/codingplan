@@ -118,11 +118,14 @@
       const left = view?.offsetLeft || 0, top = view?.offsetTop || 0;
       const width = view?.width || root.innerWidth, height = view?.height || root.innerHeight;
       const anchor = entry.trigger.getBoundingClientRect();
+      const searchBounds = entry === searchEntry ? surface.getBoundingClientRect() : null;
+      const maxWidth = Math.min(width - 28, searchBounds?.width ?? width);
       const minTop = Math.max(top + 8, (header?.getBoundingClientRect().bottom || 0) + 8);
-      Object.assign(entry.menu.style, {position:'fixed', width:entry === searchEntry ? '340px' : 'max-content', maxWidth:(width-28)+'px', minWidth:'0', right:'auto', bottom:'auto', maxHeight:Math.max(80, top + height - minTop - 14)+'px'});
+      Object.assign(entry.menu.style, {position:'fixed', width:entry === searchEntry ? '340px' : 'max-content', maxWidth:maxWidth+'px', minWidth:'0', right:'auto', bottom:'auto', maxHeight:Math.max(80, top + height - minTop - 14)+'px'});
       const panelWidth = Math.min(entry.menu.getBoundingClientRect().width, width - 28);
       entry.menu.style.width = panelWidth+'px';
-      entry.menu.style.left = Math.max(left + 14, Math.min(anchor.left, left + width - panelWidth - 14))+'px';
+      const preferredLeft = searchBounds ? searchBounds.right - panelWidth : anchor.left;
+      entry.menu.style.left = Math.max(left + 14, Math.min(preferredLeft, left + width - panelWidth - 14))+'px';
       entry.menu.style.top = Math.max(minTop, Math.min(anchor.bottom + 8, top + height - entry.menu.getBoundingClientRect().height - 14))+'px';
     }
     function showMenu(entry, open) {
