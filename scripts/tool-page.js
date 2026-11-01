@@ -71,7 +71,6 @@
     segments('.usage-color-control', '颜色', true);
     segments('.usage-benchmark-control', '评分', true);
     segments('.usage-scale-control', '坐标轴', true);
-    checkbox('.plan-columns-control','更多字段',{display:true,paused:false});
     root.DirectoryFilters.mount(host, search, count, {controls, pausedFields:host.querySelector('[data-featured-filter-fields]')});
   }
   function error(host, message, options = {}) {

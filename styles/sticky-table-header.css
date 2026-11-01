@@ -3,3 +3,8 @@
 .sticky-table-header[hidden] { display: none; }
 .sticky-table-header > table { margin: 0; }
 .sticky-table-header th { box-sizing: border-box; }
+
+.table-header-anchor { position: relative; min-width: 0; }
+.table-header-control { position: absolute !important; z-index: 5; top: 0; right: 0; background: #f4f7fb !important; }
+.table-header-control.table-header-control-fixed { position: fixed !important; right: auto; z-index: 20; }
+.table-header-anchor.table-header-control-spaced th { padding-top: 52px !important; }

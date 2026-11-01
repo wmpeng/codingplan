@@ -330,7 +330,9 @@
   .price-chart-actions button, .price-chart-export, .price-chart-members select, .price-chart-offer-note summary { min-height:44px; }
 }
 /* 固定价格列宽继续由原规则管理；总宽度随实际可见评分列计算。 */
-.pricing-directory .usage-data-table { --score-aa:0px; --score-swe:0px; --score-live:0px; --score-arena:0px; width:calc(2375px + var(--score-aa) + var(--score-swe) + var(--score-live) + var(--score-arena)); }
+.pricing-directory .usage-data-table { --score-aa:0px; --score-swe:0px; --score-live:0px; --score-arena:0px; --extra-width:0px; width:calc(1875px + var(--extra-width) + var(--score-aa) + var(--score-swe) + var(--score-live) + var(--score-arena)); }
+#pricingPage.show-all-columns .usage-data-table { --extra-width:500px; }
+#pricingPage:not(.show-all-columns) [data-comparison-col="fiveHourTokenInM"], #pricingPage:not(.show-all-columns) [data-comparison-col="weeklyTokenInM"], #pricingPage:not(.show-all-columns) [data-comparison-col="apiPricing"] { display:none; }
 .pricing-directory .usage-data-table:has(th[data-comparison-col="artificialAnalysis"]:not([hidden])) { --score-aa:90px; }
 .pricing-directory .usage-data-table:has(th[data-comparison-col="deepSWE"]:not([hidden])) { --score-swe:120px; }
 .pricing-directory .usage-data-table:has(th[data-comparison-col="liveBench"]:not([hidden])) { --score-live:110px; }

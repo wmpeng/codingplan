@@ -14,13 +14,16 @@
       const search = results.querySelector('input');
       const count = results.querySelector('[data-pricing-result-count]');
       root.CodingPlanToolPage.mountSearch(search, count);
+      const columns = document.createElement('label'); columns.className = 'plan-columns-control';
+      columns.innerHTML = '<input type="checkbox" role="switch" data-price-columns><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.75" y="3.75" width="14.5" height="12.5" rx="1.5"/><path d="M7.5 4v12M12.5 4v12"/></svg><span class="plan-columns-text">更多字段</span><span class="plan-columns-switch" aria-hidden="true"></span>';
+      host.before(columns);
       const params = new URLSearchParams(location.search);
       const relation = params.get('relation');
       const plan = data.context.planBySlug.get(params.get('plan'));
       const focusRelationSlugs = relation ? [relation] : (data.context.relationsByPlanSlug.get(plan?.slug) || []).map(row => row.slug);
       const filterState = document.getElementById('toolFilters').filterController.getState();
       await root.ModelComparison.mountModelComparisonView(host, { mode: 'full', hidePresets: true, data, preset, filterState, focusRelationSlugs,
-        directory:root.PricingDirectory, colorControlHost:document.querySelector('#toolFilters .filter-state-grid'), benchmarkControlHost:document.querySelector('#toolFilters .filter-state-grid'), billingControlHost:document.querySelector('#toolFilters .filter-state-grid'), scaleControlHost:document.querySelector('#toolFilters .filter-state-grid'), search, count });
+        directory:root.PricingDirectory, colorControlHost:document.querySelector('#toolFilters .filter-state-grid'), benchmarkControlHost:document.querySelector('#toolFilters .filter-state-grid'), billingControlHost:document.querySelector('#toolFilters .filter-state-grid'), scaleControlHost:document.querySelector('#toolFilters .filter-state-grid'), search, count, columns:columns.querySelector('input') });
       root.CodingPlanToolPage.mountDirectoryFilters('pricing', search, count);
       const legend = host.querySelector('.usage-color-legend');
       const legendGroup = document.createElement('div'); legendGroup.className = 'tool-legend';

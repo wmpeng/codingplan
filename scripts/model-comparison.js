@@ -535,10 +535,10 @@
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
             `<td class="usage-table-price-visual">${unitPriceVisualHtml(point, tokenUnit, visualOptions)}</td>` +
             (compact ? `<td class="numeric" data-comparison-col="tokenConsumptionRate" title="${escapeHtml(aaScore?.configuration || '')}">${escapeHtml(formatTokenConsumptionRate(point.tokenConsumptionRate))}</td>` : '') +
-            `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
-            `<td class="numeric">${subscription ? formatTokenAmount(point.weeklyTokenInM, tokenUnit) : '—'}</td>` +
+            `<td class="numeric" data-comparison-col="fiveHourTokenInM">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
+            `<td class="numeric" data-comparison-col="weeklyTokenInM">${subscription ? formatTokenAmount(point.weeklyTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}${notice('quota')}</td>` +
-            `<td class="usage-table-api-pricing">${subscription ? '—' : escapeHtml(formatApiPricing(point.apiPricing))}</td>` +
+            `<td class="usage-table-api-pricing" data-comparison-col="apiPricing">${subscription ? '—' : escapeHtml(formatApiPricing(point.apiPricing))}</td>` +
             Scores.keys.map(key => `<td class="numeric" data-comparison-col="${key}" title="${escapeHtml(Scores.details(point.scores?.[key],key))}">${escapeHtml(Scores.format(point.scores?.[key],key))}${key === 'deepSWE' && deepSWEScore ? deepSWEInterval : ''}</td>`).join('') +
             `<td class="usage-table-note">${point.note ? `<details class="usage-note-disclosure"><summary>用量口径与限制</summary><div>${escapeHtml(point.note)}</div></details>` : '—'}</td></tr>`;
     }
@@ -907,13 +907,16 @@
                 benchmark:Url.choice('benchmark', Scores.keys, 'artificialAnalysis'),
                 colorMode:Url.choice('color', ['vendor','model'], 'vendor'),
                 axisScale:Url.choice('scale', ['log','value'], 'log'),
-                chartBilling:Url.choice('chartBilling', ['all','subscription','payg'], 'all')
+                chartBilling:Url.choice('chartBilling', ['all','subscription','payg'], 'all'),
+                extraColumns:Url.flag('extraColumns')
             };
             if (Directory) {
                 const saved = Url.read(urlSchema);
                 search.value = saved.query || '';
                 state.benchmark = saved.benchmark || (Scores.keys.includes(saved.key) ? saved.key : 'artificialAnalysis');
                 state.chartBilling = saved.chartBilling || 'all';
+                mountOptions.columns.checked = saved.extraColumns === true || ['fiveHourTokenInM','weeklyTokenInM'].includes(saved.key);
+                container.classList.toggle('show-all-columns', mountOptions.columns.checked);
                 state.colorMode = saved.colorMode || 'vendor';
                 state.axisScale = saved.axisScale || 'log';
                 const requestedSort = new URLSearchParams(root.location.search).get('sort');
@@ -1141,7 +1144,7 @@
             function renderDataTable(tableName, rows) {
                 latestTableRows[tableName] = rows || [];
                 const sort = tableSortState[tableName];
-                if (Directory) Url.replace(urlSchema, {query:search.value, ...sort, benchmark:state.benchmark, colorMode:state.colorMode, axisScale:state.axisScale, chartBilling:state.chartBilling}, {remove:['allScores']});
+                if (Directory) Url.replace(urlSchema, {query:search.value, ...sort, benchmark:state.benchmark, colorMode:state.colorMode, axisScale:state.axisScale, chartBilling:state.chartBilling, extraColumns:mountOptions.columns.checked}, {remove:['allScores']});
                 let sorted = Directory ? Directory.tableRows(rows, points, pins, sortComparisonRows, sort) : sortComparisonRows(rows, sort.key, sort.direction);
                 const scale = buildUnitPriceVisualScale(sorted, state.axisScale);
                 const colors = state.colorMode === 'model' ? modelColors : platformColors;
@@ -1200,6 +1203,11 @@
             }
 
             if (Directory) {
+                mountOptions.columns.addEventListener('change', () => {
+                    container.classList.toggle('show-all-columns', mountOptions.columns.checked);
+                    if (!mountOptions.columns.checked && ['fiveHourTokenInM','weeklyTokenInM'].includes(tableSortState.comparison.key)) tableSortState.comparison={key:'unitPriceCnyPerM',direction:'asc'};
+                    renderDataTable('comparison', latestTableRows.comparison);
+                });
                 const pagerHtml='<button class="tool-button" type="button" data-price-page="first">第一页</button><button class="tool-button" type="button" data-price-page="previous">上一页</button><span data-price-page-label aria-live="polite"></span><button class="tool-button" type="button" data-price-page="next">下一页</button>';
                 const pager=document.createElement('div');pager.className='price-pagination';pager.dataset.pricePagination='';pager.innerHTML=pagerHtml;
                 const card=container.querySelector('.usage-data-card');card.append(pager);
