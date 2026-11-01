@@ -48,5 +48,14 @@
     const pins = selection.featuredMode ? selection.extraPinnedCount : selection.pinned.size;
     return `${selection.featuredMode ? '精选' : '符合条件'} ${selection.matchedCount} 个` + (pins ? ` · 置顶 ${pins} 个` : '');
   }
-  return {select, countLabel, sanitizePins, readPins, writePins, pinKey};
+  function tableHtml(selection, context) {
+    const Scores = globalThis.BenchmarkScores || require('./benchmark-scores.js'), esc = UI.escapeHtml;
+    const rows = selection.visible.map(model => {
+      const pinned = selection.pinned.has(model.slug), featured = selection.featured.has(model.slug);
+      const pin = UI.pinButton({pinned, label:`${pinned ? '取消置顶' : '置顶'} ${model.name}`, attributes:{'data-model-pin':model.slug}});
+      return `<tr data-model-slug="${esc(model.slug)}" class="${featured ? 'is-featured' : ''}${pinned ? ' is-pinned' : ''}"><th scope="row"><div class="model-table-identity">${pin}<div><span class="model-table-name">${esc(model.name)}</span>${featured ? '<span class="model-featured-badge">精选</span>' : ''}</div></div></th><td>${esc(Catalog.modalities(model))}</td>${Scores.keys.map(key => `<td class="model-table-score">${Scores.cardHtml(model,key,context.benchmarks?.[key])}</td>`).join('')}<td class="model-table-platforms">${Catalog.modelPlatformCount(model,context)}</td><td class="model-table-actions"><a href="${esc(UI.route('plans',{model:model.slug}))}">查看套餐 →</a><a href="${esc(UI.route('pricing',{model:model.slug}))}">价格与额度 →</a></td></tr>`;
+    }).join('');
+    return `<div class="tool-table-wrap model-table-wrap" role="region" aria-label="模型对比表，可横向滚动" tabindex="0"><table class="tool-table model-directory-table"><colgroup><col class="model-name-col"><col class="model-modality-col">${Scores.keys.map(() => '<col class="model-score-col">').join('')}<col class="model-platforms-col"><col class="model-actions-col"></colgroup><thead><tr><th scope="col">模型</th><th scope="col">输入模态</th>${Scores.keys.map(key => `<th scope="col" class="model-table-score">${esc(Scores.definitions[key].label)}</th>`).join('')}<th scope="col" class="model-table-platforms">收录平台</th><th scope="col">购买方案</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  }
+  return {select, countLabel, tableHtml, sanitizePins, readPins, writePins, pinKey};
 });

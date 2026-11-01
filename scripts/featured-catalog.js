@@ -42,13 +42,16 @@
     if (!model.modalities?.input) return model.multimodal === true ? '支持多模态 · 具体模态待确认' : model.multimodal === false ? '文本输入' : '输入模态待确认';
     return model.modalities.input.map(x => names[x] || x).join(' / ') + '输入';
   }
-  function modelCard(model, context, options = {}) {
-    const supported = new Set(context.planModels.filter(r => r.modelSlug === model.slug).map(r => context.planBySlug.get(r.planSlug)).filter(p => {
+  function modelPlatformCount(model, context) {
+    return new Set(context.planModels.filter(r => r.modelSlug === model.slug).map(r => context.planBySlug.get(r.planSlug)).filter(p => {
       const platform = p && context.platformBySlug.get(p.platformSlug);
       return p && p.planStatus !== 'delisted' && platform && platform.platformStatus !== 'delisted';
-    }).map(p => p.platformSlug));
+    }).map(p => p.platformSlug)).size;
+  }
+  function modelCard(model, context, options = {}) {
+    const supported = modelPlatformCount(model, context);
     const title = options.directory ? `<header class="model-card-header"><h3>${esc(model.name)}</h3><div class="model-card-aside">${options.featured ? '<span class="model-featured-badge">精选</span>' : ''}${UI.pinButton({pinned:options.pinned,label:`${options.pinned ? '取消置顶' : '置顶'} ${model.name}`,attributes:{'data-model-pin':model.slug}})}</div></header>` : `<h3>${esc(model.name)}</h3>`;
-    return `<article class="model-card${options.featured ? ' is-featured' : ''}${options.pinned ? ' is-pinned' : ''}" data-model-slug="${esc(model.slug)}">${title}<p class="model-modality">${esc(modalities(model))}</p><div class="model-scores">${Scores.keys.map(key => Scores.cardHtml(model,key,context.benchmarks?.[key])).join('')}</div><a class="model-offers-link" href="${esc(UI.route('plans',{model:model.slug}))}">${supported.size} 个平台收录 · 查看套餐 →</a><a class="model-price-link" href="${esc(UI.route('pricing',{model:model.slug}))}">比较价格与额度 →</a></article>`;
+    return `<article class="model-card${options.featured ? ' is-featured' : ''}${options.pinned ? ' is-pinned' : ''}" data-model-slug="${esc(model.slug)}">${title}<p class="model-modality">${esc(modalities(model))}</p><div class="model-scores">${Scores.keys.map(key => Scores.cardHtml(model,key,context.benchmarks?.[key])).join('')}</div><a class="model-offers-link" href="${esc(UI.route('plans',{model:model.slug}))}">${supported} 个平台收录 · 查看套餐 →</a><a class="model-price-link" href="${esc(UI.route('pricing',{model:model.slug}))}">比较价格与额度 →</a></article>`;
   }
   function modelGroups(config, context) {
     return config.groups.map(g => `<section class="featured-model-group"><div class="section-heading"><div class="featured-model-group-title"><h3>${esc(g.title)}</h3><span class="featured-model-group-description">${g.id === 'sota-models' ? '复杂任务 · 能力优先' : '日常高频 · 性价比优先'}</span></div><span>${g.modelSlugs.length} 个模型</span></div><div class="model-grid">${g.modelSlugs.map(s => modelCard(context.modelBySlug.get(s),context)).join('')}</div></section>`).join('');
@@ -111,5 +114,5 @@
     render();
     globalThis.addEventListener('codingplan:price-basis-changed', () => { data=points(context,config); render(); });
   }
-  return {esc,url,validate,score,modalities,modelCard,modelGroups,points,presetTableOptions,mountTables};
+  return {esc,url,validate,score,modalities,modelPlatformCount,modelCard,modelGroups,points,presetTableOptions,mountTables};
 });

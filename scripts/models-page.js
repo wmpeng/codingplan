@@ -8,26 +8,32 @@
       const search = document.getElementById('modelSearch'), sort = document.getElementById('modelSort');
       const multimodal = document.getElementById('modelMultimodal'), fields = document.getElementById('modelFilterFields');
       const reset = document.getElementById('modelReset'), buttons = [...document.querySelectorAll('[data-model-featured]')];
+      const viewButtons = [...document.querySelectorAll('[data-model-view]')];
       buttons.forEach(button => { if (button.dataset.modelFeatured !== 'all') button.textContent = root.CodingPlanUI.modelGroupLabel(preset.groups, button.dataset.modelFeatured); });
       const picker = root.CodingPlanSingleSelect.mount(sort, '排序');
       const Url = root.CodingPlanFilterUrl;
       const urlSchema = {
         query:Url.text('q'), sort:Url.choice('sort', ['default','name',...root.BenchmarkScores.keys], 'default'),
-        multimodal:Url.flag('multimodal'), featuredMode:Url.choice('featured', ['all', ...preset.groups.map(group => group.id)], '')
+        multimodal:Url.flag('multimodal'), featuredMode:Url.choice('featured', ['all', ...preset.groups.map(group => group.id)], ''),
+        view:Url.choice('view', ['cards','table'], 'cards')
       };
       const saved = Url.read(urlSchema);
       let featuredMode = saved.featuredMode || '';
+      let view = saved.view || 'cards';
       search.value = saved.query || ''; sort.value = saved.sort || 'default'; multimodal.checked = saved.multimodal === true;
       picker.sync();
       let pins = Directory.readPins(root.localStorage, context.models);
       function render() {
-        Url.replace(urlSchema, {query:search.value, sort:sort.value, multimodal:multimodal.checked, featuredMode});
+        Url.replace(urlSchema, {query:search.value, sort:sort.value, multimodal:multimodal.checked, featuredMode, view});
         const selection = Directory.select(context.models, preset.groups, {query:search.value, featuredMode, sort:sort.value, multimodal:multimodal.checked}, pins);
         fields.disabled = selection.featuredMode; fields.inert = selection.featuredMode;
         fields.classList.toggle('is-paused', selection.featuredMode);
         search.disabled = selection.featuredMode; reset.disabled = selection.featuredMode;
         buttons.forEach(button => { button.disabled = false; button.setAttribute('aria-pressed', String(button.dataset.modelFeatured === featuredMode)); });
-        host.innerHTML = selection.visible.length ? selection.visible.map(model => Catalog.modelCard(model, context, {
+        viewButtons.forEach(button => { button.disabled = false; button.setAttribute('aria-pressed', String(button.dataset.modelView === view)); });
+        host.classList.toggle('model-grid', view === 'cards');
+        host.dataset.view = view;
+        host.innerHTML = selection.visible.length ? view === 'table' ? Directory.tableHtml(selection, context) : selection.visible.map(model => Catalog.modelCard(model, context, {
           directory:true, featured:selection.featured.has(model.slug), pinned:selection.pinned.has(model.slug)
         })).join('') : '<p class="tool-empty">没有匹配模型，试着清空搜索或减少条件。</p>';
         document.getElementById('modelCount').textContent = Directory.countLabel(selection);
@@ -35,6 +41,10 @@
         root.CodingPlanEvents?.results({result_count:selection.visible.length,result_key:JSON.stringify(selection.visible.map(x=>x.slug))});
       }
       document.getElementById('modelControls').addEventListener('input', render);
+      viewButtons.forEach(button => button.addEventListener('click', () => {
+        if (view === button.dataset.modelView) return;
+        view = button.dataset.modelView; render();
+      }));
       buttons.forEach(button => button.addEventListener('click', () => {
         featuredMode = featuredMode === button.dataset.modelFeatured ? '' : button.dataset.modelFeatured; render();
       }));
@@ -58,6 +68,7 @@
         controls: [
           {element:fields, label:'支持多模态', read:()=>[multimodal.checked,multimodal.checked?'开启':'关闭']},
           {element:document.querySelector('.model-featured-controls'), label:'精选模型', read:()=>[!!featuredMode,buttons.find(button=>button.getAttribute('aria-pressed')==='true')?.textContent || '全部模型']},
+          {element:document.querySelector('.model-view-controls'), label:'视图', display:true, read:()=>[view!=='cards',view==='table'?'表格视图':'卡片视图']},
           {element:document.getElementById('modelSortPicker'), label:'排序', picker:true, display:true, read:()=>[sort.value!=='default',sort.selectedOptions[0]?.textContent || '']}
         ]
       });

@@ -652,6 +652,12 @@ body .model-match-confirm p { margin: 0 0 10px; font-size: 13px; line-height: 1.
 body .model-match-confirm > div { display: flex; gap: 8px; flex-wrap: wrap; }
 body .filter-picker-menu .model-match-confirm button[data-model-match-action="confirm"] { border-color: #dfb884; background: #fff3df; color: #92400e; font-weight: 600; }
 body .model-preset-options button:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+/* 模型视图沿用公共分段按钮，接入目录展示组及吸顶弹层。 */
+body .model-view-controls { margin: 0; }
+body .model-view-controls .model-preset-segments { min-height: var(--control-height); }
+@media (max-width: 800px), (pointer: coarse) {
+  body .model-view-controls .model-preset-segments { min-height: 44px; }
+}
 body .model-match-confirm button:focus-visible { outline: 2px solid #6b7280; outline-offset: 2px; }
 body .model-match-warning { display: inline-flex; align-items: center; gap: 4px; padding: 2px 6px; border: 1px solid #f0d4ac; border-radius: 5px; background: #fff7ea; color: #92400e; font-size: 11px; font-weight: 500; line-height: 1.5; white-space: nowrap; }
 body .guide-summary .model-match-warning { margin-left: 8px; }
