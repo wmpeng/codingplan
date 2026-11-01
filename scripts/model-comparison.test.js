@@ -26,7 +26,7 @@ const {
   buildVendorColorMap,
   buildModelColorMap,
   getPointColorKey,
-  filterBySoloColorKey,
+  filterBySelectedColorKeys,
   getSoloPointLabelField,
   getPointLabelText,
   sortComparisonRows,
@@ -187,12 +187,13 @@ test('platform colors are stable regardless of input order', () => {
   assert.equal(Object.values(models).every((color) => /^#[0-9a-f]{6}$/.test(color)), true);
 });
 
-test('legend solo mode filters by the active color dimension', () => {
+test('legend selection filters by the active color dimension', () => {
   assert.equal(getPointColorKey(points[0], 'vendor'), getPointPlatformKey(points[0]));
   assert.equal(getPointColorKey(points[0], 'model'), 'm1');
-  assert.deepEqual(filterBySoloColorKey(points, 'vendor', getPointPlatformKey(points[0])), [points[0]]);
-  assert.deepEqual(filterBySoloColorKey(points, 'model', 'm2'), [points[1]]);
-  assert.deepEqual(filterBySoloColorKey(points, 'vendor', null), points);
+  assert.deepEqual(filterBySelectedColorKeys(points, 'vendor', new Set([getPointPlatformKey(points[0])])), [points[0]]);
+  assert.deepEqual(filterBySelectedColorKeys(points, 'model', new Set(['m2'])), [points[1]]);
+  assert.deepEqual(filterBySelectedColorKeys(points, 'vendor', new Set()), points);
+  assert.deepEqual(filterBySelectedColorKeys(points, 'model', new Set(['m1', 'm2'])), [points[0], points[1]]);
 });
 
 test('single visible model or platform selects the opposite point label', () => {
@@ -203,15 +204,15 @@ test('single visible model or platform selects the opposite point label', () => 
   assert.equal(getSoloPointLabelField([points[0], points[1]]), null);
 });
 
-test('platform and model filters match legend solo point-label behavior', () => {
+test('platform and model filters match legend selection point-label behavior', () => {
   const samePlatformModel = { ...points[0], modelSlug: 'm4' };
   const platformFromFilter = filterPoints([...points, samePlatformModel], { platforms: new Set([getPointPlatformKey(points[0])]), multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '' });
-  const platformFromLegend = filterBySoloColorKey([...points, samePlatformModel], 'vendor', getPointPlatformKey(points[0]));
+  const platformFromLegend = filterBySelectedColorKeys([...points, samePlatformModel], 'vendor', new Set([getPointPlatformKey(points[0])]));
   assert.equal(getSoloPointLabelField(platformFromFilter), 'model');
   assert.equal(getSoloPointLabelField(platformFromLegend), 'model');
 
   const modelFromFilter = filterPoints(points, { models: new Set(['m1']), multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '' });
-  const modelFromLegend = filterBySoloColorKey(points, 'model', 'm1');
+  const modelFromLegend = filterBySelectedColorKeys(points, 'model', new Set(['m1']));
   assert.equal(getSoloPointLabelField(modelFromFilter), 'vendor');
   assert.equal(getSoloPointLabelField(modelFromLegend), 'vendor');
 });
@@ -222,7 +223,7 @@ test('platform filter key uses stable platform slugs', () => {
   assert.equal(/[\u0000-\u001f]/.test(getPointPlatformKey(points[0])), false);
   assert.notEqual(getPointColorKey(points[0], 'vendor'), getPointColorKey(points[2], 'vendor'));
   assert.deepEqual(filterPoints(points, { platforms: new Set([getPointPlatformKey(points[0])]), multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '' }), [points[0]]);
-  assert.deepEqual(filterBySoloColorKey(points, 'vendor', getPointPlatformKey(points[0])), [points[0]]);
+  assert.deepEqual(filterBySelectedColorKeys(points, 'vendor', new Set([getPointPlatformKey(points[0])])), [points[0]]);
 });
 
 test('model point labels preserve complete bracket qualifiers', () => {

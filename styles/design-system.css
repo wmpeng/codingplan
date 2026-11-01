@@ -204,7 +204,7 @@ body .usage-method-note strong { color: var(--text-primary); font-weight: 600; }
 body .usage-chart-head :is(h3, h4), body .usage-explorer-heading h3 { font-size: 18px; font-weight: 600; color: var(--text-primary); }
 body .usage-chart-head p { color: var(--text-secondary); font-size: 13px; }
 body .usage-legend-item { border-radius: 6px; box-shadow: none; }
-body .usage-legend-item:hover, body .usage-legend-item.is-solo { background: var(--bg-tertiary); border-color: var(--border-color); box-shadow: none; }
+body .usage-legend-item:hover, body .usage-legend-item.is-selected { background: var(--bg-tertiary); border-color: var(--border-color); box-shadow: none; }
 body .usage-color-control { border-color: var(--border-color); }
 body .tool-table a { color: var(--text-primary); }
 body .tool-table a:hover { color: var(--accent-primary); }

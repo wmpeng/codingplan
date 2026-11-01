@@ -95,7 +95,7 @@
             modelMatch: 'any',
             includeDiscontinued: full ? true : !!(configured && configured.includeDiscontinued),
         multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '', monthlyPriceMin: null,
-            monthlyPriceMax: null, soloColorKey: null, tokenUnit: 'yi'
+            monthlyPriceMax: null, selectedColorKeys: new Set(), legendExpanded: true, tokenUnit: 'yi'
         };
     }
 
@@ -328,9 +328,9 @@
         return colorMode === 'model' ? point.modelSlug : getPointPlatformKey(point);
     }
 
-    function filterBySoloColorKey(points, colorMode, soloColorKey) {
-        if (!soloColorKey) return points || [];
-        return (points || []).filter((point) => getPointColorKey(point, colorMode) === soloColorKey);
+    function filterBySelectedColorKeys(points, colorMode, selectedColorKeys) {
+        if (!selectedColorKeys.size) return points || [];
+        return (points || []).filter((point) => selectedColorKeys.has(getPointColorKey(point, colorMode)));
     }
 
     function getSoloPointLabelField(points) {
@@ -859,7 +859,7 @@
                 const button = event.target.closest('[data-color-mode]');
                 if (!button || state.colorMode === button.dataset.colorMode) return;
                 state.colorMode = button.dataset.colorMode;
-                state.soloColorKey = null;
+                state.selectedColorKeys.clear();
                 render();
             }
             colorControl.addEventListener('click', onColorModeClick);
@@ -1103,12 +1103,11 @@
                     .sort((a, b) => a.name.localeCompare(b.name, 'zh-CN'));
                 const ordered = state.colorMode === 'model' ? UI.prioritizeFeaturedModels(entries, presetConfig.groups) : entries;
                 container.querySelector('[data-color-legend]').innerHTML = ordered
-                    .map(({slug:key, name:label}) => {
-                        const solo = state.soloColorKey === key;
-                        const muted = state.soloColorKey && !solo;
-                        const subject = state.colorMode === 'model' ? '模型' : '平台';
-                        return `<button type="button" class="usage-legend-item${solo ? ' is-solo' : ''}${muted ? ' is-muted' : ''}" data-color-key="${escapeHtml(key)}" aria-pressed="${solo ? 'true' : 'false'}" title="${solo ? '点击恢复显示全部' : `点击只显示此${subject}`}；悬停高亮"><i style="background:${context.colors[key]}"></i><span>${escapeHtml(label)}</span></button>`;
-                    }).join('');
+                    .map(({slug:key, name:label}, index) => {
+                        const selected = state.selectedColorKeys.has(key);
+                        const muted = state.selectedColorKeys.size && !selected;
+                        return `<button type="button" class="usage-legend-item${selected ? ' is-selected' : ''}${muted ? ' is-muted' : ''}" data-color-key="${escapeHtml(key)}" aria-pressed="${selected}"${!state.legendExpanded && index >= 6 ? ' hidden' : ''}><i style="background:${context.colors[key]}"></i><span>${escapeHtml(label)}</span></button>`;
+                    }).join('') + (ordered.length > 6 ? `<button type="button" class="usage-legend-toggle" data-legend-toggle aria-expanded="${state.legendExpanded}">${state.legendExpanded ? '收起' : '展开全部'}</button>` : '');
             }
 
             function renderDataTable(tableName, rows) {
@@ -1235,8 +1234,9 @@
                 });
                 if (Directory) filtered = Directory.search(filtered, search.value);
                 const billingFiltered = filtered.filter(point => state.chartBilling === 'all' || point.billingMode === state.chartBilling);
-                if (state.soloColorKey && !billingFiltered.some(point => getPointColorKey(point, state.colorMode) === state.soloColorKey)) state.soloColorKey = null;
-                const visibleFiltered = filterBySoloColorKey(billingFiltered, state.colorMode, state.soloColorKey);
+                const availableColorKeys = new Set(billingFiltered.map(point => getPointColorKey(point, state.colorMode)));
+                state.selectedColorKeys = new Set([...state.selectedColorKeys].filter(key => availableColorKeys.has(key)));
+                const visibleFiltered = filterBySelectedColorKeys(billingFiltered, state.colorMode, state.selectedColorKeys);
                 const usageCard = container.querySelector('[data-usage-card]');
                 const wasUsageHidden = usageCard.hidden;
                 usageCard.hidden = state.chartBilling === 'payg';
@@ -1332,7 +1332,7 @@
             });
             function onSharedFilterChange(event) {
                 // Business filters supersede the temporary legend restriction; display units do not.
-                if (!event || !event.detail || event.detail.source !== 'display') { state.soloColorKey = null; state.selectedChartSlug = null; }
+                if (!event || !event.detail || event.detail.source !== 'display') { state.selectedColorKeys.clear(); state.selectedChartSlug = null; }
                 if (event?.detail?.source === 'reset' || event?.detail?.source === 'preset') state.chartBilling = 'all';
                 if (event?.detail?.source === 'reset') state.benchmark = 'artificialAnalysis';
                 if (event?.detail?.source === 'reset') state.axisScale = 'log';
@@ -1509,11 +1509,18 @@
                     render();
                     return;
                 }
+                if (event.target.closest('[data-legend-toggle]')) {
+                    state.legendExpanded = !state.legendExpanded;
+                    render();
+                    container.querySelector('[data-legend-toggle]')?.focus({preventScroll:true});
+                    return;
+                }
                 const colorLegendItem = event.target.closest('[data-color-key]');
                 if (colorLegendItem) {
                     const key = colorLegendItem.dataset.colorKey;
-                    state.soloColorKey = state.soloColorKey === key ? null : key;
+                    if (state.selectedColorKeys.has(key)) state.selectedColorKeys.delete(key); else state.selectedColorKeys.add(key);
                     render();
+                    container.querySelectorAll('[data-color-key]').forEach(item => { if (item.dataset.colorKey === key) item.focus({preventScroll:true}); });
                     return;
                 }
                 const presetPlatformScopeButton = event.target.closest('[data-preset-platform-scope]');
@@ -1571,5 +1578,5 @@
         return container.__usageMountPromise;
     }
 
-    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SLUGS, DEFAULT_MODEL_SLUGS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceVisualScale, getUnitPriceVisualPercent, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySoloColorKey, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, formatApiPricing, platformCellHtml, unitPriceVisualHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SLUGS, DEFAULT_MODEL_SLUGS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceVisualScale, getUnitPriceVisualPercent, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySelectedColorKeys, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, formatApiPricing, platformCellHtml, unitPriceVisualHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });

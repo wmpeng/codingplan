@@ -22,10 +22,14 @@
       await root.ModelComparison.mountModelComparisonView(host, { mode: 'full', hidePresets: true, data, preset, filterState, focusRelationSlugs,
         directory:root.PricingDirectory, colorControlHost:document.querySelector('#toolFilters .filter-state-grid'), benchmarkControlHost:document.querySelector('#toolFilters .filter-state-grid'), billingControlHost:document.querySelector('#toolFilters .filter-state-grid'), scaleControlHost:document.querySelector('#toolFilters .filter-state-grid'), search, count });
       const legend = host.querySelector('.usage-color-legend');
-      const legendDetails = document.createElement('details'); legendDetails.className = 'tool-legend';
-      legendDetails.open = !matchMedia('(max-width: 800px)').matches;
-      const legendLabel = document.createElement('summary'); legendLabel.textContent = '图例 · 点击名称单独看图';
-      legend.before(legendDetails); legendDetails.append(legendLabel, legend);
+      const legendGroup = document.createElement('div'); legendGroup.className = 'tool-legend';
+      legend.before(legendGroup); legendGroup.append(legend);
+      const firstChart = host.querySelector('.price-intelligence-card');
+      const secondChart = host.querySelector('[data-usage-card]');
+      const chartGroup = document.createElement('section');
+      chartGroup.className = 'pricing-chart-group'; chartGroup.setAttribute('aria-label', '价格与额度图表');
+      firstChart.before(chartGroup); chartGroup.append(legendGroup, firstChart, secondChart);
+      requestAnimationFrame(() => host.__usageCharts.forEach(chart => chart.resize()));
       const note = host.querySelector('.usage-method-note');
       const method = document.createElement('details'); method.className = 'tool-secondary'; method.id = 'pricingMethod'; if (location.hash === '#pricingMethod') method.open = true;
       const label = document.createElement('summary'); label.textContent = '价格、汇率与用量口径';
