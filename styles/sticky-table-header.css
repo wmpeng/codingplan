@@ -1,0 +1,5 @@
+.sticky-table-header { position: fixed; z-index: 19; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; background: #f4f7fb; }
+.sticky-table-header::-webkit-scrollbar { display: none; }
+.sticky-table-header[hidden] { display: none; }
+.sticky-table-header > table { margin: 0; }
+.sticky-table-header th { box-sizing: border-box; }
