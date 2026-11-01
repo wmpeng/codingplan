@@ -369,6 +369,10 @@ body.tool-unified-active .filter-state-footer .filter-state-actions { flex: 0 0 
 .directory-filters-stuck > .filter-state-bar, .directory-filters-stuck.filter-state-bar {
   border-top: 0; border-top-left-radius: 0; border-top-right-radius: 0;
 }
+body .directory-filters.directory-filters-stuck > .filter-state-bar,
+body .directory-filters.directory-filters-stuck.filter-state-bar {
+  box-shadow: 0 5px 12px -7px rgba(30,45,65,.28), 0 1px 3px rgba(30,45,65,.07);
+}
 /* 目录页只切换原控件的布局，筛选状态与菜单仍由所属组件维护。 */
 .directory-filter-region { overflow-anchor: none; }
 .directory-filter-spacer { overflow-anchor: none; }
