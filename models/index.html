@@ -15,13 +15,14 @@
 <meta name="description" content="浏览 AI 模型目录，比较 AA、DeepSWE、LiveBench 与 Arena 评分、输入模态，查找支持平台、套餐与按量 API 价格。">
 <link rel="canonical" href="https://codingplan.fyi/models/">
 <link rel="icon" href="/favicon.ico?v=260924a">
-<link rel="stylesheet" href="/styles/shared.css?v=bd1276c850"><link rel="stylesheet" href="/styles/tool-page.css?v=340a127421"><link rel="stylesheet" href="/styles/home-discovery.css?v=96f3da14b4"><link rel="stylesheet" href="/styles/design-system.css?v=a318d00177"><link rel="stylesheet" href="/styles/homepage-filters.css?v=bdc5adf794">
+<link rel="stylesheet" href="/styles/shared.css?v=bd1276c850"><link rel="stylesheet" href="/styles/tool-page.css?v=340a127421"><link rel="stylesheet" href="/styles/home-discovery.css?v=0364483be2"><link rel="stylesheet" href="/styles/design-system.css?v=a318d00177"><link rel="stylesheet" href="/styles/homepage-filters.css?v=bdc5adf794">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"AI 模型目录与能力对比","url":"https://codingplan.fyi/models/","inLanguage":"zh-CN"}</script>
 <script id="site-data-versions" type="application/json">{"platforms":"2026-11-01T08:49:36.566Z","plans":"2026-11-01T08:54:05.604Z","models":"2026-11-01T08:49:38.478Z","config":"2026-11-01T08:59:43.731Z","featured_catalog":"2026-11-01T04:05:11.320Z","changes":"2026-11-01T08:49:44.731Z","announcements":"2026-11-01T09:01:59.311Z","articles_catalog":"2026-11-01T08:32:08.807Z"}</script>
 <script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
 <link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
 <link rel="stylesheet" href="/styles/ui-components.css?v=5ffb4c7c68">
 <link rel="stylesheet" href="/styles/ui-help.css?v=50cda6ca65">
+<link rel="stylesheet" href="/styles/sticky-table-header.css?v=245149f02e">
 </head><body class="tool-page discovery-page models-page tool-unified-active">
 <!-- SITE_NAV_START -->
 <header class="tool-topbar site-header">
@@ -95,7 +96,7 @@
   <div class="filter-state-footer">
     <div class="tool-result-bar filter-result-search"><input type="search" id="modelSearch" placeholder="搜索模型名称" aria-label="搜索模型"><span id="modelCount" class="tool-count" role="status">符合条件 167 个</span></div>
     <div class="model-footer-controls">
-    <label data-select-fallback>排序<select id="modelSort" aria-label="排序"><option value="default">默认</option><option value="name">名称</option><option value="artificialAnalysis">AA</option><option value="deepSWE">DeepSWE</option><option value="liveBench">LiveBench</option><option value="arena">Arena</option></select></label>
+    <label data-select-fallback>排序<select id="modelSort" aria-label="排序"><option value="default">默认</option><option value="name">名称</option><option value="artificialAnalysis">AA</option><option value="deepSWE">DeepSWE</option><option value="liveBench">LiveBench</option><option value="arena">Arena</option><option value="platformCount">收录平台</option></select></label>
     <div class="filter-state-actions"><button type="button" id="modelReset" data-filter-action="reset">重置筛选</button></div>
   </div></div>
 </section>
@@ -271,7 +272,7 @@
 <!-- MODEL_DIRECTORY_END --></div>
 </section>
 <footer class="tool-footer"><a href="/">返回首页</a></footer></main>
-<script src="/scripts/entity-data.js?v=50903424a2"></script><script src="/scripts/tool-page.js?v=df0eef391f"></script><script src="/scripts/featured-catalog.js?v=9cea54b300"></script><script src="/scripts/model-directory.js?v=e0bd7b5502"></script><script src="/scripts/ui-single-select.js?v=09370d929b"></script><script src="/scripts/directory-filters.js?v=c7332a6dca"></script>
+<script src="/scripts/entity-data.js?v=50903424a2"></script><script src="/scripts/tool-page.js?v=df0eef391f"></script><script src="/scripts/featured-catalog.js?v=9cea54b300"></script><script src="/scripts/model-directory.js?v=603c377aa7"></script><script src="/scripts/ui-single-select.js?v=09370d929b"></script><script src="/scripts/directory-filters.js?v=c7332a6dca"></script>
 <script src="/scripts/filter-url.js?v=910183b30b"></script>
-<script src="/scripts/models-page.js?v=74e038a89c"></script>
+<script src="/scripts/sticky-table-header.js?v=6f2a8a6d00"></script><script src="/scripts/models-page.js?v=de8a537453"></script>
 </body></html>

@@ -1,16 +1,20 @@
-(function () {
+(function (root) {
   'use strict';
-  function mount(host, scroll, table) {
-    if (scroll.dataset.stickyHeaderMounted || !table.tHead) return;
+  function mount(host, scroll, table, {filters = document.getElementById('toolFilters'), fields = document.querySelector('.plan-columns-control')} = {}) {
+    if (scroll.dataset.stickyHeaderMounted) return scroll.stickyHeaderController;
+    if (!table.tHead) return;
     const header = table.tHead;
-    const fields = document.querySelector('.plan-columns-control');
-    if (!fields) return;
+    const events = new AbortController();
+    const listen = (target, type, callback, options = {}) => target?.addEventListener(type, callback, {...options, signal:events.signal});
+    const fieldsHome = fields?.parentNode, fieldsNext = fields?.nextSibling;
     scroll.dataset.stickyHeaderMounted = '1';
     const identity = header.rows[0].cells[0];
-    identity.classList.add('table-header-identity');
-    identity.append(fields);
-    fields.addEventListener('click', event => event.stopPropagation());
-    fields.addEventListener('keydown', event => event.stopPropagation());
+    if (fields) {
+      identity.classList.add('table-header-identity');
+      identity.append(fields);
+      listen(fields, 'click', event => event.stopPropagation());
+      listen(fields, 'keydown', event => event.stopPropagation());
+    }
     const anchor = document.createElement('div');
     anchor.className = 'table-header-anchor';
     scroll.before(anchor); anchor.append(scroll);
@@ -30,12 +34,12 @@
     copyTable.append(copy); overlay.append(copyTable); anchor.append(overlay);
     const backdrop = document.createElement('div');
     backdrop.className = 'sticky-table-backdrop'; backdrop.hidden = true; overlay.before(backdrop);
-    let frame = 0, syncing = false;
+    let frame = 0, syncing = false, destroyed = false;
     function update() {
       frame = 0;
       const nav = document.querySelector('.site-header');
-      const filters = document.querySelector('#toolFilters.directory-filters-stuck');
-      const baseTop = Math.max(0, nav?.getBoundingClientRect().bottom || 0, filters?.getBoundingClientRect().bottom || 0);
+      const filterBottom = filters?.classList.contains('directory-filters-stuck') ? filters.getBoundingClientRect().bottom : 0;
+      const baseTop = Math.max(0, nav?.getBoundingClientRect().bottom || 0, filterBottom);
       const layoutStyle = getComputedStyle(anchor);
       const gap = parseFloat(layoutStyle.getPropertyValue('--table-header-gap'));
       const top = baseTop + gap;
@@ -58,47 +62,59 @@
       originalCells.forEach((cell, index) => {
         const target = copyCells[index], width = cell.getBoundingClientRect().width;
         target.hidden = cell.hidden; target.className = cell.className;
-        const sourceButtons = cell.querySelectorAll('[data-plan-sort]'), copyButtons = target.querySelectorAll('[data-plan-sort]');
+        const sourceButtons = cell.querySelectorAll('.table-sort-button'), copyButtons = target.querySelectorAll('.table-sort-button');
         sourceButtons.forEach((button, i) => { if (copyButtons[i]) copyButtons[i].className = button.className; });
         if (cell.hasAttribute('aria-sort')) target.setAttribute('aria-sort', cell.getAttribute('aria-sort'));
         else target.removeAttribute('aria-sort');
         target.style.width = `${width}px`; target.style.minWidth = `${width}px`; target.style.maxWidth = `${width}px`;
       });
-      copy.querySelector('.plan-columns-control input').checked = fields.querySelector('input').checked;
+      if (fields) copy.querySelector('.plan-columns-control input').checked = fields.querySelector('input').checked;
       syncing = true; overlay.scrollLeft = scroll.scrollLeft; syncing = false;
     }
-    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
-    scroll.addEventListener('scroll', schedule, {passive:true});
+    const schedule = () => { if (!destroyed && !frame) frame = requestAnimationFrame(update); };
+    listen(scroll, 'scroll', schedule, {passive:true});
     const copyFields = copy.querySelector('.plan-columns-control');
-    copyFields.addEventListener('click', event => event.stopPropagation());
-    copyFields.addEventListener('keydown', event => event.stopPropagation());
-    copyFields.querySelector('input').addEventListener('change', event => {
+    listen(copyFields, 'click', event => event.stopPropagation());
+    listen(copyFields, 'keydown', event => event.stopPropagation());
+    listen(copyFields?.querySelector('input'), 'change', event => {
       const input = fields.querySelector('input');
       input.checked = event.target.checked;
       input.dispatchEvent(new Event('change', {bubbles:true}));
       schedule();
     });
-    overlay.addEventListener('scroll', () => { if (!syncing) scroll.scrollLeft = overlay.scrollLeft; }, {passive:true});
-    overlay.addEventListener('click', event => {
+    listen(overlay, 'scroll', () => { if (!syncing) scroll.scrollLeft = overlay.scrollLeft; }, {passive:true});
+    listen(overlay, 'click', event => {
       if (event.target.closest('.ui-help')) return;
-      const button = event.target.closest('[data-plan-sort]');
+      const button = event.target.closest('.table-sort-button');
       const price = event.target.closest('[data-table-sort][data-sort-key]');
       if (!button && !price) return;
       event.stopPropagation();
       const cells = [...copy.rows[0].cells], selected = (button || price).closest('th');
       const original = header.rows[0].cells[cells.indexOf(selected)];
-      const target = button ? original?.querySelector(`[data-plan-sort="${CSS.escape(button.dataset.planSort)}"]`) : original?.querySelector('button');
+      const buttonIndex = button ? [...selected.querySelectorAll('.table-sort-button')].indexOf(button) : 0;
+      const target = original?.querySelectorAll('.table-sort-button')[buttonIndex];
       (target || original)?.click(); schedule();
     });
-    window.addEventListener('scroll', schedule, {passive:true});
-    window.addEventListener('resize', schedule, {passive:true});
-    window.visualViewport?.addEventListener('resize', schedule);
-    document.addEventListener('change', schedule);
-    document.addEventListener('click', schedule);
+    listen(window, 'scroll', schedule, {passive:true});
+    listen(window, 'resize', schedule, {passive:true});
+    listen(window.visualViewport, 'resize', schedule);
+    listen(document, 'change', schedule);
+    listen(document, 'click', schedule);
     const observer = new ResizeObserver(schedule); observer.observe(scroll); observer.observe(table); observer.observe(header);
-    const filters = document.getElementById('toolFilters'); if (filters) observer.observe(filters);
-    new MutationObserver(schedule).observe(header, {subtree:true, attributes:true, childList:true, characterData:true});
+    if (filters) observer.observe(filters);
+    const mutations = new MutationObserver(schedule);
+    mutations.observe(header, {subtree:true, attributes:true, childList:true, characterData:true});
+    const controller = {refresh:schedule, destroy() {
+      if (destroyed) return;
+      destroyed = true; cancelAnimationFrame(frame); events.abort(); observer.disconnect(); mutations.disconnect();
+      if (fields && fieldsHome?.isConnected) fieldsHome.insertBefore(fields, fieldsNext?.parentNode === fieldsHome ? fieldsNext : null);
+      if (fields) identity.classList.remove('table-header-identity');
+      anchor.before(scroll); anchor.remove();
+      delete scroll.dataset.stickyHeaderMounted; delete scroll.stickyHeaderController;
+    }};
+    scroll.stickyHeaderController = controller;
     document.fonts?.ready.then(schedule); schedule();
+    return controller;
   }
   function start() {
     const host = document.querySelector('#plansPage, #pricingPage');
@@ -110,5 +126,6 @@
     };
     const observer = new MutationObserver(find); observer.observe(host, {childList:true, subtree:true}); find();
   }
+  root.CodingPlanStickyTableHeader = {mount};
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
-})();
+})(globalThis);

@@ -67,6 +67,7 @@ body.models-page .model-directory-table .model-table-score { text-align: right; 
 body.models-page .model-directory-table .model-table-platforms { text-align: center; }
 body.models-page .model-directory-table .model-table-actions a { display: block; width: fit-content; color: var(--accent-primary); line-height: 1.8; }
 @media (max-width: 800px), (pointer: coarse) {
+  body.models-page .model-directory-table .table-sort-button { min-height: 44px; }
   body.models-page .model-directory-table .model-table-actions a { display: flex; align-items: center; min-height: 44px; }
 }
 .model-modality { color:#64748b;font-size:12px;margin:10px 0 16px; }
