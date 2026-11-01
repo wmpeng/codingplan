@@ -30,8 +30,8 @@
 | [智谱AI](https://api.dreamfree.space/c/s/cpyqzhipu) | 可以购买 | 5 | 涨价后新套餐无需抢购。 |
 | [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) | 可以购买 | 5 | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
 | [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) | 可以购买 | 4 | 当前Go/Plus/Pro/Max/Ultra订阅；Plus起支持Coding，旧四档仅老用户续费。 |
-| [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) | 可以购买 | 5 | Go 与 Go Plus 多模型订阅，各型号额度不同；免费与 Contributor 型号有额外条件。 |
 | [DeepSeek](https://api.dreamfree.space/c/s/cpyqdeepseek) | 可以购买 | 5 | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
+| [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) | 可以购买 | 5 | Go 与 Go Plus 多模型订阅，各型号额度不同；免费与 Contributor 型号有额外条件。 |
 | [Codex](https://api.dreamfree.space/c/s/cpyqchatgpt) | 可以购买 | 5 | Codex 官方订阅，Plus / Pro 支持 GPT-6.1 Sol / Terra；Pro $500 另支持 Ultrafast。 |
 | [Claude](https://api.dreamfree.space/c/s/cpyqclaudeup) | 可以购买 | 4 | Claude Code 官方订阅，支持 Opus、Sonnet、Haiku 5.5；Token 容量为带负载条件的估算。 |
 
@@ -226,8 +226,8 @@
 | [智谱AI](https://api.dreamfree.space/c/s/cpyqzhipu) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 涨价后新套餐无需抢购。 |
 | [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
 | [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) | 可以购买 | ⭐️⭐️⭐️⭐️ | 当前Go/Plus/Pro/Max/Ultra订阅；Plus起支持Coding，旧四档仅老用户续费。 |
-| [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | Go 与 Go Plus 多模型订阅，各型号额度不同；免费与 Contributor 型号有额外条件。 |
 | [DeepSeek](https://api.dreamfree.space/c/s/cpyqdeepseek) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
+| [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | Go 与 Go Plus 多模型订阅，各型号额度不同；免费与 Contributor 型号有额外条件。 |
 | [Codex](https://api.dreamfree.space/c/s/cpyqchatgpt) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | Codex 官方订阅，Plus / Pro 支持 GPT-6.1 Sol / Terra；Pro $500 另支持 Ultrafast。 |
 | [Claude](https://api.dreamfree.space/c/s/cpyqclaudeup) | 可以购买 | ⭐️⭐️⭐️⭐️ | Claude Code 官方订阅，支持 Opus、Sonnet、Haiku 5.5；Token 容量为带负载条件的估算。 |
 | [字节·方舟 Agent Plan](https://api.dreamfree.space/c/s/cpyqfangzhout) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 四档AFP订阅，当前文本统一按模型系数扣减；Small不含Kimi K3。 |
@@ -277,8 +277,8 @@
 | 智谱AI | 3 | ¥118–¥1,078/月 | GLM-5.3、GLM-5.3-Flash |
 | MiniMax | 4 | ¥0–¥469/月 | MiniMax-M3.1-Flash |
 | Kimi | 5 | ¥49–¥1,399/月 | Kimi-K3.1-Pro、Kimi-K2.8-Preview、Kimi-K2.7-Code-HighSpeed、Kimi-K3 |
-| OpenCode | 2 | $10–$40/月 | GLM-5.3、Kimi-K3.1-Pro、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、等 30 个 |
 | DeepSeek | 1 | 不适用 / 含按量 API | DeepSeek-V4.1-Flash-1017、DeepSeek-V4-Pro-0813 |
+| OpenCode | 2 | $10–$40/月 | GLM-5.3、Kimi-K3.1-Pro、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、等 30 个 |
 | Codex | 6 | $0–$500/月 | GPT-6-Astra、GPT-6.1-Sol、GPT-6.1-Terra、GPT-6-Luna、等 8 个 |
 | Claude | 3 | $20–$200/月 | Claude Opus 5.5、Claude Sonnet 5.5、Claude Fable 5、Claude Fable 5.1、等 14 个 |
 | 字节·方舟 Agent Plan | 4 | ¥40–¥1,000/月 | GLM-5.3、Kimi-K3.1-Pro、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、等 14 个 |

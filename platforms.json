@@ -105,32 +105,6 @@
       "action": "https://api.dreamfree.space/c/s/cpyqkimi"
     },
     {
-      "slug": "opencode",
-      "name": "OpenCode",
-      "rating": 5,
-      "summary": "Go 与 Go Plus 多模型订阅，各型号额度不同；免费与 Contributor 型号有额外条件。",
-      "detail": "各模型的Go Plus额度增幅不同，不能统一按四倍算。",
-      "dimensions": {
-        "value": {
-          "score": 5,
-          "reason": "Go $10/月、Go Plus $40/月，各模型有不同月额度与短窗口；当前额度和活动依模型不同，不统一按四倍计算。"
-        },
-        "models": {
-          "score": 5,
-          "reason": "各模型的Go Plus额度增幅不同，不能统一按四倍算。"
-        },
-        "stability": {
-          "score": 4,
-          "reason": "各模型基本都是官方通道，稳定性强，较少出现不可用。"
-        }
-      },
-      "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
-      "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqopencode"
-    },
-    {
       "slug": "deepseek-official",
       "name": "DeepSeek",
       "rating": 5,
@@ -155,6 +129,32 @@
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true
+    },
+    {
+      "slug": "opencode",
+      "name": "OpenCode",
+      "rating": 5,
+      "summary": "Go 与 Go Plus 多模型订阅，各型号额度不同；免费与 Contributor 型号有额外条件。",
+      "detail": "各模型的Go Plus额度增幅不同，不能统一按四倍算。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "Go $10/月、Go Plus $40/月，各模型有不同月额度与短窗口；当前额度和活动依模型不同，不统一按四倍计算。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "各模型的Go Plus额度增幅不同，不能统一按四倍算。"
+        },
+        "stability": {
+          "score": 4,
+          "reason": "各模型基本都是官方通道，稳定性强，较少出现不可用。"
+        }
+      },
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqopencode"
     },
     {
       "slug": "codex",
@@ -1259,5 +1259,5 @@
       "action": "https://api.dreamfree.space/c/s/cpyqxunfei"
     }
   ],
-  "contentVersion": "2026-11-01T03:49:42.360Z"
+  "contentVersion": "2026-11-01T04:05:08.703Z"
 }
