@@ -12,9 +12,9 @@
     {
       "slug": "qoder-global-deepseek-1017-free-oct-2026",
       "title": "Qoder国际版：DeepSeek 1017免Credits至11月1日零点",
-      "body": "Qoder国际版的 **DeepSeek V4.1 Flash-1017** 限时免Credits，截止 **2026年11月1日00:00（UTC+8）**，即10月31日结束时。\n\n- 免费与付费个人用户均可选择该模型，无需把订阅额度换算为Token配额。\n- 仅该模型免Credits，其他模型和功能仍按各自规则计费；高峰时可能排队。",
+      "body": "Qoder 国际版的 **DeepSeek V4.1 Flash-1017** 曾提供每日限量免 Credits，活动截至 **2026 年 11 月 1 日 00:00（UTC+8）**。\n\n免费及付费个人用户均可参加，付费用户的每日免费次数更多；活动期间用完免费次数后可按当时常规 **0.1×** 消耗 Credits 继续使用。活动结束后，以模型选择器显示的价格为准。",
       "visible": true,
-      "ended": false,
+      "ended": true,
       "endsOn": "2026-10-31",
       "url": "https://forum.qoder.com/t/deepseek-v4-1-flash-1017-supported-in-qoder-0-0x-credits-until-nov-1/13589",
       "announcedOn": "2026-10-26"
@@ -87,7 +87,7 @@
       "title": "Qoder 国际版 1024：第四轮每日 4,096 Credits，10 月 30 日截止",
       "body": "活动领取截至 **2026 年 10 月 30 日 23:59（UTC+8）**。符合资格者可手动领取 **1,024 SOTA Credits 欢迎包**及已开放的社区奖励，额度用于 **Sonus**。\n\n- 个人 Pro 及以上自动具备资格，但仍须手动领取；Free 用户须申请并获批，Lite 需升级。资格按领取时的账号状态判断。\n- 欢迎包可用至 **10 月 31 日 23:59**；第一至三轮奖励须在发放后 3 天内且不晚于活动截止领取，领取后 **24 小时有效**。\n- **第四轮共 12,288 SOTA Credits，分 10 月 28、29、30 日三包发放，每天 4,096。每包当天 00:00 开放、23:59 到期，必须当天领取并用完，不能补领往日礼包或结转到次日。**\n- 欢迎包及第一至三轮每包每账号限领一次，第四轮每天限领一包；无需当天助力也可领取已开放的礼包，社区奖励仍以实际解锁和发放为准。\n- 活动额度不能与低峰折扣叠加；用尽或过期后继续调用，按正常规则扣减其他可用 Credits。",
       "visible": true,
-      "ended": false,
+      "ended": true,
       "endsOn": "2026-10-30",
       "url": "https://docs.qoder.com/events/communityboost",
       "startsOn": "2026-10-22"
@@ -131,7 +131,7 @@
     {
       "slug": "qoder-global-qwen38-flash-free",
       "title": "Qoder 国际版：Qwen3.8-Flash 限时免费",
-      "body": "自 **2026 年 9 月 18 日 10:00（UTC+8）** 起，国际站 **qoder.com** 的个人用户可限时免费使用 **Qwen3.8-Flash**，调用不消耗 Credits，**Free 用户及零余额账号也可参加**。\n\n选择该模型即可，无需领券；Teams / Enterprise 不适用，也不代表其他模型免费。原定 9 月 30 日结束的活动已经延期，新的结束日期尚未公布。高峰期可能响应较慢。",
+      "body": "自 **2026 年 9 月 18 日 10:00（UTC+8）** 起，国际站 **qoder.com** 的个人用户每天可限时免费使用 **Qwen3.8-Flash**，Free 用户及零余额账号也可参加。\n\n每天免费次数有限，付费用户的免费次数更多；用完后可按常规 **0.1×** 消耗 Credits 继续使用，或等待次日恢复。其他功能实际调用的其他模型另按其规则收费。\n\n原定 9 月 30 日结束的活动已延期，新的结束日期尚未公布；Teams / Enterprise 不适用。",
       "visible": true,
       "ended": false,
       "url": "https://docs.qoder.com/events/flashoffer",
@@ -144,7 +144,40 @@
       "visible": true,
       "ended": false,
       "url": "https://opencode.ai/v2/docs/console/models/"
+    },
+    {
+      "slug": "qoder-cn-double-eleven-first-subscription-20261031",
+      "title": "Qoder CN：Pro 首月限量 19.9 元，Pro+ 首购赠额度",
+      "body": "自 **2026 年 10 月 31 日 10:00（北京时间）**起，从未付费的个人账号首次订阅可参加：\n\n- **Pro 首次月付 19.9 元**，包含 2,000 Credits，无额外加赠；名额有限，以结算页为准。\n- **Pro+ 首次月付**加赠 6,000 Qwen 专属 Credits；首次年付 Pro / Pro+ 分别加赠 2,000 / 6,000 Qwen 专属 Credits。\n- 赠额仅用于 Qwen 系列模型，到账后 30 天有效；结束日期未公布。团队和企业不适用。",
+      "visible": true,
+      "startsOn": "2026-10-31",
+      "url": "https://docs.qoder.cn/events/purchase-offer"
+    },
+    {
+      "slug": "tencent-token-deepseek-discount-20261116",
+      "title": "腾讯 Token Plan：DeepSeek 两款模型限时折扣",
+      "body": "**通用 Token Plan 个人版**自 **2026 年 10 月 31 日 11:30** 至 **11 月 16 日 12:00（北京时间）**，**标准路由**的 DeepSeek V4 Pro 0813 享 **7 折**、V4.1 Flash 1017 享 **4 折**。\n\n原厂直供路由不适用本次折扣。峰谷时段分别按对应活动积分价抵扣，活动结束恢复常规价；跨周期请求按发起时间对应价格结算。优惠自动生效，不改变套餐额度或刷新规则。",
+      "visible": true,
+      "startsOn": "2026-10-31",
+      "endsOn": "2026-11-16",
+      "url": "https://cloud.tencent.com/document/product/1823/140042"
+    },
+    {
+      "slug": "opencode-go-argon-half-price-20261130",
+      "title": "OpenCode Go：Gemini 4 Argon 限时五折",
+      "body": "OpenCode **Go 和 Go Plus** 的 **Gemini 4 Argon** 模型 Token 抵扣价限时五折，优惠截至 **2026 年 11 月 30 日**；官方未明确截止时刻与时区。\n\n每百万 Token 输入 / 缓存读取 / 输出为 **$2 / $0.10 / $10**，常规价为 **$4 / $0.20 / $20**；Go / Go Plus 的该模型月额度分别为 **$30 / $120**。模型额度与五小时、每周限制共同适用。",
+      "visible": true,
+      "endsOn": "2026-11-30",
+      "url": "https://dev.opencode.ai/v2/docs/console/go/"
+    },
+    {
+      "slug": "command-code-ling-31-flash-1019-free-20261103",
+      "title": "Command Code：Ling 3.1 Flash 1019 每日限量免费",
+      "body": "Command Code **Ling 3.1 Flash 1019** 限时免费至 **2026 年 11 月 3 日 16:00（UTC）**，每账号每天最多 **100 次请求**，按 UTC 零点重置。\n\nGo、GOAT、Pro 及两档 Max 个人套餐可用；开始会话时账户需有至少 **$1 Credits**。免费调用不消耗额度，结束后可切换付费 Ling 3.1 Flash；具体可用性以平台为准。",
+      "visible": true,
+      "endsOn": "2026-11-03",
+      "url": "https://commandcode.ai/docs/resources/pricing-limits"
     }
   ],
-  "contentVersion": "2026-10-31T08:23:01.830Z"
+  "contentVersion": "2026-11-01T09:01:59.311Z"
 }

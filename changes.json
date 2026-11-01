@@ -699,7 +699,7 @@
     {
       "slug": "qoder-intl-ultimate-offpeak-end-20261031",
       "title": "Qoder 国际版 Ultimate 低峰优惠结束",
-      "officialStatus": "announced",
+      "officialStatus": "effective",
       "effectiveTime": {
         "type": "date",
         "date": "2026-10-31",
@@ -714,7 +714,7 @@
         }
       ],
       "audience": "Qoder国际版有效个人Pro/Pro+/Ultra订阅中手动选择Ultimate档位的用户；Service Account时段不同。",
-      "summary": "Ultimate低峰0.4×优惠计划于10月31日08:00（香港时间）结束，之后恢复常规2×；套餐月费不变。",
+      "summary": "Ultimate低峰0.4×优惠已于10月31日08:00（香港时间）结束，恢复常规2×；套餐月费不变。",
       "targets": [
         {
           "type": "plan",
@@ -736,6 +736,9 @@
         }
       ],
       "sources": [
+        {
+          "url": "https://docs.qoder.com/events/offpeakrate"
+        },
         {
           "url": "https://docs.qoder.com/events/offpeakrate"
         }
@@ -2103,7 +2106,7 @@
     {
       "slug": "qoder-intl-deepseek-1017-free-end-20261101",
       "title": "Qoder国际版DeepSeek 1017免Credits活动截止",
-      "officialStatus": "announced",
+      "officialStatus": "effective",
       "effectiveTime": {
         "type": "date",
         "date": "2026-11-01",
@@ -2114,11 +2117,11 @@
           "type": "price",
           "label": "DeepSeek V4.1 Flash-1017抵扣",
           "before": "活动期间0.0×，调用免Credits",
-          "after": "公告截止后按届时规则抵扣，是否延期及实际系数待确认；不代表模型下架。"
+          "after": "活动已结束；当前模型选择器参考倍率0.1×，具体消耗取决于任务。"
         }
       ],
       "announcedOn": "2026-10-26",
-      "summary": "DeepSeek V4.1 Flash-1017免Credits截至2026年11月1日00:00（UTC+8），是否延期及到期规则待确认。",
+      "summary": "DeepSeek V4.1 Flash-1017免Credits活动已于11月1日00:00（UTC+8）结束，当前参考倍率0.1×。",
       "targets": [
         {
           "type": "plan_model",
@@ -2152,6 +2155,9 @@
       "sources": [
         {
           "url": "https://forum.qoder.com/t/deepseek-v4-1-flash-1017-supported-in-qoder-0-0x-credits-until-nov-1/13589"
+        },
+        {
+          "url": "https://docs.qoder.com/events/deepseek-flash-free"
         }
       ],
       "relatedChanges": []
@@ -2330,7 +2336,252 @@
         }
       ],
       "relatedChanges": []
+    },
+    {
+      "slug": "tencent-deepseek-discounts-end-20261116",
+      "title": "腾讯 Token Plan DeepSeek 两款模型优惠结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-16",
+        "description": "2026年11月16日12:00（北京时间）结束；跨周期请求按发起时间对应积分价。"
+      },
+      "changes": [
+        {
+          "type": "price",
+          "label": "DeepSeek标准路由（积分／百万Token）",
+          "before": "Flash谷／峰：8/0.16/32、16/0.32/64；Pro谷／峰：63/2.1/189、126/4.2/378（输入／缓存／输出）",
+          "after": "Flash谷／峰恢复20/0.4/80、40/0.8/160；Pro谷／峰恢复90/3/270、180/6/540；到期以实际规则为准。"
+        }
+      ],
+      "audience": "腾讯通用Token Plan个人四档的DeepSeek标准路由；原厂直供不适用此优惠。",
+      "summary": "标准路由DeepSeek Flash 1017四折、Pro 0813七折至11月16日12:00（北京时间），不适用于原厂直供，不改变套餐额度。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-lite",
+          "planModelSlug": "tencent-cloud-token-plan-lite--deepseek-v4-1-flash--standard-offpeak",
+          "label": "腾讯云 · Lite · DeepSeek-V4.1-Flash-1017"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-lite",
+          "planModelSlug": "tencent-cloud-token-plan-lite--deepseek-v4-1-flash--standard-peak",
+          "label": "腾讯云 · Lite · DeepSeek-V4.1-Flash-1017"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-lite",
+          "planModelSlug": "tencent-cloud-token-plan-lite--deepseek-v4-pro-0813--standard-offpeak",
+          "label": "腾讯云 · Lite · DeepSeek-V4-Pro-0813"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-lite",
+          "planModelSlug": "tencent-cloud-token-plan-lite--deepseek-v4-pro-0813--standard-peak",
+          "label": "腾讯云 · Lite · DeepSeek-V4-Pro-0813"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-standard",
+          "planModelSlug": "tencent-cloud-token-plan-standard--deepseek-v4-1-flash--standard-offpeak",
+          "label": "腾讯云 · Standard · DeepSeek-V4.1-Flash-1017"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-standard",
+          "planModelSlug": "tencent-cloud-token-plan-standard--deepseek-v4-1-flash--standard-peak",
+          "label": "腾讯云 · Standard · DeepSeek-V4.1-Flash-1017"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-standard",
+          "planModelSlug": "tencent-cloud-token-plan-standard--deepseek-v4-pro-0813--standard-offpeak",
+          "label": "腾讯云 · Standard · DeepSeek-V4-Pro-0813"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-standard",
+          "planModelSlug": "tencent-cloud-token-plan-standard--deepseek-v4-pro-0813--standard-peak",
+          "label": "腾讯云 · Standard · DeepSeek-V4-Pro-0813"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-pro",
+          "planModelSlug": "tencent-cloud-token-plan-pro--deepseek-v4-1-flash--standard-offpeak",
+          "label": "腾讯云 · Pro · DeepSeek-V4.1-Flash-1017"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-pro",
+          "planModelSlug": "tencent-cloud-token-plan-pro--deepseek-v4-1-flash--standard-peak",
+          "label": "腾讯云 · Pro · DeepSeek-V4.1-Flash-1017"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-pro",
+          "planModelSlug": "tencent-cloud-token-plan-pro--deepseek-v4-pro-0813--standard-offpeak",
+          "label": "腾讯云 · Pro · DeepSeek-V4-Pro-0813"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-pro",
+          "planModelSlug": "tencent-cloud-token-plan-pro--deepseek-v4-pro-0813--standard-peak",
+          "label": "腾讯云 · Pro · DeepSeek-V4-Pro-0813"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-max",
+          "planModelSlug": "tencent-cloud-token-plan-max--deepseek-v4-1-flash--standard-offpeak",
+          "label": "腾讯云 · Max · DeepSeek-V4.1-Flash-1017"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-max",
+          "planModelSlug": "tencent-cloud-token-plan-max--deepseek-v4-1-flash--standard-peak",
+          "label": "腾讯云 · Max · DeepSeek-V4.1-Flash-1017"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-max",
+          "planModelSlug": "tencent-cloud-token-plan-max--deepseek-v4-pro-0813--standard-offpeak",
+          "label": "腾讯云 · Max · DeepSeek-V4-Pro-0813"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-max",
+          "planModelSlug": "tencent-cloud-token-plan-max--deepseek-v4-pro-0813--standard-peak",
+          "label": "腾讯云 · Max · DeepSeek-V4-Pro-0813"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/140042"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "opencode-go-argon-discount-end-20261130",
+      "title": "OpenCode Go Gemini 4 Argon 五折结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-30",
+        "description": "官方称优惠截至11月30日，未注明具体时刻及所用时区。"
+      },
+      "changes": [
+        {
+          "type": "price",
+          "label": "模型调用价格",
+          "before": "每百万 Token 输入 / 缓存读取 / 输出 $2 / $0.10 / $10",
+          "after": "优惠结束后按届时规则计费；当前公开常规价为 $4 / $0.20 / $20"
+        }
+      ],
+      "audience": "OpenCode Go 与 Go Plus 的 Gemini 4 Argon 调用",
+      "summary": "OpenCode Go 与 Go Plus 的 Gemini 4 Argon 五折优惠截至2026年11月30日；具体时刻及所用时区未公布。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "opencode",
+          "planSlug": "opencode-go",
+          "planModelSlug": "opencode-go--gemini-4-argon--contributor",
+          "label": "OpenCode · Go · Gemini 4 Argon"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "opencode",
+          "planSlug": "opencode-go-plus",
+          "planModelSlug": "opencode-go-plus--gemini-4-argon--contributor",
+          "label": "OpenCode · Go Plus · Gemini 4 Argon"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://dev.opencode.ai/v2/docs/console/go/"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "command-code-ling-31-flash-1019-free-end-20261103",
+      "title": "Command Code Ling 3.1 Flash 1019 免费活动结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-04",
+        "description": "2026年11月3日16:00 UTC结束，即香港时间11月4日00:00。"
+      },
+      "changes": [
+        {
+          "type": "other",
+          "label": "Ling 3.1 Flash 1019 免费使用",
+          "before": "每账号每日最多100次免费请求，UTC零点重置",
+          "after": "免费期结束后可切换付费 Ling 3.1 Flash；实际规则以届时平台为准"
+        }
+      ],
+      "audience": "Command Code Go、GOAT、Pro及两档Max；启动会话需账户至少$1 Credits。",
+      "summary": "Ling 3.1 Flash 1019 每日100次免费至2026年11月3日16:00 UTC，启动会话需账户至少$1 Credits。",
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "command-code",
+          "planSlug": "commandcode-go",
+          "planModelSlug": "commandcode-go--ling-3-1-flash-1019--free",
+          "label": "Command Code · Go · Ling 3.1 Flash 1019"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "command-code",
+          "planSlug": "commandcode-goat",
+          "planModelSlug": "commandcode-goat--ling-3-1-flash-1019--free",
+          "label": "Command Code · GOAT · Ling 3.1 Flash 1019"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "command-code",
+          "planSlug": "commandcode-pro",
+          "planModelSlug": "commandcode-pro--ling-3-1-flash-1019--free",
+          "label": "Command Code · Pro · Ling 3.1 Flash 1019"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "command-code",
+          "planSlug": "commandcode-max10",
+          "planModelSlug": "commandcode-max10--ling-3-1-flash-1019--free",
+          "label": "Command Code · Max 10× · Ling 3.1 Flash 1019"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "command-code",
+          "planSlug": "commandcode-max20",
+          "planModelSlug": "commandcode-max20--ling-3-1-flash-1019--free",
+          "label": "Command Code · Max 20× · Ling 3.1 Flash 1019"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://commandcode.ai/docs/resources/pricing-limits"
+        }
+      ],
+      "relatedChanges": []
     }
   ],
-  "contentVersion": "2026-11-01T04:20:43.365Z"
+  "contentVersion": "2026-11-01T08:49:44.731Z"
 }

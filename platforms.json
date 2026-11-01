@@ -547,7 +547,7 @@
       "slug": "tencent-cloud",
       "name": "腾讯云",
       "rating": 3,
-      "summary": "通用Token Plan与Hy专属产品线分开；模型与套餐抵扣系数需逐项比较。",
+      "summary": "通用Token Plan与Hy专属产品线分开；DeepSeek标准与原厂直供路由有不同抵扣价。",
       "dimensions": {
         "value": {
           "score": 3,
@@ -584,13 +584,13 @@
       "slug": "qoder-cn",
       "name": "Qoder 国内版",
       "rating": 3,
-      "summary": "Qoder全家桶个人订阅，模型选择因客户端而异；Qwen3.8-Flash当前免Credits。",
+      "summary": "Qoder全家桶个人订阅，模型选择因客户端而异；Qwen3.8-Flash每日限量免Credits。",
       "detail": "订阅Credits跨全家桶共享；Qwen专属赠额另计，具体Token用量未知。",
       "platformStatus": "open",
       "dimensions": {
         "value": {
           "score": null,
-          "reason": "¥59 起，按积分使用；实际 Token 性价比尚未实测。"
+          "reason": "常规¥59起；从未付费的个人账号首次月付Pro限量¥19.9，含2000 Credits，无额外赠额；具体Token用量未知。"
         },
         "models": {
           "score": null,
@@ -611,7 +611,7 @@
       "name": "Qoder 国际版",
       "rating": 3,
       "summary": "Qoder国际套餐，当前支持K3、K2.8、GLM5.3及Qwen3.8等；具体Token额度未知。",
-      "detail": "月付首购及续费有Credits加赠；Qwen3.8-Flash当前免Credits，具体Token额度未知。",
+      "detail": "月付首购及续费有Credits加赠；Qwen3.8-Flash每日限量免Credits，具体Token额度未知。",
       "platformStatus": "open",
       "dimensions": {
         "value": {
@@ -1212,7 +1212,7 @@
       "slug": "chaosuan-token",
       "name": "超算 · Token Plan",
       "rating": 0,
-      "summary": "18个国产LLM的Credits月订阅，区别于双模型Coding Plan；综合倍率不等于固定Token价格。",
+      "summary": "18个国产LLM的Credits月订阅，按分项抵扣价估算月Token用量，五小时和周额度待确认。",
       "dimensions": {
         "value": {
           "score": null,
@@ -1259,5 +1259,5 @@
       "action": "https://api.dreamfree.space/c/s/cpyqxunfei"
     }
   ],
-  "contentVersion": "2026-11-01T04:20:35.692Z"
+  "contentVersion": "2026-11-01T08:49:36.566Z"
 }
