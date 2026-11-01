@@ -11,6 +11,9 @@
     const header = document.querySelector('.site-header');
     const sentinel = document.createElement('div');
     const spacer = document.createElement('div'); spacer.className = 'directory-filter-spacer';
+    const backdrop = document.createElement('div');
+    backdrop.className = 'directory-filter-backdrop'; backdrop.hidden = true;
+    backdrop.setAttribute('aria-hidden', 'true'); document.body.append(backdrop);
     host.before(sentinel); host.after(spacer);
 
     const toolbar = document.createElement('div');
@@ -277,6 +280,11 @@
       }
       if (!enabled && compact) setCompact(false);
       syncState(); fit(); reserveHeight();
+      backdrop.hidden = !stuck;
+      if (stuck) {
+        const bounds = host.getBoundingClientRect();
+        Object.assign(backdrop.style, {top:bounds.top+'px', height:bounds.height+'px'});
+      }
       if (openEntry) positionMenu(openEntry);
     }
     function schedule() { cancelAnimationFrame(frame); frame = requestAnimationFrame(update); }
