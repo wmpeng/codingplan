@@ -877,7 +877,7 @@
             if (mountOptions.billingControlHost) mountOptions.billingControlHost.append(billingControl);
             function onBillingClick(event) {
                 const button = event.target.closest('[data-chart-billing]');
-                if (!button || state.chartBilling === button.dataset.chartBilling) return;
+                if (!button || state.featuredOnly || state.chartBilling === button.dataset.chartBilling) return;
                 state.chartBilling = button.dataset.chartBilling;
                 render();
             }
@@ -931,6 +931,9 @@
             let latestPriceGroups = [];
 
             function applyExternalFilter(external) {
+                const view = mountOptions.getFilterView?.();
+                if (view) external = view.state;
+                state.featuredOnly = view?.featuredOnly === true;
                 if (!external) return;
                 state.platforms = external.platformSlugs === null
                     ? new Set(platforms.map(([key]) => key))
@@ -1161,7 +1164,7 @@
                         pager.querySelectorAll('[data-price-page]').forEach(button=>button.disabled=button.dataset.pricePage==='next'?pageIndex>=pagination.pages-1:pageIndex===0);
                     });
                     renderKey = JSON.stringify([nextSelectionKey,pageIndex,state.tokenUnit,state.colorMode,state.benchmark]);
-                    const label = `${rows.length} / ${points.length} 条明细${pins.length ? ' · 置顶 '+pins.length+' 条' : ''}`;
+                    const label = `${state.featuredOnly ? '精选 '+rows.length+' 条明细' : rows.length+' / '+points.length+' 条明细'}${pins.length ? ' · 置顶 '+pins.length+' 条' : ''}`;
                     mountOptions.count.textContent = label;
                     root.CodingPlanEvents?.results({result_count:rows.length,result_key:JSON.stringify(rows.map(x=>x.slug))});
                     if (tableRenderKey === renderKey) {
@@ -1260,7 +1263,7 @@
                     if (!mountOptions.hidePresets) renderPresetComparisons(container.querySelector('[data-presets]'), presetConfig, points, state.tokenUnit, state.presetPlatformScope);
                     renderedPresetKey = presetRenderKey;
                 }
-                let filtered = filterPoints(points, {
+                let filtered = state.featuredOnly && (!state.platforms.size || !state.models.size) ? [] : filterPoints(points, {
                     platforms: state.platforms, models: state.models, multimodal: state.multimodal,
                     aaScoreMin: state.aaScoreMin, deepSWEScoreMin: state.deepSWEScoreMin,
                     monthlyPriceMin: state.monthlyPriceMin, monthlyPriceMax: state.monthlyPriceMax,
@@ -1269,14 +1272,19 @@
                     monthlyTokenRange: state.monthlyTokenRange,
                     priceRanges: state.priceRanges, filterContext: state.filterContext, sharedFilters: state.sharedFilters
                 });
-                if (Directory) filtered = Directory.search(filtered, search.value);
-                const billingFiltered = filtered.filter(point => state.chartBilling === 'all' || point.billingMode === state.chartBilling);
+                if (Directory) {
+                    search.disabled = state.featuredOnly;
+                    search.closest('.tool-result-bar').classList.toggle('is-search-paused', state.featuredOnly);
+                    filtered = Directory.search(filtered, state.featuredOnly ? '' : search.value);
+                }
+                const chartBilling = state.featuredOnly ? 'all' : state.chartBilling;
+                const billingFiltered = filtered.filter(point => chartBilling === 'all' || point.billingMode === chartBilling);
                 const availableColorKeys = new Set(billingFiltered.map(point => getPointColorKey(point, state.colorMode)));
                 state.selectedColorKeys = new Set([...state.selectedColorKeys].filter(key => availableColorKeys.has(key)));
                 const visibleFiltered = filterBySelectedColorKeys(billingFiltered, state.colorMode, state.selectedColorKeys);
                 const usageCard = container.querySelector('[data-usage-card]');
                 const wasUsageHidden = usageCard.hidden;
-                usageCard.hidden = state.chartBilling === 'payg';
+                usageCard.hidden = chartBilling === 'payg';
                 if (wasUsageHidden && !usageCard.hidden) usageChart.resize();
                 const usagePoints = buildUsageChartPoints(visibleFiltered);
                 const intelligencePoints = buildIntelligenceChartPoints(visibleFiltered, state.benchmark, state.axisScale);

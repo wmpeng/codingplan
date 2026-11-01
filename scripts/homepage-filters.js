@@ -197,7 +197,7 @@
   function mount(options) {
     const opts = options || {}, policy = Filters.createViewPolicy(opts);
     const {full, pricing, plansPage, planStatusOnly, platformHub, purchaseTool} = policy;
-    const featuredCatalog = platformHub || plansPage;
+    const featuredCatalog = platformHub || plansPage || pricing;
     const Url = root.CodingPlanFilterUrl;
     const host =
       opts.element || document.getElementById("homepageUnifiedFiltersMount");
@@ -339,8 +339,8 @@
       if (validModel) state.modelSlugs = [model];
       if (params.get("billing") === "payg" && !plansPage) state.apiOnly = true;
     }
-    host.innerHTML = `<section class="filter-state-bar surface-panel${full ? "" : " home-filter-panel"}${platformHub ? " platform-hub-filters" : plansPage ? " plan-featured-filters" : ""}" aria-label="统一筛选">
-      ${featuredCatalog ? `<div class="platform-filter-row"><fieldset class="platform-filter-fields" data-featured-filter-fields ${platformHub ? 'data-platform-filter-fields' : 'data-plan-filter-fields'}><legend class="sr-only">${platformHub ? '平台' : '套餐'}筛选条件</legend>` : ""}
+    host.innerHTML = `<section class="filter-state-bar surface-panel${full ? "" : " home-filter-panel"}${platformHub ? " platform-hub-filters" : plansPage ? " plan-featured-filters" : pricing ? " pricing-featured-filters" : ""}" aria-label="统一筛选">
+      ${featuredCatalog ? `<div class="platform-filter-row"><fieldset class="platform-filter-fields" data-featured-filter-fields ${platformHub ? 'data-platform-filter-fields' : plansPage ? 'data-plan-filter-fields' : 'data-pricing-filter-fields'}><legend class="sr-only">${platformHub ? '平台' : plansPage ? '套餐' : '价格与额度'}筛选条件</legend>` : ""}
       <div class="filter-state-grid">
       ${platformHub ? "" : buildPicker({ id: "homePlatformPicker", label: "平台", key: "platformSlugs", items: platforms, state })}
       ${buildPicker({ id: "homeModelPicker", label: "模型", key: "modelSlugs", items: models, state, groups: context.modelGroups })}
@@ -348,7 +348,7 @@
       ${buildStatusPicker(purchaseTool, planStatusOnly)}
       ${pricing ? `<div class="pricing-mainland-control"><label class="pricing-mainland-filter"><span>支持中国大陆</span><span class="toggle-switch"><input type="checkbox" role="switch" data-filter-field="mainlandRequired"><span class="toggle-slider" aria-hidden="true"></span></span></label></div>` : ''}
       ${platformHub ? '<label class="platform-access-filter"><span class="filter-control-text">支持中国大陆</span><span class="toggle-switch"><input type="checkbox" role="switch" data-platform-domestic><span class="toggle-slider" aria-hidden="true"></span></span></label>' : ""}${plansPage ? '<label class="plan-harness-filter"><input type="checkbox" data-filter-field="harnessApiRequired"><span class="filter-control-text">需支持第三方工具</span></label>' : ""}</div>
-      ${featuredCatalog ? `<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-catalog-featured ${platformHub ? 'data-platform-featured' : 'data-plan-featured'} aria-pressed="false">${platformHub ? '显示精选平台' : '显示精选'}</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>` : ""}
+      ${featuredCatalog ? `<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-catalog-featured ${platformHub ? 'data-platform-featured' : plansPage ? 'data-plan-featured' : 'data-pricing-featured'} aria-pressed="false">${platformHub ? '显示精选平台' : '显示精选'}</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>` : ""}
       <div class="filter-state-footer">
       ${full ? "" : `<div class="filter-state-controls"><div class="offer-sort"><span aria-hidden="true">排序</span><span data-select-fallback><select id="homeOfferSort" data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></span></div><span class="offer-sort-help" id="offerSortHelp"></span>`}
       <div class="filter-state-actions">${pricing ? "" : `<button type="button" data-filter-action="reset"${purchaseTool && !platformHub && !plansPage ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub || plansPage ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>`}${full && !platformHub && !plansPage ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">${pricing ? "重置筛选" : "显示精选"}</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
@@ -480,15 +480,15 @@
       }
       if (featuredCatalog) {
         if (platformHub) host.querySelector('[data-platform-domestic]').checked = state.domesticNetworkOnly && state.domesticPaymentOnly;
-        const available = plansPage ? canRestoreDefaults() : featuredPlatforms().length > 0;
+        const available = platformHub ? featuredPlatforms().length > 0 : canRestoreDefaults();
         const toggle = host.querySelector('[data-catalog-featured]');
-        toggle.disabled = !available;
+        toggle.disabled = !available && !featuredOnly;
         toggle.setAttribute('aria-pressed', String(featuredOnly));
         const fields = host.querySelector('[data-featured-filter-fields]');
         fields.disabled = featuredOnly;
         fields.inert = featuredOnly;
         fields.setAttribute('aria-disabled', String(featuredOnly));
-        host.querySelector('[data-filter-action="reset"]').disabled = featuredOnly;
+        host.querySelector('[data-filter-action="reset"], [data-filter-action="restore-defaults"]').disabled = featuredOnly || (pricing && !available);
         fields.closest('.filter-state-bar').classList.toggle('is-featured-mode', featuredOnly);
         host.querySelector('[data-hub-retry-featured]').hidden = available;
       }

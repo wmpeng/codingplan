@@ -21,9 +21,19 @@
       const relation = params.get('relation');
       const plan = data.context.planBySlug.get(params.get('plan'));
       const focusRelationSlugs = relation ? [relation] : (data.context.relationsByPlanSlug.get(plan?.slug) || []).map(row => row.slug);
-      const filterState = document.getElementById('toolFilters').filterController.getState();
+      const filterController = document.getElementById('toolFilters').filterController;
+      function getFilterView() {
+        const state = filterController.getState();
+        if (!filterController.isFeaturedOnly()) return {state, featuredOnly:false};
+        const featured = root.CodingPlanFilters.createViewPolicy({mode:'full', view:'pricing'}).createDefaults(data.config, state.tokenUnit);
+        featured.platformSlugs = (data.context.featuredPlatformSlugs || []).filter(slug => data.context.platformBySlug.has(slug));
+        featured.modelSlugs = root.CodingPlanUI.modelPresetSlugs(data.context.modelGroups, 'featured', data.context.models);
+        featured.mainlandRequired = false;
+        return {state:featured, featuredOnly:true};
+      }
+      const filterState = filterController.getState();
       await root.ModelComparison.mountModelComparisonView(host, { mode: 'full', hidePresets: true, data, preset, filterState, focusRelationSlugs,
-        directory:root.PricingDirectory, colorControlHost:document.querySelector('#toolFilters .filter-state-grid'), benchmarkControlHost:document.querySelector('#toolFilters .filter-state-grid'), billingControlHost:document.querySelector('#toolFilters .filter-state-grid'), scaleControlHost:document.querySelector('#toolFilters .filter-state-grid'), search, count, columns:columns.querySelector('input') });
+        directory:root.PricingDirectory, getFilterView, colorControlHost:document.querySelector('#toolFilters .filter-state-grid'), benchmarkControlHost:document.querySelector('#toolFilters .filter-state-grid'), billingControlHost:document.querySelector('#toolFilters .filter-state-grid'), scaleControlHost:document.querySelector('#toolFilters .filter-state-grid'), search, count, columns:columns.querySelector('input') });
       root.CodingPlanToolPage.mountDirectoryFilters('pricing', search, count);
       const legend = host.querySelector('.usage-color-legend');
       const legendGroup = document.createElement('div'); legendGroup.className = 'tool-legend';
