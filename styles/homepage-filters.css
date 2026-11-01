@@ -359,6 +359,63 @@ body .range-picker-slider input:focus-visible { outline: 2px solid #6b7280; outl
 body.tool-unified-active .filter-state-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 24px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border-color); }
 body.tool-unified-active .filter-state-footer .filter-checks { border: 0; padding: 0; }
 body.tool-unified-active .filter-state-footer .filter-state-actions { flex: 0 0 auto; width: auto; max-width: 100%; justify-content: flex-end; margin: 0 0 0 auto; }
+.pricing-explorer > #toolFilters.pricing-sticky-filters { position: sticky; top: var(--pricing-filter-top); z-index: 20; }
+.pricing-explorer > #toolFilters.pricing-sticky-filters:has(.filter-picker[open], .pricing-control-menu:not([hidden])) { z-index: 35; }
+.pricing-explorer > #toolFilters > .filter-state-bar { background: var(--bg-secondary); }
+/* 价格页只切换原控件的布局，筛选状态与菜单仍由共享组件维护。 */
+.pricing-explorer:has(.pricing-filters) { overflow-anchor: none; }
+.pricing-filter-toolbar, .pricing-filter-group, .pricing-display-group, .pricing-filter-utility { display: flex; align-items: center; gap: 8px; }
+.pricing-filter-group, .pricing-display-group { flex-wrap: wrap; max-width: 100%; }
+.pricing-display-group::before { content: ''; flex: 0 0 1px; width: 1px; height: 24px; margin-right: 8px; background: var(--border-color); }
+.pricing-filter-utility { flex: 0 0 auto; margin-left: auto; }
+body.tool-unified-active .pricing-filters .pricing-filter-utility .filter-state-actions { flex: 0 0 auto; margin: 0; }
+.pricing-filter-toggle svg, .pricing-reset-icon svg { width: 16px; height: 16px; }
+body .pricing-filter-toggle { font-size: 13px; }
+.pricing-filters:not(.pricing-filters-compact) .pricing-filter-toolbar, .pricing-filters:not(.pricing-filters-compact) .pricing-control-trigger,
+.pricing-filters:not(.pricing-filters-compact) .pricing-search-toggle, .pricing-filters:not(.pricing-filters-compact) .pricing-reset-icon { display: none; }
+.pricing-filters:not(.pricing-filters-compact) .pricing-filter-control, .pricing-filters:not(.pricing-filters-compact) .pricing-control-menu:not([hidden]) { display: contents; }
+.pricing-control-menu[hidden], .pricing-filter-dot { display: none !important; }
+.pricing-filters:not(.pricing-filters-compact) .pricing-filter-toggle svg { transform: rotate(180deg); }
+.pricing-filters-stuck:not(.pricing-filters-compact) .filter-state-grid { max-height: calc(100dvh - var(--pricing-filter-top) - 180px); overflow: auto; }
+body.tool-unified-active .pricing-filters.pricing-filters-compact > .filter-state-bar { padding: 8px 12px; }
+.pricing-filters-compact .pricing-filter-toolbar { gap: 8px; min-height: 40px; }
+.pricing-filters-compact :is(.pricing-filter-group, .pricing-display-group) { flex: 0 0 auto; flex-wrap: nowrap; gap: 4px; }
+body.tool-unified-active .pricing-filters-compact .filter-state-grid, body.tool-unified-active .pricing-filters-compact .filter-state-footer,
+.pricing-filters-compact .pricing-filter-overflow, .pricing-filters-compact .pricing-reset-text { display: none !important; }
+.pricing-filters-compact :is(.pricing-filter-group, .pricing-display-group)[hidden] { display: none; }
+.pricing-filters-compact .pricing-display-no-divider::before { display: none; }
+.pricing-filters-compact .pricing-display-group::before { margin: 0 8px 0 0; }
+body #toolFilters.pricing-filters-compact .pricing-filter-entry { flex: 0 0 auto; min-width: 0; }
+body #toolFilters.pricing-filters-compact :is(.filter-picker > summary, .pricing-control-trigger) { display: inline-flex; align-items: center; justify-content: center; flex-wrap: nowrap; width: auto; min-height: 40px; padding: 8px; gap: 6px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--text-secondary); font: inherit; font-size: 13px; font-weight: 400; line-height: 1.5; white-space: nowrap; cursor: pointer; }
+body #toolFilters.pricing-filters-compact :is(.filter-picker > summary, .pricing-control-trigger):hover { color: var(--accent-primary); background: var(--bg-tertiary); }
+body #toolFilters.pricing-filters-compact :is(.filter-picker > summary, .pricing-control-trigger) > span:first-child { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.pricing-control-trigger::after { content: ''; flex: 0 0 6px; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); }
+body #toolFilters.pricing-filters-compact .filter-picker > summary::after { margin-left: 0; flex-shrink: 0; }
+body #toolFilters.pricing-filters-compact .filter-picker-value { display: none; }
+body #toolFilters.pricing-filters-compact [data-active="true"] > :is(summary, .pricing-control-trigger) .pricing-filter-dot { display: inline-block !important; flex: 0 0 5px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-primary); }
+body .pricing-filters-compact .pricing-control-menu { z-index: 1; overflow: auto; padding: 12px; }
+.pricing-control-menu > :is(.usage-color-control, .usage-benchmark-control, .usage-scale-control, .price-billing-filter) { flex-shrink: 0; }
+body .pricing-filters-compact .pricing-control-menu > input[type="search"] { width: 100%; max-width: 100%; margin: 0; }
+.pricing-filter-utility .tool-count { white-space: nowrap; font-size: 12px; font-variant-numeric: tabular-nums; }
+body .pricing-filters-compact .pricing-reset-icon { display: inline-flex; align-items: center; justify-content: center; }
+body .pricing-filters-compact .filter-state-actions > button[data-filter-action] { min-width: 36px; min-height: 40px; padding: 8px; border-color: transparent; background: transparent; color: var(--text-secondary); }
+.pricing-search-toggle.is-active::after { content: ''; position: absolute; right: 3px; top: 3px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-primary); }
+.pricing-search-toggle { position: relative; flex-shrink: 0; }
+@media (max-width: 800px), (pointer: coarse) {
+  body #toolFilters.pricing-filters-compact :is(.filter-picker > summary, .pricing-control-trigger), body .pricing-filter-toggle,
+  body .pricing-filters-compact .filter-state-actions > button[data-filter-action], body .pricing-search-toggle { min-height: 44px; }
+}
+@media (max-width: 800px) {
+  body.tool-unified-active .pricing-filters.pricing-filters-compact > .filter-state-bar { padding: 6px 8px; }
+  .pricing-filters-compact .pricing-filter-toolbar, .pricing-filter-utility { gap: 4px; }
+  .pricing-filters-compact :is(.pricing-filter-group, .pricing-display-group) { gap: 4px; }
+  body #toolFilters.pricing-filters-compact :is(.filter-picker > summary, .pricing-control-trigger) { padding: 8px 6px; font-size: 12px; }
+  .pricing-filters-compact .pricing-display-group::before { margin-right: 8px; }
+  .pricing-filter-utility .tool-count { font-size: 10px; }
+  body .pricing-filter-toggle { padding: 8px; }
+  .pricing-filters-compact .pricing-filter-toggle svg, .pricing-filters-compact .filter-state-actions { display: none !important; }
+  .pricing-filters:not(.pricing-filters-compact) .pricing-filter-utility { width: 100%; justify-content: flex-end; }
+}
 body.tool-unified-active .filter-state-footer .filter-result-search { flex: 0 1 auto; min-width: 0; max-width: 100%; margin: 0 auto 0 0; }
 body.tool-unified-active .filter-result-search input[type="search"] { box-sizing: border-box; flex: 0 1 320px; width: 320px; max-width: 100%; min-width: 0; min-height: 40px; }
 body.plans-page #plansPage > .tool-result-bar, body.models-page .model-result-bar { justify-content: flex-end; }

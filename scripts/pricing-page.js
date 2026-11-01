@@ -21,6 +21,7 @@
       const filterState = document.getElementById('toolFilters').filterController.getState();
       await root.ModelComparison.mountModelComparisonView(host, { mode: 'full', hidePresets: true, data, preset, filterState, focusRelationSlugs,
         directory:root.PricingDirectory, colorControlHost:document.querySelector('#toolFilters .filter-state-grid'), benchmarkControlHost:document.querySelector('#toolFilters .filter-state-grid'), billingControlHost:document.querySelector('#toolFilters .filter-state-grid'), scaleControlHost:document.querySelector('#toolFilters .filter-state-grid'), search, count });
+      root.PricingFilters.mount(document.getElementById('toolFilters'), search, count);
       const legend = host.querySelector('.usage-color-legend');
       const legendGroup = document.createElement('div'); legendGroup.className = 'tool-legend';
       legend.before(legendGroup); legendGroup.append(legend);
