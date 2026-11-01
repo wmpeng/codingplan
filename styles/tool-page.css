@@ -131,8 +131,6 @@ body.tool-page.ultra-wide { --tool-page-width: 1920px; }
 #plansPage .plan-rating { display: inline-flex; white-space: nowrap; background: var(--bg-tertiary); padding: 4px 8px; border-radius: 6px; color: var(--text-secondary); font-size: 12px; font-weight: 600; }
 #plansPage .plan-rating[aria-label="待评定"] { font-weight: 400; }
 #plansPage:not(.show-all-columns) [data-plan-extra] { display: none; }
-#plansPage .tool-table th { font-size: 12px; color: var(--text-secondary); background: #f4f7fb; }
-#plansPage .tool-table th[data-plan-col="identity"] { background: #f4f7fb; }
 #plansPage .tool-table td[data-plan-col="firstMonthPrice"] { color: var(--accent-primary); font-weight: 600; font-variant-numeric: tabular-nums; }
 #plansPage .plan-identity { display: flex; align-items: flex-start; gap: 6px; }
 #plansPage .plan-identity-copy { min-width: 0; }

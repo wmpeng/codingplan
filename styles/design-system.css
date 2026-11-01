@@ -181,6 +181,15 @@ body .usage-preset-card > header h4 { color:var(--text-primary); font-size:17px;
 body .usage-preset-card > header p { font-size: 12px; color: var(--text-secondary); margin-top: 6px; line-height: 1.6; }
 body :is(.usage-preset-table, .usage-data-table, .tool-table) :is(th, td) { font-size: 13px; line-height: 1.6; border-color: var(--border-light); }
 body :is(.usage-preset-table, .usage-data-table, .tool-table) th { color: var(--text-secondary); background: var(--bg-tertiary); font-weight: 400; }
+/* 三个目录主表共用表头外观；页内规则只负责列布局及交互。 */
+body.tool-page :is(#pricingPage .usage-data-table, #plansPage .tool-table, .model-directory-table) > thead > tr > th {
+  padding: 12px 14px; color: #53667e; background: var(--bg-tertiary);
+  font: 600 13px/1.6 system-ui, "Microsoft YaHei", sans-serif;
+  letter-spacing: normal; vertical-align: middle;
+}
+@media (max-width: 800px) {
+  body.tool-page :is(#pricingPage .usage-data-table, #plansPage .tool-table, .model-directory-table) > thead > tr > th { padding: 10px 12px; }
+}
 body :is(.usage-preset-table, .usage-data-table, .tool-table) td { color: var(--text-primary); background: var(--bg-secondary); }
 body :is(.usage-preset-table, .usage-data-table, .tool-table) tbody tr:nth-child(even) td { background: var(--bg-secondary); }
 body :is(.usage-preset-table, .usage-data-table, .tool-table) tbody tr:hover td { background: var(--bg-tertiary); }
