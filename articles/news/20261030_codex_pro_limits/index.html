@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script src="/scripts/event-collect.js?v=e3ae87fa58" defer></script>
+<script src="/scripts/event-collect-config.js?v=fe6767a8a0" defer></script>
+<script src="/scripts/event-collect-site.js?v=f2aa8e4c89" defer></script>
+<script src="/scripts/ui-core.js?v=310b87a89d"></script>
+<script src="/scripts/ui-help.js?v=2ecce1a2f6"></script>
+<script src="/scripts/site-features.js?v=af13f3915f"></script>
+<script src="/scripts/ui-dialog.js?v=632fc11cea" defer></script>
+<script src="/scripts/section-navigation.js?v=e22d9e11b1" defer></script>
+<script src="/scripts/data-updates.js?v=bd42009280" defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Codex Pro 额度翻倍：三档现为 Plus 的 10、20、50 倍</title>
+<link rel="canonical" href="https://codingplan.fyi/articles/news/20261030_codex_pro_limits/">
+<meta name="description" content="北京时间 10 月 30 日，OpenAI 的 Tibo 宣布，Pro 100、Pro 200、Pro 500 及 Business Premium 的使用额度调整，当天生效。个人 Pro 的变化集中在 Work 与 Codex 共享额度，Plus 保持不变。" />
+  <meta property="article:published_time" content="2026-11-01" />
+  <meta property="article:modified_time" content="2026-11-01" />
+  <link rel="icon" href="/favicon.ico?v=260924a" type="image/x-icon" />
+  <link rel="stylesheet" href="/styles/shared.css?v=bd1276c850" />
+  <link rel="stylesheet" href="/styles/reading.css?v=05dca7deaf" />
+  <link rel="stylesheet" href="/styles/design-system.css?v=6580290d40" />
+<script src="/scripts/article-toc.js?v=e1648d698d" defer></script>
+<script id="site-data-versions" type="application/json">{"platforms":"2026-11-01T04:20:35.692Z","plans":"2026-11-01T04:20:41.497Z","models":"2026-10-31T08:17:47.160Z","config":"2026-11-01T04:20:45.722Z","featured_catalog":"2026-11-01T04:05:11.320Z","changes":"2026-11-01T04:20:43.365Z","announcements":"2026-10-31T08:23:01.830Z","articles_catalog":"2026-11-01T08:32:08.807Z"}</script>
+<script src="/scripts/site-navigation.js?v=78dab5ca11" defer></script>
+<link rel="stylesheet" href="/styles/site-features.css?v=94a7c7cb0c">
+<link rel="stylesheet" href="/styles/ui-components.css?v=89d1dc5ef7">
+<link rel="stylesheet" href="/styles/ui-help.css?v=50cda6ca65">
+</head>
+<body class="article-page">
+<!-- SITE_NAV_START -->
+<header class="tool-topbar site-header">
+  <a class="tool-brand" href="/" aria-label="Coding Plan 首页"><span class="tool-brand-name">Coding Plan</span></a>
+  <nav class="tool-nav" aria-label="主导航">
+    <a href="/">首页</a>
+    <a href="/pricing/">价格与额度</a>
+    <a href="/platforms/">平台</a>
+    <a href="/plans/">套餐</a>
+    <a href="/models/">模型</a>
+    <a href="/articles/" aria-current="page">文章</a>
+    <a href="/updates/">预告与更新</a>
+  </nav>
+  <div id="settingsMount">
+    <div class="settings-wrapper">
+      <button type="button" class="settings-btn" id="settingsBtn" title="显示设置" aria-label="显示设置" aria-expanded="false" aria-controls="settingsPanel" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" hidden aria-label="显示设置">
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="tokenUnitLabel">Token 单位</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="tokenUnitLabel">
+            <button type="button" data-settings-token-unit="yi" aria-pressed="true">亿 Token</button>
+            <button type="button" data-settings-token-unit="M" aria-pressed="false">M Token</button>
+            <button type="button" data-settings-token-unit="B" aria-pressed="false">B Token</button>
+          </div>
+        </div>
+        <div class="settings-unit-section">
+          <div class="settings-unit-heading" id="priceBasisLabel">综合单价口径</div>
+          <div class="settings-unit-options" role="group" aria-labelledby="priceBasisLabel" title="首月价缺失时使用每月价格；按量 API 报价和 Token 额度不变。">
+            <button type="button" data-settings-price-basis="firstMonth" aria-pressed="true">首月价格</button>
+            <button type="button" data-settings-price-basis="monthly" aria-pressed="false">每月价格</button>
+          </div>
+        </div>
+        <div class="settings-toggle-row">
+          <label for="ultraWideToggle">超宽屏</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="ultraWideToggle" aria-label="超宽屏">
+            <span class="toggle-slider" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE_NAV_END -->
+<div class="doc-wrap">
+    <nav class="guide-breadcrumb article-breadcrumb" aria-label="面包屑">
+      <a href="/">Coding Plan</a><span aria-hidden="true">/</span>
+      <a href="/articles/">文章列表</a><span aria-hidden="true">/</span>
+      <span aria-current="page" title="Codex Pro 额度翻倍：三档现为 Plus 的 10、20、50 倍">Codex Pro 额度翻倍：三档现为 Plus 的 10、20、50 倍</span>
+    </nav>
+    <div class="doc-layout">
+      <aside class="doc-toc-aside doc-toc-aside--desktop"><nav class="doc-toc" aria-label="本页内容"><div class="toc">
+<ul>
+<li><a href="#_1">调整后，各档差多少？</a></li>
+<li><a href="#_2">每个模型大概能用多少？</a></li>
+<li><a href="#_3">开高速会消耗更多额度</a></li>
+</ul>
+</div>
+</nav></aside>
+      <article class="doc">
+        <p class="doc-kicker">AI 行业快讯</p>
+        <h1>Codex Pro 额度翻倍：三档现为 Plus 的 10、20、50 倍</h1>
+        <details class="article-toc-disclosure"><summary>本页内容</summary><nav class="doc-toc doc-toc--inline" aria-label="本页内容"><div class="toc">
+<ul>
+<li><a href="#_1">调整后，各档差多少？</a></li>
+<li><a href="#_2">每个模型大概能用多少？</a></li>
+<li><a href="#_3">开高速会消耗更多额度</a></li>
+</ul>
+</div>
+</nav></details>
+        <p><strong>更新日期 2026.11.1</strong></p>
+<p>北京时间 10 月 30 日，OpenAI 的 <a href="https://x.com/thsottiaux/status/2115850175868727621" rel="noopener noreferrer">Tibo 宣布</a>，Pro 100、Pro 200、Pro 500 及 Business Premium 的使用额度调整，当天生效。个人 Pro 的变化集中在 <strong>Work 与 Codex 共享额度</strong>，Plus 保持不变。</p>
+<p>其中，<strong>原本已享有较高额度的 Pro 200 用户保持原额度</strong>；此前处于较低额度的用户翻倍后，与他们一致。<a href="https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers" rel="noopener noreferrer">官方帮助页</a>确认，现有 Pro 用户自动获得调整，无需等到续费。</p>
+<h2 id="_1">调整后，各档差多少？</h2>
+<p>以 Plus 为 1 倍，结合<a href="https://x.com/thsottiaux/status/2104951965184925941" rel="noopener noreferrer">此前公布的倍率</a>和本次调整，可得到：</p>
+<div class="doc-table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>套餐</th>
+<th style="text-align: right;">月费约合人民币</th>
+<th style="text-align: right;">调整前</th>
+<th style="text-align: right;">调整后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plus</td>
+<td style="text-align: right;">140 元</td>
+<td style="text-align: right;">1 倍</td>
+<td style="text-align: right;">1 倍</td>
+</tr>
+<tr>
+<td>Pro 100</td>
+<td style="text-align: right;">700 元</td>
+<td style="text-align: right;">5 倍</td>
+<td style="text-align: right;"><strong>10 倍</strong></td>
+</tr>
+<tr>
+<td>Pro 200（原低额度）</td>
+<td style="text-align: right;">1400 元</td>
+<td style="text-align: right;">10 倍</td>
+<td style="text-align: right;"><strong>20 倍</strong></td>
+</tr>
+<tr>
+<td>Pro 200（原高额度）</td>
+<td style="text-align: right;">1400 元</td>
+<td style="text-align: right;">20 倍，原计划下调</td>
+<td style="text-align: right;"><strong>20 倍，取消下调</strong></td>
+</tr>
+<tr>
+<td>Pro 500</td>
+<td style="text-align: right;">3500 元</td>
+<td style="text-align: right;">25 倍</td>
+<td style="text-align: right;"><strong>50 倍</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>月费按 1 美元约 7 元折算，非官方人民币标价。Pro 100 的 10 倍由原来的 5 倍翻倍得出；Pro 500 的 50 倍也获得了 <a href="https://x.com/thsottiaux/status/2115851811576053881" rel="noopener noreferrer">Tibo 回复确认</a>。</p>
+<p>三个 Pro 档位的额度关系是 <strong>1∶2∶5</strong>：Pro 200 为 Pro 100 的 2 倍，Pro 500 为 Pro 200 的 2.5 倍。原高额度 Pro 200 维持 20 倍，并未增加到 40 倍。</p>
+<h2 id="_2">每个模型大概能用多少？</h2>
+<p>以下为 <strong>Coding Plan 的参考估算，非官方固定配额</strong>。按 Standard（标准）速度、输入缓存命中率 <strong>95%</strong>、输出占总 Token <strong>0.5%</strong> 估算，单位为 <strong>亿总 Token／周</strong>，各数值均为约值：</p>
+<div class="doc-table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>模型</th>
+<th style="text-align: right;">Plus</th>
+<th style="text-align: right;">Pro 100</th>
+<th style="text-align: right;">Pro 200</th>
+<th style="text-align: right;">Pro 500</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT-6 Astra</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">4.14</td>
+<td style="text-align: right;">8.27</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr>
+<td>GPT-6.1 Sol</td>
+<td style="text-align: right;">2.51</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">125</td>
+</tr>
+<tr>
+<td>GPT-6 Sol</td>
+<td style="text-align: right;">2.07</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">103</td>
+</tr>
+<tr>
+<td>GPT-6.1 Terra</td>
+<td style="text-align: right;">5.01</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">251</td>
+</tr>
+<tr>
+<td>GPT-6 Luna</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">414</td>
+<td style="text-align: right;">827</td>
+<td style="text-align: right;">2068</td>
+</tr>
+</tbody>
+</table></div>
+<p>总 Token 包含缓存输入，输出也包含推理 Token，不能理解成能生成同等数量的新文字。<strong>各模型与 Work、Codex 共享额度，表内各行不能相加</strong>；缓存更少、输出更长或任务更复杂时，可用量可能明显减少，Luna 的独立验证也较弱。</p>
+<p>同档位的 GPT-6.1 Terra 可用量约为 6.1 Sol 的 <strong>2 倍</strong>，这一相对关系有 <a href="https://x.com/thsottiaux/status/2114800277677092936" rel="noopener noreferrer">Tibo 的订阅说明</a>支持；表中的绝对 Token 数仍属于估算。</p>
+<h2 id="_3">开高速会消耗更多额度</h2>
+<p>按<a href="https://learn.chatgpt.com/docs/pricing" rel="noopener noreferrer">官方定价说明</a>，同一模型使用 Fast（高速）时，订阅额度消耗为标准速度的 <strong>2.5 倍</strong>，可用量约为上表的 <strong>40%</strong>。个人套餐的 Ultrafast（超高速）仅 Pro 500 提供，适用于 Astra、6.1 Sol，订阅消耗为标准速度的 <strong>8 倍</strong>，可用量约为上表的 <strong>12.5%</strong>。</p>
+<p>Pro 当前没有独立的 5 小时限额，仍受周额度限制；Plus 有 5 小时窗口，也可能受周额度约束。可完成的任务数还取决于模型、上下文、推理与工具使用，额度翻倍不保证完成任务数也翻倍。</p>
+<p>优先关心用量时先看标准速度，需要更快响应时再权衡高速消耗。实时余额与重置时间以 <a href="https://chatgpt.com/codex/settings/usage" rel="noopener noreferrer">Usage 页面</a>或 Codex CLI 的 <code>/status</code> 为准。</p>
+<p>订阅入口：<a href="https://api.dreamfree.space/c/s/cpyqchatgpt/20261030_codex_pro_limits" rel="noopener noreferrer">Codex / ChatGPT</a>。</p>
+      </article>
+    </div>
+  </div>
+</body>
+</html>

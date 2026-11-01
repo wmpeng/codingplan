@@ -279,6 +279,17 @@
       }
     },
     {
+      "series": "news",
+      "slug": "20261030_codex_pro_limits",
+      "title": "Codex Pro 额度翻倍：三档现为 Plus 的 10、20、50 倍",
+      "publishedAt": "2026-11-01",
+      "updatedAt": "2026-11-01",
+      "description": "北京时间 10 月 30 日，OpenAI 的 Tibo 宣布，Pro 100、Pro 200、Pro 500 及 Business Premium 的使用额度调整，当天生效。个人 Pro 的变化集中在 Work 与 Codex 共享额度，Plus 保持不变。",
+      "kicker": "AI 行业快讯",
+      "url": "/articles/news/20261030_codex_pro_limits/",
+      "cover": null
+    },
+    {
       "series": "plan_comparisons",
       "slug": "20260519",
       "title": "2026年5月主流AI Coding Plan平台全解析：能力、价格与选型指南",
@@ -360,5 +371,5 @@
       }
     }
   ],
-  "contentVersion": "2026-10-25T17:18:54.882Z"
+  "contentVersion": "2026-11-01T08:32:08.807Z"
 }
