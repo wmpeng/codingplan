@@ -226,7 +226,7 @@
   flex-wrap: wrap; gap: 4px 12px; min-width: 0;
 }
 .usage-data-card .usage-detail-summary .usage-table-count { margin: 0; text-align: left; }
-.pricing-directory .usage-data-card { scroll-margin-top: 110px; }
+.pricing-directory .usage-data-card { padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; scroll-margin-top: 110px; }
 .pricing-directory .usage-data-table :is(th,td) { box-sizing: border-box; padding: 8px 10px; }
 .pricing-directory [data-comparison-col="vendor"] { width: var(--pricing-identity-width); white-space: normal; }
 .pricing-directory th[data-comparison-col="price"] { width: 160px; }
