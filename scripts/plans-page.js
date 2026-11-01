@@ -32,7 +32,7 @@
       const saved = Url.read(urlSchema);
       search.value = saved.query || ''; sort = {key:saved.key || 'platformOrder', direction:saved.direction || 'asc'};
       const tableBody = host.querySelector('[data-plan-body]'), count = host.querySelector('[data-plan-count]');
-      const expandedQuotas = new Set(), expandedNotes = new Set();
+      const expandedQuotas = new Set(), expandedNotes = new Set(), expandedPlanNotes = new Set();
       const quotaSorts = new Map();
       const tableWrap = tableBody.closest('.tool-table-wrap');
       const resizeQuota = () => host.style.setProperty('--plan-quota-width', `${tableWrap.clientWidth}px`);
@@ -80,7 +80,7 @@
             <td data-plan-col="models">${modelNotice ? `<div class="plan-models-with-notice">${modelList}${modelNotice}</div>` : modelList}</td>
             <td data-plan-col="monthlyToken" class="monthly-token-cell"><button type="button" class="plan-quota-toggle" data-plan-quota="${esc(plan.slug)}" aria-expanded="${expandedQuotas.has(plan.slug)}" aria-controls="${quotaId(plan)}" aria-label="${esc(label)} 额度明细"><span>${esc(Filters.formatMonthlyTokens(plan,selection.effectiveState))}</span></button>${notice('quota')}</td>
             ${['fiveHours','weekly','monthly'].map(key => `<td data-plan-col="requestQuota.${key}" data-plan-extra>${esc(requests(plan,key))}</td>`).join('')}
-            <td data-plan-col="benefits" data-plan-extra>${chips(plan.benefits)}</td><td class="plan-note" data-plan-col="note">${esc(plan.note || '')}</td>
+            <td data-plan-col="benefits" data-plan-extra>${chips(plan.benefits)}</td><td class="plan-note" data-plan-col="note">${plan.note ? `<details class="usage-note-disclosure" data-plan-note="${esc(plan.slug)}"${expandedPlanNotes.has(plan.slug) ? ' open' : ''}><summary>用量口径与限制</summary><div>${esc(plan.note)}</div></details>` : '—'}</td>
           </tr><tr class="plan-quota-row" data-plan-quota-row="${esc(plan.slug)}"${expandedQuotas.has(plan.slug) ? '' : ' hidden'}><td colspan="${host.classList.contains('show-all-columns') ? 13 : 6}"><section class="plan-quota-panel" id="${quotaId(plan)}" aria-label="${esc(label)} 额度明细">${expandedQuotas.has(plan.slug) ? quotaContent(plan) : ''}</section></td></tr>`;
         }).join('') : `<tr><td colspan="13"><div class="tool-empty">${featuredOnly ? '暂无符合精选范围的套餐，可关闭“显示精选”查看其他套餐。' : '没有匹配套餐，试着清空搜索或减少筛选条件。'}</div></td></tr>`;
         modelRows.refresh(); host.dataset.mounted = '1';
@@ -126,6 +126,8 @@
         }
       });
       host.addEventListener('toggle', event => {
+        const planNote = event.target.dataset?.planNote;
+        if (planNote) { if (event.target.open) expandedPlanNotes.add(planNote); else expandedPlanNotes.delete(planNote); }
         const slug = event.target.dataset?.planQuotaNotes;
         if (slug) { if (event.target.open) expandedNotes.add(slug); else expandedNotes.delete(slug); }
       }, true);
