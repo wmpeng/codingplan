@@ -80,3 +80,8 @@
   #plansPage .plan-quota-table :is(th, td) { padding: 7px 4px; font-size: 12px; }
   #plansPage .plan-quota-table th:first-child { width: 32%; }
 }
+
+/* Keep the featured badge beside typical plan names on desktop. */
+@media (min-width: 801px) {
+  #plansPage .tool-table [data-plan-col="identity"] { width: 280px; }
+}
