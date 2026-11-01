@@ -29,9 +29,9 @@
         { key: 'plan', label: '套餐', sortable: false },
         { key: 'price', label: '首月价格' },
         { key: 'model', label: '模型' },
-        { key: 'tokenConsumptionRate', label: 'token消耗率' },
         { key: 'unitPriceCnyPerM', label: '综合单价' },
         { key: 'unitPriceVisual', label: '单价对比', sortable: false },
+        { key: 'tokenConsumptionRate', label: 'token消耗率' },
         { key: 'fiveHourTokenInM', label: '5h用量' },
         { key: 'weeklyTokenInM', label: '周用量' },
         { key: 'monthlyTokenInM', label: '月用量' },
@@ -524,9 +524,9 @@
             (compact ? '' : `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}<div class="plan-capabilities">${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></td>`) +
             `<td class="numeric">${price}${notice('price')}</td>` +
             `<td class="usage-table-model">${point.modelSlug ? `<a class="price-chart-model-link" href="/models/?q=${encodeURIComponent(point.modelSlug)}">${escapeHtml(point.relationLabel || point.modelName)}</a>` : escapeHtml(point.relationLabel || point.modelName)}${notice('models')}</td>` +
-            (compact ? `<td class="numeric" data-comparison-col="tokenConsumptionRate" title="${escapeHtml(aaScore?.configuration || '')}">${finiteNonnegative(point.tokenConsumptionRate) === null ? '—' : '×' + Numbers.amount(point.tokenConsumptionRate)}</td>` : '') +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
             `<td class="usage-table-price-visual">${unitPriceVisualHtml(point, tokenUnit, visualOptions)}</td>` +
+            (compact ? `<td class="numeric" data-comparison-col="tokenConsumptionRate" title="${escapeHtml(aaScore?.configuration || '')}">${finiteNonnegative(point.tokenConsumptionRate) === null ? '—' : '×' + Numbers.amount(point.tokenConsumptionRate)}</td>` : '') +
             `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.weeklyTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}${notice('quota')}</td>` +
@@ -738,7 +738,7 @@
                     <div class="usage-chart-stage"><div class="usage-chart" data-chart="usage" role="img" aria-label="首月价格和月 Token 散点图"></div><div class="usage-empty" data-empty="usage" hidden>当前条件下没有可绘制的首月价格与月额度。<button type="button" class="price-chart-clear" data-chart-reset>重置筛选</button></div></div>
                 </article>
                 <article class="usage-chart-card usage-data-card">
-                    <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3></div><div class="usage-detail-summary"><span class="usage-table-count" data-table-count="comparison"></span></div></div>
+                    <div class="usage-chart-head"><div><h3>综合单价与数据明细</h3></div>${compact ? '' : '<div class="usage-detail-summary"><span class="usage-table-count" data-table-count="comparison"></span></div>'}</div>
                     <section class="usage-table-section" aria-label="价格与额度数据明细"><div class="usage-table-scroll"><table class="usage-data-table" id="pricingComparisonTable" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison', compact)}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
                 </article>
             </section>`;
@@ -1125,7 +1125,6 @@
                     const label = `${rows.length} / ${points.length} 条明细${pins.length ? ' · 置顶 '+pins.length+' 条' : ''}`;
                     mountOptions.count.textContent = label;
                     root.CodingPlanEvents?.results({result_count:rows.length,result_key:JSON.stringify(rows.map(x=>x.slug))});
-                    container.querySelector('[data-table-count]').textContent = label;
                     if (tableRenderKey === renderKey) {
                         if (tableScaleType !== state.axisScale) {
                             const bySlug = new Map(sorted.map(point => [point.slug, point]));
