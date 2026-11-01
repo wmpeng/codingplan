@@ -74,3 +74,23 @@ test('模型收录平台数排除下架套餐及平台，保留受限渠道并�
   const decorated=Catalog.modelCard(models[0],context,{directory:true,featured:true,pinned:true});
   assert.match(decorated,/is-featured is-pinned/);assert.match(decorated,/model-featured-badge/);assert.match(decorated,/aria-pressed="true"/);
 });
+
+test('模型表头三态排序沿用名称升序、评分和平台数降序的首次方向', () => {
+  for(const key of ['name','artificialAnalysis','deepSWE','liveBench','arena','platformCount']) {
+    const first=key==='name'?'asc':'desc',second=first==='asc'?'desc':'asc';
+    let state=Directory.cycleSort({key:'default',direction:'asc'},key);
+    assert.deepEqual(state,{key,direction:first});
+    state=Directory.cycleSort(state,key);assert.deepEqual(state,{key,direction:second});
+    assert.deepEqual(Directory.cycleSort(state,key),{key:'default',direction:'asc'});
+  }
+});
+
+test('模型双向排序保留置顶和精选层级、未知评分排后，收录数沿用去重计数', () => {
+  const ids=(sort,direction,counts)=>Directory.select(models,groups,{sort,direction},['pinned'],counts).visible.map(m=>m.slug);
+  assert.deepEqual(ids('artificialAnalysis','asc'),['pinned','featured-b','featured-a','ordinary','unknown']);
+  assert.deepEqual(ids('artificialAnalysis','desc'),['pinned','featured-a','featured-b','ordinary','unknown']);
+  assert.deepEqual(ids('name','desc'),['pinned','featured-b','featured-a','unknown','ordinary']);
+  const counts=new Map([['pinned',1],['featured-a',8],['featured-b',2],['ordinary',5],['unknown',0]]);
+  assert.deepEqual(ids('platformCount','asc',counts),['pinned','featured-b','featured-a','unknown','ordinary']);
+  assert.deepEqual(ids('platformCount','desc',counts),['pinned','featured-a','featured-b','ordinary','unknown']);
+});

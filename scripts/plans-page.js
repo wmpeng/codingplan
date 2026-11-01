@@ -24,7 +24,7 @@
       const allPlans = root.EntityData.buildPlanCatalog(context).filter(plan => plan.billingMode === 'subscription');
       const search = host.querySelector('[data-plan-search]');
       let state = Filters.createDefaultState(config, {mode:'full'}), pins = Directory.readPins(root.localStorage, allPlans);
-      let sort = {key:'platformOrder', direction:'asc'}, sortPicker, sortSelect, directionButton, lastFilterKey, featuredOnly = false;
+      let sort = {key:'platformOrder', direction:'asc'}, lastFilterKey, featuredOnly = false;
       const Url = root.CodingPlanFilterUrl, urlSchema = {
         query:Url.text('q'), key:Url.choice('sort', Directory.sortOptions.map(([key]) => key), 'platformOrder'),
         direction:Url.choice('direction', ['asc','desc'], 'asc')
@@ -32,7 +32,7 @@
       const saved = Url.read(urlSchema);
       search.value = saved.query || ''; sort = {key:saved.key || 'platformOrder', direction:saved.direction || 'asc'};
       const tableBody = host.querySelector('[data-plan-body]'), count = host.querySelector('[data-plan-count]');
-      const expandedQuotas = new Set(), expandedNotes = new Set();
+      const expandedQuotas = new Set(), expandedNotes = new Set(), expandedPlanNotes = new Set();
       const quotaSorts = new Map();
       const tableWrap = tableBody.closest('.tool-table-wrap');
       const resizeQuota = () => host.style.setProperty('--plan-quota-width', `${tableWrap.clientWidth}px`);
@@ -42,12 +42,6 @@
       const quotaId = plan => `plan-quota-${encodeURIComponent(plan.slug)}`;
       const quotaContent = plan => root.PlanQuota.render(plan, context, selection.effectiveState, {notesOpen:expandedNotes.has(plan.slug), sort:quotaSorts.get(plan.slug)});
       function syncSort() {
-        if (sortSelect) { sortSelect.value = sort.key; sortPicker.sync(); }
-        if (directionButton) {
-          directionButton.disabled = sort.key === 'platformOrder';
-          directionButton.textContent = sort.direction === 'asc' ? '↑' : '↓';
-          directionButton.setAttribute('aria-label', `当前${sort.direction === 'asc' ? '升序' : '降序'}，切换为${sort.direction === 'asc' ? '降序' : '升序'}`);
-        }
         host.querySelectorAll('.tool-table > thead > tr > th').forEach(th => {
           const active = [...th.querySelectorAll('[data-plan-sort]')].find(button => button.dataset.planSort === sort.key);
           th.setAttribute('aria-sort', active ? sort.direction === 'asc' ? 'ascending' : 'descending' : 'none');
@@ -73,14 +67,14 @@
           const title = status !== 'delisted' && url
             ? `<a class="plan-title" data-plan-link="${status}" data-collect-outbound data-collect-platform="${esc(plan.platformSlug)}" data-collect-plan="${esc(plan.slug)}" href="${esc(url)}" target="_blank" rel="noopener noreferrer" aria-label="${status === 'open' ? '开通' : '去官网查看'} ${esc(label)}">${esc(label)} ${UI.externalLinkIcon}</a>`
             : `<strong class="plan-title">${esc(label)}</strong>`;
-          return `<tr data-plan-row="${esc(plan.slug)}"${selection.pinned.has(plan.slug) ? ' class="is-pinned"' : ''}>
+          return `<tr data-plan-row="${esc(plan.slug)}" class="${[selection.featured.has(plan.slug) ? 'is-featured' : '', selection.pinned.has(plan.slug) ? 'is-pinned' : ''].filter(Boolean).join(' ')}">
             <td data-plan-col="identity"><div class="plan-identity">${UI.pinButton({pinned:selection.pinned.has(plan.slug), label:`${selection.pinned.has(plan.slug) ? '取消置顶' : '置顶'} ${label}`, attributes:{'data-plan-pin':plan.slug}})}<div class="plan-identity-copy"><div class="plan-identity-line">${title}${selection.featured.has(plan.slug) ? '<span class="platform-featured-badge" data-plan-featured-badge>精选</span>' : ''}${notice('general')}</div><div class="plan-meta">${status === 'open' ? '' : `<span class="tool-tag plan-status" data-plan-status="${status}">${esc(UI.statusLabels[status])}</span>`}${root.EntityData.harnessApiBadge(plan.supportsHarnessApi)}</div></div></div></td>
             <td data-plan-col="rating"><span class="plan-rating" aria-label="${plan.rating > 0 ? esc(plan.rating)+' 星' : '待评定'}">${plan.rating > 0 ? '★ '+Number(plan.rating).toFixed(1) : '待评定'}</span></td>
             ${['firstMonthPrice','monthlyPrice','quarterlyPrice','yearlyPrice'].map(key => `<td data-plan-col="${key}"${key === 'firstMonthPrice' ? '' : ' data-plan-extra'}>${esc(money(plan,key))}${key==='firstMonthPrice'?notice('price'):''}</td>`).join('')}
             <td data-plan-col="models">${modelNotice ? `<div class="plan-models-with-notice">${modelList}${modelNotice}</div>` : modelList}</td>
             <td data-plan-col="monthlyToken" class="monthly-token-cell"><button type="button" class="plan-quota-toggle" data-plan-quota="${esc(plan.slug)}" aria-expanded="${expandedQuotas.has(plan.slug)}" aria-controls="${quotaId(plan)}" aria-label="${esc(label)} 额度明细"><span>${esc(Filters.formatMonthlyTokens(plan,selection.effectiveState))}</span></button>${notice('quota')}</td>
             ${['fiveHours','weekly','monthly'].map(key => `<td data-plan-col="requestQuota.${key}" data-plan-extra>${esc(requests(plan,key))}</td>`).join('')}
-            <td data-plan-col="benefits" data-plan-extra>${chips(plan.benefits)}</td><td class="plan-note" data-plan-col="note">${esc(plan.note || '')}</td>
+            <td data-plan-col="benefits" data-plan-extra>${chips(plan.benefits)}</td><td class="plan-note" data-plan-col="note">${plan.note ? `<details class="usage-note-disclosure" data-plan-note="${esc(plan.slug)}"${expandedPlanNotes.has(plan.slug) ? ' open' : ''}><summary>用量口径与限制</summary><div>${esc(plan.note)}</div></details>` : '—'}</td>
           </tr><tr class="plan-quota-row" data-plan-quota-row="${esc(plan.slug)}"${expandedQuotas.has(plan.slug) ? '' : ' hidden'}><td colspan="${host.classList.contains('show-all-columns') ? 13 : 6}"><section class="plan-quota-panel" id="${quotaId(plan)}" aria-label="${esc(label)} 额度明细">${expandedQuotas.has(plan.slug) ? quotaContent(plan) : ''}</section></td></tr>`;
         }).join('') : `<tr><td colspan="13"><div class="tool-empty">${featuredOnly ? '暂无符合精选范围的套餐，可关闭“显示精选”查看其他套餐。' : '没有匹配套餐，试着清空搜索或减少筛选条件。'}</div></td></tr>`;
         modelRows.refresh(); host.dataset.mounted = '1';
@@ -126,6 +120,8 @@
         }
       });
       host.addEventListener('toggle', event => {
+        const planNote = event.target.dataset?.planNote;
+        if (planNote) { if (event.target.open) expandedPlanNotes.add(planNote); else expandedPlanNotes.delete(planNote); }
         const slug = event.target.dataset?.planQuotaNotes;
         if (slug) { if (event.target.open) expandedNotes.add(slug); else expandedNotes.delete(slug); }
       }, true);
@@ -142,20 +138,9 @@
         if (meta.source === 'reset') { search.value = ''; sort = {key:'platformOrder',direction:'asc'}; }
         apply();
       });
-      const footer = document.querySelector('#toolFilters .filter-state-footer');
-      const controls = document.createElement('div'); controls.className = 'plan-sort-controls';
-      controls.innerHTML = `<label data-select-fallback>排序 <select id="planSort" aria-label="套餐排序">${Directory.sortOptions.map(([key,label]) => `<option value="${key}">${esc(label)}</option>`).join('')}</select></label><button type="button" class="ui-icon-button ui-icon-button--outlined" data-plan-direction></button>`;
-      footer.insertBefore(controls,footer.querySelector('.filter-state-actions'));
-      sortSelect = controls.querySelector('select'); directionButton = controls.querySelector('[data-plan-direction]');
-      sortPicker = root.CodingPlanSingleSelect.mount(sortSelect,'排序');
-      sortSelect.addEventListener('input', () => {
-        sort = {key:sortSelect.value,direction:['monthlyToken','rating'].includes(sortSelect.value) ? 'desc' : 'asc'}; apply();
-      });
-      directionButton.addEventListener('click', () => { sort.direction = sort.direction === 'asc' ? 'desc' : 'asc'; apply(); });
-      root.addEventListener('storage', event => {
-        if (event.key === Directory.pinKey || event.key === null) { pins = Directory.readPins(root.localStorage,allPlans); apply(); }
-      });
+      root.CodingPlanToolPage.mountSearch(search, count);
       syncSort();
+      root.CodingPlanToolPage.mountDirectoryFilters('plans', search, count);
     }).catch(error => root.CodingPlanToolPage.error(host,error.message));
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded',boot); else boot();

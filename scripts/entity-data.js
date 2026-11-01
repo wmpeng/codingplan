@@ -231,6 +231,7 @@
         ...billingPresentation(model, relation),
         multimodal: model.multimodal,
         scores: comparisonScores(model.scores),
+        tokenConsumptionRate: displayNumber(model.tokenConsumptionRate),
         billingMode,
         supportsHarnessApi: resolveHarnessApi(platform, plan),
         planStatus: plan.planStatus,

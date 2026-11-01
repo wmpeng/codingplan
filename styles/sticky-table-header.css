@@ -1,0 +1,28 @@
+.sticky-table-backdrop {
+  position:fixed; z-index:18; left:0; width:100%;
+  background:var(--bg-primary); pointer-events:none;
+}
+.sticky-table-header {
+  position:fixed; z-index:19; overflow-x:auto; overflow-y:hidden; scrollbar-width:none;
+  box-sizing:border-box; border:1px solid #dfe5ed; border-radius:10px 10px 0 0; background:#f4f7fb;
+}
+.sticky-table-header::-webkit-scrollbar { display:none; }
+.sticky-table-header[hidden], .sticky-table-backdrop[hidden] { display:none; }
+.sticky-table-header > table { margin:0; }
+.sticky-table-header th { box-sizing:border-box; }
+.table-header-anchor { --table-header-gap:12px; position:relative; min-width:0; }
+.tool-page .table-header-identity { white-space:nowrap; }
+#plansPage .table-header-identity .plan-identity-heading { display:inline-flex; vertical-align:middle; }
+.tool-page .table-header-identity .plan-columns-control {
+  display:inline-flex; vertical-align:middle; margin-left:8px; min-height:32px; padding:0 8px;
+  border:1px solid #dce4ee; border-radius:6px; background:#edf2f8; color:#61738a;
+  font-size:12px; gap:6px;
+}
+.tool-page .table-header-identity .plan-columns-control:hover { background:#e4ebf5; }
+.tool-page .table-header-identity .plan-columns-control:has(input:checked) { color:var(--accent-primary); }
+.tool-page .table-header-identity .plan-columns-switch { width:30px; height:18px; margin-left:0; }
+.tool-page .table-header-identity .plan-columns-switch::before { width:12px; height:12px; }
+.tool-page .table-header-identity .plan-columns-control:has(input:checked) .plan-columns-switch::before { transform:translateX(12px); }
+@media (max-width:800px), (pointer:coarse) {
+  .tool-page .table-header-identity .plan-columns-control { min-height:44px; }
+}

@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.10.27 | GPT-6.1 Terra 与全站数据复查",
+    "updateDate": "更新日期 2026.11.01 | 多平台套餐、模型与活动更新",
     "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Cursor、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.1-Sol / Terra、Claude 5.5系列、MiniMax-M3.1-Flash、Kimi-K3.1-Pro、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3与Qwen-3.8等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
@@ -124,6 +124,31 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.11.01",
+      "items": [
+        "Claude Max 5x 改名为 Max，Max 20x 改名为 Ultra，月费仍为 $100／$200。已验证 Ultra 账号取消独立五小时限制，五小时可用量参考按对应模型的周容量展示；未验证账号仍有临时限制。周额度与月参考量保持原估算，Fable 专属周限制继续适用。",
+        "更新OpenCode Go／Go Plus的DeepSeek额度、Gemini 4 Argon标准档五折及MiniMax M3上下文分档；补充明确的缓存写入价格，参考用量未计额外写入成本。",
+        "Command Code新增Ling 3.1 Flash 1019每日100次限免入口，保留旧版付费模型；更新DeepSeek和GLM Flash额度，以及Glyph、Laguna每日请求上限。",
+        "Qoder国内版Pro首次月付限量¥19.9，首购赠额按月付／年付和套餐区分；国际版DeepSeek 1017免费及Ultimate低峰优惠结束。Qwen Flash每日免费次数有限。",
+        "TRAE国际版新套餐补充GPT-6.1 Sol／Terra上下文档和DeepSeek峰谷价格，保留美国与非美国地区差异、日期版本未知及用量估算说明。",
+        "腾讯通用Token Plan区分DeepSeek标准与原厂直供路由及峰谷价，登记标准路由11月16日优惠到期；超算18个模型按官方分项抵扣价补充月Token参考量，短窗口保持未知。",
+        "更新Arena Agent Overall至10月28日数据，补充Kimi K3.1 Pro、GPT-6.1 Terra和MiniMax M3.1 Flash；DeepSeek V4.1 Flash 1017的LiveBench分数更新为72.9。",
+        "Qoder国内版DeepSeek-Flash支持更新至V4.1 Flash 1017，具体Token用量仍待确认。"
+      ]
+    },
+    {
+      "date": "2026.10.31",
+      "items": [
+        "Kimi Code Plus／Pro／Max／Ultra 的 K2.8 Preview 参考用量已包含当前额度消耗五折，综合单价同步更新；活动起止日期未公布，Token 数仍为估算。K2.7 HighSpeed 与其他型号参考用量不变，旧套餐 K2.8 绝对额度仍未知。"
+      ]
+    },
+    {
+      "date": "2026.10.30",
+      "items": [
+        "根据 Codex 用量翻倍公告，上调 Pro $100/$200/$500 的参考 Token 额度及相关速度档用量，综合单价同步重算；Plus 额度保持不变，Free、Go 仍待确认。绝对 Token 数为估算，非官方固定配额。"
+      ]
+    },
     {
       "date": "2026.10.27",
       "items": [
@@ -554,5 +579,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-10-27T15:57:54.136Z"
+  "contentVersion": "2026-11-01T08:59:43.731Z"
 }

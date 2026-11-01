@@ -26,7 +26,7 @@ const {
   buildVendorColorMap,
   buildModelColorMap,
   getPointColorKey,
-  filterBySoloColorKey,
+  filterBySelectedColorKeys,
   getSoloPointLabelField,
   getPointLabelText,
   sortComparisonRows,
@@ -117,7 +117,7 @@ test('chart builders exclude invalid coordinates and benchmark gaps', () => {
 
 test('inline unit price bars share a logarithmic scale without inventing unknown values', () => {
   const scale = buildUnitPriceVisualScale([...points, { unitPriceCnyPerM: 'unknown' }]);
-  assert.deepEqual(scale, { min: 0.2, max: 1.2 });
+  assert.deepEqual(scale, { min: 0.2, max: 1.2, type: 'log' });
   assert.equal(getUnitPriceVisualPercent(0, scale), 0);
   assert.equal(getUnitPriceVisualPercent(0, { min: null, max: null }), 0);
   assert.equal(getUnitPriceVisualPercent(1.2, scale), 100);
@@ -130,6 +130,20 @@ test('inline unit price bars share a logarithmic scale without inventing unknown
   assert.match(html, /--usage-price-bar-color:#2563eb/);
   assert.match(html, /综合单价 ¥20 \/ 亿 Token/);
   assert.equal(unitPriceVisualHtml({ unitPriceCnyPerM: 'unknown' }, 'M', { scale }), '<span class="usage-price-bar-empty">—</span>');
+});
+
+test('linear price bars preserve price ratios, zero and unknown values', () => {
+  const scale = buildUnitPriceVisualScale([{unitPriceCnyPerM:2},{unitPriceCnyPerM:10},{unitPriceCnyPerM:0},{unitPriceCnyPerM:null}], 'value');
+  assert.equal(getUnitPriceVisualPercent(2, scale), 20);
+  assert.equal(getUnitPriceVisualPercent(5, scale), 50);
+  assert.equal(getUnitPriceVisualPercent(10, scale), 100);
+  assert.equal(getUnitPriceVisualPercent(20, scale), 100);
+  assert.equal(getUnitPriceVisualPercent(0, scale), 0);
+  assert.equal(getUnitPriceVisualPercent(null, scale), null);
+  assert.equal(getUnitPriceVisualPercent(-1, scale), null);
+  assert.equal(getUnitPriceVisualPercent(2, buildUnitPriceVisualScale([], 'value')), null);
+  assert.match(unitPriceVisualHtml({unitPriceCnyPerM:2}, 'M', {scale}), /线性尺度/);
+  assert.ok(getUnitPriceVisualPercent(2, buildUnitPriceVisualScale([{unitPriceCnyPerM:2},{unitPriceCnyPerM:10}])) > 20);
 });
 
 test('15 yuan per yi attractive zones keep the unit-price boundary consistent', () => {
@@ -173,12 +187,13 @@ test('platform colors are stable regardless of input order', () => {
   assert.equal(Object.values(models).every((color) => /^#[0-9a-f]{6}$/.test(color)), true);
 });
 
-test('legend solo mode filters by the active color dimension', () => {
+test('legend selection filters by the active color dimension', () => {
   assert.equal(getPointColorKey(points[0], 'vendor'), getPointPlatformKey(points[0]));
   assert.equal(getPointColorKey(points[0], 'model'), 'm1');
-  assert.deepEqual(filterBySoloColorKey(points, 'vendor', getPointPlatformKey(points[0])), [points[0]]);
-  assert.deepEqual(filterBySoloColorKey(points, 'model', 'm2'), [points[1]]);
-  assert.deepEqual(filterBySoloColorKey(points, 'vendor', null), points);
+  assert.deepEqual(filterBySelectedColorKeys(points, 'vendor', new Set([getPointPlatformKey(points[0])])), [points[0]]);
+  assert.deepEqual(filterBySelectedColorKeys(points, 'model', new Set(['m2'])), [points[1]]);
+  assert.deepEqual(filterBySelectedColorKeys(points, 'vendor', new Set()), points);
+  assert.deepEqual(filterBySelectedColorKeys(points, 'model', new Set(['m1', 'm2'])), [points[0], points[1]]);
 });
 
 test('single visible model or platform selects the opposite point label', () => {
@@ -189,15 +204,15 @@ test('single visible model or platform selects the opposite point label', () => 
   assert.equal(getSoloPointLabelField([points[0], points[1]]), null);
 });
 
-test('platform and model filters match legend solo point-label behavior', () => {
+test('platform and model filters match legend selection point-label behavior', () => {
   const samePlatformModel = { ...points[0], modelSlug: 'm4' };
   const platformFromFilter = filterPoints([...points, samePlatformModel], { platforms: new Set([getPointPlatformKey(points[0])]), multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '' });
-  const platformFromLegend = filterBySoloColorKey([...points, samePlatformModel], 'vendor', getPointPlatformKey(points[0]));
+  const platformFromLegend = filterBySelectedColorKeys([...points, samePlatformModel], 'vendor', new Set([getPointPlatformKey(points[0])]));
   assert.equal(getSoloPointLabelField(platformFromFilter), 'model');
   assert.equal(getSoloPointLabelField(platformFromLegend), 'model');
 
   const modelFromFilter = filterPoints(points, { models: new Set(['m1']), multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '' });
-  const modelFromLegend = filterBySoloColorKey(points, 'model', 'm1');
+  const modelFromLegend = filterBySelectedColorKeys(points, 'model', new Set(['m1']));
   assert.equal(getSoloPointLabelField(modelFromFilter), 'vendor');
   assert.equal(getSoloPointLabelField(modelFromLegend), 'vendor');
 });
@@ -208,7 +223,7 @@ test('platform filter key uses stable platform slugs', () => {
   assert.equal(/[\u0000-\u001f]/.test(getPointPlatformKey(points[0])), false);
   assert.notEqual(getPointColorKey(points[0], 'vendor'), getPointColorKey(points[2], 'vendor'));
   assert.deepEqual(filterPoints(points, { platforms: new Set([getPointPlatformKey(points[0])]), multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '' }), [points[0]]);
-  assert.deepEqual(filterBySoloColorKey(points, 'vendor', getPointPlatformKey(points[0])), [points[0]]);
+  assert.deepEqual(filterBySelectedColorKeys(points, 'vendor', new Set([getPointPlatformKey(points[0])])), [points[0]]);
 });
 
 test('model point labels preserve complete bracket qualifiers', () => {
@@ -436,6 +451,9 @@ test('unit price precedes all three usage columns and API pricing follows monthl
   const unitPriceVisualIndex = keys.indexOf('unitPriceVisual');
   const apiPricingIndex = keys.indexOf('apiPricing');
   assert.equal(unitPriceVisualIndex, unitPriceIndex + 1);
+  assert.equal(keys.indexOf('tokenConsumptionRate'), unitPriceVisualIndex + 1);
+  assert.equal(keys.indexOf('priceIndexCnyPerM'), keys.indexOf('tokenConsumptionRate') + 1);
+  assert.equal(keys.indexOf('fiveHourTokenInM'), keys.indexOf('priceIndexCnyPerM') + 1);
   assert.equal(apiPricingIndex, keys.indexOf('monthlyTokenInM') + 1);
   assert.equal(COMPARISON_TABLE_COLUMNS[unitPriceVisualIndex].sortable, false);
   assert.ok(unitPriceIndex < keys.indexOf('fiveHourTokenInM'));

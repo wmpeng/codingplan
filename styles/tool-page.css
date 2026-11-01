@@ -131,8 +131,6 @@ body.tool-page.ultra-wide { --tool-page-width: 1920px; }
 #plansPage .plan-rating { display: inline-flex; white-space: nowrap; background: var(--bg-tertiary); padding: 4px 8px; border-radius: 6px; color: var(--text-secondary); font-size: 12px; font-weight: 600; }
 #plansPage .plan-rating[aria-label="待评定"] { font-weight: 400; }
 #plansPage:not(.show-all-columns) [data-plan-extra] { display: none; }
-#plansPage .tool-table th { font-size: 12px; color: var(--text-secondary); background: #f4f7fb; }
-#plansPage .tool-table th[data-plan-col="identity"] { background: #f4f7fb; }
 #plansPage .tool-table td[data-plan-col="firstMonthPrice"] { color: var(--accent-primary); font-weight: 600; font-variant-numeric: tabular-nums; }
 #plansPage .plan-identity { display: flex; align-items: flex-start; gap: 6px; }
 #plansPage .plan-identity-copy { min-width: 0; }
@@ -148,9 +146,10 @@ body.tool-page.ultra-wide { --tool-page-width: 1920px; }
 #plansPage tr.is-pinned { --plan-row-bg: #f0f5fc; }
 #plansPage tr.is-pinned > td { background: var(--plan-row-bg); }
 #plansPage tr.is-pinned > td:first-child { box-shadow: inset 3px 0 #a5b9d1; }
+body :is(#plansPage .tool-table, .pricing-directory .usage-data-table) tr.is-featured:not(.is-pinned) > td:first-child { box-shadow: inset 3px 0 #d3bd98; }
 #plansPage .plan-status { display: inline-flex; }
 @media(max-width:800px) {
-  #plansPage .tool-table [data-plan-col="identity"], #plansPage:not(.show-all-columns) .tool-table [data-plan-col="identity"] { width: 200px; }
+  #plansPage .tool-table [data-plan-col="identity"], #plansPage:not(.show-all-columns) .tool-table [data-plan-col="identity"] { width: 260px; }
   #plansPage .tool-table :is(th,td) { padding: 8px; }
   #plansPage .plan-identity-line > a.plan-title { gap: 4px; min-height: 44px; }
   #plansPage a.plan-title .link-icon { flex-shrink: 0; }
@@ -225,12 +224,12 @@ body.tool-page { padding: 0; }
 
 .tool-loading { min-height: 280px; display: grid; place-items: center; color: var(--text-secondary); font-size: 13px; }
 /* 平台中心：精选按钮、暂停筛选与统一卡片网格。 */
-:is(.platform-hub-page, .plans-page) .platform-filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-:is(.platform-hub-page, .plans-page) .platform-filter-fields { flex: 0 1 auto; min-width: 0; max-width: 100%; padding: 0; margin: 0; border: 0; }
+:is(.platform-hub-page, .plans-page, .pricing-page) .platform-filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+:is(.platform-hub-page, .plans-page, .pricing-page) .platform-filter-fields { flex: 0 1 auto; min-width: 0; max-width: 100%; padding: 0; margin: 0; border: 0; }
 .platform-filter-fields legend { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .platform-featured-control { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
-:is(.platform-hub-page, .plans-page) .is-featured-mode .platform-filter-fields { opacity: .6; filter: grayscale(1); pointer-events: none; }
-:is(.platform-hub-page, .plans-page) .is-search-paused input { opacity: .6; background: var(--bg-tertiary); cursor: not-allowed; }
+:is(.platform-hub-page, .plans-page, .pricing-page) .is-featured-mode .platform-filter-fields { opacity: .6; filter: grayscale(1); pointer-events: none; }
+:is(.platform-hub-page, .plans-page, .pricing-page) .is-search-paused input { opacity: .6; background: var(--bg-tertiary); cursor: not-allowed; }
 .platform-hub-page .platform-count-main { white-space: nowrap; }
 .platform-hub-page .platform-card > header { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
 .platform-hub-page .platform-card-heading { overflow-wrap: anywhere; }

@@ -10,15 +10,15 @@
     'use strict';
     const esc = UI.escapeHtml;
 
-    // Keep exact coordinates and every underlying offer. Different billing modes
-    // retain their own symbols; no jitter, rounding or model-name rewriting.
+    // Group exact coordinates across billing modes and keep every underlying
+    // offer; no jitter, rounding or model-name rewriting.
     function groupPoints(points, benchmark) {
         const groups = new Map();
         for (const point of points) {
             const price = point.unitPriceCnyPerM;
             const score = Scores.value(point.scores?.[benchmark]);
             if (typeof price !== 'number' || !Number.isFinite(price) || price < 0 || score === null) continue;
-            const key = JSON.stringify([price, score, point.billingMode]);
+            const key = JSON.stringify([price, score]);
             if (!groups.has(key)) groups.set(key, {key, price, score, members: []});
             groups.get(key).members.push(point);
         }
@@ -74,8 +74,8 @@
             byColor.get(key).push({
                 value: [group.price * Numbers.tokenFactor(tokenUnit), group.score],
                 meta: point, members: group.members, groupKey: group.key,
-                symbol: point.billingMode === 'payg' ? 'diamond' : 'circle',
-                symbolSize: active ? 16 : point.billingMode === 'payg' ? 13 : 11,
+                symbol: 'circle',
+                symbolSize: active ? 16 : 11,
                 itemStyle: {
                     color: colors[key], opacity: selected && !sameModel ? 0.14 : 0.86,
                     borderColor: '#fff', borderWidth: active ? 2 : 1.3
@@ -112,10 +112,10 @@
     function detailHtml(groups, selectedSlug, options) {
         const group = groups.find(item => item.members.some(point => point.slug === selectedSlug));
         const point = group?.members.find(item => item.slug === selectedSlug);
-        if (!point) return '<div class="price-chart-placeholder">点击价格点，查看套餐详情并高亮同一模型在不同平台的报价。<small>重合报价可逐条切换；也可在下方价格明细中查看和选择方案。</small></div>';
+        if (!point) return '';
         const {benchmark, tokenUnit, tooltipHtml} = options;
         const members = group.members.length > 1 ? `<label class="price-chart-members">此位置共 ${group.members.length} 个方案<select data-chart-member aria-label="查看重合报价">${group.members.map(member => `<option value="${esc(member.slug)}"${member.slug === selectedSlug ? ' selected' : ''}>${esc(`${member.platformName} · ${member.planName} · ${member.relationLabel}`)}</option>`).join('')}</select></label>` : '';
-        return `<div class="price-chart-selection"><div class="price-chart-identity"><small>已选方案 · ${point.billingMode === 'payg' ? '按量 API' : '订阅参考折算'}</small><strong>${esc(point.relationLabel || point.modelName)}</strong><span>${esc(point.platformName)} · ${esc(point.planName)}</span>${point.planStatus !== 'open' ? `<span class="plan-status" data-price-status="${esc(point.planStatus)}">${esc(UI.statusLabels[point.planStatus] || point.planStatus)}</span>` : ''}</div>` +
+        return `<div class="price-chart-selection"><div class="price-chart-identity"><strong>${esc(point.relationLabel || point.modelName)}</strong><span>${esc(point.platformName)} · ${esc(point.planName)} · ${point.billingMode === 'payg' ? '按量 API' : '订阅参考折算'}</span>${point.planStatus !== 'open' ? `<span class="plan-status" data-price-status="${esc(point.planStatus)}">${esc(UI.statusLabels[point.planStatus] || point.planStatus)}</span>` : ''}</div>` +
             `<div class="price-chart-metric"><small>综合单价 / ${Numbers.tokenUnit(tokenUnit)} Token</small><strong>${Numbers.tokenPrice(point.unitPriceCnyPerM, tokenUnit)}</strong></div>` +
             `<div class="price-chart-metric"><small>${esc(Scores.definitions[benchmark].short)} 评分</small><strong>${esc(Scores.format(point.scores[benchmark], benchmark))}</strong></div>` +
             `<div class="price-chart-actions"><button type="button" class="tool-button" data-chart-locate="${esc(point.slug)}">查看价格明细 ↓</button><button type="button" class="price-chart-clear" data-chart-clear>取消高亮</button></div></div>${members}` +

@@ -45,6 +45,31 @@ body.models-page .model-card.is-pinned { border-color: #a5b9d1; }
 .models-page .model-featured-controls button { flex: 1 1 auto; overflow-wrap: anywhere; }
 .models-page .model-footer-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-left: auto; max-width: 100%; }
 .models-page #modelSearch:disabled { background: var(--bg-tertiary); color: var(--text-secondary); opacity: .6; cursor: not-allowed; }
+.models-page .model-table-wrap { max-width: 100%; border: 1px solid var(--border-color); border-radius: var(--radius-lg); background: var(--bg-secondary); }
+.models-page .model-directory-table { min-width: 1120px; }
+.model-directory-table .model-name-col { width: 270px; }
+.model-directory-table .model-modality-col { width: 170px; }
+.model-directory-table .model-score-col { width: 110px; }
+.model-directory-table .model-platforms-col { width: 100px; }
+.model-directory-table .model-actions-col { width: 140px; }
+body.models-page .model-directory-table :is(th, td) { vertical-align: middle; overflow-wrap: anywhere; }
+body.models-page .model-directory-table tbody th { background: var(--bg-secondary); white-space: normal; }
+.model-table-identity { display: flex; align-items: center; gap: 10px; }
+.model-table-identity > div { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; min-width: 0; }
+.model-table-identity .ui-pin-button { flex-shrink: 0; }
+.model-table-name { color: var(--text-primary); font-size: 14px; font-weight: 600; }
+body.models-page .model-directory-table tr.is-featured > th { box-shadow: inset 3px 0 #d3bd98; }
+body.models-page .model-directory-table tr.is-pinned > th { box-shadow: inset 3px 0 #a5b9d1; }
+body.models-page .model-directory-table .model-score { display: block; padding: 0; background: transparent; border: 0; }
+.model-directory-table .model-score-label { display: none; }
+body.models-page .model-directory-table .model-score-value { justify-content: flex-end; font-size: 15px; min-height: 32px; }
+body.models-page .model-directory-table .model-table-score { text-align: right; }
+body.models-page .model-directory-table .model-table-platforms { text-align: center; }
+body.models-page .model-directory-table .model-table-actions a { display: block; width: fit-content; color: var(--accent-primary); line-height: 1.8; }
+@media (max-width: 800px), (pointer: coarse) {
+  body.models-page .model-directory-table .table-sort-button { min-height: 44px; }
+  body.models-page .model-directory-table .model-table-actions a { display: flex; align-items: center; min-height: 44px; }
+}
 .model-modality { color:#64748b;font-size:12px;margin:10px 0 16px; }
 .model-scores { display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:#64748b;margin-bottom:16px; }
 .model-score strong { color:#1c3659;font-size:17px; }

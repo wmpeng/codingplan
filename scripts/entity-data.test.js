@@ -3,6 +3,32 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const EntityData = require('./entity-data.js');
 
+test('verified Ultra uses each model weekly capacity for five-hour comparison without changing shorter plans', () => {
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const docs = ['platforms', 'plans', 'models'].map(name => JSON.parse(fs.readFileSync(path.join(__dirname, '..', `${name}.json`), 'utf8')));
+  const context = EntityData.buildContext(...docs);
+  const points = EntityData.buildComparisonPoints(context, 6.8);
+  const ultra = context.planBySlug.get('claude-max20');
+  assert.equal(ultra.name, 'Ultra');
+  assert.match(ultra.note, /已验证账号/);
+  assert.match(ultra.note, /未验证账号仍有临时限制/);
+  for (const relation of context.relationsByPlanSlug.get(ultra.slug).filter(row => row.usage.fiveHourTokenInM === 'unlimited')) {
+    const point = points.find(row => row.slug === relation.slug);
+    assert.equal(point.fiveHourTokenInM, relation.usage.weeklyTokenInM);
+    assert.equal(point.weeklyTokenInM, relation.usage.weeklyTokenInM);
+    assert.match(point.note, /未验证.*临时限制/);
+  }
+  const opus = points.find(row => row.slug === 'claude-max20--claude-opus-5-5');
+  const fable = points.find(row => row.slug === 'claude-max20--claude-fable-5-1');
+  assert.ok(fable.fiveHourTokenInM < opus.fiveHourTokenInM);
+  for (const slug of ['claude-pro', 'claude-max5']) {
+    const point = points.find(row => row.slug === `${slug}--claude-opus-5-5`);
+    assert.ok(point.fiveHourTokenInM < point.weeklyTokenInM);
+    assert.equal(typeof context.relationsByPlanSlug.get(slug)[0].usage.fiveHourTokenInM, 'number');
+  }
+});
+
 test('display price basis defaults to first month without changing the regular source points', () => {
   const E=require('./entity-data.js'),saved=globalThis.CodingPlanDisplaySettings;
   try {

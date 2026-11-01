@@ -105,4 +105,6 @@ body :is(.platform-guide-link, .platform-card-hint) { display: inline-flex; alig
 }
 
 .tool-filter-loading { min-height: 148px; display: grid; place-items: center; margin-bottom: 20px; color: var(--text-secondary); font-size: 13px; }
+/* 三张主表的精选标记保持紧凑，卡片沿用原尺寸。 */
+body :is(.model-directory-table .model-featured-badge, #plansPage .tool-table .platform-featured-badge, .pricing-directory .usage-data-table .platform-featured-badge) { padding: 2px 5px; font-size: 11px; line-height: 1.5; }
 @media(max-width:600px) { .tool-filter-loading { min-height: 220px; } }

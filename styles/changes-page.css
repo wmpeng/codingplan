@@ -1,4 +1,8 @@
-.updates-jumps { display:flex;flex-wrap:wrap;gap:8px;margin-top:20px; }
+html:has(.updates-jumps) { --updates-header-height:92px;--updates-nav-height:61px; }
+html:has(body>.site-header):has(.updates-jumps) { scroll-padding-top:calc(var(--updates-header-height) + var(--updates-nav-height) + 12px); }
+body .updates-main>.content-list-header { margin-bottom:8px; }
+.updates-jumps { position:sticky;top:var(--updates-header-height);z-index:30;display:flex;flex-wrap:wrap;gap:8px;padding:12px 0;border-bottom:1px solid var(--border-light);background:var(--bg-secondary); }
+.updates-main :is(.announcements-section,.announcement-record,.changes-section,.change-record,.updates-history) { scroll-margin-top:0; }
 .updates-jumps a { display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:7px 13px;border:1px solid var(--border-light);border-radius:7px;background:var(--bg-tertiary);color:var(--text-secondary);font-size:13px;font-weight:500;line-height:1.5;text-decoration:none;white-space:nowrap; }
 .updates-jumps a:hover { background:var(--accent-soft);border-color:var(--border-color);color:var(--accent-primary);text-decoration:none; }
 .updates-jumps a:focus-visible { outline:2px solid var(--accent-primary);outline-offset:3px; }
@@ -36,7 +40,12 @@
 .updates-history { border-top:1px solid var(--border-color);padding-top:28px;scroll-margin-top:112px; }
 .updates-history>h2 { margin-bottom:16px; }
 .change-record:target { outline:2px solid var(--border-strong);outline-offset:7px;border-radius:6px; }
+@media(max-width:1100px) {
+  html:has(.updates-jumps) { --updates-header-height:87px; }
+}
 @media(max-width:600px) {
+  html:has(.updates-jumps) { --updates-nav-height:69px; }
+  .updates-jumps a { padding-inline:10px; }
   .change-record { padding:20px 0; }
   .change-record h3 { font-size:16px; }
   .change-values { padding:11px 12px; }
@@ -44,5 +53,6 @@
   .change-details>summary,.updates-jumps a { min-height:44px;display:flex;align-items:center; }
 }
 @media(pointer:coarse) {
+  html:has(.updates-jumps) { --updates-nav-height:69px; }
   .updates-jumps a { min-height:44px; }
 }
