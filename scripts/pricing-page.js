@@ -24,12 +24,12 @@
       const filterController = document.getElementById('toolFilters').filterController;
       function getFilterView() {
         const state = filterController.getState();
-        if (!filterController.isFeaturedOnly()) return {state, featuredOnly:false};
         const featured = root.CodingPlanFilters.createViewPolicy({mode:'full', view:'pricing'}).createDefaults(data.config, state.tokenUnit);
         featured.platformSlugs = (data.context.featuredPlatformSlugs || []).filter(slug => data.context.platformBySlug.has(slug));
         featured.modelSlugs = root.CodingPlanUI.modelPresetSlugs(data.context.modelGroups, 'featured', data.context.models);
         featured.mainlandRequired = state.mainlandRequired;
-        return {state:featured, featuredOnly:true};
+        const featuredOnly = filterController.isFeaturedOnly();
+        return {state:featuredOnly ? featured : state, featuredOnly, featuredState:featured};
       }
       const filterState = filterController.getState();
       await root.ModelComparison.mountModelComparisonView(host, { mode: 'full', hidePresets: true, data, preset, filterState, focusRelationSlugs,

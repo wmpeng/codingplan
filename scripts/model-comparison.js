@@ -524,10 +524,12 @@
         const statusHtml = status === 'open' ? '' : `<span class="tool-tag plan-status" data-price-status="${escapeHtml(status)}">${escapeHtml(UI.statusLabels[status] || status)}</span>`;
         const pin = compact ? UI.pinButton({pinned:visualOptions.pinned, label:`${visualOptions.pinned ? '取消置顶' : '置顶'} ${point.platformName} ${point.planName} ${point.relationLabel || point.modelName}`, attributes:{'data-price-pin':point.slug}}) : '';
         const generalNotice = notice('general');
-        const identity = compact ? `<div class="price-identity">${pin}<div><div class="price-identity-title">${platformCellHtml(point)}<span>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}</span></div><div class="price-identity-meta">${statusHtml}${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></div>${generalNotice}</div>` : platformCellHtml(point) + generalNotice;
+        const featuredBadge = compact && visualOptions.featured ? '<span class="platform-featured-badge">精选</span>' : '';
+        const identity = compact ? `<div class="price-identity">${pin}<div><div class="price-identity-title">${platformCellHtml(point)}<span>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}</span>${featuredBadge}</div><div class="price-identity-meta">${statusHtml}${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></div>${generalNotice}</div>` : platformCellHtml(point) + generalNotice;
         const deepSWEInterval = deepSWEScore && Number.isFinite(Number(deepSWEScore.confidenceInterval))
             ? ` ±${formatNumber(deepSWEScore.confidenceInterval, 0)}` : '';
-        return `<tr data-point-id="${escapeHtml(point.slug)}"${[visualOptions?.focused ? 'price-focus-row' : '', visualOptions?.pinned ? 'is-pinned' : ''].filter(Boolean).length ? ` class="${[visualOptions?.focused ? 'price-focus-row' : '', visualOptions?.pinned ? 'is-pinned' : ''].filter(Boolean).join(' ')}"` : ''}>` +
+        const rowClasses = [visualOptions?.focused ? 'price-focus-row' : '', visualOptions?.pinned ? 'is-pinned' : '', compact && visualOptions.featured ? 'is-featured' : ''].filter(Boolean).join(' ');
+        return `<tr data-point-id="${escapeHtml(point.slug)}"${rowClasses ? ` class="${rowClasses}"` : ''}>` +
             `<td class="sticky-first" data-comparison-col="vendor">${identity}</td>` +
             (compact ? '' : `<td>${escapeHtml(point.planName || (subscription ? '订阅' : '按量 API'))}<div class="plan-capabilities">${EntityData.harnessApiBadge(point.supportsHarnessApi)}</div></td>`) +
             `<td class="numeric">${price}${notice('price')}</td>` +
@@ -830,6 +832,7 @@
             let points = root.EntityData.withComparisonPriceBasis(originalPoints,context,priceBasis);
             let pins = Directory ? Directory.readPins(root.localStorage, points) : [];
             let tableRenderKey = '', tableScaleType = null, selectionKey = '', pageIndex = 0;
+            let featuredPointSlugs = new Set(), featuredStyleKey = '';
             const search = mountOptions.search;
             let renderFrame = 0;
             const platformMap = new Map();
@@ -931,6 +934,13 @@
 
             function applyExternalFilter(external) {
                 const view = mountOptions.getFilterView?.();
+                // Only annotate rows; reuse the existing featured projection without changing selection or order.
+                const styleKey = JSON.stringify(view?.featuredState);
+                if (Directory && styleKey !== featuredStyleKey) {
+                    featuredStyleKey = styleKey;
+                    featuredPointSlugs = new Set(view?.featuredState
+                        ? root.CodingPlanFilters.filterPoints(points, view.featuredState, {context, usdToCnyRate:rate}).map(point => point.slug) : []);
+                }
                 if (view) external = view.state;
                 state.featuredOnly = view?.featuredOnly === true;
                 if (!external) return;
@@ -1162,7 +1172,7 @@
                         pager.querySelector('[data-price-page-label]').textContent=`${pageIndex+1} / ${pagination.pages} 页`;
                         pager.querySelectorAll('[data-price-page]').forEach(button=>button.disabled=button.dataset.pricePage==='next'?pageIndex>=pagination.pages-1:pageIndex===0);
                     });
-                    renderKey = JSON.stringify([nextSelectionKey,pageIndex,state.tokenUnit,state.colorMode,state.benchmark]);
+                    renderKey = JSON.stringify([nextSelectionKey,pageIndex,state.tokenUnit,state.colorMode,state.benchmark,featuredStyleKey]);
                     const label = `${state.featuredOnly ? '精选 '+rows.length+' 条明细' : rows.length+' / '+points.length+' 条明细'}${pins.length ? ' · 置顶 '+pins.length+' 条' : ''}`;
                     mountOptions.count.textContent = label;
                     root.CodingPlanEvents?.results({result_count:rows.length,result_key:JSON.stringify(rows.map(x=>x.slug))});
@@ -1188,6 +1198,7 @@
                         changes:context.changes, noticeSeen,
                         focused: focusRelationSlugs.has(point.slug),
                         compactIdentity:Boolean(Directory), pinned:pins.includes(point.slug),
+                        featured:featuredPointSlugs.has(point.slug),
                         color: colors[getPointColorKey(point, state.colorMode)]
                     })).join('')
                     : `<tr><td class="usage-table-empty" colspan="${COMPARISON_TABLE_COLUMNS.length - 1}">当前筛选下没有可展示的数据；请在上方下拉框调整条件，或点击“显示全部”。</td></tr>`;

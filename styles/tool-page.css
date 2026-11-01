@@ -148,6 +148,7 @@ body.tool-page.ultra-wide { --tool-page-width: 1920px; }
 #plansPage tr.is-pinned { --plan-row-bg: #f0f5fc; }
 #plansPage tr.is-pinned > td { background: var(--plan-row-bg); }
 #plansPage tr.is-pinned > td:first-child { box-shadow: inset 3px 0 #a5b9d1; }
+body :is(#plansPage .tool-table, .pricing-directory .usage-data-table) tr.is-featured:not(.is-pinned) > td:first-child { box-shadow: inset 3px 0 #d3bd98; }
 #plansPage .plan-status { display: inline-flex; }
 @media(max-width:800px) {
   #plansPage .tool-table [data-plan-col="identity"], #plansPage:not(.show-all-columns) .tool-table [data-plan-col="identity"] { width: 260px; }
