@@ -6,43 +6,14 @@
     const fields = document.querySelector('.plan-columns-control');
     if (!fields) return;
     scroll.dataset.stickyHeaderMounted = '1';
-    const control = document.createElement('div');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'table-header-toggle';
-    button.setAttribute('aria-label', '更多字段');
-    button.setAttribute('aria-expanded', 'false');
-    button.append(fields.querySelector('svg').cloneNode(true));
-    const closeMark = document.createElement('span');
-    closeMark.className = 'table-header-close'; closeMark.setAttribute('aria-hidden', 'true');
-    closeMark.innerHTML = globalThis.CodingPlanUI.closeIcon;
-    button.append(closeMark);
-    control.append(button, fields);
-    let hovering = false, pinned = false, keyboard = false, suppressed = false;
-    function updateControl() {
-      const expanded = !suppressed && (hovering || pinned || keyboard);
-      control.classList.toggle('is-expanded', expanded);
-      button.setAttribute('aria-expanded', String(expanded));
-      button.setAttribute('aria-label', expanded ? '收起更多字段' : '更多字段');
-    }
-    control.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') { hovering = true; suppressed = false; updateControl(); } });
-    control.addEventListener('pointerleave', event => { if (event.pointerType === 'mouse') { hovering = false; suppressed = false; updateControl(); } });
-    control.addEventListener('focusin', () => { if (!suppressed && document.activeElement.matches(':focus-visible')) { keyboard = true; updateControl(); } });
-    control.addEventListener('focusout', () => setTimeout(() => { if (!control.contains(document.activeElement)) { keyboard = false; updateControl(); } }, 0));
-    button.addEventListener('click', () => {
-      if (pinned) { pinned = false; keyboard = false; suppressed = true; button.blur(); }
-      else { pinned = true; suppressed = false; }
-      updateControl();
-    });
-    document.addEventListener('pointerdown', event => { if (!control.contains(event.target)) { pinned = false; keyboard = false; hovering = false; suppressed = false; updateControl(); } });
-    document.addEventListener('keydown', event => {
-      if (event.key !== 'Escape' || !control.classList.contains('is-expanded') || (!control.contains(document.activeElement) && !hovering)) return;
-      pinned = false; keyboard = false; suppressed = true; updateControl(); button.focus(); event.stopPropagation();
-    });
+    const identity = header.rows[0].cells[0];
+    identity.classList.add('table-header-identity');
+    identity.append(fields);
+    fields.addEventListener('click', event => event.stopPropagation());
+    fields.addEventListener('keydown', event => event.stopPropagation());
     const anchor = document.createElement('div');
     anchor.className = 'table-header-anchor';
-    scroll.before(anchor); anchor.append(scroll, control);
-    control.classList.add('table-header-control');
+    scroll.before(anchor); anchor.append(scroll);
     const overlay = document.createElement('div');
     overlay.className = 'sticky-table-header';
     overlay.hidden = true;
@@ -67,7 +38,6 @@
       const baseTop = Math.max(0, nav?.getBoundingClientRect().bottom || 0, filters?.getBoundingClientRect().bottom || 0);
       const layoutStyle = getComputedStyle(anchor);
       const gap = parseFloat(layoutStyle.getPropertyValue('--table-header-gap'));
-      const inset = parseFloat(layoutStyle.getPropertyValue('--table-control-inset'));
       const top = baseTop + gap;
       const area = scroll.getBoundingClientRect(), tableBox = table.getBoundingClientRect();
       const scrollStyle = getComputedStyle(scroll);
@@ -77,16 +47,10 @@
       overlay.style.borderTopLeftRadius = scrollStyle.borderTopLeftRadius;
       overlay.style.borderTopRightRadius = scrollStyle.borderTopRightRadius;
       const headBox = header.getBoundingClientRect();
-      const controlBox = control.getBoundingClientRect();
-      const controlTop = Math.max(0, (headBox.height - controlBox.height) / 2);
-      control.style.setProperty('--table-control-offset', (border + controlTop) + 'px');
       const viewportHeight = window.visualViewport?.height || window.innerHeight;
       const visible = area.width > 0 && headBox.height > 0 && headBox.top < top && tableBox.bottom > top + headBox.height && top + headBox.height + 80 < viewportHeight;
       overlay.hidden = !visible; backdrop.hidden = !visible;
       Object.assign(backdrop.style, {top:baseTop+'px', height:(gap+headBox.height+border*2)+'px'});
-      control.classList.toggle('table-header-control-fixed', visible);
-      if (visible) Object.assign(control.style, {right: (document.documentElement.clientWidth - area.right + inset) + 'px', left: '', top: (top + border + controlTop) + 'px'});
-      else { control.style.left = ''; control.style.right = ''; control.style.top = ''; }
       if (!visible) return;
       Object.assign(overlay.style, {left: `${area.left}px`, top: `${top}px`, width: `${area.width}px`, height: `${headBox.height + border*2}px`});
       copyTable.style.width = `${tableBox.width}px`;
@@ -100,11 +64,20 @@
         else target.removeAttribute('aria-sort');
         target.style.width = `${width}px`; target.style.minWidth = `${width}px`; target.style.maxWidth = `${width}px`;
       });
+      copy.querySelector('.plan-columns-control input').checked = fields.querySelector('input').checked;
       syncing = true; overlay.scrollLeft = scroll.scrollLeft; syncing = false;
     }
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
     scroll.addEventListener('scroll', schedule, {passive:true});
-    new ResizeObserver(schedule).observe(control);
+    const copyFields = copy.querySelector('.plan-columns-control');
+    copyFields.addEventListener('click', event => event.stopPropagation());
+    copyFields.addEventListener('keydown', event => event.stopPropagation());
+    copyFields.querySelector('input').addEventListener('change', event => {
+      const input = fields.querySelector('input');
+      input.checked = event.target.checked;
+      input.dispatchEvent(new Event('change', {bubbles:true}));
+      schedule();
+    });
     overlay.addEventListener('scroll', () => { if (!syncing) scroll.scrollLeft = overlay.scrollLeft; }, {passive:true});
     overlay.addEventListener('click', event => {
       if (event.target.closest('.ui-help')) return;

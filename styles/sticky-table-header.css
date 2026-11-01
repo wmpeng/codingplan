@@ -10,54 +10,19 @@
 .sticky-table-header[hidden], .sticky-table-backdrop[hidden] { display:none; }
 .sticky-table-header > table { margin:0; }
 .sticky-table-header th { box-sizing:border-box; }
-.table-header-anchor {
-  --field-control-size:36px; --table-control-inset:10px; --table-header-gap:12px;
-  position:relative; min-width:0;
+.table-header-anchor { --table-header-gap:12px; position:relative; min-width:0; }
+.tool-page .table-header-identity { white-space:nowrap; }
+.tool-page .table-header-identity .plan-identity-heading { display:inline-flex; vertical-align:middle; }
+.tool-page .table-header-identity .plan-columns-control {
+  display:inline-flex; vertical-align:middle; margin-left:8px; min-height:32px; padding:0 8px;
+  border:1px solid #dce4ee; border-radius:6px; background:#edf2f8; color:#61738a;
+  font-size:12px; gap:6px;
 }
-
-.table-header-control {
-  --field-control-surface:#edf2f8;
-  --field-control-ink:#61738a;
-  position:absolute; z-index:5; top:var(--table-control-offset,6px); right:var(--table-control-inset);
-  display:flex; flex-direction:row-reverse; align-items:center;
-  box-sizing:border-box; height:var(--field-control-size); padding:0;
-  border:1px solid #dce4ee; border-radius:7px; background:var(--field-control-surface);
-}
-.table-header-control:not(.is-expanded) { width:var(--field-control-size); }
-.table-header-control.table-header-control-fixed { position:fixed; right:auto; z-index:20; }
-.table-header-control.is-expanded { padding-right:4px; background:#fff; box-shadow:0 2px 6px rgba(30,53,83,.08); }
-.table-header-control .table-header-toggle {
-  flex:none; display:grid; place-items:center; box-sizing:border-box;
-  width:100%; height:100%; padding:0; border:0; border-radius:6px;
-  background:transparent; color:var(--field-control-ink); cursor:pointer;
-}
-.table-header-control .table-header-toggle:hover { background:#e4ebf5; color:#3d5d84; }
-.table-header-control .table-header-toggle svg { display:block; width:16px; height:16px; }
-.table-header-close { display:none; }
-.table-header-control:has(input:checked) .table-header-toggle { color:var(--accent-primary); }
-.table-header-control.is-expanded .table-header-toggle { width:28px; }
-.table-header-control.is-expanded .table-header-toggle > svg { display:none; }
-.table-header-control.is-expanded .table-header-close {
-  display:grid; place-items:center; width:22px; height:22px; border-radius:4px;
-  background:var(--field-control-surface); color:var(--field-control-ink);
-}
-.table-header-control.is-expanded .table-header-toggle:hover { background:transparent; }
-.table-header-control.is-expanded .table-header-toggle:hover .table-header-close { background:#e2eaf5; color:#3d5d84; }
-.table-header-control:has(.table-header-toggle:focus-visible) { outline:2px solid var(--accent-primary); outline-offset:2px; }
-.table-header-toggle:focus-visible { outline:none; }
-.tool-page .table-header-control .plan-columns-control {
-  display:none; height:100%; min-height:0; padding:0 8px 0 10px; gap:8px;
-  background:transparent; color:var(--field-control-ink);
-}
-.tool-page .table-header-control.is-expanded .plan-columns-control { display:inline-flex; }
-.tool-page .table-header-control .plan-columns-control:hover { background:transparent; }
-.tool-page .table-header-control .plan-columns-control > svg { width:16px; height:16px; }
-.tool-page .table-header-control .plan-columns-switch { width:30px; height:18px; margin-left:0; }
-.tool-page .table-header-control .plan-columns-switch::before { width:12px; height:12px; }
-.tool-page .table-header-control .plan-columns-control:has(input:checked) .plan-columns-switch::before { transform:translateX(12px); }
-#plansPage .table-header-anchor .tool-table thead th,
-#pricingPage .table-header-anchor .usage-data-table thead th { height:calc(var(--field-control-size) + 12px); }
+.tool-page .table-header-identity .plan-columns-control:hover { background:#e4ebf5; }
+.tool-page .table-header-identity .plan-columns-control:has(input:checked) { color:var(--accent-primary); }
+.tool-page .table-header-identity .plan-columns-switch { width:30px; height:18px; margin-left:0; }
+.tool-page .table-header-identity .plan-columns-switch::before { width:12px; height:12px; }
+.tool-page .table-header-identity .plan-columns-control:has(input:checked) .plan-columns-switch::before { transform:translateX(12px); }
 @media (max-width:800px), (pointer:coarse) {
-  .table-header-anchor { --field-control-size:44px; }
-  .table-header-control.is-expanded .table-header-toggle { width:42px; }
+  .tool-page .table-header-identity .plan-columns-control { min-height:44px; }
 }

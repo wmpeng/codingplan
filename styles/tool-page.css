@@ -150,7 +150,7 @@ body.tool-page.ultra-wide { --tool-page-width: 1920px; }
 #plansPage tr.is-pinned > td:first-child { box-shadow: inset 3px 0 #a5b9d1; }
 #plansPage .plan-status { display: inline-flex; }
 @media(max-width:800px) {
-  #plansPage .tool-table [data-plan-col="identity"], #plansPage:not(.show-all-columns) .tool-table [data-plan-col="identity"] { width: 200px; }
+  #plansPage .tool-table [data-plan-col="identity"], #plansPage:not(.show-all-columns) .tool-table [data-plan-col="identity"] { width: 260px; }
   #plansPage .tool-table :is(th,td) { padding: 8px; }
   #plansPage .plan-identity-line > a.plan-title { gap: 4px; min-height: 44px; }
   #plansPage a.plan-title .link-icon { flex-shrink: 0; }
