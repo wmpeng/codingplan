@@ -5,6 +5,34 @@
 .sticky-table-header th { box-sizing: border-box; }
 
 .table-header-anchor { position: relative; min-width: 0; }
-.table-header-control { position: absolute !important; z-index: 5; top: 0; right: 0; background: #f4f7fb !important; }
-.table-header-control.table-header-control-fixed { position: fixed !important; right: auto; z-index: 20; }
-.table-header-anchor.table-header-control-spaced th { padding-top: 52px !important; }
+.table-header-control {
+  position: absolute; z-index: 5; top: 8px; right: 10px; display: flex; flex-direction: row-reverse;
+  align-items: center; box-sizing: border-box; height: 40px; padding-right: 5px;
+  border: 1px solid transparent; border-radius: 9px; background: #f0f4f9; box-shadow: 0 0 0 3px #f0f4f9;
+}
+.table-header-control.table-header-control-fixed { position: fixed; right: auto; z-index: 20; }
+.table-header-control.is-expanded { background: #fff; border-color: #dbe4ef; box-shadow: 0 3px 12px rgba(30,53,83,.12); }
+.table-header-control .table-header-toggle {
+  flex: none; display: grid; place-items: center; width: 30px; height: 38px; padding: 0;
+  border: 0; border-radius: 7px; background: transparent; color: #536780; cursor: pointer;
+}
+.table-header-toggle:hover { background: #e5edf7; color: #205bb0; }
+.table-header-toggle svg { width: 17px; height: 17px; }
+.table-header-control:has(input:checked) .table-header-toggle { color: var(--accent-primary); }
+.table-header-control.is-expanded .table-header-toggle svg { display: none; }
+.table-header-control.is-expanded .table-header-toggle::after {
+  content: '×'; display: grid; place-items: center; width: 23px; height: 23px; border-radius: 5px;
+  background: #f0f4f9; color: #71839a; font-size: 16px; font-weight: 400; line-height: 1;
+}
+.table-header-control.is-expanded .table-header-toggle:hover { background: transparent; }
+.table-header-control.is-expanded .table-header-toggle:hover::after { background: #e2eaf5; color: #536c8a; }
+.table-header-toggle:focus-visible, .table-header-control:has(.table-header-toggle:focus-visible) { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
+.table-header-control.is-expanded .table-header-toggle:focus-visible { outline: none; }
+.tool-page .table-header-control .plan-columns-control { display: none; min-height: 38px; padding: 0 4px 0 12px; gap: 9px; background: transparent; }
+.tool-page .table-header-control.is-expanded .plan-columns-control { display: inline-flex; }
+.tool-page .table-header-control .plan-columns-control:hover { background: transparent; }
+@media (max-width: 800px), (pointer: coarse) {
+  .table-header-control { height: 44px; }
+  .table-header-control .table-header-toggle { width: 42px; height: 42px; }
+  .tool-page .table-header-control .plan-columns-control { min-height: 42px; }
+}

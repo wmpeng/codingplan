@@ -2,10 +2,39 @@
   'use strict';
   function mount(host, scroll, table) {
     if (scroll.dataset.stickyHeaderMounted || !table.tHead) return;
-    scroll.dataset.stickyHeaderMounted = '1';
     const header = table.tHead;
-    const control = document.querySelector('.plan-columns-control');
-    if (!control) return;
+    const fields = document.querySelector('.plan-columns-control');
+    if (!fields) return;
+    scroll.dataset.stickyHeaderMounted = '1';
+    const control = document.createElement('div');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'table-header-toggle';
+    button.setAttribute('aria-label', '更多字段');
+    button.setAttribute('aria-expanded', 'false');
+    button.append(fields.querySelector('svg').cloneNode(true));
+    control.append(button, fields);
+    let hovering = false, pinned = false, keyboard = false, suppressed = false;
+    function updateControl() {
+      const expanded = !suppressed && (hovering || pinned || keyboard);
+      control.classList.toggle('is-expanded', expanded);
+      button.setAttribute('aria-expanded', String(expanded));
+      button.setAttribute('aria-label', expanded ? '收起更多字段' : '更多字段');
+    }
+    control.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') { hovering = true; suppressed = false; updateControl(); } });
+    control.addEventListener('pointerleave', event => { if (event.pointerType === 'mouse') { hovering = false; suppressed = false; updateControl(); } });
+    control.addEventListener('focusin', () => { if (!suppressed && document.activeElement.matches(':focus-visible')) { keyboard = true; updateControl(); } });
+    control.addEventListener('focusout', () => setTimeout(() => { if (!control.contains(document.activeElement)) { keyboard = false; updateControl(); } }, 0));
+    button.addEventListener('click', () => {
+      if (pinned) { pinned = false; keyboard = false; suppressed = true; button.blur(); }
+      else { pinned = true; suppressed = false; }
+      updateControl();
+    });
+    document.addEventListener('pointerdown', event => { if (!control.contains(event.target)) { pinned = false; keyboard = false; hovering = false; suppressed = false; updateControl(); } });
+    document.addEventListener('keydown', event => {
+      if (event.key !== 'Escape' || !control.classList.contains('is-expanded') || (!control.contains(document.activeElement) && !hovering)) return;
+      pinned = false; keyboard = false; suppressed = true; updateControl(); button.focus(); event.stopPropagation();
+    });
     const anchor = document.createElement('div');
     anchor.className = 'table-header-anchor';
     scroll.before(anchor); anchor.append(scroll, control);
@@ -31,24 +60,13 @@
       const filters = document.querySelector('#toolFilters.directory-filters-stuck');
       const top = Math.max(0, nav?.getBoundingClientRect().bottom || 0, filters?.getBoundingClientRect().bottom || 0);
       const area = scroll.getBoundingClientRect(), tableBox = table.getBoundingClientRect();
-      let headBox = header.getBoundingClientRect();
+      const headBox = header.getBoundingClientRect();
       const controlWidth = control.getBoundingClientRect().width;
-      const boundary = area.right - controlWidth - 8;
-      const conflicts = [...header.rows[0].cells].some(cell => {
-        if (!cell.getBoundingClientRect().width) return false;
-        const items = [...cell.querySelectorAll('button'), ...[...cell.childNodes].filter(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim())];
-        return items.some(item => {
-          const rect = item.nodeType === Node.TEXT_NODE ? (() => { const range = document.createRange(); range.selectNodeContents(item); return range.getBoundingClientRect(); })() : item.getBoundingClientRect();
-          return rect.width > 0 && rect.right > boundary && rect.left < area.right && rect.right > area.left;
-        });
-      });
-      anchor.classList.toggle('table-header-control-spaced', conflicts);
-      headBox = header.getBoundingClientRect();
       const viewportHeight = window.visualViewport?.height || window.innerHeight;
       const visible = area.width > 0 && headBox.height > 0 && headBox.top < top && tableBox.bottom > top + headBox.height && top + headBox.height + 80 < viewportHeight;
       overlay.hidden = !visible;
       control.classList.toggle('table-header-control-fixed', visible);
-      if (visible) Object.assign(control.style, {left: (area.right - controlWidth) + 'px', top: top + 'px'});
+      if (visible) Object.assign(control.style, {left: (area.right - controlWidth - 10) + 'px', top: (top + 8) + 'px'});
       else { control.style.left = ''; control.style.top = ''; }
       if (!visible) return;
       Object.assign(overlay.style, {left: `${area.left}px`, top: `${top}px`, width: `${area.width}px`, height: `${headBox.height}px`});
