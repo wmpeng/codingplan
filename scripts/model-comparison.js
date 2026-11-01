@@ -1098,16 +1098,44 @@
                 return { colors, entries };
             }
 
+            function layoutColorLegend() {
+                const list = container.querySelector('[data-color-legend]');
+                const toggle = list.querySelector('[data-legend-toggle]');
+                if (!toggle || !list.clientWidth) return;
+                const items = [...list.querySelectorAll('[data-color-key]')];
+                items.forEach(item => { item.hidden = false; item.style.maxWidth = ''; });
+                toggle.hidden = false;
+                const available = list.getBoundingClientRect().width;
+                const cssGap = parseFloat(root.getComputedStyle(list).columnGap) || 0;
+                const scale = available / list.clientWidth;
+                const gap = cssGap * scale;
+                const total = items.reduce((sum, item) => sum + item.getBoundingClientRect().width, 0) + Math.max(0, items.length - 1) * gap;
+                if (total <= available) { toggle.hidden = true; return; }
+                if (state.legendExpanded) return;
+                const spaceForItems = Math.max(0, available - toggle.getBoundingClientRect().width - gap);
+                let used = 0;
+                let filled = false;
+                items.forEach((item, index) => {
+                    item.style.maxWidth = `calc(100% - ${toggle.offsetWidth}px - ${cssGap + 2}px)`;
+                    const width = item.getBoundingClientRect().width;
+                    const next = used + (index ? gap : 0) + width;
+                    // Fractional pixels and flex layout rounding can otherwise push the toggle onto a new line.
+                    if (filled || next > spaceForItems - scale) { item.hidden = true; filled = true; }
+                    else used = next;
+                });
+            }
+
             function renderColorLegend(context) {
                 const entries = [...context.entries.entries()].map(([slug, name]) => ({slug, name}))
                     .sort((a, b) => a.name.localeCompare(b.name, 'zh-CN'));
                 const ordered = state.colorMode === 'model' ? UI.prioritizeFeaturedModels(entries, presetConfig.groups) : entries;
                 container.querySelector('[data-color-legend]').innerHTML = ordered
-                    .map(({slug:key, name:label}, index) => {
+                    .map(({slug:key, name:label}) => {
                         const selected = state.selectedColorKeys.has(key);
                         const muted = state.selectedColorKeys.size && !selected;
-                        return `<button type="button" class="usage-legend-item${selected ? ' is-selected' : ''}${muted ? ' is-muted' : ''}" data-color-key="${escapeHtml(key)}" aria-pressed="${selected}"${!state.legendExpanded && index >= 6 ? ' hidden' : ''}><i style="background:${context.colors[key]}"></i><span>${escapeHtml(label)}</span></button>`;
-                    }).join('') + (ordered.length > 6 ? `<button type="button" class="usage-legend-toggle" data-legend-toggle aria-expanded="${state.legendExpanded}">${state.legendExpanded ? '收起' : '展开全部'}</button>` : '');
+                        return `<button type="button" class="usage-legend-item${selected ? ' is-selected' : ''}${muted ? ' is-muted' : ''}" data-color-key="${escapeHtml(key)}" aria-pressed="${selected}"><i style="background:${context.colors[key]}"></i><span>${escapeHtml(label)}</span></button>`;
+                    }).join('') + (ordered.length ? `<button type="button" class="usage-legend-toggle" data-legend-toggle aria-expanded="${state.legendExpanded}"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 5 4 4 4-4M5 10l4 4 4-4"/></svg>${state.legendExpanded ? '收起' : '展开全部'}</button>` : '');
+                layoutColorLegend();
             }
 
             function renderDataTable(tableName, rows) {
@@ -1568,6 +1596,15 @@
             };
             root.addEventListener('resize', resize);
             if (root.ResizeObserver) { const observer=new root.ResizeObserver(resize); [usageChart,intelligenceChart].forEach(chart=>observer.observe(chart.getDom())); }
+            if (root.ResizeObserver) {
+                let legendWidth = 0;
+                const legendObserver = new root.ResizeObserver(entries => {
+                    const width = entries[0].contentRect.width;
+                    if (width !== legendWidth) { legendWidth = width; layoutColorLegend(); }
+                });
+                legendObserver.observe(container.querySelector('[data-color-legend]'));
+            }
+            document.fonts?.ready.then(layoutColorLegend);
             render();
             container.__usageMounted = true;
         })().catch((error) => {

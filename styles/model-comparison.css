@@ -23,13 +23,17 @@
 .usage-color-control .usage-segments { border: 0; background: rgba(23,32,51,.06); }
 .usage-counts { color: var(--text-tertiary); font-size: 12px; white-space: nowrap; }
 .usage-color-legend { display: block; padding: 1px 5px; color: #657187; font-size: 12px; }
-.usage-color-legend > div { display: flex; flex-wrap: wrap; gap: 7px 14px; }
+.usage-color-legend > div { display: flex; flex-wrap: wrap; align-items:center; gap: 7px 14px; }
 .usage-legend-item { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; margin: 0; padding: 4px 7px; border: 1px solid transparent; border-radius: 8px; background: transparent; color: inherit; font: inherit; white-space: normal; overflow-wrap: anywhere; text-align: left; cursor: pointer; transition: color .16s ease, background .16s ease, border-color .16s ease, opacity .16s ease, box-shadow .16s ease; }
 .usage-legend-item:hover, .usage-legend-item.is-hovered { border-color: rgba(15,118,110,.2); background: rgba(255,255,255,.78); color: var(--text-primary); box-shadow: 0 5px 14px rgba(23,32,51,.08); }
 .usage-legend-item:focus-visible { outline: 2px solid rgba(15,118,110,.48); outline-offset: 2px; }
 .usage-legend-item.is-selected { border-color: rgba(15,118,110,.28); background: rgba(255,255,255,.92); color: var(--text-primary); box-shadow: 0 5px 14px rgba(23,32,51,.1); }
 .usage-legend-item[hidden] { display:none; }
-.usage-legend-toggle { padding:4px 7px; border:0; background:transparent; color:var(--accent-primary); font:inherit; cursor:pointer; }
+.usage-legend-toggle { display:inline-flex; flex:none; align-items:center; justify-content:center; gap:7px; min-height:32px; padding:5px 10px; border:1px solid var(--border-color); border-radius:8px; background:#fff; color:var(--text-primary); font:inherit; font-size:13px; line-height:1.4; cursor:pointer; }
+.usage-legend-toggle:hover { background:var(--bg-secondary); border-color:#bac9da; }
+.usage-legend-toggle[hidden] { display:none; }
+.usage-legend-toggle svg { width:16px; height:16px; flex:none; }
+.usage-legend-toggle[aria-expanded="true"] svg { transform:rotate(180deg); }
 .usage-legend-toggle:focus-visible { outline:2px solid var(--accent-primary); outline-offset:2px; }
 @media (max-width:800px), (pointer:coarse) { .usage-legend-item, .usage-legend-toggle { min-height:44px; } }
 .usage-legend-item.is-muted { opacity: .42; }
