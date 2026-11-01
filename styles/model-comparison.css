@@ -212,7 +212,10 @@
 }
 
 /* 完整价格页：固定列宽避免全量明细随窗口宽度逐格重新测量。 */
-.pricing-directory .usage-data-table { --pricing-identity-width: 350px; table-layout: fixed; width: calc(2195px + var(--pricing-identity-width)); min-width: 100%; }
+.pricing-directory .usage-data-table { --pricing-identity-width: 320px; table-layout: fixed; width: calc(2195px + var(--pricing-identity-width)); min-width: 100%; }
+@media (max-width: 800px), (pointer: coarse) {
+  .pricing-directory .usage-data-table { --pricing-identity-width: 340px; }
+}
 .pricing-directory .usage-chart-card { min-width: 0; }
 .pricing-directory .usage-chart { min-width: 0; overflow: hidden; }
 .pricing-directory .usage-chart-head { flex-wrap: wrap; min-width: 0; }
