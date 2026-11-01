@@ -2,6 +2,32 @@
   "schemaVersion": 1,
   "platforms": [
     {
+      "slug": "bytedance-ark",
+      "name": "字节·方舟 Coding Plan",
+      "rating": 5,
+      "summary": "支持多模型与 Auto 接入；部分模型额度为估算值。",
+      "detail": "Coding与Agent活动日期和系数不同，不能互套。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "开放购买，无需抢购；具体套餐活动以官方公告为准。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "Coding与Agent活动日期和系数不同，不能互套。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "火山引擎官方服务，整体稳定。"
+        }
+      },
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqfangzhou"
+    },
+    {
       "slug": "zhipu",
       "name": "智谱AI",
       "rating": 5,
@@ -27,16 +53,56 @@
       "action": "https://api.dreamfree.space/c/s/cpyqzhipu"
     },
     {
-      "slug": "zhipu-coding-legacy",
-      "name": "智谱AI Coding Plan（已下架）",
+      "slug": "minimax",
+      "name": "MiniMax",
       "rating": 5,
-      "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
-      "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
-      "platformStatus": "delisted",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
-      "supportsHarnessApi": null,
-      "action": "https://api.dreamfree.space/c/s/cpyqzhipu"
+      "summary": "新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。",
+      "detail": "M3.1 Flash官方固定Token配额未公开；提供社区样本和加权扣减假设推算的五小时、周及四周用量参考。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "基础月费较低，原Token Plan历史额度较充足；新M3.1精确用量未公开。"
+        },
+        "models": {
+          "score": 4,
+          "reason": "M3.1 Flash精确Token额度未公开，按五小时与七天窗口选择档位。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "官方服务，稳定性强。"
+        }
+      },
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqminimax"
+    },
+    {
+      "slug": "kimi",
+      "name": "Kimi",
+      "rating": 4,
+      "summary": "当前Go/Plus/Pro/Max/Ultra订阅；Plus起支持Coding，旧四档仅老用户续费。",
+      "dimensions": {
+        "value": {
+          "score": 3,
+          "reason": "Go/Plus/Pro/Max/Ultra月费49/99/199/699/1399元，Plus起支持Coding；新旧套餐额度规则不同。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "Coding 支持 Kimi K3.1 Pro、K3 与 K2.8 Preview；Plus 起可用 K3.1 Pro，Pro 起支持其高速版与 1M 上下文，Go 不含 Coding API。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "官方服务，稳定性强。Kimi-K3发布后高峰时段可能会有繁忙，整体可用性尚可。"
+        }
+      },
+      "platformStatus": "open",
+      "requiresOverseasNetwork": false,
+      "requiresOverseasPayment": false,
+      "supportsHarnessApi": true,
+      "detail": "Coding 支持 Kimi K3.1 Pro、K3 与 K2.8 Preview；Plus 起可用 K3.1 Pro，Pro 起支持其高速版与 1M 上下文，Go 不含 Coding API。",
+      "action": "https://api.dreamfree.space/c/s/cpyqkimi"
     },
     {
       "slug": "opencode",
@@ -65,30 +131,94 @@
       "action": "https://api.dreamfree.space/c/s/cpyqopencode"
     },
     {
-      "slug": "bytedance-ark",
-      "name": "字节·方舟 Coding Plan",
+      "slug": "deepseek-official",
+      "name": "DeepSeek",
       "rating": 5,
-      "summary": "支持多模型与 Auto 接入；部分模型额度为估算值。",
-      "detail": "Coding与Agent活动日期和系数不同，不能互套。",
+      "summary": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。",
+      "detail": "官方DeepSeek按量通道，当前Flash实际版本为DeepSeek-V4.1-Flash-1017，原生图片理解、1M上下文；V4 Pro继续提供服务，按峰谷价格计费。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "开放购买，无需抢购；具体套餐活动以官方公告为准。"
+          "reason": "第一梯队模型中，最便宜的之一；空闲时段价格再降一半；按量标价透明，高峰翻倍后成本优势会收窄。"
         },
         "models": {
           "score": 5,
-          "reason": "Coding与Agent活动日期和系数不同，不能互套。"
+          "reason": "当前V4.1 Flash 1017与V4 Pro按峰谷价格分别展示；V4 Pro继续提供服务。"
         },
         "stability": {
           "score": 5,
-          "reason": "火山引擎官方服务，整体稳定。"
+          "reason": "官方通道，稳定性强。"
         }
       },
       "platformStatus": "open",
+      "action": "https://api.dreamfree.space/c/s/cpyqdeepseek",
       "requiresOverseasNetwork": false,
       "requiresOverseasPayment": false,
-      "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqfangzhou"
+      "supportsHarnessApi": true
+    },
+    {
+      "slug": "codex",
+      "name": "Codex",
+      "rating": 5,
+      "summary": "Codex 官方订阅，Plus / Pro 支持 GPT-6.1 Sol / Terra；Pro $500 另支持 Ultrafast。",
+      "detail": "速度档影响额度消耗；新型号与新套餐的精确 Token 额度未知。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "Plus 与 Pro $100/$200/$500 的价格和权限不同；Pro取消五小时窗口，Plus仍有五小时限制。当前新型号没有固定官方Token额度，旧测量仅作参考。"
+        },
+        "models": {
+          "score": 5,
+          "reason": "速度档影响额度消耗；新型号与新套餐的精确 Token 额度未知。"
+        },
+        "stability": {
+          "score": 5,
+          "reason": "OpenAI 官方基础设施，稳定性行业标杆。"
+        }
+      },
+      "platformStatus": "open",
+      "requiresOverseasNetwork": true,
+      "requiresOverseasPayment": true,
+      "supportsHarnessApi": false,
+      "action": "https://api.dreamfree.space/c/s/cpyqchatgpt"
+    },
+    {
+      "slug": "claude",
+      "name": "Claude",
+      "rating": 4,
+      "summary": "Claude Code 官方订阅，支持 Opus、Sonnet、Haiku 5.5；Token 容量为带负载条件的估算。",
+      "detail": "支持 Claude 5.5 系列；容量按历史社区参数及模型/套餐倍率估算，非官方固定 Token 配额。Haiku 5.5 与部分跨型号、跨套餐关系含外推假设。",
+      "dimensions": {
+        "value": {
+          "score": 5,
+          "reason": "用量很大"
+        },
+        "models": {
+          "score": 5,
+          "reason": "支持 Claude 5.5 系列；额度参考含历史参数和外推假设，实际可用量以账号用量为准。"
+        },
+        "stability": {
+          "score": 3,
+          "reason": "Anthropic 官方 API，本身稳定性没问题。但需要境外网络环境，从中国大陆访问限制比较多。"
+        }
+      },
+      "platformStatus": "open",
+      "requiresOverseasNetwork": true,
+      "requiresOverseasPayment": true,
+      "supportsHarnessApi": false,
+      "action": "https://api.dreamfree.space/c/s/cpyqclaudeup"
+    },
+    {
+      "slug": "zhipu-coding-legacy",
+      "name": "智谱AI Coding Plan（已下架）",
+      "rating": 5,
+      "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
+      "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
+      "platformStatus": "delisted",
+      "requiresOverseasNetwork": null,
+      "requiresOverseasPayment": null,
+      "supportsHarnessApi": null,
+      "action": "https://api.dreamfree.space/c/s/cpyqzhipu"
     },
     {
       "slug": "bytedance-ark-agent",
@@ -115,32 +245,6 @@
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "action": "https://api.dreamfree.space/c/s/cpyqfangzhout"
-    },
-    {
-      "slug": "minimax",
-      "name": "MiniMax",
-      "rating": 5,
-      "summary": "新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。",
-      "detail": "M3.1 Flash官方固定Token配额未公开；提供社区样本和加权扣减假设推算的五小时、周及四周用量参考。",
-      "dimensions": {
-        "value": {
-          "score": 5,
-          "reason": "基础月费较低，原Token Plan历史额度较充足；新M3.1精确用量未公开。"
-        },
-        "models": {
-          "score": 4,
-          "reason": "M3.1 Flash精确Token额度未公开，按五小时与七天窗口选择档位。"
-        },
-        "stability": {
-          "score": 5,
-          "reason": "官方服务，稳定性强。"
-        }
-      },
-      "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
-      "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqminimax"
     },
     {
       "slug": "minimax-coding-legacy",
@@ -194,58 +298,6 @@
       "action": "https://api.dreamfree.space/c/s/cpyqzai"
     },
     {
-      "slug": "kimi",
-      "name": "Kimi",
-      "rating": 4,
-      "summary": "当前Go/Plus/Pro/Max/Ultra订阅；Plus起支持Coding，旧四档仅老用户续费。",
-      "dimensions": {
-        "value": {
-          "score": 3,
-          "reason": "Go/Plus/Pro/Max/Ultra月费49/99/199/699/1399元，Plus起支持Coding；新旧套餐额度规则不同。"
-        },
-        "models": {
-          "score": 5,
-          "reason": "Coding 支持 Kimi K3.1 Pro、K3 与 K2.8 Preview；Plus 起可用 K3.1 Pro，Pro 起支持其高速版与 1M 上下文，Go 不含 Coding API。"
-        },
-        "stability": {
-          "score": 5,
-          "reason": "官方服务，稳定性强。Kimi-K3发布后高峰时段可能会有繁忙，整体可用性尚可。"
-        }
-      },
-      "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
-      "supportsHarnessApi": true,
-      "detail": "Coding 支持 Kimi K3.1 Pro、K3 与 K2.8 Preview；Plus 起可用 K3.1 Pro，Pro 起支持其高速版与 1M 上下文，Go 不含 Coding API。",
-      "action": "https://api.dreamfree.space/c/s/cpyqkimi"
-    },
-    {
-      "slug": "deepseek-official",
-      "name": "DeepSeek",
-      "rating": 5,
-      "summary": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。",
-      "detail": "官方DeepSeek按量通道，当前Flash实际版本为DeepSeek-V4.1-Flash-1017，原生图片理解、1M上下文；V4 Pro继续提供服务，按峰谷价格计费。",
-      "dimensions": {
-        "value": {
-          "score": 5,
-          "reason": "第一梯队模型中，最便宜的之一；空闲时段价格再降一半；按量标价透明，高峰翻倍后成本优势会收窄。"
-        },
-        "models": {
-          "score": 5,
-          "reason": "当前V4.1 Flash 1017与V4 Pro按峰谷价格分别展示；V4 Pro继续提供服务。"
-        },
-        "stability": {
-          "score": 5,
-          "reason": "官方通道，稳定性强。"
-        }
-      },
-      "platformStatus": "open",
-      "action": "https://api.dreamfree.space/c/s/cpyqdeepseek",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
-    },
-    {
       "slug": "gongji",
       "name": "共绩算力",
       "rating": 5,
@@ -296,58 +348,6 @@
       "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "action": "https://api.dreamfree.space/c/s/cpyqyyzs"
-    },
-    {
-      "slug": "codex",
-      "name": "Codex",
-      "rating": 5,
-      "summary": "Codex 官方订阅，Plus / Pro 支持 GPT-6.1 Sol / Terra；Pro $500 另支持 Ultrafast。",
-      "detail": "速度档影响额度消耗；新型号与新套餐的精确 Token 额度未知。",
-      "dimensions": {
-        "value": {
-          "score": 5,
-          "reason": "Plus 与 Pro $100/$200/$500 的价格和权限不同；Pro取消五小时窗口，Plus仍有五小时限制。当前新型号没有固定官方Token额度，旧测量仅作参考。"
-        },
-        "models": {
-          "score": 5,
-          "reason": "速度档影响额度消耗；新型号与新套餐的精确 Token 额度未知。"
-        },
-        "stability": {
-          "score": 5,
-          "reason": "OpenAI 官方基础设施，稳定性行业标杆。"
-        }
-      },
-      "platformStatus": "open",
-      "requiresOverseasNetwork": true,
-      "requiresOverseasPayment": true,
-      "supportsHarnessApi": false,
-      "action": "https://api.dreamfree.space/c/s/cpyqchatgpt"
-    },
-    {
-      "slug": "claude",
-      "name": "Claude",
-      "rating": 4,
-      "summary": "Claude Code 官方订阅，支持 Opus、Sonnet、Haiku 5.5；Token 容量为带负载条件的估算。",
-      "detail": "支持 Claude 5.5 系列；容量按历史社区参数及模型/套餐倍率估算，非官方固定 Token 配额。Haiku 5.5 与部分跨型号、跨套餐关系含外推假设。",
-      "dimensions": {
-        "value": {
-          "score": 5,
-          "reason": "用量很大"
-        },
-        "models": {
-          "score": 5,
-          "reason": "支持 Claude 5.5 系列；额度参考含历史参数和外推假设，实际可用量以账号用量为准。"
-        },
-        "stability": {
-          "score": 3,
-          "reason": "Anthropic 官方 API，本身稳定性没问题。但需要境外网络环境，从中国大陆访问限制比较多。"
-        }
-      },
-      "platformStatus": "open",
-      "requiresOverseasNetwork": true,
-      "requiresOverseasPayment": true,
-      "supportsHarnessApi": false,
-      "action": "https://api.dreamfree.space/c/s/cpyqclaudeup"
     },
     {
       "slug": "ollama",
@@ -1259,5 +1259,5 @@
       "action": "https://api.dreamfree.space/c/s/cpyqxunfei"
     }
   ],
-  "contentVersion": "2026-10-31T09:20:55.786Z"
+  "contentVersion": "2026-11-01T03:49:42.360Z"
 }

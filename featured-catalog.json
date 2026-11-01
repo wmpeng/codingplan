@@ -35,14 +35,14 @@
     }
   ],
   "platformSlugs": [
+    "bytedance-ark",
     "zhipu",
     "minimax",
     "kimi",
-    "bytedance-ark",
     "opencode",
     "deepseek-official",
     "codex",
     "claude"
   ],
-  "contentVersion": "2026-10-31T09:07:59.850Z"
+  "contentVersion": "2026-11-01T03:29:43.786Z"
 }
