@@ -12,7 +12,7 @@
 .sticky-table-header th { box-sizing:border-box; }
 .table-header-anchor { --table-header-gap:12px; position:relative; min-width:0; }
 .tool-page .table-header-identity { white-space:nowrap; }
-.tool-page .table-header-identity .plan-identity-heading { display:inline-flex; vertical-align:middle; }
+#plansPage .table-header-identity .plan-identity-heading { display:inline-flex; vertical-align:middle; }
 .tool-page .table-header-identity .plan-columns-control {
   display:inline-flex; vertical-align:middle; margin-left:8px; min-height:32px; padding:0 8px;
   border:1px solid #dce4ee; border-radius:6px; background:#edf2f8; color:#61738a;
