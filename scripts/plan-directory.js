@@ -7,7 +7,7 @@
   const UI = globalThis.CodingPlanUI || require('./ui-core.js');
   const pinKey = 'codingplanPinnedPlans';
   const sortOptions = [
-    ['platformOrder', '默认'], ['platformName', '平台名称'], ['name', '套餐名称'],
+    ['platformOrder', '默认'], ['platformName', '平台名称'],
     ['rating', '评分'], ['firstMonthPrice', '首月价格'], ['monthlyPrice', '每月价格'],
     ['quarterlyPrice', '包季价格'], ['yearlyPrice', '包年价格'],
     ['modelLabels', '支持模型'], ['monthlyToken', '月 Token 参考'],
@@ -77,6 +77,12 @@
         if (delta) return delta;
       }
       const left = value(a), right = value(b);
+      if (sort.key === 'platformName') {
+        const missingA = left == null || left === '', missingB = right == null || right === '';
+        if (missingA !== missingB) return missingA ? 1 : -1;
+        const delta = String(left || '').localeCompare(String(right || ''), 'zh-CN', {numeric:true, sensitivity:'base'});
+        return delta ? (sort.direction === 'desc' ? -delta : delta) : String(a.slug || '').localeCompare(String(b.slug || ''), 'zh-CN');
+      }
       if (left == null || right == null) return left == null ? (right == null ? 0 : 1) : -1;
       const delta = left === right ? 0 : typeof left === 'number' && typeof right === 'number' ? left - right : String(left).localeCompare(String(right), 'zh-CN');
       return sort.direction === 'desc' ? -delta : delta;

@@ -138,3 +138,21 @@ test('使用生成后首月价格，不适用与真实零元保持区别且不�
   }
   assert.equal(rows[3].firstMonthPrice,'不适用');
 });
+
+test('平台 / 套餐按平台名称自然排序，置顶优先，旧套餐名称排序不可恢复', () => {
+  const rows = [
+    {...plans[0], slug:'ten', platformName:'平台 10'},
+    {...plans[0], slug:'two', platformName:'平台 2'},
+    {...plans[0], slug:'missing', platformName:''},
+    {...plans[0], slug:'pin', platformName:'平台 20'}
+  ];
+  const sorted = direction => ids(Directory.select(rows,state,{...options,pins:['pin'],sort:{key:'platformName',direction}}));
+  assert.deepEqual(sorted('asc'), ['pin','two','ten','missing']);
+  assert.deepEqual(sorted('desc'), ['pin','ten','two','missing']);
+  assert.equal(Directory.sortOptions.some(([key]) => key === 'name'), false);
+  let sort = Directory.cycleSort({key:'platformOrder',direction:'asc'}, 'platformName');
+  assert.deepEqual(sort,{key:'platformName',direction:'asc'});
+  sort = Directory.cycleSort(sort,'platformName');
+  assert.deepEqual(sort,{key:'platformName',direction:'desc'});
+  assert.deepEqual(Directory.cycleSort(sort,'platformName'),{key:'platformOrder',direction:'asc'});
+});
