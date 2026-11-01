@@ -401,6 +401,7 @@ body .pricing-filters-compact .pricing-control-menu { z-index: 1; overflow: auto
 .pricing-control-menu > :is(.usage-color-control, .usage-benchmark-control, .usage-scale-control, .price-billing-filter) { flex-shrink: 0; }
 body .pricing-filters-compact .pricing-control-menu > input[type="search"] { width: 100%; max-width: 100%; margin: 0; }
 .pricing-filter-utility .tool-count { white-space: nowrap; font-size: 12px; font-variant-numeric: tabular-nums; }
+.pricing-filters-compact [data-pricing-result-count] { display: none; }
 body .pricing-filters-compact .pricing-reset-icon { display: inline-flex; align-items: center; justify-content: center; }
 body .pricing-filters-compact .filter-state-actions > button[data-filter-action] { min-width: 36px; min-height: 40px; padding: 8px; border-color: transparent; background: transparent; color: var(--text-secondary); }
 .pricing-search-toggle.is-active::after { content: ''; position: absolute; right: 3px; top: 3px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-primary); }
