@@ -13,7 +13,7 @@ test('consumption sorting keeps unknowns last in either direction and uses full 
 });
 
 test('only the full pricing table renders consumption, with the shared numeric format', () => {
-  for (const [value, text] of [[null,'—'],[undefined,'—'],[0,'×0'],[1,'×1'],[1.5,'×1.50'],[.5,'×0.50']]) {
+  for (const [value, text] of [[null,'—'],[undefined,'—'],[-1,'—'],[NaN,'—'],[Infinity,'—'],[0,'-100%'],[1,'0%'],[1.5,'+50%'],[.5,'-50%'],[.83,'-17%'],[1.005,'+0.50%']]) {
     const point={slug:'test',scores:{},tokenConsumptionRate:value};
     const html=M.comparisonTableRowHtml(point,'M',{compactIdentity:true});
     assert.ok(html.includes(`data-comparison-col="tokenConsumptionRate" title="">${text}</td>`));
@@ -39,6 +39,6 @@ test('all platform rows read the model rate without changing any existing price 
 
 test('a supplied model rate renders only its numeric value', () => {
   const html=M.comparisonTableRowHtml({slug:'manual',scores:{},tokenConsumptionRate:.829390511420922},'M',{compactIdentity:true});
-  assert.match(html, /data-comparison-col="tokenConsumptionRate" title="">×0\.83<\/td>/);
+  assert.match(html, /data-comparison-col="tokenConsumptionRate" title="">-17\.06%<\/td>/);
   assert.ok(!html.includes('估算'));
 });

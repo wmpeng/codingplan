@@ -477,7 +477,7 @@
                 ? `<span class="usage-table-heading"><span>${column.label}</span><small>${column.hint}</small></span>`
                 : column.label;
             const helpText = column.key === 'tokenConsumptionRate'
-                ? '基于 AA 默认评测的每任务输出 Token（含思考与答案），相对本站有效模型样本的算术平均值。×1 为平均，×1.5 表示多消耗 50%，越低越省。采用该模型 AA 评分对应配置；仅反映输出消耗，不代表相同完成质量。'
+                ? '该模型比平均多或少消耗多少输出 Token：正数为多，负数为少，0% 为平均。基于本站模型的 AA 评测（含思考与答案），不代表完成质量。'
                 : column.key === 'unitPriceVisual'
                 ? '横条按当前结果比较，并跟随上方坐标轴的对数或线性尺度；条越短，综合单价越低。线性尺度下，条长与单价成正比。'
                 : ['fiveHourTokenInM', 'weeklyTokenInM', 'monthlyTokenInM'].includes(column.key)
@@ -503,6 +503,14 @@
             `</span>`;
     }
 
+    function formatTokenConsumptionRate(value) {
+        const rate = finiteNonnegative(value);
+        if (rate === null) return '—';
+        // Remove floating-point noise from the ratio-to-percentage conversion.
+        const percent = Number(((rate - 1) * 100).toPrecision(12));
+        return `${percent > 0 ? '+' : ''}${Numbers.amount(percent)}%`;
+    }
+
     function comparisonTableRowHtml(point, tokenUnit, visualOptions) {
         const notice = key => Notices.forField(visualOptions?.changes,{...point,type:'point'},key,{seen:visualOptions?.noticeSeen});
         const subscription = point.billingMode === 'subscription';
@@ -526,7 +534,7 @@
             `<td class="usage-table-model">${point.modelSlug ? `<a class="price-chart-model-link" href="/models/?q=${encodeURIComponent(point.modelSlug)}">${escapeHtml(point.relationLabel || point.modelName)}</a>` : escapeHtml(point.relationLabel || point.modelName)}${notice('models')}</td>` +
             `<td class="numeric usage-table-unit-price">${unitPrice}</td>` +
             `<td class="usage-table-price-visual">${unitPriceVisualHtml(point, tokenUnit, visualOptions)}</td>` +
-            (compact ? `<td class="numeric" data-comparison-col="tokenConsumptionRate" title="${escapeHtml(aaScore?.configuration || '')}">${finiteNonnegative(point.tokenConsumptionRate) === null ? '—' : '×' + Numbers.amount(point.tokenConsumptionRate)}</td>` : '') +
+            (compact ? `<td class="numeric" data-comparison-col="tokenConsumptionRate" title="${escapeHtml(aaScore?.configuration || '')}">${escapeHtml(formatTokenConsumptionRate(point.tokenConsumptionRate))}</td>` : '') +
             `<td class="numeric">${subscription ? formatTokenAmount(point.fiveHourTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.weeklyTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}${notice('quota')}</td>` +
