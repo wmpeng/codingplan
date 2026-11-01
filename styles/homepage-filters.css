@@ -366,7 +366,7 @@ body.tool-unified-active .filter-state-footer .filter-state-actions { flex: 0 0 
 .directory-filter-region { overflow-anchor: none; }
 .directory-filter-spacer { overflow-anchor: none; }
 .directory-filters .directory-control-label { color: var(--text-secondary); font-size: 13px; font-weight: 400; line-height: 1.5; }
-.directory-filters summary > .directory-control-label, .directory-filters .plan-columns-text.directory-control-label, .directory-filters-compact .directory-filter-entry:not(.directory-filter-original) > :is(summary, .directory-control-trigger) .directory-control-label { color: inherit; }
+.directory-filters summary > .directory-control-label, .directory-filters-compact .directory-filter-entry:not(.directory-filter-original) > :is(summary, .directory-control-trigger) .directory-control-label { color: inherit; }
 .directory-filters-compact .directory-filter-entry:not(.directory-filter-original) > :is(summary, .directory-control-trigger) .directory-control-label { font: inherit; }
 .directory-filter-toolbar, .directory-filter-group, .directory-display-group, .directory-filter-utility { display: flex; align-items: center; gap: 8px; }
 .directory-filter-group, .directory-display-group { flex-wrap: wrap; max-width: 100%; }

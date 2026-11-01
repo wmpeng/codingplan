@@ -252,7 +252,8 @@
       const viewHeight = root.visualViewport?.height || root.innerHeight;
       enabled = viewHeight - top >= 224;
       const layout = [host.clientWidth, top, getComputedStyle(host).font].join('|');
-      const editing = entries.some(entry => entry.el.contains(document.activeElement) || entry === openEntry || entry.control.open);
+      const editing = !!openEntry || search === document.activeElement || searchButton === document.activeElement
+        || entries.some(entry => entry.el.contains(document.activeElement) || entry.control.open);
       if (stuck && layout !== layoutSignature && !editing) {
         // A narrower layout may make the original card taller than the scroll distance.
         const wasCompact = compact;
