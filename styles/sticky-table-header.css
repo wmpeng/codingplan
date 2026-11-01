@@ -32,16 +32,17 @@
   background:transparent; color:var(--field-control-ink); cursor:pointer;
 }
 .table-header-control .table-header-toggle:hover { background:#e4ebf5; color:#3d5d84; }
-.table-header-control .table-header-toggle svg { width:16px; height:16px; }
+.table-header-control .table-header-toggle svg { display:block; width:16px; height:16px; }
+.table-header-close { display:none; }
 .table-header-control:has(input:checked) .table-header-toggle { color:var(--accent-primary); }
 .table-header-control.is-expanded .table-header-toggle { width:28px; }
-.table-header-control.is-expanded .table-header-toggle svg { display:none; }
-.table-header-control.is-expanded .table-header-toggle::after {
-  content:'×'; display:grid; place-items:center; width:22px; height:22px; border-radius:4px;
-  background:var(--field-control-surface); color:var(--field-control-ink); font-size:15px; font-weight:400; line-height:1;
+.table-header-control.is-expanded .table-header-toggle > svg { display:none; }
+.table-header-control.is-expanded .table-header-close {
+  display:grid; place-items:center; width:22px; height:22px; border-radius:4px;
+  background:var(--field-control-surface); color:var(--field-control-ink);
 }
 .table-header-control.is-expanded .table-header-toggle:hover { background:transparent; }
-.table-header-control.is-expanded .table-header-toggle:hover::after { background:#e2eaf5; color:#3d5d84; }
+.table-header-control.is-expanded .table-header-toggle:hover .table-header-close { background:#e2eaf5; color:#3d5d84; }
 .table-header-control:has(.table-header-toggle:focus-visible) { outline:2px solid var(--accent-primary); outline-offset:2px; }
 .table-header-toggle:focus-visible { outline:none; }
 .tool-page .table-header-control .plan-columns-control {

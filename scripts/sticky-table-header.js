@@ -13,6 +13,10 @@
     button.setAttribute('aria-label', '更多字段');
     button.setAttribute('aria-expanded', 'false');
     button.append(fields.querySelector('svg').cloneNode(true));
+    const closeMark = document.createElement('span');
+    closeMark.className = 'table-header-close'; closeMark.setAttribute('aria-hidden', 'true');
+    closeMark.innerHTML = globalThis.CodingPlanUI.closeIcon;
+    button.append(closeMark);
     control.append(button, fields);
     let hovering = false, pinned = false, keyboard = false, suppressed = false;
     function updateControl() {
