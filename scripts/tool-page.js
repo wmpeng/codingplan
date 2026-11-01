@@ -65,7 +65,7 @@
       add(selector,label,el=>{const checked=el.querySelector('input').checked; return [checked,checked?'开启':'关闭'];},options);
     }
     if (view === 'pricing') segments('.price-billing-filter', '计费方式');
-    checkbox('.pricing-mainland-control, .platform-access-filter', '支持中国大陆');
+    checkbox('.pricing-mainland-control, .platform-access-filter', '支持中国大陆', {paused:view !== 'pricing'});
     checkbox('.plan-harness-filter', '需支持第三方工具');
     add('.platform-featured-control','显示精选',el=>{const checked=el.querySelector('[data-catalog-featured]').getAttribute('aria-pressed')==='true';return [checked,checked?'开启':'关闭'];},{paused:false});
     segments('.usage-color-control', '颜色', true);

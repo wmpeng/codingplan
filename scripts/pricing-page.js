@@ -28,7 +28,7 @@
         const featured = root.CodingPlanFilters.createViewPolicy({mode:'full', view:'pricing'}).createDefaults(data.config, state.tokenUnit);
         featured.platformSlugs = (data.context.featuredPlatformSlugs || []).filter(slug => data.context.platformBySlug.has(slug));
         featured.modelSlugs = root.CodingPlanUI.modelPresetSlugs(data.context.modelGroups, 'featured', data.context.models);
-        featured.mainlandRequired = false;
+        featured.mainlandRequired = state.mainlandRequired;
         return {state:featured, featuredOnly:true};
       }
       const filterState = filterController.getState();
