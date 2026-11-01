@@ -3,7 +3,15 @@
   function updateDates(document, day) {
     const list = document.querySelector('.changes-upcoming');
     if(!list)return;
-    const rows=[...list.querySelectorAll('.change-record')];
+    const archive=document.querySelector('[data-change-history]');
+    const all=archive?[...list.querySelectorAll('.change-record'),...archive.querySelectorAll('.change-record')]:[...list.querySelectorAll('.change-record')];
+    const rows=[],history=[];
+    for(const row of all){
+      const archived=row.dataset.changeStatus!=='announced' || !row.dataset.effectiveDate && !!row.dataset.archiveOn && row.dataset.archiveOn<=day;
+      if(archive)(archived?archive:list).append(row);
+      if(archived){history.push(row);row.classList.remove('is-due');if(row.dataset.changeStatus==='announced')row.querySelector('[data-change-status-label]').textContent='历史预告';}
+      else rows.push(row);
+    }
     for(const row of rows) {
       const overdue=!!row.dataset.effectiveDate && row.dataset.effectiveDate<=day;
       row.classList.toggle('is-due',overdue);
@@ -13,6 +21,13 @@
     rows.sort((a,b)=>Number(b.dataset.due==='true')-Number(a.dataset.due==='true') ||
       (a.dataset.effectiveDate||'9999').localeCompare(b.dataset.effectiveDate||'9999')||a.id.localeCompare(b.id));
     rows.forEach(row=>list.append(row));
+    if(archive){
+      history.sort((a,b)=>Number(a.dataset.changeOrder)-Number(b.dataset.changeOrder)).forEach(row=>archive.append(row));
+      document.querySelector('[data-change-active-count]').textContent=`${rows.length} 项`;
+      document.querySelector('[data-change-history-count]').textContent=`${history.length} 项`;
+      document.querySelector('[data-change-empty]').hidden=rows.length>0;
+      document.querySelector('[data-change-history-empty]').hidden=history.length>0;
+    }
   }
   function revealHash(document, hash) {
     let id;try{id=decodeURIComponent(hash.replace(/^#/,''));}catch{return;}
@@ -40,7 +55,7 @@
     refresh();revealHash(document,location.hash);
     root.addEventListener('hashchange',()=>revealHash(document,location.hash));
     document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
-    // 页面跨日停留时只刷新提示文字，不修改官方状态或业务数据。
+    // 跨日更新提示和历史分区，不修改官方状态或业务数据。
     root.setInterval(refresh,60000);
   }
   if(typeof module==='object' && module.exports)module.exports={updateDates,revealHash};

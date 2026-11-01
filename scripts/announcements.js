@@ -7,12 +7,16 @@
   function ended(row, day = today()) {
     return row.ended === true || !!row.endsOn && row.endsOn < day;
   }
+  function archived(row, day = today()) {
+    return ended(row, day) || !!row.archiveOn && row.archiveOn <= day;
+  }
+  const fields = row => ({ended:row.dataset.ended === 'true',endsOn:row.dataset.endsOn,archiveOn:row.dataset.archiveOn});
   function refresh(document, day = today()) {
     const home = document.querySelector('[data-home-announcements]');
     if (home) {
       let shown = 0;
       for (const row of home.querySelectorAll('[data-announcement]')) {
-        row.hidden = ended({ended:row.dataset.ended === 'true',endsOn:row.dataset.endsOn},day) || shown >= HOME_LIMIT;
+        row.hidden = archived(fields(row),day) || shown >= HOME_LIMIT;
         if (!row.hidden) shown++;
       }
       home.hidden = shown === 0;
@@ -24,12 +28,12 @@
     const rows = [...section.querySelectorAll('.announcement-record')].sort((a,b)=>Number(a.dataset.order)-Number(b.dataset.order));
     let count = 0;
     for (const row of rows) {
-      const isEnded = ended({ended:row.dataset.ended === 'true',endsOn:row.dataset.endsOn},day);
-      (isEnded ? archive : active).append(row);
+      const isEnded = ended(fields(row),day), isArchived = archived(fields(row),day);
+      (isArchived ? archive : active).append(row);
       const status = row.querySelector('[data-announcement-status]');
-      status.textContent = isEnded ? '已结束' : '';
-      status.hidden = !isEnded;
-      if (!isEnded) count++;
+      status.textContent = isEnded ? '已结束' : isArchived ? '历史公告' : '';
+      status.hidden = !isArchived;
+      if (!isArchived) count++;
     }
     section.querySelector('[data-announcement-empty]').hidden = count > 0;
     section.querySelector('details').hidden = rows.length === count;
@@ -51,6 +55,6 @@
     document.addEventListener('visibilitychange', () => {if (!document.hidden) update();});
     root.setInterval(() => refresh(document), 60000);
   }
-  if (typeof module === 'object' && module.exports) module.exports = {HOME_LIMIT, today, ended, refresh, reveal};
+  if (typeof module === 'object' && module.exports) module.exports = {HOME_LIMIT, today, ended, archived, refresh, reveal};
   if (typeof document !== 'undefined') document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', boot) : boot();
 })(typeof globalThis !== 'undefined' ? globalThis : this);

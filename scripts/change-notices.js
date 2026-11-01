@@ -17,8 +17,11 @@
     if(target.type==='plan')return true;
     return target.type==='plan_model' && (scope.type==='plan' || target.planModelSlug===scope.slug);
   }
-  function select(catalog,scope){
-    return (catalog?.changes || []).filter(record=>record.officialStatus==='announced' && record.targets.some(target=>matches(target,scope)))
+  function archived(record,today=day()){
+    return record.effectiveTime.type!=='date' && !!record.archiveOn && record.archiveOn<=today;
+  }
+  function select(catalog,scope,today=day()){
+    return (catalog?.changes || []).filter(record=>record.officialStatus==='announced' && !archived(record,today) && record.targets.some(target=>matches(target,scope)))
       .sort((a,b)=>(a.effectiveTime.date || '9999').localeCompare(b.effectiveTime.date || '9999') || a.slug.localeCompare(b.slug));
   }
   function timing(record,today=day()){
@@ -36,7 +39,7 @@
     const tag=options.popover?'span':'article',line=options.popover?'span':'p',heading=options.popover?'strong':'h3';
     const diff=record.changes.map(change=>`<${line}>${esc(`${change.label}：${change.before} → ${change.after}`)}</${line}>`).join('');
     const scope=options.showTargets ? `<${line} class="change-notice-scope">涉及：${esc(record.targets.map(target=>target.label).join('、'))}</${line}>` : '';
-    return `<${tag} class="change-notice${due?' is-due':''}" data-change-notice="${esc(record.slug)}"${record.effectiveTime.type==='date'?` data-change-date="${esc(record.effectiveTime.date)}"`:''}>`+
+    return `<${tag} class="change-notice${due?' is-due':''}" data-change-notice="${esc(record.slug)}"${record.archiveOn?` data-change-archive-on="${esc(record.archiveOn)}"`:''}${record.effectiveTime.type==='date'?` data-change-date="${esc(record.effectiveTime.date)}"`:''}>`+
       `<${heading}>${esc(record.title)}</${heading}><${line} class="change-notice-time">${esc(timing(record,options.today))}</${line}>`+
       `${diff}${record.effectiveTime.type==='date' && record.effectiveTime.description?`<${line}>${esc(record.effectiveTime.description)}</${line}>`:''}${record.audience?`<${line} class="change-notice-audience">适用：${esc(record.audience)}</${line}>`:''}${scope}`+
       `<a href="${url(record)}">查看详情 →</a></${tag}>`;
@@ -53,14 +56,33 @@
   }
   function platformInfo(catalog,platformSlug){return info(select(catalog,{type:'platform',platformSlug}),'change-info-platform-'+platformSlug);}
   function section(catalog,platformSlug,options={}){
-    const records=select(catalog,{type:'platform',platformSlug});
+    const records=select(catalog,{type:'platform',platformSlug},options.today);
     return records.length ? `<div class="change-notice-list" data-change-notices>${records.map(record=>item(record,{...options,showTargets:true})).join('')}</div>` : '';
   }
   function updateDates(doc,today=day()){
+    doc.querySelectorAll('[data-change-notice]').forEach(element=>{
+      element.hidden=!!element.dataset.changeArchiveOn && !element.dataset.changeDate && element.dataset.changeArchiveOn<=today;
+    });
     doc.querySelectorAll('[data-change-notice][data-change-date]').forEach(element=>{
       const date=element.dataset.changeDate,due=date<=today;
       element.classList.toggle('is-due',due);
       element.querySelector('.change-notice-time').textContent=`${date}${due?' · 生效情况待确认':' 起（公告计划）'}`;
+    });
+    doc.querySelectorAll('.ui-help--info').forEach(wrap=>{
+      if(!wrap.querySelector('[data-change-notice]'))return;
+      const visible=[...wrap.querySelectorAll('[data-change-notice]')].filter(element=>!element.hidden);
+      wrap.hidden=!visible.length;
+      const button=wrap.querySelector('.ui-help-button'),content=wrap.querySelector('.ui-help-content');
+      if(!visible.length){if(content?.matches(':popover-open'))content.hidePopover();button?.setAttribute('aria-expanded','false');}
+      else {
+        const label=visible.length===1?`${visible[0].querySelector('h3,strong').textContent} · 变更预告`:`${visible.length} 项变更预告`;
+        button?.setAttribute('aria-label',label);content?.setAttribute('aria-label',label);
+      }
+    });
+    doc.querySelectorAll('[data-change-notices]').forEach(list=>{
+      list.hidden=![...list.querySelectorAll('[data-change-notice]')].some(element=>!element.hidden);
+      const section=list.closest('.guide-section');
+      if(section){section.hidden=list.hidden;doc.querySelectorAll(`a[href="#${section.id}"]`).forEach(link=>{link.hidden=list.hidden;});}
     });
   }
   if(typeof document!=='undefined'){
@@ -69,5 +91,5 @@
     document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
     setInterval(refresh,60000);
   }
-  return {day,url,matches,select,timing,field,item,info,forField,platformInfo,section,updateDates};
+  return {day,url,matches,archived,select,timing,field,item,info,forField,platformInfo,section,updateDates};
 });
