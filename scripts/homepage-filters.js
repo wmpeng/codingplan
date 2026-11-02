@@ -2,42 +2,11 @@
   "use strict";
   const Filters = root.CodingPlanFilters;
   if (!Filters) return;
-  const escapeHtml = root.CodingPlanUI.escapeHtml;
+  const Controls = root.CodingPlanFilterControls;
+  const Popovers = root.CodingPlanFilterPopovers;
+  const {statusExclusions} = Controls;
+  const {knots:rangeKnots, value:rangeValue, position:rangePosition, budgetNumericMax, budgetSliderMax} = Controls.range;
 
-  function optionLabel(item, kind) {
-    return item.name || item.slug;
-  }
-
-  function valuesFor(state, key) {
-    return state[key] === null
-      ? null
-      : Array.isArray(state[key])
-        ? state[key]
-        : [];
-  }
-
-  const rangeKnots = {
-    budget: [0, 50, 100, 200, 500, 1000, 2000],
-    token: [0, 100, 500, 1000, 4000, 10000],
-  };
-  function rangeValue(key, position) {
-    const knots = rangeKnots[key];
-    const part = Math.min(knots.length - 2, Math.floor(position / 100));
-    return Math.round(knots[part] + (knots[part + 1] - knots[part]) * (position / 100 - part));
-  }
-  function rangePosition(key, value) {
-    const knots = rangeKnots[key];
-    if (value == null || value <= 0) return 0;
-    const part = knots.findIndex((n, i) => i < knots.length - 1 && value <= knots[i + 1]);
-    if (part < 0) return (knots.length - 1) * 100;
-    return Math.round((part + (value - knots[part]) / (knots[part + 1] - knots[part])) * 100);
-  }
-  // Keep a full interval between the last amount and the unlimited endpoint.
-  // Numeric positions retain real zero and over-range direct input.
-  const budgetNumericMax = (rangeKnots.budget.length - 1) * 100 + 1;
-  const budgetSliderMax = budgetNumericMax + 100;
-  // Token position 0 clears the threshold; position 1 retains a real zero.
-  const tokenSliderMax = (rangeKnots.token.length - 1) * 100 + 1;
   function setBudget(value, apiOnly = false) {
     return { apiOnly, budgetCny: value == null ? null : { min: null, max: value } };
   }
@@ -45,143 +14,12 @@
     if (document.activeElement === input && input.value !== "" && Number(input.value) === value) return;
     input.value = value ?? "";
   }
-  function buildRangePicker(key, state, subscriptionOnly = false) {
-    const budget = key === "budget";
-    const sliderMin = budget && subscriptionOnly ? 1 : 0;
-    const id = budget ? "homeBudgetPicker" : "homeTokenPicker";
-    const title = budget ? "月预算" : "月 Token 数";
-    const factor = budget ? 1 : root.NumberDisplay.tokenFactor(state.tokenUnit);
-    const unit = budget ? "元" : state.tokenUnit === "B" ? "B" : state.tokenUnit === "M" ? "M" : "亿";
-    return `<details class="filter-picker" id="${id}"><summary><span class="range-picker-title">${title}</span><span class="filter-picker-value" ${budget ? "data-budget-label" : "data-token-label"}></span></summary>
-      <div class="filter-picker-menu budget-menu" role="group" aria-label="${budget ? "每月预算" : "每月 Token 用量"}">
-        <div class="range-picker-value"><label class="filter-inline"><span>${budget ? "不超过" : "至少"}</span><span class="range-picker-number">${budget ? '<span class="range-picker-unit" aria-hidden="true">¥</span>' : ""}<input type="number" inputmode="decimal" min="0" step="any" ${budget ? 'data-budget-part="max"' : 'data-token-part="min"'} aria-label="${budget ? "最高月预算（人民币）" : `最低月 Token 数（${unit}）`}" placeholder="不限">${budget ? "" : `<span class="range-picker-unit" data-token-unit-label aria-hidden="true">${unit}</span>`}</span></label></div>
-        <div class="range-picker-slider"><input type="range" min="${sliderMin}" max="${budget ? budgetSliderMax : tokenSliderMax}" step="1" data-range-picker="${key}" aria-label="${title}滑块" aria-describedby="${id}Help">
-          <div class="range-picker-ticks">${budget ? subscriptionOnly ? "" : '<button type="button" class="range-picker-mode" data-budget-mode="api" style="--tick-position:0%" aria-label="仅按量 API"><span>仅按量</span></button>' : '<button type="button" class="range-picker-mode" data-range-clear="token" style="--tick-position:0%"><span>不限</span></button>'}${rangeKnots[key].map((n, i) => n === 0 && !(budget && subscriptionOnly) ? "" : `<button type="button" data-range-knot="${key}" data-knot-value="${n}" style="--tick-position:${(i * 100 + 1 - sliderMin) / ((budget ? budgetSliderMax : tokenSliderMax) - sliderMin) * 100}%" aria-label="${budget ? "预算上限" : "最低月用量"} ${n / factor} ${unit}"><span>${n / factor}</span></button>`).join("")}${budget ? '<button type="button" class="range-picker-mode" data-budget-mode="any" data-range-clear="budget" style="--tick-position:100%"><span>不限</span></button>' : ""}</div></div>
-        <p class="filter-help" id="${id}Help">${budget ? subscriptionOnly ? "按套餐月费折合人民币筛选。" : "两端为仅按量 API / 不限，中间按金额筛选。按量 API 按月用量估算支出，未填用量时不判断预算。" : subscriptionOnly ? "按所选模型的月额度筛选，额度不相加；额度未明确的套餐不参与匹配。" : "按所选模型的月额度筛选，额度不相加；额度未明确的订阅不参与匹配。按量 API 按填写用量估算费用。"}</p>
-      </div></details>`;
-  }
-
-  const multimodalExplanation = "支持多模态：除文本外，还支持图片、音频或视频等非文本输入或输出。具体能力以模型说明为准；未确认的模型不计入。";
-  function multimodalControls(id, label = "全部多模态模型", notice = "") {
-    return `<div class="model-multimodal-tools"><button type="button" class="model-multimodal-select" data-select-multimodal>${escapeHtml(label)}</button><span class="model-multimodal-help"><button type="button" class="model-multimodal-info" data-multimodal-help aria-label="什么是多模态模型" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>${multimodalExplanation}</span></span></div><p class="model-multimodal-notice" data-multimodal-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
-  }
   const platformShortcutKinds = {
-    mainland: { fields: ["requiresOverseasNetwork", "requiresOverseasPayment"], label: "支持中国大陆" },
+    mainland: { fields: ["requiresOverseasNetwork", "requiresOverseasPayment"], label: Controls.mainlandLabel },
     // Keep old controller calls translatable; only mainland is rendered.
     network: { field: "requiresOverseasNetwork", label: "境内可用平台", legacy: "domesticNetworkOnly" },
     payment: { field: "requiresOverseasPayment", label: "境内可购买平台", legacy: "domesticPaymentOnly" },
   };
-  function platformShortcutControls(id, labels = {}, notice = "") {
-    return `<div class="platform-shortcut-tools model-multimodal-tools"><button type="button" class="model-multimodal-select" data-platform-shortcut="mainland">${escapeHtml(labels.mainland || platformShortcutKinds.mainland.label)}</button><span class="platform-shortcut-help"><button type="button" class="model-multimodal-info" data-platform-help aria-label="支持中国大陆说明" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>选择已确认无需境外网络、且有境内支付途径的平台；未确认的不计入。工具账号与安装可能另有要求，购买状态请另行查看。<br>已选中不符合的平台时，仅保留其中符合的；否则选择全部符合的平台。之后仍可手动增减。</span></span></div><p class="model-multimodal-notice" data-platform-shortcut-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
-  }
-  function bindSelectionHelp(host) {
-    const helpSelector = '[data-multimodal-help], [data-platform-help]';
-    const wrapSelector = '.model-multimodal-help, .platform-shortcut-help';
-    const triggers = () => [...host.querySelectorAll(helpSelector)];
-    let closeTimer = null;
-    const cancelClose = () => { root.clearTimeout(closeTimer); closeTimer = null; };
-    const show = (button, visible) => {
-      button.setAttribute('aria-expanded', String(visible));
-      const tooltip = document.getElementById(button.getAttribute('aria-controls'));
-      if (!tooltip) return;
-      tooltip.hidden = !visible;
-      if (visible) {
-        tooltip.style.top = ''; tooltip.style.bottom = '';
-        const viewport = root.visualViewport;
-        const viewportBottom = (viewport?.offsetTop || 0) + (viewport?.height || root.innerHeight);
-        const panel = button.closest('.filter-picker-menu');
-        const bottom = Math.min(viewportBottom - 8, panel ? panel.getBoundingClientRect().bottom - 8 : viewportBottom);
-        if (tooltip.getBoundingClientRect().bottom > bottom) {
-          tooltip.style.top = 'auto'; tooltip.style.bottom = 'calc(100% + 6px)';
-        }
-      }
-    };
-    const close = button => { cancelClose(); delete button.dataset.pinned; show(button, false); };
-    const reposition = () => triggers().filter(button => button.getAttribute('aria-expanded') === 'true').forEach(button => show(button, true));
-    host.addEventListener('scroll', reposition, true);
-    root.addEventListener('resize', () => root.requestAnimationFrame(reposition));
-    root.visualViewport?.addEventListener('resize', () => root.requestAnimationFrame(reposition));
-    let restoringFocus = false;
-    host.addEventListener('pointerover', event => {
-      if (event.pointerType !== 'mouse') return;
-      const wrap = event.target.closest(wrapSelector);
-      if (wrap) { cancelClose(); show(wrap.querySelector('button'), true); }
-    });
-    host.addEventListener('pointerout', event => {
-      if (event.pointerType !== 'mouse') return;
-      const wrap = event.target.closest(wrapSelector);
-      if (!wrap || wrap.contains(event.relatedTarget)) return;
-      const button = wrap.querySelector('button');
-      if (!button.dataset.pinned && !wrap.contains(document.activeElement)) {
-        cancelClose(); closeTimer = root.setTimeout(() => show(button, false), 150);
-      }
-    });
-    host.addEventListener('focusin', event => {
-      if (!restoringFocus && event.target.matches(helpSelector)) { cancelClose(); show(event.target, true); }
-    });
-    host.addEventListener('focusout', event => {
-      const wrap = event.target.closest(wrapSelector);
-      if (wrap && !wrap.contains(event.relatedTarget) && !wrap.querySelector('button').dataset.pinned) close(wrap.querySelector('button'));
-    });
-    host.addEventListener('click', event => {
-      const button = event.target.closest(helpSelector);
-      if (!button) return;
-      cancelClose();
-      if (button.dataset.pinned) close(button);
-      else { button.dataset.pinned = 'true'; show(button, true); }
-    });
-    host.addEventListener('keydown', event => {
-      if (event.key !== 'Escape') return;
-      const button = triggers().find(button => button.getAttribute('aria-expanded') === 'true');
-      if (!button) return;
-      event.preventDefault(); event.stopImmediatePropagation(); close(button);
-      restoringFocus = true; button.focus({preventScroll:true}); restoringFocus = false;
-    });
-    document.addEventListener('click', event => {
-      for (const button of triggers()) if (!button.closest(wrapSelector).contains(event.target)) close(button);
-    });
-    host.addEventListener('toggle', event => {
-      if (event.target.matches('[data-picker]') && !event.target.open) triggers().forEach(close);
-    }, true);
-  }
-
-  function buildPicker({ id, label, key, items, state, groups }) {
-    const model = key === "modelSlugs";
-    const rawSelected = valuesFor(state, key);
-    const selected =
-      rawSelected === null ? items.map((item) => item.slug) : rawSelected || [];
-    const allIds = items.map((item) => item.slug);
-    const countText =
-      rawSelected === null || selected.length === allIds.length
-        ? "全部"
-        : `${selected.length} 项`;
-    const options = items
-      .map((item) => {
-        const value = String(item.slug);
-        return `<label data-filter-option data-search-text="${escapeHtml(optionLabel(item, key))}"><input type="checkbox" value="${escapeHtml(value)}" ${selected.includes(value) ? "checked" : ""}><span>${escapeHtml(optionLabel(item, key))}</span></label>`;
-      })
-      .join("");
-    return `<details class="filter-picker" data-picker="${escapeHtml(key)}" id="${escapeHtml(id)}">
-      <summary><span>${escapeHtml(label)}</span><span class="filter-picker-count filter-picker-value" data-picker-count>${escapeHtml(countText)}</span>${model ? '<span class="model-match-warning" data-model-match-warning hidden>需同时支持所选模型</span>' : ""}</summary>
-      <div class="filter-picker-menu" role="group" aria-label="选择${escapeHtml(label)}">
-        <input type="search" data-picker-search placeholder="搜索${escapeHtml(label)}" aria-label="搜索${escapeHtml(label)}">
-        <div class="filter-picker-tools"><button type="button" data-picker-action="clear">清空</button><button type="button" data-picker-action="all">全选</button>${model ? "" : '<button type="button" data-picker-action="default" disabled>精选平台</button>'}<span class="picker-selection-count" role="status" aria-live="polite" aria-atomic="true">已选 <strong ${model ? "data-model-selected-count" : "data-platform-selected-count"}>${selected.length}</strong><span class="picker-count-divider"> / </span>共 ${items.length}</span></div>
-        ${model ? `<div class="model-preset-options" role="group" aria-label="精选模型"><div class="model-preset-segments"><button type="button" data-model-preset="featured" data-picker-action="default" aria-label="全部精选模型" aria-pressed="false" disabled>全部精选模型</button><span class="model-preset-divider" aria-hidden="true"></span><button type="button" data-model-preset="sota-models" aria-label="${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'sota-models'))}" aria-pressed="false" disabled>${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'sota-models'))}</button><button type="button" data-model-preset="high-volume-models" aria-label="${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'high-volume-models'))}" aria-pressed="false" disabled>${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'high-volume-models'))}</button></div></div><p class="model-preset-error" data-model-preset-error hidden>精选名单暂时无法加载。<button type="button" data-retry-model-presets>重试</button></p>` : ""}
-        ${model ? multimodalControls(id) : `${platformShortcutControls(id)}<p class="model-preset-error" data-platform-preset-error hidden>精选名单暂时无法加载。<button type="button" data-retry-model-presets>重试</button></p>`}
-        <div data-picker-options>${options}</div><p class="filter-search-empty" role="status" hidden>没有匹配结果，试试其他关键词。</p>
-        ${model ? `<div class="model-match-setting" data-model-match-setting hidden><label class="model-match-check"><input type="checkbox" data-model-require-all aria-describedby="${id}MatchHelp" aria-controls="${id}MatchConfirm" aria-expanded="false"><span>需同时支持所选模型</span></label><p id="${id}MatchHelp">同一套餐需同时支持全部所选模型，且每个模型都满足用量等条件，可能大幅减少匹配方案。</p><div class="model-match-confirm" id="${id}MatchConfirm" data-model-match-confirm hidden><p data-model-match-impact role="status" aria-live="polite"></p><div><button type="button" data-model-match-action="confirm">确认开启</button><button type="button" data-model-match-action="cancel">取消</button></div></div></div>` : ""}
-      </div>
-    </details>`;
-  }
-
-  const statusExclusions = { restricted: "排除购买受限" };
-  function buildStatusPicker(includeHistory = false, planStatusOnly = false) {
-    const subject = planStatusOnly ? "套餐" : "平台";
-    return `<details class="filter-picker status-picker" id="homeStatusPicker">
-      <summary aria-label="购买状态"><span class="status-picker-title">购买状态</span><span class="filter-picker-value" data-status-label>不限</span></summary>
-      <div class="filter-picker-menu" role="group" aria-label="${includeHistory ? "购买状态筛选" : "排除购买状态"}"><div class="filter-picker-tools"><button type="button" data-clear-status aria-label="清除购买状态排除条件">清除</button></div>${Object.entries(statusExclusions).map(([value, label]) => `<label><input type="checkbox" data-status-exclude="${value}"><span>${label}${subject}</span></label>`).join("")}${includeHistory ? `<div class="status-picker-history"><label><input type="checkbox" ${planStatusOnly ? 'data-filter-field="includeDiscontinued"' : 'data-include-delisted'}><span>包含已下架${subject}</span></label></div>` : ""}</div>
-    </details>`;
-  }
   let presetPromise;
   function loadGroups(context) {
     if (!presetPromise) presetPromise = root.CodingPlanToolPage.loadPreset().catch(error => {
@@ -339,21 +177,8 @@
       if (validModel) state.modelSlugs = [model];
       if (params.get("billing") === "payg" && !plansPage) state.apiOnly = true;
     }
-    host.innerHTML = `<section class="filter-state-bar surface-panel${full ? "" : " home-filter-panel"}${platformHub ? " platform-hub-filters" : plansPage ? " plan-featured-filters" : pricing ? " pricing-featured-filters" : ""}" aria-label="统一筛选">
-      ${featuredCatalog ? `<div class="platform-filter-row"><fieldset class="platform-filter-fields" data-featured-filter-fields ${platformHub ? 'data-platform-filter-fields' : plansPage ? 'data-plan-filter-fields' : 'data-pricing-filter-fields'}><legend class="sr-only">${platformHub ? '平台' : plansPage ? '套餐' : '价格与额度'}筛选条件</legend>` : ""}
-      <div class="filter-state-grid">
-      ${platformHub ? "" : buildPicker({ id: "homePlatformPicker", label: "平台", key: "platformSlugs", items: platforms, state })}
-      ${buildPicker({ id: "homeModelPicker", label: "模型", key: "modelSlugs", items: models, state, groups: context.modelGroups })}
-      ${buildRangePicker("budget", state, plansPage)}${buildRangePicker("token", state, plansPage)}
-      ${buildStatusPicker(purchaseTool, planStatusOnly)}
-      ${pricing ? `<div class="pricing-mainland-control"><label class="pricing-mainland-filter"><span>支持中国大陆</span><span class="toggle-switch"><input type="checkbox" role="switch" data-filter-field="mainlandRequired"><span class="toggle-slider" aria-hidden="true"></span></span></label></div>` : ''}
-      ${platformHub ? '<label class="platform-access-filter"><span class="filter-control-text">支持中国大陆</span><span class="toggle-switch"><input type="checkbox" role="switch" data-platform-domestic><span class="toggle-slider" aria-hidden="true"></span></span></label>' : ""}${plansPage ? '<label class="plan-harness-filter"><input type="checkbox" data-filter-field="harnessApiRequired"><span class="filter-control-text">需支持第三方工具</span></label>' : ""}</div>
-      ${featuredCatalog ? `<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-catalog-featured ${platformHub ? 'data-platform-featured' : plansPage ? 'data-plan-featured' : 'data-pricing-featured'} aria-pressed="false">${platformHub ? '显示精选平台' : '显示精选'}</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>` : ""}
-      <div class="filter-state-footer">
-      ${full ? "" : `<div class="filter-state-controls"><div class="offer-sort"><span aria-hidden="true">排序</span><span data-select-fallback><select id="homeOfferSort" data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></span></div><span class="offer-sort-help" id="offerSortHelp"></span>`}
-      <div class="filter-state-actions">${pricing ? "" : `<button type="button" data-filter-action="reset"${purchaseTool && !platformHub && !plansPage ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub || plansPage ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>`}${full && !platformHub && !plansPage ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">${pricing ? "重置筛选" : "显示精选"}</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
-      </section>`;
-    bindSelectionHelp(host);
+    host.innerHTML = Controls.render({policy, state, context});
+    Popovers.bindSelectionHelp(host);
     const offerSortSelect = host.querySelector('[data-offer-sort]');
     const offerSortPicker = offerSortSelect && root.CodingPlanSingleSelect?.mount(offerSortSelect, '方案排序', {showLabel:false});
     const controller = {
@@ -410,43 +235,8 @@
     };
     host.filterController = controller;
     if (!full) root.CodingPlanHomeFilters = controller;
-    function positionStatusPanel() {
-      const picker = host.querySelector('#homeStatusPicker');
-      if (!picker?.open) return;
-      const menu = picker.querySelector('.filter-picker-menu');
-      if (root.innerWidth <= 800) { menu.removeAttribute('style'); return; }
-      const anchor = picker.querySelector('summary').getBoundingClientRect();
-      const actions = host.querySelector('.filter-state-actions').getBoundingClientRect();
-      const panelWidth = 240;
-      const minTop = (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0) + 8;
-      Object.assign(menu.style, {position:'fixed', width:`${panelWidth}px`, right:'auto', bottom:'auto', maxHeight:`${Math.max(100, root.innerHeight - minTop - 14)}px`});
-      menu.style.left = `${Math.max(14, Math.min(anchor.left, root.innerWidth - panelWidth - 14))}px`;
-      menu.style.top = `${Math.max(minTop, Math.min(anchor.bottom + 8, root.innerHeight - menu.getBoundingClientRect().height - 14))}px`;
-      // Keep the footer actions reachable when the menu extends over their row.
-      const bounds = menu.getBoundingClientRect();
-      if (bounds.left < actions.right && bounds.right > actions.left && bounds.top < actions.bottom && bounds.bottom > actions.top) {
-        if (actions.left - panelWidth - 8 >= 14) menu.style.left = `${actions.left - panelWidth - 8}px`;
-        else if (anchor.top - bounds.height - 8 >= minTop) menu.style.top = `${anchor.top - bounds.height - 8}px`;
-      }
-    }
-    function positionSelectionPanels() {
-      positionStatusPanel();
-      host.querySelectorAll('[data-picker][open], #homeBudgetPicker[open], #homeTokenPicker[open]').forEach(picker => {
-      const menu = picker.querySelector('.filter-picker-menu');
-      const viewport = root.visualViewport;
-      const width = viewport?.width || root.innerWidth;
-      const height = viewport?.height || root.innerHeight;
-      const left = viewport?.offsetLeft || 0, top = viewport?.offsetTop || 0;
-      const mobile = root.innerWidth <= 800;
-      const panelWidth = mobile ? width - 28 : Math.min(menu.classList.contains('budget-menu') ? 350 : 380, width - 28);
-      const minTop = Math.max(top + 14, Math.min(top + height - 100, (document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0) + 8));
-      Object.assign(menu.style, {position:"fixed", width:`${panelWidth}px`, maxHeight:`${Math.min(620, top + height - minTop - 14)}px`, right:"auto", bottom:"auto"});
-      const anchor = picker.querySelector('summary').getBoundingClientRect();
-      const panelHeight = menu.getBoundingClientRect().height;
-      menu.style.left = `${mobile ? left + 14 : Math.max(left + 14, Math.min(anchor.left, left + width - panelWidth - 14))}px`;
-      menu.style.top = `${Math.max(minTop, Math.min(mobile ? top + height - panelHeight - 18 : anchor.bottom + 8, top + height - panelHeight - 14))}px`;
-      });
-    }
+    const positionStatusPanel = () => Popovers.positionStatusPanel(host);
+    const positionSelectionPanels = () => Popovers.positionSelectionPanels(host);
     function render() {
       const restoreDefaults = host.querySelector(full ? '[data-filter-action="restore-defaults"]' : '[data-filter-action="reset"]');
       if (restoreDefaults) restoreDefaults.disabled = !canRestoreDefaults();
@@ -846,7 +636,7 @@
     refreshGroups();
     return true;
   }
-  root.CodingPlanFilterUI = { mount, loadGroups, multimodalControls, platformShortcutControls, bindSelectionHelp, bindMultimodalHelp: bindSelectionHelp };
+  root.CodingPlanFilterUI = { mount, loadGroups };
   if (!document.getElementById("homepageUnifiedFiltersMount")) return;
   function start() {
     if (!mount()) root.setTimeout(start, 250);
