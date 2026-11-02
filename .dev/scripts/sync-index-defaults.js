@@ -59,6 +59,8 @@ const meta=`<div class="home-meta"><div><details><summary>收录范围与数据�
 home=replace(home,'HOME_META',meta);
 write('index.html',snapshot(home,['platforms','plans','models','config','featured_catalog','announcements']));
 let models=fs.readFileSync(path.resolve(root,'../scripts/codingplan/models-template.html'),'utf8');
+const RelatedArticles=require(path.resolve(root,'../scripts/codingplan/related-articles.js'));
+models=RelatedArticles.directoryLinks(models,'models/index.html',RelatedArticles.loadCatalog());
 const selection=Directory.select(ctx.models,preset.groups);
 models=replace(models,'MODEL_DIRECTORY',Snapshots.readable(selection.visible.map(m=>C.modelCard(m,ctx,{directory:true,featured:selection.featured.has(m.slug)})).join('\n')));
 models=models.replace('{{modelCount}}',Directory.countLabel(selection));
