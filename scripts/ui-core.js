@@ -64,6 +64,10 @@
     }).join('');
     return `<button type="button" class="ui-icon-button ui-pin-button ${escapeHtml(className)}${pinned ? ' is-pinned' : ''}"${data} aria-pressed="${!!pinned}" aria-label="${escapeHtml(label || action)}" title="${action}">${pinIcon(pinned)}</button>`;
   }
+  function columnsControl({attribute, staticDisabled = false}) {
+    if (!/^data-[a-z][a-z0-9-]*$/.test(attribute)) throw new Error(`不支持的字段开关属性: ${attribute}`);
+    return `<label class="plan-columns-control"><input type="checkbox" role="switch" ${attribute}${staticDisabled ? ' disabled data-static-disabled' : ''}><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.75" y="3.75" width="14.5" height="12.5" rx="1.5"/><path d="M7.5 4v12M12.5 4v12"/></svg><span class="plan-columns-text">更多字段</span><span class="plan-columns-switch" aria-hidden="true"></span></label>`;
+  }
   function modelTags(labels, options = {}) {
     const models = Array.isArray(labels) ? labels.filter(name => typeof name === 'string' && name.trim()) : [];
     if (!models.length) return '';
@@ -169,5 +173,5 @@
     setModelsExpanded(button, button.getAttribute('aria-expanded') !== 'true');
     return true;
   }
-  return { escapeHtml, escapeHtmlPreserveBreaks, sanitizeUrl, route, statusLabels, pinStore, anchoredPanelPosition, modelGroupLabel, modelPresetSlugs, prioritizeFeaturedModels, externalLinkIcon, closeIcon, pinIcon, pinButton, modelTags, setModelsExpanded, toggleModels, observeModelTagRows };
+  return { escapeHtml, escapeHtmlPreserveBreaks, sanitizeUrl, route, statusLabels, pinStore, anchoredPanelPosition, modelGroupLabel, modelPresetSlugs, prioritizeFeaturedModels, externalLinkIcon, closeIcon, pinIcon, pinButton, columnsControl, modelTags, setModelsExpanded, toggleModels, observeModelTagRows };
 });

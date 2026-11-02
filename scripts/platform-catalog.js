@@ -17,13 +17,6 @@ const PLATFORM_DIMENSION_META = [
 
 const PLATFORM_STATUSES = ['open', 'restricted', 'delisted'];
 const PLATFORM_STATUS_LABELS = CatalogUI.statusLabels;
-/** 筛选滑块中间档位文案（前后另有前缀 /「平台」） */
-const PLATFORM_STATUS_SEGMENT_LABELS = {
-  open: '可以购买',
-  restricted: '购买受限',
-  delisted: '所有'
-};
-const PLATFORM_STATUS_FILTER_SUFFIX = '平台';
 const DEFAULT_PLATFORM_STATUS_MAX = 'restricted';
 
 const escapeHtml = CatalogUI.escapeHtml;
@@ -73,40 +66,6 @@ function platformStatusRank(value) {
 
 function platformStatusLabel(value) {
   return PLATFORM_STATUS_LABELS[normalizePlatformStatus(value)] || PLATFORM_STATUS_LABELS.open;
-}
-
-function platformStatusSegmentLabel(value) {
-  const status = normalizePlatformStatus(value);
-  return PLATFORM_STATUS_SEGMENT_LABELS[status] || PLATFORM_STATUS_SEGMENT_LABELS.open;
-}
-
-function platformStatusFilterPrefix(value) {
-  return normalizePlatformStatus(value) === 'open' ? '仅显示' : '显示';
-}
-
-function platformStatusFilterLabel(value) {
-  const status = normalizePlatformStatus(value);
-  return `${platformStatusFilterPrefix(status)}${platformStatusSegmentLabel(status)}${PLATFORM_STATUS_FILTER_SUFFIX}`;
-}
-
-/** 当前档位的累计高亮：除「所有」外，高亮 max 及更开放的档；「所有」只高亮自身 */
-function isPlatformStatusSegmentActive(status, maxStatus) {
-  const max = normalizePlatformStatus(maxStatus);
-  const current = normalizePlatformStatus(status);
-  if (max === 'delisted') return current === 'delisted';
-  return platformStatusRank(current) <= platformStatusRank(max);
-}
-
-/** 读出当前筛选：如「显示可以购买和购买受限平台」 */
-function platformStatusFilterPhrase(maxStatus) {
-  const max = normalizePlatformStatus(maxStatus);
-  if (max === 'delisted') {
-    return `${platformStatusFilterPrefix(max)}${platformStatusSegmentLabel(max)}${PLATFORM_STATUS_FILTER_SUFFIX}`;
-  }
-  const labels = PLATFORM_STATUSES
-    .filter((status) => isPlatformStatusSegmentActive(status, max))
-    .map((status) => platformStatusSegmentLabel(status));
-  return `${platformStatusFilterPrefix(max)}${labels.join('和')}${PLATFORM_STATUS_FILTER_SUFFIX}`;
 }
 
 function filterPlatforms(platforms, { platformStatusMax, pinnedIds } = {}) {
@@ -185,75 +144,6 @@ function sortItemsByPinned(items, pinnedIds, getId) {
   }
   head.sort((a, b) => rank.get(resolveId(a)) - rank.get(resolveId(b)));
   return head.concat(tail);
-}
-
-const PLANS_TABLE_PIN_STORAGE_KEY = 'plansTablePinnedIds';
-
-function getPlanRowPinId(plan) {
-  if (!plan || typeof plan !== 'object') return '';
-  return String(plan.slug || '').trim();
-}
-
-function sanitizePinnedIdList(pinnedIds, validIds) {
-  const valid = new Set(
-    (Array.isArray(validIds) ? validIds : [])
-      .map((id) => String(id == null ? '' : id).trim())
-      .filter(Boolean)
-  );
-  return normalizePinnedIds(pinnedIds).filter((id) => valid.has(id));
-}
-
-/** 把已 pin 但被筛选掉的项从全集补回 */
-function mergePinnedIntoFiltered(allItems, filteredItems, pinnedIds, getId) {
-  const resolveId = typeof getId === 'function' ? getId : () => '';
-  const result = Array.isArray(filteredItems) ? filteredItems.slice() : [];
-  const pinned = normalizePinnedIds(pinnedIds);
-  if (!pinned.length) return result;
-
-  const seen = new Set();
-  for (const item of result) {
-    const id = resolveId(item);
-    if (id) seen.add(id);
-  }
-  const byId = new Map();
-  for (const item of Array.isArray(allItems) ? allItems : []) {
-    const id = resolveId(item);
-    if (id && !byId.has(id)) byId.set(id, item);
-  }
-  for (const id of pinned) {
-    if (seen.has(id)) continue;
-    const item = byId.get(id);
-    if (item) {
-      result.push(item);
-      seen.add(id);
-    }
-  }
-  return result;
-}
-
-/** 拆成：按 pin 顺序的头部 + 其余（供只排序未 pin 段） */
-function partitionPinnedItems(items, pinnedIds, getId) {
-  const resolveId = typeof getId === 'function' ? getId : () => '';
-  const pinned = normalizePinnedIds(pinnedIds);
-  const pinnedSet = new Set(pinned);
-  const headMap = new Map();
-  const tail = [];
-  for (const item of Array.isArray(items) ? items : []) {
-    const id = resolveId(item);
-    if (id && pinnedSet.has(id)) headMap.set(id, item);
-    else tail.push(item);
-  }
-  const head = [];
-  for (const id of pinned) {
-    if (headMap.has(id)) head.push(headMap.get(id));
-  }
-  return { head, tail };
-}
-
-function buildRowPinButtonHtml({ pinId, pinned } = {}) {
-  const id = typeof pinId === 'string' ? pinId.trim() : '';
-  if (!id) return '';
-  return CatalogUI.pinButton({pinned:!!pinned, className:'platform-pin-btn table-row-pin-btn', attributes:{'data-table-pin':'1','data-pin-id':id}});
 }
 
 function readPinnedIdsFromStorage(storage, key) {
@@ -372,39 +262,6 @@ function validatePlatformRecords(platforms, plans) {
   return { ok: errors.length === 0, errors };
 }
 
-function buildPlatformStatusSliderHtml(platformStatusMax) {
-  const max = normalizePlatformStatus(platformStatusMax ?? DEFAULT_PLATFORM_STATUS_MAX);
-  const parts = [];
-  PLATFORM_STATUSES.forEach((status, rank) => {
-    const active = isPlatformStatusSegmentActive(status, max);
-    const segmentLabel = platformStatusSegmentLabel(status);
-    const fullLabel = platformStatusFilterLabel(status);
-    parts.push(
-      `<button type="button" class="platform-status-seg${active ? ' is-active' : ''}" data-platform-status="${status}" aria-pressed="${active ? 'true' : 'false'}" title="${escapeHtml(fullLabel)}">` +
-      `${escapeHtml(segmentLabel)}` +
-      `</button>`
-    );
-    const next = PLATFORM_STATUSES[rank + 1];
-    // 「和」常驻，「所有」前不插；用 is-on 控制显隐
-    if (next && next !== 'delisted') {
-      const andOn =
-        isPlatformStatusSegmentActive(status, max) &&
-        isPlatformStatusSegmentActive(next, max);
-      parts.push(
-        `<span class="platform-status-and${andOn ? ' is-on' : ''}" aria-hidden="true">和</span>`
-      );
-    }
-  });
-
-  return (
-    `<div class="platform-status-slider" data-platform-status-max="${max}" role="group" aria-label="${escapeHtml(platformStatusFilterPhrase(max))}">` +
-    `<span class="platform-status-prefix">${escapeHtml(platformStatusFilterPrefix(max))}</span>` +
-    `<div class="platform-status-segments" tabindex="0">${parts.join('')}</div>` +
-    `<span class="platform-status-suffix">${escapeHtml(PLATFORM_STATUS_FILTER_SUFFIX)}</span>` +
-    `</div>`
-  );
-}
-
 const EXTERNAL_LINK_ICON = CatalogUI.externalLinkIcon;
 
 function buildPlatformCardHtml(platform, plans, options = {}) {
@@ -492,6 +349,33 @@ function togglePlatformModels(event) {
   return CatalogUI.toggleModels(event, '[data-platform-toggle-models]');
 }
 
+// 页面负责状态、排序和埋点；这里只统一卡片内操作与焦点恢复。
+function bindPlatformCardActions(host, { onTogglePin, onOpen }) {
+  host.addEventListener('click', event => {
+    if (togglePlatformModels(event)) return;
+    const pinButton = event.target.closest('[data-platform-pin="1"]');
+    if (pinButton) {
+      const id = pinButton.getAttribute('data-platform-id');
+      onTogglePin(id, event);
+      // 置顶会重建卡片，需从新 DOM 找回按钮。
+      Array.from(host.querySelectorAll('[data-platform-pin="1"]'))
+        .find(button => button.getAttribute('data-platform-id') === id)?.focus({ preventScroll: true });
+      return;
+    }
+    if (event.target.closest('a')) return;
+    const card = event.target.closest('.platform-card');
+    if (card) onOpen(card.getAttribute('data-platform-id'), card);
+  });
+  host.addEventListener('keydown', event => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    if (event.target.closest('a,button')) return;
+    const card = event.target.closest('.platform-card');
+    if (!card) return;
+    event.preventDefault();
+    onOpen(card.getAttribute('data-platform-id'), card);
+  });
+}
+
 function buildPlanModelListHtml(labels) {
   const models = Array.isArray(labels) ? labels : [];
   const tags = models.map(name => `<span class="model-tag">${escapeHtml(name)}</span>`).join('');
@@ -507,8 +391,6 @@ const PlatformCatalog = {
   PLATFORM_DIMENSION_META,
   PLATFORM_STATUSES,
   PLATFORM_STATUS_LABELS,
-  PLATFORM_STATUS_SEGMENT_LABELS,
-  PLATFORM_STATUS_FILTER_SUFFIX,
   DEFAULT_PLATFORM_STATUS_MAX,
   escapeHtml,
   formatInlineMarkdown,
@@ -516,36 +398,25 @@ const PlatformCatalog = {
   normalizePlatformStatus,
   platformStatusRank,
   platformStatusLabel,
-  platformStatusSegmentLabel,
-  platformStatusFilterPrefix,
-  platformStatusFilterLabel,
-  isPlatformStatusSegmentActive,
-  platformStatusFilterPhrase,
   filterPlatforms,
   PLATFORM_PIN_STORAGE_KEY,
   PLATFORM_PIN_MAX,
-  PLANS_TABLE_PIN_STORAGE_KEY,
   normalizePinnedIds,
   sanitizePinnedIds,
-  sanitizePinnedIdList,
   isPlatformPinned,
   togglePinnedId,
   sortPlatformsByPinned,
   sortItemsByPinned,
-  getPlanRowPinId,
-  mergePinnedIntoFiltered,
-  partitionPinnedItems,
   readPinnedIdsFromStorage,
   writePinnedIdsToStorage,
   buildPlatformPinButtonHtml,
-  buildRowPinButtonHtml,
   collectModelsForVendor,
   dimensionCopy,
   collectPlansForVendor,
   validatePlatformRecords,
-  buildPlatformStatusSliderHtml,
   buildPlatformCardHtml,
-  togglePlatformModels
+  togglePlatformModels,
+  bindPlatformCardActions
 };
 
 if (typeof module !== 'undefined' && module.exports) {

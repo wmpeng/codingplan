@@ -1,37 +1,3 @@
-/* The column switch controls the table's visible fields. */
-.tool-page .plan-columns-control {
-  position: relative; display: inline-flex; align-items: center; gap: 8px;
-  box-sizing: border-box; min-height: 40px; padding: 0 6px 0 8px;
-  border-radius: 8px; background: transparent; color: var(--text-secondary);
-  font-size: 13px; font-weight: 500; line-height: 1.4; white-space: nowrap;
-  cursor: pointer; user-select: none; transition: background-color .15s, color .15s;
-}
-.tool-page .plan-columns-control > input {
-  position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;
-  z-index: 1; opacity: 0; cursor: pointer;
-}
-.tool-page .plan-columns-control > svg { display: block; width: 16px; height: 16px; flex: none; }
-.tool-page .plan-columns-switch {
-  position: relative; width: 34px; height: 20px; flex: none; margin-left: 2px;
-  border-radius: 999px; background: #cbd5e1; transition: background-color .15s;
-}
-.tool-page .plan-columns-switch::before {
-  content: ''; position: absolute; top: 3px; left: 3px;
-  width: 14px; height: 14px; border-radius: 50%; background: #fff;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, .18); transition: transform .15s;
-}
-.tool-page .plan-columns-control:hover { background: #edf3fb; color: var(--text-primary); }
-.tool-page .plan-columns-control:has(input:checked) { color: var(--accent-primary); }
-.tool-page .plan-columns-control:has(input:checked) .plan-columns-switch { background: var(--accent-primary); }
-.tool-page .plan-columns-control:has(input:checked) .plan-columns-switch::before { transform: translateX(14px); }
-.tool-page .plan-columns-control:has(input:focus-visible) { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
-@media (prefers-reduced-motion: reduce) {
-  .tool-page .plan-columns-control, .tool-page .plan-columns-switch, .tool-page .plan-columns-switch::before { transition: none; }
-}
-@media (max-width: 800px), (pointer: coarse) {
-  .tool-page .plan-columns-control { min-height: 44px; }
-}
-
 /* Quota details use the visible table width, including while scrolling sideways. */
 #plansPage .plan-quota-toggle {
   display: inline-flex; align-items: center; justify-content: flex-end; gap: 8px;

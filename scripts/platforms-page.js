@@ -4,7 +4,8 @@
     const host = document.getElementById('platformHubApp');
     if (!host || !root.EntityData || !root.PlatformCatalog) return;
     const modelRows = root.CodingPlanUI.observeModelTagRows(host);
-    host.addEventListener('click', event => root.PlatformCatalog.togglePlatformModels(event));
+    const toggleModels = event => root.PlatformCatalog.togglePlatformModels(event);
+    host.addEventListener('click', toggleModels);
     // 模型标签只操作现有 DOM；数据失败时也保留原有展开能力。
     host.querySelectorAll('[data-platform-toggle-models][data-static-disabled]').forEach(button => {
       button.disabled = false; button.removeAttribute('data-static-disabled');
@@ -57,47 +58,30 @@
       }
 
       search.addEventListener('input', render);
-      host.addEventListener('click', event => {
-        if (event.target.closest('[data-platform-toggle-models]')) return;
-        const pinButton = event.target.closest('[data-platform-pin="1"]');
-        if (pinButton) {
+      function togglePin(id, placement) {
+        pinnedIds = root.PlatformCatalog.sanitizePinnedIds(root.PlatformCatalog.togglePinnedId(pinnedIds, id), platforms);
+        root.PlatformCatalog.writePinnedIdsToStorage(root.localStorage, pinnedIds);
+        render();
+        root.CodingPlanEvents?.track('pin_change', {entity_type:'platform',entity_slug:id,pinned:pinnedIds.includes(id),placement});
+      }
+      host.removeEventListener('click', toggleModels);
+      root.PlatformCatalog.bindPlatformCardActions(host, {
+        onTogglePin: (id, event) => {
           event.preventDefault();
           event.stopPropagation();
-          const id = pinButton.getAttribute('data-platform-id');
-          pinnedIds = root.PlatformCatalog.sanitizePinnedIds(root.PlatformCatalog.togglePinnedId(pinnedIds, id), platforms);
-          root.PlatformCatalog.writePinnedIdsToStorage(root.localStorage, pinnedIds);
-          render();
-          root.CodingPlanEvents?.track('pin_change', {entity_type:'platform',entity_slug:id,pinned:pinnedIds.includes(id),placement:'platforms'});
-          host.querySelectorAll('[data-platform-pin="1"]').forEach(button => {
-            if (button.getAttribute('data-platform-id') === id) button.focus({preventScroll:true});
-          });
-          return;
+          togglePin(id, 'platforms');
+        },
+        onOpen: (id, card) => {
+          const platform = context.platformBySlug.get(id);
+          if (platform && root.PlatformDetail) root.PlatformDetail.open(platform, {triggerEl:card});
         }
-        if (event.target.closest('a')) return;
-        const card = event.target.closest('.platform-card');
-        if (!card || !root.PlatformDetail) return;
-        const platform = platforms.find(item => item.slug === card.getAttribute('data-platform-id'));
-        if (platform) root.PlatformDetail.open(platform, { triggerEl: card });
-      });
-      host.addEventListener('keydown', event => {
-        if (event.key !== 'Enter' && event.key !== ' ') return;
-        const card = event.target.closest('.platform-card');
-        if (!card || event.target.closest('a,button')) return;
-        event.preventDefault();
-        const platform = platforms.find(item => item.slug === card.getAttribute('data-platform-id'));
-        if (platform && root.PlatformDetail) root.PlatformDetail.open(platform, { triggerEl: card });
       });
       if (root.PlatformDetail) root.PlatformDetail.init({
         getPlans: () => plans,
         getEntityContext: () => context,
         onJumpPlansTable: platformName => { window.location.href = root.CodingPlanUI.route('plans',{platform:platforms.find(item=>item.name===platformName)?.slug}); },
         isPlatformPinned: id => pinnedIds.includes(id),
-        onTogglePlatformPin: (id, placement) => {
-          pinnedIds = root.PlatformCatalog.sanitizePinnedIds(root.PlatformCatalog.togglePinnedId(pinnedIds, id), platforms);
-          root.PlatformCatalog.writePinnedIdsToStorage(root.localStorage, pinnedIds);
-          render();
-          root.CodingPlanEvents?.track('pin_change', {entity_type:'platform',entity_slug:id,pinned:pinnedIds.includes(id),placement});
-        }
+        onTogglePlatformPin: togglePin
       });
       if (root.__CODINGPLAN_FEATURES?.platformComparison === true && root.PlatformComparison && root.PlatformComparison.mountLauncher) {
         document.querySelector('[data-hub-compare]').disabled = false;

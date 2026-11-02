@@ -99,28 +99,6 @@
         };
     }
 
-    function getMonthlyPriceBounds(points) {
-        const prices = (points || []).map((point) => finitePositive(point.monthlyFeeCny)).filter((value) => value !== null);
-        if (!prices.length) return { min: 1, max: 1000 };
-        const min = Math.max(1, Math.floor(Math.min(...prices)));
-        const max = Math.max(min + 1, Math.ceil(Math.max(...prices)));
-        return { min, max };
-    }
-
-    function priceToPercent(value, bounds) {
-        const minLog = Math.log10(bounds.min);
-        const maxLog = Math.log10(bounds.max);
-        const clamped = Math.max(bounds.min, Math.min(bounds.max, Number(value)));
-        return ((Math.log10(clamped) - minLog) / (maxLog - minLog || 1)) * 100;
-    }
-
-    function percentToPrice(percent, bounds) {
-        const clamped = Math.max(0, Math.min(100, Number(percent)));
-        const minLog = Math.log10(bounds.min);
-        const maxLog = Math.log10(bounds.max);
-        return Math.pow(10, minLog + (clamped / 100) * (maxLog - minLog));
-    }
-
     function filterPoints(points, filters) {
         const state = filters || {};
         const platforms = state.platforms instanceof Set ? state.platforms : new Set(state.platforms || []);
@@ -700,7 +678,7 @@
         BENCHMARKS, ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, ATTRACTIVE_UNIT_PRICE_CNY_PER_M, PLATFORM_COLORS,
         DEFAULT_PLATFORM_SLUGS, DEFAULT_MODEL_SLUGS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, escapeHtml,
         finitePositive, finiteNonnegative, getPointScore, getPointPlatformKey, getDefaultPlatformSelectionKeys,
-        createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints,
+        createDefaultFilterState, filterPoints,
         buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceVisualScale,
         getUnitPriceVisualPercent, getAttractiveUnitPriceThreshold, getChartAxisBounds,
         clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone,

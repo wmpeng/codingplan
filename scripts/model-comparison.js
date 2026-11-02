@@ -14,7 +14,7 @@
     const {
         BENCHMARKS, ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SLUGS, DEFAULT_MODEL_SLUGS,
         COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, escapeHtml, getPointScore, getPointPlatformKey,
-        createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints,
+        createDefaultFilterState, filterPoints,
         buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceVisualScale,
         getUnitPriceVisualPercent, getAttractiveUnitPriceThreshold, getChartAxisBounds,
         clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone,
@@ -786,7 +786,7 @@
     return {
         ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SLUGS, DEFAULT_MODEL_SLUGS, COMPARISON_TABLE_COLUMNS,
         PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState,
-        getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints,
+        filterPoints, buildUsageChartPoints,
         buildIntelligenceChartPoints, buildUnitPriceVisualScale, getUnitPriceVisualPercent,
         getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine,
         getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap,

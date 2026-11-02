@@ -13,8 +13,10 @@
       function pin(slug,placement='home_platforms'){pinned=PlatformCatalog.togglePinnedId(pinned,slug);PlatformCatalog.writePinnedIdsToStorage(localStorage,pinned);platforms();PlatformDetail.syncPinUi();window.CodingPlanEvents?.track('pin_change',{entity_type:'platform',entity_slug:slug,pinned:pinned.includes(slug),placement});}
       platforms();
       PlatformDetail.init({getPlans:()=>plans,getEntityContext:()=>context,isPlatformPinned:slug=>pinned.includes(slug),onTogglePlatformPin:pin,onJumpPlansTable:name=>{const p=context.platforms.find(x=>x.name===name);location.href=CodingPlanUI.route('plans',{platform:p?.slug});}});
-      grid.addEventListener('click',e=>{if(PlatformCatalog.togglePlatformModels(e))return;const b=e.target.closest('[data-platform-pin]');if(b){pin(b.dataset.platformId);grid.querySelector(`[data-platform-pin][data-platform-id="${b.dataset.platformId}"]`)?.focus({preventScroll:true});return;}if(e.target.closest('a'))return;const card=e.target.closest('[data-platform-id]');if(card)PlatformDetail.open(context.platformBySlug.get(card.dataset.platformId),{triggerEl:card});});
-      grid.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('a,button')){const card=e.target.closest('[data-platform-id]');if(card){e.preventDefault();PlatformDetail.open(context.platformBySlug.get(card.dataset.platformId),{triggerEl:card});}}});
+      PlatformCatalog.bindPlatformCardActions(grid, {
+        onTogglePin: slug => pin(slug),
+        onOpen: (slug, card) => PlatformDetail.open(context.platformBySlug.get(slug), {triggerEl:card})
+      });
       document.getElementById('featuredModels').innerHTML=C.modelGroups(preset,context);
       C.mountTables(document.getElementById('featuredComparisons'),preset,context,config,{hideHeading:true});
       OfferResults.mount(document.getElementById('purchaseGuideResults'),context,config);

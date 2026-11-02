@@ -10,9 +10,6 @@ const {
   getPointScore,
   getPointPlatformKey,
   createDefaultFilterState,
-  getMonthlyPriceBounds,
-  priceToPercent,
-  percentToPrice,
   filterPoints,
   buildUsageChartPoints,
   buildIntelligenceChartPoints,
@@ -66,13 +63,7 @@ test('shared filters apply vendor, model, modality and exact score', () => {
   assert.deepEqual(filterPoints(points, { multimodal: 'all', aaScoreMin: 50, deepSWEScoreMin: 40 }), []);
 });
 
-test('monthly package price filter uses a logarithmic dual-slider range', () => {
-  const bounds = getMonthlyPriceBounds(points);
-  assert.deepEqual(bounds, { min: 50, max: 100 });
-  assert.equal(priceToPercent(bounds.min, bounds), 0);
-  assert.equal(Math.round(priceToPercent(bounds.max, bounds)), 100);
-  assert.equal(Math.round(percentToPrice(0, bounds)), bounds.min);
-  assert.equal(Math.round(percentToPrice(100, bounds)), bounds.max);
+test('shared monthly budget filters subscription prices without excluding API rows', () => {
   assert.deepEqual(filterPoints(points, {
     multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '',
     monthlyPriceMin: 60, monthlyPriceMax: 120

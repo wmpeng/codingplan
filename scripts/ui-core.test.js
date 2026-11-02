@@ -2,6 +2,17 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const UI = require('./ui-core');
 
+test('字段开关共享结构，静态套餐等待接管，动态价格开关默认可用且未选中', () => {
+  const plans = UI.columnsControl({attribute:'data-plan-columns',staticDisabled:true});
+  const pricing = UI.columnsControl({attribute:'data-price-columns'});
+  assert.match(plans, /<input type="checkbox" role="switch" data-plan-columns disabled data-static-disabled>/);
+  assert.match(pricing, /<input type="checkbox" role="switch" data-price-columns>/);
+  assert.equal(plans.replace('data-plan-columns disabled data-static-disabled','data-price-columns'),pricing);
+  assert.match(pricing, /<span class="plan-columns-text">更多字段<\/span>/);
+  assert.throws(() => UI.columnsControl({attribute:'onclick'}), /不支持/);
+  assert.throws(() => UI.columnsControl({attribute:'data-columns onclick="alert(1)"'}), /不支持/);
+});
+
 test('共享置顶存储保留顺序，隔离目录键，并容忍损坏或不可用的存储', () => {
   const values = new Map(), storage = {getItem:key => values.get(key), setItem:(key,value) => values.set(key,value)};
   const models = UI.pinStore('models'), plans = UI.pinStore('plans');
