@@ -16,6 +16,25 @@
     return `/${page}/${query.size ? '?' + query : ''}`;
   }
   const statusLabels = Object.freeze({ open: '可以购买', restricted: '购买受限', delisted: '已下架' });
+  // Keep storage mechanics shared; each directory owns its key and ordering policy.
+  function pinStore(key) {
+    const sanitizePins = (ids, items) => {
+      const valid = new Set(items.map(item => item.slug));
+      return [...new Set((Array.isArray(ids) ? ids : []).filter(id => typeof id === 'string' && valid.has(id)))];
+    };
+    const readPins = (storage, items) => {
+      try { return sanitizePins(JSON.parse(storage.getItem(key)), items); } catch (_) { return []; }
+    };
+    const writePins = (storage, ids) => { try { storage.setItem(key, JSON.stringify(ids)); } catch (_) {} };
+    return {sanitizePins, readPins, writePins};
+  }
+  // Geometry only: callers retain their own opening, sizing and focus behavior.
+  function anchoredPanelPosition({anchor, panel, viewport, minTop, gap = 8, inset = 14, preferredLeft = anchor.left}) {
+    return {
+      left: Math.max(viewport.left + inset, Math.min(preferredLeft, viewport.left + viewport.width - panel.width - inset)),
+      top: Math.max(minTop, Math.min(anchor.bottom + gap, viewport.top + viewport.height - panel.height - inset))
+    };
+  }
   function modelGroupLabel(groups, id) {
     const group = (groups || []).find(group => group.id === id);
     return group?.label || group?.title || '精选分组';
@@ -150,5 +169,5 @@
     setModelsExpanded(button, button.getAttribute('aria-expanded') !== 'true');
     return true;
   }
-  return { escapeHtml, escapeHtmlPreserveBreaks, sanitizeUrl, route, statusLabels, modelGroupLabel, modelPresetSlugs, prioritizeFeaturedModels, externalLinkIcon, closeIcon, pinIcon, pinButton, modelTags, setModelsExpanded, toggleModels, observeModelTagRows };
+  return { escapeHtml, escapeHtmlPreserveBreaks, sanitizeUrl, route, statusLabels, pinStore, anchoredPanelPosition, modelGroupLabel, modelPresetSlugs, prioritizeFeaturedModels, externalLinkIcon, closeIcon, pinIcon, pinButton, modelTags, setModelsExpanded, toggleModels, observeModelTagRows };
 });

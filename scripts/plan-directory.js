@@ -14,14 +14,7 @@
     ['requestQuota.fiveHours', '5 小时请求'], ['requestQuota.weekly', '每周请求'], ['requestQuota.monthly', '每月请求'],
     ['benefits', '其他权益'], ['note', '备注']
   ];
-  function sanitizePins(ids, plans) {
-    const valid = new Set(plans.map(plan => plan.slug));
-    return [...new Set((Array.isArray(ids) ? ids : []).filter(id => typeof id === 'string' && valid.has(id)))];
-  }
-  function readPins(storage, plans) {
-    try { return sanitizePins(JSON.parse(storage.getItem(pinKey)), plans); } catch (_) { return []; }
-  }
-  function writePins(storage, ids) { try { storage.setItem(pinKey, JSON.stringify(ids)); } catch (_) {} }
+  const {sanitizePins, readPins, writePins} = UI.pinStore(pinKey);
   function purchaseStatus(plan, platform) {
     const planStatus = plan.planStatus || 'open', platformStatus = platform?.platformStatus || 'open';
     return (Filters.STATUS_RANK[platformStatus] || 0) > (Filters.STATUS_RANK[planStatus] || 0) ? platformStatus : planStatus;

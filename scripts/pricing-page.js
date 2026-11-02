@@ -29,24 +29,16 @@
         const featuredOnly = filterController.isFeaturedOnly();
         return {state:featuredOnly ? featured : state, featuredOnly, featuredState:featured};
       }
+      const method = document.createElement('details'); method.className = 'tool-secondary'; method.id = 'pricingMethod';
+      const label = document.createElement('summary'); label.textContent = '价格、汇率与用量口径';
+      const methodContent = document.createElement('div'); methodContent.className = 'usage-method-note';
+      method.append(label, methodContent);
       const filterState = filterController.getState();
       await root.ModelComparison.mountModelComparisonView(host, { mode: 'full', hidePresets: true, data, preset, filterState, focusRelationSlugs,
-        directory:root.PricingDirectory, getFilterView, colorControlHost:document.querySelector('#toolFilters .filter-state-grid'), benchmarkControlHost:document.querySelector('#toolFilters .filter-state-grid'), billingControlHost:document.querySelector('#toolFilters .filter-state-grid'), scaleControlHost:document.querySelector('#toolFilters .filter-state-grid'), search, count, columns:columns.querySelector('input') });
+        directory:root.PricingDirectory, getFilterView, methodHost:methodContent, colorControlHost:document.querySelector('#toolFilters .filter-state-grid'), benchmarkControlHost:document.querySelector('#toolFilters .filter-state-grid'), billingControlHost:document.querySelector('#toolFilters .filter-state-grid'), scaleControlHost:document.querySelector('#toolFilters .filter-state-grid'), search, count, columns:columns.querySelector('input') });
       root.StaticContent?.ready(host);
       root.CodingPlanToolPage.mountDirectoryFilters('pricing', search, count);
-      const legend = host.querySelector('.usage-color-legend');
-      const legendGroup = document.createElement('div'); legendGroup.className = 'tool-legend';
-      legend.before(legendGroup); legendGroup.append(legend);
-      const firstChart = host.querySelector('.price-intelligence-card');
-      const secondChart = host.querySelector('[data-usage-card]');
-      const chartGroup = document.createElement('section');
-      chartGroup.className = 'pricing-chart-group'; chartGroup.setAttribute('aria-label', '价格与额度图表');
-      firstChart.before(chartGroup); chartGroup.append(legendGroup, firstChart, secondChart);
-      requestAnimationFrame(() => host.__usageCharts.forEach(chart => chart.resize()));
-      const note = host.querySelector('.usage-method-note');
-      const method = document.createElement('details'); method.className = 'tool-secondary'; method.id = 'pricingMethod'; if (location.hash === '#pricingMethod') method.open = true;
-      const label = document.createElement('summary'); label.textContent = '价格、汇率与用量口径';
-      method.append(label, note); host.append(method);
+      host.append(method);
       const openMethod = () => { if (location.hash === '#pricingMethod') { method.open = true; method.scrollIntoView({block:'start'}); } };
       root.addEventListener('hashchange', openMethod);
       document.getElementById('pricingPresets').addEventListener('click', event => {

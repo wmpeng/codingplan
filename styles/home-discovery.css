@@ -36,6 +36,8 @@
 .models-page .model-featured-badge { display: inline-flex; align-items: center; padding: 3px 7px; border: 1px solid #e4d1b2; border-radius: 5px; background: #fff8ec; color: #946c35; font-size: 12px; line-height: 1.5; white-space: nowrap; }
 body.models-page .model-card.is-featured { border-color: #d3bd98; }
 body.models-page .model-card.is-pinned { border-color: #a5b9d1; }
+/* Keep two score columns normally; enlarged text can use the full card width. */
+body.models-page .model-scores { grid-template-columns: repeat(auto-fit, minmax(min(100%, max(50%, 7em)), 1fr)); }
 .models-page #modelControls { position: relative; top: auto; margin-bottom: 16px; }
 .models-page #modelControls:has(details[open]) { z-index: 35; }
 .models-page .model-result-bar { margin-top: 0; }

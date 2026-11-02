@@ -9,7 +9,11 @@
     const esc = UI.escapeHtml;
     // Rich content must come from a renderer that escapes its own data, not raw source text.
     const rich = typeof options.contentHtml === 'string';
-    return `<span class="ui-help${options.icon==='info'?' ui-help--info':''}"><button type="button" class="ui-help-button" popovertarget="${esc(id)}" aria-label="${esc(label)}" aria-expanded="false" aria-controls="${esc(id)}"${rich?'':` aria-describedby="${esc(id)}"`}><span aria-hidden="true">${options.icon==='info'?'i':'?'}</span></button><span class="ui-help-content" id="${esc(id)}" popover="auto" role="${rich?'dialog':'tooltip'}"${rich?` aria-label="${esc(label)}"`:''}>${rich?`<button type="button" class="ui-help-close" data-ui-help-close aria-label="关闭变更预告">×</button>${options.contentHtml}`:esc(text)}</span></span>`;
+    const buttonClass = options.buttonClass ? ' ' + esc(options.buttonClass) : '';
+    const buttonContent = options.buttonText == null
+      ? `<span aria-hidden="true">${options.icon === 'info' ? 'i' : '?'}</span>`
+      : `<span>${esc(options.buttonText)}</span>`;
+    return `<span class="ui-help${options.icon==='info'?' ui-help--info':''}"><button type="button" class="ui-help-button${buttonClass}" popovertarget="${esc(id)}" aria-label="${esc(label)}" aria-expanded="false" aria-controls="${esc(id)}"${rich?'':` aria-describedby="${esc(id)}"`}>${buttonContent}</button><span class="ui-help-content" id="${esc(id)}" popover="auto" role="${rich?'dialog':'tooltip'}"${rich?` aria-label="${esc(label)}"`:''}>${rich?`<button type="button" class="ui-help-close" data-ui-help-close aria-label="${esc(options.closeLabel || '关闭变更预告')}">×</button>${options.contentHtml}`:esc(text)}</span></span>`;
   }
   function bind(doc) {
     let active = null, pinned = false, closeTimer = null;

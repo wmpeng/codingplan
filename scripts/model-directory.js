@@ -15,14 +15,7 @@
     if (state.key !== key) return {key, direction:first};
     return state.direction === first ? {key, direction:first === 'asc' ? 'desc' : 'asc'} : {key:'default', direction:'asc'};
   }
-  function sanitizePins(ids, models) {
-    const valid = new Set(models.map(model => model.slug));
-    return [...new Set((Array.isArray(ids) ? ids : []).filter(id => typeof id === 'string' && valid.has(id)))];
-  }
-  function readPins(storage, models) {
-    try { return sanitizePins(JSON.parse(storage.getItem(pinKey)), models); } catch (_) { return []; }
-  }
-  function writePins(storage, ids) { try { storage.setItem(pinKey, JSON.stringify(ids)); } catch (_) {} }
+  const {sanitizePins, readPins, writePins} = UI.pinStore(pinKey);
   function select(models, groups, state = {}, pins = [], platformCounts = new Map()) {
     const pinned = new Set(sanitizePins(pins, models));
     const featured = new Set(UI.modelPresetSlugs(groups, 'featured', models));

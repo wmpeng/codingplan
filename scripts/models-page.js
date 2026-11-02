@@ -22,7 +22,8 @@
       let view = saved.view || 'cards';
       search.value = saved.query || ''; sort.value = saved.sort || 'default'; multimodal.checked = saved.multimodal === true;
       let direction = sort.value === 'default' ? 'asc' : saved.direction || Directory.defaultDirection(sort.value);
-      let stickyHeader;
+      let stickyHeader, renderedKey;
+      const cardNodes = new Map();
       const platformCounts = new Map(context.models.map(model => [model.slug,Catalog.modelPlatformCount(model,context)]));
       picker.sync();
       let pins = Directory.readPins(root.localStorage, context.models);
@@ -36,13 +37,38 @@
         viewButtons.forEach(button => { button.disabled = false; button.setAttribute('aria-pressed', String(button.dataset.modelView === view)); });
         host.classList.toggle('model-grid', view === 'cards');
         host.dataset.view = view;
-        const table = host.querySelector('.model-directory-table');
-        if (view === 'table' && table) table.tBodies[0].innerHTML = Directory.tableRowsHtml(selection,context);
-        else {
-          stickyHeader?.destroy(); stickyHeader = null;
-          host.innerHTML = view === 'table' ? Directory.tableHtml(selection,context) : selection.visible.length ? selection.visible.map(model => Catalog.modelCard(model, context, {
-            directory:true, featured:selection.featured.has(model.slug), pinned:selection.pinned.has(model.slug)
-          })).join('') : '<p class="tool-empty">没有匹配模型，试着清空搜索或减少条件。</p>';
+        const nextKey = JSON.stringify([view, selection.visible.map(model => [model.slug, selection.pinned.has(model.slug), selection.featured.has(model.slug)])]);
+        if (nextKey !== renderedKey) {
+          const table = host.querySelector('.model-directory-table');
+          if (view === 'table' && table) table.tBodies[0].innerHTML = Directory.tableRowsHtml(selection,context);
+          else {
+            stickyHeader?.destroy(); stickyHeader = null;
+            if (view === 'table') host.innerHTML = Directory.tableHtml(selection,context);
+            else if (!selection.visible.length) host.innerHTML = '<p class="tool-empty">没有匹配模型，试着清空搜索或减少条件。</p>';
+            else {
+              const nodes = selection.visible.map(model => {
+                const signature = `${selection.featured.has(model.slug)}:${selection.pinned.has(model.slug)}`;
+                let cached = cardNodes.get(model.slug);
+                if (!cached || cached.signature !== signature) {
+                  const template = document.createElement('template');
+                  template.innerHTML = Catalog.modelCard(model, context, {
+                    directory:true, featured:selection.featured.has(model.slug), pinned:selection.pinned.has(model.slug)
+                  });
+                  cached = {signature, node:template.content.firstElementChild};
+                  cardNodes.set(model.slug, cached);
+                }
+                return cached.node;
+              });
+              // Move only out-of-order cards; unchanged nodes keep focus and open popovers.
+              let cursor = host.firstChild;
+              for (const node of nodes) {
+                if (node === cursor) cursor = cursor.nextSibling;
+                else host.insertBefore(node, cursor);
+              }
+              while (cursor) { const next = cursor.nextSibling; cursor.remove(); cursor = next; }
+            }
+          }
+          renderedKey = nextKey;
         }
         if (view === 'table') {
           host.querySelector('.model-table-wrap thead').querySelectorAll('[data-model-sort]').forEach(button => {
