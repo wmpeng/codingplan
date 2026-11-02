@@ -38,10 +38,6 @@
   .filter-state-chip { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 }
 
-:is(.homepage-unified-active, .tool-unified-active) #platformTagBar,
-:is(.homepage-unified-active, .tool-unified-active) #plansTableSection > .filter-bar {
-  display: none;
-}
 
 .main-view-full-link {
   color: #3157c8;
@@ -56,9 +52,6 @@
   text-decoration: underline;
 }
 
-:is(.homepage-unified-active, .tool-unified-active) .main-view-shell > .filter-state-bar {
-  margin-bottom: 12px;
-}
 
 :is(.homepage-unified-active, .tool-unified-active) .usage-view > .usage-filters {
   display: none;
@@ -359,97 +352,6 @@ body .range-picker-slider input:focus-visible { outline: 2px solid #6b7280; outl
 body.tool-unified-active .filter-state-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 24px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border-color); }
 body.tool-unified-active .filter-state-footer .filter-checks { border: 0; padding: 0; }
 body.tool-unified-active .filter-state-footer .filter-state-actions { flex: 0 0 auto; width: auto; max-width: 100%; justify-content: flex-end; margin: 0 0 0 auto; }
-.directory-filters.directory-sticky-filters, .models-page #modelControls.directory-sticky-filters { position: sticky; top: var(--directory-filter-top); z-index: 20; }
-.directory-filters.directory-sticky-filters:has(.filter-picker[open], .directory-control-menu.filter-picker-menu:not([hidden])) { z-index: 35; }
-.directory-filters > .filter-state-bar, .directory-filters.filter-state-bar { background: var(--bg-secondary); }
-.directory-filter-backdrop {
-  position: fixed; left: 0; width: 100%; background: var(--bg-primary); z-index: 19; pointer-events: none;
-}
-.directory-filter-backdrop[hidden] { display: none; }
-.directory-filters-stuck > .filter-state-bar, .directory-filters-stuck.filter-state-bar {
-  border-top: 0; border-top-left-radius: 0; border-top-right-radius: 0;
-}
-body .directory-filters.directory-filters-stuck > .filter-state-bar,
-body .directory-filters.directory-filters-stuck.filter-state-bar {
-  box-shadow: 0 5px 12px -7px rgba(30,45,65,.28), 0 1px 3px rgba(30,45,65,.07);
-}
-/* 目录页只切换原控件的布局，筛选状态与菜单仍由所属组件维护。 */
-.directory-filter-region { overflow-anchor: none; }
-.directory-filter-spacer { overflow-anchor: none; }
-.directory-filters .directory-control-label { color: var(--text-secondary); font-size: 13px; font-weight: 400; line-height: 1.5; }
-.directory-filters summary > .directory-control-label, .directory-filters-compact .directory-filter-entry:not(.directory-filter-original) > :is(summary, .directory-control-trigger) .directory-control-label { color: inherit; }
-.directory-filters-compact .directory-filter-entry:not(.directory-filter-original) > :is(summary, .directory-control-trigger) .directory-control-label { font: inherit; }
-.directory-filter-toolbar, .directory-filter-group, .directory-display-group, .directory-filter-utility { display: flex; align-items: center; gap: 8px; }
-.directory-filter-group, .directory-display-group { flex-wrap: wrap; max-width: 100%; }
-body .directory-filters .directory-filter-fields { display: contents; }
-.directory-filter-fields[aria-disabled="true"] > .directory-filter-entry { opacity: .55; }
-.directory-display-group::before { content: ''; flex: 0 0 1px; width: 1px; height: 24px; margin-right: 8px; background: var(--border-color); }
-.directory-filters:not(.directory-filters-compact) :is(.directory-filter-group, .directory-display-group) { display: contents; }
-.directory-filters:not(.directory-filters-compact) .directory-display-group::before { display: none; }
-.directory-filter-divider { flex: 0 0 1px; width: 1px; height: 24px; align-self: center; background: var(--border-color); }
-.directory-filters-compact .directory-filter-divider, .directory-filter-toggle[hidden] { display: none !important; }
-.directory-filter-utility { flex: 0 0 auto; margin-left: auto; }
-body.tool-unified-active .directory-filters .directory-filter-utility .filter-state-actions { flex: 0 0 auto; margin: 0; }
-.directory-filter-toggle svg, .directory-reset-icon svg { width: 16px; height: 16px; }
-body .directory-filter-toggle { font-size: 13px; }
-.directory-filters:not(.directory-filters-compact) .directory-filter-toolbar, .directory-filters:not(.directory-filters-compact) .directory-control-trigger,
-.directory-filters:not(.directory-filters-compact) .directory-search-toggle, .directory-filters:not(.directory-filters-compact) .directory-reset-icon { display: none; }
-.directory-filters:not(.directory-filters-compact) .directory-filter-control, .directory-filters:not(.directory-filters-compact) .directory-control-menu:not([hidden]) { display: contents; }
-.directory-control-menu[hidden], .directory-filter-dot { display: none !important; }
-.directory-filters-compact .directory-filter-original { width: max-content; max-width: none; }
-.directory-filters-compact .directory-filter-control.directory-filter-original { display: inline-flex; align-items: center; }
-.directory-filters-compact .directory-filter-original > .directory-control-trigger { display: none; }
-.directory-filters-compact .directory-filter-original > .directory-control-menu { display: contents; }
-.directory-filters-compact .directory-filter-original :is(.model-preset-options, .model-preset-segments) { flex-wrap: nowrap; max-width: none; }
-.directory-filters:not(.directory-filters-compact) .directory-filter-toggle svg { transform: rotate(180deg); }
-.directory-filters-stuck:not(.directory-filters-compact) .filter-state-grid { max-height: calc(100dvh - var(--directory-filter-top) - 180px); overflow: auto; }
-body.tool-unified-active :is(.directory-filters.directory-filters-compact > .filter-state-bar, .directory-filters.directory-filters-compact.filter-state-bar) { padding: 8px 12px; }
-.directory-filters-compact .directory-filter-toolbar { gap: 8px; min-height: 40px; }
-.directory-filters-compact :is(.directory-filter-group, .directory-display-group) { flex: 0 0 auto; flex-wrap: nowrap; gap: 4px; }
-body.tool-unified-active .directory-filters-compact .filter-state-grid, body.tool-unified-active .directory-filters-compact .filter-state-footer,
-.directory-filters-compact .directory-filter-overflow, .directory-filters-compact .directory-reset-text { display: none !important; }
-.directory-filters-compact :is(.directory-filter-group, .directory-display-group)[hidden] { display: none; }
-.directory-filters-compact .directory-display-no-divider::before { display: none; }
-.directory-filters-compact .directory-display-group::before { margin: 0 8px 0 0; }
-body .directory-filters.directory-filters-compact .directory-filter-entry { flex: 0 0 auto; min-width: 0; }
-body .directory-filters.directory-filters-compact :is(.filter-picker:not(.directory-filter-original) > summary, .directory-filter-control:not(.directory-filter-original) > .directory-control-trigger) { display: inline-flex; align-items: center; justify-content: center; flex-wrap: nowrap; width: auto; min-height: 40px; padding: 8px; gap: 6px; border: 0; border-radius: var(--radius-md); background: var(--bg-secondary); box-shadow: inset 0 0 0 1px var(--border-color); color: var(--text-secondary); font: inherit; font-size: 13px; font-weight: 400; line-height: 1.5; white-space: nowrap; cursor: pointer; }
-body .directory-filters.directory-filters-compact :is(.filter-picker:not(.directory-filter-original) > summary, .directory-filter-control:not(.directory-filter-original) > .directory-control-trigger):hover { color: var(--accent-primary); background: var(--bg-tertiary); box-shadow: inset 0 0 0 1px rgba(36,94,184,.35); }
-body .directory-filters.directory-filters-compact :is(.filter-picker:not(.directory-filter-original)[open] > summary, .directory-filter-control:not(.directory-filter-original) > .directory-control-trigger[aria-expanded="true"]) { color: var(--accent-primary); background: var(--accent-soft); box-shadow: inset 0 0 0 1px rgba(36,94,184,.4); }
-body .directory-filters.directory-filters-compact :is(.filter-picker:not(.directory-filter-original) > summary, .directory-filter-control:not(.directory-filter-original) > .directory-control-trigger) > span:first-child { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
-.directory-control-trigger::after { content: ''; flex: 0 0 6px; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); }
-body .directory-filters.directory-filters-compact .filter-picker:not(.directory-filter-original) > summary::after { margin-left: 0; flex-shrink: 0; }
-body .directory-filters.directory-filters-compact .directory-filter-entry:not(.directory-filter-original) :is(.filter-picker-value, .directory-picker-value) { display: none; }
-body .directory-filters.directory-filters-compact .directory-filter-entry:not(.directory-filter-original)[data-active="true"] > :is(summary, .directory-control-trigger) .directory-filter-dot { display: inline-block !important; flex: 0 0 5px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-primary); }
-body .directory-filters-compact .directory-control-menu { z-index: 1; overflow: auto; padding: 12px; align-items: flex-start; }
-/* 原位控件进入简单设置弹层后，只保留外层弹框和原生开关。 */
-body .directory-filters.directory-filters-compact .directory-control-menu.filter-picker-menu :is(.pricing-mainland-control, .platform-access-filter, .plan-harness-filter, .model-multimodal-filter) { border: 0; padding: 0; background: transparent; box-shadow: none; }
-body .directory-filters.directory-filters-compact .directory-control-menu.filter-picker-menu label { min-height: 40px; padding: 0; align-items: center; background: transparent; }
-.directory-control-menu.tool-result-bar { margin: 0; }
-.models-page .directory-filters .model-footer-controls { display: contents; }
-.directory-control-menu > :is(.usage-color-control, .usage-benchmark-control, .usage-scale-control, .price-billing-filter) { flex-shrink: 0; }
-body .directory-filters-compact .directory-control-menu > input[type="search"] { width: 100%; max-width: 100%; margin: 0; }
-.directory-filter-utility .tool-count { white-space: nowrap; font-size: 12px; font-variant-numeric: tabular-nums; }
-.directory-filters-compact [data-directory-result-count] { display: none; }
-body .directory-filters-compact .directory-reset-icon { display: inline-flex; align-items: center; justify-content: center; }
-body .directory-filters-compact .filter-state-actions > button[data-filter-action] { min-width: 36px; min-height: 40px; padding: 8px; border-color: transparent; background: transparent; color: var(--text-secondary); }
-.directory-search-toggle.is-active::after { content: ''; position: absolute; right: 3px; top: 3px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-primary); }
-.directory-search-toggle { position: relative; flex-shrink: 0; }
-@media (max-width: 800px), (pointer: coarse) {
-  body .directory-filters.directory-filters-compact .directory-control-menu.filter-picker-menu label { min-height: 44px; }
-  body .directory-filters.directory-filters-compact :is(.filter-picker:not(.directory-filter-original) > summary, .directory-filter-control:not(.directory-filter-original) > .directory-control-trigger), body .directory-filter-toggle,
-  body .directory-filters-compact .filter-state-actions > button[data-filter-action], body .directory-search-toggle { min-height: 44px; }
-}
-@media (max-width: 800px) {
-  body.tool-unified-active :is(.directory-filters.directory-filters-compact > .filter-state-bar, .directory-filters.directory-filters-compact.filter-state-bar) { padding: 6px 8px; }
-  .directory-filters-compact .directory-filter-toolbar, .directory-filter-utility { gap: 4px; }
-  .directory-filters-compact :is(.directory-filter-group, .directory-display-group) { gap: 4px; }
-  body .directory-filters.directory-filters-compact :is(.filter-picker:not(.directory-filter-original) > summary, .directory-filter-control:not(.directory-filter-original) > .directory-control-trigger) { padding: 8px 6px; font-size: 12px; }
-  .directory-filters-compact .directory-display-group::before { margin-right: 8px; }
-  .directory-filter-utility .tool-count { font-size: 10px; }
-  body .directory-filter-toggle { padding: 8px; }
-  .directory-filters-compact .directory-filter-toggle svg, .directory-filters-compact .filter-state-actions { display: none !important; }
-  .directory-filters:not(.directory-filters-compact) .directory-filter-utility { width: 100%; justify-content: flex-end; }
-}
 body.tool-unified-active .filter-state-footer .filter-result-search { flex: 0 1 auto; min-width: 0; max-width: 100%; margin: 0 auto 0 0; }
 body.tool-unified-active .filter-result-search input[type="search"] { box-sizing: border-box; flex: 0 1 320px; width: 320px; max-width: 100%; min-width: 0; min-height: 40px; }
 body.plans-page #plansPage > .tool-result-bar, body.models-page .model-result-bar { justify-content: flex-end; }

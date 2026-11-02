@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const E = require('./entity-data.js');
-const M = require('./model-comparison.js');
+const M = require('./model-comparison-core.js');
 
 test('consumption sorting keeps unknowns last in either direction and uses full precision', () => {
   const rows = [{slug:'unknown',tokenConsumptionRate:null}, {slug:'high',tokenConsumptionRate:1.504},

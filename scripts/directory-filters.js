@@ -125,8 +125,8 @@
       const panelWidth = Math.min(entry.menu.getBoundingClientRect().width, width - 28);
       entry.menu.style.width = panelWidth+'px';
       const preferredLeft = searchBounds ? searchBounds.right - panelWidth : anchor.left;
-      entry.menu.style.left = Math.max(left + 14, Math.min(preferredLeft, left + width - panelWidth - 14))+'px';
-      entry.menu.style.top = Math.max(minTop, Math.min(anchor.bottom + 8, top + height - entry.menu.getBoundingClientRect().height - 14))+'px';
+      const point = root.CodingPlanUI.anchoredPanelPosition({anchor, panel:{width:panelWidth,height:entry.menu.getBoundingClientRect().height}, viewport:{left,top,width,height}, minTop, preferredLeft});
+      entry.menu.style.left = point.left + 'px'; entry.menu.style.top = point.top + 'px';
     }
     function showMenu(entry, open) {
       closeMenus(open ? entry : null);

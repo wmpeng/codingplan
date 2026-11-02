@@ -195,6 +195,14 @@
     return {full, pricing, plansPage, platformHub, planStatusOnly, purchaseTool, createDefaults, constrain};
   }
 
+  // 首页默认精选与目录精选模式共用实体投影；页面限制仍由 view policy 决定。
+  function createFeaturedState(context, config, view, tokenUnit = 'yi') {
+    const state = createViewPolicy({mode:'full',view}).createDefaults(config,tokenUnit);
+    state.platformSlugs = (context.featuredPlatformSlugs || []).filter(slug => context.platforms.some(platform => platform.slug === slug));
+    state.modelSlugs = UI.modelPresetSlugs(context.modelGroups, 'featured', context.models || []);
+    return state;
+  }
+
   function toCny(value, currency, rate) {
     const number = nullableNumber(value, null);
     if (number === null) return null;
@@ -491,7 +499,7 @@
     cloneControlState,
     readDefaults,
     createDefaultState,
-    createViewPolicy,
+    createViewPolicy, createFeaturedState,
     catalogModelSelection,
     toCny,
     inRange,

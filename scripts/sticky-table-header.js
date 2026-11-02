@@ -120,11 +120,13 @@
     const host = document.querySelector('#plansPage, #pricingPage');
     if (!host) return;
     const find = () => {
+      // 默认正文会被动态目录替换；不要克隆未启用的控件或绑定将被移除的表。
+      if (host.hasAttribute('data-static-content')) return;
       const scroll = host.querySelector('.tool-table-wrap, .usage-data-card .usage-table-scroll');
       const table = scroll?.querySelector('table');
       if (table?.tHead) { mount(host, scroll, table); observer.disconnect(); }
     };
-    const observer = new MutationObserver(find); observer.observe(host, {childList:true, subtree:true}); find();
+    const observer = new MutationObserver(find); observer.observe(host, {childList:true, subtree:true, attributes:true, attributeFilter:['data-static-content']}); find();
   }
   root.CodingPlanStickyTableHeader = {mount};
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();

@@ -37,13 +37,11 @@
   }
   function cardHtml(model, key, metadata) {
     const esc = UI.escapeHtml, record = model.scores?.[key], n = value(record), label = definitions[key].label;
-    const display = esc(format(record, key));
     let contentHtml = `<p>${esc(details(record,key,metadata))}</p>`;
     if (key === 'arena') contentHtml += '<p><a href="https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset" target="_blank" rel="noopener noreferrer">Arena 官方公开数据集</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC-BY-4.0</a></p>';
-    const help = Help.html(`score-${model.slug}-${key}`, `${model.name} ${label}评分详情`, '', {contentHtml})
-      .replace('class="ui-help-button"', 'class="ui-help-button benchmark-score-button"')
-      .replace('aria-label="关闭变更预告"', 'aria-label="关闭评分详情"')
-      .replace(/<span aria-hidden="true">\?<\/span>/, `<span>${display}</span>`);
+    const help = Help.html(`score-${model.slug}-${key}`, `${model.name} ${label}评分详情`, '', {
+      contentHtml, buttonClass:'benchmark-score-button', buttonText:format(record, key), closeLabel:'关闭评分详情'
+    });
     const link = n !== null && record.sourceUrl ? ` <a href="${esc(UI.sanitizeUrl(record.sourceUrl, '#'))}" target="_blank" rel="noopener noreferrer" aria-label="${esc(model.name)} ${label}评分来源">↗</a>` : '';
     return `<div class="model-score" data-score="${key}"><span class="model-score-label">${label}</span><span class="model-score-value${n === null ? ' score-unknown' : ''}">${help}${link}</span></div>`;
   }

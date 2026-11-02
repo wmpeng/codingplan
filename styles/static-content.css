@@ -1,0 +1,5 @@
+/* 仅隐藏尚未接管的默认快照；无 JavaScript 时正文始终可读。 */
+html.static-custom-results [data-static-content~="results"]:not([data-static-fallback]),
+html.static-custom-prices [data-static-content~="prices"]:not([data-static-fallback]),
+html.static-custom-platforms [data-static-content~="platforms"]:not([data-static-fallback]) { display: none; }
+[data-static-content] .ui-pin-button { visibility: hidden; }

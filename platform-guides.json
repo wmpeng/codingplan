@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "primaryOrigin": "https://codingplan.fyi",
+  "mirrorOrigins": [
+    "https://vibecoding.dreamfree.space"
+  ],
+  "aliasOrigins": [
+    "https://www.codingplan.fyi"
+  ],
+  "pages": {
+    "bytedance-ark": {
+      "title": "字节·方舟 Coding Plan",
+      "url": "/platforms/bytedance-ark/"
+    },
+    "claude": {
+      "title": "Claude Code",
+      "url": "/platforms/claude/"
+    },
+    "codex": {
+      "title": "Codex",
+      "url": "/platforms/codex/"
+    },
+    "command-code": {
+      "title": "Command Code",
+      "url": "/platforms/command-code/"
+    },
+    "cursor": {
+      "title": "Cursor",
+      "url": "/platforms/cursor/"
+    },
+    "deepseek-official": {
+      "title": "DeepSeek 官方 API",
+      "url": "/platforms/deepseek-official/"
+    },
+    "kimi": {
+      "title": "Kimi Code",
+      "url": "/platforms/kimi/"
+    },
+    "minimax": {
+      "title": "MiniMax M Plan",
+      "url": "/platforms/minimax/"
+    },
+    "opencode": {
+      "title": "OpenCode Go / Go Plus",
+      "url": "/platforms/opencode/"
+    },
+    "zhipu": {
+      "title": "智谱 GLM Coding Plan",
+      "url": "/platforms/zhipu/"
+    }
+  }
+}

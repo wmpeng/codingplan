@@ -7,33 +7,33 @@
   <url><loc>https://codingplan.fyi/plans/</loc></url>
   <url><loc>https://codingplan.fyi/updates/</loc></url>
   <url><loc>https://codingplan.fyi/articles/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/model_comparisons/20260513/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/model_comparisons/20260604/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/model_comparisons/20260617/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/model_comparisons/20260806/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/model_comparisons/20260907/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/model_comparisons/20261024/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/news/20260602_minimax_m3/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/news/20260613_glm_5_2/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/news/20260615_kimi_k27_code/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/news/20260718_kimi_k3/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/news/20260719_gpt_5_6/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/news/20260803_deepseek_v4_flash_0731/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/news/20260803_gpt56_price/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/news/20260813_deepseek_v4_pro_0813/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/news/20260814_glm_5_3/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/news/20260818_glm_5_3_aa/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/news/20260910_deepseek_v4_1_flash/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/news/20261017_deepseek_v4_1_flash_1017/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/news/20261020_minimax_m3_1_flash/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/news/20261024_kimi_k3_1_pro/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/news/20261030_codex_pro_limits/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/plan_comparisons/20260519/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/plan_comparisons/20260603/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/plan_comparisons/20260628/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/plan_comparisons/20260810/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/plan_comparisons/20260824/</loc></url>
-  <url><loc>https://codingplan.fyi/articles/plan_comparisons/20261026/</loc></url>
+  <url><loc>https://codingplan.fyi/articles/model_comparisons/20260513/</loc><lastmod>2026-05-14</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/model_comparisons/20260604/</loc><lastmod>2026-06-04</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/model_comparisons/20260617/</loc><lastmod>2026-06-17</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/model_comparisons/20260806/</loc><lastmod>2026-08-06</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/model_comparisons/20260907/</loc><lastmod>2026-09-07</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/model_comparisons/latest/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/news/20260602_minimax_m3/</loc><lastmod>2026-06-02</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/news/20260613_glm_5_2/</loc><lastmod>2026-06-13</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/news/20260615_kimi_k27_code/</loc><lastmod>2026-06-15</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/news/20260718_kimi_k3/</loc><lastmod>2026-07-18</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/news/20260719_gpt_5_6/</loc><lastmod>2026-07-19</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/news/20260803_deepseek_v4_flash_0731/</loc><lastmod>2026-08-03</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/news/20260803_gpt56_price/</loc><lastmod>2026-07-30</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/news/20260813_deepseek_v4_pro_0813/</loc><lastmod>2026-08-13</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/news/20260814_glm_5_3/</loc><lastmod>2026-08-15</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/news/20260818_glm_5_3_aa/</loc><lastmod>2026-08-23</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/news/20260910_deepseek_v4_1_flash/</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/news/20261017_deepseek_v4_1_flash_1017/</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/news/20261020_minimax_m3_1_flash/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/news/20261024_kimi_k3_1_pro/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/news/20261030_codex_pro_limits/</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/plan_comparisons/20260519/</loc><lastmod>2026-05-19</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/plan_comparisons/20260603/</loc><lastmod>2026-06-03</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/plan_comparisons/20260628/</loc><lastmod>2026-06-28</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/plan_comparisons/20260810/</loc><lastmod>2026-08-10</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/plan_comparisons/20260824/</loc><lastmod>2026-08-24</lastmod></url>
+  <url><loc>https://codingplan.fyi/articles/plan_comparisons/latest/</loc><lastmod>2026-10-26</lastmod></url>
   <url><loc>https://codingplan.fyi/platforms/bytedance-ark/</loc><lastmod>2026-10-30</lastmod></url>
   <url><loc>https://codingplan.fyi/platforms/claude/</loc><lastmod>2026-11-01</lastmod></url>
   <url><loc>https://codingplan.fyi/platforms/codex/</loc><lastmod>2026-10-30</lastmod></url>

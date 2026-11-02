@@ -101,6 +101,16 @@ body.tool-page.ultra-wide { --tool-page-width: 1920px; }
 .tool-hero { margin: 26px 0 28px; align-items: center; }
 .tool-hero h1 { font-size: clamp(24px, 3vw, 30px); line-height: 1.3; font-weight: 700; letter-spacing: -.02em; margin-bottom: 8px; }
 .tool-hero p { font-size: 14px; line-height: 1.65; }
+.tool-related-articles { display: flex; align-items: baseline; gap: 14px; margin: -2px 0 28px; padding: 2px 0 2px 14px; border-left: 2px solid #d9dde3; font-size: 14px; line-height: 1.6; }
+.tool-related-label { flex-shrink: 0; color: var(--text-secondary); font-size: 12px; }
+.tool-related-articles > div { min-width: 0; }
+.tool-page .tool-related-link { color: var(--text-primary); font-size: 14px; line-height: 1.6; text-decoration: underline; text-decoration-color: #aeb5bf; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.tool-related-title { overflow-wrap: anywhere; }
+.tool-page .tool-related-link:hover { color: var(--text-primary); text-decoration-color: currentColor; text-underline-offset: 4px; }
+.tool-related-link:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 3px; }
+@media (pointer: coarse) {
+  .tool-page .tool-related-link { display: block; width: fit-content; max-width: 100%; min-height: 44px; padding: 10px 0; }
+}
 .tool-panel { border-radius: 12px; box-shadow: var(--shadow-sm); }
 .tool-button { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; font: inherit; font-size: 13px; white-space: nowrap; }
 .tool-result-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 16px 0 12px; font-size: 13px; }

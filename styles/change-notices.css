@@ -1,4 +1,5 @@
 .change-notice { display: block; color: var(--text-primary); white-space: normal; overflow-wrap: anywhere; }
+.change-notice[hidden], .ui-help--info[hidden], [data-change-notices][hidden], .guide-section[hidden], .guide-toc a[hidden] { display: none; }
 .change-notice h3 { margin: 0 0 8px; }
 .change-notice p { margin: 6px 0; }
 .change-notice-time, .change-notice-scope, .change-notice-audience { color: var(--text-secondary); }

@@ -10,9 +10,6 @@ const {
   getPointScore,
   getPointPlatformKey,
   createDefaultFilterState,
-  getMonthlyPriceBounds,
-  priceToPercent,
-  percentToPrice,
   filterPoints,
   buildUsageChartPoints,
   buildIntelligenceChartPoints,
@@ -43,7 +40,7 @@ const {
   unitPriceVisualHtml,
   comparisonTableRowHtml,
   tooltipHtml
-} = require('./model-comparison.js');
+} = require('./model-comparison-core.js');
 
 const points = [
   { platformSlug: 'a-token', platformName: 'A Token', modelSlug: 'm1', multimodal: true, billingMode: 'subscription', monthlyFeeCny: 100, monthlyTokenInM: 500, unitPriceCnyPerM: .2, scores: { artificialAnalysis: { scoreExact: 60 }, deepSWE: { scoreExact: 30 } } },
@@ -66,13 +63,7 @@ test('shared filters apply vendor, model, modality and exact score', () => {
   assert.deepEqual(filterPoints(points, { multimodal: 'all', aaScoreMin: 50, deepSWEScoreMin: 40 }), []);
 });
 
-test('monthly package price filter uses a logarithmic dual-slider range', () => {
-  const bounds = getMonthlyPriceBounds(points);
-  assert.deepEqual(bounds, { min: 50, max: 100 });
-  assert.equal(priceToPercent(bounds.min, bounds), 0);
-  assert.equal(Math.round(priceToPercent(bounds.max, bounds)), 100);
-  assert.equal(Math.round(percentToPrice(0, bounds)), bounds.min);
-  assert.equal(Math.round(percentToPrice(100, bounds)), bounds.max);
+test('shared monthly budget filters subscription prices without excluding API rows', () => {
   assert.deepEqual(filterPoints(points, {
     multimodal: 'all', aaScoreMin: '', deepSWEScoreMin: '',
     monthlyPriceMin: 60, monthlyPriceMax: 120
@@ -473,7 +464,7 @@ test('comparison tables sort both benchmark scores by exact value', () => {
 
 
 test('B 表示十亿 Token，用量与单价反向换算且未知和零保持语义',()=>{
-  const M=require('./model-comparison.js');
+  const M=require('./model-comparison-core.js');
   assert.equal(M.normalizeTokenUnit('B'),'B');
   assert.equal(M.tokenAmountInUnit(1000,'B'),1);
   assert.equal(M.unitPriceInTokenUnit(0.15,'B'),150);
@@ -487,4 +478,53 @@ test('B 表示十亿 Token，用量与单价反向换算且未知和零保持语
   const F=require('./filter-state.js'),R=require('./offer-results.js');
   assert.equal(F.normalizeState({tokenUnit:'B',monthlyTokenRange:{min:125}}).tokenUnit,'B');
   assert.equal(R.quota(125,'B'),'0.13 B Token');
+});
+
+test('shared rendering loads without the pricing runtime and keeps one owner per browser API', () => {
+  const vm = require('node:vm');
+  const context = vm.createContext({require:require('node:module').createRequire(__filename)});
+  const coreSource = fs.readFileSync(path.join(__dirname,'model-comparison-core.js'),'utf8');
+  const runtimeSource = fs.readFileSync(path.join(__dirname,'model-comparison.js'),'utf8');
+  vm.runInContext(coreSource,context);
+  const core = context.ModelComparisonCore;
+  assert.equal(context.ModelComparison,undefined);
+  assert.match(core.comparisonTableHtml(true,'<tr><td>静态正文</td></tr>'),/<tbody data-table-body="comparison"><tr><td>静态正文<\/td><\/tr><\/tbody>/);
+  vm.runInContext(runtimeSource,context);
+  assert.equal(context.ModelComparisonCore,core);
+  assert.deepEqual(Object.keys(context.ModelComparison),['mountModelComparisonView']);
+  assert.equal(typeof context.ModelComparison.mountModelComparisonView,'function');
+  assert.equal(context.mountModelComparisonView,undefined);
+});
+
+test('table rendering applies the selected benchmark to headers and rows without changing other columns', () => {
+  const Core = require('./model-comparison-core.js');
+  const keys = ['artificialAnalysis','deepSWE','liveBench','arena'];
+  for (const benchmark of keys) {
+    const options = {benchmark,compactIdentity:true};
+    const head = Core.comparisonTableHeadHtml('comparison',true,options);
+    const row = Core.comparisonTableRowHtml(points[0],'yi',options);
+    for (const key of keys) {
+      for (const html of [head,row]) {
+        const cell = html.match(new RegExp('<t[hd]\\b[^>]*data-comparison-col="'+key+'"[^>]*>'))[0];
+        assert.equal(/\bhidden\b/.test(cell),key !== benchmark,`${benchmark}: ${key}`);
+      }
+    }
+    assert.doesNotMatch(head,/<th[^>]*data-comparison-col="(?:tokenConsumptionRate|priceIndexCnyPerM|vendor)"[^>]*\bhidden\b/);
+  }
+  assert.doesNotMatch(Core.comparisonTableHeadHtml('comparison',true),/<th\b[^>]* hidden(?: |>)/);
+  assert.doesNotMatch(Core.comparisonTableRowHtml(points[0],'yi'),/data-comparison-col="(?:artificialAnalysis|deepSWE|liveBench|arena)" hidden/);
+  assert.equal(Core.comparisonTableRowHtml(points[0],'yi',null),Core.comparisonTableRowHtml(points[0],'yi'));
+  assert.equal(Core.comparisonTableHeadHtml('comparison',true,null),Core.comparisonTableHeadHtml('comparison',true));
+});
+
+test('static table sorting declares only the active header and preserves the caller-provided body', () => {
+  const Core = require('./model-comparison-core.js');
+  const body = '<tr><td colspan="16">当前默认条件下没有匹配明细。</td></tr>';
+  for (const [direction,ariaSort] of [['asc','ascending'],['desc','descending']]) {
+    const html = Core.comparisonTableHtml(true,body,{sort:{key:'unitPriceCnyPerM',direction}});
+    assert.match(html,new RegExp('aria-sort="'+ariaSort+'" data-table-sort="comparison" data-sort-key="unitPriceCnyPerM"'));
+    assert.equal((html.match(/aria-sort="(?:ascending|descending)"/g)||[]).length,1);
+    assert.ok(html.includes('<tbody data-table-body="comparison">'+body+'</tbody>'));
+  }
+  assert.doesNotMatch(Core.comparisonTableHtml(true,body),/aria-sort="(?:ascending|descending)"/);
 });

@@ -14,9 +14,8 @@
       const search = results.querySelector('input');
       const count = results.querySelector('[data-pricing-result-count]');
       root.CodingPlanToolPage.mountSearch(search, count);
-      const columns = document.createElement('label'); columns.className = 'plan-columns-control';
-      columns.innerHTML = '<input type="checkbox" role="switch" data-price-columns><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.75" y="3.75" width="14.5" height="12.5" rx="1.5"/><path d="M7.5 4v12M12.5 4v12"/></svg><span class="plan-columns-text">更多字段</span><span class="plan-columns-switch" aria-hidden="true"></span>';
-      host.before(columns);
+      host.insertAdjacentHTML('beforebegin', root.CodingPlanUI.columnsControl({attribute:'data-price-columns'}));
+      const columns = host.previousElementSibling;
       const params = new URLSearchParams(location.search);
       const relation = params.get('relation');
       const plan = data.context.planBySlug.get(params.get('plan'));
@@ -24,30 +23,21 @@
       const filterController = document.getElementById('toolFilters').filterController;
       function getFilterView() {
         const state = filterController.getState();
-        const featured = root.CodingPlanFilters.createViewPolicy({mode:'full', view:'pricing'}).createDefaults(data.config, state.tokenUnit);
-        featured.platformSlugs = (data.context.featuredPlatformSlugs || []).filter(slug => data.context.platformBySlug.has(slug));
-        featured.modelSlugs = root.CodingPlanUI.modelPresetSlugs(data.context.modelGroups, 'featured', data.context.models);
+        const featured = root.CodingPlanFilters.createFeaturedState(data.context,data.config,'pricing',state.tokenUnit);
         featured.mainlandRequired = state.mainlandRequired;
         const featuredOnly = filterController.isFeaturedOnly();
         return {state:featuredOnly ? featured : state, featuredOnly, featuredState:featured};
       }
+      const method = document.createElement('details'); method.className = 'tool-secondary'; method.id = 'pricingMethod';
+      const label = document.createElement('summary'); label.textContent = '价格、汇率与用量口径';
+      const methodContent = document.createElement('div'); methodContent.className = 'usage-method-note';
+      method.append(label, methodContent);
       const filterState = filterController.getState();
       await root.ModelComparison.mountModelComparisonView(host, { mode: 'full', hidePresets: true, data, preset, filterState, focusRelationSlugs,
-        directory:root.PricingDirectory, getFilterView, colorControlHost:document.querySelector('#toolFilters .filter-state-grid'), benchmarkControlHost:document.querySelector('#toolFilters .filter-state-grid'), billingControlHost:document.querySelector('#toolFilters .filter-state-grid'), scaleControlHost:document.querySelector('#toolFilters .filter-state-grid'), search, count, columns:columns.querySelector('input') });
+        directory:root.PricingDirectory, getFilterView, methodHost:methodContent, colorControlHost:document.querySelector('#toolFilters .filter-state-grid'), benchmarkControlHost:document.querySelector('#toolFilters .filter-state-grid'), billingControlHost:document.querySelector('#toolFilters .filter-state-grid'), scaleControlHost:document.querySelector('#toolFilters .filter-state-grid'), search, count, columns:columns.querySelector('input') });
+      root.StaticContent?.ready(host);
       root.CodingPlanToolPage.mountDirectoryFilters('pricing', search, count);
-      const legend = host.querySelector('.usage-color-legend');
-      const legendGroup = document.createElement('div'); legendGroup.className = 'tool-legend';
-      legend.before(legendGroup); legendGroup.append(legend);
-      const firstChart = host.querySelector('.price-intelligence-card');
-      const secondChart = host.querySelector('[data-usage-card]');
-      const chartGroup = document.createElement('section');
-      chartGroup.className = 'pricing-chart-group'; chartGroup.setAttribute('aria-label', '价格与额度图表');
-      firstChart.before(chartGroup); chartGroup.append(legendGroup, firstChart, secondChart);
-      requestAnimationFrame(() => host.__usageCharts.forEach(chart => chart.resize()));
-      const note = host.querySelector('.usage-method-note');
-      const method = document.createElement('details'); method.className = 'tool-secondary'; method.id = 'pricingMethod'; if (location.hash === '#pricingMethod') method.open = true;
-      const label = document.createElement('summary'); label.textContent = '价格、汇率与用量口径';
-      method.append(label, note); host.append(method);
+      host.append(method);
       const openMethod = () => { if (location.hash === '#pricingMethod') { method.open = true; method.scrollIntoView({block:'start'}); } };
       root.addEventListener('hashchange', openMethod);
       document.getElementById('pricingPresets').addEventListener('click', event => {
@@ -56,7 +46,10 @@
       openMethod();
       const rows = [...host.querySelectorAll('.price-focus-row')];
       if (rows[0]) { rows[0].tabIndex = -1; rows[0].focus({preventScroll:true}); rows[0].scrollIntoView({block:'center'}); }
-    } catch (error) { root.CodingPlanToolPage.error(host, error.message); }
+    } catch (error) {
+      root.StaticContent?.fail();
+      root.CodingPlanToolPage.error(host, error.message, {preserveContent:true});
+    }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })(globalThis);

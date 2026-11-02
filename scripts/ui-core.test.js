@@ -2,6 +2,46 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const UI = require('./ui-core');
 
+test('字段开关共享结构，静态套餐等待接管，动态价格开关默认可用且未选中', () => {
+  const plans = UI.columnsControl({attribute:'data-plan-columns',staticDisabled:true});
+  const pricing = UI.columnsControl({attribute:'data-price-columns'});
+  assert.match(plans, /<input type="checkbox" role="switch" data-plan-columns disabled data-static-disabled>/);
+  assert.match(pricing, /<input type="checkbox" role="switch" data-price-columns>/);
+  assert.equal(plans.replace('data-plan-columns disabled data-static-disabled','data-price-columns'),pricing);
+  assert.match(pricing, /<span class="plan-columns-text">更多字段<\/span>/);
+  assert.throws(() => UI.columnsControl({attribute:'onclick'}), /不支持/);
+  assert.throws(() => UI.columnsControl({attribute:'data-columns onclick="alert(1)"'}), /不支持/);
+});
+
+test('共享置顶存储保留顺序，隔离目录键，并容忍损坏或不可用的存储', () => {
+  const values = new Map(), storage = {getItem:key => values.get(key), setItem:(key,value) => values.set(key,value)};
+  const models = UI.pinStore('models'), plans = UI.pinStore('plans');
+  const items = [{slug:'a'}, {slug:'b'}];
+  models.writePins(storage, ['b','b','missing',null,'a']);
+  assert.deepEqual(models.readPins(storage,items), ['b','a']);
+  assert.deepEqual(plans.readPins(storage,items), []);
+  values.set('models','{broken'); assert.deepEqual(models.readPins(storage,items), []);
+  const denied = {getItem() {throw Error('denied');}, setItem() {throw Error('denied');}};
+  assert.deepEqual(models.readPins(denied,items), []);
+  assert.doesNotThrow(() => models.writePins(denied,['a']));
+});
+
+test('弹层定位保留视口偏移、顶栏避让和调用方的间距与对齐', () => {
+  const options = {anchor:{left:290,bottom:510},panel:{width:180,height:200},viewport:{left:20,top:50,width:320,height:500},minTop:120};
+  assert.deepEqual(UI.anchoredPanelPosition(options), {left:146,top:336});
+  assert.deepEqual(UI.anchoredPanelPosition({...options,anchor:{left:0,bottom:0}}), {left:34,top:120});
+  assert.deepEqual(UI.anchoredPanelPosition({...options,anchor:{left:100,bottom:200},gap:6,preferredLeft:80}), {left:80,top:206});
+});
+
+test('公共提示提供评分按钮变体，所有可见文字与可访问标签均转义', () => {
+  const Help = require('./ui-help');
+  const html = Help.html('score','评分','', {contentHtml:'<p>详情</p>',buttonClass:'benchmark-score-button',buttonText:'<0 & 1',closeLabel:'关闭"评分'});
+  assert.match(html, /class="ui-help-button benchmark-score-button"/);
+  assert.match(html, /<span>&lt;0 &amp; 1<\/span>/);
+  assert.match(html, /aria-label="关闭&quot;评分"/);
+  assert.doesNotMatch(html, /关闭变更预告/);
+});
+
 test('精选名单统一先头部级再甜品级，单组保序、排除禁用与失效项并去重', () => {
   const groups = [
     {id:'high-volume-models', modelSlugs:['sweet-b','shared','sweet-a','missing']},

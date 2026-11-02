@@ -128,10 +128,10 @@
           ],
           controller.getModelPreset(),
         ) +
-        root.CodingPlanFilterUI.multimodalControls("guideMultimodal", controller.getMultimodalActionLabel(), controller.getMultimodalNotice())
+        root.CodingPlanFilterControls.multimodalControls("guideMultimodal", controller.getMultimodalActionLabel(), controller.getMultimodalNotice())
       );
     return (
-      root.CodingPlanFilterUI.platformShortcutControls("guidePlatform", controller.getPlatformShortcutLabels(), controller.getPlatformShortcutNotice()) +
+      root.CodingPlanFilterControls.platformShortcutControls("guidePlatform", controller.getPlatformShortcutLabels(), controller.getPlatformShortcutNotice()) +
       buttons(
         "preference",
         G.sortOptions.map(option => [option.value, option.label]),
@@ -234,7 +234,7 @@
     } else if (!G.directAdvice(answers)) set({ [key]: value });
     render();
   }
-  root.CodingPlanFilterUI.bindSelectionHelp(host);
+  root.CodingPlanFilterPopovers.bindSelectionHelp(host);
   host.addEventListener("click", (event) => {
     const el = event.target.closest("button");
     if (!el) return;

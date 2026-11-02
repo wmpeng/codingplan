@@ -2,7 +2,7 @@ const test=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
-const E=require('./entity-data.js'),F=require('./filter-state.js'),G=require('./purchase-guide.js'),C=require('./featured-catalog.js'),M=require('./model-comparison.js'),R=require('./offer-results.js');
+const E=require('./entity-data.js'),F=require('./filter-state.js'),G=require('./purchase-guide.js'),C=require('./featured-catalog.js'),M=require('./model-comparison-core.js'),R=require('./offer-results.js');
 const read=n=>JSON.parse(fs.readFileSync(path.join(__dirname,'..',n+'.json'),'utf8'));
 const config=read('config'),preset=read('featured-catalog');
 const ctx=E.buildContext(read('platforms'),read('plans'),read('models'));ctx.modelGroups=preset.groups;

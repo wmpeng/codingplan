@@ -4,19 +4,13 @@
   root.PricingDirectory = api;
 })(globalThis, function () {
   'use strict';
+  const UI = globalThis.CodingPlanUI || require('./ui-core.js');
   const pinKey = 'codingplanPinnedPriceRows';
   function cycleSort(sort, key) {
     if (sort.key !== key) return {key, direction:'asc'};
     return sort.direction === 'asc' ? {key, direction:'desc'} : {key:'unitPriceCnyPerM', direction:'asc'};
   }
-  function sanitizePins(ids, points) {
-    const valid = new Set(points.map(point => point.slug));
-    return [...new Set((Array.isArray(ids) ? ids : []).filter(id => typeof id === 'string' && valid.has(id)))];
-  }
-  function readPins(storage, points) {
-    try { return sanitizePins(JSON.parse(storage.getItem(pinKey)), points); } catch (_) { return []; }
-  }
-  function writePins(storage, pins) { try { storage.setItem(pinKey, JSON.stringify(pins)); } catch (_) {} }
+  const {sanitizePins, readPins, writePins} = UI.pinStore(pinKey);
   function search(points, query) {
     const text = String(query || '').trim().toLocaleLowerCase('zh-CN');
     return text ? points.filter(point => `${point.platformName} ${point.planName} ${point.modelName} ${point.relationLabel}`.toLocaleLowerCase('zh-CN').includes(text)) : points;

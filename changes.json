@@ -19,6 +19,7 @@
       ],
       "audience": "2026-07-01 前已开启自动续费且持续保留资格的用户",
       "summary": "符合条件的老用户保价至 2026-12-31，2027-01-01 起续费 ¥70/月；取消后再购按现价。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan",
@@ -52,6 +53,7 @@
       ],
       "audience": "仍在自动续费的老 Token Plan 用户",
       "summary": "MiniMax订阅中的M2.5/M2.7旧名称请求由正式M3.1 Flash承接；原型号的Token实测不代表新型号额度。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan",
@@ -102,6 +104,7 @@
         }
       ],
       "summary": "GPT-5.5 已于10月14日从ChatGPT登录的Codex移除；API Key登录及API不受影响。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan",
@@ -155,6 +158,7 @@
         }
       ],
       "summary": "2026-10-06 至 10-20 的 Mistral Large 4 额度加成结束后，10-21 起 Go / GOAT / Pro 月额度分别恢复 $6 / $20 / $30；这些额度属于共享套餐池，不能相加。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan",
@@ -203,6 +207,7 @@
         }
       ],
       "summary": "当前Hy4 preview五折活动持续至2026年10月30日12:00（北京时间），输入/缓存/输出为60/3/180积分每百万Token；以新的截止事项为准。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -291,6 +296,7 @@
         }
       ],
       "summary": "腾讯公告MiniMax M2.7将于11月17日下线，目前仍可使用，具体停止时刻未公布。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -345,6 +351,7 @@
         }
       ],
       "summary": "京东旧Coding Plan已于7月29日停止新购、续费和升级；存量订阅仅在原有效期内可用。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan",
@@ -385,6 +392,7 @@
       ],
       "audience": "通用Token Plan的GLM-5.3/Flash、Kimi K3/K2.7 Code，以及Hy Token Plan的固定hy3-202608；不包含hy3/hy3-preview。",
       "summary": "通用Token Plan的GLM-5.3/Flash、Kimi K3/K2.7 Code及Hy Token Plan的hy3-202608优惠延长至2026年11月2日00:00（北京时间）；不改变订阅售价。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -555,6 +563,7 @@
         }
       ],
       "summary": "百度积分制的三型号夜间两折计划于11月30日23:59结束；仅积分制适用，完整常规系数仍未公开，官网未明确时区。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -667,6 +676,7 @@
       ],
       "audience": "使用共绩DeepSeek V4 Flash/Pro预览模型ID的用户。",
       "summary": "共绩公告将于10月20日12:00下架DeepSeek V4预览资源，旧模型ID将转向正式服务；时区及具体正式版本未明确。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -715,6 +725,7 @@
       ],
       "audience": "Qoder国际版有效个人Pro/Pro+/Ultra订阅中手动选择Ultimate档位的用户；Service Account时段不同。",
       "summary": "Ultimate低峰0.4×优惠已于10月31日08:00（香港时间）结束，恢复常规2×；套餐月费不变。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan",
@@ -762,6 +773,7 @@
         }
       ],
       "summary": "MiMo V2.5-Pro及V2.5已于10月14日18:00（UTC+8）转发至V2.6系列；旧名称将于10月21日失效。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan",
@@ -814,6 +826,7 @@
         }
       ],
       "summary": "MiMo V2.5-Pro及V2.5旧模型名称已于2026年10月21日10:00（UTC+8）失效，请切换至V2.6系列。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan",
@@ -869,6 +882,7 @@
         }
       ],
       "summary": "10月13日10:00（UTC+8）起，方舟Coding/Agent Plan未使用过K2.7 Code的订户不再开放该型号；老使用者暂可继续使用。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -943,6 +957,7 @@
         }
       ],
       "summary": "原公告计划于2026年10月28日14:00（UTC+8）停止K2.7 Code服务；日期已过，但Coding/Agent概览及AFP表仍列即将下线，实际停服情况待确认。未使用过该型号的用户已停止开放。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -1025,6 +1040,7 @@
       "audience": "已使用过MiniMax M3的Coding Plan存量用户；未使用过该模型的用户已自10月19日10:00（UTC+8）起停止开放。",
       "announcedOn": "2026-10-19",
       "summary": "Coding Plan已明确MiniMax M3将于2026年11月2日14:00（UTC+8）停服；此前用过该模型的存量用户须迁移，未使用过该模型的用户已停止开放。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -1075,6 +1091,7 @@
         }
       ],
       "summary": "方舟该型号抵扣优惠计划于2026-10-25 23:59:59（UTC+8）结束；Coding与Agent Plan各自系数不互套。 公告截止日期已过，恢复常规规则的情况待确认。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -1145,6 +1162,7 @@
         }
       ],
       "summary": "方舟该型号抵扣优惠计划于2026-12-14 23:59:59（UTC+8）结束；Coding与Agent Plan各自系数不互套。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -1216,6 +1234,7 @@
         }
       ],
       "summary": "方舟该型号抵扣优惠计划于2026-12-30 23:59:59（UTC+8）结束；Coding与Agent Plan各自系数不互套。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -1287,6 +1306,7 @@
         }
       ],
       "summary": "方舟Coding Lite/Pro与Agent Small/Medium的首两月9.9/49.9元普惠活动截至11月8日；限量和各产品资格要求适用，不改变已支付订单权益。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan",
@@ -1340,6 +1360,7 @@
         }
       ],
       "summary": "DeepSeek Server端Search/Fetch调用目前免费，11月1日00:00（北京时间）起每千次成功请求5元；独立Search/Fetch API当前已收费。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "platform",
@@ -1372,6 +1393,7 @@
         }
       ],
       "summary": "方舟Coding Lite/Pro首次受邀订单9.5折的活动期截至11月19日；资格限制及其他优惠的独立规则继续适用。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan",
@@ -1411,6 +1433,7 @@
         }
       ],
       "summary": "方舟Agent Small/Medium首次受邀订单9.5折的活动期截至12月31日；创建过邀请码者不能再受邀，首单及叠加规则以结算为准。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan",
@@ -1450,6 +1473,7 @@
         }
       ],
       "summary": "方舟Agent Plan连续季97折、年95折的首周期开通活动截至2028年5月19日23:59；后续续费按扣款日有效价，页面未注明时区。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan",
@@ -1501,6 +1525,7 @@
       ],
       "audience": "新购M Plan Go、Explore、Build或使用MiniMax Code Free的用户",
       "summary": "M Plan Go、Explore、Build及MiniMax Code Free现使用正式M3.1 Flash，旧Preview名称请求由正式模型承接；具体Token配额未公布。",
+      "archiveOn": "2027-01-20",
       "targets": [
         {
           "type": "plan",
@@ -1553,6 +1578,7 @@
       ],
       "audience": "所有订阅用户；仅限MiniMax Code内的M3.1 Flash，不包含Code Free，未承诺外部工具API不限量",
       "summary": "MiniMax Code订阅用户的M3.1 Flash不限量活动截至2026-10-25；外部工具API未获不限量承诺。 公告截止日期已过，恢复常规规则的情况待确认。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan",
@@ -1605,6 +1631,7 @@
       ],
       "audience": "在MiniMax Code内新订阅或升级M Plan的用户",
       "summary": "MiniMax Code内新订阅或升级M Plan的首月五折活动截至2026-10-31，三档首月¥24.5 / ¥59.5 / ¥234.5，次月起¥49 / ¥119 / ¥469每月。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan",
@@ -1650,6 +1677,7 @@
         }
       ],
       "summary": "DeepSeek V4.1 Flash Economy五折活动截至2026-12-30 23:59:59（UTC+8）；输入、缓存、输出常规每万Token均抵扣2 AFP，活动期1 AFP。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "platform",
@@ -1701,6 +1729,7 @@
         }
       ],
       "summary": "上述型号自2026-10-19起已退役，请改用当前套餐提供的其他模型。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "platform",
@@ -1733,6 +1762,7 @@
         }
       ],
       "summary": "个人月付续费、升级或到期后重购，每人每自然月限一次；加赠仅用于Qwen系列，30个自然日有效；不含首次订阅、年付、团队和会员卡。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "platform",
@@ -1766,6 +1796,7 @@
       ],
       "audience": "希望自行部署 Kimi K3.1 Pro 的用户；在线服务已上线，完整权重及许可安排须以正式发布为准。",
       "summary": "Kimi K3.1 Pro 在线服务已上线；官方计划于 2026 年 11 月 4 日前发布完整模型权重，当前不表示已可下载部署。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "model",
@@ -1798,6 +1829,7 @@
         }
       ],
       "summary": "通用Token Plan与Hy Token Plan的Hy4 preview五折延长至2026年11月2日00:00（北京时间），不与其他优惠叠加；活动结束后恢复常规积分抵扣。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -1886,6 +1918,7 @@
         }
       ],
       "summary": "Agent Plan已使用过M3的存量用户须在2026年11月2日14:00（UTC+8）前迁移；新用户自10月19日10:00起已不可用。Coding Plan已有独立公告明确相同停服时间，两产品权限分别适用。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -1946,6 +1979,7 @@
         }
       ],
       "summary": "Agent Plan未使用过MiniMax M3的新用户自2026年10月19日10:00（UTC+8）起不可调用；存量服务将于11月2日14:00下线。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -2003,6 +2037,7 @@
         }
       ],
       "summary": "Qwen3.7-Plus夜间优惠已于2026年10月22日22:00（UTC+8）结束，当前全天按常规参考系数0.1×。Qwen3.8-Max与Ultimate活动按各自规则执行。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -2052,6 +2087,7 @@
       ],
       "audience": "方舟Coding Plan Lite / Pro，以及Agent Plan Small / Medium / Large / Max个人版用户。",
       "summary": "方舟Coding / Agent Plan个人版的Kimi K3.1 Pro限时五折截至2026-11-09 23:59:59（UTC+8）；只影响本模型消耗，非订阅售价优惠。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -2122,6 +2158,7 @@
       ],
       "announcedOn": "2026-10-26",
       "summary": "DeepSeek V4.1 Flash-1017免Credits活动已于11月1日00:00（UTC+8）结束，当前参考倍率0.1×。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -2181,6 +2218,7 @@
       ],
       "announcedOn": "2026-10-19",
       "summary": "Coding Plan未使用过MiniMax M3的用户已自2026年10月19日10:00（UTC+8）起不可调用；存量服务计划于11月2日14:00停止。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -2224,6 +2262,7 @@
       ],
       "audience": "拥有 Kimi Code K2.8 Preview 使用权限的订阅用户；仅涉及该模型，不包含 K2.7 Code HighSpeed。",
       "summary": "K2.8 Preview 当前额度消耗五折，截止日期未公布；新套餐参考用量与综合单价已包含优惠。活动结束后按届时常规规则消耗，其他模型规则不变。",
+      "archiveOn": "2027-01-31",
       "targets": [
         {
           "type": "plan_model",
@@ -2313,6 +2352,7 @@
       ],
       "audience": "Max（原 Max 5x）与 Ultra（原 Max 20x）个人订阅用户；取消五小时限制仅适用于已验证 Ultra 账号。",
       "summary": "Max 5x 与 Max 20x 分别改名为 Max 与 Ultra，价格不变。已验证 Ultra 账号取消独立五小时限制，仍受共享周额度与 Fable 专属周限制约束；未验证账号仍有临时限制。",
+      "archiveOn": "2027-02-01",
       "targets": [
         {
           "type": "plan",
@@ -2356,6 +2396,7 @@
       ],
       "audience": "腾讯通用Token Plan个人四档的DeepSeek标准路由；原厂直供不适用此优惠。",
       "summary": "标准路由DeepSeek Flash 1017四折、Pro 0813七折至11月16日12:00（北京时间），不适用于原厂直供，不改变套餐额度。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -2496,6 +2537,7 @@
       ],
       "audience": "OpenCode Go 与 Go Plus 的 Gemini 4 Argon 调用",
       "summary": "OpenCode Go 与 Go Plus 的 Gemini 4 Argon 五折优惠截至2026年11月30日；具体时刻及所用时区未公布。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -2538,6 +2580,7 @@
       ],
       "audience": "Command Code Go、GOAT、Pro及两档Max；启动会话需账户至少$1 Credits。",
       "summary": "Ling 3.1 Flash 1019 每日100次免费至2026年11月3日16:00 UTC，启动会话需账户至少$1 Credits。",
+      "archiveOn": null,
       "targets": [
         {
           "type": "plan_model",
@@ -2583,5 +2626,5 @@
       "relatedChanges": []
     }
   ],
-  "contentVersion": "2026-11-01T08:49:44.731Z"
+  "contentVersion": "2026-11-01T16:43:15.752Z"
 }

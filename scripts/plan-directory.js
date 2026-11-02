@@ -14,14 +14,7 @@
     ['requestQuota.fiveHours', '5 小时请求'], ['requestQuota.weekly', '每周请求'], ['requestQuota.monthly', '每月请求'],
     ['benefits', '其他权益'], ['note', '备注']
   ];
-  function sanitizePins(ids, plans) {
-    const valid = new Set(plans.map(plan => plan.slug));
-    return [...new Set((Array.isArray(ids) ? ids : []).filter(id => typeof id === 'string' && valid.has(id)))];
-  }
-  function readPins(storage, plans) {
-    try { return sanitizePins(JSON.parse(storage.getItem(pinKey)), plans); } catch (_) { return []; }
-  }
-  function writePins(storage, ids) { try { storage.setItem(pinKey, JSON.stringify(ids)); } catch (_) {} }
+  const {sanitizePins, readPins, writePins} = UI.pinStore(pinKey);
   function purchaseStatus(plan, platform) {
     const planStatus = plan.planStatus || 'open', platformStatus = platform?.platformStatus || 'open';
     return (Filters.STATUS_RANK[platformStatus] || 0) > (Filters.STATUS_RANK[planStatus] || 0) ? platformStatus : planStatus;
@@ -35,9 +28,7 @@
   }
   function select(plans, state, options = {}) {
     const {context, config = {}, query = '', sort = {key:'platformOrder', direction:'asc'}} = options;
-    const featuredState = Filters.createViewPolicy({mode:'full',view:'plans'}).createDefaults(config,state.tokenUnit);
-    featuredState.platformSlugs = (context.featuredPlatformSlugs || []).filter(slug => context.platforms.some(p => p.slug === slug));
-    featuredState.modelSlugs = UI.modelPresetSlugs(context.modelGroups, 'featured', context.models || []);
+    const featuredState = Filters.createFeaturedState(context,config,'plans',state.tokenUnit);
     const filterOptions = {context, usdToCnyRate:config.usdToCnyRate, platformCatalog:config.platformCatalog};
     const featuredModels = new Set(featuredState.modelSlugs);
     const featured = new Set(featuredState.platformSlugs.length && featuredState.modelSlugs.length

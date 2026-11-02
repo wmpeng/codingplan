@@ -133,7 +133,6 @@
 .usage-platform-link:hover { color: #0958d9; text-decoration: underline; }
 .usage-platform-link:hover span { transform: translate(1px, -1px); }
 .usage-platform-link:focus-visible { border-radius: 4px; outline: 2px solid rgba(22,119,255,.35); outline-offset: 2px; }
-.usage-data-table tbody tr:nth-child(even) td.sticky-first { background: #f9fafc; }
 .usage-data-table tbody tr:hover td.sticky-first { background: #eef6ff; }
 .usage-data-table .numeric { font-variant-numeric: tabular-nums; }
 .usage-table-model { color: #253247; font-weight: 650; }
