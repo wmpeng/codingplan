@@ -85,7 +85,7 @@
     retry.addEventListener('click', () => location.reload());
     box.append(text, retry);
     host.setAttribute('aria-busy', 'false');
-    if (options.preserveContent) host.prepend(box); else host.replaceChildren(box);
+    if (options.preserveContent) { root.StaticContent?.fail(host); host.prepend(box); } else host.replaceChildren(box);
   }
   root.CodingPlanToolPage = { load, loadPreset, filters, mountSearch, mountDirectoryFilters, error };
 })(globalThis);

@@ -19,9 +19,11 @@
       C.mountTables(document.getElementById('featuredComparisons'),preset,context,config,{hideHeading:true});
       OfferResults.mount(document.getElementById('purchaseGuideResults'),context,config);
       CodingPlanFilterUI.mount({context,config,featuredPreset:preset});
+      window.StaticContent?.ready();
       document.getElementById('homeLoading')?.remove();
       window.dispatchEvent(new Event('codingplan:home-ready'));
     } catch(e) {
+      window.StaticContent?.fail();
       const host=document.getElementById('purchaseGuideResults');CodingPlanToolPage.error(host,e.message);
       document.getElementById('homeLoading').textContent='动态内容暂时无法加载，精选摘要仍可浏览。请刷新重试。';
     }

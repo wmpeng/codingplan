@@ -112,6 +112,7 @@
     });
     globalThis.addEventListener('codingplan:token-unit-changed', event => { unit=event.detail.tokenUnit; render(); });
     render();
+    globalThis.StaticContent?.ready(host);
     globalThis.addEventListener('codingplan:price-basis-changed', () => { data=points(context,config); render(); });
   }
   return {esc,url,validate,score,modalities,modelPlatformCount,modelCard,modelGroups,points,presetTableOptions,mountTables};

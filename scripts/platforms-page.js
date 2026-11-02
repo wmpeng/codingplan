@@ -5,6 +5,10 @@
     if (!host || !root.EntityData || !root.PlatformCatalog) return;
     const modelRows = root.CodingPlanUI.observeModelTagRows(host);
     host.addEventListener('click', event => root.PlatformCatalog.togglePlatformModels(event));
+    // 模型标签只操作现有 DOM；数据失败时也保留原有展开能力。
+    host.querySelectorAll('[data-platform-toggle-models][data-static-disabled]').forEach(button => {
+      button.disabled = false; button.removeAttribute('data-static-disabled');
+    });
     host.setAttribute('aria-busy', 'true');
     root.CodingPlanToolPage.load().then(({ context, config: appConfig }) => {
       const platforms = root.EntityData.listPlatforms(context);
@@ -41,6 +45,7 @@
           });
         };
         grid.innerHTML = selection.visible.map(cardHtml).join('');
+        root.StaticContent?.ready(host);
         modelRows.refresh();
         search.disabled = featuredOnly;
         search.closest('.tool-result-bar').classList.toggle('is-search-paused', featuredOnly);

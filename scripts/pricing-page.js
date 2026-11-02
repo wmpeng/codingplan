@@ -24,9 +24,7 @@
       const filterController = document.getElementById('toolFilters').filterController;
       function getFilterView() {
         const state = filterController.getState();
-        const featured = root.CodingPlanFilters.createViewPolicy({mode:'full', view:'pricing'}).createDefaults(data.config, state.tokenUnit);
-        featured.platformSlugs = (data.context.featuredPlatformSlugs || []).filter(slug => data.context.platformBySlug.has(slug));
-        featured.modelSlugs = root.CodingPlanUI.modelPresetSlugs(data.context.modelGroups, 'featured', data.context.models);
+        const featured = root.CodingPlanFilters.createFeaturedState(data.context,data.config,'pricing',state.tokenUnit);
         featured.mainlandRequired = state.mainlandRequired;
         const featuredOnly = filterController.isFeaturedOnly();
         return {state:featuredOnly ? featured : state, featuredOnly, featuredState:featured};
@@ -34,6 +32,7 @@
       const filterState = filterController.getState();
       await root.ModelComparison.mountModelComparisonView(host, { mode: 'full', hidePresets: true, data, preset, filterState, focusRelationSlugs,
         directory:root.PricingDirectory, getFilterView, colorControlHost:document.querySelector('#toolFilters .filter-state-grid'), benchmarkControlHost:document.querySelector('#toolFilters .filter-state-grid'), billingControlHost:document.querySelector('#toolFilters .filter-state-grid'), scaleControlHost:document.querySelector('#toolFilters .filter-state-grid'), search, count, columns:columns.querySelector('input') });
+      root.StaticContent?.ready(host);
       root.CodingPlanToolPage.mountDirectoryFilters('pricing', search, count);
       const legend = host.querySelector('.usage-color-legend');
       const legendGroup = document.createElement('div'); legendGroup.className = 'tool-legend';
@@ -56,7 +55,10 @@
       openMethod();
       const rows = [...host.querySelectorAll('.price-focus-row')];
       if (rows[0]) { rows[0].tabIndex = -1; rows[0].focus({preventScroll:true}); rows[0].scrollIntoView({block:'center'}); }
-    } catch (error) { root.CodingPlanToolPage.error(host, error.message); }
+    } catch (error) {
+      root.StaticContent?.fail();
+      root.CodingPlanToolPage.error(host, error.message, {preserveContent:true});
+    }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })(globalThis);

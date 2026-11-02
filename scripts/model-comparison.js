@@ -726,6 +726,10 @@
         return root.__usageEchartsPromise;
     }
 
+    function comparisonTableHtml(compact, body = '') {
+        return `<section class="usage-table-section" aria-label="价格与额度数据明细"><div class="usage-table-scroll"><table class="usage-data-table" id="pricingComparisonTable" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison', compact)}</thead><tbody data-table-body="comparison">${body}</tbody></table></div></section>`;
+    }
+
     function renderShell(container, compact) {
         container.innerHTML = `
             <section class="usage-view" aria-labelledby="usageViewTitle">
@@ -764,7 +768,7 @@
                 </article>
                 <article class="usage-chart-card usage-data-card">
                     <div class="usage-chart-head">${compact ? '' : '<div class="usage-detail-summary"><span class="usage-table-count" data-table-count="comparison"></span></div>'}</div>
-                    <section class="usage-table-section" aria-label="价格与额度数据明细"><div class="usage-table-scroll"><table class="usage-data-table" id="pricingComparisonTable" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison', compact)}</thead><tbody data-table-body="comparison"></tbody></table></div></section>
+                    ${comparisonTableHtml(compact)}
                 </article>
             </section>`;
     }
@@ -831,15 +835,18 @@
         }
         if (container.__usageMountPromise) return container.__usageMountPromise;
         const mountOptions = options || {};
+        const snapshotKind = container.getAttribute('data-static-content');
+        const snapshotHtml = snapshotKind ? container.innerHTML : null;
         container.__usageMountPromise = (async () => {
             const Directory = mountOptions.directory;
-            renderShell(container, Boolean(Directory));
             container.classList.toggle('pricing-directory', Boolean(Directory));
             const [echarts, data, presetConfig] = await Promise.all([
                 loadEcharts(),
                 mountOptions.data || root.CodingPlanToolPage.load(),
                 mountOptions.preset || loadPresetConfig()
             ]);
+            root.StaticContent?.ready(container);
+            renderShell(container, Boolean(Directory));
             const context = data.context;
             context.modelGroups = presetConfig.groups || [];
             const rate = root.appConfig && root.appConfig.usdToCnyRate || 6.8;
@@ -1651,12 +1658,15 @@
             render();
             container.__usageMounted = true;
         })().catch((error) => {
-            container.innerHTML = `<div class="usage-load-error">价格与额度加载失败，请稍后刷新重试。<br><small>${escapeHtml(error.message)}</small></div>`;
+            if (snapshotHtml !== null) {
+                container.innerHTML = snapshotHtml;
+                container.setAttribute('data-static-content', snapshotKind);
+            } else container.innerHTML = `<div class="usage-load-error">价格与额度加载失败，请稍后刷新重试。<br><small>${escapeHtml(error.message)}</small></div>`;
             container.__usageMountPromise = null;
             throw error;
         });
         return container.__usageMountPromise;
     }
 
-    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SLUGS, DEFAULT_MODEL_SLUGS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceVisualScale, getUnitPriceVisualPercent, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySelectedColorKeys, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, formatApiPricing, platformCellHtml, unitPriceVisualHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
+    return { ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SLUGS, DEFAULT_MODEL_SLUGS, COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState, getMonthlyPriceBounds, priceToPercent, percentToPrice, filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceVisualScale, getUnitPriceVisualPercent, getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap, getPointColorKey, filterBySelectedColorKeys, getSoloPointLabelField, getPointLabelText, sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, formatApiPricing, platformCellHtml, unitPriceVisualHtml, comparisonTableHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView };
 });

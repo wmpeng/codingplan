@@ -35,9 +35,7 @@
   }
   function select(plans, state, options = {}) {
     const {context, config = {}, query = '', sort = {key:'platformOrder', direction:'asc'}} = options;
-    const featuredState = Filters.createViewPolicy({mode:'full',view:'plans'}).createDefaults(config,state.tokenUnit);
-    featuredState.platformSlugs = (context.featuredPlatformSlugs || []).filter(slug => context.platforms.some(p => p.slug === slug));
-    featuredState.modelSlugs = UI.modelPresetSlugs(context.modelGroups, 'featured', context.models || []);
+    const featuredState = Filters.createFeaturedState(context,config,'plans',state.tokenUnit);
     const filterOptions = {context, usdToCnyRate:config.usdToCnyRate, platformCatalog:config.platformCatalog};
     const featuredModels = new Set(featuredState.modelSlugs);
     const featured = new Set(featuredState.platformSlugs.length && featuredState.modelSlugs.length

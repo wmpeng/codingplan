@@ -1,21 +1,7 @@
 (function (root) {
   'use strict';
   const Filters = root.CodingPlanFilters, Directory = root.PlanDirectory;
-  const UI = root.CodingPlanUI, esc = UI.escapeHtml, Numbers = root.NumberDisplay;
-  const money = (plan, field) => {
-    const value = Directory.priceValue(plan, field);
-    return Numbers.monthlyFee(value, plan.currency || '¥', '未知');
-  };
-  const requests = (plan, field) => {
-    const value = plan.requestQuota?.[field];
-    if (value === 'unlimited') return '无限制';
-    if (Numbers.finite(value) === null) return '未知';
-    return (field === 'monthly' ? Numbers.tokens : Numbers.count)(value);
-  };
-  function chips(values) {
-    const items = values || [], tag = value => `<span class="tool-tag">${esc(value)}</span>`;
-    return items.slice(0, 4).map(tag).join('') + (items.length > 4 ? `<details class="plan-cell-more"><summary>另 ${items.length - 4} 项</summary>${items.slice(4).map(tag).join('')}</details>` : '');
-  }
+  const UI = root.CodingPlanUI;
   function boot() {
     const host = document.getElementById('plansPage');
     if (!host || !Filters || !Directory || !root.EntityData) return;
@@ -32,14 +18,14 @@
       const saved = Url.read(urlSchema);
       search.value = saved.query || ''; sort = {key:saved.key || 'platformOrder', direction:saved.direction || 'asc'};
       const tableBody = host.querySelector('[data-plan-body]'), count = host.querySelector('[data-plan-count]');
-      const expandedQuotas = new Set(), expandedNotes = new Set(), expandedPlanNotes = new Set();
+      const expandedQuotas = new Set(), expandedNotes = new Set();
+      const expandedPlanNotes = new Set([...host.querySelectorAll('[data-plan-note][open]')].map(note => note.dataset.planNote));
       const quotaSorts = new Map();
       const tableWrap = tableBody.closest('.tool-table-wrap');
       const resizeQuota = () => host.style.setProperty('--plan-quota-width', `${tableWrap.clientWidth}px`);
       new ResizeObserver(resizeQuota).observe(tableWrap);
       resizeQuota();
       let selection;
-      const quotaId = plan => `plan-quota-${encodeURIComponent(plan.slug)}`;
       const quotaContent = plan => root.PlanQuota.render(plan, context, selection.effectiveState, {notesOpen:expandedNotes.has(plan.slug), sort:quotaSorts.get(plan.slug)});
       function syncSort() {
         host.querySelectorAll('.tool-table > thead > tr > th').forEach(th => {
@@ -55,29 +41,8 @@
         search.closest('.tool-result-bar').classList.toggle('is-search-paused', featuredOnly);
         count.textContent = Directory.countLabel(selection); syncSort();
         root.CodingPlanEvents?.results({result_count:selection.visible.length,result_key:JSON.stringify([state,selection.visible.map(x=>x.slug)])});
-        tableBody.innerHTML = selection.visible.length ? selection.visible.map(plan => {
-          const status = plan.planStatus || 'open';
-          const url = UI.sanitizeUrl(plan.action, '');
-          const models = UI.prioritizeFeaturedModels(plan.supportedModels || [], context.modelGroups);
-          const label = `${plan.platformName} ${plan.name}`;
-          const scope = {type:'plan',platformSlug:plan.platformSlug,planSlug:plan.slug};
-          const notice = key => root.ChangeNotices.forField(context.changes,scope,key);
-          const modelNotice = notice('models');
-          const modelList = UI.modelTags(models.map(model => model.name), {maxRows:2,ariaLabel:label+' 支持模型'});
-          const title = status !== 'delisted' && url
-            ? `<a class="plan-title" data-plan-link="${status}" data-collect-outbound data-collect-platform="${esc(plan.platformSlug)}" data-collect-plan="${esc(plan.slug)}" href="${esc(url)}" target="_blank" rel="noopener noreferrer" aria-label="${status === 'open' ? '开通' : '去官网查看'} ${esc(label)}">${esc(label)} ${UI.externalLinkIcon}</a>`
-            : `<strong class="plan-title">${esc(label)}</strong>`;
-          return `<tr data-plan-row="${esc(plan.slug)}" class="${[selection.featured.has(plan.slug) ? 'is-featured' : '', selection.pinned.has(plan.slug) ? 'is-pinned' : ''].filter(Boolean).join(' ')}">
-            <td data-plan-col="identity"><div class="plan-identity">${UI.pinButton({pinned:selection.pinned.has(plan.slug), label:`${selection.pinned.has(plan.slug) ? '取消置顶' : '置顶'} ${label}`, attributes:{'data-plan-pin':plan.slug}})}<div class="plan-identity-copy"><div class="plan-identity-line">${title}${selection.featured.has(plan.slug) ? '<span class="platform-featured-badge" data-plan-featured-badge>精选</span>' : ''}${notice('general')}</div><div class="plan-meta">${status === 'open' ? '' : `<span class="tool-tag plan-status" data-plan-status="${status}">${esc(UI.statusLabels[status])}</span>`}${root.EntityData.harnessApiBadge(plan.supportsHarnessApi)}</div></div></div></td>
-            <td data-plan-col="rating"><span class="plan-rating" aria-label="${plan.rating > 0 ? esc(plan.rating)+' 星' : '待评定'}">${plan.rating > 0 ? '★ '+Number(plan.rating).toFixed(1) : '待评定'}</span></td>
-            ${['firstMonthPrice','monthlyPrice','quarterlyPrice','yearlyPrice'].map(key => `<td data-plan-col="${key}"${key === 'firstMonthPrice' ? '' : ' data-plan-extra'}>${esc(money(plan,key))}${key==='firstMonthPrice'?notice('price'):''}</td>`).join('')}
-            <td data-plan-col="models">${modelNotice ? `<div class="plan-models-with-notice">${modelList}${modelNotice}</div>` : modelList}</td>
-            <td data-plan-col="monthlyToken" class="monthly-token-cell"><button type="button" class="plan-quota-toggle" data-plan-quota="${esc(plan.slug)}" aria-expanded="${expandedQuotas.has(plan.slug)}" aria-controls="${quotaId(plan)}" aria-label="${esc(label)} 额度明细"><span>${esc(Filters.formatMonthlyTokens(plan,selection.effectiveState))}</span></button>${notice('quota')}</td>
-            ${['fiveHours','weekly','monthly'].map(key => `<td data-plan-col="requestQuota.${key}" data-plan-extra>${esc(requests(plan,key))}</td>`).join('')}
-            <td data-plan-col="benefits" data-plan-extra>${chips(plan.benefits)}</td><td class="plan-note" data-plan-col="note">${plan.note ? `<details class="usage-note-disclosure" data-plan-note="${esc(plan.slug)}"${expandedPlanNotes.has(plan.slug) ? ' open' : ''}><summary>用量口径与限制</summary><div>${esc(plan.note)}</div></details>` : '—'}</td>
-          </tr><tr class="plan-quota-row" data-plan-quota-row="${esc(plan.slug)}"${expandedQuotas.has(plan.slug) ? '' : ' hidden'}><td colspan="${host.classList.contains('show-all-columns') ? 13 : 6}"><section class="plan-quota-panel" id="${quotaId(plan)}" aria-label="${esc(label)} 额度明细">${expandedQuotas.has(plan.slug) ? quotaContent(plan) : ''}</section></td></tr>`;
-        }).join('') : `<tr><td colspan="13"><div class="tool-empty">${featuredOnly ? '暂无符合精选范围的套餐，可关闭“显示精选”查看其他套餐。' : '没有匹配套餐，试着清空搜索或减少筛选条件。'}</div></td></tr>`;
-        modelRows.refresh(); host.dataset.mounted = '1';
+        tableBody.innerHTML = selection.visible.length ? root.PlanTable.rowsHtml(selection, context, {expandedQuotas, expandedPlanNotes, quotaContent, showAllColumns:host.classList.contains('show-all-columns')}) : `<tr><td colspan="13"><div class="tool-empty">${featuredOnly ? '暂无符合精选范围的套餐，可关闭“显示精选”查看其他套餐。' : '没有匹配套餐，试着清空搜索或减少筛选条件。'}</div></td></tr>`;
+        root.StaticContent?.ready(host); modelRows.refresh(); host.dataset.mounted = '1';
       }
       search.disabled = false; search.addEventListener('input', apply);
       host.addEventListener('click', event => {
@@ -141,7 +106,7 @@
       root.CodingPlanToolPage.mountSearch(search, count);
       syncSort();
       root.CodingPlanToolPage.mountDirectoryFilters('plans', search, count);
-    }).catch(error => root.CodingPlanToolPage.error(host,error.message));
+    }).catch(error => root.CodingPlanToolPage.error(host,error.message, {preserveContent:true}));
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded',boot); else boot();
 })(globalThis);

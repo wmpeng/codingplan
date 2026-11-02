@@ -54,6 +54,7 @@
           stickyHeader.refresh();
         }
         document.getElementById('modelCount').textContent = Directory.countLabel(selection);
+        root.StaticContent?.ready();
         host.dataset.mounted = '1';
         root.CodingPlanEvents?.results({result_count:selection.visible.length,result_key:JSON.stringify(selection.visible.map(x=>x.slug))});
       }
@@ -96,7 +97,7 @@
           {element:document.getElementById('modelSortPicker'), label:'排序', picker:true, display:true, read:()=>[sort.value!=='default',sort.selectedOptions[0]?.textContent || '']}
         ]
       });
-    } catch (error) { root.CodingPlanToolPage.error(host, error.message, {preserveContent:true}); }
+    } catch (error) { root.CodingPlanToolPage.error(host, error.message, {preserveContent:true}); root.StaticContent?.fail(); }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })(globalThis);
