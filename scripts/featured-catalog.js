@@ -63,6 +63,7 @@
     return {limit:6, modelFilter:true, ...options};
   }
   function mountTables(host, preset, context, config, options = {}) {
+    const Comparison = globalThis.ModelComparisonCore || require('./model-comparison-core.js');
     let unit = globalThis.CodingPlanDisplaySettings?.getTokenUnit() || 'yi';
     let data = points(context,config);
     const expanded = new Set(), selectedModels = Object.create(null);
@@ -71,7 +72,7 @@
       const focused = document.activeElement;
       const selectedButton = focused?.closest?.('[data-preset-model]');
       const focus = selectedButton && host.contains(selectedButton) ? {group:selectedButton.closest('[data-preset-id]').dataset.presetId,model:selectedButton.dataset.presetModel} : null;
-      globalThis.ModelComparison.renderPresetComparisons(host,preset,data,unit,'featured',tableOptions);
+      Comparison.renderPresetComparisons(host,preset,data,unit,'featured',tableOptions);
       host.insertAdjacentHTML('beforeend', `<p class="comparison-method">订阅单价按参考月额度用满计算；各模型额度不相加。${Help.html(host.id + '-priceHelp','综合单价说明','订阅综合单价＝首月或每月价格 ÷ 参考月额度，假设额度用满。右上角可切换首月或每月价格，首月价格未知时使用每月价格。按量 API 按实际用量计费；实际成本还受输入、输出及缓存比例影响。未知额度不等于零。')}</p>`);
       for (const id of expanded) { const card = [...host.querySelectorAll('[data-preset-id]')].find(x=>x.dataset.presetId===id); if(card) toggle(card,true); }
       if(focus) focusModelButton(focus.group,focus.model);
@@ -102,7 +103,7 @@
         const restoreFocus=document.activeElement===b,top=card.getBoundingClientRect().top;
         const selection=!model ? [] : previous.includes(model) ? previous.filter(slug=>slug!==model) : [...previous,model];
         selection.length ? selectedModels[id]=selection : delete selectedModels[id];
-        card.outerHTML=globalThis.ModelComparison.presetComparisonTableHtml(group,data,unit,'featured',{...tableOptions,selectedModelSlugs:selectedModels[id],platformSlugs:preset.platformSlugs});
+        card.outerHTML=Comparison.presetComparisonTableHtml(group,data,unit,'featured',{...tableOptions,selectedModelSlugs:selectedModels[id],platformSlugs:preset.platformSlugs});
         const next=findCard(id);
         if(expanded.has(id))toggle(next,true);
         const shift=next.getBoundingClientRect().top-top;

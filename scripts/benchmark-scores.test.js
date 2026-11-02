@@ -1,5 +1,5 @@
 const test=require('node:test');const assert=require('node:assert/strict');
-const Scores=require('./benchmark-scores.js');const Catalog=require('./featured-catalog.js');const Directory=require('./model-directory.js');const Comparison=require('./model-comparison.js');
+const Scores=require('./benchmark-scores.js');const Catalog=require('./featured-catalog.js');const Directory=require('./model-directory.js');const Comparison=require('./model-comparison-core.js');
 test('four metrics retain zero, missing, signed percentages and source precision',()=>{
  assert.deepEqual(Scores.keys,['artificialAnalysis','deepSWE','liveBench','arena']);
  assert.equal(Scores.format(null,'arena'),'—');assert.equal(Scores.format({scoreExact:0},'arena'),'0.00%');

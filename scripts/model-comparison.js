@@ -3,7 +3,6 @@
     const api = factory(root);
     if (typeof module === 'object' && module.exports) module.exports = api;
     root.ModelComparison = api;
-    root.mountModelComparisonView = api.mountModelComparisonView;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
     'use strict';
     const Core = root.ModelComparisonCore || require('./model-comparison-core.js');
@@ -12,19 +11,13 @@
     const Scores = root.BenchmarkScores || require('./benchmark-scores.js');
     const PriceChart = root.ModelPriceChart || require('./model-price-chart.js');
     const {
-        BENCHMARKS, ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SLUGS, DEFAULT_MODEL_SLUGS,
-        COMPARISON_TABLE_COLUMNS, PRESET_TABLE_COLUMNS, escapeHtml, getPointScore, getPointPlatformKey,
-        createDefaultFilterState, filterPoints,
-        buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceVisualScale,
-        getUnitPriceVisualPercent, getAttractiveUnitPriceThreshold, getChartAxisBounds,
-        clipRectangleAboveUnitPriceLine, getUnitPriceBoundaryPoints, buildUsageAttractiveZone,
-        buildUsageAttractiveZoneSeries, buildVendorColorMap, buildModelColorMap, getPointColorKey,
-        filterBySelectedColorKeys, getSoloPointLabelField, getPointLabelText, platformCellHtml, formatNumber,
-        normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice,
-        formatApiPricing, sortComparisonRows, comparisonTableColumns, comparisonTableHeadHtml,
-        unitPriceVisualHtml, comparisonTableRowHtml, normalizePresetConfig, normalizePresetPlatformScope,
-        buildPresetComparisonRows, getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons,
-        tooltipHtml
+        BENCHMARKS, COMPARISON_TABLE_COLUMNS, escapeHtml, getPointPlatformKey, createDefaultFilterState,
+        filterPoints, buildUsageChartPoints, buildIntelligenceChartPoints, buildUnitPriceVisualScale,
+        buildUsageAttractiveZone, buildUsageAttractiveZoneSeries, buildVendorColorMap,
+        buildModelColorMap, getPointColorKey, filterBySelectedColorKeys, getSoloPointLabelField,
+        getPointLabelText, formatNumber, normalizeTokenUnit, tokenAmountInUnit, sortComparisonRows,
+        comparisonTableColumns, unitPriceVisualHtml, comparisonTableRowHtml,
+        normalizePresetPlatformScope, renderPresetComparisons, tooltipHtml, comparisonTableHtml
     } = Core;
 
     async function loadPresetConfig() {
@@ -54,10 +47,6 @@
             document.head.appendChild(script);
         });
         return root.__usageEchartsPromise;
-    }
-
-    function comparisonTableHtml(compact, body = '') {
-        return `<section class="usage-table-section" aria-label="价格与额度数据明细"><div class="usage-table-scroll"><table class="usage-data-table" id="pricingComparisonTable" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison', compact)}</thead><tbody data-table-body="comparison">${body}</tbody></table></div></section>`;
     }
 
     function renderShell(container, compact, methodHost) {
@@ -783,17 +772,5 @@
         return container.__usageMountPromise;
     }
 
-    return {
-        ATTRACTIVE_UNIT_PRICE_CNY_PER_YI, DEFAULT_PLATFORM_SLUGS, DEFAULT_MODEL_SLUGS, COMPARISON_TABLE_COLUMNS,
-        PRESET_TABLE_COLUMNS, getPointScore, getPointPlatformKey, createDefaultFilterState,
-        filterPoints, buildUsageChartPoints,
-        buildIntelligenceChartPoints, buildUnitPriceVisualScale, getUnitPriceVisualPercent,
-        getAttractiveUnitPriceThreshold, getChartAxisBounds, clipRectangleAboveUnitPriceLine,
-        getUnitPriceBoundaryPoints, buildUsageAttractiveZone, buildVendorColorMap, buildModelColorMap,
-        getPointColorKey, filterBySelectedColorKeys, getSoloPointLabelField, getPointLabelText,
-        sortComparisonRows, normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows,
-        getPresetModelQualifier, presetComparisonTableHtml, renderPresetComparisons, normalizeTokenUnit,
-        tokenAmountInUnit, unitPriceInTokenUnit, formatTokenAmount, formatUnitPrice, formatApiPricing,
-        platformCellHtml, unitPriceVisualHtml, comparisonTableHtml, comparisonTableRowHtml, tooltipHtml, mountModelComparisonView
-    };
+    return { mountModelComparisonView };
 });

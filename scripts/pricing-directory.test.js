@@ -2,7 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const D = require('./pricing-directory.js');
 const E = require('./entity-data.js');
-const M = require('./model-comparison.js');
+const M = require('./model-comparison-core.js');
 
 test('首月综合单价按售价比例换算，原始精度、常规月费与额度不变', () => {
   const context={planBySlug:new Map([['p',{monthlyPrice:100,firstMonthPrice:25}]])};

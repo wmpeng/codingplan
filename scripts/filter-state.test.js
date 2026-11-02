@@ -32,7 +32,7 @@ test('大陆可用条件取网络支付与中国系列/Grok交集，不改勾选
   assert.equal(Filters.matchingOffers(c,{...state,modelMatch:'all',modelSlugs:['glm-5-3','grok-4-7']}).length,2);
   assert.equal(Filters.matchingOffers(c,{...state,mainlandRequired:false}).length,plans.length);
   assert.equal(JSON.stringify(state),before);
-  const D=require('./pricing-directory'), M=require('./model-comparison');
+  const D=require('./pricing-directory'), M=require('./model-comparison-core');
   const pinned=points.find(p=>p.slug==='yes--gpt-6-luna');
   const rows=D.tableRows(Filters.filterPoints(points,state,opts),points,[pinned.slug],M.sortComparisonRows,{key:'unitPriceCnyPerM',direction:'asc'});
   assert.equal(rows[0].slug,pinned.slug,'置顶明细继续突破大陆条件显示');

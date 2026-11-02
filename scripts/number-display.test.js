@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const N = require('./number-display.js');
-const M = require('./model-comparison.js');
+const M = require('./model-comparison-core.js');
 const F = require('./filter-state.js');
 
 test('额度、次数、金额、单价和套餐费用共用数值分段规则', () => {

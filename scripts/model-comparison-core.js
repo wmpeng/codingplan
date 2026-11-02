@@ -1,7 +1,6 @@
 (function (root, factory) {
     const api = factory(root);
     if (typeof module === 'object' && module.exports) module.exports = api;
-    root.ModelComparison = api;
     root.ModelComparisonCore = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
     'use strict';
@@ -449,12 +448,18 @@
         return COMPARISON_TABLE_COLUMNS.filter(column => (compact || !['tokenConsumptionRate','priceIndexCnyPerM'].includes(column.key)) && (!compact || column.key !== 'plan'));
     }
 
-    function comparisonTableHeadHtml(tableName, compact) {
+    function comparisonColumnAttributes(key, options = {}) {
+        const hidden = Scores.keys.includes(options?.benchmark) && Scores.keys.includes(key) && key !== options.benchmark;
+        return `data-comparison-col="${key}"${hidden ? ' hidden' : ''}`;
+    }
+
+    function comparisonTableHeadHtml(tableName, compact, options = {}) {
         return `<tr>${comparisonTableColumns(compact).map((column) => {
             const sortable = column.sortable !== false;
             const classes = column.key === 'vendor' ? 'sticky-first' : '';
+            const ariaSort = options?.sort?.key === column.key ? (options.sort.direction === 'desc' ? 'descending' : 'ascending') : 'none';
             const sorting = sortable
-                ? ` aria-sort="none" data-table-sort="${tableName}" data-sort-key="${column.key}"`
+                ? ` aria-sort="${ariaSort}" data-table-sort="${tableName}" data-sort-key="${column.key}"`
                 : '';
             const label = compact && column.key === 'vendor' ? '平台 / 套餐' : compact && column.key === 'price' ? '首月价格' : column.hint
                 ? `<span class="usage-table-heading"><span>${column.label}</span><small>${column.hint}</small></span>`
@@ -469,8 +474,12 @@
                     ? '按量 API 没有周期额度时显示“—”；订阅的未知额度不表示零。' : '';
             const help = helpText ? Help.html(`${tableName}-${column.key}-help`, `${column.label}说明`, helpText) : '';
             const heading = sortable ? `<button type="button" class="table-sort-button" aria-label="${column.label}排序">${label}</button>` : column.key === 'unitPriceVisual' ? '' : label;
-            return `<th scope="col" data-comparison-col="${column.key}"${classes ? ` class="${classes}"` : ''}${sorting}>${heading}${help}</th>`;
+            return `<th scope="col" ${comparisonColumnAttributes(column.key, options)}${classes ? ` class="${classes}"` : ''}${sorting}>${heading}${help}</th>`;
         }).join('')}</tr>`;
+    }
+
+    function comparisonTableHtml(compact, body = '', options = {}) {
+        return `<section class="usage-table-section" aria-label="价格与额度数据明细"><div class="usage-table-scroll"><table class="usage-data-table" id="pricingComparisonTable" data-table="comparison"><thead>${comparisonTableHeadHtml('comparison', compact, options)}</thead><tbody data-table-body="comparison">${body}</tbody></table></div></section>`;
     }
 
     function unitPriceVisualHtml(point, tokenUnit, visualOptions) {
@@ -534,7 +543,7 @@
             `<td class="numeric" data-comparison-col="weeklyTokenInM">${subscription ? formatTokenAmount(point.weeklyTokenInM, tokenUnit) : '—'}</td>` +
             `<td class="numeric">${subscription ? formatTokenAmount(point.monthlyTokenInM, tokenUnit) : '—'}${notice('quota')}</td>` +
             `<td class="usage-table-api-pricing" data-comparison-col="apiPricing">${subscription ? '—' : escapeHtml(formatApiPricing(point.apiPricing))}</td>` +
-            Scores.keys.map(key => `<td class="numeric" data-comparison-col="${key}" title="${escapeHtml(Scores.details(point.scores?.[key],key))}">${escapeHtml(Scores.format(point.scores?.[key],key))}${key === 'deepSWE' && deepSWEScore ? deepSWEInterval : ''}</td>`).join('') +
+            Scores.keys.map(key => `<td class="numeric" ${comparisonColumnAttributes(key, visualOptions)} title="${escapeHtml(Scores.details(point.scores?.[key],key))}">${escapeHtml(Scores.format(point.scores?.[key],key))}${key === 'deepSWE' && deepSWEScore ? deepSWEInterval : ''}</td>`).join('') +
             `<td class="usage-table-note">${point.note ? `<details class="usage-note-disclosure"><summary>用量口径与限制</summary><div>${escapeHtml(point.note)}</div></details>` : '—'}</td></tr>`;
     }
 
@@ -686,7 +695,7 @@
         getPointColorKey, filterBySelectedColorKeys, getSoloPointLabelField, getPointLabelText,
         platformCellHtml, formatNumber, normalizeTokenUnit, tokenAmountInUnit, unitPriceInTokenUnit,
         formatTokenAmount, formatUnitPrice, formatApiPricing, currencySymbol, formatSubscriptionMonthlyPrice,
-        comparisonSortValue, sortComparisonRows, comparisonTableColumns, comparisonTableHeadHtml,
+        comparisonSortValue, sortComparisonRows, comparisonTableColumns, comparisonTableHeadHtml, comparisonTableHtml,
         unitPriceVisualHtml, formatTokenConsumptionRate, priceIndexCnyPerM, comparisonTableRowHtml,
         normalizePresetConfig, normalizePresetPlatformScope, buildPresetComparisonRows, getPresetModelQualifier,
         presetComparisonTableHtml, renderPresetComparisons, scoreText, tooltipHtml
