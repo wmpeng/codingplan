@@ -385,8 +385,8 @@
 
 ## 延伸阅读
 
-- [2026年10月主流大模型能力对比：Kimi K3.1 Pro、DeepSeek V4.1 Flash、MiniMax M3.1 Flash、GPT-6 Astra 怎么选](articles/model_comparisons/20261024/) — 对比22款主流模型的综合能力、网页开发、代码修改、长程Agent与任务成本，结合Kimi K3.1 Pro、DeepSeek 1017、MiniMax M3.1 Flash及海外旗舰的表现，按实际任务选择主力。
-- [2026年10月 AI Coding Plan 与 API 平台对比：MiniMax M Plan、Kimi新会员、OpenCode Go Plus怎么选](articles/plan_comparisons/20261026/) — 比较12个平台的订阅与按量API，梳理MiniMax M Plan、Kimi新会员、OpenCode Go Plus等变化，分清模型权限、额度窗口、参考成本与购买限制，按任务和预算选择方案。
+- [2026年10月主流大模型能力对比：Kimi K3.1 Pro、DeepSeek V4.1 Flash、MiniMax M3.1 Flash、GPT-6 Astra 怎么选](articles/model_comparisons/latest/) — 对比22款主流模型的综合能力、网页开发、代码修改、长程Agent与任务成本，结合Kimi K3.1 Pro、DeepSeek 1017、MiniMax M3.1 Flash及海外旗舰的表现，按实际任务选择主力。
+- [2026年10月 AI Coding Plan 与 API 平台对比：MiniMax M Plan、Kimi新会员、OpenCode Go Plus怎么选](articles/plan_comparisons/latest/) — 比较12个平台的订阅与按量API，梳理MiniMax M Plan、Kimi新会员、OpenCode Go Plus等变化，分清模型权限、额度窗口、参考成本与购买限制，按任务和预算选择方案。
 - [查看全部文章](articles/index.html)
 
 ## 数据反馈
