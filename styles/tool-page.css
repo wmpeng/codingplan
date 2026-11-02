@@ -101,6 +101,22 @@ body.tool-page.ultra-wide { --tool-page-width: 1920px; }
 .tool-hero { margin: 26px 0 28px; align-items: center; }
 .tool-hero h1 { font-size: clamp(24px, 3vw, 30px); line-height: 1.3; font-weight: 700; letter-spacing: -.02em; margin-bottom: 8px; }
 .tool-hero p { font-size: 14px; line-height: 1.65; }
+.tool-related-articles { display: grid; gap: 8px; margin: -8px 0 24px; }
+.tool-page .tool-related-link { display: flex; align-items: center; gap: 12px; min-width: 0; min-height: 48px; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-secondary); color: var(--text-primary); font-size: 14px; line-height: 1.6; }
+.tool-related-copy { display: flex; align-items: baseline; gap: 14px; min-width: 0; }
+.tool-related-label { flex-shrink: 0; color: var(--text-secondary); font-size: 12px; }
+.tool-related-title { min-width: 0; overflow-wrap: anywhere; }
+.tool-related-icon, .tool-related-arrow { width: 18px; height: 18px; flex-shrink: 0; color: var(--text-secondary); }
+.tool-related-arrow { margin-left: auto; }
+.tool-page .tool-related-link:hover { border-color: var(--border-strong); text-decoration: none; }
+.tool-related-link:hover .tool-related-title { color: var(--accent-primary); text-decoration: underline; text-underline-offset: 3px; }
+.tool-related-link:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
+@media (max-width: 800px) {
+  .tool-related-articles { margin-top: -4px; }
+  .tool-page .tool-related-link { gap: 10px; padding: 12px; align-items: flex-start; }
+  .tool-related-copy { display: grid; gap: 3px; }
+  .tool-related-icon, .tool-related-arrow { margin-top: 2px; }
+}
 .tool-panel { border-radius: 12px; box-shadow: var(--shadow-sm); }
 .tool-button { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; font: inherit; font-size: 13px; white-space: nowrap; }
 .tool-result-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 16px 0 12px; font-size: 13px; }
