@@ -198,7 +198,7 @@ Kimi K3.1 Pro 与 K3 在**同一版 AA**中分别为 55 和 44；LiveBench Codin
 
 单看代码修改，DeepSeek 1017 的 Coding 更高；长程自主工程，Opus、Astra 更强。**Kimi Pro 的吸引力在于多类需求的覆盖，而非每个单项都争第一。** Research 为 Pro 77.9、K3 79.0，主要做检索和报告的 K3 用户可以先保留原有工作流，把升级优先留给编程和页面任务。
 
-Kimi Pro 已提供线上服务，官方计划在 **11 月 4 日前**发布完整权重；计划日期不等于权重已经开放。来源：[Kimi 官方发布](https://www.kimi.com/en/blog/kimi-k3-1-pro)、[API 指南](https://platform.kimi.com/docs/guide/kimi-k3-1-pro-quickstart)。产品入口：[Kimi / Kimi Code](https://api.dreamfree.space/c/s/cpyqkimi/20261024)。
+Kimi Pro 已提供线上服务，官方计划在 **11 月 4 日前**发布完整权重；计划日期不等于权重已经开放。来源：[Kimi 官方发布](https://www.kimi.com/en/blog/kimi-k3-1-pro)、[API 指南](https://platform.kimi.com/docs/guide/kimi-k3-1-pro-quickstart)。产品入口：[Kimi / Kimi Code](https://api.dreamfree.space/c/s/cpyqkimi/20261024)。 使用与选购可参阅[Kimi 会员与 Kimi Code](https://codingplan.fyi/platforms/kimi/)。
 
 ### DeepSeek 1017：代码修改有竞争力，长程仍需比较
 
@@ -208,7 +208,7 @@ Kimi Pro 已提供线上服务，官方计划在 **11 月 4 日前**发布完整
 
 它的 Agentic 为 50.9，低于 Sol、Astra、Opus。**希望少拆任务、少接管，优先考虑后面这些长程更强的候选；愿意管理任务边界与测试，DeepSeek 的取舍就更有吸引力。** 调用时认准 1017 版本，这个判断不直接套用到所有 DeepSeek 型号。
 
-产品入口：[DeepSeek API 按量](https://api.dreamfree.space/c/s/cpyqdeepseek/20261024)。
+产品入口：[DeepSeek API 按量](https://api.dreamfree.space/c/s/cpyqdeepseek/20261024)。 使用与选购可参阅[DeepSeek API 计费与接入](https://codingplan.fyi/platforms/deepseek-official/)。
 
 ### MiniMax 与 MiMo：高频任务按分项与返工成本取舍
 
@@ -218,11 +218,11 @@ Kimi Pro 已提供线上服务，官方计划在 **11 月 4 日前**发布完整
 
 MiMo 的官方材料介绍了多模态能力；比较时仍要区分托管 API 与发布的 RL 等检查点，不能把每种部署形态都视为同一套榜单运行。MiniMax 在 10 月 19 日公告中称权重将后续发布，不能仅凭榜单的开放标签就认定已经可以下载。来源：[MiMo 官方模型卡](https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL)、[MiMo AA 页面](https://artificialanalysis.ai/models/mimo-v2-6-pro)、[MiniMax 发布](https://www.minimax.io/blog/minimax-m31f)。
 
-产品入口：[MiMo](https://api.dreamfree.space/c/s/cpyqmimo/20261024)、[MiniMax Coding Plan / Token Plan](https://api.dreamfree.space/c/s/cpyqminimax/20261024)。先用相同需求、相同验收条件比较通过率，再看完成一个任务的实际花费。
+产品入口：[MiMo](https://api.dreamfree.space/c/s/cpyqmimo/20261024)、[MiniMax Coding Plan / Token Plan](https://api.dreamfree.space/c/s/cpyqminimax/20261024)。先用相同需求、相同验收条件比较通过率，再看完成一个任务的实际花费。 使用与选购可参阅[MiniMax 套餐与使用方式](https://codingplan.fyi/platforms/minimax/)。
 
 ### GLM：文本代码与截图任务分开选
 
-**GLM-5.3 与 GLM-5.3 Flash** 的 AA、WebDev 表现相近，但输入能力和长程分项有差异。纯文本代码任务可以比较两者；截图驱动的任务需要图像输入，Flash 才是这两款中对应的候选。产品入口：[GLM Coding Plan](https://api.dreamfree.space/c/s/cpyqzhipu/20261024)。
+**GLM-5.3 与 GLM-5.3 Flash** 的 AA、WebDev 表现相近，但输入能力和长程分项有差异。纯文本代码任务可以比较两者；截图驱动的任务需要图像输入，Flash 才是这两款中对应的候选。产品入口：[GLM Coding Plan](https://api.dreamfree.space/c/s/cpyqzhipu/20261024)。 使用与选购可参阅[智谱 GLM 套餐与用量](https://codingplan.fyi/platforms/zhipu/)。
 
 **在这两款中，纯文本代码任务先试 GLM-5.3，需要读截图则选 Flash。** GLM-5.3 的 Browser Use 为零来自截图输入限制，文本代码应看 Coding；两款的长程成绩都不是本期强项。已有 GLM 工作流可以按输入需求分工，目标若是尽量少接管的自主工程，则更值得同时试 Opus、Astra 或 Sol。规格来源：[GLM-5.3 文档](https://docs.z.ai/guides/llm/glm-5.3)、[Flash 模型卡](https://huggingface.co/zai-org/GLM-5.3-Flash)。
 
@@ -238,9 +238,9 @@ MiMo 的官方材料介绍了多模态能力；比较时仍要区分托管 API �
 
 ### 海外模型：长程工程与专项任务中的领先候选
 
-**复杂长程工程仍值得比较 Opus 5.5 与 GPT-6 Astra。** 两者的 Agentic 在本期所选模型中靠前，Opus 同时领先 AA 与 WebDev。Sonnet 5.5 也可比较日常工程质量；Fable 5.1 的 LiveBench 总分与 Coding 仍强，已有稳定工作流不必只因新品出现就替换。Haiku 5.5 则可用于预算敏感、可拆分的代码任务。规格见 [Claude 文档](https://platform.claude.com/docs/en/about-claude/models/overview)，产品入口：[Claude 订阅](https://api.dreamfree.space/c/s/cpyqclaudeup/20261024)。
+**复杂长程工程仍值得比较 Opus 5.5 与 GPT-6 Astra。** 两者的 Agentic 在本期所选模型中靠前，Opus 同时领先 AA 与 WebDev。Sonnet 5.5 也可比较日常工程质量；Fable 5.1 的 LiveBench 总分与 Coding 仍强，已有稳定工作流不必只因新品出现就替换。Haiku 5.5 则可用于预算敏感、可拆分的代码任务。规格见 [Claude 文档](https://platform.claude.com/docs/en/about-claude/models/overview)，产品入口：[Claude 订阅](https://api.dreamfree.space/c/s/cpyqclaudeup/20261024)。 使用与选购可参阅[Claude Code 订阅与额度](https://codingplan.fyi/platforms/claude/)。
 
-**GPT-6.1 Sol 是日常编程的主力候选之一。** 它的 Coding 高于 Astra、Agentic 低于 Astra，AA 同组任务费用约为 Astra 的 22.1%；GPT-6 Luna 则属于低成本候选。它们与 DeepSeek、Kimi、MiniMax、MiMo 的取舍，都应比较任务完成质量、费用与人工接管，不能从榜单 API 配置推算订阅额度。规格见 [OpenAI 模型文档](https://developers.openai.com/api/docs/models)，产品入口：[ChatGPT / Codex](https://api.dreamfree.space/c/s/cpyqchatgpt/20261024)。
+**GPT-6.1 Sol 是日常编程的主力候选之一。** 它的 Coding 高于 Astra、Agentic 低于 Astra，AA 同组任务费用约为 Astra 的 22.1%；GPT-6 Luna 则属于低成本候选。它们与 DeepSeek、Kimi、MiniMax、MiMo 的取舍，都应比较任务完成质量、费用与人工接管，不能从榜单 API 配置推算订阅额度。规格见 [OpenAI 模型文档](https://developers.openai.com/api/docs/models)，产品入口：[ChatGPT / Codex](https://api.dreamfree.space/c/s/cpyqchatgpt/20261024)。 使用与选购可参阅[Codex 订阅与用量](https://codingplan.fyi/platforms/codex/)。
 
 普通 **Muse Wonder** 的 Research 表现值得研究报告类工作关注；**Wonder Full** 的 AA 成绩更高，但公开 API 限制影响实际接入。两者需要分别判断。来源：[Meta 模型页](https://dev.meta.ai/models/muse-wonder)。
 

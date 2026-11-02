@@ -79,7 +79,7 @@
 
 **综合评分**：★★★★☆  
 **购买状态与门槛**：新套餐开放购买，国内付款路径；套餐限定在支持的工具环境中使用。  
-**计费方式**：积分订阅，受五小时与每周限制。
+**计费方式**：[智谱积分订阅](https://codingplan.fyi/platforms/zhipu/)，受五小时与每周限制。
 
 **核心特点**是旗舰GLM与相对低消耗的Flash共用积分。当前支持GLM-5.3、GLM-5.3-Flash；历史型号有自动切换安排，不能仅凭旧模型名判断实际服务。旗舰模型适合重难点代码任务，但同样的积分用Flash能跑更多Token，不能把Flash的容量当成GLM-5.3容量。[官方套餐规则](https://docs.bigmodel.cn/cn/coding-plan/overview)公开了积分和峰谷系数。
 
@@ -101,7 +101,7 @@
 
 **综合评分**：★★★★★  
 **购买状态与门槛**：Go和Go Plus均有订阅流程，只适用于单成员工作区；部分模型另有地区与隐私设置条件，支付方式看当前结算页。  
-**计费方式**：Go系列是订阅，Zen是按量入口。
+**计费方式**：[OpenCode Go系列](https://codingplan.fyi/platforms/opencode/)是订阅，Zen是按量入口。
 
 **核心特点**是同一入口使用多家模型。升到40美元Go Plus后，GLM-5.3增加8倍月美元额度，但MiMo Flash、DeepSeek Flash只增加2倍；如果日常主要跑后两类模型，升档的单位用量成本反而会上升。GLM-5.3重度用户更有理由考虑Go Plus，多模型轻度用户则可以先留在Go。[官方Go规则](https://opencode.ai/v2/docs/console/go/)按模型列出价格与额度。
 
@@ -130,7 +130,7 @@
 
 **综合评分**：★★★★★  
 **购买状态与门槛**：新售M Plan；国内订阅，包含MiniMax Code及订阅API Key。  
-**计费方式**：共享额度订阅，可另购积分包。
+**计费方式**：[MiniMax共享额度订阅](https://codingplan.fyi/platforms/minimax/)，可另购积分包。
 
 **核心特点**是低价入口与M3.1 Flash。新购用户可以直接比较三档，老Token Plan会员却不应只按新旧月费相同就迁移：旧自动续费中的额外权益未必跟随升级。[M Plan页面](https://www.minimax.cn/m-plan)显示首月半价截至10月31日，次月原价续费。
 
@@ -158,7 +158,7 @@
 
 **综合评分**：★★★★☆  
 **购买状态与门槛**：新会员公开订阅；Go无Code，Plus起支持。  
-**计费方式**：与Kimi其他会员功能共享额度的订阅。
+**计费方式**：与[Kimi其他会员功能](https://codingplan.fyi/platforms/kimi/)共享额度的订阅。
 
 **核心特点**是模型权限分得比价格更重要。49元Go适合主站会员需求，不是Coding入门档；想用K3.1 Pro标准版可从Plus开始，需要1M上下文或高速版再看Pro。当前[模型配置](https://www.kimi.com/code/docs/kimi-code/models.html)说明，高速版输出约快2–3倍、消耗约两倍，这两个比例是官方相对描述。
 
@@ -186,7 +186,7 @@ Token量由社区样本和新套餐暂定倍率外推，新套餐尚未独立实
 **购买状态与门槛**：两条个人产品线开放订阅；额度仅限允许的AI工具用途。  
 **计费方式**：Coding参考量含历史测量与外推；Agent采用AFP抵扣。
 
-**核心特点**是国内多模型接入，但两条线的额度不能互套。[Coding概览](https://docs.volcengine.com/docs/ark/coding-plan-personal-plan-overview?lang=zh)已列出K3.1 Pro、DeepSeek V4.1 Flash与Economy；同名模型在Coding和Agent中的消耗依据不同。
+**核心特点**是[字节方舟](https://codingplan.fyi/platforms/bytedance-ark/)的国内多模型接入，但两条线的额度不能互套。[Coding概览](https://docs.volcengine.com/docs/ark/coding-plan-personal-plan-overview?lang=zh)已列出K3.1 Pro、DeepSeek V4.1 Flash与Economy；同名模型在Coding和Agent中的消耗依据不同。
 
 **Coding Plan**：活动截至11月8日，合资格前两月享活动价，之后恢复常规价；新购、续费、升配共享两月资格，需看结算状态。
 
@@ -241,7 +241,7 @@ Token量由社区样本和新套餐暂定倍率外推，新套餐尚未独立实
 
 **综合评分**：★★★★★  
 **购买状态与门槛**：官方API按量开放，没有订阅套餐。  
-**计费方式**：输入、缓存、输出Token及独立工具调用计费。
+**计费方式**：[DeepSeek API](https://codingplan.fyi/platforms/deepseek-official/)按输入、缓存、输出Token及独立工具调用计费。
 
 **核心特点**是按需支付与缓存成本清楚。当前`deepseek-flash`对应DeepSeek-V4.1-Flash-1017，Pro为0813版；旧Flash及Vision Exp名称仍可调用，但请求由当前1017提供服务并按Flash计费，不能据旧名称认定还在跑旧模型。[官方价目](https://api-docs.deepseek.com/zh-cn/quick_start/pricing/)如下。
 
@@ -330,7 +330,7 @@ Flash的缓存/未缓存输入/输出分别按每Token 2/100/200 Credits，Pro�
 
 **综合评分**：★★★★★  
 **购买状态与门槛**：中国大陆不可用（[OpenAI官方地区列表](https://help.openai.com/en/articles/7947663-chatgpt-supported-countries)）；其他地区看账号与支付条件。  
-**计费方式**：ChatGPT订阅内共享用量，购买Credits与API Key另行计费。
+**计费方式**：[ChatGPT / Codex订阅](https://codingplan.fyi/platforms/codex/)内共享用量，购买Credits与API Key另行计费。
 
 **核心特点**是原生工程Agent体验。付费方案覆盖GPT-6.1 Sol等模型，适合代码库阅读、修改、终端协作与持续任务。经常跨文件修改、联动终端的用户，可以把它与Claude Code、Kimi、GLM一起列入首轮项目试用。
 
@@ -357,7 +357,7 @@ Flash的缓存/未缓存输入/输出分别按每Token 2/100/200 Credits，Pro�
 
 **综合评分**：★★★★☆  
 **购买状态与门槛**：中国大陆不可用（[Claude官方地区列表](https://support.claude.com/en/articles/8461763-where-can-i-access-claude)）；其他地区的支付与税费以结算页为准。  
-**计费方式**：Claude与Code共享订阅用量，受五小时与周限制。
+**计费方式**：[Claude与Code](https://codingplan.fyi/platforms/claude/)共享订阅用量，受五小时与周限制。
 
 **核心特点**是原生代码库工作流与Claude模型组合。当前可比较Opus、Sonnet、Haiku等模型，但套餐“5x”“20x”指相对Pro的五小时会话用量，不能同时当作周容量倍数。[Max规则](https://support.claude.com/en/articles/11049741-what-is-the-max-plan)明确另有共享周上限。
 
